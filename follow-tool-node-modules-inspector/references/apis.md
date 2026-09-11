@@ -8,7 +8,7 @@ bun add -D node-modules-inspector
 
 ## Version
 
-- Latest: 2.4.5
+- Latest: 2.5.0 (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/node-modules-inspector)
 - [Repository](https://github.com/antfu/node-modules-inspector)
 

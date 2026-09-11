@@ -40,6 +40,7 @@ bunx @tauri-apps/cli plugin new <name>
 | `--android` | เพิ่ม Android library project |
 | `--ios` | เพิ่ม iOS Swift package |
 | `--directory <path>` | ระบุ parent directory |
+| `--github-workflows` | สร้าง `.github` CI workflows (ไม่ generate โดย default อีกต่อไป) |
 
 ### โครงสร้างที่สร้าง
 

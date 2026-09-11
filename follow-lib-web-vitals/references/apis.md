@@ -8,7 +8,7 @@ bun add web-vitals
 
 ## Version
 
-- Latest: `6.2.1` (verified 2026-09-11)
+- Latest: `6.2.1` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/web-vitals)
 - [Repository](https://github.com/GoogleChrome/web-vitals)
 

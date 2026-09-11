@@ -3,13 +3,13 @@
 ## Install
 
 ```sh
-cargo add cargo-mutants
+cargo install --locked cargo-mutants   # or: cargo binstall cargo-mutants
 ```
 
 ## Version
 
-- Latest: 0.0.4
-- [Package Registry](https://crates.io/crates/mutants)
+- Latest: `cargo-mutants` 27.1.0 / `mutants` (attribute crate) 0.0.4 (verified 2026-09-12)
+- [Package Registry](https://crates.io/crates/cargo-mutants)
 - [Repository](https://github.com/sourcefrog/cargo-mutants)
 
 ## Dependencies

@@ -16,9 +16,12 @@ bun add -D node-modules-inspector
 
 | commands | description | default | options |
 |---|---|---|---|
-| `node-modules-inspector` | Analyze node_modules | — | --root, --open, --no-open, --build |
-| `node-modules-inspector --build` | Build static report | — | --output, --base, --config |
-| `node-modules-inspector --open` | Open in browser | — | --port, --host |
+| `node-modules-inspector` | Launch interactive web UI | — | --root, --config, --port, --host |
+| `node-modules-inspector build` | Build static report to `dist/__node-modules-inspector` | — | --root, --config, --outDir, --base |
+| `node-modules-inspector report duplicates` | Packages in multiple versions | — | --json, --limit, --depth, --root |
+| `node-modules-inspector report sizes` | Packages by install size | — | --json, --limit, --depth |
+| `node-modules-inspector report maintainers` | Upgrade opportunities + publint | — | --json, --sort, --no-latest-only |
+| `node-modules-inspector mcp` | Start MCP server (stdio) | — | — |
 | `node-modules-inspector --help` | Show help | — | (none) |
 ## Examples
 
@@ -26,5 +29,8 @@ bun add -D node-modules-inspector
 bunx node-modules-inspector
 ```
 ```sh
-bunx node-modules-inspector --build --output ./dist/inspect
+bunx node-modules-inspector build
+```
+```sh
+bunx node-modules-inspector report duplicates --json | jq '.[].name'
 ```

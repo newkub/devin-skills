@@ -8,7 +8,8 @@
 | `storybook build` | Build static site for production |
 | `storybook test` | Run tests (Vitest addon) |
 | `bun create storybook@latest` | Initialize Storybook (v10.6+) |
-| `bunx storybook@latest init` | Initialize Storybook (legacy, pre-v8.3) |
+| `bunx storybook@latest create` | Initialize Storybook (v10+) |
+| `bunx storybook@latest init` | Initialize Storybook (legacy, pre-v10) |
 
 ## Options
 
@@ -57,13 +58,15 @@ bun run test-storybook
 
 ## Version-Specific Commands
 
-### v10.6+ (ESM-only)
+### v10+ (ESM-only)
 
 ```bash
 bun create storybook@latest
+# or
+bunx storybook@latest create
 ```
 
-### Pre-v8.3
+### Pre-v10 (legacy)
 
 ```bash
 bunx storybook@latest init

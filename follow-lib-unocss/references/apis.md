@@ -8,7 +8,7 @@ bun add -D unocss
 
 ## Version
 
-- Latest: 66.10.1
+- Latest: 66.10.2 (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/unocss)
 - [Repository](https://github.com/unocss/unocss)
 

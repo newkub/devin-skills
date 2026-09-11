@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
-- Latest: `tsdown@0.23.0` (verified 2026-09-11)
+- Latest: `tsdown@0.23.0` (verified 2026-09-12) — requires Node.js `^22.18.0 || ^24.11.0 || >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
 
 ## Execute
 
@@ -29,7 +29,7 @@ related:
 > Goal: ตรวจสอบว่า project เหมาะกับ tsdown
 
 1. ยืนยันว่าเป็น TypeScript library project
-2. ตรวจสอบ `package.json` และ Node.js version ไม่ต่ำกว่า 22.18
+2. ตรวจสอบ `package.json` และ Node.js version `^22.18.0 || ^24.11.0 || >=26.0.0`
 3. ระบุ output formats ทีต้องการ
 4. ตรวจสอบ `src/index.ts` หรือ entry files
 
@@ -37,7 +37,7 @@ related:
 
 > Goal: ติดตั้ง tsdown
 
-1. ติดตั้งด้วย `bun add -D tsdown`
+1. ติดตั้งด้วย `bun add -D tsdown` หรือ scaffold project ใหม่ด้วย `bun create tsdown@latest`
 2. ตรวจสอบ version ด้วย `bunx tsdown --version`
 3. ใช้ `bunx tsdown --help` ดู CLI options
 4. ดูรายละเอียดใน [references/tsdown.md](references/tsdown.md)

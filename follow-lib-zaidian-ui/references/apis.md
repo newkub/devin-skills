@@ -1,8 +1,8 @@
-# Lib Zaidian UI API & Dependencies
+# Lib Zaidan UI API & Dependencies
 
 ## Install
 
-Zaidian ไม่ใช่ npm package แต่ใช้ shadcn CLI เพื่อ pull components จาก Zaidan registry
+Zaidan ไม่ใช่ npm package แต่ใช้ shadcn CLI เพื่อ pull components จาก Zaidan registry
 
 ```bash
 # Initialize shadcn/ui in project
@@ -32,7 +32,7 @@ bunx shadcn@latest add @zaidan/button
 | commands | description | default | options |
 |---|---|---|---|
 | `bunx shadcn@latest init` | Initialize shadcn/ui in project | current project | `--defaults`, `--base-color` |
-| `bunx shadcn@latest add @zaidan/<component>` | Add Zaidian component | interactive | `-y`, `--overwrite` |
+| `bunx shadcn@latest add @zaidan/<component>` | Add Zaidan component | interactive | `-y`, `--overwrite` |
 | `bunx shadcn@latest add <url>` | Add from custom registry URL | - | - |
 
 ## Source

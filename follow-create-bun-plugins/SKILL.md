@@ -12,13 +12,13 @@ related:
 ---
 ## Goal
 
-สร้าง Bun plugins ด้วย `Bun.plugin` API พร้อมรองรับ runtime และ bundler ผ่าน `onResolve`, `onLoad`, `onStart`, `onEnd`
+สร้าง Bun plugins ด้วย `Bun.plugin` API พร้อมรองรับ runtime และ bundler ผ่าน `onResolve`, `onLoad`, `onStart`, `onEnd`, `onBeforeParse` (native)
 
 ## Scope
 
 ใช้สำหรับสร้าง plugins สำหรับ Bun runtime และ `bun build` bundler ด้วย TypeScript ครอบคลุม `Bun.plugin`, namespaces, filters, loaders, build, และ tests
 
-- Latest: Bun `1.4.2` (verified 2026-09-11)
+- Latest: Bun `1.4.2`, `bun-types@1.4.2` (verified 2026-09-12)
 
 ## Execute
 
@@ -57,7 +57,7 @@ related:
      };
    }
    ```
-3. ลงทะเบียน plugin ใน `bunfig.toml` หรือ `bun build --plugin` ถ้าจำเป็น
+3. ลงทะเบียน runtime plugin ผ่าน preload file ทีเรียก `plugin(myPlugin())` แล้วใช้ `bun --preload ./preload.ts` หรือ `preload = ["./preload.ts"]` ใน `bunfig.toml` ถ้าจำเป็น
 
 ### 4. Add onResolve
 
@@ -73,18 +73,21 @@ related:
 > Goal: โหลดและ transform module contents
 
 1. ใช้ `build.onLoad({ filter: /\.ext$/ }, async (args) => { ... })`
-2. คืน `contents`, `loader`, หรือ `exports`
-3. รองรับ loaders: `js`, `ts`, `json`, `toml`, `text`, `object`, `wasm`
+2. คืน `contents`, `loader`, หรือ `exports` (คู่กับ `loader: "object"`)
+3. รองรับ loaders: `js`, `jsx`, `ts`, `tsx`, `json`, `jsonc`, `toml`, `yaml`, `text`, `file`, `napi`, `wasm`, `css`, `html`, `object`
 4. ใช้ `Bun.file(args.path).text()` สำหรับอ่านไฟล์
 5. ใช้ `namespace` เมื่องสร้าง virtual modules
+6. ใช้ `await args.defer()` ถ้า contents ของ module ต้องรอให้ modules อื่นโหลดก่อน
+7. ใช้ `build.module(specifier, callback)` เป็น shorthand สำหรับ virtual module เดียว
 
-### 6. Add onStart And onEnd
+### 6. Add Lifecycle Hooks
 
 > Goal: จัดการ build lifecycle
 
-1. `build.onStart(() => { ... })` — เริ่ม build
+1. `build.onStart(() => { ... })` — เริ่ม bundle (รองรับ async, bundler รอจนครบ)
 2. `build.onEnd((result) => { ... })` — จบ build พร้อม `BuildOutput`
-3. ใช้สำหรับ setup/cleanup resources
+3. `build.onBeforeParse(constraints, { napiModule, symbol })` — สำหรับ native (NAPI/Rust) plugins เท่านั้น รันใน parser thread
+4. ใช้ `build.config` อ่าน/แก้ `BuildConfig` ภายใน `setup()` (lifecycle callbacks แก้ config ไม่ได้)
 
 ### 7. Build Package
 
@@ -131,13 +134,13 @@ related:
 
 ### 2. Plugin Registration
 
-- Runtime: ใช้ `Bun.plugin(myPlugin())` ใน entry file
+- Runtime: เรียก `plugin(myPlugin())` (named import จาก `bun`) หรือ `Bun.plugin(myPlugin())` ใน preload file — ไม่ใช่ใน entry file หลัก เพราะ plugins อาจ register หลัง module ถูก resolve แล้ว
 - Bundler: ส่งผ่าน `plugins` option ของ `Bun.build`
-- `bunfig.toml`: ใช้ `[run] preload` หรือ `plugins`
+- `bunfig.toml`: ใช้ top-level `preload = ["./register-plugins.ts"]` — ไม่มี `plugins` field ใน bunfig; หรือรัน `bun --preload ./file.ts`
 
 ### 3. Filters And Namespaces
 
-- ใช้ `filter` regex ที่ชัดเจน
+- ใช้ `filter` regex ที่ชัดเจน — hooks match เฉพาะ specifier ทีมี `.` หรือ `:` เท่านั้น
 - ใช้ `namespace` แยก custom modules
 - คืน `undefined` เร็วถ้าไม่ match
 - ระวัง regex performance

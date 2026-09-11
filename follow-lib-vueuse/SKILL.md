@@ -17,7 +17,7 @@ related:
 
 ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v14.4 ครอบคลุม installation, core composables, v14 features, best practices และ testing
 
-- Latest: `@vueuse/core@14.4.0` (verified 2026-09-11)
+- Latest: `@vueuse/core@14.4.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -60,6 +60,7 @@ related:
 10. `useVirtualList` scrollTo รองรับ `behavior`, `block`, `inline` (v14.4)
 11. Custom scheduler จาก v14.4.0 สำหรับ time-based composables
 12. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
+13. `computedEager` deprecated ใน v14 — ใช้ `computed` ธรรมดาแทน
 
 ### 4. Integrate With Components
 
@@ -125,6 +126,7 @@ related:
 - Migrate ไปใช้ `tsdown` และ dist files ย้ายตำแหน่ง (breaking)
 - Alias exports deprecated ให้ใช้ชื่อ function ต้นฉบับ
 - `watchPausable` deprecated ให้ใช้ Vue 3.5 native `watch` controls
+- `computedEager` deprecated ให้ใช้ `computed` ธรรมดา
 
 ### 6. Testing
 

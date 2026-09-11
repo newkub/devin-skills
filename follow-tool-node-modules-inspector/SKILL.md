@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ Node.js / TypeScript projects ที่ใช้ `npm`, `pnpm` หรือ `bun`
 
-- Latest: `node-modules-inspector@2.5.0` (verified 2026-09-11)
+- Latest: `node-modules-inspector@2.5.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -66,7 +66,7 @@ related:
 > Goal: สร้าง static report สำหรับ hosting หรือ CI artifacts
 
 1. รัน `bunx node-modules-inspector build`
-2. ได้ `.node-modules-inspector` directory
+2. ได้ `dist/__node-modules-inspector` directory (v2 default outDir)
 3. ใช้ static file server หรือ host บน GitHub Pages
 4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
 

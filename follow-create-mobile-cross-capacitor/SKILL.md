@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
 
-- Latest: `@capacitor/core@8.5.1` / `@capacitor/cli@8.5.1` (verified 2026-09-11)
+- Latest: `@capacitor/core@8.5.2` / `@capacitor/cli@8.5.2` (verified 2026-09-12)
 
 ## Execute
 
@@ -30,8 +30,8 @@ related:
 ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
 
 1. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
-2. ตรวจสอบ Android Studio Otter 2025.2.1 หรือใหม่กว่า
-3. ตรวจสอบ Xcode สำหรับ iOS development
+2. ตรวจสอบ Android Studio >= Otter 2025.2.1 (latest stable: Quail 4 `2026.1.4`, verified 2026-09-12)
+3. ตรวจสอบ Xcode >= 26.0 สำหรับ iOS development (Capacitor 8 requirement; latest Xcode 26.6 / Swift 6.3.3)
 4. ตรวจสอบ JDK 21 หรือสูงกว่า
 5. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
 6. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
@@ -120,6 +120,7 @@ Build และ deploy ไปยัง app stores
 6. ตั้งค่า Android signing ใน `android.buildOptions`: `keystorePath`, `keystorePassword`, `keystoreAlias`, `keystoreAliasPassword`, `releaseType`, `signingType`
 7. ใช้ Fastlane สำหรับ automate deployment: `fastlane supply` (Android), `fastlane deliver` (iOS)
 8. ใช้ OTA updates ผ่าน `@capgo/capacitor-updater` สำหรับ hot fixes
+9. ถ้าต้องจัดการ system bar insets ให้ใช้ `@capacitor/system-bars` (core plugin ใหม่ใน Capacitor 8 แทน `adjustMarginsForEdgeToEdge` ที่ถูกลบออก)
 
 ### 8. OTA Updates
 
@@ -155,12 +156,12 @@ Build และ deploy ไปยัง app stores
 Capacitor 8 requirements:
 
 - Node.js >= 22 (latest LTS recommended)
-- iOS deployment target >= 15
+- Xcode >= 26.0, iOS deployment target >= 15
 - Android minSdkVersion >= 24, compileSdkVersion >= 36, targetSdkVersion >= 36
 - JDK >= 21
-- Android Studio Otter 2025.2.1 หรือใหม่กว่า
-- Kotlin >= 2.2.20
-- Gradle plugin >= 8.13.0, wrapper >= 8.14.3
+- Android Studio >= Otter 2025.2.1 (latest stable: Quail 4 `2026.1.4`)
+- Kotlin >= 2.2.20 (latest `2.4.20`, verified 2026-09-12)
+- Gradle plugin >= 8.13.0, wrapper >= 8.14.3 (ถ้าใช้ AGP 9.x ต้องใช้ Gradle 9.x)
 
 ### 2. Configuration Rules
 

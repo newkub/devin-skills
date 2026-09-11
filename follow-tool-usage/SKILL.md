@@ -20,6 +20,8 @@ related:
 
 ครอบคลุม installation, KDL spec, `usage generate` subcommands, integrations, และ validation
 
+- Latest: `usage@6.8.0` (usage CLI โดย jdx, verified 2026-09-12)
+
 ## Execute
 
 ### 1. Install
@@ -41,6 +43,8 @@ related:
 4. ใช้ `effect` เช่น `read`, `write`, `destructive` สำหรับ commands และ flags
 5. ใช้ `config_file` และ `env` เพื่อ bind config/env/defaults
 6. ใช้ `global=#true` สำหรับ global flags
+7. ใช้ `min_usage_version "6.x"` เพื่อ pin minimum CLI version ที่ spec ต้องการ
+8. ใช้ `clause` สำหรับ repeatable positional groups พร้อม scoped flags (usage 6.5+)
 
 ### 3. Generate Outputs
 
@@ -48,7 +52,7 @@ related:
 
 1. `usage generate completion <shell> <bin> -f usage.kdl` สำหรับ bash/zsh/fish/pwsh/nushell
 2. `usage generate completion-init <shell>` สำหรับ shell init script
-3. `usage generate markdown` สำหรับ markdown docs
+3. `usage generate markdown` สำหรับ markdown docs (ใช้ `--link-extension .html` ถ้า serve เป็น HTML)
 4. `usage generate manpage` สำหรับ manpages
 5. `usage generate sdk <language>` สำหรับ type-safe SDK
 6. `usage generate json` สำหรับ consume โดย framework
@@ -124,7 +128,6 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 - keep `usage.kdl` เป็น single source of truth
 - regenerate completions/docs ใน CI ถ้ามีการเปลี่ยน spec
 
-- ใช้ /report-usage ถ้าจำเป็น
 - ใช้ /report-usage ถ้าจำเป็น
 - ใช้ /review-usage-md ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

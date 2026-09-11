@@ -23,7 +23,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite) — สำหรับ Ultracite preset บน Biome ดู `references/ultracite.md`
 
-- Latest: `@biomejs/biome@2.5.13` (verified 2026-09-11)
+- Latest: `@biomejs/biome@2.5.13` (verified 2026-09-12)
 
 ## Execute
 
@@ -172,6 +172,7 @@ jobs:
 ### 4. Optional Domains
 
 - Domain ใช้ `recommended` เท่านั้น ไม่ใช้ `all`
+- Astro: สำหรับ Astro projects
 - Drizzle: สำหรับโปรเจกต์ที่ใช้ Drizzle ORM
 - Next: สำหรับ Next.js projects
 - Playwright: สำหรับ Playwright test projects
@@ -180,6 +181,8 @@ jobs:
 - React: สำหรับ React projects (conflict กับ Solid)
 - ReactNative: สำหรับ React Native projects
 - Solid: สำหรับ Solid projects (conflict กับ React)
+- Svelte: สำหรับ Svelte projects
+- Tailwind: สำหรับ Tailwind CSS projects
 - Test: สำหรับ test files
 - Turborepo: สำหรับ Turborepo projects
 - Types: สำหรับ type analysis (มีผลต่อ performance)

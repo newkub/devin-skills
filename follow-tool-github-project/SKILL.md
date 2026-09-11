@@ -17,6 +17,8 @@ related:
 
 ใช้กับ GitHub Projects (Projects v2) ของผู้ใช้ องค์กร หรือ repository ที่เชื่อมโยง ไม่ครอบคลุม `gh issue` หรือ `gh pr` โดยตรง
 
+- Latest: `gh@2.100.0` (github.com/cli/cli, verified 2026-09-12)
+
 ## Execute
 
 ### 0. Setup
@@ -59,7 +61,9 @@ related:
 3. รัน `gh project edit <number> --title "<title>"` เพื่อแก้ไขชื่อ
 4. รัน `gh project edit <number> --description "<desc>" --visibility PUBLIC` เพื่อแก้ไขรายละเอียด
 5. รัน `gh project close <number>` หรือ `gh project close <number> --undo` เพื่อปิด/เปิด project ใหม่
-6. อย่าลบ project โดยไม่ได้รับอนุญาตจากผู้ใช้
+6. ใช้ `gh project copy <number>` เพื่อ duplicate project และ `gh project mark-template <number>` เพื่อทำเป็น template
+7. ใช้ `gh project link <number> <repo>` / `gh project unlink <number> <repo>` เพื่อเชื่อม/ถอด repo
+8. อย่าลบ project ด้วย `gh project delete <number>` โดยไม่ได้รับอนุญาตจากผู้ใช้
 
 ### 4. Manage Project Items
 
@@ -70,6 +74,7 @@ related:
 3. รัน `gh project item-add <number> --url <issue-or-pr-url>` เพื่อเพิ่ม issue/PR เข้า project
 4. รัน `gh project item-create <number> --title "<title>" --body "<body>"` เพื่อสร้าง draft item
 5. ใช้ `gh project item-edit --id <item-id> --field-id <field-id> --project-id <project-id> --text "..."` เพื่อแก้ไข field ของ item
+   - หรือแบบ name-based (ไม่ต้องใช้ node IDs): `gh project item-edit <number> --owner "@me" --url <issue-or-pr-url> --field "Status" --value "In Progress"` — `--field`/`--field-id`, `--url`/`--id`, `--value`/typed flags ใช้ร่วมกันไม่ได้
 6. รัน `gh project item-archive <number> --id <item-id>` หรือ `gh project item-archive <number> --id <item-id> --undo`
 7. รัน `gh project item-delete <number> --id <item-id>` ด้วยความระมัดระวัง
 
@@ -78,15 +83,16 @@ related:
 > Goal: ดูหรือสร้าง custom fields
 
 1. รัน `gh project field-list <number> --owner "@me"` เพื่อดู fields และ field IDs
-2. รัน `gh project field-create <number> --name "<name>" --data-type "TEXT"` เพื่อสร้าง field
-3. ใช้ field IDs จาก JSON output เพื่ออ้างอิงใน `item-edit`
+2. รัน `gh project field-create <number> --name "<name>" --data-type "TEXT"` เพื่อสร้าง field — data types: `TEXT`, `SINGLE_SELECT`, `DATE`, `NUMBER`; สำหรับ SINGLE_SELECT เพิ่ม `--single-select-options "a,b,c"`
+3. รัน `gh project field-delete <number> --id <field-id>` เมื่อต้องลบ field (destructive — ถามผู้ใช้ก่อน)
+4. ใช้ field IDs จาก JSON output เพื่ออ้างอิงใน `item-edit`
 
 ### 6. Use Output And Automation
 
 > Goal: ใช้ output ของ `gh project` กับ scripts
 
-1. ใช้ `--json` หรือ `--jq <expression>` เพื่อรับ output เป็น JSON
-2. ใช้ `--template "<go-template>"` เพื่อจัดรูปแบบ output
+1. ใช้ `--format json` หรือ `-q/--jq <expression>` เพื่อรับ output เป็น JSON (`gh project` ใช้ `--format` ไม่ใช่ `--json`)
+2. ใช้ `-t/--template "<go-template>"` เพื่อจัดรูปแบบ output
 3. ใช้ `gh project item-list <number> --query "..."` เพื่อกรอง items ด้วย syntax ของ Projects
 4. สำหรับ automation ให้ระบุ flags ครบ ไม่พึ่ง interactive prompt
 
@@ -111,8 +117,8 @@ related:
 
 ### 4. Item And Field IDs
 
-- `item-edit` ต้องการ `--id`, `--field-id`, `--project-id`; `field-delete` ต้องการ `--id`
-- ใช้ `--json` กับ `item-list` หรือ `field-list` เพื่อดึง IDs ที่ถูกต้อง
+- `item-edit` ใช้ได้สองโหมด: ID-based (`--id`, `--field-id`, `--project-id`) หรือ name-based (`<number>` + `--owner` + `--url` + `--field` + `--value`); `field-delete` ต้องการ `--id`
+- ใช้ `--format json` กับ `item-list` หรือ `field-list` เพื่อดึง IDs ที่ถูกต้อง
 - ใช้ `--text`, `--number`, `--date`, `--single-select-option-id`, `--iteration-id`, `--clear` ตามประเภท field
 
 ### 5. Safety

@@ -9,7 +9,7 @@ bun add -D @types/pdfkit   # TypeScript
 
 ## Version
 
-- Latest: `0.20.2` (verified 2026-09-11)
+- Latest: `0.20.2` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/pdfkit)
 - [Repository](https://github.com/foliojs/pdfkit)
 

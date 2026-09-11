@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib dompurify)
 
-- Latest: `dompurify@3.4.15` (verified 2026-09-11)
+- Latest: `dompurify@3.4.15` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

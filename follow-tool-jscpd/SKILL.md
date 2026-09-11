@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับตรวจจับและวิเคราะห์ code duplication — ไม่ครอบคลุมการ refactor เอง (ดู `/refactor`)
 
-- Latest: `jscpd@5.2.0` (verified 2026-09-11)
+- Latest: `jscpd@5.2.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -82,14 +82,20 @@ related:
 - `strict` — use all token types — สำหรับตรวจแบบละเอียด
 - `weak` — skip comments ด้วย — สำหรับลด noise จาก comment duplication
 
-### 4. Monorepo
+### 4. Advanced Clone Detection (v5.2+)
+
+- Type-2 clones: `--ignore-identifiers`, `--ignore-literals`, `--ignore-annotations` — normalize tokens เพื่อจับ blocks ที่ต่างกันเฉพาะชื่อ/ค่า literal/annotation; clone จะมี `kind: "exact" | "renamed"` ใน JSON report
+- Near-miss merge: `--max-gap-lines N` — รวม clone ที่ห่างกันไม่เกิน N unmatched lines เป็น clone เดียว (`kind: "similar"` พร้อม `similarity` score; merge ที่ similarity < 0.5 จะถูกปฏิเสธ)
+- Function-level similarity (JS/TS เท่านั้น): `--similarity 0.9` — เปรียบเทียบทุก function/method ด้วย 4-gram similarity (default `1` = exact match เท่านั้น)
+
+### 5. Monorepo
 
 - รันที่ root และใช้ `ignore` patterns เพื่อ exclude workspaces ที่ไม่ต้องการ
 - หรือรันเฉพาะ workspace: `bunx jscpd ./apps/website/src --reporters console,json`
 - ใช้ `--skip-local` เพื่อตรวจเฉพาะ cross-workspace duplication
 - เพิ่ม script `report:duplication` ใน root `package.json`: `bunx jscpd . --reporters console,json --output report`
 
-### 5. CI Integration
+### 6. CI Integration
 
 - ใช้ `--threshold` เพื่อ fail CI เมื่อ duplication เกินกำหนด
 - ใช้ `--reporters sarif` สำหรับ GitHub Code Scanning

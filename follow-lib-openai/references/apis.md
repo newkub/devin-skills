@@ -9,13 +9,13 @@ bun add zod          # สำหรับ structured outputs + zodResponseFormat
 
 ## Version
 
-- Latest: `7.15.0` (verified 2026-09-11)
+- Latest: `7.15.0` (verified 2026-09-12) — v7 requires Node.js 22+
 - [Package Registry](https://www.npmjs.com/package/openai)
 - [Repository](https://github.com/openai/openai-node)
 
 ## Dependencies
 
-- Runtime deps น้อย — ใช้ `fetch` ของ runtime (Bun/Node 18+ built-in)
+- Runtime deps น้อย — ใช้ `fetch` ของ runtime (v7 ต้อง Node.js 22+, Bun รองรับ)
 - Helpers: `zod` (`openai/helpers/zod` → `zodResponseFormat`)
 
 ## Common API / Commands

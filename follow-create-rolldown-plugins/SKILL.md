@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับสร้าง JavaScript/TypeScript plugins สำหรับ Rolldown หรือ Vite 8+ ครอบคลุม plugin object, hooks, filters, build, และ tests
 
-- Latest: `rolldown@1.2.8` (ใช้ใน Vite 8 เป็น bundler หลัก) (verified 2026-09-11)
+- Latest: `rolldown@1.2.8` — bundler หลักใน `vite@8.x` (latest `8.3.0`) (verified 2026-09-12)
 
 ## Execute
 
@@ -46,8 +46,8 @@ related:
 > Goal: implement plugin factory
 
 1. สร้าง `src/index.ts` ด้วย factory function
-2. return object ด้วย `name` ที่ required
-4. ใช้ hook filters สำหรับลด overhead
+2. return object ด้วย `name` ที่ required — type ด้วย `Plugin` จาก `rolldown`
+3. ใช้ hook filters สำหรับลด overhead
 
 ### 4. Add Hooks
 
@@ -65,13 +65,14 @@ related:
 > Goal: ลด overhead ระหว่าง Rust และ JS
 
 1. ใช้ `filter: { id: regex }` ใน `resolveId`, `load`, `transform`
-2. คืน `null` เร็วถ้าไม่ match
+2. ใช้ helpers จาก `rolldown/filter` เช่น `exactRegex`, `prefixRegex` เพื่อ pattern ที่เร็วกว่า regex ทั่วไป
+3. คืน `null` เร็วถ้าไม่ match
 
 ### 6. Build Package
 
 > Goal: build สำหรับ npm
 
-1. ติดตั้ง `tsup` หรือ `bun build`
+1. ติดตั้ง `tsdown` (แนะนำ — ใช้ rolldown ข้างใน) หรือ `bun build`
 2. external `rolldown`
 3. output `esm` และ `cjs`
 4. ระบุ `types`, `main`, `exports` ใน `package.json`

@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับตั้งค่า ESLint 10 ใน TypeScript, Vue, และ Nuxt projects
 
-- Latest: `eslint@10.10.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 || ^22.13 || >=24` (verified 2026-09-11)
+- Latest: `eslint@10.10.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 || ^22.13 || >=24` (verified 2026-09-12) — pair กับ `typescript-eslint@8.x`
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-oxlint) — สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
 
@@ -182,6 +182,8 @@ export default defineConfig([
 - ใช้ `typescript-eslint` แทน `@typescript-eslint/parser`
 - ใส่ `prettier` config เป็นตัวสุดท้าย
 - ไม่ใช้ `.eslintignore` ใน ESLint 10 — ใช้ `ignores` ใน flat config
+- Config lookup ใน v10 เริ่มจาก directory ของ linted file ขึ้นไป (ไม่ใช่ cwd) — ถ้าต้องการ behavior เดิมให้ระบุ `--config <path>`
+- Migrate จาก v9 → v10 ด้วย codemod `@eslint/v9-to-v10` (และ `@eslint/v9-to-v10-linter-api` สำหรับ API usage)
 - ตรวจ plugin compatibility กับ ESLint 10 ก่อน upgrade (`typescript-eslint`, `eslint-plugin-*`)
 
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น

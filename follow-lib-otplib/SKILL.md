@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib otplib)
 
-- Latest: `otplib@13.5.0` (verified 2026-09-11)
+- Latest: `otplib@13.5.0` (verified 2026-09-12) — v13 เป็น rewrite ใหม่ทั้งหมด (breaking changes)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,9 +24,10 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. ใช้ `authenticator` จาก `otplib/preset-default` หรือ browser preset ตาม runtime
-1. generate secret ด้วย `authenticator.generateSecret()` แล้วสร้าง `keyuri` สำหรับ QR
-1. verify ด้วย `authenticator.check(token, secret)` — ตั้ง `window` เผื่อ clock drift
+1. ใช้ functional API `import { generateSecret, generate, verify, generateURI } from 'otplib'` — หรือ class API `new OTP()` (v13 ไม่มี `preset-default`/`authenticator` แล้ว)
+1. generate secret ด้วย `generateSecret()` แล้วสร้าง otpauth:// URI ด้วย `generateURI({issuer, label, secret})` สำหรับ QR
+1. verify ด้วย `await verify({secret, token})` — คืน `VerifyResult` ให้เช็ค `.valid` (ไม่ใช่ boolean) — ตั้ง `epochTolerance` เผื่อ clock drift
+1. API เป็น async-first — `generateSync`/`verifySync` ใช้ได้เฉพาะกับ sync crypto plugin (`@otplib/plugin-crypto-node`/`@otplib/plugin-crypto-noble`)
 1. เก็บ secret encrypted — ไม่ใส่ใน JWT หรือ response
 
 ### 2. Verify
@@ -42,6 +43,8 @@ related:
 - ใช้ TOTP (time-based) เป็นหลัก — HOTP เฉพาะ use case เฉพาะ
 - verify ฝั่ง server เสมอ ห้าม verify ฝั่ง client
 - rate-limit verify attempts กัน brute-force
+- `verify`/`verifySync` คืน object `{valid}` ไม่ใช่ boolean — เช็ค `result.valid` เสมอ
+- migrate จาก v12 ด้วย `@otplib/v12-adapter` เป็น temporary bridge เท่านั้น แล้วย้ายไป v13 API
 
 ## Expected Outcome
 

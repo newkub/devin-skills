@@ -16,7 +16,7 @@ related:
 
 ใช้ `follow-tool-react-scan` สำหรับ project หรือ workflow ที่เป็น React
 
-- Latest: `react-scan@0.5.7` (verified 2026-09-11)
+- Latest: `react-scan@0.5.7` (verified 2026-09-12)
 
 ## Execute
 
@@ -32,10 +32,12 @@ related:
 
 > Goal: เลือกวิธี integrate react-scan เข้ากับ project
 
-1. Script tag สำหรับ quick testing หรือ legacy apps โดยไม่ต้อง build
-2. NPM package สำหรับ production apps ที่ต้องการ control และ TypeScript
-3. Build tool plugin สำหรับ Vite, Webpack, esbuild, Rollup, Rspack, Rolldown, Astro
-4. Browser extension สำหรับ analyze apps โดยไม่ต้องแก้ code
+1. CLI auto-setup: `bunx -y react-scan@latest init` ตรวจ framework และติดตั้งให้อัตโนมัติ
+2. CLI URL scan: `bunx react-scan@latest <url>` สำหรับ scan site ใดก็ได้โดยไม่ต้องแก้ code
+3. Script tag สำหรับ quick testing หรือ legacy apps โดยไม่ต้อง build
+4. NPM package สำหรับ production apps ที่ต้องการ control และ TypeScript
+5. Build tool plugin สำหรับ Vite, Webpack, esbuild, Rollup, Rspack, Rolldown, Astro
+6. Browser extension สำหรับ analyze apps โดยไม่ต้องแก้ code
 
 ### 3. Install React Scan
 

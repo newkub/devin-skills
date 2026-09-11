@@ -8,7 +8,7 @@ bun add ioredis
 
 ## Version
 
-- Latest: `6.0.0` — major version (verified 2026-09-11)
+- Latest: `6.0.0` — major version: Node ≥20, RESP3 โดย default (`protocol: 2` คง wire protocol เดิม, `replyStyle: "resp3"` สำหรับ RESP3 shapes) (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/ioredis)
 - [Repository](https://github.com/redis/ioredis)
 

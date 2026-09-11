@@ -25,7 +25,7 @@ related:
 - Newkub slides: ใช้ `D:/newkub/slides` ที่มี single `package.json` ที่ root — แต่ละ project มีแค่ `slides.md` ไม่ต้องสร้าง `package.json` ใหม่
 - ถ้าต้องการ flow เฉพาะ `D:/newkub/slides` → ใช้ `/create-slide-in-newkub-slides`
 
-- Latest: `@slidev/cli@52.19.1` (verified 2026-09-11)
+- Latest: `@slidev/cli@52.19.1` (verified 2026-09-12) — `mdc` headmatter renamed เป็น `comark` ตั้งแต่ v52.14
 
 ## Execute
 
@@ -79,8 +79,8 @@ related:
 
 > Goal: Export Slides (Optional)
 
-1. ใช้ `bunx slidev export {project-name}/slides.md` เพื่อ export เป็น PDF
-2. ใช้ `bunx slidev build {project-name}/slides.md --out dist/{project-name}` เพื่อ build เป็น static site
+1. ใช้ `bunx slidev export {project-name}/slides.md` เพื่อ export เป็น PDF (ต้องมี `playwright-chromium`)
+2. ใช้ `bunx slidev build {project-name}/slides.md --out dist/{project-name}` เพื่อ build เป็น static site — ใช้ `--router-mode hash|memory|history` ถ้า host ไม่รองรับ SPA routing
 3. Standalone mode ใช้ `bunx slidev build` / `bunx slidev export` ใน project directory
 
 ### 7. Ship
@@ -115,7 +115,7 @@ related:
 - ตั้งค่า `theme` ตามที่ต้องการ (seriph, default, etc.)
 - ตั้งค่า `title` และ `info` ให้ชัดเจน
 - ใช้ `transition` สำหรับ slide transitions (slide-left, slide-right, fade-out, fade-in, slide-up, slide-down)
-- เปิดใช้ `mdc: true` สำหรับ MDC syntax
+- เปิดใช้ `comark: true` สำหรับ Comark syntax (เดิม `mdc: true` — deprecated ตั้งแต่ v52.14)
 - ถ้าเป็นภาษาไทย ใช้ font `Noto Sans Thai` ด้วย `fonts` config ใน headmatter:
   ```yaml
   fonts:

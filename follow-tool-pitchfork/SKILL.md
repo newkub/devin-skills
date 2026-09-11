@@ -17,6 +17,9 @@ related:
 
 ครอบคลุม `pitchfork.toml`, daemon lifecycle, ready checks, shell hooks, และ TUI
 
+- Latest: `pitchfork@2.25.0` (crate `pitchfork-cli`) (verified 2026-09-12)
+- รองรับ file watching, health checks, cron scheduling, web UI, MCP server และ port assignment/reverse proxy
+
 ## Execute
 
 ### 1. Install
@@ -24,7 +27,7 @@ related:
 > Goal: มี pitchfork CLI พร้อมใช้
 
 1. แนะนำติดตั้งผ่าน `mise`: `mise use -g pitchfork` หรือ `mise use pitchfork`
-2. ทางเลือก: `cargo install pitchfork-cli`
+2. ทางเลือก: `cargo install pitchfork-cli --locked` หรือ binary จาก GitHub releases
 3. ถ้า project ไม่มี mise ให้ทำ `/follow-tool-mise` ก่อน
 4. ยืนยันด้วย `pitchfork --version`
 5. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
@@ -33,26 +36,28 @@ related:
 
 > Goal: กำหนด daemons สำหรับ project
 
-1. สร้าง `pitchfork.toml` ใน root หรือ `.config/pitchfork.toml`
+1. สร้าง `pitchfork.toml` ใน root หรือ `.config/pitchfork.toml` พร้อม schema: `#:schema https://pitchfork.jdx.dev/schema.json`
 2. กำหนด `[daemons.<name>]` ด้วย `run = "..."`
-3. ใช้ `ready_http`, `ready_output`, `ready_port`, `ready_cmd` สำหรับ ready checks
-4. ใช้ `depends` สำหรับ dependency ordering
-5. ใช้ `auto = ["start", "stop"]` สำหรับ shell hook
-6. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit)
-7. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+3. ใช้ `ready_http`, `ready_output`, `ready_port`, `ready_cmd` สำหรับ ready checks (`ready_http` รับ table `{ url, timeout }` ได้)
+4. ใช้ `port` เพื่อ assign port อัตโนมัติ และ `env` กับ template `{{ daemons.<name>.port }}` เพื่อเชื่อม services
+5. ใช้ `depends` สำหรับ dependency ordering และ `retry` สำหรับ auto-restart
+6. ใช้ `auto = ["start", "stop"]` สำหรับ shell hook
+7. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit)
+8. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 3. Manage Daemons
 
 > Goal: start/stop/monitor daemons
 
-1. `pitchfork start --all` หรือ `pitchfork start <name>`
-2. `pitchfork list` เพื่อดู daemons ทั้งหมด
+1. `pitchfork start --all` หรือ `pitchfork start <name>` (`--local` = เฉพาะ daemons ใน project config)
+2. `pitchfork list` (`--project` เพื่อ filter เฉพาะ project นี้)
 3. `pitchfork status <name>` เพื่อดูรายละเอียด
 4. `pitchfork logs <name> --tail` เพื่อ follow logs
-5. `pitchfork stop <name>` หรือ `pitchfork stop --all`
-6. `pitchfork start <name> --force` เพื่อ restart
-7. `pitchfork tui` สำหรับ dashboard
-8. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+5. `pitchfork stop <name>` หรือ `pitchfork stop --all` / `--local`
+6. `pitchfork restart <name>` เพื่อ apply config changes แล้ว restart (หรือ `start <name> --force`)
+7. `pitchfork run <name> --port <port> -- <cmd>` สำหรับ ad-hoc daemon โดยไม่ต้องมี config file
+8. `pitchfork tui` สำหรับ dashboard หรือเปิด web UI
+9. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 4. Shell Hook
 
@@ -98,18 +103,24 @@ related:
 ### 3. Example pitchfork.toml
 
 ```toml
+#:schema https://pitchfork.jdx.dev/schema.json
+
 [daemons.api]
 run = "exec bun run dev"
-ready_http = "http://localhost:3000/health"
+port = 3000
+ready_http = { url = "http://localhost:3000/health", timeout = "30s" }
 auto = ["start", "stop"]
+retry = 3
 
 [daemons.database]
 run = "exec docker compose up postgres"
+port = 5432
 ready_port = 5432
 
 [daemons.worker]
 run = "exec bun run worker"
 depends = ["database"]
+env = { DATABASE_URL = "postgres://localhost:{{ daemons.database.port }}" }
 
 [daemons.worker.hooks]
 on_fail = "echo 'worker failed with code $PITCHFORK_EXIT_CODE'"
@@ -121,6 +132,7 @@ on_output = { filter = "connected", run = "echo 'worker ready'" }
 - `pitchfork start --all`
 - `pitchfork list`
 - `pitchfork logs <name> --tail`
+- `pitchfork restart <name>`
 - `pitchfork stop <name>`
 - `pitchfork tui`
 - `pitchfork project enter --pid $$`

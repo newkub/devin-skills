@@ -24,7 +24,7 @@ bunx vitest init
 
 ## Version Info
 
-- Latest stable: `5.0.0` (released 2026-09-03, verified 2026-09-11)
+- Latest stable: `5.0.0` (released 2026-09-03, verified 2026-09-12)
 - License: MIT
 - Node.js: `^22.12.0 || ^24.0.0 || >=26.0.0`
 - Vite: `>= 6.4.0` (required for Vitest 5)

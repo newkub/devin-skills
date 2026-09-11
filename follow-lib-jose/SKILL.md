@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib jose)
 
-- Latest: `jose@6.2.12` (verified 2026-09-11)
+- Latest: `jose@6.2.12` (verified 2026-09-12) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -40,9 +40,10 @@ related:
 ## Rules
 
 - ใช้ `jose` แทน `jsonwebtoken` บน edge runtimes (jsonwebtoken ต้อง node:crypto)
-- ตั้ง algorithm ชัดเจน (EdDSA, RS256, ES256) — ห้าม `alg: none`
+- ตั้ง algorithm ชัดเจน (EdDSA, RS256, ES256) — ห้าม `alg: none`, `secp256k1` และ `RSA1_5` ถูกลบใน v6
 - verify ทุกครั้งด้วย `jwtVerify` — ห้าม decode อย่างเดียว
 - key rotation ผ่าน `kid` header
+- ใน v6 เก็บ keys เป็น `CryptoKey`/`JWK`/`Uint8Array` — private `KeyObject` ใช้ verify/encrypt ไม่ได้แล้ว
 
 ## Expected Outcome
 

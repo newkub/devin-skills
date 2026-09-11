@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ JavaScript, TypeScript, React, Angular, Vue, Svelte และ Node.js projects ที่มี test runner รองรับ
 
-- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-11)
+- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-12) — v10 requires Node.js 22+ (dropped Node 20)
 
 ## Execute
 
@@ -28,7 +28,7 @@ related:
 
 > Goal: ติดตั้ง Stryker และ test runner plugin
 
-1. ตรวจสอบ test runner ปัจจุบัน (jest, vitest, mocha, jasmine)
+1. ตรวจสอบ Node.js >= 22 และ test runner ปัจจุบัน (jest, vitest, mocha, jasmine)
 2. ติดตั้ง `@stryker-mutator/core` ด้วย `bun add -D @stryker-mutator/core`
 3. ติดตั้ง runner plugin เช่น `bun add -D @stryker-mutator/vitest-runner`
 4. ติดตั้ง TypeScript checker ถ้าใช้ TypeScript: `bun add -D @stryker-mutator/typescript-checker`
@@ -75,6 +75,7 @@ related:
 
 ### 1. Test Quality
 
+- ใช้ Node.js >= 22 (Stryker v10)
 - ต้องมี tests ที่ stable ก่อนรัน Stryker
 - ไม่รัน Stryker ถ้า tests flaky
 - build ได้บน host platform

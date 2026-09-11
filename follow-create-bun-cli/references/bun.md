@@ -25,7 +25,7 @@ docker run --rm oven/bun --version
 
 ## Version
 
-- Latest: `1.4.2` (verified 2026-09-11)
+- Latest: `1.4.2` (verified 2026-09-12)
 - License: MIT
 - Repository: https://github.com/oven-sh/bun
 - Docs: https://bun.sh/docs
@@ -125,6 +125,7 @@ bun add cac
 - Version: `7.0.0`
 - ESM-only (requires Node.js >= 20.19.0 or Bun)
 - Zero dependencies
+- v7: `cli.on()` renamed → `cli.addEventListener()` (EventTarget API); JSR package `@cac/cac` สำหรับ Deno
 
 ```ts
 import cac from "cac";

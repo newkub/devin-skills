@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib openai)
 
-- Latest: `openai@7.15.0` (verified 2026-09-11)
+- Latest: `openai@7.15.0` (verified 2026-09-12) — v7 requires Node.js 22+
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -25,8 +25,8 @@ related:
 > Goal: ใช้งานถูกต้องตาม official docs
 
 1. สร้าง `new OpenAI({apiKey})` — key จาก env `OPENAI_API_KEY`
-1. ใช้ `chat.completions.create` หรือ Responses API — ตั้ง `model` และ system prompt ชัดเจน
-1. ใช้ `zodResponseFormat`/`response_format` สำหรับ structured output
+1. ใช้ `chat.completions.create` หรือ Responses API (`client.responses.create`) — ตั้ง `model` และ system prompt ชัดเจน
+1. ใช้ `zodResponseFormat` จาก `openai/helpers/zod` กับ `client.responses.parse`/`chat.completions.parse` สำหรับ structured output
 1. stream ด้วย `stream: true` + iterate chunks — handle tool calls ถ้าใช้ function calling
 
 ### 2. Verify
@@ -41,6 +41,7 @@ related:
 
 - ห้ามเรียก OpenAI จาก client — proxy ผ่าน server เสมอ
 - ตั้ง timeout + retry + rate-limit handling (429 backoff)
+- `openai@7.x` ต้อง Node.js 22+ — ตรวจ runtime ก่อน upgrade
 - validate structured output ด้วย zod schema
 - log token usage สำหรับ cost control
 

@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับสร้าง action สำหรับ GitHub Marketplace หรือ private repos ครอบคลุม inputs, outputs, runs, branding, และ `dist/` สำหรับ TS actions
 
-- Latest: GitHub Actions — pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
+- Latest: JavaScript actions ใช้ `node24` runtime (node20 EOL/ถูกลบจาก runners 2026-09-23) / `@actions/core@3.0.1` / `@actions/github@9.1.1` (verified 2026-09-12) — pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
 
 ## Execute
 
@@ -38,7 +38,7 @@ related:
 
 > Goal: เลือกประเภท action
 
-1. ถ้าต้องการ logic ซับซ้อน: ใช้ `node20` + TypeScript
+1. ถ้าต้องการ logic ซับซ้อน: ใช้ `node24` + TypeScript (node20 deprecated — runners บังคับ node24 ตั้งแต่ 2026-06 และลบ node20 ออก 2026-09-23)
 2. ถ้าต้องการรวมหลาย commands: ใช้ `composite`
 3. ถ้าต้องการ environment ควบคุม: ใช้ `docker`
 4. ระบุ inputs และ outputs ทีต้องการ
@@ -59,7 +59,7 @@ related:
 1. ระบุ `name`, `description`, `author`, `branding`
 2. ระบุ `inputs` พร้อม `required`, `default`, `description`
 3. ระบุ `outputs` สำหรับผลลัพธ์
-4. ระบุ `runs.using` เป้น `node20`, `composite`, หรือ `docker`
+4. ระบุ `runs.using` เป็น `node24`, `composite`, หรือ `docker` (สำหรับ `node24` ต้องระบุ `runs.main` ชี้ไป `dist/index.js`)
 
 ### 5. Implement Logic
 

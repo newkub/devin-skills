@@ -16,7 +16,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib postgres)
 
-- Latest: `postgres@3.4.9` (verified 2026-09-11)
+- Latest: `postgres@3.4.9` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -27,7 +27,8 @@ related:
 
 1. สร้าง `postgres(url, {max, prepare})` — default pool 10 connections
 1. ใช้ tagged template `` sql`SELECT * FROM t WHERE id = ${id}` `` — parameterized อัตโนมัติ
-1. ใช้ `sql.begin()` สำหรับ transactions, `sql.listen()` สำหรับ NOTIFY
+1. ใช้ `sql.begin()` สำหรับ transactions, `sql.listen(channel, onnotify)` สำหรับ LISTEN/NOTIFY และ `sql.notify(channel, payload)` สำหรับส่ง notify
+1. ใช้ `sql.subscribe(pattern, onrow)` สำหรับ realtime row changes (เช่น `'insert:events'`, `'*:users'`) — สร้าง dedicated connection อัตโนมัติ
 1. อยู่คู่กับ Drizzle — drizzle ใช้ postgres.js เป็น driver
 
 ### 2. Verify
@@ -40,7 +41,7 @@ related:
 
 ## Rules
 
-- ห้าม string-concat queries — ใช้ tagged template เสมอ
+- ห้าม string-concat queries — ใช้ tagged template เสมอ; `sql.unsafe()` เฉพาะ dynamic queries ที่ parameterized ไม่ได้
 - ปิด connection ด้วย `sql.end()` ใน teardown
 - บน serverless ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
 

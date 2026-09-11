@@ -4,6 +4,7 @@
 
 - Package: `@stryker-mutator/core` v10.0.0 (published Aug 14, 2026)
 - License: Apache-2.0
+- Node.js: `>=22` (v10 dropped Node 20)
 - Peer Dependencies: Test runner plugin (e.g. `@stryker-mutator/jest-runner`, `@stryker-mutator/vitest-runner`)
 - Supported Test Runners: Jest, Mocha, Karma, Jasmine, Vitest, Cucumber, Tap
 - Supported Languages: JavaScript, TypeScript, React, Angular, Vue, Svelte, Node.js

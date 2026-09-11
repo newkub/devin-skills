@@ -4,7 +4,7 @@
 
 ## Rust
 
-- Official SDK: `rmcp` จาก `modelcontextprotocol/rust-sdk`
+- Official SDK: `rmcp` จาก `modelcontextprotocol/rust-sdk` (latest `3.3.0`, verified 2026-09-12)
   - `cargo add rmcp --features server`
 - Community SDK: `rust-mcp-sdk`
   - `cargo add rust-mcp-sdk`
@@ -14,7 +14,7 @@
 
 ## TypeScript
 
-- Official SDK: `@modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-11 — package เก่า `@modelcontextprotocol/server` ถูกแทนด้วย `sdk`)
+- Official SDK: `@modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-12 — package เก่า `@modelcontextprotocol/server` ถูกแทนด้วย `sdk`)
   - `bun add @modelcontextprotocol/sdk`
 - Transport: stdio, Streamable HTTP, SSE
 - Validation: `zod` หรือ native schema

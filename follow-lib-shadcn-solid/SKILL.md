@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับสร้าง UI components ด้วย shadcn-solid บน SolidJS สำหรับ SolidStart, Astro, Vite
 
+- Latest: `shadcn-solid@0.7.7` (CLI) (verified 2026-09-12)
+
 ## Execute
 
 ### 1. Install And Setup
@@ -26,7 +28,7 @@ related:
 > Goal: ติดตั้ง shadcn/ui สำหรับ SolidJS
 
 1. สร้าง SolidJS project ด้วย `pnpm create solid@latest` และเลือก tailwind หรือ uno template
-2. ติดตั้ง shadcn-solid CLI ผ่าน `bunx shadcn-solid@latest init` (หรือ `bunx shadcn-solid@latest init`)
+2. ติดตั้ง shadcn-solid CLI ผ่าน `bunx shadcn-solid@latest init` (หรือ `pnpm dlx shadcn-solid@latest init`)
 3. เลือก CSS framework `TailwindCSS` หรือ `UnoCSS` ตามคำถามของ CLI
 4. ตั้งค่า `components.json` ด้วย base color, global CSS file, import alias (`@/components`), utils alias (`@/lib/utils`)
 5. อ่านคำแนะนำเพิ่มเติมที่ [references/shadcn-solid.md](references/shadcn-solid.md)
@@ -102,7 +104,6 @@ related:
 - หลีกเลี่ยงการแก้ไข core Kobalte primitives โดยตรง
 - ใช้ `diff` ตรวจสอบ upstream updates
 
-- ใช้ `/follow-create-web-solid-tanstack-router` ถ้าจำเป็น
 - ใช้ `/follow-create-web-solid-tanstack-router` ถ้าจำเป็น
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-unocss` ถ้าจำเป็น

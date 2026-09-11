@@ -8,7 +8,7 @@ bun add -D msw
 
 ## Version
 
-- Latest: `2.15.0` (verified 2026-09-11)
+- Latest: `2.15.0` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/msw)
 - [Repository](https://github.com/mswjs/msw)
 

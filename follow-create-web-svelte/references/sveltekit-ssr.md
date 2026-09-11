@@ -14,10 +14,10 @@
 
 > Goal: Create Project
 
-สร้าง project ใหม่ด้วย `bun create svelte@latest`
+สร้าง project ใหม่ด้วย `bunx sv create` (`create-svelte` deprecated → ใช้ `sv` แทน)
 
 ```bash
-bun create svelte@latest my-app
+bunx sv create my-app
 ```
 
 ### 2. Setup Configuration

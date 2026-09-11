@@ -16,6 +16,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ pin tool versions, load environment variables, และ define tasks ในไฟล์เดียว (`mise.toml`)
 
+- Latest: `mise@2026.9.5` (CalVer, verified 2026-09-12)
+
 ## Execute
 
 ### 1. Check And Install Mise
@@ -25,7 +27,7 @@ related:
 1. รัน `mise --version` เพื่อตรวจสอบ installation
 2. ถ้าไม่มา ให้ติดตั้ง:
    - Unix: `curl https://mise.run | sh`
-   - Windows: `winget install mise` หรือ `scoop install mise`
+   - Windows: `winget install jdx.mise` หรือ `scoop install mise`
    - Cargo: `cargo install mise`
 3. เพิ่ม mise ใน shell activation ตาม OS/shell
 4. รัน `mise doctor` เพื่อตรวจสอบสุขภาพ
@@ -69,7 +71,7 @@ related:
 3. ใช้ dependencies: `depends = ["build"]`
 4. ใช้ `sources` และ `outputs` สำหรับ caching
 5. รัน `mise run <task>` หรือ `mise <task>`
-6. รัน `mise run` เพื่อดูรายการ tasks
+6. รัน `mise tasks` เพื่อดูรายการ tasks ทั้งหมด
 
 ### 6. Integrate With Project Scripts
 
@@ -85,6 +87,7 @@ related:
 ### 1. Configuration File
 
 - `mise.toml` อยู่ที่ project root สำหรับ project config
+- `mise.local.toml` สำหรับ local overrides (ไม่ commit)
 - `~/.config/mise/config.toml` สำหรับ global user config
 - ใช้ `mise use <tool>@<version>` แทนการแก้ไฟล์ด้วยมือเมื่อเป็นไปได้
 - commit `mise.toml` เข้า repo

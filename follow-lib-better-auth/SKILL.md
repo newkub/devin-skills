@@ -20,7 +20,7 @@ related:
 > Goal: ติดตั้ง Better Auth และ database adapter
 
 1. รัน `bun add better-auth` (หรือ `pnpm add better-auth` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-11)
+2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-12)
 3. ติดตั้ง database adapter ถ้าไม่ใช้ built-in Kysely (เช่น `@better-auth/prisma-adapter`, `@better-auth/drizzle-adapter`)
 4. ตั้งค่า environment variables `BETTER_AUTH_SECRET` และ `BETTER_AUTH_URL`
 5. ใช้ `bunx auth@latest init` สำหรับ scaffold Next.js project (optional)

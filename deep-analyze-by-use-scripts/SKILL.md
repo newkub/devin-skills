@@ -4,7 +4,7 @@ description: Deep codebase analysis driven by programmatic scripts and AST tooli
 related:
   - deep-analyze
   - use-scripts
-  - use-ast-grep
+  - use-astgrep
   - scan-codebase
 ---
 

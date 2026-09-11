@@ -29,7 +29,7 @@ related:
 > Goal: ติดตั้ง Vite และ verify environment
 
 1. ตรวจสอบ Node.js version ไม่ต่ำกว่า 20.19 หรือ 22.12
-2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-11)
+2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-12)
 3. ตรวจสอบ version ด้วย `bunx vite --version`
 4. ดูรายละเอียดใน [references/vite.md](references/vite.md)
 
@@ -42,8 +42,9 @@ related:
 3. ตั้งค่า plugins สำหรับ framework ทีใช้
 4. กำหนด `resolve.alias` ด้วย absolute paths
 5. เปิดใช้ `resolve.tsconfigPaths: true`
-6. ตั้งค่า `envPrefix` ถ้าจำเป็น
-7. ดู config patterns ใน [references/vite.md](references/vite.md)
+6. ใช้ top-level `tsconfig` option (Vite 8.3+) ถ้าต้องการระบุ tsconfig ที่ Vite ใช้ resolve/transform
+7. ตั้งค่า `envPrefix` ถ้าจำเป็น
+8. ดู config patterns ใน [references/vite.md](references/vite.md)
 
 ### 3. Development
 
@@ -74,7 +75,7 @@ related:
 2. ใช้ explicit import paths พร้อม extension
 3. ใช้ `moduleResolution: "bundler"` ใน `tsconfig.json`
 4. เปิด `optimizeDeps.include` สำหรับ deps ที Vite อาจ miss
-5. ใช้ `vite --profile` สำหรับ profiling
+5. ใช้ `vite --profile` สำหรับ profiling (Vite 8.3+ รองรับ `vite --profile <name>` สำหรับตั้งชื่อ CPU profile)
 
 ### 6. Testing and Deployment
 

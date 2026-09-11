@@ -17,7 +17,8 @@ related:
 
 ใช้สำหรับสร้างหรือ refactor Neovim config บน `~/.config/nvim` หรือ project-specific config
 
-- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-11)
+- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-12)
+- Neovim 0.12+ มี `vim.pack` เป็น built-in plugin manager — พิจารณาใช้แทน lazy.nvim ถ้าต้องการ minimal config
 
 ## Execute
 
@@ -68,10 +69,11 @@ related:
 
 > Goal: ตั้งค่า LSP, formatter และ linting
 
-1. ติดตั้ง `nvim-lspconfig`, `mason.nvim` และ null-ls/formatter ที project ต้องการ
-2. ตั้งค่า auto format on save ผ่าน autocommand
-3. ใช้ `stylua` สำหรับ format Lua
-4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+1. ใช้ `vim.lsp.config` / `vim.lsp.enable` (Neovim ≥0.11) กับ `nvim-lspconfig` และ `mason.nvim`
+2. ใช้ `conform.nvim` สำหรับ formatting และ `nvim-lint` สำหรับ linting (null-ls archived แล้ว ห้ามใช้)
+3. ตั้งค่า auto format on save ผ่าน autocommand
+4. ใช้ `stylua` สำหรับ format Lua
+5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
 ### 6. Add Tests
 

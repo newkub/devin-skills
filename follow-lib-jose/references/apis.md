@@ -8,7 +8,7 @@ bun add jose
 
 ## Version
 
-- Latest: `6.2.12` (verified 2026-09-11)
+- Latest: `6.2.12` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/jose)
 - [Repository](https://github.com/panva/jose)
 

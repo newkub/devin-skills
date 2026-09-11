@@ -35,7 +35,7 @@ dx --version
 
 ## Version Info
 
-- Latest stable: `0.7.10` (verified 2026-09-11); `0.8.0-alpha` available as pre-release
+- Latest stable: `0.7.10` (verified 2026-09-12); `0.8.0-alpha.1` available as pre-release
 - The `dioxus` crate is the core framework; `dx` is the CLI tool
 
 ## Create a New Project

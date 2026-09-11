@@ -31,7 +31,7 @@ related:
 
 ใช้เมื่องานต้องการ performance จาก Rust ใน browser โดยไม่เขียน backend เช่น image/audio processing, simulation, cryptography, graph layout หรือ computational geometry
 
-- Latest: Rust `1.98.1` (axum/leptos/dioxus ecosystems) (verified 2026-09-11)
+- Latest: Rust `1.98.1`, `wasm-pack@0.15.0`, `wasm-bindgen@0.2.128`, `serde-wasm-bindgen@0.6.5`, `vite-plugin-wasm-pack@0.1.12` (verified 2026-09-12)
 
 ## Execute
 

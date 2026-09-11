@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib simplewebauthn)
 
-- Latest: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-11)
+- Latest: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,8 +24,9 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. server: `generateRegistrationOptions` → client `startRegistration` → `verifyRegistrationResponse`
-1. server: `generateAuthenticationOptions` → client `startAuthentication` → `verifyAuthenticationResponse`
+1. server: `generateRegistrationOptions` → client `startRegistration({ optionsJSON })` → `verifyRegistrationResponse`
+1. server: `generateAuthenticationOptions` → client `startAuthentication({ optionsJSON })` → `verifyAuthenticationResponse`
+1. ตั้งแต่ v11 browser methods รับ single object เท่านั้น — ห้ามส่ง options เป็น positional arg ตรงๆ; `useBrowserAutofill: true` สำหรับ conditional UI (passkey autofill)
 1. เก็บ credential: id, publicKey, counter, transports — per user
 1. ตั้ง `rpID`, `rpName`, `origin` ให้ตรง domain — mismatch = ceremony fail
 
@@ -43,6 +44,8 @@ related:
 - เก็บ `counter` ไว้ตรวจ cloned authenticators
 - require `userVerification` ตาม security level
 - รองรับ multiple credentials per user
+- `@simplewebauthn/types` ถูก retire ตั้งแต่ v13 — import types จาก `@simplewebauthn/server`/`browser` โดยตรง
+- ใช้ `preferredAuthenticatorType` ใน `generateRegistrationOptions` (`'securityKey'`, `'localDevice'`, `'remoteDevice'`) เมื่อต้องการกำหนด hints
 
 ## Expected Outcome
 

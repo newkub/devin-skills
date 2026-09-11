@@ -22,7 +22,7 @@ bunx semantic-release@25
 
 - Latest stable: `25.0.9`
 - License: MIT
-- Node.js: `>=20.17.0`
+- Node.js: `^22.14.0 || >=24.10.0` (v25 dropped Node 20/21/23)
 - Source: https://github.com/semantic-release/semantic-release
 
 ## Peer Dependencies

@@ -27,7 +27,7 @@ related:
 - เพิ่ม plugins ตามต้องการ
 - build และ test บน target platforms
 
-- Latest: `tauri@2.11.5` (crate) / `@tauri-apps/cli@2.11.4` / `@tauri-apps/api@2.11.1` (verified 2026-09-11)
+- Latest: `tauri@2.11.5` (crate) / `@tauri-apps/cli@2.11.4` / `@tauri-apps/api@2.11.1` (verified 2026-09-12)
 
 ## Execute
 
@@ -43,9 +43,10 @@ related:
 
 > Goal: ติดตั้ง dependencies สำหรับ Tauri app
 
-1. รัน `bun install`
-2. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
-3. ติดตั้ง Tauri CLI: `bun add -D @tauri-apps/cli`
+1. ถ้าสร้างโปรเจกต์ใหม่ทั้งหมด: `bunx create-tauri-app` (เลือก template/package manager ตามต้องการ) แล้วข้ามไป Configure
+2. รัน `bun install`
+3. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
+4. ติดตั้ง Tauri CLI: `bun add -D @tauri-apps/cli`
 
 ### 3. Configure Vite
 

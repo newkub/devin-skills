@@ -18,7 +18,7 @@ related:
 - เปรียบเทียบ: `use-astgrep` เหมาะกับ structural patterns ง่ายๆ, Semgrep เหมาะกับ dataflow/taint และ rulesets สำเร็จรูป
 - Scan-only ใน skill นี้ — fix ผ่าน `/review-security` หรือ `/fix`
 
-- Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-11)
+- Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-12)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -42,7 +42,7 @@ related:
 
 > Goal: สแกนพร้อม config ที่ถูก
 
-1. `semgrep --config=<ruleset> <path>` — เช่น `semgrep --config=p/security-audit src/`
+1. `semgrep scan --config=<ruleset> <path>` — เช่น `semgrep scan --config=p/security-audit src/` (`--config` โดยไม่มี subcommand ยังใช้ได้)
 2. Output options: `--json` สำหรับ processing, `--sarif` สำหรับ CI/GitHub code scanning
 3. ใช้ `--exclude`/`--include` จำกัด scope — ข้าม tests, generated, vendored
 4. `--baseline` สำหรับ existing codebases — เห็นเฉพาะ findings ใหม่
@@ -60,7 +60,7 @@ related:
 
 > Goal: ทำ semgrep เป็นส่วนของ workflow
 
-1. CI step หรือ pre-commit hook (`/follow-tool-hk`)
+1. CI step หรือ pre-commit hook (`/follow-tool-hk`); ใช้ `semgrep ci` + `semgrep login` ถ้า integrate กับ Semgrep AppSec Platform
 2. Commit custom rules ใน `.semgrep/` พร้อม tests (`semgrep --test`)
 3. Baseline strategy สำหรับ legacy code
 

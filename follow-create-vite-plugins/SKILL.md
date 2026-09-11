@@ -17,7 +17,7 @@ related:
 
 ใช้ `follow-create-vite-plugins` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (create vite plugins)
 
-- Latest: `vite@8.3.0` (Rolldown default bundler) (verified 2026-09-11)
+- Latest: `vite@8.3.0` (Rolldown default bundler) (verified 2026-09-12)
 
 ## Execute
 
@@ -93,7 +93,9 @@ related:
 ### 3. Vite Specific Hooks
 
 - ใช้ Vite-specific hooks เฉพาะเมื่อจำเป็น ดู [references/plugin-api.md](references/plugin-api.md)
-- Hooks: config, configResolved, configureServer, transformIndexHtml, handleHotUpdate
+- Hooks: config, configResolved, configureServer, configurePreviewServer, closeServer, transformIndexHtml, handleHotUpdate
+- ใช้ `hotUpdate` hook (per-environment, รับ `HotUpdateOptions` ที่มี `type: 'create' | 'update' | 'delete'`) สำหรับ HMR ใหม่ — `handleHotUpdate` มีแผน deprecate
+- Universal hooks เป็น per-environment — เข้าถึง environment ปัจจุบันผ่าน `this.environment` ใน hook
 
 ### 4. Plugin Ordering
 

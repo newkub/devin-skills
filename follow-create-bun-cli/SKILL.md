@@ -23,7 +23,7 @@ related:
 
 ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`) — ถ้ายังไม่ชัด Bun หรือ Rust ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
-- Latest: Bun `1.4.2`, `cac@7.0.0`, `picocolors@1.1.1`, `bunup@0.16.32` (verified 2026-09-11)
+- Latest: Bun `1.4.2`, `cac@7.0.0` (ESM-only, `cli.on` → `cli.addEventListener`), `picocolors@1.1.1`, `bunup@0.16.32` (verified 2026-09-12)
 
 ## Execute
 
@@ -39,7 +39,7 @@ related:
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
 
-1. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context
+1. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
 2. เลือก structure ตามลักษณะงาน:
    - CLI ง่ายๆ → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
    - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
@@ -111,6 +111,7 @@ related:
 - ตั้งค่า `dts.splitting: true` สำหรับ type declarations
 - TypeScript: `declaration: true`, `isolatedDeclarations: true`
 - ตั้งค่า `packages: "bundle"` ใน `bunup.config.ts` ถ้าต้องการ zero runtime dependencies
+- สำหรับ single-file executable distribution ใช้ `bun build --compile src/cli.ts --outfile mycli` หรือ bunup `compile` option
 
 ### 3. Scripts
 

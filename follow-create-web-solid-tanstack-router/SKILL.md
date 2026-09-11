@@ -49,7 +49,7 @@ related:
 
 > Goal: ติดตั้ง packages ที่จำเป็น
 
-1. Core (verified 2026-09-11 — `@tanstack/solid-start@1.168.50` ต้องการ `vite >=7.0.0` และ `solid-js >=1.0.0`):
+1. Core (verified 2026-09-12 — `@tanstack/solid-start@1.168.50`, `@tanstack/solid-router@1.170.33`; start ต้องการ `vite >=7.0.0` และ `solid-js >=1.0.0`):
    ```bash
    bun i @tanstack/solid-start @tanstack/solid-router solid-js
    bun i -D vite vite-plugin-solid typescript @types/node

@@ -16,7 +16,7 @@ npm install next@latest react@latest react-dom@latest
 
 ## Version
 
-- Latest: 16.3.4
+- Latest: 16.3.5 (verified 2026-09-12)
 - Requires: Node.js `>=20.9.0`, React `^18.2 || ^19`, TypeScript `>=5.1` (optional)
 - [Package Registry](https://www.npmjs.com/package/next)
 - [Repository](https://github.com/vercel/next.js)

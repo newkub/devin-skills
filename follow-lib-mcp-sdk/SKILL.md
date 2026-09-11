@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib mcp sdk)
 
-- Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-11)
+- Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,10 +24,11 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. สร้าง `new McpServer({name,version})` แล้ว register `server.tool()`, `resource()`, `prompt()`
-1. ใช้ `StdioServerTransport` สำหรับ local หรือ `StreamableHTTPServerTransport` สำหรับ remote
-1. define tool schemas ด้วย zod — name, description, inputSchema
+1. สร้าง `new McpServer({name,version})` แล้ว register ด้วย `server.registerTool()`, `registerResource()`, `registerPrompt()` — คืน handle สำหรับ `.update()`/`.remove()` (shorthand `server.tool()` ยังใช้ได้)
+1. ใช้ `StdioServerTransport` สำหรับ local หรือ `StreamableHTTPServerTransport` สำหรับ remote — HTTP+SSE transport deprecated (backward compat เท่านั้น)
+1. define tool schemas ด้วย zod — name, description, inputSchema (Zod raw shape)
 1. client side ใช้ `Client` + transport เดียวกัน — ทดสอบด้วย MCP Inspector
+1. ใช้ elicitation เมื่อ tool ต้องการ input เพิ่มจาก user ระหว่าง execute — `mode: 'form'` สำหรับ non-sensitive data, `mode: 'url'` สำหรับ secrets/OAuth
 
 ### 2. Verify
 

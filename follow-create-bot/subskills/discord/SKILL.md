@@ -58,9 +58,9 @@ argument-hint: "[features]"
 
 1. ใช้ `Bun.Glob` หรือ `readdirSync` เพื่อ scan `src/commands/`
 2. เก็บ commands ใน `Collection<string, Command>` ที่ client
-3. ใช้ `client.on('interactionCreate')` เพื่อ route slash commands, buttons, modals
-4. ใช้ `client.on('ready')` เพื่อ log login
-5. เพิ่ม `src/events/` สำหรับ `ready`, `interactionCreate`, `messageCreate` ตาม need
+3. ใช้ `client.on(Events.InteractionCreate)` เพื่อ route slash commands, buttons, modals
+4. ใช้ `client.once(Events.ClientReady)` เพื่อ log login (event `ready` deprecated ใน v14, ถูกลบใน v15)
+5. เพิ่ม `src/events/` สำหรับ `clientReady`, `interactionCreate`, `messageCreate` ตาม need
 
 ### 6. Add Features
 

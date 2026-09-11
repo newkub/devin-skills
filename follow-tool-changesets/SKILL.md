@@ -19,7 +19,7 @@ related:
 
 ตั้งค่า Changesets สำหรับ monorepos และ workspaces
 
-- Latest: `@changesets/cli@3.0.2` (verified 2026-09-11)
+- Latest: `@changesets/cli@3.0.2` (verified 2026-09-12) — `changesets/action@v2` (v2.1.1), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
 
 ## Execute
 
@@ -120,8 +120,8 @@ jobs:
 
 ### 4. Workflow
 
-- ใช้ changesets/action@v2 สำหรับ GitHub Actions
-- ตั้งค่า version และ publish commands
+- ใช้ changesets/action@v2 สำหรับ GitHub Actions — v2 ต้อง pair กับ Changesets CLI v3 (CLI v2 ใช้ action@v1)
+- ใช้ inputs `version-script` และ `publish-script` (v2 เปลี่ยนชื่อจาก `version`/`publish`)
 - ใช้ concurrency เพื่อป้องกัน conflicts
 
 - ใช้ /use-agent-browser ถ้าจำเป็น

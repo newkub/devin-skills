@@ -8,7 +8,7 @@ bun add @line/liff
 
 ## Version
 
-- Latest: `2.31.0` (verified 2026-09-11) — npm package เป็น v2.x; "LIFF v2" ใน docs หมายถึง API generation
+- Latest: `2.31.0` (verified 2026-09-12) — npm package เป็น v2.x; "LIFF v2" ใน docs หมายถึง API generation
 - [Package Registry](https://www.npmjs.com/package/@line/liff)
 - [Repository](https://github.com/line/line-liff-v2-starter)
 

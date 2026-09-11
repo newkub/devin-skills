@@ -19,9 +19,9 @@ related:
 
 ## Scope
 
-ใช้สำหรับ Vue 3 projects ทั้ง Vite 8 หรือ Nuxt 4 (Vue 3.5.42 เป็น stable ล่าสุด, Vue 3.6 ยังอยู่ในช่วง RC)
+ใช้สำหรับ Vue 3 projects ทั้ง Vite 8 หรือ Nuxt 4 (Vue 3.5.42 เป็น stable ล่าสุด, Vue 3.6 ยังอยู่ในช่วง RC — `3.6.0-rc.8`)
 
-- Latest: `vue@3.5.42` (verified 2026-09-11)
+- Latest: `vue@3.5.42` / `vue-router@5.3.1` / `pinia@4.0.3` / `vite@8.3.0` / `nuxt@4.5.2` (verified 2026-09-12)
 
 ## Execute
 

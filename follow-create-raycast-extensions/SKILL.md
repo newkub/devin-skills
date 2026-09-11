@@ -16,7 +16,7 @@ related:
 
 ใช้สำหรับสร้าง Raycast Extensions บน macOS ด้วย TypeScript, React และ Raycast API
 
-- Latest: `@raycast/api@2.3.0` / `@raycast/utils@2.3.1` (verified 2026-09-11)
+- Latest: `@raycast/api@2.3.1` / `@raycast/utils@2.3.1` (verified 2026-09-12) — extensions รันบน Node 22 + React 19
 
 ## Execute
 
@@ -34,14 +34,14 @@ related:
 
 1. ติดตั้ง Raycast บน macOS และ Sign in
 2. ตรวจสอบ Raycast CLI: `bunx ray --version` และ `bunx ray whoami`
-3. ยืนยัน Node.js 18+ และ Bun ติดตั้งแล้ว
+3. ยืนยัน Node.js 22.14+ (`@raycast/api` 2.x ต้องการ Node `>=22.22.2`) และ Bun ติดตั้งแล้ว
 
 ### 3. Create Extension Project
 
 > Goal: สร้าง extension project ด้วย CLI
 
-1. รัน `bunx create-raycast-extension@latest {extension-name}`
-2. เลือก template: `hello-world`, `detail`, `form`, `list`, `ai`, หรือ `menu-bar`
+1. ใช้ `Create Extension` command ใน Raycast (แนะนำ) หรือ scaffold จาก terminal ด้วย `bun create raycast-extension -t {template}` (`npm init raycast-extension`)
+2. เลือก template: `detail`, `form`, `list`, `menu-bar`, `no-view`, หรือ `ai` (tools) — ดู [references/raycast-resources.md](references/raycast-resources.md)
 3. ย้าย project เข้า `desktop-apps/raycast-extensions/{extension-name}/`
 4. ตรวจสอบโครงสร้าง: `package.json`, `src/`, `tsconfig.json`
 
@@ -62,7 +62,7 @@ related:
   "categories": ["Productivity"],
   "commands": [{ "name": "index", "title": "Command", "mode": "view" }],
   "dependencies": {
-    "@raycast/api": "^2.3.0",
+    "@raycast/api": "^2.3.1",
     "@raycast/utils": "^2.3.1"
   }
 }
@@ -111,9 +111,9 @@ export default function Command() {
 ### 6. Test Extension
 
 > Goal: ทดสอบ extension ด้วย develop, lint และ build
-1. รัน `bunx ray develop`
+1. รัน `bun install && bun run dev` (หรือ `bunx ray develop`) — dev mode พร้อม hot reload
 2. รัน `bunx ray lint`
-3. รัน `bunx ray build`
+3. รัน `bunx ray build` (หรือ `bunx ray build -e dist` เพื่อ validate build)
 
 ### 7. Publish Extension
 
@@ -149,10 +149,11 @@ desktop-apps/raycast-extensions/{extension}/
 
 ### 2. Standards
 
-- ใช้ `bunx` สำหรับ Raycast CLI
+- ใช้ `bunx` สำหรับ Raycast CLI (`ray` มากับ `@raycast/api`)
 - ใช้ Raycast UI: `List`, `Grid`, `Form`, `Detail`, `ActionPanel`
-- ต้องมี `CHANGELOG.md`
+- ต้องมี `CHANGELOG.md` — ไม่ต้องระบุ `version` ใน manifest (Store จัดการ versioning)
 - ใช้ `@raycast/eslint-plugin`
+- อัปเกรด API ด้วย `bunx ray migrate` หรือ codemod `bunx @raycast/migration .`
 
 ### 3. Command Modes
 

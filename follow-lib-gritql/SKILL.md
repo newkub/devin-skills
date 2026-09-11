@@ -17,7 +17,7 @@ related:
 
 ใช้กับ JavaScript/TypeScript, CSS และ JSON ในโปรเจกต์ที่ใช้ Biome v2+
 
-- Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-11)
+- Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -81,9 +81,9 @@ related:
 
 > Goal: แก้ไข code ด้วย rewrite operator ใน plugins
 
-1. ใช้ rewrite operator `=>` สำหรับ transform matched code
-2. กำหนด `fix_kind` ใน `register_diagnostic()` เพื่อบ่งบอกความปลอดภัยของ fix
-3. รัน `biome check --write` หรือ `biome lint --write` เพื่อ apply safe fixes
+1. ใช้ rewrite operator `=>` สำหรับ transform matched code — rewrites ใน plugin กลายเป็น fixable diagnostics สำหรับ JS, CSS และ JSON
+2. กำหนด `fix_kind` ใน `register_diagnostic()` เพื่อบ่งบอกความปลอดภัยของ fix — default คือ `unsafe`
+3. รัน `biome check --write` หรือ `biome lint --write` เพื่อ apply safe fixes เท่านั้น — unsafe fixes ต้องเพิ่ม flag `--unsafe` (`biome check --write --unsafe`)
 4. หลีกเลี่ยง unsafe rewrites หากอาจทำให้ code logic เปลี่ยน
 
 ### 8. Optimize Performance
@@ -144,7 +144,7 @@ related:
 ### 7. Rewrite And Fix Safety
 
 - ใช้ `=>` operator สำหรับ transformation ใน GritQL plugins เท่านั้น
-- กำหนด `fix_kind` ให้เหมาะสม
+- กำหนด `fix_kind` ให้เหมาะสม — default เป็น `unsafe` ต้องรัน `biome check --write --unsafe`
 - รัน `biome check --write` สำหรับ safe fixes
 - ทดสอบ rewrite บน sample files ก่อน apply ใน production
 

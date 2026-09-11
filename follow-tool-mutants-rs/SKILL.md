@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับ Rust projects ที่ใช้ Cargo build system และต้องการตรวจสอบคุณภาพของ tests ด้วย mutation testing
 
-- Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-11)
+- Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-12)
 
 ## Execute
 
@@ -65,11 +65,12 @@ related:
 
 > Goal: ตั้งค่า cargo-mutants สำหรับ project
 
-1. สร้าง `mutants.toml` ที project root เมื่อต้องการ config ขั้นสูง
-2. กำหนด `timeout`, `exclude_globs`, `copy_target` ตามต้องการ
-3. ใช้ `#[mutants::skip]` สำหรับ functions หรือ impls ที่ไม่ต้องการ mutate
-4. ใช้ `#[mutants::exclude_re("pattern")]` สำหรับกรอง mutations เฉพาะ
-5. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+1. สร้าง `.cargo/mutants.toml` ที่ source tree root เมื่อต้องการ config ขั้นสูง (check-in เข้า VCS)
+2. กำหนด top-level keys เช่น `timeout_multiplier`, `exclude_globs`, `examine_globs`, `test_package`, `copy_target` (ไม่มี `[mutants]` table)
+3. ใช้ `test_tool = "nextest"` หรือ `--test-tool=nextest` เพื่อรัน tests ผ่าน nextest (เร็วกว่าเพราะ fail-fast)
+4. ใช้ `#[mutants::skip]` สำหรับ functions หรือ impls ที่ไม่ต้องการ mutate (ต้องเพิ่ม `mutants` crate เป็น dependency ธรรมดา)
+5. ใช้ `--exclude-re "pattern"` หรือ `exclude_re` ใน config เพื่อกรอง mutations เฉพาะ (`#[mutants::exclude_re]` attribute ยัง unreleased — ต้องรอ `mutants` crate ≥ 0.0.5)
+6. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
 
 ### 6. CI Integration
 
@@ -92,15 +93,15 @@ related:
 ### 2. Mutant Handling
 
 - ใช้ `#[mutants::skip]` สำหรับ mutants ที่ไม่น่าสนใจ
-- ใช้ `#[mutants::exclude_re("...")]` เพื่อกรอง mutations เฉพาะ
+- ใช้ `--exclude-re "..."` หรือ `exclude_re` ใน config เพื่อกรอง mutations เฉพาะ
 - เพิ่ม tests สำหรับ `NOT CAUGHT` mutants
 - รัน `cargo mutants` เป็นระยะ เพื่อ track test quality
 
 ### 3. Configuration
 
-- เก็บ `mutants.toml` ใน project root ถ้ามี
-- ใช้ `timeout` เริ่มต้นที่เหมาะสม เพื่อป้องกัน tests แขวน
-- ไม่ hard-code paths หรือ secrets ใน `mutants.toml`
+- เก็บ `.cargo/mutants.toml` ใน source tree root ถ้ามี
+- ใช้ `timeout_multiplier` / `minimum_test_timeout` ที่เหมาะสม เพื่อป้องกัน tests แขวน
+- ไม่ hard-code paths หรือ secrets ใน `.cargo/mutants.toml`
 
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-tool-nextest ถ้าจำเป็น

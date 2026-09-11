@@ -4,30 +4,32 @@
 
 ```sh
 bun add otplib
-# browser ให้ใช้ @otplib/preset-browser
+# v13 เป็น package เดียวทุก runtime (Node/Bun/Deno/Browser) — ไม่มี preset-browser
 ```
 
 ## Version
 
-- Latest: `13.5.0` (verified 2026-09-11) — v13 รวมเป็น package เดียว `otplib` (แยก `@otplib/*` ใน v12-)
+- Latest: `13.5.0` (verified 2026-09-12) — v13 rewrite ใหม่: ไม่มี `preset-default`/`authenticator`, async-first, plugin-based
 - [Package Registry](https://www.npmjs.com/package/otplib)
 - [Repository](https://github.com/yeojz/otplib)
+- Migration: https://otplib.yeojz.dev/guide/v12-adapter.html (`@otplib/v12-adapter` เป็น bridge ชั่วคราว)
 
 ## Dependencies
 
-- v13 รวม crypto adapter ในตัว (`@otplib/core`, `@otplib/plugin-crypto`, `preset-default`)
-- Node 18+ / Bun
+- `otplib` bundle default plugins ในตัว (`@noble/hashes`, `@scure/base` — audited)
+- แยก packages ได้: `@otplib/totp`, `@otplib/hotp`, `@otplib/uri`, `@otplib/plugin-crypto-{node,web,noble}`, `@otplib/plugin-base32-scure` — ต้อง inject `crypto`/`base32` plugin เองเมื่อใช้ scoped packages
+- Node 18+ / Bun / Deno / Browser
 
 ## Common API / Commands
 
 | api | description | default | options |
 |---|---|---|---|
-| `generateSecret()` | สร้าง base32 secret | 20 bytes | - |
-| `totp.generate(secret)` / `totp.check(token, secret)` | TOTP | 30s step, SHA1 | `totp.options = {step, digits}` |
-| `hotp.generate` / `hotp.check` | HOTP | counter | - |
-| `authenticator.generate` / `check` | Google Authenticator compat | - | - |
-| `keyuri(user, service, secret)` | otpauth:// URI | - | issuer |
-| `totp.timeRemaining()` / `timeUsed()` | Step timing | - | - |
+| `generateSecret()` | สร้าง base32 secret | - | - |
+| `generate({secret})` / `generateSync` | สร้าง TOTP token (async-first) | 30s period, SHA1 | `period`, `digits`, `algorithm` |
+| `verify({secret, token})` / `verifySync` | verify token — คืน `VerifyResult` เช็ค `.valid` | - | `epochTolerance` (clock drift) |
+| `generateURI({issuer, label, secret})` | otpauth:// URI สำหรับ QR | - | - |
+| `new OTP()` | class API (`otplib/class`) — method เดียวกัน | TOTP strategy | - |
+| `@otplib/totp` functions | scoped TOTP — ต้องส่ง `crypto`, `base32` plugins | - | - |
 
 ## Source
 

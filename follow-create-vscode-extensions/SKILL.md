@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับสร้าง VSCode extension ทั่วไป รองรับทั้ง official `yo generator-code`, `reactive-vscode`, และ manual setup
 
+- Latest: VS Code `1.137.0` / `generator-code@1.12.0` / `@vscode/vsce@3.9.2` (verified 2026-09-12) — `vsce` ถูก rename เป็น `@vscode/vsce`
+
 ## Execute
 
 ### 1. Review Tech Stack
@@ -35,7 +37,7 @@ related:
 
 > Goal: สร้างโครงสร้าง extension
 
-1. ทางเลือก A: `bunx create yo generator-code` หรือ `bunx yo code`
+1. ทางเลือก A (official): `bun add -g yo generator-code` แล้วรัน `yo code` หรือ one-off `bunx -p yo -p generator-code yo code`
 2. ทางเลือก B: `bun create reactive-vscode` หรือ `bun add -D reactive-vscode`
 3. ทางเลือก C: สร้าง `package.json`, `tsconfig.json`, `src/` เอง
 4. สร้าง `src/extension.ts`, `README.md`, `CHANGELOG.md`, `.vscodeignore`
@@ -45,7 +47,7 @@ related:
 > Goal: กำหนด `package.json` ตาม VSCode schema
 
 1. ระบุ `name`, `displayName`, `description`, `version`, `publisher`
-2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.x, verified 2026-09-11)
+2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.0, verified 2026-09-12)
 3. ระบุ `categories`, `keywords`, `activationEvents`, `main`
 4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
 5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`
@@ -76,15 +78,16 @@ related:
 2. กด `F5` เพื่อเปิด Extension Development Host
 3. ทดสอบ commands และ features
 4. ตรวจสอบ Debug Console
+5. สำหรับ automated tests ใช้ `@vscode/test-cli` + `@vscode/test-electron` รันด้วย `vscode-test` CLI
 
 ### 7. Package And Publish
 
 > Goal: สร้าง `.vsix` และ publish
 
-1. ติดตั้ง `vsce` หรือ `reactive-vscode` CLI
-2. รัน `bunx vsce package` เพื่อสร้าง `.vsix`
+1. ติดตั้ง `@vscode/vsce` (package `vsce` ถูก rename/deprecate แล้ว) หรือ `reactive-vscode` CLI
+2. รัน `bunx @vscode/vsce package` เพื่อสร้าง `.vsix` (ใช้ `--allow-missing-repository` เฉพาะกรณีไม่มี git repo)
 3. สร้าง publisher account ใน Marketplace
-4. รัน `bunx vsce publish` หรือใช้ GitHub Actions
+4. รัน `bunx @vscode/vsce publish` หรือใช้ GitHub Actions
 5. ทำ `/ship`
 
 ## Rules
@@ -94,7 +97,7 @@ related:
 - ใช้ `context.subscriptions.push` สำหรับทุก disposable
 - ไม่ hardcode secrets หรือ absolute paths
 - `activationEvents` ต้องตรงกับ command หรือ event จริง
-- ใช้ `vsce` สำหรับ package และ publish
+- ใช้ `@vscode/vsce` สำหรับ package และ publish (`vsce` เดิมถูก rename)
 
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น

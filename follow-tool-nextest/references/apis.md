@@ -3,13 +3,14 @@
 ## Install
 
 ```sh
-cargo add cargo-nextest
+cargo install cargo-nextest --locked   # or: cargo binstall cargo-nextest --secure
 ```
 
 ## Version
 
-- Latest: 0.1.1
-- [Package Registry](https://crates.io/crates/nextest)
+- Latest: `cargo-nextest` 0.9.144 (verified 2026-09-12)
+- Note: the `nextest` crate (0.1.1) is a stub — install `cargo-nextest` instead
+- [Package Registry](https://crates.io/crates/cargo-nextest)
 - [Repository](https://github.com/nextest-rs/nextest)
 
 ## Dependencies

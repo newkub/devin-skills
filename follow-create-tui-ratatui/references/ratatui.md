@@ -28,8 +28,8 @@ ratatui = { version = "0.30.2", default-features = false, features = ["termion"]
 
 ## Version Info
 
-- Latest stable: `0.30.2`
-- Requires Rust `1.74+`
+- Latest stable: `0.30.2` (verified 2026-09-12)
+- Requires Rust `1.88+` (MSRV)
 - Default backend: `crossterm`
 - Alternative backends: `termion`, `termwiz`, `termina`
 

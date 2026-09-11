@@ -19,6 +19,7 @@ related:
   - follow-tool-moonrepo
   - review-delivery
   - follow-tool-taze
+  - update-version-to-latest
 
 ---
 ## Goal
@@ -51,8 +52,9 @@ related:
 2. สำหรับ Node.js/Bun → ทำ `/follow-tool-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
 3. สำหรับ tools ที่จัดการด้วย mise → รัน `mise upgrade` เพื่ออัปเดต dev tools (เช่น `bun`, `gitleaks`, `hk`); ถ้าต้องการ bump version ใน `mise.toml` ด้วย → ใช้ `mise upgrade --bump`
 4. Update ตาม ecosystem: Node.js/Bun ใช้ `taze` (Root Only), Rust ใช้ `cargo update`, Python ใช้ `pip install -U`, Go ใช้ `go get -u ./... && go mod tidy`
-5. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
-6. ถ้า update fail → retry (max 3 → stop/report)
+5. หลังตั้งค่าเสร็จ → ทำ `/update-version-to-latest` เพื่อ bump dependencies ทั้งหมดเป็น latest เสมอ
+6. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
+7. ถ้า update fail → retry (max 3 → stop/report)
 
 ### 3. Select Template Level
 

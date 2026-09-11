@@ -9,7 +9,7 @@ mise use -g pitchfork
 
 ## Version
 
-- Latest: `2.24.2` (verified 2026-09-11)
+- Latest: `2.25.0` (crate `pitchfork-cli`) (verified 2026-09-12)
 - [Registry](https://pitchfork.jdx.dev) — npm package `pitchfork` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/pitchfork)
 

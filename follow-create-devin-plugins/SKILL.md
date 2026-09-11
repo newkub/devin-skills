@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง plugin ใหม่หรือปรับปรุง plugin ที่มีอยู่ ให้ติดตั้งและแชร์ผ่าน GitHub repo, git URL, หรือ local folder
 
-- Latest: Devin CLI latest (ตรวจ `devin --version`) (verified 2026-09-11)
+- Latest: Devin CLI `3000.6.14` (ตรวจ `devin --version`) (verified 2026-09-12)
 
 ## Execute
 
@@ -52,7 +52,7 @@ related:
 5. สร้าง `rules/` ถ้าต้องการ triggered rules
 6. สร้าง `agents/` ถ้าต้องการ custom subagents
 7. สร้าง `hooks.json` ถ้าต้องการ lifecycle hooks
-8. สร้าง `mcp_config.json` ถ้าต้องการ MCP servers
+8. สร้าง `.mcp.json` (หรือ `mcp_config.json` รองรับเหมือนกัน) ถ้าต้องการ MCP servers
 
 ### 4. Write Plugin Manifest
 
@@ -90,7 +90,7 @@ related:
 > Goal: เพิ่ม lifecycle hooks และ MCP servers
 
 1. สร้าง `hooks.json` สำหรับ lifecycle hooks ถ้าจำเป็น
-2. สร้าง `mcp_config.json` สำหรับ MCP servers ด้วย `mcpServers` map
+2. สร้าง `.mcp.json` สำหรับ MCP servers ด้วย `mcpServers` map (`mcp_config.json` ยังรองรับ แต่ `.mcp.json` เป็น convention ปัจจุบัน)
 3. ตรวจสอบว่า MCP servers ไม่ expose secrets ใน plugin repository
 
 ### 8. Test Plugin Locally
@@ -111,7 +111,8 @@ related:
 2. ติดตั้งจาก remote ด้วย `devin plugins install owner/repo`
 3. รัน `devin plugins update <plugin-name>` เมื่อมีการเปลี่ยนแปลง
 4. รัน `devin plugins remove <plugin-name>` ถ้าต้องการถอนการติดตั้ง
-5. ทำ `/update-references` ถ้ามี project อ้างอิง plugin
+5. รัน `devin plugins prune` เพื่อเก็บกวาด requirements จาก repo ที่ไม่มีอยู่แล้วและ plugin content ที่ไม่ถูกใช้
+6. ทำ `/update-references` ถ้ามี project อ้างอิง plugin
 
 ### 10. Ship
 
@@ -130,7 +131,8 @@ related:
 - `rules/` optional สำหรับ triggered rules
 - `agents/` optional สำหรับ custom subagents (local only)
 - `hooks.json` optional สำหรับ lifecycle hooks
-- `mcp_config.json` optional สำหรับ MCP servers
+- `.mcp.json` (หรือ `mcp_config.json`) optional สำหรับ MCP servers
+- Devin รองรับ plugin formats อื่นด้วย manifest precedence `.devin-plugin/plugin.json` > `.claude-plugin/plugin.json` > root `plugin.json` (Agent Plugins 1.0.0 spec)
 
 ### 2. Manifest Fields
 

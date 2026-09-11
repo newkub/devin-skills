@@ -20,7 +20,7 @@ related:
 - ครอบคลุม REST และ GraphQL handlers, `setupWorker` (browser) และ `setupServer` (Node/Vitest)
 - ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
 
-- Latest: `msw@2.15.0` (verified 2026-09-11)
+- Latest: `msw@2.15.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

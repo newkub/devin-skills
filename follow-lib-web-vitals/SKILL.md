@@ -17,7 +17,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib web vitals)
 
-- Latest: `web-vitals@6.2.1` (verified 2026-09-11)
+- Latest: `web-vitals@6.2.1` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -30,6 +30,9 @@ related:
 1. ส่ง metrics ไป analytics endpoint — batch หรือ beacon API
 1. report เฉพาะ production + sample rate — ไม่ต้องทุก session
 1. ตั้ง attribution build (`web-vitals/attribution`) เมื่อ debug regressions
+1. v6: import types ด้วย `import type` เสมอ (types เป็น explicit type exports) เช่น `import type { Metric } from 'web-vitals'`
+1. v6: รองรับ soft navigations — SPA route changes ถูก report เป็น metrics แยกได้
+1. v6 attribution: `onINP` default `includeProcessedEventEntries: false` — set เป็น `true` เองถ้าต้องการ processed event entries
 
 ### 2. Verify
 
@@ -41,7 +44,7 @@ related:
 
 ## Rules
 
-- INP แทน FID ตั้งแต่ v3 — อย่าใช้ onFID
+- INP แทน FID ตั้งแต่ v3; `onFID` ถูกลบออกตั้งแต่ v5 — ห้ามใช้
 - ใช้ `navigator.sendBeacon` หรือ `fetch keepalive` สำหรับ reporting
 - อย่า block main thread เพื่อ report metrics
 

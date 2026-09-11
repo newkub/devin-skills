@@ -52,7 +52,7 @@ related:
 
 > Goal: ติดตั้ง dependencies ของ Effect-TS ตามความจำเป็น
 
-1. รัน `bun add effect` สำหรับ core library (latest stable `3.22.2`, verified 2026-09-11) — `effect` เป็น runtime dependency ห้ามใส่ `-D`
+1. รัน `bun add effect` สำหรับ core library (latest stable `3.22.2`, verified 2026-09-12) — `effect` เป็น runtime dependency ห้ามใส่ `-D`
 2. `Schema` รวมอยู่ใน core `effect` ตั้งแต่ v3.x (ไม่ต้องติดตั้ง `@effect/schema` แยก)
 3. รัน `bun add @effect/platform` ถ้าต้องการ platform abstractions (`FileSystem`, `Path`, `HttpClient`, `Terminal`)
 4. รัน `bun add @effect/platform-bun` สำหรับ Bun runtime หรือ `bun add @effect/platform-node` สำหรับ Node.js
@@ -158,8 +158,8 @@ related:
 
 ### 6. Version Notes
 
-- Latest stable (verified 2026-09-11): `effect@3.22.2`, `@effect/platform@0.97.2`, `@effect/platform-bun@0.91.2`, `@effect/platform-node@0.108.2`, `@effect/vitest@0.30.0`
-- Effect v4 RC: `effect@rc` (`4.0.0-rc.113`) มี breaking changes หลัก: package consolidation (`effect/unstable/*`), `Context.Service` แทน `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types ต้องใช้ `.asEffect()`, `Layer`/`Runtime` API เปลี่ยน
+- Latest stable (verified 2026-09-12): `effect@3.22.2`, `@effect/platform@0.97.2`, `@effect/platform-bun@0.91.2`, `@effect/platform-node@0.108.2`, `@effect/vitest@0.30.0`
+- Effect v4 RC: `effect@rc` (`4.0.0-rc.115`, verified 2026-09-12) มี breaking changes หลัก: package consolidation (`effect/unstable/*`), `Context.Service` แทน `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types ต้องใช้ `.asEffect()`, `Layer`/`Runtime` API เปลี่ยน
 - TypeScript latest: `7.0.2` (native/tsgo) — `effect` ต้องการขั้นต่ำ `5.4`; ตรวจ compatibility กับ toolchain ของ project ก่อนใช้
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API เสมอ
 

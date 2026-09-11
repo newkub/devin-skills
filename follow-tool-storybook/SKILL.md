@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ frontend projects ที่ต้องการ component library, visual documentation และ interaction testing
 
-- Latest: `storybook@10.6.0` (verified 2026-09-11)
+- Latest: `storybook@10.6.0` (verified 2026-09-12) — v10: controls/actions/interactions/viewport เป็น core features (ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`addon-interactions` อีก)
 
 ## Execute
 
@@ -28,7 +28,7 @@ related:
 
 > Goal: ติดตั้ง Storybook ด้วย CLI
 
-1. รัน `bunx storybook@latest create` ใน project root
+1. รัน `bun create storybook@latest` ใน project root (หรือ `bunx storybook@latest create` ใน v10)
 2. เลือก framework ถ้า CLI ไม่ detect ด้วย `--type`
 3. ตรวจสอบ dependencies ทีติดตั้งอัตโนมัติ
 4. ดูคำสั่ง CLI ใน [references/storybook-cli.md](references/storybook-cli.md)
@@ -57,20 +57,20 @@ related:
 
 > Goal: ติดตั้งและตั้งค่า Storybook addons
 
-1. ติดตั้ง `@storybook/addon-essentials`
-2. register addons ใน `.storybook/main.ts`
+1. v10: controls, actions, interactions, viewport, backgrounds เป็น core features — ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`@storybook/addon-interactions` (ถูก remove ใน v10)
+2. register addons ที่เหลือใน `.storybook/main.ts` ผ่าน `addons` array
 3. เพิ่ม `@storybook/addon-docs` สำหรับ auto-docs
 4. เพิ่ม `@storybook/addon-a11y` สำหรับ accessibility testing
-5. เพิ่ม `@storybook/addon-interactions` สำหรับ interaction testing
+5. เพิ่ม `@storybook/addon-vitest` สำหรับ component/interaction testing ผ่าน Vitest
 
 ### 5. Testing Integration
 
 > Goal: ตั้งค่า testing สำหรับ components
 
 1. ทำ `/follow-tool-vitest` เพื่อเตรียม unit testing environment
-2. ใช้ `@storybook/addon-interactions` สำหรับ interaction tests
+2. ใช้ `@storybook/addon-vitest` สำหรับ component + interaction tests (`play` functions อยู่ใน core)
 3. setup visual regression ด้วย Chromatic หรือ similar tools
-4. รัน `bun run test-storybook` ใน CI
+4. รัน `bun run test-storybook` (`storybook test`) ใน CI
 5. ทำ `/follow-test` เพื่อขยาย test coverage
 
 ### 6. Build and Deploy

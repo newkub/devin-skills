@@ -17,7 +17,7 @@ related:
 
 ตั้งค่า Auto สำหรับ packages และ workspaces ที่ต้องการ automated releases
 
-- Latest: `@auto-it/core@11.3.6` (verified 2026-09-11)
+- Latest: `auto@11.3.6` / `@auto-it/core@11.3.6` (verified 2026-09-12)
 
 ## Execute
 
@@ -94,7 +94,7 @@ Important: ต้องเพิ่ม `author` ใน package.json หรือ
 
 > Goal: ตั้งค่า NPM token สำหรับ package publishing
 
-1. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง NPM token จาก `https://www.npmjs.com/settings/newkubise/tokens` (Automation token)
+1. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง NPM token จาก `https://www.npmjs.com/settings/~/tokens` (Automation token)
 2. เพิ่ม NPM_TOKEN ใน GitHub secrets ด้วย:
    ```bash
    gh secret set NPM_TOKEN

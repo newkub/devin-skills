@@ -24,7 +24,7 @@ related:
 - รองรับ layout, components, events, state, styling
 - ไม่ใช้ web stack
 
-- Latest: `ratatui@0.30.2` (crates.io) (verified 2026-09-11)
+- Latest: `ratatui@0.30.2` (crates.io, MSRV Rust 1.88) / `crossterm@0.29.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -49,9 +49,10 @@ related:
 > Goal: ตั้งค่า terminal
 
 1. ใช้ [references/ratatui.md](references/ratatui.md) เพื่อ setup terminal
-2. ตั้งค่า `enable_raw_mode`, `enter_alternate_screen`
-3. ตั้งค่า `PanicHook` สำหรับ restore terminal state
-4. จัดการ graceful shutdown เมื่อ exit
+2. ใช้ helper ของ 0.30: `ratatui::init()` / `ratatui::try_init()` / `ratatui::restore()` หรือ `ratatui::run(app)` สำหรับ app ง่าย (จัดการ raw mode + alternate screen + restore ให้อัตโนมัติ)
+3. ถ้า setup manual: ตั้งค่า `enable_raw_mode`, `enter_alternate_screen` กับ `CrosstermBackend`
+4. ตั้งค่า `PanicHook` (หรือ `color-eyre`) สำหรับ restore terminal state
+5. จัดการ graceful shutdown เมื่อ exit
 
 ### 4. Create Layout
 
@@ -102,7 +103,7 @@ related:
 
 > Goal: ตรวจสอบ TUI
 
-1. รัน `cargo build` และ `cargo test`
+1. รัน `cargo build` และ `cargo test` — ใช้ `ratatui::backend::TestBackend` + `assert_buffer()` สำหรับ snapshot-test rendering
 2. ทำ `/run-test-all` ถ้ามี integration tests
 3. ทำ `/review-frontend` ตรวจสอบ usability
 4. ทดสอบ event handling บน terminal จริง

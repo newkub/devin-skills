@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับสร้าง custom ESLint plugins ด้วย JavaScript/TypeScript ครอบคลุม plugin entry, custom rules, metadata, testing และ flat config
 
-- Latest: `eslint@10.10.0` / `typescript-eslint@8.70.0` (verified 2026-09-11)
+- Latest: `eslint@10.10.0` / `typescript-eslint@8.70.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -69,9 +69,10 @@ related:
 
 > Goal: ตรวจสอบว่า rules ทำงานถูกต้องผ่าน test files
 
-1. สร้าง test files สำหรับ rules
-2. รัน tests ด้วย test runner
-3. ตรวจสอบว่า rules ทำงานถูกต้อง
+1. สร้าง test files สำหรับ rules ด้วย `RuleTester` จาก `eslint` (`new RuleTester()` แล้ว `ruleTester.run('rule-name', rule, { valid, invalid })`)
+2. valid cases ห้ามมี `errors`/`output` (ESLint 10 stricter — test จะ fail); invalid cases ใช้ `messageId` และ assertion options `requireMessage`/`requireLocation`/`requireData` ตามต้องการ
+3. รัน tests ด้วย test runner (`vitest`, `bun:test` หรือ node test runner)
+4. ตรวจสอบว่า rules ทำงานถูกต้อง
 
 ### 7. Ship
 
@@ -108,11 +109,13 @@ related:
 
 - Export function ที่รับ context object — ดู [references/rule-structure-context.md](references/rule-structure-context.md)
 - ใช้ context.report() เพื่อรายงาน violations
-- ใช้ context.sourceCode สำหรับ access source code
+- ใช้ context.sourceCode สำหรับ access source code (ESLint 10 ลบ deprecated `context.getSourceCode()` และ deprecated `context`/`SourceCode` members ออกแล้ว)
+- fixer methods ต้องส่ง `text` เป็น string เสมอ (ESLint 10)
 - ใช้ AST traversal สำหรับ analyze code
 
 ### 5. Configuration
 
+- ESLint 10 รองรับ flat config เท่านั้น (legacy `.eslintrc` format ถูกลบออกแล้ว) และต้องการ Node.js >= 20.19 (ไม่รองรับ v21, v23)
 - ใช้ plugins key ใน flat config format — ดู [references/flat-config-basics.md](references/flat-config-basics.md) และ [references/flat-config-advanced.md](references/flat-config-advanced.md)
 - Import plugin และ assign namespace
 - ใช้ rule format `namespace/rule-name` ใน rules object

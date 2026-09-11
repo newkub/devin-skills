@@ -1,6 +1,6 @@
 ---
 name: follow-lib-zaidian-ui
-description: ใช้ Zaidian UI สำหรับ SolidJS components ด้วย Kobalte, Corvu และ Tailwind CSS
+description: ใช้ Zaidan UI สำหรับ SolidJS components ด้วย Kobalte, Corvu และ Tailwind CSS
 argument-hint: "[scope]"
 related:
   - follow-lib-animejs
@@ -15,17 +15,19 @@ related:
 
 ## Goal
 
-ใช้ Zaidian UI สำหรับ UI components บน SolidJS ด้วย accessible, customizable components ที่ built with Kobalte, Corvu และ Tailwind CSS
+ใช้ Zaidan UI สำหรับ UI components บน SolidJS ด้วย accessible, customizable components ที่ built with Kobalte, Corvu และ Tailwind CSS
 
 ## Scope
 
-ใช้สำหรับสร้าง UI components ด้วย Zaidian registry บน SolidJS สำหรับ Vite, SolidStart, TanStack Start, Astro
+ใช้สำหรับสร้าง UI components ด้วย Zaidan registry บน SolidJS สำหรับ Vite, SolidStart, TanStack Start, Astro
+
+- Latest: `shadcn@4.21.0` / `@kobalte/core@0.13.14` / `corvu@0.7.2` / `solid-js@1.9.15` / `tailwindcss@4.3.3` (verified 2026-09-12)
 
 ## Execute
 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง Zaidian UI สำหรับ SolidJS
+> Goal: ติดตั้ง Zaidan UI สำหรับ SolidJS
 
 1. เลือก framework และสร้าง project:
    - Vite: `pnpm create vite@latest --template solid-ts`
@@ -39,7 +41,7 @@ related:
 
 ### 2. Configure Registry
 
-> Goal: ตั้งค่า Zaidian registry ใน components.json
+> Goal: ตั้งค่า Zaidan registry ใน components.json
 
 1. ตั้งค่า `style` เป็น `kobalte` และ `rsc` เป็น `false`
 2. เพิ่ม `registries` ใน `components.json`:
@@ -54,7 +56,7 @@ related:
 
 ### 3. Add Components
 
-> Goal: เพิ่ม Zaidian components ด้วย shadcn CLI
+> Goal: เพิ่ม Zaidan components ด้วย shadcn CLI
 
 1. ใช้ `bunx shadcn@latest add @zaidan/button` เพื่อเพิ่ม component เดี่ยว
 2. ใช้ `bunx shadcn@latest add @zaidan/card @zaidan/dialog` เพื่อเพิ่มหลาย components
@@ -64,9 +66,9 @@ related:
 
 ### 4. Learn Key Concepts
 
-> Goal: เข้าใจแนวคิดหลักของ Zaidian
+> Goal: เข้าใจแนวคิดหลักของ Zaidan
 
-1. Zaidian เป็น shadcn registry สำหรับ SolidJS ไม่ใช่ npm package
+1. Zaidan เป็น shadcn registry สำหรับ SolidJS ไม่ใช่ npm package
 2. Components built on Kobalte และ Corvu primitives
 3. Styled ด้วย Tailwind CSS v4
 4. รองรับ copy-paste หรือ pull ผ่าน shadcn CLI

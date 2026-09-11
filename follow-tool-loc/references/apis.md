@@ -9,7 +9,7 @@ cargo install loc
 
 ## Version
 
-- Latest: `0.5.0` (crates.io, verified 2026-09-11)
+- Latest: `0.5.0` (crates.io, verified 2026-09-12)
 - [Package Registry](https://crates.io/crates/loc)
 - [Repository](https://github.com/cgag/loc)
 

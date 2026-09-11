@@ -90,7 +90,9 @@ configureVitest({ project, injectTestProjects }) {
 
 > ดูรายละเอียดเพิ่มเติมใน `test-project.md`
 
-### experimental_defineCacheKeyGenerator (4.0.11+)
+### defineCacheKeyGenerator (5.0.0+)
+
+เดิมชื่อ `experimental_defineCacheKeyGenerator` (4.0.11+) — stable ใน Vitest 5
 
 ```ts
 interface CacheKeyIdGeneratorContext {
@@ -99,7 +101,7 @@ interface CacheKeyIdGeneratorContext {
   sourceCode: string
 }
 
-function experimental_defineCacheKeyGenerator(
+function defineCacheKeyGenerator(
   callback: (context: CacheKeyIdGeneratorContext) => string | undefined | null | false
 ): void
 ```
@@ -118,8 +120,8 @@ export function plugin(options: PluginOptions) {
     transform(code) {
       return code.replace(options.replacePropertyKey, options.replacePropertyValue)
     },
-    configureVitest({ experimental_defineCacheKeyGenerator }) {
-      experimental_defineCacheKeyGenerator(() => {
+    configureVitest({ defineCacheKeyGenerator }) {
+      defineCacheKeyGenerator(() => {
         return options.replacePropertyKey + options.replacePropertyValue
       })
     },
@@ -128,7 +130,8 @@ export function plugin(options: PluginOptions) {
 ```
 
 - Return `false` เพื่อ disable file system caching ของ module นั้น
-- ทำงานเฉพาะเมื่อมี `experimental.fsModuleCache` ใน config
+- ทำงานเฉพาะเมื่อเปิด `test.fsModuleCache` (top-level config ตั้งแต่ 5.0, เดิม `experimental.fsModuleCache`)
+- ตั้ง `api.vitest.ignoreFsModuleCache: true` บน plugin object เพื่อ opt-out จาก cache (ยัง define generator ได้)
 
 ## Config Mutations
 

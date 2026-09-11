@@ -12,7 +12,7 @@ bunx changelogen@latest
 
 ## Version
 
-- Latest stable: `0.6.2`
+- Latest stable: `0.6.2` (verified 2026-09-12)
 - License: MIT
 
 ## Peer Dependencies
@@ -36,12 +36,19 @@ bunx changelogen@latest [...args] [--dir <dir>]
 | `--output`       | Changelog file name (default: `CHANGELOG.md`). Use `--no-output` for console only |
 | `--noAuthors`    | Skip contributors section in changelog                             |
 | `--bump`         | Determine semver change and update version in `package.json`       |
-| `--release`      | Bump version, update `CHANGELOG.md`, create git commit and tag     |
+| `--release`      | Bump version, update `CHANGELOG.md`, git commit+tag, and create/update GitHub release |
 | `--no-commit`    | Disable commit (use with `--release`)                              |
 | `--no-tag`       | Disable tag (use with `--release`)                                 |
+| `--no-github`    | Disable GitHub release sync (use with `--release`)                 |
 | `--push`         | Push new tag and release commit to git remote                      |
 | `--publish`      | Publish package as new version on npm                              |
 | `--publishTag`   | Custom npm tag for publishing (default: `latest`)                  |
+| `-r`             | Release as a specific version                                      |
+| `--major`/`--minor`/`--patch`/`--pre*` | Force a specific semver bump |
+| `--canary`       | Shortcut for `--bump --versionSuffix` (adds `--nameSuffix` if given a value) |
+| `--nameSuffix`   | Add suffix to package name (e.g. `--nameSuffix canary`)            |
+| `--versionSuffix`| Add suffix to version (date+commit hash when set to `true`)        |
+| `--hideAuthorEmail` | Omit author email when GitHub username is not found           |
 
 ### Quick Start Commands
 
@@ -79,7 +86,10 @@ Syncs changelog with GitHub releases. Requires `GITHUB_TOKEN` or `CHANGELOGEN_TO
 
 ## Configuration
 
-Create `changelogen.config.ts` in the project root:
+Configuration is loaded by `c12` from cwd: `changelog.config.{ts,js,mjs,cjs}`,
+`changelog.config.json`, `.changelogrc`, or the `changelog` field in `package.json`.
+
+Create `changelog.config.ts` in the project root:
 
 ```ts
 import { defineConfig } from "changelogen";

@@ -16,7 +16,7 @@ related:
 
 ใช้กับทุกโปรเจกต์ที่ต้องการวิเคราะห์ unused code — รองรับทั้ง single project และ monorepo ที่มี workspaces; ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
 
-- Latest: `knip@6.35.1` (verified 2026-09-11)
+- Latest: `knip@6.35.1` (verified 2026-09-12) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 || >=22.12.0` หรือ Bun
 
 ## Execute
 
@@ -88,6 +88,7 @@ related:
 - แต่ละ workspace รองรับ: `entry`, `project`, `ignore`, `ignoreBinaries`, `ignoreDependencies`, `ignoreIssues`, `ignoreMembers`, `ignoreUnresolved`, `includeEntryExports`, `paths`, plugins
 - ห้าม nest workspaces ใน Knip config — แต่ folder structure สามารถ nest ได้
 - ใช้ `--workspace` หรือ `-W` flag เพื่อ filter workspace เช่น `knip -W apps/website`
+- v6: workspace isolation และ libs inclusion เป็น default เสมอ — flags `--include-libs` และ `--isolate-workspaces` ถูกลบออกแล้ว; issue type `classMembers` ถูกลบ และมี `namespaceMembers` เพิ่มเข้ามา
 
 ### 3. Production Mode
 

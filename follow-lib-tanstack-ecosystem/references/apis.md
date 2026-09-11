@@ -23,7 +23,7 @@ pnpm add @tanstack/react-query
 | `@tanstack/react-store` | 0.11.x |
 | `@tanstack/react-db` | 0.3.x |
 | `@tanstack/react-pacer` | 0.23.x |
-| `@tanstack/ai` | 0.53.x |
+| `@tanstack/ai` | 0.54.x |
 | `@tanstack/cli` | 0.71.x |
 
 - [Package Registry](https://www.npmjs.com/org/tanstack)

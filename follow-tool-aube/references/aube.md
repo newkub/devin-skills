@@ -18,8 +18,8 @@ bunx @endevco/aube --version
 ```
 
 The npm package uses a `preinstall` script to fetch native binaries —
-ถ้า environment ตั้ง `ignore-scripts=true` ให้รัน install script แยก
-is set in npm config.
+ถ้า environment ตั้ง `ignore-scripts=true` ใน npm config ให้ใช้
+`npm i -g --ignore-scripts=false @endevco/aube` แทน
 
 ### From Homebrew
 
@@ -41,10 +41,11 @@ aube --version
 
 ## Version Info
 
-- Repository: `https://github.com/jdx/aube`
+- Repository: `https://github.com/aubepkg/aube`
 - Docs: `https://aube.jdx.dev/`
 - License: MIT
 - npm package: `@endevco/aube`
+- Latest release: `v2.2.14` (verified 2026-09-12); npm `latest` tag: `2.2.4`
 
 ## Commands
 
@@ -206,7 +207,7 @@ allowBuilds:
 # Pinned version with Node
 - uses: jdx/aube-action@v1
   with:
-    version: 1.5.1
+    version: 2.2.14
     node-version: "22"
     run-install: true
 ```
@@ -230,5 +231,5 @@ aube -F 'api...' run build                 # dependency graph selector
 - Manage dependencies: `https://aube.jdx.dev/package-manager/dependencies.html`
 - Run scripts: `https://aube.jdx.dev/package-manager/scripts.html`
 - Security: `https://aube.jdx.dev/security.html`
-- GitHub: `https://github.com/jdx/aube`
+- GitHub: `https://github.com/aubepkg/aube`
 - GitHub Action: `https://github.com/jdx/aube-action`

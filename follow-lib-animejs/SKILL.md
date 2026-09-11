@@ -18,10 +18,11 @@ related:
 - ควบคุม sequence ด้วย `createTimeline()`
 - staggered animations ด้วย `stagger()`
 - utilities (`utils.set`, `utils.get`, `lerp`, `damp`, `engine`)
-- scroll, layout, SVG, text, WAAPI integrations
+- scroll (`onScroll`), drag (`createDraggable`), scope (`createScope`), SVG, text, WAAPI integrations
 - ใช้ร่วมกับ React, Vue, Svelte, และ plain JS
 
-- Latest: `animejs@4.5.0` (verified 2026-09-11)
+- Latest: `animejs@4.5.0` (verified 2026-09-12)
+- v5 beta: `animejs@beta` (`5.0.0-beta.2`) มี breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), function-based value callback arg ที่ 3 เปลี่ยนจาก `total` (Number) เป็น `targets` (Array), stagger `use` signature เปลี่ยนตาม, `matrix`/`matrix3d` animate ตรงไม่ได้
 
 ## Execute
 
@@ -38,6 +39,10 @@ import { animate, createTimeline, stagger } from 'animejs';
 // หรือ import แบบ subpath เพื่อ tree-shaking
 import { animate } from 'animejs/animation';
 import { createTimeline } from 'animejs/timeline';
+import { createScope } from 'animejs/scope';
+import { createDraggable } from 'animejs/draggable';
+import { onScroll } from 'animejs/events';
+import { createSpring } from 'animejs/spring';
 ```
 
 3. ตรวจสอบ version: `bun pm ls animejs` หรือดู `package.json`
@@ -93,28 +98,31 @@ utils.set('.box', { opacity: 0.5 });
 - ใช้ `revert()` หรือ `cancel()` เพื่อ cleanup
 - รองรับ `prefers-reduced-motion` เพื่อปิด/ลด animation
 - ใช้ subpath imports (`animejs/easings`, `animejs/svg`, `animejs/text`) เมื่อต้องการเฉพาะ module
+- v4.2+ deprecations: ใช้ `splitText()` แทน `text.split()`, ใช้ `spring()` แทน `createSpring()`, ใช้ `lerp()`/`damp()` แทน `interpolate()` (ถูกลบ), easings `linear()`/`irregular()`/`steps()`/`cubicBezier()` ต้อง import แยกจาก core
 
 ### 5. Integrate With Frameworks
 
 > Goal: Integrate With Frameworks
 
-React:
+React: ใช้ `createScope()` (official pattern) — scope จัดการ cleanup ทุก animation ภายใน
 
 ```jsx
 import { useEffect, useRef } from 'react';
-import { animate } from 'animejs';
+import { animate, createScope } from 'animejs';
 
 function Box() {
-  const ref = useRef(null);
+  const root = useRef(null);
   useEffect(() => {
-    const a = animate(ref.current, { x: 100 });
-    return () => a.revert();
+    const scope = createScope({ root }).add(() => {
+      animate('.box', { x: 100 });
+    });
+    return () => scope.revert();
   }, []);
-  return <div ref={ref} />;
+  return <div ref={root}><div className="box" /></div>;
 }
 ```
 
-Vue/Svelte: เรียก `animate()` ใน lifecycle hook และ cleanup ใน `onUnmounted`/`onDestroy`
+Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน lifecycle hook และ cleanup ด้วย `revert()` ใน `onUnmounted`/`onDestroy`
 
 ### 6. Reference And Troubleshoot
 

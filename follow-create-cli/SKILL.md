@@ -21,7 +21,7 @@ related:
 
 ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — skill นี้เป็น dispatcher เท่านั้น: เลือก stack แล้วส่งต่อ implementation ไปยัง `/follow-create-rust-cli` หรือ `/follow-create-bun-cli` ตามความเหมาะสมเสมอ ไม่ implement CLI เองใน skill นี้
 
-- Latest: `cac@7.0.0`, `clap@4.6.6` (crates.io), `commander@15.0.0`, `clipanion@4.0.0-rc.4` (verified 2026-09-11)
+- Latest: `cac@7.0.0` (ESM-only, Node ≥20.19/Bun), `clap@4.6.6` (crates.io), `commander@15.0.0`, `clipanion@4.0.0-rc.4` (verified 2026-09-12)
 
 ## Execute
 

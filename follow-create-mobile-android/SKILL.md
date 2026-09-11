@@ -21,7 +21,7 @@ related:
 - ครอบคลุม setup, project structure, Compose UI, architecture, build, test และ deploy
 - ใช้ Android Studio เป็น primary IDE
 
-- Latest: Android Studio Otter `2025.2.1`, Kotlin `>=2.2.20`, AGP `>=8.13.0` (verified 2026-09-11)
+- Latest: Android Studio Quail 4 `2026.1.4`, Kotlin `>=2.4.20`, AGP `9.4.0` (stable; 9.5.0 เป็น alpha) (verified 2026-09-12)
 
 ## Execute
 
@@ -47,9 +47,9 @@ related:
 
 > Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
 
-1. ตรวจสอบ Android Studio Otter 2025.2.1 หรือใหม่กว่า
+1. ตรวจสอบ Android Studio Quail 2026.1.x หรือใหม่กว่า (minimum Otter 2025.2.1)
 2. ตรวจสอบ JDK 21 หรือสูงกว่า
-3. ตรวจสอบ Android SDK ที่ติดตั้ง (compileSdk >= 36)
+3. ตรวจสอบ Android SDK ที่ติดตั้ง (compileSdk >= 36; API 37 / Android 17 "Cinnamon Bun" เป็น preview)
 4. ตรวจสอบ `adb` และ emulator ถ้าจะรันบน device
 
 ### 4. Create Project
@@ -68,10 +68,10 @@ related:
 1. ตั้งค่า `build.gradle.kts` (project level):
    - `plugins { alias(libs.plugins.android.application) alias(libs.plugins.kotlin.android) ... }`
 2. ตั้งค่า `build.gradle.kts` (app level):
-   - `compileSdk = 36`
+   - `compileSdk = 36` (API 37 สำหรับ Android 17 preview)
    - `defaultConfig { minSdk = 24; targetSdk = 36 }`
    - `buildFeatures { compose = true }`
-   - `composeOptions { kotlinCompilerExtensionVersion = "..." }`
+   - ใช้ plugin `org.jetbrains.kotlin.plugin.compose` (Compose Compiler ผูกกับ Kotlin ตั้งแต่ 2.0 — ไม่ต้องตั้ง `composeOptions.kotlinCompilerExtensionVersion` อีกต่อไป)
 3. ใช้ `libs.versions.toml` สำหรับ version catalog
 4. เพิ่ม dependencies: Compose BOM, ViewModel, Navigation, Koin/Hilt, Coroutines
 
@@ -128,7 +128,7 @@ related:
 
 ### 1. Kotlin And Compose
 
-- ใช้ Kotlin 2.0 หรือใหม่กว่า
+- ใช้ Kotlin 2.4.x หรือใหม่กว่า
 - ใช้ Jetpack Compose สำหรับ UI
 - ใช้ Material 3 เป็น default design system
 
@@ -148,7 +148,7 @@ related:
 
 - compileSdk >= 36, targetSdk >= 36, minSdk >= 24
 - ใช้ version catalog (`libs.versions.toml`)
-- ใช้ Gradle 8.13 หรือใหม่กว่า
+- ใช้ AGP 9.x (latest stable `9.4.0`) — AGP 9.x ต้องใช้ Gradle 9.x (AGP 9.3 ต้อง Gradle >= 9.5)
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น

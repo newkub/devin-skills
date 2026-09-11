@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับพัฒนา React 19.2+ applications ด้วย Vite หรือ Next.js, TypeScript และ folder structure มาตรฐาน
 
-- Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-11)
+- Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -64,6 +64,10 @@ related:
 7. ใช้ `useEffectEvent` สำหรับแยก event logic ออกจาก `useEffect` dependencies (React 19.2+)
 8. ใช้ `<Activity>` เมื่อต้องการซ่อน UI โดยรักษา state (React 19.2+)
 9. ใช้ `cacheSignal` เฉพาะใน React Server Components สำหรับ cache lifetime (React 19.2+)
+10. ใช้ `<ViewTransition>` สำหรับ animate enter/exit/update/share ของ elements ภายใน Transitions (stable ใน React 19.3)
+11. ใช้ `addTransitionType` เพื่อ label สาเหตุของ Transition (เช่น `next`/`previous`) คู่กับ `<ViewTransition>` (React 19.3+)
+12. ส่ง `ref` เข้า Fragment ได้โดยตรงเมื่อต้องการ DOM-level access กับกลุ่ม elements (Fragment refs, React 19.3+)
+13. ใช้ `use(browser())` เมื่อ component ต้อง render ฝั่ง browser เท่านั้น ไม่ render บน server (React 19.3+)
 
 ### 4. Implement Folder Rules
 
@@ -136,6 +140,7 @@ related:
 - ใช้ `useActionState` แทน manual form state management
 - ใช้ `useOptimistic` สำหรับ optimistic UI updates
 - ใช้ `useEffectEvent` เมื่อต้องการแยก event logic ออกจาก effect dependencies
+- ใช้ `<ViewTransition>` แทน animation library สำหรับ enter/exit transitions ทั่วไป (React 19.3+, DOM only)
 - หลีกเลี่ยง `useEffect` สำหรับ data fetching ใช้ Server Components แทน
 
 ### 3. Performance Best Practices

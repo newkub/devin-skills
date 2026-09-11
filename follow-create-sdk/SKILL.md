@@ -30,7 +30,7 @@ related:
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-framework-agnostic)
 - ถ้า goal เป็น `sdk`/`library`/`framework-agnostic` → ใช้ [references/framework-agnostic-sdk.md](references/framework-agnostic-sdk.md) (Core + Adapters pattern)
 
-- Latest: TypeScript `>=5.4` + `tsdown@0.23.0` สำหรับ build (verified 2026-09-11)
+- Latest: `typescript@7.0.2` (native) + `tsdown@0.23.0` สำหรับ build — tsdown รองรับ TS `^5 || ^6 || ^7` (verified 2026-09-12)
 
 ## Execute
 
@@ -63,8 +63,10 @@ related:
    - `update all skills` → `update-devin-global-skills`
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
-   - `web` → `follow-create-web`
-   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-cross-capacitor`
+   - `web` → `follow-create-web` (+ `follow-create-web-nextjs`, `-nuxt`, `-astro`, `-svelte`, `-solidstart` ตาม framework)
+   - `cli` → `follow-create-cli`, `follow-create-bun-cli`, `follow-create-rust-cli`
+   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-cross-capacitor`, `follow-create-mobile-cross-flutter`
+   - `extension` → `follow-create-vscode-extensions`, `follow-create-zed-extensions`, `follow-create-raycast-extensions`, `follow-create-obsidian-plugin`, `follow-create-nvim-plugins`
    - `sdk`/`library`/`framework-agnostic` → `references/framework-agnostic-sdk.md` (Core + Adapters pattern)
 4. ใช้ `/report` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
@@ -110,23 +112,26 @@ related:
 - ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 - ใช้ /follow-create-biome-plugins ถ้าจำเป็น
-- ใช้ /follow-create-browser-extensions-wxt ถ้าจำเป็น
-- ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /follow-create-bot ถ้าจำเป็น
+- ใช้ /follow-create-browser-extensions-wxt ถ้าจำเป็น
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
 - ใช้ /follow-create-github-action ถ้าจำเป็น
-- ใช้ /follow-create-bot ถ้าจำเป็น
+- ใช้ /follow-create-mcp ถ้าจำเป็น
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
 - ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
 - ใช้ /follow-create-obsidian-plugin ถ้าจำเป็น
 - ใช้ /follow-create-oxlint-plugins ถ้าจำเป็น
+- ใช้ /follow-create-powershell-module ถ้าจำเป็น
+- ใช้ /follow-create-product ถ้าจำเป็น
 - ใช้ /follow-create-raycast-extensions ถ้าจำเป็น
 - ใช้ /follow-create-rolldown-plugins ถ้าจำเป็น
 - ใช้ /follow-create-rust-cli ถ้าจำเป็น
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
-- ใช้ /follow-create-bot ถ้าจำเป็น
+- ใช้ /follow-create-tsdown-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create sdk)
 - ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vscode-extensions ถ้าจำเป็น

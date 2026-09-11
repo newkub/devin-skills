@@ -14,10 +14,10 @@ description: Setup Storybook ใน project ใหม่
 bun create storybook@latest
 ```
 
-หรือสำหรับ setup แบบ legacy:
+หรือผ่าน storybook CLI โดยตรง (v10+):
 
 ```bash
-bunx storybook@latest init
+bunx storybook@latest create
 ```
 
 ### 2. Select Framework
@@ -58,7 +58,7 @@ bun run storybook
 ## Rules
 
 - ใช้ Vite builder เมื่อเป็นไปได้สำหรับ performance ที่ดีกว่า
-- ตรวจสอบ requirements: Node.js 20+, npm 10+, pnpm 9+, yarn 4+, bun 1.4+
+- ตรวจสอบ requirements: Node.js 20.19+ หรือ 22.12+ (v10 ต้องการ `require(esm)`), npm 10+, pnpm 9+, yarn 4+, bun 1.4+
 - ตรวจสอบ framework requirements: Angular 18+, React Native 0.72+, Svelte 5+, Vue 3+, Vite 5+
 - ใช้ `--type` flag ถ้า auto-detection ล้มเหลว
 - ใช้ `--package-manager` flag สำหรับ specify package manager

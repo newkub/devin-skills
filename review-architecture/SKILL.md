@@ -8,7 +8,8 @@ related:
   - deep-review-codebase
   - deep-validate
   - report
-  - suggest-next-action---
+  - suggest-next-action
+---
 
 ## Goal
 

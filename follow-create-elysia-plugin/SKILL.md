@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง reusable Elysia plugin สำหรับ Bun/Node runtime รองรับ typed context, lifecycle hooks, prefix, scope, และ build package
 
-- Latest: `elysia@1.4.30` (verified 2026-09-11)
+- Latest: `elysia@1.4.30` (verified 2026-09-12)
 
 ## Execute
 

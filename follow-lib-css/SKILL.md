@@ -40,6 +40,10 @@ related:
 6. ใช้ Container Queries (`@container`) สำหรับ component-level responsive
 7. ใช้ Flexbox, Grid, และ Subgrid สำหรับ layouts
 8. ใช้ logical properties (`margin-inline-start`, `inset`, ฯลฯ) เมื่อทำ multi-locale
+9. ใช้ View Transitions (`::view-transition`, `view-transition-name`, `view-transition-class`) สำหรับ page/state transitions (Baseline 2025)
+10. ใช้ Popover API (`popover` attribute + `:popover-open`) แทน custom overlay เมื่อเหมาะสม (Baseline 2025)
+11. ใช้ `@starting-style` + `transition-behavior: allow-discrete` สำหรับ entry/exit transitions บน `display: none` elements
+12. ใช้ `scrollbar-color`/`scrollbar-width` สำหรับ scrollbar styling (Baseline 2025)
 
 ### 3. Use Modern Color And Sizing
 
@@ -50,6 +54,8 @@ related:
 3. ใช้ relative units (`rem`, `em`, `%`, `cqw`, `cqi`) เพื่อรองรับ user preferences
 4. ใช้ `aspect-ratio` สำหรับ media containers
 5. ใช้ `gap` แทน `margin` ใน Flexbox/Grid
+6. ใช้ `text-wrap: balance` สำหรับ headings และ `text-wrap: pretty` สำหรับ body copy (Baseline 2024)
+7. ใช้ `abs()`/`sign()` ใน `calc()` เมื่อต้องการ math functions (Baseline 2025)
 
 ### 4. Optimize Performance
 

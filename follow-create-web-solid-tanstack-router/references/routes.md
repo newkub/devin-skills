@@ -1,6 +1,6 @@
 # Follow Solid Tanstack Route Map
 
-- Website: <https://tanstack.com/query>
+- Website: <https://tanstack.com/start>
 - Routes discovered (homepage): 30
 
 ## Routes

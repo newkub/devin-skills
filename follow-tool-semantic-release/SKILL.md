@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ projects ที่ใช้ conventional commits และต้องการ automate release, changelog, npm/GitHub publish
 
-- Latest: `semantic-release@25.0.9` (verified 2026-09-11)
+- Latest: `semantic-release@25.0.9` (verified 2026-09-12) — requires Node.js `^22.14.0 || >=24.10.0`
 
 ## Execute
 

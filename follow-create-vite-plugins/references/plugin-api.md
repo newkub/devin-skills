@@ -167,6 +167,11 @@ const myPlugin = () => ({
 > คืน function จาก `configureServer` เพื่อ inject middleware หลัง internal middlewares
 > `configureServer` ไม่ถูกเรียกตอน production build
 
+### `configurePreviewServer` / `closeServer`
+
+- `configurePreviewServer(server)` — เหมือน `configureServer` แต่สำหรับ `vite preview` server
+- `closeServer({ reason })` — เรียกเมื่อ dev server restart หรือ close (`reason: 'restart' | 'close'`) ใช้ dispose resources ที่สร้างใน `configureServer`
+
 ### `transformIndexHtml`
 
 แปลง HTML entry point เช่น `index.html`:
@@ -199,10 +204,28 @@ handleHotUpdate({ server, modules, timestamp }) {
 }
 ```
 
+### `hotUpdate` (Vite 6+, per-environment)
+
+Hook ใหม่ที่จะแทนที่ `handleHotUpdate` ในอนาคต ทำงาน per-environment และรับ `HotUpdateOptions`:
+
+```ts
+interface HotUpdateOptions {
+  type: 'create' | 'update' | 'delete' // รองรับ watch events เพิ่ม
+  file: string
+  timestamp: number
+  modules: Array<EnvironmentModuleNode> // เฉพาะ environment ปัจจุบัน
+  read: () => string | Promise<string>
+  server: ViteDevServer
+}
+```
+
+- เข้าถึง environment ปัจจุบันผ่าน `this.environment` ใน hook (universal hooks เป็น per-environment ทั้งหมดใน Vite 8)
+- `modules` เป็น module nodes ของ environment นั้นเท่านั้น
+
 ## Rolldown Compatibility Notes
 
 - Vite 8+ ใช้ Rolldown เป็น bundler, Vite 7 และต่ำกว่าใช้ Rollup
-- ใช้ `this.meta.rolldownVersion` ตรวจว่าเป็น Rolldown-powered Vite (Vite 8+):
+- ใช้ `this.meta.viteVersion` อ่าน Vite version และ `this.meta.rolldownVersion` ตรวจว่าเป็น Rolldown-powered Vite (Vite 8+):
 
 ```js
 function versionCheckPlugin() {

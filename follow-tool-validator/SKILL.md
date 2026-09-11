@@ -25,7 +25,7 @@ related:
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก validator ตามความเหมาะสม:
-   - TypeScript/JavaScript: zod, valibot, yup, joi, class-validator
+   - TypeScript/JavaScript: zod (`^4.x` — latest `4.5.4`, verified 2026-09-12), valibot, arktype, yup, joi, class-validator
    - Rust: validator crate, garde, serde_json schema
    - Python: pydantic, marshmallow, cerberus
    - Go: go-playground/validator, govalidator
@@ -37,7 +37,7 @@ related:
 
 1. สร้าง schema สำหรับแต่ละ domain model / DTO / form
 2. ใช้ type inference จาก validator ถ้ามี (เช่น `z.infer<typeof Schema>`)
-3. กำหนด custom error messages ทีอ่านง่าย
+3. กำหนด custom error messages ทีอ่านง่าย (zod 4 ใช้ `error` param แทน `message`/`invalid_type_error`)
 4. แยก schema ไฟล์ตาม domain/feature ไม่รวมทั้งหมดในไฟล์เดียว
 5. ถ้า schema ใช้ซ้ำหลายที → สร้าง shared schema แล้ว compose
 

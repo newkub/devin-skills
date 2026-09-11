@@ -20,7 +20,7 @@ related:
 
 ครอบคลุมการสร้าง `.grit` plugin files, การเขียน GritQL patterns, การกำหนดค่าใน `biome.jsonc`, และการ verify plugins
 
-- Latest: `@biomejs/biome@2.5.13` / `@biomejs/js-api@6.0.0` (verified 2026-09-11)
+- Latest: `@biomejs/biome@2.5.13` / `@biomejs/js-api@6.0.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -135,9 +135,10 @@ related:
 - กำหนด plugin ผ่าน `plugins` array ใน `biome.jsonc`
 - ใช้ relative path จาก root ของโปรเจกต์
 - รูปแบบ string: `["./custom-rules.grit"]`
-- รูปแบบ object กับ `includes`: `[{ "path": "./plugin.grit", "includes": ["src//*.css"] }]`
+- รูปแบบ object กับ `includes`: `[{ "path": "./plugin.grit", "includes": ["src/**/*.css"] }]`
 - `includes` ใช้ glob patterns และรองรับ negation (`!`)
 - Plugins สามารถกำหนดใน root `biome.jsonc` และ extended โดย child configs
+- Suppress diagnostic ด้วย `// biome-ignore lint/plugin: <reason>`
 
 ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration format เต็ม
 

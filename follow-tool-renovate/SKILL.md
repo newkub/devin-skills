@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับ repositories บน GitHub ที่ต้องการ dependency updates, schedule, automerge และ PR management
 
-- Latest: `renovate@44.82.0` (npm) / `renovatebot/github-action@v46` (verified 2026-09-11)
+- Latest: `renovate@44.82.0` (npm; ต้องใช้ Node.js `^24.11.0`) / `renovatebot/github-action@v46.2.5` (verified 2026-09-12)
 
 ## Execute
 
@@ -45,7 +45,7 @@ related:
 2. ตั้งค่า `cron` รันเวลา `0 2 * * *`
 3. เพิ่ม `workflow_dispatch` สำหรับ manual trigger
 4. กำหนด permissions `contents: write`, `pull-requests: write`, `issues: write`
-5. ใช้ `renovatebot/github-action@v46` หรือ version ล่าสุด
+5. ใช้ `renovatebot/github-action@v46` (ล่าสุด `v46.2.5`) หรือ pin version เต็ม
 6. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
 
 ### 3. Setup Token

@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib testing library)
 
-- Latest: `@testing-library/dom@10.4.1` / `react@16.3.3` / `jest-dom@7.0.1` / `user-event@14.6.7` / `vue@8.1.0` (verified 2026-09-11)
+- Latest: `@testing-library/dom@10.4.1` / `react@16.3.3` / `jest-dom@7.0.1` / `user-event@14.6.7` / `vue@8.1.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -40,6 +40,7 @@ related:
 ## Rules
 
 - test behavior ไม่ใช่ implementation — ห้าม query ด้วย class/id ที่เป็น internal
+- `@testing-library/react@16` ต้องติดตั้ง `@testing-library/dom` เป็น peer dependency และใช้กับ React 18+
 - ใช้ `screen` object เสมอ — ไม่ destructure render result
 - อย่า assert element absence ด้วย `queryBy` ผสม `getBy` — ใช้ `queryBy` ตรงๆ
 - cleanup อัตโนมัติผ่าน test setup

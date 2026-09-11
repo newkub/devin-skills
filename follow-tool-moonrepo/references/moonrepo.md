@@ -38,7 +38,7 @@ proto install moon
 
 ## Version
 
-- Latest: moon `2.5.4` (verified 2026-09-11)
+- Latest: moon `2.5.4` (verified 2026-09-12)
 - License: MIT
 - npm package: `@moonrepo/cli`
 - Single binary, no external dependencies required

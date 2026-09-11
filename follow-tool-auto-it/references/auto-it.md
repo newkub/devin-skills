@@ -7,7 +7,7 @@
 ```sh
 bun add -D auto
 # or
-bun add -D auto
+npm i -D auto
 yarn add -D auto
 ```
 

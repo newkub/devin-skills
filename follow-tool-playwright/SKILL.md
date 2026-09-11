@@ -21,7 +21,7 @@ related:
 
 ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
 
-- Latest: `@playwright/test@1.63.0` (verified 2026-09-11)
+- Latest: `@playwright/test@1.63.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -33,7 +33,7 @@ related:
 2. รัน `bunx playwright install` เพื่อติดตั้ง browsers
 3. ติดตั้ง VS Code extension สำหรับ IDE integration
 4. เพิ่ม test script ใน `package.json`
-5. ตรวจสอบ Node.js version (>= v18.0.0)
+5. ตรวจสอบ Node.js version (>= v20.0.0 — Node 18 ไม่รองรับแล้ว)
 6. อัพเดท Playwright เป็น latest version เสมอด้วย `bun add -D @playwright/test@latest`
 
 ### 2. Configuration
@@ -74,6 +74,7 @@ related:
 5. ใช้ `test.describe` สำหรับ grouping related tests
 6. ใช้ `test.beforeEach`, `test.afterEach` สำหรับ setup/teardown
 7. ใช้ `test.describe.configure({ mode: 'parallel' })` สำหรับ parallel tests ใน file
+8. ใช้ `test('name', { lock: 'shared-resource' }, ...)` (v1.63+) เมื่อ tests แชร์ resource เดียวกัน — tests ที่ lock ชื่อเดียวกันจะไม่รันพร้อมกัน
 
 ### 5. Page Object Model
 
@@ -96,6 +97,8 @@ related:
 5. หลีกเลี่ยง CSS selectors ที่ fragile
 6. ใช้ `codegen` สำหรับ generate resilient locators
 7. ใช้ locator chaining และ filtering สำหรับ narrow down
+8. ใช้ `locator.visible()` (v1.63+) แทน `:visible` CSS pseudo-class
+9. ใช้ `page.frameLocator()` โดยไม่ต้องระบุ selector เพื่อค้นหา element ข้ามทุก frame (v1.63+)
 
 ### 7. Assertions And Matchers
 

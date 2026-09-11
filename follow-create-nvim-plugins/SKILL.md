@@ -16,7 +16,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างหรือจัดการ Neovim plugins
 
-- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-11)
+- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-12)
+- Neovim 0.12 มี `vim.pack` built-in plugin manager — ใช้เป็นทางเลือกแทน lazy.nvim ได้ถ้าไม่ต้องการ lazy-loading features ขั้นสูง
 
 ## Execute
 
@@ -32,7 +33,7 @@ related:
 
 > Goal: ตรวจสอบ requirements ก่อนเริ่ม
 
-1. ติดตั้ง Neovim >= 0.8.0 (build ด้วย LuaJIT)
+1. ติดตั้ง Neovim >= 0.8.0 (latest `0.12.5`, verified 2026-09-12)
 2. ติดตั้ง Git >= 2.19.0
 3. มี `init.lua` สำหรับ entry point
 

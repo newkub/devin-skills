@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (tool capgo)
 
-- Latest: `@capgo/capacitor-updater@8.51.15` / `@capgo/cli@8.50.3` (verified 2026-09-11)
+- Latest: `@capgo/capacitor-updater@8.51.15` / `@capgo/cli@8.50.3` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -40,6 +40,7 @@ related:
 ## Rules
 
 - OTA update เฉพาะ web assets — native changes ต้องผ่าน app store
+- `@capgo/capacitor-updater` v8 ต้องใช้ `@capacitor/core` `^8.0.0` (peer dependency)
 - test rollback path — broken bundle ต้อง revert อัตโนมัติ
 - biometric ต้องมี fallback เมื่อ hardware ไม่รองรับ
 

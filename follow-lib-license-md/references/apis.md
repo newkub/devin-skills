@@ -8,7 +8,7 @@ bun add -D license-md
 
 ## Version
 
-- Latest: `0.3.6` (verified 2026-09-11)
+- Latest: `0.3.6` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/license-md)
 
 ## Dependencies

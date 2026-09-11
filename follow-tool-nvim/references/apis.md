@@ -12,7 +12,7 @@ scoop install neovim
 
 ## Version
 
-- Latest: `0.12.5` (verified 2026-09-11)
+- Latest: `0.12.5` (verified 2026-09-12)
 - [Registry](https://neovim.io) — npm package `neovim` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/neovim/neovim)
 

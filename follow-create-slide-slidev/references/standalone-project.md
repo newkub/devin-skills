@@ -28,7 +28,7 @@
 1. ตั้ง `theme` ตาม template ที่เลือก
 2. ตั้ง `title` และ `info` ให้สื่อเนื้อหา
 3. ตั้ง `transition: slide-left` เป็น default
-4. เปิด `mdc: true` สำหรับ MDC syntax
+4. เปิด `comark: true` สำหรับ Comark syntax (เดิม `mdc` — deprecated ตั้งแต่ Slidev v52.14)
 5. ถ้าเป็นภาษาไทย → เพิ่ม `fonts` config ด้วย `Noto Sans Thai`
 
 ### 4. Write Slide Content

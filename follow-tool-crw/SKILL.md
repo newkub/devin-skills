@@ -21,7 +21,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-websearch) — สำหรับ web search/scrape ด้วย crw ดู `references/websearch.md`
 
-- Latest: `crw-mcp@0.35.1` (verified 2026-09-11)
+- Latest: `crw-mcp@0.35.1` / `crw` CLI v0.35.1 (verified 2026-09-12)
+- Install: `curl -fsSL https://fastcrw.com/install | sh` · `brew install us/crw/crw` · `cargo install crw-cli` · `npx crw-mcp` (MCP only) · `docker run ghcr.io/us/crw`
 
 ## Execute
 
@@ -34,7 +35,14 @@ related:
 ```bash
 crw search "query"
 crw search "rust web scraper" --format json
+crw search "query" --json --fields title,url,snippet --limit 3
 ```
+
+Options สำคัญ:
+- `--json` - shorthand สำหรับ `--format json`
+- `--fields <LIST>` - project เฉพาะ fields (title, url, description, snippet, position, score, category) ลด token
+- `--limit <N>` - จำกัดจำนวนผลลัพธ์ (default 5, max 20)
+- ต้องรัน `crw setup` ก่อนใช้ search ครั้งแรก (self-hosted ไม่ต้องใช้ key; hosted ใช้ `CRW_API_KEY`)
 
 เหมาะสำหรับ:
 - ค้นหาข้อมูลจากหลายแหล่งพร้อมกัน
@@ -141,12 +149,17 @@ crw mcp
 Environment Variables:
 - `CRW_BROWSER_PATH` - Path ไปยัง browser executable (Chrome/Edge) สำหรับ JS rendering
 - ตัวอย่าง: `C:\Program Files\Google\Chrome\Application\chrome.exe`
+- `CRW_API_URL` - Proxy mode: forward tool calls ไป remote CRW server (cloud หรือ self-hosted)
+- `CRW_API_KEY` - API key สำหรับ hosted fastcrw.com
+
+MCP tools: `crw_scrape`, `crw_search`, `crw_crawl`, `crw_map`, `crw_extract`, `crw_parse_file` (PDF/file — ไม่มี CLI verb), `crw_check_crawl_status`
 
 เหมาะสำหรับ:
 - Integration กับ MCP-compatible tools
 - ใช้เป็น MCP server สำหรับ AI agents
 - Real-time web access ผ่าน MCP
 - JavaScript rendering สำหรับ SPA/React/Vue/Angular sites
+- Parse PDF/file ผ่าน `crw_parse_file` หรือ REST `/v2/parse`
 
 ### 8. Browser Automation
 

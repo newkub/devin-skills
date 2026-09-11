@@ -21,7 +21,8 @@ related:
 - ครอบคลุม setup, project structure, SwiftUI, architecture, build, test และ deploy
 - ใช้ Xcode เป็น primary IDE
 
-- Latest: Xcode 26.x / Swift 6.x (ตรวจสอบเวอร์ชันล่าสุดใน App Store) (verified 2026-09-11)
+- Latest: Xcode `26.6` (includes Swift `6.3.3`, SDKs iOS 26.5; Xcode 27 เป็น beta พร้อม Swift 6.4) (verified 2026-09-12)
+- ตั้งแต่ April 2026 App Store Connect รับเฉพาะ build จาก Xcode >= 26 (iOS 26 SDK) เท่านั้น
 
 ## Execute
 
@@ -47,7 +48,7 @@ related:
 
 > Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
 
-1. ตรวจสอบ Xcode เวอร์ชันล่าสุด
+1. ตรวจสอบ Xcode >= 26.0 (latest stable 26.6; requires macOS Tahoe 26.2+)
 2. ตรวจสอบ macOS รองรับ iOS development
 3. ตรวจสอบ iOS Simulator หรือ real device พร้อมใช้
 4. ตรวจสอบ Apple Developer account ถ้าจะ deploy ไป device/store
@@ -59,7 +60,7 @@ related:
 1. เปิด Xcode > Create New Project > iOS > App
 2. ตั้งชื่อ project, bundle identifier, interface เป็น SwiftUI
 3. เลือก language เป็น Swift
-4. ตั้งค่า target iOS >= 15
+4. ตั้งค่า deployment target iOS >= 15 (Xcode 26 รองรับ iOS 15–26; เลือก >= 17 ถ้าไม่ต้องรองรับ device เก่า)
 5. ใช้ SwiftUI เป็น lifecycle (ไม่ใช้ Storyboard)
 
 ### 5. Configure Project
@@ -130,9 +131,9 @@ related:
 
 ### 1. Swift And SwiftUI
 
-- ใช้ Swift 5.9 หรือใหม่กว่า
+- ใช้ Swift 6.x (Xcode 26.6 bundle Swift 6.3.3)
 - ใช้ SwiftUI เป็น UI framework
-- ตั้ง target iOS >= 15
+- ตั้ง deployment target iOS >= 15
 
 ### 2. Architecture
 

@@ -23,7 +23,7 @@ related:
 
 ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
-- Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-11)
+- Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-12)
 
 ## Execute
 
@@ -43,7 +43,7 @@ related:
 1. ตรวจ `.devin/skills/` ของ project และ `%APPDATA%\devin\skills` ว่ามี skill คล้ายกันไหม
 2. ทำ `/check-skills-related` หรือ `/use-related-skills` ถ้าพบ skill ที่อาจซ้ำ
 3. อ่าน `AGENTS.md` root และ workspace เพื่อดึง project conventions, commands และ tech stack
-4. ทำ `/prepare-skills-context` เพื่อเลือก template และ directory pattern
+4. อ่าน skills ที่มีอยู่ใน `.devin/skills/` เพื่อเลือก directory pattern และ style ให้สอดคล้องกับ project
 
 ### 3. Create Structure
 

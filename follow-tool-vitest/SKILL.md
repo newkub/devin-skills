@@ -25,7 +25,7 @@ related:
 > Goal: Installation
 
 1. ทำ `/follow-tool-vite` เพื่อตรวจสอบ Vite setup
-2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-11)
+2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-12)
 3. ติดตั้ง coverage tool ด้วย `bun add -D @vitest/coverage-v8`
 4. ตรวจสอบว่ามี Vite >= v6.4.0 และ Node >= v22.12.0 (Vitest 5 requirements)
 5. เพิ่ม test script ใน `package.json`

@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับ JavaScript/TypeScript projects ที่ต้องการ bundler รวดเร็ว ต้องการ code splitting/tree-shaking หรือ migration จาก Rollup/Vite
 
+- Latest: `rolldown@1.2.8` (verified 2026-09-12) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 || >=22.12.0`
+
 ## Execute
 
 ### 1. Installation
@@ -84,7 +86,8 @@ related:
 
 - ใช้ `bun add -D rolldown` สำหรับ local install
 - ใช้ `bunx rolldown` สำหรับ one-off build
-- ตรวจสอบ version และ Node.js compatibility ก่อนใช้
+- ตรวจสอบ version และ Node.js compatibility ก่อนใช้ (Rolldown 1.x ต้องใช้ Node `^20.19.0 || >=22.12.0`)
+- ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ใช้ standalone `rolldown` เฉพาะเมื่อต้องการ bundle นอก Vite (เช่น libraries)
 
 ### 2. Configuration
 

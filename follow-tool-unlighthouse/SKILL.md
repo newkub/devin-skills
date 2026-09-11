@@ -18,7 +18,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ monitor ทุกหน้าเว็บด้วย Lighthouse ทั้ง development mode และ CI/CD
 
-- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-11)
+- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-12)
+- v0.18.0 breaking change: ต้องการ Node.js >= 22.18.0 (engines)
 
 ## Execute
 
@@ -26,10 +27,11 @@ related:
 
 > Goal: ตั้งค่า URL สำหรับ scan
 
-1. ตั้งค่า `APP_URL` environment variable
-2. ใช้ default `http://localhost:3000` สำหรับ development
-3. ตั้งค่าใน `.env` หรือ CI environment
-4. ตรวจสอบว่า URL เข้าถึงได้
+1. ตรวจสอบ Node.js >= 22.18.0 (requirement ของ `@unlighthouse/cli@0.18.0`)
+2. ตั้งค่า `APP_URL` environment variable
+3. ใช้ default `http://localhost:3000` สำหรับ development
+4. ตั้งค่าใน `.env` หรือ CI environment
+5. ตรวจสอบว่า URL เข้าถึงได้
 
 ### 2. Add Package Scripts
 

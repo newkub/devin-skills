@@ -19,13 +19,16 @@ related:
 
 ใช้ `follow-tool-aube` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
+- Latest: `aube@2.2.14` (GitHub `aubepkg/aube`) / npm `@endevco/aube@2.2.4` (verified 2026-09-12)
+- References: [aube](references/aube.md) | [cli](references/cli.md)
+
 ## Execute
 
 ### 1. Installation
 
 > Goal: ติดตั้ง Aube และตรวจสอบ version
 
-1. ติดตั้ง Aube ด้วย `mise use aube` หรือดูวิธีอื่นๆ ที่ https://aube.en.dev/installation
+1. ติดตั้ง Aube ด้วย `mise use -g aube` (แนะนำ) หรือ `brew install jdx/tap/aube`, `cargo install aube --locked`, `npm i -g @endevco/aube` — ดูวิธีอื่นๆ ที่ https://aube.jdx.dev/installation
 2. ตรวจสอบ version ด้วย `aube --version`
 3. Aube จะ auto-install dependencies เมื่อ run scripts โดยอัตโนมัติ
 
@@ -56,6 +59,13 @@ aubx vitest    # run vitest without installing
 aubx tsc       # run tsc without installing
 ```
 
+ใช้ `aube exec` สำหรับ local binaries ที่ install แล้วใน project:
+
+```bash
+aube exec vitest
+aube exec tsc -- --noEmit
+```
+
 ### 4. Dependency Management
 
 > Goal: จัดการ dependencies ด้วย Aube
@@ -79,17 +89,21 @@ Aube มี security defaults ที่เหมาะสมที่สุด:
 - Lifecycle scripts wait for approval
 - Exotic transitive deps blocked
 
-เปิดใช้ paranoid mode สำหรับ security สูงสุด:
+เปิดใช้ paranoid mode สำหรับ security สูงสุดใน `aube-workspace.yaml`:
 
-```bash
+```yaml
+# aube-workspace.yaml
 paranoid: true
 ```
+
+Approve lifecycle build scripts ด้วย `aube approve-builds` หรือตั้ง `allowBuilds` ใน `aube-workspace.yaml`
 
 ### 6. CI Integration
 
 > Goal: ใช้ Aube ใน CI โดยไม่ต้อง install step แยก
 
 ```yaml
+- uses: jdx/aube-action@v1
 - run: aubr test
 ```
 
@@ -101,6 +115,7 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - Global content-addressable store สำหรับ share package files
 - ลด disk usage โดยไม่ copy dependencies ทั้งหมดในแต่ละ project
 - node_modules layout ที่ efficient
+- รันใน workspace ทั้งหมดด้วย `aube -r run build` หรือ filter ด้วย `aube -F '@scope/*' run test`
 
 ### 8. Lockfile Compatibility
 

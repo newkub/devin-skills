@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับ libraries บน GitHub ที่ต้องการ preview packages สำหรับทุก commit และ pull request
 
+- Latest: `pkg-pr-new@0.0.88` (verified 2026-09-12)
+
 ## Execute
 
 ### 1. Install GitHub Application
@@ -34,7 +36,7 @@ related:
 > Goal: ติดตั้ง pkg-pr-new package ใน project
 
 1. รัน `bun add -D pkg-pr-new`
-2. หรือใช้ `bunx pkg-pr-new publish` โดยตรง
+2. ใน CI ให้รันจาก lockfile (`bun run pkg-pr-new publish` หรือ `pnpm exec pkg-pr-new publish`) แทน `bunx`/`npx`
 3. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ### 3. Configure Workflow
@@ -78,6 +80,9 @@ related:
 - `--comment`: `update`, `create` หรือ `off`
 - `--packageManager`: `npm`, `pnpm`, `yarn` หรือ `bun`
 - `--only-templates`: แสดงเฉพาะ templates ใน comments
+- `--previewVersion`: rewrite version เป็น `0.0.0-preview-<sha>` ก่อน pack เพื่อเลี่ยง lockfile collision
+- `--pnpm` / `--yarn` / `--bun`: ใช้ `pnpm pack`/`yarn pack`/`bun pm pack` แทน `npm pack` (จำเป็นเมื่อใช้ pnpm catalogs)
+- `--json <file>`: เขียน publish metadata ลง JSON สำหรับ custom comments
 
 ### 4. Best Practices
 

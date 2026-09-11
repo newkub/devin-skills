@@ -53,8 +53,8 @@ argument-hint: "[features]"
 > Goal: เชื่อมต่อ LINE Messaging API
 
 1. สร้าง `src/config.ts` อ่าน `LINE_CHANNEL_ACCESS_TOKEN`, `LINE_CHANNEL_SECRET` จาก environment
-2. สร้าง `src/bot.ts` ด้วย `Client` จาก `@line/bot-sdk`
-3. สร้าง `src/webhook.ts` ด้วย `Hono` `POST /webhook` ที validate `x-line-signature` ด้วย `validateSignature`
+2. สร้าง `src/bot.ts` ด้วย `LineBotClient.fromChannelAccessToken({ channelAccessToken })` จาก `@line/bot-sdk` (v11+ — legacy `Client`/`OAuth` ถูกลบแล้ว; ใช้ `messagingApi.MessagingApiClient` ถ้าต้องการ granular client)
+3. สร้าง `src/webhook.ts` ด้วย `Hono` `POST /webhook` ที validate `x-line-signature` ด้วย `validateSignature` บน raw body
 4. สร้าง `src/index.ts` เป็น entry point
 
 ### 6. Implement Handlers
@@ -64,7 +64,7 @@ argument-hint: "[features]"
 1. สร้าง `src/handlers/message.ts` สำหรับ `message` events (text, image, sticker, location)
 2. สร้าง `src/handlers/follow.ts` สำหรับ `follow` / `unfollow` events
 3. สร้าง `src/handlers/postback.ts` สำหรับ `postback` events
-4. ใช้ `client.replyMessage` หรือ `client.pushMessage` สำหรับส่งข้อความ
+4. ใช้ `client.replyMessage({ replyToken, messages })` หรือ `client.pushMessage({ to, messages })` (request object ใน v11+) สำหรับส่งข้อความ
 
 ### 7. Add Features
 
@@ -97,7 +97,7 @@ argument-hint: "[features]"
 ## Rules
 
 - ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ `/follow-secret-manager` สำหรับจัดการ channel secrets
-- ใช้ `@line/bot-sdk` เป็น default SDK
+- ใช้ `@line/bot-sdk` เป็น default SDK (v11+ — fetch-based, ไม่มี axios, ใช้ `LineBotClient` เท่านั้น)
 - ใช้ `Hono` เป็น default web server บน Bun
 - Validate `x-line-signature` ทุกครั้งก่อน parse events
 - ไม่ commit `.env`

@@ -15,6 +15,7 @@ related:
 
 ใช้สำหรับตั้งค่า Cargo lint rules ใน Rust projects ทั้ง single crate และ workspace (Rust 1.98+)
 
+- Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-12)
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-clippy) — สำหรับ Clippy lint rules และ error handling ดู `references/clippy.md`
 
 ## Execute

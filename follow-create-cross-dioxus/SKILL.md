@@ -23,7 +23,7 @@ related:
 - พัฒนา desktop application ด้วย Rust
 - Build สำหรับหลาย platforms
 
-- Latest: `dioxus@0.7.10` (crates.io stable; 0.8.0-alpha.1 pre-release) (verified 2026-09-11)
+- Latest: `dioxus@0.7.10` / `dioxus-cli@0.7.10` (crates.io stable; 0.8.0-alpha.1 pre-release) (verified 2026-09-12)
 
 ## Execute
 
@@ -34,15 +34,19 @@ related:
 1. ตรวจสอบ Rust ติดตั้งแล้ว (`rustc --version`)
 2. ตรวจสอบ Cargo ติดตั้งแล้ว (`cargo --version`)
 3. ติดตั้ง `wasm32-unknown-unknown` target ถ้าทำ Web (`rustup target add wasm32-unknown-unknown`)
+4. หลังติดตั้ง CLI ให้รัน `dx doctor` เพื่อตรวจ toolchains ที่ขาดสำหรับแต่ละ platform
 
 ### 2. Setup
 
 > Goal: ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
 
-1. ติดตั้ง Dioxus CLI: `cargo install dioxus-cli`
+1. ติดตั้ง Dioxus CLI (เลือกวิธีใดวิธีหนึ่ง):
+   - prebuilt binary: `curl -sSL https://dioxus.dev/install.sh | bash`
+   - `cargo binstall dioxus-cli --force`
+   - build จาก source (ช้า): `cargo install dioxus-cli`
 2. ตรวจสอบ `dx --version`
-3. สร้างโปรเจกต์: `dx new my-dioxus-app` และเลือก template (Desktop, Web, FullStack)
-4. หรือสร้าง `Cargo.toml` เองด้วย dependency `dioxus`
+3. สร้างโปรเจกต์: `dx new my-dioxus-app` และเลือก template (Bare-bones, Jumpstart, Workspace)
+4. หรือ init ใน directory ที่มีอยู่: `dx init` / สร้าง `Cargo.toml` เองด้วย dependency `dioxus`
 
 ### 3. Configure
 
@@ -68,7 +72,8 @@ related:
 
 1. Desktop: `dx build --release`
 2. Web: `dx build --release --platform web`
-3. ตรวจสอบ `dist/` มี output ที่ถูกต้อง
+3. ใช้ `dx bundle` เมื่อต้องการ package เป็น distributable bundle (installer/app image)
+4. ตรวจสอบ `dist/` มี output ที่ถูกต้อง
 
 ## Rules
 

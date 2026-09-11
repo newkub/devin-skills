@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง plugins สำหรับ `tsdown` bundler ด้วย TypeScript ครอบคลุม plugin object, hooks, build, tests, และ npm package
 
-- Latest: `tsdown@0.23.0` (verified 2026-09-11)
+- Latest: `tsdown@0.23.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -81,10 +81,11 @@ related:
 
 > Goal: ใช้ tsdown-specific lifecycle
 
-1. `tsdownConfig` — แก้ `UserConfig` ก่อน resolved
-2. `tsdownConfigResolved` — หลัง resolved config (call ต่อ format)
-3. ใช้ mutation สำหรับ `config.plugins` ใน `tsdownConfig`
-4. ระวังว่า `fromVite` plugins ไม่ได้รับ `tsdownConfig`
+1. `tsdownConfig(config, inlineConfig)` — แก้ `UserConfig` ก่อน resolved (`inlineConfig` = CLI flags จาก `build()`)
+2. `tsdownConfigResolved` — หลัง resolved config (call ต่อ output format, read-only)
+3. ใช้ mutation สำหรับ `config.plugins` ใน `tsdownConfig` — merge แทนที่ array ไม่ concat
+4. ระวังว่า `fromVite` plugins ไม่ได้รับ `tsdownConfig` (แต่ได้รับ `tsdownConfigResolved`)
+5. ใช้ config-level `hooks` (`build:prepare`, `build:before`, `build:done` — hookable-based) สำหรับ lifecycle tasks ที่ไม่ต้องการ plugin เต็มรูปแบบ
 
 ### 6. Build Package
 

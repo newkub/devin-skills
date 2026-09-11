@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับสร้าง Obsidian desktop/mobile plugin ด้วย sample plugin หรือ setup เอง พร้อม esbuild, manifest, styles, และ GitHub release
 
-- Latest: `obsidian@1.13.1` (npm typings package) (verified 2026-09-11)
+- Latest: `obsidian@1.13.1` (npm typings package) (verified 2026-09-12)
 
 ## Execute
 

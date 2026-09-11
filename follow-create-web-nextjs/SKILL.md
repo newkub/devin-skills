@@ -18,9 +18,9 @@ related:
 
 ## Scope
 
-จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.2, Cache Components และ TypeScript
+จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.3, Cache Components และ TypeScript
 
-- Latest: `next@16.3.4` / `react@19.3.0` (verified 2026-09-11)
+- Latest: `next@16.3.5` / `react@19.3.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -100,7 +100,7 @@ related:
 4. ใช้ Suspense boundaries สำหรับ streaming (แทน `loading.tsx` เมื่อต้องการ granular control)
 5. ใช้ Partial Prerendering (PPR) สำหรับ static shell + dynamic islands
 6. ใช้ React Compiler แทน manual `memo`/`useMemo`/`useCallback` (stable ใน Next.js 16)
-7. ใช้ React 19.2 features: View Transitions, `useEffectEvent()`
+7. ใช้ React 19.3 features: View Transitions, `useEffectEvent()`
 
 ### 8. Caching Strategy
 

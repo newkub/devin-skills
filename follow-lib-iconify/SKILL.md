@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib iconify)
 
-- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` (verified 2026-09-11)
+- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` / `iconify-icon@3.0.2` (web component) / `@iconify/tailwind@1.2.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,9 +24,10 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. ใช้ `@iconify-json/<set>` (เช่น mdi, lucide) กับ UnoCSS `presetIcons` หรือ icon component
+1. ใช้ `@iconify-json/<set>` (เช่น mdi, lucide) กับ UnoCSS `presetIcons`, Tailwind `@iconify/tailwind` plugin หรือ icon component
+1. ใช้ component ตาม framework: `@iconify/react`, `@iconify/vue`, `@iconify/svelte` หรือ `iconify-icon` web component สำหรับ framework-agnostic
 1. เลือก icon set ตาม design: mdi (material), lucide (minimal), tabler
-1. ใช้ on-demand loading — bundle เฉพาะ icons ที่ใช้จริง
+1. ใช้ on-demand loading — bundle เฉพาะ icons ที่ใช้จริง; ใช้ `@iconify/utils` เมื่อต้อง generate icon data เอง
 1. สำหรับ custom icons ใช้ `customizations` หรือ inline SVG แทน
 
 ### 2. Verify

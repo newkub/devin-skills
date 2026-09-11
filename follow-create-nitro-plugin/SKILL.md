@@ -14,13 +14,14 @@ related:
 ---
 ## Goal
 
-สร้าง Nitro plugin package สำหรับ Nuxt/Nitro ด้วย `defineNitroPlugin`, hooks, middleware, storage, และ tests
+สร้าง Nitro plugin package สำหรับ Nuxt/Nitro ด้วย `definePlugin` (v3) / `defineNitroPlugin` (v2), hooks, middleware, storage, และ tests
 
 ## Scope
 
 ใช้สำหรับสร้าง plugin ที extend Nitro runtime ใน Nuxt 3/4 หรือ standalone Nitro project รองรับทั้ง project plugin (`server/plugins/`) และ npm package
 
-- Latest: `nitro@2.x` (`nitropack@2.13.4` stable; `nitro@3.0-beta` มีให้ทดลอง) (verified 2026-09-11)
+- Latest: `nitropack@2.13.4` stable; `nitro@3.0.260903-beta` (v3 beta, npm tag `latest` ของ package `nitro`) (verified 2026-09-12)
+- Nitro v3 breaking changes: package `nitropack` → `nitro`, `defineNitroPlugin` → `definePlugin`, auto-imports ถูกลบ (ต้อง explicit import จาก `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req` web APIs), Node.js >= 20
 
 ## Execute
 
@@ -45,7 +46,7 @@ related:
 > Goal: สร้างโครงสร้าง plugin package
 
 1. สร้าง `package.json` ด้วย `name: nitro-{name}`
-2. ใส่ `nitropack` ใน `peerDependencies`
+2. ใส่ `nitro` (v3) หรือ `nitropack` (v2) ใน `peerDependencies` ตาม major version ที่รองรับ
 3. สร้าง `tsconfig.json`, `src/index.ts`, `test/plugin.test.ts`
 4. ติดตั้ง `unbuild` หรือ `tsup` สำหรับ build
 
@@ -53,10 +54,12 @@ related:
 
 > Goal: เขียน Nitro plugin
 
-1. สร้าง `src/index.ts` ด้วย `export default defineNitroPlugin((nitroApp) => { ... })`
+1. สร้าง `src/index.ts`:
+   - v3: `import { definePlugin } from "nitro"` แล้ว `export default definePlugin((nitroApp) => { ... })`
+   - v2: `export default defineNitroPlugin((nitroApp) => { ... })`
 2. ใช้ `nitroApp.hooks.hook('render:html', (html, { event }) => { ... })` สำหรับ modify HTML
 3. ใช้ `nitroApp.hooks.hook('close', async () => { ... })` สำหรับ cleanup
-4. ถ้าใช้ storage ให้ใช้ `useStorage()` ภายใน hook
+4. ถ้าใช้ storage ให้ใช้ `useStorage()` ภายใน hook (v3: `import { useStorage } from "nitro/storage"` — auto-imports ถูกลบใน v3)
 
 ### 5. Register Middleware Or Handlers
 
@@ -70,17 +73,17 @@ related:
 
 > Goal: รองรับ TypeScript types
 
-1. ใช้ types จาก `nitropack/types`
+1. ใช้ types จาก `nitropack/types` (v2) หรือ `nitro` (v3)
 2. ถ้า module ต้องการ options ใช้ `ModuleOptions` type
 3. ส่ง generic ผ่าน `NitroApp` ถ้าจำเป็น
-4. ระบุ runtime types ด้วย `declare module 'nitropack' { ... }` ถ้ามี custom hooks
+4. ระบุ runtime types ด้วย `declare module 'nitropack'` (v2) หรือ `declare module 'nitro'` (v3) ถ้ามี custom hooks
 
 ### 7. Build Package
 
 > Goal: build plugin สำหรับ npm
 
 1. สร้าง `build.config.ts` หรือ `tsup.config.ts` สำหรับ ESM/CJS
-2. external `nitropack`
+2. external `nitro`/`nitropack`
 3. รัน `bun run build`
 4. ตรวจสอบ `dist/index.mjs` และ `dist/index.d.ts`
 
@@ -102,11 +105,12 @@ related:
 
 ## Rules
 
-- ใช้ `defineNitroPlugin` จาก `nitropack/runtime` หรือ `nitropack/plugin`
+- ใช้ `definePlugin` จาก `nitro` (v3) หรือ `defineNitroPlugin` จาก `nitropack/runtime` (v2)
 - Plugin function synchronous แต่ hooks สามารถ async ได้
 - ไม่ทำ side effects เป้น global นอก callback
-- ใช้ `useRuntimeConfig()` ภายใน hooks ไม่ใช้ใน plugin body
-- ระบุ `nitropack` เป็น peer dependency
+- ใช้ `useRuntimeConfig()` ภายใน hooks ไม่ใช้ใน plugin body (v3: `import { useRuntimeConfig } from "nitro/runtime-config"`)
+- ระบุ `nitro` หรือ `nitropack` เป็น peer dependency ตาม version
+- v3: import utilities แบบ explicit เสมอ เช่น `defineHandler`, `HTTPError` จาก `nitro`; `useDatabase` จาก `nitro/database`; `defineTask` จาก `nitro/task`
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น

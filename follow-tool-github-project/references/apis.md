@@ -11,7 +11,7 @@ winget install GitHub.cli
 
 ## Version
 
-- Latest: gh CLI `2.100.0` (github.com/cli/cli, verified 2026-09-11) — npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง
+- Latest: gh CLI `2.100.0` (github.com/cli/cli, verified 2026-09-12) — npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง
 - [Package Registry](https://www.npmjs.com/package/gh)
 - [Repository](https://github.com/node-gh/gh)
 

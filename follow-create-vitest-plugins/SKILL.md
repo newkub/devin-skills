@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างและใช้งาน Vitest plugins ตาม Plugin API มาตรฐาน
 
-- Latest: `vitest@5.0.0` (verified 2026-09-11)
+- Latest: `vitest@5.0.0` (verified 2026-09-12) — ต้องการ Vite >= 6.4.0 และ Node.js >= 22.12.0
 
 ## Execute
 
@@ -38,7 +38,7 @@ related:
 1. ศึกษา Plugin API 3.1.0+ จาก [references/plugin-api.md](references/plugin-api.md)
 2. เข้าใจ `configureVitest` hook
 3. รู้จัก context: `project`, `vitest`, `injectTestProjects`
-4. ศึกษา `experimental_defineCacheKeyGenerator` (4.0.11+)
+4. ศึกษา `defineCacheKeyGenerator` (stable ตั้งแต่ 5.0.0, เดิม `experimental_defineCacheKeyGenerator` ใน 4.x)
 
 ### 3. Create Plugin
 
@@ -56,7 +56,7 @@ export function myPlugin(options: PluginOptions) {
     transform(code) {
       // transform logic
     },
-    configureVitest({ project, vitest, injectTestProjects, experimental_defineCacheKeyGenerator }) {
+    configureVitest({ project, vitest, injectTestProjects, defineCacheKeyGenerator }) {
       // plugin configuration
       vitest.config.coverage.enabled = false
     }
@@ -75,16 +75,17 @@ export function myPlugin(options: PluginOptions) {
 
 ### 5. Implement Cache Key Generator
 
-> Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
+> Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 5.0.0+)
 
-1. ใช้ `experimental_defineCacheKeyGenerator` (4.0.11+) — ดู [references/plugin-api.md](references/plugin-api.md)
+1. ใช้ `defineCacheKeyGenerator` (stable ใน 5.0.0, เดิม `experimental_defineCacheKeyGenerator` ใน 4.0.11+) — ดู [references/plugin-api.md](references/plugin-api.md)
 2. Return unique string จาก plugin options
 3. Handle `false` เพื่อ disable caching
-4. ใช้เมื่อมี `experimental.fsModuleCache`
+4. ใช้เมื่อเปิด `test.fsModuleCache` (top-level config ตั้งแต่ 5.0, เดิม `experimental.fsModuleCache`)
+5. ใช้ `api.vitest.ignoreFsModuleCache: true` บน plugin object ถ้า plugin ไม่ควรกระทบ cache
 
 ```ts
-configureVitest({ experimental_defineCacheKeyGenerator }) {
-  experimental_defineCacheKeyGenerator(() => {
+configureVitest({ defineCacheKeyGenerator }) {
+  defineCacheKeyGenerator(() => {
     // return unique string จาก options
     return options.replacePropertyKey + options.replacePropertyValue
   })
@@ -141,12 +142,13 @@ const newProjects = await injectTestProjects({
 - ต้องมี unique name (ไม่ซ้ำกับ existing projects)
 - Filter อาจมีผล - อัปเดท `vitest.config.project` ถ้าจำเป็น
 
-### 4. Cache Key Generator (4.0.11+)
+### 4. Cache Key Generator (5.0.0+)
 
 - Return string สำหรับ cache key hashing
 - Return `false` เพื่อ disable file system caching
 - ใช้เมื่อ plugin registered ด้วย different options
-- ทำงานเมื่อมี `experimental.fsModuleCache`
+- ทำงานเมื่อเปิด `test.fsModuleCache` (ย้ายจาก `experimental` ใน Vitest 5)
+- ตั้ง `api.vitest.ignoreFsModuleCache: true` เพื่อ opt-out (ยัง define generator ได้)
 
 ### 5. Config Mutations
 

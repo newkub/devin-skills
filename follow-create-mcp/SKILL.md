@@ -39,7 +39,7 @@ related:
 
 ดูเพิ่มเติม: `/follow-my-tech-stack`, `/review-techstack`, `/follow-lang-rust`, `/follow-lang-typescript`
 
-- Latest: `@modelcontextprotocol/sdk@1.30.0` (TS), `rmcp` (Rust) (verified 2026-09-11)
+- Latest: `@modelcontextprotocol/sdk@1.30.0` (TS), `rmcp@3.3.0` (Rust) (verified 2026-09-12)
 
 ## Execute
 
@@ -66,7 +66,7 @@ related:
 > Goal: สร้าง scaffold ตาม stack ที่เลือก
 
 1. ถ้าเลือก Rust → สร้าง Rust project ด้วย `cargo new` แล้วเพิ่ม `rmcp` หรือ `rust-mcp-sdk` เป็น dependency ตามตัวอย่างใน `references/mcp-stacks.md` ถ้ามี
-2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-11 — `@modelcontextprotocol/server` เป็น package เก่าที่ถูกแทนด้วย `sdk`)
+2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-12 — `@modelcontextprotocol/server` เป็น package เก่าที่ถูกแทนด้วย `sdk`)
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
 5. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
@@ -96,7 +96,7 @@ related:
 1. รัน server ด้วยคำสั่งของ stack เช่น `cargo run` หรือ `bun run dev`
 2. ทดสอบด้วย MCP inspector หรือ client ที่รองรับ
 3. ตรวจสอบว่า tools สามารถ list และ invoke ได้
-4. ถ้า transport เป็น stdio → ทดสอบ spawn ผ่าน client เช่น Claude Code หรือ `npx @anthropic/mcp-inspector`
+4. ถ้า transport เป็น stdio → ทดสอบ spawn ผ่าน client เช่น Claude Code หรือ `npx @modelcontextprotocol/inspector` (official inspector package)
 
 ### 7. Ship
 

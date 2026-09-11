@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับ Node.js projects ที่ต้องการ version bump, git tag, changelog, npm publish และ GitHub release แบบ automated
 
-- Latest: `release-it@21.0.2` (verified 2026-09-11)
+- Latest: `release-it@21.0.2` (verified 2026-09-12) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
 
 ## Execute
 
@@ -90,6 +90,8 @@ related:
 - ใช้ conventional commits หรือ bump type ที่ถูกต้อง
 - ตรวจสอบ `package.json` version ก่อน release
 - ใช้ `--no-npm.publish` สำหรับ test run ถ้าจำเป็น
+- v21: CLI parsing เป็น strict — unknown options, invalid booleans และ positional args เกินจะถูก reject
+- v21: GitLab server certificates ถูก verify โดย default — ใช้ private CA หรือ `gitlab.secure: false` ถ้าจำเป็น
 
 ### 4. Secrets
 

@@ -23,7 +23,7 @@ related:
 - ครอบคลุม module layout, naming (Verb-Noun), parameter validation, pipeline support และ error handling
 - ไม่ครอบคลุมการ publish ขึ้น PSGallery นอกเหนือ checklist พื้นฐาน
 
-- Latest: PowerShell `7.6.x` (ใช้ `pwsh`, ไม่ใช่ Windows PowerShell 5.1) (verified 2026-09-11)
+- Latest: PowerShell `7.6.5` (LTS, .NET 10) — stable `7.5.10`, preview `7.7` (ใช้ `pwsh`, ไม่ใช่ Windows PowerShell 5.1) (verified 2026-09-12)
 
 ## Execute
 
@@ -33,7 +33,7 @@ related:
 
 1. ทำ `/follow-my-tech-stack` เพื่อดูเครื่องมือที่ใช้
 2. ทำ `/review-techstack` ถ้า module เกี่ยวข้องกับ project dependencies
-3. ตรวจ PowerShell version ด้วย `$PSVersionTable.PSVersion` — target `pwsh` 7+ เป็น default
+3. ตรวจ PowerShell version ด้วย `$PSVersionTable.PSVersion` — target `pwsh` 7.6+ (LTS) เป็น default
 
 ### 2. Gather Requirements
 

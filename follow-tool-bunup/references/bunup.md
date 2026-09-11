@@ -10,7 +10,7 @@ bun add --dev bunup
 
 ## Version
 
-- Latest stable: `0.16.32`
+- Latest stable: `0.16.32` (verified 2026-09-12)
 - License: MIT
 - Requires: Bun (runtime), TypeScript `>=4.5.0` (peer dependency)
 

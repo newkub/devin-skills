@@ -28,7 +28,7 @@ related:
 - ส่งต่องานสร้าง project ไปยัง sub-skill
 - ไม่ลงมือ implement เองโดยตรง
 
-- Latest: Vite `8.3.0` (default toolchain) (verified 2026-09-11)
+- Latest: Vite `8.3.0` (default toolchain, Rolldown-powered) (verified 2026-09-12)
 
 ## Execute
 

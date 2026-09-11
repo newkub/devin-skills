@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ API documentation, API playground, mock server และ schema validation โดยใช้ Scalar toolchain
 
-- Latest: `@scalar/api-reference@1.68.0` (verified 2026-09-11)
+- Latest: `@scalar/api-reference@1.68.0` / `@scalar/cli@2.1.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -26,9 +26,10 @@ related:
 > Goal: ติดตั้ง Scalar CLI หรือ package ที่เหมาะสม
 
 1. ตรวจสอบ project stack ว่าใช้ OpenAPI, AsyncAPI หรือ GraphQL
-2. ติดตั้ง `@scalar/api-designer` หรือ `@scalar/cli` ด้วย `bun add -D <package>`
-3. ตรวจสอบ version ด้วย `bunx @scalar/api-designer --version`
-4. ดูคำสั่ง CLI ใน [references/scalar-cli.md](references/scalar-cli.md)
+2. ติดตั้ง `@scalar/cli` ด้วย `bun add -D @scalar/cli` (binary ชื่อ `scalar`, ต้องใช้ Node `>=24`)
+3. ตรวจสอบ version ด้วย `bunx @scalar/cli --version` และรัน `bunx @scalar/cli init` เพื่อสร้าง config เริ่มต้น
+4. ใช้ `@scalar/api-reference` เมื่อต้องการ embed API reference ใน app (React/Vue/standalone)
+5. ดูคำสั่ง CLI ใน [references/scalar-cli.md](references/scalar-cli.md)
 
 ### 2. Configuration
 
@@ -53,19 +54,21 @@ related:
 
 > Goal: ทดสอบ APIs ด้วย mock server และ validation
 
-1. รัน mock server ด้วย `bunx @scalar/api-designer --mock`
-2. ทดสอบ queries, mutations, และ error scenarios
-3. ใช้ `scalar validate` เพื่อตรวจสอบ schema validity
-4. ทำ `/follow-test` เพื่อขยาย test coverage
+1. รัน mock server ด้วย `bunx @scalar/cli document mock openapi.yaml --watch --port 8080`
+2. ทดสอบ queries, mutations, และ error scenarios (mock server validate request ตาม OpenAPI contract โดย default)
+3. ใช้ `bunx @scalar/cli document validate openapi.yaml` เพื่อตรวจสอบ schema validity และ `document lint` สำหรับ spectral rules
+4. ใช้ `bunx @scalar/cli document serve openapi.yaml` เพื่อ preview API reference แบบ local
+5. ทำ `/follow-test` เพื่อขยาย test coverage
 
 ### 5. Documentation and Deploy
 
 > Goal: publish documentation และ integrate กับ CI
 
-1. สร้าง static docs ด้วย `bunx @scalar/api-designer --build`
-2. ตั้งค่า GitHub Actions หรือ CI/CD pipeline สำหรับ build และ deploy docs
-3. deploy ไปยัง static host เช่น GitHub Pages, Cloudflare Pages
-4. ดู official resources ใน [references/official-resources.md](references/official-resources.md)
+1. สร้าง Markdown docs ด้วย `bunx @scalar/cli document markdown openapi.yaml` หรือ bundle refs ด้วย `document bundle`
+2. ใช้ `@scalar/api-reference` (standalone script tag หรือ framework integration) สำหรับ HTML docs หรือ publish ผ่าน `scalar registry`/`scalar project`
+3. ตั้งค่า GitHub Actions หรือ CI/CD pipeline สำหรับ `document validate` และ deploy docs
+4. deploy ไปยัง static host เช่น GitHub Pages, Cloudflare Pages
+5. ดู official resources ใน [references/official-resources.md](references/official-resources.md)
 
 ## Rules
 

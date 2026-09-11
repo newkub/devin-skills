@@ -17,7 +17,7 @@ related:
 
 ครอบคลุมการสร้าง plugins สำหรับ desktop และ mobile platforms พร้อม commands, state management, lifecycle events และ mobile native code
 
-- Latest: `tauri@2.11.5` / `@tauri-apps/cli@2.11.4` (verified 2026-09-11)
+- Latest: `tauri@2.11.5` / `@tauri-apps/cli@2.11.4` (verified 2026-09-12)
 
 ## Execute
 
@@ -38,7 +38,8 @@ related:
 1. รัน `bunx @tauri-apps/cli plugin new <name>` สำหรับสร้าง plugin ใหม่
 2. ใช้ `--no-api` หากไม่ต้องการ NPM package
 3. ใช้ `--android` และ `--ios` สำหรับ mobile support
-4. Plugin จะถูกสร้างใน `tauri-plugin-<name>/`
+4. ใช้ `--github-workflows` ถ้าต้องการ `.github` CI workflows (CLI ปัจจุบันไม่ generate `.github` โดย default)
+5. Plugin จะถูกสร้างใน `tauri-plugin-<name>/`
 
 ### 3. Configure Plugin
 

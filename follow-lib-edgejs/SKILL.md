@@ -22,7 +22,7 @@ related:
 - จัดการ template state: globals, locals, rendering data, inline variables
 - ขยายความสามารถด้วย plugins และ custom tags เมื่อจำเป็น
 
-- Latest: `edge.js@6.5.1` (verified 2026-09-11)
+- Latest: `edge.js@6.5.1` (verified 2026-09-12)
 
 ## Execute
 

@@ -1,7 +1,9 @@
 # Framework Ratatui Official Resources
 
-- [Website](https://github.com/holo-q/ratatui-ts#readme)
-- [Documentation](https://github.com/holo-q/ratatui-ts/tree/main/docs)
-- [Repository](https://github.com/holo-q/ratatui-ts)
-- [Package Registry](https://www.npmjs.com/package/ratatui)
-- About: Contribute to holo-q/ratatui-ts development by creating an account on GitHub.
+- [Website](https://ratatui.rs)
+- [Documentation](https://ratatui.rs/tutorials/)
+- [API Docs](https://docs.rs/ratatui/latest/ratatui/)
+- [Repository](https://github.com/ratatui/ratatui)
+- [Templates](https://github.com/ratatui/templates)
+- [Package Registry](https://crates.io/crates/ratatui)
+- About: Ratatui — a Rust library for cooking up rich terminal user interfaces (TUIs)

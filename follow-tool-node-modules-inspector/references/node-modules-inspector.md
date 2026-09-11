@@ -59,12 +59,10 @@ Build a static SPA of your current node_modules status:
 
 ```bash
 bunx node-modules-inspector build
-bunx node-modules-inspector build
-bunx node-modules-inspector build
 ```
 
-This creates a `.node-modules-inspector` folder that can be hosted with
-any static file server.
+This creates a `dist/__node-modules-inspector` folder (v2 default outDir)
+that can be hosted with any static file server.
 
 ## CLI Reports
 

@@ -146,8 +146,8 @@ related:
 
 ### 6. Version Notes
 
-- Latest stable: `drizzle-orm@0.45.2` + `drizzle-kit@0.31.10` (verified 2026-07-30)
-- v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` มี breaking changes ได้แก่ `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` ถูกเอาออก, migration folder v3
+- Latest stable: `drizzle-orm@0.45.2` + `drizzle-kit@0.31.10` (verified 2026-09-12)
+- v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` (ปัจจุบัน `1.0.0-rc.4`, verified 2026-09-12) มี breaking changes ได้แก่ `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` ถูกเอาออก, migration folder v3
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 
 - ใช้ `/run-drizzle-studio` ถ้าจำเป็น

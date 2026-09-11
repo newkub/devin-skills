@@ -9,7 +9,7 @@ bun add -D @types/markdown-it   # TypeScript
 
 ## Version
 
-- Latest: `15.0.1` (verified 2026-09-11)
+- Latest: `15.0.2` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/markdown-it)
 - [Repository](https://github.com/markdown-it/markdown-it)
 

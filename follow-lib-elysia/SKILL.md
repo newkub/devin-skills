@@ -179,9 +179,10 @@ related:
 
 ### 9. Version Notes
 
-- Latest stable: `elysia@1.4.30`, `@elysia/eden` latest (verified 2026-09-11)
-- Elysia 2.0 beta: `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest`
+- Latest stable: `elysia@1.4.30`, `@elysia/eden@1.4.10`, `@elysia/openapi@1.4.16` (verified 2026-09-12)
+- Elysia 2.0 beta "DayDream": `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest` (verified 2026-09-12)
 - v2.0 มี breaking changes ได้แก่ route hooks/schemas ต้องอยู่ก่อน handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, ใช้ `problem` สำหรับ RFC 9457 errors แทน `status`
+- v2.0 ตัด prefix `on` ออกจาก lifecycle hooks (`onRequest` → `request`, `onBeforeHandle` → `beforeHandle`, `onError` → `error`) และ WebSocket กลายเป็น opt-in plugin ที่ `.ws()` 3-arg เป็น `(path, options, handler)` พร้อมใช้ generator `yield` แทน `ws.send`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 
 - ใช้ `/use-bun-native-api` ถ้าจำเป็น

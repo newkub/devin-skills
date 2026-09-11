@@ -20,7 +20,10 @@ related:
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
 - ทำตาม `/follow-my-tech-stack` สำหรับ runtime และ dependencies
 
-- Latest: `discord.js@14.27.0` (verified 2026-09-11)
+- Latest: `discord.js@14.27.0`, `grammy@1.46.0`, `@slack/bolt@5.1.0`, `@line/bot-sdk@11.2.0`, `probot@14.3.2` (verified 2026-09-12)
+- Breaking: `@line/bot-sdk` v11 ลบ legacy `Client`/`OAuth` — ใช้ `LineBotClient.fromChannelAccessToken()` หรือ `messagingApi.MessagingApiClient` แทน
+- Breaking: `@slack/bolt` v5 ต้อง Node.js ≥20, ลบ `agent`/`clientTls` options และ `WorkflowStep`/`app.step()` (ใช้ `app.function()`)
+- Breaking: `discord.js` v14 deprecate event `ready` → ใช้ `Events.ClientReady` (ถูกลบใน v15)
 
 ## Execute
 

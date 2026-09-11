@@ -19,12 +19,12 @@ related:
 ใช้สำหรับ projects ที่ต้องการใช้ TanStack ecosystem ปัจจุบัน (ดูรายการล่าสุดที่ `https://tanstack.com/libraries`):
 
 - Framework: `Start` (full-stack SSR/streaming บน Router + Vite, v1 stable), `Router` (type-safe routing สำหรับ React/Solid, v1)
-- Data & State: `Query` (server state, v5), `DB` (reactive client store, 0.x), `Store` (client state, 0.x), `AI` (framework-agnostic AI SDK, RC)
+- Data & State: `Query` (server state, v5), `DB` (reactive client store, 0.x), `Store` (client state, 0.x), `AI` (framework-agnostic AI SDK, 0.x)
 - UI & UX: `Table` (headless datagrid, v9), `Form` (form state, v1; v2 alpha), `Charts`, `Hotkeys`, `Markdown`, `Highlight`
 - Performance: `Virtual` (virtualized lists, v3), `Pacer` (debounce/throttle/batch, 0.x)
 - Tooling: `Devtools` (unified devtools panel), `Config`, `CLI`, `Intent`
 
-- Latest: query `5.102.8` / router `1.170.35` / table `9.2.4` / form `1.33.5` (verified 2026-09-11)
+- Latest: query `5.102.8` / router `1.170.35` / start `1.168.52` / table `9.2.4` / form `1.33.5` / virtual `3.14.12` / store `0.11.1` / db `0.3.8` / pacer `0.23.0` / ai `0.54.0` (verified 2026-09-12)
 
 ## Execute
 

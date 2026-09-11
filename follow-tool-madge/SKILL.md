@@ -16,7 +16,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (tool madge)
 
-- Latest: `madge@8.0.0` (verified 2026-09-11)
+- Latest: `madge@8.0.0` (verified 2026-09-12) — ต้อง Node `>=18`; `typescript` เป็น optional peer (`^5.4.4`)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -27,8 +27,9 @@ related:
 
 1. รัน `madge --circular --extensions ts,tsx src/` หา circular imports
 1. ใช้ `--orphans` หาไฟล์ที่ไม่มีใคร import (dead code candidates)
-1. ใช้ `--depends <file>` หา dependents ของ module เฉพาะ
-1. integrate เข้า CI ด้วย exit code — circular = fail
+1. ใช้ `--depends <file>` หา dependents ของ module เฉพาะ และ `--leaves` หา modules ที่ไม่มี dependencies
+1. ใช้ `--json` สำหรับ machine-readable output หรือ `--image graph.svg` (ต้องมี Graphviz) เพื่อ export dependency graph
+1. integrate เข้า CI ด้วย exit code — circular = fail (ใช้ `--warning` ถ้าต้องการ warn-only ไม่ fail)
 
 ### 2. Verify
 

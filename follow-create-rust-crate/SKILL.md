@@ -19,9 +19,9 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง library crate เป้น pure Rust หรือ FFI ครอบคลุม `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, และ CI
+ใช้สำหรับสร้าง library crate เป็น pure Rust หรือ FFI ครอบคลุม `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, และ CI
 
-- Latest: Rust `1.98.1`, edition 2024 (verified 2026-09-11)
+- Latest: Rust `1.98.1`, edition 2024 (verified 2026-09-12)
 
 ## Execute
 
@@ -49,7 +49,7 @@ related:
 1. ระบุ `name`, `version`, `edition`, `description`, `license`, `repository`, `keywords`, `categories`
 2. ตั้ง `edition = "2024"`
 3. ตั้ง `rust-version` ถ้าจำเป็น
-4. ตั้งค่า `[lib]`, `crate-type` เป้น `["lib"]` หรือ `["cdylib"]` สำหรับ FFI
+4. ตั้งค่า `[lib]`, `crate-type` เป็น `["lib"]` หรือ `["cdylib"]` สำหรับ FFI
 5. ตั้งค่า `[profile.dev]` และ `[profile.release]`
 
 ### 4. Write Public API
@@ -110,7 +110,7 @@ related:
 - ใช้ `thiserror` สำหรับ library errors, `anyhow` สำหรับ examples/binaries
 - ไม่ใช้ `unwrap()` ใน library code
 - ระบุ `edition = "2024"`
-- `crate-type` เป้น `["lib"]` ยกเว้นต้องใช้ FFI
+- `crate-type` เป็น `["lib"]` ยกเว้นต้องใช้ FFI
 
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น

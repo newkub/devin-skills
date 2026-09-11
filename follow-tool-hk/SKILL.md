@@ -18,7 +18,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-githooks) — สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
 
-- Latest: `hk@v1.58.1` (verified 2026-09-05)
+- Latest: `hk@v1.58.1` (verified 2026-09-12)
 
 ## Execute
 
@@ -72,6 +72,8 @@ related:
 7. ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ batch
 8. ใช้ `effect = "destructive"` สำหรับ step ที่ลบ/เขียนทับไฟล์ — hk จะบังคับ confirm ใน agent/MCP contexts (v1.55+)
 9. ถ้า monorepo ให้ใช้ `subprojects` ใน `hk.pkl` สำหรับ nested configs + per-directory mise env (v1.52+)
+10. ใช้ `dir` กับ Tera template เช่น `dir = "{{workspace}}"` สำหรับ workspace-aware steps แทน `cd {{workspace}} && ...` (v1.57+)
+11. ใช้ `check_diff` + `check_after_diff = true` สำหรับ partial fixers (เช่น ShellCheck) — apply diff ที่แก้ได้แล้วรัน check ซ้ำให้ findings ที่แก้ไม่ได้ยังแสดง (v1.57+)
 
 ### 6. Run and Validate
 
@@ -132,6 +134,7 @@ related:
 - ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ
 - ใช้ `depends` สำหรับลำดับการทำงานระหว่าง steps
 - ใช้ `exclusive = true` สำหรับ steps ที่ต้องรันคนเดียว
+- hk v1.57+ embed Pkl package ของ version ตัวเอง — config ที่ pin version เดียวกัน validate ได้ offline บน cold cache; ปิดด้วย `HK_PKL_EMBEDDED=0`
 
 ### 5. Example mise.toml
 

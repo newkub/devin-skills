@@ -9,7 +9,7 @@ bun add -d @oxc-project/types      # AST type definitions
 
 ## Version
 
-- Latest: `0.149.0` (verified 2026-09-11) — 0.x: pin exact version เสมอ
+- Latest: `0.149.0` (verified 2026-09-12) — 0.x: pin exact version เสมอ
 - [Package Registry](https://www.npmjs.com/package/oxc-parser)
 - [Repository](https://github.com/oxc-project/oxc)
 

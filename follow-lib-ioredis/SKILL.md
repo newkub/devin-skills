@@ -15,7 +15,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib ioredis)
 
-- Latest: `ioredis@6.0.0` (v6 major — ตรวจ changelog เมื่อ migrate จาก v5) (verified 2026-09-11)
+- Latest: `ioredis@6.0.0` (verified 2026-09-12) — v6 major (2026-07-31): ต้อง Node ≥20, ใช้ RESP3 โดย default (`HELLO 3` พร้อม auto-fallback เป็น RESP2 เมื่อ server ไม่รองรับ); ตั้ง `protocol: 2` เพื่อคง v5 wire protocol และ `replyStyle: "resp3"` เพื่อรับ RESP3 reply shapes (default `"legacy"` คงรูปแบบเดิม)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,10 +24,11 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. สร้าง client ด้วย `new Redis(url)` หรือ `Redis.Cluster` สำหรับ cluster
+1. สร้าง client ด้วย `new Redis(url)` หรือ `Redis.Cluster` สำหรับ cluster — ใน v6 ใส่ per-node options ของ Cluster ใต้ `redisOptions`
 1. ใช้ `pipeline()`/`multi()` สำหรับ batch commands
-1. ใช้ separate connections สำหรับ pub/sub (subscriber mode บล็อก commands อื่น)
+1. ใช้ separate connections สำหรับ pub/sub (RESP2 subscriber mode บล็อก commands อื่น; ใน v6 RESP3 connection รัน regular commands ขณะ subscribe ได้)
 1. จัดการ reconnect strategy ด้วย `retryStrategy` และ `lazyConnect` ตาม use case
+1. ใน v6 เมื่อ `enableOfflineQueue: false` ให้ส่ง commands (รวม `subscribe()`) จาก `ready` listener แทน `connect` เพราะอาจ reject ก่อน client พร้อม
 
 ### 2. Verify
 

@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site
 
-- Latest: `vitepress@1.6.4` (verified 2026-09-11)
+- Latest stable: `vitepress@1.6.4` (verified 2026-09-12); `vitepress@next` = `2.0.0-alpha.19` (preview สำหรับ Vite 8/rolldown)
 
 ## Execute
 

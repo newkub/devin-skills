@@ -7,14 +7,15 @@ import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials'],
+  // v10: controls/actions/interactions/viewport/backgrounds are core features.
+  // Only list remaining addons here:
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
   docs: {
     defaultName: 'Documentation',
-    docsMode: false,
   },
   staticDirs: ['../public'],
   typescript: {
@@ -54,11 +55,10 @@ const preview: Preview = {
   parameters: {
     layout: 'centered',
     backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#333333' },
-      ],
+      options: {
+        light: { name: 'light', value: '#ffffff' },
+        dark: { name: 'dark', value: '#333333' },
+      },
     },
     viewport: {
       viewports: {
@@ -75,15 +75,9 @@ const preview: Preview = {
       </div>
     ),
   ],
-  globalTypes: {
-    theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
-      defaultValue: 'light',
-      toolbar: {
-        items: ['light', 'dark'],
-      },
-    },
+  initialGlobals: {
+    theme: 'light',
+    backgrounds: { value: 'light' },
   },
 };
 
@@ -93,7 +87,7 @@ export default preview;
 ## Manager Configuration (.storybook/manager.ts)
 
 ```typescript
-import { addons } from '@storybook/preview-api';
+import { addons } from 'storybook/manager-api';
 
 addons.setConfig({
   theme: {

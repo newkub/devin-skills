@@ -20,6 +20,8 @@ related:
 
 ตั้งค่า GitHub Actions สำหรับ projects และ repositories
 
+- Latest: `gh@2.100.0`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-12)
+
 ## Execute
 
 ### 1. เลือก Workflows ที่เหมาะสม
@@ -69,7 +71,7 @@ related:
 5. แยก CI และ CD workflows
 6. ใช้ matrix strategy สำหรับ multiple configurations
 7. ตั้งค่า monitoring และ notifications สำหรับ failures
-8. ทดสอบ syntax และ permissions
+8. ทดสอบ syntax ด้วย `actionlint` (`mise use -g actionlint` แล้วรัน `actionlint`) และตรวจ permissions
 
 ## Rules
 

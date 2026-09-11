@@ -19,11 +19,13 @@ related:
 
 ใช้สำหรับ:
 - ใช้งาน Devin Desktop และ Cascade ใน Windsurf IDE
-- เข้าใจ AI models (SWE-1.6, SWE-1.5, SWE-1, swe-grep)
+- เข้าใจ AI models (SWE-2, SWE-1.7, SWE-1.6, SWE-1-mini, swe-grep, swe-check)
 - ใช้งาน Spaces และ Agent Client Protocol (ACP)
 - เขียน prompts ที่มีประสิทธิภาพสำหรับ coding agents
 - Debug และ review code ที่ agents สร้าง
 - จัดการ fleets ของ local และ cloud agents
+
+- Latest model: `SWE-2` (released 2026-09-10, post-trained จาก Kimi K3 2.8T params) (verified 2026-09-12)
 
 ## Execute
 
@@ -43,7 +45,7 @@ related:
 > Goal: เข้าใจ Core Concepts
 
 อ่าน `key-concepts/` เพื่อเข้าใจ:
-- `SWE Models`: SWE-1.6, SWE-1.5, SWE-1, SWE-1-mini, swe-grep
+- `SWE Models`: SWE-2, SWE-1.7, SWE-1.6, SWE-1-mini, swe-grep, swe-check
 - `Agent Client Protocol (ACP)`: Protocol สำหรับ communication ระหว่าง agents
 - `Spaces`: Shared context และ Git worktrees สำหรับ agents
 - `Supercomplete`: Intelligent autocomplete ที่ predict next thought
@@ -77,11 +79,13 @@ related:
 ### 1. Model Selection
 
 - เลือก model ตาม task:
-  - `SWE-1.6`: General coding tasks, high intelligence
-  - `SWE-1.6 Fast`: Fast coding tasks, speed priority
-  - `SWE-1.5`: Legacy support, near Claude 4.5 performance
-  - `SWE-1-mini`: Real-time autocomplete, low latency
-  - `swe-grep`: Context retrieval และ search
+  - `SWE-2`: Flagship ล่าสุด — frontier-level coding, cost-efficient (multi-effort reasoning)
+  - `SWE-1.7`: Previous flagship, software engineering agents
+  - `SWE-1.7 Lightning`: SWE-1.7 บน Cerebras — latency ต่ำกว่า intelligence เท่ากัน
+  - `SWE-1.6` / `SWE-1.6 Fast`: Generation ก่อนหน้า — general / speed priority
+  - `SWE-1-mini`: Real-time autocomplete (Tab), low latency
+  - `swe-grep`: Context retrieval และ Fast Context
+  - `swe-check`: Quick Review — lightweight code review
 
 ### 2. Prompt Engineering
 

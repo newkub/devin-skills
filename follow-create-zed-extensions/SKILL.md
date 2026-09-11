@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง Zed extension ที provide languages, themes, icon themes, snippets, debuggers, หรือ MCP servers รองรับทั้ง pure manifest และ Rust/WASM custom code
 
-- Latest: Zed extensions API (ตรวจสอบ docs ล่าสุดที่ zed.dev) (verified 2026-09-11)
+- Latest: `zed_extension_api@0.7.0` (crates.io), target `wasm32-wasip2`, `schema_version = 1` (verified 2026-09-12)
 
 ## Execute
 
@@ -53,7 +53,7 @@ related:
 
 1. ติดตั้ง Rust target `wasm32-wasip2` ด้วย `rustup target add wasm32-wasip2`
 2. สร้าง `Cargo.toml` ด้วย `crate-type = ["cdylib"]`
-3. ติดตั้ง `zed_extension_api`
+3. ติดตั้ง `zed_extension_api = "0.7.0"` ใน `Cargo.toml` (latest บน crates.io — ตรวจ compatibility กับ Zed version ที่ต้องการ support)
 4. สร้าง `src/lib.rs` ด้วย `impl zed::Extension for MyExtension` และ `register_extension!`
 5. ระวังว่า `std::env::var` ไม่ทำงานใน WASM
 
@@ -88,9 +88,10 @@ related:
 
 1. ตรวจสอบ `extension.toml` และ `Cargo.toml` ครบถ้วน
 2. build Rust extension ด้วย `cargo build --target wasm32-wasip2 --release`
-3. สร้าง GitHub repo พร้อม release
-4. ส่ง PR ไปยัง `zed-industries/extensions` หรือ publish ผ่าน Zed registry
-5. ทำ `/ship`
+3. สร้าง GitHub repo สำหรับ extension (registry ใช้ git submodule ชี้มาที่ repo นี้)
+4. ส่ง PR ไปยัง `zed-industries/extensions`: เพิ่ม submodule ใน `extensions/<id>` และ entry ใน `extensions.toml` ที่ root พร้อม `version` ตรงกับ `extension.toml`
+5. เมื่อ PR merged → extension ถูก package และ publish สู่ Zed extension registry อัตโนมัติ
+6. ทำ `/ship`
 
 ## Rules
 

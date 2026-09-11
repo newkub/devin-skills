@@ -15,7 +15,7 @@ bun add astro
 
 ## Version Info
 
-- Latest stable: `7.3.2` (verified 2026-09-11)
+- Latest stable: `7.3.2` (verified 2026-09-12)
 - Node.js `>=22.12.0`
 - Build tool: Vite 8 (Rolldown)
 - Peer dependencies: `vite`, `typescript` (optional)

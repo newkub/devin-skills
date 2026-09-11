@@ -9,7 +9,7 @@ mise use -g hk
 
 ## Version
 
-- Latest: `1.58.1` (verified 2026-09-11)
+- Latest: `1.58.1` (verified 2026-09-12)
 - [Registry](https://hk.jdx.dev) — npm package `hk` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/hk)
 

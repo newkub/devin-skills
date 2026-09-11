@@ -19,7 +19,8 @@ related:
 
 ใช้กับ TypeScript projects ทุกประเภทที่รองรับ ESM และ strict mode ไม่ว่าจะเป็น Bun, Node.js, frontend, backend หรือ framework ใดๆ
 
-- Latest: `arktype@2.2.3` (verified 2026-09-11)
+- Latest: `arktype@2.2.3` (verified 2026-09-12)
+- v2.2 features หลัก: `type.fn` (validated functions), type-safe regex ผ่าน `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators ฝังใน definitions ได้โดยตรง, `|>` pipe operator, `type.valueOf` สำหรับ TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
 
 ## Execute
 
@@ -28,7 +29,7 @@ related:
 > Goal: ติดตั้ง ArkType และเตรียม environment
 
 1. รัน `bun add arktype` (หรือ `pnpm add arktype` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3)
+2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3, verified 2026-09-12)
 3. ยืนยันว่า `package.json` มี `arktype` ใน `dependencies`
 4. ตรวจสอบว่า `package.json` มี `"type": "module"` หรือ runtime รองรับ ESM imports
 
@@ -108,8 +109,10 @@ related:
 
 1. ใช้ ArkType สำหรับ performance-critical validation (benchmark เร็วกว่า Zod หลายเท่า)
 2. ใช้ caching ที่ runtime สำหรับ repeated validations
-3. ใช้ Standard Schema integration (`~standard`) เมื่อจำเป็น
-4. ดู official resources ใน [references/arktype-resources.md](references/arktype-resources.md)
+3. ใช้ Standard Schema integration (`~standard`) เมื่อจำเป็น — v2.2 ฝัง Standard Schema validators (Zod, Valibot ฯลฯ) ใน definitions ได้โดยตรง
+4. ใช้ `type.fn(args, ":", returnType)` สำหรับ runtime-validated functions และ `arkregex` (`type("x/^...$/")`) สำหรับ type-safe regex พร้อม inferred capture groups
+5. ใช้ `@ark/json-schema` เมื่อต้องการ bidirectional JSON Schema conversion (`toJsonSchema()` รองรับ fallbacks และ draft-07/2020-12)
+6. ดู official resources ใน [references/arktype-resources.md](references/arktype-resources.md)
 
 ## Rules
 

@@ -1,4 +1,4 @@
-# Zaidian UI Resources
+# Zaidan UI Resources
 
 ## Official Resources
 

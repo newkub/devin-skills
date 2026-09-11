@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ clone templates จาก `https://github.com/newkub/template-starter/tree/main/templates` มายัง project ปัจจุบัน
 
+- Latest: `degit@3.10.0` (verified 2026-09-12) — requires Node.js >= 20
+
 ## Execute
 
 ### 1. Discover Templates
@@ -33,7 +35,7 @@ related:
 > Goal: clone template ด้วย degit โดยไม่รวม git history
 
 1. ใช้ `bunx degit newkub/template-starter/templates/<template-name> <target-dir>`
-2. ใช้ `--mode=git` ถ้าต้องการ preserve git history
+2. ถ้าต้องการ preserve git history ให้ใช้ `git clone` แทน — degit เป็น tar snapshot เสมอ และ `--mode=git` deprecated ใน v3
 3. ใช้ `--files` เพื่อ clone เฉพาะไฟล์ทีต้องการ
 4. ใช้ `--force` ด้วยความระมัดระวังถ้า target directory ไม่ว่าง
 5. ดูรายละเอียด degit ใน [references/degit.md](references/degit.md)

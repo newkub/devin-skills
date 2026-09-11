@@ -55,7 +55,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node: [14, 16, 18]
+        node: [22, 24]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:

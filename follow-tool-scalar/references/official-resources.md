@@ -4,25 +4,26 @@
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| Main Website | https://scalar.com | Scalar API Designer official site |
-| Documentation | https://docs.scalar.com | Official documentation |
-| Playground | https://scalar.com/playground | Online playground |
+| Main Website | https://scalar.com | Scalar official site |
+| Documentation | https://guides.scalar.com | Official documentation and guides |
+| CLI Guide | https://guides.scalar.com/tools/cli/getting-started | @scalar/cli getting started |
 
 ## GitHub Repositories
 
 | Repository | URL | Description |
 |------------|-----|-------------|
 | Main | https://github.com/scalar/scalar | Main monorepo |
-| API Designer | https://github.com/scalar/scalar/tree/main/packages/api-designer | API Designer package |
-| VS Code Extension | https://github.com/scalar/scalar-vscode-extension | VS Code extension |
+| CLI | https://github.com/scalar/scalar/tree/main/packages/cli | @scalar/cli package |
+| API Reference | https://github.com/scalar/scalar/tree/main/packages/api-reference | @scalar/api-reference package |
 
-## bun Packages
+## npm Packages
 
 | Package | Command | Description |
 |---------|---------|-------------|
-| API Designer | `bun add @scalar/api-designer` | Main package |
-| CLI | `bun add @scalar/cli` | Command line tool |
-| Vercel | `bun add @scalar/vercel` | Vercel adapter |
+| CLI | `bun add -D @scalar/cli` | Command line tool (binary: `scalar`, Node >=24) |
+| API Reference | `bun add @scalar/api-reference` | Rendered API reference component |
+| Mock Server | `bun add @scalar/mock-server` | Programmatic OpenAPI mock server |
+| OpenAPI Parser | `bun add @scalar/openapi-parser` | Parse/validate/upgrade OpenAPI documents |
 
 ## Community Resources
 
@@ -48,11 +49,9 @@
 | Apollo Studio | https://www.apollographql.com/docs/studio | Apollo monitoring |
 | Insomnia | https://insomnia.rest | API client with GraphQL support |
 
-## Version History
+## Latest Versions (verified 2026-09-12)
 
-| Version | Release Date | Notes |
-|---------|--------------|-------|
-| 1.0 | 2024 | Initial release |
-| 1.1 | 2024 | Added dark mode |
-| 1.2 | 2024 | OpenAPI support |
-| 1.3 | 2025 | Team collaboration |
+| Package | Version |
+|---------|---------|
+| @scalar/cli | 2.1.0 |
+| @scalar/api-reference | 1.68.0 |

@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ Astro 7 projects ที่ใช้ Vite 8 เป็น build tool (content-heavy sites, marketing, docs)
 
-- Latest: `astro@7.3.2` / Vite 8 (verified 2026-09-11)
+- Latest: `astro@7.3.2` / Vite 8 (verified 2026-09-12)
 
 ## Execute
 
@@ -181,7 +181,7 @@ related:
 
 ### 7. Version Notes
 
-- Latest: `astro@7.3.2` ใช้ `vite@^8.0.13`, Node 22+ (verified 2026-09-11)
+- Latest: `astro@7.3.2` ใช้ `vite@^8.0.13`, Node 22+ (verified 2026-09-12)
 - v6 removed: `<ViewTransitions />` → `<ClientRouter />`, legacy content collections, `Astro.glob()`, `emitESMImage()`
 - v6 upgrades: Vite 7, Zod 4, Shiki 4 — `astro:schema`/`z` deprecated
 - v7: Rust compiler, `src/fetch.ts` reserved name, Sätteri เป็น default Markdown processor, `compressHTML: 'jsx'` default, `@astrojs/db` removed

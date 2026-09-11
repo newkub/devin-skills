@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/use-bun-native-api` สำหรับ setup Bun runtime
 
-- Latest: `bunup@0.16.32` (verified 2026-09-11)
+- Latest: `bunup@0.16.32` (verified 2026-09-12)
 
 ## Execute
 
@@ -114,10 +114,18 @@ project/
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `--format` | `string` | `esm` | Output format (esm, cjs, or esm,cjs) |
+| `--format` / `-f` | `string` | `esm` | Output format: `esm`, `cjs`, `iife`, or comma-separated |
+| `--entry` / `-e` | `string` | auto | Entry point(s) |
+| `--out-dir` / `-o` | `string` | `dist` | Output directory |
+| `--target` / `-t` | `string` | - | Target: `browser` or `node` |
 | `--exports` | `boolean` | `false` | Generate and sync package exports |
 | `--watch` | `boolean` | `false` | Watch mode for development |
-| `--config` | `string` | - | Path to config file |
+| `--config` / `-c` | `string` | - | Path to config file (`--no-config` disables) |
+| `--filter` | `string` | - | Filter configs by `name` when exporting config array |
+| `--packages` | `string` | - | `bundle` or `external` all dependencies |
+| `--external` / `--no-external` | `string` | - | Force packages out of / into the bundle |
+
+Scaffold a ready-to-publish library ด้วย `bunx @bunup/cli@latest create`
 
 ### Default Entry Points
 

@@ -28,7 +28,7 @@ Test บนหลาย platforms:
 ```yaml
 strategy:
   matrix:
-    node-version: [18, 20]
+    node-version: [22, 24]
     os: [ubuntu-latest, windows-latest]
 ```
 

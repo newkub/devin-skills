@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับตั้งค่า Oxlint plugins ทั้ง built-in (native) และ JavaScript plugins สำหรับ linting
 
-- Latest: `oxlint@1.82.0` (verified 2026-09-11)
+- Latest: `oxlint@1.82.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -43,7 +43,8 @@ related:
 > Goal: สร้าง config file ที่ root ของโปรเจกต์
 
 1. สร้าง `.oxlintrc.json` หรือ `oxlint.config.ts` ที่ root — ดู [references/oxlint-config.md](references/oxlint-config.md)
-2. เลือกใช้ format ที่ต้องการ
+2. สร้าง starter config ได้ด้วย `oxlint --init`
+3. เลือกใช้ format ที่ต้องการ — `oxlint.config.ts` ต้องมี Node v22.18+ หรือ v24+
 
 ### 4. Configure Built-in Plugins
 

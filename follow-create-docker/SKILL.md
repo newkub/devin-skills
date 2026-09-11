@@ -21,10 +21,10 @@ related:
 
 - ใช้เมื่อต้องการ containerize application หรือเพิ่ม Docker support ให้ project ที่มีอยู่
 - รองรับ Bun/Node, Rust, Go, Python และ static sites
-- ครอบคลุม `Dockerfile`, `.dockerignore`, `docker-compose.yml` และ health checks
+- ครอบคลุม `Dockerfile`, `.dockerignore`, `compose.yaml`/`docker-compose.yml` และ health checks
 - ไม่ครอบคลุม Kubernetes manifests หรือ orchestration ระดับ production cluster
 
-- Latest: Docker Engine `29.x` (ตรวจ `docker --version` ในเครื่อง) (verified 2026-09-11)
+- Latest: Docker Engine `29.8.0` (29.x series; ตรวจ `docker --version` ในเครื่อง) (verified 2026-09-12)
 
 ## Execute
 
@@ -74,9 +74,11 @@ related:
 > Goal: local orchestration สำหรับ dev ถ้าจำเป็น
 
 1. สร้างเฉพาะเมื่อ app ต้องการ services อื่น (database, cache, queue)
-2. ใช้ `services`, `ports`, `environment`, `volumes`, `depends_on` กับ `condition: service_healthy`
-3. อ่าน env จาก `.env` ไม่ hardcode secrets — ใช้ `/follow-secret-manager`
-4. เพิ่ม `healthcheck` ให้ stateful services
+2. ชื่อไฟล์ `compose.yaml` เป็น convention ปัจจุบัน (`docker-compose.yml` ยังรองรับ) — ห้ามใส่ top-level `version:` เพราะ obsolete ใน Compose spec
+3. ใช้ `services`, `ports`, `environment`, `volumes`, `depends_on` กับ `condition: service_healthy`
+4. อ่าน env จาก `.env` ไม่ hardcode secrets — ใช้ `/follow-secret-manager`
+5. เพิ่ม `healthcheck` ให้ stateful services
+6. รันด้วย `docker compose` (v2 plugin, ไม่มี hyphen)
 
 ### 6. Build And Verify
 

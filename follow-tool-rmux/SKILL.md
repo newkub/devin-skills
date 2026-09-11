@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ tmux-compatible CLI หรือ drive terminal sessions ผ่าน Rust/Python/TypeScript SDK
 
-- Latest: `rmux@0.10.0` (crates.io; ดู rmux.io) (verified 2026-09-11)
+- Latest: `rmux@0.10.0` (crates.io; ดู rmux.io) (verified 2026-09-12)
 
 ## Execute
 
@@ -26,9 +26,9 @@ related:
 > Goal: ติดตั้ง RMUX CLI บน environment
 
 1. ใช้ `mise use -g rmux` หรือ `cargo install rmux --locked`
-2. บน Windows ใช้ `winget install rmux` หรือ `scoop install rmux`
+2. บน Windows ใช้ `winget install rmux`, `choco install rmux` หรือ `scoop bucket add rmux https://github.com/Helvesec/scoop-rmux` แล้ว `scoop install rmux`
 3. บน macOS ใช้ `brew install rmux`
-4. ยืนยันด้วย `rmux --version`
+4. ยืนยันด้วย `rmux -V` หรือ `rmux --version`
 5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
 
 ### 2. Create and Attach Sessions
@@ -76,7 +76,8 @@ related:
 1. ติดตั้ง RMUX ใน CI ด้วย binary จาก release หรือ package manager
 2. ใช้ `rmux new-session -d -s ci` เพื่อสร้าง detached session
 3. ส่งคำสั่งและ capture output ด้วย CLI หรือ SDK
-4. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
+4. ใช้ `rmux diagnose --human` เมื่อต้อง troubleshoot runtime/CLI issues (ตั้ง `RMUX_DISABLE_TINY_CLI=1` เพื่อบังคับใช้ full CLI helper)
+5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
 
 ## Rules
 
@@ -96,6 +97,8 @@ related:
 
 - ใช้ SDK สำหรับ programmatic control แทน parse text output ถ้าไปได้
 - ใช้ `wait-for` หรือ SDK equivalent เพื่อ synchronize ระหว่าง panes
+- ใช้ `rmux web-share` เมื่อต้องการ share session ผ่าน browser (E2E encrypted)
+- ใช้ `rmux claude [args]` สำหรับรัน Claude Code ใน RMUX workspace ด้วย tmux teammate mode
 - ปิด sessions ที่ไม่ใช้งานด้วย `rmux kill-session -t <name>`
 
 - ใช้ /follow-lang-rust ถ้าจำเป็น

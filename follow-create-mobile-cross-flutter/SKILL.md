@@ -23,7 +23,7 @@ related:
 - จัดการ data layer, domain layer, presentation layer
 - ตั้งค่า error handling, navigation, และ testing
 
-- Latest: Flutter `3.47.x` stable (verified 2026-09-11)
+- Latest: Flutter `3.47.3` stable / Dart `3.13.3`, `flutter_riverpod@3.4.3`, `go_router@18.0.1`, `freezed@4.0.1`, `fpdart@1.2.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -73,7 +73,7 @@ related:
 
 > Goal: สร้าง providers และ screens ด้วย Riverpod
 
-1. สร้าง providers ด้วย `riverpod_generator` หรือ `StateNotifier`
+1. สร้าง providers ด้วย `riverpod_generator` (`@riverpod` annotation) หรือ `Notifier`/`AsyncNotifier` (Riverpod 3.x — `StateNotifier` เป็น legacy API ย้ายไป `riverpod/legacy`)
 2. สร้าง screens ใน `lib/src/presentation/screens/`
 3. ใช้ `ConsumerWidget` เพื่อ subscribe providers
 4. จัดการ loading, error, success states ด้วย `AsyncValue`
@@ -116,7 +116,8 @@ related:
 
 ### 2. State Management
 
-- ใช้ Riverpod สำหรับ state management และ DI
+- ใช้ Riverpod 3.x สำหรับ state management และ DI
+- ใช้ `Notifier`/`AsyncNotifier` หรือ `@riverpod` codegen เป็น default — หลีกเลี่ยง `StateNotifierProvider` (legacy)
 - Providers ควรอยู่ใน `lib/src/presentation/providers/`
 - ใช้ `AsyncValue` จัดการ loading/error/data
 

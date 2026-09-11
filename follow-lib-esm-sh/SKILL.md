@@ -68,9 +68,10 @@ related:
 > Goal: รักษาความเสถียรของ production
 
 1. Pin version เสมอ เช่น `https://esm.sh/react@19.3.0` แทน `latest` หรือ bare package
-2. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore
-3. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
-4. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases`
+2. ใช้ date (`yyyy-mm-dd`) versioning ได้ตั้งแต่ v137 เช่น `https://esm.sh/my-package@2026-01-02`
+3. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore; ตั้งแต่ v137_2 legacy build server ถูก shutdown — pinned URLs เก่า redirect ไป routes ใหม่
+4. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
+5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v137_8, 2026-07-29 — verified 2026-09-12)
 
 ## Rules
 
@@ -85,8 +86,8 @@ related:
 - ใช้ `?dev` สำหรับ development build เท่านั้น
 - ใช้ `?no-dts` หาก type declaration จาก CDN ทำให้ `Deno` ตรวจ type ผิด
 
-- ใช้ `/follow-lib-js-delivr` ถ้าต้องการ `multi-CDN`
-- ใช้ `/follow-lib-jspm` ถ้าต้องการ `import maps package manager`
+- ใช้ `references/js-delivr.md` ถ้าต้องการ `multi-CDN` (jsDelivr)
+- ใช้ `references/jspm.md` ถ้าต้องการ `import maps package manager` (JSPM)
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-arktype` ถ้าจำเป็น
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น

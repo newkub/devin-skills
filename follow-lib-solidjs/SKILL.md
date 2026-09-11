@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ Solid.js projects ที่ไม่ใช่ SolidStart (client-side only หรือ integration กับ frameworks อื่น)
 
-- Latest: `solid-js@1.9.15` (2.0 ยังเป็น beta) (verified 2026-09-11)
+- Latest: `solid-js@1.9.15` (2.0 ยังเป็น beta) (verified 2026-09-12)
 
 ## Execute
 

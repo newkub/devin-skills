@@ -10,7 +10,7 @@ bun add zod    # สำหรับ tool schemas
 
 ## Version
 
-- Latest: `1.30.0` (verified 2026-09-11) — package เดิม `@modelcontextprotocol/server` deprecated ให้ใช้ `/sdk`
+- Latest: `1.30.0` (verified 2026-09-12) — package เดิม `@modelcontextprotocol/server` deprecated ให้ใช้ `/sdk`
 - [Package Registry](https://www.npmjs.com/package/@modelcontextprotocol/sdk)
 - [Repository](https://github.com/modelcontextprotocol/typescript-sdk)
 

@@ -13,7 +13,7 @@ Test components ใน Storybook ด้วย interaction, accessibility, แล
 ใช้ `play` function สำหรับ test user interactions:
 
 ```typescript
-import { within, userEvent } from '@storybook/testing-library';
+import { within, userEvent } from 'storybook/test';
 
 export const Interaction: StoryObj<typeof Button> = {
   play: async ({ canvasElement }) => {
@@ -35,7 +35,7 @@ bunx storybook add @storybook/addon-a11y
 Configure ใน `.storybook/main.ts`:
 
 ```typescript
-addons: ['@storybook/addon-essentials', '@storybook/addon-a11y']
+addons: ['@storybook/addon-a11y']
 ```
 
 ### 3. Visual Testing
@@ -62,7 +62,7 @@ bun run test-storybook
 
 ## Rules
 
-- ใช้ `@storybook/testing-library` สำหรับ user interactions
+- ใช้ `storybook/test` (`within`, `userEvent`, `expect`) สำหรับ user interactions — `@storybook/testing-library` deprecated
 - ใช้ `within` helper สำหรับ scoped queries
 - Handle async operations ด้วย `await`
 - Test critical user flows

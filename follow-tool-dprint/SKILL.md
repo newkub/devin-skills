@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ code formatting หลายภาษา
 
-- Latest: `dprint@0.57.4` (verified 2026-09-11)
+- Latest: `dprint@0.57.4` (verified 2026-09-12) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
 
 ## Execute
 
@@ -59,17 +59,17 @@ related:
     "/.git"
   ],
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.96.1.wasm",
-    "https://plugins.dprint.dev/json-0.23.0.wasm",
-    "https://plugins.dprint.dev/markdown-0.23.3.wasm",
-    "https://plugins.dprint.dev/toml-0.8.0.wasm",
+    "npm:@dprint/typescript@0.96.1",
+    "npm:@dprint/json@0.23.0",
+    "npm:@dprint/markdown@0.24.0",
+    "npm:@dprint/toml@0.8.0",
     "npm:dprint-plugin-yaml@0.6.0",
-    "https://plugins.dprint.dev/dockerfile-0.6.0.wasm",
+    "npm:@dprint/dockerfile@0.6.0",
     "npm:dprint-plugin-malva@0.16.0",
     "npm:dprint-plugin-markup@0.27.3",
-    "https://plugins.dprint.dev/ruff-0.8.6.wasm",
-    "npm:@jakebailey/dprint-plugin-gofumpt@0.0.17",
-    "https://plugins.dprint.dev/mago-0.25.5.wasm"
+    "npm:@dprint/ruff@0.8.7",
+    "npm:@jakebailey/dprint-plugin-gofumpt@0.0.18",
+    "npm:@dprint/mago@0.26.1"
   ]
 }
 ```
@@ -112,6 +112,7 @@ related:
 - ต้องระบุ plugins สำหรับทุกภาษาที่ต้องการรองรับ
 - ต้องกำหนด excludes patterns สำหรับ node_modules, dist, .git เสมอ
 - ต้องเพิ่ม format script ใน package.json
+- ใช้ `dprint add <plugin>` เพื่อเพิ่ม plugin และ `dprint config update` เพื่ออัปเดต plugin versions ใน config
 - ต้องใช้ indentWidth: 2 สำหรับ TypeScript และ JSON
 - ต้องใช้ lineWidth: 100 สำหรับ TypeScript
 - ต้องใช้ quoteStyle: alwaysSingle สำหรับ TypeScript

@@ -22,7 +22,7 @@ mise use -g golangci-lint
 
 ## Version
 
-- oxlint `1.82.0`, biome `2.5.13`, eslint `10.10.0` (verified 2026-09-11)
+- oxlint `1.82.0`, biome `2.5.13`, eslint `10.10.0` (verified 2026-09-12)
 - [oxlint](https://oxc.rs) / [biome](https://biomejs.dev) / [eslint](https://eslint.org)
 
 ## Dependencies

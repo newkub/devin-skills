@@ -18,6 +18,8 @@ related:
 
 ใช้งาน linter สำหรับ projects ตาม tech stack
 
+- Latest: oxlint `1.82.0`, biome `2.5.13`, eslint `10.10.0`, ruff `0.16.7`, golangci-lint `2.13.2` (verified 2026-09-12)
+
 ## Execute
 
 ### 1. Select Linter
@@ -37,7 +39,10 @@ related:
 
 1. รัน `/follow-tool-biome` สำหรับ TypeScript/JavaScript
 2. รัน `/follow-tool-eslint` สำหรับ TypeScript/JavaScript
-3. รัน `clippy` สำหรับ Rust
+3. สำหรับ oxlint: `bun add -D oxlint` แล้ว `bunx oxlint` — ถ้าต้องการ type-aware rules ให้ติดตั้ง `oxlint-tsgolint` เพิ่ม
+4. รัน `clippy` สำหรับ Rust (`rustup component add clippy` แล้ว `cargo clippy`)
+5. สำหรับ Python: `pipx install ruff` แล้ว `ruff check` (+ `ruff format` สำหรับ formatter)
+6. สำหรับ Go: `mise use -g golangci-lint` แล้ว `golangci-lint run`
 
 ### 3. Validate
 

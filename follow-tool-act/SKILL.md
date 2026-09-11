@@ -19,7 +19,7 @@ related:
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
 - ใช้ร่วมกับ `/resolve-github-actions-fails` (ดูและแก้ fails บน remote)
 
-- Latest: `act@0.2.89` (nektos/act) (verified 2026-09-11)
+- Latest: `act@0.2.89` (nektos/act) (verified 2026-09-12)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

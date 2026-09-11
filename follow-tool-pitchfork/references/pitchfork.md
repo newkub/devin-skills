@@ -21,7 +21,7 @@ cargo install pitchfork-cli
 ## Version
 
 - Crate: `pitchfork-cli`
-- Latest: `2.24.2`
+- Latest: `2.25.0` (verified 2026-09-12)
 - License: MIT
 - Repository: https://github.com/jdx/pitchfork
 - Docs: https://pitchfork.jdx.dev

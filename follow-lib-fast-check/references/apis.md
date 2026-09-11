@@ -8,7 +8,7 @@ bun add -D fast-check
 
 ## Version
 
-- Latest: `4.9.0` (verified 2026-09-11)
+- Latest: `4.10.0` (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/fast-check)
 - [Repository](https://github.com/dubzzz/fast-check)
 
