@@ -6,8 +6,12 @@ let firstPing = false;
 let tabClosed = false;
 let prompting = false;
 let appUrl = '';
+let rl: readline.Interface | null = null;
 
-const rl = readline.createInterface({ input, output });
+function getRl() {
+  if (!rl) rl = readline.createInterface({ input, output });
+  return rl;
+}
 
 export function setAppUrl(url: string) {
   appUrl = url;
@@ -38,13 +42,13 @@ export function promptOnClose() {
     prompting = false;
     return;
   }
-  rl.question('[open-diff] Choose: (r)eopen, (q)uit, (c)ontinue: ', (answer) => {
+  getRl().question('[open-diff] Choose: (r)eopen, (q)uit, (c)ontinue: ', (answer) => {
     prompting = false;
     const a = answer.trim().toLowerCase();
     if (a === 'r' || a === 'reopen') {
       openBrowser(appUrl);
     } else if (a === 'q' || a === 'quit') {
-      rl.close();
+      rl?.close();
       process.exit(0);
     } else {
       console.log('[open-diff] Continuing to serve. Open tab again to reconnect.');

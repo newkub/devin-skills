@@ -1,6 +1,5 @@
-import { Elysia } from 'elysia';
-import { api } from './server/api.js';
 import { cli } from './server/state.js';
+import { handleApi } from './server/api.js';
 import { setAppUrl, startWatchdog, openBrowser } from './server/lifecycle.js';
 import { existsSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -28,24 +27,30 @@ function guessType(path: string) {
 const distRoot = resolve(process.cwd(), 'dist/client');
 const shell = resolve(distRoot, '_shell.html');
 
-const app = new Elysia()
-  .use(api)
-  .get('/*', ({ params, set }) => {
-    const rel = (params['*'] as string) || '';
-    const filePath = resolve(distRoot, rel);
-    if (!filePath.startsWith(distRoot)) {
-      set.status = 404;
-      return 'Not found';
+if (!existsSync(shell)) {
+  console.error('[open-diff] dist/client/_shell.html not found — run `bun run build` first');
+  process.exit(1);
+}
+
+const server = Bun.serve({
+  port: Number(Bun.env.OPEN_DIFF_PORT) || 0,
+  async fetch(req) {
+    const { pathname } = new URL(req.url);
+
+    if (pathname.startsWith('/api/')) {
+      return handleApi(req);
     }
-    if (rel && existsSync(filePath) && statSync(filePath).isFile()) {
+
+    const rel = pathname.slice(1);
+    const filePath = resolve(distRoot, rel);
+    if (rel && filePath.startsWith(distRoot) && existsSync(filePath) && statSync(filePath).isFile()) {
       return new Response(Bun.file(filePath), { headers: { 'content-type': guessType(filePath) } });
     }
     return new Response(Bun.file(shell), { headers: { 'content-type': 'text/html' } });
-  })
-  .listen(Number(Bun.env.OPEN_DIFF_PORT) || 0);
+  },
+});
 
-const port = app.server?.port ?? 0;
-const appUrl = `http://localhost:${port}${cli?.openQuery ?? ''}`;
+const appUrl = `http://localhost:${server.port}${cli?.openQuery ?? ''}`;
 
 setAppUrl(appUrl);
 startWatchdog();

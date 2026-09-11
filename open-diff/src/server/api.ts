@@ -1,55 +1,55 @@
-import { Elysia, t } from 'elysia';
 import { fetchDiff, fetchPrMeta, fetchChecks } from './git.js';
 import { handleAction } from './actions.js';
 import { recordPing, promptOnClose } from './lifecycle.js';
 import { cli } from './state.js';
+import type { DiffSource } from '../types.js';
 
-const DiffSourceBody = t.Union([
-  t.Object({ kind: t.Literal('pr'), pr: t.Number(), repo: t.Optional(t.String()), theme: t.Optional(t.String()) }),
-  t.Object({ kind: t.Literal('git'), ref: t.String(), repo: t.Optional(t.String()), theme: t.Optional(t.String()) }),
-  t.Object({ kind: t.Literal('branch'), base: t.String(), head: t.String(), repo: t.Optional(t.String()), theme: t.Optional(t.String()) }),
-  t.Object({ kind: t.Literal('file'), old: t.String(), new: t.String(), theme: t.Optional(t.String()) }),
-]);
+const KINDS = ['pr', 'git', 'branch', 'file'] as const;
 
-export const api = new Elysia({ prefix: '/api' })
-  .onError(({ error, set }) => {
-    set.status = 500;
-    return { error: error instanceof Error ? error.message : String(error) };
-  })
-  .all('/ping', () => {
-    recordPing();
-    return 'pong';
-  })
-  .post('/close', () => {
-    promptOnClose();
-    return 'ok';
-  })
-  .get('/default', () => cli?.source ?? null)
-  .get('/checks', () => fetchChecks(cli?.source))
-  .post(
-    '/diff',
-    async ({ body }) => {
+function isDiffSource(body: unknown): body is DiffSource {
+  return !!body && typeof body === 'object' && KINDS.includes((body as any).kind);
+}
+
+export async function handleApi(request: Request): Promise<Response> {
+  const path = new URL(request.url).pathname.replace(/^\/api\/?/, '');
+  try {
+    if (path === 'ping') {
+      recordPing();
+      return new Response('pong');
+    }
+
+    if (path === 'close' && request.method === 'POST') {
+      promptOnClose();
+      return new Response('ok');
+    }
+
+    if (path === 'default') {
+      return Response.json(cli?.source ?? null);
+    }
+
+    if (path === 'checks') {
+      return Response.json(await fetchChecks(cli?.source));
+    }
+
+    if (path === 'diff' && request.method === 'POST') {
+      const body: unknown = await request.json();
+      if (!isDiffSource(body)) return Response.json({ error: 'Invalid diff source' }, { status: 400 });
       const raw = await fetchDiff(body);
       const prMeta = body.kind === 'pr' ? await fetchPrMeta(body) : null;
-      return { source: body, raw, prMeta };
-    },
-    { body: DiffSourceBody },
-  )
-  .post(
-    '/action',
-    async ({ body }) => {
-      const result = await handleAction(body, cli?.source);
+      return Response.json({ source: body, raw, prMeta });
+    }
+
+    if (path === 'action' && request.method === 'POST') {
+      const body = (await request.json()) as { action?: string; method?: string; body?: string };
+      if (!body.action) return Response.json({ ok: false, error: 'Missing action' }, { status: 400 });
+      const result = await handleAction(body as any, cli?.source);
       if (result.ok) console.log(`[open-diff] ${body.action} → ${result.output || 'ok'}`);
       else console.log(`[open-diff] ${body.action} failed: ${result.error}`);
-      return result;
-    },
-    {
-      body: t.Object({
-        action: t.String(),
-        method: t.Optional(t.String()),
-        body: t.Optional(t.String()),
-      }),
-    },
-  );
+      return Response.json(result);
+    }
 
-export type Api = typeof api;
+    return Response.json({ error: 'Not found' }, { status: 404 });
+  } catch (e: any) {
+    return Response.json({ error: e?.message ?? 'Internal error' }, { status: 500 });
+  }
+}

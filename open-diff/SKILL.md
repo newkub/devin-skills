@@ -1,10 +1,9 @@
 ---
 name: open-diff
-description: เปิดดู diff จาก PR, git, branch, หรือไฟล์สองไฟล์ ใน TanStack Start SPA + Elysia บน Bun
+description: เปิดดู diff จาก PR, git, branch, หรือไฟล์สองไฟล์ ใน TanStack Start SPA (Solid) บน Bun
 argument-hint: "[pr <n>] | [git <ref>] | [branch <base>..<head>] | [file <old> <new>] [--repo owner/repo]"
 related:
   - follow-create-web-solid-tanstack-router
-  - follow-lib-elysia
   - follow-lib-unocss
   - use-gh-cli
   - open-web
@@ -14,7 +13,7 @@ related:
 
 ## Goal
 
-เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย TanStack Start (SolidJS, SPA mode) + Elysia API บน Bun โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
+เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย TanStack Start (SolidJS, SPA mode) + server routes บน Bun โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
 
 ## Scope
 
@@ -111,7 +110,8 @@ related:
 - ต้องมี `git` สำหรับ git/branch/file diff
 - ติดตั้ง dependencies ด้วย `bun install`
 - build ด้วย `bun run build`
-- ห้ามสร้าง `src/server.ts` — TanStack Start จองชื่อนี้เป็น custom server entry (ใช้ `src/serve.ts` แทน)
+- API อยู่ที่ `src/server/api.ts` (`handleApi`) — expose ผ่าน server route `src/routes/api.$.ts` (dev) และ Bun wrapper `src/serve.ts` (prod)
+- `src/serve.ts` serve `dist/client` statics + `_shell.html` fallback และ heartbeat/prompt — อย่าสร้าง `src/server.ts` (Start จองชื่อนี้เป็น custom server entry)
 
 ### 4. UX Requirements
 

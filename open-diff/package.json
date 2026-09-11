@@ -1,11 +1,9 @@
 {
   "name": "open-diff",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"bun run dev:web\" \"bun run dev:api\"",
-    "dev:web": "bunx vite dev",
-    "dev:api": "cross-env OPEN_DIFF_NO_OPEN=1 OPEN_DIFF_PORT=51998 bun --watch src/serve.ts",
+    "dev": "bunx vite dev",
     "build": "bunx vite build",
     "start": "bun src/serve.ts",
     "typecheck": "tsc --noEmit"
@@ -14,7 +12,6 @@
     "@pierre/diffs": "^1.4.1",
     "@tanstack/solid-router": "^1.170.33",
     "@tanstack/solid-start": "^1.168.50",
-    "elysia": "^1.4.30",
     "shiki": "4.0.0",
     "solid-js": "^1.9.0",
     "unocss": "^66.10.2"
@@ -24,11 +21,8 @@
     "@types/node": "^24.0.0",
     "@unocss/preset-wind4": "^66.10.0",
     "bun-types": "1.1.0",
-    "concurrently": "9.0.0",
-    "cross-env": "^10.1.0",
     "typescript": "5.5.4",
     "vite": "^7.1.0",
     "vite-plugin-solid": "^2.11.14"
   }
 }
-

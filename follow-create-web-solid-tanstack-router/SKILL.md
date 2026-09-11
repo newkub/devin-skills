@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-solid-tanstack-router
-description: ตั้งค่าและพัฒนา full-stack app ด้วย TanStack Start (SolidJS), oRPC, Elysia และ UnoCSS
+description: ตั้งค่าและพัฒนา full-stack app ด้วย TanStack Start (SolidJS), TanStack Router และ UnoCSS
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
@@ -8,16 +8,16 @@ related:
   - follow-create-vite-plugins
   - follow-lang-typescript
   - follow-lib-tanstack-ecosystem
-  - follow-lib-elysia
   - follow-lib-effect-ts
   - follow-single-responsibility
   - follow-lib-solidjs
+  - follow-lib-zod
 ---
 
 
 ## Goal
 
-ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS), Elysia และ oRPC แบบ type-safe
+ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS) แบบ type-safe — server functions และ server routes ในตัว framework โดยไม่ต้องพึ่ง backend framework แยก
 
 ## Scope
 
@@ -26,10 +26,9 @@ related:
 ใช้สำหรับ projects ที่ต้องการ:
 
 - Full-stack framework ด้วย SolidJS
-- Server-side rendering (SSR) และ streaming
+- Server-side rendering (SSR) และ streaming หรือ SPA mode
 - Type-safe routing ด้วย TanStack Router
-- Type-safe API ด้วย oRPC
-- Backend server ด้วย Elysia บน Bun
+- Type-safe server functions (RPC) และ server routes (API endpoints) ของ TanStack Start
 - Styling ด้วย UnoCSS
 
 ## Execute
@@ -38,12 +37,12 @@ related:
 
 > Goal: สร้าง project ใหม่
 
-1. ใช้ TanStack Start CLI:
+1. ใช้ TanStack CLI:
    ```bash
-   bun create @tanstack/start@latest
+   npx @tanstack/cli@latest create --framework solid
    ```
-2. เลือก SolidJS เป็น framework
-3. ตรวจสอบ project structure และไฟล์ config
+   หรือ clone official example (`npx gitpick TanStack/router/tree/main/examples/solid/start-basic my-app`)
+2. ตรวจสอบ project structure และไฟล์ config
 
 ### 2. Install Dependencies
 
@@ -54,31 +53,24 @@ related:
    bun i @tanstack/solid-start @tanstack/solid-router solid-js
    bun i -D vite vite-plugin-solid typescript @types/node
    ```
-2. oRPC (`zod` เป็น runtime dependency สำหรับ input validation — ห้ามใส่ `-D`):
-   ```bash
-   bun i @orpc/server @orpc/client zod
-   ```
-3. Elysia:
-   ```bash
-   bun i elysia @elysia/eden
-   ```
-4. UnoCSS:
+2. UnoCSS:
    ```bash
    bun i -D unocss @iconify-json/mdi
    ```
-5. Optional:
-   - `@orpc/tanstack-query` สำหรับ TanStack Query integration
-   - `@orpc/openapi` สำหรับ OpenAPI
+3. Optional:
+   - `zod` สำหรับ input validation ของ server functions
+   - `nitro` เมื่อต้องการ portable production server output (`.output/server/index.mjs`)
 
 ### 3. Configure Build Tool
 
 > Goal: ตั้งค่า Vite หรือ Rsbuild
 
 1. Vite:
-   - ใช้ `@tanstack/solid-start/plugin/vite`
-   - ใช้ `vite-plugin-solid` ด้วย `ssr: true`
+   - ใช้ `@tanstack/solid-start/plugin/vite` — `tanstackStart()`
+   - ใช้ `vite-plugin-solid` ด้วย `ssr: true` (ต้องอยู่หลัง start plugin)
    - ใช้ `UnoCSS()` จาก `unocss/vite`
    - ใช้ `uno.css` หรือ `virtual:uno.css` ใน entry point
+   - ถ้าไม่ต้องการ SSR → `tanstackStart({ spa: { enabled: true } })`
    - ทำ `/follow-lib-unocss` เพื่อ config ครบถ้วน
 2. Rsbuild:
    - ใช้ `@tanstack/solid-start/plugin/rsbuild`
@@ -95,127 +87,127 @@ related:
 4. หลีกเลี่ยง `verbatimModuleSyntax` เพื่อป้องกัน server bundles รั่วไป client
 5. ทำตาม `/follow-lang-typescript`
 
-### 5. Setup oRPC Server
+### 5. Define Server Functions
 
-> Goal: สร้าง type-safe API layer
+> Goal: สร้าง type-safe RPC ระหว่าง client และ server
 
-1. สร้าง `os` builder พร้อม `.$context<{ headers: Headers }>()`
-2. ใช้ `.input(zodSchema)` สำหรับทุก procedure ที่รับ input
-3. ใช้ `.errors({ CODE: { data: zodSchema } })` สำหรับ application-specific errors
-4. ใช้ `.use(middleware)` สำหรับ auth, logging, หรือ resource injection
-5. สร้าง `RPCHandler` พร้อม `interceptors: [onError(...)]`
-6. ส่ง initial context ผ่าน `handler.handle(request, { context: { headers: request.headers } })`
-7. ตรวจสอบ `result.matched` ก่อน return response
+1. ใช้ `createServerFn({ method: 'GET' | 'POST' })` จาก `@tanstack/solid-start`
+2. ใช้ `.validator(schema)` สำหรับ input validation (zod หรือ plain function ที่ return typed data)
+3. ใช้ `.handler(async ({ data }) => ...)` — code ใน handler รันบน server เท่านั้น
+4. Client เรียก server function เหมือน local async function แล้ว `router.invalidate()` เพื่อ refetch loader data
+5. แยก server-only code ไว้ใน `.server.ts` files หรือใช้ `serverOnly()` guard เพื่อกัน bundle รั่วไป client
 
-### 6. Setup oRPC Client
+### 6. Define Server Routes
 
-> Goal: สร้าง client สำหรับ call API
+> Goal: สร้าง HTTP endpoints สำหรับ external callers
 
-1. ใช้ `RPCLink` จาก `@orpc/client/fetch`
-2. ใช้ `createORPCClient(link)` พร้อม `RouterClient<typeof router>`
-3. ใช้ `headers: () => ({ ... })` สำหรับ dynamic headers
-4. ใช้ `createSafeClient` ถ้าต้องการ `safe()` ทุก procedure
-5. ถ้าใช้ TanStack Query → ใช้ `createTanstackQueryUtils`
+1. สร้างไฟล์ใน `src/routes/` พร้อม `server.handlers` ใน `createFileRoute`:
+   ```ts
+   // src/routes/api/users.ts
+   export const Route = createFileRoute('/api/users')({
+     server: {
+       handlers: {
+         GET: async ({ request }) => Response.json({ users: [] }),
+         POST: async ({ request }) => { const body = await request.json(); /* ... */ },
+       },
+     },
+   })
+   ```
+2. ใช้ wildcard route `src/routes/api.$.ts` (path `/api/$`) เมื่อต้องการ dispatch หลาย endpoints จาก handler เดียว
+3. ใช้ `server.middleware` หรือ `createHandlers` สำหรับ auth/logging ต่อ route
+4. Server routes สำหรับ HTTP จากภายนอก app; ถ้าเรียกจากภายใน app ให้ใช้ server functions แทน (Step 5)
 
 ### 7. Integrate TanStack Router
 
 > Goal: สร้าง type-safe routing
 
-1. ใช้ `createFileRoute` สำหรับ file-based routing
-2. ใช้ server functions ผ่าน `server.handlers` ถ้าจำเป็น
+1. ใช้ `createFileRoute` สำหรับ file-based routing — routeTree ถูก generate อัตโนมัติเป็น `src/routeTree.gen.ts`
+2. ใช้ `loader` สำหรับ data loading และ `validateSearch` สำหรับ search params
 3. ใช้ `HydrationScript` สำหรับ client-side hydration
 4. ทำตาม `/follow-lib-tanstack-ecosystem`
 
-### 8. Setup Elysia Server
+### 8. Optional Custom Server Entry
 
-> Goal: สร้าง backend server ด้วย Elysia
+> Goal: ปรับ server behavior เมื่อจำเป็น
 
-1. สร้าง `src/server.ts` หรือ `src/index.ts` ด้วย `new Elysia()`
-2. ใช้ `.onRequest()` สำหรับ headers/context logging
-3. ใช้ `.onError()` สำหรับ centralized error handling
-4. Mount oRPC handler ใน Elysia route เช่น `.all('/rpc/*', handler)`
-5. ใช้ `.listen(port)` สำหรับ Bun server
-6. ทำตาม `/follow-lib-elysia` เพื่อ routes, validation, lifecycle
+1. สร้าง `src/server.ts` (ชื่อนี้ถูกจองโดย Start — ห้ามใช้เป็นไฟล์อื่น):
+   ```ts
+   import handler, { createServerEntry } from '@tanstack/solid-start/server-entry'
+   export default createServerEntry({
+     fetch(request) { return handler.fetch(request) },
+   })
+   ```
+2. ใช้ `createStartHandler` + `defineHandlerCallback` เมื่อต้อง wrap render pipeline
+3. Pass request context ผ่าน `handler.fetch(request, { context })` และ augment `Register['server']['requestContext']`
+4. ถ้าไม่ต้องการ custom entry → ไม่ต้องสร้างไฟล์นี้
 
 ### 9. Optional Effect-TS And Single Responsibility
 
 > Goal: ใช้ Effect-TS และตรวจสอบ single responsibility
 
 1. ถ้ามี complex effects หรือต้องการ dependency injection → ทำ `/follow-lib-effect-ts`
-2. ทำ `/follow-single-responsibility` เพื่อตรวจสอบ modules, components, procedures
+2. ทำ `/follow-single-responsibility` เพื่อตรวจสอบ modules, components, server functions
 3. ตรวจสอบว่า business logic แยกจาก UI และ routes ชัดเจน
 
 ### 10. Build And Deploy
 
 > Goal: รัน build และ deploy
 
-1. รัน `bun run build`
-2. รัน `bun run start` เพื่อทดสอบ
-3. ตั้งค่า Elysia port และ host ตาม target platform
+1. รัน `bun run build` (`vite build`)
+2. Dev: `bun run dev` (`vite dev`) — server routes/functions ทำงานใน dev server โดยตรง
+3. Production server:
+   - ติดตั้ง `nitro` + `nitro()` plugin ใน vite config ถ้าต้องการ `bun .output/server/index.mjs` (ตั้ง `NITRO_PRESET=bun` หรือ `nitro({ preset: 'bun' })`)
+   - หรือ serve `dist/client` statics + route เฉพาะ `/api/*`, `/_serverFn/*` เข้า built server entry (`dist/server/server.js` export `{ fetch }`)
 4. ถ้า deploy บน Cloudflare Workers หรือ serverless → ทำ `/deploy-to-cloudflare`
-5. ใช้ `bun --hot` สำหรับ development hot reload
 
 ## Rules
 
-### 1. oRPC Procedure Design
+### 1. Server Functions Vs Server Routes
 
-- ใช้ `.$context<{ ... }>()` สำหรับ initial context
-- ใช้ `.input(zodSchema)` สำหรับทุก procedure (ทำ `/follow-lib-zod`)
-- ใช้ `.errors()` สำหรับ application-specific errors
-- ใช้ common error codes เช่น `UNAUTHORIZED`, `NOT_FOUND` โดยไม่ต้อง define schema
-- Export `type Router` สำหรับ client-side type inference
+- ใช้ server functions สำหรับ call จากภายใน app (type-safe, auto serialization)
+- ใช้ server routes สำหรับ raw HTTP endpoints (webhooks, external API, non-JSON)
+- ใช้ `.validator()` ทุก server function ที่รับ input (ทำ `/follow-lib-zod` ถ้าใช้ zod)
+- ห้ามใส่ secrets หรือ sensitive data ใน response `message`/`data`
 
-### 2. oRPC Middleware
+### 2. Server-Only Code
 
-- ใช้ `.$context` ก่อน `.middleware()` เพื่อระบุ dependent context
-- ใช้ `next({ context: { ... } })` สำหรับ inject execution context
-- ใช้ `throw new ORPCError('CODE')` สำหรับ guards
-- ใช้ `.mapInput()` สำหรับ reuse middleware กับ input shape อื่น
-- ไม่ pass sensitive data ผ่าน context ที่ไม่จำเป็น
+- แยก server-only logic ไว้ใน `.server.ts` หรือ guard ด้วย `serverOnly()`
+- หลีกเลี่ยง `verbatimModuleSyntax` เพื่อป้องกัน server bundles รั่วไป client
+- ไม่ pass sensitive data ผ่าน request context ที่ไม่จำเป็น
 
 ### 3. SolidJS Requirements
 
-- ใช้ SolidJS 1.x สำหรับ Bun deployment
-- ตั้งค่า `vite-plugin-solid` ด้วย `ssr: true`
+- ใช้ SolidJS 1.x
+- ตั้งค่า `vite-plugin-solid` ด้วย `ssr: true` (ต้องอยู่หลัง `tanstackStart()`)
 - ใช้ `HydrationScript` สำหรับ hydration
 - ทำตาม `/follow-lib-solidjs`
 
-### 4. Elysia Server
-
-- ใช้ Bun เป็น runtime เท่านั้น (ทำ `/use-bun-native-api`)
-- ใช้ `new Elysia()` และ `.listen(port)`
-- ใช้ `.onError()` สำหรับ centralized error handling
-- Mount oRPC handler ใน Elysia ด้วย `.all()`
-- ทำตาม `/follow-lib-elysia` สำหรับ routes, validation, lifecycle
-
-### 5. UnoCSS Styling
+### 4. UnoCSS Styling
 
 - ใช้ `unocss/vite` plugin ใน `vite.config.ts`
 - ใช้ `presetWind4` และ `presetIcons`
 - ใช้ `transformerVariantGroup` และ `transformerDirectives`
 - ทำตาม `/follow-lib-unocss` สำหรับ config ครบถ้วน
 
-### 6. Error Handling
+### 5. Error Handling
 
-- ใช้ `safe()` แทน try/catch ใน client code
-- ใช้ `isDefinedError(error)` สำหรับ narrow typed errors
-- ห้ามใส่ sensitive information ใน `message` หรือ `data`
-- ใช้ `onError` interceptor ทั้ง server และ client
+- ใช้ route-level `middleware` และ `onError` สำหรับ centralized error handling
+- ใช้ common error semantics (404, 400, 401) ตามจริง ไม่ wrap ทุก response เป็น 200
+- ห้ามใส่ sensitive information ใน error `message` หรือ `data`
 
-### 7. Performance
+### 6. Performance
 
-- ใช้ `shallowRef` สำหรับ large immutable data
 - ใช้ `dynamic imports` สำหรับ lazy loading
 - ใช้ `lazy()` พร้อม `<Suspense>` สำหรับ heavy components
 - ใช้ `defaultPreload: "intent"` และ `scrollRestoration: true`
 - ใช้ `manualChunks` ใน Vite config สำหรับ vendor splitting
 
-### 8. TanStack Library Selection
+### 7. TanStack Library Selection
 
 เลือก TanStack library ตาม use case จริง — ห้ามติดตั้งโดยไม่มีความจำเป็น:
 
 - Router → type-safe routing (มีแล้วใน skill นี้)
-- Query → server state (fetch/cache/mutation) — ใช้ร่วมกับ oRPC ผ่าน `@orpc/tanstack-query`
+- Query → server state (fetch/cache/mutation) เมื่อ client-side cache จำเป็น
 - Store → client state เมื่อ signal เดียวไม่พอ (shared state ข้าม component)
 - Start → SSR/server functions (ใช้แล้วใน skill นี้)
 - Form → form state + validation (ใช้เมื่อมี form จริง เช่น login, settings)
@@ -231,10 +223,9 @@ related:
 
 ## Expected Outcome
 
-- TanStack Start (SolidJS) project ที่ตั้งค่าด้วย Elysia
-- oRPC API แบบ type-safe ครบวงจร (server → client)
-- Type-safe routing ด้วย TanStack Router
-- SSR และ streaming ทำงานได้อย่างถูกต้อง
+- TanStack Start (SolidJS) project ที่ตั้งค่าครบ
+- Server functions / server routes แบบ type-safe ครบวงจร (server → client)
+- Type-safe routing ด้วย TanStack Router พร้อม generated routeTree
+- SSR/streaming หรือ SPA mode ทำงานได้อย่างถูกต้อง
 - UnoCSS พร้อมใช้งานด้วย presetWind4
-- Backend server รันได้บน Bun ด้วย Elysia
-- Client เรียก oRPC procedure เหมือน local function
+- Client เรียก server function เหมือน local async function
