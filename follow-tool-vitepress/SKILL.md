@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site
 
+- Latest: `vitepress@1.6.4` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Project Initialization
@@ -232,19 +234,16 @@ export default {
 
 - [CLI reference](references/cli.md)
 
-
 ## Expected Outcome
 
 - VitePress config พร้อมใช้งาน
 - UnoCSS integrated พร้อม presetWind4
 - Theme custom พร้อมใช้งาน
 - Package scripts พร้อมใช้งาน
-- Shiki Twoslash integrated พร้อม type hover
-- VitePress Plugin Group Icons integrated
+- Shiki Twoslash + Group Icons integrated
 - GitHub Actions deployment พร้อมใช้งาน
 - Home page พร้อม frontmatter ตาม VitePress default
 - `.gitignore` ครอบคลุม VitePress build output และ cache
 - `tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
 - Project docs 4 sections (Project, Features, Review, Release) ด้วย Vue components
 - ข้อมูลจริงจาก project ผ่าน Bun shell scripts ไม่ hardcoded
-

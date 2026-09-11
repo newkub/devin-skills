@@ -21,6 +21,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite) — สำหรับ Ultracite preset บน Biome ดู `references/ultracite.md`
 
+- Latest: `@biomejs/biome@2.5.13` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup

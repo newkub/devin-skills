@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ JavaScript, TypeScript, React, Angular, Vue, Svelte และ Node.js projects ที่มี test runner รองรับ
 
+- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

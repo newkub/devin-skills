@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
+- Latest: `tsdown@0.23.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Project Analysis

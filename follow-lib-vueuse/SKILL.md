@@ -17,6 +17,8 @@ related:
 
 ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v14.4 ครอบคลุม installation, core composables, v14 features, best practices และ testing
 
+- Latest: `@vueuse/core@14.4.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup VueUse

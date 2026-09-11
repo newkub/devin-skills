@@ -20,6 +20,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-build-packages) — สำหรับ package build pipeline ดู `references/build-packages.md`
 
+- Latest: `turbo@2.10.12` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Repository Structure

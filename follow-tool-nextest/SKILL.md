@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ Rust projects ที่ใช้ Cargo build system
 
+- Latest: `cargo-nextest@0.9.144` (crates.io) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

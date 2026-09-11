@@ -20,6 +20,8 @@ related:
 
 ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
 
+- Latest: `@playwright/test@1.63.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

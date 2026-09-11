@@ -20,6 +20,8 @@ related:
 - Render วิดีโอ, GIF, image sequence ผ่าน CLI
 - Cloud rendering (Lambda, Cloud Run, Vercel)
 
+- Latest: `remotion@4.0.523` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Create Project

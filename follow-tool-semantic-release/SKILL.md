@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ projects ที่ใช้ conventional commits และต้องการ automate release, changelog, npm/GitHub publish
 
+- Latest: `semantic-release@25.0.9` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

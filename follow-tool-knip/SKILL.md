@@ -15,6 +15,8 @@ related:
 
 ใช้กับทุกโปรเจกต์ที่ต้องการวิเคราะห์ unused code — รองรับทั้ง single project และ monorepo ที่มี workspaces; ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
 
+- Latest: `knip@6.35.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install And Create Config

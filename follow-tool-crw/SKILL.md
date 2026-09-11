@@ -21,6 +21,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-websearch) — สำหรับ web search/scrape ด้วย crw ดู `references/websearch.md`
 
+- Latest: `crw-mcp@0.35.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Web Search

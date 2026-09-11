@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับ Vue 3 projects ทั้ง Vite 8 หรือ Nuxt 4 (Vue 3.5.42 เป็น stable ล่าสุด, Vue 3.6 ยังอยู่ในช่วง RC)
 
+- Latest: `vue@3.5.42` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Configuration

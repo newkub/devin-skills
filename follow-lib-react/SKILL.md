@@ -1,6 +1,6 @@
 ---
 name: follow-lib-react
-description: พัฒนา React 19.2 applications ด้วย Server Components, React Compiler และ modern hooks
+description: พัฒนา React 19.3 applications ด้วย Server Components, React Compiler และ modern hooks
 argument-hint: "[scope]"
 related:
   - follow-tool-react-scan
@@ -19,6 +19,8 @@ related:
 ## Scope
 
 ใช้สำหรับพัฒนา React 19.2+ applications ด้วย Vite หรือ Next.js, TypeScript และ folder structure มาตรฐาน
+
+- Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-11)
 
 ## Execute
 

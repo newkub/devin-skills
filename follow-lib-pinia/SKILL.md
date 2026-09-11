@@ -17,6 +17,8 @@ related:
 
 ใช้กับ Vue 3 ที่ต้องการ state management ด้วย Pinia v4 ครอบคลุม setup stores, getters, actions, persistence และ testing
 
+- Latest: `pinia@4.0.3` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install Pinia

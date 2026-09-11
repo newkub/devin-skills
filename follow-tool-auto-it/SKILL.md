@@ -17,6 +17,8 @@ related:
 
 ตั้งค่า Auto สำหรับ packages และ workspaces ที่ต้องการ automated releases
 
+- Latest: `@auto-it/core@11.3.6` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install Auto

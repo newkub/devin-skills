@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/use-bun-native-api` สำหรับ setup Bun runtime
 
+- Latest: `bunup@0.16.32` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Analyze Project

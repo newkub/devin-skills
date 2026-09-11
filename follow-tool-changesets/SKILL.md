@@ -19,6 +19,8 @@ related:
 
 ตั้งค่า Changesets สำหรับ monorepos และ workspaces
 
+- Latest: `@changesets/cli@3.0.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install Changesets

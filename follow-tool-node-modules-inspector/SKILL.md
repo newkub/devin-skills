@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ Node.js / TypeScript projects ที่ใช้ `npm`, `pnpm` หรือ `bun`
 
+- Latest: `node-modules-inspector@2.5.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Run Inspector

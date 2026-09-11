@@ -21,6 +21,8 @@ related:
 - scroll, layout, SVG, text, WAAPI integrations
 - ใช้ร่วมกับ React, Vue, Svelte, และ plain JS
 
+- Latest: `animejs@4.5.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install And Setup

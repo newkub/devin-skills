@@ -15,6 +15,8 @@ related:
 
 ใช้ `follow-tool-react-scan` สำหรับ project หรือ workflow ที่เป็น React
 
+- Latest: `react-scan@0.5.7` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Prepare

@@ -19,6 +19,8 @@ related:
 
 ใช้กับ TypeScript projects ทุกประเภทที่รองรับ ESM และ strict mode ไม่ว่าจะเป็น Bun, Node.js, frontend, backend หรือ framework ใดๆ
 
+- Latest: `arktype@2.2.3` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install ArkType

@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ projects หรือ workspaces ที่ต้องการ keep dependencies up-to-date โดยใช้ Taze CLI
 
+- Latest: `taze@21.1.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Run Taze

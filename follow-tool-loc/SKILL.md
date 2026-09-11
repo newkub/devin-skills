@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ project ที่ติดตั้ง `loc` แล้ว ครอบคลุมการนับ lines, กรองไฟล์, และวิเคราะห์ขนาดไฟล์
 
+- Latest: `loc@0.5.0` (crates.io) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Check Prerequisites

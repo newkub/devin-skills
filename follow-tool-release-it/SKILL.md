@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ Node.js projects ที่ต้องการ version bump, git tag, changelog, npm publish และ GitHub release แบบ automated
 
+- Latest: `release-it@21.0.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install

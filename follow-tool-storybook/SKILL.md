@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ frontend projects ที่ต้องการ component library, visual documentation และ interaction testing
 
+- Latest: `storybook@10.6.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

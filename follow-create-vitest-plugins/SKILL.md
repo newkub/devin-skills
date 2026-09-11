@@ -1,6 +1,6 @@
 ---
 name: follow-create-vitest-plugins
-description: สร้างและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 3.1.0+)
+description: สร้างและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 5)
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -12,7 +12,7 @@ related:
 ---
 ## Goal
 
-ตั้งค่าและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 3.1.0+)
+ตั้งค่าและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 5, API ตั้งแต่ 3.1.0+)
 
 ## Scope
 

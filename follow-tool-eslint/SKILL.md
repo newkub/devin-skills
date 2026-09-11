@@ -1,6 +1,6 @@
 ---
 name: follow-tool-eslint
-description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
+description: ตั้งค่า ESLint 10 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
 argument-hint: "[scope]"
 related:
   - follow-create-eslint-plugins
@@ -13,11 +13,13 @@ related:
 
 ## Goal
 
-ตั้งค่า ESLint 9 ด้วย flat config format พร้อม plugins ครบถ้วน
+ตั้งค่า ESLint 10 ด้วย flat config format พร้อม plugins ครบถ้วน
 
 ## Scope
 
-ใช้สำหรับตั้งค่า ESLint 9 ใน TypeScript, Vue, และ Nuxt projects
+ใช้สำหรับตั้งค่า ESLint 10 ใน TypeScript, Vue, และ Nuxt projects
+
+- Latest: `eslint@10.10.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 || ^22.13 || >=24` (verified 2026-09-11)
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-oxlint) — สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
 
@@ -171,13 +173,14 @@ export default defineConfig([
 
 ### 5. Configuration Standards
 
-ตั้งค่า configuration ตามมาตรฐาน ESLint 9
+ตั้งค่า configuration ตามมาตรฐาน ESLint 10
 
-- ใช้ `eslint.config.ts` แทน `.eslintrc` (Flat Config)
+- ใช้ `eslint.config.ts` แทน `.eslintrc` (Flat Config — eslintrc ถูก removed ใน ESLint 10)
 - ใช้ `defineConfig()` จาก `eslint/config`
 - ใช้ `typescript-eslint` แทน `@typescript-eslint/parser`
 - ใส่ `prettier` config เป็นตัวสุดท้าย
-- ไม่ใช้ `.eslintignore` ใน ESLint 9
+- ไม่ใช้ `.eslintignore` ใน ESLint 10 — ใช้ `ignores` ใน flat config
+- ตรวจ plugin compatibility กับ ESLint 10 ก่อน upgrade (`typescript-eslint`, `eslint-plugin-*`)
 
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
@@ -193,7 +196,7 @@ export default defineConfig([
 
 ## Expected Outcome
 
-1. ESLint 9 พร้อม flat config และ plugins ครบถ้วน
+1. ESLint 10 พร้อม flat config และ plugins ครบถ้วน
 2. Vue 3 + TypeScript + Nuxt 3 support
 3. Import ordering และ circular dependency detection
 4. Security checks สำหรับ hardcoded secrets

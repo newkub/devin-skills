@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ code formatting หลายภาษา
 
+- Latest: `dprint@0.57.4` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Precondition Check

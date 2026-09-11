@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ repositories บน GitHub ที่ต้องการ dependency updates, schedule, automerge และ PR management
 
+- Latest: `renovate@44.82.0` (npm) / `renovatebot/github-action@v46` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Configure Renovate

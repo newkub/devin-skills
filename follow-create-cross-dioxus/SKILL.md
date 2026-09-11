@@ -23,6 +23,8 @@ related:
 - พัฒนา desktop application ด้วย Rust
 - Build สำหรับหลาย platforms
 
+- Latest: `dioxus@0.7.10` (crates.io stable; 0.8.0-alpha.1 pre-release) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Check Precondition

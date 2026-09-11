@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ monitor ทุกหน้าเว็บด้วย Lighthouse ทั้ง development mode และ CI/CD
 
+- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup Environment

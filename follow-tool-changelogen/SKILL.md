@@ -15,6 +15,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ automated changelog generation และ release management
 
+- Latest: `changelogen@0.6.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Configure Changelogen

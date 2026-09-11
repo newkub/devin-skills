@@ -24,6 +24,8 @@ related:
 - รองรับ layout, components, events, state, styling
 - ไม่ใช้ web stack
 
+- Latest: `ratatui@0.30.2` (crates.io) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

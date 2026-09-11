@@ -16,6 +16,8 @@ related:
 
 ใช้สำหรับตรวจจับและวิเคราะห์ code duplication — ไม่ครอบคลุมการ refactor เอง (ดู `/refactor`)
 
+- Latest: `jscpd@5.2.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup Configuration

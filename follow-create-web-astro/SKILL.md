@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-astro
-description: พัฒนา Astro 5 applications ด้วย Server Islands, Content Layer และ Actions
+description: พัฒนา Astro 7 applications ด้วย Server Islands, Content Layer และ Actions
 argument-hint: "[scope]"
 related:
   - follow-create-mobile-cross-capacitor
@@ -13,26 +13,26 @@ related:
 
 ## Goal
 
-พัฒนา Astro 5 applications ด้วย Server Islands, Content Layer API, Actions และ islands architecture
+พัฒนา Astro 7 applications ด้วย Server Islands, Content Layer API, Actions และ islands architecture
 
 ## Scope
 
-ใช้สำหรับ Astro 5 projects ที่ใช้ Vite 6+ เป็น build tool (content-heavy sites, marketing, docs)
+ใช้สำหรับ Astro 7 projects ที่ใช้ Vite 8 เป็น build tool (content-heavy sites, marketing, docs)
 
-- Latest: `astro@7.3.2` (verified 2026-09-11)
+- Latest: `astro@7.3.2` / Vite 8 (verified 2026-09-11)
 
 ## Execute
 
 ### 1. Setup Project
 
-> Goal: สร้าง Astro 5 project พร้อม adapter และ TypeScript strict
+> Goal: สร้าง Astro 7 project พร้อม adapter และ TypeScript strict
 
-1. สร้าง Astro 5 project ด้วย `bunx create-astro@latest`
+1. สร้าง Astro 7 project ด้วย `bunx create-astro@latest`
 2. ใช้ `astro.config.mjs` สำหรับ configuration
 3. ตั้งค่า `tsconfig.json` ด้วย `strict: true` และ `moduleResolution: bundler`
 4. เพิ่ม scripts ใน `package.json` (dev, build, preview, check)
 5. ติดตั้ง adapter สำหรับ server-side features (Node, Vercel, Netlify, Cloudflare)
-6. ใช้ Vite 6+ เป็น build tool
+6. ใช้ Vite 8 เป็น build tool (Astro 7 dependency)
 
 ### 2. Rendering Modes
 
@@ -92,7 +92,7 @@ related:
 
 > Goal: ใช้ View Transitions สำหรับ native page transitions
 
-1. ใช้ `<ViewTransitions />` ใน layout สำหรับ native View Transitions API
+1. ใช้ `<ClientRouter />` ใน layout สำหรับ native View Transitions API (`<ViewTransitions />` removed ใน Astro 6)
 2. ใช้ `transition:animate` สำหรับ animations
 3. ใช้ `transition:persist` สำหรับ persist state ระหว่าง navigations
 
@@ -125,11 +125,11 @@ related:
 
 ### 1. Configuration
 
-ตั้งค่า project ตามมาตรฐาน Astro 5:
+ตั้งค่า project ตามมาตรฐาน Astro 7:
 
 - ใช้ `astro.config.mjs` สำหรับ configuration
 - ติดตั้ง adapter สำหรับ server-side features
-- ใช้ Vite 6+ เป็น build tool
+- ใช้ Vite 8 เป็น build tool
 - ตั้งค่า `strict: true` ใน TypeScript
 - กำหนด env schema สำหรับ type-safe variables
 
@@ -178,6 +178,14 @@ related:
 - ใช้ Biome สำหรับ linting และ formatting
 - ใช้ `import.meta.env` สำหรับ type-safe env access
 
+### 7. Version Notes
+
+- Latest: `astro@7.3.2` ใช้ `vite@^8.0.13`, Node 22+ (verified 2026-09-11)
+- v6 removed: `<ViewTransitions />` → `<ClientRouter />`, legacy content collections, `Astro.glob()`, `emitESMImage()`
+- v6 upgrades: Vite 7, Zod 4, Shiki 4 — `astro:schema`/`z` deprecated
+- v7: Rust compiler, `src/fetch.ts` reserved name, Sätteri เป็น default Markdown processor, `compressHTML: 'jsx'` default, `@astrojs/db` removed
+- ตรวจสอบ version ใน `package.json` ก่อนเลือก API
+
 - ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create web astro)
 - ใช้ /follow-create-cross-dioxus ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
@@ -186,7 +194,7 @@ related:
 
 ## Expected Outcome
 
-- Astro 5 project ที่มีโครงสร้างถูกต้อง
+- Astro 7 project ที่มีโครงสร้างถูกต้อง
 - Server Islands สำหรับ dynamic content บน static pages
 - Content Layer API สำหรับ type-safe content management
 - Astro Actions สำหรับ type-safe server functions
