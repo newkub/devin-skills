@@ -12,7 +12,6 @@ triggers:
   - user
   - model
 related:
-  - ship-rollback
   - create-github-pr
   - merge-github-pr
   - merge-git-branch
@@ -114,7 +113,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 2. บันทึก version เดิมก่อน deploy (rollback target) แล้วทำ `/deep-validate` เป็น production gate
 3. รัน production deploy command ตาม `AGENTS.md`/`package.json` — ใช้ `/run-deploy` ถ้ามี skill สำหรับ target; บันทึก deploy URL, commit hash, deploy time
 4. ทำ `/watch-deploy` + health check endpoints + smoke tests บน critical paths; ตรวจ error rate/latency ถ้ามี observability
-5. ถ้า health check fail → ทำ `/ship-rollback` ทันที (`git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม)
+5. ถ้า health check fail → rollback ทันทีด้วย `git revert <merge-commit>` หรือ redeploy version เดิมผ่าน `/run-deploy` (ห้าม force-push) แล้ว `/watch-deploy` verify
 6. ถ้าปกติ → ลบ feature branch แล้ว `git switch main`
 7. ทำ `/resolve-cicd` บน production branch หลัง deploy
 

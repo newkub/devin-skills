@@ -106,7 +106,7 @@ Major skill families by current count:
 - `update-*` (37): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (4): standard `/ship`, staging, production, rollback, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user).
+- `ship-*` (3): standard `/ship`, staging, production, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user) — rollback handled inline in `/ship`.
 - `deep-*` (19): deep analysis, research, debugging, validation, verification, and orchestration (8 alias stubs merged into canonical skills).
 - `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (60): verification, structure, and health checks.

@@ -8,7 +8,7 @@
 
 - ใช้หลัง `/deploy-*` หรือ `/ship` เสร็จ — ตรวจ deployed environment (staging หรือ production)
 - ครอบคลุม: health checks, version match, key routes smoke test, security headers, error rate แรก
-- Read-only ต่อ production: ตรวจสอบอย่างเดียว — rollback ผ่าน `/ship-rollback`
+- Read-only ต่อ production: ตรวจสอบอย่างเดียว — rollback ด้วย `git revert` + redeploy version เดิม
 
 ## Execute
 
@@ -43,7 +43,7 @@
 
 1. ดู platform logs/error rate ถ้าเข้าถึงได้ (`/watch-deploy`, dashboard, `wrangler tail`)
 2. flag error spike, crash loops หรือ cold start anomalies
-3. ถ้าเจอ critical → แนะนำ `/ship-rollback` พร้อม evidence
+3. ถ้าเจอ critical → แนะนำ rollback (`git revert` หรือ redeploy version เดิม) พร้อม evidence
 
 ### 5. Report Verdict
 

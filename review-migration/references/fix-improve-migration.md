@@ -37,7 +37,7 @@
 
 1. เพิ่ม `down` migrations ที่ขาด — ทดสอบ rollback จริงบน staging copy
 2. สำหรับ irreversible ops → document data preservation (backup/export ก่อน)
-3. ทำ `/ship-rollback` เพื่อวาง deploy rollback plan ที่สอดคล้อง
+3. วาง deploy rollback plan ที่สอดคล้อง — `git revert` + redeploy version เดิม, ห้าม force-push
 
 ### 4. Fix Ordering And Data Migrations
 
