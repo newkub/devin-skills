@@ -35,6 +35,8 @@ related:
 
 > Goal: ติดตั้งและตั้งค่า Supabase CLI
 
+Latest: `supabase` CLI `2.117.0`, `@supabase/supabase-js@2.116.0` (verified 2026-09-12)
+
 1. ติดตั้ง Supabase CLI ด้วย `bun add -D supabase` หรือ Homebrew/Scoop/standalone binary
 2. ตรวจสอบ version ด้วย `supabase --version`
 3. Login ด้วย `supabase login` เพื่อเชื่อมต่อกับ Supabase account

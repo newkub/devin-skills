@@ -24,7 +24,9 @@ related:
 เตรียม SDK สำหรับ WorkOS
 > Goal: ติดตั้ง SDK และเตรียม credentials ให้พร้อมใช้งาน
 
-1. install package ตาม runtime (`@workos-inc/node`, `workos-python`, etc.)
+Latest: `@workos-inc/node@10.13.0` (verified 2026-09-12) — AuthKit/User Management API เป็น modern path, `sso.*` เป็น legacy flow
+
+1. install package ตาม runtime (`bun add @workos-inc/node`, `workos-python`, etc.)
 2. สร้าง API key จาก WorkOS Dashboard
 3. เก็บ `WORKOS_API_KEY` และ `WORKOS_CLIENT_ID` ใน `/follow-secret-manager` แล้ว inject เข้า environment
 

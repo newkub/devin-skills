@@ -27,6 +27,8 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 > Goal: ติดตั้งและ authenticate Vercel CLI
 
+Latest: `vercel@59.16.0` CLI, `@vercel/node` builder (verified 2026-09-12)
+
 1. รัน `bun add -D vercel`
 2. หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง
 3. รัน `bunx vercel login` เพื่อ authenticate
@@ -81,7 +83,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 2. ตรวจสอบว่า build สำเร็จและ output พร้อม
 3. รัน `bunx vercel deploy` สำหรับ preview deployment
 4. รัน `bunx vercel deploy --prod` สำหรับ production
-5. สำหรับ Nitro: รัน `nitro build deploy vercel`
+5. สำหรับ Nitro: ตั้ง preset `vercel` ใน nitro config แล้วรัน `nitro build` จากนั้น `bunx vercel deploy --prebuilt`
 
 ### 6. Environment Variables
 

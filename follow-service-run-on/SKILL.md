@@ -36,6 +36,8 @@ related:
 
 > Goal: ติดตั้ง AWS infrastructure สำหรับ RunsOn
 
+หมายเหตุ: template version `v3.2.3` เป็น pinned snapshot — ตรวจ latest template ที่ `https://runs-on.com/installation/` ก่อนใช้งาน (verified 2026-09-12)
+
 1. ใช้ CloudFormation quick-create URL:
    `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.2.3.yaml&stackName=runs-on`
 2. กรอก parameters หลัก: GitHub org, `LicenseKey`, email สำหรับ cost alerts, `Environment` (optional)

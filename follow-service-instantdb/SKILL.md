@@ -51,7 +51,9 @@ related:
    - TanStack Start: `bun add @instantdb/react`
    - Vanilla JS: `bun add @instantdb/core`
    - Python: `pip install instantdb` (ใช้งานร่วมกับ `follow-lang-python`)
-2. ติดตั้ง CLI สำหรับ dev: `bun add -D @instantdb/cli` หรือใช้ `npx instant-cli@latest`
+Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่อ `instant-cli` (ไม่ใช่ `@instantdb/cli` ซึ่งไม่มีใน npm)
+
+2. ติดตั้ง CLI สำหรับ dev: `bun add -D instant-cli` หรือใช้ `npx instant-cli@latest`
 3. ยืนยันว่า dependencies อยู่ใน `package.json`
 
 ### 3. Initialize App

@@ -21,6 +21,8 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
+Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add twilio`
+
 1. สร้าง client ด้วย accountSid/authToken จาก env — ไม่ expose ฝั่ง client
 1. ใช้ Verify API (`verify.v2.services().verifications`) สำหรับ OTP — ไม่ต้องจัดการ code เอง
 1. ใช้ Messaging (`messages.create`) สำหรับ SMS ทั่วไป — ตั้ง messagingServiceSid
