@@ -141,6 +141,9 @@ related:
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

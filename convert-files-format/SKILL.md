@@ -75,6 +75,9 @@ related:
 - สำหรับ WebP: default quality = 85
 - สำหรับ SVG: ใช้กับ line art/logo ดีทีสุด
 - แจ้ง user ถ้า format ไม่เหมาะกับ input
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-format ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

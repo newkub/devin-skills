@@ -110,6 +110,7 @@ related:
 - ใช้ /report-flow ถ้าจำเป็น
 - ใช้ /report-workspace-graph ถ้าจำเป็น
 - ใช้ /visualize-project ถ้าจำเป็น
+- ใช้ /run-test-visual ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -45,6 +45,7 @@ related:
 - ใช้ `list-my-npm-packages` ถ้าต้องการดู packages ที่มีอยู่แล้ว
 - ใช้ `follow-best-practice` ถ้าต้องการ best practices ของ library ที่เลือก
 - ใช้ `suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

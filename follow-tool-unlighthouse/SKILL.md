@@ -111,6 +111,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome
 

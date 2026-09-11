@@ -105,6 +105,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 - ใช้ /run-watch ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

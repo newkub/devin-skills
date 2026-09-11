@@ -85,6 +85,8 @@ related:
 
 - prune orphaned tracking ทั้งหมดที่ไม่มี worktree จริง
 - ไม่ prune worktree ที่ยังใช้งานอยู่
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

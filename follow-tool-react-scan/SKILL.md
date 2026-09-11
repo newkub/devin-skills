@@ -142,6 +142,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

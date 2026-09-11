@@ -94,6 +94,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

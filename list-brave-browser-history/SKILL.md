@@ -79,6 +79,7 @@ related:
 
 - ใช้ /search-in-raindrop-io ถ้าจำเป็น
 - ใช้ /list-raindrop-io ถ้าจำเป็น
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

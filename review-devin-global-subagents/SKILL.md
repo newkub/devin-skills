@@ -54,6 +54,7 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

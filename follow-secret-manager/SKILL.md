@@ -185,6 +185,7 @@ related:
 - ใช้ /follow-deploy ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (secret manager)
+- ใช้ /run-audit ถ้าจำเป็น
 
 ## Expected Outcome
 

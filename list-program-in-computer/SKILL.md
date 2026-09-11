@@ -119,6 +119,7 @@ related:
 - ใช้ /use-pwsh-shell ถ้าจำเป็น
 - ใช้ /download-program ถ้าจำเป็น
 - ใช้ /uninstall-program-in-computer ถ้าจำเป็น
+- ใช้ /run-program ถ้าจำเป็น
 
 ## Expected Outcome
 

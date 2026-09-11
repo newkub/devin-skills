@@ -140,6 +140,7 @@ related:
 - ใช้ /follow-clean-architecture ถ้าจำเป็น
 - ใช้ /follow-layered-architecture ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

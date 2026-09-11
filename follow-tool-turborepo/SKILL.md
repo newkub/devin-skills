@@ -126,6 +126,8 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

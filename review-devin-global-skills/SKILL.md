@@ -159,6 +159,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

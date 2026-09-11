@@ -56,6 +56,8 @@ related:
 
 - ใช้ /cleanup-files-in-computer ถ้าจำเป็น
 - ใช้ /cleanup-files-in-project ถ้าจำเป็น
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

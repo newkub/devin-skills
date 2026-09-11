@@ -128,6 +128,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -172,6 +172,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

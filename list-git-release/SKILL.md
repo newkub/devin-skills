@@ -82,6 +82,7 @@ related:
 
 - ใช้ /list-git-branch ถ้าจำเป็น
 - ใช้ /list-git-commit ถ้าจำเป็น
+- ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome
 

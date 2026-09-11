@@ -110,6 +110,9 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-format ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

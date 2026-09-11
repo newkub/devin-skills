@@ -114,6 +114,7 @@ related:
 - ไม่แก้ไฟล์นอก scope
 - ไม่ apply กับ generated files ยกเว้นมีเหตุผล
 - ไม่ apply กับ third-party code
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

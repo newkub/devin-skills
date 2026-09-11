@@ -152,6 +152,9 @@ related:
 - ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที
 - ถ้าเกินเวลา → ทำ `/deep-thinking` หรือ `/deep-research`
 - ถ้าหา root cause ไม่ได้หลังพยายาม 3 รอบ → ทำ `/deep-thinking` หรือขอความช่วยเหลือ
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

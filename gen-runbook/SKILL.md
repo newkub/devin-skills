@@ -108,6 +108,7 @@ related:
 
 - mitigation steps ที่ destructive (rollback, restart, failover) ต้องมี warnings และ confirm points
 - escalation paths ชัดเจน — runbook ไม่ใช่ทำเองทุกอย่าง
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -148,6 +148,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/check-reference` ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

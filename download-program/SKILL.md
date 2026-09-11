@@ -120,6 +120,7 @@ related:
 - ถ้าเปิดหน้า download ให้รายงาน URL พร้อมวิธีติดตั้งทั่วไป
 
 - ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /run-program ถ้าจำเป็น
 
 ## Expected Outcome
 

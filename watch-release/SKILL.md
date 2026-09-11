@@ -108,6 +108,7 @@ Use after `/run-release`, manual release, or when `/ship` detects a release. Sup
 - ใช้ /follow-release ถ้าจำเป็น
 - ใช้ /watch-deploy ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-watch ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -152,6 +152,7 @@ Migration จาก Svelte 4:
 - ตั้งค่า path aliases อย่างถูกต้อง
 - ใช้ svelte-check สำหรับ type checking
 - ทำ `/refactor` เสมอเมื่อพัฒนา
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

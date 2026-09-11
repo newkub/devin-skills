@@ -96,6 +96,9 @@ Ship code ตาม flow ของ `/ship` ครบทุกขั้นตอ�
 
 - หลังใช้ `/ship-dont-ask-me` ใน session → `/follow-enter-dot` ต้องเลือก `/ship-dont-ask-me` แทน `/ship` เมื่อ state พร้อม ship
 - ผู้ใช้ยกเลิก mode ได้ด้วยคำสั่งชัดเจน เช่น "กลับมาถาม", "cancel dont-ask-me"
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -70,6 +70,8 @@ related:
 
 - ลบเป็น all-or-nothing ต่อ tree — ไม่ลบบางส่วนจน parent เหลือ half-empty แบบแปลก
 - Windows: ระวัง locked dirs — skip พร้อม note ไม่ fail ทั้ง batch
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

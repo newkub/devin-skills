@@ -140,6 +140,7 @@ related:
 - ครอบคลุมทุกมิติอย่างสมบูรณ์
 - ระบุทั้งปัญหาและสิ่งที่ทำได้ดี
 - อ้างอิง best practices และ standards ที่ตรวจสอบได้
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

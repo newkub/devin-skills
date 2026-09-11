@@ -87,6 +87,8 @@ related:
 
 - ปฏิบัติตาม conventions ของภาษา/เฟรมเวิร์ค
 - ถ้ามี barrel exports ให้อัปเดท
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

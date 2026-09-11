@@ -80,6 +80,9 @@ bunx /path/to/draw-ansi/scripts/draw-ansi.ts --fix --width 60 existing-box.txt
 - ไม่เพี้ยนจากตัวอักษรพิเศษหรือ emoji
 - ไม่ใช้ ` ```ansi ` block
 - output พร้อมใช้ใน README ` ```text ` block ทันที
+- ใช้ /draw-svg-image ถ้าจำเป็น
+- ใช้ /draw-excalidraw ถ้าจำเป็น
+- ใช้ /draw-tldraw ถ้าจำเป็น
 
 ## Expected Outcome
 

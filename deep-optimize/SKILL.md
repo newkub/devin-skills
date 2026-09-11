@@ -137,6 +137,7 @@ Dispatch ตาม layer — เรียก section `## Fix` ของ review s
 - ไม่เพิ่ม dependency ใหม่ถ้าไม่จำเป็น
 - เก็บ evidence ของ metrics ก่อนและหลัง
 - หลีกเลี่ยง over-engineering — แก้เฉพาะจุดที่ metrics บ่งชี้
+- ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome
 

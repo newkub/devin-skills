@@ -207,6 +207,7 @@ related:
 - ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create website rust)
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

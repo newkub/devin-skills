@@ -92,6 +92,7 @@ related:
 - ใช้ /update-readme-md ถ้าจำเป็น
 - ใช้ /update-features-md ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
+- ใช้ /run-examples ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -44,6 +44,7 @@ related:
 - ห้าม string-concat queries — ใช้ tagged template เสมอ; `sql.unsafe()` เฉพาะ dynamic queries ที่ parameterized ไม่ได้
 - ปิด connection ด้วย `sql.end()` ใน teardown
 - บน serverless ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

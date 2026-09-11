@@ -62,6 +62,7 @@ related:
 - ใช้ /ask-me ถ้าจำเป็น
 
 - ตัดสินใจ keep/revert ตาม findings เท่านั้น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

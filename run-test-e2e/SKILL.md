@@ -121,6 +121,16 @@ related:
 - ดู error, screenshot, video, trace ก่อนแก้
 - แก้ root cause ไม่ suppress; ห้าม `.skip`/`.only` หลีกเลี่ยง failure
 - Flaky test ที่ fail ซ้ำ ≥3 ครั้ง → tag และ report แทนการ re-run ไปเรื่อย
+- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

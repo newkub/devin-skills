@@ -187,8 +187,7 @@ export default {
 - ตั้งค่า `lang: 'en-US'` หรือตาม project requirement
 - ใช้ `deadLinks: 'ignore'` ใน markdown config
 - ตั้งค่า nav และ sidebar ใน `themeConfig`
-- สำหรับ monorepo ให้ `docs/` เป็น workspace ที่ root พร้อม `docs/package.json` ของตัวเอง
-- สำหรับ monorepo ให้เพิ่ม `docs` ใน `workspaces` array ของ root `package.json`
+- สำหรับ monorepo ให้ `docs/` เป็น workspace พร้อม `docs/package.json` ของตัวเอง และเพิ่ม `docs` ใน `workspaces` ของ root
 - สำหรับ monorepo ให้ nav ลิงก์ไปยัง workspace pages ใน `docs/workspaces/`
 - ใช้ dropdown nav (`items`) สำหรับจัดกลุ่ม workspaces ตาม category
 
@@ -234,6 +233,7 @@ export default {
 ## References
 
 - [CLI reference](references/cli.md)
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

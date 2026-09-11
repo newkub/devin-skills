@@ -12,32 +12,18 @@ triggers:
   - user
   - model
 related:
-  - update-agents-md
-  - follow-agents-md
-
-  - use-subagents
   - ship-rollback
   - create-github-pr
-  - review-github-pr
   - merge-github-pr
   - merge-git-branch
   - resolve-github-actions-fails
   - open-diff
   - run-deploy
   - watch-deploy
-  - run-test-e2e
-  - run-test-integration
-  - run-test-e2e
-  - review-then-fix
   - run-verify
-  - deep-validate
-  - implement-to-production
   - create-git-branch
   - git-commit-and-push
-  - refactor-commit
   - resolve-cicd
-  - run-release
-  - report
   - run-check
   - run-build
   - run-test-all
@@ -168,6 +154,8 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 - ไม่ bypass checks หรือ validation
 - ไม่ force-push โดยไม่จำเป็น, ไม่ rewrite history (`git revert` เท่านั้น)
 - ไม่ merge โดยไม่มี review/approval — merge ผ่าน `open-diff` button หรือ AI หลัง CI เขียวครบ
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
 
 ## Expected Outcome
 

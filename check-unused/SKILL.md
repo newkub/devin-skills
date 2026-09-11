@@ -103,7 +103,9 @@ related:
 - ใช้ /update-config ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /run-scan ถ้าจำเป็น
 - ใช้ /delete-projects ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ dead code, unused files, unused deps พร้อม severity และ recommendation

@@ -98,6 +98,9 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 ### 5. Local Project Matching
 - ใช้ `/search-project-in-drive-d` หา project ใน `D:\` ทีตรงกับ worker name
 - ถ้าไม่พบ → ทำเครื่องหมาย `manual-fix-required`
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

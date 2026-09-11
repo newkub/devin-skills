@@ -121,6 +121,8 @@ Merged from: improve-dependencies, optimize-deps, use-lib-effective
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-install ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

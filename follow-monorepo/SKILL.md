@@ -124,6 +124,7 @@ related:
 - ใช้ /deep-optimize ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

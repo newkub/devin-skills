@@ -111,6 +111,8 @@ related:
 - ไอเดียต้องส่งต่อไปยัง `/refactor-workspace` หรือ `/refactor-workspace` ได้ชัดเจน
 - ระบุลำดับการทำงานและ dependency direction
 - ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง `/implement-to-production`
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

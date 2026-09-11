@@ -44,6 +44,7 @@ related:
 - circular deps แก้ด้วย extract shared module หรือ dependency inversion
 - orphans ≠ dead เสมอ — เช็ค entry points (routes, workers) ก่อนลบ
 - ใช้ `--ts-config` ให้ madge เห็น path aliases
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

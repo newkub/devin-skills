@@ -42,6 +42,7 @@ related:
 - ตรวจสอบ URL ก่อนเปิด
 - ใช้ `browser_preview` tool สำหรับ integrated browser เมื่อ context รองรับ
 - ใช้ default browser ของระบบสำหรับ external browser
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

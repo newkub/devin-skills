@@ -118,6 +118,7 @@ related:
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
 - ใช้ /use-bun-native-api ถ้าต้องเขียน Bun APIs เพิ่มเติม
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

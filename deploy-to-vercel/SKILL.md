@@ -76,6 +76,7 @@ Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่
 - ใช้ `bunx vercel` หรือ `vercel` CLI
 - ไม่ commit ก่อนยืนยันว่า deployment live
 - หาก fail → ทำ `/resolve-errors` แล้ว redeploy
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -68,6 +68,7 @@ related:
 - ใช้ /follow-release สำหรับ release process
 - ใช้ /gen-changelog-md สำหรับสร้าง changelog
 - ใช้ /check-commit-quality สำหรับ commit conventions
+- ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome
 

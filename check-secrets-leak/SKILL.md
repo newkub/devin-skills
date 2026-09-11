@@ -68,6 +68,7 @@ related:
 
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /run-audit ถ้าจำเป็น
 
 ## Expected Outcome
 - รายการ secrets ทีพบพร้อม location และ severity

@@ -2,7 +2,8 @@
 name: review-accessibility
 description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, ARIA, contrast, screen reader
 argument-hint: "[url-or-route-or-component]"
-related:  - review-uxui
+related:
+  - review-uxui
   - run-test-e2e
   - capture
   - use-agent-browser
@@ -105,6 +106,7 @@ Merged from: improve-accessibility
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

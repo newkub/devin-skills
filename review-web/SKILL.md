@@ -80,24 +80,19 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 3. ตรวจ buttons/links ทำงานจริง — ไม่มี dead click, disabled state ถูกต้อง
 4. ตรวจ loading states, empty states, error states ของ UI
 
-### 6. Web Vitals And Performance Review
+### 6. Web Vitals, Meta And Accessibility Review
 
-> Goal: ตรวจ Core Web Vitals และ perceived performance
+> Goal: ตรวจ Core Web Vitals, meta/SEO signals และ accessibility พื้นฐาน
 
 1. วัด LCP, INP, CLS บน pages หลัก (ผ่าน agent-browser performance หรือ Lighthouse ถ้ามี)
 2. ตรวจ time-to-interactive, layout shifts, slow third-party scripts
 3. flag pages ที่ LCP > 2.5s หรือ CLS > 0.1 เป็น Medium+
 4. ตรวจ bundle size ผลรวมและ route-level code splitting — deep-dive ที่ `/review-performance`
+5. ตรวจ `title`, meta description, canonical, OG tags บนทุก page — deep-dive ที่ `/review-seo`
+6. ตรวจ lang attribute, heading order, alt text, label associations — deep-dive ที่ `/review-accessibility`
+7. ตรวจ HTTPS, mixed content, security headers (CSP, HSTS) — deep-dive ที่ `/review-security`
 
-### 7. Meta, SEO And Accessibility Basics
-
-> Goal: ตรวจ signals พื้นฐานก่อนส่งต่อ deep-dive
-
-1. ตรวจ `title`, meta description, canonical, OG tags บนทุก page — deep-dive ที่ `/review-seo`
-2. ตรวจ lang attribute, heading order, alt text, label associations — deep-dive ที่ `/review-accessibility`
-3. ตรวจ HTTPS, mixed content, security headers (CSP, HSTS) — deep-dive ที่ `/review-security`
-
-### 8. Responsive And Compatibility Review
+### 7. Responsive And Compatibility Review
 
 > Goal: ตรวจข้าม viewport และ browser
 
@@ -105,7 +100,7 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 2. ตรวจ horizontal scroll, overflow, touch targets, viewport meta
 3. ตรวจ browser-specific issues ถ้า target หลาย browser
 
-### 9. Auth And Session Review
+### 8. Auth And Session Review
 
 > Goal: ตรวจ auth flows และ access control — ข้ามถ้า site ไม่มี auth
 
@@ -116,41 +111,30 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 5. ตรวจ OAuth/SSO redirect flow, callback handling, state parameter
 6. flag credentials/tokens ใน URL, query string หรือ referrer เป็น Critical
 
-### 10. Storage, State And Realtime Review
+### 9. Storage, State, Realtime And PWA Review
 
-> Goal: ตรวจ client-side state และ realtime behavior
+> Goal: ตรวจ client-side state, realtime behavior และ app-like capabilities — ข้าม dimensions ที่ site ไม่มี
 
 1. ตรวจ cookies/localStorage/sessionStorage: ไม่มี secrets, size เหมาะสม, expiry ถูกต้อง
 2. ตรวจ URL state: refresh แล้ว state คงอยู่, shareable URLs, back/forward restore state
 3. ตรวจ WebSocket/SSE: reconnect หลัง disconnect, heartbeat, stale data handling
 4. ตรวจ optimistic UI: rollback เมื่อ mutation fail, conflict resolution
 5. ตรวจ race conditions: rapid navigation, double-submit, stale fetch override
+6. ถ้า PWA: manifest valid, service worker ทำงาน, offline fallback, install prompt
+7. ตรวจ dark mode/theme: toggle ทำงาน, persist, ไม่มี flash-of-unstyled-content
+8. ตรวจ i18n: locale detection, language switcher, hreflang, RTL layout ถ้ารองรับ
+9. ตรวจ date/time/number formatting ตาม locale และ timezone
+10. ตรวจ print styles และ reduced-motion preference ถ้า claim รองรับ
 
-### 11. PWA, i18n And Theming Review
+### 10. Validate And Report
 
-> Goal: ตรวจ app-like capabilities และ localization — ข้าม dimensions ที่ site ไม่มี
-
-1. ถ้า PWA: manifest valid, service worker ทำงาน, offline fallback, install prompt
-2. ตรวจ dark mode/theme: toggle ทำงาน, persist, ไม่มี flash-of-unstyled-content
-3. ตรวจ i18n: locale detection, language switcher, hreflang, RTL layout ถ้ารองรับ
-4. ตรวจ date/time/number formatting ตาม locale และ timezone
-5. ตรวจ print styles และ reduced-motion preference ถ้า claim รองรับ
-
-### 12. Validate Findings
-
-> Goal: findings ถูกต้องและจัดลำดับ severity
+> Goal: findings ถูกต้อง จัดลำดับ severity และรายงานพร้อม evidence
 
 1. ทำ `/deep-validate` กับ findings ทุก section — reproduce error ซ้ำก่อน flag
-2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info
-3. ระบุ false positives ที่พบ
-
-### 13. Report
-
-> Goal: รายงาน aggregate findings พร้อม evidence
-
-1. ทำ `/report` ตาราง: `No.`, `Page/URL`, `Finding`, `Severity`, `Evidence`, `Recommendation`
-2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
-3. ทำ `/suggest-next-action` แนะนำ fix order
+2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info และระบุ false positives
+3. ทำ `/report` ตาราง: `No.`, `Page/URL`, `Finding`, `Severity`, `Evidence`, `Recommendation`
+4. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
+5. ทำ `/suggest-next-action` แนะนำ fix order
 
 ## Rules
 
@@ -194,6 +178,8 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 
 - ห้ามใช้ `**` bold markers — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report` ทุก report table เริ่มด้วยคอลัมน์ `No.`
+- ใช้ /review-platform ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

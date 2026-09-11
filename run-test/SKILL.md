@@ -106,6 +106,14 @@ related:
 - ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure
 - ห้ามแก้ test หรือ source โดยไม่มี evidence จากการตรวจสอบ
 - ถ้า failure มาจาก missing dependency → `/run-install`
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /run-test-integration ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-watch ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

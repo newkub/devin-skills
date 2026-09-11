@@ -83,6 +83,10 @@ Rollback production deployment ที่พัง กลับไปยัง ve
 
 - ถ้ามี migrations ที่ destructive ต้องมี backup ก่อน restore
 - ถ้าไม่แน่ใจ → `/ask-me`
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome
 

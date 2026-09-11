@@ -176,6 +176,7 @@ related:
 - เนื้อหาต้องมาจาก source code จริง
 - examples ต้องรันได้
 - ไม่ใช้ placeholder หรือ lorem ipsum
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

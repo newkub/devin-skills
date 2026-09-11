@@ -132,6 +132,8 @@ related:
 - ละเว้น responsive design testing
 - ไม่รายงาน issues ที่พบใน preview
 - ข้าม API testing ใน preview
+- ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

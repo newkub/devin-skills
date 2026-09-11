@@ -58,6 +58,7 @@ Capture ภาพหรือวิดีโอหลักฐานตาม ta
 - ตั้งชื่อไฟล์สื่อความหมาย มีวันที่ถ้าเป็น evidence
 - ไม่ capture หน้าจอที่มี secrets/credentials โดยไม่จำเป็น
 - แจ้ง path ของไฟล์ที่ capture เสมอ
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -80,6 +80,7 @@ related:
 
 - custom rules ต้องอยู่ใน repo พร้อม tests
 - pin ruleset versions ใน CI — ruleset เปลี่ยน = findings เปลี่ยน
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

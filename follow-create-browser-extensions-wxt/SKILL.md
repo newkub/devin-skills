@@ -137,6 +137,7 @@ project/
 - ใช้ TypeScript สำหรับ type safety
 - เขียน tests สำหรับ pure logic
 - ใช้ ESLint และ Prettier สำหรับ code quality
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

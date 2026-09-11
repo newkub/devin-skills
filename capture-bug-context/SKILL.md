@@ -113,6 +113,7 @@ related:
 
 - เก็บพอให้ reproduce — ไม่ dump ทุกอย่างโดยไม่เลือก
 - repro steps ต้องทำตามได้จริงโดยคนที่ไม่เคยเห็น bug
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

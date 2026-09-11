@@ -128,6 +128,7 @@ related:
 - ถ้า program ไม่อยู่ใน package manager ใด ให้ระบุทางเลือก fallback
 
 - ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

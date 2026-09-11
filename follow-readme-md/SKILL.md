@@ -48,6 +48,8 @@ related:
 - README มี priority ต่ำกว่า `AGENTS.md` — ถ้าขัดกันให้ทำตาม `AGENTS.md`
 - ห้ามเดา commands — ใช้จาก README หรือ manifest เท่านั้น
 - ถ้า README ไม่มีหรือว่าง → ทำ `/update-readme-md` สร้างใหม่
+- ใช้ /review-usage-md ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

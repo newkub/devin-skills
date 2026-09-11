@@ -154,6 +154,8 @@ related:
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-tool-formatter ถ้าจำเป็น
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-format ถ้าจำเป็น
 
 ## Expected Outcome
 

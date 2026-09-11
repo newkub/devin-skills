@@ -135,6 +135,7 @@ related:
 
 - ต้องทำ `/test-usage` ทุกครั้งหลัง update เสร็จ
 - ถ้า usage example พัง → แก้ไขหรืออัปเดต docs ก่อน commit
+- ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome
 

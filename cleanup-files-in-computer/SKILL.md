@@ -146,6 +146,8 @@ related:
 
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /delete ถ้าจำเป็น
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

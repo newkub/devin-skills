@@ -6,7 +6,6 @@ related:
   - deep-review-codebase
   - review-quality
   - report
-
   - suggest-next-action
   - refactor
   - restructure
@@ -82,19 +81,14 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 5. คำนวณ structure health score และสร้าง relocation plan ตาม `references/restructure-structure-health.md` — แสดง dry-run preview old path → new path พร้อม files ที่ต้อง update imports
 6. คำนวณ score ตาม `references/restructure-scoring.md`
 
-### 9. Establish Baseline Metrics
+### 9. Baseline Metrics And Prioritization
 
-> Goal: สร้าง baseline metrics table ก่อน refactor
+> Goal: สร้าง baseline metrics table และจัดลำดับ refactor targets
 
 1. ทำตาม `references/baseline-metrics.md#metrics-table-format`
+2. จัดลำดับ refactor targets ตาม `references/baseline-metrics.md#priority-formula`
 
-### 10. Prioritize Refactor Targets
-
-> Goal: จัดลำดับ refactor targets ตาม effort และ impact
-
-1. ทำตาม `references/baseline-metrics.md#priority-formula`
-
-### 11. Report
+### 10. Report
 
 > Goal: รายงาน baseline และ refactor targets
 
@@ -149,6 +143,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

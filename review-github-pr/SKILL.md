@@ -67,6 +67,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

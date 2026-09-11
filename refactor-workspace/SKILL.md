@@ -136,6 +136,8 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

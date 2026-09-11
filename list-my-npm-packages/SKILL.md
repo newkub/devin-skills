@@ -89,6 +89,7 @@ related:
 - ถ้าไม่แน่ใจว่า user หมายถึง `installed packages` หรือ `published packages` → ทำ `/ask-me`
 
 - ใช้ /list-program-in-computer ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

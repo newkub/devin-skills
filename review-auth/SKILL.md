@@ -100,7 +100,9 @@ Merged from: improve-auth
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (auth)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (auth)
 
+- ใช้ /run-review ถ้าจำเป็น
 - `references/fix-improve-auth.md` — แก้ findings จาก review-auth ครอบคลุม authn, authz, sessions, tokens และ secrets
+
 ## Expected Outcome
 
 - รายงาน auth findings ครอบคลุม authn/authz/session/token/secrets/audit

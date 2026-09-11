@@ -103,6 +103,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

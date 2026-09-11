@@ -121,9 +121,9 @@ related:
 4. ใช้ project `dependencies` สำหรับรัน setup ก่อน main tests
 5. ใช้ `BrowserContext.setStorageState()` สำหรับ clear และ set state ใหม่
 
-### 9. Running Tests
+### 9. Running Tests And All-Routes Coverage
 
-> Goal: รัน tests ด้วย CLI options ต่างๆ
+> Goal: รัน tests ด้วย CLI options และครอบคลุมทุก route
 
 1. รัน tests ด้วย `bunx playwright test`
 2. รัน tests ใน headed mode ด้วย `--headed`
@@ -131,18 +131,13 @@ related:
 4. รัน tests บน browser เฉพาะด้วย `--project`
 5. รัน tests ใน UI mode ด้วย `--ui` สำหรับ authoring และ debugging
 6. ใช้ `--last-failed` สำหรับ re-run เฉพาะ tests ที่ fail
+7. List routes จาก `/report-uxui-all-routes` หรือ route config/filesystem routes
+8. สร้าง smoke spec ที่ visit ทุก route แล้ว assert: page load 200, ไม่มี console errors, ไม่มี uncaught page errors
+9. สำหรับ critical routes → เขียน spec เฉพาะพร้อม interaction tests (click, form submit, navigation)
+10. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) เป็น stopgap แทน Playwright suite ชั่วคราว
+11. Track route gaps — route ที่ยังไม่มี test ต้องถูกบันทึก
 
-### 10. All-Routes Coverage
-
-> Goal: ทุก route มี E2E coverage
-
-1. List routes จาก `/report-uxui-all-routes` หรือ route config/filesystem routes
-2. สร้าง smoke spec ที่ visit ทุก route แล้ว assert: page load 200, ไม่มี console errors, ไม่มี uncaught page errors
-3. สำหรับ critical routes → เขียน spec เฉพาะพร้อม interaction tests (click, form submit, navigation)
-4. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) เป็น stopgap แทน Playwright suite ชั่วคราว
-5. Track route gaps — route ที่ยังไม่มี test ต้องถูกบันทึก
-
-### 11. CI/CD Integration
+### 10. CI/CD Integration
 
 > Goal: ตั้งค่า Playwright ใน CI/CD pipeline
 
@@ -222,6 +217,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-test-e2e ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -64,6 +64,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 - ใช้ `ast-grep` สำหรับ semantic search
 - ใช้ `/deep-analyze` ถ้าต้องการวิเคราะห์ลึก
 - จำกัด scope ด้วย path, type, glob เพื่อลด noise
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

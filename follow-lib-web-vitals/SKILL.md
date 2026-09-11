@@ -47,6 +47,8 @@ related:
 - INP แทน FID ตั้งแต่ v3; `onFID` ถูกลบออกตั้งแต่ v5 — ห้ามใช้
 - ใช้ `navigator.sendBeacon` หรือ `fetch keepalive` สำหรับ reporting
 - อย่า block main thread เพื่อ report metrics
+- ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome
 

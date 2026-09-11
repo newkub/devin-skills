@@ -135,7 +135,10 @@ Merged from: improve-docs, improve-onboarding
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (docs)
 
 - `references/fix-improve-docs.md` — แก้ไข documentation findings จาก review docs family ให้ docs ตรงกับ code จริง
+- ใช้ /run-docs ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 - `references/fix-improve-onboarding.md` — ปรับ onboarding experience ให้ dev ใหม่ setup project ได้เร็วผ่าน docs และ automation
+
 ## Expected Outcome
 
 - รายงาน Docs Review พร้อม score และ grade

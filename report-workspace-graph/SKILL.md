@@ -153,6 +153,8 @@ related:
 - ใช้ /all-workspace ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

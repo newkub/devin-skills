@@ -76,6 +76,7 @@ related:
 
 - ใช้ /report-database-schema ถ้าจำเป็น
 - ใช้ /review-database ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

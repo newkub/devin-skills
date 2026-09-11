@@ -186,6 +186,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-test ถ้าจำเป็น
 
 ## Expected Outcome
 

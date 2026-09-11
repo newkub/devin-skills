@@ -212,6 +212,7 @@ related:
 - ใช้ /review-docs ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

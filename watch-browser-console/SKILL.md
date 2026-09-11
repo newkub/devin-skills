@@ -120,6 +120,7 @@ Monitor console อย่างต่อเนื่อง
 
 - ก่อนแก้ไข code ด้วย `/resolve-errors` ให้สร้าง checkpoint ด้วย `git stash`
 - ถ้า fix สร้าง error ใหม่ → `git stash pop` เพื่อคืนค่า
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

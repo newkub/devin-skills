@@ -126,6 +126,8 @@ related:
 - Windows: ใช้ PowerShell commands
 - macOS/Linux: ใช้ bash/zsh commands
 - ใช้ `dua`, `duf`, `ncdu`, `gt5` ถ้าติดตั้ง
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

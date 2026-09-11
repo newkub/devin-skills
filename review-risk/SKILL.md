@@ -121,6 +121,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /prioritize ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

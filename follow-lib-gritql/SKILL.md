@@ -158,6 +158,7 @@ related:
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

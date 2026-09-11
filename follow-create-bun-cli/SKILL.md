@@ -131,6 +131,7 @@ related:
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
+- ใช้ /run-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

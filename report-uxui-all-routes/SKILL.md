@@ -111,6 +111,7 @@ related:
 - ถ้ามี context ทีขาด → ระบุ gaps และถามผู้ใช้ด้วย `/ask-me`
 
 - ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

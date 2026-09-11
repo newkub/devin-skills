@@ -2,7 +2,8 @@
 name: review-data-validation
 description: ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่
 argument-hint: "[schema-or-api-pattern]"
-related:  - scan-codebase
+related:
+  - scan-codebase
   - report
   - review-security
 related:
@@ -81,6 +82,7 @@ Merged from: improve-data-validation
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -145,6 +145,7 @@ related:
 - การเพิ่ม TODO อยู่ใน `/update-todo-md` แล้ว
 - การ implement TODO อยู่ใน `/implement-to-production` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
+- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

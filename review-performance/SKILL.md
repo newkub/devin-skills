@@ -170,6 +170,7 @@ Merged from: improve-performance, optimize-memory, optimize-network, optimize-pe
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -6,7 +6,8 @@ related:
   - review-web
   - review-cli
   - review-seo
-  - report
+  - report
+
   - suggest-next-action
   - run-drizzle-studio
   - run-review
@@ -109,6 +110,10 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /review-web ถ้าจำเป็น
+- ใช้ /review-cli ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

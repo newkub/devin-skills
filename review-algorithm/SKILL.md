@@ -1,13 +1,13 @@
 ---
 name: review-algorithm
-description: "ตรวจสอบ algorithms: time/space complexity, correctness และ hot paths"
+description: ตรวจสอบ algorithms ใน project — time/space complexity, correctness, hot paths
 argument-hint: "[function-or-module]"
-related:  - follow-algorithms
+related:
+  - follow-algorithms
   - scan-codebase
   - run-profiler
   - run-bench
   - report
-related:
   - run-review
 ---
 
@@ -79,6 +79,8 @@ Merged from: optimize-algorithm
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /follow-algorithms ถ้าจำเป็น
 
 ## Expected Outcome
 

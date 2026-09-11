@@ -140,6 +140,8 @@ related:
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
 

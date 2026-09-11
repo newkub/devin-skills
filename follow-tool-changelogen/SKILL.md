@@ -115,6 +115,7 @@ changelogen ทำงานต่อ git repository เดียว — ไม�
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -113,6 +113,8 @@ Merged from: improve-migration
 2. ใช้ `/check-migrations` ยืนยัน version ล่าสุด
 3. ทำ `/report-before-after` เทียบ row counts/aggregates
 4. ถ้า mismatch → ระบุ rows/columns ที่ต่าง และแนะนำ fix-forward หรือ rollback
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

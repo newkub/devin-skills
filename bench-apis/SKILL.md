@@ -71,6 +71,7 @@ Benchmark เทียบ API endpoints แบบ side-by-side — เช่น 
 
 - เก็บ configs/scripts ที่ใช้ไว้รันซ้ำ — ผลที่ reproduce ไม่ได้ไม่นับ
 - ระบุ tool versions, payload, dataset ใน report
+- ใช้ /run-bench ถ้าจำเป็น
 
 ## Expected Outcome
 

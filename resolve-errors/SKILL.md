@@ -158,6 +158,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน
 
 - ใช้ /rethink ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

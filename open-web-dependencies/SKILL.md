@@ -49,6 +49,8 @@ related:
 - ใช้ /research-dependencies ถ้าจำเป็น
 - ใช้ /check-circular-dependencies ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
+- ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

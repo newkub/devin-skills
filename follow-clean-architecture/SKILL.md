@@ -162,6 +162,7 @@ Clean Architecture มี 3 rules หลัก:
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /improve ถ้าจำเป็น
+- ใช้ /run-clean ถ้าจำเป็น
 
 ## Expected Outcome
 

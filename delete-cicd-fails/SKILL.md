@@ -73,6 +73,7 @@ related:
 
 - ไม่ลบ run ทีเกี่ยวข้องกับ branch ปัจจุบัน เว้นแต่ user ระบุชัดเจน
 - ไม่ expose secrets หรือ tokens ใน output
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

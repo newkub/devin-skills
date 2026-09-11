@@ -88,6 +88,7 @@ related:
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
+- ใช้ /run-audit ถ้าจำเป็น
 
 ## Expected Outcome
 

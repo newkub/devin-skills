@@ -116,6 +116,7 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 - หยุดทันทีเมื่อ user กด `Ctrl+C` หรือสั่งหยุด
 - ปิด browser session ก่อนจบ — ไม่ทิ้ง daemon ค้าง
+- ใช้ /use-mcp ถ้าจำเป็น
 
 ## Expected Outcome
 

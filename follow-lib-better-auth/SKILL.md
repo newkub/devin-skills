@@ -99,6 +99,9 @@ related:
 
 - อัปเกรด `better-auth` และ `@better-auth/*` พร้อมกัน
 - อ่าน migration guide ก่อน upgrade major version (เช่น v1.7 มี breaking changes สำหรับ OAuth, MCP, SCIM)
+- ใช้ /review-auth ถ้าจำเป็น
+- ใช้ /follow-lib-jose ถ้าจำเป็น
+- ใช้ /follow-lib-simplewebauthn ถ้าจำเป็น
 
 ## Expected Outcome
 

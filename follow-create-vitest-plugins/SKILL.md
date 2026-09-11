@@ -160,6 +160,7 @@ const newProjects = await injectTestProjects({
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create vitest plugins)
+- ใช้ /run-test ถ้าจำเป็น
 
 ## Expected Outcome
 

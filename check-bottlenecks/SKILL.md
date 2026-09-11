@@ -65,6 +65,7 @@ related:
 - ระบุ metric ทีวัดได้
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome
 - รายการ bottlenecks พร้อม metric

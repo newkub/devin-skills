@@ -118,6 +118,7 @@ related:
 - ใช้ /follow-design-system ถ้าจำเป็น
 - ใช้ /roleplay-stakeholder ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

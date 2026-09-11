@@ -80,6 +80,8 @@ related:
 
 - รายงานขนาดจริงจาก `docker system df` ไม่ใช่คาดเดา
 - ระบุ last-used หรือ created date เมื่อช่วยตัดสินใจได้
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

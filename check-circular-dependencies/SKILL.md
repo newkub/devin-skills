@@ -113,6 +113,7 @@ related:
 - ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /check-skills-related ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

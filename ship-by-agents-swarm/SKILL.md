@@ -123,6 +123,8 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 - ทุก lane ต้อง log deliverable และ files changed
 - report ต้องบอก lane ไหนทำอะไร ไม่ใช่สรุปรวมอย่างเดียว
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

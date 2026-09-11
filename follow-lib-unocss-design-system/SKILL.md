@@ -135,6 +135,7 @@ related:
 - ใช้ `/follow-lib-unocss` ถ้ายังไม่ได้ setup
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-design-system` ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
 
 ## Expected Outcome
 

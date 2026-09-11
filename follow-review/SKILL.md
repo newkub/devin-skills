@@ -82,6 +82,7 @@ related:
 - ทุก finding ต้องมี evidence (file, line, reference)
 - ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -118,6 +118,7 @@ related:
 - ใช้ backticks สำหรับ `commands`, `tools`, `paths` และ skill references
 - ไม่เกิน 250 บรรทัดต่อ skill
 - ระบุ `allowed-tools` ตาม tools ที command เรียกโดยตรง
+- ใช้ /run-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

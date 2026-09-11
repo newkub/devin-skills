@@ -65,6 +65,7 @@ related:
 - ใช้ `/cleanup-files-in-project` สำหรับ project cleanup
 - ใช้ `/cleanup-git-branch` สำหรับ branch cleanup
 - ใช้ `/suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
+- ใช้ /run-clean ถ้าจำเป็น
 
 ## Expected Outcome
 

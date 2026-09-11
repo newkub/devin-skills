@@ -119,6 +119,7 @@ Merged from: optimize-ci, optimize-docker
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-watch ถ้าจำเป็น
 
 ## Expected Outcome
 

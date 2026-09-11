@@ -72,6 +72,8 @@ related:
 
 - ถ้า project ไม่ได้กำหนด layer rules ไว้ → infer จาก convention และระบุว่าเป็น inferred rules
 - dev/test imports (fixtures, test-utils) อาจยกเว้นได้ตาม convention ของ project
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

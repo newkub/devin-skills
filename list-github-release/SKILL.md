@@ -66,6 +66,7 @@ related:
 - ใช้ /list-git-release ถ้าจำเป็น
 - ใช้ /resolve-github-actions-fails ถ้าจำเป็น
 - ใช้ /list-github-branch ถ้าจำเป็น
+- ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome
 

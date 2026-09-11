@@ -95,6 +95,7 @@ related:
 
 - ใช้ /list-program-in-computer ถ้าจำเป็น
 - ใช้ /download-program ถ้าจำเป็น
+- ใช้ /run-program ถ้าจำเป็น
 
 ## Expected Outcome
 

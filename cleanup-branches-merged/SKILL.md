@@ -79,6 +79,8 @@ related:
 
 - ต้อง `fetch --prune` ก่อนเสมอ — stale refs ทำให้ list ผิด
 - remote deletions ทำเฉพาะที่ user ระบุ `--remote` และ confirm
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

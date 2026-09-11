@@ -121,6 +121,8 @@ related:
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

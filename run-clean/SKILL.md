@@ -99,6 +99,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 - ใช้ /resolve-errors ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

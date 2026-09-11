@@ -52,6 +52,8 @@ related:
 - เก็บ release/hotfix branches ตาม policy
 
 - ใช้ /delete-git-branch ถ้าจำเป็น
+- ใช้ /run-clean ถ้าจำเป็น
+- ใช้ /run-cleanup ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -43,15 +43,10 @@ export default function myPlugin(options = {}) {
 ค่าเริ่มต้น plugin ทำงานทั้ง `serve` และ `build`:
 
 ```js
-function myPlugin() {
-  return {
-    name: 'build-only',
-    apply: 'build', // หรือ 'serve' หรือ function
-    // apply(config, { command }) {
-    //   return command === 'build' && !config.build.ssr
-    // },
-  }
-}
+const myPlugin = () => ({
+  name: 'build-only',
+  apply: 'build', // หรือ 'serve' หรือ function: (config, { command }) => command === 'build'
+})
 ```
 
 ## Universal Hooks (Rolldown)
@@ -140,11 +135,8 @@ const examplePlugin = () => {
   let config
   return {
     name: 'read-config',
-    configResolved(resolvedConfig) { config = resolvedConfig },
-    transform(code, id) {
-      if (config.command === 'serve') { /* dev */ }
-      else { /* build */ }
-    },
+    configResolved(c) { config = c }, // config.command: 'serve' | 'build'
+    transform(code, id) { /* branch ตาม config.command */ },
   }
 }
 ```
@@ -157,9 +149,7 @@ const examplePlugin = () => {
 const myPlugin = () => ({
   name: 'configure-server',
   configureServer(server) {
-    server.middlewares.use((req, res, next) => {
-      // custom handle request...
-    })
+    server.middlewares.use((req, res, next) => { /* custom handle request */ })
   },
 })
 ```
@@ -196,9 +186,8 @@ const htmlPlugin = () => ({
 
 ```js
 handleHotUpdate({ server, modules, timestamp }) {
-  for (const mod of modules) {
+  for (const mod of modules)
     server.moduleGraph.invalidateModule(mod, new Set(), timestamp, true)
-  }
   server.ws.send({ type: 'full-reload' })
   return []
 }
@@ -210,12 +199,9 @@ Hook ใหม่ที่จะแทนที่ `handleHotUpdate` ในอ�
 
 ```ts
 interface HotUpdateOptions {
-  type: 'create' | 'update' | 'delete' // รองรับ watch events เพิ่ม
-  file: string
-  timestamp: number
+  type: 'create' | 'update' | 'delete'; file: string; timestamp: number
   modules: Array<EnvironmentModuleNode> // เฉพาะ environment ปัจจุบัน
-  read: () => string | Promise<string>
-  server: ViteDevServer
+  read: () => string | Promise<string>; server: ViteDevServer
 }
 ```
 
@@ -228,15 +214,12 @@ interface HotUpdateOptions {
 - ใช้ `this.meta.viteVersion` อ่าน Vite version และ `this.meta.rolldownVersion` ตรวจว่าเป็น Rolldown-powered Vite (Vite 8+):
 
 ```js
-function versionCheckPlugin() {
-  return {
-    name: 'version-check',
-    buildStart() {
-      if (this.meta.rolldownVersion) { /* Rolldown (Vite 8+) */ }
-      else { /* Rollup powered */ }
-    },
-  }
-}
+const versionCheckPlugin = () => ({
+  name: 'version-check',
+  buildStart() {
+    if (this.meta.rolldownVersion) { /* Rolldown (Vite 8+) */ } else { /* Rollup */ }
+  },
+})
 ```
 
 - Rolldown plugins ส่วนใหญ่ทำงานเป็น Vite plugin ได้โดยตรง ถ้า:
@@ -247,23 +230,18 @@ function versionCheckPlugin() {
 - Hook filters ลด overhead ระหว่าง Rust และ JS runtime (Rollup 4.38.0+, Vite 6.3.0+):
 
 ```js
-export default function myPlugin() {
-  const jsFileRegex = /\.js$/
-  return {
-    name: 'my-plugin',
-    transform: {
-      filter: { id: jsFileRegex },
-      handler(code, id) {
-        if (!jsFileRegex.test(id)) return null // backward compat
-        return { code: transformCode(code), map: null }
-      },
-    },
-  }
-}
+const jsFileRegex = /\.js$/
+export default () => ({
+  name: 'my-plugin',
+  transform: {
+    filter: { id: jsFileRegex },
+    handler: (code, id) =>
+      jsFileRegex.test(id) ? { code: transformCode(code), map: null } : null,
+  },
+})
 ```
 
-- ใช้ `normalizePath` จาก `vite` เพื่อแปลง path เป็น POSIX separators:
-  `normalizePath('foo\\bar')` → `'foo/bar'`
+- ใช้ `normalizePath` จาก `vite` แปลง path เป็น POSIX separators
 
 ## Sources
 

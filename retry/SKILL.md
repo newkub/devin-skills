@@ -49,6 +49,7 @@ related:
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

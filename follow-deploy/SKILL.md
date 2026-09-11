@@ -122,6 +122,7 @@ related:
 - ต้องตรวจสอบ logs ว่าไม่มี error
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น (deploy)
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

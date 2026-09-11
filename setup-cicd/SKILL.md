@@ -237,6 +237,7 @@ jobs:
 - `run-verify`, `check-quality`, `review-*`, `check-*` ทำงานซ้ำซ้อนกันได้ ควรรวมลงใน `verify` job เดียว
 - ใช้ `concurrency`, `timeout-minutes`, `cache`, runner เดียว และหลีกเลี่ง matrix เพื่อประหยัด cost
 - ถ้าไม่มี root package.json ให้รัน verify จาก tool directories แทนการสร้าง root package หลอก
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -109,7 +109,9 @@ related:
 - ใช้ /update-readme-md ถ้าจำเป็น
 
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /run-deploy ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `README.md` มี Deploy to Cloudflare button ที่ URL ถูกต้อง

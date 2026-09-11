@@ -76,6 +76,7 @@ related:
 
 - เน้น risks ที่ actionable — ไม่ flag ทุก transitive dep
 - supply chain hardening ต้องไม่ทำ workflow พัง — เสนอทีละขั้น
+- ใช้ /run-audit ถ้าจำเป็น
 
 ## Expected Outcome
 

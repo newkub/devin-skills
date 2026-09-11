@@ -156,6 +156,10 @@ related:
 - ตรวจสอบ tokens ก่อนรัน
 - ใช้ `Changesets Snapshot` ต้องระวัง `version history` เปรอะ
 - `pkg.pr.new` เหมาะกับ PR preview ไม่กระทบ npm Registry
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -132,6 +132,7 @@ related:
 - ไม่ install package ด้วยตัวเอง (skill นี้ทำเฉพาะ research)
 - ไม่ expose API key หรือ registry token
 - ไม่สร้าง file ใดๆ ใน project target นอกจาก report ใน chat
+- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

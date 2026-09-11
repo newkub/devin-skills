@@ -233,6 +233,9 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

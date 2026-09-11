@@ -173,6 +173,7 @@ Merged from: improve-uxui
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome
 

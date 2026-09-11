@@ -92,6 +92,7 @@ Generate OpenAPI 3.x spec (`openapi.json`/`openapi.yaml`) จาก API code จ
 - ใช้ /follow-tool-scalar ถ้าจำเป็น
 - ใช้ /review-api ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
 
 ## Expected Outcome
 

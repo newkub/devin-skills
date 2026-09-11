@@ -105,6 +105,7 @@ related:
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น
+- ใช้ /run-typecheck ถ้าจำเป็น
 
 ## Expected Outcome
 

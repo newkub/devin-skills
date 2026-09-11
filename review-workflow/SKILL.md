@@ -6,7 +6,8 @@ related:
   - review-devin-global-skills
   - update-devin-global-skills
   - review-quality
-  - deep-validate
+  - deep-validate
+
   - suggest-next-action
   - use-subagents
   - follow-parallel
@@ -83,6 +84,8 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-deploy ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

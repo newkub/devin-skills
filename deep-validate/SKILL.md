@@ -172,6 +172,9 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 - ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง validate
 
 - ใช้ /rethink ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

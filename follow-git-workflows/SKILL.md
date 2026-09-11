@@ -58,6 +58,7 @@ related:
 - ไม่เปลี่ยน branch ถ้ามี uncommitted changes ยกเว้นได้รับอนุญาต
 - ไม่ลบหรือ force-push branch
 - ใช้ `git switch -c` เฉพาะเมื่อ branch ยังไม่มี
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

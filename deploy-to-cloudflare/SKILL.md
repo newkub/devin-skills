@@ -127,6 +127,7 @@ Deploy application ไปยัง Cloudflare Workers ด้วย wrangler ต�
 - หากมี frontend ให้ใช้ `[assets]` ใน `wrangler.toml` ไม่ใช่ Pages
 - หาก fail → ตรวจ logs ด้วย `wrangler tail` หรือ URL ที deploy แล้ว fix
 - ไม่ commit ก่อน deploy สำเร็จ
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

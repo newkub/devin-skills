@@ -96,6 +96,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 - `perRoundTimeout` = 300 วินาที
 - `ciWatchTimeout` = 900 วินาที
 - `cdWatchTimeout` = 600 วินาที
+- ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome
 

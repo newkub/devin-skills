@@ -105,6 +105,7 @@ related:
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (astgrep programmatic)
 - รายงานเป็นตารางด้วย `/report`
+- ใช้ /run-program ถ้าจำเป็น
 
 ## Expected Outcome
 

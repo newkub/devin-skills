@@ -96,6 +96,8 @@ related:
 
 - ใช้ /follow-your-suggestion ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
 
 ## Expected Outcome
 

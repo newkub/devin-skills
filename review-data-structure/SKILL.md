@@ -2,7 +2,8 @@
 name: review-data-structure
 description: ตรวจสอบ data structures ใน project ว่าเหมาะสมกับ access pattern และ complexity หรือไม่
 argument-hint: "[component-or-data-pattern]"
-related:  - scan-codebase
+related:
+  - scan-codebase
   - report
   - review-algorithm
 related:
@@ -77,6 +78,7 @@ Merged from: improve-data-structure
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

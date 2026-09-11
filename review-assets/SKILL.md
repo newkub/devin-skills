@@ -81,6 +81,7 @@ Merged from: optimize-assets, optimize-fonts, optimize-images, optimize-videos
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

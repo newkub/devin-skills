@@ -108,6 +108,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /run-test-mutation ถ้าจำเป็น
 
 ## Expected Outcome
 

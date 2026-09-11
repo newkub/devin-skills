@@ -100,6 +100,7 @@ related:
 - ตรวจสอบว่าไม่มี regressions
 - ทำ `/check-unused` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
 - ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
+- ใช้ /run-format ถ้าจำเป็น
 
 ## Expected Outcome
 

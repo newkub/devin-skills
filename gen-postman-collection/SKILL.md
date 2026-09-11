@@ -81,6 +81,7 @@ Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec ห�
 
 - import แล้วต้องยิงได้จริง (หลังใส่ baseUrl/auth) — ไม่ใช่ skeleton เปล่า
 - example bodies ต้อง valid ตาม schema
+- ใช้ /run-test-api ถ้าจำเป็น
 
 ## Expected Outcome
 
