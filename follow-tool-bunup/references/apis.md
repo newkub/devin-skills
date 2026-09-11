@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D bunup
-# or
-npm install --save-dev bunup
 ```
 
 ## Version

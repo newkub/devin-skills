@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D better-auth
-# or
-npm install --save-dev better-auth
+bun add better-auth
 ```
 
 ## Version

@@ -3,29 +3,33 @@
 ## Install
 
 ```sh
-bun add -D -D
-# or
-npm install --save-dev -D
+# API reference renderer (project dependency)
+bun add @scalar/api-reference
+# CLI สำหรับ validate/bundle OpenAPI
+bun add -D @scalar/cli
 ```
 
 ## Version
 
-- Latest: see registry
-- [Package Registry](https://www.npmjs.com/package/-D)
+- `@scalar/api-reference`: `1.68.0` (verified 2026-09-11)
+- [Package Registry](https://www.npmjs.com/package/@scalar/api-reference)
+- [Repository](https://github.com/scalar/scalar)
 
 ## Dependencies
 
-- See package registry for transitive dependencies.
+- `@scalar/api-reference` ใช้กับ framework integrations เช่น `@scalar/elysiajs-api-reference`, `@scalar/hono-api-reference`, `@scalar/nestjs-api-reference`, `@scalar/express-api-reference`
+- ใช้กับ Elysia → plugin `@elysiajs/openapi` มี Scalar UI built-in
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install -D in project | latest version | --save-dev, --save, --global |
-| `-D` | Run the tool CLI | current workspace | see cli.md |
-| `configure` | Configure via config file | project defaults | --config, --file |
+| `bun add @scalar/api-reference` | Install renderer | latest | framework subpath เช่น `/elysiajs` |
+| `scalar validate` | Validate OpenAPI doc | file arg | --watch |
+| `scalar bundle` | Bundle $refs | file arg | --output |
+| `scalar format` | Format OpenAPI | file arg | --write |
 
 ## Source
 
-- Official docs: https://www.npmjs.com/package/-D
-
+- Official docs: https://scalar.com / https://guides.scalar.com
+- Description: API documentation renderer + OpenAPI toolchain.

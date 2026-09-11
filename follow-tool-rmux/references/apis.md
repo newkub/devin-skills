@@ -3,16 +3,16 @@
 ## Install
 
 ```sh
-bun add -D rmux
+mise use -g rmux
 # or
-npm install --save-dev rmux
+cargo install rmux --locked
 ```
 
 ## Version
 
-- Latest: 0.0.1-alpha.17
-- [Package Registry](https://www.npmjs.com/package/rmux)
-- [Repository](https://github.com/nakulbh/rmux)
+- Latest: `0.10.0` (crates.io, verified 2026-09-11)
+- [Package Registry](https://crates.io/crates/rmux)
+- [Repository](https://rmux.io) — npm package `rmux` ไม่ใช่ตัวจริง
 
 ## Dependencies
 

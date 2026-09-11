@@ -17,6 +17,7 @@ related:
 ใช้กับ JavaScript/TypeScript, CSS และ JSON ในโปรเจกต์ที่ใช้ Biome v2+
 
 - Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-11)
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D dprint
-# or
-npm install --save-dev dprint
 ```
 
 ## Version

@@ -25,7 +25,7 @@ related:
 
 > Goal: ติดตั้ง ArkType และเตรียม environment
 
-1. รัน `npm install arktype` (หรือ `pnpm add arktype`, `yarn add arktype`, `bun add arktype`)
+1. รัน `bun add arktype` (หรือ `pnpm add arktype` ตาม package manager ของ project)
 2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3)
 3. ยืนยันว่า `package.json` มี `arktype` ใน `dependencies`
 4. ตรวจสอบว่า `package.json` มี `"type": "module"` หรือ runtime รองรับ ESM imports
@@ -113,7 +113,7 @@ related:
 
 ### 1. Installation
 
-- ใช้ `npm install arktype` หรือ package manager ที่ project ใช้
+- ใช้ `bun add arktype` (runtime dependency) หรือ package manager ที่ project ใช้
 - ยืนยันว่า `package.json` มี `type: "module"` หรือ environment รองรับ ESM
 
 ### 2. TypeScript Configuration

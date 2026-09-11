@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D release-it
-# or
-npm install --save-dev release-it
 ```
 
 ## Version

@@ -21,6 +21,7 @@ related:
 - ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
 
 - Latest: `msw@2.15.0` (verified 2026-09-11)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -36,7 +37,7 @@ related:
 
 > Goal: MSW ติดตั้งและ init ถูกต้อง
 
-1. ติดตั้ง `bun add -d msw` (หรือ `npm i -D msw` ตาม package manager)
+1. ติดตั้ง `bun add -D msw` (dev dependency)
 2. ถ้าใช้ browser → `bunx msw init public/ --save` เพื่อสร้าง `mockServiceWorker.js`
 3. สร้าง `src/mocks/handlers.ts` สำหรับ request handlers
 4. สร้าง `src/mocks/browser.ts` (`setupWorker`) และ `src/mocks/node.ts` (`setupServer`)

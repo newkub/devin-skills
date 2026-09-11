@@ -1,6 +1,6 @@
 # Tool Usage Official Resources
 
-- [Website](https://github.com/arunoda/node-usage)
-- [Repository](https://github.com/arunoda/node-usage)
-- [Package Registry](https://www.npmjs.com/package/usage)
-- About: process usage lookup with nodejs.
+- [Website](https://usage.jdx.dev)
+- [Repository](https://github.com/jdx/usage)
+- [Registry](https://usage.jdx.dev) — npm package `usage` ไม่ใช่ตัวจริง
+- About: CLI spec tool — generate completions/docs/SDK from usage.kdl

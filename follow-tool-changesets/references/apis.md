@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D @changesets/cli
-# or
-npm install --save-dev @changesets/cli
 ```
 
 ## Version

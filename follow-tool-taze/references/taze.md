@@ -4,11 +4,10 @@
 
 ## Install
 
-No installation required — use via `npx` or `bunx`:
+No installation required — ใช้ผ่าน `bunx`:
 
 ```sh
 bunx taze
-npx taze
 ```
 
 Optional install as dev dependency:
@@ -31,7 +30,7 @@ No required peer dependencies. Works with npm, yarn, pnpm, and bun.
 ## CLI Usage
 
 ```sh
-npx taze [mode] [options]
+bunx taze [mode] [options]
 ```
 
 ### Modes
@@ -44,10 +43,10 @@ npx taze [mode] [options]
 | `latest`  | Always update to latest version                  |
 
 ```sh
-npx taze              # Default: major updates
-npx taze minor        # Check up to minor updates
-npx taze patch        # Check up to patch updates
-npx taze latest       # Update to latest versions
+bunx taze              # Default: major updates
+bunx taze minor        # Check up to minor updates
+bunx taze patch        # Check up to patch updates
+bunx taze latest       # Update to latest versions
 ```
 
 ### Options
@@ -71,16 +70,16 @@ npx taze latest       # Update to latest versions
 ### Monorepo Usage
 
 ```sh
-npx taze -r             # Recursive for monorepos
-npx taze -r -w          # Recursive + write
-npx taze -r -w -i       # Recursive + write + install
-npx taze latest -r -w -i  # Update to latest, recursive, write, install
+bunx taze -r             # Recursive for monorepos
+bunx taze -r -w          # Recursive + write
+bunx taze -r -w -i       # Recursive + write + install
+bunx taze latest -r -w -i  # Update to latest, recursive, write, install
 ```
 
 ### JSON Output (for agents)
 
 ```sh
-npx taze -r --json
+bunx taze -r --json
 ```
 
 ## Configuration
@@ -161,7 +160,7 @@ Taze also checks GitHub Actions used in `.github/workflows/*.{yml,yaml}`, compos
 ## Features
 
 - Built-in first-class monorepo support
-- No installation required (`npx taze`)
+- No installation required (`bunx taze`)
 - Safe by default — updates within allowed version range
 - Interactive mode to select which packages to update
 - Respects `package.json` `engines` field and package manager config

@@ -9,13 +9,10 @@
 ## Install
 
 ```bash
-# Global install via npm
-bun add -g degit
+# Global install via mise
+mise use -g npm:degit
 
-# Run without installing (npx)
-npx degit user/repo
-
-# Run with bun (bunx)
+# Run without installing
 bunx degit user/repo
 ```
 

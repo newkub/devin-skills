@@ -1,6 +1,6 @@
 # Tool Devin Official Resources
 
-- [Website](https://github.com/devjmetivier/devin#readme)
-- [Repository](https://github.com/devjmetivier/devin)
-- [Package Registry](https://www.npmjs.com/package/devin)
-- About: Contribute to devjmetivier/devin development by creating an account on GitHub.
+- [Website](https://devin.ai)
+- [Registry](https://devin.ai)
+- [Docs](https://devin.ai/docs) — npm package `devin` ไม่ใช่ตัวจริง
+- About: Devin — AI coding assistant จาก Cognition

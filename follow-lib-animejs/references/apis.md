@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D animejs
-# or
-npm install --save-dev animejs
+bun add animejs
 ```
 
 ## Version

@@ -16,6 +16,7 @@ related:
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib markdown it)
 
 - Latest: `markdown-it@15.0.1` (verified 2026-09-11)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

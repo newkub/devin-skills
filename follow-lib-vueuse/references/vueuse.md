@@ -21,7 +21,7 @@ bun add -D @vueuse/nuxt @vueuse/core
 Or use the Nuxt CLI to add the module:
 
 ```bash
-npx nuxt@latest module add vueuse
+bunx nuxt@latest module add vueuse
 ```
 
 ## Version Info

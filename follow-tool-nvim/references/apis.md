@@ -3,15 +3,17 @@
 ## Install
 
 ```sh
-bun add -D neovim
+# Neovim เป็น system binary — ไม่ใช่ npm package
+winget install Neovim.Neovim
 # or
-npm install --save-dev neovim
+scoop install neovim
+# or mise use -g neovim
 ```
 
 ## Version
 
-- Latest: 5.4.0
-- [Package Registry](https://www.npmjs.com/package/neovim)
+- Latest: `0.12.5` (verified 2026-09-11)
+- [Registry](https://neovim.io) — npm package `neovim` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/neovim/neovim)
 
 ## Dependencies

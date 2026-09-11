@@ -3,9 +3,10 @@
 ## Install
 
 ```sh
-bun add -D gh
+# gh เป็น GitHub CLI binary — npm package `gh` ไม่ใช่ตัวจริง
+mise use -g gh
 # or
-npm install --save-dev gh
+winget install GitHub.cli
 ```
 
 ## Version

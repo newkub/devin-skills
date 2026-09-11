@@ -20,6 +20,7 @@ related:
 ใช้สำหรับ project ที่ต้องการ license file ที่ root directory และ declaration ใน package manifest (`package.json`, `pyproject.toml`, `Cargo.toml` ฯลฯ)
 
 - Latest: version-agnostic (license/linting guide; Python build backends pinned ใน skill) (verified 2026-09-11)
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D react-scan
-# or
-npm install --save-dev react-scan
 ```
 
 ## Version

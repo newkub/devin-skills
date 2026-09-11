@@ -3,16 +3,15 @@
 ## Install
 
 ```sh
-bun add -D pitchfork
-# or
-npm install --save-dev pitchfork
+mise use -g pitchfork
+# or ตาม https://pitchfork.jdx.dev (brew, prebuilt binaries)
 ```
 
 ## Version
 
-- Latest: 0.0.16
-- [Package Registry](https://www.npmjs.com/package/pitchfork)
-- [Repository](https://github.com/omardelarosa/pitchfork-npm)
+- Latest: `2.24.2` (verified 2026-09-11)
+- [Registry](https://pitchfork.jdx.dev) — npm package `pitchfork` ไม่ใช่ตัวจริง
+- [Repository](https://github.com/jdx/pitchfork)
 
 ## Dependencies
 
@@ -28,5 +27,5 @@ npm install --save-dev pitchfork
 
 ## Source
 
-- Official docs: https://github.com/omardelarosa/pitchfork-npm
-- Description: An Unofficial Pitchfork Music API client for Node.js
+- Official docs: https://pitchfork.jdx.dev
+- Description: Daemon/process manager for project services by jdx

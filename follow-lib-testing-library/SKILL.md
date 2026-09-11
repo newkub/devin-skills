@@ -16,6 +16,7 @@ related:
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib testing library)
 
 - Latest: `@testing-library/dom@10.4.1` / `react@16.3.3` / `jest-dom@7.0.1` / `user-event@14.6.7` / `vue@8.1.0` (verified 2026-09-11)
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

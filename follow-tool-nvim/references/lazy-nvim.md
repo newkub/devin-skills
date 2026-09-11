@@ -173,7 +173,7 @@ When importing specs, override by adding a spec for the same plugin. `opts`, `de
 cargo install stylua              # from crates.io (defaults to Lua 5.1)
 cargo install stylua --features luajit
 brew install stylua               # from Homebrew (macOS)
-npx @johnnymorganz/stylua-bin --help  # from npm
+bunx @johnnymorganz/stylua-bin --help  # from npm registry via bunx
 ```
 
 Pre-built binaries with all syntax variants are available on the GitHub Releases page.

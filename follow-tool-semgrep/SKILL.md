@@ -18,6 +18,7 @@ related:
 - Scan-only ใน skill นี้ — fix ผ่าน `/review-security` หรือ `/fix`
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-11)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

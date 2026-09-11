@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D vitepress
-# or
-npm install --save-dev vitepress
 ```
 
 ## Version

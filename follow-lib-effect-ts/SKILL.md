@@ -119,6 +119,8 @@ related:
 
 ### 1. TypeScript Configuration
 
+- ทำตาม `/follow-lang-typescript` สำหรับ base config (strict mode, moduleResolution)
+
 - ต้องใช้ TypeScript `5.4` หรือใหม่กว่า
 - ต้องมี `strict: true`, `noUncheckedIndexedAccess: true`, `exactOptionalPropertyTypes: true`
 - ใช้ `moduleResolution: "bundler"` หรือ `"nodenext"` ตาม runtime
@@ -129,7 +131,7 @@ related:
 - ถ้าใช้ subpath imports เช่น `import * as Effect from "effect/Effect"` ให้เลือก style เดียวสม่ำเสมอทั้ง project
 - `effect` เป็น runtime dependency (`bun add effect` ไม่ใช่ `-D`)
 - `@effect/schema` standalone เป็น legacy — ใช้ `Schema` จาก `effect` เท่านั้น
-- `@effect/vitest@0.30.0` ต้องการ peer `vitest ^3.2.0` และ `effect ^3.22.0` — pin vitest ให้ตรงก่อนติดตั้ง
+- `@effect/vitest@0.30.0` ต้องการ peer `vitest ^3.2.0` และ `effect ^3.22.0` — pin vitest ให้ตรงก่อนติดตั้ง (setup ดู `/follow-tool-vitest`)
 
 ### 3. Code Patterns
 

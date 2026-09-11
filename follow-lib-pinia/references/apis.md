@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D pinia
-# or
-npm install --save-dev pinia
+bun add pinia
 ```
 
 ## Version

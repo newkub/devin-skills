@@ -12,11 +12,9 @@
 ## Install
 
 ```bash
-npm install better-auth
+bun add better-auth
 # or
 pnpm add better-auth
-yarn add better-auth
-bun add better-auth
 ```
 
 สำหรับ separate client/server setup ให้ติดตั้งทั้งสองฝั่ง
@@ -110,21 +108,21 @@ export const auth = betterAuth({
 
 ```bash
 # Initialize Better Auth in a Next.js project
-npx auth@latest init
+bunx auth@latest init
 
 # Generate schema or SQL migration
-npx auth@latest generate
-npx auth@latest generate --adapter prisma
-npx auth@latest generate --adapter drizzle
+bunx auth@latest generate
+bunx auth@latest generate --adapter prisma
+bunx auth@latest generate --adapter drizzle
 
 # Apply migrations (built-in Kysely adapter only)
-npx auth@latest migrate
+bunx auth@latest migrate
 
 # Upgrade Better Auth packages
-npx auth@latest upgrade
+bunx auth@latest upgrade
 
 # Generate a secret
-npx auth@latest secret
+bunx auth@latest secret
 ```
 
 ## Mount Handler

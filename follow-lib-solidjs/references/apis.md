@@ -6,10 +6,10 @@
 # Create new project with Vite template (recommended)
 bun create vite@latest my-app --template solid-ts
 # or
-npx degit solidjs/templates/ts my-app
+bunx degit solidjs/templates/ts my-app
 
 # SolidStart (meta-framework)
-npm create solid@latest my-app
+bun create solid@latest my-app
 
 # Manual install
 bun add solid-js

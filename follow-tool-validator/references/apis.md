@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D validator
-# or
-npm install --save-dev validator
+bun add validator
 ```
 
 ## Version

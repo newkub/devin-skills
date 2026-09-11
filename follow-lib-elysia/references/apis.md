@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D elysia
-# or
-npm install --save-dev elysia
+bun add elysia
 ```
 
 ## Version

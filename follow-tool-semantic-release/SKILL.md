@@ -55,7 +55,7 @@ related:
 
 1. สร้าง GitHub Actions workflow สำหรับ verify และ release
 2. กำหนด permissions `contents: write`, `pull-requests: write`, `id-token: write`
-3. รัน `npx semantic-release` ใน release job หลังจาก tests ผ่าน
+3. รัน `bunx semantic-release` ใน release job หลังจาก tests ผ่าน
 4. ใช้ trusted publishing (OIDC) สำหรับ npm ถ้าได้
 5. ดู CI example ใน [references/semantic-release.md](references/semantic-release.md)
 

@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D @moonrepo/cli
-# or
-npm install --save-dev @moonrepo/cli
 ```
 
 ## Version

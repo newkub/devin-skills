@@ -148,7 +148,7 @@ tasks:
     command: 'tsc'
     args: ['--outDir', 'dist']
   deploy:
-    script: 'npm run build && npm run deploy'
+    script: 'bun run build && bun run deploy'
 ```
 
 ### Persistent Tasks

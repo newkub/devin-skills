@@ -3,16 +3,13 @@
 ## Install
 
 ```sh
-bun add -D devin
-# or
-npm install --save-dev devin
+# Devin CLI ไม่ใช่ npm package — ดู https://devin.ai/docs สำหรับ install
 ```
 
 ## Version
 
-- Latest: 0.0.0
-- [Package Registry](https://www.npmjs.com/package/devin)
-- [Repository](https://github.com/devjmetivier/devin)
+- Latest: ดู https://devin.ai/docs (npm package `devin` ไม่ใช่ตัวจริง)
+- [Registry](https://devin.ai)
 
 ## Dependencies
 
@@ -28,5 +25,5 @@ npm install --save-dev devin
 
 ## Source
 
-- Official docs: https://github.com/devjmetivier/devin#readme
-- Description: Devin Metivier
+- Official docs: https://devin.ai/docs
+- Description: Devin — AI coding assistant CLI จาก Cognition

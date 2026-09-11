@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D changelogen
-# or
-npm install --save-dev changelogen
 ```
 
 ## Version

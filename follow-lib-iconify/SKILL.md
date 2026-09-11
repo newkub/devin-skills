@@ -16,6 +16,7 @@ related:
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib iconify)
 
 - Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` (verified 2026-09-11)
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

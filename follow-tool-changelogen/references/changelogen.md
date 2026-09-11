@@ -6,8 +6,8 @@
 
 ```sh
 bun add -D changelogen
-# or use via npx without install:
-npx changelogen@latest
+# or use via bunx without install:
+bunx changelogen@latest
 ```
 
 ## Version
@@ -22,7 +22,7 @@ No required peer dependencies. Uses `conventional-commits` format.
 ## CLI Usage
 
 ```sh
-npx changelogen@latest [...args] [--dir <dir>]
+bunx changelogen@latest [...args] [--dir <dir>]
 ```
 
 ### Arguments
@@ -48,31 +48,31 @@ npx changelogen@latest [...args] [--dir <dir>]
 Generate changelog and display in console:
 
 ```sh
-npx changelogen@latest
+bunx changelogen@latest
 ```
 
 Generate changelog, bump version, update `CHANGELOG.md` (no commit):
 
 ```sh
-npx changelogen@latest --bump
+bunx changelogen@latest --bump
 ```
 
 Full release (bump + changelog + git commit + tag):
 
 ```sh
-npx changelogen@latest --release
+bunx changelogen@latest --release
 ```
 
 Release with auto-push:
 
 ```sh
-npx changelogen@latest --release --push
+bunx changelogen@latest --release --push
 ```
 
 ### GitHub Release Sync
 
 ```sh
-npx changelogen@latest gh release
+bunx changelogen@latest gh release
 ```
 
 Syncs changelog with GitHub releases. Requires `GITHUB_TOKEN` or `CHANGELOGEN_TOKENS_GITHUB` environment variable.

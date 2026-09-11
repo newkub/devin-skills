@@ -25,7 +25,7 @@ related:
 
 1. ติดตั้ง `pinia` ด้วย `bun add pinia`
 2. ติดตั้ง `@vue/devtools-api` เนื่องจาก Pinia v4 ต้องการ peer dependency นี้
-3. สำหรับ Nuxt ให้ติดตั้ง `@pinia/nuxt` ด้วย `bun add -D @pinia/nuxt` หรือ `npx nuxi@latest module add pinia`
+3. สำหรับ Nuxt ให้ติดตั้ง `@pinia/nuxt` ด้วย `bun add -D @pinia/nuxt` หรือ `bunx nuxi@latest module add pinia`
 4. สร้าง `stores/` directory สำหรับเก็บ store files
 5. จำไว้ว่า Pinia v4 เป็น ESM-only
 

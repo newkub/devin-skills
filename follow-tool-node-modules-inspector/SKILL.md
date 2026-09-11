@@ -27,7 +27,7 @@ related:
 > Goal: เปิด interactive UI เพื่อตรวจสอบ dependencies
 
 1. รัน `bunx node-modules-inspector` ที่ root ของ project
-2. หรือรันด้วย package manager ที่ project ใช้ เช่น `npx node-modules-inspector` หรือ `pnpm dlx node-modules-inspector`
+2. หรือรันด้วย package manager ที่ project ใช้ เช่น `bunx node-modules-inspector`
 3. รอจน UI เปิดใน browser
 4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
 

@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D @playwright/test
-# or
-npm install --save-dev @playwright/test
 ```
 
 ## Version

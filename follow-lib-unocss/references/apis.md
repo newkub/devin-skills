@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D unocss
-# or
-npm install --save-dev unocss
 ```
 
 ## Version

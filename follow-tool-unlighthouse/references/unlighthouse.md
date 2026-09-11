@@ -18,23 +18,21 @@
 ### One-Time Run (No Install)
 
 ```bash
-npx unlighthouse --site https://mysite.com
-# or: pnpm dlx unlighthouse --site https://mysite.com
-# or: yarn dlx unlighthouse --site https://mysite.com
-# or: bunx unlighthouse --site https://mysite.com
+bunx unlighthouse --site https://mysite.com
 ```
 
 ### Global Install
 
 ```bash
-bun add -g unlighthouse
+mise use -g npm:@unlighthouse/cli
 unlighthouse --site example.com
 ```
 
 ### CI Installation (Requires Puppeteer for Chromium)
 
 ```bash
-bun add -g @unlighthouse/cli puppeteer
+mise use -g npm:@unlighthouse/cli
+bun add -D puppeteer
 ```
 
 Puppeteer downloads a compatible Chromium binary automatically.

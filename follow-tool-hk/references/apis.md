@@ -3,15 +3,15 @@
 ## Install
 
 ```sh
-bun add -D hk
-# or
-npm install --save-dev hk
+mise use -g hk
+# or ตาม https://hk.jdx.dev/getting_started.html (brew, cargo-binstall)
 ```
 
 ## Version
 
-- Latest: 0.1.0
-- [Package Registry](https://www.npmjs.com/package/hk)
+- Latest: `1.58.1` (verified 2026-09-11)
+- [Registry](https://hk.jdx.dev) — npm package `hk` ไม่ใช่ตัวจริง
+- [Repository](https://github.com/jdx/hk)
 
 ## Dependencies
 
@@ -27,5 +27,5 @@ npm install --save-dev hk
 
 ## Source
 
-- Official docs: https://www.npmjs.com/package/hk
-- Description: An experimental Heroku CLI
+- Official docs: https://hk.jdx.dev
+- Description: Git hooks manager by jdx (alternative to Lefthook/pre-commit)

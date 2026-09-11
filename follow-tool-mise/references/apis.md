@@ -3,15 +3,16 @@
 ## Install
 
 ```sh
-bun add -D mise
+# mise เป็น system tool — install ตาม https://mise.jdx.dev/getting-started.html
+winget install jdx.mise
 # or
-npm install --save-dev mise
+scoop install mise
 ```
 
 ## Version
 
-- Latest: 2026.9.5
-- [Package Registry](https://www.npmjs.com/package/mise)
+- Latest: `2026.9.5` (verified 2026-09-11)
+- [Registry](https://mise.jdx.dev) — npm package `mise` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/mise)
 
 ## Dependencies

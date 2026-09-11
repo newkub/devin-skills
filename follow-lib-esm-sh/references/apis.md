@@ -2,11 +2,13 @@
 
 ## Install
 
-```sh
-bun add -D esm-sh
-# or
-npm install --save-dev esm-sh
+esm.sh เป็น CDN — ไม่ต้อง install package; import ผ่าน URL โดยตรง:
+
+```ts
+import React from 'https://esm.sh/react@19.3.0'
 ```
+
+ถ้าต้องการ local dev กับ Node/Bun ให้ install package ต้นทางแทน (เช่น `bun add react`)
 
 ## Version
 

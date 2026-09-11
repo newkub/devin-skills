@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D auto
-# or
-npm install --save-dev auto
 ```
 
 ## Version

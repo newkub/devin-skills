@@ -1,6 +1,6 @@
 # Tool Github Actions Official Resources
 
-- [Website](https://nodegh.io)
-- [Repository](https://github.com/node-gh/gh)
-- [Package Registry](https://www.npmjs.com/package/gh)
+- [Website](https://cli.github.com)
+- [Repository](https://github.com/cli/cli)
+- [Registry](https://cli.github.com) — npm package `gh` ไม่ใช่ตัวจริง
 - About: Boost your productivity & automate tasks when working with GitHub, all from the comfort of your CLI.

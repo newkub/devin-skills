@@ -1,6 +1,6 @@
 # Tool Pitchfork Official Resources
 
-- [Website](https://github.com/omardelarosa/pitchfork-npm)
-- [Repository](https://github.com/omardelarosa/pitchfork-npm)
-- [Package Registry](https://www.npmjs.com/package/pitchfork)
-- About: An Unofficial Pitchfork Music API client for Node.js - omardelarosa/pitchfork-npm
+- [Website](https://pitchfork.jdx.dev)
+- [Repository](https://github.com/jdx/pitchfork)
+- [Registry](https://pitchfork.jdx.dev) — npm package `pitchfork` ไม่ใช่ตัวจริง
+- About: Daemon/process manager for project services by jdx

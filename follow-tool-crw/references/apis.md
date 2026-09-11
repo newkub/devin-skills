@@ -3,16 +3,13 @@
 ## Install
 
 ```sh
-bun add -D crw
-# or
-npm install --save-dev crw
+# ดู https://crw.dev/ สำหรับ install (binary/tool แยกต่างหาก ไม่ใช่ npm package)
 ```
 
 ## Version
 
-- Latest: 0.0.0
-- [Package Registry](https://www.npmjs.com/package/crw)
-- [Repository](https://github.com/bzpython/crw)
+- Latest: ดู https://crw.dev/ (npm package `crw` ไม่ใช่ตัวจริง)
+- [Registry](https://crw.dev)
 
 ## Dependencies
 
@@ -28,5 +25,5 @@ npm install --save-dev crw
 
 ## Source
 
-- Official docs: https://github.com/bzpython/crw#readme
-- Description: cr wallet - coming soon
+- Official docs: https://crw.dev
+- Description: fastCRW — web scraping, crawling, search และ serving tool

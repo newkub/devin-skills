@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D turbo
-# or
-npm install --save-dev turbo
 ```
 
 ## Version

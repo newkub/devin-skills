@@ -24,7 +24,7 @@ related:
 > Goal: ติดตั้งและตั้งค่า VueUse ใน Vue หรือ Nuxt project
 
 1. ติดตั้ง `@vueuse/core` v14.4+ ด้วย `bun add @vueuse/core`
-2. สำหรับ Nuxt ให้ติดตั้ง `@vueuse/nuxt` หรือ `npx nuxt@latest module add vueuse`
+2. สำหรับ Nuxt ให้ติดตั้ง `@vueuse/nuxt` หรือ `bunx nuxt@latest module add vueuse`
 3. ตั้งค่า Nuxt module ใน `nuxt.config.ts`
 4. ใช้ auto-imports สำหรับ VueUse composables
 5. กำหนด imports ที่ต้องการใช้ถ้าไม่ใช้ auto-imports

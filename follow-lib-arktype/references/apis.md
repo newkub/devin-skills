@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D arktype
-# or
-npm install --save-dev arktype
+bun add arktype
 ```
 
 ## Version

@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D vue
-# or
-npm install --save-dev vue
+bun add vue
 ```
 
 ## Version

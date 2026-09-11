@@ -17,8 +17,8 @@ scoop install mise
 # cargo
 cargo install mise
 
-# npm
-bun add -g mise
+# Windows
+winget install jdx.mise
 ```
 
 ## Version
@@ -88,7 +88,7 @@ NODE_ENV = 'development'
 _.file = '.env.local'
 
 [tasks.dev]
-run = 'npm run dev'
+run = 'bun run dev'
 
 [tasks.build]
 description = 'Build the project'

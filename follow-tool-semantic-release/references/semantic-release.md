@@ -15,7 +15,7 @@ bun add -D semantic-release
 Run in CI (recommended), pinning the major version for deterministic releases:
 
 ```bash
-npx semantic-release@25
+bunx semantic-release@25
 ```
 
 ## Version Info
@@ -111,28 +111,28 @@ Note: CLI arguments take precedence over configuration file options. Plugin opti
 
 ```bash
 # Run semantic-release (recommended in CI)
-npx semantic-release
+bunx semantic-release
 
 # Run with bun (local install)
 bunx semantic-release
 
 # Dry run (preview pending release)
-npx semantic-release --dry-run
+bunx semantic-release --dry-run
 
 # Debug mode
-DEBUG=semantic-release:* npx semantic-release
+DEBUG=semantic-release:* bunx semantic-release
 
 # Run from a specific branch
-npx semantic-release --branches next
+bunx semantic-release --branches next
 
 # Run without CI environment checks (local releases)
-npx semantic-release --no-ci
+bunx semantic-release --no-ci
 
 # Specify plugins
-npx semantic-release -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator
+bunx semantic-release -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator
 
 # Include additional plugins via npx
-npx --package semantic-release --package @semantic-release/exec semantic-release
+bunx --package semantic-release --package @semantic-release/exec semantic-release
 ```
 
 ### Package.json Scripts
@@ -192,8 +192,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-      - run: npm clean-install
-      - run: npm test
+      - run: bun install --frozen-lockfile
+      - run: bun test
 
   release:
     name: Release
@@ -211,11 +211,11 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
-      - run: npm clean-install
+      - run: bun install --frozen-lockfile
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: bunx semantic-release
 ```
 
 ### Authentication

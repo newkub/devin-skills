@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D zod
-# or
-npm install --save-dev zod
+bun add zod
 ```
 
 ## Version

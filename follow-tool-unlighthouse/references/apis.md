@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D unlighthouse
-# or
-npm install --save-dev unlighthouse
 ```
 
 ## Version

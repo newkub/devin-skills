@@ -32,14 +32,14 @@ related:
 
 1. ยืนยันว่ามี `package.json` และ project ใช้ ESM (`"type": "module"` หรือไฟล์ `.mjs`)
 2. ยืนยันว่ามี Bun หรือ Node.js เวอร์ชันล่าสุดรองรับ ESM
-3. ตรวจสอบ version ของ `edge.js` ใน `package.json` หรือ `npm view edge.js version`
+3. ตรวจสอบ version ของ `edge.js` ใน `package.json` หรือตรวจที่ https://www.npmjs.com/package/edge.js
 4. ถ้าไม่มี project → stop และ `/ask-me` เพื่อสร้างก่อน
 
 ### 2. Install Edge.js
 
 > Goal: ติดตั้ง `edge.js` ใน project
 
-1. รัน `bun add edge.js` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm i edge.js`)
+1. รัน `bun add edge.js` (runtime dependency — ถ้า project ใช้ package manager อื่นให้ใช้คำสั่งที่เทียบเท่า)
 2. ตรวจสอบว่า `edge.js` อยู่ใน `dependencies` ของ `package.json`
 3. ถ้าใช้ TypeScript ให้ตรวจสอบว่า `tsconfig.json` รองรับ ESM (`module: "NodeNext"` หรือ `"ESNext"`)
 4. อย่า hardcode credentials หรือ secrets ใน template หรือ config

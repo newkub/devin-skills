@@ -2,6 +2,6 @@
 
 - [Website](https://git-scm.com)
 - [Documentation](https://git-scm.com/docs)
-- [Repository](git@github.com:christkv/node-git)
-- [Package Registry](https://www.npmjs.com/package/git)
-- About: A node.js library for git
+- [Repository](https://github.com/git/git)
+- [Registry](https://git-scm.com) — npm package `git` ไม่ใช่ตัวจริง
+- About: Distributed version control system

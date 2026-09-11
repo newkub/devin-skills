@@ -18,7 +18,7 @@ bun add -D react-scan
 |---|---|---|---|
 | `react-scan` | Start React Scan overlay | — | --port, --no-open, --output |
 | `react-scan <url>` | Scan URL | — | --headless, --port, --output |
-| `npx react-scan` | Run without install | — | (none) |
+| `bunx react-scan` | Run without install | — | (none) |
 | `react-scan --help` | Show help | — | (none) |
 ## Examples
 

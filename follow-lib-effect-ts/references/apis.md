@@ -5,8 +5,6 @@
 ```sh
 # Runtime dependency — do NOT use -D/--save-dev
 bun add effect
-# or
-npm install effect
 ```
 
 ## Versions (verified 2026-09-11)

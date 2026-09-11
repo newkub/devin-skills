@@ -162,7 +162,7 @@ run = "cd /app && exec node server.js"
 #:schema https://pitchfork.jdx.dev/schema.json
 
 [daemons.api]
-run = "npm run server"
+run = "bun run server"
 ```
 
 ## Source

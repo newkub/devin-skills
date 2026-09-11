@@ -13,12 +13,12 @@ This installs `aube` on your PATH and lets mise manage future upgrades.
 ### From npm
 
 ```bash
-bun add -g --ignore-scripts=false @endevco/aube
-npx --ignore-scripts=false @endevco/aube --version
+mise use -g npm:@endevco/aube
+bunx @endevco/aube --version
 ```
 
-The npm package uses a `preinstall` script to fetch native binaries.
-Pass `--ignore-scripts=false` so it works even if `ignore-scripts=true`
+The npm package uses a `preinstall` script to fetch native binaries —
+ถ้า environment ตั้ง `ignore-scripts=true` ให้รัน install script แยก
 is set in npm config.
 
 ### From Homebrew

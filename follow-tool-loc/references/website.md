@@ -2,5 +2,5 @@
 
 - [Website](https://github.com/cgag/loc)
 - [Repository](https://github.com/cgag/loc)
-- [Package Registry](https://www.npmjs.com/package/loc)
+- [Package Registry](https://crates.io/crates/loc) — npm `loc` ไม่ใช่ตัวจริง
 - About: Count lines of code quickly.

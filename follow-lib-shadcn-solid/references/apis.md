@@ -6,10 +6,10 @@ shadcn-solid เป็น CLI สำหรับ copy-paste components ไม่
 
 ```bash
 # Initialize project
-npx shadcn-solid@latest init
+bunx shadcn-solid@latest init
 
 # Add components
-npx shadcn-solid@latest add [component]
+bunx shadcn-solid@latest add [component]
 ```
 
 หรือติดตั้ง CLI แบบ global ด้วย `mise use -g npm:shadcn-solid`

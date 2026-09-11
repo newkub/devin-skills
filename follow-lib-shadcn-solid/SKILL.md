@@ -26,7 +26,7 @@ related:
 > Goal: ติดตั้ง shadcn/ui สำหรับ SolidJS
 
 1. สร้าง SolidJS project ด้วย `pnpm create solid@latest` และเลือก tailwind หรือ uno template
-2. ติดตั้ง shadcn-solid CLI ผ่าน `npx shadcn-solid@latest init` (หรือ `bunx shadcn-solid@latest init`)
+2. ติดตั้ง shadcn-solid CLI ผ่าน `bunx shadcn-solid@latest init` (หรือ `bunx shadcn-solid@latest init`)
 3. เลือก CSS framework `TailwindCSS` หรือ `UnoCSS` ตามคำถามของ CLI
 4. ตั้งค่า `components.json` ด้วย base color, global CSS file, import alias (`@/components`), utils alias (`@/lib/utils`)
 5. อ่านคำแนะนำเพิ่มเติมที่ [references/shadcn-solid.md](references/shadcn-solid.md)
@@ -35,11 +35,11 @@ related:
 
 > Goal: เพิ่ม components ด้วย CLI
 
-1. ใช้ `npx shadcn-solid@latest add [component]` เพื่อเพิ่ม component เดี่ยว
-2. ใช้ `npx shadcn-solid@latest add button card dialog` สำหรับหลาย components
-3. ใช้ `npx shadcn-solid@latest add --all` สำหรับติดตั้งทั้งหมด
-4. ใช้ `npx shadcn-solid@latest add [component] --overwrite` สำหรับ overwrite ไฟล์เดิม
-5. ใช้ `npx shadcn-solid@latest diff` เพื่อตรวจสอบ upstream updates
+1. ใช้ `bunx shadcn-solid@latest add [component]` เพื่อเพิ่ม component เดี่ยว
+2. ใช้ `bunx shadcn-solid@latest add button card dialog` สำหรับหลาย components
+3. ใช้ `bunx shadcn-solid@latest add --all` สำหรับติดตั้งทั้งหมด
+4. ใช้ `bunx shadcn-solid@latest add [component] --overwrite` สำหรับ overwrite ไฟล์เดิม
+5. ใช้ `bunx shadcn-solid@latest diff` เพื่อตรวจสอบ upstream updates
 
 ### 3. Learn Key Concepts
 
@@ -86,12 +86,12 @@ related:
 > Goal: แก้ปัญหาทั่วไป
 
 1. ตรวจสอบ `components.json` และ path alias ถ้า import ผิด
-2. ใช้ `npx shadcn-solid@latest diff <component>` เพื่อดู upstream changes
+2. ใช้ `bunx shadcn-solid@latest diff <component>` เพื่อดู upstream changes
 3. อ่าน troubleshooting ที่ https://shadcn-solid.com/docs
 
 ## Rules
 
-- ใช้ CLI `npx shadcn-solid@latest init` สำหรับ initial setup
+- ใช้ CLI `bunx shadcn-solid@latest init` สำหรับ initial setup
 - ใช้ copy-to-own pattern เสมอ
 - ใช้ Kobalte UI primitives
 - ใช้ Tailwind CSS หรือ UnoCSS สำหรับ styling

@@ -7,8 +7,6 @@
 ```sh
 bun add @tanstack/react-query
 # or
-npm install @tanstack/react-query
-# or
 pnpm add @tanstack/react-query
 ```
 
@@ -47,7 +45,7 @@ pnpm add @tanstack/react-query
 | Form | `useForm` / `createForm` | `form.Field`, validators (Standard Schema) |
 | Store | `createStore` (`@tanstack/store`) | `useStore`, `setState`, `subscribe`, `batch` |
 | Virtual | `useVirtualizer` | `getVirtualItems`, `measureElement` |
-| CLI | `npx @tanstack/cli` | `create`, `--blank`, `--router-only`, `--add-ons` |
+| CLI | `bunx @tanstack/cli` | `create`, `--blank`, `--router-only`, `--add-ons` |
 
 ## Source
 

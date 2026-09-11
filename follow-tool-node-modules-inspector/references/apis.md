@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D node-modules-inspector
-# or
-npm install --save-dev node-modules-inspector
 ```
 
 ## Version

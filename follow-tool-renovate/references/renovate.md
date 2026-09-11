@@ -4,12 +4,12 @@
 
 Renovate is available as:
 - GitHub App (hosted at `https://github.com/apps/renovate`)
-- Self-hosted via npm: `bun add -g renovate`
+- Self-hosted via npm: `mise use -g npm:renovate`
 - GitHub Action: `renovatebot/github-action`
 
 ```bash
 # Self-hosted via npm
-bun add -g renovate
+mise use -g npm:renovate
 
 # Verify
 renovate --version

@@ -3,5 +3,5 @@
 - [Website](https://neovim.io)
 - [Documentation](https://neovim.io/doc/)
 - [Repository](https://github.com/neovim/neovim)
-- [Package Registry](https://www.npmjs.com/package/neovim)
+- [Registry](https://neovim.io) — npm package `neovim` ไม่ใช่ตัวจริง
 - About: hyperextensible Vim-based text editor

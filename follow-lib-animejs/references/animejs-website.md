@@ -29,10 +29,8 @@
 
 | Manager | Package | Command |
 |---------|---------|---------|
-| npm | animejs | `npm install animejs` |
-| yarn | animejs | `yarn add animejs` |
-| pnpm | animejs | `pnpm add animejs` |
 | bun | animejs | `bun add animejs` |
+| pnpm | animejs | `pnpm add animejs` |
 
 ## Type Definitions
 

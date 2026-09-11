@@ -4,8 +4,6 @@
 
 ```sh
 bun add react react-dom
-# or
-npm install react react-dom
 ```
 
 ## Version

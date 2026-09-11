@@ -156,7 +156,7 @@ When no file arguments are passed, ESLint defaults to linting the current direct
 Use the codemod to migrate eslintrc to flat config:
 
 ```bash
-npx @eslint/v8-to-v9-config
+bunx @eslint/v8-to-v9-config
 ```
 
 Key changes in v9+:

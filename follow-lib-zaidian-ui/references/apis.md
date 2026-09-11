@@ -6,10 +6,10 @@ Zaidian ไม่ใช่ npm package แต่ใช้ shadcn CLI เพื�
 
 ```bash
 # Initialize shadcn/ui in project
-npx shadcn@latest init
+bunx shadcn@latest init
 
 # Add a Zaidan component
-npx shadcn@latest add @zaidan/button
+bunx shadcn@latest add @zaidan/button
 ```
 
 หรือสำหรับ TanStack Start: `pnpm dlx shadcn@latest init -t start`
@@ -31,9 +31,9 @@ npx shadcn@latest add @zaidan/button
 
 | commands | description | default | options |
 |---|---|---|---|
-| `npx shadcn@latest init` | Initialize shadcn/ui in project | current project | `--defaults`, `--base-color` |
-| `npx shadcn@latest add @zaidan/<component>` | Add Zaidian component | interactive | `-y`, `--overwrite` |
-| `npx shadcn@latest add <url>` | Add from custom registry URL | - | - |
+| `bunx shadcn@latest init` | Initialize shadcn/ui in project | current project | `--defaults`, `--base-color` |
+| `bunx shadcn@latest add @zaidan/<component>` | Add Zaidian component | interactive | `-y`, `--overwrite` |
+| `bunx shadcn@latest add <url>` | Add from custom registry URL | - | - |
 
 ## Source
 

@@ -25,7 +25,7 @@ related:
 
 > Goal: ติดตั้ง Zod เวอร์ชันล่าสุด
 
-1. รัน `npm install zod@latest` (หรือ `pnpm add zod@latest`, `yarn add zod@latest`, `bun add zod@latest`)
+1. รัน `bun add zod@latest` (หรือ `pnpm add zod@latest` ตาม package manager ของ project)
 2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/zod` (ปัจจุบัน v4.6.2, verified 2026-09-11)
 3. ยืนยันว่า `package.json` มี `zod` ใน `dependencies`
 4. ใช้ `import * as z from "zod"` สำหรับ classic API

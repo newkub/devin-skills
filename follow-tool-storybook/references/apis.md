@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D storybook
-# or
-npm install --save-dev storybook
 ```
 
 ## Version

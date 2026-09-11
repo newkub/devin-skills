@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D @biomejs/biome
-# or
-npm install --save-dev @biomejs/biome
 ```
 
 ## Version

@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D vite
-# or
-npm install --save-dev vite
 ```
 
 ## Version

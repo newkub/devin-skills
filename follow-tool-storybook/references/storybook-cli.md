@@ -8,7 +8,7 @@
 | `storybook build` | Build static site for production |
 | `storybook test` | Run tests (Vitest addon) |
 | `bun create storybook@latest` | Initialize Storybook (v10.6+) |
-| `npx storybook@latest init` | Initialize Storybook (legacy, pre-v8.3) |
+| `bunx storybook@latest init` | Initialize Storybook (legacy, pre-v8.3) |
 
 ## Options
 
@@ -66,7 +66,7 @@ bun create storybook@latest
 ### Pre-v8.3
 
 ```bash
-npx storybook@latest init
+bunx storybook@latest init
 ```
 
 ## Framework Detection

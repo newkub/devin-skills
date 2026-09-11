@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D rolldown
-# or
-npm install --save-dev rolldown
 ```
 
 ## Version

@@ -17,7 +17,7 @@ bun create storybook@latest
 หรือสำหรับ setup แบบ legacy:
 
 ```bash
-npx storybook@latest init
+bunx storybook@latest init
 ```
 
 ### 2. Select Framework

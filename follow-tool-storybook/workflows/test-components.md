@@ -29,7 +29,7 @@ export const Interaction: StoryObj<typeof Button> = {
 ติดตั้ง a11y addon:
 
 ```bash
-npx storybook add @storybook/addon-a11y
+bunx storybook add @storybook/addon-a11y
 ```
 
 Configure ใน `.storybook/main.ts`:
@@ -43,7 +43,7 @@ addons: ['@storybook/addon-essentials', '@storybook/addon-a11y']
 ใช้ Chromatic สำหรับ visual regression testing:
 
 ```bash
-npx chromatic --project-token=<token>
+bunx chromatic --project-token=<token>
 ```
 
 ### 4. Vitest Integration (Vite Projects)
@@ -51,7 +51,7 @@ npx chromatic --project-token=<token>
 ติดตั้ง Vitest addon:
 
 ```bash
-npx storybook add @storybook/addon-vitest
+bunx storybook add @storybook/addon-vitest
 ```
 
 Run tests:

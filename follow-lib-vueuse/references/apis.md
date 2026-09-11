@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D @vueuse/core
-# or
-npm install --save-dev @vueuse/core
+bun add @vueuse/core
 ```
 
 ## Version

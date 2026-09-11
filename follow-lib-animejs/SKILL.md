@@ -27,7 +27,7 @@ related:
 
 > Goal: Install And Setup
 
-1. `bun add animejs` หรือ `npm install animejs`
+1. `bun add animejs` (runtime dependency)
 2. import สำหรับ v4:
 
 ```javascript
@@ -38,7 +38,7 @@ import { animate } from 'animejs/animation';
 import { createTimeline } from 'animejs/timeline';
 ```
 
-3. ตรวจสอบ version: `npm ls animejs` หรือดู `package.json`
+3. ตรวจสอบ version: `bun pm ls animejs` หรือดู `package.json`
 
 ### 2. Learn Core API
 

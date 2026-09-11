@@ -4,7 +4,7 @@
 
 ```bash
 # Global install
-bun add -g @scalar/api-designer
+mise use -g npm:@scalar/api-designer
 
 # Development install
 bun add @scalar/api-designer

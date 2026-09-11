@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D semantic-release
-# or
-npm install --save-dev semantic-release
 ```
 
 ## Version

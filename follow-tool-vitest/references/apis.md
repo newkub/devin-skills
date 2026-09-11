@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D vitest
-# or
-npm install --save-dev vitest
 ```
 
 ## Version

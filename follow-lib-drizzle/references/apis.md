@@ -3,9 +3,8 @@
 ## Install
 
 ```sh
-bun add -D drizzle-orm
-# or
-npm install --save-dev drizzle-orm
+bun add drizzle-orm
+bun add -D drizzle-kit
 ```
 
 ## Version

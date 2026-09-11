@@ -47,10 +47,10 @@ bun install
 ```bash
 bunx remotion studio --no-open
 # หรือ
-npm run dev
+bun run dev
 ```
 
-- `npx remotion preview` ถูก deprecated; ใช้ `remotion studio`
+- `bunx remotion preview` ถูก deprecated; ใช้ `remotion studio`
 - กด `s` ใน terminal เพื่อ reopen browser
 - `--disable-interactivity` ใช้สำหรับ debugging
 

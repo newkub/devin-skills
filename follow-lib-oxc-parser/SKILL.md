@@ -25,6 +25,7 @@ related:
 เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
 - Latest: `oxc-parser@0.149.0` (verified 2026-09-11)
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

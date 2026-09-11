@@ -23,7 +23,7 @@ Built on Kobalte primitives for accessibility. Styled with Tailwind CSS or UnoCS
 
 ```bash
 # Initialize configuration in an existing SolidStart/Vite project
-npx shadcn-solid@latest init
+bunx shadcn-solid@latest init
 ```
 
 The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.cjs`, and sets up CSS variables. You will be asked to configure `components.json`:
@@ -41,26 +41,26 @@ The `init` command installs dependencies, adds the `cn` util, configures `tailwi
 
 ```bash
 # Add a single component
-npx shadcn-solid@latest add button
+bunx shadcn-solid@latest add button
 
 # Add multiple components
-npx shadcn-solid@latest add button card dialog
+bunx shadcn-solid@latest add button card dialog
 
 # Add all components
-npx shadcn-solid@latest add --all
+bunx shadcn-solid@latest add --all
 
 # Overwrite existing component
-npx shadcn-solid@latest add button --overwrite
+bunx shadcn-solid@latest add button --overwrite
 ```
 
 ### CLI Commands
 
 | Command | Description |
 |---------|-------------|
-| `npx shadcn-solid@latest init` | Initialize configuration and dependencies |
-| `npx shadcn-solid@latest add [component]` | Add components to project |
-| `npx shadcn-solid@latest add --all` | Install all components |
-| `npx shadcn-solid@latest add --overwrite` | Overwrite existing files |
+| `bunx shadcn-solid@latest init` | Initialize configuration and dependencies |
+| `bunx shadcn-solid@latest add [component]` | Add components to project |
+| `bunx shadcn-solid@latest add --all` | Install all components |
+| `bunx shadcn-solid@latest add --overwrite` | Overwrite existing files |
 
 ### Manual Installation
 
@@ -147,7 +147,7 @@ export default defineConfig({
 
 The `components.json` file is optional — only required if using the CLI. The CLI uses these values and `paths` from `tsconfig.json` to place generated components correctly.
 
-Created automatically by `npx shadcn-solid@latest init`.
+Created automatically by `bunx shadcn-solid@latest init`.
 
 ## Available Components
 

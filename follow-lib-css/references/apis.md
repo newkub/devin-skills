@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D css
-# or
-npm install --save-dev css
+bun add css
 ```
 
 ## Version

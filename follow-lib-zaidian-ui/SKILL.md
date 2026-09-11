@@ -31,10 +31,10 @@ related:
    - Vite: `pnpm create vite@latest --template solid-ts`
    - SolidStart: `pnpm create solid@latest --solidstart --ts --template with-tailwindcss`
    - TanStack Start: `pnpm dlx shadcn@latest init -t start`
-   - Astro: `npm create astro@latest --template with-tailwind --add solid --git`
+   - Astro: `bun create astro@latest --template with-tailwind --add solid --git`
 2. ติดตั้ง Tailwind CSS v4 (`tailwindcss` และ `@tailwindcss/vite`) ตาม framework
 3. ตั้งค่า path alias `@/` ใน `tsconfig.json` และ Vite config
-4. รัน `npx shadcn@latest init` เพื่อสร้าง `components.json`
+4. รัน `bunx shadcn@latest init` เพื่อสร้าง `components.json`
 5. อ่านคำแนะนำเพิ่มเติมที่ [references/zaidian-ui-resources.md](references/zaidian-ui-resources.md)
 
 ### 2. Configure Registry
@@ -56,11 +56,11 @@ related:
 
 > Goal: เพิ่ม Zaidian components ด้วย shadcn CLI
 
-1. ใช้ `npx shadcn@latest add @zaidan/button` เพื่อเพิ่ม component เดี่ยว
-2. ใช้ `npx shadcn@latest add @zaidan/card @zaidan/dialog` เพื่อเพิ่มหลาย components
+1. ใช้ `bunx shadcn@latest add @zaidan/button` เพื่อเพิ่ม component เดี่ยว
+2. ใช้ `bunx shadcn@latest add @zaidan/card @zaidan/dialog` เพื่อเพิ่มหลาย components
 3. components จะถูก copy ไปยัง `src/components/ui/`
 4. import ด้วย `import { Button } from "@/components/ui/button"`
-5. สำหรับ Better Auth UI ใช้ `npx shadcn@latest add https://better-auth-ui.com/r/solid/auth.json`
+5. สำหรับ Better Auth UI ใช้ `bunx shadcn@latest add https://better-auth-ui.com/r/solid/auth.json`
 
 ### 4. Learn Key Concepts
 
@@ -103,7 +103,7 @@ related:
 
 ## Rules
 
-- ใช้ `npx shadcn@latest` CLI ไม่ใช่ `shadcn-solid`
+- ใช้ `bunx shadcn@latest` CLI ไม่ใช่ `shadcn-solid`
 - ใช้ `@zaidan/<component>` registry สำหรับ add components
 - ใช้ copy-to-own pattern เสมอ
 - ใช้ Kobalte และ Corvu สำหรับ accessible primitives

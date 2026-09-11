@@ -6,16 +6,12 @@
 
 ```bash
 bun add remotion react react-dom
-# หรือ
-npm install remotion react react-dom
 ```
 
 สำหรับ CLI:
 
 ```bash
 bun add -D @remotion/cli
-# หรือ
-npm install -D @remotion/cli
 ```
 
 สำหรับ Player ใน React app:
@@ -49,15 +45,15 @@ bun add @remotion/media
 
 | commands | description | default | options |
 |---|---|---|---|
-| `npx create-video [dir]` | สร้างโปรเจกต์ Remotion ใหม่ | ถาม template แบบ interactive | `--yes`, `--blank`, `--no-tailwind`, `--tmp` |
-| `npx remotion studio [entry]` | เปิด Remotion Studio (alias `preview`) | entry point ถูก detect อัตโนมัติ | `--port`, `--public-dir`, `--log`, `--no-open`, `--browser`, `--browser-args`, `--disable-keyboard-shortcuts`, `--disable-interactivity`, `--allow-html-in-canvas`, `--rspack` |
-| `npx remotion render [entry\|serve] [comp] [output]` | Render วิดีโอ/เสียง | output ไป `out/`, codec `h264` | `--props`, `--codec`, `--fps`, `--width`, `--height`, `--duration`, `--output`, `--overwrite`, `--sequence`, `--frames`, `--muted`, `--concurrency`, `--scale`, `--log`, `--timeout`, `--crf`, `--public-dir`, `--bundle-cache` |
-| `npx remotion still [entry\|serve] [comp] [output]` | Render ภาพนิ่ง 1 frame | output ไป `out/`, frame `0` | `--props`, `--image-format`, `--frame`, `--output`, `--overwrite`, `--scale`, `--log`, `--timeout`, `--public-dir`, `--bundle-cache` |
-| `npx remotion bundle [entry\|serve]` | Bundle โปรเจกต์เป็น static site | output ไป `out/` | `--out-dir`, `--public-dir`, `--public-path`, `--log`, `--disable-git-source`, `--rspack` |
-| `npx remotion compositions [entry\|serve]` | แสดงรายการ composition IDs | แสดงทั้งหมด | `--props`, `--log`, `--port`, `--public-dir`, `--timeout`, `--quiet`, `--bundle-cache` |
-| `npx remotion benchmark [entry] [comp-ids]` | Benchmark การ render | ถาม composition | `--runs`, `--concurrencies`, `--codec`, `--crf`, `--frames`, `--log`, `--bundle-cache` |
-| `npx remotion upgrade` | อัปเกรด Remotion packages ทั้งหมด | ใช้ package manager ของโปรเจกต์ | `--package-manager`, `--version`, `--skip-skills` |
-| `npx remotion versions` | แสดงเวอร์ชัน Remotion packages | - | - |
+| `bunx create-video [dir]` | สร้างโปรเจกต์ Remotion ใหม่ | ถาม template แบบ interactive | `--yes`, `--blank`, `--no-tailwind`, `--tmp` |
+| `bunx remotion studio [entry]` | เปิด Remotion Studio (alias `preview`) | entry point ถูก detect อัตโนมัติ | `--port`, `--public-dir`, `--log`, `--no-open`, `--browser`, `--browser-args`, `--disable-keyboard-shortcuts`, `--disable-interactivity`, `--allow-html-in-canvas`, `--rspack` |
+| `bunx remotion render [entry\|serve] [comp] [output]` | Render วิดีโอ/เสียง | output ไป `out/`, codec `h264` | `--props`, `--codec`, `--fps`, `--width`, `--height`, `--duration`, `--output`, `--overwrite`, `--sequence`, `--frames`, `--muted`, `--concurrency`, `--scale`, `--log`, `--timeout`, `--crf`, `--public-dir`, `--bundle-cache` |
+| `bunx remotion still [entry\|serve] [comp] [output]` | Render ภาพนิ่ง 1 frame | output ไป `out/`, frame `0` | `--props`, `--image-format`, `--frame`, `--output`, `--overwrite`, `--scale`, `--log`, `--timeout`, `--public-dir`, `--bundle-cache` |
+| `bunx remotion bundle [entry\|serve]` | Bundle โปรเจกต์เป็น static site | output ไป `out/` | `--out-dir`, `--public-dir`, `--public-path`, `--log`, `--disable-git-source`, `--rspack` |
+| `bunx remotion compositions [entry\|serve]` | แสดงรายการ composition IDs | แสดงทั้งหมด | `--props`, `--log`, `--port`, `--public-dir`, `--timeout`, `--quiet`, `--bundle-cache` |
+| `bunx remotion benchmark [entry] [comp-ids]` | Benchmark การ render | ถาม composition | `--runs`, `--concurrencies`, `--codec`, `--crf`, `--frames`, `--log`, `--bundle-cache` |
+| `bunx remotion upgrade` | อัปเกรด Remotion packages ทั้งหมด | ใช้ package manager ของโปรเจกต์ | `--package-manager`, `--version`, `--skip-skills` |
+| `bunx remotion versions` | แสดงเวอร์ชัน Remotion packages | - | - |
 
 ### Components
 

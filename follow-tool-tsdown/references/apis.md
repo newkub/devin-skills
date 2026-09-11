@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D tsdown
-# or
-npm install --save-dev tsdown
 ```
 
 ## Version

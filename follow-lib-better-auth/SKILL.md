@@ -19,11 +19,11 @@ related:
 
 > Goal: ติดตั้ง Better Auth และ database adapter
 
-1. รัน `npm install better-auth` (หรือ `pnpm add better-auth`, `yarn add better-auth`, `bun add better-auth`)
+1. รัน `bun add better-auth` (หรือ `pnpm add better-auth` ตาม package manager ของ project)
 2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-11)
 3. ติดตั้ง database adapter ถ้าไม่ใช้ built-in Kysely (เช่น `@better-auth/prisma-adapter`, `@better-auth/drizzle-adapter`)
 4. ตั้งค่า environment variables `BETTER_AUTH_SECRET` และ `BETTER_AUTH_URL`
-5. ใช้ `npx auth@latest init` สำหรับ scaffold Next.js project (optional)
+5. ใช้ `bunx auth@latest init` สำหรับ scaffold Next.js project (optional)
 
 ### 2. Configure
 
@@ -34,7 +34,7 @@ related:
 3. เปิดใช้ features เช่น `emailAndPassword: { enabled: true }` หรือ `socialProviders`
 4. เพิ่ม plugins ที่ต้องการใน `plugins: [...]` (เช่น `twoFactor()`, `organization()`, `passkey()`)
 5. ตั้งค่า `trustedOrigins` ให้เข้มงวด
-6. ใช้ `npx auth@latest generate` สร้าง schema หรือ `npx auth@latest migrate` สำหรับ built-in Kysely adapter
+6. ใช้ `bunx auth@latest generate` สร้าง schema หรือ `bunx auth@latest migrate` สำหรับ built-in Kysely adapter
 
 ### 3. Integrate
 
@@ -80,7 +80,7 @@ related:
 ### 3. Database
 
 - เลือก adapter ที่ตรงกับ ORM ที่ project ใช้
-- รัน `npx auth@latest generate` หรือ `npx auth@latest migrate` ก่อน test
+- รัน `bunx auth@latest generate` หรือ `bunx auth@latest migrate` ก่อน test
 
 ### 4. Framework Integration
 

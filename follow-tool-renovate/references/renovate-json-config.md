@@ -16,7 +16,7 @@
 
 1. เลือกวิธีติดตั้ง:
    - GitHub App: ติดตั้ง Mend Renovate จาก GitHub Marketplace (ไม่ต้อง self-host)
-   - Self-hosted CLI: `mise use -g npm:renovate` หรือ `bun add -g renovate`
+   - Self-hosted CLI: `mise use -g npm:renovate`
 2. ตั้งค่า token:
    - `RENOVATE_TOKEN` environment variable
    - หรือ `--token=` ใน CLI

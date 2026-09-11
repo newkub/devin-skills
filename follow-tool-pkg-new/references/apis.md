@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D pkg-pr-new
-# or
-npm install --save-dev pkg-pr-new
 ```
 
 ## Version

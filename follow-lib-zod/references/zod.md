@@ -11,11 +11,9 @@
 ## Install
 
 ```bash
-npm install zod@latest
+bun add zod@latest
 # or
 pnpm add zod@latest
-yarn add zod@latest
-bun add zod@latest
 ```
 
 ## TypeScript Configuration

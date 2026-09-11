@@ -6,18 +6,10 @@ Node Modules Inspector is an npm package by Anthony Fu (`antfu`).
 It does not require permanent installation - run it on demand.
 
 ```bash
-# Run without installing (pnpm)
-pnpx node-modules-inspector
-
-# Run without installing (npm)
-npx node-modules-inspector
-
-# Run without installing (bun)
+# Run without installing
 bunx node-modules-inspector
 
 # Install locally
-bun add node-modules-inspector
-pnpm add node-modules-inspector
 bun add node-modules-inspector
 ```
 
@@ -66,8 +58,8 @@ export default defineConfig({
 Build a static SPA of your current node_modules status:
 
 ```bash
-pnpx node-modules-inspector build
-npx node-modules-inspector build
+bunx node-modules-inspector build
+bunx node-modules-inspector build
 bunx node-modules-inspector build
 ```
 
@@ -80,13 +72,13 @@ Machine-readable reports for shell pipelines and AI agents:
 
 ```bash
 # Packages installed in multiple versions
-npx node-modules-inspector report duplicates
+bunx node-modules-inspector report duplicates
 
 # Packages sorted by install size
-npx node-modules-inspector report sizes
+bunx node-modules-inspector report sizes
 
 # Dep-upgrade opportunities + publint, grouped by consumer/author
-npx node-modules-inspector report maintainers
+bunx node-modules-inspector report maintainers
 ```
 
 ### JSON Output
@@ -95,9 +87,9 @@ Add `--json` to emit JSON to stdout. Progress logs go to stderr,
 so output is pipe-safe:
 
 ```bash
-npx node-modules-inspector report duplicates --json | jq '.[].name'
-npx node-modules-inspector report sizes --json --limit 10
-npx node-modules-inspector report maintainers --json --sort migration --no-latest-only
+bunx node-modules-inspector report duplicates --json | jq '.[].name'
+bunx node-modules-inspector report sizes --json --limit 10
+bunx node-modules-inspector report maintainers --json --sort migration --no-latest-only
 ```
 
 ### Common Report Options
@@ -117,7 +109,7 @@ Run `node-modules-inspector report --help` for the full per-report flag set.
 The three reports are also exposed as MCP tools for AI coding agents:
 
 ```bash
-npx node-modules-inspector mcp
+bunx node-modules-inspector mcp
 ```
 
 Tools exposed:
@@ -133,12 +125,12 @@ as a stdio server in your MCP config.
 | Command | Description |
 |---|---|
 | `bunx node-modules-inspector` | Launch interactive web UI |
-| `npx node-modules-inspector build` | Build static SPA |
-| `npx node-modules-inspector report duplicates` | Show duplicate packages |
-| `npx node-modules-inspector report sizes` | Show packages by size |
-| `npx node-modules-inspector report maintainers` | Show upgrade opportunities |
-| `npx node-modules-inspector report <type> --json` | JSON output for piping |
-| `npx node-modules-inspector mcp` | Start MCP server |
+| `bunx node-modules-inspector build` | Build static SPA |
+| `bunx node-modules-inspector report duplicates` | Show duplicate packages |
+| `bunx node-modules-inspector report sizes` | Show packages by size |
+| `bunx node-modules-inspector report maintainers` | Show upgrade opportunities |
+| `bunx node-modules-inspector report <type> --json` | JSON output for piping |
+| `bunx node-modules-inspector mcp` | Start MCP server |
 
 ## Source URLs
 

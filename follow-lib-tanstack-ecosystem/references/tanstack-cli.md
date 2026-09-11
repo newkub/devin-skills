@@ -8,16 +8,16 @@ Unified CLI สำหรับสร้าง Start/Router apps (`@tanstack/cli`
 
 ```bash
 # สร้าง TanStack Start app (default: SSR + file-based router)
-npx @tanstack/cli@latest create my-app
+bunx @tanstack/cli@latest create my-app
 
 # Minimal one-route Start project ไม่มี starter UI/examples
-npx @tanstack/cli create my-app --blank -y
+bunx @tanstack/cli create my-app --blank -y
 
 # Router-only SPA (ไม่มี SSR)
-npx @tanstack/cli create my-app --router-only -y
+bunx @tanstack/cli create my-app --router-only -y
 
 # เลือก add-ons เช่น auth, db, deployment
-npx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
+bunx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
 ```
 
 Options หลัก: `--framework` (`React`/`Solid`), `--package-manager` (`npm`/`pnpm`/`yarn`/`bun`/`deno`), `--deployment`, `--toolchain`, `--intent` (skill mappings สำหรับ coding agents), `--no-git`, `--no-install`, `-y/--yes`, `--force`, `--list-add-ons`, `--json`
@@ -28,10 +28,10 @@ Options หลัก: `--framework` (`React`/`Solid`), `--package-manager` (`npm
 
 ```bash
 # Generate route tree ครั้งเดียว
-npx tsr generate
+bunx tsr generate
 
 # Watch mode
-npx tsr watch
+bunx tsr watch
 ```
 
 package: `@tanstack/router-cli` (binary: `tsr`)

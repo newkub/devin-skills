@@ -16,6 +16,7 @@ related:
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (tool drizzle kit)
 
 - Latest: `drizzle-kit@0.31.10` (pair กับ `drizzle-orm@0.45.2`) (verified 2026-09-11)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

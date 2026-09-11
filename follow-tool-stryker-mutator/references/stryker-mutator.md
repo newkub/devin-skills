@@ -12,8 +12,8 @@
 ## Install
 
 ```bash
-# Using npm init (recommended — runs initializer)
-npm init stryker@latest
+# Using create initializer (recommended)
+bun create stryker@latest
 
 # Manual install
 bun add -D @stryker-mutator/core
@@ -80,16 +80,16 @@ module.exports = {
 
 ```bash
 # Initialize Stryker in a project
-npx stryker init
+bunx stryker init
 
 # Run mutation testing
-npx stryker run
+bunx stryker run
 
 # Run with custom config file
-npx stryker run alternative-stryker.config.json
+bunx stryker run alternative-stryker.config.json
 
 # Run with trace logging (troubleshooting)
-npx stryker run --logLevel trace
+bunx stryker run --logLevel trace
 
 # Bun equivalents
 bunx stryker init
@@ -150,7 +150,7 @@ bunx stryker run --logLevel trace
 ```yaml
 # GitHub Actions
 - name: Run mutation testing
-  run: npx stryker run
+  run: bunx stryker run
 ```
 
 ```yaml

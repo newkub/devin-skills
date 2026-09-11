@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D degit
-# or
-npm install --save-dev degit
 ```
 
 ## Version

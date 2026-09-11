@@ -17,7 +17,7 @@
 
 > Goal: ติดตั้ง `JSPM CLI`
 
-1. ติดตั้ง `JSPM` globally ด้วย `npm install -g jspm` หรือเรียกผ่าน `npx jspm`
+1. ติดตั้ง `JSPM` globally ด้วย `mise use -g npm:jspm` หรือเรียกผ่าน `bunx jspm`
 2. ตรวจสอบ version ด้วย `jspm --version`
 3. สำหรับ `mise` ให้ลอง `mise use -g npm:jspm` ก่อนหาก environment รองรับ
 
@@ -70,7 +70,7 @@
 
 ## Rules
 
-- ใช้ `npm install -g jspm` หรือ `npx jspm` สำหรับ installation
+- ใช้ `mise use -g npm:jspm` หรือ `bunx jspm` สำหรับ installation
 - ใช้ `jspm init my-project` สำหรับสร้าง project ใหม่
 - ใช้ `jspm serve` สำหรับ development server
 - ใช้ `jspm serve --static` หากไม่ต้องการ `hot reload`

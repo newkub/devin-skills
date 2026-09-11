@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D renovate
-# or
-npm install --save-dev renovate
 ```
 
 ## Version

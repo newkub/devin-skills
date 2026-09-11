@@ -3,16 +3,14 @@
 ## Install
 
 ```sh
-bun add -D aube
-# or
-npm install --save-dev aube
+mise use aube
+# หรือตาม https://aube.en.dev/installation
 ```
 
 ## Version
 
-- Latest: 0.0.1
-- [Package Registry](https://www.npmjs.com/package/aube)
-- [Repository](https://github.com/estjs/aube)
+- Latest: `0.0.1` (ตรวจ https://aube.en.dev สำหรับเวอร์ชันล่าสุด)
+- [Registry](https://aube.en.dev)
 
 ## Dependencies
 
@@ -28,5 +26,5 @@ npm install --save-dev aube
 
 ## Source
 
-- Official docs: https://github.com/estjs/aube#readme
-- Description: [![NPM version](https://img.shields.io/npm/v/aube?color=a1b858&label=)](https://www.npmjs.com/package/aube)
+- Official docs: https://aube.en.dev
+- Description: Aube package manager สำหรับ Node.js projects (mise-compatible)

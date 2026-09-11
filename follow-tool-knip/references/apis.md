@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D knip
-# or
-npm install --save-dev knip
 ```
 
 ## Version

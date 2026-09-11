@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D jscpd
-# or
-npm install --save-dev jscpd
 ```
 
 ## Version

@@ -57,7 +57,7 @@ netlify deploy --prod --dir=storybook-static
 ### 5. Deploy to Chromatic
 
 ```bash
-npx chromatic --project-token=<token>
+bunx chromatic --project-token=<token>
 ```
 
 ## Rules

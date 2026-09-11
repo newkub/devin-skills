@@ -16,7 +16,7 @@
 ### Auto Init (Recommended)
 
 ```bash
-npx -y react-scan@latest init
+bunx -y react-scan@latest init
 ```
 
 Automatically detects your framework, installs `react-scan`, and sets up your project.
@@ -126,10 +126,10 @@ function App() {
 
 ```bash
 # Scan a local site
-npx react-scan@latest http://localhost:3000
+bunx react-scan@latest http://localhost:3000
 
 # Scan any website
-npx react-scan@latest https://react.dev
+bunx react-scan@latest https://react.dev
 ```
 
 Add to `package.json` scripts:
@@ -138,7 +138,7 @@ Add to `package.json` scripts:
 {
   "scripts": {
     "dev": "next dev",
-    "scan": "next dev & npx react-scan@latest localhost:3000"
+    "scan": "next dev & bunx react-scan@latest localhost:3000"
   }
 }
 ```

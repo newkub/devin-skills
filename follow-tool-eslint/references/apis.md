@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D eslint
-# or
-npm install --save-dev eslint
 ```
 
 ## Version

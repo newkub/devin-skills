@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D @stryker-mutator/core
-# or
-npm install --save-dev @stryker-mutator/core
 ```
 
 ## Version

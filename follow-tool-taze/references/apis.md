@@ -4,8 +4,6 @@
 
 ```sh
 bun add -D taze
-# or
-npm install --save-dev taze
 ```
 
 ## Version

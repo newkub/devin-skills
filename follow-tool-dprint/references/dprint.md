@@ -13,19 +13,19 @@ bun add -D dprint
 Verify installation:
 
 ```bash
-npx dprint --version
+bunx dprint --version
 ```
 
 Initialize a configuration file:
 
 ```bash
-npx dprint init
+bunx dprint init
 ```
 
 Use `--yes` or `-y` to skip the interactive prompt:
 
 ```bash
-npx dprint init -y
+bunx dprint init -y
 ```
 
 ## Version Info

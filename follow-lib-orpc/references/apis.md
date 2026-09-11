@@ -3,9 +3,7 @@
 ## Install
 
 ```sh
-bun add -D @orpc/server
-# or
-npm install --save-dev @orpc/server
+bun add @orpc/server
 ```
 
 ## Version

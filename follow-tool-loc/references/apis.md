@@ -3,15 +3,14 @@
 ## Install
 
 ```sh
-bun add -D loc
-# or
-npm install --save-dev loc
+cargo install loc
+# or download binary จาก https://github.com/cgag/loc/releases
 ```
 
 ## Version
 
-- Latest: 0.6.1
-- [Package Registry](https://www.npmjs.com/package/loc)
+- Latest: `0.5.0` (crates.io, verified 2026-09-11)
+- [Package Registry](https://crates.io/crates/loc)
 - [Repository](https://github.com/cgag/loc)
 
 ## Dependencies

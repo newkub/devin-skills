@@ -205,10 +205,9 @@ Supports Rolldown plugins, Rollup plugins, unplugin, and some Vite plugins.
 ## Scaffold
 
 ```sh
-npm create tsdown@latest
-pnpm create tsdown@latest
-yarn create tsdown@latest
 bun create tsdown@latest
+# or
+pnpm create tsdown@latest
 ```
 
 Templates include React, Vue, Solid, Svelte, and pure TypeScript.
