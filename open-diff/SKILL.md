@@ -1,9 +1,10 @@
 ---
 name: open-diff
-description: เปิดดู diff จาก PR, git, branch, หรือไฟล์สองไฟล์ ใน Solid+TanStack app บน browser ผ่าน Bun server
+description: เปิดดู diff จาก PR, git, branch, หรือไฟล์สองไฟล์ ใน TanStack Start SPA + Elysia บน Bun
 argument-hint: "[pr <n>] | [git <ref>] | [branch <base>..<head>] | [file <old> <new>] [--repo owner/repo]"
 related:
   - follow-create-web-solid-tanstack-router
+  - follow-lib-elysia
   - follow-lib-unocss
   - use-gh-cli
   - open-web
@@ -13,7 +14,7 @@ related:
 
 ## Goal
 
-เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย SolidJS + TanStack Router บน Bun server โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
+เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย TanStack Start (SolidJS, SPA mode) + Elysia API บน Bun โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
 
 ## Scope
 
@@ -36,10 +37,11 @@ related:
 - Merge button ถูก block จนกว่า CI เขียวครบ (pending/fail → disabled พร้อม tooltip บอก check ที่พัง)
 - Action log stream ไป terminal แบบ real-time (`[open-diff] $ cmd`, `[open-diff:out]`, `[open-diff:err]`) — เห็น merge progress ขณะ `run dev`
 - File filter/search (กด `f` เพื่อ focus)
-- Unified/Split view toggle และ line wrap toggle
+- Unified/Split view toggle (`v`) และ line wrap toggle (`w`)
 - Lazy load: split raw diff เป็น chunk ต่อไฟล์ แล้ว parse เฉพาะไฟล์ที่เลือก
 - Status bar แสดง keyboard hints และไฟล์ปัจจุบัน
-- Keyboard: ←/→ หรือ [/] เปลี่ยน change, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, t theme, Esc ปิด menu/blur input
+- Help overlay กด `?` แสดง keyboard shortcuts ทั้งหมด
+- Keyboard: ←/→ หรือ [/] เปลี่ยน file, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, v view, w wrap, t theme, ? help, Esc ปิด menu/blur input
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit
@@ -61,15 +63,15 @@ related:
 > Goal: ติดตั้งและ build แอป `open-diff` ถ้ายังไม่มี
 
 1. สร้าง workspace ชั่วคราว เช่น `.devin/open-diff-app`
-2. Copy ไฟล์ app จาก skill directory (`src/`, `index.html`, `package.json`, `tsconfig.json`, `uno.config.ts`, `vite.config.ts`, `bun.lock`) ไปยัง workspace
+2. Copy ไฟล์ app จาก skill directory (`src/`, `package.json`, `tsconfig.json`, `uno.config.ts`, `vite.config.ts`, `bun.lock`) ไปยัง workspace
 3. รัน `bun install` ใน workspace
-4. รัน `bun run build:client` เพื่อสร้าง `dist/` (server จะ serve `dist/` โดยตรง)
+4. รัน `bun run build` (TanStack Start build → `dist/client/_shell.html` + assets ซึ่ง server จะ serve โดยตรง)
 
 ### 3. Run And Open
 
 > Goal: เปิด diff ใน browser
 
-1. รัน `bun src/server.ts <subcommand> [args] [--repo ...]`
+1. รัน `bun src/serve.ts <subcommand> [args] [--repo ...]`
 2. รอ console แสดง URL
 3. ใช้ `/open-web` หรือ OS command เปิด URL นั้น (Windows: `start`, macOS: `open`, Linux: `xdg-open`)
 4. ถ้า server เปิด browser เองแล้ว → ยืนยันว่า tab เปิด
@@ -108,7 +110,8 @@ related:
 - ต้องมี `gh` CLI สำหรับ PR
 - ต้องมี `git` สำหรับ git/branch/file diff
 - ติดตั้ง dependencies ด้วย `bun install`
-- build ด้วย `bun run build:client && bun run build:server`
+- build ด้วย `bun run build`
+- ห้ามสร้าง `src/server.ts` — TanStack Start จองชื่อนี้เป็น custom server entry (ใช้ `src/serve.ts` แทน)
 
 ### 4. UX Requirements
 

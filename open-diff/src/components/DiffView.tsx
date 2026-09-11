@@ -1,6 +1,6 @@
 import { onMount, onCleanup, createEffect, Show } from 'solid-js';
 import { FileDiff, type FileDiffMetadata } from '@pierre/diffs';
-import type { FileEntry } from '../../types';
+import type { FileEntry } from '../types';
 
 const STATUS_ICON: Record<string, { cls: string; icon: string }> = {
   new: { cls: 'text-green-400', icon: 'i-mdi-file-plus-outline' },

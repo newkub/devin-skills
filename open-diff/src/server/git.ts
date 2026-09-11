@@ -1,4 +1,4 @@
-import type { DiffSource } from './types.js';
+import type { DiffSource } from '../types.js';
 
 async function exists(cmd: string): Promise<boolean> {
   try {
@@ -77,5 +77,34 @@ export async function fetchPrMeta(source: Extract<DiffSource, { kind: 'pr' }>) {
     return JSON.parse(out);
   } catch {
     return null;
+  }
+}
+
+export interface ChecksResult {
+  available: boolean;
+  checks: { name: string; state: string; bucket: string }[];
+  summary: 'pass' | 'fail' | 'pending' | 'none' | 'error';
+  failing?: string[];
+  pending?: number;
+  error?: string;
+}
+
+export async function fetchChecks(source: DiffSource | undefined): Promise<ChecksResult> {
+  if (!source || source.kind !== 'pr') {
+    return { available: false, checks: [], summary: 'none' };
+  }
+  try {
+    const args = ['gh', 'pr', 'checks', String(source.pr), '--json', 'name,state,bucket'];
+    if (source.repo) args.push('--repo', source.repo);
+    const proc = Bun.spawn({ cmd: args, stdio: ['ignore', 'pipe', 'pipe'] });
+    const out = await new Response(proc.stdout).text();
+    await proc.exited;
+    const checks = JSON.parse(out || '[]') as { name: string; state: string; bucket: string }[];
+    const failing = checks.filter((c) => c.bucket === 'fail' || c.bucket === 'cancel');
+    const pending = checks.filter((c) => c.bucket === 'pending');
+    const summary = checks.length === 0 ? 'none' : failing.length ? 'fail' : pending.length ? 'pending' : 'pass';
+    return { available: true, checks, summary, failing: failing.map((c) => c.name), pending: pending.length };
+  } catch (e: any) {
+    return { available: false, checks: [], summary: 'error', error: e.message };
   }
 }

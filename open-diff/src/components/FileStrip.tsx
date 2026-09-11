@@ -1,5 +1,5 @@
 import { For, Show, createEffect } from 'solid-js';
-import type { FileEntry } from '../../types';
+import type { FileEntry } from '../types';
 
 interface Props {
   files: FileEntry[];

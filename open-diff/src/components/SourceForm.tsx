@@ -1,5 +1,5 @@
 import { createSignal, Show } from 'solid-js';
-import type { SourceKind } from '../../types';
+import type { SourceKind } from '../types';
 
 interface Props {
   source: SourceKind;

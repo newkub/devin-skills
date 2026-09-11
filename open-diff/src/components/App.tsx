@@ -1,10 +1,10 @@
 import { createSignal, createEffect, onMount, onCleanup, Show, For } from 'solid-js';
 import { useNavigate, useSearch } from '@tanstack/solid-router';
 import { parsePatchFiles, type FileDiffMetadata } from '@pierre/diffs';
-import SourceForm from './components/SourceForm';
-import FileStrip from './components/FileStrip';
-import DiffView from './components/DiffView';
-import { splitPatch } from './split';
+import SourceForm from './SourceForm';
+import FileStrip from './FileStrip';
+import DiffView from './DiffView';
+import { splitPatch } from '../lib/split';
 import type { DiffResult, SourceKind } from '../types';
 
 type MergeMethod = 'merge' | 'squash' | 'rebase';
@@ -30,6 +30,7 @@ export default function App() {
   const [actionBusy, setActionBusy] = createSignal<string | null>(null);
   const [mergeOpen, setMergeOpen] = createSignal(false);
   const [commentOpen, setCommentOpen] = createSignal(false);
+  const [helpOpen, setHelpOpen] = createSignal(false);
   const [commentText, setCommentText] = createSignal('');
   const [checks, setChecks] = createSignal<{ summary: 'pass' | 'fail' | 'pending' | 'none' | 'error'; checks: { name: string; bucket: string }[]; failing?: string[]; pending?: number } | null>(null);
   let filterEl: HTMLInputElement | undefined;
@@ -100,11 +101,17 @@ export default function App() {
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if (helpOpen()) { setHelpOpen(false); return; }
         if (mergeOpen()) { setMergeOpen(false); return; }
         if (commentOpen()) { setCommentOpen(false); return; }
         if (isTyping(e)) { (e.target as HTMLElement).blur(); return; }
       }
       if (isTyping(e)) return;
+      if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+        e.preventDefault();
+        setHelpOpen(!helpOpen());
+        return;
+      }
       if (!data()?.files.length) return;
 
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === '[' || e.key === ']') {
@@ -121,6 +128,10 @@ export default function App() {
         filterEl?.focus();
       } else if (e.key === 't' && !e.ctrlKey && !e.metaKey) {
         toggleTheme();
+      } else if (e.key === 'v' && !e.ctrlKey && !e.metaKey) {
+        setDiffStyle(diffStyle() === 'unified' ? 'split' : 'unified');
+      } else if (e.key === 'w' && !e.ctrlKey && !e.metaKey) {
+        setWrap(!wrap());
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -487,11 +498,46 @@ export default function App() {
         </main>
       </Show>
 
+      <Show when={helpOpen()}>
+        <div
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          onClick={() => setHelpOpen(false)}
+        >
+          <div class="panel w-80 p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-sm font-semibold">Keyboard shortcuts</h2>
+              <button class="dim hover:text-[var(--text)]" onClick={() => setHelpOpen(false)}>
+                <span class="i-mdi-close w-4 h-4" />
+              </button>
+            </div>
+            <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-xs">
+              <span class="flex gap-1"><kbd class="kbd">←</kbd><kbd class="kbd">→</kbd><kbd class="kbd">[</kbd><kbd class="kbd">]</kbd></span><span class="dim">Previous / next file</span>
+              <span class="flex gap-1"><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd><kbd class="kbd">j</kbd><kbd class="kbd">k</kbd></span><span class="dim">Scroll diff</span>
+              <span class="flex gap-1"><kbd class="kbd">PgUp</kbd><kbd class="kbd">PgDn</kbd></span><span class="dim">Page scroll</span>
+              <span><kbd class="kbd">f</kbd></span><span class="dim">Focus file filter</span>
+              <span><kbd class="kbd">v</kbd></span><span class="dim">Toggle unified / split</span>
+              <span><kbd class="kbd">w</kbd></span><span class="dim">Toggle line wrap</span>
+              <span><kbd class="kbd">t</kbd></span><span class="dim">Toggle theme</span>
+              <span><kbd class="kbd">?</kbd></span><span class="dim">This help</span>
+              <span><kbd class="kbd">Esc</kbd></span><span class="dim">Close menu / blur input</span>
+            </div>
+          </div>
+        </div>
+      </Show>
+
       <footer class="shrink-0 flex items-center gap-4 px-4 py-1.5 border-t border-[var(--border)] bg-[var(--surface)] text-[11px] text-[var(--text-dim)]">
-        <span class="flex items-center gap-1"><kbd class="kbd">←</kbd><kbd class="kbd">→</kbd> changes</span>
+        <span class="flex items-center gap-1"><kbd class="kbd">←</kbd><kbd class="kbd">→</kbd> files</span>
         <span class="flex items-center gap-1"><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> scroll</span>
         <span class="flex items-center gap-1"><kbd class="kbd">f</kbd> filter</span>
+        <span class="flex items-center gap-1"><kbd class="kbd">v</kbd> view</span>
+        <span class="flex items-center gap-1"><kbd class="kbd">w</kbd> wrap</span>
         <span class="flex items-center gap-1"><kbd class="kbd">t</kbd> theme</span>
+        <button
+          class="flex items-center gap-1 hover:text-[var(--text)] transition-colors"
+          onClick={() => setHelpOpen(true)}
+        >
+          <kbd class="kbd">?</kbd> help
+        </button>
         <span class="ml-auto truncate font-mono">{currentFile()?.name ?? ''}</span>
       </footer>
     </div>

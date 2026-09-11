@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "target": "ES2022",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "strict": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,5 +15,5 @@
     "types": ["bun-types", "vite/client"],
     "noEmit": true
   },
-  "include": ["src/**/*", "scripts/**/*", "*.config.ts"]
+  "include": ["src/**/*", "*.config.ts"]
 }
