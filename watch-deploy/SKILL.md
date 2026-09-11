@@ -5,6 +5,7 @@ argument-hint: "[url]"
 related:
   - run-watch
   - ask-me
+  - run-deploy
 ---
 
 ## Goal

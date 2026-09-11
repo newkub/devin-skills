@@ -9,6 +9,7 @@ related:
   - scan-codebase
   - report
   - ask-me
+  - run-review
 ---
 
 ## Goal

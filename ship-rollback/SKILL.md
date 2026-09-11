@@ -9,6 +9,10 @@ related:
   - resolve-errors
   - report
   - ask-me
+  - run-check
+  - run-build
+  - run-test-all
+  - run-verify
 ---
 
 ## Goal

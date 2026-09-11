@@ -6,6 +6,8 @@ related:
   - research-dependencies
   - check-circular-dependencies
   - list-dependencies
+  - run-dev
+  - run-install
 ---
 
 ## Goal

@@ -6,6 +6,7 @@ related:
   - run-load-test
   - check-bottlenecks
   - report-before-after
+  - run-bench
 ---
 
 ## Goal

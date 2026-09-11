@@ -8,6 +8,8 @@ related:  - review-uxui
   - use-agent-browser
   - report
   - deep-review-codebase
+related:
+  - run-review
 ---
 
 ## Goal

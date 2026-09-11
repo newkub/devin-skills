@@ -10,6 +10,7 @@ related:
   - uninstall-program-in-computer
   - enhance-prompt
   - ask-me
+  - run-program
 ---
 
 ## Goal

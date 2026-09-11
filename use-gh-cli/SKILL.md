@@ -5,6 +5,7 @@ argument-hint: "[command-or-scope]"
 related:
   - follow-github
   - resolve-cicd
+  - run-test-cli
 ---
 
 ## Goal

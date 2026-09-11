@@ -9,6 +9,8 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+  - run-lint
+  - run-format
 ---
 
 ## Goal

@@ -7,6 +7,7 @@ related:
   - review-docs
   - update-readme-md
   - open-web
+  - run-docs
 ---
 
 ## Goal

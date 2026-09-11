@@ -12,6 +12,7 @@ related:
   - follow-tool-mise
   - follow-tool-moonrepo
   - deep-validate
+  - run-review
 ---
 
 ## See Also

@@ -8,6 +8,8 @@ related:
   - review-techstack
   - follow-tool-eslint
   - ship
+  - run-lint
+  - run-format
 ---
 ## Goal
 

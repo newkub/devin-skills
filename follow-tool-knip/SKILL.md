@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-tasks
+  - run-scan
 ---
 
 ## Goal

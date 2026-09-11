@@ -7,6 +7,7 @@ related:
   - follow-tool-playwright
   - follow-test
   - follow-deploy
+  - run-profiler
 ---
 
 ## Goal

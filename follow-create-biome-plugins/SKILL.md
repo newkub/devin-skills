@@ -9,6 +9,8 @@ related:
   - review-techstack
   - follow-tool-formatter
   - ship
+  - run-lint
+  - run-format
 ---
 ## Goal
 

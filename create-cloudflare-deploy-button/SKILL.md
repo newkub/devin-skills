@@ -10,6 +10,7 @@ related:
   - follow-my-tech-stack
   - report
   - ask-me
+  - run-deploy
 ---
 
 ## Goal

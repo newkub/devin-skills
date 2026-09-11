@@ -13,6 +13,8 @@ related:
   - delete-projects
   - resolve-errors
   - report
+  - run-scan
+
 
 ---
 

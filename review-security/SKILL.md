@@ -12,7 +12,8 @@ related:
   - scan-codebase
   - report
   - suggest-next-action
-
+  - run-audit
+  - run-review
 ---
 ## Goal
 

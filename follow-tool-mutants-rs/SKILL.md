@@ -8,6 +8,7 @@ related:
   - follow-tool-cargo
   - update-test-and-fix
   - follow-test
+  - run-test-mutation
 ---
 
 ## Goal

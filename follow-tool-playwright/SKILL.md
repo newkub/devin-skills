@@ -9,6 +9,7 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+  - run-test-e2e
 ---
 
 

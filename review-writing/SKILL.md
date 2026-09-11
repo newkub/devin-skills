@@ -11,6 +11,7 @@ related:
 
   - suggest-next-action
   - review-docs
+  - run-review
 ---
 
 ## Goal

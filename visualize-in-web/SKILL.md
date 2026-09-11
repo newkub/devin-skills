@@ -8,6 +8,7 @@ related:
   - open-files-in-web
   - visualize-project
   - open-readme-html
+  - run-test-visual
 ---
 
 ## Goal

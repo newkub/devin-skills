@@ -9,6 +9,10 @@ related:
   - follow-tool-pkg-new
   - follow-tool-changesets
   - run-release
+  - run-check
+  - run-build
+  - run-test-all
+  - run-verify
 ---
 
 ## Goal

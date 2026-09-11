@@ -12,6 +12,7 @@ related:
   - follow-parallel
   - report
   - suggest-next-action
+  - run-review
 ---
 
 ## Goal

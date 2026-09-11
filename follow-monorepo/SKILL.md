@@ -11,6 +11,7 @@ related:
   - deep-optimize
   - report
   - suggest-next-action
+  - run-test-all
 ---
 
 ## Goal

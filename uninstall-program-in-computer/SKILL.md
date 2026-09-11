@@ -10,6 +10,8 @@ related:
   - enhance-prompt
   - resolve-errors
   - report
+  - run-install
+  - run-program
 ---
 
 ## Goal

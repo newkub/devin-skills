@@ -7,6 +7,7 @@ related:
   - follow-release
   - check-commit-quality
   - report
+  - run-release
 ---
 
 ## Goal

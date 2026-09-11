@@ -8,6 +8,7 @@ related:
   - follow-lib-unocss
   - follow-tool-vite
   - follow-create-vite-plugins
+  - run-docs
 ---
 
 ## Goal

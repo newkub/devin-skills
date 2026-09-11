@@ -8,6 +8,8 @@ related:
   - review-seo
   - report
   - suggest-next-action
+  - run-drizzle-studio
+  - run-review
 ---
 
 ## Goal

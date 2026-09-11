@@ -10,6 +10,7 @@ related:
   - follow-tool-pkg-new
   - follow-lang-nodejs
   - open-web-for-config-secret
+  - run-release
 ---
 
 ## Goal

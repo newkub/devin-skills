@@ -9,6 +9,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
+  - run-dev
 ---
 
 ## Goal

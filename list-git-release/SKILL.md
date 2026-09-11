@@ -6,6 +6,7 @@ related:
   - list-git-branch
   - list-git-commit
   - report
+  - run-release
 ---
 
 ## Goal

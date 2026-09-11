@@ -10,6 +10,9 @@ related:
   - refactor
   - use-scripts
   - deep-review-codebase
+  - run-check
+  - run-test-all
+  - run-until-pass
 ---
 
 ## Goal

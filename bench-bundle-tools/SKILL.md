@@ -5,6 +5,7 @@ argument-hint: "[tools-to-compare]"
 related:
   - run-build
   - report-before-after
+  - run-bench
 ---
 
 ## Goal

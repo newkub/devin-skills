@@ -11,6 +11,7 @@ related:
   - review-dependencies
   - follow-my-tech-stack
   - ask-me
+  - run-install
 ---
 
 ## Goal

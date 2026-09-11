@@ -9,6 +9,7 @@ related:
   - follow-service-cloudflare
   - follow-service-vercel
   - deploy-to-railway
+  - run-deploy
 ---
 
 ## Goal

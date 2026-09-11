@@ -7,6 +7,8 @@ related:
   - list-workspaces
   - check-circular-dependencies
   - report
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

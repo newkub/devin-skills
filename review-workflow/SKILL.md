@@ -11,6 +11,8 @@ related:
   - use-subagents
   - follow-parallel
   - report
+  - run-deploy
+  - run-review
 ---
 
 

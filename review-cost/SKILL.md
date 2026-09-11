@@ -5,6 +5,7 @@ argument-hint: "[service-or-resource]"
 related:
   - report
   - review-performance
+  - run-review
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - run-test-unit
   - run-verify
   - deep-validate
+  - run-test-all
 ---
 
 ## Goal

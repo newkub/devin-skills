@@ -16,6 +16,7 @@ related:
   - check-devin-knowledge
   - update-references
   - idea-merge
+  - run-review
 ---
 
 ## Goal

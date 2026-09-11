@@ -6,6 +6,7 @@ related:
   - follow-tasks
   - follow-lang-typescript
   - follow-tool-github-actions
+  - run-dev
 ---
 
 ## Goal

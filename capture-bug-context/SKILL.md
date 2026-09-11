@@ -5,6 +5,7 @@ argument-hint: "[bug-title]"
 related:
   - capture
   - deep-debug
+  - run-dev
 ---
 
 ## Goal

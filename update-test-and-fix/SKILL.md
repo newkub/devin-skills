@@ -10,7 +10,9 @@ related:
   - deep-validate
   - check-reference
   - update-specs
-
+  - run-check
+  - run-test-all
+  - run-until-pass
 ---
 ## Goal
 

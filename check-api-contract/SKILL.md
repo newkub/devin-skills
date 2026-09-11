@@ -6,6 +6,8 @@ related:
   - gen-openapi
   - review-api
   - report
+  - run-test-api
+  - run-test-contract
 ---
 
 ## Goal

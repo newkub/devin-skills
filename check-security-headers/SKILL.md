@@ -6,6 +6,7 @@ related:
   - review-security
   - analyze-attack-surface
   - report
+  - run-audit
 ---
 
 ## Goal

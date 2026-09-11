@@ -6,6 +6,7 @@ related:
   - report
   - resolve-errors
   - suggest-next-action
+  - run-test-cli
 ---
 
 ## Goal

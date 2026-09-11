@@ -7,6 +7,7 @@ related:
   - use-astgrep
   - run-test-unit
   - report
+  - run-test-coverage
 ---
 
 ## Goal

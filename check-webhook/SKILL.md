@@ -5,6 +5,8 @@ argument-hint: "[endpoint-or-provider] [--security|--delivery]"
 related:
   - review-auth
   - report
+  - run-test-api
+
 
 ---
 

@@ -10,6 +10,7 @@ related:
   - visualize-project
   - use-related-skills
   - ask-me
+  - run-test-visual
 ---
 
 ## Goal

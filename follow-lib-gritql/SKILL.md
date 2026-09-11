@@ -6,6 +6,7 @@ related:
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
+  - run-scan
 ---
 
 ## Goal

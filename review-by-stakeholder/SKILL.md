@@ -14,6 +14,7 @@ related:
   - ask-me
   - suggest-next-action
   - scan-codebase
+  - run-review
 ---
 
 ## Goal

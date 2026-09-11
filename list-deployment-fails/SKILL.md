@@ -12,6 +12,7 @@ related:
   - follow-service-vercel
   - follow-service-cloudflare
   - open-cloudflare-workers
+  - run-deploy
 ---
 
 ## Goal

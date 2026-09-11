@@ -15,6 +15,7 @@ related:
   - suggest-next-action
   - ship
   - update-docs
+  - run-bench
 ---
 
 ## Goal

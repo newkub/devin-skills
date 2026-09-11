@@ -20,6 +20,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - deploy-to-cloudflare
+  - run-dev
 ---
 
 ## Goal

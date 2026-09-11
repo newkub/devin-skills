@@ -8,6 +8,7 @@ related:
   - run-audit
   - follow-tool-taze
   - report
+  - run-install
 ---
 
 ## Goal

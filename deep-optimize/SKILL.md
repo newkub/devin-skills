@@ -32,6 +32,7 @@ related:
   - run-verify
   - run-build
   - run-test-all
+  - run-profiler
 ---
 
 ## Goal

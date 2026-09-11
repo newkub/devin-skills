@@ -29,6 +29,7 @@ related:
   - list-dependencies
   - check-circular-dependencies
   - open-web-dependencies
+  - run-install
 ---
 
 ## Goal

@@ -10,6 +10,8 @@ related:
   - update-docs
   - update-readme-md
   - review-features
+  - run-docs
+  - run-review
 ---
 
 ## Goal

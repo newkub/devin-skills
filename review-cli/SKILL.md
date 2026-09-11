@@ -10,6 +10,8 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+  - run-test-cli
+  - run-review
 ---
 
 ## Goal

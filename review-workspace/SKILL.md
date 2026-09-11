@@ -16,6 +16,9 @@ related:
   - suggest-next-action
   - refactor-workspace
   - review-techstack
+  - run-review
+  - run-build
+  - run-test-all
 ---
 ---  - check-file-encoding
   - check-path-length

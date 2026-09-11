@@ -15,6 +15,9 @@ related:
   - restructure
   - update-references
   - run-verify
+  - run-check
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

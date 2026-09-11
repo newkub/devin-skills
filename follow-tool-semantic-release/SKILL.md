@@ -9,6 +9,7 @@ related:
   - follow-tool-git
   - follow-test
   - fix
+  - run-release
 ---
 
 ## Goal

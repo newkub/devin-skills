@@ -6,6 +6,7 @@ related:
   - resolve-github-actions-fails
   - resolve-cicd
   - ask-me
+  - run-deploy
 ---
 
 ## Goal

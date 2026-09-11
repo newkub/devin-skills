@@ -8,6 +8,8 @@ related:
   - alternative
   - delete
   - report
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

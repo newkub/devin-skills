@@ -9,6 +9,7 @@ related:
   - setup-cicd
   - follow-my-tech-stack
   - follow-lib-vue
+  - run-dev
 ---
 
 ## Goal

@@ -7,6 +7,7 @@ related:
   - open-in-windows-terminal
   - record-video-terminal
   - resolve-errors
+  - run-watch
 ---
 
 ## Goal

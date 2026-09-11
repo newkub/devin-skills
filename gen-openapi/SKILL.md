@@ -9,6 +9,7 @@ related:
   - search-files-patterns
   - report-uxui-all-routes
   - report
+  - run-test-api
 ---
 
 ## Goal

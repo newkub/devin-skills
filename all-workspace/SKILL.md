@@ -6,6 +6,8 @@ related:
   - deep-analyze
   - deep-validate
   - resolve-errors
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - search-files-patterns
   - follow-best-practice
   - enhance-prompt
+  - run-program
 ---
 
 ## Goal

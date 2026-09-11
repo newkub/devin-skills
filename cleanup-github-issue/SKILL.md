@@ -6,6 +6,8 @@ related:
   - cleanup-files-in-computer
   - cleanup-files-in-project
   - suggest-next-action
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

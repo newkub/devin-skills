@@ -10,7 +10,7 @@ related:
   - follow-deploy
   - review-security
   - follow-tool-github-actions
-
+  - run-audit
 ---
 ## Goal
 

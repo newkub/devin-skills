@@ -11,6 +11,7 @@ related:
   - resolve-errors
   - open-web
   - visualize-in-web
+  - run-test-visual
 ---
 
 ## Goal

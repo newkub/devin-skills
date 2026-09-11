@@ -5,6 +5,7 @@ argument-hint: "<owner>/<repo> <secret-name>"
 related:
   - resolve-github-actions-fails
   - ship
+  - run-audit
 ---
 
 ## Goal

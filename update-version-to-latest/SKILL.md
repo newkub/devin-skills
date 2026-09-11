@@ -8,6 +8,7 @@ related:
   - test-usage
   - run-verify
   - ask-me
+  - run-release
 ---
 
 ## Goal

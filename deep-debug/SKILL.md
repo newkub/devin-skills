@@ -11,6 +11,9 @@ related:
   - report-in-table
   - report-progress
   - suggest-next-action
+  - run-check
+  - run-test-all
+  - run-until-pass
 ---
 
 ## Goal

@@ -16,6 +16,7 @@ related:
   - ship
   - report
   - suggest-next-action
+  - run-deploy
 ---
 
 ## Goal

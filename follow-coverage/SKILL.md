@@ -10,6 +10,7 @@ related:
   - review-writing
   - use-scripts
   - check-reference
+  - run-test-coverage
 ---
 
 ## Goal

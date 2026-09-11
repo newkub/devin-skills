@@ -10,6 +10,8 @@ related:
   - scan-codebase
   - deep-analyze
   - report
+  - run-watch
+  - run-review
 ---
 
 ## Goal

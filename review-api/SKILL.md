@@ -9,6 +9,7 @@ related:
   - deep-review-codebase
   - report
   - check-reference
+  - run-review
 ---
   - check-api-versioning
   - check-backward-compatibility

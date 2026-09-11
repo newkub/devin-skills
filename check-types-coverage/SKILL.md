@@ -6,6 +6,8 @@ related:
   - use-astgrep
   - report
   - review-then-fix
+  - run-test-coverage
+  - run-typecheck
 ---
 
 ## Goal

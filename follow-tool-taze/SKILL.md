@@ -7,6 +7,7 @@ related:
   - follow-monorepo
   - follow-tasks
   - follow-tool-semantic-release
+  - run-install
 ---
 
 ## Goal

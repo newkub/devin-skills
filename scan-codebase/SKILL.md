@@ -8,6 +8,7 @@ related:
   - use-astgrep
   - use-scripts
   - report
+  - run-scan
 ---
 
 ## Goal

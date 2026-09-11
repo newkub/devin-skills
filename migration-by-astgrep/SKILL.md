@@ -6,6 +6,7 @@ related:
   - scan-codebase
   - report
   - suggest-next-action
+  - run-drizzle-studio
 ---
 
 ## Goal

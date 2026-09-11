@@ -6,6 +6,8 @@ related:
   - follow-tool-biome
   - follow-tool-eslint
   - resolve-errors
+  - run-lint
+  - run-format
 ---
 
 ## Goal

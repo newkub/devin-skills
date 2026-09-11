@@ -8,6 +8,7 @@ related:
   - check-reference
   - report
   - suggest-next-action
+  - run-review
 ---
 
 ## Goal

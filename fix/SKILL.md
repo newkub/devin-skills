@@ -10,6 +10,8 @@ related:
   - run-check
   - ask-me
   - scan-codebase
+  - run-test-all
+  - run-until-pass
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - suggest-next-action
   - loop-until-complete
   - resolve-errors
+  - run-until-pass
 ---
 
 ## Goal

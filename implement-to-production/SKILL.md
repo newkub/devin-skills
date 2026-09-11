@@ -18,7 +18,8 @@ related:
   - run-test-all
   - run-verify
   - test-usage
-
+  - run-check
+  - run-build
 ---
 ## Goal
 

@@ -8,6 +8,7 @@ related:
   - review-delivery
   - report
   - suggest-next-action
+  - run-review
 ---
 
 ## Goal

@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - suggest-next-action
   - report
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

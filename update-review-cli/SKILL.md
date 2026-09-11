@@ -11,6 +11,7 @@ related:
   - new-skills
   - resolve-errors
   - report
+  - run-test-cli
 ---
 
 ## Goal

@@ -8,6 +8,8 @@ related:
   - follow-tool-taze
   - follow-tool-vite
   - follow-tool-vitest
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

@@ -5,6 +5,8 @@ argument-hint: "[base-branch] [--remote]"
 related:
   - ask-me
   - report
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

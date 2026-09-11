@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - fix
   - refactor
+  - run-release
 ---
 
 ## Goal

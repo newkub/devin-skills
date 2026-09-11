@@ -10,6 +10,8 @@ related:
   - report
   - resolve-errors
   - run-deploy
+  - run-dev
+  - run-review
 ---
 
 ## Goal

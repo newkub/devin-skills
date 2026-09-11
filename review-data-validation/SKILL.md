@@ -5,6 +5,8 @@ argument-hint: "[schema-or-api-pattern]"
 related:  - scan-codebase
   - report
   - review-security
+related:
+  - run-review
 ---
 
 ## Goal

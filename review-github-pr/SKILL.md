@@ -9,6 +9,7 @@ related:
   - resolve-github-actions-fails
   - report
   - suggest-next-action
+  - run-review
 ---
 
 ## Goal

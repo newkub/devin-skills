@@ -7,6 +7,7 @@ related:
 
   - edit-only
   - suggest-next-action
+  - run-review
 ---
 
 ## Goal

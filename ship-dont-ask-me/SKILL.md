@@ -13,6 +13,9 @@ related:
   - report-progress
   - suggest-next-action
   - follow-enter-dot
+  - run-check
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

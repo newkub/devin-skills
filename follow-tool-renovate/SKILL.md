@@ -9,6 +9,7 @@ related:
   - follow-tool-pkg-new
   - follow-tool-release-it
   - follow-tool-semantic-release
+  - run-install
 ---
 
 

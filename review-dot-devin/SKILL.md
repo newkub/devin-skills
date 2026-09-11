@@ -9,6 +9,7 @@ related:
   - suggest-next-action
   - update-dot-devin
   - review-rules
+  - run-review
 ---
 
 ## Goal

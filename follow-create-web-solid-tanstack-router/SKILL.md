@@ -12,6 +12,7 @@ related:
   - follow-single-responsibility
   - follow-lib-solidjs
   - follow-lib-zod
+  - run-dev
 ---
 
 

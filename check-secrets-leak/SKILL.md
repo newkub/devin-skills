@@ -7,7 +7,7 @@ related:
   - open-web-for-config-secret
   - review-security
   - check-reference
-
+  - run-audit
 ---
 ## Goal
 ตรวจหา secrets, API keys, tokens หรือ credentials ทีอาจหลุดรอดใน repository หรือไฟล์

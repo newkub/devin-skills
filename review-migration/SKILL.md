@@ -10,6 +10,8 @@ related:
   - report-before-after
   - suggest-next-action
   - scan-codebase
+  - run-drizzle-studio
+  - run-review
 ---
 
 ## Goal

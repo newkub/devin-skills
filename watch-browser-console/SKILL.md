@@ -7,6 +7,7 @@ related:
   - watch-browser
   - watch-browser-and-fix
   - resolve-errors
+  - run-dev
 ---
 
 ## Goal

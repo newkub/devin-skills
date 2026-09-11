@@ -9,6 +9,9 @@ related:
   - report
   - suggest-next-action
   - ask-me
+  - run-check
+  - run-test-all
+  - run-until-pass
 ---
 
 ## Goal

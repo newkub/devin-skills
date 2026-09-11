@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - check-reference
   - learn-web
+  - run-scan
 ---
 
 ## Goal

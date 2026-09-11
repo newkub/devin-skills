@@ -9,6 +9,7 @@ related:
   - report
   - deep-validate
   - run-format
+  - run-examples
 ---
 
 ## Goal

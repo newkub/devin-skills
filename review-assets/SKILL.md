@@ -6,6 +6,7 @@ related:
   - scan-codebase
   - report
   - review-bundle
+  - run-review
 ---
 
 ## Goal

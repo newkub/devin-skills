@@ -4,6 +4,8 @@ description: Capture หลักฐานภาพ/วิดีโอ — compo
 argument-hint: "<web|component|terminal|app> [target]"
 related:
   - capture-bug-context
+  - run-dev
+
 
 ---
 

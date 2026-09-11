@@ -10,6 +10,7 @@ related:
   - report
   - suggest-next-action
   - ask-me
+  - run-deploy
 ---
 
 ## Usage

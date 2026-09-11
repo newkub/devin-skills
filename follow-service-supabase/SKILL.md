@@ -10,6 +10,7 @@ related:
   - learn-web
   - setup-cicd
   - delete
+  - run-drizzle-studio
 ---
 
 ## Goal

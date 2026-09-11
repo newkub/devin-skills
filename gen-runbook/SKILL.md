@@ -9,6 +9,7 @@ related:
   - review-stability
   - report-architecture-diagram
   - report
+  - run-docs
 ---
 
 ## Goal

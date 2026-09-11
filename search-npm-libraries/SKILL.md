@@ -8,6 +8,7 @@ related:
   - suggest-next-action
   - follow-tool-crw
   - learn-web
+  - run-install
 ---
 
 ## Goal

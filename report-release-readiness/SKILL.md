@@ -10,6 +10,7 @@ related:
   - check-uncommit
   - check-unpush
   - report
+  - run-release
 ---
 
 ## Goal

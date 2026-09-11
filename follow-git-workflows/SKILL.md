@@ -7,6 +7,7 @@ related:
   - refactor
   - fix
   - review
+  - run-deploy
 ---
 
 ## Goal

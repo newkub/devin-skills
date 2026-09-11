@@ -9,6 +9,7 @@ related:
   - update-features-md
   - review-writing
   - update-references
+  - run-docs
 ---
 
 ## Goal

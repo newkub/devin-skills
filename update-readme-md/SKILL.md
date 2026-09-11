@@ -10,6 +10,7 @@ related:
   - deep-validate
   - report
   - capture
+  - run-docs
 ---
 
 ## Goal

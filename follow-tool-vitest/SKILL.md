@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-vite
   - update-test-and-fix
+  - run-test-unit
 ---
 
 ## Goal

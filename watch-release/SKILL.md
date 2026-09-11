@@ -8,6 +8,7 @@ related:
   - ship
   - watch-deploy
   - resolve-errors
+  - run-watch
 ---
 
 ## Goal

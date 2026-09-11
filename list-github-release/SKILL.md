@@ -7,6 +7,7 @@ related:
   - resolve-github-actions-fails
   - list-github-branch
   - report
+  - run-release
 ---
 
 ## Goal

@@ -5,6 +5,7 @@ argument-hint: "[manifest-or-lockfile]"
 related:
   - review-security
   - report
+  - run-audit
 ---
 
 ## Goal

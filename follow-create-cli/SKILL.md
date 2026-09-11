@@ -11,6 +11,7 @@ related:
   - ship
   - review-techstack
   - rethink
+  - run-test-cli
 ---
 ## Goal
 

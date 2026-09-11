@@ -7,6 +7,7 @@ related:
   - check-api-contract
   - scan-codebase
   - report
+  - run-test-api
 ---
 
 ## Goal

@@ -10,6 +10,10 @@ related:
   - report
   - suggest-next-action
   - resolve-errors
+  - run-check
+  - run-build
+  - run-test-all
+  - run-verify
 ---
 
 ## Goal

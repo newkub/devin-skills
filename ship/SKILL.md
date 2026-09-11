@@ -38,6 +38,9 @@ related:
   - resolve-cicd
   - run-release
   - report
+  - run-check
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

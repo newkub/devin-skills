@@ -8,6 +8,7 @@ related:
   - download-program
   - report
   - suggest-next-action
+  - run-program
 ---
 
 ## Goal

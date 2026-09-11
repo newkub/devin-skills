@@ -10,6 +10,7 @@ related:
   - deep-trace
   - learn-web
   - read-related
+  - run-program
 ---
 
 ## Goal

@@ -9,6 +9,7 @@ related:
   - deep-review-codebase
   - report
   - check-reference
+  - run-review
 ---
 
 ## Goal

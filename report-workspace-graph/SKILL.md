@@ -13,6 +13,8 @@ related:
   - suggest-next-action
   - follow-tasks
   - follow-monorepo
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

@@ -5,6 +5,8 @@ argument-hint: "[component-or-data-pattern]"
 related:  - scan-codebase
   - report
   - review-algorithm
+related:
+  - run-review
 ---
 
 ## Goal

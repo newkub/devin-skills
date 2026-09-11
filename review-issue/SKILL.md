@@ -7,6 +7,7 @@ related:
   - suggest-next-action
   - deep-review-codebase
   - resolve-errors
+  - run-review
 ---
 
 ## Goal

@@ -6,6 +6,7 @@ related:
   - refactor
   - report
   - use-scripts
+  - run-scan
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - resolve-errors
   - refactor-workspace
   - update-references
+  - run-install
 ---
 ## Goal
 

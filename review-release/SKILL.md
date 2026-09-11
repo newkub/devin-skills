@@ -14,6 +14,7 @@ related:
   - review-correctness
   - review-architecture
   - report
+  - run-review
 ---
 
 ## Goal

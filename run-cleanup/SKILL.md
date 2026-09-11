@@ -10,6 +10,7 @@ related:
   - run-check
   - run-verify
   - suggest-next-action
+  - run-clean
 ---
 
 ## Goal

@@ -9,6 +9,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - use-scripts
+  - run-typecheck
 ---
 
 ## Goal

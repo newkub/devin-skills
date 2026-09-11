@@ -10,6 +10,7 @@ related:
   - follow-create-bun-cli
   - scan-codebase
   - use-scripts
+  - run-program
 ---
 
 ## Goal

@@ -13,6 +13,8 @@ related:
   - check-open-ports
   - resolve-errors
   - report-in-table
+  - run-check
+  - run-build
 ---
 
 ## Goal

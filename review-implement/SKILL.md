@@ -11,6 +11,7 @@ related:
   - implement-github-issue-by-me
   - deep-review-codebase
   - roleplay-stakeholder
+  - run-review
 ---
 
 ## Goal

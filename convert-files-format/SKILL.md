@@ -5,6 +5,9 @@ argument-hint: "[input] [output-format]"
 related:
   - convert-to-svg
   - ask-me
+  - run-lint
+  - run-format
+  - run-drizzle-studio
 ---
 
 ## Goal

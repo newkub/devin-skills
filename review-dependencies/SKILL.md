@@ -10,6 +10,8 @@ related:
   - report
   - run-check
   - ask-me
+  - run-install
+  - run-review
 ---
 
 ## Goal

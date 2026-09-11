@@ -13,7 +13,7 @@ related:
   - check-long-files
   - flatten-directory
   - follow-architecture
-
+  - run-review
 ---
 
 ## Goal

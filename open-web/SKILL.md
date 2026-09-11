@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-agent-browser
   - watch-browser-and-fix
+  - run-dev
 ---
 
 ## Goal

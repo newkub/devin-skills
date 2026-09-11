@@ -17,6 +17,8 @@ related:
   - report-progress
   - follow-agents-md
   - ask-me
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

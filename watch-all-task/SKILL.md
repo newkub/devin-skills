@@ -6,6 +6,7 @@ related:
   - run-task-all
   - deep-plan
   - suggest-next-action
+  - run-watch
 ---
 
 ## Goal

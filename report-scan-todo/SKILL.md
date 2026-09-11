@@ -9,6 +9,7 @@ related:
   - resolve-errors
   - report
   - suggest-next-action
+  - run-scan
 ---
 
 ## Goal

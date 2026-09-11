@@ -9,6 +9,8 @@ related:
   - review-api
   - gen-openapi
   - report
+  - run-test-api
+  - run-release
 ---
 
 ## Goal

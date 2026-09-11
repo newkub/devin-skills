@@ -5,6 +5,7 @@ argument-hint: "[target-or-scope]"
 related:
   - run-verify
   - run-test-unit
+  - run-scan
 ---
 
 ## Goal

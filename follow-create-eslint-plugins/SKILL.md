@@ -9,6 +9,8 @@ related:
   - follow-tool-eslint
   - ship
   - report
+  - run-lint
+  - run-format
 ---
 ## Goal
 

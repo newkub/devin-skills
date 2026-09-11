@@ -9,6 +9,7 @@ related:
   - resolve-errors
   - run-check
   - run-verify
+  - run-cleanup
 ---
 
 ## Goal

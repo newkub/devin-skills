@@ -9,6 +9,9 @@ related:
   - follow-tool-dprint
   - run-verify
   - update-references
+  - run-lint
+  - run-format
+  - run-drizzle-studio
 ---
 
 ## Goal

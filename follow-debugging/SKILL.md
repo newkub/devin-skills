@@ -6,6 +6,9 @@ related:
   - follow-math-concepts
   - use-bun-shell
   - run-test-unit
+  - run-check
+  - run-test-all
+  - run-until-pass
 ---
 
 ## Goal

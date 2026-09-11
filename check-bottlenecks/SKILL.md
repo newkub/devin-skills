@@ -6,6 +6,7 @@ related:
   - run-check
   - review-performance
   - review-then-fix
+  - run-profiler
 ---
 
 ## Goal

@@ -10,6 +10,8 @@ related:
   - run-check
   - run-verify
   - resolve-errors
+  - run-lint
+  - run-drizzle-studio
 ---
 
 ## Goal

@@ -9,6 +9,7 @@ related:
   - follow-lib-drizzle
   - update-test-and-fix
   - delete
+  - run-drizzle-studio
 ---
 
 ## Goal

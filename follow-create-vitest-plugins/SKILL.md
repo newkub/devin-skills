@@ -9,6 +9,7 @@ related:
   - follow-tool-vitest
   - follow-create-vite-plugins
   - ship
+  - run-test-unit
 ---
 ## Goal
 

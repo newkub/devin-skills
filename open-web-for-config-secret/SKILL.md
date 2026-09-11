@@ -11,6 +11,8 @@ related:
   - create-cloudflare-token
   - deploy-to-vercel
   - deploy-to-railway
+  - run-dev
+  - run-audit
 ---
 
 ## Goal

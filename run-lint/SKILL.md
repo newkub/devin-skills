@@ -7,6 +7,7 @@ related:
   - deep-review-codebase
   - resolve-errors
   - check-unused
+  - run-format
 ---
 
 ## Goal

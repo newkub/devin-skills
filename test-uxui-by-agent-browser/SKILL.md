@@ -24,6 +24,7 @@ related:
   - resolve-errors
   - run-check
   - ask-me
+  - run-dev
 ---
 
 ## Goal

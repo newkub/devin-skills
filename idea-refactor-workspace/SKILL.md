@@ -10,6 +10,8 @@ related:
   - report-file-structure
   - report-before-after
   - suggest-next-action
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

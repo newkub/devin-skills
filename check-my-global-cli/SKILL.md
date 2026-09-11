@@ -7,6 +7,7 @@ related:
   - idea-convert-my-global-cli-to-skills
   - suggest-next-action
   - report
+  - run-test-cli
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - suggest-next-action
   - resolve-errors
   - report
+  - run-build
+  - run-test-all
 ---
 
 ## Goal

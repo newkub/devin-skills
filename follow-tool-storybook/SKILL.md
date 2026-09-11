@@ -9,6 +9,7 @@ related:
   - follow-test
   - follow-tool-playwright
   - follow-tool-biome
+  - run-test-visual
 ---
 
 ## Goal

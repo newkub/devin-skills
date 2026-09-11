@@ -11,6 +11,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - review-architecture
+  - run-test-cli
 ---
 ## Goal
 

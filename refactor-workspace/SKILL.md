@@ -14,6 +14,9 @@ related:
   - run-typecheck
   - deep-analyze
   - review-quality
+  - run-build
+  - run-test-all
+
 
 ---
 

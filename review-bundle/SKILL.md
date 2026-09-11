@@ -6,6 +6,7 @@ related:
   - run-build
   - report
   - review-assets
+  - run-review
 ---
 
 ## Goal

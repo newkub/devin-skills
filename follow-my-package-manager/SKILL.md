@@ -8,6 +8,7 @@ related:
   - list-program-in-computer
   - uninstall-program-in-computer
   - open-web
+  - run-install
 ---
 
 ## Goal

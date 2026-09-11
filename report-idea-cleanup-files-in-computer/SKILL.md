@@ -10,6 +10,8 @@ related:
   - report-file-structure
   - suggest-next-action
   - cleanup-files-in-project
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

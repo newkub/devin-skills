@@ -4,6 +4,8 @@ description: ล้าง Docker images, containers, volumes และ build cac
 argument-hint: "[--images|--volumes|--all]"
 related:
   - ask-me
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - follow-tasks
   - follow-tool-moonrepo
   - report
+  - run-build
+  - run-test-all
 ---
 ## Goal
 

@@ -5,6 +5,8 @@ argument-hint: "[path] [--dry-run]"
 related:
   - delete
   - report
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

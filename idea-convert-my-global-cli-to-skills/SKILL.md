@@ -10,6 +10,7 @@ related:
   - delete
   - report-in-table
   - then-apply
+  - run-test-cli
 ---
 
 ## Goal

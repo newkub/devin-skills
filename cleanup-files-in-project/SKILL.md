@@ -7,6 +7,8 @@ related:
   - report
   - report-file-structure
   - check-reference
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

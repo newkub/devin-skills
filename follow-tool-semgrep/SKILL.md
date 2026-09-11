@@ -5,6 +5,7 @@ argument-hint: "[ruleset-or-path]"
 related:
   - use-astgrep
   - report
+  - run-scan
 ---
 
 ## Goal

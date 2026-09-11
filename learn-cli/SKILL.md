@@ -6,6 +6,7 @@ related:
   - learn-pattern
   - learn-references
   - learn-web
+  - run-test-cli
 ---
 
 ## Goal

@@ -15,6 +15,7 @@ related:
   - use-astgrep
   - follow-my-tech-stack
   - review-dependencies
+  - run-drizzle-studio
 ---
 
 ## Goal

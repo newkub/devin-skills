@@ -13,6 +13,7 @@ related:
   - report
   - suggest-next-action
   - scan-codebase
+  - run-review
 ---
 
 ## Goal

@@ -18,6 +18,8 @@ related:
   - follow-lang-typescript
   - follow-lang-rust
   - follow-create-bun-cli
+  - run-clean
+  - run-cleanup
 ---
 
 ## Goal

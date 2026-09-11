@@ -10,6 +10,7 @@ related:
   - follow-parallel
   - report-in-table
   - ask-me
+  - run-review
 ---
 
 ## Goal
