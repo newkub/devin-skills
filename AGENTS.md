@@ -100,17 +100,17 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (235): language, framework, library, tool, service, architecture, and best-practice guides.
+- `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
 - `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
-- `list-*` (38): inventory, lookup, and listing utilities.
-- `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
-- `report-*` (36): reporting, diagrams, and visualization helpers.
-- `run-*` (38): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (5): standard `/ship`, staging, production, rollback, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user).
-- `deep-*` (18): deep analysis, research, debugging, validation, verification, update, and ship.
-- `create-*` (19): project, plugin, bot, report, and diagram scaffolding.
-- `check-*` (57): verification, structure, and health checks.
-- `open-*` (13): browser, editor, and terminal integration.
+- `list-*` (32): inventory, lookup, and listing utilities.
+- `update-*` (37): repo, skills, docs, config, runtime, version, and test spec maintenance.
+- `report-*` (31): reporting, diagrams, and visualization helpers.
+- `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
+- `ship-*` (4): standard `/ship`, staging, production, rollback, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user).
+- `deep-*` (19): deep analysis, research, debugging, validation, verification, and orchestration (8 alias stubs merged into canonical skills).
+- `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
+- `check-*` (60): verification, structure, and health checks.
+- `open-*` (14): browser, editor, and terminal integration.
 
 Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
 
