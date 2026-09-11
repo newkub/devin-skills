@@ -190,7 +190,19 @@ export default function App() {
     if (vis.length && !vis.includes(selected())) setSelected(vis[0]);
   });
 
+  const missingParams = () => {
+    const p = params();
+    return (
+      (p.source === 'pr' && !p.pr) ||
+      (p.source === 'git' && !p.ref) ||
+      (p.source === 'branch' && !(p.base && p.head)) ||
+      (p.source === 'file' && !(p.old && p.new)) ||
+      !p.source
+    );
+  };
+
   async function load() {
+    if (missingParams()) return;
     setLoading(true);
     setError(null);
     const source = getSource();

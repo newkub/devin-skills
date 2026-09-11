@@ -1,13 +1,19 @@
 import { fetchDiff, fetchPrMeta, fetchChecks } from './git.js';
 import { handleAction } from './actions.js';
 import { recordPing, promptOnClose } from './lifecycle.js';
-import { cli } from './state.js';
+import { cli, sourceToQuery } from './state.js';
 import type { DiffSource } from '../types.js';
 
 const KINDS = ['pr', 'git', 'branch', 'file'] as const;
 
 function isDiffSource(body: unknown): body is DiffSource {
-  return !!body && typeof body === 'object' && KINDS.includes((body as any).kind);
+  if (!body || typeof body !== 'object') return false;
+  const b = body as Record<string, unknown>;
+  if (!KINDS.includes(b.kind as any)) return false;
+  if (b.kind === 'pr') return typeof b.pr === 'number' && b.pr > 0;
+  if (b.kind === 'git') return typeof b.ref === 'string' && b.ref.length > 0;
+  if (b.kind === 'branch') return typeof b.base === 'string' && typeof b.head === 'string' && b.base.length > 0 && b.head.length > 0;
+  return typeof b.old === 'string' && typeof b.new === 'string' && b.old.length > 0 && b.new.length > 0;
 }
 
 export async function handleApi(request: Request): Promise<Response> {
@@ -24,7 +30,7 @@ export async function handleApi(request: Request): Promise<Response> {
     }
 
     if (path === 'default') {
-      return Response.json(cli?.source ?? null);
+      return Response.json(cli?.source ? sourceToQuery(cli.source) : null);
     }
 
     if (path === 'checks') {
