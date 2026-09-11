@@ -3,7 +3,7 @@ name: review-accessibility
 description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, ARIA, contrast, screen reader
 argument-hint: "[url-or-route-or-component]"
 related:  - review-uxui
-  - run-test-website-by-agent-browser
+  - test-website-by-agent-browser
   - capture
   - use-agent-browser
   - report
@@ -25,7 +25,7 @@ related:  - review-uxui
 > Goal: เปิด target พร้อม audit tools
 
 1. เปิด dev server หรือใช้ deployed URL ตาม argument
-2. ใช้ `/run-test-website-by-agent-browser` เพื่อเปิด page ด้วย `agent-browser`
+2. ใช้ `/test-website-by-agent-browser` เพื่อเปิด page ด้วย `agent-browser`
 3. ถ้าเป็น component เดี่ยว → เปิด storybook หรือ route ที่ render component นั้น
 
 ### 2. Run Automated Audit

@@ -13,7 +13,7 @@ allowed-tools:
 related:
   - use-agent-browser
   - capture
-  - run-test-website-by-agent-browser
+  - test-website-by-agent-browser
   - review-uxui
   - review-accessibility
   - report-uxui-all-routes
@@ -125,7 +125,7 @@ related:
 - ห้ามแก้ UX/UI ตรงๆ ระหว่าง test — ส่งต่อ `/review-uxui`
 - ห้าม approve visual regression โดยไม่มี rationale บันทึก
 - ใช้ `/use-agent-browser` เพื่อดู commands เต็ม
-- ถ้า test หลาย routes ใช้ `/run-test-website-by-agent-browser` หรือ `/report-uxui-all-routes`
+- ถ้า test หลาย routes ใช้ `/test-website-by-agent-browser` หรือ `/report-uxui-all-routes`
 - ถ้าพบ UX issues ส่งต่อ `/review-uxui` — ถ้าขาด context ทีชัดเจน → `/ask-me`
 
 ## Expected Outcome

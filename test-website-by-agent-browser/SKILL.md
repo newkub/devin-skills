@@ -1,5 +1,5 @@
 ---
-name: run-test-website-by-agent-browser
+name: test-website-by-agent-browser
 description: เปิด browser แล้วทดสอบ actions ทุกหน้าด้วย agent browser
 argument-hint: "[url]"
 related:
