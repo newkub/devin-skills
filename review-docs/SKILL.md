@@ -1,6 +1,6 @@
 ---
 name: review-docs
-description: ตรวจสอบ docs structure ก่อน update-docs แก้ไข ครอบคลุม VitePress config และ content
+description: ตรวจสอบ docs structure, VitePress config และ README.md ก่อน update แก้ไข
 argument-hint: "[scope]"
 related:
   - scan-codebase
@@ -8,8 +8,8 @@ related:
   - report
   - suggest-next-action
   - update-docs
+  - update-readme-md
   - review-features
-  - review-readme-md
 ---
 
 ## Goal
@@ -20,7 +20,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 ใช้ก่อนเรียก `update-docs` — ตรวจ `docs/` structure, VitePress config, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-features`)
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage) — สำหรับตรวจ content coverage ครบทุก features/APIs/use cases ดู `references/content-coverage-checklist.md`
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
 ## Execute
 
@@ -69,7 +69,19 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 1. ทำตาม `references/workspace-links.md#check-links`
 
-### 8. Score And Report
+### 8. Check README.md (merged from: review-readme-md)
+
+> Goal: ตรวจ `README.md` ทั้ง root และ workspace — section order, tables, coverage
+
+1. ตรวจ section order ตาม `references/readme-section-order.md`
+2. ตรวจ table columns และ icon format ตาม `references/readme-tables-icons.md`
+3. ตรวจ content standards ตาม `references/readme-content-standards.md`
+4. ตรวจ Usage coverage ตาม `references/readme-usage-coverage.md` และ Features coverage ตาม `references/readme-features-coverage.md`
+5. ตรวจ workspace READMEs ตาม `references/readme-workspace-consistency.md`
+6. คำนวณ README score ตาม `references/readme-scoring.md`
+7. ถ้า README score < 70 → แนะนำ `update-readme-md`
+
+### 9. Score And Report
 
 > Goal: สรุป review score และ findings
 
@@ -87,9 +99,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 ### 2. Scope Coordination
 
-- ตรวจ `docs/` structure, VitePress config, content quality, links
+- ตรวจ `docs/` structure, VitePress config, content quality, links และ `README.md`
 - ไม่ตรวจ features coverage — ใช้ `review-features`
-- ไม่ตรวจ README format — ใช้ `review-readme-md`
 - ถ้า findings ซ้อนทับ → อ้างอิงแทน ไม่ทำซ้ำ
 
 ### 3. Severity Ratings

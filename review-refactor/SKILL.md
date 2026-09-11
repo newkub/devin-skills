@@ -9,6 +9,10 @@ related:
 
   - suggest-next-action
   - refactor
+  - restructure
+  - check-long-files
+  - flatten-directory
+  - follow-architecture
 
 ---
 
@@ -18,7 +22,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor`, หรือ `refactor-workspace` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor-workspace`, `restructure` หรือ `relocation` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns และ file/folder structure (naming, grouping, barrel exports, nesting, relocation plan — merged from: review-restructure) ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -67,19 +71,30 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 3. รัน `knip` และ `jscpd`
 4. บันทึก findings
 
-### 8. Establish Baseline Metrics
+### 8. Analyze Structure And Relocation (merged from: review-restructure)
+
+> Goal: ประเมิน structure health และวางแผน relocation — ข้ามถ้า scope ไม่เกี่ยวกับ file/folder moves
+
+1. ตรวจ file naming ตาม `references/restructure-file-naming.md` และ folder grouping ตาม `references/restructure-folder-grouping.md`
+2. ตรวจ barrel exports และ import alias complexity ตาม `references/restructure-barrel-exports.md`
+3. ทำ `/check-long-files` ระบุไฟล์ที่ต้อง split ก่อน/หลัง relocation
+4. ประเมิน flat vs nested ตาม `/flatten-directory` และ `/follow-architecture`
+5. คำนวณ structure health score และสร้าง relocation plan ตาม `references/restructure-structure-health.md` — แสดง dry-run preview old path → new path พร้อม files ที่ต้อง update imports
+6. คำนวณ score ตาม `references/restructure-scoring.md`
+
+### 9. Establish Baseline Metrics
 
 > Goal: สร้าง baseline metrics table ก่อน refactor
 
 1. ทำตาม `references/baseline-metrics.md#metrics-table-format`
 
-### 9. Prioritize Refactor Targets
+### 10. Prioritize Refactor Targets
 
 > Goal: จัดลำดับ refactor targets ตาม effort และ impact
 
 1. ทำตาม `references/baseline-metrics.md#priority-formula`
 
-### 10. Report
+### 11. Report
 
 > Goal: รายงาน baseline และ refactor targets
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - review-deploy
+  - review-release
   - resolve-cicd
   - run-verify
   - run-build
@@ -22,13 +22,13 @@ related:
 Deploy application ไปยัง platform ที่กำหนด พร้อม post-deploy validation, commit/push และ watch browser จนกว่า deployment จะ live
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `review-deploy`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `review-release`
 
 ครอบคลุมการ verify, build, deploy, commit/push, post-deploy validation, watch until live และ rollback & recovery
 
 ## Execute
 
-> Pre-Run: ทำ `/review-deploy` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (deploy)
+> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (deploy)
 
 ### 1. Verify
 

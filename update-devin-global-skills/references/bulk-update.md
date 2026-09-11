@@ -56,7 +56,7 @@
 > Goal: ทุก skill สอดคล้องกันข้าม repo
 
 1. ทำ `/review-quality` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
-2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
+2. ทำ `/review-devin-global-skills` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
 3. ทำ `/idea-create-devin-skills-global` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
 4. ตรวจไม่มี broken references และไม่มี circular dependencies
 
@@ -64,7 +64,7 @@
 
 > Goal: ตรวจสอบ references ก่อนอัปเดต
 
-1. ทำ `/review-references` เพื่อตรวจ AGENTS.md, `related` frontmatter, in-body references, และ circular dependencies
+1. ทำ `/review-devin-global-skills` เพื่อตรวจ AGENTS.md, `related` frontmatter, in-body references, และ circular dependencies
 2. บันทึก missing, stale, broken, circular references
 3. ให้ priority กับ Critical/High
 

@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - review-plan
   - review-migration
-  - review-deploy
+  - review-release
   - review-security
   - review-compliance
   - deep-plan
@@ -25,7 +25,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - ตรวจ risks ใน `.devin/plan/<workspace>/`, `AGENTS.md`, chat plan, หรือ code/workspace
 - ครอบคลุม technical, schedule, security, compliance, business, operational, financial
 - รองรับ target: `plan`, `project`, `deploy`, `migration`, หรือ default เป็น current workspace
-- ส่งต่อให้ `review-plan`, `review-migration`, `review-deploy`, `review-security`, `review-compliance` เมื่อ target ชัดเจน
+- ส่งต่อให้ `review-plan`, `review-migration`, `review-release`, `review-security`, `review-compliance` เมื่อ target ชัดเจน
 
 ## Execute
 ### 1. Prepare Context

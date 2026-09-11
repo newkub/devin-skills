@@ -12,8 +12,6 @@ related:
   - review-performance
   - review-architecture
   - review-stability
-  - review-by-engineer
-  - review-by-qa
   - review-by-stakeholder
   - report
   - suggest-next-action
@@ -90,8 +88,8 @@ related:
 > Goal: จัดลำดับ findings ตาม impact
 
 1. รวม findings จากทุก domain
-2. ถ้าต้องการมุมมอง engineer/QA → `/review-by-engineer` หรือ `/review-by-qa`
-3. ถ้าต้องการมุมมอง product/user → `/review-by-stakeholder` หรือ `/review-by-product`
+2. ถ้าต้องการมุมมอง engineer/QA → `/review-by-stakeholder staff-engineer` หรือ `qa-tester`
+3. ถ้าต้องการมุมมอง product/user → `/review-by-stakeholder product-manager` หรือ `user`
 4. เรียงลำดับตาม severity, effort และ business impact
 5. ระบุ clear owner skill สำหรับแต่ละ action
 

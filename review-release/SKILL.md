@@ -1,12 +1,16 @@
 ---
 name: review-release
-description: Review release readiness ก่อน publish
+description: Review release/deploy readiness ก่อน publish หรือ deploy และ verify หลัง deploy
 argument-hint: "[scope]"
 related:
   - test-release
   - run-release
   - ship
   - setup-release
+  - run-deploy
+  - watch-deploy
+  - follow-deploy
+  - ship-rollback
   - review-correctness
   - review-architecture
   - report
@@ -14,11 +18,11 @@ related:
 
 ## Goal
 
-Review release readiness ก่อนเริ่ม publish เพื่อยืนยันความถูกต้องของ version, changelog, breaking changes, semver, platform targets, rollback plan, release notes และ license
+Review release readiness ก่อนเริ่ม publish เพื่อยืนยันความถูกต้องของ version, changelog, breaking changes, semver, platform targets, rollback plan, release notes และ license — รวม deployment readiness (env, secrets, build, health, DNS/SSL, zero-downtime) และ post-deploy verify (merged from: review-deploy)
 
 ## Scope
 
-ใช้ก่อนเรียก `run-release`, `ship`, `setup-release` หรือ release tooling อื่น ตรวจ release readiness ครอบคลุม version, changelog, breaking changes, platform, rollback, release notes, license แล้วสรุป release readiness score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `run-release`, `ship`, `setup-release`, `run-deploy`, `deploy-to-*`, `follow-deploy` หรือ release tooling อื่น — ตรวจ release readiness (version, changelog, breaking changes, platform, rollback, release notes, license) และ deployment readiness (env vars, secrets, build artifacts, health checks, DNS/CDN, SSL, migration scripts, zero-downtime) แล้วสรุป readiness score พร้อม go/no-go recommendation
 
 ## Execute
 
@@ -29,6 +33,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 - ทำ `/scan-codebase` เพื่อเข้าใจ project structure และ release config
 - ระบุ release platforms: npm, crates.io, VSCode Marketplace, Docker Hub, ฯลฯ
 - ตรวจ release config files และ package manifests
+- ตรวจ deployment config files: `vercel.json`, `wrangler.jsonc`, `railway.json`, `Dockerfile`, `.github/workflows/deploy*.yml`
 - ถ้าไม่พบ release config → stop และ report
 
 ### 2. Check Version And Semver
@@ -64,7 +69,17 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 - ตรวจ release notes สำหรับ GitHub Release
 - ตรวจ dependencies ไม่มี license conflicts
 
-### 7. Score And Report
+### 7. Check Deployment Readiness (merged from: review-deploy)
+
+> Goal: ตรวจ deployment readiness — ข้ามถ้า release นี้ไม่มี deploy step
+
+1. ตรวจ env vars และ secrets ตาม `references/deploy-env-secrets.md`
+2. ตรวจ build artifacts และ config ตาม `references/deploy-build-artifacts.md`
+3. ตรวจ health checks และ rollback plan ตาม `references/deploy-health-rollback.md`
+4. ตรวจ zero-downtime strategy และ migration scripts ตาม `references/deploy-zero-downtime.md`
+5. คำนวณ deploy readiness score ตาม `references/deploy-readiness-score.md` และ `references/deploy-scoring.md`
+
+### 8. Score And Report
 
 > Goal: สรุป release readiness score และ go/no-go
 
@@ -98,9 +113,21 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 - ถ้า pass → ทำ `/ship` หรือ release ถ้า fail → แก้ findings ก่อน release
 
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ (merged from: verify-deploy ผ่าน review-deploy)
+
+1. ทำตาม `references/deploy-verify.md`
+2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
+3. ทำ `/run-test-api` สำหรับ endpoints สำคัญ
+4. ทำ `/check-security-headers` บน deployed URL
+5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
+6. ถ้า failed → แนะนำ `/ship-rollback` พร้อม evidence
+
 ## Expected Outcome
 
 - รายงาน Release Readiness Summary พร้อม score และ grade
+- รายงาน Deploy Readiness Summary ถ้ามี deploy step
 - รายงาน Go/No-Go Checklist พร้อม status
 - รายงาน Breaking Changes พร้อม migration notes
 - Go/no-go recommendation

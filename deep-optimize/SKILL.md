@@ -18,7 +18,7 @@ triggers:
   - model
 related:
   - review-performance
-  - review-redundancy
+  - review-devin-global-skills
   - check-bottlenecks
   - check-unused
   - deep-refactor
@@ -62,7 +62,7 @@ Optimize codebase แบบละเอียดครบทุก layer — per
 
 1. ทำ `/deep-analyze` บน target
 2. ทำ `/review-performance` เพื่อหา hotspots
-3. ทำ `/review-redundancy` เพื่อหา duplicate logic
+3. ทำ `/review-devin-global-skills` เพื่อหา duplicate logic
 4. ทำ `/check-unused` และ `/check-bottlenecks`
 5. วิเคราะห์ bundle / build output ถ้ามี
 

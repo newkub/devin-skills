@@ -6,7 +6,7 @@ related:
   - move-to
   - update-references
   - report-file-structure
-  - review-restructure
+  - review-refactor
   - deep-validate
   - report-in-table
   - report-progress
@@ -56,7 +56,7 @@ related:
 
 > Goal: ออกแบบ target structure และ mapping ก่อนย้าย
 
-1. ทำ `/review-restructure` — วางแผน relocation ที่ไม่ทำลาย grouping ที่มีค่า
+1. ทำ `/review-refactor` — วางแผน relocation ที่ไม่ทำลาย grouping ที่มีค่า
 2. สร้าง mapping `old path → new path`:
    - mode `refs`: `references/<name>/SKILL.md` → `references/<name>.md` โดย `<name>` ต้องตรง `name` ใน frontmatter
    - mode `code`: `old/path/file.ext` → `flat-name.ext` เป็น kebab-case โดยเติมชื่อ parent dirs เพื่อ uniqueness (เช่น `domain-user-service.ts`) — index files ให้ rename เป็น `dirname-index.ext`

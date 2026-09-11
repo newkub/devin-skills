@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-usage
 
-  - review-app-usage
+  - review-usage-md
   - follow-best-practice
   - setup-cicd
   - resolve-errors
@@ -126,7 +126,7 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 
 - ใช้ /report-usage ถ้าจำเป็น
 - ใช้ /report-usage ถ้าจำเป็น
-- ใช้ /review-app-usage ถ้าจำเป็น
+- ใช้ /review-usage-md ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น

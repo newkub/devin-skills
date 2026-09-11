@@ -14,6 +14,8 @@ related:
   - follow-skills-map
   - check-skill-usage
   - check-devin-knowledge
+  - update-references
+  - idea-merge
 ---
 
 ## Goal
@@ -26,6 +28,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - `review` — ตรวจ skill package แต่ละตัวตามมาตรฐาน `update-devin-global-skills`
 - `refactor` — split, merge, restructure, deduplicate, relocate ปัญหาโครงสร้าง
 - `cross-skill consistency` — ตรวจภาษา, format, terminology, frontmatter, redundancy
+- `redundancy audit` — ตรวจ duplicate purpose, overlapping scope, redundant content, unused skills (merged from: review-redundancy)
+- `references integrity` — ตรวจ related, AGENTS.md, global_rules.md, circular deps ไม่ขาด/ซ้ำ/วน (merged from: review-references)
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่ปรับเนื้อหาเชิง code (ใช้ `/deep-validate`)
 
@@ -83,7 +87,27 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. ทำตาม `references/refactor-guide.md#cross-skill-consistency`
 
-### 8. Score And Report
+### 8. Redundancy Audit (merged from: review-redundancy)
+
+> Goal: ตรวจหา skills ที่ซ้ำซ้อนหรือไม่จำเป็น
+
+1. ทำตาม `references/redundancy-inventory-group.md` เพื่อรวบรวมและจัดกลุ่ม skills
+2. ตรวจ duplicate purpose ตาม `references/redundancy-detect-duplicate-purpose.md`, overlapping scope ตาม `references/redundancy-detect-overlapping-scope.md`, redundant content ตาม `references/redundancy-detect-redundant-content.md`, unused skills ตาม `references/redundancy-detect-unused-skills.md`
+3. แนะนำ actions ตาม `references/redundancy-recommend-actions.md` — merge candidates → `/idea-merge`, rename → `/batch-rename-files`
+4. ถ้าต้อง remove/merge → ขอ user confirm เสมอ แล้วทำตาม `references/redundancy-confirm-execute.md`
+5. คำนวณ score ตาม `references/redundancy-scoring.md`
+
+### 9. References Integrity (merged from: review-references)
+
+> Goal: ตรวจ references ไม่ขาด/ซ้ำ/วน
+
+1. ทำตาม `references/refs-inventory-skills.md` เพื่อรวบรวม skills ทั้งหมด
+2. ตรวจ `AGENTS.md` ตาม `references/refs-check-agentsmd.md`, frontmatter `related` ตาม `references/refs-check-frontmatter.md`, in-body references ตาม `references/refs-check-in-body.md`
+3. ตรวจ circular dependencies ตาม `references/refs-check-circular.md` และ `global_rules.md` ตาม `references/refs-check-global-rules.md`
+4. คำนวณ score ตาม `references/refs-scoring.md` และ report ตาม `references/refs-report.md`
+5. ถ้าพบ refs ขาด/ซ้ำ → ทำ `/update-references` หลัง user confirm
+
+### 10. Score And Report
 
 > Goal: สรุป review score, refactor results และ findings
 

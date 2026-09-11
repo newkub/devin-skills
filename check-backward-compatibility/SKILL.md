@@ -3,7 +3,7 @@ name: check-backward-compatibility
 description: ตรวจหา breaking changes ใน public API หรือ schema
 argument-hint: "[base-ref] [head-ref]"
 related:
-  - review-references
+  - review-devin-global-skills
   - run-release
 ---
 
@@ -63,7 +63,7 @@ related:
 - new feature non-breaking → minor
 - bug fix → patch
 
-- ใช้ /review-references ถ้าจำเป็น
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
 - ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome

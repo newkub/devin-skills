@@ -107,7 +107,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 4. ถ้าเป้น Cloudflare Worker fail → ทำ `/resolve-cloudflare-worker-fails` ก่อน re-deploy
 5. ถ้า failure มาจาก code/config → แก้ไขน้อยทีสุด
 6. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/review-delivery`, `/review-config`, `/review-test` ตามลักษณะ
-7. ถ้า failure มาจาก infra/secret/platform → ทำ `/review-deploy`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
+7. ถ้า failure มาจาก infra/secret/platform → ทำ `/review-release`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
 8. ถ้าเป้น CI: commit/push หรือ re-trigger pipeline ตาม platform กลับไป Watch Pipeline
 9. ถ้าเป้น CD: re-deploy ตาม platform:
    - Cloudflare → `/deploy-to-cloudflare`

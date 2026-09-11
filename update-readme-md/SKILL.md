@@ -3,7 +3,7 @@ name: update-readme-md
 description: สร้าง README.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
 argument-hint: "[scope]"
 related:
-  - review-readme-md
+  - review-docs
   - deep-analyze
   - translate-to-lang-en
 
@@ -208,7 +208,7 @@ related:
 - `templates/usage-via-web.md` — Web accordion template
 - `templates/usage-via-tui.md` — TUI accordion template
 
-- ใช้ /review-readme-md ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

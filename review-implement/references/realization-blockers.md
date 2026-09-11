@@ -11,7 +11,7 @@ related:
 
 ## Checks
 
-1. ทำ `/review-implement-to-production` เพื่อหา implementation gaps
+1. ทำ `/review-implement` เพื่อหา implementation gaps
 2. ตรวจ infrastructure readiness: database, API server, environment variables, external services
 3. ตรวจ type flow: schema → validation → API types → UI types
 4. ระบุ blockers ที่ต้องแก้ก่อนเริ่ม implementation

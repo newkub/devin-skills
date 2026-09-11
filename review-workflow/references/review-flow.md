@@ -68,8 +68,8 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ถ้ามี destructive change → ต้อง dry-run ก่อน
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 
-- ใช้ /review-references ถ้าจำเป็น
-- ใช้ /review-redundancy ถ้าจำเป็น
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น

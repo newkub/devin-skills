@@ -6,7 +6,7 @@
 
 ## Scope
 
-ใช้หลังจบ `review-deploy`
+ใช้หลังจบ `review-release`
 
 ## Score Formula
 

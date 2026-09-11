@@ -4,7 +4,7 @@
 
 ## Goal
 
-แก้ไข documentation findings จาก `review-docs`, `review-readme-md`, `review-writing`, `review-usage-md` และ `review-docs` จน docs ถูกต้อง ครบถ้วน และตรงกับ code จริง
+แก้ไข documentation findings จาก `review-docs`, `review-docs`, `review-writing`, `review-usage-md` และ `review-docs` จน docs ถูกต้อง ครบถ้วน และตรงกับ code จริง
 
 ## Scope
 
@@ -49,7 +49,7 @@
 
 > Goal: docs อ่านง่ายและเป็นลำดับ
 
-1. แก้ตาม findings จาก `/review-writing` และ `/review-readme-md`
+1. แก้ตาม findings จาก `/review-writing` และ `/review-docs`
 2. จัดโครงสร้าง heading, lists และ examples ให้สอดคล้อง
 3. ลบเนื้อหาซ้ำซ้อนระหว่าง docs
 

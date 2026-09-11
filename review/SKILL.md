@@ -4,7 +4,7 @@ description: เลือกและ execute review skill(s) ที่เหม
 argument-hint: "[topic-or-goal]"
 related:
   - deep-review
-  - review-redundancy
+  - review-devin-global-skills
   - check-unused
   - review-gaps
   - review-issue
@@ -62,34 +62,34 @@ related:
 | 14 | เน้น observability (metrics, tracing, logging, alerting) | `/review-observability` | `/review-stability`, `/review-delivery` |
 | 15 | เน้น compliance (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA) | `/review-compliance` | `/review-security`, `/review-delivery` |
 | 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/review-delivery` | `/review-performance`, `/review-security` |
-| 17 | ตรวจความพร้อมก่อน deploy | `/review-deploy` | `/review-delivery`, `/review-release` |
+| 17 | ตรวจความพร้อมก่อน deploy | `/review-release` | `/review-delivery`, `/watch-deploy` |
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-techstack` |
-| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-references` |
+| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-devin-global-skills` |
 | 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-features` |
-| 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-readme-md` | `/review-docs` |
+| 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-docs` | `/review-usage-md` |
 | 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-features` | `/review-docs` |
-| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-usage-md` หรือ `/review-app-usage` | `/review-docs` |
+| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-usage-md` | `/review-docs` |
 | 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-features` |
 | 25 | ตรวจ naming conventions | `/review-quality` | `/review-readability` |
 | 26 | ตรวจ readability | `/review-readability` | `/review-quality` |
-| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-redundancy` | `/check-unused`, `/review-quality` |
-| 28 | ตรวจ consistency ข้าม skills / code | `/review-quality` | `/review-references` |
-| 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-references` | `/review-quality` |
+| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-devin-global-skills` | `/check-unused`, `/review-quality` |
+| 28 | ตรวจ consistency ข้าม skills / code | `/review-quality` | `/review-devin-global-skills` |
+| 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-devin-global-skills` | `/review-quality` |
 | 30 | ตรวจ git diff ก่อน keep/revert | `/review-diff` | `/review-quality` |
 | 31 | ตรวจ drift ก่อน update | `/review-update` | `/review-quality` |
 | 32 | ตรวจ migration plan ก่อนลงมือ | `/review-migration` | `/review-risk` |
 | 33 | ตรวจก่อน refactor | `/review-refactor` | `/review-architecture`, `/review-quality` |
 | 34 | ตรวจ implementation readiness | `/review-implement` | `/review-plan`, `/review-quality` |
-| 35 | ตรวจ implementation completeness | `/review-implement-to-production` | `/review-correctness`, `/review-uxui` |
+| 35 | ตรวจ implementation completeness | `/review-implement` | `/review-correctness`, `/review-uxui` |
 | 36 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-quality` |
 | 37 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
 | 38 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |
 | 39 | ตรวจ GitHub PR | `/review-github-pr` | `/review-diff`, `/review-quality` |
 | 40 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
-| 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-redundancy` |
-| 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-references` |
+| 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-devin-global-skills` |
+| 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-devin-global-skills` |
 | 43 | ตรวจแล้วค่อย fix ตาม context | `/review-then-fix` | `/review-quality` |
-| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-unused` | `/review-redundancy`, `/review-quality` |
+| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-unused` | `/review-devin-global-skills`, `/review-quality` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
 2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง

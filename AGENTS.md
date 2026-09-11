@@ -101,7 +101,7 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (235): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (69): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-*`), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
+- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
 - `list-*` (38): inventory, lookup, and listing utilities.
 - `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (36): reporting, diagrams, and visualization helpers.

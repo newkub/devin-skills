@@ -1,7 +1,7 @@
 ---
 
 name: review-implement
-description: Review implementation readiness ก่อน execute implement-* skills
+description: Review implementation readiness และ completeness ก่อน execute implement-* skills
 argument-hint: "[scope]"
 related:
   - scan-codebase
@@ -9,6 +9,8 @@ related:
   - suggest-next-action
   - implement-to-production
   - implement-github-issue-by-me
+  - deep-review-codebase
+  - roleplay-stakeholder
 ---
 
 ## Goal
@@ -17,7 +19,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `implement-to-production`, `implement-to-production`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `implement-to-production`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers และ implementation completeness gaps (missing flows, UI, API, database — merged from: review-implement-to-production) แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -66,7 +68,18 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ทำตาม references/realization-blockers.md
 
-### 8. Score And Report
+### 8. Review Implementation Completeness (merged from: review-implement-to-production)
+
+> Goal: หา implementation gaps — missing flows, UI, API, database, incomplete features
+
+1. ทำตาม `references/completeness-implementation-gaps.md`
+2. ตรวจ missing flows ตาม `references/completeness-missing-flows.md`, missing UI ตาม `references/completeness-missing-ui.md`, missing API ตาม `references/completeness-missing-api.md`, missing database ตาม `references/completeness-missing-database.md`
+3. ระบุ severity ตาม `references/completeness-severity.md` — เรียงตาม critical path: schema → data → API → UI/flow
+4. ทำ `/roleplay-stakeholder` เพื่อจำลอง user journey หา missing features ใน workflow
+5. ตรวจ flow หลักมี happy path, error path, recovery, rollback, undo, confirmation
+6. validate findings ตาม `references/completeness-validation.md` และคำนวณ completeness score ตาม `references/completeness-scoring.md`
+
+### 9. Score And Report
 
 > Goal: สรุป readiness score และ prioritized implementation order
 
@@ -110,5 +123,6 @@ Merged from: improve-features
 - รายงาน Readiness Summary พร้อม score และ grade
 - รายงาน Prioritized Implementation Order
 - รายงาน Blockers พร้อม action required
+- รายงาน Implementation Completeness Gaps ตาม critical path
 - Implementation readiness score
 - แนะนำ action ถัดไป
