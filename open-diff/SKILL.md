@@ -32,6 +32,9 @@ related:
 - Auto-load เมื่อสั่งจาก CLI
 - Prompt ใน terminal เมื่อปิด tab
 - Action buttons (Merge ▾ merge/squash/rebase, Approve, Comment, Checkout, Close) ส่งคำสั่งไป terminal ให้ execute
+- CI status pill บน header (`gh pr checks`) — auto-poll ทุก 8s จนกว่า pending หมด
+- Merge button ถูก block จนกว่า CI เขียวครบ (pending/fail → disabled พร้อม tooltip บอก check ที่พัง)
+- Action log stream ไป terminal แบบ real-time (`[open-diff] $ cmd`, `[open-diff:out]`, `[open-diff:err]`) — เห็น merge progress ขณะ `run dev`
 - File filter/search (กด `f` เพื่อ focus)
 - Unified/Split view toggle และ line wrap toggle
 - Lazy load: split raw diff เป็น chunk ต่อไฟล์ แล้ว parse เฉพาะไฟล์ที่เลือก

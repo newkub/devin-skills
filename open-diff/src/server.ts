@@ -64,6 +64,27 @@ const server = Bun.serve({
         return new Response(JSON.stringify(cli.source), { headers: { 'content-type': 'application/json' } });
       }
 
+      if (pathname === '/api/checks' && req.method === 'GET') {
+        const source = cli?.source;
+        if (!source || source.kind !== 'pr') {
+          return new Response(JSON.stringify({ available: false, checks: [], summary: 'none' }), { headers: { 'content-type': 'application/json' } });
+        }
+        try {
+          const args = ['gh', 'pr', 'checks', String(source.pr), '--json', 'name,state,bucket'];
+          if (source.repo) args.push('--repo', source.repo);
+          const proc = Bun.spawn({ cmd: args, stdio: ['ignore', 'pipe', 'pipe'] });
+          const out = await new Response(proc.stdout).text();
+          await proc.exited;
+          const checks = JSON.parse(out || '[]') as { name: string; state: string; bucket: string }[];
+          const failing = checks.filter((c) => c.bucket === 'fail' || c.bucket === 'cancel');
+          const pending = checks.filter((c) => c.bucket === 'pending');
+          const summary = checks.length === 0 ? 'none' : failing.length ? 'fail' : pending.length ? 'pending' : 'pass';
+          return new Response(JSON.stringify({ available: true, checks, summary, failing: failing.map((c) => c.name), pending: pending.length }), { headers: { 'content-type': 'application/json' } });
+        } catch (e: any) {
+          return new Response(JSON.stringify({ available: false, checks: [], summary: 'error', error: e.message }), { headers: { 'content-type': 'application/json' } });
+        }
+      }
+
       if (pathname === '/api/diff' && req.method === 'POST') {
         const source = (await req.json()) as DiffSource;
         const raw = await fetchDiff(source);
@@ -133,14 +154,38 @@ function promptOnClose() {
   });
 }
 
+async function readStream(stream: ReadableStream<Uint8Array>, tag: string): Promise<string> {
+  const reader = stream.getReader();
+  const dec = new TextDecoder();
+  let full = '';
+  let buf = '';
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    const chunk = dec.decode(value, { stream: true });
+    full += chunk;
+    buf += chunk;
+    let i: number;
+    while ((i = buf.indexOf('\n')) >= 0) {
+      const line = buf.slice(0, i);
+      buf = buf.slice(i + 1);
+      if (line.trim()) console.log(`[open-diff:${tag}] ${line}`);
+    }
+  }
+  if (buf.trim()) console.log(`[open-diff:${tag}] ${buf}`);
+  return full;
+}
+
 async function runAction(args: string[]): Promise<string> {
+  console.log(`[open-diff] $ ${args.join(' ')}`);
   const proc = Bun.spawn({ cmd: args, stdio: ['ignore', 'pipe', 'pipe'] });
-  const [out, code] = await Promise.all([
-    new Response(proc.stdout).text(),
+  const [out, code, err] = await Promise.all([
+    readStream(proc.stdout, 'out'),
     proc.exited,
+    readStream(proc.stderr, 'err'),
   ]);
-  const err = await new Response(proc.stderr).text();
   if (code !== 0) throw new Error(err || out || 'Action failed');
+  console.log(`[open-diff] done (exit ${code})`);
   return out || 'ok';
 }
 

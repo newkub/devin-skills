@@ -7,8 +7,6 @@ related:
   - dont-ask-me
   - follow-your-suggestion
   - loop-until-complete
-  - ship-to-staging
-  - ship-to-production
   - run-verify
   - deep-validate
   - resolve-cicd
@@ -26,7 +24,7 @@ Ship code ตาม flow ของ `/ship` ครบทุกขั้นตอ�
 - ใช้เมื่อผู้ใช้ระบุ `/ship-dont-ask-me`, `ship` พร้อม `dont-ask-me`, หรือเมื่อ `/follow-enter-dot` ตรวจพบว่า session นี้เคยใช้ `/ship-dont-ask-me` แล้ว
 - การเรียกใช้ครั้งแรกเปิด `dont-ask-me` mode ให้ session ทันที — มีผลกับทุก `/ask-me` ใน `global_rules.md` และ skills ทีเกี่ยวข้อง
 - ครอบคลุม ship lifecycle เดียวกับ `/ship`: prepare → branch → validate → staging → merge → production → report
-- ship lifecycle ใช้ `/run-verify` และ `/deep-validate` สำหรับ validate, `/ship-to-staging` สำหรับ staging, `/ship-to-production` สำหรับ production
+- ship lifecycle ใช้ `/run-verify` และ `/deep-validate` สำหรับ validate, `/ship` สำหรับ staging, `/ship` สำหรับ production
 - action ทีเป็นอันตรายหรือย้อนกลับไม่ได้ → เลือก safe path แล้ว report แทนการถามยืนยัน
 
 ## Execute

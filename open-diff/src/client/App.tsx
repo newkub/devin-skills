@@ -31,6 +31,7 @@ export default function App() {
   const [mergeOpen, setMergeOpen] = createSignal(false);
   const [commentOpen, setCommentOpen] = createSignal(false);
   const [commentText, setCommentText] = createSignal('');
+  const [checks, setChecks] = createSignal<{ summary: 'pass' | 'fail' | 'pending' | 'none' | 'error'; checks: { name: string; bucket: string }[]; failing?: string[]; pending?: number } | null>(null);
   let filterEl: HTMLInputElement | undefined;
 
   const metaCache = new Map<number, FileDiffMetadata>();
@@ -183,13 +184,50 @@ export default function App() {
       setData({ source: json.source, files: splitPatch(json.raw), raw: json.raw, prMeta: json.prMeta });
       setSelected(0);
       setFileQuery('');
+      if (json.source?.kind === 'pr') pollChecks();
+      else setChecks(null);
     } catch (e: any) {
       setError(e.message);
       setData(null);
+      setChecks(null);
     } finally {
       setLoading(false);
     }
   }
+
+  let checksTimer: ReturnType<typeof setTimeout> | undefined;
+  async function pollChecks() {
+    clearTimeout(checksTimer);
+    try {
+      const res = await fetch('/api/checks');
+      const json = await res.json();
+      setChecks(json);
+      if (json.summary === 'pending') checksTimer = setTimeout(pollChecks, 8000);
+    } catch {
+      setChecks({ summary: 'error', checks: [] });
+    }
+  }
+  onCleanup(() => clearTimeout(checksTimer));
+
+  const ciBlocked = () => {
+    const c = checks();
+    return !!c && (c.summary === 'fail' || c.summary === 'pending');
+  };
+  const ciLabel = () => {
+    const c = checks();
+    if (!c || c.summary === 'none') return '';
+    if (c.summary === 'pass') return `CI ✓ ${c.checks.length} checks`;
+    if (c.summary === 'pending') return `CI ⏳ ${c.pending} pending`;
+    if (c.summary === 'fail') return `CI ✗ ${c.failing?.length ?? 0} failing`;
+    return 'CI error';
+  };
+  const ciTitle = () => {
+    const c = checks();
+    if (!c) return '';
+    if (c.summary === 'fail') return `Failing: ${(c.failing ?? []).join(', ')}`;
+    if (c.summary === 'pending') return `${c.pending} check(s) still running — merge blocked until green`;
+    return 'All checks passed';
+  };
 
   function setField(key: string, value: string) {
     navigate({ search: { ...params(), [key]: value } as any, replace: true });
@@ -279,6 +317,23 @@ export default function App() {
           </a>
         </Show>
 
+        <Show when={checks() && checks()!.summary !== 'none'}>
+          <button
+            onClick={pollChecks}
+            title={ciTitle() + ' (click to refresh)'}
+            class={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium transition-colors ${
+              checks()!.summary === 'pass'
+                ? 'bg-green-500/10 border-green-700/50 text-green-400'
+                : checks()!.summary === 'pending'
+                  ? 'bg-amber-500/10 border-amber-700/50 text-amber-400'
+                  : 'bg-red-500/10 border-red-700/50 text-red-400'
+            }`}
+          >
+            <span class={checks()!.summary === 'pending' ? 'i-mdi-loading w-3.5 h-3.5 animate-spin' : checks()!.summary === 'pass' ? 'i-mdi-check-circle w-3.5 h-3.5' : 'i-mdi-close-circle w-3.5 h-3.5'} />
+            {ciLabel()}
+          </button>
+        </Show>
+
         <div class="ml-auto flex items-center gap-2">
           <Show when={data()}>
             <div class="hidden sm:flex items-center gap-2 px-2 py-1 rounded-full bg-[var(--surface-2)] border border-[var(--border)] text-xs font-mono">
@@ -292,9 +347,13 @@ export default function App() {
               <div class="relative">
                 <button
                   onClick={() => setMergeOpen(!mergeOpen())}
-                  disabled={busy()}
-                  class="btn text-xs flex items-center gap-1 !rounded-full !bg-green-700/30 !border-green-700/50 hover:!bg-green-700/40"
-                  title="gh pr merge"
+                  disabled={busy() || ciBlocked()}
+                  class={`btn text-xs flex items-center gap-1 !rounded-full ${
+                    ciBlocked()
+                      ? '!bg-zinc-700/20 !border-zinc-700/50 !text-zinc-500 cursor-not-allowed'
+                      : '!bg-green-700/30 !border-green-700/50 hover:!bg-green-700/40'
+                  }`}
+                  title={ciBlocked() ? ciTitle() : 'gh pr merge'}
                 >
                   <span class="i-mdi-source-merge w-3.5 h-3.5" />
                   {actionBusy() === 'merge' ? 'Merging…' : 'Merge'}

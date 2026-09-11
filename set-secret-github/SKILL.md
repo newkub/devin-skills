@@ -4,7 +4,7 @@ description: ตั้งค่า GitHub repository secrets ด้วย gh CLI
 argument-hint: "<owner>/<repo> <secret-name>"
 related:
   - resolve-github-actions-fails
-  - ship-to-production
+  - ship
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ gh secret list -R <owner>/<repo>
 - `NPM_TOKEN` — publish ไป npm
 - `GH_PAT` — access private repo / trigger dispatch
 
-Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-github-actions-fails` และ pipeline deploy ของ `/ship-to-production`
+Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-github-actions-fails` และ pipeline deploy ของ `/ship`
 
 ## Rules
 

@@ -4,8 +4,6 @@ description: Rollback production deployment ที่พัง ด้วย git 
 argument-hint: "[deploy-id-or-reason]"
 related:
   - ship
-  - ship-to-staging
-  - ship-to-production
   - run-deploy
   - watch-deploy
   - resolve-errors
@@ -19,7 +17,7 @@ Rollback production deployment ที่พัง กลับไปยัง ve
 
 ## Scope
 
-ใช้ภายหลัง `/ship`, `/ship-to-staging` หรือ `/ship-to-production` เมื่อ production deploy แล้วพัง — โดยทั่วไป trigger มาจาก `/watch-deploy` หรือ observability alert
+ใช้ภายหลัง `/ship`, `/ship` หรือ `/ship` เมื่อ production deploy แล้วพัง — โดยทั่วไป trigger มาจาก `/watch-deploy` หรือ observability alert
 
 ## Execute
 
