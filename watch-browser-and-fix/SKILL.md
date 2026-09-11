@@ -5,6 +5,8 @@ argument-hint: "[url]"
 related:
   - watch-browser
   - watch-browser-console
+  - watch-browser-and-improve-uxui
+  - watch-browser-and-test
   - resolve-errors
   - run-dev
   - run-program
@@ -17,6 +19,9 @@ related:
 ## Scope
 
 ใช้สำหรับ browser automation ทีต้องการ monitor หน้าเว็บ แก้ไข errors ทีเกิดขึ้น และ ensure ว่า web server ยังคงทำงานได้
+
+- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
+- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
 
 ## Execute
 

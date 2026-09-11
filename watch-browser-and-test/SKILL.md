@@ -1,0 +1,125 @@
+---
+name: watch-browser-and-test
+description: Watch browser confirm server แล้ว subagents แยก route roleplay user test actions/flows จริง
+argument-hint: "[url]"
+related:
+  - watch-browser
+  - watch-browser-and-fix
+  - use-agent-browser
+  - use-subagents
+  - resolve-errors
+  - run-dev
+  - run-test-e2e
+  - report
+  - suggest-next-action
+---
+
+## Goal
+
+Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confirm ว่า web server ทำงานได้ จากนั้น dispatch subagents แยกตาม route ให้ roleplay เป็น user ทดลองใช้งานจริง — กด buttons, links, forms ตาม flow — แล้วรวม report pass/fail พร้อมแก้สิ่งที่ไม่ผ่าน
+
+## Scope
+
+ใช้เมื่อต้องการ exploratory/functional testing ผ่าน browser จริงโดยครอบคลุมทุก route — ต่างจาก `/run-test-e2e` ที่รัน test suite เขียนไว้ล่วงหน้า (skill นี้คือ manual-style exploration ผ่าน subagents)
+
+- ถ้าต้องการ improve UX/UI → `/watch-browser-and-improve-uxui`
+- ถ้าต้องการแก้ console/page errors → `/watch-browser-and-fix`
+- ถ้ามี Playwright suite อยู่แล้ว → `/run-test-e2e`
+- ถ้าไม่มี `agent-browser` MCP server → fallback ไป `/use-agent-browser` (CLI)
+
+## Execute
+
+### 1. Verify Web Server
+
+> Goal: confirm ว่า server ทำงานได้ก่อน test
+
+1. ทำ `/watch-browser` — เปิด URL เป้าหมาย, capture screenshot, เช็ค console/errors
+2. ถ้า server ไม่ตอบสนอง → ทำ `/run-dev` หรือ `/resolve-errors` แล้วกลับมา step นี้
+3. ถ้า app ต้อง auth/seed data → เตรียม test credentials/fixtures ก่อน dispatch
+
+### 2. Discover Routes
+
+> Goal: รู้ routes ทั้งหมดที่ต้อง test
+
+1. `agent-browser snapshot -i` เพื่อหา nav links
+2. cross-check route definitions ใน codebase
+3. สร้าง route list พร้อม dynamic route samples
+
+### 3. Dispatch User-Roleplay Subagents
+
+> Goal: ทดสอบจริงแบบ parallel ครบทุก route
+
+ทำตาม `/use-subagents` — spawn subagent ต่อ route (batch 3-5 routes ต่อ agent) โดยแต่ละ agent roleplay เป็น user และต้อง:
+
+1. `agent-browser open <route>` แล้ว `snapshot -i` เพื่อหา interactive elements ทั้งหมด
+2. ทดลองทุก action ที่พบ: click buttons/links, submit forms (valid + invalid input), toggle controls, pagination, search, filters
+3. follow flows ที่สมเหตุสมผล — เช่น list → detail → edit → save → back
+4. เก็บ evidence ทุก step: screenshot ก่อน/หลัง action, console errors, network failures
+5. บันทึกผลเป็น PASS/FAIL ต่อ action พร้อม repro steps เมื่อ FAIL
+
+### 4. Aggregate Results
+
+> Goal: รวมผล test จากทุก agent
+
+1. รวม report: route → actions tested → PASS/FAIL + evidence
+2. dedupe failures ที่มี root cause เดียวกัน (เช่น shared component, API endpoint)
+3. จัด severity: Critical (flow หลักพัง), High (action ไม่ทำงาน), Medium (behavior ผิดเล็กน้อย), Low (cosmetic)
+
+### 5. Fix Failures
+
+> Goal: แก้ทุก FAIL ที่ root cause
+
+1. แก้ตามลำดับ Critical → Low — ใช้ evidence จาก agent (screenshot, console, repro steps)
+2. failures จาก root cause เดียวกัน → แก้ครั้งเดียว ไม่ patch ทีละ route
+3. ถ้า fix แตะหลายไฟล์ → `/resolve-errors` ตรวจ lint/typecheck หลังแก้
+4. failures ที่เป็น environment/config → แยก report ไม่แก้ใน code
+
+### 6. Retest
+
+> Goal: ยืนยัน fixes ด้วยการ test ซ้ำ
+
+1. `agent-browser reload` แล้ว replay เฉพาะ failed actions
+2. FAIL กลายเป็น PASS ทั้งหมด → ไป Step 7; ยัง FAIL → loop Step 5 (สูงสุด 3 รอบ)
+
+### 7. Report
+
+> Goal: ส่งมอบผล test
+
+1. ทำ `/report` — table: route | actions tested | PASS | FAIL | fixes applied
+2. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
+3. ปิด browser session ด้วย `agent-browser close`
+4. ทำ `/suggest-next-action`
+
+## Rules
+
+### 1. Server Before Test
+
+- ต้อง confirm server ผ่าน `/watch-browser` ก่อน dispatch — ห้ามข้าม
+- route ที่ 404/error ตั้งแต่เปิด → FAIL ทันทีพร้อม screenshot evidence
+
+### 2. Real Interactions Only
+
+- agent ต้อง interact จริงผ่าน `agent-browser` (click, type, submit) — ห้าม "test" โดยอ่าน code
+- ทุก FAIL ต้องมี repro steps + screenshot + console errors
+
+### 3. Coverage Discipline
+
+- test ทุก interactive element ที่พบใน snapshot — ไม่เลือกเฉพาะ happy path
+- รวม negative cases: invalid form input, empty states, permission denied
+
+### 4. Non-Destructive Testing
+
+- ห้าม trigger destructive actions จริง (delete data, payments, emails) — mock หรือข้ามพร้อมบันทึกเป็น untested
+- ใช้ test data/credentials เท่านั้น
+
+### 5. Loop Limit
+
+- fix-retest loop สูงสุด `3` รอบ — ถ้ายัง FAIL stop และ report
+- `timeout` = `900` วินาทีต่อ batch, `maxRetries` = `3` ต่อ agent crash
+
+## Expected Outcome
+
+- ทุก route ถูก roleplay-test ครบ interactive elements พร้อม evidence
+- report สรุป PASS/FAIL ต่อ action + fixes ที่ทำ + retest results
+- failures ที่แก้แล้วถูก retest จนผ่าน หรือ report สิ่งที่ค้างชัดเจน
+- coverage gaps และ untested areas ถูกระบุไว้
