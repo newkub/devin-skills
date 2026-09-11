@@ -18,6 +18,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-githooks) — สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
 
+- Latest: `hk@v1.58.1` (verified 2026-09-05)
+
 ## Execute
 
 ### 1. Install hk
@@ -68,6 +70,8 @@ related:
 5. ถ้า working tree ใหญ่หรือ Windows long path ให้ใช้ `stash = "patch-file"` หรือ `stash = "none"`
 6. ใช้ `stomp = true` สำหรับ typecheck/test/scan ที่ไม่ต้องการ file lock
 7. ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ batch
+8. ใช้ `effect = "destructive"` สำหรับ step ที่ลบ/เขียนทับไฟล์ — hk จะบังคับ confirm ใน agent/MCP contexts (v1.55+)
+9. ถ้า monorepo ให้ใช้ `subprojects` ใน `hk.pkl` สำหรับ nested configs + per-directory mise env (v1.52+)
 
 ### 6. Run and Validate
 
@@ -78,11 +82,14 @@ related:
 3. รัน `hk run pre-merge-commit`
 4. รัน `hk check --all` สำหรับ CI
 5. รัน `hk fix` เพื่อแก้ไขไฟล์
-6. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
+6. ถ้าใช้กับ agent ให้รัน `hk agent` เพื่อดู integration snippets (instructions, hooks, MCP) — read-only, ไม่แตะ config
+7. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
 
 ### 7. Migrate from Lefthook
 
 > Goal: ย้ายจาก lefthook มา hk
+
+ถ้าย้ายจาก `pre-commit` framework → ใช้ `hk migrate pre-commit --output hk.migrated.pkl` แล้ว `HK_FILE=./hk.migrated.pkl hk validate` (lefthook ยังไม่มี auto-migrate)
 
 1. ลบ `lefthook.yml` และ `lefthook-local.yml` ออกจาก repo
 2. เอา `bunx lefthook install` ออกจาก `package.json` `prepare`
@@ -214,7 +221,11 @@ hooks {
 - `hk run pre-commit` - ทดสอบ pre-commit
 - `hk run pre-push` - ทดสอบ pre-push
 - `hk check --all` - ตรวจทั้ง repo
+- `hk check --unstaged` - ตรวจเฉพาะ unstaged/untracked files (v1.52+, เหมาะกับ agent stop hooks)
 - `hk fix` - แก้ไขไฟล์
+- `hk agent` - พิมพ์ agent integration snippets (Codex, Claude Code, VS Code) — read-only (v1.55+)
+- `hk mcp` - รัน MCP server พร้อม interactive dashboard (v1.55+)
+- `hk migrate pre-commit` - แปลง `.pre-commit-config.yaml` เป็น `hk.pkl`
 - `hk config dump` - ดู effective config
 - `hk builtins` - ดูรายการ builtin linters
 
