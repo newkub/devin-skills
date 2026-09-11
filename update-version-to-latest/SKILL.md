@@ -29,7 +29,7 @@ related:
 
 > Goal: รู้ว่าต้องอัปเดตอะไรบ้าง
 
-1. หา manifest ทั้งหมด: `package.json`, `bun.lockb`, `pnpm-lock.yaml`, `package-lock.json`, `yarn.lock`, `Cargo.toml`, `Cargo.lock`, `go.mod`, `go.sum`, `mise.toml`, `.tool-versions`, `pyproject.toml`, `uv.lock`, `.github/workflows/*.yml`
+1. หา manifest ทั้งหมด: `package.json`, `bun.lock` (legacy: `bun.lockb`), `pnpm-lock.yaml`, `package-lock.json`, `yarn.lock`, `Cargo.toml`, `Cargo.lock`, `go.mod`, `go.sum`, `mise.toml`, `.tool-versions`, `pyproject.toml`, `uv.lock`, `.github/workflows/*.yml`
 2. บันทึก dependencies, devDependencies, peerDependencies, catalog versions, `packageManager`, `engines`, action versions, mise tool versions
 3. ระบุ ecosystems ทีใช้
 
@@ -37,7 +37,7 @@ related:
 
 > Goal: ดูก่อนว่าจะอัปเดตอะไร
 
-1. รัน `bunx taze --dry-run` หรือ `bun outdated` สำหรับ Node/Bun
+1. รัน `bunx taze` (ไม่มี `-w` = dry-run) หรือ `bun outdated` สำหรับ Node/Bun — ใช้ `-r` สำหรับ recursive scan ใน monorepo
 2. รัน `cargo update --dry-run` สำหรับ Rust
 3. รัน `go list -u -m all` สำหรับ Go
 4. รวม major/minor/patch updates และสร้างตาราง `No.`, `Package`, `Current`, `Latest`, `Type`, `Risk`
@@ -47,9 +47,9 @@ related:
 
 > Goal: อัปเดตทุก dependency เป็น latest
 
-1. อัปเดต patch → `bunx taze --patch --write` หรือ `bun update`
-2. อัปเดต minor → `bunx taze --minor --write`
-3. อัปเดต major → `bunx taze --major --write` (ทีละ batch พร้อมตรวจ breaking changes)
+1. อัปเดต patch → `bunx taze patch -w -r` หรือ `bun update`
+2. อัปเดต minor → `bunx taze minor -w -r`
+3. อัปเดต major → `bunx taze major -w -r` (ทีละ batch พร้อมตรวจ breaking changes)
 4. ถ้ามี catalog versions ใน root `package.json` → อัปเดต catalog ก่อน แล้ว install
 5. `cargo update` สำหรับ Rust workspace
 6. `go get -u ./...` แล้ว `go mod tidy` สำหรับ Go
@@ -60,7 +60,7 @@ related:
 > Goal: อัปเดต runtime, dev tools, GitHub Actions และ versioned config
 
 1. อัปเดต `mise.toml` / `.tool-versions` เครื่องมือเป็น latest stable
-2. อัปเดต GitHub Actions versions ใน `.github/workflows/*.yml` (ตรวจ latest release tag)
+2. อัปเดต GitHub Actions versions ใน `.github/workflows/*.yml` — `bunx taze` ตรวจ actions ได้ด้วย (ใช้ `--github-actions` flag) หรือตรวจ latest release tag จาก GitHub API
 3. อัปเดต Docker base images (`FROM ...:`) ถ้ามี `Dockerfile`
 4. อัปเดต `engines` ใน `package.json` ถ้าจำเป็น
 5. ถ้ามี `biome.jsonc`, `.node-version`, `.nvmrc` ที่ระบุ version → sync ให้ตรง
@@ -72,7 +72,7 @@ related:
 1. `bun install` สำหรับ Bun/Node
 2. `cargo fetch` หรือ `cargo generate-lockfile` สำหรับ Rust
 3. `go mod tidy` สำหรับ Go
-4. ตรวจ `bun.lockb`/`pnpm-lock.yaml` ไม่มี conflicts
+4. ตรวจ `bun.lock`/`pnpm-lock.yaml` ไม่มี conflicts
 
 ### 6. Verify
 
@@ -124,7 +124,7 @@ related:
 
 ### 4. Ecosystem Tools
 
-- Bun: `bunx taze`, `bun update`, `bun install`
+- Bun: `bunx taze <mode> -w -r`, `bun update`, `bun install`
 - Rust: `cargo update`, `cargo check --workspace`
 - Go: `go get -u ./...`, `go mod tidy`
 - Python: `pip install -U` หรือ `uv pip compile`
