@@ -18,7 +18,7 @@ yarn add -D tsdown
 
 ## Version
 
-- Latest stable: `0.22.14` (npm)
+- Latest stable: `0.23.0` (npm)
 - License: MIT
 - Requires: Node.js `^22.18.0 || ^24.11.0 || >=26.0.0` (build-time only; output can target lower versions)
 
@@ -165,7 +165,7 @@ tsdown --no-config  # Disable config file
     "dev": "tsdown --watch"
   },
   "devDependencies": {
-    "tsdown": "^0.22.14"
+    "tsdown": "^0.23.0"
   }
 }
 ```

@@ -10,7 +10,7 @@ npm install --save-dev renovate
 
 ## Version
 
-- Latest: 44.51.2
+- Latest: 44.79.4
 - [Package Registry](https://www.npmjs.com/package/renovate)
 - [Repository](https://github.com/renovatebot/renovate)
 

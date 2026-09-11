@@ -10,7 +10,7 @@ npm install --save-dev @playwright/test
 
 ## Version
 
-- Latest: 1.62.1
+- Latest: 1.63.0
 - [Package Registry](https://www.npmjs.com/package/@playwright/test)
 - [Repository](https://github.com/microsoft/playwright)
 

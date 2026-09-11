@@ -19,7 +19,7 @@ cargo install loc
 
 ## Version
 
-- Latest: `0.4.1`
+- Latest: `0.5.0`
 - License: MIT
 - Repository: https://github.com/cgag/loc
 

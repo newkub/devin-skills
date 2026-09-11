@@ -10,7 +10,7 @@ npm install --save-dev rolldown
 
 ## Version
 
-- Latest: 1.2.6
+- Latest: 1.2.8
 - [Package Registry](https://www.npmjs.com/package/rolldown)
 - [Repository](https://github.com/rolldown-rs/rolldown)
 

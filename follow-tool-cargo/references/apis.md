@@ -2,29 +2,43 @@
 
 ## Install
 
+Cargo ships with the Rust toolchain — install Rust, not a `cargo` npm package:
+
 ```sh
-cargo add cargo
+# via rustup (recommended)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# or via mise
+mise use -g rust
 ```
+
+Note: the npm package `cargo` is an unrelated HTML5 web-storage module — do NOT install it.
 
 ## Version
 
-- Latest: 0.8.0
-- [Package Registry](https://www.npmjs.com/package/cargo)
-- [Repository](https://github.com/ryanve/cargo)
+- Cargo matches the Rust toolchain version — latest stable Rust: `1.98.1` (verified 2026-09-11)
+- [Repository](https://github.com/rust-lang/cargo)
+- [Docs](https://doc.rust-lang.org/cargo/)
 
 ## Dependencies
 
-- See package registry for transitive dependencies.
+- Ships with Rust toolchain (`rustup` component); no external runtime deps.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install cargo in project | latest version | --save-dev, --save, --global |
-| `cargo` | Run the tool CLI | current workspace | see cli.md |
-| `configure` | Configure via config file | project defaults | --config, --file |
+| `cargo new` / `cargo init` | Create project | binary crate | --lib, --bin, --name |
+| `cargo build` | Compile project | dev profile | --release, --workspace, -p |
+| `cargo run` | Build and run | dev profile | --release, --, --bin |
+| `cargo test` | Run tests | all targets | --workspace, -p, --lib |
+| `cargo clippy` | Lint via Clippy | all targets | --fix, -- -D warnings |
+| `cargo fmt` | Format via rustfmt | in-place | --check |
+| `cargo add` / `cargo remove` | Manage dependencies | latest version | --dev, --build, --features |
+| `cargo update` | Update Cargo.lock | semver-compatible | -p, --dry-run |
+| `cargo doc` | Build docs | local crates | --open, --no-deps |
+| `cargo publish` | Publish to crates.io | dry-run first | --dry-run, --allow-dirty |
 
 ## Source
 
-- Official docs: https://github.com/ryanve/cargo
-- Description: HTML5 web storage module
+- Official docs: https://doc.rust-lang.org/cargo/
+- Description: The Rust package manager and build tool.

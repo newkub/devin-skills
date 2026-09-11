@@ -23,7 +23,7 @@ bunx degit user/repo
 
 ## Version Info
 
-- Latest stable: `3.7.1`
+- Latest stable: `3.10.0`
 - License: MIT
 - Node.js: `>=20`
 - Source: https://github.com/Rich-Harris/degit

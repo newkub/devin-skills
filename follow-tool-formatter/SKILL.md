@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ formatter รองรับ TypeScript, JavaScript, Rust, Python, Go ตาม tech stack
 
+- Latest: `prettier@3.9.6` / `dprint@0.57.4` / `@biomejs/biome@2.5.13` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Select Formatter

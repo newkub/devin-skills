@@ -20,6 +20,8 @@ related:
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
 - ใช้ร่วมกับ `/resolve-github-actions-fails` (ดู fails บน remote) และ `/watch-github-actions` (remote)
 
+- Latest: `act@0.2.89` (nektos/act) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install act

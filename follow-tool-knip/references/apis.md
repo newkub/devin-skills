@@ -10,7 +10,7 @@ npm install --save-dev knip
 
 ## Version
 
-- Latest: 6.33.0
+- Latest: 6.35.1
 - [Package Registry](https://www.npmjs.com/package/knip)
 - [Repository](https://github.com/webpro/knip)
 

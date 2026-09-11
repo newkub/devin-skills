@@ -30,7 +30,7 @@ npx dprint init -y
 
 ## Version Info
 
-- Latest stable: `0.56.1`
+- Latest stable: `0.57.4`
 - License: MIT
 - Source: https://dprint.dev
 

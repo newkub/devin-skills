@@ -10,7 +10,7 @@ npm install --save-dev gh
 
 ## Version
 
-- Latest: 2.8.9
+- Latest: gh CLI `2.100.0` (github.com/cli/cli, verified 2026-09-11) — npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง
 - [Package Registry](https://www.npmjs.com/package/gh)
 - [Repository](https://github.com/node-gh/gh)
 

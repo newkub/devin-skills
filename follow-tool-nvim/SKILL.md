@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับสร้างหรือ refactor Neovim config บน `~/.config/nvim` หรือ project-specific config
 
+- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Install Neovim

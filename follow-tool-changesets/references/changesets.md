@@ -20,7 +20,7 @@ bunx changeset init
 
 ## Version
 
-- Latest stable: `3.0.1` (`@changesets/cli`)
+- Latest stable: `3.0.2` (`@changesets/cli`)
 - License: MIT
 - Requires: Node.js `^22.11 || ^24 || >=26`
 - Supports: pnpm, yarn, npm workspaces

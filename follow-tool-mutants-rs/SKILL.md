@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับ Rust projects ที่ใช้ Cargo build system และต้องการตรวจสอบคุณภาพของ tests ด้วย mutation testing
 
+- Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

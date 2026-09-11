@@ -10,7 +10,7 @@ npm install --save-dev @biomejs/biome
 
 ## Version
 
-- Latest: 2.5.11
+- Latest: 2.5.13
 - [Package Registry](https://www.npmjs.com/package/@biomejs/biome)
 - [Repository](https://github.com/biomejs/biome)
 

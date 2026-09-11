@@ -17,6 +17,8 @@ related:
 - เปรียบเทียบ: `use-astgrep` เหมาะกับ structural patterns ง่ายๆ, Semgrep เหมาะกับ dataflow/taint และ rulesets สำเร็จรูป
 - Scan-only ใน skill นี้ — fix ผ่าน `/review-security` หรือ `/fix`
 
+- Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Ensure Semgrep Available

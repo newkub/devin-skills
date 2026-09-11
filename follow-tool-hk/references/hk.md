@@ -20,7 +20,7 @@ brew install hk
 
 ## Version
 
-- Latest: `1.56.1`
+- Latest: `1.58.1`
 - License: MIT
 - Repository: https://github.com/jdx/hk
 - Docs: https://hk.jdx.dev
@@ -149,7 +149,7 @@ amends "./hk.pkl"
 ```toml
 # mise.toml
 [tools]
-hk = "1.56.1"
+hk = "1.58.1"
 
 [env]
 HK_MISE = "1"

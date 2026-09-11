@@ -3,16 +3,17 @@
 ## Install
 
 ```sh
-bun add -D unocss
+bun add -D vitepress
 # or
-npm install --save-dev unocss
+npm install --save-dev vitepress
 ```
 
 ## Version
 
-- Latest: 66.8.1
-- [Package Registry](https://www.npmjs.com/package/unocss)
-- [Repository](https://github.com/unocss/unocss)
+- Latest: 1.6.4 (verified 2026-09-11)
+- Peer: `vue` ^3.5+
+- [Package Registry](https://www.npmjs.com/package/vitepress)
+- [Repository](https://github.com/vuejs/vitepress)
 
 ## Dependencies
 
@@ -22,21 +23,15 @@ npm install --save-dev unocss
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install unocss in project | latest version | --save-dev, --save, --global |
-| `unocss` | Run the tool CLI | current workspace | see cli.md |
-| `configure` | Configure via config file | project defaults | --config, --file |
-| `import 'unocss/astro'` | Subpath export for astro | entry as documented | (none) |
-| `import 'unocss/postcss'` | Subpath export for postcss | entry as documented | (none) |
-| `import 'unocss/preset-attributify'` | Subpath export for preset-attributify | entry as documented | (none) |
-| `import 'unocss/preset-icons'` | Subpath export for preset-icons | entry as documented | (none) |
-| `import 'unocss/preset-mini'` | Subpath export for preset-mini | entry as documented | (none) |
-| `import 'unocss/preset-tagify'` | Subpath export for preset-tagify | entry as documented | (none) |
-| `import 'unocss/preset-typography'` | Subpath export for preset-typography | entry as documented | (none) |
-| `import 'unocss/preset-uno'` | Subpath export for preset-uno | entry as documented | (none) |
-| `import 'unocss/preset-web-fonts'` | Subpath export for preset-web-fonts | entry as documented | (none) |
-| `import 'unocss/preset-wind'` | Subpath export for preset-wind | entry as documented | (none) |
+| `install` | Install vitepress in project | latest version | --save-dev, --save, --global |
+| `vitepress dev` | Dev server with HMR | docs root | --port, --open, --config |
+| `vitepress build` | Build static site | `.vitepress/dist` | --outDir, --base |
+| `vitepress preview` | Preview production build | dist dir | --port |
+| `import 'vitepress/theme'` | Theme API entry | entry as documented | (none) |
+| `import { defineConfig }` | Site config helper | `vitepress` | (none) |
+| `import { useData, useRoute }` | Runtime composables | `vitepress` | (none) |
 
 ## Source
 
-- Official docs: https://unocss.dev
-- Description: The instant on-demand Atomic CSS engine.
+- Official docs: https://vitepress.dev
+- Description: Vite & Vue powered static site generator.

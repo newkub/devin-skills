@@ -10,7 +10,7 @@ npm install --save-dev dprint
 
 ## Version
 
-- Latest: 0.56.1
+- Latest: 0.57.4
 - [Package Registry](https://www.npmjs.com/package/dprint)
 - [Repository](https://github.com/dprint/dprint)
 

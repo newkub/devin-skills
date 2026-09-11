@@ -24,7 +24,7 @@ bunx knip
 
 ## Version Info
 
-- Latest stable: `6.32.2`
+- Latest stable: `6.35.1`
 - License: ISC
 - Node.js: `^20.19.0 || >=22.12.0` (or Bun)
 - Source: https://knip.dev

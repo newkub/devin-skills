@@ -8,7 +8,7 @@ bun add -D eslint
 
 ## Version
 
-- Latest: `9.x`
+- Latest: `10.x`
 - Repository: https://github.com/eslint/eslint
 - Docs: https://eslint.org/docs/latest/use/command-line-interface
 

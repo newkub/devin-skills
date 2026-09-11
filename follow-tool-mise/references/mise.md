@@ -23,7 +23,7 @@ bun add -g mise
 
 ## Version
 
-- Latest: `2026.8.12`
+- Latest: `2026.9.5`
 - License: MIT
 - Repository: https://github.com/jdx/mise
 - Docs: https://mise.jdx.dev

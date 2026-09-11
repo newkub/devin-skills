@@ -51,7 +51,7 @@ cargo nextest self-update
 
 ## Version Info
 
-- Latest stable: `0.9.143`
+- Latest stable: `0.9.144`
 - License: `Apache-2.0`
 - MSRV to build: `Rust 1.91`
 - MSRV to run tests: `Rust 1.41`

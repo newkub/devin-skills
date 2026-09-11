@@ -18,6 +18,8 @@ related:
 
 ใช้กับทุก project ทีใช้ git ไมว่าจะเป็น local workflow, collaboration, หรือ history investigation
 
+- Latest: `simple-git@3.36.0` / `isomorphic-git@1.42.0` / gh CLI `2.100.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup Repository

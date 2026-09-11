@@ -10,7 +10,7 @@ npm install --save-dev tsdown
 
 ## Version
 
-- Latest: 0.22.14
+- Latest: 0.23.0
 - [Package Registry](https://www.npmjs.com/package/tsdown)
 - [Repository](https://github.com/rolldown/tsdown)
 

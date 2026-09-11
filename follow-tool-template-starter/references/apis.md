@@ -10,7 +10,7 @@ npm install --save-dev degit
 
 ## Version
 
-- Latest: 3.8.0
+- Latest: 3.10.0
 - [Package Registry](https://www.npmjs.com/package/degit)
 - [Repository](https://github.com/Rich-Harris/degit)
 

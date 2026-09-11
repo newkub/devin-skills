@@ -10,7 +10,7 @@ npm install --save-dev node-modules-inspector
 
 ## Version
 
-- Latest: 2.4.4
+- Latest: 2.4.5
 - [Package Registry](https://www.npmjs.com/package/node-modules-inspector)
 - [Repository](https://github.com/antfu/node-modules-inspector)
 

@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ API documentation, API playground, mock server และ schema validation โดยใช้ Scalar toolchain
 
+- Latest: `@scalar/api-reference@1.68.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Installation

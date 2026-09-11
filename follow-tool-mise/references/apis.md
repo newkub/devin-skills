@@ -10,7 +10,7 @@ npm install --save-dev mise
 
 ## Version
 
-- Latest: 2026.8.14
+- Latest: 2026.9.5
 - [Package Registry](https://www.npmjs.com/package/mise)
 - [Repository](https://github.com/jdx/mise)
 

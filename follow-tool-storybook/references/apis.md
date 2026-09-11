@@ -10,7 +10,7 @@ npm install --save-dev storybook
 
 ## Version
 
-- Latest: 10.5.10
+- Latest: 10.6.0
 - [Package Registry](https://www.npmjs.com/package/storybook)
 - [Repository](https://github.com/storybookjs/storybook)
 

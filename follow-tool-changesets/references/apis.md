@@ -10,7 +10,7 @@ npm install --save-dev @changesets/cli
 
 ## Version
 
-- Latest: 3.0.1
+- Latest: 3.0.2
 - [Package Registry](https://www.npmjs.com/package/@changesets/cli)
 - [Repository](https://github.com/changesets/changesets)
 

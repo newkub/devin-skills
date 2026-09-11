@@ -10,7 +10,7 @@ npm install --save-dev jscpd
 
 ## Version
 
-- Latest: 5.0.16
+- Latest: 5.2.0
 - [Package Registry](https://www.npmjs.com/package/jscpd)
 - [Repository](https://github.com/kucherenko/jscpd)
 
