@@ -10,3 +10,4 @@
 | 6 | [sidebar-monorepo.md](sidebar-monorepo.md) | Workspaces sidebar additions for monorepo |
 | 7 | [homepage.md](homepage.md) | `docs/index.md` VitePress home layout template |
 | 8 | [content-page.md](content-page.md) | Generic content page template |
+| 9 | [testing.md](testing.md) | `docs/development/testing.md` template with Latest Results from `.devin/reports/` artifacts |

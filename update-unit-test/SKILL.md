@@ -23,7 +23,7 @@ related:
 ใช้เมื่อ code เปลี่ยนแล้ว tests ต้องตาม, หรือ module ขาด unit coverage — focus เฉพาะ unit layer (isolated, fast, mocked externals)
 
 - ถ้าต้องการรัน unit tests เฉยๆ → `/run-test`
-- ถ้า integration/e2e → `/update-integration` หรือ `/update-e2e-test`
+- ถ้า integration/e2e → `/update-integration-test` หรือ `/update-e2e-test`
 - ถ้า improve test suite quality → `/improve-tests`
 - ถ้า general updates หลาย layers → `/update-test-and-fix`
 

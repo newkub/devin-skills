@@ -7,7 +7,7 @@ related:
   - run-test
   - run-test-all
   - update-unit-test
-  - update-integration
+  - update-integration-test
   - update-e2e-test
   - check-test-isolation
   - use-subagents
@@ -25,7 +25,7 @@ related:
 ใช้หลัง `/review-test` มี findings หรือเมื่อ test suite มีปัญหา (flaky, ช้า, coverage ต่ำ, mocks พัง)
 
 - ถ้าต้องการรัน tests เฉยๆ → `/run-test` หรือ `/run-test-all`
-- ถ้าต้องการ update/เขียน tests ตาม layer → `/update-unit-test`, `/update-integration`, `/update-e2e-test`
+- ถ้าต้องการ update/เขียน tests ตาม layer → `/update-unit-test`, `/update-integration-test`, `/update-e2e-test`
 - ถ้า scope ใหญ่หลาย modules → dispatch ผ่าน `/use-subagents`
 
 ## Execute
@@ -51,7 +51,7 @@ related:
 
 > Goal: cover paths ที่สำคัญไม่ใช่แค่ไล่ %
 
-1. critical paths ที่ไม่มี test → เขียนก่อน (auth, payments, data mutations) — delegate ตาม layer ไป `/update-unit-test`, `/update-integration`, `/update-e2e-test` ถ้าต้องการ focused write
+1. critical paths ที่ไม่มี test → เขียนก่อน (auth, payments, data mutations) — delegate ตาม layer ไป `/update-unit-test`, `/update-integration-test`, `/update-e2e-test` ถ้าต้องการ focused write
 2. edge cases: empty/null/boundary values, error paths, permission denied
 3. untested branches ตาม coverage report — prioritize by risk ไม่ใช่ไล่ตัวเลข
 

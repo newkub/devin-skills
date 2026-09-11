@@ -1,5 +1,5 @@
 ---
-name: update-integration
+name: update-integration-test
 description: Update หรือเขียน integration tests — API, DB, service boundaries แล้วรันจนผ่าน
 argument-hint: "[scope]"
 related:

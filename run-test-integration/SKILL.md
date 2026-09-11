@@ -4,7 +4,7 @@ description: รัน integration tests สำหรับ module interactions 
 argument-hint: "[scope]"
 related:
   - review-test
-  - update-integration
+  - update-integration-test
   - run-test
   - run-test-all
   - run-test-api
@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับรัน integration tests ที่ทดสอบ interactions ระหว่าง modules, APIs, databases, และ external services ไม่รวม unit tests หรือ E2E tests
 
-- ถ้าต้องการ update/เขียน integration tests → `/update-integration` (run-only skill นี้ไม่แก้ tests)
+- ถ้าต้องการ update/เขียน integration tests → `/update-integration-test` (run-only skill นี้ไม่แก้ tests)
 
 ## Execute
 

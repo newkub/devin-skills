@@ -79,7 +79,8 @@ related:
 
 1. ถ้า coverage ถึง 100% → report framework, metrics, report location
 2. ถ้าไม่ถึง 100% → report remaining gaps, categories ที่ยังไม่ผ่าน, next step
-3. ทำ `/suggest-next-action`
+3. persist raw results → `.devin/reports/<workspace>/coverage-<time>.md` ตาม format `/create-report-in-dot-devin` — metrics table + gaps เพื่อให้ `/update-docs` reuse
+4. ทำ `/suggest-next-action`
 
 ## Rules
 

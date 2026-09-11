@@ -12,6 +12,8 @@ related:
   - deep-analyze
   - resolve-errors
   - run-dev
+  - create-report-in-dot-devin
+  - update-docs
   - report
   - suggest-next-action
 ---
@@ -90,8 +92,9 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 > Goal: ส่งมอบผล
 
 1. ทำ `/report` — findings per route, fixes applied, before/after screenshots
-2. ปิด browser session ด้วย `agent-browser close`
-3. ทำ `/suggest-next-action`
+2. persist raw findings → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — table: route | finding | severity | fix | status พร้อม screenshot paths เพื่อให้ `/update-docs` และ skills อื่น reuse ได้
+3. ปิด browser session ด้วย `agent-browser close`
+4. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -127,3 +130,4 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 - Critical/High UXUI issues ถูกแก้ที่ root cause และ re-capture ยืนยัน
 - เว็บ responsive ครบ — ไม่มี overflow, touch targets ผ่านเกณฑ์
 - report สรุป before/after และ issues ที่ค้าง (ถ้ามี)
+- raw findings ถูก persist ใน `.devin/reports/<workspace>/` พร้อม reuse โดย `/update-docs`

@@ -11,6 +11,9 @@ related:
   - resolve-errors
   - run-dev
   - run-test-e2e
+  - update-e2e-test
+  - create-report-in-dot-devin
+  - update-docs
   - report
   - suggest-next-action
 ---
@@ -84,14 +87,23 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 1. `agent-browser reload` แล้ว replay เฉพาะ failed actions
 2. FAIL กลายเป็น PASS ทั้งหมด → ไป Step 7; ยัง FAIL → loop Step 5 (สูงสุด 3 รอบ)
 
-### 7. Report
+### 7. Codify Into Playwright
+
+> Goal: exploratory pass ที่ผ่าน ถูก promote เป็น e2e suite จริง — suite results คือ authoritative
+
+1. ถ้า PASS ครบ → ทำ `/update-e2e-test` เขียน/อัปเดต Playwright specs จาก flows ที่เพิ่ง test
+2. ทำ `/run-test-e2e` รัน suite จริง — Playwright report คือ test result ของจริงสำหรับ `/update-docs`
+3. ถ้า suite setup ไม่ได้ → skip แล้วระบุใน report ว่า results เป็น exploratory เท่านั้น
+
+### 8. Report
 
 > Goal: ส่งมอบผล test
 
 1. ทำ `/report` — table: route | actions tested | PASS | FAIL | fixes applied
-2. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
-3. ปิด browser session ด้วย `agent-browser close`
-4. ทำ `/suggest-next-action`
+2. persist raw exploratory results → `.devin/reports/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
+3. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
+4. ปิด browser session ด้วย `agent-browser close`
+5. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -125,5 +137,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 - ทุก route ถูก roleplay-test ครบ interactive elements พร้อม evidence
 - report สรุป PASS/FAIL ต่อ action + fixes ที่ทำ + retest results
+- raw exploratory results ถูก persist ใน `.devin/reports/<workspace>/` (ระบุ exploratory — ไม่ใช่ suite result)
+- flows ที่ผ่านถูก codify เป็น Playwright specs และรันจริง — Playwright report เป็น authoritative e2e result
 - failures ที่แก้แล้วถูก retest จนผ่าน หรือ report สิ่งที่ค้างชัดเจน
 - coverage gaps และ untested areas ถูกระบุไว้

@@ -89,7 +89,8 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 
 1. บันทึก errors ทีแก้ไขแล้ว และ errors ทียังคงอยู่
 2. ใช้ `/report` แสดงสรุป
-3. ปิด browser ด้วย `agent-browser close`
+3. persist raw results → `.devin/reports/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
+4. ปิด browser ด้วย `agent-browser close`
 
 ## Rules
 

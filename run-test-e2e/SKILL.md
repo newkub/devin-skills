@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-tool-playwright
   - review-test
-  - review-uxui
   - run-test
   - run-test-all
   - run-test-api
@@ -15,8 +14,9 @@ related:
   - run-verify
   - run-dev
   - use-agent-browser
-  - report-uxui-all-routes
   - update-e2e-test
+  - create-report-in-dot-devin
+  - update-docs
   - suggest-next-action
 ---
 
@@ -55,6 +55,7 @@ related:
 5. `agent-browser console` + `agent-browser errors` เก็บ page errors; `agent-browser screenshot` เมื่อ action ล้มเหลว
 6. จบด้วย `agent-browser close`
 7. รายงานตาราง: route → actions tested → pass/fail → console errors
+8. persist raw results → `.devin/reports/<workspace>/e2e-exploratory-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ Playwright suite result)
 
 ### 3. Install Browser Dependencies
 
@@ -91,6 +92,7 @@ related:
 2. ตรวจสอบ failed tests พร้อม screenshots, videos, traces
 3. จำแนก failure: source bug / outdated test / flaky / environment
 4. แก้ที่ root cause — ถ้า test ผิด → `/update-test-and-fix`; ถ้า source ผิด → `/resolve-errors`
+5. persist authoritative results → รัน Playwright ด้วย JSON reporter (`bunx playwright test --reporter=json > .devin/reports/<workspace>/playwright-<time>.json` หรือ `PLAYWRIGHT_JSON_OUTPUT_NAME`) แล้วเขียน summary `.devin/reports/<workspace>/e2e-<time>.md` ตาม format `/create-report-in-dot-devin` — stats (expected/unexpected/flaky/skipped/duration) + ลิงก์ `playwright-report/` — artifact นี้คือ e2e result ของจริงสำหรับ `/update-docs`
 
 ## Rules
 

@@ -29,7 +29,7 @@ related:
 
 Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
 
-- ถ้าต้องการ update/เขียน tests → `/update-unit-test`, `/update-integration`, `/update-e2e-test` ตาม layer (run-* เป็น run-only)
+- ถ้าต้องการ update/เขียน tests → `/update-unit-test`, `/update-integration-test`, `/update-e2e-test` ตาม layer (run-* เป็น run-only)
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|
@@ -99,6 +99,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 1. ทำ `/run-test-coverage` เมื่อ project มี coverage target
 2. ถ้าไม่ถึงเป้า → `/update-test-and-fix` เพิ่ม แล้วรันใหม่
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
+4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 
 ### 7. Continue To Full Verify
 

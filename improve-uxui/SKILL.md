@@ -11,6 +11,8 @@ related:
   - deep-thinking
   - update-e2e-test
   - use-subagents
+  - create-report-in-dot-devin
+  - update-docs
   - report
   - suggest-next-action
 ---
@@ -81,15 +83,16 @@ related:
 > Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
 
 1. หลัง verify ผ่านหมด → ทำ `/update-e2e-test` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
-2. re-run Playwright e2e suite อีกครั้งยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-e2e-test` flow ก่อน report
+2. ทำ `/run-test-e2e` re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-e2e-test` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
 ### 8. Report
 
 > Goal: ส่งมอบผลรวม
 
 1. ทำ `/report` — functional findings + visual findings + fixes + before/after evidence ต่อ route + e2e sync status
-2. ปิด browser session (`agent-browser close`)
-3. ทำ `/suggest-next-action`
+2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 7 ไม่ใช่ exploratory pass)
+3. ปิด browser session (`agent-browser close`)
+4. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -124,3 +127,4 @@ related:
 - UX/UI issues ถูกค้นจากทั้ง functional และ visual dimensions ครบทุก route
 - fixes applied ที่ root cause พร้อม responsive coverage และ before/after evidence
 - report รวม 2 passes พร้อม severity, fixes, และ items ค้าง
+- raw findings ถูก persist ใน `.devin/reports/<workspace>/` พร้อม reuse โดย `/update-docs`

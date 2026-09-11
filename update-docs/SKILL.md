@@ -10,6 +10,9 @@ related:
   - review-writing
   - update-references
   - run-docs
+  - create-report-in-dot-devin
+  - watch-browser-and-test
+  - improve-uxui
 ---
 
 ## Goal
@@ -22,6 +25,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
 - รองรับ `update-features-md` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
+- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-and-test`, `/improve-uxui` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -83,7 +87,7 @@ related:
 7. `development/setup.md`: ตั้งค่า dev environment
 8. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
 9. `development/workflows.md`: slash commands, scripts, CI/CD
-10. `development/testing.md`: วิธี run test, lint, typecheck
+10. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/reports/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
 11. `references/`: สรุป references
 12. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 

@@ -63,10 +63,11 @@ related:
 > Goal: รายงานครบพร้อม action
 
 1. ทำ `/report` คอลัมน์: `No.`, `Method`, `Route`, `Status`, `Expected`, `Time (ms)`, `Severity`, `Recommendation`
-2. สรุป: total routes, tested, skipped, ok, protected, critical, missing
-3. ถ้า spec กับ implementation ไม่ตรง → ส่งต่อ `/check-api-contract`
-4. ถ้ามี critical → แนะนำ `/resolve-errors` พร้อมระบุ route ที่พัง
-5. ถ้า routes ใน source ไม่ครบ → แนะนำ `/gen-openapi` เพื่อสร้าง spec
+2. persist raw results → `.devin/reports/<workspace>/api-routes-<time>.md` ตาม format `/create-report-in-dot-devin` — ตารางเดียวกัน + สรุป เพื่อให้ `/update-docs` reuse
+3. สรุป: total routes, tested, skipped, ok, protected, critical, missing
+4. ถ้า spec กับ implementation ไม่ตรง → ส่งต่อ `/check-api-contract`
+5. ถ้ามี critical → แนะนำ `/resolve-errors` พร้อมระบุ route ที่พัง
+6. ถ้า routes ใน source ไม่ครบ → แนะนำ `/gen-openapi` เพื่อสร้าง spec
 
 ## Rules
 
