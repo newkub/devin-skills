@@ -3,6 +3,9 @@ name: draw-ansi
 description: วาด/ปรับ ANSI box-drawing ให้กล่องภายนอกมีขนาดเท่ากัน ไม่เพี้ยน
 argument-hint: "[input]"
 related:
+  - draw-svg-image
+  - draw-excalidraw
+  - draw-tldraw
 ---
 
 ## Goal

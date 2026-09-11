@@ -3,7 +3,6 @@ name: summarize
 description: สรุปเนื้อหาตาม context ทั่วไป
 argument-hint: "<context>"
 related:
-
   - scan-codebase
   - report
   - list-git-commit

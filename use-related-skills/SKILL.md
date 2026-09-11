@@ -2,14 +2,13 @@
 name: use-related-skills
 description: หา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่
 argument-hint: "[skill-name]"
-related:
+related:
   - list-devin-global-skills
   - scan-codebase
   - check-reference
   - update-references
   - review-diff
   - report
-
 ---
 
 ## Goal
