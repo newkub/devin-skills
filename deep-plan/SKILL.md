@@ -1,6 +1,7 @@
 ---
 name: deep-plan
 description: Alias for plan — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - plan
 ---

@@ -1,6 +1,7 @@
 ---
 name: deep-implement-to-production
 description: Alias for implement-to-production — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - implement-to-production
 ---

@@ -1,6 +1,7 @@
 ---
 name: deep-analyze-by-use-scripts
 description: Alias for deep-analyze — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - deep-analyze
 ---

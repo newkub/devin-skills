@@ -1,6 +1,7 @@
 ---
 name: deep-review-codebase-then-fix
 description: Alias for review-then-fix — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - review-then-fix
 ---

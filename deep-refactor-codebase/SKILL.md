@@ -1,6 +1,7 @@
 ---
 name: deep-refactor-codebase
 description: Alias for refactor — merged into canonical skill (codebase scope)
+argument-hint: "[scope]"
 related:
   - refactor
 ---

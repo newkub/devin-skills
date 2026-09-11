@@ -1,6 +1,7 @@
 ---
 name: deep-verify
 description: Alias for run-verify — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - run-verify
 ---

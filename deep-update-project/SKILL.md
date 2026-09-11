@@ -1,6 +1,7 @@
 ---
 name: deep-update-project
 description: Alias for update-project — merged into the canonical skill
+argument-hint: "[scope]"
 related:
   - update-project
 ---
