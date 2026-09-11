@@ -25,20 +25,20 @@ related:
 
 > Goal: ติดตั้งหรือเรียกใช้ ast-grep ได้ถูกต้อง
 
-1. ถ้า project มี `@ast-grep/cli` ใน `devDependencies` ให้ใช้ `bunx ast-grep`
-2. ถ้าไม่มี ใช้ `bunx ast-grep` ได้โดยตรงโดยไม่ต้องติดตั้ง
-3. ถ้าต้องการใช้งานประจำ แนะนำให้เพิ่ม `@ast-grep/cli` ใน `devDependencies`
+1. ถ้า project มี `@ast-grep/cli` ใน `devDependencies` ให้ใช้ `bunx ast-grep` (bin `ast-grep` หรือ `sg` จาก local install)
+2. ถ้าไม่มี local install ให้ใช้ `bunx -p @ast-grep/cli ast-grep` — ห้าม `bunx ast-grep` ลอยๆ เพราะจะดึง package `ast-grep` (คนละ package ที่ถูก abandon)
+3. ถ้าต้องการใช้งานประจำ แนะนำให้เพิ่ม `@ast-grep/cli` ใน `devDependencies` — latest `0.45.3 (verified 2026-09-12)`
 
 ### 2. Configure sgconfig.yml
 
 > Goal: สร้าง `sgconfig.yml` พร้อม fields ที่จำเป็น
 
 1. สร้างไฟล์ `sgconfig.yml` ที root directory ด้วยเนื้อหาตาม ## Rules ข้อ 2
-2. ถ้า project มีหลาย workspace ให้เพิ่ม `devPaths` สำหรับแต่ละ workspace
+2. ถ้า project มีหลาย workspace ให้เพิ่ม rule dir ของแต่ละ workspace ใน `ruleDirs` (ไม่มี `devPaths` field — fields ที่มีจริง: `ruleDirs`, `testConfigs`, `utilDirs`, `languageGlobs`, `customLanguages`, `languageInjections`)
 3. ถ้า project มี custom file extensions ให้เพิ่ม `languageGlobs`
 4. ถ้าต้องการ test rules ให้เพิ่ม `testConfigs`
 5. ถ้าต้องการ reusable patterns ให้เพิ่ม `utilDirs`
-6. ตรวจสอบว่า config ถูกต้องด้วย `bunx ast-grep scan --inspect summary`
+6. ตรวจสอบว่า config ถูกต้องด้วย `ast-grep scan --inspect summary`
 
 ### 3. Setup Project Structure
 
@@ -47,7 +47,7 @@ related:
 1. สร้าง ast-grep rules ใน `rules/` directory ที project root (แยกจาก `.devin/rules/` ทีเก็บ devin rules แบบ markdown)
 2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที project root
 3. ถ้ามี `utilDirs` ให้สร้าง directory `utils/` ที project root
-4. ใช้ `bunx ast-grep new` สำหรับ scaffold project ใหม่ได้
+4. ใช้ `ast-grep new` สำหรับ scaffold project ใหม่ได้ (หรือ `bunx -p @ast-grep/cli ast-grep new` ถ้ายังไม่ได้ติดตั้ง)
 
 ### 4. Add Scan Script
 
@@ -58,22 +58,22 @@ related:
 ```json
 {
   "scripts": {
-    "scan": "bunx ast-grep scan"
+    "scan": "ast-grep scan"
   }
 }
 ```
 
-2. ถ้ามี `@ast-grep/cli` ติดตั้งแล้ว ใช้ `ast-grep scan` แทน `bunx ast-grep scan`
+2. ใช้ `ast-grep scan` หรือ `sg scan` เมื่อ `@ast-grep/cli` ติดตั้งเป็น devDependency แล้ว — ถ้ายังไม่ได้ติดตั้งใช้ `bunx -p @ast-grep/cli ast-grep scan`
 
 ### 5. Scan And Run
 
 > Goal: รัน scan และค้นหาด้วย ast-grep ได้ถูกต้อง
 
 1. รัน `bun run scan` สำหรับ scan ทั้ง project
-2. รัน `bunx ast-grep run --pattern 'PATTERN' [paths]` สำหรับ ad-hoc search
-3. รัน `bunx ast-grep scan --inline-rules 'YAML_RULE' [paths]` สำหรับ temporary rule
-4. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
-5. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
+2. รัน `ast-grep run --pattern 'PATTERN' [paths]` สำหรับ ad-hoc search (`run` เป็น default subcommand — `ast-grep -p 'PATTERN'` เทียบเท่า)
+3. รัน `ast-grep scan --inline-rules 'YAML_RULE' [paths]` สำหรับ temporary rule
+4. รัน `ast-grep scan --json pretty` สำหรับ structured output (ค่า: `pretty`, `stream`, `compact`)
+5. รัน `ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
 6. ใช้ `--interactive` สำหรับ interactive edit session
 7. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
 8. ถ้า matches เยอะเกิน → ปรับ pattern ให้จำเพาะขึ้น
@@ -85,18 +85,21 @@ related:
 
 ### 1. CLI Reference
 
-- `bunx ast-grep new` สำหรับ scaffold project ใหม่
-- `bunx ast-grep new rule` สำหรับสร้าง rule ใหม่
-- `bunx ast-grep scan` สำหรับ scan ทั้ง project ด้วย rules ที่กำหนด
-- `bunx ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
-- `bunx ast-grep test` สำหรับ test rules
-- `--config <path>` สำหรับระบุ config path
+- `ast-grep new` สำหรับ scaffold project ใหม่
+- `ast-grep new rule` สำหรับสร้าง rule ใหม่
+- `ast-grep scan` สำหรับ scan ทั้ง project ด้วย rules ที่กำหนด
+- `ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
+- `ast-grep test` สำหรับ test rules
+- `ast-grep outline` สำหรับดู code structure, `ast-grep lsp` สำหรับ language server, `ast-grep completions <shell>` สำหรับ shell completions
+- `--config <path>` สำหรับระบุ `sgconfig.yml` path (default: `sgconfig.yml`)
 - `--json pretty` สำหรับ structured JSON output
 - `--filter 'REGEX'` สำหรับ filter rules by id
 - `--interactive` สำหรับ interactive edit session
-- `--update-all` สำหรับ apply all rewrites
-- `--format github` สำหรับ GitHub Action format output
+- `-U, --update-all` สำหรับ apply all rewrites
+- `--format github` หรือ `--format sarif` สำหรับ CI output
 - `--inspect summary` สำหรับสรุปผล scan
+- `--min-severity <level>` สำหรับ filter findings ตาม severity (เพิ่มใน 0.45.3)
+- `--error/--warning/--info/--hint/--off [RULE_ID]` สำหรับ override rule severity
 
 ### 2. Separation From Devin Rules
 

@@ -36,9 +36,9 @@ related:
 
 > Goal: ดึงรายการ packages ที user เป็นเจ้าของ
 
-1. npm/bun → ทำ `/list-my-npm-packages`
-2. cargo → ใช้ `cargo search` หรือ `https://crates.io/api/v1/crates?user_id=<id>` ถ้าหา username ได้
-3. python → ใช้ `pip index versions <pkg>` หรือ `https://pypi.org/pypi/<pkg>/json` ตามทีทราบชื่อ
+1. npm/bun → ทำ `/list-my-npm-packages` (หรือ `https://registry.npmjs.org/-/v1/search?text=maintainer:<user>`)
+2. cargo → ใช้ `https://crates.io/api/v1/crates?user_id=<id>` ถ้าหา user id ได้ (`cargo search` ค้นหาตามชื่อ ไม่ใช่ตาม owner)
+3. python → ใช้ `https://pypi.org/pypi/<pkg>/json` ตามทีทราบชื่อ (`pip index versions <pkg>` เป็น experimental สำหรับดู versions ของ package เดี่ยว)
 4. แสดงผลด้วย `/report` คอลัมน์ `No.`, `Package`, `Version`, `Registry`, `Description`
 
 ### 3. Select Packages
@@ -100,7 +100,6 @@ related:
 - ถ้าต้อง process ข้อมูลซับซ้อน → ทำ `/use-scripts`
 - ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ reports ชั่วคราว
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /use-bun-native-api ถ้าจำเป็น
 
 ## Expected Outcome

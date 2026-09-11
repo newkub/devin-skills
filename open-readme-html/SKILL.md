@@ -24,9 +24,9 @@ related:
 > Goal: Setup HTML Structure
 1. Setup HTML structure พื้นฐานด้วย Vue 3 + Element Plus + Tailwind CSS
 2. สร้างไฟล์ `README.html` ใน project root
-3. ใช้ Vue 3 ผ่าน unpkg CDN (vue.global.js)
-4. ใช้ Element Plus CSS (base + dark mode)
-5. ใช้ Tailwind CSS CDN
+3. ใช้ Vue 3 ผ่าน unpkg CDN (`vue.global.prod.js`)
+4. ใช้ Element Plus ทั้ง JS (`index.full.min.js`) และ CSS (base + dark mode) — ต้องโหลด JS ด้วยไม่อย่างนั้น `el-*` components จะไม่ render และเรียก `app.use(ElementPlus)` ก่อน mount
+5. ใช้ Tailwind CSS browser build
 ### 2. Create Tab System
 
 > Goal: Create Tab System
@@ -90,22 +90,23 @@ related:
 1. แสดงขั้นตอนการติดตั้ง
 2. ใช้ `<el-steps>` สำหรับแสดง steps
 3. ใช้ `<el-alert>` สำหรับ prerequisites
-4. ใช้ `<el-code-block>` หรือ `<pre>` สำหรับ commands
+4. ใช้ `<pre>` + `<code>` สำหรับ commands (Element Plus ไม่มี `<el-code-block>` component)
 5. ใช้ `<el-table>` สำหรับ scripts
 ### 10. Open HTML in Browser
 
 > Goal: Open HTML in Browser
 1. ทำตาม `/open-web` เพื่อเปิด README.html ใน browser
-2. ใช้ `start README.html` (Windows) หรือ `open README.html` (macOS/Linux)
+2. ใช้ `start README.html` (Windows), `open README.html` (macOS) หรือ `xdg-open README.html` (Linux)
 3. ตรวจสอบว่า file เปิดถูกต้อง
 
 ## Rules
 ### 1. Follow HTML Structure
 
 ทำตาม `/html` สำหรับ HTML structure พื้นฐาน:
-- Vue 3 ผ่าน unpkg CDN: `https://unpkg.com/vue@3/dist/vue.global.js`
+- Vue 3 ผ่าน unpkg CDN: `https://unpkg.com/vue@3/dist/vue.global.prod.js`
+- Element Plus JS (จำเป็นสำหรับ `el-*` components): `https://unpkg.com/element-plus/dist/index.full.min.js` แล้ว `app.use(ElementPlus)`
 - Element Plus CSS (base + dark mode): `https://unpkg.com/element-plus/dist/index.css` และ `https://unpkg.com/element-plus/theme-chalk/dark/css-vars.css`
-- Tailwind CSS CDN: `https://cdn.tailwindcss.com`
+- Tailwind CSS v4 browser build: `https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4` (latest 4.3.2, verified 2026-09-12) — `https://cdn.tailwindcss.com` คือ v3 Play CDN เดิมใช้ถ้าต้องการ v3 เท่านั้น
 - Dark mode ด้วย `<html class="dark">`
 - ใช้ `<script setup>` สำหรับ Vue composition API
 ### 2. Element Plus Components

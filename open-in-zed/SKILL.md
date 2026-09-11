@@ -32,13 +32,14 @@ related:
 
 > Goal: เปิด target ใน Zed อย่างปลอดภัย
 
-1. เลือก Zed CLI ตาม OS:
-   - macOS: `zed <path...>`
+1. เลือก Zed CLI ตาม OS (ชื่อ binary คือ `zed` ทุก platform — verified Zed 1.18.1, 2026-09-12):
+   - macOS: `zed <path...>` (ถ้าไม่มีใน PATH ให้ install ผ่าน Zed menu → "Install CLI")
    - Linux: `zed <path...>`
-   - Windows: `zeditor <path...>` หรือ `zed <path...>` ถ้า `zeditor` ไม่พบ
-   - WSL บน Windows: ใช้ `zed.exe` หรือ `zeditor.exe` ผ่าน path ที่เข้าถึงได้
+   - Windows: `zed <path...>` — installer วาง CLI ที่ `%LOCALAPPDATA%\Programs\Zed\bin\zed`
+   - WSL บน Windows: ใช้ `zed` ใน WSL (รองรับ `--wsl` flag) หรือเรียก `zed.exe` ผ่าน path ที่เข้าถึงได้
 2. รันคำสั่งเปิดไฟล์ทีเดียวสำหรับหลาย path ไม่เรียกซ้ำ
 3. ถ้าเป็น directory ให้เปิดเป็น workspace โดยส่ง path เดียว
+4. รองรับ `path:line:column` เพื่อเปิดไฟล์ที่ตำแหน่งเฉพาะ และ flags: `-n`/`--new` window ใหม่, `-e`/`--existing` window เดิม, `-w`/`--wait` รอจนปิด, `-a`/`--add` เพิ่มเข้า workspace ที่เปิดอยู่
 
 ### 3. Verify And Report
 
@@ -58,8 +59,7 @@ related:
 
 ### 2. OS Specific
 
-- macOS และ Linux ใช้ `zed`
-- Windows ใช้ `zeditor` ก่อน ถ้าไม่เจอให้ลอง `zed`
+- ใช้ `zed` ทุก platform (macOS, Linux, Windows) — docs เก่าที่อ้าง `zeditor` บน Windows ไม่ตรงกับ CLI ปัจจุบัน
 - WSL ตรวจสอบ Windows PATH หรือ `*.exe` ก่อนใช้ Linux binary
 
 ### 3. Determinism

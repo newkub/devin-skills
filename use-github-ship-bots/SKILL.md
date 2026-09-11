@@ -58,8 +58,8 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 1. รับ `<issue-or-plan>` จาก argument
    - issue: `/use-github-ship-bots 42`
    - plan file: `/use-github-ship-bots .devin/plan/<workspace>/feed-bot.md`
-2. ถ้าเป้น issue → ใช้ `/implement-github-issue-by-me` หรือ `gh issue view <number>`
-3. ถ้าเป้น file → อ่าน `.devin/plan/<workspace>/<file>.md`
+2. ถ้าเป็น issue → ใช้ `/implement-github-issue-by-me` หรือ `gh issue view <number>` (gh CLI `2.100.0 (verified 2026-09-12)`)
+3. ถ้าเป็น file → อ่าน `.devin/plan/<workspace>/<file>.md`
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ถ้าไม่ชัด → ทำ `/ask-me`
 
@@ -85,7 +85,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 1. สร้าง `src/handlers/` สำหรับ events ที plan ระบุ
 2. สร้าง `src/domain/` สำหรับ business logic
 3. เพิ่ม approve/reject buttons หรือ slash commands ถ้ามี
-4. เชื่อมต่อกับ `D:\newkub\github-ship-bots` ถ้าเป้น GitHub ship bot
+4. เชื่อมต่อกับ `D:\newkub\github-ship-bots` ถ้าเป็น GitHub ship bot (path มีอยู่จริง — verified 2026-09-12)
 5. รัน `/run-lint` และ `/run-typecheck` ระหว่าง implement
 
 ### 5. Add Tests
@@ -93,7 +93,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 > Goal: เพิ่ม Tests
 1. สร้าง `test/handlers/` ด้วย fixtures
 2. Mock Octokit API calls
-3. รัน `bun test`
+3. รัน `bun test` (Bun `1.4.2 (verified 2026-09-12)` — ใช้ `bun test --parallel` ได้ถ้า tests อิสระกัน)
 4. ตรวจ idempotency และ error handling
 
 ### 6. Verify

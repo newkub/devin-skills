@@ -40,7 +40,7 @@ related:
 - Lazy load: split raw diff เป็น chunk ต่อไฟล์ แล้ว parse เฉพาะไฟล์ที่เลือก
 - Status bar แสดง keyboard hints และไฟล์ปัจจุบัน
 - Help overlay กด `?` แสดง keyboard shortcuts ทั้งหมด
-- Keyboard: ←/→ หรือ [/] เปลี่ยน file, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, v view, w wrap, t theme, ? help, Esc ปิด menu/blur input
+- Keyboard: ←/→ หรือ [/] เปลี่ยน file, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, v view, w wrap, t theme, r reload, ? หรือ Shift+/ help, Esc ปิด menu/blur input
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit
@@ -70,10 +70,10 @@ related:
 
 > Goal: เปิด diff ใน browser
 
-1. รัน `bun src/serve.ts <subcommand> [args] [--repo ...]`
-2. รอ console แสดง URL
-3. ใช้ `/open-web` หรือ OS command เปิด URL นั้น (Windows: `start`, macOS: `open`, Linux: `xdg-open`)
-4. ถ้า server เปิด browser เองแล้ว → ยืนยันว่า tab เปิด
+1. รัน `bun src/serve.ts <subcommand> [args] [--repo ...]` (หรือ `bun run start -- <subcommand> ...`)
+2. รอ console แสดง URL (`open-diff running at http://localhost:<port>`)
+3. server จะเปิด browser เองอัตโนมัติ → ยืนยันว่า tab เปิด; ถ้าไม่เปิดให้ใช้ `/open-web` หรือ OS command (Windows: `start`, macOS: `open`, Linux: `xdg-open`)
+4. env vars: `OPEN_DIFF_PORT` กำหนด port (default random), `OPEN_DIFF_NO_OPEN=1` ไม่เปิด browser อัตโนมัติ
 
 ### 4. Verify
 
@@ -109,7 +109,8 @@ related:
 - ต้องมี `gh` CLI สำหรับ PR
 - ต้องมี `git` สำหรับ git/branch/file diff
 - ติดตั้ง dependencies ด้วย `bun install`
-- build ด้วย `bun run build`
+- build ด้วย `bun run build` (`bunx vite build`)
+- stack จาก `package.json`: `@pierre/diffs` ^1.4.1, `shiki` 4.0.0, `unocss` ^66.10.2 + `@unocss/preset-wind4` ^66.10.0, `vite` ^7.1.0, `@tanstack/solid-start` ^1.168.50 (verified 2026-09-12)
 - API อยู่ที่ `src/server/api.ts` (`handleApi`) — expose ผ่าน server route `src/routes/api.$.ts` (vite dev) และ Bun wrapper `src/serve.ts` (prod)
 - `src/serve.ts` serve `dist/client` statics + `_shell.html` fallback และ heartbeat/prompt — อย่าสร้าง `src/server.ts` (Start จองชื่อนี้เป็น custom server entry)
 

@@ -10,8 +10,8 @@ ast-grep is a structural search, lint, and rewrite tool for many languages using
 # npm (global)
 bun add @ast-grep/cli -g
 
-# bun (ad-hoc, no install needed)
-bunx ast-grep --help
+# bun (ad-hoc — must pin the package; bare `bunx ast-grep` fetches an unrelated abandoned package)
+bunx -p @ast-grep/cli ast-grep --help
 
 # cargo
 cargo install ast-grep --locked
@@ -25,8 +25,9 @@ pip install ast-grep-cli
 
 ## Version
 
-- Package: `@ast-grep/cli`
-- Latest: `0.45.1`
+- Package: `@ast-grep/cli` (bins: `ast-grep`, `sg`)
+- Latest: `0.45.3 (verified 2026-09-12)`
+- Programmatic: `@ast-grep/napi` `0.45.3 (verified 2026-09-12)`
 - License: MIT
 - Peer dependencies: none (standalone binary via npm postinstall)
 
@@ -42,6 +43,7 @@ ast-grep run -p 'PATTERN' --rewrite 'NEW'  # ad-hoc rewrite
 ast-grep test                # test rules against test cases
 ast-grep outline             # inspect source structure
 ast-grep lsp                 # start language server
+ast-grep completions <shell> # print shell completions
 ```
 
 ## Common Flags
@@ -56,9 +58,12 @@ ast-grep lsp                 # start language server
 | `--json pretty` | Structured JSON output |
 | `--filter 'REGEX'` | Filter rules by id (scan only) |
 | `-i, --interactive` | Interactive edit session |
-| `--update-all` | Apply all rewrites without prompting |
-| `--format github` | GitHub Action format output |
-| `--inspect summary` | Show project dir and config path |
+| `-U, --update-all` | Apply all rewrites without prompting |
+| `--format github` | Output format: `github` or `sarif` (scan only) |
+| `--inspect summary` | Show project dir and config path (`nothing`, `summary`, `entity`) |
+| `--min-severity <LEVEL>` | Only report findings at/above severity (added in 0.45.3) |
+| `--error/--warning/--info/--hint/--off [RULE_ID]` | Override rule severity (scan only) |
+| `--report-style <STYLE>` | Report verbosity: `rich` (default), `medium`, `short` |
 | `-j, --threads <NUM>` | Number of threads (default: heuristic) |
 | `--strictness <LEVEL>` | Pattern strictness: `cst`, `smart`, `ast`, `relaxed`, `signature`, `template` |
 
@@ -97,7 +102,8 @@ languageGlobs:
 | `testConfigs[].snapshotDir` | `String` | No | Snapshot directory (default: `__snapshots__`) |
 | `utilDirs` | `List<String>` | No | Directories for global utility rules |
 | `languageGlobs` | `HashMap<String, Array<String>>` | No | Map language to file glob patterns |
-| `customLanguages` | `HashMap<String, CustomLang>` | No | Custom tree-sitter language definitions |
+| `customLanguages` | `HashMap<String, CustomLang>` | No | Custom tree-sitter language definitions (`libraryPath`, `extensions`, `outlineRules`, `expandoChar`, `languageSymbol`) |
+| `languageInjections` | `List<LanguageInjection>` | No (experimental) | Embedded language support, e.g. CSS in JS (`hostLanguage`, `rule`, `injected`) |
 
 ## Pattern Syntax
 
@@ -140,7 +146,7 @@ project/
 }
 ```
 
-If `@ast-grep/cli` is in `devDependencies`, use `ast-grep scan` directly. Otherwise use `bunx ast-grep scan`.
+If `@ast-grep/cli` is in `devDependencies`, use `ast-grep scan` (or `sg scan`) directly. Otherwise use `bunx -p @ast-grep/cli ast-grep scan` — never bare `bunx ast-grep`, which resolves an unrelated abandoned npm package.
 
 ## GitHub Action Integration
 

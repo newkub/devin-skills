@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-ใช้ MCP (Model Context Protocol) servers ที่ผูกไว้กับ environment อย่างถูกต้อง — discover capabilities ก่อน, เลือก server ที่ตรงกับ task, call tools ด้วย schema ที่ถูกต้อง
+ใช้ MCP (Model Context Protocol) servers ที่ผูกไว้กับ environment อย่างถูกต้อง — discover capabilities ก่อน, เลือก server ที่ตรงกับ task, call tools ด้วย schema ที่ถูกต้อง — spec ล่าสุด `2026-07-28 (verified 2026-09-12)`, Tier-1 SDKs เช่น `@modelcontextprotocol/sdk 1.30.0`
 
 ## Scope
 
@@ -92,6 +92,13 @@ related:
 
 - server ที่ต้องการไม่มี → `web_search`/`webfetch` → `/learn-web` → `/deep-research`
 - tool call ล้มเหลวซ้ำ → report error ชัดเจน อย่า retry เกิน 3 รอบ
+
+### 5. Spec Notes (2026-07-28)
+
+- spec `2026-07-28` เป็น stateless core: ไม่มี `initialize`/`initialized` handshake และ `Mcp-Session-Id` header แล้ว — ใช้ `server/discover` สำหรับ capability discovery (optional)
+- HTTP+SSE transport deprecated → ใช้ Streamable HTTP
+- Roots, Sampling, Logging deprecated (ยังใช้ได้ชั่วคราวตาม deprecation window)
+- server เก่าที่ยังเป็น `2025-11-25` หรือก่อนหน้ายังทำงานได้ — ถ้าเจอ `UnsupportedProtocolVersionError` ให้ retry ด้วย version ที่ server รองรับ
 
 - ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /deep-research ถ้าจำเป็น

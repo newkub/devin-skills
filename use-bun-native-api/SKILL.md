@@ -18,7 +18,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-runtime-bun, use-bun-native-api)
 
-ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun runtime ทั้ง HTTP server, file I/O, networking, database, และ utilities
+ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun runtime ทั้ง HTTP server, file I/O, networking, database, และ utilities — runtime ปัจจุบัน `Bun 1.4.2 (verified 2026-09-12)` (Bun 1.4 เขียนใหม่ด้วย Rust, เพิ่ม `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal`, `bun run --parallel`, `bun test --parallel`, `bun audit fix`, `bun dedupe`, `bun prune`)
 
 ## Execute
 

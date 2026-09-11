@@ -45,5 +45,5 @@ related:
 
 ## Expected Outcome
 
-- Website เปิดใน browser ทีเลือก
+- Website เปิดใน browser ที่เลือก
 - URL ถูกต้อง

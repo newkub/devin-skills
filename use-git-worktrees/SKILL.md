@@ -26,7 +26,7 @@ related:
 
 > Goal: ตรวจสอบ git worktrees พร้อมใช้งาน
 
-1. ตรวจสอบ git: `git --version` (แนะนำ 2.15+ สำหรับ worktree ทีเสถียร)
+1. ตรวจสอบ git: `git --version` (worktree เสถียรตั้งแต่ 2.15+; latest stable `2.55.0 (verified 2026-09-12)`)
 2. ถ้ายังไม่มี git → ติดตั้งตาม OS:
    - macOS: `mise use -g git` หรือ `brew install git`
    - Windows: `winget install Git.Git` หรือ `scoop install git`
@@ -62,7 +62,7 @@ related:
 
 1. รัน `git fetch` เพื่ออัปเดต remote refs
 2. ใน worktree ตรวจสอบ `git status` ว่าไม่มี uncommitted changes
-3. ระบุ target branch: `main`, `master` หรือ base branch เดิม
+3. ระบุ target branch: `main`, `master` หรือ base branch เดิม (ทางเลือก: `gh pr checkout <n> --worktree <path>` สำหรับ checkout PR เข้า worktree โดยตรง — gh >= 2.98.0)
 4. ถ้ามีการเปลี่ยนแปลงใน target branch → rebase หรือ merge ก่อน
 
 ### 4. Merge Back

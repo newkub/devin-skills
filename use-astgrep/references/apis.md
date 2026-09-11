@@ -10,7 +10,7 @@ npm install --save-dev @ast-grep/cli
 
 ## Version
 
-- Latest: 0.45.2
+- Latest: 0.45.3 (verified 2026-09-12)
 - [Package Registry](https://www.npmjs.com/package/@ast-grep/cli)
 - [Repository](https://github.com/ast-grep/ast-grep)
 

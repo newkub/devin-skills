@@ -33,7 +33,7 @@ related:
 
 1. ใช้คำสั่ง `explorer "<path>"`
 2. ถ้าเป็น directory จะเปิด File Explorer ใน directory นั้น
-3. ถ้าเป็น file จะเลื่อกหรือเปิด file นั้น (ขึ้นกับ file association)
+3. ถ้าเป็น file: `explorer "<file>"` จะเปิด file ตาม file association; ถ้าต้องการเลือกไฟล์ใน Explorer แทน ให้ใช้ `explorer /select,"<file>"`
 4. ถ้ามีหลาย path ให้รันคำสั่งแยกครั้งละ path เพื่อความชัดเจน
 
 ### 3. Verify And Report
@@ -69,5 +69,5 @@ related:
 
 ## Expected Outcome
 
-- ไฟล์หรือ directory ถูกเปิดหรือเลื่อกใน Windows Explorer
+- ไฟล์หรือ directory ถูกเปิดหรือเลือกใน Windows Explorer
 - Output เป็นรายการ paths ที่สั่งเปิดพร้อม command ที่ใช้

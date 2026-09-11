@@ -23,10 +23,11 @@ related:
 > Goal: ระบุ target path และตรวจสอบ Windows Terminal
 
 1. ระบุ target paths จาก user input, ไฟล์ที่เปิดอยู่, หรือ current working directory
-2. ตรวจสอบ `wt` ใน PATH ด้วย `where wt` หรือ `Get-Command wt`
-3. ถ้าไม่พบ `wt` ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
-4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
-5. ใช้บน Windows เท่านั้น
+2. ตรวจสอบ `wt` ใน PATH ด้วย `where wt` หรือ `Get-Command wt` — ต้องยืนยันว่า resolve ไปที่ `%LOCALAPPDATA%\Microsoft\WindowsApps\wt.exe` (Windows Terminal) ไม่ใช่ tool อื่นที่ชื่อซ้ำ (เช่น shim ของ git-worktree tool จาก `mise` ที่พบจริงบนเครื่องนี้, verified 2026-09-12)
+3. ถ้า `wt` ถูก shadow ให้ใช้ full path `"$env:LOCALAPPDATA\Microsoft\WindowsApps\wt.exe" -d "<path>"` แทน
+4. ถ้าไม่พบ `wt` ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
+5. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
+6. ใช้บน Windows เท่านั้น
 
 ### 2. Open In Windows Terminal
 

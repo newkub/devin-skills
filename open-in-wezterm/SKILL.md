@@ -23,7 +23,7 @@ related:
 > Goal: ระบุ target path และตรวจสอบ WezTerm CLI
 
 1. ระบุ target paths จาก user input, ไฟล์ที่เปิดอยู่, หรือ current working directory
-2. ตรวจสอบ `wezterm` CLI ใน PATH ด้วย `where wezterm` หรือ `which wezterm`
+2. ตรวจสอบ `wezterm` CLI ใน PATH ด้วย `where wezterm` หรือ `which wezterm` (verified `wezterm 20240203-110809-5046fc22`, 2026-09-12)
 3. ถ้าไม่พบ `wezterm` ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
 4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
 
@@ -34,6 +34,7 @@ related:
 1. ถ้า target เป็น directory: รัน `wezterm start --cwd "<path>"`
 2. ถ้า target เป็น file: เปิด parent directory ด้วย `wezterm start --cwd "<parent>"`
 3. ถ้ามีหลาย path ให้รันคำสั่งแยกครั้งละ path หรือใช้ `wezterm start` หลายครั้ง
+4. options เพิ่มเติม: `--new-tab` เปิดเป็น tab ใน window ที่มีอยู่, `--always-new-process` บังคับ spawn GUI process ใหม่, `-- <prog>` รัน program เฉพาะแทน shell (เช่น `wezterm start --cwd "<path>" -- pwsh`)
 
 ### 3. Verify And Report
 

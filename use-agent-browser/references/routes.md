@@ -1,7 +1,7 @@
 # Follow Tool Agent Browser Route Map
 
 - Website: <https://agent-browser.dev>
-- Total routes discovered: 39
+- Refreshed: 2026-09-12 (v0.37.1 docs)
 
 ## Top routes by section
 
@@ -67,4 +67,33 @@
 - /providers/agentcore
 - /providers/browser-use
 - /providers/browserbase
-- ... and 3 more
+- /providers/browserless
+- /providers/kernel
+- /providers/remote-agent-browser
+
+### recording
+- /recording
+
+### react
+- /react
+
+### security
+- /security
+
+### selectors
+- /selectors
+
+### sessions
+- /sessions
+
+### snapshots
+- /snapshots
+
+### streaming
+- /streaming
+
+### webgpu
+- /webgpu
+
+### webmcp
+- /webmcp

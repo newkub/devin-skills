@@ -28,11 +28,11 @@ related:
 
 > Goal: ติดตั้งและยืนยัน `agent-browser` พร้อมใช้งาน
 
-1. ติดตั้งด้วย `bun add -g agent-browser` หรือ `npm install -g agent-browser`
-2. ดาวน์โหลด Chrome ด้วย `agent-browser install` (first time)
-3. ตรวจสอบด้วย `agent-browser --help`, `agent-browser --version`, `agent-browser doctor`
+1. ติดตั้งด้วย `bun add -g agent-browser` หรือ `npm install -g agent-browser` — latest `0.37.1 (verified 2026-09-12)`, requires Node >= 24
+2. ดาวน์โหลด Chrome ด้วย `agent-browser install` (first time, `--with-deps` สำหรับ system deps บน Linux)
+3. ตรวจสอบด้วย `agent-browser --help`, `agent-browser --version`, `agent-browser doctor` (`doctor --fix` สำหรับ destructive repairs)
 4. อัปเดตด้วย `agent-browser upgrade`
-5. ถ้าติดตั้งไม่ได้ → fallback ตาม Rules ข้อ 8
+5. ถ้าติดตั้งไม่ได้ → fallback ตาม Rules ข้อ 6
 
 ### 2. Session Lifecycle
 
@@ -47,7 +47,7 @@ agent-browser --pin-tab open <url>           # strict tab binding ข้าม d
 agent-browser close [--all]                  # ปิด session
 ```
 
-session คงอยู่ผ่าน background daemon จึง chain commands ด้วย `&&` ได้ — daemon error → ใช้ `browser-preview` tool แทน
+session คงอยู่ผ่าน background daemon จึง chain commands ด้วย `&&` ได้ — daemon error → ใช้ `browser-preview` tool แทน — ตั้ง `--session <name>` เสมอก่อน command แรกเมื่อรันหลาย sessions ขนานกัน
 
 ### 3. Navigate
 
@@ -95,7 +95,9 @@ agent-browser screenshot [page.png] [--full] [--annotate] [--screenshot-dir ./sh
 agent-browser pdf page.pdf
 agent-browser console [--json] [--clear] | errors [--clear]
 agent-browser highlight @e1 | inspect
-agent-browser trace start/stop | profiler | record   # tracing/profiling/video
+agent-browser trace start/stop | profiler start/stop
+agent-browser record start <path> [--fps 30] | record restart | record stop   # WebM/MP4 video (ต้องมี ffmpeg)
+agent-browser dialog accept|dismiss|status   # จัดการ alert/confirm/prompt (alert/beforeunload auto-accept โดย default)
 agent-browser get text|html|value|attr @e1 | get title|url|count ".item"
 agent-browser is visible|enabled|checked @e1
 agent-browser state save|load <path>
@@ -126,7 +128,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 > Goal: จัดการ errors และ cleanup
 
 1. เจอ error → เรียก `/resolve-errors` ทันที
-2. daemon error → `browser-preview`; ไม่ได้ติดตั้ง → `playwriter`
+2. daemon error → `browser-preview`; ไม่ได้ติดตั้ง → `follow-tool-playwright`
 3. click ไม่ได้เพราะ `covered by ...` → dismiss overlay หรือ `scrollintoview` แล้ว retry
 4. บันทึก `console` และ `errors` เพื่อ debug เสมอ
 5. ปิดด้วย `agent-browser close` / `close --all` และลบ temporary files/profiles เมื่อเสร็จ
@@ -159,9 +161,9 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 
 ### 6. Fallback Options
 
-- `agent-browser` ไม่ติดตั้ง → `playwriter` skill
-- `playwriter` ไม่พร้อม → `browser-preview` tool
-- ไม่มี fallback ใด → แจ้ง user ติดตั้ง `agent-browser` หรือ `playwriter`
+- `agent-browser` ไม่ติดตั้ง → `follow-tool-playwright` skill
+- `follow-tool-playwright` ไม่พร้อม → `browser-preview` tool
+- ไม่มี fallback ใด → แจ้ง user ติดตั้ง `agent-browser` หรือ Playwright
 
 ### 7. Security
 

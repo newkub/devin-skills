@@ -1,5 +1,7 @@
 # WebMCP, MCP Server And Advanced agent-browser Features
 
+Version: agent-browser 0.37.1 (verified 2026-09-12)
+
 ## WebMCP (experimental)
 
 WebMCP lets the current page expose tools that `agent-browser` can discover and invoke. Enabled by default for managed Chrome.
@@ -29,9 +31,9 @@ agent-browser mcp --tools core,network,react
 agent-browser mcp --tools core,webmcp
 ```
 
-- Default protocol is 2025-11-25.
+- Server protocol defaults to `2025-11-25` and accepts older supported client versions during init (latest MCP spec upstream is `2026-07-28`, which removed the `initialize` handshake in favor of per-request `_meta` + `server/discover`).
 - Default profile is `core`; use `all` for full CLI parity.
-- Combine profiles with commas.
+- Combine profiles with commas. Profiles: `core`, `network`, `state`, `debug`, `tabs`, `react`, `mobile`, `webmcp` (opt-in), `all`.
 
 ## Accessibility Audit
 

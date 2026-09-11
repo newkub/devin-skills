@@ -27,11 +27,11 @@ related:
 
 > Goal: ติดตั้ง ast-grep สำหรับ Bun scripts
 
-1. ติดตั้ง `@ast-grep/cli` ใน project:
+1. ติดตั้ง `@ast-grep/cli` ใน project (latest `0.45.3 (verified 2026-09-12)`):
    - `bun add -D @ast-grep/cli`
    - หรือ global: `mise use -g 'npm:@ast-grep/cli'`
-2. ตรวจสอบ CLI: `bunx ast-grep --version`
-3. ถ้าต้องใช้ napi bindings → `bun add -D @ast-grep/napi`
+2. ตรวจสอบ CLI: `bunx ast-grep --version` (ad-hoc โดยไม่ติดตั้ง: `bunx -p @ast-grep/cli ast-grep --version`)
+3. ถ้าต้องใช้ napi bindings → `bun add -D @ast-grep/napi` (latest `0.45.3 (verified 2026-09-12)` — native Node-API module ต้องติดตั้งจริง ห้าม import ผ่าน esm.sh)
 4. สร้าง `sgconfig.yml` ที root ถ้ายังไม่มี
 5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup ast-grep`
 
@@ -50,15 +50,15 @@ related:
 
 1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `$env:TEMP`
 2. เลือก ast-grep interface:
-   - napi bindings: `import { parse, findPattern } from '@ast-grep/napi'` — สำหรับ in-process analysis
-   - CLI wrapper: `Bun.$\`ast-grep scan --json\`` — สำหรับ batch scanning
+   - napi bindings: `import { parse, parseAsync, Lang, findInFiles, kind } from '@ast-grep/napi'` — in-process analysis; `parse(Lang.TypeScript, src).root().find('pattern')` / `root.findAll(...)` / `node.getMatch('A')` / `node.replace(...)` + `root.commitEdits([...])`; ใช้ `findInFiles(Lang.TypeScript, { paths: ['src'], rule: {...} }, cb)` สำหรับ multi-file scan
+   - CLI wrapper: `Bun.$\`ast-grep scan --json pretty\`` — สำหรับ batch scanning
 3. เขียน script ด้วย Bun native APIs:
    - ใช้ `Bun.Glob` สำหรับ file discovery
    - ใช้ `Bun.$` สำหรับ CLI invocation
    - ใช้ `Bun.file()` + `Bun.write()` สำหรับ file I/O
 4. script ต้องมี `dryRun` option สำหรับ testing
 5. script ต้อง output เป็น JSON สำหรับ review CLI consumption
-6. ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/@ast-grep/napi`
+6. ใช้ CDN imports เฉพาะ pure-JS deps เช่น `https://esm.sh/zod` — `@ast-grep/napi` เป็น native module ต้อง `bun add -D` เท่านั้น
 
 ### 3. Run Analysis
 
@@ -83,7 +83,7 @@ related:
 ### 1. Script Standards
 
 - ใช้ Bun native APIs เสมอ: `Bun.Glob`, `Bun.$`, `Bun.file()`, `Bun.write()`
-- ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/@ast-grep/napi`
+- `@ast-grep/napi` เป็น native Node-API module — ต้อง `bun add -D @ast-grep/napi` เสมอ (esm.sh ไม่สามารถ serve native binary ได้); CDN imports ใช้ได้เฉพาะ pure-JS deps
 - script ต้องมี `dryRun` option
 - script ต้อง output เป็น JSON สำหรับ machine consumption
 - เก็บ scripts ใน `.devin/scripts/` (permanent) หรือ `$env:TEMP` (throwaway)

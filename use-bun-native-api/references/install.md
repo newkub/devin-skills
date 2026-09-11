@@ -15,7 +15,7 @@ On Linux, ensure `unzip` is installed and use kernel 5.6 or higher for best resu
 
 ## Verify
 
-- `bun --version` — check installed version
+- `bun --version` — check installed version (latest `1.4.2 (verified 2026-09-12)`)
 - `bun --revision` — check precise build commit
 
 ## Package Managers
@@ -37,6 +37,7 @@ Image variants: `debian`, `slim`, `distroless`, `alpine`.
 - `bun upgrade`
 - `bun upgrade --canary`
 - `bun upgrade --stable`
+- `bun upgrade <version>` - install specific version, e.g. `bun upgrade 1.4.2`
 - Homebrew: `brew upgrade bun`
 - Scoop: `scoop update bun`
 

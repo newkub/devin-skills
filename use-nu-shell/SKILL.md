@@ -23,7 +23,7 @@ related:
 
 > Goal: ตรวจสอบและติดตั้ง `nu`
 
-1. รัน `nu --version`
+1. รัน `nu --version` — latest `0.115.1 (verified 2026-09-12)` (0.115 มี YAML rework, `$ans` REPL variable, Helix-style editing)
 2. ถ้าไม่มา ให้ติดตั้ง:
    - Windows: `winget install nushell` หรือ `winget install --id Nushell.Nushell`
    - macOS/Linux: `brew install nushell`
@@ -60,7 +60,7 @@ related:
 2. ใช้ `let` สำหรับ immutable variables และ `mut` สำหรับ mutable
 3. ใช้ `print` สำหรับ side-effect logging
 4. จัดการ data types: int, float, string, bool, list, record, table, filesize, duration
-5. ใช้ `into <type>` เพื่อ convert data เช่น `into int`, `into string`, `into filesize`
+5. ใช้ `into <type>` เพื่อ convert data เช่น `into int`, `into string`, `into datetime` — `into filesize`/`into duration` ถูก remove แล้ว ให้ใช้ literals เช่น `10kb`, `5min` หรือ `into value` แทน
 6. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `$env:TEMP` ถ้าชั่วคราวตาม `/use-scripts`
 
 ### 5. Integrate With Use Scripts

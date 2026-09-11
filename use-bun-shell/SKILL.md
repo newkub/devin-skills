@@ -28,10 +28,10 @@ related:
 
 > Goal: Execute Commands With Bun
 
-1. ใช้ `bun -e "console.log('command')"` สำหรับ simple commands
-2. ใช้ `bun -e "await $`command`"` สำหรับ shell commands ที่ซับซ้อน
+1. ใช้ `bun -e "console.log('command')"` สำหรับ simple commands (latest runtime `1.4.2 (verified 2026-09-12)`)
+2. ใช้ `bun -e "import { $ } from 'bun'; await $\`command\`"` สำหรับ shell commands ที่ซับซ้อน (`$` ต้อง import จาก `bun` — ไม่ใช่ global)
 3. ใช้ `bun run` สำหรับ execute scripts จาก package.json
-4. ใช้ `bun -e` สำหรับ JavaScript/TypeScript code execution
+4. ใช้ `bun -e` สำหรับ JavaScript/TypeScript code execution (รองรับ top-level await)
 
 ### 3. Handle File Operations
 
@@ -39,8 +39,8 @@ related:
 
 1. ใช้ `Bun.file()` สำหรับ file reading/writing
 2. ใช้ `Bun.write()` สำหรับ file operations
-3. ใช้ `await $`ls -la`` สำหรับ directory operations
-4. ใช้ `Bun.glob()` สำหรับ file pattern matching
+3. ใช้ `await $\`ls -la\`` สำหรับ directory operations (หลัง `import { $ } from 'bun'`)
+4. ใช้ `new Bun.Glob('**/*.ts')` สำหรับ file pattern matching (`Bun.Glob` เป็น class ไม่ใช่ `Bun.glob()`)
 
 ### 4. Process Management
 
@@ -79,7 +79,7 @@ bun -e "await Bun.write('output.txt', 'Hello World')"
 
 ตัวอย่าง:
 ```bash
-bun -e "const result = await $`ls -la | grep '.json'`; console.log(result.stdout)"
+bun -e "import { $ } from 'bun'; const result = await $\`ls -la\`; console.log(result.stdout.toString())"
 ```
 
 ### 3. File Operations

@@ -34,8 +34,10 @@ related:
 
 1. ถ้าไม่ระบุ dependencies ที่ต้องการ: เปิด website ทุกตัว
 2. ถ้าระบุ dependencies ที่ต้องการ: เปิดเฉพาะตัวนั้นๆ
-3. ค้นหาข้อมูล config, API keys, หรือ environment variables ที่จำเป็น
-4. คัดลอกค่าที่ได้ไปใช้ใน project
+3. Resolve website ตามลำดับ: `homepage`/`repository` field ใน manifest → registry page (`https://www.npmjs.com/package/<name>` สำหรับ npm, `https://crates.io/crates/<name>` สำหรับ Cargo, `https://pkg.go.dev/<module>` สำหรับ Go)
+4. เปิดด้วย native OS command (`start`/`open`/`xdg-open`) หรือทำ `/open-web`
+5. ค้นหาข้อมูล config, API keys, หรือ environment variables ที่จำเป็น
+6. คัดลอกค่าที่ได้ไปใช้ใน project
 
 ## Rules
 

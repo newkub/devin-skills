@@ -17,7 +17,7 @@ related:
 
 ## Goal
 
-อ่าน `.env.example` แล้วเปิด URLs ทีจำเป็นสำหรับตั้งค่า secrets ทั้งหมด — ทั้งหน้า external services สำหรับสร้าง API keys และหน้า secret manager dashboard สำหรับ paste ค่า โดย user กรอกเองทั้งหมด
+อ่าน `.env.example` แล้วเปิด URLs ที่จำเป็นสำหรับตั้งค่า secrets ทั้งหมด — ทั้งหน้า external services สำหรับสร้าง API keys และหน้า secret manager dashboard สำหรับ paste ค่า โดย user กรอกเองทั้งหมด
 
 ## Scope
 
@@ -27,7 +27,7 @@ related:
 
 ### 1. Read Env Example
 
-> Goal: รวบรวม keys ทีต้องตั้งค่า
+> Goal: รวบรวม keys ที่ต้องตั้งค่า
 
 1. อ่าน `.env.example` จาก project root
 2. ถ้าไม่มี → สร้างจาก project manifest (`package.json`, `wrangler.jsonc`, ฯลฯ)
@@ -36,7 +36,7 @@ related:
 
 ### 2. Identify External Services
 
-> Goal: หา service ทีแต่ละ variable มาจาก
+> Goal: หา service ที่แต่ละ variable มาจาก
 
 Map variable names ไปยัง services:
 
@@ -52,7 +52,7 @@ Map variable names ไปยัง services:
 | `VERCEL_*` | Vercel | Token, Org ID, Project ID |
 | `RAILWAY_*` | Railway | Token |
 | `WORKOS_*` | WorkOS | API key, client ID |
-| `DATABASE_URL` | ฐานข้อมูลทีเลือก | Connection string |
+| `DATABASE_URL` | ฐานข้อมูลที่เลือก | Connection string |
 | `REDIS_*` | Redis provider | URL / password |
 | `LINE_*` | LINE Developers | Channel access token, secret |
 | `DISCORD_*` | Discord Developer Portal | Bot token, application ID |
@@ -62,10 +62,10 @@ Map variable names ไปยัง services:
 
 > Goal: เปิดหน้าสร้าง API keys สำหรับแต่ละ service
 
-เปิด URL ตามลำดับทีหลีกเลี่ยงไม่ได้:
+เปิด URL ตามลำดับที่หลีกเลี่ยงไม่ได้:
 
 - OpenAI: `https://platform.openai.com/api-keys`
-- Anthropic: `https://console.anthropic.com/settings/keys`
+- Anthropic: `https://console.anthropic.com/settings/keys` (redirect ไป `https://platform.claude.com/settings/keys`, verified 2026-09-12)
 - Google AI: `https://aistudio.google.com/app/apikey`
 - GitHub tokens: `https://github.com/settings/tokens`
 - Supabase: `https://supabase.com/dashboard/project/_/settings/api`
@@ -79,7 +79,7 @@ Map variable names ไปยัง services:
 - LINE: `https://developers.line.biz/console/`
 - Discord: `https://discord.com/developers/applications`
 
-บอก user ทีละ URL ว่าต้องสร้าง key อะไร:
+บอก user ที่ละ URL ว่าต้องสร้าง key อะไร:
 
 ```text
 เปิด `https://dashboard.stripe.com/test/apikeys` แล้ว copy `STRIPE_SECRET_KEY` ไปวางใน secret manager
@@ -89,11 +89,11 @@ Map variable names ไปยัง services:
 
 > Goal: เปิดหน้า secret manager สำหรับ user วาง key
 
-1. ตรวจ secret manager ที project ใช้ (default คือ Infisical)
+1. ตรวจ secret manager ที่ project ใช้ (default คือ Infisical)
 2. เปิด URL:
    - Infisical Cloud: `https://app.infisical.com/`
    - Infisical EU: `https://eu.infisical.com/`
-   - Self-hosted: ใช้ `INFISICAL_DOMAIN` ทีตั้งไว้
+   - Self-hosted: ใช้ `INFISICAL_DOMAIN` ที่ตั้งไว้
 3. บอก user ไปยัง path:
    - `Project → Secrets → Add Secret`
    - หรือ `Project → <environment> → Add Secret`
@@ -102,7 +102,7 @@ Map variable names ไปยัง services:
 
 > Goal: ให้ user กรอก secrets เองโดย AI ไม่เห็นค่า
 
-1. สร้างรายการ key ทีต้องใส่แยก environment:
+1. สร้างรายการ key ที่ต้องใส่แยก environment:
    ```text
    Environment: dev
    - STRIPE_SECRET_KEY (copy จาก Stripe dashboard)
@@ -112,7 +112,7 @@ Map variable names ไปยัง services:
 2. บอก user ให้:
    - คลิก "Add Secret" ใน secret manager
    - ใส่ `Key` = ชื่อ variable
-   - ใส่ `Value` = ค่า key ที copy มา
+   - ใส่ `Value` = ค่า key ที่ copy มา
    - เลือก `Environment` ให้ถูกต้อง
 3. ย้ำว่า AI ไม่ควรเห็นค่า
 4. ถ้า key หลาย environment (dev/staging/prod) ให้ add ซ้ำในแต่ละ environment
@@ -131,7 +131,7 @@ Map variable names ไปยัง services:
 ### 1. AI Does Not Read Secret Values
 
 - AI เปิด URL เท่านั้น ไม่รับค่า key จาก user
-- ไม่พิมพ์ค่า key ที user copy มาใส่ secret manager
+- ไม่พิมพ์ค่า key ที่ user copy มาใส่ secret manager
 - ไม่เก็บ key ลงไฟล์ ไม่เขียน `.env.local` ให้
 
 ### 2. User Does Manual Entry
@@ -168,6 +168,6 @@ Map variable names ไปยัง services:
 - URLs ของ external services ถูกเปิดสำหรับสร้าง keys
 - URL ของ secret manager dashboard ถูกเปิดสำหรับวาง keys
 - User กรอก secrets เองโดย AI ไม่เห็นค่า
-- รายการ keys ทีขาดหรือครบถูกต้อง
+- รายการ keys ที่ขาดหรือครบถูกต้อง
 - ถ้า app เปิดไม่ได้จาก missing keys ต้องมี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
 - พร้อมเรียก `/follow-secret-manager` เพื่อใช้งาน secrets

@@ -22,9 +22,10 @@ related:
 
 > Goal: wrangler พร้อมใช้และ authenticated
 
-1. `bunx wrangler --version` หรือ `npx wrangler --version`
+1. `bunx wrangler --version` หรือ `npx wrangler --version` — latest `4.131.1 (verified 2026-09-12)`, requires Node >= 22
 2. `bunx wrangler whoami` ตรวจ auth — ถ้าไม่ได้ login → แจ้ง user ให้ `wrangler login` (ห้าม login แทน)
 3. ตรวจ `wrangler.toml` หรือ `wrangler.jsonc` ที่ project root
+4. รัน `bunx wrangler types` ถ้าต้องการ regenerate `worker-configuration.d.ts` ให้ตรง bindings
 
 ### 2. Local Development
 
@@ -34,6 +35,7 @@ related:
 bunx wrangler dev                        # local dev server
 bunx wrangler dev --remote               # dev บน Cloudflare edge จริง
 bunx wrangler dev --port 8787
+bunx wrangler check startup              # วัด worker startup time (v4)
 ```
 
 ### 3. Deploy
@@ -44,6 +46,7 @@ bunx wrangler dev --port 8787
 bunx wrangler deploy                     # deploy worker
 bunx wrangler deploy --dry-run --outdir dist   # ตรวจ output ก่อน deploy จริง
 bunx wrangler versions list              # ดู versions
+bunx wrangler versions upload            # upload version โดยไม่ deploy
 bunx wrangler rollback                   # rollback version ล่าสุดก่อนหน้า
 bunx wrangler pages deploy <dir>         # deploy Pages project
 ```
@@ -68,11 +71,15 @@ bunx wrangler secret delete <NAME>
 > Goal: จัดการ KV, D1, R2, Queues
 
 ```bash
-bunx wrangler kv namespace list / kv key get <key> --namespace-id <id>
+bunx wrangler kv namespace list
+bunx wrangler kv key get <key> --namespace-id <id>
 bunx wrangler d1 list / d1 execute <db> --command "SELECT ..."
+bunx wrangler d1 export <db> --output dump.sql
 bunx wrangler r2 bucket list
 bunx wrangler queues list
 ```
+
+- v4 ใช้ space syntax (`kv namespace`, `kv key`, `r2 bucket`, `d1 execute`) — legacy colon syntax เช่น `kv:namespace` ถูก remove แล้ว
 
 ### 6. Logs And Observability
 

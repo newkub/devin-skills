@@ -16,7 +16,7 @@ related:
 เปิดหน้า Cloudflare Workers dashboard ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `list-cloudflare-projects`, `resolve-cloudflare-worker-fails`, `list-cloudflare-projects`, `resolve-cicd`, `follow-service-cloudflare`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `resolve-cloudflare-worker-fails`, `resolve-cicd`, `follow-service-cloudflare`
 
 ใช้เปิด dashboard สำหรับจัดการ Cloudflare Workers และ Pages โดยไม่แก้ไข config ใดๆ
 
@@ -24,16 +24,16 @@ related:
 
 ### 1. Resolve Account ID
 
-> Goal: ได้ Cloudflare account ID ทีถูกต้อง
+> Goal: ได้ Cloudflare account ID ที่ถูกต้อง
 
 1. รับ `account-id` จาก argument
 2. ถ้าไม่มี ให้หาจาก `CLOUDFLARE_ACCOUNT_ID` env var
-3. ถ้ายังไม่มี ให้รัน `wrangler whoami` หรือ `gh`? ดู account info
+3. ถ้ายังไม่มี ให้รัน `wrangler whoami` เพื่อดู account info ของ session ที่ login อยู่
 4. ถ้าหาไม่พบ → ทำ `/ask-me`
 
 ### 2. Build URL
 
-> Goal: สร้าง URL ทีถูกต้อง
+> Goal: สร้าง URL ที่ถูกต้อง
 
 1. ถ้ามี account ID → `https://dash.cloudflare.com/<account-id>/workers-and-pages`
 2. ถ้าไม่มี → `https://dash.cloudflare.com/?to=/:account/workers-and-pages`
@@ -60,7 +60,7 @@ related:
 ### 2. URL
 
 - ใช้ dash.cloudflare.com เท่านั้น
-- ไม่สร้าง URL ทีไม่ชัดเจน
+- ไม่สร้าง URL ที่ไม่ชัดเจน
 
 ### 3. Open Method
 
@@ -70,7 +70,7 @@ related:
 
 ### 4. Output
 
-- แจ้ง URL ทีเปิด
+- แจ้ง URL ที่เปิด
 - ถ้าเปิดไม่ได้ให้ report
 
 ## Expected Outcome
