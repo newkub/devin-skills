@@ -10,7 +10,7 @@ related:
   - follow-orm
   - follow-event-driven
   - follow-tool-vitest
-  - update-test-and-fix
+  - update-tests
   - refactor
   - refactor-workspace
   - update-references
@@ -95,7 +95,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 7. Testing Strategy
 
-> Goal: ทำ `/update-test-and-fix` เพื่อจัดการ tests ตาม Clean Architecture
+> Goal: ทำ `/update-tests` เพื่อจัดการ tests ตาม Clean Architecture
 
 1. ทำ `/follow-tool-vitest` สำหรับ testing framework setup
 2. Unit tests - Pure function tests ใน `test/modules/*/domain/` (AAA pattern)

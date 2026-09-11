@@ -11,7 +11,7 @@ related:
   - resolve-errors
   - run-dev
   - run-test-e2e
-  - update-e2e-test
+  - update-tests
   - create-report-in-dot-devin
   - update-docs
   - report
@@ -91,7 +91,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 > Goal: exploratory pass ที่ผ่าน ถูก promote เป็น e2e suite จริง — suite results คือ authoritative
 
-1. ถ้า PASS ครบ → ทำ `/update-e2e-test` เขียน/อัปเดต Playwright specs จาก flows ที่เพิ่ง test
+1. ถ้า PASS ครบ → ทำ `/update-tests` เขียน/อัปเดต Playwright specs จาก flows ที่เพิ่ง test
 2. ทำ `/run-test-e2e` รัน suite จริง — Playwright report คือ test result ของจริงสำหรับ `/update-docs`
 3. ถ้า suite setup ไม่ได้ → skip แล้วระบุใน report ว่า results เป็น exploratory เท่านั้น
 

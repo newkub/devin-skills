@@ -7,7 +7,6 @@ related:
   - plan
   - review-then-fix
   - review-plan
-  - plan
   - report-uxui-sketch
   - report-architecture-diagram
   - implement-to-production

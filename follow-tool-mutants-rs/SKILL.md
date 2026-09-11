@@ -6,7 +6,7 @@ related:
   - follow-lang-rust
   - follow-tool-nextest
   - follow-tool-cargo
-  - update-test-and-fix
+  - update-tests
   - follow-test
   - run-test-mutation
 ---
@@ -106,7 +106,7 @@ related:
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-tool-nextest ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /update-test-and-fix ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 
 ## References

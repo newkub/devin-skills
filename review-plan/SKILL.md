@@ -6,7 +6,6 @@ related:
   - report
   - suggest-next-action
   - plan
-  - plan
   - create-plan-in-dot-devin
   - implement-to-production
   - follow-plan

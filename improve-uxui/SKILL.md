@@ -9,7 +9,7 @@ related:
   - review-uxui
   - review-accessibility
   - deep-thinking
-  - update-e2e-test
+  - update-tests
   - use-subagents
   - create-report-in-dot-devin
   - update-docs
@@ -82,8 +82,8 @@ related:
 
 > Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
 
-1. หลัง verify ผ่านหมด → ทำ `/update-e2e-test` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
-2. ทำ `/run-test-e2e` re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-e2e-test` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
+1. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
+2. ทำ `/run-test-e2e` re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
 ### 8. Report
 

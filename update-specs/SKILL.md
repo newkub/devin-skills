@@ -3,7 +3,7 @@ name: update-specs
 description: สร้างหรืออัปเดต `<workspace>/specs/` สำหรับ test specs ตาม project type
 argument-hint: "[scope]"
 related:
-  - update-test-and-fix
+  - update-tests
   - update-project
   - update-project-rules
   - review-update
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-test-and-fix`, `/update-project`, `/update-project-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
+ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-tests`, `/update-project`, `/update-project-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
 
 ## Execute
 
@@ -96,7 +96,7 @@ related:
 - ถ้า workspace ไม่มี test framework → สร้าง `specs/overview.md` ระบุ recommended test strategy
 - ถ้างานเช็ค/verify → focus ที่ sync `specs/SPEC.md`
 
-- ใช้ /update-test-and-fix ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /review-update ถ้าจำเป็น
 - ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น

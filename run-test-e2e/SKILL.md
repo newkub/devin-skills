@@ -14,7 +14,7 @@ related:
   - run-verify
   - run-dev
   - use-agent-browser
-  - update-e2e-test
+  - update-tests
   - create-report-in-dot-devin
   - update-docs
   - suggest-next-action
@@ -30,7 +30,7 @@ related:
 
 - Playwright เป็น framework หลัก — ไม่ใช้ Cypress
 - `agent-browser` (headless) ใช้สำหรับ exploratory route/action testing เมื่อยังไม่มี Playwright suite หรือต้องการ ad-hoc verification
-- ถ้าต้องการ update/เขียน Playwright tests → `/update-e2e-test` (run-only skill นี้ไม่แก้ tests)
+- ถ้าต้องการ update/เขียน Playwright tests → `/update-tests` (run-only skill นี้ไม่แก้ tests)
 
 ## Execute
 
@@ -91,7 +91,7 @@ related:
 1. ดู test report จาก framework (`bunx playwright show-report` สำหรับ html report)
 2. ตรวจสอบ failed tests พร้อม screenshots, videos, traces
 3. จำแนก failure: source bug / outdated test / flaky / environment
-4. แก้ที่ root cause — ถ้า test ผิด → `/update-test-and-fix`; ถ้า source ผิด → `/resolve-errors`
+4. แก้ที่ root cause — ถ้า test ผิด → `/update-tests`; ถ้า source ผิด → `/resolve-errors`
 5. persist authoritative results → รัน Playwright ด้วย JSON reporter (`bunx playwright test --reporter=json > .devin/reports/<workspace>/playwright-<time>.json` หรือ `PLAYWRIGHT_JSON_OUTPUT_NAME`) แล้วเขียน summary `.devin/reports/<workspace>/e2e-<time>.md` ตาม format `/create-report-in-dot-devin` — stats (expected/unexpected/flaky/skipped/duration) + ลิงก์ `playwright-report/` — artifact นี้คือ e2e result ของจริงสำหรับ `/update-docs`
 
 ## Rules

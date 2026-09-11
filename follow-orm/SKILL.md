@@ -7,7 +7,7 @@ related:
   - follow-layered-architecture
   - review-dependencies
   - follow-lib-drizzle
-  - update-test-and-fix
+  - update-tests
   - delete
   - run-drizzle-studio
 ---
@@ -87,7 +87,7 @@ related:
 
 ### 7. Test Data Access
 
-> Goal: ทำ `/update-test-and-fix` เพื่อทดสอบ repository implementations
+> Goal: ทำ `/update-tests` เพื่อทดสอบ repository implementations
 
 1. Integration tests สำหรับ repository implementations กับ test database
 2. Unit tests สำหรับ mapper functions — test pure transformation

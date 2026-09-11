@@ -3,7 +3,6 @@ name: update-docs
 description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
 argument-hint: "[scope]"
 related:
-  - idea-features
   - check-should-update
   - check-monorepo
   - update-features-md
@@ -24,7 +23,7 @@ related:
 - ตั้งค่า `docs/` สำหรับ single project และ monorepo
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
-- รองรับ `update-features-md` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
+- รองรับ `update-features-md` โดยแยกหน้า `project/features`
 - reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-and-test`, `/improve-uxui` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
@@ -67,7 +66,7 @@ related:
 > Goal: ตั้งค่า nav และ sidebar ตาม docs type ที่ detect
 
 1. อ่าน `references/<type>.md` (`open-source`, `product`, `cli`) สำหรับ nav, sidebar sections และ content focus
-2. สร้าง/อัปเดท `docs/.vitepress/config.ts` — nav จาก `templates/nav-config.md`, sidebar จาก `templates/sidebar-<type>.md`
+2. สร้าง/อัปเดท `docs/.vitepress/config.ts` — full structure จาก `references/vitepress-config.md`, nav จาก `templates/nav-config.md`, sidebar จาก `templates/sidebar-<type>.md`; ถ้า multi-language → `references/i18n.md`
 3. ใช้ `templates/sidebar-development.md` สำหรับหมวด `/development/` ที่ share กันทุก type
 4. ถ้า monorepo → เพิ่ม sidebar จาก `templates/sidebar-monorepo.md`
 5. ใช้ `collapsed: true` เมื่อหมวดมีหลายหน้า
@@ -79,17 +78,18 @@ related:
 > Goal: เนื้อหาจากข้อมูลจริงใน project
 
 1. `index.md`: ใช้ `templates/homepage.md` — title, tagline, features list, quick start link, actions
-2. ทุกหน้าเนื้อหาอื่นใช้ `templates/content-page.md` เป็นโครง
-3. `project/overview.md`: สรุป project, architecture, tech stack, key concepts
-4. `project/features.md`: รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
-5. `getting-started/installation.md`: ขั้นตอนติดตั้ง ตรวจ dependencies
-6. `getting-started/usage.md`: ตัวอย่างใช้งานจริง
+2. ทุกหน้าใช้ template เฉพาะจาก `templates/index.md` — fallback `templates/content-page.md` เฉพาะหน้าที่ไม่มี template เฉพาะ
+3. `project/overview.md`: ใช้ `templates/overview.md` — สรุป project, architecture, tech stack, key concepts
+4. `project/features.md`: ใช้ `templates/features.md` — รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
+5. `getting-started/installation.md`: ใช้ `templates/installation.md` — ขั้นตอนติดตั้ง ตรวจ dependencies
+6. `getting-started/usage.md`: ใช้ `templates/usage.md` — ตัวอย่างใช้งานจริง
 7. `development/setup.md`: ตั้งค่า dev environment
-8. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
-9. `development/workflows.md`: slash commands, scripts, CI/CD
+8. `development/architecture.md`: ใช้ `templates/architecture.md` — สถาปัตยกรรม, conventions, boundaries
+9. `development/workflows.md`: ใช้ `templates/workflows.md` — slash commands, scripts, CI/CD
 10. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/reports/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
-11. `references/`: สรุป references
-12. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
+11. `references/`: สรุป references ด้วย templates เฉพาะ — `api.md`/`configuration.md`/`changelog.md`/`faq.md`/`glossary.md` ใช้ template ชื่อเดียวกัน; open-source type เพิ่ม `contributing.md` ด้วย `templates/contributing.md`; product type เพิ่ม `auth.md` ด้วย `templates/auth.md`; cli type เพิ่ม `commands/<name>.md` ด้วย `templates/commands.md`; `development/deployment.md` ใช้ `templates/deployment.md`
+12. `roadmap/index.md`: ใช้ `templates/roadmap.md` — สรุป roadmap (Now/Next/Later)
+13. monorepo: `workspaces/<name>.md` ใช้ `templates/workspace.md`
 
 ### 5. Integrate `update-features-md`
 
@@ -101,17 +101,7 @@ related:
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
 5. ไม่ต้องมี dropdown ใช้ heading และ bullet ธรรมดา
 
-### 6. Integrate `idea-features`
-
-> Goal: หน้า idea features ถูกต้อง
-
-1. ถ้า `/idea-features` เรียกมา จะมี `docs/roadmap/idea-features.md` หรือข้อมูลให้เขียน
-2. เขียน/อัปเดท `docs/roadmap/idea-features.md` ด้วยตาราง `Extends` และ `New`
-3. แต่ละ feature ใช้ heading `### <#> <feature>` แล้วเขียน `UX/UI` และ `Plan` เป็น bullet
-4. ตาราง markdown 27 คอลัมน์ ภาษาไทย body English
-5. รวม Key Findings, Summary, Architecture, Next Action ในเนื้อหา
-
-### 7. Content Quality
+### 6. Content Quality
 
 > Goal: เนื้อหาอ่านง่าย สม่ำเสมอ ไม่ซ้ำ
 
@@ -119,7 +109,7 @@ related:
 2. ตรวจ heading structure, frontmatter, links
 3. แก้ไขซ้ำซ้อนหรือ placeholder
 
-### 8. Update References
+### 7. Update References
 
 > Goal: links ไม่เสีย
 
@@ -160,13 +150,10 @@ related:
 ### 4. Feature Tables
 
 - `docs/project/features.md` ใช้ table `| Feature | Description | Module | Status |`
-- `docs/roadmap/idea-features.md` ใช้ table 27 คอลัมน์ เรียงตาม impact
-- feature แต่ละตัวละเอียดใต้ heading `###`
 
 ### 5. Language
 
 - เนื้อหา markdown ใช้ภาษาของ project หรือภาษาอังกฤษ
-- `docs/roadmap/idea-features.md` body ภาษาอังกฤษ ตารางภาษาไทย
 - ห้ามผสมภาษาในย่อหน้าเดียวกัน
 
 ### 6. No Workspace Duplicates
@@ -187,7 +174,7 @@ related:
 - `docs/` directory ที่ root มี VitePress config, nav, sidebar
 - Markdown files สมบูรณ์: index, project, features, getting-started, roadmap, development, references
 - `docs/project/features.md` มีตาราง features จาก `update-features-md`
-- `docs/roadmap/idea-features.md` มีตาราง `Extends` และ `New` จาก `idea-features`
+- `docs/roadmap/index.md` มี Now/Next/Later จาก `templates/roadmap.md`
 - ทุกไฟล์มี frontmatter
 - ไม่มี HTML/UX ซับซ้อน
 - Links ถูกต้อง ไม่เสีย

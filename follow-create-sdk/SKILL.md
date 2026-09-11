@@ -12,7 +12,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - run-test
-  - update-test-and-fix
+  - update-tests
   - update-devin-global-skills
   - update-devin-global-subagents
   - follow-create-web
@@ -138,7 +138,7 @@ related:
 - ใช้ /follow-create-zed-extensions ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
-- ใช้ /update-test-and-fix ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
 
 ## Expected Outcome
 

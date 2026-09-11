@@ -80,7 +80,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
    - `/update-specs` เพื่อสร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
-   - `/update-test-and-fix` เพื่ออัปเดต test setup
+   - `/update-tests` เพื่ออัปเดต test setup
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`

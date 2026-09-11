@@ -9,7 +9,6 @@ related:
   - suggest-next-action
   - deep-validate
   - update-project
-  - update-project
   - follow-tool-usage
 ---
 

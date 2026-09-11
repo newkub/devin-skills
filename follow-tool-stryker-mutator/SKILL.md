@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน Stryker Mutator �
 argument-hint: "[scope]"
 related:
   - follow-test
-  - update-test-and-fix
+  - update-tests
   - run-test
   - follow-tool-vitest
   - follow-lang-typescript
@@ -59,7 +59,7 @@ related:
 
 1. วิเคราะห์ surviving mutants
 2. เขียน tests เพิ่มเพื่อ catch missing cases
-3. ทำ `/update-test-and-fix` เพื่อเขียน tests ทีมีคุณภาพ
+3. ทำ `/update-tests` เพื่อเขียน tests ทีมีคุณภาพ
 4. รัน tests ธรรมดาก่อน แล้วรัน Stryker ซ้ำ
 
 ### 5. CI Integration

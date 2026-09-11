@@ -12,8 +12,7 @@ related:
   - run-test-coverage
   - run-check
   - run-verify
-  - update-test-and-fix
-  - update-unit-test
+  - update-tests
   - resolve-errors
   - create-report-in-dot-devin
   - update-docs
@@ -30,7 +29,7 @@ related:
 
 ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
-- ถ้าต้องการ update/เขียน unit tests → `/update-unit-test` (run-only skill นี้ไม่แก้ tests)
+- ถ้าต้องการ update/เขียน unit tests → `/update-tests` (run-only skill นี้ไม่แก้ tests)
 
 ## Execute
 
@@ -73,7 +72,7 @@ related:
    - error/exception → อ่าน stack trace หา file:line
    - timeout → performance หรือ hanging async
    - environment → missing deps, wrong cwd, missing fixtures
-2. ห้ามแก้ assertion ให้ผ่าน — ถ้า source ผิด → แก้ source (`/resolve-errors`); ถ้า test outdated → `/update-test-and-fix`
+2. ห้ามแก้ assertion ให้ผ่าน — ถ้า source ผิด → แก้ source (`/resolve-errors`); ถ้า test outdated → `/update-tests`
 3. ถ้า failure เดิมเกิดซ้ำ → หยุดแล้ว report แทนการวนแก้
 
 ### 4. Report

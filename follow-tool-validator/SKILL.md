@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-linter
   - follow-lib-zod
-  - update-test-and-fix
+  - update-tests
   - run-test
 ---
 
@@ -65,7 +65,7 @@ related:
 
 > Goal: ทดสอบ schemas และ error cases
 
-1. ทำ `/update-test-and-fix` สำหรับ happy path, invalid type, missing field, edge cases
+1. ทำ `/update-tests` สำหรับ happy path, invalid type, missing field, edge cases
 2. ทดสอบ custom error messages
 3. ทดสอบ schema composition/refinement
 4. รัน `/run-test` เพื่อ verify

@@ -15,7 +15,7 @@ related:
   - run-test-visual
   - run-test-coverage
   - run-test-mutation
-  - update-test-and-fix
+  - update-tests
 
   - deep-review-codebase
   - resolve-errors
@@ -29,7 +29,7 @@ related:
 
 Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
 
-- ถ้าต้องการ update/เขียน tests → `/update-unit-test`, `/update-integration-test`, `/update-e2e-test` ตาม layer (run-* เป็น run-only)
+- ถ้าต้องการ update/เขียน tests → `/update-tests`, `/update-tests`, `/update-tests` ตาม layer (run-* เป็น run-only)
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|
@@ -44,7 +44,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 | 9 | critical logic, mutation config | `/run-test-mutation` |
 | 10 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
-ดูเพิ่มเติม: /update-test-and-fix, /deep-review-codebase
+ดูเพิ่มเติม: /update-tests, /deep-review-codebase
 
 ## Execute
 
@@ -62,7 +62,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 > Goal: เลือก `run-test-*` ที่เกี่ยวข้องจาก signals
 
 1. สแกน `package.json`, configs, test dirs, routes — เทียบกับตารางใน Scope
-2. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ → `/update-test-and-fix` สร้าง tests ที่ขาดก่อน
+2. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ → `/update-tests` สร้าง tests ที่ขาดก่อน
 3. บันทึกรายการ test types ที่จะรันและเหตุผล — ไม่รันทุก type โดยไม่มี signal
 
 ### 3. Run In Fail-Fast Order
@@ -80,7 +80,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 1. ทำ `/deep-validate` กับ source ที่เกี่ยวข้อง และ review test files (`/deep-review-codebase` ถ้าต้องการ)
 2. จำแนกผล:
    - source ผิด → ระบุไฟล์ แนะนำ `/resolve-errors` หรือ `/edit-manual`
-   - test ผิด (assertion, mock, expectation outdated) → ระบุไฟล์ แนะนำ `/update-test-and-fix` หรือ `/edit-manual`
+   - test ผิด (assertion, mock, expectation outdated) → ระบุไฟล์ แนะนำ `/update-tests` หรือ `/edit-manual`
    - ไม่ชัดเจน → report ก่อนดำเนินการ
 3. ห้ามแก้โดยไม่มี evidence
 
@@ -88,7 +88,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: แก้ตามผล classify แล้วรันซ้ำ
 
-1. source ผิด → `/resolve-errors`; test ผิด → `/update-test-and-fix` หรือ `/edit-manual`
+1. source ผิด → `/resolve-errors`; test ผิด → `/update-tests` หรือ `/edit-manual`
 2. รัน tests ที่ fail อีกครั้ง — ถ้ายัง fail กลับไป Step 4
 3. Failure เดิมซ้ำ ≥3 ครั้ง → stop และ report
 
@@ -97,7 +97,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 > Goal: ครอบคลุมและรายงาน
 
 1. ทำ `/run-test-coverage` เมื่อ project มี coverage target
-2. ถ้าไม่ถึงเป้า → `/update-test-and-fix` เพิ่ม แล้วรันใหม่
+2. ถ้าไม่ถึงเป้า → `/update-tests` เพิ่ม แล้วรันใหม่
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 

@@ -17,7 +17,7 @@
 | 7 | `rules` | `/update-project-rules` |
 | 8 | `skills` ใน project | `/update-project-skills` |
 | 9 | `examples` | `/update-examples` |
-| 10 | `tests` | `/update-test-and-fix` |
+| 10 | `tests` | `/update-tests` |
 | 11 | `todo` | `/update-todo-md` |
 | 12 | `gitignore` | `/update-gitignore` |
 | 13 | `vscode` | `/update-dot-vscode` |

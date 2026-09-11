@@ -7,7 +7,6 @@ related:
   - plan
   - rethink
   - deep-thinking
-  - plan
   - report-scan-todo
   - report-file-structure
 ---
