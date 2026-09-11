@@ -46,9 +46,9 @@ related:
 
 ติดตั้ง tool ที่เลือก
 
-1. ติดตั้ง asciinema ด้วย `bun add -g asciinema`
-2. ติดตั้ง vhs ด้วย `bun add -g vhs`
-3. ติดตั้ง terminalizer ด้วย `bun add -g terminalizer`
+1. ติดตั้ง asciinema ด้วย `cargo install asciinema` หรือ `scoop install asciinema` — ไม่มีบน npm (verified 2026-09-12)
+2. ติดตั้ง vhs ด้วย `go install github.com/charmbracelet/vhs@latest` หรือ `winget install charmbracelet.vhs` — npm `vhs` เป็นคนละ package (verified 2026-09-12)
+3. ติดตั้ง terminalizer ด้วย `bun add -g terminalizer` (`terminalizer@0.12.0`, verified 2026-09-12)
 4. ติดตั้ง tuirec ด้วย `go install github.com/gui-cs/tuirec/cmd/tuirec@latest`
 
 ### 4. Record Session

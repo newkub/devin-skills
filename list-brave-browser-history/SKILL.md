@@ -51,6 +51,8 @@ related:
    LIMIT <limit>
    ```
 3. แปลง `visit_time` จาก microseconds ไป ISO timestamp
+Latest: `sqlite3@6.0.1` npm binding (verified 2026-09-12) — `bun:sqlite` built-in ก็ใช้ได้
+
 4. ถ้าไม่มี `sqlite3` → ใช้ `bun add -g sqlite3` หรือ tool อื่น
 
 ### 4. Filter And Format

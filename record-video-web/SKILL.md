@@ -23,6 +23,8 @@ related:
 
 ติดตั้งและตรวจสอบ `agent-browser` ตาม `/use-agent-browser` ข้อ 1
 
+Latest: `agent-browser@0.37.1` (verified 2026-09-12)
+
 1. ตรวจสอบด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser` แล้ว `agent-browser install`
 

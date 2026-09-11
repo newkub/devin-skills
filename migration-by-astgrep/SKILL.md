@@ -32,6 +32,8 @@ related:
 
 > Goal: มี ast-grep CLI ใช้งาน
 
+Latest: `@ast-grep/cli@0.45.3` (verified 2026-09-12) — `mise use -g ast-grep` หรือ `bunx @ast-grep/cli`
+
 1. ตรวจสอบ `ast-grep` ด้วย `ast-grep --version`
 2. ถ้าไม่มี → ติดตั้งด้วย `mise use -g ast-grep` หรือ package manager ทีเหมาะสม
 3. ใช้ `bunx @ast-grep/cli --version` ถ้าไม่ต้องการ global install

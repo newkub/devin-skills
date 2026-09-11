@@ -37,6 +37,8 @@ related:
 
 1. ตรวจสอบว่า `eza` พร้อมใช้ด้วย `eza --version`
 2. ถ้าไม่มี:
+หมายเหตุ: `eza` ไม่มีบน npm — install ผ่าน `mise use -g eza`, `scoop install eza` หรือ `cargo install eza` (verified 2026-09-12)
+
    - ลองใช้ `mise use -g eza` หรือ package manager ที่เหมาะสม
    - fallback ใช้ `tree` หรือ `ls -R` ถ้าติดตั้งไม่ได้
 3. ระบุ root path จาก argument (default: current directory)

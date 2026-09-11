@@ -29,6 +29,8 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 
 ติดตั้ง Railway CLI และตั้งค่า authentication
 
+Latest: `@railway/cli@5.52.1` (verified 2026-09-12) — install script `railway.com/install.sh` หรือ npm global
+
 1. ตรวจสอบว่ามี `railway` CLI หรือไม่ ถ้าไม่มีให้ติดตั้งด้วย `bash <(curl -fsSL https://railway.com/install.sh)` หรือ `bun add -g @railway/cli`
 2. ถ้ายังไม่ authenticated ให้รัน `railway login` (เปิด browser สำหรับ OAuth) หรือ `railway login --browserless` สำหรับ headless
 3. สำหรับ CI/CD ให้ตั้งค่า `RAILWAY_TOKEN` หรือ `RAILWAY_API_TOKEN` แทน interactive login

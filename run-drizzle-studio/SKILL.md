@@ -45,6 +45,8 @@ related:
 > Goal: รัน Drizzle Studio ด้วยคำสั่งที่ถูกต้อง
 
 1. เลือกคำสั่งตาม package manager:
+Latest: `drizzle-kit@0.31.10` (verified 2026-09-12)
+
    - `bunx drizzle-kit studio`
    - `npx drizzle-kit studio`
    - `pnpm dlx drizzle-kit studio`

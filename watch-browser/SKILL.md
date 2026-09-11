@@ -30,6 +30,8 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 > Goal: ยืนยันว่า `agent-browser` MCP server พร้อมใช้งาน
 
+Latest: `agent-browser@0.37.1` (verified 2026-09-12)
+
 1. เรียก `mcp_list_servers` เพื่อหา server ชื่อ `agent-browser` (หรือชื่อที่ตั้งไว้)
 2. ถ้ายังไม่มี → ทำ `/update-devin-global-mcp` เพิ่ม server ด้วยค่า:
    - `command`: `agent-browser`, `args`: `["mcp"]` (ต้อง `bun add -g agent-browser` ก่อน)

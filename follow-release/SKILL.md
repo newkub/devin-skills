@@ -82,6 +82,8 @@ related:
 > Goal: ตั้งค่า VS Code extensions สำหรับ automated releases ลง Marketplace
 
 1. ตรวจสอบ `package.json` มี `publisher`, `name`, `version`, `displayName`, `description`, `repository`, `bugs`, `homepage`, `engines.vscode`, `categories`, `keywords`
+Latest: `@vscode/vsce@3.9.2` (verified 2026-09-12) — package `vsce` เดิม rename เป็น `@vscode/vsce`
+
 2. ติดตั้ง `bun add -D @vscode/vsce` และใช้ `bunx vsce` ใน scripts
 3. สร้าง publisher บน `marketplace.visualstudio.com` แล้วระบุใน `package.json`
 4. สร้าง PAT token จาก Azure DevOps เป็น `VSCE_PAT` ใน environment variables แล้วรัน `vsce login publisher-name`

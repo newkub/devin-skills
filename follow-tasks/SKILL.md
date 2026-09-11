@@ -47,6 +47,8 @@ related:
 > Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
 
 1. ตรวจสอบ package manager (`bun`, `npm`, `pnm`, `yarn`, `cargo`, `pip`, `go`)
+Latest: `taze@21.1.0`, `lefthook@2.1.12` (verified 2026-09-12)
+
 2. สำหรับ Node.js/Bun → ทำ `/follow-tool-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
 3. สำหรับ tools ที่จัดการด้วย mise → รัน `mise upgrade` เพื่ออัปเดต dev tools (เช่น `bun`, `gitleaks`, `hk`); ถ้าต้องการ bump version ใน `mise.toml` ด้วย → ใช้ `mise upgrade --bump`
 4. Update ตาม ecosystem: Node.js/Bun ใช้ `taze` (Root Only), Rust ใช้ `cargo update`, Python ใช้ `pip install -U`, Go ใช้ `go get -u ./... && go mod tidy`

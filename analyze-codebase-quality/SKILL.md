@@ -22,7 +22,7 @@ related:
 
 > Goal: ติดตั้ง CLI
 
-1. `bun add -g analyze-codebase-quality`
+1. `bun add -g github:newkub/analyze-codebase-quality` — ไม่มีบน npm (verified 2026-09-12)
 2. หรือ clone `https://github.com/newkub/analyze-codebase-quality.git` แล้ว `bun install && bun run build`
 
 ### 2. Analyze
