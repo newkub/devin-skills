@@ -93,10 +93,14 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. sessions/tokens: HttpOnly+Secure+SameSite, rotation, revocation, regenerate id หลัง login
+2. OAuth/MFA: state/nonce, PKCE, redirect allowlist, MFA enforcement
+3. authorization: server-side checks ทุก mutation, IDOR ownership checks, privilege audit
+4. verify: real flows end-to-end + attack checks (expired/tampered token → deny)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

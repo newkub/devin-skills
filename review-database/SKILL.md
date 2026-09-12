@@ -14,12 +14,30 @@ related:
 
 ## Goal
 
-ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity ก่อนแก้ไขตาม section `## Fix`
+ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity ก่อนแก้ไขตาม section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: slow query log, `EXPLAIN ANALYZE`, query count/request
+2. N+1 → eager loading/batch; verify query count ลดจริง
+3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
+4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. verify: EXPLAIN before/after, tests ผ่าน
 ## Scope
 
-ใช้เมื่อต้อง review database ของ project: schema, relations, indexes, query patterns, migration safety — รองรับ ORM ทั่วไป (Drizzle, Prisma) และ raw SQL — ไม่แก้ไข schema หรือ data (แก้ไขตาม section `## Fix`)
+ใช้เมื่อต้อง review database ของ project: schema, relations, indexes, query patterns, migration safety — รองรับ ORM ทั่วไป (Drizzle, Prisma) และ raw SQL — ไม่แก้ไข schema หรือ data (แก้ไขตาม section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: slow query log, `EXPLAIN ANALYZE`, query count/request
+2. N+1 → eager loading/batch; verify query count ลดจริง
+3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
+4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. verify: EXPLAIN before/after, tests ผ่าน
 ## Execute
 
 ### 1. Discover Database Layer
@@ -59,9 +77,17 @@ related:
 > Goal: สรุป findings พร้อม severity และ fix direction
 
 1. ทำ `/report` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้า findings เกี่ยวกับ performance → เชื่อม `/review-performance`
+2. ชี้ไป section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: slow query log, `EXPLAIN ANALYZE`, query count/request
+2. N+1 → eager loading/batch; verify query count ลดจริง
+3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
+4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. verify: EXPLAIN before/after, tests ผ่าน
 ## Rules
 
 ### 1. Read Only
@@ -85,17 +111,36 @@ related:
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
+
+1. baseline: slow query log, `EXPLAIN ANALYZE`, query count/request
+2. N+1 → eager loading/batch; verify query count ลดจริง
+3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
+4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. verify: EXPLAIN before/after, tests ผ่าน
+- ใช้ /review-performance ถ้าจำเป็น
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-performance ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม schema, indexes, queries, migrations, integrity
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix`
+- next action ชัดเจนผ่าน section `## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: slow query log, `EXPLAIN ANALYZE`, query count/request
+2. N+1 → eager loading/batch; verify query count ลดจริง
+3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
+4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. verify: EXPLAIN before/after, tests ผ่าน

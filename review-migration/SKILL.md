@@ -96,10 +96,14 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. unsafe ops: NOT NULL → backfill ก่อน; DROP/RENAME → expand-contract; big tables → batch/online tools
+2. rollback: ทุก migration มี down — test จริงบน copy
+3. ordering/idempotent: dependencies ถูก, `IF NOT EXISTS`, data แยกจาก schema
+4. verify: up→down→up บน existing-data copy + lock duration estimate
 ## Verify
 
 > ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied (merged from: verify-migration-data)

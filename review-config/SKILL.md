@@ -114,10 +114,15 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. env vars: เทียบ `.env.example` vs code usage — ครบ + ลบ unused
+2. validation: schema ที่ startup, defaults ปลอดภัย, coercion ถูก
+3. secrets/hardcode: ย้าย env/secret manager, prefix rules ถูก (client vs server)
+4. drift: `/report-config-drift` reconcile ข้าม envs; consolidate sprawl
+5. verify: boot ทุก env ผ่าน + missing-var error ชัด
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

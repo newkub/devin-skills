@@ -148,10 +148,15 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. headers: CSP, HSTS, X-Content-Type-Options, Referrer-Policy, frame-ancestors — verify ด้วย curl บน response จริง
+2. secrets: ย้าย env/secret manager, rotate ที่รั่ว, ห้าม leak เข้า client bundle
+3. injection: parameterized queries, escaping, validation ที่ boundary
+4. auth/session: HttpOnly+Secure+SameSite cookies, server-side checks, rate limit auth endpoints
+5. deps: `/run-audit` — patch Critical/High ก่อน
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

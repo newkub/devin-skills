@@ -107,10 +107,15 @@ related:
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. unused deps: knip/depcheck + grep verify ก่อนลบ — ระวัง config/plugin/peer refs
+2. dedupe versions ใน lockfile, consolidate overlapping libs
+3. vulnerabilities: patch Critical/High; major upgrade ที่ break → migration plan
+4. stale: patch/minor batch, major ทีละตัว — ห้าม version <7 วัน
+5. verify: clean install + `/run-check` + tests
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

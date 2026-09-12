@@ -130,13 +130,15 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
-- ใช้ /run-docs ถ้าจำเป็น
-- ใช้ /run-review ถ้าจำเป็น
-
+1. accuracy: commands/APIs/env vars ตรง source จริง — verify หรือรันจริง
+2. coverage: features/public APIs ที่ขาด docs → เขียนตาม conventions
+3. freshness: stale sections update/ลบ; onboarding walkthrough ตามจริง
+4. links/structure: `/check-dead-link`, heading hierarchy, TOC/sidebar sync
+5. verify: docs build ผ่านไม่มี warnings
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 

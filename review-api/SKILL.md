@@ -21,12 +21,30 @@ related:
 
 ## Goal
 
-ตรวจสอบ API design — REST/resource conventions, versioning, error handling, authn/authz, input validation, response formats และ documentation ก่อนแก้ไขตาม section `## Fix`
+ตรวจสอบ API design — REST/resource conventions, versioning, error handling, authn/authz, input validation, response formats และ documentation ก่อนแก้ไขตาม section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
+2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
+3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
+5. verify: `/check-api-contract` diff = intended only, tests ผ่าน
 ## Scope
 
-ใช้เมื่อต้อง review API surface ของ project: REST, GraphQL, RPC (เช่น oRPC/tRPC) — ครอบคลุม contract, consistency และ security posture — ไม่แก้ไข implementation (แก้ไขตาม section `## Fix`)
+ใช้เมื่อต้อง review API surface ของ project: REST, GraphQL, RPC (เช่น oRPC/tRPC) — ครอบคลุม contract, consistency และ security posture — ไม่แก้ไข implementation (แก้ไขตาม section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
+2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
+3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
+5. verify: `/check-api-contract` diff = intended only, tests ผ่าน
 ## Execute
 
 ### 1. Discover API Surface
@@ -66,9 +84,17 @@ related:
 > Goal: สรุป findings พร้อม severity และ fix direction
 
 1. ทำ `/report` พร้อม columns: No., Endpoint, Severity, Finding, Evidence, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้า security findings เสี่ยงสูง → เชื่อม `/review-security` และ `/review-security`
+2. ชี้ไป section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
+2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
+3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
+5. verify: `/check-api-contract` diff = intended only, tests ผ่าน
 ## Rules
 
 ### 1. Contract First
@@ -92,17 +118,36 @@ related:
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
+
+1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
+2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
+3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
+5. verify: `/check-api-contract` diff = intended only, tests ผ่าน
+- ใช้ /review-security ถ้าจำเป็น
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-security ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน API findings ครอบคลุม conventions, validation, errors, auth, docs
 - ทุก finding มี endpoint evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix`
+- next action ชัดเจนผ่าน section `## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
+2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
+3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
+5. verify: `/check-api-contract` diff = intended only, tests ผ่าน

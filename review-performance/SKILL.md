@@ -153,10 +153,15 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. profile ก่อนแก้: `/run-bench`/profiler baseline — แก้เฉพาะ bottleneck ที่วัดได้
+2. hot paths: memoize, complexity ลด, async/batch sync work
+3. memory: allocations ลด, leaks fixed, unbounded growth → bounds
+4. web vitals: LCP/INP/CLS — LCP image preload, third-party defer, layout stability
+5. verify: benchmark before/after + tests ผ่าน — ห้ามเปลี่ยน correctness
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
@@ -169,4 +174,14 @@ Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่�
 - Severity และ recommendations ชัดเจน
 - ไม่ซ้ำซ้อนกับ review skills อื่น
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-- ถ้าต้อง optimize ให้ทำ section `## Fix`
+- ถ้าต้อง optimize ให้ทำ section `## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. profile ก่อนแก้: `/run-bench`/profiler baseline — แก้เฉพาะ bottleneck ที่วัดได้
+2. hot paths: memoize, complexity ลด, async/batch sync work
+3. memory: allocations ลด, leaks fixed, unbounded growth → bounds
+4. web vitals: LCP/INP/CLS — LCP image preload, third-party defer, layout stability
+5. verify: benchmark before/after + tests ผ่าน — ห้ามเปลี่ยน correctness

@@ -129,10 +129,14 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. meta/OG: title/description unique ต่อ route, og:image absolute URL, canonical ถูกต้อง
+2. structured data: JSON-LD ตาม page type, sitemap/robots ครบ public routes, hreflang ถ้าหลาย locale
+3. content: h1 เดียวต่อ route, alt images, internal links ไม่มี orphan routes
+4. verify: curl/view-source — meta ต้องอยู่ใน HTML (SSR) ไม่ใช่ client-injected; `/run-check` ผ่าน
 ## Expected Outcome
 - รายงาน SEO findings ครอบคลุมทุก dimension
 - Review score ต่อ dimension และ overall

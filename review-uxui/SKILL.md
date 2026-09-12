@@ -160,10 +160,13 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. browser fix pass → `/improve-uxui` (orchestrates watch passes + Playwright sync)
+2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
+3. verify: re-run browser pass + `/run-test-e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

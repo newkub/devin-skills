@@ -191,3 +191,15 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 - security, cross-platform, versioning/docs coverage ที่ตรวจแล้ว
 - Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. help/discovery: `--help` ครบทุก command, naming consistent, no-args → help ไม่ใช่ crash
+2. errors/exit codes: message บอกสาเหตุ+ทำอะไรต่อ, exit codes ถูก, stderr/stdout แยก
+3. output: `--json` flag, TTY-only spinners, destructive → confirm + dry-run
+4. verify: รัน commands จริงทั้ง TTY/non-TTY + `/run-test-cli`
+5. fix guide: `review-quality/references/fix-improve-cli-ux.md`

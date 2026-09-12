@@ -97,10 +97,16 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. baseline: run history จริง — duration/job, cache hit rate, flake rate
+2. caching: lockfile keys, build cache, `--frozen-lockfile`
+3. parallelism: matrix เฉพาะ axes จำเป็น, concurrency cancel, `needs:` graph, timeouts ครบ
+4. reliability: path filters, flaky root-cause fixes
+5. security: pin SHAs, least-privilege permissions, OIDC แทน long-lived keys
+6. docker images: multi-stage, layer cache, minimal base
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

@@ -101,7 +101,7 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only; แก้ findings ทำผ่าน `/deep-review-then-fix` (canonical fix skill เดียวที่อ่าน fix guides จาก `review-*/references/`). `improve-*` (15) และ `optimize-*` (9) ส่วนใหญ่เป็น alias stubs ไป `/deep-review-then-fix` — ตัวจริงที่เหลือ: `improve`, `improve-uxui`, `improve-devin-global-skills`.
+- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; multi-domain fix orchestration → `/deep-review-then-fix` (อ่าน fix guides จาก `review-*/references/`). `improve-*` (3): `improve`, `improve-uxui`, `improve-devin-global-skills`; domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
 - `list-*` (32): inventory, lookup, and listing utilities.
 - `update-*` (41): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (32): reporting, diagrams, and visualization helpers.

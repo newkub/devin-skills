@@ -128,10 +128,15 @@ observability review สำหรับ: metrics collection, distributed tracing
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. logging: structured + request context (trace_id), error paths log ครบ, redact secrets/PII
+2. metrics: golden signals (RED/USE), business metrics, controlled cardinality
+3. tracing: spans ครบ critical paths, context propagation, error sampling
+4. alerts: actionable + symptom-based + runbook owner — ห้าม noise
+5. verify: trigger test error → log/metric/trace/alert ปรากฏ
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

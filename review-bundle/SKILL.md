@@ -11,8 +11,17 @@ related:
 
 ## Goal
 
-ตรวจสอบ bundle size, build output, chunks และ output ก่อน build production โดยไม่แก้ไข config ก่อนส่งต่อไปยัง section `## Fix`
+ตรวจสอบ bundle size, build output, chunks และ output ก่อน build production โดยไม่แก้ไข config ก่อนส่งต่อไปยัง section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: `/run-build` + bundle analyzer — sizes ต่อ chunk, biggest deps
+2. code splitting: route-based `import()`, vendor split, lazy heavy features
+3. tree shaking: named imports, `sideEffects`, dev-only code ออก
+4. compression: brotli/gzip, minify, hashed names + long-term cache
+5. verify: build เทียบ before/after, smoke test lazy chunks
 ## Scope
 
 ใช้กับ project ที่ใช้ Vite / Rolldown / esbuild / Webpack หรือ bundler ใดก็ตาม โดยเฉพาะ monorepo
@@ -48,9 +57,17 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report` ด้วย columns: No., Area, Severity, Finding, Evidence, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี assets ปัญหาด้วย → เชื่อม `/review-assets`
+2. ชี้ไป section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: `/run-build` + bundle analyzer — sizes ต่อ chunk, biggest deps
+2. code splitting: route-based `import()`, vendor split, lazy heavy features
+3. tree shaking: named imports, `sideEffects`, dev-only code ออก
+4. compression: brotli/gzip, minify, hashed names + long-term cache
+5. verify: build เทียบ before/after, smoke test lazy chunks
 ## Rules
 
 ### 1. Read Only
@@ -65,17 +82,36 @@ related:
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
+
+1. baseline: `/run-build` + bundle analyzer — sizes ต่อ chunk, biggest deps
+2. code splitting: route-based `import()`, vendor split, lazy heavy features
+3. tree shaking: named imports, `sideEffects`, dev-only code ออก
+4. compression: brotli/gzip, minify, hashed names + long-term cache
+5. verify: build เทียบ before/after, smoke test lazy chunks
+- ใช้ /review-assets ถ้าจำเป็น
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-assets ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม bundle size, chunks, deps
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix`
+- next action ชัดเจนผ่าน section `## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: `/run-build` + bundle analyzer — sizes ต่อ chunk, biggest deps
+2. code splitting: route-based `import()`, vendor split, lazy heavy features
+3. tree shaking: named imports, `sideEffects`, dev-only code ออก
+4. compression: brotli/gzip, minify, hashed names + long-term cache
+5. verify: build เทียบ before/after, smoke test lazy chunks

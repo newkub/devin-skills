@@ -85,28 +85,16 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: Findings กระชับ อ่านง่าย ไม่มี noise
 
-1. ทำ section `## Fix` กับ findings
-2. กรอง noise และ low-value findings
-3. รวม findings ที่ซ้ำกัน
-4. จัดกลุ่มที่เกี่ยวข้อง
-5. พิจารณา tech debt ที่ควร simplify ทำตาม `references/tech-debt.md`
+1. ทำ section `## Fix
 
-### 8. Report
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-> Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
+### Fix Steps (types/code quality)
 
-1. ทำ `/report`
-2. สร้าง Quality Metrics Summary, Findings by Category, Recommended Actions
-3. คำนวณ review score ทำตาม `references/scoring.md`
-4. ทำ `/suggest-next-action`
-
-### 9. Implement All
-
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
-
-1. ทำ `/implement-to-production`
-2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings
-
+1. types: เปิด strict flags ทีละตัว, `any`→`unknown`+narrowing, casts→guards, public APIs typed
+2. consistency: patterns, API shapes, error handling, doc style ตาม fix guides
+3. simplicity: ลดความซับซ้อน, imports สะอาด (unused ลบ, barrel files)
+4. verify: `/run-typecheck` + tests ผ่าน — types only ห้ามเปลี่ยน runtime
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (quality)
@@ -133,18 +121,14 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (quality)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Merged from: improve-cli-ux, improve-consistency, improve-simplicity, optimize-imports
+### Fix Steps (types/code quality)
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (quality)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (quality)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (quality)
-
-- CLI UX findings → `/deep-review-then-fix` (fix guide: `references/fix-improve-cli-ux.md`)
-- `references/fix-improve-consistency.md` — ปรับ consistency ข้าม codebase — patterns, API shapes, error handling, config และ doc style
-- `references/fix-improve-simplicity.md` — ปรับความกระชับ — ลดความซับซ้อนของ content, code, architecture, workflows หรือ skills
-- `references/fix-optimize-imports.md` — จัดการ imports ทั้ง project ลบ unused, แก้ barrel files ที่ทำ tree-shaking พัง
+1. types: เปิด strict flags ทีละตัว, `any`→`unknown`+narrowing, casts→guards, public APIs typed
+2. consistency: patterns, API shapes, error handling, doc style ตาม fix guides
+3. simplicity: ลดความซับซ้อน, imports สะอาด (unused ลบ, barrel files)
+4. verify: `/run-typecheck` + tests ผ่าน — types only ห้ามเปลี่ยน runtime
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

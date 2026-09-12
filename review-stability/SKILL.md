@@ -136,10 +136,15 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. error handling: unhandled paths → catch ที่ boundary, ห้าม swallowed errors
+2. timeouts/retries: ทุก outbound call มี timeout; backoff+jitter+max attempts
+3. resources: cleanup connections/listeners, unbounded caches → bounds
+4. failure modes: graceful degradation, fail-fast startup, graceful shutdown
+5. verify: failure-injection tests ผ่าน
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

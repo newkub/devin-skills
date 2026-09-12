@@ -10,8 +10,18 @@ related:
 
 ## Goal
 
-ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อไปยัง section `## Fix`
+ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อไปยัง section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: cost/service, top spenders, trend
+2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
+3. right-size ตาม utilization evidence; storage tiers
+4. transfer: CDN cache, compression, batching; log/metric volume
+5. CI spend: path filters, right-size runners, artifact retention
+6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
 ## Scope
 
 ใช้กับ cloud deployment: Cloudflare Workers, AWS, Vercel, fly.io โดย audit usage โดยไม่แก้ไข resources
@@ -60,9 +70,18 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี performance ปัญหา → เชื่อม `/review-performance`
+2. ชี้ไป section `## Fix
 
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: cost/service, top spenders, trend
+2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
+3. right-size ตาม utilization evidence; storage tiers
+4. transfer: CDN cache, compression, batching; log/metric volume
+5. CI spend: path filters, right-size runners, artifact retention
+6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
 ## Rules
 
 ### 1. Read Only
@@ -77,17 +96,38 @@ related:
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
+
+1. baseline: cost/service, top spenders, trend
+2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
+3. right-size ตาม utilization evidence; storage tiers
+4. transfer: CDN cache, compression, batching; log/metric volume
+5. CI spend: path filters, right-size runners, artifact retention
+6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
+- ใช้ /review-performance ถ้าจำเป็น
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-performance ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม compute, storage, bandwidth, third-party
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix`
+- next action ชัดเจนผ่าน section `## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. baseline: cost/service, top spenders, trend
+2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
+3. right-size ตาม utilization evidence; storage tiers
+4. transfer: CDN cache, compression, batching; log/metric volume
+5. CI spend: path filters, right-size runners, artifact retention
+6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk

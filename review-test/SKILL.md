@@ -96,10 +96,15 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ## Fix
 
-> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
+### Fix Steps
 
+1. baseline: coverage, suite duration, flaky list, `/check-test-isolation`
+2. flaky/isolation: per-test setup, fake timers/seeded RNG, quarantine ที่แก้ไม่ทัน
+3. coverage gaps: critical paths ก่อน — `/update-tests` เขียน test ใหม่
+4. quality: specific assertions, minimal mocks, merge duplicates
+5. verify: `/run-test-all` ผ่าน 3 รอบไม่ flaky, coverage delta
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
