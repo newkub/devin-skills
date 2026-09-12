@@ -27,7 +27,7 @@
 > Goal: เข้าใจ project และระบุช่องว่าง
 
 1. ทำ `/analyze-project` และอ่าน `docs/project/features.md` ถ้ามี
-2. ทำ `/bench-competitors` เฉพาะมิติ features (step 2) เพื่อ benchmark เทียบคู่แข่งก่อนคิดไอเดีย
+2. ทำ `/bench-competitors-and-deep-plan` เฉพาะมิติ features (step 2) เพื่อ benchmark เทียบคู่แข่งก่อนคิดไอเดีย
 3. ทำ `/learn-web` เพื่อศึกษาแนวโน้มตลาดและความต้องการของผู้ใช้
 4. ระบุ gaps และ opportunities จากการวิเคราะห์
 5. ถ้าเข้าถึง project ไม่ได้ → stop และ report

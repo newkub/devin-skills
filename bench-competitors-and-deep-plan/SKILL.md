@@ -1,6 +1,6 @@
 ---
-name: bench-competitors
-description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
+name: bench-competitors-and-deep-plan
+description: ศึกษาคู่แข่ง วางแผนลึก และปรับปรุง project ให้ดีกว่าในทุกมิติ
 argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
@@ -20,7 +20,7 @@ related:
 
 ## Goal
 
-ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
+ศึกษาคู่แข่ง วางแผนลึก และปรับปรุง project ให้ดีกว่าในทุกมิติ
 
 ## Scope
 
