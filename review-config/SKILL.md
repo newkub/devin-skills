@@ -3,7 +3,7 @@ name: review-config
 description: Review config files หา drift, missing, duplicate, shared config และ dependencies catalog
 argument-hint: "[path]"
 related:
-  - deep-review-then-fix
+  - review-then-fix
   - report-config-files
   - setup-cicd
   - setup-package
@@ -114,7 +114,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
 
 ### Fix Steps
 

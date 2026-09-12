@@ -128,7 +128,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
 
 ### Fix Steps
 

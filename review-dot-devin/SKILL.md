@@ -3,7 +3,7 @@ name: review-dot-devin
 description: ตรวจสอบโครงสร้าง .devin ก่อน update-dot-devin แก้ไข ครอบคลุม hooks และ workspace
 argument-hint: "[scope]"
 related:
-  - deep-review-then-fix
+  - review-then-fix
   - scan-codebase
   - check-monorepo
   - report
@@ -21,7 +21,7 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
 
 ใช้ก่อนเรียก `update-dot-devin` — ตรวจเฉพาะ structure ของ `.devin/`, `.devin/hooks/`, `hooks.json`, `AGENTS.md` references, `sgconfig.yml` และ ast-grep `rules/` ที่ project root ไม่ตรวจเนื้อหา rules ใน `.devin/rules/` (scope ของ `review-rules`) ทำ review เท่านั้น ไม่แก้ไข `.devin`
 
-แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass)
+แก้ findings → ใช้ `/review-then-fix` (dedicated fix pass)
 
 ## Execute
 

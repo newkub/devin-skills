@@ -3,7 +3,7 @@ name: review-auth
 description: Review authentication and authorization — identity, sessions, tokens, OAuth, MFA, RBAC/ABAC
 argument-hint: "[scope-or-subsystem]"
 related:
-  - deep-review-then-fix
+  - review-then-fix
   - review-security
   - follow-lib-better-auth
   - follow-lib-simplewebauthn
@@ -93,7 +93,7 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
 
 ### Fix Steps
 

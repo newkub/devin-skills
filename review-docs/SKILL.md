@@ -24,7 +24,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
-สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+สำหรับ dedicated fix pass อยู่ที่ `/review-then-fix`
 
 ## Execute
 
@@ -75,7 +75,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 ### 8. Check README.md (merged from: review-readme-md)
 
-สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+สำหรับ dedicated fix pass อยู่ที่ `/review-then-fix`
 
 > Goal: ตรวจ `README.md` ทั้ง root และ workspace — section order, tables, coverage
 
@@ -130,7 +130,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
 
 ### Fix Steps
 

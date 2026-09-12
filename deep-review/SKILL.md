@@ -5,7 +5,7 @@ argument-hint: "[path-or-target]"
 related:
   - run-review
   - update-review-cli
-  - deep-review-then-fix
+  - review-then-fix
   - create-report-in-dot-devin
   - review-quality
   - review-security
@@ -25,7 +25,7 @@ related:
 
 ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
 
-ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
+ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/review-then-fix`
 
 ## Execute
 
@@ -108,7 +108,7 @@ related:
 ### 1. No Duplication
 
 - ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + report ลง `.devin/reports/<workspace>/`"
-- Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix` ใน skill นี้
+- Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code — แก้ findings → `/review-then-fix` ใน skill นี้
 - ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
 
 ### 2. Evidence First

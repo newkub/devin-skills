@@ -8,7 +8,6 @@ related:
   - watch-browser-and-fix
   - follow-best-practice
   - deep-review
-  - deep-review-then-fix
   - suggest-next-action
   - resolve-errors
   - run-review
@@ -23,10 +22,41 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
 
 - Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review` เป็น review pass (merged from: `deep-review-codebase-then-fix`)
-- Fix findings หลัง review ตาม domain map + fix guides → ใช้ `/deep-review-then-fix`
+- Fix findings หลัง review ตาม Domain Map ด้านล่าง (merged from: `deep-review-then-fix`)
 - Fix mode: user confirm ตาม findings (default), ตาม suggestion เดิม (`/follow-your-suggestion`), หรือ `fix all` ตามที่ user ระบุ
 
 ดูเพิ่มเติม: /deep-review
+
+## Domain Map
+
+fix guides อยู่ใน `references/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
+
+| Domain | Review skill | Fix guides |
+|--------|-------------|------------|
+| seo | `/review-seo` | `review-seo/references/fix-*.md` |
+| security | `/review-security` | `review-security/references/fix-*.md` |
+| auth | `/review-auth` | `review-auth/references/fix-*.md` |
+| api | `/review-api` | `review-api/references/fix-*.md` |
+| database | `/review-database` | `review-database/references/fix-*.md` |
+| dependencies | `/review-dependencies` | `review-dependencies/references/fix-*.md` |
+| bundle | `/review-bundle` | `review-bundle/references/fix-*.md` |
+| performance | `/review-performance` | `review-performance/references/fix-*.md` |
+| assets | `/review-assets` | `review-assets/references/fix-*.md` |
+| ci/delivery | `/review-delivery` | `review-delivery/references/fix-*.md` |
+| cost | `/review-cost` | `review-cost/references/fix-*.md` |
+| docs | `/review-docs` | `review-docs/references/fix-*.md` |
+| tests | `/review-test` | `review-test/references/fix-*.md` + `/update-tests` สำหรับเขียน test ใหม่ |
+| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/improve-uxui` (browser pass) |
+| stability | `/review-stability` | `review-stability/references/fix-*.md` |
+| observability | `/review-observability` | `review-observability/references/fix-*.md` |
+| cli | `/review-cli` | `review-quality/references/fix-improve-cli-ux.md` |
+| config | `/review-config` | `review-config/references/fix-*.md` |
+| migration | `/review-migration` | `review-migration/references/fix-*.md` |
+| accessibility | `/review-accessibility` | `review-accessibility/references/fix-*.md` |
+| frontend | `/review-frontend` | `review-frontend/references/fix-*.md` |
+| backend | `/review-backend` | `review-backend/references/fix-*.md` |
+| quality/types | `/review-quality` | `review-quality/references/fix-*.md` |
+| อื่นๆ | `/review-<domain>` | `review-<domain>/references/fix-*.md` ถ้ามี — ไม่มีให้แก้ตาม findings ตรงๆ |
 
 ## Execute
 
