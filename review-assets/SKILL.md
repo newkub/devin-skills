@@ -3,6 +3,7 @@ name: review-assets
 description: "ตรวจสอบ images, fonts, media ว่า optimize, format และ loading strategy เหมาะสมหรือไม่"
 argument-hint: "[asset-or-folder]"
 related:
+  - deep-review-then-fix
   - scan-codebase
   - report
   - review-bundle
@@ -11,7 +12,11 @@ related:
 
 ## Goal
 
-ตรวจสอบ static assets (images, fonts, media) ว่า optimize, format และ loading strategy เหมาะสมหรือไม่ ก่อนส่งต่อไปยัง section `## Fix`
+ตรวจสอบ static assets (images, fonts, media) ว่า optimize, format และ loading strategy เหมาะสมหรือไม่ ก่อนส่งต่อไปยัง section `## Fix
+
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## Scope
 
@@ -48,8 +53,11 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report` ด้วย columns: No., Asset, Issue, Severity, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี bundle ปัญหาด้วย → เชื่อม `/review-bundle`
+2. ชี้ไป section `## Fix
+
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## Rules
 
@@ -65,20 +73,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (assets)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: optimize-assets, optimize-fonts, optimize-images, optimize-videos
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (assets)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้างล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (assets)
-
-- `references/fix-optimize-assets.md` — Dispatch การ optimize static assets ไปยัง review-assets, review-assets, review-assets ตาม asset type
-- `references/fix-optimize-fonts.md` — Optimize web fonts — subsetting, preload, font-display และ self-hosting สำหรับ LCP/CLS
-- `references/fix-optimize-images.md` — Compress และ convert รูปใน project เป็น WebP/AVIF พร้อมรายงาน size savings
-- `references/fix-optimize-videos.md` — Optimize video delivery — compression, formats, poster frames และ lazy loading
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## References
+- ใช้ /review-bundle ถ้าจำเป็น
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น

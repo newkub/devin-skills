@@ -107,19 +107,10 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (dependencies)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-dependencies, optimize-deps, use-lib-effective
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-deps`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (dependencies)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (dependencies)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (dependencies)
-
-- `references/fix-improve-dependencies.md` — แก้ findings จาก review-dependencies ทั้ง outdated, vulnerable, unused และ duplicate deps
-- `references/fix-optimize-deps.md` — ลดน้ำหนัก dependencies เปลี่ยน lib หนักเป็นตัวเบา ลด dep tree และ bundle impact
-- `references/fix-use-lib-effective.md` — แทนที่ custom code ด้วย library functions ที่มีอยู่ ใช้ libs ให้ครบไม่ reinvent
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

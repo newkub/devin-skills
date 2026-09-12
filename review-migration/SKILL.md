@@ -3,6 +3,7 @@ name: review-migration
 description: Review migration plan พร้อม execution checklist และ verify ข้อมูลหลัง migrate
 argument-hint: "[scope]"
 related:
+  - deep-review-then-fix
   - update-version-to-latest
   - follow-tool-renovate
   - check-migrations
@@ -95,15 +96,9 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (migration)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-migration
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (migration)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (migration)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (migration)
-
-- `references/fix-improve-migration.md` — แก้ findings จาก review-migration ทั้ง schema safety, rollbacks, data migration และ deploy order
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## Verify
 

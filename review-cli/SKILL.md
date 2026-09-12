@@ -3,6 +3,7 @@ name: review-cli
 description: Review CLI/TUI app ทุกมิติ — commands, stdin, I/O contract, exit codes, security, distribution
 argument-hint: "[scope]"
 related:
+  - deep-review-then-fix
   - review-platform
   - review-quality
   - review-test
@@ -26,6 +27,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 - multi-platform spot check (CLI เป็นแค่ dimension เดียว) → ใช้ `/review-platform`
 - general code quality, bug-prone patterns → ใช้ `/review-quality`
 - docs completeness โดยละเอียด → ใช้ `/review-docs`
+- แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass; fix guide: `review-quality/references/fix-improve-cli-ux.md`)
 
 ## Execute
 

@@ -30,7 +30,7 @@ related:
 
 - ถ้ายังไม่ได้ review suite → ทำ `/review-test` ก่อน
 - ถ้าต้องการรัน tests เฉยๆ → `run-test-*` ที่ตรง layer หรือ `/run-test-all`
-- ถ้าต้องการ improve test suite quality → `/improve-tests`
+- ถ้าต้องการ improve test suite quality → `/deep-review-then-fix`
 - ถ้า scope ใหญ่หลาย modules → dispatch ผ่าน `/use-subagents`
 
 ## Execute

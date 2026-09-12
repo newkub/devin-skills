@@ -97,28 +97,9 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (delivery)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: optimize-ci, optimize-docker
-
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-ci`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (delivery)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (delivery)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (delivery)
-
-- `references/fix-optimize-ci.md` — ลดเวลาและต้นทุน CI pipeline ด้วย cache, matrix tuning, path filters และ job splitting
-- `references/fix-optimize-docker.md` — ลดขนาดและเวลา build ของ Docker image ด้วย multi-stage, layer cache และ base image tuning
-
-## Verify
-
-> ทำ section นี้เมื่อต้องการ verify email deliverability ของ domain/service (merged from: verify-email-deliverability)
-
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-ci`
-
-1. ทำตาม `references/verify-email-deliverability.md`
-2. ใช้ `/report` สรุป SPF, DKIM, DMARC, service config, test send
-3. ถ้า broken → ระบุ exact DNS record values ที่ user ต้องใส่
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## References
 
@@ -131,4 +112,3 @@ Merged from: optimize-ci, optimize-docker
 - รายงาน recommended actions พร้อม priority (delivery)
 - Review score ต่อ dimension และ overall score
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

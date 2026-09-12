@@ -18,7 +18,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-cost-analysis) — ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-cost`
+สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
 ## Execute
 
@@ -77,18 +77,10 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (cost)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: optimize-cost, optimize-token-usage
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-cost`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (cost)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (cost)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (cost)
-
-- `references/fix-optimize-cost.md` — ปรับปรุง infrastructure cost: compute, storage, bandwidth, third-party, idle resources
-- `references/fix-optimize-token-usage.md` — ลด LLM token usage และ cost ด้วย prompt trimming, context pruning, caching และ model routing
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

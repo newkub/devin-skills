@@ -3,7 +3,7 @@ name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring, backup/restore and score
 argument-hint: "[scope]"
 related:
-  - improve-stability
+  - deep-review-then-fix
   - deep-review-codebase
   - scan-codebase
   - deep-analyze
@@ -136,29 +136,9 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (stability)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-error-handling, improve-error-messages, improve-stability
-
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-stability`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (stability)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (stability)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (stability)
-
-- `references/fix-improve-error-handling.md` — ปรับปรุง error handling ให้ลึก — taxonomy, boundaries, propagation, retry และ user-facing errors
-- `references/fix-improve-error-messages.md` — ปรับคุณภาพ error messages ที่ user เห็นให้บอกสาเหตุและวิธีแก้ชัดเจน
-- `references/fix-improve-stability.md` — แก้ไข stability findings ด้าน error handling, recovery, monitoring, debuggability
-
-## Verify
-
-> ทำ section นี้เมื่อต้องการ verify ว่า backup สามารถ restore ได้จริง (merged from: verify-backup-restore)
-
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-stability`
-
-1. ทำตาม `references/verify-backup-restore.md`
-2. ใช้ `/report` สรุป integrity, restore OK, data valid, RTO, verdict
-3. ถ้า RTO เกินเป้าหรือ restore ไม่ได้ → รายงาน gap พร้อม recommendation
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 ## References
 

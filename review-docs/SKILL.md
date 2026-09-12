@@ -24,7 +24,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
+สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
 ## Execute
 
@@ -75,7 +75,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 ### 8. Check README.md (merged from: review-readme-md)
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
+สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
 > Goal: ตรวจ `README.md` ทั้ง root และ workspace — section order, tables, coverage
 
@@ -130,20 +130,15 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (docs)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-docs, improve-onboarding
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (docs)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (docs)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (docs)
-
-- `references/fix-improve-docs.md` — แก้ไข documentation findings จาก review docs family ให้ docs ตรงกับ code จริง
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
-- `references/fix-improve-onboarding.md` — ปรับ onboarding experience ให้ dev ใหม่ setup project ได้เร็วผ่าน docs และ automation
+
+- ใช้ /run-docs ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

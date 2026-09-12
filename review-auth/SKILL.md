@@ -3,6 +3,7 @@ name: review-auth
 description: Review authentication and authorization — identity, sessions, tokens, OAuth, MFA, RBAC/ABAC
 argument-hint: "[scope-or-subsystem]"
 related:
+  - deep-review-then-fix
   - review-security
   - follow-lib-better-auth
   - follow-lib-simplewebauthn
@@ -92,16 +93,11 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (auth)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-auth
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (auth)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (auth)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (auth)
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
 - ใช้ /run-review ถ้าจำเป็น
-- `references/fix-improve-auth.md` — แก้ findings จาก review-auth ครอบคลุม authn, authz, sessions, tokens และ secrets
 
 ## Expected Outcome
 

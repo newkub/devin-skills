@@ -31,6 +31,8 @@ related:
 
 ถ้าต้องการแค่มิติเดียว → เรียก sub-skill นั้นโดยตรง
 
+- fix guides เฉพาะ domain อยู่ใน `references/` — อ่านแล้วทำตามเมื่อแก้ findings ของ domain นั้น
+
 ## Execute
 
 ### 1. Confirm Web Server

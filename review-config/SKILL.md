@@ -3,6 +3,7 @@ name: review-config
 description: Review config files หา drift, missing, duplicate, shared config และ dependencies catalog
 argument-hint: "[path]"
 related:
+  - deep-review-then-fix
   - report-config-files
   - setup-cicd
   - setup-package
@@ -113,15 +114,10 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (config)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: optimize-mcp
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (config)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (config)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (config)
-
-- `references/fix-optimize-mcp.md` — ลด MCP context overhead — ปิด servers ที่ไม่ใช้, prune tools และ audit config
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

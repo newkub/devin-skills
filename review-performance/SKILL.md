@@ -153,24 +153,10 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (performance)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-performance, optimize-memory, optimize-network, optimize-performance, optimize-serialization, optimize-startup
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-performance`
-
-สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-web-vitals`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (performance)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (performance)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (performance)
-
-- `references/fix-improve-performance.md` — แก้ findings จาก review-performance ครอบคลุม network, runtime, memory และ caching
-- `references/fix-optimize-memory.md` — ปรับปรุง memory usage: leaks, large objects, caches, garbage collection
-- `references/fix-optimize-network.md` — ปรับปรุง network: requests, CDN, compression, caching, HTTP/2, preconnect
-- `references/fix-optimize-performance.md` — แก้ web performance — Core Web Vitals (LCP, INP, CLS), long tasks, TTI, third-party scripts ด้วย field data และ targeted fixes
-- `references/fix-optimize-serialization.md` — ลดขนาด serialization payloads — JSON trimming, compression และ format selection
-- `references/fix-optimize-startup.md` — ลดเวลา startup ของ app/CLI ด้วย lazy loading, defer init และลดงานหนักตอน boot
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

@@ -1,5 +1,5 @@
 ---
-name: improve-seo
+name: improve-all
 description: Alias for deep-review-then-fix - merged into canonical fix skill
 argument-hint: "[scope]"
 related:

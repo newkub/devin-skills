@@ -101,13 +101,13 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (57): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm; `improve-*` (9) และ `optimize-*` (7) ที่มีอยู่เป็น fix-orchestrators ที่ delegate analysis ให้ `review-*` แล้ว own apply+verify loop (เช่น `improve-seo`, `optimize-web-vitals`, `improve-security`, `optimize-database`).
+- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only; แก้ findings ทำผ่าน `/deep-review-then-fix` (canonical fix skill เดียวที่อ่าน fix guides จาก `review-*/references/`). `improve-*` (15) และ `optimize-*` (9) ส่วนใหญ่เป็น alias stubs ไป `/deep-review-then-fix` — ตัวจริงที่เหลือ: `improve`, `improve-uxui`, `improve-devin-global-skills`.
 - `list-*` (32): inventory, lookup, and listing utilities.
 - `update-*` (41): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
 - `ship-*` (3): standard `/ship`, staging, production, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user) — rollback handled inline in `/ship`.
-- `deep-*` (19): deep analysis, research, debugging, validation, verification, and orchestration (8 alias stubs merged into canonical skills).
+- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill) พร้อม alias stubs (`deep-review-codebase`, `review-then-fix`).
 - `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (60): verification, structure, and health checks.
 - `open-*` (14): browser, editor, and terminal integration.

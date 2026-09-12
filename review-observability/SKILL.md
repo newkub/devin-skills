@@ -128,18 +128,10 @@ observability review สำหรับ: metrics collection, distributed tracing
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (observability)
+> แก้ findings เมื่อ user confirm — skill นี้ review/report-only; dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-Merged from: improve-logging, improve-observability
+Fix guides อยู่ใน `references/` — `/deep-review-then-fix` อ่านและทำตามเมื่อแก้
 
-สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-observability`
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (observability)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (observability)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (observability)
-
-- `references/fix-improve-logging.md` — ปรับ log quality ทั้ง levels, structure, context และ redaction ของ sensitive data
-- `references/fix-improve-observability.md` — เพิ่ม logging, metrics, tracing และ alerting ตาม findings จาก review-observability
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
