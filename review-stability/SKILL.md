@@ -3,6 +3,7 @@ name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring, backup/restore and score
 argument-hint: "[scope]"
 related:
+  - improve-stability
   - deep-review-codebase
   - scan-codebase
   - deep-analyze
@@ -139,6 +140,8 @@ Review ความเสถียรของ application ครอบคลุ
 
 Merged from: improve-error-handling, improve-error-messages, improve-stability
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-stability`
+
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (stability)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (stability)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (stability)
@@ -150,6 +153,8 @@ Merged from: improve-error-handling, improve-error-messages, improve-stability
 ## Verify
 
 > ทำ section นี้เมื่อต้องการ verify ว่า backup สามารถ restore ได้จริง (merged from: verify-backup-restore)
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-stability`
 
 1. ทำตาม `references/verify-backup-restore.md`
 2. ใช้ `/report` สรุป integrity, restore OK, data valid, RTO, verdict

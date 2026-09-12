@@ -40,7 +40,6 @@ export default {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/roadmap/' },
-            { text: 'Idea Features', link: '/roadmap/idea-features' },
           ],
         },
       ],

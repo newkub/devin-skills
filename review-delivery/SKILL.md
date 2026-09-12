@@ -101,6 +101,8 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 Merged from: optimize-ci, optimize-docker
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-ci`
+
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (delivery)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (delivery)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (delivery)
@@ -111,6 +113,8 @@ Merged from: optimize-ci, optimize-docker
 ## Verify
 
 > ทำ section นี้เมื่อต้องการ verify email deliverability ของ domain/service (merged from: verify-email-deliverability)
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-ci`
 
 1. ทำตาม `references/verify-email-deliverability.md`
 2. ใช้ `/report` สรุป SPF, DKIM, DMARC, service config, test send

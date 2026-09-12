@@ -27,7 +27,7 @@ If the project also has auth → use `product` instead; `cli` takes precedence o
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage
 - `commands/` - index + one page per command or command group
-- `roadmap/` - index, idea-features
+- `roadmap/` - index
 - `development/` - shared development sidebar
 - `references/` - contributing, license, troubleshooting
 

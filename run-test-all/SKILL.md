@@ -29,7 +29,7 @@ related:
 
 Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
 
-- ถ้าต้องการ update/เขียน tests → `/update-tests`, `/update-tests`, `/update-tests` ตาม layer (run-* เป็น run-only)
+- ถ้าต้องการ update/เขียน tests → `/update-tests` (run-* เป็น run-only)
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|

@@ -24,6 +24,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
+
 ## Execute
 
 ### 1. Prepare Context
@@ -72,6 +74,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 1. ทำตาม `references/workspace-links.md#check-links`
 
 ### 8. Check README.md (merged from: review-readme-md)
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
 
 > Goal: ตรวจ `README.md` ทั้ง root และ workspace — section order, tables, coverage
 
@@ -129,6 +133,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (docs)
 
 Merged from: improve-docs, improve-onboarding
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-docs`
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (docs)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (docs)

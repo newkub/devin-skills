@@ -18,6 +18,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-cost-analysis) — ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-cost`
+
 ## Execute
 
 ### 1. Audit Costs
@@ -78,6 +80,8 @@ related:
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (cost)
 
 Merged from: optimize-cost, optimize-token-usage
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-cost`
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (cost)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (cost)

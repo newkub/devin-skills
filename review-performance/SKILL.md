@@ -157,6 +157,8 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 Merged from: improve-performance, optimize-memory, optimize-network, optimize-performance, optimize-serialization, optimize-startup
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-performance`
+
 สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-web-vitals`
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (performance)

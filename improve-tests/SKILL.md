@@ -23,7 +23,7 @@ related:
 ใช้หลัง `/review-test` มี findings หรือเมื่อ test suite มีปัญหา (flaky, ช้า, coverage ต่ำ, mocks พัง)
 
 - ถ้าต้องการรัน tests เฉยๆ → `/run-test` หรือ `/run-test-all`
-- ถ้าต้องการ update/เขียน tests ตาม layer → `/update-tests`, `/update-tests`, `/update-tests`
+- ถ้าต้องการ update/เขียน tests ตาม layer → `/update-tests`
 - ถ้า scope ใหญ่หลาย modules → dispatch ผ่าน `/use-subagents`
 
 ## Execute
@@ -49,7 +49,7 @@ related:
 
 > Goal: cover paths ที่สำคัญไม่ใช่แค่ไล่ %
 
-1. critical paths ที่ไม่มี test → เขียนก่อน (auth, payments, data mutations) — delegate ตาม layer ไป `/update-tests`, `/update-tests`, `/update-tests` ถ้าต้องการ focused write
+1. critical paths ที่ไม่มี test → เขียนก่อน (auth, payments, data mutations) — delegate ไป `/update-tests` ถ้าต้องการ focused write
 2. edge cases: empty/null/boundary values, error paths, permission denied
 3. untested branches ตาม coverage report — prioritize by risk ไม่ใช่ไล่ตัวเลข
 
