@@ -20,7 +20,7 @@ related:
 
 ## Scope
 
-ใช้กับ monorepo ที่มีหรือกำลังสร้าง `tools/review-codebase` CLI ที project root ครอบคลุม 60+ categories ตาม 5 domains
+ใช้กับ monorepo ที่มีหรือกำลังสร้าง `tools/review-codebase` CLI ที่ project root ครอบคลุม 60+ categories ตาม 5 domains
 
 ## Execute
 
@@ -32,8 +32,8 @@ related:
 2. ทำ `/new-skills` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
 3. ทำ `/update-create-analyze-cli` เพื่ออัปเดต `tools/analyze` ให้ครอบคลุม features ปัจจุบัน
 4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
-5. ถ้าผลเป้น `skip` → ไป Step 8
-6. ถ้าผลเป้น `update` หรือ `create` → ดำเนินขั้นตอนถัดไป
+5. ถ้าผลเป็น `skip` → ไป Step 8
+6. ถ้าผลเป็น `update` หรือ `create` → ดำเนินขั้นตอนถัดไป
 7. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
 8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` ตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count และ evidence
 9. ถ้า pre-review score < 70 → ทำ Step 2-7 ก่อน Step 8
@@ -45,23 +45,23 @@ related:
 1. ทำ `/scan-codebase` เพื่อดู structure, tech stack, packages
 2. ทำ `/deep-analyze` เพื่อดู features หลัก
 3. อ่าน `AGENTS.md` และ `docs/project/features.md` ถ้ามี
-4. ระบุ features ใหมที่ยังไม่มี analyzer ครอบคลุม
+4. ระบุ features ใหม่่ที่ยังไม่มี analyzer ครอบคลุม
 
 ### 3. Update Project Rules
 
 > Goal: มั่นใจว่า skills/rules ครอบคลุม dependencies และ features
 
 1. ทำ `/new-skills` เพื่อสร้าง skills ที่ขาดจาก dependencies
-2. ตรวจ `AGENTS.md` และ `.devin/rules` อัปเดตตาม features ใหม
+2. ตรวจ `AGENTS.md` และ `.devin/rules` อัปเดตตาม features ใหม่
 3. ถ้ามี skill หรือ rule ขาด → สร้างหรืออัปเดต
 
 ### 4. Update Analyze CLI
 
-> Goal: เพิ่ม/อัปเดต analyzers ตาม features ใหม
+> Goal: เพิ่ม/อัปเดต analyzers ตาม features ใหม่
 
 1. ทำ `/update-create-analyze-cli` เพื่ออัปเดต `tools/analyze`
 2. ตรวจ categories ครอบคลุม features ทั้งหมด
-3. ถ้า categories น้อยกว่า 60 หรือ feature ใหมไม่มี analyzer → เพิ่ม analyzer
+3. ถ้า categories น้อยกว่า 60 หรือ feature ใหม่ไม่มี analyzer → เพิ่ม analyzer
 
 ### 5. Create Or Update Workspace Package
 
@@ -113,12 +113,12 @@ related:
 3. บันทึก score, grade, domain breakdown, category coverage, findings count, analyzerErrors, falsePositiveRate
 4. ถ้าผลตรงเงื่อนไขใดข้างล่าง → ทำ `/update-create-analyze-cli` แล้วทำ Step 4-8 เพื่อ integrate กลับไป Step 9 ใหม่ (ไม่เกิน 3 รอบ):
    - `categories` น้อยกว่า 60
-   - overall `score` ต่ำกว่า 70 หรือ `grade` เป้น `D`/`F`
+   - overall `score` ต่ำกว่า 70 หรือ `grade` เป็น `D`/`F`
    - domain ใด `score` ต่ำกว่า 50
    - `analyzerErrors` > 0
    - `falsePositiveRate` สูงกว่า 20%
    - findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-   - `reviewWorkflow` ไม่ map ไปยัง review skills ทีมีอยู่
+   - `reviewWorkflow` ไม่ map ไปยัง review skills ที่มีอยู่
 5. ถ้าหลัง 3 รอบยังไม่ผ่าน → stop และ report
 
 ### 10. Report
@@ -207,7 +207,7 @@ related:
 
 ## Expected Outcome
 
-- `tools/review-codebase` CLI มีอยู่และรันได้ที project root
+- `tools/review-codebase` CLI มีอยู่และรันได้ที่ project root
 - Review ทำงานผ่าน `bun run review-codebase`
 - Findings ครอบคลุม 60+ categories พร้อม evidence และ severity
 - Before-after review score ผ่าน `/run-review`
