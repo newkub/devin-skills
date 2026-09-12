@@ -127,5 +127,3 @@ related:
 - Deprecated commands/options ถูกลบออก
 - References อัปเดตครบทั้ง `AGENTS.md`, `global_rules.md` และ skills อื่นที่เกี่ยวข้อง
 - `/report` สรุป findings และการเปลี่ยนแปลง
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-skills-effective) — สำหรับการเรียก skills อื่นจากภายใน `SKILL.md` ดู `references/invoke-skills.md`
