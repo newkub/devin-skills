@@ -8,6 +8,7 @@ related:
   - watch-browser-console
   - watch-browser-and-improve-uxui
   - watch-browser-and-test
+  - improve-uxui
   - use-mcp
   - update-devin-global-mcp
   - resolve-errors
@@ -26,6 +27,7 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 - ถ้า focus เฉพาะ console errors → `/watch-browser-console`
 - ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
+- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
 ## Execute

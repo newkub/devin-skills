@@ -20,6 +20,19 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| setup | `subskills/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider |
+| migrate | `subskills/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify |
+| optimize | `subskills/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+
 ### 1. Installation
 
 > Goal: Installation

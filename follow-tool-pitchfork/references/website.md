@@ -1,6 +1,8 @@
 # Tool Pitchfork Official Resources
 
-- [Website](https://pitchfork.jdx.dev)
+- [Website / Docs](https://pitchfork.jdx.dev)
 - [Repository](https://github.com/jdx/pitchfork)
-- [Registry](https://pitchfork.jdx.dev) — npm package `pitchfork` ไม่ใช่ตัวจริง
-- About: Daemon/process manager for project services by jdx
+- [Registry](https://crates.io/crates/pitchfork-cli) — crate `pitchfork-cli`, binary `pitchfork`; the npm package `pitchfork` is unrelated
+- [Releases](https://github.com/jdx/pitchfork/releases) — prebuilt binaries for macOS, Linux, Windows
+- [Issue tracker](https://github.com/jdx/pitchfork/issues)
+- About: Daemon/process supervisor for development services by jdx (mise author)

@@ -24,6 +24,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Workflow file structure, triggers, jobs, permissions | `subskills/setup-workflows/SKILL.md` |
+| Caching, matrix, concurrency groups, artifact reuse | `subskills/optimize-ci/SKILL.md` |
+
 ### 1. เลือก Workflows ที่เหมาะสม
 
 > Goal: เลือก Workflows ที่เหมาะสม

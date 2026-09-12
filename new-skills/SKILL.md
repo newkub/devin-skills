@@ -5,6 +5,8 @@ argument-hint: "[idea or topic]"
 related:
   - use-related-skills
   - update-devin-global-skills
+  - check-all-routes
+  - check-release-notes
   - scan-codebase
   - review-devin-global-skills
   - update-devin-global-rules
@@ -54,7 +56,8 @@ related:
 1. ใช้ `/update-devin-global-skills` เพื่อเลือก template และเขียน `SKILL.md`
 2. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
 3. ใส่ `related` ครบถ้วน
-4. ถ้าไฟล์เกิน 250 บรรทัด → แยกส่วนลง `references/`
+4. ถ้า skill มี lib/package ให้ติดตั้ง → สร้าง `references/package-manifest.md` จาก [templates/package-manifest.md](templates/package-manifest.md) — ใส่ metadata จริง (registry, latest version, release date, author, license, repo, website, docs, changelog) จาก official sources
+5. ถ้าไฟล์เกิน 250 บรรทัด → แยกส่วนลง `references/`
 
 ### 5. Validate And Ship
 

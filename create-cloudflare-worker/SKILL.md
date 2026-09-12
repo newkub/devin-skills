@@ -7,7 +7,7 @@ related:
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-my-tech-stack
+  - review-dependencies
 
 ---
 ## Goal
@@ -30,7 +30,7 @@ related:
 
 > Goal: ตรวจสอบว่า project เป็น Workers ประเภทไหน และพร้อมสร้างและ deploy
 
-1. ทำ `/follow-my-tech-stack` เพื่อสรุป stack
+1. ทำ `/review-dependencies` เพื่อสรุป stack
 2. ตรวจไฟล์ `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`
 3. ตรวจ `package.json` scripts และ build output
 4. ถ้าไม่มี `wrangler.toml` → สร้างใหม่ด้วย `name`, `main`, `compatibility_date`, และ `[assets]` หรือ `[site]`

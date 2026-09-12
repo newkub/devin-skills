@@ -11,6 +11,12 @@
 | `follow-create-*` | [follow-create.md](follow-create.md) | สร้าง plugins, extensions, CLI, library หรือ project scaffold |
 | `follow-*-architecture` | [follow-architecture.md](follow-architecture.md) | architecture patterns (override follow) |
 | `follow-*` | [follow.md](follow.md) | implement best practices ของ tools/libraries/frameworks |
+| `setup-*` | [setup.md](setup.md) | ติดตั้งและตั้งค่า tools/services ให้พร้อมใช้ พร้อม verify |
+| `config-*` | [config.md](config.md) | แก้ configuration ของที่มีอยู่ — merge keys ไม่ clobber |
+| `deploy-*` | [deploy.md](deploy.md) | deploy ไปยัง platform จน live พร้อม post-deploy verify |
+| `migrate-*` | [migrate.md](migrate.md) | ย้าย tool/library/version อย่างปลอดภัย มี rollback path |
+| `optimize-*` | [optimize.md](optimize.md) | ปรับ performance/cost โดยวัด baseline ก่อนและหลัง |
+| `improve-*` | [improve.md](improve.md) | ปรับคุณภาพของสิ่งที่มีอยู่ โดย preserve behavior |
 | `check-*` | [check.md](check.md) | scan codebase หา issues และ report findings |
 | `analyze-*` | [analyze.md](analyze.md) | วิเคราะห์ codebase ด้วย scripts, tools และหลายมิติ |
 | `deep-*` | [deep.md](deep.md) | วิเคราะห์หลายมิติอย่างลึกซึ้ง พร้อม cross-reference |

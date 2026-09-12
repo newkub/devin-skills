@@ -84,6 +84,15 @@ related:
 4. รัน `moon run :lint` หรือ `turbo run lint`
 5. ถ้า fail → ทำ `/resolve-errors`
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| ย้าย single repo → monorepo — workspace config, dep hoisting, git history | `subskills/migrate-to-monorepo/SKILL.md` |
+| ตั้งค่า workspaces สำหรับ bun/npm/pnpm + moon/turbo | `subskills/config-workspaces/SKILL.md` |
+
 ## Rules
 
 ### 1. Tool Agnostic

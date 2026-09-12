@@ -20,6 +20,12 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-otplib/SKILL.md` — install, TOTP generate/verify, secret storage |
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

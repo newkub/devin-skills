@@ -103,6 +103,11 @@ related:
 3. ตรวจสอบ path alias `@/` ใน `tsconfig.json` และ Vite/SolidStart config
 4. อ่าน FAQ ที่ https://zaidan.carere.dev/docs/faq
 
+### Subskills
+
+- Setup theme — registry config, Tailwind v4 variables, dark mode → `subskills/setup-theme/SKILL.md`
+- ปรับ theme tokens — colors, radius, Tailwind v4 mapping → `subskills/config-tokens/SKILL.md`
+
 ## Rules
 
 - ใช้ `bunx shadcn@latest` CLI ไม่ใช่ `shadcn-solid`

@@ -17,6 +17,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-twilio/SKILL.md` — SDK install, Account SID/Auth Token |
+| Config | `subskills/config-twilio/SKILL.md` — phone numbers, messaging service, webhook config |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

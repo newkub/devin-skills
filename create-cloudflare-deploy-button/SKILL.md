@@ -7,7 +7,7 @@ related:
   - follow-service-cloudflare
   - deploy-to-cloudflare
   - update-readme-md
-  - follow-my-tech-stack
+  - review-dependencies
   - report
   - ask-me
   - run-deploy
@@ -108,7 +108,7 @@ related:
 - ใช้ /create-cloudflare-worker ถ้าจำเป็น
 - ใช้ /update-readme-md ถ้าจำเป็น
 
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /run-deploy ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
 

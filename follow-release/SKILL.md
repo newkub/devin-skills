@@ -1,7 +1,7 @@
 ---
 name: follow-release
 description: เลือกและตั้งค่า release strategy สำหรับ npm, crates, Docker, VSCode และ monorepo versioning
-argument-hint: "[scope]"
+argument-hint: "[crates|docker|vscode-marketplace] [scope]"
 related:
   - follow-tool-auto-it
   - follow-tool-semantic-release
@@ -122,6 +122,19 @@ Latest: `@vscode/vsce@3.9.2` (verified 2026-09-12) — package `vsce` เดิ�
 1. ตรวจสอบ tokens/permissions ก่อน release (`NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `VSCE_PAT`, `DOCKER_PASSWORD`)
 2. ทำ `/run-release` สำหรับ multi-platform release อัตโนมัติ
 3. ตรวจสอบ tags, changelogs และ published artifacts
+
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ตาม release target
+
+| Target/Argument | Subskill |
+|-----------------|----------|
+| `crates`, `cargo` | `subskills/deploy-crates/SKILL.md` — `cargo publish` ไป crates.io |
+| `docker`, `image` | `subskills/deploy-docker/SKILL.md` — build/tag/push Docker image |
+| `vscode-marketplace`, `vsce`, `extension` | `subskills/deploy-vscode-marketplace/SKILL.md` — `vsce publish` ไป Marketplace |
+
+1. ถ้า argument ระบุ target → อ่าน `subskills/deploy-<target>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าไม่ระบุ → ทำตาม steps 1-8 เพื่อเลือก release strategy ก่อน
 
 ## Rules
 

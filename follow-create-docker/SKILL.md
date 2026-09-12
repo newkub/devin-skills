@@ -3,7 +3,6 @@ name: follow-create-docker
 description: สร้าง Dockerfile, .dockerignore และ docker-compose ตาม best practices ตาม stack
 argument-hint: "[path]"
 related:
-  - follow-my-tech-stack
   - review-dependencies
   - follow-deploy
   - setup-cicd
@@ -32,7 +31,7 @@ related:
 
 > Goal: รู้ stack และ requirements ก่อนเขียน Dockerfile
 
-1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
 2. ทำ `/review-dependencies` เพื่อ review dependencies และ library design
 3. ตรวจ manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
 4. ระบุ runtime, build command, start command, port และ required env vars

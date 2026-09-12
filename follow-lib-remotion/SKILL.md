@@ -8,7 +8,7 @@ related:
 
 ## Goal
 
-ใช้งาน Remotion v4 (latest ~4.0.523) สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React, animations แบบ frame-based, และ render ผ่าน CLI หรือ cloud
+ใช้งาน Remotion v4 (latest ~4.0.524) สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React, animations แบบ frame-based, และ render ผ่าน CLI หรือ cloud
 
 ## Scope
 
@@ -20,7 +20,7 @@ related:
 - Render วิดีโอ, GIF, image sequence ผ่าน CLI
 - Cloud rendering (Lambda, Cloud Run, Vercel)
 
-- Latest: `remotion@4.0.523` (verified 2026-09-12)
+- Latest: `remotion@4.0.524` (verified 2026-09-12)
 
 ## Execute
 
@@ -197,6 +197,11 @@ bunx remotion render MyComp --sequence
 - Google Cloud Run: `@remotion/cloudrun`
 - Vercel: `@remotion/vercel`
 - ดูรายละเอียดที docs.remotion.dev
+
+### Subskills
+
+- Setup project — `create-video`, Composition, Studio smoke test → `subskills/setup-remotion/SKILL.md`
+- Render performance, codecs/flags, Lambda notes → `subskills/optimize-render/SKILL.md`
 
 ## Rules
 

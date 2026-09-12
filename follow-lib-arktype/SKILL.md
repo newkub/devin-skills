@@ -24,6 +24,12 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-arktype/SKILL.md` — install, `type()` basics, scope config |
+
 ### 1. Install ArkType
 
 > Goal: ติดตั้ง ArkType และเตรียม environment

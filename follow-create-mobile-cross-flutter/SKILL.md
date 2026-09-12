@@ -7,7 +7,7 @@ related:
   - follow-create-mobile-cross-capacitor
   - follow-best-practice
   - setup-cicd
-  - follow-my-tech-stack
+  - review-dependencies
 ---
 
 ## Goal
@@ -23,7 +23,7 @@ related:
 - จัดการ data layer, domain layer, presentation layer
 - ตั้งค่า error handling, navigation, และ testing
 
-- Latest: Flutter `3.47.3` stable / Dart `3.13.3`, `flutter_riverpod@3.4.3`, `go_router@18.0.1`, `freezed@4.0.1`, `fpdart@1.2.0` (verified 2026-09-12)
+- Latest: Flutter `3.47.4` stable / Dart `3.13.3`, `flutter_riverpod@3.4.3`, `go_router@18.0.1`, `freezed@4.0.1`, `fpdart@1.2.0` (verified 2026-09-12)
 
 ## Execute
 
@@ -143,7 +143,7 @@ related:
 - ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create mobile cross flutter)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome
 

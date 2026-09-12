@@ -13,7 +13,6 @@ related:
   - report
   - suggest-next-action
   - use-astgrep
-  - follow-my-tech-stack
   - review-dependencies
   - run-drizzle-studio
 ---
@@ -101,6 +100,14 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ทำตาม `references/validate-score-and-report.md`
 
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+
+| Topic | Subskill |
+|-------|----------|
+| Apply performance findings — bundle, runtime, memory, I/O fixes by severity | `subskills/optimize-performance/SKILL.md` |
+
 ## Rules
 
 ### 1. Scope Boundary
@@ -154,8 +161,6 @@ Review application performance ครอบคลุม network, build/runtime, 
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
-
 - ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Fix
@@ -181,14 +186,4 @@ Review application performance ครอบคลุม network, build/runtime, 
 - Severity และ recommendations ชัดเจน
 - ไม่ซ้ำซ้อนกับ review skills อื่น
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-- ถ้าต้อง optimize ให้ทำ section `## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. profile ก่อนแก้: `/run-bench`/profiler baseline — แก้เฉพาะ bottleneck ที่วัดได้
-2. hot paths: memoize, complexity ลด, async/batch sync work
-3. memory: allocations ลด, leaks fixed, unbounded growth → bounds
-4. web vitals: LCP/INP/CLS — LCP image preload, third-party defer, layout stability
-5. verify: benchmark before/after + tests ผ่าน — ห้ามเปลี่ยน correctness
+- ถ้าต้อง optimize ให้ทำ section `## Fix`

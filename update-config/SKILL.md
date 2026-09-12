@@ -166,6 +166,14 @@ related:
 3. ทำ `/report-config-files` อีกครั้งเพื่อ verify
 4. ทำ `/report` สรุป changes
 
+### Subskills
+
+> Goal: dispatch config domain เฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| อัปเดต env config — diff current vs needed, apply, verify | `subskills/config-env/SKILL.md` |
+
 ## Rules
 
 ### 1. Review First

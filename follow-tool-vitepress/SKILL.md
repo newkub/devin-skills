@@ -19,9 +19,17 @@ related:
 
 ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site
 
-- Latest stable: `vitepress@1.6.4` (verified 2026-09-12); `vitepress@next` = `2.0.0-alpha.19` (preview สำหรับ Vite 8/rolldown)
+- Latest stable: `vitepress@1.6.4` (verified 2026-09-12); `vitepress@next` = `2.0.0-alpha.20` (preview สำหรับ Vite 8/rolldown)
 
 ## Execute
+
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Init, `config.ts` nav/sidebar, docs structure | `subskills/setup-vitepress/SKILL.md` |
+| Theme config, `.vitepress/theme/`, i18n | `subskills/config-theme/SKILL.md` |
+| Docusaurus → VitePress content/frontmatter migration | `subskills/migrate-from-docusaurus/SKILL.md` |
 
 ### 1. Project Initialization
 

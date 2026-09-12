@@ -3,7 +3,6 @@ name: follow-create-bot
 description: สร้าง bot สำหรับ Slack, Discord, Telegram, LINE หรือ GitHub App/bot ด้วย TypeScript/Bun
 argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
-  - follow-my-tech-stack
   - review-dependencies
   - follow-secret-manager
   - open-web-for-config-secret
@@ -18,7 +17,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-slack-bot, follow-create-discord-bot, follow-create-telegram-bot, follow-create-line-bot, follow-create-github-app, follow-create-github-bots)
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
-- ทำตาม `/follow-my-tech-stack` สำหรับ runtime และ dependencies
+- ทำตาม `/review-dependencies` สำหรับ runtime และ dependencies
 
 - Latest: `discord.js@14.27.0`, `grammy@1.46.0`, `@slack/bolt@5.1.0`, `@line/bot-sdk@11.2.0`, `probot@14.3.2` (verified 2026-09-12)
 - Breaking: `@line/bot-sdk` v11 ลบ legacy `Client`/`OAuth` — ใช้ `LineBotClient.fromChannelAccessToken()` หรือ `messagingApi.MessagingApiClient` แทน
@@ -41,7 +40,7 @@ related:
 | GitHub App | `subskills/github-app/SKILL.md` — app manifest, JWT auth, installation |
 
 1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
-2. ทำ `/follow-my-tech-stack` และ `/review-dependencies`
+2. ทำ `/review-dependencies`
 3. อ่าน `subskills/<platform>/SKILL.md` ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Setup Project

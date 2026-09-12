@@ -6,7 +6,7 @@ related:
   - follow-create-rust-cli
   - review-frontend
   - run-test-all
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-single-responsibility
   - follow-release
 ---
@@ -32,7 +32,7 @@ related:
 
 > Goal: ตรวจสอบ stack
 
-1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack
+1. ทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ยืนยันว่าใช้ Rust + Ratatui + crossterm
 3. บันทึกเหตุผลทีเลือก stack
 

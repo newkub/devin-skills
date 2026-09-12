@@ -17,6 +17,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-firebase-admin/SKILL.md` — admin SDK install, service account |
+| Config | `subskills/config-firebase-admin/SKILL.md` — app options, emulator config |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

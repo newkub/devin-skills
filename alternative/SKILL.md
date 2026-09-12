@@ -22,7 +22,7 @@ related:
   - learn-web
   - vs
   - follow-best-practice
-  - follow-my-tech-stack
+  - review-dependencies
   - alternative
   - suggest-next-action
   - resolve-errors
@@ -37,7 +37,7 @@ related:
 
 ใช้เมื่อ user ถามเกี่ยวกับ libraries, tools, frameworks, patterns หรือ solutions ต่าง ๆ
 
-ดูเพิ่มเติม: /learn-web, /vs, /follow-best-practice, /follow-my-tech-stack, /review-dependencies, /suggest-next-action, /resolve-errors
+ดูเพิ่มเติม: /learn-web, /vs, /follow-best-practice, /review-dependencies, /suggest-next-action, /resolve-errors
 
 ## Execute
 

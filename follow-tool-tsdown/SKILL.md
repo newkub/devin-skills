@@ -79,6 +79,15 @@ related:
 3. ทดสอบ import output ใน project อื่น
 4. ทำ `/follow-test` เพื่อรัน tests หลัง build
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+
+| Topic | Subskill |
+|-------|----------|
+| first-time setup (install, config, entry/dts/sourcemap) | `subskills/setup-tsdown/SKILL.md` |
+| migrate จาก tsup | `subskills/migrate-from-tsup/SKILL.md` |
+
 ## Rules
 
 ### 1. Installation

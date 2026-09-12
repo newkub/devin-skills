@@ -37,6 +37,11 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib openai)
 
+### Subskills
+
+- Config providers — `baseURL`, compatible endpoints, org/project keys → `subskills/config-providers/SKILL.md`
+- Token/cost optimization — prompt sizing, caching, model routing → `subskills/optimize-tokens/SKILL.md`
+
 ## Rules
 
 - ห้ามเรียก OpenAI จาก client — proxy ผ่าน server เสมอ

@@ -20,6 +20,12 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow |
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

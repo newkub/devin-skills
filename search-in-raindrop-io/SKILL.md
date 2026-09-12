@@ -1,113 +1,108 @@
 ---
 name: search-in-raindrop-io
-description: Search Raindrop.io bookmarks via raindrop CLI with filters, output formats, and result parsing
+description: Search Raindrop.io bookmarks via raindrop CLI v0.1.1 with filters and jq parsing
 argument-hint: "[query]"
 related:
-  - list-raindrop-io
-  - follow-my-tech-stack
+  - list-recent-bookmark-raindrop
+  - list-raindrop-favorite
+  - review-dependencies
   - download-program
   - use-scripts
 ---
 
 ## Goal
 
-ค้นหาและดึง bookmarks จาก Raindrop.io อย่างรวดเร็วและแม่นยำโดยใช้ raindrop CLI
+ค้นหาและดึง bookmarks จาก Raindrop.io อย่างรวดเร็วและแม่นยำโดยใช้ raindrop CLI (`jvm/raindrop-cli` v0.1.1)
 
 ## Scope
 
-ใช้กับ `jvm/raindrop-cli` สำหรับค้นหา Raindrop.io เท่านั้น ครอบคลุม authentication, query syntax, filters, output formats และ result parsing
+ใช้กับ `raindrop` CLI เท่านั้น — ครอบคลุม authentication, `search`, `list` filters, output formats และ result parsing — verified กับ CLI v0.1.1
 
 ## Execute
 
 ### 1. Ensure CLI Is Ready
 
-> Goal: Set up raindrop CLI and confirm authentication before searching
+> Goal: CLI พร้อมและ authenticated ก่อนค้นหา
 
 1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
-2. รัน `raindrop auth status`
-3. ถ้ายังไม่ authenticated → รัน `printf '%s' "$RAINDROP_ACCESS_TOKEN" | raindrop auth login --token-stdin`
-4. รัน `raindrop doctor` เพื่อ verify config, auth, และ API connectivity
-5. ถ้า doctor พบ issue → แก้ไขตาม error message ก่อนค้นหา
+2. รัน `raindrop auth status` — ยืนยัน authenticated
+3. ถ้ายังไม่ authenticated → `raindrop auth login` (OAuth flow) หรือ `raindrop auth token <token>` สำหรับ test token — ใช้ `RAINDROP_ACCESS_TOKEN` ผ่าน env/stdin ห้ามพิมพ์ตรงๆ ใน command
+4. ถ้า auth พัง → แก้ตาม error message ก่อนค้นหา (ไม่มี `doctor` command ใน v0.1.1)
 
 ### 2. Search Bookmarks
 
-> Goal: Run search queries against Raindrop.io
+> Goal: รัน search กับ Raindrop.io
 
-1. รัน `raindrop bookmark search "<query>"` สำหรับ full-text search
-2. ใช้ `raindrop bookmark search "<query>" --collection <id>` เพื่อจำกัด collection
-3. ใช้ `raindrop bookmark search "<query>" --limit <n>` เพื่อจำกัดจำนวน
-4. ใช้ `raindrop bookmark search "<query>" --sort score|created|updated` เพื่อเรียงผล
-5. ใช้ `raindrop bookmark search "<query>" --page <n>` สำหรับ pagination
-6. Output เริ่มต้นเป็น JSON — ใช้ `jq` สำหรับ extract ฟิลด์ เช่น `raindrop bookmark search "api" | jq -r '.items[].title'`
+1. รัน `raindrop search "<query>"` สำหรับ full-text search — default แสดงหน้าแรก
+2. ใช้ `--collection <id>` (`-c`) เพื่อจำกัด collection — default `"0"` = ทั้งหมด
+3. ใช้ `--all` (`-a`) เพื่อดึงผลทุกหน้า — ไม่มี `--limit`/`--page` ใน v0.1.1
+4. ใช้ `--json` เพื่อ output JSON สำหรับ scripting — ใช้ `jq` extract ฟิลด์
+5. ใช้ `--verbose` เพื่อ debug query
 
-### 3. Use Search Filters
+### 3. Use Filters
 
-> Goal: Apply Raindrop search operators
+> Goal: apply filters ที่ CLI รองรับจริง
 
-1. tag filter: `tag:<tag>` เช่น `tag:typescript`
-2. type filter: `type:article|image|video|document|audio`
-3. domain filter: `domain:<domain>` เช่น `domain:github.com`
-4. collection filter: ใช้ `--collection <id>` หรือ `collection:<id>` ถ้า CLI รองรับ
-5. important filter: `important:true` สำหรับ favorites
-6. broken filter: `broken:true` สำหรับ broken links
-7. combine filters: `raindrop bookmark search "tag:api type:article domain:docs.rs" --collection 0`
+1. `search` flags: `--tag <tag>` (`-t`), `--type link|article|image|video|document|audio` (`-T`), `--after`/`--before YYYY-MM-DD`, `--collection`, `--all`
+2. `list [<collection>]` flags: `--favorites` (`-f`), `--broken`, `--type`, `--tag`, `--search <query>`, `--sort` (default `-created`), `--all` (default first 50)
+3. favorites → `raindrop list --favorites --json --all` (ดู `/list-raindrop-favorite`) — ไม่มี `important:true` operator
+4. broken links → `raindrop list --broken`
+5. combine: `raindrop search "api" --tag typescript --type article --collection 0 --all`
 
 ### 4. Format And Parse Results
 
-> Goal: Present search results in a useful format
+> Goal: present ผลในรูปแบบที่ใช้ได้
 
-1. default JSON: `raindrop bookmark search "<query>"`
-2. human-readable table: `raindrop bookmark search "<query>" --human` ถ้า CLI รองรับ
-3. extract with `jq`:
-   - title: `| jq -r '.items[].title'`
-   - url: `| jq -r '.items[].link'`
-   - tags: `| jq -r '.items[].tags[]'`
-   - id: `| jq -r '.items[]._id'`
-4. บันทึกผลลงไฟล์: `raindrop bookmark search "<query>" > results.json`
-5. นับจำนวนผล: `raindrop bookmark search "<query>" | jq '.items | length'`
+1. default output เป็น table — ใช้ `--json` สำหรับ machine-readable (ไม่มี `--human` flag)
+2. extract with `jq`:
+   - title: `| jq -r '.[].title'` (หรือ `.items[].title` ตาม JSON shape จริง — ตรวจด้วย `jq 'keys'` ก่อน)
+   - url: `| jq -r '.[].link'`
+   - tags: `| jq -r '.[].tags[]?'`
+   - id: `| jq -r '.[]._id'`
+3. บันทึกผลลงไฟล์: `raindrop search "<query>" --json --all > results.json`
+4. นับจำนวนผล: `raindrop search "<query>" --json --all | jq 'length'`
+5. เปิด bookmark ใน browser: `raindrop open <id>`; copy URL: `raindrop copy <id>`; รายละเอียด: `raindrop get <id>`
 
-### 5. Handle Empty Or Unexpected Results
+### 5. Handle Empty Or Error Results
 
-> Goal: Verify search outcomes and troubleshoot
+> Goal: verify ผลและ troubleshoot
 
-1. ถ้า results ว่าง → ตรวจสอบว่า query ถูกต้อง, collection id ถูกต้อง, auth ยัง valid
-2. รัน `raindrop bookmark search "<query>" --verbose` เพื่อ debug query
-3. ใช้ `raindrop collection list` เพื่อ verify collection ids
-4. ถ้า API error → อ่าน stderr JSON error และ retry ตาม rate limit
+1. ถ้า results ว่าง → ตรวจ query, collection id, auth validity
+2. verify collection ids ด้วย `raindrop collections list`
+3. ดู tags ที่มีด้วย `raindrop tags list`
+4. ถ้า API error → อ่าน stderr และ retry ตาม rate limit
+5. export สำรอง: `raindrop export --format csv --all`
 
 ## Rules
 
 ### Query Syntax
 
-- ใช้ double quotes รอบ query ทีมี space เสมอ
-- ระวึง operators `:` `|` ต้องไม่มี space ระหว่าง key:value
-- ใช้ `--collection` หรือ `collection:<id>` ตามที CLI รองรับ
+- ใช้ double quotes รอบ query ที่มี space เสมอ
+- filters เป็น CLI flags (`--tag`, `--type`, `--after`, `--before`) — ไม่ใช่ `key:value` operators ใน query
+- `--collection 0` = search ทั้งหมด (default)
 
 ### Output
 
-- JSON เป็น default — เหมาะกับ `jq` และ scripting
-- `--human` ใช้เมื่อต้องการอ่านทันที ไม่ต้อง parse
+- `--json` สำหรับ scripting/`jq`; default table สำหรับอ่านทันที
+- `--all` เพื่อดึงครบทุกหน้า — list default แค่ 50 รายการแรก
 - ใช้ `jq -r` เพื่อ raw string output โดยไม่มี quotes
 
 ### Safety
 
-- search เป็น read-only — ไม่ต้องใช้ `--force`
+- `search`/`list`/`get` เป็น read-only — `--force`/`--no-input` ใช้กับ mutating commands (`add`, `update`, `delete`, `import`)
 - อย่า expose `RAINDROP_ACCESS_TOKEN` ใน command history
-- ใช้ `raindrop doctor` ก่อนถ้าค้นหาไม่ได้
 
 ### High Impact Content
 
-- เก็บเฉพาะ search commands ทีใช้จริง
-- ลด filters ทีไม่ได้ใช้ประจำ
-- ทุก example ต้องมี query จริงทีสามารถรันได้
+- เก็บเฉพาะ commands/flags ที่ verify กับ v0.1.1 — ห้ามเดา syntax
+- ทุก example ต้องมี query จริงที่รันได้
 
-- ใช้ /list-raindrop-io ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
+- ใช้ /list-raindrop-favorite ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น
 
 ## Expected Outcome
 
-- raindrop CLI authenticated และพร้อม search
-- ผลการค้นหาได้ถูกต้องตาม query และ filters
-- สามารถ format output เป็น JSON หรือ human-readable
-- สามารถ parse ผลด้วย `jq` เพื่อนำไปใช้ต่อ
+- raindrop CLI v0.1.1 authenticated และพร้อม search
+- ผลการค้นหาได้ถูกต้องตาม query และ filters ที่ CLI รองรับจริง
+- สามารถ format output เป็น JSON และ parse ด้วย `jq` เพื่อนำไปใช้ต่อ

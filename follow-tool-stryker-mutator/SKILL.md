@@ -24,6 +24,18 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| setup | `subskills/setup-stryker/SKILL.md` — install, stryker config, test runner integration |
+| optimize | `subskills/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+
 ### 1. Installation
 
 > Goal: ติดตั้ง Stryker และ test runner plugin

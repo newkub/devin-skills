@@ -113,6 +113,11 @@ related:
 4. ใช้ `@elysia/swagger` ถ้าต้องการ Swagger UI
 5. รัน production ด้วย `bun run start` และตรวจสอบ `Bun.version` ให้รองรับ Elysia
 
+### Subskills
+
+- Install + `new Elysia()` + `.listen()` + routes/plugins พื้นฐาน → `subskills/setup-elysia/SKILL.md`
+- Production deploy — `bun build`, env config, platform targets → `subskills/deploy-elysia/SKILL.md`
+
 ## Rules
 
 ### 1. Project Setup

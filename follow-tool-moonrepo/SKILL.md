@@ -23,6 +23,14 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Install moon, `moon init`, `.moon/` workspace layout | `subskills/setup-moonrepo/SKILL.md` |
+| `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `subskills/config-pipeline/SKILL.md` |
+| Cache tuning, `--affected` targets | `subskills/optimize-cache/SKILL.md` |
+
 ### 1. Install moon
 
 > Goal: ติดตั้ง moon CLI บน environment

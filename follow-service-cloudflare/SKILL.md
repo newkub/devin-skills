@@ -1,7 +1,7 @@
 ---
 name: follow-service-cloudflare
 description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ Nitro ผ่าน Wrangler CLI สำหรับ develop และ deploy
-argument-hint: "[scope]"
+argument-hint: "[setup-wrangler|config-bindings|deploy-worker|migrate-pages-to-workers] [scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
@@ -147,6 +147,20 @@ export default defineNuxtConfig({
 3. เปิดใช้งาน `observability.enabled` ใน config
 4. ใช้ `WRANGLER_LOG=debug` สำหรับ verbose logging
 5. ดู error codes ใน [references/troubleshooting.md](references/troubleshooting.md)
+
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ตาม topic/argument
+
+| Topic/Argument | Subskill |
+|----------------|----------|
+| `setup`, `install`, `login`, `auth` | `subskills/setup-wrangler/SKILL.md` — wrangler install, auth, `whoami` |
+| `config`, `bindings`, `kv`, `r2`, `d1`, `vars`, `env` | `subskills/config-bindings/SKILL.md` — bindings และ environments |
+| `deploy`, `worker` | `subskills/deploy-worker/SKILL.md` — `wrangler deploy`, staging/production, verify |
+| `migrate`, `pages-to-workers` | `subskills/migrate-pages-to-workers/SKILL.md` — Pages → Workers migration |
+
+1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าไม่ระบุ → ทำตาม steps 1-10 ตามลำดับ
 
 ## Rules
 

@@ -30,6 +30,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรงกับ topic
+
+- Setup: SDK install ตาม framework, `instant-cli init`, db client → `subskills/setup-instantdb/SKILL.md`
+- Config: `instant.schema.ts`, `instant.perms.ts`, env vars, push/pull → `subskills/config-instantdb/SKILL.md`
+
 ### 1. Detect Project
 
 > Goal: รู้ framework และ dependencies ปัจจุบัน

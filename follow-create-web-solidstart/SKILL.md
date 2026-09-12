@@ -8,7 +8,7 @@ related:
   - follow-tool-vite
   - use-bun-native-api
   - follow-create-web
-  - follow-my-tech-stack
+  - review-dependencies
   - run-dev
 ---
 
@@ -28,7 +28,7 @@ related:
 
 > Goal: ยืนยัน stack ก่อนสร้าง
 
-1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack
+1. ทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ยืนยันว่าใช้ SolidJS + SolidStart + Nitro + Vite
 3. ทำ `/follow-lib-solidjs` สำหรับ component patterns
 
@@ -116,7 +116,7 @@ related:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /use-bun-native-api ถ้าต้องเขียน Bun APIs เพิ่มเติม
 - ใช้ /run-dev ถ้าจำเป็น
 

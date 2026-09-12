@@ -29,7 +29,7 @@ related:
 > Goal: `act` พร้อมใช้งาน
 
 1. ตรวจ `act --version`
-2. ถ้าไม่มี → ติดตั้งตาม `/follow-my-package-manager`: `mise use -g act` ก่อน แล้วค่อย `scoop install act` หรือ `winget install nektos.act`
+2. ถ้าไม่มี → ติดตั้งตาม `download-program/subskills/package-manager`: `mise use -g act` ก่อน แล้วค่อย `scoop install act` หรือ `winget install nektos.act`
 3. ตรวจ Docker daemon รันอยู่ (`docker info`) เพราะ `act` รัน jobs ใน containers
 
 ### 2. Inspect Workflows

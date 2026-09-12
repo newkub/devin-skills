@@ -5,7 +5,6 @@ argument-hint: "[workspace-or-package]"
 related:
   - update-version-to-latest
   - review-security
-  - follow-my-tech-stack
   - scan-codebase
   - report
   - run-check
@@ -25,6 +24,8 @@ related:
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-lib-better)
 
 - merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md`
+
+- merged from: `follow-my-tech-stack` (deleted) — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md`
 
 ## Execute
 
@@ -57,7 +58,7 @@ related:
 > Goal: จัดลำดับ update ตาม risk
 
 1. แยก patch/minor/major updates — flag major ที่มี breaking changes
-2. ตรวจว่า dep สอดคล้อง `/follow-my-tech-stack` หรือไม่
+2. ตรวจว่า dep สอดคล้องกับ canonical catalog `references/techstack-catalog.md` — flag ตัวที่ไม่ใช่ Default เป็น drift
 3. ระบุ deps ที่ต้อง pin version และ deps ที่ auto-update ได้
 
 ### 5. Score Alternatives

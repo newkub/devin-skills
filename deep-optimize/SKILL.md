@@ -127,6 +127,16 @@ Dispatch ตาม layer — เรียก section `## Fix` ของ review s
 3. ระบุ items ทีค้างและ recommendations
 4. ทำ `/report-progress` และ `/suggest-next-action`
 
+### Subskills
+
+> Goal: dispatch งาน optimize เฉพาะ domain ไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| Bundle size — analyze, split, treeshake | `subskills/optimize-bundle/SKILL.md` |
+| Runtime performance — profile, complexity, caching | `subskills/optimize-performance/SKILL.md` |
+| Infrastructure cost — idle resources, right-sizing, egress | `subskills/optimize-cost/SKILL.md` |
+
 ## Rules
 
 - ต้องมี user confirmation ก่อนเปลี่ยน public API หรือ architecture

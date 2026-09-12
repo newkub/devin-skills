@@ -100,6 +100,14 @@ related:
 2. ใช้ `/report` สรุป: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
 3. รายงาน breaking changes หรือ action ที่ต้องทำต่อ
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| Major version upgrade — breaking changes scan, codemods, staged rollout, rollback | `subskills/migrate-major/SKILL.md` |
+
 ## Rules
 
 ### 1. One-Shot Flow

@@ -25,7 +25,7 @@ related:
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก validator ตามความเหมาะสม:
-   - TypeScript/JavaScript: zod (`^4.x` — latest `4.5.4`, verified 2026-09-12), valibot, arktype, yup, joi, class-validator
+   - TypeScript/JavaScript: zod (`^4.x` — latest `4.6.2`, verified 2026-09-12), valibot, arktype, yup, joi, class-validator
    - Rust: validator crate, garde, serde_json schema
    - Python: pydantic, marshmallow, cerberus
    - Go: go-playground/validator, govalidator

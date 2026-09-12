@@ -27,6 +27,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-effect/SKILL.md` — install, Effect/Layer/Service basics |
+| Migrate | `subskills/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally |
+
 ### 1. Detect Version And Ecosystem
 
 > Goal: เลือก API ที่ตรงกับ effect version และ package manager ของ project

@@ -18,7 +18,7 @@
 
 1. รัน `/review-observability` ถ้ายังไม่มี findings
 2. จัดกลุ่ม gaps: logging, metrics, tracing, alerting, dashboards, SLO
-3. ทำ `/follow-my-tech-stack` เพื่อยืนยัน observability stack ของ project
+3. ทำ `/review-dependencies` เพื่อยืนยัน observability stack ของ project
 
 ### 2. Plan Instrumentation
 

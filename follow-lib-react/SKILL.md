@@ -119,6 +119,10 @@ related:
 5. ใช้ `useDeferredValue` สำหรับ expensive renders
 6. หลีกเลี่ยง over-memoization ถ้าใช้ React Compiler
 
+### Subskills
+
+- Render optimization — memo/useMemo/useCallback, React Compiler, profiling → `subskills/optimize-render/SKILL.md`
+
 ## Rules
 
 ### 1. Component Structure

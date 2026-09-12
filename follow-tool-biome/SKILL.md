@@ -149,6 +149,15 @@ jobs:
         run: biome ci .
 ```
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+
+| Topic | Subskill |
+|-------|----------|
+| first-time setup (install, biome.json, editor, CLI) | `subskills/setup-biome/SKILL.md` |
+| migrate จาก ESLint/Prettier | `subskills/migrate-from-eslint-prettier/SKILL.md` |
+
 ## Rules
 
 ### 1. Installation

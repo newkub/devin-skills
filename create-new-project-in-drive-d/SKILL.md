@@ -6,7 +6,7 @@ related:
   - follow-create-cli
   - follow-create-web
   - follow-create-sdk
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-your-suggestion
   - follow-create-mobile-cross-capacitor
   - follow-create-bot
@@ -62,7 +62,7 @@ related:
 > Goal: Run Create Skill
 
 1. ส่ง `project-name` และ `target-path` ให้ skill ทีเลือก
-2. ถ้า skill ต้องการ stack ให้ใช้ `/follow-my-tech-stack` เพื่อยืนยัน
+2. ถ้า skill ต้องการ stack ให้ใช้ `/review-dependencies` เพื่อยืนยัน
 3. ติดตามให้ skill ทีเลือกสร้าง project จนเสร็จ
 
 ### 5. Validate And Ship

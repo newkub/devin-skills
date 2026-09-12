@@ -87,6 +87,10 @@ related:
 3. Test actions, getters และ state changes
 4. จำลอง external dependencies อย่างเหมาะสม
 
+### Subskills
+
+- Install + `createPinia` + store patterns (setup vs options) → `subskills/setup-pinia/SKILL.md`
+
 ## Rules
 
 ### 1. Setup Store Pattern

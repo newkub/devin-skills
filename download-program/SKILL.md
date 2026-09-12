@@ -3,7 +3,7 @@ name: download-program
 description: ค้นหาและติดตั้ง program บนเครื่องโดยใช้ package manager ทีเหมาะสม ถ้าไม่มีให้เปิดหน้า download
 argument-hint: "[program-name]"
 related:
-  - follow-my-package-manager
+  - update-all-program-in-computer
   - use-pwsh-shell
   - open-web
   - search-in-github-star
@@ -15,11 +15,11 @@ related:
 
 ## Goal
 
-ช่วยค้นหาและติดตั้ง program บนเครื่อง โดยเลือก package manager ทีเหมาะสมผ่าน `/follow-my-package-manager` และ fallback ไปหน้า download ถ้าหาไม่เจอ
+ช่วยค้นหาและติดตั้ง program บนเครื่อง โดยเลือก package manager ทีเหมาะสมผ่าน `subskills/package-manager` (alias `/follow-my-package-manager` — merged) และ fallback ไปหน้า download ถ้าหาไม่เจอ
 
 ## Scope
 
-- ใช้ได้ทุก OS โดย `/follow-my-package-manager` จะเลือก package manager ตาม OS
+- ใช้ได้ทุก OS โดย `subskills/package-manager` จะเลือก package manager ตาม OS
 - รองรับ `mise`, `scoop`, `winget` บน Windows และ `mise`, `brew`, `apt`, `pacman`, `yum`, `dnf` บน Unix
 - ถ้าไม่มี package manager ใดที่มี program → เปิดหน้า download หลักให้ user ติดตั้งเอง
 - ไม่รับประกันว่า program ทุกตัวจะติดตั้งได้โดยอัตโนมัติ
@@ -48,10 +48,10 @@ related:
 
 > Goal: รับลำดับ package manager ทีเหมาะสม
 
-1. ใช้ `/follow-my-package-manager <program-name> install`
+1. ทำตาม `subskills/package-manager/SKILL.md` ด้วย `<program-name> install`
 2. บันทึกลำดับ package manager ทีได้รับ เช่น `[mise, scoop, winget]`
 3. บันทึก command template สำหรับ install ของแต่ละ package manager
-4. ถ้า `follow-my-package-manager` ไม่พบ package manager ใดที่มี program → ข้ามไป fallback
+4. ถ้า subskill ไม่พบ package manager ใดที่มี program → ข้ามไป fallback
 
 ### 4. Install Through Recommended Package Manager
 
@@ -91,9 +91,9 @@ related:
 
 ### 1. Delegate Package Manager Selection
 
-- ใช้ `/follow-my-package-manager` เพื่อเลือก package manager เสมอ
+- ใช้ `subskills/package-manager` เพื่อเลือก package manager เสมอ
 - ไม่ hardcode ลำดับ package manager ใน skill
-- ถ้า OS เปลี่ยน ให้ `follow-my-package-manager` จัดการ
+- ถ้า OS เปลี่ยน ให้ subskill จัดการ
 
 ### 2. OS Awareness
 

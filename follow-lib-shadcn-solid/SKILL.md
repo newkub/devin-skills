@@ -91,6 +91,11 @@ related:
 2. ใช้ `bunx shadcn-solid@latest diff <component>` เพื่อดู upstream changes
 3. อ่าน troubleshooting ที่ https://shadcn-solid.com/docs
 
+### Subskills
+
+- Setup theme — `components.json`, CSS variables, dark mode → `subskills/setup-theme/SKILL.md`
+- ปรับ theme tokens, `cva` variants → `subskills/config-tokens/SKILL.md`
+
 ## Rules
 
 - ใช้ CLI `bunx shadcn-solid@latest init` สำหรับ initial setup

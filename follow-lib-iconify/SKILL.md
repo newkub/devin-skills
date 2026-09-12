@@ -38,6 +38,11 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib iconify)
 
+### Subskills
+
+- Install + usage patterns ตาม framework → `subskills/setup-iconify/SKILL.md`
+- Offline bundles, on-demand loading, subsetting → `subskills/optimize-icons/SKILL.md`
+
 ## Rules
 
 - อย่า import ทั้ง icon set — ใช้ per-icon เสมอ

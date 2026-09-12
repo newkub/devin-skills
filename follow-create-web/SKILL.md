@@ -4,7 +4,6 @@ description: เลือกและสร้าง web project ตามปร
 argument-hint: "[scope]"
 related:
   - follow-create-tui-ratatui
-  - follow-my-tech-stack
   - review-dependencies
   - follow-create-web-solid-tanstack-router
   - follow-lib-unocss
@@ -87,7 +86,7 @@ related:
 - ใช้ backticks สำหรับ paths, commands, skill names
 - รายงานด้วย `/report`
 
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /follow-lib-unocss ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น

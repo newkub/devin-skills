@@ -20,6 +20,12 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Install, changelog generation, release command | `subskills/setup-changelogen/SKILL.md` |
+
 ### 1. Configure Changelogen
 
 > Goal: สร้าง `changelog.config.ts` สำหรับ project

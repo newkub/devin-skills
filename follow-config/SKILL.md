@@ -21,7 +21,7 @@ related:
   - update-config
   - update-dot-devin
   - setup-cicd
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-agents-md
   - update-references
   - deep-validate
@@ -36,7 +36,7 @@ related:
 
 ใช้กับ config files ทั่วไปใน project เช่น `.devin/`, `.vscode/`, `.github/`, `package.json`, `turbo.json`, `moon.yml`, `wrangler.toml`, `playwright.config.*`, รวมถึง CI/CD config และ tooling configs
 
-ดูเพิ่มเติม: /update-config, /update-dot-devin, /setup-cicd, /follow-my-tech-stack, /follow-agents-md, /deep-validate
+ดูเพิ่มเติม: /update-config, /update-dot-devin, /setup-cicd, /review-dependencies, /follow-agents-md, /deep-validate
 
 ## Execute
 
@@ -88,6 +88,16 @@ related:
 1. ทำ `/report` แสดง config files ทีตรวจ, สถานะ, การเปลี่ยนแปลง
 2. ทำ `/report` สรุป findings และ next actions
 3. ทำ `/suggest-next-action`
+
+### Subskills
+
+> Goal: dispatch config domain เฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| `.env` patterns, validation, secrets handling | `subskills/config-env/SKILL.md` |
+| `.gitignore` patterns ตาม ecosystem | `subskills/config-gitignore/SKILL.md` |
+| `.vscode` settings, extensions, tasks | `subskills/config-vscode/SKILL.md` |
 
 ## Rules
 

@@ -32,8 +32,10 @@ related:
 
 1. รับ `domain` จาก argument — normalize เป็น base URL
 2. เลือก route source ตามลำดับ:
-- ถ้ามี routes file → ใช้ `-RoutesFile <file>`
-- ถ้ามี OpenAPI spec URL → ใช้ `-SpecUrl <url>`
+- **`crw_map` (MCP)** — map site → เก็บ URL list ลง routes file (แนะนำ, ครอบคลุมสุด)
+- ถ้ามี routes file → ใช้ `--routes-file <file>` (รองรับ URL เต็ม จะ normalize เป็น path ให้)
+- ถ้ามี OpenAPI spec → ดึง paths จาก spec ลง routes file
+- ถ้า SPA → `--discover` (fetch base HTML, ดึง same-origin links)
 - ถ้ามี source code → ทำ `/report-uxui-all-routes` แล้วนำ paths มา test
 3. ถ้าหา routes ไม่ได้เลย → stop และ report ว่าต้องการ source ใด
 
@@ -41,10 +43,17 @@ related:
 
 > Goal: ได้ status จริงทุก API route
 
-1. รัน `scripts/test-all-api-routes.ps1 -Domain <domain>` พร้อม options ที่เลือก
-2. script ยิง request ทีละ route ผ่าน `curl.exe` — dynamic segments `{id}` ถูกแทนด้วย `1`
-3. เก็บต่อ route: `method`, `path`, `status`, `expected status` (ถ้ามี), `response time (ms)`
-4. ถ้าต้อง auth → ส่ง `-Token <bearer>` หรือ `-Header` ใน script (ระบุใน report ว่าเป็น authenticated check)
+1. รัน CLI (Bun, generic, print table):
+
+```bash
+bun <skill-dir>/scripts/check-routes.ts --base <domain> --routes-file routes.txt
+```
+
+2. options: `--method GET` (default), `--timeout`, `--slow`, `--header "Authorization: Bearer <token>"`, `--allow-write` (mutation methods — ต้อง user confirm), `--out <file>`
+3. script ยิง request ทีละ route — dynamic segments `{id}` ถูกแทนด้วย `1`
+4. เก็บต่อ route: `method`, `path`, `status`, `response time (ms)`, `severity` → table + manifest JSON
+5. fallback: `scripts/test-all-api-routes.ps1` (PowerShell + curl.exe) ถ้า Bun ไม่มี
+6. ถ้าต้อง auth → ส่ง `--header` ใน CLI (ระบุใน report ว่าเป็น authenticated check)
 
 ### 3. Classify Findings
 

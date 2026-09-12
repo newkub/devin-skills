@@ -83,6 +83,10 @@ related:
 5. ใช้ `tryOnScopeDispose` สำหรับ cleanup side-effects
 6. ใช้ `effectScope` สำหรับ grouped effect disposal
 
+### Subskills
+
+- Install + auto-import integration + common composables → `subskills/setup-vueuse/SKILL.md`
+
 ## Rules
 
 ### 1. Import Conventions

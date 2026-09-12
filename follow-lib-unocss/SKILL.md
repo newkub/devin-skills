@@ -161,6 +161,11 @@ related:
 5. ตรวจสอบ transformers ทำงาน (variant groups, directives)
 6. รัน build เพื่อตรวจสอบว่าไม่มี error
 
+### Subskills
+
+- First-time install + `uno.config.ts` + presets + framework integration → `subskills/setup-unocss/SKILL.md`
+- Theme tokens, shortcuts, rules, dark mode → `subskills/config-theme/SKILL.md`
+
 ## Rules
 
 ### Installation

@@ -23,6 +23,15 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-vercel/SKILL.md` — Vercel CLI, login, link project |
+| Config | `subskills/config-vercel/SKILL.md` — env vars, `vercel.json` config |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Install Vercel CLI
 
 > Goal: ติดตั้งและ authenticate Vercel CLI

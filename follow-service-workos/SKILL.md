@@ -19,6 +19,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรงกับ topic
+
+- Setup: SDK install, `WORKOS_API_KEY`/`WORKOS_CLIENT_ID`, client init → `subskills/setup-workos/SKILL.md`
+- Config: AuthKit/SSO, redirect URIs, organizations/connections, Directory Sync webhooks → `subskills/config-workos/SKILL.md`
+
 ### 1. Install SDK
 
 เตรียม SDK สำหรับ WorkOS

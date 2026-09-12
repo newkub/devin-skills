@@ -3,14 +3,24 @@ name: improve-uxui
 description: Orchestrate UX/UI pass — test flows + visual review ทุก route ผ่าน subagents แล้วแก้จริง
 argument-hint: "[url]"
 related:
+  - use-agent-browser
   - watch-browser
   - watch-browser-and-test
   - watch-browser-and-improve-uxui
+  - check-all-routes
+  - capture-all-components-all-routes
   - review-uxui
   - review-accessibility
   - deep-thinking
-  - update-tests
+  - prioritize
+  - follow-design-system
   - use-subagents
+  - run-dev
+  - resolve-errors
+  - update-tests
+  - implement-to-production
+  - run-test-e2e
+  - run-test-visual
   - create-report-in-dot-devin
   - update-docs
   - report
@@ -31,7 +41,7 @@ related:
 
 ถ้าต้องการแค่มิติเดียว → เรียก sub-skill นั้นโดยตรง
 
-- fix guides เฉพาะ domain อยู่ใน `references/` — อ่านแล้วทำตามเมื่อแก้ findings ของ domain นั้น
+- fix guides เฉพาะ domain อยู่ใน `review-uxui/references/fix-*.md` — อ่านแล้วทำตามเมื่อแก้ findings ของ domain นั้น
 
 ## Execute
 
@@ -87,7 +97,14 @@ related:
 1. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
 2. ทำ `/run-test-e2e` re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
-### 8. Report
+### 8. Production Readiness
+
+> Goal: fixes พร้อม production — ไม่มี mock/placeholder เหลือ
+
+1. ทำ `/implement-to-production` — ตรวจว่าไม่มี mock/TODO/placeholder ใน code path ที่แก้, schema+API+UX layer ครบ, security/resilience/observability ไม่หลุด, มี rollback plan
+2. ถ้าพบ gaps → แก้ตาม implement-to-production flow ก่อน report
+
+### 9. Report
 
 > Goal: ส่งมอบผลรวม
 
@@ -95,6 +112,16 @@ related:
 2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 7 ไม่ใช่ exploratory pass)
 3. ปิด browser session (`agent-browser close`)
 4. ทำ `/suggest-next-action`
+
+### Subskills
+
+> Goal: dispatch งาน fix เฉพาะด้านไปยัง subskill ที่ละเอียดกว่า
+
+| Topic | Subskill |
+|-------|----------|
+| Color contrast fixes — tokens, WCAG | `subskills/improve-contrast/SKILL.md` |
+| Responsive fixes — breakpoints, overflow, touch targets | `subskills/improve-responsive/SKILL.md` |
+| Missing states — loading, empty, error, skeleton | `subskills/improve-states/SKILL.md` |
 
 ## Rules
 

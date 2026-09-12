@@ -25,6 +25,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Install, release script, hooks/plugins basics | `subskills/setup-release-it/SKILL.md` |
+| `.release-it.json` — git, github, npm, changelog options | `subskills/config-release-it/SKILL.md` |
+
 ### 1. Install
 
 > Goal: ติดตั้ง release-it ใน project

@@ -7,7 +7,7 @@ related:
   - follow-create-mobile-cross-capacitor
   - follow-best-practice
   - setup-cicd
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-lib-vue
   - run-dev
 ---
@@ -219,7 +219,7 @@ related:
 - ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create web nuxt)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome

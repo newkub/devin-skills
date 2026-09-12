@@ -9,7 +9,7 @@ related:
   - follow-best-practice
   - learn-web
   - check-reference
-  - follow-my-tech-stack
+  - review-dependencies
 ---
 
 ## Goal
@@ -28,7 +28,7 @@ related:
 
 1. ถ้าหัวข้อเกี่ยวกับ dependencies/libraries → ใช้ `/research-dependencies` แล้ว stop
 2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/research-architecture` ถ้ามี หรือทำต่อ
-3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/follow-my-tech-stack` หรือ `/research-stack` ถ้ามี
+3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/review-dependencies` หรือ `/research-stack` ถ้ามี
 4. ถ้าไม่มี focused skill ทีตรง → ทำตามขั้นตอนด้านล่าง
 
 ### 1. Identify Topic And Scope

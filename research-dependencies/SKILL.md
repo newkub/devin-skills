@@ -18,7 +18,7 @@ allowed-tools:
   - mcp_call_tool
 related:
   - deep-research
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-best-practice
   - check-reference
   - report
@@ -54,7 +54,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 2. ระบุ package name หรือ capability ที่ต้องการ เช่น "HTTP client in Bun" หรือ "existing deps ที outdated"
 3. ระบุ ecosystem: `npm` / `crates.io` / `go` / `pypi`
 4. ระบุ constraints: fast, modern, minimal bundle, secure, maintained
-5. ถ้าไม่ชัด → ทำ `/follow-my-tech-stack` ก่อน
+5. ถ้าไม่ชัด → ทำ `/review-dependencies` ก่อน
 
 ### 2. Analyze Manifest
 
@@ -136,8 +136,8 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 ### 4. Integration
 
-- ถ้า library ไม่อยู่ใน `/follow-my-tech-stack` table → ใช้ `/deep-research` เพิ่ม
-- ถ้าต้อง add ลง tech stack table → แนะนำ update `/follow-my-tech-stack`
+- ถ้า library ไม่อยู่ใน `/review-dependencies` table → ใช้ `/deep-research` เพิ่ม
+- ถ้าต้อง add ลง tech stack table → แนะนำ update `/review-dependencies`
 - ถ้าต้องแก้ไข manifest → ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
 
 ### 5. Safety

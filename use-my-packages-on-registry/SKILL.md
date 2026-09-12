@@ -4,7 +4,7 @@ description: ดึงรายการ packages ที user เป็นเจ
 argument-hint: "[scope]"
 related:
   - list-my-npm-packages
-  - follow-my-tech-stack
+  - review-dependencies
   - use-bun-native-api
   - use-scripts
   - suggest-next-action
@@ -46,7 +46,7 @@ related:
 > Goal: เลือก packages ทีจะติดตั้ง
 
 1. ทำ `/ask-me` หรือเลือกจาก `/report` ว่าจะติดตั้ง package ใด
-2. ตรวจสอบ `/follow-my-tech-stack` ว่า package ทีเลือกสอดคล้องกับ tech stack หรือไม่
+2. ตรวจสอบ `/review-dependencies` ว่า package ทีเลือกสอดคล้องกับ tech stack หรือไม่
 3. ระบุว่าเป็น `dependencies`, `devDependencies` หรือ `peerDependencies`
 4. ถ้ามีหลาย package manager → ทำตามลำดับที user เลือก
 
@@ -85,7 +85,7 @@ related:
 
 ### 2. Package Selection
 
-- ใช้ `/follow-my-tech-stack` เพื่อตรวจสอบ compatibility
+- ใช้ `/review-dependencies` เพื่อตรวจสอบ compatibility
 - ไม่ duplicate dependencies ทีมีอยู่
 - ถ้ามีหลาย package manager → ให้ user เลือก
 

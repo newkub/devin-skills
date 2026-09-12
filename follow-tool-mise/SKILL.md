@@ -20,6 +20,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Install mise, activate shell, `mise doctor` | `subskills/setup-mise/SKILL.md` |
+| `mise.toml` — tools, tasks, env | `subskills/config-tools/SKILL.md` |
+
 ### 1. Check And Install Mise
 
 > Goal: ตรวจสอบและติดตั้ง mise

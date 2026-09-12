@@ -27,6 +27,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรงกับ topic
+
+- Setup: SDK/CLI install, API keys, webhook signing → `subskills/setup-stripe/SKILL.md`
+- Config: products, prices, webhook endpoints, customer portal, test→live → `subskills/config-stripe/SKILL.md`
+
 ### 1. Setup Credentials
 
 > Goal: เตรียม Stripe SDK และ API keys

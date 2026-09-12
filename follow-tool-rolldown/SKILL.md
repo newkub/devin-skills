@@ -80,6 +80,16 @@ related:
 4. อัปเดต plugin list เป็นระยะ โดยอ้างอิง official docs
 5. ดู plugin list ใน [references/official-resources.md](references/official-resources.md)
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+
+| Topic | Subskill |
+|-------|----------|
+| first-time setup (install, config, entry/output) | `subskills/setup-rolldown/SKILL.md` |
+| optimize bundle (splitting, treeshaking, advancedChunks) | `subskills/optimize-bundle/SKILL.md` |
+| migrate จาก Rollup | `subskills/migrate-from-rollup/SKILL.md` |
+
 ## Rules
 
 ### 1. Installation

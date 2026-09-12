@@ -3,9 +3,8 @@ name: update-all-program-in-computer
 description: อัปเดต programs ทั้งหมดในเครื่องทีติดตั้งผ่าน package managers
 argument-hint: "[scope]"
 related:
-  - follow-my-package-manager
-  - list-program-in-computer
   - download-program
+  - list-program-in-computer
   - report
   - suggest-next-action
   - run-program
@@ -25,7 +24,7 @@ related:
 
 > Goal: รู้ว่ามี package managers ใดบ้าง และอ่าน global configs
 
-1. ใช้ `/follow-my-package-manager` เพื่อ detect package manager ที่พร้อมใช้บนเครื่อง
+1. ใช้ `/download-program` เพื่อ detect package manager ที่พร้อมใช้บนเครื่อง
 2. รัน `mise --version`
 3. ถ้า `mise` มีอยู่ → ตรวจหา global config ที่ `~/.config/mise/config.toml` หรือ `~/.mise.toml`
 4. อ่าน `mise` global config เพื่อดู tools ทีจัดการไว้

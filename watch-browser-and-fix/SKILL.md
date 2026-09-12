@@ -7,6 +7,7 @@ related:
   - watch-browser-console
   - watch-browser-and-improve-uxui
   - watch-browser-and-test
+  - improve-uxui
   - resolve-errors
   - run-dev
   - run-program
@@ -22,6 +23,7 @@ related:
 
 - ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
+- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
 
 ## Execute
 

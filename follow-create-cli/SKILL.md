@@ -7,9 +7,8 @@ related:
   - follow-create-rust-cli
   - follow-architecture
   - flatten-directory
-  - follow-my-tech-stack
-  - ship
   - review-dependencies
+  - ship
   - rethink
   - run-test-cli
 ---
@@ -29,7 +28,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create cli)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create cli)
 
@@ -52,7 +51,7 @@ related:
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
 3. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
 4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
-5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/follow-my-tech-stack` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
+5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/review-dependencies` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
 6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 4. Review CLI
@@ -100,11 +99,11 @@ related:
 
 ### 3. Library Selection
 
-- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/follow-my-tech-stack` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
+- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/review-dependencies` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
 - ถ้า CLI ต้องรับ command/subcommand → ใช้ `clap` (Rust) หรือ `cac` (Bun/TS)
 - ถ้า CLI ต้อง interactive prompt → ใช้ `dialoguer`/`inquire` (Rust) หรือ `@clack/prompts`/`inquirer` (Bun/TS)
 - ถ้า CLI ต้อง TUI → ใช้ `ratatui` (Rust) หรือ `blessed`/`ink` (Bun/TS)
-- ทำ `/follow-my-tech-stack` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
+- ทำ `/review-dependencies` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
 
 ### 4. Review Before Ship
 

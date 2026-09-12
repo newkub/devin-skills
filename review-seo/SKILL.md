@@ -13,7 +13,7 @@ related:
   - report
   - suggest-next-action
   - review-frontend
-  - follow-my-tech-stack
+  - review-dependencies
 ---
 
 ## Goal
@@ -125,7 +125,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning
 
 - ใช้ /review-frontend ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Fix
 

@@ -21,6 +21,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-aws-sdk/SKILL.md` — SDK v3 modular install, credentials |
+| Config | `subskills/config-aws-sdk/SKILL.md` — region, credentials chain, endpoint config |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Install And Configure
 
 > Goal: ติดตั้ง AWS SDK และกำหนดค่า credentials

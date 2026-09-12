@@ -31,6 +31,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรงกับ topic
+
+- Setup: CLI install/login, `supabase init`, `link`, local stack, client init → `subskills/setup-supabase/SKILL.md`
+- Config: env vars, `config.toml`, RLS policies, client options → `subskills/config-supabase/SKILL.md`
+
 ### 1. Install And Authenticate
 
 > Goal: ติดตั้งและตั้งค่า Supabase CLI

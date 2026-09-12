@@ -71,7 +71,7 @@ related:
 2. ใช้ date (`yyyy-mm-dd`) versioning ได้ตั้งแต่ v137 เช่น `https://esm.sh/my-package@2026-01-02`
 3. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore; ตั้งแต่ v137_2 legacy build server ถูก shutdown — pinned URLs เก่า redirect ไป routes ใหม่
 4. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
-5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v137_8, 2026-07-29 — verified 2026-09-12)
+5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-12)
 
 ## Rules
 

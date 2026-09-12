@@ -42,6 +42,11 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib web vitals)
 
+### Subskills
+
+- Install + `on*` callbacks + reporting to endpoint → `subskills/setup-vitals/SKILL.md`
+- ปรับปรุง LCP/INP/CLS patterns → `subskills/optimize-vitals/SKILL.md`
+
 ## Rules
 
 - INP แทน FID ตั้งแต่ v3; `onFID` ถูกลบออกตั้งแต่ v5 — ห้ามใช้

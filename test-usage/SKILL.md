@@ -17,7 +17,6 @@ related:
   - review-quality
   - run-test
   - resolve-errors
-  - review-quality
   - check-should-update
   - implement-to-production
   - ship

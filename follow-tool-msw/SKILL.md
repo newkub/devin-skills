@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - run-test-api
   - implement-to-production
-  - follow-my-tech-stack
   - review-dependencies
   - report
 ---
@@ -25,11 +24,23 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| setup | `subskills/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน |
+| config | `subskills/config-handlers/SKILL.md` — handler organization, error simulation, passthrough |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+
 ### 1. Review Tech Stack
 
 > Goal: รู้ stack และ test runner ก่อนติดตั้ง
 
-1. ทำ `/follow-my-tech-stack` และ `/review-dependencies`
+1. ทำ `/review-dependencies`
 2. ระบุ environment: browser dev, Node tests, หรือทั้งสอง
 3. ระบุ HTTP client ที่ใช้ (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
 

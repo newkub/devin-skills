@@ -64,7 +64,7 @@ bunx sv create my-app
 - ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome
 

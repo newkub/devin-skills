@@ -21,6 +21,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-postgres/SKILL.md` — install, connection string, client |
+| Optimize | `subskills/optimize-pool/SKILL.md` — pool sizing, prepared statements |
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

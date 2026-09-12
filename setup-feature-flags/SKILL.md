@@ -4,7 +4,7 @@ description: ตั้งระบบ feature flags ครบ — flag definitio
 argument-hint: "[provider-or-approach]"
 related:
   - check-unused
-  - follow-my-tech-stack
+  - review-dependencies
   - ask-me
 ---
 
@@ -24,7 +24,7 @@ related:
 > Goal: เลือก approach ที่พอดีกับ project
 
 1. ถามความต้องการจริง: kill switches, gradual rollout, A/B, entitlements — หรือแค่ on/off ง่ายๆ
-2. ใช้ `/follow-my-tech-stack` ตรวจว่ามี flag tooling อยู่แล้วไหม
+2. ใช้ `/review-dependencies` ตรวจว่ามี flag tooling อยู่แล้วไหม
 3. แนะนำตาม scale:
    - ง่าย: env vars + typed config helper
    - กลาง: config file + evaluation utility

@@ -20,7 +20,7 @@ related:
 
 ครอบคลุม installation, KDL spec, `usage generate` subcommands, integrations, และ validation
 
-- Latest: `usage@6.8.0` (usage CLI โดย jdx, verified 2026-09-12)
+- Latest: `usage@6.9.0` (usage CLI โดย jdx, verified 2026-09-12)
 
 ## Execute
 

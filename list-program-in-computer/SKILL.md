@@ -3,10 +3,9 @@ name: list-program-in-computer
 description: แสดงรายการ program ที่ติดตั้งในเครื่องจาก package manager ทั้งหมด
 argument-hint: "[filter]"
 related:
-  - follow-my-package-manager
+  - download-program
   - use-pwsh-shell
   - report
-  - download-program
   - uninstall-program-in-computer
   - enhance-prompt
   - ask-me
@@ -38,7 +37,7 @@ related:
 
 > Goal: หา package manager ที่พร้อมใช้
 
-1. ทำ `/follow-my-package-manager` หรือเช็คโดยตรงว่า `mise`, `scoop`, `winget` มีไหม
+1. ทำ `/download-program` หรือเช็คโดยตรงว่า `mise`, `scoop`, `winget` มีไหม
 2. บันทึก package manager ที่พร้อมใช้
 
 ### 3. Query Mise

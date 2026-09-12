@@ -18,6 +18,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-auth/SKILL.md` — install, `auth.ts`, database adapter |
+| Providers | `subskills/config-providers/SKILL.md` — social/email plugins config |
+
 ### 1. Install
 
 > Goal: ติดตั้ง Better Auth และ database adapter

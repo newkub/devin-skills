@@ -139,6 +139,15 @@ export default defineConfig([
 }
 ```
 
+### Subskills
+
+> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+
+| Topic | Subskill |
+|-------|----------|
+| เขียน/แก้ flat config (`eslint.config.js`) | `subskills/config-flat/SKILL.md` |
+| migrate ไป oxlint | `subskills/migrate-to-oxlint/SKILL.md` |
+
 ## Rules
 
 ### 1. Vue/Nuxt Configuration

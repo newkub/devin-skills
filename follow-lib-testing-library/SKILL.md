@@ -37,6 +37,10 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib testing library)
 
+### Subskills
+
+- Setup กับ Vitest — jsdom/happy-dom, jest-dom matchers, user-event → `subskills/setup-testing/SKILL.md`
+
 ## Rules
 
 - test behavior ไม่ใช่ implementation — ห้าม query ด้วย class/id ที่เป็น internal

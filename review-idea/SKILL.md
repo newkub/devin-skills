@@ -7,7 +7,7 @@ related:
   - research-setup
   - deep-research
   - learn-web
-  - follow-my-tech-stack
+  - review-dependencies
   - follow-best-practice
   - suggest-next-action
   - pick-bestest
@@ -47,7 +47,7 @@ related:
 
 > Goal: ประเมินว่าทำได้จริงหรือไม่
 
-1. ตรวจ tech stack ด้วย `/follow-my-tech-stack`
+1. ตรวจ tech stack ด้วย `/review-dependencies`
 2. ตรวจ dependencies ที่มีและที่ต้องเพิ่ม
 3. ระบุ skills/tools ที่ต้องใช้
 4. ระบุ skills ที่มีอยู่แล้วใน project

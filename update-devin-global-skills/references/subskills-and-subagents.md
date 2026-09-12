@@ -36,6 +36,24 @@
 5. subskill อาจมี `references/`, `examples/` ของตัวเองถ้าเนื้อหาเฉพาะ platform/domain นั้น
 6. ถ้า subskill เป็นงาน self-contained ที่ไม่ต้องการ context ของ parent → ตั้ง `subagent: true` หรือ `agent: <profile>` ใน frontmatter (experimental ตาม Devin spec)
 
+## Lifecycle Prefixes
+
+เมื่อ parent มีหลาย lifecycle workflows ให้ใช้ prefix เหล่านี้ใน subskill name (หลัง `<parent>-`) เพื่อสื่อ phase ของงาน:
+
+| Prefix | ใช้เมื่อ | ตัวอย่าง |
+|--------|---------|---------|
+| `setup-` | install/config ครั้งแรก ให้ tool/service พร้อมใช้ | `follow-service-cloudflare` → `subskills/setup-wrangler` |
+| `config-` | แก้ config/env/options ของที่มีอยู่ โดยไม่ clobber | `follow-service-*` → `subskills/config-env` |
+| `follow-` | best practices/conventions ของ domain ย่อย | `follow-service-*` → `subskills/follow-auth` |
+| `optimize-` | ปรับ performance/bundle/cost โดยวัด baseline ก่อน-หลัง | `deep-optimize` → `subskills/optimize-bundle` |
+| `improve-` | ปรับคุณภาพของที่มีอยู่ โดย preserve behavior | `review-uxui` → `subskills/improve-contrast` |
+| `deploy-` | deploy ไปยัง platform/target จน live + verify | `follow-deploy` → `subskills/deploy-cloudflare` |
+| `migrate-` | ย้าย tool/version/pattern อย่างปลอดภัย มี rollback | `follow-monorepo` → `subskills/migrate-to-monorepo` |
+
+- name เต็มยังตาม rule เดิม: `<parent>-<prefix>-<name>` เช่น `download-program-package-manager` → ถ้าแยกตาม action จะเป็น `download-program-setup-*` ฯลฯ
+- ใช้ prefix เมื่อมีหลาย lifecycle จริงๆ — ถ้า parent มีแค่ workflow เดียวหรือเป็น knowledge ให้ใช้ `references/` แทน
+- prefix เดียวกันกับ top-level skill prefix ใน [templates/index.md](../templates/index.md) — execute pattern เหมือนกัน แค่อยู่ใต้ parent
+
 ## Subagents
 
 1. รูปแบบ: `subagents/<name>.md` (flat) หรือ `subagents/<name>/AGENT.md` (directory) — ตาม custom subagent spec เดียวกับ `agents/` roots
@@ -54,3 +72,4 @@
 ## Examples
 
 - `follow-create-bot` → `subskills/{slack,discord,telegram,line,github,github-app}/SKILL.md` dispatch ด้วย `argument-hint: "<slack|discord|telegram|line|github|github-app>"`
+- `download-program` → `subskills/package-manager/SKILL.md` (merged จาก `follow-my-package-manager`) — workflow เลือก package manager ที่ siblings เรียกใช้ร่วมกัน

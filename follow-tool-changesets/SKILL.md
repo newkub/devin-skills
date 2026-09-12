@@ -23,6 +23,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Init, `.changeset/` flow, version/publish commands | `subskills/setup-changesets/SKILL.md` |
+| `config.json`, `fixed`/`linked` packages, access | `subskills/config-changesets/SKILL.md` |
+
 ### 1. Install Changesets
 
 > Goal: ติดตั้ง Changesets CLI และ init config

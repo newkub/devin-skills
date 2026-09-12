@@ -17,6 +17,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-claude-agent-sdk/SKILL.md` — SDK install, `ANTHROPIC_API_KEY` |
+| Config | `subskills/config-claude-agent-sdk/SKILL.md` — model, tools, permissions, sessions config |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

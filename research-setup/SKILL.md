@@ -21,7 +21,7 @@ related:
   - research-dependencies
   - setup-cicd
   - follow-tool-usage
-  - follow-my-tech-stack
+  - review-dependencies
   - search-in-github-star
   - explore-github-trending
   - check-reference
@@ -113,7 +113,7 @@ related:
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 - ใช้ `/follow-tool-usage` ถ้าจำเป็น
-- ใช้ `/follow-my-tech-stack` ถ้าจำเป็น
+- ใช้ `/review-dependencies` ถ้าจำเป็น
 - ใช้ `/check-reference` ถ้าจำเป็น
 
 ## Expected Outcome

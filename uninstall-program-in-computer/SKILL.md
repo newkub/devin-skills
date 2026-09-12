@@ -3,10 +3,9 @@ name: uninstall-program-in-computer
 description: ลบ program ออกจากเครื่องโดยเลือก package manager ทีเหมาะสม
 argument-hint: "[program-name]"
 related:
-  - follow-my-package-manager
+  - download-program
   - list-program-in-computer
   - use-pwsh-shell
-  - download-program
   - enhance-prompt
   - resolve-errors
   - report
@@ -40,7 +39,7 @@ related:
 
 > Goal: หาว่า program ถูกติดตั้งโดย package manager ใด
 
-1. ทำ `/follow-my-package-manager <program-name> uninstall`
+1. ทำตาม `download-program/subskills/package-manager` ด้วย `<program-name> uninstall`
 2. หรือเรียก `/list-program-in-computer <program-name>` เพื่อดู package manager
 3. ตรวจสอบ `mise list`, `scoop list`, `winget list` ด้วย filter
 4. บันทึก package manager ทีพบ

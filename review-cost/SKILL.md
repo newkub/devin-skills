@@ -10,18 +10,8 @@ related:
 
 ## Goal
 
-ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อไปยัง section `## Fix
+ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources โดยไม่แก้ไข resources — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. baseline: cost/service, top spenders, trend
-2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
-3. right-size ตาม utilization evidence; storage tiers
-4. transfer: CDN cache, compression, batching; log/metric volume
-5. CI spend: path filters, right-size runners, artifact retention
-6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
 ## Scope
 
 ใช้กับ cloud deployment: Cloudflare Workers, AWS, Vercel, fly.io โดย audit usage โดยไม่แก้ไข resources
@@ -77,18 +67,16 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
-2. ชี้ไป section `## Fix
+2. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+### Subskills
 
-### Fix Steps
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
 
-1. baseline: cost/service, top spenders, trend
-2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
-3. right-size ตาม utilization evidence; storage tiers
-4. transfer: CDN cache, compression, batching; log/metric volume
-5. CI spend: path filters, right-size runners, artifact retention
-6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
+| Topic | Subskill |
+|-------|----------|
+| Apply cost findings — compute, storage, bandwidth, third-party reductions | `subskills/optimize-cost/SKILL.md` |
+
 ## Rules
 
 ### 1. Read Only
@@ -113,28 +101,15 @@ related:
 4. transfer: CDN cache, compression, batching; log/metric volume
 5. CI spend: path filters, right-size runners, artifact retention
 6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
-- ใช้ /review-performance ถ้าจำเป็น
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
-
 - ใช้ /review-performance ถ้าจำเป็น
 
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม compute, storage, bandwidth, third-party
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. baseline: cost/service, top spenders, trend
-2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
-3. right-size ตาม utilization evidence; storage tiers
-4. transfer: CDN cache, compression, batching; log/metric volume
-5. CI spend: path filters, right-size runners, artifact retention
-6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
+- next action ชัดเจนผ่าน section `## Fix`

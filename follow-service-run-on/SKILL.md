@@ -23,6 +23,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic  | Subskill |
+|--------|----------|
+| Setup  | `subskills/setup-run-on/SKILL.md` — AWS stack, GitHub App registration |
+| Config | `subskills/config-run-on/SKILL.md` — `runs-on.yml` runner definitions, workflow labels |
+
+อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+
 ### 1. Prepare Context
 
 > Goal: ตรวจสอบ context และสิทธิ์ก่อนติดตั้ง
@@ -36,15 +45,15 @@ related:
 
 > Goal: ติดตั้ง AWS infrastructure สำหรับ RunsOn
 
-หมายเหตุ: template version `v3.2.3` เป็น pinned snapshot — ตรวจ latest template ที่ `https://runs-on.com/installation/` ก่อนใช้งาน (verified 2026-09-12)
+หมายเหตุ: template version `v3.3.1` เป็น pinned snapshot — ตรวจ latest template ที่ `https://runs-on.com/installation/` ก่อนใช้งาน (verified 2026-09-12)
 
 1. ใช้ CloudFormation quick-create URL:
-   `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.2.3.yaml&stackName=runs-on`
+   `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.3.1.yaml&stackName=runs-on`
 2. กรอก parameters หลัก: GitHub org, `LicenseKey`, email สำหรับ cost alerts, `Environment` (optional)
 3. ถ้า stack fail ด้วย `Unable to assume the service linked role` ให้รัน:
    `aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com`
 4. รอ stack status `CREATE_COMPLETE` แล้วบันทึก `RunsOnEntryPoint` output URL
-5. ถ้าต้องการ Terraform: ใช้ module `runs-on/runs-on/aws//flex` version `v3.2.3`
+5. ถ้าต้องการ Terraform: ใช้ module `runs-on/runs-on/aws//flex` version `v3.3.1`
 
 ### 3. Register GitHub App And Repository
 

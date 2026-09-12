@@ -24,6 +24,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรงกับ topic
+
+- Setup: SigNoz endpoint, OTel SDK install, instrumentation → `subskills/setup-signoz/SKILL.md`
+- Config: `OTEL_*` env vars, service name, traces/metrics/logs exporters → `subskills/config-signoz/SKILL.md`
+
 ### 1. Assess Project And Prepare SigNoz
 
 > Goal: ตรวจ runtime, endpoint และ ingestion key ก่อนติดตั้ง

@@ -1,7 +1,7 @@
 ---
 name: follow-deploy
 description: ตั้งค่า deployment configuration และ CI/CD ครบถ้วน
-argument-hint: "[scope]"
+argument-hint: "<cloudflare|vercel|railway> [scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
@@ -83,6 +83,19 @@ related:
 2. ตรวจสอบว่า deployment สำเร็จ
 3. ทดสอบ application ว่าทำงานได้
 4. ตรวจสอบ logs ว่าไม่มี error
+
+### Subskills
+
+> Goal: dispatch ไปยัง platform subskill ตาม argument
+
+| Platform  | Subskill |
+|-----------|----------|
+| `cloudflare` | `subskills/deploy-cloudflare/SKILL.md` — delegate ไป `/deploy-to-cloudflare` |
+| `vercel`    | `subskills/deploy-vercel/SKILL.md` — delegate ไป `/deploy-to-vercel` |
+| `railway`   | `subskills/deploy-railway/SKILL.md` — delegate ไป `/deploy-to-railway` |
+
+1. ถ้า argument ระบุ platform → อ่าน `subskills/deploy-<platform>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าไม่ระบุ → ทำตาม steps 1-5 เพื่อเลือก platform ก่อน
 
 ## Rules
 

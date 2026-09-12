@@ -9,7 +9,6 @@ related:
   - learn-web
   - use-my-packages-on-registry
   - review-dependencies
-  - follow-my-tech-stack
   - ask-me
   - run-install
 ---
@@ -88,7 +87,7 @@ related:
 2. ระบุ exact version ทีแนะนำให้ pin
 3. ให้ URL ที share ได้ เช่น `https://npmx.dev/<package>@<version>`
 4. ถ้าไม่แน่ใจ → ทำ `/ask-me` ก่อนตัดสินใจ
-5. ถ้าต้องใช้ package ใน project → ส่งต่อ `/use-my-packages-on-registry` หรือ `/follow-my-tech-stack`
+5. ถ้าต้องใช้ package ใน project → ส่งต่อ `/use-my-packages-on-registry` หรือ `/review-dependencies`
 
 ## Rules
 

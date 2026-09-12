@@ -22,6 +22,13 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `subskills/config-drizzle-kit/SKILL.md` |
+| generate/push/migrate commands, workflow, rollback | `subskills/migrate-schema/SKILL.md` |
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

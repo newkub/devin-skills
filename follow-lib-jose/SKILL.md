@@ -20,6 +20,12 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS |
+
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

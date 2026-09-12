@@ -3,7 +3,7 @@ name: report-my-tech-stack-update
 description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
 argument-hint: "[scope]"
 related:
-  - follow-my-tech-stack
+  - review-dependencies
   - deep-research
 
   - report
@@ -28,7 +28,7 @@ related:
 
 > Goal: ระบุ tech stack ปัจจุบัน
 
-1. ทำ `/follow-my-tech-stack` เพื่อระบุ tech stack ทั้งหมด
+1. ทำ `/review-dependencies` เพื่อระบุ tech stack ทั้งหมด
 2. อ่าน `package.json`, `Cargo.toml`, `go.mod` เพื่อดู dependencies ปัจจุบัน
 3. ระบุเวอร์ชันปัจจุบันของแต่ละ dependency
 4. จัดกลุ่มตาม category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
@@ -100,7 +100,7 @@ related:
 - ใช้ `mcp7_list_releases` สำหรับ GitHub release tracking
 - ใช้ `search_web` สำหรับค้นหา release notes
 - ใช้ `read_url_content` สำหรับอ่าน full changelogs
-- ทำตาม `/follow-my-tech-stack` สำหรับ tech stack categories
+- ทำตาม `/review-dependencies` สำหรับ tech stack categories
 
 ### 3. Freshness Requirements
 

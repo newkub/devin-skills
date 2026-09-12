@@ -4,7 +4,7 @@ description: รายการประวัติการเข้าเว�
 argument-hint: "[scope]"
 related:
   - search-in-raindrop-io
-  - list-raindrop-io
+  - list-recent-bookmark-raindrop
   - run-dev
 ---
 
@@ -80,7 +80,7 @@ Latest: `sqlite3@6.0.1` npm binding (verified 2026-09-12) — `bun:sqlite` built
 - ถ้า Brave กำลังทำงาน → ใช้ copy
 
 - ใช้ /search-in-raindrop-io ถ้าจำเป็น
-- ใช้ /list-raindrop-io ถ้าจำเป็น
+- ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome

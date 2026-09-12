@@ -26,6 +26,14 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-drizzle/SKILL.md` — install, `schema.ts`, db client |
+| Migrate | `subskills/migrate-schema/SKILL.md` — generate/migrate/push flow, rollback |
+| Optimize | `subskills/optimize-queries/SKILL.md` — indexes, relations, select/where perf |
+
 ### 1. Check Precondition
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม

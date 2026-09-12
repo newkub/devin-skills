@@ -26,6 +26,14 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Install, `turbo.json` init, workspace layout | `subskills/setup-turborepo/SKILL.md` |
+| `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `subskills/config-pipeline/SKILL.md` |
+| Remote cache, `--filter`, `--affected`, cache hit tuning | `subskills/optimize-cache/SKILL.md` |
+
 ### 1. Repository Structure
 
 > Goal: จัดโครงสร้าง workspace สำหรับ Turborepo

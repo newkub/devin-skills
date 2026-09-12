@@ -19,7 +19,7 @@ related:
   - run-check
   - deep-validate
   - resolve-errors
-  - follow-my-tech-stack
+  - review-dependencies
   - use-scripts
 ---
 
@@ -31,7 +31,7 @@ related:
 
 ใช้เมื่อผู้ใช้ต้องการทดลองบางสิ่งโดยไม่เปลี่ยนแปลงโปรเจกต์จริง ใช้ได้กับสคริปต์ติดตั้ง คำสั่ง build การทดสอบ package manager ต้นแบบอย่างรวดเร็ว และการทดลองครั้งเดียว
 
-ดูเพิ่มเติม: /run-program, /run-check, /deep-validate, /resolve-errors, /follow-my-tech-stack, /use-scripts
+ดูเพิ่มเติม: /run-program, /run-check, /deep-validate, /resolve-errors, /review-dependencies, /use-scripts
 
 ## Execute
 

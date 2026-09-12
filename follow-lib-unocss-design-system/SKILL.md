@@ -112,6 +112,11 @@ related:
 3. toggle `dark` class แล้วตรวจ colors เปลี่ยนตาม `.dark` block
 4. รัน build ตรวจว่าไม่มี error
 
+### Subskills
+
+- First-time theme setup — `theme.css`, HSL variables, dark mode → `subskills/setup-theme/SKILL.md`
+- ปรับ tokens structure, variants, `extendTheme`, shortcuts → `subskills/config-tokens/SKILL.md`
+
 ## Rules
 
 ### 1. Token Naming

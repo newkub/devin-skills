@@ -25,6 +25,19 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| setup | `subskills/setup-playwright/SKILL.md` — install, browsers install, config พื้นฐาน |
+| config | `subskills/config-projects/SKILL.md` — projects, devices, baseURL, retries, reporters |
+| migrate | `subskills/migrate-from-cypress/SKILL.md` — cypress→playwright API mapping, page objects, verify |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+
 ### 1. Installation
 
 > Goal: ติดตั้ง Playwright และ browsers

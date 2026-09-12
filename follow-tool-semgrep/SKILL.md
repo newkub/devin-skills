@@ -23,6 +23,17 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| config | `subskills/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+
 ### 1. Ensure Semgrep Available
 
 > Goal: มี semgrep พร้อมใช้

@@ -38,6 +38,11 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib mcp sdk)
 
+### Subskills
+
+- Setup server — `McpServer`, tools/resources/prompts registration → `subskills/setup-server/SKILL.md`
+- Deploy — transport options, remote hosting, client config → `subskills/deploy-mcp/SKILL.md`
+
 ## Rules
 
 - ทุก tool ต้องมี description ชัดเจน — LLM ใช้เลือก tool
