@@ -1,24 +1,6 @@
----
-name: use-skills-effective
-description: เรียกและอ้างอิง skills อื่นจากภายใน skill ให้เต็มประสิทธิภาพ
-argument-hint: "[skill-name]"
-related:
-  - use-related-skills
-  - follow-devin-global-skills
-  - follow-skills-map
-  - check-skills-related
-  - check-broken-skills-references
-  - check-circular-dependencies
-  - update-devin-global-skills
-  - update-references
-  - follow-parallel
-  - use-subagents
-  - deep-validate
-  - review-devin-global-skills
-  - new-skills
-  - follow-single-responsibility
-  - report
----
+# Invoke Skills
+
+(merged from: use-skills-effective)
 
 ## Goal
 
@@ -32,7 +14,7 @@ related:
 
 - การค้นหา skills ที่เกี่ยวข้อง → ทำ `/use-related-skills` หรือ `/follow-skills-map`
 - การเลือก skill ถัดไปตอน runtime → ดู `use-related-skills/references/in-another-skills.md`
-- การสร้าง skill ใหม่ → ทำ `/new-skills` หรือ `/update-devin-global-skills`
+- การสร้าง skill ใหม่ → ทำ `/new-skills`
 
 ## Execute
 

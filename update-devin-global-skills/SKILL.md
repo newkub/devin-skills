@@ -4,6 +4,8 @@ description: "จัดการ global Devin skills: สร้าง อัป�
 argument-hint: "[@files-or-topic...]"
 related:
   - new-skills
+  - check-all-routes
+  - check-release-notes
   - deep-research
   - deep-validate
   - report
@@ -56,7 +58,9 @@ related:
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
 1. ทำ `/deep-research` โดยระบุ topic หรือ skill ที่จะอัปเดต — ข้ามถ้า topic ไม่ต้อง research
-2. ทำตาม [references/deep-research.md](references/deep-research.md)
+2. ทำ `/check-release-notes` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
+3. ทำ `/check-all-routes` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
+4. ทำตาม [references/deep-research.md](references/deep-research.md)
 
 ### 6. Write Or Update SKILL.md
 
@@ -123,3 +127,5 @@ related:
 - Deprecated commands/options ถูกลบออก
 - References อัปเดตครบทั้ง `AGENTS.md`, `global_rules.md` และ skills อื่นที่เกี่ยวข้อง
 - `/report` สรุป findings และการเปลี่ยนแปลง
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-skills-effective) — สำหรับการเรียก skills อื่นจากภายใน `SKILL.md` ดู `references/invoke-skills.md`
