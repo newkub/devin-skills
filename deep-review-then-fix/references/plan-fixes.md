@@ -11,7 +11,8 @@ description: วางแผนการแก้ไข
 
 ## Checks
 
-1. จัดลำดับ fixes ตาม severity ก่อน effort
-2. ระบุ files ที่ต้องแก้
-3. ทำ `/report-before` สรุปแผนก่อนลงมือ
+1. ทำ `/deep-plan` เพื่อวางแผน fix อย่างละเอียดก่อนลงมือ
+2. จัดลำดับ fixes ตาม severity ก่อน effort
+3. ระบุ files ที่ต้องแก้
+4. ทำ `/report-before` สรุปแผนก่อนลงมือ
 

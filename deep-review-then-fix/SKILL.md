@@ -8,6 +8,7 @@ related:
   - watch-browser-and-fix
   - follow-best-practice
   - deep-review
+  - deep-plan
   - suggest-next-action
   - resolve-errors
   - run-review

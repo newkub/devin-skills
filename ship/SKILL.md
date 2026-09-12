@@ -14,6 +14,7 @@ triggers:
 related:
   - update-agents-md
   - follow-agents-md
+  - deep-plan
 ---
 
 ## Goal
@@ -27,13 +28,19 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 
 ## Execute
 
-### 1. Update AGENTS.md
+### 1. Deep Plan
+
+> Goal: วางแผนก่อนลงมือ ship
+
+1. ทำ `/deep-plan` เพื่อวางแผน scope ของ ship (changes, issues, target branches) ก่อนเริ่ม workflow
+
+### 2. Update AGENTS.md
 
 > Goal: `AGENTS.md` สดและมี ship workflow ครบ
 
 1. ทำ `/update-agents-md` — สร้าง/อัปเดต `AGENTS.md` ของ project พร้อม `### 8. Ship` workflow (รวม `/deep-review-then-fix` เป็น canonical fix pass ก่อน ship)
 
-### 2. Follow AGENTS.md
+### 3. Follow AGENTS.md
 
 > Goal: ทำงานตาม `AGENTS.md` เท่านั้น
 
