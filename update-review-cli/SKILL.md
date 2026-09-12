@@ -135,11 +135,12 @@ related:
 
 ### Findings Table (ต่อ category)
 
-| No. | Domain | Category | Score | Grade | C | H | M | L | Top Finding | Evidence | Fix Skill | Delta |
-|-----|--------|----------|-------|-------|---|---|---|---|-------------|----------|-----------|-------|
+| No. | Domain | Category | Score | Grade | C | H | M | L | Status | Top Finding | Evidence | Fix Skill | Delta |
+|-----|--------|----------|-------|-------|---|---|---|---|--------|-------------|----------|-----------|-------|
 
 - `No.` column แรกเสมอ เรียง 1..n
 - `C`/`H`/`M`/`L` = findings count ตาม severity (Critical/High/Medium/Low)
+- `Status` = `new` / `existing` / `regression` / `fixed` เทียบ `reports/review-report.json` ครั้งก่อน — สำคัญสำหรับ iteration 3 รอบของ Step 9
 - `Evidence` = `file:line` ของ top finding
 - `Fix Skill` = จาก `reviewWorkflow` map — `/review-<domain>` สำหรับ domain finding, `/deep-review-then-fix` เมื่อต้อง apply fix
 - `Delta` = score diff เทียบ `reports/review-report.json` ครั้งก่อน (ถ้ามี baseline)
@@ -158,6 +159,8 @@ related:
 - non-TTY/CI → auto plain table หรือใช้ `--json`
 - ทุก row ต้องมี `Evidence` — ห้าม row ที่ไม่มี file:line
 - หน้าจอแคบ → ตัด `Top Finding` ก่อน ห้ามตัด `Evidence`/`Fix Skill`
+- exit code: `exit 1` เมื่อ trigger ใดใน Metric Triggers (`categories < 60`, `score < 70`/`grade D/F`, `domain < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`) — CI gate + auto-detect ผ่าน/ไม่ผ่าน ใน Step 9
+- filter flags: `--domain <name>` และ `--severity <min>` สำหรับรันเฉพาะส่วนที่ fail ในรอบ 2-3 ของ Step 9 — ไม่ต้อง full scan ทุกครั้ง
 
 ## Rules
 
