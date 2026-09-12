@@ -60,6 +60,7 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | quality/types | `/review-quality` | `review-quality/references/fix-*.md` |
 | i18n | `/review-i18n` | `review-i18n` `## Fix` steps |
 | mobile | `/review-mobile` | `review-mobile` `## Fix` steps |
+| ai | `/review-ai` | `review-ai` `## Fix` steps |
 | อื่นๆ | `/review-<domain>` | `review-<domain>/references/fix-*.md` ถ้ามี — ไม่มีให้แก้ตาม findings ตรงๆ |
 
 ## Execute

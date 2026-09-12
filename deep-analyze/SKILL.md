@@ -33,16 +33,12 @@ related:
 
 ## Execute
 
-### 1. Deep Thinking Phase
+### 1. Deep Thinking And Quick Scan
 
 > Goal: วิเคราะห์ปัญหาและวางแผนก่อนเริ่ม
 
 1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
 2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
-
-### 2. Quick Scan Phase
-
-> Goal: Scan codebase อย่างรวดเร็วและเลือก analysis depth
 
 1. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
 2. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
@@ -53,7 +49,7 @@ related:
    - รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`
 5. สร้าง structured data สำหรับ analysis
 
-### 3. Structure Analysis
+### 2. Structure Analysis
 
 > Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
 
@@ -62,7 +58,7 @@ related:
 3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
 4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
 
-### 4. Architecture Analysis
+### 3. Architecture Analysis
 
 > Goal: วิเคราะห์ architecture และ design patterns
 
@@ -71,7 +67,7 @@ related:
 3. ระบุ design patterns และ adherence ต่อ principles
 4. วิเคราะห์ coupling และ cohesion
 
-### 5. Features Analysis
+### 4. Features Analysis
 
 > Goal: วิเคราะห์ features และ business logic
 
@@ -80,7 +76,7 @@ related:
 3. Document features ในรูปแบบ systematic
 4. Validate และ review features
 
-### 6. Code Quality Analysis
+### 5. Code Quality Analysis
 
 > Goal: วิเคราะห์ code quality อย่างละเอียด
 
@@ -91,7 +87,7 @@ related:
 5. ทำ `/review-quality`, `/check-unused` แบบ parallel
 6. ตรวจหา hardcoded secrets ด้วย `Grep`
 
-### 7. Dependencies And Tech Stack
+### 6. Dependencies And Tech Stack
 
 > Goal: วิเคราะห์ dependencies และ tech stack
 
@@ -101,7 +97,7 @@ related:
 4. ตรวจสอบ outdated dependencies
 5. วิเคราะห์ security vulnerabilities ด้วย `/run-audit`
 
-### 8. Performance And Security
+### 7. Performance And Security
 
 > Goal: วิเคราะห์ performance และ security
 
@@ -111,6 +107,51 @@ related:
 4. ตรวจสอบ caching strategies
 5. วิเคราะห์ database queries ถ้ามี
 
+### 8. Domain Dispatch
+
+> Goal: ครอบคลุมทุก dimension — dispatch ไป `review-*` ตาม stack ที่ตรวจพบ
+
+| Domain | Skill | เมื่อไร |
+|--------|-------|--------|
+| api | `/review-api` | มี endpoints/REST/GraphQL |
+| auth | `/review-auth` | มี auth/session/OAuth |
+| security | `/review-security` | เสมอ |
+| frontend | `/review-frontend` | มี UI code |
+| backend | `/review-backend` | มี server code |
+| database | `/review-database` | มี DB/ORM/migrations |
+| migration | `/review-migration` | มี migration files |
+| tests | `/review-test` | มี test suite |
+| performance | `/review-performance` | เสมอ |
+| bundle | `/review-bundle` | มี frontend build |
+| assets | `/review-assets` | มี images/fonts/media |
+| seo | `/review-seo` | มี public web pages |
+| accessibility | `/review-accessibility` | มี UI |
+| uxui | `/review-uxui` | มี UI/design system |
+| docs | `/review-docs` | มี docs/README |
+| dependencies | `/review-dependencies` | เสมอ |
+| config | `/review-config` | มี config/env files |
+| delivery | `/review-delivery` | มี CI/CD/Docker |
+| observability | `/review-observability` | มี production services |
+| stability | `/review-stability` | มี production services |
+| cost | `/review-cost` | มี cloud infra |
+| compliance | `/review-compliance` | มี user data/regulated domain |
+| business | `/review-business` | มี payments/tenancy/flags |
+| data-validation | `/review-data-validation` | มี forms/schemas |
+| algorithm | `/review-algorithm` | มี compute-heavy logic |
+| quality | `/review-quality` | เสมอ |
+| correctness | `/review-quality` | เสมอ (merged) |
+| architecture | `/review-architecture` | เสมอ |
+| cli | `/review-cli` | มี CLI entry points |
+| i18n | `/review-i18n` | มีหลาย locale |
+| mobile | `/review-mobile` | มี mobile app/PWA mobile |
+| ai | `/review-ai` | มี LLM/AI features |
+| workspace | `/review-workspace` | monorepo |
+| rules/.devin | `/review-rules` + `/review-dot-devin` | มี `.devin/` config |
+| risk | `/review-risk` | เสมอ (top-level) |
+
+- dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
+- parallel ผ่าน `/use-subagents` เมื่อหลาย domains
+- findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag
 ### 9. External Research
 
 > Goal: ทำ `/deep-research` เพื่อค้นหา best practices
@@ -157,7 +198,7 @@ related:
 - รัน `Grep` patterns พร้อมกัน
 - รัน ast-grep patterns พร้อมกัน
 
-### 4. Metric Thresholds
+### 3. Metric Thresholds
 
 - Long functions: > 50 lines
 - Deep nesting: > 3 levels
@@ -166,14 +207,14 @@ related:
 - High coupling: > 7 dependencies
 - Low cohesion: < 0.3
 
-### 5. Research Validation
+### 3. Research Validation
 
 - ใช้ multiple sources สำหรับ validation
 - ตรวจสอบ credibility ของ sources
 - เปรียบเทียบกับ project context
 - ระบุ assumptions ที่ใช้
 
-### 6. Report Quality
+### 3. Report Quality
 
 - จัดกลุ่ม findings ตามหมวดหมู่
 - ให้ recommendations ตาม priority และ impact
@@ -182,7 +223,7 @@ related:
 - ใช้ `/report-deep` สำหรับ detailed report
 - ใช้ `/report` สำหรับ chat table
 
-### 7. Deep Analysis Scripts
+### 3. Deep Analysis Scripts
 
 - ตรวจสอบ `tools/review-codebase` ก่อนใช้
 - ตรวจสอบ `tools/analyze` ถ้ามี
