@@ -4,7 +4,7 @@ description: Orchestrator backend review ครอบคลุม 7 sub-review w
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - deep-review-codebase
+  - deep-review
   - run-review
   - deep-validate
   - report
@@ -20,7 +20,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ใช้สำหรับ backend review ทั้งหมด — เรียก sub-review workflows โดยตรง ไม่ทำ review เอง — ไม่รวม frontend, infrastructure, หรือ security reviews
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -30,7 +30,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 - ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
 - ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points
-- ทำ `/deep-review-codebase` เพื่ออัปเดต rules
+- ทำ `/deep-review` เพื่ออัปเดต rules
 - รัน `bunx ast-grep scan --inspect summary`
 - ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
@@ -90,7 +90,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (backend)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (backend)
 
 Merged from: improve-backend
 

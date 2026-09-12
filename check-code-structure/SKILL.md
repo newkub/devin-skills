@@ -8,7 +8,7 @@ related:
   - use-astgrep-programmatic
   - review-architecture
   - restructure
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - scan-codebase
 ---
@@ -21,7 +21,7 @@ related:
 
 ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด เป็น sub-step ของ `/deep-analyze` Step 3
 
-ดูเพิ่มเติม: /use-astgrep, /deep-review-codebase
+ดูเพิ่มเติม: /use-astgrep, /deep-review
 
 ## Execute
 
@@ -61,8 +61,8 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 4. ตรวจสอบ imports ที่ข้าม boundary หรือชั้น layer
 5. ตรวจสอบ file ที่มี symbols จากหลาย domain หรือ layer ปนกัน
 6. ใช้ `/use-astgrep` สำหรับ patterns ที่ `sg outline` ไม่ครอบ เช่น God class
-7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/deep-review-codebase` แยก
-8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/deep-review-codebase` แยก
+7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/deep-review` แยก
+8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/deep-review` แยก
 
 ### 4. Validate Findings
 
@@ -126,8 +126,8 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 ### 3. Review Before Improve
 
 - วิเคราะห์และ validate findings ให้ครบก่อนเริ่ม improve
-- ถ้าต้อง refactor ลึก ให้ทำ `/deep-review-codebase` แยกก่อน improve
-- แยก improvement process จาก review process อื่น เช่น `/deep-review-codebase`
+- ถ้าต้อง refactor ลึก ให้ทำ `/deep-review` แยกก่อน improve
+- แยก improvement process จาก review process อื่น เช่น `/deep-review`
 
 ### 4. Follow Write Standards
 
@@ -143,11 +143,11 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 ### 6. Scope Boundaries
 
-- ไม่ improve architecture ที่ `/deep-review-codebase` ทำ
-- ไม่ improve filesystem organization ที่ `/deep-review-codebase` ทำ
+- ไม่ improve architecture ที่ `/deep-review` ทำ
+- ไม่ improve filesystem organization ที่ `/deep-review` ทำ
 - ไม่ refactor separation of concerns ลึกที่ `/refactor` ทำ
 - focus ที่ code-level structure: symbols, exports, members, cohesion
-- สำหรับ system-wide view ทำ `/deep-review-codebase`
+- สำหรับ system-wide view ทำ `/deep-review`
 
 - ใช้ /use-astgrep-programmatic ถ้าจำเป็น
 

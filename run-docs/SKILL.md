@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-docs
   - follow-tool-vitepress
-  - deep-review-codebase
+  - deep-review
   - deep-debug
   - resolve-errors
   - watch-browser-and-fix
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ documentation site ที่สร้างด้วย VitePress, Docus, หรือ documentation frameworks อื่นๆ
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -41,7 +41,7 @@ related:
 > Goal: Update Documentation
 
 1. ทำ `/follow-tool-vitepress` เพื่อสร้างและอัพเดทเอกสาร
-2. ทำ `/deep-review-codebase` เพื่อปรับปรุง SEO สำหรับ documentation site
+2. ทำ `/deep-review` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
 ### 3. Run Dev Server
@@ -49,8 +49,8 @@ related:
 > Goal: Run Dev Server
 
 1. ดำเนินการรัน dev server ด้วยคำสั่งที่เหมาะสมตาม documentation framework
-2. ถ้ามี errors ให้รัน `/deep-review-codebase` เพื่อวิเคราะห์และจัดลำดับ
-3. `/deep-review-codebase` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
+2. ถ้ามี errors ให้รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ
+3. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
    - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
    - ถ้าเป็น isolated errors → `/resolve-errors`
 4. ติดตามและแก้ไขข้อผิดพลาดที่เกิดขึ้นทันทีจนกว่าจะผ่าน

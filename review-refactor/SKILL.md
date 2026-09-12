@@ -3,7 +3,7 @@ name: review-refactor
 description: Review codebase before refactor to establish baseline and identify refactor targets
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - review-quality
   - report
   - suggest-next-action
@@ -65,7 +65,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 > Goal: ระบุ code smells, dead code, anti-patterns
 
-1. ทำ `/deep-review-codebase`
+1. ทำ `/deep-review`
 2. ทำ `/review-quality`
 3. รัน `knip` และ `jscpd`
 4. บันทึก findings

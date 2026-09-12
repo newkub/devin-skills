@@ -4,7 +4,7 @@ description: Gate ก่อนลงมือ action หลัก — ดูว�
 argument-hint: "[action-or-context]"
 related:
   - review
-  - deep-review-codebase
+  - deep-review
   - review-quality
   - deep-review-then-fix
   - follow-parallel
@@ -51,7 +51,7 @@ related:
 | 7 | แตะ tests | `/review-test` |
 | 8 | แตะ dependencies / tech stack | `/review-dependencies`, `/review-dependencies` |
 | 9 | แตะ UX/UI / frontend | `/review-uxui`, `/review-frontend` |
-| 10 | ไม่ชัดหรือครอบหลายมิติ | `/deep-review-codebase`, `/review` |
+| 10 | ไม่ชัดหรือครอบหลายมิติ | `/deep-review`, `/review` |
 
 1. เลือก primary 1-3 ตัวที่ตรงที่สุด — ห้ามรันทุก review-*
 2. ตรวจว่า skills ที่เลือกมีอยู่จริง
@@ -80,7 +80,7 @@ related:
 - เลือกน้อยที่สุดที่ครอบคลุม — ห้ามรัน `review-*` ทั้งหมดโดยไม่จำเป็น
 - ถ้า `/review` กำลังทำงานใน flow เดียวกันอยู่แล้ว ไม่ต้องเรียกซ้ำ
 - ทุก finding ต้องมี evidence (file, line, reference)
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 

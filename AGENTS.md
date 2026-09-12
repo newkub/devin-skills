@@ -107,7 +107,7 @@ Major skill families by current count:
 - `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
 - `ship-*` (3): `/ship` (entry point — `/update-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
-- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `deep-review-codebase`, `review-then-fix`.
+- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-review-codebase-then-fix`.
 - `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (60): verification, structure, and health checks.
 - `open-*` (14): browser, editor, and terminal integration.

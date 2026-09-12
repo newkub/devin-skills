@@ -4,7 +4,7 @@ description: Review app stability, error handling, debuggability, recovery, moni
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
-  - deep-review-codebase
+  - deep-review
   - scan-codebase
   - deep-analyze
   - update-project-rules
@@ -23,9 +23,9 @@ Review ความเสถียรของ application ครอบคลุ
 - `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification
 - `debuggability`: logging context, error message clarity, naming conventions, code complexity
 - `error-patterns`: log clustering and recurring issue detection from logs
-- ไม่รวมการ fix (ใช้ `/deep-review-codebase` สำหรับ fix)
+- ไม่รวมการ fix (ใช้ `/deep-review-then-fix` สำหรับ fix)
 
-- ดูเพิ่มเติม: /deep-review-codebase
+- ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -45,8 +45,8 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: ครอบคลุมทุก stability dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ stability, error handling, debuggability patterns
-2. ทำ `/deep-review-codebase` — เรียก `/update-project-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/deep-review-codebase` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
+2. ทำ `/deep-review` — เรียก `/update-project-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/deep-review` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
@@ -79,9 +79,9 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: ไม่ซ้ำซ้อนกับ review skills อื่น
 
 1. ทำ `/use-related-skills` เพื่อหา skills ที่เกี่ยวข้อง
-2. ถ้าพบ performance issues ให้ทำ `/deep-review-codebase`
-3. ถ้าพบ concurrency issues ให้ทำ `/deep-review-codebase`
-4. ถ้าพบ security issues ให้ทำ `/deep-review-codebase`
+2. ถ้าพบ performance issues ให้ทำ `/deep-review`
+3. ถ้าพบ concurrency issues ให้ทำ `/deep-review`
+4. ถ้าพบ security issues ให้ทำ `/deep-review`
 5. ใช้ `/report` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Degradation Matrix
@@ -107,7 +107,7 @@ Review ความเสถียรของ application ครอบคลุ
 ### 1. Scope Boundary
 
 - เน้นความเสถียรของ app โดยรวม ไม่ใช่แค่ app crash
-- ไม่ซ้ำกับ `/deep-review-codebase` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
+- ไม่ซ้ำกับ `/deep-review` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
 - รายละเอียด debuggability principles อยู่ใน `references/debuggability.md`
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 

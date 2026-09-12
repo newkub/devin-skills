@@ -9,7 +9,7 @@ related:
   - suggest-next-action
   - implement-to-production
   - implement-github-issue-by-me
-  - deep-review-codebase
+  - deep-review
   - roleplay-stakeholder
   - run-review
 ---
@@ -110,7 +110,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (implement)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (implement)
 
 Merged from: improve-features
 

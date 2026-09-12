@@ -4,7 +4,7 @@ description: รายงาน features ทั้งหมดใน project เ
 argument-hint: "[scope]"
 related:
   - update-features-md
-  - deep-review-codebase
+  - deep-review
   - all-workspace
 
   - report
@@ -19,7 +19,7 @@ related:
 
 อ่านและแสดงผล features จาก generated TypeScript files ใน `.devin/features/<workspace>/` เป็นตารางในแชทเท่านั้น
 
-ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features-md`), วิเคราะห์และ review features (ใช้ `/deep-review-codebase`), ตรวจสอบ coverage (ใช้ `/deep-review-codebase`)
+ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features-md`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
 
 ## Execute
 
@@ -64,7 +64,7 @@ related:
 1. ทำ `/report` เพื่อรายงานในแชท
 2. สรุปจำนวน features ต่อ workspace และต่อ status
 3. ระบุ features ที่ `partial` หรือ `deprecated` แยกกลุ่ม
-4. แนะนำให้ทำ `/deep-review-codebase` หรือ `/deep-review-codebase` สำหรับ features ที่ `partial`
+4. แนะนำให้ทำ `/deep-review` หรือ `/deep-review` สำหรับ features ที่ `partial`
 
 ## Rules
 
@@ -109,6 +109,6 @@ related:
 
 - ตาราง features ทั้งหมดในแชท จัดกลุ่มตาม workspace และ module
 - Summary สถานะ features ต่อ workspace
-- แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review-codebase`, `/deep-review-codebase`)
+- แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review`, `/deep-review`)
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน

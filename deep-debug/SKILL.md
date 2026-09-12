@@ -98,7 +98,7 @@ related:
 > Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
 
 1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
-2. ทำ `/deep-review-codebase` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
+2. ทำ `/deep-review` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
 3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
 4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
 
@@ -144,7 +144,7 @@ related:
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
-- Performance → `/run-profiler` + `/deep-review-codebase`
+- Performance → `/run-profiler` + `/deep-review`
 - Git issues → `/follow-tool-git` + `/check-git-logs`
 
 ### 5. Time Budget And Escalation

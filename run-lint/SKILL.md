@@ -4,7 +4,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 argument-hint: "[scope]"
 related:
   - review-quality
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
   - check-unused
   - run-format
@@ -36,7 +36,7 @@ related:
 
 > Goal: Analyze Errors
 
-1. รัน `/deep-review-codebase` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก lint
+1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก lint
 2. ตรวจสอบประเภทของ errors:
    - config-related errors
    - code-related errors

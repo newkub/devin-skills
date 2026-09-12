@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - deep-analyze
   - run-review
-  - deep-review-codebase
+  - deep-review
   - use-astgrep
   - report
   - suggest-next-action
@@ -31,7 +31,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - code, configuration, rule files, workflows, และ skills
 - ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/naming.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
 
-- ดูเพิ่มเติม: /deep-review-codebase
+- ดูเพิ่มเติม: /deep-review
 
 - merged from: `review-correctness` — correctness dimensions refs `references/correctness-*.md`
 
@@ -114,7 +114,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น

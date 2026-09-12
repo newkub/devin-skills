@@ -17,7 +17,7 @@ related:
   - run-test-mutation
   - update-tests
 
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
 ---
 
@@ -44,7 +44,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 | 9 | critical logic, mutation config | `/run-test-mutation` |
 | 10 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
-ดูเพิ่มเติม: /update-tests, /deep-review-codebase
+ดูเพิ่มเติม: /update-tests, /deep-review
 
 ## Execute
 
@@ -77,7 +77,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ระบุว่า source หรือ test ผิด
 
-1. ทำ `/deep-validate` กับ source ที่เกี่ยวข้อง และ review test files (`/deep-review-codebase` ถ้าต้องการ)
+1. ทำ `/deep-validate` กับ source ที่เกี่ยวข้อง และ review test files (`/deep-review` ถ้าต้องการ)
 2. จำแนกผล:
    - source ผิด → ระบุไฟล์ แนะนำ `/resolve-errors` หรือ `/edit-manual`
    - test ผิด (assertion, mock, expectation outdated) → ระบุไฟล์ แนะนำ `/update-tests` หรือ `/edit-manual`

@@ -16,12 +16,12 @@
 
 ## ReviewWorkflow Map
 
-ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/deep-review-codebase` reference:
+ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/deep-review` reference:
 
 ```typescript
 const reviewWorkflow: Record<string, string> = {
-  "missing-eslint": "deep-review-codebase/lint-rules",
-  "no-tests": "deep-review-codebase/test-coverage",
+  "missing-eslint": "deep-review/lint-rules",
+  "no-tests": "deep-review/test-coverage",
 };
 ```
 

@@ -4,7 +4,7 @@ description: Run typecheck with config check
 argument-hint: "[scope]"
 related:
   - check-config-drift
-  - deep-review-codebase
+  - deep-review
   - deep-debug
   - resolve-errors
 ---
@@ -39,8 +39,8 @@ related:
 
 > Goal: Analyze Errors
 
-1. รัน `/deep-review-codebase` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก typecheck
-2. `/deep-review-codebase` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
+1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก typecheck
+2. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
    - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
    - ถ้าเป็น isolated errors → `/resolve-errors`
 

@@ -4,7 +4,7 @@ description: ตรวจสอบว่าไฟล์ match กับ software
 argument-hint: "[file]"
 related:
   - refactor
-  - deep-review-codebase
+  - deep-review
   - suggest-next-action
 ---
 
@@ -16,7 +16,7 @@ related:
 
 ใช้สำหรับตรวจสอบไฟล์ใน global_workflows และ workspace ว่า match กับ engineering principles — ไม่รวมการ implement หรือ refactor (ใช้ `/refactor`)
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -35,7 +35,7 @@ related:
 
 1. อ่านไฟล์เป้าหมายทั้งหมด
 2. ตรวจสอบ structure, logic, และ naming match กับ principle หรือไม่
-3. ทำ `/deep-review-codebase` สำหรับปรับปรุง naming ให้ match กับ principle
+3. ทำ `/deep-review` สำหรับปรับปรุง naming ให้ match กับ principle
 
 ### 3. Analyze Violations
 

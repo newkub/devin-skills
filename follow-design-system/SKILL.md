@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lib-unocss
   - review-frontend
-  - deep-review-codebase
+  - deep-review
   - review-uxui
   - deep-optimize
   - capture
@@ -19,7 +19,7 @@ related:
 
 ครอบคลุม design tokens, component guidelines, และ platform-specific adaptations สำหรับ TUI, Web, Desktop, และ Mobile
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -48,8 +48,8 @@ related:
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/deep-review-codebase`
-4. ถ้า project มี TUI ทำ `/deep-review-codebase`
+3. ถ้า project มี mobile ทำ `/deep-review`
+4. ถ้า project มี TUI ทำ `/deep-review`
 
 ### 4. Ensure Accessibility
 

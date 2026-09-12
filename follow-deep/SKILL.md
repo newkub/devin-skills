@@ -4,7 +4,7 @@ description: พิจารณาและเรียก deep-* workflows ท�
 argument-hint: "[scope]"
 related:
   - review
-  - deep-review-codebase
+  - deep-review
   - deep-analyze
   - plan
   - refactor
@@ -21,7 +21,7 @@ related:
 
 ใช้เป็น sub-workflow สำหรับพิจารณาว่า task ปัจจุบันควรเรียก `deep-*` workflows ใดบ้าง — ไม่ใช่ workflow หลักที่รันแยกต่างหาก
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -39,13 +39,13 @@ related:
 > Goal: เลือก deep- workflows ที่เกี่ยวข้องกับ task context
 
 1. Analysis → `deep-analyze` (รวม scripts/review CLI)
-2. Review → `deep-review-codebase` (comprehensive) หรือ `/review-*` (specific dimension)
+2. Review → `deep-review` (comprehensive) หรือ `/review-*` (specific dimension)
 3. Planning → `plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`
 6. Validation → `deep-validate`
 7. Security → `review-delivery`
-8. Performance → `/deep-review-codebase` (comprehensive) หรือ `review-delivery` (specific)
+8. Performance → `/deep-review` (comprehensive) หรือ `review-delivery` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-web` (single-source)
 10. Thinking → `deep-thinking` (systematic) หรือ `deep-thinking` (reflective)
 
@@ -78,7 +78,7 @@ related:
 
 - เลือกเฉพาะ deep- workflows ที่เกี่ยวข้องกับ task จริง
 - ไม่เรียกทุก deep- workflows เสมอ — เลือกตาม context
-- ถ้า task เกี่ยวกับ review → ใช้ `deep-review-codebase` ไม่ใช่ `deep-analyze`
+- ถ้า task เกี่ยวกับ review → ใช้ `deep-review` ไม่ใช่ `deep-analyze`
 - ถ้า task เกี่ยวกับ analysis ที่ต้อง scripts → ใช้ `deep-analyze` (รวม scripts/review CLI แล้ว)
 
 ### 3. Parallel Execution

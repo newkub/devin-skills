@@ -6,7 +6,7 @@ related:
   - review-config
   - run-install
   - run-build
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -24,7 +24,7 @@ related:
 - รัน background services
 - ตรวจสอบโปรแกรมทำงานได้ถูกต้อง
 
-- ดูเพิ่มเติม: /deep-review-codebase
+- ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -66,7 +66,7 @@ related:
 1. อ่าน error messages และระบุ root cause
 2. จัดลำดับความสำคัญ
 3. แก้ไข code ที่เป็นปัญหา
-4. รัน `/deep-review-codebase` ถ้าจำเป็น
+4. รัน `/deep-review` ถ้าจำเป็น
 5. rebuild และรันใหม่
 
 ## Rules

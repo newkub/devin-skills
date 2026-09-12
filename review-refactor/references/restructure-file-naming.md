@@ -35,7 +35,7 @@
 ## Detection Tools
 
 - `/scan-codebase` สำหรับ list ไฟล์ทั้งหมด
-- `/deep-review-codebase` สำหรับ naming conventions review
+- `/deep-review` สำหรับ naming conventions review
 - `Get-ChildItem -Recurse -File` สำหรับ file discovery
 
 ## Exclusions

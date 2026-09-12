@@ -6,7 +6,7 @@ related:
   - update-devin-global-skills
   - idea-new-devin-global-skills
   - deep-validate
-  - deep-review-codebase
+  - deep-review
   - follow-deep
   - report
   - suggest-next-action
@@ -34,7 +34,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่ปรับเนื้อหาเชิง code (ใช้ `/deep-validate`)
 
-- ดูเพิ่มเติม: /deep-review-codebase, /check-skill-usage, /check-devin-knowledge
+- ดูเพิ่มเติม: /deep-review, /check-skill-usage, /check-devin-knowledge
 
 ## Execute
 
@@ -154,7 +154,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 - ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Fix
 

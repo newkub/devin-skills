@@ -6,7 +6,7 @@ related:
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - deep-thinking
   - plan
   - report
@@ -29,7 +29,7 @@ related:
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
 - ถ้าต้องการไอเดีย features ใหม่ → ใช้ `/idea-features` หรือ `/idea-features`
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -61,8 +61,8 @@ related:
 
 > Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
 
-1. ทำ `/deep-review-codebase` สำหรับ performance
-2. ทำ `/deep-review-codebase` สำหรับ UX/UI
+1. ทำ `/deep-review` สำหรับ performance
+2. ทำ `/deep-review` สำหรับ UX/UI
 3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
 4. บันทึกผลใน `docs/project.md`
 
@@ -90,8 +90,8 @@ related:
 
 1. ทำ `/ship` เพื่อ implement improvements ตาม `PLAN_PATH`
 2. หลัง `/ship` เสร็จ ลบ `PLAN_PATH`
-3. ทำ `/deep-review-codebase` สำหรับ performance improvements
-4. ทำ `/deep-review-codebase` สำหรับ UX/UI improvements
+3. ทำ `/deep-review` สำหรับ performance improvements
+4. ทำ `/deep-review` สำหรับ UX/UI improvements
 5. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
 
 ### 7. Update Report

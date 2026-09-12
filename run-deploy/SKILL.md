@@ -113,7 +113,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 เตรียม rollback procedure และตรวจสอบ backup (ดู `references/rollback-recovery.md`)
 
-1. ทำ `/deep-review-codebase` เพื่อตรวจสอบ backup strategy ก่อน deploy
+1. ทำ `/deep-review` เพื่อตรวจสอบ backup strategy ก่อน deploy
 2. เตรียม rollback procedure ชัดเจนก่อน deploy
 3. ถ้า deploy ล้มเหลว → rollback ทันทีและทำ `/resolve-errors`
 

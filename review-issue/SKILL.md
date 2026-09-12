@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
   - run-review
 ---
@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ issue source ใดๆ ไม่ใช่แค่ GitHub ครอบคลุม title, description, acceptance criteria, scope, dependencies, risks และ next steps ที่นำไปปฏิบัติได้ ไม่แก้ไข issue เว้นแต่ได้รับการร้องขอ
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -66,7 +66,7 @@ related:
 
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Metrics

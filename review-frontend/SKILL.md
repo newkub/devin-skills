@@ -41,7 +41,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ frontend structure และ stack
 2. ระบุ frontend framework, state management library, styling system, form library, testing framework
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-4. ทำ `/deep-review-codebase` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+4. ทำ `/deep-review` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 7. ถ้าสแกนไม่ได้ → stop และ report
@@ -153,7 +153,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (frontend)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (frontend)
 
 Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offline, optimize-rendering
 

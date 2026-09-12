@@ -9,7 +9,7 @@ related:
   - follow-tasks
   - check-unused
   - run-audit
-  - deep-review-codebase
+  - deep-review
   - run-verify
   - deep-validate
   - report
@@ -30,9 +30,9 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Scope
 
-ใช้สำหรับ review workspace หนึ่ย โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/deep-review-codebase`
+ใช้สำหรับ review workspace หนึ่ย โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/deep-review`
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -93,7 +93,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 1. Scope Boundary
    - review หนึ่ย workspace ต่อการเรียก
-   - ไม่ duplicate กับ `/deep-review-codebase`
+   - ไม่ duplicate กับ `/deep-review`
    - ปัญหานอก scope ระบุเป็น Info และอ้างอิง skill ที่เหมาะสม
 2. Evidence Quality
    - ทุก finding ต้องมี file path, line number หรือ config evidence
@@ -120,7 +120,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (workspace)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (workspace)
 
 Merged from: optimize-git-repo, optimize-workspace
 

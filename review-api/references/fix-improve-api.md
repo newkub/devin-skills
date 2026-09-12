@@ -60,7 +60,7 @@
 1. รัน `/run-test-api` หรือ integration tests
 2. รัน `/run-test`
 3. ใช้ load test ถ้าจำเป็น
-4. ทำ `/deep-review-codebase` สำหรับ security
+4. ทำ `/deep-review` สำหรับ security
 
 ## Rules
 

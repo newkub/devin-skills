@@ -4,7 +4,7 @@ description: สร้างและปรับปรุง AI agent harness �
 argument-hint: "[scope]"
 related:
   - follow-context-engineering
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - run-test
 ---
@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ project ที่มี AI agent infrastructure เช่น MCP servers, agent runtimes, tool interfaces, หรือ coding agent systems ที่ต้องการ harness-level engineering
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -31,7 +31,7 @@ related:
 2. ตรวจสอบ Tool interface: tool definitions, input/output schemas, error handling, token efficiency
 3. ตรวจสอบ Context management: context selection, compaction, memory ทำ `/follow-context-engineering`
 4. ตรวจสอบ Lifecycle/Orchestration: agent loop, state management, retry logic, recovery
-5. ตรวจสอบ Observability: logging, tracing, metrics, execution traces ทำ `/deep-review-codebase`
+5. ตรวจสอบ Observability: logging, tracing, metrics, execution traces ทำ `/deep-review`
 6. ตรวจสอบ Verification: test harness, requirement checks, output validation ทำ `/deep-validate`
 7. ตรวจสอบ Governance: permissions, access control, audit trail, intervention recording
 
@@ -70,7 +70,7 @@ related:
 2. ใช้ structured logging สำหรับทุก tool call และ agent decision
 3. บันทึก intervention: เมื่อมี human intervention ให้บันทึก context และ reason
 4. ตรวจสอบ entropy: บันทึก unrelated changes ที่ agent ทำเกินจำเป็น
-5. ทำ `/deep-review-codebase` สำหรับ comprehensive observability improvements
+5. ทำ `/deep-review` สำหรับ comprehensive observability improvements
 
 ### 5. Implement Verification
 

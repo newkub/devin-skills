@@ -100,7 +100,7 @@
 7. `reviewWorkflow` field ไม่ map ไปยัง review skills ที่มีอยู่
 8. `tools/review-codebase/package.json` หรือ `tools/review-codebase/src/presentation/cli.ts` ไม่อยู่
 
-ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → กลับไปทำ review ทั้งหมดตาม `/deep-review-codebase` Step 4-6
+ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → กลับไปทำ review ทั้งหมดตาม `/deep-review` Step 4-6
 
 ## 10. Review Findings And Report
 

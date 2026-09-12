@@ -15,7 +15,7 @@ related:
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/deep-review-codebase`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/deep-review`
 
 ## Scope
 
@@ -59,8 +59,8 @@ related:
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
-1. ทำ `/deep-review-codebase` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/deep-review-codebase` ระบุ
+1. ทำ `/deep-review-then-fix` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/deep-review-then-fix` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 5. Integrate Into Workspace
@@ -108,7 +108,7 @@ related:
 
 ### 4. Review Before Ship
 
-- ทำ `/deep-review-codebase` ก่อน commit
+- ทำ `/deep-review` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -121,6 +121,6 @@ related:
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
 - Directory ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
-- ผ่าน `/deep-review-codebase`
+- ผ่าน `/deep-review`
 - ผสานเข้ากับ workspace ได้
 

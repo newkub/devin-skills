@@ -11,7 +11,7 @@ related:
   - implement-features-to-mvp
   - report-scan-todo
   - update-todo-md
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
   - update-references
   - review-security
@@ -38,7 +38,7 @@ related:
 
 > Goal: เข้าใจ scope และปัญหาก่อน implement
 
-1. ทำ `/follow-review` เป็น gate ก่อน implement — เลือกและรัน `review-*` ที่ตรง context แล้วทำ `/deep-review-codebase` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
+1. ทำ `/follow-review` เป็น gate ก่อน implement — เลือกและรัน `review-*` ที่ตรง context แล้วทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
 2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps

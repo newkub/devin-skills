@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-analyze
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - report
   - suggest-next-action
@@ -19,7 +19,7 @@ Review architecture ระดับ macro ครอบคลุม design patter
 
 architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, governance, data flow tracing, และ cost impact analysis
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -37,7 +37,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-2. ทำ `/deep-review-codebase` แล้วรัน review analyzers
+2. ทำ `/deep-review` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ตรวจสอบแต่ละ dimension ตาม reference files ใน `references/`
 5. ทำ data flow analysis ตาม [references/data-flow.md](references/data-flow.md)
@@ -119,7 +119,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (architecture)
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (architecture)
 
 Merged from: improve-architecture
 

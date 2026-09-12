@@ -1,6 +1,6 @@
 # Workflow Execution Checklist
 
-รายละเอียดขั้นตอนการทำงานของ `/deep-review-codebase` ดำเนินการตามลำดับ ถ้า metrics ไม่ผ่านให้ทำซ้ำไม่เกิน 3 รอบ
+รายละเอียดขั้นตอนการทำงานของ `/deep-review` ดำเนินการตามลำดับ ถ้า metrics ไม่ผ่านให้ทำซ้ำไม่เกิน 3 รอบ
 
 ## 1. Prepare And Keep Up With Codebase
 

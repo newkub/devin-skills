@@ -16,7 +16,7 @@ related:
   - update-todo-md
   - update-version-to-latest
   - update-project
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -27,7 +27,7 @@ related:
 
 ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies, runtime, tools หรือ versioned config ใดๆ → ใช้ `/update-version-to-latest` ก่อน update config อื่น
 
-Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → front-load `/deep-analyze` + `/deep-review-codebase` ก่อน Step 1 (merged from: `deep-update-project`)
+Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → front-load `/deep-analyze` + `/deep-review` ก่อน Step 1 (merged from: `deep-update-project`)
 
 ## Execute
 
@@ -84,7 +84,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
-   - `/deep-review-codebase` (ถ้ามี `tools/review-codebase/`)
+   - `/deep-review` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด

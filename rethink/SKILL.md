@@ -7,7 +7,7 @@ related:
   - plan
   - deep-analyze
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - follow-architecture
   - refactor
@@ -130,7 +130,7 @@ related:
 - ใช้ `/update-references` ถ้ามีการเปลี่ยน structure
 
 - ใช้ /deep-analyze ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /follow-architecture ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น

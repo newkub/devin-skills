@@ -9,7 +9,7 @@ related:
   - resolve-errors
   - run-check
   - run-verify
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -20,7 +20,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 ใช้สำหรับ profiling ด้วย Chrome DevTools, Node.js profiler, หรือ Bun profiler เพื่อหา hot paths และ memory issues
 
-ดูเพิ่มเติม: /deep-review-codebase
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
@@ -64,7 +64,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 > Goal: ปรับปรุง performance ตาม findings
 
-1. ทำ `/deep-review-codebase` เพื่อปรับปรุง
+1. ทำ `/deep-review` เพื่อปรับปรุง
 2. ใช้ caching ที่เหมาะสม
 3. Optimize algorithms และ data structures
 4. ลบ unnecessary work
