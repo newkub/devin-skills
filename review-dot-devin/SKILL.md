@@ -99,6 +99,10 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

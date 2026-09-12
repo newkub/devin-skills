@@ -76,7 +76,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. circular dependencies ระหว่าง packages 2. orphan packages — ไม่มี consumers แต่ยังอยู่ใน workspace
+1. circular dependencies ระหว่าง packages
+2. orphan packages — ไม่มี consumers แต่ยังอยู่ใน workspace
 
 ### 7. Score And Report
 

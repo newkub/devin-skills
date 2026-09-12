@@ -70,7 +70,8 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. feature-flag config drift ข้าม environments + stale flags 2. secret references hygiene — ไม่มี inline secrets, rotation path ชัด
+1. feature-flag config drift ข้าม environments + stale flags
+2. secret references hygiene — ไม่มี inline secrets, rotation path ชัด
 
 ### 7. Generate Report
 

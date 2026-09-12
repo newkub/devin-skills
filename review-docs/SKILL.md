@@ -93,7 +93,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. API docs drift vs OpenAPI/implementation จริง 2. changelog hygiene — entries ครบ, format consistent, unreleased section
+1. API docs drift vs OpenAPI/implementation จริง
+2. changelog hygiene — entries ครบ, format consistent, unreleased section
 
 ### 10. Score And Report
 

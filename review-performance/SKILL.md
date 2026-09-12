@@ -92,7 +92,8 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. perf budgets enforce ใน CI (bundle size, latency thresholds) 2. RUM/field metrics vs lab metrics — เทียบกันจริง
+1. perf budgets enforce ใน CI (bundle size, latency thresholds)
+2. RUM/field metrics vs lab metrics — เทียบกันจริง
 
 ### 10. Validate Score And Report
 

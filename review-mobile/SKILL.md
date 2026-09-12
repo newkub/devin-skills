@@ -68,9 +68,10 @@ Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, sa
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. store compliance — permissions declarations, privacy labels, review guidelines 2. app size budget + crash-free sessions rate
+1. store compliance — permissions declarations, privacy labels, review guidelines
+2. app size budget + crash-free sessions rate
 
-### 8. Report
+### 7. Report
 
 > Goal: ส่งมอบ findings
 

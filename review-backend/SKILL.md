@@ -7,7 +7,8 @@ related:
   - deep-review-codebase
   - run-review
   - deep-validate
-  - report
+  - report
+
   - suggest-next-action
 ---
 
@@ -53,7 +54,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. queue/job health — dead letters, retry policy, backlog alerts 2. idempotent consumers — redelivery ไม่ double-apply
+1. queue/job health — dead letters, retry policy, backlog alerts
+2. idempotent consumers — redelivery ไม่ double-apply
 
 ### 4. Validate And Report
 

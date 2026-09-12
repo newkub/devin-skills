@@ -88,7 +88,8 @@ Review ความเสถียรของ application ครอบคลุ
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. graceful-degradation matrix — dependency down → expected behavior ต่อ feature 2. failure-injection coverage — ทุก critical path มี chaos test
+1. graceful-degradation matrix — dependency down → expected behavior ต่อ feature
+2. failure-injection coverage — ทุก critical path มี chaos test
 
 ### 9. Validate, Score And Report
 

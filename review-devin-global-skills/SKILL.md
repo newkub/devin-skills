@@ -156,6 +156,10 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review-codebase ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

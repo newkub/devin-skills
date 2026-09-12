@@ -56,9 +56,10 @@ Review internationalization/localization ของ project — message catalogs,
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. pseudo-localization run — layout breaks, truncation, encoding 2. machine translation quality gate + review process
+1. pseudo-localization run — layout breaks, truncation, encoding
+2. machine translation quality gate + review process
 
-### 7. Report
+### 6. Report
 
 > Goal: ส่งมอบ findings
 

@@ -83,7 +83,9 @@ related:
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. OpenAPI/contract drift — spec vs implementation ตรงกัน 2. idempotency keys บน mutating endpoints 3. deprecation/sunset policy — headers, timeline, migration docs
+1. OpenAPI/contract drift — spec vs implementation ตรงกัน
+2. idempotency keys บน mutating endpoints
+3. deprecation/sunset policy — headers, timeline, migration docs
 
 ### 6. Rate And Report
 

@@ -39,15 +39,14 @@ related:
 
 1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
 2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
-
-1. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
-2. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
-3. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
-4. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
+3. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
+4. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
+5. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
+6. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
    - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
    - ใช้ `@ast-grep/napi` หรือ `oxc-parser` สำหรับ programmatic AST analysis
    - รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`
-5. สร้าง structured data สำหรับ analysis
+7. สร้าง structured data สำหรับ analysis
 
 ### 2. Structure Analysis
 
@@ -154,6 +153,8 @@ related:
 - dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
 - parallel ผ่าน `/use-subagents` เมื่อหลาย domains
 - findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag
+- dedup: finding เดียวกันจากหลาย domains → merge เป็น item เดียว tag ทุก domain ที่เจอ
+- ถ้า `/deep-review` รันไปแล้วใน session → reuse findings ของมัน อย่า dispatch ซ้ำ domains เดิม
 ### 9. External Research
 
 > Goal: ทำ `/deep-research` เพื่อค้นหา best practices
@@ -169,10 +170,11 @@ related:
 > Goal: สร้างรายงานครบถ้วน
 
 1. ทำ `/report-deep` สร้างตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
-2. ทำ `/report` สรุปตารางจัดกลุ่มตามหมวดหมู่ถ้าต้องการ chat output
-3. ให้ recommendations ตาม priority และ impact
-4. ระบุ action items ที่ชัดเจน
-5. สร้าง roadmap สำหรับ improvements
+2. aggregate per-domain scores จาก dispatched `review-*` → overall score + grade — ตาราง `No. | Domain | Score | Grade | Top Finding`
+3. ทำ `/report` สรุปตารางจัดกลุ่มตามหมวดหมู่ถ้าต้องการ chat output
+4. ให้ recommendations ตาม priority และ impact
+5. ระบุ action items ที่ชัดเจน
+6. สร้าง roadmap สำหรับ improvements
 
 ## Rules
 

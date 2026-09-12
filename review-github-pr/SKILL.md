@@ -44,7 +44,8 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. CODEOWNERS enforcement — required reviewers ถูกต้อง 2. PR size limits — oversized PRs flagged
+1. CODEOWNERS enforcement — required reviewers ถูกต้อง
+2. PR size limits — oversized PRs flagged
 
 ### 7. Report And Recommend
 > Goal: รายงานและแนะนำ
@@ -69,6 +70,10 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ใช้ /resolve-github-actions-fails ถ้าจำเป็น
 
 - ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
 
 ## References
 

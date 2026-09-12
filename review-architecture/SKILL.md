@@ -90,7 +90,8 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. ADR coverage — decisions สำคัญมี record 2. dependency direction rules — layers ไม่ violate imports
+1. ADR coverage — decisions สำคัญมี record
+2. dependency direction rules — layers ไม่ violate imports
 
 ### 9. Report
 
@@ -115,7 +116,8 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 2. แยก review process จาก fix process และ scope boundaries ตาม [references/review-rules.md](references/review-rules.md)
 3. ใช้ skip conditions เมื่อ project ไม่มีสภาพแวดล้อมที่เกี่ยวข้อง — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 4. คำนวณ score, grade, status, และ metrics ตาม [references/scoring.md](references/scoring.md)
-5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)## Fix
+5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
+## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (architecture)
 

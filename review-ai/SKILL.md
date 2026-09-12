@@ -70,9 +70,10 @@ Review AI/LLM integration ของ project — prompt quality, model config, to
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. prompt injection test cases — jailbreak attempts ผ่าน eval suite 2. PII redaction ก่อนส่งเข้า prompts
+1. prompt injection test cases — jailbreak attempts ผ่าน eval suite
+2. PII redaction ก่อนส่งเข้า prompts
 
-### 8. Report
+### 7. Report
 
 > Goal: ส่งมอบ findings
 

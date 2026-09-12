@@ -52,7 +52,8 @@ related:
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. schema evolution/versioning strategy — backward compat 2. PII field tagging ใน schemas
+1. schema evolution/versioning strategy — backward compat
+2. PII field tagging ใน schemas
 
 ### 5. Rate And Report
 

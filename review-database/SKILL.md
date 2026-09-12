@@ -76,7 +76,9 @@ related:
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. replication lag, vacuum/maintenance health 2. PII columns inventory + retention per table 3. capacity headroom — growth rate vs limits
+1. replication lag, vacuum/maintenance health
+2. PII columns inventory + retention per table
+3. capacity headroom — growth rate vs limits
 
 ### 6. Rate And Report
 

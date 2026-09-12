@@ -107,6 +107,10 @@ related:
 - ไม่ลบ rule โดยไม่ user confirm
 - ระบุ evidence พร้อม file path และ line number
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

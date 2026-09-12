@@ -69,7 +69,8 @@ related:
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. per-feature/per-tenant unit cost attribution 2. cost anomaly detection + budget alerts
+1. per-feature/per-tenant unit cost attribution
+2. cost anomaly detection + budget alerts
 
 ### 6. Rate And Report
 

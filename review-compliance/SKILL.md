@@ -60,7 +60,8 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 
 > Goal: coverage เพิ่มเติมของ domain
 
-1. cookie consent / tracking opt-out implementation 2. data retention schedule per data category + enforcement
+1. cookie consent / tracking opt-out implementation
+2. data retention schedule per data category + enforcement
 
 ### 5. Validate, Score And Report
 
