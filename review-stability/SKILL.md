@@ -84,7 +84,13 @@ Review ความเสถียรของ application ครอบคลุ
 4. ถ้าพบ security issues ให้ทำ `/deep-review-codebase`
 5. ใช้ `/report` เพื่อจัดรูปแบบผลลัพธ์
 
-### 8. Validate, Score And Report
+### 8. Degradation Matrix
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. graceful-degradation matrix — dependency down → expected behavior ต่อ feature 2. failure-injection coverage — ทุก critical path มี chaos test
+
+### 9. Validate, Score And Report
 
 > Goal: Issues ถูก validate และรายงานเป็นตาราง พร้อม review score
 

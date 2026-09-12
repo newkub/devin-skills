@@ -65,7 +65,13 @@ related:
 2. ตรวจ managed services ทีใช้น้อย
 3. ระบุ services ที duplicate กัน
 
-### 5. Rate And Report
+### 5. Attribution
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. per-feature/per-tenant unit cost attribution 2. cost anomaly detection + budget alerts
+
+### 6. Rate And Report
 
 > Goal: สรุป findings พร้อม fix direction
 

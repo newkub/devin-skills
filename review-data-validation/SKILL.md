@@ -48,7 +48,13 @@ related:
 3. ตรวจ type coercion และ unsafe defaults
 4. ตรวจ error messages ที leak sensitive data
 
-### 4. Rate And Report
+### 4. Schema Lifecycle
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. schema evolution/versioning strategy — backward compat 2. PII field tagging ใน schemas
+
+### 5. Rate And Report
 
 > Goal: สรุป findings พร้อม fix direction
 

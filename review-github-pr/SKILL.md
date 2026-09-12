@@ -40,7 +40,13 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: ยืนยัน findings
 ทำตาม [references/validate-findings.md](references/validate-findings.md)
 
-### 5. Report And Recommend
+### 5. Governance
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. CODEOWNERS enforcement — required reviewers ถูกต้อง 2. PR size limits — oversized PRs flagged
+
+### 7. Report And Recommend
 > Goal: รายงานและแนะนำ
 ทำตาม [references/report-and-recommend.md](references/report-and-recommend.md)
 

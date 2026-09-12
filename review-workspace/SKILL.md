@@ -72,6 +72,12 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ทำตาม references/run-checks.md
 
+### 7. Graph Hygiene
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. circular dependencies ระหว่าง packages 2. orphan packages — ไม่มี consumers แต่ยังอยู่ใน workspace
+
 ### 7. Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score และ recommendations

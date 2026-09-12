@@ -49,7 +49,13 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ข้าม sub-review ที่ไม่เกี่ยวข้องกับ project หรือพบ critical issues ให้หยุดทำ `/deep-validate` ก่อน
 
-### 3. Validate And Report
+### 3. Jobs And Consumers
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. queue/job health — dead letters, retry policy, backlog alerts 2. idempotent consumers — redelivery ไม่ double-apply
+
+### 4. Validate And Report
 
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 

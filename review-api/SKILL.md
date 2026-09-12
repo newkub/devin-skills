@@ -79,7 +79,13 @@ related:
 2. ตรวจ API docs (OpenAPI/Swagger/schema introspection) ตรงกับ implementation
 3. ทำ `/check-reference` สำหรับ docs ที่อ้าง endpoints
 
-### 5. Rate And Report
+### 5. Contract And Governance
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. OpenAPI/contract drift — spec vs implementation ตรงกัน 2. idempotency keys บน mutating endpoints 3. deprecation/sunset policy — headers, timeline, migration docs
+
+### 6. Rate And Report
 
 > Goal: สรุป findings พร้อม severity และ fix direction
 

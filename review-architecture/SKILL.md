@@ -86,7 +86,13 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
-### 7. Report
+### 7. Governance
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. ADR coverage — decisions สำคัญมี record 2. dependency direction rules — layers ไม่ violate imports
+
+### 9. Report
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 

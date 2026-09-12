@@ -64,7 +64,13 @@ Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, sa
 2. background work ที่เหมาะสม, network batching
 3. memory pressure handling
 
-### 6. Report
+### 6. Store And Health
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. store compliance — permissions declarations, privacy labels, review guidelines 2. app size budget + crash-free sessions rate
+
+### 8. Report
 
 > Goal: ส่งมอบ findings
 

@@ -52,7 +52,13 @@ Review internationalization/localization ของ project — message catalogs,
 2. RTL: `dir` attribute, logical CSS properties (`margin-inline` vs `margin-left`), layout mirror
 3. locale routing/negotiation — URL strategy, `Accept-Language`, fallback chain
 
-### 5. Report
+### 5. Testing And Quality
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. pseudo-localization run — layout breaks, truncation, encoding 2. machine translation quality gate + review process
+
+### 7. Report
 
 > Goal: ส่งมอบ findings
 

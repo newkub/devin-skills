@@ -145,6 +145,8 @@ related:
 | i18n | `/review-i18n` | มีหลาย locale |
 | mobile | `/review-mobile` | มี mobile app/PWA mobile |
 | ai | `/review-ai` | มี LLM/AI features |
+| mcp | `/review-mcp` | มี MCP servers/config |
+| events | `/review-events` | มี queues/webhooks/event-driven |
 | workspace | `/review-workspace` | monorepo |
 | rules/.devin | `/review-rules` + `/review-dot-devin` | มี `.devin/` config |
 | risk | `/review-risk` | เสมอ (top-level) |

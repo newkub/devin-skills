@@ -77,6 +77,10 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 > Goal: วิเคราะห์ coverage และ flaky
 ทำตาม `references/analyze-coverage-flaky.md` เพื่อเปรียบเทียบ coverage target, หา missing branches, รัน test ซ้ำ และตรวจ root cause ของ flaky
 
+1. flaky quarantine policy — process + SLA สำหรับ flaky tests
+2. mutation testing / contract tests ตามที่เหมาะ
+3. coverage gates ใน CI — threshold enforce ไม่ใช่แค่ measure
+
 ### 10. Decide Actions
 
 > Goal: สรุป action ถัดไป

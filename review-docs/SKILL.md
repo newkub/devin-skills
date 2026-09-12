@@ -89,7 +89,13 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 6. คำนวณ README score ตาม `references/readme-scoring.md`
 7. ถ้า README score < 70 → แนะนำ `update-readme-md`
 
-### 9. Score And Report
+### 9. Drift And Changelog
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. API docs drift vs OpenAPI/implementation จริง 2. changelog hygiene — entries ครบ, format consistent, unreleased section
+
+### 10. Score And Report
 
 > Goal: สรุป review score และ findings
 

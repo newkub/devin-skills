@@ -88,7 +88,13 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ทำตาม `references/concurrency.md`
 
-### 9. Validate Score And Report
+### 9. Budgets And Rum
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. perf budgets enforce ใน CI (bundle size, latency thresholds) 2. RUM/field metrics vs lab metrics — เทียบกันจริง
+
+### 10. Validate Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score
 

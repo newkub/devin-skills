@@ -66,7 +66,13 @@ Review AI/LLM integration ของ project — prompt quality, model config, to
 2. LLM observability — traces, latency, error rates per call site
 3. fallback behavior — LLM down/timeout → graceful degradation
 
-### 6. Report
+### 6. Injection And Pii
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. prompt injection test cases — jailbreak attempts ผ่าน eval suite 2. PII redaction ก่อนส่งเข้า prompts
+
+### 8. Report
 
 > Goal: ส่งมอบ findings
 

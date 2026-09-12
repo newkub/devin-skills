@@ -56,7 +56,13 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 4. Data retention — ดู `references/data-retention.md`
 5. Cross-border transfer — ดู `references/cross-border.md`
 
-### 4. Validate, Score And Report
+### 4. Consent And Retention
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. cookie consent / tracking opt-out implementation 2. data retention schedule per data category + enforcement
+
+### 5. Validate, Score And Report
 
 > Goal: validate findings และสร้าง score-based report
 

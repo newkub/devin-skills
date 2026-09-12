@@ -77,6 +77,9 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 ทำตาม `references/incident-response.md`
 
+1. SLO/SLI + error budgets ต่อ service
+2. alert fatigue — ratio actionable:total alerts, runbook link ทุก alert
+
 ### 10. Validate Score And Report
 
 > Goal: findings ถูก validate และรายงานเป็นตาราง

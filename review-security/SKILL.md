@@ -87,6 +87,10 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ทำตาม `references/file-upload.md`
 
+1. authz matrix — role x resource table ครบทุก protected action
+2. SBOM + lockfile integrity, secret rotation age
+3. verify security headers บน deployed response จริง (curl) ไม่ใช่แค่ config
+
 ### 10. Validate Score And Report
 
 > Goal: ตรวจสอบ findings, คำนวณ score, และรายงานผล

@@ -72,7 +72,13 @@ related:
 2. ตรวจ constraints: unique, check, foreign key cascades, soft deletes
 3. ตรวจ transaction usage สำหรับ multi-step writes
 
-### 5. Rate And Report
+### 5. Operations And Pii
+
+> Goal: coverage เพิ่มเติมของ domain
+
+1. replication lag, vacuum/maintenance health 2. PII columns inventory + retention per table 3. capacity headroom — growth rate vs limits
+
+### 6. Rate And Report
 
 > Goal: สรุป findings พร้อม severity และ fix direction
 

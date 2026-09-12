@@ -98,6 +98,9 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ section ที่เกี่ยวข้อง
 
+1. error boundaries ครบทุก route/section — crash ไม่ลากทั้ง app
+2. loading/skeleton/empty states coverage ต่อ async surface
+
 ### 10. Report
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
