@@ -6,7 +6,7 @@ related:
   - run-test-api
   - implement-to-production
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - report
 ---
 
@@ -29,7 +29,7 @@ related:
 
 > Goal: รู้ stack และ test runner ก่อนติดตั้ง
 
-1. ทำ `/follow-my-tech-stack` และ `/review-techstack`
+1. ทำ `/follow-my-tech-stack` และ `/review-dependencies`
 2. ระบุ environment: browser dev, Node tests, หรือทั้งสอง
 3. ระบุ HTTP client ที่ใช้ (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
 

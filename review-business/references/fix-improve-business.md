@@ -73,7 +73,7 @@
 1. รัน domain unit tests
 2. รัน `run-test` และ `run-verify`
 3. ทดสอบ scenarios สำคัญด้วย integration tests
-4. ทำ `/review-correctness` เพื่อ verify logic
+4. ทำ `/review-quality` เพื่อ verify logic
 
 ### 8. Report
 

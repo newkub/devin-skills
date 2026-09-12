@@ -92,7 +92,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 ### 1. Scope Boundary
 
 - เน้น SEO บน web applications
-- ไม่ซ้ำกับ `/review-uxui`, `/review-performance`, `/review-platform`
+- ไม่ซ้ำกับ `/review-uxui`, `/review-performance`, `/deep-review`
 - ถ้าพบ accessibility/performance issues → ระบุเป็น info และแนะนำ sub-skill
 
 ### 2. Skip Conditions

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Reference สำหรับ dimensions ทีต้องตรวจสอบใน `/review-correctness`
+Reference สำหรับ dimensions ทีต้องตรวจสอบใน `/review-quality`
 
 ## Scope
 

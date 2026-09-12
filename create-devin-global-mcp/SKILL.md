@@ -16,7 +16,7 @@ related:
   - follow-create-mcp
   - update-devin-global-mcp
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - deep-validate
   - ship
 ---
@@ -41,7 +41,7 @@ related:
 > Goal: ตรวจ tech stack และสรุป scope
 
 1. ทำ `/follow-my-tech-stack` เพื่อดู tech stack ปัจจุบัน
-2. ทำ `/review-techstack` เพื่อ review dependencies
+2. ทำ `/review-dependencies` เพื่อ review dependencies
 3. บันทึกชื่อ server, transport, tools/resources ทีต้องการ
 
 ### 2. Create MCP Server

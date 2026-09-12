@@ -4,7 +4,7 @@ description: สร้าง bot สำหรับ Slack, Discord, Telegram, LI
 argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - follow-secret-manager
   - open-web-for-config-secret
 
@@ -41,7 +41,7 @@ related:
 | GitHub App | `subskills/github-app/SKILL.md` — app manifest, JWT auth, installation |
 
 1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
-2. ทำ `/follow-my-tech-stack` และ `/review-techstack`
+2. ทำ `/follow-my-tech-stack` และ `/review-dependencies`
 3. อ่าน `subskills/<platform>/SKILL.md` ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Setup Project

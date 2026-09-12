@@ -1,4 +1,4 @@
-# review-techstack — Full Dimension Checklist
+# review-dependencies — Full Dimension Checklist
 
 ## 1. Stack Selection
 

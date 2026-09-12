@@ -33,7 +33,7 @@
 ## 6. Maintainability
 
 - [ ] testability: pure logic separable, DI where needed
-- [ ] readability for next developer (`/review-readability`)
+- [ ] readability for next developer (`/review-writing`)
 - [ ] documentation where non-obvious
 
 ## Scoring

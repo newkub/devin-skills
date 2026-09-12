@@ -1,4 +1,4 @@
-# review-correctness — Full Dimension Checklist
+# review-quality — Full Dimension Checklist
 
 ## 1. Requirements And Contracts
 

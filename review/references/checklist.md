@@ -8,12 +8,12 @@
 
 ## 2. Domain Coverage Map
 
-- [ ] code quality → `/review-quality`, `/review-readability`, `/review-correctness`
+- [ ] code quality → `/review-quality`, `/review-writing`, `/review-quality`
 - [ ] structure → `/review-architecture`, `/review-refactor`, `/review-workspace`
-- [ ] surface → `/review-web`, `/review-cli`, `/review-platform`, `/review-frontend`, `/review-api`, `/review-backend`
+- [ ] surface → `/review-frontend`, `/review-cli`, `/deep-review`, `/review-frontend`, `/review-api`, `/review-backend`
 - [ ] safety → `/review-security`, `/review-auth`, `/review-compliance`, `/review-data-validation`
 - [ ] ops → `/review-release`, `/review-delivery`, `/review-observability`, `/review-stability`, `/review-cost`
-- [ ] docs/meta → `/review-docs`, `/review-usage-md`, `/review-features`, `/review-writing`, `/review-rules`
+- [ ] docs/meta → `/review-docs`, `/review-docs`, `/review-docs`, `/review-writing`, `/review-rules`
 - [ ] process → `/review-plan`, `/review-implement`, `/review-risk`, `/review-idea`, `/review-issue`, `/review-github-pr`, `/review-diff`, `/review-migration`, `/review-update`
 - [ ] persona → `/review-by-stakeholder` via `/roleplay-stakeholder`
 - [ ] devin repos → `/review-devin-global-skills`, `/review-devin-global-subagents`, `/review-dot-devin`

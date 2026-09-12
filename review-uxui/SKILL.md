@@ -3,7 +3,7 @@ name: review-uxui
 description: Review UX/UI design quality, design system, visual, interaction, accessibility, handoff
 argument-hint: "[scope]"
 related:
-  - review-platform
+  - deep-review
   - roleplay-stakeholder
   - scan-codebase
   - deep-analyze
@@ -29,7 +29,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ไม่รวม:
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
-- platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - SEO → ใช้ `/review-seo`
 - roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-stakeholder`
 - roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-stakeholder`
@@ -134,7 +134,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 ### 5. Scope Boundaries
 
 - ไม่ review frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
-- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - ไม่ review SEO → ใช้ `/review-seo`
 - ไม่ review code quality, bug-prone patterns → ใช้ `/review-quality`
 - focus ที่ design quality: design system, visual, interaction, accessibility, handoff

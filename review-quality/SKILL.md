@@ -33,6 +33,8 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 - ดูเพิ่มเติม: /deep-review-codebase
 
+- merged from: `review-correctness` — correctness dimensions refs `references/correctness-*.md`
+
 ## Execute
 
 ### 1. Prepare

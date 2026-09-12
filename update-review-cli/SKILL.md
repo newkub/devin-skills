@@ -4,7 +4,7 @@ description: สร้างหรืออัปเดต `tools/review-codebas
 argument-hint: "[target-or-iteration]"
 related:
   - run-review
-  - deep-review-codebase
+  - deep-review
   - update-create-analyze-cli
   - check-should-update
   - scan-codebase
@@ -129,6 +129,36 @@ related:
 2. ใช้ `/report` แสดง findings: Category, Finding, Severity, Location, Recommendation
 3. ทำ `/suggest-next-action`
 
+## CLI Output
+
+`review-codebase` table output ต้องแสดงรายละเอียดครบตาม spec — ห้ามแสดงแค่ score เดี่ยวหรือ category ละ 1 บรรทัด
+
+### Findings Table (ต่อ category)
+
+| No. | Domain | Category | Score | Grade | C | H | M | L | Top Finding | Evidence | Fix Skill | Delta |
+|-----|--------|----------|-------|-------|---|---|---|---|-------------|----------|-----------|-------|
+
+- `No.` column แรกเสมอ เรียง 1..n
+- `C`/`H`/`M`/`L` = findings count ตาม severity (Critical/High/Medium/Low)
+- `Evidence` = `file:line` ของ top finding
+- `Fix Skill` = จาก `reviewWorkflow` map — `/review-<domain>` สำหรับ domain finding, `/deep-review-then-fix` เมื่อต้อง apply fix
+- `Delta` = score diff เทียบ `reports/review-report.json` ครั้งก่อน (ถ้ามี baseline)
+- sort: Critical ก่อน → score ต่ำสุดก่อน
+
+### Domain Summary Table (ต่อท้าย)
+
+| No. | Domain | Score | Grade | Categories | Findings | Errors | FP% | Trend |
+|-----|--------|-------|-------|------------|----------|--------|-----|-------|
+
+- `Trend` = up/down/flat เทียบ run ก่อน
+- footer row: overall score + grade, `categories N/60`, total analyzer errors, duration
+
+### Output Requirements
+
+- non-TTY/CI → auto plain table หรือใช้ `--json`
+- ทุก row ต้องมี `Evidence` — ห้าม row ที่ไม่มี file:line
+- หน้าจอแคบ → ตัด `Top Finding` ก่อน ห้ามตัด `Evidence`/`Fix Skill`
+
 ## Rules
 
 ### 1. CLI-Driven
@@ -166,7 +196,7 @@ related:
 
 - ทำ review/deep-review-then-fix CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
-- ใช้ `/deep-review-codebase` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
+- ใช้ `/deep-review` หรือ `/run-review` สำหรับ comprehensive quality gate
 
 ### 7. Formatting
 

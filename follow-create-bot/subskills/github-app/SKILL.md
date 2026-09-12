@@ -19,7 +19,7 @@ argument-hint: "[features]"
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review dependencies และ library design
+2. ทำ `/review-dependencies` เพื่อ review dependencies และ library design
 3. บันทึกเหตุผลที่เลือก stack สำหรับ reference
 
 ### 2. Gather Requirements

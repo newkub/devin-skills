@@ -23,7 +23,7 @@
 
 ## 4. Data And Memory
 
-- [ ] data structure fit (เชื่อม `/review-data-structure`)
+- [ ] data structure fit (เชื่อม `/review-algorithm`)
 - [ ] cache-friendliness: sequential access, locality
 - [ ] unnecessary copies, clone-in-loop
 - [ ] streaming vs load-all สำหรับ input ใหญ่

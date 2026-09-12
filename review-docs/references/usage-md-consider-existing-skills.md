@@ -12,7 +12,7 @@ description: ตรวจสอบว่ามี skill อื่นเหมา
 ## Checks
 
 1. ทำ `/use-related-skills` เพื่อหา skills ที่เกี่ยวข้อง
-2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-usage-md` แทน
+2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-docs` แทน
 3. ถ้า `USAGE.md` ไม่มี → แนะนำ `/update-usage-md` หรือ `/report-usage-md`
 4. ถ้าไม่มี skill อื่นเหมาะสมกว่า → ดำเนินการ review
 

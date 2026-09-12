@@ -58,6 +58,8 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | frontend | `/review-frontend` | `review-frontend/references/fix-*.md` |
 | backend | `/review-backend` | `review-backend/references/fix-*.md` |
 | quality/types | `/review-quality` | `review-quality/references/fix-*.md` |
+| i18n | `/review-i18n` | `review-i18n` `## Fix` steps |
+| mobile | `/review-mobile` | `review-mobile` `## Fix` steps |
 | อื่นๆ | `/review-<domain>` | `review-<domain>/references/fix-*.md` ถ้ามี — ไม่มีให้แก้ตาม findings ตรงๆ |
 
 ## Execute

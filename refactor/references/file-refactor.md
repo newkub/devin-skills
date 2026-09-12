@@ -8,7 +8,7 @@
 
 1. อ่านแต่ละไฟล์ใน `@files...`
 2. ทำ `/review-quality` เพื่อหา issues เฉพาะไฟล์
-3. ทำ `/review-readability` ถ้าไฟล์อ่านยาก
+3. ทำ `/review-writing` ถ้าไฟล์อ่านยาก
 4. บันทึก baseline: responsibilities, imports, exports, public API
 5. ระบุ action ทีเหมาะสม:
    - ไฟล์ยาว >250 บรรทัด หรือหลาย responsibility → ทำ SRP refactor

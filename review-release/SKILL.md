@@ -10,7 +10,7 @@ related:
   - run-deploy
   - watch-deploy
   - follow-deploy
-  - review-correctness
+  - review-quality
   - review-architecture
   - report
   - run-review
@@ -108,7 +108,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
    - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /test-release ถ้าจำเป็น
-- ใช้ /review-correctness ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
 
 - ถ้า pass → ทำ `/ship` หรือ release ถ้า fail → แก้ findings ก่อน release

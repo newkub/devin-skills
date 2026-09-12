@@ -27,6 +27,8 @@ related:
 
 ไม่รวม UX copy, content coverage, SEO, code quality โดยละเอียด
 
+- merged from: `review-readability` — readability checklist refs `references/readability-*.md`
+
 ## Execute
 
 ### 1. Prepare And Scan

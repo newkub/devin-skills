@@ -19,6 +19,8 @@ related:
 
 ใช้กับ functions/modules ที่มี performance bottleneck หรือ suspect inefficient algorithmic complexity
 
+- merged from: `review-data-structure` — data structure + complexity refs `references/data-structure-*.md`
+
 ## Execute
 
 ### 1. Identify Hot Paths
@@ -51,7 +53,7 @@ related:
 
 1. ทำ `/report` ด้วย columns: No., Function, Complexity, Hot Path, Severity, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี data structure ปัญหา → เชื่อม `/review-data-structure`
+3. ถ้ามี data structure ปัญหา → เชื่อม `/review-algorithm`
 
 ## Rules
 

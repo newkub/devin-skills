@@ -29,7 +29,7 @@
 2. ตรวจ edge cases: validation, boundary values, race conditions, cancellation
 3. ตรวจ flow gaps: dead ends, ขาด confirmation, ขาด undo, ขาด error recovery
 4. ตรวจความสอดคล้อง: copy, i18n keys, permission checks, audit logging
-5. ทำ `/review-features` เพื่อเทียบกับมาตรฐาน features อื่นใน codebase
+5. ทำ `/review-docs` เพื่อเทียบกับมาตรฐาน features อื่นใน codebase
 
 ### 3. Prioritize And Plan
 

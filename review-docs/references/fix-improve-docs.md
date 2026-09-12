@@ -4,7 +4,7 @@
 
 ## Goal
 
-แก้ไข documentation findings จาก `review-docs`, `review-docs`, `review-writing`, `review-usage-md` และ `review-docs` จน docs ถูกต้อง ครบถ้วน และตรงกับ code จริง
+แก้ไข documentation findings จาก `review-docs`, `review-docs`, `review-writing`, `review-docs` และ `review-docs` จน docs ถูกต้อง ครบถ้วน และตรงกับ code จริง
 
 ## Scope
 

@@ -19,7 +19,7 @@
 > Goal: รู้ว่าต้องแก้อะไร
 
 1. รับ `[path-or-scope]` จาก argument หรือ context
-2. ทำ `/review-readability` เพื่อหาจุดอ่านยาก
+2. ทำ `/review-writing` เพื่อหาจุดอ่านยาก
 3. บันทึก findings พร้อม file path, line, severity
 
 ### 2. Prioritize Fixes

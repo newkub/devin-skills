@@ -42,7 +42,7 @@
 
 ## 8. Frontend-Specific
 
-- [ ] Core Web Vitals: LCP/INP/CLS (เชื่อม `/review-web`)
+- [ ] Core Web Vitals: LCP/INP/CLS (เชื่อม `/review-frontend`)
 - [ ] render blocking, hydration cost, layout thrash
 
 ## Scoring

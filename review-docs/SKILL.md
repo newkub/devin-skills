@@ -9,7 +9,7 @@ related:
   - suggest-next-action
   - update-docs
   - update-readme-md
-  - review-features
+  - review-docs
   - run-docs
   - run-review
 ---
@@ -20,11 +20,13 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 ## Scope
 
-ใช้ก่อนเรียก `update-docs` — ตรวจ `docs/` structure, VitePress config, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-features`)
+ใช้ก่อนเรียก `update-docs` — ตรวจ `docs/` structure, VitePress config, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-docs`)
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
+
+- merged from: `review-usage-md`, `review-features` — USAGE.md refs `references/usage-md-*.md`, features docs refs `references/features-*.md`
 
 ## Execute
 
@@ -106,7 +108,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 ### 2. Scope Coordination
 
 - ตรวจ `docs/` structure, VitePress config, content quality, links และ `README.md`
-- ไม่ตรวจ features coverage — ใช้ `review-features`
+- ไม่ตรวจ features coverage — ใช้ `review-docs`
 - ถ้า findings ซ้อนทับ → อ้างอิงแทน ไม่ทำซ้ำ
 
 ### 3. Severity Ratings

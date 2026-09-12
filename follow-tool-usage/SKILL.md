@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-usage
 
-  - review-usage-md
+  - review-docs
   - follow-best-practice
   - setup-cicd
   - resolve-errors
@@ -129,7 +129,7 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 - regenerate completions/docs ใน CI ถ้ามีการเปลี่ยน spec
 
 - ใช้ /report-usage ถ้าจำเป็น
-- ใช้ /review-usage-md ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น

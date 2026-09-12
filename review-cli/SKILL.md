@@ -4,7 +4,7 @@ description: Review CLI/TUI app ทุกมิติ — commands, stdin, I/O c
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
-  - review-platform
+  - deep-review
   - review-quality
   - review-test
   - review-docs
@@ -24,7 +24,7 @@ Review CLI/TUI application แบบเจาะลึก — command structure,
 CLI review สำหรับ project ที่ ship เป็น command-line tool (Node/Bun, Rust, Go, Python ฯลฯ) — ตรวจทั้ง code และ runtime behavior ของ CLI binary
 
 ไม่รวม:
-- multi-platform spot check (CLI เป็นแค่ dimension เดียว) → ใช้ `/review-platform`
+- multi-platform spot check (CLI เป็นแค่ dimension เดียว) → ใช้ `/deep-review`
 - general code quality, bug-prone patterns → ใช้ `/review-quality`
 - docs completeness โดยละเอียด → ใช้ `/review-docs`
 - แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass; fix guide: `review-quality/references/fix-improve-cli-ux.md`)
@@ -147,7 +147,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 ### 1. Scope Boundary
 
 - เน้น CLI surface: commands, I/O contract, exit codes, distribution
-- ไม่ซ้ำ `/review-platform` (spot check), `/review-quality` (code patterns), `/review-test` (test quality ทั่วไป)
+- ไม่ซ้ำ `/deep-review` (spot check), `/review-quality` (code patterns), `/review-test` (test quality ทั่วไป)
 
 ### 2. Skip Conditions
 

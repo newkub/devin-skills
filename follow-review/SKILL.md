@@ -49,7 +49,7 @@ related:
 | 5 | ก่อน update docs / plan / config | `/review-docs`, `/review-plan`, `/review-update` |
 | 6 | แตะ security-sensitive code | `/review-security`, `/review-compliance` |
 | 7 | แตะ tests | `/review-test` |
-| 8 | แตะ dependencies / tech stack | `/review-techstack`, `/review-dependencies` |
+| 8 | แตะ dependencies / tech stack | `/review-dependencies`, `/review-dependencies` |
 | 9 | แตะ UX/UI / frontend | `/review-uxui`, `/review-frontend` |
 | 10 | ไม่ชัดหรือครอบหลายมิติ | `/deep-review-codebase`, `/review` |
 

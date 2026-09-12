@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - follow-tool-biome
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - follow-tool-formatter
   - ship
   - run-lint
@@ -29,7 +29,7 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create biome plugins)
+2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create biome plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create biome plugins)
 
 ### 2. Setup

@@ -47,32 +47,32 @@ related:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review-codebase` | `/review-quality`, `/review-correctness` |
-| 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-correctness`, `/review-readability` |
-| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-correctness` | `/review-quality`, `/review-test` |
+| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review-codebase` | `/review-quality`, `/review-quality` |
+| 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-quality`, `/review-writing` |
+| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-quality` | `/review-quality`, `/review-test` |
 | 4 | เน้น security | `/review-security` | `/review-compliance`, `/review-delivery` |
 | 5 | เน้น performance | `/review-performance` | `/review-frontend`, `/review-backend` |
-| 6 | เน้น frontend code (React/Vue/Solid/Svelte/Angular) | `/review-frontend` | `/review-uxui`, `/review-platform` |
+| 6 | เน้น frontend code (React/Vue/Solid/Svelte/Angular) | `/review-frontend` | `/review-uxui`, `/deep-review` |
 | 7 | เน้น backend (API, service, database, data flow) | `/review-backend` | `/review-performance`, `/review-security` |
-| 8 | เน้น architecture, modularity, boundaries | `/review-architecture` | `/review-quality`, `/review-techstack` |
-| 9 | เน้น UX/UI, design system, accessibility | `/review-uxui` | `/review-platform`, `/review-frontend` |
-| 10 | เน้น platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/review-platform` | `/review-frontend`, `/review-uxui` |
-| 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/review-business` | `/review-security`, `/review-correctness` |
-| 12 | เน้น tech stack / dependencies / library design | `/review-techstack` | `/review-security`, `/review-quality` |
+| 8 | เน้น architecture, modularity, boundaries | `/review-architecture` | `/review-quality`, `/review-dependencies` |
+| 9 | เน้น UX/UI, design system, accessibility | `/review-uxui` | `/deep-review`, `/review-frontend` |
+| 10 | เน้น platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/deep-review` | `/review-frontend`, `/review-uxui` |
+| 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/review-business` | `/review-security`, `/review-quality` |
+| 12 | เน้น tech stack / dependencies / library design | `/review-dependencies` | `/review-security`, `/review-quality` |
 | 13 | เน้น stability, error handling, debuggability | `/review-stability` | `/review-performance`, `/review-observability` |
 | 14 | เน้น observability (metrics, tracing, logging, alerting) | `/review-observability` | `/review-stability`, `/review-delivery` |
 | 15 | เน้น compliance (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA) | `/review-compliance` | `/review-security`, `/review-delivery` |
 | 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/review-delivery` | `/review-performance`, `/review-security` |
 | 17 | ตรวจความพร้อมก่อน deploy | `/review-release` | `/review-delivery`, `/watch-deploy` |
-| 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-techstack` |
+| 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-dependencies` |
 | 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-devin-global-skills` |
-| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-features` |
-| 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-docs` | `/review-usage-md` |
-| 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-features` | `/review-docs` |
-| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-usage-md` | `/review-docs` |
-| 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-features` |
-| 25 | ตรวจ naming conventions | `/review-quality` | `/review-readability` |
-| 26 | ตรวจ readability | `/review-readability` | `/review-quality` |
+| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-docs` |
+| 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-docs` | `/review-docs` |
+| 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-docs` | `/review-docs` |
+| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-docs` | `/review-docs` |
+| 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-docs` |
+| 25 | ตรวจ naming conventions | `/review-quality` | `/review-writing` |
+| 26 | ตรวจ readability | `/review-writing` | `/review-quality` |
 | 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-devin-global-skills` | `/check-unused`, `/review-quality` |
 | 28 | ตรวจ consistency ข้าม skills / code | `/review-quality` | `/review-devin-global-skills` |
 | 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-devin-global-skills` | `/review-quality` |
@@ -81,7 +81,7 @@ related:
 | 32 | ตรวจ migration plan ก่อนลงมือ | `/review-migration` | `/review-risk` |
 | 33 | ตรวจก่อน refactor | `/review-refactor` | `/review-architecture`, `/review-quality` |
 | 34 | ตรวจ implementation readiness | `/review-implement` | `/review-plan`, `/review-quality` |
-| 35 | ตรวจ implementation completeness | `/review-implement` | `/review-correctness`, `/review-uxui` |
+| 35 | ตรวจ implementation completeness | `/review-implement` | `/review-quality`, `/review-uxui` |
 | 36 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-quality` |
 | 37 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
 | 38 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |

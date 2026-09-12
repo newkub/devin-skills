@@ -48,7 +48,7 @@ related:
 
 > Goal: ยืนยันว่า template ใช้งานได้
 
-1. รัน `/review-techstack`
+1. รัน `/review-dependencies`
 2. รัน `/report-config-files`
 3. รัน `/check-broken-skills-references`
 

@@ -1,19 +1,19 @@
 ---
 title: Scoring Formula
-description: สูตรคำนวณ review score และ grade สำหรับ review-features
+description: สูตรคำนวณ review score และ grade สำหรับ review-docs
 related:
-  - review-features
+  - review-docs
   - report-table
   - suggest-next-action
 ---
 
 ## Goal
 
-คำนวณ review score และ grade จาก findings ของ `review-features`
+คำนวณ review score และ grade จาก findings ของ `review-docs`
 
 ## Scope
 
-ใช้ใน Execute step "Score And Report" ของ `review-features` — คำนวณ score เท่านั้น ไม่ตรวจ format หรือ coverage
+ใช้ใน Execute step "Score And Report" ของ `review-docs` — คำนวณ score เท่านั้น ไม่ตรวจ format หรือ coverage
 
 ## Severity To Score Mapping
 

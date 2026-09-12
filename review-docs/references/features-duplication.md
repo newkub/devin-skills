@@ -2,7 +2,7 @@
 title: No Duplication Checks
 description: ตรวจไม่มี duplicated docs ใน workspaces และ .devin/features/
 related:
-  - review-features
+  - review-docs
   - update-docs
 ---
 
@@ -12,7 +12,7 @@ related:
 
 ## Scope
 
-ใช้ใน Execute step "Check No Duplication" ของ `review-features` — ตรวจ duplication เท่านั้น ไม่ตรวจ format หรือ coverage
+ใช้ใน Execute step "Check No Duplication" ของ `review-docs` — ตรวจ duplication เท่านั้น ไม่ตรวจ format หรือ coverage
 
 ## Checks
 

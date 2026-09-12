@@ -2,7 +2,7 @@
 title: Features Coverage
 description: ตรวจ features coverage จาก source code เทียบกับ docs/project/features.md
 related:
-  - review-features
+  - review-docs
 ---
 
 ## Goal
@@ -11,7 +11,7 @@ related:
 
 ## Scope
 
-ใช้ใน Execute step "Check Coverage" ของ `review-features` — ตรวจ coverage เท่านั้น ไม่ตรวจ format หรือ duplication
+ใช้ใน Execute step "Check Coverage" ของ `review-docs` — ตรวจ coverage เท่านั้น ไม่ตรวจ format หรือ duplication
 
 ## Source Code Areas
 

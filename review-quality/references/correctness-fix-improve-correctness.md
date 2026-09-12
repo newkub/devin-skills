@@ -4,11 +4,11 @@
 
 ## Goal
 
-แก้ไขความถูกต้องของ implementation ตาม findings จาก `/review-correctness` ครอบคลุม logic, types, edge cases, contracts, concurrency, และ tests
+แก้ไขความถูกต้องของ implementation ตาม findings จาก `/review-quality` ครอบคลุม logic, types, edge cases, contracts, concurrency, และ tests
 
 ## Scope
 
-ใช้กับ code, configuration, และ tests ที่มี findings ด้าน correctness จาก `/review-correctness` — ไม่รวม security, performance, UX/UI (ใช้ `/review-security`, `/optimize-*`, `/review-uxui` แทน)
+ใช้กับ code, configuration, และ tests ที่มี findings ด้าน correctness จาก `/review-quality` — ไม่รวม security, performance, UX/UI (ใช้ `/review-security`, `/optimize-*`, `/review-uxui` แทน)
 
 ## Execute
 
@@ -16,7 +16,7 @@
 
 > Goal: เข้าใจ findings ก่อนแก้
 
-1. อ่าน report จาก `/review-correctness`
+1. อ่าน report จาก `/review-quality`
 2. จัดลำดับตาม severity: Critical → High → Medium → Low
 3. แยกประเภท: logic, types, edge cases, contracts, concurrency, tests
 4. ระบุ file path, line number, และ reproduction ถ้ามี
@@ -81,7 +81,7 @@
 
 1. ทำ `/run-verify`
 2. ทำ `/run-test`
-3. ทำ `/review-correctness` อีกครั้งเพื่อ verify
+3. ทำ `/review-quality` อีกครั้งเพื่อ verify
 4. ทำ `/report-table` สรุป fixes
 5. ทำ `/suggest-next-action`
 
@@ -89,7 +89,7 @@
 
 ### 1. Fix Only Findings
 
-- แก้เฉพาะสิ่งที่ `/review-correctness` ระบุ หรือชัดเจนว่าเป็น correctness issue
+- แก้เฉพาะสิ่งที่ `/review-quality` ระบุ หรือชัดเจนว่าเป็น correctness issue
 - ไม่ refactor โครงสร้างใหญ่ ถ้าไม่จำเป็น
 
 ### 2. Test First
@@ -116,5 +116,5 @@
 
 - Logic, types, edge cases, contracts, concurrency, และ tests ถูกต้อง
 - `run-test` และ `run-verify` ผ่าน
-- `/review-correctness` ไม่พบ issues เดิม
+- `/review-quality` ไม่พบ issues เดิม
 - รายงาน fixes พร้อม evidence และ next action

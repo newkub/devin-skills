@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-tui-ratatui
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - follow-create-web-solid-tanstack-router
   - follow-lib-unocss
   - follow-robots-txt
@@ -88,7 +88,7 @@ related:
 - รายงานด้วย `/report`
 
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
-- ใช้ /review-techstack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /follow-lib-unocss ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
 - ใช้ /review-uxui ถ้าจำเป็น

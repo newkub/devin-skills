@@ -2,7 +2,7 @@
 title: Format Validation
 description: กฎตรวจสอบ format ของ docs/project/features.md
 related:
-  - review-features
+  - review-docs
 ---
 
 ## Goal
@@ -11,7 +11,7 @@ related:
 
 ## Scope
 
-ใช้ใน Execute step "Check Format" ของ `review-features` — ตรวจ format เท่านั้น ไม่ตรวจ coverage หรือ duplication
+ใช้ใน Execute step "Check Format" ของ `review-docs` — ตรวจ format เท่านั้น ไม่ตรวจ coverage หรือ duplication
 
 ## Required Table Columns
 

@@ -18,7 +18,7 @@ related:
   - follow-service-cloudflare
   - deploy-to-vercel
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - deploy-to-cloudflare
   - run-dev
 ---
@@ -40,7 +40,7 @@ related:
 > Goal: ตรวจสอบ tech stack และยืนยันว่า Rust และ wasm-pack พร้อมใช้
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create website rust)
+2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create website rust)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create website rust)
 4. รัน `rustc --version` และ `cargo --version`
 5. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`

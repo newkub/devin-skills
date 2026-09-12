@@ -12,7 +12,7 @@ related:
   - update-devin-global-skills
   - update-devin-global-subagents
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - report
 ---
 ## Goal
@@ -32,7 +32,7 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create codex plugin)
+2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create codex plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create codex plugin)
 
 ### 2. Gather Requirements

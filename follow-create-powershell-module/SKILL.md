@@ -6,7 +6,7 @@ related:
   - use-pwsh-shell
   - devin-scripts-toolkit
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - follow-best-practice
   - run-test
   - run-check
@@ -32,7 +32,7 @@ related:
 > Goal: เตรียม context ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อดูเครื่องมือที่ใช้
-2. ทำ `/review-techstack` ถ้า module เกี่ยวข้องกับ project dependencies
+2. ทำ `/review-dependencies` ถ้า module เกี่ยวข้องกับ project dependencies
 3. ตรวจ PowerShell version ด้วย `$PSVersionTable.PSVersion` — target `pwsh` 7.6+ (LTS) เป็น default
 
 ### 2. Gather Requirements

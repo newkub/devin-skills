@@ -2,7 +2,7 @@
 title: Monorepo Coverage Checks
 description: ตรวจ monorepo coverage ว่าทุก workspace ถูกวิเคราะห์และระบุ workspace ในแต่ละ feature
 related:
-  - review-features
+  - review-docs
 ---
 
 ## Goal
@@ -11,7 +11,7 @@ related:
 
 ## Scope
 
-ใช้ใน Execute step "Check Monorepo Coverage" ของ `review-features` — ตรวจ monorepo coverage เท่านั้น ไม่ตรวจ format หรือ duplication
+ใช้ใน Execute step "Check Monorepo Coverage" ของ `review-docs` — ตรวจ monorepo coverage เท่านั้น ไม่ตรวจ format หรือ duplication
 
 ## Checks
 

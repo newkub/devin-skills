@@ -1,4 +1,4 @@
-# review-web — Full Dimension Checklist
+# review-frontend — Full Dimension Checklist
 
 ใช้เป็น checklist ครบทุกมิติเมื่อ report — tick ตาม section ใน `SKILL.md`
 

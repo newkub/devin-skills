@@ -18,7 +18,7 @@ related:
   - follow-lang-rust
   - follow-lang-typescript
   - follow-my-tech-stack
-  - review-techstack
+  - review-dependencies
   - follow-architecture
   - follow-single-responsibility
   - deep-validate
@@ -37,7 +37,7 @@ related:
 - ถ้าต้องการ register ลง Devin global MCP config ให้ใช้ `/create-devin-global-mcp` หลังจากนี้
 - ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin-project-mcp`
 
-ดูเพิ่มเติม: `/follow-my-tech-stack`, `/review-techstack`, `/follow-lang-rust`, `/follow-lang-typescript`
+ดูเพิ่มเติม: `/follow-my-tech-stack`, `/review-dependencies`, `/follow-lang-rust`, `/follow-lang-typescript`
 
 - Latest: `@modelcontextprotocol/sdk@1.30.0` (TS), `rmcp@3.3.0` (Rust) (verified 2026-09-12)
 
@@ -48,7 +48,7 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create mcp)
+2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create mcp)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mcp)
 
 ### 2. Decide Stack

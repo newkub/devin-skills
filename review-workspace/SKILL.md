@@ -15,7 +15,7 @@ related:
   - report
   - suggest-next-action
   - refactor-workspace
-  - review-techstack
+  - review-dependencies
   - run-review
   - run-test-all
 ---
@@ -109,7 +109,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /refactor-workspace ถ้าจำเป็น
-- ใช้ /review-techstack ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Fix
 

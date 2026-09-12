@@ -91,4 +91,4 @@
 - Implementation encapsulated และ tested
 - เอกสารครบถ้วน
 - ไม่ over-engineer
-- ถ้าต้อง review ก่อน → ใช้ `/review-data-structure`
+- ถ้าต้อง review ก่อน → ใช้ `/review-algorithm`

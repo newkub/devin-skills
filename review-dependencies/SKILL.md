@@ -24,6 +24,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-lib-better)
 
+- merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md`
+
 ## Execute
 
 ### 1. Inventory Dependencies

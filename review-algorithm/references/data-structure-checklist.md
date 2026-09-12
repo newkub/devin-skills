@@ -1,4 +1,4 @@
-# review-data-structure — Full Dimension Checklist
+# review-algorithm — Full Dimension Checklist
 
 ## 1. Inventory
 
