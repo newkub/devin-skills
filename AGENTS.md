@@ -101,13 +101,13 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; multi-domain fix orchestration → `/deep-review-then-fix` (อ่าน fix guides จาก `review-*/references/`). `improve-*` (3): `improve`, `improve-uxui`, `improve-devin-global-skills`; domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
+- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; multi-domain fix orchestration → `/deep-review-then-fix` (อ่าน fix guides จาก `review-*/references/`). `improve-*` (2): `improve-uxui`, `improve-devin-global-skills`; domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
 - `list-*` (32): inventory, lookup, and listing utilities.
 - `update-*` (41): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (3): standard `/ship`, staging, production, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user) — rollback handled inline in `/ship`.
-- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill) พร้อม alias stubs (`deep-review-codebase`, `review-then-fix`).
+- `ship-*` (3): `/ship` (entry point — `/update-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
+- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (multi-domain fix orchestrator); alias stubs: `deep-review-codebase`.
 - `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (60): verification, structure, and health checks.
 - `open-*` (14): browser, editor, and terminal integration.
