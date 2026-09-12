@@ -12,7 +12,7 @@ related:
 
 ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อไปยัง section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -28,7 +28,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-cost-analysis) — ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
 
-สำหรับ dedicated fix pass อยู่ที่ `/review-then-fix`
+สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
 ## Execute
 
@@ -72,7 +72,7 @@ related:
 1. ทำ `/report` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
 2. ชี้ไป section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -96,7 +96,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -121,7 +121,7 @@ related:
 - ทุก finding มี evidence และ severity
 - next action ชัดเจนผ่าน section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

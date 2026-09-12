@@ -1,14 +1,14 @@
 ---
 name: deep-review-codebase-then-fix
-description: Alias for review-then-fix — merged into the canonical skill
+description: Alias for deep-review-then-fix — merged into the canonical skill
 argument-hint: "[scope]"
 related:
-  - review-then-fix
+  - deep-review-then-fix
 ---
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/review-then-fix` แล้ว — ใช้ `/review-then-fix` เป็น canonical skill
+Skill นี้ถูก merge เข้ากับ `/deep-review-then-fix` แล้ว — ใช้ `/deep-review-then-fix` เป็น canonical skill
 
 ## Scope
 
@@ -16,7 +16,7 @@ Skill นี้ถูก merge เข้ากับ `/review-then-fix` แล�
 
 ## Execute
 
-1. ทำ `/review-then-fix` ตามขอบเขตและ workflow เดิมทั้งหมด
+1. ทำ `/deep-review-then-fix` ตามขอบเขตและ workflow เดิมทั้งหมด
 
 
 ## Rules
@@ -26,4 +26,4 @@ Skill นี้ถูก merge เข้ากับ `/review-then-fix` แล�
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/review-then-fix`
+- ผลลัพธ์เหมือน `/deep-review-then-fix`

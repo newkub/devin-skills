@@ -3,7 +3,7 @@ name: review-migration
 description: Review migration plan พร้อม execution checklist และ verify ข้อมูลหลัง migrate
 argument-hint: "[scope]"
 related:
-  - review-then-fix
+  - deep-review-then-fix
   - update-version-to-latest
   - follow-tool-renovate
   - check-migrations
@@ -96,7 +96,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

@@ -164,7 +164,7 @@ related:
 
 ### 6. Review Independence
 
-- ทำ review/review-then-fix CLI เท่านั้น ไม่แก้ไข business logic
+- ทำ review/deep-review-then-fix CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
 - ใช้ `/deep-review-codebase` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
 

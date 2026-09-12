@@ -3,7 +3,7 @@ name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring, backup/restore and score
 argument-hint: "[scope]"
 related:
-  - review-then-fix
+  - deep-review-then-fix
   - deep-review-codebase
   - scan-codebase
   - deep-analyze
@@ -136,7 +136,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

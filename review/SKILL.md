@@ -8,7 +8,7 @@ related:
   - check-unused
   - review-gaps
   - review-issue
-  - review-then-fix
+  - deep-review-then-fix
   - follow-parallel
   - report
   - suggest-next-action
@@ -89,7 +89,7 @@ related:
 | 40 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
 | 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-devin-global-skills` |
 | 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-devin-global-skills` |
-| 43 | ตรวจแล้วค่อย fix ตาม context | `/review-then-fix` | `/review-quality` |
+| 43 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-quality` |
 | 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-unused` | `/review-devin-global-skills`, `/review-quality` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
@@ -121,7 +121,7 @@ related:
 
 1. ทำ `/report` พร้อม `/report`
 2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
-3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-then-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
+3. ระบุ skill ถัดไปที่ควรทำ เช่น `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
 4. ทำ `/suggest-next-action`
 
 ## Rules

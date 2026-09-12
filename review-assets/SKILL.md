@@ -3,7 +3,7 @@ name: review-assets
 description: "ตรวจสอบ images, fonts, media ว่า optimize, format และ loading strategy เหมาะสมหรือไม่"
 argument-hint: "[asset-or-folder]"
 related:
-  - review-then-fix
+  - deep-review-then-fix
   - scan-codebase
   - report
   - review-bundle
@@ -14,7 +14,7 @@ related:
 
 ตรวจสอบ static assets (images, fonts, media) ว่า optimize, format และ loading strategy เหมาะสมหรือไม่ ก่อนส่งต่อไปยัง section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -60,7 +60,7 @@ related:
 1. ทำ `/report` ด้วย columns: No., Asset, Issue, Severity, Fix
 2. ชี้ไป section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -83,7 +83,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -104,7 +104,7 @@ related:
 - ทุก finding มี evidence และ severity
 - next action ชัดเจนผ่าน section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

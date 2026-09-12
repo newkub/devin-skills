@@ -87,7 +87,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 1. ทำ section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps (types/code quality)
 
@@ -121,7 +121,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps (types/code quality)
 

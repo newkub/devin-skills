@@ -9,7 +9,7 @@ related:
   - update-agents-md
   - use-subagents
   - review-workflow
-  - review-then-fix
+  - deep-review-then-fix
   - deep-validate
   - ship
   - report
@@ -89,7 +89,7 @@ related:
 1. ถ้างานมีหลายด้านอิสระกัน → อ่าน [references/orchestrate-subagents.md](references/orchestrate-subagents.md)
 2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
 3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
-4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/review-then-fix`
+4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/deep-review-then-fix`
 5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/review-workflow`
 6. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
 

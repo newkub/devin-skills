@@ -64,7 +64,7 @@ created: 2026-09-07T22:37:42.116Z
 | 22 | idea-convert-my-global-cli-to-skills | frontmatter | Medium | orphan related reference | related: download-program not mentioned in body | idea-convert-my-global-cli-to-skills\SKILL.md |
 | 23 | improve | frontmatter | Medium | orphan related reference | related: prioritize not mentioned in body | improve\SKILL.md |
 | 24 | learn-web | frontmatter | Medium | orphan related reference | related: use-mcp not mentioned in body | learn-web\SKILL.md |
-| 25 | loop-continuous | frontmatter | Medium | orphan related reference | related: review-then-fix not mentioned in body | loop-continuous\SKILL.md |
+| 25 | loop-continuous | frontmatter | Medium | orphan related reference | related: deep-review-then-fix not mentioned in body | loop-continuous\SKILL.md |
 | 26 | productionize-implementation | frontmatter | Medium | orphan related reference | related: run-test-unit not mentioned in body | productionize-implementation\SKILL.md |
 | 27 | refactor | frontmatter | Medium | orphan related reference | related: review-quality not mentioned in body | refactor\SKILL.md |
 | 28 | refactor | frontmatter | Medium | orphan related reference | related: check-code-structure not mentioned in body | refactor\SKILL.md |

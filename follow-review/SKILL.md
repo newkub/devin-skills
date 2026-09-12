@@ -6,7 +6,7 @@ related:
   - review
   - deep-review-codebase
   - review-quality
-  - review-then-fix
+  - deep-review-then-fix
   - follow-parallel
   - report-in-table
   - ask-me
@@ -76,12 +76,12 @@ related:
 
 ## Rules
 
-- เป็น pre-action gate: review แล้วส่ง findings กลับ — ไม่ fix เอง (fix เป็นหน้าที่ของ action หลัก หรือ `/review-then-fix`)
+- เป็น pre-action gate: review แล้วส่ง findings กลับ — ไม่ fix เอง (fix เป็นหน้าที่ของ action หลัก หรือ `/deep-review-then-fix`)
 - เลือกน้อยที่สุดที่ครอบคลุม — ห้ามรัน `review-*` ทั้งหมดโดยไม่จำเป็น
 - ถ้า `/review` กำลังทำงานใน flow เดียวกันอยู่แล้ว ไม่ต้องเรียกซ้ำ
 - ทุก finding ต้องมี evidence (file, line, reference)
 - ใช้ /deep-review-codebase ถ้าจำเป็น
-- ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

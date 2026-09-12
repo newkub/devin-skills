@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - run-check
   - review-performance
-  - review-then-fix
+  - deep-review-then-fix
   - run-profiler
 ---
 
@@ -64,7 +64,7 @@ related:
 - focus หา bottleneck ไม่ใช่แก้ไข
 - ระบุ metric ทีวัดได้
 - ใช้ /run-check ถ้าจำเป็น
-- ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome

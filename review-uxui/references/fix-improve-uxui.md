@@ -110,7 +110,7 @@
 ### 6. Timeout And Retry Limits
 
 - `timeout` = 600 วินาที (10 นาที) สำหรับ session ทั้งหมด
-- `maxReviewRounds` = 3 รอบสำหรับ review/review-then-fix cycles
+- `maxReviewRounds` = 3 รอบสำหรับ review/deep-review-then-fix cycles
 - `maxRetries` = 3 สำหรับ `agent-browser` crash recovery
 
 ### 7. Graceful Shutdown

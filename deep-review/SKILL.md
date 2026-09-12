@@ -5,7 +5,7 @@ argument-hint: "[path-or-target]"
 related:
   - run-review
   - update-review-cli
-  - review-then-fix
+  - deep-review-then-fix
   - create-report-in-dot-devin
   - review-quality
   - review-security
@@ -19,13 +19,13 @@ related:
 
 ## Goal
 
-ใช้ `tools/review-codebase` CLI รัน review แบบครอบคลุมทุกมิติของ codebase แล้ววิเคราะห์ผล จัดลำดับ findings และส่งต่อไปยัง review/review-then-fix ทีเหมาะสม
+ใช้ `tools/review-codebase` CLI รัน review แบบครอบคลุมทุกมิติของ codebase แล้ววิเคราะห์ผล จัดลำดับ findings และส่งต่อไปยัง review/deep-review-then-fix ทีเหมาะสม
 
 ## Scope
 
 ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
 
-ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/review-then-fix`
+ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
 
 ## Execute
 
@@ -101,14 +101,14 @@ related:
 2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review` และเนื้อหาเป็น executive summary: score, grade, findings count ตาม domain
 3. แต่ละ `review-*` domain เป็น section ใน report — แต่ละ section มี header ของ review skill, findings, evidence และ severity
 4. บันทึก action items เป็น `TODO` หรือ plan
-5. ทำ `/suggest-next-action` โดยแนะนำ section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/review-then-fix`
+5. ทำ `/suggest-next-action` โดยแนะนำ section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/deep-review-then-fix`
 
 ## Rules
 
 ### 1. No Duplication
 
 - ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + report ลง `.devin/reports/<workspace>/`"
-- Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code — แก้ findings → `/review-then-fix` ใน skill นี้
+- Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix` ใน skill นี้
 - ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
 
 ### 2. Evidence First
@@ -139,6 +139,6 @@ related:
 - `tools/review-codebase` CLI รันได้และ produce `reports/review-report.json`
 - Review ครอบคลุม 5 domains และ 60+ categories
 - Findings ถูกวิเคราะห์ตาม reference ที่ถูกต้อง
-- ทุก high-priority finding ถูก route ไปยัง review/review-then-fix skill ทีเหมาะสม
+- ทุก high-priority finding ถูก route ไปยัง review/deep-review-then-fix skill ทีเหมาะสม
 - รายงานสรุปพร้อม table, score, และ next action
 

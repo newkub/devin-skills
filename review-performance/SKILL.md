@@ -153,7 +153,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 
@@ -176,7 +176,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 - ถ้าต้อง optimize ให้ทำ section `## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

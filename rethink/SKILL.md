@@ -12,7 +12,7 @@ related:
   - follow-architecture
   - refactor
   - restructure
-  - review-then-fix
+  - deep-review-then-fix
   - ask-me
 ---
 
@@ -135,7 +135,7 @@ related:
 - ใช้ /follow-architecture ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /restructure ถ้าจำเป็น
-- ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /deep-review-then-fix ถ้าจำเป็น
 
 ## Expected Outcome
 

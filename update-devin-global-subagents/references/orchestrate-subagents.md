@@ -50,7 +50,7 @@
 
 > Goal: ตรวจสอบคุณภาพของผลรวม
 
-1. ทำ `/review-then-fix` กับ output ที่ได้
+1. ทำ `/deep-review-then-fix` กับ output ที่ได้
 2. ถ้า subtask ใดมี workflow หรือ flow ที่ซับซ้อน ให้ทำ `/review-workflow` เพิ่มเติม
 3. ถ้ามี gaps ให้ spawn subagent เพิ่ม
 4. ตรวจสอบว่าผลลัพธ์ตอบ scope เดิม

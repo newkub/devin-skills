@@ -9,7 +9,7 @@
 | 1 | Architecture | boundaries, coupling, SRP, layer violations | `/review-architecture` |
 | 2 | Security | secrets, auth, injection, headers, deps vulns | `/review-security` |
 | 3 | Performance | bundle, rendering, queries, memory, network | `/review-performance` |
-| 4 | Quality | naming, duplication, complexity, dead code | `/review-then-fix` |
+| 4 | Quality | naming, duplication, complexity, dead code | `/deep-review-then-fix` |
 | 5 | Dependencies | outdated, vulnerable, unused, licenses | `/review-dependencies` |
 | 6 | Accessibility | WCAG violations, keyboard, contrast | `/review-accessibility` |
 | 7 | Docs | stale docs, missing guides, broken links | `/review-docs` |

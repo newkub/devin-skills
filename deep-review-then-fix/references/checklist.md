@@ -1,4 +1,4 @@
-# review-then-fix — Full Dimension Checklist
+# deep-review-then-fix — Full Dimension Checklist
 
 ## 1. Scope Identification
 

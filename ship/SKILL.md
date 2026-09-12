@@ -31,7 +31,7 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 
 > Goal: `AGENTS.md` สดและมี ship workflow ครบ
 
-1. ทำ `/update-agents-md` — สร้าง/อัปเดต `AGENTS.md` ของ project พร้อม `### 8. Ship` workflow (รวม `/review-then-fix` เป็น canonical fix pass ก่อน ship)
+1. ทำ `/update-agents-md` — สร้าง/อัปเดต `AGENTS.md` ของ project พร้อม `### 8. Ship` workflow (รวม `/deep-review-then-fix` เป็น canonical fix pass ก่อน ship)
 
 ### 2. Follow AGENTS.md
 

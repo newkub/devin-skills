@@ -88,7 +88,7 @@ related:
 
 1. Runtime gate: ทำ `/run-test-e2e` ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser-and-fix` จับ console/network errors ถ้ามี web URL
 2. Usage gate: ทำ `/test-usage` ยืนยัน examples ใน README/docs ทำงานได้จริง
-3. Deep validation: ทำ `/deep-validate` สำหรับ cross-reference, compliance, security ครั้งสุดท้าย; ถ้าพบ issues → `/review-then-fix` แล้ว verify ใหม่
+3. Deep validation: ทำ `/deep-validate` สำหรับ cross-reference, compliance, security ครั้งสุดท้าย; ถ้าพบ issues → `/deep-review-then-fix` แล้ว verify ใหม่
 4. แต่ละ gate fail → fix แล้วเริ่ม gate นั้นใหม่ ไม่ข้าม; retry สูงสุด 3 ครั้ง → stop + report
 5. ทำ `/report-in-table` คอลัมน์: No., Gate, Result, Evidence, Fix ที่ทำ — สรุป ready / not-ready
 

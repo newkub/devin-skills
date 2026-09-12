@@ -3,7 +3,7 @@ name: review-seo
 description: Review SEO ครอบคลุม technical, on-page, structured data, CWV, hreflang
 argument-hint: "[scope]"
 related:
-  - review-then-fix
+  - deep-review-then-fix
   - review-uxui
   - review-performance
   - scan-codebase
@@ -129,7 +129,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/review-then-fix`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
 ### Fix Steps
 

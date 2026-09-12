@@ -9,7 +9,7 @@ related:
   - update-references
   - update-config
   - refactor
-  - review-then-fix
+  - deep-review-then-fix
   - delete-projects
   - resolve-errors
   - report
@@ -102,7 +102,7 @@ related:
 - ใช้ /cleanup-files-in-project ถ้าจำเป็น
 - ใช้ /update-config ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
-- ใช้ /review-then-fix ถ้าจำเป็น
+- ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /run-scan ถ้าจำเป็น
 - ใช้ /delete-projects ถ้าจำเป็น
 
