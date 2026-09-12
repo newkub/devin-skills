@@ -9,6 +9,7 @@ related:
   - deep-review
   - deep-thinking
   - plan
+  - deep-plan
   - report
   - idea-features
   - ask-me
@@ -29,7 +30,7 @@ related:
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
 - ถ้าต้องการไอเดีย features ใหม่ → ใช้ `/idea-features` หรือ `/idea-features`
 
-ดูเพิ่มเติม: /deep-review
+ดูเพิ่มเติม: /deep-review, /deep-plan
 
 ## Execute
 
@@ -66,12 +67,12 @@ related:
 3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
 4. บันทึกผลใน `docs/project.md`
 
-### 4. Plan Improvements
+### 4. Deep Plan Improvements
 
-> Goal: วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
+> Goal: วางแผนลึกเพื่อปรับปรุงให้ดีกว่าคู่แข่ง
 
 1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
-2. ทำ `/plan` เพื่อสร้าง roadmap ครอบทุกมิติ
+2. ทำ `/deep-plan` เพื่อสร้าง roadmap ละเอียดครอบทุกมิติ — ระบุ per-dimension actions, dependencies, sequencing และ success metrics ที่เทียบกับคู่แข่งได้
 3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
 5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
@@ -137,7 +138,7 @@ related:
 
 ### 5. Implementation Discipline
 
-- สร้าง plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
+- สร้าง deep plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง
 - ลบ plan หลัง `/ship` เสร็จ
 - หยุดเมื่อสำเร็จเป้าหมายในทุกมิติ
@@ -154,7 +155,7 @@ related:
 ## Expected Outcome
 
 - Feature comparison matrix เทียบ project กับคู่แข่ง 3-5 ราย พร้อม prioritized gap list (impact + effort) และ unique features ที่ต้องรักษา
-- ไฟล์ plan ใน `.devin/plan/<workspace>/` ถูกสร้างก่อน implement และลบหลัง `/ship` เสร็จ
+- Deep plan roadmap ครอบทุกมิติใน `.devin/plan/<workspace>/` ถูกสร้างผ่าน `/create-plan-in-dot-devin` ก่อน implement และลบหลัง `/ship` เสร็จ
 - ไฟล์ report ใน `.devin/reports/<workspace>/` จาก `/create-report-in-dot-devin`
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ
