@@ -3,6 +3,7 @@ name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
 argument-hint: "[scope]"
 related:
+  - deep-review-then-fix
   - follow-agents-md
   - update-devin-global-subagents
   - use-subagents
@@ -104,25 +105,57 @@ related:
 
 ### 8. Ship
 
-> Goal: ship Ship
-1. ทำ `/implement-to-production` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
-2. ตรวจสอบ `git status` และ state ของ repository ตาม project conventions
-3. ทำ `/run-verify`, `/run-test-all` ถ้ามี
-4. ทำ `/deep-validate`
-5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-6. ทำ `/git-commit`
-7. ทำ `git push` โดยไม่ force
-8. ทำ `/resolve-cicd`
-9. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
-10. ทำ `/create-github-pr` เป้าหมายหลักของ project
-11. ทำ `/review-github-pr`
-12. ถาม user ก่อน merge
-13. ถ้า user ตกลง → ทำ `/merge-github-pr`
-14. ทำ `/resolve-cicd` บน production ก่อน release
-15. ทำ `/run-release --dry-run` ก่อน release จริง
-16. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`
-17. sync local state กับ remote ตาม project conventions
-18. ทำ `/report-progress`, `/report`, `/suggest-next-action`
+> Goal: ship ผ่าน feature branch → validate → staging → merge → production พร้อม rollback path (merged from: ship, ship-to-staging, ship-to-production)
+
+#### Branch Hygiene
+
+1. ตรวจ `git status` — uncommitted changes → commit ด้วย `/git-commit` หรือ `git stash`
+2. `git switch main` + `git pull` — main ล่าสุด
+3. switch/สร้าง feature branch ด้วย `/create-git-branch` — ห้ามทำงานต่อบน main
+4. ถ้า step ก่อนหน้าทำบน main → commit ย้ายไป feature branch
+
+#### Validate
+
+1. ถ้า scope ใหญ่หลาย workspace → `/ship-by-agents-swarm`; diff เล็ก (typo/docs/config) → ข้าม step 2-8 ไป step 9 ได้
+2. ทำ `/deep-review-then-fix` — review + fix issues ก่อน ship (canonical fix path)
+3. ทำ `/deep-optimize` — optimize ทุก layer ที่เกี่ยวข้อง
+4. ทำ `/review-test`, `/review-dependencies` + `/update-version-to-latest`, `/review-architecture`, `/review-docs` ตาม scope
+5. ทำ `/follow-monorepo` ถ้า monorepo
+6. ทำ `/run-verify` + `/run-test-all`
+7. ถ้ามี TODO/MOCK/placeholder → `/implement-to-production`; structural issues → `/refactor`
+8. ทำ `/update-project` sync project files/docs; `/deep-validate` เป็น final gate
+9. ถ้า fail → `/resolve-errors` retry สูงสุด 3 รอบ แล้ว `/loop-until-complete`
+
+#### Stage
+
+1. `git pull --rebase origin main` — feature branch sync กับ main
+2. ทำ `/git-commit-and-push` push changes ที่ผ่าน validation
+3. deploy staging ด้วย `/run-deploy` ตาม AGENTS.md/package.json — บันทึก deploy URL, commit hash
+4. ทำ `/watch-deploy` + smoke tests (critical flows, API health); e2e ผ่าน `/run-test-e2e` ถ้ามี
+5. ถ้า staging fail → fix code กลับ Validate — retry สูงสุด 3 รอบ; ผ่าน = `ready-for-production`
+
+#### Merge
+
+1. repo ที่มี remote + PR workflow → `/create-github-pr` + `/review-github-pr`
+2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
+3. CI gate — `/resolve-github-actions-fails` หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
+4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge-github-pr` เมื่อ user ยืนยัน)
+
+#### Production
+
+1. user confirm ก่อน deploy production — แสดง commit hash, changes, staging result; breaking change → `/ask-me`
+2. บันทึก version ก่อน deploy (rollback target)
+3. deploy production ด้วย `/run-deploy`; `/watch-deploy` + health checks + smoke tests
+4. health check fail → rollback: `git revert <merge-commit>` + redeploy version ก่อนหน้า — ห้าม force-push
+5. ทำ `/resolve-cicd` บน production branch; กลับ `git switch main` + sync local/remote
+
+#### Wrap Up
+
+1. ทำ `/report-progress`, `/report`
+2. ทำ `/report-scan-todo` — pending items ไป `TODO.md`
+3. ถ้าต้อง release → `/run-release --dry-run` ก่อน → `/run-release` เมื่อ user ยืนยัน
+4. ถ้ามี stash → `git stash pop`; ปิด issue/task ที่เกี่ยวข้อง
+5. ทำ `/suggest-next-action`
 
 ## Rules
 

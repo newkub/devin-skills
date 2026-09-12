@@ -1,28 +1,114 @@
 ---
 name: review-then-fix
-description: Alias for deep-review-then-fix - renamed canonical skill
+description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
 argument-hint: "[scope]"
 related:
+  - review
+  - fix
+  - watch-browser-and-fix
+  - follow-best-practice
+  - deep-review
   - deep-review-then-fix
+  - suggest-next-action
+  - resolve-errors
+  - run-review
 ---
 
 ## Goal
 
-Skill นี้ rename เป็น `/deep-review-then-fix` แล้ว — forward ไป canonical skill เท่านั้น
+Review แล้วแก้ไข issues ตาม context โดยขอ user confirm ก่อนแก้
 
 ## Scope
 
-ใช้สำหรับ caller เก่าที่เรียก alias นี้
+ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
+
+- Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review` เป็น review pass (merged from: `deep-review-codebase-then-fix`)
+- Fix findings หลัง review ตาม domain map + fix guides → ใช้ `/deep-review-then-fix`
+- Fix mode: user confirm ตาม findings (default), ตาม suggestion เดิม (`/follow-your-suggestion`), หรือ `fix all` ตามที่ user ระบุ
+
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
-1. ทำ `/deep-review-then-fix` ทั้งหมด
+### 1. Identify Scope
+
+> Goal: รู้ว่าจะ review และ fix อะไร
+
+1. ดูรายละเอียดใน [references/identify-scope.md](references/identify-scope.md)
+2. บันทึก findings พร้อม severity และ evidence
+
+### 2. Plan Fixes
+
+> Goal: วางแผนการแก้ไข
+
+1. ดูรายละเอียดใน [references/plan-fixes.md](references/plan-fixes.md)
+2. บันทึก findings พร้อม severity และ evidence
+
+### 3. Confirm
+
+> Goal: ขอ approval ก่อน fix
+
+1. ดูรายละเอียดใน [references/confirm.md](references/confirm.md)
+2. บันทึก findings พร้อม severity และ evidence
+
+### 4. Apply Fixes
+
+> Goal: แก้ไข issues ตามแผน
+
+1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
+2. บันทึก findings พร้อม severity และ evidence
+
+### 5. Verify
+
+> Goal: ตรวจสอบผลหลัง fix
+
+1. ดูรายละเอียดใน [references/verify.md](references/verify.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 
-- ไม่ duplicate workflow ใน alias
-- คง backward compatibility ผ่าน alias
+### 1. Review Before Fix
+- ต้อง `/review` และ report ก่อนแก้ไข
+- ไม่แก้ไขโดยไม่ได้รับ confirmation
+
+### 2. Incremental Fix
+- แก้ทีละไฟล์หรือ small batch
+- ตรวจ verify หลังแก้
+
+### 3. Evidence
+- ทุก fix ต้องมีเหตุผลจาก review
+- ระบุ file path และ line number
+
+- ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
+- ใช้ /watch-browser-and-fix ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (then fix)
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (then fix)
+
+Merged from: improve
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (then fix)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (then fix)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (then fix)
+
+- `references/fix-improve.md` — ปรับปรุงสิ่งใดๆ ใน project ตาม context โดยหา gaps แล้วแก้ไข
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 
-- ทำงานผ่าน `/deep-review-then-fix`
+- รายงาน issues ก่อน fix
+- issues ถูกแก้ไขตามที่ user ตกลง
+- ผ่าน verify
+- สรุป next action พร้อม `/review` และ `/fix`
