@@ -36,7 +36,7 @@ related:
 
 > Goal: หาทุกตำแหน่งที match
 
-1. ใช้ `/search files-patterns` หาทุก match
+1. ใช้ `/search-files-patterns` หาทุก match
 2. ใช้ `grep` หรือ `ast-grep` ถ้าต้องการ precision
 3. บันทึก list พร้อม file path, line number, context
 

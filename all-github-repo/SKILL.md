@@ -27,7 +27,7 @@ related:
 
 ใช้ `gh` CLI ดึง repo จาก user และแต่ละ org แล้วรวมเป้นตารางเดียว เรียงตาม updatedAt ล่าสุด
 
-ดูเพิ่มเติม: /list-github repo, /open github, /list-github project, /list-github star, /search github-star
+ดูเพิ่มเติม: /list-github repo, /open github, /list-github project, /list-github star, /search-github-star
 
 ## Execute
 
@@ -88,7 +88,7 @@ related:
 2. ถ้าต้องการเปิดหน้า repo บน browser ให้ทำ `/open github`
 3. ถ้าต้องการดู repo ของ user ส่วนตัวอย่างเดียว ให้ทำ `/list-github repo`
 4. ถ้าต้องการดู GitHub Projects ของ owner นั้น ให้ทำ `/list-github project`
-5. ถ้าต้องการดู starred repositories ให้ทำ `/list-github star` หรือค้นหาใน stars ด้วย `/search github-star`
+5. ถ้าต้องการดู starred repositories ให้ทำ `/list-github star` หรือค้นหาใน stars ด้วย `/search-github-star`
 6. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules

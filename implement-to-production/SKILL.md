@@ -91,7 +91,7 @@ related:
 4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
 6. ถ้ามี library ที่เหมาะกว่า → ทำ `/review-dependencies`
-7. หลัง implement เสร็จ → ทำ `/update-docs todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
+7. หลัง implement เสร็จ → ทำ `/update-docs-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
 
 ### 7. Implement Security, Resilience And Observability
 
@@ -116,7 +116,7 @@ related:
 2. ทำ `/update-references` ถ้ามี move/rename/delete
 3. ทำ `/check-repo-hygiene unused` — พิจารณาลบหรือ implement dead code ที่พบ
 4. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
-5. ทำ `/update-docs todo-md` ถ้า TODO.md items เปลี่ยน
+5. ทำ `/update-docs-todo-md` ถ้า TODO.md items เปลี่ยน
 
 ### 9. Verify, Rollback Plan, And Finalize
 

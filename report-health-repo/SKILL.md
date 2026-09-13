@@ -33,7 +33,7 @@ related:
 
 1. Hygiene: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
-3. CI: `/resolve-errors github-actions` — latest run status, failure rate
+3. CI: `/resolve-github-actions` — latest run status, failure rate
 4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
 5. Working state: `/check-uncommit` — dirty working tree?
 

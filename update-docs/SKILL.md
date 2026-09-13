@@ -23,7 +23,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
 - รองรับ `update-docs features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser test`, `/improve-uxui-and-features` — เป็น input สำหรับอัปเดต docs
+- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/improve-uxui-and-features` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -94,7 +94,7 @@ related:
 
 > Goal: หน้า existing features ถูกต้อง
 
-1. ถ้า `/update-docs features-md` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
+1. ถ้า `/update-docs-features-md` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
 2. เขียน `docs/project/features.md` ด้วยตาราง markdown
 3. แต่ละ row มี name, description, module, status
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
@@ -116,18 +116,18 @@ related:
 2. ตรวจ internal links, nav, sidebar paths
 3. อัปเดท README ให้ลิงก์ไป docs
 
-### Subskills
+### Doc Skills
 
-> Goal: dispatch งาน markdown docs เฉพาะไฟล์ไปยัง subskill ที่ละเอียดกว่า
+> Goal: dispatch งาน markdown docs เฉพาะไฟล์ไปยัง skill ที่ละเอียดกว่า
 
-| Domain | Topic | Subskill |
-|--------|-------|----------|
-| `agents-md` | สร้าง/อัปเดต `AGENTS.md` root + workspaces | `subskills/agents-md/SKILL.md` |
-| `contributing-md` | สร้าง/อัปเดต `CONTRIBUTING.md` | `subskills/contributing-md/SKILL.md` |
-| `features-md` | วิเคราะห์ features เขียน `FEATURES.md` | `subskills/features-md/SKILL.md` |
-| `readme-md` | สร้าง `README.md` + `LICENSE.md` จาก template | `subskills/readme-md/SKILL.md` |
-| `todo-md` | จัดการ `TODO.md` (add/read/enhance prompt) | `subskills/todo-md/SKILL.md` |
-| `usage-md` | สร้าง/อัปเดต `USAGE.md` จาก code จริง | `subskills/usage-md/SKILL.md` |
+| Domain | Topic | Skill |
+|--------|-------|-------|
+| `agents-md` | สร้าง/อัปเดต `AGENTS.md` root + workspaces | `/update-docs-agents-md` |
+| `contributing-md` | สร้าง/อัปเดต `CONTRIBUTING.md` | `/update-docs-contributing-md` |
+| `features-md` | วิเคราะห์ features เขียน `FEATURES.md` | `/update-docs-features-md` |
+| `readme-md` | สร้าง `README.md` + `LICENSE.md` จาก template | `/update-docs-readme-md` |
+| `todo-md` | จัดการ `TODO.md` (add/read/enhance prompt) | `/update-docs-todo-md` |
+| `usage-md` | สร้าง/อัปเดต `USAGE.md` จาก code จริง | `/update-docs-usage-md` |
 
 ## Rules
 

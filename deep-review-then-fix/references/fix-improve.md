@@ -49,7 +49,7 @@
 2. ถ้าเป็น code quality → ทำ `/refactor`
 3. ถ้าเป็น missing features หรือ mock → ทำ `/implement-to-production`
 4. ถ้าเป็น naming → ทำ `/review-quality` แล้วแก้ไข
-5. ถ้าเป็น documentation → ทำ `/update-docs readme-md`
+5. ถ้าเป็น documentation → ทำ `/update-docs-readme-md`
 6. ถ้ามีหลายไฟล์ → ใช้ `/edit-by-use-scripts` หรือ `/refactor-workspace`
 
 ### 5. Validate

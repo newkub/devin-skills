@@ -117,7 +117,7 @@ related:
 ### 1. All Layers Covered
 
 - ห้ามเขียนแค่ unit เมื่อ scope ต้องการ integration/e2e — เลือกทุก layer ที่เหมาะกับ code ที่เปลี่ยน
-- flows ที่เพิ่งผ่าน exploratory testing (เช่น `/watch-browser test`) ต้อง codify เป็น Playwright specs
+- flows ที่เพิ่งผ่าน exploratory testing (เช่น `/watch-browser-test`) ต้อง codify เป็น Playwright specs
 
 ### 2. Behavior Over Implementation
 

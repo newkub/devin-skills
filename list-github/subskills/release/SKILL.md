@@ -64,7 +64,7 @@ related:
 - แสดงข้อมูลสำคัญ: tag, title, draft, prerelease, published, author
 
 - ใช้ /list-git release ถ้าจำเป็น
-- ใช้ /resolve-errors github-actions ถ้าจำเป็น
+- ใช้ /resolve-github-actions ถ้าจำเป็น
 - ใช้ /list-github branch ถ้าจำเป็น
 - ใช้ /run-release ถ้าจำเป็น
 

@@ -27,7 +27,7 @@ related:
 
 Review-only → `/review-devin-global-harness` (layer `subagents`)
 
-ดูเพิ่มเติม: /follow-agents-md, /update-docs agents-md
+ดูเพิ่มเติม: /follow-agents-md, /update-docs-agents-md
 
 ## Execute
 

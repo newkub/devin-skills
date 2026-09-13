@@ -103,7 +103,7 @@ related:
 - ถ้าเปรียบเทียบหลาย path → เรียงตาม size
 
 - ใช้ /use-pwsh-shell ถ้าจำเป็น
-- ใช้ /search files-patterns ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
 
 ## Expected Outcome
 

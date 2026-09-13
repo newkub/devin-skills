@@ -126,7 +126,7 @@ Commit submodule updates ถ้าต้องการ
 - จัดการ network errors
 - ใช้ retries สำหรับ failed updates
 
-- ใช้ /convert git-submodules ถ้าจำเป็น
+- ใช้ /convert-git-submodules ถ้าจำเป็น
 - ใช้ /delete git-submodules ถ้าจำเป็น
 - ใช้ /list-git submodules ถ้าจำเป็น
 

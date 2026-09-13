@@ -18,7 +18,7 @@
 
 ### 2. Configure Next.js
 
-1. ทำ `/follow-create-web nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
+1. ทำ `/follow-create-web-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
 2. ทำ `/follow-tool-vite` เพื่อตั้งค่า build tooling
 3. ตั้งค่า `next.config.js` หรือ `next.config.mjs`
 4. ตั้งค่า `tsconfig.json` พร้อม path aliases

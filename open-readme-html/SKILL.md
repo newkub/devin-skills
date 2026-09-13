@@ -221,7 +221,7 @@ const getPriorityType = (priority) => {
 
 - ใช้ /report html ถ้าจำเป็น
 - ใช้ /review-docs ถ้าจำเป็น
-- ใช้ /update-docs readme-md ถ้าจำเป็น
+- ใช้ /update-docs-readme-md ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome

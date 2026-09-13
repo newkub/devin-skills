@@ -109,7 +109,7 @@ license-files = ["LICENSE*"]
 - ใช้ `/follow-agents-md` ถ้าจำเป็น
 - ใช้ `/follow-tasks` ถ้าจำเป็น
 - ใช้ `/publish-package-to-registry` ถ้าจำเป็น
-- ใช้ `/update-docs readme-md` ถ้าจำเป็น
+- ใช้ `/update-docs-readme-md` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 

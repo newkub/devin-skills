@@ -118,7 +118,7 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 - ระบุ file path และ line number
 
 - ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
-- ใช้ /watch-browser fix ถ้าจำเป็น
+- ใช้ /watch-browser-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

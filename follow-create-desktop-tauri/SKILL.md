@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-create-web solid-tanstack-router`
+สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-create-web-solid-tanstack-router`
 
 ## Scope
 
@@ -130,10 +130,10 @@ desktop-apps/{project}/
 - อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
 - ไม่เปิด permission กว้างเกินความจำเป็น
 
-- ใช้ /follow-create-web solid-tanstack-router สำหรับ frontend (Solid + TanStack Router + UnoCSS)
-- ใช้ /follow-create-plugins tauri ถ้าจำเป็น
-- ใช้ /follow-create-web astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile cross-capacitor ถ้าจำเป็น (create desktop tauri)
+- ใช้ /follow-create-web-solid-tanstack-router สำหรับ frontend (Solid + TanStack Router + UnoCSS)
+- ใช้ /follow-create-tauri-plugin ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create desktop tauri)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น

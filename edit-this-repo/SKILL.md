@@ -48,7 +48,7 @@ Edit files in the current repository safely, with clear scope, minimal changes, 
 1. ใช้ `edit` สำหรับการเปลี่ยนแปลงเฉพาะจุด
 2. หลีกเลี่ยง `write` ทั้งไฟล์ ถ้าไม่จำเป็น
 3. รักษา style, formatting, encoding
-4. ถ้า `AGENTS.md` ถูกแก้ → ทำ `/update-docs agents-md`
+4. ถ้า `AGENTS.md` ถูกแก้ → ทำ `/update-docs-agents-md`
 
 ### 4. Validate
 
@@ -72,7 +72,7 @@ Edit files in the current repository safely, with clear scope, minimal changes, 
 - ไม่ลบ/ย้าย/overwrite โดยไม่ได้รับ confirmation
 - ตรวจสอบ `git status` ก่อนและหลัง
 - ไม่ stage untracked files ที่ไม่เกี่ยวข้อง
-- ถ้า AGENTS.md เปลี่ยน → `/update-docs agents-md` ทันที
+- ถ้า AGENTS.md เปลี่ยน → `/update-docs-agents-md` ทันที
 - แก้เฉพาะสิ่งที่ user ขอ
 
 - ใช้ /deep-validate ถ้าจำเป็น

@@ -150,9 +150,9 @@ src/
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 
 - ใช้ /follow-lib-vue ถ้าจำเป็น
-- ใช้ /follow-create-web nuxt ถ้าจำเป็น
-- ใช้ /follow-create-web svelte ถ้าจำเป็น
-- ใช้ /follow-create-web nextjs ถ้าจำเป็น
+- ใช้ /follow-create-web-nuxt ถ้าจำเป็น
+- ใช้ /follow-create-web-svelte ถ้าจำเป็น
+- ใช้ /follow-create-web-nextjs ถ้าจำเป็น
 - ใช้ /follow-lib-react ถ้าจำเป็น
 
 ## Expected Outcome

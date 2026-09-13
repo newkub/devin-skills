@@ -96,7 +96,7 @@ related:
 
 - ใช้ /gen-media ai-images ถ้าจำเป็น
 - ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /convert svg ถ้าจำเป็น
+- ใช้ /convert-svg ถ้าจำเป็น
 
 ## Expected Outcome
 

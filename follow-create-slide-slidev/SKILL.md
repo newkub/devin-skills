@@ -178,8 +178,8 @@ related:
 - Export slides เมื่อพร้อมแชร์
 
 - ใช้ /create-slide-in-newkub-slides ถ้าจำเป็น
-- ใช้ /follow-create-web astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile cross-capacitor ถ้าจำเป็น (create slide slidev)
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create slide slidev)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น

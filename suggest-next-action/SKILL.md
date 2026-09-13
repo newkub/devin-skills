@@ -94,7 +94,7 @@ related:
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report`
 9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
 10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/update-devin global-subagents` หรือ `/use-subagents` ตาม context
-11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea features` เบื้องต้น หรือ `/idea features` ถ้าต้องการ plan/implementation
+11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/idea-features` ถ้าต้องการ plan/implementation
 
 ### 6. Present Options
 
@@ -192,7 +192,7 @@ related:
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
-- ใช้ /idea features หรือ /idea features ถ้าจำเป็น
+- ใช้ /idea-features หรือ /idea-features ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome
@@ -206,6 +206,6 @@ related:
 - ผลลัพธ์ถูกนำเสนอด้วย `/report` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/update-devin global-subagents` หรือ `/use-subagents` ตาม context
-- ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea features` หรือ `/idea features` ตาม context
+- ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea-features` หรือ `/idea-features` ตาม context
 - สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
 

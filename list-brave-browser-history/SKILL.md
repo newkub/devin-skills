@@ -79,7 +79,7 @@ Latest: `sqlite3@6.0.1` npm binding (verified 2026-09-12) — `bun:sqlite` built
 - ห้ามลบ history
 - ถ้า Brave กำลังทำงาน → ใช้ copy
 
-- ใช้ /search raindrop ถ้าจำเป็น
+- ใช้ /search-raindrop ถ้าจำเป็น
 - ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 

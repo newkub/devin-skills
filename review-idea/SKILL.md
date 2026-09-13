@@ -22,7 +22,7 @@ related:
 
 ใช้กับทุกไอเดียฟีเจอร์ การเปลี่ยนแปลง หรือ proposal ที่ต้องตรวจสอบความเป็นไปได้และความคุ้มค่าก่อน execute
 
-ดูเพิ่มเติม: /idea features
+ดูเพิ่มเติม: /idea-features
 
 ## Execute
 
@@ -30,7 +30,7 @@ related:
 
 > Goal: เข้าใจไอเดียและบริบท
 
-1. รับไอเดียจาก prompt หรือ output ของ `/idea features`
+1. รับไอเดียจาก prompt หรือ output ของ `/idea-features`
 2. สรุปเป็น 1-2 ประโยค ชัดเจนและวัดผลได้
 3. ระบุ problem, target user, และ expected outcome
 

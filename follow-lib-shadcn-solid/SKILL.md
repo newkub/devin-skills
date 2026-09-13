@@ -113,7 +113,7 @@ related:
 - หลีกเลี่ยงการแก้ไข core Kobalte primitives โดยตรง
 - ใช้ `diff` ตรวจสอบ upstream updates
 
-- ใช้ `/follow-create-web solid-tanstack-router` ถ้าจำเป็น
+- ใช้ `/follow-create-web-solid-tanstack-router` ถ้าจำเป็น
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-unocss` ถ้าจำเป็น
 - ใช้ `/follow-lib-zaidan-ui` ถ้าจำเป็น

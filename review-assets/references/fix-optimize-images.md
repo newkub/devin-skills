@@ -80,7 +80,7 @@ Optimize รูปภาพใน project: compress PNG/JPEG, convert เป็�
 - ใช้ settings เดียวกันกับไฟล์ประเภทเดียวกัน
 - บันทึก settings ที่ใช้ใน report เพื่อ reproducibility
 
-- ใช้ /convert files-format ถ้าจำเป็น
+- ใช้ /convert-files-format ถ้าจำเป็น
 - ใช้ /check-size ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 

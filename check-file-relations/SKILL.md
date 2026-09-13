@@ -117,7 +117,7 @@ related:
 
 - ใช้ /check-code-structure ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /search files-patterns ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
 
 ## Expected Outcome
 

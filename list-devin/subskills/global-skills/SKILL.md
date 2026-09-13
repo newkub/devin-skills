@@ -56,7 +56,7 @@ related:
 - แสดงทุก skill ไม่กรองออก
 - จัดกลุ่มตามประเภทของ skill
 - ใช้ `/report` สำหรับ output
-- ถ้าต้องการค้นหา skills จาก external registry ให้ใช้ `/search skills`
+- ถ้าต้องการค้นหา skills จาก external registry ให้ใช้ `/search-skills`
 
 ## Expected Outcome
 

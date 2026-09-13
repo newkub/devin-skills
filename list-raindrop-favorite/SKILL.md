@@ -62,7 +62,7 @@ related:
 
 - `--json` + `jq -r` เป็น default
 
-- ใช้ /search raindrop ถ้าจำเป็น
+- ใช้ /search-raindrop ถ้าจำเป็น
 - ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 
 ## Expected Outcome

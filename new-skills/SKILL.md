@@ -100,7 +100,7 @@ related:
 - ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm)
 - ทิศทางเดียว: `check` → `review` → `## Fix` — ห้ามย้อนกลับ
 - fix ใดๆ ให้เขียนเป็น `references/fix-*.md` แล้วอ้างจาก section `## Fix` ของ review skill
-- ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea merge`)
+- ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge`)
 
 ### 5. References
 

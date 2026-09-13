@@ -24,11 +24,11 @@ related:
 
 ## Goal
 
-Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป็น entry point เท่านั้น ไม่มี ship logic เอง; workflow ทั้งหมด (branch, validate, staging, CI gate, merge, production, rollback) อยู่ใน `### 8. Ship` ของ `/update-docs agents-md` (merged from: ship, ship-to-staging, ship-to-production)
+Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป็น entry point เท่านั้น ไม่มี ship logic เอง; workflow ทั้งหมด (branch, validate, staging, CI gate, merge, production, rollback) อยู่ใน `### 8. Ship` ของ `/update-docs-agents-md` (merged from: ship, ship-to-staging, ship-to-production)
 
 ## Scope
 
-- ใช้กับ project ที่มี `AGENTS.md` (สร้าง/อัปเดตผ่าน `/update-docs agents-md` ก่อนเสมอ)
+- ใช้กับ project ที่มี `AGENTS.md` (สร้าง/อัปเดตผ่าน `/update-docs-agents-md` ก่อนเสมอ)
 - ทุก ship action ทำผ่าน workflow ใน `AGENTS.md` ตาม `/follow-agents-md`
 - งานใหญ่หลายด้าน (multi-workspace, multi-concern) → ใช้ swarm flow ใน Step 4; งานเล็ก/lane เดียว → sequential ตาม `AGENTS.md`
 - Local-only ship (ไม่มี staging/production deploy target — เช่น skills repo, dotfiles, config-only changes) → ข้าม Step 2–3 ได้: verify + `/git-commit` ตรงๆ แล้ว report
@@ -45,7 +45,7 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 
 > Goal: `AGENTS.md` สดและมี ship workflow ครบ
 
-1. ทำ `/update-docs agents-md` — สร้าง/อัปเดต `AGENTS.md` ของ project พร้อม `### 8. Ship` workflow (รวม `/deep-review-then-fix` เป็น canonical fix pass ก่อน ship)
+1. ทำ `/update-docs-agents-md` — สร้าง/อัปเดต `AGENTS.md` ของ project พร้อม `### 8. Ship` workflow (รวม `/deep-review-then-fix` เป็น canonical fix pass ก่อน ship)
 
 ### 3. Follow AGENTS.md
 
@@ -68,7 +68,7 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 
 ### 1. AGENTS.md First
 
-- ห้ามข้าม `/update-docs agents-md` — `AGENTS.md` ต้อง fresh ก่อน ship เสมอ
+- ห้ามข้าม `/update-docs-agents-md` — `AGENTS.md` ต้อง fresh ก่อน ship เสมอ
 - ห้าม hardcode ship steps ใน skill นี้ — workflow อยู่ใน `update-docs agents-md`/`AGENTS.md` เท่านั้น
 
 ### 2. User Confirmation

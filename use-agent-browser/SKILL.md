@@ -175,7 +175,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - ใช้ `--json` สำหรับ machine-readable output
 - ปรับ stream quality ด้วย `AGENT_BROWSER_STREAM_QUALITY`, `AGENT_BROWSER_STREAM_MAX_WIDTH`, `AGENT_BROWSER_STREAM_MAX_HEIGHT`
 
-- ใช้ /watch-browser fix ถ้าจำเป็น
+- ใช้ /watch-browser-fix ถ้าจำเป็น
 - ใช้ /run-test (e2e) ถ้าจำเป็น
 - ใช้ /follow-tool-playwright ถ้าจำเป็น
 

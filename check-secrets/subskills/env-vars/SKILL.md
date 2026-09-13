@@ -87,7 +87,7 @@ related:
 
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /check-secrets secrets-leak ถ้าจำเป็น
-- ใช้ /search files-patterns ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
 
 ## Expected Outcome
 

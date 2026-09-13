@@ -8,7 +8,7 @@
 
 ใช้สำหรับอัปเดต skills ใน `.devin/skills/` ของ project หรือ workspace — ถ้าต้องสร้าง skill ใหม่ให้ทำ `/follow-create-devin-project-skills` แทน ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills`)
 
-ดูเพิ่มเติม: /follow-create-devin-project-skills, /update-devin-global-skills, /update-docs agents-md
+ดูเพิ่มเติม: /follow-create-devin-project-skills, /update-devin-global-skills, /update-docs-agents-md
 
 ## Execute
 

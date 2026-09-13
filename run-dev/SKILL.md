@@ -62,7 +62,7 @@ related:
 
 > Goal: Watch Browser (ถ้าเป็น web)
 
-1. ถ้าเป็น web project ให้ทำ `/watch-browser fix` เพื่อตรวจสอบ browser
+1. ถ้าเป็น web project ให้ทำ `/watch-browser-fix` เพื่อตรวจสอบ browser
 2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
 3. ทดสอบ features หลักทำงานได้
 
@@ -71,7 +71,7 @@ related:
 > Goal: ทดสอบ flow การใช้งานสำคัญ
 
 1. ทำ `/test-usage` เพื่อทดสอบ features หลัก
-2. ถ้าพบปัญหา → ทำ `/watch-browser fix` หรือ `/resolve-errors`
+2. ถ้าพบปัญหา → ทำ `/watch-browser-fix` หรือ `/resolve-errors`
 3. ยืนยันว่า user flow สำคัญทำงานได้
 
 ### 7. Verify
@@ -107,7 +107,7 @@ related:
 
 - ทำ `/open web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
 - ทำ `/watch-terminal` สำหรับทุก project
-- ทำ `/watch-browser fix` เฉพาะ web project
+- ทำ `/watch-browser-fix` เฉพาะ web project
 - ถ้าพบ errors ระหว่าง watch ให้ทำ `/resolve-errors` ทันที
 
 ## Expected Outcome

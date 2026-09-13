@@ -80,7 +80,7 @@ related:
 > Goal: ให้ user ดูรายละเอียด repo ทีสนใจ
 
 1. ถ้า user ระบุ repo → เปิด `/open github <owner>/<repo>`
-2. ถ้าต้องการ search ใน GitHub stars → ใช้ `/search github-star <repo>`
+2. ถ้าต้องการ search ใน GitHub stars → ใช้ `/search-github-star <repo>`
 3. ถ้าต้องการดู release → เปิด `https://github.com/<owner>/<repo>/releases`
 
 ## Rules

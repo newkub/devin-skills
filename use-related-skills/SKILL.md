@@ -55,7 +55,7 @@ related:
 1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลและประเภทความเกี่ยวข้อง
 2. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
 3. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-4. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea convert-my-global-cli-to-skills`
+4. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea-convert-my-global-cli-to-skills`
 5. วิเคราะห์ reverse usage — skill นี้ควรถูกเรียกโดย skills ไหน — ตาม capability ที่ merge มา
 6. ใช้ `/report` สำหรับนำเสนอผล
 

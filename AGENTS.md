@@ -82,12 +82,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **609** top-level skills (969 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
+The repository currently contains **682** top-level skills (1030 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
 
 Core:
-- `update-docs-agents-md: /update-docs agents-md`
+- `update-docs-agents-md: /update-docs-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-devin-global-subagents: /update-devin global-subagents` — create/update agents/ aligned with skills (subskill)
@@ -110,7 +110,7 @@ Major skill families by current count:
 - `list-*` (17): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github`.
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
 - `open-*` (9): browser, editor, and terminal integration — `open` dispatcher (`explorer`, `github`, `web`, `wezterm`, `windows-terminal`, `zed`); specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
-- `ship-*` (2): `/ship` (entry point — `/update-docs agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
+- `ship-*` (2): `/ship` (entry point — `/update-docs-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
 - `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
 - `cleanup-*` (3): `cleanup` dispatcher (`branches-merged`, `docker`, `git-branch`, `github-issue`, `worktree`), `cleanup-files-in-project`, `cleanup-files-in-computer`.
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.

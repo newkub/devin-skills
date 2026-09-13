@@ -68,7 +68,7 @@ related:
 
 - ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
 - ใช้ /delete git-submodules ถ้าจำเป็น
-- ใช้ /convert git-submodules ถ้าจำเป็น
+- ใช้ /convert-git-submodules ถ้าจำเป็น
 
 ## Expected Outcome
 

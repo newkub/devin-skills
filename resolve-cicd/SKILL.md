@@ -1,7 +1,7 @@
 ---
 name: resolve-cicd
 description: Watch CI (GitHub Actions) และ CD (Cloudflare, deploy targets) แล้ว resolve จนผ่าน
-argument-hint: "[branch|run-id|url]"
+argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url>]"
 related:
   - resolve-errors
   - git-commit
@@ -19,7 +19,11 @@ Watch CI/CD ของ repo ปัจจุบันอย่างต่อเ�
 
 ## Scope
 
-ใช้เมื่อต้องการเฝ้า pipeline หลัง push/merge หรือเมื่อรู้ว่า CI/CD fail อยู่ — ครอบคลุม CI (GitHub Actions) และ CD (Cloudflare Workers, Pages, deploy workflows, หรือ target อื่นที่ตรวจพบใน repo) แก้ไข errors ทำผ่าน `/resolve-errors` และ subskills ของมันเสมอ — skill นี้ทำหน้าที่ watch + dispatch + verify เท่านั้น ไม่แก้ code เองโดยตรง
+ใช้เมื่อต้องการเฝ้า pipeline หลัง push/merge หรือเมื่อรู้ว่า CI/CD fail อยู่ — ครอบคลุม CI (GitHub Actions) และ CD (Cloudflare Workers, Pages, deploy workflows, หรือ target อื่นที่ตรวจพบใน repo) แก้ไข errors ทำผ่าน `resolve-*` skills เสมอ — skill นี้ทำหน้าที่ watch + dispatch + verify เท่านั้น ไม่แก้ code เองโดยตรง
+
+- โหมด repo-scoped (default ถ้าอยู่ใน git repo หรือมี `--repo`): resolve ทุก pipeline ที่ตรงกับ repo — ดู `references/repo-resolve.md`
+- โหมด single-run (`--run-id` หรือ `--url`): ติดตาม run เดียวจนผ่าน — ดู `references/single-run.md` หรือ helper `scripts/resolve-cicd.ts`
+- ไม่ trigger run ครั้งแรกเอง
 
 ## Execute
 
@@ -55,11 +59,11 @@ CD (Cloudflare และอื่นๆ):
 
 1. จัดกลุ่ม failures ตาม pipeline — CI failure และ CD failure แยกกัน
 2. เรียงลำดับ: CI ก่อน CD เสมอ (CD fail จาก CI artifact พังเป็นเรื่องปกติ) และ upstream job ก่อน downstream
-3. สำหรับแต่ละ failure group → ทำ `/resolve-errors` โดยเลือก subskill ที่ตรง:
-   - GitHub Actions → `resolve-errors/subskills/github-actions`
-   - Cloudflare Worker/Pages เจาะจง → `resolve-errors/subskills/cloudflare-worker`
-   - Cloudflare ทั้ง account → `resolve-errors/subskills/cloudflare`
-   - Pipeline อื่น → `resolve-errors/subskills/cicd`
+3. สำหรับแต่ละ failure group → เรียก resolve skill ที่ตรง:
+   - GitHub Actions → `/resolve-github-actions`
+   - Cloudflare Worker/Pages เจาะจง → `/resolve-cloudflare-worker`
+   - Cloudflare ทั้ง account → `/resolve-cloudflare`
+   - Code/config errors ทั่วไป → `/resolve-errors`
 4. หลัง fix → commit + push แล้วกลับไป Step 2 watch run ใหม่ — ทำ `/loop-until-complete` จนทุก pipeline เขียวหรือชน blocker
 5. Blocker ที่แก้เองไม่ได้ (missing secrets, quota, permissions, billing) → stop และ report รายการ secrets/values ที่ต้องให้ user ไป set — ห้าม commit secrets หรือ workaround ที่ลด security posture
 
@@ -81,10 +85,12 @@ CD (Cloudflare และอื่นๆ):
 
 ### 2. Resolution Discipline
 
-- แก้ errors ผ่าน `/resolve-errors` เท่านั้น — skill นี้ไม่แก้ code โดยตรง
+- แก้ errors ผ่าน `resolve-*` skills เท่านั้น — skill นี้ไม่แก้ code โดยตรง
 - แก้ CI ก่อน CD เสมอ — CD ที่พึ่ง CI artifact จะแก้เองเมื่อ CI เขียว
 - Fix แล้วต้อง verify ด้วย run จริง (`gh run watch`) — ห้ามอ้างว่าผ่านจาก local check อย่างเดียว
-- ถ้า fix + watch loop เกิน 3 รอบยัง fail จุดเดิม → ทำ `/deep-debug`
+- ถ้า fix + watch loop เกิน 3 รอบยัง fail จุดเดิม → ทำ `/deep-debug` (single-run สูงสุด 5 รอบ; repo-scoped สูงสุด 3 รอบต่อ worker — failure เดิมซ้ำ 3 ครั้งให้แนะนำ rollback)
+- บันทึก `LAST_GREEN_SHA` ก่อนแก้ไข — ถาม user ก่อน rerun/deploy ที่กระทบ production
+- Timeout: `perRoundTimeout` 300 วิ, `ciWatchTimeout` 900 วิ, `cdWatchTimeout` 600 วิ
 
 ### 3. Safety
 

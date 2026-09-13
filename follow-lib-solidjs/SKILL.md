@@ -103,12 +103,12 @@ related:
 
 ### 4. Related Workflows
 
-- ทำ `/follow-create-web solid-tanstack-router` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-create-web-solid-tanstack-router` สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-plugins vite ถ้าจำเป็น (lib solidjs)
+- ใช้ /follow-create-vite-plugin ถ้าจำเป็น (lib solidjs)
 
 ## Expected Outcome
 

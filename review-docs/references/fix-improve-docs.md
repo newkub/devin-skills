@@ -41,7 +41,7 @@
 > Goal: เพิ่ม docs ที่ขาดสำหรับ features สำคัญ
 
 1. เพิ่ม sections ที่ขาดตาม findings (install, usage, troubleshooting)
-2. ใช้ `/update-docs readme-md` หรือ `/update-docs usage-md` สำหรับไฟล์มาตรฐาน
+2. ใช้ `/update-docs-readme-md` หรือ `/update-docs-usage-md` สำหรับไฟล์มาตรฐาน
 3. ถ้า findings เกี่ยวกับ nav/sidebar หรือ docs structure → ทำ `/update-docs` โดยใช้ `references/<type>.md` และ `templates/sidebar-<type>.md` ตาม type (`product`, `open-source`, `cli`) บวก `update-docs/templates/sidebar-monorepo.md` สำหรับ monorepo
 4. เขียนเฉพาะสิ่งที่มี evidence จาก code — ไม่เดา behavior
 

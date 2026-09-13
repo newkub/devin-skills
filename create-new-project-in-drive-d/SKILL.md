@@ -37,14 +37,14 @@ related:
 
 1. `cli` → `/follow-create-cli`
 2. `website` หรือ `web` → `/follow-create-web`
-3. `mobile` → `/follow-create-mobile cross-capacitor`
+3. `mobile` → `/follow-create-mobile-cross-capacitor`
 4. `telegram-bot` → `/follow-create-bot`
 5. `discord-bot` → `/follow-create-bot`
 6. `line-bot` → `/follow-create-bot`
-7. `browser-extension` → `/follow-create-plugins browser-wxt`
-8. `obsidian-plugin` → `/follow-create-plugins obsidian`
-9. `vscode-extension` → `/follow-create-plugins vscode`
-10. `zed-extension` → `/follow-create-plugins zed`
+7. `browser-extension` → `/follow-create-browser-extensions-wxt`
+8. `obsidian-plugin` → `/follow-create-obsidian-plugin`
+9. `vscode-extension` → `/follow-create-vscode-extensions`
+10. `zed-extension` → `/follow-create-zed-extensions`
 11. `rust-crate` หรือ `rust-lib` → `/follow-create-rust-crate`
 12. `mcp` → `/follow-create-mcp`
 13. ถ้าไม่ตรงข้อใดหรือไม่แน่ใจ → ใช้ `/follow-create-sdk` เพื่อถามและเลือก stack

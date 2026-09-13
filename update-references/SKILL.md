@@ -136,7 +136,7 @@ related:
 
 - ใช้ /use-related-skills ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
-- ใช้ /search files-patterns ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

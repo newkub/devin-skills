@@ -54,7 +54,7 @@ related:
 
 ### 2. Fallback
 
-- ถ้าไม่ match → ทำ `/search skills` หรือ `/ask-me`
+- ถ้าไม่ match → ทำ `/search-skills` หรือ `/ask-me`
 - ไม่เดาสุ่ม skill
 
 ### 3. No Direct Fix

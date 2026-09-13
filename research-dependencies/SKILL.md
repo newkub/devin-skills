@@ -39,7 +39,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 ใช้เมื่อต้องเลือก dependencies ใหม่, เปรียบเทียบ libraries, หา compatible versions หรือตรวจ dependencies ใน project ปัจจุบัน
 
 - รองรับ `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
-- ใช้ `/search github-star`, `/search raindrop`, `/search npmx` เพื่อหา deps ที fast/modern
+- ใช้ `/search-github-star`, `/search-raindrop`, `/search-npmx` เพื่อหา deps ที fast/modern
 - ไม่แก้ไข manifest files โดยตรง — ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
 
 ## Execute
@@ -67,9 +67,9 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 > Goal: หา deps ทีเหมาะกับ tech stack ปัจจุบัน
 
-1. ทำ `/search github-star` หา popular/quality libraries
-2. ทำ `/search raindrop` หา bookmarks หรือ comparison ที่เคยเก็บไว้
-3. ทำ `/search npmx` สำหรับ JS/TS packages
+1. ทำ `/search-github-star` หา popular/quality libraries
+2. ทำ `/search-raindrop` หา bookmarks หรือ comparison ที่เคยเก็บไว้
+3. ทำ `/search-npmx` สำหรับ JS/TS packages
 4. ใช้ package registries เบื้องต้น: `npm`, `crates.io`, `pkg.go.dev`, `pypi`
 5. ค้นหาด้วย keywords ที่ตรงกับ capability + `fast`, `modern`, `lightweight`, `zero-dependency`
 

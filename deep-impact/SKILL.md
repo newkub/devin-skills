@@ -40,7 +40,7 @@ related:
 > Goal: หา consumers ทีใช้งาน target โดยตรง
 
 1. ทำ `/check-file-relations` เพื่อหา imports, consumers, references
-2. ทำ `/search files-patterns` เพื่อค้นหา call sites, imports, string references
+2. ทำ `/search-files-patterns` เพื่อค้นหา call sites, imports, string references
 3. ใช้ ast-grep หา pattern ทีอาจหายไปถ้า target เปลี่ยน
 4. ตรวจสอบ public API: `/report-public-api` ถ้าเป็น library/project
 5. บันทึก direct consumers เป็นลิสต์พร้อมตำแหน่ง
@@ -121,7 +121,7 @@ related:
 
 ### 3. Tool-First
 
-- ใช้ `/check-file-relations`, `/search files-patterns`, ast-grep, report workspace graph
+- ใช้ `/check-file-relations`, `/search-files-patterns`, ast-grep, report workspace graph
 - ไม่ทำการเปลี่ยนแปลงกว่างขวางโดยไม่มี evidence
 - บันทึกผลการ analysis ก่อนลงมือ
 

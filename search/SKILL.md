@@ -1,6 +1,6 @@
 ---
 name: search
-description: ค้นหาข้าม sources — files, GitHub stars, npmx, Raindrop, MCP, skills, drive D ผ่าน subskills
+description: ค้นหาข้าม sources — files, GitHub stars, npmx, Raindrop, MCP, skills, drive D ผ่าน search-* skills
 argument-hint: "[domain]"
 related:
   - follow-tool-crw
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม search source — parent ทำ routing เท่านั้น
+Dispatch ไป skill ตาม search source — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -21,26 +21,26 @@ Dispatch ไป subskill ตาม search source — parent ทำ routing เ�
 
 ## Execute
 
-### Subskills
+### Search Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `files-patterns` | `subskills/files-patterns/SKILL.md` — ค้นไฟล์ตาม pattern/glob |
-| `github-star` | `subskills/github-star/SKILL.md` — ค้นใน GitHub starred repos |
-| `mcp` | `subskills/mcp/SKILL.md` — ค้น MCP servers |
-| `npmx` | `subskills/npmx/SKILL.md` — ค้น/เปรียบเทียบ npm packages บน npmx.dev |
-| `project-in-drive-d` | `subskills/project-in-drive-d/SKILL.md` — ค้น project ใน drive D |
-| `raindrop` | `subskills/raindrop/SKILL.md` — ค้น bookmarks ผ่าน raindrop CLI |
-| `similar` | `subskills/similar/SKILL.md` — ค้น code/files ที่คล้ายกัน |
-| `skills` | `subskills/skills/SKILL.md` — ค้น skills ที่เกี่ยวข้อง |
+| `files-patterns` | `/search-files-patterns` — ค้นไฟล์ตาม pattern/glob |
+| `github-star` | `/search-github-star` — ค้นใน GitHub starred repos |
+| `mcp` | `/search-mcp` — ค้น MCP servers |
+| `npmx` | `/search-npmx` — ค้น/เปรียบเทียบ npm packages บน npmx.dev |
+| `project-in-drive-d` | `/search-project-in-drive-d` — ค้น project ใน drive D |
+| `raindrop` | `/search-raindrop` — ค้น bookmarks ผ่าน raindrop CLI |
+| `similar` | `/search-similar` — ค้น code/files ที่คล้ายกัน |
+| `skills` | `/search-skills` — ค้น skills ที่เกี่ยวข้อง |
 
 1. ระบุ domain จาก argument (เช่น `/search npmx`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
 - ถ้าต้อง research เชิงลึกหลังเจอ source → ต่อด้วย `/learn web` หรือ `/deep-research`
 
 - ใช้ /follow-tool-crw ถ้าจำเป็น
@@ -49,4 +49,4 @@ Dispatch ไป subskill ตาม search source — parent ทำ routing เ�
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง source แล้วค้นตาม flow นั้น
+- caller ถูก dispatch ไป skill ที่ตรง source แล้วค้นตาม flow นั้น

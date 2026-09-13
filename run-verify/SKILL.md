@@ -76,7 +76,7 @@ related:
 4. ตรวจหา CI/CD config (`setup-cicd` รายการ); ถ้าไม่มี → ทำ `/setup-cicd`
 5. ทำ `/git-push` ถ้ามี unpushed commits
 6. ถ้า push ถูก reject → stop และ report (ไม่ force push)
-7. ถ้าเป็น GitHub Actions → `/resolve-errors github-actions` มิฉะนั้น `/resolve-cicd`
+7. ถ้าเป็น GitHub Actions → `/resolve-github-actions` มิฉะนั้น `/resolve-cicd`
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
 
@@ -84,7 +84,7 @@ related:
 
 > Goal: ยืนยัน project ทำงานได้จริง end-to-end — ใช้เมื่อ `--deep` หรือก่อน ship/deploy ใหญ่
 
-1. Runtime gate: ทำ `/run-test` (e2e) ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser fix` จับ console/network errors ถ้ามี web URL
+1. Runtime gate: ทำ `/run-test` (e2e) ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser-fix` จับ console/network errors ถ้ามี web URL
 2. Usage gate: ทำ `/test-usage` ยืนยัน examples ใน README/docs ทำงานได้จริง
 3. Deep validation: ทำ `/deep-validate` สำหรับ cross-reference, compliance, security ครั้งสุดท้าย; ถ้าพบ issues → `/deep-review-then-fix` แล้ว verify ใหม่
 4. แต่ละ gate fail → fix แล้วเริ่ม gate นั้นใหม่ ไม่ข้าม; retry สูงสุด 3 ครั้ง → stop + report

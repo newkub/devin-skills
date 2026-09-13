@@ -25,7 +25,7 @@ related:
 
 > Goal: หา config files ทั้งหมด
 
-1. ใช้ `/search files-patterns` หา `**/*.{json,yaml,yml,toml,ini,conf,config,env,env.*}`
+1. ใช้ `/search-files-patterns` หา `**/*.{json,yaml,yml,toml,ini,conf,config,env,env.*}`
 2. แยกตาม environment (`dev`, `test`, `prod`, `staging`)
 3. ระบุ sample files หรือ examples
 

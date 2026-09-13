@@ -27,7 +27,7 @@ related:
 
 > Goal: หา source ของ schema
 
-1. ใช้ `/search files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
+1. ใช้ `/search-files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
 2. ตรวจ `drizzle.config.ts`, `DATABASE_URL` references และ ORM ที่ใช้
 3. ถ้ามีหลาย source → รวมทุกอันและระบุ precedence
 

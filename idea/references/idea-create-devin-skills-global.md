@@ -54,7 +54,7 @@
 2. ระบุประเภทความเกี่ยวข้องในวงเล็บ (`direct dependency`, `complementary`, `follow-up`, `alternative`)
 3. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
 4. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-5. ถ้า context ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea convert-my-global-cli-to-skills`
+5. ถ้า context ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea-convert-my-global-cli-to-skills`
 6. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
 
 ### 5. Update Related Skills
@@ -97,8 +97,8 @@
 - ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
-- ใช้ /idea features ถ้าจำเป็น
-- ใช้ /idea naming ถ้าจำเป็น
+- ใช้ /idea-features ถ้าจำเป็น
+- ใช้ /idea-naming ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome

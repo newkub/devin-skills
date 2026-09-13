@@ -53,7 +53,7 @@ related:
 - `--json` + `jq -r` เป็น default
 - full JSON: `raindrop list --json --all --sort="-created"`
 
-- ใช้ /search raindrop ถ้าจำเป็น
+- ใช้ /search-raindrop ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome

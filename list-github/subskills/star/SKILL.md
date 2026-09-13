@@ -21,7 +21,7 @@ related:
 - รองรับ filter ตามภาษา เช่น `--lang bun`, `--lang rust`
 - default limit 50 repos
 
-ดูเพิ่มเติม: /all-github-repo, /list-github repo, /search github-star
+ดูเพิ่มเติม: /all-github-repo, /list-github repo, /search-github-star
 
 ## Execute
 

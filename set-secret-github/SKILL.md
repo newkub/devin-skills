@@ -62,7 +62,7 @@ gh secret list -R <owner>/<repo>
 - `NPM_TOKEN` — publish ไป npm
 - `GH_PAT` — access private repo / trigger dispatch
 
-Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-errors github-actions` และ pipeline deploy ของ `/ship`
+Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-github-actions` และ pipeline deploy ของ `/ship`
 
 ## Rules
 

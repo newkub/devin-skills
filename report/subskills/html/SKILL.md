@@ -29,7 +29,7 @@ related:
 
 > Goal: มีข้อมูลที่สะอาดและมีโครงสร้างก่อนเรนเดอร์
 
-1. รัน `/deep-analyze` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea features`)
+1. รัน `/deep-analyze` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea-features`)
 2. แปลงผลลัพธ์เป็น JavaScript array ของ objects หรือ 2D arrays
 3. ตรวจสอบให้แต่ละแถวมี `id` ที่ไม่ซ้ำและครบทุกฟิลด์ที่จำเป็น
 4. เพิ่มฟิลด์คำนวณสำหรับ `group` และ `searchText` หากจำเป็น
@@ -142,7 +142,7 @@ related:
 
 - แต่ละแถวมีปุ่มขยายหรือแถวที่คลิกได้
 - พาเนลที่ขยายมีอย่างน้อยสองคอลัมน์ที่มีป้ายกำกับ
-- สำหรับผลลัพธ์ของ `/idea features` คอลัมน์ควรเป็น `UX/UI Sketch` และ `Plan`
+- สำหรับผลลัพธ์ของ `/idea-features` คอลัมน์ควรเป็น `UX/UI Sketch` และ `Plan`
 - เนื้อหา dropdown ใช้ข้อความกระชับหรือ code blocks
 
 ### 5. Design Tokens And Visual Hierarchy

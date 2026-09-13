@@ -73,9 +73,9 @@ related:
 
 > Goal: Update Documentation
 
-1. ทำตาม `/update-docs readme-md` สำหรับการอัพเดท README.md
+1. ทำตาม `/update-docs-readme-md` สำหรับการอัพเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-docs readme-md`
+3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-docs-readme-md`
 
 ### 8. Update Reference
 

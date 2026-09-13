@@ -36,7 +36,7 @@ related:
 
 > Goal: สิ่งที่ต้อง attention บน remote
 
-1. ทำ `/resolve-errors github-actions` — workflows ที่ fail ล่าสุด
+1. ทำ `/resolve-github-actions` — workflows ที่ fail ล่าสุด
 2. ทำ `/list-github pr` — PRs ที่รอ review (ของตัวเอง + ที่ถูก request)
 3. ทำ `/list-github issue` — issues ที่ assigned/mention
 

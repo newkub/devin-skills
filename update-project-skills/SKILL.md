@@ -70,10 +70,10 @@ related:
 
 > Goal: project `AGENTS.md` อ้างถึง skills ใหม่
 
-1. ทำ `/update-docs agents-md` เพื่ออัปเดต `AGENTS.md` ของ project
+1. ทำ `/update-docs-agents-md` เพื่ออัปเดต `AGENTS.md` ของ project
 2. เพิ่ม skills ใหม่ใน `### Skills` section ของ `AGENTS.md`
 3. ตรวจว่า `AGENTS.md` อ้างถึง skills ที่สร้างขึ้นครบถ้วน
-4. ถ้า project ไม่มี `AGENTS.md` → ทำ `/update-docs agents-md` เพื่อสร้างใหม่
+4. ถ้า project ไม่มี `AGENTS.md` → ทำ `/update-docs-agents-md` เพื่อสร้างใหม่
 
 ### 5. Validate And Report
 

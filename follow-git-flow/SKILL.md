@@ -104,7 +104,7 @@ related:
 
 > Goal: เขียน ship section ลง `AGENTS.md`
 
-1. ทำ `/update-docs agents-md` เพื่อให้ `AGENTS.md` อัปเดต
+1. ทำ `/update-docs-agents-md` เพื่อให้ `AGENTS.md` อัปเดต
 2. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
 
 ### 8. Report

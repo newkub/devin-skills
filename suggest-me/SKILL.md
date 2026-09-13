@@ -20,9 +20,9 @@ related:
 ## Scope
 
 - ใช้เมื่อผู้ใช้บอกว่าอยากทำอะไรหรืออยากได้ features อะไรแบบยังไม่ชัดเจน
-- ถามคำถามเหมือนกับ `/idea features` แต่ไม่ต้องสร้าง report files
+- ถามคำถามเหมือนกับ `/idea-features` แต่ไม่ต้องสร้าง report files
 - สรุปคำตอบใน chat เพื่อให้ user ยืนยันก่อนดำเนินการ
-- สามารถส่งต่อไปยัง `/idea features` หรือ `/implement-to-production` หลัง user ยืนยัน
+- สามารถส่งต่อไปยัง `/idea-features` หรือ `/implement-to-production` หลัง user ยืนยัน
 
 ## Execute
 
@@ -52,7 +52,7 @@ related:
 1. สรุปคำตอบทั้งหมดเป็น bullet points สั้นๆ
 2. ระบุ feature/goal หลัก, scope, ลำดับความสำคัญ, constraints
 3. ถาม user ยืนยันว่าถูกต้องหรือต้องการปรับแก้
-4. ถ้า user ยืนยัน → ส่งต่อไปยัง `/idea features` หรือ `/implement-to-production` ตาม context
+4. ถ้า user ยืนยัน → ส่งต่อไปยัง `/idea-features` หรือ `/implement-to-production` ตาม context
 5. ถ้า user ต้องการปรับ → ถามเพิ่มจนครบ
 
 ## Rules
@@ -65,7 +65,7 @@ related:
 
 ### 2. Like idea (features) But Lighter
 
-- ถามคำถามแบบเดียวกับ `/idea features` แต่ไม่ต้อง generate feature ideas
+- ถามคำถามแบบเดียวกับ `/idea-features` แต่ไม่ต้อง generate feature ideas
 - โฟกัสที่การเข้าใจความต้องการผู้ใช้
 - ไม่ต้องเปรียบเทียบคู่แข่งหรือศึกษาแนวโน้มตลาด
 
@@ -77,7 +77,7 @@ related:
 
 ### 4. Hand Off
 
-- ถ้า user ต้องการไอเดีย features → ส่งต่อ `/idea features`
+- ถ้า user ต้องการไอเดีย features → ส่งต่อ `/idea-features`
 - ถ้า user ต้องการ implement → ส่งต่อ `/implement-to-production`
 - ถ้าต้องการ plan → ส่งต่อ `/create-plan-in-dot-devin`
 

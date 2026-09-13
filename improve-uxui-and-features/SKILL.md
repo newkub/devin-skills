@@ -27,8 +27,8 @@ related:
 
 ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 4 มิติ:
 
-- Functional UX — ทำตาม `/watch-browser test` (flows, actions, error states ที่ user เจอจริง)
-- Visual UX — ทำตาม `/watch-browser improve-uxui` (layout, responsive, polish จาก screenshots)
+- Functional UX — ทำตาม `/watch-browser-test` (flows, actions, error states ที่ user เจอจริง)
+- Visual UX — ทำตาม `/watch-browser-improve-uxui` (layout, responsive, polish จาก screenshots)
 - Accessibility — อยู่ใน visual pass ตาม `/review-accessibility` (contrast, focus order, aria, keyboard nav — a11y คือส่วนหนึ่งของ UX ไม่แยก skill)
 - UXUI Features — features ที่เกี่ยวกับ UX เท่านั้น: missing states (loading/empty/error), feedback (toasts, progress), affordances (shortcuts, tooltips, hints), micro-interactions, navigation aids — ไม่ใช่ business features
 
@@ -49,14 +49,14 @@ related:
 
 > Goal: หา UX issues จากการใช้งานจริง
 
-1. ทำ `/watch-browser test` — subagents roleplay user ทุก route
+1. ทำ `/watch-browser-test` — subagents roleplay user ทุก route
 2. เก็บ FAIL findings ที่เป็น UX problems (confusing flows, missing feedback, dead ends, unclear errors) แยกจาก pure bugs
 
 ### 3. Run Visual UX Pass
 
 > Goal: หา UX issues จากภาพจริงทุก route
 
-1. ทำ `/watch-browser improve-uxui` — subagents capture + `/review-uxui` ทุก route ทั้ง desktop และ mobile
+1. ทำ `/watch-browser-improve-uxui` — subagents capture + `/review-uxui` ทุก route ทั้ง desktop และ mobile
 2. แต่ละ agent รวม a11y checks ตาม `/review-accessibility` ด้วย — contrast, focus order, aria labels, keyboard navigation
 3. เก็บ findings พร้อม screenshot evidence
 

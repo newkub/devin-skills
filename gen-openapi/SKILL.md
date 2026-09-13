@@ -29,7 +29,7 @@ Generate OpenAPI 3.x spec (`openapi.json`/`openapi.yaml`) จาก API code จ
 > Goal: รู้ว่า API เขียนด้วย framework อะไร
 
 1. ตรวจ `package.json` หา `elysia`, `hono`, `express`, `fastify`, `@orpc/*`, `next`
-2. ทำ `/search files-patterns` หา route definitions และ handler files
+2. ทำ `/search-files-patterns` หา route definitions และ handler files
 3. ระบุ validation library: `zod`, `arktype`, `typebox`, `valibot`
 
 ### 2. Extract Endpoints

@@ -26,7 +26,7 @@ related:
 
 > Goal: หา hardcoded values ตามหมวด
 
-1. ใช้ `/search files-patterns` หรือ `/use-astgrep` สแกน patterns:
+1. ใช้ `/search-files-patterns` หรือ `/use-astgrep` สแกน patterns:
    - URLs: `https?://` ที่ไม่ใช่ example/localhost ใน comments
    - IPs: `\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`
    - Localhost/ports: `localhost:\d+`, `127.0.0.1`, `0.0.0.0`

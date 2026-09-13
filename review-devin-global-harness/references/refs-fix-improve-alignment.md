@@ -45,9 +45,9 @@
 
 > Goal: ทำให้ docs สะท้อนสถานะปัจจุบัน
 
-1. ถ้า `AGENTS.md` ไม่ครอบคลุม skills/workflows → ทำ `/update-docs agents-md`
-2. ถ้า `README.md` ล้าหลัง → ทำ `/update-docs readme-md`
-3. ถ้า `USAGE.md` ล้าหลัง → ทำ `/update-docs usage-md`
+1. ถ้า `AGENTS.md` ไม่ครอบคลุม skills/workflows → ทำ `/update-docs-agents-md`
+2. ถ้า `README.md` ล้าหลัง → ทำ `/update-docs-readme-md`
+3. ถ้า `USAGE.md` ล้าหลัง → ทำ `/update-docs-usage-md`
 4. ตรวจ cross-references ระหว่าง docs
 
 ### 5. Align Code And Architecture

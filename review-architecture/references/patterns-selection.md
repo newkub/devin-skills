@@ -33,11 +33,11 @@
 
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
-| Nuxt | `nuxt` in dependencies | `/follow-create-web nuxt` |
+| Nuxt | `nuxt` in dependencies | `/follow-create-web-nuxt` |
 | Next.js | `next` in dependencies | `references/patterns-nextjs-architecture.md` |
 | Vue.js | `vue` in dependencies | `/follow-lib-vue` |
-| SolidJS | `solid-js` in dependencies | `/follow-create-web solid-tanstack-router` |
-| Svelte | `svelte` in dependencies | `/follow-create-web svelte` |
+| SolidJS | `solid-js` in dependencies | `/follow-create-web-solid-tanstack-router` |
+| Svelte | `svelte` in dependencies | `/follow-create-web-svelte` |
 | Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `references/patterns-layered-architecture.md` |
 | Rust | `Cargo.toml` exists | `references/patterns-clean-architecture.md` |
 | Bun | `bun` in dependencies | `references/patterns-clean-architecture.md` |

@@ -22,18 +22,18 @@ related:
 
 ## Execute
 
-### Subskills
+### Idea Skills
 
-| Topic | Subskill |
-|-------|----------|
-| ไอเดีย features ใหม่/ขยาย | `subskills/features/SKILL.md` |
-| ตั้งชื่อไฟล์/directory สำหรับ idea | `subskills/naming/SKILL.md` |
-| ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `subskills/merge/SKILL.md` |
-| ไอเดีย UX/UI improvements และ features | `subskills/uxui-features/SKILL.md` |
-| ไอเดีย refactor workspace ใน monorepo | `subskills/refactor-workspace/SKILL.md` |
-| ไอเดีย devin global skills ใหม่/ปรับปรุง | `subskills/new-devin-global-skills/SKILL.md` |
-| skill candidates จาก session ปัจจุบัน | `subskills/devin-global-skills-from-session/SKILL.md` |
-| แปลง CLI tools เป็น Devin skills | `subskills/convert-my-global-cli-to-skills/SKILL.md` |
+| Topic | Skill |
+|-------|-------|
+| ไอเดีย features ใหม่/ขยาย | `/idea-features` |
+| ตั้งชื่อไฟล์/directory สำหรับ idea | `/idea-naming` |
+| ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |
+| ไอเดีย UX/UI improvements และ features | `/idea-uxui-features` |
+| ไอเดีย refactor workspace ใน monorepo | `/idea-refactor-workspace` |
+| ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
+| skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
+| แปลง CLI tools เป็น Devin skills | `/idea-convert-my-global-cli-to-skills` |
 
 ### 1. Analyze Context
 
@@ -51,7 +51,7 @@ related:
 
 สร้างไอเดียตาม context:
 
-1. ถ้าเป็นไอเดีย features ให้อ่าน `subskills/features/SKILL.md` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
+1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
 2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/review-frontend` สร้างไอเดีย UX/UI improvements
 3. สร้างไอเดียปรับปรุงจากเดิม (Extends)
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)

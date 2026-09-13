@@ -55,7 +55,7 @@ related:
 
 > Goal: นำเสนอทิศทางถัดไป
 
-1. ถ้ามี High priority commands → ทำ `/idea convert-my-global-cli-to-skills` เพื่อเริ่ม convert
+1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
 2. ถ้าข้อมูลไม่พอ → ทำ `/learn cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
@@ -96,6 +96,6 @@ related:
 - ตาราง CLI tools ที่ติดตั้งพร้อม version
 - สรุป commands, options และ flags
 - รายการ commands ที่เหมาะแปลงเป็น skills พร้อม priority
-- คำแนะนำถัดไป เช่น ทำ `/idea convert-my-global-cli-to-skills`
+- คำแนะนำถัดไป เช่น ทำ `/idea-convert-my-global-cli-to-skills`
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน

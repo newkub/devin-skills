@@ -73,7 +73,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ใช้ /open github ถ้าจำเป็น
 - ใช้ /list-github pr ถ้าจำเป็น
 - ใช้ /merge github-pr ถ้าจำเป็น
-- ใช้ /resolve-errors github-actions ถ้าจำเป็น
+- ใช้ /resolve-github-actions ถ้าจำเป็น
 
 - ถ้า pass → ทำ `/merge github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 

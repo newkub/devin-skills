@@ -76,7 +76,7 @@ related:
 - รองรับ `.jpg`, `.webp` ด้วย `--format`
 - เก็บ output ใน project หรือ temp directory
 
-- ใช้ /convert svg ถ้าจำเป็น
+- ใช้ /convert-svg ถ้าจำเป็น
 - ใช้ /draw-svg-image ถ้าจำเป็น
 - ใช้ /generate-prompt-from-image ถ้าจำเป็น
 

@@ -96,7 +96,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 1. ทำตาม `references/redundancy-inventory-group.md`
 2. ตรวจตาม `references/redundancy-detect-*.md` ทั้ง 4 (duplicate purpose, overlapping scope, redundant content, unused)
-3. แนะนำ actions ตาม `references/redundancy-recommend-actions.md` — merge → `/idea merge`, rename → `/batch-rename-files`
+3. แนะนำ actions ตาม `references/redundancy-recommend-actions.md` — merge → `/idea-merge`, rename → `/batch-rename-files`
 4. remove/merge ต้อง user confirm เสมอ ตาม `references/redundancy-confirm-execute.md`
 5. score ตาม `references/redundancy-scoring.md`
 
@@ -150,7 +150,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks
 - รายงานเป็นตารางด้วย `/report`
 
-- ใช้ /idea new-devin-global-skills ถ้าจำเป็น
+- ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /review-rules ถ้าจำเป็น

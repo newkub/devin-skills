@@ -19,13 +19,13 @@
 ## Language
 
 1. เนื้อหา markdown ใช้ภาษาของ project หรือภาษาอังกฤษ
-2. `/idea features` body ภาษาอังกฤษ ตารางภาษาไทย
+2. `/idea-features` body ภาษาอังกฤษ ตารางภาษาไทย
 3. ห้ามผสมภาษาในย่อหน้าเดียวกัน
 
 ## Feature Tables
 
 1. `docs/project/features.md` ใช้ table `| Feature | Description | Module | Status |`
-2. `docs/roadmap/idea features.md` ใช้ table 27 คอลัมน์ เรียงตาม impact
+2. `docs/roadmap/idea-features.md` ใช้ table 27 คอลัมน์ เรียงตาม impact
 3. feature แต่ละตัวละเอียดใต้ heading `###`
 
 ## Scoring

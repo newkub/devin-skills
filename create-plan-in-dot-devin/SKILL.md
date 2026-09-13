@@ -21,7 +21,7 @@ related:
 ## Scope
 
 - รับ request หรือ topic
-- ใช้ `/idea features` เพื่อ generate features ที่เป็นระบบ
+- ใช้ `/idea-features` เพื่อ generate features ที่เป็นระบบ
 - คำนวณ score ตามสูตรคณิตศาสตร์
 - สร้างไฟล์แผนด้วย body ที่สแกนได้ มี icons, color, diagram, tables
 - เปิดไฟล์แผนด้วย `open-in-zed` หรือ editor ที่พร้อมใช้งาน
@@ -43,7 +43,7 @@ related:
 
 > Goal: สร้างไอเดียฟีเจอร์ พร้อมคะแนน
 
-1. ทำ `/idea features <topic>` โดยแบ่งเป็น `New` และ `Extends`
+1. ทำ `/idea-features <topic>` โดยแบ่งเป็น `New` และ `Extends`
 2. คำนวณ score ตาม `references/scoring.md`
    - `Score = (Impact + Effect) / (Risk × Phase)`
 3. เรียงลำดับ features ตาม `Score` สูง → ต่ำ แล้ว `Phase` ต่ำ → สูง (กรณี `Score` เท่ากัน)
@@ -100,7 +100,7 @@ related:
 
 ### 1. Plan Quality
 
-- Plan ต้องมาจาก `/idea features`
+- Plan ต้องมาจาก `/idea-features`
 - ทุก feature ต้องมี score คำนวณจากสูตร
 - ทุก task ต้องมี expected outcome วัดผลได้
 - ต้องมี `## Execution Order` เพื่อให้ `/implement-to-production` อ่านได้

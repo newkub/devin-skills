@@ -85,7 +85,7 @@ related:
 
 - ใช้ /check-broken-skills-references ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /search files-patterns ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
 
 ## Expected Outcome
 

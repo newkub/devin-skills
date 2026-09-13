@@ -13,12 +13,12 @@
 | 3 | `all` global skills | `/update-devin-global-skills` |
 | 4 | `config` | `/update-config` |
 | 5 | `versions` (runtime, deps, tools, CI, Docker) | `/update-version-to-latest` |
-| 6 | `project-docs` | `/update-docs readme-md`, `/update-docs agents-md`, `/update-docs usage-md`, `/update-docs features-md` |
+| 6 | `project-docs` | `/update-docs-readme-md`, `/update-docs-agents-md`, `/update-docs-usage-md`, `/update-docs-features-md` |
 | 7 | `rules` | `/update-project-rules` |
 | 8 | `skills` ใน project | `/update-project-skills` |
 | 9 | `examples` | `/update-examples` |
 | 10 | `tests` | `/update-tests` |
-| 11 | `todo` | `/update-docs todo-md` |
+| 11 | `todo` | `/update-docs-todo-md` |
 | 12 | `gitignore` | `/update-gitignore` |
 | 13 | `vscode` | `/update-dot-vscode` |
 | 14 | `github-metadata` | `/update-github-metadata` |

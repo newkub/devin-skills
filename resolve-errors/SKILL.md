@@ -30,14 +30,14 @@ related:
 
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้า (Step N ขึ้นกับ Step N-1)
 
-### Subskills
+### CI/CD Failure Skills
 
-| Topic | Subskill |
-|-------|----------|
-| GitHub Actions workflow runs ที่ล้มเหลว | `subskills/github-actions/SKILL.md` |
-| Cloudflare Worker หรือ Pages project ที่ระบุ | `subskills/cloudflare-worker/SKILL.md` |
-| Cloudflare Workers/Pages ทั้ง account | `subskills/cloudflare/SKILL.md` |
-| CI/CD pipeline repo-scoped หรือ single run/URL | `subskills/cicd/SKILL.md` |
+| Topic | Skill |
+|-------|-------|
+| GitHub Actions workflow runs ที่ล้มเหลว | `/resolve-github-actions` |
+| Cloudflare Worker หรือ Pages project ที่ระบุ | `/resolve-cloudflare-worker` |
+| Cloudflare Workers/Pages ทั้ง account | `/resolve-cloudflare` |
+| CI/CD pipeline repo-scoped หรือ single run/URL (watch + dispatch) | `/resolve-cicd` |
 
 ### 1. Prepare Context
 

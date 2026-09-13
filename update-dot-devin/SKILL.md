@@ -59,9 +59,9 @@ related:
 
 1. ระบุ workspaces ทั้งหมดจาก root `package.json` `workspaces` field
 2. สำหรับแต่ละ workspace:
-   1. ทำ `/update-docs agents-md` สำหรับ workspace นั้น เพื่อเขียน `AGENTS.md`
+   1. ทำ `/update-docs-agents-md` สำหรับ workspace นั้น เพื่อเขียน `AGENTS.md`
    2. อ้างอิง dependencies ใน `<workspace>/package.json` เพื่อเขียน workspace-specific instructions
-3. ทำ `/update-docs agents-md` สำหรับ root `AGENTS.md` โดยระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
+3. ทำ `/update-docs-agents-md` สำหรับ root `AGENTS.md` โดยระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
 4. ตรวจสอบว่าไม่มี `.devin/` directory ใน sub-workspace ใดๆ
 
 ### 6. Setup Skills And MCP
@@ -136,7 +136,7 @@ related:
 
 ### 6. AGENTS.md Update
 
-- ใช้ `/update-docs agents-md` สำหรับเขียน `AGENTS.md` ทั้ง root และ workspace
+- ใช้ `/update-docs-agents-md` สำหรับเขียน `AGENTS.md` ทั้ง root และ workspace
 - Root `AGENTS.md` ต้องระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
 - แต่ละ workspace ต้องมี `AGENTS.md` ของตัวเอง
 

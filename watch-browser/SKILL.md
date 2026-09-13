@@ -21,10 +21,10 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 ใช้เมื่อต้องการ monitor หน้าเว็บผ่าน MCP protocol — เช่น watch dev server, ตรวจ visual/state changes หลังแก้ code, หรือเฝ้า console/errors ระหว่าง session
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-browser-and-fix, watch-browser-and-improve-uxui, watch-browser-and-test)
-- ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser fix`
+- ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser-fix`
 - ถ้า focus เฉพาะ console errors → `/watch-browser-console`
-- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser improve-uxui`
-- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser test`
+- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-improve-uxui`
+- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
 - ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui-and-features`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
@@ -78,7 +78,7 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 2. แต่ละรอบดึง: console, errors และ state (title/url) ผ่าน `mcp_call_tool`
 3. เทียบกับ poll ก่อนหน้า — บันทึกเฉพาะ delta ที่เปลี่ยน (new errors, URL change, console ใหม่)
 4. ถ้าพบ error ใหม่ → capture `screenshot` + บันทึก console/errors ก่อน action
-5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser fix`
+5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser-fix`
 
 ### 5. Report And Cleanup
 
@@ -88,18 +88,18 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 2. เรียก close tool ผ่าน `mcp_call_tool` เพื่อปิด browser session
 3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `agent-browser close` ผ่าน CLI
 
-### Subskills
+### Watch Skills
 
-> Goal: dispatch ไป subskill ตาม domain เมื่อ watch ต้องต่อด้วย action เฉพาะทาง
+> Goal: dispatch ไป skill ตาม domain เมื่อ watch ต้องต่อด้วย action เฉพาะทาง
 
-| Domain | Subskill |
-|--------|----------|
-| `fix` | `subskills/fix/SKILL.md` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
-| `improve-uxui` | `subskills/improve-uxui/SKILL.md` — watch + subagents improve UX/UI ทุก route |
-| `test` | `subskills/test/SKILL.md` — watch + subagents roleplay user test flows |
+| Domain | Skill |
+|--------|-------|
+| `fix` | `/watch-browser-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
+| `improve-uxui` | `/watch-browser-improve-uxui` — watch + subagents improve UX/UI ทุก route |
+| `test` | `/watch-browser-test` — watch + subagents roleplay user test flows |
 
 1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน
-2. อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. เรียก skill ตามตารางแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ## Rules
 

@@ -83,7 +83,7 @@ related:
 > Goal: สร้าง skill ใหมถ้าไม่มีทีเหมาะ
 
 1. ถ้า context ไม่เข้ากับ skill ใดเลย ให้ถาม user ว่าต้องการสร้างใหมหรือไม
-2. ถ้า context มาจาก session pattern ทำ `/idea devin-global-skills-from-session`
+2. ถ้า context มาจาก session pattern ทำ `/idea-devin-global-skills-from-session`
 3. ถ้า user ตกลง ให้ใช้ `/new-skills` หรือ `/update-devin-global-skills`
 4. ตั้งชื่อ skill ให้ตรงกับ directory name และ `description` ≤ 100 ตัวอักษร
 5. ใส่ `related` ครบถ้วน

@@ -64,7 +64,7 @@ related:
 
 > Goal: ปุ่มอยู่ใน README ในตำแหน่งที่เห็นง่าย
 
-1. ถ้ามี `README.md` → แทรกใต้ title หรือใน badges row เดิม ถ้าไม่มี → ทำ `/update-docs readme-md` ก่อน
+1. ถ้ามี `README.md` → แทรกใต้ title หรือใน badges row เดิม ถ้าไม่มี → ทำ `/update-docs-readme-md` ก่อน
 2. Markdown snippet:
    ```markdown
    [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<repo-url>)
@@ -106,7 +106,7 @@ related:
 
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /create-cloudflare worker ถ้าจำเป็น
-- ใช้ /update-docs readme-md ถ้าจำเป็น
+- ใช้ /update-docs-readme-md ถ้าจำเป็น
 
 - ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /run-deploy ถ้าจำเป็น

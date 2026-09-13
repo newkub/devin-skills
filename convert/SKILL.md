@@ -1,6 +1,6 @@
 ---
 name: convert
-description: แปลง format/structure — esm, files, git submodules, scripts, svg ผ่าน subskills
+description: แปลง format/structure — esm, files, git submodules, scripts, svg ผ่าน convert-* skills
 argument-hint: "[domain]"
 related:
   - refactor
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม domain ของ conversion — parent ทำ routing เท่านั้น
+Dispatch ไป skill ตาม domain ของ conversion — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -21,23 +21,23 @@ Dispatch ไป subskill ตาม domain ของ conversion — parent ทำ
 
 ## Execute
 
-### Subskills
+### Convert Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `esm` | `subskills/esm/SKILL.md` — CJS → ESM migration |
-| `files-format` | `subskills/files-format/SKILL.md` — แปลง file format (json/yaml/toml ฯลฯ) |
-| `git-submodules` | `subskills/git-submodules/SKILL.md` — directory → git submodule |
-| `scripts` | `subskills/scripts/SKILL.md` — แปลง commands เป็น runnable scripts |
-| `svg` | `subskills/svg/SKILL.md` — image → SVG conversion |
+| `esm` | `/convert-esm` — CJS → ESM migration |
+| `files-format` | `/convert-files-format` — แปลง file format (json/yaml/toml ฯลฯ) |
+| `git-submodules` | `/convert-git-submodules` — directory → git submodule |
+| `scripts` | `/convert-scripts` — แปลง commands เป็น runnable scripts |
+| `svg` | `/convert-svg` — image → SVG conversion |
 
 1. ระบุ domain จาก argument (เช่น `/convert esm`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
 - conversion ที่แตะไฟล์ที่มี references → `/update-references` เสมอ
 
 - ใช้ /refactor ถ้าจำเป็น
@@ -46,4 +46,4 @@ Dispatch ไป subskill ตาม domain ของ conversion — parent ทำ
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้วแปลงตาม flow นั้น
+- caller ถูก dispatch ไป skill ที่ตรง domain แล้วแปลงตาม flow นั้น
