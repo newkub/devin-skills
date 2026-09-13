@@ -19,7 +19,7 @@ related:
 
 1. อ่าน workspace list จาก Prepare Context step
 2. ตรวจว่า features จากทุก workspace ถูกวิเคราะห์ใน `docs/project/features.md`
-3. สำหรับแต่ละ workspace ให้ตรวจ source code areas (routes, modules, schema, API) เหมือน `references/coverage.md`
+3. สำหรับแต่ละ workspace ให้ตรวจ source code areas (routes, modules, schema, API) เหมือน `references/features-coverage.md`
 4. ถ้า workspace ขาดจาก docs → flag เป็น `High`
 
 ### 2. Each Feature Specifies Workspace

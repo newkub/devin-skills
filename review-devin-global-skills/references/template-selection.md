@@ -1,6 +1,6 @@
 # Template Selection Rules
 
-ตรวจสอบว่า skill เลือก template ตรงกับ prefix ตาม `templates/index.md`
+ตรวจสอบว่า skill เลือก template ตรงกับ prefix ตาม `update-devin-global-skills/templates/index.md`
 
 ## Prefix To Template Mapping
 
@@ -30,7 +30,7 @@
 
 ## Validation Steps
 
-1. อ่าน `templates/index.md` เพื่อดู mapping ปัจจุบัน
+1. อ่าน `update-devin-global-skills/templates/index.md` เพื่อดู mapping ปัจจุบัน
 2. ตรวจ prefix ของ skill name
 3. เปรียบเทียบ structure ของ `SKILL.md` กับ template ที่ควรใช้
 4. ถ้า mismatch ให้ตรวจ `## Scope` ว่ามีเหตุผลหรือไม่

@@ -14,7 +14,7 @@
 4. ทำ `/list-dependencies` เพื่อดู dependencies ทั้งหมด
 5. ถ้าเป็น monorepo → ตรวจทุก workspaces และ dependency graph ข้าม workspaces
 6. ถ้าไม่มี dependencies → stop และ report
-7. ถ้า project ไม่ใช่ library → ข้าม library design checks ใน `references/lib-design.md`
+7. ถ้า project ไม่ใช่ library → ข้าม library design checks ใน `references/techstack-lib-design.md`
 
 ## Expected Outcome
 

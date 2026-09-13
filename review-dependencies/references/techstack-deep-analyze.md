@@ -13,10 +13,10 @@
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-6. Analyzer ตรวจสอบ framework versions, compatibility matrix, และ EOL status — ดู `references/techstack.md`
-7. Analyzer ตรวจสอบ dependency versions, security, unused, circular, license — ดู `references/dependencies.md`
-8. Analyzer ตรวจสอบ library API, bundle size, tree-shaking, peer deps, semver — ดู `references/lib-design.md`
-9. Review CLI คำนวณ tech stack review score จาก review report — ดู `references/scoring.md`
+6. Analyzer ตรวจสอบ framework versions, compatibility matrix, และ EOL status — ดู `references/techstack-techstack.md`
+7. Analyzer ตรวจสอบ dependency versions, security, unused, circular, license — ดู `references/techstack-dependencies.md`
+8. Analyzer ตรวจสอบ library API, bundle size, tree-shaking, peer deps, semver — ดู `references/techstack-lib-design.md`
+9. Review CLI คำนวณ tech stack review score จาก review report — ดู `references/techstack-scoring.md`
 10. ถ้า review CLI ไม่ผ่าน → ทำ `/deep-review` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ## Expected Outcome

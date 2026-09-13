@@ -3,7 +3,7 @@
 ## Validate Findings
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. จัดลำดับตาม severity ตาม `references/severity.md`: Critical → High → Medium → Low
+2. จัดลำดับตาม severity ตาม `references/completeness-severity.md`: Critical → High → Medium → Low
 3. จัดกลุ่กตาม critical path: schema → data → API → UI/flow
 4. ระบุ false positives
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step Analyze

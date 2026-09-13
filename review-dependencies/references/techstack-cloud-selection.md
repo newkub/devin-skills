@@ -13,7 +13,7 @@
 1. ระบุ workload pattern: long-running, burst, scale-to-zero, CPU-heavy, edge, stateful, database, static
 2. ระบุ requirements: latency, throughput, scale, persistence, budget, team familiarity, lock-in tolerance
 3. อ่าน `references/techstack-catalog.md` เพื่อดู cloud, deployment, storage, auth, database options ที่ใช้งาน
-4. ดู `references/cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
+4. ดู `references/techstack-cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
 5. ระบุ trade-offs, avoid conditions, และ alternatives ของแต่ละ scenario
 6. บันทึก recommended cloud providers พร้อมเหตุผล
 

@@ -8,7 +8,7 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/refactor` แล้ว — ใช้ `/refactor` เป็น canonical skill (codebase scope → `references/codebase-refactor.md`)
+Skill นี้ถูก merge เข้ากับ `/refactor` แล้ว — ใช้ `/refactor` เป็น canonical skill (codebase scope → `refactor/references/codebase-refactor.md`)
 
 ## Scope
 
@@ -16,7 +16,7 @@ Skill นี้ถูก merge เข้ากับ `/refactor` แล้ว �
 
 ## Execute
 
-1. ทำ `/refactor` โดยเลือก codebase refactor scope ตาม `references/codebase-refactor.md`
+1. ทำ `/refactor` โดยเลือก codebase refactor scope ตาม `refactor/references/codebase-refactor.md`
 
 
 ## Rules

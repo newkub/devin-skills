@@ -15,7 +15,7 @@
 5. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 6. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
 7. สร้างตาราง Cloud Selection: scenario, workload, latency, scale, state, best cloud, runtime, why, trade-offs, avoid if, alternatives
-8. แสดง tech stack review score พร้อม progress bar และ grade — ดู `references/scoring.md`
+8. แสดง tech stack review score พร้อม progress bar และ grade — ดู `references/techstack-scoring.md`
 9. ทำ `/suggest-next-action`
 
 ## Expected Outcome

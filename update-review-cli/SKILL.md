@@ -35,7 +35,7 @@ related:
 5. ถ้าผลเป็น `skip` → ไป Step 8
 6. ถ้าผลเป็น `update` หรือ `create` → ดำเนินขั้นตอนถัดไป
 7. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
-8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` ตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count และ evidence
+8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `deep-review/references/review-checklist.md` ตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count และ evidence
 9. ถ้า pre-review score < 70 → ทำ Step 2-7 ก่อน Step 8
 
 ### 2. Scan Codebase Features

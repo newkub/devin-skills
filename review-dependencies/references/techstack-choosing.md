@@ -31,7 +31,7 @@
 3. Go: Go build
 ### 5. Choose Deployment Platform
 > Goal: เลือก deployment platform ที่เหมาะกับ scale, budget, และ workload pattern
-1. ดู `references/cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
+1. ดู `references/techstack-cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
 2. ระบุ deployment pattern: serverless, container, long-running, edge, static
 3. เลือก provider ตาม latency, cost, scale, state, และ team expertise
 ### 6. Create Decision Matrix

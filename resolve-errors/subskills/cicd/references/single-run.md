@@ -42,7 +42,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
 3. ถ้าไม่มี argument → ค้นหาจาก:
    - environment variable `DEPLOY_URL`, `PREVIEW_URL`, `VERCEL_URL`, `CF_PAGES_URL`
    - CI/CD log ล่าสุดทีมี run ID หรือ URL
-   - `references/targets.md` ใน `watch-deploy`
+   - `watch-deploy/references/targets.md` ใน `watch-deploy`
    - `references/runs.md` ใน `/resolve-errors cicd`
 4. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
@@ -81,7 +81,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
 
 > Goal: ระบุ deployment target และ URL
 1. ใช้ `url-or-target` จาก argument ถ้ามี
-2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, `watch-deploy/references/targets.md`
+2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, `watch-deploy/watch-deploy/references/targets.md`
 3. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
 ### 6. CD: Determine Platform
@@ -160,7 +160,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
 ### 6. Rollback Recommendation
 - ถ้า timeout หรือไม่ผ่านหลัง 5 รอบ → แนะนำ rollback command ตาม platform
 - ไม่ rollback อัตโนมัติ รอ user ตัดสินใจ
-- ระบุ platform-specific rollback จาก `watch-deploy/references/targets.md`
+- ระบุ platform-specific rollback จาก `watch-deploy/watch-deploy/references/targets.md`
 
 ### 7. Timeout
 - `perRoundTimeout` = 300 วินาที สำหรับ resolve + re-run/re-deploy

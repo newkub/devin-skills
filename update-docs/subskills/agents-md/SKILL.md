@@ -62,7 +62,7 @@ related:
 ### 4. Write AGENTS.md
 
 > Goal: เขียน AGENTS md
-1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` และ `references/frontmatter.md`
+1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` และ `update-devin-global-skills/references/frontmatter.md`
 2. เริ่มจาก `references/agents-template.md` สำหรับ root `AGENTS.md`
 3. เขียน sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 4. เพิ่ม `### Architecture`, `### Platform`, `### Target User`, `### Skills`, `### Workspaces` ถ้าเกี่ยวข้อง

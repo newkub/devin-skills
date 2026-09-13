@@ -27,7 +27,7 @@ related:
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
 2. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/review-issue` เพื่อรวบรวม findings ของ issue
-3. ทำ `/review-gaps` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `references/dimension-map.md` ของ `/review-gaps` สแกนกว้างก่อน
+3. ทำ `/review-gaps` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `review-gaps/references/dimension-map.md` ของ `/review-gaps` สแกนกว้างก่อน
 4. รวบรวม prioritized list พร้อม severity และ evidence
 
 ### 2. Present And Confirm
