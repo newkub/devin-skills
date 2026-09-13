@@ -119,7 +119,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 1. ทำตาม `references/deploy-verify.md`
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
-3. ทำ `/run-test api` สำหรับ endpoints สำคัญ
+3. ทำ `/run-test-api` สำหรับ endpoints สำคัญ
 4. ทำ `/check-security-headers` บน deployed URL
 5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
 6. ถ้า failed → แนะนำ rollback ด้วย `git revert <merge-commit>` หรือ redeploy version เดิม พร้อม evidence

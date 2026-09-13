@@ -78,7 +78,7 @@
 - ไม่ปิด finding โดยไม่ re-audit
 
 - ใช้ /review-uxui ถ้าจำเป็น
-- ใช้ /run-test (e2e) ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น

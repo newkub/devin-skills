@@ -86,7 +86,7 @@ related:
 
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /run-test (api) ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

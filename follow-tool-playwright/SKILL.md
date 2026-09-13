@@ -228,7 +228,7 @@ related:
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /run-test (e2e) ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
 
 ## References
 

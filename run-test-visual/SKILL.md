@@ -87,7 +87,7 @@ related:
 
 - ใช้ /capture ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /run-test (e2e) ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
 
 ## Expected Outcome
 

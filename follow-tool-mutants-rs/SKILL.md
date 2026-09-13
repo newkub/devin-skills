@@ -123,7 +123,7 @@ related:
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /run-test (mutation) ถ้าจำเป็น
+- ใช้ /run-test-mutation ถ้าจำเป็น
 
 ## References
 

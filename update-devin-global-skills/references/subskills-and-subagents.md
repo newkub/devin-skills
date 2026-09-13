@@ -58,7 +58,7 @@
 
 ### Consolidation — Domain Subskills
 
-เมื่อ top-level skills หลายตัวทำงานเดียวกันใน domain เดียวกัน (เช่น `/run-test e2e`, `/run-test api` → `run-test`) ให้ย้ายเนื้อหาไป `parent/subskills/<domain>/` โดยใช้ domain name เป็น subskill name — ไม่ต้องมี lifecycle prefix — แล้วตั้ง parent เป็น dispatcher ที่มี `### Subskills` table
+เมื่อ top-level skills หลายตัวทำงานเดียวกันใน domain เดียวกัน (เช่น `/list-github-pr`, `/list-github-issue` → `list-github`) ให้ย้ายเนื้อหาไป `parent/subskills/<domain>/` โดยใช้ domain name เป็น subskill name — ไม่ต้องมี lifecycle prefix — แล้วตั้ง parent เป็น dispatcher ที่มี `### Subskills` table; ในทางกลับกัน ถ้า subskill เป็น standalone intent ที่ user เรียกเองบ่อย → promote เป็น top-level `<parent>-<domain>` แล้วให้ parent dispatch ด้วยตาราง skill names
 
 - pattern เดียวกับที่ `update-tests` merge `update-e2e-test`/`update-unit-test`/`update-integration-test`/`update-test-and-fix`
 - ต้อง bulk-update callers `/old-skill` → `/parent` ทั้ง repo แล้ว verify ไม่มี dangling refs ก่อนลบ dir เดิม

@@ -30,22 +30,22 @@ related:
 
 > Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
 
-### Subskills
+### Test Domain Skills
 
-> Goal: dispatch ไปยัง test domain subskill ที่ตรง topic
+> Goal: dispatch ไปยัง test domain skill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| api | `subskills/api/SKILL.md` — REST/GraphQL/tRPC/WebSocket endpoints, response contract checks |
-| cli | `subskills/cli/SKILL.md` — CLI commands, exit codes, stdout/stderr, flags, error paths |
-| contract | `subskills/contract/SKILL.md` — consumer/provider contract verification, drift detection |
-| coverage | `subskills/coverage/SKILL.md` — coverage analysis, 100% thresholds, gap loop |
-| e2e | `subskills/e2e/SKILL.md` — Playwright browser tests, all routes, agent-browser exploratory |
-| integration | `subskills/integration/SKILL.md` — module interactions, data flow, test DB/services |
-| mutation | `subskills/mutation/SKILL.md` — mutation testing, surviving mutants, weak assertions |
-| visual | `subskills/visual/SKILL.md` — visual regression, screenshot diff vs baseline |
+| Topic | Skill |
+|-------|-------|
+| api | `/run-test-api` — REST/GraphQL/tRPC/WebSocket endpoints, response contract checks |
+| cli | `/run-test-cli` — CLI commands, exit codes, stdout/stderr, flags, error paths |
+| contract | `/run-test-contract` — consumer/provider contract verification, drift detection |
+| coverage | `/run-test-coverage` — coverage analysis, 100% thresholds, gap loop |
+| e2e | `/run-test-e2e` — Playwright browser tests, all routes, agent-browser exploratory |
+| integration | `/run-test-integration` — module interactions, data flow, test DB/services |
+| mutation | `/run-test-mutation` — mutation testing, surviving mutants, weak assertions |
+| visual | `/run-test-visual` — visual regression, screenshot diff vs baseline |
 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<domain>/SKILL.md` แทน steps ด้านล่าง
+1. ถ้า argument ตรง topic → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้นแทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ (unit/fast tests)
 
 ### 1. Detect Test Framework
@@ -95,7 +95,7 @@ related:
 1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
 2. List failures พร้อม file:line และ classification (source/test/environment)
 3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/reports/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/reports/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
-4. ถ้ามี coverage flag → dispatch `subskills/coverage/SKILL.md` ต่อ
+4. ถ้ามี coverage flag → ทำ `/run-test-coverage` ต่อ
 5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules
@@ -124,7 +124,7 @@ related:
 - ห้ามแก้ test หรือ source โดยไม่มี evidence จากการตรวจสอบ
 - ถ้า failure มาจาก missing dependency → `/run-install`
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ domain subskills ตาม `### Subskills` dispatch table ถ้าจำเป็น
+- ใช้ domain skills ตาม `### Test Domain Skills` dispatch table ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

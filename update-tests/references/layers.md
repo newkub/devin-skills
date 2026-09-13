@@ -34,7 +34,7 @@
 - Real implementations ที่ boundary; mock เฉพาะ third-party ที่ควบคุมไม่ได้
 - seed/cleanup ต่อ test — ไม่ leak data; `< 100ms` ต่อ test
 - Location: `tests/integration/`
-- Runner: `/run-test integration`; API-specific → `/run-test api`
+- Runner: `/run-test-integration`; API-specific → `/run-test-api`
 
 ## E2E (10%)
 
@@ -43,7 +43,7 @@
 - Reuse auth via `storageState`; fixtures/page objects ตาม suite conventions
 - Auto-waiting locators + `expect` polling — ห้าม `waitForTimeout` มั่ว
 - traces/videos/screenshots ไป test-results dir — ไม่ commit artifacts
-- Conventions → `/follow-tool-playwright`; runner → `/run-test e2e`
+- Conventions → `/follow-tool-playwright`; runner → `/run-test-e2e`
 
 ## Contract
 
@@ -63,4 +63,4 @@
 - Performance: critical paths ≤ threshold — รันใน CI
 - Security: auth bypass, IDOR, injection, rate limiting — รันใน CI
 - Accessibility: WCAG/ARIA/keyboard nav บน UI components
-- Visual: screenshot regression ผ่าน Playwright/component snapshots — `/run-test visual`
+- Visual: screenshot regression ผ่าน Playwright/component snapshots — `/run-test-visual`

@@ -71,7 +71,7 @@ Apply UX/UI findings จาก `/review-uxui` หรือ stakeholder review �
 
 1. Reload และ capture after ที่ viewport/route เดียวกับ before — ตั้งชื่อ `*-after.png`
 2. ทำ `/review-by-stakeholder` อีกครั้งเพื่อยืนยัน — สูงสุด 3 รอบ review/fix
-3. รัน `/run-test e2e` ถ้ามี — interactions ต้องไม่พัง
+3. รัน `/run-test-e2e` ถ้ามี — interactions ต้องไม่พัง
 4. Persist report ที่ `.devin/reports/<workspace>/uxui-<time>.md` ตาม parent fix flow
 
 ### 5. Report

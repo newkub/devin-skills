@@ -98,7 +98,7 @@ related:
 
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /review-update ถ้าจำเป็น
-- ใช้ /run-test (coverage) ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
 ## Expected Outcome

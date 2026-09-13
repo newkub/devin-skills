@@ -73,7 +73,7 @@ related:
 ### 3. Read-Only
 
 - ไม่แก้ code — ถ้าต้องการแก้ให้ทำ `/deep-review-then-fix` หรือ `/refactor`
-- ใช้ /run-test coverage ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /run-typecheck ถ้าจำเป็น
 
 ## Expected Outcome

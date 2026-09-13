@@ -103,7 +103,7 @@ bun <skill-dir>/scripts/check-routes.ts --base <domain> --routes-file routes.txt
 - ทุก finding มี actual status และ response time จริง ห้ามเดา
 - ถ้า route ทั้งหมด fail pattern เดียวกัน (เช่น ทุก endpoint 404) → เช็ค base path / deploy ก่อน route-level
 
-- ใช้ /run-test (api) ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /check-api-contract ถ้าจำเป็น
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /gen-openapi ถ้าจำเป็น
