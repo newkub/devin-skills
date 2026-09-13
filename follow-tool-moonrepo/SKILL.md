@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-tool-mise
+  - follow-tool-github-actions
+  - use-subagents
   - run-build
   - run-lint
   - run-test
@@ -30,6 +32,11 @@ related:
 | Install moon, `moon init`, `.moon/` workspace layout | `subskills/setup-moonrepo/SKILL.md` |
 | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `subskills/config-pipeline/SKILL.md` |
 | Cache tuning, `--affected` targets | `subskills/optimize-cache/SKILL.md` |
+| `moon ci` — CI pipeline, `runInCI`, sharding, reports | `subskills/run-ci/SKILL.md` |
+
+### Subagents
+
+- ใช้ `subagents/project-configurator.md` เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
 
 ### 1. Install moon
 
@@ -87,14 +94,24 @@ related:
 4. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
 5. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
 
-### 6. Verify
+### 6. Integrate CI
+
+> Goal: CI pipeline ใช้ `moon ci` อย่างถูกต้อง
+
+1. ใช้ `moon ci` แทน `moon run` บน CI — รันเฉพาะ affected tasks ที่มี `runInCI`
+2. ตั้ง `runInCI: false` สำหรับ long-running tasks (`dev`, `start`, `serve` ปิด default)
+3. ต้อง full git history — ห้าม shallow clone (ใช้ `filter: 'blob:none'`)
+4. ทำตาม `subskills/run-ci/SKILL.md` สำหรับ provider config, sharding และ reports
+
+### 7. Verify
 
 > Goal: ตรวจสอบว่า moonrepo ทำงานได้
 
 1. รัน `moon check` หรือ `moon run :check`
 2. รัน `moon run :build` เพื่อตรวจ project graph
-3. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
-4. ทำ `/deep-validate` เพื่อ verify setup
+3. รัน `moon ci` บน test branch เพื่อยืนยัน affected detection
+4. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
+5. ทำ `/deep-validate` เพื่อ verify setup
 
 ## Rules
 
@@ -119,6 +136,8 @@ related:
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
@@ -127,6 +146,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
+- [moon ci — CI guide, providers, sharding](references/ci.md)
 
 - ใช้ /run-test-all ถ้าจำเป็น
 
@@ -136,5 +156,6 @@ related:
 - ไม่มี `turbo.json` หรือ `turbo` dependency
 - root scripts ใช้ `moon run`
 - project graph สามารถ build ได้
+- `moon ci` พร้อมบน CI provider — affected detection + `runInCI` ถูกต้อง
 - รองรับ JS/Bun packages และ Rust crates
 
