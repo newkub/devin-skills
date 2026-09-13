@@ -111,7 +111,7 @@ related:
 
 - ใช้ /list-github star ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn (web) ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 
 ## Expected Outcome
 

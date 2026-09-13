@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวกับ Cloudflare Workers, Pages, KV, D1, R2, Queues, Durable Objects — ครอบคลุม local dev, deploy, config (`wrangler.toml`/`wrangler.jsonc`) และ observability — สร้าง project ใหม่ทำตาม `/create-cloudflare worker` ก่อนแล้วใช้ skill นี้สำหรับ day-to-day commands
+ใช้เมื่อ task เกี่ยวกับ Cloudflare Workers, Pages, KV, D1, R2, Queues, Durable Objects — ครอบคลุม local dev, deploy, config (`wrangler.toml`/`wrangler.jsonc`) และ observability — สร้าง project ใหม่ทำตาม `/create-cloudflare-worker` ก่อนแล้วใช้ skill นี้สำหรับ day-to-day commands
 
 ## Execute
 

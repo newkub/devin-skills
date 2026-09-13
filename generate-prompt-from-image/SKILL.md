@@ -81,8 +81,8 @@ related:
 - ไม่ใช้ small talk ในผลลัพธ์
 - ถ้าต้องการคำอธิบายเพิ่ม ให้สรุปสั้นๆ
 
-- ใช้ /gen-media ai-images ถ้าจำเป็น
-- ใช้ /gen-media image-character ถ้าจำเป็น
+- ใช้ /gen-media-ai-images ถ้าจำเป็น
+- ใช้ /gen-media-image-character ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -116,7 +116,7 @@ related:
 ### 5. Scope Per Issue
 
 - implement เฉพาะสิ่งที่ issue ระบุ ไม่ขยาย scope
-- ถ้าพบงานเพิ่มเติม → สร้าง issue ใหม่ผ่าน `/create-github issue` แทนการทำเกิน scope
+- ถ้าพบงานเพิ่มเติม → สร้าง issue ใหม่ผ่าน `/create-github-issue` แทนการทำเกิน scope
 
 ## Expected Outcome
 

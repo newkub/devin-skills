@@ -67,7 +67,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `skill-format: /update-devin-global-skills` for create and update
 - `global-rules: /update-devin global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
-- `submodules: open-files-in-web, open-devin-in-web, create-github/subskills/pr`
+- `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
 
 ### 3. Platform
 
@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **682** top-level skills (1030 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
+The repository currently contains **702** top-level skills (1030 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
 
@@ -130,7 +130,7 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 ### 6. Workspaces
 
 - Not a package monorepo: single root workspace (`%APPDATA%\devin\skills\`).
-- Git submodules: `open-files-in-web`, `open-devin-in-web`, `create-github/subskills/pr`.
+- Git submodules: `open-files-in-web`, `open-devin-in-web`, `create-github-pr`.
 
 ### 7. Subagents
 

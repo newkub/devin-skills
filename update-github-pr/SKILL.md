@@ -33,7 +33,7 @@ related:
 
 > Goal: แก้ไขเนื้อหาหลักของ PR
 
-1. อ่าน PR template จาก `.github/PULL_REQUEST_TEMPLATE.md` หรือ `create-github/subskills/pr/templates/pr.md` ถ้ามี
+1. อ่าน PR template จาก `.github/PULL_REQUEST_TEMPLATE.md` หรือ `create-github-pr/templates/pr.md` ถ้ามี
 2. แทนที่ placeholders ด้วยข้อมูลใหม
 3. บันทึกลง temp file
 4. รัน `gh pr edit <number> --body-file <body.md>`
@@ -78,8 +78,8 @@ related:
 ### 2. Templates
 
 - ถ้าแก้ไข PR body ให้ใช้ repo PR template ก่อน
-- ถ้าไม่มี template ให้ใช้ `create-github/subskills/pr/templates/pr.md` หรือสร้างใหม
-- ถ้า PR เกี่ยวกับ `idea` features ให้ใช้ `create-github/subskills/issue/templates/idea.md` สำหรับ feature comments ถ้าจำเป็น
+- ถ้าไม่มี template ให้ใช้ `create-github-pr/templates/pr.md` หรือสร้างใหม
+- ถ้า PR เกี่ยวกับ `idea` features ให้ใช้ `create-github-issue/templates/idea.md` สำหรับ feature comments ถ้าจำเป็น
 
 ### 3. Review Workflow
 

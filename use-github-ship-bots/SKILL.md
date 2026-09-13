@@ -113,7 +113,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 8. Create PR
 
 > Goal: สร้าง PR
-1. ใช้ `/create-github pr`
+1. ใช้ `/create-github-pr`
 2. ใส่ `Closes #<issue>` ใน PR body
 3. แนบ screenshots, test results, staging preview
 

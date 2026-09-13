@@ -47,7 +47,7 @@ Subagent สำหรับ implement GitHub issue เดียวแบบค�
 2. ยืนยันว่า issue เป็น `--author @me` ตาม scope ของ parent — ถ้าไม่ใช่คืน `skipped`
 3. วาง implementation plan สั้นจาก acceptance criteria — ถ้าซับซ้อนให้ทำ `/create-plan-in-dot-devin`
 4. สร้าง branch ตาม `branch-convention`
-5. Implement เฉพาะสิ่งที่ issue ระบุ — ถ้าพบงานเพิ่มเติมให้บันทึกไว้แนะนำ `/create-github issue` ไม่ทำเอง
+5. Implement เฉพาะสิ่งที่ issue ระบุ — ถ้าพบงานเพิ่มเติมให้บันทึกไว้แนะนำ `/create-github-issue` ไม่ทำเอง
 6. รัน `verify-commands` — lint, typecheck, tests ผ่านก่อนคืน
 7. Commit ตาม conventional commits — ไม่ push และไม่เปิด PR เอง เว้นแต่ parent สั่ง
 

@@ -50,9 +50,9 @@ related:
 - Follow the project conventions and global rules (cli)
 - Use the allowed tools only when needed
 
-- ใช้ /learn (pattern) ถ้าจำเป็น
-- ใช้ /learn (references) ถ้าจำเป็น
-- ใช้ /learn (web) ถ้าจำเป็น
+- ใช้ /learn-pattern ถ้าจำเป็น
+- ใช้ /learn-references ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /run-test (cli) ถ้าจำเป็น
 
 ## Expected Outcome

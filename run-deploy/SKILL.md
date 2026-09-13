@@ -59,7 +59,7 @@ Deploy application ตาม platform ที่ใช้
 
 1. สำหรับ Vercel: ทำ `/deploy-to-vercel`
 2. สำหรับ Cloudflare:
-   - ถ้า Worker project ยังไม่ถูกสร้าง → ทำ `/create-cloudflare worker` ก่อน
+   - ถ้า Worker project ยังไม่ถูกสร้าง → ทำ `/create-cloudflare-worker` ก่อน
    - จากนั้นทำ `/deploy-to-cloudflare`
 3. สำหรับ Railway: ทำ `/deploy-to-railway`
 4. สำหรับ platform อื่น: ทำตาม workflow ที่เกี่ยวข้อง

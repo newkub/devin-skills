@@ -5,5 +5,5 @@
 	path = open-files-in-web
 	url = ../open-files-in-web.git
 [submodule "create-github-pr"]
-	path = create-github/subskills/pr
+	path = create-github-pr
 	url = ../create-github-pr.git

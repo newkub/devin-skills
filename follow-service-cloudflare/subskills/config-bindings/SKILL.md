@@ -51,7 +51,7 @@ related:
    - vars → `[vars]` สำหรับ non-secret values
 2. binding name ต้องตรงกับที่ code อ้างผ่าน `env.*`
 3. secrets ห้ามใส่ใน `vars` — ใช้ `wrangler secret put` ผ่าน `/follow-secret-manager`
-4. ถ้าไม่แน่ใจ schema → ดู official docs ผ่าน `/learn web` หรือ `/use-wrangler`
+4. ถ้าไม่แน่ใจ schema → ดู official docs ผ่าน `/learn-web` หรือ `/use-wrangler`
 
 ### 4. Configure Environments
 

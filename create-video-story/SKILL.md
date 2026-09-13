@@ -21,7 +21,7 @@ related:
 - ถาม user เรื่อง style, orientation, และความยาว
 - สร้าง story structure, บุคลิกตัวละคร, และ hooks
 - สร้างรายละเอียดฉาก ได้แก่ เสียง ท่าทาง ฉากหลัง สีหน้า อารมณ์ และอื่นๆ
-- สร้างภาพแต่ละฉาก โดยเรียก `/gen-media image-character` เพื่อความคงเส้นคงวาของตัวละคร
+- สร้างภาพแต่ละฉาก โดยเรียก `/gen-media-image-character` เพื่อความคงเส้นคงวาของตัวละคร
 - สร้างวิดีโอจากภาพ/ prompt และสร้าง subtitle
 
 ## Execute
@@ -68,7 +68,7 @@ related:
 
 > Goal: สร้าง reference ภาพตัวละครหลัก
 
-1. สำหรับตัวละครหลักแต่ละตัว เรียก `/gen-media image-character`
+1. สำหรับตัวละครหลักแต่ละตัว เรียก `/gen-media-image-character`
 2. ส่ง character brief, style, aspect-ratio, output path
 3. เก็บ character anchor image และ prompt anchor
 4. ตรวจสอบว่าภาพตัวละครคงเส้นคงวากัน
@@ -81,7 +81,7 @@ related:
    - character anchor และ reference image
    - scene setting, pose, expression, camera angle
    - lighting, mood, style
-2. เรียก `/gen-media ai-images` หรือ `/gen-media image-character` ตามลักษณะฉาก
+2. เรียก `/gen-media-ai-images` หรือ `/gen-media-image-character` ตามลักษณะฉาก
 3. บันทึกภาพแต่ละฉากด้วยชื่อเรียงลำดับ เช่น `scene-01.png`
 4. ตรวจสอบไฟล์มีขนาด > 0
 
@@ -99,7 +99,7 @@ related:
 > Goal: สร้างวิดีโอจากภาพและเสียง
 
 1. เลือกวิธีสร้างวิดีโอ:
-   - เรียก `/gen-media ai-videos` จาก prompt หรือ image sequence
+   - เรียก `/gen-media-ai-videos` จาก prompt หรือ image sequence
    - ใช้ `/follow-lib-remotion` ถ้าต้องการ render แบบโปรแกรมมิ่ง
 2. ระบุ duration, aspect-ratio, และ fps
 3. ตรวจสอบ video file มีขนาด > 0
@@ -142,7 +142,7 @@ related:
 
 ### 2. Consistency
 
-- ใช้ `/gen-media image-character` เพื่อสร้าง reference ตัวละครก่อน
+- ใช้ `/gen-media-image-character` เพื่อสร้าง reference ตัวละครก่อน
 - เก็บ prompt anchor และ seed ของตัวละครใน context
 - เปลี่ยนเฉพาะ pose/expression/background ระหว่างฉาก
 

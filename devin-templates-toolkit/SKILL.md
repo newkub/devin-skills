@@ -24,7 +24,7 @@ related:
 - CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
 - Package setup templates สำหรับ `/setup-package`
 - Documentation templates (`/write-how-to`, `/update-docs-agents-md`, README.md)
-- Cloudflare templates สำหรับ `/create-cloudflare worker`
+- Cloudflare templates สำหรับ `/create-cloudflare-worker`
 
 ## Execute
 

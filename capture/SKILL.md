@@ -25,17 +25,17 @@ Capture ภาพหรือวิดีโอหลักฐานตาม ta
 
 ### 1. Select Target
 
-> Goal: ระบุ capture target และ dispatch ไป subskill
+> Goal: ระบุ capture target และ dispatch ไป skill
 
-| Target      | Subskill |
-|-------------|----------|
-| `web`       | `subskills/web/SKILL.md` — `agent-browser` CLI, screenshot/PDF |
-| `component` | `subskills/component/SKILL.md` — capture component เฉพาะส่วน |
-| `terminal`  | `subskills/terminal/SKILL.md` — terminal capture ตาม OS |
-| `app`       | `subskills/app/SKILL.md` — OS screenshot tool |
+| Target      | Skill |
+|-------------|-------|
+| `web`       | `/capture-web` — `agent-browser` CLI, screenshot/PDF |
+| `component` | `/capture-component` — capture component เฉพาะส่วน |
+| `terminal`  | `/capture-terminal` — terminal capture ตาม OS |
+| `app`       | `/capture-app` — OS screenshot tool |
 
 1. อ่าน target type จาก argument — ถ้าไม่ระบุ → ถาม user
-2. อ่าน `subskills/<target>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. เรียก skill ตามตารางแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Capture
 

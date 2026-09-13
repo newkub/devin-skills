@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับงานที่ต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ libraries, หา best practices, ตรวจสอบ compatibility, benchmarks, security, migration, licensing ไม่ใช่การค้นหาเร็วๆ (ใช้ `/learn web`) และไม่ใช่การอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
+ใช้สำหรับงานที่ต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ libraries, หา best practices, ตรวจสอบ compatibility, benchmarks, security, migration, licensing ไม่ใช่การค้นหาเร็วๆ (ใช้ `/learn-web`) และไม่ใช่การอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
 
 ## Execute
 

@@ -1,6 +1,6 @@
 ---
 name: gen-media
-description: สร้าง media ด้วย AI — images, videos, character consistency, 3D models ผ่าน subskills
+description: สร้าง media ด้วย AI — images, videos, character consistency, 3D models ผ่าน gen-media-* skills
 argument-hint: "[domain]"
 related:
   - generate-prompt-from-image
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม media domain — parent ทำ routing เท่านั้น
+Dispatch ไป skill ตาม media domain — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -21,22 +21,22 @@ Dispatch ไป subskill ตาม media domain — parent ทำ routing เท
 
 ## Execute
 
-### Subskills
+### Gen Media Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `ai-images` | `subskills/ai-images/SKILL.md` — สร้างรูปภาพด้วย AI ผ่าน bunx CLI |
-| `ai-videos` | `subskills/ai-videos/SKILL.md` — สร้างวิดีโอด้วย AI ผ่าน bunx CLI |
-| `image-character` | `subskills/image-character/SKILL.md` — สร้าง character ที่ consistency |
-| `3d-model` | `subskills/3d-model/SKILL.md` — สร้าง 3D model จาก prompt ด้วย AI CLI |
+| `ai-images` | `/gen-media-ai-images` — สร้างรูปภาพด้วย AI ผ่าน bunx CLI |
+| `ai-videos` | `/gen-media-ai-videos` — สร้างวิดีโอด้วย AI ผ่าน bunx CLI |
+| `image-character` | `/gen-media-image-character` — สร้าง character ที่ consistency |
+| `3d-model` | `/gen-media-3d-model` — สร้าง 3D model จาก prompt ด้วย AI CLI |
 
 1. ระบุ domain จาก argument (เช่น `/gen-media ai-images`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
 - ทุก prompt ที่สร้างต้อง confirm output path ก่อน generate
 
 - ใช้ /generate-prompt-from-image ถ้าจำเป็น
@@ -46,4 +46,4 @@ Dispatch ไป subskill ตาม media domain — parent ทำ routing เท
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้วสร้าง media ตาม flow นั้น
+- caller ถูก dispatch ไป skill ที่ตรง domain แล้วสร้าง media ตาม flow นั้น

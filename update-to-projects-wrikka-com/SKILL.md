@@ -81,7 +81,7 @@ related:
 - ใช้ /follow-create-web (solid-tanstack-router) ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-create-devin-project-skills ถ้าจำเป็น
-- ใช้ /create-cloudflare token ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /add-context-to-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome

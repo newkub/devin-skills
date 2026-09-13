@@ -41,7 +41,7 @@ related:
 > Goal: มี remote repo สำหรับ directory
 
 1. ตรวจสอบว่ามี remote repo อยู่แล้วหรือไม่
-2. ถ้ายังไม่มี → ใช้ `/create-github repo` หรือ `gh repo create <repo-name>`
+2. ถ้ายังไม่มี → ใช้ `/create-github-repo` หรือ `gh repo create <repo-name>`
 3. กำหนดชื่อ repo ให้สื่อถึง purpose ของ directory
 4. บันทึก remote URL สำหรับใช้ใน step ถัดไป
 5. ถ้ามี repo อยู่แล้ว → ยืนยันว่าว่างหรือใช้ branch ใหม่

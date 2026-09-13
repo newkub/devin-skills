@@ -78,7 +78,7 @@ related:
 - ใช้ environment variable หรือถาม user
 
 - ใช้ /gen-subtitle-video ถ้าจำเป็น
-- ใช้ /gen-media ai-videos ถ้าจำเป็น
+- ใช้ /gen-media-ai-videos ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -133,7 +133,7 @@ related:
 - ใช้ `open-in-zed` หรือ OS native command เท่านั้น
 
 - ใช้ `/implement-to-production` เมื่อต้องการทำงานตามแผน
-- ใช้ `/create-github issue` ถ้าต้องการส่งแผนไป GitHub issue
+- ใช้ `/create-github-issue` ถ้าต้องการส่งแผนไป GitHub issue
 - ใช้ `/plan` ถ้าจำเป็น
 
 ## Expected Outcome

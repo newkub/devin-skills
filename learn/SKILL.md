@@ -18,18 +18,18 @@ related:
 
 ## Execute
 
-### Subskills
+### Learn Skills
 
-| Topic | Subskill |
-|-------|----------|
-| Web / Official Docs | `subskills/web/SKILL.md` — เรียนรู้จากเว็บไซต์หลัก DeepWiki, Context7, Web Search |
-| CLI | `subskills/cli/SKILL.md` — สำรวจ subcommands, options, output ของ CLI tool |
-| Codebase | `subskills/codebase/SKILL.md` — learning path และ concept map ของ codebase |
-| Pattern | `subskills/pattern/SKILL.md` — สกัด reusable patterns จาก real-world code |
-| References | `subskills/references/SKILL.md` — เรียนรู้จาก `references/` และเขียน content ครอบคลุม |
-| Slides | `subskills/by-slide/SKILL.md` — สร้าง Slidev presentation สรุปความรู้ |
+| Topic | Skill |
+|-------|-------|
+| Web / Official Docs | `/learn-web` — เรียนรู้จากเว็บไซต์หลัก DeepWiki, Context7, Web Search |
+| CLI | `/learn-cli` — สำรวจ subcommands, options, output ของ CLI tool |
+| Codebase | `/learn-codebase` — learning path และ concept map ของ codebase |
+| Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
+| References | `/learn-references` — เรียนรู้จาก `references/` และเขียน content ครอบคลุม |
+| Slides | `/learn-by-slide` — สร้าง Slidev presentation สรุปความรู้ |
 
-อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+เรียก skill ตามตารางตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 1. Define Learning Target
 
@@ -58,7 +58,7 @@ related:
 
 > Goal: Learn From Web
 
-ทำ `/learn` (web) สำหรับเรียนรู้จากเว็บไซต์หลัก:
+ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก:
 
 1. ใช้ DeepWiki สำหรับ GitHub repositories
 2. ใช้ Context7 สำหรับ libraries และ frameworks
@@ -80,7 +80,7 @@ related:
 
 > Goal: Learn From Code Patterns
 
-ทำ `/learn` (pattern) เพื่อสกัด reusable patterns
+ทำ `/learn-pattern` เพื่อสกัด reusable patterns
 
 1. ค้นหา code patterns จาก real-world projects
 2. วิเคราะห์ patterns ที่ใช้ใน production codebases
@@ -113,7 +113,7 @@ related:
 ### 2. Research Standards
 
 - ทำ `/deep-research` สำหรับค้นหาข้อมูลลึกจาก multiple sources
-- ทำ `/learn` (web) สำหรับเรียนรู้จากเว็บไซต์หลัก
+- ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก
 - ตรวจสอบ credibility และ freshness ของข้อมูล
 - บันทึก code examples และ configuration examples
 

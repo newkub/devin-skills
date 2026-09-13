@@ -60,7 +60,7 @@ related:
 
 > Goal: สร้าง background image
 
-1. ถ้าใช้ AI generation → ใช้ `/gen-media ai-images` ด้วย prompt เฉพาะ
+1. ถ้าใช้ AI generation → ใช้ `/gen-media-ai-images` ด้วย prompt เฉพาะ
 2. ถ้าใช้ vector → ใช้ `/draw-svg-image`
 3. ถ้าใช้ geometric → ใช้ `/draw-tldraw` หรือ `/draw-excalidraw`
 4. Prompt ควรระบุ aspect ratio, style, และ mood
@@ -125,7 +125,7 @@ related:
 - สำหรับ web สามารถใช้ `webp` ได้
 
 - ใช้ /create-video-story ถ้าจำเป็น
-- ใช้ /gen-media image-character ถ้าจำเป็น
+- ใช้ /gen-media-image-character ถ้าจำเป็น
 
 ## Expected Outcome
 

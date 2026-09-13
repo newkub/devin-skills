@@ -67,7 +67,7 @@ related:
 - Review generated SQL ทุกครั้งก่อน apply — tool อาจ drop/create แทน alter
 - Destructive changes ต้องมี backup ก่อน — ไม่มี backup = ไม่ apply
 - ตรวจ version ใน `package.json` — v1.0 RC มี `drizzle-kit up`, `push --explain`, migration folder v3
-- ถ้าไม่แน่ใจ command/flag → ทำ `/learn web` ดู official docs
+- ถ้าไม่แน่ใจ command/flag → ทำ `/learn-web` ดู official docs
 
 ## Expected Outcome
 

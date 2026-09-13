@@ -35,7 +35,7 @@ related:
 3. ตรวจ `package.json` scripts และ build output
 4. ถ้าไม่มี `wrangler.toml` → สร้างใหม่ด้วย `name`, `main`, `compatibility_date`, และ `[assets]` หรือ `[site]`
 5. ตรวจ `wrangler --version` หรือ `bunx wrangler --version`
-6. ถ้า Wrangler ยังไม่ auth → รัน `bunx wrangler login` หรือใช้ `/create-cloudflare token` แล้ว `wrangler config`
+6. ถ้า Wrangler ยังไม่ auth → รัน `bunx wrangler login` หรือใช้ `/create-cloudflare-token` แล้ว `wrangler config`
 7. ตรวจ `CLOUDFLARE_ACCOUNT_ID` จาก `wrangler whoami` หรือให้ user ใส่
 8. ตรวจ Git remote ของ repo ปัจจุบัน:
    ```bash

@@ -41,7 +41,7 @@ related:
 - ใช้ /list-devin global-mcp ถ้าจำเป็น
 - ใช้ /update-devin global-mcp ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn (web) ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -22,7 +22,7 @@ related:
 - รองรับเฉพาะ Workers applications เท่านั้น — Pages ไม่รองรับ
 - repo ต้อง public บน `github.com` หรือ `gitlab.com` เท่านั้น — private repo หรือ self-hosted Git ไม่รองรับ
 - ครอบคลุม: ตรวจ prerequisites, เตรียม `wrangler` config, สร้าง button URL, แทรก snippet ใน `README.md`
-- ใช้ /create-cloudflare worker ถ้าจำเป็น
+- ใช้ /create-cloudflare-worker ถ้าจำเป็น
 
 ## Execute
 
@@ -105,7 +105,7 @@ related:
 - env vars ที่ต้องการให้ผู้กดตั้งเอง ให้ระบุใน README section `## Environment Variables`
 
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /create-cloudflare worker ถ้าจำเป็น
+- ใช้ /create-cloudflare-worker ถ้าจำเป็น
 - ใช้ /update-docs-readme-md ถ้าจำเป็น
 
 - ใช้ /review-dependencies ถ้าจำเป็น

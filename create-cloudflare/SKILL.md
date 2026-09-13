@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare
-description: สร้าง Cloudflare resources — worker, deploy button, API token ผ่าน subskills
+description: สร้าง Cloudflare resources — worker, deploy button, API token ผ่าน create-cloudflare-* skills
 argument-hint: "[domain]"
 related:
   - follow-service-cloudflare
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม Cloudflare resource ที่ต้องสร้าง — parent ทำ routing เท่านั้น
+Dispatch ไป skill ตาม Cloudflare resource ที่ต้องสร้าง — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -21,21 +21,21 @@ Dispatch ไป subskill ตาม Cloudflare resource ที่ต้องส�
 
 ## Execute
 
-### Subskills
+### Create Cloudflare Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `worker` | `subskills/worker/SKILL.md` — scaffold Worker ใหม่ |
-| `deploy-button` | `subskills/deploy-button/SKILL.md` — สร้าง deploy-to-Cloudflare button |
-| `token` | `subskills/token/SKILL.md` — สร้าง API token ด้วย scope ที่เหมาะ |
+| `worker` | `/create-cloudflare-worker` — scaffold Worker ใหม่ |
+| `deploy-button` | `/create-cloudflare-deploy-button` — สร้าง deploy-to-Cloudflare button |
+| `token` | `/create-cloudflare-token` — สร้าง API token ด้วย scope ที่เหมาะ |
 
 1. ระบุ domain จาก argument (เช่น `/create-cloudflare worker`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
 - credentials/token ใหม่ต้องผ่าน `/follow-secret-manager` — ห้าม commit
 
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
@@ -44,4 +44,4 @@ Dispatch ไป subskill ตาม Cloudflare resource ที่ต้องส�
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้วสร้าง resource ตาม flow นั้น
+- caller ถูก dispatch ไป skill ที่ตรง domain แล้วสร้าง resource ตาม flow นั้น

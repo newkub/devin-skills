@@ -43,7 +43,7 @@ related:
 > Goal: เชื่อมต่อ Wrangler กับ Cloudflare account
 
 1. Interactive: รัน `wrangler login` — เปิด browser ให้ user authorize
-2. CI/headless: ใช้ `CLOUDFLARE_API_TOKEN` environment variable — สร้าง token ตาม `/create-cloudflare token` แล้วเก็บผ่าน `/follow-secret-manager`
+2. CI/headless: ใช้ `CLOUDFLARE_API_TOKEN` environment variable — สร้าง token ตาม `/create-cloudflare-token` แล้วเก็บผ่าน `/follow-secret-manager`
 3. ห้าม commit token หรือใส่ใน config files
 
 ### 4. Verify

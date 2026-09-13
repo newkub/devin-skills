@@ -65,7 +65,7 @@ related:
 5. ต้องครอบคลุมทุกกรณีที่เป็นไปได้
 
 - ใช้ /review-architecture ถ้าจำเป็น
-- ใช้ /learn pattern ถ้าจำเป็น
+- ใช้ /learn-pattern ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 
 ## Expected Outcome

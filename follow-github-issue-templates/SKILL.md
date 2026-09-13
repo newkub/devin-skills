@@ -95,7 +95,7 @@ related:
 ### 4. Integration
 
 - ถ้า `/follow-dot-github` ถูกเรียก → ทำ `/follow-github-issue-templates` ใน Step 4
-- ถ้า `/create-github issue` ถูกเรียก → ใช้ templates เพื่อ guide issue ให้ตรงกับประเภท
+- ถ้า `/create-github-issue` ถูกเรียก → ใช้ templates เพื่อ guide issue ให้ตรงกับประเภท
 
 ## Expected Outcome
 

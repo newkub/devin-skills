@@ -36,7 +36,7 @@ related:
 
 > Goal: สำรวจ commands และ options ของแต่ละ tool
 
-1. ทำ `/learn cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
+1. ทำ `/learn-cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
 2. บันทึก commands, flags, argument types และ exit codes
 
 ### 3. Evaluate Conversion Candidates
@@ -56,7 +56,7 @@ related:
 > Goal: นำเสนอทิศทางถัดไป
 
 1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
-2. ถ้าข้อมูลไม่พอ → ทำ `/learn cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
+2. ถ้าข้อมูลไม่พอ → ทำ `/learn-cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
 ## Rules
@@ -82,7 +82,7 @@ related:
 
 - บันทึก command, subcommand, options ทั้งหมด
 - ระบุ flags ที่สำคัญสำหรับ common workflows
-- ไม่ duplicate ข้อมูลจาก `/learn cli`
+- ไม่ duplicate ข้อมูลจาก `/learn-cli`
 
 ### 3. Conversion Criteria
 

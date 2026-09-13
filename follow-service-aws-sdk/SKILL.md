@@ -79,7 +79,7 @@ Latest: `@aws-sdk/client-s3@3.1131.0` (verified 2026-09-12) — ใช้ AWS SD
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /learn web ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 
 ## Expected Outcome

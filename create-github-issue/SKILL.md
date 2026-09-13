@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-- ใช้ร่วมกับ skills: `/open github`, `/open github`, `/list-github issue`, `/follow-github-issue-templates`, `/create-github pr`, `/review-issue`, `/update-github-issue`
+- ใช้ร่วมกับ skills: `/open github`, `/open github`, `/list-github issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-issue`, `/update-github-issue`
 - รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
 - ไม่ใช่ project management tool ครบวงจร
 

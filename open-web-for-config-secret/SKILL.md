@@ -158,7 +158,7 @@ Map variable names ไปยัง services:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /create-cloudflare token ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-railway ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น

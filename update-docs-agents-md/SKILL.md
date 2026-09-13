@@ -49,7 +49,7 @@ related:
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
 3. map แต่ละ tech เป็น `tech: /follow-<tech>` ถ้ามี skill ตรง
-4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn (web)` หรือ `tech: none`
+4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
 5. อัปเดต `### Architecture` ใน root `AGENTS.md`
 
 ### 3. Define Platform And Target User
@@ -137,7 +137,7 @@ related:
 
 #### Merge
 
-1. repo ที่มี remote + PR workflow → `/create-github pr` + `/review-github-pr`
+1. repo ที่มี remote + PR workflow → `/create-github-pr` + `/review-github-pr`
 2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
 3. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
 4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge github-pr` เมื่อ user ยืนยัน)
@@ -186,7 +186,7 @@ related:
 ### 4. Architecture Mapping
 
 - ระบุ tech stack ด้วย `tech: /follow-<tech>`
-- ถ้าไม่มี skill ตรง ใช้ `tech: /learn (web)` หรือ `tech: none`
+- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
 - map ตาม dependencies ใน manifest
 
 ### 5. Skills Mapping

@@ -84,8 +84,8 @@ related:
 - รองรับ `.fbx`, `.obj` ตาม CLI
 - เก็บ output ใน project directory
 
-- ใช้ /gen-media ai-images ถ้าจำเป็น
-- ใช้ /gen-media ai-videos ถ้าจำเป็น
+- ใช้ /gen-media-ai-images ถ้าจำเป็น
+- ใช้ /gen-media-ai-videos ถ้าจำเป็น
 - ใช้ /gen-changelog-md ถ้าจำเป็น
 
 ## Expected Outcome
