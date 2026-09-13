@@ -1,6 +1,6 @@
 ---
-name: compare-alternative
-description: เปรียบเทียบ subject กับ alternatives ด้วย deep-research เป็น matrix + gap list
+name: compare-competitors
+description: เปรียบเทียบ subject กับ competitors/alternatives ด้วย deep-research เป็น matrix + gap list
 argument-hint: "<subject> [alternatives...]"
 related:
   - deep-research

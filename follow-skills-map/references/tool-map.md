@@ -32,7 +32,7 @@
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
 | copy-paste detection | `jscpd` | installed | `/review-quality` |
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-web`, `/deep-research` |
-| compare subject vs alternatives | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-alternative` |
+| compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors` |
 | markdown lint | `rumdl` | installed | `/check-*` docs |
 | find projects | filesystem scan | — | `/search-project-in-drive-d` |
 

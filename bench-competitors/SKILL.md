@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
-  - compare-alternative
+  - compare-competitors
   - deep-research
   - deep-review
   - deep-thinking
@@ -32,7 +32,7 @@ related:
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
 - skill นี้ implement จริงจนถึง production ไม่ใช่แค่ plan — ถ้าต้องการแค่ไอเดีย features → ใช้ `/idea-features`
 
-ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production, /compare-alternative
+ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production, /compare-competitors
 
 ## Execute
 
@@ -50,13 +50,13 @@ related:
 
 > Goal: เปรียบเทียบและหา gaps มิติ features
 
-1. ทำ `/compare-alternative` โดย subject = project, alternatives = competitors จาก Step 1, criteria = features (รวม feature matrix และ pricing tiers ที่ผูกกับ features) — skill จะทำ `/deep-research` ต่อ competitor จาก official docs, changelogs, reviews และ user feedback แล้วคืน comparison matrix + gap list
+1. ทำ `/compare-competitors` โดย subject = project, alternatives = competitors จาก Step 1, criteria = features (รวม feature matrix และ pricing tiers ที่ผูกกับ features) — skill จะทำ `/deep-research` ต่อ competitor จาก official docs, changelogs, reviews และ user feedback แล้วคืน comparison matrix + gap list
 2. จัดกลุ่ม features ใน matrix ตามหมวด เช่น core, advanced, integrations, automation
 3. บันทึกผลเป็น `comparison-features.md` ใน `docs/project/`
-4. ตรวจ gap list จาก `/compare-alternative` — แต่ละ gap ต้องระบุ feature, competitor ที่มี, impact, effort ครบ
+4. ตรวจ gap list จาก `/compare-competitors` — แต่ละ gap ต้องระบุ feature, competitor ที่มี, impact, effort ครบ
 5. ระบุ unique features ของ project ที่คู่แข่งไม่มีเพื่อรักษาไว้
 6. สร้าง prioritized feature list: Critical, High, Medium, Nice-to-have
-7. ถ้า `/compare-alternative` หาข้อมูลไม่ได้ → stop และ report
+7. ถ้า `/compare-competitors` หาข้อมูลไม่ได้ → stop และ report
 
 ### 3. Benchmark Other Dimensions
 
@@ -64,7 +64,7 @@ related:
 
 1. ทำ `/deep-review` วัด state ปัจจุบันของ project สำหรับ performance
 2. ทำ `/deep-review` สำหรับ UX/UI
-3. ทำ `/compare-alternative` ต่อมิติที่เทียบกับคู่แข่งได้ (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
+3. ทำ `/compare-competitors` ต่อมิติที่เทียบกับคู่แข่งได้ (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
 4. บันทึกผลใน `docs/project.md`
 
 ### 4. Deep Plan Improvements

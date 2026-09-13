@@ -20,7 +20,7 @@ triggers:
 related:
   - deep-research
   - learn
-  - compare-alternative
+  - compare-competitors
   - choose-and-apply
   - follow-best-practice
   - review-dependencies
