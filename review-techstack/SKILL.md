@@ -4,7 +4,6 @@ description: Review tech stack, dependencies และ library design ครอ�
 argument-hint: "[scope]"
 related:
   - deep-review
-  - follow-my-tech-stack
   - review-dependencies
   - run-review
   - deep-analyze
