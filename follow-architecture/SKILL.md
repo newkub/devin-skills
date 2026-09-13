@@ -9,8 +9,6 @@ related:
   - follow-nextjs-architecture
   - follow-create-web
   - follow-monorepo
-  - follow-create-web
-  - follow-create-web
   - follow-lib-vue
   - restructure
   - learn

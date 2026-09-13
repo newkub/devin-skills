@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-create-web
   - follow-create-plugins
-  - follow-create-web
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd

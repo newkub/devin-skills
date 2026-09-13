@@ -7,7 +7,6 @@ related:
   - use-astgrep
   - run-test
   - report
-  - run-test
 ---
 
 ## Goal

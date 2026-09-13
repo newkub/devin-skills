@@ -8,7 +8,6 @@ related:
   - check-files
   - check-code-structure
   - use-astgrep
-  - use-astgrep
   - report-deep
   - deep-research
   - run-audit

@@ -8,7 +8,6 @@ related:
   - follow-design-system
   - report
   - create-video-story
-  - gen-media
   - enhance-prompt
 ---
 

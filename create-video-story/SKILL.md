@@ -4,8 +4,6 @@ description: สร้างวิดีโอจากโครงเรื่�
 argument-hint: "[topic]"
 related:
   - gen-media
-  - gen-media
-  - gen-media
   - gen-voice
   - gen-subtitle-video
   - follow-lib-remotion

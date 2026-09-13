@@ -5,9 +5,7 @@ argument-hint: "[language] [daily|weekly|monthly]"
 related:
   - search
   - open
-  - open
   - report
-  - search
   - enhance-prompt
   - ask-me
 ---

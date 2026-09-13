@@ -7,8 +7,6 @@ related:
   - follow-tool-vitest
   - follow-lib-vue
   - follow-create-web
-  - follow-create-web
-  - follow-create-web
   - follow-lib-react
   - follow-clean-architecture
   - review-architecture

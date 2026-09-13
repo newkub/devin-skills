@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - use-astgrep
-  - use-astgrep
   - review-architecture
   - restructure
   - deep-review

@@ -5,7 +5,6 @@ argument-hint: "[skill-name-or-goal]"
 related:
   - ask-me
   - search
-  - search
   - report
   - ship
   - update-references
