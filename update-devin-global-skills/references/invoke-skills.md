@@ -71,7 +71,7 @@
 > Goal: composition ทำงานได้จริงก่อน ship
 
 1. อ่าน `SKILL.md` ของทุก skill ที่เรียก — verify ว่า contract (input, output, side effects) ตรงกับที่เขียนไว้
-2. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions และ cross-skill consistency
+2. ทำ `/review-devin-global-harness` เพื่อตรวจ conventions และ cross-skill consistency
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links และ references
 4. ทำ `/report` สรุป invocation map และผล validate
 
@@ -98,7 +98,7 @@
 
 - เลือก skill ที่จะเรียกจาก `Goal`/`Scope` ของมัน ไม่ใช่แค่ชื่อ
 - อ่าน skill ปลายทางก่อนเขียน invocation เสมอ
-- ทำ `/review-devin-global-skills` และ `/deep-validate` ก่อนจบงาน
+- ทำ `/review-devin-global-harness` และ `/deep-validate` ก่อนจบงาน
 
 ## Expected Outcome
 

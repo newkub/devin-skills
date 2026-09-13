@@ -6,7 +6,7 @@ const now = new Date();
 const time = now.toISOString().replace(/[-:T.Z]/g, "").slice(0, 14);
 const outDir = join("..", "..", ".devin", "reports", "skills");
 mkdirSync(outDir, { recursive: true });
-const outFile = join(outDir, `review-devin-global-skills-${time}.md`);
+const outFile = join(outDir, `review-devin-global-harness-${time}.md`);
 
 const rows = data.findings.map(
   (f: any, i: number) =>
@@ -14,7 +14,7 @@ const rows = data.findings.map(
 );
 
 const md = `---
-title: review-devin-global-skills
+title: review-devin-global-harness
 description: Review findings for devin global skills repo
 status: pending
 created: ${now.toISOString()}
@@ -22,7 +22,7 @@ created: ${now.toISOString()}
 
 ## Goal
 
-รายงานผลการ review devin global skills repo ด้วย /review-devin-global-skills CLI
+รายงานผลการ review devin global skills repo ด้วย /review-devin-global-harness CLI
 
 ## Scope
 
@@ -65,7 +65,7 @@ ${data.observations.map((o: any, i: number) => `${i + 1}. ${o}`).join("\n")}
 
 1. ตรวจสอบ findings ที Critical ก่อน
 2. แก้ไข frontmatter orphan related references
-3. รัน /review-devin-global-skills ซ้ำเพื่อ verify
+3. รัน /review-devin-global-harness ซ้ำเพื่อ verify
 `;
 
 writeFileSync(outFile, md);

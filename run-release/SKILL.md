@@ -41,7 +41,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship` ก่อน
 3. ตรวจ `git status --porcelain` ต้อง clean
 4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
-   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-errors cicd <run-id>`
+   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-cicd <run-id>`
    - ถ้า CI ยังไม่ผ่าน → stop และ report
 5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
 6. ถ้าทุก condition ผ่าน → detect platforms:
@@ -212,6 +212,8 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (release)
+
+- ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome
 

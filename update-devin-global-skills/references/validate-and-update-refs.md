@@ -6,7 +6,7 @@ skill ผ่านเกณฑ์ทั้งหมด
 
 ## Steps
 
-1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions, naming, structure
+1. ทำ `/review-devin-global-harness` เพื่อตรวจ conventions, naming, structure
 2. ทำ `/deep-validate` เพื่อตรวจ frontmatter, sections, ความยาว, `related` missing/unused, TODO/MOCK/placeholder
 3. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการแก้ `related`
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo

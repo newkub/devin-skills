@@ -99,8 +99,10 @@ gh config set api_host <host> --host github.com    # route API traffic ผ่า
 - batch independent `gh` calls พร้อมกันได้
 
 - ใช้ /follow-github ถ้าจำเป็น
-- ใช้ /resolve-errors cicd ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /run-test (cli) ถ้าจำเป็น
+
+- ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome
 

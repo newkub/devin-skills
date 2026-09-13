@@ -13,11 +13,11 @@ related:
 
 ## Usage
 
-เรียก skill โดย `/resolve-errors cicd` ใน repo ปัจจุบันเพื่อ resolve repo-scoped CI/CD หรือระบุ:
+เรียก skill โดย `/resolve-cicd` ใน repo ปัจจุบันเพื่อ resolve repo-scoped CI/CD หรือระบุ:
 
-- `/resolve-errors cicd --repo <owner/repo>`
-- `/resolve-errors cicd --run-id <id>`
-- `/resolve-errors cicd --url <url>`
+- `/resolve-cicd --repo <owner/repo>`
+- `/resolve-cicd --run-id <id>`
+- `/resolve-cicd --url <url>`
 
 สำหรับ single run ยังสามารถใช้ helper script:
 

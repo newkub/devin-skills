@@ -8,7 +8,7 @@ related:
   - update-devin
   - deep-validate
   - review-rules
-  - review-devin-global-skills
+  - review-devin-global-harness
   - git-commit
   - update-review-cli
   - ship
@@ -44,7 +44,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 ### 3. Validate And Ship
 
 1. Run `/review-rules` to check `AGENTS.md` and rules coverage.
-2. Run `/review-devin-global-skills` when editing skills.
+2. Run `/review-devin-global-harness` when editing skills.
 3. Run `/deep-validate` to verify correctness.
 4. Run `/git-commit` or `/ship` to commit changes.
 5. Run `/report` to summarize results.
@@ -90,6 +90,8 @@ Core:
 - `update-docs-agents-md: /update-docs agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
+- `update-devin-global-subagents: /update-devin global-subagents` — create/update agents/ aligned with skills (subskill)
+- `review-devin-global-harness: /review-devin-global-harness` — review all layers: skills, subagents, hooks, MCP, global rules
 - `update-devin: /update-devin [domain]` — subskills: global-mcp, global-rules, global-subagents, harness, project-hooks, project-mcp, project-rules
 - `git-commit: /git-commit`
 - `update-review-cli: /update-review-cli`
@@ -112,8 +114,8 @@ Major skill families by current count:
 - `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
 - `cleanup-*` (3): `cleanup` dispatcher (`branches-merged`, `docker`, `git-branch`, `github-issue`, `worktree`), `cleanup-files-in-project`, `cleanup-files-in-computer`.
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
-- `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui` (มี subskills: contrast, responsive, states).
-- `resolve-*` (4): error/CI/issue/conflict resolution — `resolve-errors` absorbs `resolve-cicd`, `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`.
+- `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui-and-features` (มี subskills: contrast, responsive, states).
+- `resolve-*` (5): error/CI/issue/conflict resolution — `resolve-errors` (canonical fixer; absorbs `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`), `resolve-cicd` (watcher — watch CI `gh run` + CD `wrangler`/deploys แล้ว dispatch `/resolve-errors`).
 - `restore-*` (1→dispatcher): `restore-files` (`deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`); `restore` = alias stub.
 - `idea-*` (1→dispatcher): `idea` (`features`, `merge`, `naming`, `uxui-features`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
 - `merge-*` (1→dispatcher): `merge` (`all-branch-by-me-to-main`, `git-branch`, `github-pr`).

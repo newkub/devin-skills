@@ -5,7 +5,7 @@ argument-hint: "[agent-name]"
 related:
   - update-devin
   - list-devin
-  - review-devin-global-subagents
+  - review-devin-global-harness
   - follow-agents-md
   - update-docs
   - use-subagents
@@ -19,11 +19,13 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `AGENT.md` สำหรับ Devin subagent ให้ถูกต้อง ครบถ้วน และใช้งานได้จริง
+สร้างหรืออัปเดต `AGENT.md` สำหรับ Devin subagent ให้ถูกต้อง ครบถ้วน ใช้งานได้จริง และ align กับ skills มาตรฐาน — frontmatter, sections, line count, style, safety (merged review dims from: review-devin-global-subagents)
 
 ## Scope
 
 ใช้เมื่อต้องสร้าง agent ใหม่หรือแก้ไข agent ใน `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, หรือ `%APPDATA%\devin\agents\` รวมถึง orchestrate subagents เมื่องานซับซ้อน
+
+Review-only → `/review-devin-global-harness` (layer `subagents`)
 
 ดูเพิ่มเติม: /follow-agents-md, /update-docs agents-md
 
@@ -141,7 +143,7 @@ related:
 - ไม่แก้ไข agent อื่นโดยไม่จำเป็น
 - ถ้าเปลี่ยน directory name → อัปเดต `name` ใน frontmatter ให้ตรง
 
-- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /review-devin-global-harness (layer `subagents`) สำหรับ review-only
 - ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
 
 ## Expected Outcome

@@ -4,7 +4,7 @@ description: แสดงรายการ global subagents ทั้งหม�
 argument-hint: "[scope]"
 related:
   - update-devin
-  - review-devin-global-subagents
+  - update-devin-global-subagents
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 - ระบุ global subagents ที่ frontmatter ไม่ครบ
 
 - ใช้ /update-devin global-subagents ถ้าจำเป็น
-- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

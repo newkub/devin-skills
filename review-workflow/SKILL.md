@@ -3,7 +3,7 @@ name: review-workflow
 description: Review workflow ให้เร็ว ปลอดภัย ใช้ง่าย มีประสิทธิภาพ ไม่ซ้ำซ้อน และไม่เกิน scope
 argument-hint: "[workflow-or-skill]"
 related:
-  - review-devin-global-skills
+  - review-devin-global-harness
   - update-devin-global-skills
   - review-quality
   - deep-validate
@@ -73,10 +73,10 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (workflow)
 
-- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (workflow)
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น

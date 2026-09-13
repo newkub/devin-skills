@@ -12,7 +12,7 @@ description: ดำเนินการตาม recommendations หลัง u
 ## Checks
 
 1. ทำ `/ask-me` เพื่อยืนยัน actions ก่อนดำเนินการ
-2. สำหรับ merge → ทำ `/review-devin-global-skills`
+2. สำหรับ merge → ทำ `/review-devin-global-harness`
 3. สำหรับ rename → ทำ `/rename` แล้ว `/update-references`
 4. สำหรับ remove → ใช้ `git rm` แล้ว `/update-references`
 5. ทำ `/deep-validate` หลังจบทุก action

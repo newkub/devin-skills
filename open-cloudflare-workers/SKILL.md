@@ -15,7 +15,7 @@ related:
 เปิดหน้า Cloudflare Workers dashboard ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `/resolve-errors cloudflare-worker`, `/resolve-errors cicd`, `follow-service-cloudflare`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `/resolve-errors cloudflare-worker`, `/resolve-cicd`, `follow-service-cloudflare`
 
 ใช้เปิด dashboard สำหรับจัดการ Cloudflare Workers และ Pages โดยไม่แก้ไข config ใดๆ
 

@@ -21,7 +21,7 @@ related:
   - new-skills
   - update-devin-global-skills
   - use-related-skills
-  - review-devin-global-skills
+  - review-devin-global-harness
   - idea
   - from-chat-session
   - ask-me
@@ -94,7 +94,7 @@ related:
 
 1. อ่าน skill ทีแก้ไขอีกครั้งเพื่อตรวจ reference
 2. ทำ `/check-skills-related` เพื่อตรวจ `related` ซ้ำ/หาย
-3. ทำ `/review-devin-global-skills` ถ้าแก้หลาย skill
+3. ทำ `/review-devin-global-harness` ถ้าแก้หลาย skill
 4. ทำ `/update-references` ถ้ามีการสร้าง/ลบ/ย้าย skill
 
 ## Rules

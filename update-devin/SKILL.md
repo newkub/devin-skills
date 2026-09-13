@@ -5,7 +5,6 @@ argument-hint: "[domain]"
 related:
   - update-devin-global-skills
   - list-devin
-  - review-devin-global-subagents
   - use-subagents
   - update-references
   - deep-validate
@@ -47,7 +46,7 @@ Dispatch ไป subskill ตาม Devin config domain — parent ทำ routing
 - หลังแก้ devin config → `/update-references` + verify ไม่มี stale refs
 
 - ใช้ /list-devin ถ้าจำเป็น
-- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /update-devin global-subagents ถ้าจำเป็น
 - ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

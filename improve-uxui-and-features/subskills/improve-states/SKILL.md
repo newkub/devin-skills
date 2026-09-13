@@ -1,5 +1,5 @@
 ---
-name: improve-uxui-improve-states
+name: improve-uxui-and-features-improve-states
 description: เพิ่ม missing UI states — loading, empty, error, skeleton บน routes/components
 argument-hint: "[route-or-component]"
 related:

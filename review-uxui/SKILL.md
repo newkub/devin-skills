@@ -169,7 +169,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### Fix Steps
 
-1. browser fix pass → `/improve-uxui` (orchestrates watch passes + Playwright sync)
+1. browser fix pass → `/improve-uxui-and-features` (orchestrates watch passes + UXUI features + Playwright sync)
 2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
 3. verify: re-run browser pass + `/run-test` (e2e); persist `.devin/reports/<workspace>/uxui-<time>.md`
 ## References

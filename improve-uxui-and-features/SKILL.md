@@ -1,6 +1,6 @@
 ---
-name: improve-uxui
-description: Orchestrate UX/UI pass — test flows + visual review ทุก route ผ่าน subagents แล้วแก้จริง
+name: improve-uxui-and-features
+description: Orchestrate UX/UI pass + UXUI features — test, review, fix และเพิ่ม UX features ทุก route
 argument-hint: "[url]"
 related:
   - watch-browser
@@ -21,15 +21,16 @@ related:
 
 ## Goal
 
-ปรับปรุง UX/UI ของเว็บที่รันอยู่แบบ end-to-end — combine functional testing (roleplay user) และ visual analysis (screenshot review) ครบทุก route ผ่าน `agent-browser` + subagents แล้วแก้ issues ทั้งหมดที่ root cause
+ปรับปรุง UX/UI ของเว็บที่รันอยู่แบบ end-to-end — combine functional testing (roleplay user), visual analysis (screenshot review) และ UXUI features ครบทุก route ผ่าน `agent-browser` + subagents แล้วแก้ issues + เพิ่ม features ที่ root cause
 
 ## Scope
 
-ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 3 มิติ:
+ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 4 มิติ:
 
 - Functional UX — ทำตาม `/watch-browser test` (flows, actions, error states ที่ user เจอจริง)
 - Visual UX — ทำตาม `/watch-browser improve-uxui` (layout, responsive, polish จาก screenshots)
 - Accessibility — อยู่ใน visual pass ตาม `/review-accessibility` (contrast, focus order, aria, keyboard nav — a11y คือส่วนหนึ่งของ UX ไม่แยก skill)
+- UXUI Features — features ที่เกี่ยวกับ UX เท่านั้น: missing states (loading/empty/error), feedback (toasts, progress), affordances (shortcuts, tooltips, hints), micro-interactions, navigation aids — ไม่ใช่ business features
 
 ถ้าต้องการแค่มิติเดียว → เรียก sub-skill นั้นโดยตรง
 
@@ -75,33 +76,41 @@ related:
 2. dispatch `/use-subagents` แยกแก้ตาม component/route ownership ถ้า scope ใหญ่
 3. ทุก fix ต้อง cover responsive และไม่ทำ functional regressions
 
-### 6. Verify
+### 6. Add UXUI Features
+
+> Goal: เพิ่ม UX features ที่ findings ชี้ว่าขาด
+
+1. จาก findings ทั้ง 2 passes — ระบุ UXUI features ที่ขาด: missing states (loading/empty/error/skeleton), feedback (toast, progress, confirm), affordances (shortcuts, tooltips, onboarding hints), navigation aids (breadcrumb, back, deep-link)
+2. เลือกเฉพาะที่มี evidence จาก findings — ห้ามเพิ่ม feature จาก intuition
+3. implement ตาม existing component patterns — ทุก feature ต้องเข้ากับ theme/responsive/keyboard เดิม
+
+### 7. Verify
 
 > Goal: ยืนยันด้วย evidence ใหม่
 
 1. re-run เฉพาะ routes ที่แก้: re-capture screenshots + replay failed actions
 2. fix-verify loop สูงสุด `3` รอบ
 
-### 7. Sync E2E Suite
+### 8. Sync E2E Suite
 
 > Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
 
 1. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
 2. ทำ `/run-test` (e2e) re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
-### 8. Production Readiness
+### 9. Production Readiness
 
 > Goal: fixes พร้อม production — ไม่มี mock/placeholder เหลือ
 
 1. ทำ `/implement-to-production` — ตรวจว่าไม่มี mock/TODO/placeholder ใน code path ที่แก้, schema+API+UX layer ครบ, security/resilience/observability ไม่หลุด, มี rollback plan
 2. ถ้าพบ gaps → แก้ตาม implement-to-production flow ก่อน report
 
-### 9. Report
+### 10. Report
 
 > Goal: ส่งมอบผลรวม
 
 1. ทำ `/report` — functional findings + visual findings + fixes + before/after evidence ต่อ route + e2e sync status
-2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 7 ไม่ใช่ exploratory pass)
+2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 8 ไม่ใช่ exploratory pass)
 3. ปิด browser session (`agent-browser close`)
 4. ทำ `/suggest-next-action`
 

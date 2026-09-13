@@ -8,7 +8,7 @@ allowed-tools:
   - read
 related:
   - check-repo-hygiene
-  - review-devin-global-skills
+  - review-devin-global-harness
   - update-references
   - suggest-next-action
 ---
@@ -34,7 +34,7 @@ related:
 | 5 | `Verify` | CI check หา cycle | ช้าหน่อย |
 | 6 | `Full` | รายละเอียดทุก skill | ช้า — ใช้เท่าทีจำเป็น |
 
-- ดูเพิ่มเติม: /review-devin-global-skills, /suggest-next-action
+- ดูเพิ่มเติม: /review-devin-global-harness, /suggest-next-action
 
 ## Execute
 

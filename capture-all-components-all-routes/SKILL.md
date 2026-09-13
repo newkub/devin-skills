@@ -4,7 +4,7 @@ description: Capture screenshots ของทุก route ทุก device size 
 argument-hint: "[base-url]"
 related:
   - watch-browser
-  - improve-uxui
+  - improve-uxui-and-features
   - review-uxui
 ---
 
@@ -78,7 +78,7 @@ captures-<ts>/
 
 1. ภาพอยู่ที่ `<out>/routes/<route-slug>-<device>.png` และ `<out>/components/<name>-<device>.png` เช่น `routes/request-mobile.png`
 2. `manifest.json` สรุป captures + errors — เช็ค errors ก่อนเสมอ
-3. นำภาพไปต่อด้วย `/review-uxui` หรือ `/improve-uxui`
+3. นำภาพไปต่อด้วย `/review-uxui` หรือ `/improve-uxui-and-features`
 
 ## Rules
 

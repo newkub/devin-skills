@@ -216,9 +216,11 @@ export default defineNuxtConfig({
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น (service cloudflare)
 - ใช้ /create-cloudflare token ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /resolve-errors cicd ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
+
+- ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome
 

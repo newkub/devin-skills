@@ -40,7 +40,7 @@
 2. สร้าง `references/<topic>.md` หรือ `templates/<pattern>.md`
 3. แทนที่เนื้อหาใน `SKILL.md` ด้วย pointer สั้นๆ
 4. อัปเดต internal links ใน `SKILL.md` และ references
-5. รัน `/review-devin-global-skills` และ `/deep-validate`
+5. รัน `/review-devin-global-harness` และ `/deep-validate`
 
 ## Expected Outcome
 

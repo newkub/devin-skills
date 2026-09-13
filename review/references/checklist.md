@@ -16,7 +16,7 @@
 - [ ] docs/meta → `/review-docs`, `/review-writing`, `/review-rules`
 - [ ] process → `/review-plan`, `/review-implement`, `/review-risk`, `/review-idea`, `/review-issue`, `/review-github-pr`, `/review-diff`, `/review-migration`, `/review-update`
 - [ ] persona → `/review-by-stakeholder` via `/roleplay-stakeholder`
-- [ ] devin repos → `/review-devin-global-skills`, `/review-devin-global-subagents`, `/review-dot-devin`
+- [ ] devin repos → `/review-devin-global-harness`, `/update-devin-global-subagents`, `/review-dot-devin`
 - [ ] aggregate → `/review-gaps`, `/deep-review-then-fix`
 
 ## 3. Execution Discipline

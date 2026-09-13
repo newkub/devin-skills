@@ -25,7 +25,7 @@
 
 > Goal: หาความไม่สอดคล้อง
 
-1. ทำ `/review-devin-global-skills` เพื่อตรวจ broken/stale/circular references
+1. ทำ `/review-devin-global-harness` เพื่อตรวจ broken/stale/circular references
 2. ทำ `/review-quality` เพื่อตรวจภาษา, terminology, format ข้ามไฟล์
 3. เปรียบเทียบ devin rules กับ ast-grep rules
 4. เปรียบเทียบ `AGENTS.md` กับ skills/rules จริง
@@ -99,7 +99,7 @@
 ### 4. Cross-Reference Safety
 
 - ทุกการ rename หรือย้ายต้อง update references
-- ใช้ `/review-devin-global-skills` ก่อนและหลังแก้ไข
+- ใช้ `/review-devin-global-harness` ก่อนและหลังแก้ไข
 - ไม่สร้าง circular references
 
 - ใช้ /update-project-skills ถ้าจำเป็น

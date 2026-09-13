@@ -9,7 +9,7 @@ related:
   - check-backward-compatibility
   - review-security
   - update-references
-  - review-devin-global-skills
+  - review-devin-global-harness
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 
 ## Expected Outcome
 

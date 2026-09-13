@@ -139,7 +139,7 @@ related:
 
 1. repo ที่มี remote + PR workflow → `/create-github pr` + `/review-github-pr`
 2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
-3. CI gate — `/resolve-errors github-actions` หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
+3. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
 4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge github-pr` เมื่อ user ยืนยัน)
 
 #### Production
@@ -148,7 +148,7 @@ related:
 2. บันทึก version ก่อน deploy (rollback target)
 3. deploy production ด้วย `/run-deploy`; `/watch-deploy` + health checks + smoke tests
 4. health check fail → rollback: `git revert <merge-commit>` + redeploy version ก่อนหน้า — ห้าม force-push
-5. ทำ `/resolve-errors cicd` บน production branch; กลับ `git switch main` + sync local/remote
+5. ทำ `/resolve-cicd` บน production branch; กลับ `git switch main` + sync local/remote
 
 #### Wrap Up
 

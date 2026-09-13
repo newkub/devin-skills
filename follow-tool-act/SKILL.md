@@ -74,7 +74,7 @@ related:
 
 1. ทำ `/report` คอลัมน์: `No.`, `Workflow`, `Job`, `Result`, `Duration`, `Note`
 2. ระบุ jobs ที่ผ่าน local และความมั่นใจว่าจะผ่าน remote
-3. ถ้าผ่านหมด → พร้อม push; ถ้าไม่ → ทำ `/resolve-errors cicd`
+3. ถ้าผ่านหมด → พร้อม push; ถ้าไม่ → ทำ `/resolve-cicd`
 
 ## Rules
 
@@ -97,7 +97,7 @@ related:
 
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool act)
 - ใช้ /resolve-errors github-actions ถ้าจำเป็น
-- ใช้ /resolve-errors cicd ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 

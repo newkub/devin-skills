@@ -4,6 +4,7 @@ description: แก้ไข error อย่างเป็นระบบ ร�
 argument-hint: "[scope]"
 related:
   - rethink
+  - resolve-cicd
   - deep-debug
   - check-skills-related
   - scan-codebase
@@ -169,6 +170,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
+
+- ใช้ /resolve-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 

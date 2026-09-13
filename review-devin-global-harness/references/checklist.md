@@ -1,4 +1,4 @@
-# review-devin-global-skills — Full Dimension Checklist
+# review-devin-global-harness — Full Dimension Checklist
 
 ## 1. Package Structure
 

@@ -11,7 +11,7 @@ allowed-tools:
   - todo_write
 related:
   - git-commit
-  - review-devin-global-skills
+  - review-devin-global-harness
   - deep-validate
   - check-broken-skills-references
   - update-references
@@ -24,7 +24,7 @@ related:
 
 ## Goal
 
-Commit ทุกไฟล์ที่เปลี่ยนแปลงใน devin global skills repo หลังจาก `review-devin-global-skills`, `deep-validate` และ `check-broken-skills-references` ผ่านเกณฑ์
+Commit ทุกไฟล์ที่เปลี่ยนแปลงใน devin global skills repo หลังจาก `review-devin-global-harness`, `deep-validate` และ `check-broken-skills-references` ผ่านเกณฑ์
 
 ## Scope
 
@@ -48,7 +48,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 
 > Goal: ตรวจ conventions และ cross-skill consistency
 
-1. ทำ `/review-devin-global-skills`
+1. ทำ `/review-devin-global-harness`
 2. บันทึก findings, severity และ category
 3. ถ้ามี Critical หรือ High → stop, รายงานผล, แนะนำ `/resolve-errors`
 
@@ -104,7 +104,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 
 ### 2. Validation Gate
 
-- ต้องผ่าน `/review-devin-global-skills`, `/deep-validate` และ `/check-broken-skills-references` ก่อน commit
+- ต้องผ่าน `/review-devin-global-harness`, `/deep-validate` และ `/check-broken-skills-references` ก่อน commit
 - ถ้ามี Critical/High findings ให้ stop และส่งต่อ `/resolve-errors`
 - ไม่ใช้ `--no-verify` เพื่อ bypass validation
 

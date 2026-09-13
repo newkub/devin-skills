@@ -84,7 +84,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 ### 8. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
-1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `/resolve-errors cicd`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `/resolve-cicd`
 
 ## Rules
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-devin
   - update-devin-global-skills
-  - review-devin-global-subagents
+  - update-devin-global-subagents
   - list-devin
   - use-related-skills
 ---
@@ -100,7 +100,7 @@ related:
 - สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
 - ใช้ `git commit` ทีละ layer
 
-- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

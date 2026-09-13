@@ -28,7 +28,7 @@ const cliRoot = args.find((a) => !a.startsWith("--")) || Bun.env.DEVIN_SKILLS_RO
 const SKILLS_ROOT = cliRoot
   ? cliRoot.replace(/%APPDATA%/g, Bun.env.APPDATA || "")
   : (Bun.env.APPDATA || "/tmp") + "\\devin\\skills";
-const SELF_DIR = join(SKILLS_ROOT, "review-devin-global-skills");
+const SELF_DIR = join(SKILLS_ROOT, "review-devin-global-harness");
 
 const findings: Finding[] = [];
 const observations: Finding[] = [];

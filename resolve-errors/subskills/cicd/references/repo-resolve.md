@@ -1,6 +1,6 @@
 ## Repo-Scoped CI/CD Resolve
 
-ขั้นตอนสำหรับ `/resolve-errors cicd` เมื่อได้รับ repo หรือตรวจพบ repo ปัจจุบัน โดย resolve ทั้ง GitHub Actions และ Cloudflare Workers/Pages ทีตรงกับ repo นั้น
+ขั้นตอนสำหรับ `/resolve-cicd` เมื่อได้รับ repo หรือตรวจพบ repo ปัจจุบัน โดย resolve ทั้ง GitHub Actions และ Cloudflare Workers/Pages ทีตรงกับ repo นั้น
 
 ## Goal
 

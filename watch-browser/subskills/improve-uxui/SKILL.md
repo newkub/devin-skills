@@ -4,7 +4,7 @@ description: Watch browser confirm server แล้ว subagents แยก route
 argument-hint: "[url]"
 related:
   - watch-browser
-  - improve-uxui
+  - improve-uxui-and-features
   - use-agent-browser
   - review-uxui
   - use-subagents
@@ -25,7 +25,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ใช้เมื่อต้องการ review และ improve UX/UI ของเว็บที่กำลังรันอยู่แบบ evidence-driven — ทุก finding ต้องมาจาก screenshots จริงของแต่ละ route
 
-- ถ้าต้องการ orchestrate ทั้ง functional + visual UX pass → `/improve-uxui`
+- ถ้าต้องการ orchestrate ทั้ง functional + visual UX pass → `/improve-uxui-and-features`
 - ถ้าต้องการ test flows/actions → `/watch-browser test`
 - ถ้าต้องการแก้ console/page errors → `/watch-browser fix`
 - ถ้าต้องการ watch เฉยๆ → `/watch-browser`

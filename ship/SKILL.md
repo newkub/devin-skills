@@ -20,6 +20,7 @@ related:
   - follow-parallel
   - run-verify
   - deep-validate
+  - resolve-cicd
 ---
 
 ## Goal
@@ -75,6 +76,8 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 
 - merge, production deploy, release → ต้องมี user confirm เสมอ (ตาม workflow ใน `AGENTS.md`)
 - swarm mode ห้ามข้าม gates — parallel ใช้กับความเร็วเท่านั้น ไม่ใช่ shortcut
+
+- ใช้ /resolve-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 

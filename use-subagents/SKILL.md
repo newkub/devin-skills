@@ -142,6 +142,34 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 18 | `bench-apis` | `bench-apis/subagents/benchmarker.md` | benchmark target เดียวด้วย load profile เดียวกัน |
 | 19 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
 
+## CLI — `subagents` (mission control)
+
+CLI ใน `src/` (Bun/TypeScript, entry `src/presentation/cli.ts`) — ClickUp-style task table สำหรับงานขนานของ subagents/shell jobs:
+
+```sh
+bun src/presentation/cli.ts run "fix-lint" --role fixer --pri high -- "bunx biome check --write src"
+bun src/presentation/cli.ts add "deploy" --dep build -- "..."           # blocked จน dep done
+bun src/presentation/cli.ts add "tests" --parent ship-feature -- "..."  # subtask (rollup 2/3)
+bun src/presentation/cli.ts pump      # start queued ทุกตัวที่ dep ครบ
+bun src/presentation/cli.ts list [--status failed] [--role fixer] [--q lint]
+bun src/presentation/cli.ts watch     # TUI: ↑↓ · / search · f filter · s sort · p pump · r retry · k kill · d del · q
+bun src/presentation/cli.ts logs|note|retry|kill|rm <id>
+bun src/presentation/cli.ts prune     # ล้าง tasks ที่จบแล้ว
+```
+
+- Columns: `STATUS · PRI · ID · SRC · ROLE · ELAPSED · SUB · NAME` — SUB แสดง rollup `2/3` บน parent / `└─` บน child; detail pane แสดง cmd + deps ที่รอ + last 3 log lines
+- Lifecycle: `queued → (blocked ถ้า dep ยัง) → running → done|failed|killed` — reconcile อัปเดต blocked↔queued อัตโนมัติ
+- State: `~/.config/devin/subagents/tasks.json` + `logs/<id>.log`; reconcile pid จริงทุกวิ
+
+`Devin subagent bridge` — ปิด gap ที่ `run_subagent` เป็น in-process: หลัง spawn agent ให้ register เข้า registry:
+
+```sh
+bun src/presentation/cli.ts register "<title>" --role fixer --id <agent-id> --note "<task summary>"
+bun src/presentation/cli.ts mark <id> done --note "<result>"   # เมื่อ read_subagent เสร็จ
+```
+
+- ใช้ประกอบ Step 4 (Spawn Subagents): `run_subagent` → `register` ทันที; `read_subagent` เสร็จ → `mark done|failed` — `watch` เห็นทั้ง shell jobs และ Devin agents ในตารางเดียว
+
 ## Expected Outcome
 
 - งานถูกแบ่งและทำขนานกันโดย subagents

@@ -9,7 +9,7 @@ related:
   - follow-design-system
   - report-uxui-sketch
   - watch-browser
-  - improve-uxui
+  - improve-uxui-and-features
   - deep-analyze
   - report
   - then-apply
@@ -29,7 +29,7 @@ related:
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์ ไม่ implement
 - ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/watch-browser improve-uxui` หรือ `/review-uxui`
-- ถ้าต้องการ implement → ส่งต่อ `/improve-uxui` หรือ `/implement-features-to-mvp`
+- ถ้าต้องการ implement → ส่งต่อ `/improve-uxui-and-features` หรือ `/implement-features-to-mvp`
 
 ## Execute
 
@@ -68,7 +68,7 @@ related:
 1. แสดง summary 1-2 บรรทัด
 2. แสดง tables ในแชท
 3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ implement → แนะนำ `/improve-uxui` (end-to-end pass) หรือ `/implement-features-to-mvp`
+4. ถ้าต้องการ implement → แนะนำ `/improve-uxui-and-features` (end-to-end pass) หรือ `/implement-features-to-mvp`
 5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
 
 ## Rules
@@ -89,7 +89,7 @@ related:
 
 ### 4. Suggest Deep Workflow
 
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/improve-uxui` หรือ `/implement-features-to-mvp`
+- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/improve-uxui-and-features` หรือ `/implement-features-to-mvp`
 - ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
 - เมื่อ idea ใดถูก implement → ต้องทำ `/run-test-all` เสมอ
 

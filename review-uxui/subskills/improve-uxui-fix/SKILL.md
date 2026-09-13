@@ -6,7 +6,7 @@ related:
   - review-uxui
   - capture
   - review-by-stakeholder
-  - improve-uxui
+  - improve-uxui-and-features
   - run-dev
   - run-test
   - ask-me
@@ -20,7 +20,7 @@ Apply UX/UI findings จาก `/review-uxui` หรือ stakeholder review �
 
 ## Scope
 
-- ใช้หลัง `/review-uxui` หรือ `/improve-uxui` เมื่อมี findings ที่ confirm แล้วว่าจะแก้
+- ใช้หลัง `/review-uxui` หรือ `/improve-uxui-and-features` เมื่อมี findings ที่ confirm แล้วว่าจะแก้
 - ครอบคลุม design system, visual, interaction, accessibility, responsive, content/copy และ page-type fixes
 - ไม่ครอบคลุม frontend architecture/rendering → ใช้ `/review-frontend` subskills
 

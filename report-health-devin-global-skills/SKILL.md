@@ -3,7 +3,7 @@ name: report-health-devin-global-skills
 description: สร้าง health scorecard ของ devin global skills repo
 argument-hint: "[path]"
 related:
-  - review-devin-global-skills
+  - review-devin-global-harness
   - check-broken-skills-references
   - check-uncommit
   - check-unpush
@@ -22,7 +22,7 @@ related:
 
 ใช้กับ `%APPDATA%\devin\skills` หรือ path ที่ระบุ
 
-- รัน `/review-devin-global-skills` ดู score, findings, grade
+- รัน `/review-devin-global-harness` ดู score, findings, grade
 - รัน `/check-broken-skills-references` ตรวจ broken references
 - ตรวจ git state: uncommit, unpush, last commit
 - สรุปเป็นตารางเดียวพร้อม grade
@@ -33,7 +33,7 @@ related:
 
 > Goal: เก็บ health signals ของ skills repo
 
-1. ทำ `/review-devin-global-skills` บันทึก `score`, `findings`, `grade`
+1. ทำ `/review-devin-global-harness` บันทึก `score`, `findings`, `grade`
 2. ทำ `/check-broken-skills-references` บันทึก broken refs count
 3. ทำ `/check-uncommit` บันทึก modified/untracked files
 4. ทำ `/check-unpush` บันทึก commits ที่ยังไม่ push

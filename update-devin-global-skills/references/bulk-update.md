@@ -17,7 +17,7 @@
 1. รับ `@files...` จาก argument หรือ context
 2. ถ้าไม่มี `@files` → scope เป็น devin skills repo ทั้งหมด
 3. ถ้ามี `@files` → scope จำกัดเฉพาะ skill ที่ระบุ
-4. ทำ `/review-devin-global-skills` ตาม scope ที่กำหนด
+4. ทำ `/review-devin-global-harness` ตาม scope ที่กำหนด
 5. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
 
 ### 2. Inventory Skills
@@ -45,7 +45,7 @@
 
 > Goal: ปรับโครงสร้างและย้าย skills ไปตำแหน่งที่เหมาะสม
 
-1. ทำ `/review-devin-global-skills` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
+1. ทำ `/review-devin-global-harness` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
 2. ทำ `/follow-single-responsibility` สำหรับ skills ที่มี SRP violations
 3. ทำ `/relocation` เพื่อย้าย skills ไปยังตำแหน่งที่เหมาะสมตาม prefix
 4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/update-devin-global-skills`
@@ -56,7 +56,7 @@
 > Goal: ทุก skill สอดคล้องกันข้าม repo
 
 1. ทำ `/review-quality` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
-2. ทำ `/review-devin-global-skills` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
+2. ทำ `/review-devin-global-harness` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
 3. ทำ `/idea-create-devin-skills-global` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
 4. ตรวจไม่มี broken references และไม่มี circular dependencies
 
@@ -64,7 +64,7 @@
 
 > Goal: ตรวจสอบ references ก่อนอัปเดต
 
-1. ทำ `/review-devin-global-skills` เพื่อตรวจ AGENTS.md, `related` frontmatter, in-body references, และ circular dependencies
+1. ทำ `/review-devin-global-harness` เพื่อตรวจ AGENTS.md, `related` frontmatter, in-body references, และ circular dependencies
 2. บันทึก missing, stale, broken, circular references
 3. ให้ priority กับ Critical/High
 
@@ -105,7 +105,7 @@
 
 ### 1. Review Before Update
 
-- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `update-devin-global-skills` Rule 9
+- ทำ `/review-devin-global-harness` ก่อนเสมอ ตามมาตรฐาน `update-devin-global-skills` Rule 9
 - ไม่แก้ไข skill ใดๆ ก่อน review ผ่าน
 - ทุก finding ต้องมี skill name, file path และ evidence
 
@@ -135,7 +135,7 @@
 
 - Minimal changes เสมอ ไม่ rewrite ทั้งไฟล์ถ้าเปลี่ยนเฉพาะส่วน
 - ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
-- ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/review-devin-global-skills` Steps 7-8 หลังจบ task
+- ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/review-devin-global-harness` Steps 7-8 หลังจบ task
 
 - ใช้ /review-flow ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
@@ -143,7 +143,7 @@
 ## Expected Outcome
 
 - devin skills repo ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
-- ทุก skill ผ่าน `/review-devin-global-skills` และ `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- ทุก skill ผ่าน `/review-devin-global-harness` และ `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` สำหรับ project dependencies และ `mise use -g npm:<package>` สำหรับ global npm CLI
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
 - skills ที่มี dependencies มี `references/` ครบผ่าน `/learn` (references)

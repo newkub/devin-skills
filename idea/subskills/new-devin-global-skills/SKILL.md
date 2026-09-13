@@ -9,7 +9,7 @@ related:
   - report
   - then-apply
   - follow-single-responsibility
-  - review-devin-global-skills
+  - review-devin-global-harness
   - deep-research
   - follow-math-concepts
   - update-devin-global-skills
@@ -29,7 +29,7 @@ related:
 
 > Goal: เข้าใจสถานะปัจจุบันของ skills repo
 
-1. ทำ `/review-devin-global-skills` สำหรับ quality conventions
+1. ทำ `/review-devin-global-harness` สำหรับ quality conventions
 2. ทำ `/check-skills-related` เพื่อหา broken references
 3. ทำ `/scan-codebase` เพื่อหา duplicated logic หรือ overlapping skills
 4. ทำ `/report-file-structure` เพื่อดูโครงสร้างปัจจุบัน

@@ -6,6 +6,7 @@ related:
   - git-commit
   - git-push
   - resolve-errors
+  - resolve-cicd
   - refactor-commit
   - update-references
   - follow-monorepo
@@ -17,7 +18,7 @@ Commit ไฟล์ push ไปยัง remote repository และ resolve CI/
 
 ## Scope
 
-ใช้สำหรับ commit push และ track/resolve CI/CD ในทีเดียว โดยเป็น orchestrator ที่เรียก `/git-commit`, `/git-push` และ `/resolve-errors cicd`
+ใช้สำหรับ commit push และ track/resolve CI/CD ในทีเดียว โดยเป็น orchestrator ที่เรียก `/git-commit`, `/git-push` และ `/resolve-cicd`
 
 ## Execute
 
@@ -47,9 +48,9 @@ Commit ไฟล์ push ไปยัง remote repository และ resolve CI/
 
 > Goal: ติดตามและ resolve CI/CD ที่ถูก trigger จาก push จนกว่าจะผ่าน
 
-1. ทำตาม `/resolve-errors cicd` เพื่อ track CI/CD pipeline ที่ถูก trigger จาก push
+1. ทำตาม `/resolve-cicd` เพื่อ track CI/CD pipeline ที่ถูก trigger จาก push
 2. ถ้า CI/CD ผ่าน → ไป step ถัดไป
-3. ถ้า CI/CD ล้มเหลว → `/resolve-errors cicd` จะ resolve, re-run, re-deploy จนกว่าจะผ่าน (สูงสุด 5 รอบ)
+3. ถ้า CI/CD ล้มเหลว → `/resolve-cicd` จะ resolve, re-run, re-deploy จนกว่าจะผ่าน (สูงสุด 5 รอบ)
 4. ถ้าเกิน 5 รอบ → stop และ report พร้อม rollback recommendation
 
 ### 5. Update References
@@ -61,7 +62,7 @@ Commit ไฟล์ push ไปยัง remote repository และ resolve CI/
 ## Rules
 > Goal: ใช้เป็น orchestrator ปลอดภัยไม่ทำลาย history และ resolve CI/CD จนผ่าน
 
-- ใช้เป็น orchestrator เท่านั้น รายละเอียดอยู่ใน `/git-commit`, `/git-push` และ `/resolve-errors cicd`
+- ใช้เป็น orchestrator เท่านั้น รายละเอียดอยู่ใน `/git-commit`, `/git-push` และ `/resolve-cicd`
 - ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
 - ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน commit
 - ห้าม force-push หรือ rewrite history ระหว่าง resolve CI/CD

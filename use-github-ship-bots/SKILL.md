@@ -120,7 +120,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 9. Monitor And Deploy
 
 > Goal: ติดตาม And Deploy
-1. ใช้ `/resolve-errors cicd` ติดตาม CI/CD
+1. ใช้ `/resolve-cicd` ติดตาม CI/CD
 2. ถ้า pass → merge PR
 3. ถ้ามี deploy → ใช้ `/deploy-to-cloudflare` หรือ `/deploy-to-vercel`
 4. ตรวจสอบ bot ทำงานบน production
@@ -144,6 +144,8 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 - แต่ละ PR ทีมี UI ต้องมี annotated screenshots
 - ไม่ใช้ mockup/placeholder ใน PR
 - ไม่ deploy ถ้า verify ไม่ผ่าน
+
+- ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 ## Single-Run CI/CD Resolve
 
-เรียก skill โดย `/resolve-errors cicd [run-id|url]` หรือรันด้วย helper script:
+เรียก skill โดย `/resolve-cicd [run-id|url]` หรือรันด้วย helper script:
 
 ```bash
 bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.ts" \
@@ -43,7 +43,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
    - environment variable `DEPLOY_URL`, `PREVIEW_URL`, `VERCEL_URL`, `CF_PAGES_URL`
    - CI/CD log ล่าสุดทีมี run ID หรือ URL
    - `watch-deploy/references/targets.md` ใน `watch-deploy`
-   - `references/runs.md` ใน `/resolve-errors cicd`
+   - `references/runs.md` ใน `/resolve-cicd`
 4. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
 ### 2. CI: Detect CI Platform
@@ -87,7 +87,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
 ### 6. CD: Determine Platform
 
 > Goal: เลือก skill ทีเหมาะกับ CD target
-1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-errors cicd`) ถ้า fail → ทำ `/resolve-errors cloudflare-worker` ก่อน re-deploy
+1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-cicd`) ถ้า fail → ทำ `/resolve-errors cloudflare-worker` ก่อน re-deploy
 2. Release/tag: version tag, release name, GitHub release → `/watch-release`
 3. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
 
@@ -142,7 +142,7 @@ bun "%APPDATA%\devin\skills\resolve-errors\subskills\cicd\scripts\resolve-cicd.t
 - ถ้าเป้น release อย่างเดียว → ใช้ `/watch-release`
 
 ### 3. No Initial Deploy
-- `/resolve-errors cicd` ไม่ trigger ครั้งแรกเอง
+- `/resolve-cicd` ไม่ trigger ครั้งแรกเอง
 - ต้องถูกเรียกหลัง trigger แล้ว
 - ถ้ายังไม่มี trigger ให้ทำ `/run-deploy` หรือ push ก่อน
 

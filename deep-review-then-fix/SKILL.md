@@ -49,7 +49,7 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | cost | `/review-cost` | `review-cost/references/fix-*.md` |
 | docs | `/review-docs` | `review-docs/references/fix-*.md` |
 | tests | `/review-test` | `review-test/references/fix-*.md` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/improve-uxui` (browser pass) |
+| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/improve-uxui-and-features` (browser pass) |
 | stability | `/review-stability` | `review-stability/references/fix-*.md` |
 | observability | `/review-observability` | `review-observability/references/fix-*.md` |
 | cli | `/review-cli` | `review-quality/references/fix-improve-cli-ux.md` |

@@ -1,4 +1,4 @@
-# review-devin-global-subagents — Full Dimension Checklist
+# update-devin-global-subagents — Full Dimension Checklist
 
 ## 1. Frontmatter
 

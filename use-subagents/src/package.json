@@ -1,0 +1,11 @@
+{
+	"name": "use-subagents-cli",
+	"private": true,
+	"type": "module",
+	"bin": {
+		"subagents": "./presentation/cli.ts"
+	},
+	"scripts": {
+		"subagents": "bun presentation/cli.ts"
+	}
+}

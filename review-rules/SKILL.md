@@ -107,7 +107,7 @@ related:
 - ไม่ลบ rule โดยไม่ user confirm
 - ระบุ evidence พร้อม file path และ line number
 
-- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 
 ## Fix

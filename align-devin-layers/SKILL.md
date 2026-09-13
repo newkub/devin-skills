@@ -11,8 +11,8 @@ related:
   - use-related-skills
   - report
   - suggest-next-action
-  - review-devin-global-skills
-  - review-devin-global-subagents
+  - review-devin-global-harness
+  - update-devin
   - check-broken-skills-references
   - update-references
   - scan-codebase
@@ -72,8 +72,8 @@ related:
 > Goal: ตรวจสอบความสมบูรณ์
 
 1. ทำ `/deep-validate` กับ global rules
-2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-skills`
-3. ตรวจ `AGENT.md` ของ subagents ด้วย `/review-devin-global-subagents` ถ้าจำเป็น
+2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-harness`
+3. ตรวจ `AGENT.md` ของ subagents ด้วย `/update-devin global-subagents` ถ้าจำเป็น
 4. รัน `/check-reference`
 5. รัน `git diff --check`
 
@@ -111,7 +111,7 @@ related:
 - สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
 - ใช้ `git commit` ทีละ layer
 
-- ใช้ `/review-devin-global-subagents` ถ้าจำเป็น
+- ใช้ `/update-devin global-subagents` ถ้าจำเป็น
 
 ## Expected Outcome
 

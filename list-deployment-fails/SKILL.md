@@ -5,6 +5,7 @@ description: สรุป deployment failures จาก CI/CD และ cloud (G
 argument-hint: "[limit]"
 related:
   - resolve-errors
+  - resolve-cicd
   - report
   - suggest-next-action
   - follow-service-vercel
@@ -77,7 +78,7 @@ related:
 > Goal: แนะนำขั้นตอนถัดไป
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-errors cicd` หรือ `/resolve-errors cloudflare-worker`
+2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-cicd` หรือ `/resolve-errors cloudflare-worker`
 3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/resolve-errors github-actions`
 
 ## Rules

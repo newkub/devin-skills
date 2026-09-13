@@ -130,7 +130,7 @@ Latest: `@cloudflare/ci@0.1.0` (verified 2026-09-12) — ยังเป็น 0
 1. ใช้ `wrangler workflows instances list` ดู instances
 2. ใช้ `wrangler workflows instances logs <id>` ดู logs
 3. ใช้ `wrangler tail` สำหรับ real-time logs
-4. ตรวจสอบ error ด้วย `/resolve-errors cicd` หรือ `/follow-service-cloudflare`
+4. ตรวจสอบ error ด้วย `/resolve-cicd` หรือ `/follow-service-cloudflare`
 
 ### 8. Add Self-Healing (Optional)
 
@@ -171,6 +171,8 @@ Latest: `@cloudflare/ci@0.1.0` (verified 2026-09-12) — ยังเป็น 0
 - เปิด `nodejs_compat` เสมอสำหรับ `@cloudflare/ci`
 - ใช้ `wrangler` version >= 4.68 สำหรับ `events` field
 - ใช้ commands ทีตรงกับ package manager (`bun`, `pnpm`, `npm`)
+
+- ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome
 

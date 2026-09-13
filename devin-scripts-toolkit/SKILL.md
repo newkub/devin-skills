@@ -4,7 +4,7 @@ description: รวม PowerShell scripts สำหรับ check, review, setu
 argument-hint: "[scope]"
 related:
   - devin-templates-toolkit
-  - review-devin-global-skills
+  - review-devin-global-harness
   - check-broken-skills-references
   - follow-create-web
   - setup-cicd
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-- Skill validation scripts (e.g. `/review-devin-global-skills`, `/check-broken-skills-references`)
+- Skill validation scripts (e.g. `/review-devin-global-harness`, `/check-broken-skills-references`)
 - Project health check scripts
 - Build/test/run scripts
 - Setup/deployment helper scripts (e.g. `/setup-cicd`)

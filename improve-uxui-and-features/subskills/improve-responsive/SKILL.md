@@ -1,5 +1,5 @@
 ---
-name: improve-uxui-improve-responsive
+name: improve-uxui-and-features-improve-responsive
 description: แก้ responsive issues — breakpoints, overflow, touch targets, mobile layout
 argument-hint: "[route-or-component]"
 related:
