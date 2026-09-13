@@ -53,7 +53,7 @@ related:
 
 1. ใช้ `/report` คอลัมน์: `No.`, `File:Line`, `Statement`, `Severity`, `Suggestion`
 2. แนะนำ lint rule ที่ป้องกันระยะยาว เช่น `no-console` ใน eslint/biome
-3. ถ้าเจอเยอะ → แนะนำเพิ่ม pre-commit hook ผ่าน `/follow-tool-hk`
+3. ถ้าเจอเยอะ → แนะนำเพิ่ม pre-commit hook: repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (`/follow-tool-moonrepo` Step 7); repo อื่น → `/follow-tool-hk`
 
 ## Rules
 

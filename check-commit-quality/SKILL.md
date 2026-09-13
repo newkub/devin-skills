@@ -64,7 +64,7 @@ related:
 1. ทำ `/report` คอลัมน์: `No.`, `SHA`, `Message`, `Issues`, `Suggested`
 2. สรุป compliance rate และ issue breakdown
 3. แนะนำ `/refactor-commit` ถ้าต้อง rewrite (เฉพาะ commits ที่ยังไม่ push)
-4. แนะนำ `commitlint` + `/follow-tool-hk` ถ้าต้องการ enforce ต่อเนื่อง
+4. แนะนำ `commitlint` + git hooks ถ้าต้องการ enforce ต่อเนื่อง — repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (`/follow-tool-moonrepo` Step 7); repo อื่น → `/follow-tool-hk`
 
 ## Rules
 
@@ -85,7 +85,7 @@ related:
 
 - ใช้ /list-git commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
-- ใช้ /follow-tool-hk ถ้าจำเป็น
+- ใช้ /follow-tool-hk ถ้าจำเป็น (เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`)
 
 - ใช้ /git-commit ถ้าจำเป็น
 

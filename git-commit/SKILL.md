@@ -143,7 +143,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /follow-tool-hk ถ้าจำเป็น
+- ใช้ /follow-tool-hk ถ้าจำเป็น (เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`)
 - ใช้ /list-git commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /review-diff ถ้าจำเป็น

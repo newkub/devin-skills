@@ -15,7 +15,7 @@
 ## 3. Quality Gates
 
 - [ ] lint/typecheck/test wired ใน CI, coverage thresholds
-- [ ] pre-commit hooks (hk/lefthook), commit conventions
+- [ ] pre-commit hooks (moon `vcs.hooks` สำหรับ moonrepo, hk/lefthook สำหรับ repo อื่น), commit conventions
 - [ ] code review process, branch protection
 
 ## 4. Operations

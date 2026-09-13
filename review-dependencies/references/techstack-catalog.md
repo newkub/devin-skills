@@ -66,7 +66,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 | Benchmark | `mitata` | Vitest bench, `hyperfine` (→CLI) | `criterion` | `divan` |
 | Code Coverage | `v8` (via Vitest) | - | `cargo-llvm-cov` | `tarpaulin` |
 | Build System | `Moonrepo` (→ผสม Rust+TS) | `Turborepo` (→TS ล้วน) | `Cargo` workspaces | - |
-| Git Hooks | `hk` | - | `hk` | - |
+| Git Hooks | `moon vcs.hooks` (moonrepo) / `hk` (non-moon) | - | `moon vcs.hooks` / `hk` | - |
 | Process Manager | `pitchfork` | - | `pitchfork` | - |
 | CLI Spec | `usage` | - | `usage` | - |
 | CI/CD | `GitHub Actions` | `act` (→local), `RunsOn` (→self-hosted), `Harness`, `BuildBuddy` (→enterprise/Bazel) | `GitHub Actions` | - |

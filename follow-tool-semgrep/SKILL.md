@@ -71,7 +71,7 @@ related:
 
 > Goal: ทำ semgrep เป็นส่วนของ workflow
 
-1. CI step หรือ pre-commit hook (`/follow-tool-hk`); ใช้ `semgrep ci` + `semgrep login` ถ้า integrate กับ Semgrep AppSec Platform
+1. CI step หรือ pre-commit hook — repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (`/follow-tool-moonrepo` Step 7); repo อื่น → `/follow-tool-hk`; ใช้ `semgrep ci` + `semgrep login` ถ้า integrate กับ Semgrep AppSec Platform
 2. Commit custom rules ใน `.semgrep/` พร้อม tests (`semgrep --test`)
 3. Baseline strategy สำหรับ legacy code
 

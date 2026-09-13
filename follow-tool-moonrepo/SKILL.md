@@ -89,11 +89,12 @@ related:
 
 > Goal: ย้ายจาก turborepo ไป moonrepo
 
-1. ลบ `turbo.json`
-2. ลบ `turbo` ออกจาก `package.json` devDependencies
-3. แก้ไข scripts ใน `package.json` จาก `turbo run` ไป `moon run`
-4. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
-5. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
+1. ลอง `moon ext migrate-turborepo` (หรือ `moon ext migrate-nx` สำหรับ Nx) ก่อน — built-in migration
+2. ลบ `turbo.json`
+3. ลบ `turbo` ออกจาก `package.json` devDependencies
+4. แก้ไข scripts ใน `package.json` จาก `turbo run` ไป `moon run`
+5. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
+6. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
 
 ### 6. Integrate CI
 
@@ -131,7 +132,9 @@ related:
 2. รัน `moon run :build` เพื่อตรวจ project graph
 3. รัน `moon ci` บน test branch เพื่อยืนยัน affected detection
 4. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
-5. ทำ `/deep-validate` เพื่อ verify setup
+5. inspect graph/tasks ด้วย `moon project <id>`, `moon task <id>:<task>`, `moon query projects`, `moon query tasks` เมื่อต้อง debug structure
+6. ถ้ามี generated hook scripts → verify `git config core.hooksPath` ชี้ `.moon/hooks`
+7. ทำ `/deep-validate` เพื่อ verify setup
 
 ## Rules
 
@@ -153,6 +156,12 @@ related:
 - ใช้ moonrepo implicit project detection
 - ไม่ซ้อน project boundaries ซ้ำซ้อน
 - JS/Bun project = package, Rust project = crate (Cargo package)
+- ใช้ `tags` ใน `moon.yml` + `dependsOn` สำหรับ boundaries ที่ชัด — ดู `references/moonrepo-advanced.md`
+
+### 4. Git Hooks
+
+- repo ที่ใช้ moon → `vcs.hooks` เป็น default เสมอ ไม่ใช้ `/follow-tool-hk` — ดู Step 7
+- ใช้ `hk` เฉพาะเมื่อ: parallel staged-file linting ที่ moon commands ทำไม่ได้, hook steps ที่ไม่ใช่ moon tasks, หรือ hook config เดียวข้าม repos ที่ไม่ใช้ moon
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
