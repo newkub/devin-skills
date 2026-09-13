@@ -7,6 +7,7 @@ related:
   - alternative
   - choose-and-apply
   - bench-competitors
+  - idea-features
   - report
   - check-reference
   - ask-me

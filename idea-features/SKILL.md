@@ -4,6 +4,7 @@ description: สร้างไอเดียฟีเจอรใหม่/ข
 argument-hint: "[topic]"
 related:
   - bench-competitors
+  - compare-alternative
   - suggest-me
   - enhance-prompt
   - think-reframe
@@ -27,7 +28,8 @@ related:
 - ตอบกลับในแชทด้วย idea table + `/report-todo` table เท่านั้น (sort ตาม impact)
 - ไม่สร้าง report/plan ไฟล์
 - ไม่ implement
-- ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
+- ถ้าต้องการเปรียบเทียบ features กับ alternatives เฉยๆ (ไม่ implement) → ใช้ `/compare-alternative`
+- ถ้าต้องการ benchmark features เทียบคู่แข่งแล้ว implement ให้ดีกว่า → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
 - ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/plan` หรือ `/implement-features-to-mvp`
 
 ## Execute
