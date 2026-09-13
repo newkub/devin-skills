@@ -6,6 +6,7 @@ related:
   - run-test
   - update-tests
   - follow-test
+  - review-coverage
   - follow-tdd
   - update-config
   - update-devin-global-skills

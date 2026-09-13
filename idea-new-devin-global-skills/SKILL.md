@@ -4,6 +4,7 @@ description: สร้างไอเดีย devin global skills ใหม่�
 argument-hint: "[scope]"
 related:
   - check-my-global-cli
+  - review-coverage
   - follow-devin-global-skills
   - rethink
   - report

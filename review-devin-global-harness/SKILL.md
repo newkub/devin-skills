@@ -5,7 +5,6 @@ argument-hint: "[layer|all]"
 related:
   - update-devin-global-skills
   - update-devin
-  - update-devin
   - align-devin-layers
   - deep-validate
   - follow-deep
@@ -15,6 +14,9 @@ related:
   - follow-skills-map
   - check-skill-usage
   - check-devin-knowledge
+  - check-content-outdate
+  - check-correctness
+  - review-coverage
   - update-references
   - run-review
   - deep-review
@@ -34,7 +36,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - `mcp` — ตรวจ MCP servers ว่า enable/ใช้งานจริง, ไม่ซ้ำ server, ไม่ dead config
 - `global rules` — ตรวจ `global_rules.md` ว่า skills ที่อ้างมีจริง, ไม่ขัดแย้งกัน, ไม่ stale
 
-ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused — merged from: review-redundancy), `references integrity` (merged from: review-references)
+ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused — merged from: review-redundancy), `references integrity` (merged from: review-references), `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions ที่ยังไม่มี skill — `/review-coverage`)
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่แก้ code (ใช้ `/deep-validate`)
 
@@ -109,7 +111,15 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 3. score ตาม `references/refs-scoring.md`, report ตาม `references/refs-report.md`
 4. refs ขาด/ซ้ำ → `/update-references` หลัง user confirm
 
-### 9. Score And Report
+### 9. Context Rot And Coverage
+
+> Goal: ตรวจ content ที่เน่าเสื่อมตามเวลา และ domain gaps
+
+1. ทำตาม `references/context-rot.md` — stale content (`/check-content-outdate`), incorrect content (`/check-correctness`), dead weight, context bloat
+2. ทำ `/review-coverage` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
+3. รวม findings เข้า report แยก section `context-rot` และ `coverage`
+
+### 10. Score And Report
 
 > Goal: สรุป score ต่อ layer + findings + refactor plan
 

@@ -6,6 +6,7 @@ related:
   - check-routes-status
   - check-repo-hygiene
   - follow-tool-crw
+  - review-coverage
   - update-devin-global-skills
   - report
 ---

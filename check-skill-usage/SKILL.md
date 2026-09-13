@@ -6,6 +6,7 @@ related:
   - check-skills-related
   - list-devin
   - check-broken-skills-references
+  - review-coverage
   - report
 ---
 
