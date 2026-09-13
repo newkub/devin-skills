@@ -30,6 +30,7 @@ related:
 
 - Setup: SigNoz endpoint, OTel SDK install, instrumentation → `subskills/setup-signoz/SKILL.md`
 - Config: `OTEL_*` env vars, service name, traces/metrics/logs exporters → `subskills/config-signoz/SKILL.md`
+- Verify: endpoint reachable, telemetry ไหลเข้า, service ปรากฏ → `subskills/verify-connection/SKILL.md`
 
 ### 1. Assess Project And Prepare SigNoz
 

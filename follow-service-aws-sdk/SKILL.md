@@ -27,6 +27,7 @@ related:
 |--------|----------|
 | Setup  | `subskills/setup-aws-sdk/SKILL.md` — SDK v3 modular install, credentials |
 | Config | `subskills/config-aws-sdk/SKILL.md` — region, credentials chain, endpoint config |
+| Verify | `subskills/verify-connection/SKILL.md` — smoke test credentials/connectivity |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

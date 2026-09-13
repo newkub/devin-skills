@@ -29,6 +29,7 @@ related:
 |--------|----------|
 | Setup  | `subskills/setup-run-on/SKILL.md` — AWS stack, GitHub App registration |
 | Config | `subskills/config-run-on/SKILL.md` — `runs-on.yml` runner definitions, workflow labels |
+| Verify | `subskills/verify-connection/SKILL.md` — stack healthy, runners register, labels ตรง |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

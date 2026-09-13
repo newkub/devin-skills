@@ -1,7 +1,7 @@
 ---
 name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
-argument-hint: "[scope]"
+argument-hint: "[scope|correctness|type-safety|quality|security|compliance|cross-reference]"
 related:
   - rethink
   - run-test
@@ -43,84 +43,57 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ระบุ standards หรือ principles ที่ใช้เป็นเกณฑ์
 - ถ้าไม่ทราบ scope ให้ถามผู้ใช้
 
+### Subskills
+
+> Goal: dispatch ไปยัง dimension subskill ตาม argument — หรือรันครบทุก dimension ถ้าไม่ระบุ
+
+| Dimension/Argument | Subskill |
+|--------------------|----------|
+| `correctness` | `subskills/check-correctness/SKILL.md` — requirements, logic, edge cases, error handling |
+| `type-safety`, `types` | `subskills/check-type-safety/SKILL.md` — typecheck, `any`/`@ts-ignore`, type flow |
+| `quality` | `subskills/check-quality/SKILL.md` — readability, consistency, docs, best practices |
+| `security` | `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection |
+| `compliance` | `subskills/check-compliance/SKILL.md` — requirements fit, conventions, regulatory |
+| `cross-reference`, `refs` | `subskills/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs |
+
+1. ถ้า argument ระบุ dimension เดียว → อ่าน `subskills/check-<dim>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม dimensions อื่น แต่ยังทำ Step 8 (Report)
+2. ถ้าไม่ระบุ → ทำ Steps 2-7 ตามลำดับ โดยแต่ละ step อ่าน subskill ที่ตรงมา execute
+
 ### 2. Check Correctness
 
 > Goal: Check Correctness
 
-ทำ `/review-quality` เพื่อตรวจสอบความถูกต้อง
-
-- ตรวจสอบความถูกต้องตาม principle หรือ standard
-- ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
-- ตรวจสอบ logic และ edge cases ได้รับการจัดการ
-- ตรวจสอบ error handling ครบถ้วน
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
 
 ### 3. Check Type Safety
 
 > Goal: Check Type Safety
 
-ตรวจสอบ type safety อย่างละเอียด
-
-- ทำ `/run-typecheck` เพื่อตรวจสอบ type errors
-- ตรวจสอบไม่มี `any` ที่ไม่จำเป็น
-- ตรวจสอบ type flow: schema → validation → API → UI
-- ตรวจสอบ type inference ใช้ถูกต้อง
-- ตรวจสอบไม่มี `@ts-ignore` หรือ `@ts-nocheck`
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-type-safety/SKILL.md` — typecheck, weak types (`any`/`@ts-ignore`), type flow พร้อมบันทึก findings + severity
 
 ### 4. Check Quality
 
 > Goal: Check Quality
 
-ตรวจสอบคุณภาพโดยรวม
-
-- ทำ `/review-quality` เพื่อตรวจสอบ code quality
-- ตรวจสอบ readability, completeness, consistency
-- ตรวจสอบมี documentation เพียงพอหรือ clear
-- ตรวจสอบใช้ best practices และไม่มี redundancy
-- ตรวจสอบ naming conventions สม่ำเสมอ
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-quality/SKILL.md` — readability, consistency, docs, conventions พร้อมบันทึก findings + severity
 
 ### 5. Check Security
 
 > Goal: Check Security
 
-ตรวจสอบ security อย่างละเอียด
-
-- ตรวจสอบ input validation และ sanitization
-- ตรวจสอบ authentication และ authorization patterns
-- ตรวจสอบไม่มี hardcoded secrets หรือ API keys
-- ตรวจสอบ API security และ rate limiting
-- ตรวจสอบ parameterized queries ป้องกัน SQL injection
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection, rate limiting พร้อมบันทึก findings + severity
 
 ### 6. Check Compliance
 
 > Goal: Check Compliance
 
-ตรวจสอบความสอดคล้องกับ standards และ constraints
-
-Goal reminder: ตรวจสอบความเหมาะสมกับ requirements และ context
-
-- ตรวจสอบความเหมาะสมกับ requirements หรือ context
-- ตรวจสอบความเหมาะสมกับ capabilities หรือ constraints
-- ตรวจสอบความเหมาะสมกับ scalability หรือ maintainability
-- ตรวจสอบ compliance กับ project conventions (`AGENTS.md`)
-- ตรวจสอบ compliance กับ regulatory requirements ถ้ามี
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-compliance/SKILL.md` — requirements fit, conventions (`AGENTS.md`), regulatory พร้อมบันทึก findings + severity
 
 ### 7. Cross-Reference Validation
 
 > Goal: Cross-Reference Validation
 
-ตรวจสอบ cross-references ทั้งหมด
-
-- ตรวจสอบ config files และ environment variables
-- ตรวจสอบ references ระหว่าง modules ถูกต้อง
-- ตรวจสอบ API contracts ตรงกับ implementation
-- ตรวจสอบ documentation ตรงกับ code จริง
-- ตรวจสอบ dependencies ไม่ conflict กับ existing versions
-- บันทึก findings พร้อม severity
+ทำตาม `subskills/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs พร้อมบันทึก findings + severity
 
 ### 8. Report And Suggest
 

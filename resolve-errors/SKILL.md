@@ -1,7 +1,7 @@
 ---
 name: resolve-errors
 description: แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate
-argument-hint: "[scope]"
+argument-hint: "[scope|verify]"
 related:
   - rethink
   - resolve-cicd
@@ -14,6 +14,8 @@ related:
   - run-check
   - run-test-all
   - run-until-pass
+  - check-secrets
+  - open-web-for-config-secret
 ---
 
 ## Goal
@@ -38,6 +40,15 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 | Cloudflare Worker หรือ Pages project ที่ระบุ | `/resolve-cloudflare-worker` |
 | Cloudflare Workers/Pages ทั้ง account | `/resolve-cloudflare` |
 | CI/CD pipeline repo-scoped หรือ single run/URL (watch + dispatch) | `/resolve-cicd` |
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — re-run command เดิม, ไม่มี error ใหม่, ไม่มี suppression |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่แก้ไขใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ โดย Step 5 อ่าน subskill `verify-resolved` มา execute
 
 ### 1. Prepare Context
 
@@ -89,12 +100,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
 
-1. รัน command เดียวกับที่ทำให้เกิด error เพื่อยืนยันว่า error หายไป
-2. รัน `bun run check` เพื่อตรวจสอบรวม (lint + typecheck + scan) หรือรันเฉพาะเจาะจง: `bunx biome lint` | `tsc --noEmit` | `bun test` | `bun run build`
-3. ใช้ `/run-until-pass` เพื่อรันจนกว่าจะผ่านทุก check
-4. ตรวจสอบไม่มี side effects: ไม่มี error ใหม่ในไฟล์อื่น, ไม่มี test ที่เคยผ่านแล้ว fail, ไม่มี warning ใหม่
-5. ตรวจสอบว่า fix ไม่ได้เพิ่ม ignore comments (`// biome-ignore`, `// @ts-ignore`, `# type: ignore`, etc.) ถ้าพบ → ลบและแก้ที่ source แทนการ suppress
-6. ถ้ามี error ใหม่ → กลับไป Step 4 (loop) — ถ้าเกิน 3 รอบ → ทำ `/deep-debug`
+1. ทำตาม `subskills/verify-resolved/SKILL.md` — re-run command เดิม, ตรวจ side effects และ suppression
+2. ถ้า verdict ไม่ใช่ `resolved` → กลับไป Step 4 (loop) — ถ้าเกิน 3 รอบ → ทำ `/deep-debug`
 
 ### 6. Document And Prevent
 
@@ -125,7 +132,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 | `Lint` | `code`/`config` | แก้ code pattern หรือปรับ config |
 | `Test` | `test-data`/`code` | แก้ assertion, mock, test setup |
 | `Network` | `code` | แก้ URL, headers, request format |
-| `Config` | `config` | แก้ env var, config value, path |
+| `Config` | `config` | แก้ env var, config value, path — ถ้าเป็น env-missing (`Missing required environment variables`, `X environment variable is not set`) → ห้าม hardcode ค่า ให้ route ไป `/check-secrets env-vars` + `/open-web-for-config-secret` (inventory table ชี้ key/URL/จุดกรอก) |
 | `Dependency` | `dependency` | อัปเดท/ติดตั้ง dependency |
 
 จัดลำดับการแก้ตาม source: `environment` > `config` > `dependency` > `code` > `test-data`

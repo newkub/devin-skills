@@ -51,7 +51,9 @@
 | `update-` | อัปเดตของที่มีอยู่ให้ทันสมัย — minimal diff, idempotent | `update-tests` → `subskills/update-e2e` |
 | `deploy-` | deploy ไปยัง platform/target จน live + verify | `follow-deploy` → `subskills/deploy-cloudflare` |
 | `migrate-` | ย้าย tool/version/pattern อย่างปลอดภัย มี rollback | `follow-monorepo` → `subskills/migrate-to-monorepo` |
-| `integrate-` | เชื่อม tools/systems เข้าด้วยกัน — export→import, sync, bridge, pipeline ระหว่าง tools | `deep-test-api` → `subskills/integrate-bruno`, top-level `integrate-openapi-bruno` |
+| `integrate-` | เชื่อม tools/systems เข้าด้วยกัน — export→import, sync, bridge, pipeline ระหว่าง tools | `deep-test` → `subskills/integrate-bruno`, top-level `integrate-openapi-bruno` |
+| `verify-` | ยืนยันผลหลัง action ของ parent — domain-specific post-action check ที่ `run-verify`/`deep-validate` ไม่ครอบ (deploy live, release published, connection works, merge clean) | `follow-deploy` → `subskills/verify-deploy`, `ship` → `subskills/verify-release` |
+| `check-` | read-only domain check ใต้ parent ที่มีหลาย dimensions — dispatch ทีละ dimension ได้; ถ้า parent เป็น `check-*` อยู่แล้วให้ใช้ bare domain name แทน | `deep-validate` → `subskills/check-security`, `check-files` → `subskills/encoding` |
 
 - name เต็มยังตาม rule เดิม: `<parent>-<prefix>-<name>` เช่น `download-program-package-manager` → ถ้าแยกตาม action จะเป็น `download-program-setup-*` ฯลฯ
 - ใช้ prefix เมื่อมีหลาย lifecycle จริงๆ — ถ้า parent มีแค่ workflow เดียวหรือเป็น knowledge ให้ใช้ `references/` แทน

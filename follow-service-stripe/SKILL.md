@@ -33,6 +33,7 @@ related:
 
 - Setup: SDK/CLI install, API keys, webhook signing → `subskills/setup-stripe/SKILL.md`
 - Config: products, prices, webhook endpoints, customer portal, test→live → `subskills/config-stripe/SKILL.md`
+- Verify: keys valid, mode ถูก (test/live), webhook secret พร้อม → `subskills/verify-connection/SKILL.md`
 
 ### 1. Setup Credentials
 

@@ -23,6 +23,7 @@ related:
 
 - Setup: SDK install, `RESEND_API_KEY`, test send → `subskills/setup-resend/SKILL.md`
 - Config: domain verification, `EMAIL_FROM`, templates, webhooks → `subskills/config-resend/SKILL.md`
+- Verify: API key valid, domain verified → `subskills/verify-connection/SKILL.md`
 
 ### 1. Setup And Usage
 

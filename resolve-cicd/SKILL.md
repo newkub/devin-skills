@@ -1,7 +1,7 @@
 ---
 name: resolve-cicd
 description: Watch CI (GitHub Actions) และ CD (Cloudflare, deploy targets) แล้ว resolve จนผ่าน
-argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url>]"
+argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url> | verify]"
 related:
   - resolve-errors
   - git-commit
@@ -28,6 +28,15 @@ Watch CI/CD ของ repo ปัจจุบันอย่างต่อเ�
 ## Execute
 
 Step dependencies: Step 1 → 2 → 3 วนซ้ำจน clean หรือ blocked
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — re-run/watch workflow บน remote จนยืนยัน green |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ
 
 ### 1. Detect Targets
 

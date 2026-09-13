@@ -25,6 +25,7 @@ related:
 
 - Setup: SDK install, `WORKOS_API_KEY`/`WORKOS_CLIENT_ID`, client init → `subskills/setup-workos/SKILL.md`
 - Config: AuthKit/SSO, redirect URIs, organizations/connections, Directory Sync webhooks → `subskills/config-workos/SKILL.md`
+- Verify: API key/client id valid, organizations reachable → `subskills/verify-connection/SKILL.md`
 
 ### 1. Install SDK
 

@@ -1,7 +1,7 @@
 ---
 name: ship
 description: Ship code ผ่าน AGENTS.md workflow — entry point เดียว ไม่มี logic เอง
-argument-hint: "[@issue-number-or-title]"
+argument-hint: "[@issue-number-or-title|verify]"
 allowed-tools:
   - read
   - exec
@@ -63,6 +63,17 @@ Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป�
 2. Preflight ตาม `references/swarm-plan.md#preflight` — git clean, deps, env พร้อม
 3. Fan-out ตาม `references/swarm-fan-out.md` — mechanical → `/use-scripts`/`/use-astgrep`, judgment → subagents ผ่าน `/use-subagents`, read-only → parallel tool calls ตาม `/follow-parallel`
 4. Merge results และผ่าน ship gates ตาม `references/swarm-merge-and-gate.md` — `/run-verify` + `/deep-validate` + `/run-check` ครบ, user confirm ก่อน merge/release เหมือน sequential
+
+### Subskills
+
+> Goal: dispatch งาน post-ship verification แยกจาก ship flow
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-release` | `subskills/verify-release/SKILL.md` — ยืนยัน tag/registry/release/deploy ขึ้นจริงหลัง ship |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-release/SKILL.md` แล้วทำตาม flow — ไม่รัน ship workflow ซ้ำ
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ แล้วแนะนำ `verify` เป็น next action หลัง ship สำเร็จ
 
 ## Rules
 

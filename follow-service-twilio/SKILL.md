@@ -23,6 +23,7 @@ related:
 |--------|----------|
 | Setup  | `subskills/setup-twilio/SKILL.md` — SDK install, Account SID/Auth Token |
 | Config | `subskills/config-twilio/SKILL.md` — phone numbers, messaging service, webhook config |
+| Verify | `subskills/verify-connection/SKILL.md` — account fetch ตอบกลับ, numbers พร้อม |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

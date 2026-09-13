@@ -1,7 +1,7 @@
 ---
 name: resolve-merge-conflicts
 description: แก้ไข git merge conflicts อย่างปลอดภัย ไม่สูญเสีย changes
-argument-hint: "[scope]"
+argument-hint: "[scope|verify]"
 related:
   - idea
   - merge
@@ -45,14 +45,21 @@ related:
 4. ลบ `<<<<<<<`, `=======`, `>>>>>>>` ทั้งหมด
 5. บันทึกทำไมถึงเลือกแบบนั้นใน commit message
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — ไม่มี markers, intent ครบทั้งสองฝั่ง, build/test ผ่าน |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 4 อ่าน subskill `verify-resolved` มา execute
+
 ### 4. Validate
 
 > Goal: ตรวจสอบว่า conflict resolution ไม่พัง
 
-1. รัน `git diff --check` เพื่อตรวจ conflict markers ตกค้าง
-2. รัน `grep -E '^<<<<<<<|^=======|^>>>>>>>'` ใน repo
-3. รัน lint, typecheck, tests ถ้ามี
-4. ถ้า fail → กลับไป resolve ใหม่
+1. ทำตาม `subskills/verify-resolved/SKILL.md` — ตรวจ markers, intent preservation และ build/test
+2. ถ้า verdict ไม่ใช่ `clean` → กลับไป resolve ใหม่
 
 ### 5. Stage And Commit
 

@@ -1,6 +1,6 @@
 ---
 name: resolve-github-actions
-argument-hint: "[--repo <owner/repo>]"
+argument-hint: "[--repo <owner/repo> | verify]"
 description: ตรวจสอบและแก้ไข GitHub Actions workflow runs ทีล้มเหลวสำหรับ repo ปัจจุบันหรือ repo ทีระบุ
 related:
   - resolve-errors
@@ -22,6 +22,15 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-github-actions-fails) — สำหรับ list fails ดู `references/list-fails.md`
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — watch run ใหม่จนจบ ยืนยัน success บน remote |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ
 
 ### 1. Verify gh CLI
 

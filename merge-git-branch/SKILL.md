@@ -1,7 +1,7 @@
 ---
 name: merge-git-branch
 description: Merge feature branch เข้า target branch ด้วย no-ff merge commit
-argument-hint: "<feature-branch> [target-branch]"
+argument-hint: "<feature-branch|verify> [target-branch]"
 related:
   - resolve-merge-conflicts
   - git-commit
@@ -52,14 +52,22 @@ Merge feature branch เข้า target branch ด้วย `--no-ff` merge com
    - หลังแก้แล้ว ทำ `git add <file>` และ `git commit`
 3. ถ้า merge สำเร็จ → บันทึก merge commit hash
 
+### Subskills
+
+> Goal: dispatch post-merge verification แยกจาก merge flow
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-merge` | `subskills/verify-merge/SKILL.md` — merge commit ถูกต้อง, ไม่มี conflict residue, build/test ผ่าน |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-merge/SKILL.md` แล้วทำตาม flow — ไม่ merge ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ โดย Step 4 อ่าน subskill `verify-merge` มา execute
+
 ### 4. Validate Merge
 
 > Goal: ยืนยันว่า merge ถูกต้อง
 
-1. ทำ `git log --oneline -5`
-2. ทำ `git diff <feature-branch>..<target-branch> --stat` เพื่อยืนยันว่าไม่มี unexpected changes
-3. รัน `bun run typecheck` หรือ `bun run build` ถ้า project มี (best-effort)
-4. ถ้า validation ไม่ผ่าน → ทำ `git reset --hard ORIG_HEAD` เพื่อ rollback merge และ report
+ทำตาม `subskills/verify-merge/SKILL.md` — ถ้า verdict `broken` → ทำ `git reset --hard ORIG_HEAD` เพื่อ rollback merge และ report
 
 ### 5. Push Target Branch
 

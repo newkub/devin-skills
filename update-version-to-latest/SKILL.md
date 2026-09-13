@@ -1,7 +1,7 @@
 ---
 name: update-version-to-latest
 description: อัปเดต dependencies, runtime, tools, CI ในทุก workspace ให้ latest พร้อม verify
-argument-hint: "[scope]"
+argument-hint: "[scope|verify]"
 related:
   - resolve-errors
   - report
@@ -107,6 +107,10 @@ related:
 | Topic | Subskill |
 |-------|----------|
 | Major version upgrade — breaking changes scan, codemods, staged rollout, rollback | `subskills/migrate-major/SKILL.md` |
+| `verify`, `verify-upgrade` — ยืนยัน versions bumped, lockfile consistent, project green | `subskills/verify-upgrade/SKILL.md` |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-upgrade/SKILL.md` แล้วทำตาม flow — ไม่ re-update
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Steps 6-7 อ่าน subskill `verify-upgrade` มา execute
 
 ## Rules
 

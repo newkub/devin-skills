@@ -23,6 +23,7 @@ related:
 |--------|----------|
 | Setup  | `subskills/setup-claude-agent-sdk/SKILL.md` — SDK install, `ANTHROPIC_API_KEY` |
 | Config | `subskills/config-claude-agent-sdk/SKILL.md` — model, tools, permissions, sessions config |
+| Verify | `subskills/verify-connection/SKILL.md` — API key valid, minimal query ตอบกลับ |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

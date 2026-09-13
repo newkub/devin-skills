@@ -1,7 +1,7 @@
 ---
 name: merge-github-pr
 description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
-argument-hint: "[scope]"
+argument-hint: "[scope|verify]"
 related:
   - resolve-github-pr
   - refactor-commit
@@ -69,11 +69,22 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 3. ถ้ามี auto-merge → ใช้ `gh pr merge <pr> --auto`
 4. รอจน merge สำเร็จ
 
+### Subskills
+
+> Goal: dispatch post-merge verification แยกจาก merge flow
+
+| Argument | Subskill |
+|----------|----------|
+| `verify`, `verify-merge` | `subskills/verify-merge/SKILL.md` — PR merged บน remote, base updated, cleanup ครบ |
+
+1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-merge/SKILL.md` แล้วทำตาม flow — ไม่ merge ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 6 อ่าน subskill `verify-merge` มา execute ก่อน cleanup
+
 ### 6. Verify And Cleanup
 
 > Goal: ยืนยันและ cleanup
 
-1. ตรวจสอบว่า PR status เป็น `merged`
+1. ทำตาม `subskills/verify-merge/SKILL.md` — ยืนยัน PR merged บน remote ก่อน
 2. รัน `git fetch` และ `git pull` บน base branch
 3. ลบ local branch ถ้าไม่ต้องการ `git branch -d <branch>`
 4. รัน `gh pr delete-branch <pr>` ถ้าต้องการ

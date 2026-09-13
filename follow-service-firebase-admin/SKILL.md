@@ -23,6 +23,7 @@ related:
 |--------|----------|
 | Setup  | `subskills/setup-firebase-admin/SKILL.md` — admin SDK install, service account |
 | Config | `subskills/config-firebase-admin/SKILL.md` — app options, emulator config |
+| Verify | `subskills/verify-connection/SKILL.md` — service account valid, Admin SDK call ตอบกลับ |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

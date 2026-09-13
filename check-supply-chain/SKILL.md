@@ -1,7 +1,7 @@
 ---
 name: check-supply-chain
 description: ตรวจ supply chain risks — lockfile integrity, typosquat signals และ install scripts
-argument-hint: "[manifest-or-lockfile]"
+argument-hint: "[manifest-or-lockfile|lockfile|typosquat|install-scripts|pinning]"
 related:
   - review-security
   - report
@@ -20,37 +20,43 @@ related:
 
 ## Execute
 
+### Subskills
+
+> Goal: dispatch ไปยัง domain subskill ตาม argument — หรือรันครบทุก domain ถ้าไม่ระบุ
+
+| Domain/Argument | Subskill |
+|-----------------|----------|
+| `lockfile` | `subskills/lockfile/SKILL.md` — resolve ตรง manifest, integrity fields, sources |
+| `typosquat`, `packages` | `subskills/typosquat/SKILL.md` — lookalike names, suspicious signals, dependency confusion |
+| `install-scripts`, `scripts` | `subskills/install-scripts/SKILL.md` — lifecycle scripts audit |
+| `pinning`, `sources` | `subskills/pinning/SKILL.md` — floating versions, `.npmrc`, CI install flags |
+
+1. ถ้า argument ระบุ domain เดียว → อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม domains อื่น แต่ยังทำ Step 5 (Report)
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามลำดับ โดยแต่ละ step อ่าน subskill ที่ตรงมา execute
+
 ### 1. Lockfile Integrity
 
 > Goal: ตรวจ lockfile ไม่ถูกแกะ
 
-1. เทียบ lockfile กับ manifest — versions ที่ resolve ตรง declared ranges ไหม
-2. หา integrity fields ที่ขาดหรือแปลก (missing hashes, http:// URLs)
-3. flag deps ที่ resolve จาก non-standard registries หรือ direct URLs/git
+ทำตาม `subskills/lockfile/SKILL.md`
 
 ### 2. Typosquat And Suspicious Packages
 
 > Goal: หา packages ที่อาจเป็นของปลอม
 
-1. flag names ที่ใกล้ popular packages (lodash vs lodas ฯลฯ) — edit distance
-2. flag: packages ที่เพิ่ง publish, downloads ต่ำมาก, no repo/README, single maintainer ใหม่
-3. flag packages ที่ชื่อ internal-looking แต่ resolve จาก public registry (dependency confusion)
+ทำตาม `subskills/typosquat/SKILL.md`
 
 ### 3. Install Scripts Audit
 
 > Goal: ตรวจ lifecycle scripts ที่รันโค้ดตอน install
 
-1. ค้น `preinstall`/`install`/`postinstall` ใน deps ทั้งหมด
-2. flag scripts ที่: เรียก network, เขียนไฟล์นอก package, spawn processes, obfuscated
-3. ตรวจว่า project เปิด `--ignore-scripts` หรือไม่ — trade-off ที่ต้องระบุ
+ทำตาม `subskills/install-scripts/SKILL.md`
 
 ### 4. Pinning And Sources
 
 > Goal: ตรวจ reproducibility ของ supply chain
 
-1. flag: floating versions (`*`, `latest`) ที่ auto-resolve ไปเวอร์ชันใหม่
-2. ตรวจ `.npmrc`/registry config — มี scope overrides หรือ auth tokens ถูก commit ไหม
-3. ตรวจ CI: install ด้วย `--frozen-lockfile`/`--immutable` ไหม
+ทำตาม `subskills/pinning/SKILL.md`
 
 ### 5. Report
 

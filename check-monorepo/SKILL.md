@@ -1,7 +1,7 @@
 ---
 name: check-monorepo
 description: ตรวจสอบว่า project เป็น monorepo หรือไม่
-argument-hint: "[scope]"
+argument-hint: "[scope|boundaries|pipeline|config]"
 related:
   - follow-monorepo
   - follow-tasks
@@ -19,6 +19,19 @@ related:
 ใช้สำหรับตรวจสอบประเภท project ก่อนเริ่มทำงานที่ต้องรู้ว่าเป็น monorepo หรือไม่
 
 ## Execute
+
+### Subskills
+
+> Goal: dispatch ไปยัง domain subskill ตาม argument — detection flow (Steps 1-4) ทำก่อนเสมอ
+
+| Domain/Argument | Subskill |
+|-----------------|----------|
+| `boundaries` | `subskills/boundaries/SKILL.md` — cross-package imports, layer violations, cycles |
+| `pipeline`, `tasks` | `subskills/pipeline/SKILL.md` — task coverage, orphan projects, cache config |
+| `config` | `subskills/config/SKILL.md` — declared vs actual workspaces, manifest coherence, tool drift |
+
+1. ถ้า argument ระบุ domain → ทำ detection (Steps 1-3) ก่อนเพื่อยืนยันว่าเป็น monorepo แล้วอ่าน `subskills/<domain>/SKILL.md` มา execute
+2. ถ้าไม่ระบุ → ทำ detection flow (Steps 1-4) เท่านั้น แล้วแนะนำ domains ที่ตรวจต่อได้
 
 ### 1. Check Package Manifests
 

@@ -29,6 +29,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 |--------|----------|
 | Setup  | `subskills/setup-vercel/SKILL.md` — Vercel CLI, login, link project |
 | Config | `subskills/config-vercel/SKILL.md` — env vars, `vercel.json` config |
+| Verify | `subskills/verify-connection/SKILL.md` — CLI auth, project linked, env vars ครบ |
 
 อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 

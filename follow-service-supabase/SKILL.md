@@ -37,6 +37,7 @@ related:
 
 - Setup: CLI install/login, `supabase init`, `link`, local stack, client init → `subskills/setup-supabase/SKILL.md`
 - Config: env vars, `config.toml`, RLS policies, client options → `subskills/config-supabase/SKILL.md`
+- Verify: URL/keys valid, auth health, query ตอบกลับ → `subskills/verify-connection/SKILL.md`
 
 ### 1. Install And Authenticate
 
