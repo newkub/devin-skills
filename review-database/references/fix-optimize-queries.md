@@ -50,7 +50,7 @@
 
 1. `/run-test` หรือ `/run-test` (integration) ต้องผ่าน — results เหมือนเดิม
 2. เทียบ query count/time ก่อน-หลัง — ใช้ `/report-before-after`
-3. อัปเดต migration files ถ้าเพิ่ม index — ทำ `/report-schema` ถ้า schema เปลี่ยน
+3. อัปเดต migration files ถ้าเพิ่ม index — ทำ `/report-database-schema` ถ้า schema เปลี่ยน
 
 ## Rules
 

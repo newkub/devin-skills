@@ -12,7 +12,6 @@ related:
   - learn
   - follow-lib-fast-check
   - review-performance
-  - learn
   - ask-me
 ---
 

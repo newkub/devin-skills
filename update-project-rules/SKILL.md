@@ -3,7 +3,12 @@ name: update-project-rules
 description: สร้างและอัปเดต ast-grep rules ใน `rules/` และ `sgconfig.yml` ตาม conventions ของ project
 argument-hint: "[rule-or-pattern]"
 related:
+  - use-astgrep
+  - new-skills
+  - scan-codebase
+  - run-scan
   - report
+  - suggest-next-action
 ---
 
 ## Goal
@@ -33,25 +38,28 @@ related:
 > Goal: rules ตรงกับ pattern ที่ต้องการบังคับ
 
 1. รับ pattern/convention ที่ต้องการจาก user หรือ context
-2. เขียน rule ด้วย YAML format: `id`, `language`, `rule.pattern`, `message`, `severity`, `fix`
-3. ใช้ meta-variables `$VAR`, `$$$ARGS` ตาม ast-grep rule syntax
-4. เพิ่ม `constraints` หรือ `utils` ถ้า rule ซับซ้อน
-5. ทดสอบ rule ด้วย `ast-grep scan --rule rules/<name>.yml <path>` ก่อน commit
+2. ทำ `/use-astgrep` (หรือ programmatic subskill) เพื่อสร้าง rule
+3. เขียน rule ด้วย YAML format: `id`, `language`, `rule.pattern`, `message`, `severity`, `fix`
+4. ใช้ meta-variables `$VAR`, `$$$ARGS` ตาม ast-grep rule syntax
+5. เพิ่ม `constraints` หรือ `utils` ถ้า rule ซับซ้อน
+6. ทดสอบ rule ด้วย `ast-grep scan --rule rules/<name>.yml <path>` ก่อน commit
 
 ### 3. Wire Into Workflow
 
 > Goal: rules ถูกใช้งานจริง
 
-1. เพิ่ม script ใน `package.json` เช่น `"scan": "ast-grep scan"` ถ้ายังไม่มี
-2. ถ้า project มี CI → เพิ่ม `ast-grep scan` step
-3. ทำ `/run-scan` เพื่อยืนยันว่า rules ทำงานและไม่มี false positives มากเกิน
+1. ทำ `/scan-codebase` เพื่อหา project files ที่ควร scan
+2. เพิ่ม script ใน `package.json` เช่น `"scan": "ast-grep scan"` ถ้ายังไม่มี
+3. ถ้า project มี CI → เพิ่ม `ast-grep scan` step
+4. ทำ `/run-scan` เพื่อยืนยันว่า rules ทำงานและไม่มี false positives มากเกิน
 
 ### 4. Report
 
 > Goal: สรุป rules ที่สร้าง/อัปเดต
 
-1. ใช้ `/report` คอลัมน์: No., Rule, Pattern, Severity, Fix, Status
+1. ใช้ `/report table` คอลัมน์: `No.`, `Rule`, `Pattern`, `Severity`, `Fix`, `Status`
 2. ระบุ rules ที่เพิ่ม แก้ไข หรือลบ
+3. ทำ `/suggest-next-action`
 
 ## Rules
 

@@ -4,7 +4,6 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 argument-hint: "[scope]"
 related:
   - refactor
-
   - relocation
   - update-references
   - rethink

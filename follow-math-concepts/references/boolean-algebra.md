@@ -71,7 +71,7 @@
 - ห้าม over-simplify จนทำให้คนอ่านไม่เข้าใจ
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-debugging ถ้าจำเป็น
+- ใช้ /deep-debug ถ้าจำเป็น
 - ใช้ /follow-software-engineering ถ้าจำเป็น
 
 ## Expected Outcome

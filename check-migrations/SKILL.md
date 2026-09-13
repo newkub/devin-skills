@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - run-drizzle-studio
   - review-database
-  - report-schema
+  - report-database-schema
   - report
 ---
 
@@ -53,7 +53,7 @@ related:
 1. ใช้ introspect: `bunx drizzle-kit introspect`, `npx prisma db pull` เทียบกับ schema file
 2. Flag tables/columns ที่ DB มีแต่ schema code ไม่มี และกลับกัน
 3. Flag destructive drift: dropped columns/tables ที่ยังมี data อ้างอิง
-4. ถ้าทำ `/report-schema` คู่กัน → ใช้ผลร่วมกัน
+4. ถ้าทำ `/report-database-schema` คู่กัน → ใช้ผลร่วมกัน
 
 ### 5. Report
 
@@ -82,7 +82,7 @@ related:
 - ระบุเมื่อข้อมูลไม่ครบ (เช่น เชื่อม DB ไม่ได้)
 
 - ใช้ /review-database ถ้าจำเป็น
-- ใช้ /report-schema ถ้าจำเป็น
+- ใช้ /report-database-schema ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
 
 ## Expected Outcome
