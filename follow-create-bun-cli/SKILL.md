@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - use-bun-native-api
   - follow-tool-bunup
-  - follow-architecture
+  - review-architecture
   - flatten-directory
   - rethink
   - review-dependencies
@@ -38,7 +38,7 @@ related:
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
 
-1. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
+1. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
 2. เลือก structure ตามลักษณะงาน:
    - CLI ง่ายๆ → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
    - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
@@ -181,7 +181,7 @@ export default defineConfig({
 
 ## Guide
 
-- `/follow-architecture` — architecture selection
+- `/review-architecture` — architecture selection
 - `/use-bun-native-api` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards

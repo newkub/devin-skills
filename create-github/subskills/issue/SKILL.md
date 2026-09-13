@@ -10,7 +10,6 @@ related:
   - ask-me
   - open
   - list-github
-  - open
 ---
 
 ## Goal

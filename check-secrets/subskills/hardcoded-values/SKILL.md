@@ -5,7 +5,6 @@ argument-hint: "[path]"
 related:
   - follow-config
   - check-secrets
-  - check-secrets
   - search
   - use-astgrep
   - report

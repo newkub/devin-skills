@@ -3,8 +3,8 @@ name: follow-orm
 description: ใช้งาน ORM และ data access patterns ด้วย repository pattern และ type-safe mappings
 argument-hint: "[scope]"
 related:
-  - follow-clean-architecture
-  - follow-layered-architecture
+  - review-architecture
+  - review-architecture
   - review-dependencies
   - follow-lib-drizzle
   - update-tests
@@ -137,8 +137,8 @@ related:
 - ห้ามเปิด transaction ใน business logic
 - ห้ามใช้ `any` สำหรับ database results — ใช้ mapper functions
 
-- ใช้ /follow-clean-architecture ถ้าจำเป็น
-- ใช้ /follow-layered-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
 

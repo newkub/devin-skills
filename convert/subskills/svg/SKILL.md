@@ -5,7 +5,6 @@ argument-hint: "[input]"
 related:
   - convert
   - idea
-  - convert
   - draw-svg-image
 ---
 

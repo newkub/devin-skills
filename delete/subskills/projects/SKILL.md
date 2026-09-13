@@ -4,8 +4,6 @@ description: ลบ project ทั้ง local, remote repo, และ Cloudflar
 argument-hint: "[project-path-or-name]"
 related:
   - delete
-  - delete
-  - delete
   - follow-service-cloudflare
   - list-cloudflare-projects
   - update-references

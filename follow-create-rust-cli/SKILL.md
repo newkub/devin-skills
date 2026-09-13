@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-tool-cargo
-  - follow-architecture
+  - review-architecture
   - flatten-directory
   - rethink
   - review-dependencies
@@ -37,7 +37,7 @@ related:
 > Goal: เลือก architecture ที่เหมาะสมกับ CLI
 
 1. ถ้ายังไม่ชัด Rust หรือ Bun → ทำ `/follow-create-cli` ก่อน
-2. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อประเมิน context
+2. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อประเมิน context
 3. เลือก architecture ตามลักษณะงาน:
    - CLI ง่ายๆ มี subcommands ไม่กี่ตัว → Command/Handler split
    - ต้อง support หลาย output modes (TTY/JSON/agent) → Functional Core / Imperative Shell

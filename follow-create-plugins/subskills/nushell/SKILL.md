@@ -4,8 +4,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 argument-hint: "[plugin-name]"
 related:
   - follow-create-plugins
-  - follow-create-plugins
-  - follow-create-plugins
   - ship
 ---
 

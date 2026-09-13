@@ -9,7 +9,7 @@ related:
   - deep-research
   - deep-review
   - deep-validate
-  - follow-architecture
+  - review-architecture
   - refactor
   - restructure
   - deep-review-then-fix
@@ -132,7 +132,7 @@ related:
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /follow-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /restructure ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น

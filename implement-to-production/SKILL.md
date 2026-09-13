@@ -46,7 +46,7 @@ related:
 
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
-1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/follow-architecture` เพื่อดู boundary, layer, data flow
+1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/review-architecture` เพื่อดู boundary, layer, data flow
 2. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
 3. ระบุ critical path: schema → data → API → UX/UI
 

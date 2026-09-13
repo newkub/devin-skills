@@ -11,7 +11,7 @@ related:
   - restructure
   - check-files
   - flatten-directory
-  - follow-architecture
+  - review-architecture
   - run-review
 ---
 
@@ -77,7 +77,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 1. ตรวจ file naming ตาม `references/restructure-file-naming.md` และ folder grouping ตาม `references/restructure-folder-grouping.md`
 2. ตรวจ barrel exports และ import alias complexity ตาม `references/restructure-barrel-exports.md`
 3. ทำ `/check-files long-files` ระบุไฟล์ที่ต้อง split ก่อน/หลัง relocation
-4. ประเมิน flat vs nested ตาม `/flatten-directory` และ `/follow-architecture`
+4. ประเมิน flat vs nested ตาม `/flatten-directory` และ `/review-architecture`
 5. คำนวณ structure health score และสร้าง relocation plan ตาม `references/restructure-structure-health.md` — แสดง dry-run preview old path → new path พร้อม files ที่ต้อง update imports
 6. คำนวณ score ตาม `references/restructure-scoring.md`
 

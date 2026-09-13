@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-tool-tsdown
   - follow-create-plugins
-  - follow-create-plugins
   - follow-lang-typescript
   - review-dependencies
   - follow-tool-turborepo

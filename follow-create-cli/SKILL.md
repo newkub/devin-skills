@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-rust-cli
-  - follow-architecture
+  - review-architecture
   - flatten-directory
   - review-dependencies
   - ship
@@ -49,7 +49,7 @@ related:
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
+3. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
 4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
 5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/review-dependencies` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
 6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
@@ -92,7 +92,7 @@ related:
 ### 2. Architecture Selection
 
 - ทุก CLI ต้องแยก concerns ชัดเจน
-- ใช้ `/follow-architecture` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
+- ใช้ `/review-architecture` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
 - Domain layer ต้อง pure ไม่มี side effects เมื่อเหมาะสม
 - Adapters จัดการ I/O และ external dependencies
 - Presentation เป็น entry points

@@ -43,7 +43,7 @@
 
 > Goal: เติม gaps แบบ minimal และ consistent
 
-1. ทำตาม `/follow-architecture` — เคารพ structure เดิม ไม่ restructure โดยไม่จำเป็น
+1. ทำตาม `/review-architecture` — เคารพ structure เดิม ไม่ restructure โดยไม่จำเป็น
 2. reuse components/hooks ที่มีใน codebase — ห้ามสร้างใหม่ถ้ามีอยู่แล้ว
 3. เติม states ที่ขาดด้วย patterns เดียวกับ feature อื่นใน project
 4. เขียน/อัปเดต tests สำหรับ edge cases ที่เพิ่ม

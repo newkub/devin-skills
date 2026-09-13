@@ -10,7 +10,7 @@ related:
   - search
   - follow-harness-engineering
   - review-dependencies
-  - follow-clean-architecture
+  - review-architecture
 ---
 
 ## Goal
@@ -104,7 +104,7 @@ related:
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search skills ถ้าจำเป็น
-- ใช้ /follow-clean-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -77,7 +77,7 @@ related:
 
 1. ทำ `/generalize` เพื่อทำให้ pattern เป็น generic สำหรับ reuse
 2. ปรับ pattern ให้เข้ากับ project context และ conventions
-3.  implement ในที่ที่เหมาะสม โดยทำตาม `/follow-architecture`
+3.  implement ในที่ที่เหมาะสม โดยทำตาม `/review-architecture`
 4. ถ้าต้องแก้ไขไฟล์มากกว่า 10 ไฟล์ ให้ทำ `/use-scripts` สำหรับ batch transformations
 5. รัน `/run-verify` เพื่อตรวจสอบคุณภาพหลัง implement
 

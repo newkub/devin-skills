@@ -3,7 +3,7 @@ name: follow-create-web-nextjs
 description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 16 applications
 argument-hint: "[scope]"
 related:
-  - follow-nextjs-architecture
+  - review-architecture
   - follow-create-web
   - follow-create-mobile
   - follow-best-practice
@@ -165,7 +165,7 @@ related:
 - ห้ามทำ database calls ใน proxy
 - รันบน Edge Runtime
 
-- ใช้ /follow-nextjs-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /follow-create-web astro ถ้าจำเป็น
 - ใช้ /follow-create-mobile cross-capacitor ถ้าจำเป็น (create web nextjs)
 - ใช้ /follow-best-practice ถ้าจำเป็น

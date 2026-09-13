@@ -24,7 +24,7 @@
 
 > Goal: กำหนดโครงสร้างเป้าหมายที่ตรงกับ conventions
 
-1. ทำ `/follow-architecture` เพื่อยืนยัน pattern ของ project
+1. ทำ `/review-architecture` เพื่อยืนยัน pattern ของ project
 2. ระบุ target module/layer ของแต่ละ finding
 3. เรียงลำดับ fix: foundation → dependencies → high-impact
 4. ถ้าเปลี่ยน public API หรือ module boundary → `/ask-me`

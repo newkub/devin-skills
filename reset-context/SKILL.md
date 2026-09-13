@@ -20,7 +20,7 @@ related:
   - check-skills-related
   - deep-thinking
   - follow-best-practice
-  - follow-layered-architecture
+  - review-architecture
   - plan
   - refactor
   - use-scripts
@@ -88,7 +88,7 @@ related:
 2. อ่าน `imports`, `exports`, dependencies และ reverse dependencies
 3. ทำ `/scan-codebase` พร้อม `/use-astgrep` และ `/check-skills-related`
 4. ทำ `/deep-thinking` เพื่อวิเคราะห์โครงสร้าง, issues, และ improvements
-5. ทำ `/follow-best-practice` และ `/follow-layered-architecture` เพื่อเทียบมาตรฐาน
+5. ทำ `/follow-best-practice` และ `/review-architecture` เพื่อเทียบมาตรฐาน
 6. ทำ `/plan` เพื่อวางแผนการแก้ไขตาม findings ใหม
 7. ทำ `/refactor` และ `/use-scripts` ก่อน implement ถ้าจำเป็น
 8. ทำ `/implement-to-production` เพื่อส่งมอบ code สมบูรณ์

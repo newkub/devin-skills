@@ -1,38 +1,12 @@
----
-name: follow-clean-architecture
-description: สร้างโครงสร้าง Clean Architecture ด้วย modules, ports, adapters และ pure domain
-argument-hint: "[scope]"
-related:
-  - review-architecture
-  - review-quality
-  - follow-lib-effect-ts
-  - follow-lib-zod
-  - follow-orm
-  - follow-event-driven
-  - follow-tool-vitest
-  - update-tests
-  - refactor
-  - refactor-workspace
-  - update-references
-  - run-test
-  - follow-lang-typescript
-  - follow-lang-rust
-  - run-clean
----
+# Clean Architecture Pattern
 
-## Goal
+(merged from: follow-clean-architecture)
 
-Implement Clean Architecture ด้วย Vertical Slice Modules, Functional Core และ Ports & Adapters สำหรับ production-grade applications
-
-## Scope
-
-ใช้สำหรับ projects ที่ต้องการ testability สูง และ maintainability ระยะยาว
+Implement Clean Architecture ด้วย Vertical Slice Modules, Functional Core และ Ports & Adapters สำหรับ production-grade applications — เหมาะกับ projects ที่ต้องการ testability สูง และ maintainability ระยะยาว
 
 ## Execute
 
 ### 1. Setup Project Structure
-
-> Goal: สร้าง project structure ตาม Clean Architecture
 
 ```
 src/
@@ -46,8 +20,6 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 2. Create Shared Kernel
 
-> Goal: ทำ `/review-architecture` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
-
 1. `types/` - Common types (`Result`, `Option`)
 2. `utils/` - Pure utility functions
 3. `errors/` - Error types
@@ -56,7 +28,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 3. Implement Functional Core
 
-> Goal: เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-lib-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection)
+เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-lib-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection)
 
 1. ใช้ `pure functions` เท่านั้น, Immutable data structures (`readonly`)
 2. ไม่มี side effects, ไม่พึ่ง infrastructure
@@ -65,7 +37,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 4. Implement Application Layer
 
-> Goal: ทำ `/follow-event-driven` เมื่อ application มี event-driven workflows; ถ้าไม่ใช้ event-driven ให้สร้าง usecases/queries ตรงๆ ใน `modules/*/application/`
+ทำ `/follow-event-driven` เมื่อ application มี event-driven workflows; ถ้าไม่ใช้ event-driven ให้สร้าง usecases/queries ตรงๆ ใน `modules/*/application/`
 
 1. `usecases/` - Flow orchestration (write side)
 2. `queries/` - Read-side queries (CQRS read)
@@ -75,7 +47,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 5. Implement Adapters And Presentation
 
-> Goal: วางโครงสร้าง adapters และ presentation layers ตาม dependency direction (presentation → application → adapters → ports)
+วางโครงสร้าง adapters และ presentation layers ตาม dependency direction (presentation → application → adapters → ports)
 
 1. `adapters/db/` - Database implementations — ทำ `/follow-orm`
 2. `adapters/http/` - HTTP clients, `adapters/external/` - External services
@@ -85,7 +57,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 6. Refactor Existing Code
 
-> Goal: ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้ามขั้นตอนนี้)
+ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้ามขั้นตอนนี้)
 
 1. ย้าย business logic ไป `modules/*/domain/operations/`
 2. ย้าย data models ไป `modules/*/domain/models/` เป็น `readonly` types
@@ -95,7 +67,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 7. Testing Strategy
 
-> Goal: ทำ `/update-tests` เพื่อจัดการ tests ตาม Clean Architecture
+ทำ `/update-tests` เพื่อจัดการ tests ตาม Clean Architecture
 
 1. ทำ `/follow-tool-vitest` สำหรับ testing framework setup
 2. Unit tests - Pure function tests ใน `test/modules/*/domain/` (AAA pattern)
@@ -105,7 +77,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 8. Split Modules When Too Large
 
-> Goal: ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-workspace`
+ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-workspace`
 
 1. วัด module size: module เกิน 15 ไฟล์, ไฟล์ใน `domain/operations/` เกิน 300 บรรทัด, usecases ใน `application/usecases/` เกิน 5 ตัว
 2. เลือก pattern: sub-module (ยังเกี่ยวข้อง parent), sibling module (อิสระ), shared module (ใช้ร่วม)
@@ -116,8 +88,6 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 ## Rules
 
 ### 1. Core Rules
-
-Clean Architecture มี 3 rules หลัก:
 
 - `Domain` = business rules (100% pure)
 - `Application` = orchestration + "what happens next" decisions
@@ -160,7 +130,6 @@ Clean Architecture มี 3 rules หลัก:
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /improve ถ้าจำเป็น
 - ใช้ /run-clean ถ้าจำเป็น
 

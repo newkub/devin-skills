@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - analyze-root-cause-analysis
   - deep-research
-  - follow-architecture
+  - review-architecture
   - update-devin-global-skills
   - resolve-errors
   - dont-over-engineer
@@ -48,7 +48,7 @@ related:
 
 ออกแบบ solution ที่เหมาะสมกับ context
 
-1. ทำ `/follow-architecture` เพื่อออกแบบโครงสร้าง
+1. ทำ `/review-architecture` เพื่อออกแบบโครงสร้าง
 2. พิจารณา trade-offs และ alternatives
 3. ตั้งค่า success criteria ชัดเจน
 

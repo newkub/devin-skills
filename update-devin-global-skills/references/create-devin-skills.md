@@ -87,7 +87,7 @@
 
 ### 1. Template Selection
 
-- ใช้ skill type template ตาม prefix เป็น canonical structure. `follow-*-architecture` ใช้ architecture template ไม่ใช่ follow
+- ใช้ skill type template ตาม prefix เป็น canonical structure.
 - ถ้าไม่ตรง template → ใช้โครงสร้างมาตรฐาน `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 
@@ -103,7 +103,7 @@
 | `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia`, `follow-lib-vue` |
 | `follow-tool-` | CLI tool / dev tool / build tool | `follow-tool-biome`, `follow-tool-vite`, `follow-tool-astgrep` |
 | `follow-create-` | สร้าง plugins / extensions / CLI / lib | `follow-create-bun-cli`, `follow-create-plugins` (eslint) |
-| `follow-` (คงเดิม) | concept / practice / workflow / process | `follow-architecture`, `follow-tdd`, `follow-deploy`, `follow-plan` |
+| `follow-` (คงเดิม) | concept / practice / workflow / process | `follow-tdd`, `follow-deploy`, `follow-plan`, `follow-best-practice` |
 
 - ถ้า skill ไม่ตรง prefix ใด → ใช้ `follow-` คงเดิม
 - ถ้า skill ครอบคลุมหลาย category → เลือก prefix ตาม primary responsibility

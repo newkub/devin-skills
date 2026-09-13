@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **614** top-level skills (975 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
+The repository currently contains **610** top-level skills (970 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
 
@@ -98,7 +98,7 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (188): language, framework, library, tool, service, architecture, and best-practice guides — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`).
+- `follow-*` (183): language, framework, library, tool, service, architecture, and best-practice guides — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`). `follow-*-architecture` family merged into `/review-architecture` (`references/patterns-*.md`).
 - `review-*` (55): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`, `redundancy`+`references`→`devin-global-skills` (`techstack` restored เมื่อ 2026-09 — catalog อยู่ที่ `review-dependencies/references/techstack-catalog.md`); domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
 - `check-*` (51): verification, structure, and health checks — dispatchers: `check-files`, `check-secrets`, `check-repo-hygiene`, `check-monorepo`, `check-config-drift`.
 - `run-*` (28): test, build, lint, typecheck, format, and deployment runners — `run-test` เป็น test dispatcher (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`).

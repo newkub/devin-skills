@@ -5,7 +5,6 @@ argument-hint: "[repo-name]"
 related:
   - git-commit
   - git-push
-  - git-commit
   - follow-gitignore
   - open
 ---

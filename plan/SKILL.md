@@ -5,7 +5,6 @@ argument-hint: "[prompt]"
 related:
   - deep-plan
   - review-architecture
-  - follow-architecture
   - deep-analyze
   - alternative
   - prioritize
@@ -50,7 +49,7 @@ Boundary: งานซับซ้อนสูง/เสี่ยงสูงท
 > Goal: Plan Architecture
 
 1. ทำ `deep-thinking` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
-2. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม
+2. ทำ `/review-architecture` เพื่อเลือก architecture ที่เหมาะสม
 3. วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
 4. สร้าง file pattern table: File Pattern, Description, Naming, Import
 5. กำหนด module boundaries, dependencies (high-level → low-level), และ public APIs

@@ -35,7 +35,7 @@ argument-hint: "[features]"
 
 > Goal: สร้างโครงสร้าง project
 
-1. ทำ `/follow-clean-architecture` หรือ `/follow-layered-architecture` เพื่อสร้าง `src/`
+1. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อสร้าง `src/`
 2. สร้าง `src/app.ts`, `src/index.ts`, `src/commands/`, `src/events/`, `src/actions/`, `src/config.ts`
 3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
 4. รัน `bun init` หรือ `npm init` ตาม runtime

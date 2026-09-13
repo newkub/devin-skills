@@ -54,7 +54,7 @@
 
 > Goal: ทำให้ code สอดคล้องกับ rules และ docs
 
-1. ทำ `/follow-architecture` เพื่อตรวจโครงสร้างและ boundaries
+1. ทำ `/review-architecture` เพื่อตรวจโครงสร้างและ boundaries
 2. ทำ `/check-code-structure` สำหรับ code patterns ที่ผิด conventions
 3. ตรวจ `package.json` dependencies กับ rules ใน `libs/`
 4. ปรับ code หรือ rules ให้ตรงกัน

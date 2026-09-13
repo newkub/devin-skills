@@ -19,6 +19,8 @@ Review architecture ระดับ macro ครอบคลุม design patter
 
 architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, governance, data flow tracing, และ cost impact analysis
 
+- merged from: `follow-architecture`, `follow-clean-architecture`, `follow-layered-architecture`, `follow-microservices-architecture`, `follow-nextjs-architecture` — pattern selection + apply guides อยู่ที่ `references/patterns-*.md` (ใช้ใน `## Fix` เมื่อต้อง implement pattern)
+
 ดูเพิ่มเติม: /deep-review
 
 ## Execute
@@ -126,6 +128,7 @@ Merged from: improve-architecture
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (architecture)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (architecture)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (architecture)
+4. เลือก/apply architecture pattern ตาม `references/patterns-selection.md` — pattern guides: `references/patterns-clean-architecture.md`, `references/patterns-layered-architecture.md`, `references/patterns-microservices-architecture.md`, `references/patterns-nextjs-architecture.md`
 
 - `references/fix-improve-architecture.md` — แก้ไข architecture findings จาก review-architecture ด้วย restructure และ refactor
 ## References

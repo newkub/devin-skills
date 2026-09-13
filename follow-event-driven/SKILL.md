@@ -3,9 +3,7 @@ name: follow-event-driven
 description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
 argument-hint: "[scope]"
 related:
-  - follow-layered-architecture
-  - follow-microservices-architecture
-  - follow-clean-architecture
+  - review-architecture
 ---
 
 ## Goal
@@ -220,6 +218,6 @@ Design Issues
 
 ## Guide
 
-- ทำ `/follow-layered-architecture` สำหรับ base architecture
-- ทำ `/follow-microservices-architecture` สำหรับ distributed event-driven systems
-- ทำ `/follow-clean-architecture` สำหรับ event handler structure
+- ทำ `/review-architecture` สำหรับ base architecture
+- ทำ `/review-architecture` สำหรับ distributed event-driven systems
+- ทำ `/review-architecture` สำหรับ event handler structure

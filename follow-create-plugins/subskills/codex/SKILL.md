@@ -4,7 +4,7 @@ description: สร้าง Codex plugin ด้วย manifest, skills, MCP ser
 argument-hint: "[scope]"
 related:
   - ask-me
-  - follow-clean-architecture
+  - review-architecture
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
@@ -99,7 +99,7 @@ related:
 - ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
 - plugin-bundled hooks เป็น non-managed — Codex จะ skip จนกว่า user trust hook definition
 
-- ใช้ /follow-clean-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search skills ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

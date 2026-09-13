@@ -62,7 +62,7 @@ related:
 
 1. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
 2. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
-3. ทำ `/follow-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
+3. ทำ `/review-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
 4. ทำ `/update-references` เพื่ออัปเดต imports
 5. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 

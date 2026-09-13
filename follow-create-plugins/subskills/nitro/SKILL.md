@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-create-web
-  - follow-create-web
   - follow-lang-typescript
   - run-test
   - review-dependencies
