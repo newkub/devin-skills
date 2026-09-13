@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
+  - compare-alternative
   - deep-research
   - deep-review
   - deep-thinking
@@ -31,7 +32,7 @@ related:
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
 - skill นี้ implement จริงจนถึง production ไม่ใช่แค่ plan — ถ้าต้องการแค่ไอเดีย features → ใช้ `/idea-features`
 
-ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production
+ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production, /compare-alternative
 
 ## Execute
 
@@ -49,23 +50,21 @@ related:
 
 > Goal: เปรียบเทียบและหา gaps มิติ features
 
-1. ทำ `/deep-research` ต่อ competitor เพื่อรวบรวม feature list, feature matrix, pricing tiers ที่ผูกกับ features จาก official docs, changelogs, reviews และ user feedback
-2. จัดกลุ่ม features ตามหมวด เช่น core, advanced, integrations, automation
-3. ทำ `/deep-research` เพื่อยืนยัน features ปัจจุบันของ project ถ้า codebase ไม่พอ
-4. สร้าง feature comparison matrix: project vs คู่แข่งแต่ละราย — ทำ `/report` โดยมีคอลัมน์ `No.` เป็นคอลัมน์แรก และระบุสถานะแต่ละ feature: `มี`, `ไม่มี`, `ดีกว่า`, `ด้อยกว่า`, `เท่ากัน`
-5. บันทึกผลเป็น `comparison-features.md` ใน `docs/project/`
-6. รวม features ที่ project `ไม่มี` และ `ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: feature, competitor ที่มี, impact, effort โดยประมาณ
-7. ระบุ unique features ของ project ที่คู่แข่งไม่มีเพื่อรักษาไว้
-8. สร้าง prioritized feature list: Critical, High, Medium, Nice-to-have
-9. ถ้า `/deep-research` หาข้อมูลไม่ได้ → stop และ report
+1. ทำ `/compare-alternative` โดย subject = project, alternatives = competitors จาก Step 1, criteria = features (รวม feature matrix และ pricing tiers ที่ผูกกับ features) — skill จะทำ `/deep-research` ต่อ competitor จาก official docs, changelogs, reviews และ user feedback แล้วคืน comparison matrix + gap list
+2. จัดกลุ่ม features ใน matrix ตามหมวด เช่น core, advanced, integrations, automation
+3. บันทึกผลเป็น `comparison-features.md` ใน `docs/project/`
+4. ตรวจ gap list จาก `/compare-alternative` — แต่ละ gap ต้องระบุ feature, competitor ที่มี, impact, effort ครบ
+5. ระบุ unique features ของ project ที่คู่แข่งไม่มีเพื่อรักษาไว้
+6. สร้าง prioritized feature list: Critical, High, Medium, Nice-to-have
+7. ถ้า `/compare-alternative` หาข้อมูลไม่ได้ → stop และ report
 
 ### 3. Benchmark Other Dimensions
 
 > Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
 
-1. ทำ `/deep-review` สำหรับ performance
+1. ทำ `/deep-review` วัด state ปัจจุบันของ project สำหรับ performance
 2. ทำ `/deep-review` สำหรับ UX/UI
-3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
+3. ทำ `/compare-alternative` ต่อมิติที่เทียบกับคู่แข่งได้ (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
 4. บันทึกผลใน `docs/project.md`
 
 ### 4. Deep Plan Improvements

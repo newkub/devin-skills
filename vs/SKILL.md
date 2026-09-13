@@ -18,6 +18,7 @@ triggers:
   - model
 related:
   - deep-research
+  - compare-alternative
   - report
   - deep-thinking
   - check-reference

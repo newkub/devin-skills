@@ -21,6 +21,7 @@ related:
   - deep-research
   - learn
   - vs
+  - compare-alternative
   - follow-best-practice
   - review-dependencies
   - suggest-next-action
