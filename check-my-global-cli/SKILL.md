@@ -8,6 +8,7 @@ related:
   - suggest-next-action
   - report
   - run-test
+  - follow-skills-map
 ---
 
 ## Goal
@@ -31,6 +32,7 @@ related:
 
 1. เช็ค tools ที่ติดตั้งด้วย `mise list`, `scoop list`, `winget list`, `bun --version`
 2. รวบรวมรายการ tools เป็นตาราง (tool, version, manager)
+3. เทียบกับ `follow-skills-map/references/tool-map.md` — ถ้าพบ tool ที่ติดตั้งแต่ไม่มีใน map ให้เพิ่มแถว action→tool→install→skill
 
 ### 2. Learn Commands
 
