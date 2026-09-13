@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-rolldown
   - follow-tool-vite
+  - follow-tool-bunup
   - follow-create-plugins
   - follow-tool-turborepo
   - follow-lang-typescript
@@ -20,7 +21,8 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
-- Latest: `tsdown@0.23.0` (verified 2026-09-12) — requires Node.js `^22.18.0 || ^24.11.0 || >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
+- Boundary: ใช้ tsdown เมื่อ bundle library (publish ไป registry) — app bundling/dev server ใช้ `/follow-tool-vite`; raw bundler tuning ใช้ `/follow-tool-rolldown`; alternative library bundler ดู `/follow-tool-bunup`; migrate จาก `tsup` ดู `subskills/migrate-from-tsup`
+- Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 || ^24.11.0 || >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
 
 ## Execute
 
@@ -122,6 +124,7 @@ related:
 
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-bunup ถ้าจำเป็น
 - ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool tsdown)
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น

@@ -9,7 +9,7 @@ bun add -D drizzle-kit       # CLI สำหรับ migrations/introspection
 
 ## Version
 
-- `drizzle-kit`: `0.31.10` (verified 2026-09-11)
+- `drizzle-kit`: `0.31.10` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/drizzle-kit)
 - [Repository](https://github.com/drizzle-team/drizzle-orm)
 

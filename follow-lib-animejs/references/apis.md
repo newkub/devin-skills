@@ -8,7 +8,7 @@ bun add animejs
 
 ## Version
 
-- Latest: 4.5.0
+- Latest: `4.5.0` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/animejs)
 - [Repository](https://github.com/juliangarnier/anime)
 

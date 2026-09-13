@@ -4,7 +4,7 @@
 
 Pitchfork is a daemon/process supervisor for development workflows. CLI/TUI/Web UI/MCP clients talk to a persistent supervisor that tracks processes, logs (SQLite), schedules, and watchers across invocations. Daemons outlive the terminal that started them.
 
-- Crate: `pitchfork-cli` → binary `pitchfork` | Latest: `2.25.0` (verified 2026-09-12) | MIT
+- Crate: `pitchfork-cli` → binary `pitchfork` | Latest: `2.25.0` (verified 2026-09-13) | MIT
 - Repo: https://github.com/jdx/pitchfork | Docs: https://pitchfork.jdx.dev
 
 ## Install

@@ -4,6 +4,7 @@ description: เขียน CSS ตาม modern best practices และ Basel
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
+  - follow-lib-animejs
   - follow-tool-formatter
   - follow-best-practice
 ---
@@ -14,7 +15,14 @@ related:
 
 ## Scope
 
-ใช้กับ CSS ทั้งแบบ traditional, CSS Modules, CSS-in-JS, และ preprocessor ที่ตรวจพบใน project
+ใช้กับ CSS ทั้งแบบ traditional, CSS Modules, CSS-in-JS, และ preprocessor ที่ตรวจพบใน project — CSS เป็น web platform standard ไม่ต้องติดตั้ง package
+
+ขอบเขต:
+- ใช้ skill นี้สำหรับเขียน/review CSS ดิบ ตาม modern standards และ Baseline
+- ถ้า project ใช้ utility-first engine (UnoCSS/Tailwind) → ใช้ `/follow-lib-unocss` แทน
+- ถ้าเป็น JS-driven animation (timelines, staggers) → ใช้ `/follow-lib-animejs` แทน; CSS transitions/animations ธรรมดาอยู่ใน scope นี้
+
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [best practices](references/css-best-practices.md) | [manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -139,7 +147,8 @@ related:
 - ใช้ `caniuse.com` และ `web.dev/baseline` สำหรับ check support
 - ให้ fallbacks สำหรับ features ที่ไม่รองรับ
 
-- ใช้ `/follow-lib-unocss` ถ้าจำเป็น
+- ใช้ `/follow-lib-unocss` ถ้า project ใช้ utility-first engine
+- ใช้ `/follow-lib-animejs` ถ้าต้องการ JS-driven animation
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 

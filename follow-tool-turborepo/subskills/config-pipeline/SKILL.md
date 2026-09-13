@@ -81,6 +81,8 @@ related:
 - verify ด้วย `--dry=json` ก่อนรันจริงเสมอ
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

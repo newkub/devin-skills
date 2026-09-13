@@ -9,7 +9,7 @@ bun add otplib
 
 ## Version
 
-- Latest: `13.5.0` (verified 2026-09-12) — v13 rewrite ใหม่: ไม่มี `preset-default`/`authenticator`, async-first, plugin-based
+- Latest: `13.5.0` (verified 2026-09-13) — v13 rewrite ใหม่: ไม่มี `preset-default`/`authenticator`, async-first, plugin-based
 - [Package Registry](https://www.npmjs.com/package/otplib)
 - [Repository](https://github.com/yeojz/otplib)
 - Migration: https://otplib.yeojz.dev/guide/v12-adapter.html (`@otplib/v12-adapter` เป็น bridge ชั่วคราว)

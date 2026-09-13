@@ -73,6 +73,10 @@ related:
 - `exports` ต้องตรง output files จริง — mismatch = consumers import ไม่ได้
 - `files` ใน `package.json` ต้องรวม `dist`
 
+- ใช้ /follow-tool-tsdown ถ้าจำเป็น
+- ใช้ /follow-tool-rolldown ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+
 ## Expected Outcome
 
 - tsdown ติดตั้ง `tsdown.config.ts` ถูกต้อง

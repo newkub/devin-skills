@@ -8,7 +8,7 @@
 - / — landing + quickstart
 - /getting_started — install, `hk init`, `hk install`
 - /configuration — `hk.pkl` schema, steps, hooks, Builtins.pkl
-- /cli — CLI reference (`run`, `check`, `fix`, `test`, `inspect`, `agent`, `mcp`)
+- /cli — CLI reference (`run`, `check`, `fix`, `test`, `validate`, `config`, `builtins`, `migrate`, `agent`, `mcp`, `util`)
 - /environment_variables — `HK_*` env vars
 - /integrations — editors, CI (GitHub Actions), Lefthook migration
 - /mcp — MCP server usage

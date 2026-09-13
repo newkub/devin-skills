@@ -10,9 +10,9 @@ cargo install rmux --locked
 
 ## Version
 
-- Latest: `0.10.0` (crates.io, verified 2026-09-11)
+- Latest: `0.10.0` (crates.io, verified 2026-09-13)
 - [Package Registry](https://crates.io/crates/rmux)
-- [Repository](https://rmux.io) — npm package `rmux` ไม่ใช่ตัวจริง
+- [Repository](https://github.com/Helvesec/rmux) — npm package `rmux` ไม่ใช่ตัวจริง
 
 ## Dependencies
 

@@ -123,7 +123,7 @@ fn should_stop() -> bool {
 
 ## Excluding Specific Mutations
 
-Use `#[mutants::exclude_re("pattern")]` — **note:** unreleased as of cargo-mutants 27.1.0; requires `mutants` crate `0.0.5`+ (latest published is `0.0.4`). Until then, use `--exclude-re "pattern"` or `exclude_re` in `.cargo/mutants.toml`:
+Use `#[mutants::exclude_re("pattern")]` — note: unreleased as of cargo-mutants 27.1.0; requires `mutants` crate `0.0.5`+ (latest published is `0.0.4`). Until then, use `--exclude-re "pattern"` or `exclude_re` in `.cargo/mutants.toml`:
 
 ```rust
 #[mutants::exclude_re("with 0")]

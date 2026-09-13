@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ tmux-compatible CLI หรือ drive terminal sessions ผ่าน Rust/Python/TypeScript SDK
 
-- Latest: `rmux@0.10.0` (crates.io; ดู rmux.io) (verified 2026-09-12)
+- Latest: `rmux@0.10.0` (crates.io; ดู rmux.io) (verified 2026-09-13)
 
 ## Execute
 

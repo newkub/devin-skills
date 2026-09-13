@@ -4,7 +4,6 @@ description: ใช้งาน ORM และ data access patterns ด้วย 
 argument-hint: "[scope]"
 related:
   - review-architecture
-  - review-architecture
   - review-dependencies
   - follow-lib-drizzle
   - update-tests
@@ -137,7 +136,6 @@ related:
 - ห้ามเปิด transaction ใน business logic
 - ห้ามใช้ `any` สำหรับ database results — ใช้ mapper functions
 
-- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น

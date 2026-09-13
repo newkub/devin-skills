@@ -9,7 +9,7 @@ cargo install loc
 
 ## Version
 
-- Latest: `0.5.0` (crates.io, verified 2026-09-12)
+- Latest: `0.5.0` (crates.io, verified 2026-09-13)
 - [Package Registry](https://crates.io/crates/loc)
 - [Repository](https://github.com/cgag/loc)
 
@@ -28,4 +28,4 @@ cargo install loc
 ## Source
 
 - Official docs: https://github.com/cgag/loc
-- Description: lightweight simple translation module with dynamic json storage
+- Description: Count lines of code quickly (Rust implementation of `cloc`, ~100x faster; ~2-10x faster than `tokei`)

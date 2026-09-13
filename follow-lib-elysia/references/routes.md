@@ -1,37 +1,56 @@
 # Follow Lib Elysia Route Map
 
-- Website: <https://github.com/elysiajs/elysia>
-- Routes discovered (homepage): 30
+- Website: <https://elysiajs.com>
+- Docs index (LLM-friendly): <https://elysiajs.com/llms.txt>
+- ทุกหน้า docs มีเวอร์ชัน `.md` (เช่น `/essential/route.md`) และ `.html` (เช่น `/essential/route.html`)
 
-## Routes
+## Getting Started
 
-- /collections
-- /contact/report-content
-- /customer-stories
-- /elysiajs
-- /elysiajs/elysia
-- /elysiajs/elysia/actions
-- /elysiajs/elysia/activity
-- /elysiajs/elysia/blob/main/.eslintrc.json
-- /elysiajs/elysia/blob/main/.gitignore
-- /elysiajs/elysia/blob/main/.npmignore
-- /elysiajs/elysia/blob/main/.npmrc
-- /elysiajs/elysia/blob/main/.prettierrc
-- /elysiajs/elysia/blob/main/AGENTS.md
-- /elysiajs/elysia/blob/main/AI_POLICY.md
-- /elysiajs/elysia/blob/main/CHANGELOG.md
-- /elysiajs/elysia/blob/main/CLAUDE.md
-- /elysiajs/elysia/blob/main/CODE_OF_CONDUCT.md
-- /elysiajs/elysia/blob/main/CONTRIBUTING.md
-- /elysiajs/elysia/blob/main/LICENSE
-- /elysiajs/elysia/blob/main/README.md
-- /elysiajs/elysia/blob/main/SECURITY.md
-- /elysiajs/elysia/blob/main/build.ts
-- /elysiajs/elysia/blob/main/bun.lock
-- /elysiajs/elysia/blob/main/knip.json
-- /elysiajs/elysia/blob/main/package.json
-- /elysiajs/elysia/blob/main/tsconfig.dts.json
-- /elysiajs/elysia/blob/main/tsconfig.json
-- /elysiajs/elysia/blob/main/tsconfig.test.json
-- /elysiajs/elysia/branches
-- /elysiajs/elysia/commits/main
+| Route / Topic | URL |
+|---|---|
+| At a glance | https://elysiajs.com/at-glance.html |
+| Quick start | https://elysiajs.com/quick-start.html |
+| Key concept | https://elysiajs.com/key-concept.html |
+
+## Essential
+
+| Route / Topic | URL |
+|---|---|
+| Route | https://elysiajs.com/essential/route.html |
+| Handler | https://elysiajs.com/essential/handler.html |
+| Plugin | https://elysiajs.com/essential/plugin.html |
+| Lifecycle | https://elysiajs.com/essential/life-cycle.html |
+| Validation | https://elysiajs.com/essential/validation.html |
+| Best practice | https://elysiajs.com/essential/best-practice.html |
+
+## Patterns
+
+| Route / Topic | URL |
+|---|---|
+| Deploy to production | https://elysiajs.com/patterns/deploy.html |
+| Error handling | https://elysiajs.com/patterns/error-handling.html |
+| OpenAPI | https://elysiajs.com/patterns/openapi.html |
+| Testing | https://elysiajs.com/patterns/unit-test.html |
+| WebSocket | https://elysiajs.com/patterns/websocket.html |
+| TypeBox (Elysia.t) | https://elysiajs.com/patterns/typebox.html |
+
+## Eden (type-safe client)
+
+| Route / Topic | URL |
+|---|---|
+| Eden overview | https://elysiajs.com/eden/overview.html |
+| Eden installation | https://elysiajs.com/eden/installation.html |
+| Eden Treaty overview | https://elysiajs.com/eden/treaty/overview.html |
+| Eden Treaty unit test | https://elysiajs.com/eden/treaty/unit-test.html |
+| Eden Fetch | https://elysiajs.com/eden/fetch.html |
+
+## Plugins
+
+| Route / Topic | URL |
+|---|---|
+| Plugin overview | https://elysiajs.com/plugins/overview.html |
+| OpenAPI plugin | https://elysiajs.com/plugins/openapi.html |
+| Swagger plugin | https://elysiajs.com/plugins/swagger.html |
+| CORS plugin | https://elysiajs.com/plugins/cors.html |
+| JWT plugin | https://elysiajs.com/plugins/jwt.html |
+| Static plugin | https://elysiajs.com/plugins/static.html |

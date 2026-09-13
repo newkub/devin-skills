@@ -12,7 +12,7 @@ bun add -D vite
 
 ## Version Info
 
-- Latest stable: `8.3.0` (verified 2026-09-12)
+- Latest stable: `8.3.0` (verified 2026-09-13)
 - Node.js `^20.19.0 || >=22.12.0` — ESM-only
 - Vite 8 ships Rolldown as the single bundler — replaces esbuild + Rollup (10–30x faster builds)
 - Transform/minify now use Oxc: `esbuild` option → `oxc`, `optimizeDeps.esbuildOptions` → `optimizeDeps.rolldownOptions`, `transformWithEsbuild` → `transformWithOxc` (esbuild is an optional dep, only needed by legacy plugins)

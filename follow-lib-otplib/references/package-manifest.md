@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `13.5.0` |
 | Release Date | `2026-08-21` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Gerald Yeo` |
 | License | `MIT` |
 | Repository | `https://github.com/yeojz/otplib` |

@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ frontend projects ที่ต้องการ component library, visual documentation และ interaction testing
 
-- Latest: `storybook@10.6.0` (verified 2026-09-12) — v10: controls/actions/interactions/viewport เป็น core features (ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`addon-interactions` อีก)
+- Latest: `storybook@10.6.0` (verified 2026-09-13) — v10: controls/actions/interactions/viewport เป็น core features (ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`addon-interactions` อีก)
 
 ## Execute
 

@@ -21,7 +21,7 @@ pipx install ruff          # ruff format
 
 ## Version
 
-- prettier `3.9.6`, biome `2.5.13`, dprint `0.57.4` (verified 2026-09-11)
+- prettier `3.9.6`, biome `2.5.13`, dprint `0.57.4` (verified 2026-09-13)
 - [prettier](https://prettier.io) / [biome](https://biomejs.dev) / [dprint](https://dprint.dev)
 
 ## Dependencies

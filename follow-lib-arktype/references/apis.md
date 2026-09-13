@@ -8,7 +8,7 @@ bun add arktype
 
 ## Version
 
-- Latest: 2.2.3
+- Latest: `2.2.3` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/arktype)
 - [Repository](https://github.com/arktypeio/arktype)
 

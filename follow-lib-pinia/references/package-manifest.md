@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `4.0.3` |
 | Release Date | `2026-08-12` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Eduardo San Martin Morote` |
 | License | `MIT` |
 | Repository | `https://github.com/vuejs/pinia` |

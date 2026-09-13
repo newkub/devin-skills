@@ -19,7 +19,10 @@ related:
 
 ใช้สำหรับ Rust projects ที่ใช้ Cargo build system และต้องการตรวจสอบคุณภาพของ tests ด้วย mutation testing
 
-- Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-12)
+- สำหรับ JS/TS mutation testing → ใช้ `/follow-tool-stryker-mutator` แทน
+- ต้องมี test suite ที่เสถียรก่อน — ถ้า tests ยัง flaky ให้ทำ `/follow-test` หรือ `/update-tests` ก่อน
+
+- Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-13)
 
 ## Execute
 
@@ -120,12 +123,11 @@ related:
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
+- ใช้ /run-test (mutation) ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-test (mutation) ถ้าจำเป็น
 
 ## Expected Outcome
 

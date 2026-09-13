@@ -17,9 +17,9 @@ related:
 
 ## Scope
 
-ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site
+ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site — boundary: สำหรับ slides ใช้ `/follow-create-slide-slidev`; สำหรับ app/web site ใช้ `/follow-tool-vite`
 
-- Latest stable: `vitepress@1.6.4` (verified 2026-09-12); `vitepress@next` = `2.0.0-alpha.20` (preview สำหรับ Vite 8/rolldown)
+- Latest stable: `vitepress@1.6.4` (verified 2026-09-13); `vitepress@next` = `2.0.0-alpha.20` (preview สำหรับ Vite 8/rolldown)
 
 ## Execute
 
@@ -33,7 +33,7 @@ related:
 
 ### 1. Project Initialization
 
-> Goal: Project Initialization
+> Goal: สร้าง docs structure พร้อม workspace config
 
 1. สร้าง `docs/` directory ที่ root ของ project
 2. สำหรับ monorepo ให้ `docs/` เป็น workspace โดยสร้าง `docs/package.json` ที่มี `vitepress` เป็น dependency และ scripts ของตัวเอง
@@ -44,7 +44,7 @@ related:
 
 ### 2. VitePress Configuration
 
-> Goal: VitePress Configuration
+> Goal: สร้าง `.vitepress/config.ts` ครบ nav/sidebar
 
 สร้าง `.vitepress/config.ts`:
 
@@ -73,7 +73,7 @@ export default defineConfig({
 
 ### 3. UnoCSS Integration
 
-> Goal: UnoCSS Integration
+> Goal: integrate UnoCSS เข้า VitePress theme
 1. ทำ `/follow-lib-unocss` สำหรับ UnoCSS configuration แบบเต็ม
 2. ติดตั้ง `unocss` ใน `docs/` workspace:
    ```bash
@@ -127,7 +127,7 @@ export default {
 
 ### 5. Package Scripts
 
-> Goal: Package Scripts
+> Goal: เพิ่ม dev/build/preview scripts
 
 สำหรับ monorepo ให้ใส่ scripts ใน `docs/package.json`:
 
@@ -150,7 +150,7 @@ export default {
 
 ### 6. Shiki Twoslash Integration
 
-> Goal: Shiki Twoslash Integration
+> Goal: เปิด type-hover code blocks
 1. ติดตั้ง `@shikijs/vitepress-twoslash`
 2. เพิ่ม `transformerTwoslash` ใน markdown config
 3. เพิ่ม plugin ใน theme
@@ -158,13 +158,13 @@ export default {
 
 ### 7. VitePress Plugin Group Icons
 
-> Goal: VitePress Plugin Group Icons
+> Goal: เพิ่ม group icons ให้ code/file trees
 1. ติดตั้ง `vitepress-plugin-group-icons`
 2. เพิ่ม plugin ใน VitePress config
 
 ### 8. GitHub Actions Deployment
 
-> Goal: GitHub Actions Deployment
+> Goal: deploy docs ผ่าน CI
 1. สร้าง `.github/workflows/deploy.yml`
 2. ตั้งค่า deploy ไปยัง GitHub Pages
 3. ตั้งค่า triggers สำหรับ push และ pull request
@@ -231,11 +231,11 @@ export default {
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool vitepress)
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

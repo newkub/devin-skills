@@ -17,7 +17,9 @@ related:
 
 ใช้สำหรับสร้างหรือ refactor Neovim config บน `~/.config/nvim` หรือ project-specific config
 
-- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-12)
+- ใช้ skill นี้เฉพาะ Neovim/`lazy.nvim` — ไม่ครอบคลุม Vim script configs หรือ editors อื่น (VS Code, Zed)
+
+- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-13)
 - Neovim 0.12+ มี `vim.pack` เป็น built-in plugin manager — พิจารณาใช้แทน lazy.nvim ถ้าต้องการ minimal config
 
 ## Execute

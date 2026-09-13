@@ -71,6 +71,10 @@ related:
 - environment เลือกให้ตรง tests จริง — อย่าใส่ `happy-dom` ถ้า tests ไม่แตะ DOM
 - `coverage.include` ต้อง explicit — ห้ามพึ่ง default เพราะ Vitest 4+ report เฉพาะ loaded files
 
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Vitest ติดตั้งพร้อม `vitest.config.ts`, scripts และ coverage ที่ verify แล้ว

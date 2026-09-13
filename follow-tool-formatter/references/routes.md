@@ -1,37 +1,46 @@
-# Follow Tool Formatter Route Map
+# Tool Formatter Routes / Topics
 
-- Website: <https://github.com/DamonOehlman/formatter#readme>
-- Routes discovered (homepage): 30
+Skill นี้เป็น generic formatter guide — routes ด้านล่างรวม docs ของ formatter ที่ใช้บ่อยตาม tech stack
 
-## Routes
+## Prettier (prettier.io)
 
-- /DamonOehlman
-- /DamonOehlman/formatter
-- /DamonOehlman/formatter/actions
-- /DamonOehlman/formatter/activity
-- /DamonOehlman/formatter/blob/master/.gitignore
-- /DamonOehlman/formatter/blob/master/LICENSE
-- /DamonOehlman/formatter/blob/master/README.md
-- /DamonOehlman/formatter/blob/master/component.json
-- /DamonOehlman/formatter/blob/master/index.js
-- /DamonOehlman/formatter/blob/master/mods.js
-- /DamonOehlman/formatter/blob/master/package.json
-- /DamonOehlman/formatter/blob/master/yarn.lock
-- /DamonOehlman/formatter/branches
-- /DamonOehlman/formatter/commits/master
-- /DamonOehlman/formatter/forks
-- /DamonOehlman/formatter/issues
-- /DamonOehlman/formatter/projects
-- /DamonOehlman/formatter/pulls
-- /DamonOehlman/formatter/pulse
-- /DamonOehlman/formatter/security
-- /DamonOehlman/formatter/tags
-- /DamonOehlman/formatter/tree/master/.github/workflows
-- /DamonOehlman/formatter/tree/master/bin
-- /DamonOehlman/formatter/tree/master/examples
-- /DamonOehlman/formatter/tree/master/test
-- /DamonOehlman/formatter/wiki
-- /collections
-- /contact/report-content
-- /customer-stories
-- /enterprise
+| Route / Topic | URL |
+|---|---|
+| Install / getting started | https://prettier.io/docs/install |
+| Configuration (`.prettierrc`) | https://prettier.io/docs/configuration |
+| Options | https://prettier.io/docs/options |
+| Ignore (`.prettierignore`) | https://prettier.io/docs/ignore |
+| CLI | https://prettier.io/docs/cli |
+| Integrating with linters | https://prettier.io/docs/integrating-with-linters |
+| Pre-commit hook | https://prettier.io/docs/precommit |
+
+## Biome (biomejs.dev)
+
+| Route / Topic | URL |
+|---|---|
+| Formatter | https://biomejs.dev/formatter/ |
+| Configuration (`biome.json`) | https://biomejs.dev/reference/configuration/ |
+| CLI reference | https://biomejs.dev/reference/cli/ |
+
+## dprint (dprint.dev)
+
+| Route / Topic | URL |
+|---|---|
+| Setup | https://dprint.dev/setup/ |
+| Configuration (`dprint.json`) | https://dprint.dev/config/ |
+| CLI | https://dprint.dev/cli/ |
+| Plugins | https://dprint.dev/plugins/ |
+
+## Others
+
+| Tool | URL |
+|---|---|
+| rustfmt config (`rustfmt.toml`) | https://rust-lang.github.io/rustfmt/ |
+| ruff format | https://docs.astral.sh/ruff/formatter/ |
+| gofmt | https://pkg.go.dev/cmd/gofmt |
+
+## Key Concepts
+
+- `format` script = write mode; `format:check` / `--check` = CI gate (exit != 0 เมื่อมีไฟล์ยังไม่ format)
+- ใช้ ignore file ของแต่ละ tool (`.prettierignore`, `biome.json` `files.includes`, `dprint.json` `excludes`) กัน generated/vendored files
+- git hooks สำหรับ format-on-staged: repo ที่มี `.moon/workspace.yml` → moon `vcs.hooks`; repo อื่น → `/follow-tool-hk`

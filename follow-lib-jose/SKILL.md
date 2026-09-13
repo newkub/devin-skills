@@ -3,6 +3,7 @@ name: follow-lib-jose
 description: ใช้ jose สำหรับ JWT/JWS/JWE/JWK — sign, verify, encrypt, key management บน edge runtimes
 argument-hint: "[target-or-scope]"
 related:
+  - follow-secret-manager
   - run-verify
   - run-test
 ---
@@ -13,10 +14,15 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib jose)
+ใช้เมื่อ task เกี่ยวข้องกับ jose — JWT/JWS/JWE/JWK operations บน runtimes ที่รองรับ WebCrypto (lib jose)
 
-- Latest: `jose@6.2.12` (verified 2026-09-12) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
+- ใช้ skill นี้แทน `jsonwebtoken` เมื่อต้องรันบน edge runtimes (Cloudflare Workers, Deno, browsers) หรือต้องการ zero-dependency WebCrypto suite — `jsonwebtoken` ต้อง `node:crypto`
+- v6 คืน `CryptoKey` ไม่ใช่ `KeyObject` — ถ้า codebase ผูกกับ Node `KeyObject` อยู่ → ติดอยู่ที่ v5 หรือ migrate
+- Keys/secrets จาก env ผ่าน `/follow-secret-manager` — ห้าม hardcode
+- First-time setup + JWKS → `subskills/setup-jose/SKILL.md`
+
+- Latest: `jose@6.2.12` (verified 2026-09-13) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
+- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -50,6 +56,10 @@ related:
 - verify ทุกครั้งด้วย `jwtVerify` — ห้าม decode อย่างเดียว
 - key rotation ผ่าน `kid` header
 - ใน v6 เก็บ keys เป็น `CryptoKey`/`JWK`/`Uint8Array` — private `KeyObject` ใช้ verify/encrypt ไม่ได้แล้ว
+
+- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ keys/secrets
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
 
 ## Expected Outcome
 

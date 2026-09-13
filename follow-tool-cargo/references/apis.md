@@ -15,7 +15,7 @@ Note: the npm package `cargo` is an unrelated HTML5 web-storage module — do NO
 
 ## Version
 
-- Cargo matches the Rust toolchain version — latest stable Rust: `1.98.1` (verified 2026-09-12)
+- Cargo matches the Rust toolchain version — latest stable Rust: `1.98.1` (verified 2026-09-13)
 - [Repository](https://github.com/rust-lang/cargo)
 - [Docs](https://doc.rust-lang.org/cargo/)
 

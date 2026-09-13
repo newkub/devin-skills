@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `4.5.0` |
 | Release Date | `2026-06-22` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Julian Garnier` |
 | License | `MIT` |
 | Repository | `https://github.com/juliangarnier/anime` |

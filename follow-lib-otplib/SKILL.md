@@ -5,6 +5,7 @@ argument-hint: "[target-or-scope]"
 related:
   - run-verify
   - run-test
+  - follow-lib-qrcode
 ---
 
 ## Goal
@@ -15,7 +16,10 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib otplib)
 
-- Latest: `otplib@13.5.0` (verified 2026-09-12) — v13 เป็น rewrite ใหม่ทั้งหมด (breaking changes)
+- ครอบคลุม: TOTP/HOTP secret generation, token generate/verify, `otpauth://` URI provisioning, crypto plugins, secret storage
+- ไม่ครอบคลุม: render QR image จาก otpauth URI — ใช้ `/follow-lib-qrcode`; general auth/session design — ดู sibling skills ตาม stack
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- Latest: `otplib@13.5.0` (verified 2026-09-13) — v13 เป็น rewrite ใหม่ทั้งหมด (breaking changes)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -51,6 +55,10 @@ related:
 - rate-limit verify attempts กัน brute-force
 - `verify`/`verifySync` คืน object `{valid}` ไม่ใช่ boolean — เช็ค `result.valid` เสมอ
 - migrate จาก v12 ด้วย `@otplib/v12-adapter` เป็น temporary bridge เท่านั้น แล้วย้ายไป v13 API
+
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
+- ใช้ `/follow-lib-qrcode` ถ้าต้อง render QR จาก `otpauth://` URI
 
 ## Expected Outcome
 

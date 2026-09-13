@@ -8,7 +8,7 @@ bun add -D vitepress
 
 ## Version
 
-- Latest on npm
+- Latest: `1.6.4` stable (`next` = `2.0.0-alpha.20`, verified 2026-09-13)
 - Repository: https://github.com/vuejs/vitepress
 - Docs: https://vitepress.dev/guide/getting-started
 

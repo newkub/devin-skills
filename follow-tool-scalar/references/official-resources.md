@@ -49,7 +49,7 @@
 | Apollo Studio | https://www.apollographql.com/docs/studio | Apollo monitoring |
 | Insomnia | https://insomnia.rest | API client with GraphQL support |
 
-## Latest Versions (verified 2026-09-12)
+## Latest Versions (verified 2026-09-13)
 
 | Package | Version |
 |---------|---------|

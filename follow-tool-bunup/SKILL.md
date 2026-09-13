@@ -10,6 +10,9 @@ related:
   - follow-best-practice
   - setup-cicd
   - use-bun-native-api
+  - follow-tool-tsdown
+  - follow-tool-rolldown
+  - follow-tool-vite
 ---
 
 ## Goal
@@ -20,7 +23,9 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/use-bun-native-api` สำหรับ setup Bun runtime
 
-- Latest: `bunup@0.16.32` (verified 2026-09-12)
+- Boundary: Bunup เหมาะกับ library bundling (ESM/CJS + dts) บน Bun — ถ้า project ไม่ผูกกับ Bun หรือต้องการ Rolldown-based bundler ดู `/follow-tool-tsdown`; สำหรับ bundler ระดับล่างดู `/follow-tool-rolldown`; สำหรับ app dev server/build ดู `/follow-tool-vite`
+- Latest: `bunup@0.16.32` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [bunup](references/bunup.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -94,11 +99,9 @@ project/
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /follow-tool-tsdown ถ้าจำเป็น
+- ใช้ /follow-tool-rolldown ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -108,43 +111,5 @@ project/
 - รองรับ ESM และ CJS formats
 - สร้าง type declarations (dts) อัตโนมัติ
 
-## Guide
-
-### CLI Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `--format` / `-f` | `string` | `esm` | Output format: `esm`, `cjs`, `iife`, or comma-separated |
-| `--entry` / `-e` | `string` | auto | Entry point(s) |
-| `--out-dir` / `-o` | `string` | `dist` | Output directory |
-| `--target` / `-t` | `string` | - | Target: `browser` or `node` |
-| `--exports` | `boolean` | `false` | Generate and sync package exports |
-| `--watch` | `boolean` | `false` | Watch mode for development |
-| `--config` / `-c` | `string` | - | Path to config file (`--no-config` disables) |
-| `--filter` | `string` | - | Filter configs by `name` when exporting config array |
-| `--packages` | `string` | - | `bundle` or `external` all dependencies |
-| `--external` / `--no-external` | `string` | - | Force packages out of / into the bundle |
-
-Scaffold a ready-to-publish library ด้วย `bunx @bunup/cli@latest create`
-
-### Default Entry Points
-
-Bunup auto-detects:
-- `index.ts`, `index.tsx`
-- `src/index.ts`, `src/index.tsx`
-- `cli.ts`, `src/cli.ts`, `src/cli/index.ts`
-
-### Config File
-
-Create `bunup.config.ts` for advanced configuration:
-
-```typescript
-import { defineConfig } from "bunup";
-
-export default defineConfig({
-  entry: ['./src/index.ts'],
-  format: ['esm', 'cjs'],
-  dts: true
-})
-```
+สำหรับ CLI options ทั้งหมด, default entry points, config file format และ scaffolding (`bunx @bunup/cli@latest create`) ดู `references/bunup.md` และ `references/cli.md`
 

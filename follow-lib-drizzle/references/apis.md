@@ -9,7 +9,7 @@ bun add -D drizzle-kit
 
 ## Version
 
-- Latest: 0.45.2
+- Latest: `0.45.2` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/drizzle-orm)
 - [Repository](https://github.com/drizzle-team/drizzle-orm)
 

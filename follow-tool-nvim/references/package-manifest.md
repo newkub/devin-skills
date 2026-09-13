@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` |
 | Latest Version | `0.12.5` |
 | Release Date | `2026-08-23` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Neovim team` (neovim org) |
 | License | `Apache-2.0` |
 | Repository | `https://github.com/neovim/neovim` |

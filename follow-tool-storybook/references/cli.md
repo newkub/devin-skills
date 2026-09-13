@@ -8,7 +8,7 @@ bun add -D storybook
 
 ## Version
 
-- Latest: `10.6.x` (verified 2026-09-12)
+- Latest: `10.6.x` (verified 2026-09-13)
 - Repository: https://github.com/storybookjs/storybook
 - Docs: https://storybook.js.org/docs/api/cli-options/
 

@@ -3,21 +3,20 @@
 ## Install
 
 ```sh
-bun add -D zod # or valibot, arktype
+bun add zod   # or: valibot, arktype, yup, joi, class-validator
 ```
 
 ## Version
 
-- Latest
+- Latest: `zod@4.6.4` (verified 2026-09-13)
 - Repository: https://github.com/colinhacks/zod
 - Docs: https://zod.dev/
 
 ## Commands
 
-| commands | description | default | options |
-|---|---|---|---|
-| `zod-to-ts` | Generate TS from Zod | — | --input, --output |
+Validation libraries เป็น runtime libraries — ไม่มี standalone CLI หลัก; ใช้ผ่าน `import` ใน code และทดสอบผ่าน test runner ของ project (`vitest`, `bun test`)
 
 ## Notes
 
-Most validation libraries do not provide a standalone CLI; this skill focuses on runtime schemas.
+- ใช้ `schema.parse` / `schema.safeParse` ใน code แทน CLI invocation
+- zod v4 ใช้ `error` param แทน `message`/`invalid_type_error` — ดู rules ใน SKILL.md

@@ -2,6 +2,11 @@
 name: follow-tool-pitchfork
 description: ตั้งค่าและใช้งาน pitchfork สำหรับจัดการ daemons/processes ใน project
 argument-hint: "[daemon-or-scope]"
+related:
+  - follow-tool-mise
+  - follow-tool-github-actions
+  - follow-tool-cargo
+  - use-scripts
 ---
 
 ## Goal
@@ -12,7 +17,9 @@ argument-hint: "[daemon-or-scope]"
 
 ครอบคลุม `pitchfork.toml`, daemon lifecycle, ready/health checks, shell hooks, file watching, cron, port management/reverse proxy, TUI, Web UI, MCP server, boot start และ container mode
 
-- Latest: `pitchfork@2.25.0` (crate `pitchfork-cli`) (verified 2026-09-12)
+- ใช้ skill นี้สำหรับ long-running background daemons — ถ้าเป็น one-off scripts หรือ task runner ให้ใช้ `/use-scripts` หรือ `mise` tasks ผ่าน `/follow-tool-mise` แทน
+
+- Latest: `pitchfork@2.25.0` (crate `pitchfork-cli`) (verified 2026-09-13)
 - Architecture: CLI/TUI/Web UI → supervisor → daemon processes (supervisor auto-start เมื่อ client ต้องการ)
 
 ## Execute

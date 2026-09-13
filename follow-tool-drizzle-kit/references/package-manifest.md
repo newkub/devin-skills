@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.31.10` |
 | Release Date | `2026-03-17` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Drizzle Team` |
 | License | `MIT` |
 | Repository | `https://github.com/drizzle-team/drizzle-orm` |

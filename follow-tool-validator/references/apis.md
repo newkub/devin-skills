@@ -3,28 +3,33 @@
 ## Install
 
 ```sh
-bun add validator
+bun add zod
 ```
 
 ## Version
 
-- Latest: 13.15.35
-- [Package Registry](https://www.npmjs.com/package/validator)
-- [Repository](https://github.com/validatorjs/validator.js)
+- Latest: `4.6.4` (verified 2026-09-13)
+- [Package Registry](https://www.npmjs.com/package/zod)
+- [Repository](https://github.com/colinhacks/zod)
 
 ## Dependencies
 
-- See package registry for transitive dependencies.
+- Zero external dependencies — works in Node.js and all modern browsers
+- Requires `strict: true` in `tsconfig.json`; tested against TypeScript v5.5+
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install validator in project | latest version | --save-dev, --save, --global |
-| `validator` | Run the tool CLI | current workspace | see cli.md |
-| `configure` | Configure via config file | project defaults | --config, --file |
+| `z.object({...})` | Define object schema | — | `.strict()`, `.loose()`, `.partial()` |
+| `z.infer<typeof Schema>` | Infer TypeScript type from schema | — | (none) |
+| `schema.parse(input)` | Validate or throw `ZodError` | — | (none) |
+| `schema.safeParse(input)` | Validate, return `{ success, data, error }` | — | (none) |
+| `z.string()/.number()/...` | Primitive schemas | — | `.min()`, `.max()` refinements |
+| `z.email()`/`z.uuid()`/... | String format validators (top-level in v4) | — | (none) |
+| `error.flatten()` | Field-level error map `{ fieldErrors, formErrors }` | — | (none) |
 
 ## Source
 
-- Official docs: https://github.com/validatorjs/validator.js
-- Description: String validation and sanitization
+- Official docs: https://zod.dev
+- Description: TypeScript-first schema validation with static type inference

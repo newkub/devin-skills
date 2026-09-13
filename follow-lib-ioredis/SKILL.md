@@ -3,6 +3,7 @@ name: follow-lib-ioredis
 description: ใช้ ioredis สำหรับ Redis client — connection, pipeline, pub/sub, cluster, Sentinel
 argument-hint: "[target-or-scope]"
 related:
+  - follow-secret-manager
   - run-verify
   - run-test
 ---
@@ -13,10 +14,14 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib ioredis)
+ใช้เมื่อ task เกี่ยวข้องกับ ioredis — Redis client บน Node.js/Bun ที่เชื่อมผ่าน TCP (lib ioredis)
 
-- Latest: `ioredis@6.0.0` (verified 2026-09-12) — v6 major (2026-07-31): ต้อง Node ≥20, ใช้ RESP3 โดย default (`HELLO 3` พร้อม auto-fallback เป็น RESP2 เมื่อ server ไม่รองรับ); ตั้ง `protocol: 2` เพื่อคง v5 wire protocol และ `replyStyle: "resp3"` เพื่อรับ RESP3 reply shapes (default `"legacy"` คงรูปแบบเดิม)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
+- บน Cloudflare Workers หรือ edge runtimes ที่ไม่มี TCP sockets → ใช้ REST-based client (เช่น Upstash) แทน — skill นี้ไม่ครอบคลุม
+- Credentials/`REDIS_URL` จัดการผ่าน `/follow-secret-manager` — ห้าม hardcode
+- First-time setup → `subskills/setup-ioredis/SKILL.md`; perf tuning → `subskills/optimize-pool/SKILL.md`
+
+- Latest: `ioredis@6.0.0` (verified 2026-09-13) — v6 major (2026-07-31): ต้อง Node ≥20, ใช้ RESP3 โดย default (`HELLO 3` พร้อม auto-fallback เป็น RESP2 เมื่อ server ไม่รองรับ); ตั้ง `protocol: 2` เพื่อคง v5 wire protocol และ `replyStyle: "resp3"` เพื่อรับ RESP3 reply shapes (default `"legacy"` คงรูปแบบเดิม)
+- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -51,6 +56,10 @@ related:
 - ตั้ง `maxRetriesPerRequest` ให้เหมาะสม (null สำหรับ BullMQ)
 - ใช้ TLS option เมื่อ connect ผ่าน network สาธารณะ
 - บน Cloudflare Workers ใช้ REST/Upstash แทน (ioredis ต้อง TCP)
+
+- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ credentials
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
 
 ## Expected Outcome
 

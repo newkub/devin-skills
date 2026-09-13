@@ -11,7 +11,7 @@ bun add -D @scalar/cli
 
 ## Version
 
-- `@scalar/api-reference`: `1.68.0` (verified 2026-09-11)
+- `@scalar/api-reference`: `1.68.0` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/@scalar/api-reference)
 - [Repository](https://github.com/scalar/scalar)
 

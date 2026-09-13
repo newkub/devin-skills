@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.2.8` |
 | Release Date | `2026-09-09` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Rolldown team` / VoidZero (rolldown org) |
 | License | `MIT` |
 | Repository | `https://github.com/rolldown/rolldown` |

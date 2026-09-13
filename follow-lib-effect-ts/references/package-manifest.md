@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.22.2` |
 | Release Date | `2026-09-09` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Michael Arnaldi (Effect-TS)` |
 | License | `MIT` |
 | Repository | `https://github.com/Effect-TS/effect` |

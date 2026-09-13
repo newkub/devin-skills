@@ -5,6 +5,7 @@ argument-hint: "[target-or-scope]"
 related:
   - run-verify
   - run-test
+  - follow-lib-otplib
 ---
 
 ## Goal
@@ -15,7 +16,9 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib qrcode)
 
-- Latest: `qrcode@1.5.4` (verified 2026-09-12)
+- ครอบคลุม: QR code generation — PNG/SVG/dataURL/terminal output ฝั่ง server, browser หรือ CLI (`qrcode` command — ดู [cli](references/cli.md))
+- ไม่ครอบคลุม: TOTP/2FA logic — ใช้ `/follow-lib-otplib` สำหรับสร้าง `otpauth://` URI แล้ว render QR ด้วย skill นี้
+- Latest: `qrcode@1.5.4` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -42,6 +45,10 @@ related:
 - เลือก output ตาม consumer: dataURL สำหรับ `<img>`, buffer สำหรับ download
 - ตั้ง margin/width ให้ scan ได้จริง (อย่างน้อย margin=2)
 - ทดสอบ scan จริงก่อน ship
+
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
+- ใช้ `/follow-lib-otplib` ถ้า QR คือ `otpauth://` TOTP enrollment
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 # Pitchfork CLI Reference
 
-Daemon/process supervisor for project background services (jdx/pitchfork). Version `2.25.0` (verified 2026-09-12).
+Daemon/process supervisor for project background services (jdx/pitchfork). Version `2.25.0` (verified 2026-09-13).
 
 - Usage: `pitchfork <SUBCOMMAND>` | `-h --help`, `-V --version`
 - Docs: https://pitchfork.jdx.dev/cli/ | Repo: https://github.com/jdx/pitchfork

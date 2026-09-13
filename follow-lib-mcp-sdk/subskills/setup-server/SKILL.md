@@ -79,6 +79,7 @@ const server = new McpServer({
 - handle errors เป็น `isError: true` response ไม่ throw
 - define inputSchema ด้วย zod raw shape เสมอ
 - ใช้ `/follow-lib-mcp-sdk` สำหรับ full reference และ elicitation
+- ใช้ `/run-install` ถ้าต้องรัน install ผ่าน runner skill
 
 ## Expected Outcome
 

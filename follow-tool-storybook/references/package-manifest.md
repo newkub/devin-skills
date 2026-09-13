@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `10.6.0` |
 | Release Date | `2026-09-02` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Storybook (storybookjs)` |
 | License | `MIT` |
 | Repository | `<https://github.com/storybookjs/storybook>` |

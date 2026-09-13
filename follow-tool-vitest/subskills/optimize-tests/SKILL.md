@@ -72,6 +72,10 @@ related:
 - Shards ทุกตัวต้องรันด้วย args เดียวกัน — ผลรวมถึงจะถูก
 - Optimize ต้องไม่เปลี่ยน test outcomes — suite ต้องเขียวเหมือนเดิม
 
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-bench ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Test suite เร็วขึ้นโดยวัดได้จาก baseline

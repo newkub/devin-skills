@@ -17,7 +17,9 @@ related:
 
 ใช้กับ Vue 3 ที่ต้องการ state management ด้วย Pinia v4 ครอบคลุม setup stores, getters, actions, persistence และ testing
 
-- Latest: `pinia@4.0.3` / `@pinia/nuxt@1.0.2` / `pinia-plugin-persistedstate@4.7.1` (verified 2026-09-12)
+- ไม่มี CLI ของตัวเอง — ใช้ผ่าน Vue app/Nuxt module (จึงไม่มี `references/cli.md`)
+- Latest: `pinia@4.0.3` / `@pinia/nuxt@1.0.2` / `pinia-plugin-persistedstate@4.7.1` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [pinia-api](references/pinia-api.md) | [pinia-config](references/pinia-config.md) | [pinia-resources](references/pinia-resources.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

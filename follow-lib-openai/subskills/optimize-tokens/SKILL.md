@@ -67,6 +67,7 @@ related:
 - preserve output quality — ต้องมีเกณฑ์ยอมรับชัดเจนก่อน downgrade model
 - อย่าเดาราคา/limits — ดู official pricing และ model docs เสมอ
 - ใช้ `/follow-lib-openai` สำหรับ API reference
+- ใช้ `/deep-optimize` ถ้าต้อง optimization pass ที่กว้างกว่า token cost
 
 ## Expected Outcome
 

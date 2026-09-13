@@ -24,7 +24,7 @@ related:
 - Performance: `Virtual` (virtualized lists, v3), `Pacer` (debounce/throttle/batch, 0.x)
 - Tooling: `Devtools` (unified devtools panel), `Config`, `CLI`, `Intent`
 
-- Latest: query `5.102.8` / router `1.170.35` / start `1.168.52` / table `9.2.4` / form `1.33.5` / virtual `3.14.12` / store `0.11.1` / db `0.3.8` / pacer `0.23.0` / ai `0.54.0` (verified 2026-09-12)
+- Latest: query `5.102.8` / router `1.170.35` / start `1.168.52` / table `9.2.4` / form `1.33.5` / virtual `3.14.12` / store `0.11.1` / db `0.3.8` / pacer `0.23.0` / ai `0.54.0` (verified 2026-09-13)
 
 ## Execute
 

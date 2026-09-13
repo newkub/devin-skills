@@ -13,7 +13,7 @@ bun add -D @testing-library/dom
 
 ## Version
 
-- `@testing-library/react`: `16.3.3`, `@testing-library/dom`: `10.4.x`, `user-event`: `14.6.x` (verified 2026-09-12)
+- `@testing-library/react`: `16.3.3`, `@testing-library/dom`: `10.4.x`, `user-event`: `14.6.x` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/@testing-library/react)
 - [Repository](https://github.com/testing-library/react-testing-library)
 

@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.20.2` |
 | Release Date | `2026-08-30` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Devon Govett` |
 | License | `MIT` |
 | Repository | `https://github.com/foliojs/pdfkit` |

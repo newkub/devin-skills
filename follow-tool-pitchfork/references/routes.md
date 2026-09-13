@@ -1,7 +1,7 @@
 # Follow Tool Pitchfork Route Map
 
 - Website: <https://pitchfork.jdx.dev>
-- Source: sitemap.xml (verified 2026-09-12)
+- Source: sitemap.xml (verified 2026-09-13)
 
 ## Top Level
 

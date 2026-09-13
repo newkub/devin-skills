@@ -18,7 +18,10 @@ related:
 
 ใช้สำหรับ libraries บน GitHub ที่ต้องการ preview packages สำหรับทุก commit และ pull request
 
-- Latest: `pkg-pr-new@0.0.88` (verified 2026-09-12)
+- ใช้ skill นี้สำหรับ ephemeral preview releases เท่านั้น — สำหรับ real releases ใช้ `/follow-tool-release-it` หรือ `/follow-tool-semantic-release`
+- ต้องใช้ GitHub Actions — ถ้ายังไม่มี workflow ให้ทำ `/follow-tool-github-actions` ก่อน
+
+- Latest: `pkg-pr-new@0.0.88` (verified 2026-09-13)
 
 ## Execute
 
@@ -57,6 +60,17 @@ related:
 2. ใช้ `--bin` สำหรับ CLI applications
 3. ใช้ `--comment=update` สำหรับ custom comments
 4. ใช้ `--packageManager=bun` สำหรับ package manager ใน comments
+5. ใช้ `--commentWithSha` เมื่อต้องการ commit SHA URLs ใน comments แทน PR number URLs
+6. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+
+### 5. Verify Preview Publish
+
+> Goal: ยืนยันว่า preview packages publish สำเร็จ
+
+1. เปิด pull request และตรวจว่า bot comment ปรากฏพร้อม install commands
+2. ทดสอบ install ด้วย npm-compatible URL: `bun add https://pkg.pr.new/<owner>/<repo>/<package>@<commit>`
+3. ใช้ step outputs `sha`, `urls`, `packages` จาก `pkg-pr-new publish` เพื่อ chain E2E job (`needs.<job>.outputs.urls`)
+4. ถ้า publish ไม่เกิด → ตรวจว่า GitHub Application install บน repo แล้ว และ workflow มี permissions ถูกต้อง
 5. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ## Rules

@@ -10,7 +10,7 @@
 | Registry | `crates.io` |
 | Latest Version | `0.9.144` |
 | Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `nextest-rs` (Rain / Sunshowers team) |
 | License | `Apache-2.0 OR MIT` |
 | Repository | `https://github.com/nextest-rs/nextest` |

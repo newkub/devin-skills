@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `2.1.0` |
 | Release Date | `2026-08-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Scalar` (scalar org) |
 | License | `MIT` |
 | Repository | `https://github.com/scalar/scalar` |

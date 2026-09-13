@@ -15,7 +15,7 @@ bun add -D @iconify-icons/mdi  # หรือ @iconify/json สำหรับ f
 
 ## Version
 
-- `@iconify/vue`: `5.0.1`, `@iconify/react`: `6.0.2`, `@iconify/svelte`: `5.2.2`, `iconify-icon`: `3.0.2` (verified 2026-09-12)
+- `@iconify/vue`: `5.0.1`, `@iconify/react`: `6.0.2`, `@iconify/svelte`: `5.2.2`, `iconify-icon`: `3.0.2` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/@iconify/vue)
 - [Repository](https://github.com/iconify/iconify)
 

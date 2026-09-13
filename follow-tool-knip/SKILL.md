@@ -16,7 +16,8 @@ related:
 
 ใช้กับทุกโปรเจกต์ที่ต้องการวิเคราะห์ unused code — รองรับทั้ง single project และ monorepo ที่มี workspaces; ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
 
-- Latest: `knip@6.35.1` (verified 2026-09-12) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 || >=22.12.0` หรือ Bun
+- Latest: `knip@6.35.1` (verified 2026-09-13) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 || >=22.12.0` หรือ Bun
+- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -126,11 +127,9 @@ related:
 - ใช้ `--include` หรือ `--exclude` เพื่อ filter issue types เช่น `knip --include files,dependencies`
 - ใช้ `rules` ใน config เพื่อกำหนด severity: `"error"`, `"warn"`, `"off"` เช่น `{ "rules": { "files": "warn", "duplicates": "off" } }`
 
-## References
-
-- [CLI reference](references/cli.md)
-
-- ใช้ /run-scan ถ้าจำเป็น
+- ใช้ `/follow-monorepo` เมื่อ project เป็น monorepo
+- ใช้ `/follow-tasks` เพื่อ wire knip เข้า task runner scripts
+- ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
 
 ## Expected Outcome
 

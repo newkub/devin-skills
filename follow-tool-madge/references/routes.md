@@ -9,7 +9,7 @@
 
 ## Key Concepts
 
-- CI gate: `madge --circular src/` exit code ≠ 0 ถ้าเจอ cycle
+- CI gate: `madge --circular --exit-code 1 src/` — default exit code = 0 แม้เจอ cycle ต้องใส่ `--exit-code` เสมอ
 - `--ts-config tsconfig.json` สำหรับ path alias (`@/...`)
 - Programmatic: `const res = await madge('src', opts); res.circular()`
-- ใช้คู่ `/check-repo-hygiene circular-dependencies`, `/visualize-repo`
+- `--image` ต้องมี Graphviz (`dot` binary) ติดตั้งใน system

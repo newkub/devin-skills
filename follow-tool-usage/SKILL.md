@@ -4,7 +4,6 @@ description: สร้าง CLI spec ด้วย usage เพื่อ generat
 argument-hint: "[scope]"
 related:
   - report-usage
-
   - review-docs
   - follow-best-practice
   - setup-cicd
@@ -20,7 +19,8 @@ related:
 
 ครอบคลุม installation, KDL spec, `usage generate` subcommands, integrations, และ validation
 
-- Latest: `usage@6.9.0` (usage CLI โดย jdx, verified 2026-09-12)
+- Boundary: ใช้ usage เมื่อต้องการ spec-driven CLI (single `usage.kdl` → completions/docs/SDK); ถ้า project ใช้ framework-native spec อยู่แล้ว (clap/cobra/commander) ให้ generate integration แทนเขียน parser เอง — ไม่ใช่ npm package `usage` (ตัวจริงคือ `usage-cli` บน crates.io)
+- Latest: `usage@6.9.0` (usage CLI โดย jdx, verified 2026-09-13)
 
 ## Execute
 
@@ -64,7 +64,7 @@ related:
 
 1. รัน `usage lint` เพื่อตรวจสอบ spec
 2. ใช้ `usage exec` สำหรับ execute spec-based scripts
-3. ใช้ `usage scripts` เพื่อ generate bash scripts with arg parsing
+3. ใช้ `usage bash|zsh|fish|powershell <script>` เพื่อรัน shebang scripts ที่มี arg parsing จาก spec
 
 ### 5. Framework Integrations
 

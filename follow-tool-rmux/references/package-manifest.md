@@ -10,7 +10,7 @@
 | Registry | `crates.io` |
 | Latest Version | `0.10.0` |
 | Release Date | `2026-08-05` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Helvesec` |
 | License | `unknown` (not declared on crates.io) |
 | Repository | `https://github.com/Helvesec/rmux` |

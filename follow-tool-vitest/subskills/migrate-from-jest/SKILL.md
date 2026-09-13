@@ -76,6 +76,9 @@ Migrate test suite จาก Jest ไป Vitest อย่างปลอดภ�
 - `vi.mock`/`vi.hoisted` top-level เท่านั้น (Vitest 5)
 - ถ้า test บางไฟล์พึ่ง Jest-specific behavior จริงๆ → สร้าง TODO list ชัดเจนแทนการบังคับ
 
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Test suite รันบน Vitest เขียวทั้งหมด

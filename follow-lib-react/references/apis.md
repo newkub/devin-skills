@@ -8,7 +8,7 @@ bun add react react-dom
 
 ## Version
 
-- Latest: 19.3.0
+- Latest: `19.3.0` (verified 2026-09-13)
 - Package Registry: https://www.npmjs.com/package/react
 - Repository: https://github.com/react/react
 

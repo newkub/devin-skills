@@ -3,12 +3,12 @@
 ## Install
 
 ```sh
-bun add -D gh # or https://cli.github.com
+mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง
 ```
 
 ## Version
 
-- Latest
+- Latest: `gh@2.100.0` (verified 2026-09-13)
 - Repository: https://github.com/cli/cli
 - Docs: https://cli.github.com/manual/gh_workflow
 
@@ -25,7 +25,14 @@ bun add -D gh # or https://cli.github.com
 | `gh run view <id>` | View run | — | -R, --repo, --log, --exit-status |
 | `gh run watch <id>` | Watch run | — | -R, --repo, --exit-status |
 | `gh run rerun <id>` | Rerun run | — | -R, --repo, --failed, --debug |
-| `gh run logs <id>` | Download logs | — | -R, --repo, --dir |
+| `gh run view <id> --log` | View run logs | — | --log-failed, -j, --job |
+| `gh run download <id>` | Download artifacts | — | -R, --repo, -n, --name, -D, --dir |
+| `gh run cancel <id>` | Cancel run | — | -R, --repo |
+| `gh run delete <id>` | Delete run | — | -R, --repo |
+| `gh secret list` | List secrets | — | -R, --repo, -e, --env |
+| `gh secret set <name>` | Set secret | — | --body, --env-file, -R, --repo |
+| `gh variable list` | List variables | — | -R, --repo, -e, --env |
+
 ## Examples
 
 ```sh

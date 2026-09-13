@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - follow-git-flow
   - follow-git-workflows
+  - follow-tool-hk
+  - follow-tool-moonrepo
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
@@ -18,7 +20,8 @@ related:
 
 ใช้กับทุก project ทีใช้ git ไมว่าจะเป็น local workflow, collaboration, หรือ history investigation
 
-- Latest: `simple-git@3.36.0` / `isomorphic-git@1.42.2` / gh CLI `2.100.0` (verified 2026-09-12)
+- Latest: `git@2.55.0` (git-for-windows), `simple-git@3.36.0` / `isomorphic-git@1.42.2` / gh CLI `2.100.0` (verified 2026-09-13)
+- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -64,12 +67,12 @@ related:
 
 > Goal: ใช้งาน git ขั้นสูงตามจำเป็น
 
-1. ใช้ `git submodules` สำหรับ external dependencies
+1. ใช้ `git submodule` สำหรับ external dependencies
 2. ใช้ `git lfs` สำหรับไฟล์ใหญ่
-3. ใช้ `git tags` มาร์ก release
-4. ใช้ `git hooks` ตรวจสอบคุณภาพก่อน commit
+3. ใช้ `git tag` มาร์ก release
+4. ตั้ง git hooks ตรวจคุณภาพก่อน commit — repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (ดู `/follow-tool-moonrepo`); repo อื่นหรือต้องการ staged-file linting ขั้นสูง → `/follow-tool-hk`
 5. ใช้ `git worktree` ทำงานหลาย branch พร้อมกัน
-6. ใช้ `git cleanup` ลบ branches/remote refs ทีไม่ใช้
+6. cleanup: `git clean -fd` ลบ untracked files, `git branch -d` ลบ merged branches, `git remote prune`/`git fetch --prune` ลบ stale remote refs
 
 ## Rules
 
@@ -91,16 +94,13 @@ related:
 - ตรวจสอบ `git status` ให้สะอาดก่อน push
 - ใช้ `git diff` ตรวจงานก่อน commit
 
-- ใช้ /follow-git-flow ถ้าจำเป็น
-- ใช้ /follow-git-workflows ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ `/follow-git-flow` สำหรับ branching model
+- ใช้ `/follow-git-workflows` สำหรับ team workflows
+- ใช้ `/follow-tool-hk` สำหรับ git hooks ใน repo ที่ไม่ใช้ moon
+- ใช้ `/follow-tool-moonrepo` สำหรับ `vcs.hooks` ใน moon repo
+- ใช้ `/follow-tool-usage` ถ้าจำเป็น
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 

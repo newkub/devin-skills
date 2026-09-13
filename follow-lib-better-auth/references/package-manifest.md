@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.7.4` |
 | Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `bekacru (Better Auth team)` |
 | License | `MIT` |
 | Repository | `https://github.com/better-auth/better-auth` |

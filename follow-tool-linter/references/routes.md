@@ -1,37 +1,43 @@
-# Follow Tool Linter Route Map
+# Tool Linter Routes / Topics
 
-- Website: <https://github.com/biomejs/biome>
-- Routes discovered (homepage): 30
+Skill นี้เป็น generic linter guide — routes ด้านล่างรวม docs ของ linter ที่ใช้บ่อยตาม tech stack
 
-## Routes
+## oxlint (oxc.rs)
 
-- /biomejs
-- /biomejs/benchmark
-- /biomejs/biome
-- /biomejs/biome/actions
-- /biomejs/biome/actions/workflows/main.yml
-- /biomejs/biome/activity
-- /biomejs/biome/blob/main/.biome.json
-- /biomejs/biome/blob/main/.coderabbit.yaml
-- /biomejs/biome/blob/main/.dockerignore
-- /biomejs/biome/blob/main/.editorconfig
-- /biomejs/biome/blob/main/.git-blame-ignore-revs
-- /biomejs/biome/blob/main/.gitattributes
-- /biomejs/biome/blob/main/.gitignore
-- /biomejs/biome/blob/main/.markdownlint.json
-- /biomejs/biome/blob/main/AGENTS.md
-- /biomejs/biome/blob/main/CHANGELOG.md
-- /biomejs/biome/blob/main/CHANGELOG_v1.md
-- /biomejs/biome/blob/main/CLAUDE.md
-- /biomejs/biome/blob/main/CODE_OF_CONDUCT.md
-- /biomejs/biome/blob/main/CONTRIBUTING.md
-- /biomejs/biome/blob/main/Cargo.lock
-- /biomejs/biome/blob/main/Cargo.toml
-- /biomejs/biome/blob/main/GOVERNANCE.md
-- /biomejs/biome/blob/main/LICENSE-APACHE
-- /biomejs/biome/blob/main/LICENSE-MIT
-- /biomejs/biome/blob/main/README.md
-- /biomejs/biome/blob/main/RELEASES.md
-- /biomejs/biome/blob/main/clippy.toml
-- /biomejs/biome/blob/main/insta.yml
-- /biomejs/biome/blob/main/justfile
+| Route / Topic | URL |
+|---|---|
+| Linter guide | https://oxc.rs/docs/guide/usage/linter |
+| Config (`.oxlintrc.json`) | https://oxc.rs/docs/guide/usage/linter/config |
+| Rules list | https://oxc.rs/docs/guide/usage/linter/rules |
+| Type-aware linting (`oxlint-tsgolint`) | https://oxc.rs/docs/guide/usage/linter-type-aware |
+
+## ESLint (eslint.org)
+
+| Route / Topic | URL |
+|---|---|
+| Getting started | https://eslint.org/docs/latest/use/getting-started |
+| Configure (flat config) | https://eslint.org/docs/latest/use/configure |
+| CLI reference | https://eslint.org/docs/latest/use/command-line-interface |
+| Migrate to v10 | https://eslint.org/docs/latest/use/migrate-to-10.0.0 |
+
+## Biome (biomejs.dev)
+
+| Route / Topic | URL |
+|---|---|
+| Linter | https://biomejs.dev/linter/ |
+| Rules | https://biomejs.dev/linter/rules/ |
+| CLI reference | https://biomejs.dev/reference/cli/ |
+
+## Others
+
+| Tool | URL |
+|---|---|
+| clippy (Rust) | https://doc.rust-lang.org/clippy/ |
+| ruff (Python) | https://docs.astral.sh/ruff/linter/ |
+| golangci-lint (Go) | https://golangci-lint.run/docs/ |
+
+## Key Concepts
+
+- เลือก linter ตาม tech stack; ถ้า project มีอยู่แล้วใช้ตัวเดิม — skill เฉพาะทาง: `/follow-tool-eslint`, `/follow-tool-biome`
+- CI รัน check mode เท่านั้น (`--max-warnings 0` สำหรับ zero-warning gate); `--fix` ทำใน local/hooks
+- git hooks สำหรับ staged-file lint: repo ที่มี `.moon/workspace.yml` → moon `vcs.hooks`; repo อื่น → `/follow-tool-hk`

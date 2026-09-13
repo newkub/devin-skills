@@ -3,13 +3,14 @@
 ## Install
 
 ```sh
-# See https://rmux.io/ for install
+mise use -g rmux
+# or: cargo install rmux --locked | brew install rmux | winget install rmux
 ```
 
 ## Version
 
 - Latest: see https://rmux.io/
-- Repository: https://github.com/nakulbh/rmux
+- Repository: https://github.com/Helvesec/rmux
 - Docs: https://rmux.io/docs/cli/
 
 ## Commands
@@ -29,7 +30,7 @@
 ## Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `--socket <path>` | Override `$RMUX_SOCKET_PATH` |
 | `--json` | Machine-readable JSON output |
 | `-V, --version` | Print version |

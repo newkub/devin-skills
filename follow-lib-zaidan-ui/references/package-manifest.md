@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `4.21.0` |
 | Release Date | `2026-09-04` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `shadcn` |
 | License | `MIT` |
 | Repository | `<https://github.com/shadcn-ui/ui>` |
@@ -18,7 +18,7 @@
 | Documentation | `<https://zaidan.carere.dev/docs>` |
 | Releases / Changelog | `<https://github.com/shadcn-ui/ui/releases>` |
 
-> Zaidan UI itself is **not an npm package** — it is a remote shadcn registry (`https://zaidan.carere.dev/r/{style}/{name}.json`); components are copy-to-own via the `shadcn` CLI.
+> Zaidan UI itself is not an npm package — it is a remote shadcn registry (`https://zaidan.carere.dev/r/{style}/{name}.json`); components are copy-to-own via the `shadcn` CLI.
 
 ## Install
 

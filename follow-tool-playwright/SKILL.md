@@ -21,7 +21,10 @@ related:
 
 ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
 
-- Latest: `@playwright/test@1.63.0` (verified 2026-09-12)
+- ใช้ skill นี้สำหรับ browser E2E suite จริง — ถ้าต้องการ check ด่วนแบบ headless โดยไม่สร้าง suite ใช้ `/use-agent-browser` เป็น stopgap
+- สำหรับ API mocking ใน unit/integration tests → ใช้ `/follow-tool-msw` แทน
+
+- Latest: `@playwright/test@1.63.0` (verified 2026-09-13)
 
 ## Execute
 
@@ -225,12 +228,11 @@ related:
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /run-test (e2e) ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-test (e2e) ถ้าจำเป็น
 
 ## Expected Outcome
 

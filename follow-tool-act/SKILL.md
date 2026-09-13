@@ -16,10 +16,11 @@ related:
 
 - ใช้เมื่อต้องการทดสอบ `.github/workflows/*.yml` โดยไม่ต้อง push
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
+- Boundary: ใช้ skill นี้เฉพาะรัน/debug workflows บน local — ถ้า fail บน remote CI แล้วให้ใช้ `/resolve-errors github-actions` แทน; สำหรับเขียน/แก้ workflow เองดู `/follow-tool-github-actions`
 - ใช้ร่วมกับ `/resolve-errors github-actions` (ดูและแก้ fails บน remote)
 
-- Latest: `act@0.2.89` (nektos/act) (verified 2026-09-12)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
+- Latest: `act@0.2.89` (nektos/act) (verified 2026-09-13)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

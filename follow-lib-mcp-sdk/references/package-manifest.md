@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.30.0` |
 | Release Date | `2026-07-27` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Anthropic, PBC` |
 | License | `MIT` |
 | Repository | `https://github.com/modelcontextprotocol/typescript-sdk` |
@@ -28,7 +28,7 @@ bun add @modelcontextprotocol/sdk zod
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `zod` | `npm` | `4.6.2` | Schema validation for tool inputs |
+| `zod` | `npm` | `4.6.4` | Schema validation for tool inputs |
 | `@modelcontextprotocol/inspector` | `npm` | `2.6.0` | Testing/debugging CLI (`bunx @modelcontextprotocol/inspector`) |
 
 ## Notes

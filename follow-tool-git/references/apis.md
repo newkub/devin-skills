@@ -14,7 +14,7 @@ scoop install git
 
 ## Version
 
-- Latest stable: `2.51.x` (ตรวจ `git --version` หรือ https://git-scm.com/downloads)
+- Latest stable: `2.55.0` (verified 2026-09-13 — `git-for-windows/git` tag `v2.55.0.windows.5`; ตรวจ `git --version` หรือ https://git-scm.com/downloads)
 - [Website](https://git-scm.com)
 - [Repository](https://github.com/git/git)
 

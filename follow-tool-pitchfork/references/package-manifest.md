@@ -10,7 +10,7 @@
 | Registry | `crates.io` |
 | Latest Version | `2.25.0` |
 | Release Date | `2026-09-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `jdx` (Jeff Dickey) |
 | License | `MIT` |
 | Repository | `https://github.com/jdx/pitchfork` |

@@ -16,7 +16,11 @@ related:
 
 ## Scope
 
-ใช้สำหรับ project ที่ใช้ Elysia เป็น web framework บน Bun runtime
+ใช้สำหรับ project ที่ใช้ Elysia เป็น web framework บน Bun runtime — เลือก subskill ตาม phase:
+
+- Setup ครั้งแรก (install, `new Elysia()`, routes/plugins พื้นฐาน) → `subskills/setup-elysia/SKILL.md`
+- Production deploy (`bun build`, env config, platform targets) → `subskills/deploy-elysia/SKILL.md`
+- Skill นี้ครอบคลุม full reference — ถ้า task เป็น Bun HTTP server ทั่วไปที่ไม่ใช้ Elysia → ใช้ `/use-bun-native-api` แทน
 
 - ติดตั้ง Elysia, Eden, และ plugins ที่จำเป็น
 - กำหนด routes, handlers, validation, lifecycle hooks
@@ -25,6 +29,13 @@ related:
 - สร้าง OpenAPI docs ด้วย `@elysia/openapi`
 
 ## Execute
+
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน |
+| Deploy | `subskills/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets |
 
 ### 1. Install And Setup
 
@@ -113,11 +124,6 @@ related:
 4. ใช้ `@elysia/swagger` ถ้าต้องการ Swagger UI
 5. รัน production ด้วย `bun run start` และตรวจสอบ `Bun.version` ให้รองรับ Elysia
 
-### Subskills
-
-- Install + `new Elysia()` + `.listen()` + routes/plugins พื้นฐาน → `subskills/setup-elysia/SKILL.md`
-- Production deploy — `bun build`, env config, platform targets → `subskills/deploy-elysia/SKILL.md`
-
 ## Rules
 
 ### 1. Project Setup
@@ -184,8 +190,8 @@ related:
 
 ### 9. Version Notes
 
-- Latest stable: `elysia@1.4.30`, `@elysia/eden@1.4.10`, `@elysia/openapi@1.4.16` (verified 2026-09-12)
-- Elysia 2.0 beta "DayDream": `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest` (verified 2026-09-12)
+- Latest stable: `elysia@1.4.30`, `@elysia/eden@1.4.10`, `@elysia/openapi@1.4.16` (verified 2026-09-13)
+- Elysia 2.0 beta "DayDream": `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest` (verified 2026-09-13)
 - v2.0 มี breaking changes ได้แก่ route hooks/schemas ต้องอยู่ก่อน handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, ใช้ `problem` สำหรับ RFC 9457 errors แทน `status`
 - v2.0 ตัด prefix `on` ออกจาก lifecycle hooks (`onRequest` → `request`, `onBeforeHandle` → `beforeHandle`, `onError` → `error`) และ WebSocket กลายเป็น opt-in plugin ที่ `.ws()` 3-arg เป็น `(path, options, handler)` พร้อมใช้ generator `yield` แทน `ws.send`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API

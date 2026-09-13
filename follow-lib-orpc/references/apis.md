@@ -8,7 +8,7 @@ bun add @orpc/server
 
 ## Version
 
-- Latest: `1.15.0` (verified 2026-09-12; v2 beta: `2.0.0-beta.35`)
+- Latest: `1.15.0` (verified 2026-09-13; v2 beta: `2.0.0-beta.35`)
 - [Package Registry](https://www.npmjs.com/package/@orpc/server)
 - [Repository](https://github.com/middleapi/orpc)
 

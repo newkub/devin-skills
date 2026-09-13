@@ -6,6 +6,7 @@ related:
   - follow-secret-manager
   - follow-tool-semantic-release
   - follow-tool-changesets
+  - follow-tool-changelogen
   - follow-tool-github-actions
   - follow-tool-pkg-new
   - follow-lang-nodejs
@@ -21,7 +22,12 @@ related:
 
 ใช้สำหรับ Node.js projects ที่ต้องการ version bump, git tag, changelog, npm publish และ GitHub release แบบ automated
 
-- Latest: `release-it@21.0.2` (verified 2026-09-12) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
+- เลือก tool ตาม workflow: `release-it` เหมาะกับ interactive/manual release ทีเลือก version และ hooks ได้ยืดหยุ่น
+- ใช้ `follow-tool-semantic-release` เมื่อต้องการ fully automated release จาก conventional commits โดยไม่ต้องเลือก version เอง
+- ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
+- ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
+
+- Latest: `release-it@21.0.2` (verified 2026-09-13) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
 
 ## Execute
 
@@ -89,7 +95,7 @@ related:
 ### 2. CI
 
 - ใช้ `--ci` ใน GitHub Actions เพื่อปิด interactive prompts
-- ใช้ `fetch-depth: 0` ใน `actions/checkout` เพื่อให้มมีประวัติทั้งหมด
+- ใช้ `fetch-depth: 0` ใน `actions/checkout` เพื่อให้มีประวัติทั้งหมด
 - ไม่รัน release บน pull request
 
 ### 3. Versioning

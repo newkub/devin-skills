@@ -20,16 +20,21 @@ bun add -D @moonrepo/cli
 | `moon exec <target>` / `moonx` | Low-level task execution | — | `--query`, `-f, --force`, `-i, --interactive`, `--on-failure`, `--ci` |
 | `moon check [targets]` | Run type check and lint tasks | — | `--query`, `--affected`, `--force` |
 | `moon ci` | CI-optimized pipeline — affected tasks with `runInCI` | — | `--base`, `--head`, `--job`, `--job-total`, `--query`, `--affected` |
+| `moon init` | Scaffold `.moon/` workspace in existing repo | — | `--to`, `--force` |
 | `moon sync` | Sync project and toolchain | — | (none) |
+| `moon sync hooks` | Generate + link `vcs.hooks` git hooks | — | (none) |
 | `moon project [name]` | Show project info | — | (none) |
+| `moon task <id>:<task>` | Show task config and metadata | — | (none) |
 | `moon query` | Query monorepo graph | — | `--affected`, `--json`, `--mermaid` |
+| `moon query projects` / `tasks` | List projects / tasks matching query | — | `--affected`, `--json` |
 | `moon generate` | Generate files from templates | — | `--name`, `--template` |
+| `moon ext <name>` | Run moon extension (e.g. `migrate-turborepo`, `migrate-nx`) | — | (none) |
 | `moon --help` | Show help | — | (none) |
 
 ## Global Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `--cache` | Cache mode: `off`, `read`, `read-write` (default), `write` |
 | `--color` | Force colored output |
 | `--concurrency`, `-c` | Max threads |

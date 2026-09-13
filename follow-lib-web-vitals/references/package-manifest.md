@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `6.2.1` |
 | Release Date | `2026-08-26` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Philip Walton (Google Chrome)` |
 | License | `Apache-2.0` |
 | Repository | `<https://github.com/GoogleChrome/web-vitals>` |

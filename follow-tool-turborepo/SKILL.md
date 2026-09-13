@@ -8,6 +8,7 @@ related:
   - follow-tool-taze
   - follow-tool-vite
   - follow-tool-vitest
+  - follow-tool-moonrepo
   - run-build
   - run-test-all
 ---
@@ -22,7 +23,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-build-packages) — สำหรับ package build pipeline ดู `references/build-packages.md`
 
-- Latest: `turbo@2.10.12` (verified 2026-09-12)
+- Boundary: ใช้ Turborepo สำหรับ JS/TS monorepo task orchestration; ถ้า project ใช้ Moon ให้ใช้ `/follow-tool-moonrepo` แทน; สำหรับ dependency updates ข้าม workspace ใช้ `/follow-tool-taze`
+- Latest: `turbo@2.10.12` (verified 2026-09-13)
 
 ## Execute
 
@@ -129,13 +131,13 @@ related:
 - ใช้ /follow-tool-taze ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /follow-tool-moonrepo ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

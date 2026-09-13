@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` (`us/crw`) |
 | Latest Version | `0.35.1` |
 | Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `us/crw (fastCRW)` |
 | License | `AGPL-3.0` |
 | Repository | `https://github.com/us/crw` |

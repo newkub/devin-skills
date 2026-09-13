@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `2.2.3` |
 | Release Date | `2026-07-07` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `David Blass` |
 | License | `MIT` |
 | Repository | `https://github.com/arktypeio/arktype` |

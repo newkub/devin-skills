@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `5.0.0` |
 | Release Date | `2026-09-03` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `VoidZero / vitest-dev` |
 | License | `MIT` |
 | Repository | `<https://github.com/vitest-dev/vitest>` |

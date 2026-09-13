@@ -14,8 +14,8 @@ Optional install as dev dependency:
 
 ```sh
 bun add -D taze
-bun add -D taze
 pnpm add -D taze
+npm add -D taze
 ```
 
 ## Version

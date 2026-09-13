@@ -9,8 +9,8 @@ bun add -D pkg-pr-new
 ## Version
 
 - Latest on npm
-- Repository: https://github.com/stackblitz/pkg-pr-new
-- Docs: https://github.com/stackblitz/pkg-pr-new
+- Repository: https://github.com/stackblitz-labs/pkg.pr.new
+- Docs: https://github.com/stackblitz-labs/pkg.pr.new#readme
 
 ## Commands
 

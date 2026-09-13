@@ -16,7 +16,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ pin tool versions, load environment variables, และ define tasks ในไฟล์เดียว (`mise.toml`)
 
-- Latest: `mise@2026.9.5` (CalVer, verified 2026-09-12)
+- ใช้ skill นี้เมื่อต้องจัดการ dev tool versions/env/tasks — ถ้างานคือ monorepo task orchestration ให้ใช้ `/follow-tool-moonrepo` หรือ `/follow-tool-turborepo` แทน
+- Latest: `mise@2026.9.6` (CalVer, verified 2026-09-13)
 
 ## Execute
 
@@ -32,7 +33,7 @@ related:
 > Goal: ตรวจสอบและติดตั้ง mise
 
 1. รัน `mise --version` เพื่อตรวจสอบ installation
-2. ถ้าไม่มา ให้ติดตั้ง:
+2. ถ้าไม่มี ให้ติดตั้ง:
    - Unix: `curl https://mise.run | sh`
    - Windows: `winget install jdx.mise` หรือ `scoop install mise`
    - Cargo: `cargo install mise`

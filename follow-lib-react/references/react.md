@@ -15,9 +15,10 @@ bun add react@latest react-dom@latest
 
 ## Version Info
 
-- Latest stable: `19.2.x` (as of 2026)
+- Latest stable: `19.3.0` (verified 2026-09-13)
 - React 19.0 released December 2024
-- React 19.2 released October 2025
+- React 19.2 released October 2025 (`useEffectEvent`, `<Activity>`, `cacheSignal`)
+- React 19.3 released September 2026 (stable `<ViewTransition>`, `addTransitionType`, Fragment refs, `use(browser())`)
 - Peer dependency: `react-dom` (same version)
 - RSC features (directives, server components, server functions) are stable
 
@@ -244,7 +245,6 @@ export default defineConfig({
 ## Source
 
 - https://react.dev/versions
-- https://react.dev/learn/start-a-new-react-project
 - https://react.dev/reference/react/useActionState
 - https://react.dev/reference/react/useOptimistic
 - https://react.dev/blog/2025/10/07/react-compiler-1

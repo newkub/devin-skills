@@ -8,9 +8,9 @@
 |-------|-------|
 | Package | `aube` |
 | Registry | `GitHub Releases` / `crates.io` |
-| Latest Version | `2.2.14` |
-| Release Date | `2026-09-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Latest Version | `2.2.15` |
+| Release Date | `2026-09-13` |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `jdx / aubepkg` |
 | License | `MIT` |
 | Repository | `https://github.com/aubepkg/aube` |
@@ -33,5 +33,5 @@ mise use -g aube   # or: cargo install aube --locked / brew install jdx/tap/aube
 ## Notes
 
 - Breaking changes in latest major: `none known (2.x stable)`
-- Version pinned in SKILL.md: `aube@2.2.14` / `@endevco/aube@2.2.4`
+- Version pinned in SKILL.md: `aube@2.2.15` / `@endevco/aube@2.2.4`
 - GitHub releases ship as `vX.Y.Z`; crates.io `aube` and GitHub `aubepkg/aube` are the canonical latest sources

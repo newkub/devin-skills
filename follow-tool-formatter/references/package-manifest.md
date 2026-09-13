@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.9.6` |
 | Release Date | `2026-07-21` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Prettier` |
 | License | `MIT` |
 | Repository | `https://github.com/prettier/prettier` |

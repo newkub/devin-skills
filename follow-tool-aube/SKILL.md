@@ -19,8 +19,9 @@ related:
 
 ใช้ `follow-tool-aube` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
-- Latest: `aube@2.2.14` (GitHub `aubepkg/aube`) / npm `@endevco/aube@2.2.4` (verified 2026-09-12)
-- References: [aube](references/aube.md) | [cli](references/cli.md)
+- Boundary: Aube เป็น Node.js package manager (install/run/update deps) — ใช้แทน `npm`/`pnpm`/`yarn`/`bun install` เมื่อ project เลือก Aube; สำหรับ setup Bun runtime ดู `/use-bun-native-api`, สำหรับงาน CI ดู `/setup-cicd`
+- Latest: `aube@2.2.15` (GitHub `aubepkg/aube`) / npm `@endevco/aube@2.2.4` (verified 2026-09-13)
+- References: [aube](references/aube.md) | [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -168,11 +169,6 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
 
 ## Expected Outcome
 

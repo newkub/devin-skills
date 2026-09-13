@@ -9,7 +9,7 @@ bun add -D @types/qrcode   # TypeScript
 
 ## Version
 
-- Latest: `1.5.4` (verified 2026-09-11)
+- Latest: `1.5.4` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/qrcode)
 - [Repository](https://github.com/soldair/node-qrcode)
 

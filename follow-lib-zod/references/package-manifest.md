@@ -8,9 +8,9 @@
 |-------|-------|
 | Package | `zod` |
 | Registry | `npm` |
-| Latest Version | `4.6.2` |
-| Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Latest Version | `4.6.4` |
+| Release Date | `2026-09-13` |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Colin McDonnell (colinhacks)` |
 | License | `MIT` |
 | Repository | `<https://github.com/colinhacks/zod>` |
@@ -28,9 +28,9 @@ bun add zod@latest
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `zod/mini` | `npm` | (subpath of `zod` 4.6.2) | Smaller-bundle API — `import * as z from "zod/mini"` |
+| `zod/mini` | `npm` | (subpath of `zod` 4.6.4) | Smaller-bundle API — `import * as z from "zod/mini"` |
 
 ## Notes
 
 - Breaking changes in latest major: v4 removed `.errors` (use `error.issues`), deprecated `.merge()`/`.strict()`/`.passthrough()`/`z.string().email()` (use `z.strictObject`/`z.looseObject`/top-level `z.email()`), `error` param replaces `message`, `z.treeifyError` replaces `.format()`/`.flatten()`
-- Version pinned in SKILL.md: `zod@4.6.2`
+- Version pinned in SKILL.md: `zod@4.6.4`

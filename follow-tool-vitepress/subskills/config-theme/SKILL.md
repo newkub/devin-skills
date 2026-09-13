@@ -78,6 +78,7 @@ related:
 
 - ใช้ /follow-lib-unocss ถ้าจำเป็น (ถ้าใช้ UnoCSS กับ theme)
 - ใช้ /run-docs ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
 
 ## Expected Outcome
 

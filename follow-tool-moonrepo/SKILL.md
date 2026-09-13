@@ -24,6 +24,9 @@ related:
 
 ใช้สำหรับ project ที่เลือกใช้ moonrepo เป็น monorepo orchestrator แทน turborepo รองรับ Bun, Node, Rust
 
+- ถ้า repo ยังใช้ turborepo → ใช้ `/follow-tool-turborepo` (หรือ migrate ตาม Step 5)
+- ถ้างานคือ tool version/env management ไม่ใช่ task orchestration → ใช้ `/follow-tool-mise`
+
 ## Execute
 
 ### Subskills
@@ -50,7 +53,7 @@ related:
    - macOS/Linux/WSL: `bash <(curl -fsSL https://moonrepo.dev/install/moon.sh)`
    - proto: `proto install moon`
    - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
-2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.4`, verified 2026-09-12)
+2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.4`, verified 2026-09-13)
 3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (default ใช้ `bun add -D @moonrepo/cli`)
 4. ดูรายละเอียดเพิ่มเติมใน [references/moonrepo.md](references/moonrepo.md)
 
@@ -170,14 +173,14 @@ related:
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
 - [moon ci — CI guide, providers, sharding](references/ci.md)
-
-- ใช้ /run-test-all ถ้าจำเป็น
 
 ## Expected Outcome
 

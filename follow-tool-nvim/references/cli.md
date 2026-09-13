@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-bun add -D neovim # or system package manager
+mise use -g neovim          # or: scoop install neovim / brew install neovim
 ```
 
 ## Version

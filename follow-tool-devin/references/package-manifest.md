@@ -10,7 +10,7 @@
 | Registry | `system` (proprietary — no public registry) |
 | Latest Version | `unknown` |
 | Release Date | `unknown` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Cognition AI` |
 | License | `Proprietary` |
 | Repository | `unknown` (no public repo — `cognition-ai/devin` returns 404) |

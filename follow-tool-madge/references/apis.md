@@ -8,7 +8,7 @@ bun add -D madge
 
 ## Version
 
-- Latest: `8.0.0` (verified 2026-09-12)
+- Latest: `8.0.0` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/madge)
 - [Repository](https://github.com/pahen/madge)
 

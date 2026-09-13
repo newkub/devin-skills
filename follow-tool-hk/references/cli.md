@@ -8,7 +8,7 @@ mise use -g hk@latest
 
 ## Version
 
-- Latest: `hk@1.58.1` (verified 2026-09-12)
+- Latest: `hk@1.58.1` (verified 2026-09-13)
 - Repository: https://github.com/jdx/hk
 - Docs: https://hk.jdx.dev
 
@@ -23,11 +23,18 @@ mise use -g hk@latest
 | `hk check [files]` | รัน check steps โดยไม่ fix | staged | `--all` |
 | `hk fix [files]` | รัน fix steps (auto-fix) | staged | `--all` |
 | `hk test` | ทดสอบ config | — | — |
-| `hk inspect` | แสดง effective config | — | — |
-| `hk agent` | agent integration snippets (instructions, hooks, MCP) — read-only | — | — |
-| `hk mcp` | รัน hk เป็น MCP server | — | — |
+| `hk validate` | validate config | — | — |
+| `hk config` | inspect config | — | `dump`, `explain`, `get`, `sources` |
+| `hk builtins` | list builtin linters | — | — |
+| `hk migrate pre-commit` | แปลง `.pre-commit-config.yaml` เป็น `hk.pkl` | — | `--output` |
+| `hk agent` | agent integration snippets (instructions, hooks, MCP) — read-only | — | `hooks`, `instructions`, `mcp` subcommands |
+| `hk mcp` | รัน hk เป็น MCP server | — | `--root` |
 | `hk cache` | จัดการ cache | — | `clear` |
-| `hk util` | utilities | — | `leak-detection` |
+| `hk util` | utilities | — | `detect-private-key`, `check-*`, `trailing-whitespace`, `end-of-file-fixer` |
+| `hk completion` | shell completions | — | `--install`, `<shell>` |
+| `hk version` | print version | — | — |
+
+Global flags: `--cd <dir>`, `-j/--jobs`, `-p/--profile`, `-v/--verbose`, `-n/--no-progress`, `-q/--quiet`, `--silent`, `--json`, `--format human|json|jsonl`
 
 ## Examples
 

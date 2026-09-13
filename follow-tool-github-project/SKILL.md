@@ -16,7 +16,8 @@ related:
 
 ใช้กับ GitHub Projects (Projects v2) ของผู้ใช้ องค์กร หรือ repository ที่เชื่อมโยง ไม่ครอบคลุม `gh issue` หรือ `gh pr` โดยตรง
 
-- Latest: `gh@2.100.0` (github.com/cli/cli, verified 2026-09-12)
+- Latest: `gh@2.100.0` (github.com/cli/cli, verified 2026-09-13)
+- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -122,13 +123,12 @@ related:
 
 ### 5. Safety
 
-- คำสั่งลบ/ปิด project (`delete`, `close`) เป็น destructive operation ต้องถามผู้ใช้ก่อน
+- คำสั่งลบ/ปิด project (`delete`, `close`) เป็น destructive operation ต้องถามผู้ใช้ก่อน — ทำตาม flow `/delete`
 - ตรวจสอบ owner และ project number ก่อนลบ/ปิด
 - ใช้ `gh project close <number> --undo` แทนการลบ ถ้าเป้าหมายคือซ่อนชั่วคราว
 
-## References
-
-- [CLI reference](references/cli.md)
+- ใช้ `/list-github` เพื่อค้นหา project number/owner ก่อนเรียกคำสั่ง
+- ใช้ `/delete` flow สำหรับคำสั่ง destructive (`delete`, `close`)
 
 ## Expected Outcome
 

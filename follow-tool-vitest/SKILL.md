@@ -4,6 +4,8 @@ description: ติดตั้งและตั้งค่า Vitest 5 สำ
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
+  - follow-tool-playwright
+  - follow-lib-testing-library
   - update-tests
   - run-test
 ---
@@ -17,6 +19,8 @@ related:
 ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-jsdom) — สำหรับ jsdom DOM environment ดู `references/jsdom.md`
+
+- Boundary: ใช้ Vitest สำหรับ unit/integration tests — E2E/browser flows ใช้ `/follow-tool-playwright`; component DOM queries ใช้ `/follow-lib-testing-library`
 
 ## Execute
 
@@ -35,10 +39,10 @@ related:
 
 ### 1. Installation
 
-> Goal: Installation
+> Goal: ติดตั้ง Vitest และ verify requirements
 
 1. ทำ `/follow-tool-vite` เพื่อตรวจสอบ Vite setup
-2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-12)
+2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-13)
 3. ติดตั้ง coverage tool ด้วย `bun add -D @vitest/coverage-v8`
 4. ตรวจสอบว่ามี Vite >= v6.4.0 และ Node >= v22.12.0 (Vitest 5 requirements)
 5. เพิ่ม test script ใน `package.json`
@@ -47,7 +51,7 @@ related:
 
 ### 2. Configuration
 
-> Goal: Configuration
+> Goal: สร้าง `vitest.config.ts` ครบ options ที่จำเป็น
 
 1. สร้าง `vitest.config.ts` หรือใช้ `vite.config.ts` ที่มีอยู่
 2. เปิดใช้งาน `globals` เพื่อลดการ import
@@ -63,7 +67,7 @@ related:
 
 ### 3. Monorepo Setup
 
-> Goal: Monorepo Setup
+> Goal: ตั้งค่า multi-project ด้วย `test.projects`
 
 1. ใช้ `test.projects` array สำหรับหลาย packages (แทน `workspace` ที่ deprecated ตั้งแต่ Vitest 3.2)
 2. กำหนด glob patterns หรือ inline config สำหรับแต่ละ project
@@ -74,7 +78,7 @@ related:
 
 ### 4. Writing Tests
 
-> Goal: Writing Tests
+> Goal: เขียน tests ตาม conventions
 
 1. ทำ `/update-tests` เพื่อเขียน test ที่มีคุณภาพ
 2. ใช้ `test` หรือ `it` จาก globals แทนการ import
@@ -87,7 +91,7 @@ related:
 
 ### 5. Test Tags
 
-> Goal: Test Tags
+> Goal: categorize และ filter tests ด้วย tags
 
 1. กำหนด tags ใน config ด้วย `test.tags` array แต่ละ tag มี `name` และ optional test options
 2. ใช้ `test('name', { tags: ['db', 'flaky'] }, fn)` สำหรับ tag tests
@@ -96,7 +100,7 @@ related:
 
 ### 6. Type-Checking
 
-> Goal: Type-Checking
+> Goal: เปิด type tests ด้วย `typecheck`
 
 1. เปิดใช้งาน type-checking ด้วย `typecheck.enabled: true`
 2. ใช้ไฟล์ `.test-d.ts` สำหรับ type tests
@@ -108,7 +112,7 @@ related:
 
 ### 7. Fixtures And Test Context
 
-> Goal: Fixtures And Test Context
+> Goal: สร้าง reusable fixtures ด้วย `test.extend`
 
 1. ใช้ `test.extend()` สำหรับ create reusable fixtures
 2. ใช้ scopes: `test`, `file`, `worker` สำหรับ lifecycle management
@@ -119,7 +123,7 @@ related:
 
 ### 8. Hooks
 
-> Goal: Hooks
+> Goal: ใช้ lifecycle hooks ครอบ tests/suites
 
 1. ใช้ `aroundEach` สำหรับ wrap tests ใน context เช่น `AsyncLocalStorage` หรือ database transactions
 2. ใช้ `aroundAll` สำหรับ wrap ทุก suite
@@ -127,7 +131,7 @@ related:
 
 ### 9. Mocking And In-Source Testing
 
-> Goal: Mocking And In-Source Testing
+> Goal: mock modules และเขียน in-source tests
 
 1. เปิดใช้งาน `includeSource` ใน config และเขียน tests ใน source code ด้วย `if (import.meta.vitest)` block สำหรับ test utilities ที่อยู่ใกล้กับ implementation
 2. ใช้ `vi.mock` สำหรับ mocking modules และ `vi.fn` สำหรับ creating mock functions
@@ -137,7 +141,7 @@ related:
 
 ### 10. Coverage Watch And CI
 
-> Goal: Coverage Watch And CI
+> Goal: ตั้งค่า coverage, watch mode และ CI integration
 
 1. ใช้ `coverage.include` แบบ explicit เพราะ Vitest 4 รายงานเฉพาะ files ที่ loaded ระหว่าง test run
 2. ใช้ `coverage.changed` เพื่อ limit coverage report เฉพาะ changed files และ `/* v8 ignore start */`/`/* v8 ignore stop */` สำหรับ ignore specific lines
@@ -195,11 +199,14 @@ related:
 - `testNamePattern` (`-t` flag) match ด้วย full name ที่ join ด้วย `' > '`
 - unawaited `resolves`/`rejects` assertions fail แทนที่จะ pass เงียบๆ
 
+- ใช้ /follow-tool-playwright ถ้าจำเป็น
+- ใช้ /follow-lib-testing-library ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-test ถ้าจำเป็น
 
 ## Expected Outcome
 

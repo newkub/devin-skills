@@ -74,7 +74,7 @@ adopt Effect-TS เข้า codebase ที่ใช้ neverthrow/Promise/try-
 - Incremental เสมอ — ทีละ module, commit แยก, rollback ได้ทีละชิ้น
 - Interop ที่ boundary เท่านั้น — ห้ามปน Promise/Result ใน Effect internals หรือกลับกัน
 - Expected errors = `Data.TaggedError` ใน error channel; bugs ปล่อยเป็น defects (die)
-- ถ้า API/pattern ไม่แน่ใจ → ดู official docs (effect.website)
+- ถ้า API/pattern ไม่แน่ใจ → ดู official docs (effect.website) หรือ `/follow-lib-effect-ts` สำหรับ full reference
 
 ## Expected Outcome
 

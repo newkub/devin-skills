@@ -79,6 +79,8 @@ related:
 - รายงานผลด้วย `/report-before-after`
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome
 

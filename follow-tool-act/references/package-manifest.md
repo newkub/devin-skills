@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` |
 | Latest Version | `0.2.89` |
 | Release Date | `2026-06-01` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `nektos` |
 | License | `MIT` |
 | Repository | `https://github.com/nektos/act` |

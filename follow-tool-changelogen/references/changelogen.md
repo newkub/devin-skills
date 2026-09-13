@@ -12,7 +12,7 @@ bunx changelogen@latest
 
 ## Version
 
-- Latest stable: `0.6.2` (verified 2026-09-12)
+- Latest stable: `0.6.2` (verified 2026-09-13)
 - License: MIT
 
 ## Peer Dependencies

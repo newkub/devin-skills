@@ -13,7 +13,7 @@ brew install semgrep
 
 ## Version
 
-- Latest: `1.177.0` (verified 2026-09-11)
+- Latest: `1.177.0` (verified 2026-09-13)
 - [Repository](https://github.com/semgrep/semgrep)
 - [Registry](https://semgrep.dev) — npm/pypi registry links ชี้ wrapper
 

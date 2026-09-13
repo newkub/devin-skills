@@ -4,12 +4,13 @@
 
 ```sh
 bun add dompurify
-bun add -D @types/dompurify   # สำหรับ TypeScript (types แยกตั้งแต่ v3+)
+# v3 ship built-in TypeScript types (dist/purify.cjs.d.ts) — ไม่ต้องติดตั้ง @types/dompurify (ใช้เฉพาะ v2)
+bun add isomorphic-dompurify    # SSR/Node wrapper (jsdom-based)
 ```
 
 ## Version
 
-- Latest: `3.4.15` (verified 2026-09-11)
+- Latest: `3.4.15` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/dompurify)
 - [Repository](https://github.com/cure53/DOMPurify)
 

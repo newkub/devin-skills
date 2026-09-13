@@ -9,7 +9,7 @@ bun add -D bunup
 ## Version
 
 - Latest: see `bunup` on npm
-- Repository: https://github.com/okikio/bunup
+- Repository: https://github.com/bunup/bunup
 - Docs: https://bunup.dev/docs/guide/cli-options.html
 
 ## Commands

@@ -45,7 +45,7 @@ aube --version
 - Docs: `https://aube.jdx.dev/`
 - License: MIT
 - npm package: `@endevco/aube`
-- Latest release: `v2.2.14` (verified 2026-09-12); npm `latest` tag: `2.2.4`
+- Latest release: `v2.2.15` (verified 2026-09-13); npm `latest` tag: `2.2.4`
 
 ## Commands
 

@@ -18,6 +18,7 @@ bun add -D react-scan
 |---|---|---|---|
 | `react-scan` | Start React Scan overlay | — | --port, --no-open, --output |
 | `react-scan <url>` | Scan URL | — | --headless, --port, --output |
+| `react-scan init` | Detect framework and install react-scan automatically | — | (none) |
 | `bunx react-scan` | Run without install | — | (none) |
 | `react-scan --help` | Show help | — | (none) |
 ## Examples
@@ -27,4 +28,7 @@ bunx react-scan
 ```
 ```sh
 bunx react-scan http://localhost:3000
+```
+```sh
+bunx -y react-scan@latest init
 ```

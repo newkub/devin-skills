@@ -8,7 +8,7 @@ cargo install loc
 
 ## Version
 
-- Latest: see https://crates.io/crates/loc
+- Latest: `0.5.0` (crates.io, verified 2026-09-13) — last release 2018; tool is dormant/stable
 - Repository: https://github.com/cgag/loc
 - Docs: https://github.com/cgag/loc
 
@@ -16,20 +16,19 @@ cargo install loc
 
 | commands | description | default | options |
 |---|---|---|---|
-| `loc [paths]` | Count lines of code in target directory | respects `.gitignore` | `--files`, `--sort`, `--include`, `--exclude`, `-u, -uu`, `--languages` |
+| `loc [paths]` | Count lines of code in target directory | respects `.gitignore` | `--files`, `--sort`, `--include`, `--exclude`, `-u`, `-uu` |
 | `loc --help` | Show help | — | (none) |
 
 ## Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `--files` | Show stats for each file |
 | `--sort <column>` | Sort by `Code`, `Blank`, `Comment`, `Lines`, `Files` |
-| `--include <regex>` | Include matching files |
-| `--exclude <regex>` | Exclude matching files |
+| `--include <regex>` | Include matching files (Rust regex; multiple flags = OR) |
+| `--exclude <regex>` | Exclude matching files (multiple flags = OR) |
 | `-u` | Ignore `.gitignore` |
 | `-uu` | Ignore `.gitignore` and include hidden files |
-| `--languages` | List supported languages |
 
 ## Examples
 

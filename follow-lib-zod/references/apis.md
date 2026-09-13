@@ -8,7 +8,7 @@ bun add zod
 
 ## Version
 
-- Latest: 4.6.2 (verified 2026-09-12)
+- Latest: 4.6.4 (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/zod)
 - [Repository](https://github.com/colinhacks/zod)
 

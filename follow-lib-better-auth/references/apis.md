@@ -8,7 +8,7 @@ bun add better-auth
 
 ## Version
 
-- Latest: 1.7.4 (verified 2026-09-11)
+- Latest: `1.7.4` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/better-auth)
 - [Repository](https://github.com/better-auth/better-auth)
 

@@ -21,7 +21,10 @@ related:
 
 ใช้สำหรับสร้าง UI components ด้วย Zaidan registry บน SolidJS สำหรับ Vite, SolidStart, TanStack Start, Astro
 
-- Latest: `shadcn@4.21.0` / `@kobalte/core@0.13.14` / `corvu@0.7.2` / `solid-js@1.9.15` / `tailwindcss@4.3.3` (verified 2026-09-12)
+- ใช้เมื่อ project ต้องการ components จาก Zaidan registry (`@zaidan/*`) ผ่าน `shadcn` CLI + Tailwind CSS v4
+- ถ้า project ใช้ `shadcn-solid` CLI หรือต้องการ UnoCSS styling ให้ใช้ `/follow-lib-shadcn-solid` แทน
+
+- Latest: `shadcn@4.21.0` / `@kobalte/core@0.13.14` / `corvu@0.7.2` / `solid-js@1.9.15` / `tailwindcss@4.3.3` (verified 2026-09-13)
 
 ## Execute
 

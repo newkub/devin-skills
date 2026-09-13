@@ -8,7 +8,7 @@ bun add -D vite
 
 ## Version
 
-- Latest: 8.3.0 (verified 2026-09-12)
+- Latest: 8.3.0 (verified 2026-09-13)
 - Vite 8 uses Rolldown as the single bundler (esbuild + Rollup replaced); `esbuild`/`optimizeDeps.esbuildOptions` options are deprecated in favor of `oxc`/`optimizeDeps.rolldownOptions`
 - [Package Registry](https://www.npmjs.com/package/vite)
 - [Repository](https://github.com/vitejs/vite)

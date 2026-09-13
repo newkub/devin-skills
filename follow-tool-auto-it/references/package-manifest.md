@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `11.3.6` |
 | Release Date | `2025-11-14` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Intuit` |
 | License | `MIT` |
 | Repository | `https://github.com/intuit/auto` |

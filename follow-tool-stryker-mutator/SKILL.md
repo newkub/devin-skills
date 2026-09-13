@@ -19,7 +19,10 @@ related:
 
 ใช้สำหรับ JavaScript, TypeScript, React, Angular, Vue, Svelte และ Node.js projects ที่มี test runner รองรับ
 
-- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-12) — v10 requires Node.js 22+ (dropped Node 20)
+- Stryker วัดคุณภาพ tests ผ่าน mutants — ไม่ใช่ test runner หรือ coverage tool; รัน tests ผ่าน `/follow-test` และดู coverage ผ่าน `follow-coverage`
+- ใช้เมื่อ tests ผ่านและ stable แล้ว — ถ้า tests ยัง fail หรือ flaky ให้แก้ก่อนด้วย `/update-tests`
+
+- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-13) — v10 requires Node.js 22+ (dropped Node 20)
 
 ## Execute
 

@@ -9,6 +9,8 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+  - follow-tool-dprint
+  - follow-tool-eslint
   - run-lint
   - run-format
 ---
@@ -21,9 +23,11 @@ related:
 
 ใช้ `follow-tool-biome` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite) — สำหรับ Ultracite preset บน Biome ดู `references/ultracite.md`
+- Boundary: Biome รวม linter + formatter + assist สำหรับ JS/TS/JSON/CSS ใน tool เดียว — ใช้แทน ESLint+Prettier; ถ้า project ต้อง format หลายภาษา (markdown, toml, yaml, python, php) ให้ใช้ `/follow-tool-dprint` ร่วมหรือแทน; ถ้าต้องอยู่บน ESLint ดู `/follow-tool-eslint`; Ultracite preset บน Biome ดู `references/ultracite.md`
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite)
 
-- Latest: `@biomejs/biome@2.5.13` (verified 2026-09-12)
+- Latest: `@biomejs/biome@2.5.13` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [biome](references/biome.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [ultracite](references/ultracite.md) | [website](references/website.md)
 
 ## Execute
 
@@ -203,11 +207,8 @@ jobs:
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /follow-tool-dprint ถ้าจำเป็น
+- ใช้ /follow-tool-eslint ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-format ถ้าจำเป็น
 

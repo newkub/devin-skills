@@ -72,6 +72,7 @@ related:
 
 - ใช้ /follow-gitignore ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome

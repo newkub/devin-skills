@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `10.4.1` |
 | Release Date | `2025-07-27` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Kent C. Dodds (Testing Library)` |
 | License | `MIT` |
 | Repository | `<https://github.com/testing-library/dom-testing-library>` |

@@ -5,6 +5,9 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - follow-tool-release-it
+  - follow-tool-changelogen
+  - follow-tool-changesets
+  - follow-tool-semantic-release
   - follow-tool-github-actions
   - open-web-for-config-secret
 ---
@@ -17,7 +20,9 @@ related:
 
 ตั้งค่า Auto สำหรับ packages และ workspaces ที่ต้องการ automated releases
 
-- Latest: `auto@11.3.6` / `@auto-it/core@11.3.6` (verified 2026-09-12)
+- Boundary: Auto คำนวณ semver bump จาก PR labels (ไม่ใช่ commit messages โดยตรง) — ถ้าต้องการ changelog จาก conventional commits ให้ใช้ `/follow-tool-changelogen`, สำหรับ monorepo multi-package versioning ใช้ `/follow-tool-changesets`, สำหรับ alternatives ดู `/follow-tool-release-it` และ `/follow-tool-semantic-release`
+- Latest: `auto@11.3.6` / `@auto-it/core@11.3.6` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [auto-it](references/auto-it.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -177,11 +182,6 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool auto it)
-
-## References
-
-- [CLI reference](references/cli.md)
-
 
 ## Expected Outcome
 

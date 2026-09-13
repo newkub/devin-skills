@@ -1,6 +1,7 @@
 # Tool Validator Official Resources
 
-- [Website](https://github.com/validatorjs/validator.js)
-- [Repository](https://github.com/validatorjs/validator.js)
-- [Package Registry](https://www.npmjs.com/package/validator)
-- About: String validation. Contribute to validatorjs/validator.js development by creating an account on GitHub.
+- [Website](https://zod.dev)
+- [Documentation](https://zod.dev/basics)
+- [Repository](https://github.com/colinhacks/zod)
+- [Package Registry](https://www.npmjs.com/package/zod)
+- About: TypeScript-first schema validation with static type inference (zod is the recommended default for this skill — other ecosystems: validator/garde for Rust, pydantic for Python, go-playground/validator for Go)

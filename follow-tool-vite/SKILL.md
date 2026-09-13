@@ -22,6 +22,8 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-vite-plugin-compression) — สำหรับ gzip/brotli pre-compression ดู `references/plugin-compression.md`
 
+- Boundary: ใช้ Vite สำหรับ app dev server/build — library bundling ใช้ `/follow-tool-tsdown`; raw bundler internals ใช้ `/follow-tool-rolldown`; static docs site ใช้ `/follow-tool-vitepress`
+
 ## Execute
 
 ### 1. Installation
@@ -29,7 +31,7 @@ related:
 > Goal: ติดตั้ง Vite และ verify environment
 
 1. ตรวจสอบ Node.js version ไม่ต่ำกว่า 20.19 หรือ 22.12
-2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-12)
+2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-13)
 3. ตรวจสอบ version ด้วย `bunx vite --version`
 4. ดูรายละเอียดใน [references/vite.md](references/vite.md)
 

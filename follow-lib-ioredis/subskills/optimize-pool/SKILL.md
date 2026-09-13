@@ -73,6 +73,7 @@ related:
 - ห้าม share subscriber connection กับ command client
 - Preserve behavior — pipeline ต้องเช็ค per-command errors, multi ต้อง atomic จริง
 - ถ้า option ไม่แน่ใจ → ดู official docs
+- ใช้ `/follow-lib-ioredis` สำหรับ overview และ setup
 
 ## Expected Outcome
 

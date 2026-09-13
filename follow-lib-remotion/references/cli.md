@@ -1,4 +1,4 @@
-# CLI Reference
+# Lib Remotion CLI Reference
 
 ## Commands
 

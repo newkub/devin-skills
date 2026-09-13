@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `6.35.1` |
 | Release Date | `2026-09-09` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Lars Kappert (webpro)` |
 | License | `ISC` |
 | Repository | `https://github.com/webpro-nl/knip` |

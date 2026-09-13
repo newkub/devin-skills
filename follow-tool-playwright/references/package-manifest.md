@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.63.0` |
 | Release Date | `2026-09-04` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Microsoft Corporation` |
 | License | `Apache-2.0` |
 | Repository | `https://github.com/microsoft/playwright` |

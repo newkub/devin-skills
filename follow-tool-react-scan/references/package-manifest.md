@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.5.7` |
 | Release Date | `2026-05-27` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Aiden Bai` (Million) |
 | License | `MIT` |
 | Repository | `https://github.com/aidenybai/react-scan` |

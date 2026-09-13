@@ -4,6 +4,7 @@ description: ติดตั้ง Iconify — @iconify-json/* sets, framework c
 argument-hint: "[framework]"
 related:
   - follow-lib-iconify
+  - follow-lib-unocss
   - run-install
   - run-verify
   - run-test
@@ -60,6 +61,8 @@ related:
 - ตั้ง `size`/`color` ผ่าน props/class — ไม่ hardcode ใน SVG
 - ใช้ `@iconify-json/*` (offline data) เป็น default — ใช้ Iconify API runtime เฉพาะ dynamic icons
 - ใช้ `/follow-lib-iconify` สำหรับ overview และ best practices
+- ใช้ `/follow-lib-unocss` ถ้า integration ผ่าน UnoCSS `presetIcons`
+- ใช้ `/run-install` ถ้าต้องรัน install ผ่าน runner skill
 
 ## Expected Outcome
 

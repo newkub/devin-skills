@@ -17,9 +17,10 @@ related:
 
 - ใช้เมื่อ frontend หรือ Node app ต้องการ mock API responses ใน dev, unit tests หรือ integration tests
 - ครอบคลุม REST และ GraphQL handlers, `setupWorker` (browser) และ `setupServer` (Node/Vitest)
+- ไม่ใช้ skill นี้สำหรับ E2E test กับ real backend → ใช้ `/follow-tool-playwright` ต่อ API จริงแทน
 - ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
 
-- Latest: `msw@2.15.0` (verified 2026-09-12)
+- Latest: `msw@2.15.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.0.2` |
 | Release Date | `2026-09-04` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `changesets` |
 | License | `MIT` |
 | Repository | `https://github.com/changesets/changesets` |

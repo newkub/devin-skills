@@ -19,7 +19,9 @@ related:
 
 ใช้สำหรับการ `import` modules ผ่าน `HTTPS URL` พร้อม `tree-shaking`, `bundling`, `dependency rewriting` และ `import maps` อัตโนมัติ
 
+- ใช้ skill นี้เฉพาะเมื่อโหลด modules ผ่าน CDN URL โดยไม่มี bundler (browser, Deno, no-build setups) — ถ้า project มี `package.json` + bundler → install package ตามปกติแทน
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-js-delivr, follow-lib-jspm) — CDN อื่นดู `references/js-delivr.md` และ `references/jspm.md`
+- `esm.sh` มี CLI สำหรับจัดการ import maps ใน `index.html` — ดู `references/cli.md`
 
 ## Execute
 
@@ -52,6 +54,7 @@ related:
 1. สร้าง `<script type="importmap">` แล้ว map specifier ไปยัง `esm.sh` URL
 2. สำหรับ trailing slash ให้เปลี่ยน `?` เป็น `&` หลัง version เช่น `https://esm.sh/react-dom@19.3.0&dev/`
 3. ใช้ `?external` ร่วมกับ `import maps` เพื่อให้ `browser` resolve dependency เอง
+4. ใช้ `esm.sh` CLI (`npx esm.sh add <pkg>`, `npx esm.sh tidy`) เพื่อ add/clean imports ใน `<script type="importmap">` ของ `index.html` อัตโนมัติ — ดู `references/cli.md`
 
 ### 4. Use Advanced Features
 
@@ -71,7 +74,7 @@ related:
 2. ใช้ date (`yyyy-mm-dd`) versioning ได้ตั้งแต่ v137 เช่น `https://esm.sh/my-package@2026-01-02`
 3. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore; ตั้งแต่ v137_2 legacy build server ถูก shutdown — pinned URLs เก่า redirect ไป routes ใหม่
 4. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
-5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-12)
+5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-13)
 
 ## Rules
 

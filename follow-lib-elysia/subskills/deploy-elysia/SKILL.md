@@ -62,6 +62,7 @@ related:
 - ใช้ `process.env.PORT` — platforms กำหนด port เอง
 - ใช้ `--target bun` เมื่อ build — Elysia เป็น Bun-first framework
 - ทดสอบ build output locally ก่อน push deploy เสมอ
+- ใช้ `/use-bun-native-api` สำหรับ Bun runtime APIs (`Bun.serve`, `Bun.env`, flags)
 - ใช้ `/follow-lib-elysia` สำหรับ full reference
 
 ## Expected Outcome

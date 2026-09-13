@@ -3,12 +3,14 @@
 ## Install
 
 ```sh
-bun add -D stryker-cli
+bun add -D @stryker-mutator/core
 ```
+
+Note: `stryker-cli` บน npm ถูก deprecated — binary `stryker` ship มาพร้อม `@stryker-mutator/core`
 
 ## Version
 
-- Latest: see `stryker-cli` on npm
+- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-13)
 - Repository: https://github.com/stryker-mutator/stryker-js
 - Docs: https://stryker-mutator.io/docs/stryker-js/usage/
 
@@ -23,7 +25,7 @@ bun add -D stryker-cli
 ## Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `--configFile`, `-f` | Path to config file |
 | `--mutate`, `-m` | Files to mutate |
 | `--reporters`, `-r` | Reporters |

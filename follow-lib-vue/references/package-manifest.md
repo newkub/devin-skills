@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.5.42` |
 | Release Date | `2026-08-27` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Evan You (yyx990803)` |
 | License | `MIT` |
 | Repository | `<https://github.com/vuejs/core>` |

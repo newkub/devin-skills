@@ -4,6 +4,8 @@ description: ใช้ Remotion v4 สร้างวิดีโอแบบโ
 argument-hint: "[composition-or-task]"
 related:
   - edit-video-by-remotion
+  - follow-lib-react
+  - follow-lib-zod
 ---
 
 ## Goal
@@ -13,20 +15,20 @@ related:
 ## Scope
 
 ใช้สำหรับ:
-- สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React components
-- Video generation ด้วย `<Composition>` model
+- สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React components (`<Composition>` model)
 - Animations ด้วย `useCurrentFrame()` และ `interpolate()`
 - Type-safe props ด้วย Zod schema
-- Render วิดีโอ, GIF, image sequence ผ่าน CLI
-- Cloud rendering (Lambda, Cloud Run, Vercel)
+- Render วิดีโอ, GIF, image sequence ผ่าน CLI หรือ cloud (Lambda, Cloud Run, Vercel)
 
-- Latest: `remotion@4.0.524` (verified 2026-09-12)
+- Latest: `remotion@4.0.524` (verified 2026-09-13)
+- เป็น React-based — ใช้ `/follow-lib-react` สำหรับ component patterns และ `/follow-lib-zod` สำหรับ prop schemas
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [config](references/remotion-config.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
 ### 1. Create Project
 
-> Goal: Create Project
+> Goal: scaffold Remotion project ด้วย `create-video`
 
 ```bash
 bunx create-video@latest --yes --blank my-video
@@ -44,7 +46,7 @@ bun install
 
 ### 2. Start Studio
 
-> Goal: Start Studio
+> Goal: เปิด Remotion Studio สำหรับ preview
 
 ```bash
 bunx remotion studio --no-open
@@ -58,7 +60,7 @@ bun run dev
 
 ### 3. Build Composition
 
-> Goal: Build Composition
+> Goal: สร้าง Composition พร้อม frame-based animation
 
 ตัวอย่าง `src/Root.tsx`:
 
@@ -95,7 +97,7 @@ export const MyComp = ({ title }) => {
 
 ### 4. Type-safe Props With Zod
 
-> Goal: Type-safe Props With Zod
+> Goal: props แบบ type-safe ด้วย Zod schema
 
 ```bash
 bun add zod @remotion/zod-types
@@ -137,7 +139,7 @@ const MyComp: React.FC<MyProps> = ({ title, color }) => {
 
 ### 5. Use Assets And Media
 
-> Goal: Use Assets And Media
+> Goal: ใช้ static assets และ media ใน composition
 
 ```tsx
 import { staticFile, Img, OffthreadVideo } from 'remotion';
@@ -155,7 +157,7 @@ const video = staticFile('/video.mp4');
 
 ### 6. Render Video
 
-> Goal: Render Video
+> Goal: render วิดีโอ/GIF/image sequence ผ่าน CLI
 
 ```bash
 # เรนเดอร์ video ด้วย entry point default
@@ -182,7 +184,7 @@ bunx remotion render MyComp --sequence
 
 ### 7. Test, Debug, And Iterate
 
-> Goal: Test, Debug, And Iterate
+> Goal: ทดสอบใน Studio ก่อน render จริง
 
 - test ใน Remotion Studio ก่อน render
 - ใช้ `--props props.json` สำหรับ input props (บน Windows ใช้ไฟล์แทน inline JSON)
@@ -191,12 +193,9 @@ bunx remotion render MyComp --sequence
 
 ### 8. Cloud Rendering
 
-> Goal: Cloud Rendering
+> Goal: เลือก cloud rendering option ตาม scale
 
-- AWS Lambda: `@remotion/lambda`
-- Google Cloud Run: `@remotion/cloudrun`
-- Vercel: `@remotion/vercel`
-- ดูรายละเอียดที docs.remotion.dev
+- ใช้ `@remotion/lambda` (AWS), `@remotion/cloudrun` (GCP), หรือ `@remotion/vercel` ตาม platform — ดูรายละเอียดที่ docs.remotion.dev
 
 ### Subskills
 
@@ -238,6 +237,7 @@ bunx remotion render MyComp --sequence
 - ใช้ `--no-open` สำหรับ remote/CI
 - render ด้วย `--codec` ทีเหมาะสม (`h264`, `h265`, `vp9`, `gif`, `png`)
 - ใช้ `/edit-video-by-remotion` สำหรับตัดต่อวิดีโอจาก footage มีอยู่
+- ใช้ `/follow-lib-react` หรือ `/follow-lib-zod` ถ้าจำเป็น
 
 ## Expected Outcome
 

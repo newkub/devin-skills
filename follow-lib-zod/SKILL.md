@@ -19,6 +19,10 @@ related:
 
 ใช้กับ TypeScript projects ทุกประเภท รวมถึง frontend, backend, full-stack และ libraries ที่ต้องการ runtime validation พร้อม static type inference
 
+- ใช้ skill นี้สำหรับ Zod v4 API (`z.object`, `.safeParse`, `z.infer`, `zod/mini`, `zod/v4` subpaths)
+- Migrate v3 → v4 → subskill `subskills/migrate-zod-v4/SKILL.md`
+- ถ้า project ใช้ ArkType หรือต้องเปรียบเทียบ schema libraries → `/follow-lib-arktype`; Zod v4 รองรับ Standard Schema ใช้ร่วมกับ form/validation libs ได้
+
 ## Execute
 
 ### Subskills
@@ -32,7 +36,7 @@ related:
 > Goal: ติดตั้ง Zod เวอร์ชันล่าสุด
 
 1. รัน `bun add zod@latest` (หรือ `pnpm add zod@latest` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/zod` (ปัจจุบัน v4.6.2, verified 2026-09-12)
+2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/zod` (ปัจจุบัน v4.6.4, verified 2026-09-13)
 3. ยืนยันว่า `package.json` มี `zod` ใน `dependencies`
 4. ใช้ `import * as z from "zod"` สำหรับ classic API
 5. หากต้องการ bundle ที่เล็กลง ให้ใช้ `import * as z from "zod/mini"`

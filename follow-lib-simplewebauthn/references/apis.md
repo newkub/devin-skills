@@ -11,7 +11,7 @@ bun add @simplewebauthn/browser
 
 ## Version
 
-- `@simplewebauthn/server`: `14.0.1`, `@simplewebauthn/browser`: `14.0.1` (verified 2026-09-11) — v14 เป็น LTS line
+- `@simplewebauthn/server`: `14.0.1`, `@simplewebauthn/browser`: `14.0.0` (verified 2026-09-13) — v14 เป็น LTS line
 - [Package Registry](https://www.npmjs.com/package/@simplewebauthn/server)
 - [Repository](https://github.com/MasterKale/SimpleWebAuthn)
 

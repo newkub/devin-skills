@@ -76,6 +76,10 @@ related:
 - output formats/`.d.ts`/sourcemap ต้องเทียบเท่า tsup เดิม
 - esbuild plugins ไม่ทำงานบน tsdown โดยตรง — ต้อง map ไม่ใช่ copy
 
+- ใช้ /follow-tool-tsdown ถ้าจำเป็น
+- ใช้ /follow-tool-rolldown ถ้าจำเป็น
+- ใช้ /check-deprecated-apis ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `tsdown.config.ts` แทน tsup config, build ผ่าน output เทียบเท่า

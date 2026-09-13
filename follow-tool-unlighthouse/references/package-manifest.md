@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.18.0` |
 | Release Date | `2026-06-29` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Harlan Wilton (harlan-zw)` |
 | License | `MIT` |
 | Repository | `<https://github.com/harlan-zw/unlighthouse>` |

@@ -8,7 +8,7 @@ bun add -D tsdown
 
 ## Version
 
-- Latest: see `tsdown` on npm
+- Latest: `0.23.0` (verified 2026-09-13)
 - Repository: https://github.com/rolldown/tsdown
 - Docs: https://github.com/rolldown/tsdown
 

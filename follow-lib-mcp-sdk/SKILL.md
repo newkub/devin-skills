@@ -3,6 +3,9 @@ name: follow-lib-mcp-sdk
 description: ใช้ @modelcontextprotocol/sdk สร้าง MCP servers/clients — tools, resources, prompts
 argument-hint: "[target-or-scope]"
 related:
+  - follow-lib-zod
+  - follow-create-mcp
+  - use-mcp
   - run-verify
   - run-test
 ---
@@ -13,12 +16,23 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib mcp sdk)
+ใช้เมื่อ task เกี่ยวข้องกับ `@modelcontextprotocol/sdk` — สร้าง/แก้ MCP server หรือ client ด้วย TypeScript SDK (lib mcp sdk)
 
-- Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-12)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
+- Scaffold MCP project ใหม่จากศูนย์ → `/follow-create-mcp` ก่อน แล้วกลับมาที่ skill นี้สำหรับ SDK details
+- Consume/configure MCP servers ฝั่ง Devin (ไม่ได้เขียน server) → `/use-mcp`
+- Tool input schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
+
+- Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
+
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration |
+| Deploy | `subskills/deploy-mcp/SKILL.md` — transport options, remote hosting, client config |
 
 ### 1. Setup And Usage
 
@@ -38,17 +52,18 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib mcp sdk)
 
-### Subskills
-
-- Setup server — `McpServer`, tools/resources/prompts registration → `subskills/setup-server/SKILL.md`
-- Deploy — transport options, remote hosting, client config → `subskills/deploy-mcp/SKILL.md`
-
 ## Rules
 
 - ทุก tool ต้องมี description ชัดเจน — LLM ใช้เลือก tool
 - return `{content:[{type:text,text}]}` format เสมอ
 - handle errors เป็น `isError: true` response ไม่ throw
 - version server ให้ตรง spec
+
+- ใช้ `/follow-lib-zod` ถ้าต้องเขียน input schemas ซับซ้อน
+- ใช้ `/follow-create-mcp` ถ้าต้อง scaffold MCP project ใหม่
+- ใช้ `/use-mcp` ถ้าต้อง consume MCP servers ฝั่ง client
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
 
 ## Expected Outcome
 

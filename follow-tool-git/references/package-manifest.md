@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` (`git-for-windows/git`; upstream `git/git`) |
 | Latest Version | `2.55.0` (tag `v2.55.0.windows.5`) |
 | Release Date | `2026-08-20` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Git project / Software Freedom Conservancy` |
 | License | `GPL-2.0` |
 | Repository | `https://github.com/git/git` |

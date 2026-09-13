@@ -20,18 +20,22 @@ related:
 
 ตั้งค่า GitHub Actions สำหรับ projects และ repositories
 
-- Latest: `gh@2.100.0`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-12)
+- Boundary: GitHub Actions คือ hosted platform (ไม่ใช่ package ที่ install) — companion tools คือ `gh` CLI (`gh workflow`/`gh run`) และ `actionlint` สำหรับ local validation; secrets ใช้ `/follow-secret-manager`
+- Latest: `gh@2.100.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-13)
+- References: [cli](references/cli.md) | [github-cli-commands](references/github-cli-commands.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
-### Subskills
+### 1. Pick Subskill
+
+> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
 | Topic | Subskill |
 |-------|----------|
 | Workflow file structure, triggers, jobs, permissions | `subskills/setup-workflows/SKILL.md` |
 | Caching, matrix, concurrency groups, artifact reuse | `subskills/optimize-ci/SKILL.md` |
 
-### 1. เลือก Workflows ที่เหมาะสม
+### 2. Select Workflows
 
 > Goal: เลือก Workflows ที่เหมาะสม
 
@@ -47,16 +51,16 @@ related:
 - Documentation: `deploy-docs.yml`, `changelog.yml`, `docusaurus.yml` - Project ที่มี documentation
 - Git Ops: `commitlint.yml`, `dependency-review.yml`, `auto-merge.yml` - Team project ที่ต้องการ governance
 
-### 2. Setup พื้นฐาน
+### 3. Basic Setup
 
-> Goal: Setup พื้นฐาน
+> Goal: ตั้งค่า secrets, dependency updates และ base CI workflow
 
 1. ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets สำหรับ CI/CD ด้วย OIDC หรือ machine identity
 2. ทำ `/follow-tool-renovate` เพื่อตั้งค่า dependency updates
 3. ทำ `/follow-tool-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
 4. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
 
-### 3. เลือกเพิ่ม Workflows ตามความต้องการ
+### 4. Add Workflows As Needed
 
 > Goal: เลือกเพิ่ม Workflows ตามความต้องการ
 
@@ -67,7 +71,7 @@ related:
 - Monitoring: เพิ่ม `slack-notify.yml` สำหรับ team notifications
 - Git Ops: เพิ่ม `commitlint.yml`, `dependency-review.yml` สำหรับ team collaboration
 
-### 4. Write Workflows
+### 5. Write Workflows
 
 > Goal: เขียน workflow YAML ตาม best practices
 
@@ -85,15 +89,10 @@ related:
 - Follow the project conventions and global rules (tool github actions)
 - Use the allowed tools only when needed
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (tool github actions)
-- ใช้ /follow-dot-github ถ้าจำเป็น
-- ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /run-deploy ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ `/open-web-for-config-secret` เมื่อต้องตั้งค่า secrets ผ่าน web
+- ใช้ `/follow-dot-github` สำหรับ `.github/` repo config อื่นๆ
+- ใช้ `/follow-deploy` เมื่อต้องการ deployment guidance
+- ใช้ `/run-deploy` เพื่อ trigger deployment
 
 ## Expected Outcome
 

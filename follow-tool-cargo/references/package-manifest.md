@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` (`rust-lang/rust`) |
 | Latest Version | `1.98.1` |
 | Release Date | `2026-09-03` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Rust Project / rust-lang` |
 | License | `MIT OR Apache-2.0` |
 | Repository | `https://github.com/rust-lang/cargo` |

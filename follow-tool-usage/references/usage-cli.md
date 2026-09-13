@@ -22,7 +22,7 @@ Verify: `usage --version`
 
 ## Version Info
 
-- Latest stable: `6.8.0`
+- Latest stable: `6.9.0`
 - License: MIT
 - Source: https://github.com/jdx/usage
 

@@ -1,145 +1,224 @@
-# anime.js Advanced API Reference
+# anime.js v4 Advanced API Reference
 
-## Timeline API
+> Timeline, stagger, scope, draggable, scroll, SVG, text และ spring APIs ของ Anime.js v4 (`animejs@4.5.0`, verified 2026-09-13)
+> Docs: https://animejs.com/documentation
 
-### anime.timeline(params)
-
-Creates a timeline instance.
+## createTimeline(parameters)
 
 ```javascript
-const tl = anime.timeline({
-  easing: 'easeOutQuad',
-  duration: 1000
+import { createTimeline } from 'animejs';
+// หรือ 'animejs/timeline'
+
+const tl = createTimeline({
+  defaults: { duration: 800, ease: 'outQuad' }, // default tween params
+  loop: true,
+  autoplay: false,
 });
+
+tl.add('.a', { x: 100 })              // add animation
+  .add(createTimer({ duration: 200 })) // add timer
+  .set('.b', { opacity: 0 })          // set values ทันที
+  .call(() => console.log('mid'))     // call function ที่ตำแหน่ง
+  .label('checkpoint')                // ตั้ง label
+  .add('.c', { y: -50 }, '-=400')     // time position
+  .sync(otherAnimation, 'checkpoint') // sync WAAPI anim / timeline
+  .init();                            // บังคับ init (ถ้า autoplay: false)
 ```
 
-### Timeline Methods
-
-| Method | Parameters | Returns | Description |
-|--------|-----------|---------|-------------|
-| add(params, offset) | params, offset | Timeline | Add animation to timeline |
-| play() | - | Timeline | Play timeline |
-| pause() | - | Timeline | Pause timeline |
-| seek(time) | time: number | Timeline | Jump to specific time |
-
-### Timeline Offset Syntax
+### Time Position
 
 | Syntax | Description |
 |--------|-------------|
-| '-=500' | Start 500ms before previous animation ends |
-| '+=500' | Start 500ms after previous animation ends |
-| '500' | Start at 500ms |
+| `'-=500'` | เริ่มก่อน animation ก่อนหน้าจบ 500ms |
+| `'+=500'` | เริ่มหลัง animation ก่อนหน้าจบ 500ms |
+| `'500'` | เวลา absolute (ms) |
+| `'<'` | เริ่มพร้อม animation ก่อนหน้า |
+| `'label'` / `'label-=100'` | อ้าง label position |
+
+### Timeline Methods
+
+`add()`, `set()`, `sync()`, `label()`, `remove()`, `call()`, `init()` + timer methods ทั้งหมด (`play`, `pause`, `resume`, `reverse`, `alternate`, `restart`, `reset`, `complete`, `cancel`, `revert`, `seek`, `stretch`, `refresh`)
+
+## stagger(value, options)
 
 ```javascript
-tl.add({
-  targets: '.box',
-  translateX: 250
-}).add({
-  targets: '.circle',
-  translateY: 200
-}, '-=500'); // Start 500ms before previous ends
-```
+import { animate, stagger } from 'animejs';
 
-## Stagger API
-
-### anime.stagger(value, options)
-
-Creates stagger delays.
-
-```javascript
-anime({
-  targets: '.item',
-  translateX: 250,
-  delay: anime.stagger(100)
-});
-```
-
-### Stagger Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| grid | [number, number] | - | Grid dimensions |
-| from | string | 'first' | Start position ('first', 'last', 'center', index) |
-| direction | string | 'normal' | Direction ('normal', 'reverse') |
-| easing | string | - | Easing function |
-
-```javascript
-anime({
-  targets: '.grid-item',
-  translateX: 250,
-  delay: anime.stagger(100, {
+animate('.grid-item', {
+  x: 250,
+  delay: stagger(100, {
     grid: [4, 4],
     from: 'center',
-    direction: 'reverse'
-  })
+    axis: 'x',
+    ease: 'inOutQuad',
+    jitter: 20,   // random spread ต่อ target
+  }),
 });
 ```
 
-## Easing Functions
+| Parameter | Description |
+|-----------|-------------|
+| `start` | ค่าเริ่มต้นของ stagger |
+| `from` | `'first'` \| `'last'` \| `'center'` \| index \| element — จุดเริ่ม spread |
+| `reversed` | กลับลำดับ |
+| `ease` | easing กระจายค่า |
+| `grid` | `[rows, cols]` สำหรับ grid-based stagger |
+| `axis` | `'x'` \| `'y'` จำกัดทิศ spread บน grid |
+| `modifier` | function แปลงค่าสุดท้าย |
+| `use` | ใช้ easing/utility function เป็น stagger source |
+| `total` | จำกัดจำนวน targets ที่ stagger |
+| `jitter` | random offset ต่อ target |
 
-### Built-in Easings
+ใช้ได้ทั้งกับ `delay` (time staggering), property values (values staggering เช่น `x: stagger([0, 100])`), และ time position ใน timeline (timeline staggering)
 
-| Category | Functions |
-|----------|-----------|
-| Linear | linear |
-| Quad | easeInQuad, easeOutQuad, easeInOutQuad |
-| Cubic | easeInCubic, easeOutCubic, easeInOutCubic |
-| Quart | easeInQuart, easeOutQuart, easeInOutQuart |
-| Quint | easeInQuint, easeOutQuint, easeInOutQuint |
-| Sine | easeInSine, easeOutSine, easeInOutSine |
-| Expo | easeInExpo, easeOutExpo, easeInOutExpo |
-| Circ | easeInCirc, easeOutCirc, easeInOutCirc |
-| Back | easeInBack, easeOutBack, easeInOutBack |
-| Elastic | easeInElastic, easeOutElastic, easeInOutElastic |
-| Bounce | easeInBounce, easeOutBounce, easeInOutBounce |
+## createScope(parameters) — `animejs/scope`
 
-### Custom Easing
+จัดกลุ่ม animations ใต้ root element — official pattern สำหรับ framework integration
 
 ```javascript
-anime.easings['myEase'] = (t) => {
-  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-};
+import { createScope, animate } from 'animejs';
+
+const scope = createScope({
+  root: '.component',          // scope root
+  defaults: { ease: 'outQuad' },
+  mediaQueries: { isMobile: '(max-width: 768px)' }, // ใช้ใน scope function
+}).add((self) => {
+  // self.matches.isMobile — reactive
+  self.add('fadeIn', (el) => animate(el, { opacity: [0, 1] })); // register method
+  animate('.box', { x: 100 });
+});
+
+scope.methods.fadeIn('.other'); // เรียก registered method ภายนอก
+scope.revert();                 // cleanup ทั้งหมด
 ```
 
-## Utility Functions
+Methods: `add()`, `addOnce()`, `keepTime()`, `revert()`, `refresh()`
 
-### anime.setDashoffset
-
-Calculates SVG stroke dashoffset.
+## createDraggable(targets, parameters) — `animejs/draggable`
 
 ```javascript
-anime({
-  targets: 'path',
-  strokeDashoffset: [anime.setDashoffset, 0]
+import { createDraggable } from 'animejs';
+
+createDraggable('.handle', {
+  x: true, y: false,            // axes
+  snap: 20,
+  container: '.board',
+  containerPadding: 10,
+  containerFriction: 0.8,
+  releaseStiffness: 40,
+  releaseDamping: 6,
+  velocityMultiplier: 1,
+  minVelocity: 0.1,
+  dragSpeed: 1,
+  cursor: { onHover: 'grab', onGrab: 'grabbing' },
+  onGrab: (self) => {},
+  onDrag: (self) => {},
+  onRelease: (self) => {},
+  onSnap: (self) => {},
+  onSettle: (self) => {},
 });
 ```
 
-### anime.random
+Methods: `disable()`, `enable()`, `setX()`, `setY()`, `animateInView()`, `scrollInView()`, `stop()`, `reset()`, `revert()`, `refresh()`
 
-Returns random number between min and max.
-
-```javascript
-anime.random(0, 100); // Random number between 0 and 100
-```
-
-## Global Properties
-
-### anime.defaults
-
-Global default configuration.
+## onScroll — `animejs/events`
 
 ```javascript
-anime.defaults = {
-  duration: 800,
-  easing: 'easeOutQuad',
-  loop: false
-};
+import { animate, onScroll } from 'animejs';
+
+animate('.box', {
+  x: 200,
+  autoplay: onScroll({
+    container: '.scroll-area',
+    target: '.box',
+    axis: 'y',
+    repeat: true,
+    enter: 'bottom-=50 top',     // thresholds: ตัวเลข, position shorthands, relative
+    leave: 'top bottom',
+    sync: 'onUpdate',            // sync mode: method name, playback progress, smooth/eased
+    onEnter: (self) => {},
+    onEnterForward: (self) => {},
+    onLeave: (self) => {},
+    onUpdate: (self) => {},
+    debug: false,
+  }),
+});
 ```
 
-### anime.version
+Methods: `link()`, `refresh()`, `revert()`
 
-Current version string.
+## SVG — `animejs/svg`
 
 ```javascript
-console.log(anime.version);
+import { animate, svg } from 'animejs';
+
+animate(svg.createDrawable('.path'), { draw: '0 1' });   // stroke draw animation
+
+// createMotionPath(path, offset?) คืน { translateX, translateY, rotate } tween parameters
+animate('.car', {
+  ease: 'linear',
+  ...svg.createMotionPath('path'),
+});
+
+// morphTo คืนค่าสำหรับ animate `d` attribute (morph ไป shape อื่น)
+animate('.shape-1', { d: svg.morphTo('.shape-2') });
 ```
+
+## Text — `animejs/text`
+
+```javascript
+import { splitText, scrambleText } from 'animejs';
+// หรือ 'animejs/text'
+
+const { chars, words, lines } = splitText('p', {
+  chars: true, words: true, lines: true,
+  includeSpaces: false,
+  accessible: true,   // aria attributes
+  // split parameters: class, wrap, clone
+});
+
+scrambleText('.title', {
+  text: 'New title',
+  chars: 'upperAndLowerCase',
+  revealRate: 0.5,
+  settleDuration: 400,
+});
+```
+
+splitText methods: `addEffect()`, `revert()`, `refresh()`; scrambleText callback: `onChange`
+
+## spring — `animejs/spring`
+
+```javascript
+import { animate, spring } from 'animejs';
+
+animate('.box', { x: 100, ease: spring({ mass: 1, stiffness: 80, damping: 10, velocity: 0 }) });
+```
+
+> v4.2+: ใช้ `spring()` แทน `createSpring()` (deprecated)
+
+## Animatable — `animejs/animatable`
+
+Object ที่ re-usable สำหรับ get/set ค่า animatable บนหลาย targets
+
+```javascript
+import { createAnimatable } from 'animejs';
+
+const animatable = createAnimatable('.box', { x: 500, y: 500, ease: 'outQuad' });
+animatable.x(100);       // setter — animate ไป 100
+animatable.x();          // getter
+animatable.revert();
+```
+
+Settings: `unit`, `duration`, `ease`, `modifier`
+
+## WAAPI — `animejs/waapi`
+
+```javascript
+import { waapi } from 'animejs';
+
+waapi.animate('.box', { x: 100 });          // native Web Animations API path
+waapi.convertEase('outQuad');               // แปลง anime ease → WAAPI easing
+```
+
+ใช้เมื่อต้องการ hardware-accelerated animations ที่รันบน compositor — รองรับ transform/opacity เท่านั้น, parameter `persist` เก็บค่าสุดท้าย

@@ -3,6 +3,7 @@ name: follow-lib-iconify
 description: ใช้ @iconify-json/* icon sets — Iconify API, offline bundles, on-demand loading
 argument-hint: "[target-or-scope]"
 related:
+  - follow-lib-unocss
   - run-verify
   - run-test
 ---
@@ -13,12 +14,24 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib iconify)
+ใช้เมื่อ task เกี่ยวข้องกับ Iconify — icon components, `@iconify-json/*` offline data, on-demand loading (lib iconify)
 
-- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` / `iconify-icon@3.0.2` (web component) / `@iconify/tailwind@1.2.0` (verified 2026-09-12)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
+- ใช้ skill นี้สำหรับเลือก/ติดตั้ง icon components และ icon data — integration เชิงลึกกับ UnoCSS `presetIcons` ให้ทำ `/follow-lib-unocss` แทน
+- Tailwind v3 ใช้ `@iconify/tailwind`; Tailwind v4 ใช้ `@iconify/tailwind4`
+- Optimize bundle (offline bundles, subsetting, lazy loading) → `subskills/optimize-icons/SKILL.md`
+- ถ้า project ใช้ icons น้อยมากและไม่ต้องการ dependency → พิจารณา inline SVG แทน
+
+- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` / `iconify-icon@3.0.2` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
+
+### Subskills
+
+| Topic | Subskill |
+|-------|----------|
+| Setup | `subskills/setup-iconify/SKILL.md` — install + usage patterns ตาม framework |
+| Optimize | `subskills/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting |
 
 ### 1. Setup And Usage
 
@@ -38,16 +51,15 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib iconify)
 
-### Subskills
-
-- Install + usage patterns ตาม framework → `subskills/setup-iconify/SKILL.md`
-- Offline bundles, on-demand loading, subsetting → `subskills/optimize-icons/SKILL.md`
-
 ## Rules
 
 - อย่า import ทั้ง icon set — ใช้ per-icon เสมอ
 - ตั้ง `size`/`color` ผ่าน props/class ไม่ hardcode ใน SVG
 - ใช้ iconify API runtime เฉพาะ dynamic icons — static icons bundle ไว้เลย
+
+- ใช้ `/follow-lib-unocss` ถ้าต้อง config UnoCSS `presetIcons` เชิงลึก
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
 
 ## Expected Outcome
 

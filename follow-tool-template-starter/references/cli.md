@@ -8,7 +8,7 @@ bun add -D degit
 
 ## Version
 
-- Latest on npm
+- Latest: `3.10.0` (verified 2026-09-13) — requires Node.js >= 20
 - Repository: https://github.com/Rich-Harris/degit
 - Docs: https://github.com/Rich-Harris/degit
 

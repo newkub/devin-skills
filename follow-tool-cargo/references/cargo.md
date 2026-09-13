@@ -17,7 +17,7 @@ cargo --version
 ## Version Info
 
 - Cargo ships with every Rust release (6-week cycle)
-- Latest stable Rust: `1.98.1` (verified 2026-09-12)
+- Latest stable Rust: `1.98.1` (verified 2026-09-13)
 - Workspace lint inheritance requires MSRV `1.74+`
 - Workspace package/dependency inheritance requires MSRV `1.64+`
 

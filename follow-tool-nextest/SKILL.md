@@ -19,7 +19,10 @@ related:
 
 ใช้สำหรับ Rust projects ที่ใช้ Cargo build system
 
-- Latest: `cargo-nextest@0.9.144` (crates.io) (verified 2026-09-12)
+- ใช้ skill นี้แทน `cargo test` สำหรับ unit/integration tests — doctests ยังต้องรันด้วย `cargo test --doc`
+- ถ้าเป้าหมายคือ mutation testing (คุณภาพของ tests) ไม่ใช่ test runner → ใช้ `/follow-tool-mutants-rs`
+
+- Latest: `cargo-nextest@0.9.144` (crates.io) (verified 2026-09-13)
 
 ## Execute
 

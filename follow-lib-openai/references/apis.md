@@ -9,7 +9,7 @@ bun add zod          # สำหรับ structured outputs + zodResponseFormat
 
 ## Version
 
-- Latest: `7.15.0` (verified 2026-09-12) — v7 requires Node.js 22+
+- Latest: `7.15.0` (verified 2026-09-13) — v7 requires Node.js 22+
 - [Package Registry](https://www.npmjs.com/package/openai)
 - [Repository](https://github.com/openai/openai-node)
 

@@ -33,7 +33,7 @@ related:
 
 1. รัน `bunx drizzle-kit generate` — เพิ่ม `--name <name>` ให้ชื่อสื่อความหมาย
 2. `--custom` สำหรับ empty migration ที่เขียน SQL เอง; `--breakpoints` ถ้าต้องการ statement splitting control
-3. **review generated SQL เสมอ** — rename detection ไม่สมบูรณ์: drizzle-kit อาจเห็น rename เป็น drop+create = data loss
+3. review generated SQL เสมอ — rename detection ไม่สมบูรณ์: drizzle-kit อาจเห็น rename เป็น drop+create = data loss
 4. แก้ SQL ในไฟล์ที่ generate ถ้า rename/edge case ผิด — แก้ก่อน commit/apply
 
 ### 3. Apply

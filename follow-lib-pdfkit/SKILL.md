@@ -15,7 +15,10 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib pdfkit)
 
-- Latest: `pdfkit@0.20.2` (verified 2026-09-12)
+- ครอบคลุม: programmatic PDF generation ฝั่ง server — streaming output, text/vector/image layout, custom fonts, multi-page
+- ไม่ครอบคลุม: HTML→PDF — ใช้ Playwright `page.pdf()` หรือ print pipeline แทน; edge/workerd runtime — pdfkit ต้อง Node
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- Latest: `pdfkit@0.20.2` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -24,6 +27,7 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
+1. ติดตั้ง `bun add pdfkit` และ `bun add -D @types/pdfkit` สำหรับ TypeScript
 1. สร้าง `new PDFDocument()` แล้ว pipe เข้า stream/response
 1. ใช้ `doc.text()`, `doc.moveTo()`, `doc.rect()` สำหรับ layout — manual positioning
 1. register fonts ด้วย `doc.registerFont()` — ระวัง font licensing
@@ -42,6 +46,9 @@ related:
 - pdfkit ต้อง Node runtime — ไม่รันบน edge/workerd (ใช้ service แยกหรือ pre-render)
 - ใช้ `doc.bufferedPageRange()` สำหรับ multi-page headers/footers
 - embed images ด้วย buffer/path — compress ก่อนส่ง
+
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
 
 ## Expected Outcome
 

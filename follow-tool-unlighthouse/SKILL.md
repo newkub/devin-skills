@@ -18,7 +18,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ monitor ทุกหน้าเว็บด้วย Lighthouse ทั้ง development mode และ CI/CD
 
-- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-12)
+- Boundary: ใช้ Unlighthouse สำหรับ site-wide audit (crawl ทุก route); สำหรับ audit หน้าเดียวใช้ `lighthouse` CLI ตรงๆ; สำหรับ E2E user-flow assertions ใช้ `/follow-tool-playwright`
+- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-13)
 - v0.18.0 breaking change: ต้องการ Node.js >= 22.18.0 (engines)
 
 ## Execute
@@ -106,12 +107,11 @@ related:
 - ใช้ /follow-tool-playwright ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
+- ใช้ /run-profiler ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-profiler ถ้าจำเป็น
 
 ## Expected Outcome
 

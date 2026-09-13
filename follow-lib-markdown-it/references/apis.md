@@ -4,12 +4,12 @@
 
 ```sh
 bun add markdown-it
-bun add -D @types/markdown-it   # TypeScript
+# v15 bundle types ในตัว — @types/markdown-it เฉพาะ ≤v14
 ```
 
 ## Version
 
-- Latest: `15.0.2` (verified 2026-09-12)
+- Latest: `15.0.2` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/markdown-it)
 - [Repository](https://github.com/markdown-it/markdown-it)
 

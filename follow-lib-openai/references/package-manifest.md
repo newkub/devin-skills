@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `7.15.0` |
 | Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `OpenAI` |
 | License | `Apache-2.0` |
 | Repository | `https://github.com/openai/openai-node` |
@@ -28,7 +28,7 @@ bun add openai zod
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `zod` | `npm` | `4.6.2` | Used with `zodResponseFormat` for structured output |
+| `zod` | `npm` | `4.6.4` | Used with `zodResponseFormat` for structured output |
 
 ## Notes
 

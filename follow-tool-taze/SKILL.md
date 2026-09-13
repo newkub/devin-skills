@@ -7,6 +7,7 @@ related:
   - follow-monorepo
   - follow-tasks
   - follow-tool-semantic-release
+  - follow-tool-renovate
   - run-install
 ---
 
@@ -18,7 +19,8 @@ related:
 
 ใช้สำหรับ projects หรือ workspaces ที่ต้องการ keep dependencies up-to-date โดยใช้ Taze CLI
 
-- Latest: `taze@21.1.0` (verified 2026-09-12)
+- Boundary: ใช้ Taze สำหรับ interactive/manual dependency bump ใน repo; ถ้าต้องการ automated PR-based update ให้ใช้ `/follow-tool-renovate` แทน
+- Latest: `taze@21.1.0` (verified 2026-09-13)
 
 ## Execute
 
@@ -104,12 +106,12 @@ related:
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool taze)
+- ใช้ /follow-tool-renovate ถ้าจำเป็น
+- ใช้ /run-install ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-install ถ้าจำเป็น
 
 ## Expected Outcome
 

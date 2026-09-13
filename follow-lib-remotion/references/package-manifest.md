@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `4.0.524` |
 | Release Date | `2026-09-12` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Jonny Burger <jonny@remotion.dev>` |
 | License | `SEE LICENSE IN LICENSE.md` |
 | Repository | `https://github.com/remotion-dev/remotion` |
@@ -32,7 +32,7 @@ bunx create-video@latest --yes --blank my-video
 | `create-video` | `npm` | `4.0.524` | Project scaffolder (`bunx create-video`) |
 | `@remotion/zod-types` | `npm` | `4.0.524` | Zod-powered prop schemas (`zColor`, etc.) |
 | `@remotion/media` | `npm` | `4.0.524` | `<Video>` component for large media |
-| `zod` | `npm` | `4.6.2` | Prop schema validation |
+| `zod` | `npm` | `4.6.4` | Prop schema validation |
 
 ## Notes
 

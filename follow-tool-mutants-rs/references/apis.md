@@ -8,7 +8,7 @@ cargo install --locked cargo-mutants   # or: cargo binstall cargo-mutants
 
 ## Version
 
-- Latest: `cargo-mutants` 27.1.0 / `mutants` (attribute crate) 0.0.4 (verified 2026-09-12)
+- Latest: `cargo-mutants` 27.1.0 / `mutants` (attribute crate) 0.0.4 (verified 2026-09-13)
 - [Package Registry](https://crates.io/crates/cargo-mutants)
 - [Repository](https://github.com/sourcefrog/cargo-mutants)
 

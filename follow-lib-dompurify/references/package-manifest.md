@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.4.15` |
 | Release Date | `2026-09-06` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Dr.-Ing. Mario Heiderich, Cure53` |
 | License | `(MPL-2.0 OR Apache-2.0)` |
 | Repository | `https://github.com/cure53/DOMPurify` |

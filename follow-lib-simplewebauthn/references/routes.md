@@ -13,5 +13,5 @@
 
 - Flow: server generate options → browser `startRegistration`/`startAuthentication` → POST response → server verify
 - ต้องเก็บ per-user: `credentialID`, `publicKey`, `counter`, `transports`
-- Passkey autofill: `startAuthentication({...}, true)` + `<input autocomplete="username webauthn">`
+- Passkey autofill: `startAuthentication({ optionsJSON, useBrowserAutofill: true })` + `<input autocomplete="username webauthn">` (v11+ single object)
 - `expectedOrigin` ต้องตรง origin จริง (`https://app.com`) — dev ใช้ `http://localhost`

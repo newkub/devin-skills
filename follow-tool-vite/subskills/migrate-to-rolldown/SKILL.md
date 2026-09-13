@@ -78,6 +78,11 @@ related:
 - plugin ที่ไม่รองรับ Rolldown ต้องแก้ก่อนสลับ — ห้าม ignore warnings ที่เกี่ยวกับ bundler
 - เก็บ config แบบ conditional ไว้ถ้าต้องรันทั้งสอง bundler ระหว่าง transition
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-rolldown ถ้าจำเป็น
+- ใช้ /deep-impact ถ้าจำเป็น
+- ใช้ /report-before-after ถ้าจำเป็น
+
 ## Expected Outcome
 
 - project รันบน `rolldown-vite` — dev/build/tests ผ่านเหมือนเดิม

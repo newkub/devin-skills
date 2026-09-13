@@ -19,8 +19,11 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ license file ที่ root directory และ declaration ใน package manifest (`package.json`, `pyproject.toml`, `Cargo.toml` ฯลฯ)
 
-- Latest: version-agnostic (license/linting guide; Python build backends pinned ใน skill) (verified 2026-09-12)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
+- ใช้ skill นี้สำหรับเลือก license, สร้าง `LICENSE` file และ sync SPDX declaration — ไม่ใช่สำหรับ audit license ของ dependencies (ใช้ tools เช่น `license-md` หรือ `license-checker` แยก)
+- Package `license-md` เป็น badge generator เก่า (unmaintained) — งานหลักใช้ `gh api licenses/{key}` + manifest fields โดยตรง ไม่บังคับติดตั้ง
+
+- Latest: version-agnostic (license/linting guide; Python build backends pinned ใน skill) (verified 2026-09-13)
+- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 

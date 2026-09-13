@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `21.0.2` |
 | Release Date | `2026-08-09` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Lars Kappert` (webpro) |
 | License | `MIT` |
 | Repository | `https://github.com/release-it/release-it` |

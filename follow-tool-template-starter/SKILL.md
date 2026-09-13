@@ -17,7 +17,8 @@ related:
 
 ใช้สำหรับ clone templates จาก `https://github.com/newkub/template-starter/tree/main/templates` มายัง project ปัจจุบัน
 
-- Latest: `degit@3.10.0` (verified 2026-09-12) — requires Node.js >= 20
+- Boundary: ใช้ skill นี้เฉพาะ clone template จาก `newkub/template-starter`; สำหรับ scaffold project ใหม่จาก zero ใช้ `/follow-create-web` หรือ `/follow-create-cli` ตาม project type; ถ้าต้องการ git history เต็มใช้ `git clone` แทน `degit`
+- Latest: `degit@3.10.0` (verified 2026-09-13) — requires Node.js >= 20
 
 ## Execute
 

@@ -15,5 +15,5 @@
 
 - `lazyConnect: true` — defer connect จน command แรก
 - `retryStrategy` / `reconnectOnError` — custom reconnect logic
-- v6: ESM+CJS dual, Node 18+, improved types — อ่าน migration notes ใน releases
+- v6: ESM+CJS dual, Node ≥20, RESP3 default — อ่าน migration notes ใน releases
 - Pub/Sub connection แยกจาก command connection

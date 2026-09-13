@@ -80,6 +80,8 @@ const app = new Elysia()
 - ใช้ `Elysia.t` เป็น default validator — Standard Schema เฉพาะเมื่อ project ใช้อยู่แล้ว
 - ลำดับ route: static path ก่อน dynamic path
 - ใช้ `/follow-lib-elysia` สำหรับ full reference, lifecycle hooks และ version notes
+- ใช้ `/run-install` เมื่อต้องติดตั้ง dependencies อื่นร่วมด้วย
+- ใช้ `/run-dev` เมื่อต้องรัน dev server ของ project ที่มี scripts พร้อมอยู่แล้ว
 
 ## Expected Outcome
 

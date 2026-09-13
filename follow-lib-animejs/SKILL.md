@@ -21,14 +21,19 @@ related:
 - scroll (`onScroll`), drag (`createDraggable`), scope (`createScope`), SVG, text, WAAPI integrations
 - ใช้ร่วมกับ React, Vue, Svelte, และ plain JS
 
-- Latest: `animejs@4.5.0` (verified 2026-09-12)
+ขอบเขต:
+- ใช้ skill นี้เมื่อต้องการ JS-driven animation (timelines, staggers, scroll/drag triggers, SVG morph)
+- ถ้าเป็น CSS transitions/animations ธรรมดาหรือ styling → ใช้ `/follow-lib-css` แทน
+
+- Latest: `animejs@4.5.0` (verified 2026-09-13)
 - v5 beta: `animejs@beta` (`5.0.0-beta.2`) มี breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), function-based value callback arg ที่ 3 เปลี่ยนจาก `total` (Number) เป็น `targets` (Array), stagger `use` signature เปลี่ยนตาม, `matrix`/`matrix3d` animate ตรงไม่ได้
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [core api](references/animejs-core-api.md) | [advanced api](references/animejs-advanced-api.md) | [configuration](references/animejs-configuration.md)
 
 ## Execute
 
 ### 1. Install And Setup
 
-> Goal: Install And Setup
+> Goal: ติดตั้ง `animejs` และเลือก import style ที่เหมาะกับ bundle
 
 1. `bun add animejs` (runtime dependency)
 2. import สำหรับ v4:
@@ -49,7 +54,7 @@ import { createSpring } from 'animejs/spring';
 
 ### 2. Learn Core API
 
-> Goal: Learn Core API
+> Goal: เข้าใจ `animate()`, `createTimeline()` และ `utils` พื้นฐาน
 
 ```javascript
 // สร้าง animation
@@ -75,7 +80,7 @@ utils.set('.box', { opacity: 0.5 });
 
 ### 3. Key Concepts
 
-> Goal: Key Concepts
+> Goal: รู้จัก targets, tween parameters, callbacks และ stagger options
 
 - `targets`: CSS selector, DOM elements, JS objects, array
 - Animatable properties: CSS, transforms, CSS variables, SVG attributes, HTML attributes, JS object properties
@@ -88,7 +93,7 @@ utils.set('.box', { opacity: 0.5 });
 
 ### 4. Apply Patterns And Best Practices
 
-> Goal: Apply Patterns And Best Practices
+> Goal: เขียน animation ที่ performant, accessible และ cleanup ถูกต้อง
 
 - ใช้ `transform` (translate/scale/rotate) และ `opacity` เป็นหลัก
 - หลีกเลี่ยง animate properties ที่ trigger layout (width, height, top, left)
@@ -102,7 +107,7 @@ utils.set('.box', { opacity: 0.5 });
 
 ### 5. Integrate With Frameworks
 
-> Goal: Integrate With Frameworks
+> Goal: ใช้ `createScope()` จัดการ lifecycle/cleanup ใน React, Vue, Svelte
 
 React: ใช้ `createScope()` (official pattern) — scope จัดการ cleanup ทุก animation ภายใน
 
@@ -126,7 +131,7 @@ Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน life
 
 ### 6. Reference And Troubleshoot
 
-> Goal: Reference And Troubleshoot
+> Goal: ใช้ official docs, changelog และ migration guide เมื่อติดปัญหา
 
 - official docs: https://animejs.com/documentation
 - releases/changelog: https://github.com/juliangarnier/anime/releases
@@ -145,8 +150,8 @@ Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน life
 - รองรับ `prefers-reduced-motion`
 - cleanup animation ด้วย `revert()` หรือ `cancel()`
 - ใช้ animations เพื่อเสริม UX ไม่ใช่ distraction
-- ใช้ `follow-lib-css` ถ้าจำเป็น
-- ใช้ `follow-lib-react` ถ้า integrate กับ React
+- ใช้ /follow-lib-css ถ้าจำเป็น
+- ใช้ /follow-lib-react ถ้า integrate กับ React
 
 ## Expected Outcome
 

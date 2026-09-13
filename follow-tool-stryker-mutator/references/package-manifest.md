@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `10.0.0` |
 | Release Date | `2026-08-14` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Stryker Mutator` |
 | License | `Apache-2.0` |
 | Repository | `<https://github.com/stryker-mutator/stryker-js>` |

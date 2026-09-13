@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `8.51.15` |
 | Release Date | `2026-08-28` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Capgo (Cap-go)` |
 | License | `MPL-2.0` |
 | Repository | `https://github.com/Cap-go/capacitor-updater` |
@@ -28,8 +28,8 @@ bun add @capgo/capacitor-updater
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@capgo/cli` | `npm` | `8.51.0` (2026-09-12) | Capgo CLI for OTA bundle upload/manage |
-| `@capgo/capacitor-native-biometric` | `npm` | `8.6.8` (2026-09-12) | Biometric auth plugin (Keychain/Keystore) |
+| `@capgo/cli` | `npm` | `8.51.0` (2026-09-13) | Capgo CLI for OTA bundle upload/manage |
+| `@capgo/capacitor-native-biometric` | `npm` | `8.6.8` (2026-09-13) | Biometric auth plugin (Keychain/Keystore) |
 | `@capacitor/core` | `npm` | — | Peer dependency: `^8.0.0` required by updater v8 |
 
 ## Notes

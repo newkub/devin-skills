@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.7.7` |
 | Release Date | `2025-03-26` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `hngngn (community port)` |
 | License | `MIT` |
 | Repository | `https://github.com/hngngn/shadcn-solid` |

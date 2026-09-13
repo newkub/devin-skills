@@ -72,7 +72,9 @@ related:
 - Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น ห้าม reinstall/overwrite config เดิม
 - `effect` เป็น runtime dep; import namespace: `import { Effect, Layer, Context } from "effect"`
 - Run (`Effect.run*`) เฉพาะ application boundary — ห้ามใน service/library code
-- ตรวจ version ใน `package.json` ก่อนเลือก API (v3 vs v4 RC ต่างกัน) — ถ้าไม่แน่ใจ → ดู official docs
+- ตรวจ version ใน `package.json` ก่อนเลือก API (v3 vs v4 RC ต่างกัน) — ถ้าไม่แน่ใจ → ทำ `/learn` จาก official docs (effect.website)
+
+- ใช้ `/follow-lib-effect-ts` สำหรับ full reference, patterns และ version notes
 
 ## Expected Outcome
 

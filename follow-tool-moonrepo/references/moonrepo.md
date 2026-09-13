@@ -38,7 +38,7 @@ proto install moon
 
 ## Version
 
-- Latest: moon `2.5.4` (verified 2026-09-12)
+- Latest: moon `2.5.4` (verified 2026-09-13)
 - License: MIT
 - npm package: `@moonrepo/cli`
 - Single binary, no external dependencies required
@@ -118,7 +118,7 @@ Tasks are commands run in the context of a project. Configured per-project via `
 
 - Build — generates artifacts (derived from `outputs` setting)
 - Run — long-running or one-off process (derived from `options.persistent`)
-- Test** — asserts code correctness (default type)
+- Test — asserts code correctness (default type)
 
 ### Task Configuration in `moon.yml`
 

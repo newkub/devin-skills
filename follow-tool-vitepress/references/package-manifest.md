@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.6.4` |
 | Release Date | `2025-08-05` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Vue.js team (vuejs)` |
 | License | `MIT` |
 | Repository | `<https://github.com/vuejs/vitepress>` |

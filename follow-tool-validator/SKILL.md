@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ projects ที่ต้อง validate input ทั้งภายนอก (API, forms, CLI args) และภายใน (function arguments, config) รองรับ TypeScript, Rust, Python, Go
 
+- Boundary: skill นี้ครอบคลุม runtime/schema validation เท่านั้น — code style/syntax ใช้ `/follow-tool-linter`; zod deep-dive ใช้ `/follow-lib-zod`
+
 ## Execute
 
 ### 1. Select Validator
@@ -25,7 +27,7 @@ related:
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก validator ตามความเหมาะสม:
-   - TypeScript/JavaScript: zod (`^4.x` — latest `4.6.2`, verified 2026-09-12), valibot, arktype, yup, joi, class-validator
+   - TypeScript/JavaScript: zod (`^4.x` — latest `4.6.4`, verified 2026-09-13), valibot, arktype, yup, joi, class-validator
    - Rust: validator crate, garde, serde_json schema
    - Python: pydantic, marshmallow, cerberus
    - Go: go-playground/validator, govalidator
@@ -98,6 +100,8 @@ related:
 
 - ใช้ /follow-tool-linter ถ้าจำเป็น
 - ใช้ /follow-lib-zod ถ้าจำเป็น
+- ใช้ /update-tests ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 
 ## References
 

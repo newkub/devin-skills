@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `2.31.0` |
 | Release Date | `2026-08-31` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `LY Corporation (LINE)` |
 | License | `Proprietary (SEE LICENSE IN README.md)` |
 | Repository | `unknown` (no public repo declared in npm metadata) |

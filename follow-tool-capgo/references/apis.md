@@ -9,7 +9,7 @@ bun add -D @capgo/cli
 
 ## Version
 
-- `@capgo/cli`: `8.50.3` (verified 2026-09-12)
+- `@capgo/cli`: `8.51.0` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/@capgo/cli)
 - [Repository](https://github.com/Cap-go/capgo)
 

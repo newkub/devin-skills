@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `19.3.0` |
 | Release Date | `2026-09-09` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Meta (React team)` |
 | License | `MIT` |
 | Repository | `https://github.com/facebook/react` |

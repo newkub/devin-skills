@@ -68,6 +68,7 @@ related:
 - subset ต้อง cover ทุก icon ที่ใช้จริง — scan usage ก่อน generate
 - preserve behavior — optimize ต้องไม่ทำให้ icon หายหรือกะพริบ
 - ใช้ `/follow-lib-iconify` สำหรับ overview
+- ใช้ `/run-bench` ถ้าต้องวัด load/render impact เชิงตัวเลข
 
 ## Expected Outcome
 

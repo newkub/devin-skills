@@ -1,6 +1,8 @@
 # Follow Tool Devin Route Map
 
-- Website: <https://github.com/devjmetivier/devin#readme>
+- Website: <https://devin.ai>
+- Docs: <https://docs.devin.ai>
+- หมายเหตุ: routes ด้านล่างสแกนมาจาก `github.com/devjmetivier/devin` ซึ่งเป็น npm package ที่ไม่เกี่ยวข้องกับ Cognition Devin — เก็บไว้เพื่อเตือนว่าอย่าสับสน
 - Routes discovered (homepage): 30
 
 ## Routes

@@ -8,7 +8,7 @@ bun add -D vitepress
 
 ## Version
 
-- Latest: 1.6.4 (verified 2026-09-12); `@next` channel: 2.0.0-alpha.19
+- Latest: 1.6.4 (verified 2026-09-13); `@next` channel: 2.0.0-alpha.20
 - Peer: `vue` ^3.5+
 - [Package Registry](https://www.npmjs.com/package/vitepress)
 - [Repository](https://github.com/vuejs/vitepress)

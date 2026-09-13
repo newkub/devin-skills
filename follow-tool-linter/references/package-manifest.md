@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.82.0` |
 | Release Date | `2026-09-07` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `oxc-project` |
 | License | `MIT` |
 | Repository | `https://github.com/oxc-project/oxc` |
@@ -28,7 +28,7 @@ bun add -D oxlint   # add oxlint-tsgolint for type-aware rules
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `oxlint-tsgolint` | `npm` | `—` | Optional type-aware rules for oxlint |
+| `oxlint-tsgolint` | `npm` | `7.0.2001` | Optional type-aware rules for oxlint |
 | `@biomejs/biome` | `npm` | `2.5.13` (2026-09-10) | TS/JS linter + formatter — see `/follow-tool-biome` |
 | `eslint` | `npm` | `10.10.0` (2026-09-04) | TS/JS linter — see `/follow-tool-eslint` |
 | `ruff` | `PyPI` | `0.16.7` (2026-09-10) | Python linter (`pipx install ruff`) |

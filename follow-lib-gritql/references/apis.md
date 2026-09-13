@@ -14,7 +14,7 @@ bun add -D gritql
 
 ## Version
 
-- `@biomejs/biome`: `2.5.13` — มี GritQL engine built-in (verified 2026-09-12)
+- `@biomejs/biome`: `2.5.13` — มี GritQL engine built-in (verified 2026-09-13)
 - `gritql` npm: `3.0.0-beta.31` (beta — ระวัง API เปลี่ยน)
 - [Repository](https://github.com/biomejs/biome) / [GritQL upstream](https://github.com/getgrit/gritql)
 

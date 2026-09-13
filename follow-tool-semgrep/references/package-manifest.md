@@ -10,7 +10,7 @@
 | Registry | `PyPI` |
 | Latest Version | `1.177.0` |
 | Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Semgrep, Inc.` |
 | License | `LGPL-2.1-or-later` |
 | Repository | `<https://github.com/semgrep/semgrep>` |
@@ -28,7 +28,7 @@ pipx install semgrep   # or: mise use -g semgrep | brew install semgrep
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `semgrep` | `npm` | `1.177.0` | Optional npm wrapper (`bunx semgrep`); same release train as PyPI |
+| `semgrep` | `npm` | `0.0.1` (stale stub) | Deprecated placeholder pointing to `returntocorp/sgrep` — do NOT install via npm; use pipx/brew/mise |
 
 ## Notes
 

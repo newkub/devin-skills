@@ -17,7 +17,8 @@ related:
 
 ใช้สำหรับ project ที่ติดตั้ง `loc` แล้ว ครอบคลุมการนับ lines, กรองไฟล์, และวิเคราะห์ขนาดไฟล์
 
-- Latest: `loc@0.5.0` (crates.io, verified 2026-09-12) — release ล่าสุดปี 2018 (tool นิ่งแล้ว); ถ้าต้องการ maintained alternative พิจารณา `tokei` หรือ `scc`
+- Latest: `loc@0.5.0` (crates.io, verified 2026-09-13) — release ล่าสุดปี 2018 (tool นิ่งแล้ว; author แนะนำ `scc` เองใน README); ถ้าต้องการ maintained alternative พิจารณา `tokei` หรือ `scc`
+- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -110,14 +111,9 @@ related:
 - ใช้ byte-level iteration สำหรับความเร็วสูง
 - กรองไฟล์ด้วย `--include`/`--exclude` ก่อนนับเพื่อลดเวลา
 
-- ใช้ /report-file-structure ถ้าจำเป็น
-- ใช้ /scan-codebase ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ `/report-file-structure` เพื่อรายงานโครงสร้างไฟล์
+- ใช้ `/scan-codebase` เพื่อ scan codebase เพิ่มเติม
+- ใช้ `/use-scripts` เพื่อ post-process output
 
 ## Expected Outcome
 

@@ -82,6 +82,9 @@ related:
 
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /check-repo-hygiene dead-link ถ้าจำเป็น
+- ใช้ /follow-tool-vitepress ถ้าจำเป็น
+- ใช้ /follow-gitignore ถ้าจำเป็น
+- ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

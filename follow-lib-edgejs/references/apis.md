@@ -8,7 +8,7 @@ bun add edge.js   # runtime dependency (Edge template engine)
 
 ## Version
 
-- Latest: `6.5.1` (verified 2026-09-11)
+- Latest: `6.5.1` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/edge.js)
 - [Repository](https://github.com/edge-js/edge)
 

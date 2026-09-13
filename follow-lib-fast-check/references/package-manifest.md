@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `4.10.0` |
 | Release Date | `2026-09-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Nicolas DUBIEN` |
 | License | `MIT` |
 | Repository | `https://github.com/dubzzz/fast-check` |

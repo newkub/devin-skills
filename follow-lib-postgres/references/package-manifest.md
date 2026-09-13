@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `3.4.9` |
 | Release Date | `2026-04-05` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Rasmus Porsager` |
 | License | `Unlicense` |
 | Repository | `https://github.com/porsager/postgres` |

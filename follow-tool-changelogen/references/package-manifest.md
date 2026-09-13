@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.6.2` |
 | Release Date | `2025-07-06` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `unjs` |
 | License | `MIT` |
 | Repository | `https://github.com/unjs/changelogen` |

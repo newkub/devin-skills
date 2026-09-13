@@ -10,7 +10,7 @@
 | Registry | `crates.io` |
 | Latest Version | `0.5.0` |
 | Release Date | `2018-08-23` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `cgag` (Curtis Gagliardi) |
 | License | `MIT` |
 | Repository | `https://github.com/cgag/loc` |

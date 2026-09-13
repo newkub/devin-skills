@@ -6,6 +6,8 @@ related:
   - follow-release
   - follow-tool-github-actions
   - follow-tool-changesets
+  - follow-tool-release-it
+  - follow-tool-changelogen
   - follow-tool-git
   - follow-test
   - fix
@@ -20,7 +22,12 @@ related:
 
 ใช้สำหรับ projects ที่ใช้ conventional commits และต้องการ automate release, changelog, npm/GitHub publish
 
-- Latest: `semantic-release@25.0.9` (verified 2026-09-12) — requires Node.js `^22.14.0 || >=24.10.0`
+- `semantic-release` เหมาะกับ fully automated release — version ถูก derive จาก conventional commits โดยไม่มี manual step
+- ใช้ `follow-tool-release-it` เมื่อต้องการ interactive/manual release ทีเลือก version และ hooks ได้เอง
+- ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
+- ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
+
+- Latest: `semantic-release@25.0.9` (verified 2026-09-13) — requires Node.js `^22.14.0 || >=24.10.0`
 
 ## Execute
 
@@ -108,6 +115,7 @@ related:
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
 - ใช้ /follow-tool-git ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
+- ใช้ /fix ถ้าจำเป็น (เช่น release ล้มเหลวจาก config หรือ commits)
 
 ## References
 

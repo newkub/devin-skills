@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `0.23.0` |
 | Release Date | `2026-09-03` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Rolldown team` |
 | License | `MIT` |
 | Repository | `<https://github.com/rolldown/tsdown>` |

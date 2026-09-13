@@ -54,11 +54,14 @@ gh secret set <name> --body <value>
 gh secret delete <name>
 ```
 
-## Action Commands
+## Variable Commands
 
 ```bash
-# View action usage
-gh action list
+# List variables
+gh variable list
+
+# Set variable
+gh variable set <name> --body <value>
 ```
 
 ## Common Options

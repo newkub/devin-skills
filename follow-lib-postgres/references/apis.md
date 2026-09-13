@@ -8,7 +8,7 @@ bun add postgres   # postgres.js — porsager/postgres
 
 ## Version
 
-- Latest: `3.4.9` (verified 2026-09-11)
+- Latest: `3.4.9` (verified 2026-09-13)
 - [Package Registry](https://www.npmjs.com/package/postgres)
 - [Repository](https://github.com/porsager/postgres)
 

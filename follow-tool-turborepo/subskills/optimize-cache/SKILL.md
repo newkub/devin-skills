@@ -78,6 +78,8 @@ related:
 - `TURBO_TOKEN`/`TURBO_TEAM` ผ่าน env/secrets manager เท่านั้น
 
 - ใช้ /check-bottlenecks ถ้าจำเป็น
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
 
 ## Expected Outcome
 

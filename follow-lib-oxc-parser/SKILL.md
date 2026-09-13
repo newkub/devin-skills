@@ -24,7 +24,8 @@ related:
 
 เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
-- Latest: `oxc-parser@0.149.0` (verified 2026-09-12)
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`); CLI ของ ecosystem คือ `oxlint` แยก package
+- Latest: `oxc-parser@0.149.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -111,6 +112,11 @@ visitor.visit(result.program);
 ### 4. Bun Compatibility
 
 - `oxc-parser` ใช้ NAPI `.node` binaries — ทดสอบบน Bun ก่อน production; ถ้าเจอปัญหาให้ fallback `bun x tsx` หรือ Node runtime
+
+- ใช้ `/use-astgrep` ถ้าต้องการ pattern matching แบบ declarative
+- ใช้ `/follow-lang-typescript` ถ้าจำเป็น
+- ใช้ `/use-scripts` ถ้าต้องประมวลผลไฟล์จำนวนมาก
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
 
 ## Expected Outcome
 

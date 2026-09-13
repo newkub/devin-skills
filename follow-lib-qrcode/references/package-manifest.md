@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.5.4` |
 | Release Date | `2024-08-05` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Ryan Day` |
 | License | `MIT` |
 | Repository | `https://github.com/soldair/node-qrcode` |

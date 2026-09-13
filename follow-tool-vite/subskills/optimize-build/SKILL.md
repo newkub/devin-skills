@@ -76,6 +76,10 @@ related:
 - ใช้เฉพาะ options ใน official docs (`vite.dev`, `rolldown.rs`) — ห้ามเดา
 - `esbuild.*` options deprecated ใน Vite 8 — ใช้ `oxc`/`rolldownOptions` แทน
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /run-bench ถ้าจำเป็น
+- ใช้ /check-bundle-regression ถ้าจำเป็น
+
 ## Expected Outcome
 
 - bundle size/build time ดีขึ้นเทียบ baseline ที่วัดได้

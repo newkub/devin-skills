@@ -7,6 +7,8 @@ related:
   - use-my-packages-on-registry
   - setup-cicd
   - run-scan
+  - follow-tool-biome
+  - use-astgrep
 ---
 
 ## Goal
@@ -15,9 +17,12 @@ related:
 
 ## Scope
 
-ใช้กับ JavaScript/TypeScript, CSS และ JSON ในโปรเจกต์ที่ใช้ Biome v2+
+ใช้กับ JavaScript/TypeScript, CSS และ JSON ในโปรเจกต์ที่ใช้ Biome v2+ — ใช้ skill นี้เฉพาะ GritQL patterns ภายใน Biome (`biome search`, `.grit` lint plugins)
 
-- Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-12)
+- ถ้า task เป็น Biome setup/config/lint ทั่วไป (ไม่ใช่ GritQL) → ใช้ `/follow-tool-biome`
+- ถ้าต้องการ structural search/rewrite นอก Biome หรือ codemod ข้าม language ที่ GritQL ใน Biome ไม่รองรับ → พิจารณา `/use-astgrep` (ast-grep)
+
+- Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -158,7 +163,9 @@ related:
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ /run-scan ถ้าจำเป็น
+- ใช้ `/run-scan` ถ้าจำเป็น
+- ใช้ `/follow-tool-biome` ถ้าจำเป็น
+- ใช้ `/use-astgrep` ถ้าจำเป็น
 
 ## Expected Outcome
 

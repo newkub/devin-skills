@@ -4,6 +4,7 @@ description: ใช้ ArkType สำหรับ TypeScript runtime validation 
 argument-hint: "[scope]"
 related:
   - follow-lib-zod
+  - review-data-validation
   - follow-lib-better-auth
   - follow-lang-typescript
   - follow-best-practice
@@ -19,8 +20,14 @@ related:
 
 ใช้กับ TypeScript projects ทุกประเภทที่รองรับ ESM และ strict mode ไม่ว่าจะเป็น Bun, Node.js, frontend, backend หรือ framework ใดๆ
 
-- Latest: `arktype@2.2.3` (verified 2026-09-12)
+ขอบเขต:
+- ใช้ skill นี้เมื่อ project เลือก/ใช้ ArkType เป็น validator หลัก
+- ถ้า project ใช้ Zod อยู่แล้ว → ใช้ `/follow-lib-zod` แทน (อย่าผสม validator หลักสองตัวใน domain เดียวกัน)
+- ถ้ายังไม่ได้เลือก validation library → ทำ `/review-data-validation` เพื่อเปรียบเทียบก่อน
+
+- Latest: `arktype@2.2.3` (verified 2026-09-13)
 - v2.2 features หลัก: `type.fn` (validated functions), type-safe regex ผ่าน `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators ฝังใน definitions ได้โดยตรง, `|>` pipe operator, `type.valueOf` สำหรับ TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
+- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [resources](references/arktype-resources.md) | [manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -35,7 +42,7 @@ related:
 > Goal: ติดตั้ง ArkType และเตรียม environment
 
 1. รัน `bun add arktype` (หรือ `pnpm add arktype` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3, verified 2026-09-12)
+2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3, verified 2026-09-13)
 3. ยืนยันว่า `package.json` มี `arktype` ใน `dependencies`
 4. ตรวจสอบว่า `package.json` มี `"type": "module"` หรือ runtime รองรับ ESM imports
 
@@ -159,7 +166,8 @@ related:
 ### 7. Integration
 
 - ใช้ Standard Schema (`~standard`) เมื่อจำเป็น
-- ใช้ `/follow-lib-zod` ถ้าจำเป็น
+- ใช้ `/follow-lib-zod` ถ้า project ใช้ Zod เป็น validator หลัก
+- ใช้ `/review-data-validation` ถ้าต้องเลือก/เปรียบเทียบ validation library
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
 - ใช้ `/follow-lang-typescript` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

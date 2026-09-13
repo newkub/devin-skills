@@ -11,7 +11,6 @@ related:
   - update-references
   - run-lint
   - run-format
-  - run-drizzle-studio
 ---
 
 ## Goal
@@ -22,7 +21,9 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ formatter รองรับ TypeScript, JavaScript, Rust, Python, Go ตาม tech stack
 
-- Latest: `prettier@3.9.6` / `dprint@0.57.4` / `@biomejs/biome@2.5.13` (verified 2026-09-12)
+- Boundary: skill นี้ช่วยเลือกและ wire formatter เข้า repo/CI — หลังเลือก tool แล้วให้ใช้ skill เฉพาะทาง (`/follow-tool-biome`, `/follow-tool-dprint`) สำหรับ config ละเอียด; linting อยู่ที่ `/follow-tool-linter`
+- Latest: `prettier@3.9.6` / `dprint@0.57.4` / `@biomejs/biome@2.5.13` (verified 2026-09-13)
+- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -101,18 +102,14 @@ related:
 - ห้ามสลับ formatter บ่อย
 - ถ้าเปลี่ยน formatter → ทำ `/update-references` และระบุใน CHANGELOG
 
-- ใช้ /follow-tool-linter ถ้าจำเป็น
-- ใช้ /follow-tool-validator ถ้าจำเป็น
-- ใช้ /follow-tool-biome ถ้าจำเป็น
-- ใช้ /follow-tool-dprint ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- ใช้ `/follow-tool-linter` ถ้าจำเป็น
+- ใช้ `/follow-tool-validator` ถ้าจำเป็น
+- ใช้ `/follow-tool-biome` ถ้าจำเป็น
+- ใช้ `/follow-tool-dprint` ถ้าจำเป็น
+- ใช้ `/run-verify` เพื่อ verify format + lint + typecheck
+- ใช้ `/update-references` เมื่อเปลี่ยน formatter
+- ใช้ `/run-lint` ถ้าจำเป็น
+- ใช้ `/run-format` ถ้าจำเป็น
 
 ## Expected Outcome
 

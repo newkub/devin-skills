@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `14.4.0` |
 | Release Date | `2026-07-29` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `VueUse team (Anthony Fu et al.)` |
 | License | `MIT` |
 | Repository | `<https://github.com/vueuse/vueuse>` |

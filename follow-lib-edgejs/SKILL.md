@@ -5,15 +5,20 @@ argument-hint: "[scope]"
 related:
   - report
   - deep-validate
+  - follow-lib-react
+  - follow-lib-solidjs
 ---
 
 ## Goal
 
-ตั้งค่าและใช้งาน Edge.js template engine สำหรับ Node.js ด้วย syntax ทีใกล้ JavaScript, components, slots, partials, และ state management ตาม official documentation
+ตั้งค่าและใช้งาน Edge.js template engine สำหรับ Node.js ด้วย syntax ที่ใกล้ JavaScript, components, slots, partials, และ state management ตาม official documentation
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ Node.js/Bun ทีต้องการ backend template engine แบบ ESM-only โดยไม่ต้อง build step รองรับทัง standalone และใน AdonisJS
+ใช้สำหรับโปรเจกต์ Node.js/Bun ที่ต้องการ backend template engine แบบ ESM-only โดยไม่ต้อง build step รองรับทั้ง standalone และใน AdonisJS — ใช้ skill นี้เมื่อ render HTML ฝั่ง server ด้วย `.edge` templates เท่านั้น
+
+- ถ้าต้องการ interactive UI หรือ component framework ฝั่ง client → ใช้ `/follow-lib-react` หรือ `/follow-lib-solidjs` แทน
+- ถ้า project เป็น AdonisJS full-stack → ทำตาม view conventions ของ AdonisJS ซึ่งใช้ Edge เป็น engine อยู่แล้ว
 
 - ติดตั้ง `edge.js` ผ่าน `bun` หรือ `npm`
 - สร้าง `Edge` instance, mount disks, และ enable cache
@@ -22,7 +27,7 @@ related:
 - จัดการ template state: globals, locals, rendering data, inline variables
 - ขยายความสามารถด้วย plugins และ custom tags เมื่อจำเป็น
 
-- Latest: `edge.js@6.5.1` (verified 2026-09-12)
+- Latest: `edge.js@6.5.1` (verified 2026-09-13)
 
 ## Execute
 
@@ -181,11 +186,14 @@ server.listen(3000)
 - default ใช้ `bun add` สำหรับ JS/TS projects
 - ถ้า project ใช้ package manager อื่น ให้ใช้ตาม ecosystem (`npm i`, `pnpm add`, `yarn add`)
 
+- ใช้ `/report` ถ้าจำเป็น
+- ใช้ `/deep-validate` ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `edge.js` ติดตั้งและกำหนดค่าถูกต้องด้วย ESM
 - `Edge` instance mount disk ได้และ enable cache ใน production
-- Templates ใช้งานได้ทัง interpolation, conditionals, loops, partials, components, slots
+- Templates ใช้งานได้ทั้ง interpolation, conditionals, loops, partials, components, slots
 - Template state ถูกจัดการตาม globals, locals, rendering data, inline variables
 - Production มี cache เปิดใช้งาน
 - Typecheck และ tests ผ่าน

@@ -7,9 +7,9 @@
 bun add effect
 ```
 
-## Versions (verified 2026-09-11)
+## Versions (verified 2026-09-13)
 
-- `effect` latest stable: `3.22.2` (v4 RC: `4.0.0-rc.113`)
+- `effect` latest stable: `3.22.2` (v4 RC: `4.0.0-rc.115`)
 - `@effect/platform`: `0.97.2`
 - `@effect/platform-bun`: `0.91.2`
 - `@effect/platform-node`: `0.108.2`

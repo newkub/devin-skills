@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.4.30` |
 | Release Date | `2026-08-26` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `saltyAom (ElysiaJS)` |
 | License | `MIT` |
 | Repository | `https://github.com/elysiajs/elysia` |

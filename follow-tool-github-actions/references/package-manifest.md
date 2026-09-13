@@ -10,7 +10,7 @@
 | Registry | `GitHub Releases` (`rhysd/actionlint`) |
 | Latest Version | `1.7.12` |
 | Release Date | `2026-03-30` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `rhysd` |
 | License | `MIT` |
 | Repository | `https://github.com/rhysd/actionlint` |

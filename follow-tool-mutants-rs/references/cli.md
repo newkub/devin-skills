@@ -24,7 +24,7 @@ cargo install cargo-mutants --locked
 ## Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `--dir`, `-d` | Test Rust tree in given directory |
 | `--manifest-path` | Path to `Cargo.toml` |
 | `--file`, `-f` | Mutate only files matching glob |

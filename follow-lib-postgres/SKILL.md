@@ -6,6 +6,7 @@ related:
   - run-verify
   - run-test
   - run-drizzle-studio
+  - follow-lib-drizzle
 ---
 
 ## Goal
@@ -16,7 +17,10 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib postgres)
 
-- Latest: `postgres@3.4.9` (verified 2026-09-12)
+- ครอบคลุม: `postgres` (postgres.js) driver — tagged templates, pool, transactions, LISTEN/NOTIFY, `sql.subscribe`
+- ไม่ครอบคลุม: ORM/schema layer — ใช้ `/follow-lib-drizzle` (drizzle ใช้ postgres.js เป็น driver); `Bun.sql` built-in สำหรับ Bun-only project
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- Latest: `postgres@3.4.9` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -51,7 +55,11 @@ related:
 - ห้าม string-concat queries — ใช้ tagged template เสมอ; `sql.unsafe()` เฉพาะ dynamic queries ที่ parameterized ไม่ได้
 - ปิด connection ด้วย `sql.end()` ใน teardown
 - บน serverless ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
+- ใช้ `/run-drizzle-studio` ถ้าจำเป็น
+- ใช้ `/follow-lib-drizzle` ถ้าต้องการ ORM layer
 
 ## Expected Outcome
 

@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- `vue`: `3.5.42` (latest stable, verified 2026-09-12)
+- `vue`: `3.5.42` (latest stable, verified 2026-09-13)
 - `vue`: `3.6.0-rc.8` (latest RC, Vapor Mode feature-complete)
 - License: MIT
 - Vue 3.6 RC: Vapor Mode stabilization, improved hydration, tree-shaking

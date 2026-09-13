@@ -5,6 +5,7 @@ argument-hint: "[target-or-scope]"
 related:
   - run-verify
   - run-test
+  - follow-lib-better-auth
 ---
 
 ## Goal
@@ -13,9 +14,12 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib simplewebauthn)
+ใช้เมื่อ task เกี่ยวข้องกับ passkeys/WebAuthn แบบ manual — setup, ceremonies, credential storage, debugging, หรือ best practices
 
-- Latest: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-12)
+- ใช้ skill นี้เมื่อ implement WebAuthn เองด้วย `@simplewebauthn/server` + `@simplewebauthn/browser`
+- ถ้า project ใช้ Better Auth อยู่แล้ว ให้ใช้ `passkey()` plugin ผ่าน `/follow-lib-better-auth` แทน manual setup
+
+- Latest: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -36,7 +40,24 @@ related:
 1. เก็บ credential: id, publicKey, counter, transports — per user
 1. ตั้ง `rpID`, `rpName`, `origin` ให้ตรง domain — mismatch = ceremony fail
 
-### 2. Verify
+### 2. Store Credentials
+
+> Goal: persist credentials ให้ ceremonies ทำงานซ้ำได้
+
+1. เก็บ per-user credential: `id`, `publicKey`, `counter`, `transports` — ผูกกับ user record
+2. อัปเดต `counter` จาก `verifyAuthenticationResponse` ทุกครั้ง — counter ไม่เพิ่ม = possible cloned authenticator
+3. รองรับ multiple credentials per user (หลายอุปกรณ์)
+
+### 3. Common Pitfalls
+
+> Goal: หลีกเลี่ยง ceremony failures ที่พบบ่อย
+
+1. `rpID` เป็น domain เท่านั้น (ไม่มี protocol/port); `expectedOrigin` เป็น full origin เช่น `https://app.com` — dev ใช้ `http://localhost:5173`
+2. challenge ต้อง random + one-time + short-lived — verify ฝั่ง server เท่านั้น
+3. production ต้อง HTTPS — WebAuthn ทำงานเฉพาะ secure context (localhost ยกเว้น)
+4. Passkey autofill: `startAuthentication({ optionsJSON, useBrowserAutofill: true })` + `<input autocomplete="username webauthn">`
+
+### 4. Verify
 
 > Goal: ตรวจสอบว่าใช้งานถูกต้อง
 
@@ -52,6 +73,10 @@ related:
 - รองรับ multiple credentials per user
 - `@simplewebauthn/types` ถูก retire ตั้งแต่ v13 — import types จาก `@simplewebauthn/server`/`browser` โดยตรง
 - ใช้ `preferredAuthenticatorType` ใน `generateRegistrationOptions` (`'securityKey'`, `'localDevice'`, `'remoteDevice'`) เมื่อต้องการกำหนด hints
+
+- ใช้ `/run-verify` ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
+- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
 
 ## Expected Outcome
 

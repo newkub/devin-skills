@@ -90,6 +90,10 @@ related:
 - ใช้เฉพาะ options ที่อยู่ใน official docs (`vite.dev`) — ห้ามเดา option names
 - ถ้าไม่แน่ใจ → ทำ `/learn` (web) ก่อนแก้
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `vite.config.ts` ครอบคลุม plugins/resolve/build/server ที่ project ต้องการ

@@ -6,6 +6,7 @@ related:
   - follow-create-web
   - follow-lib-animejs
   - follow-lib-unocss
+  - follow-lib-zaidan-ui
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
@@ -19,7 +20,10 @@ related:
 
 ใช้สำหรับสร้าง UI components ด้วย shadcn-solid บน SolidJS สำหรับ SolidStart, Astro, Vite
 
-- Latest: `shadcn-solid@0.7.7` (CLI) (verified 2026-09-12)
+- ใช้เมื่อ project ต้องการ `shadcn-solid` CLI + registry ของตัวเอง (รองรับ Tailwind CSS และ UnoCSS)
+- ถ้า project ใช้ Zaidan registry (`@zaidan/*` ผ่าน `shadcn` CLI, Kobalte/Corvu + Tailwind v4) ให้ใช้ `/follow-lib-zaidan-ui` แทน
+
+- Latest: `shadcn-solid@0.7.7` (CLI) (verified 2026-09-13)
 
 ## Execute
 
@@ -112,6 +116,7 @@ related:
 - ใช้ `/follow-create-web solid-tanstack-router` ถ้าจำเป็น
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-unocss` ถ้าจำเป็น
+- ใช้ `/follow-lib-zaidan-ui` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น

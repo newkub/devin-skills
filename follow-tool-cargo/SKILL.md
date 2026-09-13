@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - run-verify
+  - follow-lang-rust
 ---
 
 ## Goal
@@ -15,7 +16,9 @@ related:
 
 ใช้สำหรับตั้งค่า Cargo lint rules ใน Rust projects ทั้ง single crate และ workspace (Rust 1.98+)
 
-- Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-12)
+- Boundary: skill นี้ครอบคลุมเฉพาะ lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — สำหรับ Rust language/idioms ดู `/follow-lang-rust`; สำหรับ verify หลัง config ใช้ `/run-verify`
+- Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-13)
+- References: [apis](references/apis.md) | [cargo](references/cargo.md) | [cli](references/cli.md) | [clippy](references/clippy.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-clippy) — สำหรับ Clippy lint rules และ error handling ดู `references/clippy.md`
 
 ## Execute
@@ -135,10 +138,9 @@ related:
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
 - ดู [references/cargo.md](references/cargo.md)
 
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome
 

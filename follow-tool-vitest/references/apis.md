@@ -8,7 +8,7 @@ bun add -D vitest
 
 ## Version
 
-- Latest: 5.0.0 (verified 2026-09-12) — requires Vite >= 6.4.0, Node >= 22.12.0
+- Latest: 5.0.0 (verified 2026-09-13) — requires Vite >= 6.4.0, Node >= 22.12.0
 - [Package Registry](https://www.npmjs.com/package/vitest)
 - [Repository](https://github.com/vitest-dev/vitest)
 

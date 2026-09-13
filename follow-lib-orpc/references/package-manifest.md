@@ -10,7 +10,7 @@
 | Registry | `npm` |
 | Latest Version | `1.15.0` |
 | Release Date | `2026-08-08` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `unnoq (oRPC)` |
 | License | `MIT` |
 | Repository | `https://github.com/middleapi/orpc` |
@@ -32,7 +32,7 @@ bun add @orpc/server @orpc/client
 | `@orpc/openapi` | `npm` | `1.15.0` | OpenAPI/REST handler + docs |
 | `@orpc/tanstack-query` | `npm` | `1.15.0` | TanStack Query integration utils |
 | `@orpc/contract` | `npm` | `1.15.0` | Contract-first API definitions |
-| `zod` | `npm` | `4.6.2` | Schema validation for inputs/outputs |
+| `zod` | `npm` | `4.6.4` | Schema validation for inputs/outputs |
 
 ## Notes
 

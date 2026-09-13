@@ -17,7 +17,8 @@ related:
 
 ใช้สำหรับตรวจจับและวิเคราะห์ code duplication — ไม่ครอบคลุมการ refactor เอง (ดู `/refactor`)
 
-- Latest: `jscpd@5.2.0` (verified 2026-09-12)
+- Latest: `jscpd@5.2.0` (verified 2026-09-13)
+- References: [cli](references/cli.md) | [jscpd](references/jscpd.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -97,16 +98,20 @@ related:
 
 ### 6. CI Integration
 
-- ใช้ `--threshold` เพื่อ fail CI เมื่อ duplication เกินกำหนด
-- ใช้ `--reporters sarif` สำหรับ GitHub Code Scanning
+- ใช้ `--threshold` เพื่อ fail CI เมื่อ duplication เกินกำหนด (exit 1)
+- ใช้ `--reporters sarif` สำหรับ GitHub Code Scanning — หรือ GitHub Action `kucherenko/jscpd@v5` (upload SARIF อัตโนมัติ)
+- ใช้ `--baseline .jscpd-baseline.json` + `--fail-on-new-clones` เพื่อ gate เฉพาะ duplication ใหม่ — ทนทาน legacy clones (`--baseline-from-ref origin/main` ไม่ต้อง commit baseline file; `--update-baseline` refresh)
+- ใช้ `--fail-on-empty` เมื่อ empty scan ใน CI หมายถึง misconfig (default: warn + exit 0)
 - ใช้ `--no-tips` เพื่อ suppress ข้อความที่ไม่จำเป็นใน CI output
-- ใช้ `--exit-code 1` เพื่อกำหนด exit code เมื่อพบ duplication
+- ใช้ `--exit-code N` เพื่อกำหนด exit code เมื่อพบ duplication (default 1)
+- `--cross-formats "javascript,typescript"` (preset `js-ts`) เพื่อจับ clone ข้าม JS/TS
+- `--skip-isolated "packages/a|packages/b"` ข้าม clone ข้าม folders ที่ทีมต่างกันเป็นเจ้าของ
+- `--summary` = codebase summary (top files/folders by tokens/complexity); `--history v5.0.0..HEAD` = duplication trend ผ่าน git history; `--mcp` = built-in MCP server
 
-## References
-
-- [CLI reference](references/cli.md)
-
-- ใช้ /run-scan ถ้าจำเป็น
+- ใช้ `/refactor` เพื่อ refactor duplicates ที่พบ
+- ใช้ `/report` เพื่อสรุปผลเป็นตาราง
+- ใช้ `/use-scripts` เพื่อ parse `report/jscpd-report.json`
+- ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
 
 ## Expected Outcome
 
@@ -114,41 +119,3 @@ related:
 - `report/jscpd-report.json` พร้อมผล duplication
 - ตารางสรุป duplicates พร้อม priority สำหรับ refactor
 - ส่งต่อไป `/refactor` สำหรับแต่ละ high-priority item
-
-## Example Template
-
-### .jscpd.json
-
-```json
-{
-  "threshold": 0,
-  "reporters": ["console", "json"],
-  "ignore": [
-    "/node_modules/",
-    "/dist/",
-    "/.turbo/",
-    "/coverage/",
-    "/*.lock",
-    "/bun.lock",
-    "/.output/",
-    "/dist-spa/"
-  ],
-  "absolute": true,
-  "gitignore": true,
-  "minLines": 5,
-  "minTokens": 50
-}
-```
-
-### `package.json` Script
-
-```json
-"report:duplication": "bunx jscpd . --reporters console,json --output report"
-```
-
-## Reference
-
-- `/refactor` — สำหรับ refactor duplicates ที่พบ
-- `/use-scripts` — สำหรับ parse JSON report
-- [jscpd Documentation](https://jscpd.dev)
-- [jscpd GitHub](https://github.com/kucherenko/jscpd)

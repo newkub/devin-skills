@@ -16,7 +16,10 @@ related:
 
 ใช้ `follow-tool-react-scan` สำหรับ project หรือ workflow ที่เป็น React
 
-- Latest: `react-scan@0.5.7` (verified 2026-09-12)
+- ใช้ skill นี้เฉพาะ React render performance — ถ้าเป็น profiling ทั่วไป (server, bundle, runtime) ใช้ `/run-profiler` หรือ `/run-scan` ตาม context
+- ถ้าไม่มี codebase access และต้อง scan site ที่ deploy แล้ว → ใช้ CLI URL scan หรือ browser extension ไม่ต้อง install package
+
+- Latest: `react-scan@0.5.7` (verified 2026-09-13)
 
 ## Execute
 
@@ -138,11 +141,13 @@ related:
 - ตรวจสอบว่าไม่ได้ optimize เฉพาะ renders ที่ไม่ได้กระทบ UX
 - ถอดถอนหรือ remove `react-scan` ก่อน deploy production
 
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /learn ถ้าจำเป็น
+- ใช้ /run-scan ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)
-
-- ใช้ /run-scan ถ้าจำเป็น
 
 ## Expected Outcome
 

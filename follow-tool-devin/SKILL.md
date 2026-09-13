@@ -9,6 +9,8 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+  - deep-review
+  - run-verify
 ---
 
 ## Goal
@@ -25,54 +27,52 @@ related:
 - Debug และ review code ที่ agents สร้าง
 - จัดการ fleets ของ local และ cloud agents
 
-- Latest model: `SWE-2` (released 2026-09-10, post-trained จาก Kimi K3 2.8T params) (verified 2026-09-12)
+- Boundary: skill นี้ครอบคลุมการใช้งาน Devin/Cascade ฝั่ง user — สำหรับอัปเดต Devin CLI/skills ของเครื่องใช้ `/update-devin`; สำหรับกฎและ conventions ของ global skills ดู `/follow-devin-global-skills`
+- Latest model: `SWE-2` (released 2026-09-10, post-trained จาก Kimi K3 2.8T params) (verified 2026-09-13)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
-### 1. เริ่มต้นใช้งาน
+### 1. Verify Installation
 
-> Goal: เริ่มต้นใช้งาน
+> Goal: Devin CLI พร้อมใช้งานบนเครื่อง
 
-อ่าน `guide/getting-started.md` เพื่อเรียนรู้:
-- การติดตั้งและ setup Devin Desktop
-- การเชื่อมต่อกับ Windsurf IDE
-- การเลือกและใช้งาน AI models
-- การสร้างและจัดการ Spaces
-- การเขียน prompt แรกของคุณ
+1. รัน `devin --version` เพื่อตรวจสอบว่า CLI ติดตั้งแล้ว (ติดตั้งผ่าน Devin Desktop / Cognition distribution — ไม่มี public registry)
+2. รัน `devin --help` เพื่อดู command surface ที่ version ปัจจุบันรองรับ
+3. ถ้าไม่มี → ติดตั้งจาก https://devin.ai — npm package `devin` เป็น package อื่นที่ไม่เกี่ยวข้อง ห้าม install
+4. สำหรับอัปเดต CLI/skills ให้ใช้ `/update-devin`
 
-### 2. เข้าใจ Core Concepts
+### 2. Start Session
 
-> Goal: เข้าใจ Core Concepts
+> Goal: เปิด session บน project/branch ที่ถูกต้อง
 
-อ่าน `key-concepts/` เพื่อเข้าใจ:
-- `SWE Models`: SWE-2, SWE-1.7, SWE-1.6, SWE-1-mini, swe-grep, swe-check
-- `Agent Client Protocol (ACP)`: Protocol สำหรับ communication ระหว่าง agents
-- `Spaces`: Shared context และ Git worktrees สำหรับ agents
-- `Supercomplete`: Intelligent autocomplete ที่ predict next thought
-- `Tool Calling`: Parallel tool calls สำหรับ efficient execution
-- `Context Awareness`: Fast Context และ context retrieval
+1. รัน `devin` เพื่อเริ่ม interactive session — ระบุ `--project`, `--branch`, `--issue` ตาม context ของ task
+2. ใช้ Spaces (shared context + Git worktrees) เมื่อต้องรัน agents หลายตัวพร้อมกัน
+3. ใช้ Agent Client Protocol (ACP) เมื่อต้อง integrate กับ editor/agent อื่น
 
-### 3. ปฏิบัติตาม Best Practices
+### 3. Select Model
 
-> Goal: ปฏิบัติตาม Best Practices
+> Goal: เลือก model ให้เหมาะกับ task
 
-อ่าน `principles/` เพื่อเรียนรู้:
-- Prompt engineering สำหรับ coding agents
-- Debugging และ review code จาก agents
-- Managing agent fleets
-- Security และ privacy considerations
-- Performance optimization
+1. เลือกจาก Rules → Model Selection: `SWE-2` เป็น default สำหรับ coding tasks, `SWE-1-mini` สำหรับ autocomplete, `swe-grep`/`swe-check` สำหรับ retrieval และ quick review
+2. ใช้ `SWE-1.7 Lightning` เมื่อต้องการ latency ต่ำโดยไม่เสีย intelligence
 
-### 4. ใช้ Workflows
+### 4. Write Effective Prompts
 
-> Goal: ใช้ Workflows
+> Goal: prompt ชัดเจนและแบ่งงานได้
 
-ใช้ `workflows/` สำหรับ tasks เฉพาะ:
-- `setup-devin.md`: Setup Devin Desktop และ Windsurf
-- `create-agent.md`: สร้าง custom agents
-- `debug-with-agent.md`: Debug ด้วย agents
-- `review-code.md`: Review code จาก agents
-- `deploy-with-agent.md`: Deploy ด้วย agents
+1. เขียน prompt เฉพาะเจาะจงพร้อม context, requirements และ constraints
+2. แบ่ง task ซับซ้อนเป็น sub-tasks ที่ agents ทำทีละชิ้น
+3. แนบ examples/code snippets เมื่อต้องการ output format เฉพาะ
+
+### 5. Review And Verify Output
+
+> Goal: code จาก agents ปลอดภัยและทำงานจริง
+
+1. Review diff ที่ agents สร้าง — ใช้ `/deep-review` สำหรับการเปลี่ยนแปลงใหญ่
+2. ใช้ `swe-check` สำหรับ quick review ระหว่างทำงาน
+3. ทำ `/run-verify` (lint, typecheck, tests) ก่อน accept
+4. ตรวจ security issues และ secrets ก่อน deploy
 
 ## Rules
 
@@ -114,11 +114,8 @@ related:
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome
 

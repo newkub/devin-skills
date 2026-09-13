@@ -6,6 +6,10 @@ related:
   - fix
   - refactor
   - run-release
+  - follow-tool-changesets
+  - follow-tool-release-it
+  - follow-tool-semantic-release
+  - follow-tool-auto-it
 ---
 
 ## Goal
@@ -16,7 +20,9 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ automated changelog generation และ release management
 
-- Latest: `changelogen@0.6.2` (verified 2026-09-12)
+- Boundary: changelogen สร้าง changelog + bump version จาก conventional commits ใน git repo เดียว — สำหรับ monorepo multi-package versioning ใช้ `/follow-tool-changesets`; สำหรับ PR-label-based releases ใช้ `/follow-tool-auto-it`; สำหรับ full release pipelines ดู `/follow-tool-release-it` หรือ `/follow-tool-semantic-release`
+- Latest: `changelogen@0.6.2` (verified 2026-09-13)
+- References: [apis](references/apis.md) | [changelogen](references/changelogen.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -117,11 +123,13 @@ changelogen ทำงานต่อ git repository เดียว — ไม�
 - ใช้ `bunx changelogen gh release` เพื่อ sync GitHub releases จาก `CHANGELOG.md` โดยไม่ bump ซ้ำ
 - ใช้ `--clean` เพื่อบังคับ working directory ต้อง clean ก่อน release
 
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /fix ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
 - ใช้ /run-release ถ้าจำเป็น
+- ใช้ /follow-tool-changesets ถ้าจำเป็น
+- ใช้ /follow-tool-release-it ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-auto-it ถ้าจำเป็น
 
 ## Expected Outcome
 

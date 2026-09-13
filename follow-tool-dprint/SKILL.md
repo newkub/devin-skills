@@ -9,6 +9,7 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+  - follow-tool-biome
   - run-lint
   - run-format
 ---
@@ -21,7 +22,9 @@ related:
 
 ใช้สำหรับ project ที่ต้องการ code formatting หลายภาษา
 
-- Latest: `dprint@0.57.4` (verified 2026-09-12) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
+- Boundary: dprint เป็น formatter-only แบบ pluggable (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — ไม่มี linting; ถ้าต้องการ lint+format สำหรับ JS/TS ใน tool เดียวใช้ `/follow-tool-biome` แทน (หรือใช้ dprint เฉพาะภาษาที่ Biome ไม่ครอบคลุม)
+- Latest: `dprint@0.57.4` (verified 2026-09-13) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | [dprint](references/dprint.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
 
@@ -124,11 +127,7 @@ related:
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-
-## References
-
-- [CLI reference](references/cli.md)
-
+- ใช้ /follow-tool-biome ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-format ถ้าจำเป็น
 

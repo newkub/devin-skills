@@ -8,9 +8,9 @@
 |-------|-------|
 | Package | `mise` |
 | Registry | `GitHub Releases` (`jdx/mise`) |
-| Latest Version | `2026.9.5` (CalVer) |
-| Release Date | `2026-09-10` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Latest Version | `2026.9.6` (CalVer) |
+| Release Date | `2026-09-12` |
+| Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `jdx (Jeff Dickey)` |
 | License | `MIT` |
 | Repository | `https://github.com/jdx/mise` |
@@ -28,10 +28,10 @@ curl https://mise.run | sh   # or: winget install jdx.mise / scoop install mise 
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `mise` | `crates.io` | `2026.9.5` (2026-09-10) | Same release via `cargo install mise` |
+| `mise` | `crates.io` | `2026.9.6` (2026-09-12) | Same release via `cargo install mise` |
 
 ## Notes
 
 - Breaking changes in latest major: `none observed`
-- Version pinned in SKILL.md: `mise@2026.9.5`
+- Version pinned in SKILL.md: `mise@2026.9.6`
 - mise uses CalVer (`YYYY.M.D`), not SemVer

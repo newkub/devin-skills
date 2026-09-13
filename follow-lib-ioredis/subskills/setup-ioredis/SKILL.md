@@ -71,6 +71,7 @@ related:
 - Credentials/URL จาก env เสมอ — ห้าม hardcode
 - Client instance เดียวต่อ role (command, subscriber, publisher แยก connection)
 - ถ้า topology/option ไม่แน่ใจ → ทำ `/learn web` ดู official docs (github.com/redis/ioredis)
+- ใช้ `/follow-lib-ioredis` สำหรับ overview และ best practices
 
 ## Expected Outcome
 

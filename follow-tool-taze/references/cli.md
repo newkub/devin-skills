@@ -8,7 +8,7 @@ bun add -D taze
 
 ## Version
 
-- Latest: see `taze` on npm
+- Latest: `21.1.0` (verified 2026-09-13)
 - Repository: https://github.com/antfu-collective/taze
 - Docs: https://www.npmjs.com/package/taze
 
@@ -25,7 +25,7 @@ bun add -D taze
 ## Options
 
 | Option | Description |
-|---|---|---||---|---|---||
+|---|---|
 | `-r, --recursive` | Scan monorepo packages |
 | `--include` / `--exclude` | Filter packages by name/regex |
 | `--include-locked` / `-l` | Include fixed versions |

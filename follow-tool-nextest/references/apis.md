@@ -8,7 +8,7 @@ cargo install cargo-nextest --locked   # or: cargo binstall cargo-nextest --secu
 
 ## Version
 
-- Latest: `cargo-nextest` 0.9.144 (verified 2026-09-12)
+- Latest: `cargo-nextest` 0.9.144 (verified 2026-09-13)
 - Note: the `nextest` crate (0.1.1) is a stub — install `cargo-nextest` instead
 - [Package Registry](https://crates.io/crates/cargo-nextest)
 - [Repository](https://github.com/nextest-rs/nextest)
