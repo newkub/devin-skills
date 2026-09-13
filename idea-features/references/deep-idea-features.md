@@ -164,7 +164,6 @@
 - ใช้ dry run ก่อน destructive actions
 
 - ใช้ /suggest-me ถ้าจำเป็น
-- ใช้ /report-uxui-sketch ถ้าจำเป็น
 
 ## Expected Outcome
 

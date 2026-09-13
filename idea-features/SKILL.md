@@ -9,8 +9,8 @@ related:
   - think-reframe
   - deep-analyze
   - report
+  - report-todo
   - then-apply
-  - report-uxui-sketch
   - implement-to-production
   - run-test-all
 
@@ -24,13 +24,11 @@ related:
 
 - วิเคราะห์ project context และ prompt
 - สร้างไอเดีย `Extends` และ `New` พร้อมระบุ impact/effort/risk
-- ตอบกลับในแชทด้วย markdown tables และ bullets
+- ตอบกลับในแชทด้วย idea table + `/report-todo` table เท่านั้น (sort ตาม impact)
 - ไม่สร้าง report/plan ไฟล์
 - ไม่ implement
 - ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
 - ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/plan` หรือ `/implement-features-to-mvp`
-
-- ดูเพิ่มเติม: /report-uxui-sketch
 
 ## Execute
 
@@ -53,23 +51,20 @@ related:
 
 ### 3. Rank And Format
 
-> Goal: จัดลำดับและจัดรูปแบบตอบกลับ
+> Goal: จัดลำดับตาม impact และจัดรูปแบบตอบกลับ
 
-1. จัดลำดับตาม MVP score สูง → ต่ำ
+1. จัดลำดับตาม impact สูง → ต่ำ (tie-break ด้วย mvp score)
 2. สร้าง markdown tables ด้วย `/report table`
 3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
-4. สรุป top 3-5 features สั้นๆ ด้วย bullets
 4. ระบุ phase: MVP, v2, v3
 
 ### 4. Reply In Chat
 
-> Goal: ตอบกลับ user ทันที
+> Goal: ตอบกลับ user ทันทีด้วย table เท่านั้น
 
-1. แสดง summary 1-2 บรรทัด
-2. แสดง tables ในแชท
-3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ plan/report/implementation → แนะนำ `/plan` หรือ `/implement-features-to-mvp`
-5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
+1. แสดง idea tables (`Extends`, `New`) ที่ sort ตาม impact แล้ว
+2. ทำ `/report-todo` แสดง action table (No., Action, Before, After, Why, File Change, Risk) พร้อมสรุป numbered list
+3. ไม่ต้องสร้าง UX/UI sketch, รูปภาพ หรือข้อความอธิบายยาว
 
 ## Rules
 
@@ -97,6 +92,9 @@ related:
 
 - ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 - เรียงลำดับ 1, 2, 3, ...
+- sort แถวตาม impact สูง → ต่ำ
+- ตอบด้วย idea table + `/report-todo` table เท่านั้น — ไม่สร้าง UX/UI sketch หรือ prose ยาว
+- คำแนะนำถัดไปใส่ใน `/report-todo` table (คอลัมน์ Action)
 - ใช้ `/report` สำหรับ tables
 - ไม่ต้องตอบยาวเกินความจำเป็น
 
@@ -104,11 +102,10 @@ related:
 
 ## Expected Outcome
 
-- User ได้รับไอเดีย features ในแชททันที
-- มี tables สรุป Extends, New, ลำดับความสำคัญ
+- User ได้รับไอเดีย features ในแชททันทีเป็น tables (sort ตาม impact)
+- มี `/report-todo` action table สำหรับ steps ถัดไป
 - ไม่มีไฟล์ถูกสร้าง
-- ไม่มี implementation เกิดขึ้น
-- มีคำแนะนำถัดไปชัดเจน
+- ไม่มี implementation หรือ UX/UI sketch เกิดขึ้น
 
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-idea-features)
