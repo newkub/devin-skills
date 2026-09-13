@@ -4,6 +4,9 @@ description: Generate OpenAPI spec จาก code หรือ endpoints จร�
 argument-hint: "[path]"
 related:
   - follow-tool-scalar
+  - run-api-docs
+  - run-test-api
+  - follow-tool-bruno
   - review-api
   - update-docs
   - search

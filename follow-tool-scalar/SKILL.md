@@ -3,6 +3,9 @@ name: follow-tool-scalar
 description: ใช้ Scalar สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร API แบบครบวงจร
 argument-hint: "[scope]"
 related:
+  - run-api-docs
+  - follow-tool-bruno
+  - follow-tool-hurl
   - follow-test
   - follow-release
   - follow-deploy
@@ -57,8 +60,9 @@ related:
 1. รัน mock server ด้วย `bunx @scalar/cli document mock openapi.yaml --watch --port 8080`
 2. ทดสอบ queries, mutations, และ error scenarios (mock server validate request ตาม OpenAPI contract โดย default)
 3. ใช้ `bunx @scalar/cli document validate openapi.yaml` เพื่อตรวจสอบ schema validity และ `document lint` สำหรับ spectral rules
-4. ใช้ `bunx @scalar/cli document serve openapi.yaml` เพื่อ preview API reference แบบ local
-5. ทำ `/follow-test` เพื่อขยาย test coverage
+4. ใช้ `bunx @scalar/cli document serve openapi.yaml` เพื่อ preview API reference แบบ local — หรือทำ `/run-api-docs` ให้ start docs server + browser preview ครบ
+5. ถ้าต้องการ test API จริงจาก spec → export/import เข้า Bruno (`bru import openapi`) หรือเขียน `.hurl` files — ดู `/run-test-api`
+6. ทำ `/follow-test` เพื่อขยาย test coverage
 
 ### 5. Documentation and Deploy
 

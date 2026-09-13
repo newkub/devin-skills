@@ -7,6 +7,10 @@ related:
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
+  - gen-openapi
+  - run-test-api
+  - run-api-docs
+  - follow-tool-bruno
 ---
 
 ## Goal
@@ -111,8 +115,9 @@ related:
 
 1. ใช้ `OpenAPIHandler` จาก `@orpc/openapi/fetch` หรือ adapter ทีตรงกับ runtime
 2. ตั้งค่า `prefix` ให้ตรงกับ route handler
-3. ใช้ `@orpc/contract` สำหรับ define contract ก่อน implement
-4. ใช้ `ContractRouterClient<typeof contract>` สำหรับ client จาก contract
+3. ใช้ `OpenAPIGenerator` จาก `@orpc/openapi` เพื่อ generate OpenAPI spec document จาก router — ใช้ spec นี้กับ `/run-api-docs` (Scalar serve), `/run-test-api` (import เข้า Bruno ด้วย `bru import openapi` หรือ fuzz ด้วย Schemathesis)
+4. ใช้ `@orpc/contract` สำหรับ define contract ก่อน implement
+5. ใช้ `ContractRouterClient<typeof contract>` สำหรับ client จาก contract
 
 ## Rules
 
