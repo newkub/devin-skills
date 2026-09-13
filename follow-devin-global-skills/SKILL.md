@@ -30,7 +30,7 @@ related:
 
 > Goal: รู้ว่ามี skills อะไรบ้าง
 
-1. ทำ `/list-devin global-skills` เพื่อดู global skills
+1. ทำ `/list-devin-global-skills` เพื่อดู global skills
 2. ถ้า project มี `.devin/skills/` ให้ list ไฟล์ `.devin/skills/*` ด้วย
 3. ถ้ามี project `AGENTS.md` ให้อ่าน `### Skills` section
 4. สร้างรายการ `global` และ `project` skills พร้อม path

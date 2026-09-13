@@ -82,9 +82,9 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **717** top-level skills (1037 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
+The repository currently contains **736** top-level skills (1037 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
-For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
+For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
 Core:
 - `update-docs-agents-md: /update-docs-agents-md`
@@ -107,7 +107,7 @@ Major skill families by current count:
 - `report-*` (27): reporting, diagrams, and visualization helpers — `report` เป็น format dispatcher (`table`, `html`, `numbered`, `codeblock`); `report-config-drift` merged → `check-config-drift`.
 - `update-*` (25): repo, skills, docs, config, runtime, version, and test spec maintenance — `update-devin` (devin config dispatcher), `update-docs` (docs files dispatcher), `update-tests` (test spec dispatcher).
 - `deep-*` (17): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-implement-to-production`, `deep-update-project`.
-- `list-*` (17): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github`.
+- `list-*` (22): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github` route to `list-*-<domain>` top-level skills.
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
 - `open-*` (9): browser, editor, and terminal integration — `open` dispatcher (`explorer`, `github`, `web`, `wezterm`, `windows-terminal`, `zed`); specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
 - `ship-*` (2): `/ship` (entry point — `/update-docs-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.

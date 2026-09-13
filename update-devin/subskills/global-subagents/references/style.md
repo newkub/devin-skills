@@ -10,7 +10,7 @@ description: กฎตรวจสอบ style conventions ของ AGENT.md
 ใช้ backticks สำหรับ:
 
 - `tools` — tool names เช่น `grep`, `edit`
-- `commands` — command names เช่น `/list-devin global-subagents`
+- `commands` — command names เช่น `/list-devin-global-subagents`
 - `file paths` — paths เช่น `AGENT.md`
 - `skill names` — skill names เช่น `update-devin global-subagents`
 

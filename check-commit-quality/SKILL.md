@@ -83,7 +83,7 @@ related:
 - ทุก flag ต้องมี suggested rewrite หรือเหตุผลที่ชัด
 - ไม่ flag bot commits (`dependabot`, `renovate`) เว้นแต่ repo บังคับ format
 
-- ใช้ /list-git commit ถ้าจำเป็น
+- ใช้ /list-git-commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /follow-tool-hk ถ้าจำเป็น (เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`)
 

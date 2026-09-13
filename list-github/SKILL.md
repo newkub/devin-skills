@@ -1,6 +1,6 @@
 ---
 name: list-github
-description: List GitHub resources — branches, issues, PRs, projects, releases, repos, stars ผ่าน subskills
+description: List GitHub resources — branches, issues, PRs, projects, releases, repos, stars ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - all-github-repo
@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม GitHub resource ที่ต้อง list — parent ทำ routing เท่านั้น
+Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง list — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -20,25 +20,25 @@ Dispatch ไป subskill ตาม GitHub resource ที่ต้อง list �
 
 ## Execute
 
-### Subskills
+### List Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `branch` | `subskills/branch/SKILL.md` — branches ใน repo |
-| `issue` | `subskills/issue/SKILL.md` — issues พร้อม filter |
-| `pr` | `subskills/pr/SKILL.md` — pull requests พร้อม status |
-| `project` | `subskills/project/SKILL.md` — GitHub projects |
-| `release` | `subskills/release/SKILL.md` — releases |
-| `repo` | `subskills/repo/SKILL.md` — repositories |
-| `star` | `subskills/star/SKILL.md` — starred repos |
+| `branch` | /list-github-branch — branches ใน repo |
+| `issue` | /list-github-issue — issues พร้อม filter |
+| `pr` | /list-github-pr — pull requests พร้อม status |
+| `project` | /list-github-project — GitHub projects |
+| `release` | /list-github-release — releases |
+| `repo` | /list-github-repo — repositories |
+| `star` | /list-github-star — starred repos |
 
-1. ระบุ domain จาก argument (เช่น `/list-github pr`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+1. ระบุ domain จาก argument (เช่น `/list-github-pr`)
+2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
 - ใช้ `gh` CLI หรือ GitHub MCP tools ตามที่ available
 
 - ใช้ /all-github-repo ถ้าจำเป็น
@@ -47,4 +47,4 @@ Dispatch ไป subskill ตาม GitHub resource ที่ต้อง list �
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้ว list ตาม flow นั้น
+- caller ถูก Dispatch ไป top-level skill ที่ตรง domain แล้ว list ตาม flow นั้น

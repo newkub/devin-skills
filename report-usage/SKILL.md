@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุป session usage และ cost
 
-1. ใช้ `devin_session_search` หรือ `/list-devin session` ดึง sessions ตาม period/tag
+1. ใช้ `devin_session_search` หรือ `/list-devin-session` ดึง sessions ตาม period/tag
 2. ใช้ `devin_billing_tag_manage` ดึง billing tags ถ้ามี
 3. คำนวณ sessions per day/week, success/failure/stopped distribution
 4. ระบุ tag breakdown, recurring task patterns, long-running sessions

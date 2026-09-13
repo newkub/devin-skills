@@ -97,8 +97,8 @@ related:
 - ถ้า user ไม่ระบุ `limit` ใช้ `50` เป็นค่า default
 - ใช้ `/report` สำหรับ output
 
-- ใช้ /list-devin user-requests ถ้าจำเป็น
-- ใช้ /list-devin global-skills ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
+- ใช้ /list-devin-global-skills ถ้าจำเป็น
 - ใช้ /use-bun-shell ถ้าจำเป็น
 
 ## Expected Outcome

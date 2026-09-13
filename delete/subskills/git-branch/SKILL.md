@@ -73,7 +73,7 @@ related:
 - ลบ branch ไม่ลบ tags ทีชี้ไปยัง commits นั้น
 - ถ้าจำเป็นให้ตรวจ tags
 
-- ใช้ /list-git commit ถ้าจำเป็น
+- ใช้ /list-git-commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /resolve-github-pr ถ้าจำเป็น
 

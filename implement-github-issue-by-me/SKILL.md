@@ -39,7 +39,7 @@ related:
 
 > Goal: รวบรวม issues ที่ฉันสร้าง
 
-1. รัน `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` หรือใช้ `/list-github issue`
+1. รัน `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` หรือใช้ `/list-github-issue`
 2. จัดลำดับตาม labels/priority ถ้ามี มิเช่นนั้นเรียงตาม createdAt เก่า → ใหม่
 3. แสดงรายการ issues ให้ user ดูก่อน implement
 4. ถ้าไม่มี open issues → report และจบ

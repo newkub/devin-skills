@@ -26,7 +26,7 @@ related:
 
 > Goal: map related graph ทั้งชุด skills
 
-1. ใช้ `/list-devin global-skills` ถ้ามี — หรือสร้างเอง: parse `related:` ของทุก SKILL.md
+1. ใช้ `/list-devin-global-skills` ถ้ามี — หรือสร้างเอง: parse `related:` ของทุก SKILL.md
 2. นับ inbound count ต่อ skill — 0 inbound = candidate dead
 3. ทำ `/check-skills-related` และ `/check-broken-skills-references` ร่วมเพื่อ graph ที่ clean
 

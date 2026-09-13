@@ -23,7 +23,7 @@
 
 > Goal: เลือก subagents ที่ตรงกับ subtasks
 
-1. ทำ `/list-devin global-subagents` เพื่อดู subagent pool ที่มี
+1. ทำ `/list-devin-global-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
 3. ถ้าไม่มี role ที่ต้องการ → ทำ `/use-related-skills` หรือสร้าง AGENT.md ใหม่ตาม `/update-devin global-subagents`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน

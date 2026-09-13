@@ -71,7 +71,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (github pr)
 
 - ใช้ /open github ถ้าจำเป็น
-- ใช้ /list-github pr ถ้าจำเป็น
+- ใช้ /list-github-pr ถ้าจำเป็น
 - ใช้ /merge github-pr ถ้าจำเป็น
 - ใช้ /resolve-github-actions ถ้าจำเป็น
 

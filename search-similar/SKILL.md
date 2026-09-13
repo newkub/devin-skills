@@ -37,7 +37,7 @@ related:
 
 > Goal: หา similar ด้วย name matching
 
-1. ทำ `/list-devin global-skills` เพื่อดูรายการ skills
+1. ทำ `/list-devin-global-skills` เพื่อดูรายการ skills
 2. หา skills ทีมี prefix หรือ name คล้าย target
 3. หา skills ทีมี keywords ใน `description` หรือ `name`
 4. บันทึก candidates ทีมี score > 0

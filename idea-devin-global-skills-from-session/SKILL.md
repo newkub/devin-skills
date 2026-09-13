@@ -27,7 +27,7 @@ related:
 
 > Goal: รวบรวมสิ่งที่ทำใน session
 
-1. ทบทวน user requests และงานที่ทำจริงใน session — ใช้ `/list-devin user-requests` ถ้าต้องการ list
+1. ทบทวน user requests และงานที่ทำจริงใน session — ใช้ `/list-devin-user-requests` ถ้าต้องการ list
 2. หา command sequences ที่ทำซ้ำ (git workflows, validation scripts, batch operations)
 3. หา manual multi-step processes ที่ควรเป็น workflow เดียว
 

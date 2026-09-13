@@ -25,8 +25,8 @@ related:
 > Goal: รวบรวมข้อมูลจากทุก layer
 
 1. อ่าน `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-2. ทำ `/list-devin global-skills`
-3. ทำ `/list-devin global-subagents`
+2. ทำ `/list-devin-global-skills`
+3. ทำ `/list-devin-global-subagents`
 4. บันทึก versions, last updated, และ critical rules
 
 ### 2. Run Update Workflows

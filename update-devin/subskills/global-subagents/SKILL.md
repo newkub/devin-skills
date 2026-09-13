@@ -36,7 +36,7 @@ Review-only → `/review-devin-global-harness` (layer `subagents`)
 > Goal: ระบุ subagent ที่ต้องสร้างหรืออัปเดต
 
 1. รับชื่อ agent และบทบาทจาก user
-2. ทำ `/list-devin global-subagents` เพื่อยืนยันว่า agent มีอยู่หรือไม่
+2. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า agent มีอยู่หรือไม่
 3. ระบุ target directory: `<agents-root>/<agent-name>/`
 4. ถ้าชื่อซ้ำหรือไม่ชัด → ทำ `/ask-me`
 
@@ -90,7 +90,7 @@ Review-only → `/review-devin-global-harness` (layer `subagents`)
 > Goal: ใช้หลาย subagents ตาม roles ทำงานขนานกัน
 
 1. ถ้างานมีหลายด้านอิสระกัน → อ่าน [references/orchestrate-subagents.md](references/orchestrate-subagents.md)
-2. ทำ `/list-devin global-subagents` เพื่อเลือก roles
+2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
 3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
 4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/deep-review-then-fix`
 5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/review-workflow`

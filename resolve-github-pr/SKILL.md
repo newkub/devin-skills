@@ -124,7 +124,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 - GitHub จะปิด issue อัตโนมัติเมื่อ PR merge
 
 - ใช้ /create-github-pr ถ้าจำเป็น
-- ใช้ /list-github pr ถ้าจำเป็น
+- ใช้ /list-github-pr ถ้าจำเป็น
 - ใช้ /merge github-pr ถ้าจำเป็น
 
 ## Expected Outcome

@@ -126,7 +126,7 @@ related:
 
 - ใช้ `/git-push` ถ้าจำเป็นต้อง push ก่อน
 - ใช้ `/follow-dot-github` ถ้าจำเป็นต้องตรวจ GitHub settings
-- ใช้ `/list-github repo` ถ้าจำเป็นต้อง list repos
+- ใช้ `/list-github-repo` ถ้าจำเป็นต้อง list repos
 - ใช้ `/list-cloudflare-projects` ถ้าจำเป็นต้องหา Cloudflare URL
 - ใช้ `/create-github-repo` ถ้า repo ยังไม่มี
 - ใช้ `/ask-me` ถ้าไม่แน่ใจเรื่อง topics หรือ homepage

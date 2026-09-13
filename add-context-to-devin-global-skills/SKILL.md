@@ -51,7 +51,7 @@ related:
 
 > Goal: หา skill ทีอาจเหมาะสม
 
-1. ทำ `/list-devin global-skills` เพื่อดู skills ทีมี
+1. ทำ `/list-devin-global-skills` เพื่อดู skills ทีมี
 2. ทำ `/use-related-skills` เพื่อหา skills ทีเกี่ยวข้อง
 3. ใช้ `grep` ค้นหา skill ทีเกี่ยวข้องกับ context แบบ case-insensitive
 4. อ่าน skill ทีมีความเกี่ยวข้องสูง 2-4 ไฟล์

@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับดู branches ใน local repository และ remote — ไม่รวม GitHub API (ใช้ `/list-github branch` สำหรับ GitHub branches)
+ใช้สำหรับดู branches ใน local repository และ remote — ไม่รวม GitHub API (ใช้ `/list-github-branch` สำหรับ GitHub branches)
 
 ## Execute
 
@@ -90,7 +90,7 @@ related:
 
 ### Non-Redundancy
 
-- GitHub branches อยู่ใน `/list-github branch` แล้ว
+- GitHub branches อยู่ใน `/list-github-branch` แล้ว
 - Branch operations อยู่ใน `/follow-tool-git` แล้ว
 - Stash listing อยู่ใน `/follow-tool-git` แล้ว
 

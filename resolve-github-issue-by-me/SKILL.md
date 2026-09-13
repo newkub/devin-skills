@@ -38,7 +38,7 @@ related:
 
 > Goal: รวบรวม issues ที่สร้างโดยฉัน
 
-1. รัน `gh issue list --author @me --state open --limit 50` หรือใช้ `/list-github issue`
+1. รัน `gh issue list --author @me --state open --limit 50` หรือใช้ `/list-github-issue`
 2. ถ้าระบุ issue number → ใช้ `gh issue view <issue>` ตรวจสอบว่า author เป็นฉัน
 3. อ่าน body และ comments ของแต่ละ issue เพื่อดู acceptance criteria
 4. ถ้าไม่มี open issues ที่ฉันสร้าง → report และจบ

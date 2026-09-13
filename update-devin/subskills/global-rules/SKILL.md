@@ -38,8 +38,8 @@ related:
 
 > Goal: รวบรวม rules ทีกระจายอยู่
 
-1. ทำ `/list-devin global-skills` หรือ `/scan-codebase`
-2. ทำ `/list-devin global-subagents`
+1. ทำ `/list-devin-global-skills` หรือ `/scan-codebase`
+2. ทำ `/list-devin-global-subagents`
 3. อ่าน `SKILL.md` และ `AGENT.md` ทีมี rules
 4. ระบุ rules ทีซ้ำกับ global rules หรือควรย้ายขึ้นไป global
 

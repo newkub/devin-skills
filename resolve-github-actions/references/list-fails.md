@@ -14,7 +14,7 @@
 - repo-scoped (default ถ้าอยู่ใน git repo): ตรวจ repo ปัจจุบันหรือ `--repo <owner/repo>`
 - account-wide: ระบุ `--all` เพื่อตรวจทุก personal และ org repositories ที user เป็นสมาชิก
 
-ดูเพิ่มเติม: /list-ci-configs, /list-github repo, /list-deployment-fails
+ดูเพิ่มเติม: /list-ci-configs, /list-github-repo, /list-deployment-fails
 
 ## Execute
 

@@ -43,7 +43,7 @@ related:
 
 1. วิเคราะห์ dependencies จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` หรือ `requirements.txt`
 2. ดึงรายชื่อ dependencies ที่มี skill pattern ใน Devin ecosystem
-3. ทำ `/list-devin global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
+3. ทำ `/list-devin-global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
 4. สำหรับแต่ละ dependency:
    - ถ้ามี global skill ที่ตรง → อ้างอิง global skill แทน ไม่สร้างใหม่
    - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → ใช้ `/update-devin-global-skills` สร้างใน `%APPDATA%\devin\skills\` แล้วอ้างอิงใน project

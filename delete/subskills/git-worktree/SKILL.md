@@ -24,7 +24,7 @@ related:
 > Goal: ระบุ worktree ทีต้องการลบ
 
 1. รัน `git worktree list`
-2. หรือทำ `/list-git worktree`
+2. หรือทำ `/list-git-worktree`
 3. ยื่นยัน path ของ worktree ทีต้องการลบ
 
 ### 2. Check Status

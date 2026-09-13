@@ -21,7 +21,7 @@ related:
 - Target: package name (`vite`, `react`), repo (`owner/repo`), หรือ skill name (resolve package จาก `references/package-manifest.md`)
 - Sources ตามลำดับ: GitHub Releases API → official changelog/releases page → official blog post → registry metadata
 - Read-only — รายงาน findings; การแก้ไขทำโดย `/update-devin-global-skills` หรือ `/update-version-to-latest`
-- ต่างจาก `/list-github release` ที่ list releases ดิบ — skill นี้อ่าน notes content และเทียบกับ documented version
+- ต่างจาก `/list-github-release` ที่ list releases ดิบ — skill นี้อ่าน notes content และเทียบกับ documented version
 
 ## Execute
 

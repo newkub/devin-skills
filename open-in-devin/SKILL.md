@@ -65,7 +65,7 @@ related:
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /create-report-in-dot-devin ถ้าจำเป็น
-- ใช้ /list-devin user-requests ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
 - ใช้ /open explorer ถ้าจำเป็น
 
 ## Expected Outcome

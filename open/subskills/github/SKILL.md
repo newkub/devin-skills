@@ -19,7 +19,7 @@ related:
 - `org` / `personal`: เปิด repo ใน org หรือ personal account ตาม context
 - ไม่แก้ไข repo ใด ๆ
 
-ดูเพิ่มเติม: /all-github-repo, /list-github repo
+ดูเพิ่มเติม: /all-github-repo, /list-github-repo
 
 ## Execute
 

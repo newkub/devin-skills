@@ -31,7 +31,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 
 > Goal: รู้ว่ามี branch อะไรบ้างและ branch ไหนเป็นของ user
 
-1. ทำ `/list-git branch` หรือ `git branch -a` เก็บรายชื่อทั้งหมด
+1. ทำ `/list-git-branch` หรือ `git branch -a` เก็บรายชื่อทั้งหมด
 2. ระบุ user identity จาก `git config user.name` / `user.email` หรือ `gh auth status`
 3. ตรวจ branches ที่ merged แล้วด้วย `git branch --merged main`
 4. ตรวจ unmerged branches ด้วย `git branch --no-merged main`

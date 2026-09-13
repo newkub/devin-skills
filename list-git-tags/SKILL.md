@@ -87,8 +87,8 @@ related:
 ### Non-Redundancy
 
 - Tag operations อยู่ใน `/follow-tool-git` แล้ว
-- GitHub releases อยู่ใน `/list-github release` แล้ว
-- Branch listing อยู่ใน `/list-git branch` แล้ว
+- GitHub releases อยู่ใน `/list-github-release` แล้ว
+- Branch listing อยู่ใน `/list-git-branch` แล้ว
 
 ## Expected Outcome
 

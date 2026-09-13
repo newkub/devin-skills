@@ -36,7 +36,7 @@ related:
 
 ใช้เมื่อต้องหา skill สำหรับงานประเภทหนึ่ง หรือต้องการดู skills ทีเกี่ยวข้องกับ ecosystem เฉพาะ หรืออยากรู้ว่า action นั้นควรใช้ tool ไหนและติดตั้งในเครื่องหรือยัง
 
-ดูเพิ่มเติม: /follow-devin-global-skills, /update-devin-global-skills, /search-skills, /list-devin global-skills, /suggest-me, /ask-me, /idea, /check-skills-related, /review-devin-global-harness, /check-my-global-cli
+ดูเพิ่มเติม: /follow-devin-global-skills, /update-devin-global-skills, /search-skills, /list-devin-global-skills, /suggest-me, /ask-me, /idea, /check-skills-related, /review-devin-global-harness, /check-my-global-cli
 
 ## Execute
 

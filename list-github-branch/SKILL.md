@@ -57,7 +57,7 @@ related:
 - ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - แสดงข้อมูลสำคัญ: branch name, last commit SHA, protected status
 
-- ใช้ /list-git branch ถ้าจำเป็น
+- ใช้ /list-git-branch ถ้าจำเป็น
 - ใช้ /cleanup git-branch ถ้าจำเป็น
 
 ## Expected Outcome

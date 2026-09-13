@@ -34,7 +34,7 @@ related:
 
 > Goal: รู้ skills ทั้งหมดที่มี
 
-1. ทำ `/list-devin global-skills` หรือ `/scan-codebase`
+1. ทำ `/list-devin-global-skills` หรือ `/scan-codebase`
 2. ดู `name` และ `description` ของแต่ละ skill
 3. จัดกลุ่มตาม category
 4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว

@@ -37,14 +37,14 @@ related:
 > Goal: สิ่งที่ต้อง attention บน remote
 
 1. ทำ `/resolve-github-actions` — workflows ที่ fail ล่าสุด
-2. ทำ `/list-github pr` — PRs ที่รอ review (ของตัวเอง + ที่ถูก request)
-3. ทำ `/list-github issue` — issues ที่ assigned/mention
+2. ทำ `/list-github-pr` — PRs ที่รอ review (ของตัวเอง + ที่ถูก request)
+3. ทำ `/list-github-issue` — issues ที่ assigned/mention
 
 ### 3. Branch Hygiene
 
 > Goal: branches ที่นานเกิน
 
-1. ทำ `/list-git branch` — branches ที่ไม่ active นาน หรือ merged แล้วยังไม่ลบ
+1. ทำ `/list-git-branch` — branches ที่ไม่ active นาน หรือ merged แล้วยังไม่ลบ
 2. flag branches ที่ diverge จาก main มาก — rebase risk
 
 ### 4. Compile Digest

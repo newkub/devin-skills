@@ -1,6 +1,6 @@
 ---
 name: list-devin
-description: List Devin resources — global hooks, MCP, skills, subagents, sessions, user requests ผ่าน subskills
+description: List Devin resources — global hooks, MCP, skills, subagents, sessions, user requests ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills
@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม Devin resource ที่ต้อง list — parent ทำ routing เท่านั้น
+Dispatch ไป top-level skill ตาม Devin resource ที่ต้อง list — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -20,29 +20,29 @@ Dispatch ไป subskill ตาม Devin resource ที่ต้อง list —
 
 ## Execute
 
-### Subskills
+### List Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `global-hooks` | `subskills/global-hooks/SKILL.md` — global hooks config |
-| `global-mcp` | `subskills/global-mcp/SKILL.md` — global MCP servers |
-| `global-skills` | `subskills/global-skills/SKILL.md` — global skills catalog |
-| `global-subagents` | `subskills/global-subagents/SKILL.md` — global subagent profiles |
-| `session` | `subskills/session/SKILL.md` — Devin sessions |
-| `user-requests` | `subskills/user-requests/SKILL.md` — user request history |
+| `global-hooks` | /list-devin-global-hooks — global hooks config |
+| `global-mcp` | /list-devin-global-mcp — global MCP servers |
+| `global-skills` | /list-devin-global-skills — global skills catalog |
+| `global-subagents` | /list-devin-global-subagents — global subagent profiles |
+| `session` | /list-devin-session — Devin sessions |
+| `user-requests` | /list-devin-user-requests — user request history |
 
-1. ระบุ domain จาก argument (เช่น `/list-devin global-skills`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+1. ระบุ domain จาก argument (เช่น `/list-devin-global-skills`)
+2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
-- output ต้องเป็นตารางผ่าน `/report` ตาม convention ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
+- output ต้องเป็นตารางผ่าน `/report` ตาม convention ของ skill ปลายทาง
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้ว list ตาม flow นั้น
+- caller ถูก Dispatch ไป top-level skill ที่ตรง domain แล้ว list ตาม flow นั้น

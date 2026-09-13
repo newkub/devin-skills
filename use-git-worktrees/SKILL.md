@@ -136,7 +136,7 @@ related:
 - รัน `git worktree prune` เพื่อลบ tracking ทีตกค้าง
 - ไม่ลบ worktree โดยตรงเกินไปก่อน `git worktree remove`
 
-- ใช้ /list-git worktree ถ้าจำเป็น
+- ใช้ /list-git-worktree ถ้าจำเป็น
 - ใช้ /delete git-worktree ถ้าจำเป็น
 - ใช้ /cleanup worktree ถ้าจำเป็น
 

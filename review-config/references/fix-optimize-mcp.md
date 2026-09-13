@@ -18,7 +18,7 @@
 
 > Goal: map servers และ tools ทั้งหมดที่ load
 
-1. ใช้ `/list-devin global-mcp` ดู servers ที่ติดตั้ง
+1. ใช้ `/list-devin-global-mcp` ดู servers ที่ติดตั้ง
 2. นับ tools ต่อ server — บาง server expose หลายสิบ tools ที่กิน context
 3. ระบุ scope: global vs project-level installs
 
