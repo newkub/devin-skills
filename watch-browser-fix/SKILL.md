@@ -5,7 +5,7 @@ argument-hint: "[url]"
 related:
   - watch-browser
   - watch-browser-console
-  - improve-uxui-and-features
+  - improve-uxui
   - resolve-errors
   - run-dev
   - run-program
@@ -21,7 +21,7 @@ related:
 
 - ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-improve-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
-- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui-and-features`
+- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
 
 ## Execute
 

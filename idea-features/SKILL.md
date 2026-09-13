@@ -3,7 +3,7 @@ name: idea-features
 description: สร้างไอเดียฟีเจอรใหม่/ขยาย และตอบกลับในแชท ไม่สร้างไฟล์
 argument-hint: "[topic]"
 related:
-  - bench-competitors-and-deep-plan
+  - bench-competitors
   - suggest-me
   - enhance-prompt
   - think-reframe
@@ -27,7 +27,7 @@ related:
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์
 - ไม่ implement
-- ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors-and-deep-plan` (features dimension อยู่ใน step 2)
+- ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
 - ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/plan` หรือ `/implement-features-to-mvp`
 
 - ดูเพิ่มเติม: /report-uxui-sketch

@@ -13,7 +13,7 @@ related:
   - run-docs
   - create-report-in-dot-devin
   - watch-browser
-  - improve-uxui-and-features
+  - improve-uxui
 ---
 
 ## Goal
@@ -26,7 +26,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
 - รองรับ `update-docs features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/improve-uxui-and-features` — เป็น input สำหรับอัปเดต docs
+- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/improve-uxui` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 

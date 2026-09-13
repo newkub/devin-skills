@@ -1,6 +1,6 @@
 ---
-name: bench-competitors-and-deep-plan
-description: ศึกษาคู่แข่ง วางแผนลึก และปรับปรุง project ให้ดีกว่าในทุกมิติ
+name: bench-competitors
+description: ศึกษาคู่แข่งแล้ว implement-to-production จน project ดีกว่าทุกมิติ
 argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
@@ -10,6 +10,7 @@ related:
   - deep-thinking
   - plan
   - deep-plan
+  - implement-to-production
   - report
   - idea
   - ask-me
@@ -21,22 +22,22 @@ related:
 
 ## Goal
 
-ศึกษาคู่แข่ง วางแผนลึก และปรับปรุง project ให้ดีกว่าในทุกมิติ
+ศึกษาคู่แข่งด้วย `/deep-research` วางแผนด้วย `/deep-plan` แล้ว `/implement-to-production` จน project ดีกว่าคู่แข่งในทุกมิติ
 
 ## Scope
 
 ครอบคลุมทุกมิติของ product: features, performance, UX/UI, architecture, DX, security, scalability, business ไม่ใช่แค่มิติใดมิติหนึ่ง
 
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
-- ถ้าต้องการไอเดีย features ใหม่ → ใช้ `/idea-features` หรือ `/idea-features`
+- skill นี้ implement จริงจนถึง production ไม่ใช่แค่ plan — ถ้าต้องการแค่ไอเดีย features → ใช้ `/idea-features`
 
-ดูเพิ่มเติม: /deep-review, /deep-plan
+ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production
 
 ## Execute
 
 ### 1. Research Competitors
 
-> Goal: วิจัยคู่แข่งที่ relevant
+> Goal: วิจัยคู่แข่งที่ relevant ด้วย deep-research
 
 1. รับ `<scope>` จาก argument หรือ conversation context
 2. ทำ `/deep-research` เพื่อระบุ direct และ indirect competitors
@@ -69,7 +70,7 @@ related:
 
 ### 4. Deep Plan Improvements
 
-> Goal: วางแผนลึกเพื่อปรับปรุงให้ดีกว่าคู่แข่ง
+> Goal: วางแผนลึกด้วย deep-plan เพื่อปรับปรุงให้ดีกว่าคู่แข่ง
 
 1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ละเอียดครอบทุกมิติ — ระบุ per-dimension actions, dependencies, sequencing และ success metrics ที่เทียบกับคู่แข่งได้
@@ -77,32 +78,41 @@ related:
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
 5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
 
-### 5. Report Results
+### 5. Implement To Production
 
-> Goal: บันทึกผล benchmark เป็น report ใน .devin
+> Goal: implement-to-production ตาม plan จน production-ready ไม่เหลือ gap
 
-1. ทำ `/create-report-in-dot-devin` บันทึกผล benchmark ลง `.devin/reports/<workspace>/` — title เช่น `benchmark-competitors`
-2. รวม comparison matrix, gap list และ prioritized feature list ใน report
-3. รายงาน `REPORT_PATH` ให้ user
+1. ทำ `/implement-to-production` ตาม `PLAN_PATH` — implement ทุก gap เป็น production code จริง end-to-end ไม่เหลือ TODO/MOCK/placeholder
+2. ทำ `/run-check` หลัง implement แต่ละ batch เพื่อตรวจ lint, typecheck และ scan
+3. ทำ `/run-test-all` เพื่อ verify features ทำงานและไม่พังของเดิม
+4. ติดตามความคืบหน้าอย่างสม่ำเสมอ — ปิด gap ทีละรายการตาม priority Critical → Nice-to-have
 
-### 6. Implement Improvements
+### 6. Verify And Re-benchmark
 
-> Goal: ปรับปรุง project ตาม roadmap
+> Goal: ยืนยันว่าดีกว่าคู่แข่งจริงทุกมิติ ไม่ใช่แค่ implement เสร็จ
 
-1. ทำ `/ship` เพื่อ implement improvements ตาม `PLAN_PATH`
+1. ทำ `/deep-review` สำหรับ performance improvements
+2. ทำ `/deep-review` สำหรับ UX/UI improvements
+3. Re-benchmark เทียบ competitors ซ้ำทุกมิติ — อัปเดต status ในตารางเปรียบเทียบ
+4. ถ้ายังไม่ดีกว่าคู่แข่งในมิติใด → loop กลับ Step 4 เพื่อ `/deep-plan` + `/implement-to-production` เฉพาะ gap ที่เหลือ จนกว่าจะดีกว่าครบทุกมิติ
+5. หยุด loop เมื่อดีกว่าคู่แข่งทั้งหมด หรือ gap ที่เหลือต้องการข้อมูล/decision จาก user → ใช้ `/ask-me`
+
+### 7. Report Results
+
+> Goal: บันทึกผล benchmark และผลการ implement เป็น report ใน .devin
+
+1. ทำ `/create-report-in-dot-devin` บันทึกผลลง `.devin/reports/<workspace>/` — title เช่น `benchmark-competitors`
+2. รวม comparison matrix, gap list, prioritized feature list และสถานะ implement ใน report
+3. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
+4. รายงาน `REPORT_PATH` ให้ user
+
+### 8. Ship
+
+> Goal: ส่งมอบเมื่อดีกว่าคู่แข่งครบทุกมิติ
+
+1. ทำ `/ship` เพื่อ ship improvements ทั้งหมด
 2. หลัง `/ship` เสร็จ ลบ `PLAN_PATH`
-3. ทำ `/deep-review` สำหรับ performance improvements
-4. ทำ `/deep-review` สำหรับ UX/UI improvements
-5. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
-
-### 7. Update Report
-
-> Goal: อัปเดตรายงานเปรียบเทียบ
-
-1. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
-2. อัปเดต status ในตารางเปรียบเทียบ
-3. Re-benchmark หลังการปรับปรุง แล้วทำ `/create-report-in-dot-devin` ใหม่
-4. ทำ `/suggest-next-action` โดยแนะนำ `/idea-features` ถ้าต้องการขยายไอเดียต่อ
+3. ทำ `/suggest-next-action` โดยแนะนำ `/idea-features` ถ้าต้องการขยายไอเดียต่อ
 
 ## Rules
 
@@ -138,10 +148,10 @@ related:
 
 ### 5. Implementation Discipline
 
-- สร้าง deep plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
-- ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง
+- สร้าง deep plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement เสมอ
+- implement ด้วย `/implement-to-production` เท่านั้น — ทุก gap ต้องเป็น production code จริง ไม่เหลือ TODO/MOCK
+- ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง — ไม่หยุดแค่ research หรือ plan
 - ลบ plan หลัง `/ship` เสร็จ
-- หยุดเมื่อสำเร็จเป้าหมายในทุกมิติ
 - ติดตามความคืบหน้าอย่างสม่ำเสมอ
 - Re-benchmark หลังการปรับปรุงแต่ละครั้ง
 
@@ -156,7 +166,8 @@ related:
 
 - Feature comparison matrix เทียบ project กับคู่แข่ง 3-5 ราย พร้อม prioritized gap list (impact + effort) และ unique features ที่ต้องรักษา
 - Deep plan roadmap ครอบทุกมิติใน `.devin/plan/<workspace>/` ถูกสร้างผ่าน `/create-plan-in-dot-devin` ก่อน implement และลบหลัง `/ship` เสร็จ
+- ทุก gap ถูก `/implement-to-production` เป็น production code จริง ไม่เหลือ TODO/MOCK
 - ไฟล์ report ใน `.devin/reports/<workspace>/` จาก `/create-report-in-dot-devin`
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
-- Project ดีกว่าคู่แข่งในทุกมิติ
+- Project ดีกว่าคู่แข่งในทุกมิติ — verified ด้วย re-benchmark
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark
