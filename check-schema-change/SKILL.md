@@ -6,7 +6,6 @@ related:
   - report-database-schema
   - review-database
   - diff-file-history
-  - compare-directories
   - check-migrations
   - report
   - suggest-next-action
@@ -37,7 +36,7 @@ related:
 > Goal: หา diff ของ schema
 
 1. ถ้ามี `base-ref` และ `head-ref` → ใช้ `/diff-file-history` เปรียบเทียบ schema files
-2. ถ้าไม่มี ref → ใช้ `git diff --stat` หรือ `/compare-directories` ระหว่าง working tree กับ `HEAD`
+2. ถ้าไม่มี ref → ใช้ `git diff --stat` ระหว่าง working tree กับ `HEAD`
 3. แยก diff เป็น added/removed/modified tables, columns, indexes, constraints
 
 ### 3. Check Migrations
