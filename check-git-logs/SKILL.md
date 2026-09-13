@@ -6,7 +6,7 @@ argument-hint: "[scope]"
 related:
   - deep-debug
   - git-file-history
-  - restore
+  - restore-files
   - report
   - suggest-next-action
 ---
@@ -20,10 +20,10 @@ related:
 - ระบุไฟล์เป้าหมายและเงื่อนไขทีต้องการหา
 - รองรับ local git repo และ remote GitHub repo
 - แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/restore`
+- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/restore-files`
 - Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
-- ดูเพิ่มเติม: /git-file-history, /restore from-my-dotfiles
+- ดูเพิ่มเติม: /git-file-history, /restore-files from-my-dotfiles
 
 ## Execute
 
@@ -99,11 +99,11 @@ related:
 - หยุดทันทีเมื่อเจอ commit แรกทีตรงเงื่อนไข (ล่าสุดทียังตรง)
 - ถ้า user ต้องการ list ทั้งหมด → ให้ระบุ explicitly
 
-- ใช้ /restore from-git-log ถ้าจำเป็น
+- ใช้ /restore-files from-git-log ถ้าจำเป็น
 
 ## Expected Outcome
 
 - หา commit ทีตรงเงื่อนไขได้
 - รายงาน commit SHA, date, author, message และ content
 - รองรับทั้ง local และ remote repo
-- ใช้งานได้กับ `/deep-debug` และ `/restore`
+- ใช้งานได้กับ `/deep-debug` และ `/restore-files`

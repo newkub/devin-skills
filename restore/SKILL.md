@@ -1,45 +1,32 @@
 ---
 name: restore
-description: กู้คืน files/state — จาก git log, devin history, dotfiles หรือ deleted files ผ่าน subskills
+description: Alias for restore-files — renamed to clarify it restores deleted files
 argument-hint: "[domain]"
 related:
-  - check-git-logs
-  - git-file-history
-  - ask-me
+  - restore-files
 ---
 
 ## Goal
 
-Dispatch ไป subskill ตาม restore source — parent ทำ routing เท่านั้น
+Skill นี้ถูก rename เป็น `/restore-files` แล้ว — ใช้ `/restore-files` เป็น canonical skill (dispatcher: `deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`)
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: restore-deleted-file, restore-from-devin-history, restore-from-git-log, restore-from-my-dotfiles)
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+Callers ที่ใช้ชื่อเดิมจะถูกส่งต่อไปยัง `/restore-files` เสมอ
 
 ## Execute
 
-### Subskills
+### 1. Forward To Canonical
 
-| Domain | Subskill |
-|---|---|
-| `deleted-file` | `subskills/deleted-file/SKILL.md` — กู้ไฟล์ที่ถูกลบ |
-| `from-devin-history` | `subskills/from-devin-history/SKILL.md` — กู้จาก Devin session history |
-| `from-git-log` | `subskills/from-git-log/SKILL.md` — กู้จาก git log ถอยหลังจนเจอ |
-| `from-my-dotfiles` | `subskills/from-my-dotfiles/SKILL.md` — กู้ config จาก dotfiles repo |
+> Goal: ส่งต่อไปยัง canonical skill
 
-1. ระบุ domain จาก argument (เช่น `/restore from-git-log`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. ทำ `/restore-files` ด้วย arguments เดิม
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
-- restore ที่ overwrite ไฟล์ปัจจุบันต้อง confirm ก่อนเสมอ
-
-- ใช้ /check-git-logs ถ้าจำเป็น
-- ใช้ /git-file-history ถ้าจำเป็น
+- ห้ามเพิ่ม workflow เฉพาะใน alias นี้ — แก้ที่ canonical skill เท่านั้น
+- เก็บไว้เพื่อ backward compatibility กับ callers ที่ใช้ชื่อเดิม
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง source แล้วกู้คืนตาม flow นั้น
+- ผลลัพธ์เหมือนการเรียก `/restore-files` โดยตรง

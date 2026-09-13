@@ -4,7 +4,7 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 argument-hint: "[file]"
 related:
   - deep-debug
-  - restore
+  - restore-files
   - ask-me
 ---
 ## Goal
@@ -95,7 +95,7 @@ related:
 - ไม่ตอบคำถามก่อนรวบรวมข้อมูลครบ
 
 - ใช้ /deep-debug ถ้าจำเป็น
-- ใช้ /restore from-git-log ถ้าจำเป็น
+- ใช้ /restore-files from-git-log ถ้าจำเป็น
 
 ## Expected Outcome
 

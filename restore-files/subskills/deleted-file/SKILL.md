@@ -3,7 +3,7 @@ name: restore-deleted-file
 description: กู้ไฟล์ที่ถูกลบ — จาก recycle bin, git history หรือ editor backups
 argument-hint: "<path-or-name>"
 related:
-  - restore
+  - restore-files
 ---
 
 ## Goal
@@ -38,7 +38,7 @@ related:
 
 > Goal: กู้จาก git objects
 
-1. ทำ `/restore from-git-log` — ค้น commit ที่ไฟล์ยังมี: `git log --all --diff-filter=D -- <path>` หรือ `-- "**/<name>"`
+1. ทำ `/restore-files from-git-log` — ค้น commit ที่ไฟล์ยังมี: `git log --all --diff-filter=D -- <path>` หรือ `-- "**/<name>"`
 2. `git show <commit>:<path>` restore content หรือ `git checkout <commit>~1 -- <path>`
 3. เช็ค stash และ reflog ด้วย — `git stash list`, `git fsck --unreachable` สำหรับ dangling objects
 4. ถ้าไฟล์ไม่เคย commit → ขั้นต่อไป

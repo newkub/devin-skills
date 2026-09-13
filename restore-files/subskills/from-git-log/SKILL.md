@@ -3,7 +3,7 @@ name: restore-from-git-log
 description: กู้คืนไฟล์จาก git log โดยเริ่มจาก commit ล่าสุดถอยหลังจนกว่าจะพบ
 argument-hint: "[scope]"
 related:
-  - restore
+  - restore-files
   - deep-debug
   - check-git-logs
   - follow-tool-git
@@ -20,7 +20,7 @@ related:
 ใช้สำหรับ restore ไฟล์จาก commit ในประวัติ git โดยเริ่มจาก commit ล่าสุดและเดินกลับทีละ commit
 ไม่ใช้สำหรับ restore จาก stash หรือ reflog — ใช้ `/follow-tool-git` แทน
 
-ดูเพิ่มเติม: /restore from-my-dotfiles
+ดูเพิ่มเติม: /restore-files from-my-dotfiles
 
 ## Execute
 

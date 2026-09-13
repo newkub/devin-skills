@@ -114,7 +114,7 @@ Major skill families by current count:
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
 - `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui` (มี subskills: contrast, responsive, states).
 - `resolve-*` (4): error/CI/issue/conflict resolution — `resolve-errors` absorbs `resolve-cicd`, `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`.
-- `restore-*` (1→dispatcher): `restore` (`deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`).
+- `restore-*` (1→dispatcher): `restore-files` (`deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`); `restore` = alias stub.
 - `idea-*` (1→dispatcher): `idea` (`features`, `merge`, `naming`, `uxui-features`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
 - `merge-*` (1→dispatcher): `merge` (`all-branch-by-me-to-main`, `git-branch`, `github-pr`).
 - `convert-*` (1→dispatcher): `convert` (`esm`, `files-format`, `git-submodules`, `scripts`, `svg`).

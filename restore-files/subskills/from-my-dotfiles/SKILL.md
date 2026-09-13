@@ -3,7 +3,7 @@ name: restore-from-my-dotfiles
 description: กู้คืน dotfiles จาก git log ของ chezmoi repo แล้ว chezmoi apply
 argument-hint: "[scope]"
 related:
-  - restore
+  - restore-files
   - follow-tool-git
   - check-git-logs
   - deep-debug
@@ -20,7 +20,7 @@ related:
 
 ใช้เมื่อ dotfiles บนเครื่องหายหรือเสียหาย และต้องการ restore จากประวัติของ dotfiles repo ทีจัดการด้วย chezmoi
 
-ดูเพิ่มเติม: /restore from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
+ดูเพิ่มเติม: /restore-files from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
 
 ## Execute
 
