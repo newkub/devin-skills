@@ -1,7 +1,7 @@
 ---
 name: deep-research
 description: ค้นหาข้อมูลลึกจาก multiple sources — packages, repos, docs, benchmarks, security, compatibility
-argument-hint: "[query]"
+argument-hint: "[query|report]"
 related:
   - rethink
   - research-dependencies
@@ -21,6 +21,15 @@ related:
 ใช้สำหรับงานที่ต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ libraries, หา best practices, ตรวจสอบ compatibility, benchmarks, security, migration, licensing ไม่ใช่การค้นหาเร็วๆ (ใช้ `/learn-web`) และไม่ใช่การอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `report-findings` | `subskills/report-findings/SKILL.md` — research report พร้อม sources + confidence |
+
+1. ถ้า argument เป็น `report` → อ่าน `subskills/report-findings/SKILL.md` แล้วทำตาม flow — ใช้ findings ที่มีอยู่ ไม่ research ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 0-9 ตามปกติ โดย Step 9 อ่าน subskill `report-findings` มา execute หลัง synthesize
 
 ### 0. Dispatch To Focused Research Skill
 

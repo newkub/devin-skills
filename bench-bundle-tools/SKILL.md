@@ -1,7 +1,7 @@
 ---
 name: bench-bundle-tools
 description: Benchmark เทียบ bundlers บน project เดียวกัน — build time, output size และ features
-argument-hint: "[tools-to-compare]"
+argument-hint: "[tools-to-compare|report]"
 related:
   - run-build
   - report-before-after
@@ -19,6 +19,15 @@ related:
 - Evidence-gathering: ผลลัพธ์คือข้อมูลประกอบการตัดสินใจ — migration จริงทำผ่าน `/relocation` หรือ task แยก
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `report-benchmark` | `subskills/report-benchmark/SKILL.md` — build time, size, feature matrix |
+
+1. ถ้า argument เป็น `report` → อ่าน `subskills/report-benchmark/SKILL.md` แล้วทำตาม flow — ใช้ผล bench เดิม ไม่รันใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-benchmark` มา execute
 
 ### 1. Baseline Current Tool
 
@@ -49,7 +58,7 @@ related:
 
 > Goal: สรุปตัวเลขและ trade-offs อย่างเป็นธรรม
 
-1. ใช้ `/report-before-after` คอลัมน์: `No.`, `Metric`, `Current`, `Candidate A`, `Candidate B`, `Best`
+1. ทำตาม `subskills/report-benchmark/SKILL.md` — metrics matrix + feature matrix + recommendation
 2. เพิ่ม qualitative notes: plugin ecosystem, config complexity, parity gaps, migration effort
 3. Verdict: `migrate`, `stay`, `inconclusive` พร้อมเหตุผล — ไม่ bias ไปที่ตัวเลขเดียว
 

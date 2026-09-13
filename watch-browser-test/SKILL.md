@@ -1,7 +1,7 @@
 ---
 name: watch-browser-test
 description: Watch browser confirm server แล้ว subagents แยก route roleplay user test actions/flows จริง
-argument-hint: "[url]"
+argument-hint: "[url|report]"
 related:
   - watch-browser
   - improve-uxui
@@ -98,11 +98,20 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 > Goal: ส่งมอบผล test
 
-1. ทำ `/report` — table: route | actions tested | PASS | FAIL | fixes applied
+1. ทำตาม `subskills/report-status/SKILL.md` — scenarios pass/fail, failure evidence, flaky signals
 2. persist raw exploratory results → `.devin/reports/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
 3. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
 4. ปิด browser session ด้วย `agent-browser close`
 5. ทำ `/suggest-next-action`
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — test watch report (pass/fail, flaky, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 8 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

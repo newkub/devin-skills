@@ -27,6 +27,7 @@ Dispatch ไป subskill ตาม domain ของ secrets check — parent ท
 | `env-vars` | `subskills/env-vars/SKILL.md` — เทียบ `.env` vs `.env.example` vs code usage |
 | `hardcoded-values` | `subskills/hardcoded-values/SKILL.md` — ค่า hardcoded ที่ควรย้ายไป config/env |
 | `secrets-leak` | `subskills/secrets-leak/SKILL.md` — secrets หลุดใน code/config/history |
+| `report`, `inventory` | `subskills/report-inventory/SKILL.md` — secrets inventory report พร้อม redaction |
 
 1. ระบุ domain จาก argument (เช่น `/check-secrets secrets-leak`)
 2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow

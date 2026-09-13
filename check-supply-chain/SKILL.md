@@ -30,6 +30,7 @@ related:
 | `typosquat`, `packages` | `subskills/typosquat/SKILL.md` — lookalike names, suspicious signals, dependency confusion |
 | `install-scripts`, `scripts` | `subskills/install-scripts/SKILL.md` — lifecycle scripts audit |
 | `pinning`, `sources` | `subskills/pinning/SKILL.md` — floating versions, `.npmrc`, CI install flags |
+| `report`, `risks` | `subskills/report-risks/SKILL.md` — risk report รวมทุก domain + hardening roadmap |
 
 1. ถ้า argument ระบุ domain เดียว → อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม domains อื่น แต่ยังทำ Step 5 (Report)
 2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามลำดับ โดยแต่ละ step อ่าน subskill ที่ตรงมา execute
@@ -62,9 +63,7 @@ related:
 
 > Goal: สรุป supply chain risks
 
-1. ใช้ `/report`: `No.`, `Finding`, `Package/Location`, `Severity`, `Evidence`, `Fix`
-2. Severity: `critical` (suspicious install script, registry hijack signals), `high` (unpinned, git deps), `medium` (missing integrity, loose ranges)
-3. แนะนำ: SBOM generation (CycloneDX/SPDX) สำหรับ inventory, hash pinning, registry allowlist
+ทำตาม `subskills/report-risks/SKILL.md` — รวม findings ทุก domain เป็น risk report + hardening roadmap
 
 ## Rules
 

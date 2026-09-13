@@ -1,7 +1,7 @@
 ---
 name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ ด้วย tools, scripts, CLI, และ external research
-argument-hint: "[scope]"
+argument-hint: "[scope|report]"
 related:
   - deep-thinking
   - scan-codebase
@@ -31,6 +31,15 @@ related:
 - Recommendations สำหรับ improvements
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `report-analysis` | `subskills/report-analysis/SKILL.md` — analysis report พร้อม evidence + root cause chains |
+
+1. ถ้า argument เป็น `report` → อ่าน `subskills/report-analysis/SKILL.md` แล้วทำตาม flow — ใช้ผล analysis ที่มีอยู่ ไม่ analyze ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-10 ตามปกติ โดย Step 10 อ่าน subskill `report-analysis` มา execute
 
 ### 1. Deep Thinking And Quick Scan
 
@@ -168,12 +177,10 @@ related:
 
 > Goal: สร้างรายงานครบถ้วน
 
-1. ทำ `/report-deep` สร้างตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
+1. ทำตาม `subskills/report-analysis/SKILL.md` — จัด findings, root cause chains, evidence
 2. aggregate per-domain scores จาก dispatched `review-*` → overall score + grade — ตาราง `No. | Domain | Score | Grade | Top Finding`
-3. ทำ `/report` สรุปตารางจัดกลุ่มตามหมวดหมู่ถ้าต้องการ chat output
-4. ให้ recommendations ตาม priority และ impact
-5. ระบุ action items ที่ชัดเจน
-6. สร้าง roadmap สำหรับ improvements
+3. ทำ `/report-deep` หรือ `/create-report-in-dot-devin` สำหรับ persistent artifact
+4. ให้ recommendations ตาม priority และ impact พร้อม action items + roadmap
 
 ## Rules
 

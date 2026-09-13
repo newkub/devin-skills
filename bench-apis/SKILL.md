@@ -1,7 +1,7 @@
 ---
 name: bench-apis
 description: Benchmark เทียบ API performance ข้าม versions, implementations หรือ environments
-argument-hint: "[baseline-vs-candidate]"
+argument-hint: "[baseline-vs-candidate|report]"
 related:
   - run-load-test
   - check-bottlenecks
@@ -20,6 +20,15 @@ Benchmark เทียบ API endpoints แบบ side-by-side — เช่น 
 - ต้องมี baseline ที่วัดได้ — ไม่ใช่เปรียบเทียบกับตัวเลขในหัว
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `report-benchmark` | `subskills/report-benchmark/SKILL.md` — latency/throughput matrix, %delta, verdict |
+
+1. ถ้า argument เป็น `report` → อ่าน `subskills/report-benchmark/SKILL.md` แล้วทำตาม flow — ใช้ผล bench เดิม ไม่รันใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-benchmark` มา execute
 
 ### 1. Define Comparison
 
@@ -50,10 +59,8 @@ Benchmark เทียบ API endpoints แบบ side-by-side — เช่น 
 
 > Goal: เทียบผลอย่างมีนัยสำคัญ
 
-1. ใช้ `/report-before-after` คอลัมน์: `No.`, `Metric`, `Baseline`, `Candidate`, `Delta %`, `Verdict`
-2. ระบุ statistical noise — delta เล็กๆ ที่อยู่ใน run variance ไม่ใช่ผลจริง
-3. Verdict รวม: `faster`, `slower`, `same` พร้อม confidence
-4. ถ้า candidate แพ้ → ส่งต่อ `/check-bottlenecks` หา root cause
+1. ทำตาม `subskills/report-benchmark/SKILL.md` — comparison matrix + %delta + verdict
+2. ถ้า candidate แพ้ → ส่งต่อ `/check-bottlenecks` หา root cause
 
 ## Rules
 

@@ -108,6 +108,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 | Rotate/remove leaked secrets, git history notes | `subskills/fix-secrets/SKILL.md` |
 | Security headers — CSP, HSTS, X-Frame-Options | `subskills/fix-headers/SKILL.md` |
 | Vulnerable deps — audit, upgrade, patch | `subskills/fix-vuln-deps/SKILL.md` |
+| `report`, `vulns` — vuln matrix + exploit paths + fix mapping | `subskills/report-vulns/SKILL.md` |
 
 ## Rules
 

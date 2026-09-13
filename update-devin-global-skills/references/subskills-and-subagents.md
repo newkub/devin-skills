@@ -54,6 +54,7 @@
 | `integrate-` | เชื่อม tools/systems เข้าด้วยกัน — export→import, sync, bridge, pipeline ระหว่าง tools | `deep-test` → `subskills/integrate-bruno`, top-level `integrate-openapi-bruno` |
 | `verify-` | ยืนยันผลหลัง action ของ parent — domain-specific post-action check ที่ `run-verify`/`deep-validate` ไม่ครอบ (deploy live, release published, connection works, merge clean) | `follow-deploy` → `subskills/verify-deploy`, `ship` → `subskills/verify-release` |
 | `check-` | read-only domain check ใต้ parent ที่มีหลาย dimensions — dispatch ทีละ dimension ได้; ถ้า parent เป็น `check-*` อยู่แล้วให้ใช้ bare domain name แทน | `deep-validate` → `subskills/check-security`, `check-files` → `subskills/encoding` |
+| `report-` | report workflow เฉพาะ domain ที่ต้องใช้ data ที่ parent gather เอง — format ที่ generic `/report` ทำไม่ได้ (severity matrix, benchmark delta, cited findings, status timeline) หรือ regenerate ได้จากผลเดิมโดยไม่รัน flow ใหม่; ถ้า parent เป็น `report` อยู่แล้วให้ใช้ bare format name (`table`, `html`, `numbered`, `codeblock`) | `deep-validate` → `subskills/report-findings`, `watch-browser` → `subskills/report-status`, `check-config-drift` → `subskills/report-drift` |
 
 - name เต็มยังตาม rule เดิม: `<parent>-<prefix>-<name>` เช่น `download-program-package-manager` → ถ้าแยกตาม action จะเป็น `download-program-setup-*` ฯลฯ
 - ใช้ prefix เมื่อมีหลาย lifecycle จริงๆ — ถ้า parent มีแค่ workflow เดียวหรือเป็น knowledge ให้ใช้ `references/` แทน

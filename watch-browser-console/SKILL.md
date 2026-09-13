@@ -1,7 +1,7 @@
 ---
 name: watch-browser-console
 description: Watch browser console อย่างต่อเนื่อง จัดการ errors อัตโนมัติด้วย agent-browser
-argument-hint: "[url]"
+argument-hint: "[url|report]"
 related:
   - run-test
   - watch-browser
@@ -14,7 +14,7 @@ related:
 Watch browser console อย่างต่อเนื่องเพื่อตรวจจับและแก้ไข errors อัตโนมัติ โดยใช้ `agent-browser` CLI
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `deep-test-e2e`
+- สำหรับ skills ที่เกี่ยวข้อง: `deep-test`
 
 ใช้สำหรับ monitor console messages และ page errors อย่างต่อเนื่อง พร้อมแก้ไข errors ที่พบโดยอัตโนมัติ
 
@@ -66,8 +66,17 @@ Monitor console อย่างต่อเนื่องตาม `## Rules` �
 
 ทำ cleanup หลังจากใช้งานเสร็จ
 
-1. ปิด browser session ด้วย `agent-browser close`
-2. สรุปผลลัพธ์และ errors ที่พบและแก้ไขแล้ว
+1. ทำตาม `subskills/report-status/SKILL.md` — console messages grouped, new vs recurring
+2. ปิด browser session ด้วย `agent-browser close`
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — console watch report (grouped errors, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

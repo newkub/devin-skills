@@ -1,7 +1,7 @@
 ---
 name: watch-browser-improve-uxui
 description: Watch browser confirm server แล้ว subagents แยก route improve UX/UI ตาม review-uxui + responsive
-argument-hint: "[url]"
+argument-hint: "[url|report]"
 related:
   - watch-browser
   - improve-uxui
@@ -90,10 +90,19 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 > Goal: ส่งมอบผล
 
-1. ทำ `/report` — findings per route, fixes applied, before/after screenshots
+1. ทำตาม `subskills/report-status/SKILL.md` — findings per route, improvements applied, before/after
 2. persist raw findings → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — table: route | finding | severity | fix | status พร้อม screenshot paths เพื่อให้ `/update-docs` และ skills อื่น reuse ได้
 3. ปิด browser session ด้วย `agent-browser close`
 4. ทำ `/suggest-next-action`
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — UX/UI watch report (findings per route, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 7 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

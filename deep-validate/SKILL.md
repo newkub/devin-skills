@@ -55,6 +55,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 | `security` | `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection |
 | `compliance` | `subskills/check-compliance/SKILL.md` — requirements fit, conventions, regulatory |
 | `cross-reference`, `refs` | `subskills/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs |
+| `report`, `findings` | `subskills/report-findings/SKILL.md` — รวม findings ทุก dimension เป็น severity matrix |
 
 1. ถ้า argument ระบุ dimension เดียว → อ่าน `subskills/check-<dim>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม dimensions อื่น แต่ยังทำ Step 8 (Report)
 2. ถ้าไม่ระบุ → ทำ Steps 2-7 ตามลำดับ โดยแต่ละ step อ่าน subskill ที่ตรงมา execute
@@ -99,14 +100,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Report And Suggest
 
-ทำ `/report` เพื่อสร้างตารางสรุปผล
-
-- ตาราง: Dimension, Finding, Severity, Location, Recommendation
-- จัดกลุ่ม findings ตาม dimension
-- จัดลำดับตาม severity (Critical, High, Medium, Low)
-- สรุปสิ่งที่ดีอยู่แล้วเสมอ
-- ให้ข้อเสนอแนะ actionable และระบุ priority
-- ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+ทำตาม `subskills/report-findings/SKILL.md` — รวม findings เป็น severity matrix พร้อม recommendations แล้วทำ `/suggest-next-action`
 
 ## Rules
 

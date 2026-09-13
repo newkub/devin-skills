@@ -1,7 +1,7 @@
 ---
 name: watch-browser-fix
 description: เปิด browser ด้วย agent-browser แล้ว capture แก้ไข และ confirm web server
-argument-hint: "[url]"
+argument-hint: "[url|report]"
 related:
   - watch-browser
   - watch-browser-console
@@ -87,10 +87,18 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 
 > Goal: สรุปผล
 
-1. บันทึก errors ทีแก้ไขแล้ว และ errors ทียังคงอยู่
-2. ใช้ `/report` แสดงสรุป
-3. persist raw results → `.devin/reports/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
-4. ปิด browser ด้วย `agent-browser close`
+1. ทำตาม `subskills/report-status/SKILL.md` — issues found vs fixed, before/after evidence
+2. persist raw results → `.devin/reports/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
+3. ปิด browser ด้วย `agent-browser close`
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — fix watch report (found vs fixed, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 7 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

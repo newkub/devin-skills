@@ -1,7 +1,7 @@
 ---
 name: watch-terminal
 description: เปิดเบราว์เซอร์และ watch terminal ทุก 5 วินาที พร้อมจัดการ error อัตโนมัติ
-argument-hint: "[scope]"
+argument-hint: "[scope|report]"
 related:
   - capture
   - open
@@ -62,6 +62,16 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 1. ตรวจสอบว่า terminal watch ทำงานทุก 5 วินาที
 2. ยืนยันว่าสามารถตรวจจับและแก้ไข errors ใหม่ๆ ได้
 3. ตรวจสอบว่า development server ทำงานปกติ
+4. สรุปผลตาม `subskills/report-status/SKILL.md` — command progress, errors, verdict
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — terminal watch report (progress, errors, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

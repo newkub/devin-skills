@@ -1,7 +1,7 @@
 ---
 name: watch-all-task
 description: เฝ้าติดตามไฟล์งานและรันงานที่ค้างอยู่อัตโนมัติเมื่อมีการเปลี่ยนแปลง
-argument-hint: "[scope]"
+argument-hint: "[scope|report]"
 related:
   - run-task-all
   - plan
@@ -73,10 +73,18 @@ related:
 
 > Goal: ผู้ใช้ทราบงานที่เสร็จ ล้มเหลว และขั้นตอนถัดไป
 
-1. บันทึกงานที่เสร็จและล้มเหลวพร้อมจำนวน retry
-2. สรุปสถานะคิวงานปัจจุบันเป็น bullet points สั้นๆ
-3. แนะนำ action ถัดไป เช่น แก้งานที่ล้มเหลวหรือเพิ่มงานใหม่
-4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
+1. ทำตาม `subskills/report-status/SKILL.md` — per-task status, blockers, completion
+2. แนะนำ action ถัดไป เช่น แก้งานที่ล้มเหลวหรือเพิ่มงานใหม่
+3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — all-tasks report (per-task status, blockers, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ task state ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

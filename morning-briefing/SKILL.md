@@ -1,7 +1,7 @@
 ---
 name: morning-briefing
 description: Daily digest รวมสถานะ — uncommit, unpush, CI fails, PRs รอ review และ stale branches
-argument-hint: "[repos-scope]"
+argument-hint: "[repos-scope|report]"
 related:
   - check-uncommit
   - check-unpush
@@ -51,12 +51,16 @@ related:
 
 > Goal: รวมเป็น briefing เดียว
 
-1. ใช้ `/report` แยก sections:
-   - `Needs Action`: uncommit, unpush, failed CI, review requests
-   - `Waiting`: PRs ที่รอคนอื่น, blocked items
-   - `Hygiene`: stale branches, old TODOs
-2. เรียงตาม urgency — blockers และ time-sensitive ก่อน
-3. จบด้วย `/suggest-next-action` — เสนอ top 3 สิ่งที่ควรทำ
+ทำตาม `subskills/report-digest/SKILL.md` — แยก sections ตาม urgency, top 3 actions, `/suggest-next-action`
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `digest` | `subskills/report-digest/SKILL.md` — daily digest report รวม signals ทั้งหมด |
+
+1. ถ้า argument เป็น `report`/`digest` → อ่าน `subskills/report-digest/SKILL.md` แล้วทำตาม flow — ใช้ signals ที่เก็บแล้ว
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-digest` มา execute
 
 ### Subagents
 

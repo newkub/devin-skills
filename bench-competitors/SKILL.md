@@ -1,7 +1,7 @@
 ---
 name: bench-competitors
 description: ศึกษาคู่แข่งแล้ว implement-to-production จน project ดีกว่าทุกมิติ
-argument-hint: "[scope]"
+argument-hint: "[scope|report]"
 related:
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
@@ -35,6 +35,15 @@ related:
 ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production, /compare-competitors
 
 ## Execute
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `report-comparison` | `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/report/` |
+
+1. ถ้า argument เป็น `report` → อ่าน `subskills/report-comparison/SKILL.md` แล้วทำตาม flow — ใช้ data ที่รวมไว้แล้ว ไม่ research ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 7 อ่าน subskill `report-comparison` มา execute
 
 ### 1. Research Competitors
 
@@ -100,10 +109,9 @@ related:
 
 > Goal: บันทึกผล benchmark และผลการ implement เป็น report ใน .devin
 
-1. ทำ `/create-report-in-dot-devin` บันทึกผลลง `.devin/reports/<workspace>/` — title เช่น `benchmark-competitors`
-2. รวม comparison matrix, gap list, prioritized feature list และสถานะ implement ใน report
-3. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
-4. รายงาน `REPORT_PATH` ให้ user
+1. ทำตาม `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/reports/<workspace>/`
+2. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
+3. รายงาน `REPORT_PATH` ให้ user
 
 ### 8. Ship
 

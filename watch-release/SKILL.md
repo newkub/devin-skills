@@ -1,7 +1,7 @@
 ---
 name: watch-release
 description: ตรวจสอบ release บน registry หรือ GitHub จนกว่าจะ live
-argument-hint: "[scope]"
+argument-hint: "[scope|report]"
 related:
   - run-release
   - follow-release
@@ -63,9 +63,19 @@ Use after `/run-release`, manual release, or when `/ship` detects a release. Sup
 
 > Goal: สรุปผลลัพธ์
 
-1. ถ้าผ่าน ให้ report platform, version/tag, URL, elapsed time
-2. ถ้า timeout ให้ report last status, total polls, recommendation
-3. ถ้ามี newer version หรือ tag เปลี่ยน → report ด้วย
+1. ทำตาม `subskills/report-status/SKILL.md` — propagation timeline, per-channel status, verdict
+2. ถ้าผ่าน ให้ report platform, version/tag, URL, elapsed time
+3. ถ้า timeout ให้ report last status, total polls, recommendation
+4. ถ้ามี newer version หรือ tag เปลี่ยน → report ด้วย
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — release watch report (propagation, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ poll data ที่มีอยู่ ไม่ poll ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-status` มา execute
 
 ## Rules
 

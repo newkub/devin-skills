@@ -1,7 +1,7 @@
 ---
 name: watch-browser
 description: Watch หน้าเว็บอย่างต่อเนื่องผ่าน agent-browser MCP server — state, console, errors
-argument-hint: "[domain] [url]"
+argument-hint: "[domain|report] [url]"
 related:
   - use-agent-browser
   - watch-browser-console
@@ -84,9 +84,18 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 
 > Goal: สรุปผลและปิด session อย่างถูกต้อง
 
-1. สรุปด้วย `/report`: state ปัจจุบัน, errors ที่พบ, screenshots ที่เก็บ
+1. ทำตาม `subskills/report-status/SKILL.md` — timeline, errors, state changes
 2. เรียก close tool ผ่าน `mcp_call_tool` เพื่อปิด browser session
 3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `agent-browser close` ผ่าน CLI
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — watch session report (timeline, errors, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่ ไม่ watch ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-status` มา execute
 
 ### Watch Skills
 

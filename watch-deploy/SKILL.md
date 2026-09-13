@@ -1,7 +1,7 @@
 ---
 name: watch-deploy
 description: Poll a deployed URL and report when it becomes healthy after deployment
-argument-hint: "[url]"
+argument-hint: "[url|report]"
 related:
   - run-watch
   - ask-me
@@ -50,9 +50,19 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 > Goal: สรุปผลลัพธ์ให้ user ทราบ
 
-1. ถ้าผ่าน ให้ report URL, status, response time, elapsed time
-2. ถ้า timeout ให้ report last status, total polls, error summary
-3. ถ้า redirect ให้ report final URL และ status
+1. ทำตาม `subskills/report-status/SKILL.md` — poll timeline, health transitions, time-to-live
+2. ถ้าผ่าน ให้ report URL, status, response time, elapsed time
+3. ถ้า timeout ให้ report last status, total polls, error summary
+4. ถ้า redirect ให้ report final URL และ status
+
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `status` | `subskills/report-status/SKILL.md` — deploy watch report (poll timeline, verdict) |
+
+1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ poll data ที่มีอยู่ ไม่ poll ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-status` มา execute
 
 ## Rules
 
