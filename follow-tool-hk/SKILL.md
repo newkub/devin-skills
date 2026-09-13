@@ -16,6 +16,8 @@ related:
 
 ใช้ hk สำหรับ pre-commit, pre-push, pre-merge-commit และคำสั่ง `check`/`fix`
 
+- Boundary: ถ้า repo ใช้ moonrepo อยู่แล้ว → `vcs.hooks` ของ moon (v1.9+) พอสำหรับ hooks ทั่วไป (`moon run :lint --affected --status=staged`) — ใช้ hk เมื่อต้องการ parallel staged-file linting, non-moon hook steps, หรือ hook config เดียวข้าม repos
+
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-githooks) — สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
 
 - Latest: `hk@v1.58.1` (verified 2026-09-12)

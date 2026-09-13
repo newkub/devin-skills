@@ -13,6 +13,7 @@ related:
   - run-verify
   - deep-validate
   - run-test-all
+  - follow-tool-hk
 ---
 
 ## Goal
@@ -103,7 +104,26 @@ related:
 3. ต้อง full git history — ห้าม shallow clone (ใช้ `filter: 'blob:none'`)
 4. ทำตาม `subskills/run-ci/SKILL.md` สำหรับ provider config, sharding และ reports
 
-### 7. Verify
+### 7. Configure VCS Hooks (Optional)
+
+> Goal: git hooks ด้วย built-in `vcs.hooks` — ไม่ต้องใช้ hook manager ภายนอก
+
+1. เพิ่ม `vcs.hooks` ใน `.moon/workspace.yml` (ต้อง moon v1.9+):
+   ```yaml
+   vcs:
+     hooks:
+       pre-commit:
+         - 'moon run :lint :format --affected --status=staged'
+       pre-push:
+         - 'moon run :typecheck :test --affected'
+     sync: true
+   ```
+2. `sync: true` = auto-generate + link hooks ทุกครั้งที่ task รัน; ถ้าไม่ใช้ → contributor opt-in ด้วย `moon sync hooks` เอง
+3. Generated scripts อยู่ที่ `.moon/hooks` (หรือ `.config/moon/hooks`) — commit หรือ ignore ก็ได้, audit/test ง่าย เพราะ moon ตั้ง `core.hooksPath` ชี้ไปที่นั่น
+4. ใช้ `--affected` + `--status=staged` ให้ hook เร็ว — moon รู้ task graph + cache อยู่แล้ว
+5. ไม่จำเป็นต้องใช้ `/follow-tool-hk` — hk เพิ่มมูลค่าเฉพาะเมื่อต้องการ parallel staged-file linting, hook steps ที่ไม่ใช่ moon tasks, หรือ hook config เดียวกันข้าม repos ที่ไม่ใช้ moon
+
+### 8. Verify
 
 > Goal: ตรวจสอบว่า moonrepo ทำงานได้
 
