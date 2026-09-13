@@ -108,7 +108,7 @@ Major skill families by current count:
 - `list-*` (17): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github`.
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
 - `open-*` (9): browser, editor, and terminal integration — `open` dispatcher (`explorer`, `github`, `web`, `wezterm`, `windows-terminal`, `zed`); specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
-- `ship-*` (3): `/ship` (entry point — `/update-docs agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
+- `ship-*` (3): `/ship` (entry point — `/update-docs agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-by-agents-swarm` (alias → `/ship`), `/ship-dont-ask-me`.
 - `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
 - `cleanup-*` (3): `cleanup` dispatcher (`branches-merged`, `docker`, `git-branch`, `github-issue`, `worktree`), `cleanup-files-in-project`, `cleanup-files-in-computer`.
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
