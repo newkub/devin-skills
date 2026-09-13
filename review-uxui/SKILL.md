@@ -15,6 +15,9 @@ related:
   - follow-design-system
   - capture
   - review-accessibility
+  - improve-uxui-and-features
+  - deep-test-e2e
+  - deep-review-then-fix
   - run-dev
 ---
 
@@ -24,7 +27,7 @@ Review UX/UI design quality จาก source code ครอบคลุม desig
 
 ## Scope
 
-UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility (WCAG 2.1), design-dev handoff quality, user flow mapping และ journey analysis
+UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility (WCAG 2.2), design-dev handoff quality, user flow mapping และ journey analysis
 
 ไม่รวม:
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
@@ -98,9 +101,9 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 6. สรุป top 3-5 design wins ที่ทำดี
 7. ทำ `/suggest-next-action`
 
-### Subskills
+### Fix Dispatch
 
-> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
+> Goal: งาน fix ไปที่ fix guide ที่ตรง domain — execute เฉพาะหลัง user confirm (ดู `## Fix`)
 
 - UX/UI findings ทุก dimension → `subskills/improve-uxui-fix/SKILL.md` (dispatch ต่อไปยัง `references/fix-uxui/*.md` ตาม domain)
 
@@ -171,7 +174,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 1. browser fix pass → `/improve-uxui-and-features` (orchestrates watch passes + UXUI features + Playwright sync)
 2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
-3. verify: re-run browser pass + `/run-test` (e2e); persist `.devin/reports/<workspace>/uxui-<time>.md`
+3. verify: re-run browser pass + `/deep-test-e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
