@@ -93,7 +93,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 > Goal: รายงาน baseline และ refactor targets
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report` พร้อม `/report`
+2. ทำ `/report`
 3. สร้างตาราง Baseline Metrics และ Refactor Targets
 4. แสดง refactor health score
 5. ทำ `/suggest-next-action`

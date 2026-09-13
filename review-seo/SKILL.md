@@ -85,7 +85,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 2. ทำ `/deep-validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
 4. ทำตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report`
+5. ทำ `/report`
 6. ทำ `/suggest-next-action`
 
 ### Subskills

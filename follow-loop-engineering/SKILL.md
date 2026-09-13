@@ -101,7 +101,7 @@ related:
 
 ### 5. Observability
 - loop ต้องทิ้ง audit trail: state, log, decision, ผล
-- รายงานทุกรอบด้วย `/report` หรือ `/report`
+- รายงานทุกรอบด้วย `/report`
 - ระบุจุดทีต้องให้คนตรวจสอบ
 
 - ใช้ /loop-until-complete ถ้าจำเป็น

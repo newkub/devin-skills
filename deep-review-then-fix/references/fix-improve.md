@@ -28,8 +28,8 @@
 1. ทำ `/review-gaps` สำหรับเป้าหมายทีระบุ
 2. ถ้าเป้าหมายเป็น code → ทำ `/review-quality`, `/review-architecture`
 3. ถ้าเป้าหมายเป็น skill → ทำ `/review-devin-global-skills`
-4. ถ้าเป้าหมายเป็น docs → ทำ `/review-docs`, `/review-docs`
-5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-concepts` หรือ `/follow-math-concepts`
+4. ถ้าเป้าหมายเป็น docs → ทำ `/review-docs`
+5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-concepts`
 6. บันทึก gaps ทีพร้อมแก้ไข
 
 ### 3. Prioritize

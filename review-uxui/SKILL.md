@@ -90,7 +90,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report table`
+1. ทำ `/report table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง design maturity scorecard: 5 dimensions, score 1-5

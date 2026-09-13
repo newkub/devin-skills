@@ -51,7 +51,7 @@
 
 1. วัดซ้ำหลังแก้ — เทียบ per-route per-metric
 2. ใช้ `/report-before-after` แสดง LCP/INP/CLS delta
-3. ทำ `/run-build` และ `/run-test` + visual checks (`/run-test`) เพื่อกัน regression
+3. ทำ `/run-build` และ `/run-test` + visual checks (`/run-test visual`) เพื่อกัน regression
 
 ## Rules
 

@@ -64,7 +64,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 - ทำ `/deep-validate` เพื่อ validate findings
 - จัดลำดับตาม severity: Critical → High → Medium → Low
 - คำนวณ review score, dimension scores และ supplementary metrics ตาม references/scoring.md
-- ทำ `/report` พร้อม `/report`
+- ทำ `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules

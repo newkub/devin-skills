@@ -20,7 +20,7 @@ related:
 - ระบุไฟล์เป้าหมายและเงื่อนไขทีต้องการหา
 - รองรับ local git repo และ remote GitHub repo
 - แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/deep-debug`
+- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/restore`
 - Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
 - ดูเพิ่มเติม: /git-file-history, /restore from-my-dotfiles
@@ -106,4 +106,4 @@ related:
 - หา commit ทีตรงเงื่อนไขได้
 - รายงาน commit SHA, date, author, message และ content
 - รองรับทั้ง local และ remote repo
-- ใช้งานได้กับ `/deep-debug` และ `/deep-debug`
+- ใช้งานได้กับ `/deep-debug` และ `/restore`

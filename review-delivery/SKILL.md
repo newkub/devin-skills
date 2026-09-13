@@ -80,7 +80,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity ตาม `references/scoring.md`
 3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report` และ `/suggest-next-action`
+4. ทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 

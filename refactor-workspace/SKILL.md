@@ -96,7 +96,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 2. ทำ `/check-repo-hygiene circular-dependencies` และ `/review-quality`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
-5. ทำ `/update-references` และ `/update-references` สำหรับทุก references ที่เปลี่ยน
+5. ทำ `/update-references` สำหรับทุก references ที่เปลี่ยน
 
 ## Rules
 

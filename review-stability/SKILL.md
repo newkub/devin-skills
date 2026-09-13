@@ -98,7 +98,7 @@ Review ความเสถียรของ application ครอบคลุ
 1. ทำ `/deep-validate` เพื่อ validate findings จากทุก section
 2. จัดลำดับตาม severity: Critical → High → Medium → Low
 3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
+4. ทำ `/report` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
 5. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
 6. ทำ `/suggest-next-action`
 

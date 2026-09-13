@@ -78,7 +78,7 @@ Review drift ระหว่าง current state และ target state เพ�
 > Goal: รายงาน drift report และ update priority order
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report` พร้อม `/report`
+2. ทำ `/report`
 3. สร้างตาราง Drift Report และ Update Priority
 4. ทำ `/suggest-next-action`
 

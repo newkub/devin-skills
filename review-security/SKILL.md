@@ -97,7 +97,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ทำตาม `references/scoring.md`
 
-ทำ `/deep-validate` ก่อนรายงาน แล้ว `/report` พร้อม `/report`
+ทำ `/deep-validate` ก่อนรายงาน แล้วทำ `/report`
 
 ### Subskills
 

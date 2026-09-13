@@ -20,7 +20,7 @@ related:
 - ใช้ `git log`, `git grep`, `git blame`, `git diff`, `git show`
 - รองรับ remote repo ผ่าน `gh api`
 - รายงานผลเป็นตารางพร้อม commit SHA, author, date, message
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/deep-debug`
+- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/resolve-errors`
 
 ## Execute
 
@@ -103,4 +103,4 @@ related:
 - หา commit/file/line ทีตรงเงื่อนไขได้
 - รายงานชัดเจนพร้อม evidence
 - รองรับทั้ง local และ remote
-- ใช้งานได้กับ `/deep-debug` และ `/deep-debug`
+- ใช้งานได้กับ `/deep-debug` และ `/resolve-errors`

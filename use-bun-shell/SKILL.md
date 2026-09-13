@@ -20,7 +20,7 @@ related:
 
 > Goal: Prepare Bun Shell Environment
 
-1. ทำ `/use-bun-native-api` เพื่อ setup Bun environment (install, verify) แล้วใช้ `/use-bun-native-api` สำหรับ Bun APIs ถ้าจำเป็น
+1. ทำ `/use-bun-native-api` เพื่อ setup Bun environment (install, verify) และ Bun APIs ถ้าจำเป็น
 2. ตรวจสอบว่า Bun ติดตั้งและพร้อมใช้งาน
 3. ตั้งค่า environment variables ที่จำเป็นสำหรับ Bun
 

@@ -53,7 +53,7 @@ related:
 > Goal: ตรวจสอบว่าไม่มี failed runs เหลือ
 
 1. รัน `gh run list --status failure --limit 50`
-2. ถ้ายังมี → รายงานและแนะนำ `/resolve-errors` หรือ `/resolve-errors`
+2. ถ้ายังมี → รายงานและแนะนำ `/resolve-errors`
 3. ถ้าไม่มี → รายงาน success
 
 ## Rules

@@ -53,7 +53,7 @@ related:
 > Goal: เก็บ artifacts ที่พิสูจน์ bug
 
 1. Terminal output/errors → `logs/` (ทำ `/capture` ถ้าเหมาะ)
-2. UI bugs → screenshots ลง `screenshots/` (ทำ `/capture` หรือ `/capture`)
+2. UI bugs → screenshots ลง `screenshots/` (ทำ `/capture` หรือ `/capture component`)
 3. Error stack traces เต็ม — ไม่ตัด
 4. Request/response ถ้าเป็น API bug — headers + body (mask secrets)
 

@@ -108,7 +108,7 @@ related:
 
 ### 4. Hand Off To Refactor
 
-- ไอเดียต้องส่งต่อไปยัง `/refactor-workspace` หรือ `/refactor-workspace` ได้ชัดเจน
+- ไอเดียต้องส่งต่อไปยัง `/refactor-workspace` หรือ `/restructure` ได้ชัดเจน
 - ระบุลำดับการทำงานและ dependency direction
 - ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง `/implement-to-production`
 - ใช้ /run-build ถ้าจำเป็น
@@ -119,6 +119,6 @@ related:
 - ไอเดีย refactor workspace ทีมี single responsibility, มาจากข้อมูลจริง
 - รายงาน `/report-file-structure` และ `/report-before-after` (before baseline) ก่อนเสนอไอเดีย
 - ตารางเปรียบเทียบ impact, effort, risk พร้อม Top 3
-- แผนการส่งต่อไปยัง `/refactor-workspace` หรือ `/refactor-workspace` พร้อมเปรียบเทียบ after state ด้วย `/report-before-after`
+- แผนการส่งต่อไปยัง `/refactor-workspace` หรือ `/restructure` พร้อมเปรียบเทียบ after state ด้วย `/report-before-after`
 - ไม่ over-engineer หรือสร้าง fragmentation
 

@@ -47,9 +47,9 @@ related:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-quality`, `/review-quality` |
-| 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-quality`, `/review-writing` |
-| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-quality` | `/review-quality`, `/review-test` |
+| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-quality` |
+| 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-writing` |
+| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-quality` | `/review-test` |
 | 4 | เน้น security | `/review-security` | `/review-compliance`, `/review-delivery` |
 | 5 | เน้น performance | `/review-performance` | `/review-frontend`, `/review-backend` |
 | 6 | เน้น frontend code (React/Vue/Solid/Svelte/Angular) | `/review-frontend` | `/review-uxui`, `/deep-review` |
@@ -66,11 +66,11 @@ related:
 | 17 | ตรวจความพร้อมก่อน deploy | `/review-release` | `/review-delivery`, `/watch-deploy` |
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-dependencies` |
 | 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-devin-global-skills` |
-| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-docs` |
-| 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/review-docs` | `/review-docs` |
-| 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/review-docs` | `/review-docs` |
-| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-docs` | `/review-docs` |
-| 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-docs` |
+| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-writing` |
+| 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/review-docs` | `/review-writing` |
+| 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/review-docs` | `/review-writing` |
+| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-docs` | `/review-writing` |
+| 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-writing` |
 | 25 | ตรวจ naming conventions | `/review-quality` | `/review-writing` |
 | 26 | ตรวจ readability | `/review-writing` | `/review-quality` |
 | 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-devin-global-skills` | `/check-repo-hygiene unused`, `/review-quality` |
@@ -87,7 +87,7 @@ related:
 | 38 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |
 | 39 | ตรวจ GitHub PR | `/review-github-pr` | `/review-diff`, `/review-quality` |
 | 40 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
-| 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-devin-global-skills` |
+| 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality` |
 | 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-devin-global-skills` |
 | 43 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-quality` |
 | 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-repo-hygiene unused` | `/review-devin-global-skills`, `/review-quality` |
@@ -119,7 +119,7 @@ related:
 
 > Goal: สรุปผล review และแนะนำทางต่อ
 
-1. ทำ `/report` พร้อม `/report`
+1. ทำ `/report`
 2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
 3. ระบุ skill ถัดไปที่ควรทำ เช่น `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
 4. ทำ `/suggest-next-action`

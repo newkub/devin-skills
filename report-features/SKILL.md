@@ -64,7 +64,7 @@ related:
 1. ทำ `/report` เพื่อรายงานในแชท
 2. สรุปจำนวน features ต่อ workspace และต่อ status
 3. ระบุ features ที่ `partial` หรือ `deprecated` แยกกลุ่ม
-4. แนะนำให้ทำ `/deep-review` หรือ `/deep-review` สำหรับ features ที่ `partial`
+4. แนะนำให้ทำ `/deep-review` สำหรับ features ที่ `partial`
 
 ## Rules
 
@@ -109,6 +109,6 @@ related:
 
 - ตาราง features ทั้งหมดในแชท จัดกลุ่มตาม workspace และ module
 - Summary สถานะ features ต่อ workspace
-- แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review`, `/deep-review`)
+- แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review`)
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน

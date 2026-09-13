@@ -63,7 +63,7 @@ related:
 1. ทำ `/report` คอลัมน์: `No.`, `Chunk`, `Before`, `After`, `Delta`, `Status`, `Suspected Cause`
 2. Status: `ok`, `regression`, `critical`, `new`, `removed`
 3. สรุป total bundle delta และ top regressions
-4. ถ้า `critical` → เสนอ `/review-bundle` หรือ `/review-bundle` เป็น next action
+4. ถ้า `critical` → เสนอ `/review-bundle` เป็น next action
 
 ## Rules
 

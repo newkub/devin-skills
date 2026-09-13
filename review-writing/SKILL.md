@@ -68,7 +68,7 @@ related:
 - คำนวณ review score และ supplementary metrics
 - รัน `tsc --noEmit`, `bunx biome lint`, `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
 - ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3)
-- ทำ `/report` พร้อม `/report`
+- ทำ `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules

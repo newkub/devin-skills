@@ -97,7 +97,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report`
+1. ทำ `/report`
 2. สร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
 3. สร้างตาราง Metrics Summary ตาม dimension พร้อม status indicators และ score
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity

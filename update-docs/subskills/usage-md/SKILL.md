@@ -21,7 +21,7 @@ related:
 
 - ใช้เมื่อ public API, CLI หรือ features เปลี่ยนแปลง หรือ `USAGE.md` ยังไม่มี/ล้าสมัย
 - `USAGE.md` เป็น manual usage documentation ที่เขียนจาก code จริง ไม่ generate จาก spec file
-- เรียกจาก `/update-project` หรือ `/update-project` เมื่อ sync project docs
+- เรียกจาก `/update-project` หรือ `/update-docs` เมื่อ sync project docs
 - ถ้า project ใช้ `usage` CLI spec tool (มี `usage.kdl`) → ใช้ `/follow-tool-usage` แทน
 
 ## Execute

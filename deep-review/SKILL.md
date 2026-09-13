@@ -80,7 +80,7 @@ related:
 1. ถ้า architecture มีปัญหา → `/review-architecture`
 2. ถ้า security มีปัญหา → `/review-security`
 3. ถ้า performance มีปัญหา → `/review-performance`
-4. ถ้า quality/correctness มีปัญหา → `/review-quality` หรือ `/review-quality`
+4. ถ้า quality/correctness มีปัญหา → `/review-quality`
 5. ถ้า stability มีปัญหา → `/review-stability`
 6. ถ้า UI/UX มีปัญหา → `/review-uxui`
 7. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `references/platform-*.md` (merged from: review-platform)

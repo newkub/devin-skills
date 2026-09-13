@@ -31,7 +31,7 @@ related:
 1. ตรวจสอบ project type และ requirements
 2. เลือก platform ที่เหมาะสม:
    - Cloudflare Workers/Pages: ทำ `/follow-service-cloudflare`
-   - Vercel: ทำ `/follow-service-vercel` และ `/follow-service-vercel`
+   - Vercel: ทำ `/follow-service-vercel` และ `/deploy-to-vercel`
    - Railway: ทำ `/deploy-to-railway`
 3. ตรวจสอบว่า platform configuration พร้อม
 
