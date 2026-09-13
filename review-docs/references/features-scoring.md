@@ -46,7 +46,7 @@ related:
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-features-md` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-docs features-md` ก่อนดำเนินการ
 - Score >= 70 → features documentation ผ่าน review สามารถดำเนินการต่อได้
 
 ## Reporting Steps
@@ -67,7 +67,7 @@ related:
 - `Severity` — `Critical`, `High`, `Medium`, `Low`, `Info`
 - `Finding` — คำอธิบายปัญหา
 - `Evidence` — file path และบรรทัดที่เกี่ยวข้อง
-- `Action` — action ที่ต้องทำ เช่น `update-features-md`, `update-docs`
+- `Action` — action ที่ต้องทำ เช่น `update-docs features-md`, `update-docs`
 
 ## Expected Outcome
 

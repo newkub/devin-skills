@@ -37,7 +37,7 @@ review score = sum(severity_score) / count(findings)
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-readme-md` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-docs readme-md` ก่อนดำเนินการ
 - Score >= 70 → สามารถดำเนินการต่อได้ พร้อมแนะนำการแก้ไข findings ที่เหลือ
 
 ## Report Format
@@ -56,7 +56,7 @@ review score = sum(severity_score) / count(findings)
 ## Next Action
 
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-- ถ้า Score < 70 → แนะนำ `update-readme-md` เป็น action หลัก
+- ถ้า Score < 70 → แนะนำ `update-docs readme-md` เป็น action หลัก
 - ถ้า Score >= 70 → แนะนำการแก้ไข findings ที่เหลือตาม priority
 
 ## Supplementary Metrics

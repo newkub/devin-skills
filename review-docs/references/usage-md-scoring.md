@@ -24,7 +24,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-usage-md` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-docs usage-md` ก่อนดำเนินการ
 - Score < 50 → หยุดและ report อย่างเดียว
 
 ## Supplementary Metrics
