@@ -14,7 +14,7 @@ related:
 Watch browser console อย่างต่อเนื่องเพื่อตรวจจับและแก้ไข errors อัตโนมัติ โดยใช้ `agent-browser` CLI
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `run-test-e2e`
+- สำหรับ skills ที่เกี่ยวข้อง: `deep-test-e2e`
 
 ใช้สำหรับ monitor console messages และ page errors อย่างต่อเนื่อง พร้อมแก้ไข errors ที่พบโดยอัตโนมัติ
 

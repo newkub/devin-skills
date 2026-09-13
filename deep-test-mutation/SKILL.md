@@ -1,5 +1,5 @@
 ---
-name: run-test-mutation
+name: deep-test-mutation
 description: รัน mutation testing วัดว่า test suite จับ bugs จริง — mutant survival rate ต่อ module
 argument-hint: "[path-or-module]"
 related:

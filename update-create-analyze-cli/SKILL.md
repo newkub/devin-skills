@@ -107,7 +107,7 @@ related:
 - แก้เฉพาะ categories ที metrics ระบุ
 - ไม่ rewrite analyzers ทั้งหมด
 - reuse helpers
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /deep-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

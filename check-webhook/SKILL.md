@@ -56,7 +56,7 @@ related:
 - Evidence-based — อ่าน handler code จริง ไม่เดา
 - Read-only — ไม่แก้ไข code
 - ไม่ expose secrets ที่พบใน report
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
 
 ## Expected Outcome
 

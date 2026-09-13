@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-test
   - run-test-all
+  - deep-test
   - run-check
   - run-verify
   - update-tests
@@ -20,7 +21,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`; subskills merged from: `run-test-api`, `run-test-cli`, `run-test-contract`, `run-test-coverage`, `run-test-e2e`, `run-test-integration`, `run-test-mutation`, `run-test-visual`)
+ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`; domain tests ย้ายไป `/deep-test` — api, cli, contract, coverage, e2e, integration, mutation, visual)
 
 ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
@@ -30,23 +31,12 @@ related:
 
 > Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
 
-### Test Domain Skills
+### Domain Dispatch
 
-> Goal: dispatch ไปยัง test domain skill ที่ตรง topic
+> Goal: domain tests ไปที่ `/deep-test` — skill นี้ unit tests เท่านั้น
 
-| Topic | Skill |
-|-------|-------|
-| api | `/run-test-api` — REST/GraphQL/tRPC/WebSocket endpoints, response contract checks |
-| cli | `/run-test-cli` — CLI commands, exit codes, stdout/stderr, flags, error paths |
-| contract | `/run-test-contract` — consumer/provider contract verification, drift detection |
-| coverage | `/run-test-coverage` — coverage analysis, 100% thresholds, gap loop |
-| e2e | `/run-test-e2e` — Playwright browser tests, all routes, agent-browser exploratory |
-| integration | `/run-test-integration` — module interactions, data flow, test DB/services |
-| mutation | `/run-test-mutation` — mutation testing, surviving mutants, weak assertions |
-| visual | `/run-test-visual` — visual regression, screenshot diff vs baseline |
-
-1. ถ้า argument ตรง topic → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้นแทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ (unit/fast tests)
+- ถ้า argument คือ domain (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`) → ส่งต่อ `/deep-test <domain>`
+- ถ้าไม่ระบุหรือเป็น unit scope → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Detect Test Framework
 
@@ -95,7 +85,7 @@ related:
 1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
 2. List failures พร้อม file:line และ classification (source/test/environment)
 3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/reports/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/reports/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
-4. ถ้ามี coverage flag → ทำ `/run-test-coverage` ต่อ
+4. ถ้ามี coverage flag → ทำ `/deep-test-coverage` ต่อ
 5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

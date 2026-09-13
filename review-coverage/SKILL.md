@@ -12,7 +12,7 @@ related:
   - follow-skills-map
   - check-skill-usage
   - review-devin-global-harness
-  - run-test-coverage
+  - deep-test-coverage
   - update-docs
   - idea-new-devin-global-skills
   - review-test
@@ -26,7 +26,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 ## Scope
 
-ใช้เมื่อต้องตอบคำถาม "อะไรที่ยังไม่มี X รองรับ" — coverage review ไม่ใช่การรัน coverage tool (รันจริงทำผ่าน `/run-test-coverage`); modes:
+ใช้เมื่อต้องตอบคำถาม "อะไรที่ยังไม่มี X รองรับ" — coverage review ไม่ใช่การรัน coverage tool (รันจริงทำผ่าน `/deep-test-coverage`); modes:
 
 | Surface | คำถาม |
 |---------|-------|

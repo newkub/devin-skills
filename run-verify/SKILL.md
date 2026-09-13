@@ -122,7 +122,7 @@ related:
 - ใช้ /run-typecheck ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /deep-test-coverage ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

@@ -1,5 +1,5 @@
 ---
-name: run-test-cli
+name: deep-test-cli
 description: รัน tests สำหรับ CLI commands, output, exit codes, flags, และ error paths
 argument-hint: "[cli-command]"
 related:

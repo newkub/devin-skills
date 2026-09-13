@@ -185,7 +185,7 @@ related:
 
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /deep-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

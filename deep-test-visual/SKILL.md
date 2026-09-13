@@ -1,5 +1,5 @@
 ---
-name: run-test-visual
+name: deep-test-visual
 description: รัน visual regression testing เทียบ screenshots ก่อน/หลังต่อ route หรือ component
 argument-hint: "[scope]"
 related:
@@ -87,7 +87,7 @@ related:
 
 - ใช้ /capture ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /run-test-e2e ถ้าจำเป็น
+- ใช้ /deep-test-e2e ถ้าจำเป็น
 
 ## Expected Outcome
 

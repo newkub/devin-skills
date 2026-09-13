@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - follow-tool-scalar
   - run-api-docs
-  - run-test-api
+  - deep-test-api
   - follow-tool-bruno
   - review-api
   - update-docs
@@ -95,7 +95,7 @@ Generate OpenAPI 3.x spec (`openapi.json`/`openapi.yaml`) จาก API code จ
 - ใช้ /follow-tool-scalar ถ้าจำเป็น
 - ใช้ /review-api ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
 
 ## Expected Outcome
 

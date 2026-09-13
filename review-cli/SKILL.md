@@ -180,7 +180,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 - ห้ามใช้ `**` bold markers — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report` ทุก report table เริ่มด้วยคอลัมน์ `No.`
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /deep-test-cli ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

@@ -1,5 +1,5 @@
 ---
-name: run-test-contract
+name: deep-test-contract
 description: รัน contract testing ข้าม services — consumer-driven contracts ยืนยันทั้งสองฝั่งตรงกัน
 argument-hint: "[consumer-or-provider]"
 related:

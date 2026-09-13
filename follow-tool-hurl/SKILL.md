@@ -3,7 +3,7 @@ name: follow-tool-hurl
 description: ใช้ Hurl CLI สำหรับรันและทดสอบ HTTP requests จาก plain-text files พร้อม assertions
 argument-hint: "[scope]"
 related:
-  - run-test-api
+  - deep-test-api
   - run-test
   - follow-test
   - follow-tool-bruno
@@ -88,9 +88,9 @@ related:
 ### 3. Limitations
 
 - HTTP/HTTPS เท่านั้น — ไม่รองรับ gRPC/WebSocket/MQTT (พิจารณา `/follow-tool-bruno` หรือ tool เฉพาะ)
-- ไม่มี scripting language เต็มรูปแบบ — logic ซับซ้อนให้แยกไฟล์หรือใช้ `/run-test-api` script approach
+- ไม่มี scripting language เต็มรูปแบบ — logic ซับซ้อนให้แยกไฟล์หรือใช้ `/deep-test-api` script approach
 
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool hurl)
 
 ## References

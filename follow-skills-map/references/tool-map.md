@@ -7,12 +7,12 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| run plain-text API tests | `hurl` | `scoop install hurl` / `winget install hurl` / `bun add -D @orangeopensource/hurl` | `/run-test-api`, `/follow-tool-hurl` |
-| run API collections | `bru` | `bun add -D @usebruno/cli` | `/run-test-api`, `/follow-tool-bruno` |
+| run plain-text API tests | `hurl` | `scoop install hurl` / `winget install hurl` / `bun add -D @orangeopensource/hurl` | `/deep-test-api`, `/follow-tool-hurl` |
+| run API collections | `bru` | `bun add -D @usebruno/cli` | `/deep-test-api`, `/follow-tool-bruno` |
 | import spec → collection | `bru import openapi` | เหมือนข้างบน | `/follow-tool-bruno` |
 | serve/mock/validate OpenAPI | `scalar` | `bun add -D @scalar/cli` (Node >=24) | `/run-api-docs`, `/follow-tool-scalar` |
 | generate spec from code | generator ของ framework | per framework | `/gen-openapi` |
-| property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/run-test-api` |
+| property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/deep-test-api` |
 | quick request explore | `xh` / `httpie` / `curl` | `scoop install xh` | ad-hoc |
 
 ## Search And Code Analysis
@@ -49,7 +49,7 @@
 |--------|------|---------|-------|
 | browser automation | `agent-browser` | bun global | `/use-agent-browser`, `/watch-browser-*` |
 | screenshot web | `agent-browser` | เหมือนข้างบน | `/capture-web` |
-| E2E tests | `playwright` | `bun add -D @playwright/test` | `/run-test-e2e`, `/follow-tool-playwright` |
+| E2E tests | `playwright` | `bun add -D @playwright/test` | `/deep-test-e2e`, `/follow-tool-playwright` |
 
 ## Infra And Deploy
 

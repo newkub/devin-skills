@@ -96,7 +96,7 @@ related:
 - ไม่ commit `mockServiceWorker.js` ที่ generate เองนอก `public/` convention
 
 - ใช้ /implement-to-production ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

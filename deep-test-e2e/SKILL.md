@@ -1,5 +1,5 @@
 ---
-name: run-test-e2e
+name: deep-test-e2e
 description: รัน E2E tests ด้วย Playwright ครบทุก route — user flows, actions, cross-browser, headless
 argument-hint: "[scope]"
 related:
@@ -125,9 +125,9 @@ related:
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /run-test-visual ถ้าจำเป็น
-- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
+- ใช้ /deep-test-visual ถ้าจำเป็น
+- ใช้ /deep-test-coverage ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น

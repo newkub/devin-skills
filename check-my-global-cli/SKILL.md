@@ -91,7 +91,7 @@ related:
 - High: ใช้บ่อย + มี flags หลายตัว + ใช้ใน project หลาย workspace
 - Medium: ใช้บ่อยบางครั้ง หรือ flags ไม่มาก
 - Low: ใช้นานๆ ครั้ง หรือ simple command
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /deep-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

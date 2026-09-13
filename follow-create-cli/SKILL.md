@@ -113,7 +113,7 @@ related:
 - มี logging หรือ tracing ตาม stack
 
 - ใช้ /rethink ถ้าจำเป็น
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /deep-test-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

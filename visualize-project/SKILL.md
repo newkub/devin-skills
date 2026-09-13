@@ -147,7 +147,7 @@ related:
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /visualize-in-web ถ้าจำเป็น
-- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /deep-test-visual ถ้าจำเป็น
 
 ## Expected Outcome
 

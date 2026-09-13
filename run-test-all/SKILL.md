@@ -1,6 +1,6 @@
 ---
 name: run-test-all
-description: Orchestrate test suite ทั้งหมด — เลือก run-test-* ที่เหมาะกับ project แล้วรันจนครบ จำแนก failures
+description: Orchestrate test suite ทั้งหมด — เลือก deep-test-* ที่เหมาะกับ project แล้วรันจนครบ จำแนก failures
 argument-hint: "[scope]"
 related:
   - review-test
@@ -15,25 +15,25 @@ related:
 
 ## Goal
 
-รัน test suite ทั้งหมดอย่างเป็นระบบ — เลือก `run-test-*` ที่เหมาะกับ project จาก signals จริง รันตามลำดับ fail-fast แล้ว validate/classify failures ว่าแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
+รัน test suite ทั้งหมดอย่างเป็นระบบ — เลือก `/run-test`/`deep-test-*` ที่เหมาะกับ project จาก signals จริง รันตามลำดับ fail-fast แล้ว validate/classify failures ว่าแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
 
 ## Scope
 
-Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
+Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test`/`deep-test-*` ตามสิ่งที่ project มีจริง
 
 - ถ้าต้องการ update/เขียน tests → `/update-tests` (run-* เป็น run-only)
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|
 | 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | `/run-test` (unit/fast) |
-| 2 | shared modules, DB, services integration | `/run-test` |
-| 3 | HTTP endpoints, OpenAPI spec, API routes | `/run-test` + `/test-all-api-routes` |
-| 4 | CLI binary, `bin` field, command definitions | `/run-test` |
-| 5 | consumer/provider services, Pact, contract files | `/run-test` |
-| 6 | web frontend, browser flows | `/run-test` (e2e) (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
-| 7 | UI components, design system, screenshots | `/run-test` (visual) |
-| 8 | coverage config หรือ target กำหนดไว้ | `/run-test` |
-| 9 | critical logic, mutation config | `/run-test` |
+| 2 | shared modules, DB, services integration | `/deep-test-integration` |
+| 3 | HTTP endpoints, OpenAPI spec, API routes | `/deep-test-api` + `/test-all-api-routes` |
+| 4 | CLI binary, `bin` field, command definitions | `/deep-test-cli` |
+| 5 | consumer/provider services, Pact, contract files | `/deep-test-contract` |
+| 6 | web frontend, browser flows | `/deep-test-e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
+| 7 | UI components, design system, screenshots | `/deep-test-visual` |
+| 8 | coverage config หรือ target กำหนดไว้ | `/deep-test-coverage` |
+| 9 | critical logic, mutation config | `/deep-test-mutation` |
 | 10 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
 ดูเพิ่มเติม: /update-tests, /deep-review
@@ -51,7 +51,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 ### 2. Detect Applicable Test Types
 
-> Goal: เลือก `run-test-*` ที่เกี่ยวข้องจาก signals
+> Goal: เลือก `/run-test` (unit) + `deep-test-*` ที่เกี่ยวข้องจาก signals
 
 1. สแกน `package.json`, configs, test dirs, routes — เทียบกับตารางใน Scope
 2. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ → `/update-tests` สร้าง tests ที่ขาดก่อน
@@ -61,7 +61,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: รันเร็วสุดก่อน เจอปัญหาเร็ว
 
-1. ลำดับ: `/run-test` (unit) → `/run-test` (integration) → `/run-test` (api) / `/run-test` (cli) / `/run-test` (contract) (ตาม signals) → `/run-test` (e2e) → `/run-test` (visual)
+1. ลำดับ: `/run-test` (unit) → `/deep-test-integration` → `/deep-test-api` / `/deep-test-cli` / `/deep-test-contract` (ตาม signals) → `/deep-test-e2e` → `/deep-test-visual`
 2. ต่อ type: บันทึกผลลัพธ์, duration, รายการ tests ที่ fail
 3. ถ้ามี fail → ไปขั้นตอน Validate/Classify ทันที ไม่แก้ไข code ก่อน
 
@@ -88,7 +88,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ครอบคลุมและรายงาน
 
-1. ทำ `/run-test` เมื่อ project มี coverage target
+1. ทำ `/deep-test-coverage` เมื่อ project มี coverage target
 2. ถ้าไม่ถึงเป้า → `/update-tests` เพิ่ม แล้วรันใหม่
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
@@ -104,7 +104,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 ### 1. Test Selection
 
-- เลือก `run-test-*` จาก signals จริงเท่านั้น — ไม่รันทุก type
+- เลือก `run-test`/`deep-test-*` จาก signals จริงเท่านั้น — ไม่รันทุก type
 - ถ้าไม่แน่ใจว่า type ไหนเกี่ยวข้อง → ถามผู้ใช้
 
 ### 2. Test Failure Handling
@@ -132,7 +132,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 ## Expected Outcome
 
-- ทุก applicable `run-test-*` ถูกรันครบตาม signals ของ project
+- ทุก applicable `/run-test`/`deep-test-*` ถูกรันครบตาม signals ของ project
 - Test failures ได้รับ validate/classify ว่าเป็น source หรือ test issue
 - ไม่มีการแก้ไขโดยไม่มี evidence
 - Coverage ผ่านเป้าหมาย (ถ้ามี)

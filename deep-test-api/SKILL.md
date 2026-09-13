@@ -1,5 +1,5 @@
 ---
-name: run-test-api
+name: deep-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
 argument-hint: "[scope]"
 related:

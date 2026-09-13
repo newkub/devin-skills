@@ -3,7 +3,7 @@ name: follow-tool-bruno
 description: ใช้ Bruno API client และ bru CLI สำหรับ collections, import specs, รัน tests ใน CI
 argument-hint: "[scope]"
 related:
-  - run-test-api
+  - deep-test-api
   - follow-tool-hurl
   - gen-openapi
   - follow-tool-github-actions
@@ -96,7 +96,7 @@ related:
 - `--sandbox safe` เป็น default — เปลี่ยนเป็น `developer` เฉพาะเมื่อ collection scripts ต้องการ Node APIs
 - ไม่รัน collection กับ production env โดยไม่มี user confirmation
 
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /deep-test-api ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool bruno)
 
 ## References
