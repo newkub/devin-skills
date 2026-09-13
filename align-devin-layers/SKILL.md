@@ -41,9 +41,9 @@ related:
 
 > Goal: อัปเดตแต่ละ layer
 
-1. ทำ `/update-devin global-rules` เพื่อ sync global rules
+1. ทำ `/update-devin-global-rules` เพื่อ sync global rules
 2. ทำ `/update-devin-global-skills` เพื่อ audit และอัปเดต skills
-3. ทำ `/update-devin global-subagents` เพื่ออัปเดต subagents
+3. ทำ `/update-devin-global-subagents` เพื่ออัปเดต subagents
 4. บันทึก output ของแต่ละ step
 
 ### 3. Detect Cross-Layer Misalignment
@@ -73,7 +73,7 @@ related:
 
 1. ทำ `/deep-validate` กับ global rules
 2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-harness`
-3. ตรวจ `AGENT.md` ของ subagents ด้วย `/update-devin global-subagents` ถ้าจำเป็น
+3. ตรวจ `AGENT.md` ของ subagents ด้วย `/update-devin-global-subagents` ถ้าจำเป็น
 4. รัน `/check-reference`
 5. รัน `git diff --check`
 
@@ -111,7 +111,7 @@ related:
 - สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
 - ใช้ `git commit` ทีละ layer
 
-- ใช้ `/update-devin global-subagents` ถ้าจำเป็น
+- ใช้ `/update-devin-global-subagents` ถ้าจำเป็น
 
 ## Expected Outcome
 

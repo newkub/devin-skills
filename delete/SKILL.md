@@ -10,6 +10,11 @@ related:
   - scan-codebase
   - resolve-errors
   - suggest-next-action
+  - delete-cicd-fails
+  - delete-git-branch
+  - delete-git-submodules
+  - delete-git-worktree
+  - delete-projects
 ---
 
 ## Goal
@@ -19,6 +24,8 @@ related:
 ## Scope
 
 ใช้สำหรับลบไฟล์/โฟลเดอร์ใน project ทีมี references หรือต้อง sync หลังลบ ไม่ใช้สำหรับลบ mass หรือ files นอก scope โดยไม่ถาม
+
+สำหรับ domain-specific deletes เรียก skill ตรง: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects` — แต่ละ skill มี dry-run + confirm gate ของตัวเอง
 
 ## Execute
 

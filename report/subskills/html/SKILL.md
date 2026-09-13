@@ -110,7 +110,7 @@ related:
 > Goal: ตรวจสอบว่ารายงานเรนเดอร์ถูกต้อง
 
 1. บันทึกไฟล์ใน `reports/<report-name>.html` หรือ `.devin/reports/<workspace>/<report-name>.html`
-2. รัน `/open web` หรือ `Start-Process <path>` เพื่อเปิดในเบราว์เซอร์
+2. รัน `/open-web` หรือ `Start-Process <path>` เพื่อเปิดในเบราว์เซอร์
 3. ยืนยันว่าแท็บ, ธีม, sort, filter, dropdown ทำงานได้
 
 ## Rules
@@ -201,7 +201,7 @@ related:
 
 ### 11. Always Open After Create
 
-- ทุกครั้งทีสร้างรายงาน HTML เสร็จ ต้องเปิดด้วย `/open web` เสมอ
+- ทุกครั้งทีสร้างรายงาน HTML เสร็จ ต้องเปิดด้วย `/open-web` เสมอ
 - ไม่ถือวารูปงานเสร็จจนกว่าจะเปิดใน browser ได้
 - ถ้าไม่สามารถเปิดได้ → รายงานปัญหาและหาทางเปิดด้วย `Start-Process` หรือ OS command
 

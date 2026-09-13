@@ -69,7 +69,7 @@ related:
 5. ใช้ `tech: /follow-<tech>` สำหรับ tech mapping
 6. ใช้ `skill-name: /skill-name` สำหรับ skill mapping
 7. ทุก step ใน `## Execute` ต้องเป็น actionable command ที่ agent รันได้
-8. ถ้ามีหลาย workspace อิสระกัน ใช้ `/update-devin global-subagents` หรือ `/use-subagents`
+8. ถ้ามีหลาย workspace อิสระกัน ใช้ `/update-devin-global-subagents` หรือ `/use-subagents`
 9. ถ้า context ไม่ชัด → stop และ report
 
 ### 5. Workspace AGENTS.md
@@ -140,7 +140,7 @@ related:
 1. repo ที่มี remote + PR workflow → `/create-github-pr` + `/review-github-pr`
 2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
 3. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
-4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge github-pr` เมื่อ user ยืนยัน)
+4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge-github-pr` เมื่อ user ยืนยัน)
 
 #### Production
 
@@ -179,7 +179,7 @@ related:
 
 ### 3. Subagent Discipline
 
-- ใช้ `/update-devin global-subagents` หรือ `/use-subagents` เมื่อมีหลาย workspace หรือหลากหลาย architecture ที่ตรวจสอบได้อิสระกัน
+- ใช้ `/update-devin-global-subagents` หรือ `/use-subagents` เมื่อมีหลาย workspace หรือหลากหลาย architecture ที่ตรวจสอบได้อิสระกัน
 - แต่ละ subagent ต้องได้รับ context: workspace path, manifest, และเป้าหมาย
 - รวมผลจาก subagents ก่อนเขียน root `AGENTS.md`
 

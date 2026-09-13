@@ -180,7 +180,7 @@ related:
 
 - ต้องทำ `/review-config` ก่อน update
 - ไม่แก้ไขก่อนมี findings และ priority
-- ถ้า project ใหญ่หรือ monorepo ซับซ้อน → ใช้ `/update-devin global-subagents`
+- ถ้า project ใหญ่หรือ monorepo ซับซ้อน → ใช้ `/update-devin-global-subagents`
 
 ### 2. Prefer Shared And Extends
 

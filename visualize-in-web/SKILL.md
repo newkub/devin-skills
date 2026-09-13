@@ -56,7 +56,7 @@ related:
 5. สร้างไฟล์ใน OS temp directory:
    - Windows: `$env:TEMP\visualize-<name>.html`
    - macOS/Linux: `tmp/visualize-<name>.html`
-6. ทำ `/open web` เพื่อเปิดใน browser
+6. ทำ `/open-web` เพื่อเปิดใน browser
 
 ### 4. Design Visual Layout
 

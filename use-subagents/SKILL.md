@@ -97,7 +97,7 @@ related:
 4. `Merge before ship` — ต้องรวบรวม results, ตรวจ conflicts, และ merge ก่อน push หรือ final report
 5. `Run checks after merge` — ไม่ส่งมอบโดยไม่ validate
 6. `Stop on 3 failures` — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
-7. ใช้ `/update-devin global-subagents` เพื่อ sync subagent catalog ถ้าจำเป็น
+7. ใช้ `/update-devin-global-subagents` เพื่อ sync subagent catalog ถ้าจำเป็น
 
 ### 2. Independence
 
@@ -138,7 +138,7 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 14 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
 | 15 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
 | 16 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
-| 17 | `merge` | `merge/subskills/all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
+| 17 | `merge` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
 | 18 | `bench-apis` | `bench-apis/subagents/benchmarker.md` | benchmark target เดียวด้วย load profile เดียวกัน |
 | 19 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
 

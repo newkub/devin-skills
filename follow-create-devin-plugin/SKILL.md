@@ -167,7 +167,7 @@ related:
 - รักษา backward compatibility เมื่อได้ยกเว้น major version bump
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /update-devin global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

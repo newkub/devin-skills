@@ -137,8 +137,8 @@ related:
 - ไม่ลบ worktree โดยตรงเกินไปก่อน `git worktree remove`
 
 - ใช้ /list-git-worktree ถ้าจำเป็น
-- ใช้ /delete git-worktree ถ้าจำเป็น
-- ใช้ /cleanup worktree ถ้าจำเป็น
+- ใช้ /delete-git-worktree ถ้าจำเป็น
+- ใช้ /cleanup-worktree ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -70,12 +70,12 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ทุก finding ต้องมี file path, line number หรือ commit reference
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (github pr)
 
-- ใช้ /open github ถ้าจำเป็น
+- ใช้ /open-github ถ้าจำเป็น
 - ใช้ /list-github-pr ถ้าจำเป็น
-- ใช้ /merge github-pr ถ้าจำเป็น
+- ใช้ /merge-github-pr ถ้าจำเป็น
 - ใช้ /resolve-github-actions ถ้าจำเป็น
 
-- ถ้า pass → ทำ `/merge github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
+- ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น

@@ -54,7 +54,7 @@ Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve
 
 > Goal: เปิด docs ให้ user ดูได้
 
-1. เปิด browser preview หรือ `/open web` ไปยัง `http://localhost:<port>`
+1. เปิด browser preview หรือ `/open-web` ไปยัง `http://localhost:<port>`
 2. ยืนยันว่า API reference render ครบ — endpoints, schemas, examples
 3. ถ้าหน้าว่าง → ตรวจ spec validity ด้วย `document lint` (spectral rules)
 

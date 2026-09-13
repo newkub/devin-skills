@@ -29,7 +29,7 @@ related:
 
 ใช้ `gh repo list --source` สำหรับ authenticated user หรือ owner ที่ระบุ แสดงเฉพาะ repo ต้นฉบับ (non-fork) ที่ user สร้างเอง
 
-ดูเพิ่มเติม: /open github, /list-github-project, /all-github-repo
+ดูเพิ่มเติม: /open-github, /list-github-project, /all-github-repo
 
 ## Execute
 
@@ -75,7 +75,7 @@ related:
 
 1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-projects-git-in-drive-d`
 2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-star`
-3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/open github <owner>/<name>`
+3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/open-github <owner>/<name>`
 4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules

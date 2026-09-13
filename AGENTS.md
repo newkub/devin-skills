@@ -37,7 +37,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/check-monorepo` to verify monorepo status.
 2. Run `/deep-analyze` to analyze tech stack and structure.
 3. Run `/all-workspace` if it is a monorepo.
-4. For independent subtasks across multiple workspaces, use `/update-devin global-subagents` or `/use-subagents`.
+4. For independent subtasks across multiple workspaces, use `/update-devin-global-subagents` or `/use-subagents`.
 5. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
 6. Keep the file under 250 lines.
 
@@ -65,7 +65,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `git: /follow-tool-git`
 - `github: /follow-github`
 - `skill-format: /update-devin-global-skills` for create and update
-- `global-rules: /update-devin global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
+- `global-rules: /update-devin-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
 
@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **736** top-level skills (1037 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
+The repository currently contains **767** top-level skills (1038 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
@@ -90,9 +90,9 @@ Core:
 - `update-docs-agents-md: /update-docs-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
-- `update-devin-global-subagents: /update-devin global-subagents` — create/update agents/ aligned with skills (subskill)
+- `update-devin-global-subagents: /update-devin-global-subagents` — create/update agents/ aligned with skills (subskill)
 - `review-devin-global-harness: /review-devin-global-harness` — review all layers: skills, subagents, hooks, MCP, global rules
-- `update-devin: /update-devin [domain]` — subskills: global-mcp, global-rules, global-subagents, harness, project-hooks, project-mcp, project-rules
+- `update-devin: /update-devin [domain]` — routes to `update-devin-global-*` / `update-devin-project-*` / `update-devin-harness` top-level skills
 - `git-commit: /git-commit`
 - `update-review-cli: /update-review-cli`
 - `ship: /ship`
@@ -109,18 +109,18 @@ Major skill families by current count:
 - `deep-*` (17): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-implement-to-production`, `deep-update-project`.
 - `list-*` (22): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github` route to `list-*-<domain>` top-level skills.
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
-- `open-*` (9): browser, editor, and terminal integration — `open` dispatcher (`explorer`, `github`, `web`, `wezterm`, `windows-terminal`, `zed`); specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
+- `open-*` (15): browser, editor, and terminal integration — `open` dispatcher routes to `open-explorer`, `open-github`, `open-web`, `open-wezterm`, `open-windows-terminal`, `open-zed`; specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
 - `ship-*` (2): `/ship` (entry point — `/update-docs-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
 - `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
-- `cleanup-*` (3): `cleanup` dispatcher (`branches-merged`, `docker`, `git-branch`, `github-issue`, `worktree`), `cleanup-files-in-project`, `cleanup-files-in-computer`.
+- `cleanup-*` (8): `cleanup` dispatcher routes to `cleanup-branches-merged`, `cleanup-docker`, `cleanup-git-branch`, `cleanup-github-issue`, `cleanup-worktree` top-level skills; plus `cleanup-files-in-project`, `cleanup-files-in-computer`.
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
 - `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui-and-features` (มี subskills: contrast, responsive, states).
 - `resolve-*` (5): error/CI/issue/conflict resolution — `resolve-errors` (canonical fixer; absorbs `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`), `resolve-cicd` (watcher — watch CI `gh run` + CD `wrangler`/deploys แล้ว dispatch `/resolve-errors`).
-- `restore-*` (1→dispatcher): `restore-files` (`deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`); `restore` = alias stub.
+- `restore-*` (5): `restore-files` dispatcher routes to `restore-files-deleted-file`, `restore-files-from-devin-history`, `restore-files-from-git-log`, `restore-files-from-my-dotfiles`; `restore` = alias stub.
 - `idea-*` (1→dispatcher): `idea` (`features`, `merge`, `naming`, `uxui-features`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
-- `merge-*` (1→dispatcher): `merge` (`all-branch-by-me-to-main`, `git-branch`, `github-pr`).
+- `merge-*` (4): `merge` dispatcher routes to `merge-all-branch-by-me-to-main`, `merge-git-branch`, `merge-github-pr` top-level skills.
 - `convert-*` (1→dispatcher): `convert` (`esm`, `files-format`, `git-submodules`, `scripts`, `svg`).
-- `delete-*` (1→dispatcher): `delete` (`cicd-fails`, `git-branch`, `git-submodules`, `git-worktree`, `projects`).
+- `delete-*` (6): `delete` dispatcher (generic safe file/folder delete) routes domain deletes to `delete-cicd-fails`, `delete-git-branch`, `delete-git-submodules`, `delete-git-worktree`, `delete-projects`.
 - `learn-*` (1→dispatcher): `learn` (`by-slide`, `cli`, `codebase`, `pattern`, `references`, `web`).
 - `git-commit-*` (1→dispatcher): `git-commit` (`and-push`, `at-devin-global-skills`, `no-verify`, `selected-files`).
 - `watch-*` (6): browser watching + `watch-browser` dispatcher (`fix`, `improve-uxui`, `test`).
@@ -134,7 +134,7 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 
 ### 7. Subagents
 
-- Use `/update-devin global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
+- Use `/update-devin-global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
 - Each subagent receives: workspace path, manifest, and target deliverable.
 - Merge subagent results before writing the root `AGENTS.md`.
 

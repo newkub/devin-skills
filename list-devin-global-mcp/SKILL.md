@@ -60,7 +60,7 @@ related:
 ### 1. Read-Only
 
 - ไม่แก้ไข `mcp_config.json`
-- ถ้าต้องแก้ → ใช้ `/update-devin global-mcp`
+- ถ้าต้องแก้ → ใช้ `/update-devin-global-mcp`
 
 ### 2. Privacy
 

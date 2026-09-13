@@ -65,7 +65,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 > Goal: Open Repo
 
 - ทำ `git remote get-url origin` เพื่อดู remote URL
-- แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open web` เพื่อเปิด repo ใน browser
+- แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open-web` เพื่อเปิด repo ใน browser
 
 ### 7. Ensure Repository Ready (Optional)
 

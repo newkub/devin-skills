@@ -85,7 +85,7 @@ related:
 
 - ขอ review ด้วย `gh pr edit <number> --add-reviewer <user>`
 - resolve conversation ด้วย `gh pr review <number> --comment` หรือ `gh api`
-- merge PR ให้ส่งต่อ `/merge github-pr` หรือ `/resolve-github-pr`
+- merge PR ให้ส่งต่อ `/merge-github-pr` หรือ `/resolve-github-pr`
 
 ## Expected Outcome
 

@@ -117,7 +117,7 @@ related:
 2. ทำ `gh api repos/<owner>/<repo>/branches/main/protection --jq .`
 3. ทำ `gh api repos/<owner>/<repo>/branches/<integration-branch>/protection --jq .`
 4. ตรวจสอบว่า `main` และ `<integration-branch>` มี protection
-5. ทำ `/open github` เพื่อตรวจ metadata บน browser หลังตั้งค่า
+5. ทำ `/open-github` เพื่อตรวจ metadata บน browser หลังตั้งค่า
 
 ### 7. Report
 

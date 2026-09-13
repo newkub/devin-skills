@@ -81,7 +81,7 @@ related:
 
 1. ใช้ `/search-files-patterns` หรือ `/search-github-star` หาหน้า download หลักของ program
 2. ถ้าเจอ GitHub repo → เปิด `https://github.com/<owner>/<repo>/releases`
-3. ถ้าเจอ official website → ใช้ `/open web` เปิดหน้า download
+3. ถ้าเจอ official website → ใช้ `/open-web` เปิดหน้า download
 4. ถ้าหาไม่เจอ → ค้นหาในเว็บด้วย `google` หรือ `duckduckgo` แล้วเปิดผลลัพธ์แรก
 5. รายงาน URL ทีเปิดไว้ พร้อมขั้นตอนทั่วไปในการติดตั้ง
 6. หยุดและรอ user ดำเนินการเอง

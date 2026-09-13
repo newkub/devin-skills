@@ -33,7 +33,7 @@ related:
 - สร้างไฟล์ HTML/CSS/JS ชั่วคราวใน OS temp directory
 - เริ่มจาก `/ask-me` และ `/suggest-me` เพื่อเข้าใจความต้องการ
 - ใช้ `/report html` สร้าง preview จาก design
-- เปิดด้วย `/open web` เสมอ
+- เปิดด้วย `/open-web` เสมอ
 - ไม่ต้อง commit ถ้ายังไม่ตกลง
 
 ## Execute
@@ -61,7 +61,7 @@ related:
 
 1. สร้าง wireframe หรือ mockup ใน `index.html`
 2. ใช้ `/report html` เพื่อ render design เป็น HTML
-3. เปิดดูด้วย `/open web` เสมอ
+3. เปิดดูด้วย `/open-web` เสมอ
 4. ถาม user feedback ผ่าน `/ask-me`
 5. ปรับแก้ตาม feedback
 6. ทำซ้ำจน user ตกลง
@@ -86,7 +86,7 @@ related:
 
 - ทำงานใน OS temp directory เท่านั้น
 - เริ่มต้นด้วย `/ask-me` และ `/suggest-me` เสมอ
-- ต้องเปิด preview ด้วย `/open web` หลังทุก iteration
+- ต้องเปิด preview ด้วย `/open-web` หลังทุก iteration
 - ไม่ commit หรือ push โดยอัตโนมัติ
 - เก็บ feedback เป็น checklist ก่อนแก้
 - ถ้ามีหลายทางเลือก → ใช้ `/choose-and-apply`

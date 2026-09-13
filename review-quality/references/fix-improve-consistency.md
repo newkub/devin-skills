@@ -49,7 +49,7 @@
 > Goal: กันไม่ให้ inconsistency กลับมา
 
 1. ถ้ามี linter/formatter ที่บังคับได้ (eslint rule, clippy, biome) → เพิ่ม rule
-2. ถ้าเป็น convention ที่เครื่องมือบังคับไม่ได้ → บันทึกใน `AGENTS.md` หรือ `.devin/rules/` ผ่าน `/update-devin project-rules`
+2. ถ้าเป็น convention ที่เครื่องมือบังคับไม่ได้ → บันทึกใน `AGENTS.md` หรือ `.devin/rules/` ผ่าน `/update-devin-project-rules`
 3. ถ้าต้อง ast-grep rules → ทำ `/update-project-rules`
 
 ### 5. Report

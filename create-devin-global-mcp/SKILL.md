@@ -29,9 +29,9 @@ related:
 ใช้เมื่อต้องการสร้าง MCP server ใหม่และให้ Devin มองเห็นใน global config ทันที
 
 - รัน `/follow-create-mcp` เพื่อสร้าง server
-- รัน `/update-devin global-mcp` เพื่อ register ลง global config
+- รัน `/update-devin-global-mcp` เพื่อ register ลง global config
 - ทดสอบ server ด้วย `mcp_list_servers` และ `mcp_call_tool`
-- ไม่ modify project `mcp_config.json` — ใช้ `/update-devin project-mcp` สำหรับ project scope
+- ไม่ modify project `mcp_config.json` — ใช้ `/update-devin-project-mcp` สำหรับ project scope
 
 ## Execute
 
@@ -55,7 +55,7 @@ related:
 
 > Goal: register ลง `%APPDATA%\devin\mcp_config.json`
 
-1. ทำ `/update-devin global-mcp` ด้วย action `add`
+1. ทำ `/update-devin-global-mcp` ด้วย action `add`
 2. ระบุ `command`, `args`, และ `env` ให้ครบถ้วน
 3. ตรวจสอบว่าไฟล์มี root key `mcpServers` และ server entry ถูกต้อง
 4. สำรอง config ก่อนแก้ไข
@@ -82,7 +82,7 @@ related:
 
 - ใช้สำหรับ Devin global MCP config เท่านั้น
 - ไม่แก้ไข project `mcp_config.json` โดยตรง
-- ถ้าต้องการ project-level ให้ส่งต่อ `/update-devin project-mcp`
+- ถ้าต้องการ project-level ให้ส่งต่อ `/update-devin-project-mcp`
 
 ### 2. Safety
 

@@ -104,7 +104,7 @@ related:
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /run-scan ถ้าจำเป็น
-- ใช้ /delete projects ถ้าจำเป็น
+- ใช้ /delete-projects ถ้าจำเป็น
 
 ## Expected Outcome
 

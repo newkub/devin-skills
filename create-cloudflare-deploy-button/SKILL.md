@@ -80,7 +80,7 @@ related:
 
 > Goal: ยืนยันว่าปุ่มใช้งานได้
 
-1. เปิด button URL ด้วย `/open web` หรือ `webfetch` เพื่อดูว่า deploy flow render ถูกต้อง (แสดง repo, build config, resources ที่จะ provision)
+1. เปิด button URL ด้วย `/open-web` หรือ `webfetch` เพื่อดูว่า deploy flow render ถูกต้อง (แสดง repo, build config, resources ที่จะ provision)
 2. commit และ push `README.md` — ทำ `/git-commit`
 3. ทำ `/report` คอลัมน์: `No.`, `Field`, `Value` — แสดง repo URL, subdir, paid flag, resources ที่จะ auto-provision
 4. ทำ `/suggest-next-action`

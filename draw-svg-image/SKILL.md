@@ -72,7 +72,7 @@ related:
 ### 3. Fallback
 
 - ถ้า description complex หรือ user ต้องการ photorealistic → แนะนำ `gen-ai-images` + `convert-to-svg`
-- ถ้าต้องการ preview → ใช้ `/visualize-in-web` หรือ `/open web`
+- ถ้าต้องการ preview → ใช้ `/visualize-in-web` หรือ `/open-web`
 
 - ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น

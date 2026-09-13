@@ -1,6 +1,6 @@
 ---
 name: restore-files
-description: กู้คืน files/state — จาก git log, devin history, dotfiles หรือ deleted files ผ่าน subskills
+description: กู้คืน files/state — จาก git log, devin history, dotfiles หรือ deleted files ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - check-git-logs
@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม restore source — parent ทำ routing เท่านั้น
+Dispatch ไป skill ปลายทาง ตาม restore source — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -19,22 +19,22 @@ Dispatch ไป subskill ตาม restore source — parent ทำ routing เ�
 
 ## Execute
 
-### Subskills
+### Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `deleted-file` | `subskills/deleted-file/SKILL.md` — กู้ไฟล์ที่ถูกลบ |
-| `from-devin-history` | `subskills/from-devin-history/SKILL.md` — กู้จาก Devin session history |
-| `from-git-log` | `subskills/from-git-log/SKILL.md` — กู้จาก git log ถอยหลังจนเจอ |
-| `from-my-dotfiles` | `subskills/from-my-dotfiles/SKILL.md` — กู้ config จาก dotfiles repo |
+| `deleted-file` | /restore-files-deleted-file — กู้ไฟล์ที่ถูกลบ |
+| `from-devin-history` | /restore-files-from-devin-history — กู้จาก Devin session history |
+| `from-git-log` | /restore-files-from-git-log — กู้จาก git log ถอยหลังจนเจอ |
+| `from-my-dotfiles` | /restore-files-from-my-dotfiles — กู้ config จาก dotfiles repo |
 
-1. ระบุ domain จาก argument (เช่น `/restore-files from-git-log`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+1. ระบุ domain จาก argument (เช่น `/restore-files-from-git-log`)
+2. ถ้า domain รองรับ → ทำตาม `/restore-files-<domain>` ทั้ง flow
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
 - restore ที่ overwrite ไฟล์ปัจจุบันต้อง confirm ก่อนเสมอ
 
 - ใช้ /check-git-logs ถ้าจำเป็น
@@ -42,4 +42,4 @@ Dispatch ไป subskill ตาม restore source — parent ทำ routing เ�
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง source แล้วกู้คืนตาม flow นั้น
+- caller ถูก dispatch ไป skill ปลายทาง ที่ตรง source แล้วกู้คืนตาม flow นั้น

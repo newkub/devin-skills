@@ -120,7 +120,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 ### 8. Clean Failed Runs (Optional)
 - คง run ที่ failure ไว้สำหรับ post-incident analysis โดย default
-- ถ้า user ขอให้ลบ → ทำ `/ask-me` เพื่อยืนยันก่อนลบแต่ละ run ด้วย `gh run delete <run-id>` หรือ `/delete cicd-fails`
+- ถ้า user ขอให้ลบ → ทำ `/ask-me` เพื่อยืนยันก่อนลบแต่ละ run ด้วย `gh run delete <run-id>` หรือ `/delete-cicd-fails`
 
 ## Expected Outcome
 

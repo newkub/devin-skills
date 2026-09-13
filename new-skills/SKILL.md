@@ -64,7 +64,7 @@ related:
 > Goal: skill พร้อมใช้งาน
 
 1. ทำ `/review-devin-global-harness` เพื่อตรวจ conventions
-2. ทำ `/update-devin global-rules` เพื่อตรวจ global rules
+2. ทำ `/update-devin-global-rules` เพื่อตรวจ global rules
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, TODO, placeholders
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo
 5. ทำ `/ship` เมื่องานเสร็จ

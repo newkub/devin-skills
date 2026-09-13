@@ -55,7 +55,7 @@ related:
 
 > Goal: Open Web (ถ้าเป็น web)
 
-1. ถ้าเป็น web project ให้ทำ `/open web` เพื่อเปิด browser ที่ dev server URL
+1. ถ้าเป็น web project ให้ทำ `/open-web` เพื่อเปิด browser ที่ dev server URL
 2. ตรวจสอบว่า website เปิดได้และแสดงผลถูกต้อง
 
 ### 5. Watch Browser (ถ้าเป็น web)
@@ -105,7 +105,7 @@ related:
 
 ### 3. Watch Strategy
 
-- ทำ `/open web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
+- ทำ `/open-web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
 - ทำ `/watch-terminal` สำหรับทุก project
 - ทำ `/watch-browser-fix` เฉพาะ web project
 - ถ้าพบ errors ระหว่าง watch ให้ทำ `/resolve-errors` ทันที

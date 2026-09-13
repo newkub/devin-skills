@@ -129,7 +129,7 @@
 ### 5. Src Support
 
 - ถ้า skill ต้องการ CLI → เรียก `/follow-create-cli` ก่อน validation. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust. ตรวจสอบว่า dev/build ทำงานได้ด้วยคำสั่งที่เหมาะสม
-- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า dev server หรือ `/open web` ทำงานได้
+- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า dev server หรือ `/open-web` ทำงานได้
 - ถ้า skill ต้องการ MCP server → เรียก `/follow-create-mcp` (พยายาม Rust ก่อน) แล้วอัปเดต `mcp_config.json`
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 - ถ้า skill มี `src/` → ทำ `/convert-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน

@@ -73,7 +73,7 @@ related:
 รัน dev server และเปิด browser:
 
 1. รัน `bunx slidev learn/{topic-name}/slides.md` ที่ root directory `D:/newkub/slides`
-2. ทำ `/open web` เพื่อเปิด `http://localhost:3030`
+2. ทำ `/open-web` เพื่อเปิด `http://localhost:3030`
 3. ตรวจสอบว่า slides แสดงผลถูกต้อง
 
 ## Rules

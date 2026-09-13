@@ -10,7 +10,7 @@
 
 - ตรวจ MCP configs: `.devin/` project config, `~/.config/devin/` global, หรือ tool-specific (`mcp.json`, `claude_desktop_config`)
 - ครอบคลุม: servers ที่ติดตั้งแต่ไม่ใช้, tool counts ต่อ server, context tokens ที่ tools กิน, duplicate capabilities ข้าม servers
-- Action-oriented: แนะนำ/ปรับ config — เปลี่ยน config ผ่าน `/update-devin global-mcp`
+- Action-oriented: แนะนำ/ปรับ config — เปลี่ยน config ผ่าน `/update-devin-global-mcp`
 
 ## Execute
 

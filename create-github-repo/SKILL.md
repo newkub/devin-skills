@@ -61,7 +61,7 @@ related:
 
 1. ตรวจสอบ `git status` ว่า clean
 2. รัน `gh repo view <repo-name> --json url,defaultBranchRef --jq .url`
-3. ทำ `/open web` เปิด repo URL
+3. ทำ `/open-web` เปิด repo URL
 
 ## Rules
 

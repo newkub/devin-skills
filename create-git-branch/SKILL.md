@@ -58,8 +58,8 @@ related:
 - 1 branch ต่อ 1 concern
 - ไม่สร้าง branch ซ้ำ
 
-- ใช้ /cleanup git-branch ถ้าจำเป็น
-- ใช้ /delete git-branch ถ้าจำเป็น
+- ใช้ /cleanup-git-branch ถ้าจำเป็น
+- ใช้ /delete-git-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

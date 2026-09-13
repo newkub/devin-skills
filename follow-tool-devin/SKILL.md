@@ -109,7 +109,7 @@ related:
 - Follow security best practices
 
 - ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
-- ใช้ /update-devin global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 - ใช้ /follow-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

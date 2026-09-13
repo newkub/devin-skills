@@ -66,7 +66,7 @@ related:
 > Goal: สร้างแต่ละ component ตาม convention
 
 1. สำหรับ `skills/`: สร้าง `skills/<name>/SKILL.md` เป็นหน่วยงานย่อยตาม `/update-devin-global-skills` (ใช้ `$ARGUMENTS` สำหรับรับ input)
-2. สำหรับ `agents/`: สร้าง `.md` agent definitions ตามมาตรฐาน `/update-devin global-subagents`
+2. สำหรับ `agents/`: สร้าง `.md` agent definitions ตามมาตรฐาน `/update-devin-global-subagents`
 3. สำหรับ `hooks/`: สร้าง `hooks.json` และ handler scripts ตาม hook types (pre/post tool use, stop, etc.)
 4. สำหรับ `commands/`: สร้าง `.md` file ด้วย frontmatter และ instructions
 5. สำหรับ `mcpServers`: ระบุ server name, transport, command, args, env ใน `.mcp.json`
@@ -117,5 +117,5 @@ related:
 
 - `references/claude-plugin.md` — official docs, manifest schema, component details
 - `/update-devin-global-skills` — SKILL.md format
-- `/update-devin global-subagents` — AGENT.md format
+- `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

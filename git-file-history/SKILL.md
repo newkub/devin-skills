@@ -115,7 +115,7 @@ Boundary: interactive HTML viewer เท่านั้น — หา commit ท
 
 - ใช้ /check-git-logs ถ้าจำเป็น
 - ใช้ /list-brave-browser-history ถ้าจำเป็น
-- ใช้ /restore-files from-devin-history ถ้าจำเป็น
+- ใช้ /restore-files-from-devin-history ถ้าจำเป็น
 - ใช้ /follow-git-flow ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

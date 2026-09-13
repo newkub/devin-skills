@@ -146,7 +146,7 @@ related:
 
 - รายงานทั้งหมดต้องอยู่ใน chat เท่านั้น
 - ห้ามเปิด browser, web preview, หรือ HTML report
-- ไม่เรียก `/open web`, `/visualize-in-web`, `/visualize-project`, `/open-devin-in-web`, `/report html`
+- ไม่เรียก `/open-web`, `/visualize-in-web`, `/visualize-project`, `/open-devin-in-web`, `/report html`
 - ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
 
 - ใช้ /refactor-workspace ถ้าจำเป็น

@@ -46,7 +46,7 @@ related:
    - Windows: `start <url>`
    - macOS: `open <url>`
    - Linux: `xdg-open <url>`
-2. หรือทำ `/open web` เพื่อเปิด
+2. หรือทำ `/open-web` เพื่อเปิด
 
 ## Rules
 
@@ -64,7 +64,7 @@ related:
 ### 3. Open Method
 
 - ใช้ native OS command `start` / `open` / `xdg-open`
-- ใช้ `/open web` เป็น fallback
+- ใช้ `/open-web` เป็น fallback
 - ถ้าต้องการ integrated browser ให้ใช้ `browser_preview` tool
 
 ### 4. Output

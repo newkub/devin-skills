@@ -60,7 +60,7 @@ Deploy MCP server — เลือก transport, host remote server และ co
    ```
 
 2. Remote: client ชี้ URL ของ Streamable HTTP endpoint + auth credentials
-3. ทำ `/update-devin global-mcp` ถ้าเป็น Devin global MCP config
+3. ทำ `/update-devin-global-mcp` ถ้าเป็น Devin global MCP config
 
 ### 5. Verify
 

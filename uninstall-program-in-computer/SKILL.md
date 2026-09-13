@@ -89,7 +89,7 @@ related:
 ### 1. Find Source First
 
 - ห้าม uninstall โดยไม่ทราบ package manager
-- ถ้าไม่อยู่ใน package manager ใด ให้หยุดและแนะนำให้ลบด้วย Windows Settings หรือ `/open web` หา uninstaller
+- ถ้าไม่อยู่ใน package manager ใด ให้หยุดและแนะนำให้ลบด้วย Windows Settings หรือ `/open-web` หา uninstaller
 
 ### 2. Confirm Destructive Action
 

@@ -23,7 +23,7 @@ related:
 - ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/restore-files`
 - Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
-- ดูเพิ่มเติม: /git-file-history, /restore-files from-my-dotfiles
+- ดูเพิ่มเติม: /git-file-history, /restore-files-from-my-dotfiles
 
 ## Execute
 
@@ -99,7 +99,7 @@ related:
 - หยุดทันทีเมื่อเจอ commit แรกทีตรงเงื่อนไข (ล่าสุดทียังตรง)
 - ถ้า user ต้องการ list ทั้งหมด → ให้ระบุ explicitly
 
-- ใช้ /restore-files from-git-log ถ้าจำเป็น
+- ใช้ /restore-files-from-git-log ถ้าจำเป็น
 
 ## Expected Outcome
 

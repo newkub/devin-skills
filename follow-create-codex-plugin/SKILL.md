@@ -115,6 +115,6 @@ related:
 
 - `references/codex-plugin.md` — official docs, manifest schema, component details
 - `/update-devin-global-skills` — SKILL.md format
-- `/update-devin global-subagents` — AGENT.md format
+- `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle
 - `/follow-create-claude-plugin` — ถ้าต้องการ port ไป Claude plugin ในอนาคต

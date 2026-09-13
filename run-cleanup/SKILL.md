@@ -36,7 +36,7 @@ related:
    - Python: `__pycache__/`, `.pytest_cache/`, `*.pyc`
    - Go: `vendor/`, `bin/`
    - General: `.cache/`, `coverage/`, `*.log`
-3. ถ้ามี stale branches หรือ worktrees → ทำ `/cleanup git-branch` หรือ `/cleanup worktree`
+3. ถ้ามี stale branches หรือ worktrees → ทำ `/cleanup-git-branch` หรือ `/cleanup-worktree`
 
 ### 2. Run Cleanup
 
@@ -63,7 +63,7 @@ related:
 - ถ้ามี file locks → แก้ก่อนลบ
 - ใช้ `/cleanup-files-in-computer` สำหรับ system cleanup
 - ใช้ `/cleanup-files-in-project` สำหรับ project cleanup
-- ใช้ `/cleanup git-branch` สำหรับ branch cleanup
+- ใช้ `/cleanup-git-branch` สำหรับ branch cleanup
 - ใช้ `/suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
 - ใช้ /run-clean ถ้าจำเป็น
 

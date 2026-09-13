@@ -86,7 +86,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 - ตรวจสอบ hot reload ทำงานได้
 
 - ใช้ /capture ถ้าจำเป็น
-- ใช้ /open windows-terminal ถ้าจำเป็น
+- ใช้ /open-windows-terminal ถ้าจำเป็น
 - ใช้ /record-video-terminal ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
 

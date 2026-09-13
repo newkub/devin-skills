@@ -95,7 +95,7 @@ related:
 ### 10. Open HTML in Browser
 
 > Goal: Open HTML in Browser
-1. ทำตาม `/open web` เพื่อเปิด README.html ใน browser
+1. ทำตาม `/open-web` เพื่อเปิด README.html ใน browser
 2. ใช้ `start README.html` (Windows), `open README.html` (macOS) หรือ `xdg-open README.html` (Linux)
 3. ตรวจสอบว่า file เปิดถูกต้อง
 

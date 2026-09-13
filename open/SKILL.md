@@ -1,6 +1,6 @@
 ---
 name: open
-description: เปิด target ใน app ที่เหมาะ — explorer, browser, terminal, editor, GitHub ผ่าน subskills
+description: เปิด target ใน app ที่เหมาะ — explorer, browser, terminal, editor, GitHub ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - open-in-devin
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม target ที่ต้องเปิด — parent ทำ routing เท่านั้น
+Dispatch ไป skill ปลายทาง ตาม target ที่ต้องเปิด — parent ทำ routing เท่านั้น
 
 ## Scope
 
@@ -21,24 +21,24 @@ Dispatch ไป subskill ตาม target ที่ต้องเปิด — 
 
 ## Execute
 
-### Subskills
+### Skills
 
-| Domain | Subskill |
+| Domain | Skill |
 |---|---|
-| `explorer` | `subskills/explorer/SKILL.md` — เปิด path ใน file explorer |
-| `github` | `subskills/github/SKILL.md` — เปิด repo/page บน GitHub |
-| `web` | `subskills/web/SKILL.md` — เปิด URL ใน browser |
-| `wezterm` | `subskills/wezterm/SKILL.md` — เปิดใน WezTerm |
-| `windows-terminal` | `subskills/windows-terminal/SKILL.md` — เปิดใน Windows Terminal |
-| `zed` | `subskills/zed/SKILL.md` — เปิดใน Zed editor |
+| `explorer` | /open-explorer — เปิด path ใน file explorer |
+| `github` | /open-github — เปิด repo/page บน GitHub |
+| `web` | /open-web — เปิด URL ใน browser |
+| `wezterm` | /open-wezterm — เปิดใน WezTerm |
+| `windows-terminal` | /open-windows-terminal — เปิดใน Windows Terminal |
+| `zed` | /open-zed — เปิดใน Zed editor |
 
-1. ระบุ domain จาก argument (เช่น `/open web`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+1. ระบุ domain จาก argument (เช่น `/open-web`)
+2. ถ้า domain รองรับ → ทำตาม `/open-<domain>` ทั้ง flow
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
 - open-* ที่เป็น domain เฉพาะ (devin, diff, files-in-web, readme-html) ยังเป็น skill แยก — ดู `related`
 
 - ใช้ /open-in-devin ถ้าจำเป็น
@@ -48,4 +48,4 @@ Dispatch ไป subskill ตาม target ที่ต้องเปิด — 
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง target แล้วเปิดตาม flow นั้น
+- caller ถูก dispatch ไป skill ปลายทาง ที่ตรง target แล้วเปิดตาม flow นั้น

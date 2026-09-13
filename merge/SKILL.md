@@ -102,17 +102,17 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 4. ทำ `/report table` สรุป: `No.`, `Source`, `Destination`, `Status`, `Notes`
 5. ถ้ามีหลาย step ค้าง → ทำ `/report-progress`
 
-### Subskills
+### Skills
 
-> Goal: dispatch ไป subskill ตาม domain เมื่อ merge เป็น git branch/PR workflow
+> Goal: dispatch ไป skill ปลายทาง ตาม domain เมื่อ merge เป็น git branch/PR workflow
 
-| Domain | Subskill |
+| Domain | Skill |
 |--------|----------|
-| `git-branch` | `subskills/git-branch/SKILL.md` — merge feature branch `--no-ff` + push + cleanup |
-| `github-pr` | `subskills/github-pr/SKILL.md` — merge PR ด้วย strategy ที่เหมาะสม |
-| `all-branch-by-me-to-main` | `subskills/all-branch-by-me-to-main/SKILL.md` — merge ทุก branch ของ user เข้า `main` |
+| `git-branch` | /merge-git-branch — merge feature branch `--no-ff` + push + cleanup |
+| `github-pr` | /merge-github-pr — merge PR ด้วย strategy ที่เหมาะสม |
+| `all-branch-by-me-to-main` | /merge-all-branch-by-me-to-main — merge ทุก branch ของ user เข้า `main` |
 
-1. ถ้า argument ตรง domain ในตาราง → อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ตรง domain ในตาราง → อ่าน `/merge-<domain>` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าเป็น `@files` merge → ทำตาม step 1-7 ด้านบน
 
 ## Rules

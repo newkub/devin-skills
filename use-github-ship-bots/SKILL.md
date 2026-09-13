@@ -48,7 +48,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 - สร้าง PR พร้อม evidence
 - อัปเดต issue status
 
-- ดูเพิ่มเติม: /setup-cicd, /open github
+- ดูเพิ่มเติม: /setup-cicd, /open-github
 
 ## Execute
 

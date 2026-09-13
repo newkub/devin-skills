@@ -18,11 +18,11 @@ related:
 
 ## Scope
 
-- ใช้ร่วมกับ skills: `/open github`, `/open github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-issue`, `/update-github-issue`
+- ใช้ร่วมกับ skills: `/open-github`, `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-issue`, `/update-github-issue`
 - รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
 - ไม่ใช่ project management tool ครบวงจร
 
-ดูเพิ่มเติม: `/implement-github-issue-by-me`, `/ask-me`, `/open github`, `/open github`, `/open github`, `/open web`
+ดูเพิ่มเติม: `/implement-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-github`, `/open-github`, `/open-web`
 
 ## Execute
 
@@ -127,7 +127,7 @@ related:
 
 1. ตรวจสอบว่า issue ถูกสร้าง/แก้ไขสำเร็จ
 2. `gh issue view <number>` สำหรับตรวจสอบสุดท้าย
-3. หลังสร้าง เปิดใน browser ด้วย `/open web` หรือ `gh issue view <number> --web`
+3. หลังสร้าง เปิดใน browser ด้วย `/open-web` หรือ `gh issue view <number> --web`
 4. รายงาน issue URL กลับ
 
 ## Rules

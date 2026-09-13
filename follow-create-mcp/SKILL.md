@@ -34,7 +34,7 @@ related:
 
 - สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
 - ถ้าต้องการ register ลง Devin global MCP config ให้ใช้ `/create-devin-global-mcp` หลังจากนี้
-- ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin project-mcp`
+- ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin-project-mcp`
 
 ดูเพิ่มเติม: `/review-dependencies`, `/follow-lang-rust`, `/follow-lang-typescript`
 
@@ -129,7 +129,7 @@ related:
 
 - สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
 - ถ้าต้องการ register ลง Devin global config ให้ส่งต่อ `/create-devin-global-mcp`
-- ถ้าต้องการ register ลง project config ให้ส่งต่อ `/update-devin project-mcp`
+- ถ้าต้องการ register ลง project config ให้ส่งต่อ `/update-devin-project-mcp`
 
 ### 5. Integration
 
@@ -146,4 +146,4 @@ related:
 - Tools/resources/prompts ถูก expose ผ่าน MCP protocol
 - Transport ทีเลือกทดสอบผ่าน
 - ผ่าน `/deep-validate` และ `/ship`
-- พร้อมส่งต่อไป register ด้วย `/create-devin-global-mcp` หรือ `/update-devin project-mcp` ถ้าต้องการ
+- พร้อมส่งต่อไป register ด้วย `/create-devin-global-mcp` หรือ `/update-devin-project-mcp` ถ้าต้องการ

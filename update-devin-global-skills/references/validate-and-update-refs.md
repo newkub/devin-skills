@@ -14,5 +14,5 @@ skill ผ่านเกณฑ์ทั้งหมด
 6. ทำ `/update-references` เพื่อ sync references ทั่ว repo
 7. ทำ `/use-related-skills` เพื่อหา skills อื่นที่ควร integrate หรือขยายจาก skill ใหม่/อัปเดต
 8. อัปเดต `AGENTS.md` ถ้ามีการ rename หรือย้าย skill
-9. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/update-devin global-rules`
+9. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/update-devin-global-rules`
 10. ถ้าไม่ผ่าน → แก้และ recheck (max 3 รอบ → stop และ report)

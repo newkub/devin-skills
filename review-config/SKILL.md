@@ -114,7 +114,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - เขียนเฉพาะสิ่งที่ต่างจาก default พร้อม comment
 - เก็บเฉพาะ config หลักๆ ที่มีผลต่อ project
 
-- ใช้ /update-devin global-subagents ถ้าจำเป็น (config\SKILL.md)
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น (config\SKILL.md)
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

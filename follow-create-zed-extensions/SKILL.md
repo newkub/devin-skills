@@ -103,7 +103,7 @@ related:
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /open zed ถ้าจำเป็น
+- ใช้ /open-zed ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

@@ -131,7 +131,7 @@ related:
 
 - ใช้ `git submodule add` ไม่ใช่ manual edit `.gitmodules`
 - ตรวจ `git submodule status` หลัง add
-- ถ้าต้องการ remove submodule ภายหลัง → ใช้ `/delete git-submodules`
+- ถ้าต้องการ remove submodule ภายหลัง → ใช้ `/delete-git-submodules`
 
 ### 5. Clean Working Tree
 

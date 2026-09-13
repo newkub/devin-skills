@@ -36,6 +36,7 @@ related:
 | SvelteKit | `/follow-create-web-svelte` |
 | SolidStart | `/follow-create-web-solidstart` |
 | TanStack Start (Solid) | `/follow-create-web-solid-tanstack-router` |
+| Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
 
 - Latest: Vite `8.3.0` (default toolchain, Rolldown-powered) (verified 2026-09-12)
 

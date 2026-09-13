@@ -95,7 +95,7 @@ related:
 1. รัน `bun install` ใน `tempDir`
 2. รัน `bunx vite dev` หรือ `bun run dev`
 3. รอ port พร้อมใช้
-4. รัน `/open web` หรือ `Start-Process <url>` เพื่อเปิด browser
+4. รัน `/open-web` หรือ `Start-Process <url>` เพื่อเปิด browser
 
 ### 5. Verify
 

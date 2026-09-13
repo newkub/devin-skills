@@ -62,7 +62,7 @@ related:
 
 1. ถ้าต้องเปิด URL ให้เลือก:
    - ถ้าต้องการตรวจสอบผ่าน browser automation → รัน `/watch-browser-fix`
-   - ถ้าต้องการเปิดใน browser เท่านั้น → รัน `/open web`
+   - ถ้าต้องการเปิดใน browser เท่านั้น → รัน `/open-web`
    - ถ้าต้องการ watch terminal ทุก 5 วินาที → รัน `/watch-terminal`
 2. ตรวจสอบว่า documentation site โหลดได้จริง
 3. ทดสอบเข้าถึง documentation site และตรวจสอบว่า features หลักทำงานได้

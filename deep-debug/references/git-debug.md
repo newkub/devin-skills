@@ -106,7 +106,7 @@
 
 > Goal: กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
 
-1. ทำ `/restore-files from-git-log` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
+1. ทำ `/restore-files-from-git-log` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
 2. ถ้าไม่พบ → รัน `git log --all --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
 3. รัน `git show <commit-hash>^:<file-path>` เพื่อดูเนื้อหาไฟล์ก่อนถูกลบ
 4. รัน `git restore --source=<commit-hash>^ <file-path>` เพื่อ restore ไฟล์

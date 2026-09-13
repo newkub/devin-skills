@@ -120,7 +120,7 @@ Capture terminal output ตาม tool ที่เลือก
 
 - ใช้ /capture-web ถ้าจำเป็น
 - ใช้ /from-recent-windows-capture ถ้าจำเป็น
-- ใช้ /open windows-terminal ถ้าจำเป็น
+- ใช้ /open-windows-terminal ถ้าจำเป็น
 ## Expected Outcome
 
 - ภาพ screenshot จาก terminal output คุณภาพสูง

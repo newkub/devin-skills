@@ -85,7 +85,7 @@ related:
 ### 1. Output Constraints
 
 - output อยู่ใน chat เท่านั้น
-- ไม่เปิด browser, ไม่ใช้ `/open web`
+- ไม่เปิด browser, ไม่ใช้ `/open-web`
 - ไม่สร้าง HTML, ไม่ใช้ `/report html` หรือ `/visualize-in-web`
 - ไม่สร้างไฟล์ใน project
 

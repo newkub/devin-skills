@@ -24,14 +24,14 @@ related:
 
 ## Goal
 
-Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%\devin\agents`), `hooks`, `MCP servers`, `global rules` — ให้ alignment ตรงกัน ไม่มี redundancy ก่อนเรียก `update-devin global-*`
+Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%\devin\agents`), `hooks`, `MCP servers`, `global rules` — ให้ alignment ตรงกัน ไม่มี redundancy ก่อนเรียก `update-devin-global-* / update-devin-project-*`
 
 ## Scope
 
-ใช้ก่อนเรียก `update-devin global-*` — ครอบคลุม 5 layers:
+ใช้ก่อนเรียก `update-devin-global-* / update-devin-project-*` — ครอบคลุม 5 layers:
 
 - `skills` — ตรวจ skill package ตามมาตรฐาน `update-devin-global-skills` (frontmatter, sections, line count, style)
-- `subagents` — ตรวจ `AGENT.md` ตามมาตรฐาน `update-devin global-subagents` (merged from: review-devin-global-subagents)
+- `subagents` — ตรวจ `AGENT.md` ตามมาตรฐาน `update-devin-global-subagents` (merged from: review-devin-global-subagents)
 - `hooks` — ตรวจ hooks config ว่า trigger ถูก event, ไม่ block workflow, command มีอยู่จริง
 - `mcp` — ตรวจ MCP servers ว่า enable/ใช้งานจริง, ไม่ซ้ำ server, ไม่ dead config
 - `global rules` — ตรวจ `global_rules.md` ว่า skills ที่อ้างมีจริง, ไม่ขัดแย้งกัน, ไม่ stale

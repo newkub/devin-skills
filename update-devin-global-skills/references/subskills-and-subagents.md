@@ -67,9 +67,9 @@
 ## Subagents
 
 1. รูปแบบ: `subagents/<name>.md` (flat) หรือ `subagents/<name>/AGENT.md` (directory) — ตาม custom subagent spec เดียวกับ `agents/` roots
-2. runtime ไม่ register profiles จาก `subagents/` ใน skill package โดยตรง — ต้อง materialize ไปยัง agents root ที่ official รองรับ: `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\` (ทำผ่าน `/update-devin global-subagents` หรือ `/update-devin-project-*`)
+2. runtime ไม่ register profiles จาก `subagents/` ใน skill package โดยตรง — ต้อง materialize ไปยัง agents root ที่ official รองรับ: `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\` (ทำผ่าน `/update-devin-global-subagents` หรือ `/update-devin-project-*`)
 3. ใช้ `subagents/` เมื่อ skill ต้องการ role เฉพาะที่ไม่มีใน global profiles — ถ้า role มีอยู่แล้ว (เช่น `reviewer`, `qa`, `security-auditor`) → อ้างถึง profile นั้นตรงๆ ผ่าน `agent:` field แทนการสร้างใหม่
-4. frontmatter ของ profile: `name`, `description`, `model`, `allowed-tools`, `permissions` ตาม spec ของ `/update-devin global-subagents`
+4. frontmatter ของ profile: `name`, `description`, `model`, `allowed-tools`, `permissions` ตาม spec ของ `/update-devin-global-subagents`
 
 ## Rules
 

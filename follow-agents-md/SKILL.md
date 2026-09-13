@@ -42,7 +42,7 @@ related:
 1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
 2. วิเคราะห์ workflows และ skills ที่ระบุ
 3. ถ้ามี workflow เดียว ทำตามโดยตรง
-4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/use-subagents` หรือ `/update-devin global-subagents` เพื่อใช้ subagents ทำขนานกัน
+4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/use-subagents` หรือ `/update-devin-global-subagents` เพื่อใช้ subagents ทำขนานกัน
 5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
 
 ### 4. Verify Execution

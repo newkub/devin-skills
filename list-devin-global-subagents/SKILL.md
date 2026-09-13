@@ -60,7 +60,7 @@ related:
 - ตรวจครบทุก subdirectories
 - ระบุ global subagents ที่ frontmatter ไม่ครบ
 
-- ใช้ /update-devin global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 
