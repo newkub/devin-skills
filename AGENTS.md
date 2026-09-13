@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **773** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **611** top-level skills (972 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
 
@@ -98,17 +98,30 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (53): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `techstack`→`dependencies`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`. `improve-*` (2): `improve-uxui`, `improve-devin-global-skills`; domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
-- `list-*` (32): inventory, lookup, and listing utilities.
-- `update-*` (41): repo, skills, docs, config, runtime, version, and test spec maintenance.
-- `report-*` (32): reporting, diagrams, and visualization helpers.
-- `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
+- `follow-*` (186): language, framework, library, tool, service, architecture, and best-practice guides — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`).
+- `review-*` (54): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `techstack`→`dependencies`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`, `redundancy`+`references`→`devin-global-skills`. domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
+- `check-*` (51): verification, structure, and health checks — dispatchers: `check-files`, `check-secrets`, `check-repo-hygiene`, `check-monorepo`, `check-config-drift`.
+- `run-*` (28): test, build, lint, typecheck, format, and deployment runners — `run-test` เป็น test dispatcher (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`).
+- `report-*` (27): reporting, diagrams, and visualization helpers — `report` เป็น format dispatcher (`table`, `html`, `numbered`, `codeblock`); `report-config-drift` merged → `check-config-drift`.
+- `update-*` (25): repo, skills, docs, config, runtime, version, and test spec maintenance — `update-devin` (devin config dispatcher), `update-docs` (docs files dispatcher), `update-tests` (test spec dispatcher).
+- `deep-*` (17): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-implement-to-production`, `deep-update-project`.
+- `list-*` (17): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github`.
+- `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
+- `open-*` (9): browser, editor, and terminal integration — `open` dispatcher (`explorer`, `github`, `web`, `wezterm`, `windows-terminal`, `zed`); specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
 - `ship-*` (3): `/ship` (entry point — `/update-docs agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
-- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`.
-- `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
-- `check-*` (60): verification, structure, and health checks.
-- `open-*` (14): browser, editor, and terminal integration.
+- `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
+- `cleanup-*` (3): `cleanup` dispatcher (`branches-merged`, `docker`, `git-branch`, `github-issue`, `worktree`), `cleanup-files-in-project`, `cleanup-files-in-computer`.
+- `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
+- `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui` (มี subskills: contrast, responsive, states).
+- `resolve-*` (4): error/CI/issue/conflict resolution — `resolve-errors` absorbs `resolve-cicd`, `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`.
+- `restore-*` (1→dispatcher): `restore` (`deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`).
+- `idea-*` (1→dispatcher): `idea` (`features`, `merge`, `naming`, `uxui-features`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
+- `merge-*` (1→dispatcher): `merge` (`all-branch-by-me-to-main`, `git-branch`, `github-pr`).
+- `convert-*` (1→dispatcher): `convert` (`esm`, `files-format`, `git-submodules`, `scripts`, `svg`).
+- `delete-*` (1→dispatcher): `delete` (`cicd-fails`, `git-branch`, `git-submodules`, `git-worktree`, `projects`).
+- `learn-*` (1→dispatcher): `learn` (`by-slide`, `cli`, `codebase`, `pattern`, `references`, `web`).
+- `git-commit-*` (1→dispatcher): `git-commit` (`and-push`, `at-devin-global-skills`, `no-verify`, `selected-files`).
+- `watch-*` (6): browser watching + `watch-browser` dispatcher (`fix`, `improve-uxui`, `test`).
 
 Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
 
