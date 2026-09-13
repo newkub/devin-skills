@@ -3,11 +3,11 @@ name: explore-github-trending
 description: สำรวจ repository ทีกำลัง trending บน GitHub ตามภาษาและช่วงเวลา
 argument-hint: "[language] [daily|weekly|monthly]"
 related:
-  - search-in-github-star
-  - open-github
-  - open-web
+  - search
+  - open
+  - open
   - report
-  - search-files-patterns
+  - search
   - enhance-prompt
   - ask-me
 ---
@@ -81,8 +81,8 @@ related:
 
 > Goal: ให้ user ดูรายละเอียด repo ทีสนใจ
 
-1. ถ้า user ระบุ repo → เปิด `/open-github <owner>/<repo>`
-2. ถ้าต้องการ search ใน GitHub stars → ใช้ `/search-in-github-star <repo>`
+1. ถ้า user ระบุ repo → เปิด `/open github <owner>/<repo>`
+2. ถ้าต้องการ search ใน GitHub stars → ใช้ `/search github-star <repo>`
 3. ถ้าต้องการดู release → เปิด `https://github.com/<owner>/<repo>/releases`
 
 ## Rules
@@ -117,7 +117,7 @@ related:
 - แสดง URL ทีใช้ fetch
 - ระบุเวลา (daily/weekly/monthly) และ language
 
-- ใช้ /open-web ถ้าจำเป็น
+- ใช้ /open web ถ้าจำเป็น
 
 ## Expected Outcome
 

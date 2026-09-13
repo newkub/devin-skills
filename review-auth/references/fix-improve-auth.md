@@ -44,7 +44,7 @@
 
 > Goal: แก้ auth-related secrets และ transport
 
-1. ทำ `/check-secrets-leak` — secrets/keys ต้องไม่อยู่ใน code
+1. ทำ `/check-secrets secrets-leak` — secrets/keys ต้องไม่อยู่ใน code
 2. ย้าย hardcoded credentials ไป env/secret manager (`/follow-secret-manager`)
 3. บังคับ HTTPS, redirect HTTP→HTTPS, HSTS
 

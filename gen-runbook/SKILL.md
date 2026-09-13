@@ -3,7 +3,7 @@ name: gen-runbook
 description: สร้าง operational runbook จาก system knowledge จริง — alerts, playbooks และ recovery steps
 argument-hint: "[service-or-incident-type]"
 related:
-  - learn-codebase
+  - learn
   - create-report-in-dot-devin
   - review-observability
   - review-stability
@@ -28,7 +28,7 @@ related:
 
 > Goal: เข้าใจระบบที่จะเขียน runbook
 
-1. ทำ `/learn-codebase` หรือ `/scan-codebase` — services, dependencies, data stores
+1. ทำ `/learn` (codebase) หรือ `/scan-codebase` — services, dependencies, data stores
 2. ทำ `/report-architecture-diagram` ถ้าต้องการ visual overview
 3. ระบุ deploy targets, environments, external dependencies
 

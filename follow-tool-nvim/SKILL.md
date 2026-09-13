@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lang-lua
   - follow-tool-formatter
-  - follow-create-nvim-plugins
+  - follow-create-plugins
   - follow-test
 ---
 
@@ -121,7 +121,7 @@ related:
 
 - ใช้ /follow-lang-lua ถ้าจำเป็น
 - ใช้ /follow-tool-formatter ถ้าจำเป็น
-- ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins (nvim) ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 
 ## References

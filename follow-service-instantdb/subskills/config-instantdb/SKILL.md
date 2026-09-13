@@ -4,7 +4,7 @@ description: ตั้งค่า InstantDB schema, permissions, env vars แ�
 argument-hint: "[project-path]"
 related:
   - follow-service-instantdb
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
   - update-references
@@ -29,7 +29,7 @@ related:
 > Goal: รู้ schema/perms ปัจจุบันก่อนแก้
 
 1. อ่าน `instant.schema.ts` และ `instant.perms.ts` ที่มีอยู่
-2. ทำ `/check-env-vars` เพื่อระบุ app id var ที่ขาดหรือผิด prefix
+2. ทำ `/check-secrets env-vars` เพื่อระบุ app id var ที่ขาดหรือผิด prefix
 3. รัน `npx instant-cli@latest pull` ถ้าต้อง sync config ล่าสุดจาก server ก่อนแก้
 4. ถ้าไม่มี config files เลย → ทำ `subskills/setup-instantdb/SKILL.md` แทน
 

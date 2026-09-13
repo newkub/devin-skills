@@ -67,6 +67,12 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 2. แสดงสถานะของแต่ละ feature (done, skipped, blocked)
 3. ระบุ features ที่เหลือสำหรับ phase ถัดไป
 
+### Subagents
+
+> Goal: parallelize implementation เมื่อมีหลาย must-have features
+
+- ใช้ `subagents/feature-implementer.md` เมื่อ features ที่ independent กัน (ไม่แชร์ files/modules) ต้องทำพร้อมกัน — spawn ทีละ feature ผ่าน `/use-subagents` โดยกำหนด `target-paths` ไม่ให้ overlap แล้วรวมผลก่อน validate MVP completeness
+
 ## Rules
 
 ### 1. MVP Definition

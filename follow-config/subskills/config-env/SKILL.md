@@ -4,8 +4,7 @@ description: จัดการ .env patterns — env files, validation, secrets
 argument-hint: "[env-file-or-scope]"
 related:
   - follow-config
-  - check-env-vars
-  - check-secrets-leak
+  - check-secrets
   - follow-secret-manager
   - update-config
 ---
@@ -27,7 +26,7 @@ related:
 > Goal: รู้ว่ามี env files และ vars อะไรบ้าง
 
 1. หา `.env*` files ทั้งหมดใน repo — root และ per-workspace
-2. ทำ `/check-env-vars` — vars ที่ code ใช้ vs vars ที่ define
+2. ทำ `/check-secrets env-vars` — vars ที่ code ใช้ vs vars ที่ define
 3. ระบุ framework env conventions — เช่น `NEXT_PUBLIC_*`, `VITE_*`, `PUBLIC_*` prefixes ตามที่ตรวจพบ
 
 ### 2. Check Patterns
@@ -37,7 +36,7 @@ related:
 1. `.env.example` มีครบทุก required var — ไม่มีค่าจริง มีเฉพาะ placeholder/comments
 2. `.env` และ `.env.local` ถูก gitignore — ตรวจ `.gitignore` coverage
 3. env validation ที่ startup — schema validation (เช่น zod/arktype ตาม stack) สำหรับ required vars, type coercion, fail-fast message ชัด
-4. ไม่มี hardcoded secrets ใน code — ทำ `/check-secrets-leak`
+4. ไม่มี hardcoded secrets ใน code — ทำ `/check-secrets secrets-leak`
 
 ### 3. Fix Gaps
 

@@ -29,7 +29,7 @@ bun create vite@latest <project-name>
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
 | `solid-js` | `npm` | `1.9.15` (2026-08-17) | Default UI framework for this skill's landing/saas/paas stack |
-| `@tanstack/solid-start` | `npm` | `1.168.50` (2026-09-10) | Default full-stack framework — delegates to `/follow-create-web-solid-tanstack-router` |
+| `@tanstack/solid-start` | `npm` | `1.168.50` (2026-09-10) | Default full-stack framework — delegates to `/follow-create-web` (solid-tanstack-router) |
 | `unocss` | `npm` | `unknown` | Default styling engine — see `/follow-lib-unocss` |
 
 ## Notes

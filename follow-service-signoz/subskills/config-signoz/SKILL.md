@@ -5,10 +5,10 @@ argument-hint: "[project-path]"
 related:
   - follow-service-signoz
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - check-config-drift
   - run-verify
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -29,7 +29,7 @@ related:
 > Goal: รู้ env vars ปัจจุบันก่อนแก้
 
 1. อ่าน `.env*`, start scripts และ instrumentation entry ที่มีอยู่
-2. ทำ `/check-env-vars` เพื่อระบุ `OTEL_*` vars ที่ขาดหรือซ้ำ
+2. ทำ `/check-secrets env-vars` เพื่อระบุ `OTEL_*` vars ที่ขาดหรือซ้ำ
 3. ทำ `/check-config-drift` ระหว่าง environments ถ้าจำเป็น
 4. ถ้ายังไม่มี OTel packages → ทำ `subskills/setup-signoz/SKILL.md` แทน
 
@@ -65,7 +65,7 @@ related:
 - Merge เฉพาะ `OTEL_*` keys ที่จำเป็น — ห้าม overwrite `.env` ทั้งไฟล์
 - เก็บ ingestion key ใน `/follow-secret-manager` ห้ามใส่ config file ที่ commit
 - `service.name` ต้องสม่ำเสมอข้าม environments (แยกด้วย `deployment.environment`)
-- ใช้ official docs เป็นแหล่งหลัก — ทำ `learn-web` ถ้าไม่แน่ใจ
+- ใช้ official docs เป็นแหล่งหลัก — ทำ `learn` (web) ถ้าไม่แน่ใจ
 - ถ้ายืนยัน telemetry ไม่ได้ใน 3 รอบ → stop และ report
 
 ## Expected Outcome

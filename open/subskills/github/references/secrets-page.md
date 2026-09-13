@@ -1,0 +1,35 @@
+# open-github-secrets (merged content)
+
+## Goal
+
+เปิดหน้า GitHub Secrets สำหรับตั้งค่า environment variables และ secrets ใน repository
+
+## Scope
+
+ใช้ `open-github-secrets` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
+
+## Execute
+
+### 1. Open GitHub Secrets Page
+
+> Goal: Open GitHub Secrets Page
+
+1. เปิด URL: `https://github.com/{GITHUB_USERNAME}/{GITHUB_REPOSITORY}/settings/secrets/actions`
+2. แทนที่ `{GITHUB_USERNAME}` ด้วย GitHub username ของคุณ
+3. แทนที่ `{GITHUB_REPOSITORY}` ด้วย repository name ของคุณ
+4. ก่อนเพิ่ม secrets ให้ทำ `/follow-secret-manager` เพื่อจัดการ secrets อย่างปลอดภัย หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สำหรับสร้าง API keys
+5. เพิ่ม secrets ที่จำเป็น
+
+## Rules
+
+1. ต้องมีสิทธิ์เข้าถึง repository settings
+2. ต้องเป็น owner หรือ maintainer ของ repository
+3. ระบุชื่อ repository และ username ให้ถูกต้อง
+
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
+## Expected Outcome
+
+- เปิดหน้า GitHub Secrets สำเร็จ
+- สามารถเพิ่ม secrets ใหม่ได้
+- เข้าถึง environment variables และ secrets ได้

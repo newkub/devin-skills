@@ -3,7 +3,7 @@ name: check-unicode-homoglyph
 description: ตรวจ invisible characters และ homoglyphs ใน code — trojan source attack surface
 argument-hint: "[path]"
 related:
-  - search-files-patterns
+  - search
   - review-security
   - report
 ---

@@ -3,8 +3,8 @@ name: follow-tool-devin
 description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
 argument-hint: "[scope]"
 related:
-  - follow-create-devin-plugins
-  - update-devin-global-subagents
+  - follow-create-plugins
+  - update-devin
   - follow-devin-global-skills
   - follow-tool-usage
   - follow-best-practice
@@ -108,8 +108,8 @@ related:
 - ใช้ environment variables สำหรับ secrets
 - Follow security best practices
 
-- ใช้ /follow-create-devin-plugins ถ้าจำเป็น
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+- ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
+- ใช้ /update-devin global-subagents ถ้าจำเป็น
 - ใช้ /follow-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

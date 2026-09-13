@@ -6,7 +6,7 @@
 
 ## Checks
 
-1. อ่าน stdout/stderr จาก `run-test` หรือ `run-test-coverage`
+1. อ่าน stdout/stderr จาก `run-test` หรือ `un-test` (coverage)
 2. บันทึกไฟล์ผลลัพธ์: `vitest` → `vitest-output.jsonl`, `cargo test` → `cargo-test-output.txt`
 3. ตรวจสอบ exit code: `0` = pass, `non-zero` = fail
 4. แยก failures เป็น:

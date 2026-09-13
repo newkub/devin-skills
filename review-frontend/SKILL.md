@@ -107,6 +107,13 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 
 ทำตาม `references/reporting.md`
 
+### Subskills
+
+> Goal: dispatch งาน fix/improve ไปยัง subskill ที่ตรง topic
+
+- rendering performance findings (re-renders, memoization, lists, lazy components) → `subskills/improve-rendering/SKILL.md`
+- hydration mismatch และ hydration cost findings → `subskills/fix-hydration/SKILL.md`
+
 ## Rules
 
 ### 1. Scope Boundary

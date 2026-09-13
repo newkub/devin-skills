@@ -3,7 +3,7 @@ name: report-features
 description: รายงาน features ทั้งหมดใน project เป็นตารางจาก generated TypeScript files
 argument-hint: "[scope]"
 related:
-  - update-features-md
+  - update-docs
   - deep-review
   - all-workspace
 
@@ -19,7 +19,7 @@ related:
 
 อ่านและแสดงผล features จาก generated TypeScript files ใน `.devin/features/<workspace>/` เป็นตารางในแชทเท่านั้น
 
-ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features-md`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
+ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-docs features-md`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
 
 ## Execute
 
@@ -30,7 +30,7 @@ related:
 ตรวจสอบว่า features files มีอยู่และเป็นปัจจุบัน
 
 1. ตรวจสอบ `.devin/features/<workspace>/index.ts` มีอยู่หรือไม่
-2. ถ้าไม่มีหรือ outdated ให้ทำ `/update-features-md` เพื่อสแกนและสร้าง feature files
+2. ถ้าไม่มีหรือ outdated ให้ทำ `/update-docs features-md` เพื่อสแกนและสร้าง feature files
 3. ถ้ามีแล้ว ให้ข้ามไป Step 2
 
 ### 2. Read Feature Files
@@ -82,8 +82,8 @@ related:
 ### 1. Read-Only Action
 
 - อ่าน feature files เท่านั้น ไม่แก้ไข code หรือ feature files
-- ถ้า feature files ไม่มีอยู่ ให้ทำ `/update-features-md` แทนการสร้างเอง
-- ถ้า feature files outdated ให้ทำ `/update-features-md` เพื่อ refresh
+- ถ้า feature files ไม่มีอยู่ ให้ทำ `/update-docs features-md` แทนการสร้างเอง
+- ถ้า feature files outdated ให้ทำ `/update-docs features-md` เพื่อ refresh
 
 ### 2. Table Format
 
@@ -96,14 +96,14 @@ related:
 ### 3. Data Source
 
 - อ่านจาก `.devin/features/<workspace>/index.ts` เท่านั้น
-- ไม่สแกน codebase โดยตรง — ใช้ `/update-features-md` สำหรับการสแกน
+- ไม่สแกน codebase โดยตรง — ใช้ `/update-docs features-md` สำหรับการสแกน
 - ถ้า workspace ไม่มี feature files ให้ข้ามและ report ใน summary
 
 ### 4. Completeness
 
 - รายงาน features จากทุก workspace ที่มี feature files
 - ระบุ workspace ที่ไม่มี feature files ใน summary
-- ถ้าไม่มี feature files เลย ให้ทำ `/update-features-md` ก่อน
+- ถ้าไม่มี feature files เลย ให้ทำ `/update-docs features-md` ก่อน
 
 ## Expected Outcome
 

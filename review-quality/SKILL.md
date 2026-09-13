@@ -15,12 +15,6 @@ related:
   - review-security
   - review-stability
 ---
-  - check-error-coverage
-  - check-types-coverage
-  - report-scan-todo
-  - check-test-isolation
-  - check-unused
-  - check-merge-conflicts
 
 ## Goal
 
@@ -87,16 +81,17 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: Findings กระชับ อ่านง่าย ไม่มี noise
 
-1. ทำ section `## Fix
+1. รวม findings ที่ซ้ำกันเป็น single finding พร้อม evidence ทั้งหมด
+2. ลบ findings ที่ไม่มีผลต่อ quality จริง (noise, style-only ที่ไม่มี convention)
+3. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+### Subskills
 
-### Fix Steps (types/code quality)
+> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
 
-1. types: เปิด strict flags ทีละตัว, `any`→`unknown`+narrowing, casts→guards, public APIs typed
-2. consistency: patterns, API shapes, error handling, doc style ตาม fix guides
-3. simplicity: ลดความซับซ้อน, imports สะอาด (unused ลบ, barrel files)
-4. verify: `/run-typecheck` + tests ผ่าน — types only ห้ามเปลี่ยน runtime
+- import/dependency findings (unused imports, barrel files, heavy imports) → `subskills/fix-imports/SKILL.md`
+- complexity findings (long functions, nesting, duplication, abstractions) → `subskills/fix-complexity/SKILL.md`
+
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (quality)
@@ -131,6 +126,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 2. consistency: patterns, API shapes, error handling, doc style ตาม fix guides
 3. simplicity: ลดความซับซ้อน, imports สะอาด (unused ลบ, barrel files)
 4. verify: `/run-typecheck` + tests ผ่าน — types only ห้ามเปลี่ยน runtime
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

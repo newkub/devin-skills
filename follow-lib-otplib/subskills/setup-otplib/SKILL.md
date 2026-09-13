@@ -6,7 +6,7 @@ related:
   - follow-lib-otplib
   - follow-lib-qrcode
   - follow-secret-manager
-  - learn-web
+  - learn
   - resolve-errors
 ---
 
@@ -29,7 +29,7 @@ related:
 1. อ่าน `package.json` — ถ้ามี `otplib` แล้วตรวจ version (v12 API ต่างจาก v13 มาก)
 2. ระบุว่า verify จะรันที่ไหน — server เท่านั้น ห้าม verify ฝั่ง client
 3. ระบุ storage สำหรับ TOTP secrets — database field ที่ encrypted ได้
-4. ถ้าไม่แน่ใจ API → ทำ `/learn-web` ดู official docs
+4. ถ้าไม่แน่ใจ API → ทำ `/learn web` ดู official docs
 
 ### 2. Install
 

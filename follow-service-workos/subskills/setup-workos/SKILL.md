@@ -6,7 +6,7 @@ related:
   - follow-service-workos
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
 ---
@@ -30,7 +30,7 @@ related:
 
 1. อ่าน `package.json` เพื่อระบุ runtime และ package manager
 2. ตรวจว่ามี `@workos-inc/node` หรือ SDK อื่นติดตั้งแล้ว → ถ้ามี skip ไป verify
-3. ทำ `/check-env-vars` เพื่อดูว่า `WORKOS_API_KEY`, `WORKOS_CLIENT_ID` มีอยู่หรือยัง
+3. ทำ `/check-secrets env-vars` เพื่อดูว่า `WORKOS_API_KEY`, `WORKOS_CLIENT_ID` มีอยู่หรือยัง
 4. ถ้าไม่มี WorkOS account → stop และแจ้ง user สร้างจาก dashboard
 
 ### 2. Install SDK
@@ -62,7 +62,7 @@ related:
 - ห้าม hardcode API key หรือ commit secrets — ใช้ `/follow-secret-manager` เสมอ
 - Client ต้อง init ฝั่ง server เท่านั้น ห้าม expose `WORKOS_API_KEY` ไป browser
 - แยก keys ตาม environment (dev/staging/prod)
-- ถ้า API/method ไม่แน่ใจ → ดู official docs หรือ `learn-web` ก่อน
+- ถ้า API/method ไม่แน่ใจ → ดู official docs หรือ `learn` (web) ก่อน
 
 ## Expected Outcome
 

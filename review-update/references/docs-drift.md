@@ -41,9 +41,9 @@
 
 ## Recommended Update Skills
 
-- `update-readme-md` สำหรับ `README.md`
-- `update-agents-md` สำหรับ `AGENTS.md`
-- `update-contributing-md` สำหรับ `CONTRIBUTING.md`
+- `update-docs readme-md` สำหรับ `README.md`
+- `update-docs agents-md` สำหรับ `AGENTS.md`
+- `update-docs contributing-md` สำหรับ `CONTRIBUTING.md`
 - `run-release` สำหรับ `CHANGELOG.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
 - `gen-changelog-md` สำหรับ `CHANGELOG.md` (gen จาก git tags)
 - `follow-tool-changelogen` สำหรับ `CHANGELOG.md` (ด้วย changelogen)

@@ -7,7 +7,7 @@ related:
   - run-check
   - then-apply
   - follow-your-suggestion
-  - report-in-table
+  - report
   - report-progress
   - suggest-next-action
   - ask-me
@@ -53,7 +53,7 @@ related:
 1. รัน validation ทีเลือก
 2. บันทึกผล: passed/failed, findings, warnings
 3. ถ้ามี findings → จัดลำดับตาม severity
-4. ทำ `/report-in-table` สรุป: `No.`, `Check`, `Status`, `Findings`
+4. ทำ `/report table` สรุป: `No.`, `Check`, `Status`, `Findings`
 
 ### 4. Decide Apply
 
@@ -78,7 +78,7 @@ related:
 > Goal: ยืนยันว่า apply สำเร็จและไม่พัง
 
 1. รัน validation อีกครั้งหลัง apply
-2. ทำ `/report-in-table` สรุป: `No.`, `Step`, `Validation`, `Apply`, `Status`
+2. ทำ `/report table` สรุป: `No.`, `Step`, `Validation`, `Apply`, `Status`
 3. ถ้ามีหลาย step ค้าง → ทำ `/report-progress`
 4. ทำ `/suggest-next-action`
 

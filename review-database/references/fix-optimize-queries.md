@@ -26,7 +26,7 @@
 
 > Goal: scan code หา query anti-patterns
 
-1. ใช้ `use-astgrep`/`search-files-patterns` หา:
+1. ใช้ `use-astgrep`/`search` หา:
    - queries ใน loop/map (N+1 candidates)
    - `findAll`/`select()` ไม่มี `where`/`limit`
    - sequential `await` ของ independent queries (ควร `Promise.all`)
@@ -48,7 +48,7 @@
 
 > Goal: ยืนยันผลลัพธ์ correctness และ performance
 
-1. `/run-test` หรือ `/run-test-integration` ต้องผ่าน — results เหมือนเดิม
+1. `/run-test` หรือ `/run-test` (integration) ต้องผ่าน — results เหมือนเดิม
 2. เทียบ query count/time ก่อน-หลัง — ใช้ `/report-before-after`
 3. อัปเดต migration files ถ้าเพิ่ม index — ทำ `/report-schema` ถ้า schema เปลี่ยน
 

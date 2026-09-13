@@ -8,7 +8,6 @@ related:
   - learn
   - scan-codebase
   - deep-trace
-  - learn-web
   - read-related
   - run-program
 ---
@@ -37,7 +36,7 @@ related:
 > Goal: Gather Context
 
 1. ถ้า target อยู่ใน project ปัจจุบัน → ทำ `/scan-codebase` หรือ `/deep-trace`
-2. ถ้า target เป็น tool/library ภายนอก → ทำ `/learn-web` ด้วย official docs
+2. ถ้า target เป็น tool/library ภายนอก → ทำ `/learn` (web) ด้วย official docs
 3. ถ้าเกี่ยวข้องกับ skills ใน repo → ทำ `/read-related`
 4. รวบรวม source paths, docs, และ examples
 

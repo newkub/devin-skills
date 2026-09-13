@@ -14,7 +14,7 @@ related:
 
 - ใช้เมื่อต้องการ lint rules แบบ AST-based ที่ enforce conventions เฉพาะ project
 - ครอบคลุม `rules/*.yml`, `sgconfig.yml`, และ custom rule directories
-- ไม่รวม `.devin/rules` (Markdown rules) — ใช้ `/update-devin-project-rules` แทน
+- ไม่รวม `.devin/rules` (Markdown rules) — ใช้ `/update-devin project-rules` แทน
 - ไม่รวมการสร้าง skills จาก manifest — ใช้ `/new-skills` แทน
 
 ## Execute
@@ -58,7 +58,7 @@ related:
 - ทดสอบ rule ก่อน commit เสมอ — rule ที่ match ผิดทำให้ scan พัง
 - ใช้ `severity: warning` สำหรับ rules ใหม่ ก่อนเลื่อนเป็น `error`
 - ห้ามแก้ `sgconfig.yml` โดยไม่ตรวจ `ruleDirs` ที่มีอยู่
-- ast-grep rules เท่านั้น — `.devin/rules` (markdown) ไปที่ `/update-devin-project-rules`
+- ast-grep rules เท่านั้น — `.devin/rules` (markdown) ไปที่ `/update-devin project-rules`
 
 ## Expected Outcome
 

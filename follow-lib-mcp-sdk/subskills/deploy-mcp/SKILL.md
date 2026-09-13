@@ -5,7 +5,7 @@ argument-hint: "[platform]"
 related:
   - follow-lib-mcp-sdk
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - resolve-errors
 ---
 
@@ -32,7 +32,7 @@ Deploy MCP server — เลือก transport, host remote server และ co
 
 > Goal: config server สำหรับ remote deployment
 
-1. ตรวจ env vars/secrets — ทำ `/check-env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
+1. ตรวจ env vars/secrets — ทำ `/check-secrets env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
 2. ใช้ `process.env.PORT` — platforms กำหนด port เอง
 3. สำหรับ Streamable HTTP: ตัดสินใจ session management (stateful `sessionIdGenerator` vs stateless) ตาม use case — ดู official docs
 4. เพิ่ม auth สำหรับ remote server (OAuth/bearer token) — MCP spec กำหนด auth requirements; ห้ามเปิด remote server โดยไม่มี auth
@@ -60,7 +60,7 @@ Deploy MCP server — เลือก transport, host remote server และ co
    ```
 
 2. Remote: client ชี้ URL ของ Streamable HTTP endpoint + auth credentials
-3. ทำ `/update-devin-global-mcp` ถ้าเป็น Devin global MCP config
+3. ทำ `/update-devin global-mcp` ถ้าเป็น Devin global MCP config
 
 ### 5. Verify
 

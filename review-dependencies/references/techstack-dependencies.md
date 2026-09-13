@@ -22,8 +22,8 @@ Reference สำหรับ dependency review checks
 
 ## Unused And Duplicate
 
-1. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ได้ใช้
-2. ทำ `/check-circular-dependencies` เพื่อหา circular dependencies
+1. ทำ `/check-repo-hygiene unused` เพื่อหา dependencies ที่ไม่ได้ใช้
+2. ทำ `/check-repo-hygiene circular-dependencies` เพื่อหา circular dependencies
 3. ระบุ duplicate dependencies ที่ทำงานเหมือนกัน
 4. ตรวจสอบ dev dependencies ที่ควรเป็น production หรือกลับกัน
 5. ตรวจสอบ dependencies ที่ประกาศแต่ไม่ import ใน code

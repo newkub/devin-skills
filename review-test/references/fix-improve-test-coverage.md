@@ -18,7 +18,7 @@
 
 > Goal: หาจุดที test ยังไม่ครอบคลุม
 
-1. ทำ `/run-test-coverage` เพื่อดู coverage report
+1. ทำ `/run-test` เพื่อดู coverage report
 2. บันทึก files, functions, branches, statements ทีไม่ผ่าน threshold
 3. รัน `/deep-review` หรือ `/review-quality` เพื่อวิเคราะห์ code paths ทีไม่มี test
 4. กำหนด target coverage threshold (default 100% หรือตาม project กำหนด)
@@ -87,7 +87,7 @@
 
 > Goal: ยืนยันว่า gaps ลดลง
 
-1. ทำ `/run-test-coverage` อีกครั้ง
+1. ทำ `/run-test` (coverage) อีกครั้ง
 2. เปรียบเทียบ before/after coverage
 3. ถ้ายังมี gaps ใน critical paths → ทำ Step 4-6 เพิ่ม
 4. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report
@@ -148,7 +148,7 @@
 
 - Coverage ทุก category: lines, branches, functions, statements
 - ไล่ gaps ตาม severity ก่อน
-- ใช้ `/run-test-coverage` ยืนยันทุกครั้งหลังแก้ไข
+- ใช้ `/run-test` (coverage) ยืนยันทุกครั้งหลังแก้ไข
 - บันทึก coverage delta
 
 ### 7. Quality
@@ -163,7 +163,7 @@
 
 - อัปเดต tests เมื่องานหรือ code เปลี่ยน
 - ไม่ ship ถ้า tests เก่ากว่า code
-- ใช้ `/run-test-coverage` หลัง code เปลี่ยน
+- ใช้ `/run-test` (coverage) หลัง code เปลี่ยน
 
 ## Expected Outcome
 

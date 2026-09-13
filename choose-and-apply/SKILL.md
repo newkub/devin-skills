@@ -7,7 +7,7 @@ related:
   - rethink
   - then-apply
   - follow-your-suggestion
-  - report-in-table
+  - report
   - suggest-next-action
   - manage
 ---
@@ -48,7 +48,7 @@ related:
 
 > Goal: ให้ user ตัดสินใจ
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Option`, `Pros`, `Cons`, `Score`, `Recommended`
+1. ทำ `/report table` คอลัมน์: `No.`, `Option`, `Pros`, `Cons`, `Score`, `Recommended`
 2. ระบุ option ทีแนะนำด้วย `✅` ใน column `Recommended`
 3. ถ้า high-risk หรือ user ไม่แน่ใจ → ทำ `/ask-me`
 4. ถ้า user ยืนยัน → ไป step ถัดไป
@@ -67,7 +67,7 @@ related:
 > Goal: ยืนยันว่า apply สำเร็จ
 
 1. ทำ `/run-check` หรือ `/deep-validate` ตาม nature ของ option
-2. ทำ `/report-in-table` สรุป: `No.`, `Option`, `Status`, `Output`
+2. ทำ `/report table` สรุป: `No.`, `Option`, `Status`, `Output`
 3. ทำ `/suggest-next-action`
 
 ## Rules

@@ -3,15 +3,13 @@ name: align-devin-layers
 description: จัด alignment ระหว่าง global rules, devin global skills และ subagents ให้สอดคล้องกัน
 argument-hint: "[scope]"
 related:
-  - list-devin-global-skills
-  - list-devin-global-subagents
-  - update-devin-global-rules
+  - list-devin
+  - update-devin
   - update-devin-global-skills
-  - update-devin-global-subagents
   - deep-validate
   - check-reference
   - use-related-skills
-  - report-in-table
+  - report
   - suggest-next-action
   - review-devin-global-skills
   - review-devin-global-subagents
@@ -35,17 +33,17 @@ related:
 > Goal: รวบรวมข้อมูลจากทุก layer
 
 1. อ่าน `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-2. ทำ `/list-devin-global-skills`
-3. ทำ `/list-devin-global-subagents`
+2. ทำ `/list-devin global-skills`
+3. ทำ `/list-devin global-subagents`
 4. บันทึก versions, last updated, และ critical rules
 
 ### 2. Run Update Workflows
 
 > Goal: อัปเดตแต่ละ layer
 
-1. ทำ `/update-devin-global-rules` เพื่อ sync global rules
+1. ทำ `/update-devin global-rules` เพื่อ sync global rules
 2. ทำ `/update-devin-global-skills` เพื่อ audit และอัปเดต skills
-3. ทำ `/update-devin-global-subagents` เพื่ออัปเดต subagents
+3. ทำ `/update-devin global-subagents` เพื่ออัปเดต subagents
 4. บันทึก output ของแต่ละ step
 
 ### 3. Detect Cross-Layer Misalignment
@@ -83,7 +81,7 @@ related:
 
 > Goal: สรุป alignment status
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Layer`, `Status`, `Changes`, `Issues`
+1. ทำ `/report table` คอลัมน์: `No.`, `Layer`, `Status`, `Changes`, `Issues`
 2. ระบุสิ่งที่ยังค้าง
 3. ทำ `/suggest-next-action`
 

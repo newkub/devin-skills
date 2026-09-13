@@ -10,7 +10,6 @@ related:
   - run-review
   - deep-validate
   - report
-  - report-in-table
   - suggest-next-action
   - deep-optimize
   - follow-design-system
@@ -91,13 +90,19 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-in-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง design maturity scorecard: 5 dimensions, score 1-5
 5. สรุป top 3-5 design issues ที่ต้องแก้ก่อน
 6. สรุป top 3-5 design wins ที่ทำดี
 7. ทำ `/suggest-next-action`
+
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
+
+- UX/UI findings ทุก dimension → `subskills/improve-uxui-fix/SKILL.md` (dispatch ต่อไปยัง `references/fix-uxui/*.md` ตาม domain)
 
 ## Rules
 
@@ -151,7 +156,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (uxui)
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-in-table`
+- รายงานเป็นตารางด้วย `/report table`
 
 - ใช้ /deep-optimize ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
@@ -166,7 +171,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 1. browser fix pass → `/improve-uxui` (orchestrates watch passes + Playwright sync)
 2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
-3. verify: re-run browser pass + `/run-test-e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
+3. verify: re-run browser pass + `/run-test` (e2e); persist `.devin/reports/<workspace>/uxui-<time>.md`
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

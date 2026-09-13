@@ -12,7 +12,7 @@
 
 ### 1. E2E Test Critical Paths
 
-ทำ `/run-test-e2e` เพื่อทดสอบ critical paths หลัง deploy:
+ทำ `/run-test` (e2e) เพื่อทดสอบ critical paths หลัง deploy:
 
 - Login/auth flow
 - Main user journey (search, create, update, delete)
@@ -32,7 +32,7 @@
 ตรวจสอบ error logs หลัง deploy 5-10 นาที:
 
 - ตรวจ platform logs (Cloudflare dashboard, Vercel logs, Railway logs)
-- ตรวจ browser console errors ผ่าน `/watch-browser-and-fix`
+- ตรวจ browser console errors ผ่าน `/watch-browser fix`
 - ตรวจ network errors ใน browser DevTools
 - ถ้าพบ critical errors → ทำ rollback ทันที และทำ `/resolve-errors`
 

@@ -3,12 +3,12 @@ name: draw-svg-image
 description: สร้าง SVG image จากคำอธิบายหรือ prompt ด้วย code
 argument-hint: "[description]"
 related:
-  - convert-to-svg
+  - convert
   - review-architecture
   - visualize-in-web
-  - open-web
+  - open
   - open-files-in-web
-  - gen-ai-images
+  - gen-media
 ---
 ## Goal
 
@@ -36,7 +36,7 @@ related:
 > Goal: เลือกวิธีสร้าง SVG ทีเหมาะสม
 
 1. ถ้าเป็น simple shapes → สร้าง SVG markup โดยตรง
-2. ถ้า user ต้องการ style สูง หรือ complex scene → ใช้ `gen-ai-images` แล้ว `/convert-to-svg`
+2. ถ้า user ต้องการ style สูง หรือ complex scene → ใช้ `gen-ai-images` แล้ว `/convert svg`
 3. ถ้าต้องการ animation → ใช้ CSS animation หรือ SMIL ภายใน SVG
 
 ### 3. Generate SVG
@@ -72,10 +72,12 @@ related:
 ### 3. Fallback
 
 - ถ้า description complex หรือ user ต้องการ photorealistic → แนะนำ `gen-ai-images` + `convert-to-svg`
-- ถ้าต้องการ preview → ใช้ `/visualize-in-web` หรือ `/open-web`
+- ถ้าต้องการ preview → ใช้ `/visualize-in-web` หรือ `/open web`
 
 - ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
+
+- ใช้ /gen-media ถ้าจำเป็น
 
 ## Expected Outcome
 

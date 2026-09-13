@@ -6,7 +6,6 @@ related:
   - follow-tool-msw
   - follow-tool-vitest
   - run-test
-  - run-test-api
   - review-dependencies
 ---
 

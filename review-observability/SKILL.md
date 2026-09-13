@@ -86,6 +86,12 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 ทำตาม `references/scoring.md`
 
+### Subskills
+
+> Goal: dispatch งาน improve ไปยัง subskill ที่ตรง topic
+
+- observability findings (logging, metrics, tracing, alerts, SLO) → `subskills/improve-observability/SKILL.md`
+
 ## Rules
 
 ### 1. Skip Conditions

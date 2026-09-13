@@ -2,11 +2,10 @@
 name: devin-global-skills
 description: Global and project-specific Devin CLI skill collection and conventions
 related:
-  - update-agents-md
+  - update-docs
   - follow-agents-md
   - update-devin-global-skills
-  - update-devin-global-rules
-  - update-devin-harness
+  - update-devin
   - deep-validate
   - review-rules
   - review-devin-global-skills
@@ -38,7 +37,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/check-monorepo` to verify monorepo status.
 2. Run `/deep-analyze` to analyze tech stack and structure.
 3. Run `/all-workspace` if it is a monorepo.
-4. For independent subtasks across multiple workspaces, use `/update-devin-global-subagents` or `/use-subagents`.
+4. For independent subtasks across multiple workspaces, use `/update-devin global-subagents` or `/use-subagents`.
 5. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
 6. Keep the file under 250 lines.
 
@@ -66,9 +65,9 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `git: /follow-tool-git`
 - `github: /follow-github`
 - `skill-format: /update-devin-global-skills` for create and update
-- `global-rules: /update-devin-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
+- `global-rules: /update-devin global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
-- `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
+- `submodules: open-files-in-web, open-devin-in-web, create-github/subskills/pr`
 
 ### 3. Platform
 
@@ -85,14 +84,13 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 The repository currently contains **773** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
-For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
+For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin global-skills`.
 
 Core:
-- `update-agents-md: /update-agents-md`
+- `update-docs-agents-md: /update-docs agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
-- `update-devin-global-rules: /update-devin-global-rules`
-- `update-devin-harness: /update-devin-harness`
+- `update-devin: /update-devin [domain]` — subskills: global-mcp, global-rules, global-subagents, harness, project-hooks, project-mcp, project-rules
 - `git-commit: /git-commit`
 - `update-review-cli: /update-review-cli`
 - `ship: /ship`
@@ -106,8 +104,8 @@ Major skill families by current count:
 - `update-*` (41): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (3): `/ship` (entry point — `/update-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
-- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-review-codebase-then-fix`.
+- `ship-*` (3): `/ship` (entry point — `/update-docs agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`), `/ship-by-agents-swarm`, `/ship-dont-ask-me`.
+- `deep-*` (21): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`.
 - `create-*` (18): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (60): verification, structure, and health checks.
 - `open-*` (14): browser, editor, and terminal integration.
@@ -117,11 +115,11 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 ### 6. Workspaces
 
 - Not a package monorepo: single root workspace (`%APPDATA%\devin\skills\`).
-- Git submodules: `open-files-in-web`, `open-devin-in-web`, `create-github-pr`.
+- Git submodules: `open-files-in-web`, `open-devin-in-web`, `create-github/subskills/pr`.
 
 ### 7. Subagents
 
-- Use `/update-devin-global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
+- Use `/update-devin global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
 - Each subagent receives: workspace path, manifest, and target deliverable.
 - Merge subagent results before writing the root `AGENTS.md`.
 

@@ -4,7 +4,7 @@ description: ใช้ MCP servers ที่ติดตั้งไว้ disco
 argument-hint: "[server-or-task]"
 related:
   - deep-research
-  - learn-web
+  - learn
   - resolve-errors
   - ask-me
 ---
@@ -41,7 +41,7 @@ related:
 | 6 | WorkOS workspace management | `workos` |
 | 7 | Devin sessions/knowledge/playbooks | `deepwiki` (devin_* tools) |
 
-- ถ้าไม่มี server ที่ตรง → fallback `/learn-web` หรือ `web_search`
+- ถ้าไม่มี server ที่ตรง → fallback `/learn` (web) หรือ `web_search`
 - ถ้าไม่แน่ใจ server ไหน → ทำ `/ask-me`
 
 ### 3. Call Tool
@@ -90,7 +90,7 @@ related:
 
 ### 4. Fallback Order
 
-- server ที่ต้องการไม่มี → `web_search`/`webfetch` → `/learn-web` → `/deep-research`
+- server ที่ต้องการไม่มี → `web_search`/`webfetch` → `/learn` (web) → `/deep-research`
 - tool call ล้มเหลวซ้ำ → report error ชัดเจน อย่า retry เกิน 3 รอบ
 
 ### 5. Spec Notes (2026-07-28)
@@ -100,7 +100,7 @@ related:
 - Roots, Sampling, Logging deprecated (ยังใช้ได้ชั่วคราวตาม deprecation window)
 - server เก่าที่ยังเป็น `2025-11-25` หรือก่อนหน้ายังทำงานได้ — ถ้าเจอ `UnsupportedProtocolVersionError` ให้ retry ด้วย version ที่ server รองรับ
 
-- ใช้ /learn-web ถ้าจำเป็น
+- ใช้ /learn (web) ถ้าจำเป็น
 - ใช้ /deep-research ถ้าจำเป็น
 
 ## Expected Outcome

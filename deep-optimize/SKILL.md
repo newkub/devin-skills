@@ -19,7 +19,7 @@ triggers:
 related:
   - review-performance
   - check-bottlenecks
-  - check-unused
+  - check-repo-hygiene
   - refactor
   - deep-analyze
   - review-bundle
@@ -63,7 +63,7 @@ Optimize codebase แบบละเอียดครบทุก layer — per
 1. ทำ `/deep-analyze` บน target
 2. ทำ `/review-performance` เพื่อหา hotspots
 3. ทำ `/review-devin-global-skills` เพื่อหา duplicate logic
-4. ทำ `/check-unused` และ `/check-bottlenecks`
+4. ทำ `/check-repo-hygiene unused` และ `/check-bottlenecks`
 5. วิเคราะห์ bundle / build output ถ้ามี
 
 ### 3. Plan Optimizations

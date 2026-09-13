@@ -4,7 +4,7 @@ description: อัปเดท references ทั้งหมดที่เก�
 argument-hint: "[scope]"
 related:
   - use-related-skills
-  - search-files-patterns
+  - search
   - check-file-relations
   - report
   - deep-validate
@@ -136,7 +136,7 @@ related:
 
 - ใช้ /use-related-skills ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
-- ใช้ /search-files-patterns ถ้าจำเป็น
+- ใช้ /search files-patterns ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

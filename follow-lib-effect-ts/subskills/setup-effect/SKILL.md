@@ -6,7 +6,7 @@ related:
   - follow-lib-effect-ts
   - follow-lang-typescript
   - follow-tool-vitest
-  - learn-web
+  - learn
   - resolve-errors
 ---
 

@@ -4,7 +4,7 @@ description: วิเคราะห์ attack surface และ exposed endpoi
 argument-hint: "[app-url|repo-path]"
 related:
   - review-security
-  - check-secrets-leak
+  - check-secrets
   - report-uxui-all-routes
 ---
 
@@ -63,7 +63,7 @@ related:
 - ระบุ trust boundaries
 
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /check-secrets-leak ถ้าจำเป็น
+- ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 ## Expected Outcome
 - attack surface list พร้อม severity
 - trust boundary map

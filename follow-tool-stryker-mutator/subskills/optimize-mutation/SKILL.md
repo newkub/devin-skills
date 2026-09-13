@@ -4,7 +4,7 @@ description: ปรับ Stryker mutation testing ให้เร็ว — inc
 argument-hint: "[scope]"
 related:
   - follow-tool-stryker-mutator
-  - run-test-mutation
+  - run-test
   - deep-optimize
   - check-bottlenecks
   - setup-cicd

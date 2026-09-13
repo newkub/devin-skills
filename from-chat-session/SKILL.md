@@ -4,7 +4,7 @@ description: สรุป chat session เป็น action plan ด้วย tab
 argument-hint: "[summary-or-context]"
 related:
   - report-todo
-  - report-in-numbered
+  - report
   - suggest-next-action
   - use-related-skills
   - follow-context-engineering
@@ -50,7 +50,7 @@ related:
    - `Why` เหตุผลทีควรทำ
    - `File Change` ไฟล์ทีคาดว่าจะเปลี่ยน
    - `Risk` ความเสี่ยงหรือข้อควรระวัง
-2. ด้านล่างตาราง ทำ `/report-in-numbered` สรุป steps ทังหมด
+2. ด้านล่างตาราง ทำ `/report numbered` สรุป steps ทังหมด
 
 ### 4. Validate And Ship
 
@@ -65,7 +65,7 @@ related:
 1. ตอบเฉพาะเมื่อ user ถาม หรือเมื่อระบุชัดว่าไม่ต้องทำทันที
 2. ทุก action ต้องมี single responsibility
 3. ไม่เดาไฟล์ทีจะเปลี่ยน — ระบุเฉพาะทีพอจะรู้หรือระบุว่าไม่แน่ใจ
-4. ด้านล่างตารางต้องมี `/report-in-numbered` สรุป
+4. ด้านล่างตารางต้องมี `/report numbered` สรุป
 5. ใช้ backticks สำหรับ paths, skill names, commands
 6. ห้ามใช้ bold markers
 

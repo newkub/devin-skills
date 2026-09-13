@@ -6,7 +6,7 @@ related:
   - follow-lib-orpc
   - follow-lib-zod
   - follow-lib-effect-ts
-  - learn-web
+  - learn
   - resolve-errors
 ---
 

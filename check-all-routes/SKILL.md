@@ -4,7 +4,7 @@ description: ตรวจ coverage ทุก routes ของ site/app — disco
 argument-hint: "<domain-or-path> [--expect <file>]"
 related:
   - check-routes-status
-  - check-dead-link
+  - check-repo-hygiene
   - follow-tool-crw
   - update-devin-global-skills
   - report
@@ -37,10 +37,10 @@ Discover ทุก same-origin routes ของ target (docs site, app, deployed
 
 ลองตามลำดับ — ใช้วิธีแรกที่สำเร็จ:
 
-1. **`crw map` (preferred)**: `crw map <url>` หรือ MCP `crw_map` ถ้า server `crw` available — ได้ sitemap + crawl discovery
-2. **sitemap.xml**: `webfetch <url>/sitemap.xml` — parse `<loc>` entries (รองรับ sitemap index)
-3. **Crawl fallback**: `webfetch` หน้าแรก + docs index → ตาม same-origin links 1-2 ระดับ
-4. **App routes**: ถ้า target เป็น codebase → `find_file_by_name` หา route files (`app/**/page.*`, `pages/**`, `routes/**`)
+1. `crw map` (preferred): `crw map <url>` หรือ MCP `crw_map` ถ้า server `crw` available — ได้ sitemap + crawl discovery
+2. sitemap.xml: `webfetch <url>/sitemap.xml` — parse `<loc>` entries (รองรับ sitemap index)
+3. Crawl fallback: `webfetch` หน้าแรก + docs index → ตาม same-origin links 1-2 ระดับ
+4. App routes: ถ้า target เป็น codebase → `find_file_by_name` หา route files (`app//page.*`, `pages/`, `routes/`)
 
 Normalize: strip trailing slash, query, fragment; เหลือเฉพาะ same-origin paths
 
@@ -69,6 +69,9 @@ Normalize: strip trailing slash, query, fragment; เหลือเฉพาะ
 
 - ห้าม generate routes จากชื่อหัวข้อเอง — ต้องมาจาก discovery จริง
 - ถ้า docs site มี versioning (`/v1/`, `/v2/`) → map เฉพาะ latest เป็นค่า default ยกเว้น user ระบุ
+
+- ใช้ /check-repo-hygiene ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
 
 ## Expected Outcome
 

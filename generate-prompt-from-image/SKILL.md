@@ -3,8 +3,7 @@ name: generate-prompt-from-image
 description: สร้าง image generation prompt จากรูปภาพด้วย AI vision ผ่าน bunx CLI
 argument-hint: "[image-path] [style]"
 related:
-  - gen-ai-images
-  - gen-image-character
+  - gen-media
   - report
 ---
 
@@ -82,8 +81,8 @@ related:
 - ไม่ใช้ small talk ในผลลัพธ์
 - ถ้าต้องการคำอธิบายเพิ่ม ให้สรุปสั้นๆ
 
-- ใช้ /gen-ai-images ถ้าจำเป็น
-- ใช้ /gen-image-character ถ้าจำเป็น
+- ใช้ /gen-media ai-images ถ้าจำเป็น
+- ใช้ /gen-media image-character ถ้าจำเป็น
 
 ## Expected Outcome
 

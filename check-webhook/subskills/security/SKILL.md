@@ -39,7 +39,7 @@ argument-hint: "[target]"
 
 1. Timestamp tolerance — รับ events เก่าแค่ไหน (Stripe: ±5min default)
 2. Replay protection: event ID dedup, timestamp validation, nonce handling
-3. Secret: webhook secrets ต้องอยู่ใน env/secret manager — ทำ `/check-secrets-leak` ร่วม
+3. Secret: webhook secrets ต้องอยู่ใน env/secret manager — ทำ `/check-secrets secrets-leak` ร่วม
 4. Endpoint exposure: ไม่ leak internal paths, มี rate limiting (`/check-rate-limiting`)
 
 ### 4. Report

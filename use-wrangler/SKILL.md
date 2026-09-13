@@ -3,9 +3,9 @@ name: use-wrangler
 description: ใช้ Wrangler CLI สำหรับ Cloudflare Workers/Pages — dev, deploy, secrets, bindings และ tail logs
 argument-hint: "[command-or-worker]"
 related:
-  - create-cloudflare-worker
+  - create-cloudflare
   - deploy-to-cloudflare
-  - resolve-cloudflare-worker-fails
+  - resolve-errors
 ---
 
 ## Goal
@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวกับ Cloudflare Workers, Pages, KV, D1, R2, Queues, Durable Objects — ครอบคลุม local dev, deploy, config (`wrangler.toml`/`wrangler.jsonc`) และ observability — สร้าง project ใหม่ทำตาม `/create-cloudflare-worker` ก่อนแล้วใช้ skill นี้สำหรับ day-to-day commands
+ใช้เมื่อ task เกี่ยวกับ Cloudflare Workers, Pages, KV, D1, R2, Queues, Durable Objects — ครอบคลุม local dev, deploy, config (`wrangler.toml`/`wrangler.jsonc`) และ observability — สร้าง project ใหม่ทำตาม `/create-cloudflare worker` ก่อนแล้วใช้ skill นี้สำหรับ day-to-day commands
 
 ## Execute
 
@@ -120,7 +120,7 @@ bunx wrangler deployments list           # ดู deployment history
 - ระบุ `--env <name>` เสมอเมื่อ project มี multiple environments (dev/staging/production)
 - production deploy ต้อง user confirm
 
-- ใช้ /resolve-cloudflare-worker-fails ถ้าจำเป็น
+- ใช้ /resolve-errors cloudflare-worker ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 
 ## Expected Outcome

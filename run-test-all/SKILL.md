@@ -7,14 +7,6 @@ related:
   - run-lint
   - run-typecheck
   - run-test
-  - run-test-integration
-  - run-test-e2e
-  - run-test-api
-  - run-test-cli
-  - run-test-contract
-  - run-test-visual
-  - run-test-coverage
-  - run-test-mutation
   - update-tests
 
   - deep-review
@@ -34,14 +26,14 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|
 | 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | `/run-test` (unit/fast) |
-| 2 | shared modules, DB, services integration | `/run-test-integration` |
-| 3 | HTTP endpoints, OpenAPI spec, API routes | `/run-test-api` + `/test-all-api-routes` |
-| 4 | CLI binary, `bin` field, command definitions | `/run-test-cli` |
-| 5 | consumer/provider services, Pact, contract files | `/run-test-contract` |
-| 6 | web frontend, browser flows | `/run-test-e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
-| 7 | UI components, design system, screenshots | `/run-test-visual` |
-| 8 | coverage config หรือ target กำหนดไว้ | `/run-test-coverage` |
-| 9 | critical logic, mutation config | `/run-test-mutation` |
+| 2 | shared modules, DB, services integration | `/run-test` |
+| 3 | HTTP endpoints, OpenAPI spec, API routes | `/run-test` + `/test-all-api-routes` |
+| 4 | CLI binary, `bin` field, command definitions | `/run-test` |
+| 5 | consumer/provider services, Pact, contract files | `/run-test` |
+| 6 | web frontend, browser flows | `/run-test` (e2e) (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
+| 7 | UI components, design system, screenshots | `/run-test` (visual) |
+| 8 | coverage config หรือ target กำหนดไว้ | `/run-test` |
+| 9 | critical logic, mutation config | `/run-test` |
 | 10 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
 ดูเพิ่มเติม: /update-tests, /deep-review
@@ -69,7 +61,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: รันเร็วสุดก่อน เจอปัญหาเร็ว
 
-1. ลำดับ: `/run-test` (unit) → `/run-test-integration` → `/run-test-api` / `/run-test-cli` / `/run-test-contract` (ตาม signals) → `/run-test-e2e` → `/run-test-visual`
+1. ลำดับ: `/run-test` (unit) → `/run-test` (integration) → `/run-test` (api) / `/run-test` (cli) / `/run-test` (contract) (ตาม signals) → `/run-test` (e2e) → `/run-test` (visual)
 2. ต่อ type: บันทึกผลลัพธ์, duration, รายการ tests ที่ fail
 3. ถ้ามี fail → ไปขั้นตอน Validate/Classify ทันที ไม่แก้ไข code ก่อน
 
@@ -96,7 +88,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ครอบคลุมและรายงาน
 
-1. ทำ `/run-test-coverage` เมื่อ project มี coverage target
+1. ทำ `/run-test` เมื่อ project มี coverage target
 2. ถ้าไม่ถึงเป้า → `/update-tests` เพิ่ม แล้วรันใหม่
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse

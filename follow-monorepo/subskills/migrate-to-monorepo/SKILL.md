@@ -5,7 +5,6 @@ argument-hint: "[tool]"
 related:
   - follow-monorepo
   - check-monorepo
-  - check-monorepo-boundaries
   - plan
   - run-verify
   - resolve-errors
@@ -54,7 +53,7 @@ related:
 > Goal: monorepo ใช้งานได้เหมือนเดิม
 
 1. ทำ `/run-verify` — build, typecheck, lint, test ผ่านทุก workspace
-2. ทำ `/check-monorepo-boundaries` เพื่อยืนยันไม่มี cross-import ผิด boundary
+2. ทำ `/check-monorepo boundaries` เพื่อยืนยันไม่มี cross-import ผิด boundary
 3. ถ้า fail → `/resolve-errors` max 3 รอบ แล้ว stop report
 
 ## Rules

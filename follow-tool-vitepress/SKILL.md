@@ -7,7 +7,7 @@ related:
   - follow-lang-typescript
   - follow-lib-unocss
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - run-docs
 ---
 
@@ -207,11 +207,7 @@ export default {
 
 ### 3. Package Scripts
 
-- สำหรับ monorepo ให้ใส่ scripts ใน `docs/package.json` โดยใช้ `dev`, `build`, `preview`
-- สำหรับ single project ให้ใช้ `dev:docs`, `build:docs`, `preview:docs` ใน root `package.json`
-- ใช้ `vitepress dev` สำหรับ development (เมื่ออยู่ใน `docs/` workspace)
-- ใช้ `vitepress build` สำหรับ production
-- ใช้ `vitepress preview` สำหรับ preview
+- scripts: monorepo ใช้ `dev`/`build`/`preview` ใน `docs/package.json`; single project ใช้ `dev:docs`/`build:docs`/`preview:docs` ใน root `package.json`
 
 ### 4. Plugin Integration
 
@@ -231,12 +227,10 @@ export default {
 
 ### 6. Gitignore And TypeScript Config
 
-- ทำ `/follow-gitignore` สร้าง `docs/.gitignore` ครอบคลุม `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
-- ทำ `/follow-lang-typescript` สร้าง `docs/tsconfig.json` extends จาก root พร้อม `noEmit: true`, `types: ["vitepress"]`
-- สำหรับ monorepo ให้เพิ่ม `docs` ใน `exclude` ของ root `tsconfig.json`
+- `docs/.gitignore` ครอบคลุม `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`; `docs/tsconfig.json` extends root พร้อม `noEmit: true`, `types: ["vitepress"]`; monorepo → `exclude` `docs` ใน root tsconfig
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool vitepress)
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool vitepress)
 
 ## References
 
@@ -252,7 +246,5 @@ export default {
 - Shiki Twoslash + Group Icons integrated
 - GitHub Actions deployment พร้อมใช้งาน
 - Home page พร้อม frontmatter ตาม VitePress default
-- `.gitignore` ครอบคลุม VitePress build output และ cache
-- `tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
-- Project docs 4 sections (Project, Features, Review, Release) ด้วย Vue components
-- ข้อมูลจริงจาก project ผ่าน Bun shell scripts ไม่ hardcoded
+- `.gitignore` ครอบคลุม build output/cache และ `tsconfig.json` พร้อมสำหรับ `.vitepress/` config
+- Project docs 4 sections (Project, Features, Review, Release) ด้วย Vue components ที่ดึงข้อมูลจริงผ่าน Bun shell

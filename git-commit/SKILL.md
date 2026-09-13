@@ -6,12 +6,10 @@ related:
   - run-check
   - run-verify
   - follow-tool-hk
-  - list-git-commit
+  - list-git
   - refactor-commit
   - review-diff
   - ship
-  - git-commit-at-devin-global-skills
-
 ---
 ## Goal
 
@@ -20,12 +18,22 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 ## Scope
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-commit-at-devin-skills-global)
+- variants ถูกย้ายเข้า subskills (merged from: git-commit-no-verify, git-commit-selected-files, git-commit-and-push, git-commit-at-devin-global-skills)
 
 ใช้สำหรับ commit changes ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` เท่านั้น
 
-- ถ้าต้องการรัน pre-commit validation ก่อน commit ใน devin global skills ให้ใช้ `/git-commit-at-devin-global-skills`
+- ถ้าต้องการรัน pre-commit validation ก่อน commit ใน devin global skills ให้ใช้ `/git-commit at-devin-global-skills`
 
 ## Execute
+
+### Subskills
+
+| Domain                   | Subskill |
+|--------------------------|----------|
+| `no-verify`              | `subskills/no-verify/SKILL.md` — commit ข้าม pre-commit hooks ด้วย `--no-verify` |
+| `selected-files`         | `subskills/selected-files/SKILL.md` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
+| `and-push`               | `subskills/and-push/SKILL.md` — commit + push + resolve CI/CD |
+| `at-devin-global-skills` | `subskills/at-devin-global-skills/SKILL.md` — pre-commit validation สำหรับ devin global skills |
 
 ### 1. Navigate To Global Devin Skills
 
@@ -136,7 +144,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /follow-tool-hk ถ้าจำเป็น
-- ใช้ /list-git-commit ถ้าจำเป็น
+- ใช้ /list-git commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /review-diff ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น

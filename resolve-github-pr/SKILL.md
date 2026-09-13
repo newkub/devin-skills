@@ -3,9 +3,9 @@ name: resolve-github-pr
 description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
 argument-hint: "[scope]"
 related:
-  - create-github-pr
-  - list-github-pr
-  - merge-github-pr
+  - create-github
+  - list-github
+  - merge
 ---
 
 ## Goal
@@ -123,9 +123,9 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 - หรือใช้ `Refs #issue-number` สำหรับ tracking
 - GitHub จะปิด issue อัตโนมัติเมื่อ PR merge
 
-- ใช้ /create-github-pr ถ้าจำเป็น
-- ใช้ /list-github-pr ถ้าจำเป็น
-- ใช้ /merge-github-pr ถ้าจำเป็น
+- ใช้ /create-github pr ถ้าจำเป็น
+- ใช้ /list-github pr ถ้าจำเป็น
+- ใช้ /merge github-pr ถ้าจำเป็น
 
 ## Expected Outcome
 

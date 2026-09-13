@@ -17,6 +17,7 @@ Skill นี้ถูก merge เข้ากับ `/update-project` แล้
 ## Execute
 
 1. ทำ `/update-project` ตามขอบเขตและ workflow เดิมทั้งหมด
+2. subagent `project-updater` ย้ายไป `update-project/subagents/project-updater.md` (canonical) — อ้างอิง path นั้น
 
 
 ## Rules

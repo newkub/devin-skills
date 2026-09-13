@@ -14,4 +14,4 @@
 - Pattern syntax: `$X` metavariables, `...` ellipsis, `pattern-either`, `pattern-not`, `metavariable-regex`
 - `--config p/<ruleset>` จาก registry หรือ local `.yaml` rules
 - `--autofix` ใช้ `fix:` field ใน rule
-- เปรียบเทียบ ast-grep (`/use-astgrep-programmatic`): semgrep = multi-language security-focused, ast-grep = เบากว่า per-language
+- เปรียบเทียบ ast-grep (`/use-astgrep` programmatic subskill): semgrep = multi-language security-focused, ast-grep = เบากว่า per-language

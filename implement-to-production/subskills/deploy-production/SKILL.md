@@ -9,7 +9,7 @@ related:
   - run-check
   - run-deploy
   - follow-deploy
-  - check-secrets-leak
+  - check-secrets
   - test-usage
   - resolve-errors
   - ask-me
@@ -35,7 +35,7 @@ related:
 1. ทำ `/deep-validate` — validate หลายมิติต้องผ่าน
 2. ทำ `/run-test-all` — unit, integration, e2e ต้องเขียว
 3. ทำ `/run-verify` — scan, format, lint, typecheck, build ผ่าน
-4. pre-ship sweep: `/check-secrets-leak` (ไม่มี secrets หลุด) และไม่มี debug leftovers
+4. pre-ship sweep: `/check-secrets secrets-leak` (ไม่มี secrets หลุด) และไม่มี debug leftovers
 5. ทำ `/test-usage` — usage examples ใน README/docs ทำงานจริง
 6. ถ้า check ใด fail → `/resolve-errors` max 3 รอบ; ยัง fail → stop report ห้าม deploy
 

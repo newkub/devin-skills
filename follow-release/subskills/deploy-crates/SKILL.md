@@ -7,7 +7,7 @@ related:
   - run-check
   - follow-secret-manager
   - resolve-errors
-  - learn-web
+  - learn
   - ask-me
 ---
 
@@ -77,7 +77,7 @@ Publish Rust crate ไปยัง crates.io อย่างถูกต้อ�
 
 ### 3. Docs First
 
-- ถ้าไม่แน่ใจ flags/features ใหม่ → ดู official docs ผ่าน `/learn-web` แทนการเดา
+- ถ้าไม่แน่ใจ flags/features ใหม่ → ดู official docs ผ่าน `/learn web` แทนการเดา
 
 ## Expected Outcome
 

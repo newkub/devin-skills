@@ -32,7 +32,7 @@
 
 ## 6. Drift And Freshness
 
-- [ ] config drift ข้าม workspaces/envs (เชื่อม `/report-config-drift`)
+- [ ] config drift ข้าม workspaces/envs (เชื่อม `/check-config-drift` report-drift subskill)
 - [ ] stale options หลัง upgrades, TODO/FIXME ใน config
 
 ## Scoring

@@ -29,7 +29,7 @@ related:
 
 > Goal: รู้ทุก breaking change ก่อนแก้ code
 
-1. อ่าน CHANGELOG, migration guide และ release notes ของ package จาก official docs/repo — ถ้าไม่มี guide ให้ `/learn-web`
+1. อ่าน CHANGELOG, migration guide และ release notes ของ package จาก official docs/repo — ถ้าไม่มี guide ให้ `/learn` (web)
 2. สร้าง checklist: removed APIs, renamed APIs, behavior changes, new required config, peer dep requirements
 3. `scan-codebase` หา call sites ทุกจุดที่ใช้ API ที่เปลี่ยน — ระบุ file:line ทั้งหมด
 4. ประเมิน risk — ถ้ากระทบ public API หรือหลาย workspace → `/ask-me` confirm ก่อนเริ่ม

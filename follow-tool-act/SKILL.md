@@ -4,8 +4,7 @@ description: ใช้ act (nektos/act) รัน GitHub Actions workflows บ�
 argument-hint: "[workflow-or-job]"
 related:
   - follow-tool-github-actions
-  - resolve-github-actions-fails
-  - resolve-cicd
+  - resolve-errors
   - report
 ---
 
@@ -17,7 +16,7 @@ related:
 
 - ใช้เมื่อต้องการทดสอบ `.github/workflows/*.yml` โดยไม่ต้อง push
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
-- ใช้ร่วมกับ `/resolve-github-actions-fails` (ดูและแก้ fails บน remote)
+- ใช้ร่วมกับ `/resolve-errors github-actions` (ดูและแก้ fails บน remote)
 
 - Latest: `act@0.2.89` (nektos/act) (verified 2026-09-12)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
@@ -66,7 +65,7 @@ related:
 2. ใช้ `-v` (verbose) เมื่อ log ไม่พอ
 3. แยกแยะระหว่าง workflow bug กับ act limitation (services, `runs-on` ที่ไม่ใช่ ubuntu, GitHub-specific contexts)
 4. ถ้า fail จาก workflow → แก้ `.github/workflows/*.yml` แล้ว re-run
-5. ถ้าเป็น act limitation → document และทำ `/resolve-github-actions-fails` บน remote แทน
+5. ถ้าเป็น act limitation → document และทำ `/resolve-errors github-actions` บน remote แทน
 
 ### 6. Report
 
@@ -74,7 +73,7 @@ related:
 
 1. ทำ `/report` คอลัมน์: `No.`, `Workflow`, `Job`, `Result`, `Duration`, `Note`
 2. ระบุ jobs ที่ผ่าน local และความมั่นใจว่าจะผ่าน remote
-3. ถ้าผ่านหมด → พร้อม push; ถ้าไม่ → ทำ `/resolve-cicd`
+3. ถ้าผ่านหมด → พร้อม push; ถ้าไม่ → ทำ `/resolve-errors cicd`
 
 ## Rules
 
@@ -93,11 +92,11 @@ related:
 
 - `act` ไม่รองรับทุก GitHub features: reusable workflows บาง pattern, OIDC, hosted runner services
 - Windows/macOS jobs มักรันไม่ได้ใน container — skip และรันบน remote
-- ถ้า act ทำไม่ได้ → fallback ไป `/resolve-github-actions-fails`
+- ถ้า act ทำไม่ได้ → fallback ไป `/resolve-errors github-actions`
 
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool act)
-- ใช้ /resolve-github-actions-fails ถ้าจำเป็น
-- ใช้ /resolve-cicd ถ้าจำเป็น
+- ใช้ /resolve-errors github-actions ถ้าจำเป็น
+- ใช้ /resolve-errors cicd ถ้าจำเป็น
 
 ## Expected Outcome
 

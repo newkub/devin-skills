@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - list-projects-git-in-drive-d
   - list-chezmoi-files
-  - resolve-cloudflare-worker-fails
+  - resolve-errors
   - open-cloudflare-workers
 
 ---
@@ -77,7 +77,7 @@ related:
 - ระบุ `local-only` ถ้าไม่มี remote
 - รองรับ Workers, Pages และ Wrangler config ทุก format
 
-- ใช้ /resolve-cloudflare-worker-fails ถ้าจำเป็น
+- ใช้ /resolve-errors cloudflare-worker ถ้าจำเป็น
 
 ## Expected Outcome
 

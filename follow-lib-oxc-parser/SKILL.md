@@ -3,7 +3,7 @@ name: follow-lib-oxc-parser
 description: "ใช้ oxc-parser parse JS/TS เป็น AST เร็วมาก — analysis, tooling, review CLI"
 argument-hint: "[files-or-goal]"
 related:
-  - use-astgrep-programmatic
+  - use-astgrep
   - follow-lang-typescript
   - use-scripts
   - follow-best-practice
@@ -22,7 +22,7 @@ related:
 - หา call sites, unused exports, dependency graph
 - เดิน AST ด้วย visitor pattern
 
-เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
+เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
 - Latest: `oxc-parser@0.149.0` (verified 2026-09-12)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
@@ -104,7 +104,7 @@ visitor.visit(result.program);
 ### 3. เมื่อไหร่ใช้อะไร
 
 - `oxc-parser` → full AST, type info, traversal, module analysis
-- `/use-astgrep-programmatic` → pattern rules (`kind`, `pattern`, `has`, `inside`) สำหรับ lint-style checks
+- `/use-astgrep programmatic` → pattern rules (`kind`, `pattern`, `has`, `inside`) สำหรับ lint-style checks
 - `oxc-transform` → compile/transpile
 - Tree-sitter/Babel → เฉพาะเมื่อต้องการ API ที่เข้ากันได้กับ ecosystem เดิม
 

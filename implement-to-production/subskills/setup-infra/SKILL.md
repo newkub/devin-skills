@@ -3,9 +3,8 @@ name: implement-to-production-setup-infra
 description: เตรียม infrastructure ให้พร้อม production — env vars, secrets, CI และ observability
 argument-hint: "[scope]"
 related:
-  - check-env-vars
+  - check-secrets
   - check-migrations
-  - check-secrets-leak
   - follow-secret-manager
   - setup-cicd
   - review-observability
@@ -28,7 +27,7 @@ related:
 
 > Goal: รู้ว่า app ต้องการ infra อะไรบ้าง
 
-1. ทำ `/check-env-vars` เทียบ `.env` / `.env.example` / code usage — list ตัวที่ขาด
+1. ทำ `/check-secrets env-vars` เทียบ `.env` / `.env.example` / code usage — list ตัวที่ขาด
 2. ทำ `/check-migrations` เทียบ pending vs applied migrations
 3. list external services ที่ใช้: credentials, API keys, endpoints, rate limits
 4. list observability gaps: logging, metrics, error tracking
@@ -40,7 +39,7 @@ related:
 1. สร้าง/อัปเดต `.env.example` ให้ครบทุก variable ที่ code ใช้
 2. เก็บ secrets ผ่าน `/follow-secret-manager` — ห้าม commit
 3. inject secrets เข้า platform ตาม target (เช่น `wrangler secret put`, platform dashboard, CI secrets)
-4. ทำ `/check-secrets-leak` ยืนยันไม่มี secrets ใน code/config
+4. ทำ `/check-secrets secrets-leak` ยืนยันไม่มี secrets ใน code/config
 5. ถ้าขาด credentials ที่ user ต้องให้ → `/ask-me` แล้ว stop รอ
 
 ### 3. Verify CI Readiness

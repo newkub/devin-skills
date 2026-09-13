@@ -10,7 +10,7 @@ related:
   - review-writing
   - use-scripts
   - check-reference
-  - run-test-coverage
+  - run-test
 ---
 
 ## Goal
@@ -114,7 +114,7 @@ related:
 - ไม่ทำลาย references หรือ content เดิม
 - ถ้ามีการ overwrite ไฟล์เดิม → user confirmation ก่อน
 - Minimal changes เสมอ ไม่ rewrite ทั้งไฟล์ถ้าเปลี่ยนเฉพาะส่วน
-- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /run-test coverage ถ้าจำเป็น
 
 ## Expected Outcome
 

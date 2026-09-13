@@ -4,7 +4,7 @@ description: สร้าง note ใหม่ใน repo D:\newkub\notes จา
 argument-hint: "[scope]"
 related:
   - list-newkub-notes
-  - open-web
+  - open
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 - ถ้าไฟล์ใหญ่เกิน 10 MB ให้แจ้ง user
 
 - ใช้ /list-newkub-notes ถ้าจำเป็น
-- ใช้ /open-web ถ้าจำเป็น
+- ใช้ /open web ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - follow-service-stripe
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - check-config-drift
   - run-verify
 ---
@@ -29,7 +29,7 @@ related:
 > Goal: รู้สถานะปัจจุบันก่อนแก้
 
 1. อ่าน pricing config, `.env*` และ routes ที่เกี่ยวกับ Stripe ใน project
-2. ทำ `/check-env-vars` เพื่อระบุ keys ที่ขาด
+2. ทำ `/check-secrets env-vars` เพื่อระบุ keys ที่ขาด
 3. ตรวจ products/prices/webhooks ที่มีอยู่ใน dashboard — ใช้ `/open-web-for-config-secret` (service stripe)
 4. ถ้ายังไม่มี SDK/keys → ทำ `subskills/setup-stripe/SKILL.md` แทน
 
@@ -75,7 +75,7 @@ related:
 - Secrets/keys ผ่าน `/follow-secret-manager` เท่านั้น ห้าม commit
 - Webhook endpoint production ต้องเป็น HTTPS และ verify signature ทุกครั้ง
 - Merge config เดิม — ห้าม overwrite products/prices ที่ใช้งานอยู่
-- ถ้า API field/option ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า API field/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

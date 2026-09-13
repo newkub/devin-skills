@@ -5,10 +5,9 @@ argument-hint: "[env-file-or-scope]"
 related:
   - update-config
   - follow-config
-  - check-env-vars
-  - check-secrets-leak
+  - check-secrets
   - follow-secret-manager
-  - report-config-drift
+  - check-config-drift
 ---
 
 ## Goal
@@ -27,10 +26,10 @@ related:
 
 > Goal: รู้ว่าขาด/เกิน/เปลี่ยน key ไหน
 
-1. ทำ `/check-env-vars` — vars ที่ code อ่าน (`process.env.*`, `import.meta.env.*` ตาม stack) เทียบกับที่ define
+1. ทำ `/check-secrets env-vars` — vars ที่ code อ่าน (`process.env.*`, `import.meta.env.*` ตาม stack) เทียบกับที่ define
 2. อ่าน env files ปัจจุบันและ `.env.example` — list keys ทั้งหมด
 3. สร้าง diff: missing keys (code ใช้แต่ไม่มี), stale keys (มีแต่ code ไม่ใช้), keys ที่ต้องเปลี่ยนค่า/format
-4. ทำ `/report-config-drift` ถ้าต้องดู drift ข้าม environments/workspaces
+4. ทำ `/check-config-drift` report-drift subskill ถ้าต้องดู drift ข้าม environments/workspaces
 
 ### 2. Apply Changes
 
@@ -47,7 +46,7 @@ related:
 
 1. รัน dev/build — startup validation ผ่าน ไม่มี missing var crash
 2. ทดสอบ path ที่ใช้ vars ใหม่ — smoke test เฉพาะจุดที่แก้
-3. ทำ `/check-secrets-leak` — ยืนยันไม่มี secrets ใน git-tracked files
+3. ทำ `/check-secrets secrets-leak` — ยืนยันไม่มี secrets ใน git-tracked files
 4. `git status` ยืนยัน `.env` ไม่ถูก stage — commit เฉพาะ `.env.example`/schema
 
 ## Rules

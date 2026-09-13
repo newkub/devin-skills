@@ -1,0 +1,130 @@
+---
+name: idea-convert-my-global-cli-to-skills
+description: สร้างไอเดียและ draft แปลง CLI tools ที่ติดตั้งเป็น Devin skills
+argument-hint: "[cli-name]"
+related:
+  - check-my-global-cli
+  - update-devin-global-skills
+  - create-plan-in-dot-devin
+  - learn
+  - delete
+  - report
+  - then-apply
+  - run-test
+---
+
+## Goal
+
+สร้างไอเดียและ draft สำหรับแปลง CLI tools ที่ติดตั้งบนเครื่อง หรือ CLI ที่ระบุ เป็น Devin skills ตามมาตรฐาน
+
+## Scope
+
+ใช้หลัง `/check-my-global-cli` หรือเมื่อต้องการ convert CLI ใดๆ เป็น skills:
+
+- สำรวจ commands ของ installed CLI tools
+- ประเมิน command ใดควรเป็น skill
+- เขียน draft skill ตาม `/update-devin-global-skills`
+- รองรับทั้ง single CLI, multiple tools และ global CLI set
+
+## Execute
+
+### 1. Select CLI Tools
+
+> Goal: ระบุ CLI ทีต้องการ convert
+
+1. ดูรายการจาก `/check-my-global-cli` หรือถาม user
+2. ถ้าไม่มี report ทำ `/check-my-global-cli` เพื่อ list ทีติดตั้ง
+3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-in-dot-devin`
+4. ตรวจสอบ version, installation path และ global availability
+
+### 2. Explore Commands
+
+> Goal: เรียนรู้ command structure ของแต่ละ tool
+
+1. ทำ `/learn` (cli) กับแต่ละ tool
+2. รัน `<tool> --help` และ `<tool> <command> --help`
+3. บันทึก:
+   - ชื่อ command และ subcommand
+   - flags/options ที่ใช้บ่อย
+   - input/output pattern, exit codes
+   - ตัวอย่างการใช้งานทั่วไป
+
+### 3. Evaluate Conversion Candidates
+
+> Goal: ประเมินว่า command ไหนน่าเป็น skill
+
+1. ใช้ criteria:
+   - ใช้บ่อยใน project หรือ workflow
+   - มี flags/options หลายตัว จำเป็นต้องมี guideline
+   - ใช้งานซับซ้อนหรือต้องจำลำดับขั้นตอน
+   - นำไปใช้ใน workspace อื่นได้
+2. ให้คะแนน 1-5 สำหรับแต่ละ command ในแต่ละ criterion
+3. รวมคะแนนและจัดลำดับ: High (≥14), Medium (9-13), Low (<9)
+4. รวม commands ที่คล้ายกันเป็น skill เดียวถ้า goal ตรงกัน
+
+### 4. Group And Prioritize
+
+> Goal: จัดกลุ่ม commands ตาม concern และ priority
+
+1. แยก commands ทีซับซ้อนหรือใช้บ่อยมากเป็น skill เดียว
+2. รวม create/delete/list ของ resource เดียวกันเป็น skill เดียวถ้าเหมาะสม
+3. ระบุ low-priority commands ที่อาจไม่ต้องสร้าง skill
+4. กำหนดชื่อ skill ในรูป `<tool>-<command>` หรือ `<tool>-<purpose>`
+
+### 5. Draft Skills
+
+> Goal: เขียน draft skill สำหรับ candidates ที่เลือก
+
+1. ใช้ `/update-devin-global-skills` สำหรับแต่ละ skill
+2. ใน draft ต้องระบุ:
+   - `name` ทีสื่อความหมาย
+   - `description` ≤100 ตัวอักษร
+   - `triggers`, `allowed-tools`, `related`
+   - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
+3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
+4. ทำ `/report table` เพื่อสรุป draft skills ทีสร้าง คอลัมน์: `No.`, `Skill`, `Command(s)`, `Priority`, `Notes`
+
+### 6. Validate And Suggest
+
+> Goal: ตรวจสอบและนำเสนอทิศทางถัดไป
+
+1. ทำ `/deep-validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
+2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
+3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
+4. ถ้าต้องปรับ → ทำ `/check-my-global-cli` อีกรอบหรือ `/learn` (cli)
+5. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+6. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
+
+## Rules
+
+### 1. Conversion Criteria
+
+- สร้าง skill เฉพาะ command ทีมี justification ชัดเจน
+- ไม่ duplicate กับ skills ทีมีอยู่ — ทำ `grep` ชื่อคล้ายกันก่อน
+- หนึ่ง skill ครอบคลุม command หรือกลุ่ม commands ทีมี goal เดียวกัน
+- ไม่สร้าง skill สำหรับ command ทีทำงานเสร็จในบรรทัดเดียวและไม่มี options สำคัญ
+
+### 2. Naming And Semantics
+
+- ชื่อ skill ควรสะท้อน command จริง เช่น `<tool>-<command>` หรือ `<tool>-<purpose>`
+- ใช้ flags/options เดิมของ CLI ใน instructions
+- รักษา exit codes และ error handling ของ CLI
+- หลีกเลี่ยงชื่อ generic เช่น `use-cli` หรือ `my-cli`
+- ถ้า command ใช้ใน project หลาย workspace ควรตั้งชื่อให้ทั่วไป
+
+### 3. Draft Quality
+
+- ใช้ภาษาไทยสำหรับเนื้อหา
+- ใช้ backticks สำหรับ `commands`, `tools`, `paths` และ skill references
+- ไม่เกิน 250 บรรทัดต่อ skill
+- ระบุ `allowed-tools` ตาม tools ที command เรียกโดยตรง
+- ใช้ /run-test (cli) ถ้าจำเป็น
+
+## Expected Outcome
+
+- รายการ CLI tools และ commands ทีควรแปลงเป็น skills พร้อมคะแนน
+- กลุ่ม commands ทีจัดเป็น skill เดียวกันและ priority
+- draft skills สำหรับ High priority commands
+- ตารางสรุป commands, draft skill names และ next action
+- ทุก draft ผ่าน `/deep-validate` และไม่มีชื่อซ้ำ
+

@@ -4,7 +4,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 argument-hint: "[scope]"
 related:
   - check-skills-related
-  - check-secrets-leak
+  - check-secrets
   - update-references
 ---
 ## Goal
@@ -83,7 +83,7 @@ related:
 - ตรวจสอบ deprecation notices
 
 - ใช้ /check-skills-related ถ้าจำเป็น
-- ใช้ /check-secrets-leak ถ้าจำเป็น
+- ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 
 ## Expected Outcome

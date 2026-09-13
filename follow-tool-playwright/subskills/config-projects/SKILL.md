@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-playwright
   - follow-config
-  - run-test-e2e
+  - run-test
   - setup-cicd
 ---
 

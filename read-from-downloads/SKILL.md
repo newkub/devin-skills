@@ -7,7 +7,8 @@ allowed-tools:
   - find_file_by_name
   - exec
   - ask_user_question
-  - report
+  - report
+
   - suggest-next-action
 triggers:
   - user
@@ -16,8 +17,7 @@ related:
   - from-recent-windows-capture
   - capture
   - review-uxui
-  - open-in-explorer
-  - suggest-next-action
+  - open
 ---
 
 ## Goal
@@ -28,7 +28,7 @@ related:
 
 ใช้กับไฟล์ทีอยู่ใน `~/Downloads` เช่น screenshots, images, documents, archives โดย list, filter และ read ไฟล์ทีเลือก
 
-ดูเพิ่มเติม: /from-recent-windows-capture, /capture, /review-uxui, /open-in-explorer
+ดูเพิ่มเติม: /from-recent-windows-capture, /capture, /review-uxui, /open explorer
 
 ## Execute
 

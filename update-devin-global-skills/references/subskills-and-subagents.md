@@ -47,6 +47,8 @@
 | `follow-` | best practices/conventions ของ domain ย่อย | `follow-service-*` → `subskills/follow-auth` |
 | `optimize-` | ปรับ performance/bundle/cost โดยวัด baseline ก่อน-หลัง | `deep-optimize` → `subskills/optimize-bundle` |
 | `improve-` | ปรับคุณภาพของที่มีอยู่ โดย preserve behavior | `review-uxui` → `subskills/improve-contrast` |
+| `fix-` | แก้ findings/bugs ที่รู้ root cause — minimal + verify | `review-security` → `subskills/fix-secrets` |
+| `update-` | อัปเดตของที่มีอยู่ให้ทันสมัย — minimal diff, idempotent | `update-tests` → `subskills/update-e2e` |
 | `deploy-` | deploy ไปยัง platform/target จน live + verify | `follow-deploy` → `subskills/deploy-cloudflare` |
 | `migrate-` | ย้าย tool/version/pattern อย่างปลอดภัย มี rollback | `follow-monorepo` → `subskills/migrate-to-monorepo` |
 
@@ -54,12 +56,19 @@
 - ใช้ prefix เมื่อมีหลาย lifecycle จริงๆ — ถ้า parent มีแค่ workflow เดียวหรือเป็น knowledge ให้ใช้ `references/` แทน
 - prefix เดียวกันกับ top-level skill prefix ใน [templates/index.md](../templates/index.md) — execute pattern เหมือนกัน แค่อยู่ใต้ parent
 
+### Consolidation — Domain Subskills
+
+เมื่อ top-level skills หลายตัวทำงานเดียวกันใน domain เดียวกัน (เช่น `/run-test e2e`, `/run-test api` → `run-test`) ให้ย้ายเนื้อหาไป `parent/subskills/<domain>/` โดยใช้ domain name เป็น subskill name — ไม่ต้องมี lifecycle prefix — แล้วตั้ง parent เป็น dispatcher ที่มี `### Subskills` table
+
+- pattern เดียวกับที่ `update-tests` merge `update-e2e-test`/`update-unit-test`/`update-integration-test`/`update-test-and-fix`
+- ต้อง bulk-update callers `/old-skill` → `/parent` ทั้ง repo แล้ว verify ไม่มี dangling refs ก่อนลบ dir เดิม
+
 ## Subagents
 
 1. รูปแบบ: `subagents/<name>.md` (flat) หรือ `subagents/<name>/AGENT.md` (directory) — ตาม custom subagent spec เดียวกับ `agents/` roots
-2. runtime ไม่ register profiles จาก `subagents/` ใน skill package โดยตรง — ต้อง materialize ไปยัง agents root ที่ official รองรับ: `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\` (ทำผ่าน `/update-devin-global-subagents` หรือ `/update-devin-project-*`)
+2. runtime ไม่ register profiles จาก `subagents/` ใน skill package โดยตรง — ต้อง materialize ไปยัง agents root ที่ official รองรับ: `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\` (ทำผ่าน `/update-devin global-subagents` หรือ `/update-devin-project-*`)
 3. ใช้ `subagents/` เมื่อ skill ต้องการ role เฉพาะที่ไม่มีใน global profiles — ถ้า role มีอยู่แล้ว (เช่น `reviewer`, `qa`, `security-auditor`) → อ้างถึง profile นั้นตรงๆ ผ่าน `agent:` field แทนการสร้างใหม่
-4. frontmatter ของ profile: `name`, `description`, `model`, `allowed-tools`, `permissions` ตาม spec ของ `/update-devin-global-subagents`
+4. frontmatter ของ profile: `name`, `description`, `model`, `allowed-tools`, `permissions` ตาม spec ของ `/update-devin global-subagents`
 
 ## Rules
 

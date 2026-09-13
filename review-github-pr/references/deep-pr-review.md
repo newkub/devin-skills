@@ -33,9 +33,9 @@
 > Goal: ให้ user ตัดสินใจ merge
 
 1. สรุป findings + resolved comments
-2. ทำ `/open-web` เปิด PR
+2. ทำ `/open web` เปิด PR
 3. ถาม user ว่าจะ merge ไหม
-4. ถ้าใช่ → ทำ `/merge-github-pr` หรือ `gh pr merge`
+4. ถ้าใช่ → ทำ `/merge github-pr` หรือ `gh pr merge`
 5. ถ้าไม่ → report next actions
 
 ## Rules

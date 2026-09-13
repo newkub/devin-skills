@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-vitest
   - follow-tool-playwright
-  - run-test-visual
+  - run-test
 ---
 
 ## Goal
@@ -71,7 +71,7 @@ related:
 - รัน `storybook test`/`test-storybook` ใน CI ถ้าใช้ testing addons
 
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /run-test (visual) ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -3,10 +3,10 @@ name: open-readme-html
 description: สร้างและเปิดไฟล์ README.html ด้วย Element Plus + Tailwind CSS, tab system 7 tabs พร้อม search,
 argument-hint: "[file]"
 related:
-  - report-in-html
+  - report
   - review-docs
-  - update-readme-md
-  - open-web
+  - update-docs
+  - open
   - run-docs
 ---
 
@@ -95,7 +95,7 @@ related:
 ### 10. Open HTML in Browser
 
 > Goal: Open HTML in Browser
-1. ทำตาม `/open-web` เพื่อเปิด README.html ใน browser
+1. ทำตาม `/open web` เพื่อเปิด README.html ใน browser
 2. ใช้ `start README.html` (Windows), `open README.html` (macOS) หรือ `xdg-open README.html` (Linux)
 3. ตรวจสอบว่า file เปิดถูกต้อง
 
@@ -219,9 +219,9 @@ const getPriorityType = (priority) => {
 - Element Plus components จะปรับสีอัตโนมัติตาม dark mode
 - Tailwind classes ใช้ `dark:` prefix สำหรับ dark mode styling
 
-- ใช้ /report-in-html ถ้าจำเป็น
+- ใช้ /report html ถ้าจำเป็น
 - ใช้ /review-docs ถ้าจำเป็น
-- ใช้ /update-readme-md ถ้าจำเป็น
+- ใช้ /update-docs readme-md ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น
 
 ## Expected Outcome

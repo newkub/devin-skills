@@ -3,10 +3,9 @@ name: open-cloudflare-workers
 description: เปิดหน้า Cloudflare Workers dashboard ใน browser
 argument-hint: "[account-id]"
 related:
-  - open-web
+  - open
   - list-cloudflare-projects
-  - resolve-cloudflare-worker-fails
-  - resolve-cicd
+  - resolve-errors
   - follow-service-cloudflare
   - ask-me
 ---
@@ -16,7 +15,7 @@ related:
 เปิดหน้า Cloudflare Workers dashboard ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `resolve-cloudflare-worker-fails`, `resolve-cicd`, `follow-service-cloudflare`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `/resolve-errors cloudflare-worker`, `/resolve-errors cicd`, `follow-service-cloudflare`
 
 ใช้เปิด dashboard สำหรับจัดการ Cloudflare Workers และ Pages โดยไม่แก้ไข config ใดๆ
 
@@ -47,7 +46,7 @@ related:
    - Windows: `start <url>`
    - macOS: `open <url>`
    - Linux: `xdg-open <url>`
-2. หรือทำ `/open-web` เพื่อเปิด
+2. หรือทำ `/open web` เพื่อเปิด
 
 ## Rules
 
@@ -65,7 +64,7 @@ related:
 ### 3. Open Method
 
 - ใช้ native OS command `start` / `open` / `xdg-open`
-- ใช้ `/open-web` เป็น fallback
+- ใช้ `/open web` เป็น fallback
 - ถ้าต้องการ integrated browser ให้ใช้ `browser_preview` tool
 
 ### 4. Output

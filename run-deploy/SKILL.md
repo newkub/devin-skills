@@ -6,15 +6,15 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - review-release
-  - resolve-cicd
+  - resolve-errors
   - run-verify
   - run-build
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - deploy-to-vercel
   - deploy-to-cloudflare
   - deploy-to-railway
-  - create-cloudflare-worker
+  - create-cloudflare
 ---
 
 ## Goal
@@ -58,7 +58,7 @@ Deploy application ตาม platform ที่ใช้
 
 1. สำหรับ Vercel: ทำ `/deploy-to-vercel`
 2. สำหรับ Cloudflare:
-   - ถ้า Worker project ยังไม่ถูกสร้าง → ทำ `/create-cloudflare-worker` ก่อน
+   - ถ้า Worker project ยังไม่ถูกสร้าง → ทำ `/create-cloudflare worker` ก่อน
    - จากนั้นทำ `/deploy-to-cloudflare`
 3. สำหรับ Railway: ทำ `/deploy-to-railway`
 4. สำหรับ platform อื่น: ทำตาม workflow ที่เกี่ยวข้อง
@@ -82,7 +82,7 @@ Commit และ push changes ไปยัง repository
 1. เปิด URL ของ deployment
 2. ตรวจสอบว่า application ทำงานได้
 3. ตรวจสอบ logs ว่าไม่มี error
-4. ทำ `/watch-browser-and-fix` ถ้ามี URL
+4. ทำ `/watch-browser fix` ถ้ามี URL
 
 ### 6. Watch Until Live
 
@@ -90,7 +90,7 @@ Commit และ push changes ไปยัง repository
 
 Watch deployment ด้วย browser จนกว่าจะ live
 
-1. ทำ `/watch-browser-and-fix` ด้วย deployment URL
+1. ทำ `/watch-browser fix` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
 4. ทำ `/resolve-errors` ถ้าพบปัญหา
@@ -102,7 +102,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ตรวจสอบ deployment อย่างละเอียดหลัง deploy (ดู `references/post-deploy-validation.md`)
 
-1. ทำ `/run-test-e2e` เพื่อทดสอบ critical paths หลัง deploy
+1. ทำ `/run-test` (e2e) เพื่อทดสอบ critical paths หลัง deploy
 2. ตรวจสอบ health endpoint และ readiness probes
 3. ตรวจสอบ error logs หลัง deploy 5-10 นาที
 4. ถ้าพบ critical errors → ทำ rollback ทันที (ดู `references/rollback-recovery.md`)
@@ -137,7 +137,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 - ใช้ `/deploy-to-<platform>` ตาม platform ที่เลือก
 - ต้อง deploy สำเร็จ
 - ตรวจสอบ deployment status
-- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/resolve-cicd` เพื่อ watch และ fix จนกว่าจะผ่าน
+- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/resolve-errors cicd` เพื่อ watch และ fix จนกว่าจะผ่าน
 
 ### 4. Commit And Push
 
@@ -147,7 +147,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ### 5. Watch Until Live
 
-- ใช้ `/watch-browser-and-fix` สำหรับ monitoring
+- ใช้ `/watch-browser fix` สำหรับ monitoring
 - ใช้ `/resolve-errors` เมื่อพบปัญหา
 - ตรวจสอบ console และ network errors
 - ทำ `/loop-until-complete` จนกว่า deployment live
@@ -167,7 +167,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 - ต้องมี zero-downtime deploy (ถ้าต้องการ)
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (deploy)
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (deploy)
 
 ## Expected Outcome
 

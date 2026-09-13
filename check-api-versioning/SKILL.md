@@ -9,7 +9,7 @@ related:
   - review-api
   - gen-openapi
   - report
-  - run-test-api
+  - run-test
   - run-release
 ---
 
@@ -82,7 +82,7 @@ related:
 
 - ทุก version ต้องมี spec/contract ที่ตรง — ทำ `/gen-openapi` per version ถ้าขาด
 - breaking changes ระหว่าง versions ต้อง documented
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test api ถ้าจำเป็น
 - ใช้ /run-release ถ้าจำเป็น
 
 ## Expected Outcome

@@ -57,7 +57,7 @@
 
 > Goal: ยืนยัน API ยังทำงาน
 
-1. รัน `/run-test-api` หรือ integration tests
+1. รัน `/run-test` (api) หรือ integration tests
 2. รัน `/run-test`
 3. ใช้ load test ถ้าจำเป็น
 4. ทำ `/deep-review` สำหรับ security

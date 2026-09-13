@@ -10,7 +10,7 @@ allowed-tools:
   - read
 related:
   - list-projects-git-in-drive-d
-  - search-project-in-drive-d
+  - search
   - sync-drive-d-submodules
   - update-project
   - check-should-update
@@ -34,7 +34,7 @@ related:
 
 > Goal: ระบุ project ทีจะอัปเดต
 
-1. ถ้า user ระบุ `filter` → ทำ `/search-project-in-drive-d <filter>` เพื่อกรอง project
+1. ถ้า user ระบุ `filter` → ทำ `/search project-in-drive-d <filter>` เพื่อกรอง project
 2. ถ้าไม่ระบุ → ทำ `/list-projects-git-in-drive-d` เพื่อรายการทั้งหมด
 3. ตรวจสอบว่าได้รายการอย่างน้อย 1 project ถ้าไม่มี → stop และ report
 4. ถาม user ด้วย `/ask-me` ว่าจะ update ทั้งหมดหรือเลือกบาง project
@@ -93,6 +93,12 @@ related:
 2. แสดง projects ที update สำเร็จ, skip, error
 3. ระบุ count แต่ละประเภท
 4. ทำ `/suggest-next-action`
+
+### Subagents
+
+> Goal: parallelize updates เมื่อ projects เยอะ
+
+- ใช้ `subagents/project-updater.md` เมื่อมีมากกว่า 5 projects ที่ independent กัน — spawn ทีละ project ผ่าน `/use-subagents` โดยส่ง `project-path` และ `mode` เดียวกัน แล้วรวม update reports ก่อน summary
 
 ## Rules
 

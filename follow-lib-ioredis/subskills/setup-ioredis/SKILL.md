@@ -5,7 +5,7 @@ argument-hint: "[mode-or-url]"
 related:
   - follow-lib-ioredis
   - follow-secret-manager
-  - learn-web
+  - learn
   - resolve-errors
 ---
 
@@ -70,7 +70,7 @@ related:
 - Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น ห้ามสร้าง client ซ้ำ
 - Credentials/URL จาก env เสมอ — ห้าม hardcode
 - Client instance เดียวต่อ role (command, subscriber, publisher แยก connection)
-- ถ้า topology/option ไม่แน่ใจ → ทำ `/learn-web` ดู official docs (github.com/redis/ioredis)
+- ถ้า topology/option ไม่แน่ใจ → ทำ `/learn web` ดู official docs (github.com/redis/ioredis)
 
 ## Expected Outcome
 

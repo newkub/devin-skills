@@ -5,11 +5,6 @@ argument-hint: "[scope]"
 related:
   - review-test
   - run-test-all
-  - run-test-api
-  - run-test-cli
-  - run-test-integration
-  - run-test-e2e
-  - run-test-coverage
   - run-check
   - run-verify
   - update-tests
@@ -25,7 +20,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`)
+ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`; subskills merged from: `run-test-api`, `run-test-cli`, `run-test-contract`, `run-test-coverage`, `run-test-e2e`, `run-test-integration`, `run-test-mutation`, `run-test-visual`)
 
 ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
@@ -34,6 +29,24 @@ related:
 ## Execute
 
 > Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+
+### Subskills
+
+> Goal: dispatch ไปยัง test domain subskill ที่ตรง topic
+
+| Topic | Subskill |
+|-------|----------|
+| api | `subskills/api/SKILL.md` — REST/GraphQL/tRPC/WebSocket endpoints, response contract checks |
+| cli | `subskills/cli/SKILL.md` — CLI commands, exit codes, stdout/stderr, flags, error paths |
+| contract | `subskills/contract/SKILL.md` — consumer/provider contract verification, drift detection |
+| coverage | `subskills/coverage/SKILL.md` — coverage analysis, 100% thresholds, gap loop |
+| e2e | `subskills/e2e/SKILL.md` — Playwright browser tests, all routes, agent-browser exploratory |
+| integration | `subskills/integration/SKILL.md` — module interactions, data flow, test DB/services |
+| mutation | `subskills/mutation/SKILL.md` — mutation testing, surviving mutants, weak assertions |
+| visual | `subskills/visual/SKILL.md` — visual regression, screenshot diff vs baseline |
+
+1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<domain>/SKILL.md` แทน steps ด้านล่าง
+2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ (unit/fast tests)
 
 ### 1. Detect Test Framework
 
@@ -82,7 +95,7 @@ related:
 1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
 2. List failures พร้อม file:line และ classification (source/test/environment)
 3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/reports/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/reports/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
-4. ถ้ามี coverage flag → ทำ `/run-test-coverage` ต่อ
+4. ถ้ามี coverage flag → dispatch `subskills/coverage/SKILL.md` ต่อ
 5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules
@@ -111,10 +124,7 @@ related:
 - ห้ามแก้ test หรือ source โดยไม่มี evidence จากการตรวจสอบ
 - ถ้า failure มาจาก missing dependency → `/run-install`
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /run-test-cli ถ้าจำเป็น
-- ใช้ /run-test-integration ถ้าจำเป็น
-- ใช้ /run-test-e2e ถ้าจำเป็น
+- ใช้ domain subskills ตาม `### Subskills` dispatch table ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

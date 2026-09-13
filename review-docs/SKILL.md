@@ -8,8 +8,6 @@ related:
   - report
   - suggest-next-action
   - update-docs
-  - update-readme-md
-  - review-docs
   - run-docs
   - run-review
 ---
@@ -87,7 +85,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 4. ตรวจ Usage coverage ตาม `references/readme-usage-coverage.md` และ Features coverage ตาม `references/readme-features-coverage.md`
 5. ตรวจ workspace READMEs ตาม `references/readme-workspace-consistency.md`
 6. คำนวณ README score ตาม `references/readme-scoring.md`
-7. ถ้า README score < 70 → แนะนำ `update-readme-md`
+7. ถ้า README score < 70 → แนะนำ `update-docs readme-md`
 
 ### 9. Drift And Changelog
 
@@ -146,7 +144,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 1. accuracy: commands/APIs/env vars ตรง source จริง — verify หรือรันจริง
 2. coverage: features/public APIs ที่ขาด docs → เขียนตาม conventions
 3. freshness: stale sections update/ลบ; onboarding walkthrough ตามจริง
-4. links/structure: `/check-dead-link`, heading hierarchy, TOC/sidebar sync
+4. links/structure: `/check-repo-hygiene dead-link`, heading hierarchy, TOC/sidebar sync
 5. verify: docs build ผ่านไม่มี warnings
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น

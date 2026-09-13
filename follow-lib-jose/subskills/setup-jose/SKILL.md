@@ -5,7 +5,7 @@ argument-hint: "[alg-or-runtime]"
 related:
   - follow-lib-jose
   - follow-secret-manager
-  - learn-web
+  - learn
   - resolve-errors
 ---
 
@@ -69,7 +69,7 @@ related:
 - ใช้ `jose` แทน `jsonwebtoken` บน edge runtimes (jsonwebtoken ต้อง node:crypto)
 - Alg ชัดเจนเสมอ (`EdDSA`, `RS256`, `ES256`) — ห้าม `alg: none`; `secp256k1`/`RSA1_5` ถูกลบใน v6
 - Keys เป็น `CryptoKey`/`JWK`/`Uint8Array` (v6) — secrets จาก env ผ่าน `/follow-secret-manager`
-- ถ้า API ไม่แน่ใจ → ทำ `/learn-web` ดู official docs (github.com/panva/jose)
+- ถ้า API ไม่แน่ใจ → ทำ `/learn web` ดู official docs (github.com/panva/jose)
 
 ## Expected Outcome
 

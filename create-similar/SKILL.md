@@ -9,7 +9,7 @@ related:
   - use-related-skills
   - edit-by-use-scripts
   - deep-validate
-  - search-files-patterns
+  - search
 ---
 
 ## Goal
@@ -27,7 +27,7 @@ related:
 > Goal: ระบุตัวอย่างทีจะคัดลอก
 
 1. ถ้า user ระบุ path หรือ skill name → อ่านทันที
-2. ถ้าไม่ระบุ → หาไฟล์/ directory ทีใกล้เคียงกับ target ด้วย `/search-files-patterns`
+2. ถ้าไม่ระบุ → หาไฟล์/ directory ทีใกล้เคียงกับ target ด้วย `/search files-patterns`
 3. ยืนยันว่า example เป็นต้นฉบับทีถูกต้อง
 
 ### 2. Analyze Structure

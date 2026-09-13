@@ -5,12 +5,11 @@ argument-hint: "[scope]"
 related:
   - check-should-update
   - check-monorepo
-  - update-features-md
   - review-writing
   - update-references
   - run-docs
   - create-report-in-dot-devin
-  - watch-browser-and-test
+  - watch-browser
   - improve-uxui
 ---
 
@@ -23,8 +22,8 @@ related:
 - ตั้งค่า `docs/` สำหรับ single project และ monorepo
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
-- รองรับ `update-features-md` โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-and-test`, `/improve-uxui` — เป็น input สำหรับอัปเดต docs
+- รองรับ `update-docs features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
+- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser test`, `/improve-uxui` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -80,7 +79,7 @@ related:
 1. `index.md`: ใช้ `templates/homepage.md` — title, tagline, features list, quick start link, actions
 2. ทุกหน้าใช้ template เฉพาะจาก `templates/index.md` — fallback `templates/content-page.md` เฉพาะหน้าที่ไม่มี template เฉพาะ
 3. `project/overview.md`: ใช้ `templates/overview.md` — สรุป project, architecture, tech stack, key concepts
-4. `project/features.md`: ใช้ `templates/features.md` — รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
+4. `project/features.md`: ใช้ `templates/features.md` — รายการ features ทั้งหมดจาก `update-docs features-md` หรือ analyze
 5. `getting-started/installation.md`: ใช้ `templates/installation.md` — ขั้นตอนติดตั้ง ตรวจ dependencies
 6. `getting-started/usage.md`: ใช้ `templates/usage.md` — ตัวอย่างใช้งานจริง
 7. `development/setup.md`: ตั้งค่า dev environment
@@ -91,11 +90,11 @@ related:
 12. `roadmap/index.md`: ใช้ `templates/roadmap.md` — สรุป roadmap (Now/Next/Later)
 13. monorepo: `workspaces/<name>.md` ใช้ `templates/workspace.md`
 
-### 5. Integrate `update-features-md`
+### 5. Integrate `update-docs features-md`
 
 > Goal: หน้า existing features ถูกต้อง
 
-1. ถ้า `/update-features-md` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
+1. ถ้า `/update-docs features-md` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
 2. เขียน `docs/project/features.md` ด้วยตาราง markdown
 3. แต่ละ row มี name, description, module, status
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
@@ -116,6 +115,19 @@ related:
 1. ทำ `/update-references`
 2. ตรวจ internal links, nav, sidebar paths
 3. อัปเดท README ให้ลิงก์ไป docs
+
+### Subskills
+
+> Goal: dispatch งาน markdown docs เฉพาะไฟล์ไปยัง subskill ที่ละเอียดกว่า
+
+| Domain | Topic | Subskill |
+|--------|-------|----------|
+| `agents-md` | สร้าง/อัปเดต `AGENTS.md` root + workspaces | `subskills/agents-md/SKILL.md` |
+| `contributing-md` | สร้าง/อัปเดต `CONTRIBUTING.md` | `subskills/contributing-md/SKILL.md` |
+| `features-md` | วิเคราะห์ features เขียน `FEATURES.md` | `subskills/features-md/SKILL.md` |
+| `readme-md` | สร้าง `README.md` + `LICENSE.md` จาก template | `subskills/readme-md/SKILL.md` |
+| `todo-md` | จัดการ `TODO.md` (add/read/enhance prompt) | `subskills/todo-md/SKILL.md` |
+| `usage-md` | สร้าง/อัปเดต `USAGE.md` จาก code จริง | `subskills/usage-md/SKILL.md` |
 
 ## Rules
 
@@ -173,7 +185,7 @@ related:
 
 - `docs/` directory ที่ root มี VitePress config, nav, sidebar
 - Markdown files สมบูรณ์: index, project, features, getting-started, roadmap, development, references
-- `docs/project/features.md` มีตาราง features จาก `update-features-md`
+- `docs/project/features.md` มีตาราง features จาก `update-docs features-md`
 - `docs/roadmap/index.md` มี Now/Next/Later จาก `templates/roadmap.md`
 - ทุกไฟล์มี frontmatter
 - ไม่มี HTML/UX ซับซ้อน

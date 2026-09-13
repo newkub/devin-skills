@@ -7,7 +7,6 @@ related:
   - run-check
   - run-verify
   - run-test
-  - run-test-e2e
   - deep-optimize
   - review-performance
   - resolve-errors
@@ -69,7 +68,7 @@ Build project อย่างละเอียด ครอบคลุมท�
 
 > Goal: ยืนยันว่า build ใช้งานได้
 
-1. รัน `/run-test` หรือ `/run-test-e2e` ถ้ามี
+1. รัน `/run-test` หรือ `/run-test e2e` ถ้ามี
 2. ถ้า build ใช้ไม่ได้ → ทำ `/resolve-errors`
 3. ทำ `/run-check` เพื่อ lint/typecheck
 

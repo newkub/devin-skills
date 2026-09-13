@@ -4,8 +4,6 @@ description: Capture screenshots ของทุก route ทุก device size 
 argument-hint: "[base-url]"
 related:
   - watch-browser
-  - watch-browser-and-test
-  - watch-browser-and-improve-uxui
   - improve-uxui
   - review-uxui
 ---
@@ -33,11 +31,11 @@ Capture screenshots ทุก route x ทุก device size ในรันเ�
 
 เลือกวิธีตามความเหมาะสม (เรียงตามความแม่น):
 
-1. **`crw_map` (MCP)** — เรียก `crw_map` กับ site URL → ได้ URL list ทั้ง site → กรองเฉพาะ same-origin pages → บันทึกเป็น routes file
+1. `crw_map` (MCP) — เรียก `crw_map` กับ site URL → ได้ URL list ทั้ง site → กรองเฉพาะ same-origin pages → บันทึกเป็น routes file
    - เหมาะสุดสำหรับ prod/public site และ site ที่มี sitemap
-2. **`--discover`** — script crawl same-origin `<a href>` จาก base URL เอง (สูงสุด 50 routes) — ไม่ต้องมี sitemap
-3. **`--routes`** — ระบุเองเมื่อรู้ routes แล้ว เช่น `/,/request,/examples`
-4. **`--routes-file`** — ไฟล์ทีละบรรทัด หรือ JSON array — เหมาะกับ output จาก `crw_map`
+2. `--discover` — script crawl same-origin `<a href>` จาก base URL เอง (สูงสุด 50 routes) — ไม่ต้องมี sitemap
+3. `--routes` — ระบุเองเมื่อรู้ routes แล้ว เช่น `/,/request,/examples`
+4. `--routes-file` — ไฟล์ทีละบรรทัด หรือ JSON array — เหมาะกับ output จาก `crw_map`
 
 ### 3. Run Capture
 
@@ -100,6 +98,8 @@ captures-<ts>/
 
 - default output: `.devin/reports/<workspace>/captures-<timestamp>/` — สอดคล้อง artifact convention ของ project ทุกอย่างอยู่ที่เดียว เป็นระเบียบ
 - `.devin/` ควรถูก gitignore — captures เป็น local evidence ไม่ commit
+
+- ใช้ /watch-browser ถ้าจำเป็น
 
 ## Expected Outcome
 

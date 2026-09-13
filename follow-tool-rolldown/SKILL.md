@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้ Rolldown สำหรับ
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - follow-tool-tsdown
   - follow-tool-turborepo
   - follow-lang-typescript
@@ -118,7 +118,7 @@ related:
 - ไม่ hard-code paths หรือ secrets ใน config
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool rolldown)
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool rolldown)
 - ใช้ /follow-tool-tsdown ถ้าจำเป็น
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น

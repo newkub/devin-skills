@@ -86,7 +86,7 @@ export function isPlaceholderMarker(line: string): boolean {
 export function isProhibitedOrLegit(line: string): boolean {
   const t = textOutsideInlineCode(line).toLowerCase();
   if (/\b(todo|mock|placeholder)\b/.test(t)) {
-    if (/ห้าม|ไม่มี|ตรวจ|ใช้|แปลง|production code|report-scan-todo|update-todo-md|productionize-implementation/.test(t)) return true;
+    if (/ห้าม|ไม่มี|ตรวจ|ใช้|แปลง|production code|report-scan-todo|update-docs-todo-md|productionize-implementation/.test(t)) return true;
   }
   return false;
 }

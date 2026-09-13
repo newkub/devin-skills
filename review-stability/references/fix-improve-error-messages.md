@@ -18,7 +18,7 @@
 
 > Goal: รวบรวมจุดที่ errors ถึง user
 
-1. ใช้ `search-files-patterns`/`use-astgrep` หา error constructions: `throw new Error('...')`, API error responses, `catch` ที่ return user-facing messages
+1. ใช้ `search`/`use-astgrep` หา error constructions: `throw new Error('...')`, API error responses, `catch` ที่ return user-facing messages
 2. จัดกลุ่มตาม surface: API responses, CLI stderr, UI toasts/pages, validation
 3. เก็บตัวอย่าง messages ปัจจุบันเพื่อเป็น baseline
 

@@ -12,17 +12,8 @@ related:
 
 ## Goal
 
-ตรวจสอบ static assets (images, fonts, media) ว่า optimize, format และ loading strategy เหมาะสมหรือไม่ ก่อนส่งต่อไปยัง section `## Fix
+ตรวจสอบ static assets (images, fonts, media) ว่า optimize, format และ loading strategy เหมาะสมหรือไม่ โดยไม่แก้ไข — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. baseline: inventory types/sizes — biggest offenders ก่อน
-2. images: AVIF/WebP+fallback, srcset, compress, lazy นอก viewport
-3. fonts: woff2+subset, font-display swap, preload critical
-4. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash
-5. verify: bytes before/after, no visual/CLS regression
 ## Scope
 
 ใช้กับ web apps โดย audit images, fonts, media files ใน `public/`, `src/assets`
@@ -58,17 +49,8 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report` ด้วย columns: No., Asset, Issue, Severity, Fix
-2. ชี้ไป section `## Fix
+2. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. baseline: inventory types/sizes — biggest offenders ก่อน
-2. images: AVIF/WebP+fallback, srcset, compress, lazy นอก viewport
-3. fonts: woff2+subset, font-display swap, preload critical
-4. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash
-5. verify: bytes before/after, no visual/CLS regression
 ## Rules
 
 ### 1. Read Only
@@ -92,24 +74,15 @@ related:
 3. fonts: woff2+subset, font-display swap, preload critical
 4. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash
 5. verify: bytes before/after, no visual/CLS regression
+
 ## References
-- ใช้ /review-bundle ถ้าจำเป็น
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /review-bundle ถ้าจำเป็น
 
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม images, fonts, media
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-### Fix Steps
-
-1. baseline: inventory types/sizes — biggest offenders ก่อน
-2. images: AVIF/WebP+fallback, srcset, compress, lazy นอก viewport
-3. fonts: woff2+subset, font-display swap, preload critical
-4. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash
-5. verify: bytes before/after, no visual/CLS regression
+- next action ชัดเจนผ่าน section `## Fix`

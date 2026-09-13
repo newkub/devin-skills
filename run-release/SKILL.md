@@ -11,7 +11,7 @@ related:
   - setup-release
   - test-release
   - run-verify
-  - resolve-cicd
+  - resolve-errors
   - watch-release
   - gen-changelog-md
   - publish-package-to-registry
@@ -41,7 +41,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship` ก่อน
 3. ตรวจ `git status --porcelain` ต้อง clean
 4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
-   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-cicd <run-id>`
+   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-errors cicd <run-id>`
    - ถ้า CI ยังไม่ผ่าน → stop และ report
 5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
 6. ถ้าทุก condition ผ่าน → detect platforms:
@@ -94,8 +94,8 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 1. `npm`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
 2. `crates`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
-3. `vscode`: ทำ `/follow-create-vscode-extensions` เพื่อตั้งค่า release tool
-4. `webstore`: ทำ `/follow-create-browser-extensions-wxt` เพื่อตั้งค่า release tool
+3. `vscode`: ทำ `/follow-create-plugins` (vscode) เพื่อตั้งค่า release tool
+4. `webstore`: ทำ `/follow-create-plugins` (browser-wxt) เพื่อตั้งค่า release tool
 5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
 
 ### 6. Run Prerelease

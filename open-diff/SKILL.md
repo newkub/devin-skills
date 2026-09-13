@@ -3,10 +3,10 @@ name: open-diff
 description: เปิดดู diff จาก PR, git, branch, หรือไฟล์สองไฟล์ ใน TanStack Start SPA (Solid) บน Bun
 argument-hint: "[pr <n>] | [git <ref>] | [branch <base>..<head>] | [file <old> <new>] [--repo owner/repo]"
 related:
-  - follow-create-web-solid-tanstack-router
+  - follow-create-web
   - follow-lib-unocss
   - use-gh-cli
-  - open-web
+  - open
   - report-git-diff
   - review-diff
 ---
@@ -72,7 +72,7 @@ related:
 
 1. รัน `bun src/serve.ts <subcommand> [args] [--repo ...]` (หรือ `bun run start -- <subcommand> ...`)
 2. รอ console แสดง URL (`open-diff running at http://localhost:<port>`)
-3. server จะเปิด browser เองอัตโนมัติ → ยืนยันว่า tab เปิด; ถ้าไม่เปิดให้ใช้ `/open-web` หรือ OS command (Windows: `start`, macOS: `open`, Linux: `xdg-open`)
+3. server จะเปิด browser เองอัตโนมัติ → ยืนยันว่า tab เปิด; ถ้าไม่เปิดให้ใช้ `/open web` หรือ OS command (Windows: `start`, macOS: `open`, Linux: `xdg-open`)
 4. env vars: `OPEN_DIFF_PORT` กำหนด port (default random), `OPEN_DIFF_NO_OPEN=1` ไม่เปิด browser อัตโนมัติ
 
 ### 4. Verify
@@ -140,8 +140,8 @@ related:
 
 - `/use-gh-cli` สำหรับ PR
 - `/follow-lib-unocss` สำหรับ styling
-- `/follow-create-web-solid-tanstack-router` สำหรับ stack
-- /open-web สำหรับเปิด browser
+- `/follow-create-web` (solid-tanstack-router) สำหรับ stack
+- /open web สำหรับเปิด browser
 - /report-git-diff สำหรับสร้างรายงาน diff
 - /review-diff สำหรับ review diff
 

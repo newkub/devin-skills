@@ -30,7 +30,7 @@ Ad-hoc without install: `bunx -p @ast-grep/cli ast-grep` (never bare `bunx ast-g
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@ast-grep/napi` | `npm` | `0.45.3` (2026-08-31) | Node-API bindings for programmatic use — see `use-astgrep-programmatic` |
+| `@ast-grep/napi` | `npm` | `0.45.3` (2026-08-31) | Node-API bindings for programmatic use — see `use-astgrep/subskills/programmatic` |
 | `ast-grep` | `npm` | abandoned | Do NOT install — name-squatting risk; real CLI is `@ast-grep/cli` |
 
 ## Notes

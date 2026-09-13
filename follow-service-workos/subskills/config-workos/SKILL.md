@@ -6,7 +6,7 @@ related:
   - follow-service-workos
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - check-config-drift
   - run-verify
 ---
@@ -29,7 +29,7 @@ related:
 > Goal: รู้สถานะปัจจุบันก่อนแก้
 
 1. อ่าน `.env*` และ auth module ที่มีอยู่เพื่อระบุ flow ที่ใช้ (AuthKit vs `sso.*`)
-2. ทำ `/check-env-vars` เพื่อระบุ vars ที่ขาด
+2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาด
 3. ตรวจ redirect URIs และ connections ที่ตั้งไว้แล้วใน dashboard — ใช้ `/open-web-for-config-secret` (service workos)
 4. ถ้ายังไม่มี SDK/credentials → ทำ `subskills/setup-workos/SKILL.md` แทน
 
@@ -74,7 +74,7 @@ related:
 - AuthKit/User Management API เป็น modern path — `sso.*` ใช้เฉพาะ legacy flow ที่มีอยู่แล้ว
 - Validate webhook signatures ทุกครั้ง
 - Redirect URIs ใน dashboard ต้องตรงกับ routes จริงทุก environment
-- ถ้า option/method ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า option/method ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - follow-service-stripe
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
 ---
@@ -30,7 +30,7 @@ related:
 
 1. อ่าน `package.json` เพื่อระบุ runtime และ package manager
 2. ตรวจว่ามี `stripe`/`@stripe/stripe-js` ติดตั้งแล้ว → ถ้ามี skip ไป verify
-3. ทำ `/check-env-vars` เพื่อดูว่า Stripe keys มีอยู่หรือยัง
+3. ทำ `/check-secrets env-vars` เพื่อดูว่า Stripe keys มีอยู่หรือยัง
 4. ถ้าไม่มี Stripe account → stop และแจ้ง user สร้างจาก dashboard
 
 ### 2. Install SDKs And CLI
@@ -66,7 +66,7 @@ related:
 - `STRIPE_SECRET_KEY` ใช้ฝั่ง server เท่านั้น — client ใช้ publishable key
 - Webhook ต้อง verify signature ด้วย raw body เสมอ
 - ใช้ test mode ก่อนเสมอ — live keys เฉพาะตอน go live
-- ถ้า API/option ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า API/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

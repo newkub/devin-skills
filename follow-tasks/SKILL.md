@@ -12,7 +12,7 @@ related:
   - run-lint
   - run-typecheck
   - run-build
-  - run-test-coverage
+  - run-test
   - use-scripts
   - follow-monorepo
   - follow-tool-moonrepo
@@ -28,7 +28,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-package-manifest)
 
-ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test-coverage` เพื่อรัน scripts ที่ตั้งค่า
+ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) เพื่อรัน scripts ที่ตั้งค่า
 
 ## Execute
 

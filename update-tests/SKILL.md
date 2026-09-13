@@ -6,10 +6,6 @@ related:
   - review-test
   - run-test
   - run-test-all
-  - run-test-e2e
-  - run-test-integration
-  - run-test-api
-  - run-test-coverage
   - follow-tool-playwright
   - follow-tool-vitest
   - update-specs
@@ -73,7 +69,7 @@ related:
 
 > Goal: ทุก layer ผ่านก่อนรวม
 
-1. unit → `/run-test`; integration → `/run-test-integration`; e2e → `/run-test-e2e`; api → `/run-test-api`
+1. unit → `/run-test`; integration → `/run-test`; e2e → `/run-test`; api → `/run-test`
 2. FAIL → แยก test bug vs app bug: test bug แก้ test, app bug → `/resolve-errors` หรือ report
 3. retry สูงสุด 3 รอบต่อ failure
 
@@ -88,7 +84,7 @@ related:
 
 > Goal: ครอบคลุมและมีคุณภาพ
 
-1. ทำ `/run-test-coverage` — verify lines/branches/functions ตาม target
+1. ทำ `/run-test` (coverage) — verify lines/branches/functions ตาม target
 2. รันซ้ำ 2-3 ครั้ง — deterministic, ไม่มี flaky/order dependence
 3. ทำ `/run-check` lint/typecheck ผ่าน
 
@@ -100,12 +96,28 @@ related:
 2. persist raw results → `.devin/reports/<workspace>/update-tests-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 3. ทำ `/suggest-next-action`
 
+### Subagents
+
+> Goal: parallelize suite updates เมื่อ changes กระทบหลาย suites
+
+- ใช้ `subagents/suite-updater.md` เมื่อต้อง update หลาย test suites ที่ independent กัน (unit/integration/e2e/snapshot) — spawn ทีละ suite ผ่าน `/use-subagents` โดยแต่ละ agent แก้คนละชุด test files แล้วรวมผลก่อน `/run-test-all`
+
+### Subskills
+
+> Goal: dispatch งาน update ไปยัง subskill ตาม test layer
+
+| Topic | Subskill |
+|-------|----------|
+| อัปเดต e2e specs หลัง UI/route เปลี่ยน | `subskills/update-e2e/SKILL.md` |
+| อัปเดต unit tests หลัง refactor | `subskills/update-unit/SKILL.md` |
+| Regenerate/review snapshots อย่างปลอดภัย | `subskills/update-snapshot/SKILL.md` |
+
 ## Rules
 
 ### 1. All Layers Covered
 
 - ห้ามเขียนแค่ unit เมื่อ scope ต้องการ integration/e2e — เลือกทุก layer ที่เหมาะกับ code ที่เปลี่ยน
-- flows ที่เพิ่งผ่าน exploratory testing (เช่น `/watch-browser-and-test`) ต้อง codify เป็น Playwright specs
+- flows ที่เพิ่งผ่าน exploratory testing (เช่น `/watch-browser test`) ต้อง codify เป็น Playwright specs
 
 ### 2. Behavior Over Implementation
 

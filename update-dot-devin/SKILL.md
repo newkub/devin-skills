@@ -5,12 +5,10 @@ argument-hint: "[scope]"
 related:
   - check-monorepo
   - deep-analyze
-  - update-devin-project-rules
-  - update-devin-project-hooks
+  - update-devin
   - update-project-skills
-  - update-devin-project-mcp
   - update-devin-global-skills
-  - update-agents-md
+  - update-docs
   - run-lint
 ---
 
@@ -44,7 +42,7 @@ related:
 > Goal: สร้าง `.devin/rules` สำหรับ Devin CLI
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/rules เพื่อเข้าใจ rules
-2. ทำ `/update-devin-project-rules` เพื่อสร้าง `.devin/rules/always-on/`, `model_decision/`, `glob/`
+2. ทำ `/update-devin project-rules` เพื่อสร้าง `.devin/rules/always-on/`, `model_decision/`, `glob/`
 3. ทำตาม Rules section ด้านล่างสำหรับ frontmatter และ format
 
 ### 4. Setup Hooks
@@ -52,7 +50,7 @@ related:
 > Goal: สร้าง hooks สำหรับ Cascade
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/hooks/overview เพื่อเข้าใจ hooks
-2. ทำ `/update-devin-project-hooks` เพื่อสร้าง `.devin/hooks/` พร้อม `run-lint.ts`, `run-typecheck.ts` และ `hooks.json`
+2. ทำ `/update-devin project-hooks` เพื่อสร้าง `.devin/hooks/` พร้อม `run-lint.ts`, `run-typecheck.ts` และ `hooks.json`
 3. ทำตาม Rules section ด้านล่างสำหรับ hook format
 
 ### 5. Setup Workspace AGENTS.md (Monorepo Only)
@@ -61,9 +59,9 @@ related:
 
 1. ระบุ workspaces ทั้งหมดจาก root `package.json` `workspaces` field
 2. สำหรับแต่ละ workspace:
-   1. ทำ `/update-agents-md` สำหรับ workspace นั้น เพื่อเขียน `AGENTS.md`
+   1. ทำ `/update-docs agents-md` สำหรับ workspace นั้น เพื่อเขียน `AGENTS.md`
    2. อ้างอิง dependencies ใน `<workspace>/package.json` เพื่อเขียน workspace-specific instructions
-3. ทำ `/update-agents-md` สำหรับ root `AGENTS.md` โดยระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
+3. ทำ `/update-docs agents-md` สำหรับ root `AGENTS.md` โดยระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
 4. ตรวจสอบว่าไม่มี `.devin/` directory ใน sub-workspace ใดๆ
 
 ### 6. Setup Skills And MCP
@@ -73,7 +71,7 @@ related:
 1. อ่าน https://docs.devin.ai/cli/extensibility/skills/overview เพื่อเข้าใจ skills
 2. อ่าน https://docs.devin.ai/cli/extensibility/mcp/overview เพื่อเข้าใจ MCP
 3. ทำ `/update-project-skills` เพื่อสร้าง/อัปเดต `.devin/skills/`
-4. ทำ `/update-devin-project-mcp` เพื่อตั้งค่า `.devin/mcp_config.json`
+4. ทำ `/update-devin project-mcp` เพื่อตั้งค่า `.devin/mcp_config.json`
 
 ### 7. Update Ast-Grep Rules
 
@@ -129,16 +127,16 @@ related:
 
 ### 5. Rules Update
 
-- ใช้ `/update-devin-project-rules` สำหรับเขียนและอัพเดท `.devin/rules/` ที่ root
-- ใช้ `/update-devin-project-hooks` สำหรับเขียนและอัพเดท `.devin/hooks/`
+- ใช้ `/update-devin project-rules` สำหรับเขียนและอัพเดท `.devin/rules/` ที่ root
+- ใช้ `/update-devin project-hooks` สำหรับเขียนและอัพเดท `.devin/hooks/`
 - ใช้ `/update-project-skills` สำหรับสร้าง `.devin/skills/`
-- ใช้ `/update-devin-project-mcp` สำหรับตั้งค่า `.devin/mcp_config.json`
+- ใช้ `/update-devin project-mcp` สำหรับตั้งค่า `.devin/mcp_config.json`
 - ใช้ `/update-devin-global-skills` สำหรับสร้าง/อัปเดต global skills ที project ต้องการ
 - Rules ต้องสอดคล้องกับ dependencies ใน `package.json`
 
 ### 6. AGENTS.md Update
 
-- ใช้ `/update-agents-md` สำหรับเขียน `AGENTS.md` ทั้ง root และ workspace
+- ใช้ `/update-docs agents-md` สำหรับเขียน `AGENTS.md` ทั้ง root และ workspace
 - Root `AGENTS.md` ต้องระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
 - แต่ละ workspace ต้องมี `AGENTS.md` ของตัวเอง
 

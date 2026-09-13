@@ -4,7 +4,7 @@ description: ฟอร์แมตโค้ดและแก้ไขปัญ�
 argument-hint: "[scope]"
 related:
   - review-quality
-  - convert-files-format
+  - convert
   - follow-best-practice
   - suggest-next-action
   - run-check
@@ -134,7 +134,7 @@ related:
 - ตรวจสอบว่าไม่มี regressions
 - ห้ามใช้ `--unsafe` flag กับ biome commands
 
-- ใช้ /convert-files-format ถ้าจำเป็น
+- ใช้ /convert files-format ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น

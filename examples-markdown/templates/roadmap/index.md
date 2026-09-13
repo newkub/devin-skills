@@ -18,4 +18,4 @@ description: Project roadmap and upcoming features
 
 ## Links
 
-- [Idea Features](/roadmap/idea-features)
+- [Idea Features](/roadmap/idea features)

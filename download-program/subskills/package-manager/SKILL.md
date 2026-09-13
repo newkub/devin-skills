@@ -6,7 +6,7 @@ related:
   - use-pwsh-shell
   - list-program-in-computer
   - uninstall-program-in-computer
-  - open-web
+  - open
   - run-install
 ---
 
@@ -67,7 +67,7 @@ related:
 > Goal: ส่งมอบคำแนะนำทีชัดเจน
 
 1. ระบุ package manager ทีควรใช้ + command สำหรับ action (install/list/uninstall)
-2. ถ้าไม่มี package manager ใดทีมี program → แนะนำให้ใช้ `download-program` fallback หรือ `/open-web`
+2. ถ้าไม่มี package manager ใดทีมี program → แนะนำให้ใช้ `download-program` fallback หรือ `/open web`
 
 ## Rules
 

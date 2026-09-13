@@ -3,9 +3,9 @@ name: use-git-worktrees
 description: "ใช้ git worktrees ครบวงจร: สร้าง ทำงาน merge กลับ และ cleanup"
 argument-hint: "[branch-name] [base-branch]"
 related:
-  - list-git-worktree
-  - delete-git-worktree
-  - cleanup-worktree
+  - list-git
+  - delete
+  - cleanup
   - resolve-merge-conflicts
   - refactor-commit
   - report
@@ -136,9 +136,9 @@ related:
 - รัน `git worktree prune` เพื่อลบ tracking ทีตกค้าง
 - ไม่ลบ worktree โดยตรงเกินไปก่อน `git worktree remove`
 
-- ใช้ /list-git-worktree ถ้าจำเป็น
-- ใช้ /delete-git-worktree ถ้าจำเป็น
-- ใช้ /cleanup-worktree ถ้าจำเป็น
+- ใช้ /list-git worktree ถ้าจำเป็น
+- ใช้ /delete git-worktree ถ้าจำเป็น
+- ใช้ /cleanup worktree ถ้าจำเป็น
 
 ## Expected Outcome
 

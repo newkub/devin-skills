@@ -5,22 +5,17 @@ argument-hint: "[@files... | scope]"
 related:
   - follow-review
   - refactor-workspace
-  - relocation
   - update-references
   - update-tests
-  - run-test-mutation
+  - run-test
   - run-verify
   - check-backward-compatibility
   - use-astgrep
   - migration-by-astgrep
-  - rename
-  - check-unused
+  - check-repo-hygiene
   - resolve-errors
-  - git-commit
   - dont-over-engineer
   - ask-me
-  - report
-  - report-before-after
   - suggest-next-action
 ---
 
@@ -103,7 +98,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ห้าม refactor code ที่ไม่มี test coverage โดยไม่มี safety net — ถ้าไม่มี tests → ทำ `/update-tests` เขียน characterization tests ล็อก behavior ปัจจุบันก่อน
 - tests ต้องเขียวก่อน refactor และเขียวหลัง refactor — test เขียวที่ pass ก่อนแก้ต้อง pass หลังแก้เหมือนเดิม
-- ถ้า test suite ใหญ่และสงสัยว่าจับ regression ได้จริง → `/run-test-mutation` วัดความแข็งแรงของ tests ก่อนเชื่อถือ
+- ถ้า test suite ใหญ่และสงสัยว่าจับ regression ได้จริง → `/run-test` (mutation) วัดความแข็งแรงของ tests ก่อนเชื่อถือ
 
 ### 3. Small Steps
 
@@ -122,7 +117,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ทำ `/dont-over-engineer`
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
-- dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-unused` ยืนยันก่อน
+- dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน
 
 ### 6. SRP And Consistency
 

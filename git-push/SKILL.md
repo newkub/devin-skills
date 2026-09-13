@@ -4,12 +4,10 @@ description: Push commits จาก local repository และ git submodules �
 argument-hint: "[scope]"
 related:
   - git-commit
-  - git-commit-and-push
   - refactor-commit
   - update-github-metadata
-  - resolve-github-actions-fails
   - resolve-errors
-  - open-web
+  - open
 ---
 
 ## Goal
@@ -50,7 +48,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 > Goal: Check GitHub Actions
 
 - ทำ `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repo ไหม
-- ถ้ามี ให้ทำ `/resolve-github-actions-fails` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
+- ถ้ามี ให้ทำ `/resolve-errors github-actions` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
 
 ### 5. Update GitHub Repo Metadata
 
@@ -67,7 +65,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 > Goal: Open Repo
 
 - ทำ `git remote get-url origin` เพื่อดู remote URL
-- แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open-web` เพื่อเปิด repo ใน browser
+- แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open web` เพื่อเปิด repo ใน browser
 
 ### 7. Ensure Repository Ready (Optional)
 
@@ -108,7 +106,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 - ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false`
 
 - ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /git-commit and-push ถ้าจำเป็น
 
 ## Expected Outcome
 

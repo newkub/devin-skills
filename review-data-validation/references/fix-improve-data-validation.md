@@ -57,7 +57,7 @@
 > Goal: ยืนยันว่า validation ทำงาน
 
 1. รัน `/run-test`
-2. รัน `/run-test-coverage`
+2. รัน `/run-test` (coverage)
 3. เพิ่ม test cases สำหรับ invalid inputs
 4. ทำ `/deep-review` ถ้ามี security findings
 

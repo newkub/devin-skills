@@ -4,7 +4,7 @@ description: ติดตั้ง Playwright พร้อม browsers และ
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
-  - run-test-e2e
+  - run-test
   - update-tests
   - setup-cicd
 ---

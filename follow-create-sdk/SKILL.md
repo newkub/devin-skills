@@ -4,8 +4,8 @@ description: ถามและส่งต่อไปยัง skill follow-cr
 argument-hint: "[skill-name-or-goal]"
 related:
   - ask-me
-  - search-skills
-  - search-files-patterns
+  - search
+  - search
   - report
   - ship
   - update-references
@@ -13,7 +13,7 @@ related:
   - run-test
   - update-tests
   - update-devin-global-skills
-  - update-devin-global-subagents
+  - update-devin
   - follow-create-web
   - follow-create-cli
   - follow-create-rust-cli
@@ -110,31 +110,31 @@ related:
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
 - ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
-- ใช้ /follow-create-biome-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins biome ถ้าจำเป็น
 - ใช้ /follow-create-bot ถ้าจำเป็น
-- ใช้ /follow-create-browser-extensions-wxt ถ้าจำเป็น
+- ใช้ /follow-create-plugins browser-wxt ถ้าจำเป็น
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
-- ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins elysia ถ้าจำเป็น
+- ใช้ /follow-create-plugins eslint ถ้าจำเป็น
 - ใช้ /follow-create-github-action ถ้าจำเป็น
 - ใช้ /follow-create-mcp ถ้าจำเป็น
-- ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
-- ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
-- ใช้ /follow-create-obsidian-plugin ถ้าจำเป็น
-- ใช้ /follow-create-oxlint-plugins ถ้าจำเป็น
-- ใช้ /follow-create-powershell-module ถ้าจำเป็น
+- ใช้ /follow-create-plugins nitro ถ้าจำเป็น
+- ใช้ /follow-create-plugins nvim ถ้าจำเป็น
+- ใช้ /follow-create-plugins obsidian ถ้าจำเป็น
+- ใช้ /follow-create-plugins oxlint ถ้าจำเป็น
+- ใช้ /follow-create-plugins powershell-module ถ้าจำเป็น
 - ใช้ /follow-create-product ถ้าจำเป็น
-- ใช้ /follow-create-raycast-extensions ถ้าจำเป็น
-- ใช้ /follow-create-rolldown-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins raycast ถ้าจำเป็น
+- ใช้ /follow-create-plugins rolldown ถ้าจำเป็น
 - ใช้ /follow-create-rust-cli ถ้าจำเป็น
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
-- ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
-- ใช้ /follow-create-tsdown-plugins ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create sdk)
-- ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
-- ใช้ /follow-create-vscode-extensions ถ้าจำเป็น
-- ใช้ /follow-create-zed-extensions ถ้าจำเป็น
+- ใช้ /follow-create-plugins tauri ถ้าจำเป็น
+- ใช้ /follow-create-plugins tsdown ถ้าจำเป็น
+- ใช้ /follow-create-plugins vite ถ้าจำเป็น (create sdk)
+- ใช้ /follow-create-plugins vitest ถ้าจำเป็น
+- ใช้ /follow-create-plugins vscode ถ้าจำเป็น
+- ใช้ /follow-create-plugins zed ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น

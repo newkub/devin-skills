@@ -27,7 +27,7 @@
 
 > Goal: หา names ที่ขัด convention
 
-1. ใช้ `search-files-patterns`/`use-astgrep` หา:
+1. ใช้ `search`/`use-astgrep` หา:
    - mixed casing (`getData` vs `get_data` ใน codebase เดียว)
    - abbreviations ที่ไม่ consistent (`usr`, `user`, `account` ปนกัน)
    - boolean ที่ไม่ขึ้นต้นด้วย is/has/can/should

@@ -9,7 +9,7 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - run-test-e2e
+  - run-test
 ---
 
 
@@ -230,7 +230,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-test-e2e ถ้าจำเป็น
+- ใช้ /run-test (e2e) ถ้าจำเป็น
 
 ## Expected Outcome
 

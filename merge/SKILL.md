@@ -1,7 +1,7 @@
 ---
 name: merge
 description: merge ไฟล์หรือ folder เข้าด้วยกันและลบ source เดิม
-argument-hint: "@files [destination]"
+argument-hint: "[domain] | @files [destination]"
 allowed-tools:
   - read
   - edit
@@ -20,7 +20,7 @@ related:
   - ask-me
   - deep-analyze
   - validate-then-apply
-  - report-in-table
+  - report
   - report-progress
 ---
 
@@ -30,7 +30,12 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 
 ## Scope
 
-ใช้เมื่อต้องรวมเนื้อหาจากหลายไฟล์หรือหลายโฟลเดอร์เข้าด้วยกัน และลบ source หลัง merge
+ใช้เมื่อต้องรวมเนื้อหาจากหลายไฟล์หรือหลายโฟลเดอร์เข้าด้วยกัน และลบ source หลัง merge — หรือเมื่อต้องการ merge git branch/PR ตาม domain
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: merge-git-branch, merge-github-pr, merge-all-branch-by-me-to-main)
+- `git-branch` → merge feature branch เข้า target branch ด้วย `--no-ff`
+- `github-pr` → merge pull request ด้วย strategy ที่เหมาะสม
+- `all-branch-by-me-to-main` → merge ทุก branch ที่ user สร้างเข้า `main` แล้วลบ branch
 
 ## Execute
 
@@ -94,8 +99,21 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 1. ทำ `/deep-validate` เพื่อตรวจ merge
 2. ตรวจหา broken references
 3. ตรวจ data loss
-4. ทำ `/report-in-table` สรุป: `No.`, `Source`, `Destination`, `Status`, `Notes`
+4. ทำ `/report table` สรุป: `No.`, `Source`, `Destination`, `Status`, `Notes`
 5. ถ้ามีหลาย step ค้าง → ทำ `/report-progress`
+
+### Subskills
+
+> Goal: dispatch ไป subskill ตาม domain เมื่อ merge เป็น git branch/PR workflow
+
+| Domain | Subskill |
+|--------|----------|
+| `git-branch` | `subskills/git-branch/SKILL.md` — merge feature branch `--no-ff` + push + cleanup |
+| `github-pr` | `subskills/github-pr/SKILL.md` — merge PR ด้วย strategy ที่เหมาะสม |
+| `all-branch-by-me-to-main` | `subskills/all-branch-by-me-to-main/SKILL.md` — merge ทุก branch ของ user เข้า `main` |
+
+1. ถ้า argument ตรง domain ในตาราง → อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าเป็น `@files` merge → ทำตาม step 1-7 ด้านบน
 
 ## Rules
 

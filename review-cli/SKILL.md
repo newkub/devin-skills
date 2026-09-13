@@ -11,7 +11,7 @@ related:
   - deep-validate
   - report
   - suggest-next-action
-  - run-test-cli
+  - run-test
   - run-review
 ---
 
@@ -180,7 +180,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 - ห้ามใช้ `**` bold markers — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report` ทุก report table เริ่มด้วยคอลัมน์ `No.`
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /run-test (cli) ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
@@ -201,5 +201,5 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 1. help/discovery: `--help` ครบทุก command, naming consistent, no-args → help ไม่ใช่ crash
 2. errors/exit codes: message บอกสาเหตุ+ทำอะไรต่อ, exit codes ถูก, stderr/stdout แยก
 3. output: `--json` flag, TTY-only spinners, destructive → confirm + dry-run
-4. verify: รัน commands จริงทั้ง TTY/non-TTY + `/run-test-cli`
+4. verify: รัน commands จริงทั้ง TTY/non-TTY + `/run-test` (cli)
 5. fix guide: `review-quality/references/fix-improve-cli-ux.md`

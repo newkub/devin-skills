@@ -3,9 +3,9 @@ name: sync-drive-d-submodules
 description: Sync และอัพเดท git submodules ใน D drive กับ remote repositories
 argument-hint: "[scope]"
 related:
-  - convert-to-git-submodules
-  - delete-git-submodules
-  - list-git-submodules
+  - convert
+  - delete
+  - list-git
 ---
 
 ## Goal
@@ -83,6 +83,13 @@ Commit submodule updates ถ้าต้องการ
 3. สร้าง commit message ที่อธิบายการ update
 4. Push changes ไปยัง remote ถ้าจำเป็น
 
+### Subagents
+
+> Goal: parallelize sync เมื่อมีหลาย submodules ที่ independent กัน
+
+- ใช้ `subagents/submodule-syncer.md` ใน Step 4 เมื่อมีหลาย submodules/repos ใน drive D ที่ update แยกกันได้ — spawn ทีละ submodule ผ่าน `/use-subagents` แล้วรวม status (updated/skipped/conflict/error) ก่อน verify และ commit ใน Step 5-6
+- ถ้า submodule มี nested dependencies ที่ต้อง update ตามลำดับ → ทำ sequential ไม่ spawn
+
 ## Rules
 
 ### 1. Drive D Scope Only
@@ -119,9 +126,9 @@ Commit submodule updates ถ้าต้องการ
 - จัดการ network errors
 - ใช้ retries สำหรับ failed updates
 
-- ใช้ /convert-to-git-submodules ถ้าจำเป็น
-- ใช้ /delete-git-submodules ถ้าจำเป็น
-- ใช้ /list-git-submodules ถ้าจำเป็น
+- ใช้ /convert git-submodules ถ้าจำเป็น
+- ใช้ /delete git-submodules ถ้าจำเป็น
+- ใช้ /list-git submodules ถ้าจำเป็น
 
 ## Expected Outcome
 

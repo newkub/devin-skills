@@ -3,10 +3,10 @@ name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 argument-hint: "[pr-number]"
 related:
-  - open-github
-  - list-github-pr
-  - merge-github-pr
-  - resolve-github-actions-fails
+  - open
+  - list-github
+  - merge
+  - resolve-errors
   - report
   - suggest-next-action
   - run-review
@@ -55,6 +55,12 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
 
+### Subagents
+
+> Goal: parallelize review เมื่อ PR ใหญ่
+
+- ใช้ `subagents/pr-reviewer.md` เมื่อ PR ใหญ่และแบ่งเป็น slices ที่ independent กันได้ (per-domain เช่น security/tests/api หรือ per-file-group) — spawn ผ่าน `/use-subagents` แล้ว merge findings ทุก slice ก่อน score/report
+
 ## Rules
 
 - Review เท่านั้น ไม่แก้ source โดยไม่ได้รับอนุญาต
@@ -64,12 +70,12 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ทุก finding ต้องมี file path, line number หรือ commit reference
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (github pr)
 
-- ใช้ /open-github ถ้าจำเป็น
-- ใช้ /list-github-pr ถ้าจำเป็น
-- ใช้ /merge-github-pr ถ้าจำเป็น
-- ใช้ /resolve-github-actions-fails ถ้าจำเป็น
+- ใช้ /open github ถ้าจำเป็น
+- ใช้ /list-github pr ถ้าจำเป็น
+- ใช้ /merge github-pr ถ้าจำเป็น
+- ใช้ /resolve-errors github-actions ถ้าจำเป็น
 
-- ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
+- ถ้า pass → ทำ `/merge github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
 ## Fix
 

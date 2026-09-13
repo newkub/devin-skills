@@ -38,7 +38,7 @@
 1. flag/mask sensitive data ใน logs (PII, tokens, passwords) — ทำ `/review-observability` ร่วม
 2. ตรวจ data collection ที่ไม่มี consent mechanism — เพิ่มหรือ flag ให้ user
 3. แก้ retention: เพิ่ม expiry/cleanup สำหรับ data ที่เก็บเกินจำเป็น
-4. ตรวจ `/check-secrets-leak` ว่าไม่มี secrets ใน code/logs
+4. ตรวจ `/check-secrets secrets-leak` ว่าไม่มี secrets ใน code/logs
 
 ### 4. Fix Audit Trail
 

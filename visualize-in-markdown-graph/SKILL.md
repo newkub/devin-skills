@@ -10,7 +10,7 @@ related:
   - visualize-project
   - use-related-skills
   - ask-me
-  - run-test-visual
+  - run-test
 ---
 
 ## Goal
@@ -85,8 +85,8 @@ related:
 ### 1. Output Constraints
 
 - output อยู่ใน chat เท่านั้น
-- ไม่เปิด browser, ไม่ใช้ `/open-web`
-- ไม่สร้าง HTML, ไม่ใช้ `/report-in-html` หรือ `/visualize-in-web`
+- ไม่เปิด browser, ไม่ใช้ `/open web`
+- ไม่สร้าง HTML, ไม่ใช้ `/report html` หรือ `/visualize-in-web`
 - ไม่สร้างไฟล์ใน project
 
 ### 2. Graph Clarity
@@ -110,7 +110,7 @@ related:
 - ใช้ /report-flow ถ้าจำเป็น
 - ใช้ /report-workspace-graph ถ้าจำเป็น
 - ใช้ /visualize-project ถ้าจำเป็น
-- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /run-test (visual) ถ้าจำเป็น
 
 ## Expected Outcome
 

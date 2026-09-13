@@ -4,11 +4,11 @@ description: ติดตั้งและ authenticate Wrangler CLI ให้�
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
-  - create-cloudflare-token
+  - create-cloudflare
   - follow-tool-mise
   - use-wrangler
   - resolve-errors
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -43,7 +43,7 @@ related:
 > Goal: เชื่อมต่อ Wrangler กับ Cloudflare account
 
 1. Interactive: รัน `wrangler login` — เปิด browser ให้ user authorize
-2. CI/headless: ใช้ `CLOUDFLARE_API_TOKEN` environment variable — สร้าง token ตาม `/create-cloudflare-token` แล้วเก็บผ่าน `/follow-secret-manager`
+2. CI/headless: ใช้ `CLOUDFLARE_API_TOKEN` environment variable — สร้าง token ตาม `/create-cloudflare token` แล้วเก็บผ่าน `/follow-secret-manager`
 3. ห้าม commit token หรือใส่ใน config files
 
 ### 4. Verify
@@ -69,7 +69,7 @@ related:
 
 ### 3. Docs First
 
-- ถ้าไม่แน่ใจ command/flag → ดู official docs ผ่าน `/learn-web` หรือ `/use-wrangler` แทนการเดา
+- ถ้าไม่แน่ใจ command/flag → ดู official docs ผ่าน `/learn` (web) หรือ `/use-wrangler` แทนการเดา
 
 ## Expected Outcome
 

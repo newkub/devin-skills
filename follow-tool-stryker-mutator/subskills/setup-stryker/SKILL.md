@@ -5,9 +5,8 @@ argument-hint: "[scope]"
 related:
   - follow-tool-stryker-mutator
   - follow-tool-vitest
-  - run-test-mutation
-  - update-tests
   - run-test
+  - update-tests
 ---
 
 ## Goal

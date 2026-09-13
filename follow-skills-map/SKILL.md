@@ -9,7 +9,8 @@ allowed-tools:
   - exec
   - skill
   - ask_user_question
-  - report
+  - report
+
   - suggest-next-action
 triggers:
   - user
@@ -17,8 +18,8 @@ triggers:
 related:
   - follow-devin-global-skills
   - update-devin-global-skills
-  - search-skills
-  - list-devin-global-skills
+  - search
+  - list-devin
   - suggest-me
   - ask-me
   - idea
@@ -34,7 +35,7 @@ related:
 
 ใช้เมื่อต้องหา skill สำหรับงานประเภทหนึ่ง หรือต้องการดู skills ทีเกี่ยวข้องกับ ecosystem เฉพาะ
 
-ดูเพิ่มเติม: /follow-devin-global-skills, /update-devin-global-skills, /search-skills, /list-devin-global-skills, /suggest-me, /ask-me, /idea, /check-skills-related, /review-devin-global-skills
+ดูเพิ่มเติม: /follow-devin-global-skills, /update-devin-global-skills, /search skills, /list-devin global-skills, /suggest-me, /ask-me, /idea, /check-skills-related, /review-devin-global-skills
 
 ## Execute
 

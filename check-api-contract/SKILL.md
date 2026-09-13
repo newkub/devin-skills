@@ -6,8 +6,7 @@ related:
   - gen-openapi
   - review-api
   - report
-  - run-test-api
-  - run-test-contract
+  - run-test
 ---
 
 ## Goal
@@ -73,8 +72,8 @@ related:
 
 - Internal/admin endpoints อาจตั้งใจไม่ใส่ spec — flag เป็น info ไม่ใช่ violation
 - Generated spec ให้ตรวจเฉพาะว่า spec ล่าสุดหรือไม่ ไม่ตรวจ field-level
-- ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /run-test-contract ถ้าจำเป็น
+- ใช้ /run-test api ถ้าจำเป็น
+- ใช้ /run-test contract ถ้าจำเป็น
 
 ## Expected Outcome
 

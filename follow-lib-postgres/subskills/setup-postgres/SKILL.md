@@ -6,7 +6,7 @@ related:
   - follow-lib-postgres
   - follow-lib-drizzle
   - follow-secret-manager
-  - learn-web
+  - learn
   - resolve-errors
 ---
 

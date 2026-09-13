@@ -5,12 +5,11 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - scan-codebase
-  - update-readme-md
+  - update-docs
   - run-dev
   - deep-validate
   - report
   - update-tests
-  - update-usage-md
   - run-format
   - run-typecheck
   - run-examples
@@ -100,8 +99,8 @@ related:
 
 1. สร้าง `examples/README.md` สรุป examples ทั้งหมด
 2. เชื่อมต่อ examples กับ API docs
-3. ทำตาม `/update-readme-md` เพื่อเพิ่ม examples ในส่วน Usage ของ README.md
-4. อัปเดต API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-readme-md`
+3. ทำตาม `/update-docs readme-md` เพื่อเพิ่ม examples ในส่วน Usage ของ README.md
+4. อัปเดต API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-docs readme-md`
 
 ## Rules
 
@@ -140,7 +139,7 @@ related:
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /update-usage-md ถ้าจำเป็น
+- ใช้ /update-docs usage-md ถ้าจำเป็น
 
 ## Expected Outcome
 

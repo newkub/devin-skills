@@ -8,7 +8,7 @@ related:
   - report-file-structure
   - review-refactor
   - deep-validate
-  - report-in-table
+  - report
   - report-progress
   - suggest-next-action
   - scan-codebase
@@ -94,7 +94,7 @@ related:
 
 > Goal: สรุป structural change ให้ตรวจสอบย้อนหลังได้
 
-1. ทำ `/report-in-table` ด้วยคอลัมน์ `No.`, `Old Path`, `New Path`, `Files Moved`, `Refs Updated` พร้อม before/after depth comparison
+1. ทำ `/report table` ด้วยคอลัมน์ `No.`, `Old Path`, `New Path`, `Files Moved`, `Refs Updated` พร้อม before/after depth comparison
 2. ระบุ manual follow-ups ถ้ามี (docs นอก repo, external links)
 3. ทำ `/report-progress` สรุปงานเสร็จ/งานค้าง แล้วทำ `/suggest-next-action`
 

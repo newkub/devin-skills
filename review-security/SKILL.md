@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-secrets-leak
+  - check-secrets
   - analyze-attack-surface
   - review-compliance
   - review-observability
@@ -99,6 +99,16 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ทำ `/deep-validate` ก่อนรายงาน แล้ว `/report` พร้อม `/report`
 
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+
+| Topic | Subskill |
+|-------|----------|
+| Rotate/remove leaked secrets, git history notes | `subskills/fix-secrets/SKILL.md` |
+| Security headers — CSP, HSTS, X-Frame-Options | `subskills/fix-headers/SKILL.md` |
+| Vulnerable deps — audit, upgrade, patch | `subskills/fix-vuln-deps/SKILL.md` |
+
 ## Rules
 
 ### 1. Scope Boundary
@@ -148,7 +158,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 
-- ใช้ /check-secrets-leak ถ้าจำเป็น
+- ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 ## Fix
 

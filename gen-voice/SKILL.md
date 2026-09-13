@@ -4,7 +4,7 @@ description: สร้างเสียงพูดจากข้อควา�
 argument-hint: "[text]"
 related:
   - gen-subtitle-video
-  - gen-ai-videos
+  - gen-media
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ related:
 - ใช้ environment variable หรือถาม user
 
 - ใช้ /gen-subtitle-video ถ้าจำเป็น
-- ใช้ /gen-ai-videos ถ้าจำเป็น
+- ใช้ /gen-media ai-videos ถ้าจำเป็น
 
 ## Expected Outcome
 

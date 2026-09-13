@@ -49,7 +49,7 @@
 
 1. รัน suite ซ้ำ — ผล pass/fail ต้องเหมือนเดิม ไม่มี tests หาย
 2. เทียบเวลา before/after ด้วย `/report-before-after`
-3. `/run-test-coverage` เพื่อยืนยัน coverage ไม่ลด
+3. `/run-test` เพื่อยืนยัน coverage ไม่ลด
 
 ## Rules
 

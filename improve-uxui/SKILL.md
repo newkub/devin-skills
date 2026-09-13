@@ -3,24 +3,16 @@ name: improve-uxui
 description: Orchestrate UX/UI pass — test flows + visual review ทุก route ผ่าน subagents แล้วแก้จริง
 argument-hint: "[url]"
 related:
-  - use-agent-browser
   - watch-browser
-  - watch-browser-and-test
-  - watch-browser-and-improve-uxui
-  - check-all-routes
-  - capture-all-components-all-routes
   - review-uxui
   - review-accessibility
   - deep-thinking
-  - prioritize
-  - follow-design-system
   - use-subagents
   - run-dev
   - resolve-errors
   - update-tests
   - implement-to-production
-  - run-test-e2e
-  - run-test-visual
+  - run-test
   - create-report-in-dot-devin
   - update-docs
   - report
@@ -35,8 +27,8 @@ related:
 
 ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 3 มิติ:
 
-- Functional UX — ทำตาม `/watch-browser-and-test` (flows, actions, error states ที่ user เจอจริง)
-- Visual UX — ทำตาม `/watch-browser-and-improve-uxui` (layout, responsive, polish จาก screenshots)
+- Functional UX — ทำตาม `/watch-browser test` (flows, actions, error states ที่ user เจอจริง)
+- Visual UX — ทำตาม `/watch-browser improve-uxui` (layout, responsive, polish จาก screenshots)
 - Accessibility — อยู่ใน visual pass ตาม `/review-accessibility` (contrast, focus order, aria, keyboard nav — a11y คือส่วนหนึ่งของ UX ไม่แยก skill)
 
 ถ้าต้องการแค่มิติเดียว → เรียก sub-skill นั้นโดยตรง
@@ -56,14 +48,14 @@ related:
 
 > Goal: หา UX issues จากการใช้งานจริง
 
-1. ทำ `/watch-browser-and-test` — subagents roleplay user ทุก route
+1. ทำ `/watch-browser test` — subagents roleplay user ทุก route
 2. เก็บ FAIL findings ที่เป็น UX problems (confusing flows, missing feedback, dead ends, unclear errors) แยกจาก pure bugs
 
 ### 3. Run Visual UX Pass
 
 > Goal: หา UX issues จากภาพจริงทุก route
 
-1. ทำ `/watch-browser-and-improve-uxui` — subagents capture + `/review-uxui` ทุก route ทั้ง desktop และ mobile
+1. ทำ `/watch-browser improve-uxui` — subagents capture + `/review-uxui` ทุก route ทั้ง desktop และ mobile
 2. แต่ละ agent รวม a11y checks ตาม `/review-accessibility` ด้วย — contrast, focus order, aria labels, keyboard navigation
 3. เก็บ findings พร้อม screenshot evidence
 
@@ -95,7 +87,7 @@ related:
 > Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
 
 1. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
-2. ทำ `/run-test-e2e` re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
+2. ทำ `/run-test` (e2e) re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
 ### 8. Production Readiness
 

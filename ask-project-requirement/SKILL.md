@@ -4,7 +4,7 @@ description: ถาม project requirements ผ่าน /ask-me แบบ multi
 argument-hint: "[topic]"
 related:
   - ask-me
-  - update-agents-md
+  - update-docs
   - alternative
   - ship
   - plan
@@ -28,7 +28,7 @@ related:
 1. อ่าน `AGENTS.md` ถ้ามี
 2. อ่าน `.devin/rules/*.md` ถ้ามี
 3. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest สำคัญ
-4. ถ้าไม่มี `AGENTS.md` → ทำ `/update-agents-md` ก่อน
+4. ถ้าไม่มี `AGENTS.md` → ทำ `/update-docs agents-md` ก่อน
 
 ### 2. Multi-Step Requirement Interview
 
@@ -69,7 +69,7 @@ related:
 2. ถ้าต้องการเลือก library → ทำ `/alternative`
 3. ถ้าต้องการ plan ต่อ → ทำ `/plan`
 4. ถ้าต้องการตั้งเป้า → ทำ `/follow-goal`
-5. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ด้วย requirements
+5. ทำ `/update-docs agents-md` เพื่ออัปเดต `AGENTS.md` ด้วย requirements
 
 ### 4. Confirm
 

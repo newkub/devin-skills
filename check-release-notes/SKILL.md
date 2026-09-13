@@ -3,7 +3,7 @@ name: check-release-notes
 description: อ่าน release notes ล่าสุดจาก GitHub releases หรือ official site/blog เทียบ version ใน skill
 argument-hint: "[package-or-repo]"
 related:
-  - list-github-release
+  - list-github
   - check-all-routes
   - check-release-drift
   - update-devin-global-skills
@@ -20,7 +20,7 @@ related:
 - Target: package name (`vite`, `react`), repo (`owner/repo`), หรือ skill name (resolve package จาก `references/package-manifest.md`)
 - Sources ตามลำดับ: GitHub Releases API → official changelog/releases page → official blog post → registry metadata
 - Read-only — รายงาน findings; การแก้ไขทำโดย `/update-devin-global-skills` หรือ `/update-version-to-latest`
-- ต่างจาก `/list-github-release` ที่ list releases ดิบ — skill นี้อ่าน notes content และเทียบกับ documented version
+- ต่างจาก `/list-github release` ที่ list releases ดิบ — skill นี้อ่าน notes content และเทียบกับ documented version
 
 ## Execute
 
@@ -36,9 +36,9 @@ related:
 
 > Goal: ได้ version + notes จริงจาก official source
 
-1. **GitHub Releases** (preferred): `gh release view --repo <owner/repo> --json tagName,publishedAt,body` หรือ GitHub MCP `list_releases`; registry fallback: `https://api.github.com/repos/<owner>/<repo>/releases/latest`
-2. **Official site**: `webfetch` changelog/releases/blog page — หา release post ล่าสุด (เช่น `vite.dev/blog`, `react.dev/blog`)
-3. **Registry fallback**: npm `https://registry.npmjs.org/<pkg>/latest` (version + time), crates.io `/api/v1/crates/<name>` — ได้ version/date แต่ไม่มี notes
+1. GitHub Releases (preferred): `gh release view --repo <owner/repo> --json tagName,publishedAt,body` หรือ GitHub MCP `list_releases`; registry fallback: `https://api.github.com/repos/<owner>/<repo>/releases/latest`
+2. Official site: `webfetch` changelog/releases/blog page — หา release post ล่าสุด (เช่น `vite.dev/blog`, `react.dev/blog`)
+3. Registry fallback: npm `https://registry.npmjs.org/<pkg>/latest` (version + time), crates.io `/api/v1/crates/<name>` — ได้ version/date แต่ไม่มี notes
 4. บันทึก: `latest version`, `release date`, `breaking changes`, `new features`, `deprecations`, source URL
 
 ### 3. Compare And Report
@@ -65,6 +65,10 @@ related:
 
 - ทุก version/date ต้องมาจาก source ที่ fetch จริง — ห้ามใช้ memory
 - ถ้า notes ไม่ระบุ breaking → ระบุ "not stated" อย่า assume
+
+- ใช้ /check-all-routes ถ้าจำเป็น
+- ใช้ /check-release-drift ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -4,7 +4,7 @@ description: ติดตั้ง InstantDB SDK ตาม framework, init app �
 argument-hint: "[project-path]"
 related:
   - follow-service-instantdb
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
   - update-references

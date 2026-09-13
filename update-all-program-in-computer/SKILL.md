@@ -72,6 +72,12 @@ related:
 3. ระบุ programs ทียังไม่อัปเดตและเหตุผล
 4. ทำ `/suggest-next-action`
 
+### Subagents
+
+> Goal: parallelize updates เมื่อ programs เยอะ
+
+- ใช้ `subagents/program-updater.md` เมื่อต้อง update หลาย programs ที่ independent กัน — spawn ทีละ program ผ่าน `/use-subagents` แล้วรวมผล updated/skipped/failed ก่อน report
+
 ## Rules
 
 ### 1. Safety

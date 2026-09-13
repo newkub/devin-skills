@@ -6,7 +6,7 @@ related:
   - follow-service-resend
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
 ---
@@ -30,7 +30,7 @@ related:
 
 1. อ่าน `package.json` เพื่อระบุ runtime และ package manager
 2. ตรวจว่ามี `resend` ติดตั้งแล้ว → ถ้ามี skip ไป verify
-3. ทำ `/check-env-vars` เพื่อดูว่า `RESEND_API_KEY` มีอยู่หรือยัง
+3. ทำ `/check-secrets env-vars` เพื่อดูว่า `RESEND_API_KEY` มีอยู่หรือยัง
 4. ถ้าไม่มี Resend account → stop และแจ้ง user สร้างจาก dashboard
 
 ### 2. Install SDK
@@ -63,7 +63,7 @@ related:
 - ห้าม hardcode API key หรือ commit secrets — ใช้ `/follow-secret-manager` เสมอ
 - Client ต้องอยู่ฝั่ง server เท่านั้น ห้าม expose `RESEND_API_KEY` ไป browser
 - `onboarding@resend.dev` ใช้ได้เฉพาะ sandbox/testing — production ต้อง verified domain
-- ถ้า API/method ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า API/method ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

@@ -34,7 +34,7 @@
 
 1. เลือก 3-5 routes/endpoints สำคัญ (homepage, main API, auth flow start)
 2. ตรวจ status codes, response time พื้นฐาน และ content sanity (ไม่ใช่ error page)
-3. ทำ `/run-test-api` สำหรับ API endpoints ที่สำคัญ
+3. ทำ `/run-test` สำหรับ API endpoints ที่สำคัญ
 4. ทำ `/check-security-headers` บน deployed URL
 
 ### 4. Check Error Signals

@@ -5,10 +5,10 @@ argument-hint: "[scope]"
 related:
   - deep-thinking
   - scan-codebase
-  - check-file-structure
+  - check-files
   - check-code-structure
   - use-astgrep
-  - use-astgrep-programmatic
+  - use-astgrep
   - report-deep
   - deep-research
   - run-audit
@@ -40,7 +40,7 @@ related:
 1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
 2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
 3. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
-4. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
+4. ทำ `/check-files structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
 5. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
 6. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
    - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
@@ -52,7 +52,7 @@ related:
 
 > Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
 
-1. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` หรือ `tree` ดู directory structure
+1. ทำ `/check-files structure` ด้วย `eza --tree --level 2` หรือ `tree` ดู directory structure
 2. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
 3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
 4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
@@ -80,10 +80,10 @@ related:
 > Goal: วิเคราะห์ code quality อย่างละเอียด
 
 1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
-2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
+2. ทำ `/use-astgrep programmatic` สำหรับ AST-based metrics ถ้าต้องการ
 3. หา code smells ด้วย `Grep` multiline mode
 4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
-5. ทำ `/review-quality`, `/check-unused` แบบ parallel
+5. ทำ `/review-quality`, `/check-repo-hygiene unused` แบบ parallel
 6. ตรวจหา hardcoded secrets ด้วย `Grep`
 
 ### 6. Dependencies And Tech Stack
@@ -188,10 +188,10 @@ related:
 
 ### 2. Tool Selection
 
-- Structure: `/scan-codebase`, `/check-file-structure`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
+- Structure: `/scan-codebase`, `/check-files structure`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
 - Architecture: `/use-astgrep`, `Grep`
 - Features: `/scan-codebase`, `/use-astgrep`
-- Code Quality: `/use-astgrep`, `/use-astgrep-programmatic`, `Grep`, `/use-scripts`
+- Code Quality: `/use-astgrep`, `/use-astgrep programmatic`, `Grep`, `/use-scripts`
 - Dependencies: manifest files, `/run-audit`
 - Research: `/deep-research`, DeepWiki, Context7, WebSearch
 
@@ -234,7 +234,7 @@ related:
 - ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis
 - รวบรวม metrics จาก knip, biome, vitest, madge
 - รัน `bunx ast-grep outline` ดู structure
-- รัน `eza --tree --level 2` หรือ `/check-file-structure` ดู physical layout
+- รัน `eza --tree --level 2` หรือ `/check-files structure` ดู physical layout
 
 ## Expected Outcome
 

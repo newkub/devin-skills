@@ -7,7 +7,7 @@ related:
   - follow-secret-manager
   - check-config-drift
   - report-before-after
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -63,7 +63,7 @@ related:
 - Secrets (`clientSecret`, API keys) ผ่าน env vars เสมอ — ห้ามใส่ใน config file
 - เปิดเฉพาะ providers/plugins ที่ใช้จริง — ทุก plugin เพิ่ม attack surface และ tables
 - `trustedOrigins` ต้องครอบ origins ใหม่ที่เพิ่ม — แต่เข้มงวดเสมอ
-- ถ้า option/plugin ไม่แน่ใจ → ทำ `/learn-web` ดู official docs (better-auth.com)
+- ถ้า option/plugin ไม่แน่ใจ → ทำ `/learn web` ดู official docs (better-auth.com)
 
 ## Expected Outcome
 

@@ -43,7 +43,7 @@
 
 > Goal: ลบ deps ที่ไม่จำเป็น
 
-1. ใช้ `/check-unused` — ลบ deps ที่ไม่มี imports จริง (ตรวจ transitive/dev usage ก่อน)
+1. ใช้ `/check-repo-hygiene unused` — ลบ deps ที่ไม่มี imports จริง (ตรวจ transitive/dev usage ก่อน)
 2. dedupe duplicate versions (`pnpm dedupe`, lockfile cleanup)
 3. ย้าย deps ที่ผิดที่: runtime deps ใน devDependencies หรือกลับกัน
 4. สำหรับ heavy deps → ทำ `/review-dependencies` หาทางเลือกเบากว่า

@@ -6,7 +6,7 @@ related:
   - follow-service-resend
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
+  - check-secrets
   - run-verify
   - resolve-errors
 ---
@@ -29,7 +29,7 @@ related:
 > Goal: รู้สถานะปัจจุบันก่อนแก้
 
 1. อ่าน mail module, `.env*` และ templates ที่มีอยู่ใน project
-2. ทำ `/check-env-vars` เพื่อระบุ vars ที่ขาด เช่น `RESEND_API_KEY`, `EMAIL_FROM`
+2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาด เช่น `RESEND_API_KEY`, `EMAIL_FROM`
 3. ตรวจ domains ที่ verify แล้วใน dashboard — ใช้ `/open-web-for-config-secret` (service resend)
 4. ถ้ายังไม่มี SDK/API key → ทำ `subskills/setup-resend/SKILL.md` แทน
 
@@ -73,7 +73,7 @@ related:
 - แยก transactional vs marketing (ใช้ Broadcasts สำหรับ marketing)
 - Secrets ผ่าน `/follow-secret-manager` เท่านั้น ห้าม commit
 - Retry ด้วย idempotency — ห้ามส่ง email ซ้ำ
-- ถ้า DNS field/API ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า DNS field/API ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

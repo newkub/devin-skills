@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-service-supabase
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - check-config-drift
   - run-verify
   - resolve-errors
@@ -29,7 +29,7 @@ related:
 > Goal: รู้สถานะ config ปัจจุบันก่อนแก้
 
 1. อ่าน `supabase/config.toml` และ `.env*` ที่มีอยู่
-2. ทำ `/check-env-vars` เพื่อระบุ vars ที่ขาดหรือซ้ำ
+2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาดหรือซ้ำ
 3. ทำ `/check-config-drift` ถ้าสงสัยว่า local config ต่างจาก remote
 4. ถ้าไม่มี `supabase/config.toml` เลย → ทำ `subskills/setup-supabase/SKILL.md` แทน
 
@@ -73,7 +73,7 @@ related:
 - Secrets ผ่าน `/follow-secret-manager` เท่านั้น ห้ามใส่ใน `config.toml` หรือ commit
 - ทุก table ที่ client เข้าถึงต้องมี RLS enabled + explicit policies
 - Test config ใน local ก่อน push remote
-- ถ้า key name/option ไม่แน่ใจ → ดู official docs หรือ `learn-web`
+- ถ้า key name/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
 
 ## Expected Outcome
 

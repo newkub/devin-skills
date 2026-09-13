@@ -4,8 +4,6 @@ description: สร้าง markdown templates สำหรับ documentation
 argument-hint: "[scope]"
 related:
   - update-docs
-  - update-readme-md
-  - update-features-md
   - report
   - deep-validate
   - run-format
@@ -89,8 +87,8 @@ related:
 - templates ต้องครอบคลุมทุกหมวดใน sidebar ของ `/update-docs`
 - ได้แก่: project, getting-started, development, references, roadmap, content, api-reference, changelog
 
-- ใช้ /update-readme-md ถ้าจำเป็น
-- ใช้ /update-features-md ถ้าจำเป็น
+- ใช้ /update-docs readme-md ถ้าจำเป็น
+- ใช้ /update-docs features-md ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /run-examples ถ้าจำเป็น
 

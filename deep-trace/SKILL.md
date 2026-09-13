@@ -8,7 +8,7 @@ related:
   - run-profiler
   - watch-browser-console
   - use-astgrep
-  - search-files-patterns
+  - search
   - report
   - follow-tool-git
 ---
@@ -42,7 +42,7 @@ Trace ลึกตามทางเดินของ execution, data flow, req
 1. ถ้ามี logs → ใช้ structured logs หา correlation id หรือ request id
 2. ถ้ามี metrics → ดู dashboard หา spike หรือ pattern
 3. ถ้ามี distributed traces → ใช้ trace id เพื่อตาม path
-4. ถ้าไม่มี telemetry → ใช้ code reading: `/search-files-patterns`, `/use-astgrep`
+4. ถ้าไม่มี telemetry → ใช้ code reading: `/search files-patterns`, `/use-astgrep`
 5. ถ้าต้องดู runtime → เพิ่ม temporary instrumentation
 
 ### 3. Instrument If Needed
@@ -73,7 +73,7 @@ Trace ลึกตามทางเดินของ execution, data flow, req
 2. บันทึกทุก step: function, service, database, queue, external API
 3. ตรวจสอบ state/variable ทีเปลี่ยนแปลงในแต่ละ step
 4. ระบุ async point, await, callback, event loop cycle
-5. ใช้ `/use-astgrep` หรือ `/search-files-patterns` เพื่อหา call graph
+5. ใช้ `/use-astgrep` หรือ `/search files-patterns` เพื่อหา call graph
 
 ### 6. Identify Boundary Crossings
 
@@ -123,7 +123,7 @@ Trace ลึกตามทางเดินของ execution, data flow, req
 ### 3. Tool First
 
 - ใช้ existing observability ก่อนเพิ่ม log
-- ใช้ `/search-files-patterns` และ `/use-astgrep` เพื่อ trace in code
+- ใช้ `/search files-patterns` และ `/use-astgrep` เพื่อ trace in code
 - ใช้ `/run-profiler` ถ้าต้องการ latency breakdown
 
 ### 4. Boundary Aware

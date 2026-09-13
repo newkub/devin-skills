@@ -2,7 +2,7 @@
 
 ## Goal
 
-ระบุ coverage gaps ก่อน `run-test-coverage`
+ระบุ coverage gaps ก่อน `un-test`
 
 ## Checks
 

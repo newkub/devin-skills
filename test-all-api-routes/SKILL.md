@@ -3,7 +3,7 @@ name: test-all-api-routes
 description: ทดสอบ API routes ทั้งหมดของ domain จาก routes file, OpenAPI spec หรือ source code
 argument-hint: "<domain> [-RoutesFile <file>] [-SpecUrl <url>]"
 related:
-  - run-test-api
+  - run-test
   - check-routes-status
   - check-api-contract
   - gen-openapi
@@ -32,7 +32,7 @@ related:
 
 1. รับ `domain` จาก argument — normalize เป็น base URL
 2. เลือก route source ตามลำดับ:
-- **`crw_map` (MCP)** — map site → เก็บ URL list ลง routes file (แนะนำ, ครอบคลุมสุด)
+- `crw_map` (MCP) — map site → เก็บ URL list ลง routes file (แนะนำ, ครอบคลุมสุด)
 - ถ้ามี routes file → ใช้ `--routes-file <file>` (รองรับ URL เต็ม จะ normalize เป็น path ให้)
 - ถ้ามี OpenAPI spec → ดึง paths จาก spec ลง routes file
 - ถ้า SPA → `--discover` (fetch base HTML, ดึง same-origin links)
@@ -78,6 +78,12 @@ bun <skill-dir>/scripts/check-routes.ts --base <domain> --routes-file routes.txt
 5. ถ้ามี critical → แนะนำ `/resolve-errors` พร้อมระบุ route ที่พัง
 6. ถ้า routes ใน source ไม่ครบ → แนะนำ `/gen-openapi` เพื่อสร้าง spec
 
+### Subagents
+
+> Goal: parallelize route checks เมื่อ route list ยาว
+
+- ใช้ `subagents/route-checker.md` เมื่อ routes เยอะและแบ่งเป็น groups ที่ independent กันได้ (เช่น ตาม path prefix) — spawn ทีละ group ผ่าน `/use-subagents` แล้ว merge ตารางผลทุก group ก่อน report
+
 ## Rules
 
 ### 1. Safety
@@ -97,7 +103,7 @@ bun <skill-dir>/scripts/check-routes.ts --base <domain> --routes-file routes.txt
 - ทุก finding มี actual status และ response time จริง ห้ามเดา
 - ถ้า route ทั้งหมด fail pattern เดียวกัน (เช่น ทุก endpoint 404) → เช็ค base path / deploy ก่อน route-level
 
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test (api) ถ้าจำเป็น
 - ใช้ /check-api-contract ถ้าจำเป็น
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /gen-openapi ถ้าจำเป็น

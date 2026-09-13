@@ -3,10 +3,10 @@ name: review-idea
 description: ตรวจสอบและประเมินไอเดียก่อน implement ว่าคุ้มค่า ทำได้ และสอดคล้องกับ project
 argument-hint: "[scope]"
 related:
-  - idea-features
+  - idea
   - research-setup
   - deep-research
-  - learn-web
+  - learn
   - review-dependencies
   - follow-best-practice
   - suggest-next-action
@@ -22,7 +22,7 @@ related:
 
 ใช้กับทุกไอเดียฟีเจอร์ การเปลี่ยนแปลง หรือ proposal ที่ต้องตรวจสอบความเป็นไปได้และความคุ้มค่าก่อน execute
 
-ดูเพิ่มเติม: /idea-features
+ดูเพิ่มเติม: /idea features
 
 ## Execute
 
@@ -30,7 +30,7 @@ related:
 
 > Goal: เข้าใจไอเดียและบริบท
 
-1. รับไอเดียจาก prompt หรือ output ของ `/idea-features`
+1. รับไอเดียจาก prompt หรือ output ของ `/idea features`
 2. สรุปเป็น 1-2 ประโยค ชัดเจนและวัดผลได้
 3. ระบุ problem, target user, และ expected outcome
 
@@ -40,7 +40,7 @@ related:
 
 1. ทำ `/research-setup` เพื่อหา setup/config/CI ที่เกี่ยวข้อง
 2. ทำ `/deep-research` เพื่อเปรียบเทียบ alternatives ทีมี
-3. ทำ `/learn-web` เพื่อศึกษา best practices
+3. ทำ `/learn` (web) เพื่อศึกษา best practices
 4. ตรวจ official docs และ changelogs ถ้ามี
 
 ### 3. Assess Feasibility

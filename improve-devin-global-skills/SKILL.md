@@ -35,7 +35,7 @@ related:
 > Goal: จัดลำดับสิ่งที่ควรปรับปรุง
 
 1. ทำ `/improve <scope>` เพื่อรับ prioritized improvement list
-2. ทำ `/learn-web` เพื่อดึง best practices/conventions ล่าสุดจาก official docs ก่อนตัดสินใจแก้ไข
+2. ทำ `/learn` (web) เพื่อดึง best practices/conventions ล่าสุดจาก official docs ก่อนตัดสินใจแก้ไข
 3. กรอง findings ที่ duplicate หรือ false positive
 4. จัดกลุ่มตาม priority: structure, references, content, formatting
 

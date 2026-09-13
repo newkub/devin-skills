@@ -3,15 +3,13 @@ name: report-todo
 description: ตอบ action plan ในแชทเป็นตาราง No., Action, Before, After, Why, File Change, Risk พร้อมสรุป numbered
 argument-hint: "[actions-or-context]"
 related:
-  - report-in-numbered
-  - report-in-table
-  - suggest-next-action
   - report
+  - suggest-next-action
 ---
 
 ## Goal
 
-ตอบ action plan ในแชทเป็นตารางทีมีคอลัมน์ `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` และสรุปด้านล่างด้วย `/report-in-numbered`
+ตอบ action plan ในแชทเป็นตารางทีมีคอลัมน์ `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` และสรุปด้านล่างด้วย `/report numbered`
 
 ## Scope
 
@@ -49,7 +47,7 @@ related:
 
 > Goal: สรุปด้านล่างตาราง
 
-1. ใช้ `/report-in-numbered` สรุปลำดับ actions ทั้งหมด
+1. ใช้ `/report numbered` สรุปลำดับ actions ทั้งหมด
 2. เน้น next action แรก
 3. ระบุ dependencies ระหว่าง actions ถ้ามี
 
@@ -66,8 +64,8 @@ related:
 - ใช้เมื่อ user ถามหรือต้องการ plan โดยยังไม่ลงมือ
 - ทุก action ต้องมี single responsibility
 - ไฟล์ทีระบุต้องพอจะเดาได้ ถ้าไม่แน่ใจให้ระบุ `TBD`
-- ด้านล่างต้องมี `/report-in-numbered` เสมอ
-- ถ้ามี status หลายรายการให้ใช้ `/report-in-table` สำหรับรายการเดียวกัน
+- ด้านล่างต้องมี `/report numbered` เสมอ
+- ถ้ามี status หลายรายการให้ใช้ `/report table` สำหรับรายการเดียวกัน
 - ตอบในแชทเท่านั้น
 
 ## Expected Outcome

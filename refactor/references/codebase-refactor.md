@@ -18,7 +18,7 @@ Merged from: `deep-refactor-codebase` — deep refactor หนึ่ง workspac
 ### 2. Deep Analysis
 
 1. ทำ `/deep-analyze` สำหรับ architecture, quality, dependencies, security
-2. ทำ `/check-code-structure` (cohesion, coupling) และ `/check-long-files` (>250 บรรทัด)
+2. ทำ `/check-code-structure` (cohesion, coupling) และ `/check-files long-files` (>250 บรรทัด)
 3. ทำ `/review-quality` เพื่อหา code smells, duplication, dead code
 4. รวม findings เป็น prioritized list ตาม severity และ impact
 

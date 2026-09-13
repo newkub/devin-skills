@@ -27,7 +27,7 @@ related:
 
 1. อ่าน `tsup.config.*` / `tsup` field ใน `package.json` — list `entry`, `format`, `dts`, `external`, `esbuildOptions`, `onSuccess`, hooks
 2. รัน `tsup` build เก็บ `dist/` file list + sizes เป็น baseline
-3. อ่าน official migration guide ใน tsdown docs — ทำ `/learn-web` ถ้าไม่แน่ใจ
+3. อ่าน official migration guide ใน tsdown docs — ทำ `/learn` (web) ถ้าไม่แน่ใจ
 4. commit state ก่อนเริ่ม — rollback path ต้องพร้อม
 
 ### 2. Run tsdown-migrate

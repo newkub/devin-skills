@@ -47,7 +47,7 @@
 > Goal: วัดผลจริง
 
 1. เทียบ font bytes ก่อน-หลัง — `/report-before-after`
-2. ตรวจ visual — text rendering ต้องไม่เปลี่ยนผิด (`/run-test-visual`)
+2. ตรวจ visual — text rendering ต้องไม่เปลี่ยนผิด (`/run-test`)
 3. วัด LCP/CLS ใหม่บน affected pages
 
 ## Rules

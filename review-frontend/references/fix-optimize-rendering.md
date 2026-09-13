@@ -50,7 +50,7 @@
 > Goal: Validate
 
 1. รัน `/run-build`
-2. รัน `/run-test-e2e` ถ้ามี
+2. รัน `/run-test` (e2e) ถ้ามี
 3. ทำ `/report-table` สรุป metrics
 
 ## Rules

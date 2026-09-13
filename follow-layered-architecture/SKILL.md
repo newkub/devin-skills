@@ -6,9 +6,9 @@ related:
   - follow-tool-vite
   - follow-tool-vitest
   - follow-lib-vue
-  - follow-create-web-nuxt
-  - follow-create-web-svelte
-  - follow-create-web-nextjs
+  - follow-create-web
+  - follow-create-web
+  - follow-create-web
   - follow-lib-react
   - follow-clean-architecture
   - review-architecture
@@ -178,9 +178,9 @@ src/
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 
 - ใช้ /follow-lib-vue ถ้าจำเป็น
-- ใช้ /follow-create-web-nuxt ถ้าจำเป็น
-- ใช้ /follow-create-web-svelte ถ้าจำเป็น
-- ใช้ /follow-create-web-nextjs ถ้าจำเป็น
+- ใช้ /follow-create-web nuxt ถ้าจำเป็น
+- ใช้ /follow-create-web svelte ถ้าจำเป็น
+- ใช้ /follow-create-web nextjs ถ้าจำเป็น
 - ใช้ /follow-lib-react ถ้าจำเป็น
 
 ## Expected Outcome

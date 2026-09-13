@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
   - deploy-to-cloudflare
-  - resolve-cicd
+  - resolve-errors
   - follow-secret-manager
   - open-web-for-config-secret
 ---
@@ -130,7 +130,7 @@ Latest: `@cloudflare/ci@0.1.0` (verified 2026-09-12) — ยังเป็น 0
 1. ใช้ `wrangler workflows instances list` ดู instances
 2. ใช้ `wrangler workflows instances logs <id>` ดู logs
 3. ใช้ `wrangler tail` สำหรับ real-time logs
-4. ตรวจสอบ error ด้วย `/resolve-cicd` หรือ `/follow-service-cloudflare`
+4. ตรวจสอบ error ด้วย `/resolve-errors cicd` หรือ `/follow-service-cloudflare`
 
 ### 8. Add Self-Healing (Optional)
 

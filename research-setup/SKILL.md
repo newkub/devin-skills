@@ -16,13 +16,13 @@ allowed-tools:
   - exec
 related:
   - deep-research
-  - learn-web
+  - learn
   - follow-best-practice
   - research-dependencies
   - setup-cicd
   - follow-tool-usage
   - review-dependencies
-  - search-in-github-star
+  - search
   - explore-github-trending
   - check-reference
 ---
@@ -51,7 +51,7 @@ related:
 
 > Goal: เก็บข้อมูลหลักจาก official documentation
 
-1. ใช้ `/learn-web` หรือ `crw_scrape` เพื่อหา official docs
+1. ใช้ `/learn` (web) หรือ `crw_scrape` เพื่อหา official docs
 2. เริ่มจาก getting started, quickstart, installation, setup guide
 3. เก็บลิงก์ official docs และคำสั่่ง setup หลัก
 4. ถ้ามี CLI tool → บันทึกคำสั่่ง install และ version ทีแนะนำ
@@ -61,7 +61,7 @@ related:
 > Goal: หา config files และ CI templates จริงจาก community
 
 1. ใช้ `web_search` หรือ `crw_scrape` หา config templates (e.g. `wrangler.toml`, `.github/workflows`, `biome.json`, `tsconfig.json`)
-2. ค้นหา GitHub repositories ทีมี setup คล้ายกัน (ใช้ `search-in-github-star` หรือ `explore-github-trending`)
+2. ค้นหา GitHub repositories ทีมี setup คล้ายกัน (ใช้ `search` หรือ `explore-github-trending`)
 3. เก็บตัวอย่าง CI/CD pipeline ทีถูกต้องและ up-to-date
 4. ระบุ environment variables, secrets และ permissions ทีต้องใช้
 

@@ -4,11 +4,9 @@ name: list-deployment-fails
 description: สรุป deployment failures จาก CI/CD และ cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
-  - resolve-github-actions-fails
-  - resolve-cloudflare-worker-fails
+  - resolve-errors
   - report
   - suggest-next-action
-  - resolve-cicd
   - follow-service-vercel
   - follow-service-cloudflare
   - open-cloudflare-workers
@@ -40,7 +38,7 @@ related:
 
 > Goal: รวบรวม GitHub Actions failures
 
-1. ทำ `/resolve-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
+1. ทำ `/resolve-errors github-actions` เพื่อหา workflow runs ทีล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: repo, workflow, branch, commit, event, started at, url
 
@@ -48,7 +46,7 @@ related:
 
 > Goal: รวบรวม Cloudflare Workers failures
 
-1. ทำ `/resolve-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
+1. ทำ `/resolve-errors cloudflare-worker` เพื่อหา workers ที deploy/health ล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: worker, type, latest deployment, status, errors
 
@@ -79,8 +77,8 @@ related:
 > Goal: แนะนำขั้นตอนถัดไป
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-cicd` หรือ `/resolve-cloudflare-worker-fails`
-3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/resolve-github-actions-fails`
+2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-errors cicd` หรือ `/resolve-errors cloudflare-worker`
+3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/resolve-errors github-actions`
 
 ## Rules
 

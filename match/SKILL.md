@@ -17,7 +17,6 @@ triggers:
   - model
 related:
   - scan-codebase
-  - use-astgrep
   - search-in-git
   - ask-me
   - follow-your-suggestion

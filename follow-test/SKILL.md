@@ -1,7 +1,7 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
-argument-hint: "[scope]"
+argument-hint: "[config-test-env] [scope]"
 related:
   - follow-math-concepts
   - follow-monorepo
@@ -64,7 +64,7 @@ related:
 
 - ทำ `/update-tests` สำหรับเขียน unit tests และ coverage
 - ทำ `/run-test-all` สำหรับรัน tests ทุกประเภท (unit, integration, e2e, component)
-- ทำ `/run-test-api` สำหรับ API tests และ contract tests ถ้า project มี API
+- ทำ `/run-test` สำหรับ API tests และ contract tests ถ้า project มี API
 
 ### 7. Validate
 
@@ -73,6 +73,17 @@ related:
 - รัน test scripts ตามระดับที่เลือก
 - ตรวจสอบ coverage ตามเป้าหมาย
 - ตรวจสอบ test quality ตาม best practices
+
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ตาม topic/argument
+
+| Topic/Argument | Subskill |
+|----------------|----------|
+| `config-test-env`, `test-env`, `env`, `fixtures`, `test-db` | `subskills/config-test-env/SKILL.md` — test env vars, fixtures, test db, CI test env |
+
+1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าไม่ระบุ → ทำตาม steps 1-7 ตามลำดับ
 
 ## Rules
 

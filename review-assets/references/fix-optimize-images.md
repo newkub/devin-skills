@@ -9,7 +9,7 @@ Optimize รูปภาพใน project: compress PNG/JPEG, convert เป็�
 ## Scope
 
 - ใช้กับ images ใน `public/`, `assets/`, `src/`, docs และ directories ที่ระบุ
-- ครอบคลุม PNG, JPEG, GIF, WebP, AVIF, SVG (optimize ไม่ใช่ convert-to-svg จาก bitmap)
+- ครอบคลุม PNG, JPEG, GIF, WebP, AVIF, SVG (optimize ไม่ใช่ convert-svg จาก bitmap)
 - ใช้ `bunx` CLI tools เช่น `sharp-cli`, `squoosh-cli` หรือ `@sveltejs/enhanced-img`
 - แก้ไขไฟล์จริง — มี backup/dry-run ก่อนเสมอ
 
@@ -80,7 +80,7 @@ Optimize รูปภาพใน project: compress PNG/JPEG, convert เป็�
 - ใช้ settings เดียวกันกับไฟล์ประเภทเดียวกัน
 - บันทึก settings ที่ใช้ใน report เพื่อ reproducibility
 
-- ใช้ /convert-files-format ถ้าจำเป็น
+- ใช้ /convert files-format ถ้าจำเป็น
 - ใช้ /check-size ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 

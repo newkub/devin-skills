@@ -20,8 +20,8 @@ related:
   - review-writing
   - enhance-prompt
   - follow-single-responsibility
-  - check-unused
-  - check-long-files
+  - check-repo-hygiene
+  - check-files
   - update-references
   - git-commit
   - report
@@ -35,7 +35,7 @@ related:
 
 ใช้กับ code, architecture, content/docs, workflows, หรือ `SKILL.md` ทีเขียนยาว ซ้ำซ้อน หรือไม่ตรงประเด็น
 
-ดูเพิ่มเติม: /review-quality, /review-writing, /enhance-prompt, /follow-single-responsibility, /check-unused, /check-long-files
+ดูเพิ่มเติม: /review-quality, /review-writing, /enhance-prompt, /follow-single-responsibility, /check-repo-hygiene unused, /check-files long-files
 
 ## Execute
 

@@ -8,7 +8,7 @@ related:
   - check-uncommit
   - check-unpush
   - check-git-logs
-  - report-in-table
+  - report
   - report-progress
   - suggest-next-action
   - validate-then-apply
@@ -58,7 +58,7 @@ related:
 
 > Goal: สรุปผลเป็นตาราง
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Dimension`, `Score`, `Weight`, `Status`, `Notes`
+1. ทำ `/report table` คอลัมน์: `No.`, `Dimension`, `Score`, `Weight`, `Status`, `Notes`
 2. ใช้ status symbols: `✅ pass`, `⚠️ warning`, `❌ fail`, `ℹ️ info`
 3. แสดง overall grade
 4. ระบุ top issues ที่กดคะแนน

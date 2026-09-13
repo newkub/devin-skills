@@ -1,16 +1,13 @@
 ---
 name: watch-browser
 description: Watch หน้าเว็บอย่างต่อเนื่องผ่าน agent-browser MCP server — state, console, errors
-argument-hint: "[url]"
+argument-hint: "[domain] [url]"
 related:
   - use-agent-browser
-  - watch-browser-and-fix
   - watch-browser-console
-  - watch-browser-and-improve-uxui
-  - watch-browser-and-test
   - improve-uxui
   - use-mcp
-  - update-devin-global-mcp
+  - update-devin
   - resolve-errors
   - run-dev
 ---
@@ -23,10 +20,11 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 ใช้เมื่อต้องการ monitor หน้าเว็บผ่าน MCP protocol — เช่น watch dev server, ตรวจ visual/state changes หลังแก้ code, หรือเฝ้า console/errors ระหว่าง session
 
-- ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser-and-fix`
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-browser-and-fix, watch-browser-and-improve-uxui, watch-browser-and-test)
+- ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser fix`
 - ถ้า focus เฉพาะ console errors → `/watch-browser-console`
-- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
-- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
+- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser improve-uxui`
+- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser test`
 - ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
@@ -39,7 +37,7 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 
 1. เรียก `mcp_list_servers` เพื่อหา server ชื่อ `agent-browser` (หรือชื่อที่ตั้งไว้)
-2. ถ้ายังไม่มี → ทำ `/update-devin-global-mcp` เพิ่ม server ด้วยค่า:
+2. ถ้ายังไม่มี → ทำ `/update-devin global-mcp` เพิ่ม server ด้วยค่า:
    - `command`: `agent-browser`, `args`: `["mcp"]` (ต้อง `bun add -g agent-browser` ก่อน)
    - หรือ `command`: `bunx`, `args`: `["-y", "agent-browser", "mcp"]` สำหรับ run โดยไม่ติดตั้ง global
    - เพิ่ม `args` เป็น `["mcp", "--tools", "all"]` ถ้าต้องการ full CLI parity (default คือ profile `core`)
@@ -80,7 +78,7 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 2. แต่ละรอบดึง: console, errors และ state (title/url) ผ่าน `mcp_call_tool`
 3. เทียบกับ poll ก่อนหน้า — บันทึกเฉพาะ delta ที่เปลี่ยน (new errors, URL change, console ใหม่)
 4. ถ้าพบ error ใหม่ → capture `screenshot` + บันทึก console/errors ก่อน action
-5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser-and-fix`
+5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser fix`
 
 ### 5. Report And Cleanup
 
@@ -89,6 +87,19 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 1. สรุปด้วย `/report`: state ปัจจุบัน, errors ที่พบ, screenshots ที่เก็บ
 2. เรียก close tool ผ่าน `mcp_call_tool` เพื่อปิด browser session
 3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `agent-browser close` ผ่าน CLI
+
+### Subskills
+
+> Goal: dispatch ไป subskill ตาม domain เมื่อ watch ต้องต่อด้วย action เฉพาะทาง
+
+| Domain | Subskill |
+|--------|----------|
+| `fix` | `subskills/fix/SKILL.md` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
+| `improve-uxui` | `subskills/improve-uxui/SKILL.md` — watch + subagents improve UX/UI ทุก route |
+| `test` | `subskills/test/SKILL.md` — watch + subagents roleplay user test flows |
+
+1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน
+2. อ่าน `subskills/<domain>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ## Rules
 

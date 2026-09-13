@@ -6,7 +6,7 @@ related:
   - follow-lib-postgres
   - follow-lib-zod
   - run-drizzle-studio
-  - learn-web
+  - learn
   - resolve-errors
 ---
 
@@ -37,7 +37,7 @@ related:
 1. รัน `bun add drizzle-orm` แล้ว `bun add -D drizzle-kit` (หรือ package manager ตาม lockfile)
 2. ติดตั้ง driver ตาม runtime/database — ดู [../../references/components/drivers.md](../../references/components/drivers.md)
 3. ยืนยันว่า dependencies ลง `package.json` ถูกต้อง (`drizzle-orm` เป็น runtime dep, `drizzle-kit` เป็น dev)
-4. ถ้าไม่แน่ใจ version/API → ทำ `/learn-web` ดู official docs
+4. ถ้าไม่แน่ใจ version/API → ทำ `/learn web` ดู official docs
 
 ### 3. Configure drizzle.config.ts
 

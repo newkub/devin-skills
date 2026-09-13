@@ -3,8 +3,8 @@ name: create-git-branch
 description: สร้าง git branch ใหม่อย่างถูกต้อง
 argument-hint: "[branch-name]"
 related:
-  - cleanup-git-branch
-  - delete-git-branch
+  - cleanup
+  - delete
   - ship
 ---
 
@@ -58,8 +58,8 @@ related:
 - 1 branch ต่อ 1 concern
 - ไม่สร้าง branch ซ้ำ
 
-- ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /delete-git-branch ถ้าจำเป็น
+- ใช้ /cleanup git-branch ถ้าจำเป็น
+- ใช้ /delete git-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

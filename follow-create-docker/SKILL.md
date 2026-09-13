@@ -7,7 +7,7 @@ related:
   - follow-deploy
   - setup-cicd
   - follow-secret-manager
-  - check-secrets-leak
+  - check-secrets
   - run-check
   - report
 ---
@@ -66,7 +66,7 @@ related:
 
 1. เพิ่ม `node_modules`, `target`, `dist`, `build`, `.git`, `.env*`, `*.log`
 2. เพิ่ม test files, docs, CI configs ที่ไม่จำเป็นใน image
-3. ทำ `/check-secrets-leak` เพื่อยืนยันว่าไม่มี secrets ใน context
+3. ทำ `/check-secrets secrets-leak` เพื่อยืนยันว่าไม่มี secrets ใน context
 
 ### 5. Write docker-compose.yml
 

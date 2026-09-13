@@ -4,12 +4,11 @@ description: สร้างหรืออัปเดต ast-grep rules ใน
 argument-hint: "[scope-or-pattern]"
 related:
   - use-astgrep
-  - use-astgrep-programmatic
   - update-project-rules
   - new-skills
   - scan-codebase
   - run-scan
-  - report-in-table
+  - report
   - suggest-next-action
 ---
 
@@ -40,7 +39,7 @@ related:
 > Goal: rules ตรงกับ pattern ที่ต้องการบังคับ
 
 1. รับ pattern/convention ที่ต้องการจาก user หรือ context
-2. ทำ `/use-astgrep` หรือ `/use-astgrep-programmatic` เพื่อสร้าง rule
+2. ทำ `/use-astgrep` (หรือ programmatic subskill) เพื่อสร้าง rule
 3. เขียน rule ด้วย YAML format: `id`, `language`, `rule.pattern`, `message`, `severity`, `fix`
 4. ใช้ meta-variables `$VAR`, `$$$ARGS` ตาม ast-grep rule syntax
 5. เพิ่ม `constraints` หรือ `utils` ถ้า rule ซับซ้อน
@@ -59,7 +58,7 @@ related:
 
 > Goal: สรุป rules ที่สร้าง/อัปเดต
 
-1. ใช้ `/report-in-table` คอลัมน์: `No.`, `Rule`, `Pattern`, `Severity`, `Fix`, `Status`
+1. ใช้ `/report table` คอลัมน์: `No.`, `Rule`, `Pattern`, `Severity`, `Fix`, `Status`
 2. ระบุ rules ที่เพิ่ม แก้ไข หรือลบ
 3. ทำ `/suggest-next-action`
 

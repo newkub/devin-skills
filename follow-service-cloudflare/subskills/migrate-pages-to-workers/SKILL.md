@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - plan
   - ask-me
-  - learn-web
+  - learn
   - use-wrangler
   - resolve-errors
   - update-references
@@ -28,7 +28,7 @@ related:
 > Goal: map from→to ชัดเจนก่อนเริ่ม
 
 1. ทำ `/plan`: ระบุสิ่งที่ Pages ใช้อยู่ — static output dir, `functions/` routes, `_redirects`, `_headers`, env vars/secrets, custom domains
-2. อ่าน official migration guide (Workers Static Assets docs) — ถ้าไม่แน่ใจทำ `/learn-web`
+2. อ่าน official migration guide (Workers Static Assets docs) — ถ้าไม่แน่ใจทำ `/learn` (web)
 3. เขียน rollback path: Pages project เดิมยังอยู่จนกว่า cutover สำเร็จ — กลับได้ด้วยการชี้ domain กลับ
 4. ถ้า scope ไม่ชัดหรือกระทบ production domain → `/ask-me`
 

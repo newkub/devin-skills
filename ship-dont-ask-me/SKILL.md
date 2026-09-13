@@ -9,7 +9,7 @@ related:
   - loop-until-complete
   - run-verify
   - deep-validate
-  - resolve-cicd
+  - resolve-errors
   - report-progress
   - suggest-next-action
   - follow-enter-dot
@@ -62,7 +62,7 @@ Ship code ตาม flow ของ `/ship` ครบทุกขั้นตอ�
 > Goal: วนจน ship สำเร็จหรือถึงจุดทีดีพอ
 
 1. ทำ `/loop-until-complete` สำหรับ validation, staging retry และ CI resolution — ไม่หยุดกลางทางเพื่อถาม
-2. ถ้า validation หรือ staging ไม่ผ่าน → แก้ทีละจุดด้วย `/resolve-errors` หรือ `/resolve-cicd` แล้ววนต่อตาม retry limit ของ `/ship`
+2. ถ้า validation หรือ staging ไม่ผ่าน → แก้ทีละจุดด้วย `/resolve-errors` หรือ `/resolve-errors cicd` แล้ววนต่อตาม retry limit ของ `/ship`
 3. ถ้าถึง max retries หรือเจอ blocker ทีแก้เองไม่ได้ → หยุดและ report สิ่งทีค้าง สาเหตุ และขั้นตอนทีต้องทำต่อ
 
 ### 5. Report

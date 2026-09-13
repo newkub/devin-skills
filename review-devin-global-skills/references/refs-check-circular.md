@@ -1,5 +1,5 @@
 ---
-name: check-circular-dependencies
+name: check-repo-hygiene-circular-dependencies
 description: ไม่ให้ skills อ้างอิงกันเป็นวงกลม
 ---
 

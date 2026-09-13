@@ -5,7 +5,7 @@ argument-hint: "[provider]"
 related:
   - follow-lib-openai
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - run-verify
   - resolve-errors
 ---
@@ -25,7 +25,7 @@ related:
 > Goal: ตรวจ client config และ env vars ปัจจุบัน
 
 1. ตรวจว่ามี `new OpenAI(...)` อยู่แล้วหรือไม่ — merge เดิม ห้าม overwrite
-2. ทำ `/check-env-vars` — ดู `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_ORG_ID`, `OPENAI_PROJECT_ID` ที่ตั้งไว้
+2. ทำ `/check-secrets env-vars` — ดู `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_ORG_ID`, `OPENAI_PROJECT_ID` ที่ตั้งไว้
 3. ระบุ provider ที่ใช้จริง — OpenAI official หรือ compatible endpoint
 
 ### 2. Configure Client Options

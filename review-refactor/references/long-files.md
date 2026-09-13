@@ -9,7 +9,7 @@
 
 ## Detection Tools
 
-- `/check-long-files` สำหรับ scan ไฟล์ที่ยาวกว่า threshold
+- `/check-files long-files` สำหรับ scan ไฟล์ที่ยาวกว่า threshold
 - `Get-ChildItem -Recurse -File -Include *.ts,*.tsx,*.js,*.jsx` สำหรับ file discovery
 - `Measure-Object -Line` สำหรับนับจำนวนบรรทัด
 

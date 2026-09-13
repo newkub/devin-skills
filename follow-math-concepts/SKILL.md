@@ -9,10 +9,10 @@ related:
   - follow-algorithms
   - report-math-equation
   - explain
-  - learn-references
+  - learn
   - follow-lib-fast-check
   - review-performance
-  - learn-by-slide
+  - learn
   - ask-me
 ---
 
@@ -78,7 +78,7 @@ related:
 
 ### 5. Cross Skills
 
-- ใช้ `/follow-algorithms`, `/report-math-equation`, `/explain`, `/learn-references`, `/follow-lib-fast-check`, `/review-performance`, `/learn-by-slide` ตาม context ของปัญหา
+- ใช้ `/follow-algorithms`, `/report-math-equation`, `/explain`, `/learn references`, `/follow-lib-fast-check`, `/review-performance`, `/learn by-slide` ตาม context ของปัญหา
 
 ## Expected Outcome
 

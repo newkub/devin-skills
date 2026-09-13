@@ -4,12 +4,12 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - follow-tool-vitest
   - follow-test
   - follow-tool-playwright
   - follow-tool-biome
-  - run-test-visual
+  - run-test
 ---
 
 ## Goal
@@ -122,7 +122,7 @@ related:
 - รักษา components แบบ isolation
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool storybook)
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool storybook)
 - ใช้ /follow-tool-playwright ถ้าจำเป็น
 - ใช้ /follow-tool-biome ถ้าจำเป็น
 
@@ -130,7 +130,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /run-test (visual) ถ้าจำเป็น
 
 ## Expected Outcome
 

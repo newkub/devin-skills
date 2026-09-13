@@ -8,7 +8,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - resolve-errors
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ Publish VS Code extension ไปยัง Marketplace ด้วย `vsce` — me
 
 ### 3. Docs First
 
-- flags/features ใหม่ของ `@vscode/vsce` → ดู official docs ผ่าน `/learn-web` แทนการเดา
+- flags/features ใหม่ของ `@vscode/vsce` → ดู official docs ผ่าน `/learn web` แทนการเดา
 
 ## Expected Outcome
 

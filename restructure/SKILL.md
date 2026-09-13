@@ -9,7 +9,7 @@ related:
   - update-references
   - rethink
   - deep-review
-  - check-long-files
+  - check-files
 ---
 
 ## Goal
@@ -29,7 +29,7 @@ related:
 วิเคราะห์โครงสร้างปัจจุบันเพื่อระบุปัญหาก่อนเปลี่ยนแปลง
 
 1. ทำ `/deep-review` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
-2. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
+2. ทำ `/check-files long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
 3. ทำ `/review-refactor` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
 4. ถ้าไม่พบปัญหา → stop และ report
 
@@ -83,7 +83,7 @@ related:
 ตรวจสอบว่าผลลัพธ์เป็นไปตามเป้าหมาย
 
 1. รัน build หรือ type check เพื่อยืนยัน import paths ถูกต้อง
-2. ทำ `/check-long-files` เพื่อยืนยันไม่มีไฟล์ที่ยาวกว่า 250 บรรทัด
+2. ทำ `/check-files long-files` เพื่อยืนยันไม่มีไฟล์ที่ยาวกว่า 250 บรรทัด
 3. ทำ `/deep-validate` เพื่อตรวจ cross-references หลังย้ายไฟล์
 4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3 และ re-validate
    - ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report

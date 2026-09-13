@@ -7,7 +7,7 @@ related:
   - follow-best-practice
   - suggest-next-action
   - follow-tool-crw
-  - learn-web
+  - learn
   - run-install
 ---
 
@@ -26,7 +26,7 @@ related:
 > Goal: หา libraries ที่ตรงกับ keyword
 
 1. รับ `<keyword>` จาก argument — ถ้าไม่มีให้ถาม user
-2. ใช้ `follow-tool-crw` หรือ `learn-web` ค้นหา libraries ที่ตรงกับ keyword หรือคล้ายกัน
+2. ใช้ `follow-tool-crw` หรือ `learn` (web) ค้นหา libraries ที่ตรงกับ keyword หรือคล้ายกัน
 3. กรองเฉพาะ libraries ที่เขียนด้วย TypeScript และเป็น ESM
 4. ถ้าไม่เจอที่ตรงเงื่อนไข → แนะนำตัวที่ใกล้เคียงที่สุดพร้อมระบุข้อจำกัด
 
@@ -41,7 +41,7 @@ related:
 ## Rules
 
 - กรองเฉพาะ TypeScript + ESM เสมอ
-- ใช้ `follow-tool-crw` หรือ `learn-web` สำหรับ search
+- ใช้ `follow-tool-crw` หรือ `learn` (web) สำหรับ search
 - ใช้ `list-my-npm-packages` ถ้าต้องการดู packages ที่มีอยู่แล้ว
 - ใช้ `follow-best-practice` ถ้าต้องการ best practices ของ library ที่เลือก
 - ใช้ `suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป

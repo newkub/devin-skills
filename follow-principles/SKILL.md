@@ -14,7 +14,7 @@ related:
   - report
   - suggest-next-action
   - scan-codebase
-  - search-files-patterns
+  - search
   - deep-analyze
   - ask-me
   - check-reference
@@ -43,7 +43,7 @@ related:
 
 > Goal: หาแหล่ง principles ทีมีอยู่
 
-1. ใช้ `/scan-codebase` และ `/search-files-patterns` ค้นหาไฟล์มาตรฐาน:
+1. ใช้ `/scan-codebase` และ `/search files-patterns` ค้นหาไฟล์มาตรฐาน:
    - `PRINCIPLES.md`, `ARCHITECTURE.md`, `DESIGN.md`
    - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
    - `global_rules.md`, `AGENTS.md`

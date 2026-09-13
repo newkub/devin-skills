@@ -69,7 +69,7 @@
 ### 3. Convention Aware
 
 - ใช้ organize-imports config ที่ project มีอยู่ (biome/eslint/prettier sort order)
-- monorepo: ตรวจ boundary rules ร่วมด้วย (`/check-monorepo-boundaries`)
+- monorepo: ตรวจ boundary rules ร่วมด้วย (`/check-monorepo` boundaries subskill)
 
 ## Expected Outcome
 

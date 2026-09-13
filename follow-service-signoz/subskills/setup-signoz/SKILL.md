@@ -5,10 +5,10 @@ argument-hint: "[project-path]"
 related:
   - follow-service-signoz
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -64,7 +64,7 @@ related:
 
 - จำกัด scope ที่ Bun/Node/TypeScript เท่านั้น — runtime อื่นดู official docs
 - เก็บ ingestion key ใน `/follow-secret-manager` ห้าม hardcode หรือ commit
-- ใช้ official docs (`learn-web`/`webfetch`) เป็นแหล่งหลักถ้า env var ไม่แน่ใจ
+- ใช้ official docs (`learn` (web)/`webfetch`) เป็นแหล่งหลักถ้า env var ไม่แน่ใจ
 - ถ้ายืนยัน telemetry ไม่ได้ใน 3 รอบ → stop และ report
 
 ## Expected Outcome

@@ -47,7 +47,7 @@
 
 > Goal: ทดสอบ CLI จริงทุก flow
 
-1. รัน `/run-test-cli` — ทุก command, help, error paths
+1. รัน `/run-test` (cli) — ทุก command, help, error paths
 2. ทดสอบ piping: `<cli> | jq` ต้อง parse stdout ได้
 3. ทดสอบ non-TTY (CI) mode — ไม่มี ANSI garbage ใน logs
 4. ใช้ `/report-before-after` แสดง output ก่อน-หลัง

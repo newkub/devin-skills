@@ -3,7 +3,7 @@ name: setup-feature-flags
 description: ตั้งระบบ feature flags ครบ — flag definitions, evaluation, cleanup path และ naming convention
 argument-hint: "[provider-or-approach]"
 related:
-  - check-unused
+  - check-repo-hygiene
   - review-dependencies
   - ask-me
 ---
@@ -62,7 +62,7 @@ related:
 > Goal: flags ต้องตายได้ ไม่ใช่ตัวตลอดไป
 
 1. Sunset policy: flags ต้องมี expiry — เกินกำหนด flag เป็น debt
-2. Cleanup path: เมื่อ rollout ครบ → ลบ flag + code path เก่า (ทำ `/check-unused`)
+2. Cleanup path: เมื่อ rollout ครบ → ลบ flag + code path เก่า (ทำ `/check-repo-hygiene unused`)
 3. Document process ใน CONTRIBUTING หรือ `.devin/`
 
 ## Rules

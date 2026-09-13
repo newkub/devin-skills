@@ -4,7 +4,7 @@ description: Review, refactor และตรวจ cross-skill consistency ข�
 argument-hint: "[scope]"
 related:
   - update-devin-global-skills
-  - idea-new-devin-global-skills
+  - idea
   - deep-validate
   - deep-review
   - follow-deep
@@ -15,7 +15,6 @@ related:
   - check-skill-usage
   - check-devin-knowledge
   - update-references
-  - idea-merge
   - run-review
 ---
 
@@ -94,7 +93,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. ทำตาม `references/redundancy-inventory-group.md` เพื่อรวบรวมและจัดกลุ่ม skills
 2. ตรวจ duplicate purpose ตาม `references/redundancy-detect-duplicate-purpose.md`, overlapping scope ตาม `references/redundancy-detect-overlapping-scope.md`, redundant content ตาม `references/redundancy-detect-redundant-content.md`, unused skills ตาม `references/redundancy-detect-unused-skills.md`
-3. แนะนำ actions ตาม `references/redundancy-recommend-actions.md` — merge candidates → `/idea-merge`, rename → `/batch-rename-files`
+3. แนะนำ actions ตาม `references/redundancy-recommend-actions.md` — merge candidates → `/idea merge`, rename → `/batch-rename-files`
 4. ถ้าต้อง remove/merge → ขอ user confirm เสมอ แล้วทำตาม `references/redundancy-confirm-execute.md`
 5. คำนวณ score ตาม `references/redundancy-scoring.md`
 
@@ -152,7 +151,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, skill references
 - รายงานเป็นตารางด้วย `/report`
 
-- ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
+- ใช้ /idea new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 

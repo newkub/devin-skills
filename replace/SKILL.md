@@ -3,7 +3,6 @@ name: replace
 description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
 argument-hint: "[scope]"
 related:
-  - use-astgrep-programmatic
   - use-astgrep
   - update-references
   - deep-validate
@@ -31,14 +30,14 @@ related:
 1. SEARCH เนื้อหา x ที่ต้องการแทนที่
 2. MARK ตำแหน่งที่ต้องการแทนที่
 3. PREPARE เนื้อหา y ที่จะนำมาแทนที่
-4. ถ้าเป็น code replacement → ทำ `/use-astgrep-programmatic` เพื่อหา patterns ด้วย AST
+4. ถ้าเป็น code replacement → ทำ `/use-astgrep` programmatic subskill เพื่อหา patterns ด้วย AST
 
 ### 2. Execute Replacement
 
 > Goal: ทำการแทนที่เนื้อหา
 
 1. ถ้าเป็น plain text หรือ regex → ใช้ `edit` หรือ `write` แทนที่
-2. ถ้าเป็น code ทีซับซ้อนหรือต้องการ precision → ใช้ `/use-astgrep-programmatic` สำหรับ AST-based rewrite
+2. ถ้าเป็น code ทีซับซ้อนหรือต้องการ precision → ใช้ `/use-astgrep` programmatic subskill สำหรับ AST-based rewrite
 3. REPLACE x ด้วย y ในไฟล์หรือโค้ดที่ระบุ
 4. VERIFY ว่าการแทนที่ถูกต้อง
 5. CHECK ว่าไม่มีผลข้างเคียงจากการแทนที่
@@ -52,8 +51,8 @@ related:
 
 ## Rules
 
-- ใช้ `/use-astgrep-programmatic` เมื่อ replace ใน source code เพื่อหลีกเลี่ยง false positives
-- ใช้ `/use-astgrep-programmatic` เมื่อต้อง batch replace หลายไฟล์หรือ integrate กับ scripts
+- ใช้ `/use-astgrep` programmatic subskill เมื่อ replace ใน source code เพื่อหลีกเลี่ยง false positives
+- ใช้ `/use-astgrep` programmatic subskill เมื่อต้อง batch replace หลายไฟล์หรือ integrate กับ scripts
 - Follow the project conventions and global rules (replace)
 - Use the allowed tools only when needed
 

@@ -3,7 +3,7 @@ name: set-secret-github
 description: ตั้งค่า GitHub repository secrets ด้วย gh CLI อย่างปลอดภัย
 argument-hint: "<owner>/<repo> <secret-name>"
 related:
-  - resolve-github-actions-fails
+  - resolve-errors
   - ship
   - run-audit
 ---
@@ -62,7 +62,7 @@ gh secret list -R <owner>/<repo>
 - `NPM_TOKEN` — publish ไป npm
 - `GH_PAT` — access private repo / trigger dispatch
 
-Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-github-actions-fails` และ pipeline deploy ของ `/ship`
+Secrets เหล่านี้ถูกใช้โดย workflow ที่ monitor ด้วย `/resolve-errors github-actions` และ pipeline deploy ของ `/ship`
 
 ## Rules
 

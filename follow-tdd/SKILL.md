@@ -1,7 +1,7 @@
 ---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
-argument-hint: "[scope]"
+argument-hint: "[setup-coverage] [scope]"
 related:
   - follow-math-concepts
   - use-related-skills
@@ -72,6 +72,17 @@ related:
 2. รัน lint และ typecheck ถ้ามี
 3. ทำ `/run-verify` เพื่อตรวจ project-wide
 4. ทำ `/git-commit` ถ้ามีการเปลี่ยนแปลง
+
+### Subskills
+
+> Goal: dispatch ไปยัง subskill ตาม topic/argument
+
+| Topic/Argument | Subskill |
+|----------------|----------|
+| `setup-coverage`, `coverage` | `subskills/setup-coverage/SKILL.md` — coverage tooling ตาม ecosystem (vitest, llvm-cov, go cover) |
+
+1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+2. ถ้าไม่ระบุ → ทำตาม steps 1-6 ตามลำดับ
 
 ## Rules
 

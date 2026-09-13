@@ -9,7 +9,7 @@ related:
   - check-release-notes
   - scan-codebase
   - review-devin-global-skills
-  - update-devin-global-rules
+  - update-devin
   - deep-validate
   - update-references
 ---
@@ -64,7 +64,7 @@ related:
 > Goal: skill พร้อมใช้งาน
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions
-2. ทำ `/update-devin-global-rules` เพื่อตรวจ global rules
+2. ทำ `/update-devin global-rules` เพื่อตรวจ global rules
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, TODO, placeholders
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo
 5. ทำ `/ship` เมื่องานเสร็จ
@@ -100,13 +100,16 @@ related:
 - ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm)
 - ทิศทางเดียว: `check` → `review` → `## Fix` — ห้ามย้อนกลับ
 - fix ใดๆ ให้เขียนเป็น `references/fix-*.md` แล้วอ้างจาก section `## Fix` ของ review skill
-- ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge`)
+- ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea merge`)
 
 ### 5. References
 
 - บันทึก external docs ลง `references/`
 - ตรวจ markdown links ไม่ให้ broken
 - อัปเดต `AGENTS.md` ถ้า skill นี้เป้น workflow หลัก
+
+- ใช้ /check-all-routes ถ้าจำเป็น
+- ใช้ /check-release-notes ถ้าจำเป็น
 
 ## Expected Outcome
 

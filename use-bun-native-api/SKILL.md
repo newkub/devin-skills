@@ -4,7 +4,7 @@ description: พัฒนาโปรเจกต์ด้วย Bun native APIs
 argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
-  - follow-create-bun-plugins
+  - follow-create-plugins
   - follow-best-practice
   - setup-cicd
   - use-scripts
@@ -76,7 +76,7 @@ related:
 - Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `use-bun-native-api`
 
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /follow-create-bun-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins (bun) ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น

@@ -67,7 +67,7 @@ related:
 
 เมื่อ finding เป็น `replace` หรือต้องเลือก library:
 
-1. หา alternatives ด้วย `/deep-research` หรือ `/learn-web` — npm trends, GitHub stars, release frequency, bundle size, security advisories
+1. หา alternatives ด้วย `/deep-research` หรือ `/learn` (web) — npm trends, GitHub stars, release frequency, bundle size, security advisories
 2. จำกัดเหลือ 2-3 candidates แล้วให้คะแนน apples-to-apples:
 
 | Criteria | Weight |

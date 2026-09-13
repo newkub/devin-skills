@@ -35,7 +35,7 @@
 1. ทำ `/update-devin-global-skills` สำหรับแต่ละ skill ที่ขาด
 2. สร้าง folder structure ตามมาตรฐาน
 3. เขียน SKILL.md index และ content files
-4. ใช้ `/learn-web` ก่อนเขียนเนื้อหา
+4. ใช้ `/learn` (web) ก่อนเขียนเนื้อหา
 
 ### 4. Update Test Specs
 
@@ -118,5 +118,5 @@
 
 - ❌ สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
 - ❌ สร้าง skills แบบ manual ไม่ตามมาตรฐาน
-- ❌ ข้าม `/learn-web` ก่อนเขียนเนื้อหา
+- ❌ ข้าม `/learn` (web) ก่อนเขียนเนื้อหา
 - ❌ ไม่ตรวจสอบคุณภาพ content

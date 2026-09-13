@@ -9,7 +9,7 @@ related:
   - setup-package
   - setup-release
   - follow-devin-global-skills
-  - update-devin-global-subagents
+  - update-devin
   - follow-tool-mise
   - follow-tool-moonrepo
   - deep-validate
@@ -18,9 +18,8 @@ related:
 
 ## See Also
 
-- `check-env-vars`
+- `check-secrets`
 - `check-config-drift`
-- `check-hardcoded-values`
 
 ## Goal
 
@@ -115,7 +114,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - เขียนเฉพาะสิ่งที่ต่างจาก default พร้อม comment
 - เก็บเฉพาะ config หลักๆ ที่มีผลต่อ project
 
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น (config\SKILL.md)
+- ใช้ /update-devin global-subagents ถ้าจำเป็น (config\SKILL.md)
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
@@ -128,7 +127,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 1. env vars: เทียบ `.env.example` vs code usage — ครบ + ลบ unused
 2. validation: schema ที่ startup, defaults ปลอดภัย, coercion ถูก
 3. secrets/hardcode: ย้าย env/secret manager, prefix rules ถูก (client vs server)
-4. drift: `/report-config-drift` reconcile ข้าม envs; consolidate sprawl
+4. drift: `/check-config-drift` report-drift subskill reconcile ข้าม envs; consolidate sprawl
 5. verify: boot ทุก env ผ่าน + missing-var error ชัด
 ## References
 

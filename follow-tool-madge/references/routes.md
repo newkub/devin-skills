@@ -12,4 +12,4 @@
 - CI gate: `madge --circular src/` exit code ≠ 0 ถ้าเจอ cycle
 - `--ts-config tsconfig.json` สำหรับ path alias (`@/...`)
 - Programmatic: `const res = await madge('src', opts); res.circular()`
-- ใช้คู่ `/check-circular-dependencies`, `/visualize-repo`
+- ใช้คู่ `/check-repo-hygiene circular-dependencies`, `/visualize-repo`

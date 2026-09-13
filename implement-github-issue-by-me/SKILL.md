@@ -5,8 +5,8 @@ argument-hint: "[repo-or-filter]"
 related:
   - implement-to-production
   - resolve-github-issue-by-me
-  - create-github-issue
-  - list-github-issue
+  - create-github
+  - list-github
   - create-plan-in-dot-devin
   - run-verify
   - ask-me
@@ -39,7 +39,7 @@ related:
 
 > Goal: รวบรวม issues ที่ฉันสร้าง
 
-1. รัน `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` หรือใช้ `/list-github-issue`
+1. รัน `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` หรือใช้ `/list-github issue`
 2. จัดลำดับตาม labels/priority ถ้ามี มิเช่นนั้นเรียงตาม createdAt เก่า → ใหม่
 3. แสดงรายการ issues ให้ user ดูก่อน implement
 4. ถ้าไม่มี open issues → report และจบ
@@ -80,6 +80,13 @@ related:
 2. ระบุ issues ที่ค้างพร้อมสาเหตุ
 3. แนะนำ next action ถ้ามี issues เหลือ
 
+### Subagents
+
+> Goal: parallelize implementation เมื่อ issues independent กัน
+
+- ใช้ `subagents/issue-implementer.md` เมื่อ queue มีหลาย issues ที่ไม่มี dependencies กันและ user อนุมัติ parallel — spawn ทีละ issue ผ่าน `/use-subagents` โดยแต่ละ agent แยก branch ของตัวเอง แล้ว parent ทำ `/resolve-github-issue-by-me` ทีละ issue หลัง merge
+- ถ้า issues มี dependencies กัน → ทำ sequential ตาม `### 3. Sequential Discipline` ไม่ spawn parallel
+
 ## Rules
 
 ### 1. My Issues Only
@@ -109,7 +116,7 @@ related:
 ### 5. Scope Per Issue
 
 - implement เฉพาะสิ่งที่ issue ระบุ ไม่ขยาย scope
-- ถ้าพบงานเพิ่มเติม → สร้าง issue ใหม่ผ่าน `/create-github-issue` แทนการทำเกิน scope
+- ถ้าพบงานเพิ่มเติม → สร้าง issue ใหม่ผ่าน `/create-github issue` แทนการทำเกิน scope
 
 ## Expected Outcome
 

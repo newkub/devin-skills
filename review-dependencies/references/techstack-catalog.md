@@ -200,7 +200,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 | SMS / OTP | `Twilio` (ดู `/follow-service-twilio`) | - | - |
 | CI Runner | `RunsOn` (ดู `/follow-service-run-on`) | - | - |
 | Deploy Platforms | `Cloudflare Workers` | `NuxtHub` (→Nuxt), `Vercel` (→Next.js), `Railway` (→prototype), `Dokploy`, `Sevalla` (→self-hosted) | - |
-| Bookmarking | `raindrop-cli` (`jvm/raindrop-cli`) — ดู `/list-raindrop-favorite`, `/list-recent-bookmark-raindrop`, `/search-in-raindrop-io` | - | - |
+| Bookmarking | `raindrop-cli` (`jvm/raindrop-cli`) — ดู `/list-raindrop-favorite`, `/list-recent-bookmark-raindrop`, `/search raindrop` | - | - |
 | Secrets Management | `/follow-secret-manager`, `Cloudflare Secrets Store` | - | `/open-web-for-config-secret` |
 
 ## Default Must-Have Libraries

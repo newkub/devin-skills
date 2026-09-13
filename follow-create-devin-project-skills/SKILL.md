@@ -6,8 +6,8 @@ related:
   - update-project-skills
   - update-devin-global-skills
   - update-dot-devin
-  - update-devin-project-rules
-  - update-agents-md
+  - update-devin
+  - update-docs
   - check-skills-related
   - scan-codebase
   - deep-validate
@@ -21,7 +21,7 @@ related:
 
 ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills` แทน)
 
-ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
+ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin project-rules, /update-docs agents-md
 
 - Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-12)
 
@@ -53,7 +53,7 @@ related:
 2. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
 3. ถ้าต้องการ code → สร้าง `src/` ตาม project stack ที่ตรวจจาก manifest
 4. ถ้ามีรายละเอียดเพิ่ม → สร้าง `references/` พร้อม `index.md`
-5. ถ้ามี rules → ใช้ `.devin/rules/` ตาม `/update-devin-project-rules` แทนการฝังใน skill
+5. ถ้ามี rules → ใช้ `.devin/rules/` ตาม `/update-devin project-rules` แทนการฝังใน skill
 
 ### 4. Write SKILL.md
 
@@ -70,9 +70,9 @@ related:
 
 > Goal: skill เชื่อมกับ project artifacts
 
-1. ทำ `/update-agents-md` ให้ `AGENTS.md` อ้างถึง skill ใหม่ถ้าเป็น workflow หลัก
+1. ทำ `/update-docs agents-md` ให้ `AGENTS.md` อ้างถึง skill ใหม่ถ้าเป็น workflow หลัก
 2. ตรวจ `related` ชี้ไป skills ที่มีอยู่จริงทั้ง project และ global
-3. ถ้า skill เกี่ยวกับ hooks/MCP → sync กับ `/update-devin-project-hooks` หรือ `/update-devin-project-mcp`
+3. ถ้า skill เกี่ยวกับ hooks/MCP → sync กับ `/update-devin project-hooks` หรือ `/update-devin project-mcp`
 4. ทำ `/update-dot-devin` ถ้า `.devin/` manifest ต้องอัปเดต
 
 ### 6. Validate And Ship

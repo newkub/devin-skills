@@ -5,7 +5,7 @@ argument-hint: "[action-or-skill]"
 related:
   - follow-your-suggestion
   - continue
-  - report-in-table
+  - report
   - report-progress
   - manage
   - all-this-patterns
@@ -75,7 +75,7 @@ Apply งานถัดไปตาม context หรือผลลัพธ�
 
 > Goal: สรุปลำดับงาน
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Step`, `Action`, `Input From Previous`, `Output`, `Status`
+1. ทำ `/report table` คอลัมน์: `No.`, `Step`, `Action`, `Input From Previous`, `Output`, `Status`
 2. ถ้ามีหลาย step ค้าง → ทำ `/report-progress` แสดง progress bar
 3. ทำ `/suggest-next-action`
 

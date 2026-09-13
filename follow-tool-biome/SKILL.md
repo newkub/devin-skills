@@ -3,7 +3,7 @@ name: follow-tool-biome
 description: ตั้งค่าและใช้งาน Biome สำหรับ linting และ formatting แทน ESLint/Prettier
 argument-hint: "[scope]"
 related:
-  - follow-create-biome-plugins
+  - follow-create-plugins
   - use-agent-browser
   - use-astgrep
   - follow-tool-usage
@@ -197,7 +197,7 @@ jobs:
 - Types: สำหรับ type analysis (มีผลต่อ performance)
 - Vue: สำหรับ Vue projects
 
-- ใช้ /follow-create-biome-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins (biome) ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

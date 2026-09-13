@@ -7,7 +7,7 @@ related:
   - list-workspaces
   - scan-codebase
   - follow-tasks
-  - check-unused
+  - check-repo-hygiene
   - run-audit
   - deep-review
   - run-verify
@@ -17,12 +17,7 @@ related:
   - refactor-workspace
   - review-dependencies
   - run-review
-  - run-test-all
 ---
----  - check-file-encoding
-  - check-path-length
-  - check-broken-symlinks
-
 
 ## Goal
 
@@ -89,6 +84,13 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 - ทำ `/report`
 - ทำ `/suggest-next-action`
 
+### Subagents
+
+> Goal: parallelize review เมื่อ workspace ใหญ่และแบ่ง areas ได้
+
+- ใช้ `subagents/area-reviewer.md` เมื่อ workspace มีหลาย dirs/packages ที่ review แยกกันได้ (เช่น `src/api/`, `src/ui/`, `packages/*`) — spawn ทีละ area ผ่าน `/use-subagents` แล้ว merge findings ทุก area ก่อน score/report ใน Step 7
+- ถ้า workspace เล็กหรือ areas แชร์ files กันมาก → review เองไม่ spawn
+
 ## Rules
 
 1. Scope Boundary
@@ -111,7 +113,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 - ใช้ /check-monorepo ถ้าจำเป็น
 - ใช้ /list-workspaces ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /check-unused ถ้าจำเป็น
+- ใช้ /check-repo-hygiene unused ถ้าจำเป็น
 - ใช้ /run-audit ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น

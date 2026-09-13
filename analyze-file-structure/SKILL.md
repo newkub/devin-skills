@@ -7,7 +7,7 @@ related:
   - report
   - follow-create-rust-cli
   - review-dependencies
-  - report-in-html
+  - report
 ---
 
 ## Goal
@@ -44,7 +44,7 @@ related:
 
 1. ใช้ `--json` แล้วส่งไปยัง `/report` หรือ `/report-file-structure`
 2. กรณี simple output ใช้ `--stats` แล้วอ่านค่าผ่าน terminal
-3. ถ้าต้องการ visualize ใน browser → ใช้ `/report-in-html`
+3. ถ้าต้องการ visualize ใน browser → ใช้ `/report html`
 
 ## Rules
 

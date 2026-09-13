@@ -5,7 +5,7 @@ argument-hint: "[range]"
 related:
   - git-commit
   - refactor-commit
-  - list-git-commit
+  - list-git
   - follow-tool-hk
   - report
 ---
@@ -83,9 +83,11 @@ related:
 - ทุก flag ต้องมี suggested rewrite หรือเหตุผลที่ชัด
 - ไม่ flag bot commits (`dependabot`, `renovate`) เว้นแต่ repo บังคับ format
 
-- ใช้ /list-git-commit ถ้าจำเป็น
+- ใช้ /list-git commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /follow-tool-hk ถ้าจำเป็น
+
+- ใช้ /git-commit ถ้าจำเป็น
 
 ## Expected Outcome
 

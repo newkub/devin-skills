@@ -3,7 +3,7 @@ name: resolve-github-issue-by-me
 description: ปิดหรือ resolve GitHub issues ที่สร้างโดยฉันหลัง implement เสร็จผ่าน `gh issue`
 argument-hint: "[issue-or-scope]"
 related:
-  - list-github-issue
+  - list-github
   - implement-github-issue-by-me
   - implement-to-production
   - resolve-github-pr
@@ -38,7 +38,7 @@ related:
 
 > Goal: รวบรวม issues ที่สร้างโดยฉัน
 
-1. รัน `gh issue list --author @me --state open --limit 50` หรือใช้ `/list-github-issue`
+1. รัน `gh issue list --author @me --state open --limit 50` หรือใช้ `/list-github issue`
 2. ถ้าระบุ issue number → ใช้ `gh issue view <issue>` ตรวจสอบว่า author เป็นฉัน
 3. อ่าน body และ comments ของแต่ละ issue เพื่อดู acceptance criteria
 4. ถ้าไม่มี open issues ที่ฉันสร้าง → report และจบ

@@ -5,17 +5,13 @@ argument-hint: "[scope]"
 related:
   - update-config
   - update-dot-devin
-  - update-readme-md
-  - update-agents-md
-  - update-usage-md
+  - update-docs
   - update-project-rules
   - update-specs
   - update-examples
   - update-project-skills
   - update-github-metadata
-  - update-todo-md
   - update-version-to-latest
-  - update-project
   - deep-review
 ---
 
@@ -72,21 +68,21 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
-   - `/update-readme-md`
-   - `/update-agents-md`
-   - `/update-usage-md` เพื่อสร้าง/อัปเดต `USAGE.md` ที่ root ของแต่ละ workspace
-   - `/update-features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
+   - `/update-docs readme-md`
+   - `/update-docs agents-md`
+   - `/update-docs usage-md` เพื่อสร้าง/อัปเดต `USAGE.md` ที่ root ของแต่ละ workspace
+   - `/update-docs features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
    - `/update-specs` เพื่อสร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
    - `/update-tests` เพื่ออัปเดต test setup
-   - `/update-todo-md` (ถ้ามี `TODO.md`)
+   - `/update-docs todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
    - `/deep-review` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
-   - `/update-contributing-md`
+   - `/update-docs contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
 7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
 8. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
@@ -106,6 +102,13 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 1. ทำ `/update-github-metadata` เพื่อ sync description, homepage, topics กับ `README.md` และ `package.json`
 2. ทำ `/follow-github` เพื่อตั้ง branch protection บน `main` และ integration branch ตาม project conventions และ `.github` templates (optional)
 3. ยืนยันว่า metadata และ branch protection ตรงกับ project conventions
+
+### Subagents
+
+> Goal: parallelize updates เมื่อมีหลาย sub-projects ที่ independent กัน
+
+- ใช้ `subagents/project-updater.md` เมื่อต้องอัปเดตหลาย sub-projects/workspaces ที่ไม่พึ่งกัน — spawn ทีละ `project-path` ผ่าน `/use-subagents` โดยส่ง `update-scope` แล้วรวม update reports ก่อน validate/report
+- ถ้า sub-projects แชร์ config/deps กัน → ทำ sequential ไม่ spawn parallel
 
 ### 6. Validate And Report
 

@@ -22,7 +22,7 @@
 1. ใช้ `/research-dependencies` และ `/list-dependencies` ดู tree
 2. วัดขนาด: `node_modules` size, bundle contribution (source-map-explorer, `vite-bundle-visualizer`)
 3. หา duplicates: หลาย versions ของ package เดียว (`npm ls`, `pnpm why`, `bun pm`)
-4. ใช้ `/check-unused` หา deps ที่ไม่ถูกใช้
+4. ใช้ `/check-repo-hygiene unused` หา deps ที่ไม่ถูกใช้
 
 ### 2. Identify Replacement Candidates
 

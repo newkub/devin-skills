@@ -4,7 +4,6 @@ description: Review test strategy, quality, และผลลัพธ์หล
 argument-hint: "[scope]"
 related:
   - run-test
-  - run-test-coverage
   - update-tests
   - follow-test
   - follow-tdd

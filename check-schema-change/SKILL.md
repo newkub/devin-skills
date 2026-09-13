@@ -8,7 +8,6 @@ related:
   - diff-file-history
   - compare-directories
   - check-migrations
-  - report-in-table
   - report
   - suggest-next-action
   - run-drizzle-studio
@@ -30,7 +29,7 @@ related:
 
 > Goal: รู้ว่า schema files อยู่ไหน
 
-1. ใช้ `/search-files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
+1. ใช้ `/search files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
 2. ระบุ ORM ที่ใช้จาก `package.json` dependencies
 
 ### 2. Compare Versions
@@ -53,7 +52,7 @@ related:
 
 > Goal: สรุปการเปลี่ยนแปลง
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Table`, `Change`, `Type`, `Severity`, `Migration`
+1. ทำ `/report table` คอลัมน์: `No.`, `Table`, `Change`, `Type`, `Severity`, `Migration`
 2. ระบุ breaking changes และ backward-compatible changes
 3. ทำ `/suggest-next-action`
 

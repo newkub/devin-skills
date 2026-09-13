@@ -8,7 +8,7 @@ related:
   - follow-tool-cargo
   - update-tests
   - follow-test
-  - run-test-mutation
+  - run-test
 ---
 
 ## Goal
@@ -125,7 +125,7 @@ related:
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-test-mutation ถ้าจำเป็น
+- ใช้ /run-test (mutation) ถ้าจำเป็น
 
 ## Expected Outcome
 

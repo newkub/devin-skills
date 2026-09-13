@@ -22,7 +22,7 @@
 1. สร้าง `src/core/` directory (หรือ package `@scope/name-core` ใน monorepo)
 2. Implement business logic ด้วย vanilla TypeScript
 3. สร้าง utility functions โดยใช้ standard Web APIs เท่านั้น
-4. ห้าม import framework dependencies ใน `src/core/` — ตรวจด้วย lint rule หรือ `check-circular-dependencies`
+4. ห้าม import framework dependencies ใน `src/core/` — ตรวจด้วย lint rule หรือ `check-repo-hygiene`
 
 ## 3. Create Adapters
 

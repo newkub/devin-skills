@@ -13,7 +13,7 @@ skill ที่ระบุ CLI, web, หรือ MCP server มี `src/` dire
 3. สำหรับ MCP server: ใช้ `/follow-create-mcp` (พยายาม Rust ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript)
 4. เลือก entry point ตาม stack เช่น `src/presentation/cli.ts` สำหรับ Bun/TS, `src/main.rs` สำหรับ Rust, หรือ `src/index.ts`/`src/main.rs` สำหรับ MCP
 5. รันทดสอบด้วยคำสั่งที่เหมาะสมกับ stack เช่น `bun run dev`, `cargo run`, หรือ `bunx serve src/`. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
-6. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
+6. ถ้า skill มี `src/` → ทำ `/convert git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 
 ## Rules
 
@@ -24,4 +24,4 @@ skill ที่ระบุ CLI, web, หรือ MCP server มี `src/` dire
 - ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry สำหรับ web
 - ตรวจสอบว่า dev/build/run ทำงานได้ด้วยคำสั่งของ stack นั้น
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
-- skill ที่มี `src/` ต้องถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules`
+- skill ที่มี `src/` ต้องถูกแปลงเป็น submodule ผ่าน `/convert git-submodules`

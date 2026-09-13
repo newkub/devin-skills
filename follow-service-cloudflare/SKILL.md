@@ -5,9 +5,9 @@ argument-hint: "[setup-wrangler|config-bindings|deploy-worker|migrate-pages-to-w
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - create-cloudflare-token
+  - create-cloudflare
   - deploy-to-cloudflare
-  - resolve-cicd
+  - resolve-errors
   - follow-tool-mise
   - follow-tasks
 ---
@@ -214,9 +214,9 @@ export default defineNuxtConfig({
 หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น (service cloudflare)
-- ใช้ /create-cloudflare-token ถ้าจำเป็น
+- ใช้ /create-cloudflare token ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /resolve-cicd ถ้าจำเป็น
+- ใช้ /resolve-errors cicd ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 

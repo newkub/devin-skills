@@ -83,6 +83,13 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 3. ทำ `/report` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
 4. ทำ `/suggest-next-action`
 
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
+
+- session lifecycle, expiry, storage, cookie flags findings → `subskills/fix-sessions/SKILL.md`
+- token refresh, rotation, storage, transport, JWT findings → `subskills/fix-tokens/SKILL.md`
+
 ## Rules
 
 - ไม่ exploit หรือ test บน production

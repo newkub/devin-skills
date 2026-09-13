@@ -3,7 +3,7 @@ name: follow-lib-edgejs
 description: ตั้งค่าและใช้งาน Edge.js template engine สำหรับ Node.js
 argument-hint: "[scope]"
 related:
-  - report-in-table
+  - report
   - deep-validate
 ---
 
@@ -136,7 +136,7 @@ server.listen(3000)
 1. รัน `bun run typecheck` หรือ `tsc --noEmit` ถ้าใช้ TypeScript
 2. รัน `bun test` หรือ test suite ที่มี
 3. ตรวจสอบว่าไม่มี reserved keywords ถูก override
-4. ทำ `/report-in-table` สรุป status คอลัมน์: `No.`, `Check`, `Status`, `Notes`
+4. ทำ `/report table` สรุป status คอลัมน์: `No.`, `Check`, `Status`, `Notes`
 5. ทำ `/deep-validate` แล้ว `/ship`
 
 ## Rules

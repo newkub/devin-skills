@@ -4,7 +4,7 @@ description: รายการ bookmarks ที่ favorite (important) จา�
 argument-hint: "[collection]"
 related:
   - list-recent-bookmark-raindrop
-  - search-in-raindrop-io
+  - search
   - report
 ---
 
@@ -33,7 +33,9 @@ related:
 
 ### 2. Alternative — Search
 
-1. `raindrop search "important:true" --json` เมื่อต้อง combine operators เช่น `important:true tag:rust`
+> Goal: ค้นหา favorites เมื่อ list ไม่พอ
+
+1. `raindrop search "tag:rust" --type link --collection <id> --json` เมื่อต้อง combine operators เช่น `tag:rust` + `--collection` (หมายเหตุ: `raindrop search` ไม่มี `--favorites`/`important:` operator — favorites ใช้ `raindrop list --favorites` เท่านั้น)
 
 ### 3. Report
 
@@ -60,7 +62,7 @@ related:
 
 - `--json` + `jq -r` เป็น default
 
-- ใช้ /search-in-raindrop-io ถ้าจำเป็น
+- ใช้ /search raindrop ถ้าจำเป็น
 - ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 
 ## Expected Outcome

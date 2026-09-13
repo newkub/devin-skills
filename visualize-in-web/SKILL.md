@@ -3,12 +3,12 @@ name: visualize-in-web
 description: สร้าง visual แบบ Web ใน browser บน OS temp directory
 argument-hint: "[scope]"
 related:
-  - report-in-html
-  - open-web
+  - report
+  - open
   - open-files-in-web
   - visualize-project
   - open-readme-html
-  - run-test-visual
+  - run-test
 ---
 
 ## Goal
@@ -49,14 +49,14 @@ related:
 
 > Goal: สร้าง visual แบบ HTML
 
-1. ทำ `/report-in-html` สำหรับ HTML structure พื้นฐาน
+1. ทำ `/report html` สำหรับ HTML structure พื้นฐาน
 2. ใช้ runtime ที่เลือกจากข้อ 2
 3. ใช้ Tailwind CSS สำหรับ styling
 4. ถ้าต้องการ tab system ให้อ้างอิง `/open-readme-html`
 5. สร้างไฟล์ใน OS temp directory:
    - Windows: `$env:TEMP\visualize-<name>.html`
    - macOS/Linux: `tmp/visualize-<name>.html`
-6. ทำ `/open-web` เพื่อเปิดใน browser
+6. ทำ `/open web` เพื่อเปิดใน browser
 
 ### 4. Design Visual Layout
 
@@ -91,7 +91,7 @@ related:
 
 ### 2. Web Standards
 
-- ทำตาม `/report-in-html` สำหรับ HTML structure
+- ทำตาม `/report html` สำหรับ HTML structure
 - เลือก frontend runtime ตาม user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
 - ใช้ Tailwind CSS CDN
 - รองรับ dark mode
@@ -111,7 +111,7 @@ related:
 - ใช้ color/contrast สำหรับ emphasis
 
 - ใช้ /open-files-in-web ถ้าจำเป็น
-- ใช้ /run-test-visual ถ้าจำเป็น
+- ใช้ /run-test (visual) ถ้าจำเป็น
 
 ## Expected Outcome
 

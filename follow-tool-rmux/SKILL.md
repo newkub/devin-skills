@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lang-rust
   - follow-tool-cargo
-  - follow-create-tui-ratatui
+  - follow-create-plugins
   - follow-tool-usage
 ---
 
@@ -103,7 +103,7 @@ related:
 
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /follow-create-tui-ratatui ถ้าจำเป็น
+- ใช้ /follow-create-plugins (tui-ratatui) ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 
 ## References

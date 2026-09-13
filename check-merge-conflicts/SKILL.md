@@ -3,7 +3,7 @@ name: check-merge-conflicts
 description: ทำนาย merge conflicts ก่อน merge จริง — dry-run เทียบ branches โดยไม่แตะ working tree
 argument-hint: "[source-branch] [target-branch]"
 related:
-  - merge-git-branch
+  - merge
   - report
 ---
 
@@ -13,7 +13,7 @@ related:
 
 ## Scope
 
-- ใช้ก่อน `/merge-git-branch` หรือก่อนสร้าง/อัปเดต PR
+- ใช้ก่อน `/merge git-branch` หรือก่อนสร้าง/อัปเดต PR
 - ครอบคลุม: textual conflicts (บรรทัดเดียวกันแก้ทั้งสองฝั่ง), semantic conflicts (rename/delete cross), diverged branches
 - Read-only ต่อ working tree — ไม่ merge จริง
 

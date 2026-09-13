@@ -48,7 +48,7 @@
 
 > Goal: ยืนยัน contract ไม่เปลี่ยนผิดและเล็กลง
 
-1. `/run-test-api` — responses ต้อง valid ตาม contract
+1. `/run-test` (api) — responses ต้อง valid ตาม contract
 2. เทียบ bytes และ serialization time — `/report-before-after`
 3. ระวัง: field removal = breaking change สำหรับ external consumers — ตรวจ `/check-backward-compatibility`
 

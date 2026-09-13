@@ -53,7 +53,7 @@ related:
 
 1. ทำ `/report` คอลัมน์: `No.`, `Repo`, `Path`, `Staged`, `Modified`, `Untracked`, `Stashes`, `Severity`
 2. เรียง severity สูง → ต่ำ
-3. แนะนำ `/git-commit` หรือ `/git-commit-selected-files` ต่อ repo ที่มีงานค้าง
+3. แนะนำ `/git-commit` หรือ `/git-commit selected-files` ต่อ repo ที่มีงานค้าง
 
 ## Rules
 

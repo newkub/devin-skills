@@ -5,7 +5,7 @@ skill package ผ่านเกณฑ์ทั้งหมด
 ## Steps
 
 1. ทำ `/deep-validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
-2. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
+2. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการแก้ `related`
 3. ถ้ามี `.devin/rules/` → ทำ `/review-rules` เพื่อตรวจคุณภาพ rules
 4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 

@@ -6,7 +6,7 @@ related:
   - follow-tool-playwright
   - use-astgrep
   - migration-by-astgrep
-  - run-test-e2e
+  - run-test
   - update-tests
 ---
 
@@ -62,7 +62,7 @@ Migrate E2E test suite จาก Cypress ไป Playwright อย่างปล
 > Goal: suite เขียวบน Playwright แล้วลบ Cypress
 
 1. รัน `bunx playwright test` — specs ที่ migrate ต้องเขียวทั้งหมด; เปรียบเทียบ coverage กับ Cypress suite เดิม
-2. ใช้ `--last-failed` re-run เฉพาะที่ fail; ทำ `/run-test-e2e` ยืนยันรอบสุดท้าย
+2. ใช้ `--last-failed` re-run เฉพาะที่ fail; ทำ `/run-test` (e2e) ยืนยันรอบสุดท้าย
 3. เมื่อเขียว: ลบ `cypress`, `cypress.config.*`, `cypress/` dir, eslint plugins — แยก commit
 4. ทำ `/check-deprecated-apis` เช็ค `cy.` เหลือ → เสร็จแล้ว `/report-before-after` แล้ว `/ship`
 

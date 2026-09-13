@@ -8,7 +8,7 @@ related:
   - review-quality
   - deep-review-then-fix
   - follow-parallel
-  - report-in-table
+  - report
   - ask-me
   - run-review
 ---
@@ -70,7 +70,7 @@ related:
 
 > Goal: ส่งต่อผลให้ action หลัก
 
-1. ทำ `/report-in-table` คอลัมน์: No., Review, เหตุผลที่เลือก, Status, Findings
+1. ทำ `/report table` คอลัมน์: No., Review, เหตุผลที่เลือก, Status, Findings
 2. สรุปว่า gate ผ่านหรือมี blockers
 3. proceed ไป action หลัก
 

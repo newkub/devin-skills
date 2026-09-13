@@ -3,7 +3,7 @@ name: update-github-issue
 description: แก้ไข title, body, comments, labels, assignees, metadata ของ GitHub issue ด้วย `gh issue edit`
 argument-hint: "[issue-number] [repo]"
 related:
-  - create-github-issue
+  - create-github
   - ask-me
 ---
 
@@ -15,7 +15,7 @@ related:
 
 - แก้ไข issue title, body, labels, assignees, milestone, project, type, parent
 - เพิ่มหรือแก้ไข comments
-- ใช้ `create-github-issue/templates/<type>.md` ถ้าต้อง reformat body หรือ comment
+- ใช้ `create-github/subskills/issue/templates/<type>.md` ถ้าต้อง reformat body หรือ comment
 - รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
 
 ## Execute
@@ -33,7 +33,7 @@ related:
 
 > Goal: แก้ไขเนื้อหาหลักของ issue
 
-1. เลือก template จาก `create-github-issue/templates/<type>.md`
+1. เลือก template จาก `create-github/subskills/issue/templates/<type>.md`
 2. แทนที่ placeholders ด้วยข้อมูลใหม
 3. บันทึกลง temp file
 4. รัน `gh issue edit <number> --body-file <body.md>`
@@ -77,7 +77,7 @@ related:
 
 ### 2. Templates
 
-- ถ้าแก้ไข body หรือ comment ของ `idea` issue ใช้ `create-github-issue/templates/idea.md`
+- ถ้าแก้ไข body หรือ comment ของ `idea` issue ใช้ `create-github/subskills/issue/templates/idea.md`
 - ตารางต้องเป็น `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
 - Todo ต้องเป็นตาราง `Action | Files | Dependencies | Workspace`
 - UX/UI Sketch ต้องเป็น ANSI art จาก project analysis จริง หัวข้อต้องไม่มี `(ANSI)`

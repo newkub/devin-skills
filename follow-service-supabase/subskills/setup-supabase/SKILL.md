@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-service-supabase
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - resolve-errors
   - run-verify
   - suggest-next-action
@@ -65,7 +65,7 @@ related:
 - ใช้ `supabase/config.toml` เป็น single source of truth
 - ห้าม hardcode keys หรือ commit secrets — ใช้ `/follow-secret-manager` เสมอ
 - `SUPABASE_SERVICE_ROLE_KEY` ใช้ฝั่ง server เท่านั้น ห้าม expose ไป client
-- ถ้า command/API ไม่แน่ใจ → ดู official docs หรือทำ `learn-web` ก่อน
+- ถ้า command/API ไม่แน่ใจ → ดู official docs หรือทำ `learn` (web) ก่อน
 - เสร็จแล้วทำ `/suggest-next-action`
 
 ## Expected Outcome

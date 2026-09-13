@@ -3,7 +3,6 @@ name: use-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - use-astgrep-programmatic
   - update-project-rules
   - check-code-structure
   - replace
@@ -78,7 +77,7 @@ related:
 7. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
 8. ถ้า matches เยอะเกิน → ปรับ pattern ให้จำเพาะขึ้น
 9. ถ้าต้องการแก้ไข → ส่งต่อ `/replace`
-10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
+10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ programmatic subskill (`subskills/programmatic/SKILL.md`)
 11. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules
@@ -127,10 +126,16 @@ related:
 - ทดสอบ pattern บนไฟล์ตัวอย่างก่อนรันทั้ง project
 - ปล่อยให้ ast-grep auto-detect ภาษา หรือระบุ `--lang` ถ้า extension ไม่มาตรฐาน
 - ถ้า matches เยอะเกิน → เพิ่ม constraints หรือ filters
-- ถ้า pattern ซับซ้อน → ทำ `/use-astgrep-programmatic`
+- ถ้า pattern ซับซ้อน → ทำ programmatic subskill (`subskills/programmatic/SKILL.md`)
 - ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-project-rules`
 
 - ใช้ /check-code-structure ถ้าจำเป็น
+
+### Subskills
+
+| Subskill | เมื่อไร |
+|----------|--------|
+| `subskills/programmatic/SKILL.md` (`use-astgrep-programmatic`) | batch/programmatic ast-grep ผ่าน Bun scripts, napi bindings, integrate กับ review CLI |
 
 ## Expected Outcome
 

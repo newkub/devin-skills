@@ -39,7 +39,7 @@
 
 1. สรุป risk matrix
 2. แนะนำ top 5 ทีต้อง fix ก่อน
-3. เชื่อมโยงกับ `check-secrets-leak` หรือ `analyze-attack-surface`
+3. เชื่อมโยงกับ `check-secrets` หรือ `analyze-attack-surface`
 
 ## Rules
 ### 1. No False Confidence

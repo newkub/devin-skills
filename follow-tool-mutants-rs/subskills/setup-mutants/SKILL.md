@@ -7,7 +7,7 @@ related:
   - follow-lang-rust
   - follow-tool-cargo
   - follow-tool-nextest
-  - run-test-mutation
+  - run-test
 ---
 
 ## Goal

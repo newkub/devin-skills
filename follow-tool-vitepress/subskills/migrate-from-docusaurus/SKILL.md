@@ -58,7 +58,7 @@ related:
 > Goal: ตรวจว่า site ใหม่ทำงานเทียบเท่าก่อนลบของเก่า
 
 1. รัน `vitepress dev` + `vitepress build` — ตรวจทุกหน้าสำคัญ render ถูก, links ไม่ dead
-2. ทำ `/check-dead-link` บน site ใหม่
+2. ทำ `/check-repo-hygiene dead-link` บน site ใหม่
 3. spot-check admonitions, code blocks, images, i18n routes
 4. ผ่านแล้ว → ลบ Docusaurus deps/config ออก, แก้ deploy workflow เป็น VitePress build — ทำ `/update-references` และอัปเดต docs/README
 5. ทำ `/report-before-after` แล้ว `/ship`
@@ -81,7 +81,7 @@ related:
 - feature ที่ VitePress ไม่มีตรงๆ (blog, versioning, MDX plugins) → ระบุ gap ให้ user ตัดสินใจก่อนลงมือ
 
 - ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /check-dead-link ถ้าจำเป็น
+- ใช้ /check-repo-hygiene dead-link ถ้าจำเป็น
 
 ## Expected Outcome
 

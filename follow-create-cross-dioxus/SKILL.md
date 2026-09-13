@@ -3,8 +3,8 @@ name: follow-create-cross-dioxus
 description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
 argument-hint: "[scope]"
 related:
-  - follow-create-web-astro
-  - follow-create-mobile-cross-capacitor
+  - follow-create-web
+  - follow-create-mobile
   - follow-best-practice
   - setup-cicd
   - review-dependencies
@@ -98,8 +98,8 @@ related:
 - Web: ต้องมี `wasm32-unknown-unknown` target
 - Mobile: ใช้ Dioxus mobile target ตาม official docs
 
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create cross dioxus)
+- ใช้ /follow-create-web astro ถ้าจำเป็น
+- ใช้ /follow-create-mobile cross-capacitor ถ้าจำเป็น (create cross dioxus)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น

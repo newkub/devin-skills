@@ -35,7 +35,7 @@ argument-hint: "[features]"
 
 > Goal: มี app credentials ครบ
 
-1. เปิด GitHub App creation page ด้วย `/open-web` หรือแนะนำ user ไป `Settings → Developer settings → GitHub Apps → New`
+1. เปิด GitHub App creation page ด้วย `/open web` หรือแนะนำ user ไป `Settings → Developer settings → GitHub Apps → New`
 2. หรือใช้ app manifest flow: POST manifest JSON แล้ว redirect user เพื่อรับ `code` → แลกเป็น credentials
 3. เก็บ `APP_ID`, `PRIVATE_KEY` (PEM), `WEBHOOK_SECRET`, `CLIENT_ID`, `CLIENT_SECRET`
 4. ใช้ `/follow-secret-manager` จัดเก็บ — ห้าม commit หรือ log private key

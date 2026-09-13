@@ -7,7 +7,7 @@ related:
   - check-code-structure
   - report
   - use-astgrep
-  - search-files-patterns
+  - search
   - suggest-next-action
   - refactor
 ---
@@ -117,7 +117,7 @@ related:
 
 - ใช้ /check-code-structure ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /search-files-patterns ถ้าจำเป็น
+- ใช้ /search files-patterns ถ้าจำเป็น
 
 ## Expected Outcome
 

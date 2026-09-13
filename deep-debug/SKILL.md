@@ -8,7 +8,7 @@ related:
   - analyze-root-cause-analysis
   - resolve-errors
   - deep-thinking
-  - report-in-table
+  - report
   - report-progress
   - suggest-next-action
   - run-check
@@ -106,7 +106,7 @@ related:
 
 > Goal: สรุปผล debug และ next action
 
-1. ทำ `/report-in-table` คอลัมน์: `No.`, `Step`, `Hypothesis`, `Result`, `Status`
+1. ทำ `/report table` คอลัมน์: `No.`, `Step`, `Hypothesis`, `Result`, `Status`
 2. สรุป root cause, fix, regression tests, preventive measures
 3. ทำ `/report-progress` ถ้ามีหลาย step
 4. ทำ `/suggest-next-action`

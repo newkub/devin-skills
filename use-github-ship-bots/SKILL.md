@@ -17,13 +17,13 @@ related:
   - follow-create-bot
   - implement-github-issue-by-me
   - create-plan-in-dot-devin
-  - create-github-pr
+  - create-github
   - run-verify
-  - resolve-cicd
+  - resolve-errors
   - setup-cicd
   - deploy-to-cloudflare
   - deploy-to-vercel
-  - open-github
+  - open
   - report-progress
 ---
 
@@ -48,7 +48,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 - สร้าง PR พร้อม evidence
 - อัปเดต issue status
 
-- ดูเพิ่มเติม: /setup-cicd, /open-github
+- ดูเพิ่มเติม: /setup-cicd, /open github
 
 ## Execute
 
@@ -113,14 +113,14 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 8. Create PR
 
 > Goal: สร้าง PR
-1. ใช้ `/create-github-pr`
+1. ใช้ `/create-github pr`
 2. ใส่ `Closes #<issue>` ใน PR body
 3. แนบ screenshots, test results, staging preview
 
 ### 9. Monitor And Deploy
 
 > Goal: ติดตาม And Deploy
-1. ใช้ `/resolve-cicd` ติดตาม CI/CD
+1. ใช้ `/resolve-errors cicd` ติดตาม CI/CD
 2. ถ้า pass → merge PR
 3. ถ้ามี deploy → ใช้ `/deploy-to-cloudflare` หรือ `/deploy-to-vercel`
 4. ตรวจสอบ bot ทำงานบน production

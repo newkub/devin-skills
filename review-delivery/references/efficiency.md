@@ -25,7 +25,7 @@
 
 ### Dependencies And Code Splitting
 
-1. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ใช้
+1. ทำ `/check-repo-hygiene unused` เพื่อหา dependencies ที่ไม่ใช้
 2. ทำ `/review-architecture` เพื่อตรวจ barrel files และ import paths
 3. ใช้ `/scan-codebase` หา unused files, dead code, unused exports
 4. ใช้ dynamic `import()` หรือ route-based lazy loading ถ้าเหมาะสม
@@ -44,7 +44,7 @@
 2. ลด unnecessary resources, right-size instances, ใช้ spot/preemptible ถ้าเหมาะสม
 3. ปิด environments/integrations ที่ไม่ใช้
 4. ตรวจ logs retention, observability cost, data transfer
-5. ใช้ `/follow-best-practice` หรือ `/learn-web` สำหรับ cloud stack
+5. ใช้ `/follow-best-practice` หรือ `/learn` (web) สำหรับ cloud stack
 
 ## Rules
 

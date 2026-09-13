@@ -23,11 +23,9 @@ related:
   - check-reference
   - report
   - suggest-next-action
-  - search-in-github-star
-  - search-in-raindrop-io
-  - search-in-npmx
+  - search
   - list-dependencies
-  - check-circular-dependencies
+  - check-repo-hygiene
   - open-web-dependencies
   - run-install
 ---
@@ -41,7 +39,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 ใช้เมื่อต้องเลือก dependencies ใหม่, เปรียบเทียบ libraries, หา compatible versions หรือตรวจ dependencies ใน project ปัจจุบัน
 
 - รองรับ `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
-- ใช้ `/search-in-github-star`, `/search-in-raindrop-io`, `/search-in-npmx` เพื่อหา deps ที fast/modern
+- ใช้ `/search github-star`, `/search raindrop`, `/search npmx` เพื่อหา deps ที fast/modern
 - ไม่แก้ไข manifest files โดยตรง — ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
 
 ## Execute
@@ -60,7 +58,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 > Goal: รวบรวม dependencies ทีมีอยู่
 
-1. ใช้ `/list-dependencies` หรือ `/check-circular-dependencies` ดู tree
+1. ใช้ `/list-dependencies` หรือ `/check-repo-hygiene circular-dependencies` ดู tree
 2. ตรวจ version ปัจจุบันและ source ของแต่ละ dep
 3. ระบุ outdated, duplicate, heavy, หรือ unused deps
 4. บันทึก baseline: จำนวน deps, size, จำนวน outdated
@@ -69,9 +67,9 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 > Goal: หา deps ทีเหมาะกับ tech stack ปัจจุบัน
 
-1. ทำ `/search-in-github-star` หา popular/quality libraries
-2. ทำ `/search-in-raindrop-io` หา bookmarks หรือ comparison ที่เคยเก็บไว้
-3. ทำ `/search-in-npmx` สำหรับ JS/TS packages
+1. ทำ `/search github-star` หา popular/quality libraries
+2. ทำ `/search raindrop` หา bookmarks หรือ comparison ที่เคยเก็บไว้
+3. ทำ `/search npmx` สำหรับ JS/TS packages
 4. ใช้ package registries เบื้องต้น: `npm`, `crates.io`, `pkg.go.dev`, `pypi`
 5. ค้นหาด้วย keywords ที่ตรงกับ capability + `fast`, `modern`, `lightweight`, `zero-dependency`
 
@@ -143,7 +141,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 ### 5. Safety
 
 - ไม่แก้ไข manifest files โดยตรง
-- ใช้ `/check-circular-dependencies` หรือ `/list-dependencies` ก่อนการเปลี่ยนแปลง
+- ใช้ `/check-repo-hygiene circular-dependencies` หรือ `/list-dependencies` ก่อนการเปลี่ยนแปลง
 - ถ้า dep มี security issues → แจ้งและหา alternatives
 
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

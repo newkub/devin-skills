@@ -3,11 +3,11 @@ name: check-my-global-cli
 description: รายงาน CLI tools ในเครื่องและ commands เพื่อประเมินแปลงเป้น devin skills
 argument-hint: "[scope]"
 related:
-  - learn-cli
-  - idea-convert-my-global-cli-to-skills
+  - learn
+  - idea
   - suggest-next-action
   - report
-  - run-test-cli
+  - run-test
 ---
 
 ## Goal
@@ -36,7 +36,7 @@ related:
 
 > Goal: สำรวจ commands และ options ของแต่ละ tool
 
-1. ทำ `/learn-cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
+1. ทำ `/learn cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
 2. บันทึก commands, flags, argument types และ exit codes
 
 ### 3. Evaluate Conversion Candidates
@@ -55,8 +55,8 @@ related:
 
 > Goal: นำเสนอทิศทางถัดไป
 
-1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
-2. ถ้าข้อมูลไม่พอ → ทำ `/learn-cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
+1. ถ้ามี High priority commands → ทำ `/idea convert-my-global-cli-to-skills` เพื่อเริ่ม convert
+2. ถ้าข้อมูลไม่พอ → ทำ `/learn cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
 ## Rules
@@ -82,20 +82,20 @@ related:
 
 - บันทึก command, subcommand, options ทั้งหมด
 - ระบุ flags ที่สำคัญสำหรับ common workflows
-- ไม่ duplicate ข้อมูลจาก `/learn-cli`
+- ไม่ duplicate ข้อมูลจาก `/learn cli`
 
 ### 3. Conversion Criteria
 
 - High: ใช้บ่อย + มี flags หลายตัว + ใช้ใน project หลาย workspace
 - Medium: ใช้บ่อยบางครั้ง หรือ flags ไม่มาก
 - Low: ใช้นานๆ ครั้ง หรือ simple command
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /run-test cli ถ้าจำเป็น
 
 ## Expected Outcome
 
 - ตาราง CLI tools ที่ติดตั้งพร้อม version
 - สรุป commands, options และ flags
 - รายการ commands ที่เหมาะแปลงเป็น skills พร้อม priority
-- คำแนะนำถัดไป เช่น ทำ `/idea-convert-my-global-cli-to-skills`
+- คำแนะนำถัดไป เช่น ทำ `/idea convert-my-global-cli-to-skills`
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน

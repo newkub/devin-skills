@@ -28,7 +28,7 @@ related:
 
 1. ตรวจ `vite` version ใน `package.json` และ list plugins ทั้งหมดใน `vite.config.*`
 2. รัน `vite build` + dev server บน setup เดิม เก็บ build time และ output size เป็น baseline
-3. อ่าน official migration guide ที่ `vite.dev` — ทำ `/learn-web` ถ้าไม่แน่ใจ
+3. อ่าน official migration guide ที่ `vite.dev` — ทำ `/learn` (web) ถ้าไม่แน่ใจ
 4. commit state ปัจจุบันก่อน — migration ต้อง revert ได้
 
 ### 2. Swap Package

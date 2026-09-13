@@ -88,6 +88,14 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 5. ทำ `/report` พร้อม `/report`
 6. ทำ `/suggest-next-action`
 
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+
+| Topic | Subskill |
+|-------|----------|
+| Apply SEO findings — meta/OG tags, sitemap, canonical, structured data | `subskills/improve-seo/SKILL.md` |
+
 ## Rules
 ### 1. Scope Boundary
 

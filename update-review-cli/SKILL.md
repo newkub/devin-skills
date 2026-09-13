@@ -11,7 +11,7 @@ related:
   - new-skills
   - resolve-errors
   - report
-  - run-test-cli
+  - run-test
 ---
 
 ## Goal
@@ -206,7 +206,7 @@ related:
 - ห้ามใช้ `**` (bold markers)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
-- ใช้ /run-test-cli ถ้าจำเป็น
+- ใช้ /run-test (cli) ถ้าจำเป็น
 
 ## Expected Outcome
 

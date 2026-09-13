@@ -48,7 +48,7 @@
 > Goal: ยืนยัน visual ไม่พังและขนาดลด
 
 1. `/run-build` — เทียบ CSS bytes
-2. `/run-test-visual` หรือ manual spot-check pages — unused removal เสี่ยงลบ styles ที่ dynamic
+2. `/run-test` (visual) หรือ manual spot-check pages — unused removal เสี่ยงลบ styles ที่ dynamic
 3. `/report-before-after` แสดง payload delta + coverage %
 
 ## Rules

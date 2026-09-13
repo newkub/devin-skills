@@ -7,7 +7,7 @@ related:
   - run-check
   - follow-secret-manager
   - resolve-errors
-  - learn-web
+  - learn
 ---
 
 ## Goal
@@ -76,7 +76,7 @@ Build และ publish Docker image ไปยัง registry (Docker Hub หร
 
 ### 3. Docs First
 
-- registry-specific features (provenance, attestations, multi-arch) → ดู official docs ผ่าน `/learn-web` แทนการเดา flags
+- registry-specific features (provenance, attestations, multi-arch) → ดู official docs ผ่าน `/learn web` แทนการเดา flags
 
 ## Expected Outcome
 

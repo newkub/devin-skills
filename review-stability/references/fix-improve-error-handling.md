@@ -19,7 +19,7 @@
 1. ทำ `/check-code-structure` เพื่อดู error paths, throw sites, catch blocks
 2. ค้นหา anti-patterns: empty catch, catch-all `catch {}` ที่ swallow errors, `throw` ของ generic `Error`, `any`/`unknown` ที่ไม่ narrow, promise ที่ไม่มี `.catch`/`try-await`
 3. ระบุ error boundaries ของแต่ละ layer (route, service, repository, external calls)
-4. ทำ `/check-long-files` เพื่อหาไฟล์ที่ error handling ปนกับ business logic
+4. ทำ `/check-files long-files` เพื่อหาไฟล์ที่ error handling ปนกับ business logic
 
 ### 2. Design Error Taxonomy
 

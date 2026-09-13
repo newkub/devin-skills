@@ -5,7 +5,7 @@ argument-hint: "[topic-or-goal]"
 related:
   - deep-review
   - review-devin-global-skills
-  - check-unused
+  - check-repo-hygiene
   - review-gaps
   - review-issue
   - deep-review-then-fix
@@ -67,13 +67,13 @@ related:
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-dependencies` |
 | 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-devin-global-skills` |
 | 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-docs` |
-| 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-docs` | `/review-docs` |
-| 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-docs` | `/review-docs` |
+| 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/review-docs` | `/review-docs` |
+| 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/review-docs` | `/review-docs` |
 | 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-docs` | `/review-docs` |
 | 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-docs` |
 | 25 | ตรวจ naming conventions | `/review-quality` | `/review-writing` |
 | 26 | ตรวจ readability | `/review-writing` | `/review-quality` |
-| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-devin-global-skills` | `/check-unused`, `/review-quality` |
+| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-devin-global-skills` | `/check-repo-hygiene unused`, `/review-quality` |
 | 28 | ตรวจ consistency ข้าม skills / code | `/review-quality` | `/review-devin-global-skills` |
 | 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-devin-global-skills` | `/review-quality` |
 | 30 | ตรวจ git diff ก่อน keep/revert | `/review-diff` | `/review-quality` |
@@ -90,7 +90,7 @@ related:
 | 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-devin-global-skills` |
 | 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-devin-global-skills` |
 | 43 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-quality` |
-| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-unused` | `/review-devin-global-skills`, `/review-quality` |
+| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-repo-hygiene unused` | `/review-devin-global-skills`, `/review-quality` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
 2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง

@@ -17,12 +17,12 @@ triggers:
   - user
   - model
 related:
-  - list-devin-global-skills
+  - list-devin
   - new-skills
   - update-devin-global-skills
   - use-related-skills
   - review-devin-global-skills
-  - idea-devin-global-skills-from-session
+  - idea
   - from-chat-session
   - ask-me
 ---
@@ -51,7 +51,7 @@ related:
 
 > Goal: หา skill ทีอาจเหมาะสม
 
-1. ทำ `/list-devin-global-skills` เพื่อดู skills ทีมี
+1. ทำ `/list-devin global-skills` เพื่อดู skills ทีมี
 2. ทำ `/use-related-skills` เพื่อหา skills ทีเกี่ยวข้อง
 3. ใช้ `grep` ค้นหา skill ทีเกี่ยวข้องกับ context แบบ case-insensitive
 4. อ่าน skill ทีมีความเกี่ยวข้องสูง 2-4 ไฟล์
@@ -83,7 +83,7 @@ related:
 > Goal: สร้าง skill ใหมถ้าไม่มีทีเหมาะ
 
 1. ถ้า context ไม่เข้ากับ skill ใดเลย ให้ถาม user ว่าต้องการสร้างใหมหรือไม
-2. ถ้า context มาจาก session pattern ทำ `/idea-devin-global-skills-from-session`
+2. ถ้า context มาจาก session pattern ทำ `/idea devin-global-skills-from-session`
 3. ถ้า user ตกลง ให้ใช้ `/new-skills` หรือ `/update-devin-global-skills`
 4. ตั้งชื่อ skill ให้ตรงกับ directory name และ `description` ≤ 100 ตัวอักษร
 5. ใส่ `related` ครบถ้วน

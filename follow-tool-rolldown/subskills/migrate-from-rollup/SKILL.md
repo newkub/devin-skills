@@ -29,7 +29,7 @@ related:
 1. อ่าน `rollup.config.*` — list `input`, `output` (dir/file/format/plugins), `external`, `plugins`, `treeshake`, `watch`
 2. list plugins ทั้งหมดพร้อม version — แยก `@rollup/plugin-*` official vs community
 3. เก็บ baseline: รัน rollup build เก็บ output file list + sizes
-4. อ่าน official migration guide ที่ `rolldown.rs` — ทำ `/learn-web` ถ้าไม่แน่ใจ
+4. อ่าน official migration guide ที่ `rolldown.rs` — ทำ `/learn` (web) ถ้าไม่แน่ใจ
 5. commit state ก่อนเริ่ม — rollback path ต้องพร้อม
 
 ### 2. Install And Create Config

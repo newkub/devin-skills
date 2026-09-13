@@ -6,8 +6,8 @@ related:
   - check-open-ports
   - resolve-errors
   - watch-terminal
-  - open-web
-  - watch-browser-and-fix
+  - open
+  - watch-browser
   - test-usage
   - run-verify
   - report
@@ -55,14 +55,14 @@ related:
 
 > Goal: Open Web (ถ้าเป็น web)
 
-1. ถ้าเป็น web project ให้ทำ `/open-web` เพื่อเปิด browser ที่ dev server URL
+1. ถ้าเป็น web project ให้ทำ `/open web` เพื่อเปิด browser ที่ dev server URL
 2. ตรวจสอบว่า website เปิดได้และแสดงผลถูกต้อง
 
 ### 5. Watch Browser (ถ้าเป็น web)
 
 > Goal: Watch Browser (ถ้าเป็น web)
 
-1. ถ้าเป็น web project ให้ทำ `/watch-browser-and-fix` เพื่อตรวจสอบ browser
+1. ถ้าเป็น web project ให้ทำ `/watch-browser fix` เพื่อตรวจสอบ browser
 2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
 3. ทดสอบ features หลักทำงานได้
 
@@ -71,7 +71,7 @@ related:
 > Goal: ทดสอบ flow การใช้งานสำคัญ
 
 1. ทำ `/test-usage` เพื่อทดสอบ features หลัก
-2. ถ้าพบปัญหา → ทำ `/watch-browser-and-fix` หรือ `/resolve-errors`
+2. ถ้าพบปัญหา → ทำ `/watch-browser fix` หรือ `/resolve-errors`
 3. ยืนยันว่า user flow สำคัญทำงานได้
 
 ### 7. Verify
@@ -105,9 +105,9 @@ related:
 
 ### 3. Watch Strategy
 
-- ทำ `/open-web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
+- ทำ `/open web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
 - ทำ `/watch-terminal` สำหรับทุก project
-- ทำ `/watch-browser-and-fix` เฉพาะ web project
+- ทำ `/watch-browser fix` เฉพาะ web project
 - ถ้าพบ errors ระหว่าง watch ให้ทำ `/resolve-errors` ทันที
 
 ## Expected Outcome

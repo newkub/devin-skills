@@ -7,13 +7,13 @@ related:
   - follow-layered-architecture
   - follow-microservices-architecture
   - follow-nextjs-architecture
-  - follow-create-web-solid-tanstack-router
+  - follow-create-web
   - follow-monorepo
-  - follow-create-web-nuxt
-  - follow-create-web-svelte
+  - follow-create-web
+  - follow-create-web
   - follow-lib-vue
   - restructure
-  - learn-web
+  - learn
   - rethink
 ---
 
@@ -66,11 +66,11 @@ related:
 
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
-| Nuxt | `nuxt` in dependencies | `/follow-create-web-nuxt` |
+| Nuxt | `nuxt` in dependencies | `/follow-create-web nuxt` |
 | Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
 | Vue.js | `vue` in dependencies | `/follow-lib-vue` |
-| SolidJS | `solid-js` in dependencies | `/follow-create-web-solid-tanstack-router` |
-| Svelte | `svelte` in dependencies | `/follow-create-web-svelte` |
+| SolidJS | `solid-js` in dependencies | `/follow-create-web solid-tanstack-router` |
+| Svelte | `svelte` in dependencies | `/follow-create-web svelte` |
 | Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `/follow-layered-architecture` |
 | Rust | `Cargo.toml` exists | `/follow-clean-architecture` |
 | Bun | `bun` in dependencies | `/follow-clean-architecture` |
@@ -109,7 +109,7 @@ related:
 - ลำดับต้องอ่านง่าย ค้นหาได้ง่าย และสอดคล้องกับวัตถุประสงค์
 
 - ใช้ /restructure ถ้าจำเป็น
-- ใช้ /learn-web ถ้าจำเป็น
+- ใช้ /learn web ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome

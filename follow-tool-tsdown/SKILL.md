@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-rolldown
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - follow-tool-turborepo
   - follow-lang-typescript
   - follow-tool-vitest
@@ -122,7 +122,7 @@ related:
 
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool tsdown)
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool tsdown)
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /follow-tool-vitest ถ้าจำเป็น

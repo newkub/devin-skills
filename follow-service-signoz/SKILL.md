@@ -7,7 +7,7 @@ related:
   - follow-service-cloudflare
   - follow-secret-manager
   - follow-best-practice
-  - learn-web
+  - learn
   - setup-cicd
 ---
 
@@ -115,7 +115,7 @@ Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 
 ### 2. Documentation And Verification
 
-- ใช้ `webfetch` หรือ `learn-web` เพื่อดูเอกสารล่าสุดของ SigNoz
+- ใช้ `webfetch` หรือ `learn` (web) เพื่อดูเอกสารล่าสุดของ SigNoz
 - ตรวจสอบเสมอว่า traces และ logs ขึ้นใน UI จริง
 - ใช้ backticks สำหรับ `commands`, `paths`, `skills`, และ `environment variables`
 

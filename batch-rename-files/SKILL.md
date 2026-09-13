@@ -36,7 +36,7 @@ Rename ไฟล์จำนวนมากตาม pattern — preview ก่�
    - Collisions: หลายไฟล์ map ไปชื่อเดียวกัน
    - No-ops: names ที่ไม่เปลี่ยนจริง
    - Case-only: Windows ที่ rename case-only ต้องสองขั้น (via temp name)
-   - Locked files: ทำ `/check-file-locks` ถ้าสงสัย
+   - Locked files: ทำ `/check-files locks` ถ้าสงสัย
 3. ใช้ `/report`: `No.`, `Old Name`, `New Name`, `Status`, `Issue`
 
 ### 3. Confirm And Execute

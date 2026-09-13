@@ -18,7 +18,7 @@ related:
   - alternative
   - review-frontend
   - resolve-errors
-  - open-web
+  - open
   - ship
   - suggest-next-action
 ---
@@ -89,7 +89,7 @@ related:
 
 1. ใน web project รัน `bun install` แล้ว `bun run dev`
 2. ตรวจว่า graph แสดงถูกต้อง
-3. ทำ `/open-web` เพื่อเปิด browser
+3. ทำ `/open web` เพื่อเปิด browser
 4. ถ้า error → ทำ `/resolve-errors`
 
 ### 7. Ship

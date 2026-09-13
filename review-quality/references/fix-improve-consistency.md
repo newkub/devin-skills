@@ -24,7 +24,7 @@
 > Goal: รู้ว่า codebase ใช้ patterns อะไรอยู่กี่แบบ
 
 1. เลือก dimension จาก `[path-or-dimension]` — ถ้าไม่ระบุให้สแกนทุก dimension แบบ quick pass
-2. ใช้ `/scan-codebase` และ `search-files-patterns`/`use-astgrep` เก็บตัวอย่าง pattern ที่ทำสิ่งเดียวกัน
+2. ใช้ `/scan-codebase` และ `search`/`use-astgrep` เก็บตัวอย่าง pattern ที่ทำสิ่งเดียวกัน
 3. จัดกลุ่ม variants ที่พบ พร้อมนับจำนวน occurrences ต่อ variant
 
 ### 2. Choose Canonical Pattern
@@ -49,7 +49,7 @@
 > Goal: กันไม่ให้ inconsistency กลับมา
 
 1. ถ้ามี linter/formatter ที่บังคับได้ (eslint rule, clippy, biome) → เพิ่ม rule
-2. ถ้าเป็น convention ที่เครื่องมือบังคับไม่ได้ → บันทึกใน `AGENTS.md` หรือ `.devin/rules/` ผ่าน `/update-devin-project-rules`
+2. ถ้าเป็น convention ที่เครื่องมือบังคับไม่ได้ → บันทึกใน `AGENTS.md` หรือ `.devin/rules/` ผ่าน `/update-devin project-rules`
 3. ถ้าต้อง ast-grep rules → ทำ `/update-project-rules`
 
 ### 5. Report

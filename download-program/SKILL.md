@@ -5,9 +5,8 @@ argument-hint: "[program-name]"
 related:
   - update-all-program-in-computer
   - use-pwsh-shell
-  - open-web
-  - search-in-github-star
-  - search-files-patterns
+  - open
+  - search
   - follow-best-practice
   - enhance-prompt
   - run-program
@@ -80,9 +79,9 @@ related:
 
 > Goal: เปิดหน้า download ให้ user ติดตั้งเองถ้า package manager หมดทาง
 
-1. ใช้ `/search-files-patterns` หรือ `/search-in-github-star` หาหน้า download หลักของ program
+1. ใช้ `/search files-patterns` หรือ `/search github-star` หาหน้า download หลักของ program
 2. ถ้าเจอ GitHub repo → เปิด `https://github.com/<owner>/<repo>/releases`
-3. ถ้าเจอ official website → ใช้ `/open-web` เปิดหน้า download
+3. ถ้าเจอ official website → ใช้ `/open web` เปิดหน้า download
 4. ถ้าหาไม่เจอ → ค้นหาในเว็บด้วย `google` หรือ `duckduckgo` แล้วเปิดผลลัพธ์แรก
 5. รายงาน URL ทีเปิดไว้ พร้อมขั้นตอนทั่วไปในการติดตั้ง
 6. หยุดและรอ user ดำเนินการเอง
@@ -121,6 +120,8 @@ related:
 
 - ใช้ /use-pwsh-shell ถ้าจำเป็น
 - ใช้ /run-program ถ้าจำเป็น
+
+- ใช้ /update-all-program-in-computer ถ้าจำเป็น
 
 ## Expected Outcome
 

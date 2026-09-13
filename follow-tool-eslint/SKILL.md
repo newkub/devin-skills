@@ -3,7 +3,7 @@ name: follow-tool-eslint
 description: ตั้งค่า ESLint 10 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
 argument-hint: "[scope]"
 related:
-  - follow-create-eslint-plugins
+  - follow-create-plugins
   - use-agent-browser
   - use-astgrep
   - follow-tool-usage
@@ -195,7 +195,7 @@ export default defineConfig([
 - Migrate จาก v9 → v10 ด้วย codemod `@eslint/v9-to-v10` (และ `@eslint/v9-to-v10-linter-api` สำหรับ API usage)
 - ตรวจ plugin compatibility กับ ESLint 10 ก่อน upgrade (`typescript-eslint`, `eslint-plugin-*`)
 
-- ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins (eslint) ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

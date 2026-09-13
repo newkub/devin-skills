@@ -4,7 +4,7 @@ description: ตรวจ config files ว่า parse ได้ ตรง schem
 argument-hint: "[env-or-config-file]"
 related:
   - report-config-files
-  - check-env-vars
+  - check-secrets
   - update-config
   - report
 ---
@@ -46,7 +46,7 @@ related:
 1. เทียบ `.env.development` vs `.env.production` vs `.env.example` — keys ต่างกัน
 2. เทียบ config ต่อ env (เช่น `config/dev.yaml` vs `config/prod.yaml`) — keys ที่มีใน env เดียว
 3. flag values ที่เหมือนกันทุก env แต่น่าจะต่าง (เช่น `debug: true` ใน prod)
-4. ทำ `/check-env-vars` เพื่อเทียบ env keys กับ code usage
+4. ทำ `/check-secrets env-vars` เพื่อเทียบ env keys กับ code usage
 
 ### 4. Detect Config-Code Drift
 

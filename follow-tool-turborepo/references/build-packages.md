@@ -72,7 +72,7 @@ tests/examples <-- src
 - Use the allowed tools only when needed
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น
 
 ## References
 

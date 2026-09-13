@@ -5,10 +5,9 @@ argument-hint: "[path]"
 related:
   - create-mermaid-diagram
   - review-database
-  - report-in-table
-  - search-files-patterns
-  - run-drizzle-studio
   - report
+  - search
+  - run-drizzle-studio
   - suggest-next-action
 ---
 
@@ -28,7 +27,7 @@ related:
 
 > Goal: หา source ของ schema
 
-1. ใช้ `/search-files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
+1. ใช้ `/search files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
 2. ตรวจ `drizzle.config.ts`, `DATABASE_URL` references และ ORM ที่ใช้
 3. ถ้ามีหลาย source → รวมทุกอันและระบุ precedence
 
@@ -53,7 +52,7 @@ related:
 
 > Goal: รายงานครบพร้อมใช้เป็น docs
 
-1. ทำ `/report-in-table` สรุป tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
+1. ทำ `/report table` สรุป tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
 2. แสดง table detail ต่อกลุ่ม: columns พร้อม type, nullability, constraints
 3. รวม ER diagram ใน section เดียว
 4. ระบุ findings: missing indexes บน FK, tables ไม่มี PK, naming ไม่ consistent

@@ -3,10 +3,10 @@ name: follow-lib-solidjs
 description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
 argument-hint: "[task]"
 related:
-  - follow-create-web-solid-tanstack-router
+  - follow-create-web
   - follow-lang-typescript
   - follow-tool-vite
-  - follow-create-vite-plugins
+  - follow-create-plugins
   - follow-tool-vitest
 ---
 
@@ -103,12 +103,12 @@ related:
 
 ### 4. Related Workflows
 
-- ทำ `/follow-create-web-solid-tanstack-router` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-create-web solid-tanstack-router` สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (lib solidjs)
+- ใช้ /follow-create-plugins vite ถ้าจำเป็น (lib solidjs)
 
 ## Expected Outcome
 

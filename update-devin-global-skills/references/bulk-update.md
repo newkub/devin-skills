@@ -38,7 +38,7 @@
 2. ถ้าไม่มี `@files` → ทำ `/update-devin-global-skills` สำหรับ skill ที่ไม่ผ่าน review ทั้งหมด
 3. จัดลำดับตาม severity: Critical ก่อน, High ตาม, Medium/Low ทีหลัง
 4. ถ้าจำนวน skills ที่ต้องอัปเดต > 10 → ทำ `/follow-parallel` เพื่ออัปเดตขนาน
-5. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn-references`
+5. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn` (references)
 6. ถ้า skill มี content ไม่ครอบคลุม → ทำ `/follow-coverage`
 
 ### 4. Refactor And Relocate Skills
@@ -76,7 +76,7 @@
 2. ตรวจว่าทุก skill ใหม่ถูกอ้างถึงใน skills ที่เกี่ยวข้อง
 3. ตรวจว่าไม่มี skill ที่อ้างถึง skill ที่ไม่มีอยู่
 4. ถ้ามี skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/follow-global-rules`
-5. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
+5. ทำ `/check-repo-hygiene circular-dependencies` อีกครั้งหลังอัปเดต
 6. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
 
 ### 8. Update Dependencies And Tooling
@@ -146,7 +146,7 @@
 - ทุก skill ผ่าน `/review-devin-global-skills` และ `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` สำหรับ project dependencies และ `mise use -g npm:<package>` สำหรับ global npm CLI
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
-- skills ที่มี dependencies มี `references/` ครบผ่าน `/learn-references`
+- skills ที่มี dependencies มี `references/` ครบผ่าน `/learn` (references)
 - content ครอบคลุมผ่าน `/follow-coverage`
 - ทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ผ่าน `/relocation`
 - รายงาน before-after ชัดเจน พร้อม next actions

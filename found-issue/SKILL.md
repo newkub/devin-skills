@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - suggest-next-action
   - resolve-errors
-  - search-skills
+  - search
   - ask-me
   - report
 ---
@@ -54,7 +54,7 @@ related:
 
 ### 2. Fallback
 
-- ถ้าไม่ match → ทำ `/search-skills` หรือ `/ask-me`
+- ถ้าไม่ match → ทำ `/search skills` หรือ `/ask-me`
 - ไม่เดาสุ่ม skill
 
 ### 3. No Direct Fix

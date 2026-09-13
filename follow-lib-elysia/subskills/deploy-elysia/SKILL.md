@@ -6,7 +6,7 @@ related:
   - follow-lib-elysia
   - use-bun-native-api
   - follow-secret-manager
-  - check-env-vars
+  - check-secrets
   - resolve-errors
 ---
 
@@ -24,7 +24,7 @@ related:
 
 > Goal: ตรวจ config ก่อน deploy
 
-1. ตรวจ env vars ที่ app ใช้ — ทำ `/check-env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
+1. ตรวจ env vars ที่ app ใช้ — ทำ `/check-secrets env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
 2. ตรวจ `Bun.version` บน target รองรับ Elysia version ที่ใช้
 3. ใช้ `process.env.PORT` สำหรับ port — อย่า hardcode
 4. ตรวจ CORS, error handling (`.onError()`), และ logging พร้อม production

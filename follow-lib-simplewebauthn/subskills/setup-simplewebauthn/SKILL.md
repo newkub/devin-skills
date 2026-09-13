@@ -5,7 +5,7 @@ argument-hint: "[ceremony-or-scope]"
 related:
   - follow-lib-simplewebauthn
   - follow-lib-better-auth
-  - learn-web
+  - learn
   - resolve-errors
 ---
 

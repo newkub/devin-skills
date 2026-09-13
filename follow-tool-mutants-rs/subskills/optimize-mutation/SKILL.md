@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-mutants-rs
   - follow-tool-nextest
-  - run-test-mutation
+  - run-test
   - deep-optimize
   - setup-cicd
 ---

@@ -17,8 +17,9 @@
 
 1. ตรวจมี post-deploy smoke tests สำหรับ critical paths
 2. ตรวจมี error log monitoring หลัง deploy 5-10 นาที
-3. ตรวชมี `run-test-e2e` สำหรับ critical paths หลัง deploy
-4. ตรวชมี `watch-browser-and-fix` สำหรับ monitoring deployment
+3. ตรวชมี `
+un-test` (e2e) สำหรับ critical paths หลัง deploy
+4. ตรวชมี `watch-browser-fix` สำหรับ monitoring deployment
 
 ### Rollback Procedure
 

@@ -12,5 +12,5 @@
 
 - `astType: 'ts'` คืน TypeScript AST (TSESTree-like); default คือ ESTree ที่ strip types
 - Errors ใน result — parse ไม่ throw; ตรวจ `result.errors`
-- ใช้กับ `ast-grep`/`oxlint` ecosystem; สำหรับ lint rules ดู `/use-astgrep-programmatic`
+- ใช้กับ `ast-grep`/`oxlint` ecosystem; สำหรับ lint rules ดู `/use-astgrep` programmatic subskill
 - Performance: ~3x faster than Babel/TS parser (Rust)

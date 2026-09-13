@@ -6,7 +6,7 @@ related:
   - review-quality
   - deep-review
   - resolve-errors
-  - check-unused
+  - check-repo-hygiene
   - run-format
 ---
 
@@ -98,7 +98,7 @@ related:
 - รัน lint อีกครั้งเพื่อยืนยัน
 - รัน tests ทั้งหมด
 - ตรวจสอบว่าไม่มี regressions
-- ทำ `/check-unused` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
+- ทำ `/check-repo-hygiene unused` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
 - ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
 - ใช้ /run-format ถ้าจำเป็น
 

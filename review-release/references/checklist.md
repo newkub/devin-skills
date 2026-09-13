@@ -37,7 +37,7 @@
 ## 7. Post-Deploy Verify
 
 - [ ] health endpoints, smoke tests, error rates (references/deploy-verify.md)
-- [ ] `/watch-deploy`, `/run-test-api`, `/check-security-headers`
+- [ ] `/watch-deploy`, `/run-test` (api), `/check-security-headers`
 - [ ] rollback trigger criteria
 
 ## Scoring

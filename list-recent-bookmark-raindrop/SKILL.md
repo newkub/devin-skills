@@ -3,7 +3,7 @@ name: list-recent-bookmark-raindrop
 description: รายการ bookmarks ล่าสุดจาก Raindrop.io เรียงตาม created
 argument-hint: "[collection]"
 related:
-  - search-in-raindrop-io
+  - search
   - review-dependencies
   - report
 ---
@@ -53,7 +53,7 @@ related:
 - `--json` + `jq -r` เป็น default
 - full JSON: `raindrop list --json --all --sort="-created"`
 
-- ใช้ /search-in-raindrop-io ถ้าจำเป็น
+- ใช้ /search raindrop ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome

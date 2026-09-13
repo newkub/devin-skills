@@ -88,7 +88,7 @@ related:
 ### 2. Options
 
 - ใช้เฉพาะ options ที่อยู่ใน official docs (`vite.dev`) — ห้ามเดา option names
-- ถ้าไม่แน่ใจ → ทำ `/learn-web` ก่อนแก้
+- ถ้าไม่แน่ใจ → ทำ `/learn` (web) ก่อนแก้
 
 ## Expected Outcome
 

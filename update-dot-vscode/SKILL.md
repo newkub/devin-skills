@@ -3,11 +3,11 @@ name: update-dot-vscode
 description: อัปเดต .vscode สำหรับ workspace settings, extensions, tasks, launch, snippets, editor associations
 argument-hint: "[scope]"
 related:
-  - follow-create-vscode-extensions
+  - follow-create-plugins
   - review-delivery
   - deep-analyze
   - check-monorepo
-  - learn-web
+  - learn
   - update-references
   - report
   - deep-validate
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-create-vscode-extensions` (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
+ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-create-plugins` (vscode) (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
 
 ### Standard Project
 
@@ -71,7 +71,7 @@ related:
 
 > Goal: สร้างหรืออัปเดต `settings.json` ตาม tech stack ของ project
 
-1. ทำ `/learn-web` จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
+1. ทำ `/learn` (web) จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
 2. กำหนด formatter settings:
    - `editor.defaultFormatter` → ตาม formatter ที่ใช้ (เช่น `biomejs.biome` สำหรับ Biome)
    - `editor.formatOnSave` → `true`
@@ -171,7 +171,7 @@ related:
 
 ### 1. No Overlap With Specialized Workflows
 
-- ใช้ `/follow-create-vscode-extensions` สำหรับสร้าง VSCode extension (ไม่ใช่ config)
+- ใช้ `/follow-create-plugins` (vscode) สำหรับสร้าง VSCode extension (ไม่ใช่ config)
 - ใช้ `/review-delivery` สำหรับ config consistency ทั่วไป
 - `update-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
 

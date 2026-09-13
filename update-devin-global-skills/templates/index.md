@@ -17,6 +17,8 @@
 | `migrate-*` | [migrate.md](migrate.md) | ย้าย tool/library/version อย่างปลอดภัย มี rollback path |
 | `optimize-*` | [optimize.md](optimize.md) | ปรับ performance/cost โดยวัด baseline ก่อนและหลัง |
 | `improve-*` | [improve.md](improve.md) | ปรับคุณภาพของสิ่งที่มีอยู่ โดย preserve behavior |
+| `fix-*` | [fix.md](fix.md) | แก้ findings/bugs ที่รู้ root cause แล้ว — minimal + verify ไม่ regression |
+| `update-*` | [update.md](update.md) | อัปเดตของที่มีอยู่ให้ทันสมัย — minimal diff, idempotent |
 | `check-*` | [check.md](check.md) | scan codebase หา issues และ report findings |
 | `analyze-*` | [analyze.md](analyze.md) | วิเคราะห์ codebase ด้วย scripts, tools และหลายมิติ |
 | `deep-*` | [deep.md](deep.md) | วิเคราะห์หลายมิติอย่างลึกซึ้ง พร้อม cross-reference |

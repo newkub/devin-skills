@@ -7,7 +7,7 @@ allowed-tools:
   - grep
   - read
 related:
-  - check-circular-dependencies
+  - check-repo-hygiene
   - review-devin-global-skills
   - update-references
   - suggest-next-action
@@ -78,7 +78,7 @@ target/release/check-skills-related.exe -Skill ship -TreeDepth 2
 target/release/check-skills-related.exe -Mode Cycles
 ```
 
-ถ้าเจอ cycle → แนะนำ `/check-circular-dependencies` หรือ `/update-references`
+ถ้าเจอ cycle → แนะนำ `/check-repo-hygiene circular-dependencies` หรือ `/update-references`
 
 ### 5. CI Verify
 

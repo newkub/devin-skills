@@ -13,7 +13,7 @@ allowed-tools:
   - exec
 related:
   - follow-agents-md
-  - update-devin-global-subagents
+  - update-devin
   - follow-deep
   - deep-validate
   - ship
@@ -97,7 +97,7 @@ related:
 4. `Merge before ship` — ต้องรวบรวม results, ตรวจ conflicts, และ merge ก่อน push หรือ final report
 5. `Run checks after merge` — ไม่ส่งมอบโดยไม่ validate
 6. `Stop on 3 failures` — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
-7. ใช้ `/update-devin-global-subagents` เพื่อ sync subagent catalog ถ้าจำเป็น
+7. ใช้ `/update-devin global-subagents` เพื่อ sync subagent catalog ถ้าจำเป็น
 
 ### 2. Independence
 
@@ -115,6 +115,32 @@ related:
 - ตรวจสอบ conflicts ก่อน merge
 - รักษา consistency ของ codebase
 - ทำ `/deep-validate` หลัง merge
+
+## Subagent Profiles
+
+Skills เหล่านี้มี subagent profiles สำหรับ parallel independent work — อ่าน `<skill>/subagents/<name>.md` เพื่อดู inputs/tools/output contract แล้ว spawn ผ่าน `run_subagent`:
+
+| No. | Parent Skill | Profile | Use For |
+|-----|--------------|---------|---------|
+| 1 | `review-github-pr` | `subagents/pr-reviewer.md` | review PR slice per-domain/file-group |
+| 2 | `deep-review` | `subagents/domain-reviewer.md` | run review-* domain เดียว |
+| 3 | `capture-all-components-all-routes` | `subagents/route-capturer.md` | capture route เดียวทุก device |
+| 4 | `test-all-api-routes` | `subagents/route-checker.md` | test API route group เดียว |
+| 5 | `check-all-routes` | `subagents/route-checker.md` | verify docs routes ต่อ site section |
+| 6 | `update-tests` | `subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
+| 7 | `morning-briefing` | `subagents/signal-collector.md` | collect signal type เดียว |
+| 8 | `update-project-all-drive-d` | `subagents/project-updater.md` | update project dir เดียวใน drive D |
+| 9 | `update-all-program-in-computer` | `subagents/program-updater.md` | update program เดียวผ่าน package manager |
+| 10 | `implement-features-to-mvp` | `subagents/feature-implementer.md` | implement feature เดียว end-to-end |
+| 11 | `implement-github-issue-by-me` | `subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
+| 12 | `deep-research` | `subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
+| 13 | `deep-validate` | `subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
+| 14 | `review-workspace` | `subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
+| 15 | `deep-review-then-fix` | `subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
+| 16 | `sync-drive-d-submodules` | `subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
+| 17 | `merge` | `merge/subskills/all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
+| 18 | `bench-apis` | `subagents/benchmarker.md` | benchmark target เดียวด้วย load profile เดียวกัน |
+| 19 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
 
 ## Expected Outcome
 

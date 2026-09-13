@@ -4,7 +4,7 @@ description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, 
 argument-hint: "[url-or-route-or-component]"
 related:
   - review-uxui
-  - run-test-e2e
+  - run-test
   - capture
   - use-agent-browser
   - report
@@ -28,7 +28,7 @@ related:
 > Goal: เปิด target พร้อม audit tools
 
 1. เปิด dev server หรือใช้ deployed URL ตาม argument
-2. ใช้ `/run-test-e2e` เพื่อเปิด page ด้วย `agent-browser`
+2. ใช้ `/run-test` (e2e) เพื่อเปิด page ด้วย `agent-browser`
 3. ถ้าเป็น component เดี่ยว → เปิด storybook หรือ route ที่ render component นั้น
 
 ### 2. Run Automated Audit
@@ -70,6 +70,14 @@ related:
 1. จัดกลุ่ม findings ตาม WCAG principle และ severity
 2. ทำ `/report` พร้อม columns: No., Rule, Severity, Element, Evidence, Fix
 3. ชี้ไป section `## Fix` สำหรับการแก้ไข
+
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+
+| Topic | Subskill |
+|-------|----------|
+| Apply a11y findings — contrast, aria, keyboard, focus, screen reader | `subskills/improve-a11y/SKILL.md` |
 
 ## Rules
 

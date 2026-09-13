@@ -6,7 +6,7 @@ related:
   - follow-config
   - update-gitignore
   - follow-gitignore
-  - check-secrets-leak
+  - check-secrets
 ---
 
 ## Goal
@@ -36,7 +36,7 @@ related:
 1. อ่าน `.gitignore` ปัจจุบัน — เทียบกับ patterns ที่ ecosystem ต้องการ
 2. หา tracked files ที่ควร ignore: `git ls-files` เทียบกับ patterns — เช่น `.env`, `node_modules`, build output ที่ commit ไปแล้ว
 3. หา patterns ที่ ignore เกิน — เช่น ignore `*.json` ทั้งหมดแล้ว config ที่ต้อง commit หลุด
-4. ทำ `/check-secrets-leak` — ไฟล์ที่มี secrets ต้องถูก ignore หรือย้ายออก
+4. ทำ `/check-secrets secrets-leak` — ไฟล์ที่มี secrets ต้องถูก ignore หรือย้ายออก
 
 ### 3. Fix Patterns
 

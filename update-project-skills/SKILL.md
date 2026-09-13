@@ -4,12 +4,12 @@ description: สร้างและอัปเดต project skills ใน .d
 argument-hint: "[scope]"
 related:
   - deep-analyze
-  - list-devin-global-skills
+  - list-devin
   - update-devin-global-skills
   - check-monorepo
   - deep-validate
-  - update-agents-md
-  - check-circular-dependencies
+  - update-docs
+  - check-repo-hygiene
   - report
 ---
 
@@ -43,7 +43,7 @@ related:
 
 1. วิเคราะห์ dependencies จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` หรือ `requirements.txt`
 2. ดึงรายชื่อ dependencies ที่มี skill pattern ใน Devin ecosystem
-3. ทำ `/list-devin-global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
+3. ทำ `/list-devin global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
 4. สำหรับแต่ละ dependency:
    - ถ้ามี global skill ที่ตรง → อ้างอิง global skill แทน ไม่สร้างใหม่
    - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → ใช้ `/update-devin-global-skills` สร้างใน `%APPDATA%\devin\skills\` แล้วอ้างอิงใน project
@@ -70,17 +70,17 @@ related:
 
 > Goal: project `AGENTS.md` อ้างถึง skills ใหม่
 
-1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ของ project
+1. ทำ `/update-docs agents-md` เพื่ออัปเดต `AGENTS.md` ของ project
 2. เพิ่ม skills ใหม่ใน `### Skills` section ของ `AGENTS.md`
 3. ตรวจว่า `AGENTS.md` อ้างถึง skills ที่สร้างขึ้นครบถ้วน
-4. ถ้า project ไม่มี `AGENTS.md` → ทำ `/update-agents-md` เพื่อสร้างใหม่
+4. ถ้า project ไม่มี `AGENTS.md` → ทำ `/update-docs agents-md` เพื่อสร้างใหม่
 
 ### 5. Validate And Report
 
 > Goal: project skills พร้อมใช้งานและผ่าน validation
 
 1. ทำ `/deep-validate` เพื่อตรวจ `.devin/skills/` structure และ references
-2. ทำ `/check-circular-dependencies` ถ้ามีการเพิ่ม `related` fields
+2. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการเพิ่ม `related` fields
 3. ทำ `/report` สรุป:
    - skills ที่สร้างใหม่
    - skills ที่อัปเดต
@@ -135,5 +135,5 @@ related:
 
 - สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
 - สร้าง skills แบบ manual ไม่ตามมาตรฐาน
-- ข้าม `/learn-web` ก่อนเขียนเนื้อหา
+- ข้าม `/learn` (web) ก่อนเขียนเนื้อหา
 - ไม่ตรวจสอบคุณภาพ content ก่อนส่งมอบ

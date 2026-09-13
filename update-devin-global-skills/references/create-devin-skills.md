@@ -19,7 +19,7 @@
 1. ตรวจจับ AI tool และ skills directory จาก path แล้วอ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
 2. ทำ `/check-skills-related` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/use-related-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
-4. ทำ `/learn-web` จาก Devin CLI docs เมื่อต้องการ verify spec
+4. ทำ `/learn` (web) จาก Devin CLI docs เมื่อต้องการ verify spec
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 6. ถ้า skill มี dependencies (จำเป็นหรือ optional) จึงสร้าง `references/` → ดู [dependencies.md](dependencies.md)
 
@@ -65,7 +65,7 @@
 1. ดูรายละเอียดใน [src.md](src.md)
 2. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust
 3. ใช้ `src/` เก็บ web app code หรือ MCP server code ตามประเภท
-4. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระ
+4. ถ้า skill มี `src/` → ทำ `/convert git-submodules` เพื่อแยกเป็น repo อิสระ
 5. ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
 ### 7. Validate Skill
@@ -79,7 +79,7 @@
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 
 1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
-2. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ของ repo
+2. ทำ `/update-docs agents-md` เพื่ออัปเดต `AGENTS.md` ของ repo
 3. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
 4. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
 
@@ -98,11 +98,11 @@
 | Prefix | สำหรับ | ตัวอย่าง |
 |--------|--------|----------|
 | `follow-lang-` | programming language / runtime | `follow-lang-rust`, `follow-lang-python`, `follow-lang-typescript` |
-| `follow-framework-` | meta-framework / app framework | `follow-create-web-nuxt`, `follow-create-desktop-tauri` |
+| `follow-framework-` | meta-framework / app framework | `follow-create-cross-dioxus`, `follow-create-desktop-tauri` |
 | `follow-service-` | external service / cloud platform | `follow-service-supabase`, `follow-service-vercel`, `follow-service-aws-sdk` |
 | `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia`, `follow-lib-vue` |
 | `follow-tool-` | CLI tool / dev tool / build tool | `follow-tool-biome`, `follow-tool-vite`, `follow-tool-astgrep` |
-| `follow-create-` | สร้าง plugins / extensions / CLI / lib | `follow-create-bun-cli`, `follow-create-eslint-plugins` |
+| `follow-create-` | สร้าง plugins / extensions / CLI / lib | `follow-create-bun-cli`, `follow-create-plugins` (eslint) |
 | `follow-` (คงเดิม) | concept / practice / workflow / process | `follow-architecture`, `follow-tdd`, `follow-deploy`, `follow-plan` |
 
 - ถ้า skill ไม่ตรง prefix ใด → ใช้ `follow-` คงเดิม
@@ -129,10 +129,10 @@
 ### 5. Src Support
 
 - ถ้า skill ต้องการ CLI → เรียก `/follow-create-cli` ก่อน validation. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust. ตรวจสอบว่า dev/build ทำงานได้ด้วยคำสั่งที่เหมาะสม
-- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า dev server หรือ `/open-web` ทำงานได้
+- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า dev server หรือ `/open web` ทำงานได้
 - ถ้า skill ต้องการ MCP server → เรียก `/follow-create-mcp` (พยายาม Rust ก่อน) แล้วอัปเดต `mcp_config.json`
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
-- ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
+- ถ้า skill มี `src/` → ทำ `/convert git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 - ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน ไม่ต้องถาม user
 
 ### 6. Subagent And Model
@@ -163,9 +163,9 @@
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
-- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules` และ ship ผ่าน `/ship` เลย
-- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
-- ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
+- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert git-submodules` และ ship ผ่าน `/ship` เลย
+- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-docs agents-md`
+- ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn` (web) ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 

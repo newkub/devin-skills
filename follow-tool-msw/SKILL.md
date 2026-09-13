@@ -3,7 +3,7 @@ name: follow-tool-msw
 description: ตั้งค่าและใช้งาน MSW (Mock Service Worker) สำหรับ API mocking ใน dev และ test
 argument-hint: "[scope]"
 related:
-  - run-test-api
+  - run-test
   - implement-to-production
   - review-dependencies
   - report
@@ -95,7 +95,7 @@ related:
 - ไม่ commit `mockServiceWorker.js` ที่ generate เองนอก `public/` convention
 
 - ใช้ /implement-to-production ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test (api) ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

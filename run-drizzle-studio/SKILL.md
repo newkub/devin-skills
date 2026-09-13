@@ -6,7 +6,7 @@ related:
   - review-database
   - follow-lib-drizzle
   - resolve-errors
-  - open-web
+  - open
 ---
 
 ## Goal
