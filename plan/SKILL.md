@@ -3,6 +3,7 @@ name: plan
 description: วางแผนงานและ architecture อย่างเป็นระบบก่อนเริ่ม implement
 argument-hint: "[prompt]"
 related:
+  - deep-plan
   - review-architecture
   - follow-architecture
   - deep-analyze
@@ -19,7 +20,7 @@ related:
 
 ครอบคลุมการวางแผน tasks, libraries, implementation path, file architecture, module structure และการ validate แผนงาน ถ้า tasks เยอะมาก (>10) ให้สร้างใน `.devin/tasks/` (merged from: `plan-by-ask-me`, `report-plan`)
 
-Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis → front-load `/deep-review` + `/deep-thinking` + `/deep-research` ก่อน Step 1 และทำ `/deep-validate` กับแผนก่อน report (merged from: `deep-plan`); ต้องการตัดสินใจร่วมกับ user → ใช้ `/ask-me` กับ `/report-deep` ใน section `Collaborative Planning`
+Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้องแผนละเอียดระดับ implementation-ready (ระบุ file, what, how, acceptance ทุก task) → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → ใช้ `/ask-me` กับ `/report-deep` ใน section `Collaborative Planning`
 
 ## Execute
 

@@ -23,9 +23,9 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-lib-better)
 
-- merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md`
+- merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md` (skill restored เมื่อ 2026-09 → ใช้ `/review-techstack` สำหรับ stack selection, cloud choices, library design)
 
-- merged from: `follow-my-tech-stack` (deleted) — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md`
+- merged from: `follow-my-tech-stack` (→ alias ของ `/review-techstack`) — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md`
 
 ## Execute
 

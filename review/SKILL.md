@@ -58,7 +58,7 @@ related:
 | 9 | เน้น UX/UI, design system, accessibility | `/review-uxui` | `/deep-review`, `/review-frontend` |
 | 10 | เน้น platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/deep-review` | `/review-frontend`, `/review-uxui` |
 | 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/review-business` | `/review-security`, `/review-quality` |
-| 12 | เน้น tech stack / dependencies / library design | `/review-dependencies` | `/review-security`, `/review-quality` |
+| 12 | เน้น tech stack / dependencies / library design | `/review-techstack` | `/review-dependencies`, `/review-security` |
 | 13 | เน้น stability, error handling, debuggability | `/review-stability` | `/review-performance`, `/review-observability` |
 | 14 | เน้น observability (metrics, tracing, logging, alerting) | `/review-observability` | `/review-stability`, `/review-delivery` |
 | 15 | เน้น compliance (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA) | `/review-compliance` | `/review-security`, `/review-delivery` |
