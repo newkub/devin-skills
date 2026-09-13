@@ -14,6 +14,7 @@ related:
   - report
   - then-apply
   - enhance-prompt
+  - think-reframe
   - suggest-me
 ---
 

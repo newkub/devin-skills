@@ -24,6 +24,7 @@
 | `review-*` | [review.md](review.md) | วิเคราะห์ quality พร้อม severity ratings และ review score |
 | `report-*` | [report.md](report.md) | รวบรวมข้อมูล วิเคราะห์ และนำเสนอในรูปแบบที่อ่านง่าย |
 | `idea-*` | [idea.md](idea.md) | สร้างไอเดีย วิเคราะห์ gaps และ opportunities พร้อม continuous numbering |
+| `think-*` | [think.md](think.md) | ประเมิน framing/decision ของ content ก่อน commit — verdict พร้อม evidence ไม่ rewrite เอง |
 
 ## Selection Rules
 

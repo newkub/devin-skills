@@ -6,6 +6,7 @@ related:
   - bench-competitors-and-deep-plan
   - suggest-me
   - enhance-prompt
+  - think-reframe
   - deep-analyze
   - report
   - then-apply

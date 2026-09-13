@@ -6,6 +6,7 @@ related:
   - write-how-to
   - write-solutions
   - follow-best-practice
+  - think-reframe
   - deep-validate
 ---
 

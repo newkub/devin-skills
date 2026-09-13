@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo
+  - check-content-outdate
+  - check-correctness
   - report
   - suggest-next-action
   - update-docs

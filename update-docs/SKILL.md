@@ -5,6 +5,9 @@ argument-hint: "[scope]"
 related:
   - check-should-update
   - check-monorepo
+  - check-content-outdate
+  - check-correctness
+  - think-reframe
   - review-writing
   - update-references
   - run-docs

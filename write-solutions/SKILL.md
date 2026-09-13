@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - analyze-root-cause-analysis
   - deep-research
+  - think-reframe
   - review-architecture
   - update-devin-global-skills
   - resolve-errors

@@ -4,6 +4,7 @@ description: หา code ที่ใช้ deprecated APIs, functions และ
 argument-hint: "[path]"
 related:
   - use-astgrep
+  - check-content-outdate
   - report
 ---
 

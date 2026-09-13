@@ -5,6 +5,7 @@ argument-hint: "[package-or-repo]"
 related:
   - list-github
   - check-all-routes
+  - check-content-outdate
   - check-release-drift
   - update-devin-global-skills
   - update-version-to-latest

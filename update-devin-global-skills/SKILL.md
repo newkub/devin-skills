@@ -6,6 +6,8 @@ related:
   - new-skills
   - check-all-routes
   - check-release-notes
+  - check-content-outdate
+  - check-correctness
   - deep-research
   - deep-validate
   - report
@@ -58,9 +60,10 @@ related:
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
 1. ทำ `/deep-research` โดยระบุ topic หรือ skill ที่จะอัปเดต — ข้ามถ้า topic ไม่ต้อง research
-2. ทำ `/check-release-notes` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
-3. ทำ `/check-all-routes` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
-4. ทำตาม [references/deep-research.md](references/deep-research.md)
+2. ทำ `/check-content-outdate` กับ skill ที่จะแก้ เพื่อหา stale versions/commands/links ก่อนอัปเดต
+3. ทำ `/check-release-notes` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
+4. ทำ `/check-all-routes` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
+5. ทำตาม [references/deep-research.md](references/deep-research.md)
 
 ### 6. Write Or Update SKILL.md
 

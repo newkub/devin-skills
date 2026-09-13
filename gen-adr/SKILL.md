@@ -4,6 +4,7 @@ description: สร้าง Architecture Decision Record จาก decision ใ
 argument-hint: "[decision-topic]"
 related:
   - deep-thinking
+  - think-reframe
 ---
 
 ## Goal

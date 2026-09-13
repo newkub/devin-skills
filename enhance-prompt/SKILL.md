@@ -7,6 +7,7 @@ related:
   - plan
   - continue
   - follow-devin-global-skills
+  - think-reframe
   - report
 
 ---

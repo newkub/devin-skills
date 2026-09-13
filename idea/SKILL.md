@@ -4,6 +4,7 @@ description: สร้างไอเดียตาม user context วิเ�
 argument-hint: "[topic]"
 related:
   - review-frontend
+  - think-reframe
   - report
   - then-apply
   - suggest-next-action
