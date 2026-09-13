@@ -39,7 +39,7 @@ related:
 1. วิเคราะห์ requirements: performance, distribution, ecosystem, team skill
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency
 3. เลือก Bun ถ้า: ทีมใช้ TypeScript, ต้องการ rapid development, มี Bun runtime ติดตั้ง
-4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/vs` ก่อน
+4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/choose-and-apply` ก่อน
 
 ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ stack comparison และ framework examples
 
@@ -113,7 +113,7 @@ related:
 - มี logging หรือ tracing ตาม stack
 
 - ใช้ /rethink ถ้าจำเป็น
-- ใช้ /deep-test-cli ถ้าจำเป็น
+- ใช้ /deep-test cli ถ้าจำเป็น
 
 ## Expected Outcome
 

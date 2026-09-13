@@ -5,7 +5,7 @@ argument-hint: "<subject> [alternatives...]"
 related:
   - deep-research
   - alternative
-  - vs
+  - choose-and-apply
   - bench-competitors
   - report
   - check-reference
@@ -22,7 +22,7 @@ related:
 ใช้เมื่อต้องการเปรียบเทียบเชิง evidence ระหว่าง subject กับ alternatives — features, capabilities, performance, pricing, DX
 
 - ถ้าต้องหา alternatives ใหม่ที่ดีกว่า → ใช้ `/alternative` ก่อน
-- ถ้าต้องเลือกตัวที่ดีที่สุดจาก options → ใช้ `/vs` (skill นี้ผลิต matrix ไม่ตัดสินใจ)
+- ถ้าต้องเลือกตัวที่ดีที่สุดจาก options → ใช้ `/choose-and-apply` (skill นี้ผลิต matrix ไม่ตัดสินใจ)
 - ถ้าเปรียบเทียบ project กับคู่แข่งเพื่อ implement ให้ดีกว่า → ใช้ `/bench-competitors` (เรียก skill นี้ข้างใน)
 
 ## Execute
@@ -67,7 +67,7 @@ related:
 1. รวม items ที่ subject `ไม่มี` หรือ `ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: item, alternative ที่มี, impact, effort โดยประมาณ, source
 2. ระบุ unique strengths ของ subject ที่ alternatives ไม่มี — ต้องรักษาไว้
 3. จัด priority: Critical, High, Medium, Nice-to-have
-4. output พร้อมส่งต่อ `/create-plan-in-dot-devin`, `/vs` หรือ `/idea-features`
+4. output พร้อมส่งต่อ `/create-plan-in-dot-devin`, `/choose-and-apply` หรือ `/idea-features`
 
 ## Rules
 
@@ -81,7 +81,7 @@ related:
 ### 2. Comparison Not Decision
 
 - output คือ matrix + gap list เท่านั้น — ไม่เลือก "ตัวที่ดีที่สุด"
-- การตัดสินใจเลือกส่งต่อ `/vs`; การ implement ส่งต่อ plan/implement skills
+- การตัดสินใจเลือกส่งต่อ `/choose-and-apply`; การ implement ส่งต่อ plan/implement skills
 
 ### 3. Matrix Format
 
@@ -99,4 +99,4 @@ related:
 - Comparison matrix: subject vs alternatives ครบทุก criteria พร้อม status และ source ต่อ cell
 - Gap list ที่ prioritized (Critical → Nice-to-have) พร้อม impact/effort
 - Unique strengths ที่ต้องรักษา
-- ผลลัพธ์พร้อมส่งต่อ `/vs`, `/create-plan-in-dot-devin` หรือ `/idea-features`
+- ผลลัพธ์พร้อมส่งต่อ `/choose-and-apply`, `/create-plan-in-dot-devin` หรือ `/idea-features`
