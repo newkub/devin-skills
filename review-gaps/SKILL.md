@@ -95,6 +95,9 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (gaps)
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

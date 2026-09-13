@@ -94,6 +94,10 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
 
+- ใช้ /review-database ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`

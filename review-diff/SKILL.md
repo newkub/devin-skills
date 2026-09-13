@@ -64,6 +64,9 @@ related:
 - ตัดสินใจ keep/revert ตาม findings เท่านั้น
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางสรุป diff ทั้ง tracked และ untracked

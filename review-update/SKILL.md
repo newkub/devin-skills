@@ -113,6 +113,9 @@ Review drift ระหว่าง current state และ target state เพ�
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /update-specs ถ้าจำเป็น
 
+- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

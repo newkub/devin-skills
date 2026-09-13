@@ -67,6 +67,9 @@ related:
 - ทุก finding ต้องมี line, call frequency, และ complexity analysis
 - ไม่เดาว่า function ควร optimize โดยไม่มี benchmark
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-performance ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (algorithm)

@@ -96,6 +96,10 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 - คำนวณ score และ metrics: ดู [references/scoring.md](references/scoring.md)
 - Format รายงาน: ดู [references/report.md](references/report.md)
 
+- ใช้ /review-compliance ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (business)

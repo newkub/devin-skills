@@ -75,6 +75,9 @@ related:
 
 - ถ้า fail → ปรับ issue ให้ชัดเจนก่อน implement
 
+- ใช้ /review-plan ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

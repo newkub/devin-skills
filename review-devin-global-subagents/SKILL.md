@@ -51,6 +51,8 @@ Review devin subagents ก่อนเรียก `update-devin global-subagent
 - ใช้ `Critical / High / Medium / Low / Info` สำหรับ severity
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (devin global subagents)
 
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`

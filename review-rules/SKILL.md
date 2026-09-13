@@ -107,6 +107,9 @@ related:
 - ไม่ลบ rule โดยไม่ user confirm
 - ระบุ evidence พร้อม file path และ line number
 
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`

@@ -97,6 +97,9 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`

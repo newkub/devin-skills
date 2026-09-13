@@ -123,6 +123,10 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - ใช้ /prioritize ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+- ใช้ /review-compliance ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Risk Register พร้อม category, probability, impact, score, severity, mitigation

@@ -141,6 +141,10 @@ Review ความเสถียรของ application ครอบคลุ
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 - ห้าม TODO, MOCK, placeholder
 
+- ใช้ /review-observability ถ้าจำเป็น
+- ใช้ /review-performance ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`

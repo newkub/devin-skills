@@ -60,6 +60,9 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 - ถ้า pass → implement ตาม plan ถ้า fail → แก้ plan ให้ผ่านก่อน
 
+- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

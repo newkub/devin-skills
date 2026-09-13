@@ -88,6 +88,11 @@ Orchestrate backend review ครอบคลุม API, service, database, data
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
 
+- ใช้ /review-api ถ้าจำเป็น
+- ใช้ /review-database ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-performance ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (backend)

@@ -118,6 +118,10 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-workspace ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`

@@ -135,6 +135,9 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report`
+- ใช้ /review-writing ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
