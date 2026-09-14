@@ -64,7 +64,7 @@
 
 > Goal: สรุปสิ่งที่ลบ/รวม
 
-1. ใช้ `/report-table` คอลัมน์: No., Duplicate Type, Canonical, Files Fixed, Status
+1. ใช้ `/report table` คอลัมน์: No., Duplicate Type, Canonical, Files Fixed, Status
 2. ระบุ redundancy ที่ตั้งใจเก็บไว้พร้อมเหตุผล
 
 ## Rules

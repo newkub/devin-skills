@@ -63,7 +63,7 @@
 
 > Goal: สรุปสิ่งที่เปลี่ยน
 
-1. ใช้ `/report-table` คอลัมน์: No., File, Issue, Fix, Status
+1. ใช้ `/report table` คอลัมน์: No., File, Issue, Fix, Status
 2. ระบุ next action ถ้ายังมี low-severity findings เหลือ
 
 ## Rules

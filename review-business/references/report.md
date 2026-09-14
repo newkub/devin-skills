@@ -13,7 +13,7 @@ description: รายงาน aggregate findings พร้อม actionable re
 
 ## Checks
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง aggregate findings จากทุก section
 3. ทำ `/suggest-next-action`
 
@@ -21,5 +21,5 @@ description: รายงาน aggregate findings พร้อม actionable re
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report table`
 

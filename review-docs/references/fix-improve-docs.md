@@ -58,7 +58,7 @@
 > Goal: docs ผ่าน review และ links ใช้งานได้
 
 1. รัน `/check-reference` อีกครั้งหลังแก้
-2. ทำ `/report-table` สรุป findings → fix → ไฟล์ที่แก้
+2. ทำ `/report table` สรุป findings → fix → ไฟล์ที่แก้
 3. ระบุ docs ที่ยังขาดพร้อมเหตุผล
 
 ## Rules

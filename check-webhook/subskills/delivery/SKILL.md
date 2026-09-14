@@ -54,7 +54,7 @@ argument-hint: "[target]"
 
 > Goal: สรุป reliability gaps
 
-1. ใช้ `/report-table`: `No.`, `Path`, `Issue`, `Failure Mode`, `Severity`, `Fix`
+1. ใช้ `/report table`: `No.`, `Path`, `Issue`, `Failure Mode`, `Severity`, `Fix`
 2. Severity: `critical` (events หายเงียบๆ), `high` (no retries/DLQ), `medium` (ordering unhandled), `low` (observability gaps)
 
 ## Rules

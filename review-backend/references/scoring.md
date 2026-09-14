@@ -34,7 +34,7 @@
 
 ## Reporting
 
-- รายงาน score ต่อ dimension และ overall ผ่าน `/report` พร้อม `/report-table`
+- รายงาน score ต่อ dimension และ overall ผ่าน `/report` พร้อม `/report table`
 - จัดลำดับ findings ตาม severity: Critical → High → Medium → Low
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 

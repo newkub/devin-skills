@@ -73,7 +73,7 @@
 
 > Goal: สรุปผล error handling improvements
 
-1. ทำ `/report-table` แสดง before/after: throw sites, catch blocks, error types, boundaries
+1. ทำ `/report table` แสดง before/after: throw sites, catch blocks, error types, boundaries
 2. ระบุ error paths ที่ยังไม่ได้แก้พร้อมเหตุผล
 
 ## Rules

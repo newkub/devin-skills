@@ -51,7 +51,7 @@
 
 1. `/run-check` ต้องผ่านทั้งหมด
 2. ค้นชื่อเก่าอีกครั้ง — ต้องไม่เหลือ references
-3. ใช้ `/report-table` สรุป: `No.`, `Old`, `New`, `Type`, `Files Touched`
+3. ใช้ `/report table` สรุป: `No.`, `Old`, `New`, `Type`, `Files Touched`
 
 ## Rules
 

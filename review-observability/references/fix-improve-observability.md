@@ -58,7 +58,7 @@
 
 1. รัน `/run-check` และ `/deep-validate`
 2. ตรวจว่า logs/metrics/traces ออกจริงใน environment ทดสอบ
-3. ทำ `/report-table` สรุป signals ที่เพิ่มและ gaps ที่เหลือ
+3. ทำ `/report table` สรุป signals ที่เพิ่มและ gaps ที่เหลือ
 
 ## Rules
 

@@ -23,7 +23,7 @@ related:
 
 > Goal: รวม data จาก research/compare/bench phases
 
-1. รวม feature matrix + gap list จาก `/compare-competitors` output
+1. รวม feature matrix + gap list จาก `/compare-competitors-and-idea-features` output
 2. รวม benchmark numbers ต่อ dimension (perf, UX/UI, architecture, DX, security, scalability, business)
 3. ถ้า post-implement → รวม re-bench delta (before vs after)
 4. ทุก competitor claim ต้องมี source citation

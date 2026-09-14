@@ -8,7 +8,7 @@
 
 ## Execute
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง Tech Stack Metrics Summary: framework versions, library alignment, build tools, security vulnerabilities, unused packages, duplicate packages พร้อม status
 3. สร้างตาราง Dependency Health: dependency, version, issue, severity, recommendation
 4. สร้างตาราง Library Design: API surface, export strategy, bundle size, peer deps, semver, severity

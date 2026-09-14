@@ -24,7 +24,7 @@
 
 ## Report Tables
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. ตารางทุกใบต้องมี `No.` เป็นคอลัมน์แรก
 3. สร้างตาราง Findings by Category: No., Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: No., Priority, Action, Impact, Effort, Workflow
@@ -39,4 +39,4 @@
 - ทุก finding ต้องมี file path, line number, และ code snippet
 - ใช้ `tsc`, `ast-grep`, `run-test` สำหรับ verification
 - ไม่เดา
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report table`

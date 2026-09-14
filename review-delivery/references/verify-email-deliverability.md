@@ -57,7 +57,7 @@
 
 > Goal: สรุป deliverability posture
 
-1. ใช้ `/report-table`: `No.`, `Check`, `Expected`, `Actual`, `Status`, `Fix`
+1. ใช้ `/report table`: `No.`, `Check`, `Expected`, `Actual`, `Status`, `Fix`
 2. Verdict: `deliverable`, `at-risk`, `broken` พร้อม evidence
 3. แนะนำ DNS changes ที่ต้องทำ (user ทำเองที่ DNS provider)
 

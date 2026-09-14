@@ -50,7 +50,7 @@
 
 1. `/run-test` ต้องผ่านทั้งหมด — behavior coverage เหมือนเดิมหรือดีขึ้น
 2. ตรวจ determinism: รัน suite ซ้ำ 3 ครั้ง ผลต้องเหมือนกัน
-3. ใช้ `/report-table` สรุป: `No.`, `Area`, `Change`, `Tests Affected`
+3. ใช้ `/report table` สรุป: `No.`, `Area`, `Change`, `Tests Affected`
 
 ## Rules
 

@@ -37,7 +37,7 @@
 
 1. สรุป top debt items
 2. แนะนำ refactoring sequence
-3. ใช้ `/report-table` แสดง score, impact, effort
+3. ใช้ `/report table` แสดง score, impact, effort
 
 ## Rules
 ### 1. Objectivity

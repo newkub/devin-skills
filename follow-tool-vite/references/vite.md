@@ -244,7 +244,5 @@ Default target (`baseline-widely-available`): Chrome >= 111, Edge >= 111, Firefo
 
 ## Source
 
-- https://vite.dev/guide/
-- https://vite.dev/guide/build
-- https://vite.dev/guide/env-and-mode
+- https://vite.dev/guide/ (+ /build, /env-and-mode)
 - https://vite.dev/config/

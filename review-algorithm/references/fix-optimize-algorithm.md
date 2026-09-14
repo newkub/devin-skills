@@ -51,7 +51,7 @@
 
 1. รัน `/run-test`
 2. ตรวจว่า output เหมือนเดิม
-3. ทำ `/report-table` สรุป
+3. ทำ `/report table` สรุป
 
 ## Rules
 

@@ -49,8 +49,8 @@
 
 > Goal: นำเสนอไอเดียด้วยตาราง
 
-1. ใช้ `/report-table` แสดง ideas
-2. ใช้ `/report-before` ถ้าต้องการ report สถานะก่อนลงมือ
+1. ใช้ `/report table` แสดง ideas
+2. ใช้ `/report-before-after` ถ้าต้องการ report สถานะก่อนลงมือ
 3. ระบุ top 3 ideas ทีควรทำก่อน
 4. ทำ `/suggest-next-action`
 

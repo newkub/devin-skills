@@ -39,4 +39,4 @@
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report table`

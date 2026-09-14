@@ -124,7 +124,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 > Goal: สรุปผล CI/CD
 1. ถ้า success/healthy/release สำเร็จ → report platform, target, duration, status
 2. ถ้าไม่ผ่าน → report failures ทีเหลือ, root cause, last green SHA, next step
-3. ใช้ `/report-table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
+3. ใช้ `/report table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
 4. ทำ `/list-github-actions-fails` เพื่อดู failures ทีค้างใน repo
 5. ถ้า user ต้องการ cleanup → ทำ `/delete-cicd-fails` ก่อน next step
 6. ทำ `/suggest-next-action`
@@ -175,7 +175,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 ## Expected Outcome
 
 - CI pipeline ผ่าน หรือ CD live/healthy หรือ release สำเร็จ
-- รายงาน `/report-table` สมบูรณ์
+- รายงาน `/report table` สมบูรณ์
 - ระบุ next step ผ่าน `/suggest-next-action`
 - ไม่มี auto-rollback โดยไม่แจ้ง user
 - ถ้าไม่ผ่าน มี last green SHA และ rollback recommendation ชัดเจน

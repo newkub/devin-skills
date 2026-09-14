@@ -17,4 +17,4 @@ description: เลือก review skill ที่เหมาะสม
 4. ถ้า GitHub issue → ทำ `/review-issue`
 5. ถ้า GitHub PR → ทำ `/review-github-pr`
 6. ถ้า devin skills → ทำ `/review-devin-global-harness`
-7. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-before` ก่อน แล้วถาม user
+7. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-before-after` ก่อน แล้วถาม user

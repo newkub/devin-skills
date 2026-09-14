@@ -27,7 +27,7 @@
 1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
 2. จัดทำรายการ skills ทั้งหมด: `name`, `description`, จำนวนไฟล์, ขนาด
 3. จัดกลุ่มตาม prefix (`follow-lang-*`, `follow-framework-*`, `follow-service-*`, `follow-lib-*`, `follow-tool-*`, `follow-create-*`, `follow-*`, `run-*`, `check-*`, `review-*`, `update-*`, `report-*`, `idea-*`)
-4. ทำ `/report-table` สรุป inventory: ชื่อ, กลุ่ม, จำนวนไฟล์, สถานะ
+4. ทำ `/report table` สรุป inventory: ชื่อ, กลุ่ม, จำนวนไฟล์, สถานะ
 5. อ่าน `AGENTS.md` และ `global_rules.md` เพื่อดู conventions ปัจจุบัน
 
 ### 3. Update Each Skill
@@ -94,7 +94,7 @@
 
 > Goal: รายงานผลและแนะนำขั้นตอนถัดไป
 
-1. ทำ `/report-table` สรุป before-after: จำนวน skills, จำนวนที่ผ่าน validation, จำนวนที่อัปเดต, จำนวนที่ refactor
+1. ทำ `/report table` สรุป before-after: จำนวน skills, จำนวนที่ผ่าน validation, จำนวนที่อัปเดต, จำนวนที่ refactor
 2. สรุป issues ที่พบและการแก้ไข
 3. ระบุ skills ที่ยังไม่ได้อัปเดตและเหตุผล
 4. ถ้ามี issues ที่ต้อง review หรือ track → ทำ `/review-issue`

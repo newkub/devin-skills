@@ -45,7 +45,7 @@
 ### 5. Report
 
 > Goal: สรุปผล
-1. ใช้ `/report-table` คอลัมน์: No., Repo, CI Status, CD Status, Action Taken, Notes
+1. ใช้ `/report table` คอลัมน์: No., Repo, CI Status, CD Status, Action Taken, Notes
 2. สรุป: resolve ได้, ค้าง, manual-fix-required
 3. ทำ `/suggest-next-action`
 

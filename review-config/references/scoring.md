@@ -28,7 +28,7 @@
 
 ## Report Format
 
-- `/report-table` columns: Category, File, Status, Issue, Severity, Recommendation
+- `/report table` columns: Category, File, Status, Issue, Severity, Recommendation
 - `/report-file-structure` สำหรับ config tree
 
 ## Supplementary Metrics

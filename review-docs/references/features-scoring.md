@@ -56,7 +56,7 @@ related:
 3. แปลง severity เป็น score ตาม Severity To Score Mapping
 4. คำนวณ review score ด้วย Scoring Formula
 5. กำหนด grade ตาม Grade Thresholds
-6. ทำ `/report-table` พร้อม columns: `Category`, `Severity`, `Finding`, `Evidence`, `Action`
+6. ทำ `/report table` พร้อม columns: `Category`, `Severity`, `Finding`, `Evidence`, `Action`
 7. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Report Table Columns
@@ -72,7 +72,7 @@ related:
 ## Expected Outcome
 
 - review score และ grade ถูกคำนวณจาก findings ทั้งหมด
-- รายงาน findings ผ่าน `/report-table`
+- รายงาน findings ผ่าน `/report table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 
 ## Supplementary Metrics

@@ -58,7 +58,7 @@
 
 1. รัน audit ซ้ำผ่าน `/review-accessibility` หรือ axe
 2. ทดสอบ keyboard flow อีกครั้งผ่าน `agent-browser`
-3. รัน `/run-check` แล้วทำ `/report-table` สรุป before/after
+3. รัน `/run-check` แล้วทำ `/report table` สรุป before/after
 
 ## Rules
 

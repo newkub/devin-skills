@@ -60,7 +60,7 @@
 
 1. วัด TTFB, network transfer
 2. รัน `/run-build`
-3. ทำ `/report-table` สรุป
+3. ทำ `/report table` สรุป
 
 ## Rules
 

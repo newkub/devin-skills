@@ -19,7 +19,7 @@ findings ถูกต้อง พร้อม review score
 2. ทำ `/deep-validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
 4. คำนวณ review score ตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-table`
+5. ทำ `/report` พร้อม `/report table`
 6. ทำ `/suggest-next-action`
 
 ## Rules

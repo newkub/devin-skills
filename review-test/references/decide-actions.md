@@ -15,7 +15,7 @@
 7. รัน `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
 8. ทำ `/deep-validate` และ `/check-reference` หลัง update
 9. ไม่ update skill โดยไม่มี evidence จาก test result
-10. ทำ `/report-table` ด้วยคอลัมน์: No., Test, Status, Category, Root Cause, Action
+10. ทำ `/report table` ด้วยคอลัมน์: No., Test, Status, Category, Root Cause, Action
 11. ทำ Coverage Delta Report: File, Before, After, Gap, Priority
 12. ทำ Flaky Report: Test, Run 1, Run 2, Run 3, Suspected Cause
 13. ทำ `/suggest-next-action` ตาม priority

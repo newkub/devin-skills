@@ -11,7 +11,7 @@ description: ส่งมอบ prioritized list พร้อม action skill
 
 ## Checks
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง: Rank, Opportunity, Category, Score, Action Skill, Sources
 3. แนะนำ action skill ต่อ opportunity: `/idea-features`, `/deep-review-then-fix`, `/fix`
 4. ทำ `/suggest-next-action` โดยอ้างอิง top opportunities

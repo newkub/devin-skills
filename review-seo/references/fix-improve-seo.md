@@ -54,7 +54,7 @@
 1. รัน `bun run build`
 2. ตรวจ generated HTML ทุก route
 3. ใช้ Google Rich Results Test หรือ Schema validator
-4. ทำ `/report-table` สรุป fixes
+4. ทำ `/report table` สรุป fixes
 
 ## Rules
 

@@ -69,7 +69,7 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 
 > Goal: ตรวจสอบ And Report
 1. ตรวจ `public/screenshots/` ว่ามีไฟล์ถูกสร้าง
-2. ทำ `/report-table` แสดง: No, Type, Name, File, Size
+2. ทำ `/report table` แสดง: No, Type, Name, File, Size
 3. ถ้าบาง route fail → ทำ `/resolve-errors` แล้ว retry
 4. ทำ `/suggest-next-action`
 

@@ -29,7 +29,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 ## Report Format
 
-- ทำ `/report-table` พร้อม columns: Skill, Category, Severity, Finding, Evidence, Action
+- ทำ `/report table` พร้อม columns: Skill, Category, Severity, Finding, Evidence, Action
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 - ทุก finding ต้องมี skill name, file path และ evidence
 

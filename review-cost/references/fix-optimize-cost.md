@@ -62,7 +62,7 @@
 > Goal: Validate
 
 1. วัด cost หลัง optimize
-2. ทำ `/report-table` สรุป
+2. ทำ `/report table` สรุป
 
 ## Rules
 

@@ -91,7 +91,7 @@
 
 เชื่อมโยงกับ workflows อื่น:
 
-- ทำ `/pondering` ก่อน research เพื่อทบทวน scope
+- ทำ `/deep-thinking` ก่อน research เพื่อทบทวน scope
 - ทำ `/learn` (web) สำหรับการเรียนรู้เร็วๆ
 - ทำ `/follow-best-practice` หลัง research เพื่อ apply ที่พบ
 - ทำ `/follow-tool-crw` สำหรับการใช้ CRW อย่างเต็มประสิทธิภาพ

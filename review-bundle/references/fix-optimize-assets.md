@@ -38,7 +38,7 @@
 
 1. รัน `/run-build`
 2. วัด total asset size ก่อน/หลัง
-3. ทำ `/report-table` สรุป
+3. ทำ `/report table` สรุป
 
 ## Rules
 

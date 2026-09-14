@@ -50,7 +50,7 @@
 
 1. รัน app และ trigger flows — ดู log output จริง
 2. ตรวจว่า trace ได้จาก log เดียวถึง log เดียว (correlation works)
-3. ใช้ `/report-table` สรุป changes: `No.`, `Area`, `Change`, `Reason`
+3. ใช้ `/report table` สรุป changes: `No.`, `Area`, `Change`, `Reason`
 
 ## Rules
 

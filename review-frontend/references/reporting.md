@@ -11,7 +11,7 @@ related:
 
 ## Checks
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง Metrics Summary ตาม dimension พร้อม status indicators และ score

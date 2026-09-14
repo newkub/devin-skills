@@ -56,7 +56,7 @@
 
 > Goal: สรุปสิ่งที่ normalize
 
-1. ใช้ `/report-table` คอลัมน์: No., Dimension, Canonical, Variants Fixed, Files, Status
+1. ใช้ `/report table` คอลัมน์: No., Dimension, Canonical, Variants Fixed, Files, Status
 2. ระบุจุดที่ตั้งใจทิ้งไว้ต่างกัน (ถ้ามี) พร้อมเหตุผล
 
 ## Rules

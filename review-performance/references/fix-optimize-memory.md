@@ -54,7 +54,7 @@
 
 1. วัด memory ใหม่
 2. รัน `/run-test`
-3. ทำ `/report-table` สรุป
+3. ทำ `/report table` สรุป
 
 ## Rules
 

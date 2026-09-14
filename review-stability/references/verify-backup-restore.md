@@ -48,7 +48,7 @@
 
 > Goal: สรุป restore viability พร้อมตัวเลข
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Backup`, `Integrity`, `Restore OK`, `Data Valid`, `RTO`, `Verdict`
+1. ใช้ `/report table` คอลัมน์: `No.`, `Backup`, `Integrity`, `Restore OK`, `Data Valid`, `RTO`, `Verdict`
 2. ระบุ gaps: no backup, corrupt, undocumentated restore, RTO เกินเป้า
 3. แนะนำ automate restore test เป็น scheduled job ถ้ายังไม่มี
 

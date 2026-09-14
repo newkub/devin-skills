@@ -74,7 +74,7 @@
 > Goal: ยืนยันว่าปรับแล้วดีขึ้น
 
 1. รัน `/run-build` อีกครั้ง วัด `dist/` size, build time, chunk count
-2. ทำ `/report-table` เปรียบเทียบ before/after
+2. ทำ `/report table` เปรียบเทียบ before/after
 3. ทำ `/report` สรุป recommendations ที่ยังค้าง
 
 ## Rules

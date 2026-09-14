@@ -245,6 +245,5 @@ export default defineConfig({
 ## Source
 
 - https://react.dev/versions
-- https://react.dev/reference/react/useActionState
-- https://react.dev/reference/react/useOptimistic
+- https://react.dev/reference/react/useActionState | /useOptimistic
 - https://react.dev/blog/2025/10/07/react-compiler-1

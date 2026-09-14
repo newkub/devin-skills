@@ -10,7 +10,7 @@
 
 ## Report
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report table`
 2. สร้างตาราง Implementation Metrics Summary ตาม `references/scoring.md`
 3. สร้างตาราง Findings by Critical Path: Layer, Finding, Severity, Location, Evidence, Recommendation
 4. สร้างตาราง Recommended Implementations: Priority, Action, Impact, Effort, Workflow

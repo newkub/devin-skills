@@ -73,7 +73,7 @@
 
 1. ปิด browser session ด้วย `agent-browser close`
 2. สรุป before/after พร้อม screenshots
-3. ใช้ `/report-table` เพื่อแสดงสรุป improvements
+3. ใช้ `/report table` เพื่อแสดงสรุป improvements
 
 ## Rules
 

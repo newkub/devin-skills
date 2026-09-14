@@ -48,7 +48,7 @@
 > Goal: ทดสอบ error paths จริง
 
 1. trigger error conditions จริง — ดูว่า user เห็นอะไร
-2. ใช้ `/report-table` สรุป: `No.`, `Location`, `Before`, `After`, `Type`
+2. ใช้ `/report table` สรุป: `No.`, `Location`, `Before`, `After`, `Type`
 3. `/run-test` ต้องผ่าน — ระวัง tests ที่ assert exact message strings (อัปเดตตาม)
 
 ## Rules

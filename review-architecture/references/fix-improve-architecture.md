@@ -57,7 +57,7 @@
 
 > Goal: สรุป structural changes พร้อม evidence
 
-1. ทำ `/report-table` สรุป findings → action → files changed
+1. ทำ `/report table` สรุป findings → action → files changed
 2. ระบุ residual issues ที่ยังไม่แก้พร้อมเหตุผล
 3. ระบุ follow-up refactors ถ้ามี
 

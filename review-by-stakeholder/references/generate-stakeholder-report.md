@@ -11,7 +11,7 @@ description: สร้างรายงาน multi-stakeholder
 
 ## Checks
 
-1. ทำ `/report` ด้วย `/report-table`
+1. ทำ `/report` ด้วย `/report table`
 2. สร้างตาราง: Severity, Stakeholder, Dimension, Location, Issue, Impact, Recommendation
 3. สร้าง stakeholder coverage map (เลือกอะไร, ไม่เลือกอะไร, เหตุผล)
 4. สรุป top 5 findings ตาม severity

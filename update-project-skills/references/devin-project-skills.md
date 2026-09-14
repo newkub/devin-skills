@@ -54,7 +54,7 @@
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง skill, status, location
+1. ทำ `/report table` แสดง skill, status, location
 2. ทำ `/suggest-next-action`
 
 ## Rules

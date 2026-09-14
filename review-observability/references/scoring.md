@@ -62,7 +62,7 @@ review score = weighted average ของ findings ทั้งหมด
 2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตามสูตรและ metrics ข้างต้น
-5. ทำ `/report` พร้อม `/report-table`
+5. ทำ `/report` พร้อม `/report table`
 6. ทำ `/suggest-next-action`
 
 ## Domain-Specific Metrics

@@ -79,7 +79,7 @@
 
 > Goal: สรุปผลและติดตามต่อ
 
-1. ทำ `/report-table` สรุป fixes
+1. ทำ `/report table` สรุป fixes
 2. ทำ `/review-stability` อีกครั้งเพื่อ verify
 3. ทำ `/suggest-next-action`
 

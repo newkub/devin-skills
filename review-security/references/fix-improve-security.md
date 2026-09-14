@@ -58,7 +58,7 @@
 
 1. รัน `/deep-validate` และ `/run-check`
 2. รัน `/run-test` สำหรับ auth/security test cases
-3. ทำ `/report-table` สรุป findings → fix → status
+3. ทำ `/report table` สรุป findings → fix → status
 
 ## Rules
 

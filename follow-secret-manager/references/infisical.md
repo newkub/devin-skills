@@ -241,9 +241,8 @@ jobs:
 ## Environment Variables
 
 - `INFISICAL_TOKEN` — Machine identity access token for CI/CD
-- `INFISICAL_DOMAIN` — Self-hosted instance URL
+- `INFISICAL_DOMAIN` / `INFISICAL_API_URL` — Self-hosted instance URL / custom API endpoint
 - `INFISICAL_DISABLE_UPDATE_CHECK` — Set to `true` in production
-- `INFISICAL_API_URL` — Custom API endpoint
 
 ## Source
 

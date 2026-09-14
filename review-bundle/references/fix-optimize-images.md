@@ -57,7 +57,7 @@ Optimize รูปภาพใน project: compress PNG/JPEG, convert เป็�
 
 > Goal: สรุปผลก่อน/หลัง
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `File`, `Before`, `After`, `Saved`, `Format`, `Action`
+1. ทำ `/report table` คอลัมน์: `No.`, `File`, `Before`, `After`, `Saved`, `Format`, `Action`
 2. สรุป total saved bytes และเปอร์เซ็นต์
 3. ระบุไฟล์ที่ข้ามและเหตุผล
 

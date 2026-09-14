@@ -50,7 +50,7 @@
 
 1. ถ้าเป็นไปได้ ทดสอบใน clean environment (fresh clone, container, worktree)
 2. ทุก command ใน docs ต้องรันจริงได้ — ไม่ copy จากความจำ
-3. ใช้ `/report-table` สรุป: `No.`, `Gap`, `Fix`, `Impact`
+3. ใช้ `/report table` สรุป: `No.`, `Gap`, `Fix`, `Impact`
 
 ## Rules
 

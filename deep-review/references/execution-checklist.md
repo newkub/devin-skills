@@ -130,7 +130,7 @@
 4. ระบุ root cause และ false positives ที่พบ
 5. ทำ `/deep-validate` เพื่อ validate findings
 6. ทำ `/run-review` เพื่อวัด after score
-7. ทำ `/report-table` แสดง findings: Category, Finding, Severity, Location, Recommendation
+7. ทำ `/report table` แสดง findings: Category, Finding, Severity, Location, Recommendation
 8. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ดูเพิ่มเติม: [issue-detection.md](issue-detection.md), [scoring.md](scoring.md)

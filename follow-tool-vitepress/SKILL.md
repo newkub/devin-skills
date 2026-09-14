@@ -241,8 +241,7 @@ export default {
 ## Expected Outcome
 
 - VitePress config พร้อมใช้งาน
-- UnoCSS integrated พร้อม presetWind4
-- Theme custom พร้อมใช้งาน
+- UnoCSS (presetWind4) + theme custom พร้อมใช้งาน
 - Package scripts พร้อมใช้งาน
 - Shiki Twoslash + Group Icons integrated
 - GitHub Actions deployment พร้อมใช้งาน

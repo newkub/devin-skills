@@ -46,7 +46,7 @@ argument-hint: "[target]"
 
 > Goal: สรุป findings พร้อม severity
 
-1. ใช้ `/report-table`: `No.`, `Endpoint`, `Provider`, `Issue`, `Severity`, `Fix`
+1. ใช้ `/report table`: `No.`, `Endpoint`, `Provider`, `Issue`, `Severity`, `Fix`
 2. Severity: `critical` (no verification), `high` (broken verification, replay possible), `medium` (weak tolerance, missing dedup)
 3. ระบุ provider-specific best practices ที่ขาด
 

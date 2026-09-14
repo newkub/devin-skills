@@ -82,7 +82,7 @@
 1. ทำ `/run-verify`
 2. ทำ `/run-test`
 3. ทำ `/review-quality` อีกครั้งเพื่อ verify
-4. ทำ `/report-table` สรุป fixes
+4. ทำ `/report table` สรุป fixes
 5. ทำ `/suggest-next-action`
 
 ## Rules

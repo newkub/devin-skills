@@ -54,7 +54,7 @@ argument-hint: "[target]"
 
 > Goal: สรุป DNS health
 
-1. ใช้ `/report-table`: `No.`, `Domain`, `Record`, `Issue`, `Severity`, `Fix`
+1. ใช้ `/report table`: `No.`, `Domain`, `Record`, `Issue`, `Severity`, `Fix`
 2. Severity: `critical` (dangling CNAME, NXDOMAIN บน live service), `high` (missing MX ที่ต้องมี), `medium` (TTL issues), `info` (missing CAA/DNSSEC)
 3. ระบุ exact changes ที่ต้องทำที่ DNS provider
 

@@ -53,7 +53,7 @@ argument-hint: "[target]"
 
 > Goal: สรุป cert health พร้อม timeline
 
-1. ใช้ `/report-table`: `No.`, `Domain`, `Expiry`, `Days Left`, `Renewal`, `Severity`, `Action`
+1. ใช้ `/report table`: `No.`, `Domain`, `Expiry`, `Days Left`, `Renewal`, `Severity`, `Action`
 2. เรียงตาม days remaining — ใกล้หมดก่อน
 3. แนะนำ: renewal steps, auto-renewal setup, monitoring/alerting สำหรับ expiry
 

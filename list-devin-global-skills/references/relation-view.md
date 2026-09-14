@@ -73,7 +73,7 @@ related:
    - `Contains` (skills ทีอยู่ภายใน skill นี้)
    - `Called By` (skills ทีเรียกใช้ skill นี้)
 2. แสดง flow chains ใต้ตาราง
-3. ทำ `/report-table`
+3. ทำ `/report table`
 
 ### 5. Optional Visualize
 

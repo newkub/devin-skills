@@ -246,5 +246,4 @@ export default () => ({
 ## Sources
 
 - https://vite.dev/guide/api-plugin.html
-- https://rolldown.rs/apis/plugin-api
-- https://rolldown.rs/apis/plugin-api/hook-filters
+- https://rolldown.rs/apis/plugin-api (+ /hook-filters)
