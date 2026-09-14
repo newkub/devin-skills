@@ -86,7 +86,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงโ�
 
 - ใช้ `/git-commit` เมื่อ hooks ทำงานได้ปกติ
 - ใช้ `/git-commit selected-files` เมื่อต้องการ commit เฉพาะไฟล์
-- ใช้ `/git-commit and-push` เมื่อต้องการ push พร้อมกัน
+- ใช้ `/git-commit-and-push` เมื่อต้องการ push พร้อมกัน
 - ใช้ `/run-check` หรือ `/run-verify` ก่อน `--no-verify` ถ้าเป็นไปได้
 - ใช้ `/resolve-errors` เมื่อ hook ล้มเหลวและต้องแก้ root cause
 - ใช้ `/refactor-commit` ถ้า history ต้องปรับ

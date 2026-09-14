@@ -52,7 +52,7 @@ related:
 
 > Goal: โค้ดทั้งหมดถูก commit และ push ไป remote
 
-1. ทำตาม `/git-commit and-push` เพื่อ commit และ push การเปลี่ยนแปลง
+1. ทำตาม `/git-commit-and-push` เพื่อ commit และ push การเปลี่ยนแปลง
 2. ถ้า `git-commit-and-push` ล้มเหลว → ตรวจ `git status`, `git log`, แล้ว retry สูงสุด 1 ครั้ง
 
 ### 5. Verify

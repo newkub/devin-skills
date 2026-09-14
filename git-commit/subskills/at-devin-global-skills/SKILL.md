@@ -31,7 +31,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 ใช้สำหรับ `%APPDATA%\devin\skills` บน Windows หรือ `~/.devin/skills` บน Unix
 
 - เป็น wrapper รอบ `/git-commit` ที่เพิ่ม pre-commit validation สำหรับ devin global skills
-- ไม่ใช่ tool สำหรับ push, deploy หรือ merge — ถ้าต้องการ push ให้ใช้ `/git-commit and-push` หลังจากนี้
+- ไม่ใช่ tool สำหรับ push, deploy หรือ merge — ถ้าต้องการ push ให้ใช้ `/git-commit-and-push` หลังจากนี้
 - ไม่แก้ไข code ให้เอง — ถ้า validation พบ Critical/High ให้ stop และส่งต่อ `/resolve-errors`
 
 ## Execute
@@ -116,7 +116,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 
 ### 4. Post-Commit
 
-- ถ้าต้องการ push ให้ใช้ `/git-commit and-push`
+- ถ้าต้องการ push ให้ใช้ `/git-commit-and-push`
 - ถ้าต้องการ refactor history ให้ใช้ `/refactor-commit`
 - ถ้ามี findings หลัง commit ให้ใช้ `/resolve-errors`
 

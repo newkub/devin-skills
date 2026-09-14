@@ -129,7 +129,7 @@ related:
 #### Stage
 
 1. `git pull --rebase origin main` — feature branch sync กับ main
-2. ทำ `/git-commit and-push` push changes ที่ผ่าน validation
+2. ทำ `/git-commit-and-push` push changes ที่ผ่าน validation
 3. deploy staging ด้วย `/run-deploy` ตาม AGENTS.md/package.json — บันทึก deploy URL, commit hash
 4. ทำ `/watch-deploy` + smoke tests (critical flows, API health); e2e ผ่าน `/run-test` ถ้ามี
 5. ถ้า staging fail → fix code กลับ Validate — retry สูงสุด 3 รอบ; ผ่าน = `ready-for-production`

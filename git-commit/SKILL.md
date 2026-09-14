@@ -32,7 +32,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 |--------------------------|----------|
 | `no-verify`              | `subskills/no-verify/SKILL.md` — commit ข้าม pre-commit hooks ด้วย `--no-verify` |
 | `selected-files`         | `subskills/selected-files/SKILL.md` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
-| `and-push`               | `subskills/and-push/SKILL.md` — commit + push + resolve CI/CD |
+| `and-push`               | `subskills/and-push/SKILL.md` — commit + push + resolve CI/CD (เรียกได้ผ่าน top-level alias `/git-commit-and-push`) |
 | `at-devin-global-skills` | `subskills/at-devin-global-skills/SKILL.md` — pre-commit validation สำหรับ devin global skills |
 
 ### 1. Navigate To Global Devin Skills
