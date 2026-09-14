@@ -4,6 +4,7 @@ description: Watch browser confirm server แล้ว subagents แยก route
 argument-hint: "[url|report]"
 related:
   - watch-browser
+  - watch-browser-and-improve-uxui
   - improve-uxui
   - use-agent-browser
   - review-uxui

@@ -12,6 +12,8 @@ related:
   - deep-research
   - run-audit
   - use-scripts
+  - deep-analyze-with-use-scripts
+  - deep-analyze-and-refactor
 ---
 
 ## Goal

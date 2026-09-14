@@ -4,6 +4,7 @@ description: เปิด browser ด้วย agent-browser แล้ว captur
 argument-hint: "[url|report]"
 related:
   - watch-browser
+  - watch-browser-and-fix
   - watch-browser-console
   - improve-uxui
   - resolve-errors
