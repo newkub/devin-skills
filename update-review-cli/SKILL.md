@@ -206,7 +206,7 @@ related:
 - ห้ามใช้ `**` (bold markers)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
-- ใช้ /deep-test-cli ถ้าจำเป็น
+- ใช้ /deep-test cli ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -215,3 +215,21 @@ related:
 - Findings ครอบคลุม 60+ categories พร้อม evidence และ severity
 - Before-after review score ผ่าน `/run-review`
 - ไม่มี analyzer errors
+
+## Known Issues
+
+ปัญหาที่เคยเจอจริงใน solid-ui session 2026-09-13 — เก็บไว้เช็คซ้ำก่อนตัดสินว่าเป็น source bug
+
+| No. | Issue | Evidence | Status |
+|-----|-------|----------|--------|
+| 1 | `checkCommand` รายงาน typecheck/lint fail เมื่อ process ตายด้วย OOM/`VirtualAlloc` ใต้ analyzer load | Windows heap error ใน combined output ทั้งที่ typecheck ตรงผ่าน | fixed — retry 1 ครั้งเมื่อ output match OOM/timeout patterns (`tools/analyze/src/analyzers/codeQuality.ts`) |
+| 2 | hardcoded-URL check flag URL validation code และ known public endpoints | `startsWith("https://")`, `https://${...}` templates, plausible/GitHub API endpoints | fixed — allowlist + skip validation expressions (`tools/analyze/src/analyzers/security.ts`) |
+| 3 | max-function-length 60 บรรทัด flag SolidJS declarative components ปกติ | SearchPage/Sidebar/SearchPalette ถูก flag ทั้งที่เป็น JSX ล้วน | fixed — TSX 200 / TS 120 (`workspace-checks.ts`) |
+| 4 | max-file-length 250 flag data tables/renderer maps/barrels ที่แยกแล้วได้แต่ indirection | `index.ts` barrel, `icons.tsx`, `categories.ts`, `specs-extended.ts` | fixed — threshold 400 (`codeQuality.ts`); `no-huge-files` 500 คงไว้ |
+| 5 | report สะท้อน line counts เก่าเมื่อ `biome --write` rewrite ไฟล์ระหว่าง/หลัง scan | evidence `ThemeSettings.tsx has 387 lines` ทั้งที่ไฟล์ 52 แล้ว | open — workaround: รัน formatter ให้เสร็จก่อน review เสมอ, เทียบ report timestamp กับไฟล์ล่าสุด |
+| 6 | website build crash `Stack overflow` (exit 66) ใต้ load — retry ผ่าน | rolldown build ระหว่าง review กำลังรันขนาน | open — transient; ไม่ใช่ source failure |
+| 7 | table output เดิมไม่มี status/delta/fix-skill ตาม spec `## CLI Output` | findings แสดงแค่ severity/domain/category/evidence แบบ flat | fixed — sub-list per category พร้อม reason/risk/fix/priority/status, domain delta, `--domain`/`--severity` filters, exit 1 ตาม metric triggers |
+| 8 | unsafe-pattern flag member-call `eval` (`upstash.eval`, Lua EVAL) เป็น High | `packages/infrastructure/src/adapters/redis/upstash-client.ts:69` (booking-platform, 2026-09-14) | fixed — `(?<![\w$.])eval\s*\(` flag เฉพาะ bare `eval(` (`tools/analyze/src/domain/analyzers/security.ts`) |
+| 9 | `process.env` flag matches ใน comments และ doc strings | `apps/admin/app/server.ts:56`, `turnstile/service.ts:13` (booking-platform, 2026-09-14) | fixed — strip block/line comments ก่อน match (`tools/analyze/src/domain/analyzers/platform.ts`); real read ใน `apps/provider/src/server.ts` intentional ภายใต้ `nodejs_compat_populate_process_env` |
+| 10 | dead-code heuristic flag export ที่มี consumer ผ่าน `createServerFn` | `handleTikTokCallback` flagged ซ้ำ 2026-09-14 (apps/website) ทั้งที่ `routes/auth/tiktok-callback.tsx:41` import ใช้ — reproduce จริง ไม่ใช่ stale scan | open — analyzer ต้อง resolve TanStack `createServerFn` export consumption |
+| 11 | tsgo (`typescript@7`) panic `gcBgMarkWorker`/`checkerpool.go` เมื่อ RAM เหลือน้อย (~2.7GB/11.9GB) — typecheck finding ตายทั้งที่ source ผ่าน | `bunx tsc --noEmit` exit 1 พร้อม Go stack; `lib/tsc.js` ก็ delegate ไป native binary; vitest forks OOM ในสภาวะเดียวกัน (booking-platform, 2026-09-14) | open — environmental; workaround: ปิด processes อื่น/รันตอน RAM ว่าง, หรือ `bun build` เช็ค import resolution แทนชั่วคราว |

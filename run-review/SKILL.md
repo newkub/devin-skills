@@ -123,3 +123,25 @@ related:
 
 - ถ้าต้องแก้ไข analyzer logic ให้เรียก `/update-create-analyze-cli` ก่อน เพื่ออัปเดท `tools/analyze` ก่อน `/update-review-cli`
 - Fix workflow ย้ายมาอยู่ใน `/run-review` Step 4
+
+## Known Issues
+
+ปัญหาที่เคยเจอจริง — เช็คก่อนตัดสินว่า finding เป็น source bug (รายละเอียดเต็มใน `update-review-cli` Known Issues)
+
+| No. | Issue | Status |
+|-----|-------|--------|
+| 1 | typecheck/lint finding จาก OOM/`VirtualAlloc` ใต้ analyzer load — ไม่ใช่ source fail | fixed — analyzer retry 1 ครั้งบน OOM patterns |
+| 2 | hardcoded-URL false positives บน URL-validation code และ known public endpoints | fixed — allowlist + expression skip |
+| 3 | long-function/file thresholds เดิม flag declarative TSX และ data tables ปกติ | fixed — TSX 200 / TS 120 / file 400 |
+| 4 | report stale เมื่อ formatter rewrite ไฟล์ใกล้เวลารัน — เทียบ timestamp ก่อนเชื่อ evidence | open — รัน `biome check --write` ให้จบก่อน review |
+| 5 | transient build/tooling crash ใต้ load (stack overflow, exit 66) — retry ก่อน flag | open — workaround: rerun |
+| 6 | unsafe-pattern flag member-call `eval` (`upstash.eval`) | fixed — bare `eval(` เท่านั้นที่ flag |
+| 7 | `process.env` flag matches ใน comments/doc strings | fixed — comments ถูก strip ก่อน match; real read ใน provider server.ts intentional ภายใต้ `nodejs_compat_populate_process_env` |
+| 8 | dead-code flag export ที่ใช้ผ่าน `createServerFn` | open — reproduce 2026-09-14 (`handleTikTokCallback`); analyzer ต้อง resolve TanStack server-fn consumers |
+| 9 | tsgo typecheck panic `gcBgMarkWorker` เมื่อ RAM ต่ำ — finding ตายไม่ใช่ source fail | open — workaround: รันตอน RAM ว่าง |
+
+## CLI Output Notes
+
+- table output แสดง domain summary (score/grade/findings/delta) + per-finding sub-list: priority, reason, risk, fix skill, status (new/existing), evidence items
+- `--domain <name>` / `--severity <min>` สำหรับ iterate เฉพาะส่วนที่ fail
+- exit code: `1` เมื่อ metric trigger tripped (categories<60, score<70, domain<50, analyzerErrors>0, FP>20%) — ใช้เป็น CI gate ได้
