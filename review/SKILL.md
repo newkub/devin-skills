@@ -96,7 +96,7 @@ related:
 | 47 | เน้น browser extension — manifest, permissions, content scripts | `/review-browser-ext` | `/review-frontend`, `/review-security` |
 | 48 | เน้น IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/review-iac` | `/review-security`, `/review-cost` |
 | 49 | เน้น SDK/library public surface — exports, semver, types | `/review-sdk` | `/review-api`, `/review-techstack` |
-| 50 | เน้น usage surface — API/CLI/web parity กับ docs (refresh `/update-usage-md` ก่อน) | `/review-usage-md` | `/review-docs`, `/review-cli`, `/review-api` |
+| 50 | เน้น usage surface — API/CLI/web parity กับ docs (refresh `/update-usage-md` ก่อน) | `/review-usage` | `/review-docs`, `/review-cli`, `/review-api` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
 2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง

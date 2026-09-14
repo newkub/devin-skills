@@ -73,7 +73,7 @@ dispatch เมื่อ skill ที่กำลัง improve ครอบค�
 | 27 | `/review-browser-ext` | manifest, permissions, content scripts | extension, manifest v3, content script |
 | 28 | `/review-iac` | IaC state, secrets, drift, K8s specs | Terraform, Pulumi, CDK, Helm |
 | 29 | `/review-sdk` | public API surface, exports, semver, types | library, package, SDK, exports |
-| 30 | `/review-usage-md` | usage surface parity — docs promise vs API/CLI/web จริง | usage, USAGE.md, CLI, public API |
+| 30 | `/review-usage` | usage surface parity — docs promise vs API/CLI/web จริง | usage, USAGE.md, CLI, public API |
 
 ## Target
 

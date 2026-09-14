@@ -1,5 +1,5 @@
 ---
-name: review-usage-md
+name: review-usage
 description: Review usage surface ของ project — refresh usage docs ก่อน แล้วตรวจ API/CLI/web parity
 argument-hint: "[scope]"
 related:
@@ -34,17 +34,20 @@ Review usage surface ของ project จากมุมผู้ใช้ — 
 
 1. ทำ `/update-usage-md` ก่อนเสมอ — `USAGE.md` ต้องสะท้อน code ปัจจุบัน
 2. ถ้า project ไม่มี usage docs → สร้างผ่าน step นี้ก่อน (หรือ draft กับ `/design-usage-md-with-me-first`)
-3. บันทึก snapshot ของ documented surface: commands, API items, flows ที่ docs อ้างถึง
+3. แก้ statements ใน `USAGE.md` ที่ไม่ตรง code ได้เลยใน step นี้ (refresh ไม่นับเป็น "แก้ docs ระหว่าง review") — docs อื่น (`README.md`, `docs/`) ห้ามแก้
+4. บันทึก snapshot ของ documented surface: commands, API items, member/method names, flows ที่ docs อ้างถึง พร้อม file:line ของแต่ละ claim
 
 ### 2. Usage Parity Check
 
 > Goal: ทุกอย่างที่ docs สัญญามีจริงและใช้ได้
 
 1. documented CLI commands → มีจริงใน bin/entry points ไหม (หาย = Critical)
-2. documented API exports → มีจริงใน public surface ไหม
-3. documented flags/config → ยังรองรับไหม (renamed/removed = breaking)
-4. documented examples → run ได้จริงหรือมี signature ตรง
-5. surface จริงที่ไม่มีใน docs → undocumented features (Medium)
+2. documented API exports → มีจริงใน public surface ไหม — เช็คทั้ง main entry และแต่ละ subpath export
+3. documented member/method names → มีจริงบน object/interface ที่ return ไหม (เช่น docs เขียน `src.toQueue` แต่ `toQueue` อยู่บน `src.stream`)
+4. documented "same shape" claims ข้าม variants/adapters → verify signature ของแต่ละ variant จริง (เช่น options object vs positional args, Accessor vs Ref vs plain value)
+5. documented flags/config → ยังรองรับไหม (renamed/removed = breaking)
+6. documented examples → run ได้จริงหรือมี signature ตรง
+7. surface จริงที่ไม่มีใน docs → undocumented features (Medium) — รวม namespace exports, error classes, helper fns
 
 ### 3. Surface Reviews
 
@@ -67,8 +70,8 @@ Review usage surface ของ project จากมุมผู้ใช้ — 
 ## Rules
 
 - `/update-usage-md` ก่อนเสมอ — ห้าม review บน docs ที่ stale
-- review/report-only โดย default — ไม่แก้ code หรือ docs ระหว่าง review
-- ทุก parity finding ต้องมีทั้งสองฝั่ง: doc reference + surface evidence
+- review/report-only โดย default — ไม่แก้ code หรือ docs อื่นนอกจาก `USAGE.md` ใน step 1
+- ทุก parity finding ต้องมีทั้งสองฝั่ง: doc reference + surface evidence (file:line)
 - deep domain issues ส่งต่อ `review-*` ตรง domain — skill นี้ aggregate เท่านั้น
 
 ## Fix

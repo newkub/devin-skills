@@ -65,7 +65,7 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | dx | `/review-dx` | `review-dx` `## Fix` steps |
 | iac | `/review-iac` | `review-iac` `## Fix` steps |
 | sdk | `/review-sdk` | `review-sdk` `## Fix` steps |
-| usage | `/review-usage-md` | `review-usage-md` `## Fix` steps |
+| usage | `/review-usage` | `review-usage` `## Fix` steps |
 | ai | `/review-ai` | `review-ai` `## Fix` steps |
 | mcp | `/review-mcp` | `review-mcp` `## Fix` steps |
 | events | `/review-events` | `review-events` `## Fix` steps |

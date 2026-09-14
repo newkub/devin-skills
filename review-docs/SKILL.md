@@ -27,7 +27,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
-- merged from: `review-usage-md`, `review-features` — USAGE.md refs `references/usage-md-*.md`, features docs refs `references/features-*.md`
+- merged from: `review-usage`, `review-features` — USAGE.md refs `references/usage-md-*.md`, features docs refs `references/features-*.md`
 
 ## Execute
 

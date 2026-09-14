@@ -35,7 +35,7 @@ Catalog `review-*` ทั้งหมด (58 ตัว) สำหรับ `deep
 | 11 | `/review-desktop-app` | window, tray, IPC security, packaging, auto-update | workspace ที่เป็น desktop app |
 | 12 | `/review-browser-ext` | manifest v3, permissions, content scripts, CSP | workspace ที่เป็น browser extension |
 | 13 | `/review-iac` | Terraform/Pulumi/CDK/K8s, state, secrets, drift | workspace ที่มี IaC |
-| 14 | `/review-usage-md` | usage surface parity — API/CLI/web vs docs promise | workspace ที่มี public usage surface |
+| 14 | `/review-usage` | usage surface parity — API/CLI/web vs docs promise | workspace ที่มี public usage surface |
 | 15 | `/review-database` | schema, indexes, queries, migrations | workspace ที่แตะ DB |
 | 16 | `/review-events` | event schemas, ordering, idempotency, DLQ | workspace ที่ใช้ events/queues |
 | 17 | `/review-auth` | sessions, tokens, OAuth, RBAC | workspace ที่มี auth |
