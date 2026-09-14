@@ -4,6 +4,7 @@ description: สร้างไอเดีย merge หรือ consolidate �
 argument-hint: "[target]"
 related:
   - scan-codebase
+  - follow-single-of-source
   - review-devin-global-harness
   - dont-over-engineer
   - report

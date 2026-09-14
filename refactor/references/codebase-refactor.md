@@ -32,9 +32,10 @@ Merged from: `deep-refactor-codebase` — deep refactor หนึ่ง workspac
 
 1. ทำ `/plan` หรือ `/create-plan-in-dot-devin` สำหรับงานใหญ่ — จัดลำดับ high impact + low effort ก่อน
 2. เลือก strategy ต่อ target: in-place, extract, relocate (`/relocation`), rename (`/rename`), split
-3. แก้ SRP violations และไฟล์ >250 บรรทัด — แยกตาม concern/domain
-4. แก้ inconsistencies ใน naming, patterns, structure, style ตาม `/review-quality`
-5. ทำทีละ batch พร้อม verify หลังแต่ละ batch และ commit checkpoint หลัง phase สำคัญ
+3. ถ้า replacement ขนาดใหญ่ที่ทำ big-bang ไม่ได้ → ใช้ strangler fig / branch by abstraction: สร้าง abstraction layer → route callers ทีละกลุ่ม → parallel run เก่า/ใหม่ → cutover → ลบของเก่า
+4. แก้ SRP violations และไฟล์ >250 บรรทัด — แยกตาม concern/domain
+5. แก้ inconsistencies ใน naming, patterns, structure, style ตาม `/review-quality`
+6. ทำทีละ batch พร้อม verify หลังแต่ละ batch และ commit checkpoint หลัง phase สำคัญ
 
 ### 5. Update References
 

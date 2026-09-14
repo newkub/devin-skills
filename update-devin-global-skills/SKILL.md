@@ -4,6 +4,7 @@ description: "จัดการ global Devin skills: สร้าง อัป�
 argument-hint: "[@files-or-topic...]"
 related:
   - new-skills
+  - follow-single-of-source
   - check-all-routes
   - check-release-notes
   - check-content-outdate

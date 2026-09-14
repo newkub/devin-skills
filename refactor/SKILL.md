@@ -16,6 +16,7 @@ related:
   - resolve-errors
   - dont-over-engineer
   - use-lib-effective
+  - follow-single-of-source
   - ask-me
   - suggest-next-action
 ---
@@ -30,6 +31,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/codebase-refactor.md` (deep procedure: baseline → impact → batches → validation)
+- ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 (merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`, `deep-refactor`)
@@ -44,8 +46,9 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 2. ถ้ามี `@files...` → file refactor
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
-5. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-6. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
+6. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
+7. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -120,6 +123,9 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน
+- เลือก technique จาก `references/code-smells.md` — smell → technique ตรง root cause
+- แก้ที่ root cause เสมอ ห้าม patch symptom — ถ้า fix ทำให้ต้องแก้หลายจุดซ้ำ (shotgun surgery) → รวมไป canonical source เดียว
+- ห้าม perf tuning ใน refactor pass — optimization เปลี่ยน behavior/timing เสี่ยง regression; ถ้าเจอ perf issue → note ไว้แยก commit ต่างหาก (`/review-performance`)
 
 ### 6. SRP And Consistency
 
@@ -127,6 +133,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - หนึ่ง file ครอบคลุมหนึ่ง concern
 - ไฟล์ไม่เกิน 250 บรรทัด ยกเว้น barrel/index ที่จำเป็น
 - รักษา naming, patterns, structure สอดคล้องกันทั้ง scope
+- หนึ่ง fact มี canonical source เดียว — เจอ constants/config/logic ที่ duplicate → extract ไป source เดียวตาม `/follow-single-of-source`
 
 ### 7. Safety
 

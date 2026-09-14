@@ -1,6 +1,6 @@
 # Review Skills Map
 
-Catalog ครบทุก `review-*` skill (57 ตัว) สำหรับ dispatch ใน improve workflow — เลือกตาม tier แล้วรัน independent แบบ parallel ผ่าน `/follow-parallel` (≤10 ต่อ batch)
+Catalog ครบทุก `review-*` skill (58 ตัว) สำหรับ dispatch ใน improve workflow — เลือกตาม tier แล้วรัน independent แบบ parallel ผ่าน `/follow-parallel` (≤10 ต่อ batch)
 
 > Canonical dispatch catalog สำหรับ codebase review อยู่ที่ `deep-review/references/review-skills.md` — ไฟล์นี้เก็บเฉพาะ tier/dispatch condition สำหรับ context "improve devin global skills"; ถ้าเพิ่ม/ลบ/merge `review-*` skill ให้อัปเดตทั้งสองไฟล์
 
@@ -73,6 +73,7 @@ dispatch เมื่อ skill ที่กำลัง improve ครอบค�
 | 27 | `/review-browser-ext` | manifest, permissions, content scripts | extension, manifest v3, content script |
 | 28 | `/review-iac` | IaC state, secrets, drift, K8s specs | Terraform, Pulumi, CDK, Helm |
 | 29 | `/review-sdk` | public API surface, exports, semver, types | library, package, SDK, exports |
+| 30 | `/review-usage-md` | usage surface parity — docs promise vs API/CLI/web จริง | usage, USAGE.md, CLI, public API |
 
 ## Target
 

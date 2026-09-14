@@ -4,6 +4,7 @@ description: สร้าง docs/ markdown documentation จาก source code 
 argument-hint: "[scope]"
 related:
   - check-should-update
+  - follow-single-of-source
   - check-monorepo
   - check-content-outdate
   - check-correctness

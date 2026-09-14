@@ -4,6 +4,7 @@ description: Review ทั้ง devin harness — skills, subagents, hooks, MCP
 argument-hint: "[layer|all]"
 related:
   - update-devin-global-skills
+  - follow-single-of-source
   - update-devin
   - align-devin-layers
   - deep-validate
