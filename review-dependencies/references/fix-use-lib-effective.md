@@ -1,6 +1,6 @@
 # Fix Guide
 
-(merged from: use-lib-effective)
+(merged from: use-lib-effective — restored เป็น standalone `/use-lib-effective` เมื่อ 2026-09; guide นี้ยังใช้เป็น fix reference ของ review)
 
 ## Goal
 

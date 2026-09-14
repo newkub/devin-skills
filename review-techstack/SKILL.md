@@ -11,6 +11,7 @@ related:
   - report
   - suggest-next-action
   - follow-tasks
+  - follow-my-techstack
   - list-dependencies
   - update-version-to-latest
   - list-raindrop-favorite
@@ -59,7 +60,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 > Goal: เทียบ project stack กับ preferred tech stack catalog และ preference signals ของ user
 
-1. เทียบกับ canonical catalog ที่ `review-dependencies/references/techstack-catalog.md` (merged from: follow-my-tech-stack) — รายงาน drift จาก Default picks, missing must-have, obsolete tools
+1. เทียบกับ canonical catalog ผ่าน `/follow-my-techstack` — รายงาน drift จาก Default picks, missing must-have, obsolete tools
 2. ทำ `/list-raindrop-favorite` เพื่อดึง favorited tools/libraries — favorites คือ curated preference signal ของ user (tools ที่ bookmark ไว้ใช้ซ้ำ)
 3. ทำ `/search-raindrop "<library>"` เมื่อเทียบ alternatives — ถ้า candidate ถูก bookmark → น้ำหนัก preferred สูงขึ้น; ถ้า project ใช้ tool ที่ไม่เคยถูก bookmark แต่มี bookmarked alternative → flag เป็น finding
 4. รายงาน bookmarked-but-not-used (preferred tools ที่ project ยังไม่ใช้) และ used-but-unfamiliar (tools ที่ไม่อยู่ใน catalog/favorites → ต้องเช็ค maintenance/security เพิ่ม)

@@ -25,7 +25,7 @@ related:
 
 - merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md` (skill restored เมื่อ 2026-09 → ใช้ `/review-techstack` สำหรับ stack selection, cloud choices, library design)
 
-- merged from: `follow-my-tech-stack` (deleted — merged เข้า `/review-techstack`) — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md`
+- merged from: `follow-my-tech-stack` — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md` (restored เป็น `/follow-my-techstack` เมื่อ 2026-09)
 
 ## Execute
 

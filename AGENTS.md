@@ -82,12 +82,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **758** top-level skills (1081 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, `fix-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`.
+The repository currently contains **760** top-level skills (1083 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, `fix-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
 Core:
-- `update-docs-agents-md: /update-docs-agents-md`
+- `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-devin-global-subagents: /update-devin-global-subagents` — create/update agents/ aligned with skills (subskill)
@@ -100,7 +100,7 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (183): language, framework, library, tool, service, architecture, and best-practice guides — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`). `follow-*-architecture` family merged into `/review-architecture` (`references/patterns-*.md`).
+- `follow-*` (184): language, framework, library, tool, service, architecture, and best-practice guides — `follow-my-techstack` restored (ใช้ canonical catalog ที่ `review-dependencies/references/techstack-catalog.md`) — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`). `follow-*-architecture` family merged into `/review-architecture` (`references/patterns-*.md`).
 - `review-*` (55): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`, `redundancy`+`references`→`devin-global-skills` (`techstack` restored เมื่อ 2026-09 — catalog อยู่ที่ `review-dependencies/references/techstack-catalog.md`); domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
 - `check-*` (51): verification, structure, and health checks — dispatchers: `check-files`, `check-secrets`, `check-repo-hygiene`, `check-monorepo`, `check-config-drift`.
 - `run-*` (29): test, build, lint, typecheck, format, and deployment runners — `run-test` = unit/fast tests only; `run-test-all` orchestrator selects `/run-test` + `/deep-test <domain>` by signals.
@@ -110,7 +110,7 @@ Major skill families by current count:
 - `list-*` (22): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github` route to `list-*-<domain>` top-level skills.
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
 - `open-*` (15): browser, editor, and terminal integration — `open` dispatcher routes to `open-explorer`, `open-github`, `open-web`, `open-wezterm`, `open-windows-terminal`, `open-zed`; specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
-- `ship-*` (2): `/ship` (entry point — `/update-docs-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-docs-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
+- `ship-*` (2): `/ship` (entry point — `/update-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
 - `gen-*` (8): media/artifact generation — `gen-media` dispatcher (`ai-images`, `ai-videos`, `image-character`, `3d-model`).
 - `cleanup-*` (8): `cleanup` dispatcher routes to `cleanup-branches-merged`, `cleanup-docker`, `cleanup-git-branch`, `cleanup-github-issue`, `cleanup-worktree` top-level skills; plus `cleanup-files-in-project`, `cleanup-files-in-computer`.
 - `search-*` (3): `search` dispatcher (`files-patterns`, `github-star`, `mcp`, `npmx`, `project-in-drive-d`, `raindrop`, `similar`, `skills`), `search-in-git`, `search-npm-libraries`.
@@ -125,7 +125,7 @@ Major skill families by current count:
 - `git-commit-*` (1→dispatcher): `git-commit` (`and-push`, `at-devin-global-skills`, `no-verify`, `selected-files`).
 - `watch-*` (6): browser watching + `watch-browser` dispatcher (`fix`, `improve-uxui`, `test`).
 
-Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `compare-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `watch-*`, `write-*`.
+Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `compare-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*` (รวม `use-lib-effective` restored — ใช้ dep ที่มี/catalog แทน reinvent; wired เข้า `/refactor`, `/implement-to-production`), `view-*`, `watch-*`, `write-*`.
 
 ### 6. Workspaces
 

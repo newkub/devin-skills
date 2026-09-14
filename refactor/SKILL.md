@@ -15,6 +15,7 @@ related:
   - check-repo-hygiene
   - resolve-errors
   - dont-over-engineer
+  - use-lib-effective
   - ask-me
   - suggest-next-action
 ---
@@ -115,6 +116,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 ### 5. Minimal Change
 
 - ทำ `/dont-over-engineer`
+- ทำ `/use-lib-effective` เมื่อเจอ code ที่อาจ reinvent dep ที่มีอยู่ — แทนด้วย lib ใน manifest หรือ catalog แทนการเขียนเอง
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน
