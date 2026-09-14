@@ -155,6 +155,8 @@ related:
 
 - ใช้ `bunx tsdown-migrate` สำหรับ migrate จาก `tsup`
 - ตรวจสอบ output หลัง migrate
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

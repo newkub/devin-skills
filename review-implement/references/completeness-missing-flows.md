@@ -57,7 +57,7 @@
 
 ## Detection Tools
 
-- `/roleplay-stakeholder` สำหรับจำลอง user journey
+- `/roleplay-by-all-stakeholder` สำหรับจำลอง user journey
 - `/deep-review` สำหรับระบุ gaps ใน code
 - `/scan-codebase` สำหรับค้นหา API endpoints, schema, UI components
 

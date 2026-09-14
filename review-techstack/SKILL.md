@@ -24,7 +24,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ## Scope
 
-ใช้สำหรับ project หรือ workspace ที่มี manifest files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) — ครอบคลุม framework selection, library versions, runtime compatibility, build tools, package manager, technology alignment, dependency versions, security, unused dependencies, transitive dependencies, duplicate packages, circular dependencies, license compliance, bundle impact, library API design, export strategy, module format, tree-shaking, peer deps, semver compliance, compatibility matrix, type declarations และ cloud/infrastructure selection — เน้น review และปรับปรุง ไม่รวมการติดตั้งใหม่ (ใช้ `/run-install`)
+ใช้สำหรับ project หรือ workspace ที่มี manifest files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) — ครอบคลุม framework selection, runtime compatibility, build tools, package manager, technology alignment, library API design, export strategy, module format, tree-shaking, peer deps, semver compliance, compatibility matrix, type declarations และ cloud/infrastructure selection — เน้น review และปรับปรุง ไม่รวมการติดตั้งใหม่ (ใช้ `/run-install`)
 
 - Boundary: tech stack selection, preferred catalog (`review-dependencies/references/techstack-catalog.md`, merged from: follow-my-tech-stack), framework/cloud choices, library design → skill นี้; dependency health เท่านั้น (outdated, vulnerabilities, unused, licenses) → `/review-dependencies`
 
@@ -138,6 +138,14 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ตาม priority: security vulnerabilities ก่อน → `/run-audit` + update, unused deps → remove, outdated → `/update-version-to-latest`
+2. library ที่ไม่ตรง techstack catalog → แนะนำทางเลือกตาม `review-dependencies/references/techstack-catalog.md` หรือ `/use-lib-effective`
+3. verify: `/run-check` + regression check หลังเปลี่ยน stack
 
 ## Expected Outcome
 

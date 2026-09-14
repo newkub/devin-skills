@@ -112,6 +112,8 @@ related:
 - ไม่เกิน 250 บรรทัด
 
 - ใช้ `/follow-math-concepts` ถ้าจำเป็น
+- ใช้ /review-coverage ถ้าจำเป็น
+
 
 ## Expected Outcome
 

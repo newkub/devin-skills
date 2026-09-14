@@ -121,6 +121,14 @@ Review drift ระหว่าง current state และ target state เพ�
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. apply updates ตาม priority order จาก Drift Report — ส่งต่อ `update-*` skill ที่ตรง domain (docs, config, deps, skills)
+2. high drift ที่ไม่ชัดเจน → `/ask-me` ก่อนแก้
+3. verify: re-run drift check เทียบก่อน-หลัง update
+
 ## Expected Outcome
 
 - รายงานตาราง Drift Report พร้อม severity และ evidence

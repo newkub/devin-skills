@@ -23,7 +23,7 @@ related:
 - TUI templates (`/follow-create-tui-ratatui`) แบบ Ratatui
 - CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
 - Package setup templates สำหรับ `/setup-package`
-- Documentation templates (`/write-how-to`, `/update-docs-agents-md`, README.md)
+- Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)
 - Cloudflare templates สำหรับ `/create-cloudflare-worker`
 
 ## Execute
@@ -67,6 +67,9 @@ related:
 - ปรับ template ให้เข้ากับ stack จริง
 - ไม่ commit template ทียังไม่ปรับ
 - คู่กับ `/devin-scripts-toolkit`
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

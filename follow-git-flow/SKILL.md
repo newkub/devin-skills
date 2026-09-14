@@ -104,7 +104,7 @@ related:
 
 > Goal: เขียน ship section ลง `AGENTS.md`
 
-1. ทำ `/update-docs-agents-md` เพื่อให้ `AGENTS.md` อัปเดต
+1. ทำ `/update-agents-md` เพื่อให้ `AGENTS.md` อัปเดต
 2. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
 
 ### 8. Report
@@ -146,6 +146,8 @@ related:
 - รันได้ซ้ำโดยไม่เกิด side effects
 - ถ้า integration branch มีอยู่ → ไม่สร้างซ้ำ
 - ถ้า hooks มีอยู่ → อัปเดตเฉพาะส่วนที่ขาด
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 ---
 title: Product Documentation Reference
-description: Reference for product docs nav, sidebar, and content
+description: Reference for product docs detection, page groups, and content
 ---
 
 # Product Documentation Reference
@@ -17,11 +17,11 @@ A project is `product` when any of these are found:
 - Files exist: `auth.config.*`, `src/auth/`, `middleware.ts`, `routes/login.*`, `app/login.*`
 - Code contains `login`, `signin`, `auth` in API routes
 
-## Nav
+## Index Links
 
 `Project`, `Features`, `Auth`, `Admin`, `Review`, `Release`, `Development`
 
-## Sidebar
+## Page Groups
 
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage

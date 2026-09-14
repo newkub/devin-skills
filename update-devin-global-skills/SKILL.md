@@ -143,6 +143,8 @@ related:
 - ไม่มี TODO/MOCK/placeholder — ถ้าข้อมูลไม่ชัดให้ระบุความไม่แน่นอน
 - global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ
 - install commands ตาม ecosystem: `bun add`/`bun install` (Bun/Node), `cargo add` (Rust), `go get` (Go), `pip install` (Python), `mise use -g npm:<package>` สำหรับ global npm CLI
+- ใช้ /check-correctness ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -142,6 +142,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-typecheck ถ้าจำเป็น
+
 
 ## Expected Outcome
 

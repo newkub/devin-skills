@@ -1,6 +1,6 @@
 ---
 title: Open Source Documentation Reference
-description: Reference for open-source docs nav, sidebar, and content
+description: Reference for open-source docs detection, page groups, and content
 ---
 
 # Open Source Documentation Reference
@@ -17,11 +17,11 @@ A project is `open-source` when all of these are true:
 - No `AUTH_`, `JWT_`, `CLERK_`, `NEXTAUTH_`, `SUPABASE_`, `FIREBASE_`, `OAUTH_` in `.env`
 - No `auth.config.*`, `src/auth/`, `middleware.ts`, `routes/login.*`, `app/login.*` files
 
-## Nav
+## Index Links
 
 `Project`, `Features`, `Contributing`, `Review`, `Release`, `Development`
 
-## Sidebar
+## Page Groups
 
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage

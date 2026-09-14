@@ -27,6 +27,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ใช้สำหรับ review workspace หนึ่ย โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/deep-review`
 
+ไม่รวม: config file drift/duplicates โดยละเอียด (ใช้ `/review-config`) และ dependency health audit — outdated, vulnerabilities, unused (ใช้ `/review-dependencies`); skill นี้ตรวจ manifest/deps เฉพาะระดับ structure + readiness
+
 ดูเพิ่มเติม: /deep-review
 
 ## Execute
@@ -74,7 +76,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 1. circular dependencies ระหว่าง packages
 2. orphan packages — ไม่มี consumers แต่ยังอยู่ใน workspace
 
-### 7. Score And Report
+### 8. Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score และ recommendations
 

@@ -23,7 +23,7 @@ related:
 
 ## Goal
 
-ตรวจว่าเนื้อหาใน skills, docs, code comments, specs **ถูกต้อง** ไม่ใช่แค่ทันสมัย — commands รันได้จริง, API signatures ตรงกับ library, claims มี evidence รองรับ, logic สอดคล้องกัน
+ตรวจว่าเนื้อหาใน skills, docs, code comments, specs `ถูกต้อง` ไม่ใช่แค่ทันสมัย — commands รันได้จริง, API signatures ตรงกับ library, claims มี evidence รองรับ, logic สอดคล้องกัน
 
 ## Scope
 
@@ -53,6 +53,8 @@ related:
 
 ### 3. Classify Findings
 
+> Goal: จำแนก findings ตาม severity ก่อนรายงาน
+
 | Severity | เกณฑ์ |
 |----------|-------|
 | Critical | command/API/claim ผิดจนใช้งานไม่ได้ หรือสื่อความหมายผิด |
@@ -67,7 +69,7 @@ related:
 > Goal: รายงานและส่งต่อ
 
 1. ทำ `/report` ตาราง: No, File, Line, Claim, Ground Truth, Severity, Source
-2. Route fixes: `/resolve-errors` (code), `update-docs-*` (docs), `/update-devin-global-skills` (skills)
+2. Route fixes: `/resolve-errors` (code), `update-*-md` (docs), `/update-devin-global-skills` (skills)
 3. ถ้าไม่มี findings → report "content verified correct"
 4. ทำ `/suggest-next-action`
 
@@ -95,6 +97,8 @@ related:
 - ใช้ /deep-research ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

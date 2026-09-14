@@ -1,6 +1,6 @@
 ---
 name: list-github
-description: List GitHub resources — branches, issues, PRs, projects, releases, repos, stars ผ่าน top-level skills
+description: List GitHub resources — branches, issues, PRs, projects, releases ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - all-github-repo

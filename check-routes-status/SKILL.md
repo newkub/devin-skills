@@ -5,7 +5,7 @@ argument-hint: "<domain> [depth]"
 related:
   - follow-tool-crw
   - report-uxui-all-routes
-  - test-all-api-routes
+  - deep-test
   - check-security-headers
   - report
   - resolve-errors
@@ -93,7 +93,7 @@ related:
 
 - ใช้ /follow-tool-crw ถ้าจำเป็น
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
-- ใช้ /test-all-api-routes ถ้าจำเป็น
+- ใช้ /deep-test api ถ้าจำเป็น (all-routes check อยู่ใน references/api.md)
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 - ใช้ /check-security-headers ถ้าจำเป็น

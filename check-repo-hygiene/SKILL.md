@@ -65,7 +65,7 @@ Audit repository hygiene: ตรวจว่า repo มีไฟล์และ
 1. ทำ `/report` คอลัมน์: `No.`, `Item`, `Status`, `Severity`, `Suggestion`
 2. Status: `present`, `missing`, `empty`, `stale`
 3. สรุป hygiene score (present/total) และ top gaps
-4. แนะนำ skills ที่แก้แต่ละ gap: `/update-docs-readme-md`, `/follow-lib-license-md`, `/follow-dot-github`
+4. แนะนำ skills ที่แก้แต่ละ gap: `/update-readme-md`, `/follow-lib-license-md`, `/follow-dot-github`
 
 ## Rules
 
@@ -87,6 +87,8 @@ Audit repository hygiene: ตรวจว่า repo มีไฟล์และ
 - ใช้ /follow-github ถ้าจำเป็น
 - ใช้ /follow-dot-github ถ้าจำเป็น
 - ใช้ /check-secrets secrets-leak ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

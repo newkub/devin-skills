@@ -9,7 +9,7 @@ param(
 
 # check-routes-status: discover every page route on a domain via `crw map`
 # (sitemap + crawl fallback) then report HTTP status per route. Read-only.
-# API routes are covered by test-all-api-routes instead.
+# API routes are covered by deep-test api (references/api.md) instead.
 
 if (-not (Get-Command crw -ErrorAction SilentlyContinue)) {
     Write-Output "ERROR: crw CLI not found - install via /download-program"

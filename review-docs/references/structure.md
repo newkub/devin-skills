@@ -9,7 +9,7 @@
 
 ## Required Directories
 
-- `docs/.vitepress/` — VitePress config directory
+- `docs/.vitepress/` — เฉพาะเมื่อ project ใช้ VitePress (ดู `/update-vitepress-docs`); `docs/` markdown ล้วนจาก `/update-docs` ไม่จำเป็นต้องมี
 - `docs/project/` — project overview, features, workspaces
 - `docs/getting-started/` — installation, usage
 - `docs/development/` — setup, architecture, workflows, testing
@@ -18,7 +18,7 @@
 
 ## Required Pages
 
-- `docs/index.md` — homepage
+- `docs/index.md` — TOC landing page (markdown docs) หรือ `layout: home` (VitePress)
 - `docs/project/overview.md` — project summary
 - `docs/project/features.md` — features table
 - `docs/getting-started/installation.md` — install steps
@@ -37,7 +37,7 @@
 
 ## Scoring
 
-- Critical: ไม่มี `docs/`, ไม่มี `docs/.vitepress/`
+- Critical: ไม่มี `docs/` — ไม่มี `docs/.vitepress/` เป็น critical เฉพาะเมื่อ project ใช้ VitePress
 - High: ขาด required pages สำคัญ (index, overview, features)
 - Medium: ขาด development pages, references
 - Low: ขาด monorepo workspace pages

@@ -23,7 +23,7 @@ related:
   - refactor
   - deep-analyze
   - review-bundle
-  - review-assets
+  - review-bundle
   - review-dependencies
   - review-api
   - review-database
@@ -84,7 +84,7 @@ Dispatch ตาม layer — เรียก section `## Fix` ของ review s
 | No. | Domain | Skill |
 |-----|--------|-------|
 | 1 | Bundle / code splitting / tree-shaking | `/review-bundle` |
-| 2 | Images, fonts, media | `/review-assets` |
+| 2 | Images, fonts, media | `/review-bundle` |
 | 3 | Rendering / re-renders / hydration | `/review-frontend` |
 | 4 | CWV / long tasks / third-party scripts | `/review-performance` |
 | 5 | Network / caching / CDN | `/review-performance` |

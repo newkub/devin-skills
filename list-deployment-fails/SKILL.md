@@ -103,6 +103,8 @@ related:
 - ครอบคลุม GitHub Actions และ Cloudflare Workers เป็นค่าเริ่มต้น
 - ถ้าต้องการแหล่งอื่น เช่น Vercel, Railway ให้ระบุใน argument
 - ใช้ /run-deploy ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

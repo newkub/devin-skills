@@ -68,6 +68,8 @@ related:
 
 - Test code/examples ที่ใช้ deprecated APIs อาจตั้งใจ — flag แยก
 - Deprecated ของ project เอง = ความรับผิดชอบภายใน, ของ deps = ตาม timeline ของ upstream
+- ใช้ /check-content-outdate ถ้าจำเป็น
+
 
 ## Expected Outcome
 

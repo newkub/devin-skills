@@ -87,6 +87,8 @@ related:
 
 - บันทึกวิธี start server ใน `README.md` หรือ `AGENTS.md`
 - ระบุ servers ทีต้อง manual setup
+- ใช้ /update-devin ถ้าจำเป็น
+
 
 ## Expected Outcome
 

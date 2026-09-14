@@ -3,7 +3,7 @@ name: run-review
 description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
 argument-hint: "[target]"
 related:
-  - review-rules
+  - review-dot-devin
   - update-review-cli
   - update-create-analyze-cli
   - run-verify
@@ -25,7 +25,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-rules` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (review)
+> Pre-Run: ทำ `/review-dot-devin` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (review)
 
 ### 1. Verify CLI Exists
 
@@ -51,8 +51,9 @@ related:
 
 1. อ่าน review score และ grade จาก summary
 2. ระบุ findings ที่เป็น Critical และ High severity
-3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-*` workflows ที่เหมาะสม
-4. ถ้า score < 70, categories < 60, `analyzerErrors` > 0, domain score < 50, หรือ `falsePositiveRate` > 20% → ทำ Step 4 Fix And Rerun (max 3 รอบ)
+3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-*` workflows ที่เหมาะสม — coverage ครบตาม `deep-review/references/review-skills.md` (ทุก `review-*` ยกเว้น `review-github-pr`)
+4. metric/finding ใดที่ไม่มี analyzer ครอบคลุม → mark `ใน update-review-cli = N` แล้วแนะนำ `/update-review-cli`
+5. ถ้า score < 70, categories < 60, `analyzerErrors` > 0, domain score < 50, หรือ `falsePositiveRate` > 20% → ทำ Step 4 Fix And Rerun (max 3 รอบ)
 
 ### 4. Fix And Rerun
 
@@ -98,7 +99,8 @@ related:
 - Status: pass, warn, fail
 - Severity order: Critical > High > Medium > Low
 - จัดลำดับ action items ตาม severity: Critical ก่อน, High รองลงมง
-- แต่ละ finding map ไปยัง `/review-*` workflows ที่เหมาะสม ผ่าน `reviewWorkflow` field
+- แต่ละ finding map ไปยัง `/review-*` workflows ที่เหมาะสม ผ่าน `reviewWorkflow` field — dispatch catalog อยู่ที่ `deep-review/references/review-skills.md` (per-workspace phases: entry → source → cross-cutting → meta)
+- findings ที่ไม่มี analyzer ครอบคลุม (`ใน update-review-cli = N`) → แนะนำ `/update-review-cli` เสมอ
 
 ### 3. When To Update Or Fix CLI
 
@@ -118,6 +120,7 @@ related:
 
 - ใช้ `tools/review-codebase/package.json` ที่ project root
 - ดูรายละเอียดสร้าง/อัปเดท CLI ใน `/update-review-cli`
+- `review-*` dispatch catalog (ครบ 54 ตัว ยกเว้น `review-github-pr`): `deep-review/references/review-skills.md`
 
 ## Addendum
 

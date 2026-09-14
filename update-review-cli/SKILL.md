@@ -90,8 +90,9 @@ related:
 
 1. import `runAllAnalyzers` จาก `tools-analyze`
 2. แปลง `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
-3. กำหนด `reviewWorkflow` map ไปยัง review skills
-4. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียด
+3. กำหนด `reviewWorkflow` map ไปยัง review skills — ต้องครอบคลุม `review-*` ทุกตัวใน `deep-review/references/review-skills.md` (54 ตัว ยกเว้น `review-github-pr` ที่เป็น PR-scoped)
+4. metric หรือ review domain ใดที่ยังไม่มี analyzer → บันทึกเป็น analyzer gap (name + review skill + metric ที่ขาด) ใน Known Issues และ report
+5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียด
 
 ### 8. Validate CLI
 
@@ -118,7 +119,8 @@ related:
    - `analyzerErrors` > 0
    - `falsePositiveRate` สูงกว่า 20%
    - findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-   - `reviewWorkflow` ไม่ map ไปยัง review skills ที่มีอยู่
+   - `reviewWorkflow` ไม่ map ไปยัง review skills ที่มีอยู่ หรือไม่ครบ `deep-review/references/review-skills.md`
+   - มี analyzer gap — review domain/metric ที่ CLI ไม่ครอบคลุม
 5. ถ้าหลัง 3 รอบยังไม่ผ่าน → stop และ report
 
 ### 10. Report
@@ -189,6 +191,12 @@ related:
 - ไม่เดา ใช้ tools สำหรับ verification
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 
+### 4b. Review Coverage
+
+- `reviewWorkflow` map ต้องครอบคลุม `review-*` ทุกตัวใน `deep-review/references/review-skills.md` ยกเว้น `review-github-pr`
+- ทุก metric ที่ `deep-review`/`run-review` mark ว่า `ใน update-review-cli = N` → เพิ่ม analyzer หรือบันทึก gap พร้อมเหตุผลใน Known Issues
+- deep-review dispatch `review-*` ทีละ workspace ตาม phase (entry → source → cross-cutting → meta) — CLI ต้อง output findings ที่ map กลับไปหา review skill เหล่านั้นได้
+
 ### 5. Report Location
 
 - Report ต้องถูกเขียนลงใน workspace ที่ถูก review เท่านั้น เช่น `<workspace>/reports/review-report.json`
@@ -207,12 +215,15 @@ related:
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 - ใช้ /deep-test cli ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 
 ## Expected Outcome
 
 - `tools/review-codebase` CLI มีอยู่และรันได้ที่ project root
 - Review ทำงานผ่าน `bun run review-codebase`
 - Findings ครอบคลุม 60+ categories พร้อม evidence และ severity
+- `reviewWorkflow` ครอบคลุม `review-*` ทุกตัวใน `deep-review/references/review-skills.md` — analyzer gaps ถูกบันทึกใน Known Issues
 - Before-after review score ผ่าน `/run-review`
 - ไม่มี analyzer errors
 

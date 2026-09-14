@@ -23,6 +23,7 @@ Review ความเสถียรของ application ครอบคลุ
 - `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification
 - `debuggability`: logging context, error message clarity, naming conventions, code complexity
 - `error-patterns`: log clustering and recurring issue detection from logs
+- ไม่รวม telemetry signal quality — metrics, tracing, dashboards, SLO/SLI, alerting rules (ใช้ `/review-observability`); logging ใน skill นี้หมายถึง error context/debuggability ไม่ใช่ log pipeline
 - ไม่รวมการ fix (ใช้ `/deep-review-then-fix` สำหรับ fix)
 
 - ดูเพิ่มเติม: /deep-review

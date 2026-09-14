@@ -38,7 +38,7 @@
 > Goal: แก้ตาม metric ที่ fail โดยเรียง impact
 
 1. LCP: preload LCP image, `fetchpriority="high"`, inline critical CSS, defer non-critical JS, แก้ TTFB (caching/edge)
-2. Images: ทำ `/review-assets` — WebP/AVIF, `width`/`height` attrs, `loading="lazy"` ใต้ fold
+2. Images: ทำ `/review-bundle` — WebP/AVIF, `width`/`height` attrs, `loading="lazy"` ใต้ fold
 3. INP/long tasks: แตก long tasks ด้วย `requestIdleCallback`/`scheduler.yield`, defer hydration, `content-visibility`, workers สำหรับ heavy computation
 4. CLS: กำหนด dimensions/aspect-ratio ทุก media, `font-display: swap` + size-adjust, reserve space สำหรับ dynamic content
 5. Fonts: self-host, `preload` critical fonts, `font-display` ที่เหมาะ
@@ -51,7 +51,7 @@
 
 1. วัดซ้ำหลังแก้ — เทียบ per-route per-metric
 2. ใช้ `/report-before-after` แสดง LCP/INP/CLS delta
-3. ทำ `/run-build` และ `/run-test` + visual checks (`/deep-test-visual`) เพื่อกัน regression
+3. ทำ `/run-build` และ `/run-test` + visual checks (`/deep-test visual`) เพื่อกัน regression
 
 ## Rules
 

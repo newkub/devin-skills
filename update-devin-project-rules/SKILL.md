@@ -100,6 +100,8 @@ globs:
 
 - ast-grep YAML rules อยู่ใน `rules/` ที่ root
 - `.devin/rules/` เก็บ Devin CLI Markdown rules เท่านั้น
+- ใช้ /update-devin ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -71,6 +71,8 @@ related:
 
 - แจ้ง URL ที่เปิด
 - ถ้าเปิดไม่ได้ให้ report
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 ---
 name: review-docs
-description: ตรวจสอบ docs structure, VitePress config และ README.md ก่อน update แก้ไข
+description: ตรวจสอบ docs structure, VitePress config (ถ้ามี) และ README.md ก่อน update แก้ไข
 argument-hint: "[scope]"
 related:
   - scan-codebase
@@ -10,17 +10,18 @@ related:
   - report
   - suggest-next-action
   - update-docs
+  - update-vitepress-docs
   - run-docs
   - run-review
 ---
 
 ## Goal
 
-Review documentation structure ก่อนเรียก `update-docs` เพื่อยืนยันว่า `docs/` directory, VitePress config, nav/sidebar, content pages, frontmatter และ links ครบถ้วน
+Review documentation structure ก่อนเรียก `update-docs` (markdown docs) หรือ `update-vitepress-docs` (VitePress site) เพื่อยืนยันว่า `docs/` directory, content pages, frontmatter และ links ครบถ้วน — ตรวจ VitePress config/nav/sidebar เฉพาะเมื่อ project ใช้ VitePress
 
 ## Scope
 
-ใช้ก่อนเรียก `update-docs` — ตรวจ `docs/` structure, VitePress config, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-docs`)
+ใช้ก่อนเรียก `update-docs` หรือ `update-vitepress-docs` — ตรวจ `docs/` structure, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-docs`)
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
@@ -45,11 +46,12 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 1. ทำตาม `references/structure.md`
 
-### 3. Check VitePress Config
+### 3. Check VitePress Config (conditional)
 
-> Goal: ตรวจ nav และ sidebar ครบถ้วน
+> Goal: ตรวจ nav และ sidebar ครบถ้วน เฉพาะเมื่อ project ใช้ VitePress
 
-1. ทำตาม `references/vitepress-config.md`
+1. ถ้าไม่มี `docs/.vitepress/` และไม่มี `vitepress` dependency → skip step นี้
+2. ถ้ามี → ทำตาม `references/vitepress-config.md`
 
 ### 4. Check Frontmatter
 
@@ -109,20 +111,20 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-docs`
+- ถ้าต้องแก้ไข ให้เรียก `update-docs` (content/pages) หรือ `update-vitepress-docs` (nav/sidebar/config)
 - ทุก finding ต้องมี file path และ evidence (docs)
 
 ### 2. Scope Coordination
 
-- ตรวจ `docs/` structure, VitePress config, content quality, links และ `README.md`
+- ตรวจ `docs/` structure, content quality, links และ `README.md` — VitePress config เฉพาะเมื่อมี `.vitepress/` หรือ `vitepress` dependency
 - ไม่ตรวจ features coverage — ใช้ `review-docs`
 - ถ้า findings ซ้อนทับ → อ้างอิงแทน ไม่ทำซ้ำ
 
 ### 3. Severity Ratings
 
-- `Critical`: ไม่มี `docs/`, ไม่มี VitePress config, ไม่มี required pages
-- `High`: nav/sidebar ขาด, frontmatter ขาด, placeholder แทนข้อมูลจริง
-- `Medium`: collapsed ขาด, description เกิน 120, HTML แทน markdown
+- `Critical`: ไม่มี `docs/`, ไม่มี required pages — ไม่มี VitePress config เป็น critical เฉพาะเมื่อ project ใช้ VitePress
+- `High`: nav/sidebar ขาด (VitePress), `docs/index.md` TOC ขาด (markdown docs), frontmatter ขาด, placeholder แทนข้อมูลจริง
+- `Medium`: collapsed ขาด (VitePress), description เกิน 120, HTML แทน markdown
 - `Low`: workspace duplicates, ผสมภาษา, links ไม่ตรง
 - `Info`: ข้อเสนอแนะ ไม่กระทบการทำงาน
 
@@ -130,7 +132,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - review score = weighted average ของ findings
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำ `update-docs`
+- Score < 70 → แนะนำ `update-docs` หรือ `update-vitepress-docs` ตาม domain ของ findings
 
 ### 5. Formatting
 
@@ -153,12 +155,15 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 5. verify: docs build ผ่านไม่มี warnings
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /check-content-outdate ถ้าจำเป็น
+- ใช้ /check-correctness ถ้าจำเป็น
+
 
 ## Expected Outcome
 
 - รายงาน Docs Review พร้อม score และ grade
 - รายงาน findings พร้อม severity, evidence, action
-- ยืนยัน docs structure, VitePress config, frontmatter
+- ยืนยัน docs structure, frontmatter, และ VitePress config (ถ้ามี)
 - ยืนยัน content quality และ links
 - ยืนยันไม่มี workspace duplicates
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

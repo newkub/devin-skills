@@ -10,7 +10,7 @@ related:
   - implement-to-production
   - implement-github-issue-by-me
   - deep-review
-  - roleplay-stakeholder
+  - roleplay-by-all-stakeholder
   - run-review
 ---
 
@@ -76,7 +76,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 1. ทำตาม `references/completeness-implementation-gaps.md`
 2. ตรวจ missing flows ตาม `references/completeness-missing-flows.md`, missing UI ตาม `references/completeness-missing-ui.md`, missing API ตาม `references/completeness-missing-api.md`, missing database ตาม `references/completeness-missing-database.md`
 3. ระบุ severity ตาม `references/completeness-severity.md` — เรียงตาม critical path: schema → data → API → UI/flow
-4. ทำ `/roleplay-stakeholder` เพื่อจำลอง user journey หา missing features ใน workflow
+4. ทำ `/roleplay-by-all-stakeholder` เพื่อจำลอง user journey หา missing features ใน workflow
 5. ตรวจ flow หลักมี happy path, error path, recovery, rollback, undo, confirmation
 6. validate findings ตาม `references/completeness-validation.md` และคำนวณ completeness score ตาม `references/completeness-scoring.md`
 

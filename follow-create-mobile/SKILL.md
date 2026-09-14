@@ -1,6 +1,6 @@
 ---
 name: follow-create-mobile
-description: สร้าง mobile app — native iOS, Android หรือ cross-platform (Capacitor, Flutter) ผ่าน follow-create-mobile-* skills
+description: สร้าง mobile app — native หรือ cross-platform ผ่าน follow-create-mobile-* skills
 argument-hint: "[domain]"
 related:
   - follow-create-web

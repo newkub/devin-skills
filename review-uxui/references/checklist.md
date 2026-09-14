@@ -19,19 +19,31 @@
 - [ ] micro-interactions, transitions appropriate
 - [ ] destructive actions guarded (confirm/undo)
 
-## 4. Flows And UX
+## 4. Settings And Preferences
+
+- [ ] expected sections: profile, appearance/theme, shortcuts, notifications, privacy, data, about
+- [ ] nav grouped, deep-linkable routes, save model consistent, danger zone แยก
+- [ ] interactive controls: theme preview, shortcut recorder, toggles มี feedback
+
+## 5. Motion And Delight
+
+- [ ] motion tokens (duration/easing), consistent easing, `prefers-reduced-motion` respected
+- [ ] skeleton/shimmer loading, micro-interactions, spatial continuity
+- [ ] no blocking animation, 60fps properties only
+
+## 6. Flows And UX
 
 - [ ] critical journeys: minimal steps, clear progress
 - [ ] onboarding, first-run experience
 - [ ] error recovery paths, dead ends eliminated
 - [ ] forms UX: inline validation, smart defaults
 
-## 5. Accessibility Overlap
+## 7. Accessibility Overlap
 
 - [ ] basic a11y signals (deep-dive → `/review-accessibility`)
 - [ ] keyboard operable, focus visible
 
-## 6. Design-Dev Handoff
+## 8. Design-Dev Handoff
 
 - [ ] spec fidelity, assets exportable
 - [ ] naming alignment design ↔ code

@@ -15,7 +15,7 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 - สำหรับ TUI/CLI: capture หน้าจอ terminal output ของ commands สำคัญ
 - บันทึกภาพลง `public/screenshots/` ของ workspace นั้น
 
-- ดูเพิ่มเติม: /from-recent-windows-capture, /scan-codebase, /run-build, /run-verify
+- ดูเพิ่มเติม: /from-screenshots-dir, /scan-codebase, /run-build, /run-verify
 
 ## Execute
 

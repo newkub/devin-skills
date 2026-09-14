@@ -1,5 +1,5 @@
 ---
-name: improve-uxui-and-features-improve-contrast
+name: improve-uxui-improve-contrast
 description: แก้ color contrast ให้ผ่าน WCAG — design tokens, text/UI contrast, dark mode
 argument-hint: "[route-or-component]"
 related:

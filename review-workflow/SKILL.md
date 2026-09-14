@@ -87,6 +87,14 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ /run-deploy ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ workflow ตาม findings: ลดขั้นตอนซ้ำ, แก้ steps ที่ช้า/ไม่ปลอดภัย, ตัดส่วนที่เกิน scope → `/restructure` หรือ `/refactor`
+2. capability ที่ควรเป็น skill แยก → ส่งต่อ `/new-skills` หรือ merge ตาม `/idea-merge`
+3. verify: `/deep-validate` workflow หลังแก้เทียบก่อน-หลัง
+
 ## Expected Outcome
 
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น

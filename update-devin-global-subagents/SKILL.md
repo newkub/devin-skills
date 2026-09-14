@@ -27,7 +27,7 @@ related:
 
 Review-only → `/review-devin-global-harness` (layer `subagents`)
 
-ดูเพิ่มเติม: /follow-agents-md, /update-docs-agents-md
+ดูเพิ่มเติม: /follow-agents-md, /update-agents-md
 
 ## Execute
 
@@ -145,6 +145,9 @@ Review-only → `/review-devin-global-harness` (layer `subagents`)
 
 - ใช้ /review-devin-global-harness (layer `subagents`) สำหรับ review-only
 - ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
+- ใช้ /update-devin ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

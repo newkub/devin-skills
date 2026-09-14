@@ -65,7 +65,7 @@ related:
 | 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/review-delivery` | `/review-performance`, `/review-security` |
 | 17 | ตรวจความพร้อมก่อน deploy | `/review-release` | `/review-delivery`, `/watch-deploy` |
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-dependencies` |
-| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-devin-global-harness` |
+| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-dot-devin` | `/review-quality`, `/review-devin-global-harness` |
 | 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-writing` |
 | 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/review-docs` | `/review-writing` |
 | 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/review-docs` | `/review-writing` |
@@ -91,6 +91,11 @@ related:
 | 42 | ตรวจ devin global subagents | `/update-devin-global-subagents` | `/review-devin-global-harness` |
 | 43 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-quality` |
 | 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-repo-hygiene unused` | `/review-devin-global-harness`, `/review-quality` |
+| 45 | เน้น DX — dev loop speed, onboarding, error messages | `/review-dx` | `/review-delivery`, `/review-docs` |
+| 46 | เน้น desktop app (Tauri/Electron) — window, tray, IPC, packaging | `/review-desktop-app` | `/review-security`, `/review-performance` |
+| 47 | เน้น browser extension — manifest, permissions, content scripts | `/review-browser-ext` | `/review-frontend`, `/review-security` |
+| 48 | เน้น IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/review-iac` | `/review-security`, `/review-cost` |
+| 49 | เน้น SDK/library public surface — exports, semver, types | `/review-sdk` | `/review-api`, `/review-techstack` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
 2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง
@@ -169,6 +174,7 @@ related:
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `deep-review/references/review-skills.md`
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

@@ -119,7 +119,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 1. ทำตาม `references/deploy-verify.md`
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
-3. ทำ `/deep-test-api` สำหรับ endpoints สำคัญ
+3. ทำ `/deep-test api` สำหรับ endpoints สำคัญ
 4. ทำ `/check-security-headers` บน deployed URL
 5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
 6. ถ้า failed → แนะนำ rollback ด้วย `git revert <merge-commit>` หรือ redeploy version เดิม พร้อม evidence
@@ -128,6 +128,14 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ release blockers ตาม checklist: version drift → `/check-release-drift`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
+2. แก้ deploy step ที่ไม่พร้อม → `/follow-deploy` หรือ `/resolve-cicd`
+3. verify: re-run readiness checks แล้วเทียบ go/no-go ก่อน-หลัง
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@
 
 1. ทำ `/check-content-outdate` กับ skills repo — version pins, `(verified YYYY-MM-DD)` markers, deprecated commands, dead links
 2. รายงาน skill ที่ marker เก่ากว่า threshold (เช่น verified > 90 วัน หรือ version pin ต่างจาก latest เกิน 1 major)
-3. route fixes ไป `/update-devin-global-skills` หรือ `update-docs-*`
+3. route fixes ไป `/update-devin-global-skills` หรือ `update-*-md`
 
 ## 2. Incorrect Content
 

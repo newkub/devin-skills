@@ -27,8 +27,8 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ใช้ได้ทั้งก่อนและหลังการรัน tests:
 
-- ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-tests`, `deep-test-coverage` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
-- หลัง: ใช้หลัง `run-test`, `deep-test-coverage`, `follow-tdd`, `update-tests`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
+- ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-tests`, `deep-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
+- หลัง: ใช้หลัง `run-test`, `deep-test`, `follow-tdd`, `update-tests`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
 
 ## Execute
 
@@ -116,6 +116,8 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /review-coverage ถ้าจำเป็น
+
 
 ## Expected Outcome
 

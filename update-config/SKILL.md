@@ -35,7 +35,7 @@ related:
 1. ทำ `/review-config` เพื่อดู findings
 2. บันทึก priority list จาก severity
 3. ระบุ config ที่ต้องสร้าง ลบ หรือ refactor
-4. ถ้า project ยังไม่มี `.devin/rules` หรือ `AGENTS.md` → ทำ `/update-dot-devin` และ `/update-docs-agents-md`
+4. ถ้า project ยังไม่มี `.devin/rules` หรือ `AGENTS.md` → ทำ `/update-dot-devin` และ `/update-agents-md`
 
 ### 2. Plan Shared Config Strategy
 

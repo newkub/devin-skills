@@ -145,6 +145,14 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. execute refactor ตาม targets ที่จัดลำดับ → `/refactor` หรือ `/deep-refactor`
+2. รักษา public API/behavior ตาม baseline — ถ้าต้องเปลี่ยน → แจ้ง user ก่อน
+3. verify: `/run-check` + เทียบ metrics กับ baseline หลัง refactor
+
 ## Expected Outcome
 
 - รายงาน Baseline Metrics

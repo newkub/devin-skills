@@ -103,7 +103,7 @@ related:
 - ถ้า project ไม่มี convention → อ้างอิง standard ที่กำหนดใน findings
 
 - ใช้ /review-backend ถ้าจำเป็น
-- ใช้ /deep-test-api ถ้าจำเป็น
+- ใช้ /deep-test api ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
 - ใช้ /check-idempotency ถ้าจำเป็น
@@ -128,6 +128,8 @@ related:
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 
 ## Expected Outcome
 

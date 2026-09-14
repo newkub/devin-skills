@@ -10,7 +10,9 @@
 2. `visual-design` — color, typography, spacing, layout, hierarchy, iconography
 3. `interaction-design` — micro-interactions, loading, empty, error, feedback, gestures
 4. `accessibility` — semantic HTML, ARIA, keyboard, contrast, screen reader
-5. `handoff` — design specs, responsive, cross-browser, documentation
+5. `settings` — expected sections, deep-link, save model, interactive controls
+6. `motion` — motion tokens, reduced-motion, loading skeletons, micro-interactions
+7. `handoff` — design specs, responsive, cross-browser, documentation
 
 ## Severity Weights
 

@@ -17,6 +17,10 @@ Thumbs.db
 temp/
 _tmp_*.py
 
+# Secrets
+.env
+.env.local
+
 target/
 
 # Wrangler cache / account info

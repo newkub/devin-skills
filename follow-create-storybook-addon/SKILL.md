@@ -18,7 +18,7 @@ related:
 ใช้สำหรับ project ที่ต้องการสร้าง Storybook addon ใหม่ หรือแปลง feature เดิมให้เป็น addon
 
 - Latest: Storybook `10.6.0` (verified 2026-09-12) — addon API notes below อิง Storybook 9.x (`storybook/manager-api` ฯลฯ); ตรวจ SB10 migration guide ก่อนใช้
-- Storybook 9 ใช้ imports จาก `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — **ห้ามใช้** `@storybook/addons`, `@storybook/api` (deprecated)
+- Storybook 9 ใช้ imports จาก `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — `ห้ามใช้` `@storybook/addons`, `@storybook/api` (deprecated)
 - `@storybook/addon-kit` ถูก archive แล้ว — scaffold ด้วยมือตาม structure ด้านล่าง
 
 ## Execute

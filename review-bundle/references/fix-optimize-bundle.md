@@ -98,7 +98,7 @@
 - ระบุ warning ที่ fix แล้วและที่ยังคงอยู่ พร้อม file/line ที่แก้ไข
 
 - ใช้ /deep-optimize ถ้าจำเป็น
-- ใช้ /review-assets ถ้าจำเป็น
+- ใช้ /review-bundle ถ้าจำเป็น
 - ใช้ /review-performance ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น

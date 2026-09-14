@@ -1,6 +1,6 @@
 ---
 title: CLI Documentation Reference
-description: Reference for CLI docs nav, sidebar, and content
+description: Reference for CLI docs detection, page groups, and content
 ---
 
 # CLI Documentation Reference
@@ -18,11 +18,11 @@ A project is `cli` when any of these are true:
 
 If the project also has auth → use `product` instead; `cli` takes precedence only for command-line-first projects.
 
-## Nav
+## Index Links
 
 `Project`, `Getting Started`, `Commands`, `Roadmap`, `Development`, `References`
 
-## Sidebar
+## Page Groups
 
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage

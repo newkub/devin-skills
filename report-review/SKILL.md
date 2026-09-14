@@ -1,154 +1,32 @@
 ---
 name: report-review
-description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
+description: Alias for deep-review — merged into the canonical skill (report structure อยู่ใน Step 7)
 argument-hint: "[scope]"
 related:
   - deep-review
-  - resolve-errors
-
   - report
   - suggest-next-action
-  - run-review
 ---
 
 ## Goal
 
-รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด สรุป findings ทุก dimension พร้อม severity ratings และ actionable recommendations
+Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review` เป็น canonical skill (report structure, executive summary, severity/status symbols รวมอยู่ใน `deep-review` Step 7)
 
 ## Scope
 
-ใช้สำหรับรายงานผลหลังทำ `/deep-review` หรือ `/resolve-errors` เสร็จ ครอบคลุมทุกมิติ: code quality, architecture, security, performance, testing, documentation, configuration, dependencies
+ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
 
 ## Execute
 
-### 1. Collect Review Results
-
-> Goal: Collect Review Results
-
-รวบรวมผลลัพธ์จากการ review ทุกมิติ
-
-1. รวบรวม findings จากทุก dimension (code quality, architecture, security, performance, testing, documentation, configuration, dependencies)
-2. ระบุ severity ของแต่ละ finding: Critical, High, Medium, Low
-3. รวบรวม evidence ของแต่ละ finding (file path, line number, code snippet)
-4. ระบุ issues ที่แก้ไขแล้วและยังเหลืออยู่
-
-### 2. Format Review Report
-
-> Goal: Format Review Report
-
-จัดรูปแบบรายงานตามประเภทข้อมูล
-
-1. ใช้ `/report` สำหรับตาราง findings แยกตาม dimension
-2. ใช้ `/report` สำหรับสรุปภาพรวม
-3. ใช้ `/report` สำหรับความคืบหน้ารวม
-
-### 3. Report Dimension Findings
-
-> Goal: Report Dimension Findings
-
-แสดง findings ของแต่ละมิติอย่างละเอียด
-
-1. แสดงตาราง findings แยกตาม dimension: Dimension, Finding, Severity, Location, Evidence, Recommendation
-2. จัดกลุ่ม findings ตาม dimension และ severity
-3. ระบุ root cause ของแต่ละ finding
-4. ให้ recommendations ที่ actionable และ concrete
-
-### 4. Report Executive Summary
-
-> Goal: Report Executive Summary
-
-แสดงสรุปภาพรวมของการ review
-
-1. แสดง overall review score (0-100)
-2. แสดงสรุป findings ตาม severity: Critical, High, Medium, Low
-3. แสดงสรุป findings ตาม dimension
-4. ระบุ critical issues ที่ต้องแก้ก่อน production
-5. ระบุ confidence level ของการ review
-
-### 5. Report Fix Status
-
-> Goal: Report Fix Status
-
-แสดงสถานะการแก้ไข issues
-
-1. แสดงตารางสถานะ: Issue, Dimension, Severity, Status, Fix Applied
-2. ใช้ symbols: ✅ แก้แล้ว, ❌ ยังไม่แก้, 🔄 กำลังแก้, ⏭️ ข้าม
-3. ระบุ issues ที่เหลือและความรุนแรง
-4. จัดลำดับ issues ที่เหลือตาม priority
-
-### 6. Report Recommendations
-
-> Goal: Report Recommendations
-
-แสดงคำแนะนำและ action ถัดไป
-
-1. จัดลำดับ recommendations ตาม impact และ effort
-2. ระบุ quick wins และ strategic fixes
-3. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-4. ระบุ steps ที่ต้องทำซ้ำถ้ามี issues ที่ยังไม่ผ่าน
+1. ทำ `/deep-review` ตามขอบเขตและ workflow เดิมทั้งหมด — report spec อยู่ที่ Step 7 (Report To .devin/Reports)
 
 ## Rules
 
-### Report UX/UI
+- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
+- รักษา backward compatibility ของชื่อ alias
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (review)
-
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (review)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (review)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (review)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
-
-### 1. Report Structure
-
-- เริ่มด้วย executive summary (overall review score, สรุป severity)
-- แสดงตาราง findings แยกตาม dimension
-- แสดงสถานะการแก้ไข
-- จบด้วย recommendations และ action ถัดไป
-
-### 2. Severity Symbols
-
-- 🔴 Critical: blocking production, security vulnerability, data loss risk
-- 🟠 High: core functionality at risk, significant performance issue
-- 🟡 Medium: code quality issue, minor performance, documentation gap
-- 🟢 Low: cosmetic, naming convention, minor improvement
-
-### 3. Status Symbols
-
-- ✅ แก้แล้ว
-- ❌ ยังไม่แก้
-- 🔄 กำลังแก้
-- ⏭️ ข้าม (optional หรือไม่เกี่ยวข้อง)
-
-### 4. Output Channel
-
-- ตอบกลับในแชทเท่านั้น
-- ไม่สร้างไฟล์แยก
-- ใช้ `markdown` format มาตรฐาน
-
-### 5. Completeness
-
-- รายงานทุก dimension ที่ review
-- ไม่ข้าม findings ที่ fail
-- ระบุ root cause ของ failures ถ้าเป็นไปได้
-- ทุก finding ต้องมี evidence และ recommendation
-
-### 6. Detail Level
-
-- เขียน review ให้ละเอียดมากที่สุด
-- ครอบคลุมทุกมิติอย่างสมบูรณ์
-- ระบุทั้งปัญหาและสิ่งที่ทำได้ดี
-- อ้างอิง best practices และ standards ที่ตรวจสอบได้
-- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 
-- Executive summary พร้อม overall review score
-- ตาราง findings ทุก dimension พร้อม severity และ evidence
-- ตารางสถานะการแก้ไข issues
-- Recommendations ที่ actionable และจัดลำดับตาม priority
-- ทำตาม `/report`
-- ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- ผลลัพธ์เหมือน `/deep-review` — report มีครบ Executive Summary, per-domain sections, หลักฐาน, `ใน update-review-cli` column, Fix Status, Recommendations

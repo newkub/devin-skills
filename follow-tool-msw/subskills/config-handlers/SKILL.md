@@ -63,7 +63,7 @@ related:
 1. ใน test ที่ต้องการพฤติกรรมเฉพาะ → `server.use(http.get('/api/x', ...))` override ชั่วคราว
 2. `server.resetHandlers()` ใน `afterEach` (จาก setup) reset overrides อัตโนมัติ
 3. ห้ามแก้ base handlers เพื่อ test เดียว — ใช้ `server.use()` เสมอ
-4. ทำ `/deep-test-api` หรือ `/run-test` ยืนยัน suite ผ่าน
+4. ทำ `/deep-test api` หรือ `/run-test` ยืนยัน suite ผ่าน
 
 ## Rules
 

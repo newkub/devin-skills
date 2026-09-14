@@ -34,7 +34,30 @@ related:
 3. แยก environment variable names ออกมา
 4. กรอง internal values ออก (localhost, `127.0.0.1`, paths)
 
-### 2. Identify External Services
+### 2. Build Key Inventory Table
+
+> Goal: สร้าง inventory ที่ชัดเจนก่อนเปิด URL — user เห็นทีเดียวว่า key ไหนขาด ไปเอาจากไหน กรอกที่ไหน
+
+1. เทียบ keys จาก `.env.example` กับ env files จริง (`.env`, `.env.local`, `.dev.vars`) และ code usage (`process.env.*`, `Bun.env.*`, `import.meta.env.*`)
+2. ระบุ Status ต่อ key:
+   - `set` — มีค่าจริงใน env file หรือ secret manager
+   - `placeholder` — มี key แต่ค่าเป็น placeholder (`your-*`, `xxx`, `changeme`, `sk_test_...` ตัวอย่าง)
+   - `localhost` — ค่าชี้ `localhost`/`127.0.0.1` แต่ไม่มี local service รัน
+   - `missing` — ไม่มี key ใน env file เลย
+3. แบ่งเป็น 2 กลุ่ม เรียงตาม boot/feature importance:
+   - `Required (Blockers)` — keys ที่ app throw/ค้างตอน boot หรือ runtime (`DATABASE_URL`, `*_SECRET_KEY`, `ENCRYPTION_KEY`, `REDIS_URL`, ฯลฯ)
+   - `Feature-Gated` — keys ที่ขาดได้ ไม่ block boot (LINE/Twilio/FCM/AI/OAuth keys)
+4. แต่ละกลุ่ม render เป็นตารางในแชทด้วยคอลัมน์นี้เสมอ:
+
+   `| No. | Key | Status | กรอกที่ไหน | เอา key จาก URL | ตัวอย่างรูปแบบ | ทำไมต้องมี |`
+
+   - `กรอกที่ไหน` — destination จริง เช่น `Infisical → env dev`, `.dev.vars`, Vercel env
+   - `เอา key จาก URL` — provider console URL ตรงหน้าสร้าง key (ตารางใน step ถัดไป)
+   - `ตัวอย่างรูปแบบ` — prefix/format เท่านั้น (`sk_test_...`, `whsec_...`) ไม่ใช่ค่าจริง
+   - `ทำไมต้องมี` — feature/impact เมื่อขาด (เช่น "route ที่ query DB ค้าง ~4s")
+5. ใช้ตารางนี้เป็น source of truth สำหรับ steps ถัดไป — เปิดเฉพาะ URL ของ keys ที่ status ไม่ใช่ `set`
+
+### 3. Identify External Services
 
 > Goal: หา service ที่แต่ละ variable มาจาก
 
@@ -58,7 +81,7 @@ Map variable names ไปยัง services:
 | `DISCORD_*` | Discord Developer Portal | Bot token, application ID |
 | `TELEGRAM_*` | @BotFather | Bot token |
 
-### 3. Open Service Dashboard URLs
+### 4. Open Service Dashboard URLs
 
 > Goal: เปิดหน้าสร้าง API keys สำหรับแต่ละ service
 
@@ -85,7 +108,7 @@ Map variable names ไปยัง services:
 เปิด `https://dashboard.stripe.com/test/apikeys` แล้ว copy `STRIPE_SECRET_KEY` ไปวางใน secret manager
 ```
 
-### 4. Open Secret Manager Dashboard
+### 5. Open Secret Manager Dashboard
 
 > Goal: เปิดหน้า secret manager สำหรับ user วาง key
 
@@ -98,7 +121,7 @@ Map variable names ไปยัง services:
    - `Project → Secrets → Add Secret`
    - หรือ `Project → <environment> → Add Secret`
 
-### 5. Guide Manual Entry
+### 6. Guide Manual Entry
 
 > Goal: ให้ user กรอก secrets เองโดย AI ไม่เห็นค่า
 
@@ -117,7 +140,7 @@ Map variable names ไปยัง services:
 3. ย้ำว่า AI ไม่ควรเห็นค่า
 4. ถ้า key หลาย environment (dev/staging/prod) ให้ add ซ้ำในแต่ละ environment
 
-### 6. Verify In Secret Manager
+### 7. Verify In Secret Manager
 
 > Goal: ยืนยันว่าครบถ้วน
 
@@ -167,7 +190,8 @@ Map variable names ไปยัง services:
 ## Expected Outcome
 
 - `.env.example` ถูกอ่านและแยก keys ออกมา
-- URLs ของ external services ถูกเปิดสำหรับสร้าง keys
+- Key inventory table (status/destination/console URL/format/impact) render ในแชท แบ่ง Required vs Feature-Gated
+- URLs ของ external services ถูกเปิดเฉพาะ keys ที่ยังไม่ `set`
 - URL ของ secret manager dashboard ถูกเปิดสำหรับวาง keys
 - User กรอก secrets เองโดย AI ไม่เห็นค่า
 - รายการ keys ที่ขาดหรือครบถูกต้อง

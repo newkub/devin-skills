@@ -99,6 +99,8 @@ related:
 
 - อย่าสร้าง `.devin/workflows/`
 - Hooks ต้องอยู่ใน `.devin/hooks/`
+- ใช้ /update-devin ถ้าจำเป็น
+
 
 ## Expected Outcome
 

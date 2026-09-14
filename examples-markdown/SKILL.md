@@ -1,9 +1,10 @@
 ---
 name: examples-markdown
-description: สร้าง markdown templates สำหรับ documentation ครอบคลุมตาม sidebar ของ update-docs
+description: สร้าง markdown templates สำหรับ documentation ครอบคลุมตาม docs structure ของ update-docs
 argument-hint: "[scope]"
 related:
   - update-docs
+  - update-vitepress-docs
   - report
   - deep-validate
   - run-format
@@ -12,7 +13,7 @@ related:
 
 ## Goal
 
-สร้าง markdown templates สำหรับ documentation site ครอบคลุมทุกหมวดตาม sidebar ของ `/update-docs`
+สร้าง markdown templates สำหรับ documentation ครอบคลุมทุกหมวดตาม docs structure ของ `/update-docs`
 
 ## Scope
 
@@ -24,7 +25,7 @@ related:
 
 > Goal: เลือก template ตามหมวดทีต้องการ
 
-1. ระบุหมวดของ page ตาม sidebar ของ `/update-docs`
+1. ระบุหมวดของ page ตาม docs structure ของ `/update-docs` (`references/<type>.md` page groups)
 2. เลือก template จาก `templates/` directory
 3. ถ้าไม่มี template ทีตรง → ใช้ `content.md` เป็น base
 
@@ -54,13 +55,12 @@ related:
 2. ตรวจไม่มี TODO/MOCK/placeholder ทีไม่จำเป็น
 3. ทำ `/run-format` ถ้ามี formatter
 
-### 5. Update Sidebar
+### 5. Update Index Or Site Config
 
-> Goal: เชื่อมต่อกับ VitePress config
+> Goal: เชื่อมต่อหน้าใหม่เข้ากับ navigation
 
-1. อัปเดต `docs/.vitepress/config.ts` ถ้ามีหน้าใหม่
-2. ใช้ relative path เริ่มต้นด้วย `/`
-3. ใช้ `collapsed: true` ถ้าหมวดมี > 5 หน้า
+1. `docs/` markdown ล้วน → เพิ่ม link ใน `docs/index.md` TOC (relative path ไป `.md`)
+2. ถ้ามี `docs/.vitepress/config.ts` → ทำ `/update-vitepress-docs` เพื่อเพิ่ม nav/sidebar item (`collapsed: true` ถ้าหมวดมี > 5 หน้า)
 
 ## Rules
 
@@ -84,11 +84,11 @@ related:
 
 ### 4. Coverage
 
-- templates ต้องครอบคลุมทุกหมวดใน sidebar ของ `/update-docs`
+- templates ต้องครอบคลุมทุกหมวดใน docs structure ของ `/update-docs`
 - ได้แก่: project, getting-started, development, references, roadmap, content, api-reference, changelog
 
-- ใช้ /update-docs-readme-md ถ้าจำเป็น
-- ใช้ /update-docs-features-md ถ้าจำเป็น
+- ใช้ /update-readme-md ถ้าจำเป็น
+- ใช้ /update-features-md ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /run-examples ถ้าจำเป็น
 

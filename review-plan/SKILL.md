@@ -68,6 +68,14 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ plan ตาม findings: เพิ่ม missing steps, แก้ dependency order, เพิ่ม mitigation ของ risks, ตัดงานที่เกิน scope
+2. ถ้า verdict `go` → ทำ `/follow-plan` หรือ `/review-implement` ต่อ
+3. verify: re-score plan หลังแก้เทียบกับ baseline
+
 ## Expected Outcome
 
 - รายงาน Plan Quality Summary พร้อม score และ grade

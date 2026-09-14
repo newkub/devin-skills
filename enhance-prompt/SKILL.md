@@ -77,6 +77,8 @@ related:
 
 - ไม่แก้ไขไฟล์ ไม่รัน commands และไม่ลงมือ implement
 - เป็นเพียงการสรุป prompt เท่านั้น
+- ใช้ /think-reframe ถ้าจำเป็น
+
 
 ## Expected Outcome
 

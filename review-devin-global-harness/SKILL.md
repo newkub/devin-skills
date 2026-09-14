@@ -8,8 +8,6 @@ related:
   - align-devin-layers
   - deep-validate
   - follow-deep
-  - report
-  - suggest-next-action
   - check-reference
   - follow-skills-map
   - check-skill-usage
@@ -163,7 +161,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /review-rules ถ้าจำเป็น
+- ใช้ /review-dot-devin ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /align-devin-layers เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้
 - ใช้ /check-reference, /check-skill-usage, /check-devin-knowledge สำหรับเจาะลึก layer เดียว

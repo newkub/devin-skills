@@ -84,6 +84,8 @@ Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve
 
 - ไม่ซ้ำกับ `/follow-tool-scalar` ที่เน้น toolchain เต็มรูปแบบ — skill นี้ execute serve เท่านั้น
 - ถ้าต้องการ static docs แทน server → `scalar document markdown <spec>` หรือ `/update-docs`
+- ใช้ /run-dev ถ้าจำเป็น
+
 
 ## Expected Outcome
 

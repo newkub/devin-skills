@@ -123,11 +123,13 @@ related:
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /deep-test-mutation ถ้าจำเป็น
+- ใช้ /deep-test mutation ถ้าจำเป็น
 
 ## References
 
 - [CLI reference](references/cli.md)
+- ใช้ /run-test ถ้าจำเป็น
+
 
 ## Expected Outcome
 

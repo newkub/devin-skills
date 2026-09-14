@@ -1,6 +1,6 @@
 ---
 name: update-devin
-description: อัปเดต Devin config — global MCP, rules, subagents, harness, project hooks/MCP/rules ผ่าน top-level skills
+description: อัปเดต Devin config — MCP, rules, subagents, hooks ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills

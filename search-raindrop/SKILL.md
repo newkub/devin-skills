@@ -100,6 +100,8 @@ related:
 - ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 - ใช้ /list-raindrop-favorite ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
+
 
 ## Expected Outcome
 

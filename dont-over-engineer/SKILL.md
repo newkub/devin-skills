@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - dont-ask-me
   - dont-understand
-  - roleplay-stakeholder
+  - roleplay-by-all-stakeholder
   - deep-debug
 ---
 
@@ -89,7 +89,7 @@ related:
 
 - ใช้ /dont-ask-me ถ้าจำเป็น
 - ใช้ /dont-understand ถ้าจำเป็น
-- ใช้ /roleplay-stakeholder ถ้าจำเป็น
+- ใช้ /roleplay-by-all-stakeholder ถ้าจำเป็น
 
 ## Expected Outcome
 

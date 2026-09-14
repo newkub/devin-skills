@@ -23,7 +23,8 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 ## Scope
 
 - code, configuration, rule files, workflows, และ skills
-- ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/naming.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
+- ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
+- ไม่รวม naming conventions deep review (identifiers, files, exports) → ใช้ `/review-writing` (`references/naming.md` ใน skill นี้เหลือไว้เป็น checklist เบาสำหรับ code review เท่านั้น)
 
 - ดูเพิ่มเติม: /deep-review
 

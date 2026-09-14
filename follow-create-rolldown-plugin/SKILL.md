@@ -115,6 +115,8 @@ related:
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

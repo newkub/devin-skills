@@ -83,6 +83,14 @@ related:
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ issue ให้ชัด: title, scope, acceptance criteria, blockers — GitHub issue → `/update-github-issue`, local issue → แก้ไฟล์ต้นทาง
+2. ถ้า issue พร้อมแล้ว → ส่งต่อ `/review-implement` หรือ `/implement-to-production`
+3. ถ้าไม่พร้อม → ระบุ missing info ที่ต้องถาม
+
 ## Expected Outcome
 
 - รายงานการตรวจสอบ issue พร้อม severity, evidence และข้อแนะนำ

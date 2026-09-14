@@ -12,7 +12,7 @@ related:
   - follow-skills-map
   - check-skill-usage
   - review-devin-global-harness
-  - deep-test-coverage
+  - deep-test
   - update-docs
   - idea-new-devin-global-skills
   - review-test
@@ -26,7 +26,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 ## Scope
 
-ใช้เมื่อต้องตอบคำถาม "อะไรที่ยังไม่มี X รองรับ" — coverage review ไม่ใช่การรัน coverage tool (รันจริงทำผ่าน `/deep-test-coverage`); modes:
+ใช้เมื่อต้องตอบคำถาม "อะไรที่ยังไม่มี X รองรับ" — coverage review ไม่ใช่การรัน coverage tool (รันจริงทำผ่าน `/deep-test coverage`); modes:
 
 | Surface | คำถาม |
 |---------|-------|
@@ -66,6 +66,8 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 ### 4. Classify Severity
 
+> Goal: จำแนก findings ตาม severity ก่อนสรุป
+
 | Severity | เกณฑ์ |
 |----------|-------|
 | Critical | surface item ที่ user-facing/critical path ไม่มี coverage เลย |
@@ -101,6 +103,17 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 - ใช้ /check-skill-usage ถ้าจำเป็น
 - ใช้ /follow-skills-map ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. เติม gap ตามประเภท: tests ขาด → `/update-tests`, docs ขาด → `/update-docs`, skills ขาด → `/new-skills` หรือ `/update-devin-global-skills`
+2. orphan items (มีของจริงแต่ไม่ declared) → เพิ่ม declaration ใน docs/manifest ที่ตรง
+3. verify: re-run coverage check แล้วเทียบ matrix ก่อน-หลัง
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
+
 
 ## Expected Outcome
 

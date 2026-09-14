@@ -98,6 +98,8 @@ related:
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool act)
 - ใช้ /resolve-github-actions ถ้าจำเป็น
 - ใช้ /resolve-cicd ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -98,6 +98,8 @@ related:
 
 - ADR ควรอ่านจบใน 5 นาที — เน้น why ไม่ใช่ how
 - ไม่ copy code/docs มาใส่ — ลิงก์แทน
+- ใช้ /think-reframe ถ้าจำเป็น
+
 
 ## Expected Outcome
 

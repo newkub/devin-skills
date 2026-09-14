@@ -79,16 +79,14 @@ Latest: `@infisical/cli@0.43.131`, `@infisical/sdk@5.0.2` (verified 2026-09-12)
 
 ### 6. Use In Local Development
 
-> Goal: inject secrets สำหรับ local dev โดยไม่ต้องมี `.env`
+> Goal: inject secrets สำหรับ local dev โดยไม่ต้องมี `.env` และ verify ว่าค่าจริงถูกใช้ ไม่ถูก local files override
 
-1. รัน `infisical run --env=dev -- <command>`
-2. รัน dev: `infisical run --env=dev -- bun run dev`
-3. Auto-reload: `infisical run --watch -- bun run dev`
-4. หลาย commands: `infisical run --command="bun run build && bun run start"`
-5. ถ้า project ใช้ npm เป็นหลัก → แทนด้วย `npm run`
-6. ใช้ root scripts ใน monorepo:
-   - `"secrets:dev": "infisical run --env=dev -- turbo run dev"`
-   - `"secrets:build": "infisical run --env=prod -- turbo run build"`
+1. รัน `infisical run --env=dev -- <command>` — dev: `bun run dev`, auto-reload: `--watch`, หลาย commands: `--command="bun run build && bun run start"`
+2. ถ้า project ใช้ npm เป็นหลัก → แทนด้วย `npm run`; monorepo ใช้ root scripts: `"secrets:dev": "infisical run --env=dev -- turbo run dev"`, `"secrets:build": "infisical run --env=prod -- turbo run build"`
+3. verify: รัน `infisical export --env=dev` เทียบกับ required keys (เช็คเฉพาะ key names ไม่ print values)
+4. ตรวจ local files ที่อาจชนะ injected env — `.dev.vars`, `wrangler.toml`/`wrangler.jsonc` `[vars]`, `.env`/`.env.local` — ถ้ามี placeholder/localhost values → แจ้ง user ให้แก้หรือลบ
+5. รัน dev command จริงแล้วเช็ค startup log ว่า required keys report เป็น set — ถ้าขาด → `/open-web-for-config-secret`
+6. ผล verify รายงานเป็นตาราง `| No. | Key | Source ที่ชนะ | Status | Action |`
 
 ### 7. CI/CD Without Long-Lived Tokens
 

@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - report-file-structure
   - capture
-  - from-recent-windows-capture
+  - from-screenshots-dir
 ---
 
 ## Goal
@@ -68,7 +68,7 @@ related:
 
 - ใช้ /report-file-structure ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น
-- ใช้ /from-recent-windows-capture ถ้าจำเป็น
+- ใช้ /from-screenshots-dir ถ้าจำเป็น
 
 ## Expected Outcome
 

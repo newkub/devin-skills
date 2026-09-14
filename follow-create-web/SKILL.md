@@ -104,6 +104,8 @@ related:
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
 - ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

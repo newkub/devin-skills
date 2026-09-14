@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - report
   - report-file-structure
+  - check-secrets
+  - open-web-for-config-secret
 ---
 
 ## Goal
@@ -38,9 +40,10 @@ related:
 
 > Goal: สร้าง report
 
-1. ทำ `/report` สำหรับ drift ระหว่าง environments
+1. ทำ `/report` สำหรับ drift ระหว่าง environments — env keys ใช้ status vocabulary เดียวกับ `/open-web-for-config-secret`: `set`, `placeholder`, `localhost`, `missing`
 2. ทำ `/report-file-structure` สำหรับ tree ของ config files
 3. สรุป missing keys, inconsistent values, default drift
+4. ถ้า report เน้น env keys ที่ต้องไปตั้งค่า → reuse ตาราง inventory ของ `/open-web-for-config-secret` (`No. | Key | Status | กรอกที่ไหน | เอา key จาก URL | ตัวอย่างรูปแบบ | ทำไมต้องมี`) แทนตาราง drift ธรรมดา
 
 ## Rules
 
@@ -58,6 +61,8 @@ related:
 ### 3. Ecosystem Aware
 
 - ใช้ conventions ของ framework เช่น `.env` สำหรับ JS, `Cargo.toml` สำหรับ Rust
+
+- ใช้ /check-secrets ถ้าจำเป็น
 
 
 ## Expected Outcome

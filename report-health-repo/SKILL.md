@@ -88,6 +88,8 @@ related:
 
 - ไม่แก้อะไร — รายงาน+แนะนำเท่านั้น
 - ไม่รัน checks ที่หนัก (audit ใหญ่) ถ้าไม่จำเป็นต่อ scorecard
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

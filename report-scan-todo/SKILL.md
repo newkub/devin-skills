@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK/NOTE/XXX/BUG ทั้งจากไฟล์ `TODO.md` และจาก code markers ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-docs-todo-md`) และไม่รวมการ implement TODO (ใช้ `/implement-to-production`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK/NOTE/XXX/BUG ทั้งจากไฟล์ `TODO.md` และจาก code markers ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/implement-to-production`)
 
 (merged from: `report-todo`, `list-todo-md`)
 
@@ -124,7 +124,7 @@ related:
 ### Read-Only
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
-- ใช้ `/update-docs-todo-md` สำหรับเพิ่ม TODO
+- ใช้ `/update-todo-md` สำหรับเพิ่ม TODO
 - ใช้ `/implement-to-production` สำหรับ implement TODO
 
 ### Output Format
@@ -142,10 +142,12 @@ related:
 
 ### Non-Redundancy
 
-- การเพิ่ม TODO อยู่ใน `/update-docs-todo-md` แล้ว
+- การเพิ่ม TODO อยู่ใน `/update-todo-md` แล้ว
 - การ implement TODO อยู่ใน `/implement-to-production` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 - ใช้ /run-scan ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

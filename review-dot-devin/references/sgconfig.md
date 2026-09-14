@@ -21,7 +21,7 @@
 ## Scope Boundary
 
 - ตรวจเฉพาะ location และ structure ของ `sgconfig.yml` และ `rules/`
-- ไม่ตรวจเนื้อหา rules — ใช้ `review-rules` แทน
+- เนื้อหา rules ตรวจใน step 4 ของ skill นี้ (`devin-rules.md`, `ast-grep-rules.md`)
 
 ## Scoring
 

@@ -17,7 +17,7 @@ related:
 ## Scope
 
 - ใช้เมื่อ: task จบแต่เหลืองานค้าง, session ใกล้หมด, งาน blocked รอ input, หรือ user สั่งเก็บงานไว้ทำต่อ
-- เขียนลง `TODO.md` ที่ project root — ต่างจาก `/update-docs-todo-md` ที่รับ request เดียว, skill นี้เก็บ remaining work ทั้งชุดจาก context ปัจจุบัน
+- เขียนลง `TODO.md` ที่ project root — ต่างจาก `/update-todo-md` ที่รับ request เดียว, skill นี้เก็บ remaining work ทั้งชุดจาก context ปัจจุบัน
 - ถ้าระบุ `--drive` → เขียนลง `D:\TODO.md` (drive-level inbox) โดยทำ `/enhance-prompt` กับเนื้อหาก่อน และ stop ถ้า title ซ้ำ
 - ไม่ implement งาน — เก็บเป็น tracked items เท่านั้น
 
@@ -55,7 +55,7 @@ related:
 1. เลือก target: default = `TODO.md` ที่ project root; ถ้าระบุ `--drive` → `D:\TODO.md`
 2. ถ้าโหมด `--drive` → ทำ `/enhance-prompt` กับเนื้อหาให้เป็น numbered list ก่อน และ stop ถ้าพบ title ซ้ำใน `D:\TODO.md`
 3. อ่าน `TODO.md` เป้าหมายถ้ามี — เก็บ structure เดิมไว้
-4. ถ้ายังไม่มี → สร้างพร้อม header ตาม convention ของ `/update-docs-todo-md`:
+4. ถ้ายังไม่มี → สร้างพร้อม header ตาม convention ของ `/update-todo-md`:
    ```
    | Title | Description | Status | Priority | Created |
    |---|---|---|---|---|
@@ -88,6 +88,8 @@ related:
 
 - เรียกเมื่องานเหลือค้างจริง — ไม่สร้าง TODO items จากงานที่เสร็จสมบูรณ์
 - ถ้าไม่มีอะไรค้าง → รายงานว่าไม่มี ไม่บังคับเขียน
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

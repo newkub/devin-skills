@@ -77,7 +77,7 @@ related:
 > Goal: รายงานและส่งต่อไปยัง skill ที่แก้ได้
 
 1. ทำ `/report` ตาราง: No, File, Line, Marker, Current, Latest, Severity, Recommendation
-2. Route fixes: docs → `update-docs-*`, skills → `/update-devin-global-skills`, deps → `/update-version-to-latest`, APIs → `/resolve-errors`
+2. Route fixes: docs → `update-*-md`, skills → `/update-devin-global-skills`, deps → `/update-version-to-latest`, APIs → `/resolve-errors`
 3. ถ้าไม่มี findings → report "content is up to date"
 4. ทำ `/suggest-next-action`
 
@@ -103,6 +103,9 @@ related:
 - ใช้ /deep-research ถ้าจำเป็น
 - ใช้ /check-release-notes ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /check-deprecated-apis ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

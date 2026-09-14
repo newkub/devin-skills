@@ -4,7 +4,7 @@ description: ตัดต่อ ประกอบ และ render วิดี
 argument-hint: "[input-video-or-composition]"
 related:
   - follow-lib-remotion
-  - review-assets
+  - review-bundle
   - gen-subtitle-video
   - use-bun-native-api
   - follow-lib-animejs
@@ -25,7 +25,7 @@ related:
 - จัดการ audio (mix, fade, mute)
 - Render ผ่าน Remotion CLI หรือ cloud services
 
-ดูเพิ่มเติม: /follow-lib-remotion, /review-assets, /gen-subtitle-video
+ดูเพิ่มเติม: /follow-lib-remotion, /review-bundle, /gen-subtitle-video
 
 ## Execute
 
@@ -113,7 +113,7 @@ related:
 
 1. ใช้ `<OffthreadVideo>` แทน `<Video>` เพื่อลด browser decoding overhead
 2. ลด resolution ของ input ถ้าไม่จำเป็นต้องใช้ 4K
-3. ใช้ `/review-assets` สำหรับ pre-compress input
+3. ใช้ `/review-bundle` สำหรับ pre-compress input
 4. ใช้ `--concurrency` ที่เหมาะสมกับ CPU
 5. ใช้ `--image-format=jpeg` ถ้า render ด้วย transparency ไม่จำเป็น
 
@@ -152,12 +152,12 @@ related:
 - ทดสอบบน target device หรือ resolution จริง
 
 - ใช้ /follow-lib-remotion สำหรับรายละเอียด Remotion API
-- ใช้ /review-assets สำหรับ optimize input/output
+- ใช้ /review-bundle สำหรับ optimize input/output
 - ใช้ /gen-subtitle-video สำหรับ generate subtitle
 - ใช้ /use-bun-native-api ถ้าใช้ Bun เป็น runtime
 - ใช้ /follow-lib-animejs ถ้าต้องการ complex animations
 - ใช้ /follow-lib-iconify ถ้าต้องการ icon overlay
-- ใช้ /review-assets ถ้าต้องการ optimize image assets
+- ใช้ /review-bundle ถ้าต้องการ optimize image assets
 
 ## Expected Outcome
 

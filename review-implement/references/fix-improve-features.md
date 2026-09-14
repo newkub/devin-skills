@@ -54,7 +54,7 @@
 
 1. ทำ `/run-verify` — lint, typecheck, tests
 2. ทำ `/review-uxui` ถ้าแตะ UI flows
-3. อัปเดต `docs/project/features.md` ผ่าน `/update-docs-features-md` ถ้า behavior เปลี่ยน
+3. อัปเดต `docs/project/features.md` ผ่าน `/update-features-md` ถ้า behavior เปลี่ยน
 4. รายงาน before/after เป็นตาราง: gap ที่แก้, ไฟล์, verification
 
 ## Rules

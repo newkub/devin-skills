@@ -88,6 +88,11 @@ related:
 
 - ก่อน `add` dep ใดๆ → ผ่าน step 1-3 ครบก่อน
 - version ใหม่ต้อง publish แล้ว ≥7 วัน และตรวจ peer constraints
+- ใช้ /research-dependencies ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /dont-over-engineer ถ้าจำเป็น
+- ใช้ /ask-me ถ้าจำเป็น
+
 
 ## Expected Outcome
 

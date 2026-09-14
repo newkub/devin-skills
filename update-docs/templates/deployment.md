@@ -21,6 +21,8 @@ description: How the app and docs are deployed
 
 ## Docs Site
 
+<!-- เฉพาะเมื่อ project มี docs site จริง — ดู /update-vitepress-docs; ถ้า docs/ เป็น markdown ล้วนให้ลบ section นี้ -->
+
 ```bash
 bunx vitepress build docs   # outputs docs/.vitepress/dist
 ```

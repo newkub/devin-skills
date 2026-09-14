@@ -41,15 +41,17 @@ related:
 
 1. ทำงานตาม instructions ใน README (setup → dev → test → build)
 2. ถ้า README มี `AGENTS.md` ชี้นำเพิ่ม → ทำ `/follow-agents-md` ด้วย
-3. ถ้าพบ drift ระหว่าง README กับ code จริง → แนะนำ `/update-docs-readme-md`
+3. ถ้าพบ drift ระหว่าง README กับ code จริง → แนะนำ `/update-readme-md`
 
 ## Rules
 
 - README มี priority ต่ำกว่า `AGENTS.md` — ถ้าขัดกันให้ทำตาม `AGENTS.md`
 - ห้ามเดา commands — ใช้จาก README หรือ manifest เท่านั้น
-- ถ้า README ไม่มีหรือว่าง → ทำ `/update-docs-readme-md` สร้างใหม่
+- ถ้า README ไม่มีหรือว่าง → ทำ `/update-readme-md` สร้างใหม่
 - ใช้ /review-docs ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

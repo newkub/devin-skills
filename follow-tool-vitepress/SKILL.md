@@ -8,6 +8,7 @@ related:
   - follow-lib-unocss
   - follow-tool-vite
   - follow-create-plugins
+  - update-vitepress-docs
   - run-docs
 ---
 
@@ -17,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site — boundary: สำหรับ slides ใช้ `/follow-create-slide-slidev`; สำหรับ app/web site ใช้ `/follow-tool-vite`
+ใช้สำหรับทุก project ที่ต้องการ VitePress documentation site — boundary: สำหรับ docs site ทั้งชุด (content + site) ใช้ `/update-vitepress-docs`; สำหรับ `docs/` markdown ล้วนใช้ `/update-docs`; สำหรับ slides ใช้ `/follow-create-slide-slidev`; สำหรับ app/web site ใช้ `/follow-tool-vite`
 
 - Latest stable: `vitepress@1.6.4` (verified 2026-09-13); `vitepress@next` = `2.0.0-alpha.20` (preview สำหรับ Vite 8/rolldown)
 

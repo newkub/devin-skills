@@ -1,25 +1,31 @@
 ---
 name: review-dot-devin
-description: ตรวจสอบโครงสร้าง .devin ก่อน update-dot-devin แก้ไข ครอบคลุม hooks และ workspace
+description: Review .devin structure, hooks, rules content, AGENTS.md และ ast-grep config
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
   - scan-codebase
   - check-monorepo
+  - deep-validate
+  - check-reference
+  - update-dot-devin
+  - review-devin-global-harness
+  - review-workspace
+  - review-quality
   - report
   - suggest-next-action
-  - update-dot-devin
-  - review-rules
   - run-review
 ---
 
 ## Goal
 
-Review โครงสร้าง `.devin` โดยรวมก่อนเรียก `update-dot-devin` เพื่อยืนยันความถูกต้องของ directories, hooks, workspace rules, `sgconfig.yml` และ ast-grep rules
+Review `.devin` ครบทั้ง structure และ content — directories, hooks, `hooks.json`, `.devin/rules/` content, `AGENTS.md`, `sgconfig.yml` และ ast-grep `rules/` — ก่อนเรียก `update-dot-devin` หรือ audit อิสระ (merged from: `review-rules`)
 
 ## Scope
 
-ใช้ก่อนเรียก `update-dot-devin` — ตรวจเฉพาะ structure ของ `.devin/`, `.devin/hooks/`, `hooks.json`, `AGENTS.md` references, `sgconfig.yml` และ ast-grep `rules/` ที่ project root ไม่ตรวจเนื้อหา rules ใน `.devin/rules/` (scope ของ `review-rules`) ทำ review เท่านั้น ไม่แก้ไข `.devin`
+ใช้กับ project ที่มี `.devin/`, `.devin/rules/`, `rules/`, `sgconfig.yml` หรือ `AGENTS.md` — ครอบคลุม structure (dirs, hooks, sgconfig) และ content (rules dedup, frontmatter, AGENTS.md format, skill references) — ทำ review เท่านั้น ไม่แก้ไข logic ของ source code
+
+ไม่รวม: global skills harness (skills/subagents/MCP/global rules) → ใช้ `/review-devin-global-harness`; workspace manifest/scripts → ใช้ `/review-workspace`
 
 แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass)
 
@@ -46,25 +52,29 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
 
 ทำตาม references/hooks.md
 
-### 4. Check Content Language And Naming
+### 4. Check Rules Content And Alignment
 
-> Goal: ตรวจภาษาและ naming convention
+> Goal: rules ไม่ซ้ำซ้อน frontmatter ถูก และ `.devin/rules` ↔ `rules/` sync
 
-- ตรวจว่าเนื้อหาใน `.devin/` เป็นภาษาอังกฤษทั้งหมด
-- ตรวจว่า file names ใช้ kebab-case.md
-- บันทึก findings
+ทำตาม references/devin-rules.md และ references/ast-grep-rules.md
 
-### 5. Check Workspace AGENTS.md
+- ระบุ duplicate rules และ rules ที่ขาด frontmatter (`trigger`, `title` Title Case, `description` ≤100 chars)
+- เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/` และ `ruleDirs` ใน `sgconfig.yml`
+- ตรวจ file names ใช้ kebab-case.md และเนื้อหาใน `.devin/` เป็นภาษาอังกฤษ
 
-> Goal: ตรวจ `AGENTS.md` ใน root และ workspace
+### 5. Validate AGENTS.md
 
-- ตรวจ root `AGENTS.md` มีอยู่และ references workspace `AGENTS.md`
-- ถ้า monorepo ตรวจว่าแต่ละ workspace มี `AGENTS.md`
-- บันทึก findings
+> Goal: ตรวจโครงสร้าง, references และ coverage ของ AGENTS.md
 
-### 6. Check Sgconfig And Ast-Grep Rules
+ทำตาม references/agents-md.md
 
-> Goal: ตรวจ `sgconfig.yml` และ ast-grep rules ที่ project root
+- ตรวจ frontmatter, section order, skills map — ยืนยันว่าไม่มี section Workflows
+- ดึง references `skill-name` จาก `AGENTS.md` แล้วยืนยันว่า directory ของ skill มีอยู่จริง
+- ตรวจ root `AGENTS.md` references workspace `AGENTS.md`; ถ้า monorepo แต่ละ workspace ต้องมี `AGENTS.md`
+
+### 6. Check Sgconfig
+
+> Goal: ตรวจ `sgconfig.yml` ที่ project root
 
 ทำตาม references/sgconfig.md
 
@@ -72,49 +82,58 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
 
 > Goal: สรุป review score และ findings
 
-ทำตาม references/scoring.md
+ทำตาม references/scoring.md และ references/rules-scoring.md
 
 - คำนวณ review score, grade และ supplementary metrics
-- ทำ `/report` พร้อม findings
+- ทำ `/deep-validate`, `/check-reference`
+- ทำ `/report` พร้อม severity, evidence, action
 - ทำ `/suggest-next-action`
 
 ## Rules
 
 1. Review Only
    - ทำ review เท่านั้น ไม่แก้ไข `.devin` ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence (dot devin)
-2. Scope Coordination
-   - ตรวจเฉพาะ structure ของ `.devin/`, hooks, `sgconfig.yml`, ast-grep rules location
-   - ไม่ตรวจเนื้อหา rules ใน `.devin/rules/` — ใช้ `review-rules` แทน
+   - ทุก finding ต้องมี file path และ evidence
+2. No Duplicates
+   - ไม่เก็บ rules ซ้ำซ้อน — ถ้ามีหลาย rules คล้ายกันให้เสนอ merge หรือเลือก canonical
 3. Severity Ratings
    - Critical: ขาด `.devin/` หรือมี `.devin/workflows/`
-   - High: ขาด subdirectories, `hooks.json` invalid, `sgconfig.yml` ขาด fields
-   - Medium: ขาด hook scripts, `show_output` ไม่เป็น `true`, naming ผิด
-   - Low: ขาด `AGENTS.md` ใน workspace, content ไม่ใช่ภาษาอังกฤษ
+   - High: ขาด subdirectories, `hooks.json` invalid, `sgconfig.yml` ขาด fields, `ast-grep scan` fail
+   - Medium: ขาด hook scripts, `show_output` ไม่เป็น `true`, naming ผิด, duplicate rules
+   - Low: ขาด `AGENTS.md` ใน workspace, content ไม่ใช่ภาษาอังกฤษ, frontmatter ไม่ครบ
    - Info: ข้อเสนอแนะ
 4. Scoring
    - review score = weighted average ของ findings
    - Grade A-F ตาม thresholds ใน references/scoring.md
-5. Formatting
+5. Safety
+   - ไม่ลบ rule หรือไฟล์โดยไม่มี user confirm
+6. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
-
-- ใช้ /review-devin-global-harness ถ้าจำเป็น
-- ใช้ /review-workspace ถ้าจำเป็น
 
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
 
+### Fix Steps
+
+1. structure: สร้าง subdirectories ที่ขาด, ลบ `.devin/workflows/` หลัง confirm
+2. hooks: แก้ `hooks.json`, เพิ่ม hook scripts พร้อม try/catch และ exit codes
+3. rules: merge/ลบ duplicates หลัง confirm, เพิ่ม missing rules ตาม `.devin/rules`, แก้ frontmatter
+4. AGENTS.md: แก้ frontmatter, broken skill references และ workspace coverage
+5. sgconfig: เติม `ruleDirs`, `languageAliases`, `devPaths`
+6. verify: `ast-grep scan` ผ่าน, `/check-reference` ไม่มี broken refs
+
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](references/checklist.md) และ [rules checklist](references/rules-checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 
-- รายงาน `.devin` Structure Review พร้อม score และ grade
-- รายงาน findings พร้อม severity, evidence และ action required
+- รายงาน `.devin` Review พร้อม score และ grade
+- `.devin/rules` และ `rules/` sync กัน ไม่มี duplicate หรือ broken references
+- `AGENTS.md` เป็นไปตามมาตรฐานและ skill references มีอยู่จริง
 - ยืนยันว่าไม่มี `.devin/workflows/` และไม่มี `.devin/` ใน sub-workspace
 - ยืนยัน hooks ใช้ bun runtime พร้อม try/catch และ exit codes ที่ถูกต้อง
 - ยืนยัน `sgconfig.yml` ครบ: `ruleDirs`, `languageAliases`, `devPaths`

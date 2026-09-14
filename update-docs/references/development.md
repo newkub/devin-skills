@@ -1,11 +1,11 @@
 ---
-title: Development Sidebar Reference
-description: Reference for the shared development sidebar
+title: Development Pages Reference
+description: Reference for the shared development page group
 ---
 
-# Development Sidebar Reference
+# Development Pages Reference
 
-The development sidebar is shared between `product`, `open-source`, and `cli` docs.
+The development page group is shared between `product`, `open-source`, and `cli` docs — used for `docs/index.md` TOC and VitePress sidebar.
 
 ## Pages
 

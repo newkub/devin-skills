@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-ตรวจว่า content, plan, idea หรือ skill ที่กำลังเขียนอยู่ใน **frame ที่เหมาะสม** — audience, verb/lifecycle prefix, level of abstraction, mental model — หรือควร reframe เป็นมุมอื่นก่อน commit
+ตรวจว่า content, plan, idea หรือ skill ที่กำลังเขียนอยู่ใน `frame ที่เหมาะสม` — audience, verb/lifecycle prefix, level of abstraction, mental model — หรือควร reframe เป็นมุมอื่นก่อน commit
 
 ## Scope
 
@@ -29,10 +29,10 @@ related:
 
 1. ระบุ target (skill, doc, plan, idea) และอ่านเนื้อหา
 2. ระบุ frame ปัจจุบัน:
-   - **Audience**: เขียนให้ใคร (user, model, future-self, reviewer)
-   - **Lens**: เขียนจากมุมไหน (tool-centric, task-centric, outcome-centric, lifecycle)
-   - **Level**: abstraction ระดับไหน (how-to steps, concepts, decision guide)
-   - **Boundary**: scope ครอบคลุมอะไร / ตัดอะไรทิ้ง
+   - `Audience`: เขียนให้ใคร (user, model, future-self, reviewer)
+   - `Lens`: เขียนจากมุมไหน (tool-centric, task-centric, outcome-centric, lifecycle)
+   - `Level`: abstraction ระดับไหน (how-to steps, concepts, decision guide)
+   - `Boundary`: scope ครอบคลุมอะไร / ตัดอะไรทิ้ง
 3. บันทึก assumptions ที่ frame นั้นพึ่งพา
 
 ### 2. Generate Alternative Frames
@@ -64,7 +64,7 @@ related:
    - audience เข้าใจ/action ได้เร็วกว่าไหม
    - maintainable และ consistent กับระบบไหม
    - rework cost คุ้มไหม
-2. ตัดสินใจ: **keep** (frame ปัจจุบันเหมาะแล้ว), **reframe** (เปลี่ยนมุม), หรือ **split** (แยก content เป็น 2+ frames)
+2. ตัดสินใจ: `keep` (frame ปัจจุบันเหมาะแล้ว), `reframe` (เปลี่ยนมุม), หรือ `split` (แยก content เป็น 2+ frames)
 3. ถ้า decision เสี่ยง/ambiguous → ทำ `/ask-me` ให้ user เลือก
 
 ### 5. Report

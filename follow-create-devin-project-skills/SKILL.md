@@ -21,7 +21,7 @@ related:
 
 ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills` แทน)
 
-ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-docs-agents-md
+ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
 - Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-12)
 
@@ -70,7 +70,7 @@ related:
 
 > Goal: skill เชื่อมกับ project artifacts
 
-1. ทำ `/update-docs-agents-md` ให้ `AGENTS.md` อ้างถึง skill ใหม่ถ้าเป็น workflow หลัก
+1. ทำ `/update-agents-md` ให้ `AGENTS.md` อ้างถึง skill ใหม่ถ้าเป็น workflow หลัก
 2. ตรวจ `related` ชี้ไป skills ที่มีอยู่จริงทั้ง project และ global
 3. ถ้า skill เกี่ยวกับ hooks/MCP → sync กับ `/update-devin-project-hooks` หรือ `/update-devin-project-mcp`
 4. ทำ `/update-dot-devin` ถ้า `.devin/` manifest ต้องอัปเดต
@@ -108,6 +108,8 @@ related:
 - ใช้ commands, paths และ conventions จาก `AGENTS.md` และ manifests จริงของ project
 - ไม่ hardcode commands ที่ไม่มีใน project
 - ทำ dry run ก่อน overwrite skill เดิม และขอ confirmation เสมอ
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

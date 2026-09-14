@@ -54,7 +54,7 @@ related:
 
 1. เทียบ error branches กับ test files — มี test ที่ trigger error นั้นไหม
 2. flag critical error paths (auth, payment, data loss) ที่ไม่มี test
-3. ทำ `/run-test` หรือ `/deep-test-coverage` ถ้าต้องการตัวเลขจริง
+3. ทำ `/run-test` หรือ `/deep-test coverage` ถ้าต้องการตัวเลขจริง
 
 ### 5. Report
 

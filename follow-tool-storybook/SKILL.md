@@ -130,7 +130,9 @@ related:
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /deep-test-visual ถ้าจำเป็น
+- ใช้ /deep-test visual ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -1,6 +1,8 @@
 # VitePress Config Check
 
-ตรวจ `docs/.vitepress/config.ts` nav และ sidebar
+ตรวจ `docs/.vitepress/config.ts` nav และ sidebar — เฉพาะเมื่อมี `docs/.vitepress/` หรือ `vitepress` dependency; ถ้าไม่มีให้ skip ทั้งไฟล์นี้
+
+Fix findings ของ section นี้ → `/update-vitepress-docs` (ไม่ใช่ `/update-docs`)
 
 ## Config File
 

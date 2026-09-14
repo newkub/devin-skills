@@ -77,6 +77,8 @@ related:
 
 - การเลือกที่ขัดกับ default ต้องมีเหตุผลที่บันทึกได้ (comment, ADR, หรือเงื่อนไข `(→ ...)` ใน catalog)
 - ตัดสินใจเสี่ยงสูงหรือไม่ชัด → `/ask-me`
+- ใช้ /use-lib-effective ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -70,6 +70,8 @@ Secrets เหล่านี้ถูกใช้โดย workflow ที่ m
 - ไม่บันทึก secret ลงไฟล์ ถ้าไม่จำเป็น
 - ถ้า user ยังไม่มี token → หยุดแล้วแนะนำวิธีสร้าง
 - ใช้ /run-audit ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

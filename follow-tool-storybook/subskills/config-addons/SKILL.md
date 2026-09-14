@@ -71,7 +71,7 @@ related:
 - รัน `storybook test`/`test-storybook` ใน CI ถ้าใช้ testing addons
 
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /deep-test-visual ถ้าจำเป็น
+- ใช้ /deep-test visual ถ้าจำเป็น
 
 ## Expected Outcome
 

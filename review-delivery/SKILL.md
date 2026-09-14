@@ -3,9 +3,14 @@ name: review-delivery
 description: "Review delivery: docs, DX, efficiency, config, CI/CD, infra, performance, security"
 argument-hint: "[scope]"
 related:
+  - review-docs
+  - review-dx
+  - review-test
+  - review-config
   - review-performance
-  - review-seo
   - review-security
+  - review-seo
+  - review-frontend
   - review-quality
   - scan-codebase
   - deep-analyze
@@ -35,19 +40,19 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 ### 2. Documentation And Web Presence
 
 > Goal: ตรวจ documentation และ web presence
-- ตรวจ documentation ใน `references/docs.md`
-- ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ แล้วรวม findings
+- ตรวจ documentation ใน `references/docs.md` — dedicated deep pass → `/review-docs`
+- ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ แล้วรวม findings — website/frontend code → `/review-frontend`
 
 ### 3. Experience And Insights
 
 > Goal: ตรวจ DX และ analytics
-- ตรวจ DX ใน `references/dx.md`
+- ตรวจ DX ใน `references/dx.md` — dedicated deep pass → `/review-dx`
 - ตรวจ analytics ใน `references/analytics.md`
 
 ### 4. Quality
 
 > Goal: ตรวจ testing และ PR process
-- ตรวจ testing ใน `references/testing.md`
+- ตรวจ testing ใน `references/testing.md` — dedicated deep pass → `/review-test`
 - ตรวจ PR ใน `references/pr-review.md`
 
 ### 5. Operations
@@ -60,7 +65,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 > Goal: ตรวจ build efficiency และ config health
 - ตรวจ build efficiency ใน `references/efficiency.md`
-- ตรวจ config health ใน `references/config.md`
+- ตรวจ config health ใน `references/config.md` — dedicated deep pass → `/review-config`
 
 ### 7. Infrastructure And Pipeline
 
@@ -72,7 +77,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 > Goal: ตรวจ performance และ security
 - ทำ `/review-performance` แล้วดู `references/performance.md` สำหรับรายละเอียด
-- ตรวจ security ใน `references/security.md`
+- ทำ `/review-security` แล้วดู `references/security.md` สำหรับรายละเอียด
 
 ### 9. Validate And Report
 
@@ -92,8 +97,8 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (delivery)
 - ใช้ `/report` สำหรับรายงาน findings, score, actions
 
-- ใช้ /review-security ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- refs ใน skill นี้ใช้เป็น checklist เบาเท่านั้น — domain deep-dive ให้ delegate: docs→`/review-docs`, dx→`/review-dx`, testing→`/review-test`, config→`/review-config`, perf→`/review-performance`, security→`/review-security`, seo→`/review-seo`, frontend→`/review-frontend`, quality→`/review-quality`
+- delivery-unique dims (ci-cd, infrastructure, efficiency, versioning, logging-debugging, pr-review, analytics, containerization) review ใน skill นี้โดยตรง
 
 ## Fix
 

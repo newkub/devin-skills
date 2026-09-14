@@ -3,7 +3,7 @@ name: review-by-stakeholder
 description: Review จากมุมมอง stakeholder/persona — roleplay lens หรือเก็บ feedback จริงเพื่อ prioritize
 argument-hint: "[persona-or-area]"
 related:
-  - roleplay-stakeholder
+  - roleplay-by-all-stakeholder
   - review-uxui
   - review-business
   - review-architecture
@@ -27,7 +27,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 
 ใช้เมื่อต้อง review จากมุมมอง persona เฉพาะ (engineer, product, data, designer, QA, user) หรือเก็บ feedback จาก stakeholder จริง — ไม่แก้ code โดยตรง
 
-ถ้ามาจาก `/roleplay-stakeholder` ให้ใช้ `sub-role` ที่ dispatcher ส่งมา
+ถ้ามาจาก `/roleplay-by-all-stakeholder` ให้ใช้ `sub-role` ที่ dispatcher ส่งมา
 
 ## Execute
 
@@ -173,6 +173,14 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. จัดลำดับ findings ตาม stakeholder priority ที่เก็บได้ แล้วส่งต่อ `## Fix` ของ `review-*` ที่ตรง domain
+2. findings ที่หลาย persona flag ซ้ำ → fix ก่อนเสมอ (highest consensus)
+3. verify: re-review ด้วย persona เดิมเทียบก่อน-หลัง
 
 ## Expected Outcome
 

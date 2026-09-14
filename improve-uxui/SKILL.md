@@ -1,5 +1,5 @@
 ---
-name: improve-uxui-and-features
+name: improve-uxui
 description: Orchestrate UX/UI pass + UXUI features — test, review, fix และเพิ่ม UX features ทุก route
 argument-hint: "[url]"
 related:

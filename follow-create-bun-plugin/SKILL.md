@@ -164,6 +164,8 @@ related:
 - ใช้ `exports` field ใน `package.json`
 
 - ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

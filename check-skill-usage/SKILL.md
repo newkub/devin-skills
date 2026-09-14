@@ -71,6 +71,8 @@ related:
 
 - ไม่ลบ skill — รายงาน recommendations ให้ user ตัดสินใจ
 - การลบต้องผ่าน `/delete` + `/update-references` เสมอ
+- ใช้ /review-coverage ถ้าจำเป็น
+
 
 ## Expected Outcome
 

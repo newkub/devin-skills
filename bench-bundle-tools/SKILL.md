@@ -79,6 +79,8 @@ related:
 - ไม่ migrate จริงใน skill นี้ — รายงานแล้วให้ user ตัดสินใจ
 - ถ้า verdict = migrate → เสนอ migration plan แยก
 - ใช้ /run-bench ถ้าจำเป็น
+- ใช้ /report-before-after ถ้าจำเป็น
+
 
 ## Expected Outcome
 

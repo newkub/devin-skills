@@ -130,7 +130,7 @@ related:
 | tests | `/review-test` | มี test suite |
 | performance | `/review-performance` | เสมอ |
 | bundle | `/review-bundle` | มี frontend build |
-| assets | `/review-assets` | มี images/fonts/media |
+| assets | `/review-bundle` | มี images/fonts/media |
 | seo | `/review-seo` | มี public web pages |
 | accessibility | `/review-accessibility` | มี UI |
 | uxui | `/review-uxui` | มี UI/design system |
@@ -155,7 +155,7 @@ related:
 | mcp | `/review-mcp` | มี MCP servers/config |
 | events | `/review-events` | มี queues/webhooks/event-driven |
 | workspace | `/review-workspace` | monorepo |
-| rules/.devin | `/review-rules` + `/review-dot-devin` | มี `.devin/` config |
+| rules/.devin | `/review-dot-devin` | มี `.devin/` config |
 | risk | `/review-risk` | เสมอ (top-level) |
 
 - dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
@@ -208,7 +208,7 @@ related:
 - รัน `Grep` patterns พร้อมกัน
 - รัน ast-grep patterns พร้อมกัน
 
-### 3. Metric Thresholds
+### 4. Metric Thresholds
 
 - Long functions: > 50 lines
 - Deep nesting: > 3 levels
@@ -217,23 +217,20 @@ related:
 - High coupling: > 7 dependencies
 - Low cohesion: < 0.3
 
-### 3. Research Validation
+### 5. Research Validation
 
 - ใช้ multiple sources สำหรับ validation
 - ตรวจสอบ credibility ของ sources
 - เปรียบเทียบกับ project context
 - ระบุ assumptions ที่ใช้
 
-### 3. Report Quality
+### 6. Report Quality
 
 - จัดกลุ่ม findings ตามหมวดหมู่
-- ให้ recommendations ตาม priority และ impact
-- ระบุ action items ที่ชัดเจน
-- สร้าง roadmap สำหรับ improvements
-- ใช้ `/report-deep` สำหรับ detailed report
-- ใช้ `/report` สำหรับ chat table
+- ให้ recommendations + roadmap + action items ตาม priority และ impact
+- ใช้ `/report-deep` สำหรับ detailed report หรือ `/report` สำหรับ chat table
 
-### 3. Deep Analysis Scripts
+### 7. Deep Analysis Scripts
 
 - ตรวจสอบ `tools/review-codebase` ก่อนใช้
 - ตรวจสอบ `tools/analyze` ถ้ามี
@@ -246,9 +243,7 @@ related:
 
 - เข้าใจ architecture และ design patterns ที่ใช้
 - ระบุ code quality issues พร้อม severity
-- ระบุ features ทั้งหมดและ dependencies
-- ระบุ tech stack และ outdated dependencies
+- ระบุ features, dependencies, tech stack และ outdated dependencies
 - ระบุ performance และ security issues
 - ระบุ gaps ระหว่าง current implementation และ best practices
-- Recommendations สำหรับ improvements ตาม priority และ impact
-- Roadmap สำหรับ improvements ที่ชัดเจน
+- Recommendations + roadmap สำหรับ improvements ตาม priority และ impact

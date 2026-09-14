@@ -137,6 +137,8 @@ related:
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /restructure ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น
+- ใช้ /think-reframe ถ้าจำเป็น
+
 
 ## Expected Outcome
 

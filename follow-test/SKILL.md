@@ -166,8 +166,9 @@ tests/
 2. วิเคราะห์ dependencies และ downstream effects ระบุ critical paths และ integration points
 3. เลือก test cases ที่ครอบคลุม changed code, critical paths และ edge cases ที่เกี่ยวข้อง
 4. รัน unit tests สำหรับ modules ที่เปลี่ยนแปลง, integration tests สำหรับ affected flows, e2e tests สำหรับ critical user journeys
-5. วิเคราะห์ failures จัดกลุ่มตาม root cause ระบุ regressions จากการเปลี่ยนแปลงใหม่ ตรวจ flaky tests
-6. แก้ไข regressions เพิ่ม test cases ใหม่หากจำเป็น รัน tests ซ้ำจนผ่านทั้งหมด
+5. วิเคราะห์ failures จัดกลุ่มตาม error patterns แยก regression จาก pre-existing bug ตรวจ flaky tests
+6. รัน smoke tests สำหรับ critical functionality และ tests ที่ cover changed lines ก่อน — ใช้ CI/CD สำหรับ automated regression บน environment ใกล้ production
+7. แก้ไข regressions เพิ่ม test cases ใหม่หากจำเป็น รัน tests ซ้ำจนผ่านทั้งหมด — ห้ามข้าม regression testing เพื่อ save time
 
 ### 8. Advanced Testing (Optional)
 
@@ -178,16 +179,6 @@ tests/
 - Contract Testing: Verify API contracts ระหว่าง services
 - Security Testing: Scan vulnerabilities ใน dependencies และ code
 - Load Testing: Test system ภายใต้ high load scenarios
-
-### 8. Regression Testing
-
-วิเคราะห์ผลกระทบและป้องกัน regressions:
-- ใช้ `git diff` เพื่อดูการเปลี่ยนแปลงและ dependency graph สำหรับ downstream effects
-- รัน tests ที่ cover changed lines ก่อน รวม smoke tests สำหรับ critical functionality
-- ใช้ CI/CD pipeline สำหรับ automated regression รันบน environment ที่ใกล้เคียง production
-- จัดกลุ่ม failures ตาม error patterns ระบุว่าเป็น regression หรือ pre-existing bug
-- เพิ่ม test cases สำหรับ bugs ที่พบ ใช้ mutation testing สำหรับ critical code
-- ห้ามข้าม regression testing เพื่อ save time หรือรันเฉพาะ unit tests และข้าม integration/e2e
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 

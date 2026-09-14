@@ -28,5 +28,5 @@ description: Complete list of shipped features
 
 - Columns fixed: `Feature | Description | Module | Status` (No. first per report rules)
 - Group rows by domain with `##` headings — no dropdowns
-- Data comes from `/update-docs-features-md` or real code analysis — never invented features
+- Data comes from `/update-features-md` or real code analysis — never invented features
 - Status values: `shipped` / `beta` / `deprecated`

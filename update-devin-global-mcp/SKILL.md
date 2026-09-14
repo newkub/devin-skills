@@ -130,6 +130,8 @@ related:
 - ถ้า server ไม่ทำงานหลังแก้ → revert จาก backup
 
 - ใช้ /follow-create-mcp ถ้าจำเป็น
+- ใช้ /update-devin ถ้าจำเป็น
+
 
 ## Expected Outcome
 

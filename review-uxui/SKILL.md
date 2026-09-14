@@ -4,7 +4,7 @@ description: Review UX/UI design quality, design system, visual, interaction, ac
 argument-hint: "[scope]"
 related:
   - deep-review
-  - roleplay-stakeholder
+  - roleplay-by-all-stakeholder
   - scan-codebase
   - deep-analyze
   - run-review
@@ -13,12 +13,12 @@ related:
   - suggest-next-action
   - deep-optimize
   - follow-design-system
+  - follow-lib-animejs
   - capture
   - review-accessibility
-  - improve-uxui-and-features
-  - deep-test-e2e
+  - improve-uxui
+  - deep-test
   - deep-review-then-fix
-  - run-dev
 ---
 
 ## Goal
@@ -27,14 +27,15 @@ Review UX/UI design quality จาก source code ครอบคลุม desig
 
 ## Scope
 
-UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility (WCAG 2.2), design-dev handoff quality, user flow mapping และ journey analysis
+UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility signals (contrast, focus states ที่เห็นใน design), settings completeness, motion/delight, design-dev handoff quality, user flow mapping และ journey analysis
 
 ไม่รวม:
+- WCAG audit deep-dive (semantics, ARIA, keyboard, screen reader) → ใช้ `/review-accessibility`
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
 - platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - SEO → ใช้ `/review-seo`
-- roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-stakeholder`
-- roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-stakeholder`
+- roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-by-all-stakeholder`
+- roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-by-all-stakeholder`
 
 ## Execute
 
@@ -74,13 +75,25 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ทำตาม `references/accessibility.md`
 
-### 6. Design-Dev Handoff
+### 6. Settings And Preferences
+
+> Goal: settings ครบ features พื้นฐาน และ visual/interactive พอ
+
+ทำตาม `references/settings.md` — expected sections (profile, appearance, shortcuts, notifications, privacy, data, about), settings UX (nav, deep-link, save model, danger zone) และ interactive controls (preview, recorder, toggles)
+
+### 7. Motion And Delight
+
+> Goal: motion purpose-driven, consistent และ respect reduced-motion
+
+ทำตาม `references/motion.md` — motion tokens, easing consistency, `prefers-reduced-motion`, skeleton loading, micro-interactions, anti-patterns; implementation reference → `/follow-lib-animejs`
+
+### 8. Design-Dev Handoff
 
 > Goal: ครอบคลุมทุก handoff dimension
 
 ทำตาม `references/handoff.md`
 
-### 7. Validate Findings
+### 9. Validate Findings
 
 > Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
@@ -89,14 +102,14 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 3. ระบุ false positives ที่พบ
 4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ section ที่เกี่ยวข้อง
 
-### 8. Report
+### 10. Report
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
 1. ทำ `/report table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
-4. สร้าง design maturity scorecard: 5 dimensions, score 1-5
+4. สร้าง design maturity scorecard: 7 dimensions, score 1-5
 5. สรุป top 3-5 design issues ที่ต้องแก้ก่อน
 6. สรุป top 3-5 design wins ที่ทำดี
 7. ทำ `/suggest-next-action`
@@ -116,13 +129,15 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - ถ้า project ไม่มี component library → ข้าม component library checks แต่ flag เป็น High finding
 - ถ้า project ไม่มี dark mode requirement → ข้าม theme support checks
 - ถ้า project ไม่มี touch target → ข้าม gesture checks
+- ถ้า project ไม่มี settings page → ข้าม settings checks (ไม่ flag — settings ไม่ใช่ requirement ของทุก app)
+- ถ้า project เป็น CLI/static content → ข้าม motion checks
 
 ### 2. Severity Classification
 
 - Critical: ไม่มี design system, accessibility ไม่ผ่าน (contrast < 3:1, no keyboard), ใช้ไม่ได้จริง, no loading/empty/error states
 - High: inconsistency กระจาย, ไม่มี loading/empty/error states, keyboard ใช้ไม่ได้, missing focus indicators, no dark mode
-- Medium: inconsistency บางจุด, ขาด micro-interactions, spacing ไม่สม่ำเสมอ, minor contrast issues
-- Low: polish ไม่พอ, animation ขาด, icon ไม่สม่ำเสมอ, documentation gap
+- Medium: inconsistency บางจุด, ขาด micro-interactions, spacing ไม่สม่ำเสมอ, minor contrast issues, settings ขาด section พื้นฐาน (theme/shortcuts/notifications), motion tokens ไม่มี
+- Low: polish ไม่พอ, animation ขาด, icon ไม่สม่ำเสมอ, documentation gap, settings ขาด preview/interactive controls
 - Info: suggestion, best practice recommendation
 
 ### 3. Evidence-Based Findings
@@ -145,7 +160,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - ไม่ review SEO → ใช้ `/review-seo`
 - ไม่ review code quality, bug-prone patterns → ใช้ `/review-quality`
-- focus ที่ design quality: design system, visual, interaction, accessibility, handoff
+- focus ที่ design quality: design system, visual, interaction, accessibility, settings, motion, handoff
 
 ### 6. Health Score
 
@@ -172,9 +187,9 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### Fix Steps
 
-1. browser fix pass → `/improve-uxui-and-features` (orchestrates watch passes + UXUI features + Playwright sync)
+1. browser fix pass → `/improve-uxui` (orchestrates watch passes + UXUI features + Playwright sync)
 2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
-3. verify: re-run browser pass + `/deep-test-e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
+3. verify: re-run browser pass + `/deep-test e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
 
 ## References
 
@@ -185,7 +200,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 - รายงานตาราง findings จากทุก UX/UI section พร้อม severity และ location
 - รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
-- Design maturity scorecard: 5 dimensions, score 1-5
+- Design maturity scorecard: 7 dimensions, score 1-5
 - สรุป design issues และ design wins
 - Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

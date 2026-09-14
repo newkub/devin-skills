@@ -109,6 +109,8 @@ related:
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugin ถ้าจำเป็น (lib solidjs)
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -23,9 +23,9 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-security)
 
-ครอบคลุม: authentication, authorization, OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, session/token management, encryption, file upload security, security scoring
+ครอบคลุม: auth posture (high-level เท่านั้น), OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, encryption, file upload security, security scoring
 
-ไม่รวม: compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
+ไม่รวม: auth subsystem deep-dive — identity flows, sessions, tokens, OAuth, MFA, RBAC/ABAC (ใช้ `/review-auth`), compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
 
 ## Execute
 

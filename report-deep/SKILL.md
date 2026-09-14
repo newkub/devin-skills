@@ -83,7 +83,7 @@ related:
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. แนะนำ `/review-*` workflow สำหรับแต่ละ finding ตาม `reviewWorkflow` field
-3. แนะนำ `/update-docs-agents-md` ถ้า AGENTS.md ไม่ตรงกับ dependencies ปัจจุบัน
+3. แนะนำ `/update-agents-md` ถ้า AGENTS.md ไม่ตรงกับ dependencies ปัจจุบัน
 > Goal: action items ที่ชัดเจนและจัดลำดับตาม priority
 
 ## Rules
@@ -136,6 +136,8 @@ related:
 
 - deep summary ต้องมีครบทั้ง 4 ส่วน: Domain Breakdown, Severity Distribution, False Positive Analysis, Recommended Actions
 - ถ้าไม่มีข้อมูลส่วนใด (เช่น ไม่มี false positive) ให้ระบุว่า `None found`
+- ใช้ /update-docs ถ้าจำเป็น
+
 
 ## Expected Outcome
 

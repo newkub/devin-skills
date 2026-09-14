@@ -7,7 +7,7 @@ related:
   - report
   - report-architecture-diagram
   - follow-design-system
-  - roleplay-stakeholder
+  - roleplay-by-all-stakeholder
   - ask-me
   - suggest-next-action
   - open-files-in-web
@@ -116,7 +116,7 @@ related:
 
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /roleplay-stakeholder ถ้าจำเป็น
+- ใช้ /roleplay-by-all-stakeholder ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 

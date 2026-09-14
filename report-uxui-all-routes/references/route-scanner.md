@@ -85,7 +85,7 @@ description: ขั้นตอน scan routes ทั้งหมดของ we
 
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 - ใช้ /check-routes-status ถ้าจำเป็น
-- ใช้ /test-all-api-routes ถ้าจำเป็น
+- ใช้ /deep-test api (all-routes check) ถ้าจำเป็น
 
 ## Expected Outcome
 

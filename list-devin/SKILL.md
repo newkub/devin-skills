@@ -1,6 +1,6 @@
 ---
 name: list-devin
-description: List Devin resources — global hooks, MCP, skills, subagents, sessions, user requests ผ่าน top-level skills
+description: List Devin resources — hooks, MCP, skills, subagents, sessions ผ่าน top-level skills
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills

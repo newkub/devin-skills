@@ -73,6 +73,8 @@ Normalize: strip trailing slash, query, fragment; เหลือเฉพาะ
 
 - ใช้ /check-repo-hygiene ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /review-coverage ถ้าจำเป็น
+
 
 ## Expected Outcome
 

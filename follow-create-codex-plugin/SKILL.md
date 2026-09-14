@@ -103,6 +103,8 @@ related:
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search-skills ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
+- ใช้ /follow-create-plugins ถ้าจำเป็น
+
 
 ## Expected Outcome
 

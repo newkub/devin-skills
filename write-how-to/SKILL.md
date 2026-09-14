@@ -137,6 +137,8 @@ related:
 - ใช้ /how-to-works ถ้าจำเป็น
 - ใช้ /write-explicit ถ้าจำเป็น
 - ใช้ /write-solutions ถ้าจำเป็น
+- ใช้ /think-reframe ถ้าจำเป็น
+
 
 ## Expected Outcome
 

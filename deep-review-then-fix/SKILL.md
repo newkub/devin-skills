@@ -42,14 +42,13 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | api | `/review-api` | `review-api/references/fix-*.md` |
 | database | `/review-database` | `review-database/references/fix-*.md` |
 | dependencies | `/review-dependencies` | `review-dependencies/references/fix-*.md` |
-| bundle | `/review-bundle` | `review-bundle/references/fix-*.md` |
+| bundle+assets | `/review-bundle` | `review-bundle/references/fix-*.md` |
 | performance | `/review-performance` | `review-performance/references/fix-*.md` |
-| assets | `/review-assets` | `review-assets/references/fix-*.md` |
 | ci/delivery | `/review-delivery` | `review-delivery/references/fix-*.md` |
 | cost | `/review-cost` | `review-cost/references/fix-*.md` |
 | docs | `/review-docs` | `review-docs/references/fix-*.md` |
 | tests | `/review-test` | `review-test/references/fix-*.md` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/improve-uxui-and-features` (browser pass) |
+| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/improve-uxui` (browser pass) |
 | stability | `/review-stability` | `review-stability/references/fix-*.md` |
 | observability | `/review-observability` | `review-observability/references/fix-*.md` |
 | cli | `/review-cli` | `review-quality/references/fix-improve-cli-ux.md` |
@@ -61,6 +60,11 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 | quality/types | `/review-quality` | `review-quality/references/fix-*.md` |
 | i18n | `/review-i18n` | `review-i18n` `## Fix` steps |
 | mobile | `/review-mobile` | `review-mobile` `## Fix` steps |
+| desktop | `/review-desktop-app` | `review-desktop-app` `## Fix` steps |
+| browser-ext | `/review-browser-ext` | `review-browser-ext` `## Fix` steps |
+| dx | `/review-dx` | `review-dx` `## Fix` steps |
+| iac | `/review-iac` | `review-iac` `## Fix` steps |
+| sdk | `/review-sdk` | `review-sdk` `## Fix` steps |
 | ai | `/review-ai` | `review-ai` `## Fix` steps |
 | mcp | `/review-mcp` | `review-mcp` `## Fix` steps |
 | events | `/review-events` | `review-events` `## Fix` steps |

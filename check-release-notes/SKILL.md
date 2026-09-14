@@ -70,6 +70,8 @@ related:
 - ใช้ /check-all-routes ถ้าจำเป็น
 - ใช้ /check-release-drift ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
+- ใช้ /check-content-outdate ถ้าจำเป็น
+
 
 ## Expected Outcome
 

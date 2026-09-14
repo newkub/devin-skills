@@ -86,6 +86,13 @@ related:
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web-nuxt ถ้าจำเป็น
+- ใช้ /update-docs ถ้าจำเป็น
+- ใช้ /gen-openapi ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
+
 
 ## Expected Outcome
 

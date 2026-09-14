@@ -37,7 +37,7 @@
 | 29 | Business | payments, tenancy, flags, realtime | `/review-business` |
 | 30 | DataValidation | schemas, boundary validation | `/review-data-validation` |
 | 31 | Algorithm | complexity, data structures, hot paths | `/review-algorithm` |
-| 32 | Assets | images, fonts, media, caching | `/review-assets` |
+| 32 | Assets | images, fonts, media, caching | `/review-bundle` |
 | 33 | Bundle | code splitting, tree shaking, size | `/review-bundle` |
 | 34 | Workspace | monorepo graph, circular deps | `/review-workspace` |
 | 35 | Writing | naming, readability, discoverability | `/review-writing` |

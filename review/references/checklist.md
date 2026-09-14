@@ -13,9 +13,9 @@
 - [ ] surface → `/review-frontend`, `/review-cli`, `/deep-review`, `/review-api`, `/review-backend`
 - [ ] safety → `/review-security`, `/review-auth`, `/review-compliance`, `/review-data-validation`
 - [ ] ops → `/review-release`, `/review-delivery`, `/review-observability`, `/review-stability`, `/review-cost`
-- [ ] docs/meta → `/review-docs`, `/review-writing`, `/review-rules`
+- [ ] docs/meta → `/review-docs`, `/review-writing`, `/review-dot-devin`
 - [ ] process → `/review-plan`, `/review-implement`, `/review-risk`, `/review-idea`, `/review-issue`, `/review-github-pr`, `/review-diff`, `/review-migration`, `/review-update`
-- [ ] persona → `/review-by-stakeholder` via `/roleplay-stakeholder`
+- [ ] persona → `/review-by-stakeholder` via `/roleplay-by-all-stakeholder`
 - [ ] devin repos → `/review-devin-global-harness`, `/update-devin-global-subagents`, `/review-dot-devin`
 - [ ] aggregate → `/review-gaps`, `/deep-review-then-fix`
 

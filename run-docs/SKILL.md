@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-docs
   - follow-tool-vitepress
+  - update-vitepress-docs
   - deep-review
   - deep-debug
   - resolve-errors
@@ -40,7 +41,7 @@ related:
 
 > Goal: Update Documentation
 
-1. ทำ `/follow-tool-vitepress` เพื่อสร้างและอัพเดทเอกสาร
+1. ทำ `/update-vitepress-docs` เพื่อสร้างและอัพเดท docs site (content + config) — หรือ `/update-docs` ถ้าเป็น markdown ล้วน
 2. ทำ `/deep-review` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 

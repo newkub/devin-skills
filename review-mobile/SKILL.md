@@ -4,6 +4,7 @@ description: Review mobile app — touch targets, safe areas, gestures, offline,
 argument-hint: "[scope]"
 related:
   - review-frontend
+  - review-desktop-app
   - review-accessibility
   - review-performance
   - follow-create-mobile

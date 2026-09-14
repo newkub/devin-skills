@@ -67,6 +67,14 @@ related:
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-risk ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. decision `keep` → ทำ `/git-commit` หรือ `/ship` ตาม workflow
+2. decision `revert` → revert เฉพาะ hunks ที่ user confirm (git checkout/restore หรือ edit กลับ) — ไม่ revert ทั้งไฟล์ถ้ามีส่วนที่ keep
+3. findings ที่ต้องแก้ใน diff → แก้ตาม `review-*` domain ที่ตรง แล้ว re-diff เทียบ
+
 ## Expected Outcome
 
 - ตารางสรุป diff ทั้ง tracked และ untracked

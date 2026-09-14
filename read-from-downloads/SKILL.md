@@ -14,7 +14,7 @@ triggers:
   - user
   - model
 related:
-  - from-recent-windows-capture
+  - from-screenshots-dir
   - capture
   - review-uxui
   - open
@@ -28,7 +28,7 @@ related:
 
 ใช้กับไฟล์ทีอยู่ใน `~/Downloads` เช่น screenshots, images, documents, archives โดย list, filter และ read ไฟล์ทีเลือก
 
-ดูเพิ่มเติม: /from-recent-windows-capture, /capture, /review-uxui, /open-explorer
+ดูเพิ่มเติม: /from-screenshots-dir, /capture, /review-uxui, /open-explorer
 
 ## Execute
 

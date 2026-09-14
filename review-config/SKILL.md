@@ -28,7 +28,8 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 ## Scope
 
 - ใช้กับ root project หรือ workspace ใดๆ
-- ครอบคลุม package manifest, tool configs, CI/CD, env, moon/turbo, editor, git hooks
+- ครอบคลุม tool configs, CI/CD, env, moon/turbo, editor, git hooks — focus config file drift/duplicates
+- ไม่รวม manifest structure, dependency graph และ scripts readiness ของ workspace member → ใช้ `/review-workspace`
 - ไม่แก้ไขไฟล์ ให้ report findings เป็น input สำหรับ `/update-config`
 
 ## Execute

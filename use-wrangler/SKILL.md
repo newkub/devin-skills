@@ -122,6 +122,8 @@ bunx wrangler deployments list           # ดู deployment history
 
 - ใช้ /resolve-cloudflare-worker ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

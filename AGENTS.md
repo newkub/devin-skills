@@ -3,11 +3,12 @@ name: devin-global-skills
 description: Global and project-specific Devin CLI skill collection and conventions
 related:
   - update-docs
+  - update-vitepress-docs
   - follow-agents-md
   - update-devin-global-skills
   - update-devin
   - deep-validate
-  - review-rules
+  - review-dot-devin
   - review-devin-global-harness
   - git-commit
   - update-review-cli
@@ -43,7 +44,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 3. Validate And Ship
 
-1. Run `/review-rules` to check `AGENTS.md` and rules coverage.
+1. Run `/review-dot-devin` to check `AGENTS.md` and rules coverage.
 2. Run `/review-devin-global-harness` when editing skills.
 3. Run `/deep-validate` to verify correctness.
 4. Run `/git-commit` or `/ship` to commit changes.
@@ -82,7 +83,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **760** top-level skills (1083 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, `fix-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`.
+The repository currently contains **786** top-level skills (1184 `SKILL.md` including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, `fix-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
@@ -101,13 +102,13 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (184): language, framework, library, tool, service, architecture, and best-practice guides — `follow-my-techstack` restored (ใช้ canonical catalog ที่ `review-dependencies/references/techstack-catalog.md`) — domain variants consolidated into `follow-create-*` dispatcher parents (`follow-create-web`, `follow-create-mobile`, `follow-create-plugins`, `follow-create-docker`, `follow-create-product`). `follow-*-architecture` family merged into `/review-architecture` (`references/patterns-*.md`).
-- `review-*` (55): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`, `redundancy`+`references`→`devin-global-skills` (`techstack` restored เมื่อ 2026-09 — catalog อยู่ที่ `review-dependencies/references/techstack-catalog.md`); domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
+- `review-*` (57): code review, architecture, security, performance, accessibility, dependencies, quality, DX (`review-dx`), desktop (`review-desktop-app`), browser extension (`review-browser-ext`), IaC (`review-iac`), SDK surface (`review-sdk`), stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews) — ทุกตัว review/report-only โดย default พร้อม section `## Fix` ที่มี fix steps + guides ของ domain เมื่อ user confirm; canonical fix skill = `/deep-review-then-fix` (มี Domain Map อ่าน fix guides จาก `review-*/references/`). merged: `usage-md`+`features`→`docs`, `web`→`frontend`, `data-structure`→`algorithm`, `correctness`→`quality`, `readability`→`writing`, `platform`→`deep-review`, `redundancy`+`references`→`devin-global-skills`, `rules`→`dot-devin`, `assets`→`bundle` (`techstack` restored เมื่อ 2026-09 — catalog อยู่ที่ `review-dependencies/references/techstack-catalog.md`); domain `optimize-*` ถูก merge เข้า `review-*` `## Fix` ทั้งหมดแล้ว.
 - `check-*` (51): verification, structure, and health checks — dispatchers: `check-files`, `check-secrets`, `check-repo-hygiene`, `check-monorepo`, `check-config-drift`.
 - `run-*` (29): test, build, lint, typecheck, format, and deployment runners — `run-test` = unit/fast tests only; `run-test-all` orchestrator selects `/run-test` + `/deep-test <domain>` by signals.
-- `report-*` (27): reporting, diagrams, and visualization helpers — `report` เป็น format dispatcher (`table`, `html`, `numbered`, `codeblock`); `report-config-drift` merged → `check-config-drift`.
-- `update-*` (25): repo, skills, docs, config, runtime, version, and test spec maintenance — `update-devin` (devin config dispatcher), `update-docs` (docs files dispatcher), `update-tests` (test spec dispatcher).
-- `deep-*` (18): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-test <domain>` (single skill, 8 domains ใน `references/`: api, cli, contract, coverage, e2e, integration, mutation, visual — merged จาก `deep-test-*` เดิม), `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-implement-to-production`, `deep-update-project`.
-- `list-*` (22): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github` route to `list-*-<domain>` top-level skills.
+- `report-*` (27): reporting, diagrams, and visualization helpers — `report` เป็น format dispatcher (`table`, `html`, `numbered`, `codeblock`); `report-config-drift` merged → `check-config-drift`; `report-review` merged → `deep-review` (alias stub, report spec อยู่ใน `deep-review` Step 7).
+- `update-*` (26): repo, skills, docs, config, runtime, version, and test spec maintenance — `update-devin` (devin config dispatcher), `update-docs` (markdown docs dispatcher — VitePress site = `update-vitepress-docs` = update-docs + follow-tool-vitepress), `update-tests` (test spec dispatcher).
+- `deep-*` (18): deep analysis, research, debugging, validation, verification, and orchestration — รวม `/deep-test <domain>` (single skill, 8 domains ใน `references/`: api, cli, contract, coverage, e2e, integration, mutation, visual — merged จาก `deep-test-*` เดิม), `/deep-review` (codebase review, report-only) และ `/deep-review-then-fix` (canonical fix skill + Domain Map); alias stubs: `review-then-fix`, `deep-implement-to-production`, `deep-update-project`, `report-review`; dispatch catalog ครบ `review-*` อยู่ที่ `deep-review/references/review-skills.md`.
+- `list-*` (23): inventory, lookup, and listing utilities — dispatchers: `list-devin`, `list-git`, `list-github` route to `list-*-<domain>` top-level skills. `list-x-newkub-reposts` ships a local bun CLI (`scripts/`, `X_BEARER_TOKEN` via `.env`).
 - `create-*` (13): project, plugin, bot, report, and diagram scaffolding — dispatchers: `create-cloudflare`, `create-github`.
 - `open-*` (15): browser, editor, and terminal integration — `open` dispatcher routes to `open-explorer`, `open-github`, `open-web`, `open-wezterm`, `open-windows-terminal`, `open-zed`; specialized: `open-in-devin`, `open-diff`, `open-files-in-web`, `open-readme-html`, `open-cloudflare-workers`, `open-devin-in-web`, `open-web-dependencies`, `open-web-for-config-secret`.
 - `ship-*` (2): `/ship` (entry point — `/update-agents-md` + `/follow-agents-md`; full workflow อยู่ใน `### 8. Ship` ของ `update-agents-md`; swarm mode = Step 4 + `references/swarm-*.md`), `/ship-dont-ask-me`.
@@ -117,7 +118,8 @@ Major skill families by current count:
 - `improve-*` (3): `improve`, `improve-devin-global-skills`, `improve-uxui` (มี subskills: contrast, responsive, states).
 - `resolve-*` (5): error/CI/issue/conflict resolution — `resolve-errors` (canonical fixer; absorbs `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`), `resolve-cicd` (watcher — watch CI `gh run` + CD `wrangler`/deploys แล้ว dispatch `/resolve-errors`).
 - `restore-*` (5): `restore-files` dispatcher routes to `restore-files-deleted-file`, `restore-files-from-devin-history`, `restore-files-from-git-log`, `restore-files-from-my-dotfiles`; `restore` = alias stub.
-- `idea-*` (1→dispatcher): `idea` (`features`, `merge`, `naming`, `uxui-features`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
+- `idea-*` (1→dispatcher): `idea` (`features`, `improve`, `merge`, `naming`, `review`, `uxui`, `refactor-workspace`, `convert-my-global-cli-to-skills`, `devin-global-skills-from-session`, `new-devin-global-skills`).
+- `roleplay-*` (1→18 category parents→75 role subskills): `roleplay-by-all-stakeholder` dispatcher → `roleplay-<category> <role>` — categories: product, engineering, quality, user, customer, research, marketing, growth, business, data, operations, finance, legal, content, creative, communication, management, technical (renamed from `roleplay-stakeholder`).
 - `merge-*` (4): `merge` dispatcher routes to `merge-all-branch-by-me-to-main`, `merge-git-branch`, `merge-github-pr` top-level skills.
 - `convert-*` (1→dispatcher): `convert` (`esm`, `files-format`, `git-submodules`, `scripts`, `svg`).
 - `delete-*` (6): `delete` dispatcher (generic safe file/folder delete) routes domain deletes to `delete-cicd-fails`, `delete-git-branch`, `delete-git-submodules`, `delete-git-worktree`, `delete-projects`.

@@ -28,9 +28,11 @@ related:
 | Topic | Skill |
 |-------|-------|
 | ไอเดีย features ใหม่/ขยาย | `/idea-features` |
+| ไอเดีย improve scope ใดๆ (quick wins, strategic, Extends/New/Remove) | `/idea-improve` |
 | ตั้งชื่อไฟล์/directory สำหรับ idea | `/idea-naming` |
 | ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |
-| ไอเดีย UX/UI improvements และ features | `/idea-uxui-features` |
+| ไอเดียจาก review findings/reports ที่มีอยู่ | `/idea-review` |
+| ไอเดีย UX/UI improvements และ features | `/idea-uxui` |
 | ไอเดีย refactor workspace ใน monorepo | `/idea-refactor-workspace` |
 | ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
 | skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
@@ -84,6 +86,8 @@ related:
 
 - ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/implement-to-production` เลย
 - ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
+- ใช้ /think-reframe ถ้าจำเป็น
+
 
 ## Expected Outcome
 

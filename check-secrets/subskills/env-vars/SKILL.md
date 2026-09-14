@@ -48,6 +48,10 @@ related:
 2. Missing in `.env.example`: keys ที่มีใน `.env` แต่ไม่มีใน example (คนใหม่จะพัง)
 3. Unused: keys ใน `.env` ที่ code ไม่ได้ใช้
 4. Drift: keys ที่มีในบาง env variants แต่ขาดใน variants อื่น
+5. Placeholder/localhost detection — key มีอยู่แต่ใช้ไม่ได้จริง:
+   - `placeholder` — ค่าตรง pattern `your-*`, `xxx`, `changeme`, `sk_test_...` ตัวอย่าง, `REPLACE_ME`
+   - `localhost` — ค่าชี้ `localhost`/`127.0.0.1` สำหรับ key ที่คาดว่าเป็น remote service (เช็คว่า service จริงรันไหม เช่น `DATABASE_URL` → `localhost:5432` แต่ไม่มี Postgres)
+   - อย่า echo ค่า — report เฉพาะ status เดียวกับ skill `open-web-for-config-secret` (`set`/`placeholder`/`localhost`/`missing`)
 
 ### 4. Check Secret Safety
 
@@ -63,9 +67,11 @@ related:
 > Goal: สรุปผลให้แก้ไขได้ทันที
 
 1. ทำ `/report` คอลัมน์: `No.`, `Key`, `Status`, `Found In`, `Action`
-2. Status: `missing-env`, `missing-example`, `unused`, `drift`, `leaked`
-3. สรุป counts และจัดลำดับ `leaked`/`missing-env` ก่อน
-4. แนะนำ next action ต่อ finding
+   - สำหรับ key ที่ `missing`/`placeholder`/`localhost` → Action ชี้ `/open-web-for-config-secret` (inventory table มี console URL + จุดกรอก)
+2. Status: `missing-env`, `missing-example`, `placeholder`, `localhost`, `unused`, `drift`, `leaked`
+3. สรุป counts และจัดลำดับ `leaked`/`missing-env`/`placeholder`/`localhost` ก่อน
+4. แยก Required (block boot) vs Feature-Gated ตาม inventory format ของ `/open-web-for-config-secret`
+5. แนะนำ next action ต่อ finding
 
 ## Rules
 

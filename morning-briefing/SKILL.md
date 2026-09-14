@@ -84,6 +84,8 @@ related:
 
 - รัน checks แบบ parallel เมื่อทำได้ — briefing ต้องเร็วพอใช้ทุกวัน
 - skip sections ที่ไม่ relevant (ไม่มี remote → ข้าม CI/PR sections)
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 
 ## Expected Outcome
 

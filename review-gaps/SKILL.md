@@ -103,6 +103,14 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. ส่งแต่ละ gap ที่ confirm ไปยัง `## Fix` ของ `review-*` ที่ตรง domain หรือ `/deep-review-then-fix`
+2. gap ที่ไม่มี owner skill → `/new-skills` หรือ `/idea-merge` ตามประเภท
+3. verify: re-aggregate gaps หลัง fix — matrix ต้องไม่มี gap เดิมเหลือ
+
 ## Expected Outcome
 
 - ตาราง prioritized improvement list พร้อม category, score, action skill

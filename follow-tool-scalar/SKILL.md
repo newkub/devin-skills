@@ -61,7 +61,7 @@ related:
 2. ทดสอบ queries, mutations, และ error scenarios (mock server validate request ตาม OpenAPI contract โดย default)
 3. ใช้ `bunx @scalar/cli document validate openapi.yaml` เพื่อตรวจสอบ schema validity และ `document lint` สำหรับ spectral rules
 4. ใช้ `bunx @scalar/cli document serve openapi.yaml` เพื่อ preview API reference แบบ local — หรือทำ `/run-api-docs` ให้ start docs server + browser preview ครบ
-5. ถ้าต้องการ test API จริงจาก spec → export/import เข้า Bruno (`bru import openapi`) หรือเขียน `.hurl` files — ดู `/deep-test-api`
+5. ถ้าต้องการ test API จริงจาก spec → export/import เข้า Bruno (`bru import openapi`) หรือเขียน `.hurl` files — ดู `/deep-test api`
 6. ทำ `/follow-test` เพื่อขยาย test coverage
 
 ### 5. Documentation and Deploy
@@ -108,6 +108,9 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
+
+- ใช้ /follow-tool-bruno ถ้าจำเป็น
+- ใช้ /follow-tool-hurl ถ้าจำเป็น
 
 
 ## Expected Outcome

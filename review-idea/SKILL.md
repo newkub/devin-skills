@@ -104,6 +104,14 @@ related:
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. ปรับ idea ตาม findings: ตัดส่วนที่ score ต่ำ/ไม่คุ้ม, แก้ scope ที่เบลอ, เพิ่มข้อมูลที่ขาด
+2. ถ้า verdict `go` → ทำ `/create-plan-in-dot-devin` หรือ `/plan` ต่อ
+3. ถ้า verdict `no-go` → บันทึกเหตุผล ไม่ implement
+
 ## Expected Outcome
 
 - รายงาน validation เป็นตาราง: Criteria, Score, Notes
