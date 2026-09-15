@@ -148,7 +148,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 - focus ที่ code-level structure: symbols, exports, members, cohesion
 - สำหรับ system-wide view ทำ `/deep-review`
 
-- ใช้ /use-astgrep programmatic ถ้าจำเป็น
+- ใช้ /use-astgrep-programmatic ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -90,7 +90,7 @@ related:
 > Goal: วิเคราะห์ code quality อย่างละเอียด
 
 1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
-2. ทำ `/use-astgrep programmatic` สำหรับ AST-based metrics ถ้าต้องการ
+2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
 3. หา code smells ด้วย `Grep` multiline mode
 4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
 5. ทำ `/review-quality`, `/check-repo-hygiene unused` แบบ parallel
@@ -199,7 +199,7 @@ related:
 - Structure: `/scan-codebase`, `/check-files structure`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
 - Architecture: `/use-astgrep`, `Grep`
 - Features: `/scan-codebase`, `/use-astgrep`
-- Code Quality: `/use-astgrep`, `/use-astgrep programmatic`, `Grep`, `/use-scripts`
+- Code Quality: `/use-astgrep`, `/use-astgrep-programmatic`, `Grep`, `/use-scripts`
 - Dependencies: manifest files, `/run-audit`
 - Research: `/deep-research`, DeepWiki, Context7, WebSearch
 

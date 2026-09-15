@@ -6,6 +6,10 @@ related:
   - update-project-rules
   - check-code-structure
   - replace
+  - search-by-astgrep
+  - use-astgrep-programmatic
+  - check-function-quality
+  - check-single-responsibility
 
 ---
 ## Goal
@@ -16,7 +20,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-astgrep)
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, การ search แบบ ad-hoc, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules` (merged from: `follow-tool-astgrep`, `search-by-astgrep`)
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules`, ad-hoc search workflow อยู่ใน `/search-by-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic` (merged from: `follow-tool-astgrep`)
 
 ## Execute
 
@@ -77,7 +81,7 @@ related:
 7. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
 8. ถ้า matches เยอะเกิน → ปรับ pattern ให้จำเพาะขึ้น
 9. ถ้าต้องการแก้ไข → ส่งต่อ `/replace`
-10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ programmatic subskill (`subskills/programmatic/SKILL.md`)
+10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
 11. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules
@@ -126,16 +130,15 @@ related:
 - ทดสอบ pattern บนไฟล์ตัวอย่างก่อนรันทั้ง project
 - ปล่อยให้ ast-grep auto-detect ภาษา หรือระบุ `--lang` ถ้า extension ไม่มาตรฐาน
 - ถ้า matches เยอะเกิน → เพิ่ม constraints หรือ filters
-- ถ้า pattern ซับซ้อน → ทำ programmatic subskill (`subskills/programmatic/SKILL.md`)
+- ถ้า pattern ซับซ้อน → ทำ `/use-astgrep-programmatic`
 - ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-project-rules`
 
 - ใช้ /check-code-structure ถ้าจำเป็น
 
-### Subskills
+### Related Workflows
 
-| Subskill | เมื่อไร |
-|----------|--------|
-| `subskills/programmatic/SKILL.md` (`use-astgrep-programmatic`) | batch/programmatic ast-grep ผ่าน Bun scripts, napi bindings, integrate กับ review CLI |
+- `/search-by-astgrep` — ad-hoc AST search workflow (เลือก CLI หรือ programmatic ตามเหมาะสม)
+- `/use-astgrep-programmatic` — batch/programmatic ast-grep ผ่าน Bun scripts, napi bindings, integrate กับ review CLI
 
 ## Expected Outcome
 

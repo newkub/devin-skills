@@ -12,6 +12,9 @@ related:
   - check-backward-compatibility
   - use-astgrep
   - migration-by-astgrep
+  - check-code-structure
+  - check-function-quality
+  - check-single-responsibility
   - check-repo-hygiene
   - resolve-errors
   - dont-over-engineer
@@ -47,8 +50,9 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-7. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-code-structure` (file-level symbols/exports), `/check-single-responsibility` (SRP counts), `/check-function-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
+7. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
+8. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 

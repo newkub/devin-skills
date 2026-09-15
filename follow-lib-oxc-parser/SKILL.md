@@ -22,7 +22,7 @@ related:
 - หา call sites, unused exports, dependency graph
 - เดิน AST ด้วย visitor pattern
 
-เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
+เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
 - ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`); CLI ของ ecosystem คือ `oxlint` แยก package
 - Latest: `oxc-parser@0.149.0` (verified 2026-09-13)
@@ -105,7 +105,7 @@ visitor.visit(result.program);
 ### 3. เมื่อไหร่ใช้อะไร
 
 - `oxc-parser` → full AST, type info, traversal, module analysis
-- `/use-astgrep programmatic` → pattern rules (`kind`, `pattern`, `has`, `inside`) สำหรับ lint-style checks
+- `/use-astgrep-programmatic` → pattern rules (`kind`, `pattern`, `has`, `inside`) สำหรับ lint-style checks
 - `oxc-transform` → compile/transpile
 - Tree-sitter/Babel → เฉพาะเมื่อต้องการ API ที่เข้ากันได้กับ ecosystem เดิม
 

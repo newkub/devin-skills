@@ -12,6 +12,7 @@ related:
   - resolve-errors
   - report
   - run-test
+  - use-astgrep-programmatic
 ---
 
 ## Goal
@@ -93,6 +94,7 @@ related:
 3. กำหนด `reviewWorkflow` map ไปยัง review skills — ต้องครอบคลุม `review-*` ทุกตัวใน `deep-review/references/review-skills.md` (54 ตัว ยกเว้น `review-github-pr` ที่เป็น PR-scoped)
 4. metric หรือ review domain ใดที่ยังไม่มี analyzer → บันทึกเป็น analyzer gap (name + review skill + metric ที่ขาด) ใน Known Issues และ report
 5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียด
+6. ถ้าต้องเพิ่ม AST-based analyzer (structural patterns ที่ regex/git-grep ทำไม่ได้ เช่น function metrics, SRP counts, custom lint rules) → ทำ `/use-astgrep-programmatic` เพื่อ integrate `@ast-grep/napi` หรือ `ast-grep scan --json` เข้า `tools/analyze`/`tools/review-codebase` — findings ต้องมี file:line + rule id ตาม ### 4. Evidence-Based
 
 ### 8. Validate CLI
 

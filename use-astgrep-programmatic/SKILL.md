@@ -4,6 +4,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 argument-hint: "[scope]"
 related:
   - use-astgrep
+  - search-by-astgrep
   - update-project-rules
   - update-review-cli
   - use-bun-native-api
@@ -15,7 +16,7 @@ related:
 
 ## Goal
 
-ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI (merged from: `use-astgrep-programmatic` top-level skill)
+ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI (promoted จาก `use-astgrep` subskill กลับเป็น top-level skill)
 
 ## Scope
 
