@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - continue
   - idea
+  - idea-features
   - follow-your-suggestion
   - ship
   - ship-dont-ask-me
@@ -30,7 +31,7 @@ related:
 
 > Goal: รู้ state ปัจจุบันก่อนตัดสินใจ
 
-1. ตรวจสอบ todo list ปัจจุบัน (ถ้ามี)
+1. ตรวจสอบ todo list ปัจจุบัน (ถ้ามี) — ถ้ามี `[scope]` argument ให้จำกัดการตรวจ state เฉพาะ scope นั้น
 2. ตรวจสอบ open files, recent changes, git status
 3. ตรวจสอบข้อความล่าสุดของ user และ context
 4. ตรวจสอบว่า session นี้เคยใช้ `/ship-dont-ask-me` หรือ `/dont-ask-me` หรือไม่ — ถ้าเคย ให้คง `dont-ask-me` mode ไว้ในการตัดสินใจทุกขั้นตอนถัดไป (แทน `/ask-me` ด้วย `/follow-your-suggestion` + safe default)
@@ -39,6 +40,8 @@ related:
 ### 2. Determine Next Action
 
 > Goal: เลือก action ทีเหมาะสม
+
+เลือกตามลำดับข้อ 1-6 — ข้อแรกที่ match state ชนะ
 
 1. ถ้ามีงานค้างหรือ todos ยังไม่เสร็จ → ทำ `/continue`
 2. ถ้างานพร้อม ship และ validation ผ่าน → ทำ `/ship` แล้วตามด้วย `/suggest-next-action`; แต่ถ้า session นี้เคยใช้ `/ship-dont-ask-me` → ทำตาม `/ship-dont-ask-me` แทน `/ship`

@@ -22,11 +22,9 @@ related:
 
 | Topic | Skill |
 |-------|-------|
-| Web / Official Docs | `/learn-web` — เรียนรู้จากเว็บไซต์หลัก DeepWiki, Context7, Web Search |
-| CLI | `/learn-cli` — สำรวจ subcommands, options, output ของ CLI tool |
+| References / Web / CLI | `/learn-from-references` — เรียนรู้จาก `references/`, official docs (DeepWiki, Context7, Web Search) และ CLI discovery แล้วเขียน content ครอบคลุม |
 | Codebase | `/learn-codebase` — learning path และ concept map ของ codebase |
 | Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
-| References | `/learn-references` — เรียนรู้จาก `references/` และเขียน content ครอบคลุม |
 | Slides | `/learn-by-slide` — สร้าง Slidev presentation สรุปความรู้ |
 
 เรียก skill ตามตารางตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
@@ -54,11 +52,11 @@ related:
 4. ค้นหา examples และ tutorials
 5. ตรวจสอบ version compatibility กับ project
 
-### 3. Learn From Web
+### 3. Learn From Sources
 
-> Goal: Learn From Web
+> Goal: Learn From Sources
 
-ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก:
+ทำ `/learn-from-references` สำหรับเรียนรู้จาก references, เว็บไซต์หลัก และ CLI:
 
 1. ใช้ DeepWiki สำหรับ GitHub repositories
 2. ใช้ Context7 สำหรับ libraries และ frameworks
@@ -113,7 +111,7 @@ related:
 ### 2. Research Standards
 
 - ทำ `/deep-research` สำหรับค้นหาข้อมูลลึกจาก multiple sources
-- ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก
+- ทำ `/learn-from-references` สำหรับเรียนรู้จากเว็บไซต์หลัก
 - ตรวจสอบ credibility และ freshness ของข้อมูล
 - บันทึก code examples และ configuration examples
 

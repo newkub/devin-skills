@@ -24,7 +24,7 @@ Pin the Rust version for a project:
 
 ```toml
 [toolchain]
-channel = "1.98.0"
+channel = "1.98.1"
 components = ["rustfmt", "clippy"]
 targets = ["wasm32-unknown-unknown"]
 ```

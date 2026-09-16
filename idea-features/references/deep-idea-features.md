@@ -97,9 +97,9 @@
 > Goal: ทำตามคำสั่ง "ทำ"
 
 1. ถ้า user บอก "ทำ" → ทำ `/deep-review` ก่อน
-2. ทำ `/create-plan-in-dot-devin` จาก features ที่เลือก โดยใช้ `<topic>` เป้น title บันทึก `PLAN_PATH`
-3. จากนั้นทำ `/implement-to-production` ตาม `PLAN_PATH`
-4. หลัง `/implement-to-production` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/<workspace>/` และลบ `PLAN_PATH`
+2. ทำ `/deep-plan` จาก features ที่เลือก — แผนอยู่ในแชทเท่านั้น ไม่สร้าง plan file
+3. จากนั้นทำ `/implement-to-production` ตามแผนในแชท
+4. หลัง `/implement-to-production` เสร็จ ลบ report files ชั่วคราวใน OS temp (ถ้ามี)
 5. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็นต้อง → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
 
 ### 8. Cleanup
@@ -107,8 +107,8 @@
 > Goal: จัดการหลังใช้งาน
 
 1. ถ้า report ชั่วคราวยังคงอยู่ใน OS temp และไม่ต้องการเก็บ → ลบไฟล์ทันที
-2. ถ้า plan ยังคงอยู่ → ลบไฟล์ `.devin/plan/<workspace>/<title>-<date>-<time>-<session>.md`
-3. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files หรือ plan files ค้าง
+2. plan อยู่ในแชทเท่านั้น — ไม่มีไฟล์ให้ลบ
+3. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files ชั่วคราวค้าง
 
 ## Rules
 
@@ -122,13 +122,13 @@
 ### 2. Report And Plan Are Temporary
 
 - สร้าง report ชั่วคราวใน OS temp directory เท่านั้น
-- สร้าง plan ใน `.devin/plan/<workspace>/` ผ่าน `/create-plan-in-dot-devin`
-- ต้องลบ report files ใน OS temp และ plan files หลัง `/implement-to-production` เสร็จ หรือหลัง user ดู preview เสร็จ
-- ไม่เก็บ report หรือ plan ค้าง
+- แสดง plan ในแชทผ่าน `/deep-plan` เท่านั้น — ห้ามสร้าง plan file ใน `.devin/`
+- ต้องลบ report files ใน OS temp หลัง `/implement-to-production` เสร็จ หรือหลัง user ดู preview เสร็จ
+- ไม่เก็บ report ค้าง — plan อยู่ในแชทอยู่แล้ว
 
 ### 3. Implement Flow
 
-- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production`
+- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/deep-plan` (chat-only) แล้ว `/implement-to-production`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/implement-to-production`
 
@@ -147,7 +147,7 @@
 
 ### 5. Direct Execution
 
-- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production`
+- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/deep-plan` (chat-only) แล้ว `/implement-to-production`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/implement-to-production`
 
@@ -169,10 +169,9 @@
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
 - Report ชั่วคราวถูกสร้างใน OS temp (ถ้าต้องการ preview)
-- Report `/idea-features` ถูกสร้างใน `.devin/reports/<workspace>/` พร้อมรายละเอียดครบทุก feature
-- Plan ถูกสร้างใน `.devin/plan/<workspace>/` ก่อน implement
+- Plan แสดงในแชทผ่าน `/deep-plan` ก่อน implement — ไม่มี plan file
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
-- ไม่มี report หรือ plan files ค้างหลังเสร็จงาน
-- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production` แล้วลบ report files และ plan files
+- ไม่มี report files ค้างหลังเสร็จงาน — plan อยู่ในแชทอยู่แล้ว
+- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/deep-plan` (chat-only) แล้ว `/implement-to-production` แล้วลบ report files ชั่วคราว
 - ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ
 

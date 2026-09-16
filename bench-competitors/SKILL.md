@@ -3,7 +3,6 @@ name: bench-competitors
 description: ศึกษาคู่แข่งแล้ว implement-to-production จน project ดีกว่าทุกมิติ
 argument-hint: "[scope|report]"
 related:
-  - create-plan-in-dot-devin
   - create-report-in-dot-devin
   - compare-competitors-and-idea-features
   - deep-research
@@ -80,16 +79,15 @@ related:
 > Goal: วางแผนลึกด้วย deep-plan เพื่อปรับปรุงให้ดีกว่าคู่แข่ง
 
 1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
-2. ทำ `/deep-plan` เพื่อสร้าง roadmap ละเอียดครอบทุกมิติ — ระบุ per-dimension actions, dependencies, sequencing และ success metrics ที่เทียบกับคู่แข่งได้
-3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
-4. ระบุ priority: Critical, High, Medium, Nice-to-have
-5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
+2. ทำ `/deep-plan` เพื่อสร้าง roadmap ละเอียดครอบทุกมิติในแชท — ระบุ per-dimension actions, dependencies, sequencing และ success metrics ที่เทียบกับคู่แข่งได้ (chat-only — ไม่สร้าง plan file)
+3. ระบุ priority: Critical, High, Medium, Nice-to-have
+4. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
 
 ### 5. Implement To Production
 
 > Goal: implement-to-production ตาม plan จน production-ready ไม่เหลือ gap
 
-1. ทำ `/implement-to-production` ตาม `PLAN_PATH` — implement ทุก gap เป็น production code จริง end-to-end ไม่เหลือ TODO/MOCK/placeholder
+1. ทำ `/implement-to-production` ตาม roadmap ในแชทจาก Step 4 — implement ทุก gap เป็น production code จริง end-to-end ไม่เหลือ TODO/MOCK/placeholder
 2. ทำ `/run-check` หลัง implement แต่ละ batch เพื่อตรวจ lint, typecheck และ scan
 3. ทำ `/run-test-all` เพื่อ verify features ทำงานและไม่พังของเดิม
 4. ติดตามความคืบหน้าอย่างสม่ำเสมอ — ปิด gap ทีละรายการตาม priority Critical → Nice-to-have
@@ -150,14 +148,13 @@ related:
 - ไม่สรุปว่า project ด้อยกว่าถ้าไม่มีหลักฐาน
 - แยก `fact` (คู่แข่งมีจริง) ออกจาก `assumption` (คาดว่ามี)
 - ทุก gap ต้อง map เป็น feature ที่ implement ได้ — ไม่รายงาน gap ที่กว้างเกินไปโดยไม่แตกเป็น feature ย่อย
-- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-in-dot-devin` หรือ `/idea-features`
+- ผลลัพธ์ต้องพร้อมส่งต่อ `/deep-plan` (chat-only) หรือ `/idea-features`
 
 ### 5. Implementation Discipline
 
-- สร้าง deep plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement เสมอ
+- วาง deep plan ในแชทผ่าน `/deep-plan` ก่อน implement เสมอ — ห้ามสร้าง plan file ใน `.devin/`
 - implement ด้วย `/implement-to-production` เท่านั้น — ทุก gap ต้องเป็น production code จริง ไม่เหลือ TODO/MOCK
 - ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง — ไม่หยุดแค่ research หรือ plan
-- ลบ plan หลัง `/ship` เสร็จ
 - ติดตามความคืบหน้าอย่างสม่ำเสมอ
 - Re-benchmark หลังการปรับปรุงแต่ละครั้ง
 
@@ -171,7 +168,7 @@ related:
 ## Expected Outcome
 
 - Feature comparison matrix เทียบ project กับคู่แข่ง 3-5 ราย พร้อม prioritized gap list (impact + effort) และ unique features ที่ต้องรักษา
-- Deep plan roadmap ครอบทุกมิติใน `.devin/plan/<workspace>/` ถูกสร้างผ่าน `/create-plan-in-dot-devin` ก่อน implement และลบหลัง `/ship` เสร็จ
+- Deep plan roadmap ครอบทุกมิติแสดงในแชทก่อน implement (chat-only — ไม่มี plan file)
 - ทุก gap ถูก `/implement-to-production` เป็น production code จริง ไม่เหลือ TODO/MOCK
 - ไฟล์ report ใน `.devin/reports/<workspace>/` จาก `/create-report-in-dot-devin`
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ

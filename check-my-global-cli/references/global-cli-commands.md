@@ -65,6 +65,8 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `hyperfine` (1.20) | `hyperfine 'a' 'b'` | benchmark commands |
 | `sccache` (0.17) | `RUSTC_WRAPPER=sccache` | compile cache |
 | `bacon` (3.25) | `bacon` | Rust background checker |
+| `cargo-nextest` (0.9.143) | `cargo nextest run` | Rust parallel test runner |
+| `cargo-llvm-cov` (0.9.0) | `cargo llvm-cov` | Rust coverage reporting |
 | `cargo-sweep`/`cargo-clean-all`/`clean-dev-dirs`/`node_module-nuke`/`npkill`/`gleanup` | — | cleanup dev artifacts |
 | `uv` (0.12) | `uvx <pkg>`, `uv venv` | Python pkg/runner |
 | `pnpm`/`ni`/`bun` | `bun add`, `ni` | package managers |

@@ -12,5 +12,5 @@
 - ใช้ `cargo-nextest` สำหรับ parallel test execution
 - ใช้ `cargo-llvm-cov` สำหรับ coverage reporting
 - ใช้ Miri สำหรับ undefined behavior detection
-- ใช้ `taiki-e/install-action` สำหรับ install CI tools
+- ใช้ `taiki-e/install-action` สำหรับ install CI tools ใน GitHub Actions (local: `cargo install cargo-deny cargo-audit`)
 - ตรวจสอบ dependencies sorted

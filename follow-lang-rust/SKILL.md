@@ -1,5 +1,4 @@
 ---
-
 name: follow-lang-rust
 description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
 argument-hint: "[scope]"
@@ -8,6 +7,9 @@ related:
   - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
+  - follow-create-rust-cli
+  - follow-create-rust-crate
+  - follow-create-website-rust
 ---
 
 ## Goal
@@ -17,6 +19,8 @@ related:
 ## Scope
 
 ใช้สำหรับสร้างหรือปรับปรุง Rust projects ทั้ง single crate และ workspace
+
+ดู [references/rust-install.md](references/rust-install.md) สำหรับการติดตั้ง, [references/rust-cli.md](references/rust-cli.md) สำหรับ commands หลัก และ [references/website.md](references/website.md), [references/routes.md](references/routes.md) สำหรับ official docs
 
 ## Execute
 
@@ -60,15 +64,14 @@ related:
 
 > Goal: ตั้งค่า lints, security checks, และ test infrastructure
 
-1. รัน `/follow-tool-cargo` เพื่อตั้งค่า Cargo lint rules และ workspace lint inheritance
-2. รัน `/follow-tool-cargo` เพื่อตั้งค่า Clippy lint rules และ thresholds
-3. ตั้งค่า `forbid unsafe_code` ใน workspace
-4. ตั้งค่า `cargo-deny` สำหรับ security advisories
-5. ตั้งค่า rustdoc warnings เป็น errors
-6. ใช้ `cargo-nextest` สำหรับ parallel test execution ใน CI
-7. ใช้ `cargo-llvm-cov` สำหรับ coverage reporting ใน CI
-8. ใช้ Miri สำหรับตรวจสอบ undefined behavior ใน CI
-9. ดูรายละเอียดใน [references/rust-code-standards.md](references/rust-code-standards.md) และ [references/rust-security.md](references/rust-security.md)
+1. รัน `/follow-tool-cargo` เพื่อตั้งค่า Cargo lint rules, Clippy lints และ workspace lint inheritance
+2. ตั้งค่า `forbid unsafe_code` ใน workspace
+3. ตั้งค่า `cargo-deny` สำหรับ security advisories
+4. ตั้งค่า rustdoc warnings เป็น errors
+5. ใช้ `cargo-nextest` สำหรับ parallel test execution ใน CI
+6. ใช้ `cargo-llvm-cov` สำหรับ coverage reporting ใน CI
+7. ใช้ Miri สำหรับตรวจสอบ undefined behavior ใน CI
+8. ดูรายละเอียดใน [references/rust-code-standards.md](references/rust-code-standards.md) และ [references/rust-security.md](references/rust-security.md)
 
 ### 5. Verification
 

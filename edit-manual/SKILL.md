@@ -38,7 +38,7 @@ related:
 > Goal: อ่าน config file และ official docs ก่อนแก้เพื่อเข้าใจผลกระทบของการเปลี่ยนแปลง
 
 1. อ่าน config file ที่ต้องการแก้ไขให้เข้าใจโครงสร้างและ settings ปัจจุบัน
-2. ทำ `/learn-web` หรือ `/follow-best-practice` สำหรับ tool ที่ config เกี่ยวข้อง
+2. ทำ `/learn-from-references` หรือ `/follow-best-practice` สำหรับ tool ที่ config เกี่ยวข้อง
 3. ระบุว่าการเปลี่ยนแปลงนี้กระทบ workspace ใดบ้าง และต้อง sync ข้าม workspaces หรือไม่
 4. ตรวจสอบ version compatibility ของ dependencies ที่เกี่ยวข้องกับ config ที่จะแก้
 
@@ -96,7 +96,7 @@ related:
 ### 2. Understand Before Edit
 
 - อ่านและเข้าใจ config file ก่อนแก้ไขเสมอ
-- ทำ `/follow-best-practice` หรือ `/learn-web` สำหรับ tool ที่ไม่คุ้นเคย
+- ทำ `/follow-best-practice` หรือ `/learn-from-references` สำหรับ tool ที่ไม่คุ้นเคย
 - ตรวจสอบ official documentation ของ tool นั้นๆ ก่อนเปลี่ยน settings
 - ไม่เดาค่า config โดยไม่เข้าใจผลกระทบ — ถ้าไม่แน่ใจ → ถามผู้ใช้
 

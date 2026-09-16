@@ -29,7 +29,7 @@ related:
 1. อ่าน `package.json` — ถ้าไม่มี → stop report; ถ้ามี `arktype` แล้ว → skip ไป verify
 2. ยืนยัน TypeScript `>= 5.1` (`bunx tsc --version`)
 3. ยืนยัน `"type": "module"` หรือ runtime รองรับ ESM — ArkType ต้องการ ESM
-4. ถ้าไม่แน่ใจ requirement → ทำ `/learn-web` ดู official docs (arktype.io)
+4. ถ้าไม่แน่ใจ requirement → ทำ `/learn-from-references` ดู official docs (arktype.io)
 
 ### 2. Install
 

@@ -123,7 +123,7 @@ Major skill families by current count:
 - `merge-*` (4): `merge` dispatcher routes to `merge-all-branch-by-me-to-main`, `merge-git-branch`, `merge-github-pr` top-level skills.
 - `convert-*` (1→dispatcher): `convert` (`esm`, `files-format`, `git-submodules`, `scripts`, `svg`).
 - `delete-*` (6): `delete` dispatcher (generic safe file/folder delete) routes domain deletes to `delete-cicd-fails`, `delete-git-branch`, `delete-git-submodules`, `delete-git-worktree`, `delete-projects`.
-- `learn-*` (1→dispatcher): `learn` (`by-slide`, `cli`, `codebase`, `pattern`, `references`, `web`).
+- `learn-*` (1→dispatcher + 1 composite): `learn` (`by-slide`, `codebase`, `from-references`, `pattern`); `learn-from-references-and-update-devin-global-skills` = composite (learn → update global skills). `cli`, `web`, `references` merged into `learn-from-references`.
 - `git-commit-*` (1→dispatcher + 1 alias): `git-commit` (`and-push`, `at-devin-global-skills`, `no-verify`, `selected-files`); `git-commit-and-push` = top-level alias → `git-commit and-push`.
 - `watch-*` (6): browser watching + `watch-browser` dispatcher (`fix`, `improve-uxui`, `test`).
 

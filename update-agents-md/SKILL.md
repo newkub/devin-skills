@@ -48,7 +48,7 @@ related:
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
 3. map แต่ละ tech เป็น `tech: /follow-<tech>` ถ้ามี skill ตรง
-4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
+4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-references` หรือ `tech: none`
 5. อัปเดต `### Architecture` ใน root `AGENTS.md`
 
 ### 3. Define Platform And Target User
@@ -185,7 +185,7 @@ related:
 ### 4. Architecture Mapping
 
 - ระบุ tech stack ด้วย `tech: /follow-<tech>`
-- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
+- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-references` หรือ `tech: none`
 - map ตาม dependencies ใน manifest
 
 ### 5. Skills Mapping

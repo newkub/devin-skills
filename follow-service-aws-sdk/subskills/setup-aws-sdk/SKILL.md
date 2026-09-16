@@ -67,7 +67,7 @@ related:
 
 - ใช้ AWS SDK v3 เท่านั้น — ห้ามเพิ่ม `aws-sdk` v2
 - install เฉพาะ clients ที่ใช้จริง (modular)
-- ใช้ `/follow-best-practice` และ `/learn-web` ถ้าไม่แน่ใจ API — ดู official docs https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/
+- ใช้ `/follow-best-practice` และ `/learn-from-references` ถ้าไม่แน่ใจ API — ดู official docs https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/
 
 ## Expected Outcome
 

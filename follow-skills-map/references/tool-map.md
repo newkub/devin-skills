@@ -31,7 +31,7 @@
 | disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
 | copy-paste detection | `jscpd` | installed | `/review-quality` |
-| semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-web`, `/deep-research` |
+| semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-references`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors-and-idea-features` |
 | markdown lint | `rumdl` | installed | `/check-*` docs |
 | find projects | filesystem scan | — | `/search-project-in-drive-d` |
@@ -122,7 +122,7 @@
 |--------|------|---------|-------|
 | coding agents | `amp` / `codex` / `opencode` / `stakpak` | installed | `/use-subagents` |
 | skill installer | `skills` (npm) | installed | `/update-devin-global-skills` |
-| library docs | `ctx7` / Context7 MCP | installed | `/learn-web` |
+| library docs | `ctx7` / Context7 MCP | installed | `/learn-from-references` |
 | shell history | `atuin` | installed | — |
 | speech-to-text | `ostt` | installed | — |
 | share terminal | `ttyd` | installed | — |

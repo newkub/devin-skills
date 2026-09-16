@@ -41,7 +41,7 @@ Dispatch ไป skill ตาม search source — parent ทำ routing เท�
 ## Rules
 
 - parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- ถ้าต้อง research เชิงลึกหลังเจอ source → ต่อด้วย `/learn-web` หรือ `/deep-research`
+- ถ้าต้อง research เชิงลึกหลังเจอ source → ต่อด้วย `/learn-from-references` หรือ `/deep-research`
 
 - ใช้ /follow-tool-crw ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น

@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - report
   - create-report-in-dot-devin
-  - learn-references
+  - learn-from-references
 ---
 
 ## Goal

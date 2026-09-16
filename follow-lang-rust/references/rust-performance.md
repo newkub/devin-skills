@@ -5,7 +5,7 @@
 ปรับปรุง performance ด้วย zero-cost abstractions
 
 - ใช้ `criterion` สำหรับ benchmarking ใน `benches/`
-- ใช้ `cargo flamegraph` สำหรับ profiling
+- ใช้ `cargo flamegraph` สำหรับ profiling (ติดตั้งด้วย `cargo install flamegraph`)
 - หลีกเลี่ยง allocations ใน hot paths
 - ใช้ `&str` แทน `String` เมื่อไม่ต้องการ ownership
 - ใช้ `Cow<T>` สำหรับ conditional ownership

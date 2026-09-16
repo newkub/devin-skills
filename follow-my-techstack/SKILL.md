@@ -59,7 +59,7 @@ related:
 
 1. ติดตั้งด้วย `/run-install` ตาม package manager ของ project
 2. ถ้ามี skill `follow-lib-*` / `follow-tool-*` / `follow-service-*` สำหรับตัวที่เลือก → invoke skill นั้นเพื่อใช้ถูกวิธี (ห้ามเดา API)
-3. ถ้าไม่มี skill เฉพาะ → อ่าน official docs ผ่าน `/learn-web` หรือ context7
+3. ถ้าไม่มี skill เฉพาะ → อ่าน official docs ผ่าน `/learn-from-references` หรือ context7
 
 ## Rules
 

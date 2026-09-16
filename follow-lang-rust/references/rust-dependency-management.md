@@ -10,3 +10,4 @@
 - ใช้ `[workspace.dependencies]` สำหรับ shared dependency versions
 - ตรวจสอบ dependencies sorted ด้วย `cargo sort`
 - ใช้ `cargo outdated` สำหรับตรวจสอบ outdated dependencies
+- ติดตั้ง tools: `cargo install cargo-sort cargo-outdated`

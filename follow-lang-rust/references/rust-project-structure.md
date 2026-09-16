@@ -24,5 +24,5 @@
 - ตั้งค่า `[profile.release]` มี `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
 - ตั้งค่า `rust-toolchain.toml` สำหรับ lock Rust version
 - ตั้งค่า `rust-version` ใน workspace package
-- สร้าง `justfile` สำหรับ development scripts
+- สร้าง `justfile` สำหรับ development scripts (ติดตั้งด้วย `mise use -g just`)
 - ตั้งค่า sccache สำหรับ shared compilation cache

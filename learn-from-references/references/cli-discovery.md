@@ -1,0 +1,33 @@
+# CLI Discovery
+
+สำรวจ CLI tool ให้รู้ว่ามี subcommands, options, flags และ output อย่างไรก่อนใช้งาน
+
+## 1. Basic Discovery
+
+1. รัน `<cli> --version` เพื่อดู version
+2. รัน `<cli> --help` หรือ `<cli> -h`
+3. รัน `<cli> help <subcommand>` ถ้ามี subcommands
+4. รัน `<cli> <subcommand> --help` เพื่อดู options ของแต่ละ subcommand
+
+## 2. Machine-Readable Context
+
+ถ้า CLI รองรับ machine-readable metadata:
+
+1. รัน `<cli> agent-context` ถ้ามี
+2. รัน `<cli> completion` หรือ `<cli> --generate-bash-completion`
+3. บันทึก command list, flags และ argument types
+
+## 3. Document
+
+สรุปที่ได้:
+
+- command groups
+- ตัวอย่างการใช้งานพื้นฐาน
+- options/flags ที่ควรรู้
+- exit codes และ output format
+
+## Notes
+
+- ใช้ `/learn-pattern` ถ้าจำเป็น
+- ใช้ `/deep-test` cli ถ้าจำเป็น
+- ใช้ `/run-test` ถ้าจำเป็น
