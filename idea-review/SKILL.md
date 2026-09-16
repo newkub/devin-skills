@@ -73,6 +73,8 @@ related:
 ### 3. No Duplicate Review
 
 - ไม่ run review ซ้ำ — ใช้ findings ที่มี; ถ้าขาด coverage ให้แนะนำ review skill ที่ตรง
+- ใช้ `/review-gaps` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

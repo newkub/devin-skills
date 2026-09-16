@@ -123,6 +123,7 @@ rule:
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงาน matches เป็นตารางด้วย `/report` เมื่อผลเยอะ
 - ใช้ /check-code-structure ถ้าจำเป็น
+- ใช้ `/scan-codebase` ถ้าจำเป็น
 
 ## Expected Outcome
 

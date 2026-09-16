@@ -111,6 +111,7 @@ related:
 
 - ใช้ /check-all-routes ถ้าจำเป็น
 - ใช้ /check-release-notes ถ้าจำเป็น
+- ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ## Expected Outcome
 

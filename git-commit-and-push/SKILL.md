@@ -28,6 +28,12 @@ Skill นี้เป็น alias ของ `/git-commit and-push` — ใช้
 - ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical subskill `git-commit/subskills/and-push/SKILL.md` เท่านั้น
 - รักษา backward compatibility ของชื่อ alias
 - ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
+- ใช้ `/git-push` ถ้าจำเป็น
+- ใช้ `/resolve-cicd` ถ้าจำเป็น
+- ใช้ `/refactor-commit` ถ้าจำเป็น
+- ใช้ `/update-references` ถ้าจำเป็น
+- ใช้ `/follow-monorepo` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

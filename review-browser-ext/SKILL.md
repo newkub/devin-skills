@@ -108,6 +108,8 @@ Review browser extension (Chrome/Edge/Firefox/Safari) — manifest, permissions,
 4. storage: ย้าย sensitive data ออกจาก plaintext, ใช้ `chrome.storage.session` สำหรับ temp secrets
 5. perf: persist SW state, lazy-load content scripts, event-driven alarms
 6. verify: load unpacked + test บนทุก target browser, store lint (`web-ext lint`)
+- ใช้ `/review-performance` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

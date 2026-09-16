@@ -121,6 +121,9 @@ related:
 ### 4. Documentation
 
 - ใช้ `//!`, `#![warn(missing_docs)]`, `# Errors`/`# Panics`/`# Safety` sections
+- ใช้ `/follow-create-rust-cli` ถ้าจำเป็น
+- ใช้ `/follow-create-rust-crate` ถ้าจำเป็น
+- ใช้ `/follow-create-website-rust` ถ้าจำเป็น
 - ใช้ `RUSTDOCFLAGS`
 - ดู [references/rust-documentation.md](references/rust-documentation.md)
 

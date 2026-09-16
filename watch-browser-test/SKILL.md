@@ -141,6 +141,8 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 - fix-retest loop สูงสุด `3` รอบ — ถ้ายัง FAIL stop และ report
 - `timeout` = `900` วินาทีต่อ batch, `maxRetries` = `3` ต่อ agent crash
+- alias stub: `/watch-browser-and-test` — forward มาที่ skill นี้
+
 
 ## Expected Outcome
 

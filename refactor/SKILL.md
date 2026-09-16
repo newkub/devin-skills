@@ -7,7 +7,6 @@ related:
   - refactor-workspace
   - update-references
   - update-tests
-  - run-test
   - run-verify
   - check-backward-compatibility
   - use-astgrep
@@ -15,13 +14,10 @@ related:
   - check-code-structure
   - check-function-quality
   - check-single-responsibility
-  - check-repo-hygiene
   - resolve-errors
   - dont-over-engineer
   - use-lib-effective
   - follow-single-of-source
-  - ask-me
-  - suggest-next-action
 ---
 
 ## Goal

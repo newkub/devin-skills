@@ -95,6 +95,8 @@ related:
 - ใช้ /analyze-codebase-quality ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
+- ใช้ `/from-downloads-dir` ถ้าจำเป็น
+- ใช้ `/read-from-downloads` ถ้าจำเป็น
 
 ## Expected Outcome
 

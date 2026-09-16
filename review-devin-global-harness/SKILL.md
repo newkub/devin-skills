@@ -17,7 +17,6 @@ related:
   - check-correctness
   - review-coverage
   - update-references
-  - run-review
   - deep-review
 ---
 
@@ -175,6 +174,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -17,7 +17,6 @@ related:
   - capture
   - review-accessibility
   - improve-uxui
-  - deep-test
   - deep-review-then-fix
 ---
 

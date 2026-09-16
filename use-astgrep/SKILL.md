@@ -134,6 +134,8 @@ related:
 - ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-project-rules`
 
 - ใช้ /check-code-structure ถ้าจำเป็น
+- ใช้ `/check-function-quality` ถ้าจำเป็น
+- ใช้ `/check-single-responsibility` ถ้าจำเป็น
 
 ### Related Workflows
 

@@ -57,10 +57,10 @@ portless <name> --force <cmd>          # override route ที่ชนกัน
 
 > Goal: worktrees, custom TLD, LAN, sharing
 
-- **Git worktrees**: `portless run` ใน linked worktree → branch prefix อัตโนมัติ `https://<branch>.<app>.localhost` — main worktree ใช้ชื่อเปล่า
-- **Custom TLD**: `portless proxy start --tld test` → `https://myapp.test` (auto-sync `/etc/hosts`); repeat `--tld` ได้หลายตัว; ใช้ `.test` (IANA-reserved), หลีกเลี่ยง `.local` (mDNS ชน) และ `.dev` (HSTS)
-- **LAN mode**: `portless proxy start --lan` → เข้าจากมือถือใน WiFi เดียวกันผ่าน `.local` mDNS (macOS/Linux เท่านั้น); Next.js ต้องเพิ่ม `allowedDevOrigins` เอง
-- **Share**: `--tailscale`, `--funnel`, `--ngrok` flags บน run command
+- Git worktrees: `portless run` ใน linked worktree → branch prefix อัตโนมัติ `https://<branch>.<app>.localhost` — main worktree ใช้ชื่อเปล่า
+- Custom TLD: `portless proxy start --tld test` → `https://myapp.test` (auto-sync `/etc/hosts`); repeat `--tld` ได้หลายตัว; ใช้ `.test` (IANA-reserved), หลีกเลี่ยง `.local` (mDNS ชน) และ `.dev` (HSTS)
+- LAN mode: `portless proxy start --lan` → เข้าจากมือถือใน WiFi เดียวกันผ่าน `.local` mDNS (macOS/Linux เท่านั้น); Next.js ต้องเพิ่ม `allowedDevOrigins` เอง
+- Share: `--tailscale`, `--funnel`, `--ngrok` flags บน run command
 
 ### 5. Proxy Control And Cleanup
 
@@ -97,6 +97,9 @@ PORTLESS=0 pnpm dev                          # bypass proxy
 
 - LAN mode ไม่รองรับ Windows; `.localhost` resolve ได้ใน browsers สมัยใหม่โดยไม่ต้องแก้ hosts
 - `service install` ใช้ Task Scheduler (SYSTEM) บน Windows
+- ใช้ `/run-load-test` ถ้าจำเป็น
+- ใช้ `/check-my-global-cli` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

@@ -88,6 +88,7 @@ Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, sa
 - ใช้ /review-accessibility สำหรับ a11y deep-dive
 - ใช้ /review-performance สำหรับ perf deep-dive
 - ใช้ /follow-create-mobile (android) หรือ /follow-create-mobile (ios) เป็น platform guide ตอนแก้ conventions
+- ใช้ `/review-desktop-app` ถ้าจำเป็น
 
 ## Fix
 

@@ -26,6 +26,7 @@ Skill นี้ถูก merge เข้ากับ `/deep-plan` แล้ว �
 - รักษา backward compatibility ของชื่อ alias
 - ห้ามสร้างไฟล์ใน `.devin/tasks/` หรือ `.devin/plan/` — persist เฉพาะเมื่อ user สั่ง `/create-plan-in-dot-devin` เองโดยตรง
 - ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ `/ask-me` ถ้าจำเป็น
 
 ## Expected Outcome
 

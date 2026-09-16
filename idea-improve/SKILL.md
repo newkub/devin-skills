@@ -74,6 +74,8 @@ related:
 
 - skill นี้ generate ideas เท่านั้น — ไม่ run review, ไม่ fix
 - ถ้า user ต้องการ review-driven fixes โดยตรง → แนะนำ `/improve` แทน
+- ใช้ `/report-todo` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

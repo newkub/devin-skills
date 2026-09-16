@@ -104,6 +104,7 @@ Review production output ทั้งหมด — bundle size, build output, ch
 - [Full-dimension checklist](references/checklist.md)
 - [Assets checklist](references/assets-checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ `/scan-codebase` ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -67,6 +67,10 @@ bun run scripts/list-x-reposts.ts [username] [--limit 50]
 ### 3. Fallback
 
 - ถ้า X API ใช้ไม่ได้ (ไม่มี token/quota) → แนะนำ `/watch-browser` เปิด `x.com/newkrubx/reposts` เป็น fallback
+- ใช้ `/list-github-star` ถ้าจำเป็น
+- ใช้ `/list-raindrop-favorite` ถ้าจำเป็น
+- ใช้ `/search` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

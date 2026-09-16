@@ -117,6 +117,8 @@ bun skills/check-function-quality/scripts/check-function-quality.ts src --max-li
 - check เท่านั้น ไม่ refactor — การแก้ไขอยู่ใน `/refactor`
 - ไม่ซ้ำกับ `/check-code-structure` (file-level symbols/exports) — skill นี้ดู function internals
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks
+- ใช้ `/search-by-astgrep` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

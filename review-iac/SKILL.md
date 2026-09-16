@@ -45,7 +45,7 @@ Review infrastructure-as-code — Terraform, Pulumi, CDK, Helm, K8s manifests �
 
 1. provider/module versions pinned (`required_providers`, lock file `.terraform.lock.hcl` committed)
 2. plan drift detection — CI มี `plan` on PR, `apply` ต้อง approve
-3. no `count = 0`/commented-out resources ที่ทำให้ state ไม่ตรง
+3. no `count = 0` หรือ commented-out resources ที่ทำให้ state ไม่ตรง
 4. mutable patterns — `latest` tags, unpinned AMIs, `master` branches
 
 ### 4. Check K8s/Helm Manifests
@@ -86,6 +86,7 @@ Review infrastructure-as-code — Terraform, Pulumi, CDK, Helm, K8s manifests �
 - ทุก finding มี evidence — file path + resource/module name (ห้ามเดา)
 - security findings ที่เป็น app-level (auth, injection) → `/review-security`; cost estimation deep-dive → `/review-cost`
 - ใช้ `/use-subagents` ถ้า multi-stack/multi-env
+- ใช้ `/review-compliance` ถ้าจำเป็น
 
 ## Fix
 

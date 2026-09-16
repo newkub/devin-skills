@@ -78,6 +78,9 @@ related:
 - code เป็น source of truth — ห้ามเขียน API/commands ที่ไม่มีใน code (ยกเว้น user ระบุเป็น planned feature และ mark ชัด)
 - ไม่ commit/push โดยอัตโนมัติ
 - `<workspace>` ใน filename = ชื่อ directory/package จริงของ workspace
+- ใช้ `/update-docs` ถ้าจำเป็น
+- ใช้ `/report-usage` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

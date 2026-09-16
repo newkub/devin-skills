@@ -128,6 +128,7 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 - [Full-dimension checklist](references/checklist.md) และ [rules checklist](references/rules-checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ `/review-quality` ถ้าจำเป็น
 
 ## Expected Outcome
 

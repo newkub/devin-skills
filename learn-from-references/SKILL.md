@@ -124,6 +124,10 @@ related:
 - ไม่ทำลาย references หรือ content เดิม
 - ถ้ามีการ overwrite ไฟล์เดิม → user confirmation ก่อน
 - ถ้า reference จำเป็นไม่มี → stop และ report
+- ใช้ `/deep-research` ถ้าจำเป็น
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/report-uxui-all-routes` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

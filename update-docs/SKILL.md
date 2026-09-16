@@ -179,6 +179,7 @@ related:
 - ใช้ /check-content-outdate ถ้าจำเป็น
 - ใช้ /check-correctness ถ้าจำเป็น
 - ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 
 ## Expected Outcome

@@ -66,6 +66,14 @@ related:
 - reference ≠ copy — derived location เก็บแค่ pointer หรือ generated content
 - ถ้าต้อง duplicate จริง (เช่น performance/embedding) → ต้องมี drift check หรือ sync note
 - แก้ที่ canonical เสมอ ห้ามแก้ที่ derived copy โดยตรง
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/update-devin-global-skills` ถ้าจำเป็น
+- ใช้ `/new-skills` ถ้าจำเป็น
+- ใช้ `/idea-merge` ถ้าจำเป็น
+- ใช้ `/refactor` ถ้าจำเป็น
+- ใช้ `/review-devin-global-harness` ถ้าจำเป็น
+- ใช้ `/follow-config` ถ้าจำเป็น
+
 
 ## Expected Outcome
 

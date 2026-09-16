@@ -99,6 +99,7 @@ related:
 - ไม่จำกัดเฉพาะ files หรือ skills — รองรับทุก artifact ตาม context
 - ระบุประเภทของ target และ source ในแต่ละไอเดีย
 - ใช้ `/ask-me` ถ้า target ไม่ชัด
+- ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ### 2. Evidence-Based
 

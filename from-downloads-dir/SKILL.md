@@ -95,6 +95,8 @@ related:
 - ใช้ /from-screenshots-dir ถ้าจำเป็น
 - ใช้ /read-from-downloads ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
+- ใช้ `/capture` ถ้าจำเป็น
+- ใช้ `/analyze-codebase-quality` ถ้าจำเป็น
 
 ## Expected Outcome
 
