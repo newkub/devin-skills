@@ -13,6 +13,7 @@ related:
   - migration-by-astgrep
   - check-code-structure
   - check-function-quality
+  - check-long-files
   - check-single-responsibility
   - resolve-errors
   - dont-over-engineer
@@ -46,7 +47,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-code-structure` (file-level symbols/exports), `/check-single-responsibility` (SRP counts), `/check-function-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
+6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/check-single-responsibility` (SRP counts), `/check-function-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
 8. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
@@ -131,7 +132,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - หนึ่ง function ทำหนึ่ง operation
 - หนึ่ง file ครอบคลุมหนึ่ง concern
-- ไฟล์ไม่เกิน 250 บรรทัด ยกเว้น barrel/index ที่จำเป็น
+- ไฟล์ไม่เกิน 250 บรรทัด ยกเว้น barrel/index ที่จำเป็น — ตรวจด้วย `/check-long-files` (Rust CLI, default threshold 250)
 - รักษา naming, patterns, structure สอดคล้องกันทั้ง scope
 - หนึ่ง fact มี canonical source เดียว — เจอ constants/config/logic ที่ duplicate → extract ไป source เดียวตาม `/follow-single-of-source`
 

@@ -51,7 +51,7 @@ related:
    - ย้าย shared dependencies ไป `pnpm-workspace.yaml` catalogs หรือ `catalog:` field
    - ใช้ `package.json` แบบ `catalog:` แทน version numbers
    - สร้าง root `tsconfig.base.json` ให้ทุก package `extends`
-   - สร้าง root `.eslintrc` / `eslint.config.js` และ `prettier.config.js`
+   - สร้าง root `eslint.config.js` (flat config — `.eslintrc` ถูก remove ใน ESLint 10) และ `prettier.config.js`
 3. ถ้า monorepo ใช้ bun workspace:
    - ตรวจ `bun-workspace.toml` หรือ `package.json` `workspaces`
    - ใช้ `bun.catalogs` (ถ้ามี) หรือ root `package.json` `overrides`
@@ -90,9 +90,9 @@ related:
    - ให้ workspace `tsconfig.json` extends `tsconfig.base.json`
    - ตรวจ `compilerOptions` ไม่ conflict ระหว่าง workspaces
 2. ESLint:
-   - รวมเป็น `eslint.config.js` / `eslint.config.mjs` หรือ root `.eslintrc`
+   - รวมเป็น `eslint.config.js` / `eslint.config.mjs` (flat config — migrate `.eslintrc` ด้วย `bunx @eslint/migrate-config`)
    - ใช้ shared config package ถ้าเหมาะสม
-   - ลบ `.eslintrc.*` ที่ซ้ำซ้อน
+   - ลบ `.eslintrc.*` ที่ซ้ำซ้อน (legacy format ถูก remove ใน ESLint 10)
 3. Prettier:
    - รวมเป็น root `prettier.config.*` หรือ `.prettierrc`
    - อ้างอิงใน `package.json#prettier`

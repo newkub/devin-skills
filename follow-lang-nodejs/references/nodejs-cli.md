@@ -24,7 +24,7 @@ npm run <script>              # Run script
 
 ```bash
 npx prettier .
-npx create-react-app my-app
+npx create-next-app@latest my-app   # CRA deprecated — ใช้ Vite (`npm create vite@latest`) หรือ framework scaffolder
 ```
 
 ## pnpm
