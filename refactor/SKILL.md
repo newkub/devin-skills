@@ -10,7 +10,6 @@ related:
   - run-verify
   - check-backward-compatibility
   - use-astgrep
-  - migration-by-astgrep
   - check-code-structure
   - check-function-quality
   - check-long-files

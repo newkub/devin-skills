@@ -4,7 +4,6 @@ description: ใช้ three.js (3D WebGL/WebGPU) — renderer, addons, framewor
 argument-hint: "[target-or-scope]"
 related:
   - follow-lib-solidjs
-  - follow-lib-react
   - run-verify
   - run-test
 ---
@@ -50,7 +49,7 @@ related:
 1. `renderer.setAnimationLoop(fn)` — ไม่ใช้ `requestAnimationFrame` เอง (รองรับ XR)
 2. `renderer.setPixelRatio(Math.min(devicePixelRatio, 2))` — cap DPR กัน mobile burn
 3. Resize → `ResizeObserver` บน container แล้ว `camera.aspect` + `renderer.setSize` (ไม่ใช้ window resize)
-4. ใช้ `colorSpace`/tone mapping: `renderer.toneMapping = THREE.ACESFilmicToneMapping` เมื่อต้องการ look สมัยใหม่
+4. ใช้ `colorSpace` + tone mapping: `renderer.toneMapping = THREE.ACESFilmicToneMapping` เมื่อต้องการ look สมัยใหม่
 
 ### 4. Performance
 

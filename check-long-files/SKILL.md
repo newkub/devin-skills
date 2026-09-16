@@ -4,7 +4,6 @@ description: ตรวจสอบและรายงานไฟล์ที�
 argument-hint: "[threshold]"
 related:
   - refactor
-  - refactor-workspace
   - check-function-quality
   - check-code-structure
 ---
