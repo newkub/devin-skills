@@ -18,7 +18,7 @@ related:
 
 - ใช้ skill นี้สำหรับ vanilla three.js และ framework bindings — integration เชิงลึกกับ SolidJS ให้ทำ `/follow-lib-solidjs` ร่วม
 - 2D canvas/SVG ที่ไม่ต้องการ GPU → พิจารณา `follow-lib-animejs` หรือ Canvas2D แทน
-- npm package `three` versioned เป็น `0.1xx.x` ตรงกับ release `rXXX` — latest `0.185.x` (r185, verified 2026-09-16)
+- npm package `three` versioned เป็น `0.1xx.x` ตรงกับ release `rXXX` — latest `0.186.x` (r186, verified 2026-09-17)
 - References: threejs.org/manual | threejs.org/docs | github.com/mrdoob/three.js/wiki/Migration-Guide
 
 ## Execute
@@ -29,7 +29,7 @@ related:
 
 1. ติดตั้ง `bun add three` + `bun add -d @types/three`
 2. WebGL (default, compat กว้าง): `import * as THREE from "three"` + `new THREE.WebGLRenderer({ antialias: true })`
-3. WebGPU (modern, TSL shaders): `import * as THREE from "three/webgpu"` + `new WebGPURenderer()` — ใช้ `three/tsl` สำหรับ node materials
+3. WebGPU (modern, TSL shaders): `import * as THREE from "three/webgpu"` + `new THREE.WebGPURenderer()` — ใช้ `three/tsl` สำหรับ node materials
 4. Addons เสมอผ่าน `three/addons/...` (map ไป `examples/jsm`) เช่น `three/addons/controls/OrbitControls.js`, `three/addons/loaders/GLTFLoader.js`, `three/addons/libs/stats.js`
 5. อย่า import `three/examples/jsm/...` ตรงๆ — ใช้ `three/addons` alias เสมอ
 
@@ -57,7 +57,7 @@ related:
 
 1. Dispose ครบใน cleanup: `geometry.dispose()`, `material.dispose()`, `texture.dispose()`, `renderer.dispose()` + `scene.traverse` เก็บ orphan
 2. Instancing สำหรับ object ซ้ำ — `InstancedMesh` ไม่ใช่ clone loop
-3. `frustumCulled` default เปิดอยู่ — อย่าปิดมั่ว; ใช้ `Bvh`/LOD สำหรับ scene ใหญ่
+3. `frustumCulled` default เปิดอยู่ — อย่าปิดมั่ว; ใช้ `three-mesh-bvh` (`bun add three-mesh-bvh`) หรือ LOD สำหรับ scene ใหญ่
 4. Asset: GLTF/GLB + `DRACOLoader`/`MeshoptDecoder` สำหรับ compression; KTX2 textures ผ่าน `KTX2Loader`
 5. Profile ด้วย `stats.js` addon หรือ `renderer.info` (drawcalls, triangles)
 
