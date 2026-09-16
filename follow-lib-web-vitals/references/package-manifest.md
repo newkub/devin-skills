@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `web-vitals` |
 | Registry | `npm` |
-| Latest Version | `6.2.1` |
+| Latest Version | `6.2.2` |
 | Release Date | `2026-08-26` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Philip Walton (Google Chrome)` |
@@ -33,4 +33,4 @@ bun add web-vitals
 ## Notes
 
 - Breaking changes in latest major: v6 uses `on*` callbacks only (`get*` removed), explicit `import type` for types, soft-navigation support; `onFID` removed since v5 (INP replaced FID since v3)
-- Version pinned in SKILL.md: `web-vitals@6.2.1`
+- Version pinned in SKILL.md: `web-vitals@6.2.2`

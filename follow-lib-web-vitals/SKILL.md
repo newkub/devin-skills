@@ -20,7 +20,7 @@ related:
 - ใช้ skill นี้สำหรับ field data (real-user metrics) — lab tools (Lighthouse) และ profiling ใช้ `/run-profiler` หรือ `/check-bottlenecks` แทน
 - Thresholds: LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 ถือว่า good
 
-- Latest: `web-vitals@6.2.1` (verified 2026-09-13)
+- Latest: `web-vitals@6.2.2` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

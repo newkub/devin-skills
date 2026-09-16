@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `fast-check` |
 | Registry | `npm` |
-| Latest Version | `4.10.0` |
+| Latest Version | `4.10.1` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Nicolas DUBIEN` |
@@ -34,4 +34,4 @@ bun add -D fast-check
 ## Notes
 
 - Breaking changes in latest major: `v4 requires Node >=12.17 / ES2020, drops deprecated arbitraries (unicode*, ascii*, char, uuidV, .noBias, .noShrink), includes invalid dates and null-prototype objects by default`
-- Version pinned in SKILL.md: `fast-check@4.10.0`
+- Version pinned in SKILL.md: `fast-check@4.10.1`

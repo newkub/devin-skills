@@ -22,7 +22,7 @@ related:
 - ถ้าต้องการแค่ WebAuthn/passkey โดยไม่ใช้ auth framework → ใช้ `/follow-lib-simplewebauthn` แทน
 - ถ้าต้อง review auth design/security ของ code ที่มีอยู่ → ใช้ `/review-auth`
 
-- Latest: `better-auth@1.7.4` (verified 2026-09-13)
+- Latest: `better-auth@1.7.5` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md) | [better-auth](references/better-auth.md) | [manifest](references/package-manifest.md)
 
 ## Execute
@@ -39,7 +39,7 @@ related:
 > Goal: ติดตั้ง Better Auth และ database adapter
 
 1. รัน `bun add better-auth` (หรือ `pnpm add better-auth` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-13)
+2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-16)
 3. ติดตั้ง database adapter ถ้าไม่ใช้ built-in Kysely (เช่น `@better-auth/prisma-adapter`, `@better-auth/drizzle-adapter`)
 4. ตั้งค่า environment variables `BETTER_AUTH_SECRET` และ `BETTER_AUTH_URL`
 5. ใช้ `bunx auth@latest init` สำหรับ scaffold Next.js project (optional)

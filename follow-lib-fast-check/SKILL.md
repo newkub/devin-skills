@@ -18,7 +18,7 @@ related:
 
 - ใช้ skill นี้สำหรับ property-based testing เท่านั้น — unit tests ทั่วไปทำ `/run-test` หรือ `/follow-tool-vitest`
 - `fast-check` เป็น test library — ติดตั้งเป็น devDependency และไม่มี standalone CLI (run ผ่าน test runner)
-- Latest: `fast-check@4.10.0` (verified 2026-09-13) — v4 ต้อง Node ≥12.17 / ES2020 และ drop deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) พร้อม include invalid dates และ null-prototype objects โดย default
+- Latest: `fast-check@4.10.1` (verified 2026-09-16) — v4 ต้อง Node ≥12.17 / ES2020 และ drop deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) พร้อม include invalid dates และ null-prototype objects โดย default
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

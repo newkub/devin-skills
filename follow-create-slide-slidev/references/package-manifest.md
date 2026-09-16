@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@slidev/cli` |
 | Registry | `npm` |
-| Latest Version | `52.19.1` |
+| Latest Version | `53.0.0` |
 | Release Date | `2026-08-19` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `Anthony Fu / Slidev contributors` |
@@ -36,4 +36,4 @@ bun create slidev@latest {project-name}
 ## Notes
 
 - Breaking changes in latest major: `mdc` headmatter renamed to `comark` since v52.14 — use `comark: true`
-- Version pinned in SKILL.md: `@slidev/cli@52.19.1`
+- Version pinned in SKILL.md: `@slidev/cli@53.0.0`

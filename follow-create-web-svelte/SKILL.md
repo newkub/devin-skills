@@ -19,7 +19,7 @@ related:
 ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
 หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode ของ skill นี้ — ดู [references/sveltekit-ssr.md](references/sveltekit-ssr.md)
 
-- Latest: `svelte@5.57.0`, `@sveltejs/kit@2.70.3`, `@sveltejs/vite-plugin-svelte@7.3.0`, `sv@0.17.0` (verified 2026-09-12)
+- Latest: `svelte@5.57.0`, `@sveltejs/kit@2.70.3`, `@sveltejs/vite-plugin-svelte@7.3.0`, `sv@0.17.0` (verified 2026-09-16)
 
 ## Execute
 
@@ -32,7 +32,7 @@ related:
 3. ตั้งค่า `tsconfig.json` ด้วย `moduleResolution: bundler`
 4. เพิ่ม scripts ใน `package.json` (dev, build, preview)
 5. ตั้งค่า server port และ build options
-6. ใช้ Svelte 5.57+ (latest `5.57.0`, verified 2026-09-12)
+6. ใช้ Svelte 5.57.0+ (latest `5.57.0`, verified 2026-09-16)
 
 ### 2. Configure TypeScript
 

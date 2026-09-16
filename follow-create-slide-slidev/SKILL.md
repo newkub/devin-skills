@@ -25,7 +25,7 @@ related:
 - Newkub slides: ใช้ `D:/newkub/slides` ที่มี single `package.json` ที่ root — แต่ละ project มีแค่ `slides.md` ไม่ต้องสร้าง `package.json` ใหม่
 - ถ้าต้องการ flow เฉพาะ `D:/newkub/slides` → ใช้ `/create-slide-in-newkub-slides`
 
-- Latest: `@slidev/cli@52.19.1` (verified 2026-09-12) — `mdc` headmatter renamed เป็น `comark` ตั้งแต่ v52.14
+- Latest: `@slidev/cli@53.0.0` (verified 2026-09-16) — `mdc` headmatter renamed เป็น `comark` ตั้งแต่ v52.14
 
 ## Execute
 

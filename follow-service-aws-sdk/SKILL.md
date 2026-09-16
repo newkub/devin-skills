@@ -35,7 +35,7 @@ related:
 
 > Goal: ติดตั้ง AWS SDK และกำหนดค่า credentials
 
-Latest: `@aws-sdk/client-s3@3.1131.0` (verified 2026-09-12) — ใช้ AWS SDK v3 (modular) เท่านั้น, `aws-sdk` v2 ถูก deprecated
+Latest: `@aws-sdk/client-s3@3.1133.0` (verified 2026-09-16) — ใช้ AWS SDK v3 (modular) เท่านั้น, `aws-sdk` v2 ถูก deprecated
 
 1. Install SDK ด้วย `bun add @aws-sdk/client-s3` สำหรับ service ที่ต้องการ
 2. Configure credentials ด้วย IAM roles สำหรับ production หรือ environment variables สำหรับ development

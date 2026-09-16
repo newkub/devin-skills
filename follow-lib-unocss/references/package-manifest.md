@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `unocss` |
 | Registry | `npm` |
-| Latest Version | `66.10.2` |
+| Latest Version | `66.10.4` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Anthony Fu (antfu)` |
@@ -28,16 +28,16 @@ bun add -D unocss
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@unocss/preset-wind4` | `npm` | `66.10.2` | Default Tailwind-Wind4 preset; released 2026-09-11 |
-| `@unocss/postcss` | `npm` | `66.10.2` | PostCSS plugin for Next.js integration |
-| `@unocss/nuxt` | `npm` | `66.10.2` | Nuxt module |
-| `@unocss/astro` | `npm` | `66.10.2` | Astro integration |
-| `@unocss/cli` | `npm` | `66.10.2` | Standalone CLI (`unocss --watch`) |
-| `@unocss/runtime` | `npm` | `66.10.2` | CDN/browser runtime |
-| `@unocss/reset` | `npm` | `66.10.2` | Optional CSS resets (prefer `preflights.reset` in presetWind4) |
+| `@unocss/preset-wind4` | `npm` | `66.10.4` | Default Tailwind-Wind4 preset; released 2026-09-11 |
+| `@unocss/postcss` | `npm` | `66.10.4` | PostCSS plugin for Next.js integration |
+| `@unocss/nuxt` | `npm` | `66.10.4` | Nuxt module |
+| `@unocss/astro` | `npm` | `66.10.4` | Astro integration |
+| `@unocss/cli` | `npm` | `66.10.4` | Standalone CLI (`unocss --watch`) |
+| `@unocss/runtime` | `npm` | `66.10.4` | CDN/browser runtime |
+| `@unocss/reset` | `npm` | `66.10.4` | Optional CSS resets (prefer `preflights.reset` in presetWind4) |
 | `@iconify-json/mdi` | `npm` | `1.2.3` | Iconify collection for `presetIcons`; released 2025-01-20 |
 
 ## Notes
 
 - Breaking changes in latest major: presetWind4 theme keys renamed vs wind3 (`font`, `radius`, `shadow`, `breakpoint`, `ease`, `property`, `spacing`) — see SKILL.md migration section
-- Version pinned in SKILL.md: `unocss@66.10.2`
+- Version pinned in SKILL.md: `unocss@66.10.4`

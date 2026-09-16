@@ -25,7 +25,7 @@ related:
 เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
 - ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`); CLI ของ ecosystem คือ `oxlint` แยก package
-- Latest: `oxc-parser@0.149.0` (verified 2026-09-13)
+- Latest: `oxc-parser@0.150.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

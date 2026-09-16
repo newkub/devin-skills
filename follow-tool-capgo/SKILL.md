@@ -18,7 +18,7 @@ related:
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (tool capgo)
 
 - Boundary: Capgo ทำ OTA update เฉพาะ web assets ของ Capacitor app — native code changes ต้อง release ผ่าน App Store/Play Store เสมอ; สำหรับเว็บ release ทั่วไปดู `/follow-tool-changesets` หรือ `/follow-tool-changelogen`
-- Latest: `@capgo/capacitor-updater@8.51.15` / `@capgo/cli@8.51.0` (verified 2026-09-13)
+- Latest: `@capgo/capacitor-updater@8.51.16` / `@capgo/cli@8.51.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

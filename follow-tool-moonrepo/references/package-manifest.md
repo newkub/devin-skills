@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@moonrepo/cli` |
 | Registry | `npm` |
-| Latest Version | `2.5.4` |
+| Latest Version | `2.5.5` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `moonrepo` |
@@ -28,9 +28,9 @@ bun add -D @moonrepo/cli   # or project package manager; global: mise use -g moo
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `moon` | `GitHub Releases` (`moonrepo/moon`) | `2.5.4` (2026-09-03) | Standalone binary install (`moonrepo.dev/install/moon.sh|ps1`, proto, mise) |
+| `moon` | `GitHub Releases` (`moonrepo/moon`) | `2.5.5` (2026-09-16) | Standalone binary install (`moonrepo.dev/install/moon.sh|ps1`, proto, mise) |
 
 ## Notes
 
 - Breaking changes in latest major: `none observed`
-- Version pinned in SKILL.md: `moon --version` → `2.5.4`
+- Version pinned in SKILL.md: `moon --version` → `2.5.5`

@@ -28,7 +28,7 @@ bun add openai zod
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `zod` | `npm` | `4.6.4` | Used with `zodResponseFormat` for structured output |
+| `zod` | `npm` | `4.6.5` | Used with `zodResponseFormat` for structured output |
 
 ## Notes
 

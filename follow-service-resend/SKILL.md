@@ -29,7 +29,7 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-Latest: `resend@6.28.0` (verified 2026-09-12) — install ด้วย `bun add resend`
+Latest: `resend@6.28.1` (verified 2026-09-16) — install ด้วย `bun add resend`
 
 1. สร้าง `new Resend(apiKey)` — apiKey จาก env `RESEND_API_KEY`
 1. ส่งด้วย `resend.emails.send({from,to,subject,html/react})` — verify domain ก่อน production

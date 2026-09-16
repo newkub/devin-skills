@@ -20,7 +20,7 @@ related:
 ใช้ `follow-tool-aube` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 - Boundary: Aube เป็น Node.js package manager (install/run/update deps) — ใช้แทน `npm`/`pnpm`/`yarn`/`bun install` เมื่อ project เลือก Aube; สำหรับ setup Bun runtime ดู `/use-bun-native-api`, สำหรับงาน CI ดู `/setup-cicd`
-- Latest: `aube@2.2.15` (GitHub `aubepkg/aube`) / npm `@endevco/aube@2.2.4` (verified 2026-09-13)
+- Latest: `aube@2.2.17` (GitHub `aubepkg/aube`, crates.io `aube`) / npm `@endevco/aube@2.2.4` (npm dist-tag lags) (verified 2026-09-16)
 - References: [aube](references/aube.md) | [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

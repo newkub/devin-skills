@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `release-it` |
 | Registry | `npm` |
-| Latest Version | `21.0.2` |
+| Latest Version | `21.0.3` |
 | Release Date | `2026-08-09` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Lars Kappert` (webpro) |
@@ -35,5 +35,5 @@ bun add -D release-it
 ## Notes
 
 - Breaking changes in latest major: `v21 requires Node.js ^22.21.0 || >=24.0.0; CLI parsing is strict (unknown options/args rejected); GitLab server certificates verified by default`
-- Version pinned in SKILL.md: `release-it@21.0.2`
+- Version pinned in SKILL.md: `release-it@21.0.3`
 - Source: `https://registry.npmjs.org/release-it`

@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `vitest` |
 | Registry | `npm` |
-| Latest Version | `5.0.0` |
+| Latest Version | `5.0.1` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `VoidZero / vitest-dev` |
@@ -28,10 +28,10 @@ bun add -D vitest @vitest/coverage-v8
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@vitest/coverage-v8` | `npm` | `5.0.0` | V8 coverage provider — version must match vitest |
-| `@vitest/browser-playwright` | `npm` | `5.0.0` | Stable browser-mode provider (replaces @vitest/browser) |
+| `@vitest/coverage-v8` | `npm` | `5.0.1` | V8 coverage provider — version must match vitest |
+| `@vitest/browser-playwright` | `npm` | `5.0.1` | Stable browser-mode provider (replaces @vitest/browser) |
 
 ## Notes
 
 - Breaking changes in latest major: `v5 — clearMocks defaults true; test.sequential removed; vi.mock/vi.hoisted must be top-level; extends in projects defaults true with sharedViteServer; artifacts under .vitest/ — see SKILL.md §6`
-- Version pinned in SKILL.md: `5.0.0` — requires Vite >= 6.4.0 and Node >= 22.12.0; @effect/vitest peer needs vitest ^3.2.0 (pin vitest@^3.2 there)
+- Version pinned in SKILL.md: `5.0.1` — requires Vite >= 6.4.0 and Node >= 22.12.0; @effect/vitest peer needs vitest ^3.2.0 (pin vitest@^3.2 there)

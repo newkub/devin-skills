@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@anthropic-ai/claude-agent-sdk` |
 | Registry | `npm` |
-| Latest Version | `0.3.269` |
+| Latest Version | `0.3.273` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | Anthropic |
@@ -33,4 +33,4 @@ bun add @anthropic-ai/claude-agent-sdk
 ## Notes
 
 - Breaking changes in latest major: still `0.x` — API surface may change between minor releases; entry point is `query()`
-- Version pinned in SKILL.md: `0.3.269`
+- Version pinned in SKILL.md: `0.3.273`

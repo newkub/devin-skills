@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@tanstack/solid-start` |
 | Registry | `npm` |
-| Latest Version | `1.168.50` |
+| Latest Version | `1.168.52` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | TanStack (Tanner Linsley) |
@@ -29,7 +29,7 @@ bun i -D vite vite-plugin-solid typescript @types/node
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@tanstack/solid-router` | `npm` | `1.170.33` (2026-09-10) | Type-safe routing — required peer of Start |
+| `@tanstack/solid-router` | `npm` | `1.170.34` (2026-09-10) | Type-safe routing — required peer of Start |
 | `solid-js` | `npm` | `1.9.15` (2026-08-17) | UI framework — Start requires `solid-js >=1.0.0` |
 | `vite` | `npm` | `8.3.0` (2026-09-10) | Build tool — Start requires `vite >=7.0.0` |
 | `vite-plugin-solid` | `npm` | `unknown` | Solid JSX transform — `ssr: true`, must come after `tanstackStart()` |
@@ -41,5 +41,5 @@ bun i -D vite vite-plugin-solid typescript @types/node
 ## Notes
 
 - Breaking changes in latest major: TanStack Start reached 1.x stable; server functions use `createServerFn` + `.validator()` + `.handler()`; `src/server.ts` is a reserved filename for custom server entries
-- Version pinned in SKILL.md: `@tanstack/solid-start@1.168.50`, `@tanstack/solid-router@1.170.33` — both match latest as of 2026-09-12
+- Version pinned in SKILL.md: `@tanstack/solid-start@1.168.52`, `@tanstack/solid-router@1.170.34` — both match latest as of 2026-09-12
 - Maturity rule: `DB`, `Store`, `Pacer`, `AI` are 0.x/RC — no adoption without justification

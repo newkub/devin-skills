@@ -28,12 +28,12 @@ bun add cac
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `clap` | `crates.io` | `4.6.6` (2026-08-06) | Rust CLI framework — used by `/follow-create-rust-cli` |
+| `clap` | `crates.io` | `4.6.7` (2026-08-06) | Rust CLI framework — used by `/follow-create-rust-cli` |
 | `commander` | `npm` | `15.0.0` (2026-05-29) | Alternative TS arg parser |
 | `clipanion` | `npm` | `4.0.0-rc.4` (2024-09-06) | Alternative TS arg parser (RC) |
 
 ## Notes
 
 - Breaking changes in latest major: `cac` v7 is ESM-only and requires Node >=20.19 / Bun; `cli.on` renamed to `cli.addEventListener`.
-- Version pinned in SKILL.md: `cac@7.0.0`, `clap@4.6.6`, `commander@15.0.0`, `clipanion@4.0.0-rc.4`
+- Version pinned in SKILL.md: `cac@7.0.0`, `clap@4.6.7`, `commander@15.0.0`, `clipanion@4.0.0-rc.4`
 - This skill is a dispatcher — it delegates implementation to `/follow-create-bun-cli` or `/follow-create-rust-cli`; primary package depends on the chosen stack.

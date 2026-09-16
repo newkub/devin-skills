@@ -20,7 +20,7 @@ related:
 
 ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
-- Latest: `nuxt@4.5.2`, `@nuxt/ui@4.11.1` (verified 2026-09-12)
+- Latest: `nuxt@4.5.2`, `@nuxt/ui@4.11.1` (verified 2026-09-16)
 
 ## Execute
 
@@ -30,7 +30,7 @@ related:
 
 1. ระบุ project location ใน monorepo เช่น `apps/web/`
 2. ใช้ Nuxt 4.x (Nuxt 3 EOL July 2026 — ใช้ Nuxt 4 เท่านั้นสำหรับ projects ใหม่)
-   - Scaffold project ใหม่ด้วย `bunx nuxi@latest init <project-name>` (`nuxi@3.37.0`, verified 2026-09-12)
+   - Scaffold project ใหม่ด้วย `bunx nuxi@latest init <project-name>` (`nuxi@3.37.0`, verified 2026-09-16)
 3. กำหนด Rendering Mode: SSR, SSG, CSR, หรือ Hybrid
 4. ตัดสินใจใช้ Database หรือไม่ (เช่น Drizzle ORM)
 5. เลือก UI Framework: UnoCSS, Tailwind, หรืออื่นๆ

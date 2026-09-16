@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `better-auth` |
 | Registry | `npm` |
-| Latest Version | `1.7.4` |
+| Latest Version | `1.7.5` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `bekacru (Better Auth team)` |
@@ -28,11 +28,11 @@ bun add better-auth
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@better-auth/prisma-adapter` | `npm` | `1.7.4` | Optional — Prisma database adapter |
-| `@better-auth/drizzle-adapter` | `npm` | `1.7.4` | Optional — Drizzle database adapter |
+| `@better-auth/prisma-adapter` | `npm` | `1.7.5` | Optional — Prisma database adapter |
+| `@better-auth/drizzle-adapter` | `npm` | `1.7.5` | Optional — Drizzle database adapter |
 | `@better-auth/cli` | `npm` | `1.4.21` | Optional — standalone CLI (skill uses `bunx auth@latest` for init/generate/migrate) |
 
 ## Notes
 
 - Breaking changes in latest major: `v1.7 has breaking changes for OAuth, MCP, SCIM — read migration guide before upgrading`
-- Version pinned in SKILL.md: `better-auth@1.7.4`
+- Version pinned in SKILL.md: `better-auth@1.7.5`

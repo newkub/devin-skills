@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ project ที่ติดตั้ง `loc` แล้ว ครอบคลุมการนับ lines, กรองไฟล์, และวิเคราะห์ขนาดไฟล์
 
-- Latest: `loc@0.5.0` (crates.io, verified 2026-09-13) — release ล่าสุดปี 2018 (tool นิ่งแล้ว; author แนะนำ `scc` เองใน README); ถ้าต้องการ maintained alternative พิจารณา `tokei` หรือ `scc`
+- Latest: `loc@0.6.1` (crates.io, verified 2026-09-16) — release ล่าสุดปี 2018 (tool นิ่งแล้ว; author แนะนำ `scc` เองใน README); ถ้าต้องการ maintained alternative พิจารณา `tokei` หรือ `scc`
 - References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute

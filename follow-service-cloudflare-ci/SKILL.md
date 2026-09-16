@@ -38,7 +38,7 @@ related:
 
 > Goal: ติดตั้ง `@cloudflare/ci` สำหรับ Workers runtime
 
-Latest: `@cloudflare/ci@0.1.0` (verified 2026-09-12) — ยังเป็น 0.x preview API อาจเปลี่ยน
+Latest: `@cloudflare/ci@0.2.0` (verified 2026-09-16) — ยังเป็น 0.x preview API อาจเปลี่ยน
 
 1. รัน `bun add -D @cloudflare/ci` หรือ `npm add -D @cloudflare/ci`
 2. ตรวจสอบว่า `wrangler` version >= 4.68 เพื่อรองรับ `events` field

@@ -37,7 +37,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 > Goal: ติดตั้งและ authenticate Vercel CLI
 
-Latest: `vercel@59.16.0` CLI, `@vercel/node` builder (verified 2026-09-12)
+Latest: `vercel@59.18.0` CLI, `@vercel/node` builder (verified 2026-09-16)
 
 1. รัน `bun add -D vercel`
 2. หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง

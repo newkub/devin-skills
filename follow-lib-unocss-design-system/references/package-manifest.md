@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `unocss` |
 | Registry | `npm` |
-| Latest Version | `66.10.2` |
+| Latest Version | `66.10.4` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Anthony Fu (antfu)` |
@@ -28,9 +28,9 @@ bun add -D unocss @unocss/preset-wind4
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@unocss/preset-wind4` | `npm` | `66.10.2` | Theme engine customized by this skill (`theme`, `extendTheme`, `dark` option) |
+| `@unocss/preset-wind4` | `npm` | `66.10.4` | Theme engine customized by this skill (`theme`, `extendTheme`, `dark` option) |
 
 ## Notes
 
 - Breaking changes in latest major: this skill only customizes theme — install/setup is covered by `/follow-lib-unocss`; wind4 theme keys differ from wind3
-- Version pinned in SKILL.md: `unocss@66.10.2`
+- Version pinned in SKILL.md: `unocss@66.10.4`

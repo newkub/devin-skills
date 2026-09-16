@@ -27,7 +27,7 @@ related:
 - ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
 - ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
 
-- Latest: `release-it@21.0.2` (verified 2026-09-13) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
+- Latest: `release-it@21.0.3` (verified 2026-09-16) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
 
 ## Execute
 

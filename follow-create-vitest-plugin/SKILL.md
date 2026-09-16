@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างและใช้งาน Vitest plugins ตาม Plugin API มาตรฐาน
 
-- Latest: `vitest@5.0.0` (verified 2026-09-12) — ต้องการ Vite >= 6.4.0 และ Node.js >= 22.12.0
+- Latest: `vitest@5.0.1` (verified 2026-09-16) — ต้องการ Vite >= 6.4.0 และ Node.js >= 22.12.0
 
 ## Execute
 

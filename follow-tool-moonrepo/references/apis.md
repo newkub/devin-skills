@@ -8,7 +8,7 @@ bun add -D @moonrepo/cli
 
 ## Version
 
-- Latest: 2.5.4 (verified 2026-09-13)
+- Latest: 2.5.5 (verified 2026-09-16)
 - [Package Registry](https://www.npmjs.com/package/@moonrepo/cli)
 - [Repository](https://github.com/moonrepo/moon)
 

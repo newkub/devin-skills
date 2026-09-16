@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `zod` |
 | Registry | `npm` |
-| Latest Version | `4.6.4` |
+| Latest Version | `4.6.5` |
 | Release Date | `2026-09-13` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Colin McDonnell (colinhacks)` |
@@ -36,5 +36,5 @@ bun add zod
 ## Notes
 
 - Breaking changes in latest major: `zod v4 — use error param instead of message/invalid_type_error; see SKILL.md rules`
-- Version pinned in SKILL.md: `4.6.4` (updated from 4.6.2 on 2026-09-13)
+- Version pinned in SKILL.md: `4.6.5` (updated from 4.6.2 on 2026-09-13)
 - Skill covers a validator category; `zod` is the recommended default for TypeScript — other ecosystems: `validator`/`garde` (Rust), `pydantic` (Python), `go-playground/validator` (Go)

@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@cloudflare/ci` |
 | Registry | `npm` |
-| Latest Version | `0.1.0` |
+| Latest Version | `0.2.0` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | Cloudflare |
@@ -34,4 +34,4 @@ bun add -D @cloudflare/ci
 ## Notes
 
 - Breaking changes in latest major: `0.x` preview — API may change; requires `nodejs_compat` flag and Cloudflare Workflows + Artifacts
-- Version pinned in SKILL.md: `0.1.0`
+- Version pinned in SKILL.md: `0.2.0`

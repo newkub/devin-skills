@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `vercel` (Vercel CLI) |
 | Registry | `npm` |
-| Latest Version | `59.16.0` |
+| Latest Version | `59.18.0` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | Vercel |
@@ -33,4 +33,4 @@ bun add -D vercel
 ## Notes
 
 - Breaking changes in latest major: CLI moves fast; `vercel deploy --prod` and `vercel env` flows unchanged; `@vercel/node` major 13 aligns with current build runtime
-- Version pinned in SKILL.md: `vercel@59.16.0`
+- Version pinned in SKILL.md: `vercel@59.18.0`

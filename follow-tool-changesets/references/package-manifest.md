@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@changesets/cli` |
 | Registry | `npm` |
-| Latest Version | `3.0.2` |
+| Latest Version | `3.0.3` |
 | Release Date | `2026-09-04` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `changesets` |
@@ -34,4 +34,4 @@ bun add -D @changesets/cli && bunx changeset init
 ## Notes
 
 - Breaking changes in latest major: `v3 — requires \`changesets/action@v2\` (inputs renamed to \`version-script\`/\`publish-script\`); CLI v2 pairs with action@v1`
-- Version pinned in SKILL.md: `3.0.2`
+- Version pinned in SKILL.md: `3.0.3`

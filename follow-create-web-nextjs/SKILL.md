@@ -20,7 +20,7 @@ related:
 
 จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.3, Cache Components และ TypeScript
 
-- Latest: `next@16.3.5` / `react@19.3.0` (verified 2026-09-12)
+- Latest: `next@16.3.5` / `react@19.3.0` (verified 2026-09-16)
 
 ## Execute
 

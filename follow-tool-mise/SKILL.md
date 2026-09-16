@@ -17,7 +17,7 @@ related:
 ใช้สำหรับ project ที่ต้องการ pin tool versions, load environment variables, และ define tasks ในไฟล์เดียว (`mise.toml`)
 
 - ใช้ skill นี้เมื่อต้องจัดการ dev tool versions/env/tasks — ถ้างานคือ monorepo task orchestration ให้ใช้ `/follow-tool-moonrepo` หรือ `/follow-tool-turborepo` แทน
-- Latest: `mise@2026.9.6` (CalVer, verified 2026-09-13)
+- Latest: `mise@2026.9.9` (CalVer, verified 2026-09-16)
 
 ## Execute
 

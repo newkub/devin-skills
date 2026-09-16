@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `jscpd` |
 | Registry | `npm` |
-| Latest Version | `5.2.0` |
+| Latest Version | `5.2.1` |
 | Release Date | `2026-09-08` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Andrii Kucherenko` |
@@ -33,4 +33,4 @@ bun add -D jscpd   # or run ad-hoc: bunx jscpd .
 ## Notes
 
 - Breaking changes in latest major: `v5.2+ adds type-2 clone detection (\`--ignore-identifiers\`/\`--ignore-literals\`/\`--ignore-annotations\`), near-miss merge (\`--max-gap-lines\`), and function-level similarity (\`--similarity\`, JS/TS only)`
-- Version pinned in SKILL.md: `5.2.0`
+- Version pinned in SKILL.md: `5.2.1`

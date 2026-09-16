@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `loc` |
 | Registry | `crates.io` |
-| Latest Version | `0.5.0` |
+| Latest Version | `0.6.1` |
 | Release Date | `2018-08-23` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `cgag` (Curtis Gagliardi) |
@@ -35,5 +35,5 @@ cargo install loc
 ## Notes
 
 - Breaking changes in latest major: `none — last release 2018, tool is dormant/stable`
-- Version pinned in SKILL.md: `loc@0.5.0`
+- Version pinned in SKILL.md: `loc@0.6.1`
 - Source: `https://crates.io/api/v1/crates/loc`

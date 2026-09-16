@@ -29,11 +29,11 @@ bun add @modelcontextprotocol/sdk
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `rmcp` | `crates.io` | `3.3.0` (2026-09-10) | official Rust SDK (modelcontextprotocol/rust-sdk), Apache-2.0 — skill default stack |
+| `rmcp` | `crates.io` | `3.4.0` (2026-09-10) | official Rust SDK (modelcontextprotocol/rust-sdk), Apache-2.0 — skill default stack |
 | `@modelcontextprotocol/inspector` | `npm` | `unknown` | official inspector CLI for testing (`npx @modelcontextprotocol/inspector`) |
 | `zod` | `npm` | `unknown` | input schema validation for TS tools |
 
 ## Notes
 
 - Breaking changes in latest major: `SDK 1.x — @modelcontextprotocol/server is legacy, replaced by @modelcontextprotocol/sdk; Streamable HTTP replaces SSE for new remote servers`
-- Version pinned in SKILL.md: `@modelcontextprotocol/sdk@1.30.0`, `rmcp@3.3.0` (verified 2026-09-12)
+- Version pinned in SKILL.md: `@modelcontextprotocol/sdk@1.30.0`, `rmcp@3.4.0` (verified 2026-09-16)

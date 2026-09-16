@@ -38,7 +38,7 @@ related:
 
 ดูเพิ่มเติม: `/review-dependencies`, `/follow-lang-rust`, `/follow-lang-typescript`
 
-- Latest: `@modelcontextprotocol/sdk@1.30.0` (TS), `rmcp@3.3.0` (Rust) (verified 2026-09-12)
+- Latest: `@modelcontextprotocol/sdk@1.30.0` (TS), `rmcp@3.4.0` (Rust) (verified 2026-09-16)
 
 ## Execute
 
@@ -65,7 +65,7 @@ related:
 > Goal: สร้าง scaffold ตาม stack ที่เลือก
 
 1. ถ้าเลือก Rust → สร้าง Rust project ด้วย `cargo new` แล้วเพิ่ม `rmcp` หรือ `rust-mcp-sdk` เป็น dependency ตามตัวอย่างใน `references/mcp-stacks.md` ถ้ามี
-2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-12 — `@modelcontextprotocol/server` เป็น package เก่าที่ถูกแทนด้วย `sdk`)
+2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-16 — `@modelcontextprotocol/server` เป็น package เก่าที่ถูกแทนด้วย `sdk`)
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
 5. ทำ `/review-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน

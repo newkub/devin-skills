@@ -23,7 +23,7 @@ related:
 - ใช้ skill นี้เพื่อ inspect dependency graph, duplicates, sizes และ publish metadata ของ `node_modules`
 - ถ้าเป้าหมายคือหา unused dependencies/exports ใน source code → ใช้ `/follow-tool-knip` แทน
 
-- Latest: `node-modules-inspector@2.5.0` (verified 2026-09-13)
+- Latest: `node-modules-inspector@2.6.2` (verified 2026-09-16)
 
 ## Execute
 

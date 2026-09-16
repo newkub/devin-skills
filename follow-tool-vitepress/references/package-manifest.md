@@ -28,7 +28,7 @@ bun add -D vitepress
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `unocss` | `npm` | `66.10.2` | Atomic CSS integration (`presetWind4`, `presetIcons`) |
+| `unocss` | `npm` | `66.10.4` | Atomic CSS integration (`presetWind4`, `presetIcons`) |
 | `@shikijs/vitepress-twoslash` | `npm` | `4.4.3` | Type-hover code blocks |
 | `vitepress-plugin-group-icons` | `npm` | `1.7.6` | Icon groups for code/file trees |
 

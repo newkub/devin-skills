@@ -21,7 +21,7 @@ related:
 ใช้สำหรับพัฒนา React 19.2+ applications ด้วย Vite หรือ Next.js, TypeScript และ folder structure มาตรฐาน
 
 - ไม่มี CLI ของตัวเอง — ใช้ผ่าน bundler/framework (Vite, Next.js) (จึงไม่มี `references/cli.md`)
-- Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-13)
+- Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [react](references/react.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

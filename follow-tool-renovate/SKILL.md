@@ -24,7 +24,7 @@ related:
 - Renovate ทำ dependency update PRs เท่านั้น — ไม่ทำ version bump หรือ publish; สำหรับ release ใช้ `follow-tool-release-it` หรือ `follow-tool-semantic-release`
 - ถ้าใช้ Mend-hosted Renovate GitHub App อยู่แล้ว ไม่ต้อง self-hosted workflow — skill นี้ครอบคลุม self-hosted ผ่าน `renovatebot/github-action`
 
-- Latest: `renovate@44.82.5` (npm; ต้องใช้ Node.js `^24.11.0`) / `renovatebot/github-action@v46.3.0` (verified 2026-09-13)
+- Latest: `renovate@44.93.5` (npm; ต้องใช้ Node.js `^24.11.0`) / `renovatebot/github-action@v46.3.0` (verified 2026-09-16)
 
 ## Execute
 

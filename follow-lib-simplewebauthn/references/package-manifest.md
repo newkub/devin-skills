@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@simplewebauthn/server` |
 | Registry | `npm` |
-| Latest Version | `14.0.1` |
+| Latest Version | `14.0.2` |
 | Release Date | `2026-09-05` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Matthew Miller (MasterKale)` |
@@ -33,4 +33,4 @@ bun add @simplewebauthn/server @simplewebauthn/browser
 ## Notes
 
 - Breaking changes in latest major: `@simplewebauthn/types` retired since v13 — import types from `server`/`browser` directly; v11+ browser methods take a single options object
-- Version pinned in SKILL.md: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0`
+- Version pinned in SKILL.md: `@simplewebauthn/server@14.0.2` / `@simplewebauthn/browser@14.0.0`

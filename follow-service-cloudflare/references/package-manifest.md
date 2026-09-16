@@ -28,10 +28,10 @@ bun add -D wrangler
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@cloudflare/workers-types` | `npm` | `5.20260911.1` | TypeScript types for Workers runtime |
+| `@cloudflare/workers-types` | `npm` | `5.20260916.1` | TypeScript types for Workers runtime |
 | `create-cloudflare` | `npm` | `unknown` | Scaffolding CLI behind `npm create cloudflare@latest` |
 
 ## Notes
 
 - Breaking changes in latest major: Wrangler 4.x requires `wrangler.jsonc`/`toml` config conventions and `compatibility_date`; `events` field needs >= 4.68; `wrangler deploy` can auto-detect frameworks without a config file
-- Version pinned in SKILL.md: `wrangler@4.131.1`, `@cloudflare/workers-types@5.20260911.1`
+- Version pinned in SKILL.md: `wrangler@4.132.0`, `@cloudflare/workers-types@5.20260916.1`

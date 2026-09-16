@@ -32,7 +32,7 @@ bunx create-video@latest --yes --blank my-video
 | `create-video` | `npm` | `4.0.524` | Project scaffolder (`bunx create-video`) |
 | `@remotion/zod-types` | `npm` | `4.0.524` | Zod-powered prop schemas (`zColor`, etc.) |
 | `@remotion/media` | `npm` | `4.0.524` | `<Video>` component for large media |
-| `zod` | `npm` | `4.6.4` | Prop schema validation |
+| `zod` | `npm` | `4.6.5` | Prop schema validation |
 
 ## Notes
 

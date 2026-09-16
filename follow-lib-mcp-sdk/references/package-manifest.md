@@ -28,7 +28,7 @@ bun add @modelcontextprotocol/sdk zod
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `zod` | `npm` | `4.6.4` | Schema validation for tool inputs |
+| `zod` | `npm` | `4.6.5` | Schema validation for tool inputs |
 | `@modelcontextprotocol/inspector` | `npm` | `2.6.0` | Testing/debugging CLI (`bunx @modelcontextprotocol/inspector`) |
 
 ## Notes

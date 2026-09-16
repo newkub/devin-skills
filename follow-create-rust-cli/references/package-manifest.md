@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `clap` |
 | Registry | `crates.io` |
-| Latest Version | `4.6.6` |
+| Latest Version | `4.6.7` |
 | Release Date | `2026-08-06` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `clap-rs contributors` |
@@ -39,4 +39,4 @@ cargo add clap --features derive
 ## Notes
 
 - Breaking changes in latest major: clap 4.x — derive API (`clap::Parser`, `clap::Subcommand`), builder API renamed from clap 3 (`App` → `Command`)
-- Version pinned in SKILL.md: `clap@4.6.6`, `color-eyre@0.6.5`, `cargo-dist@0.32.0`, Rust `1.98.1`
+- Version pinned in SKILL.md: `clap@4.6.7`, `color-eyre@0.6.5`, `cargo-dist@0.32.0`, Rust `1.98.1`

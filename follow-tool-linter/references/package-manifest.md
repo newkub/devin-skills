@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `oxlint` |
 | Registry | `npm` |
-| Latest Version | `1.82.0` |
+| Latest Version | `1.83.0` |
 | Release Date | `2026-09-07` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `oxc-project` |
@@ -38,5 +38,5 @@ bun add -D oxlint   # add oxlint-tsgolint for type-aware rules
 ## Notes
 
 - Breaking changes in latest major: `oxlint 1.x stable — check https://github.com/oxc-project/oxc/releases per minor`
-- Version pinned in SKILL.md: `oxlint@1.82.0`, `biome@2.5.13`, `eslint@10.10.0`, `ruff@0.16.7`, `golangci-lint@2.13.2`
+- Version pinned in SKILL.md: `oxlint@1.83.0`, `biome@2.5.13`, `eslint@10.10.0`, `ruff@0.16.7`, `golangci-lint@2.13.2`
 - Skill is linter-agnostic — select per tech stack (step 1)

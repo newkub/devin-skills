@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `node-modules-inspector` |
 | Registry | `npm` |
-| Latest Version | `2.5.0` |
+| Latest Version | `2.6.2` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Anthony Fu` (antfu) |
@@ -33,5 +33,5 @@ bunx node-modules-inspector
 ## Notes
 
 - Breaking changes in latest major: `v2 changed static build output dir to dist/__node-modules-inspector and added report subcommands + MCP server`
-- Version pinned in SKILL.md: `node-modules-inspector@2.5.0`
+- Version pinned in SKILL.md: `node-modules-inspector@2.6.2`
 - Source: `https://registry.npmjs.org/node-modules-inspector`

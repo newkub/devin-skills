@@ -33,5 +33,5 @@ mise use -g aube   # or: cargo install aube --locked / brew install jdx/tap/aube
 ## Notes
 
 - Breaking changes in latest major: `none known (2.x stable)`
-- Version pinned in SKILL.md: `aube@2.2.15` / `@endevco/aube@2.2.4`
+- Version pinned in SKILL.md: `aube@2.2.17` / `@endevco/aube@2.2.4`
 - GitHub releases ship as `vX.Y.Z`; crates.io `aube` and GitHub `aubepkg/aube` are the canonical latest sources

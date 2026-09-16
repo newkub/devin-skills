@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับสร้าง VSCode extension ทั่วไป รองรับทั้ง official `yo generator-code`, `reactive-vscode`, และ manual setup
 
-- Latest: VS Code `1.137.0` / `generator-code@1.12.0` / `@vscode/vsce@3.9.2` (verified 2026-09-12) — `vsce` ถูก rename เป็น `@vscode/vsce`
+- Latest: VS Code `1.137.0` / `generator-code@1.12.0` / `@vscode/vsce@4.0.0` (verified 2026-09-16) — `vsce` ถูก rename เป็น `@vscode/vsce`
 
 ## Execute
 
@@ -46,7 +46,7 @@ related:
 > Goal: กำหนด `package.json` ตาม VSCode schema
 
 1. ระบุ `name`, `displayName`, `description`, `version`, `publisher`
-2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.0, verified 2026-09-12)
+2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.0, verified 2026-09-16)
 3. ระบุ `categories`, `keywords`, `activationEvents`, `main`
 4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
 5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`

@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@orpc/server` |
 | Registry | `npm` |
-| Latest Version | `1.15.0` |
+| Latest Version | `1.15.1` |
 | Release Date | `2026-08-08` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `unnoq (oRPC)` |
@@ -28,13 +28,13 @@ bun add @orpc/server @orpc/client
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `@orpc/client` | `npm` | `1.15.0` | Type-safe client (`RPCLink`, `safe()`, `isDefinedError`) |
-| `@orpc/openapi` | `npm` | `1.15.0` | OpenAPI/REST handler + docs |
-| `@orpc/tanstack-query` | `npm` | `1.15.0` | TanStack Query integration utils |
-| `@orpc/contract` | `npm` | `1.15.0` | Contract-first API definitions |
-| `zod` | `npm` | `4.6.4` | Schema validation for inputs/outputs |
+| `@orpc/client` | `npm` | `1.15.1` | Type-safe client (`RPCLink`, `safe()`, `isDefinedError`) |
+| `@orpc/openapi` | `npm` | `1.15.1` | OpenAPI/REST handler + docs |
+| `@orpc/tanstack-query` | `npm` | `1.15.1` | TanStack Query integration utils |
+| `@orpc/contract` | `npm` | `1.15.1` | Contract-first API definitions |
+| `zod` | `npm` | `4.6.5` | Schema validation for inputs/outputs |
 
 ## Notes
 
 - Breaking changes in latest major: `v2 beta (2.0.0-beta.35) — route/prefix/tag → meta(openapi(...)), isDefinedError → isInferableError, safe() returns [error, data, inferableError], eventIterator → asyncIteratorObject`
-- Version pinned in SKILL.md: `@orpc/server@1.15.0` / `@orpc/client@1.15.0`
+- Version pinned in SKILL.md: `@orpc/server@1.15.1` / `@orpc/client@1.15.1`

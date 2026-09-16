@@ -15,7 +15,7 @@ related:
 
 ใช้สำหรับสร้าง Raycast Extensions บน macOS ด้วย TypeScript, React และ Raycast API
 
-- Latest: `@raycast/api@2.3.1` / `@raycast/utils@2.3.1` (verified 2026-09-12) — extensions รันบน Node 22 + React 19
+- Latest: `@raycast/api@2.4.1` / `@raycast/utils@2.3.1` (verified 2026-09-16) — extensions รันบน Node 22 + React 19
 
 ## Execute
 

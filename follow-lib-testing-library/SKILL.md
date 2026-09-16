@@ -21,7 +21,7 @@ related:
 - Test runner config (Vitest options, coverage, CI) → `/follow-tool-vitest`
 - Browser e2e tests (real navigation, multi-page flows) → `/follow-tool-playwright` — Testing Library ไม่ใช่ e2e tool
 
-- Latest: `@testing-library/dom@10.4.1` / `react@16.3.3` / `jest-dom@7.0.1` / `user-event@14.6.7` / `vue@8.1.0` (verified 2026-09-13)
+- Latest: `@testing-library/dom@10.4.2` / `react@16.3.3` / `jest-dom@7.0.1` / `user-event@14.6.7` / `vue@8.1.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

@@ -24,7 +24,7 @@ related:
 ตั้งค่า Changesets สำหรับ monorepos และ workspaces
 
 - Boundary: Changesets ใช้ changeset files (`.changeset/*.md`) สำหรับ multi-package versioning + release PR flow — เหมาะกับ monorepo; สำหรับ single-package changelog จาก conventional commits ใช้ `/follow-tool-changelogen`; สำหรับ PR-label releases ดู `/follow-tool-auto-it`; alternatives: `/follow-tool-release-it`, `/follow-tool-semantic-release`
-- Latest: `@changesets/cli@3.0.2` (verified 2026-09-13) — `changesets/action@v2` (v2.1.1), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
+- Latest: `@changesets/cli@3.0.3` (verified 2026-09-16) — `changesets/action@v2` (v2.1.1), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
 - References: [apis](references/apis.md) | [changesets](references/changesets.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

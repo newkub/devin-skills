@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับตรวจจับและวิเคราะห์ code duplication — ไม่ครอบคลุมการ refactor เอง (ดู `/refactor`)
 
-- Latest: `jscpd@5.2.0` (verified 2026-09-13)
+- Latest: `jscpd@5.2.1` (verified 2026-09-16)
 - References: [cli](references/cli.md) | [jscpd](references/jscpd.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute

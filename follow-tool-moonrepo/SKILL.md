@@ -53,7 +53,7 @@ related:
    - macOS/Linux/WSL: `bash <(curl -fsSL https://moonrepo.dev/install/moon.sh)`
    - proto: `proto install moon`
    - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
-2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.4`, verified 2026-09-13)
+2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.5`, verified 2026-09-16)
 3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (default ใช้ `bun add -D @moonrepo/cli`)
 4. ดูรายละเอียดเพิ่มเติมใน [references/moonrepo.md](references/moonrepo.md)
 

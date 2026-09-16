@@ -1,6 +1,6 @@
 # moon ci Reference
 
-> CI-optimized pipeline command — runs affected tasks with `runInCI` enabled (moon v2.5.4, verified 2026-09-13)
+> CI-optimized pipeline command — runs affected tasks with `runInCI` enabled (moon v2.5.5, verified 2026-09-16)
 
 ## What `moon ci` Does
 

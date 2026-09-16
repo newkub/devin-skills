@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@testing-library/dom` |
 | Registry | `npm` |
-| Latest Version | `10.4.1` |
+| Latest Version | `10.4.2` |
 | Release Date | `2025-07-27` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Kent C. Dodds (Testing Library)` |
@@ -36,4 +36,4 @@ bun add -D @testing-library/dom @testing-library/user-event @testing-library/jes
 ## Notes
 
 - Breaking changes in latest major: `@testing-library/react@16` split `@testing-library/dom` out as a required peer dependency
-- Version pinned in SKILL.md: dom `10.4.1` / react `16.3.3` / jest-dom `7.0.1` / user-event `14.6.7` / vue `8.1.0`
+- Version pinned in SKILL.md: dom `10.4.2` / react `16.3.3` / jest-dom `7.0.1` / user-event `14.6.7` / vue `8.1.0`

@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `vitest` |
 | Registry | `npm` |
-| Latest Version | `5.0.0` |
+| Latest Version | `5.0.1` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `Vitest contributors (VoidZero)` |
@@ -33,6 +33,6 @@ bun add -D vitest
 
 ## Notes
 
-- Breaking changes in latest major: Vitest 5.0.0 requires Node `>=22.12.0` and Vite `>=6.4.0`; `experimental_defineCacheKeyGenerator` → `defineCacheKeyGenerator` (stable); `experimental.fsModuleCache` → top-level `test.fsModuleCache`
-- Version pinned in SKILL.md: `vitest@5.0.0`
+- Breaking changes in latest major: Vitest 5.0.1 requires Node `>=22.12.0` and Vite `>=6.4.0`; `experimental_defineCacheKeyGenerator` → `defineCacheKeyGenerator` (stable); `experimental.fsModuleCache` → top-level `test.fsModuleCache`
+- Version pinned in SKILL.md: `vitest@5.0.1`
 

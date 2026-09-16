@@ -20,7 +20,7 @@ related:
 - Type-safe props ด้วย Zod schema
 - Render วิดีโอ, GIF, image sequence ผ่าน CLI หรือ cloud (Lambda, Cloud Run, Vercel)
 
-- Latest: `remotion@4.0.524` (verified 2026-09-13)
+- Latest: `remotion@4.0.525` (verified 2026-09-16)
 - เป็น React-based — ใช้ `/follow-lib-react` สำหรับ component patterns และ `/follow-lib-zod` สำหรับ prop schemas
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [config](references/remotion-config.md) | [routes](references/routes.md) | [website](references/website.md)
 

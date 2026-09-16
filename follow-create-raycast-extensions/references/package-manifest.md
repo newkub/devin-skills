@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@raycast/api` |
 | Registry | `npm` |
-| Latest Version | `2.3.1` |
+| Latest Version | `2.4.1` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `Raycast` |
@@ -34,5 +34,5 @@ bun add @raycast/api @raycast/utils
 ## Notes
 
 - Breaking changes in latest major: `@raycast/api` 2.x requires Node `>=22.22.2` and React 19 — migration via `bunx ray migrate` or `bunx @raycast/migration .`
-- Version pinned in SKILL.md: `@raycast/api@2.3.1` / `@raycast/utils@2.3.1`
+- Version pinned in SKILL.md: `@raycast/api@2.4.1` / `@raycast/utils@2.3.1`
 

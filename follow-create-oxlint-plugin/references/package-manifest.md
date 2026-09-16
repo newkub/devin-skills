@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `oxlint` |
 | Registry | `npm` |
-| Latest Version | `1.82.0` |
+| Latest Version | `1.83.0` |
 | Release Date | `2026-09-07` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `oxc-project` |
@@ -35,5 +35,5 @@ bunx oxlint --init   # starter config (.oxlintrc.json)
 ## Notes
 
 - Breaking changes in latest major: `JS plugins (jsPlugins field) are alpha, not subject to semver; reserved plugin names (react, unicorn, typescript, oxc, import, jest, vitest, jsx-a11y, nextjs) are native — need custom alias for JS versions`
-- Version pinned in SKILL.md: `oxlint@1.82.0` (verified 2026-09-12)
+- Version pinned in SKILL.md: `oxlint@1.83.0` (verified 2026-09-16)
 

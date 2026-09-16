@@ -38,5 +38,5 @@ bun add -D @vscode/vsce
 ## Notes
 
 - Breaking changes in latest major: `vsce` was renamed to `@vscode/vsce` (old `vsce` package deprecated); v3 requires Node 20+
-- Version pinned in SKILL.md: `VS Code 1.137.0`, `generator-code@1.12.0`, `@vscode/vsce@3.9.2` — all match latest as of 2026-09-12
+- Version pinned in SKILL.md: `VS Code 1.137.0`, `generator-code@1.12.0`, `@vscode/vsce@4.0.0` — all match latest as of 2026-09-12
 

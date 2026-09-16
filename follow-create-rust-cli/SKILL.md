@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับสร้าง CLI applications ด้วย Rust runtime — ถ้ายังไม่ชัดว่า Rust หรือ Bun ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
-- Latest: Rust `1.98.1`, `clap@4.6.6`, `color-eyre@0.6.5`, `cargo-dist@0.32.0` (verified 2026-09-12)
+- Latest: Rust `1.98.1`, `clap@4.6.7`, `color-eyre@0.6.5`, `cargo-dist@0.32.0` (verified 2026-09-16)
 
 ## Execute
 

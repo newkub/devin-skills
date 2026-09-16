@@ -8,7 +8,7 @@ bun add zod   # or: valibot, arktype, yup, joi, class-validator
 
 ## Version
 
-- Latest: `zod@4.6.4` (verified 2026-09-13)
+- Latest: `zod@4.6.5` (verified 2026-09-16)
 - Repository: https://github.com/colinhacks/zod
 - Docs: https://zod.dev/
 
