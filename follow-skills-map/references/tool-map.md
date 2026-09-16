@@ -70,7 +70,7 @@
 | monorepo tasks | `moon` / `task` | installed | `/follow-monorepo` |
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
 | lint/format JS/TS | `biome` / `oxlint` / `oxfmt` | installed | `/run-lint`, `/run-format` |
-| fast typecheck | `tsgo` / `vue-tsc` | installed | `/run-typecheck` |
+| fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
 | benchmark commands | `hyperfine` | installed | `/review-performance` |
 | CI local run | `act` | installed | `/follow-tool-act` |

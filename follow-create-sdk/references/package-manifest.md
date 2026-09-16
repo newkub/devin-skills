@@ -33,6 +33,6 @@ bun add -D tsdown typescript
 
 ## Notes
 
-- Breaking changes in latest major: `typescript@7.x` is the native (tsgo) compiler line — different binary (`tsgo`) vs `tsc` in 5.x
+- Breaking changes in latest major: `typescript@7.x` is the native (Go) compiler line — same `tsc` binary (`tsgo` folded back ตั้งแต่ RC); removed options: `baseUrl`, `target: es5`, defaults `strict`/`module esnext`/`types []`; no stable programmatic API จนกว่า 7.1
 - Version pinned in SKILL.md: `typescript@7.0.2`, `tsdown@0.23.0`
 - This skill is a router/chooser — manifest reflects the SDK build toolchain it recommends (framework-agnostic SDK pattern)

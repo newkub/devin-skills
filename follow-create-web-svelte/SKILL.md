@@ -38,11 +38,11 @@ related:
 
 > Goal: Configure TypeScript
 
-1. ตั้งค่า `target: ES2020` และ `module: ESNext`
+1. ตั้งค่า `target: ES2022` และ `module: ESNext`
 2. ใช้ `moduleResolution: bundler`
-3. ตั้งค่า `baseUrl` และ `paths` สำหรับ import aliases
+3. ตั้งค่า `paths` สำหรับ import aliases — ห้ามใช้ `baseUrl` (ถูก remove ใน TypeScript 7; ใช้ relative `"./..."` ใน `paths` แทน)
 4. เปิดใช้ `strict: true`
-5. รองรับ TypeScript 6.0 (svelte-check 4.7.6+, svelte2tsx 0.7.61+)
+5. รองรับ TypeScript 6.0 (svelte-check 4.7.6+, svelte2tsx 0.7.61+) — pin `typescript@6` จนกว่า TS 7.1 (svelte-check ใช้ compiler API ที่ยังไม่ stable ใน 7.0)
 
 ### 3. Svelte 5 Runes
 

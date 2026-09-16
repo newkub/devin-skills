@@ -88,7 +88,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `@mermaid-js/mermaid-cli` | `mmdc -i in.mmd -o out.svg` | diagrams |
 | `@shikijs/cli` | `shiki` | code highlighting |
 | `foam-cli` | `foam` | knowledge base |
-| `@typescript/native-preview` (tsgo) / `typescript` 7 | `tsgo --noEmit` | fast typecheck |
+| `typescript` 7 (native tsc; `tsgo` folded back ตั้งแต่ 7.0 RC) | `tsc --noEmit` | fast typecheck |
 | `vue-tsc`, `oxlint`, `oxfmt`, `biome`, `selene` | — | lint/format |
 | `vsce`, `@native-sdk/cli`, `@tanstack/intent`, `dprint` | — | packaging/format |
 

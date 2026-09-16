@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับพัฒนาโปรเจกต์ TypeScript ทั้ง type system, code quality, testing, และ documentation (TypeScript 5.0+)
+ใช้สำหรับพัฒนาโปรเจกต์ TypeScript ทั้ง type system, code quality, testing, และ documentation (TypeScript 5.0+; latest stable `7.x` native compiler — options ที่ deprecated ใน 6.0 ถูก remove แล้ว เช่น `baseUrl`, `target: es5`)
 
 ## Execute
 

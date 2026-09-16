@@ -30,7 +30,7 @@ bunx create-next-app@latest
 |---------|----------|--------|-------|
 | `react` | `npm` | `19.3.0` (2026-09-09) | Peer dependency — React 19.3 adds View Transitions, `useEffectEvent()` |
 | `react-dom` | `npm` | `19.3.0` (peer of `react`) | Must match `react` version |
-| `typescript` | `npm` | `unknown` | Strict mode required (TS 5.1+, TS 6 supported) |
+| `typescript` | `npm` | `7.0.2` | Strict mode required (TS 5.1+; latest 7.x native compiler — removed `baseUrl`/`target es5`, defaults `strict`/`module esnext`/`types []`) |
 | `zod` | `npm` | `unknown` | Input validation for Server Actions |
 
 ## Notes

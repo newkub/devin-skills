@@ -23,7 +23,7 @@ bun add -D tstyche
 
 - Latest stable: `3.22.2` (verified 2026-09-13)
 - Effect v4 in RC (`4.0.0-rc.115`) — not yet stable; API differs from v3 (see below)
-- TypeScript >= 5.4 required (TS 7.x/tsgo is the latest major — verify toolchain support)
+- TypeScript >= 5.4 required (TS 7.x native `tsc` is the latest major — verify toolchain support)
 - Supports Node.js, Deno, and Bun
 
 ## v3 vs v4 API Differences
