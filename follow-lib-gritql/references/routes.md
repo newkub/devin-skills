@@ -5,8 +5,8 @@
 | Biome GritQL reference | https://biomejs.dev/reference/gritql/ |
 | GritQL docs (upstream) | https://docs.grit.io/language/overview |
 | Biome plugin rules | https://biomejs.dev/linter/plugins/ |
-| Pattern playground | https://app.grit.io/studio |
-| gritql repository | https://github.com/getgrit/gritql |
+| Pattern playground | https://docs.grit.io/playground |
+| gritql repository | https://github.com/biomejs/gritql |
 
 ## Key Concepts
 

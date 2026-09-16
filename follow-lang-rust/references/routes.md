@@ -1,7 +1,7 @@
 # Follow Lang Rust Route Map
 
-- Website: <https://www.rust-lang.org>
-- Documentation: <https://www.rust-lang.org/learn>
+- Website: <https://rust-lang.org/>
+- Documentation: <https://rust-lang.org/learn>
 - Total routes discovered: 618
 
 ## Top routes by section

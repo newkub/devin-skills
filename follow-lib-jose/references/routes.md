@@ -3,10 +3,10 @@
 | Route / Topic | URL |
 |---|---|
 | Docs (README) | https://github.com/panva/jose |
-| JWT sign/verify | https://github.com/panva/jose/blob/main/docs/jwt/README.md |
-| JWK / JWKS | https://github.com/panva/jose/blob/main/docs/jwk/README.md |
-| Key management | https://github.com/panva/jose/blob/main/docs/key/README.md |
-| JWE encryption | https://github.com/panva/jose/blob/main/docs/jwe/README.md |
+| JWT sign/verify | https://github.com/panva/jose/tree/main/docs/jwt |
+| JWK / JWKS | https://github.com/panva/jose/tree/main/docs/jwk |
+| Key management | https://github.com/panva/jose/tree/main/docs/key |
+| JWE encryption | https://github.com/panva/jose/tree/main/docs/jwe |
 | Runtime support | https://github.com/panva/jose#runtime |
 
 ## Key Concepts

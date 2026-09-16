@@ -2,9 +2,9 @@
 
 | Route / Topic | URL |
 |---|---|
-| Scalar docs | https://guides.scalar.com |
+| Scalar docs | https://scalar.com/ |
 | API Reference | https://github.com/scalar/scalar#readme |
-| Framework integrations | https://guides.scalar.com/scalar/scalar-api-references/integrations |
+| Framework integrations | https://scalar.com/products/api-references |
 | CLI | https://www.npmjs.com/package/@scalar/cli |
 | Elysia plugin | https://elysiajs.com/plugins/openapi |
 | Galaxy (sample spec) | https://galaxy.scalar.com |

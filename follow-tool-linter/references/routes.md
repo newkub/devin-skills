@@ -9,7 +9,7 @@ Skill นี้เป็น generic linter guide — routes ด้านล่�
 | Linter guide | https://oxc.rs/docs/guide/usage/linter |
 | Config (`.oxlintrc.json`) | https://oxc.rs/docs/guide/usage/linter/config |
 | Rules list | https://oxc.rs/docs/guide/usage/linter/rules |
-| Type-aware linting (`oxlint-tsgolint`) | https://oxc.rs/docs/guide/usage/linter-type-aware |
+| Type-aware linting (`oxlint-tsgolint`) | https://oxc.rs/docs/guide/usage/linter/type-aware |
 
 ## ESLint (eslint.org)
 
@@ -25,7 +25,7 @@ Skill นี้เป็น generic linter guide — routes ด้านล่�
 | Route / Topic | URL |
 |---|---|
 | Linter | https://biomejs.dev/linter/ |
-| Rules | https://biomejs.dev/linter/rules/ |
+| Rules | https://biomejs.dev/linter/javascript/rules/ |
 | CLI reference | https://biomejs.dev/reference/cli/ |
 
 ## Others

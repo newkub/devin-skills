@@ -3,7 +3,7 @@
 | Route / Topic | URL |
 |---|---|
 | Docs site | https://markdown-it.github.io |
-| Plugins list | https://www.npmjs.com/browse/keyword/markdown-it-plugin |
+| Plugins list | https://www.npmjs.com/search?q=keywords:markdown-it-plugin |
 | Architecture (parse/render) | https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md |
 | Development | https://github.com/markdown-it/markdown-it/tree/master/docs |
 | Demo playground | https://markdown-it.github.io/ |

@@ -4,7 +4,7 @@
 |---|---|
 | Oxc docs | https://oxc.rs/docs/guide/usage/parser.html |
 | AST types | https://github.com/oxc-project/oxc/tree/main/npm/oxc-types |
-| Playground | https://oxc.rs/playground |
+| Playground | https://playground.oxc.rs |
 | oxc-walker | https://www.npmjs.com/package/oxc-walker |
 | Ecosystem (oxlint/rolldown) | https://oxc.rs |
 

@@ -1,6 +1,6 @@
 # Follow Tool Semantic Release Route Map
 
-- Website: <https://semantic-release.gitbook.io>
+- Website: <https://semantic-release.gitbook.io/semantic-release>
 - Routes discovered (homepage): 27
 
 ## Routes

@@ -9,19 +9,19 @@
 | Route / Topic | URL |
 |---|---|
 | CSS Reference | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference |
-| Cascade layers | https://developer.mozilla.org/en-US/docs/Web/CSS/@layer |
-| CSS Nesting | https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting |
-| `:has()` | https://developer.mozilla.org/en-US/docs/Web/CSS/:has |
-| Container queries | https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries |
-| Custom properties | https://developer.mozilla.org/en-US/docs/Web/CSS/--* |
-| `@property` | https://developer.mozilla.org/en-US/docs/Web/CSS/@property |
-| `color-mix()` / `oklch()` | https://developer.mozilla.org/en-US/docs/Web/CSS/color_value |
+| Cascade layers | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@layer |
+| CSS Nesting | https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting |
+| `:has()` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has |
+| Container queries | https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries |
+| Custom properties | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/--* |
+| `@property` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@property |
+| `color-mix()` / `oklch()` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value |
 | View Transitions | https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API |
 | Popover API | https://developer.mozilla.org/en-US/docs/Web/API/Popover_API |
-| `@supports` | https://developer.mozilla.org/en-US/docs/Web/CSS/@supports |
-| `prefers-reduced-motion` | https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion |
-| `content-visibility` | https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility |
-| Logical properties | https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values |
+| `@supports` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@supports |
+| `prefers-reduced-motion` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion |
+| `content-visibility` | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content-visibility |
+| Logical properties | https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values |
 
 ## Key Concepts
 

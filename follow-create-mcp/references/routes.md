@@ -1,6 +1,6 @@
 # Follow Create Mcp Route Map
 
-- Website: <https://modelcontextprotocol.io>
+- Website: <https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro>
 - Documentation: <https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro>
 - Total routes discovered: 376
 

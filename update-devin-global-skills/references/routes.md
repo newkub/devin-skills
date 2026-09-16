@@ -1,7 +1,7 @@
 # Update Devin Global Skills Route Map
 
 - Website: <https://docs.devin.ai>
-- Documentation: <https://docs.devin.ai/cli/extensibility/skills>
+- Documentation: <https://docs.devin.ai/cli/extensibility/skills/overview>
 - Total same-origin routes (first-4 segments): 351
 - Showing top 100 routes (file cap)
 - Method: map --no-sitemap
@@ -79,7 +79,7 @@ Descriptions are pulled from each page's HTML metadata (`<title>` / `<meta name=
 | https://docs.devin.ai/api-reference/v3/sessions/get-organizations-session-insights | Get detailed insights for a specific session, including message counts, session size classification, and AI-generated... |
 | https://docs.devin.ai/api-reference/v3/sessions/get-organizations-session-messages | List all messages for a session with cursor-based pagination, ordered chronologically. |
 | https://docs.devin.ai/api-reference/v3/sessions/get-organizations-session-tags | Get the tags for a specific session. |
-| https://docs.devin.ai/api-reference/v3/sessions/get-organizations-sessions | — |
+| https://docs.devin.ai/api-reference/v3/sessions/organizations-sessions | — |
 | https://docs.devin.ai/api-reference/v3/sessions/organizations-sessions | List sessions. |
 | https://docs.devin.ai/api-reference/v3/sessions/organizations-sessions-insights | List sessions with detailed insights including message counts, session size classification, and AI-generated analysis. |
 | https://docs.devin.ai/api-reference/v3/sessions/post-organizations-session-insights-generate | Trigger on-demand generation of session insights. Returns already_exists if insights have already been generated. Oth... |

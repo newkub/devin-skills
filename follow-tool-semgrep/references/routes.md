@@ -2,12 +2,12 @@
 
 | Route / Topic | URL |
 |---|---|
-| Docs | https://semgrep.dev/docs |
-| Rule syntax | https://semgrep.dev/docs/writing-rules/rule-syntax |
+| Docs | https://docs.semgrep.dev/ |
+| Rule syntax | https://docs.semgrep.dev/writing-rules/rule-syntax |
 | Registry | https://semgrep.dev/explore |
 | Pattern playground | https://semgrep.dev/playground |
-| Rule writing | https://semgrep.dev/docs/writing-rules/overview |
-| CI setup | https://semgrep.dev/docs/semgrep-ci/overview |
+| Rule writing | https://docs.semgrep.dev/writing-rules/overview |
+| CI setup | https://docs.semgrep.dev/deployment/add-semgrep-to-ci |
 
 ## Key Concepts
 

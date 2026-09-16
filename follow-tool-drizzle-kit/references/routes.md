@@ -5,7 +5,7 @@
 | Kit overview | https://orm.drizzle.team/docs/kit-overview |
 | drizzle.config.ts | https://orm.drizzle.team/docs/drizzle-config-file |
 | generate | https://orm.drizzle.team/docs/drizzle-kit-generate |
-| migrate / push / pull | https://orm.drizzle.team/docs/kit-commands |
+| migrate / push / pull | https://orm.drizzle.team/docs/kit-overview |
 | Studio | https://orm.drizzle.team/drizzle-studio/overview |
 | drizzle-orm skill | `/follow-lib-drizzle` |
 

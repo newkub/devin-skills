@@ -2,11 +2,11 @@
 
 | Route / Topic | URL |
 |---|---|
-| MCP spec | https://modelcontextprotocol.io/specification |
+| MCP spec | https://modelcontextprotocol.io/specification/2026-07-28 |
 | TS SDK docs | https://github.com/modelcontextprotocol/typescript-sdk |
-| Server quickstart | https://modelcontextprotocol.io/quickstart/server |
-| Client quickstart | https://modelcontextprotocol.io/quickstart/client |
-| Transports | https://modelcontextprotocol.io/docs/concepts/transports |
+| Server quickstart | https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server |
+| Client quickstart | https://modelcontextprotocol.io/docs/2026-07-28/develop/build-client |
+| Transports | https://modelcontextprotocol.io/specification/2026-07-28/basic/transports |
 | Inspector tool | `bunx @modelcontextprotocol/inspector` |
 
 ## Key Concepts

@@ -4,10 +4,10 @@
 |---|---|
 | Docs home | https://edgejs.dev |
 | Getting started | https://edgejs.dev/docs/getting_started |
-| Tags reference | https://edgejs.dev/docs/tags/introduction |
+| Tags reference | https://edgejs.dev/docs/syntax_specification |
 | Components | https://edgejs.dev/docs/components/introduction |
 | Conditionals/loops | https://edgejs.dev/docs/conditionals |
-| Helpers | https://edgejs.dev/docs/guides/helpers |
+| Helpers | https://edgejs.dev/docs/helpers |
 
 ## Key Concepts
 

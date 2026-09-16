@@ -2,12 +2,12 @@
 
 | Route / Topic | URL |
 |---|---|
-| Docs | https://capgo.app/docs |
-| Getting started | https://capgo.app/docs/getting-started/ |
+| Docs | https://capgo.app/docs/ |
+| Getting started | https://capgo.app/docs/getting-started/quickstart/ |
 | CLI reference | https://capgo.app/docs/cli/ |
 | Live updates concept | https://capgo.app/docs/live-updates/ |
-| Self-hosted | https://capgo.app/docs/self-hosted/ |
-| Repository | https://github.com/Cap-go/capgo |
+| Self-hosted | https://capgo.app/docs/plugins/updater/self-hosted/getting-started/ |
+| Repository | https://github.com/Cap-go/capgo.app |
 
 ## Key Concepts
 

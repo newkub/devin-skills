@@ -11,9 +11,9 @@
 | Workflow syntax | https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax |
 | Events that trigger workflows | https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows |
 | Contexts (`github`, `runner`, `env`) | https://docs.github.com/en/actions/reference/workflows-and-actions/contexts |
-| Permissions (`GITHUB_TOKEN`) | https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication |
-| Caching dependencies | https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows |
-| Secrets | https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions |
+| Permissions (`GITHUB_TOKEN`) | https://docs.github.com/en/actions/tutorials/authenticate-with-github_token |
+| Caching dependencies | https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching |
+| Secrets | https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets |
 | `gh workflow` manual | https://cli.github.com/manual/gh_workflow |
 | `gh run` manual | https://cli.github.com/manual/gh_run |
 | actionlint checks | https://rhysd.github.io/actionlint/ |

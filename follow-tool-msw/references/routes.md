@@ -3,10 +3,10 @@
 | Route / Topic | URL |
 |---|---|
 | Docs home | https://mswjs.io |
-| Getting started | https://mswjs.io/docs/getting-started |
+| Getting started | https://mswjs.io/docs/quick-start |
 | Node integration | https://mswjs.io/docs/integrations/node |
 | Browser integration | https://mswjs.io/docs/integrations/browser |
-| Network behavior | https://mswjs.io/docs/basics/mocking-responses |
+| Network behavior | https://mswjs.io/docs/http/mocking-responses |
 | Life-cycle events | https://mswjs.io/docs/api/life-cycle-events |
 | Vitest setup | `setupFiles: ['./src/mocks/node.ts']` |
 

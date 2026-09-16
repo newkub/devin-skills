@@ -13,7 +13,7 @@
 | Guide / getting started | https://vueuse.org/guide/ |
 | Best practices | https://vueuse.org/guide/best-practice.html |
 | Add-ons (`@vueuse/*` integrations) | https://vueuse.org/integrations.html |
-| Per-function docs pattern | `https://vueuse.org/core/<fnName>/` e.g. https://vueuse.org/core/useLocalStorage/ |
+| Per-function docs pattern | `https://vueuse.org/core/<fnName>/` e.g. https://vueuse.org/core/uselocalstorage/ |
 | Repository / releases | https://github.com/vueuse/vueuse |
 
 ## Composable Categories (vueuse.org/functions.html)

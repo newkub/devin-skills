@@ -2,11 +2,11 @@
 
 | Route / Topic | URL |
 |---|---|
-| API reference | https://platform.openai.com/docs/api-reference |
-| Responses API guide | https://platform.openai.com/docs/api-reference/responses |
-| Structured outputs | https://platform.openai.com/docs/guides/structured-outputs |
+| API reference | https://developers.openai.com/api/reference/overview |
+| Responses API guide | https://developers.openai.com/api/reference/resources/responses |
+| Structured outputs | https://developers.openai.com/api/docs/guides/structured-outputs |
 | Streaming | https://github.com/openai/openai-node#streaming-responses |
-| Function calling | https://platform.openai.com/docs/guides/function-calling |
+| Function calling | https://developers.openai.com/api/docs/guides/function-calling |
 | SDK README | https://github.com/openai/openai-node |
 | Compatible endpoints | baseURL สำหรับ OpenRouter/Ollama/Azure |
 

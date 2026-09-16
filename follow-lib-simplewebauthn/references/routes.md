@@ -6,7 +6,7 @@
 | Server docs | https://simplewebauthn.dev/docs/packages/server |
 | Browser docs | https://simplewebauthn.dev/docs/packages/browser |
 | Advanced: passkeys | https://simplewebauthn.dev/docs/advanced/passkeys |
-| Testing | https://simplewebauthn.dev/docs/advanced/testing |
+| Testing | https://simplewebauthn.dev/docs/packages/server#testing |
 | Example project | https://github.com/MasterKale/SimpleWebAuthn/tree/master/example |
 
 ## Key Concepts

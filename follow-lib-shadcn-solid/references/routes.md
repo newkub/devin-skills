@@ -4,9 +4,9 @@
 |---|---|
 | Docs site | https://shadcn-solid.com |
 | Installation | https://shadcn-solid.com/docs/installation |
-| Components | https://shadcn-solid.com/docs/components |
+| Components | https://shadcn-solid.com/docs/components/accordion |
 | CLI reference | https://shadcn-solid.com/docs/cli |
-| Registry | https://shadcn-solid.com/r |
+| Registry | https://shadcn-solid.com/docs/installation |
 | Repository | https://github.com/hngngn/shadcn-solid |
 
 ## Key Concepts
