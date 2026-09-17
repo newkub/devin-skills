@@ -20,7 +20,7 @@ argument-hint: "[target]"
 
 > Goal: รวบรวม domains ที่ต้องเช็ค cert
 
-1. หาจาก deploy configs, env vars, docs, DNS records (ทำ `/check-dns-health` ร่วม)
+1. หาจาก deploy configs, env vars, docs, DNS records (ทำ `/check-infra --dns` ร่วม)
 2. รวม external dependencies ที่ HTTPS-critical: APIs, CDNs, webhook targets
 3. ระบุ cert provider ต่อ domain: Let's Encrypt, Cloudflare, ACM, manual
 

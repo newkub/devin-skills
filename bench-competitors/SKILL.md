@@ -27,7 +27,7 @@ related:
 
 ครอบคลุมทุกมิติของ product: features, performance, UX/UI, architecture, DX, security, scalability, business ไม่ใช่แค่มิติใดมิติหนึ่ง
 
-- มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
+- มิติ features ทำ inline ใน skill นี้ (merged จาก `bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
 - skill นี้ implement จริงจนถึง production ไม่ใช่แค่ plan — ถ้าต้องการแค่ไอเดีย features → ใช้ `/idea-features`
 
 ดูเพิ่มเติม: /deep-review, /deep-plan, /implement-to-production, /compare-competitors-and-idea-features
