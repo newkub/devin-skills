@@ -1,9 +1,10 @@
 ---
-name: report-uxui-sketch
-description: สร้างรายงาน UX/UI sketch ใน markdown สำหรับ app/website จาก context ที่ให้มา
+name: report-uxui
+description: สร้างรายงาน UX/UI ด้วย ANSI box-drawing สำหรับ app/website จาก context ที่ให้มา
 argument-hint: "[scope]"
 related:
   - report-uxui-all-routes
+  - draw-ansi
   - report
   - report-architecture-diagram
   - follow-design-system
@@ -16,14 +17,14 @@ related:
 
 ## Goal
 
-สร้างรายงาน UX/UI sketch ใน markdown สำหรับ app หรือ website จาก context ที่ผู้ใช้ให้ โดยแสดง layout, tabs, components, และ user flow แบบ text-based wireframe
+สร้างรายงาน UX/UI สำหรับ app หรือ website จาก context ที่ผู้ใช้ให้ โดยแสดง layout, tabs, components, และ user flow เป็น ANSI box-drawing wireframe (uniform width, ขอบขวาตรงกัน) ใน ` ```text ` codeblock
 
 ## Scope
 
-- ใช้สำหรับ UX/UI sketch ก่อน implement
+- ใช้สำหรับ UX/UI sketch ก่อน implement หรือสรุป UI ของ project ที่มีอยู่
 - รองรับ mobile app, web app, desktop app
 - แสดง tab/session/screen layout, navigation, list items, buttons
-- ไม่สร้างรูปภาพ ใช้ markdown + ASCII/Unicode box-drawing
+- ไม่สร้างรูปภาพ ใช้ ANSI/Unicode box-drawing ใน ` ```text ` block เท่านั้น
 
 ## Execute
 
@@ -34,7 +35,8 @@ related:
 1. อ่าน prompt, context, `AGENTS.md`, หรือ references ที่เกี่ยวข้อง
 2. ระบุ platform (iOS, Android, Web, Desktop), framework, และ screen size
 3. ระบุ tabs, screens, main features, และ target users
-4. ถ้า context ไม่พอ → ใช้ `/ask-me`
+4. ถ้ามี source code → scan routes/pages/components จริงก่อน sketch
+5. ถ้า context ไม่พอ → ใช้ `/ask-me`
 
 ### 2. Define Screens And Flow
 
@@ -45,15 +47,17 @@ related:
 3. ระบุ transitions ระหว่าง screen
 4. จัดกลุ่ม screens ตาม bottom/tab navigation
 
-### 3. Sketch Each Screen
+### 3. Sketch Each Screen As ANSI
 
-> Goal: วาด wireframe แต่ละ screen ใน markdown
+> Goal: วาด wireframe แต่ละ screen เป็น ANSI box
 
-1. ใช้ box-drawing characters (`┌─┐│└─┘`) หรือ ASCII tables
-2. แสดง status bar, navigation bar, tab bar ถ้าเป็น mobile
-3. ใส่ labels, placeholders, list items, buttons
-4. ระบุการ "กด" หรือ tap ที่ทำงานได้: `[Tap]`, `[Press]`
-5. ความกว้างไม่เกิน 80 characters ต่อบรรทัด
+1. ใช้ box-drawing characters (`┌─┐│└─┘├┤`) ภายใน ` ```text ` codeblock
+2. ทุก screen ต้องมี outer box กว้างเท่ากันทุกบรรทัด ขอบขวา `│` ตรงกัน
+3. แสดง status bar, navigation bar, tab bar ถ้าเป็น mobile
+4. ใส่ labels, placeholders, list items, buttons
+5. ระบุการ "กด" หรือ tap ที่ทำงานได้: `[Tap]`, `[Press]`
+6. ความกว้างไม่เกิน 80 characters ต่อบรรทัด
+7. ถ้ากล่องเพี้ยนหรือต้องการ wrap เนื้อหา → ใช้ `/draw-ansi` script (`--fix`, `--width`, `--title`) ปรับให้ขนาดเท่ากัน
 
 ### 4. Add UX Annotations
 
@@ -64,22 +68,23 @@ related:
 3. ระบุ gestures (swipe, pull-to-refresh) ถ้ามี
 4. ระบุ accessibility labels
 
-### 5. Format As Markdown Report
+### 5. Format As ANSI Report
 
 > Goal: สรุป report ให้อ่านง่าย
 
 1. สรุป key findings ด้านบน
-2. ใช้ `/report` สำหรับ screen/tab summary
+2. ใช้ `/report` สำหรับ screen/tab summary table
 3. ใช้ `/report-architecture-diagram` สำหรับ user flow
 4. ใช้ symbols `✅` `⚠️` สำหรับสถานะ
 5. ทำ `/suggest-next-action` ท้าย report
 
 ## Rules
 
-### Text-Only Sketch
+### ANSI-Only Sketch
 
 - ไม่สร้างรูปภาพหรือ binary files
-- ใช้ markdown, ASCII, Unicode box-drawing characters เท่านั้น
+- ใช้ ANSI/Unicode box-drawing ใน ` ```text ` codeblock เท่านั้น (ห้าม ` ```ansi ` block)
+- ทุก box ต้อง uniform width — ขอบขวาตรงกัน ไม่เพี้ยน ตาม `/draw-ansi` rules
 - หนึ่ง screen ต่อหนึ่ง sketch section
 - ถ้าต้องการ route table ก่อนสร้าง sketch ให้ใช้ `/report-uxui-all-routes`
 
@@ -115,6 +120,7 @@ related:
 - ทุก screen ต้องมีชื่อและ purpose กำกับ
 
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
+- ใช้ /draw-ansi ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
 - ใช้ /roleplay-by-all-stakeholder ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
@@ -122,7 +128,7 @@ related:
 
 ## Expected Outcome
 
-- Markdown UX/UI sketch ครอบคลุมทุก screen/tab
+- ANSI UX/UI report ครอบคลุมทุก screen/tab ทุก box ขนาดเท่ากันไม่เพี้ยน
 - Screen summary table ด้วย `/report`
 - User flow หรือ navigation diagram ด้วย `/report-architecture-diagram`
 - Clear interactions, loading/empty/error states, และ accessibility notes

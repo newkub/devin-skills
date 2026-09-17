@@ -58,16 +58,17 @@ related:
 > Goal: matrix อ่านง่าย เทียบได้ทุก cell
 
 1. ทำ `/report` สร้างตารางเปรียบเทียบ — คอลัมน์ `No.` เป็นคอลัมน์แรก
-2. แต่ละ criterion ระบุ status ของ subject เทียบ alternative: `มี`, `ไม่มี`, `ดีกว่า`, `ด้อยกว่า`, `เท่ากัน`
+2. แต่ละ criterion ระบุ status ของ subject เทียบ alternative ด้วย emoji + label: `✅ มี`, `❌ ไม่มี`, `🟢 ดีกว่า`, `🟡 ด้อยกว่า`, `⚪ เท่ากัน`
 3. ทุก cell ต้องมี source — ไม่มีหลักฐานให้ mark เป็น `assumption`
+4. แถวสรุปท้าย matrix ใช้ `🏆` สำหรับ unique strengths และ `🔺` สำหรับ gap ที่ต้องปิด
 
 ### 5. Extract Gaps And Uniques
 
 > Goal: ได้ gap list ที่ actionable และ unique ที่ต้องรักษา
 
-1. รวม items ที่ subject `ไม่มี` หรือ `ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: item, alternative ที่มี, impact, effort โดยประมาณ, source
-2. ระบุ unique strengths ของ subject ที่ alternatives ไม่มี — ต้องรักษาไว้
-3. จัด priority: Critical, High, Medium, Nice-to-have
+1. รวม items ที่ subject `❌ ไม่มี` หรือ `🟡 ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: item, alternative ที่มี, impact, effort โดยประมาณ, source
+2. ระบุ unique strengths ของ subject ที่ alternatives ไม่มี — ต้องรักษาไว้ (mark `🏆`)
+3. จัด priority: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
 4. output พร้อมส่งต่อ `/create-plan-in-dot-devin`, `/choose-and-apply` หรือ `/idea-features`
 
 ### 6. Generate Feature Ideas From Gaps
@@ -95,7 +96,8 @@ related:
 ### 3. Matrix Format
 
 - ทุก table มีคอลัมน์ `No.` แรก เรียง 1, 2, 3, ...
-- status ใช้ชุดเดียว: `มี`, `ไม่มี`, `ดีกว่า`, `ด้อยกว่า`, `เท่ากัน`
+- status ใช้ชุดเดียวพร้อม emoji นำหน้าเสมอ: `✅ มี`, `❌ ไม่มี`, `🟢 ดีกว่า`, `🟡 ด้อยกว่า`, `⚪ เท่ากัน`
+- priority ใน gap list ใช้ emoji: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
 - criteria เดียวกันต้องเทียบทุก alternative ไม่ข้าม cell
 
 ### 4. Lightweight

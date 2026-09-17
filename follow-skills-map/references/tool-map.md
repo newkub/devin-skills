@@ -31,6 +31,7 @@
 | disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
 | copy-paste detection | `jscpd` | installed | `/review-quality` |
+| reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/follow-reusable` |
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-references`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors-and-idea-features` |
 | markdown lint | `rumdl` | installed | `/check-*` docs |

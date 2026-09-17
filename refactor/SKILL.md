@@ -18,6 +18,7 @@ related:
   - dont-over-engineer
   - use-lib-effective
   - follow-single-of-source
+  - follow-reusable
 ---
 
 ## Goal
@@ -120,6 +121,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ทำ `/dont-over-engineer`
 - ทำ `/use-lib-effective` เมื่อเจอ code ที่อาจ reinvent dep ที่มีอยู่ — แทนด้วย lib ใน manifest หรือ catalog แทนการเขียนเอง
+- ทำ `/follow-reusable` ก่อนเขียน implementation ใหม่หรือเมื่อเจอ duplicates — reuse > extend > extract > create ตาม rule of three
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน

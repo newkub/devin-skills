@@ -17,7 +17,6 @@ const PROJECTS = [
   "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\create-github-pr",
   "D:\\newkub\\wpackages",
   "D:\\newkub\\newkub\\slides",
-  "D:\\newkub\\products\\agents-manager",
   "D:\\newkub\\products\\explore-opensource",
   "D:\\newkub\\products\\registry",
   "D:\\newkub\\products\\wrikka-com",

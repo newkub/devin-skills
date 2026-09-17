@@ -1,6 +1,6 @@
 ---
-name: learn-codebase
-description: สร้าง learning path ของ codebase — ลำดับไฟล์ที่ควรอ่านและ concept map สำหรับคนใหม่
+name: learn-from-codebase
+description: เรียนรู้ codebase — `/deep-analyze` + learning path ลำดับไฟล์ที่ควรอ่านและ concept map
 argument-hint: "[area-or-role]"
 related:
   - report-architecture-diagram
@@ -22,13 +22,14 @@ related:
 
 ## Execute
 
-### 1. Map The Territory
+### 1. Deep Analyze
 
-> Goal: สร้างภาพรวมโครงสร้าง
+> Goal: วิเคราะห์ codebase ลึกก่อนเสมอ
 
-1. ใช้ `/scan-codebase` และ `/deep-analyze` — entry points, layers, boundaries
-2. ทำ `/report-file-structure` หรือ `/report-architecture-diagram` เป็น base map
-3. ระบุ core domain vs peripheral (infra, utils, generated)
+1. ทำ `/deep-analyze` ก่อนเสมอ — tech stack, structure, entry points, layers, boundaries, data flow
+2. ใช้ `/scan-codebase` เสริม — symbols, call sites, consumers
+3. ทำ `/report-file-structure` หรือ `/report-architecture-diagram` เป็น base map
+4. ระบุ core domain vs peripheral (infra, utils, generated)
 
 ### 2. Identify Critical Path
 

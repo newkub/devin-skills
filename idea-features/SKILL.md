@@ -9,6 +9,7 @@ related:
   - enhance-prompt
   - think-reframe
   - deep-analyze
+  - learn-from-codebase
   - report
   - report-todo
   - then-apply
@@ -39,8 +40,9 @@ related:
 > Goal: เข้าใจ topic และ project
 
 1. รับ `<topic>` จาก argument หรือ conversation context
-2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ
-3. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
+2. ถ้า idea ต้อง ground กับ codebase จริง → ทำ `/learn-from-codebase` แบบ lightweight เพื่อได้ learning path และ concept map ของส่วนที่เกี่ยวข้องกับ topic
+3. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ
+4. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
 
 ### 2. Generate Ideas
 

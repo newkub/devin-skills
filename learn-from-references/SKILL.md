@@ -27,7 +27,7 @@ related:
 - tool/library/framework → web sources (official docs, DeepWiki, Context7)
 - CLI tool → discovery ผ่าน `--help`, subcommands และ output
 
-ไม่ใช่สร้าง reference จาก codebase โดยตรง (ใช้ `/learn-codebase`)
+ไม่ใช่สร้าง reference จาก codebase โดยตรง (ใช้ `/learn-from-codebase`)
 
 ## Execute
 

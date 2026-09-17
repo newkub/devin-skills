@@ -6,6 +6,7 @@ related:
   - update-docs
   - review-docs
   - deep-analyze
+  - learn-from-codebase
   - translate-to-lang-en
 
   - deep-validate
@@ -26,11 +27,13 @@ related:
 
 ## Execute
 
-### 1. Prepare
+### 1. Learn The Codebase
 
-> Goal: เตรียมข้อมูลก่อนเขียน README
+> Goal: เรียนรู้ codebase จริงก่อนเขียน — ห้ามเขียนจากการเดา
 
-ดู `references/prepare.md`
+1. ทำ `/learn-from-codebase` ก่อนเสมอ — ภายในมี `/deep-analyze` (tech stack, structure, entry points, data flow)
+2. ใช้ข้อมูลที่เรียนมาเขียน README **จริง** — ทุก claim ต้องมี source จาก code/docs ที่ verify แล้ว ไม่ใช่ boilerplate
+3. จากนั้นทำ prepare ตาม `references/prepare.md` (detect project type, status, CONTRIBUTING/LICENSE/CHANGELOG)
 
 ### 2. Read Sample READMEs
 
@@ -48,9 +51,9 @@ related:
 
 ดู `references/write-readme.md`
 
-### 4. Generate UI Sketch
+### 4. Generate Flow Diagram
 
-> Goal: สร้าง UX/UI sketch สำหรับ README
+> Goal: วาด ANSI flow diagram ของการทำงานสำหรับ README
 
 ดู `references/generate-sketch.md`
 
@@ -86,7 +89,7 @@ related:
 
 - `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น
 - `Hero Section`: `#` Title, Description, Badges (ชิดซ้าย, ไม่รวม License badge) — ไม่มี ANSI ใต้ badges
-- `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report` — วางด้านบน Get Started โดยไม่ต้องมี heading
+- `Flow Diagram`: ```text codeblock แสดง ANSI flow diagram ของการทำงาน (input → process → output หรือ lifecycle หลัก) — วางด้านบน Get Started โดยไม่ต้องมี heading — ห้ามวาด file structure/tree
 - `## Get Started`: numbered steps ตรงๆ ไม่มี `###` subsection — แต่ละ step มี title + codeblock
 - `## Features`: Markdown table 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
 - `## Usage`: `### Usage via ...` สำหรับแต่ละ access method — ดู `references/usage-section.md`
@@ -103,7 +106,8 @@ related:
 
 ### 3. Report ANSI
 
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Usage section เท่านั้น
+- Flow Diagram (ด้านบน Get Started) = **flow diagram เท่านั้น** — แสดงการทำงาน/ลำดับขั้นตอน/data flow — ห้ามวาด file structure หรือ UI mockup ตรงนั้น
+- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Flow Diagram + Usage section เท่านั้น
 - ไม่มี ANSI codeblock ด้านล่างสุดของ README
 
 ### 4. Get Started Format
@@ -220,7 +224,8 @@ related:
 ## Expected Outcome
 
 - README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/deep-analyze` ไม่มี placeholder ยกเว้น banner image
-- Section order: Status > Hero (no ANSI) > UI Sketch > Get Started > Features > Usage (with ANSI) > Contributing (if exists) > License (if exists)
+- Section order: Status > Hero (no ANSI) > Flow Diagram (ANSI) > Get Started > Features > Usage (with ANSI) > Contributing (if exists) > License (if exists)
+- Flow diagram แสดงการทำงานจริง (input → process → output) — ไม่ใช่ file structure
 - `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
 - `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)
 - `## Usage` ครอบคลุมทุก access methods พร้อม ANSI drawing

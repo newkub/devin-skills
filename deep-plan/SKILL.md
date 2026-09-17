@@ -4,6 +4,7 @@ description: Canonical planning skill — วางแผนงานและ a
 argument-hint: "[scope]"
 related:
   - plan
+  - deep-analyze-and-plan
   - follow-deep-review
   - deep-review
   - deep-thinking

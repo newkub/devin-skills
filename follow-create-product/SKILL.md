@@ -87,7 +87,7 @@ related:
 2. ใช้ `/follow-lib-unocss` เพื่อติดตั้ง UnoCSS และสร้าง HSL theme tokens
 3. วาง page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
 4. ใช้ `/review-uxui` ตรวจ layout, navigation, responsive, CTA
-5. สร้าง wireframe/sketch ด้วย `/report-uxui-sketch` ถ้าจำเป็น
+5. สร้าง wireframe/sketch ด้วย `/report-uxui` ถ้าจำเป็น
 
 ### 6. Create Website
 

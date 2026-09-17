@@ -112,9 +112,9 @@ Excluded จาก dispatch: `/deep-review` (ตัวเอง), `/deep-review-
 
 ## Rules
 
-1. dispatch ครบ phase 1-3 ทุก workspace ยกเว้น condition ที่ N/A ชัดเจน — ห้ามข้ามเพราะ "ไม่น่าจะมีปัญหา"
+1. dispatch ครบ phase 1-3 ทุก workspace ยกเว้น condition ที่ N/A ชัดเจน — ห้ามข้ามเพราะ "ไม่น่าจะมีปัญหา" — ภายใต้ budget ของ `deep-review` Step 1 (workspaces ≤ 10, dispatches ≤ 30; เกิน → mark `skipped (budget)` ใน ledger)
 2. independent skills → `/use-subagents` หรือ `/follow-parallel` ≤10 ต่อ batch
-3. subagent อ่าน `reports/review-report.json` + เฉพาะไฟล์ใน evidence — ห้ามรัน CLI ซ้ำ ห้าม sweep ทั้ง codebase
+3. subagent อ่าน slice file `reports/.deep-review-<time>/findings-<domain>.json` + เฉพาะไฟล์ใน evidence — ห้ามรัน CLI ซ้ำ ห้าม sweep ทั้ง codebase
 4. ทุก finding ต้องระบุ `ใน update-review-cli` = Y/N — N หมายถึง analyzer gap → ส่งต่อ `/update-review-cli`
 5. `fixSkill` field ใน finding เป็น canonical owner — ห้าม map ซ้ำเอง
-6. Phase 5 ทำผ่าน `/follow-deep` เสมอ — ครอบคลุม `deep-*` ทุกตัวที่ condition ตรง ไม่เลือกบางตัวเอง
+6. Phase 5 ทำผ่าน `/follow-deep` เมื่อ `--deep` flag ถูกส่ง หรือ workspace มี Critical/High findings — ครอบคลุม `deep-*` ทุกตัวที่ condition ตรง ไม่เลือกบางตัวเอง

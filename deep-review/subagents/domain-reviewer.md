@@ -23,7 +23,8 @@ Subagent สำหรับรัน review domain เดียว (เช่น
 
 - `domain`: ชื่อ review domain เดียว เช่น `security` หรือ `performance`
 - `workspace-path`: path ของ workspace ที่จะ review
-- `report-json` (optional): path ของ `reports/review-report.json` ถ้า parent รัน CLI ไว้แล้ว
+- `findings-json` (optional): path ของ slice file `reports/.deep-review-<time>/findings-<domain>.json` — findings เฉพาะ domain นี้ parent เตรียมไว้แล้ว
+- `report-json` (optional, fallback): path ของ `reports/review-report.json` — ใช้เฉพาะเมื่อไม่มี slice file
 - `references` (optional): domain reference files เช่น `clean-architecture.md`, `issue-detection.md`
 
 ## Tools
@@ -34,8 +35,8 @@ Subagent สำหรับรัน review domain เดียว (เช่น
 
 ## Execute
 
-1. ถ้ามี `report-json` → อ่าน findings เฉพาะ domain ที่ได้รับจาก JSON
-2. ถ้าไม่มี → รัน review command ของ domain นั้นเองตามที่ CLI รองรับ
+1. ถ้ามี `findings-json` → อ่าน findings จาก slice file โดยตรง (เล็กกว่า report เต็มมาก — ห้ามไปอ่าน `reports/review-report.json` ทั้งก้อน)
+2. ถ้าไม่มีทั้งคู่ → รัน review command ของ domain นั้นเองตามที่ CLI รองรับ (`--domain <name>`)
 3. วิเคราะห์ findings ตาม domain reference ที่ได้รับ เช่น architecture issues → `clean-architecture.md`
 4. จัด severity และระบุ owner skill ที่เหมาะสมต่อ finding เช่น `/review-security`
 5. ตรวจ `analyzerErrors` ของ domain — ถ้า analyzer พังให้ flag แยกจาก findings จริง
@@ -56,6 +57,7 @@ Subagent สำหรับรัน review domain เดียว (เช่น
 - Review เฉพาะ domain เดียวที่ได้รับ — ห้ามข้ามไป domain อื่น
 - Report only — ห้ามแก้ source, config หรือ tests ของ workspace
 - ทุก finding ต้องมี `evidence` จาก report หรือ code จริง ห้ามตัดสินจาก intuition
-- ถ้า CLI รันไม่ได้ → คืน `error` พร้อมสาเหตุ ไม่ retry เกิน 3 รอบ
+- ถ้า CLI รันไม่ได้ → คืน `error` พร้อมสาเหตุ ไม่ retry เกิน 1 รอบ (parent จะ mark `review-failed` ใน ledger)
 - ห้าม duplicate findings กับ domain อื่น — ระบุ domain boundary ชัดเจน
+- คืน output ตาม Output Contract เสมอ — parent validate โครงตาราง ถ้า parse ไม่ได้จะนับเป็น failed
 

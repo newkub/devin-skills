@@ -1,37 +1,53 @@
 # Update Docs Templates Index
 
-## Pages
+Every page template lives here — one file per docs page. `content-page.md` is the generic fallback when no specific template applies.
+
+## Core Pages
 
 | No. | File | Docs Page |
 |-----|------|-----------|
 | 1 | [docs-index.md](docs-index.md) | `docs/index.md` — markdown TOC landing page |
-| 2 | [content-page.md](content-page.md) | Generic content page fallback |
+| 2 | [content-page.md](content-page.md) | generic fallback |
 | 3 | [overview.md](overview.md) | `docs/project/overview.md` |
 | 4 | [features.md](features.md) | `docs/project/features.md` — feature table |
-| 5 | [installation.md](installation.md) | `docs/getting-started/installation.md` |
-| 6 | [usage.md](usage.md) | `docs/getting-started/usage.md` |
-| 7 | [architecture.md](architecture.md) | `docs/development/architecture.md` |
-| 8 | [workflows.md](workflows.md) | `docs/development/workflows.md` |
-| 9 | [testing.md](testing.md) | `docs/development/testing.md` — Latest Results from `.devin/reports/` artifacts |
-| 10 | [troubleshooting.md](troubleshooting.md) | `docs/development/troubleshooting.md` |
-| 11 | [roadmap.md](roadmap.md) | `docs/roadmap/index.md` |
-| 12 | [workspace.md](workspace.md) | `docs/workspaces/<name>.md` (monorepo only) |
-| 13 | [commands.md](commands.md) | `docs/commands/<name>.md` (cli type only) |
-| 14 | [contributing.md](contributing.md) | `docs/references/contributing.md` (open-source only) |
-| 15 | [api.md](api.md) | `docs/references/api.md` — public API surface |
-| 16 | [configuration.md](configuration.md) | `docs/references/configuration.md` — env vars + config files |
-| 17 | [auth.md](auth.md) | `docs/references/auth.md` (product type only) |
-| 18 | [changelog.md](changelog.md) | `docs/references/changelog.md` |
-| 19 | [faq.md](faq.md) | `docs/references/faq.md` |
-| 20 | [glossary.md](glossary.md) | `docs/references/glossary.md` |
-| 21 | [deployment.md](deployment.md) | `docs/development/deployment.md` — app + docs deploy |
+| 5 | [quickstart.md](quickstart.md) | `docs/getting-started/quickstart.md` — <5min path |
+| 6 | [installation.md](installation.md) | `docs/getting-started/installation.md` |
+| 7 | [usage.md](usage.md) | `docs/getting-started/usage.md` |
+| 8 | [architecture.md](architecture.md) | `docs/development/architecture.md` |
+| 9 | [workflows.md](workflows.md) | `docs/development/workflows.md` |
+| 10 | [testing.md](testing.md) | `docs/development/testing.md` — Latest Results from `.devin/reports/` |
+| 11 | [deployment.md](deployment.md) | `docs/development/deployment.md` |
+| 12 | [troubleshooting.md](troubleshooting.md) | `docs/development/troubleshooting.md` |
+| 13 | [roadmap.md](roadmap.md) | `docs/roadmap/index.md` |
 
-## References
+## References Pages
 
-| No. | File | Purpose |
-|-----|------|---------|
-| 1 | `references/<type>.md` | Per-type detection, page groups, content focus |
+| No. | File | Docs Page |
+|-----|------|-----------|
+| 14 | [api.md](api.md) | `docs/references/api.md` — public surface map |
+| 15 | [configuration.md](configuration.md) | `docs/references/configuration.md` — env vars + config files |
+| 16 | [changelog.md](changelog.md) | `docs/references/changelog.md` |
+| 17 | [faq.md](faq.md) | `docs/references/faq.md` |
+| 18 | [glossary.md](glossary.md) | `docs/references/glossary.md` |
+| 19 | [security.md](security.md) | `docs/references/security.md` — vuln reporting |
+| 20 | [performance.md](performance.md) | `docs/references/performance.md` — budgets + benchmarks |
+| 21 | [migration.md](migration.md) | `docs/references/migration.md` — version upgrades |
+| 22 | [comparison.md](comparison.md) | `docs/references/comparison.md` — vs alternatives |
+| 23 | [i18n.md](i18n.md) | `docs/references/i18n.md` — locales + translate pipeline |
 
-## VitePress Templates
+## Conditional Pages
 
-Nav, sidebar, `config.ts`, and `layout: home` templates moved to `update-vitepress-docs/templates/` — use `/update-vitepress-docs` when the project needs a VitePress site.
+| No. | File | Docs Page | When |
+|-----|------|-----------|------|
+| 24 | [workspace.md](workspace.md) | `docs/workspaces/<name>.md` | monorepo |
+| 25 | [commands.md](commands.md) | `docs/commands/<name>.md` | cli type |
+| 26 | [contributing.md](contributing.md) | `docs/references/contributing.md` | open-source type |
+| 27 | [auth.md](auth.md) | `docs/references/auth.md` | product type |
+| 28 | [adr.md](adr.md) | `docs/project/decisions/NNNN-*.md` | non-obvious decisions |
+
+## Conventions
+
+| No. | File | Use |
+|-----|------|-----|
+| 29 | [diagram.md](diagram.md) | mermaid rules — GitHub-native rendering |
+| 30 | [badges.md](badges.md) | optional badge row for `index.md`/`README.md` |

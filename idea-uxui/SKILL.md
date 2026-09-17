@@ -7,7 +7,7 @@ related:
   - review-uxui
   - review-accessibility
   - follow-design-system
-  - report-uxui-sketch
+  - report-uxui
   - watch-browser
   - improve-uxui
   - deep-analyze
@@ -40,7 +40,7 @@ related:
 
 1. รับ `<topic-or-url>` จาก argument หรือ conversation context
 2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ — ดู routes, components, design system ที่มี
-3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/review-uxui` หรือ `/report-uxui-sketch` ก่อนคิดไอเดีย
+3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/review-uxui` หรือ `/report-uxui` ก่อนคิดไอเดีย
 4. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
 
 ### 2. Generate Ideas

@@ -14,17 +14,16 @@ Short description — Longer description.
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
-│  [shield-lock]  Password Generator                       │
-│  Create strong, secure, and random passwords             │
+│  options ──▶ charset ──▶ random ──▶ password             │
 │                                                          │
-│  ┌────────────────────────────────────────────────────┐  │
-│  │  Click to randomize & copy             Length 16/32│  │
-│  │                                                    │  │
-│  │             Xk9$mP2#vQr7&nL4w                       │  │
-│  │                                                    │  │
-│  │  [========================o======================]  │  │
-│  │                     0 / 32                         │  │
-│  └────────────────────────────────────────────────────┘  │
+│  length 16/32 ──┐                                        │
+│  symbols  on ───┤─▶ pool: a-z A-Z 0-9 $#&                │
+│  exclude   ─────┘      │                                 │
+│                        ▼                                 │
+│              crypto.getRandomValues                      │
+│                        │                                 │
+│                        ▼                                 │
+│              "Xk9$mP2#vQr7&nL4w" ──▶ copy/display        │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -136,8 +135,8 @@ MIT License — see LICENSE.md
 ## Notes
 
 - Status badge: `red` for `in development`, `brightgreen` for `active`
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Usage section เท่านั้น
-- UI Sketch: text codeblock วาด layout ด้านบน Get Started
+- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Flow Diagram + Usage section เท่านั้น
+- Flow Diagram: text codeblock วาด flow การทำงาน (input → process → output) ด้านบน Get Started — ห้ามวาด file structure
 - Get Started: numbered list ตรงๆ ไม่มี `###`
 - Features: 5 columns (Icon, Feature, Description, Benefit, Usage)
 - Usage: แต่ละ method มี `### Usage via ...` + text/code + ANSI drawing + references table (ถ้ามี API)

@@ -9,6 +9,7 @@ related:
   - deep-research
   - follow-best-practice
   - learn-from-references
+  - follow-reusable
   - refactor
   - implement-to-production
   - dont-over-engineer

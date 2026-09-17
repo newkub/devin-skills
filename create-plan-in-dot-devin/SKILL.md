@@ -7,7 +7,7 @@ related:
   - plan
   - deep-review-then-fix
   - review-plan
-  - report-uxui-sketch
+  - report-uxui
   - report-architecture-diagram
   - implement-to-production
   - ask-me
@@ -48,7 +48,7 @@ related:
    - `Score = (Impact + Effect) / (Risk × Phase)`
 3. เรียงลำดับ features ตาม `Score` สูง → ต่ำ แล้ว `Phase` ต่ำ → สูง (กรณี `Score` เท่ากัน)
 4. ทำ `/plan` เพื่อวาง dependencies ระหว่าง features
-5. ทำ `/report-uxui-sketch` สำหรับแต่ละ feature ที่ต้องการ visualize (ถ้ามี)
+5. ทำ `/report-uxui` สำหรับแต่ละ feature ที่ต้องการ visualize (ถ้ามี)
 
 ### 3. Plan And Refine
 
@@ -57,7 +57,7 @@ related:
 1. ทำ `/deep-review-then-fix` กับเนื้อหาแผน
 2. ทำ `/review-plan` เพื่อตรวจคุณภาพ
 3. ถ้าพบปัญหา → `/deep-review-then-fix` ซ้ำ (max 3 รอบ)
-4. ทำ `/report-uxui-sketch` หรือ `/report-architecture-diagram` สำหรับภาพรวม visual (ถ้าต้องการ)
+4. ทำ `/report-uxui` หรือ `/report-architecture-diagram` สำหรับภาพรวม visual (ถ้าต้องการ)
 
 ### 4. Check For Duplicate
 
@@ -77,7 +77,7 @@ related:
 - `## Architecture` — ANSI diagram ตรงกลาง (ถ้ามี)
 - `## Idea Features`
   - `### Scoring` — สูตรและ scale
-  - `### Visual` — รวม `/report-uxui-sketch` ของแต่ละ feature (ถ้ามี)
+  - `### Visual` — รวม `/report-uxui` ของแต่ละ feature (ถ้ามี)
   - `### Features` — table มี `Icon`, `No.`, `Feature`, `Description`, `Dependencies`, `Files Change`, `Benefit`, `Impact`, `Risk`, `Effect`, `Score`, `Phase`, `Test`
     - คอลัมน์ `Dependencies` เพิ่มเมื่อมี dependencies ระหว่าง features ถ้าไม่มีให้ละเว้นคอลัมน์นี้
 - `## TODO` — task table มี `No.`, `Task`, `Status`, `Depends On`, `Expected Outcome`
@@ -140,7 +140,7 @@ related:
 
 - ไฟล์ `.devin/plan/<workspace>/<title>-<date>.md` ถูกสร้างด้วย plan ที่มี features table, scoring math, TODO table, Execution Order
 - Plan body อ่านง่าย มี Iconify icons, color, และ centered diagram
-- แต่ละ feature ที่ต้องการ visual มี `/report-uxui-sketch` ประกอบ
+- แต่ละ feature ที่ต้องการ visual มี `/report-uxui` ประกอบ
 - ไฟล์แผนถูกเปิดใน editor
 - Plan สามารถ track ความคืบหน้าได้ด้วย `/implement-to-production`
 - ทุก reference ใน `references/` ถูกใช้งาน

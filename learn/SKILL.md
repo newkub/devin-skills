@@ -23,7 +23,8 @@ related:
 | Topic | Skill |
 |-------|-------|
 | References / Web / CLI | `/learn-from-references` — เรียนรู้จาก `references/`, official docs (DeepWiki, Context7, Web Search) และ CLI discovery แล้วเขียน content ครอบคลุม |
-| Codebase | `/learn-codebase` — learning path และ concept map ของ codebase |
+| Web | `/learn-from-web` — learning path จาก URL/topic ภายนอก พร้อม citations |
+| Codebase | `/learn-from-codebase` — `/deep-analyze` + learning path และ concept map ของ codebase |
 | Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
 | Slides | `/learn-by-slide` — สร้าง Slidev presentation สรุปความรู้ |
 

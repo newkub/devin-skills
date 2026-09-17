@@ -41,28 +41,35 @@ related:
    - `product`: มี auth, `private: true`, license commercial — `references/product.md`
    - `open-source`: ไม่มี auth, license เปิด — `references/open-source.md`
    - `cli`: มี `bin` หรือ CLI framework ใน `package.json` — `references/cli.md`
-4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product) — ถ้า CLI ให้ใช้ `cli` docs type
+   - `library`: มี `exports`/`main`+`types` ไม่มี `bin` ผู้ใช้ install ผ่าน package manager — `references/library.md`
+   - `website`: deployable web app (framework + `dev`/`build` output) — `references/website.md`
+   - `monorepo`: layered on base type — `references/monorepo.md`
+4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product) — ถ้า CLI ให้ใช้ `cli` docs type; ถ้า publish เป็น package ให้ใช้ `library` docs type; ถ้า deployable web app ให้ใช้ `website` docs type
 
 ### 2. Ensure Docs Structure
 
 > Goal: มี directory structure พื้นฐานสำหรับ markdown docs
 
+0. **Generated-docs detection**: ถ้า `.gitignore` มี `docs/` หรือ `docs/` มี generated markers (`manifest.json`, `sources.json`, build output) — `docs/` เป็น generated output; un-ignore เฉพาะ project-owned paths ใน `.gitignore` (`docs/*` + `!docs/index.md` + `!docs/<section>/`) แล้วเขียน project docs เฉพาะ path ที่ commit ได้ — ห้ามเขียนใต้ generated dirs
 1. สร้าง `docs/` ที่ root (เสมอ ไม่ใช่ `apps/docs/`)
 2. ไม่สร้าง `docs/.vitepress/` — site config อยู่ใน scope ของ `/update-vitepress-docs`
 3. สร้างโครงสร้างหน้า:
    - `docs/index.md`
    - `docs/project/overview.md`
    - `docs/project/features.md`
+   - `docs/getting-started/quickstart.md`
    - `docs/getting-started/installation.md`
    - `docs/getting-started/usage.md`
    - `docs/development/setup.md`
    - `docs/development/architecture.md`
    - `docs/development/workflows.md`
    - `docs/development/testing.md`
+   - `docs/development/deployment.md`
+   - `docs/development/troubleshooting.md`
    - `docs/references/`
    - `docs/roadmap/index.md`
 4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
-5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`
+5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`, `references/api.md` + `comparison.md` + `glossary.md` สำหรับ `library`
 
 ### 3. Write Index TOC
 
@@ -79,15 +86,19 @@ related:
 1. ทุกหน้าใช้ template เฉพาะจาก `templates/index.md` — fallback `templates/content-page.md` เฉพาะหน้าที่ไม่มี template เฉพาะ
 2. `project/overview.md`: ใช้ `templates/overview.md` — สรุป project, architecture, tech stack, key concepts
 3. `project/features.md`: ใช้ `templates/features.md` — รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
-4. `getting-started/installation.md`: ใช้ `templates/installation.md` — ขั้นตอนติดตั้ง ตรวจ dependencies
-5. `getting-started/usage.md`: ใช้ `templates/usage.md` — ตัวอย่างใช้งานจริง
-6. `development/setup.md`: ตั้งค่า dev environment
-7. `development/architecture.md`: ใช้ `templates/architecture.md` — สถาปัตยกรรม, conventions, boundaries
-8. `development/workflows.md`: ใช้ `templates/workflows.md` — slash commands, scripts, CI/CD
-9. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/reports/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
-10. `references/`: สรุป references ด้วย templates เฉพาะ — `api.md`/`configuration.md`/`changelog.md`/`faq.md`/`glossary.md` ใช้ template ชื่อเดียวกัน; open-source type เพิ่ม `contributing.md` ด้วย `templates/contributing.md`; product type เพิ่ม `auth.md` ด้วย `templates/auth.md`; cli type เพิ่ม `commands/<name>.md` ด้วย `templates/commands.md`; `development/deployment.md` ใช้ `templates/deployment.md`
-11. `roadmap/index.md`: ใช้ `templates/roadmap.md` — สรุป roadmap (Now/Next/Later)
-12. monorepo: `workspaces/<name>.md` ใช้ `templates/workspace.md`
+4. `getting-started/quickstart.md`: ใช้ `templates/quickstart.md` — path สั้นสุด <5min
+5. `getting-started/installation.md`: ใช้ `templates/installation.md` — ขั้นตอนติดตั้ง ตรวจ dependencies
+6. `getting-started/usage.md`: ใช้ `templates/usage.md` — ตัวอย่างใช้งานจริง
+7. `development/setup.md`: ตั้งค่า dev environment
+8. `development/architecture.md`: ใช้ `templates/architecture.md` — สถาปัตยกรรม, conventions, boundaries
+9. `development/workflows.md`: ใช้ `templates/workflows.md` — slash commands, scripts, CI/CD
+10. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/reports/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
+11. `development/deployment.md`: ใช้ `templates/deployment.md` — pipeline, secrets, rollback
+12. `development/troubleshooting.md`: ใช้ `templates/troubleshooting.md` — symptom → fix
+13. `references/`: สรุป references ด้วย templates เฉพาะ — `api.md`/`configuration.md`/`changelog.md`/`faq.md`/`glossary.md`/`security.md`/`performance.md`/`migration.md`/`comparison.md` ใช้ template ชื่อเดียวกัน; open-source type เพิ่ม `contributing.md` ด้วย `templates/contributing.md`; product type เพิ่ม `auth.md` ด้วย `templates/auth.md`; cli type เพิ่ม `commands/<name>.md` ด้วย `templates/commands.md`
+14. `project/decisions/NNNN-*.md`: ใช้ `templates/adr.md` — ADR ต่อ decision เมื่อมี architecture choices ที่ไม่ชัดเจน
+15. `roadmap/index.md`: ใช้ `templates/roadmap.md` — สรุป roadmap (Now/Next/Later)
+16. monorepo: `workspaces/<name>.md` ใช้ `templates/workspace.md`
 
 ### 5. Integrate `update-features-md`
 
@@ -106,13 +117,23 @@ related:
 1. ทำ `/review-writing`
 2. ตรวจ heading structure, frontmatter, links
 3. แก้ไขซ้ำซ้อนหรือ placeholder
+4. หน้าละ ≤ ~150 บรรทัด — เกินให้ split เป็นหน้าย่อยแล้ว link จาก index
+
+### 6b. Drift Check
+
+> Goal: docs ไม่ล้าหลัง code
+
+1. เทียบ `project/features.md` + `references/api.md` กับ source จริง — `package.json` exports/scripts, `src/` modules, routes
+2. row ใดไม่มีใน code → ลบหรือ mark `deprecated`; module ใหม่ที่ยังไม่มี row → เพิ่ม
+3. เทียบ commands ใน docs กับ `package.json` scripts — ห้ามสอน command ที่ไม่มี
+4. staleness: ใส่ `> Last verified: <YYYY-MM-DD>` ท้ายหน้าที่มี data เปลี่ยนบ่อย (features, api, changelog)
 
 ### 7. Update References
 
 > Goal: links ไม่เสีย
 
 1. ทำ `/update-references`
-2. ตรวจ internal links ระหว่างหน้าใน `docs/` และ links ใน `docs/index.md`
+2. ตรวจ internal links ระหว่างหน้าใน `docs/` และ links ใน `docs/index.md` — verify ทุก link resolve เป็นไฟล์จริง (เช่น `Select-String` หา `](` แล้วเทียบกับ file listing; ห้าม link เสีย)
 3. อัปเดท README ให้ลิงก์ไป docs
 
 ### Doc Skills
@@ -154,6 +175,7 @@ related:
   ```
 - title ใช้ Title Case
 - description ≤ 120 ตัวอักษร
+- optional keys: `since: <version>` (API ใหม่), `deprecated: <version>` — ใช้เมื่อ docs ระบุ API surface
 
 ### 4. Feature Tables
 
