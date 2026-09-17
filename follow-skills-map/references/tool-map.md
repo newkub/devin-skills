@@ -78,6 +78,7 @@
 | git hooks | `hk` / `lefthook` | installed | `/follow-tool-hk` |
 | clone template | `giget` | installed | `/create-*` |
 | compile cache | `sccache` | installed | Rust builds |
+| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-lib-devframe` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
 | OCI image from source | `nixpacks` | installed (scoop) | `/follow-create-docker` |
 
