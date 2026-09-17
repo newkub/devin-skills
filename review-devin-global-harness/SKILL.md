@@ -45,7 +45,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 > Goal: inventory ทุก layer ของ harness
 
 1. ทำตาม `references/prepare.md`
-2. รวบรวม inventory: skills dirs, `~/.config/devin/agents/*` (AGENT.md), hooks config, MCP config, `global_rules.md`
+2. รวบรวม inventory: skills dirs, `%APPDATA%\devin\agents\*` (AGENT.md), hooks config, MCP config, `global_rules.md`
 
 ### 2. Run Review Script
 
