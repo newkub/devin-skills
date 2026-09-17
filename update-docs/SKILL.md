@@ -50,7 +50,7 @@ related:
 
 > Goal: มี directory structure พื้นฐานสำหรับ markdown docs
 
-0. **Generated-docs detection**: ถ้า `.gitignore` มี `docs/` หรือ `docs/` มี generated markers (`manifest.json`, `sources.json`, build output) — `docs/` เป็น generated output; un-ignore เฉพาะ project-owned paths ใน `.gitignore` (`docs/*` + `!docs/index.md` + `!docs/<section>/`) แล้วเขียน project docs เฉพาะ path ที่ commit ได้ — ห้ามเขียนใต้ generated dirs
+0. `Generated-docs detection`: ถ้า `.gitignore` มี `docs/` หรือ `docs/` มี generated markers (`manifest.json`, `sources.json`, build output) — `docs/` เป็น generated output; un-ignore เฉพาะ project-owned paths ใน `.gitignore` (`docs/*` + `!docs/index.md` + `!docs/<section>/`) แล้วเขียน project docs เฉพาะ path ที่ commit ได้ — ห้ามเขียนใต้ generated dirs
 1. สร้าง `docs/` ที่ root (เสมอ ไม่ใช่ `apps/docs/`)
 2. ไม่สร้าง `docs/.vitepress/` — site config อยู่ใน scope ของ `/update-vitepress-docs`
 3. สร้างโครงสร้างหน้า:

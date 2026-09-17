@@ -42,7 +42,7 @@ related:
 
 > Goal: Vue + Vite app พร้อม Comark
 
-1. **ใช้ `create-docs` (canonical generator) ก่อนเสมอ** — `bunx create-docs` (หรือ `npx create-docs`, repo: `wrikka/create-docs`) scaffold site ตาม spec นี้ทั้งหมด; ถ้า generator ใช้ไม่ได้ (ยังไม่ publish/network) → fallback เป็น manual steps ข้างล่าง
+1. ใช้ `create-docs` (canonical generator) ก่อนเสมอ — `bunx create-docs` (หรือ `npx create-docs`, repo: `wrikka/create-docs`) scaffold site ตาม spec นี้ทั้งหมด; ถ้า generator ใช้ไม่ได้ (ยังไม่ publish/network) → fallback เป็น manual steps ข้างล่าง
 2. Manual fallback: `bun create vite <name> --template vue-ts` (หรือ add เข้า repo เดิมที่ `site/` หรือ `docs-site/`)
 3. `bun add @comark/vue` และ plugins ตามต้องการ (shiki สำหรับ code highlight)
 4. ตาม [references/comark-vue.md](references/comark-vue.md) — `<Markdown>` ต้องอยู่ใน `<Suspense>`, ใช้ `:value` หรือ slot

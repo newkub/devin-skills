@@ -25,7 +25,7 @@ related:
 ใช้กับทุกการวางแผน — ตั้งแต่งานทั่วไปจนถึงงานซับซ้อนสูง/เสี่ยงสูง — ครอบคลุม tasks, libraries, implementation path, file architecture, module structure, test strategy และการ validate แผน
 
 - Output: ตอบแผนในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/plan/`)
-- Boundary: `/plan` เป็น alias ของ skill นี้; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; ถ้าต้องการ persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เองโดยตรง
+- Boundary: `/plan` เป็น alias ของ `/deep-analyze-and-plan` (canonical analyze+plan); ต้องการตัดสินใจร่วมกับ user → `/ask-me`; ถ้าต้องการ persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เองโดยตรง
 
 - ดูเพิ่มเติม: /follow-deep-review, /deep-thinking, /deep-research
 

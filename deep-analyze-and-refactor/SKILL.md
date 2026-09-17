@@ -25,7 +25,7 @@ related:
 - ถ้าต้องการ analyze อย่างเดียว → `/deep-analyze`
 - ถ้าต้องการ refactor เป้าหมายที่รู้อยู่แล้ว → `/refactor`
 - ถ้าต้องการ review แล้ว fix ทั่วไป → `/fix` (merged `deep-review-then-fix`)
-- ถ้า analysis ต้องการ metrics จาก scripts → `/deep-analyze-with-use-scripts`
+- ถ้า analysis ต้องการ metrics จาก scripts → `/deep-analyze-by-use-scripts`
 
 ## Execute
 

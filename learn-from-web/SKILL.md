@@ -19,6 +19,7 @@ related:
 - ใช้เมื่อต้องเรียนรู้จาก URL/docs/article/repo ภายนอก — ไม่ใช่ codebase ในเครื่อง (ใช้ `/learn-from-codebase`)
 - ครอบคลุม: official docs, guides, API references, blog posts, GitHub repos
 - Output: learning path ในแชท หรือ `.devin/` — ไม่แก้ code
+- ดูเพิ่มเติม: `/learn-from-references` (รวม CLI + references), `/deep-research` (cross-check หลายแหล่ง/เสี่ยงสูง)
 
 ## Execute
 

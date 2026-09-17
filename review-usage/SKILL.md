@@ -33,7 +33,7 @@ Review usage surface ของ project จากมุมผู้ใช้ — 
 > Goal: usage docs สดก่อน review เสมอ
 
 1. ทำ `/update-usage-md` ก่อนเสมอ — `USAGE.md` ต้องสะท้อน code ปัจจุบัน
-2. ถ้า project ไม่มี usage docs → สร้างผ่าน step นี้ก่อน (หรือ draft กับ `/design-usage-md-with-me-first`)
+2. ถ้า project ไม่มี usage docs → สร้างผ่าน step นี้ก่อน (หรือ draft กับ `/design-usage-md-by-me-first`)
 3. แก้ statements ใน `USAGE.md` ที่ไม่ตรง code ได้เลยใน step นี้ (refresh ไม่นับเป็น "แก้ docs ระหว่าง review") — docs อื่น (`README.md`, `docs/`) ห้ามแก้
 4. บันทึก snapshot ของ documented surface: commands, API items, member/method names, flows ที่ docs อ้างถึง พร้อม file:line ของแต่ละ claim
 

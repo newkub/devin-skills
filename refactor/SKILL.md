@@ -3,7 +3,6 @@ name: refactor
 description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
 argument-hint: "[@files... | scope]"
 related:
-  - follow-review
   - refactor-workspace
   - update-references
   - update-tests

@@ -1,5 +1,5 @@
 ---
-name: deep-analyze-with-use-scripts
+name: deep-analyze-by-use-scripts
 description: Alias for deep-analyze — scripts-driven analysis merged into canonical skill
 argument-hint: "[scope|report]"
 related:

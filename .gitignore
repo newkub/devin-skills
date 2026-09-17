@@ -26,3 +26,6 @@ target/
 # Wrangler cache / account info
 .wrangler/
 
+# Generated reports
+.devin/reports/
+

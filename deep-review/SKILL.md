@@ -15,8 +15,6 @@ related:
   - use-scripts
   - review
   - review-gaps
-  - review-diff
-  - review-risk
   - review-by-stakeholder
   - report
   - suggest-next-action

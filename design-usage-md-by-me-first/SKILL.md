@@ -1,5 +1,5 @@
 ---
-name: design-usage-md-with-me-first
+name: design-usage-md-by-me-first
 description: Draft USAGE-<workspace>.md กับ user ใน OS temp ก่อน — iterate จนตกลงแล้วค่อยเขียนจริง
 argument-hint: "[workspace]"
 related:

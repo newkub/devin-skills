@@ -29,11 +29,12 @@ related:
 - พบ code ซ้ำซ้อน (copy-paste, near-duplicate) ระหว่าง refactor
 - ต้องตัดสินใจว่าจะ reuse, extend, extract หรือสร้างใหม่
 
-ขอบเขตเทียบกับ skills ใกล้เคียง — skill นี้ครอบคลุม **internal code reuse** เท่านั้น:
+ขอบเขตเทียบกับ skills ใกล้เคียง — skill นี้ครอบคลุม `internal code reuse` เท่านั้น:
 
 - reuse dependencies/packages ภายนอก → `/use-lib-effective`
 - dedup data/config/docs facts → `/follow-single-of-source`
 - ค้นหา skill/pattern ที่คล้ายกัน → `/search-similar`
+- ตั้งค่า/ใช้งาน ast-grep ทั่วไป (rules, scan config) → `/use-astgrep`
 
 ## Execute
 
@@ -58,10 +59,10 @@ related:
 
 > Goal: เลือกวิธี reuse ที่เหมาะสม — reuse > extend > extract > create
 
-1. **Direct reuse** — import/compose implementation เดิมตรงๆ เมื่อ signature ตรง use case
-2. **Extend** — เพิ่ม parameter/option หรือ compose ให้ของเดิมครอบ use case ใหม่ — ห้าม fork/copy แล้วแก้
-3. **Extract** — ถ้า logic เดียวกันกระจาย ≥3 จุด (rule of three) → extract ไป canonical location เดียวตาม `/follow-single-of-source`
-4. **Create new** — เฉพาะเมื่อไม่มีของเดิมจริง หรือ forcing reuse ทำ coupling ผิด domain — ต้อง justify ใน report
+1. `Direct reuse` — import/compose implementation เดิมตรงๆ เมื่อ signature ตรง use case
+2. `Extend` — เพิ่ม parameter/option หรือ compose ให้ของเดิมครอบ use case ใหม่ — ห้าม fork/copy แล้วแก้
+3. `Extract` — ถ้า logic เดียวกันกระจาย ≥3 จุด (rule of three) → extract ไป canonical location เดียวตาม `/follow-single-of-source`
+4. `Create new` — เฉพาะเมื่อไม่มีของเดิมจริง หรือ forcing reuse ทำ coupling ผิด domain — ต้อง justify ใน report
 
 ### 4. Apply And Wire
 
@@ -81,7 +82,7 @@ related:
 
 ## Rules
 
-- ลำดับบังคับ: **reuse > extend > extract > create** — create เป็น last resort พร้อม justification ใน report
+- ลำดับบังคับ: `reuse > extend > extract > create` — create เป็น last resort พร้อม justification ใน report
 - Rule of three — ซ้ำ 2 จุดยัง tolerate ได้; ซ้ำ ≥3 จุดต้อง extract
 - Reuse ต้อง same domain — ห้าม couple code ข้าม domain เพียงเพราะหน้าตาเหมือนกัน (coincidental duplication)
 - Preserve behavior — consolidation คือ refactor ห้ามเปลี่ยน observable behavior

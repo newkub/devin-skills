@@ -1,6 +1,6 @@
 ---
 name: deep-analyze-and-plan
-description: Canonical analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready ในคำสั่งเดียว (merged from: plan)
+description: Canonical analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready ในคำสั่งเดียว
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -24,7 +24,7 @@ related:
 ใช้กับงานที่ต้องเข้าใจ codebase ก่อนวางแผน — refactors, features, migrations, extractions (component → hook, duplication → shared) — ครอบคลุม analysis findings, dependency decisions, file architecture, task graph, risks และ test strategy
 
 - Output: ตอบ plan ในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/plan/`)
-- Boundary: `/plan` เป็น alias ของ skill นี้; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
+- Boundary: `/plan` เป็น alias ของ skill นี้; planning-only ที่ไม่ต้อง analyze → `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
 - อ่านก่อนทำงานเสมอ: `/deep-refactor` (refactor patterns + safety) และ `/deep-implement-to-production` (production-readiness checklist) — plan ต้องออกแบบให้ผ่านทั้งสองมาตรฐาน
 
 ## Execute
@@ -63,13 +63,13 @@ related:
 
 ทุก task ต้องระบุ:
 
-1. **File**: path เต็ม — action: create / edit / delete / move
-2. **What**: public API signatures, exported types, data structures, config keys
-3. **How**: pattern/approach — library, convention ใน codebase, code sketch ถ้าจำเป็น
-4. **Deps**: dependencies ที่ task ใช้ — existing (`name@version` จาก manifest) หรือ new (`name@version` + เหตุผล + อายุ publish)
-5. **Why**: เหตุผล + alternatives ที่ปฏิเสธ
-6. **Acceptance**: เงื่อนไขผ่านที่วัดได้ — test case, command, expected output
-7. **Risk**: impact ถ้าผิด + rollback/mitigation
+1. `File`: path เต็ม — action: create / edit / delete / move
+2. `What`: public API signatures, exported types, data structures, config keys
+3. `How`: pattern/approach — library, convention ใน codebase, code sketch ถ้าจำเป็น
+4. `Deps`: dependencies ที่ task ใช้ — existing (`name@version` จาก manifest) หรือ new (`name@version` + เหตุผล + อายุ publish)
+5. `Why`: เหตุผล + alternatives ที่ปฏิเสธ
+6. `Acceptance`: เงื่อนไขผ่านที่วัดได้ — test case, command, expected output
+7. `Risk`: impact ถ้าผิด + rollback/mitigation
 
 สำหรับ reuse/refactor work:
 

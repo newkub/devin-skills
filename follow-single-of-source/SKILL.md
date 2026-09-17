@@ -26,6 +26,7 @@ related:
 - config values — define ที่เดียวแล้ว inject/import (env, tokens, versions)
 - docs — facts ที่เปลี่ยนบ่อย (counts, versions, commands) มี source เดียว
 - data/schema — model definition เดียว derive types/forms/validation
+- reuse internal code ที่มีอยู่ก่อนเขียนใหม่ (DRY) → `/follow-reusable`
 
 ## Execute
 

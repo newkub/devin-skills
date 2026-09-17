@@ -32,7 +32,7 @@ related:
 > Goal: เรียนรู้ codebase จริงก่อนเขียน — ห้ามเขียนจากการเดา
 
 1. ทำ `/learn-from-codebase` ก่อนเสมอ — ภายในมี `/deep-analyze` (tech stack, structure, entry points, data flow)
-2. ใช้ข้อมูลที่เรียนมาเขียน README **จริง** — ทุก claim ต้องมี source จาก code/docs ที่ verify แล้ว ไม่ใช่ boilerplate
+2. ใช้ข้อมูลที่เรียนมาเขียน README จริง — ทุก claim ต้องมี source จาก code/docs ที่ verify แล้ว ไม่ใช่ boilerplate
 3. จากนั้นทำ prepare ตาม `references/prepare.md` (detect project type, status, CONTRIBUTING/LICENSE/CHANGELOG)
 
 ### 2. Read Sample READMEs
@@ -106,7 +106,7 @@ related:
 
 ### 3. Report ANSI
 
-- Flow Diagram (ด้านบน Get Started) = **flow diagram เท่านั้น** — แสดงการทำงาน/ลำดับขั้นตอน/data flow — ห้ามวาด file structure หรือ UI mockup ตรงนั้น
+- Flow Diagram (ด้านบน Get Started) = `flow diagram เท่านั้น` — แสดงการทำงาน/ลำดับขั้นตอน/data flow — ห้ามวาด file structure หรือ UI mockup ตรงนั้น
 - ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Flow Diagram + Usage section เท่านั้น
 - ไม่มี ANSI codeblock ด้านล่างสุดของ README
 
