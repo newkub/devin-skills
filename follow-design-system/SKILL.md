@@ -7,7 +7,6 @@ related:
   - review-frontend
   - deep-review
   - review-uxui
-  - deep-optimize
   - capture
 ---
 
@@ -107,7 +106,6 @@ related:
 - UPPER_SNAKE_CASE สำหรับ constants
 
 - ใช้ /review-uxui ถ้าจำเป็น
-- ใช้ /deep-optimize ถ้าจำเป็น
 
 ## Expected Outcome
 

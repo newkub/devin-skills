@@ -68,6 +68,53 @@ export async function fetchDiff(source: DiffSource): Promise<string> {
   throw new Error('Unknown diff source');
 }
 
+export interface PrListItem {
+  number: number;
+  title: string;
+  author?: { login: string };
+  state: string;
+}
+
+export async function fetchPrs(repo?: string): Promise<PrListItem[]> {
+  if (!(await exists('gh'))) return [];
+  const args = ['pr', 'list', '--json', 'number,title,author,state', '--limit', '30', '--state', 'open'];
+  if (repo) args.push('--repo', repo);
+  try {
+    const out = await run(['gh', ...args]);
+    return JSON.parse(out || '[]');
+  } catch {
+    return [];
+  }
+}
+
+export interface RefsResult {
+  branches: string[];
+  tags: string[];
+  commits: { sha: string; subject: string }[];
+}
+
+export async function fetchRefs(repoPath?: string): Promise<RefsResult> {
+  if (!(await exists('git'))) return { branches: [], tags: [], commits: [] };
+  const empty: RefsResult = { branches: [], tags: [], commits: [] };
+  try {
+    const [branches, tags, log] = await Promise.all([
+      run(['git', 'branch', '-a', '--format=%(refname:short)'], repoPath).catch(() => ''),
+      run(['git', 'tag', '-l', '--sort=-creatordate'], repoPath).catch(() => ''),
+      run(['git', 'log', '--oneline', '-15', '--all'], repoPath).catch(() => ''),
+    ]);
+    return {
+      branches: branches.split('\n').map((s) => s.trim()).filter(Boolean).slice(0, 50),
+      tags: tags.split('\n').map((s) => s.trim()).filter(Boolean).slice(0, 30),
+      commits: log.split('\n').filter(Boolean).map((l) => {
+        const sp = l.indexOf(' ');
+        return { sha: l.slice(0, sp), subject: l.slice(sp + 1).trim() };
+      }),
+    };
+  } catch {
+    return empty;
+  }
+}
+
 export async function fetchPrMeta(source: Extract<DiffSource, { kind: 'pr' }>) {
   if (!(await exists('gh'))) return null;
   const args = ['pr', 'view', String(source.pr), '--json', 'title,author,state,url,number'];

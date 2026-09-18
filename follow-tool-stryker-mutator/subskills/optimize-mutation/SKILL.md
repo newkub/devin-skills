@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-tool-stryker-mutator
   - run-test
-  - deep-optimize
   - check-bottlenecks
   - setup-cicd
 ---

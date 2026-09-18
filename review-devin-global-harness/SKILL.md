@@ -51,21 +51,21 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 > Goal: ได้ findings จาก automated checks
 
-1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ frontmatter, sections, line count, style, references, parallel markers, template compliance และ cross-skill checks
+1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ frontmatter, sections, line count, style, references, parallel markers, template compliance และ cross-skill checks — **script ครอบเฉพาะ skills layer แบบ mechanical; hooks/mcp/global rules ไม่มี script ต้อง manual เท่านั้น**
 2. ใช้ `bun run review:ci` สำหรับ pre-check ก่อน `update-devin-*` (exit 1 เมื่อ Critical/High)
-3. อ่าน `review-skills-report.json` เพื่อดู findings ทั้งหมด
+3. อ่าน `review-skills-report.json` เพื่อดู findings ทั้งหมด — findings จาก script = input ของ Step 3 ไม่ใช่ผลลัพธ์สุดท้าย
 
 ### 3. Review Each Layer
 
 > Goal: ตรวจแต่ละ layer ตามมาตรฐานของมัน
 
-1. `skills` → ทำตาม `references/frontmatter.md`, `references/sections.md`, `references/style.md`, `references/line-count.md`, `references/template-selection.md`
+1. `skills` → แยกงาน: script (Step 2) ครอบ mechanical checks แล้ว — manual ทำเฉพาะ interpretation/quality ที่ script ตรวจไม่ได้ ตาม `references/content-quality.md`; references ข้างล่างใช้เมื่อต้องเข้าใจเกณฑ์ที่ script ใช้: `references/frontmatter.md`, `references/sections.md`, `references/style.md`, `references/line-count.md`, `references/template-selection.md`
 2. `subagents` → ตรวจ AGENT.md ทุกตัวใน `%APPDATA%\devin\agents`: frontmatter, sections, line count, style, safety — ใช้มาตรฐานเดียวกับ skills; รายงาน finding ต่อ agent
-3. `hooks` → ตรวจ trigger event ถูกต้อง, command path มีจริง, ไม่ infinite loop, ไม่ duplicate hooks
-4. `mcp` → ตรวจ server config: enabled, env vars ครบ, ไม่ซ้ำ server เดียวกัน, tool names ไม่ชน
+3. `hooks` → ทำตาม `references/hooks.md` — trigger event ถูกต้อง, command path มีจริง, ไม่ infinite loop, ไม่ duplicate hooks, ไม่ block workflow
+4. `mcp` → ทำตาม `references/mcp.md` — server config: enabled, env vars ครบ, ไม่ซ้ำ server เดียวกัน, tool names ไม่ชน, ไม่ dead config
 5. `global rules` → ทำตาม `references/refs-check-global-rules.md` — skills ที่อ้างมีจริง, ลำดับ Execute ไม่ขัดแย้ง, ไม่มี stale skill names
 
-### 4. Cross-Layer Alignment
+### 4. Cross-Layer Alignment — ทำตาม `/review-alignment` (canonical)
 
 > Goal: ตรวจ layers อ้างกันถูกต้อง
 
@@ -90,7 +90,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. ทำตาม `references/refactor-guide.md#cross-skill-consistency`
 3. ระบุ SKILL.md ที่ควร refactor — เนื้อหาซ้ำ, >250 บรรทัด, ขาด sections, SRP เบลอ → รายการเป็น action items
 
-### 7. Redundancy Audit (merged from: review-redundancy)
+### 7. Redundancy Audit — ทำตาม `/review-redundancy` (canonical; merged from: review-redundancy)
 
 > Goal: ตรวจหา skills/layers ที่ซ้ำซ้อนหรือไม่จำเป็น
 
@@ -104,8 +104,8 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 > Goal: ตรวจ references ไม่ขาด/ซ้ำ/วน ทุก layer
 
-1. ทำตาม `references/refs-inventory-skills.md`, `refs-check-agentsmd.md`, `refs-check-frontmatter.md`, `refs-check-in-body.md`
-2. ตรวจ circular ตาม `references/refs-check-circular.md`
+1. script (Step 2) ตรวจ mechanical ref existence แล้ว — manual ตรวจเฉพาะ semantics: ทำตาม `references/refs-inventory-skills.md`, `refs-check-agentsmd.md`, `refs-check-frontmatter.md`, `refs-check-in-body.md`
+2. ตรวจ circular ตาม `references/refs-check-circular.md` — script ไม่ตรวจจุดนี้
 3. score ตาม `references/refs-scoring.md`, report ตาม `references/refs-report.md`
 4. refs ขาด/ซ้ำ → `/update-references` หลัง user confirm
 
@@ -173,6 +173,18 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- [Frontmatter](references/frontmatter.md)
+- [Sections](references/sections.md)
+- [Style](references/style.md)
+- [Line count](references/line-count.md)
+- [Hooks checklist](references/hooks.md)
+- [MCP checklist](references/mcp.md)
+- [Redundancy audit](references/redundancy-inventory-group.md)
+- [References integrity](references/refs-inventory-skills.md)
+- [Global rules check](references/refs-check-global-rules.md)
+- [Context rot](references/context-rot.md)
+- [Refactor guide](references/refactor-guide.md)
+- [Scoring](references/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 

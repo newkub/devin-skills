@@ -20,6 +20,7 @@ export default function HelpModal(props: { onClose: () => void }) {
           <span><kbd class="kbd">w</kbd></span><span class="dim">Toggle line wrap</span>
           <span><kbd class="kbd">r</kbd></span><span class="dim">Reload diff</span>
           <span><kbd class="kbd">t</kbd></span><span class="dim">Toggle theme</span>
+          <span><kbd class="kbd">b</kbd></span><span class="dim">Toggle sidebar</span>
           <span><kbd class="kbd">?</kbd></span><span class="dim">This help</span>
           <span><kbd class="kbd">Esc</kbd></span><span class="dim">Close menu / blur input</span>
         </div>

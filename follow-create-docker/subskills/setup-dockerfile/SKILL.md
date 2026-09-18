@@ -4,7 +4,7 @@ description: สร้าง Dockerfile ที่ production-ready — multi-sta
 argument-hint: "[app-type]"
 related:
   - follow-create-docker
-  - review-docker
+  - review-iac
   - follow-best-practice
   - ask-me
 ---

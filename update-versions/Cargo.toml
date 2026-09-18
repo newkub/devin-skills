@@ -1,0 +1,13 @@
+[package]
+name = "update-versions"
+version = "0.1.0"
+edition = "2021"
+description = "One-shot dependency/runtime/tool version updater across ecosystems (Bun, Rust, Go, Python, mise, GitHub Actions)"
+
+[[bin]]
+name = "update-versions"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 2
+strip = true

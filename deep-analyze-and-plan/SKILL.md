@@ -7,10 +7,15 @@ related:
   - deep-plan
   - deep-thinking
   - deep-research
-  - deep-refactor
-  - deep-implement-to-production
+  - refactor
+  - implement-to-production
   - deep-validate
   - prioritize
+  - use-astgrep
+  - search-npm-libraries
+  - review-dependencies
+  - alternative
+  - report
   - ask-me
   - suggest-next-action
 ---
@@ -25,7 +30,7 @@ related:
 
 - Output: ตอบ plan ในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/plan/`)
 - Boundary: `/plan` เป็น alias ของ skill นี้; planning-only ที่ไม่ต้อง analyze → `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
-- อ่านก่อนทำงานเสมอ: `/deep-refactor` (refactor patterns + safety) และ `/deep-implement-to-production` (production-readiness checklist) — plan ต้องออกแบบให้ผ่านทั้งสองมาตรฐาน
+- อ่านก่อนทำงานเสมอ: `/refactor` (refactor patterns + safety) และ `/implement-to-production` (production-readiness checklist) — plan ต้องออกแบบให้ผ่านทั้งสองมาตรฐาน
 
 ## Execute
 
@@ -33,8 +38,8 @@ related:
 
 > Goal: plan ตาม refactor + production standards ที่มีอยู่
 
-1. อ่าน `deep-refactor/SKILL.md` — ใส่ patterns (extract, move, rename-safe) และ safety rules เข้าแผน
-2. อ่าน `deep-implement-to-production/SKILL.md` — ใส่ production checklist (error handling, validation, observability, rollback) เข้าแผน
+1. อ่าน `refactor/SKILL.md` — ใส่ patterns (extract, move, rename-safe) และ safety rules เข้าแผน
+2. อ่าน `implement-to-production/SKILL.md` — ใส่ production checklist (error handling, validation, observability, rollback) เข้าแผน
 3. บันทึก checklist items ที่แผนต้องผ่านไว้ใช้ตอน Validate
 
 ### 1. Deep Analyze
@@ -43,7 +48,7 @@ related:
 
 1. ทำ `/deep-thinking` — กำหนด objectives, sub-problems, assumptions
 2. ทำ `/scan-codebase` — structure, patterns, conventions ของ scope
-3. ใช้ `Grep`/`ast-grep` หา symbols, call sites, consumers, duplications ที่เกี่ยวข้อง
+3. ใช้ `Grep`/`ast-grep` (ตาม `/use-astgrep`) หา symbols, call sites, consumers, duplications ที่เกี่ยวข้อง
 4. อ่านไฟล์เป้าหมายจริง — ห้ามเดา APIs/paths
 5. ถ้า scope ใหญ่ → dispatch `review-*` เฉพาะ domains ที่เกี่ยว (ดู `deep-analyze` domain table)
 6. สรุป findings พร้อม evidence (file:line)
@@ -52,10 +57,10 @@ related:
 
 > Goal: decisions มี external validation เมื่อจำเป็น
 
-1. ทำ `/deep-research` เมื่อต้องเลือก deps ใหม่, pattern ใหม่, หรือ API ที่ไม่แน่ใจ
+1. ทำ `/deep-research` เมื่อต้องเลือก deps ใหม่, pattern ใหม่, หรือ API ที่ไม่แน่ใจ — Steps 1+2 ทำ parallel ได้ (independent)
 2. official docs เป็นแหล่งหลัก; cross-check ≥2 sources สำหรับ high-risk choices
-3. ทำ `/alternative` สำหรับทุก dep ใหม่ — บันทึกตัวเลือกที่ปฏิเสธพร้อมเหตุผล
-4. ระบุ compatibility กับ versions ใน manifest ปัจจุบัน
+3. ทำ `/alternative` สำหรับทุก dep ใหม่ — บันทึกตัวเลือกที่ปฏิเสธพร้อมเหตุผล; ใช้ `/search-npm-libraries` หา candidates (TypeScript+ESM)
+4. ระบุ compatibility กับ versions ใน manifest ปัจจุบันด้วย `/review-dependencies` — รวม publish age (≥7 วัน)
 
 ### 3. Write Plan
 
@@ -88,14 +93,14 @@ related:
 1. ทำ `/prioritize` — Foundation → Dependencies → High impact → Critical path → High risk
 2. จัด phases: Foundation → Core → Polish → Test + task graph (parallel/block/milestones)
 3. ทำ `/deep-validate` — ห้าม placeholder/TBD/decision ค้าง
-4. walkthrough แผนเทียบ checklist จาก `deep-refactor` + `deep-implement-to-production` ที่อ่านไว้
+4. walkthrough แผนเทียบ checklist จาก `refactor` + `implement-to-production` ที่อ่านไว้
 5. ถ้ามีหลายทางเลือกเสี่ยงสูง → สรุป options/risks แล้ว `/ask-me`
 
 ### 5. Report
 
 > Goal: plan report ครบทุกมิติ — ตอบในแชทก่อนลงมือ
 
-Report ต้องมีครบทุก section (ทุก table ขึ้นต้นด้วย `No.` column):
+ทำ `/report` — Report ต้องมีครบทุก section (ทุก table ขึ้นต้นด้วย `No.` column):
 
 1. `## Summary` — 1-2 บรรทัด: ทำอะไร ทำไม
 2. `## Analysis Findings` — table: `No. | Finding | Evidence | Impact` — findings ที่ drive แผน

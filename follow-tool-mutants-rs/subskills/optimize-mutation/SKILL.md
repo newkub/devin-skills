@@ -6,7 +6,6 @@ related:
   - follow-tool-mutants-rs
   - follow-tool-nextest
   - run-test
-  - deep-optimize
   - setup-cicd
 ---
 

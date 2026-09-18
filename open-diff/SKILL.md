@@ -27,20 +27,21 @@ related:
 - แสดง diff ด้วย `@pierre/diffs` (diffs.com)
 - Syntax highlighting ด้วย Shiki
 - Dark / light mode
-- File slider strip ด้านบน (horizontal cards เลือกตรงกลาง + path tooltip แบบ githistory)
-- Source tabs เป็น floating pill (PR/Commit/Branch/File + params pill)
+- Sidebar file tree ด้านซ้าย (group ตาม directory, collapse ได้, file-type icons, status letter, +/- badges)
+- Source tabs + params อยู่ใน nav (PR/Commit/Branch/File + dropdown เลือก PR/branches/tags/commits จาก `/api/prs`, `/api/refs`)
 - Auto-load เมื่อสั่งจาก CLI
 - Prompt ใน terminal เมื่อปิด tab
 - Action buttons (Merge ▾ merge/squash/rebase, Approve, Comment, Checkout, Close) ส่งคำสั่งไป terminal ให้ execute
 - CI status pill บน header (`gh pr checks`) — auto-poll ทุก 8s จนกว่า pending หมด
 - Merge button ถูก block จนกว่า CI เขียวครบ (pending/fail → disabled พร้อม tooltip บอก check ที่พัง)
 - Action log stream ไป terminal แบบ real-time (`[open-diff] $ cmd`, `[open-diff:out]`, `[open-diff:err]`) — เห็น merge progress ขณะ `run dev`
-- File filter/search (กด `f` เพื่อ focus)
+- File filter/search (กด `f` เพื่อ focus — อยู่ใน sidebar)
+- Sidebar toggle (กด `b`)
 - Unified/Split view toggle (`v`) และ line wrap toggle (`w`)
 - Lazy load: split raw diff เป็น chunk ต่อไฟล์ แล้ว parse เฉพาะไฟล์ที่เลือก
 - Status bar แสดง keyboard hints และไฟล์ปัจจุบัน
 - Help overlay กด `?` แสดง keyboard shortcuts ทั้งหมด
-- Keyboard: ←/→ หรือ [/] เปลี่ยน file, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, v view, w wrap, t theme, r reload, ? หรือ Shift+/ help, Esc ปิด menu/blur input
+- Keyboard: ←/→ หรือ [/] เปลี่ยน file, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, v view, w wrap, b sidebar, t theme, r reload, ? หรือ Shift+/ help, Esc ปิด menu/blur input
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit

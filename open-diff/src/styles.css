@@ -74,6 +74,31 @@ html {
   --diffs-line-height: 20px;
 }
 
+/* Stacked view — top pane shows old side, bottom shows new side */
+.diff-old [data-line-type="change-addition"] {
+  display: none !important;
+}
+
+.diff-new [data-line-type="change-deletion"] {
+  display: none !important;
+}
+
+/* File-switch transition */
+@keyframes diffIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.diff-in {
+  animation: diffIn 0.18s ease-out;
+}
+
 .kbd {
   display: inline-block;
   padding: 1px 5px;

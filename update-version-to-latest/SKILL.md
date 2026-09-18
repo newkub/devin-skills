@@ -3,6 +3,7 @@ name: update-version-to-latest
 description: อัปเดต dependencies, runtime, tools, CI ในทุก workspace ให้ latest พร้อม verify
 argument-hint: "[scope|verify]"
 related:
+  - update-versions
   - resolve-errors
   - report
   - test-usage
@@ -21,6 +22,7 @@ related:
 - ใช้เครื่องมือตาม ecosystem: `bun`/`bunx taze` สำหรับ Node/Bun, `cargo update` สำหรับ Rust, `go get -u ./...` สำหรับ Go, `pip install -U` หรือ `uv` สำหรับ Python
 - รองรับ monorepo: Moon, Turbo, pnpm workspace, Cargo workspace
 - รันทีเดียวจบ: dry-run → update → install → build → test → test-usage → report
+- fast path: `/update-versions` — Rust CLI รันทีเดียวอัปเดตทุก ecosystem (detect → update latest → verify); skill นี้ใช้เมื่อต้องการ changelog analysis, major-migration subskill หรือ commit แยก batch
 
 ## Execute
 

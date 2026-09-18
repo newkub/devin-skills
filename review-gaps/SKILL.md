@@ -101,6 +101,8 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
+- [Dimension map](references/dimension-map.md)
+- [Scoring](references/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix

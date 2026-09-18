@@ -13,6 +13,7 @@ export default function StatusFooter(props: {
       <span class="flex items-center gap-1"><kbd class="kbd">w</kbd> wrap</span>
       <span class="flex items-center gap-1"><kbd class="kbd">r</kbd> reload</span>
       <span class="flex items-center gap-1"><kbd class="kbd">t</kbd> theme</span>
+      <span class="flex items-center gap-1"><kbd class="kbd">b</kbd> sidebar</span>
       <button
         class="flex items-center gap-1 hover:text-[var(--text)] transition-colors"
         onClick={props.onOpenHelp}

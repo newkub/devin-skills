@@ -24,6 +24,7 @@ Dispatch ไป skill ปลายทาง ตาม domain ของ cleanup �
 
 | Domain | Skill |
 |---|---|
+| `artifact` | /cleanup-artifact — build artifacts + dependency caches (Rust CLI, dry-run ก่อน) |
 | `branches-merged` | /cleanup-branches-merged — local branches ที่ merge แล้ว |
 | `docker` | /cleanup-docker — images, containers, volumes ที่ไม่ใช้ |
 | `git-branch` | /cleanup-git-branch — stale/orphan branches |

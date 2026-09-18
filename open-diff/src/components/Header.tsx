@@ -1,5 +1,6 @@
 import { Show, For, type Accessor, type Setter } from 'solid-js';
-import type { DiffResult } from '../types';
+import SourceNav from './SourceNav';
+import type { DiffResult, SourceKind } from '../types';
 import type { Checks } from '../lib/use-checks';
 
 type MergeMethod = 'merge' | 'squash' | 'rebase';
@@ -26,16 +27,29 @@ export default function Header(props: {
   onToggleComment: () => void;
   theme: Accessor<'dark' | 'light'>;
   onToggleTheme: () => void;
+  source: SourceKind;
+  params: () => Record<string, string>;
+  setSource: (kind: SourceKind) => void;
+  setField: (key: string, value: string) => void;
+  onSubmitSource: (e: Event) => void;
 }) {
   const data = props.data;
   const checks = props.checks;
 
   return (
-    <header class="shrink-0 px-4 py-2 border-b border-[var(--border)] flex items-center gap-3 bg-[var(--surface)]/70">
+    <header class="shrink-0 px-4 py-2 border-b border-[var(--border)] flex items-center gap-3 bg-[var(--surface)]/70 flex-wrap">
       <div class="flex items-center gap-2">
         <div class="i-mdi-source-branch w-4 h-4 text-[var(--focus)]" />
         <h1 class="text-sm font-semibold tracking-tight">open-diff</h1>
       </div>
+
+      <SourceNav
+        source={props.source}
+        params={props.params()}
+        setSource={props.setSource}
+        setField={props.setField}
+        onSubmit={props.onSubmitSource}
+      />
 
       <Show when={data()?.prMeta}>
         <a

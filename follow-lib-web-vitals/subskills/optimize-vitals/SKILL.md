@@ -4,7 +4,6 @@ description: ปรับปรุง Core Web Vitals — LCP, INP, CLS optimiza
 argument-hint: "[metric]"
 related:
   - follow-lib-web-vitals
-  - deep-optimize
   - check-bottlenecks
   - report-before-after
   - run-profiler
@@ -69,7 +68,7 @@ related:
 - แก้ทีละจุดเรียง impact มาก → น้อย — ห้ามแก้หลายจุ่มพร้อมกันถ้าแยกผลไม่ได้
 - preserve behavior — optimize ต้องไม่เปลี่ยน UX/output
 - field data (real users) สำคัญกว่า lab scores — วัดทั้งสองแต่ field เป็นตัวตัดสิน
-- ใช้ `/follow-lib-web-vitals` สำหรับ setup และ `/deep-optimize` สำหรับงานหนัก
+- ใช้ `/follow-lib-web-vitals` สำหรับ setup
 
 ## Expected Outcome
 

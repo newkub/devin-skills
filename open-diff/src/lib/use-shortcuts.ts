@@ -14,6 +14,7 @@ export interface ShortcutDeps {
   toggleTheme: () => void;
   toggleDiffStyle: () => void;
   toggleWrap: () => void;
+  toggleSidebar: () => void;
   reload: () => void;
 }
 
@@ -57,6 +58,8 @@ export function useShortcuts(d: ShortcutDeps) {
         d.toggleDiffStyle();
       } else if (e.key === 'w' && !e.ctrlKey && !e.metaKey) {
         d.toggleWrap();
+      } else if (e.key === 'b' && !e.ctrlKey && !e.metaKey) {
+        d.toggleSidebar();
       } else if (e.key === 'r' && !e.ctrlKey && !e.metaKey) {
         e.preventDefault();
         d.reload();

@@ -1,4 +1,4 @@
-import { fetchDiff, fetchPrMeta, fetchChecks } from './git.js';
+import { fetchDiff, fetchPrMeta, fetchChecks, fetchPrs, fetchRefs } from './git.js';
 import { handleAction } from './actions.js';
 import { recordPing, promptOnClose } from './lifecycle.js';
 import { cli, sourceToQuery } from './state.js';
@@ -35,6 +35,16 @@ export async function handleApi(request: Request): Promise<Response> {
 
     if (path === 'checks') {
       return Response.json(await fetchChecks(cli?.source));
+    }
+
+    if (path === 'prs') {
+      const repo = new URL(request.url).searchParams.get('repo') || (cli?.source as any)?.repo || undefined;
+      return Response.json(await fetchPrs(repo));
+    }
+
+    if (path === 'refs') {
+      const repo = new URL(request.url).searchParams.get('repo') || (cli?.source as any)?.repo || undefined;
+      return Response.json(await fetchRefs(repo));
     }
 
     if (path === 'diff' && request.method === 'POST') {

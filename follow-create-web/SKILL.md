@@ -7,7 +7,6 @@ related:
   - review-dependencies
   - follow-lib-unocss
   - follow-robots-txt
-  - deep-optimize
   - follow-design-system
   - review-uxui
   - follow-service-cloudflare
@@ -80,7 +79,7 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
-- ทำ `/deep-optimize` สำหรับ SEO/performance/bundle
+- ทำ `/review-seo` และ `/review-bundle` สำหรับ SEO/bundle
 - ทำ `/review-frontend` ก่อน deploy
 - ทำ `/implement-to-production` หลัง website เสร็จ
 

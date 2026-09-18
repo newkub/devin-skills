@@ -118,7 +118,7 @@ related:
 
 1. ถ้า scope ใหญ่หลาย workspace → `/ship` swarm mode (Step 4); diff เล็ก (typo/docs/config) → ข้าม step 2-8 ไป step 9 ได้
 2. ทำ `/deep-review-then-fix` — review + fix issues ก่อน ship (canonical fix path)
-3. ทำ `/deep-optimize` — optimize ทุก layer ที่เกี่ยวข้อง
+3. ทำ `/check-bottlenecks` — optimize ทุก layer ที่เกี่ยวข้อง
 4. ทำ `/review-test`, `/review-dependencies` + `/update-version-to-latest`, `/review-architecture`, `/review-docs` ตาม scope
 5. ทำ `/follow-monorepo` ถ้า monorepo
 6. ทำ `/run-verify` + `/run-test-all`

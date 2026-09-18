@@ -45,7 +45,7 @@
 | `setup-` | install/config ครั้งแรก ให้ tool/service พร้อมใช้ | `follow-service-cloudflare` → `subskills/setup-wrangler` |
 | `config-` | แก้ config/env/options ของที่มีอยู่ โดยไม่ clobber | `follow-service-*` → `subskills/config-env` |
 | `follow-` | best practices/conventions ของ domain ย่อย | `follow-service-*` → `subskills/follow-auth` |
-| `optimize-` | ปรับ performance/bundle/cost โดยวัด baseline ก่อน-หลัง | `deep-optimize` → `subskills/optimize-bundle` |
+| `optimize-` | ปรับ performance/bundle/cost โดยวัด baseline ก่อน-หลัง | `follow-lib-web-vitals` → `subskills/optimize-vitals` |
 | `improve-` | ปรับคุณภาพของที่มีอยู่ โดย preserve behavior | `review-uxui` → `subskills/improve-contrast` |
 | `fix-` | แก้ findings/bugs ที่รู้ root cause — minimal + verify | `review-security` → `subskills/fix-secrets` |
 | `update-` | อัปเดตของที่มีอยู่ให้ทันสมัย — minimal diff, idempotent | `update-tests` → `subskills/update-e2e` |

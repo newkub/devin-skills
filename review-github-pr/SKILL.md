@@ -1,101 +1,24 @@
 ---
 name: review-github-pr
-description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
-argument-hint: "[pr-number]"
+description: Alias for deep-review-github-pr - merged into the canonical skill
+argument-hint: "[scope]"
 related:
-  - open
-  - list-github
-  - merge
-  - resolve-errors
-  - report
-  - suggest-next-action
-  - run-review
+  - deep-review
 ---
 
 ## Goal
 
-Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
-
-## Scope
-
-ใช้สำหรับ review pull request ก่อน merge — ทำงานบน PR จาก GitHub หรือ local branch diff — ไม่แก้ไข code โดยไม่ได้รับอนุญาต
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-review-pr) — ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
+Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review github-pr` เป็น canonical
 
 ## Execute
 
-### 1. Fetch PR Context
-> Goal: ดึง PR context
-ทำตาม [references/fetch-pr-context.md](references/fetch-pr-context.md)
-
-### 2. Review PR Metadata
-> Goal: ตรวจ PR metadata
-ทำตาม [references/pr-metadata.md](references/pr-metadata.md)
-
-### 3. Review Code Changes
-> Goal: ตรวจ code changes
-ทำตาม [references/code-changes.md](references/code-changes.md)
-
-### 4. Validate Findings
-> Goal: ยืนยัน findings
-ทำตาม [references/validate-findings.md](references/validate-findings.md)
-
-### 5. Governance
-
-> Goal: coverage เพิ่มเติมของ domain
-
-1. CODEOWNERS enforcement — required reviewers ถูกต้อง
-2. PR size limits — oversized PRs flagged
-
-### 7. Report And Recommend
-> Goal: รายงานและแนะนำ
-ทำตาม [references/report-and-recommend.md](references/report-and-recommend.md)
-
-### 6. Score And Report
-> Goal: รายงาน score และสรุปผล
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
-
-### Subagents
-
-> Goal: parallelize review เมื่อ PR ใหญ่
-
-- ใช้ `subagents/pr-reviewer.md` เมื่อ PR ใหญ่และแบ่งเป็น slices ที่ independent กันได้ (per-domain เช่น security/tests/api หรือ per-file-group) — spawn ผ่าน `/use-subagents` แล้ว merge findings ทุก slice ก่อน score/report
+1. ทำ `/deep-review github-pr` ตามขอบเขตและ workflow เดิมทั้งหมด
 
 ## Rules
 
-- Review เท่านั้น ไม่แก้ source โดยไม่ได้รับอนุญาต
-- Focus บน changed files ไม่ต้อง review ทั้ง codebase
-- ถ้า PR ใหญ่ → แนะนำ split ก่อน review ละเอียด
-- Title และ commits ต้องตาม conventional commits
-- ทุก finding ต้องมี file path, line number หรือ commit reference
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (github pr)
-
-- ใช้ /open-github ถ้าจำเป็น
-- ใช้ /list-github-pr ถ้าจำเป็น
-- ใช้ /merge-github-pr ถ้าจำเป็น
-- ใช้ /resolve-github-actions ถ้าจำเป็น
-
-- ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
-
-- ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /review-test ถ้าจำเป็น
-- ใช้ /review-security ถ้าจำเป็น
-
-## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
-
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- ใช้ /run-review ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-
+- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
+- รักษา backward compatibility ของชื่อ alias
 
 ## Expected Outcome
 
-- PR metadata review: title, description, size, commits, conflicts
-- Findings จาก code, security, test, delivery, domain reviews
-- Merge readiness verdict พร้อมเหตุผล
-- Recommended actions ถัดไป
-
+- ผลลัพธ์เหมือน `/deep-review github-pr`

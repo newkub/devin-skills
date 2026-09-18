@@ -1,7 +1,6 @@
 import { createSignal, createEffect, onMount, onCleanup, Show } from 'solid-js';
 import { useNavigate, useSearch } from '@tanstack/solid-router';
-import SourceForm from './SourceForm';
-import FileStrip from './FileStrip';
+import Sidebar from './Sidebar';
 import DiffView from './DiffView';
 import Header from './Header';
 import DiffToolbar from './DiffToolbar';
@@ -26,8 +25,9 @@ export default function App() {
   const [commentOpen, setCommentOpen] = createSignal(false);
   const [helpOpen, setHelpOpen] = createSignal(false);
   const [commentText, setCommentText] = createSignal('');
-  const [diffStyle, setDiffStyle] = createSignal<'unified' | 'split'>('unified');
+  const [diffStyle, setDiffStyle] = createSignal<'unified' | 'split' | 'stacked'>('unified');
   const [wrap, setWrap] = createSignal(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
   let filterEl: HTMLInputElement | undefined;
 
   const getSource = () => (search().source as SourceKind) || 'pr';
@@ -48,7 +48,7 @@ export default function App() {
   };
 
   const scrollDiff = (delta: number) => {
-    document.querySelector('.diff-scroll')?.scrollBy({ top: delta, behavior: 'smooth' });
+    document.querySelectorAll('.diff-scroll').forEach((el) => el.scrollBy({ top: delta, behavior: 'smooth' }));
   };
 
   onMount(() => {
@@ -76,8 +76,8 @@ export default function App() {
     });
   });
 
-  // Auto-load as soon as source params become ready (covers /api/default → navigate)
-  let autoLoaded = false;
+  // Auto-load whenever the full param signature changes (tab switch, dropdown pick, /api/default)
+  let lastKey = '';
   createEffect(() => {
     const p = params();
     const ready =
@@ -85,8 +85,9 @@ export default function App() {
       (p.source === 'git' && p.ref) ||
       (p.source === 'branch' && p.base && p.head) ||
       (p.source === 'file' && p.old && p.new);
-    if (ready && !autoLoaded) {
-      autoLoaded = true;
+    const key = `${p.source}|${p.pr || ''}|${p.ref || ''}|${p.base || ''}|${p.head || ''}|${p.old || ''}|${p.new || ''}|${p.repo || ''}`;
+    if (ready && key !== lastKey) {
+      lastKey = key;
       load();
     }
   });
@@ -102,8 +103,11 @@ export default function App() {
     navigate({ search: { ...params(), [key]: value } as any, replace: true });
   }
 
+  // Remember params per tab — switching back restores the previous selection
+  const paramCache = new Map<SourceKind, Record<string, string>>();
   function setSource(kind: SourceKind) {
-    navigate({ search: { source: kind } as any, replace: true });
+    paramCache.set(getSource(), { ...params() });
+    navigate({ search: { source: kind, ...(paramCache.get(kind) ?? {}) } as any, replace: true });
   }
 
   function toggleTheme() {
@@ -163,8 +167,9 @@ export default function App() {
     scrollDiff,
     focusFilter: () => filterEl?.focus(),
     toggleTheme,
-    toggleDiffStyle: () => setDiffStyle(diffStyle() === 'unified' ? 'split' : 'unified'),
+    toggleDiffStyle: () => setDiffStyle((s) => (s === 'unified' ? 'split' : s === 'split' ? 'stacked' : 'unified')),
     toggleWrap: () => setWrap(!wrap()),
+    toggleSidebar: () => setSidebarCollapsed(!sidebarCollapsed()),
     reload: load,
   });
 
@@ -187,11 +192,12 @@ export default function App() {
         onToggleComment={() => setCommentOpen(!commentOpen())}
         theme={theme}
         onToggleTheme={toggleTheme}
+        source={getSource()}
+        params={params}
+        setSource={setSource}
+        setField={setField}
+        onSubmitSource={load}
       />
-
-      <div class="shrink-0 pt-2 pb-1">
-        <SourceForm source={getSource()} params={params()} setSource={setSource} setField={setField} onSubmit={load} />
-      </div>
 
       <Show when={commentOpen()}>
         <CommentBar commentText={commentText} setCommentText={setCommentText} onSubmit={submitComment} />
@@ -204,7 +210,7 @@ export default function App() {
         fallback={
           <div class="flex-1 flex flex-col items-center justify-center gap-3 text-[var(--text-dim)]">
             <span class="i-mdi-file-compare w-12 h-12 opacity-30" />
-            <span class="text-sm">Select a source and click Load</span>
+            <span class="text-sm">Select a source above and click Load</span>
             <div class="flex items-center gap-3 text-[11px] opacity-70 font-mono">
               <span>open-diff pr 123</span>
               <span class="opacity-40">·</span>
@@ -215,27 +221,35 @@ export default function App() {
           </div>
         }
       >
-        <FileStrip
-          files={data()!.files}
-          indices={visibleIndices()}
-          selected={selected()}
-          onSelect={setSelected}
-        />
-        <DiffToolbar
-          diffStyle={diffStyle}
-          setDiffStyle={setDiffStyle}
-          wrap={wrap}
-          setWrap={setWrap}
-          onReload={load}
-          loading={loading}
-          inputRef={(el) => (filterEl = el)}
-          fileQuery={fileQuery}
-          setFileQuery={setFileQuery}
-          position={() => `${visibleIndices().indexOf(selected()) + 1} / ${visibleIndices().length}`}
-        />
-        <main class="flex-1 flex overflow-hidden">
-          <DiffView file={currentFile()} meta={getMeta(selected())} theme={theme()} diffStyle={diffStyle()} wrap={wrap()} />
-        </main>
+        <div class="flex-1 flex overflow-hidden">
+          <Show when={!sidebarCollapsed()}>
+            <Sidebar
+              files={data()!.files}
+              indices={visibleIndices()}
+              selected={selected()}
+              onSelect={setSelected}
+              fileQuery={fileQuery}
+              setFileQuery={setFileQuery}
+              inputRef={(el) => (filterEl = el)}
+              collapsed={sidebarCollapsed}
+            />
+          </Show>
+          <div class="flex-1 flex flex-col overflow-hidden min-w-0">
+            <DiffToolbar
+              diffStyle={diffStyle}
+              setDiffStyle={setDiffStyle}
+              wrap={wrap}
+              setWrap={setWrap}
+              onReload={load}
+              loading={loading}
+              position={() => `${visibleIndices().indexOf(selected()) + 1} / ${visibleIndices().length}`}
+              fileName={() => currentFile()?.name ?? ''}
+            />
+            <main class="flex-1 flex overflow-hidden">
+              <DiffView file={currentFile()} meta={getMeta(selected())} theme={theme()} diffStyle={diffStyle()} wrap={wrap()} />
+            </main>
+          </div>
+        </div>
       </Show>
 
       <Show when={helpOpen()}>

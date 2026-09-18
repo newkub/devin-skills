@@ -6,7 +6,6 @@ related:
   - follow-tool-vitest
   - run-test
   - run-bench
-  - deep-optimize
   - check-bottlenecks
 ---
 
@@ -27,7 +26,7 @@ related:
 > Goal: เก็บตัวเลขเดิมและระบุ bottleneck จริง
 
 1. รัน `vitest run` พร้อมจับเวลา — เก็บ total duration, per-file duration
-2. ทำ `/deep-optimize` หรือ `/check-bottlenecks` — ระบุว่าช้าจาก isolation, coverage, heavy setup หรือ test จริง
+2. ทำ `/check-bottlenecks` — ระบุว่าช้าจาก isolation, coverage, heavy setup หรือ test จริง
 3. เช็ค `--reporter` ที่ให้ per-file timing แล้วหาไฟล์ที่ช้าสุดก่อน — ห้ามเดา
 
 ### 2. Tune Isolation And Pool

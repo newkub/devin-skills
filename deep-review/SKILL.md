@@ -15,6 +15,8 @@ related:
   - use-scripts
   - review
   - review-gaps
+  - review-redundancy
+  - review-alignment
   - review-by-stakeholder
   - report
   - suggest-next-action
@@ -33,7 +35,8 @@ related:
 - merged from: `review-platform` — platform dimensions refs `references/platform-*.md`
 - merged from: `report-review` — report structure, executive summary, severity/status symbols รวมอยู่ใน Step 8
 - subagent: `subagents/domain-reviewer.md` — รัน review ทีละ domain แบบขนาน
-- dispatch catalog: `references/review-skills.md` — `review-*` ครบทุกตัวยกเว้น `review-github-pr` + `deep-*` ผ่าน `/follow-deep` แบ่ง phase ต่อ workspace
+- dispatch catalog: `references/review-skills.md` - `/deep-review <domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
+- merged from: `review-*` 53 skills (ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-refactor`, `review-coverage`, `review-then-fix`) — แต่ละ domain อยู่ที่ `subskills/<domain>/SKILL.md` ตาม SRP; dir เดิมเป็น alias stub
 
 ## Execute
 
@@ -61,7 +64,7 @@ related:
 > Goal: ตรวจสอบให้ `tools/review-codebase` พร้อมรัน
 
 1. ตรวจสอบว่า `tools/review-codebase/package.json` และ entry point มีอยู่
-2. ถ้าไม่มี → ทำ `/update-review-cli` เพื่อสร้าง CLI ก่อน
+2. ถ้าไม่มี → ทำ `/update-review-cli` เพื่อสร้าง CLI ก่อน; **ทางเลือกที่แนะนำ**: ใช้ `linter` CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\tools\linter`) — deterministic checks ทั้งหมด (rules/metrics/secrets/framework packs) + score/grade/baseline/SARIF — ผลิต schema เดียวกัน drop-in แทน review-report.json ได้
 3. รัน `bun --filter tools-review-codebase lint` และ `typecheck`
 4. รัน `bun --filter tools-review-codebase review-codebase --help` เพื่อยืนยันว่า CLI ใช้งานได้
 5. ถ้า CLI ติดตั้ง/รันไม่ได้ → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
@@ -70,7 +73,7 @@ related:
 
 > Goal: รัน review CLI ครั้งเดียว ได้ JSON กลางให้ทุก domain ใช้ร่วม — ห้ามรันซ้ำต่อ domain
 
-1. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อได้ `reports/review-report.json` เป็น single source of truth — ถ้า mode `--diff` ให้ส่ง scope flag ที่ CLI รองรับ (เช่น `--changed`, `--paths`) หรือกรอง findings ทีหลังด้วยรายชื่อไฟล์จาก `git diff --name-only`
+1. รัน `linter scan --format json` (Rust CLI — แนะนำ) หรือ `bun --filter tools-review-codebase review-codebase:json` (legacy TS) เพื่อได้ `reports/review-report.json` เป็น single source of truth — ถ้า mode `--diff` ให้ส่ง scope flag ที่ CLI รองรับ (เช่น `--changed`, `--paths`) หรือกรอง findings ทีหลังด้วยรายชื่อไฟล์จาก `git diff --name-only`
 2. รัน table output เฉพาะเมื่อต้องดูด้วยตา: `bun --filter tools-review-codebase review-codebase` — ตารางมี domain summary + per-category sub-list (priority, reason, risk, fix skill, evidence items) + status new/existing + delta เทียบ baseline
 3. เก็บ score, grade, domain breakdown, findings count, analyzerErrors, falsePositiveRate, hasBaseline, fixedFindings
 4. ถ้า CLI crash → กลับไป Step 2
@@ -115,7 +118,7 @@ related:
    - Phase 2 source code: `/review-quality`, `/review-writing`, `/review-cli`/`/review-api`/`/review-backend`/`/review-frontend` ฯลฯ ตาม workspace type
    - Phase 3 cross-cutting: `/review-security`, `/review-performance`, `/review-stability` และ metrics อื่นครบ
    - Phase 4 meta: `/review-gaps`, `/review-by-stakeholder` ตามต้องการ
-   - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-optimize`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
+   - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
 3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, review skill ที่ต้องรัน
 4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `review-mobile` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
 5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `references/platform-*.md` (merged from: review-platform)
@@ -143,13 +146,16 @@ related:
    - `## Result` — ตาราง score/grade/findings count เทียบ before-after ต่อ workspace (No. column แรกเสมอ)
    - `## Coverage` — matrix จาก ledger: แถว = workspace, คอลัมน์ = phase/skill group, cell = done/skipped(reason)/failed — ทำให้ "ครบทุกตัว" ตรวจสอบได้ ไม่ใช่เชื่อคำพูด
    - section ต่อ `review-*` domain — header ชื่อ review skill + domain score/grade
-   - ต่อ finding ตารางคอลัมน์: `No.`, `หลักฐาน` (file:line หรือ evidence items — บังคับทุก row), `เหตุผล` (message — rule ที่พัง), `ความเสี่ยง` (risk field), `ลำดับความสำคัญ` (priority + status new/existing/fixed), `fix skill` (fixSkill field), `ใน update-review-cli` (`Y` = analyzer ครอบคลุมแล้ว / `N` = analyzer gap → ส่งต่อ `/update-review-cli`)
+   - ต่อ finding ตารางคอลัมน์: `No.`, `หลักฐาน` (file:line หรือ evidence items — บังคับทุก row), `เหตุผล` (message — rule ที่พัง), `ความเสี่ยง` (risk field), `ลำดับความสำคัญ` (priority + status new/existing/fixed/regressed), `fix skill` (fixSkill field), `ใน update-review-cli` (`Y` = analyzer ครอบคลุมแล้ว / `N` = analyzer gap → ส่งต่อ `/update-review-cli`)
    - severity symbols: 🔴 Critical, 🟠 High, 🟡 Medium, 🟢 Low — status symbols: ✅ แก้แล้ว, ❌ ยังไม่แก้, 🔄 กำลังแก้, ⏭️ ข้าม
    - `## Fix Status` — ตาราง Issue, Dimension, Severity, Status, Fix Applied
+   - `## Trends` — เทียบ baseline snapshot จาก run ก่อน (ถ้ามี): score trajectory ต่อ workspace, findings ใหม่/แก้แล้ว/regressed ต่อ domain — ทำให้เห็นว่า codebase ดีขึ้นหรือแย่ลง
+   - `## Priority Action Plan` — fix sequence จัดลำดับ Foundation → Dependencies → High impact → Critical path → High risk พร้อม effort คร่าวๆ ต่อ item — ไม่ใช่ flat TODO list
+   - `## Evidence Index` — mapping domain → slice file/JSON path ที่ใช้เป็นแหล่ง findings — reviewer trace ย้อน evidence ได้โดยไม่ถาม
    - `## Recommendations` — จัดลำดับตาม impact/effort แยก quick wins กับ strategic fixes
    - `## Residual notes` — analyzer false positives ที่ยอมรับ, infra flakes, warnings ที่ไม่ block, domains ที่ `review-failed`/`skipped (budget)` พร้อมวิธี resume
 3. ถ้า run ขาดกลางคัน → เขียน partial report ทันทีด้วย coverage matrix เท่าที่มี — ห้ามเสียงานทั้งหมดเพราะ report ไม่ครบ
-4. บันทึก action items เป็น `TODO` หรือ plan
+4. action items ทั้งหมดอยู่ใน `## Priority Action Plan` เป็นลำดับไม่ใช่ flat TODO — item ที่บล็อก item อื่นต้องมาก่อน
 5. ถ้า CLI รองรับ → save baseline snapshot (`review-report.json` เป็น baseline ถัดไป) เพื่อให้ delta/new-vs-fixed ทำงานใน run ถัดไป
 6. verify หลังเขียน: report ไฟล์มีอยู่จริง + ทุก required section ครบ + ทุก row มีหลักฐาน — ขาด → แก้ report ก่อนจบ
 7. ทำ `/suggest-next-action` โดยแนะนำ section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/deep-review-then-fix`
@@ -207,13 +213,14 @@ related:
 - ไม่แก้ business logic โดยตรงจาก skill นี้
 - ไม่เพิ่ม dependencies ใหม่นอกเหนือจาก CLI workspace
 - ถ้า `tools/review-codebase` ติดตั้งไม่ได้ → หยุดและแจ้ง user
+- ถ้า analyzer ไม่ครอบ finding domain (คอลัมน์ `ใน update-review-cli` = N) หรือ CLI มี bug → ทำ `/update-review-cli` เพิ่ม/แก้ analyzer แทนการ workaround ใน report
 - ledger/slice files เขียนใต้ `reports/` เท่านั้น — ห้ามเขียน temp นอก repo
 
 ## Expected Outcome
 
 - `tools/review-codebase` CLI รันได้และ produce `reports/review-report.json` (full หรือ diff-scoped ตาม mode)
-- Review ครอบคลุม 5 domains, 60+ categories, `review-*` ทุกตัว (ยกเว้น `review-github-pr`) และ `deep-*` ผ่าน `/follow-deep` ภายใต้ budget — coverage ตรวจได้จาก ledger + `## Coverage` matrix
-- Findings มี priority, risk, fixSkill, status (new/existing/fixed), dedup แล้ว และ delta เทียบ baseline
+- Review ครอบคลุม 53 `deep-review <domain>` subskills ตาม priority order (P0 Critical → P4 Meta) + `deep-*` ผ่าน `/follow-deep` ภายใต้ budget — coverage ตรวจได้จาก ledger + `## Coverage` matrix
+- Findings มี priority, risk, fixSkill, status (new/existing/fixed/regressed), dedup แล้ว และ delta เทียบ baseline
 - ทุก high-priority finding ถูก route ไปยัง review/deep-review-then-fix skill ที่เหมาะสม
 - รายงานสรุปพร้อม Executive Summary, Result, Coverage matrix, per-domain sections, per-finding `หลักฐาน`/`เหตุผล`/`ความเสี่ยง`/`ลำดับความสำคัญ`/`fix skill`/`ใน update-review-cli`, Fix Status, Recommendations — verify ครบ section ก่อนจบ
 - session ขาดกลางคัน → resume จาก ledger ได้โดยไม่รันงานซ้ำ; baseline ถูก save สำหรับ run ถัดไป

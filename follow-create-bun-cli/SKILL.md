@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-create-web
+  - follow-lang-bun
   - use-bun-native-api
   - follow-tool-bunup
   - review-architecture

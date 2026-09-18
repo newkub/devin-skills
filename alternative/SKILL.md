@@ -20,7 +20,7 @@ triggers:
 related:
   - deep-research
   - learn
-  - compare-competitors-and-idea-features
+  - compare-competitors
   - choose-and-apply
   - follow-best-practice
   - review-dependencies
@@ -110,7 +110,7 @@ related:
 - ให้ examples หรือ code snippets
 - แนะนำ migration paths ถ้าจำเป็น
 - ให้ references สำหรับ deeper learning
-- ใช้ /compare-competitors-and-idea-features ถ้าจำเป็น
+- ใช้ /compare-competitors ถ้าจำเป็น
 
 
 ## Expected Outcome

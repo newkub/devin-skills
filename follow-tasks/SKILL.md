@@ -38,22 +38,22 @@ related:
 
 1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
 2. ตรวจสอบ monorepo (หลาย `package.json`, workspace config, git submodules) — ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
-   - ถ้ามี `.moon/workspace.yml` หรือ `moon.yml` → ทำ `/follow-tool-moonrepo` ก่อน แล้วใช้ moonrepo mode (ดู Rules §12)
-3. ยืนยัน tools ติดตั้งแล้ว: Node.js/Bun (`biome`, `vitest`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
+   - ถ้ามี `.moon/workspace.yml` หรือ `moon.yml` → ทำ `/follow-tool-moonrepo` ก่อน แล้วใช้ moonrepo mode (ดู Rules §3)
+3. ยืนยัน tools ติดตั้งแล้ว: Node.js/Bun (`biome`, `vitest` หรือ `bun test`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
 4. ถ้า tool จำเป็นไม่มี → stop และ report
 
 ### 2. Update Dependencies
 
 > Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
 
-1. ตรวจสอบ package manager (`bun`, `npm`, `pnm`, `yarn`, `cargo`, `pip`, `go`)
+1. ตรวจสอบ package manager (`bun`, `npm`, `pnpm`, `yarn`, `cargo`, `pip`, `go`)
 Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 2. สำหรับ Node.js/Bun → ทำ `/follow-tool-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
 3. สำหรับ tools ที่จัดการด้วย mise → รัน `mise upgrade` เพื่ออัปเดต dev tools (เช่น `bun`, `gitleaks`, `hk`); ถ้าต้องการ bump version ใน `mise.toml` ด้วย → ใช้ `mise upgrade --bump`
 4. Update ตาม ecosystem: Node.js/Bun ใช้ `taze` (Root Only), Rust ใช้ `cargo update`, Python ใช้ `pip install -U`, Go ใช้ `go get -u ./... && go mod tidy`
 5. หลังตั้งค่าเสร็จ → ทำ `/update-version-to-latest` เพื่อ bump dependencies ทั้งหมดเป็น latest เสมอ
-6. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
+6. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w && bunx lefthook install"` (ห้าม `-i` ใน `prepare` — interactive จะ hang ใน CI; ใช้ `-i` เฉพาะ `deps:update` ที่รันด้วยมือ)
 7. ถ้า update fail → retry (max 3 → stop/report)
 
 ### 3. Select Template Level
@@ -68,8 +68,8 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 > Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
 
-1. ทำ `/use-scripts` ตาม tech stack จากตาราง Rules — Single workspace: แก้ไข `package.json` หรือ `Cargo.toml` โดยตรง
-2. Multiple workspaces: ทำ `/follow-monorepo` ก่อน แล้วใช้ `/use-scripts` สำหรับ batch update
+1. เลือก command จาก [references/scripts-tables.md](references/scripts-tables.md) ตาม tech stack — JS/Bun แก้ `package.json` โดยตรง; Rust/Python/Go ใช้ task runner ตาม Script Mechanism (`justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `Taskfile.yml`)
+2. ทำ `/use-scripts` สำหรับ apply — Single workspace แก้ไข manifest/task file โดยตรง; Multiple workspaces ทำ `/follow-monorepo` ก่อน
 3. ถ้า operations > 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ batch update
 4. ถ้า apply fail → retry (max 3 → stop/report)
 
@@ -79,7 +79,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 1. `/review-delivery` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
 2. ถ้ามี `.infisical.json` หรือใช้ secret manager → ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets scripts
-3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts: `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run`
+3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run` (ตารางใน reference)
 4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า
 5. รันเฉพาะ workflows ที่จำเป็น ไม่รันทุก workflow — ถ้า config fail → retry (max 3 → stop/report)
 
@@ -87,8 +87,8 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 > Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
 
-1. ตรวจสอบ scripts syntax ใน `package.json` หรือ `Cargo.toml` — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
-2. ยืนยัน `check` script = `format && lint && typecheck && scan` (format ก่อน lint) และ `verify` = `check && test && build` (= scan + format + lint + typecheck + test + build) สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test`
+1. ตรวจสอบ scripts syntax ใน `package.json` หรือ task runner file — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
+2. ยืนยัน `check` script = `format && lint && typecheck && scan` (format ก่อน lint) และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test` — `ci` ต้อง read-only ผ่าน `format:check` ไม่ใช่ `format`
 3. ทำ `/run-test-all` เพื่อรัน unit, integration, e2e, coverage
 4. ทำ `/run-task-all` เพื่อรันทุก task/script ที่ตั้งค่าไว้ครบถ้วน
 5. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
@@ -106,121 +106,25 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 สำหรับ monorepo ที่ใช้ Bun:
 - `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` เท่านั้น
 - Workspace packages ไม่มี `prepare` script
-- Root `package.json`: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
+- Root `package.json`: `"prepare": "bunx taze -r -w && bunx lefthook install"` — ห้าม `-i` ใน `prepare` (interactive hang ใน CI); `-i` ใช้เฉพาะ `deps:update` ที่รันด้วยมือ
 
-### 2. Required Scripts
+### 2. Script Tables
 
-Scripts พื้นฐานที่ทุกโปรเจกต์ต้องมีเพื่อรับประกันคุณภาพโค้ด:
+ตาราง command lookup ทั้งหมดอยู่ที่ [references/scripts-tables.md](references/scripts-tables.md) — single source of truth ครอบ:
 
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|-------|------|--------|----|
-| prepare (Root Only) | bunx taze -r -w -i && bunx lefthook install | bunx taze -r -w -i && bunx lefthook install | bunx taze -r -w -i && bunx lefthook install | bunx taze -r -w -i && bunx lefthook install | bunx taze -r -w -i && bunx lefthook install | bunx taze -r -w -i && bunx lefthook install | cargo update && bunx lefthook install | pip install -U -r requirements.txt && pre-commit install | go mod download && go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest |
-| prepare (Workspace) | - | - | - | - | - | - | - | - | - |
-| dev | bun run src/index.ts | nuxt dev | next dev | vite dev | vite dev | tauri dev | cargo run | python -m src | go run . |
-| build | bun build | nuxt build | next build | vite build | vite build | tauri build | cargo build | python -m build | go build . |
-| typecheck | tsc --noEmit | nuxt typecheck | tsc --noEmit | tsc --noEmit | svelte-check --tsconfig ./tsconfig.json | tsc --noEmit | cargo check | mypy src | go vet ./... |
-| lint | biome lint | biome lint | biome lint | biome lint | biome lint | biome lint | cargo clippy | ruff check | golangci-lint run |
-| format | biome format --write | biome format --write | biome format --write | biome format --write | biome format --write | biome format --write | cargo fmt | ruff format | gofmt -w . |
-| test | vitest run | vitest run | vitest run | vitest run | vitest run | vitest run | cargo nextest run | pytest | go test ./... |
-| scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | cargo clippy --all-targets | ruff check | golangci-lint run |
-| check | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | cargo fmt && cargo clippy && cargo check | ruff format && ruff check && mypy | gofmt -w . && golangci-lint run && go vet |
-| verify | check && test && build | check && test && build | check && test && build | check && test && build | check && test && build | check && test && build | cargo clippy && cargo check && cargo nextest run && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test ./... && go build . |
-| ci | bun run verify | bun run verify | bun run verify | bun run verify | bun run verify | bun run verify | cargo clippy && cargo check && cargo nextest run && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test ./... && go build . |
-| verify:full | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | cargo clippy && cargo check && cargo nextest run && cargo nextest run --test-dir integration && cargo nextest run --test-dir e2e && cargo build | ruff check && mypy && pytest && pytest tests/integration && pytest tests/e2e && python -m build | golangci-lint run && go vet && go test ./... && go test ./tests/integration && go test ./tests/e2e && go build . |
+- **Script Mechanism** — `Cargo.toml`/Python/Go ไม่มี script runner ในตัว → ใช้ `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (ห้ามใส่ scripts ใน `Cargo.toml`)
+- **Bun-Native Alternatives** — `bun test`, `bun audit`, `bun ci`, `bun run --workspaces`, `bun --filter`
+- **Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs** — ครบทุก stack: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
+- **Secrets, Monorepo, Review CLI, Other Ecosystems** (Kotlin, PHP, Swift, Zig, Lua, C#)
 
-### 3. Watch Mode Scripts
-
-Scripts สำหรับ development mode เพื่อเพิ่มประสิทธิภาพการพัฒนา:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|-------|------|--------|----|
-| test:watch | vitest | vitest | vitest | vitest | vitest | vitest | cargo nextest run --watch | pytest-watch | go test ./... -watch |
-| typecheck:watch | tsc --noEmit --watch | nuxt typecheck --watch | tsc --noEmit --watch | tsc --noEmit --watch | svelte-check --watch --tsconfig ./tsconfig.json | tsc --noEmit --watch | cargo watch -x check | - | - |
-| build:watch | bunup --watch | nuxt build --watch | next build --watch | vite build --watch | vite build --watch | tauri build --watch | cargo build --watch | - | - |
-
-### 4. Testing Scripts
-
-Scripts สำหรับ testing เพิ่มเติมเพื่อครอบคลุมทุกมิติของการทดสอบ:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|-------|------|--------|----|
-| test:coverage | vitest run --coverage | vitest run --coverage | vitest run --coverage | vitest run --coverage | vitest run --coverage | vitest run --coverage | cargo llvm-cov --html | pytest --cov | go test -coverprofile=coverage.out |
-| test:integration | vitest run --config vitest.integration.config.ts | vitest run --config vitest.integration.config.ts | vitest run --config vitest.integration.config.ts | vitest run --config vitest.integration.config.ts | vitest run --config vitest.integration.config.ts | vitest run --config vitest.integration.config.ts | cargo nextest run --test-dir integration | pytest tests/integration | go test ./tests/integration |
-| test:e2e | vitest run --config vitest.e2e.config.ts | vitest run --config vitest.e2e.config.ts | vitest run --config vitest.e2e.config.ts | vitest run --config vitest.e2e.config.ts | vitest run --config vitest.e2e.config.ts | vitest run --config vitest.e2e.config.ts | cargo nextest run --test-dir e2e | pytest tests/e2e | go test ./tests/e2e |
-
-### 5. Dependency Management Scripts
-
-Scripts สำหรับจัดการ dependencies เพื่อรักษาความปลอดภัยและประสิทธิภาพ:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|-------|------|--------|----|
-| clean | bunx rimraf node_modules | bunx rimraf node_modules | bunx rimraf node_modules | bunx rimraf node_modules | bunx rimraf node_modules | bunx rimraf node_modules && cargo clean | cargo clean | rm -rf .venv __pycache__ | go clean -modcache |
-| deps:analyze | bunx depcheck | bunx depcheck | bunx depcheck | bunx depcheck | bunx depcheck | bunx depcheck | cargo outdated | pip-audit | go mod verify |
-| deps:update | taze -r -w | taze -r -w | taze -r -w | taze -r -w | taze -r -w | taze -r -w | cargo update | pip install -U -r requirements.txt | go get -u ./... && go mod tidy |
-
-### 6. Database Scripts
-
-Scripts สำหรับ database operations เพื่อจัดการ schema และข้อมูล:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|-------|------|--------|----|
-| db:migrate | bunx drizzle-kit push | bunx drizzle-kit push | bunx drizzle-kit push | bunx drizzle-kit push | bunx drizzle-kit push | bunx drizzle-kit push | diesel migration run | alembic upgrade head | go run ./migrate |
-| db:seed | bunx drizzle-kit seed | bunx drizzle-kit seed | bunx drizzle-kit seed | bunx drizzle-kit seed | bunx drizzle-kit seed | bunx drizzle-kit seed | - | python seed.py | go run ./seed |
-| db:studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | - | - | - |
-| db:generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | - | - | - |
-
-### 7. Prerelease And Benchmark Scripts
-
-Scripts สำหรับ prerelease และ benchmark:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|------|--------|----|
-| prerelease | bun run build | bun run build | bun run build | bun run build | bun run build | cargo build | python -m build | go build . |
-| bench:fn | bunx mitata | bunx mitata | bunx mitata | bunx mitata | bunx mitata | cargo bench | pytest-benchmark | go test -bench=. |
-| bench:server | bunx autocannon | bunx autocannon | bunx autocannon | bunx autocannon | bunx autocannon | - | - | - |
-| bench:memory | bunx clinic | bunx clinic | bunx clinic | bunx clinic | bunx clinic | - | memory_profiler | pprof |
+กฎสำคัญที่ผูกกับตาราง:
+- `check` = `format && lint && typecheck && scan` (format write — local dev)
+- `ci` = `format:check && lint && typecheck && scan && test && build` (read-only — ไม่ mutate files ใน pipeline)
+- `verify` = `check && test && build` (project เล็ก); project ใหญ่อย่างน้อย `check && test`
 - `release` ไม่อยู่ใน package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
+- ถ้ามี `tools/review-codebase` workspace → เพิ่ม `review-codebase` scripts (ตารางใน reference) แล้วรัน `bun run review-codebase` ครั้งแรก — ถ้า fail ใช้ `/deep-review`
 
-### 8. Security Scripts
-
-Scripts สำหรับ security เพื่อตรวจสอบ vulnerabilities และ licenses:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|------|--------|----|
-| security | bunx audit | bunx audit | bunx audit | bunx audit | bunx audit | cargo audit | pip-audit | go mod verify |
-| license | bunx license-checker | bunx license-checker | bunx license-checker | bunx license-checker | bunx license-checker | cargo deny check licenses | pip-licenses | go-licenses check |
-
-### 9. Deployment Scripts
-
-Scripts สำหรับ deployment เพื่อรับประกันคุณภาพก่อน deploy:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|------|--------|----|
-| predeploy | bun run ci | bun run ci | bun run ci | bun run ci | bun run ci | cargo clippy && cargo check && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test && go build . |
-| deploy:staging | bunx wrangler deploy | bunx wrangler deploy | bunx vercel --prebuilt | bunx wrangler deploy | bunx wrangler deploy | cargo publish --dry-run | twine upload --repository testpypi | go release --dry-run |
-
-### 10. Documentation Scripts
-
-Scripts สำหรับ documentation เพื่อจัดการ docs site:
-
-| Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Rust | Python | Go |
-|------|-----|------|---------|------------|----------|------|--------|----|
-| docs | vitepress dev | vitepress dev | vitepress dev | vitepress dev | vitepress dev | mdbook serve | mkdocs serve | godoc |
-
-### 11. Review CLI Scripts
-
-Scripts สำหรับรัน review CLI เพื่อ review codebase ผ่าน `tools/review-codebase`:
-
-| Task | Bun |
-|------|-----|
-| review-codebase | `bun --filter tools-review-codebase review-codebase` |
-| review-codebase:json | `bun --filter tools-review-codebase review-codebase:json` |
-
-ถ้า project ใช้ `tools/review-codebase` ให้เพิ่ม scripts นี้ใน package.json เมื่อตั้งค่า scripts ตาม `/follow-tasks`
-
-หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/deep-review` ถ้าต้องการสร้างหรืออัปเดต CLI
-
-### 12. Moonrepo Mode
+### 3. Moonrepo Mode
 
 ถ้า project ใช้ moonrepo (มี `.moon/workspace.yml` หรือ `moon.yml`):
 
@@ -237,8 +141,8 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 
 ## Expected Outcome
 
-- `package.json` มี scripts ตาม template ที่เลือก (state change)
-- Scripts สอดคล้องกับ tech stack (ตาราง Rules)
-- `verify` และ `ci` pipeline ทำงานได้ถูกต้อง — `bun run verify` ผ่าน
+- `package.json` หรือ task runner file มี scripts ตาม template ที่เลือก (state change)
+- Scripts สอดคล้องกับ tech stack (ตารางใน [references/scripts-tables.md](references/scripts-tables.md))
+- `verify` และ `ci` pipeline ทำงานได้ถูกต้อง — `bun run verify` ผ่าน, `ci` read-only
 - ถ้ามี `tools/review-codebase` รัน `bun run review-codebase` ผ่านหรือทราบสาเหตุที่ยังไม่ผ่าน
 - ถ้ามี Infisical: root `package.json` มี `secrets:*` scripts และ `INFISICAL_TOKEN` ตั้งค่าใน CI/CD

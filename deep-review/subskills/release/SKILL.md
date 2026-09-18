@@ -1,0 +1,159 @@
+---
+name: deep-review-release
+description: Review release/deploy readiness ก่อน publish หรือ deploy และ verify หลัง deploy
+argument-hint: "[scope]"
+related:
+  - test-release
+  - run-release
+  - ship
+  - setup-release
+  - run-deploy
+  - watch-deploy
+  - follow-deploy
+  - review-quality
+  - review-architecture
+  - report
+  - run-review
+---
+
+## Goal
+
+Review release readiness ก่อนเริ่ม publish เพื่อยืนยันความถูกต้องของ version, changelog, breaking changes, semver, platform targets, rollback plan, release notes และ license — รวม deployment readiness (env, secrets, build, health, DNS/SSL, zero-downtime) และ post-deploy verify (merged from: review-deploy)
+
+## Scope
+
+ใช้ก่อนเรียก `run-release`, `ship`, `setup-release`, `run-deploy`, `deploy-to-*`, `follow-deploy` หรือ release tooling อื่น — ตรวจ release readiness (version, changelog, breaking changes, platform, rollback, release notes, license) และ deployment readiness (env vars, secrets, build artifacts, health checks, DNS/CDN, SSL, migration scripts, zero-downtime) แล้วสรุป readiness score พร้อม go/no-go recommendation
+
+## Execute
+
+### 1. Prepare Context
+
+> Goal: เข้าใจ release target และ project context
+
+- ทำ `/scan-codebase` เพื่อเข้าใจ project structure และ release config
+- ระบุ release platforms: npm, crates.io, VSCode Marketplace, Docker Hub, ฯลฯ
+- ตรวจ release config files และ package manifests
+- ตรวจ deployment config files: `vercel.json`, `wrangler.jsonc`, `railway.json`, `Dockerfile`, `.github/workflows/deploy*.yml`
+- ถ้าไม่พบ release config → stop และ report
+
+### 2. Check Version And Semver
+
+> Goal: ตรวจ version bump correctness และ semver compliance
+
+ทำตาม references/version-semver.md
+
+### 3. Check Changelog Completeness
+
+> Goal: ตรวจ changelog completeness ก่อน publish
+
+ทำตาม references/changelog.md
+
+### 4. Check Breaking Changes
+
+> Goal: ระบุ breaking changes ก่อน publish
+
+ทำตาม references/breaking-changes.md
+
+### 5. Check Platform Targets And Rollback
+
+> Goal: ตรวจ platform targets และ rollback plan
+
+ทำตาม references/platform-targets.md
+
+### 6. Check License And Release Notes
+
+> Goal: ตรวจ license compliance และ release notes
+
+- ตรวจ `LICENSE` file มีและถูกต้อง
+- ตรวจ license ใน manifests สอดคล้องกับ `LICENSE` file
+- ตรวจ release notes สำหรับ GitHub Release
+- ตรวจ dependencies ไม่มี license conflicts
+
+### 7. Check Deployment Readiness (merged from: review-deploy)
+
+> Goal: ตรวจ deployment readiness — ข้ามถ้า release นี้ไม่มี deploy step
+
+1. ตรวจ env vars และ secrets ตาม `references/deploy-env-secrets.md`
+2. ตรวจ build artifacts และ config ตาม `references/deploy-build-artifacts.md`
+3. ตรวจ health checks และ rollback plan ตาม `references/deploy-health-rollback.md`
+4. ตรวจ zero-downtime strategy และ migration scripts ตาม `references/deploy-zero-downtime.md`
+5. คำนวณ deploy readiness score ตาม `references/deploy-readiness-score.md` และ `references/deploy-scoring.md`
+
+### 8. Score And Report
+
+> Goal: สรุป release readiness score และ go/no-go
+
+ทำตาม references/scoring.md
+
+- คำนวณ release readiness score, grade และ supplementary metrics
+- ทำ `/report` สรุป category, status, findings, score
+- สร้าง go/no-go checklist
+- ทำ `/suggest-next-action`
+
+## Rules
+
+1. Review Independence
+   - ทำ review เท่านั้น ไม่ publish ระหว่าง review
+   - ทุก finding ต้องมี file path และ evidence (release)
+2. Evidence-Based Findings
+   - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
+   - จัดลำดับตาม severity: Critical → High → Medium → Low
+3. Scoring
+   - คะแนนต่อ category: ✅ = 1, ⚠️ = 0.5, ❌ = 0
+   - Release readiness score = (total score / total categories) × 100%
+   - Grade A-F ตาม thresholds ใน references/scoring.md
+   - Score < 70 → No-Go แนะนำให้แก้ก่อน publish
+4. Formatting
+   - ห้ามใช้ bold markers — ใช้ backticks
+   - รายงานเป็นตารางด้วย `/report`
+
+- ใช้ /test-release ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
+
+- ถ้า pass → ทำ `/ship` หรือ release ถ้า fail → แก้ findings ก่อน release
+
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ (merged from: verify-deploy ผ่าน review-deploy)
+
+1. ทำตาม `references/deploy-verify.md`
+2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
+3. ทำ `/deep-test api` สำหรับ endpoints สำคัญ
+4. ทำ `/check-security-headers` บน deployed URL
+5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
+6. ถ้า failed → แนะนำ rollback ด้วย `git revert <merge-commit>` หรือ redeploy version เดิม พร้อม evidence
+
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+- [Version and semver](references/version-semver.md)
+- [Changelog](references/changelog.md)
+- [Breaking changes](references/breaking-changes.md)
+- [Platform targets](references/platform-targets.md)
+- [Deploy env/secrets](references/deploy-env-secrets.md)
+- [Deploy build artifacts](references/deploy-build-artifacts.md)
+- [Deploy health/rollback](references/deploy-health-rollback.md)
+- [Deploy zero-downtime](references/deploy-zero-downtime.md)
+- [Deploy verify](references/deploy-verify.md)
+- [Scoring](references/scoring.md)
+- ใช้ /run-review ถ้าจำเป็น
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ release blockers ตาม checklist: version drift → `/check-release-drift`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
+2. แก้ deploy step ที่ไม่พร้อม → `/follow-deploy` หรือ `/resolve-cicd`
+3. verify: re-run readiness checks แล้วเทียบ go/no-go ก่อน-หลัง
+
+## Expected Outcome
+
+- รายงาน Release Readiness Summary พร้อม score และ grade
+- รายงาน Deploy Readiness Summary ถ้ามี deploy step
+- รายงาน Go/No-Go Checklist พร้อม status
+- รายงาน Breaking Changes พร้อม migration notes
+- Go/no-go recommendation
+- Release readiness score พร้อม progress bar
+- แนะนำ action ถัดไป
+

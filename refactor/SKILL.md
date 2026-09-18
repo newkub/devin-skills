@@ -18,6 +18,8 @@ related:
   - use-lib-effective
   - follow-single-of-source
   - follow-reusable
+  - edit-with-astgrep
+  - migration-by-astgrep
 ---
 
 ## Goal
@@ -29,11 +31,11 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
-- ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/codebase-refactor.md` (deep procedure: baseline → impact → batches → validation)
+- ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
-
-(merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`, `deep-refactor`)
+- mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/edit-with-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`
+(merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`)
 
 ## Execute
 
@@ -54,19 +56,19 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 > Goal: แก้ไขไฟล์ที่ระบุ
 
-ทำตาม [references/file-refactor.md](references/file-refactor.md)
+ทำตาม [references/scope-file.md](references/scope-file.md)
 
 ### 3. Workspace Refactor
 
 > Goal: จัดระเบียบ workspace หรือ monorepo
 
-ทำตาม [references/workspace-refactor.md](references/workspace-refactor.md)
+ทำตาม [references/scope-workspace.md](references/scope-workspace.md)
 
 ### 4. Codebase And SRP Refactor
 
 > Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ง codebase ด้วย baseline, impact analysis, incremental batches (merged from: `deep-refactor-codebase`)
 
-ทำตาม [references/codebase-refactor.md](references/codebase-refactor.md)
+ทำตาม [references/scope-codebase.md](references/scope-codebase.md)
 
 ### 5. Update References
 
@@ -92,60 +94,40 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 ## Rules
 
+Checklist สั้น — detail ฉบับเต็มของแต่ละ rule อยู่ที่ `references/principles.md`
+
 ### 1. Preserve Behavior
 
-- refactor = เปลี่ยน structure โดยไม่เปลี่ยน observable behavior — ห้าม mix feature change/bug fix ใน commit เดียวกับ refactor (Two Hats rule)
-- ถ้าเจอ bug ระหว่าง refactor → commit fix แยกก่อน แล้วค่อย refactor ต่อ
-- public API และ behavior ที่ consumer เห็นต้องเหมือนเดิม — ตรวจด้วย `/check-backward-compatibility` เมื่อแตะ exported API
+- ห้าม mix feature/bug fix กับ refactor ใน commit เดียว (Two Hats) — public API/behavior เหมือนเดิมเสมอ
 
 ### 2. Safety Net First
 
-- ห้าม refactor code ที่ไม่มี test coverage โดยไม่มี safety net — ถ้าไม่มี tests → ทำ `/update-tests` เขียน characterization tests ล็อก behavior ปัจจุบันก่อน
-- tests ต้องเขียวก่อน refactor และเขียวหลัง refactor — test เขียวที่ pass ก่อนแก้ต้อง pass หลังแก้เหมือนเดิม
-- ถ้า test suite ใหญ่และสงสัยว่าจับ regression ได้จริง → `/run-test` (mutation) วัดความแข็งแรงของ tests ก่อนเชื่อถือ
+- ไม่มี tests → เขียน characterization tests ก่อน (`/update-tests`); tests เขียวก่อนและหลัง
 
 ### 3. Small Steps
 
-- ทำทีละ refactoring เดียว (extract, rename, move) แล้ว verify green ก่อน step ถัดไป — ห้ามรวมหลาย transformation ใน step เดียว
-- commit checkpoint ด้วย `/git-commit` หลังทุก batch ที่เขียว — rollback ได้ทุกจุด
-- mechanical refactor ขนาดใหญ่ (rename/move/pattern change หลายไฟล์) → ใช้ `/use-astgrep` หรือ `/migration-by-astgrep` แทนการแก้มือ
+- ทีละ transformation เดียว → verify green → `/git-commit` checkpoint ทุก batch
+- mechanical batch หลายไฟล์ → `/edit-with-astgrep` (dry-run+confirm); rule-file migration → `/migration-by-astgrep`
 
 ### 4. Context Aware
 
-- ไม่เดา scope ถ้าไม่ชัด
-- ถ้าไม่ชัดให้ทำ `/ask-me`
-- ไม่ dispatch หลาย sub-skill พร้อมกัน — ทำทีละตัวตาม priority
+- ไม่เดา scope — ไม่ชัดให้ `/ask-me`; ทำทีละ sub-skill ตาม priority
 
 ### 5. Minimal Change
 
-- ทำ `/dont-over-engineer`
-- ทำ `/use-lib-effective` เมื่อเจอ code ที่อาจ reinvent dep ที่มีอยู่ — แทนด้วย lib ใน manifest หรือ catalog แทนการเขียนเอง
-- ทำ `/follow-reusable` ก่อนเขียน implementation ใหม่หรือเมื่อเจอ duplicates — reuse > extend > extract > create ตาม rule of three
-- หลีกเลี่ยง abstraction ที่ไม่จำเป็น
-- รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
-- dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน
-- เลือก technique จาก `references/code-smells.md` — smell → technique ตรง root cause
-- แก้ที่ root cause เสมอ ห้าม patch symptom — ถ้า fix ทำให้ต้องแก้หลายจุดซ้ำ (shotgun surgery) → รวมไป canonical source เดียว
-- ห้าม perf tuning ใน refactor pass — optimization เปลี่ยน behavior/timing เสี่ยง regression; ถ้าเจอ perf issue → note ไว้แยก commit ต่างหาก (`/review-performance`)
+- `/dont-over-engineer` + `/follow-reusable` (reuse > extend > extract > create); แก้ root cause ตาม `references/code-smells.md`; ห้าม perf tuning ใน refactor pass
 
 ### 6. SRP And Consistency
 
-- หนึ่ง function ทำหนึ่ง operation
-- หนึ่ง file ครอบคลุมหนึ่ง concern
-- ไฟล์ไม่เกิน 250 บรรทัด ยกเว้น barrel/index ที่จำเป็น — ตรวจด้วย `/check-long-files` (Rust CLI, default threshold 250)
-- รักษา naming, patterns, structure สอดคล้องกันทั้ง scope
-- หนึ่ง fact มี canonical source เดียว — เจอ constants/config/logic ที่ duplicate → extract ไป source เดียวตาม `/follow-single-of-source`
+- ไฟล์ ≤250 บรรทัด (`/check-long-files`); หนึ่ง fact หนึ่ง source (`/follow-single-of-source`); naming/patterns สอดคล้อง
 
 ### 7. Safety
 
-- การย้าย/ลบ/rename ต้อง `/update-references`
-- destructive actions ต้อง dry run + user confirmation
-- ไม่ force push
+- ย้าย/ลบ/rename → `/update-references`; destructive → dry run + confirm; ไม่ force push
 
 ### 8. Verification
 
-- ทุก refactor ต้องผ่าน `/run-verify`
-- ไม่มี broken references
+- ผ่าน `/run-verify`; ไม่มี broken references
 
 ## Expected Outcome
 

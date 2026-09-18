@@ -41,7 +41,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 > Goal: รู้ว่าอะไร "ควรถูก cover"
 
-1. `skills` → surface = actions/domains ใน `follow-skills-map/references/tool-map.md` + intents ใน `global_rules.md` + task types จาก skills-map categories
+1. `skills` → surface = actions/domains ใน `../follow-skills-map/references/tool-map.md` + intents ใน `global_rules.md` + task types จาก skills-map categories
 2. `tests` → surface = routes/endpoints/public modules จาก codebase (ทำ `/check-all-routes` หรือ scan route files)
 3. `docs` → surface = features/public API จาก `FEATURES.md`, exports, routes
 4. custom → ใช้ list ที่ user ให้หรือ extract จาก spec/config ที่ระบุ
@@ -114,6 +114,9 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 - ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
 
 ## Expected Outcome
 

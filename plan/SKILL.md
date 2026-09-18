@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-`/plan` เปลี่ยนเป็น `/deep-analyze-and-plan` — forward ทุก invocation ไปยัง canonical skill ที่รวม deep-analyze + deep-plan พร้อม deep-thinking, deep-research และ playbooks จาก deep-refactor + deep-implement-to-production — output เป็น comprehensive plan ในแชท (deps, file changes, risks, task graph)
+`/plan` เปลี่ยนเป็น `/deep-analyze-and-plan` — forward ทุก invocation ไปยัง canonical skill ที่รวม deep-analyze + deep-plan พร้อม deep-thinking, deep-research และ playbooks จาก refactor + implement-to-production — output เป็น comprehensive plan ในแชท (deps, file changes, risks, task graph)
 
 ## Scope
 

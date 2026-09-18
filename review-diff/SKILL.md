@@ -1,84 +1,24 @@
 ---
 name: review-diff
-description: รีวิว git diff ก่อนตัดสินใจ keep, revert หรือดำเนินการต่อ
+description: Alias for deep-review-diff - merged into the canonical skill
 argument-hint: "[scope]"
 related:
-  - report-git-diff
-  - check-git-diff
-  - report
-  - deep-validate
-  - ask-me
-  - ship
-  - follow-enter-dot
-  - run-review
+  - deep-review
 ---
 
 ## Goal
 
-รีวิว git diff อย่างรวดเร็ว สรุปสิ่งที่เปลี่ยนแปลง ตรวจหาปัญหาทีอาจเกิด และถาม user ก่อนตัดสินใจ keep, revert หรือดำเนินการต่อ
-
-## Scope
-
-ใช้ก่อน `git-commit`, `/ship`, `/follow-enter-dot` หรือทุกครั้งที่ working tree มีการเปลี่ยนแปลงจำนวนมากและต้องการ user confirmation ก่อนลงมือ
+Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review diff` เป็น canonical
 
 ## Execute
 
-### 1. Capture Diff State
-> Goal: อ่าน diff state ปัจจุบัน
-ทำตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
-
-### 2. Summarize Changes
-> Goal: สรุป changes ทั้งหมด
-สรุป changes ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
-
-### 3. Check Risks
-> Goal: ตรวจหา risks
-ตรวจหา risks ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
-
-### 4. Present Options
-> Goal: เสนอตัวเลือกถัดไป
-เสนอตัวเลือกถัดไปตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
-
-### 5. Act On Decision
-> Goal: ดำเนินการตาม decision
-ดำเนินการตาม decision ของ user ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
-
-### 6. Score And Report
-> Goal: รายงาน score และสรุปผล
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (diff)
+1. ทำ `/deep-review diff` ตามขอบเขตและ workflow เดิมทั้งหมด
 
 ## Rules
 
-- สรุปให้พอตัดสินใจ ไม่ dump diff ทั้งหมด
-- ถ้าตารางยาวเกิน 20 แถว ให้ group ตาม status หรือ directory
-- ถ้า diff มีการลบ/ย้าย/overwrite ต้องระบุและถามก่อน
-- ไม่ commit หรือ ship ถ้ายังไม่ได้ user confirmation
-- ทุกสรุปต้องมาจาก `git status`, `git diff` หรือการอ่านไฟล์จริง
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (diff)
-
-- ใช้ /report-git-diff ถ้าจำเป็น
-- ใช้ /check-git-diff ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /ask-me ถ้าจำเป็น
-
-- ตัดสินใจ keep/revert ตาม findings เท่านั้น
-- ใช้ /run-review ถ้าจำเป็น
-
-- ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /review-risk ถ้าจำเป็น
-
-## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
-
-1. decision `keep` → ทำ `/git-commit` หรือ `/ship` ตาม workflow
-2. decision `revert` → revert เฉพาะ hunks ที่ user confirm (git checkout/restore หรือ edit กลับ) — ไม่ revert ทั้งไฟล์ถ้ามีส่วนที่ keep
-3. findings ที่ต้องแก้ใน diff → แก้ตาม `review-*` domain ที่ตรง แล้ว re-diff เทียบ
+- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
+- รักษา backward compatibility ของชื่อ alias
 
 ## Expected Outcome
 
-- ตารางสรุป diff ทั้ง tracked และ untracked
-- รายการ risks หรือ side effects ทีพบ
-- ตัวเลือกทัดไปที user เลือกได้ชัดเจน
-- ไม่มีการ commit/ship/revert โดยไม่ได้รับ user confirmation
-
+- ผลลัพธ์เหมือน `/deep-review diff`

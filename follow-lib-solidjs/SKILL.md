@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ Solid.js projects ที่ไม่ใช่ SolidStart (client-side only หรือ integration กับ frameworks อื่น)
 
-- Latest: `solid-js@1.9.15` (2.0 ยังเป็น beta) (verified 2026-09-13)
+- Latest: `solid-js@1.9.15` (stable), `2.0.0-rc.8` (next — release candidate), `1.10.0-beta.0` (beta) (verified 2026-09-18)
 
 ## Execute
 
@@ -89,7 +89,7 @@ related:
 
 ### 3. Solid 2.0 Migration Notes
 
-เตรียมพร้อมสำหรับ Solid 2.0 (beta):
+เตรียมพร้อมสำหรับ Solid 2.0 (`2.0.0-rc.8` — release candidate, GA ใกล้แล้ว):
 
 - `Suspense` → `Loading`, `ErrorBoundary` → `Errored`
 - `createResource` → async `createMemo` + `Loading` boundary
@@ -100,6 +100,7 @@ related:
 - `createMemo` เปลี่ยน signature: second arg เป็น options ไม่ใช่ initial value
 - `onError` ถูก deprecated → ใช้ `catchError` แทน
 - ใหม่: `action()`, `createOptimisticStore`, `isPending()`, `latest()`, `refresh()`, `deep()`
+- rc.8 fix SSR XSS: strings ที่ yield ผ่าน flow-control memos (`<Show>`/`<For>`/`<Switch>` fallback) ตอนนี้ escaped บน server — ถ้าใช้ 2.0 RC กับ SSR ให้ pin `>=2.0.0-rc.8`
 
 ### 4. Related Workflows
 

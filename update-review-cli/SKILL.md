@@ -17,6 +17,8 @@ related:
 
 ## Goal
 
+Canonical engine: linter CLI (Rust, D:\newkub\wpackages\rust-packages\packages\tools\linter) — deterministic checks ผลิต eview-report.json schema เดิม; skill นี้ extends โดยเพิ่ม YAML rule packs (ules/<lang|frameworks|deps>/) หรือ analyzer modules แทนแก้ TS CLI เก่า
+
 สร้างหรืออัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review เพื่อวัด metrics ครบทุกมิติ จนผ่านหรือครบ 3 รอบ
 
 ## Scope

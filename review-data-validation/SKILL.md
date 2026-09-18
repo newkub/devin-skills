@@ -1,98 +1,24 @@
 ---
 name: review-data-validation
-description: ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่
-argument-hint: "[schema-or-api-pattern]"
+description: Alias for deep-review-data-validation - merged into the canonical skill
+argument-hint: "[scope]"
 related:
-  - scan-codebase
-  - report
-  - review-security
-related:
-  - run-review
+  - deep-review
 ---
 
 ## Goal
 
-ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่ ก่อนส่งต่อไปยัง section `## Fix`
-
-## Scope
-
-ใช้กับ backend, API routes, forms, database operations โดย audit validation logic โดยไม่แก้ไข code
+Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review data-validation` เป็น canonical
 
 ## Execute
 
-### 1. Discover Validation Stack
-
-> Goal: รู้ว่าใช้ validation library อะไร
-
-1. ทำ `/scan-codebase` หา schemas, validation files และ `package.json` สำหรับ `zod`, `valibot`, `arktype`, `joi`, `class-validator`
-2. ตรวจ schemas ใน `src/schemas`, `src/validations`
-3. ตรวจ API routes สำหรับ input validation
-4. ตรวจ forms สำหรับ client-side validation
-
-### 2. Review Validation Coverage
-
-> Goal: หาช่องโหว่และ gaps
-
-1. ตรวจ API endpoints ทีรับ input จาก client
-2. ตรวจ database queries ทีใช้ user input
-3. ตรวจ file uploads, date, email, URL validation
-4. ตรวจ numeric ranges, string lengths, enum values
-5. ระบุ endpoints ทีขาด validation
-
-### 3. Review Security And Type Safety
-
-> Goal: ประเมินความปลอดภัย
-
-1. ตรวจ strict/passthrough modes (`strict()`, `strip()`)
-2. ระบุ SQL injection, XSS, NoSQL injection risks
-3. ตรวจ type coercion และ unsafe defaults
-4. ตรวจ error messages ที leak sensitive data
-
-### 4. Schema Lifecycle
-
-> Goal: coverage เพิ่มเติมของ domain
-
-1. schema evolution/versioning strategy — backward compat
-2. PII field tagging ใน schemas
-
-### 5. Rate And Report
-
-> Goal: สรุป findings พร้อม fix direction
-
-1. ทำ `/report` ด้วย columns: No., Endpoint/Form, Issue, Severity, Fix
-2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี security risk สูง → เชื่อม `/review-security`
+1. ทำ `/deep-review data-validation` ตามขอบเขตและ workflow เดิมทั้งหมด
 
 ## Rules
 
-### 1. Read Only
-
-- ห้ามแก้ไข schemas หรือ validation rules ระหว่าง review
-- ห้ามรัน queries หรือ submit ข้อมูลจริง
-
-### 2. Evidence Required
-
-- ทุก finding ต้องอ้างอิง schema file/line หรือ API route
-- ระบุ severity ตาม impact (data leak, injection, crash)
-
-## Fix
-
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (data validation)
-
-Merged from: improve-data-validation
-
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (data validation)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (data validation)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (data validation)
-
-- `references/fix-improve-data-validation.md` — ปรับปรุง data validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- ใช้ /run-review ถ้าจำเป็น
+- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
+- รักษา backward compatibility ของชื่อ alias
 
 ## Expected Outcome
 
-- รายงาน findings ครอบคลุม coverage, security, type safety
-- ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน section `## Fix`
+- ผลลัพธ์เหมือน `/deep-review data-validation`
