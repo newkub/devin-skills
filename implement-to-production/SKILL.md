@@ -5,7 +5,6 @@ argument-hint: "[setup-infra|deploy-production] [scope-or-plan]"
 related:
   - deep-review
   - deep-analyze
-  - plan
   - deep-plan
   - review-architecture
   - ask-me
@@ -16,6 +15,7 @@ related:
   - review-observability
   - deep-validate
   - run-verify
+  - run-test-coverage
   - resolve-errors
   - use-lib-effective
 ---
@@ -124,7 +124,7 @@ related:
 
 > Goal: code ผ่าน validation พร้อม rollback plan
 
-1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests
+1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test-coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. pre-ship sweep: ทำ `/check-console-logs` หา debug leftovers, `/check-secrets secrets-leak` ยืนยันไม่มี secrets หลุด, และ `/run-audit` ตรวจ dependency vulnerabilities

@@ -3,7 +3,6 @@ name: follow-lang-javascript
 description: เขียน JavaScript ตาม modern best practices และ ES2025+
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
   - use-bun-native-api
   - follow-lang-kotlin
   - follow-lang-lua

@@ -1,150 +1,37 @@
 ---
 name: run-review
-description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
+description: alias → /update-review-cli-then-run (รัน review CLI วิเคราะห์ผล และแนะนำ action items)
 argument-hint: "[target]"
 related:
+  - update-review-cli-then-run
   - review-dot-devin
-  - update-review-cli
-  - update-create-analyze-cli
+  - deep-review
   - run-verify
-  - resolve-errors
-  - follow-tasks
   - suggest-next-action
-  - report
 ---
 
 ## Goal
 
-รัน `tools/review-codebase` CLI เพื่อวิเคราะห์ project review และแนะนำ action items ตาม findings
+Alias ของ `/update-review-cli-then-run` — รัน `tools/review-codebase` CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
 
 ## Scope
 
-ใช้สำหรับรัน review CLI ที่ `tools/review-codebase` ที่ project root และแปลผลลัพธ์ ถ้าจำเป็นให้ update/fix CLI ด้วย `/update-review-cli`
-
-ดูเพิ่มเติม: /update-review-cli
+ใช้เมื่อ user เรียก `/run-review` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-review-cli-then-run`
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dot-devin` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (review)
+ทำ `/update-review-cli-then-run` เต็ม workflow — run path คือ Steps 7-10 (Validate CLI → Run Review And Analyze → Verify And Follow Tasks → Report And Suggest Actions); ถ้าต้อง update CLI ก่อนให้เริ่ม Steps 1-6
 
-### 1. Verify CLI Exists
-
-> Goal: ตรวจสอบว่า review CLI มีอยู่และพร้อมรัน
-
-1. ตรวจสอบว่า `tools/review-codebase/package.json` มีอยู่ที่ project root
-2. ถ้าไม่มี → ทำ `/update-review-cli` เพื่อสร้าง CLI ก่อน แล้วกลับมาทำ step ถัดไป
-3. ตรวจสอบว่า `tools/review-codebase/src/presentation/cli.ts` มีอยู่
-
-### 2. Run Review CLI
-
-> Goal: รัน review CLI เพื่อวิเคราะห์ project review
-
-1. รัน `bun --filter tools-review-codebase review-codebase` สำหรับ table output
-2. รัน `bun --filter tools-review-codebase review-codebase:json` สำหรับ JSON output ที่เขียนลง `reports/review-report.json`
-3. ถ้าต้องการ output มาที stdout ให้ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file -`
-4. ถ้าต้องการบันทึกไฟล์ custom ให้ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file <path>`
-5. ถ้า CLI error → ทำ `/update-review-cli` เพื่อ fix CLI ก่อน แล้วกลับมารันใหม่
-
-### 3. Analyze Results
-
-> Goal: วิเคราะห์ผลลัพธ์จาก review report เพื่อระบุปัญหาและจัดลำดับ
-
-1. อ่าน review score และ grade จาก summary
-2. ระบุ findings ที่เป็น Critical และ High severity
-3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-*` workflows ที่เหมาะสม — coverage ครบตาม `deep-review/references/review-skills.md` (ทุก `review-*` ยกเว้น `review-github-pr`)
-4. metric/finding ใดที่ไม่มี analyzer ครอบคลุม → mark `ใน update-review-cli = N` แล้วแนะนำ `/update-review-cli`
-5. ถ้า score < 70, categories < 60, `analyzerErrors` > 0, domain score < 50, หรือ `falsePositiveRate` > 20% → ทำ Step 4 Fix And Rerun (max 3 รอบ)
-
-### 4. Fix And Rerun
-
-> Goal: แก้ไข CLI/analyzers แล้วรัน review ใหม่จนผ่านหรือครบ 3 รอบ
-
-1. บันทึก metrics ปัจจุบัน: score, grade, categories, domain scores, analyzerErrors, falsePositiveRate
-2. ถ้า CLI error, package missing หรือ structure ผิด → ทำ `/update-review-cli`
-3. ถ้า categories < 60, score < 70, domain score < 50, หรือ falsePositiveRate > 20% → ทำ `/update-review-cli` หรือ `/update-create-analyze-cli`
-4. ถ้า analyzerErrors > 0 → ทำ `/resolve-errors` จากนั้นทำ `/update-review-cli`
-5. หลัง fix รัน `/run-verify` เพื่อ build, lint, typecheck
-6. ถ้า verify ผ่าน → กลับไป Step 2 รัน review ใหม่
-7. ทำซ้ำไม่เกิน 3 รอบ ถ้ายังไม่ผ่าน → ไป Step 5
-
-### 5. Verify And Follow Tasks
-
-> Goal: ยืนยันว่า project ผ่าน verify แล้วติดตาม action ถัดไป
-
-1. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
-2. ทำ `/follow-tasks` เพื่อรับ action items และ track progress
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไป `/run-review` อีกครั้ง
-
-### 6. Suggest Actions
-
-> Goal: แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
-
-1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
-2. ทำ `/report` แสดง summary: domain scores, top findings, recommended workflows
-3. แนะนำ `/review-*` workflows สำหรับแต่ละ finding ตาม `reviewWorkflow` field
+- ถ้าต้องแก้ไข analyzer logic → `/update-create-analyze-cli` ก่อน แล้วกลับมาทำ skill นี้
+- Known Issues อยู่ใน `update-review-cli-then-run/references/known-issues.md` เท่านั้น (single source)
 
 ## Rules
 
-### 1. CLI Commands
-
-- ใช้ `bun --filter tools-review-codebase review-codebase` สำหรับ table output
-- ใช้ `bun --filter tools-review-codebase review-codebase:json` สำหรับ JSON output (default เขียนลง `reports/review-report.json`)
-- ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file -` สำหรับ stdout
-- ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file <path>` สำหรับ custom path
-- ถ้า CLI ไม่มี → ทำ `/update-review-cli` ก่อน
-
-### 2. Output Interpretation
-
-- Review score: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Status: pass, warn, fail
-- Severity order: Critical > High > Medium > Low
-- จัดลำดับ action items ตาม severity: Critical ก่อน, High รองลงมง
-- แต่ละ finding map ไปยัง `/review-*` workflows ที่เหมาะสม ผ่าน `reviewWorkflow` field — dispatch catalog อยู่ที่ `deep-review/references/review-skills.md` (per-workspace phases: entry → source → cross-cutting → meta)
-- findings ที่ไม่มี analyzer ครอบคลุม (`ใน update-review-cli = N`) → แนะนำ `/update-review-cli` เสมอ
-
-### 3. When To Update Or Fix CLI
-
-- ถ้า CLI error, package missing หรือ crash → ทำ `/update-review-cli`
-- ถ้า categories ไม่ครบ 60+ → ทำ `/update-review-cli`
-- ถ้า analyzer ให้ผลไม่ถูกต้อง → ทำ `/update-create-analyze-cli` แล้ว `/update-review-cli`
-- ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้ว rerun (max 3 รอบ)
+- ห้าม duplicate workflow ของ `/update-review-cli-then-run` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `update-review-cli-then-run/SKILL.md` เสมอ
+- ถ้าต้อง review กว้างกว่า CLI → ใช้ `/deep-review`; ถ้าเจาะ `.devin` ใช้ `/review-dot-devin`
+- verify ผลหลัง review ด้วย `/run-verify` แล้วปิดท้ายด้วย `/suggest-next-action`
 
 ## Expected Outcome
 
-- Review report พร้อม score, grade, domain breakdown และ findings
-- ตาราง summary ตาม `/report` แสดง top findings และ recommended actions
-- แนะนำ `/review-*` workflows สำหรับแต่ละปัญหา
-- แนะนำ `/update-review-cli` ถ้า CLI ต้องสร้าง/อัปเดทหรือ analyzers ต้องปรับปรุง
-
-## References
-
-- ใช้ `tools/review-codebase/package.json` ที่ project root
-- ดูรายละเอียดสร้าง/อัปเดท CLI ใน `/update-review-cli`
-- `review-*` dispatch catalog (ครบ 54 ตัว ยกเว้น `review-github-pr`): `deep-review/references/review-skills.md`
-
-## Addendum
-
-- ถ้าต้องแก้ไข analyzer logic ให้เรียก `/update-create-analyze-cli` ก่อน เพื่ออัปเดท `tools/analyze` ก่อน `/update-review-cli`
-- Fix workflow ย้ายมาอยู่ใน `/run-review` Step 4
-
-## Known Issues
-
-ปัญหาที่เคยเจอจริง — เช็คก่อนตัดสินว่า finding เป็น source bug (รายละเอียดเต็มใน `update-review-cli` Known Issues)
-
-| No. | Issue | Status |
-|-----|-------|--------|
-| 1 | typecheck/lint finding จาก OOM/`VirtualAlloc` ใต้ analyzer load — ไม่ใช่ source fail | fixed — analyzer retry 1 ครั้งบน OOM patterns |
-| 2 | hardcoded-URL false positives บน URL-validation code และ known public endpoints | fixed — allowlist + expression skip |
-| 3 | long-function/file thresholds เดิม flag declarative TSX และ data tables ปกติ | fixed — TSX 200 / TS 120 / file 400 |
-| 4 | report stale เมื่อ formatter rewrite ไฟล์ใกล้เวลารัน — เทียบ timestamp ก่อนเชื่อ evidence | open — รัน `biome check --write` ให้จบก่อน review |
-| 5 | transient build/tooling crash ใต้ load (stack overflow, exit 66) — retry ก่อน flag | open — workaround: rerun |
-| 6 | unsafe-pattern flag member-call `eval` (`upstash.eval`) | fixed — bare `eval(` เท่านั้นที่ flag |
-| 7 | `process.env` flag matches ใน comments/doc strings | fixed — comments ถูก strip ก่อน match; real read ใน provider server.ts intentional ภายใต้ `nodejs_compat_populate_process_env` |
-| 8 | dead-code flag export ที่ใช้ผ่าน `createServerFn` | open — reproduce 2026-09-14 (`handleTikTokCallback`); analyzer ต้อง resolve TanStack server-fn consumers |
-| 9 | tsgo typecheck panic `gcBgMarkWorker` เมื่อ RAM ต่ำ — finding ตายไม่ใช่ source fail | open — workaround: รันตอน RAM ว่าง |
-
-## CLI Output Notes
-
-- table output แสดง domain summary (score/grade/findings/delta) + per-finding sub-list: priority, reason, risk, fix skill, status (new/existing), evidence items
-- `--domain <name>` / `--severity <min>` สำหรับ iterate เฉพาะส่วนที่ fail
-- exit code: `1` เมื่อ metric trigger tripped (categories<60, score<70, domain<50, analyzerErrors>0, FP>20%) — ใช้เป็น CI gate ได้
+- `/update-review-cli-then-run` ถูก execute ครบตาม run path พร้อม action items จาก findings

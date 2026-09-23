@@ -6,8 +6,6 @@ related:
   - cleanup-files-in-project
   - cleanup-files-in-computer
   - cleanup
-  - run-clean
-  - run-cleanup
   - ask-me
   - report
 ---

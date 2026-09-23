@@ -4,14 +4,11 @@ description: ตรวจ cross-layer alignment — code↔docs↔tests↔config
 argument-hint: "[scope]"
 related:
   - review
-  - deep-review
-  - review-devin-global-harness
-  - review-gaps
   - update-references
   - check-backward-compatibility
+  - update-devin-harness
   - align-devin-layers
   - report
-  - ask-me
 ---
 
 ## Goal
@@ -20,8 +17,8 @@ related:
 
 ## Scope
 
-- Alignment pairs: **code↔tests** (coverage ของ public surface), **code↔docs** (README/USAGE ตรง implementation), **code↔config** (env vars, defaults), **API↔contract** (exported signatures vs docs/clients), **harness layers** (global_rules↔skills↔subagents↔hooks↔MCP)
-- report-only — fix ทำผ่าน `/update-references`, `/align-devin-layers`, `/update-docs` หลัง confirm
+- Alignment pairs: `code↔tests` (coverage ของ public surface), `code↔docs` (README/USAGE ตรง implementation), `code↔config` (env vars, defaults), `API↔contract` (exported signatures vs docs/clients), `harness layers` (global_rules↔skills↔subagents↔hooks↔MCP)
+- report-only — fix ทำผ่าน `/update-references`, `/update-devin-harness` (alias `/align-devin-layers`), `/update-docs` หลัง confirm
 
 ## Execute
 
@@ -36,11 +33,11 @@ related:
 
 > Goal: หา drift แต่ละ pair พร้อม evidence
 
-1. **code↔tests**: exported functions ไม่มี test; test อ้าง symbols ที่ไม่มีแล้ว
-2. **code↔docs**: docs อ้าง API/command/flag ที่ไม่มีจริง; features ที่ docs ไม่ได้บอก
-3. **code↔config**: env vars ที่ code อ่านแต่ config/example ไม่มี (และกลับกัน); defaults ไม่ตรง
-4. **API↔contract**: semver/docs contract vs exported surface — ใช้ `/check-backward-compatibility`
-5. **harness**: `global_rules.md` อ้าง skills ที่มีจริง; skill `related` ↔ reverse สมมาตร; subagent profiles ↔ `agents/`; `AGENTS.md` ↔ actual dirs
+1. `code↔tests`: exported functions ไม่มี test; test อ้าง symbols ที่ไม่มีแล้ว
+2. `code↔docs`: docs อ้าง API/command/flag ที่ไม่มีจริง; features ที่ docs ไม่ได้บอก
+3. `code↔config`: env vars ที่ code อ่านแต่ config/example ไม่มี (และกลับกัน); defaults ไม่ตรง
+4. `API↔contract`: semver/docs contract vs exported surface — ใช้ `/check-backward-compatibility`
+5. `harness`: `global_rules.md` อ้าง skills ที่มีจริง; skill `related` ↔ reverse สมมาตร; subagent profiles ↔ `agents/`; `AGENTS.md` ↔ actual dirs
 6. ทุก finding ระบุ: pair, direction (A→B broken หรือ B→A stale), evidence (paths+lines)
 
 ### 3. Score And Report
@@ -49,7 +46,7 @@ related:
 
 1. severity: Critical = broken contract/runtime error / High = stale public API docs / Medium = drift ภายใน / Low = cosmetic mismatch
 2. ทำ `/report` ตาราง: `No.`, `Layer A`, `Layer B`, `Direction`, `Finding`, `Severity`, `Evidence`, `Fix Skill`
-3. Fix skill mapping: refs → `/update-references`, docs → `/update-docs`, harness layers → `/align-devin-layers`, contracts → `/check-backward-compatibility` follow-up
+3. Fix skill mapping: refs → `/update-references`, docs → `/update-docs`, harness layers → `/update-devin-harness` (alias `/align-devin-layers`), contracts → `/check-backward-compatibility` follow-up
 
 ## Rules
 
@@ -68,7 +65,7 @@ related:
 - แยก "ไม่มี reference" (gap) จาก "reference พัง" (drift) — ต่าง severity
 
 - ใช้ /update-references ถ้าจำเป็น
-- ใช้ /align-devin-layers ถ้าจำเป็น
+- ใช้ /update-devin-harness ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
 
 ## Expected Outcome

@@ -3,7 +3,6 @@ name: search-by-astgrep
 description: ค้นหา code ด้วย ast-grep AST patterns — เลือก CLI ad-hoc หรือ programmatic ตามเหมาะสม
 argument-hint: "[pattern-or-target]"
 related:
-  - edit-with-astgrep
   - use-astgrep
   - use-astgrep-programmatic
   - update-project-rules

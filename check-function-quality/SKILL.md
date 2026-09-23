@@ -62,7 +62,7 @@ bun skills/check-function-quality/scripts/check-function-quality.ts src --max-li
 
 1. อ่าน findings จาก table/JSON — ทุก finding มี `file:line` + function name เป็น evidence
 2. เปิดอ่าน functions ที่ severity สูงสุด 3-5 ตัวเพื่อยืนยันว่า metric สะท้อนปัญหาจริง (ไม่ใช่ data table/generated code)
-3. ระบุ false positives: dispatch tables, JSX-heavy components (ดู `update-review-cli` Known Issues #3 — TSX declarative อนุโลม), config builders
+3. ระบุ false positives: dispatch tables, JSX-heavy components (ดู `update-review-cli-then-run/references/known-issues.md` #3 — TSX declarative อนุโลม), config builders
 4. ถ้าไม่มี findings ที่เป็นปัญหาจริง → stop และ report
 
 ### 4. Recommend Techniques
@@ -104,7 +104,7 @@ bun skills/check-function-quality/scripts/check-function-quality.ts src --max-li
 
 - defaults ตามตารางใน Step 3 — override ได้ด้วย flags (`--max-lines`, `--max-params`, `--max-returns`, `--max-depth`, `--max-complexity`)
 - TSX declarative components อนุโลม: JSX-heavy functions ใช้ threshold สูงกว่า (x2) หรือ skip ตาม context ของ project
-- ถ้า project มี convention ต่าง (เช่น update-review-cli: TS 120/TSX 200) → ปรับ flags ตามนั้น
+- ถ้า project มี convention ต่าง (เช่น update-review-cli-then-run: TS 120/TSX 200) → ปรับ flags ตามนั้น
 
 ### 3. Script Discipline
 

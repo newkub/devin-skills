@@ -3,7 +3,6 @@ name: use-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - edit-with-astgrep
   - update-project-rules
   - check-code-structure
   - replace

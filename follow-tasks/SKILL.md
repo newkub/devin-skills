@@ -112,10 +112,10 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 ตาราง command lookup ทั้งหมดอยู่ที่ [references/scripts-tables.md](references/scripts-tables.md) — single source of truth ครอบ:
 
-- **Script Mechanism** — `Cargo.toml`/Python/Go ไม่มี script runner ในตัว → ใช้ `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (ห้ามใส่ scripts ใน `Cargo.toml`)
-- **Bun-Native Alternatives** — `bun test`, `bun audit`, `bun ci`, `bun run --workspaces`, `bun --filter`
-- **Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs** — ครบทุก stack: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
-- **Secrets, Monorepo, Review CLI, Other Ecosystems** (Kotlin, PHP, Swift, Zig, Lua, C#)
+- `Script Mechanism` — `Cargo.toml`/Python/Go ไม่มี script runner ในตัว → ใช้ `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (ห้ามใส่ scripts ใน `Cargo.toml`)
+- `Bun-Native Alternatives` — `bun test`, `bun audit`, `bun ci`, `bun run --workspaces`, `bun --filter`
+- `Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs` — ครบทุก stack: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
+- `Secrets, Monorepo, Review CLI, Other Ecosystems` (Kotlin, PHP, Swift, Zig, Lua, C#)
 
 กฎสำคัญที่ผูกกับตาราง:
 - `check` = `format && lint && typecheck && scan` (format write — local dev)

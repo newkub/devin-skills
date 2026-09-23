@@ -54,7 +54,7 @@ related:
 
 > Goal: เขียนทับเฉพาะหลัง user เห็น diff และอนุมัติ
 
-1. เลือก mode: **interactive** (sg confirm ทีละ change — เหมาะกับ false-positive risk สูง) หรือ **bulk** (`-U` apply all — เมื่อ user confirm แล้วและ diff ตัวอย่างถูก)
+1. เลือก mode: `interactive` (sg confirm ทีละ change — เหมาะกับ false-positive risk สูง) หรือ `bulk` (`-U` apply all — เมื่อ user confirm แล้วและ diff ตัวอย่างถูก)
 2. Bulk: `ast-grep run -p '<pattern>' -r '<replacement>' -U <path>` หรือ `sg scan --fix-all` ถ้าใช้ rule file
 3. ห้าม apply ถ้ายังไม่ได้ confirm — dry-run เป็น default เสมอ
 

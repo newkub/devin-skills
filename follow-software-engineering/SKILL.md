@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-math-concepts
   - review-architecture
-  - review-architecture
   - review-frontend
 ---
 

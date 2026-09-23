@@ -3,7 +3,6 @@ name: migration-by-astgrep
 description: รัน codebase migrations ด้วย ast-grep rules
 argument-hint: "[rule-file-or-pattern]"
 related:
-  - edit-with-astgrep
   - scan-codebase
   - report
   - suggest-next-action

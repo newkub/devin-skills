@@ -9,7 +9,6 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - follow-lang-bun
   - use-bun-native-api
   - follow-tool-tsdown
   - follow-tool-rolldown

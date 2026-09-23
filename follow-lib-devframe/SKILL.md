@@ -4,9 +4,7 @@ description: สร้าง devtool ครั้งเดียวด้วย 
 argument-hint: "[adapter-or-scope]"
 related:
   - follow-lib-zod
-  - follow-create-cli
   - use-mcp
-  - follow-lib-mcp-sdk
   - run-check
   - resolve-errors
 ---

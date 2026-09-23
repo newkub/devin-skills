@@ -51,7 +51,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 > Goal: ได้ findings จาก automated checks
 
-1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ frontmatter, sections, line count, style, references, parallel markers, template compliance และ cross-skill checks — **script ครอบเฉพาะ skills layer แบบ mechanical; hooks/mcp/global rules ไม่มี script ต้อง manual เท่านั้น**
+1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ frontmatter, sections, line count, style, references, parallel markers, template compliance และ cross-skill checks — `script ครอบเฉพาะ skills layer แบบ mechanical; hooks/mcp/global rules ไม่มี script ต้อง manual เท่านั้น`
 2. ใช้ `bun run review:ci` สำหรับ pre-check ก่อน `update-devin-*` (exit 1 เมื่อ Critical/High)
 3. อ่าน `review-skills-report.json` เพื่อดู findings ทั้งหมด — findings จาก script = input ของ Step 3 ไม่ใช่ผลลัพธ์สุดท้าย
 
@@ -155,7 +155,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ### 5. Scoring And Formatting
 
 - คำนวณ review score ตาม `references/scoring.md` แยกต่อ layer
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks
+- ห้ามใช้ markdown bold markers — ใช้ backticks
 - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
@@ -163,7 +163,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /review-dot-devin ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /align-devin-layers เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้
+- ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้ (alias: /align-devin-layers)
 - ใช้ /check-reference, /check-skill-usage, /check-devin-knowledge สำหรับเจาะลึก layer เดียว
 
 ## Fix

@@ -3,11 +3,7 @@ name: follow-effect-system
 description: พัฒนา TypeScript ด้วย Effect — Effect.gen, Layer DI, tagged errors, Schema, structured concurrency
 argument-hint: "[task]"
 related:
-  - follow-lang-typescript
-  - follow-lang-bun
-  - follow-create-web
   - follow-tool-vitest
-  - follow-tool-validator
   - deep-research
 ---
 

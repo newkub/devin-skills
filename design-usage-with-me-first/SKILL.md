@@ -15,13 +15,13 @@ related:
 
 ## Goal
 
-ออกแบบโครงและเนื้อหา `USAGE.md` ร่วมกับ user **ในแชทเท่านั้น** — iterate จน user ตกลงก่อน แล้วค่อยส่งต่อ `/update-usage-md` เขียน `USAGE.md` จริงที่ workspace
+ออกแบบโครงและเนื้อหา `USAGE.md` ร่วมกับ user `ในแชทเท่านั้น` — iterate จน user ตกลงก่อน แล้วค่อยส่งต่อ `/update-usage-md` เขียน `USAGE.md` จริงที่ workspace
 
 ## Scope
 
 ใช้เมื่อต้องการลองวางโครง usage documentation ก่อนเขียนจริง — discussion-first, user ใน loop ทุก iteration
 
-- คุยและร่างในแชทเท่านั้น — **ห้ามสร้างไฟล์ใดๆ** (ไม่มี temp file, ไม่แตะ workspace) จนกว่า user confirm
+- คุยและร่างในแชทเท่านั้น — `ห้ามสร้างไฟล์ใดๆ` (ไม่มี temp file, ไม่แตะ workspace) จนกว่า user confirm
 - โครงเนื้อหาตามมาตรฐาน `/update-usage-md` — code เป็น source of truth
 - เริ่มจาก `/ask-me` และ `/suggest-me` เพื่อเข้าใจความต้องการเสมอ
 - ไม่ commit — ต้อง user confirm ก่อนส่งต่อเขียนจริง

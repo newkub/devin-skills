@@ -9,7 +9,6 @@ related:
   - flatten-directory
   - rethink
   - review-dependencies
-  - review-architecture
   - run-test
 ---
 ## Goal

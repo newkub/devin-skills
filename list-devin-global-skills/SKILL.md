@@ -26,7 +26,7 @@ related:
 
 อ่านไดเรกทอรีทั้งหมดใน `skills` directory
 
-1. อ่านไดเรกทอรีทั้งหมดใน `C:\Users\Veerapong\.codeium\windsurf\skills\`
+1. อ่านไดเรกทอรีทั้งหมดใน `%APPDATA%\devin\skills\`
 2. กรองเฉพาะที่มีไฟล์ `SKILL.md` อยู่
 3. อ่าน frontmatter ของแต่ละ `SKILL.md` เพื่อดู `title` และ `description`
 

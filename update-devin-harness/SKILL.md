@@ -8,6 +8,15 @@ related:
   - update-devin-global-subagents
   - list-devin
   - use-related-skills
+  - align-devin-layers
+  - deep-validate
+  - check-reference
+  - report
+  - suggest-next-action
+  - review-devin-global-harness
+  - check-broken-skills-references
+  - update-references
+  - scan-codebase
 ---
 
 ## Goal
@@ -16,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้อง sync ทั้งสาม layer ของ devin ecosystem โดยเฉพาะหลังมีการ rename, merge, หรือสร้าง skills/subagents จำนวนมาก
+ใช้เมื่อต้อง sync ทั้งสาม layer ของ devin ecosystem โดยเฉพาะหลังมีการ rename, merge, หรือสร้าง skills/subagents จำนวนมาก — `/align-devin-layers` เป็น alias ของ skill นี้
 
 ## Execute
 
@@ -43,9 +52,11 @@ related:
 > Goal: หาความไม่สอดคล้อง
 
 1. เปรียบเทียบ rules จาก global rules vs skills vs subagents
-2. ตรวจ references: ชื่อ skills/subagents ใน AGENTS.md, global rules, และ skill `related`
-3. หา circular dependencies หรือ broken references
-4. ระบุ skills/subagents ทีล้าหลัง global rules
+2. ทำ `/scan-codebase` เพื่อค้นหา references ทั่ว repo
+3. ตรวจ references: ชื่อ skills/subagents ใน AGENTS.md, global rules, และ skill `related`
+4. ทำ `/check-broken-skills-references` หา broken references
+5. หา circular dependencies หรือ broken references
+6. ระบุ skills/subagents ทีล้าหลัง global rules
 
 ### 4. Resolve Conflicts
 
@@ -54,15 +65,16 @@ related:
 1. ถ้า global rules กับ skill ขัดแย้ง → ปรับ skill หรือ update global rules
 2. ถ้า subagent เรียก skill ทีไม่มี → อัปเดต subagent
 3. ถ้า skill อ้างอิง rules ทีไม่มี → เพิ่มหรือลบ reference
-4. ใช้ `/use-related-skills` เพื่อหา overlaps
+4. ใช้ `/update-references` เพื่อ sync ทั่ว repo
+5. ใช้ `/use-related-skills` เพื่อหา overlaps
 
 ### 5. Validate Harness
 
 > Goal: ตรวจสอบความสมบูรณ์
 
 1. ทำ `/deep-validate` กับ global rules
-2. ตรวจ frontmatter ของ skills ทั้งหมด
-3. ตรวจ `AGENT.md` ของ subagents
+2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-harness`
+3. ตรวจ `AGENT.md` ของ subagents ด้วย `/update-devin-global-subagents` ถ้าจำเป็น
 4. รัน `/check-reference`
 5. รัน `git diff --check`
 
@@ -70,7 +82,7 @@ related:
 
 > Goal: สรุป alignment status
 
-1. ทำ `/report` คอลัมน์: Layer, Status, Changes, Issues
+1. ทำ `/report` คอลัมน์: `No.`, `Layer`, `Status`, `Changes`, `Issues`
 2. ระบุสิ่งที่ยังค้าง
 3. ทำ `/suggest-next-action`
 

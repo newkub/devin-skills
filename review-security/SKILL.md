@@ -1,24 +1,187 @@
 ---
 name: review-security
-description: Alias for deep-review-security - merged into the canonical skill
+description: Review security ครอบคลุม auth, authorization, OWASP, secrets, injection, supply chain, encryption
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - follow-secret-manager
+  - open-web-for-config-secret
+  - check-secrets
+  - analyze-attack-surface
+  - review-compliance
+  - review-observability
+  - scan-codebase
+  - report
+  - suggest-next-action
+  - run-audit
+  - run-review
 ---
-
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review security` เป็น canonical
+Review security ครอบคลุมทุก dimension ของ application security พร้อม aggregate findings, severity, และ review score
+
+## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-security)
+
+ครอบคลุม: auth posture (high-level เท่านั้น), OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, encryption, file upload security, security scoring
+
+ไม่รวม: auth subsystem deep-dive — identity flows, sessions, tokens, OAuth, MFA, RBAC/ABAC (ใช้ `/review-auth`), compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
 
 ## Execute
 
-1. ทำ `/deep-review security` ตามขอบเขตและ workflow เดิมทั้งหมด
+### 1. Prepare And Scan
+
+> Goal: เข้าใจ security setup และสร้าง baseline findings
+
+ทำตาม `references/security-risk.md`
+
+ก่อนเริ่มให้ `/scan-codebase` เพื่อระบุ auth framework, session strategy, API framework, encryption library, และ secret manager
+
+### 2. Authentication
+
+> Goal: ครอบคลุมทุก authentication dimension
+
+ทำตาม `references/authentication.md`
+
+### 3. Authorization
+
+> Goal: ครอบคลุมทุก authorization dimension
+
+ทำตาม `references/authorization.md`
+
+### 4. OWASP
+
+> Goal: ครอบคลุมทุก OWASP Top 10 category
+
+ทำตาม `references/owasp-top-10.md`
+
+### 5. Secrets
+
+> Goal: ครอบคลุมทุก secrets management dimension
+
+ทำตาม `references/secrets.md`
+
+ถ้าต้องปรับปรุง secrets management → ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret`
+
+### 6. Injection
+
+> Goal: ครอบคลุมทุก injection prevention dimension
+
+ทำตาม `references/injection.md`
+
+### 7. API Security And File Upload
+
+> Goal: ครอบคลุมทุก API security + file upload dimension
+
+ทำตาม `references/api-security.md` และ `references/file-upload.md`
+
+### 8. Encryption
+
+> Goal: ครอบคลุมทุก encryption dimension
+
+ทำตาม `references/encryption.md`
+
+### 9. Supply Chain And Hardening
+
+> Goal: deps และ deployed surface ปลอดภัย — ทำตาม `references/supply-chain.md`
+
+1. authz matrix — role x resource table ครบทุก protected action
+2. SBOM + lockfile integrity, secret rotation age
+3. verify security headers บน deployed response จริง (curl) ไม่ใช่แค่ config
+4. dependency audit — `/run-audit` สำหรับ known CVEs, typosquatting, abandoned packages
+5. logging safety — ไม่ log secrets/PII/tokens, audit trail สำหรับ security events
+
+### 10. Validate Score And Report
+
+> Goal: ตรวจสอบ findings, คำนวณ score, และรายงานผล
+
+ทำตาม `references/scoring.md`
+
+ทำ `/deep-validate` ก่อนรายงาน แล้วทำ `/report`
+
+### Subskills
+
+> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+
+| Topic | Subskill |
+|-------|----------|
+| Rotate/remove leaked secrets, git history notes | `subskills/fix-secrets/SKILL.md` |
+| Security headers — CSP, HSTS, X-Frame-Options | `subskills/fix-headers/SKILL.md` |
+| Vulnerable deps — audit, upgrade, patch | `subskills/fix-vuln-deps/SKILL.md` |
+| `report`, `vulns` — vuln matrix + exploit paths + fix mapping | `subskills/report-vulns/SKILL.md` |
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+### 1. Scope Boundary
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (security)
+- ไม่ซ้ำกับ `/review-compliance` สำหรับ compliance
+- ไม่ซ้ำกับ `/review-delivery` Section 15 สำหรับ security เชิงลึก
+
+### 2. Skip Conditions
+
+- ถ้า project ไม่มี authentication → ข้าม Section 2
+- ถ้า project ไม่มี authorization → ข้าม Section 3
+- ถ้า project ไม่มี API → ข้าม api-security checks ใน Section 7
+- ถ้า project ไม่มี file upload → ข้าม file-upload checks ใน Section 7
+- ถ้า project ไม่มี encryption → ข้าม Section 8
+
+### 3. Severity
+
+- Critical: plaintext password, hardcoded production secret, SQL injection, XSS on user input, command injection, missing auth on sensitive endpoint, IDOR on critical resource, privilege escalation, plaintext storage, weak algorithm, unrestricted file upload, secret in public repo
+- High: weak password policy, missing brute force protection, missing MFA, inconsistent permission checks, missing rate limiting, missing CSP, weak TLS, missing key rotation, missing virus scan, missing CORS validation
+- Medium: inconsistent naming, suboptimal hashing cost, missing HSTS, suboptimal rate limit, missing security header, weak password policy
+- Low: cosmetic, documentation gap, minor naming
+
+### 4. Evidence
+
+- ทุก finding ต้องมี file path และ line number (security)
+- ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `grep`, dependency audit)
+- ระบุ endpoint, function, secret, algorithm, หรือ vulnerability type ที่เกี่ยวข้อง
+
+### 5. Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (security)
+- ไม่ซ้ำกับ `/review-compliance`
+- ไม่ซ้ำกับ `/review-delivery` Section 15
+
+### 6. Health Score
+
+- คำนวณ review score เป็น percentage (0-100) ตาม `references/scoring.md`
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (security)
+- แสดง score ต่อ dimension และ overall score (security)
+- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+
+### 7. Formatting
+
+- ห้ามใช้ `**`
+- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
+- ใช้ heading levels สำหรับ structure
+- รายงานเป็นตารางด้วย `/report`
+
+- ใช้ /check-secrets secrets-leak ถ้าจำเป็น
+- ใช้ /analyze-attack-surface ถ้าจำเป็น
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. headers: CSP, HSTS, X-Content-Type-Options, Referrer-Policy, frame-ancestors — verify ด้วย curl บน response จริง
+2. secrets: ย้าย env/secret manager, rotate ที่รั่ว, ห้าม leak เข้า client bundle
+3. injection: parameterized queries, escaping, validation ที่ boundary
+4. auth/session: HttpOnly+Secure+SameSite cookies, server-side checks, rate limit auth endpoints
+5. deps: `/run-audit` — patch Critical/High ก่อน
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+- [Supply chain](references/supply-chain.md)
+- ใช้ /run-audit ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/deep-review security`
+- รายงานตาราง aggregate findings จากทุก security section
+- รายงาน recommended actions พร้อม priority (security)
+- Review score ต่อ dimension และ overall
+- แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -96,33 +96,27 @@ related:
 2. เลือกเฉพาะที่มี evidence จาก findings — ห้ามเพิ่ม feature จาก intuition
 3. implement ตาม existing component patterns — ทุก feature ต้องเข้ากับ theme/responsive/keyboard เดิม
 
-### 8. Verify
+### 8. Verify And Sync E2E Suite
 
-> Goal: ยืนยันด้วย evidence ใหม่
+> Goal: ยืนยันด้วย evidence ใหม่ + fixes มี e2e regression coverage
 
-1. re-run เฉพาะ routes ที่แก้: re-capture screenshots + replay failed actions
-2. fix-verify loop สูงสุด `3` รอบ
+1. re-run เฉพาะ routes ที่แก้: re-capture screenshots + replay failed actions — fix-verify loop สูงสุด `3` รอบ
+2. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
+3. ทำ `/run-test` (e2e) re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
 
-### 9. Sync E2E Suite
-
-> Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
-
-1. หลัง verify ผ่านหมด → ทำ `/update-tests` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
-2. ทำ `/run-test` (e2e) re-run Playwright suite ยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-tests` flow ก่อน report; Playwright report ที่ได้คือ authoritative test result สำหรับ `/update-docs`
-
-### 10. Production Readiness
+### 9. Production Readiness
 
 > Goal: fixes พร้อม production — ไม่มี mock/placeholder เหลือ
 
 1. ทำ `/implement-to-production` — ตรวจว่าไม่มี mock/TODO/placeholder ใน code path ที่แก้, schema+API+UX layer ครบ, security/resilience/observability ไม่หลุด, มี rollback plan
 2. ถ้าพบ gaps → แก้ตาม implement-to-production flow ก่อน report
 
-### 11. Report
+### 10. Report
 
 > Goal: ส่งมอบผลรวม
 
 1. ทำ `/report` — functional findings + visual findings + fixes + before/after evidence ต่อ route + e2e sync status
-2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 9 ไม่ใช่ exploratory pass)
+2. persist raw findings รวม 2 passes → `.devin/reports/<workspace>/uxui-<time>.md` ตาม format `/create-report-in-dot-devin` — tables: route | dimension | finding | severity | fix | status (findings เท่านั้น — authoritative test result = Playwright report จาก Step 8 ไม่ใช่ exploratory pass)
 3. ปิด browser session (`agent-browser close`)
 4. ทำ `/suggest-next-action`
 

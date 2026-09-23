@@ -4,12 +4,8 @@ description: Rust CLI อัปเดต deps/runtime/tools/CI versions ทุ�
 argument-hint: "[path] [--yes] [--level patch|minor|latest] [--skip-verify] [--no-actions]"
 related:
   - update-version-to-latest
-  - follow-tasks
-  - follow-tool-taze
-  - cleanup-artifact
   - run-verify
   - test-usage
-  - ask-me
   - report
 ---
 
@@ -19,7 +15,7 @@ related:
 
 ## Scope
 
-- ครอบคลุมทุก ecosystem ที่ตรวจพบ: **Bun/Node** (`package.json` → `bunx taze` + `bun install`), **Rust** (`Cargo.toml` → `cargo update` + `cargo upgrade` ถ้ามี cargo-edit), **Go** (`go.mod` → `go get -u ./...` + `go mod tidy`), **Python** (`uv.lock` → `uv lock --upgrade` / `requirements.txt` → `pip install -U`), **mise** (`mise upgrade --bump`), **GitHub Actions** (`uses:` tags ผ่าน `gh api` latest release)
+- ครอบคลุมทุก ecosystem ที่ตรวจพบ: `Bun/Node` (`package.json` → `bunx taze` + `bun install`), `Rust` (`Cargo.toml` → `cargo update` + `cargo upgrade` ถ้ามี cargo-edit), `Go` (`go.mod` → `go get -u ./...` + `go mod tidy`), `Python` (`uv.lock` → `uv lock --upgrade` / `requirements.txt` → `pip install -U`), `mise` (`mise upgrade --bump`), `GitHub Actions` (`uses:` tags ผ่าน `gh api` latest release)
 - `--level`: `patch` / `minor` / `latest` (default `latest` = bump ทั้ง major/minor/patch เป็น newest)
 - Dockerfile `FROM img:tag` — detect และ report เท่านั้น (registry check ต้อง tool ภายนอก)
 - สำหรับ flow เต็มที่มี changelog analysis, major-migration subskill และ commit แยก batch → ใช้ `/update-version-to-latest` แทน; CLI นี้คือ fast path ทีเดียวจบ

@@ -4,9 +4,6 @@ description: ตรวจ duplicates/redundant content/unused — code, skills, 
 argument-hint: "[scope]"
 related:
   - review
-  - deep-review
-  - review-devin-global-harness
-  - review-gaps
   - idea-merge
   - batch-rename-files
   - check-repo-hygiene
@@ -20,7 +17,7 @@ related:
 
 ## Scope
 
-- 4 redundancy dimensions: **duplicate purpose** (ทำอย่างเดียวกัน), **overlapping scope** (ครอบกันบางส่วน), **redundant content** (เนื้อหาซ้ำ verbatim/near-dup), **unused** (ไม่มี consumer)
+- 4 redundancy dimensions: `duplicate purpose` (ทำอย่างเดียวกัน), `overlapping scope` (ครอบกันบางส่วน), `redundant content` (เนื้อหาซ้ำ verbatim/near-dup), `unused` (ไม่มี consumer)
 - ใช้กับทุก artifact type: functions/files (code), skills/subskills (harness), docs sections, config keys
 - report-only — merge/remove/rename ต้อง user confirm และทำผ่าน `/idea-merge`, `/batch-rename-files`, `/delete` เท่านั้น
 
@@ -38,10 +35,10 @@ related:
 
 > Goal: หา redundancy 4 มิติพร้อม evidence
 
-1. **Duplicate purpose**: items ที่ description/goal เหมือนกัน >80% — เทียบ purpose statements
-2. **Overlapping scope**: items ที่ scope ครอบกัน — ระบุว่า subset หรือ partial
-3. **Redundant content**: เนื้อหาซ้ำ — code clones (`/check-repo-hygiene`), doc sections ซ้ำ, config keys ซ้ำ
-4. **Unused**: ไม่มี incoming references/consumers — static ref scan หรือ `/check-skill-usage` (skills), import graph (code)
+1. `Duplicate purpose`: items ที่ description/goal เหมือนกัน >80% — เทียบ purpose statements
+2. `Overlapping scope`: items ที่ scope ครอบกัน — ระบุว่า subset หรือ partial
+3. `Redundant content`: เนื้อหาซ้ำ — code clones (`/check-repo-hygiene`), doc sections ซ้ำ, config keys ซ้ำ
+4. `Unused`: ไม่มี incoming references/consumers — static ref scan หรือ `/check-skill-usage` (skills), import graph (code)
 5. ทุก finding ระบุ: pair/group, dimension, evidence (paths+lines), overlap %
 
 ### 3. Score And Recommend
@@ -49,7 +46,7 @@ related:
 > Goal: จัด priority ให้แต่ละ finding
 
 1. Score: overlap% × blast radius (consumers ที่กระทบถ้า merge/remove)
-2. Recommend action ต่อ finding: **merge** (purpose เดียวกัน) → `/idea-merge`, **rename** (boundary ชัดแต่ชื่อคล้าย) → `/batch-rename-files`, **extract shared** (content ซ้ำบางส่วน), **remove** (unused จริง) → `/delete`
+2. Recommend action ต่อ finding: `merge` (purpose เดียวกัน) → `/idea-merge`, `rename` (boundary ชัดแต่ชื่อคล้าย) → `/batch-rename-files`, `extract shared` (content ซ้ำบางส่วน), `remove` (unused จริง) → `/delete`
 3. severity: Critical = duplicate purpose สมบูรณ์ / High = scope ซ้อนมาก / Medium = content ซ้ำ / Low = unused ที่อาจมีผู้ใช้ภายนอก
 
 ### 4. Report
@@ -75,7 +72,7 @@ related:
 ### 3. Canonical Preference
 
 - เลือก absorber = ตัวที่มี references/consumers มากกว่าเสมอ — merge ยังชีวิตของ dependents
-- เก็บ alias stub สำหรับชื่อเดิมหลัง merge — backward compat
+- หลัง merge ให้ชื่อเดิมเป็น skill จริง (copy canonical content + rename frontmatter) — ห้ามทำ forwarding/alias stub
 
 - ใช้ /idea-merge ถ้าจำเป็น
 - ใช้ /batch-rename-files ถ้าจำเป็น

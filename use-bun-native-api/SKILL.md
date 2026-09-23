@@ -6,7 +6,6 @@ related:
   - follow-lang-bun
   - use-bun-shell
   - follow-create-bun-cli
-  - follow-create-plugins
   - follow-best-practice
   - use-scripts
 ---
