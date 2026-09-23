@@ -1,35 +1,29 @@
 ---
 name: plan
-description: Alias for deep-analyze-and-plan — merged into the canonical skill
-argument-hint: "[prompt]"
+description: alias → /deep-analyze-and-plan (analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready)
+argument-hint: "[scope]"
 related:
   - deep-analyze-and-plan
-  - deep-analyze
   - deep-plan
-  - ask-me
-  - suggest-next-action
 ---
 
 ## Goal
 
-`/plan` เปลี่ยนเป็น `/deep-analyze-and-plan` — forward ทุก invocation ไปยัง canonical skill ที่รวม deep-analyze + deep-plan พร้อม deep-thinking, deep-research และ playbooks จาก refactor + implement-to-production — output เป็น comprehensive plan ในแชท (deps, file changes, risks, task graph)
+Alias ของ `/deep-analyze-and-plan` — วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้ววางแผน implementation-ready ในขั้นตอนเดียว
 
 ## Scope
 
-ใช้กับ caller ที่เรียก alias เท่านั้น — forward ไปยัง canonical skill
+ใช้เมื่อ user เรียก `/plan` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-analyze-and-plan` (`/deep-plan` ก็เป็น alias ของ `/deep-analyze-and-plan` เช่นกัน)
 
 ## Execute
 
-1. ทำ `/deep-analyze-and-plan` ตาม workflow ของมันทั้งหมด — รายงานตาม report format ของมัน (`## Analysis Findings`, `## Dependencies`, `## File Changes`, `## TODOs`, `## Task Graph`, `## Risks`, `## Test Strategy`, `## Assumptions And Unknowns`, `## Next Action`)
+ทำ `/deep-analyze-and-plan` เต็ม workflow
 
 ## Rules
 
-- ห้ามทำ workflow ซ้ำใน alias — forward ไป canonical skill เท่านั้น
-- คง backward compatibility สำหรับทุก alias
-- ห้ามสร้างไฟล์ใดๆ ใน `.devin/tasks/` หรือ `.devin/plan/` — persist เฉพาะเมื่อ user สั่ง `/create-plan-in-dot-devin` โดยตรง
-- ทำ `/suggest-next-action` ตามปกติ
-- ใช้ `/ask-me` เมื่อต้องตัดสินใจร่วมกับ user
+- ห้าม duplicate workflow ของ `/deep-analyze-and-plan` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `deep-analyze-and-plan/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือนรัน `/deep-analyze-and-plan` — analysis findings + implementation-ready plan ครบทุกมิติในแชท
+- `/deep-analyze-and-plan` ถูก execute ครบทุก step จนได้ implementation-ready plan

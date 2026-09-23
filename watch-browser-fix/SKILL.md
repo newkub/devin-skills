@@ -139,7 +139,7 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 - หยุดทันทีเมื่อ user กด `Ctrl+C`
 - ปิด browser session ด้วย `agent-browser close`
 - บันทึกสถานะสุดท้ายก่อนหยุด
-- alias stub: `/watch-browser-and-fix` — forward มาที่ skill นี้
+- `/watch-browser-and-fix` — top-level skill แยก (copy ของ skill นี้)
 
 
 ## Expected Outcome

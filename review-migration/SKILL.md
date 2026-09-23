@@ -1,24 +1,139 @@
 ---
 name: review-migration
-description: Alias for deep-review-migration - merged into the canonical skill
+description: Review migration plan พร้อม execution checklist และ verify ข้อมูลหลัง migrate
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-then-fix
+  - update-version-to-latest
+  - follow-tool-renovate
+  - check-migrations
+  - report
+  - report-before-after
+  - suggest-next-action
+  - scan-codebase
+  - run-drizzle-studio
+  - run-review
 ---
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review migration` เป็น canonical
+Review migration plan ก่อน execution เพื่อยืนยันความพร้อมของ backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags และ execution readiness
+
+## Scope
+
+ใช้ก่อน migration ด้วย `follow-tool-renovate`, `/update-version-to-latest` หรือ execution ตาม `references/migration-checklist.md` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags แล้วสรุป migration risk score พร้อม go/no-go recommendation
 
 ## Execute
 
-1. ทำ `/deep-review migration` ตามขอบเขตและ workflow เดิมทั้งหมด
+### 1. Prepare Context
+
+> Goal: เข้าใจ migration scope และ project context
+
+ทำตาม references/prepare-context.md
+
+### 2. Check Backward Compatibility
+
+> Goal: ตรวจ backward compatibility
+
+ทำตาม references/backward-compat.md
+
+### 3. Check Data Integrity
+
+> Goal: ตรวจ data integrity และ migration scripts
+
+ทำตาม references/data-integrity.md
+
+### 4. Check Rollback And Cutover
+
+> Goal: ตรวจ rollback strategy และ cutover plan
+
+ทำตาม references/rollback-cutover.md
+
+### 5. Check Migration Types
+
+> Goal: ตรวจ migration coverage ครบทุกประเภท
+
+- ตรวจ dependency migration: version, breaking changes, peer dependencies
+- ตรวจ framework migration: API changes, config changes, codemods
+- ตรวจ infrastructure migration: database, API server, external services
+- ตรวจ feature flag migration: flag strategy, rollout plan, fallback
+
+### 6. Check Migration Checklist
+
+> Goal: ตรวจ execution readiness ก่อนลงมือ
+
+ทำตาม references/migration-checklist.md
+
+### 7. Score And Report
+
+> Goal: สรุป migration risk score และ go/no-go
+
+ทำตาม references/scoring.md
+
+- คำนวณ migration risk score, level และ supplementary metrics
+- สร้างตาราง Risk Summary, Breaking Changes, Rollback Plan
+- แสดง go/no-go recommendation
+- ทำ `/suggest-next-action`
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+1. Review Independence
+   - ทำ review เท่านั้น ไม่ execute migration ระหว่าง review
+   - ถ้าต้อง migrate ให้ทำตาม `references/migration-checklist.md` หลัง review
+   - ทุก finding ต้องมี file path และ evidence (migration)
+2. Evidence-Based Findings
+   - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
+   - ตรวจ changelogs และ migration guides
+   - จัดลำดับตาม severity
+3. Scoring
+   - คะแนนต่อ category: ✅ = 1, ⚠️ = 0.5, ❌ = 0
+   - Migration risk score = (total risk / total categories) × 100%
+   - Risk level ตาม thresholds ใน references/scoring.md
+   - Score < 70 → No-Go แนะนำให้ปรับ migration plan ก่อน
+4. Formatting
+   - ห้ามใช้ bold markers — ใช้ backticks
+   - รายงานเป็นตารางด้วย `/report`
+
+- ใช้ /review-database ถ้าจำเป็น
+- ใช้ /review-risk ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+### Fix Steps
+
+1. unsafe ops: NOT NULL → backfill ก่อน; DROP/RENAME → expand-contract; big tables → batch/online tools
+2. rollback: ทุก migration มี down — test จริงบน copy
+3. ordering/idempotent: dependencies ถูก, `IF NOT EXISTS`, data แยกจาก schema
+4. verify: up→down→up บน existing-data copy + lock duration estimate
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied (merged from: verify-migration-data)
+
+1. ทำตาม `references/verify-migration-data.md`
+2. ใช้ `/check-migrations` ยืนยัน version ล่าสุด
+3. ทำ `/report-before-after` เทียบ row counts/aggregates
+4. ถ้า mismatch → ระบุ rows/columns ที่ต่าง และแนะนำ fix-forward หรือ rollback
+- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+
+## References
+
+- [Migration checklist](references/migration-checklist.md)
+- [Backward compat](references/backward-compat.md)
+- [Data integrity](references/data-integrity.md)
+- [Rollback and cutover](references/rollback-cutover.md)
+- [Verify migration data](references/verify-migration-data.md)
+- [Scoring](references/scoring.md)
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/deep-review migration`
+- รายงาน Migration Risk Summary พร้อม risk level
+- รายงาน Breaking Changes พร้อม migration path
+- รายงาน Rollback Plan พร้อม trigger และ verification
+- รายงาน Migration Checklist สำหรับ execution readiness
+- Go/no-go recommendation
+- Migration risk score
+- แนะนำ action ถัดไป

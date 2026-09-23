@@ -6,6 +6,7 @@ related:
   - review-test
   - run-test
   - run-test-all
+  - run-test-coverage
   - follow-tool-playwright
   - follow-tool-vitest
   - update-specs
@@ -84,7 +85,7 @@ related:
 
 > Goal: ครอบคลุมและมีคุณภาพ
 
-1. ทำ `/run-test` (coverage) — verify lines/branches/functions ตาม target
+1. ทำ `/run-test-coverage` — verify lines/statements/functions/branches จนถึง target (default 100%); ถ้ายังไม่ถึง skill จะวนกลับมาเขียน tests เพิ่มผ่าน skill นี้เอง
 2. รันซ้ำ 2-3 ครั้ง — deterministic, ไม่มี flaky/order dependence
 3. ทำ `/run-check` lint/typecheck ผ่าน
 

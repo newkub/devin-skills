@@ -1,6 +1,6 @@
 ---
 name: follow-debugging
-description: Alias for deep-debug — merged into the canonical skill
+description: alias → /deep-debug (debug ตามขั้นตอน — reproduce → fix → prevent recurrence)
 argument-hint: "[scope]"
 related:
   - deep-debug
@@ -8,22 +8,21 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/deep-debug` แล้ว — ใช้ `/deep-debug` เป็น canonical skill
+Alias ของ `/deep-debug` — debug ตามขั้นตอนจนหา root cause แก้ไข และป้องกันปัญหาซ้ำ
 
 ## Scope
 
-ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
+ใช้เมื่อ user เรียก `/follow-debugging` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-debug`
 
 ## Execute
 
-1. ทำ `/deep-debug` ตามขอบเขตและ workflow เดิมทั้งหมด
-
+ทำ `/deep-debug` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/deep-debug` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `deep-debug/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/deep-debug`
+- `/deep-debug` ถูก execute ครบทุก step

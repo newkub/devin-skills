@@ -1,6 +1,6 @@
 ---
 name: update-astgrep-rules
-description: Alias for update-project-rules — merged into the canonical skill
+description: alias → /update-project-rules (อัปเดต ast-grep rules ใน rules/ และ sgconfig.yml)
 argument-hint: "[rule-or-pattern]"
 related:
   - update-project-rules
@@ -8,22 +8,21 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/update-project-rules` แล้ว — ใช้ `/update-project-rules` เป็น canonical skill
+Alias ของ `/update-project-rules` — อัปเดต ast-grep rules ใน `rules/` และ `sgconfig.yml` ตาม conventions ของ project
 
 ## Scope
 
-ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
+ใช้เมื่อ user เรียก `/update-astgrep-rules` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-project-rules`
 
 ## Execute
 
-1. ทำ `/update-project-rules` ตามขอบเขตและ workflow เดิมทั้งหมด
-
+ทำ `/update-project-rules` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/update-project-rules` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `update-project-rules/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/update-project-rules`
+- `/update-project-rules` ถูก execute ครบทุก step

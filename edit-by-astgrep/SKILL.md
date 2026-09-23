@@ -1,5 +1,5 @@
 ---
-name: edit-with-astgrep
+name: edit-by-astgrep
 description: Batch refactor หลายไฟล์ด้วย ast-grep AST patterns — dry-run + confirm ก่อนเขียนทับเสมอ
 argument-hint: "<pattern> <replacement> [path|glob]"
 related:

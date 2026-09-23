@@ -1,5 +1,5 @@
 ---
-name: design-usage-with-me-first
+name: design-usage-by-me-first
 description: ออกแบบ USAGE.md กับ user ในแชทก่อนเขียนจริง — iterate จนตกลงแล้วส่งต่อ /update-usage-md
 argument-hint: "[workspace]"
 related:

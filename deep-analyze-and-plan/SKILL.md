@@ -3,8 +3,8 @@ name: deep-analyze-and-plan
 description: Canonical analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready ในคำสั่งเดียว
 argument-hint: "[scope]"
 related:
+  - plan
   - deep-analyze
-  - deep-plan
   - deep-thinking
   - deep-research
   - refactor
@@ -22,14 +22,14 @@ related:
 
 ## Goal
 
-วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้ววางแผน implementation-ready ในขั้นตอนเดียว — canonical skill สำหรับทุก analyze+plan (`/plan` เปลี่ยนเป็น skill นี้) — ผลลัพธ์คือ plan ที่ระบุ deps, ไฟล์, APIs, risks และ acceptance ครบจน implement ได้โดยไม่ถามเพิ่ม
+วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้ววางแผน implementation-ready ในขั้นตอนเดียว — canonical skill สำหรับทุก analyze+plan — ผลลัพธ์คือ plan ที่ระบุ deps, ไฟล์, APIs, risks และ acceptance ครบจน implement ได้โดยไม่ถามเพิ่ม
 
 ## Scope
 
 ใช้กับงานที่ต้องเข้าใจ codebase ก่อนวางแผน — refactors, features, migrations, extractions (component → hook, duplication → shared) — ครอบคลุม analysis findings, dependency decisions, file architecture, task graph, risks และ test strategy
 
 - Output: ตอบ plan ในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/plan/`)
-- Boundary: `/plan` เป็น alias ของ skill นี้; planning-only ที่ไม่ต้อง analyze → `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
+- Boundary: `/plan` และ `/deep-plan` เป็น alias ของ skill นี้; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
 - อ่านก่อนทำงานเสมอ: `/refactor` (refactor patterns + safety) และ `/implement-to-production` (production-readiness checklist) — plan ต้องออกแบบให้ผ่านทั้งสองมาตรฐาน
 
 ## Execute

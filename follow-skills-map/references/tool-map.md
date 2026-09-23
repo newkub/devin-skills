@@ -74,6 +74,7 @@
 | fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
 | benchmark commands | `hyperfine` | installed | `/review-performance` |
+| optimize app end-to-end (review→fix→measure) | `rg`/`sg` + build output + profilers | installed | `/review-optimize` |
 | CI local run | `act` | installed | `/follow-tool-act` |
 | git hooks | `hk` / `lefthook` | installed | `/follow-tool-hk` |
 | clone template | `giget` | installed | `/create-*` |

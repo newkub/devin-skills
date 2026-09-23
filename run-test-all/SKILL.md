@@ -7,6 +7,7 @@ related:
   - run-lint
   - run-typecheck
   - run-test
+  - run-test-coverage
   - update-tests
 
   - deep-review
@@ -32,7 +33,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 | 5 | consumer/provider services, Pact, contract files | `/deep-test contract` |
 | 6 | web frontend, browser flows | `/deep-test e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
 | 7 | UI components, design system, screenshots | `/deep-test visual` |
-| 8 | coverage config หรือ target กำหนดไว้ | `/deep-test coverage` |
+| 8 | coverage config หรือ target กำหนดไว้ | `/run-test-coverage` (default target 100%) |
 | 9 | critical logic, mutation config | `/deep-test mutation` |
 | 10 | perf concern, k6/autocannon config, load scripts | `/run-load-test` |
 | 11 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
@@ -89,8 +90,8 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ครอบคลุมและรายงาน
 
-1. ทำ `/deep-test coverage` เมื่อ project มี coverage target
-2. ถ้าไม่ถึงเป้า → `/update-tests` เพิ่ม แล้วรันใหม่
+1. ทำ `/run-test-coverage` เมื่อ project มี coverage target — skill นี้วนเพิ่ม tests ผ่าน `/update-tests` จนถึงเป้า (default 100%)
+2. ถ้าไม่ถึงเป้า → `/update-tests` เพิ่ม แล้วรัน `/run-test-coverage` ใหม่
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 

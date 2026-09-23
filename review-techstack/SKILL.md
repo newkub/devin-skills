@@ -1,24 +1,164 @@
 ---
 name: review-techstack
-description: Alias for deep-review-techstack - merged into the canonical skill
+description: Review tech stack, dependencies และ library design ครอบคลุม versions, security, API, bundle
 argument-hint: "[scope]"
 related:
   - deep-review
+  - review-dependencies
+  - run-review
+  - deep-analyze
+  - deep-validate
+  - report
+  - suggest-next-action
+  - follow-tasks
+  - follow-my-techstack
+  - list-dependencies
+  - update-version-to-latest
+  - list-raindrop-favorite
+  - search
 ---
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/deep-review` แล้ว — ใช้ `/deep-review techstack` เป็น canonical
+Review tech stack, dependencies และ library design ครอบคลุม framework choices, library versions, runtime compatibility, dependency versions, security vulnerabilities, unused packages, circular dependencies, license compliance, bundle size, tree-shaking, peer deps, semver, API surface, export strategy, type declarations และ cloud/infrastructure selection พร้อม review score
+
+## Scope
+
+ใช้สำหรับ project หรือ workspace ที่มี manifest files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) — ครอบคลุม framework selection, runtime compatibility, build tools, package manager, technology alignment, library API design, export strategy, module format, tree-shaking, peer deps, semver compliance, compatibility matrix, type declarations และ cloud/infrastructure selection — เน้น review และปรับปรุง ไม่รวมการติดตั้งใหม่ (ใช้ `/run-install`)
+
+- Boundary: tech stack selection, preferred catalog (`../review-dependencies/references/techstack-catalog.md`, merged from: follow-my-tech-stack), framework/cloud choices, library design → skill นี้; dependency health เท่านั้น (outdated, vulnerabilities, unused, licenses) → `/review-dependencies`
+
+ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
-1. ทำ `/deep-review techstack` ตามขอบเขตและ workflow เดิมทั้งหมด
+### 1. Prepare
+
+> Goal: เข้าใจ tech stack structure, dependency landscape และ library config
+
+ทำตาม `references/prepare.md`
+
+### 2. Deep Analyze
+
+> Goal: วิเคราะห์ tech stack และ dependencies อย่างลึกซึ้ง
+
+ทำตาม `references/deep-analyze.md`
+
+### 3. Tech Stack Selection
+
+> Goal: ตรวจสอบ decision process เมื่อเลือก tech stack ใหม่
+
+ทำตาม `references/choosing.md`
+
+### 4. Cloud And Infrastructure
+
+> Goal: เลือก cloud providers และ deployment targets ให้เหมาะสมกับ workload
+
+ทำตาม `references/cloud-selection.md`
+
+### 5. Compare With Preferred Stack
+
+> Goal: เทียบ project stack กับ preferred tech stack catalog และ preference signals ของ user
+
+1. เทียบกับ canonical catalog ผ่าน `/follow-my-techstack` — รายงาน drift จาก Default picks, missing must-have, obsolete tools
+2. ทำ `/list-raindrop-favorite` เพื่อดึง favorited tools/libraries — favorites คือ curated preference signal ของ user (tools ที่ bookmark ไว้ใช้ซ้ำ)
+3. ทำ `/search-raindrop "<library>"` เมื่อเทียบ alternatives — ถ้า candidate ถูก bookmark → น้ำหนัก preferred สูงขึ้น; ถ้า project ใช้ tool ที่ไม่เคยถูก bookmark แต่มี bookmarked alternative → flag เป็น finding
+4. รายงาน bookmarked-but-not-used (preferred tools ที่ project ยังไม่ใช้) และ used-but-unfamiliar (tools ที่ไม่อยู่ใน catalog/favorites → ต้องเช็ค maintenance/security เพิ่ม)
+
+### 6. Review Dimensions
+
+> Goal: ตรวจสอบทุก dimension ตาม reference files
+
+ทำตาม `references/techstack.md`, `references/dependencies.md`, `references/lib-design.md` และ `references/type-declarations.md`
+
+### 7. Validate Findings
+
+> Goal: Findings ถูกต้องและจัดลำดับตาม severity
+
+ทำตาม `references/validate.md`
+
+### 8. Report
+
+> Goal: รายงาน findings พร้อม actionable recommendations
+
+ทำตาม `references/report.md`
+
+### 9. Implement All
+
+> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
+
+ทำตาม `references/implement.md`
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+### 1. Severity Classification
+
+- Critical: EOL framework, incompatible runtime, security-impacted version, critical vulnerability, incompatible dependency, dual package hazard, missing TypeScript declarations, broken export, circular export, missing peer deps declaration, broken tree-shaking
+- High: outdated major version, redundant library, missing compatibility, high vulnerability, outdated major dependency version, over-exported API, missing barrel export, inconsistent export naming, missing semver compliance, over-sized bundle, missing `sideEffects` field
+- Medium: minor version lag, suboptimal build tool, inconsistent package manager, unused dependency, outdated minor dependency version, suboptimal export strategy, missing declaration map, minor bundle size, missing deprecation policy
+- Low: cosmetic config improvement, naming convention, outdated patch version, duplicate package, documentation gap
+
+### 2. Evidence-Based Findings
+
+- ทุก finding ต้องมี file path และ line number หรือ package name และ version
+- ห้ามเดา issues โดยไม่มี evidence
+- ใช้ tools หรือ scripts ก่อน manual inspection
+
+### 3. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (techstack)
+- ถ้าแก้ไข → ทำหลัง review เสร็จและ report แยก
+
+### 4. Safety
+
+- ไม่ upgrade major version โดยไม่ตรวจ breaking changes
+- ไม่ลบ dependencies โดยไม่ตรวจ consumers ก่อน
+- ทำ dry run ก่อน bulk update
+- ถ้ามี breaking changes → ระบุ migration steps
+
+### 5. Skip Conditions
+
+- ถ้า project ไม่ใช่ library → ข้าม library design checks
+- ถ้า library ไม่มี `CJS` support → ข้าม CJS checks
+- ถ้า library ไม่มี peer deps → ข้าม peer deps checks
+
+### 6. Formatting
+
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (techstack)
+- ใช้ heading levels สำหรับ structure
+- รายงานเป็นตารางด้วย `/report`
+
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
+- ใช้ /list-dependencies ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
+
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+- [Choosing stack](references/choosing.md)
+- [Cloud selection](references/cloud-selection.md)
+- [Techstack](references/techstack.md)
+- [Dependencies](references/dependencies.md)
+- [Lib design](references/lib-design.md)
+- [Type declarations](references/type-declarations.md)
+- [Techstack catalog](../review-dependencies/references/techstack-catalog.md)
+
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+
+1. แก้ตาม priority: security vulnerabilities ก่อน → `/run-audit` + update, unused deps → remove, outdated → `/update-version-to-latest`
+2. library ที่ไม่ตรง techstack catalog → แนะนำทางเลือกตาม `../review-dependencies/references/techstack-catalog.md` หรือ `/use-lib-effective`
+3. verify: `/run-check` + regression check หลังเปลี่ยน stack
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/deep-review techstack`
+- รายงานตาราง findings พร้อม severity และ location
+- ครอบคลุม tech stack, dependencies, library design, bundle impact, type declarations และ cloud/infrastructure selection
+- review score คำนวณจาก severity weighted average และ supplementary metrics
+- รายงาน recommended actions พร้อม priority: security ก่อน, unused สอง, outdated สาม
+- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- ไม่มี regression หลังปรับปรุง

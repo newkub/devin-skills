@@ -1,6 +1,6 @@
 ---
 name: deep-verify
-description: Alias for run-verify — merged into the canonical skill
+description: alias → /run-verify (รัน verify ครบทั้ง local และ CI/CD ตาม project)
 argument-hint: "[scope]"
 related:
   - run-verify
@@ -8,22 +8,21 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/run-verify` แล้ว — ใช้ `/run-verify` เป็น canonical skill
+Alias ของ `/run-verify` — รัน verify ครบทั้ง local และ CI/CD ตาม project
 
 ## Scope
 
-ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
+ใช้เมื่อ user เรียก `/deep-verify` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `run-verify`
 
 ## Execute
 
-1. ทำ `/run-verify` ตามขอบเขตและ workflow เดิมทั้งหมด
-
+ทำ `/run-verify` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/run-verify` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `run-verify/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/run-verify`
+- `/run-verify` ถูก execute ครบทุก step

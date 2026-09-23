@@ -86,7 +86,7 @@ dispatch เมื่อ target ของ improve เป็น artifact เห�
 | 3 | `/review-issue` | issue | target คือ issue/plan item |
 | 4 | `/review-plan` | plan document | มี plan ก่อน execute |
 | 5 | `/review-idea` | idea | มี idea ที่ต้องประเมินก่อน implement |
-| 6 | `/review-implement` | implementation readiness | ก่อน execute implement-* |
+| 6 | `/review-implement-to-production` | implementation readiness | ก่อน execute implement-* |
 | 7 | `/review-update` | drift current vs target | ก่อน update เพื่อจัดลำดับ |
 | 8 | `/review-refactor` | pre-refactor baseline | ก่อน refactor skill ใดๆ |
 | 9 | `/review-risk` | risk assessment | change เสี่ยงสูง, breaking |

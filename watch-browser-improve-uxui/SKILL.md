@@ -132,7 +132,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 - fix-verify loop สูงสุด `3` รอบ — ถ้ายังไม่ผ่าน stop และ report สิ่งที่ค้าง
 - `timeout` = `900` วินาทีต่อ batch, `maxRetries` = `3` ต่อ agent crash
-- alias stub: `/watch-browser-and-improve-uxui` — forward มาที่ skill นี้
+- `/watch-browser-and-improve-uxui` — top-level skill แยก (copy ของ skill นี้)
 
 
 ## Expected Outcome

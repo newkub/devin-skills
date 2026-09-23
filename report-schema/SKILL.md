@@ -1,6 +1,6 @@
 ---
 name: report-schema
-description: Alias for report-database-schema — merged into the canonical skill
+description: alias → /report-database-schema (รายงาน database schema + ER diagram)
 argument-hint: "[path]"
 related:
   - report-database-schema
@@ -8,22 +8,21 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/report-database-schema` แล้ว — ใช้ `/report-database-schema` เป็น canonical skill
+Alias ของ `/report-database-schema` — รายงาน database schema, tables, columns, indexes, relations และ ER diagram
 
 ## Scope
 
-ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
+ใช้เมื่อ user เรียก `/report-schema` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `report-database-schema`
 
 ## Execute
 
-1. ทำ `/report-database-schema` ตามขอบเขตและ workflow เดิมทั้งหมด
-
+ทำ `/report-database-schema` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/report-database-schema` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `report-database-schema/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/report-database-schema`
+- `/report-database-schema` ถูก execute ครบทุก step

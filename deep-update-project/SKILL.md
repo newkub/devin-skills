@@ -1,6 +1,6 @@
 ---
 name: deep-update-project
-description: Alias for update-project — merged into the canonical skill
+description: alias → /update-project (อัปเดต root project จาก git log แล้ว sync docs/config/rules/tooling)
 argument-hint: "[scope]"
 related:
   - update-project
@@ -8,23 +8,21 @@ related:
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/update-project` แล้ว — ใช้ `/update-project` เป็น canonical skill
+Alias ของ `/update-project` — อัปเดต root project ตาม git log แล้ว sync project docs/config/rules/tooling
 
 ## Scope
 
-ใช้เมื่อ caller เรียกชื่อ alias เดิม — forward ทั้งหมดไปยัง canonical skill
+ใช้เมื่อ user เรียก `/deep-update-project` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-project`
 
 ## Execute
 
-1. ทำ `/update-project` ตามขอบเขตและ workflow เดิมทั้งหมด
-2. subagent `project-updater` ย้ายไป `update-project/subagents/project-updater.md` (canonical) — อ้างอิง path นั้น
-
+ทำ `/update-project` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/update-project` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `update-project/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือน `/update-project`
+- `/update-project` ถูก execute ครบทุก step

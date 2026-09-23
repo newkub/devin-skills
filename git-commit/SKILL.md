@@ -18,7 +18,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 ## Scope
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-commit-at-devin-skills-global)
-- variants ถูกย้ายเข้า subskills (merged from: git-commit-no-verify, git-commit-selected-files, git-commit-and-push, git-commit-at-devin-global-skills)
+- variants: no-verify/selected-files/at-devin-global-skills อยู่ใน subskills; `and-push` ย้ายออกเป็น top-level `/git-commit-and-push`
 
 ใช้สำหรับ commit changes ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` เท่านั้น
 
@@ -32,7 +32,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 |--------------------------|----------|
 | `no-verify`              | `subskills/no-verify/SKILL.md` — commit ข้าม pre-commit hooks ด้วย `--no-verify` |
 | `selected-files`         | `subskills/selected-files/SKILL.md` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
-| `and-push`               | `subskills/and-push/SKILL.md` — commit + push + resolve CI/CD (เรียกได้ผ่าน top-level alias `/git-commit-and-push`) |
+| `and-push`               | `/git-commit-and-push` — top-level skill จริง (commit + push + resolve CI/CD) |
 | `at-devin-global-skills` | `subskills/at-devin-global-skills/SKILL.md` — pre-commit validation สำหรับ devin global skills |
 
 ### 1. Navigate To Global Devin Skills

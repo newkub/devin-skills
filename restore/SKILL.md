@@ -1,32 +1,28 @@
 ---
 name: restore
-description: Alias for restore-files — renamed to clarify it restores deleted files
-argument-hint: "[domain]"
+description: alias → /restore-files (คืน files/state — git log, devin history, dotfiles)
+argument-hint: "[domain|verify]"
 related:
   - restore-files
 ---
 
 ## Goal
 
-Skill นี้ถูก rename เป็น `/restore-files` แล้ว — ใช้ `/restore-files` เป็น canonical skill (dispatcher: `deleted-file`, `from-devin-history`, `from-git-log`, `from-my-dotfiles`)
+Alias ของ `/restore-files` — คืนค่า files/state ผ่าน git log, devin history, dotfiles หรือ deleted files ของ top-level skills
 
 ## Scope
 
-Callers ที่ใช้ชื่อเดิมจะถูกส่งต่อไปยัง `/restore-files` เสมอ
+ใช้เมื่อ user เรียก `/restore` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `restore-files`
 
 ## Execute
 
-### 1. Forward To Canonical
-
-> Goal: ส่งต่อไปยัง canonical skill
-
-1. ทำ `/restore-files` ด้วย arguments เดิม
+ทำ `/restore-files` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias นี้ — แก้ที่ canonical skill เท่านั้น
-- เก็บไว้เพื่อ backward compatibility กับ callers ที่ใช้ชื่อเดิม
+- ห้าม duplicate workflow ของ `/restore-files` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `restore-files/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ผลลัพธ์เหมือนการเรียก `/restore-files` โดยตรง
+- `/restore-files` ถูก execute ครบทุก step

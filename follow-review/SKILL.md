@@ -42,7 +42,7 @@ related:
 
 | No. | Action / Context | Reviews ที่ตรง |
 |-----|------------------|----------------|
-| 1 | ก่อน implement / productionize | `/review-implement` |
+| 1 | ก่อน implement / productionize | `/review-implement-to-production` |
 | 2 | ก่อน refactor | `/review-refactor`, `/review-architecture`, `/review-quality` |
 | 3 | ก่อน restructure / move files | `/review-refactor`, `/review-devin-global-harness` |
 | 4 | ก่อน ship / deploy / release | `/review-release`, `/review-delivery` |

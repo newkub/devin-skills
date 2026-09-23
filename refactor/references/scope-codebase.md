@@ -19,7 +19,7 @@ Merged from: `deep-refactor-codebase` — deep refactor หนึ่ง workspac
 
 1. ทำ `/deep-analyze` สำหรับ architecture, quality, dependencies, security
 2. ทำ `/check-code-structure` (cohesion, coupling) และ `/check-long-files` (>250 บรรทัด)
-3. ทำ `/deep-review quality` เพื่อหา code smells, duplication, dead code
+3. ทำ `/review-quality` เพื่อหา code smells, duplication, dead code
 4. รวม findings เป็น prioritized list ตาม severity และ impact
 
 ### 3. Impact Analysis
@@ -34,7 +34,7 @@ Merged from: `deep-refactor-codebase` — deep refactor หนึ่ง workspac
 2. เลือก strategy ต่อ target: in-place, extract, relocate (`/relocation`), rename (`/rename`), split
 3. ถ้า replacement ขนาดใหญ่ที่ทำ big-bang ไม่ได้ → ใช้ strangler fig / branch by abstraction: สร้าง abstraction layer → route callers ทีละกลุ่ม → parallel run เก่า/ใหม่ → cutover → ลบของเก่า
 4. แก้ SRP violations และไฟล์ >250 บรรทัด — แยกตาม concern/domain
-5. แก้ inconsistencies ใน naming, patterns, structure, style ตาม `/deep-review quality`
+5. แก้ inconsistencies ใน naming, patterns, structure, style ตาม `/review-quality`
 6. ทำทีละ batch พร้อม verify หลังแต่ละ batch และ commit checkpoint หลัง phase สำคัญ
 
 ### 5. Update References

@@ -1,33 +1,29 @@
 ---
 name: deep-plan
-description: Alias for deep-analyze-and-plan — merged into the canonical skill
+description: alias → /deep-analyze-and-plan (analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready)
 argument-hint: "[scope]"
 related:
   - deep-analyze-and-plan
-  - deep-analyze
+  - plan
 ---
 
 ## Goal
 
-Skill นี้ถูก merge เข้ากับ `/deep-analyze-and-plan` แล้ว — ใช้ `/deep-analyze-and-plan` เป็น canonical skill (ครอบคลุม planning ทั้งหมด: gather evidence → write plan → order → validate → report)
+Alias ของ `/deep-analyze-and-plan` — วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้ววางแผน implementation-ready ในขั้นตอนเดียว
 
 ## Scope
 
-Callers ที่เรียกชื่อ alias เดิมจะถูก forward ไปยัง `/deep-analyze-and-plan` เสมอ
+ใช้เมื่อ user เรียก `/deep-plan` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-analyze-and-plan` (`/plan` ก็เป็น alias ของ `/deep-analyze-and-plan` เช่นกัน)
 
 ## Execute
 
-### 1. Forward To Canonical
-
-> Goal: ส่งต่อไปยัง canonical skill
-
-1. ทำ `/deep-analyze-and-plan` ด้วย arguments เดิม — planning context จาก review findings ครอบคลุมโดย `/deep-analyze` domain table ใน canonical skill
+ทำ `/deep-analyze-and-plan` เต็ม workflow
 
 ## Rules
 
-- ห้ามเพิ่ม workflow เฉพาะใน alias — แก้ที่ canonical skill เท่านั้น
-- รักษา backward compatibility ของชื่อ alias
+- ห้าม duplicate workflow ของ `/deep-analyze-and-plan` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `deep-analyze-and-plan/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- ได้ผลลัพธ์เดียวกับ `/deep-analyze-and-plan` — implementation-ready plan ในแชท
+- `/deep-analyze-and-plan` ถูก execute ครบทุก step จนได้ implementation-ready plan
