@@ -18,7 +18,7 @@
 
 - ทำทีละ refactoring เดียว (extract, rename, move) แล้ว verify green ก่อน step ถัดไป — ห้ามรวมหลาย transformation ใน step เดียว
 - commit checkpoint ด้วย `/git-commit` หลังทุก batch ที่เขียว — rollback ได้ทุกจุด
-- mechanical refactor ขนาดใหญ่ (rename/move/pattern change หลายไฟล์) → ใช้ `/edit-with-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`; syntax ลึก → `/use-astgrep`
+- mechanical refactor ขนาดใหญ่ (rename/move/pattern change หลายไฟล์) → ใช้ `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`; syntax ลึก → `/use-astgrep`
 
 ## 4. Context Aware
 

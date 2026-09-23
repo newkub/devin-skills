@@ -15,7 +15,7 @@ related:
   - dont-over-engineer
   - follow-single-of-source
   - follow-reusable
-  - edit-with-astgrep
+  - edit-by-astgrep
   - migration-by-astgrep
 ---
 
@@ -31,7 +31,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
-- mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/edit-with-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`
+- mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`
 (merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`)
 
 ## Execute
@@ -104,7 +104,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 ### 3. Small Steps
 
 - ทีละ transformation เดียว → verify green → `/git-commit` checkpoint ทุก batch
-- mechanical batch หลายไฟล์ → `/edit-with-astgrep` (dry-run+confirm); rule-file migration → `/migration-by-astgrep`
+- mechanical batch หลายไฟล์ → `/edit-by-astgrep` (dry-run+confirm); rule-file migration → `/migration-by-astgrep`
 
 ### 4. Context Aware
 
