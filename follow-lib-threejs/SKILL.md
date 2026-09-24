@@ -1,5 +1,5 @@
 ---
-name: follow-lib-treejs
+name: follow-lib-threejs
 description: ใช้ three.js (3D WebGL/WebGPU) — renderer, addons, framework integration, dispose
 argument-hint: "[target-or-scope]"
 related:

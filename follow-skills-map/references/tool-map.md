@@ -43,7 +43,7 @@
 |--------|------|---------|-------|
 | JSON query | `jq` / `fx` | installed | `/use-scripts` |
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
-| structured pipelines | `nu` (nushell) | installed | `/use-nushell`, `/use-scripts` |
+| structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
 | pretty diff | `delta` / `git-split-diffs` | installed | `/review-diff` |
 | .env lint | `dotenv-linter` | installed | `/check-config-drift` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |

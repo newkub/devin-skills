@@ -4,6 +4,7 @@ description: ลบ local และ remote branches ที่ merge เข้า
 argument-hint: "[base-branch] [--remote]"
 related:
   - ask-me
+  - cleanup-git-branch
   - report
   - run-clean
   - run-cleanup
@@ -19,6 +20,7 @@ related:
 - Remote branches ที่ merged หรือ PR-closed ถ้าระบุ `--remote`
 - ข้าม: base branch, current branch, protected branches (`main`, `develop`, `release/*` ตาม convention)
 - Destructive: ต้อง dry-run + user confirmation เสมอ
+- ถ้าลบ branch เฉพาะตัว หรือ branch ที่ abandoned (ยังไม่ merge) → ใช้ `/cleanup-git-branch` แทน
 
 ## Execute
 

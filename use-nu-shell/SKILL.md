@@ -3,6 +3,7 @@ name: use-nu-shell
 description: ใช้ Nushell สำหรับ shell commands, structured data pipelines, และ scripting
 argument-hint: "[command]"
 related:
+  - deep-research
   - use-bun-shell
   - use-pwsh-shell
   - follow-best-practice
@@ -19,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Check Nushell Installation
+### 1. Deep Research Current Nu
+
+> Goal: ยืนยัน version/syntax ปัจจุบันจาก official docs ก่อนใช้ — syntax เปลี่ยนบ่อยข้าม minor releases
+
+1. ทำ `/deep-research` กับ `https://www.nushell.sh/book/` และ `https://github.com/nushell/nushell/releases` เมื่อเขียน pipeline/script ที่ซับซ้อนหรือเมื่อ `references/package-manifest.md` เก่ากว่า 30 วัน
+2. ตรวจคำสั่ง/flags ที่จะใช้ใน `help <command>` ของ version ที่ติดตั้งจริง — changelog บ่อย
+3. ถ้าพบ breaking change ใหม่ → อัปเดต `references/package-manifest.md` แล้วทำต่อ
+
+### 2. Check Nushell Installation
 
 > Goal: ตรวจสอบและติดตั้ง `nu`
 

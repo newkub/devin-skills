@@ -3,6 +3,7 @@ name: cleanup-git-branch
 description: ลบ git branches เก่าที merge แล้วหรือไม่ใช้แล้ว
 argument-hint: "[filter]"
 related:
+  - cleanup-branches-merged
   - delete
   - run-clean
   - run-cleanup
@@ -14,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ local หรือ remote มี branches ที่ merge แล้วหรือ abandoned
+ใช้เมื่อ local หรือ remote มี branches ที่ merge แล้วหรือ abandoned — เน้นลบ branch เฉพาะตัว/กลุ่มเล็กแบบ ad-hoc (รวม force-delete `-D` เมื่อจำเป็น); ถ้าต้องการ sweep branches ที่ merge เข้า `main` ทั้งหมดแบบมี dry-run + PR cross-check → ใช้ `/cleanup-branches-merged`
 
 ## Execute
 
