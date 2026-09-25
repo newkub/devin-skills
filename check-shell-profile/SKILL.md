@@ -89,7 +89,6 @@ related:
 - รวม `mise` activation และ tool shims ใน PATH check
 
 - ใช้ /check-system-env ถ้าจำเป็น
-- ใช้ /check-system-env ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Fix

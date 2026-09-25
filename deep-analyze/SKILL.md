@@ -231,7 +231,7 @@ related:
 - จัดกลุ่ม findings ตามหมวดหมู่
 - ให้ recommendations + roadmap + action items ตาม priority และ impact
 - ใช้ `/report-deep` สำหรับ detailed report หรือ `/report` สำหรับ chat table
-- `/deep-analyze-by-use-scripts` — top-level skill แยก (extract จาก `subskills/by-use-scripts` เดิม) สำหรับ scripts-driven analysis entry point
+- alias stub: `/deep-analyze-by-use-scripts` — forward มาที่ skill นี้ (extract จาก `subskills/by-use-scripts` เดิม)
 - ใช้ `/deep-analyze-and-refactor` ถ้าจำเป็น
 
 ### 7. Deep Analysis Scripts
