@@ -22,6 +22,15 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `report`, `drift` | `subskills/report-drift/SKILL.md` — สรุปรายงาน drift ของ config files ระหว่าง environments |
+
+1. ถ้า argument เป็น `report`/`drift` → อ่าน `subskills/report-drift/SKILL.md` แล้วทำตาม flow — ใช้ drift data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-drift` มา execute
+
 ### 1. Inventory Config Files
 
 > Goal: รวบรวม config ทั้งหมดใน project

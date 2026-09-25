@@ -99,7 +99,8 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 > Goal: แก้ไข issues ตามแผน
 
 1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
-2. บันทึก findings พร้อม severity และ evidence
+2. Dispatch approved fixes ตาม domain ผ่าน `subskills/fix-by-domain/SKILL.md` — map findings ไป `review-*/references/fix-*.md` ตาม Domain Map ด้านบน
+3. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Verify
 

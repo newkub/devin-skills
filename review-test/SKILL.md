@@ -32,6 +32,16 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ## Execute
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `flaky`, `fix-flaky` | `subskills/fix-flaky/SKILL.md` — fix flaky tests (isolation, timing, deterministic) |
+| `coverage`, `improve-coverage` | `subskills/improve-coverage/SKILL.md` — raise coverage บน critical paths |
+
+1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow (ข้าม review pass ไป fix เลย)
+2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ
+
 ### 1. Prepare
 
 > Goal: เตรียม context ก่อน review

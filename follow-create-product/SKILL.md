@@ -36,6 +36,16 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `scaffold`, `setup` | `subskills/setup-scaffold/SKILL.md` — scaffold product structure (monorepo, packages) |
+| `deploy` | `subskills/deploy-mvp/SKILL.md` — deploy product MVP ไป platform + verify live URL |
+
+1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
+2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ
+
 ### 1. Review Tech Stack And Understand Input
 
 > Goal: ตรวจสอบ tech stack และวิเคราะห์ product idea ก่อนสร้าง

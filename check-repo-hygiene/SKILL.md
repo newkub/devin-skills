@@ -23,6 +23,17 @@ Audit repository hygiene: ตรวจว่า repo มีไฟล์และ
 
 ## Execute
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `unused` | `subskills/unused/SKILL.md` — dead code, unused files, unused dependencies |
+| `dead-link` | `subskills/dead-link/SKILL.md` — ตรวจ markdown links ใน docs/skills/project |
+| `circular`, `circular-dependencies` | `subskills/circular-dependencies/SKILL.md` — ตรวจ circular dependencies ใน codebase |
+
+1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ
+
 ### 1. Identify Repo
 
 > Goal: ระบุ repo ที่จะตรวจ

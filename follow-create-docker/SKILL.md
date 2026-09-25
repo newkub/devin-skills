@@ -27,6 +27,17 @@ related:
 
 ## Execute
 
+### Subskills
+
+| Argument | Subskill |
+|----------|----------|
+| `dockerfile`, `setup` | `subskills/setup-dockerfile/SKILL.md` — Dockerfile production-ready |
+| `compose` | `subskills/config-compose/SKILL.md` — docker-compose multi-service |
+| `optimize` | `subskills/optimize-image/SKILL.md` — harden/optimize docker image |
+
+1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
+2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ (default = `setup-dockerfile`)
+
 ### 1. Review Tech Stack
 
 > Goal: รู้ stack และ requirements ก่อนเขียน Dockerfile
