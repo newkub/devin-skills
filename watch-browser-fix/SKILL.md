@@ -31,7 +31,7 @@ related:
 > Goal: เตรียม browser automation tool
 
 1. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
-Latest: `agent-browser@0.37.1` (verified 2026-09-12)
+Latest: `agent-browser@0.38.1` (verified 2026-09-24)
 
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser`
 3. ดาวน์โหลด Chrome ด้วย `agent-browser install`

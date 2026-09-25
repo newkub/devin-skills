@@ -1,6 +1,6 @@
 ---
 name: follow-lib-vueuse
-description: ใช้งาน VueUse v14.4 composables ตาม best practices
+description: ใช้งาน VueUse v15 composables ตาม best practices
 argument-hint: "[scope]"
 related:
   - follow-lib-vue
@@ -11,13 +11,13 @@ related:
 
 ## Goal
 
-ใช้งาน VueUse v14.4 composables สำหรับ Vue 3.5+ applications อย่างมีประสิทธิภาพ
+ใช้งาน VueUse v15 composables สำหรับ Vue 3.5+ applications อย่างมีประสิทธิภาพ
 
 ## Scope
 
-ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v14.4 ครอบคลุม installation, core composables, v14 features, best practices และ testing
+ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v15 ครอบคลุม installation, core composables, features ล่าสุด, best practices และ testing
 
-- Latest: `@vueuse/core@14.4.0` (verified 2026-09-16)
+- Latest: `@vueuse/core@15.0.0` (verified 2026-09-24) — v15 breaking: drop Node 20, ลบ deprecated timer options (ใช้ `scheduler` เท่านั้น), `useThrottleFn` default `trailing` false→true, ลบ `templateRef`, `useIDBKeyval` sync ข้าม tabs
 
 ## Execute
 
@@ -25,7 +25,7 @@ related:
 
 > Goal: ติดตั้งและตั้งค่า VueUse ใน Vue หรือ Nuxt project
 
-1. ติดตั้ง `@vueuse/core` v14.4+ ด้วย `bun add @vueuse/core`
+1. ติดตั้ง `@vueuse/core` v15+ ด้วย `bun add @vueuse/core` (v15 ต้องการ Node 22+)
 2. สำหรับ Nuxt ให้ติดตั้ง `@vueuse/nuxt` หรือ `bunx nuxt@latest module add vueuse`
 3. ตั้งค่า Nuxt module ใน `nuxt.config.ts`
 4. ใช้ auto-imports สำหรับ VueUse composables
@@ -44,9 +44,9 @@ related:
 7. Utilities: `useSortable`, `useEventListener`, `onClickOutside`, `tryOnScopeDispose`
 8. ดูรายละเอียดครบถ้วนใน `https://vueuse.org/functions`
 
-### 3. Use VueUse v14.4 New Features
+### 3. Use VueUse v14.4+ Features
 
-> Goal: ใช้ features ใหม่ของ VueUse v14 ที่ปรับปรุงจากเวอร์ชันก่อนหน้า
+> Goal: ใช้ features ใหม่ของ VueUse v14.4/v15 ที่ปรับปรุงจากเวอร์ชันก่อนหน้า
 
 1. `useIntersectionObserver` รองรับ reactive `rootMargin` (ไม่ต้อง recreate observer)
 2. `useDraggable` มี auto-scroll ใน scrollable containers
@@ -58,9 +58,10 @@ related:
 8. `useElementOverflow` สำหรับ detect element overflow (ใหม่ใน v14.4)
 9. `useSpeechRecognition` expose confidence ของ latest result (v14.4)
 10. `useVirtualList` scrollTo รองรับ `behavior`, `block`, `inline` (v14.4)
-11. Custom scheduler จาก v14.4.0 สำหรับ time-based composables
-12. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
-13. `computedEager` deprecated ใน v14 — ใช้ `computed` ธรรมดาแทน
+11. Custom scheduler สำหรับ time-based composables (v14.4+; v15 ลบ timer options เดิม — ใช้ `scheduler` เท่านั้น)
+12. v15 ใหม่: `useWebMCP`, `useLiveAnnouncer`, `useTemporalNow`
+13. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
+14. `computedEager` deprecated ใน v14 — ใช้ `computed` ธรรมดาแทน
 
 ### 4. Integrate With Components
 
@@ -124,10 +125,13 @@ related:
 - ใช้ `computed` จาก VueUse getters
 - ใช้ `shallowRef` สำหรับ large data
 
-### 5. VueUse v14 Breaking Changes
+### 5. VueUse Breaking Changes
 
-- VueUse v14 ต้องการ Vue 3.5+
-- Migrate ไปใช้ `tsdown` และ dist files ย้ายตำแหน่ง (breaking)
+- v15: ต้องการ Node 22+ (drop Node 20), Vue 3.5+
+- v15: deprecated timer options ถูกลบ — ใช้ `scheduler` เท่านั้น
+- v15: `useThrottleFn` default `trailing` เปลี่ยนจาก `false` เป็น `true`
+- v15: `templateRef` ถูกลบ — ใช้ Vue 3.5 `useTemplateRef`
+- v14: Migrate ไปใช้ `tsdown` และ dist files ย้ายตำแหน่ง (breaking)
 - Alias exports deprecated ให้ใช้ชื่อ function ต้นฉบับ
 - `watchPausable` deprecated ให้ใช้ Vue 3.5 native `watch` controls
 - `computedEager` deprecated ให้ใช้ `computed` ธรรมดา
@@ -146,7 +150,7 @@ related:
 
 ## Expected Outcome
 
-- VueUse v14.4 composables ที่ใช้อย่างมีประสิทธิภาพ
+- VueUse v15 composables ที่ใช้อย่างมีประสิทธิภาพ
 - Code ที่ clean และ maintainable
 - Type safety จาก VueUse TypeScript support
 - Performance ที่ดีขึ้นด้วย `shallowRef` และ `effectScope`

@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ API documentation, API playground, mock server และ schema validation โดยใช้ Scalar toolchain
 
-- Latest: `@scalar/api-reference@1.68.0` / `@scalar/cli@2.1.0` (verified 2026-09-13)
+- Latest: `@scalar/api-reference@1.71.0` / `@scalar/cli@2.5.2` (verified 2026-09-24)
 
 ## Execute
 

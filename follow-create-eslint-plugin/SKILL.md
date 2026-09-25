@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง custom ESLint plugins ด้วย JavaScript/TypeScript ครอบคลุม plugin entry, custom rules, metadata, testing และ flat config
 
-- Latest: `eslint@10.10.0` / `typescript-eslint@8.70.0` (verified 2026-09-12)
+- Latest: `eslint@10.11.0` / `typescript-eslint@8.70.1` (verified 2026-09-24)
 
 ## Execute
 

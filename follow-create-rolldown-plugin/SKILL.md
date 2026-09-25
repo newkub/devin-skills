@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง JavaScript/TypeScript plugins สำหรับ Rolldown หรือ Vite 8+ ครอบคลุม plugin object, hooks, filters, build, และ tests
 
-- Latest: `rolldown@1.2.8` — bundler หลักใน `vite@8.x` (latest `8.3.0`) (verified 2026-09-12)
+- Latest: `rolldown@1.2.10` — bundler หลักใน `vite@8.x` (latest `8.3.0`) (verified 2026-09-24)
 
 ## Execute
 

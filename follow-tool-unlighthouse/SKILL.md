@@ -19,8 +19,8 @@ related:
 ใช้สำหรับ projects ที่ต้องการ monitor ทุกหน้าเว็บด้วย Lighthouse ทั้ง development mode และ CI/CD
 
 - Boundary: ใช้ Unlighthouse สำหรับ site-wide audit (crawl ทุก route); สำหรับ audit หน้าเดียวใช้ `lighthouse` CLI ตรงๆ; สำหรับ E2E user-flow assertions ใช้ `/follow-tool-playwright`
-- Latest: `@unlighthouse/cli@0.18.0` (verified 2026-09-13)
-- v0.18.0 breaking change: ต้องการ Node.js >= 22.18.0 (engines)
+- Latest: `@unlighthouse/cli@0.18.1` (verified 2026-09-24)
+- v0.18.1 breaking change: ต้องการ Node.js >= 22.18.0 (engines)
 
 ## Execute
 
@@ -28,7 +28,7 @@ related:
 
 > Goal: ตั้งค่า URL สำหรับ scan
 
-1. ตรวจสอบ Node.js >= 22.18.0 (requirement ของ `@unlighthouse/cli@0.18.0`)
+1. ตรวจสอบ Node.js >= 22.18.0 (requirement ของ `@unlighthouse/cli@0.18.1`)
 2. ตั้งค่า `APP_URL` environment variable
 3. ใช้ default `http://localhost:3000` สำหรับ development
 4. ตั้งค่าใน `.env` หรือ CI environment

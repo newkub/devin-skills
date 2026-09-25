@@ -18,7 +18,7 @@ related:
 ใช้สำหรับ customize theme ของ UnoCSS v66+ projects — design tokens, color palette, dark mode, breakpoints และ typography scale สำหรับ Vite, Nuxt, Next.js, Astro
 
 - ติดตั้ง/setup UnoCSS ก่อนด้วย `/follow-lib-unocss`
-- Latest: `unocss@66.10.4` (verified 2026-09-16)
+- Latest: `unocss@66.10.5` (verified 2026-09-24)
 
 ## Execute
 

@@ -57,9 +57,9 @@ related:
 
 > Goal: ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
 
-1. รัน `bun add drizzle-orm@0.45.2` หรือ `bun add drizzle-orm` (latest stable)
+1. รัน `bun add drizzle-orm@0.45.3` หรือ `bun add drizzle-orm` (latest stable)
 2. ติดตั้ง driver ตาม runtime และ database — ดูรายละเอียดใน [references/components/drivers.md](references/components/drivers.md)
-3. รัน `bun add -D drizzle-kit@0.31.10` หรือ `bun add -D drizzle-kit`
+3. รัน `bun add -D drizzle-kit@0.31.11` หรือ `bun add -D drizzle-kit`
 4. ตรวจสอบว่า dependencies อยู่ใน `package.json`
 5. ถ้าต้องการ v1.0 RC (`drizzle-orm@rc`, `drizzle-kit@rc`) → ดูหมายเหตุใน Rules
 
@@ -164,7 +164,7 @@ related:
 
 ### 6. Version Notes
 
-- Latest stable: `drizzle-orm@0.45.2` + `drizzle-kit@0.31.10` (verified 2026-09-13)
+- Latest stable: `drizzle-orm@0.45.3` + `drizzle-kit@0.31.11` (verified 2026-09-24)
 - v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` (ปัจจุบัน `1.0.0-rc.4`, verified 2026-09-13) มี breaking changes ได้แก่ `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` ถูกเอาออก, migration folder v3
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 

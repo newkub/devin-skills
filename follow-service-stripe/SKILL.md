@@ -39,7 +39,7 @@ related:
 
 > Goal: เตรียม Stripe SDK และ API keys
 
-Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.16.0` (client) (verified 2026-09-12)
+Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 2026-09-24)
 
 1. ติดตั้ง Stripe SDK ด้วย `bun add stripe` สำหรับ server
 2. ติดตั้ง client SDK ด้วย `bun add @stripe/stripe-js`

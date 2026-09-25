@@ -31,7 +31,7 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-Latest: `firebase-admin@14.4.0` (verified 2026-09-12) — install ด้วย `bun add firebase-admin`
+Latest: `firebase-admin@14.5.0` (verified 2026-09-24) — install ด้วย `bun add firebase-admin`
 
 1. initialize ด้วย `admin.initializeApp({credential: cert(serviceAccount)})` — key จาก env
 1. ใช้ `getAuth()` สำหรับ verifyIdToken/custom claims, `getFirestore()` สำหรับ DB

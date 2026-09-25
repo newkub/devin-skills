@@ -21,7 +21,7 @@ related:
 - Optimize bundle (offline bundles, subsetting, lazy loading) → `subskills/optimize-icons/SKILL.md`
 - ถ้า project ใช้ icons น้อยมากและไม่ต้องการ dependency → พิจารณา inline SVG แทน
 
-- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.1` / `iconify-icon@3.0.2` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-13)
+- Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.3` / `iconify-icon@3.0.3` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-24)
 - References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

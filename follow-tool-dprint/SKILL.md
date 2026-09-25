@@ -23,7 +23,7 @@ related:
 ใช้สำหรับ project ที่ต้องการ code formatting หลายภาษา
 
 - Boundary: dprint เป็น formatter-only แบบ pluggable (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — ไม่มี linting; ถ้าต้องการ lint+format สำหรับ JS/TS ใน tool เดียวใช้ `/follow-tool-biome` แทน (หรือใช้ dprint เฉพาะภาษาที่ Biome ไม่ครอบคลุม)
-- Latest: `dprint@0.57.4` (verified 2026-09-13) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
+- Latest: `dprint@0.57.4` (verified 2026-09-24) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [dprint](references/dprint.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute
@@ -63,16 +63,16 @@ related:
   ],
   "plugins": [
     "npm:@dprint/typescript@0.96.1",
-    "npm:@dprint/json@0.23.0",
+    "npm:@dprint/json@0.24.0",
     "npm:@dprint/markdown@0.24.0",
     "npm:@dprint/toml@0.8.0",
     "npm:dprint-plugin-yaml@0.6.0",
     "npm:@dprint/dockerfile@0.6.0",
     "npm:dprint-plugin-malva@0.16.0",
     "npm:dprint-plugin-markup@0.27.3",
-    "npm:@dprint/ruff@0.8.7",
+    "npm:@dprint/ruff@0.8.8",
     "npm:@jakebailey/dprint-plugin-gofumpt@0.0.18",
-    "npm:@dprint/mago@0.26.1"
+    "npm:@dprint/mago@0.28.0"
   ]
 }
 ```

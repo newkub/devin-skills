@@ -22,7 +22,7 @@ related:
 - API keys/org/project จัดการผ่าน `/follow-secret-manager` — ห้ามเรียก API จาก client-side
 - Structured output schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
 
-- Latest: `openai@7.15.0` (verified 2026-09-13) — v7 requires Node.js 22+
+- Latest: `openai@7.23.0` (verified 2026-09-24) — v7 requires Node.js 22+
 - References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

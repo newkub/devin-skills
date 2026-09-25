@@ -26,7 +26,7 @@ related:
 - เพิ่ม plugins ตามต้องการ
 - build และ test บน target platforms
 
-- Latest: `tauri@2.11.5` (crate) / `@tauri-apps/cli@2.11.4` / `@tauri-apps/api@2.11.1` (verified 2026-09-12)
+- Latest: `tauri@2.11.5` (crate) / `@tauri-apps/cli@2.11.5` / `@tauri-apps/api@2.11.1` (verified 2026-09-24)
 
 ## Execute
 

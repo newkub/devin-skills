@@ -32,7 +32,7 @@ related:
 เตรียม SDK สำหรับ WorkOS
 > Goal: ติดตั้ง SDK และเตรียม credentials ให้พร้อมใช้งาน
 
-Latest: `@workos-inc/node@10.13.0` (verified 2026-09-12) — AuthKit/User Management API เป็น modern path, `sso.*` เป็น legacy flow
+Latest: `@workos-inc/node@10.14.0` (verified 2026-09-24) — AuthKit/User Management API เป็น modern path, `sso.*` เป็น legacy flow
 
 1. install package ตาม runtime (`bun add @workos-inc/node`, `workos-python`, etc.)
 2. สร้าง API key จาก WorkOS Dashboard

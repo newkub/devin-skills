@@ -22,7 +22,7 @@ related:
 - ไม่ใช่ input validation ทั่วไป — ถ้า validate form/API data ใช้ `/follow-lib-zod` หรือ `/follow-lib-arktype`
 - ไม่ใช่ output encoding สำหรับ URL/text node — text ธรรมดาไม่ต้อง sanitize (framework escape ให้แล้ว)
 
-- Latest: `dompurify@3.4.15` (verified 2026-09-13)
+- Latest: `dompurify@3.4.16` (verified 2026-09-24)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [manifest](references/package-manifest.md)
 
 ## Execute

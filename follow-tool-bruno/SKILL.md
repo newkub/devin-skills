@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ API client แบบ offline, collections เป็น text files ใน repo, รัน collection tests ใน pipeline
 
-- Latest: `@usebruno/cli@4.1.0` (verified 2026-09-13); GitHub Action `usebruno/bruno-cli-action@v1`
+- Latest: `@usebruno/cli@4.2.0` (verified 2026-09-24); GitHub Action `usebruno/bruno-cli-action@v1`
 - ถ้าต้องการ plain-text tests เบากว่า (ไม่ใช่ collection model) → `/follow-tool-hurl`; docs/mock จาก spec → `/follow-tool-scalar`
 
 ## Execute

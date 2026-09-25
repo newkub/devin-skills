@@ -19,7 +19,7 @@ related:
 - Boundary: ถ้า repo ใช้ moonrepo อยู่แล้ว → `vcs.hooks` ของ moon (v1.9+) พอสำหรับ hooks ทั่วไป (`moon run :lint --affected --status=staged`) — ใช้ hk เมื่อต้องการ parallel staged-file linting, non-moon hook steps, หรือ hook config เดียวข้าม repos
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-githooks) — สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
-- Latest: `hk@v1.58.1` (verified 2026-09-13)
+- Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config เป็น Pkl-only (ลบ `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) ถูกแทนด้วย typed options เช่น `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage อัตโนมัติ — migration guide: `https://hk.jdx.dev/migration-v2`
 - References: [cli](references/cli.md) | [githooks](references/githooks.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute
@@ -55,17 +55,18 @@ related:
 
 > Goal: ตั้งค่า hooks สำหรับ project
 
-1. รัน `hk init` เพื่อสร้าง `hk.pkl` ต้นแบบ
-2. แก้ไข `hk.pkl` โดยใช้ `amends` และ `import Builtins.pkl` ตาม version ล่าสุด
+1. รัน `hk init` เพื่อสร้าง `hk.pkl` ต้นแบบ (v2: `hk generate` ถูก rename เป็น `hk init`)
+2. แก้ไข `hk.pkl` โดยใช้ `amends` และ `import Builtins.pkl` ตาม version ล่าสุด — v2 pin เป็น `v2.2.0`/`hk@2.2.0`
 3. กำหนด `mise = true` ถ้าใช้ mise tools
-4. กำหนด hooks หลัก: `pre-commit`, `pre-push`, `pre-merge-commit`, `check`, `fix`
+4. กำหนด hooks หลัก: `pre-commit`, `pre-push`, `pre-merge-commit`, `check`, `fix` — หรือใช้ top-level `steps` map (v2) เพื่อสร้าง implicit `check`/`fix`/`pre-commit` พร้อมกัน
 5. ใช้ `hk.local.pkl` สำหรับ local overrides โดยไม่ commit
+6. v2: config เป็น Pkl เท่านั้น — `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl` ถูกลบแล้ว
 
 ### 5. Configure Steps
 
 > Goal: กำหนด linters/tests ให้ hk รัน
 
-1. ใช้ `Builtins.<name>` สำหรับเครื่องมือที่รองรับ เช่น `Builtins.gitleaks`
+1. ใช้ `Builtins.<name>` สำหรับเครื่องมือที่รองรับ เช่น `Builtins.gitleaks` — v2: ไม่มี variant names (`gitleaks_staged`, `knip_strict`, `pinact_v3`) ให้ใช้ typed options เช่น `(Builtins.gitleaks) { scan = "staged" }`, `(Builtins.knip) { strict = true }`, `(Builtins.pinact) { version = "3" }`
 2. สร้าง custom step ด้วย `glob`, `exclude`, `check`, `fix`
 3. ใช้ `fix = true` ใน `pre-commit` เพื่อแก้ไขไฟล์อัตโนมัติ
 4. ใช้ `stash = "git"` ใน `pre-commit` เพื่อ stash unstaged changes
@@ -109,7 +110,7 @@ related:
 - ใช้ `hk.local.pkl` สำหรับ local overrides (ไม่ commit)
 - ใช้ `amends` กับ release package URL เสมอ
 - ใช้ `import Builtins.pkl` เพื่อใช้ builtin linters
-- ใช้ version tag ล่าสุด เช่น `v1.58.1`
+- ใช้ version tag ล่าสุด เช่น `v2.2.0` — v2 ไม่รองรับ `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl` แล้ว
 
 ### 2. mise Integration
 
@@ -144,7 +145,7 @@ related:
 [tools]
 bun = "1.4.2"
 gitleaks = "8.30.1"
-hk = "1.58.1"
+hk = "2.2.0"
 
 [env]
 HK_MISE = "1"
@@ -156,8 +157,8 @@ postinstall = "hk install"
 ### 6. Example hk.pkl
 
 ```pkl
-amends "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Builtins.pkl"
 
 mise = true
 
