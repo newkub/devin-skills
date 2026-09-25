@@ -12,6 +12,7 @@ related:
   - deep-research
   - run-audit
   - use-scripts
+  - deep-review
   - deep-analyze-by-use-scripts
   - deep-analyze-and-refactor
 ---
@@ -120,51 +121,13 @@ related:
 
 > Goal: ครอบคลุมทุก dimension — dispatch ไป `review-*` ตาม stack ที่ตรวจพบ
 
-| Domain | Skill | เมื่อไร |
-|--------|-------|--------|
-| api | `/review-api` | มี endpoints/REST/GraphQL |
-| auth | `/review-auth` | มี auth/session/OAuth |
-| security | `/review-security` | เสมอ |
-| frontend | `/review-frontend` | มี UI code |
-| backend | `/review-backend` | มี server code |
-| database | `/review-database` | มี DB/ORM/migrations |
-| migration | `/review-migration` | มี migration files |
-| tests | `/review-test` | มี test suite |
-| performance | `/review-performance` | เสมอ |
-| bundle | `/review-bundle` | มี frontend build |
-| assets | `/review-bundle` | มี images/fonts/media |
-| seo | `/review-seo` | มี public web pages |
-| accessibility | `/review-accessibility` | มี UI |
-| uxui | `/review-uxui` | มี UI/design system |
-| docs | `/review-docs` | มี docs/README |
-| dependencies | `/review-dependencies` | เสมอ |
-| config | `/review-config` | มี config/env files |
-| delivery | `/review-delivery` | มี CI/CD/Docker |
-| observability | `/review-observability` | มี production services |
-| stability | `/review-stability` | มี production services |
-| cost | `/review-cost` | มี cloud infra |
-| compliance | `/review-compliance` | มี user data/regulated domain |
-| business | `/review-business` | มี payments/tenancy/flags |
-| data-validation | `/review-data-validation` | มี forms/schemas |
-| algorithm | `/review-algorithm` | มี compute-heavy logic |
-| quality | `/review-quality` | เสมอ |
-| correctness | `/review-quality` | เสมอ (merged) |
-| architecture | `/review-architecture` | เสมอ |
-| cli | `/review-cli` | มี CLI entry points |
-| i18n | `/review-i18n` | มีหลาย locale |
-| mobile | `/review-mobile` | มี mobile app/PWA mobile |
-| ai | `/review-ai` | มี LLM/AI features |
-| mcp | `/review-mcp` | มี MCP servers/config |
-| events | `/review-events` | มี queues/webhooks/event-driven |
-| workspace | `/review-workspace` | monorepo |
-| rules/.devin | `/review-dot-devin` | มี `.devin/` config |
-| risk | `/review-risk` | เสมอ (top-level) |
-
+- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `deep-review/references/review-skills.md` (single source of truth — ห้าม duplicate table ที่นี่)
 - dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
 - parallel ผ่าน `/use-subagents` เมื่อหลาย domains
 - findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag
 - dedup: finding เดียวกันจากหลาย domains → merge เป็น item เดียว tag ทุก domain ที่เจอ
 - ถ้า `/deep-review` รันไปแล้วใน session → reuse findings ของมัน อย่า dispatch ซ้ำ domains เดิม
+
 ### 9. External Research
 
 > Goal: ทำ `/deep-research` เพื่อค้นหา best practices
