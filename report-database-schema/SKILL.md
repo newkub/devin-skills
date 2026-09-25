@@ -79,6 +79,7 @@ related:
 - ใช้ /review-database ถ้าจำเป็น
 - ใช้ /create-mermaid-diagram ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
+- alias stub: `/report-schema` — forward มาที่ skill นี้
 
 ## Expected Outcome
 

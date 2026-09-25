@@ -141,6 +141,7 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 17 | `merge` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
 | 18 | `bench-apis` | `bench-apis/subagents/benchmarker.md` | benchmark target เดียวด้วย load profile เดียวกัน |
 | 19 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
+| 20 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
 
 ## CLI — `subagents` (mission control)
 

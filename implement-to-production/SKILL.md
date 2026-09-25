@@ -173,6 +173,7 @@ related:
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ใช้ /run-build ถ้าจำเป็น
+- alias stub: `/deep-implement-to-production` — forward มาที่ skill นี้
 
 ## Expected Outcome
 

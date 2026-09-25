@@ -123,6 +123,7 @@ related:
 - ใช้ `.devin/scripts/` สำหรับ permanent scripts
 - ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.nu` สำหรับ Nushell scripts
+- alias stub: `/use-nushell` — forward มาที่ skill นี้
 
 ## Expected Outcome
 

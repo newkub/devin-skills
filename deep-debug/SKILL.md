@@ -155,6 +155,7 @@ related:
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-until-pass ถ้าจำเป็น
+- alias stub: `/follow-debugging` — forward มาที่ skill นี้
 
 ## Expected Outcome
 
