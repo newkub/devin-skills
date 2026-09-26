@@ -30,7 +30,8 @@ related:
 ใช้เมื่อต้องการ test ลึกกว่า unit tests — multi-layer, external systems, browsers, contracts หรือ mutation analysis
 
 - `/run-test` = unit/fast tests เท่านั้น
-- `/deep-test <domain>` = เลือก domain workflow จากตารางแล้วทำตาม reference นั้น
+- `/run-test-<domain>` = run-only domain runners (`api`, `cli`, `contract`, `e2e`, `integration`, `mutation`, `visual` — `coverage` → `/run-test-coverage`) — เลือกโดย `/run-test-all`
+- `/deep-test <domain>` = analysis/workflow ลึกของ domain — เลือก domain workflow จากตารางแล้วทำตาม reference นั้น
 - `/run-test-all` = รันทุก suite รวมกัน (orchestrator)
 - แก้ไข/อัปเดต test specs → `/update-tests` (skill นี้ run-only ไม่เขียน tests)
 - Out-of-scope pointers: load/perf → `/run-load-test`, interactive browser watch + roleplay → `/watch-browser-test`, test isolation/flaky audit → `/check-test-isolation`

@@ -21,7 +21,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`; domain tests ย้ายไป `/deep-test` — api, cli, contract, coverage, e2e, integration, mutation, visual)
+ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`; domain tests ย้ายไป `/run-test-*` runners — api, cli, contract, e2e, integration, mutation, visual; coverage → `/run-test-coverage`; analysis ลึก → `/deep-test <domain>`)
 
 ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
@@ -33,9 +33,10 @@ related:
 
 ### Domain Dispatch
 
-> Goal: domain tests ไปที่ `/deep-test` — skill นี้ unit tests เท่านั้น
+> Goal: domain tests ไปที่ `/run-test-*` runners — skill นี้ unit tests เท่านั้น
 
-- ถ้า argument คือ domain (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`) → ส่งต่อ `/deep-test <domain>`
+- ถ้า argument คือ domain (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`) → ส่งต่อ `/run-test-<domain>` (เช่น `api` → `/run-test-api`); สำหรับ analysis ลึก (route coverage, exploratory) → `/deep-test <domain>`
+- `coverage` domain → `/run-test-coverage`; `load` → `/run-load-test`
 - ถ้าไม่ระบุหรือเป็น unit scope → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Detect Test Framework

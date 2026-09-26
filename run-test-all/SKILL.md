@@ -1,6 +1,6 @@
 ---
 name: run-test-all
-description: Orchestrate test suite ทั้งหมด — เลือก /deep-test <domain> แล้วรันจนครบ จำแนก failures
+description: Orchestrate test suite ทั้งหมด — เลือก /run-test-* ตาม signals แล้วรันจนครบ จำแนก failures
 argument-hint: "[scope]"
 related:
   - review-test
@@ -12,34 +12,36 @@ related:
   - update-tests
 
   - deep-review
+  - deep-test
   - resolve-errors
 ---
 
 ## Goal
 
-รัน test suite ทั้งหมดอย่างเป็นระบบ — เลือก `/run-test`/`/deep-test <domain>` ที่เหมาะกับ project จาก signals จริง รันตามลำดับ fail-fast แล้ว validate/classify failures ว่าแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
+รัน test suite ทั้งหมดอย่างเป็นระบบ — เลือก `/run-test`/(`/run-test-*` domain runners) ที่เหมาะกับ project จาก signals จริง รันตามลำดับ fail-fast แล้ว validate/classify failures ว่าแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
 
 ## Scope
 
-Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test`/`/deep-test <domain>` ตามสิ่งที่ project มีจริง
+Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test`/`run-test-*` ตามสิ่งที่ project มีจริง
 
 - ถ้าต้องการ update/เขียน tests → `/update-tests` (run-* เป็น run-only)
+- ถ้าต้องการ analysis ลึกของ domain (route coverage, exploratory, subagent fan-out) → `/deep-test <domain>` — runner เพียงเรียกใช้ reference เดียวกัน
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|
 | 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | `/run-test` (unit/fast) |
-| 2 | shared modules, DB, services integration | `/deep-test integration` |
-| 3 | HTTP endpoints, OpenAPI spec, API routes | `/deep-test api` (all-routes check อยู่ใน domain เดียวกัน) |
-| 4 | CLI binary, `bin` field, command definitions | `/deep-test cli` |
-| 5 | consumer/provider services, Pact, contract files | `/deep-test contract` |
-| 6 | web frontend, browser flows | `/deep-test e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
-| 7 | UI components, design system, screenshots | `/deep-test visual` |
+| 2 | shared modules, DB, services integration | `/run-test-integration` |
+| 3 | HTTP endpoints, OpenAPI spec, API routes | `/run-test-api` (all-routes check อยู่ใน domain เดียวกัน) |
+| 4 | CLI binary, `bin` field, command definitions | `/run-test-cli` |
+| 5 | consumer/provider services, Pact, contract files | `/run-test-contract` |
+| 6 | web frontend, browser flows | `/run-test-e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
+| 7 | UI components, design system, screenshots | `/run-test-visual` |
 | 8 | coverage config หรือ target กำหนดไว้ | `/run-test-coverage` (default target 100%) |
-| 9 | critical logic, mutation config | `/deep-test mutation` |
+| 9 | critical logic, mutation config | `/run-test-mutation` |
 | 10 | perf concern, k6/autocannon config, load scripts | `/run-load-test` |
 | 11 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
-ดูเพิ่มเติม: /update-tests, /deep-review
+ดูเพิ่มเติม: /update-tests, /deep-review, /deep-test (domain analysis)
 
 ## Execute
 
@@ -54,7 +56,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 ### 2. Detect Applicable Test Types
 
-> Goal: เลือก `/run-test` (unit) + `/deep-test <domain>` ที่เกี่ยวข้องจาก signals
+> Goal: เลือก `/run-test` (unit) + `/run-test-*` ที่เกี่ยวข้องจาก signals
 
 1. สแกน `package.json`, configs, test dirs, routes — เทียบกับตารางใน Scope
 2. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ → `/update-tests` สร้าง tests ที่ขาดก่อน
@@ -64,7 +66,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: รันเร็วสุดก่อน เจอปัญหาเร็ว
 
-1. ลำดับ: `/run-test` (unit) → `/deep-test integration` → `/deep-test api` / `/deep-test cli` / `/deep-test contract` (ตาม signals) → `/deep-test e2e` → `/deep-test visual`
+1. ลำดับ: `/run-test` (unit) → `/run-test-integration` → `/run-test-api` / `/run-test-cli` / `/run-test-contract` (ตาม signals) → `/run-test-e2e` → `/run-test-visual`
 2. ต่อ type: บันทึกผลลัพธ์, duration, รายการ tests ที่ fail
 3. ถ้ามี fail → ไปขั้นตอน Validate/Classify ทันที ไม่แก้ไข code ก่อน
 
