@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `gh` (GitHub CLI) |
 | Registry | `GitHub Releases` |
-| Latest Version | `2.100.0` |
+| Latest Version | `2.101.0` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `cli` (GitHub) |
@@ -34,5 +34,5 @@ winget install --id GitHub.cli
 ## Notes
 
 - Breaking changes in latest major: `none`
-- Version pinned in SKILL.md: `gh 2.100.0` and `bun 1.4.2` (verified 2026-09-12) — both match latest
+- Version pinned in SKILL.md: `gh 2.101.0` and `bun 1.4.2` (verified 2026-09-26) — both match latest
 - This is a workflow skill; `gh` is listed as primary because it is the operational dependency for issues/PRs, while `bun` is the build/test runtime

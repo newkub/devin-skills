@@ -28,7 +28,7 @@ bunx release-it
 
 ## Version Info
 
-- Latest stable: `21.0.2`
+- Latest stable: `21.1.0`
 - License: MIT
 - Node.js: `>=20`
 - Source: https://github.com/release-it/release-it

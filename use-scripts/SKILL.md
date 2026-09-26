@@ -67,9 +67,9 @@ related:
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
 5. ใช้ CDN imports สำหรับ external dependencies ที Bun native APIs ไม่ครอบคลุม: `https://esm.sh/<name>`
-6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (eta `4.6.0 (verified 2026-09-12)` — ดู `/follow-lib-esm-sh` สำหรับ CDN convention)
-7. ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ผ่าน `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser` (`0.149.0 (verified 2026-09-12)`)
-8. ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown` (`1.2.8 (verified 2026-09-12)`, ใช้ `oxc` parser เหมือนกัน)
+6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (eta `4.6.0 (verified 2026-09-26)` — ดู `/follow-lib-esm-sh` สำหรับ CDN convention)
+7. ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ผ่าน `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser` (`0.149.0 (verified 2026-09-26)`)
+8. ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown` (`1.2.11 (verified 2026-09-26)`, ใช้ `oxc` parser เหมือนกัน)
 9. เพิ่ม `dryRun` option สำหรับ testing
 
 ### 4. Test And Execute

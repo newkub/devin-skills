@@ -8,7 +8,7 @@ bun add -D renovate
 
 ## Version
 
-- Latest: 44.79.4
+- Latest: 44.115.10
 - [Package Registry](https://www.npmjs.com/package/renovate)
 - [Repository](https://github.com/renovatebot/renovate)
 

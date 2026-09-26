@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `eslint` |
 | Registry | `npm` |
-| Latest Version | `10.10.0` |
+| Latest Version | `10.11.0` |
 | Release Date | `2026-09-04` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `ESLint / OpenJS Foundation` |
@@ -28,7 +28,7 @@ bun add -D eslint @eslint/js typescript-eslint
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `typescript-eslint` | `npm` | `8.70.0` | TypeScript support — pair with ESLint 10 |
+| `typescript-eslint` | `npm` | `8.70.1` | TypeScript support — pair with ESLint 10 |
 | `@eslint/js` | `npm` | `10.0.1` | `js.configs.recommended` |
 | `eslint-plugin-vue` | `npm` | `10.11.0` | Vue 3 linting |
 | `@vue/eslint-config-typescript` | `npm` | `—` | Official Vue + TS config |
@@ -43,4 +43,4 @@ bun add -D eslint @eslint/js typescript-eslint
 ## Notes
 
 - Breaking changes in latest major: `v10 — flat config only (eslintrc removed), config lookup starts from linted file's dir, Node ^20.19 || ^22.13 || >=24; migrate with \`npx codemod @eslint/v9-to-v10\` (Codemod Registry)`
-- Version pinned in SKILL.md: `10.10.0`
+- Version pinned in SKILL.md: `10.11.0`

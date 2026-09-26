@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `vite` |
 | Registry | `npm` |
-| Latest Version | `8.3.0` |
+| Latest Version | `8.3.1` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | Vite team (VoidZero / Evan You) |
@@ -35,5 +35,5 @@ bun create vite@latest <project-name>
 ## Notes
 
 - Breaking changes in latest major: Vite 8 is Rolldown-powered (Rust bundler replaces Rollup+esbuild pipeline)
-- Version pinned in SKILL.md: `vite@8.3.0` — matches latest as of 2026-09-12
+- Version pinned in SKILL.md: `vite@8.3.1` — matches latest as of 2026-09-12
 - This skill is a router/delegator — actual scaffolding happens in `follow-create-web-*` sub-skills

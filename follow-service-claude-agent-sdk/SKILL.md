@@ -31,7 +31,7 @@ related:
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-Latest: `@anthropic-ai/claude-agent-sdk@0.3.281` (verified 2026-09-24) — renamed จาก `claude-code` SDK, entry point คือ `query()`
+Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renamed จาก `claude-code` SDK, entry point คือ `query()`
 
 1. ใช้ `query()` function เป็น entry point — streaming async iterator
 1. กำหนด `options`: model, allowedTools, mcpServers, systemPrompt

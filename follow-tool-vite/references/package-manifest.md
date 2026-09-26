@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `vite` |
 | Registry | `npm` |
-| Latest Version | `8.3.0` |
+| Latest Version | `8.3.1` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `VoidZero / vitejs` |
@@ -28,10 +28,10 @@ bun add -D vite
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `rolldown` | `npm` | `1.2.8` | Underlying bundler in Vite 8 — bundled internally, not installed separately |
+| `rolldown` | `npm` | `1.2.11` | Underlying bundler in Vite 8 — bundled internally, not installed separately |
 | `rolldown-vite` | `npm` | `n/a` | Migration bridge package for Vite 7 users moving to Rolldown |
 
 ## Notes
 
 - Breaking changes in latest major: `v8 — Rolldown is the only bundler (Oxc for transform/minify); esbuild option deprecated, use oxc; optimizeDeps.rolldownOptions replaces esbuildOptions; requires Node.js >=20.19 or >=22.12`
-- Version pinned in SKILL.md: `8.3.0`
+- Version pinned in SKILL.md: `8.3.1`

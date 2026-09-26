@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `agent-browser` |
 | Registry | `npm` |
-| Latest Version | `0.37.1` |
+| Latest Version | `0.38.1` |
 | Release Date | `2026-09-08` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `vercel-labs` |
@@ -34,4 +34,4 @@ bun add -g agent-browser
 ## Notes
 
 - Breaking changes in latest major: `none — still 0.x; requires Node >= 24`
-- Version pinned in SKILL.md: `0.37.1 (verified 2026-09-12)` — matches latest
+- Version pinned in SKILL.md: `0.38.1 (verified 2026-09-26)` — matches latest

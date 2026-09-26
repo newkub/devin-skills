@@ -8,7 +8,7 @@ bun add -D jscpd
 
 ## Version
 
-- Latest: 5.2.0
+- Latest: 5.3.2
 - [Package Registry](https://www.npmjs.com/package/jscpd)
 - [Repository](https://github.com/kucherenko/jscpd)
 

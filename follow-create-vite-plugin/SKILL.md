@@ -16,7 +16,7 @@ related:
 
 ใช้ `follow-create-vite-plugins` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (create vite plugins)
 
-- Latest: `vite@8.3.0` (Rolldown default bundler) (verified 2026-09-12)
+- Latest: `vite@8.3.1` (Rolldown default bundler) (verified 2026-09-26)
 
 ## Execute
 

@@ -28,7 +28,7 @@ bun add -D vitest
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Peer — Vitest 5 requires Vite `>=6.4.0` |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Peer — Vitest 5 requires Vite `>=6.4.0` |
 | `@vitest/coverage-v8` | `npm` | `unknown` | Optional coverage provider |
 
 ## Notes

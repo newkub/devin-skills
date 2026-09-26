@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@scalar/cli` |
 | Registry | `npm` |
-| Latest Version | `2.1.0` |
+| Latest Version | `2.5.2` |
 | Release Date | `2026-08-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Scalar` (scalar org) |
@@ -33,6 +33,6 @@ bun add -D @scalar/cli
 ## Notes
 
 - Breaking changes in latest major: `@scalar/cli v2 requires Node.js >=24; document subcommands (mock/validate/lint/serve/markdown/bundle) are the v2 CLI surface`
-- Version pinned in SKILL.md: `@scalar/cli@2.1.0` / `@scalar/api-reference@1.68.0`
+- Version pinned in SKILL.md: `@scalar/cli@2.5.2` / `@scalar/api-reference@1.72.1`
 - CLI binary name is `scalar` (`bunx @scalar/cli` or `bunx scalar`)
 - Source: `https://registry.npmjs.org/@scalar/cli`

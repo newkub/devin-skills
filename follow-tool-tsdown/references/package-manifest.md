@@ -29,7 +29,7 @@ bun add -D tsdown   # or scaffold: bun create tsdown@latest
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
 | `tsdown-migrate` | `npm` | `0.23.0` | Migration CLI from `tsup` (`bunx tsdown-migrate`) |
-| `rolldown` | `npm` | `1.2.8` | Underlying bundler — bundled internally, rarely installed directly |
+| `rolldown` | `npm` | `1.2.11` | Underlying bundler — bundled internally, rarely installed directly |
 
 ## Notes
 

@@ -9,7 +9,7 @@
 
 ## Version
 
-- `unlighthouse`: `0.18.0` (latest stable)
+- `unlighthouse`: `0.18.1` (latest stable)
 - Requires: Node.js 22.18+
 - Chrome: Uses system Chrome; downloads Chromium automatically if missing
 

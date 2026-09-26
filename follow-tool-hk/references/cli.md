@@ -8,7 +8,7 @@ mise use -g hk@latest
 
 ## Version
 
-- Latest: `hk@1.58.1` (verified 2026-09-13)
+- Latest: `hk@2.2.0` (verified 2026-09-26)
 - Repository: https://github.com/jdx/hk
 - Docs: https://hk.jdx.dev
 

@@ -8,7 +8,7 @@ bun add -D drizzle-kit
 
 ## Version
 
-- Latest: `0.31.10` (npm, verified 2026-09-13) — pair with `drizzle-orm@0.45.2`; v1.0.0 อยู่ใน beta/rc channel
+- Latest: `0.31.11` (npm, verified 2026-09-26) — pair with `drizzle-orm@0.45.3`; v1.0.0 อยู่ใน beta/rc channel
 - Repository: https://github.com/drizzle-team/drizzle-orm
 - Docs: https://orm.drizzle.team/docs/kit-overview
 

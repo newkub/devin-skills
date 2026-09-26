@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `rolldown` |
 | Registry | `npm` |
-| Latest Version | `1.2.8` |
+| Latest Version | `1.2.11` |
 | Release Date | `2026-09-09` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `Rolldown contributors (VoidZero)` |
@@ -28,11 +28,11 @@ bun add -D rolldown
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Vite 8.x uses Rolldown as default bundler |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Vite 8.x uses Rolldown as default bundler |
 | `tsdown` | `npm` | `0.23.0` (2026-09-03) | Recommended build tool for plugin packages (Rolldown-powered) |
 
 ## Notes
 
 - Breaking changes in latest major: Rolldown 1.x stabilised the plugin API incl. hook filters (`rolldown/filter` helpers `exactRegex`, `prefixRegex`); plugins should external `rolldown`/`vite`
-- Version pinned in SKILL.md: `rolldown@1.2.8`, `vite@8.3.0`
+- Version pinned in SKILL.md: `rolldown@1.2.11`, `vite@8.3.1`
 

@@ -28,7 +28,7 @@ bun add -D tsdown rolldown typescript
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `rolldown` | `npm` | `1.2.8` (2026-09-09) | Plugin API base (`Plugin` type, hook filters) |
+| `rolldown` | `npm` | `1.2.11` (2026-09-09) | Plugin API base (`Plugin` type, hook filters) |
 | `bunup` | `npm` | `unknown` | Alternative build tool for plugin packages |
 | `typescript` | `npm` | `7.0.2` (2026-07-08) | Type-checking / `.d.ts` |
 

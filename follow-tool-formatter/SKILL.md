@@ -22,7 +22,7 @@ related:
 ใช้สำหรับ projects ที่ต้องการ formatter รองรับ TypeScript, JavaScript, Rust, Python, Go ตาม tech stack
 
 - Boundary: skill นี้ช่วยเลือกและ wire formatter เข้า repo/CI — หลังเลือก tool แล้วให้ใช้ skill เฉพาะทาง (`/follow-tool-biome`, `/follow-tool-dprint`) สำหรับ config ละเอียด; linting อยู่ที่ `/follow-tool-linter`
-- Latest: `prettier@3.9.9` / `dprint@0.57.4` / `@biomejs/biome@2.5.13` (verified 2026-09-24)
+- Latest: `prettier@3.9.9` / `dprint@0.57.4` / `@biomejs/biome@2.5.14` (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute

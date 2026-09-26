@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@unlighthouse/cli` |
 | Registry | `npm` |
-| Latest Version | `0.18.0` |
+| Latest Version | `0.18.1` |
 | Release Date | `2026-06-29` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Harlan Wilton (harlan-zw)` |
@@ -28,9 +28,9 @@ bunx unlighthouse --site http://localhost:3000   # provides unlighthouse + unlig
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `unlighthouse` | `npm` | `0.18.0` | Core library / programmatic API (CLI depends on it) |
+| `unlighthouse` | `npm` | `0.18.1` | Core library / programmatic API (CLI depends on it) |
 
 ## Notes
 
-- Breaking changes in latest major: `0.x line; v0.18.0 requires Node.js >= 22.18.0 (engines)`
-- Version pinned in SKILL.md: `0.18.0`
+- Breaking changes in latest major: `0.x line; v0.18.1 requires Node.js >= 22.18.0 (engines)`
+- Version pinned in SKILL.md: `0.18.1`

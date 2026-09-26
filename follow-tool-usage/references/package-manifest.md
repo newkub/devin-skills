@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `usage-cli` (bin: `usage`) |
 | Registry | `crates.io` |
-| Latest Version | `6.9.0` |
+| Latest Version | `6.11.1` |
 | Release Date | `2026-09-12` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `jdx (Jeff Dickey)` |
@@ -28,9 +28,9 @@ mise use -g usage   # or: cargo install usage-cli | brew install usage
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `usage` | `Homebrew` | `6.9.0` | Same release train; brew formula name is `usage` |
+| `usage` | `Homebrew` | `6.11.1` | Same release train; brew formula name is `usage` |
 
 ## Notes
 
 - Breaking changes in latest major: `6.x — min_usage_version "6.x" pin recommended in spec; clause support requires usage >= 6.5`
-- Version pinned in SKILL.md: `6.9.0` (updated from 6.8.0 on 2026-09-12)
+- Version pinned in SKILL.md: `6.11.1` (updated from 6.8.0 on 2026-09-12)

@@ -8,7 +8,7 @@ bun add -D drizzle-kit
 
 ## Version
 
-- Latest: `0.31.10` (verified 2026-09-13); v1.0 RC: `1.0.0-rc.4` — CLI deep-dive ดู `/follow-tool-drizzle-kit`
+- Latest: `0.31.11` (verified 2026-09-26); v1.0 RC: `1.0.0-rc.4` — CLI deep-dive ดู `/follow-tool-drizzle-kit`
 - Docs: https://orm.drizzle.team/docs/kit-overview
 
 ## Commands

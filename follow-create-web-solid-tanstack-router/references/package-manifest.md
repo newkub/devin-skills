@@ -31,7 +31,7 @@ bun i -D vite vite-plugin-solid typescript @types/node
 |---------|----------|--------|-------|
 | `@tanstack/solid-router` | `npm` | `1.170.34` (2026-09-10) | Type-safe routing — required peer of Start |
 | `solid-js` | `npm` | `1.9.15` (2026-08-17) | UI framework — Start requires `solid-js >=1.0.0` |
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Build tool — Start requires `vite >=7.0.0` |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Build tool — Start requires `vite >=7.0.0` |
 | `vite-plugin-solid` | `npm` | `unknown` | Solid JSX transform — `ssr: true`, must come after `tanstackStart()` |
 | `unocss` | `npm` | `unknown` | Styling via `unocss/vite` — see `/follow-lib-unocss` |
 | `nitro` | `npm` | `3.0.260903-beta` (2026-09-03) | Optional portable production server output (`.output/server/index.mjs`) |

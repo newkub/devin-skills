@@ -10,7 +10,7 @@ mise use usage
 
 ## Version
 
-- Latest: `6.9.0` (usage CLI โดย jdx, verified 2026-09-13)
+- Latest: `6.11.1` (usage CLI โดย jdx, verified 2026-09-26)
 - [Registry](https://crates.io/crates/usage-cli) — npm package `usage` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/usage)
 

@@ -30,9 +30,9 @@ Or `mise use -g git` / `scoop install git` / `brew install git` / `apt install g
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `gh` | `GitHub Releases` | `2.100.0` (2026-09-03) | Optional — `gh pr checkout <n> --worktree <path>` checks a PR directly into a worktree (gh >= 2.98.0) |
+| `gh` | `GitHub Releases` | `2.101.0` (2026-09-03) | Optional — `gh pr checkout <n> --worktree <path>` checks a PR directly into a worktree (gh >= 2.98.0) |
 
 ## Notes
 
 - Breaking changes in latest major: `none — git worktree stable since 2.15+`
-- Version pinned in SKILL.md: `2.55.0 (verified 2026-09-12)` — matches latest
+- Version pinned in SKILL.md: `2.55.0 (verified 2026-09-26)` — matches latest

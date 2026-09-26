@@ -28,7 +28,7 @@ bun add postgres
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `drizzle-orm` | `npm` | `0.45.2` | Common companion ORM — uses postgres.js as driver |
+| `drizzle-orm` | `npm` | `0.45.3` | Common companion ORM — uses postgres.js as driver |
 
 ## Notes
 

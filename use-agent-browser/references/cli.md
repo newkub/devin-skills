@@ -12,7 +12,7 @@ agent-browser install    # download managed Chrome
 
 ## Version And Help
 
-- Latest: 0.37.1 (verified 2026-09-12), requires Node >= 24
+- Latest: 0.38.1 (verified 2026-09-26), requires Node >= 24
 - `agent-browser --version`
 - `agent-browser --help`
 - `agent-browser doctor [--fix] [--offline --quick]` — diagnose install and stale daemon files

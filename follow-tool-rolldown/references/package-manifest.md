@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `rolldown` |
 | Registry | `npm` |
-| Latest Version | `1.2.8` |
+| Latest Version | `1.2.11` |
 | Release Date | `2026-09-09` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Rolldown team` / VoidZero (rolldown org) |
@@ -36,5 +36,5 @@ bun add -D rolldown
 ## Notes
 
 - Breaking changes in latest major: `1.0 stable shipped May 2026 — stable API; default bundler of Vite 8; requires Node.js ^20.19.0 || >=22.12.0`
-- Version pinned in SKILL.md: `rolldown@1.2.8`
+- Version pinned in SKILL.md: `rolldown@1.2.11`
 - Source: `https://registry.npmjs.org/rolldown`

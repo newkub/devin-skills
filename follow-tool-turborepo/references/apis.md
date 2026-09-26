@@ -8,7 +8,7 @@ bun add -D turbo
 
 ## Version
 
-- Latest: 2.10.12
+- Latest: 2.11.4
 - [Package Registry](https://www.npmjs.com/package/turbo)
 - [Repository](https://github.com/vercel/turborepo)
 

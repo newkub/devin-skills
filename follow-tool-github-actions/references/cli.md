@@ -8,7 +8,7 @@ mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช�
 
 ## Version
 
-- Latest: `gh@2.100.0` (verified 2026-09-13)
+- Latest: `gh@2.101.0` (verified 2026-09-26)
 - Repository: https://github.com/cli/cli
 - Docs: https://cli.github.com/manual/gh_workflow
 

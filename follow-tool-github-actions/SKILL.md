@@ -21,7 +21,7 @@ related:
 ตั้งค่า GitHub Actions สำหรับ projects และ repositories
 
 - Boundary: GitHub Actions คือ hosted platform (ไม่ใช่ package ที่ install) — companion tools คือ `gh` CLI (`gh workflow`/`gh run`) และ `actionlint` สำหรับ local validation; secrets ใช้ `/follow-secret-manager`
-- Latest: `gh@2.100.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-13)
+- Latest: `gh@2.101.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-26)
 - References: [cli](references/cli.md) | [github-cli-commands](references/github-cli-commands.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute

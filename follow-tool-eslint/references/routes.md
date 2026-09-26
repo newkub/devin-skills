@@ -8,7 +8,7 @@
 - /blog
 - /blog/2026/08/eslint-v10.9.0-released
 - /blog/2026/08/eslint-v10.9.1-released
-- /blog/2026/09/eslint-v10.10.0-released
+- /blog/2026/09/eslint-v10.11.0-released
 - /branding
 - /chat
 - /docs/latest

@@ -14,7 +14,7 @@ gh auth login && gh auth refresh -s project
 
 ## Version
 
-- Latest: gh CLI `2.100.0` (github.com/cli/cli, verified 2026-09-13)
+- Latest: gh CLI `2.101.0` (github.com/cli/cli, verified 2026-09-26)
 - [Repository](https://github.com/cli/cli)
 - [Manual](https://cli.github.com/manual/gh_project)
 

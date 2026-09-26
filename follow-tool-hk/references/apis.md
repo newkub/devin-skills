@@ -9,7 +9,7 @@ mise use -g hk
 
 ## Version
 
-- Latest: `1.58.1` (verified 2026-09-13)
+- Latest: `2.2.0` (verified 2026-09-26)
 - [Package Registry](https://crates.io/crates/hk) — npm package `hk` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/hk)
 

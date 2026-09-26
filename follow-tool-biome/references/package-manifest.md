@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@biomejs/biome` |
 | Registry | `npm` |
-| Latest Version | `2.5.13` |
+| Latest Version | `2.5.14` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `biomejs` |
@@ -34,4 +34,4 @@ bun add -D @biomejs/biome
 ## Notes
 
 - Breaking changes in latest major: `2.x — new config format (\`biome.jsonc\` schema), assist, domains; see https://biomejs.dev/guides/upgrade-to-biome-v2/`
-- Version pinned in SKILL.md: `2.5.13`
+- Version pinned in SKILL.md: `2.5.14`

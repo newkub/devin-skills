@@ -22,7 +22,7 @@ related:
 - ถ้า task เป็น Biome setup/config/lint ทั่วไป (ไม่ใช่ GritQL) → ใช้ `/follow-tool-biome`
 - ถ้าต้องการ structural search/rewrite นอก Biome หรือ codemod ข้าม language ที่ GritQL ใน Biome ไม่รองรับ → พิจารณา `/use-astgrep` (ast-grep)
 
-- Latest: `@biomejs/biome@2.5.13` (GritQL engine) (verified 2026-09-13)
+- Latest: `@biomejs/biome@2.5.14` (GritQL engine) (verified 2026-09-26)
 - References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
 
 ## Execute

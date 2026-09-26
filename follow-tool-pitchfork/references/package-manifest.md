@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `pitchfork-cli` |
 | Registry | `crates.io` |
-| Latest Version | `2.25.0` |
+| Latest Version | `2.27.0` |
 | Release Date | `2026-09-11` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `jdx` (Jeff Dickey) |
@@ -33,6 +33,6 @@ mise use -g pitchfork
 ## Notes
 
 - Breaking changes in latest major: `2.x — check release notes when upgrading across minor versions (config keys deprecated: expected_port, auto_bump_port, port_bump_attempts)`
-- Version pinned in SKILL.md: `pitchfork@2.25.0`
+- Version pinned in SKILL.md: `pitchfork@2.27.0`
 - Requires Rust toolchain `>=1.91` if building from source (crate `rust_version`)
 - Source: `https://crates.io/api/v1/crates/pitchfork-cli`

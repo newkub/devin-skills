@@ -10,7 +10,7 @@ brew install usage
 
 ## Version
 
-- Latest: `6.9.0` (verified 2026-09-13)
+- Latest: `6.11.1` (verified 2026-09-26)
 - Repository: https://github.com/jdx/usage
 - Docs: https://usage.jdx.dev/cli/reference/
 

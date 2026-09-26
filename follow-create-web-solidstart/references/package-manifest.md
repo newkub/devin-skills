@@ -32,7 +32,7 @@ bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite
 | `@solidjs/router` | `npm` | `1.0.0` (2026-07-28) | File-based routing (`FileRoutes`) — 1.x stable |
 | `@solidjs/meta` | `npm` | `0.29.4` (2024-05-15) | `MetaProvider`/`Title` — still 0.x, latest published 2024 |
 | `nitro` | `npm` | `3.0.260903-beta` (2026-09-03) | Server engine — `nitro/vite` plugin; npm `latest` dist-tag currently points to a 3.x beta |
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Build tool driving dev server and `vite build` |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Build tool driving dev server and `vite build` |
 
 ## Notes
 

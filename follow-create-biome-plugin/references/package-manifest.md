@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@biomejs/biome` |
 | Registry | `npm` |
-| Latest Version | `2.5.13` |
+| Latest Version | `2.5.14` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `Biome (biomejs)` |
@@ -33,5 +33,5 @@ bun add -D @biomejs/biome
 ## Notes
 
 - Breaking changes in latest major: Biome 2.x renamed config to `biome.jsonc`, added GritQL plugin support (`plugins` array) and `engine biome(1.0)` directive.
-- Version pinned in SKILL.md: `@biomejs/biome@2.5.13` / `@biomejs/js-api@6.0.0`
+- Version pinned in SKILL.md: `@biomejs/biome@2.5.14` / `@biomejs/js-api@6.0.0`
 

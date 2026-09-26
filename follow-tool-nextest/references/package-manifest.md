@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `cargo-nextest` |
 | Registry | `crates.io` |
-| Latest Version | `0.9.144` |
+| Latest Version | `0.9.146` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `nextest-rs` (Rain / Sunshowers team) |
@@ -33,6 +33,6 @@ cargo binstall cargo-nextest --secure
 ## Notes
 
 - Breaking changes in latest major: `0.9.x — pre-1.0; check release notes for config format changes between minor versions`
-- Version pinned in SKILL.md: `cargo-nextest@0.9.144`
+- Version pinned in SKILL.md: `cargo-nextest@0.9.146`
 - Requires Rust toolchain `>=1.91` (crate `rust_version`); doctests unsupported — run `cargo test --doc` separately
 - Source: `https://crates.io/api/v1/crates/cargo-nextest`

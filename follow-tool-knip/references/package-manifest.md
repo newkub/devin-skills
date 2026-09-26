@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `knip` |
 | Registry | `npm` |
-| Latest Version | `6.35.1` |
+| Latest Version | `6.38.0` |
 | Release Date | `2026-09-09` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Lars Kappert (webpro)` |
@@ -33,4 +33,4 @@ bun add -D knip
 ## Notes
 
 - Breaking changes in latest major: `v6 — requires Node ^20.19.0 || >=22.12.0 (or Bun); \`--include-libs\`/\`--isolate-workspaces\` removed (now default), \`classMembers\` issue type removed, \`namespaceMembers\` added`
-- Version pinned in SKILL.md: `6.35.1`
+- Version pinned in SKILL.md: `6.38.0`

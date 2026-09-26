@@ -8,7 +8,7 @@ bun add -D release-it
 
 ## Version
 
-- Latest: 21.0.2
+- Latest: 21.1.0
 - [Package Registry](https://www.npmjs.com/package/release-it)
 - [Repository](https://github.com/release-it/release-it)
 

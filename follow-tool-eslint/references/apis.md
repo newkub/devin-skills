@@ -8,7 +8,7 @@ bun add -D eslint
 
 ## Version
 
-- Latest: 10.10.0
+- Latest: 10.11.0
 - [Package Registry](https://www.npmjs.com/package/eslint)
 - [Repository](https://github.com/eslint/eslint)
 

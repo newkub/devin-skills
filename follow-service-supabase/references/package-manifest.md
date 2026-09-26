@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `supabase` (Supabase CLI) |
 | Registry | `npm` |
-| Latest Version | `2.117.0` |
+| Latest Version | `2.118.0` |
 | Release Date | `2026-09-12` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | Supabase |
@@ -34,4 +34,4 @@ bun add -D supabase
 ## Notes
 
 - Breaking changes in latest major: CLI 2.x line is current; `supabase/config.toml` is the single source of truth
-- Version pinned in SKILL.md: `supabase@2.117.0` (CLI), `@supabase/supabase-js@2.116.0`
+- Version pinned in SKILL.md: `supabase@2.118.0` (CLI), `@supabase/supabase-js@2.116.0`

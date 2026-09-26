@@ -29,9 +29,9 @@ bun add @modelcontextprotocol/sdk
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
 | MCP spec | `system` | `2026-07-28` | Protocol version — stateless core, no initialize handshake / Mcp-Session-Id; Streamable HTTP replaces HTTP+SSE |
-| `agent-browser` | `npm` | `0.37.1` (2026-09-08) | `agent-browser mcp` exposes an MCP server over stdio |
+| `agent-browser` | `npm` | `0.38.1` (2026-09-08) | `agent-browser mcp` exposes an MCP server over stdio |
 
 ## Notes
 
 - Breaking changes in latest major: `spec 2026-07-28 removes initialize/initialized handshake and Mcp-Session-Id; Roots, Sampling, Logging deprecated`
-- Version pinned in SKILL.md: `spec 2026-07-28`, SDK `1.30.0` (verified 2026-09-12) — matches latest
+- Version pinned in SKILL.md: `spec 2026-07-28`, SDK `1.30.0` (verified 2026-09-26) — matches latest

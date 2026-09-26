@@ -28,7 +28,7 @@ bun add -D vite
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `rolldown` | `npm` | `1.2.8` (2026-09-09) | Default bundler inside Vite 8.x |
+| `rolldown` | `npm` | `1.2.11` (2026-09-09) | Default bundler inside Vite 8.x |
 | `typescript` | `npm` | `7.0.2` (2026-07-08) | Type-checking for plugin sources |
 
 ## Notes

@@ -29,8 +29,8 @@ bun add -D oxlint   # add oxlint-tsgolint for type-aware rules
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
 | `oxlint-tsgolint` | `npm` | `7.0.2001` | Optional type-aware rules for oxlint |
-| `@biomejs/biome` | `npm` | `2.5.13` (2026-09-10) | TS/JS linter + formatter — see `/follow-tool-biome` |
-| `eslint` | `npm` | `10.10.0` (2026-09-04) | TS/JS linter — see `/follow-tool-eslint` |
+| `@biomejs/biome` | `npm` | `2.5.14` (2026-09-10) | TS/JS linter + formatter — see `/follow-tool-biome` |
+| `eslint` | `npm` | `10.11.0` (2026-09-04) | TS/JS linter — see `/follow-tool-eslint` |
 | `ruff` | `PyPI` | `0.16.7` (2026-09-10) | Python linter (`pipx install ruff`) |
 | `golangci-lint` | `GitHub Releases` | `2.13.2` (2026-08-27) | Go linter meta-runner (`mise use -g golangci-lint`) — GPL-3.0 |
 | `clippy` | `rustup component` | `—` | Rust linter (`rustup component add clippy`) |
@@ -38,5 +38,5 @@ bun add -D oxlint   # add oxlint-tsgolint for type-aware rules
 ## Notes
 
 - Breaking changes in latest major: `oxlint 1.x stable — check https://github.com/oxc-project/oxc/releases per minor`
-- Version pinned in SKILL.md: `oxlint@1.83.0`, `biome@2.5.13`, `eslint@10.10.0`, `ruff@0.16.7`, `golangci-lint@2.13.2`
+- Version pinned in SKILL.md: `oxlint@1.85.0`, `biome@2.5.14`, `eslint@10.11.0`, `ruff@0.16.7`, `golangci-lint@2.13.2`
 - Skill is linter-agnostic — select per tech stack (step 1)

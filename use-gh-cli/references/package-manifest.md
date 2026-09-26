@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `gh` (GitHub CLI) |
 | Registry | `GitHub Releases` |
-| Latest Version | `2.100.0` |
+| Latest Version | `2.101.0` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `cli` (GitHub) |
@@ -34,5 +34,5 @@ Or `mise use -g github-cli` / `brew install gh` / `scoop install gh` per OS.
 
 ## Notes
 
-- Breaking changes in latest major: `2.100.0 adds gh config set api_host gateway routing (experimental); >= 2.98.0 required for gh codespace ports forward security fix GHSA-vfhh-p7hm-pxfh, gh pr checkout --worktree, and semantic issue search`
-- Version pinned in SKILL.md: `2.100.0 (verified 2026-09-12)` — matches latest
+- Breaking changes in latest major: `2.101.0 adds gh config set api_host gateway routing (experimental); >= 2.98.0 required for gh codespace ports forward security fix GHSA-vfhh-p7hm-pxfh, gh pr checkout --worktree, and semantic issue search`
+- Version pinned in SKILL.md: `2.101.0 (verified 2026-09-26)` — matches latest

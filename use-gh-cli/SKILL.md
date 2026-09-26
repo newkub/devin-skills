@@ -22,7 +22,7 @@ related:
 
 > Goal: `gh` พร้อมใช้และ authenticated
 
-1. `gh --version` ตรวจว่าติดตั้ง — latest `2.100.0 (verified 2026-09-12)`; ถ้าใช้ `gh codespace ports forward` ต้อง >= 2.98.0 (security fix GHSA-vfhh-p7hm-pxfh)
+1. `gh --version` ตรวจว่าติดตั้ง — latest `2.101.0 (verified 2026-09-26)`; ถ้าใช้ `gh codespace ports forward` ต้อง >= 2.98.0 (security fix GHSA-vfhh-p7hm-pxfh)
 2. `gh auth status` ตรวจ auth — ถ้าไม่ได้ login → แจ้ง user ให้ `gh auth login` (ห้าม login แทน user)
 3. `gh repo view --json nameWithOwner` ตรวจ repo context ปัจจุบัน
 
@@ -66,7 +66,7 @@ gh api graphql -f query='...'
 gh <cmd> --json <fields> --jq '<expression>'     # filter ด้วย jq syntax
 gh search issues "..." [--search-type keyword|semantic|hybrid]   # semantic search >= 2.98.0
 gh search prs "..." / gh search code "..."
-gh config set api_host <host> --host github.com    # route API traffic ผ่าน gateway (experimental, 2.100.0)
+gh config set api_host <host> --host github.com    # route API traffic ผ่าน gateway (experimental, 2.101.0)
 ```
 
 ### 5. Report

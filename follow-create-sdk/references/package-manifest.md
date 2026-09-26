@@ -29,7 +29,7 @@ bun add -D tsdown typescript
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
 | `typescript` | `npm` | `7.0.2` (2026-07-08) | Native TS compiler (tsgo); tsdown supports `^5 \|\| ^6 \|\| ^7` |
-| `rolldown` | `npm` | `1.2.8` (2026-09-09) | Bundler engine inside tsdown |
+| `rolldown` | `npm` | `1.2.11` (2026-09-09) | Bundler engine inside tsdown |
 
 ## Notes
 

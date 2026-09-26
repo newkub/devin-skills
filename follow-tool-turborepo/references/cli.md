@@ -8,7 +8,7 @@ bun add -D turbo
 
 ## Version
 
-- Latest: `2.10.12` (verified 2026-09-13)
+- Latest: `2.11.4` (verified 2026-09-26)
 - Repository: https://github.com/vercel/turborepo
 - Docs: https://turborepo.dev/docs/reference
 

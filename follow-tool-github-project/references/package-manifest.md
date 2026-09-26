@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `gh` (GitHub CLI — `gh project` subcommands) |
 | Registry | `GitHub Releases` (`cli/cli`) |
-| Latest Version | `2.100.0` |
+| Latest Version | `2.101.0` |
 | Release Date | `2026-09-03` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `GitHub, Inc.` |
@@ -33,4 +33,4 @@ mise use -g gh   # or: winget install --id GitHub.cli / brew install gh / apt in
 ## Notes
 
 - Breaking changes in latest major: `none observed`
-- Version pinned in SKILL.md: `gh@2.100.0`
+- Version pinned in SKILL.md: `gh@2.101.0`

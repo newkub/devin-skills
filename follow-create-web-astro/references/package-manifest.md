@@ -28,7 +28,7 @@ bunx create-astro@latest
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Build tool bundled by Astro 7 (`vite@^8`) |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Build tool bundled by Astro 7 (`vite@^8`) |
 | `create-astro` | `npm` | `unknown` | Scaffolding CLI invoked via `bunx` |
 | `@astrojs/check` | `npm` | `unknown` | Type checking (`astro check`) |
 | `zod` | `npm` | `unknown` | Schema validation for Content Layer and Actions (Zod 4 in Astro 6+) |

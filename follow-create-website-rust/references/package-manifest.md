@@ -32,7 +32,7 @@ cargo install wasm-pack
 | `serde-wasm-bindgen` | `crates.io` | `0.6.5` (2024-02-27) | Serde-based object marshalling (`RReverser/serde-wasm-bindgen`, MIT) |
 | Rust toolchain | `GitHub Releases` | `1.98.1` (2026-09-03) | `rustc`/`cargo` — `rust-lang/rust`; add `wasm32-unknown-unknown` target |
 | `vite-plugin-wasm-pack` | `npm` | `0.1.12` (2022-05-20) | Vite plugin for `wasm-pack` crates — stale but still the standard option |
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Frontend build tool |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Frontend build tool |
 | `solid-js` | `npm` | `1.9.15` (2026-08-17) | Frontend framework (`vite --template solid-ts`) |
 | `vite-plugin-wasm` | `npm` | `unknown` | Alternative when importing `.wasm` directly (pair with `vite-plugin-top-level-await`) |
 

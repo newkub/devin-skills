@@ -32,7 +32,7 @@ Bun is the default script runtime for this skill (`.ts` scripts via `bun run` / 
 |---------|----------|--------|-------|
 | `eta` | `npm` | `4.6.0` (2026-04-25) | Template/render engine via `https://esm.sh/eta@4.6.0` |
 | `oxc-parser` | `npm` | `0.149.0` (2026-09-07) | Fast JS/TS AST parsing — via esm.sh or `bun add oxc-parser` |
-| `rolldown` | `npm` | `1.2.8` (2026-09-09) | Fast bundler built on `oxc` — see `/follow-tool-rolldown` |
+| `rolldown` | `npm` | `1.2.11` (2026-09-09) | Fast bundler built on `oxc` — see `/follow-tool-rolldown` |
 | `nu` | `crates.io` | `0.115.1` (2026-08-23) | Shell option for `.nu` scripts (see `use-nu-shell`) |
 | `pwsh` | `GitHub Releases` | `7.6.6` (2026-09-08) | Shell option for `.ps1` scripts (see `use-pwsh-shell`) |
 | `@ast-grep/cli` | `npm` | `0.45.3` (2026-08-31) | AST-based search/transform option (see `use-astgrep`) |
@@ -40,4 +40,4 @@ Bun is the default script runtime for this skill (`.ts` scripts via `bun run` / 
 ## Notes
 
 - Breaking changes in latest major: `none`
-- Version pinned in SKILL.md: `eta 4.6.0`, `oxc-parser 0.149.0`, `rolldown 1.2.8` (verified 2026-09-12) — all match latest; `bun` itself is not version-pinned in this SKILL.md
+- Version pinned in SKILL.md: `eta 4.6.0`, `oxc-parser 0.149.0`, `rolldown 1.2.11` (verified 2026-09-26) — all match latest; `bun` itself is not version-pinned in this SKILL.md

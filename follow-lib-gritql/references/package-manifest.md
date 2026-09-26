@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `@biomejs/biome` (bundles the GritQL engine used by `biome search` and `.grit` plugins) |
 | Registry | `npm` |
-| Latest Version | `2.5.13` |
+| Latest Version | `2.5.14` |
 | Release Date | `2026-09-10` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Emanuele Stoppa (Biome)` |
@@ -33,4 +33,4 @@ bun add -D @biomejs/biome
 ## Notes
 
 - Breaking changes in latest major: `Biome v2 changed config format (biome.json v2 schema), plugin API, and assist actions vs v1`
-- Version pinned in SKILL.md: `@biomejs/biome@2.5.13` (as GritQL engine)
+- Version pinned in SKILL.md: `@biomejs/biome@2.5.14` (as GritQL engine)

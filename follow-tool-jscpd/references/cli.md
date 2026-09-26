@@ -8,7 +8,7 @@ bun add -D jscpd # or: npm i -g jscpd / cargo install jscpd / brew install jscpd
 
 ## Version
 
-- Latest: `5.2.0` (verified 2026-09-13) — Rust engine, self-contained binary (no Node.js at runtime); `cpd` = alias command
+- Latest: `5.3.2` (verified 2026-09-26) — Rust engine, self-contained binary (no Node.js at runtime); `cpd` = alias command
 - Repository: https://github.com/kucherenko/jscpd
 - Docs: https://jscpd.dev/getting-started/configuration
 

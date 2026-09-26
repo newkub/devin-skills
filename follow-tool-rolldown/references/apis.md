@@ -8,7 +8,7 @@ bun add -D rolldown
 
 ## Version
 
-- Latest: 1.2.8
+- Latest: 1.2.11
 - [Package Registry](https://www.npmjs.com/package/rolldown)
 - [Repository](https://github.com/rolldown-rs/rolldown)
 

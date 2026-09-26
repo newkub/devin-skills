@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `eslint` |
 | Registry | `npm` |
-| Latest Version | `10.10.0` |
+| Latest Version | `10.11.0` |
 | Release Date | `2026-09-04` |
 | Verified | `2026-09-12` (date this file was last checked) |
 | Author / Publisher | `OpenJS Foundation / ESLint team` |
@@ -28,10 +28,10 @@ bun add -D eslint typescript-eslint
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `typescript-eslint` | `npm` | `8.70.0` (2026-09-07) | TS parser/plugin meta-package for typed rules |
+| `typescript-eslint` | `npm` | `8.70.1` (2026-09-07) | TS parser/plugin meta-package for typed rules |
 
 ## Notes
 
 - Breaking changes in latest major: `ESLint 10 — flat config only (legacy .eslintrc removed), Node.js >= 20.19, deprecated context/SourceCode members removed, fixer text must be string, stricter RuleTester (valid cases must not set errors/output)`
-- Version pinned in SKILL.md: `eslint@10.10.0` / `typescript-eslint@8.70.0` (verified 2026-09-12)
+- Version pinned in SKILL.md: `eslint@10.11.0` / `typescript-eslint@8.70.1` (verified 2026-09-26)
 

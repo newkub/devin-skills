@@ -23,7 +23,7 @@ winget install jdx.mise
 
 ## Version
 
-- Latest: `2026.9.6` (verified 2026-09-13)
+- Latest: `2026.9.14` (verified 2026-09-26)
 - License: MIT
 - Repository: https://github.com/jdx/mise
 - Docs: https://mise.jdx.dev

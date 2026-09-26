@@ -8,7 +8,7 @@ bun add -D unlighthouse
 
 ## Version
 
-- Latest: 0.18.0
+- Latest: 0.18.1
 - [Package Registry](https://www.npmjs.com/package/unlighthouse)
 - [Repository](https://github.com/harlan-zw/unlighthouse)
 

@@ -8,7 +8,7 @@ bun add -D knip
 
 ## Version
 
-- Latest: `6.35.1` (verified 2026-09-13)
+- Latest: `6.38.0` (verified 2026-09-26)
 - Repository: https://github.com/webpro-nl/knip
 - Docs: https://knip.dev/reference/cli
 

@@ -8,7 +8,7 @@ bun add -D unlighthouse
 
 ## Version
 
-- Latest: `0.18.0` (verified 2026-09-13) — requires Node.js >= 22.18.0
+- Latest: `0.18.1` (verified 2026-09-26) — requires Node.js >= 22.18.0
 - Repository: https://github.com/harlan-zw/unlighthouse
 - Docs: https://unlighthouse.dev/api/cli
 

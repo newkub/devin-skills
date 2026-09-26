@@ -24,7 +24,7 @@ related:
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-build-packages) — สำหรับ package build pipeline ดู `references/build-packages.md`
 
 - Boundary: ใช้ Turborepo สำหรับ JS/TS monorepo task orchestration; ถ้า project ใช้ Moon ให้ใช้ `/follow-tool-moonrepo` แทน; สำหรับ dependency updates ข้าม workspace ใช้ `/follow-tool-taze`
-- Latest: `turbo@2.10.13` (verified 2026-09-16)
+- Latest: `turbo@2.11.4` (verified 2026-09-26)
 
 ## Execute
 

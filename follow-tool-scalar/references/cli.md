@@ -8,7 +8,7 @@ bun add -D @scalar/cli
 
 ## Version
 
-- Latest: `@scalar/cli@2.1.0` (verified 2026-09-13)
+- Latest: `@scalar/cli@2.5.2` (verified 2026-09-26)
 - Repository: https://github.com/scalar/scalar
 - Docs: https://guides.scalar.com
 

@@ -31,7 +31,7 @@ bunx sv create <project-name>
 | `@sveltejs/kit` | `npm` | `2.70.3` (2026-08-18) | Fullstack meta-framework — see `references/sveltekit-ssr.md` |
 | `@sveltejs/vite-plugin-svelte` | `npm` | `7.3.0` (2026-08-08) | Vite integration for `.svelte` compilation |
 | `sv` | `npm` | `0.17.0` (2026-07-31) | Official CLI — `sv create`, `sv migrate svelte-5` |
-| `vite` | `npm` | `8.3.0` (2026-09-10) | Build tool |
+| `vite` | `npm` | `8.3.1` (2026-09-10) | Build tool |
 | `svelte-check` | `npm` | `4.7.6+` | Type checking — needed for TypeScript 6.0 support |
 | `svelte2tsx` | `npm` | `0.7.61+` | TS transform backing svelte-check |
 

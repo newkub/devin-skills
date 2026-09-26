@@ -30,10 +30,10 @@ bun add vue && bun add vue-router pinia
 |---------|----------|--------|-------|
 | `vue-router` | `npm` | `5.3.1` | Official router; released 2026-09-02 |
 | `pinia` | `npm` | `4.0.3` | Official state management; released 2026-08-12 |
-| `vite` | `npm` | `8.3.0` | Build tool (dev dependency); released 2026-09-10 |
+| `vite` | `npm` | `8.3.1` | Build tool (dev dependency); released 2026-09-10 |
 | `nuxt` | `npm` | `4.5.2` | Full-stack framework option; released 2026-08-05 |
 
 ## Notes
 
 - Breaking changes in latest major: Vue 3.6 still in RC (`3.6.0-rc.x`) — adds Vapor Mode; not stable for production
-- Version pinned in SKILL.md: `vue@3.5.42` / `vue-router@5.3.1` / `pinia@4.0.3` / `vite@8.3.0` / `nuxt@4.5.2`
+- Version pinned in SKILL.md: `vue@3.5.42` / `vue-router@5.3.1` / `pinia@4.0.3` / `vite@8.3.1` / `nuxt@4.5.2`

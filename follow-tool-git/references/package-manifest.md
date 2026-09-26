@@ -28,12 +28,12 @@ mise use -g git   # or: winget install Git.Git / brew install git / apt install 
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `simple-git` | `npm` | `3.36.0` (2026-04-12) | JS/TS programmatic git API |
+| `simple-git` | `npm` | `4.0.1` (2026-04-12) | JS/TS programmatic git API |
 | `isomorphic-git` | `npm` | `1.42.2` (2026-09-11) | Pure-JS git for browser/Node |
-| `gh` | `GitHub Releases` | `2.100.0` (2026-09-03) | GitHub CLI companion (`cli/cli`) |
+| `gh` | `GitHub Releases` | `2.101.0` (2026-09-03) | GitHub CLI companion (`cli/cli`) |
 
 ## Notes
 
 - Breaking changes in latest major: `none observed`
-- Version pinned in SKILL.md: `simple-git@3.36.0` / `isomorphic-git@1.42.2` / gh CLI `2.100.0`
+- Version pinned in SKILL.md: `simple-git@4.0.1` / `isomorphic-git@1.42.2` / gh CLI `2.101.0`
 - `git/git` publishes tags, not GitHub Releases — `git-for-windows/git` releases used as canonical latest-version source

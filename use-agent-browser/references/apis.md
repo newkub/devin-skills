@@ -10,7 +10,7 @@ npm install --save-dev agent-browser
 
 ## Version
 
-- Latest: 0.37.1 (verified 2026-09-12)
+- Latest: 0.38.1 (verified 2026-09-26)
 - Engines: Node >= 24
 - [Package Registry](https://www.npmjs.com/package/agent-browser)
 - [Repository](https://github.com/vercel-labs/agent-browser)

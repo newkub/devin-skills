@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `drizzle-kit` |
 | Registry | `npm` |
-| Latest Version | `0.31.10` |
+| Latest Version | `0.31.11` |
 | Release Date | `2026-03-17` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Drizzle Team` |
@@ -28,10 +28,10 @@ bun add -D drizzle-kit
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `drizzle-orm` | `npm` | `0.45.2` (2026-03-27) | Runtime ORM — pair with drizzle-kit |
+| `drizzle-orm` | `npm` | `0.45.3` (2026-03-27) | Runtime ORM — pair with drizzle-kit |
 | `drizzle-kit@beta` | `npm` | `1.0.0-rc.x` | Beta/rc channel — breaking changes (casing API, RQB v1 `db._query` removed) |
 
 ## Notes
 
 - Breaking changes in latest major: `v1.0.0 in beta/rc — casing API changes, removes RQB v1 \`db._query\`; production stays on stable 0.31.x`
-- Version pinned in SKILL.md: `0.31.10` (pair `drizzle-orm@0.45.2`)
+- Version pinned in SKILL.md: `0.31.11` (pair `drizzle-orm@0.45.3`)

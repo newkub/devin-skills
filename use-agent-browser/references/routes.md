@@ -1,7 +1,7 @@
 # Follow Tool Agent Browser Route Map
 
 - Website: <https://agent-browser.dev>
-- Refreshed: 2026-09-12 (v0.37.1 docs)
+- Refreshed: 2026-09-12 (v0.38.1 docs)
 
 ## Top routes by section
 

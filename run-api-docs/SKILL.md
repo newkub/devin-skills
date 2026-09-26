@@ -38,7 +38,7 @@ Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve
 
 1. ถ้า project มี `@scalar/cli` ใน devDependencies → ใช้ `bunx scalar`
 2. ถ้าไม่มี → `bun add -D @scalar/cli` หรือใช้ `bunx @scalar/cli` โดยตรง (requires Node >=24)
-3. Latest: `@scalar/cli@2.1.0` (verified 2026-09-13)
+3. Latest: `@scalar/cli@2.5.2` (verified 2026-09-26)
 4. Verify ด้วย `scalar --version`
 
 ### 3. Start Docs Server

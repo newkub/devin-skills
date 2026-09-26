@@ -18,7 +18,7 @@ npm install @capacitor/android @capacitor/ios
 
 ## Version
 
-- Latest: 8.5.1 (`@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` share versions)
+- Latest: 8.5.2 (`@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` share versions)
 - [Package Registry](https://www.npmjs.com/package/@capacitor/core)
 - [Repository](https://github.com/ionic-team/capacitor)
 

@@ -8,7 +8,7 @@
 |-------|-------|
 | Package | `drizzle-orm` |
 | Registry | `npm` |
-| Latest Version | `0.45.2` |
+| Latest Version | `0.45.3` |
 | Release Date | `2026-03-27` |
 | Verified | `2026-09-13` (date this file was last checked) |
 | Author / Publisher | `Drizzle Team` |
@@ -28,10 +28,10 @@ bun add drizzle-orm
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `drizzle-kit` | `npm` | `0.31.10` | Dev CLI — `generate`, `migrate`, `push`, `pull`, `check`, `studio` (`bun add -D drizzle-kit`) |
+| `drizzle-kit` | `npm` | `0.31.11` | Dev CLI — `generate`, `migrate`, `push`, `pull`, `check`, `studio` (`bun add -D drizzle-kit`) |
 | `drizzle-orm@rc` | `npm` | `1.0.0-rc.4` | v1.0 RC — `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, migration folder v3 |
 
 ## Notes
 
 - Breaking changes in latest major: `v1.0 RC renames relations()/getTableColumns, drops --strict, new migration folder format`
-- Version pinned in SKILL.md: `drizzle-orm@0.45.2` + `drizzle-kit@0.31.10`
+- Version pinned in SKILL.md: `drizzle-orm@0.45.3` + `drizzle-kit@0.31.11`

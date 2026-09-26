@@ -11,7 +11,7 @@ scoop install mise
 
 ## Version
 
-- Latest: `2026.9.6` (verified 2026-09-13)
+- Latest: `2026.9.14` (verified 2026-09-26)
 - [Registry](https://mise.jdx.dev) — npm package `mise` ไม่ใช่ตัวจริง
 - [Repository](https://github.com/jdx/mise)
 

@@ -33,7 +33,7 @@ related:
 
 > Goal: ติดตั้ง Wrangler CLI และเชื่อมต่อกับ Cloudflare account
 
-Latest: `wrangler@4.137.0`, `@cloudflare/workers-types@5.20260924.1` (verified 2026-09-24)
+Latest: `wrangler@4.141.0`, `@cloudflare/workers-types@5.20260926.1` (verified 2026-09-26)
 
 1. ติดตั้ง Wrangler ด้วย `bun add -D wrangler`
 2. ตรวจสอบ version ด้วย `wrangler --version` (ต้อง >= 4.0)

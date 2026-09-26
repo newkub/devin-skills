@@ -21,7 +21,7 @@ related:
 - ใช้ standalone `rolldown` เมื่อ bundle นอก Vite (เช่น libraries, custom toolchain); ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ไปที่ `follow-tool-vite`
 - ใช้ `follow-tool-tsdown` สำหรับ library builds ทีต้องการ zero-config บน Rolldown (dts, dual format) แทนเขียน config เอง
 
-- Latest: `rolldown@1.2.8` (verified 2026-09-13) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 || >=22.12.0`
+- Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 || >=22.12.0`
 
 ## Execute
 

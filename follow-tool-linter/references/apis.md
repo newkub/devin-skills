@@ -6,9 +6,9 @@ Skill นี้เป็น generic linter guide — ไม่มี package เ
 
 ```sh
 # TypeScript/JavaScript (เลือกตัวเดียว)
-bun add -D oxlint               # 1.82.0 — Rust, fastest
-bun add -D @biomejs/biome       # 2.5.13 — lint+format
-bun add -D eslint               # 10.10.0 — ecosystem กว้างสุด
+bun add -D oxlint               # 1.85.0 — Rust, fastest
+bun add -D @biomejs/biome       # 2.5.14 — lint+format
+bun add -D eslint               # 10.11.0 — ecosystem กว้างสุด
 
 # Rust
 rustup component add clippy
@@ -22,7 +22,7 @@ mise use -g golangci-lint
 
 ## Version
 
-- oxlint `1.82.0`, biome `2.5.13`, eslint `10.10.0`, ruff `0.16.7`, golangci-lint `2.13.2` (verified 2026-09-13)
+- oxlint `1.85.0`, biome `2.5.14`, eslint `10.11.0`, ruff `0.16.7`, golangci-lint `2.13.2` (verified 2026-09-26)
 - [oxlint](https://oxc.rs) / [biome](https://biomejs.dev) / [eslint](https://eslint.org)
 
 ## Dependencies

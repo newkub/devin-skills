@@ -28,7 +28,7 @@ mise use -g actionlint   # then run: actionlint
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `gh` | `GitHub Releases` | `2.100.0` (2026-09-03) | GitHub CLI (`cli/cli`) |
+| `gh` | `GitHub Releases` | `2.101.0` (2026-09-03) | GitHub CLI (`cli/cli`) |
 | `actions/checkout` | `GitHub Releases` | `7.0.1` (2026-07-20) | Use `@v7` in workflows |
 | `actions/setup-node` | `GitHub Releases` | `7.0.0` (2026-07-14) | Use `@v7` in workflows |
 | `actions/cache` | `GitHub Releases` | `6.1.0` (2026-06-26) | Use `@v6` in workflows |
@@ -37,5 +37,5 @@ mise use -g actionlint   # then run: actionlint
 ## Notes
 
 - Breaking changes in latest major: `none observed`
-- Version pinned in SKILL.md: `gh@2.100.0`, `actions/checkout@v7`, `actions/setup-node@v7`, `actions/cache@v6`, `actions/upload-artifact@v7`
+- Version pinned in SKILL.md: `gh@2.101.0`, `actions/checkout@v7`, `actions/setup-node@v7`, `actions/cache@v6`, `actions/upload-artifact@v7`
 - GitHub Actions itself is a hosted platform (no installable package); `actionlint` is the workflow linter this skill relies on

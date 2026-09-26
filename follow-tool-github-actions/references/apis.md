@@ -16,8 +16,8 @@ mise use -g actionlint
 
 ## Version
 
-- Latest: gh CLI `2.100.0` (github.com/cli/cli, verified 2026-09-13) — หมายเหตุ: npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง ติดตั้งผ่าน `mise use -g gh` หรือ https://cli.github.com
-- actionlint `1.7.12` (github.com/rhysd/actionlint, verified 2026-09-13)
+- Latest: gh CLI `2.101.0` (github.com/cli/cli, verified 2026-09-26) — หมายเหตุ: npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง ติดตั้งผ่าน `mise use -g gh` หรือ https://cli.github.com
+- actionlint `1.7.12` (github.com/rhysd/actionlint, verified 2026-09-26)
 - [Repository (gh)](https://github.com/cli/cli)
 - [Repository (actionlint)](https://github.com/rhysd/actionlint)
 

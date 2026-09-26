@@ -7,7 +7,7 @@ Skill นี้เป็น generic formatter guide — ไม่มี package 
 ```sh
 # TypeScript/JavaScript (เลือกตัวเดียว)
 bun add -D prettier        # prettier@3.9.6
-bun add -D @biomejs/biome  # 2.5.13
+bun add -D @biomejs/biome  # 2.5.14
 bun add -D dprint          # 0.57.4
 
 # Rust
@@ -21,7 +21,7 @@ pipx install ruff          # ruff format
 
 ## Version
 
-- prettier `3.9.6`, biome `2.5.13`, dprint `0.57.4` (verified 2026-09-13)
+- prettier `3.9.6`, biome `2.5.14`, dprint `0.57.4` (verified 2026-09-26)
 - [prettier](https://prettier.io) / [biome](https://biomejs.dev) / [dprint](https://dprint.dev)
 
 ## Dependencies

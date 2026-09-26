@@ -27,7 +27,7 @@ related:
 
 > Goal: ติดตั้งและยืนยัน `agent-browser` พร้อมใช้งาน
 
-1. ติดตั้งด้วย `bun add -g agent-browser` หรือ `npm install -g agent-browser` — latest `0.37.1 (verified 2026-09-12)`, requires Node >= 24
+1. ติดตั้งด้วย `bun add -g agent-browser` หรือ `npm install -g agent-browser` — latest `0.38.1 (verified 2026-09-26)`, requires Node >= 24
 2. ดาวน์โหลด Chrome ด้วย `agent-browser install` (first time, `--with-deps` สำหรับ system deps บน Linux)
 3. ตรวจสอบด้วย `agent-browser --help`, `agent-browser --version`, `agent-browser doctor` (`doctor --fix` สำหรับ destructive repairs)
 4. อัปเดตด้วย `agent-browser upgrade`

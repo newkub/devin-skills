@@ -31,7 +31,7 @@ related:
 > Goal: ติดตั้ง Vite และ verify environment
 
 1. ตรวจสอบ Node.js version ไม่ต่ำกว่า 20.19 หรือ 22.12
-2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-13)
+2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.1`, verified 2026-09-26)
 3. ตรวจสอบ version ด้วย `bunx vite --version`
 4. ดูรายละเอียดใน [references/vite.md](references/vite.md)
 

@@ -1,6 +1,6 @@
 # WebMCP, MCP Server And Advanced agent-browser Features
 
-Version: agent-browser 0.37.1 (verified 2026-09-12)
+Version: agent-browser 0.38.1 (verified 2026-09-26)
 
 ## WebMCP (experimental)
 
