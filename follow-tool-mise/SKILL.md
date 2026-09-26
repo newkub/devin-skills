@@ -6,6 +6,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - use-scripts
+  - follow-tool-mr-boxington
 ---
 
 ## Goal
@@ -17,6 +18,7 @@ related:
 ใช้สำหรับ project ที่ต้องการ pin tool versions, load environment variables, และ define tasks ในไฟล์เดียว (`mise.toml`)
 
 - ใช้ skill นี้เมื่อต้องจัดการ dev tool versions/env/tasks — ถ้างานคือ monorepo task orchestration ให้ใช้ `/follow-tool-moonrepo` หรือ `/follow-tool-turborepo` แทน
+- สำหรับ Rust tool option `mr_boxington` (shared Cargo build cache ผ่าน mise ≥2026.9.2) ดู `/follow-tool-mr-boxington`
 - Latest: `mise@2026.9.14` (CalVer, verified 2026-09-26)
 
 ## Execute

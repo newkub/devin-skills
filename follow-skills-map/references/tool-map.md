@@ -79,7 +79,8 @@
 | CI local run | `act` | installed | `/follow-tool-act` |
 | git hooks | `hk` / `lefthook` | installed | `/follow-tool-hk` |
 | clone template | `giget` | installed | `/create-*` |
-| compile cache | `sccache` | installed | Rust builds |
+| compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
+| compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defer ให้ `RUSTC_WRAPPER` ที่ชี้ sccache) |
 | build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-lib-devframe` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
 | OCI image from source | `nixpacks` | installed (scoop) | `/follow-create-docker` |

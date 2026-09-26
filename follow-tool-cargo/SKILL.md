@@ -6,6 +6,7 @@ related:
   - deep-analyze
   - run-verify
   - follow-lang-rust
+  - follow-tool-mr-boxington
 ---
 
 ## Goal
@@ -16,7 +17,7 @@ related:
 
 ใช้สำหรับตั้งค่า Cargo lint rules ใน Rust projects ทั้ง single crate และ workspace (Rust 1.98+)
 
-- Boundary: skill นี้ครอบคลุมเฉพาะ lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — สำหรับ Rust language/idioms ดู `/follow-lang-rust`; สำหรับ verify หลัง config ใช้ `/run-verify`
+- Boundary: skill นี้ครอบคลุมเฉพาะ lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — สำหรับ Rust language/idioms ดู `/follow-lang-rust`; สำหรับ verify หลัง config ใช้ `/run-verify`; สำหรับ Cargo build cache (mbx) ดู `/follow-tool-mr-boxington`
 - Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cargo](references/cargo.md) | [cli](references/cli.md) | [clippy](references/clippy.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-clippy) — สำหรับ Clippy lint rules และ error handling ดู `references/clippy.md`
