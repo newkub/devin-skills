@@ -52,7 +52,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.100) | `/use-gh-cli`, `/create-github-*` |
+| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/use-gh-cli`, `/create-github-*` |
 | git worktrees | `worktrunk` / `git worktree` | installed | `/use-git-worktrees` |
 | TUI git | `lazygit` / `gitui` / `gitu` | installed | interactive |
 | Linear | `linear` CLI | installed | ad-hoc (`/use-gh-cli` สำหรับ GitHub) |
@@ -89,7 +89,7 @@
 |--------|------|---------|-------|
 | browser automation | `agent-browser` | installed | `/use-agent-browser`, `/watch-browser-*` |
 | screenshot web | `agent-browser` | เหมือนข้างบน | `/capture-web` |
-| E2E tests | `playwright` | installed (mise npm:playwright 1.62) | `/deep-test e2e`, `/follow-tool-playwright` |
+| E2E tests | `playwright` | installed (mise npm:playwright 1.63) | `/deep-test e2e`, `/follow-tool-playwright` |
 | CDP/DevTools MCP | `chrome-devtools-mcp` / `crw` | installed | `/use-agent-browser` |
 | web → desktop | `pake` | installed | `/follow-create-*` |
 
