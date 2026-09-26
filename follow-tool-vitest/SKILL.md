@@ -3,6 +3,7 @@ name: follow-tool-vitest
 description: ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ด้วย Vite
 argument-hint: "[scope]"
 related:
+  - improve-test-coverage-to-100
   - follow-tool-vite
   - follow-tool-playwright
   - follow-lib-testing-library

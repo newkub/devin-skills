@@ -3,6 +3,7 @@ name: deep-test
 description: Deep testing — API, CLI, contract, coverage, e2e, integration, mutation, visual domains
 argument-hint: "[domain] [scope]"
 related:
+  - improve-test-coverage-to-100
   - run-test
   - run-test-all
   - deep-validate

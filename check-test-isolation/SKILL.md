@@ -3,6 +3,7 @@ name: check-test-isolation
 description: ตรวจ tests ที่พึ่ง execution order หรือ shared state — flaky by design
 argument-hint: "[test-path]"
 related:
+  - improve-test-coverage-to-100
   - review-test
   - use-astgrep
   - report

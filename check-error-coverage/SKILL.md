@@ -3,6 +3,7 @@ name: check-error-coverage
 description: ตรวจ errors ที่ throw แล้วไม่มี handler จับ และ catch blocks ที่ swallow errors
 argument-hint: "[path]"
 related:
+  - improve-test-coverage-to-100
   - review-stability
   - use-astgrep
   - run-test

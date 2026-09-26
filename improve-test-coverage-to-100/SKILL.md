@@ -6,6 +6,13 @@ related:
   - run-test-coverage
   - update-tests
   - review-test
+  - deep-test
+  - check-test-isolation
+  - check-error-coverage
+  - follow-test
+  - follow-tool-vitest
+  - follow-tool-stryker-mutator
+  - loop-until-complete
   - resolve-errors
   - report
   - ask-me

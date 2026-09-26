@@ -3,6 +3,7 @@ name: review-test
 description: Review test strategy, quality, และผลลัพธ์หลัง run tests พร้อมสรุป action ถัดไป
 argument-hint: "[scope]"
 related:
+  - improve-test-coverage-to-100
   - run-test
   - update-tests
   - follow-test
