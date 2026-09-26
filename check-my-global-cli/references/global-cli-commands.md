@@ -63,6 +63,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `task` (3.53) | `task --list` | task runner |
 | `watchexec` (2.7) | `watchexec -e ts -- cmd` | watch + rerun |
 | `hyperfine` (1.20) | `hyperfine 'a' 'b'` | benchmark commands |
+| `mbx` (1.18) | `mbx build`, `mbx doctor`, `mbx tui` | shared Cargo build cache — worktrees/CI, managed `target/`, scheduler (`mr-boxington` via mise; `cache_dir=D:\.cache\mbx`; shim `~\AppData\Local\mbx\bin`) |
 | `sccache` (0.17) | `RUSTC_WRAPPER=sccache` | compile cache |
 | `bacon` (3.25) | `bacon` | Rust background checker |
 | `cargo-nextest` (0.9.146) | `cargo nextest run` | Rust parallel test runner |
