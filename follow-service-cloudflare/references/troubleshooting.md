@@ -197,5 +197,5 @@ Error: `Durable Object is overloaded`
 
 ## Source
 
-- [Wrangler Troubleshooting](https://developers.cloudflare.com/workers/wrangler/troubleshooting/)
-- [System Requirements](https://developers.cloudflare.com/workers/wrangler/system-requirements/)
+- [Wrangler Troubleshooting](https://developers.cloudflare.com/workers/wrangler/)
+- [System Requirements](https://developers.cloudflare.com/workers/wrangler/install-and-update/)

@@ -84,7 +84,7 @@ Async data fetching (not `createEffect`):
 import { createSignal, createResource } from 'solid-js'
 
 const fetchUser = async (id) => {
-  const response = await fetch(`https://swapi.dev/api/people/${id}/`)
+  const response = await fetch(`https://swapi.info/api/people/${id}/`)
   return response.json()
 }
 

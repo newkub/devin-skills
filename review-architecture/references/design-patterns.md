@@ -23,7 +23,7 @@
 | Resource | Description | Link |
 |----------|-------------|------|
 | Design Patterns Library | Pluralsight course | [pluralsight.com](https://www.pluralsight.com/search?q=design+patterns) |
-| Design Patterns in TypeScript | GitHub repository with examples | [github.com/gothinkster](https://github.com/gothinkster/design-patterns-real-world-examples) |
+| Design Patterns in TypeScript | GitHub repository with examples | [github.com/gothinkster](https://github.com/RefactoringGuru/design-patterns-typescript) |
 
 ## Pattern Categories Summary
 

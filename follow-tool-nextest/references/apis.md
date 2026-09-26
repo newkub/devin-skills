@@ -27,5 +27,5 @@ cargo install cargo-nextest --locked   # or: cargo binstall cargo-nextest --secu
 
 ## Source
 
-- Official docs: https://crates.io/crates/nextest
+- Official docs: https://crates.io/crates/cargo-nextest
 - Description: Stub crate, you likely want cargo-nextest instead

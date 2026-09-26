@@ -91,7 +91,7 @@ export default defineNitroPlugin((nitroApp) => {
 Nitro builds output into a universal `.output` directory deployable to Node.js, Serverless, Workers, or edge platforms.
 
 - Nitro docs: https://nitro.build
-- Nitro API: https://nitro.build/api
+- Nitro API: https://nitro.build/docs/utils
 
 ## File-Based Routing
 

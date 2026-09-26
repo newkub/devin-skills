@@ -15,7 +15,7 @@
 | License | `MIT OR Apache-2.0` |
 | Repository | `https://github.com/DioxusLabs/dioxus` |
 | Website | `https://dioxuslabs.com` |
-| Documentation | `https://dioxuslabs.com/learn` |
+| Documentation | `https://dioxuslabs.com/learn/0.7/` |
 | Releases / Changelog | `https://github.com/DioxusLabs/dioxus/releases` |
 
 ## Install

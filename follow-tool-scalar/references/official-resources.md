@@ -13,7 +13,7 @@
 | Repository | URL | Description |
 |------------|-----|-------------|
 | Main | https://github.com/scalar/scalar | Main monorepo |
-| CLI | https://github.com/scalar/scalar/tree/main/packages/cli | @scalar/cli package |
+| CLI | https://github.com/scalar/cli | @scalar/cli package |
 | API Reference | https://github.com/scalar/scalar/tree/main/packages/api-reference | @scalar/api-reference package |
 
 ## npm Packages
@@ -30,7 +30,7 @@
 | Resource | URL | Description |
 |----------|-----|-------------|
 | Discord | https://discord.gg/scalar | Community Discord |
-| Twitter | https://twitter.com/scalarapi | Official Twitter |
+| Twitter | https://x.com/scalarapi | Official Twitter |
 | GitHub Discussions | https://github.com/scalar/scalar/discussions | GitHub Discussions |
 
 ## Learning Resources
@@ -38,8 +38,8 @@
 | Resource | URL | Description |
 |----------|-----|-------------|
 | GraphQL Guide | https://graphql.org/learn | GraphQL official guide |
-| Apollo Tutorial | https://www.apollographql.com/tutorial | Apollo GraphQL tutorial |
-| GraphQL Schema Design | https://graphql.org/schema | Schema design best practices |
+| Apollo Tutorial | https://www.apollographql.com/tutorials/ | Apollo GraphQL tutorial |
+| GraphQL Schema Design | https://graphql.org/learn/schema/ | Schema design best practices |
 
 ## Related Tools
 

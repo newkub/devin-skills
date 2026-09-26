@@ -41,7 +41,7 @@
 | Lua | https://github.com/lua/lua | Official Lua source |
 | LuaJIT | https://github.com/LuaJIT/LuaJIT | LuaJIT source |
 | LuaRocks | https://github.com/luarocks/luarocks | LuaRocks source |
-| Awesome Lua | https://github.com/LuaDist/awesome | Curated list of Lua resources |
+| Awesome Lua | https://github.com/LewisJEllis/awesome-lua | Curated list of Lua resources |
 
 ## Standards and Specifications
 

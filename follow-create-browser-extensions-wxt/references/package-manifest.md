@@ -15,7 +15,7 @@
 | License | `MIT` |
 | Repository | `https://github.com/wxt-dev/wxt` |
 | Website | `https://wxt.dev` |
-| Documentation | `https://wxt.dev/guide/` |
+| Documentation | `https://wxt.dev/guide/installation` |
 | Releases / Changelog | `https://github.com/wxt-dev/wxt/releases` |
 
 ## Install

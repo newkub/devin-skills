@@ -52,6 +52,6 @@ rustup target add wasm32-unknown-unknown
 ## Source
 
 - Official docs: https://dioxuslabs.com/learn/0.7/
-- CLI guide: https://dioxuslabs.com/learn/0.7/cli/
+- CLI guide: https://dioxuslabs.com/learn/0.7/guides/tools/
 - API docs: https://docs.rs/dioxus/latest/dioxus/
 - Description: Dioxus — Rust framework for building web, desktop, and mobile apps from a single codebase.

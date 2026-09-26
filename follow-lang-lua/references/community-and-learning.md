@@ -5,7 +5,7 @@
 | Website | URL | Description |
 |---------|-----|-------------|
 | Lua Users Wiki | https://lua-users.org/wiki/ | Community wiki ที่รวบรวมข้อมูล |
-| Lua Forum | https://www.lua.org/forum.html | Official forum |
+| Lua Forum | https://www.lua.org/community.html | Official forum |
 | Lua Mailing List | https://www.lua.org/lua-l.html | Mailing list อย่างเป็นทางการ |
 | Stack Overflow - Lua | https://stackoverflow.com/questions/tagged/lua | คำถามและคำตอบเกี่ยวกับ Lua |
 | Reddit - r/lua | https://www.reddit.com/r/lua/ | Subreddit สำหรับ Lua |
@@ -23,7 +23,7 @@
 
 | Website | URL | Description |
 |---------|-----|-------------|
-| Lua Blog | https://www.lua.org/blog.html | Official blog |
+| Lua Blog | https://www.lua.org/community.html | Official blog |
 | Lua Programming | https://notebook.kulchenko.com/ | Blog โดย Paul Kulchenko |
 | The Lua Blog | https://thelua.blog/ | Community blog |
 
@@ -39,7 +39,7 @@
 
 | Event | URL | Description |
 |-------|-----|-------------|
-| Lua Workshop | https://www.lua.org/workshop.html | Annual Lua workshop |
+| Lua Workshop | https://www.lua.org/community.html | Annual Lua workshop |
 | LuaConf | https://luaconf.org/ | Lua conference |
 
 ## Books
@@ -63,7 +63,7 @@
 | Resource | URL | Description |
 |----------|-----|-------------|
 | Lua Cheat Sheet | https://devhints.io/lua | Quick reference |
-| Lua 5.4 Cheat Sheet | https://www.cheatography.com/cheat-sheets/lua-5-4/ | Version-specific cheat sheet |
+| Lua 5.4 Cheat Sheet | https://devhints.io/lua | Version-specific cheat sheet |
 
 ## See Also
 

@@ -8,9 +8,9 @@ Official resources for Raycast extension development
 |----------|-----|
 | Developer Docs | https://developers.raycast.com/ |
 | API Reference | https://developers.raycast.com/api-reference/ |
-| Components | https://developers.raycast.com/api-reference/components |
-| Hooks | https://developers.raycast.com/api-reference/hooks |
-| Actions | https://developers.raycast.com/api-reference/actions |
+| Components | https://developers.raycast.com/api-reference/user-interface |
+| Hooks | https://developers.raycast.com/utilities/react-hooks |
+| Actions | https://developers.raycast.com/api-reference/user-interface/actions |
 | Utilities | https://developers.raycast.com/api-reference/utilities |
 
 ## Getting Started
@@ -18,10 +18,10 @@ Official resources for Raycast extension development
 | Resource | URL |
 |----------|-----|
 | Basics | https://developers.raycast.com/basics/getting-started |
-| Your First Command | https://developers.raycast.com/basics/your-first-command |
-| UI Components | https://developers.raycast.com/basics/ui-components |
-| Building Actions | https://developers.raycast.com/basics/building-actions |
-| Preferences | https://developers.raycast.com/basics/preferences |
+| Your First Command | https://developers.raycast.com/basics/create-your-first-extension |
+| UI Components | https://developers.raycast.com/api-reference/user-interface |
+| Building Actions | https://developers.raycast.com/api-reference/user-interface/actions |
+| Preferences | https://developers.raycast.com/api-reference/preferences |
 
 ## Examples
 
@@ -35,8 +35,8 @@ Official resources for Raycast extension development
 
 | Tool | URL |
 |------|-----|
-| Raycast CLI | https://developers.raycast.com/cli |
-| VS Code Extension | https://developers.raycast.com/vscode |
+| Raycast CLI | https://developers.raycast.com/information/developer-tools/cli |
+| VS Code Extension | https://developers.raycast.com/information/developer-tools/vscode |
 | API Package | https://www.npmjs.com/package/@raycast/api |
 
 ## Publishing
@@ -53,13 +53,13 @@ Official resources for Raycast extension development
 |----------|-----|
 | Discord | https://discord.gg/raycast |
 | Twitter | https://twitter.com/raycastapp |
-| GitHub Discussions | https://github.com/raycast/extensions/discussions |
+| GitHub Discussions | https://github.com/raycast/extensions |
 
 ## TypeScript
 
 | Resource | URL |
 |----------|-----|
-| TypeScript Guide | https://developers.raycast.com/basics/typescript |
+| TypeScript Guide | https://developers.raycast.com/basics/getting-started |
 | React Docs | https://react.dev/ |
 | MDX Docs | https://mdxjs.com/ |
 

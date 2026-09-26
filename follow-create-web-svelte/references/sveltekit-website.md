@@ -16,7 +16,7 @@
 - [SvelteKit Docs](https://svelte.dev/docs/kit) - Official documentation
 - [Svelte Tutorial](https://svelte.dev/tutorial) - Interactive tutorial
 - [Svelte REPL](https://svelte.dev/repl) - Try Svelte online
-- [SvelteKit Examples](https://github.com/sveltejs/kit/tree/main/examples) - Example projects
+- [SvelteKit Examples](https://github.com/sveltejs/kit) - Example projects
 
 ## Adapters
 
@@ -27,7 +27,7 @@
 | Static | `@sveltejs/adapter-static` | [Link](https://kit.svelte.dev/docs/adapter-static) |
 | Vercel | `@sveltejs/adapter-vercel` | [Link](https://kit.svelte.dev/docs/adapter-vercel) |
 | Cloudflare | `@sveltejs/adapter-cloudflare` | [Link](https://kit.svelte.dev/docs/adapter-cloudflare) |
-| Deno | `@sveltejs/adapter-deno` | [Link](https://github.com/YanDge/deno-sveltekit-adapter) |
+| Deno | `@sveltejs/adapter-deno` | [Link](https://www.npmjs.com/package/svelte-adapter-deno) |
 | Netlify | `@sveltejs/adapter-netlify` | [Link](https://kit.svelte.dev/docs/adapter-netlify) |
 
 ## Related Libraries

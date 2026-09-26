@@ -150,4 +150,4 @@ wrangler deploy
 - [Get started](https://developers.cloudflare.com/workers/vite-plugin/get-started/)
 - [API reference](https://developers.cloudflare.com/workers/vite-plugin/reference/api/)
 - [@cloudflare/vite-plugin on npm](https://www.npmjs.com/package/@cloudflare/vite-plugin)
-- [Bun package registry](https://bun.sh/docs/install)
+- [Bun package registry](https://bun.com/docs/installation)

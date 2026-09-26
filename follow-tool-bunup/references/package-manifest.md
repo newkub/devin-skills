@@ -15,7 +15,7 @@
 | License | `MIT` |
 | Repository | `https://github.com/bunup/bunup` |
 | Website | `https://bunup.dev` |
-| Documentation | `https://bunup.dev/docs` |
+| Documentation | `https://bunup.dev/` |
 | Releases / Changelog | `https://github.com/bunup/bunup/releases` |
 
 ## Install

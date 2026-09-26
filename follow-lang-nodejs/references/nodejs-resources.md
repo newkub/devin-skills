@@ -17,18 +17,18 @@
 | Getting Started | https://nodejs.org/learn | Learn Node.js |
 | API Documentation | https://nodejs.org/api | API reference |
 | ES Modules | https://nodejs.org/api/esm.html | ES Modules guide |
-| Security | https://nodejs.org/en/docs/guides/security | Security best practices |
-| Performance | https://nodejs.org/en/docs/guides/simple-profiling | Performance tips |
+| Security | https://nodejs.org/learn/getting-started/security-best-practices | Security best practices |
+| Performance | https://nodejs.org/learn/getting-started/profiling | Performance tips |
 
 ## Guides
 
 | Guide | URL | Description |
 |-------|-----|-------------|
 | How to Install | https://nodejs.org/en/download/package-manager | Installation guides |
-| Backporting | https://nodejs.org/en/community/contributing/pull-requests | Backporting process |
+| Backporting | https://github.com/nodejs/node/blob/main/CONTRIBUTING.md | Backporting process |
 | Building from Source | https://github.com/nodejs/node/blob/main/BUILDING.md | Build from source |
-| Testing | https://github.com/nodejs/node/blob/main/doc/guides/testing.md | Testing guide |
-| Debugging | https://nodejs.org/en/docs/guides/debugging-getting-started | Debugging guide |
+| Testing | https://nodejs.org/api/test.html | Testing guide |
+| Debugging | https://nodejs.org/learn/getting-started/debugging | Debugging guide |
 
 ## API Reference
 
@@ -48,7 +48,7 @@
 | npm | https://www.npmjs.com | Package registry |
 | pnpm | https://pnpm.io | Fast, disk-efficient package manager |
 | yarn | https://yarnpkg.com | Alternative package manager |
-| npx | https://nodejs.org/api/npx.html | Package executor |
+| npx | https://docs.npmjs.com/cli/v11/commands/npx | Package executor |
 | Core Modules | https://nodejs.org/api | Built-in modules |
 
 ## Learning Resources
@@ -56,7 +56,7 @@
 | Resource | URL | Description |
 |----------|-----|-------------|
 | Learn Node.js | https://nodejs.org/learn | Official tutorials |
-| School of Node | https://nodejs.org/en/learn/modules/the-nodejs-runtime | Learning modules |
+| School of Node | https://nodejs.org/learn/getting-started/introduction-to-nodejs | Learning modules |
 | Best Practices | https://github.com/goldbergyoni/nodebestpractices | Best practices |
 | Node Patterns | https://github.com/i0natan/nodebestpractices | Design patterns |
 
@@ -64,7 +64,7 @@
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| GitHub Discussions | https://github.com/nodejs/node/discussions | Discussions |
+| GitHub Discussions | https://github.com/nodejs/node/issues | Discussions |
 | GitHub Issues | https://github.com/nodejs/node/issues | Bug reports |
 | Stack Overflow | https://stackoverflow.com/questions/tagged/node.js | Q&A |
 | Reddit | https://www.reddit.com/r/node | Community forum |

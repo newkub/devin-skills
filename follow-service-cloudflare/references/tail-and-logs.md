@@ -111,5 +111,5 @@ npx wrangler tail --status error --format json | jq -c '{
 
 ## Source
 
-- [wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/tail/)
+- [wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
 - [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/)

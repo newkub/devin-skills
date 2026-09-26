@@ -14,8 +14,8 @@
 
 | Name | URL | Description |
 |------|-----|-------------|
-| Getting Started | https://esm.sh/docs/getting-started | วิธีเริ่มต้นใช้งาน |
-| API Reference | https://esm.sh/docs/api | เอกสาร API |
-| Configuration | https://esm.sh/docs/config | ตัวเลือกการตั้งค่า |
-| Features | https://esm.sh/docs/features | คุณสมบัติต่างๆ |
-| Performance | https://esm.sh/docs/performance | ข้อมูลประสิทธิภาพ |
+| Getting Started | https://esm.sh/ | วิธีเริ่มต้นใช้งาน |
+| API Reference | https://esm.sh/ | เอกสาร API |
+| Configuration | https://esm.sh/ | ตัวเลือกการตั้งค่า |
+| Features | https://esm.sh/ | คุณสมบัติต่างๆ |
+| Performance | https://esm.sh/ | ข้อมูลประสิทธิภาพ |

@@ -31,7 +31,7 @@ Official links และ resources สำหรับ Supabase
 | Repository | https://github.com/supabase/supabase |
 | CLI | https://github.com/supabase/cli |
 | Client JS | https://github.com/supabase/supabase-js |
-| Dashboard | https://github.com/supabase/dashboard |
+| Dashboard | https://github.com/supabase/supabase |
 
 ## Community
 

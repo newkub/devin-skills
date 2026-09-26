@@ -76,7 +76,7 @@ Programmatic API (`@opentelemetry/api` + `@opentelemetry/sdk-node`):
 ## Source
 
 - SigNoz Node.js instrumentation: https://signoz.io/docs/instrumentation/opentelemetry-nodejs/
-- SigNoz Bun: https://signoz.io/docs/instrumentation/opentelemetry-bun/
+- SigNoz Bun: https://signoz.io/docs/instrumentation/opentelemetry-nodejs/
 - Self-hosted install: https://signoz.io/docs/install/docker/
 - OpenTelemetry JS docs: https://opentelemetry.io/docs/languages/js/
 - OTel env var spec: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/

@@ -13,7 +13,7 @@
 
 - [Playground](https://arktype.io/playground) - Try ArkType online
 - [GitHub Repository](https://github.com/arktypeio/arktype) - Source code
-- [Changelog](https://arktype.io/changelog) - Version history
+- [Changelog](https://github.com/arktypeio/arktype/releases) - Version history
 
 ## Community
 

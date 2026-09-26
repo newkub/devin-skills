@@ -22,17 +22,17 @@
 ## Quick Links
 
 ### Getting Started
-- [Installation](https://www.remotion.dev/docs/installation)
-- [Configuration](https://www.remotion.dev/docs/configuration)
-- [Your First Video](https://www.remotion.dev/docs/your-first-video)
+- [Installation](https://www.remotion.dev/docs/)
+- [Configuration](https://www.remotion.dev/docs/config)
+- [Your First Video](https://www.remotion.dev/docs/)
 
 ### Key Topics
 - [Composition](https://www.remotion.dev/docs/composition)
 - [useCurrentFrame](https://www.remotion.dev/docs/use-current-frame)
 - [interpolate](https://www.remotion.dev/docs/interpolate)
-- [Rendering](https://www.remotion.dev/docs/rendering)
+- [Rendering](https://www.remotion.dev/docs/render)
 
 ### Advanced
 - [Lambda Deployment](https://www.remotion.dev/docs/lambda)
-- [Chrome Flags](https://www.remotion.dev/docs/chrome-flags)
+- [Chrome Flags](https://www.remotion.dev/docs/)
 - [Server-Side Rendering](https://www.remotion.dev/docs/ssr)

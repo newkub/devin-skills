@@ -128,4 +128,4 @@ Config.setEnvironmentVariable('MY_VAR', 'value');
 
 ---
 
-For full configuration options, see [Remotion Configuration Documentation](https://www.remotion.dev/docs/configuration).
+For full configuration options, see [Remotion Configuration Documentation](https://www.remotion.dev/docs/config).

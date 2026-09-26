@@ -26,7 +26,7 @@
 | Resource | URL | Description |
 |----------|-----|-------------|
 | GitHub Issues | https://github.com/carere/zaidan/issues | Bug reports and feature requests |
-| GitHub Discussions | https://github.com/carere/zaidan/discussions | Community discussions |
+| GitHub Discussions | https://github.com/carere/zaidan | Community discussions |
 
 ## Installation Guides
 

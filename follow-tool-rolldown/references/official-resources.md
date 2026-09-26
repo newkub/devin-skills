@@ -11,8 +11,8 @@ Official links และ resources สำหรับ Rolldown
 | Website | https://rolldown.rs |
 | GitHub | https://github.com/rolldown/rolldown |
 | npm | https://www.npmjs.com/package/rolldown |
-| Documentation | https://rolldown.rs/guide |
-| API Docs | https://rolldown.rs/api |
+| Documentation | https://rolldown.rs/guide/getting-started |
+| API Docs | https://rolldown.rs/apis/bundler-api |
 
 ## GitHub
 
@@ -27,10 +27,10 @@ Official links และ resources สำหรับ Rolldown
 
 | Plugin | npm | GitHub |
 |--------|-----|--------|
-| CommonJS | [@rolldown/plugin-commonjs](https://www.npmjs.com/package/@rolldown/plugin-commonjs) | [Link](https://github.com/rolldown/rolldown/tree/main/crates/rolldown-plugin-commonjs) |
-| Node Resolve | [@rolldown/plugin-node-resolve](https://www.npmjs.com/package/@rolldown/plugin-node-resolve) | [Link](https://github.com/rolldown/rolldown/tree/main/crates/rolldown-plugin-node-resolve) |
-| Terser | [@rolldown/plugin-terser](https://www.npmjs.com/package/@rolldown/plugin-terser) | [Link](https://github.com/rolldown/rolldown/tree/main/crates/rolldown-plugin-terser) |
-| Babel | [@rolldown/plugin-babel](https://www.npmjs.com/package/@rolldown/plugin-babel) | [Link](https://github.com/rolldown/rolldown/tree/main/crates/rolldown-plugin-babel) |
+| CommonJS | [@rolldown/plugin-commonjs](https://www.npmjs.com/package/@rolldown/plugin-commonjs) | [Link](https://https://rolldown.rs/builtin-plugins/) |
+| Node Resolve | [@rolldown/plugin-node-resolve](https://www.npmjs.com/package/@rolldown/plugin-node-resolve) | [Link](https://https://rolldown.rs/builtin-plugins/) |
+| Terser | [@rolldown/plugin-terser](https://www.npmjs.com/package/@rolldown/plugin-terser) | [Link](https://https://rolldown.rs/builtin-plugins/) |
+| Babel | [@rolldown/plugin-babel](https://www.npmjs.com/package/@rolldown/plugin-babel) | [Link](https://https://rolldown.rs/builtin-plugins/) |
 
 ## Community
 
@@ -38,7 +38,7 @@ Official links และ resources สำหรับ Rolldown
 |----------|------|
 | Discord | https://discord.gg/rolldown |
 | Twitter/X | https://x.com/rolldown_rs |
-| Blog | https://rolldown.rs/blog |
+| Blog | https://github.com/rolldown/rolldown/releases |
 
 ## Learning
 
@@ -60,7 +60,7 @@ rolldown --version
 
 | Category | Link |
 |----------|------|
-| Documentation | https://rolldown.rs/guide |
+| Documentation | https://rolldown.rs/guide/getting-started |
 | GitHub | https://github.com/rolldown/rolldown |
 | npm | https://www.npmjs.com/package/rolldown |
 | Discord | https://discord.gg/rolldown |

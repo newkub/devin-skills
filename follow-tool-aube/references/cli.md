@@ -9,8 +9,8 @@ bun add -D aube
 ## Version
 
 - Latest on npm
-- Repository: https://github.com/aubejs/aube
-- Docs: https://github.com/aubejs/aube
+- Repository: https://github.com/aubepkg/aube
+- Docs: https://github.com/aubepkg/aube
 
 ## Commands
 

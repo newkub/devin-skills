@@ -32,7 +32,7 @@
 
 | Website | URL | Description |
 |---------|-----|-------------|
-| Busted | https://olivinelabs.com/busted/ | Testing framework |
+| Busted | https://lunarmodules.github.io/busted/ | Testing framework |
 | Luacheck | https://github.com/lunarmodules/luacheck | Static analyzer |
 | LuaCov | https://github.com/lunarmodules/luacov | Code coverage |
 

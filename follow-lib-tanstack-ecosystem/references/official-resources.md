@@ -25,6 +25,6 @@
 
 ## Community
 
-- [Discord](https://tanstack.com/discord)
+- [Discord](https://tlinz.com/discord)
 - [Twitter](https://twitter.com/tan_stack)
 - [Release Notes](https://tanstack.com/blog)

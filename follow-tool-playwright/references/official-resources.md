@@ -18,7 +18,7 @@ Official links และ resources สำหรับ Playwright
 | Resource | Link |
 |----------|------|
 | Introduction | https://playwright.dev/docs/intro |
-| Test | https://playwright.dev/docs/test-overview |
+| Test | https://playwright.dev/docs/writing-tests |
 | CLI | https://playwright.dev/docs/test-cli |
 | API | https://playwright.dev/docs/api/class-page |
 | Configuration | https://playwright.dev/docs/test-configuration |
@@ -29,7 +29,7 @@ Official links และ resources สำหรับ Playwright
 |----------|------|
 | Repository | https://github.com/microsoft/playwright |
 | Issues | https://github.com/microsoft/playwright/issues |
-| Discussions | https://github.com/microsoft/playwright/discussions |
+| Discussions | https://github.com/microsoft/playwright/issues |
 | Releases | https://github.com/microsoft/playwright/releases |
 
 ## Packages

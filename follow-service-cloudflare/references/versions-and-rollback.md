@@ -149,6 +149,6 @@ npx wrangler rollback --message "Revert breaking change"
 
 ## Source
 
-- [wrangler versions](https://developers.cloudflare.com/workers/wrangler/commands/versions/)
-- [Versions and Rollbacks](https://developers.cloudflare.com/workers/configuration/versions-and-rollbacks/)
+- [wrangler versions](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
+- [Versions and Rollbacks](https://developers.cloudflare.com/workers/configuration/)
 - [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/)

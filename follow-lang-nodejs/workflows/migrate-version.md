@@ -56,7 +56,7 @@ bun install
 ### 4. Check Breaking Changes
 
 ตรวจสอบ breaking changes ใน Node.js changelog:
-- [Node.js Changelog](https://nodejs.org/en/docs/es6/)
+- [Node.js Changelog](https://nodejs.org/learn/getting-started/ecmascript-2015-es6-and-beyond)
 
 ### 5. Test Application
 

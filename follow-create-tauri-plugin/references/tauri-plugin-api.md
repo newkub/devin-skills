@@ -225,5 +225,5 @@ permissions = ["allow-upload"]
 - https://v2.tauri.app/develop/state-management/
 - https://v2.tauri.app/develop/calling-rust/
 - https://docs.rs/tauri/2/tauri/plugin/struct.Builder.html
-- https://docs.rs/tauri/2/tauri/manager/trait.Manager.html
+- https://docs.rs/tauri/latest/tauri/trait.Manager.html
 

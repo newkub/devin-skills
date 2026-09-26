@@ -15,7 +15,7 @@
 | License | `MIT` |
 | Repository | `https://github.com/dubzzz/fast-check` |
 | Website | `https://fast-check.dev` |
-| Documentation | `https://fast-check.dev/docs` |
+| Documentation | `https://fast-check.dev/docs/introduction/` |
 | Releases / Changelog | `https://github.com/dubzzz/fast-check/releases` |
 
 ## Install

@@ -161,5 +161,5 @@ curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*&time=1234567890000"
 
 ## Source
 
-- [wrangler triggers](https://developers.cloudflare.com/workers/wrangler/commands/triggers/)
+- [wrangler triggers](https://developers.cloudflare.com/workers/wrangler/commands/)
 - [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)

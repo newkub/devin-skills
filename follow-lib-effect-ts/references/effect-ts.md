@@ -242,6 +242,6 @@ Effect.runFork(program)       // Fork as a fiber
 - https://effect.website/docs/getting-started/using-generators/
 - https://effect.website/docs/error-management/yieldable-errors/
 - https://effect.website/docs/error-management/expected-errors/
-- https://effect.website/docs/requirements-management/managing-layers/
+- https://effect.website/docs/v4/
 - https://effect.website/docs/schema/getting-started/
 - https://www.npmjs.com/package/effect

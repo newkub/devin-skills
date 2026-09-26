@@ -129,6 +129,6 @@ bunx tstyche           # type-level assertions
 
 ## Source
 
-- https://effect.website/docs/testing/introduction/
+- https://effect.website/docs/v4/
 - https://github.com/Effect-TS/effect/tree/main/packages/vitest
 - https://tstyche.org

@@ -16,7 +16,7 @@
 | Repository | `<https://github.com/Rich-Harris/degit>` |
 | Website | `<https://github.com/Rich-Harris/degit#readme>` |
 | Documentation | `<https://github.com/Rich-Harris/degit#readme>` |
-| Releases / Changelog | `<https://github.com/Rich-Harris/degit/blob/master/CHANGELOG.md>` |
+| Releases / Changelog | `<https://github.com/Rich-Harris/degit/blob/master/docs/CHANGELOG.md>` |
 
 ## Install
 

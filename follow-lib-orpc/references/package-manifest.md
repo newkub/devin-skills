@@ -15,7 +15,7 @@
 | License | `MIT` |
 | Repository | `https://github.com/middleapi/orpc` |
 | Website | `https://orpc.dev` |
-| Documentation | `https://orpc.dev/docs` |
+| Documentation | `https://orpc.dev/docs/getting-started` |
 | Releases / Changelog | `https://github.com/unnoq/orpc/releases` |
 
 ## Install

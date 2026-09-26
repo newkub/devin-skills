@@ -10,7 +10,7 @@ cargo install cargo-nextest --locked
 
 - Latest: see https://nexte.st/
 - Repository: https://github.com/nextest-rs/nextest
-- Docs: https://nexte.st/docs/
+- Docs: https://nexte.st/
 
 ## Commands
 

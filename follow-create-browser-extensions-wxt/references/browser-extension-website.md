@@ -18,29 +18,28 @@ Official resources for browser extension development
 |----------|-----|
 | Documentation | https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons |
 | WebExtensions API | https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions |
-| Browser Compatibility | https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_compatibility |
+| Browser Compatibility | https://extensionworkshop.com/documentation/develop/browser-compatibility/ |
 
 ## Edge Extensions
 
 | Resource | URL |
 |----------|-----|
 | Documentation | https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/ |
-| API Reference | https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/api/ |
+| API Reference | https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/developer-guide/api-support |
 
 ## Safari Web Extensions
 
 | Resource | URL |
 |----------|-----|
-| Documentation | https://developer.apple.com/documentation/safariservices/safari_web_extensions |
-| Migration Guide | https://developer.apple.com/documentation/safariservices/safari_web_extensions/migrating_aSafari_web_extension_from_chrome |
+| Documentation + Migration | https://developer.apple.com/documentation/safariservices/safari_web_extensions |
 
 ## Tools
 
 | Tool | URL |
 |------|-----|
-| Chrome Extension Reloader | https://github.com/rploskchet/chrome-extension-reloader |
-| Vite Chrome Extension Plugin | https://github.com/Jonghakseo/chrome-extension-vite |
-| webpack-chrome-extension-reloader | https://github.com/mipuzmi/webpack-chrome-extension-reloader |
+| WXT Examples | https://wxt.dev/examples |
+| WXT Repository | https://github.com/wxt-dev/wxt |
+
 
 ## Testing
 

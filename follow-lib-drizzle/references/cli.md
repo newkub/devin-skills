@@ -36,4 +36,4 @@ bun add -D drizzle-kit
 
 - CLI: https://orm.drizzle.team/docs/kit-overview
 - Migrations: https://orm.drizzle.team/docs/migrations
-- Studio: https://orm.drizzle.team/docs/studio
+- Studio: https://orm.drizzle.team/drizzle-studio/overview

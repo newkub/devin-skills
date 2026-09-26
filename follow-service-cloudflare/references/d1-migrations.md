@@ -114,5 +114,5 @@ npx wrangler d1 time-travel restore my-db --bookmark=<BOOKMARK_ID>
 
 ## Source
 
-- [D1 and Workers](https://developers.cloudflare.com/d1/worker-d1/d1-and-workers/)
+- [D1 and Workers](https://developers.cloudflare.com/d1/)
 - [D1 Migrations](https://developers.cloudflare.com/d1/reference/migrations/)

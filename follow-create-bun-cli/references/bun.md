@@ -207,7 +207,7 @@ bun test --watch            # watch mode
 ## Source
 
 - Docs: https://bun.sh/docs
-- Installation: https://bun.sh/docs/installation
+- Installation: https://bun.com/docs/installationation
 - Package manager: https://bun.sh/docs/pm/cli/install
 - Upgrade: https://bun.sh/docs/guides/util/upgrade
 - cac: https://github.com/cacjs/cac
