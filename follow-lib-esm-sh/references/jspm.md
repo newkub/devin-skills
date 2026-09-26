@@ -83,7 +83,7 @@
 - ใช้ `code blocks` สำหรับ examples
 
 - ใช้ `/follow-lib-esm-sh` ถ้าต้องการ `ESM CDN`
-- ใช้ `/follow-lib-js-delivr` ถ้าต้องการ `multi-CDN`
+- ดู [js-delivr](js-delivr.md) ถ้าต้องการ `multi-CDN`
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-arktype` ถ้าจำเป็น
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น

@@ -48,7 +48,7 @@ Step dependencies: ทำตามลำดับ แต่แต่ละ group
 > Goal: ทำงานตามแผน
 
 1. เรียก `skill` สำหรับแต่ละ sub-workflow ตามลำดับหรือ parallel
-2. ถ้า sub-workflow มี sub-workflows ซ้อน → เรียก `/deep-follow` แบบ recursive
+2. ถ้า sub-workflow มี sub-workflows ซ้อน → เรียก `/follow-deep` แบบ recursive
 3. บันทึกผลลัพธ์และ error ของแต่ละ step
 
 ### 6. Verify And Report
@@ -81,7 +81,7 @@ Step dependencies: ทำตามลำดับ แต่แต่ละ group
 
 ### 4. Deep-Only
 
-- ใช้ `/deep-follow` เฉพาะเมื่องานมี sub-workflows ซับซ้อน
+- ใช้ `/follow-deep` เฉพาะเมื่องานมี sub-workflows ซับซ้อน
 - สำหรับ leaf workflow ที่ไม่มี sub-workflows → ทำตรงโดยไม่ต้อง recursive
 
 ## Expected Outcome

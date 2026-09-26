@@ -12,7 +12,7 @@
 
 ### Baseline Analysis
 
-1. ทำ `/analyze-project` เพื่อระบุ project type, package manager, build tool
+1. ทำ `/deep-analyze` เพื่อระบุ project type, package manager, build tool
 2. ตรวจหา build config (`bunup.config.ts`, `tsdown.config.ts`, `vite.config.ts`, `tauri.conf.json`)
 3. บันทึก build time และ output size baseline
 4. ถ้าไม่พบ build config → stop และ report

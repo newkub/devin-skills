@@ -18,21 +18,21 @@
 3. ระบุ tech stack ที่ใช้ (Bun, TypeScript, Biome, Moonrepo, Drizzle, etc.)
 ### 3. Check Workflows And Skills
 > Goal: ตรวจสอบ global workflows และ skills ที่เกี่ยวข้อง
-1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-tool-biome`)
+1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-tasks`, `/follow-tool-biome`)
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
 3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-tool-biome`, `/follow-tool-moonrepo`, `/follow-lang-typescript`)
 ### 4. Run Required Workflows
 > Goal: รัน workflows ที่จำเป็นตาม stack ที่ใช้
-1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
+1. รัน `/follow-tasks` สำหรับ scripts ใน `package.json`
 2. รัน workflows ตาม tech stack (เช่น `/follow-tool-biome`, `/follow-tool-moonrepo`, `/follow-lang-typescript`)
-3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-tool-hk` เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`, `/follow-tool-astgrep`)
+3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-tool-hk` เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`, `/use-astgrep`)
 4. รัน `/update-dot-vscode` สำหรับ `.vscode/` directory setup
 5. รัน `/follow-dot-github` สำหรับ `.github/` directory setup
 6. ตรวจสอบว่า config files ถูกต้องและสอดคล้องกัน
 ### 5. Coordinate With Build And Tasks
 > Goal: ประสานงานกับ build และ task configuration
 1. ถ้ายังไม่ได้รัน → ทำ `/follow-tasks` สำหรับ target workspaces
-2. ถ้ามี build config ให้รัน build script จาก `package.json` หรือทำ `/follow-package-manifest`
+2. ถ้ามี build config → รัน build script จาก `package.json`
 3. บันทึก dependencies ระหว่าง config, scripts, build ที่ต้อง sync
 4. ถ้าถูกเรียกจาก skill orchestrator อื่น ให้รายงานผลกลับไปยัง orchestrator
 ## Rules

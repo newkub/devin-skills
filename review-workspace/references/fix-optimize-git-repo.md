@@ -29,7 +29,7 @@
 1. Binaries in history: images, videos, builds, `node_modules` ที่เคย commit
 2. Dead branches/tags: refs ที่ไม่ prune — pack objects ค้าง
 3. Pack inefficiency: objects ไม่ถูก pack/delta-compress
-4. Large current files: binaries ที่ควรเป็น LFS — ทำ `/check-git-lfs` ร่วมถ้ามี
+4. Large current files: binaries ที่ควรเป็น LFS — ตรวจ `git lfs ls-files` ถ้า repo ใช้ LFS
 
 ### 3. Apply Safe Optimizations
 

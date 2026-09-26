@@ -36,8 +36,8 @@ related:
 > Goal: ใช้ research skill เฉพาะทางถ้ามี
 
 1. ถ้าหัวข้อเกี่ยวกับ dependencies/libraries → ใช้ `/research-dependencies` แล้ว stop
-2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/research-architecture` ถ้ามี หรือทำต่อ
-3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/review-dependencies` หรือ `/research-stack` ถ้ามี
+2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/learn-pattern` ถ้ามี หรือทำต่อ
+3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/review-dependencies` หรือ `/review-techstack`
 4. ถ้าไม่มี focused skill ทีตรง → ทำตามขั้นตอนด้านล่าง
 
 ### 1. Identify Topic And Scope

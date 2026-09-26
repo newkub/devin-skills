@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-ช่วยค้นหาและติดตั้ง program บนเครื่อง โดยเลือก package manager ทีเหมาะสมผ่าน `subskills/package-manager` (alias `/follow-my-package-manager` — merged) และ fallback ไปหน้า download ถ้าหาไม่เจอ
+ช่วยค้นหาและติดตั้ง program บนเครื่อง โดยเลือก package manager ทีเหมาะสมผ่าน `subskills/package-manager` และ fallback ไปหน้า download ถ้าหาไม่เจอ
 
 ## Scope
 

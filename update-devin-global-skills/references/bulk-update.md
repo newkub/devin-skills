@@ -57,7 +57,7 @@
 
 1. ทำ `/review-quality` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
 2. ทำ `/review-devin-global-harness` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
-3. ทำ `/idea-create-devin-skills-global` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
+3. ทำ `/idea-new-devin-global-skills` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
 4. ตรวจไม่มี broken references และไม่มี circular dependencies
 
 ### 6. Review References
@@ -75,7 +75,7 @@
 1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้องทั้งหมด
 2. ตรวจว่าทุก skill ใหม่ถูกอ้างถึงใน skills ที่เกี่ยวข้อง
 3. ตรวจว่าไม่มี skill ที่อ้างถึง skill ที่ไม่มีอยู่
-4. ถ้ามี skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/follow-global-rules`
+4. ถ้ามี skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/update-devin-global-rules`
 5. ทำ `/check-repo-hygiene circular-dependencies` อีกครั้งหลังอัปเดต
 6. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
 
@@ -137,7 +137,7 @@
 - ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
 - ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/review-devin-global-harness` Steps 7-8 หลังจบ task
 
-- ใช้ /review-flow ถ้าจำเป็น
+- ใช้ /review-workflow ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 
 ## Expected Outcome

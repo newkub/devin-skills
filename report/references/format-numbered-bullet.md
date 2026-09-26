@@ -71,7 +71,7 @@
 - ไม่เกิน 250 บรรทัดต่อ report ถ้าเกิน → แยกหัวข้อไป `references/` หรือ `/report html`
 - แต่ละ bullet/number ไม่ยาวเกิน 2 บรรทัดถ้าไม่จำเป็น
 
-- ใช้ /report-plan ถ้าจำเป็น
+- ใช้ /report-todo ถ้าจำเป็น
 
 ## Expected Outcome
 

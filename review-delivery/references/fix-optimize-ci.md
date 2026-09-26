@@ -18,7 +18,7 @@
 
 > Goal: รวบรวม workflows และดู runtime ปัจจุบัน
 
-1. ใช้ `/list-ci-configs` หา workflow files ทั้งหมด
+1. หา workflow files ทั้งหมดใน `.github/workflows/` (หรือ CI config ของ platform ที่ใช้)
 2. ดู runtimes จาก `gh run list` — ระบุ workflow/job ที่ช้าที่สุด
 3. map job dependency graph (`needs`) เพื่อหา critical path
 

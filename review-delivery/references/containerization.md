@@ -16,7 +16,7 @@
 
 1. ทำตาม `/check-monorepo` เพื่อตรวจสอบ monorepo
 2. อ่าน `package.json`, `Cargo.toml` หรือ manifest ที่เหมาะสม
-3. ทำตาม `/follow-package-manifest` เพื่อตรวจ build scripts
+3. ทำตาม `/follow-tasks` เพื่อตรวจ build scripts
 4. ทำตาม `/run-build` เพื่อยืนยันว่า build ผ่านก่อน containerize
 5. ถ้า build ไม่ผ่าน → แก้ไขก่อน continue
 

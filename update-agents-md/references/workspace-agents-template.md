@@ -27,7 +27,7 @@ related:
 
 ### 2. Develop
 
-1. Run `/analyze-project` to understand workspace tech stack.
+1. Run `/deep-analyze` to understand workspace tech stack.
 2. Use `/<skill-name>` for each major workflow.
 3. Keep changes minimal and focused.
 

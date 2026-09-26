@@ -180,7 +180,7 @@ check-file-length
 
 ```bash
 # Analyze a project
-/analyze-project
+/deep-analyze
 
 # Fix errors systematically
 /resolve-errors

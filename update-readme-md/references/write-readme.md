@@ -4,7 +4,7 @@
 
 ## Execute
 
-1. ทำ `/analyze-project` เพื่อเก็บข้อมูล root
+1. ทำ `/deep-analyze` เพื่อเก็บข้อมูล root
 2. อ่าน `manifest files`, `source code`, `config files`
 3. เขียน README ตาม template ใน `template-example.md`
 4. ใช้ข้อมูลจาก Step Prepare:

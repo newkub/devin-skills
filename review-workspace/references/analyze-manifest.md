@@ -15,7 +15,7 @@ description: ตรวจสอบ manifest quality และ scripts
 
 1. อ่าน `package.json` หรือ `Cargo.toml` ของ workspace
 2. ตรวจสอบ `name`, `version`, `description`, `main`, `types` หรือ `bin`
-3. ตรวจสอบ `scripts` ว่ามี `dev`, `build`, `test`, `lint`, `typecheck`, `verify`, `ci` ตาม `/follow-package-manifest`
+3. ตรวจสอบ `scripts` ว่ามี `dev`, `build`, `test`, `lint`, `typecheck`, `verify`, `ci` ตาม `/follow-tasks`
 4. ตรวจสอบ `exports`, `files`, `publishConfig` สำหรับ library packages
 5. บันทึก findings พร้อม evidence
 

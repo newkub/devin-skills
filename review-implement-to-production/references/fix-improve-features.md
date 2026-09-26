@@ -36,7 +36,7 @@
 > Goal: เลือก improvements ที่ impact สูงสุดก่อน
 
 1. จัดลำดับ gaps: critical (broken/incorrect) → high (missing states) → medium (polish) → low (nice-to-have)
-2. ทำ `/report-plan` แสดงรายการก่อนลงมือ — รอ user confirm ถ้า scope ใหญ่
+2. ทำ `/report-todo` แสดงรายการก่อนลงมือ — รอ user confirm ถ้า scope ใหญ่
 3. จำกัด scope ต่อรอบ — ถ้า gaps เยอะ แนะนำแยกเป็น phase
 
 ### 4. Implement Improvements

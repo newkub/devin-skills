@@ -11,7 +11,7 @@
 ## Secret Storage
 
 - ตรวจ env vars: ใช้สำหรับ non-production, validate ตอน startup
-- ตรวจ secret manager: `/follow-secret-manager` (default: `/follow-service-infisical`), Doppler, AWS Secrets Manager, HashiCorp Vault
+- ตรวจ secret manager: `/follow-secret-manager` (default: Infisical), Doppler, AWS Secrets Manager, HashiCorp Vault
 - ตรวจ encrypted at rest: database encryption, file encryption
 - ตรวจ no plaintext secret file: `.env` ไม่ commit, `.env.local` ใน `.gitignore` และใช้ `/follow-secret-manager` แทน `.env` ถ้าเป็นไปได้
 

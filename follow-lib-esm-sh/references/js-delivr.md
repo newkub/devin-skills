@@ -74,7 +74,7 @@
 - ใช้ `https://data.jsdelivr.com/v1` สำหรับดู metadata ก่อนเลือกไฟล์
 
 - ใช้ `/follow-lib-esm-sh` ถ้าต้องการ `ESM CDN` ทางเลือก
-- ใช้ `/follow-lib-jspm` ถ้าต้องการ `import maps package manager`
+- ดู [jspm](jspm.md) ถ้าต้องการ `import maps package manager`
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-arktype` ถ้าจำเป็น
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
