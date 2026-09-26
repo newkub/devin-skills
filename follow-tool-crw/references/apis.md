@@ -3,13 +3,13 @@
 ## Install
 
 ```sh
-# ดู https://crw.dev/ สำหรับ install (binary/tool แยกต่างหาก ไม่ใช่ npm package)
+# ดู https://fastcrw.com/ สำหรับ install (binary/tool แยกต่างหาก ไม่ใช่ npm package)
 ```
 
 ## Version
 
-- Latest: ดู https://crw.dev/ (npm package `crw` ไม่ใช่ตัวจริง)
-- [Registry](https://crw.dev)
+- Latest: ดู https://fastcrw.com/ (npm package `crw` ไม่ใช่ตัวจริง)
+- [Registry](https://fastcrw.com)
 
 ## Dependencies
 
@@ -25,5 +25,5 @@
 
 ## Source
 
-- Official docs: https://crw.dev
+- Official docs: https://fastcrw.com
 - Description: fastCRW — web scraping, crawling, search และ serving tool

@@ -14,7 +14,7 @@
 | Author / Publisher | `clap-rs contributors` |
 | License | `MIT OR Apache-2.0` |
 | Repository | `https://github.com/clap-rs/clap` |
-| Website | `https://clap.rs` |
+| Website | `https://github.com/clap-rs/clap` |
 | Documentation | `https://docs.rs/clap` |
 | Releases / Changelog | `https://github.com/clap-rs/clap/blob/master/CHANGELOG.md` |
 

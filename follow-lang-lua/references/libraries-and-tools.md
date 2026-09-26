@@ -7,7 +7,7 @@
 | Love2D | https://love2d.org/ | Game framework สำหรับ Lua |
 | Love2D Wiki | https://love2d.org/wiki/ | Documentation และ tutorials |
 | Roblox Developer | https://developer.roblox.com/ | Roblox Lua documentation |
-| Corona SDK | https://coronalabs.com/ | Mobile game development |
+| Solar2D (formerly Corona SDK) | https://solar2d.com/ | Mobile game development |
 
 ## Tools and IDEs
 

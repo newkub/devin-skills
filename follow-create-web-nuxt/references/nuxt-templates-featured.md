@@ -144,7 +144,7 @@ Premium
 
 If you need listing websites, directories, and blogs then you should utilize DailyHub
 
-[Demo](https://dailyhub-nuxt.stylokit.com/?aff=J0Emk)[Purchase](https://stylokit.lemonsqueezy.com/buy/5eed5001-9087-405b-a414-d654b9597e5d?aff=J0Emk)
+Demo (offline) — [Purchase](https://stylokit.lemonsqueezy.com/buy/5eed5001-9087-405b-a414-d654b9597e5d?aff=J0Emk)
 
 ![Glide.ai](https://ipx.nuxt.com/pos_top&f_webp&s_1348x758/assets/templates/glideai.webp)
 
@@ -222,7 +222,7 @@ Freemium
 
 A collaborative todo-list app built with Deno KV and Nuxt.
 
-[Demo](https://nuxt-todos-kv.deno.dev)[GitHub](https://github.com/atinux/nuxt-deno-kv)
+Demo (offline) — [GitHub](https://github.com/atinux/nuxt-deno-kv)
 
 ![Nuxt Shadcn Dashboard](https://ipx.nuxt.com/pos_top&f_webp&s_1348x758/assets/templates/nuxt-shadcn-dashboard.webp)
 

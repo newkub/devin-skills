@@ -25,7 +25,6 @@
 |---------|-----|-------------|
 | Lua Blog | https://www.lua.org/community.html | Official blog |
 | Lua Programming | https://notebook.kulchenko.com/ | Blog โดย Paul Kulchenko |
-| The Lua Blog | https://thelua.blog/ | Community blog |
 
 ## Social Media
 
@@ -40,7 +39,6 @@
 | Event | URL | Description |
 |-------|-----|-------------|
 | Lua Workshop | https://www.lua.org/community.html | Annual Lua workshop |
-| LuaConf | https://luaconf.org/ | Lua conference |
 
 ## Books
 

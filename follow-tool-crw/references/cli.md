@@ -3,13 +3,13 @@
 ## Install
 
 ```sh
-# See https://crw.dev/ for install
+# See https://fastcrw.com/ for install
 # Common: curl install or package manager
 ```
 
 ## Version
 
-- Latest: see https://crw.dev/
+- Latest: see https://fastcrw.com/
 - Repository: https://github.com/us/crw
 - Docs: https://github.com/us/crw
 
