@@ -71,6 +71,7 @@
 | monorepo tasks | `moon` / `task` | installed | `/follow-monorepo` |
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
 | lint/format JS/TS | `biome` / `oxlint` / `oxfmt` | installed | `/run-lint`, `/run-format` |
+| test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test-coverage` → `/improve-test-coverage-to-100` |
 | fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
 | benchmark commands | `hyperfine` | installed | `/review-performance` |

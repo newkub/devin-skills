@@ -7,6 +7,7 @@ related:
   - run-test
   - run-test-all
   - run-test-coverage
+  - improve-test-coverage-to-100
   - follow-tool-playwright
   - follow-tool-vitest
   - update-specs

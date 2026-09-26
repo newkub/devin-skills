@@ -3,6 +3,7 @@ name: run-test-coverage
 description: รัน test coverage แล้วเพิ่ม tests จน coverage ถึง 100% ทุก category — ไม่ลด target ไม่ยอมต่ำกว่าเป้า
 argument-hint: "[scope] [target%]"
 related:
+  - improve-test-coverage-to-100
   - review-test
   - update-tests
   - resolve-errors
@@ -48,12 +49,9 @@ related:
 
 > Goal: เพิ่ม tests จนครบ — วนจนถึงเป้า
 
-1. วิเคราะห์ uncovered: เรียงไฟล์ตาม uncovered statements + uncovered functions + uncovered branches
-2. จัดกลุ่ม: pure logic (เขียน unit test ตรง) / store mutations (seed state → call → assert) / async+timers (fake timers) / error paths (กระตุ้น error branch)
-3. เขียน tests ผ่าน `/update-tests` หรือเขียนเองตาม conventions ของ project — behavioral assertions เท่านั้น ไม่ใช่ import smoke ล้วน
-4. รัน test suite → ทุก test ต้องผ่าน แล้วรัน coverage ใหม่
-5. ถ้า test เผย `source bug` → แก้ source แยก (`/resolve-errors`) ไม่ใช่ปรับ assertion ให้อ่อนลง
-6. วน Step 3 จนทุก category ถึงเป้า — failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report blocker
+1. ส่ง uncovered analysis เข้า `/improve-test-coverage-to-100` — เจ้าของ gap-closing loop (prioritize → เขียน tests ผ่าน `/update-tests` → re-measure)
+2. ถ้า test เผย `source bug` → แก้ source แยก (`/resolve-errors`) ไม่ใช่ปรับ assertion ให้อ่อนลง
+3. วนจนทุก category ถึงเป้า — failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report blocker
 
 ### 4. Validate The Result
 
