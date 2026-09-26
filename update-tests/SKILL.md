@@ -3,6 +3,7 @@ name: update-tests
 description: เขียน/อัปเดต tests ครบทุก layer — unit, integration, e2e, contract, visual ฯลฯ แล้วรันจนผ่าน
 argument-hint: "[scope-or-files]"
 related:
+  - check-test-quality
   - review-test
   - run-test
   - run-test-all

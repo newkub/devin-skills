@@ -3,7 +3,9 @@ name: run-test-coverage
 description: รัน test coverage แล้วเพิ่ม tests จน coverage ถึง 100% ทุก category — ไม่ลด target ไม่ยอมต่ำกว่าเป้า
 argument-hint: "[scope] [target%]"
 related:
+  - check-test-quality
   - improve-test-coverage-to-100
+  - check-coverage-config
   - review-test
   - update-tests
   - resolve-errors
@@ -30,7 +32,7 @@ related:
 
 > Goal: วัดสิ่งที่ตั้งใจจะวัด — deterministic และซ้ำได้
 
-1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage
+1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage — audit ความครบของ config ด้วย `/check-coverage-config` ก่อนวัด
 2. กำหนด include/exclude จาก argument + signals:
    - ระบุ scope → include เฉพาะ scope นั้น
    - "logic-only" → ตัด UI components, runtime-bound modules (native glue, DOM-only side effects) ที่ทดสอบไม่ได้จริงในสภาพแวดล้อม test ออก แล้วบันทึกเหตุผลของ exclusion ไว้ใน config/comment

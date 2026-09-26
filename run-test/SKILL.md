@@ -3,6 +3,7 @@ name: run-test
 description: รัน unit/fast tests ทั้งหมด — auto-detect framework, isolate, report failures พร้อม root cause
 argument-hint: "[scope]"
 related:
+  - check-flaky-tests
   - review-test
   - run-test-all
   - deep-test

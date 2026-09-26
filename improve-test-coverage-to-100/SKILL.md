@@ -9,6 +9,8 @@ related:
   - deep-test
   - check-test-isolation
   - check-error-coverage
+  - check-test-quality
+  - check-coverage-config
   - follow-test
   - follow-tool-vitest
   - follow-tool-stryker-mutator
