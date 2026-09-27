@@ -27,7 +27,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 - CI: GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins
 - CD: Cloudflare Pages, Vercel, Railway, Render, Fly.io, Netlify, custom domain, release/tag
 
-สำหรับ CI platform เฉพาะจะส่งต่อ `/resolve-github-actions`
+สำหรับ CI platform เฉพาะจะส่งต่อ `/resolve-github-actions-fails`
 สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-release`, `/watch-deploy`
 
 ไม่รวม trigger ครั้งแรก — ต้องถูก trigger โดย `/run-deploy`, `/deploy-to-*`, `/run-release` หรือ push ก่อน
@@ -69,7 +69,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 ### 4. CI: Watch Pipeline
 
 > Goal: ติดตาม CI จนสิ้นสุด
-1. ถ้า GitHub Actions → ทำ `/resolve-github-actions [run-id]` แล้ว return ผล
+1. ถ้า GitHub Actions → ทำ `/resolve-github-actions-fails [run-id]` แล้ว return ผล
 2. GitLab CI: `glab pipeline trace <pipeline-id>`
 3. Azure DevOps: `az pipelines runs show --id <run-id>` poll ทุก 10 วิ
 4. CircleCI: poll API
@@ -87,7 +87,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 ### 6. CD: Determine Platform
 
 > Goal: เลือก skill ทีเหมาะกับ CD target
-1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-cicd`) ถ้า fail → ทำ `/resolve-cloudflare-worker` ก่อน re-deploy
+1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-cicd`) ถ้า fail → ทำ `/resolve-cloudflare-worker-fails` ก่อน re-deploy
 2. Release/tag: version tag, release name, GitHub release → `/watch-release`
 3. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
 
@@ -103,8 +103,8 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 > Goal: แก้ไขปัญหาแล้ว trigger ใหม่
 1. บันทึก `LAST_GREEN_SHA` ด้วย `git rev-parse HEAD` ถ้ายังไม่มี
 2. ทำ `/resolve-errors` วิเคราะห์ logs, errors, config
-3. ถ้าเป้น GitHub Actions fail → ทำ `/resolve-github-actions` ก่อนแก้ไข
-4. ถ้าเป้น Cloudflare Worker fail → ทำ `/resolve-cloudflare-worker` ก่อน re-deploy
+3. ถ้าเป้น GitHub Actions fail → ทำ `/resolve-github-actions-fails` ก่อนแก้ไข
+4. ถ้าเป้น Cloudflare Worker fail → ทำ `/resolve-cloudflare-worker-fails` ก่อน re-deploy
 5. ถ้า failure มาจาก code/config → แก้ไขน้อยทีสุด
 6. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/review-delivery`, `/review-config`, `/review-test` ตามลักษณะ
 7. ถ้า failure มาจาก infra/secret/platform → ทำ `/review-release`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ

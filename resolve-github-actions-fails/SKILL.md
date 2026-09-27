@@ -1,5 +1,5 @@
 ---
-name: resolve-github-actions
+name: resolve-github-actions-fails
 argument-hint: "[--repo <owner/repo> | verify]"
 description: ตรวจสอบและแก้ไข GitHub Actions workflow runs ทีล้มเหลวสำหรับ repo ปัจจุบันหรือ repo ทีระบุ
 related:
@@ -82,15 +82,23 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 5. ก่อน push fix ให้บันทึก last green SHA ด้วย `git rev-parse HEAD`
 6. ถ้า fix round ≥ 3 และสร้าง failure ใหม่ → `git revert` กลับไป last green SHA
 
-### 7. Build Report
+### 7. Delete Failed Runs
+
+> Goal: ลบ workflow runs ที fail ออกจาก repo
+1. หลัง resolve/re-run เสร็จ ให้ลบ failed runs ทีเหลือด้วย `gh run delete <run-id> --repo <owner/repo>` หรือ `/delete-cicd-fails`
+2. ลบทั้ง runs ที resolve แล้ว (superseded) และ runs ทียัง fail — ไม่คง run แดงค้างไว้
+3. ถ้าจำนวน runs ทีจะลบ > 5 → ทำ `/ask-me` เพื่อยืนยันก่อนลบทีเดียว
+4. บันทึก last green SHA ก่อนลบ เพื่อให้ rollback/วิเคราะห์ย้อนหลังได้
+
+### 8. Build Report
 
 > Goal: สรุปผลเป็นตาราง
 1. รวมผลจาก repo ทีระบุ
-2. ใช้ `/report` คอลัมน์: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Notes
+2. ใช้ `/report` คอลัมน์: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Deleted, Notes
 3. เรียงตาม Started At ล่าสุด
-4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
+4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีถูกลบ, ทีค้าง manual-fix-required
 
-### 8. Suggest Next Action
+### 9. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
 1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `/resolve-cicd`
@@ -115,7 +123,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ไม่ expose secrets หรือ tokens ใน output
 
 ### 5. Account-wide
-- ถ้า user ต้องการ resolve ทั่วทุก repo ให้ใช้ scope `--all` ของ skill นี้
+- ถ้า user ต้องการ resolve ทั่วทุก repo → ใช้ `/resolve-all-github-actions-fails` แทน (skill นี้ทำทีละ repo)
 
 ### 6. Watch Timeouts (merged from: watch-github-actions)
 - `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ fix-and-push
@@ -127,9 +135,10 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ถ้า `git push` ล้มเหลวเพราะ branch protection → ทำ `/ask-me`
 - ถ้า `git push` ล้มเหลวเพราะ network → retry สูงสุด `3` ครั้ง
 
-### 8. Clean Failed Runs (Optional)
-- คง run ที่ failure ไว้สำหรับ post-incident analysis โดย default
-- ถ้า user ขอให้ลบ → ทำ `/ask-me` เพื่อยืนยันก่อนลบแต่ละ run ด้วย `gh run delete <run-id>` หรือ `/delete-cicd-fails`
+### 8. Delete Failed Runs
+- Default: ลบ runs ที fail หลัง resolve เสร็จ (`gh run delete` หรือ `/delete-cicd-fails`) — ดู Step 7
+- บันทึก last green SHA ก่อนลบเสมอ เพื่อให้ post-incident analysis/rollback ได้
+- ถ้าจำนวนมาก (>5 runs) หรือเป็น production repo → ทำ `/ask-me` ยืนยันก่อนลบ
 
 ## Expected Outcome
 
@@ -138,5 +147,5 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ข้อมูล workflow, branch, commit, url, action taken พร้อม
 - ไม่มีการ push/merge หรือแก้ไข repo โดยไม่ได้รับอนุญาต
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: resolve-all-github-actions-fails, watch-github-actions) — ใช้ใน `git-push` ด้วย
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-github-actions) — ใช้ใน `git-push` ด้วย; account-wide scope อยู่ที่ `/resolve-all-github-actions-fails`
 

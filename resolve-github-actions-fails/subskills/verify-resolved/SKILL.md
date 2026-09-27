@@ -1,5 +1,5 @@
 ---
-name: resolve-github-actions-verify-resolved
+name: resolve-github-actions-fails-verify-resolved
 description: ยืนยัน GitHub Actions runs กลับมา success หลัง resolve — watch run ใหม่จนจบ
 argument-hint: "[--repo <owner/repo> | --run-id <id>]"
 related:
@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-ยืนยันหลัง `/resolve-github-actions` ว่า workflow runs กลับมา success จริงบน GitHub
+ยืนยันหลัง `/resolve-github-actions-fails` ว่า workflow runs กลับมา success จริงบน GitHub
 
 ## Scope
 

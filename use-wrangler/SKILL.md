@@ -120,7 +120,7 @@ bunx wrangler deployments list           # ดู deployment history
 - ระบุ `--env <name>` เสมอเมื่อ project มี multiple environments (dev/staging/production)
 - production deploy ต้อง user confirm
 
-- ใช้ /resolve-cloudflare-worker ถ้าจำเป็น
+- ใช้ /resolve-cloudflare-worker-fails ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

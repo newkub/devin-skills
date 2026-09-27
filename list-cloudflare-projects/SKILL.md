@@ -77,7 +77,7 @@ related:
 - ระบุ `local-only` ถ้าไม่มี remote
 - รองรับ Workers, Pages และ Wrangler config ทุก format
 
-- ใช้ /resolve-cloudflare-worker ถ้าจำเป็น
+- ใช้ /resolve-cloudflare-worker-fails ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 

@@ -69,9 +69,9 @@ CD (Cloudflare และอื่นๆ):
 1. จัดกลุ่ม failures ตาม pipeline — CI failure และ CD failure แยกกัน
 2. เรียงลำดับ: CI ก่อน CD เสมอ (CD fail จาก CI artifact พังเป็นเรื่องปกติ) และ upstream job ก่อน downstream
 3. สำหรับแต่ละ failure group → เรียก resolve skill ที่ตรง:
-   - GitHub Actions → `/resolve-github-actions`
-   - Cloudflare Worker/Pages เจาะจง → `/resolve-cloudflare-worker`
-   - Cloudflare ทั้ง account → `/resolve-cloudflare`
+   - GitHub Actions → `/resolve-github-actions-fails`
+   - Cloudflare Worker/Pages เจาะจง → `/resolve-cloudflare-worker-fails`
+   - Cloudflare ทั้ง account → `/resolve-all-cloudflare-worker-fails`
    - Code/config errors ทั่วไป → `/resolve-errors`
 4. หลัง fix → commit + push แล้วกลับไป Step 2 watch run ใหม่ — ทำ `/loop-until-complete` จนทุก pipeline เขียวหรือชน blocker
 5. Blocker ที่แก้เองไม่ได้ (missing secrets, quota, permissions, billing) → stop และ report รายการ secrets/values ที่ต้องให้ user ไป set — ห้าม commit secrets หรือ workaround ที่ลด security posture

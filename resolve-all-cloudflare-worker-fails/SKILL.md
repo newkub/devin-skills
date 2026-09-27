@@ -1,5 +1,5 @@
 ---
-name: resolve-cloudflare
+name: resolve-all-cloudflare-worker-fails
 argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: ตรวจสอบและแก้ไข Cloudflare Workers/Pages ที deployment ล้มเหลวทั้งหมดใน account
 related:
@@ -72,7 +72,7 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 ### 6. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
-1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy เพิม, check logs, หรือ `/resolve-github-actions`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy เพิม, check logs, หรือ `/resolve-github-actions-fails`
 
 ## Rules
 

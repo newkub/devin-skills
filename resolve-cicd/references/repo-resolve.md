@@ -22,7 +22,7 @@
 ### 2. Resolve GitHub Actions
 
 > Goal: แก้ไข GitHub Actions สำหรับ repo
-1. ทำ `/resolve-github-actions --repo <owner/repo>`
+1. ทำ `/resolve-github-actions-fails --repo <owner/repo>`
 2. ถ้าไม่มี local repo ต้องการ code fix → ใช้ `/search-project-in-drive-d <repo-name>`
 3. บันทึกผล runs ที resolve ได้และค้าง
 
@@ -30,7 +30,7 @@
 
 > Goal: แก้ไข Cloudflare Workers/Pages ทีตรงกับ repo
 1. หา worker name ทีตรงกับ repo name หรือ project name จาก `wrangler.toml`
-2. ทำ `/resolve-cloudflare-worker --worker <worker-name>` หรือ `/resolve-cloudflare --project <project-name>`
+2. ทำ `/resolve-cloudflare-worker-fails --worker <worker-name>` หรือ `/resolve-all-cloudflare-worker-fails --project <project-name>`
 3. ถ้าไม่พบ worker ทีตรงกับ repo → ข้ามและบันทึกว่าไม่มี Cloudflare resource
 4. ถ้าพบ local project ทีตรงกัน → ใช้ `/search-project-in-drive-d <worker-name>` แล้ว `wrangler deploy`
 5. ทำซ้ำสูงสุด 3 รอบ

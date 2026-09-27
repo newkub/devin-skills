@@ -1,5 +1,5 @@
 ---
-name: resolve-cloudflare-worker
+name: resolve-cloudflare-worker-fails
 argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: ตรวจสอบและแก้ไข Cloudflare Worker หรือ Pages project ทีระบุ
 related:
@@ -21,7 +21,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-cloudflare-worker-fails) — สำหรับ list fails ดู `references/list-fails.md`
 
-ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-cloudflare, `references/list-fails.md`
+ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `references/list-fails.md`
 
 ## Execute
 
@@ -70,7 +70,7 @@ related:
 ### 6. Suggest Next Action
 
 > Goal: แนะนำต่อ
-1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy, check logs หรือ `/resolve-cloudflare`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy, check logs หรือ `/resolve-all-cloudflare-worker-fails`
 
 ## Rules
 

@@ -36,9 +36,9 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 | Topic | Skill |
 |-------|-------|
-| GitHub Actions workflow runs ที่ล้มเหลว | `/resolve-github-actions` |
-| Cloudflare Worker หรือ Pages project ที่ระบุ | `/resolve-cloudflare-worker` |
-| Cloudflare Workers/Pages ทั้ง account | `/resolve-cloudflare` |
+| GitHub Actions workflow runs ที่ล้มเหลว | `/resolve-github-actions-fails` |
+| Cloudflare Worker หรือ Pages project ที่ระบุ | `/resolve-cloudflare-worker-fails` |
+| Cloudflare Workers/Pages ทั้ง account | `/resolve-all-cloudflare-worker-fails` |
 | CI/CD pipeline repo-scoped หรือ single run/URL (watch + dispatch) | `/resolve-cicd` |
 
 ### Subskills

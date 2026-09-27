@@ -76,7 +76,7 @@
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ check logs, `/resolve-cicd` หรือ `/resolve-cloudflare-worker`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ check logs, `/resolve-cicd` หรือ `/resolve-cloudflare-worker-fails`
 
 ## Rules
 
