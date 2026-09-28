@@ -4,6 +4,7 @@ description: สร้างไอเดียและ draft แปลง Devin
 argument-hint: "[skill-name|family]"
 related:
   - idea-convert-my-global-cli-to-skills
+  - create-devin-global-mcp
   - update-devin-global-skills
   - review-mcp
   - check-my-global-cli
@@ -91,7 +92,7 @@ related:
 1. ทำ `/deep-validate` ตรวจ draft — schema ครบ, ไม่มี tool ชื่อซ้ำ, transport เหมาะสม
 2. ทำ `/review-mcp` ถ้ามี — review draft เทียบ MCP best practices
 3. ตรวจว่าไม่ duplicate กับ MCP servers ที่ติดตั้งอยู่แล้ว (`/check-my-global-cli` หรือ `.devin/config.json` mcpServers)
-4. ถ้า draft ผ่าน → เสนอ `/then-apply` เพื่อ implement จริง; ถ้าไม่มี candidates → `/suggest-next-action`
+4. ถ้า draft ผ่านและ user confirm ให้ convert → ทำ `/create-devin-global-mcp` ตาม draft (skill นี้คือ idea/draft เท่านั้น — implementation อยู่ที่ `/create-devin-global-mcp`); ถ้าไม่มี candidates → `/suggest-next-action`
 
 ## Rules
 
@@ -108,6 +109,7 @@ related:
 - output ต้อง structured (JSON) — ไม่คืน raw prose ถ้า consumer เป็น agent
 - ระบุ error cases: exit codes, missing deps, timeout
 - drafts เก็บใน `.devin/plan/<workspace>/` หรือ report — ไม่เขียน server code จนกว่า confirm
+- เมื่อ confirm convert → ทำตาม `/create-devin-global-mcp` เสมอ (ห้าม implement MCP server เองใน skill นี้)
 - ใช้ /review-mcp ถ้าจำเป็น
 
 ## Expected Outcome
