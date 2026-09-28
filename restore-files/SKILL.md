@@ -5,6 +5,8 @@ argument-hint: "[domain|verify]"
 related:
   - check-git-logs
   - git-file-history
+  - git-restore
+  - git-revert
   - ask-me
 ---
 
@@ -14,7 +16,6 @@ Dispatch ไป skill ปลายทาง ตาม restore source — parent 
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: restore-deleted-file, restore-from-devin-history, restore-from-git-log, restore-from-my-dotfiles)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute
@@ -23,6 +24,8 @@ Dispatch ไป skill ปลายทาง ตาม restore source — parent 
 
 | Domain | Skill |
 |---|---|
+| `uncommitted`, `working-tree`, `discard` | /git-restore — discard changes/unstage/กู้จาก HEAD ผ่าน `git restore` |
+| `revert-commit` | /git-revert — ย้อน committed change ด้วย inverse commit |
 | `deleted-file` | /restore-files-deleted-file — กู้ไฟล์ที่ถูกลบ |
 | `from-devin-history` | /restore-files-from-devin-history — กู้จาก Devin session history |
 | `from-git-log` | /restore-files-from-git-log — กู้จาก git log ถอยหลังจนเจอ |
