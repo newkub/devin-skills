@@ -20,7 +20,7 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 ใช้เมื่อต้องการ monitor หน้าเว็บผ่าน MCP protocol — เช่น watch dev server, ตรวจ visual/state changes หลังแก้ code, หรือเฝ้า console/errors ระหว่าง session
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-browser-and-fix, watch-browser-and-improve-uxui, watch-browser-and-test)
+- `watch-browser-and-fix` / `watch-browser-and-test` เป็น alias stubs ของ `watch-browser-fix` / `watch-browser-test`; `watch-browser-and-improve-uxui` เป็น canonical combined-flow skill
 - ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser-fix`
 - ถ้า focus เฉพาะ console errors → `/watch-browser-console`
 - ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
