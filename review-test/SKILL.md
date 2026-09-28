@@ -3,7 +3,6 @@ name: review-test
 description: Review test strategy, quality, และผลลัพธ์หลัง run tests พร้อมสรุป action ถัดไป
 argument-hint: "[scope]"
 related:
-  - improve-test-coverage-to-100
   - run-test
   - update-tests
   - follow-test
@@ -30,6 +29,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 - ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-tests`, `deep-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
 - หลัง: ใช้หลัง `run-test`, `deep-test`, `follow-tdd`, `update-tests`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: `improve-test-coverage-to-100` — gap-closing loop อยู่ที่ `subskills/improve-coverage/SKILL.md`)
 
 ## Execute
 
@@ -38,7 +38,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 | Argument | Subskill |
 |----------|----------|
 | `flaky`, `fix-flaky` | `subskills/fix-flaky/SKILL.md` — fix flaky tests (isolation, timing, deterministic) |
-| `coverage`, `improve-coverage` | `subskills/improve-coverage/SKILL.md` — raise coverage บน critical paths |
+| `coverage`, `improve-coverage`, `coverage-100` | `subskills/improve-coverage/SKILL.md` — raise coverage บน critical paths จนถึงเป้า (default 100%) |
 
 1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow (ข้าม review pass ไป fix เลย)
 2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ

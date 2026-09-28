@@ -8,7 +8,6 @@ related:
   - run-typecheck
   - run-test
   - run-test-coverage
-  - improve-test-coverage-to-100
   - update-tests
 
   - deep-review
@@ -93,8 +92,8 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ครอบคลุมและรายงาน
 
-1. ทำ `/run-test-coverage` เมื่อ project มี coverage target — วัดและ report; gap-closing loop อยู่ที่ `/improve-test-coverage-to-100` ซึ่งเขียน tests ผ่าน `/update-tests` จนถึงเป้า (default 100%)
-2. ถ้าไม่ถึงเป้า → `/improve-test-coverage-to-100` ปิด gaps แล้วรัน `/run-test-coverage` ใหม่เพื่อยืนยัน
+1. ทำ `/run-test-coverage` เมื่อ project มี coverage target — วัดและ report; gap-closing loop อยู่ที่ `/review-test coverage` ซึ่งเขียน tests ผ่าน `/update-tests` จนถึงเป้า (default 100%)
+2. ถ้าไม่ถึงเป้า → `/review-test coverage` ปิด gaps แล้วรัน `/run-test-coverage` ใหม่เพื่อยืนยัน
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/reports/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 

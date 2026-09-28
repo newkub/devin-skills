@@ -4,7 +4,6 @@ description: รัน test coverage แล้วเพิ่ม tests จน co
 argument-hint: "[scope] [target%]"
 related:
   - check-test-quality
-  - improve-test-coverage-to-100
   - check-coverage-config
   - review-test
   - update-tests
@@ -51,7 +50,7 @@ related:
 
 > Goal: เพิ่ม tests จนครบ — วนจนถึงเป้า
 
-1. ส่ง uncovered analysis เข้า `/improve-test-coverage-to-100` — เจ้าของ gap-closing loop (prioritize → เขียน tests ผ่าน `/update-tests` → re-measure)
+1. ส่ง uncovered analysis เข้า `/review-test coverage` — เจ้าของ gap-closing loop (prioritize → เขียน tests ผ่าน `/update-tests` → re-measure)
 2. ถ้า test เผย `source bug` → แก้ source แยก (`/resolve-errors`) ไม่ใช่ปรับ assertion ให้อ่อนลง
 3. วนจนทุก category ถึงเป้า — failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report blocker
 

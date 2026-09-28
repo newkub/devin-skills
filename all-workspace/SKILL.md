@@ -8,6 +8,8 @@ related:
   - resolve-errors
   - run-build
   - run-test-all
+  - use-subagents
+  - restructure
 ---
 
 ## Goal
@@ -39,6 +41,8 @@ related:
 1. ทำงานกับ workspaces ที่เป็น foundation ก่อน (shared packages, utilities)
 2. ทำงานกับ workspaces ที่มี dependencies ซับซ้อนทีหลัง
 3. หลีกเลี่ยง circular dependencies ระหว่าง workspaces
+4. ถ้า task ต่อ workspace เป็นงานอิสระและจำนวน workspaces เยอะ → ทำ `/use-subagents` dispatch agent ละ workspace/batch เพื่อทำแบบ parallel
+5. ถ้า task คือการจัดโครงสร้างไฟล์/โฟลเดอร์ → ทำ `/restructure` ต่อ workspace ทีละตัว
 
 ### 3. Verify Completion
 

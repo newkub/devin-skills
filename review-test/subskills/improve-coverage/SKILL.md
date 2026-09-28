@@ -33,8 +33,9 @@ related:
 
 1. ทำ `/run-test` เพื่อดู coverage report
 2. บันทึก files, functions, branches, statements ที่ไม่ผ่าน threshold
-3. ทำ `/review-test` ถ้ายังไม่มี findings — วิเคราะห์ code paths ที่ไม่มี test
-4. กำหนด target coverage threshold (default 100% หรือตาม project กำหนด)
+3. Parse uncovered lines/functions/branches ต่อไฟล์จาก raw coverage output (`coverage-final.json`, lcov) — อย่าเชื่อแค่ summary table เพราะไฟล์ที่ไม่ถูก include จะหลุดจาก report
+4. ทำ `/review-test` ถ้ายังไม่มี findings — วิเคราะห์ code paths ที่ไม่มี test
+5. กำหนด target coverage threshold (default 100% หรือตาม project กำหนด)
 
 ### 2. Identify Priorities
 
@@ -84,6 +85,9 @@ related:
 - Tests isolated ไม่แชร์ state — mock external dependencies และ cleanup mocks หลังแต่ละ test
 - ใช้ test database แยก — ไม่ hardcode secrets/tokens/passwords ใน test files
 - Coverage ทุก category: lines, branches, functions, statements — บันทึก coverage delta ทุกครั้ง
+- Default target 100% ทุก category — ห้ามลดเป้า, ห้ามเพิ่ม exclude เพื่อให้ผ่าน, ห้ามแก้ thresholds ให้หละหลวม
+- เช็ค uncovered = 0 จาก raw JSON เสมอ — ไม่นับเคสที่ test ผ่านแต่ไม่ assert อะไร
+- เพิ่ม test files อย่างเดียว — ห้ามแตะ source เว้นเป็น bug fix ผ่าน `/resolve-errors`; ลบ debug/helper test ชั่วคราวหลังจบ
 - Assert output ไม่ใช่ implementation — หลีกเลี่ยง fragile assertions กับ non-deterministic values
 - ใช้ conventions ของภาษา/ecosystem ที่ตรวจพบ — ถ้า check ไม่ผ่าน → `/resolve-errors` สูงสุด 3 รอบ
 

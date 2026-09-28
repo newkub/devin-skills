@@ -117,6 +117,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 ### 6. SRP And Consistency
 
 - ไฟล์ ≤250 บรรทัด (`/check-long-files`); หนึ่ง fact หนึ่ง source (`/follow-single-of-source`); naming/patterns สอดคล้อง
+- import paths ใช้ path alias ของ project (เช่น `~/*`) แทน relative paths ที่ซับซ้อน — ห้าม relative import 3+ levels (`../../../`)
 
 ### 7. Safety
 
@@ -130,7 +131,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 
 - Scope ที่เหมาะสมถูกเลือกและดำเนินการ
 - ไฟล์/ packages มีขนาดเหมาะสม
-- imports/exports สะอาด
+- imports/exports สะอาด ใช้ alias แทน relative paths ที่ซับซ้อน
 - SRP ชัดเจน
 - naming, patterns, structure สอดคล้อง
 - ผ่าน lint/typecheck/test/build

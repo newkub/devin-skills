@@ -9,6 +9,7 @@ related:
   - rethink
   - deep-review
   - check-files
+  - update-agents-md
 ---
 
 ## Goal
@@ -64,7 +65,8 @@ related:
 2. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
 3. ทำ `/review-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
 4. ทำ `/update-references` เพื่ออัปเดต imports
-5. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
+5. ทำ `/update-agents-md` เมื่อโครงสร้างที่เปลี่ยนกระทบ layout ที่ AGENTS.md อธิบายไว้
+6. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 
 ### 5. Refactor Imports And Exports
 

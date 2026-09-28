@@ -9,7 +9,6 @@ allowed-tools:
   - read
 related:
   - run-test-coverage
-  - improve-test-coverage-to-100
   - check-test-quality
   - review-test
   - report
@@ -69,7 +68,7 @@ related:
 - Read-only — ไม่แก้ config ใน skill นี้
 - ทุก finding ต้องชี้ไฟล์ config + key ที่ผิด
 - ไม่ flag exclusions ที่มีเหตุผลชัดเจน (comment/docs บันทึกไว้)
-- ใช้ /run-test-coverage ถ้าจำเป็น · ใช้ /improve-test-coverage-to-100 ถ้าจำเป็น · ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น · ใช้ /review-test coverage ถ้าจำเป็น · ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

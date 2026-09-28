@@ -5,7 +5,6 @@ argument-hint: "[test-path]"
 related:
   - check-flaky-tests
   - check-test-quality
-  - improve-test-coverage-to-100
   - review-test
   - use-astgrep
   - report

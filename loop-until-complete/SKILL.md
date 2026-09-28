@@ -3,7 +3,7 @@ name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์ หรือถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
 argument-hint: "[scope]"
 related:
-  - improve-test-coverage-to-100
+  - review-test
   - run-until-pass
   - retry
   - follow-loop-engineering

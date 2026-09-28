@@ -6,7 +6,7 @@ related:
   - watch-browser
   - watch-browser-and-fix
   - watch-browser-console
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - resolve-errors
   - run-dev
   - run-program
@@ -20,9 +20,9 @@ related:
 
 ใช้สำหรับ browser automation ทีต้องการ monitor หน้าเว็บ แก้ไข errors ทีเกิดขึ้น และ ensure ว่า web server ยังคงทำงานได้
 
-- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-improve-uxui`
+- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
-- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
+- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/watch-browser-and-improve-uxui`
 
 ## Execute
 

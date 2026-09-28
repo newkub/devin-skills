@@ -5,7 +5,7 @@ argument-hint: "[domain|report] [url]"
 related:
   - use-agent-browser
   - watch-browser-console
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - use-mcp
   - update-devin
   - resolve-errors
@@ -23,9 +23,9 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-browser-and-fix, watch-browser-and-improve-uxui, watch-browser-and-test)
 - ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser-fix`
 - ถ้า focus เฉพาะ console errors → `/watch-browser-console`
-- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-improve-uxui`
+- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
-- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/improve-uxui`
+- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
 ## Execute
@@ -104,7 +104,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 | Domain | Skill |
 |--------|-------|
 | `fix` | `/watch-browser-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
-| `improve-uxui` | `/watch-browser-improve-uxui` — watch + subagents improve UX/UI ทุก route |
+| `improve-uxui` | `/watch-browser-and-improve-uxui` — watch + subagents improve UX/UI ทุก route |
 | `test` | `/watch-browser-test` — watch + subagents roleplay user test flows |
 
 1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน

@@ -5,7 +5,7 @@ argument-hint: "[url|report]"
 related:
   - watch-browser
   - watch-browser-and-test
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - use-agent-browser
   - use-subagents
   - resolve-errors
@@ -26,8 +26,8 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ใช้เมื่อต้องการ exploratory/functional testing ผ่าน browser จริงโดยครอบคลุมทุก route — ต่างจาก `/run-test` (e2e) ที่รัน test suite เขียนไว้ล่วงหน้า (skill นี้คือ manual-style exploration ผ่าน subagents)
 
-- ถ้าต้องการ orchestrate ทั้ง functional + visual UX pass → `/improve-uxui`
-- ถ้าต้องการ improve UX/UI → `/watch-browser-improve-uxui`
+- ถ้าต้องการ orchestrate ทั้ง functional + visual UX pass → `/watch-browser-and-improve-uxui`
+- ถ้าต้องการ improve UX/UI → `/watch-browser-and-improve-uxui`
 - ถ้าต้องการแก้ console/page errors → `/watch-browser-fix`
 - ถ้ามี Playwright suite อยู่แล้ว → `/run-test` (e2e)
 - ถ้าไม่มี `agent-browser` MCP server → fallback ไป `/use-agent-browser` (CLI)

@@ -15,7 +15,7 @@ related:
   - follow-lib-animejs
   - capture
   - review-accessibility
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - deep-review-then-fix
 ---
 
@@ -116,7 +116,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: งาน fix ไปที่ fix guide ที่ตรง domain — execute เฉพาะหลัง user confirm (ดู `## Fix`)
 
-- UX/UI findings ทุก dimension → `subskills/improve-uxui-fix/SKILL.md` (dispatch ต่อไปยัง `references/fix-uxui/*.md` ตาม domain)
+- UX/UI findings ทุก dimension → `subskills/watch-browser-and-improve-uxui-fix/SKILL.md` (dispatch ต่อไปยัง `references/fix-uxui/*.md` ตาม domain)
 
 ## Rules
 
@@ -184,7 +184,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### Fix Steps
 
-1. browser fix pass → `/improve-uxui` (orchestrates watch passes + UXUI features + Playwright sync)
+1. browser fix pass → `/watch-browser-and-improve-uxui` (orchestrates watch passes + UXUI features + Playwright sync)
 2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
 3. verify: re-run browser pass + `/deep-test e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
 
