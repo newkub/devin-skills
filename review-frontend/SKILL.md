@@ -4,6 +4,7 @@ description: Review frontend code quality, components, state, rendering, type sa
 argument-hint: "[scope]"
 related:
   - review-uxui
+  - follow-tool-lighthouse
   - deep-review
   - review-quality
   - scan-codebase
@@ -29,7 +30,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - general code quality, bug-prone patterns → ใช้ `/review-quality`
 - architecture, modularity, boundaries → ใช้ `/review-architecture`
 
-- merged from: `review-web` — rendered-app checks (routes, console, PWA, vitals) refs `references/web-*.md`
+- rendered-app checks (routes, console, PWA, vitals) refs `references/web-*.md`
 
 ## Execute
 
@@ -107,11 +108,14 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 5. รายงานตาม `references/reporting.md`
 
 ### Subskills
+| `state`, `hooks` — state placement, derived state, drilling | `subskills/check-state/SKILL.md` |
+| `forms`, `errors` — validation, submit states, a11y | `subskills/check-forms/SKILL.md` |
+| `fetching`, `async`, `data` — waterfalls, caching, races | `subskills/check-fetching/SKILL.md` |
+| Fix hydration mismatches + reduce scope (user confirm) | `subskills/improve-hydration/SKILL.md` |
 
 > Goal: dispatch งาน fix/improve ไปยัง subskill ที่ตรง topic
 
 - rendering performance findings (re-renders, memoization, lists, lazy components) → `subskills/improve-rendering/SKILL.md`
-- hydration mismatch และ hydration cost findings → `subskills/fix-hydration/SKILL.md`
 
 ## Rules
 
@@ -146,11 +150,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
 ### 6. Health Score
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (frontend)
-- แสดง score ต่อ dimension และ overall score (frontend)
-- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
 
 ### 7. Formatting
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (frontend)
@@ -159,19 +159,12 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (frontend)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offline, optimize-rendering
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. dispatch ตาม subskills — rendering → `subskills/improve-rendering/SKILL.md`; hydration → mismatch แก้ที่ root cause (browser-only APIs ย้ายไป post-mount, non-deterministic values ทำ stable, invalid HTML nesting; `suppressHydrationWarning` เฉพาะ leaf ที่จำเป็น), cost ลด scope (ลบ `'use client'`/`client:load` บน display-only, islands, `client:visible`/`client:idle`, defer third-party) — findings อื่น (components, state, type safety, CSS, forms, offline) แก้ตาม finding ตรงๆ (frontend)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (frontend)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (frontend)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (frontend)
-
-- `references/fix-improve-frontend.md` — แก้ไข frontend findings ด้าน components, state, rendering, type safety, CSS, forms
-- `references/fix-optimize-css.md` — ลด CSS payload — unused rules, critical CSS, dedupe และ utility coverage
-- `references/fix-optimize-hydration.md` — ลด hydration cost — partial hydration, islands และลด client JS ที่ไม่จำเป็น
-- `references/fix-optimize-offline.md` — ตั้ง offline-first strategy — service worker caching, fallback และ sync queue
-- `references/fix-optimize-rendering.md` — ปรับปรุง rendering performance: re-renders, virtual lists, content-visibility, lazy components
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

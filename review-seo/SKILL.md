@@ -4,6 +4,7 @@ description: Review SEO ครอบคลุม technical, on-page, structured 
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
+  - follow-tool-lighthouse
   - review-uxui
   - review-performance
   - scan-codebase
@@ -95,6 +96,8 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 | Topic | Subskill |
 |-------|----------|
 | Apply SEO findings — meta/OG tags, sitemap, canonical, structured data | `subskills/improve-seo/SKILL.md` |
+| `meta`, `tags`, `og` — title/OG/canonical per route | `subskills/check-meta/SKILL.md` |
+| `structured-data`, `jsonld`, `schema` — JSON-LD validity | `subskills/check-structured-data/SKILL.md` |
 
 ## Rules
 ### 1. Scope Boundary
@@ -122,7 +125,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 - ทุก finding ต้องมี file path, line number
 - ระบุ meta tag, URL, heading, schema ที่เกี่ยวข้อง
-- ใช้ Lighthouse หรือ SEO tools ประกอบ
+- ใช้ `/follow-tool-lighthouse` หรือ SEO tools ประกอบ
 - ไม่เดา
 
 ### 5. Formatting
@@ -137,7 +140,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

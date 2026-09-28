@@ -3,6 +3,7 @@ name: follow-tool-github-actions
 description: ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน
 argument-hint: "[scope]"
 related:
+  - follow-tool-lighthouse
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-dot-github

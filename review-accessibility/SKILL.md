@@ -4,6 +4,7 @@ description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, 
 argument-hint: "[url-or-route-or-component]"
 related:
   - review-uxui
+  - follow-tool-lighthouse
   - run-test
   - capture
   - use-agent-browser
@@ -114,6 +115,7 @@ related:
 | Topic | Subskill |
 |-------|----------|
 | Apply a11y findings — contrast, aria, keyboard, focus, screen reader | `subskills/improve-a11y/SKILL.md` |
+| `wcag`, `audit` — WCAG-organized sweep per criterion | `subskills/check-wcag/SKILL.md` |
 
 ## Rules
 
@@ -138,15 +140,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (accessibility)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-accessibility
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ findings ผ่าน `subskills/improve-a11y/SKILL.md` — semantics, ARIA, keyboard, focus, contrast ตาม WCAG (accessibility)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (accessibility)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (accessibility)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (accessibility)
-
-- `references/fix-improve-accessibility.md` — แก้ไข accessibility findings ตาม WCAG — semantics, ARIA, keyboard, focus, contrast
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

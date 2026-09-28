@@ -3,6 +3,7 @@ name: follow-tool-unlighthouse
 description: ตั้งค่า Unlighthouse สำหรับ site-wide Lighthouse audit ทั้ง dev และ CI
 argument-hint: "[scope]"
 related:
+  - follow-tool-lighthouse
   - follow-tool-vite
   - follow-tool-playwright
   - follow-test
@@ -18,7 +19,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้องการ monitor ทุกหน้าเว็บด้วย Lighthouse ทั้ง development mode และ CI/CD
 
-- Boundary: ใช้ Unlighthouse สำหรับ site-wide audit (crawl ทุก route); สำหรับ audit หน้าเดียวใช้ `lighthouse` CLI ตรงๆ; สำหรับ E2E user-flow assertions ใช้ `/follow-tool-playwright`
+- Boundary: ใช้ Unlighthouse สำหรับ site-wide audit (crawl ทุก route); สำหรับ audit หน้าเดียวใช้ `/follow-tool-lighthouse`; สำหรับ E2E user-flow assertions ใช้ `/follow-tool-playwright`
 - Latest: `@unlighthouse/cli@0.18.1` (verified 2026-09-24)
 - v0.18.1 breaking change: ต้องการ Node.js >= 22.18.0 (engines)
 

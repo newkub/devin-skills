@@ -1,6 +1,6 @@
 ---
 name: review-uxui-improve-uxui-fix
-description: Apply UX/UI findings per dimension — dispatch fix-uxui domain guides with evidence
+description: Apply UX/UI findings per dimension — fix per domain checklist with evidence
 argument-hint: "[scope-or-findings]"
 related:
   - review-uxui
@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Apply UX/UI findings จาก `/review-uxui` หรือ stakeholder review — dispatch ไปยัง domain fix guides ใน `references/fix-uxui/` ตาม dimension ของแต่ละ finding แล้ว verify ด้วย before/after evidence
+Apply UX/UI findings จาก `/review-uxui` หรือ stakeholder review — แก้ตาม domain checklist ตาม dimension ของแต่ละ finding แล้ว verify ด้วย before/after evidence
 
 ## Scope
 
@@ -31,39 +31,39 @@ Apply UX/UI findings จาก `/review-uxui` หรือ stakeholder review �
 > Goal: ได้ fix list ที่ trace กลับ finding ได้ทุกข้อ
 
 1. อ่าน findings จาก `/review-uxui` report หรือ stakeholder feedback — ถ้ายังไม่มี → ทำ `/review-uxui` ก่อน
-2. บันทึกแต่ละ finding ด้วย `id`, `severity`, `area`, `issue`, `suggestion`, `evidence` ตาม `references/fix-uxui/stakeholder-review.md`
+2. บันทึกแต่ละ finding ด้วย `id`, `severity`, `area`, `issue`, `suggestion`, `evidence`
 3. เรียงตาม severity ก่อน แล้วตาม effort ต่ำ → สูง — `Critical`/`High` ต้องแก้ในรอบนี้
 
 ### 2. Capture Before Evidence
 
 > Goal: มี before state เปรียบเทียบได้ทุก fix
 
-1. เปิด dev server (`/run-dev`) แล้ว capture ทุก route/component ที่จะแก้ ตาม `references/fix-uxui/capture-and-evidence.md`
+1. เปิด dev server (`/run-dev`) แล้ว capture ทุก route/component ที่จะแก้
 2. ตั้งชื่อไฟล์ `<route>-<date>-before.png` — ใช้ `agent-browser snapshot -i` บันทึก interactive elements
-3. ถ้า `agent-browser` ใช้ไม่ได้ → setup/fallback ตาม `references/fix-uxui/agent-browser-setup.md`
+3. ถ้า `agent-browser` ใช้ไม่ได้ → fallback เป็น screenshot ผ่าน dev tools หรือ skip capture และ flag ใน report
 
-### 3. Dispatch Per Dimension
+### 3. Fix Per Dimension
 
-> Goal: แต่ละ finding แก้ตาม domain guide ที่ตรง
+> Goal: แต่ละ finding แก้ตาม checklist ของ dimension ที่ตรง
 
-| Topic | Guide |
-|-------|-------|
-| Design system, tokens, component variants, states | `references/fix-uxui/design-system.md` |
-| Color, contrast, dark/light mode, theme flash | `references/fix-uxui/theme.md` |
-| Typography, hierarchy, readability, Thai/English pairing | `references/fix-uxui/typography.md` |
-| Accessibility, keyboard, focus, a11y WCAG | `references/fix-uxui/accessibility.md` |
-| Animation, motion, reduced-motion | `references/fix-uxui/animation.md` |
-| Responsive, touch targets, mobile/tablet/desktop | `references/fix-uxui/responsive.md` |
-| Navigation, wayfinding, IA, breadcrumbs | `references/fix-uxui/navigation.md` |
-| Forms, labels, validation UX, submit flow | `references/fix-uxui/forms.md` |
-| Loading/empty/error/success feedback states | `references/fix-uxui/feedback.md` |
-| Microcopy, labels, error messages, tone | `references/fix-uxui/content-copy.md` |
-| Landing page, hero, CTA, conversion | `references/fix-uxui/landing-pages.md` |
-| Dashboard, KPI, tables, charts | `references/fix-uxui/dashboard.md` |
-| Onboarding, first-run, time-to-value | `references/fix-uxui/onboarding.md` |
-| Stakeholder review flow และ feedback format | `references/fix-uxui/stakeholder-review.md` |
+| Topic | Fix Focus |
+|-------|-----------|
+| Design system, tokens, component variants, states | รวม hardcoded values เข้า tokens, ใช้ variants แทน one-off styles, ครบ states (hover/active/disabled) |
+| Color, contrast, dark/light mode, theme flash | contrast ≥ 4.5:1, theme toggle ไม่ flash, tokens ผูกทั้งสอง mode |
+| Typography, hierarchy, readability, Thai/English pairing | scale สม่ำเสมอ, line-height/length เหมาะ, font fallback สำหรับไทย |
+| Accessibility, keyboard, focus, a11y WCAG | semantics, ARIA, focus visible, keyboard nav — ถ้าต้อง deep fix → `/review-accessibility` `## Fix` |
+| Animation, motion, reduced-motion | purpose-driven motion, easing จาก tokens, respect `prefers-reduced-motion` |
+| Responsive, touch targets, mobile/tablet/desktop | touch targets ≥ 44px, no horizontal scroll, breakpoints ครบ |
+| Navigation, wayfinding, IA, breadcrumbs | active state ชัด, breadcrumbs สำหรับ nested, IA depth ≤ 3 |
+| Forms, labels, validation UX, submit flow | label ทุก field, inline validation, error recovery, disabled submit ระหว่าง pending |
+| Loading/empty/error/success feedback states | skeleton/spinner, empty state มี action, error บอกวิธีแก้, success feedback |
+| Microcopy, labels, error messages, tone | concise, action-oriented, consistent tone, no jargon |
+| Landing page, hero, CTA, conversion | single primary CTA, value prop เหนือ fold, social proof |
+| Dashboard, KPI, tables, charts | KPI อ่านเร็ว, table responsive, chart มี labels/units |
+| Onboarding, first-run, time-to-value | time-to-value สั้น, progressive disclosure, skippable |
+| Stakeholder review flow และ feedback format | feedback เป็น structured findings พร้อม severity + evidence |
 
-แก้ทีละ finding ตาม guide — functional → visual → accessibility order ภายใน dimension เดียวกัน
+แก้ทีละ finding — functional → visual → accessibility order ภายใน dimension เดียวกัน
 
 ### 4. Validate Changes
 

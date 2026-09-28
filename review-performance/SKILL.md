@@ -4,6 +4,7 @@ description: Review application performance ครอบคลุม network, bu
 argument-hint: "[scope]"
 related:
   - review-frontend
+  - follow-tool-lighthouse
   - review-quality
   - run-profiler
   - run-bench
@@ -102,10 +103,11 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+> Goal: dispatch งานเฉพาะรูปแบบ — report subskill format findings, optimize subskill fix เมื่อ user confirm
 
 | Topic | Subskill |
 |-------|----------|
+| `vitals`, `report-vitals` — LCP/INP/CLS + metrics เทียบ thresholds | `subskills/report-vitals/SKILL.md` |
 | Apply performance findings — bundle, runtime, memory, I/O fixes by severity | `subskills/optimize-performance/SKILL.md` |
 
 ## Rules
@@ -165,7 +167,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

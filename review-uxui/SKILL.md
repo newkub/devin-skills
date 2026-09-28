@@ -4,6 +4,7 @@ description: Review UX/UI design quality, design system, visual, interaction, ac
 argument-hint: "[scope]"
 related:
   - deep-review
+  - follow-tool-lighthouse
   - roleplay-by-all-stakeholder
   - scan-codebase
   - deep-analyze
@@ -114,9 +115,9 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### Fix Dispatch
 
-> Goal: งาน fix ไปที่ fix guide ที่ตรง domain — execute เฉพาะหลัง user confirm (ดู `## Fix`)
+> Goal: งาน fix ไปที่ subskill ที่ตรง domain — execute เฉพาะหลัง user confirm (ดู `## Fix`)
 
-- UX/UI findings ทุก dimension → `subskills/watch-browser-and-improve-uxui-fix/SKILL.md` (dispatch ต่อไปยัง `references/fix-uxui/*.md` ตาม domain)
+- UX/UI findings ทุก dimension → `subskills/improve-uxui-fix/SKILL.md` (fix per dimension checklist)
 
 ## Rules
 
@@ -141,7 +142,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 ### 3. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number หรือ code snippet
-- ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `axe`, `Lighthouse`)
+- ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `axe`, `/follow-tool-lighthouse`)
 - ระบุ token, component, page, หรือ element ที่เกี่ยวข้อง
 - ระบุ false positives ที่พบ
 - แยกหน้าที่ระหว่าง design issue และ implementation issue
@@ -162,11 +163,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### 6. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (uxui)
-- แสดง score ต่อ dimension และ overall score (uxui)
-- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
 
 ### 7. Formatting
 
@@ -180,12 +177,12 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
 1. browser fix pass → `/watch-browser-and-improve-uxui` (orchestrates watch passes + UXUI features + Playwright sync)
-2. findings ตาม `references/fix-improve-uxui.md` — functional → visual → accessibility order
+2. findings → `subskills/improve-uxui-fix/SKILL.md` — functional → visual → accessibility order
 3. verify: re-run browser pass + `/deep-test e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
 
 ## References

@@ -5,6 +5,7 @@ argument-hint: "[target]"
 related:
   - run-check
   - review-performance
+  - follow-tool-lighthouse
   - deep-review-then-fix
   - run-profiler
 ---
@@ -14,7 +15,7 @@ related:
 
 ## Scope
 - รองรับ backend, frontend, build pipeline
-- ใช้ load test, profiling, หรือ Lighthouse
+- ใช้ load test, profiling, หรือ `/follow-tool-lighthouse`
 - รายงาน bottleneck พร้อม metric
 
 ## Execute
@@ -23,7 +24,7 @@ related:
 > Goal: Choose Method
 
 1. ถ้าเป็น API → ใช้ `k6`, `wrk`, หรือ `autocannon`
-2. ถ้าเป็น frontend → ใช้ Lighthouse หรือ Chrome DevTools
+2. ถ้าเป็น frontend → ใช้ `/follow-tool-lighthouse` หรือ Chrome DevTools
 3. ถ้าเป็น build → ใช้ `vite-bundle-visualizer` หรือ `webpack-bundle-analyzer`
 4. ถ้าเป็น runtime → ใช้ `0x`, `clinic`, หรือ `perf`
 

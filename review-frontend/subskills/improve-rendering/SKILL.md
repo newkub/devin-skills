@@ -21,8 +21,8 @@ Apply rendering performance findings จาก `/review-frontend` — ลด unn
 ใช้กับ frontend frameworks: React, Vue, Solid, Svelte — แก้ findings ด้าน re-renders, memoization, list rendering, code splitting
 
 ไม่รวม:
-- hydration cost / islands → ใช้ `subskills/fix-hydration/SKILL.md`
-- CSS payload → ใช้ `references/fix-optimize-css.md`
+- hydration cost / islands → ใช้ `/review-frontend` `## Fix` (hydration)
+- CSS payload → ใช้ `/review-bundle` `## Fix` (unused rules, critical CSS)
 - bundle-level analysis → ใช้ `/review-bundle`
 
 ## Execute
