@@ -39,7 +39,7 @@ jobs:
       - name: review devin global skills
         if: always()
         run: |
-          cd review-devin-global-skills
+          cd review-devin-global-harness
           bun install
           bun run src/index.ts ..
 
@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: review-skills-report
-          path: review-devin-global-skills/review-skills-report.json
+          path: review-devin-global-harness/review-skills-report.json
