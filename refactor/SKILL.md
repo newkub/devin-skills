@@ -4,6 +4,9 @@ description: Refactor ไฟล์, workspace, หรือ codebase ตาม c
 argument-hint: "[@files... | scope]"
 related:
   - refactor-workspace
+  - refactor-shared
+  - no-hard-code
+  - no-use-ignore
   - update-references
   - update-tests
   - run-verify
@@ -15,6 +18,7 @@ related:
   - dont-over-engineer
   - follow-single-of-source
   - follow-reusable
+  - follow-architecture
   - edit-by-astgrep
   - migration-by-astgrep
 ---
@@ -27,12 +31,15 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
+- ถ้า context คือจัด architecture ตาม directory (`packages/` = clean, `apps/` = layered) → ใช้ `/follow-architecture`
+- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-shared`
+- ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
+- ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 - mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-by-astgrep`
-(merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`)
 
 ## Execute
 
@@ -63,7 +70,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 ### 4. Codebase And SRP Refactor
 
-> Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ง codebase ด้วย baseline, impact analysis, incremental batches (merged from: `deep-refactor-codebase`)
+> Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ง codebase ด้วย baseline, impact analysis, incremental batches
 
 ทำตาม [references/scope-codebase.md](references/scope-codebase.md)
 
