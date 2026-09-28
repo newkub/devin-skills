@@ -63,5 +63,5 @@
 - ใช้ ANSI box-drawing characters วาด layout/output
 - ทุกบรรทัดต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
 - ความกว้างควรเท่ากันทุกบรรทัด — ใช้ fixed width เช่น 60 ตัวอักษร
-- ไม่ต้องใช้ `/capture-web` หรือ `/capture-terminal` สำหรับ README
+- ไม่ต้องใช้ `/capture web` หรือ `/capture terminal` สำหรับ README
 

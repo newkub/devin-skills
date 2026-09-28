@@ -112,7 +112,7 @@ src/
 1. ลิงก์ addon เข้า test project: เพิ่มใน `.storybook/main.ts` → `addons: ['<path-or-package>']`
 2. รัน `storybook dev` → เช็ค panel/tool/tab render ถูก, globals toggle ได้, channel events ส่งถึงกัน
 3. เช็ค production build: `storybook build` ต้องไม่พัง
-4. ใช้ `/capture-all-components-all-routes` capture panel UI เป็น evidence ถ้าต้องการ
+4. ใช้ `/capture all` capture panel UI เป็น evidence ถ้าต้องการ
 
 ### 8. Publish
 

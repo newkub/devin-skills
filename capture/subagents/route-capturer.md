@@ -1,5 +1,5 @@
 ---
-name: capture-all-components-all-routes-route-capturer
+name: capture-route-capturer
 description: Capture screenshots/components ของ route เดียวทุก device size แล้วคืน artifact paths
 model: sonnet
 allowed-tools:
@@ -7,7 +7,7 @@ allowed-tools:
   - exec
 permissions:
   allow:
-    - Exec(bun *capture.ts *)
+    - Exec(bun *all.ts *)
     - Exec(agent-browser *)
   deny:
     - write
@@ -29,7 +29,7 @@ Subagent สำหรับ capture screenshots และ component shots ขอ
 
 ## Tools
 
-- `exec` — รัน `bun <skill-dir>/scripts/capture.ts` หรือ `agent-browser` CLI
+- `exec` — รัน `bun <skill-dir>/src/all.ts` หรือ `agent-browser` CLI
 - `read` — อ่าน `manifest.json` และตรวจ errors
 
 ## Execute
@@ -38,7 +38,7 @@ Subagent สำหรับ capture screenshots และ component shots ขอ
 2. รัน capture สำหรับ `route` เดียวครบทุก device:
 
 ```bash
-bun scripts/capture.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>
+bun src/all.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>
 ```
 
 3. ถ้ามี `components` → เพิ่ม `--components "<name>=<selector>@<route>"`

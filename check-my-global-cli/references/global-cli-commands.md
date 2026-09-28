@@ -79,6 +79,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `jscpd` (5.1) | `jscpd .` | copy-paste detection |
 | `giget` (3.3) | `giget gh:user/repo dir` | clone template |
 | `playwright` (1.62) / `playwriter` / `agent-browser` (0.35) | `agent-browser open <url>` | browser automation |
+| `terminal-shot` | `terminal-shot --output out.png --theme dark` (stdin) | terminal output → image (`/capture terminal`) |
 | `chrome-devtools-mcp` / `crw` / `crw-mcp` | MCP servers | web/CDP access |
 | `druk` (1.22) | `druk` | docker TUI |
 | `oxker` (0.13) | `oxker` | docker TUI |

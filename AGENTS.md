@@ -69,6 +69,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `global-rules: /update-devin-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /update-review-cli-then-run` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
+- `shared: shared/` — canonical review/fix boilerplate (`review-fix.md`, `review-rules.md`); skills reference `../shared/*.md` instead of duplicating
 
 ### 3. Platform
 
@@ -83,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **824** top-level skills (1157 `SKILL.md` including subskills; 1154 tracked in parent repo + 3 inside git submodules) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, `fix-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`.
+The repository currently contains **817** top-level skills (~1155 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`. Fix workflows live in `## Fix` sections (`shared/review-fix.md`), not `fix-*` subskills.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
@@ -127,7 +128,7 @@ Major skill families by current count:
 - `git-commit-*` (1→dispatcher + variants): `git-commit` (`at-devin-global-skills`, `no-verify`, `selected-files` ใน subskills); `git-commit-and-push` = top-level skill จริง (ย้ายออกจาก subskill เดิม).
 - `watch-*` (11): browser watching + `watch-browser` dispatcher (`fix`, `improve-uxui`, `test`); `watch-browser-and-*` = combined-flow variants ของ `watch-browser-*`; รวม `watch-browser-console`, `watch-all-task`, `watch-deploy`, `watch-release`, `watch-terminal`.
 
-Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `compare-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*` (รวม `use-lib-effective` restored — ใช้ dep ที่มี/catalog แทน reinvent; wired เข้า `/refactor`, `/implement-to-production`), `view-*`, `watch-*`, `write-*`.
+Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `compare-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*` (dispatcher `/refactor` + `refactor-workspace`, `refactor-shared`, `refactor-commit`), `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*` (รวม `use-lib-effective` restored — ใช้ dep ที่มี/catalog แทน reinvent; wired เข้า `/refactor`, `/implement-to-production`), `view-*`, `watch-*`, `write-*`.
 
 ### 6. Workspaces
 

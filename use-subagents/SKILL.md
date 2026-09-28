@@ -124,7 +124,7 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 |-----|--------------|---------|---------|
 | 1 | `review-github-pr` | `review-github-pr/subagents/pr-reviewer.md` | review PR slice per-domain/file-group |
 | 2 | `deep-review` | `deep-review/subagents/domain-reviewer.md` | run review-* domain เดียว |
-| 3 | `capture-all-components-all-routes` | `capture-all-components-all-routes/subagents/route-capturer.md` | capture route เดียวทุก device |
+| 3 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
 | 4 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
 | 5 | `check-all-routes` | `check-all-routes/subagents/route-checker.md` | verify docs routes ต่อ site section |
 | 6 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
@@ -139,9 +139,8 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 15 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
 | 16 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
 | 17 | `merge` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
-| 18 | `bench-apis` | `bench-apis/subagents/benchmarker.md` | benchmark target เดียวด้วย load profile เดียวกัน |
-| 19 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
-| 20 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
+| 18 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
+| 19 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
 
 ## CLI — `subagents` (mission control)
 

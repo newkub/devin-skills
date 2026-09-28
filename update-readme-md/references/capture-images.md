@@ -44,7 +44,7 @@
 
 ## Rules
 
-- ไม่ต้องใช้ `/capture-web` หรือ `/capture-terminal` สำหรับ README
+- ไม่ต้องใช้ `/capture web` หรือ `/capture terminal` สำหรับ README
 - ใช้ ANSI box-drawing characters วาดแทนการ capture image จริง
 - `Usage via Web` และ `Usage via TUI` ต้องอยู่ใน `<details>` + `<summary>` accordion
 - CLI: แสดง ANSI ของ `command --help` โดยเฉพาะ

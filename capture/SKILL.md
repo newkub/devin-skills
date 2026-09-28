@@ -1,65 +1,68 @@
 ---
 name: capture
-description: Capture หลักฐานภาพ/วิดีโอ — component, web page, terminal หรือ app screenshot
-argument-hint: "<web|component|terminal|app> [target]"
+description: Capture หลักฐานภาพ/วิดีโอ — web, component, terminal, app หรือ all-routes ผ่าน CLI เดียว
+argument-hint: "<web|component|terminal|app|all> [options]"
 related:
   - capture-bug-context
+  - use-agent-browser
   - run-dev
-
-
+  - review-uxui
 ---
 
 ## Goal
 
-Capture ภาพหรือวิดีโอหลักฐานตาม target ที่ระบุ — หน้าเว็บ, component, terminal output หรือ app window — สำหรับ documentation, debugging และ testing
+Capture ภาพหรือวิดีโอหลักฐานตาม target ผ่าน Bun CLI ตัวเดียว — หน้าเว็บ, component, terminal output, app window หรือทุก route x device — สำหรับ documentation, debugging และ testing (merged จาก `capture-web`, `capture-component`, `capture-terminal`, `capture-app`, `capture-all-components-all-routes`)
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: capture-web, capture-component, capture-terminal, capture-image-app-to-screenshot)
-- `web` → screenshot/PDF หน้าเว็บด้วย `agent-browser` CLI
-- `component` → capture UI component เฉพาะส่วน
-- `terminal` → บันทึก terminal output/session
-- `app` → screenshot หน้าต่าง app ที่รันอยู่
+CLI อยู่ที่ `src/` (Bun/TypeScript, entry `src/presentation/cli.ts`) — ใช้ได้กับทุก project โดยไม่ต้องติดตั้ง dependency ฝั่ง project:
+
+```bash
+bun <skill-dir>/src/presentation/cli.ts <mode> [options]
+```
+
+| Mode | ทำอะไร | Reference |
+|------|--------|-----------|
+| `web` | screenshot/PDF หน้าเว็บเดียว ผ่าน `agent-browser` | [references/web.md](references/web.md) |
+| `component` | screenshot element เดียว (CSS selector) บน URL | [references/component.md](references/component.md) |
+| `terminal` | render output ของ command เป็น PNG/SVG/HTML | [references/terminal.md](references/terminal.md) |
+| `app` | screenshot หน้าต่าง/จอ OS-level (Windows PowerShell) + app sweep workflow | [references/app.md](references/app.md) |
+| `all` | ทุก route x ทุก device size ในรันเดียว + manifest | [references/all.md](references/all.md) |
 
 ## Execute
 
-### 1. Select Target
+### 1. Select Mode
 
-> Goal: ระบุ capture target และ dispatch ไป skill
+> Goal: ระบุ capture mode และอ่าน reference ของ mode นั้น
 
-| Target      | Skill |
-|-------------|-------|
-| `web`       | `/capture-web` — `agent-browser` CLI, screenshot/PDF |
-| `component` | `/capture-component` — capture component เฉพาะส่วน |
-| `terminal`  | `/capture-terminal` — terminal capture ตาม OS |
-| `app`       | `/capture-app` — OS screenshot tool |
-
-1. อ่าน target type จาก argument — ถ้าไม่ระบุ → ถาม user
-2. เรียก skill ตามตารางแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. อ่าน mode จาก argument — ถ้าไม่ระบุ → ถาม user
+2. อ่าน `references/<mode>.md` แล้วทำตาม Execute + Rules ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+3. ถ้า tool ต้องการยังไม่ติดตั้ง (`agent-browser`, `terminal-shot`, …) → ติดตั้งตาม reference หรือ `/download-program`
 
 ### 2. Capture
 
-> Goal: ได้ภาพ/วิดีโอตาม target
+> Goal: ได้ภาพ/วิดีโอตาม mode
 
-1. เตรียม target: เปิด URL/app/terminal ที่ต้องการ
-2. Capture ตาม tool ที่เลือก พร้อมตั้งชื่อไฟล์สื่อความหมาย
-3. บันทึกไปที่ตำแหน่งที่เหมาะสม (`docs/`, `screenshots/` หรือตาม context)
+1. เตรียม target: เปิด URL/app/terminal ที่ต้องการ (`/run-dev` ถ้าต้อง start server)
+2. รัน CLI subcommand ตาม mode พร้อมตั้งชื่อไฟล์สื่อความหมาย
+3. บันทึกไปตำแหน่งตาม mode reference (`public/screenshots/`, `docs/screenshots/`, หรือ `.devin/reports/<workspace>/captures-<ts>/`)
 
 ### 3. Verify And Report
 
 > Goal: ภาพใช้ได้จริงและถูกอ้างถึง
 
-1. ตรวจว่าไฟล์สร้างสำเร็จและไม่ว่าง
-2. รายงาน path และขนาดไฟล์
-3. ถ้าใช้เป็น bug evidence → ผูกกับ `/capture-bug-context`
+1. ตรวจว่าไฟล์สร้างสำเร็จและไม่ว่าง (เปิดดูด้วย `read` ถ้าเป็นภาพ)
+2. `all` mode → เช็ค `manifest.json` errors ก่อนเสมอ
+3. รายงาน path และขนาดไฟล์ — ถ้าใช้เป็น bug evidence → ผูกกับ `/capture-bug-context`
 
 ## Rules
 
 - ตั้งชื่อไฟล์สื่อความหมาย มีวันที่ถ้าเป็น evidence
-- ไม่ capture หน้าจอที่มี secrets/credentials โดยไม่จำเป็น
+- ไม่ capture หน้าจอที่มี secrets/credentials โดยไม่จำเป็น — ถ้า target ต้อง auth ให้ถาม user ก่อน
 - แจ้ง path ของไฟล์ที่ capture เสมอ
-- ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /run-dev, /use-agent-browser, /resolve-errors, /review-uxui ถ้าจำเป็น
 
 ## Expected Outcome
 
-- ไฟล์ภาพ/วิดีโอหลักฐานพร้อมใช้ ตาม target ที่ระบุ
+- ไฟล์ภาพ/วิดีโอ/PDF หลักฐานพร้อมใช้ ตาม mode ที่ระบุ
+- `all` mode ให้ `manifest.json` สรุปผล + errors พร้อมใช้ต่อใน `/review-uxui` หรือ report

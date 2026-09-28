@@ -1,10 +1,11 @@
 #!/usr/bin/env bun
 /**
- * capture.ts — capture screenshots of ALL routes x ALL device sizes in one run.
+ * all.ts — capture screenshots of ALL routes x ALL device sizes in one run.
  * Framework-agnostic: works with any site via agent-browser CLI.
+ * Invoked via `bun src/presentation/cli.ts all ...` or standalone.
  *
  * Usage:
- *   bun capture.ts --base http://localhost:3000 [options]
+ *   bun all.ts --base http://localhost:3000 [options]
  *
  * Options:
  *   --base <url>        Base URL (required)

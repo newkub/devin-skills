@@ -90,7 +90,8 @@
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
 | browser automation | `agent-browser` | installed | `/use-agent-browser`, `/watch-browser-*` |
-| screenshot web | `agent-browser` | เหมือนข้างบน | `/capture-web` |
+| screenshot web | `agent-browser` | เหมือนข้างบน | `/capture web` |
+| capture evidence (component/terminal/app/all-routes) | `capture` CLI (Bun, `capture/src/presentation/cli.ts`) | — | `/capture` |
 | E2E tests | `playwright` | installed (mise npm:playwright 1.63) | `/deep-test e2e`, `/follow-tool-playwright` |
 | CDP/DevTools MCP | `chrome-devtools-mcp` / `crw` | installed | `/use-agent-browser` |
 | web → desktop | `pake` | installed | `/follow-create-*` |
