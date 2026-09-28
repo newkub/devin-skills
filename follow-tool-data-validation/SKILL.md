@@ -1,5 +1,5 @@
 ---
-name: follow-tool-validator
+name: follow-tool-data-validation
 description: ใช้งาน validator ใน project สำหรับ data, forms, API payloads, และ schemas
 argument-hint: "[scope]"
 related:

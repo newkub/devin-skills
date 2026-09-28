@@ -4,7 +4,7 @@ description: ใช้งาน code formatter ใน project เพื่อร
 argument-hint: "[scope]"
 related:
   - follow-tool-linter
-  - follow-tool-validator
+  - follow-tool-data-validation
   - follow-tool-biome
   - follow-tool-dprint
   - run-verify
@@ -103,7 +103,7 @@ related:
 - ถ้าเปลี่ยน formatter → ทำ `/update-references` และระบุใน CHANGELOG
 
 - ใช้ `/follow-tool-linter` ถ้าจำเป็น
-- ใช้ `/follow-tool-validator` ถ้าจำเป็น
+- ใช้ `/follow-tool-data-validation` ถ้าจำเป็น
 - ใช้ `/follow-tool-biome` ถ้าจำเป็น
 - ใช้ `/follow-tool-dprint` ถ้าจำเป็น
 - ใช้ `/run-verify` เพื่อ verify format + lint + typecheck
