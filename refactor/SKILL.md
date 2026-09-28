@@ -8,6 +8,7 @@ related:
   - no-hard-code
   - no-use-ignore
   - update-references
+  - update-agents-md
   - update-tests
   - run-verify
   - check-code-structure
@@ -80,7 +81,8 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 1. ทำ `/update-references` สำหรับ relative paths/imports
 2. ทำ `/update-references` สำหรับ global references/skills
-3. ถ้ามี broken references → ทำ `/resolve-errors`
+3. ถ้า structure/paths เปลี่ยน (ย้าย/rename/สร้าง dir ใหม่) → ทำ `/update-agents-md` ให้ AGENTS.md ตรงกับ structure ใหม่
+4. ถ้ามี broken references → ทำ `/resolve-errors`
 
 ### 6. Verify
 
