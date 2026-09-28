@@ -14,8 +14,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-framework-svelte-kit)
-
 ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
 หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode ของ skill นี้ — ดู [references/sveltekit-ssr.md](references/sveltekit-ssr.md)
 

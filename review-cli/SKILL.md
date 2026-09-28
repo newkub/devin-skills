@@ -27,7 +27,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 - multi-platform spot check (CLI เป็นแค่ dimension เดียว) → ใช้ `/deep-review`
 - general code quality, bug-prone patterns → ใช้ `/review-quality`
 - docs completeness โดยละเอียด → ใช้ `/review-docs`
-- แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass; fix guide: `../review-quality/references/fix-improve-cli-ux.md`)
+- แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass) หรือ section `## Fix` ด้านล่าง
 
 ## Execute
 
@@ -142,6 +142,16 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 4. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
 5. ทำ `/suggest-next-action` แนะนำ fix order
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `ux`, `report` — command surface + UX posture table | `subskills/report-ux/SKILL.md` |
+| Apply CLI UX findings — help, errors, output modes (user confirm) | `subskills/improve-cli-ux/SKILL.md` |
+
 ## Rules
 
 ### 1. Scope Boundary
@@ -194,7 +204,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
@@ -202,9 +212,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 2. errors/exit codes: message บอกสาเหตุ+ทำอะไรต่อ, exit codes ถูก, stderr/stdout แยก
 3. output: `--json` flag, TTY-only spinners, destructive → confirm + dry-run
 4. verify: รัน commands จริงทั้ง TTY/non-TTY + `/run-test` (cli)
-5. fix guide: `../review-quality/references/fix-improve-cli-ux.md`
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
-- [CLI UX fix guide](../review-quality/references/fix-improve-cli-ux.md)

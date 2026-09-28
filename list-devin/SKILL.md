@@ -15,7 +15,6 @@ Dispatch ไป top-level skill ตาม Devin resource ที่ต้อง l
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: list-devin-global-hooks, list-devin-global-mcp, list-devin-global-skills, list-devin-global-subagents, list-devin-session, list-devin-user-requests)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

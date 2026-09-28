@@ -113,6 +113,19 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 - `Medium`: prompts ไม่ versioned, RAG ไม่มี threshold/rerank, ไม่มี streaming error recovery
 - `Low`: model ไม่ pin version, missing few-shot updates, cache ยังไม่มีแต่ volume ต่ำ
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `prompts`, `prompt` — injection surface + contracts | `subskills/check-prompts/SKILL.md` |
+| `rag`, `retrieval` — chunking, thresholds, freshness | `subskills/check-rag/SKILL.md` |
+| `guardrails`, `agents`, `tools` — output validation + loop guards | `subskills/check-guardrails/SKILL.md` |
+| `cost`, `tokens`, `report-token-cost` — per-feature spend | `subskills/report-token-cost/SKILL.md` |
+| Setup eval suite from zero — golden set + CI gate (user confirm) | `subskills/setup-evals/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -126,7 +139,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

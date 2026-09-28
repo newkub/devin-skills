@@ -18,7 +18,7 @@ related:
 
 ## Goal
 
-Review release readiness ก่อนเริ่ม publish เพื่อยืนยันความถูกต้องของ version, changelog, breaking changes, semver, platform targets, rollback plan, release notes และ license — รวม deployment readiness (env, secrets, build, health, DNS/SSL, zero-downtime) และ post-deploy verify (merged from: review-deploy)
+Review release readiness ก่อนเริ่ม publish เพื่อยืนยันความถูกต้องของ version, changelog, breaking changes, semver, platform targets, rollback plan, release notes และ license — รวม deployment readiness (env, secrets, build, health, DNS/SSL, zero-downtime) และ post-deploy verify
 
 ## Scope
 
@@ -69,7 +69,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 - ตรวจ release notes สำหรับ GitHub Release
 - ตรวจ dependencies ไม่มี license conflicts
 
-### 7. Check Deployment Readiness (merged from: review-deploy)
+### 7. Check Deployment Readiness
 
 > Goal: ตรวจ deployment readiness — ข้ามถ้า release นี้ไม่มี deploy step
 
@@ -89,6 +89,17 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 - ทำ `/report` สรุป category, status, findings, score
 - สร้าง go/no-go checklist
 - ทำ `/suggest-next-action`
+
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `breaking`, `semver` — break detection + migration paths | `subskills/check-breaking/SKILL.md` |
+| `changelog`, `notes` — completeness + format | `subskills/check-changelog/SKILL.md` |
+| `readiness`, `report` — go/no-go checklist verdict | `subskills/report-readiness/SKILL.md` |
 
 ## Rules
 
@@ -115,7 +126,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 ## Verify
 
-> ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ (merged from: verify-deploy ผ่าน review-deploy)
+> ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ
 
 1. ทำตาม `references/deploy-verify.md`
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
@@ -141,7 +152,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ release blockers ตาม checklist: version drift → `/check-release-drift`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
 2. แก้ deploy step ที่ไม่พร้อม → `/follow-deploy` หรือ `/resolve-cicd`

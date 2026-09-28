@@ -23,8 +23,6 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ใช้สำหรับ workflow, skill, process หรือ script ใดๆ ทีต้องตรวจสอบ flow ให้ดีขึ้น
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-flow)
-
 ## Execute
 
 ### 1. Read Flow
@@ -94,7 +92,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ workflow ตาม findings: ลดขั้นตอนซ้ำ, แก้ steps ที่ช้า/ไม่ปลอดภัย, ตัดส่วนที่เกิน scope → `/restructure` หรือ `/refactor`
 2. capability ที่ควรเป็น skill แยก → ส่งต่อ `/new-skills` หรือ merge ตาม `/idea-merge`

@@ -16,7 +16,7 @@ related:
 ## Scope
 
 - ใช้หลัง review เสร็จและ user confirm ให้แก้ — review/report-only โดย default
-- ครอบคลุม: compute right-sizing, storage tiers/lifecycle, egress/CDN, third-party plans, CI spend
+- ครอบคลุม: compute right-sizing, storage tiers/lifecycle, egress/CDN, third-party plans, CI spend, LLM token usage
 - ไม่รวม code-level optimization → `/review-performance` fix flow
 
 ## Execute
@@ -35,7 +35,8 @@ related:
 
 1. stop/schedule dev และ staging resources ที่ idle นอกเวลาทำงาน
 2. right-size instances/serverless limits ตาม utilization evidence — ดู peak ไม่ใช่แค่ average
-3. cleanup orphaned volumes/snapshots — สำรองก่อนลบเสมอ
+3. ลด cold start cost — provisioned concurrency/warmup เมื่อ cold start tax สูง
+4. cleanup orphaned volumes/snapshots — สำรองก่อนลบเสมอ
 
 ### 3. Reduce Storage And Bandwidth
 
@@ -50,10 +51,21 @@ related:
 > Goal: ตัดค่าใช้จ่ายที่ซ้ำหรือเกินจำเป็น
 
 1. ตรวจ third-party services ที่ซ้ำกัน — consolidate หรือ downgrade plan ที่ใช้ไม่เต็ม
-2. CI spend: path filters, right-size runners, artifact retention, cache deps
-3. ตั้ง budget alerts ถ้า provider รองรับ
+2. cache external API calls และ rate-limit integrations ที่ยิง request ถี่ — ลด per-request charges
+3. CI spend: path filters, right-size runners, artifact retention, cache deps
+4. ตั้ง budget alerts ถ้า provider รองรับ
 
-### 5. Verify And Report
+### 5. Reduce LLM Token Spend
+
+> Goal: ลด token usage และ model cost โดยไม่ลด quality
+
+1. ลด prompt bloat — trim system prompts, remove redundant context, compact tool schemas
+2. เปิด prompt caching เมื่อ provider รองรับ — cache stable prefixes แทน resend ทุก request
+3. route งานง่ายไป cheaper model tier — ใช้ flagship model เฉพาะ task ที่จำเป็น
+4. จำกัด output tokens และใช้ structured output เพื่อลด verbosity
+5. batch/dedupe LLM calls — cache responses สำหรับ inputs ที่ซ้ำ
+
+### 6. Verify And Report
 
 > Goal: ลด cost โดยไม่ลด reliability
 

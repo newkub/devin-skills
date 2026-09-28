@@ -15,7 +15,6 @@ related:
   - report
   - run-scan
 
-
 ---
 
 ## Goal
@@ -112,4 +111,3 @@ related:
 - ไม่มี false positives ใน report
 - lockfile และ references อัปเดตถูกต้องหลังลบ
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-unused-files, check-unused-deps, check-dead-code)

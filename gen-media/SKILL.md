@@ -16,7 +16,6 @@ Dispatch ไป skill ตาม media domain — parent ทำ routing เท่
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: gen-ai-images, gen-ai-videos, gen-image-character, gen-3d-model)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

@@ -90,11 +90,9 @@ related:
 - ถ้าไม่มีอะไรค้าง → รายงานว่าไม่มี ไม่บังคับเขียน
 - ใช้ /update-docs ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - งานค้างทั้งหมดถูกเก็บใน `TODO.md` เป็น tracked items พร้อม priority และเหตุ
 - ไม่มี items ซ้ำกับที่มีอยู่
 - Session หน้า resume ได้จาก TODO.md ผ่าน `/report-scan-todo` และ `/implement-to-production`
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: save-to-todo-in-root-drive-d)

@@ -94,7 +94,7 @@ related:
 5. ตรวจ task decomposition: sub-tasks ไม่เกิน 10 tool calls
 6. ตรวจ context window management: ใช้ `offset` `limit` `code_search` รวม parallel calls
 7. คำนวณ health score จาก 6 metrics ตาม `### 6. Context Rot Review`
-8. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low
+8. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
 9. รายงานผลพร้อม review score, severity, และ action items
 
 ## Rules

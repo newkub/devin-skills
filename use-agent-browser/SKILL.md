@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-agent-browser, follow-tool-agent-browser)
-
 ใช้สำหรับ browser automation, web testing, monitoring, debugging, WebMCP, MCP server และ accessibility audits ด้วย `agent-browser` CLI จาก Vercel Labs — ครอบคลุมเปิด/close session, navigate, interact, `snapshot`/`find`, capture screenshots/PDF, console/errors และ batch workflows
 
 ## Execute
@@ -188,7 +186,6 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - [Website](references/website.md)
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
-
 
 ## Expected Outcome
 

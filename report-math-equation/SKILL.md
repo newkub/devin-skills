@@ -26,8 +26,6 @@ related:
 - คำถาม factual ทีต้องการคำตอบสั้น (เช่น "file นี้อยู่ทีไหน")
 - คำถามทีไม่มี variables ให้เปรียบเทียบ
 
-(merged from: `report-math-formula`)
-
 ## Execute
 
 ### 1. Identify Variables

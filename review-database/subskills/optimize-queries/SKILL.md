@@ -19,7 +19,7 @@ related:
 
 - ใช้หลัง review เสร็จและ user confirm ให้แก้ — review/report-only โดย default
 - ครอบคลุม: missing/unused indexes, N+1 queries, offset pagination บนตารางใหญ่, `SELECT *`, missing LIMIT
-- migration issues → `subskills/fix-migrations/SKILL.md`; multi-domain fix → `/deep-review-then-fix`
+- migration issues → `/review-database` `## Fix` (migrations); multi-domain fix → `/deep-review-then-fix`
 
 ## Execute
 

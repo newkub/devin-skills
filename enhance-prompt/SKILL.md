@@ -79,7 +79,6 @@ related:
 - เป็นเพียงการสรุป prompt เท่านั้น
 - ใช้ /think-reframe ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - Numbered list ทีอ่านง่าย แต่ละข้อมี single responsibility
@@ -87,4 +86,3 @@ related:
 - ข้อกำหนดของผู้ใช้ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
 - พร้อมส่งต่อให้ `/plan`, `/continue`, หรือ `/follow-devin-global-skills` ต่อไป
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-enhance-prompt)

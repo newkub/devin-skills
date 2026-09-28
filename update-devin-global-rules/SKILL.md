@@ -130,5 +130,3 @@ related:
 - มีรายงานการเปลี่ยนแปลง
 - ผ่าน validation
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-global-rules)
-

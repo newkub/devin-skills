@@ -1,8 +1,5 @@
 # Jsdom
 
-(merged from: follow-tool-jsdom)
-
-
 ## Goal
 
 ใช้ jsdom เป็น DOM environment สำหรับ tests — setup, limitations, polyfills

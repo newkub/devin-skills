@@ -16,60 +16,39 @@ related:
 
 ## Goal
 
-Canonical fix skill — review แล้ว fix findings ทุก domain ตาม Domain Map อ่าน fix guides จาก `review-*/references/` (merged from: `review-then-fix`, `deep-review-codebase-then-fix`)
-
-
+Canonical fix skill — review แล้ว fix findings ทุก domain ตาม Domain Map ผ่าน `## Fix` section และ `subskills/` ของ `review-*` แต่ละตัว
 
 ## Scope
 
 ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
 
-- Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review` เป็น review pass (merged from: `deep-review-codebase-then-fix`)
-- Fix findings หลัง review ตาม Domain Map ด้านล่าง 
+- Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review` เป็น review pass
+- Fix findings หลัง review ตาม Domain Map ด้านล่าง
 - Fix mode: user confirm ตาม findings (default), ตาม suggestion เดิม (`/follow-your-suggestion`), หรือ `fix all` ตามที่ user ระบุ
 
 ดูเพิ่มเติม: /deep-review
 
 ## Domain Map
 
-fix guides อยู่ใน `references/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
+fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
 
-| Domain | Review skill | Fix guides |
-|--------|-------------|------------|
-| seo | `/review-seo` | `review-seo/references/fix-*.md` |
-| security | `/review-security` | `review-security/references/fix-*.md` |
-| auth | `/review-auth` | `review-auth/references/fix-*.md` |
-| api | `/review-api` | `review-api/references/fix-*.md` |
-| database | `/review-database` | `review-database/references/fix-*.md` |
-| dependencies | `/review-dependencies` | `review-dependencies/references/fix-*.md` |
-| bundle+assets | `/review-bundle` | `review-bundle/references/fix-*.md` |
-| performance | `/review-performance` | `review-performance/references/fix-*.md` |
-| ci/delivery | `/review-delivery` | `review-delivery/references/fix-*.md` |
-| cost | `/review-cost` | `review-cost/references/fix-*.md` |
-| docs | `/review-docs` | `review-docs/references/fix-*.md` |
-| tests | `/review-test` | `review-test/references/fix-*.md` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/review-uxui` | `review-uxui/references/fix-*.md` + `/watch-browser-and-improve-uxui` (browser pass) |
-| stability | `/review-stability` | `review-stability/references/fix-*.md` |
-| observability | `/review-observability` | `review-observability/references/fix-*.md` |
-| cli | `/review-cli` | `review-quality/references/fix-improve-cli-ux.md` |
-| config | `/review-config` | `review-config/references/fix-*.md` |
-| migration | `/review-migration` | `review-migration/references/fix-*.md` |
-| accessibility | `/review-accessibility` | `review-accessibility/references/fix-*.md` |
-| frontend | `/review-frontend` | `review-frontend/references/fix-*.md` |
-| backend | `/review-backend` | `review-backend/references/fix-*.md` |
-| quality/types | `/review-quality` | `review-quality/references/fix-*.md` |
-| i18n | `/review-i18n` | `review-i18n` `## Fix` steps |
-| mobile | `/review-mobile` | `review-mobile` `## Fix` steps |
-| desktop | `/review-desktop-app` | `review-desktop-app` `## Fix` steps |
-| browser-ext | `/review-browser-ext` | `review-browser-ext` `## Fix` steps |
-| dx | `/review-dx` | `review-dx` `## Fix` steps |
-| iac | `/review-iac` | `review-iac` `## Fix` steps |
-| sdk | `/review-sdk` | `review-sdk` `## Fix` steps |
-| usage | `/review-usage` | `review-usage` `## Fix` steps |
-| ai | `/review-ai` | `review-ai` `## Fix` steps |
-| mcp | `/review-mcp` | `review-mcp` `## Fix` steps |
-| events | `/review-events` | `review-events` `## Fix` steps |
-| อื่นๆ | `/review-<domain>` | `review-<domain>/references/fix-*.md` ถ้ามี — ไม่มีให้แก้ตาม findings ตรงๆ |
+| Domain | Review skill | Fix route |
+|--------|-------------|-----------|
+| seo | `/review-seo` | `subskills/improve-seo` |
+| security | `/review-security` | `## Fix` — secrets rotation, headers, vuln deps |
+| auth | `/review-auth` | `## Fix` — sessions, tokens |
+| api | `/review-api` | `## Fix` — contract drift, versioning |
+| database | `/review-database` | `## Fix` (migrations) + `subskills/optimize-queries` |
+| bundle+assets | `/review-bundle` | `subskills/optimize-bundle` |
+| performance | `/review-performance` | `subskills/optimize-performance` |
+| cost | `/review-cost` | `subskills/optimize-cost` |
+| tests | `/review-test` | `## Fix` (flaky) + `subskills/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
+| uxui | `/review-uxui` | `subskills/improve-uxui-fix` + `/watch-browser-and-improve-uxui` (browser pass) |
+| observability | `/review-observability` | `subskills/improve-observability` |
+| accessibility | `/review-accessibility` | `subskills/improve-a11y` |
+| frontend | `/review-frontend` | `## Fix` (hydration) + `subskills/improve-rendering` |
+| quality/types | `/review-quality` | `## Fix` — complexity, imports |
+| อื่นๆ (cli, config, migration, backend, dependencies, delivery, docs, stability, i18n, mobile, desktop, browser-ext, dx, iac, sdk, usage, ai, mcp, events) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
 ## Execute
 
@@ -99,7 +78,7 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 > Goal: แก้ไข issues ตามแผน
 
 1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
-2. Dispatch approved fixes ตาม domain ผ่าน `subskills/fix-by-domain/SKILL.md` — map findings ไป `review-*/references/fix-*.md` ตาม Domain Map ด้านบน
+2. Dispatch approved fixes ตาม domain — จัดกลุ่ม findings แล้ว map ไป `## Fix` section หรือ subskills ของ `review-*` ตาม Domain Map ด้านบน; domain ที่ไม่มีในตาราง → `/ask-me` ก่อนแก้
 3. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Verify
@@ -136,15 +115,12 @@ fix guides อยู่ใน `references/` ของ `review-*` ตัวที
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (then fix)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. เลือก fix route ที่ตรงกับ finding จาก Domain Map ด้านบน (then fix)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (then fix)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (then fix)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (then fix)
-
-- `references/fix-improve.md` — ปรับปรุงสิ่งใดๆ ใน project ตาม context โดยหา gaps แล้วแก้ไข
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

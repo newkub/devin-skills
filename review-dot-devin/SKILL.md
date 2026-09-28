@@ -19,7 +19,7 @@ related:
 
 ## Goal
 
-Review `.devin` ครบทั้ง structure และ content — directories, hooks, `hooks.json`, `.devin/rules/` content, `AGENTS.md`, `sgconfig.yml` และ ast-grep `rules/` — ก่อนเรียก `update-dot-devin` หรือ audit อิสระ (merged from: `review-rules`)
+Review `.devin` ครบทั้ง structure และ content — directories, hooks, `hooks.json`, `.devin/rules/` content, `AGENTS.md`, `sgconfig.yml` และ ast-grep `rules/` — ก่อนเรียก `update-dot-devin` หรือ audit อิสระ
 
 ## Scope
 
@@ -89,6 +89,15 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 - ทำ `/report` พร้อม severity, evidence, action
 - ทำ `/suggest-next-action`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Apply .devin findings — structure, hooks, rules, sgconfig (user confirm) | `subskills/improve-dot-devin/SKILL.md` |
+
 ## Rules
 
 1. Review Only
@@ -113,7 +122,7 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

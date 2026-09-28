@@ -20,8 +20,6 @@ related:
 
 ใช้สำหรับการรายงาน TODO/FIXME/HACK/NOTE/XXX/BUG ทั้งจากไฟล์ `TODO.md` และจาก code markers ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/implement-to-production`)
 
-(merged from: `report-todo`, `list-todo-md`)
-
 ## Execute
 
 ### 1. Scan TODO.md Files
@@ -148,7 +146,6 @@ related:
 - ใช้ /run-scan ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - รายการ TODO/FIXME/HACK/NOTE/XXX/BUG จาก code markers และไฟล์ `TODO.md` ในตารางที่อ่านง่าย
@@ -158,4 +155,3 @@ related:
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-todo-comments)

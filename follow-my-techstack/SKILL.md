@@ -22,7 +22,7 @@ related:
 
 ใช้เมื่อ task ต้องเลือก library/tool/service สำหรับความต้องการหนึ่งอย่าง (เช่น validator, HTTP client, ORM, testing, styling) — ไม่ว่าจะติดตั้งใหม่หรือใช้ของที่มีอยู่
 
-- Canonical catalog: `review-dependencies/references/techstack-catalog.md` (merged from: follow-my-tech-stack) — source of truth เดียว ห้าม copy เนื้อหามาไว้ที่นี่
+- Canonical catalog: `review-dependencies/references/techstack-catalog.md` — source of truth เดียว ห้าม copy เนื้อหามาไว้ที่นี่
 - Review stack ทั้ง project เทียบ catalog → `/review-techstack`
 - หา package ที่ยังไม่มีใน catalog → `/research-dependencies` หรือ `/deep-research`
 - ติดตั้ง package → `/run-install`
@@ -78,7 +78,6 @@ related:
 - การเลือกที่ขัดกับ default ต้องมีเหตุผลที่บันทึกได้ (comment, ADR, หรือเงื่อนไข `(→ ...)` ใน catalog)
 - ตัดสินใจเสี่ยงสูงหรือไม่ชัด → `/ask-me`
 - ใช้ /use-lib-effective ถ้าจำเป็น
-
 
 ## Expected Outcome
 

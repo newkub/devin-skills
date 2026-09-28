@@ -19,7 +19,7 @@ related:
 
 ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-jsdom) — สำหรับ jsdom DOM environment ดู `references/jsdom.md`
+- สำหรับ jsdom DOM environment ดู `references/jsdom.md`
 
 - Boundary: ใช้ Vitest สำหรับ unit/integration tests — E2E/browser flows ใช้ `/follow-tool-playwright`; component DOM queries ใช้ `/follow-lib-testing-library`
 

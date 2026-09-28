@@ -26,8 +26,6 @@ related:
 
 ไม่รวม UX copy, content coverage, SEO, code quality โดยละเอียด
 
-- merged from: `review-readability` — readability checklist refs `references/readability-*.md`
-
 ## Execute
 
 ### 1. Prepare And Scan
@@ -96,15 +94,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (writing)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-naming
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — naming consistency ข้าม codebase ตัวแปร, functions, files และ exports (writing)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (writing)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (writing)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (writing)
-
-- `references/fix-improve-naming.md` — ปรับ naming consistency ข้าม codebase ตัวแปร, functions, files และ exports
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

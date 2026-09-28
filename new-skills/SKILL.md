@@ -100,7 +100,7 @@ related:
 
 - ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm)
 - ทิศทางเดียว: `check` → `review` → `## Fix` — ห้ามย้อนกลับ
-- fix ใดๆ ให้เขียนเป็น `references/fix-*.md` แล้วอ้างจาก section `## Fix` ของ review skill
+- fix ใดๆ ให้เขียนเป็น steps ใน section `## Fix` ของ review skill — ห้ามสร้าง `subskills/fix-*/` และ `references/fix-*.md`
 - ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge`)
 
 ### 5. References
@@ -121,4 +121,3 @@ related:
 - ผ่าน `/deep-validate`
 - ใช้ร่วมกับ `/update-devin-global-skills` ในกระบวนการสร้าง
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: new-skills)

@@ -1,7 +1,5 @@
 # Fix Guide
 
-(merged from: improve-redundancy)
-
 ## Goal
 
 ลด duplication และ redundancy ที่ไม่จำเป็นใน code, content, หรือ config โดยรวบรวมเป็น canonical version เดียว

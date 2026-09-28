@@ -1,8 +1,5 @@
 # List Github Actions Fails
 
-(merged from: list-github-actions-fails)
-
-
 ## Goal
 
 สรุป GitHub Actions workflow runs ที conclusion=failure หรือ status ล้มเหลว ทั้งหมดที user เข้าถึงบน GitHub
@@ -101,6 +98,4 @@
 - ตารางที sort ตามวันที failure เกิด
 - ข้อมูล repo, workflow, branch, commit, event, url พร้อม
 - ไม่มีการแก้ไข repo หรือ workflow ใดๆ
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-github-action-fail, list-cicd-fails)
 

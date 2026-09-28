@@ -16,8 +16,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-cloudflare-project, create-cloudflare-worker-project)
-
 - ใช้ Wrangler CLI หรือ Cloudflare API v4 สร้าง Workers project
 - เชื่อม Git repository ผ่าน Cloudflare Workers Builds API หรือ dashboard
 - รองรับ frontend framework เช่น Vite, Solid, React, Svelte

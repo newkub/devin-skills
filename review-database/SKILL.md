@@ -94,7 +94,10 @@ related:
 | Topic | Subskill |
 |-------|----------|
 | Apply query findings — indexes, N+1, pagination | `subskills/optimize-queries/SKILL.md` |
-| Fix migration issues — drift, failed migrations, rollback | `subskills/fix-migrations/SKILL.md` |
+| `schema` — schema design + integrity checks | `subskills/check-schema/SKILL.md` |
+| `indexes`, `queries` — index coverage + query patterns | `subskills/check-indexes/SKILL.md` |
+| `slow-queries`, `report` — slow-query table + index recs | `subskills/report-slow-queries/SKILL.md` |
+| Apply migration findings — expand-contract, rollback (user confirm) | `subskills/improve-migrations/SKILL.md` |
 
 ## Rules
 
@@ -119,7 +122,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
@@ -127,6 +130,7 @@ related:
 2. N+1 → eager loading/batch; verify query count ลดจริง
 3. indexes ตาม WHERE/JOIN/ORDER จริง, ลบ unused — ผ่าน migration files เท่านั้น
 4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
+5. migrations: backup DB ก่อน → drift แก้ด้วย reconcile migration (ห้ามแก้ migration ที่ apply แล้ว สร้างใหม่เสมอ), failed migrations mark resolved/rollback ตาม tool — เพิ่ม down/rollback ให้ครบ, destructive ops แยกเป็น expand-contract — verify migrate up/down บน fresh DB + `/check-schema-change` diff เป็นศูนย์
 5. verify: EXPLAIN before/after, tests ผ่าน
 
 ## References

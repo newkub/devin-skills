@@ -1,8 +1,5 @@
 # Implement Plan
 
-(merged from: implement-plan)
-
-
 ## Goal
 
 อ่านแผนจาก `.devin/plan/<workspace>/<title-date>.md` ดำเนินการให้ครบถ้วน แล้วลบไฟล์แผน

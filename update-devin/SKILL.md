@@ -18,7 +18,6 @@ Dispatch ไป skill ปลายทาง ตาม Devin config domain — pa
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: update-devin-global-mcp, update-devin-global-rules, update-devin-global-subagents, update-devin-harness, update-devin-project-hooks, update-devin-project-mcp, update-devin-project-rules)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 - `update-devin-global-skills` ยังเป็น skill แยก (skills catalog lifecycle)
 

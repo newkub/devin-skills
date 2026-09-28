@@ -59,5 +59,3 @@ related:
 
 - ตาราง requests ตาม scope พร้อมสถิติ
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-devin-user-request-all-session, list-devin-user-request-in-this-session, list-devin-user-request-this-repo)
-

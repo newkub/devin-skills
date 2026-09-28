@@ -1,8 +1,5 @@
 # Vite Plugin Compression
 
-(merged from: follow-tool-vite-plugin-compression)
-
-
 ## Goal
 
 ใช้ vite-plugin-compression2 สร้าง gzip/brotli pre-compressed assets ตอน build

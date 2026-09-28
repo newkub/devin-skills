@@ -20,7 +20,7 @@ related:
 
 ## Goal
 
-เขียนและอัปเดต tests ให้ครอบคลุมทุก test type และทุก layer — unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual — ตาม conventions ของ project แล้วรันจนผ่านทั้ง suite (merged from: `update-test-and-fix`, `update-unit-test`, `update-integration-test`, `update-e2e-test`, `deep-test`)
+เขียนและอัปเดต tests ให้ครอบคลุมทุก test type และทุก layer — unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual — ตาม conventions ของ project แล้วรันจนผ่านทั้ง suite
 
 ## Scope
 

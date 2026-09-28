@@ -129,24 +129,12 @@ Review app/package เพื่อหา "สิ่งที่ optimize ได�
 
 > ทำ section นี้เมื่อ user confirm ให้แก้ findings หรือสั่ง optimize ตรงๆ — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-เลือก fix guide ตาม findings ที่อยู่ในกลุ่ม `apply now`:
-
-| Finding Layer | Fix Guide |
-|---------------|-----------|
-| streaming/reactive — per-token setState, parse-on-grow | `references/fix-optimize-streaming.md` |
-| render/DOM — unbounded nodes, missing virtualization, spread overflow | `references/fix-optimize-render.md` |
-| CSS/layout — recalc storms, layout-property animations, scroll cost | `references/fix-optimize-css-layout.md` |
-| memory — unbounded stores, listener leaks, retention | `references/fix-optimize-memory.md` |
-| concurrency — main-thread CPU work, sequential awaits, locks | `references/fix-optimize-concurrency.md` |
-| polling/IPC/startup — repeated calls, hidden work, sequential boot | `references/fix-optimize-polling.md` |
-| I/O/persistence — write-per-mutation, N+1, blocking I/O | `references/fix-optimize-io.md` |
-| assets — fonts/icons/images/media loading | `references/fix-optimize-assets.md` |
-| bundle/native — full-lib imports, chunk boundaries, release profile | `references/fix-optimize-bundle-native.md` |
+แก้ findings ที่อยู่ในกลุ่ม `apply now` ตาม recipe ใน `references/patterns.md` — map symptom → recipe แล้ว apply ตรงๆ; symptom ที่ไม่มีใน catalog ให้แก้ตาม finding recommendation
 
 ### Fix Order
 
 1. baseline ก่อนแก้เสมอ (จาก step 1 ของ Execute)
-2. แก้ทีละ fix guide เรียง impact — verify หลังแต่ละ guide ก่อนไปต่อ
+2. แก้ทีละ finding เรียง impact — verify หลังแต่ละ fix ก่อนไปต่อ
 3. verify รวมท้ายงานตาม `references/verify-and-measure.md` — typecheck + lint + tests + build, เทียบ measurements กับ baseline; regression → revert จุดนั้น
 
 ## References
@@ -166,15 +154,6 @@ Review app/package เพื่อหา "สิ่งที่ optimize ได�
 - [Prioritize and report](references/prioritize-and-report.md)
 - [Verify and measure](references/verify-and-measure.md)
 - [Patterns catalog](references/patterns.md)
-- [Fix streaming](references/fix-optimize-streaming.md)
-- [Fix render](references/fix-optimize-render.md)
-- [Fix CSS and layout](references/fix-optimize-css-layout.md)
-- [Fix memory](references/fix-optimize-memory.md)
-- [Fix concurrency](references/fix-optimize-concurrency.md)
-- [Fix polling](references/fix-optimize-polling.md)
-- [Fix I/O](references/fix-optimize-io.md)
-- [Fix assets](references/fix-optimize-assets.md)
-- [Fix bundle and native](references/fix-optimize-bundle-native.md)
 - [Full-dimension checklist](references/checklist.md)
 
 ## Expected Outcome

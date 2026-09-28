@@ -27,7 +27,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, todo list, และ validation results ทีมีอยู่ (merged from: `report-and-continue`)
+ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, todo list, และ validation results ทีมีอยู่
 
 ดูเพิ่มเติม: /report-before-after
 

@@ -1,6 +1,6 @@
 ---
 name: route-scanner
-description: ขั้นตอน scan routes ทั้งหมดของ website (page + API routes) — merged from list-website-all-routes
+description: ขั้นตอน scan routes ทั้งหมดของ website (page + API routes) —
 ---
 
 ## Goal

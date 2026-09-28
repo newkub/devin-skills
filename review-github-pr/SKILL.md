@@ -20,7 +20,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ใช้สำหรับ review pull request ก่อน merge — ทำงานบน PR จาก GitHub หรือ local branch diff — ไม่แก้ไข code โดยไม่ได้รับอนุญาต
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-review-pr) — ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
+- ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
 
 ## Execute
 
@@ -63,6 +63,14 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 - ใช้ `subagents/pr-reviewer.md` เมื่อ PR ใหญ่และแบ่งเป็น slices ที่ independent กันได้ (per-domain เช่น security/tests/api หรือ per-file-group) — spawn ผ่าน `/use-subagents` แล้ว merge findings ทุก slice ก่อน score/report
 
+### Subskills
+
+> Goal: dispatch report formatting ไปยัง subskill เมื่อต้องการ review comments พร้อม submit
+
+| Topic | Subskill |
+|-------|----------|
+| `comments`, `report-comments` — inline comment drafts + summary verdict | `subskills/report-comments/SKILL.md` |
+
 ## Rules
 
 - Review เท่านั้น ไม่แก้ source โดยไม่ได้รับอนุญาต
@@ -85,7 +93,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ## References
 
@@ -98,7 +106,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - [Scoring](references/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
-
 
 ## Expected Outcome
 

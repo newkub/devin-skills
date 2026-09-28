@@ -28,7 +28,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ audit content freshness ของ file หรือ directory ที่ระบุ — ไม่แก้ไขเอง รายงาน findings พร้อม recommendation (fix ทำผ่าน `update-*`/`fix-*` skills)
+ใช้สำหรับ audit content freshness ของ file หรือ directory ที่ระบุ — ไม่แก้ไขเอง รายงาน findings พร้อม recommendation (fix ทำผ่าน `update-*` skills หรือ `## Fix` section ของ review skill ที่ตรง domain)
 
 ## Execute
 

@@ -103,6 +103,18 @@ Review ความเสถียรของ application ครอบคลุ
 5. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
 6. ทำ `/suggest-next-action`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `errors`, `error-handling` — unhandled/swallowed/boundaries | `subskills/check-errors/SKILL.md` |
+| `recovery`, `degradation` — rollback, shutdown, restore | `subskills/check-recovery/SKILL.md` |
+| `matrix`, `report` — dependency-failure degradation matrix | `subskills/report-degradation/SKILL.md` |
+| Apply resilience findings — timeouts, breakers, fallbacks (user confirm) | `subskills/improve-resilience/SKILL.md` |
+
 ## Rules
 
 ### 1. Scope Boundary
@@ -148,7 +160,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

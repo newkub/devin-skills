@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-เลือก package manager ทีเหมาะสมสำหรับ install, list หรือ uninstall program บน OS ปัจจุบัน — merged from `follow-my-package-manager`
+เลือก package manager ทีเหมาะสมสำหรับ install, list หรือ uninstall program บน OS ปัจจุบัน —
 
 ## Scope
 

@@ -18,8 +18,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-service-infisical)
-
 ใช้สำหรับทุก workspace ที่ต้องการ secrets management ทั้ง local development, CI/CD และ production รองรับ secret manager หลายตัวแต่แนะนำ Infisical เป็น default
 
 ## Execute

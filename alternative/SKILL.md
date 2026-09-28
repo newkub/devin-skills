@@ -28,7 +28,6 @@ related:
   - resolve-errors
 ---
 
-
 ## Goal
 
 ค้นหาและแนะนำ alternatives ทีดีกว่าสำหรับสิ่งที user ระบุ
@@ -112,7 +111,6 @@ related:
 - ให้ references สำหรับ deeper learning
 - ใช้ /compare-competitors ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - Alternatives ทีดีกว่าพร้อมเปรียบเทียบ
@@ -121,4 +119,3 @@ related:
 - Examples หรือ migration guides
 - References สำหรับ deeper learning
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-alternative)

@@ -1,4 +1,4 @@
-# Standalone Slidev Project (merged from create-slide-via-slidev)
+# Standalone Slidev Project
 
 ## Goal
 

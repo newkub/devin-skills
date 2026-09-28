@@ -1,8 +1,5 @@
 # Clippy
 
-(merged from: follow-tool-clippy)
-
-
 ## Goal
 
 ตั้งค่า Clippy lint rules และ error handling standards เพื่อลด manual error fixing
@@ -108,7 +105,6 @@ allow-mixed-uninlined-format-args = true
 ## References
 
 - [CLI reference](cli.md)
-
 
 ## Expected Outcome
 

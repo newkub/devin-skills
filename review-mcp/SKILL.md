@@ -94,6 +94,15 @@ Review MCP (Model Context Protocol) servers ครบทุกมิติ — t
 - `Medium`: naming inconsistent, no pagination bounds, missing descriptions
 - `Low`: no health check, minor ergonomics
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Apply MCP findings — tools, schemas, auth, guards (user confirm) | `subskills/improve-mcp/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -106,7 +115,7 @@ Review MCP (Model Context Protocol) servers ครบทุกมิติ — t
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

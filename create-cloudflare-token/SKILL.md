@@ -158,4 +158,3 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 - Token มี permissions ตรงกับ use case (Workers, D1, Pages, R2, KV, Access, Zero Trust)
 - Project สามารถใช้ token สำหรับ deploy หรือจัดการ Cloudflare resources ต่อไป
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-cloudflare-tokens, follow-create-cloudflare-token)

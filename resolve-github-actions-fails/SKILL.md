@@ -19,7 +19,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 ใช้กับ repo ปัจจุบันหรือ repo ที user ระบุ ครอบคลุม public/private ตามสิทธิ์ `gh` token
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-github-actions-fails) — สำหรับ list fails ดู `references/list-fails.md`
+- สำหรับ list fails ดู `references/list-fails.md`
 
 ## Execute
 
@@ -74,7 +74,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 ### 6. Watch Run Real-time
 
-> Goal: ติดตาม run แบบ real-time จนกว่าจะจบ (merged from: watch-github-actions)
+> Goal: ติดตาม run แบบ real-time จนกว่าจะจบ
 1. รัน `gh run watch <run-id> --repo <owner/repo>` เพื่อติดตามแบบ real-time
 2. ถ้า `gh run watch` ค้างหรือ timeout → รัน `gh run view <run-id>` เพื่อตรวจสอบสถานะแทน
 3. ถ้า run ล้มเหลว → กลับไปขั้นตอน Analyze Logs และ resolve ต่อ
@@ -125,7 +125,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 ### 5. Account-wide
 - ถ้า user ต้องการ resolve ทั่วทุก repo → ใช้ `/resolve-all-github-actions-fails` แทน (skill นี้ทำทีละ repo)
 
-### 6. Watch Timeouts (merged from: watch-github-actions)
+### 6. Watch Timeouts
 - `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ fix-and-push
 - `ghRunWatchTimeout` = `300` วินาที สำหรับ `gh run watch`
 - หยุดทันทีเมื่อ user กด `Ctrl+C` — บันทึกสถานะ run ก่อนหยุด
@@ -147,5 +147,5 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ข้อมูล workflow, branch, commit, url, action taken พร้อม
 - ไม่มีการ push/merge หรือแก้ไข repo โดยไม่ได้รับอนุญาต
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: watch-github-actions) — ใช้ใน `git-push` ด้วย; account-wide scope อยู่ที่ `/resolve-all-github-actions-fails`
+- ใช้ใน `git-push` ด้วย; account-wide scope อยู่ที่ `/resolve-all-github-actions-fails`
 

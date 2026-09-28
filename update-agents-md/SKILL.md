@@ -105,7 +105,7 @@ related:
 
 ### 8. Ship
 
-> Goal: ship ผ่าน feature branch → validate → staging → merge → production พร้อม rollback path (merged from: ship, ship-to-staging, ship-to-production)
+> Goal: ship ผ่าน feature branch → validate → staging → merge → production พร้อม rollback path
 
 #### Branch Hygiene
 

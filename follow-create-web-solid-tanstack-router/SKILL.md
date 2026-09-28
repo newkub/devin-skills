@@ -15,14 +15,11 @@ related:
   - run-dev
 ---
 
-
 ## Goal
 
 ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS) แบบ type-safe — server functions และ server routes ในตัว framework โดยไม่ต้องพึ่ง backend framework แยก
 
 ## Scope
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-solid-tanstack-architecture)
 
 ใช้สำหรับ projects ที่ต้องการ:
 
@@ -223,7 +220,6 @@ related:
 - ใช้ /follow-create-vite-plugin ถ้าจำเป็น (create web solid tanstack router)
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น
-
 
 ## Expected Outcome
 

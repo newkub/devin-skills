@@ -32,7 +32,6 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 
 ใช้เมื่อต้องรวมเนื้อหาจากหลายไฟล์หรือหลายโฟลเดอร์เข้าด้วยกัน และลบ source หลัง merge — หรือเมื่อต้องการ merge git branch/PR ตาม domain
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: merge-git-branch, merge-github-pr, merge-all-branch-by-me-to-main)
 - `git-branch` → merge feature branch เข้า target branch ด้วย `--no-ff`
 - `github-pr` → merge pull request ด้วย strategy ที่เหมาะสม
 - `all-branch-by-me-to-main` → merge ทุก branch ที่ user สร้างเข้า `main` แล้วลบ branch

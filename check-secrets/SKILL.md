@@ -15,7 +15,6 @@ Dispatch ไป subskill ตาม domain ของ secrets check — parent ท
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: check-env-vars, check-hardcoded-values, check-secrets-leak)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

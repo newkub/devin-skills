@@ -28,7 +28,7 @@ bun add -D @biomejs/biome
 
 | Package | Registry | Latest | Notes |
 |---------|----------|--------|-------|
-| `ultracite` | `npm` | `—` | Optional Biome preset (merged from follow-tool-ultracite; see `references/ultracite.md`) |
+| `ultracite` | `npm` | `—` | Optional Biome preset (see `references/ultracite.md`) |
 | `biomejs/setup-biome` | `GitHub Action` | `v2` | CI setup action |
 
 ## Notes

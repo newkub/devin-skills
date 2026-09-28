@@ -23,11 +23,9 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 ใช้ก่อนเรียก `update-docs` หรือ `update-vitepress-docs` — ตรวจ `docs/` structure, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-docs`)
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage, review-readme-md) — content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
+- content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
-
-- merged from: `review-usage`, `review-features` — USAGE.md refs `references/usage-md-*.md`, features docs refs `references/features-*.md`
 
 ## Execute
 
@@ -77,7 +75,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 1. ทำตาม `references/workspace-links.md#check-links`
 
-### 8. Check README.md (merged from: review-readme-md)
+### 8. Check README.md
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
@@ -105,6 +103,16 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 1. ทำตาม `references/scoring.md`
 2. ทำ `/report` พร้อม findings
 3. ทำ `/suggest-next-action`
+
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `links` — internal/anchor/external link + nav sync | `subskills/check-links/SKILL.md` |
+| `drift`, `freshness` — docs vs code drift, dead docs | `subskills/check-drift/SKILL.md` |
 
 ## Rules
 
@@ -144,7 +152,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

@@ -82,6 +82,16 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 3. ทำ `/report-file-structure` สำหรับ config tree
 4. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-cicd`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `env`, `env-vars` — env parity, prefixes, leaks | `subskills/check-env/SKILL.md` |
+| Setup env validation from zero — startup schema (user confirm) | `subskills/setup-env-validation/SKILL.md` |
+
 ## Rules
 
 ### 1. Read-Only Review
@@ -125,7 +135,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

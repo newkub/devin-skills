@@ -14,7 +14,7 @@ Alias ของ `/update-devin-harness` — ทำให้ `global_rules.md`, `
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/align-devin-layers` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-devin-harness` (merged from: align-devin-layers)
+ใช้เมื่อ user เรียก `/align-devin-layers` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-devin-harness`
 
 ## Execute
 

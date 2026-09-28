@@ -106,7 +106,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. ปรับ idea ตาม findings: ตัดส่วนที่ score ต่ำ/ไม่คุ้ม, แก้ scope ที่เบลอ, เพิ่มข้อมูลที่ขาด
 2. ถ้า verdict `go` → ทำ `/create-plan-in-dot-devin` หรือ `/plan` ต่อ

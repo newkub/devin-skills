@@ -1,7 +1,5 @@
 # Deep PR Review
 
-(merged from: deep-review-pr)
-
 ใช้เมื่อต้อง review PR แบบละเอียด — ตอบ comments, resolve conversations, และถาม user ก่อน merge
 
 ## Execute

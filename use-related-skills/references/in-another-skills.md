@@ -1,8 +1,5 @@
 # Use In Another Skills
 
-(merged from: use-in-another-skills)
-
-
 ## Goal
 
 เลือกและใช้ skill อื่นที่เหมาะสมกับ task หรือ skill ปัจจุบัน เพื่อดำเนินการต่อ

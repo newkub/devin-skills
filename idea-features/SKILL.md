@@ -105,14 +105,10 @@ related:
 - ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ
 - ใช้ /think-reframe ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - User ได้รับไอเดีย features ในแชททันทีเป็น tables (sort ตาม impact)
 - มี `/report-todo` action table สำหรับ steps ถัดไป
 - ไม่มีไฟล์ถูกสร้าง
 - ไม่มี implementation หรือ UX/UI sketch เกิดขึ้น
-
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-idea-features)
 

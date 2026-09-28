@@ -16,7 +16,6 @@ Dispatch ไป skill ตาม domain ของ conversion — parent ทำ ro
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: convert-to-esm, convert-files-format, convert-to-git-submodules, convert-to-scripts, convert-to-svg)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

@@ -93,6 +93,15 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 - `Medium`: tray/menu/shortcuts ไม่ตาม platform convention, ไม่มี single-instance, deep links ไม่ register
 - `Low`: installer size เกิน budget, idle resource usage, cosmetic shell issues
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Setup auto-update + packaging from zero (user confirm) | `subskills/setup-auto-update/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -106,7 +115,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

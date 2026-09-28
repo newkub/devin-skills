@@ -19,7 +19,7 @@ related:
 
 ใช้กับ worker หรือ pages project เดียว ถ้าไม่ระบุจะหาจาก current project หรือ repo name
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-cloudflare-worker-fails) — สำหรับ list fails ดู `references/list-fails.md`
+- สำหรับ list fails ดู `references/list-fails.md`
 
 ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `references/list-fails.md`
 

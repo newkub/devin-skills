@@ -12,7 +12,6 @@ related:
   - run-test
 ---
 
-
 ## Goal
 
 ตั้งค่า Playwright เป็น E2E testing framework หลักสำหรับโปรเจกต์ web
@@ -235,7 +234,6 @@ related:
 - [CLI reference](references/cli.md)
 - ใช้ /run-test ถ้าจำเป็น
 
-
 ## Expected Outcome
 
 - Playwright ติดตั้งและทำงานได้
@@ -243,4 +241,3 @@ related:
 - E2E tests รันได้ทั้งหมด
 - เป็นไปตาม best practices จาก Playwright 2026 official documentation
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-axe-playwright)

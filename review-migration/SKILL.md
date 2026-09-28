@@ -75,6 +75,16 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 - แสดง go/no-go recommendation
 - ทำ `/suggest-next-action`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `rollback`, `cutover` — down migrations, kill switches | `subskills/check-rollback/SKILL.md` |
+| `integrity`, `data` — counts/checksums, referential integrity | `subskills/check-data-integrity/SKILL.md` |
+
 ## Rules
 
 1. Review Independence
@@ -100,7 +110,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
@@ -110,7 +120,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 4. verify: up→down→up บน existing-data copy + lock duration estimate
 ## Verify
 
-> ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied (merged from: verify-migration-data)
+> ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied
 
 1. ทำตาม `references/verify-migration-data.md`
 2. ใช้ `/check-migrations` ยืนยัน version ล่าสุด

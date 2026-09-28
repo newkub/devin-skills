@@ -15,7 +15,6 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: list-github-branch, list-github-issue, list-github-pr, list-github-project, list-github-release, list-github-repo, list-github-star)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

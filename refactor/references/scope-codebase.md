@@ -1,7 +1,5 @@
 # Codebase Refactor
 
-Merged from: `deep-refactor-codebase` — deep refactor หนึ่ง workspace ด้วย baseline, impact analysis, incremental batches และ validation
-
 ## Goal
 
 แก้ไข SRP, long files, consistency และ structure ทั้ง codebase หนึ่ง workspace อย่างเป็นระบบ ลด regression

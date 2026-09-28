@@ -1,7 +1,5 @@
 # Fix Guide
 
-(merged from: improve-alignment)
-
 ## Goal
 
 ตรวจสอบและแก้ไขให้ project artifacts ทั้งหมดมี alignment สอดคล้องกัน ครอบคลุม devin rules, ast-grep rules, `AGENTS.md`, docs, skills, และ code

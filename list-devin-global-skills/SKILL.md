@@ -14,8 +14,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-devin-global-skills-relation)
-
 ใช้สำหรับดู skills ที่มีอยู่ก่อนเลือกใช้ใน `AGENTS.md`
 
 ## Execute

@@ -24,7 +24,6 @@ related:
 ใช้ `follow-tool-biome` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 - Boundary: Biome รวม linter + formatter + assist สำหรับ JS/TS/JSON/CSS ใน tool เดียว — ใช้แทน ESLint+Prettier; ถ้า project ต้อง format หลายภาษา (markdown, toml, yaml, python, php) ให้ใช้ `/follow-tool-dprint` ร่วมหรือแทน; ถ้าต้องอยู่บน ESLint ดู `/follow-tool-eslint`; Ultracite preset บน Biome ดู `references/ultracite.md`
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite)
 
 - Latest: `@biomejs/biome@2.5.14` (verified 2026-09-26)
 - References: [apis](references/apis.md) | [biome](references/biome.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [ultracite](references/ultracite.md) | [website](references/website.md)

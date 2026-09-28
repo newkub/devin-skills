@@ -141,4 +141,3 @@ import { render } from "https://esm.sh/eta@4.6.0"
 - Dry run mode สำหรับทดสอบก่อน execute จิง
 - สามารถใช้ /use-pwsh-shell /use-bun-shell /use-astgrep (programmatic subskill) ได้ ตามเหมาะสม
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-bun-scripts)

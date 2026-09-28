@@ -28,7 +28,7 @@ related:
 - project เล็ก ไม่หนัก RAM/compute ไม่ช้า → รันบน local ผ่าน package script `verify`
 - project ใหญ่ monorepo หรือ build/test หนัก → ส่ง branch ไป CI/CD แล้ว watch และ resolve errors
 - สามารถ force mode ได้: `/run-verify --local` หรือ `/run-verify --ci`
-- ถ้าต้องการ end-to-end readiness gate (ก่อน ship/deploy หรือหลังงานใหญ่) → ทำ section `Deep Verify` ด้านล่างด้วย (merged from: `deep-verify`)
+- ถ้าต้องการ end-to-end readiness gate (ก่อน ship/deploy หรือหลังงานใหญ่) → ทำ section `Deep Verify` ด้านล่างด้วย
 - ไม่ merge, ไม่ release, ไม่ deploy โดยอัตโนมัติ
 - ใช้หลัง `/implement-to-production` เพื่อ verify ก่อน ship
 

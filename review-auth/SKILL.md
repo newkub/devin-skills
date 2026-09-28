@@ -102,12 +102,18 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 3. ทำ `/report` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
 4. ทำ `/suggest-next-action`
 
+
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
 
-- session lifecycle, expiry, storage, cookie flags findings → `subskills/fix-sessions/SKILL.md`
-- token refresh, rotation, storage, transport, JWT findings → `subskills/fix-tokens/SKILL.md`
+| Topic | Subskill |
+|-------|----------|
+| `sessions`, `tokens` — session/token lifecycle checks | `subskills/check-sessions/SKILL.md` |
+| `oauth`, `sso`, `mfa` — OAuth/federation flows | `subskills/check-oauth/SKILL.md` |
+| `authz`, `permissions`, `rbac` — authz matrix + IDOR | `subskills/check-authz/SKILL.md` |
+| `report-authz`, `matrix` — role x resource matrix report | `subskills/report-authz/SKILL.md` |
+| Apply auth hardening — sessions, tokens, OAuth (user confirm) | `subskills/improve-auth/SKILL.md` |
 
 ## Rules
 
@@ -119,14 +125,15 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
-1. sessions/tokens: HttpOnly+Secure+SameSite, rotation, revocation, regenerate id หลัง login
-2. OAuth/MFA: state/nonce, PKCE, redirect allowlist, MFA enforcement
-3. authorization: server-side checks ทุก mutation, IDOR ownership checks, privilege audit
-4. verify: real flows end-to-end + attack checks (expired/tampered token → deny)
+1. sessions: cookie flags `HttpOnly`+`Secure`+`SameSite` (`Lax` สำหรับ OAuth callback), domain/path แคบสุด — CSPRNG session ID + regenerate หลัง login/privilege change, absolute expiry + idle timeout, logout invalidate server-side (ลบ DB/Redis record), session เก็บ server-side ตัว client ถือ opaque ID
+2. tokens: JWT algorithm allowlist (RS256/EdDSA, ห้าม `none`), validate `exp`/`iss`/`aud`/`sub` ทุก request — refresh rotation + reuse detection (revoke family), tokens ไม่อยู่ใน localStorage/URL/logs, hardcoded key → `/check-secrets` + `/follow-secret-manager`
+3. OAuth/MFA: state/nonce, PKCE, redirect allowlist, MFA enforcement
+4. authorization: server-side checks ทุก mutation, IDOR ownership checks, privilege audit
+5. verify: real flows end-to-end + attack checks (expired/tampered token → deny, reused session id → deny) — fix ที่อาจ lock users out เสนอแผนผ่าน `/ask-me` ก่อน
 - ใช้ /run-review ถ้าจำเป็น
 
 ## References

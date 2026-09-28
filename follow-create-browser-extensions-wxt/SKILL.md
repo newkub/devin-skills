@@ -15,8 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-browser-extensions-wxt, follow-create-browser-extensions-wxt)
-
 ใช้สำหรับสร้าง ปรับปรุง และ release Web Extensions ด้วย WXT รองรับ TypeScript และ Bun
 
 - สร้าง WXT project ด้วย template ทีเหมาะสม

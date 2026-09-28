@@ -91,6 +91,15 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 - `Medium`: scripts naming ไม่สม่ำเสมอ, `.env.example` ไม่ครบ, source maps พัง, docs ขาด troubleshooting
 - `Low`: cosmetic — alias, help text, formatting
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Apply DX findings — dev loop, scripts, onboarding (user confirm) | `subskills/improve-dev-loop/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -103,7 +112,7 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

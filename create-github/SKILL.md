@@ -16,7 +16,7 @@ Dispatch ไป skill ตาม GitHub resource ที่ต้องสร้�
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: create-github-issue, create-github-repo; pr เป็น submodule `create-github-pr`)
+- (pr เป็น submodule `create-github-pr`)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

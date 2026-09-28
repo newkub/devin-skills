@@ -21,12 +21,6 @@ related:
 
 ใช้เมื่อต้อง audit dependencies ของ workspace/monorepo: runtime, dev, peer deps — ครอบคลุม manifests, lockfile, usage จริงใน code และการเปรียบเทียบ alternatives — ไม่ติดตั้งหรืออัปเดต (ใช้ `/update` หรือ package manager)
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-lib-better)
-
-- merged from: `review-techstack` — stack/library design review refs `references/techstack-*.md` (skill restored เมื่อ 2026-09 → ใช้ `/review-techstack` สำหรับ stack selection, cloud choices, library design)
-
-- merged from: `follow-my-tech-stack` — canonical tech stack catalog อยู่ที่ `references/techstack-catalog.md` (restored เป็น `/follow-my-techstack` เมื่อ 2026-09)
-
 ## Execute
 
 ### 1. Inventory Dependencies
@@ -85,6 +79,14 @@ related:
 2. แยก actions: update now, update with caution, remove, replace, keep
 3. ถ้ามี vulnerability → เชื่อม `/review-security`
 
+### Subskills
+
+> Goal: dispatch report formatting ไปยัง subskill เมื่อต้องการ dep audit table แบบ persistent
+
+| Topic | Subskill |
+|-------|----------|
+| `report`, `deps` — dep audit matrix + action plan + update order | `subskills/report-deps/SKILL.md` |
+
 ## Rules
 
 ### 1. Read Only
@@ -110,7 +112,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

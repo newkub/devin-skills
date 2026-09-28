@@ -29,12 +29,12 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ใช้ก่อนเรียก `update-devin-global-* / update-devin-project-*` — ครอบคลุม 5 layers:
 
 - `skills` — ตรวจ skill package ตามมาตรฐาน `update-devin-global-skills` (frontmatter, sections, line count, style)
-- `subagents` — ตรวจ `AGENT.md` ตามมาตรฐาน `update-devin-global-subagents` (merged from: review-devin-global-subagents)
+- `subagents` — ตรวจ `AGENT.md` ตามมาตรฐาน `update-devin-global-subagents`
 - `hooks` — ตรวจ hooks config ว่า trigger ถูก event, ไม่ block workflow, command มีอยู่จริง
 - `mcp` — ตรวจ MCP servers ว่า enable/ใช้งานจริง, ไม่ซ้ำ server, ไม่ dead config
 - `global rules` — ตรวจ `global_rules.md` ว่า skills ที่อ้างมีจริง, ไม่ขัดแย้งกัน, ไม่ stale
 
-ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused — merged from: review-redundancy), `references integrity` (merged from: review-references), `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions ที่ยังไม่มี skill — `/review-coverage`)
+ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused), `references integrity`, `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions ที่ยังไม่มี skill — `/review-coverage`)
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่แก้ code (ใช้ `/deep-validate`)
 
@@ -90,7 +90,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. ทำตาม `references/refactor-guide.md#cross-skill-consistency`
 3. ระบุ SKILL.md ที่ควร refactor — เนื้อหาซ้ำ, >250 บรรทัด, ขาด sections, SRP เบลอ → รายการเป็น action items
 
-### 7. Redundancy Audit — ทำตาม `/review-redundancy` (canonical; merged from: review-redundancy)
+### 7. Redundancy Audit — ทำตาม `/review-redundancy` (canonical)
 
 > Goal: ตรวจหา skills/layers ที่ซ้ำซ้อนหรือไม่จำเป็น
 
@@ -100,7 +100,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 4. remove/merge ต้อง user confirm เสมอ ตาม `references/redundancy-confirm-execute.md`
 5. score ตาม `references/redundancy-scoring.md`
 
-### 8. References Integrity (merged from: review-references)
+### 8. References Integrity
 
 > Goal: ตรวจ references ไม่ขาด/ซ้ำ/วน ทุก layer
 
@@ -125,6 +125,18 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. ทำ `/report` แยก section ตาม layer: `skills`, `subagents`, `hooks`, `mcp`, `global rules`, `cross-layer` — แต่ละมี Skill/Layer, Category, Severity, Finding, Evidence, Action
 3. สรุป "improve อะไรอีกบ้าง" + "SKILL.md ที่ควร refactor" เป็น prioritized action list
 4. ทำ `/suggest-next-action`
+
+### Subskills
+
+> Goal: dispatch focused pass ไปยัง subskill เมื่อ argument ระบุ layer เดียว (`[layer|all]`)
+
+| Layer | Subskill |
+|-------|----------|
+| `skills` — script findings + manual quality pass | `subskills/check-skills/SKILL.md` |
+| `subagents`, `agents` — AGENT.md standards + orphans | `subskills/check-subagents/SKILL.md` |
+| `hooks` — trigger/command/loop/blocking checks | `subskills/check-hooks/SKILL.md` |
+| `mcp` — server config, env, duplicates, dead config | `subskills/check-mcp/SKILL.md` |
+| `rules`, `global-rules` — `global_rules.md` refs + consistency | `subskills/check-rules/SKILL.md` |
 
 ## Rules
 
@@ -168,7 +180,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; apply fixes → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ## References
 

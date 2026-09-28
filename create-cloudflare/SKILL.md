@@ -16,7 +16,6 @@ Dispatch ไป skill ตาม Cloudflare resource ที่ต้องสร�
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: create-cloudflare-worker, create-cloudflare-deploy-button, create-cloudflare-token)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

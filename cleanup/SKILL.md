@@ -15,7 +15,6 @@ Dispatch ไป skill ปลายทาง ตาม domain ของ cleanup �
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: cleanup-branches-merged, cleanup-docker, cleanup-git-branch, cleanup-github-issue, cleanup-worktree)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

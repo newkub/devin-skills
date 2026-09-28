@@ -66,6 +66,15 @@ Review internationalization/localization ของ project — message catalogs,
 1. ทำ `/report` — missing keys, hardcoded strings พร้อม file:line, format/RTL issues, coverage %
 2. ทำ `/suggest-next-action`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Apply i18n findings — keys, wrapping, formats, RTL (user confirm) | `subskills/improve-i18n/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -77,7 +86,7 @@ Review internationalization/localization ของ project — message catalogs,
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

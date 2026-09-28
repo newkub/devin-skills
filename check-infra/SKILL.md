@@ -13,7 +13,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-dns-health, check-ssl-expiry)
 - `--dns` → เช็คเฉพาะ DNS; `--ssl` → เช็คเฉพาะ certificate; ไม่ระบุ → เช็คทั้งสอง
 - Read-only: รายงานสถานะ ไม่แก้ไข config
 

@@ -16,8 +16,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: edit-relative)
-
 ใช้เมื่อ:
 - แก้ไขไฟล์ที่ถูกอ้างอิงจากไฟล์อื่น
 - ย้ายไฟล์ไปยังตำแหน่งใหม่

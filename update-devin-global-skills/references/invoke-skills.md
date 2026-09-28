@@ -1,7 +1,5 @@
 # Invoke Skills
 
-(merged from: use-skills-effective)
-
 ## Goal
 
 กำหนดวิธีเรียกและอ้างอิง skills อื่นจากภายใน `SKILL.md` ให้เต็มประสิทธิภาพ — delegate แทน duplicate, dispatch ถูกจังหวะ, และ `related` contract ครบถ้วน

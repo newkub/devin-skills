@@ -1,7 +1,5 @@
 # Post-Merge Verify
 
-(merged from: run-verify)
-
 ใช้หลัง `/merge` ผลลัพธ์จาก `use-subagents` หรือหลัง implementation ซับซ้อน — verification ที่ลึกกว่า validate ปกติ
 
 ## Execute

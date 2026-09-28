@@ -21,8 +21,6 @@ related:
 
 Review project จากมุมมอง stakeholder — เลือก persona/sub-role แล้ว roleplay review หา findings พร้อม evidence หรือรวบรวม feedback จริงจาก stakeholder เพื่อ prioritize การปรับปรุง
 
-merged from: review-by-engineer, review-by-product, review-by-data, review-by-designer, review-by-qa, review-by-user
-
 ## Scope
 
 ใช้เมื่อต้อง review จากมุมมอง persona เฉพาะ (engineer, product, data, designer, QA, user) หรือเก็บ feedback จาก stakeholder จริง — ไม่แก้ code โดยตรง
@@ -84,7 +82,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 
 ## Persona Table
 
-### Engineering (merged from: review-by-engineer)
+### Engineering
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
@@ -96,7 +94,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 | 6 | `open-source-contributor` | CONTRIBUTING, PR flow, community, license |
 | 7 | `technical-writer` | docs, examples, discoverability, clarity |
 
-### Product And Business (merged from: review-by-product)
+### Product And Business
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
@@ -105,7 +103,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 | 10 | `growth-manager` | funnel, A/B tests, acquisition, retention |
 | 11 | `marketing-manager` | messaging, positioning, SEO, content |
 
-### Data (merged from: review-by-data)
+### Data
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
@@ -113,20 +111,20 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 | 13 | `data-engineer` | data pipelines, ETL, schema, data infrastructure |
 | 14 | `financial-analyst` | pricing, burn, unit economics, financial impact |
 
-### Design (merged from: review-by-designer)
+### Design
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
 | 15 | `ui-designer` | visual consistency, design system, interaction, spacing, color, typography |
 | 16 | `ux-researcher` | research questions, pain points, bias, usability, research gaps |
 
-### QA (merged from: review-by-qa)
+### QA
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
 | 17 | `qa-tester` | edge cases, boundary conditions, test scenarios, regressions |
 
-### User And Support (merged from: review-by-user)
+### User And Support
 
 | No. | Role | Lens / Questions |
 |----:|------|------------------|
@@ -180,7 +178,7 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. จัดลำดับ findings ตาม stakeholder priority ที่เก็บได้ แล้วส่งต่อ `## Fix` ของ `review-*` ที่ตรง domain
 2. findings ที่หลาย persona flag ซ้ำ → fix ก่อนเสมอ (highest consensus)

@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับรายงานผลในแชท โดย `/report` จะ dispatch ไปยัง `report-table` หรือ `report-numbered` ตามประเภทข้อมูล
 
-- รวม capability จาก skills เดิมที่ถูกย้ายเข้า subskills (merged from: report-in-table, report-in-html, report-in-numbered, report-in-codeblock)
+- รวม capability จาก skills เดิมที่ถูกย้ายเข้า subskills
 
 ## Execute
 

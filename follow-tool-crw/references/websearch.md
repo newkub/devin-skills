@@ -1,8 +1,5 @@
 # Websearch (Crw)
 
-(merged from: follow-tool-websearch)
-
-
 ## Goal
 
 ค้นหาและดึงข้อมูลจากเว็บไซต์อย่างรวดเร็ว เน้นความเร็ว และใช้ crw อย่างเหมาะสม
@@ -113,7 +110,6 @@
 ## References
 
 - [CLI reference](cli.md)
-
 
 ## Expected Outcome
 

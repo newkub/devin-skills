@@ -7,7 +7,6 @@ related:
   - report
   - run-test
 
-
 ---
 
 ## Goal
@@ -16,7 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-webhook-security, check-webhook-delivery)
 - ใช้กับ webhook endpoints ของ providers เช่น Stripe, GitHub, LINE, Slack
 - `--security` → เช็คเฉพาะด้าน security; `--delivery` → เช็คเฉพาะ delivery; ไม่ระบุ → เช็คทั้งสอง
 - Read-only: รายงาน — แก้ผ่าน section `## Fix` ของ `/review-auth` หรือ `review-*` ที่เกี่ยวข้อง
@@ -58,7 +56,6 @@ related:
 - ไม่ expose secrets ที่พบใน report
 - ใช้ /deep-test api ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
-
 
 ## Expected Outcome
 

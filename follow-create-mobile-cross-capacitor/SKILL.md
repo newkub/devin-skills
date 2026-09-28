@@ -16,8 +16,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-mobile-ios-android)
-
 ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
 
 - Latest: `@capacitor/core@8.5.2` / `@capacitor/cli@8.5.2` (verified 2026-09-12)

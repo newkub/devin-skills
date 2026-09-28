@@ -30,8 +30,6 @@ related:
 
 ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
 
-- merged from: `review-platform` — platform dimensions refs `references/platform-*.md`
-- merged from: `report-review` — report structure, executive summary, severity/status symbols รวมอยู่ใน Step 8
 - subagent: `subagents/domain-reviewer.md` — รัน review ทีละ domain แบบขนาน
 - dispatch catalog: `references/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
 - domain reviews: `review-*` 53 skills เป็น top-level skills จริง (ย้ายออกจาก subskills เดิม) — dispatch เรียก `/review-<domain>` โดยตรง; ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-refactor`, `review-coverage`, `review-then-fix` ที่เป็น top-level อยู่แล้ว
@@ -119,7 +117,7 @@ related:
    - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
 3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, review skill ที่ต้องรัน
 4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `review-mobile` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
-5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `references/platform-*.md` (merged from: review-platform)
+5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `references/platform-*.md`
 6. ใช้ `fixSkill` field ในแต่ละ finding เป็น canonical owner — ไม่ต้อง map ซ้ำเอง
 7. metric/finding ใดที่ analyzer ไม่ครอบคลุม → ระบุ `ใน update-review-cli-then-run = N` เป็น analyzer gap ส่งต่อ `/update-review-cli-then-run`
 8. ทุก dispatch อัปเดต ledger — skill ที่เสร็จแล้วใน ledger เก่า (resume) ให้ reuse ผลเดิม ไม่รันซ้ำ
@@ -139,7 +137,7 @@ related:
 > Goal: รายงานผล review ลง `.devin/reports/<workspace>/` (report only) ด้วยโครงที่อ่านแล้ว fix ได้ทันที และ verify ว่าครอบคลุมจริง
 
 1. ทำ `/report` สรุป score, findings, owner skill, priority
-2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review` — โครง report (merged from: report-review):
+2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review` — โครง report:
    - `## Executive Summary` — overall score (0-100), grade, สรุป findings ตาม severity (Critical/High/Medium/Low) และตาม domain, confidence level, critical issues ที่ต้องแก้ก่อน production, mode (full/diff) + scope ที่รัน
    - `## Result` — ตาราง score/grade/findings count เทียบ before-after ต่อ workspace (No. column แรกเสมอ)
    - `## Coverage` — matrix จาก ledger: แถว = workspace, คอลัมน์ = phase/skill group, cell = done/skipped(reason)/failed — ทำให้ "ครบทุกตัว" ตรวจสอบได้ ไม่ใช่เชื่อคำพูด

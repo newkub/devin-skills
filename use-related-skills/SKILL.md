@@ -109,4 +109,4 @@ related:
 - การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
 - มี `/report` ใช้ในการนำเสนอผลการวิเคราะห์
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: idea-use-skills-in-another-skills, use-in-another-skills) — สำหรับเลือกและเรียก skill อื่นตาม task ดู `references/in-another-skills.md`
+- สำหรับเลือกและเรียก skill อื่นตาม task ดู `references/in-another-skills.md`

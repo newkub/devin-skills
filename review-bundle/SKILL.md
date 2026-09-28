@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-Review production output ทั้งหมด — bundle size, build output, chunks และ static assets (images, fonts, media) พร้อม loading strategy — review เท่านั้น ไม่แก้ไข config; fix ทำใน section `## Fix` หลัง user confirm (merged from: `review-assets`)
+Review production output ทั้งหมด — bundle size, build output, chunks และ static assets (images, fonts, media) พร้อม loading strategy — review เท่านั้น ไม่แก้ไข config; fix ทำใน section `## Fix` หลัง user confirm
 
 ## Scope
 
@@ -76,10 +76,11 @@ Review production output ทั้งหมด — bundle size, build output, ch
 
 ### Subskills
 
-> Goal: dispatch ไป fix เมื่อ subskill ตรงกับ user confirm scope ของ findings
+> Goal: dispatch งานเฉพาะรูปแบบ — report subskill format findings, optimize subskill fix เมื่อ user confirm
 
 | Topic | Subskill |
 |-------|----------|
+| `size`, `report-size` — per-chunk delta table + asset inventory | `subskills/report-size/SKILL.md` |
 | Apply bundle findings - dedupe deps, splitting, lazy loading | `subskills/optimize-bundle/SKILL.md` |
 
 ## Rules
@@ -96,16 +97,16 @@ Review production output ทั้งหมด — bundle size, build output, ch
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
 1. baseline: `/run-build` + bundle analyzer — sizes ต่อ chunk, biggest deps, assets inventory ตาม type/size
 2. code splitting: route-based `import()`, vendor split, lazy heavy features
 3. tree shaking: named imports, `sideEffects`, dev-only code ออก
-4. images: AVIF/WebP+fallback, srcset, compress, lazy ใต้ viewport — ดู `references/fix-optimize-images.md`
-5. fonts: woff2+subset, font-display swap, preload critical — ดู `references/fix-optimize-fonts.md`
-6. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash — ดู `references/fix-optimize-videos.md`, `references/fix-optimize-assets.md`
+4. images: AVIF/WebP+fallback, srcset, compress, lazy ใต้ viewport
+5. fonts: woff2+subset, font-display swap, preload critical
+6. videos/icons: compressed formats, poster, SVG sprites; cache headers immutable+hash
 7. compression: brotli/gzip, minify, hashed names + long-term cache
 8. verify: build เทียบ bytes before/after, smoke test lazy chunks, ไม่มี visual/CLS regression
 

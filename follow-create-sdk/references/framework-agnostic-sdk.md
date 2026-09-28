@@ -1,4 +1,4 @@
-# Framework-Agnostic SDK (merged from follow-lib-framework-agnostic)
+# Framework-Agnostic SDK
 
 พัฒนาโค้ดที่ทำงานได้บน multiple frameworks (React, Vue, Svelte, Solid, Angular หรือ vanilla JS) โดยไม่ผูกติดกับ framework ใดเป็นพิเศษ ตามแนวทางที่ ecosystems อย่าง TanStack ใช้ (`*-core` package + framework adapters)
 

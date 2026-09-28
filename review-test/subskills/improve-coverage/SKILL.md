@@ -22,8 +22,7 @@ related:
 ## Scope
 
 - ใช้กับ project ที่มี test infrastructure อยู่แล้ว — วิเคราะห์ coverage gaps แล้วเขียนหรืออัปเดต tests ให้ครอบคลุม
-- ไม่ครอบคลุม flaky tests → ใช้ `subskills/fix-flaky/SKILL.md`
-- รายละเอียด fix guide ต้นฉบับ: `references/fix-improve-test-coverage.md`
+- ไม่ครอบคลุม flaky tests → ใช้ `/review-test` `## Fix` (flaky)
 
 ## Execute
 

@@ -14,7 +14,6 @@ Dispatch ไป top-level skill ตาม git resource ที่ต้อง lis
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: list-git-branch, list-git-commit, list-git-release, list-git-submodules, list-git-tags, list-git-worktree)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

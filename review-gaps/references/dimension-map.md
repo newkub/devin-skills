@@ -1,7 +1,5 @@
 # Dimension Map
 
-(merged from: review-improvement)
-
 ใช้เมื่อต้องสแกน scope แบบกว้างหา "improve อะไรได้บ้าง" — ตรวจแต่ละ dimension แบบเบา (ไม่ใช่ deep review เต็มรูปแบบ) แล้ว map ไปยัง section `## Fix` ของ `review-*` ที่ตรง domain
 
 | No. | Dimension | ดูอะไร | Fix Skill |

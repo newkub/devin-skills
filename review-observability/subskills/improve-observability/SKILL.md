@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-เพิ่มและปรับปรุง logging, metrics, tracing, alerting และ dashboards ตาม findings จาก `/review-observability` — promote จาก `references/fix-improve-observability.md`
+เพิ่มและปรับปรุง logging, metrics, tracing, alerting และ dashboards ตาม findings จาก `/review-observability`
 
 ## Scope
 

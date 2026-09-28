@@ -23,7 +23,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์หลายมิติ (merged from: `analyze-project`, `deep-analyze-by-use-scripts`, `scan-codebase`, `check-code-structure`, `check-file-structure`):
+ครอบคลุมการวิเคราะห์หลายมิติ:
 
 - Architecture และ design patterns
 - Code quality และ technical debt

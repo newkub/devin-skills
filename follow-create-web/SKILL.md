@@ -19,8 +19,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-web-landing, follow-create-web-saas, follow-create-web-paas)
-
 - รับ requirement และระบุประเภท web: landing, saas, paas
 - ส่งต่องานสร้าง project ไปยัง skill ที่เหมาะสม
 - ไม่ลงมือ implement เองโดยตรง
@@ -104,7 +102,6 @@ related:
 - ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น
-
 
 ## Expected Outcome
 

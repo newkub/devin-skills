@@ -79,7 +79,7 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. decision `keep` → ทำ `/git-commit` หรือ `/ship` ตาม workflow
 2. decision `revert` → revert เฉพาะ hunks ที่ user confirm (git checkout/restore หรือ edit กลับ) — ไม่ revert ทั้งไฟล์ถ้ามีส่วนที่ keep

@@ -40,7 +40,7 @@ related:
 > Goal: สรุป UX/UI posture
 
 1. Verdict: `improved` / `findings-pending` / `no-issues`
-2. pending findings → แนะนำ fix guide ที่ตรง category ใน `review-uxui/references/fix-*.md`
+2. pending findings → แนะนำ `review-uxui/subskills/improve-uxui-fix/SKILL.md` ตาม dimension ของ finding
 3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
 
 ## Rules

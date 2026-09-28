@@ -1,7 +1,5 @@
 # Target Dispatch
 
-(merged from: deep-update)
-
 ใช้เมื่อต้อง update target ที่ไม่ใช่ root project — map target type ไปยัง `update-*` skill ที่เหมาะสม
 
 ## Target Type Dispatch

@@ -1,7 +1,5 @@
 # Fix Guide
 
-(merged from: improve-readability)
-
 ## Goal
 
 ทำให้ code, documentation, skill files หรือ content อ่านง่ายขึ้น ลด cognitive load และเข้าใจ intent ชัดเจนขึ้น

@@ -24,7 +24,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: run-verify) — ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
+- ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
 - สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
@@ -143,7 +143,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-typecheck ถ้าจำเป็น
-
 
 ## Expected Outcome
 

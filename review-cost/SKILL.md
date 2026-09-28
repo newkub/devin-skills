@@ -16,7 +16,7 @@ related:
 
 ใช้กับ cloud deployment: Cloudflare Workers, AWS, Vercel, fly.io โดย audit usage โดยไม่แก้ไข resources
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-cost-analysis) — ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
+- ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
@@ -54,6 +54,7 @@ related:
 1. ตรวจ API calls ที charge ตาม request
 2. ตรวจ managed services ทีใช้น้อย
 3. ระบุ services ที duplicate กัน
+4. ตรวจ LLM token spend — prompt bloat, missing prompt caching, model tier ทีแพงเกินงาน
 
 ### 5. Attribution And Finops
 
@@ -74,11 +75,12 @@ related:
 
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+> Goal: dispatch งานเฉพาะรูปแบบ — report subskill format findings, optimize subskill fix เมื่อ user confirm
 
-| Topic | Subskill |
+| Topic | Target |
 |-------|----------|
-| Apply cost findings — compute, storage, bandwidth, third-party reductions | `subskills/optimize-cost/SKILL.md` |
+| `report`, `cost` — per-service breakdown + savings ranked | `subskills/report-cost/SKILL.md` |
+| Apply cost findings — compute, storage, bandwidth, third-party, LLM token spend reductions | `subskills/optimize-cost/SKILL.md` |
 
 ## Rules
 
@@ -94,16 +96,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-### Fix Steps
+### Fix Routes
 
-1. baseline: cost/service, top spenders, trend
-2. idle waste: stop/schedule dev resources, orphaned volumes/snapshots cleanup + backup
-3. right-size ตาม utilization evidence; storage tiers
-4. transfer: CDN cache, compression, batching; log/metric volume
-5. CI spend: path filters, right-size runners, artifact retention
-6. verify: cost alerts/budgets + rollback plan สำหรับ high-risk
+1. findings ทั้งหมด (infra: compute, storage, bandwidth, third-party, CI spend + LLM token usage: prompt bloat, caching, model tier) → `subskills/optimize-cost/SKILL.md`
+2. verify: re-audit scope เดิมหลังแก้ — findings เดิมต้องไม่เหลือ
 
 ## References
 

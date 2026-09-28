@@ -15,7 +15,6 @@ Dispatch ไป skill ตาม mobile target — parent ทำ routing เท�
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: follow-create-mobile-ios, follow-create-mobile-android, follow-create-mobile-cross-capacitor, follow-create-mobile-cross-flutter)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

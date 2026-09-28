@@ -15,7 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: run-watch-build, run-watch-test, run-watch-typecheck)
 - ใช้ระหว่าง active development เมื่อต้องการ feedback loop ต่อเนื่อง
 - เลือก command ตาม package manager และ monorepo tool ที่ตรวจพบ
 

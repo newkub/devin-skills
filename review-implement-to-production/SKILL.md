@@ -20,7 +20,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `implement-to-production`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers และ implementation completeness gaps (missing flows, UI, API, database — merged from: review-implement-to-production) แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `implement-to-production`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers และ implementation completeness gaps (missing flows, UI, API, database) แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -69,7 +69,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ทำตาม references/realization-blockers.md
 
-### 8. Review Implementation Completeness (merged from: review-implement-to-production)
+### 8. Review Implementation Completeness
 
 > Goal: หา implementation gaps — missing flows, UI, API, database, incomplete features
 
@@ -114,15 +114,12 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (implement)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-features
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — edge cases, states, flow, polish จน feature พร้อม production (implement)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (implement)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (implement)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (implement)
-
-- `references/fix-improve-features.md` — ปรับปรุง feature ที่มีอยู่ให้สมบูรณ์ — edge cases, states, flow, polish จนพร้อม production
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

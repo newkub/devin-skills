@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: visualize-repo-in-web)
-
 - ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน
 - สร้างไฟล์เดียวใน OS temp directory แบบ no-build
 - เลือก runtime ตาม context: `Vue 3`, `solid-js/html`, `Alpine.js`, หรือ `Vanilla JS`
@@ -113,7 +111,6 @@ related:
 - ใช้ /open-files-in-web ถ้าจำเป็น
 - ใช้ /deep-test visual ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
-
 
 ## Expected Outcome
 

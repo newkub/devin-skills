@@ -29,7 +29,6 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 - ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-tests`, `deep-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
 - หลัง: ใช้หลัง `run-test`, `deep-test`, `follow-tdd`, `update-tests`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: `improve-test-coverage-to-100` — gap-closing loop อยู่ที่ `subskills/improve-coverage/SKILL.md`)
 
 ## Execute
 
@@ -37,8 +36,9 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 | Argument | Subskill |
 |----------|----------|
-| `flaky`, `fix-flaky` | `subskills/fix-flaky/SKILL.md` — fix flaky tests (isolation, timing, deterministic) |
+| `flaky` | `## Fix` — fix flaky tests (isolation, timing, deterministic) |
 | `coverage`, `improve-coverage`, `coverage-100` | `subskills/improve-coverage/SKILL.md` — raise coverage บน critical paths จนถึงเป้า (default 100%) |
+| `flaky`, `report-flaky` — flaky inventory + quarantine list | `subskills/report-flaky/SKILL.md` |
 
 1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow (ข้าม review pass ไป fix เลย)
 2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ
@@ -114,15 +114,15 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
-1. baseline: coverage, suite duration, flaky list, `/check-test-isolation`
-2. flaky/isolation: per-test setup, fake timers/seeded RNG, quarantine ที่แก้ไม่ทัน
+1. baseline: coverage, suite duration, flaky list (รันเป้าหมายซ้ำ ~10 รอบ + random order), `/check-test-isolation` — root cause ไม่ชัด → `/deep-debug` ห้ามแก้ตาม symptom
+2. flaky/isolation: per-test setup/teardown reset state, unique ports/temp dirs/test DB ต่อ worker — timing: condition-based waits แทน sleep, fake timers/seeded RNG, pin timezone — assertions: matchers ยืดหยุ่นสำหรับ dynamic values, ห้าม assert timestamps/random ids — แก้ไม่ทัน → quarantine พร้อม ticket ห้าม mask ด้วย retries
 3. coverage gaps: critical paths ก่อน — `/update-tests` เขียน test ใหม่
 4. quality: specific assertions, minimal mocks, merge duplicates
-5. verify: `/run-test-all` ผ่าน 3 รอบไม่ flaky, coverage delta
+5. verify: `/run-test-all` ผ่าน 3 รอบติดทุกลำดับ + parallel, coverage delta — preserve coverage tests ที่แก้ต้องตรวจ behavior เดิม
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

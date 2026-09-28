@@ -93,15 +93,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (shell profile)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: optimize-terminal
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — profile profiling, plugin audit, lazy loading สำหรับ startup ที่ช้า (shell profile)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (shell profile)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (shell profile)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (shell profile)
-
-- `references/fix-optimize-terminal.md` — ลดเวลา shell startup — profile profiling, plugin audit และ lazy loading
 ## Expected Outcome
 
 - รู้ว่า profile ไหนมี error, PATH entry ไหนตาย, alias ไหนขาด

@@ -21,8 +21,6 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-security)
-
 ครอบคลุม: auth posture (high-level เท่านั้น), OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, encryption, file upload security, security scoring
 
 ไม่รวม: auth subsystem deep-dive — identity flows, sessions, tokens, OAuth, MFA, RBAC/ABAC (ใช้ `/review-auth`), compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
@@ -101,13 +99,13 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+> Goal: dispatch งานเฉพาะมิติไปยัง subskill — check subskills ทำ focused review pass, report subskill format findings; fix ทำใน `## Fix`
 
 | Topic | Subskill |
 |-------|----------|
-| Rotate/remove leaked secrets, git history notes | `subskills/fix-secrets/SKILL.md` |
-| Security headers — CSP, HSTS, X-Frame-Options | `subskills/fix-headers/SKILL.md` |
-| Vulnerable deps — audit, upgrade, patch | `subskills/fix-vuln-deps/SKILL.md` |
+| `authn`, `auth` — auth posture + authz matrix (high-level, deep-dive → `/review-auth`) | `subskills/check-authn/SKILL.md` |
+| `headers`, `csp`, `cors` — security headers verify บน deployed response | `subskills/check-headers/SKILL.md` |
+| `injection`, `sqli`, `xss` — injection surfaces source→sink | `subskills/check-injection/SKILL.md` |
 | `report`, `vulns` — vuln matrix + exploit paths + fix mapping | `subskills/report-vulns/SKILL.md` |
 
 ## Rules
@@ -147,10 +145,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ### 6. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) ตาม `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (security)
-- แสดง score ต่อ dimension และ overall score (security)
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
 
 ### 7. Formatting
 
@@ -163,15 +158,15 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
-1. headers: CSP, HSTS, X-Content-Type-Options, Referrer-Policy, frame-ancestors — verify ด้วย curl บน response จริง
-2. secrets: ย้าย env/secret manager, rotate ที่รั่ว, ห้าม leak เข้า client bundle
-3. injection: parameterized queries, escaping, validation ที่ boundary
-4. auth/session: HttpOnly+Secure+SameSite cookies, server-side checks, rate limit auth endpoints
-5. deps: `/run-audit` — patch Critical/High ก่อน
+1. secrets: rotate/revoke ที่ provider ก่อนเสมอ → ย้าย env/secret manager (`/follow-secret-manager`), ห้าม leak เข้า client bundle, เพิ่ม `.env.example` placeholders — git history ยังอ่านย้อนได้ report ไว้ (rewrite ด้วย `git filter-repo`/BFG เฉพาะเมื่อ user confirm) → verify `/check-secrets secrets-leak` ซ้ำ
+2. headers: set ที่ layer เดียว (platform/CDN config ก่อน ไม่งั้น framework middleware) — CSP เริ่ม `Report-Only` ก่อน enforce, ห้าม `unsafe-inline`/`unsafe-eval`, `X-Frame-Options` สอดคล้อง `frame-ancestors` — verify ด้วย curl บน response จริง + `/check-security-headers` ซ้ำ
+3. deps: `/run-audit` — patch Critical/High ก่อน, semver-safe upgrade ก่อนเสมอ, major → อ่าน changelog/migration guide, transitive → `overrides`/`resolutions` พร้อม comment อ้าง advisory, package เสี่ยง → `/check-supply-chain`, upgrade ไม่ได้ → report residual risk ห้ามปล่อยเงียบ
+4. injection: parameterized queries, escaping, validation ที่ boundary
+5. auth/session: HttpOnly+Secure+SameSite cookies, server-side checks, rate limit auth endpoints
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

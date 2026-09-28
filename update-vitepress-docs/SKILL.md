@@ -47,7 +47,7 @@ related:
 
 > Goal: ติดตั้ง vitepress และ scaffolding พื้นฐาน
 
-ทำตาม `/follow-tool-vitepress` (`subskills/setup-vitepress/SKILL.md`):
+ทำตาม `/follow-tool-vitepress` (`follow-tool-vitepress/subskills/setup-vitepress/SKILL.md`):
 
 1. สร้าง `docs/.vitepress/` config directory
 2. Monorepo: `docs/package.json` เป็น workspace เอง + เพิ่ม `docs` ใน root `workspaces`; single project: scripts ใน root `package.json`
@@ -77,7 +77,7 @@ related:
 
 > Goal: theme, plugins, และ deploy ตาม `/follow-tool-vitepress`
 
-1. Theme: `.vitepress/theme/index.ts` extends DefaultTheme + `style.css` CSS variables — `subskills/config-theme/SKILL.md`
+1. Theme: `.vitepress/theme/index.ts` extends DefaultTheme + `style.css` CSS variables — `follow-tool-vitepress/subskills/config-theme/SKILL.md`
 2. UnoCSS: `docs/uno.config.ts` + `UnoCSS()` plugin + `virtual:uno.css` — ตาม `/follow-tool-vitepress` Step 3
 3. Shiki Twoslash (`@shikijs/vitepress-twoslash`) และ Group Icons (`vitepress-plugin-group-icons`) เมื่อต้องการ
 4. Vue components สำหรับ interactive content (FeaturesTable, TestResults, ReleaseTimeline) — เฉพาะเมื่อ project ต้องการจริง ไม่ใช่ default

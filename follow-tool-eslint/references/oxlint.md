@@ -1,8 +1,5 @@
 # Oxlint
 
-(merged from: follow-tool-oxlint)
-
-
 ## Goal
 
 ติดตั้งและตั้งค่า `eslint-plugin-oxlint` สำหรับใช้งานร่วมกับ ESLint 9+ (flat config) เพื่อ linting ที่เร็วขึ้นด้วย Rust-based linter
@@ -94,7 +91,6 @@
 ## References
 
 - [CLI reference](cli.md)
-
 
 ## Expected Outcome
 

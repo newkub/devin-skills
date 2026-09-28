@@ -19,8 +19,6 @@ related:
 
 เลือกและ execute `review-*` skill(s) ที่เหมาะสมกับ context ปัจจุบัน โดยพิจารณาทั้ง target object, user intent, workspace type และ risk level พร้อมรองรับ parallel execution
 
-รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-review)
-
 ## Scope
 
 ใช้เมื่อ user ต้องการ review แต่ยังไม่รู้จะใช้ review-* skill ใด หรือต้องการให้ระบบเลือก/จัดลำดับ/execute review skills ให้ รองรับ code, docs, plan, GitHub, devin skills, release, delivery และ cross-dimensional review
@@ -118,7 +116,7 @@ related:
 
 1. ทำ `/deep-validate` เพื่อ validate findings จากทุก review skill
 2. กรอง false positives และ duplicate findings
-3. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low → Info
+3. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
 4. ถ้ามี conflicts ระหว่าง findings จาก skills ต่างกัน → ทำ `/rethink` แล้วสรุป
 
 ### 5. Report And Suggest Next Action

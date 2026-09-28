@@ -28,8 +28,6 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 - ดูเพิ่มเติม: /deep-review
 
-- merged from: `review-correctness` — correctness dimensions refs `references/correctness-*.md`
-
 ## Execute
 
 ### 1. Prepare
@@ -80,7 +78,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 > Goal: Findings ถูกต้อง จัดลำดับชัดเจน ไม่มี false positives
 
 1. ทำ `/deep-validate`
-2. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low
+2. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
 3. ระบุ false positives พร้อมเหตุผล
 4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3
 
@@ -92,12 +90,16 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 2. ลบ findings ที่ไม่มีผลต่อ quality จริง (noise, style-only ที่ไม่มี convention)
 3. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
+
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill ที่ตรง topic
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
 
-- import/dependency findings (unused imports, barrel files, heavy imports) → `subskills/fix-imports/SKILL.md`
-- complexity findings (long functions, nesting, duplication, abstractions) → `subskills/fix-complexity/SKILL.md`
+| Topic | Subskill |
+|-------|----------|
+| `complexity` — metrics hotspots, duplication, churn | `subskills/check-complexity/SKILL.md` |
+| `debt`, `tech-debt` — TODO/deprecated/workaround inventory | `subskills/check-debt/SKILL.md` |
+| Apply type findings — strict flags, any→unknown (user confirm) | `subskills/improve-types/SKILL.md` |
 
 ## Rules
 
@@ -125,14 +127,15 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps (types/code quality)
 
 1. types: เปิด strict flags ทีละตัว, `any`→`unknown`+narrowing, casts→guards, public APIs typed
-2. consistency: patterns, API shapes, error handling, doc style ตาม fix guides
-3. simplicity: ลดความซับซ้อน, imports สะอาด (unused ลบ, barrel files)
-4. verify: `/run-typecheck` + tests ผ่าน — types only ห้ามเปลี่ยน runtime
+2. complexity: แบ่ง functions ยาวตาม `/follow-single-responsibility`, early return/guard clauses ลด nesting, รวม logic ซ้ำเป็น helper — hot-path algorithmic issues เปลี่ยน data structure/algorithm ก่อน micro-opts — scope ใหญ่ → `/refactor` แยก commits ไม่ผสม behavior change
+3. imports: `knip`/lint auto-fix ลบ unused (ระวัง side-effect/decorator imports — typecheck ทุก batch), barrels `export *` → named/subpath imports + `sideEffects: false`, heavy libs → subpath/dynamic import หรือทางเลือกผ่าน `/review-dependencies`
+4. consistency: patterns, API shapes, error handling, doc style
+5. verify: `/run-typecheck` + `/run-lint` + tests ผ่าน — types only ห้ามเปลี่ยน runtime; bundle เทียบด้วย `/check-bundle-regression` หรือ `/report-before-after`; เปลี่ยน paths → `/update-references`
 
 ## References
 

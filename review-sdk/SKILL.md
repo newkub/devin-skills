@@ -94,6 +94,15 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 - `Medium`: over-export internals, `any` leaks, docs ไม่ตรง exports, deprecation ไม่มี path
 - `Low`: subpath ergonomics, JSDoc gaps, cosmetic naming
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Fix exports surface — exports map, attw/publint (user confirm) | `subskills/update-exports/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -103,7 +112,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

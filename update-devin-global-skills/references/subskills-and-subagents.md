@@ -47,7 +47,7 @@
 | `follow-` | best practices/conventions ของ domain ย่อย | `follow-service-*` → `subskills/follow-auth` |
 | `optimize-` | ปรับ performance/bundle/cost โดยวัด baseline ก่อน-หลัง | `follow-lib-web-vitals` → `subskills/optimize-vitals` |
 | `improve-` | ปรับคุณภาพของที่มีอยู่ โดย preserve behavior | `review-uxui` → `subskills/improve-contrast` |
-| `fix-` | แก้ findings/bugs ที่รู้ root cause — minimal + verify | `review-security` → `subskills/fix-secrets` |
+| ~~`fix-`~~ | retired — fix workflows เขียนใน `## Fix` ของ parent skill แทน (ดู `shared/review-fix.md`) | — |
 | `update-` | อัปเดตของที่มีอยู่ให้ทันสมัย — minimal diff, idempotent | `update-tests` → `subskills/update-e2e` |
 | `deploy-` | deploy ไปยัง platform/target จน live + verify | `follow-deploy` → `subskills/deploy-cloudflare` |
 | `migrate-` | ย้าย tool/version/pattern อย่างปลอดภัย มี rollback | `follow-monorepo` → `subskills/migrate-to-monorepo` |

@@ -129,7 +129,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. apply mitigations ตาม risk register — Critical/High ก่อนเสมอ
 2. risks ที่ลดไม่ได้ → เพิ่ม monitoring/rollback plan หรือ escalate ให้ user ตัดสิน

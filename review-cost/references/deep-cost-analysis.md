@@ -1,7 +1,5 @@
 # Deep Cost Analysis
 
-(merged from: deep-cost-analysis)
-
 ใช้เมื่อต้องวิเคราะห์ cost structure เชิงลึก — ไม่ใช่แค่ดู bill แต่เข้าใจ cost drivers, unit economics และ cost ที่จะโตตาม scale
 
 ## Execute

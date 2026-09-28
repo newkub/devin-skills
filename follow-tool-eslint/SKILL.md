@@ -23,7 +23,7 @@ related:
 
 - Latest: `eslint@10.11.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 || ^22.13 || >=24` (verified 2026-09-26) — pair กับ `typescript-eslint@8.70.1`
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-oxlint) — สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
+- สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
 - References: [cli](references/cli.md) | [eslint](references/eslint.md) | [oxlint](references/oxlint.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
 
 ## Execute

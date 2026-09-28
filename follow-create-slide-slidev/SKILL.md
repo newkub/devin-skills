@@ -19,8 +19,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-framework-slidev, create-slide-via-slidev)
-
 - Standalone project: สร้างด้วย `bun create slidev` ในตำแหน่งที่ผู้ใช้กำหนด มี `package.json` ของตัวเอง
 - Newkub slides: ใช้ `D:/newkub/slides` ที่มี single `package.json` ที่ root — แต่ละ project มีแค่ `slides.md` ไม่ต้องสร้าง `package.json` ใหม่
 - ถ้าต้องการ flow เฉพาะ `D:/newkub/slides` → ใช้ `/create-slide-in-newkub-slides`

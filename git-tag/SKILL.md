@@ -6,7 +6,7 @@ related:
   - check-release-drift
   - git-push
   - git-commit
-  - release
+  - run-release
   - report
 ---
 
@@ -18,7 +18,7 @@ related:
 
 - create annotated/lightweight tags, list, push, delete (local + remote)
 - เชื่อมกับ `/check-release-drift` — tag ต้องตรง `package.json`/manifest version
-- ไม่ครอบคลุม full release process → `/release` (skill นี้จัดการ tag อย่างเดียว)
+- ไม่ครอบคลุม full release process → `/run-release` (skill นี้จัดการ tag อย่างเดียว)
 
 ## Execute
 

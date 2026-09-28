@@ -1,8 +1,5 @@
 # Jspm
 
-(merged from: follow-lib-jspm)
-
-
 ## Goal
 
 ใช้ `JSPM CLI` สำหรับจัดการ `import maps`, `ES modules` และ `CDN resolution` บน `browser` โดยไม่ต้อง `bundler`

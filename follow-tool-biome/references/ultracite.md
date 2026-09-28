@@ -1,8 +1,5 @@
 # Ultracite
 
-(merged from: follow-tool-ultracite)
-
-
 ## Goal
 
 ติดตั้งและตั้งค่า Ultracite กับ Biome/ESLint/Oxlint สำหรับ linting และ formatting แบบ zero-config
@@ -96,7 +93,6 @@
 ## References
 
 - [CLI reference](cli.md)
-
 
 ## Expected Outcome
 

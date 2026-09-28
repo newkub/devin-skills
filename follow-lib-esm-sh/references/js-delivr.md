@@ -1,8 +1,5 @@
 # Js Delivr
 
-(merged from: follow-lib-js-delivr)
-
-
 ## Goal
 
 ใช้ `jsDelivr` CDN โหลด `npm packages`, `GitHub repositories`, `ESM modules` และ static assets บน `web pages` ด้วย `multi-CDN infrastructure`

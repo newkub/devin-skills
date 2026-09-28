@@ -40,7 +40,7 @@ related:
 > Goal: ตัดสิน test health
 
 1. Verdict: `all-pass` / `has-failures` / `flaky`
-2. failures → แนะนำ `/resolve-errors` หรือ `/review-test fix-flaky`
+2. failures → แนะนำ `/resolve-errors` หรือ `/review-test` แล้ว fix ตาม `## Fix` (flaky)
 3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
 
 ## Rules

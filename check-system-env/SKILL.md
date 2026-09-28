@@ -15,8 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-system-env)
-
 ตรวจสอบ:
 - Operating System (OS)
 - Shell type และ version

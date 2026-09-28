@@ -83,6 +83,14 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 3. Route: missing skills → `/idea-new-devin-global-skills`, missing tests → `/update-tests`, missing docs → `/update-docs`, orphans → review ว่าควรลบ
 4. ทำ `/suggest-next-action`
 
+### Subskills
+
+> Goal: dispatch report formatting ไปยัง subskill เมื่อต้องการ gap matrix แบบ persistent
+
+| Topic | Subskill |
+|-------|----------|
+| `report`, `report-coverage` — gap matrix + orphan list + priorities | `subskills/report-coverage/SKILL.md` |
+
 ## Rules
 
 ### 1. Surface Discipline
@@ -106,7 +114,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. เติม gap ตามประเภท: tests ขาด → `/update-tests`, docs ขาด → `/update-docs`, skills ขาด → `/new-skills` หรือ `/update-devin-global-skills`
 2. orphan items (มีของจริงแต่ไม่ declared) → เพิ่ม declaration ใน docs/manifest ที่ตรง

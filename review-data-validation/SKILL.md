@@ -86,15 +86,12 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (data validation)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-data-validation
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe (data validation)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (data validation)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (data validation)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (data validation)
-
-- `references/fix-improve-data-validation.md` — ปรับปรุง data validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

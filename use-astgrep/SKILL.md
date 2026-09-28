@@ -18,9 +18,7 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-astgrep)
-
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules`, ad-hoc search workflow อยู่ใน `/search-by-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic` (merged from: `follow-tool-astgrep`)
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules`, ad-hoc search workflow อยู่ใน `/search-by-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic`
 
 ## Execute
 

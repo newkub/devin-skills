@@ -12,8 +12,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: draw-tldraw-diagram)
-
 - สร้าง JSON ตาม tldraw schema
 - รองรับ shapes: geo, text, draw, arrow, line, note
 - สร้างไฟล์ทีเปิดใน tldraw app หรือ VS Code extension ได้

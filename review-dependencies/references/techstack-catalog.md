@@ -1,6 +1,6 @@
 # Tech Stack Catalog
 
-Canonical tech stack + default picks ต่อ category จัดกลุ่มตาม ecosystem — merged from `follow-my-tech-stack`
+Canonical tech stack + default picks ต่อ category จัดกลุ่มตาม ecosystem —
 
 ## How To Select
 

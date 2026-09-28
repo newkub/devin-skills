@@ -15,7 +15,6 @@ Dispatch ไป subskill ตาม domain ของ file hygiene check — paren
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: check-file-encoding, check-file-locks, check-long-files, check-path-length, check-file-permissions, check-file-structure)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

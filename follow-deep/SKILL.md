@@ -12,7 +12,6 @@ related:
   - follow-parallel
 ---
 
-
 ## Goal
 
 พิจารณาและเรียก `deep-*` workflows ที่เกี่ยวข้องตาม context ของ task เพื่อให้การทำงานมีความลึกซึ้งครบทุกมิติ
@@ -100,4 +99,3 @@ related:
 - Independent deep- workflows รัน parallel ลด total execution time
 - ผลลัพธ์จาก deep- workflows ถูกบันทึกและสรุป
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-follow)

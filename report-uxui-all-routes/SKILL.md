@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-website-all-routes)
-
 - ใช้สำหรับ app/website ทีมี tab หรือ multi-screen navigation
 - รองรับ file-based routing, config-based routing, หรือ manual route list
 - ระบุ route/screen, tab group, method, purpose, actions, entry points

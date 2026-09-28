@@ -31,8 +31,8 @@ related:
 
 > Goal: matrix ที่ triage ได้ทันที
 
-1. ตาราง: `No.`, `Vuln`, `Severity`, `Location`, `Exploit Path`, `Fix`, `Subskill`
-2. คอลัมน์ `Subskill` ชี้ `fix-*` ที่รับผิดชอบ (`fix-secrets`, `fix-headers`, `fix-vuln-deps`)
+1. ตาราง: `No.`, `Vuln`, `Severity`, `Location`, `Exploit Path`, `Fix Route`
+2. คอลัมน์ `Fix Route` ชี้ step ใน `## Fix` ของ parent ที่รับผิดชอบ (secrets, headers, vuln deps)
 3. เรียง Critical → Low — exploitable ก่อน theoretical
 
 ### 3. Summarize Posture

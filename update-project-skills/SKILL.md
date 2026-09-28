@@ -19,8 +19,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: update-devin-project-skills)
-
 ใช้เพื่อสร้างหรืออัปเดต skills ใน project's `.devin/skills/` directory ครอบคลุมการวิเคราะห์ project needs, เลือก template, สร้าง `SKILL.md` และไฟล์ย่อย ไม่รวมการแก้ไข global skills หรือ source code ของ project
 
 ## Execute
@@ -116,7 +114,6 @@ related:
 - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → สร้าง global skill ใหม่ด้วย `/update-devin-global-skills`
 - ข้าม dependencies ที่ไม่มี skill pattern ทีตรง
 - ใช้ /update-docs ถ้าจำเป็น
-
 
 ## Expected Outcome
 

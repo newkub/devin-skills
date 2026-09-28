@@ -1,8 +1,5 @@
 # Githooks
 
-(merged from: follow-tool-githooks)
-
-
 ## Goal
 
 ใช้งาน Git hooks ใน project เพื่อรัน checks อัตโนมัติก่อน commit, push, merge
@@ -107,7 +104,6 @@
 ## References
 
 - [CLI reference](cli.md)
-
 
 ## Expected Outcome
 

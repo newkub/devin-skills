@@ -1,7 +1,5 @@
 # Implement Todo Md
 
-(merged from: implement-todo-md)
-
 ## Goal
 
 อ่าน `TODO.md` แล้ว implement ทุก task ตามลำดับ dependencies พร้อม update status

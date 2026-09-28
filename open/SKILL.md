@@ -16,7 +16,6 @@ Dispatch ไป skill ปลายทาง ตาม target ที่ต้อ�
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: open-in-explorer, open-github, open-in-wezterm, open-in-windows-terminal, open-in-zed, open-web)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

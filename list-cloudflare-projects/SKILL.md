@@ -15,7 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: all-cloudflare-projects, open-all-cloudflare-projects)
 - สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`, `list-cloudflare-projects`, `list-cloudflare-projects`
 
 ใช้เพื่อหา Cloudflare projects ทั้งหมดในเครื่อง โดย detect จาก `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, หรือ `wrangler.config.ts`
@@ -79,7 +78,6 @@ related:
 
 - ใช้ /resolve-cloudflare-worker-fails ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
-
 
 ## Expected Outcome
 

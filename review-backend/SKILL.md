@@ -87,6 +87,17 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 - ทำ `/report`
 - ทำ `/suggest-next-action`
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `jobs`, `workers`, `consumers` — retries, idempotency, DLQ | `subskills/check-jobs/SKILL.md` |
+| `resilience`, `errors`, `caching` — timeouts, retries, breakers | `subskills/check-resilience/SKILL.md` |
+| `transactions`, `concurrency` — atomicity, isolation, races | `subskills/check-transactions/SKILL.md` |
+
 ## Rules
 
 1. Delegation
@@ -115,15 +126,12 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (backend)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-backend
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding ด้าน API, service, database, data flow (backend)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (backend)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (backend)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (backend)
-
-- `references/fix-improve-backend.md` — แก้ไข backend findings ด้าน API, service, database, data flow
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

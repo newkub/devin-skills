@@ -93,14 +93,17 @@ related:
 1. ทำ `/report` พร้อม columns: No., Endpoint, Severity, Finding, Evidence, Fix
 2. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
+
 ### Subskills
 
-> Goal: dispatch งาน fix ไปยัง subskill เมื่อ user confirm ให้แก้ findings
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
 
 | Topic | Subskill |
 |-------|----------|
-| Contract drift fixes — schema vs impl | `subskills/fix-contract/SKILL.md` |
-| Versioning strategy fixes | `subskills/fix-versioning/SKILL.md` |
+| `contract`, `versioning`, `drift` — spec vs impl drift | `subskills/check-contract/SKILL.md` |
+| `webhooks`, `realtime` — delivery safety + realtime channels | `subskills/check-webhooks/SKILL.md` |
+| `endpoints`, `report-endpoints` — endpoint inventory table | `subskills/report-endpoints/SKILL.md` |
+| Reconcile contract drift — sync spec/impl (user confirm) | `subskills/update-contract/SKILL.md` |
 
 ## Rules
 
@@ -130,13 +133,14 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
 1. validation: schema ที่ boundary ทุก endpoint — 4xx พร้อม field-level errors
 2. error format เดียวทั้ง API, status codes ถูก, ไม่ leak internals
-3. consistency: naming, versioning strategy ตาม `/check-api-versioning`, deprecation ไม่ลบทิ้งทันที
+3. contract drift: `/check-api-contract` diff spec vs impl — ยึด contract ที่ client ใช้จริง, แก้ฝั่งที่ผิด (impl หรือ spec/docs) → verify `/check-api-contract` + `/check-backward-compatibility` ซ้ำ
+4. versioning: unify scheme ตาม convention เดิม (ไม่มี → `/ask-me`), version ที่ boundary เดียว, breaking → version ใหม่ควบคู่ + `Deprecation`/`Sunset` headers + timeline, prefer additive changes — verify `/check-api-versioning` ซ้ำ
 4. pagination/limits: cursor สำหรับใหญ่, page-size caps, rate limiting
 5. verify: `/check-api-contract` diff = intended only, tests ผ่าน
 

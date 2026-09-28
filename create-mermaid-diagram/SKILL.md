@@ -20,8 +20,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-mermaid-diagram-all-workspace)
-
 ใช้สำหรับสร้าง diagram ทั่วไป เช่น flowchart, sequence, class, state, er, gantt, gitgraph, pie, user-journey, quadrant, mindmap สำหรับ project ใดก็ได้
 รองรับทั้งการระบุ prompt โดยตรง และการอ่านจากไฟล์/รูปภาพ ถ้าต้องการ visualize จาก code ให้ใช้ `/report-architecture-diagram` หรือ `/report-workspace-graph` แทน
 

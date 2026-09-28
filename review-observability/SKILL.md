@@ -88,6 +88,11 @@ observability review สำหรับ: metrics collection, distributed tracing
 ทำตาม `references/scoring.md`
 
 ### Subskills
+| `metrics` — golden signals, cardinality, business metrics | `subskills/check-metrics/SKILL.md` |
+| `logging`, `logs` — structured logs, context, redaction | `subskills/check-logging/SKILL.md` |
+| `alerting`, `alerts`, `incident` — actionable alerts + runbooks | `subskills/check-alerting/SKILL.md` |
+| `slos`, `report-slos` — SLO/SLI table + error budget | `subskills/report-slos/SKILL.md` |
+| Setup alerting from zero — missing coverage (user confirm) | `subskills/setup-alerts/SKILL.md` |
 
 > Goal: dispatch งาน improve ไปยัง subskill ที่ตรง topic
 
@@ -127,9 +132,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 ### 5. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (observability)
-- แสดง score ต่อ dimension และ overall score (observability)
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
 
 ### 6. Formatting
 
@@ -138,7 +141,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

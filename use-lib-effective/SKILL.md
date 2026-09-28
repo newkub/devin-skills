@@ -27,7 +27,6 @@ related:
 - เลือก lib ตาม preferred stack → `/follow-my-techstack`
 - Audit deps (outdated, unused, vulnerabilities) → `/review-dependencies`
 - reuse internal code ที่มีอยู่ก่อนเขียนใหม่ (DRY) → `/follow-reusable`
-- (restored เป็น standalone skill — เดิม merged ใน `review-dependencies/references/fix-use-lib-effective.md` ซึ่งยังใช้เป็น fix guide ของ review อยู่)
 
 ## Execute
 

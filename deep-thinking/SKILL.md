@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: pondering, deep-pondering)
-
 ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`) และไม่ใช่การวางแผนงาน (ใช้ `/plan`)
 
 ## Execute

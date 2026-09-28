@@ -1,7 +1,5 @@
 # Fix Guide
 
-(merged from: improve-correctness)
-
 ## Goal
 
 แก้ไขความถูกต้องของ implementation ตาม findings จาก `/review-quality` ครอบคลุม logic, types, edge cases, contracts, concurrency, และ tests
@@ -73,7 +71,8 @@
 1. แก้ assertions ที่ผิด
 2. ลบ tests ที่ไม่มีประโยชน์หรือ duplicate
 3. เพิ่ม tests สำหรับ gaps ที่ review พบ
-4. รัน `run-test` และ `un-test` (coverage)
+4. รัน `run-test` และ `
+un-test` (coverage)
 
 ### 8. Validate And Report
 

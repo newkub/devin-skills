@@ -20,7 +20,7 @@ related:
 ใช้สำหรับการ `import` modules ผ่าน `HTTPS URL` พร้อม `tree-shaking`, `bundling`, `dependency rewriting` และ `import maps` อัตโนมัติ
 
 - ใช้ skill นี้เฉพาะเมื่อโหลด modules ผ่าน CDN URL โดยไม่มี bundler (browser, Deno, no-build setups) — ถ้า project มี `package.json` + bundler → install package ตามปกติแทน
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-js-delivr, follow-lib-jspm) — CDN อื่นดู `references/js-delivr.md` และ `references/jspm.md`
+- CDN อื่นดู `references/js-delivr.md` และ `references/jspm.md`
 - `esm.sh` มี CLI สำหรับจัดการ import maps ใน `index.html` — ดู `references/cli.md`
 
 ## Execute

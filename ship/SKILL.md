@@ -24,7 +24,7 @@ related:
 
 ## Goal
 
-Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป็น entry point เท่านั้น ไม่มี ship logic เอง; workflow ทั้งหมด (branch, validate, staging, CI gate, merge, production, rollback) อยู่ใน `### 8. Ship` ของ `/update-agents-md` (merged from: ship, ship-to-staging, ship-to-production)
+Ship code ผ่าน `AGENTS.md` ของ project — skill นี้เป็น entry point เท่านั้น ไม่มี ship logic เอง; workflow ทั้งหมด (branch, validate, staging, CI gate, merge, production, rollback) อยู่ใน `### 8. Ship` ของ `/update-agents-md`
 
 ## Scope
 

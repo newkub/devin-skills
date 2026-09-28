@@ -1,8 +1,5 @@
 # List Cloudflare Worker Fails
 
-(merged from: list-cloudflare-worker-fails)
-
-
 ## Goal
 
 สรุป Cloudflare Workers/Pages ที deployment ล้มเหลวหรือ latest deployment ไม่อยู่ในสถานะ success ทั้งหมดใน Cloudflare account ที user เข้าถึง

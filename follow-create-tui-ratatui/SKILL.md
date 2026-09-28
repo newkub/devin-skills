@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-framework-ratatui)
-
 - สร้าง TUI project ด้วย Rust จาก scratch
 - ใช้ [references/ratatui.md](references/ratatui.md) สำหรับ setup และ patterns
 - รองรับ layout, components, events, state, styling

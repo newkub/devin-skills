@@ -30,8 +30,8 @@ related:
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
 2. ทำ `/update-project-rules` ถ้ามี `ast-grep` rules หรือ `.devin/rules` ที่เกี่ยวข้อง
-3. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
-4. เลือก `sg outline` flags ตาม scope (ดู references/sg-outline.md)
+3. อ่าน `## Sg Outline` ด้านล่างเพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
+4. เลือก `sg outline` flags ตาม scope (ดู `## Sg Outline`)
 5. ระบุ target paths ที่จะ improve
 6. ถ้า `sg outline` ไม่พร้อมใช้ → stop และ report
 
@@ -39,7 +39,7 @@ related:
 
 > Goal: Analyze Code Structure
 
-1. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อเลือก flags ที่เหมาะสมกับ scope
+1. อ่าน `## Sg Outline` เพื่อเลือก flags ที่เหมาะสมกับ scope
 2. รัน `sg outline` ด้วย flags ที่เลือก:
    - `sg outline --view expanded --items structure <paths>` สำหรับ top-level symbols และ members
    - `sg outline --view signatures --items exports <paths>` สำหรับ exported surface
@@ -90,7 +90,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 > Goal: Verify
 
-1. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
+1. อ่าน `## Sg Outline` เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
 2. รัน `sg outline --items structure <paths>` อีกครั้งเพื่อยืนยันว่า issues ถูกแก้ไข
 3. รัน `sg outline --items exports <paths>` ตรวจสอบว่า public API ไม่เปลี่ยนโดยไม่ตั้งใจ
 4. ทำ `/run-verify` lint และ typecheck
@@ -138,7 +138,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 ### 5. sg outline Flags
 
-ดูรายละเอียด flags และ options ทั้งหมดใน [references/sg-outline.md](references/sg-outline.md)
+ดูรายละเอียด flags และ options ทั้งหมดใน `## Sg Outline` ด้านล่าง
 
 ### 6. Scope Boundaries
 
@@ -149,6 +149,63 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 - สำหรับ system-wide view ทำ `/deep-review`
 
 - ใช้ /use-astgrep-programmatic ถ้าจำเป็น
+
+## Sg Outline
+
+> Goal: ใช้ `sg outline` (`ast-grep outline`) explore code structure โดยไม่ต้อง build index
+
+### Basic Usage
+
+```bash
+sg outline src/parser.ts          # file → items=structure, view=digest
+sg outline src                    # directory → items=exports, view=names
+sg outline src/a.ts src/b.ts      # หลาย files
+```
+
+### Items (`--items`)
+
+| Value | Meaning |
+|-------|---------|
+| `auto` | `structure` สำหรับ file/stdin, `exports` สำหรับ directory (default) |
+| `structure` | top-level items ใน file (ไม่รวม imports) |
+| `exports` | exported top-level items |
+| `imports` | imported items/dependencies |
+| `all` | imports + exports |
+
+### View (`--view`)
+
+| Value | Meaning |
+|-------|---------|
+| `names` | grouped name lines per symbol type |
+| `signatures` | one signature line per top-level item |
+| `digest` | signatures + compact member digests (default file) |
+| `expanded` | signatures + one line per direct member |
+
+### Filters
+
+```bash
+sg outline src --type class,enum                 # filter ตาม symbol type (OR)
+sg outline src --match Parser                    # regex บน symbol names
+sg outline src --items imports --match lodash    # imports ที่ match dependency
+sg outline src --view expanded --pub-members     # เฉพาะ public members
+sg outline src/parser.ts --match Parser --type class --view expanded  # expand symbol เดียว
+sg outline src --json compact --items all        # machine-readable output
+```
+
+### Symbol Types (`--type`)
+
+LSP `DocumentSymbol.kind` — `class`, `function`, `interface`, `method`, `property`, `field`, `constructor`, `enum`, `enumMember`, `struct`, `module`, `namespace`, `variable`, `constant`, `typeParameter` ฯลฯ — lower camel case, comma = OR
+
+### Stdin และ Rules
+
+- stdin input ต้องระบุ `--lang` เสมอ
+- extraction rules: bundled per language; custom ผ่าน `customLanguages.<name>.outlineRules` ใน `sgconfig.yml` หรือ `--outline-rules <file>`; `--no-default-outline-rules` แทนที่ bundled
+- exit codes: `0` = ok (รวม empty), `2` = fatal read/parse/config error
+
+### When To Use
+
+- ใช้: ดู structure/exports/members ก่อนอ่าน file, ตรวจ dependencies, filter symbols
+- ไม่ใช้: pattern search (`ast-grep run`/`scan`), rewrite code, cross-file analysis (local-only), semantic relationships (ไม่ normalize extends/implements)
 
 ## Expected Outcome
 

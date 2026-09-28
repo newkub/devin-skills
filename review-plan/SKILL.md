@@ -76,7 +76,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ plan ตาม findings: เพิ่ม missing steps, แก้ dependency order, เพิ่ม mitigation ของ risks, ตัดงานที่เกิน scope
 2. ถ้า verdict `go` → ทำ `/follow-plan` หรือ `/review-implement-to-production` ต่อ

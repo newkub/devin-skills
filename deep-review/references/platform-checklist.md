@@ -1,4 +1,4 @@
-# platform — Full Dimension Checklist (merged from: review-platform)
+# platform — Full Dimension Checklist
 
 ## 1. Mobile And Desktop
 

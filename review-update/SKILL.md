@@ -129,7 +129,7 @@ Review drift ระหว่าง current state และ target state เพ�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. apply updates ตาม priority order จาก Drift Report — ส่งต่อ `update-*` skill ที่ตรง domain (docs, config, deps, skills)
 2. high drift ที่ไม่ชัดเจน → `/ask-me` ก่อนแก้

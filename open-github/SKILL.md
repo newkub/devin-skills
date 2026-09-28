@@ -62,5 +62,3 @@ related:
 
 - หน้า GitHub ที่ต้องการเปิดใน browser เรียบร้อย
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: open-github-issue, open-github-pr, open-github-repo, open-github-repo-org, open-github-repo-personal)
-

@@ -25,7 +25,6 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ใช้เมื่อต้องการ review และ improve UX/UI ของเว็บที่กำลังรันอยู่แบบ evidence-driven — ทุก finding ต้องมาจาก screenshots จริงของแต่ละ route
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: `watch-browser-improve-uxui`)
 - ถ้าต้องการ functional UX pass (flows, actions, error states) → `/watch-browser-test`
 - ถ้าต้องการแก้ console/page errors → `/watch-browser-fix`
 - ถ้าต้องการ watch เฉยๆ → `/watch-browser`

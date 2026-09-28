@@ -18,7 +18,6 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 ใช้เมื่อต้องการรวม findings จากหลาย dimensional reviews เป็นรายการเดียวที่เรียงลำดับแล้ว ไม่ทำ dimensional review เอง — รวบรวม ตัดซ้ำ และจัดลำดับเท่านั้น
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-improvement)
 - ถ้าต้องสแกนกว้างหา "improve อะไรได้บ้าง" โดยยังไม่มี findings → ใช้ [references/dimension-map.md](references/dimension-map.md) สแกนแต่ละ dimension แบบเบาแล้ว map ไป `## Fix` ของ `review-*`
 
 ## Execute
@@ -107,7 +106,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. ส่งแต่ละ gap ที่ confirm ไปยัง `## Fix` ของ `review-*` ที่ตรง domain หรือ `/deep-review-then-fix`
 2. gap ที่ไม่มี owner skill → `/new-skills` หรือ `/idea-merge` ตามประเภท

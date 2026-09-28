@@ -1,7 +1,5 @@
 # Fix Guide
 
-(merged from: improve-data-structure)
-
 ## Goal
 
 เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements

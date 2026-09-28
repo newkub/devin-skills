@@ -63,5 +63,3 @@ related:
 - ตาราง starred repositories ตาม scope/filter ที่ระบุ
 - สรุปจำนวนและภาษาหลัก
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-github-star-latest, list-repo-in-github-star, list-github-star-filter-bun, list-github-star-filter-rust)
-

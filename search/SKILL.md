@@ -16,7 +16,6 @@ Dispatch ไป skill ตาม search source — parent ทำ routing เท�
 
 ## Scope
 
-- รวม capability ของ skills ที่ถูก merge เข้ามา (merged from: search-files-patterns, search-in-github-star, search-mcp, search-in-npmx, search-project-in-drive-d, search-in-raindrop-io, search-similar, search-skills)
 - argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
 
 ## Execute

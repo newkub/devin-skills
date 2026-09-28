@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ modern web applications ทีใช้ Vite เป็น build tool และ dev server
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-vite-plugin-compression) — สำหรับ gzip/brotli pre-compression ดู `references/plugin-compression.md`
+- สำหรับ gzip/brotli pre-compression ดู `references/plugin-compression.md`
 
 - Boundary: ใช้ Vite สำหรับ app dev server/build — library bundling ใช้ `/follow-tool-tsdown`; raw bundler internals ใช้ `/follow-tool-rolldown`; static docs site ใช้ `/follow-tool-vitepress`
 
@@ -141,7 +141,6 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-
 
 ## Expected Outcome
 

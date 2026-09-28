@@ -1,8 +1,5 @@
 # Build Packages
 
-(merged from: follow-tool-build-packages)
-
-
 ## Goal
 
 ตั้งค่า
@@ -78,9 +75,7 @@ tests/examples <-- src
 
 - [CLI reference](cli.md)
 
-
 ## Expected Outcome
 
 Completed `follow-tool-turborepo` workflow with correct output
-
 

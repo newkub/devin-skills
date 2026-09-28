@@ -21,7 +21,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor-workspace`, `restructure` หรือ `relocation` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns และ file/folder structure (naming, grouping, barrel exports, nesting, relocation plan — merged from: review-restructure) ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor-workspace`, `restructure` หรือ `relocation` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns และ file/folder structure (naming, grouping, barrel exports, nesting, relocation plan) ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -70,7 +70,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 3. รัน `knip` และ `jscpd`
 4. บันทึก findings
 
-### 8. Analyze Structure And Relocation (merged from: review-restructure)
+### 8. Analyze Structure And Relocation
 
 > Goal: ประเมิน structure health และวางแผน relocation — ข้ามถ้า scope ไม่เกี่ยวกับ file/folder moves
 
@@ -155,7 +155,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. execute refactor ตาม targets ที่จัดลำดับ → `/refactor` หรือ `/refactor`
 2. รักษา public API/behavior ตาม baseline — ถ้าต้องเปลี่ยน → แจ้ง user ก่อน

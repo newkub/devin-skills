@@ -15,8 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: summarize-prompt, summarize-this-chat-session, summarize-this-project)
-
 ใช้เมื่อ user ต้องการสรุปเนื้อหาโดยไม่ระบุ skill ย่อย โดย `summarize` จะเลือกหรือ delegate ไปยัง skill ทีเหมาะสม
 
 ## Execute

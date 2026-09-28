@@ -17,7 +17,6 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-commit-at-devin-skills-global)
 - variants: no-verify/selected-files/at-devin-global-skills อยู่ใน subskills; `and-push` ย้ายออกเป็น top-level `/git-commit-and-push`
 
 ใช้สำหรับ commit changes ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` เท่านั้น

@@ -20,8 +20,6 @@ related:
 - ตรวจ `USAGE.md` ว่ามี sections ครบ เปรียบเทียบกับ `README.md`/`package.json`
 - สรุป Devin session usage/cost ตาม period หรือ billing tags
 
-(merged from: `report-usage-md`, `report-devin-usage`)
-
 ## Execute
 
 ### 1. Choose Scope

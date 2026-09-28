@@ -93,6 +93,15 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 - ใช้ `subagents/area-reviewer.md` เมื่อ workspace มีหลาย dirs/packages ที่ review แยกกันได้ (เช่น `src/api/`, `src/ui/`, `packages/*`) — spawn ทีละ area ผ่าน `/use-subagents` แล้ว merge findings ทุก area ก่อน score/report ใน Step 7
 - ถ้า workspace เล็กหรือ areas แชร์ files กันมาก → review เองไม่ spawn
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| Apply workspace findings — repo bloat, task graph, cache (user confirm) | `subskills/optimize-workspace/SKILL.md` |
+
 ## Rules
 
 1. Scope Boundary
@@ -124,16 +133,12 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (workspace)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: optimize-git-repo, optimize-workspace
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — git repo bloat (history, large objects, gc, LFS) และ monorepo task graph (affected-only runs, remote cache, pipeline tuning) (workspace)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (workspace)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (workspace)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (workspace)
-
-- `references/fix-optimize-git-repo.md` — ลดขนาด git repo — history bloat, large objects, gc และ LFS migration
-- `references/fix-optimize-workspace.md` — Optimize monorepo task graph — affected-only runs, remote cache และ pipeline tuning
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

@@ -14,7 +14,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-secret-rotation)
 - รองรับ git history scan และ filesystem scan
 - ใช้ gitleaks, trufflehog, หรือ regex patterns
 - รายงานพร้อม severity และ location

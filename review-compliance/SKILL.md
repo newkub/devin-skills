@@ -18,8 +18,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-compliance)
-
 compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Thailand), consent management, DSAR, audit trails, data retention, cross-border transfer, privacy by design
 
 ไม่รวม `/review-security` และ `/review-business`
@@ -70,9 +68,20 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 > Goal: validate findings และสร้าง score-based report
 
 1. ทำ `/deep-validate` สำหรับทุก finding
-2. จัดลำดับ findings ตาม severity: Critical, High, Medium, Low
+2. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
 3. คำนวณ per-dimension และ overall score ตาม `references/scoring.md`
 4. รายงานด้วย `/report` และ `/suggest-next-action`
+
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `privacy`, `gdpr`, `pdpa` — consent, DSAR, retention | `subskills/check-privacy/SKILL.md` |
+| `breach`, `incident` — detection, notification, audit trail | `subskills/check-breach/SKILL.md` |
+| `report`, `matrix` — regulation x requirement matrix | `subskills/report-compliance/SKILL.md` |
 
 ## Rules
 
@@ -84,15 +93,12 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review` หรือ `/review` (compliance)
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-Merged from: improve-compliance
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+2. แก้ตาม finding — licenses, privacy, audit และ data handling (compliance)
+3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (compliance)
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (compliance)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (compliance)
-
-- `references/fix-improve-compliance.md` — แก้ findings จาก review-compliance ครอบคลุม licenses, privacy, audit และ data handling
 ## References
 
 - [Full-dimension checklist](references/checklist.md)

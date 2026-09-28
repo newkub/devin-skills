@@ -13,8 +13,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-submodule-delete)
-
 ใช้สำหรับการลบ git submodule ที่ไม่ต้องการอีกต่อไป พร้อม cleanup ทุกส่วนที่เกี่ยวข้อง
 
 ## Execute

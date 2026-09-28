@@ -4,6 +4,7 @@ description: Refactor workspace members ให้มี SRP, แนะนำ wor
 argument-hint: "[scope]"
 related:
   - refactor
+  - refactor-shared
   - follow-single-responsibility
   - restructure
   - relocation
@@ -17,7 +18,6 @@ related:
   - run-build
   - run-test-all
 
-
 ---
 
 ## Goal
@@ -25,8 +25,6 @@ related:
 Refactor workspace members (packages, crates, modules) ให้มี single responsibility, high cohesion, low coupling และแนะนำ workspace members จาก workspace ที่ควรนำมาใช้
 
 ## Scope
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: refactor-all-workspace)
 
 ใช้กับ project หรือ monorepo ที่ต้อง split/merge/relocate workspace members หรือแนะนำ workspace members จาก workspace
 

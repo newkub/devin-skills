@@ -80,6 +80,17 @@ Review infrastructure-as-code — Terraform, Pulumi, CDK, Helm, K8s manifests �
 - `Medium`: tagging gaps, module duplication, drift-prone patterns, missing PDB
 - `Low`: naming inconsistency, missing output descriptions, docs gaps
 
+
+### Subskills
+
+> Goal: dispatch งานเฉพาะมิติ/รูปแบบไปยัง subskill — check-* read-only focused pass, report-* format findings, อื่นๆ apply fixes เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
+| `drift`, `pinning` — state vs reality, locked versions | `subskills/check-drift/SKILL.md` |
+| `k8s`, `helm`, `kubernetes` — manifest resources/security | `subskills/check-k8s/SKILL.md` |
+| `state`, `backend` — state locking, secrets, prevent_destroy | `subskills/check-state/SKILL.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
@@ -90,7 +101,7 @@ Review infrastructure-as-code — Terraform, Pulumi, CDK, Helm, K8s manifests �
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 

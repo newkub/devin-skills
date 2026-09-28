@@ -17,8 +17,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-idea, idea-new-skills, idea-create-devin-skills-global)
-
 ใช้เมื่อผู้ใช้บอกว่า "ขอ idea" หรือต้องการไอเดียสำหรับงานใดๆ ครอบคลุม features, UX/UI, refactor, และ improvements
 
 ## Execute
@@ -87,7 +85,6 @@ related:
 - ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/implement-to-production` เลย
 - ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
 - ใช้ /think-reframe ถ้าจำเป็น
-
 
 ## Expected Outcome
 

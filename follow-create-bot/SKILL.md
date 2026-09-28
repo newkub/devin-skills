@@ -15,7 +15,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-slack-bot, follow-create-discord-bot, follow-create-telegram-bot, follow-create-line-bot, follow-create-github-app, follow-create-github-bots)
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
 - ทำตาม `/review-dependencies` สำหรับ runtime และ dependencies
 

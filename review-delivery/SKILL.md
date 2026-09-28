@@ -87,6 +87,17 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 3. คำนวณ review score ตาม `references/scoring.md`
 4. ทำ `/report` และ `/suggest-next-action`
 
+### Subskills
+
+> Goal: dispatch focused pass ไปยัง subskill เมื่อ user ต้องการเจาะ dimension เดียวของ delivery-unique scope
+
+| Topic | Subskill |
+|-------|----------|
+| `ci-cd`, `pipeline`, `ci` — build times, caching, parallelism, workflow security | `subskills/check-ci-cd/SKILL.md` |
+| `infra`, `infrastructure`, `docker` — containers, environments, deploy surface | `subskills/check-infra/SKILL.md` |
+| `efficiency`, `build` — build/dev-loop efficiency, tooling overhead | `subskills/check-efficiency/SKILL.md` |
+| `ops`, `logging`, `versioning` — logging/debugging, versioning, PR process, analytics | `subskills/check-ops/SKILL.md` |
+
 ## Rules
 
 - ข้าม dimension ใด ถ้า project ไม่มี — ดู criteria ในแต่ละ reference
@@ -102,7 +113,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
+> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 ### Fix Steps
 
