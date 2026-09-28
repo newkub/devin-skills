@@ -18,6 +18,7 @@ related:
   - run-test-coverage
   - resolve-errors
   - use-lib-effective
+  - follow-tdd
 ---
 
 ## Goal
@@ -26,7 +27,6 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-mock, implement-plan, implement-todo-md)
 - ถ้า input เป็นไฟล์แผน `.devin/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md`
 - ถ้า input เป็น `TODO.md` task list → ทำตาม `references/implement-todo-md.md`
 
@@ -91,9 +91,10 @@ related:
 3. ถ้ามี `TODO.md` → ทำตาม `references/implement-todo-md.md`
 4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
-6. ทำ `/use-lib-effective` ก่อนเขียน implementation ใหม่ — ใช้ dep ที่ติดตั้งอยู่หรือ preferred stack ให้เต็มประสิทธิภาพแทนการ reinvent
-7. ถ้ามี library ที่เหมาะกว่า → ทำ `/review-dependencies`
-8. หลัง implement เสร็จ → ทำ `/update-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
+6. implement แต่ละ feature/fix ด้วย `/follow-tdd` — เขียน failing test ที่ lock behavior ก่อน แล้วค่อยเขียน code ให้ผ่าน
+7. ทำ `/use-lib-effective` ก่อนเขียน implementation ใหม่ — ใช้ dep ที่ติดตั้งอยู่หรือ preferred stack ให้เต็มประสิทธิภาพแทนการ reinvent
+8. ถ้ามี library ที่เหมาะกว่า → ทำ `/review-dependencies`
+9. หลัง implement เสร็จ → ทำ `/update-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
 
 ### 7. Implement Security, Resilience And Observability
 
