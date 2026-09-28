@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **823** top-level skills (~1287 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`. Fix workflows live in `## Fix` sections (`shared/review-fix.md`), not `fix-*` subskills.
+The repository currently contains **824** top-level skills (~1288 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills/references/subskills-and-subagents.md`. Fix workflows live in `## Fix` sections (`shared/review-fix.md`), not `fix-*` subskills.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
@@ -119,7 +119,7 @@ Major skill families by current count:
 - `improve-*` (2): `improve`, `improve-devin-global-skills` (`improve-test-coverage-to-100` merged → `review-test` subskill).
 - `resolve-*` (9): error/CI/issue/conflict resolution — `resolve-errors` (canonical fixer; absorbs `resolve-github-actions-fails`, `resolve-cloudflare-worker-fails`, `resolve-all-cloudflare-fails`), `resolve-cicd` (watcher — watch CI `gh run` + CD `wrangler`/deploys แล้ว dispatch `/resolve-errors`), `resolve-all-cloudflare-worker-fails`, `resolve-cloudflare-worker-fails`, `resolve-github-actions-fails`, `resolve-all-github-actions-fails`, `resolve-github-issue-by-me`, `resolve-github-pr`, `resolve-merge-conflicts`.
 - `restore-*` (6): `restore-files` dispatcher routes to `restore-files-deleted-file`, `restore-files-from-devin-history`, `restore-files-from-git-log`, `restore-files-from-my-dotfiles`; `restore` = alias → `/restore-files`.
-- `idea-*` (11): `idea` dispatcher + top-level `idea-features`, `idea-improve`, `idea-merge`, `idea-naming`, `idea-review`, `idea-uxui`, `idea-refactor-workspace`, `idea-convert-my-global-cli-to-skills`, `idea-devin-global-skills-from-session`, `idea-new-devin-global-skills`.
+- `idea-*` (12): `idea` dispatcher + top-level `idea-features`, `idea-improve`, `idea-merge`, `idea-naming`, `idea-review`, `idea-uxui`, `idea-refactor-workspace`, `idea-convert-my-global-cli-to-skills`, `idea-convert-devin-skills-to-mcp`, `idea-devin-global-skills-from-session`, `idea-new-devin-global-skills`.
 - `roleplay-*` (1→18 category parents→75 role subskills): `roleplay-by-all-stakeholder` dispatcher → `roleplay-<category> <role>` — categories: product, engineering, quality, user, customer, research, marketing, growth, business, data, operations, finance, legal, content, creative, communication, management, technical (renamed from `roleplay-stakeholder`).
 - `merge-*` (4): `merge` dispatcher routes to `merge-all-branch-by-me-to-main`, `merge-git-branch`, `merge-github-pr` top-level skills.
 - `convert-*` (6): `convert` dispatcher + `convert-esm`, `convert-files-format`, `convert-git-submodules`, `convert-scripts`, `convert-svg`.
