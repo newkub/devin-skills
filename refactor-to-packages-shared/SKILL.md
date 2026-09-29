@@ -6,7 +6,6 @@ related:
   - refactor
   - refactor-workspace
   - follow-clean-architecture
-  - refactor-to-packages-shared-check-shared-usage
   - follow-single-of-source
   - follow-reusable
   - use-lib-effective
@@ -32,6 +31,12 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 - ถ้า dep ตัวนอกทำได้อยู่แล้ว → อย่า extract เอง ใช้ `/use-lib-effective` แทน
 
 ## Execute
+
+### Subskills
+
+| Domain | Subskill |
+|---|---|
+| `check-shared-usage` | `subskills/check-shared-usage/SKILL.md` — audit ทุกไฟล์ใน `packages/shared` ว่ามี external consumer จริง ≥1 จุด |
 
 ### 1. Inventory Shared Candidates
 
