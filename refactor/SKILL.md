@@ -19,7 +19,6 @@ related:
   - dont-over-engineer
   - follow-single-of-source
   - follow-reusable
-  - follow-architecture
   - review-architecture
   - follow-orm
   - review-database
@@ -41,7 +40,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
-- ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor ตาม `references/architecture-clean.md` หรือ `references/architecture-layered.md` — เลือก pattern ผ่าน `/follow-architecture`
+- ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor — เลือก pattern ตาม target table ใน step 5
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
 - ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` — repository pattern detail อยู่ `/follow-orm`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
@@ -93,10 +92,17 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 > Goal: apply architecture pattern ให้ target — `packages/`/`crates/` = Clean, `apps/` = Layered
 
-1. ถ้า pattern ยังไม่ชัด → ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention (ถ้าถูก dispatch มาจาก `/follow-architecture` อยู่แล้ว ให้ข้าม step นี้)
-2. Clean Architecture (`packages/*`, `crates/*`, domain-heavy targets) → ทำตาม [references/architecture-clean.md](references/architecture-clean.md)
-3. Layered Architecture (`apps/*`, UI-driven/CRUD targets) → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
-4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT)
+| Target | Pattern |
+|--------|---------|
+| `packages/*`, `crates/*` (shared libs, domain packages) | Clean → `references/architecture-clean.md` |
+| `apps/*` (web, mobile, api entry points) | Layered → `references/architecture-layered.md` |
+| directory อื่นหรือไม่ใช่ monorepo | เลือกตามลักษณะ code (testability สูง/domain-heavy → clean; UI-driven/CRUD → layered) — ไม่ชัดให้ `/ask-me` |
+
+1. เลือก target+pattern: argument `clean`/`layered` → pattern นั้น; argument เป็น path → map ตามตาราง; ไม่ระบุ → scan root (`packages/`/`crates/` → clean ทุกตัว, `apps/` → layered ทุกตัว; หลายกลุ่ม → ทีละอันตาม severity)
+2. Clean Architecture → ทำตาม [references/architecture-clean.md](references/architecture-clean.md)
+3. Layered Architecture → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
+4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; หลังแต่ละ target → `/update-references` + `/run-check` ก่อน target ถัดไป
+5. Canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT); microservices ไม่ครอบคลุม — อ่าน `### Pattern: Microservices Architecture` ที่นั่นโดยตรง
 
 ### 6. Data Access Refactor
 

@@ -4,7 +4,6 @@ import type { Context, SkillMeta } from "../types";
 const TEMPLATE_DIR = join("update-devin-global-skills", "templates");
 
 const PREFIX_MAP: [RegExp, string][] = [
-  [/^follow-.*-architecture$/, "follow-architecture"],
   [/^follow-lib-/, "lib"],
   [/^follow-/, "follow"],
   [/^run-/, "run"],

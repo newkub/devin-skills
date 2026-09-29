@@ -4,7 +4,6 @@ description: ปรับโครงสร้างไฟล์/โฟลเด
 argument-hint: "[scope]"
 related:
   - refactor
-  - follow-architecture
   - relocation
   - update-references
   - rethink
@@ -75,7 +74,7 @@ related:
 
 ย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ domain — high-risk action
 
-1. ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention ก่อน relocate (`packages/`/`crates/` → clean, `apps/` → layered — apply ผ่าน `/refactor`)
+1. ทำ `/refactor` architecture scope เพื่อเลือก pattern ตาม directory convention ก่อน relocate (`packages/`/`crates/` → clean, `apps/` → layered — target table ใน step 5)
 2. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
 3. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
 4. ทำ `/review-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
