@@ -101,7 +101,7 @@ related:
 - Roots, Sampling, Logging deprecated (ยังใช้ได้ชั่วคราวตาม deprecation window)
 - server เก่าที่ยังเป็น `2025-11-25` หรือก่อนหน้ายังทำงานได้ — ถ้าเจอ `UnsupportedProtocolVersionError` ให้ retry ด้วย version ที่ server รองรับ
 
-- ใช้ /learn-from-references ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
 - ใช้ /deep-research ถ้าจำเป็น
 
 ## Expected Outcome

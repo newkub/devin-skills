@@ -42,7 +42,7 @@ related:
 
 1. ถ้า target อยู่ใน project ปัจจุบัน → อ่านไฟล์ที่เกี่ยวข้อง; ถ้าเป็น mechanism mode → ทำ `/scan-codebase` หรือ `/deep-trace`
 2. ถ้า target เป็น skill ใน repo → อ่าน `SKILL.md` ด้วย `/read` หรือ `/read-related`
-3. ถ้า target เป็น tool/library ภายนอก → ใช้ `/learn` หรือ `/learn-from-references` ดู official docs
+3. ถ้า target เป็น tool/library ภายนอก → ใช้ `/learn` หรือ `/learn-from-web` ดู official docs
 4. เก็บ snippets, source paths, docs และ examples ที่ช่วยอธิบาย
 
 ### 3. Provide Explanation

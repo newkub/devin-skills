@@ -101,7 +101,7 @@ related:
 - ใช้ /resolve-errors ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-references ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
 
 ## Expected Outcome
 

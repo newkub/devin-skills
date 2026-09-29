@@ -25,6 +25,8 @@ related:
 |-------|-------|
 | References / Web / CLI | `/learn-from-references` — เรียนรู้จาก `references/`, official docs (DeepWiki, Context7, Web Search) และ CLI discovery แล้วเขียน content ครอบคลุม |
 | Web | `/learn-from-web` — learning path จาก URL/topic ภายนอก พร้อม citations |
+| CLI tool | `/learn-from-cli` — command surface จาก `--help`, subcommands, binary จริง |
+| Library API | `/learn-from-dts` — API surface จาก `.d.ts` declarations ใน `node_modules` |
 | Codebase | `/learn-from-codebase` — `/deep-analyze` + learning path และ concept map ของ codebase |
 | Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
 | Slides | `/learn-by-slide` — สร้าง Slidev presentation สรุปความรู้ |

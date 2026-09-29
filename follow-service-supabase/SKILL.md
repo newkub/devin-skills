@@ -183,7 +183,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /learn-from-references ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
 

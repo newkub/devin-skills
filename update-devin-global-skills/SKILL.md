@@ -12,6 +12,9 @@ related:
   - check-content-correctness
   - deep-research
   - deep-validate
+  - learn-from-web
+  - learn-from-cli
+  - learn-from-dts
   - report
   - ship
   - use-subagents
@@ -80,10 +83,11 @@ related:
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
 1. ทำ `/deep-research` โดยระบุ topic หรือ skill ที่จะอัปเดต — ข้ามถ้า topic ไม่ต้อง research
-2. ทำ `/review-docs` กับ skill ที่จะแก้ เพื่อหา stale versions/commands/links ก่อนอัปเดต
-3. ทำ `/review-release` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
-4. ทำ `/review-delivery` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
-5. ทำตาม [references/deep-research.md](references/deep-research.md)
+2. เลือก source ตาม target: docs/site → `/learn-from-web`, CLI tool → `/learn-from-cli`, library API surface → `/learn-from-dts`
+3. ทำ `/review-docs` กับ skill ที่จะแก้ เพื่อหา stale versions/commands/links ก่อนอัปเดต
+4. ทำ `/review-release` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
+5. ทำ `/review-delivery` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
+6. ทำตาม [references/deep-research.md](references/deep-research.md)
 
 ### 5b. Prefer Existing CLI Tools Over Custom How-To
 
@@ -105,7 +109,7 @@ related:
 
 > Goal: skill package ครบถ้วนและไม่ซ้ำซ้อน
 
-ทำตาม [references/add-references-and-src.md](references/add-references-and-src.md)
+ทำตาม [references/add-references-and-src.md](references/add-references-and-src.md) — ถ้า skill มี dependencies → เขียน `references/` files จริงตาม [references/write-references.md](references/write-references.md) (บังคับ ห้ามข้าม)
 
 ### 8. Validate And Update References
 
