@@ -31,12 +31,6 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 
 ## Execute
 
-### Subskills
-
-| Domain | Subskill |
-|---|---|
-| `check-shared-usage` | `subskills/check-shared-usage/SKILL.md` — audit ทุกไฟล์ใน `packages/shared` ว่ามี external consumer จริง ≥1 จุด |
-
 ### 1. Inventory Shared Candidates
 
 > Goal: รู้ว่าอะไร duplicate จริงและคุ้ม extract
@@ -45,7 +39,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 2. หา duplication ข้าม workspace members — `jscpd`, `sg scan` หรือ manual scan ตาม domain (utils, types, schemas, components, hooks, constants)
 3. เก็บ candidates พร้อม consumer count — extract เฉพาะที่มี 2+ consumers จริง ห้าม extract เผื่อ
 4. ทำ `/use-lib-effective` — ถ้า dep เดิมหรือ lib ใน catalog ทำได้ อย่าสร้าง shared module ใหม่
-5. ถ้า `packages/shared` มีอยู่แล้ว → ทำ `/refactor-to-packages-shared-check-shared-usage` ก่อน — ไฟล์ที่ไม่มี external reference เลยต้อง move out/report ไม่ควรอยู่ใน shared
+5. ถ้า `packages/shared` มีอยู่แล้ว → audit ทุกไฟล์ใน shared ว่ามี external consumer จริง ≥1 จุด (grep import/reference จาก workspace members อื่น) — ไฟล์ที่ไม่มี external reference เลยต้อง move out/report ไม่ควรอยู่ใน shared
 6. ถ้า `packages/shared` ยังไม่มี → สร้างตาม convention ของ workspace (manifest, tsconfig, build config ตาม member อื่น)
 
 ### 2. Plan Extraction
@@ -73,7 +67,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 
 1. แทนที่ local copies ด้วย import จาก `packages/shared` ผ่าน package name/path alias ของ project — ทีละ consumer
 2. mechanical replace หลายไฟล์ → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ)
-3. ทำ `/refactor-to-packages-shared-check-shared-usage` อีกครั้งหลัง rewire แต่ละ batch — ยืนยันว่าทุกไฟล์ที่ extract มี external consumer จริงก่อนลบ local copies
+3. audit external consumers ของทุกไฟล์ที่ extract อีกครั้งหลัง rewire แต่ละ batch — ยืนยันว่ามี consumer จริงก่อนลบ local copies
 4. ลบ local copies หลัง consumer ทั้งหมด rewire แล้วเท่านั้น — ห้ามลบก่อน verify
 5. ทำ `/update-references` หลังทุก batch — barrel exports, tsconfig paths, package deps
 
@@ -97,7 +91,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 ### 2. Every File Needs An External Consumer
 
 - ทุกไฟล์ใน `packages/shared` ต้องมี ≥1 reference จาก workspace member อื่น — internal-only ไม่นับ
-- รัน `/refactor-to-packages-shared-check-shared-usage` หลัง inventory และหลัง rewire — ไฟล์ที่ไม่มี external consumer ต้อง move out หรือ report ห้ามค้างใน shared
+- audit external consumers หลัง inventory และหลัง rewire — ไฟล์ที่ไม่มี external consumer ต้อง move out หรือ report ห้ามค้างใน shared
 - ห้ามเก็บไฟล์ "เผื่อใช้ภายหลัง" — ไม่มี consumer วันนี้ = ไม่อยู่ใน shared วันนี้
 
 ### 3. Single Source Of Truth

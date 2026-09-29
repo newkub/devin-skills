@@ -3,6 +3,7 @@ name: refactor
 description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
 argument-hint: "[@files... | scope | clean | layered | orm | structure]"
 related:
+  - refactor-skills
   - refactor-workspace
   - refactor-to-packages-shared
   - no-hard-code

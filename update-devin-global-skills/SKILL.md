@@ -5,6 +5,7 @@ argument-hint: "[@files-or-topic...]"
 related:
   - idea-use-skills-relations
   - new-skills
+  - refactor-skills
   - follow-single-of-source
   - review-delivery
   - review-release

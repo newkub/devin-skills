@@ -6,6 +6,7 @@ related:
   - use-related-skills
   - follow-single-of-source
   - update-devin-global-skills
+  - refactor-skills
   - review-delivery
   - review-release
   - scan-codebase
@@ -22,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้เมื่องานต้องสร้าง skill ใหม่เท่านั้น ไม่รวมการ update หรือ refactor skills เดิม
+ใช้เมื่องานต้องสร้าง skill ใหม่เท่านั้น — update เนื้อหา skill เดิม → `/update-devin-global-skills`, refactor structure skill เดิม → `/refactor-skills`
 
 ถ้าต้องการสร้าง skills จาก dependencies ใน package manifest (`package.json`, `Cargo.toml`) ที่ยังไม่มีใน global → ดู flow ใน [references/create-skills-from-manifest.md](references/create-skills-from-manifest.md) (แก้ path เป็น `%APPDATA%\devin\skills`)
 

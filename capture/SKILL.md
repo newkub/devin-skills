@@ -3,7 +3,6 @@ name: capture
 description: Capture หลักฐานภาพ/วิดีโอ — web, component, terminal, app หรือ all-routes ผ่าน CLI เดียว
 argument-hint: "<web|component|terminal|app|all> [options]"
 related:
-  - capture-bug-context
   - use-agent-browser
   - run-dev
   - review-uxui
@@ -54,7 +53,7 @@ bun <skill-dir>/src/presentation/cli.ts <mode> [options]
 
 1. ตรวจว่าไฟล์สร้างสำเร็จและไม่ว่าง (เปิดดูด้วย `read` ถ้าเป็นภาพ)
 2. `all` mode → เช็ค `manifest.json` errors ก่อนเสมอ
-3. รายงาน path และขนาดไฟล์ — ถ้าใช้เป็น bug evidence → ผูกกับ `/capture-bug-context`
+3. รายงาน path และขนาดไฟล์ — ถ้าใช้เป็น bug evidence ให้บันทึกใต้ `.devin/bugs/` พร้อม git state และ env context
 
 ## Rules
 
