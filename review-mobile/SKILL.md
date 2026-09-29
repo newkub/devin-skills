@@ -30,7 +30,7 @@ Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, sa
 > Goal: รู้ platform และ framework
 
 1. ตรวจ manifest: React Native, Flutter, native (Android/iOS), Tauri mobile, PWA
-2. อ่าน platform conventions — HIG (iOS) / Material (Android) — ดู `references/` ของ deep-review (`platform-mobile-desktop.md`) ถ้าต้องการ
+2. อ่าน platform conventions — HIG (iOS) / Material (Android) — ดู `review-desktop-app/references/platform-mobile-desktop.md` ถ้าต้องการ
 
 ### 2. Check Touch And Layout
 

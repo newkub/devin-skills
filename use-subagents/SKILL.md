@@ -123,34 +123,33 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | No. | Parent Skill | Profile | Use For |
 |-----|--------------|---------|---------|
 | 1 | `review-github-pr` | `review-github-pr/subagents/pr-reviewer.md` | review PR slice per-domain/file-group |
-| 2 | `deep-review` | `deep-review/subagents/domain-reviewer.md` | run review-* domain เดียว |
-| 3 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
-| 4 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
-| 5 | `review-delivery` | `review-delivery/subagents/route-checker.md` | verify docs routes ต่อ site section |
-| 6 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
-| 7 | `morning-briefing` | `morning-briefing/subagents/signal-collector.md` | collect signal type เดียว |
-| 8 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
-| 9 | `update-all-program-in-computer` | `update-all-program-in-computer/subagents/program-updater.md` | update program เดียวผ่าน package manager |
-| 10 | `implement-features-to-mvp` | `implement-features-to-mvp/subagents/feature-implementer.md` | implement feature เดียว end-to-end |
-| 11 | `resolve-github-issue-by-me` | `resolve-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
-| 12 | `deep-research` | `deep-research/subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
-| 13 | `deep-validate` | `deep-validate/subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
-| 14 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
-| 15 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
-| 16 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
-| 17 | `merge-all-branch-by-me-to-main` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
-| 18 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
-| 19 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
-| 20 | `refactor` | `refactor/subagents/hotspot-scout.md` | เก็บ baseline evidence หา refactor targets (read-only) |
-| 21 | `refactor` | `refactor/subagents/file-worker.md` | refactor ไฟล์/scope เดียวทีละไฟล์ขนานกัน |
-| 22 | `implement-to-production` | `implement-to-production/subagents/gap-scanner.md` | inventory TODO/MOCK/placeholder ทั้ง codebase (read-only) |
-| 23 | `implement-to-production` | `implement-to-production/subagents/feature-implementer.md` | implement feature/gap item เดียว end-to-end |
-| 24 | `implement-to-production` | `implement-to-production/subagents/review-sweeper.md` | review changes ทีละ domain ขนานกัน (read-only) |
-| 25 | `update-project` | `update-project/subagents/git-log-collector.md` | เก็บ git log/diff stat ของ workspace เดียว |
-| 26 | `update-project` | `update-project/subagents/project-files-updater.md` | update project files ต่อ domain (config/docs/rules/specs) |
-| 27 | `update-project` | `update-project/subagents/project-skills-updater.md` | sync `.devin/skills` กับ codebase |
-| 28 | `update-project` | `update-project/subagents/github-metadata-updater.md` | sync GitHub repo metadata และ branch protection |
-| 29 | `update-devin-global-skills` | `update-devin-global-skills/subagents/skill-updater.md` | update skill เดียวตาม instructions ใน bulk update |
+| 2 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
+| 3 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
+| 4 | `review-delivery` | `review-delivery/subagents/route-checker.md` | verify docs routes ต่อ site section |
+| 5 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
+| 6 | `morning-briefing` | `morning-briefing/subagents/signal-collector.md` | collect signal type เดียว |
+| 7 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
+| 8 | `update-all-program-in-computer` | `update-all-program-in-computer/subagents/program-updater.md` | update program เดียวผ่าน package manager |
+| 9 | `implement-features-to-mvp` | `implement-features-to-mvp/subagents/feature-implementer.md` | implement feature เดียว end-to-end |
+| 10 | `resolve-github-issue-by-me` | `resolve-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
+| 11 | `deep-research` | `deep-research/subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
+| 12 | `deep-validate` | `deep-validate/subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
+| 13 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
+| 14 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
+| 15 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
+| 16 | `merge-all-branch-by-me-to-main` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
+| 17 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
+| 18 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
+| 19 | `refactor` | `refactor/subagents/hotspot-scout.md` | เก็บ baseline evidence หา refactor targets (read-only) |
+| 20 | `refactor` | `refactor/subagents/file-worker.md` | refactor ไฟล์/scope เดียวทีละไฟล์ขนานกัน |
+| 21 | `implement-to-production` | `implement-to-production/subagents/gap-scanner.md` | inventory TODO/MOCK/placeholder ทั้ง codebase (read-only) |
+| 22 | `implement-to-production` | `implement-to-production/subagents/feature-implementer.md` | implement feature/gap item เดียว end-to-end |
+| 23 | `implement-to-production` | `implement-to-production/subagents/review-sweeper.md` | review changes ทีละ domain ขนานกัน (read-only) |
+| 24 | `update-project` | `update-project/subagents/git-log-collector.md` | เก็บ git log/diff stat ของ workspace เดียว |
+| 25 | `update-project` | `update-project/subagents/project-files-updater.md` | update project files ต่อ domain (config/docs/rules/specs) |
+| 26 | `update-project` | `update-project/subagents/project-skills-updater.md` | sync `.devin/skills` กับ codebase |
+| 27 | `update-project` | `update-project/subagents/github-metadata-updater.md` | sync GitHub repo metadata และ branch protection |
+| 28 | `update-devin-global-skills` | `update-devin-global-skills/subagents/skill-updater.md` | update skill เดียวตาม instructions ใน bulk update |
 
 ## CLI — `subagents` (mission control)
 

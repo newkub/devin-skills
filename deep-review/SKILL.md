@@ -31,8 +31,7 @@ related:
 
 ผลลัพธ์รายงานลง `.devin/temp/report/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
 
-- subagent: `subagents/domain-reviewer.md` — รัน review ทีละ domain แบบขนาน
-- dispatch catalog: `references/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
+- dispatch catalog: `review/references/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
 - domain reviews: `review-*` 53 skills เป็น top-level skills จริง (ย้ายออกจาก subskills เดิม) — dispatch เรียก `/review-<domain>` โดยตรง; ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-code-quality`, `review-coverage`, `review-then-fix` ที่เป็น top-level อยู่แล้ว
 
 ## Execute
@@ -91,17 +90,11 @@ related:
 
 > Goal: แบ่ง JSON เป็น slice ต่อ domain แล้ว spawn subagent ขนาน — subagent อ่านไฟล์เล็ก ไม่ใช่ report ทั้งก้อน
 
-1. อ่าน `references/review-checklist.md`
+1. อ่าน `update-review-cli-then-run/references/review-checklist.md`
 2. ทำ `/use-scripts` เขียน slice ลง `reports/.deep-review-<time>/findings-<domain>.json` — ไฟล์ละ domain เดียว เท่านั้น (deterministic, ไม่ต้อง parse ใน context ของ parent)
-3. ทำ `/use-subagents` spawn `deep-review-domain-reviewer` (ดู `subagents/domain-reviewer.md`) ต่อ domain ที่มี findings จริง — ส่ง `domain`, `workspace-path`, `findings-json` = path ของ slice file, `references` ที่ตรง domain
+3. ทำ `/use-subagents` spawn domain-review subagent ต่อ domain ที่มี findings จริง — inputs: `domain`, `workspace-path`, `findings-json` = path ของ slice file — output contract: findings table (No., Finding, Severity, Evidence, Action, Owner Skill) + domain summary — report-only ห้ามแก้ code, review เฉพาะ domain ที่ได้รับ, evidence จาก report/code จริงเท่านั้น
 4. subagent อ่าน findings จาก slice file โดยตรง — ห้ามรัน CLI ซ้ำ (full scan แพง) ยกเว้น domain-specific check ที่ CLI รองรับ
-5. domain reference mapping:
-   - `clean-architecture.md` สำหรับ architecture issues
-   - `analyzers.md` สำหรับ analyzer gaps
-   - `issue-detection.md` สำหรับ bug-prone patterns
-   - `package-scripts.md` สำหรับ CLI/package issues
-   - `scoring.md` สำหรับ scoring/severity ที่ไม่ชัด
-6. ถ้า domain มี findings ≤ 2 → parent วิเคราะห์เอง ไม่ต้อง spawn (subagent overhead ไม่คุ้ม)
+5. ถ้า domain มี findings ≤ 2 → parent วิเคราะห์เอง ไม่ต้อง spawn (subagent overhead ไม่คุ้ม)
 7. subagent timeout/crash/parse ผิด output contract → mark `failed` ใน ledger และเขียน domain นั้นเป็น `review-failed` พร้อม error ลง report — ห้ามเงียบ (domain ที่หายไปดูเหมือน clean)
 8. รวมผลลัพธ์จากทุก subagent — บันทึก gaps แต่ละ domain พร้อม evidence
 
@@ -110,7 +103,7 @@ related:
 > Goal: review ครบทุก `review-*` (ยกเว้น `review-github-pr`) ทีละ workspace ตามความสำคัญ ภายใต้ budget ของ Step 1
 
 1. ถ้า monorepo → ทำ `/list-workspaces` แล้วเรียง workspace ตามความสำคัญ: user-facing apps → shared packages → tools/infra — ทำ `/follow-monorepo` ตาม conventions; ถ้า workspaces > budget → เลือก top-N และ mark ที่เหลือ `skipped (budget)` ใน ledger
-2. ต่อ workspace → รัน pipeline ใน `references/review-skills.md` ตามลำดับ phase:
+2. ต่อ workspace → รัน pipeline ใน `review/references/review-skills.md` ตามลำดับ phase:
    - Phase 1 entry: `/review-config` → `/review-techstack` → `/review-architecture` → ที่เหลือตาม condition
    - Phase 2 source code: `/review-code-quality`, `/review-writing`, `/review-cli`/`/review-api`/`/review-backend`/`/review-frontend` ฯลฯ ตาม workspace type
    - Phase 3 cross-cutting: `/review-security`, `/review-performance`, `/review-stability` และ metrics อื่นครบ
@@ -118,7 +111,7 @@ related:
    - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
 3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, review skill ที่ต้องรัน
 4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `review-mobile` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
-5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `references/platform-*.md`
+5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `/review-*` ที่ตรง platform (`/review-mobile`, `/review-desktop-app`, `/review-frontend`, `/review-backend` ฯลฯ)
 6. ใช้ `fixSkill` field ในแต่ละ finding เป็น canonical owner — ไม่ต้อง map ซ้ำเอง
 7. metric/finding ใดที่ analyzer ไม่ครอบคลุม → ระบุ `ใน update-review-cli-then-run = N` เป็น analyzer gap ส่งต่อ `/update-review-cli-then-run`
 8. ทุก dispatch อัปเดต ledger — skill ที่เสร็จแล้วใน ledger เก่า (resume) ให้ reuse ผลเดิม ไม่รันซ้ำ
@@ -189,7 +182,7 @@ related:
 
 ### 5. Coverage Dispatch
 
-- dispatch `review-*` ครบทุกตัวต่อ workspace ตาม `references/review-skills.md` ยกเว้น `/review-github-pr` — ภายใต้ budget
+- dispatch `review-*` ครบทุกตัวต่อ workspace ตาม `review/references/review-skills.md` ยกเว้น `/review-github-pr` — ภายใต้ budget
 - dispatch `deep-*` ผ่าน `/follow-deep` เมื่อ `--deep` หรือมี Critical/High findings
 - skip domain ได้เฉพาะ condition N/A ชัดเจนหรือ budget — ต้องระบุเหตุใน ledger และ report `## Coverage`
 - metric ที่ `ใน update-review-cli-then-run = N` → บันทึก analyzer gap ส่ง `/update-review-cli-then-run` และอ้างใน `run-review`

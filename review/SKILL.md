@@ -171,7 +171,7 @@ related:
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
-- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `deep-review/references/review-skills.md`
+- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `references/review-skills.md`
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

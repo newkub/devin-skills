@@ -22,7 +22,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ## Scope
 
-ใช้เมื่อ project เป็น desktop app — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`; mobile ใช้ `/review-mobile`; web frontend ใช้ `/review-frontend`; เบื้องหลัง desktop conventions ดู `../deep-review/references/platform-mobile-desktop.md` (Desktop Review section)
+ใช้เมื่อ project เป็น desktop app — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`; mobile ใช้ `/review-mobile`; web frontend ใช้ `/review-frontend`; เบื้องหลัง desktop conventions ดู `references/platform-mobile-desktop.md` (Desktop Review section)
 
 ## Execute
 
@@ -32,7 +32,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 1. ตรวจ manifest: Tauri (`tauri.conf.json`, `src-tauri/`), Electron (`electron` dep, `main.js`), native (Qt/.NET/Swift)
 2. ระบุ target platforms — Windows/macOS/Linux — และ installer formats (msi/dmg/AppImage/deb)
-3. อ่าน desktop conventions — ดู `../deep-review/references/platform-mobile-desktop.md`
+3. อ่าน desktop conventions — ดู `references/platform-mobile-desktop.md`
 
 ### 2. Check Window And Shell
 

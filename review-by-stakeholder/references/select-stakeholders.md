@@ -1,6 +1,6 @@
 ---
 name: select-stakeholders
-description: เลือก `roleplay-*` ตาม context
+description: เลือก roles ของ `roleplay-by-all-stakeholder` ตาม context
 ---
 
 # Select Stakeholders
