@@ -93,7 +93,7 @@ related:
 > Goal: ตรวจสอบความถูกต้อง
 
 1. อ่าน skill ทีแก้ไขอีกครั้งเพื่อตรวจ reference
-2. ทำ `/check-skills-related` เพื่อตรวจ `related` ซ้ำ/หาย
+2. ทำ `/review-devin-global-harness` เพื่อตรวจ `related` ซ้ำ/หาย
 3. ทำ `/review-devin-global-harness` ถ้าแก้หลาย skill
 4. ทำ `/update-references` ถ้ามีการสร้าง/ลบ/ย้าย skill
 

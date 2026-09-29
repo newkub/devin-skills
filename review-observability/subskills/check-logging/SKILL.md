@@ -4,7 +4,7 @@ description: Check logging — structured logs, context, levels, secret/PII reda
 argument-hint: "[scope]"
 related:
   - review-observability
-  - check-console-logs
+  - check-repo-hygiene
   - use-astgrep
   - report
 ---
@@ -26,7 +26,7 @@ Run the logging dimension of `/review-observability` แบบ focused — logs 
 
 ทำตาม `../../references/logging.md`
 
-1. structured — JSON/consistent format ไม่ใช่ string concat; `console.log` leftovers → `/check-console-logs`
+1. structured — JSON/consistent format ไม่ใช่ string concat; `console.log` leftovers → `/check-repo-hygiene`
 2. context — trace_id/request_id/user context propagate ครบ error paths
 3. levels — error/warn/info/debug ใช้ถูก; error paths log ครบไม่ swallowed
 4. redaction — secrets/tokens/PII ไม่ถูก log (scan patterns: password, token, authorization headers)

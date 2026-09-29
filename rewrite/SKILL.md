@@ -6,7 +6,7 @@ related:
   - reset-context
   - deep-validate
   - scan-codebase
-  - check-skills-related
+  - review-devin-global-harness
   - follow-best-practice
   - use-scripts
   - update-references
@@ -51,7 +51,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 1. อ่าน target files ทั้งไฟล์
 2. อ่าน imports, exports, และ dependencies
 3. อ่าน reverse dependencies
-4. ทำ `check-skills-related` สำหรับ workflows ที่เกี่ยวข้อง
+4. ทำ `review-devin-global-harness` สำหรับ workflows ที่เกี่ยวข้อง
 
 ### 4. Analyze Requirements
 

@@ -3,7 +3,6 @@ name: update-tests
 description: เขียน/อัปเดต tests ครบทุก layer — unit, integration, e2e, contract, visual ฯลฯ แล้วรันจนผ่าน
 argument-hint: "[scope-or-files]"
 related:
-  - check-test-quality
   - review-test
   - run-test
   - run-test-all
@@ -16,6 +15,7 @@ related:
   - run-check
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -95,7 +95,7 @@ related:
 > Goal: ส่งมอบ
 
 1. ทำ `/report` — tests added/updated/removed ต่อ layer, coverage delta, pass rate, items ค้าง
-2. persist raw results → `.devin/reports/<workspace>/update-tests-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
+2. persist raw results → `.devin/temp/report/<workspace>/update-tests-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 3. ทำ `/suggest-next-action`
 
 ### Subagents
@@ -151,4 +151,4 @@ related:
 - tests ครอบคลุมทุก layer ที่ scope ต้องการพร้อม conventions ของ project
 - `/run-test-all` ผ่าน — deterministic, ไม่มี flaky
 - coverage ตรง target, specs sync กับ test cases
-- report สรุป per-layer พร้อม raw results persisted ใน `.devin/reports/`
+- report สรุป per-layer พร้อม raw results persisted ใน `.devin/temp/report/`

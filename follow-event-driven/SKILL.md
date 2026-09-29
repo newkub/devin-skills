@@ -4,6 +4,7 @@ description: Implement Event-Driven Architecture สำหรับ async workfl
 argument-hint: "[scope]"
 related:
   - review-architecture
+
 ---
 
 ## Goal

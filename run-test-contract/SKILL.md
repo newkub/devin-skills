@@ -58,7 +58,7 @@ Runner ของ contract domain เท่านั้น — analysis ลึก
 > Goal: รายงาน audit ได้
 
 1. สรุป interactions verified, violations, breaking changes ที่พบ
-2. persist → `.devin/reports/<workspace>/contract-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/contract-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

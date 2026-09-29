@@ -5,6 +5,7 @@ argument-hint: "[plugin-name]"
 related:
   - follow-create-plugins
   - ship
+
 ---
 
 ## Goal

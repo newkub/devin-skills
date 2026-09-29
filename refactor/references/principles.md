@@ -6,7 +6,7 @@
 
 - refactor = เปลี่ยน structure โดยไม่เปลี่ยน observable behavior — ห้าม mix feature change/bug fix ใน commit เดียวกับ refactor
 - ถ้าเจอ bug ระหว่าง refactor → commit fix แยกก่อน แล้วค่อย refactor ต่อ
-- public API และ behavior ที่ consumer เห็นต้องเหมือนเดิม — ตรวจด้วย `/check-backward-compatibility` เมื่อแตะ exported API
+- public API และ behavior ที่ consumer เห็นต้องเหมือนเดิม — ตรวจด้วย `/review-api` เมื่อแตะ exported API
 
 ## 2. Safety Net First
 

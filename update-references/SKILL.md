@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-related-skills
   - search
-  - check-file-relations
+  - review-code-quality
   - report
   - deep-validate
 
@@ -45,7 +45,7 @@ related:
 
 > Goal: เข้าใจความสัมพันธ์ของไฟล์ที่เปลี่ยนแปลงก่อน search
 
-1. ทำ `/check-file-relations` กับไฟล์ที่เปลี่ยนแปลง เพื่อหา imports, consumers, และ references
+1. ทำ `/review-code-quality` กับไฟล์ที่เปลี่ยนแปลง เพื่อหา imports, consumers, และ references
 2. บันทึก relation map: target → consumers → severity
 3. ใช้ผลลัพธ์นี้เป็นพื้นฐานสำหรับ search strategy ใน Step 2
 

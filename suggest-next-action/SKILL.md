@@ -13,6 +13,7 @@ related:
   - continue
   - idea
   - rethink
+
 ---
 ## Goal
 

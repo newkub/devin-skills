@@ -1,6 +1,6 @@
 ---
 name: roleplay-management-technical-lead
-description: Roleplay technical-lead — code health, tech debt, architecture → /review-quality
+description: Roleplay technical-lead — code health, tech debt, architecture → /review-code-quality
 argument-hint: "[scope]"
 related:
   - roleplay-management
@@ -23,7 +23,7 @@ related:
 - ตรวจ test architecture — test quality, coverage ของ critical paths, test debt
 - ตรวจ dependency hygiene — outdated deps, abandoned libraries, unnecessary dependencies
 - ตรวจ escalation-worthy issues — ปัญหาที่ต้อง architecture decision ไม่ใช่แค่ local fix
-- Deep pass → `/review-quality` สำหรับ code quality review เชิงลึก
+- Deep pass → `/review-code-quality` สำหรับ code quality review เชิงลึก
 
 ## Rules
 

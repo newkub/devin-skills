@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lib-iconify
   - run-bench
-  - check-size
+  - review-bundle
   - report-bundle
   - report-before-after
 ---
@@ -24,7 +24,7 @@ related:
 
 > Goal: วัด icon cost ปัจจุบันก่อน optimize
 
-1. ทำ `/check-size` หรือ `/report-bundle` เพื่อดูขนาด icon-related code ใน bundle
+1. ทำ `/review-bundle` หรือ `/report-bundle` เพื่อดูขนาด icon-related code ใน bundle
 2. ตรวจ usage pattern: `import { Icon }`, `icon="..."` strings, `@iconify-json/*` imports — scan ว่าใช้ sets ไหน icons อะไรบ้าง
 3. ระบุ anti-patterns: import ทั้ง `icons.json`, dynamic icon names ที่ยิง API runtime, icons ที่ไม่ได้ใช้
 
@@ -57,7 +57,7 @@ related:
 
 > Goal: วัดผลหลัง optimize เทียบ baseline
 
-1. ทำ `/report-bundle` หรือ `/check-size` ซ้ำ แล้ว compare กับ baseline ด้วย `/report-before-after`
+1. ทำ `/report-bundle` หรือ `/review-bundle` ซ้ำ แล้ว compare กับ baseline ด้วย `/report-before-after`
 2. ตรวจว่า icons ทั้งหมดยัง render ถูกต้อง — ไม่มี missing icon
 3. ถ้า bundle ไม่เล็กลงหรือ icon หาย → revert จุดนั้นแล้ว report
 

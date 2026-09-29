@@ -8,7 +8,7 @@ related:
   - review-security
   - review-performance
   - review-bundle
-  - check-source-maps
+  - review-bundle
   - deep-review-then-fix
   - report
   - suggest-next-action
@@ -55,7 +55,7 @@ Review browser extension (Chrome/Edge/Firefox/Safari) — manifest, permissions,
 
 1. `content_security_policy.extension_pages` ตั้งค่า — no `unsafe-eval`/`unsafe-inline`
 2. `chrome.storage` ใช้แทน localStorage ใน service worker; sensitive data ไม่เก็บ plaintext
-3. ทำ `/check-source-maps` กับ packaged build — ห้าม leak `.map`/source ใน dist ที่ publish
+3. ทำ `/review-bundle` กับ packaged build — ห้าม leak `.map`/source ใน dist ที่ publish
 4. external resources ผ่าน HTTPS เท่านั้น, SRI ถ้า inject third-party
 
 ### 5. Check Performance And Lifecycle

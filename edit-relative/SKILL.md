@@ -6,7 +6,7 @@ related:
   - update-references
   - resolve-errors
   - refactor
-  - check-broken-skills-references
+  - review-devin-global-harness
   - scan-codebase
   - report
 ---
@@ -73,7 +73,7 @@ related:
 
 > Goal: ไม่มี broken references
 
-1. ทำ `/check-broken-skills-references`
+1. ทำ `/review-devin-global-harness`
 2. ทำ `/resolve-errors` ถ้ามี build/lint/typecheck errors
 3. ถ้าไม่ผ่าน → แก้และ recheck (max 3)
 

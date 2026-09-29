@@ -129,7 +129,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /review-workspace ถ้าจำเป็น
 

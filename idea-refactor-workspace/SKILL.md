@@ -33,7 +33,7 @@ related:
 3. ทำ `/report-before-after` ใน mode `before` เพื่อบันทึก baseline ก่อน refactor
 4. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
 5. ทำ `/check-repo-hygiene circular-dependencies` เพื่อหา circular dependencies ระหว่าง workspaces
-6. ทำ `/check-files long-files` และ `/review-quality` เพื่อหา code smells
+6. ทำ `/check-files long-files` และ `/review-code-quality` เพื่อหา code smells
 7. ระบุ workspaces ที่มีหลาย reasons to change, coupling สูง หรือ cohesion ต่ำ
 
 ### 2. Decompose Responsibilities
@@ -96,7 +96,7 @@ related:
 
 ### 2. Evidence Based
 
-- ทุกไอเดียต้องมาจาก `/deep-analyze`, `/list-workspaces`, หรือ `/review-quality`
+- ทุกไอเดียต้องมาจาก `/deep-analyze`, `/list-workspaces`, หรือ `/review-code-quality`
 - ระบุ file, workspace, หรือ dependency ทีเกี่ยวข้อง
 - ไม่เสนอไอเดีย generic ทีไม่มีพื้นฐานจากข้อมูลจริง
 

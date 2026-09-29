@@ -5,6 +5,7 @@ argument-hint: "<path> [range]"
 related:
   - git-file-history
   - report
+
 ---
 
 ## Goal

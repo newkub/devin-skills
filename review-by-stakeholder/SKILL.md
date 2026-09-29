@@ -15,6 +15,7 @@ related:
   - suggest-next-action
   - scan-codebase
   - run-review
+
 ---
 
 ## Goal
@@ -161,7 +162,7 @@ Review project จากมุมมอง stakeholder — เลือก perso
 ### 4. Findings Routing
 
 - ส่ง findings ไปจัดลำดับที่ `/review-gaps` หรือ domain review ที่ตรง
-- engineering findings → `## Fix` ของ `/review-architecture` หรือ `/review-quality`
+- engineering findings → `## Fix` ของ `/review-architecture` หรือ `/review-code-quality`
 - product/business findings → `## Fix` ของ `/review-business`
 - design/user findings → `## Fix` ของ `/review-uxui`
 - QA findings → `## Fix` ของ `/review-test`

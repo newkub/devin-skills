@@ -29,7 +29,7 @@ related:
 |------|-------|----------|
 | researcher | ADRs, spike/experiment docs, decision records | `subskills/researcher/SKILL.md` |
 | code-optimizer | perf hot spots, algorithmic efficiency → `/review-performance`, `/review-algorithm` | `subskills/code-optimizer/SKILL.md` |
-| refactoring-specialist | duplication, dead code, coupling → `/review-refactor`, `/review-quality` | `subskills/refactoring-specialist/SKILL.md` |
+| refactoring-specialist | duplication, dead code, coupling → `/review-code-quality` | `subskills/refactoring-specialist/SKILL.md` |
 | documentation-writer | docs coverage, changelog completeness → `/review-docs` | `subskills/documentation-writer/SKILL.md` |
 
 2. อ่าน `subskills/<role>/SKILL.md` ของ role ที่เลือก

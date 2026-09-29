@@ -7,7 +7,7 @@
 ## Steps
 
 1. อ่านแต่ละไฟล์ใน `@files...`
-2. ทำ `/review-quality` เพื่อหา issues เฉพาะไฟล์
+2. ทำ `/review-code-quality` เพื่อหา issues เฉพาะไฟล์
 3. ทำ `/review-writing` ถ้าไฟล์อ่านยาก
 4. บันทึก baseline: responsibilities, imports, exports, public API
 5. ระบุ action ที่เหมาะสม:

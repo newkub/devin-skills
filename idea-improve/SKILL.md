@@ -35,7 +35,7 @@ related:
 
 1. รับ `scope` จาก argument — ถ้าไม่มีใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
 2. ทำ `/scan-codebase` เพื่อดู structure, stack, state ปัจจุบัน
-3. ถ้าต้องการ evidence-based gaps → ทำ `/review-gaps` หรืออ่าน findings ล่าสุดใน `.devin/reports/`
+3. ถ้าต้องการ evidence-based gaps → ทำ `/review-gaps` หรืออ่าน findings ล่าสุดใน `.devin/temp/report/`
 4. ระบุ pain points: friction, debt, missing capability, manual steps, inconsistency
 
 ### 2. Generate Ideas

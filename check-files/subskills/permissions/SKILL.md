@@ -5,6 +5,7 @@ argument-hint: "[path-or-file]"
 related:
   - check-secrets
   - report
+
 ---
 
 ## Goal

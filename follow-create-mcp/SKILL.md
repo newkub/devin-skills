@@ -22,6 +22,7 @@ related:
   - follow-single-responsibility
   - deep-validate
   - create-devin-global-mcp
+
 ---
 
 ## Goal

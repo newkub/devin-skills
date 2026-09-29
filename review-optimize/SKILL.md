@@ -31,7 +31,7 @@ Review app/package เพื่อหา "สิ่งที่ optimize ได�
 | `/review-bundle` | เฉพาะ build output/assets — ไม่ครอบ runtime/polling/native |
 | `/run-profiler` | profile tool จริง — ใช้เป็น evidence input ของ review นี้ |
 
-ไม่รวม: security → `/review-security`, feature gaps → `/review-coverage`, code quality ทั่วไป → `/review-quality`
+ไม่รวม: security → `/review-security`, feature gaps → `/review-coverage`, code quality ทั่วไป → `/review-code-quality`
 
 ## Execute
 

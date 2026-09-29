@@ -108,7 +108,7 @@ related:
 - input schema ต้องครบทุก flag/arg ที่ source skill ใช้จริง
 - output ต้อง structured (JSON) — ไม่คืน raw prose ถ้า consumer เป็น agent
 - ระบุ error cases: exit codes, missing deps, timeout
-- drafts เก็บใน `.devin/plan/<workspace>/` หรือ report — ไม่เขียน server code จนกว่า confirm
+- drafts เก็บใน `.devin/temp/plan/<workspace>/` หรือ report — ไม่เขียน server code จนกว่า confirm
 - เมื่อ confirm convert → ทำตาม `/create-devin-global-mcp` เสมอ (ห้าม implement MCP server เองใน skill นี้)
 - ใช้ /review-mcp ถ้าจำเป็น
 

@@ -5,7 +5,7 @@
 - [ ] endpoint inventory: method, path, auth requirement
 - [ ] resource naming, HTTP methods, status codes ถูกต้อง
 - [ ] consistency: pagination (cursor/offset), filtering, sorting, field selection
-- [ ] versioning strategy + deprecated endpoints tracking (`/check-api-versioning`)
+- [ ] versioning strategy + deprecated endpoints tracking (`/review-api`)
 
 ## 2. Validation And Errors
 
@@ -16,10 +16,10 @@
 
 ## 3. Semantics
 
-- [ ] idempotency: PUT/DELETE idempotent, POST มี idempotency-key ถ้าจำเป็น (`/check-idempotency`)
+- [ ] idempotency: PUT/DELETE idempotent, POST มี idempotency-key ถ้าจำเป็น (`/review-api`)
 - [ ] conditional requests: ETag/If-Match สำหรับ caching และ concurrent updates
 - [ ] async operations: 202 + status endpoint/webhook
-- [ ] CORS policy แคบพอ (`/check-cors-policy`)
+- [ ] CORS policy แคบพอ (`/review-security`)
 
 ## 4. AuthN/AuthZ
 
@@ -30,9 +30,9 @@
 ## 5. Contracts And Docs
 
 - [ ] OpenAPI/schema introspection ตรง implementation
-- [ ] backward compatibility (`/check-backward-compatibility`)
+- [ ] backward compatibility (`/review-api`)
 - [ ] breaking change policy, deprecation headers (Sunset)
-- [ ] webhooks: signature, retry, ordering (`/check-webhook`)
+- [ ] webhooks: signature, retry, ordering (`/review-api`)
 
 ## 6. Performance And Reliability
 

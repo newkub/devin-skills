@@ -6,6 +6,7 @@ related:
   - review-dependencies
   - update-version-to-latest
   - follow-tool-mise
+
 ---
 
 ## Goal

@@ -51,7 +51,7 @@ Runner ของ integration domain เท่านั้น — boundary analys
 1. boundary/logic fail → source bug → `/resolve-errors`
 2. fixture/seed ผิด, assertion outdated → test issue → `/update-tests`
 3. dependency ไม่ขึ้น, port ชน, timeout เชื่อมต่อ → environment — แก้ env ไม่แก้ test
-4. shared-state interference ระหว่าง tests → report + `/check-test-isolation`
+4. shared-state interference ระหว่าง tests → report + `/review-test`
 5. Failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report
 
 ### 4. Report
@@ -59,7 +59,7 @@ Runner ของ integration domain เท่านั้น — boundary analys
 > Goal: รายงาน audit ได้
 
 1. สรุป boundaries covered, pass/fail, dependencies ที่ใช้, classification ต่อ failure
-2. persist → `.devin/reports/<workspace>/integration-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/integration-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

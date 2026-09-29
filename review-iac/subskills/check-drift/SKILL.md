@@ -4,7 +4,7 @@ description: Check IaC drift + pinning — state vs reality, unpinned providers/
 argument-hint: "[stack-or-scope]"
 related:
   - review-iac
-  - check-release-drift
+  - review-release
   - report
 ---
 

@@ -4,7 +4,7 @@ description: Validate type safety dimension — typecheck, any/ts-ignore, type f
 argument-hint: "[scope]"
 related:
   - run-typecheck
-  - check-types-coverage
+  - review-test
   - report
 ---
 
@@ -30,7 +30,7 @@ related:
 
 > Goal: หา type escapes ที่ลด safety
 
-1. ตรวจสอบไม่มี `any` ที่ไม่จำเป็น — ทำ `/check-types-coverage` ถ้าต้องการ coverage metric
+1. ตรวจสอบไม่มี `any` ที่ไม่จำเป็น — ทำ `/review-test` ถ้าต้องการ coverage metric
 2. ตรวจสอบไม่มี `@ts-ignore` หรือ `@ts-nocheck`
 3. ตรวจสอบ type inference ใช้ถูกต้อง
 

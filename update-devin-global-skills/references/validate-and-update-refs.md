@@ -7,7 +7,7 @@ skill ผ่านเกณฑ์ทั้งหมด
 ## Steps
 
 1. ทำ `/review-devin-global-harness` เพื่อตรวจ conventions, naming, structure
-2. ทำ `/check-correctness` เพื่อ verify ว่า commands/APIs/claims ใน skill ถูกต้องตามจริง
+2. ทำ `/check-content-correctness` เพื่อ verify ว่า commands/APIs/claims ใน skill ถูกต้องตามจริง
 3. ทำ `/think-reframe` เมื่อ skill ใหม่หรือ rewrite ใหญ่ — เช็คว่า frame/มุมที่เขียนเหมาะสมก่อน finalize
 4. ทำ `/deep-validate` เพื่อตรวจ frontmatter, sections, ความยาว, `related` missing/unused, TODO/MOCK/placeholder
 5. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการแก้ `related`

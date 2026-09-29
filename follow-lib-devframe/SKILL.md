@@ -146,7 +146,7 @@ related:
 - Latest stable: `devframe@1.0.0` (released 2026-09-16, verified 2026-09-18)
 - `@devframes/*` kits ตาม version เดียวกัน (`1.0.0`); `@vitejs/devtools-kit@0.7.x` เป็น adapter แยก
 - Docs fetch raw markdown ได้ทุกหน้า: `https://devfra.me/raw/<path>.md`, full docs `https://devfra.me/llms-full.txt` (ดู `references/routes.md`)
-- ตรวจ `package.json` + `/check-release-notes` ก่อนเลือก API — spec อาจ drift หลัง 1.0
+- ตรวจ `package.json` + `/review-release` ก่อนเลือก API — spec อาจ drift หลัง 1.0
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - deep-review-then-fix
   - update-version-to-latest
   - follow-tool-renovate
-  - check-migrations
+  - review-database
   - report
   - report-before-after
   - suggest-next-action
@@ -123,7 +123,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 > ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied
 
 1. ทำตาม `references/verify-migration-data.md`
-2. ใช้ `/check-migrations` ยืนยัน version ล่าสุด
+2. ใช้ `/review-database` ยืนยัน version ล่าสุด
 3. ทำ `/report-before-after` เทียบ row counts/aggregates
 4. ถ้า mismatch → ระบุ rows/columns ที่ต่าง และแนะนำ fix-forward หรือ rollback
 - ใช้ /run-drizzle-studio ถ้าจำเป็น

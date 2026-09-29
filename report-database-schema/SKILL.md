@@ -56,7 +56,7 @@ related:
 2. แสดง table detail ต่อกลุ่ม: columns พร้อม type, nullability, constraints
 3. รวม ER diagram ใน section เดียว
 4. ระบุ findings: missing indexes บน FK, tables ไม่มี PK, naming ไม่ consistent
-5. ถ้า report ถาวร → บันทึกลง `docs/` หรือ `.devin/reports/<workspace>/` ตาม context
+5. ถ้า report ถาวร → บันทึกลง `docs/` หรือ `.devin/temp/report/<workspace>/` ตาม context
 6. ทำ `/suggest-next-action`
 
 ## Rules

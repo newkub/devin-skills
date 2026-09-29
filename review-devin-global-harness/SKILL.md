@@ -11,13 +11,13 @@ related:
   - follow-deep
   - check-reference
   - follow-skills-map
-  - check-skill-usage
-  - check-devin-knowledge
-  - check-content-outdate
-  - check-correctness
+  - update-devin-harness
+  - review-docs
+  - check-content-correctness
   - review-coverage
   - update-references
   - deep-review
+
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 > Goal: ตรวจ layers อ้างกันถูกต้อง
 
 1. `global_rules.md` อ้าง skills → ทุกชื่อมี skill จริง
-2. skill `related` ↔ reverse related → สมมาตรกัน (`/check-skills-related`)
+2. skill `related` ↔ reverse related → สมมาตรกัน (`/review-devin-global-harness`)
 3. subagent profiles ใน skills ↔ `agents/` dir → ตรงกัน
 4. `AGENTS.md` ใน skills repo ↔ actual dirs → sync
 
@@ -113,7 +113,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 > Goal: ตรวจ content ที่เน่าเสื่อมตามเวลา และ domain gaps
 
-1. ทำตาม `references/context-rot.md` — stale content (`/check-content-outdate`), incorrect content (`/check-correctness`), dead weight, context bloat
+1. ทำตาม `references/context-rot.md` — stale content (`/review-docs`), incorrect content (`/check-content-correctness`), dead weight, context bloat
 2. ทำ `/review-coverage` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
 3. รวม findings เข้า report แยก section `context-rot` และ `coverage`
 
@@ -137,6 +137,8 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 | `hooks` — trigger/command/loop/blocking checks | `subskills/check-hooks/SKILL.md` |
 | `mcp` — server config, env, duplicates, dead config | `subskills/check-mcp/SKILL.md` |
 | `rules`, `global-rules` — `global_rules.md` refs + consistency | `subskills/check-rules/SKILL.md` |
+| `broken-refs`, `references` — broken skill references checker (Bun CLI) | `subskills/broken-skills-references/SKILL.md` |
+| `skills-related`, `relations` — skill relations graph (Rust CLI) | `subskills/skills-related/SKILL.md` |
 
 ## Rules
 
@@ -174,9 +176,9 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /review-dot-devin ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้ (alias: /align-devin-layers)
-- ใช้ /check-reference, /check-skill-usage, /check-devin-knowledge สำหรับเจาะลึก layer เดียว
+- ใช้ /check-reference, /update-devin-global-skills, /update-devin-harness สำหรับเจาะลึก layer เดียว
 
 ## Fix
 

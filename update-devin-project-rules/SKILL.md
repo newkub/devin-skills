@@ -5,6 +5,7 @@ argument-hint: "[rule-or-domain]"
 related:
   - update-devin
   - report
+
 ---
 
 ## Goal
@@ -39,10 +40,11 @@ related:
 
 > Goal: เขียน rule files
 
-1. สร้าง `.devin/rules/always-on/<name>.md` สำหรับ global behavior
-2. สร้าง `.devin/rules/model_decision/<name>.md` สำหรับ conditional behavior
-3. สร้าง `.devin/rules/glob/<name>.md` สำหรับ file pattern
-4. ใช้ frontmatter:
+1. ใช้ template ตาม trigger — `templates/always-on.md`, `templates/model_decision.md`, `templates/glob.md` — โดย body ของ rule เป็น markdown table
+2. สร้าง `.devin/rules/always-on/<name>.md` สำหรับ global behavior — table columns: `No.`, `Rule`, `When`, `Do`, `Avoid`, `Example`
+3. สร้าง `.devin/rules/model_decision/<name>.md` สำหรับ conditional behavior — table columns: `No.`, `Situation`, `Condition`, `Then`, `Example`
+4. สร้าง `.devin/rules/glob/<name>.md` สำหรับ file pattern — table columns: `No.`, `Check`, `Then`, `Example`, `Ref`
+5. ใช้ frontmatter:
 
 ```md
 ---
@@ -54,8 +56,8 @@ globs:
 ---
 ```
 
-5. เนื้อหาภาษาอังกฤษ
-6. ระบุ `when`, `then`, `examples` ชัดเจน
+6. เนื้อหาภาษาอังกฤษ
+7. ระบุ `when`, `then`, `examples` ชัดเจนผ่าน table rows
 
 ### 4. Validate Frontmatter
 
@@ -95,6 +97,7 @@ globs:
 
 - rules ต้องระบุ `when`, `then`, `examples`
 - ไม่ generic
+- body ของทุก rule file เป็น markdown table ตาม `templates/` — `No.` เป็นคอลัมน์แรกเสมอ
 
 ### 5. Ast-Grep Separation
 

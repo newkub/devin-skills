@@ -63,6 +63,6 @@
 - grep Tauri allowlist — `tauri.conf.json` `allowlist`, `capabilities`
 - grep CSP — `Content-Security-Policy`, meta tags, `setHeader`
 - grep FS/shell — `readFile`, `writeFile`, `exec`, `shell.open`
-- `/check-source-maps` on packaged build
+- `/review-bundle` on packaged build
 
 Severity: `nodeIntegration: true` / `contextIsolation: false` = Critical, unsigned updates = Critical, full FS access = High, missing CSP = High, dev tools in prod = Medium

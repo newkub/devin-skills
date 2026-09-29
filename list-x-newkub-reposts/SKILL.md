@@ -3,7 +3,7 @@ name: list-x-newkub-reposts
 description: รายการ reposts (retweets) ของ @newkrubx จาก X ผ่าน local CLI + env config
 argument-hint: "[username] [--limit <n>]"
 related:
-  - list-github-star
+  - list-github-star-latest
   - list-raindrop-favorite
   - search
   - report
@@ -67,7 +67,7 @@ bun run scripts/list-x-reposts.ts [username] [--limit 50]
 ### 3. Fallback
 
 - ถ้า X API ใช้ไม่ได้ (ไม่มี token/quota) → แนะนำ `/watch-browser` เปิด `x.com/newkrubx/reposts` เป็น fallback
-- ใช้ `/list-github-star` ถ้าจำเป็น
+- ใช้ `/list-github-star-latest` ถ้าจำเป็น
 - ใช้ `/list-raindrop-favorite` ถ้าจำเป็น
 - ใช้ `/search` ถ้าจำเป็น
 

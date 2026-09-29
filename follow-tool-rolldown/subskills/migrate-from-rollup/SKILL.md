@@ -6,7 +6,7 @@ related:
   - follow-tool-rolldown
   - scan-codebase
   - deep-impact
-  - check-deprecated-apis
+  - review-code-quality
   - report-before-after
 ---
 

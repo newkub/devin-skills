@@ -16,6 +16,7 @@ related:
   - update-docs
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -100,7 +101,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 > Goal: ส่งมอบผล test
 
 1. ทำตาม `subskills/report-status/SKILL.md` — scenarios pass/fail, failure evidence, flaky signals
-2. persist raw exploratory results → `.devin/reports/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
+2. persist raw exploratory results → `.devin/temp/report/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
 3. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
 4. ปิด browser session ด้วย `agent-browser close`
 5. ทำ `/suggest-next-action`
@@ -148,7 +149,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 - ทุก route ถูก roleplay-test ครบ interactive elements พร้อม evidence
 - report สรุป PASS/FAIL ต่อ action + fixes ที่ทำ + retest results
-- raw exploratory results ถูก persist ใน `.devin/reports/<workspace>/` (ระบุ exploratory — ไม่ใช่ suite result)
+- raw exploratory results ถูก persist ใน `.devin/temp/report/<workspace>/` (ระบุ exploratory — ไม่ใช่ suite result)
 - flows ที่ผ่านถูก codify เป็น Playwright specs และรันจริง — Playwright report เป็น authoritative e2e result
 - failures ที่แก้แล้วถูก retest จนผ่าน หรือ report สิ่งที่ค้างชัดเจน
 - coverage gaps และ untested areas ถูกระบุไว้

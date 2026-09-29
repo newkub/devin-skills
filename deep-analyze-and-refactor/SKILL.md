@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - refactor
-  - review-refactor
+  - review-code-quality
   - deep-impact
   - resolve-errors
   - run-check
@@ -79,7 +79,7 @@ related:
 ### 1. Evidence Before Refactor
 
 - ทุก refactor target ต้องมาจาก finding ที่มี evidence — ห้าม refactor ตามความรู้สึก
-- ทำ `/review-refactor` หรือ `/deep-impact` ก่อนแก้ target ที่ blast radius กว้าง
+- ทำ `/review-code-quality` หรือ `/deep-impact` ก่อนแก้ target ที่ blast radius กว้าง
 
 ### 2. Confirm High Risk
 

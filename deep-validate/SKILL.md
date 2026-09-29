@@ -5,7 +5,7 @@ argument-hint: "[scope|correctness|type-safety|quality|security|compliance|cross
 related:
   - rethink
   - run-test
-  - review-quality
+  - review-code-quality
   - run-typecheck
   - report
   - suggest-next-action
@@ -14,6 +14,7 @@ related:
   - run-build
   - run-test-all
   - run-verify
+
 ---
 
 ## Goal
@@ -25,7 +26,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
 - ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
-- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-quality`
+- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-code-quality`
 
 ## Execute
 
@@ -49,7 +50,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 | Dimension/Argument | Subskill |
 |--------------------|----------|
-| `correctness` | `subskills/check-correctness/SKILL.md` — requirements, logic, edge cases, error handling |
+| `correctness` | `subskills/check-content-correctness/SKILL.md` — requirements, logic, edge cases, error handling |
 | `type-safety`, `types` | `subskills/check-type-safety/SKILL.md` — typecheck, `any`/`@ts-ignore`, type flow |
 | `quality` | `subskills/check-quality/SKILL.md` — readability, consistency, docs, best practices |
 | `security` | `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection |
@@ -64,7 +65,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Check Correctness
 
-ทำตาม `subskills/check-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
+ทำตาม `subskills/check-content-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
 
 ### 3. Check Type Safety
 

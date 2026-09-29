@@ -3,7 +3,7 @@ name: follow-your-suggestion
 description: ทำตามคำแนะนำจากการวิเคราะห์ปัญหาและแก้ไข code ตามที่คุยกันก่อนหน้า
 argument-hint: "[suggestion]"
 related:
-  - check-skills-related
+  - review-devin-global-harness
   - prioritize
   - resolve-errors
   - implement-to-production
@@ -26,7 +26,7 @@ related:
 
 จัดลำดับ suggestions ตาม impact และ effort
 
-1. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+1. ทำ `/review-devin-global-harness` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 2. ทำ `/prioritize` เพื่อจัดลำดับตาม priority: `security` > `type errors` > `performance` > `code quality`
 3. ตรวจสอบ context และ relevance ของแต่ละ suggestion ก่อน apply
 

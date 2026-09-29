@@ -4,7 +4,7 @@ description: Fix package exports surface — exports map, types condition, attw/
 argument-hint: "[package-or-scope]"
 related:
   - review-sdk
-  - check-backward-compatibility
+  - review-api
   - run-build
   - run-test
   - report-before-after
@@ -29,7 +29,7 @@ related:
 
 1. run `publint` + `attw --pack` — baseline errors/warnings
 2. list current entrypoints + findings (missing subpaths, wrong types resolution)
-3. flag breaking changes → `/check-backward-compatibility` first
+3. flag breaking changes → `/review-api` first
 
 ### 2. Fix Exports Map
 

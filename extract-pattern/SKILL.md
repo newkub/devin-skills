@@ -6,6 +6,7 @@ related:
   - review-architecture
   - learn
   - follow-best-practice
+
 ---
 
 ## Goal

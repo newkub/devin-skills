@@ -4,8 +4,8 @@ description: Check docs↔code drift — stale commands/APIs, undocumented featu
 argument-hint: "[docs-dir-or-scope]"
 related:
   - review-docs
-  - check-content-outdate
-  - check-correctness
+  - review-docs
+  - check-content-correctness
   - report
 ---
 
@@ -24,8 +24,8 @@ Run the drift dimension of `/review-docs` แบบ focused — docs เล่�
 
 > Goal: docs เทียบ source of truth จริง — parent Execute §9
 
-1. commands/APIs — code blocks เทียบ CLI flags, API signatures, env vars กับ source จริง → `/check-correctness`
-2. freshness — sections ที่ stale เทียบ changelog/git history → `/check-content-outdate`
+1. commands/APIs — code blocks เทียบ CLI flags, API signatures, env vars กับ source จริง → `/check-content-correctness`
+2. freshness — sections ที่ stale เทียบ changelog/git history → `/review-docs`
 3. coverage — features/public APIs ที่ไม่มี docs (`../../references/features-coverage.md`)
 4. dead docs — docs ของ features ที่ถูกลบไปแล้ว (orphaned pages)
 

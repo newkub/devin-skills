@@ -24,7 +24,7 @@ Subagent สำหรับ capture screenshots และ component shots ขอ
 - `base-url`: dev server หรือ prod URL เช่น `http://localhost:3000`
 - `devices`: device list เช่น `desktop,mobile` หรือ custom `wide=1920x1080`
 - `components` (optional): selector map เช่น `nav=header,form=form`
-- `out-dir`: output directory เช่น `.devin/reports/<workspace>/captures-<ts>/`
+- `out-dir`: output directory เช่น `.devin/temp/report/<workspace>/captures-<ts>/`
 - `browser-session` (optional): `agent-browser` session info ถ้า parent เปิดไว้แล้ว
 
 ## Tools

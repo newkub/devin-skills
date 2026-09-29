@@ -5,7 +5,7 @@ argument-hint: "[action-or-context]"
 related:
   - review
   - deep-review
-  - review-quality
+  - review-code-quality
   - deep-review-then-fix
   - follow-parallel
   - report
@@ -42,11 +42,11 @@ related:
 
 | No. | Action / Context | Reviews ที่ตรง |
 |-----|------------------|----------------|
-| 1 | ก่อน implement / productionize | `/review-implement-to-production` |
-| 2 | ก่อน refactor | `/review-refactor`, `/review-architecture`, `/review-quality` |
-| 3 | ก่อน restructure / move files | `/review-refactor`, `/review-devin-global-harness` |
+| 1 | ก่อน implement / productionize | `/implement-to-production` |
+| 2 | ก่อน refactor | `/review-code-quality`, `/review-architecture` |
+| 3 | ก่อน restructure / move files | `/review-code-quality`, `/review-devin-global-harness` |
 | 4 | ก่อน ship / deploy / release | `/review-release`, `/review-delivery` |
-| 5 | ก่อน update docs / plan / config | `/review-docs`, `/review-plan`, `/review-update` |
+| 5 | ก่อน update docs / plan / config | `/review-docs`, `/review-plan` |
 | 6 | แตะ security-sensitive code | `/review-security`, `/review-compliance` |
 | 7 | แตะ tests | `/review-test` |
 | 8 | แตะ dependencies / tech stack | `/review-dependencies` |

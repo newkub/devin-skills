@@ -14,7 +14,6 @@ related:
   - report
   - suggest-next-action
   - review-devin-global-harness
-  - check-broken-skills-references
   - update-references
   - scan-codebase
 ---
@@ -28,6 +27,12 @@ related:
 ใช้เมื่อต้อง sync ทั้งสาม layer ของ devin ecosystem โดยเฉพาะหลังมีการ rename, merge, หรือสร้าง skills/subagents จำนวนมาก — `/align-devin-layers` เป็น alias ของ skill นี้
 
 ## Execute
+
+### Subskills
+
+| Domain | Subskill |
+|--------|----------|
+| `devin-knowledge`, `knowledge` — ตรวจ Devin knowledge notes/suggestions | `subskills/devin-knowledge/SKILL.md` |
 
 ### 1. Inventory All Layers
 
@@ -54,7 +59,7 @@ related:
 1. เปรียบเทียบ rules จาก global rules vs skills vs subagents
 2. ทำ `/scan-codebase` เพื่อค้นหา references ทั่ว repo
 3. ตรวจ references: ชื่อ skills/subagents ใน AGENTS.md, global rules, และ skill `related`
-4. ทำ `/check-broken-skills-references` หา broken references
+4. ทำ `/review-devin-global-harness` หา broken references
 5. หา circular dependencies หรือ broken references
 6. ระบุ skills/subagents ทีล้าหลัง global rules
 

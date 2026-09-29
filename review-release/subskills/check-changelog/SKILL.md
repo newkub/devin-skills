@@ -4,8 +4,8 @@ description: Check changelog + release notes — completeness, format, links, co
 argument-hint: "[version-or-scope]"
 related:
   - review-release
-  - check-release-notes
-  - check-release-drift
+  - review-release
+  - review-release
   - gen-changelog-md
   - report
 ---
@@ -18,7 +18,7 @@ Run the changelog dimension of `/review-release` แบบ focused — changelog
 
 - ใช้เมื่อ `/review-release` dispatch มาที่ `changelog`/`notes` หรือเรียก standalone
 - ครอบคลุม: changelog completeness vs commits, release notes format, links/attribution, version consistency
-- generate changelog → `/gen-changelog-md`; version drift → `/check-release-drift`
+- generate changelog → `/gen-changelog-md`; version drift → `/review-release`
 
 ## Execute
 
@@ -28,10 +28,10 @@ Run the changelog dimension of `/review-release` แบบ focused — changelog
 
 ทำตาม `../../references/changelog.md` + `../../references/version-semver.md`
 
-1. completeness — merged PRs/commits ตั้งแต่ tag ล่าสุดครบใน changelog (เทียบ `/check-release-notes`)
+1. completeness — merged PRs/commits ตั้งแต่ tag ล่าสุดครบใน changelog (เทียบ `/review-release`)
 2. format — Keep a Changelog categories (Added/Changed/Fixed/Removed/Security), dates, version headers
 3. links — compare links, PR references, issue refs resolve
-4. consistency — changelog version ↔ `package.json`/tag ↔ release notes ตรงกัน (`/check-release-drift`)
+4. consistency — changelog version ↔ `package.json`/tag ↔ release notes ตรงกัน (`/review-release`)
 
 ### 2. Report
 

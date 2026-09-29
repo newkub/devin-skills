@@ -4,7 +4,7 @@ description: ตรวจสอบและรายงานไฟล์ที�
 argument-hint: "[threshold]"
 related:
   - refactor
-  - check-function-quality
+  - review-code-quality
   - check-code-structure
 ---
 
@@ -67,7 +67,7 @@ Skill นี้ใช้ Rust CLI แทน Bun/TS CLI เพราะต้อ�
 - แสดงจำนวนไฟล์ทั้งหมดที่เกิน threshold
 
 - ใช้ /refactor ถ้าจำเป็น
-- ใช้ /check-function-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /check-code-structure ถ้าจำเป็น
 
 ## Expected Outcome

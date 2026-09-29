@@ -58,7 +58,7 @@ Runner ของ CLI domain เท่านั้น — analysis ลึกไ�
 > Goal: รายงาน audit ได้
 
 1. สรุป commands covered, pass/fail, contract violations, classification ต่อ failure
-2. persist → `.devin/reports/<workspace>/cli-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/cli-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

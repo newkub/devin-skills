@@ -12,6 +12,7 @@ related:
   - suggest-next-action
   - resolve-errors
   - run-review
+
 ---
 
 ## Goal
@@ -47,7 +48,7 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 | observability | `/review-observability` | `subskills/improve-observability` |
 | accessibility | `/review-accessibility` | `subskills/improve-a11y` |
 | frontend | `/review-frontend` | `## Fix` (hydration) + `subskills/improve-rendering` |
-| quality/types | `/review-quality` | `## Fix` — complexity, imports |
+| quality/types | `/review-code-quality` | `## Fix` — complexity, imports |
 | อื่นๆ (cli, config, migration, backend, dependencies, delivery, docs, stability, i18n, mobile, desktop, browser-ext, dx, iac, sdk, usage, ai, mcp, events) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
 ## Execute

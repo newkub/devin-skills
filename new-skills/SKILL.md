@@ -6,13 +6,14 @@ related:
   - use-related-skills
   - follow-single-of-source
   - update-devin-global-skills
-  - check-all-routes
-  - check-release-notes
+  - review-delivery
+  - review-release
   - scan-codebase
   - review-devin-global-harness
   - update-devin
   - deep-validate
   - update-references
+
 ---
 
 ## Goal
@@ -109,8 +110,8 @@ related:
 - ตรวจ markdown links ไม่ให้ broken
 - อัปเดต `AGENTS.md` ถ้า skill นี้เป้น workflow หลัก
 
-- ใช้ /check-all-routes ถ้าจำเป็น
-- ใช้ /check-release-notes ถ้าจำเป็น
+- ใช้ /review-delivery ถ้าจำเป็น
+- ใช้ /review-release ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ## Expected Outcome

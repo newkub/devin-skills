@@ -6,6 +6,7 @@ related:
   - report
   - suggest-next-action
   - run-review
+
 ---
 
 ## Goal
@@ -98,7 +99,7 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 
 - ใช้ /review-compliance ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 
 ## Fix
 

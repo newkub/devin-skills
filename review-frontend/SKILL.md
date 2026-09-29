@@ -6,7 +6,7 @@ related:
   - review-uxui
   - follow-tool-lighthouse
   - deep-review
-  - review-quality
+  - review-code-quality
   - scan-codebase
   - deep-analyze
   - run-review
@@ -27,7 +27,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
 - platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - SEO → ใช้ `/review-seo`
-- general code quality, bug-prone patterns → ใช้ `/review-quality`
+- general code quality, bug-prone patterns → ใช้ `/review-code-quality`
 - architecture, modularity, boundaries → ใช้ `/review-architecture`
 
 - rendered-app checks (routes, console, PWA, vitals) refs `references/web-*.md`
@@ -121,7 +121,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 
 ### 1. Scope Boundary
 - เน้น frontend code quality
-- ไม่ซ้ำกับ `/review-uxui`, `/deep-review`, `/review-seo`, `/review-quality`, `/review-architecture`
+- ไม่ซ้ำกับ `/review-uxui`, `/deep-review`, `/review-seo`, `/review-code-quality`, `/review-architecture`
 - focus ที่ component patterns, state, rendering, types, CSS, forms, testing
 
 ### 2. Skip Conditions

@@ -1,9 +1,9 @@
 ---
-name: deep-validate-check-correctness
+name: deep-validate-check-content-correctness
 description: Validate correctness dimension — requirements, logic, edge cases, error handling
 argument-hint: "[scope]"
 related:
-  - review-quality
+  - review-code-quality
   - report
 ---
 
@@ -22,7 +22,7 @@ related:
 
 > Goal: ยืนยัน code ทำตาม requirement
 
-1. ทำ `/review-quality` เพื่อตรวจสอบความถูกต้อง
+1. ทำ `/review-code-quality` เพื่อตรวจสอบความถูกต้อง
 2. ตรวจสอบความถูกต้องตาม principle หรือ standard
 3. ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
 

@@ -4,7 +4,7 @@ description: เตรียม infrastructure ให้พร้อม producti
 argument-hint: "[scope]"
 related:
   - check-secrets
-  - check-migrations
+  - review-database
   - follow-secret-manager
   - setup-cicd
   - review-observability
@@ -28,7 +28,7 @@ related:
 > Goal: รู้ว่า app ต้องการ infra อะไรบ้าง
 
 1. ทำ `/check-secrets env-vars` เทียบ `.env` / `.env.example` / code usage — list ตัวที่ขาด
-2. ทำ `/check-migrations` เทียบ pending vs applied migrations
+2. ทำ `/review-database` เทียบ pending vs applied migrations
 3. list external services ที่ใช้: credentials, API keys, endpoints, rate limits
 4. list observability gaps: logging, metrics, error tracking
 

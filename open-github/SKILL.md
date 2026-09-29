@@ -5,6 +5,7 @@ argument-hint: "[repo|issue|pr|secrets|org|personal] [owner/repo] [#n]"
 related:
   - list-github
   - all-github-repo
+
 ---
 
 ## Goal

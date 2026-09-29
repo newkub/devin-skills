@@ -6,11 +6,11 @@ related:
   - update-tests
   - update-project
   - update-project-rules
-  - review-update
   - run-test
   - review-writing
   - deep-validate
   - check-reference
+
 ---
 
 ## Goal
@@ -97,7 +97,6 @@ related:
 - ถ้างานเช็ค/verify → focus ที่ sync `specs/SPEC.md`
 
 - ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /review-update ถ้าจำเป็น
 - ใช้ /deep-test coverage ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น

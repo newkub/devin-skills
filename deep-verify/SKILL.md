@@ -4,6 +4,7 @@ description: alias → /run-verify (รัน verify ครบทั้ง local
 argument-hint: "[scope]"
 related:
   - run-verify
+
 ---
 
 ## Goal

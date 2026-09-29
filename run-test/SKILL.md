@@ -3,7 +3,6 @@ name: run-test
 description: รัน unit/fast tests ทั้งหมด — auto-detect framework, isolate, report failures พร้อม root cause
 argument-hint: "[scope]"
 related:
-  - check-flaky-tests
   - review-test
   - run-test-all
   - deep-test
@@ -14,6 +13,7 @@ related:
   - create-report-in-dot-devin
   - update-docs
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -86,7 +86,7 @@ related:
 
 1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
 2. List failures พร้อม file:line และ classification (source/test/environment)
-3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/reports/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/reports/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
+3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/temp/report/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
 4. ถ้ามี coverage flag → ทำ `/deep-test coverage` ต่อ
 5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 

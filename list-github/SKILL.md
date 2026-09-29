@@ -7,6 +7,7 @@ related:
   - use-gh-cli
   - report
   - ask-me
+
 ---
 
 ## Goal
@@ -29,7 +30,7 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 | `project` | /list-github-project — GitHub projects |
 | `release` | /list-github-release — releases |
 | `repo` | /list-github-repo — repositories |
-| `star` | /list-github-star — starred repos |
+| `star` | /list-github-star-latest — starred repos |
 
 1. ระบุ domain จาก argument (เช่น `/list-github-pr`)
 2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น

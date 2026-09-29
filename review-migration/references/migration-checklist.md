@@ -63,7 +63,7 @@
 
 ## 1. Backward Compatibility
 
-- [ ] API/schema compat ระหว่าง old/new (`/check-backward-compatibility`)
+- [ ] API/schema compat ระหว่าง old/new (`/review-api`)
 - [ ] dual-read/dual-write strategy ถ้าจำเป็น
 - [ ] consumer notification, deprecation timeline
 

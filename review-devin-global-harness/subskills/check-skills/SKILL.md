@@ -4,7 +4,7 @@ description: Check skills layer — script findings + manual quality pass ที
 argument-hint: "[skill-name|all]"
 related:
   - update-devin-global-skills
-  - check-skill-usage
+  - update-devin-global-skills
   - report
 ---
 

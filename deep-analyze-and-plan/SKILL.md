@@ -28,7 +28,7 @@ related:
 
 ใช้กับงานที่ต้องเข้าใจ codebase ก่อนวางแผน — refactors, features, migrations, extractions (component → hook, duplication → shared) — ครอบคลุม analysis findings, dependency decisions, file architecture, task graph, risks และ test strategy
 
-- Output: ตอบ plan ในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/plan/`)
+- Output: ตอบ plan ในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ (รวมถึง `.devin/tasks/`, `.devin/temp/plan/`)
 - Boundary: `/plan` และ `/deep-plan` เป็น alias ของ skill นี้; ต้องการตัดสินใจร่วมกับ user → `/ask-me`; persist plan จริงๆ user ต้องสั่ง `/create-plan-in-dot-devin` เอง
 - อ่านก่อนทำงานเสมอ: `/refactor` (refactor patterns + safety) และ `/implement-to-production` (production-readiness checklist) — plan ต้องออกแบบให้ผ่านทั้งสองมาตรฐาน
 

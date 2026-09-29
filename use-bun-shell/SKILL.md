@@ -4,6 +4,7 @@ description: ใช้ Bun shell สำหรับ execute commands ด้ว�
 argument-hint: "[command]"
 related:
   - use-bun-native-api
+
 ---
 
 ## Goal

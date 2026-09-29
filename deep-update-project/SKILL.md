@@ -4,6 +4,7 @@ description: alias → /update-project (อัปเดต root project จา�
 argument-hint: "[scope]"
 related:
   - update-project
+
 ---
 
 ## Goal

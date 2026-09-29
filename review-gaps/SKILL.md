@@ -8,6 +8,7 @@ related:
   - dont-over-engineer
   - suggest-next-action
   - run-review
+
 ---
 
 ## Goal
@@ -94,7 +95,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (gaps)
 
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-risk ถ้าจำเป็น
 
 ## References

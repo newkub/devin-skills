@@ -10,6 +10,7 @@ related:
   - implement-to-production
   - follow-plan
   - run-review
+
 ---
 
 ## Goal
@@ -79,7 +80,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ plan ตาม findings: เพิ่ม missing steps, แก้ dependency order, เพิ่ม mitigation ของ risks, ตัดงานที่เกิน scope
-2. ถ้า verdict `go` → ทำ `/follow-plan` หรือ `/review-implement-to-production` ต่อ
+2. ถ้า verdict `go` → ทำ `/follow-plan` หรือ `/implement-to-production` ต่อ
 3. verify: re-score plan หลังแก้เทียบกับ baseline
 
 ## Expected Outcome

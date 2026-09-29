@@ -5,6 +5,7 @@ argument-hint: "<pattern> <replacement> [path]"
 related:
   - update-references
   - report
+
 ---
 
 ## Goal

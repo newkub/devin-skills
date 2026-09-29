@@ -3,7 +3,7 @@ name: deep-validate-check-quality
 description: Validate quality dimension — readability, consistency, docs, best practices
 argument-hint: "[scope]"
 related:
-  - review-quality
+  - review-code-quality
   - report
 ---
 
@@ -22,7 +22,7 @@ related:
 
 > Goal: คุณภาพโดยรวมตาม standards
 
-1. ทำ `/review-quality` เพื่อตรวจสอบ code quality
+1. ทำ `/review-code-quality` เพื่อตรวจสอบ code quality
 2. ตรวจสอบ readability, completeness, consistency
 3. ตรวจสอบมี documentation เพียงพอหรือ clear
 

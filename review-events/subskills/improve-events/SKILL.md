@@ -4,7 +4,7 @@ description: Apply event findings — schema versioning, idempotency, DLQ, obser
 argument-hint: "[scope-or-findings]"
 related:
   - review-events
-  - check-idempotency
+  - review-api
   - run-test
   - report-before-after
 ---
@@ -42,7 +42,7 @@ related:
 
 > Goal: duplicates และ failures ไม่ corrupt
 
-1. idempotency — dedupe keys + consumer-side checks (`/check-idempotency` verify)
+1. idempotency — dedupe keys + consumer-side checks (`/review-api` verify)
 2. DLQ — routing + alerting + replay runbook; poison messages ไม่ block queue
 3. ordering — document + enforce per-key ordering เมื่อจำเป็น
 

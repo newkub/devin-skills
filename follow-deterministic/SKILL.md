@@ -4,6 +4,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
+
 ---
 
 ## Goal

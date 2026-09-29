@@ -35,7 +35,7 @@ related:
 
 1. ระบุ target จาก argument หรือ context ปัจจุบัน
 2. ถ้า target เป็น repo/โฟลเดอร → ทำ `/scan-codebase`
-3. ถ้า target เป็น skills → ทำ `/review-devin-global-harness` หรือ `/check-skills-related`
+3. ถ้า target เป็น skills → ทำ `/review-devin-global-harness` หรือ `/review-devin-global-harness`
 4. อ่านไฟล์/artifacts ของแต่ละ candidate เพื่อเปรียบเทียบ Goal, Scope, Execute
 5. ตรวจสอบ line counts, references, และ section overlap
 

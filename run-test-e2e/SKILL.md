@@ -53,7 +53,7 @@ Runner ของ E2E domain เท่านั้น — flow/coverage analysis 
 
 1. element missing/flow broken → source bug → `/resolve-errors`
 2. selector outdated/timing assertion → test issue → `/update-tests`
-3. flaky (ผ่านบ้าง fail บ้าง) → report flakiness + `/check-test-isolation` — ห้ามเพิ่ม retry เพื่อให้ผ่าน
+3. flaky (ผ่านบ้าง fail บ้าง) → report flakiness + `/review-test` — ห้ามเพิ่ม retry เพื่อให้ผ่าน
 4. environment (server ไม่ขึ้น, port ชน) → แก้ env ไม่แก้ test
 5. Failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report
 
@@ -62,7 +62,7 @@ Runner ของ E2E domain เท่านั้น — flow/coverage analysis 
 > Goal: รายงาน audit ได้
 
 1. สรุป specs covered, pass/fail, flaky list, classification ต่อ failure พร้อม trace paths
-2. persist → `.devin/reports/<workspace>/e2e-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/e2e-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

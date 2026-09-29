@@ -15,7 +15,7 @@
 | property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/deep-test api` |
 | quick request / ad-hoc HTTP | `xh` | installed (mise cargo:xh) | `/deep-test api` |
 | interactive API client | `slumber` | installed | `/deep-test api` |
-| webhook testing | `stripe listen` | installed | `/check-webhook` |
+| webhook testing | `stripe listen` | installed | `/review-api` |
 | expose local server | `cloudflared tunnel` | installed | `/run-dev` |
 
 ## Search, Files And Code Analysis
@@ -30,7 +30,7 @@
 | count LOC | `scc` / `loc` / `rloc` | installed | `/follow-tool-loc` |
 | disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
-| copy-paste detection | `jscpd` | installed | `/review-quality` |
+| copy-paste detection | `jscpd` | installed | `/review-code-quality` |
 | reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/follow-reusable` |
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-references`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors` |

@@ -9,6 +9,7 @@ related:
   - run-bench
   - report
   - run-review
+
 ---
 
 ## Goal
@@ -103,7 +104,7 @@ related:
 - ทุก finding ต้องมี line, call frequency, และ complexity analysis
 - ไม่เดาว่า function ควร optimize โดยไม่มี benchmark
 
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-performance ถ้าจำเป็น
 
 ## Fix

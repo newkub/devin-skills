@@ -2,11 +2,11 @@
 
 ## Goal
 
-อ่านแผนจาก `.devin/plan/<workspace>/<title-date>.md` ดำเนินการให้ครบถ้วน แล้วลบไฟล์แผน
+อ่านแผนจาก `.devin/temp/plan/<workspace>/<title-date>.md` ดำเนินการให้ครบถ้วน แล้วลบไฟล์แผน
 
 ## Scope
 
-- อ่านไฟล์ `.devin/plan/<workspace>/`
+- อ่านไฟล์ `.devin/temp/plan/<workspace>/`
 - ทำงานตาม task table ให้ครบ
 - ลบไฟล์แผนเมื่องานเสร็จ
 - ใช้ได้กับงาน refactor หรือ implement ทั่วไป
@@ -19,7 +19,7 @@
 > Goal: ระบุไฟล์แผน
 
 1. ถ้ามี argument ให้ใช้เป็น plan path หรือ title
-2. ถ้าไม่มี ให้ list ไฟล์ใน `.devin/plan/<workspace>/` แล้วถาม user เลือก
+2. ถ้าไม่มี ให้ list ไฟล์ใน `.devin/temp/plan/<workspace>/` แล้วถาม user เลือก
 3. อ่านไฟล์ด้วย `read`
 
 ### 2. Analyze Tasks
@@ -45,7 +45,7 @@
 
 1. ตรวจสอบว่า tasks ทั้งหมด `status: completed`
 2. รัน `/deep-validate` และ `/run-verify` ถ้ามี
-3. ลบไฟล์ `.devin/plan/<workspace>/<title>-<date>.md`
+3. ลบไฟล์ `.devin/temp/plan/<workspace>/<title>-<date>.md`
 4. รายงานสรุปผล
 
 ## Rules

@@ -8,7 +8,7 @@
 
 - ใช้กับ code, docs, `SKILL.md`, และ text ใดๆ ที่ user ระบุ
 - Naming ลงลึกข้าม codebase → ส่งต่อ `/review-writing`
-- โครงสร้าง/section ซับซ้อนเกิน → ส่งต่อ `/review-quality`
+- โครงสร้าง/section ซับซ้อนเกิน → ส่งต่อ `/review-code-quality`
 
 ## Execute
 
@@ -53,7 +53,7 @@
 > Goal: ยืนยันว่าอ่านง่ายขึ้นจริง
 
 1. รัน `/run-check` หรือ `/run-lint` ถ้าเป็น code
-2. ทำ `/check-broken-skills-references` ถ้าแก้ skill files
+2. ทำ `/review-devin-global-harness` ถ้าแก้ skill files
 3. ตรวจว่าไม่สูญเสียเนื้อหาหลัก
 4. ถ้ามี rename identifier → `/update-references`
 

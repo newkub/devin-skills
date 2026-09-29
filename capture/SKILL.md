@@ -7,6 +7,7 @@ related:
   - use-agent-browser
   - run-dev
   - review-uxui
+
 ---
 
 ## Goal
@@ -45,7 +46,7 @@ bun <skill-dir>/src/presentation/cli.ts <mode> [options]
 
 1. เตรียม target: เปิด URL/app/terminal ที่ต้องการ (`/run-dev` ถ้าต้อง start server)
 2. รัน CLI subcommand ตาม mode พร้อมตั้งชื่อไฟล์สื่อความหมาย
-3. บันทึกไปตำแหน่งตาม mode guide (`public/screenshots/`, `docs/screenshots/`, หรือ `.devin/reports/<workspace>/captures-<ts>/`)
+3. บันทึกไปตำแหน่งตาม mode guide (`public/screenshots/`, `docs/screenshots/`, หรือ `.devin/temp/report/<workspace>/captures-<ts>/`)
 
 ### 3. Verify And Report
 
@@ -341,7 +342,7 @@ Output layout:
 - ไม่แก้ไข code ของ site ที่ capture
 - `--wait` ต้องพอให้ hydration + fonts โหลด — เพิ่มถ้า SPA ช้า
 - capture fail ต่อ target เก็บใน `manifest.errors` — ไม่หยุดทั้งรัน
-- default output: `.devin/reports/<workspace>/captures-<timestamp>/` (`.devin/` ควร gitignore — local evidence)
+- default output: `.devin/temp/report/<workspace>/captures-<timestamp>/` (`.devin/` ควร gitignore — local evidence)
 - ใช้ /watch-browser ถ้าจำเป็น
 
 #### All — Expected Outcome

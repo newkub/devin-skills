@@ -72,7 +72,7 @@ related:
 5. Naming inconsistency: ชื่อไฟล์หรือโฟลเดอรสลับระหว่าง kebab, camel, snake, Pascal
 6. Build artifacts: ไฟล์ `dist`, `build`, `.cache`, `target` ปรากฏใน source tree
 7. Long paths: path ยาวเกิน 260 chars (Windows) → ทำ `/check-files path-length` ถ้าจำเป็น
-8. Broken symlinks: ทำ `/check-broken-symlinks` ถ้าพบ junction/symlink
+8. Broken symlinks: ทำ `/check-repo-hygiene` ถ้าพบ junction/symlink
 
 ### 5. Validate And Report
 

@@ -13,6 +13,7 @@ related:
   - report
   - suggest-next-action
   - run-review
+
 ---
 
 ## Goal
@@ -45,17 +46,17 @@ related:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-quality` |
-| 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-writing` |
-| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-quality` | `/review-test` |
+| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-code-quality` |
+| 2 | เน้น code quality, bug-prone patterns, smells | `/review-code-quality` | `/review-writing` |
+| 3 | เน้น logic, types, edge cases, contracts, tests | `/review-code-quality` | `/review-test` |
 | 4 | เน้น security | `/review-security` | `/review-compliance`, `/review-delivery` |
 | 5 | เน้น performance | `/review-performance` | `/review-frontend`, `/review-backend` |
 | 6 | เน้น frontend code (React/Vue/Solid/Svelte/Angular) | `/review-frontend` | `/review-uxui`, `/deep-review` |
 | 7 | เน้น backend (API, service, database, data flow) | `/review-backend` | `/review-performance`, `/review-security` |
-| 8 | เน้น architecture, modularity, boundaries | `/review-architecture` | `/review-quality`, `/review-dependencies` |
+| 8 | เน้น architecture, modularity, boundaries | `/review-architecture` | `/review-code-quality`, `/review-dependencies` |
 | 9 | เน้น UX/UI, design system, accessibility | `/review-uxui` | `/deep-review`, `/review-frontend` |
 | 10 | เน้น platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/deep-review` | `/review-frontend`, `/review-uxui` |
-| 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/review-business` | `/review-security`, `/review-quality` |
+| 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/review-business` | `/review-security`, `/review-code-quality` |
 | 12 | เน้น tech stack / dependencies / library design | `/review-techstack` | `/review-dependencies`, `/review-security` |
 | 13 | เน้น stability, error handling, debuggability | `/review-stability` | `/review-performance`, `/review-observability` |
 | 14 | เน้น observability (metrics, tracing, logging, alerting) | `/review-observability` | `/review-stability`, `/review-delivery` |
@@ -63,36 +64,33 @@ related:
 | 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/review-delivery` | `/review-performance`, `/review-security` |
 | 17 | ตรวจความพร้อมก่อน deploy | `/review-release` | `/review-delivery`, `/watch-deploy` |
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-dependencies` |
-| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-dot-devin` | `/review-quality`, `/review-devin-global-harness` |
+| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-dot-devin` | `/review-code-quality`, `/review-devin-global-harness` |
 | 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-writing` |
 | 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/review-docs` | `/review-writing` |
 | 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/review-docs` | `/review-writing` |
 | 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-docs` | `/review-writing` |
 | 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-writing` |
-| 25 | ตรวจ naming conventions | `/review-quality` | `/review-writing` |
-| 26 | ตรวจ readability | `/review-writing` | `/review-quality` |
+| 25 | ตรวจ naming conventions | `/review-code-quality` | `/review-writing` |
+| 26 | ตรวจ readability | `/review-writing` | `/review-code-quality` |
 | 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-redundancy` | `/deep-review`, `/check-repo-hygiene unused` |
-| 28 | ตรวจ consistency ข้าม skills / code | `/review-alignment` | `/review-quality` |
+| 28 | ตรวจ consistency ข้าม skills / code | `/review-alignment` | `/review-code-quality` |
 | 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-alignment` | `/review-devin-global-harness` |
-| 30 | ตรวจ git diff ก่อน keep/revert | `/review-diff` | `/review-quality` |
-| 31 | ตรวจ drift ก่อน update | `/review-update` | `/review-quality` |
-| 32 | ตรวจ migration plan ก่อนลงมือ | `/review-migration` | `/review-risk` |
-| 33 | ตรวจก่อน refactor | `/review-refactor` | `/review-architecture`, `/review-quality` |
-| 34 | ตรวจ implementation readiness | `/review-implement-to-production` | `/review-plan`, `/review-quality` |
-| 35 | ตรวจ implementation completeness | `/review-implement-to-production` | `/review-quality`, `/review-uxui` |
-| 36 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-quality` |
-| 37 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
-| 38 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |
-| 39 | ตรวจ GitHub PR | `/review-github-pr` | `/review-diff`, `/review-quality` |
-| 40 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
-| 41 | ตรวจ devin global skills repo | `/review-devin-global-harness` | `/review-quality` |
-| 42 | ตรวจ devin global subagents | `/update-devin-global-subagents` | `/review-devin-global-harness` |
-| 43 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-quality` |
-| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-repo-hygiene unused` | `/review-devin-global-harness`, `/review-quality` |
-| 45 | เน้น DX — dev loop speed, onboarding, error messages | `/review-dx` | `/review-delivery`, `/review-docs` |
-| 46 | เน้น desktop app (Tauri/Electron) — window, tray, IPC, packaging | `/review-desktop-app` | `/review-security`, `/review-performance` |
-| 47 | เน้น browser extension — manifest, permissions, content scripts | `/review-browser-ext` | `/review-frontend`, `/review-security` |
-| 48 | เน้น IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/review-iac` | `/review-security`, `/review-cost` |
+| 30 | ตรวจ git diff ก่อน keep/revert | `/review-diff` | `/review-code-quality` |
+| 31 | ตรวจ migration plan ก่อนลงมือ | `/review-migration` | `/review-risk` |
+| 32 | ตรวจก่อน refactor | `/review-code-quality` | `/review-architecture` |
+| 33 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-code-quality` |
+| 34 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
+| 35 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |
+| 36 | ตรวจ GitHub PR | `/review-github-pr` | `/review-diff`, `/review-code-quality` |
+| 37 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
+| 38 | ตรวจ devin global skills repo | `/review-devin-global-harness` | `/review-code-quality` |
+| 39 | ตรวจ devin global subagents | `/update-devin-global-subagents` | `/review-devin-global-harness` |
+| 40 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/review-code-quality` |
+| 41 | ตรวจ dead code / unused files / unused deps ใน code | `/check-repo-hygiene unused` | `/review-devin-global-harness`, `/review-code-quality` |
+| 42 | เน้น DX — dev loop speed, onboarding, error messages | `/review-dx` | `/review-delivery`, `/review-docs` |
+| 43 | เน้น desktop app (Tauri/Electron) — window, tray, IPC, packaging | `/review-desktop-app` | `/review-security`, `/review-performance` |
+| 44 | เน้น browser extension — manifest, permissions, content scripts | `/review-browser-ext` | `/review-frontend`, `/review-security` |
+| 45 | เน้น IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/review-iac` | `/review-security`, `/review-cost` |
 | 49 | เน้น SDK/library public surface — exports, semver, types | `/review-sdk` | `/review-api`, `/review-techstack` |
 | 50 | เน้น usage surface — API/CLI/web parity กับ docs (refresh `/update-usage-md` ก่อน) | `/review-usage` | `/review-docs`, `/review-cli`, `/review-api` |
 
@@ -106,7 +104,7 @@ related:
 
 1. ถ้ามี skill เดียว → เรียก skill นั้นโดยตรง
 2. ถ้ามีหลาย skills และ independent → ใช้ `/follow-parallel` รัน parallel (จำกัดไม่เกิน 10 ต่อ batch)
-3. ถ้ามี dependency เช่น `/review-plan` ก่อน `/review-implement-to-production` → รันตามลำดับ
+3. ถ้ามี dependency เช่น `/review-plan` ก่อน `/implement-to-production` → รันตามลำดับ
 4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/deep-review` ก่อน
 5. บันทึก output และ findings จากแต่ละ skill
 

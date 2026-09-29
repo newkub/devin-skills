@@ -20,7 +20,7 @@
  *   --slow <ms>           Mark responses slower than this (default 3000)
  *   --header <h>          Extra header, e.g. "Authorization: Bearer x"
  *   --out <file>          Manifest JSON path (default:
- *                       .devin/reports/<cwd>/api-check-<ts>.json)
+ *                       .devin/temp/report/<cwd>/api-check-<ts>.json)
  */
 
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
@@ -49,7 +49,7 @@ const slowMs = Number(arg('slow', '3000'))
 const header = arg('header')
 const cwdName = basename(process.cwd())
 const ts = new Date().toISOString().replace(/[:T]/g, '').slice(0, 14)
-const outFile = arg('out', `.devin/reports/${cwdName}/api-check-${ts}.json`)
+const outFile = arg('out', `.devin/temp/report/${cwdName}/api-check-${ts}.json`)
 
 // ---------- routes ----------
 function normalize(p: string): string | null {

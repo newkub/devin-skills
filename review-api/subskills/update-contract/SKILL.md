@@ -4,9 +4,9 @@ description: Reconcile API contract drift — sync spec↔impl, regenerate, veri
 argument-hint: "[spec-or-scope]"
 related:
   - review-api
-  - check-api-contract
-  - check-api-versioning
-  - check-backward-compatibility
+  - review-api
+  - review-api
+  - review-api
   - ask-me
   - report-before-after
 ---
@@ -27,7 +27,7 @@ related:
 
 > Goal: รู้ drift ทั้งหมดก่อนแก้
 
-1. ทำ `/check-api-contract` — บันทึก drift list ทั้งหมดเป็น baseline
+1. ทำ `/review-api` — บันทึก drift list ทั้งหมดเป็น baseline
 2. แยกแต่ละ drift: `spec-bug` (spec ผิด impl ถูก) vs `impl-bug` (impl ผิด spec ถูก) vs `undecided`
 3. `undecided` → `/ask-me` — ยึด contract ที่ clients ใช้จริงเป็น source of truth
 
@@ -44,8 +44,8 @@ related:
 
 > Goal: diff สะอาด ไม่ break clients
 
-1. `/check-api-contract` ซ้ำ — diff เหลือเฉพาะ intended changes
-2. `/check-backward-compatibility` — breaking changes ต้องมี version bump หรือ deprecation path
+1. `/review-api` ซ้ำ — diff เหลือเฉพาะ intended changes
+2. `/review-api` — breaking changes ต้องมี version bump หรือ deprecation path
 3. contract tests/`/run-test` ผ่าน + `/report-before-after` drift count
 
 ## Rules

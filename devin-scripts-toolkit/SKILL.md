@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - devin-templates-toolkit
   - review-devin-global-harness
-  - check-broken-skills-references
+  - review-devin-global-harness
   - follow-create-web
   - setup-cicd
   - ship
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-- Skill validation scripts (e.g. `/review-devin-global-harness`, `/check-broken-skills-references`)
+- Skill validation scripts (e.g. `/review-devin-global-harness`, `/review-devin-global-harness`)
 - Project health check scripts
 - Build/test/run scripts
 - Setup/deployment helper scripts (e.g. `/setup-cicd`)

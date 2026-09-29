@@ -4,9 +4,10 @@ description: ทำตาม AGENTS.md ใน workspace พร้อมใช้
 argument-hint: "[target]"
 related:
   - update-docs
-  - check-skills-related
+  - review-devin-global-harness
   - use-subagents
   - update-devin
+
 ---
 
 ## Goal
@@ -31,7 +32,7 @@ related:
 
 > Goal: รู้ว่าจะทำอะไรบ้าง
 
-1. ทำ `/check-skills-related` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
+1. ทำ `/review-devin-global-harness` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
 2. สรุปรายการสิ่งที่จะทำ: workflows, skills, ลำดับ, dependencies
 3. ถ้ามีหลาย workflows ที่ independent → บันทึกไว้สำหรับ `/use-subagents`
 

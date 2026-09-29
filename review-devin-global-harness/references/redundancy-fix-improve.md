@@ -8,8 +8,8 @@
 
 - ใช้กับ code, docs, skill files, config files
 - Duplicate dependencies → ส่งต่อ `/review-dependencies`
-- Inconsistency ของ pattern หลายแบบ → ส่งต่อ `/review-quality`
-- Content ซับซ้อนเกิน → ส่งต่อ `/review-quality`
+- Inconsistency ของ pattern หลายแบบ → ส่งต่อ `/review-code-quality`
+- Content ซับซ้อนเกิน → ส่งต่อ `/review-code-quality`
 
 ## Execute
 

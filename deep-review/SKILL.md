@@ -1,6 +1,6 @@
 ---
 name: deep-review
-description: รัน review-* ครบทุก domain แล้วรายงานผลลง `.devin/reports/<workspace>/` (report only)
+description: รัน review-* ครบทุก domain แล้วรายงานผลลง `.devin/temp/report/<workspace>/` (report only)
 argument-hint: "[path-or-target] [--diff] [--deep]"
 related:
   - run-review
@@ -18,6 +18,7 @@ related:
   - review-by-stakeholder
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -28,11 +29,11 @@ related:
 
 ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
 
-ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
+ผลลัพธ์รายงานลง `.devin/temp/report/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
 
 - subagent: `subagents/domain-reviewer.md` — รัน review ทีละ domain แบบขนาน
 - dispatch catalog: `references/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
-- domain reviews: `review-*` 53 skills เป็น top-level skills จริง (ย้ายออกจาก subskills เดิม) — dispatch เรียก `/review-<domain>` โดยตรง; ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-refactor`, `review-coverage`, `review-then-fix` ที่เป็น top-level อยู่แล้ว
+- domain reviews: `review-*` 53 skills เป็น top-level skills จริง (ย้ายออกจาก subskills เดิม) — dispatch เรียก `/review-<domain>` โดยตรง; ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-code-quality`, `review-coverage`, `review-then-fix` ที่เป็น top-level อยู่แล้ว
 
 ## Execute
 
@@ -111,7 +112,7 @@ related:
 1. ถ้า monorepo → ทำ `/list-workspaces` แล้วเรียง workspace ตามความสำคัญ: user-facing apps → shared packages → tools/infra — ทำ `/follow-monorepo` ตาม conventions; ถ้า workspaces > budget → เลือก top-N และ mark ที่เหลือ `skipped (budget)` ใน ledger
 2. ต่อ workspace → รัน pipeline ใน `references/review-skills.md` ตามลำดับ phase:
    - Phase 1 entry: `/review-config` → `/review-techstack` → `/review-architecture` → ที่เหลือตาม condition
-   - Phase 2 source code: `/review-quality`, `/review-writing`, `/review-cli`/`/review-api`/`/review-backend`/`/review-frontend` ฯลฯ ตาม workspace type
+   - Phase 2 source code: `/review-code-quality`, `/review-writing`, `/review-cli`/`/review-api`/`/review-backend`/`/review-frontend` ฯลฯ ตาม workspace type
    - Phase 3 cross-cutting: `/review-security`, `/review-performance`, `/review-stability` และ metrics อื่นครบ
    - Phase 4 meta: `/review-gaps`, `/review-by-stakeholder` ตามต้องการ
    - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
@@ -134,7 +135,7 @@ related:
 
 ### 8. Report To .devin/Reports
 
-> Goal: รายงานผล review ลง `.devin/reports/<workspace>/` (report only) ด้วยโครงที่อ่านแล้ว fix ได้ทันที และ verify ว่าครอบคลุมจริง
+> Goal: รายงานผล review ลง `.devin/temp/report/<workspace>/` (report only) ด้วยโครงที่อ่านแล้ว fix ได้ทันที และ verify ว่าครอบคลุมจริง
 
 1. ทำ `/report` สรุป score, findings, owner skill, priority
 2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review` — โครง report:
@@ -160,7 +161,7 @@ related:
 
 ### 1. No Duplication
 
-- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review` เน้น "manual pre-pass + รันครั้งเดียว + subagent วิเคราะห์ขนาน + จัดลำดับ + report ลง `.devin/reports/<workspace>/`"
+- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review` เน้น "manual pre-pass + รันครั้งเดียว + subagent วิเคราะห์ขนาน + จัดลำดับ + report ลง `.devin/temp/report/<workspace>/`"
 - Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix` ใน skill นี้
 - ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
 - dedup ระหว่าง CLI findings กับ review-* findings ก่อน report (ดู Step 7.1)

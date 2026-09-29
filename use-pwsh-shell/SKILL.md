@@ -7,6 +7,7 @@ related:
   - use-nu-shell
   - follow-best-practice
   - use-scripts
+
 ---
 
 ## Goal

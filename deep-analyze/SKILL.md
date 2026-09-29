@@ -15,6 +15,7 @@ related:
   - deep-review
   - deep-analyze-by-use-scripts
   - deep-analyze-and-refactor
+
 ---
 
 ## Goal
@@ -94,7 +95,7 @@ related:
 2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
 3. หา code smells ด้วย `Grep` multiline mode
 4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
-5. ทำ `/review-quality`, `/check-repo-hygiene unused` แบบ parallel
+5. ทำ `/review-code-quality`, `/check-repo-hygiene unused` แบบ parallel
 6. ตรวจหา hardcoded secrets ด้วย `Grep`
 
 ### 6. Dependencies And Tech Stack

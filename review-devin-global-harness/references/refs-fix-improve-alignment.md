@@ -24,7 +24,7 @@
 > Goal: หาความไม่สอดคล้อง
 
 1. ทำ `/review-devin-global-harness` เพื่อตรวจ broken/stale/circular references
-2. ทำ `/review-quality` เพื่อตรวจภาษา, terminology, format ข้ามไฟล์
+2. ทำ `/review-code-quality` เพื่อตรวจภาษา, terminology, format ข้ามไฟล์
 3. เปรียบเทียบ devin rules กับ ast-grep rules
 4. เปรียบเทียบ `AGENTS.md` กับ skills/rules จริง
 5. เปรียบเทียบ docs (`README.md`, `USAGE.md`) กับ code และ config

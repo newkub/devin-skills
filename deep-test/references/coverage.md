@@ -53,7 +53,7 @@
 
 1. ถ้า coverage ถึง 100% → report framework, metrics, report location
 2. ถ้าไม่ถึง 100% → report remaining gaps, categories ที่ยังไม่ผ่าน, next step
-3. persist raw results → `.devin/reports/<workspace>/coverage-<time>.md` ตาม format `/create-report-in-dot-devin` — metrics table + gaps เพื่อให้ `/update-docs` reuse
+3. persist raw results → `.devin/temp/report/<workspace>/coverage-<time>.md` ตาม format `/create-report-in-dot-devin` — metrics table + gaps เพื่อให้ `/update-docs` reuse
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -69,7 +69,7 @@
 ### 2. Coverage Threshold And Loop
 
 - Coverage 100% ทุก category เท่านั้นที่ผ่าน
-- หาก coverage ไม่ถึง 100% ต้องทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- หาก coverage ไม่ถึง 100% ต้องทำ `/review-code-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
 - วน loop run coverage → write tests → run coverage จนกว่าจะ 100% สูงสุด 5 รอบ
 - ถ้าเกิน 5 รอบ → stop และ report remaining gaps
 - ไม่มีข้อยกเว้นสำหรับ critical code, edge cases, error paths

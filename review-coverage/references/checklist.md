@@ -4,14 +4,14 @@
 
 - [ ] surface source declared — spec, map, config, routes, or user-provided list
 - [ ] `skills` surface — actions/domains from `../follow-skills-map/references/tool-map.md`, `global_rules.md` intents, skills-map categories
-- [ ] `tests` surface — routes/endpoints/public modules via `/check-all-routes` or route-file scan
+- [ ] `tests` surface — routes/endpoints/public modules via `/review-delivery` or route-file scan
 - [ ] `docs` surface — features/public API from `FEATURES.md`, exports, routes
 - [ ] custom surface — extracted from user list or spec, normalized to keys
 - [ ] large surfaces — scripted extraction (`/use-scripts`) not manual eyeballing
 
 ## Coverage Inventory
 
-- [ ] `skills` — `*/SKILL.md` descriptions scanned, `related` checked, `/check-skill-usage` for usage signal
+- [ ] `skills` — `*/SKILL.md` descriptions scanned, `related` checked, `/update-devin-global-skills` for usage signal
 - [ ] `tests` — `*.test.*`/`*.spec.*`/`tests/` mapped to surface items; real coverage report read if present
 - [ ] `docs` — docs pages, README sections, `docs/` nav mapped to features
 - [ ] keys normalized — same key format on both sides (action name / route path / feature id)

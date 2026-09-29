@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-data-validation
   - follow-tool-drizzle-kit
-  - check-migrations
+  - review-database
   - review-database
   - update-tests
   - run-test
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ projects ที่ต้อง data access layer ผ่าน ORM แทน raw SQL รองรับ TypeScript, Rust, Python, Go
 
-- Boundary: skill นี้ครอบคลุม ORM usage เท่านั้น — schema design/review ใช้ `/review-database`; migration drift audit ใช้ `/check-migrations`; drizzle-kit commands ลึกใช้ `/follow-tool-drizzle-kit`
+- Boundary: skill นี้ครอบคลุม ORM usage เท่านั้น — schema design/review ใช้ `/review-database`; migration drift audit ใช้ `/review-database`; drizzle-kit commands ลึกใช้ `/follow-tool-drizzle-kit`
 
 ## Execute
 
@@ -62,7 +62,7 @@ related:
 > Goal: schema changes versioned และ reproducible
 
 1. generate migration จาก model changes — review generated SQL ก่อน apply เสมอ
-2. ทำ `/check-migrations` เทียบ pending vs applied ก่อน deploy
+2. ทำ `/review-database` เทียบ pending vs applied ก่อน deploy
 3. destructive changes (drop column/table) → dry-run + user confirm
 4. seed script แยกจาก migrations — ไม่ผสม data กับ schema
 5. ถ้า migration fail → `/resolve-errors` ก่อนดำเนินต่อ
@@ -102,7 +102,7 @@ related:
 
 - ใช้ /follow-tool-drizzle-kit ถ้าจำเป็น
 - ใช้ /follow-tool-data-validation ถ้าจำเป็น
-- ใช้ /check-migrations ถ้าจำเป็น
+- ใช้ /review-database ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 
 ## Expected Outcome

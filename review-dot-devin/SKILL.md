@@ -11,7 +11,7 @@ related:
   - update-dot-devin
   - review-devin-global-harness
   - review-workspace
-  - review-quality
+  - review-code-quality
   - report
   - suggest-next-action
   - run-review
@@ -144,7 +144,7 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 - [Sgconfig](references/sgconfig.md)
 - [Scoring](references/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
-- ใช้ `/review-quality` ถ้าจำเป็น
+- ใช้ `/review-code-quality` ถ้าจำเป็น
 
 ## Expected Outcome
 

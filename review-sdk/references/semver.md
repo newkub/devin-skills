@@ -37,7 +37,7 @@
 
 ## Detection
 
-- `/check-backward-compatibility` — API diff report
+- `/review-api` — API diff report
 - `api-extractor` / `api-documenter` — public API surface snapshot
 - git diff บน `dist/` types ระหว่าง tags
 

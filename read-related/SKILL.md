@@ -3,10 +3,11 @@ name: read-related
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
 argument-hint: "[skill-name]"
 related:
-  - check-skills-related
+  - idea-use-skills-relations
+  - review-devin-global-harness
   - report
   - suggest-next-action
-  - review-quality
+  - review-code-quality
 ---
 
 ## Goal
@@ -23,7 +24,7 @@ related:
 
 > Goal: อ่าน skills ที่เกี่ยวข้อง
 
-1. ทำ `/check-skills-related` เพื่อสร้าง dependency graph และสรุป skills
+1. ทำ `/review-devin-global-harness` เพื่อสร้าง dependency graph และสรุป skills
 
 ### 2. Synthesize And Report
 
@@ -38,9 +39,9 @@ related:
 
 ### 1. Orchestration Only
 
-- เป็น orchestrator เรียก `/check-skills-related` โดยตรง — ไม่ทำงานซ้ำ
-- ไม่ใช้ `/review-quality` เพราะจะซ้ำซ้อนกับการอ่าน related context
-- ไม่ duplicate เนื้อหาของ `/check-skills-related`
+- เป็น orchestrator เรียก `/review-devin-global-harness` โดยตรง — ไม่ทำงานซ้ำ
+- ไม่ใช้ `/review-code-quality` เพราะจะซ้ำซ้อนกับการอ่าน related context
+- ไม่ duplicate เนื้อหาของ `/review-devin-global-harness`
 
 ### 2. Output
 

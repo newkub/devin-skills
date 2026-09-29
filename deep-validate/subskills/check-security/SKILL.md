@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-security
   - check-secrets
-  - check-rate-limiting
+  - review-api
   - report
 ---
 
@@ -33,7 +33,7 @@ related:
 
 1. ตรวจสอบ authentication และ authorization patterns
 2. ตรวจสอบไม่มี hardcoded secrets หรือ API keys — ทำ `/check-secrets` ถ้าต้องการ deep pass
-3. ตรวจสอบ API security และ rate limiting — ทำ `/check-rate-limiting` กับ endpoints ที่เปิดใหม่
+3. ตรวจสอบ API security และ rate limiting — ทำ `/review-api` กับ endpoints ที่เปิดใหม่
 4. บันทึก findings พร้อม severity + evidence
 
 ### 3. Report

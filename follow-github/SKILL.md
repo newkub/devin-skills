@@ -9,6 +9,7 @@ related:
   - suggest-next-action
   - follow-git-flow
   - open
+
 ---
 
 ## Goal

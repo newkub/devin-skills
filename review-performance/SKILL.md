@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-frontend
   - follow-tool-lighthouse
-  - review-quality
+  - review-code-quality
   - run-profiler
   - run-bench
   - deep-analyze
@@ -16,6 +16,7 @@ related:
   - use-astgrep
   - review-dependencies
   - run-drizzle-studio
+
 ---
 
 ## Goal
@@ -156,7 +157,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 - ห้าม TODO, MOCK, placeholder
 
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /run-profiler ถ้าจำเป็น
 - ใช้ /run-bench ถ้าจำเป็น
 - ใช้ /deep-analyze ถ้าจำเป็น

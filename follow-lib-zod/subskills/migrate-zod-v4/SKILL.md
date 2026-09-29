@@ -7,7 +7,7 @@ related:
   - plan
   - scan-codebase
   - use-astgrep
-  - check-deprecated-apis
+  - review-code-quality
   - run-typecheck
 ---
 
@@ -57,7 +57,7 @@ migrate codebase จาก Zod v3 เป็น v4 อย่างปลอดภ
 
 1. รัน `bunx tsc --noEmit` (ทำ `/run-typecheck`) — type errors จะเปิดจุดที่พลาด
 2. รัน tests (ทำ `/run-test`) — โดยเฉพาะ schema validation tests และ error shape assertions
-3. ทำ `/check-deprecated-apis` — ไม่มี v3 API เหลือ
+3. ทำ `/review-code-quality` — ไม่มี v3 API เหลือ
 4. Runtime smoke: parse input จริงผ่าน schema ที่เปลี่ยน — เช็ค error output shape
 5. ถ้าค้าง → สร้าง TODO list; เสร็จ → `/report-before-after` แล้ว `/ship`
 

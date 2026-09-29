@@ -6,7 +6,7 @@ related:
   - rethink
   - resolve-cicd
   - deep-debug
-  - check-skills-related
+  - review-devin-global-harness
   - scan-codebase
   - refactor
   - use-scripts
@@ -54,7 +54,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: เตรียม context ก่อนเริ่มแก้ไข error
 
-1. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+1. ทำ `/review-devin-global-harness` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ทำ `/scan-codebase` เพื่อทำความเข้าใจ structure ของไฟล์ที่มี error
 3. ถ้าไฟล์ยาว >250 บรรทัด → อ่าน `/refactor` ก่อนแก้
 4. ถ้าเข้าถึง workspace ไม่ได้ → stop และ report โดยไม่แก้ไขไฟล์

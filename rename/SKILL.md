@@ -4,7 +4,7 @@ description: เปลี่ยนชื่อ identifier, file, หรือ sk
 argument-hint: "[old-name] [new-name]"
 related:
   - update-references
-  - check-broken-skills-references
+  - review-devin-global-harness
   - resolve-errors
   - report
   - use-astgrep
@@ -109,7 +109,7 @@ Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/di
 5. อัปเดท body ทั้งหมด: `/<old-name>` → `/<new-name>`, paths, และ markdown links
 6. อัปเดท `AGENTS.md` และ `global_rules.md` ถ้ามี slash references
 7. ทำ `/update-references` ทั่ว repo
-8. ทำ `/check-broken-skills-references` ยืนยันครบ
+8. ทำ `/review-devin-global-harness` ยืนยันครบ
 
 ## Rules
 

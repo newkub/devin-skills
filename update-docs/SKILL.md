@@ -6,8 +6,8 @@ related:
   - check-should-update
   - follow-single-of-source
   - check-monorepo
-  - check-content-outdate
-  - check-correctness
+  - review-docs
+  - check-content-correctness
   - think-reframe
   - review-writing
   - update-references
@@ -15,6 +15,7 @@ related:
   - create-report-in-dot-devin
   - watch-browser
   - watch-browser-and-improve-uxui
+
 ---
 
 ## Goal
@@ -27,7 +28,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - `docs/index.md` เป็น table of contents ลิงก์ไปทุกหมวด — ไม่มี nav/sidebar config
 - รองรับ `update-features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-improve-uxui` — เป็น input สำหรับอัปเดต docs
+- reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-improve-uxui` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -92,7 +93,7 @@ related:
 7. `development/setup.md`: ตั้งค่า dev environment
 8. `development/architecture.md`: ใช้ `templates/architecture.md` — สถาปัตยกรรม, conventions, boundaries
 9. `development/workflows.md`: ใช้ `templates/workflows.md` — slash commands, scripts, CI/CD
-10. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/reports/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
+10. `development/testing.md`: ใช้ `templates/testing.md` — วิธี run test, lint, typecheck + `## Latest Results` จาก runner artifacts จริงใน `.devin/temp/report/<workspace>/` (Vitest `vitest-*.json`/`unit-test-*.md`, Playwright `playwright-*.json`/`e2e-*.md`, `coverage-*`) — ห้ามใส่ exploratory results (`browser-test-*`, `e2e-exploratory-*`, `uxui-*`) ลง Latest Results; ถ้าไม่มี artifacts ให้เขียนเฉพาะส่วน commands/runners
 11. `development/deployment.md`: ใช้ `templates/deployment.md` — pipeline, secrets, rollback
 12. `development/troubleshooting.md`: ใช้ `templates/troubleshooting.md` — symptom → fix
 13. `references/`: สรุป references ด้วย templates เฉพาะ — `api.md`/`configuration.md`/`changelog.md`/`faq.md`/`glossary.md`/`security.md`/`performance.md`/`migration.md`/`comparison.md` ใช้ template ชื่อเดียวกัน; open-source type เพิ่ม `contributing.md` ด้วย `templates/contributing.md`; product type เพิ่ม `auth.md` ด้วย `templates/auth.md`; cli type เพิ่ม `commands/<name>.md` ด้วย `templates/commands.md`
@@ -198,8 +199,8 @@ related:
 - examples ต้องรันได้
 - ไม่ใช้ placeholder หรือ lorem ipsum
 - ใช้ /run-docs ถ้าจำเป็น
-- ใช้ /check-content-outdate ถ้าจำเป็น
-- ใช้ /check-correctness ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /check-content-correctness ถ้าจำเป็น
 - ใช้ /think-reframe ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 

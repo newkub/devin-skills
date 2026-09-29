@@ -39,7 +39,7 @@ related:
 
 | Argument | Subskill |
 |----------|----------|
-| `report`, `report-comparison` | `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/report/` |
+| `report`, `report-comparison` | `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
 
 1. ถ้า argument เป็น `report` → อ่าน `subskills/report-comparison/SKILL.md` แล้วทำตาม flow — ใช้ data ที่รวมไว้แล้ว ไม่ research ใหม่
 2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 7 อ่าน subskill `report-comparison` มา execute
@@ -107,7 +107,7 @@ related:
 
 > Goal: บันทึกผล benchmark และผลการ implement เป็น report ใน .devin
 
-1. ทำตาม `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/reports/<workspace>/`
+1. ทำตาม `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
 2. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
 3. รายงาน `REPORT_PATH` ให้ user
 
@@ -131,7 +131,7 @@ related:
 
 - ไฟล์หลัก `comparison.md` ใน `docs/project/`
 - อนุญาตไฟล์ย่อย `comparison-*.md` จาก sub-workflows เช่น `comparison-features.md`
-- ผล benchmark ต้องถูกบันทึกเป็น report ผ่าน `/create-report-in-dot-devin` ใน `.devin/reports/<workspace>/`
+- ผล benchmark ต้องถูกบันทึกเป็น report ผ่าน `/create-report-in-dot-devin` ใน `.devin/temp/report/<workspace>/`
 - 2-3 sections หลักพอ
 - ไม่ต้องมี timeline ละเอียด
 
@@ -171,7 +171,7 @@ related:
 - Feature comparison matrix เทียบ project กับคู่แข่ง 3-5 ราย พร้อม prioritized gap list (impact + effort) และ unique features ที่ต้องรักษา
 - Deep plan roadmap ครอบทุกมิติแสดงในแชทก่อน implement (chat-only — ไม่มี plan file)
 - ทุก gap ถูก `/implement-to-production` เป็น production code จริง ไม่เหลือ TODO/MOCK
-- ไฟล์ report ใน `.devin/reports/<workspace>/` จาก `/create-report-in-dot-devin`
+- ไฟล์ report ใน `.devin/temp/report/<workspace>/` จาก `/create-report-in-dot-devin`
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ — verified ด้วย re-benchmark
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark

@@ -3,8 +3,8 @@ name: review-security-check-headers
 description: Check security headers, CSP และ CORS — เทียบ config กับ deployed response จริง
 argument-hint: "[url-or-scope]"
 related:
-  - check-security-headers
-  - check-cors-policy
+  - review-security
+  - review-security
   - report
 ---
 
@@ -16,7 +16,7 @@ Run the headers/CSP/CORS dimension of `/review-security` แบบ focused — v
 
 - ใช้เมื่อ `/review-security` dispatch มาที่ `headers`/`csp`/`cors` หรือเรียก standalone บน URL/config
 - ครอบคลุม: CSP, HSTS, X-Frame-Options/frame-ancestors, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, CORS policy
-- Mechanical header scan → delegate ไป `/check-security-headers`; CORS deep check → `/check-cors-policy`
+- Mechanical header scan → delegate ไป `/review-security`; CORS deep check → `/review-security`
 
 ## Execute
 
@@ -31,8 +31,8 @@ Run the headers/CSP/CORS dimension of `/review-security` แบบ focused — v
 
 > Goal: response จริงตรงกับ config
 
-1. ทำ `/check-security-headers` บน deployed URL (curl `-I`) — config ≠ effective response ถ้ามี CDN/proxy
-2. ทำ `/check-cors-policy` เมื่อ API รับ cross-origin requests
+1. ทำ `/review-security` บน deployed URL (curl `-I`) — config ≠ effective response ถ้ามี CDN/proxy
+2. ทำ `/review-security` เมื่อ API รับ cross-origin requests
 3. flag drift: config มีแต่ response ไม่มี (proxy strip, layer ผิด)
 
 ### 3. Report

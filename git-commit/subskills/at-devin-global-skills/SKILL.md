@@ -13,7 +13,7 @@ related:
   - git-commit
   - review-devin-global-harness
   - deep-validate
-  - check-broken-skills-references
+  - review-devin-global-harness
   - update-references
   - check-repo-hygiene
   - run-check
@@ -24,7 +24,7 @@ related:
 
 ## Goal
 
-Commit ทุกไฟล์ที่เปลี่ยนแปลงใน devin global skills repo หลังจาก `review-devin-global-harness`, `deep-validate` และ `check-broken-skills-references` ผ่านเกณฑ์
+Commit ทุกไฟล์ที่เปลี่ยนแปลงใน devin global skills repo หลังจาก `review-devin-global-harness`, `deep-validate` และ `review-devin-global-harness` ผ่านเกณฑ์
 
 ## Scope
 
@@ -64,7 +64,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 
 > Goal: ตรวจหา broken references และ circular dependencies ระหว่าง skills
 
-1. ทำ `/check-broken-skills-references`
+1. ทำ `/review-devin-global-harness`
 2. ถ้าพบ broken references → stop, แนะนำ `/update-references` แล้วรอผู้ใช้แก้
 3. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการแก้ไข `related`
 4. ถ้าผ่าน → ดำเนินต่อ
@@ -104,7 +104,7 @@ Commit ทุกไฟล์ที่เปลี่ยนแปลงใน dev
 
 ### 2. Validation Gate
 
-- ต้องผ่าน `/review-devin-global-harness`, `/deep-validate` และ `/check-broken-skills-references` ก่อน commit
+- ต้องผ่าน `/review-devin-global-harness`, `/deep-validate` และ `/review-devin-global-harness` ก่อน commit
 - ถ้ามี Critical/High findings ให้ stop และส่งต่อ `/resolve-errors`
 - ไม่ใช้ `--no-verify` เพื่อ bypass validation
 

@@ -10,6 +10,7 @@ related:
   - report
   - suggest-next-action
   - run-review
+
 ---
 
 ## Goal
@@ -87,7 +88,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 - ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 

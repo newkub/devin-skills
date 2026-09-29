@@ -56,7 +56,7 @@ related:
 > Goal: ตรวจสอบ devtools ทำงานและไม่รั่วไป production
 
 1. รัน dev server — devtools panel ต้องเปิดได้และแสดง cache/route state
-2. รัน production build แล้วเช็ค bundle — devtools code ต้องไม่อยู่ใน output (ทำ `/check-size` ถ้าต้องยืนยัน)
+2. รัน production build แล้วเช็ค bundle — devtools code ต้องไม่อยู่ใน output (ทำ `/review-bundle` ถ้าต้องยืนยัน)
 3. ถ้าพัง → revert จุดที่เพิ่งแก้ แล้วทำ `/resolve-errors`
 
 ## Rules

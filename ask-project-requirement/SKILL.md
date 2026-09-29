@@ -9,6 +9,7 @@ related:
   - ship
   - plan
   - follow-goal
+
 ---
 
 ## Goal

@@ -15,7 +15,7 @@ triggers:
   - model
 related:
   - follow-create-bot
-  - implement-github-issue-by-me
+  - resolve-github-issue-by-me
   - create-plan-in-dot-devin
   - create-github
   - run-verify
@@ -25,6 +25,7 @@ related:
   - deploy-to-vercel
   - open
   - report-progress
+
 ---
 
 ![use-github-ship-bots logo](bot-logo.png)
@@ -57,9 +58,9 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 > Goal: อ่าน Plan
 1. รับ `<issue-or-plan>` จาก argument
    - issue: `/use-github-ship-bots 42`
-   - plan file: `/use-github-ship-bots .devin/plan/<workspace>/feed-bot.md`
-2. ถ้าเป็น issue → ใช้ `/implement-github-issue-by-me` หรือ `gh issue view <number>` (gh CLI `2.101.0 (verified 2026-09-26)`)
-3. ถ้าเป็น file → อ่าน `.devin/plan/<workspace>/<file>.md`
+   - plan file: `/use-github-ship-bots .devin/temp/plan/<workspace>/feed-bot.md`
+2. ถ้าเป็น issue → ใช้ `/resolve-github-issue-by-me` หรือ `gh issue view <number>` (gh CLI `2.101.0 (verified 2026-09-26)`)
+3. ถ้าเป็น file → อ่าน `.devin/temp/plan/<workspace>/<file>.md`
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ถ้าไม่ชัด → ทำ `/ask-me`
 
@@ -136,7 +137,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 - ไม่เริ่ม implement ถ้า plan ไม่ชัด
 - ใช้ `/create-plan-in-dot-devin` ถ้าต้องการ plan ใหม่
-- ใช้ `/implement-github-issue-by-me` ถ้าเริ่ม implement จาก issue
+- ใช้ `/resolve-github-issue-by-me` ถ้าเริ่ม implement จาก issue
 - แยก webhook wiring ออกจาก business logic
 - ใช้ `try/catch` รอบทุก handler
 - ไม่ hardcode secrets

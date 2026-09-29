@@ -1,6 +1,6 @@
 ---
 name: report-review
-description: alias → /deep-review (รัน review-* ทุก domain แล้วรายงานใน .devin/reports)
+description: alias → /deep-review (รัน review-* ทุก domain แล้วรายงานใน .devin/temp/report)
 argument-hint: "[path-or-target] [--diff] [--deep]"
 related:
   - deep-review
@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-Alias ของ `/deep-review` — รัน `review-*` ทุก domain พร้อมรายงานรวมใน `.devin/reports/<workspace>/` (report only)
+Alias ของ `/deep-review` — รัน `review-*` ทุก domain พร้อมรายงานรวมใน `.devin/temp/report/<workspace>/` (report only)
 
 ## Scope
 

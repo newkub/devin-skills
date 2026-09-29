@@ -10,9 +10,11 @@ related:
   - follow-tool-moonrepo
   - update-project
   - update-dot-devin
+  - refactor-to-packages-shared
   - update-gitignore
   - deep-validate
   - report-idea-cleanup-files-in-computer
+
 ---
 
 ## Goal
@@ -173,6 +175,7 @@ related:
 | Topic | Subskill |
 |-------|----------|
 | อัปเดต env config — diff current vs needed, apply, verify | `subskills/config-env/SKILL.md` |
+| รวม duplicate config/dependencies ไป shared config หรือ catalog | `subskills/update-shared-config/SKILL.md` |
 
 ## Rules
 

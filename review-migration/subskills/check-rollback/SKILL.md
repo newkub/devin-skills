@@ -4,7 +4,7 @@ description: Check rollback/cutover — down migrations, cutover plan, kill swit
 argument-hint: "[migration-or-scope]"
 related:
   - review-migration
-  - check-migrations
+  - review-database
   - report
 ---
 

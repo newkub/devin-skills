@@ -9,6 +9,7 @@ related:
   - update-docs
   - check-secrets
   - report
+
 ---
 
 ## Goal
@@ -30,6 +31,8 @@ Audit repository hygiene: ตรวจว่า repo มีไฟล์และ
 | `unused` | `subskills/unused/SKILL.md` — dead code, unused files, unused dependencies |
 | `dead-link` | `subskills/dead-link/SKILL.md` — ตรวจ markdown links ใน docs/skills/project |
 | `circular`, `circular-dependencies` | `subskills/circular-dependencies/SKILL.md` — ตรวจ circular dependencies ใน codebase |
+| `broken-symlinks`, `symlinks` | `subskills/broken-symlinks/SKILL.md` — หา symlinks/junctions ที่ target ตาย |
+| `console-logs` | `subskills/console-logs/SKILL.md` — หา console.log, debugger และ debug statements ที่ค้าง |
 
 1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
 2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ

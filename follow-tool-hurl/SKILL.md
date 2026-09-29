@@ -9,6 +9,7 @@ related:
   - follow-tool-bruno
   - gen-openapi
   - follow-tool-github-actions
+
 ---
 
 ## Goal

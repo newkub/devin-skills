@@ -58,7 +58,7 @@ Runner ของ visual domain เท่านั้น — visual coverage anal
 > Goal: รายงาน audit ได้
 
 1. สรุป snapshots compared, pass/fail, diffs พร้อม image paths, classification ต่อ failure
-2. persist → `.devin/reports/<workspace>/visual-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/visual-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

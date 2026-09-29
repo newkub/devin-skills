@@ -43,6 +43,6 @@
 
 - grep webhook sender code — signature, retry, timeout config
 - grep `ws`, `socket.io`, `EventSource`, `sendBeacon` server-side handlers
-- ทำ `/check-webhook` ถ้ามี
+- ทำ `/review-api` ถ้ามี
 
 Severity: unsigned webhooks = Critical, SSRF-able target URLs = Critical, no auth on channels = High, no dedup guidance = Medium

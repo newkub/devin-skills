@@ -5,8 +5,9 @@ argument-hint: "[scope]"
 related:
   - follow-math-concepts
   - review-algorithm
-  - review-quality
+  - review-code-quality
   - ask-me
+
 ---
 
 ## Goal
@@ -44,7 +45,7 @@ related:
 1. คำนวณ best/average/worst time complexity
 2. คำนวณ space complexity
 3. ระบุ bottlenecks
-4. ทำ `/review-quality` อ้างอิง [references/time-complexity.md](references/time-complexity.md) ถ้าต้องการตรวจสอบละเอียด
+4. ทำ `/review-code-quality` อ้างอิง [references/time-complexity.md](references/time-complexity.md) ถ้าต้องการตรวจสอบละเอียด
 
 ### 4. Implement
 

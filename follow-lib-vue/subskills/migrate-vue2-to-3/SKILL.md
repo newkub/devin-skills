@@ -8,7 +8,7 @@ related:
   - follow-lib-vueuse
   - deep-impact
   - use-astgrep
-  - check-deprecated-apis
+  - review-code-quality
   - report-before-after
 ---
 
@@ -60,7 +60,7 @@ Migrate Vue 2 application ไป Vue 3 อย่างปลอดภัย — 
 
 1. แก้ compat warnings ทั้งหมดก่อน — ค่อยๆ flip feature flags เป็น 3
 2. ลบ `@vue/compat` เมื่อไม่มี warnings เหลือ
-3. ทำ `/check-deprecated-apis` เพื่อเช็ค Vue 2 APIs ค้าง
+3. ทำ `/review-code-quality` เพื่อเช็ค Vue 2 APIs ค้าง
 
 ### 5. Verify
 

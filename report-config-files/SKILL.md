@@ -7,6 +7,7 @@ related:
   - report-file-structure
   - check-secrets
   - open-web-for-config-secret
+
 ---
 
 ## Goal

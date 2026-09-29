@@ -4,10 +4,11 @@ description: สร้าง Postman/Bruno collection จาก API routes ห�
 argument-hint: "[spec-or-framework]"
 related:
   - gen-openapi
-  - check-api-contract
+  - review-api
   - scan-codebase
   - report
   - run-test
+
 ---
 
 ## Goal
@@ -70,7 +71,7 @@ Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec ห�
 ### 1. From Spec Or Real Code
 
 - Generate จาก spec/code จริงเท่านั้น — ห้ามเดา endpoints
-- ถ้า spec กับ code drift → ทำ `/check-api-contract` ก่อน แล้ว generate จาก source of truth
+- ถ้า spec กับ code drift → ทำ `/review-api` ก่อน แล้ว generate จาก source of truth
 
 ### 2. No Secrets
 

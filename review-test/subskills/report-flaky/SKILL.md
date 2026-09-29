@@ -4,14 +4,14 @@ description: สร้าง flaky test report — inventory, quarantine candida
 argument-hint: "[scope]"
 related:
   - review-test
-  - check-flaky-tests
+  - review-test
   - report
   - create-report-in-dot-devin
 ---
 
 ## Goal
 
-แปลง flaky findings ของ `/review-test`/`/check-flaky-tests` เป็น report — flaky inventory + quarantine recommendations + root-cause patterns
+แปลง flaky findings ของ `/review-test`/`/review-test` เป็น report — flaky inventory + quarantine recommendations + root-cause patterns
 
 ## Scope
 

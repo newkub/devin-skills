@@ -5,6 +5,7 @@ argument-hint: "[path]"
 related:
   - search
   - report
+
 ---
 
 ## Goal

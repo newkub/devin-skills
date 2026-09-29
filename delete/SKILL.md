@@ -15,6 +15,8 @@ related:
   - delete-git-submodules
   - delete-git-worktree
   - delete-projects
+  - delete-project-temp
+
 ---
 
 ## Goal
@@ -25,7 +27,7 @@ related:
 
 ใช้สำหรับลบไฟล์/โฟลเดอร์ใน project ทีมี references หรือต้อง sync หลังลบ ไม่ใช้สำหรับลบ mass หรือ files นอก scope โดยไม่ถาม
 
-สำหรับ domain-specific deletes เรียก skill ตรง: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects` — แต่ละ skill มี dry-run + confirm gate ของตัวเอง
+สำหรับ domain-specific deletes เรียก skill ตรง: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects`, `/delete-project-temp` — แต่ละ skill มี dry-run + confirm gate ของตัวเอง
 
 ## Execute
 
@@ -79,7 +81,7 @@ related:
 > Goal: แก้ไข references หลังลบ
 
 1. ทำ `/update-references` เพื่ออัปเดตหรือลบ references ทีชี้มา targets
-2. ทำ `/check-skills-related` เพื่อตรวจว่าไม่มี broken refs เหลือ
+2. ทำ `/review-devin-global-harness` เพื่อตรวจว่าไม่มี broken refs เหลือ
 3. ถ้ามี broken refs → แก้ไขหรือลบ (max 3 รอบ)
 
 ### 7. Validate
@@ -88,7 +90,7 @@ related:
 
 1. ตรวจสอบว่า targets ถูกลบจริง
 2. ทำ `/run-check` เพื่อ lint, typecheck
-3. ทำ `/check-skills-related` อีกครั้ง
+3. ทำ `/review-devin-global-harness` อีกครั้ง
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
 
 ### 8. Report
@@ -128,6 +130,6 @@ related:
 
 - Targets ถูกลบตามทีระบุ
 - ไม่มี broken refs ค้าง
-- ผ่าน `/run-check` และ `/check-skills-related`
+- ผ่าน `/run-check` และ `/review-devin-global-harness`
 - มีรายงานการลบและ references ทีอัปเดต
 - สามารถ rollback ได้ถ้ามี backup

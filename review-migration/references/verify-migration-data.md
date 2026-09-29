@@ -24,7 +24,7 @@
 
 > Goal: ให้ migration applied บน target ที่ตรวจ
 
-1. ยืนยัน migration ที่ตรวจคือ version ล่าสุด — `/check-migrations`
+1. ยืนยัน migration ที่ตรวจคือ version ล่าสุด — `/review-database`
 2. ถ้าเป็น dry-run verification → ทำบน staging/backup copy เสมอ ไม่ใช่ production โดยตรง
 
 ### 3. Compare Post-Migration

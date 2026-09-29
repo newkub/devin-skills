@@ -10,6 +10,7 @@ related:
   - resolve-errors
   - run-dev
   - run-program
+
 ---
 
 ## Goal
@@ -89,7 +90,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-24)
 > Goal: สรุปผล
 
 1. ทำตาม `subskills/report-status/SKILL.md` — issues found vs fixed, before/after evidence
-2. persist raw results → `.devin/reports/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
+2. persist raw results → `.devin/temp/report/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 3. ปิด browser ด้วย `agent-browser close`
 
 ### Subskills

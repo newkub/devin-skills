@@ -6,7 +6,7 @@ related:
   - review-bundle
   - run-build
   - report-bundle
-  - check-bundle-regression
+  - review-bundle
   - report-before-after
 ---
 
@@ -52,7 +52,7 @@ related:
 
 1. `/run-build` ซ้ำ compare กับ baseline — total, per-chunk, gzip/brotli
 2. smoke test lazy chunks โหลดได้จริงผ่าน preview/dev server
-3. ทำ `/check-bundle-regression` ถ้ามี budget
+3. ทำ `/review-bundle` ถ้ามี budget
 4. ทำ `/report-before-after`; ถ้า regression → revert จุดนั้น
 
 ## Rules

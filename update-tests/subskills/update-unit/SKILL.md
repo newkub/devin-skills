@@ -6,7 +6,7 @@ related:
   - update-tests
   - run-test
   - follow-tool-vitest
-  - check-test-isolation
+  - review-test
   - resolve-errors
   - report-before-after
 ---
@@ -46,7 +46,7 @@ related:
 
 1. refactor ที่เพิ่ม branches/functions ใหม่ → เพิ่ม test cases ตาม code-path map ของ `/update-tests`
 2. รักษา AAA pattern และ test names `should [expected] when [condition]` ตาม project
-3. ทำ `/check-test-isolation` — ไม่มี shared state, cleanup ครบ
+3. ทำ `/review-test` — ไม่มี shared state, cleanup ครบ
 
 ### 4. Run And Verify
 

@@ -126,13 +126,13 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 2 | `deep-review` | `deep-review/subagents/domain-reviewer.md` | run review-* domain เดียว |
 | 3 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
 | 4 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
-| 5 | `check-all-routes` | `check-all-routes/subagents/route-checker.md` | verify docs routes ต่อ site section |
+| 5 | `review-delivery` | `review-delivery/subagents/route-checker.md` | verify docs routes ต่อ site section |
 | 6 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
 | 7 | `morning-briefing` | `morning-briefing/subagents/signal-collector.md` | collect signal type เดียว |
 | 8 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
 | 9 | `update-all-program-in-computer` | `update-all-program-in-computer/subagents/program-updater.md` | update program เดียวผ่าน package manager |
 | 10 | `implement-features-to-mvp` | `implement-features-to-mvp/subagents/feature-implementer.md` | implement feature เดียว end-to-end |
-| 11 | `implement-github-issue-by-me` | `implement-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
+| 11 | `resolve-github-issue-by-me` | `resolve-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
 | 12 | `deep-research` | `deep-research/subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
 | 13 | `deep-validate` | `deep-validate/subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
 | 14 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |

@@ -28,7 +28,7 @@ related:
 - Report only — ไม่แก้ไขอะไร
 - ทุก finding มี evidence — file path, line, route, หรือ config
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-- ถ้ามี domain review skill ที่ตรง (เช่น `/review-techstack`, `/check-deprecated-apis`, `/check-supply-chain`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/review-techstack`, `/review-code-quality`, `/review-security`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 ## Expected Outcome
 

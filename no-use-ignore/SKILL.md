@@ -5,8 +5,8 @@ argument-hint: "[@files... | scope]"
 related:
   - refactor
   - no-hard-code
-  - check-types-coverage
-  - review-quality
+  - review-test
+  - review-code-quality
   - run-lint
   - run-typecheck
   - run-verify
@@ -122,8 +122,8 @@ related:
 - suppression ที่ justified ดีอยู่แล้ว (named rule + reason + scope แคบ) → เก็บไว้ ไม่ต้อง "fix" (`/dont-over-engineer`)
 - test files มี leniency มากกว่า — `@ts-expect-error` ใน negative tests คือ feature ไม่ใช่ suppression
 
-- ใช้ /check-types-coverage ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-typecheck ถ้าจำเป็น
 

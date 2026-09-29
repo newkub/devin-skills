@@ -17,7 +17,7 @@ related:
   - follow-tool-semantic-release
   - follow-tool-changelogen
   - follow-tool-changesets
-  - check-backward-compatibility
+  - review-api
 ---
 
 ## Goal
@@ -139,7 +139,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น (package to registry)
 - ใช้ /follow-tool-changelogen ถ้าจำเป็น
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /review-api ถ้าจำเป็น
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 

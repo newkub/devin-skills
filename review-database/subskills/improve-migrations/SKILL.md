@@ -4,7 +4,7 @@ description: Apply migration findings — expand-contract, backfill, rollback, o
 argument-hint: "[migrations-or-scope]"
 related:
   - review-database
-  - check-migrations
+  - review-database
   - run-test
   - report-before-after
   - ask-me
@@ -26,7 +26,7 @@ related:
 
 > Goal: รู้ migration state จริง
 
-1. ทำ `/check-migrations` — pending/applied/failed states
+1. ทำ `/review-database` — pending/applied/failed states
 2. list findings: unsafe ops, missing down, ordering issues
 3. เตรียม existing-data copy สำหรับ test (dev/staging เท่านั้น)
 

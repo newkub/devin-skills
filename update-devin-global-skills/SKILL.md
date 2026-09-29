@@ -3,16 +3,18 @@ name: update-devin-global-skills
 description: "จัดการ global Devin skills: สร้าง อัปเดต refactor และตรวจสอบมาตรฐาน"
 argument-hint: "[@files-or-topic...]"
 related:
+  - idea-use-skills-relations
   - new-skills
   - follow-single-of-source
-  - check-all-routes
-  - check-release-notes
-  - check-content-outdate
-  - check-correctness
+  - review-delivery
+  - review-release
+  - review-docs
+  - check-content-correctness
   - deep-research
   - deep-validate
   - report
   - ship
+
 ---
 
 ## Goal
@@ -31,6 +33,12 @@ related:
 ถ้าต้องสร้าง skill เดียวแบบ focused ให้ใช้ `/new-skills` แทน
 
 ## Execute
+
+### Subskills
+
+| Domain | Subskill |
+|--------|----------|
+| `skill-usage`, `usage` — audit skill usage/invocation coverage | `subskills/skill-usage/SKILL.md` |
 
 ### 1. Prepare Context
 
@@ -61,9 +69,9 @@ related:
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
 1. ทำ `/deep-research` โดยระบุ topic หรือ skill ที่จะอัปเดต — ข้ามถ้า topic ไม่ต้อง research
-2. ทำ `/check-content-outdate` กับ skill ที่จะแก้ เพื่อหา stale versions/commands/links ก่อนอัปเดต
-3. ทำ `/check-release-notes` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
-4. ทำ `/check-all-routes` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
+2. ทำ `/review-docs` กับ skill ที่จะแก้ เพื่อหา stale versions/commands/links ก่อนอัปเดต
+3. ทำ `/review-release` เพื่อ verify latest version + breaking changes จาก GitHub Releases หรือ official changelog/blog
+4. ทำ `/review-delivery` เพื่อ verify `references/routes.md` ครอบคลุม routes จริงของ official docs site
 5. ทำตาม [references/deep-research.md](references/deep-research.md)
 
 ### 5b. Prefer Existing CLI Tools Over Custom How-To
@@ -144,7 +152,7 @@ related:
 - ไม่มี TODO/MOCK/placeholder — ถ้าข้อมูลไม่ชัดให้ระบุความไม่แน่นอน
 - global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ
 - install commands ตาม ecosystem: `bun add`/`bun install` (Bun/Node), `cargo add` (Rust), `go get` (Go), `pip install` (Python), `mise use -g npm:<package>` สำหรับ global npm CLI
-- ใช้ /check-correctness ถ้าจำเป็น
+- ใช้ /check-content-correctness ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 

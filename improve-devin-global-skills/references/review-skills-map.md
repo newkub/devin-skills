@@ -22,7 +22,7 @@ Catalog ครบทุก `review-*` skill (58 ตัว) สำหรับ di
 
 | No. | Skill | ตรวจอะไร | Dispatch Condition |
 |-----|-------|----------|-------------------|
-| 1 | `/review-quality` | quality, naming, consistency, bug-prone patterns ของ SKILL.md/references/scripts | default |
+| 1 | `/review-code-quality` | quality, naming, consistency, bug-prone patterns ของ SKILL.md/references/scripts | default |
 | 2 | `/review-writing` | writing quality, naming conventions, discoverability | default |
 | 3 | `/review-docs` | docs structure, README/AGENTS ก่อน update | default |
 | 4 | `/review-coverage` | declared surface เทียบของจริง — skills ที่อ้างใน rules/AGENTS มีจริง | default |
@@ -86,11 +86,9 @@ dispatch เมื่อ target ของ improve เป็น artifact เห�
 | 3 | `/review-issue` | issue | target คือ issue/plan item |
 | 4 | `/review-plan` | plan document | มี plan ก่อน execute |
 | 5 | `/review-idea` | idea | มี idea ที่ต้องประเมินก่อน implement |
-| 6 | `/review-implement-to-production` | implementation readiness | ก่อน execute implement-* |
-| 7 | `/review-update` | drift current vs target | ก่อน update เพื่อจัดลำดับ |
-| 8 | `/review-refactor` | pre-refactor baseline | ก่อน refactor skill ใดๆ |
-| 9 | `/review-risk` | risk assessment | change เสี่ยงสูง, breaking |
-| 10 | `/review-by-stakeholder` | persona lens | ต้องการ multi-perspective review |
+| 6 | `/review-code-quality` | pre-refactor baseline | ก่อน refactor skill ใดๆ |
+| 7 | `/review-risk` | risk assessment | change เสี่ยงสูง, breaking |
+| 8 | `/review-by-stakeholder` | persona lens | ต้องการ multi-perspective review |
 
 ## Meta
 

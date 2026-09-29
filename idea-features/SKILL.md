@@ -75,7 +75,7 @@ related:
 ### 1. Chat Only
 
 - ตอบกลับในแชทเท่านั้น
-- ไม่สร้างไฟล์ใน `.devin/reports/<workspace>/` หรือ `.devin/plan/<workspace>/`
+- ไม่สร้างไฟล์ใน `.devin/temp/report/<workspace>/` หรือ `.devin/temp/plan/<workspace>/`
 - ไม่สร้าง web app ถาวร
 - ไม่เรียก `/implement-to-production` หรือ `/ship`
 

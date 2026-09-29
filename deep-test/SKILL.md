@@ -18,6 +18,7 @@ related:
   - gen-openapi
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -33,7 +34,7 @@ related:
 - `/deep-test <domain>` = analysis/workflow ลึกของ domain — เลือก domain workflow จากตารางแล้วทำตาม reference นั้น
 - `/run-test-all` = รันทุก suite รวมกัน (orchestrator)
 - แก้ไข/อัปเดต test specs → `/update-tests` (skill นี้ run-only ไม่เขียน tests)
-- Out-of-scope pointers: load/perf → `/run-load-test`, interactive browser watch + roleplay → `/watch-browser-test`, test isolation/flaky audit → `/check-test-isolation`
+- Out-of-scope pointers: load/perf → `/run-load-test`, interactive browser watch + roleplay → `/watch-browser-test`, test isolation/flaky audit → `/review-test`
 
 ## Execute
 

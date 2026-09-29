@@ -10,6 +10,7 @@ related:
   - test-usage
   - resolve-errors
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -20,7 +21,7 @@ related:
 
 ใช้สำหรับ execute plan ที่มีรายการ workflows, skills, หรือ tasks เช่นจาก `plan` หรือ `follow-agents-md`
 
-Boundary: ถ้าเป็นไฟล์แผนใน `.devin/plan/<workspace>/` ที่ต้อง track status และลบหลังเสร็จ → ใช้ `/implement-to-production` แทน
+Boundary: ถ้าเป็นไฟล์แผนใน `.devin/temp/plan/<workspace>/` ที่ต้อง track status และลบหลังเสร็จ → ใช้ `/implement-to-production` แทน
 
 ## Execute
 

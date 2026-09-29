@@ -1,6 +1,6 @@
 ---
 name: roleplay-technical-refactoring-specialist
-description: Roleplay refactoring-specialist — duplication, dead code, coupling → /review-refactor
+description: Roleplay refactoring-specialist — duplication, dead code, coupling → /review-code-quality
 argument-hint: "[scope]"
 related:
   - roleplay-technical
@@ -22,7 +22,7 @@ related:
 - ตรวจ abstraction quality — leaky abstractions, premature abstraction, missing abstraction ที่ทำให้ code ซ้ำ
 - ตรวจ naming/structure drift — misleading names, files ใน folder ผิด, inconsistent module boundaries
 - ตรวจ safe-refactor readiness — test coverage เพียงพอสำหรับ refactor แต่ละจุดหรือไม่
-- Deep pass → `/review-refactor` และ `/review-quality` สำหรับ refactor analysis เชิงลึก
+- Deep pass → `/review-code-quality` และ `/review-code-quality` สำหรับ refactor analysis เชิงลึก
 
 ## Rules
 

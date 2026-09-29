@@ -115,8 +115,8 @@ related:
 - monorepo มี `docs/` เดียวที่ root เป็น workspace — ห้ามสร้าง `docs/` ในแต่ละ workspace
 - workspace pages อยู่ `docs/workspaces/<name>.md` และลิงก์ผ่าน dropdown nav
 
-- ใช้ /check-content-outdate ถ้าจำเป็น
-- ใช้ /check-correctness ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /check-content-correctness ถ้าจำเป็น
 
 ## Expected Outcome
 

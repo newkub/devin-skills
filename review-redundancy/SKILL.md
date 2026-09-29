@@ -38,7 +38,7 @@ related:
 1. `Duplicate purpose`: items ที่ description/goal เหมือนกัน >80% — เทียบ purpose statements
 2. `Overlapping scope`: items ที่ scope ครอบกัน — ระบุว่า subset หรือ partial
 3. `Redundant content`: เนื้อหาซ้ำ — code clones (`/check-repo-hygiene`), doc sections ซ้ำ, config keys ซ้ำ
-4. `Unused`: ไม่มี incoming references/consumers — static ref scan หรือ `/check-skill-usage` (skills), import graph (code)
+4. `Unused`: ไม่มี incoming references/consumers — static ref scan หรือ `/update-devin-global-skills` (skills), import graph (code)
 5. ทุก finding ระบุ: pair/group, dimension, evidence (paths+lines), overlap %
 
 ### 3. Score And Recommend

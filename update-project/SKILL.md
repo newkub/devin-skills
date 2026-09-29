@@ -12,7 +12,9 @@ related:
   - update-project-skills
   - update-github-metadata
   - update-version-to-latest
+  - keepup-source-code
   - deep-review
+
 ---
 
 ## Goal
@@ -105,10 +107,24 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 
 ### Subagents
 
-> Goal: parallelize updates เมื่อมีหลาย sub-projects ที่ independent กัน
+> Goal: แยกแต่ละ Execute step ที่ independent ให้ subagent รับผิดชอบ — parent เหลือแค่ orchestration, aggregate และ validate
 
-- ใช้ `subagents/project-updater.md` เมื่อต้องอัปเดตหลาย sub-projects/workspaces ที่ไม่พึ่งกัน — spawn ทีละ `project-path` ผ่าน `/use-subagents` โดยส่ง `update-scope` แล้วรวม update reports ก่อน validate/report
-- ถ้า sub-projects แชร์ config/deps กัน → ทำ sequential ไม่ spawn parallel
+แต่ละ step ที่ทำขนานได้ delegate ไปที่ subagent ใต้ `subagents/` — spawn ผ่าน `/use-subagents` แล้วรวม structured reports ทั้งหมดก่อน Step 6 — parent เก็บ Step 2 (restore changed info ต้องเห็น context รวม) และ Step 6 (validate/report) ไว้เอง
+
+| Step | Subagent | Parallelism | Input |
+|------|----------|-------------|-------|
+| 1. Git log | `git-log-collector.md` | 1 agent ต่อ workspace | `project-path`, `log-count` |
+| 3. Project files | `project-files-updater.md` | 1 agent ต่อ `domain` | `domain`, `changed-info` |
+| 3. Per-workspace | `project-updater.md` | 1 agent ต่อ `project-path` | `project-path`, `update-scope`, `shared-rules` |
+| 4. Project skills | `project-skills-updater.md` | ขนานกับ Step 3 domains | `project-path`, `changed-info` |
+| 5. GitHub metadata | `github-metadata-updater.md` | remote-only ไม่ชน local files | `repo`, `check-protection` |
+
+Dispatch rules:
+
+- Spawn subagents ที่ไม่ overlap กันแบบ concurrent — รอ structured reports ครบทุกตัวก่อนเข้า Step 6
+- ถ้า workspaces/domains แชร์ config/deps กัน → ทำ sequential ไม่ spawn parallel และส่ง `shared-rules` ให้ทุก `project-updater` agent
+- subagents ห้าม commit — parent เป็นเจ้าของ Working rules และ final report
+- ถ้า subagent report `skipped` / `no-changes` / `blocked` → นำไปแสดงใน report แทนที่จะ retry
 
 ### 6. Validate And Report
 

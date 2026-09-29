@@ -6,7 +6,7 @@ related:
   - update-version-to-latest
   - use-astgrep
   - migration-by-astgrep
-  - check-deprecated-apis
+  - review-code-quality
   - run-verify
   - test-usage
   - ask-me
@@ -57,7 +57,7 @@ related:
 
 1. ต่อ package/batch: typecheck → lint → unit tests → `/run-verify` → `/test-usage`
 2. monorepo → verify ทีละ workspace ที่ depend, leaf packages ก่อน consumers
-3. ทำ `/check-deprecated-apis` เพื่อหา deprecated usage ที่เหลือ
+3. ทำ `/review-code-quality` เพื่อหา deprecated usage ที่เหลือ
 4. runtime smoke test บน critical paths ที่ใช้ package นั้น
 
 ### 5. Report

@@ -37,7 +37,7 @@ Catalog `review-*` ทั้งหมด (61 ตัว) สำหรับ `deep
 
 | No. | Skill | ตรวจอะไร | Condition |
 |-----|-------|----------|-----------|
-| 1 | `/review-quality` | code quality, naming, bug-prone patterns, correctness | ทุก workspace ที่มี source |
+| 1 | `/review-code-quality` | code quality, naming, bug-prone patterns, correctness | ทุก workspace ที่มี source |
 | 2 | `/review-writing` | writing quality, discoverability | ทุก workspace |
 | 3 | `/review-algorithm` | time/space complexity, hot paths | workspace ที่มี logic |
 | 4 | `/review-data-validation` | validation coverage, type-safety | workspace ที่รับ input |
@@ -91,15 +91,13 @@ Catalog `review-*` ทั้งหมด (61 ตัว) สำหรับ `deep
 | 2 | `/review-by-stakeholder` | persona lens (staff-engineer, qa, pm, user) | เมื่อต้องการ prioritization หลายมุม |
 | 3 | `/review-risk` | probability, impact, mitigation | เมื่อ findings เสี่ยงสูง |
 | 4 | `/review-diff` | git diff keep/revert | เมื่อ scope มี diff |
-| 5 | `/review-update` | drift current vs target | เมื่อมี target state ให้อัปเดต |
-| 6 | `/review-refactor` | pre-refactor baseline | เมื่อ findings ชี้ refactor |
-| 7 | `/review-migration` | migration plan + checklist | เมื่อมี migration |
-| 8 | `/review-plan` | plan quality | เมื่อ scope คือ plan |
-| 9 | `/review-idea` | idea assessment | เมื่อ scope คือ idea |
-| 10 | `/review-implement-to-production` | implementation readiness/completeness | เมื่อ scope คือ implement |
-| 11 | `/review-issue` | issue clarity, scope, acceptance criteria | เมื่อ scope คือ issue |
-| 12 | `/review-devin-global-harness` | devin harness layers | เฉพาะเมื่อ target คือ devin skills/agents repo |
-| 13 | `/review-then-fix` | alias → `/deep-review-then-fix` | เมื่อ user confirm แก้ findings |
+| 5 | `/review-code-quality` | pre-refactor baseline | เมื่อ findings ชี้ refactor |
+| 6 | `/review-migration` | migration plan + checklist | เมื่อมี migration |
+| 7 | `/review-plan` | plan quality | เมื่อ scope คือ plan |
+| 8 | `/review-idea` | idea assessment | เมื่อ scope คือ idea |
+| 9 | `/review-issue` | issue clarity, scope, acceptance criteria | เมื่อ scope คือ issue |
+| 10 | `/review-devin-global-harness` | devin harness layers | เฉพาะเมื่อ target คือ devin skills/agents repo |
+| 11 | `/review-then-fix` | alias → `/deep-review-then-fix` | เมื่อ user confirm แก้ findings |
 
 ### Phase 5 — Deep (via `/follow-deep`)
 

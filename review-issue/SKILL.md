@@ -8,6 +8,7 @@ related:
   - deep-review
   - resolve-errors
   - run-review
+
 ---
 
 ## Goal
@@ -88,7 +89,7 @@ related:
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ issue ให้ชัด: title, scope, acceptance criteria, blockers — GitHub issue → `/update-github-issue`, local issue → แก้ไฟล์ต้นทาง
-2. ถ้า issue พร้อมแล้ว → ส่งต่อ `/review-implement-to-production` หรือ `/implement-to-production`
+2. ถ้า issue พร้อมแล้ว → ส่งต่อ `/implement-to-production`
 3. ถ้าไม่พร้อม → ระบุ missing info ที่ต้องถาม
 
 ## Expected Outcome

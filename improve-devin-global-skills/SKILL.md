@@ -9,7 +9,6 @@ related:
   - deep-review
   - update-devin-global-skills
   - improve
-  - check-broken-skills-references
   - follow-parallel
   - use-subagents
   - update-references
@@ -17,6 +16,7 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -34,7 +34,7 @@ related:
 > Goal: รู้ว่าต้องปรับปรุงอะไร — ครอบคลุมทุก review dimension ที่เกี่ยวข้อง
 
 1. ทำ `/review-devin-global-harness` เพื่อหา findings (tier `core` — ทำเสมอ)
-2. ทำ `/check-broken-skills-references` เพื่อหา broken references
+2. ทำ `/review-devin-global-harness` เพื่อหา broken references
 3. Dispatch `review-*` ตาม [references/review-skills-map.md](references/review-skills-map.md):
    - เลือก tier `skills-repo` ที่ condition ตรง (default สำหรับ global skills repo)
    - เลือก tier `domain` เฉพาะที่ตรงกับ skill ใน scope
@@ -64,7 +64,7 @@ related:
 > Goal: ยืนยันว่าผ่านเกณฑ์
 
 1. ทำ `/review-devin-global-harness` อีกครั้ง
-2. ทำ `/check-broken-skills-references` อีกครั้ง
+2. ทำ `/review-devin-global-harness` อีกครั้ง
 3. Re-dispatch `review-*` ที่เคยมี findings เพื่อยืนยันว่าหมดแล้ว
 4. ถ้าผ่าน → ทำ `/deep-validate`
 5. ถ้าไม่ผ่าน → กลับไป step 2

@@ -4,6 +4,7 @@ description: หาไฟล์ที่ถูก lock โดย process — ส
 argument-hint: "[path-or-file]"
 related:
   - report
+
 ---
 
 ## Goal

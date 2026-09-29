@@ -8,6 +8,7 @@ related:
   - follow-create-bun-cli
   - follow-best-practice
   - use-scripts
+
 ---
 
 ## Goal

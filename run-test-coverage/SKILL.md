@@ -3,13 +3,12 @@ name: run-test-coverage
 description: รัน test coverage แล้วเพิ่ม tests จน coverage ถึง 100% ทุก category — ไม่ลด target ไม่ยอมต่ำกว่าเป้า
 argument-hint: "[scope] [target%]"
 related:
-  - check-test-quality
-  - check-coverage-config
   - review-test
   - update-tests
   - resolve-errors
   - report
   - create-report-in-dot-devin
+
 ---
 
 ## Goal
@@ -31,7 +30,7 @@ related:
 
 > Goal: วัดสิ่งที่ตั้งใจจะวัด — deterministic และซ้ำได้
 
-1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage — audit ความครบของ config ด้วย `/check-coverage-config` ก่อนวัด
+1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage — audit ความครบของ config ด้วย `/review-test` ก่อนวัด
 2. กำหนด include/exclude จาก argument + signals:
    - ระบุ scope → include เฉพาะ scope นั้น
    - "logic-only" → ตัด UI components, runtime-bound modules (native glue, DOM-only side effects) ที่ทดสอบไม่ได้จริงในสภาพแวดล้อม test ออก แล้วบันทึกเหตุผลของ exclusion ไว้ใน config/comment
@@ -67,7 +66,7 @@ related:
 > Goal: ส่งมอบผลที่ audit ได้
 
 1. ทำ `/report` สรุป: baseline → final, per-category delta, files ที่เพิ่ม, source bugs ที่พบ/แก้
-2. persist → `.devin/reports/<workspace>/test-coverage-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/test-coverage-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ถ้าเหลือ exclusions → ระบุชัดว่าอะไรอยู่นอก scope และทำไม
 
 ## Rules
@@ -98,4 +97,4 @@ related:
 
 - Coverage = เป้า (default 100%) ทุก category ใน scope ที่นิยามไว้ และ suite ผ่านทั้งหมด
 - Source bugs ที่ tests เผยถูกแก้และบันทึกไว้
-- Report persisted ใน `.devin/reports/` พร้อม scope/exclusions ที่ audit ได้
+- Report persisted ใน `.devin/temp/report/` พร้อม scope/exclusions ที่ audit ได้

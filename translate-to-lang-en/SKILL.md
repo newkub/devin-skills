@@ -6,6 +6,7 @@ related:
   - translate-to-lang-th
   - follow-best-practice
   - suggest-next-action
+
 ---
 
 ## Goal

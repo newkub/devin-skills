@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-สร้างไอเดียจาก review findings หรือ reports ที่มีอยู่แล้ว — อ่าน findings จาก `.devin/reports/` หรือ review ล่าสุด แล้วแปลงเป็น prioritized actionable ideas ไม่ใช่ brainstorm จาก context เปล่า
+สร้างไอเดียจาก review findings หรือ reports ที่มีอยู่แล้ว — อ่าน findings จาก `.devin/temp/report/` หรือ review ล่าสุด แล้วแปลงเป็น prioritized actionable ideas ไม่ใช่ brainstorm จาก context เปล่า
 
 ## Scope
 
@@ -34,7 +34,7 @@ related:
 > Goal: ได้ findings จริงเป็น input
 
 1. รับ `scope-or-report` จาก argument — ระบุ report path หรือ scope ได้
-2. อ่าน findings ล่าสุดจาก `.devin/reports/<workspace>/` — `review-report.json`, UX findings, test results
+2. อ่าน findings ล่าสุดจาก `.devin/temp/report/<workspace>/` — `review-report.json`, UX findings, test results
 3. ถ้า user ส่ง findings มาใน chat → ใช้เป็น input หลัก
 4. ถ้าไม่มี findings เลย → แนะนำให้ทำ `/review` หรือ `/deep-review` ก่อน แล้วค่อยกลับมา
 

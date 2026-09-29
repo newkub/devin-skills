@@ -4,7 +4,7 @@ description: จัดการ Drizzle migrations — generate/migrate/push flo
 argument-hint: "[strategy-or-scope]"
 related:
   - follow-lib-drizzle
-  - check-migrations
+  - review-database
   - plan
   - run-test
   - report-before-after
@@ -32,7 +32,7 @@ related:
    - Production/team: `bunx drizzle-kit generate` + `bunx drizzle-kit migrate`
    - Existing database ไม่มี schema: `bunx drizzle-kit pull`
 3. ถ้าเปลี่ยน destructive (drop column/table, rename, type change บน data จริง) → backup database ก่อนเสมอ
-4. ทำ `/check-migrations` เพื่อตรวจ state ของ migration files ปัจจุบัน
+4. ทำ `/review-database` เพื่อตรวจ state ของ migration files ปัจจุบัน
 
 ### 2. Generate And Review
 

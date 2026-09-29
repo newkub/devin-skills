@@ -14,13 +14,14 @@ triggers:
   - user
   - model
 related:
-  - review-quality
+  - review-code-quality
   - run-test
   - resolve-errors
   - check-should-update
   - implement-to-production
   - ship
   - report
+
 ---
 
 ## Goal
@@ -74,9 +75,9 @@ related:
 
 > Goal: ตรวจสอบความถูกต้องก่อน report ผล
 
-1. ทำ `/review-quality` เพื่อตรวจ logic, types, edge cases, contracts, concurrency, tests ของ examples
+1. ทำ `/review-code-quality` เพื่อตรวจ logic, types, edge cases, contracts, concurrency, tests ของ examples
 2. ถ้าพบ issues ให้บันทึก severity และ evidence
-3. ถ้า `/review-quality` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
+3. ถ้า `/review-code-quality` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
 4. บันทึกผลการ review
 
 ### 6. Report And Fix
@@ -84,7 +85,7 @@ related:
 > Goal: รายงานผลและจัดการ issues
 
 1. รวบรวมผลการทดสอบเป็นตาราง (example, expected, actual, status)
-2. รวม findings จาก `/review-quality`
+2. รวม findings จาก `/review-code-quality`
 3. ถ้ามี failures → แสดงรายการและถาม user ว่าจะ fix หรือ skip
 4. ถ้า fix → แก้ไข README หรือ code ตามความเหมาะสม
 5. ทดสอบซ้ำจนกว่าจะผ่าน (max 3 → stop/report)
@@ -119,12 +120,12 @@ related:
 
 ### 5. Correctness Review
 
-- ทำ `/review-quality` ก่อน report/final fix เสมอ
-- บันทึก findings จาก review-quality ใน report
+- ทำ `/review-code-quality` ก่อน report/final fix เสมอ
+- บันทึก findings จาก review-code-quality ใน report
 - ถ้ามี critical/high issues → ถาม user ก่อน ship
 
 - ใช้ /run-test ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /check-should-update ถ้าจำเป็น
 
 ## Expected Outcome
@@ -132,6 +133,6 @@ related:
 - ทุก usage example ใน docs ถูกทดสอบ
 - ไม่มี broken examples ก่อน ship
 - มี report สรุปสถานะทดสอบ
-- มีการทำ `/review-quality` เพื่อตรวจความถูกต้องก่อนส่งมอบ
+- มีการทำ `/review-code-quality` เพื่อตรวจความถูกต้องก่อนส่งมอบ
 - ผู้ใช้ทราบก่อน ship หากมี examples ที่ยังไม่ทำงาน
 

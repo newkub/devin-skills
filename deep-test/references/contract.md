@@ -32,7 +32,7 @@
 
 1. เทียบ consumer expectations vs provider actual — fields ที่ต่างกัน
 2. flag: consumer ใช้ fields ที่ provider ไม่ส่ง, provider ลบ fields ที่ consumer ใช้
-3. ทำ `/check-api-contract` ร่วมสำหรับ spec-level drift
+3. ทำ `/review-api` ร่วมสำหรับ spec-level drift
 
 ## 5. Report
 
@@ -40,7 +40,7 @@
 
 1. ใช้ `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
 2. Verdict ต่อ contract: `verified`, `drift`, `broken`
-3. แนะนำ: fix provider, update contract, หรือ version API (`/check-api-versioning`)
+3. แนะนำ: fix provider, update contract, หรือ version API (`/review-api`)
 
 ## Rules
 

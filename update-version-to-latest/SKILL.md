@@ -10,6 +10,7 @@ related:
   - run-verify
   - ask-me
   - run-release
+  - keepup-source-code
 ---
 
 ## Goal

@@ -64,7 +64,7 @@ Migrate E2E test suite จาก Cypress ไป Playwright อย่างปล
 1. รัน `bunx playwright test` — specs ที่ migrate ต้องเขียวทั้งหมด; เปรียบเทียบ coverage กับ Cypress suite เดิม
 2. ใช้ `--last-failed` re-run เฉพาะที่ fail; ทำ `/run-test` (e2e) ยืนยันรอบสุดท้าย
 3. เมื่อเขียว: ลบ `cypress`, `cypress.config.*`, `cypress/` dir, eslint plugins — แยก commit
-4. ทำ `/check-deprecated-apis` เช็ค `cy.` เหลือ → เสร็จแล้ว `/report-before-after` แล้ว `/ship`
+4. ทำ `/review-code-quality` เช็ค `cy.` เหลือ → เสร็จแล้ว `/report-before-after` แล้ว `/ship`
 
 ## Rules
 

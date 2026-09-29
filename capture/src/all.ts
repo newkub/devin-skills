@@ -17,7 +17,7 @@
  *   --discover          Auto-discover same-origin routes by crawling from base
  *   --devices <list>    Presets: desktop,laptop,tablet,mobile (default: all)
  *                       or custom "name=WxH" e.g. "wide=1920x1080"
- *   --out <dir>         Output dir (default: .devin/reports/<cwd-name>/captures-<ts>)
+ *   --out <dir>         Output dir (default: .devin/temp/report/<cwd-name>/captures-<ts>)
  *   --wait <ms>         Settle time after load per page (default: 1200)
  *   --full              Full-page screenshots (agent-browser screenshot --full)
  *   --session <name>    agent-browser session name (default: capture)
@@ -58,7 +58,7 @@ const discover = has('discover')
 
 const cwdName = basename(process.cwd())
 const ts = new Date().toISOString().replace(/[:T]/g, '').slice(0, 14)
-const outDir = resolve(arg('out', `.devin/reports/${cwdName}/captures-${ts}`))
+const outDir = resolve(arg('out', `.devin/temp/report/${cwdName}/captures-${ts}`))
 
 // devices
 const deviceSpec = arg('devices', Object.keys(PRESETS).join(','))

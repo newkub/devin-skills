@@ -18,4 +18,4 @@
 
 ## Description
 
-สร้างแผนฟีเจอร์พร้อมคะแนน scoring แล้วเขียนลง `.devin/plan/<workspace>` พร้อมเปิดใน editor
+สร้างแผนฟีเจอร์พร้อมคะแนน scoring แล้วเขียนลง `.devin/temp/plan/<workspace>` พร้อมเปิดใน editor

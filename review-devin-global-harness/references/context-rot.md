@@ -4,18 +4,18 @@
 
 ## 1. Stale Content
 
-1. ทำ `/check-content-outdate` กับ skills repo — version pins, `(verified YYYY-MM-DD)` markers, deprecated commands, dead links
+1. ทำ `/review-docs` กับ skills repo — version pins, `(verified YYYY-MM-DD)` markers, deprecated commands, dead links
 2. รายงาน skill ที่ marker เก่ากว่า threshold (เช่น verified > 90 วัน หรือ version pin ต่างจาก latest เกิน 1 major)
 3. route fixes ไป `/update-devin-global-skills` หรือ `update-*-md`
 
 ## 2. Incorrect Content
 
-1. ทำ `/check-correctness` กับ skills ที่แก้ล่าสุดหรือ high-traffic — commands/APIs/claims ต้องตรง ground truth
+1. ทำ `/check-content-correctness` กับ skills ที่แก้ล่าสุดหรือ high-traffic — commands/APIs/claims ต้องตรง ground truth
 2. claims ที่ unverified → flag Warning ให้ cite source
 
 ## 3. Dead Weight
 
-1. Skills/subagents ที่ไม่ถูก invoke เลย (เทียบ `/check-skill-usage`) → candidate สำหรับ merge/remove
+1. Skills/subagents ที่ไม่ถูก invoke เลย (เทียบ `/update-devin-global-skills`) → candidate สำหรับ merge/remove
 2. `references/` ที่ไม่ถูก link จาก SKILL.md → orphan files
 3. `related` entries ที่ชี้ไป skills ที่ถูกลบ/merge แล้ว (checker ครอบคลุมส่วนใหญ่ — เสริมด้วย spot check)
 

@@ -5,6 +5,7 @@ argument-hint: "[source-branch] [target-branch]"
 related:
   - merge
   - report
+
 ---
 
 ## Goal

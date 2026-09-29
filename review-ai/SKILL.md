@@ -23,7 +23,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 - ใช้เมื่อ project มี LLM/AI features: chat, completion, summarization, classification, embeddings/RAG, agents, tool-use
 - ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
 - deep checklists ตาม `references/` ด้านล่าง
-- ไม่รวม general code quality → `/review-quality`, infra cost รวม → `/review-cost`
+- ไม่รวม general code quality → `/review-code-quality`, infra cost รวม → `/review-cost`
 
 ## Execute
 

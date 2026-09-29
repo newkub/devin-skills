@@ -13,6 +13,7 @@ related:
   - report-progress
   - suggest-next-action
   - validate-then-apply
+
 ---
 
 ## Goal

@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-สร้าง report ของ `/bench-competitors` — comparison matrix + gap list + re-benchmark delta หลัง implement — persistent artifact ใน `.devin/report/`
+สร้าง report ของ `/bench-competitors` — comparison matrix + gap list + re-benchmark delta หลัง implement — persistent artifact ใน `.devin/temp/report/`
 
 ## Scope
 
@@ -53,4 +53,4 @@ related:
 
 ## Expected Outcome
 
-- `.devin/report/` artifact พร้อม matrix + gap list + verdict ต่อ dimension
+- `.devin/temp/report/` artifact พร้อม matrix + gap list + verdict ต่อ dimension

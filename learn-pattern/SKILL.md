@@ -10,6 +10,7 @@ related:
   - follow-best-practice
   - learn
   - generalize
+
 ---
 
 ## Goal

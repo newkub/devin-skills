@@ -4,8 +4,8 @@ description: Check breaking changes — API/schema/behavior diffs, migration pat
 argument-hint: "[version-or-diff]"
 related:
   - review-release
-  - check-backward-compatibility
-  - check-api-contract
+  - review-api
+  - review-api
   - report
 ---
 
@@ -26,7 +26,7 @@ Run the breaking-changes dimension of `/review-release` แบบ focused — re
 
 ทำตาม `../../references/breaking-changes.md` + `../../references/version-semver.md`
 
-1. API breaks — removed/renamed endpoints, field type changes, required-field additions → `/check-api-contract` diff หรือ `/check-backward-compatibility`
+1. API breaks — removed/renamed endpoints, field type changes, required-field additions → `/review-api` diff หรือ `/review-api`
 2. schema breaks — DB/config/storage format changes ที่ต้อง migration
 3. behavior breaks — defaults change, removed flags, timing/order changes ที่ client พึ่งพา
 4. semver — bump level ตรง actual changes (breaking → major)

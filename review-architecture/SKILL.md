@@ -9,6 +9,7 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -120,7 +121,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 1. ใช้ `pure functions` เท่านั้น, Immutable data structures (`readonly`)
 2. ไม่มี side effects, ไม่พึ่ง infrastructure
-3. ทำ `/review-quality` เพื่อกำหนด validation strategy ข้าม layers
+3. ทำ `/review-code-quality` เพื่อกำหนด validation strategy ข้าม layers
 4. ทำ `/follow-lib-zod` สำหรับ schema validation ใน `modules/*/schemas/`
 
 ##### 4. Implement Application Layer
@@ -415,7 +416,7 @@ src/
 ##### 3. Implement API Gateway
 
 1. สร้าง API Gateway สำหรับ routing
-2. กำหนด authentication และ authorization — ทำ `/review-quality` สำหรับ input validation
+2. กำหนด authentication และ authorization — ทำ `/review-code-quality` สำหรับ input validation
 3. ตั้งค่า rate limiting และ load balancing
 4. กำหนด request/response transformation
 

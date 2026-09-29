@@ -8,6 +8,7 @@ related:
   - all-github-repo
   - follow-tool-crw
   - learn
+
 ---
 
 ## Goal
@@ -18,7 +19,7 @@ related:
 
 ใช้สำหรับค้นหา repositories จาก GitHub stars ผ่าน `gh search` command
 
-ดูเพิ่มเติม: /all-github-repo, /list-github-star
+ดูเพิ่มเติม: /all-github-repo, /list-github-star-latest
 
 ## Execute
 
@@ -109,7 +110,7 @@ related:
 - Cache frequent search queries ถ้าจำเป็น
 - ใช้ `gh search` โดยตรงแทน API calls
 
-- ใช้ /list-github-star ถ้าจำเป็น
+- ใช้ /list-github-star-latest ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
 - ใช้ /learn-from-references ถ้าจำเป็น
 

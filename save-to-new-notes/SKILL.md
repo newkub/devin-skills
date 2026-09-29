@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - list-newkub-notes
   - open
+
 ---
 
 ## Goal

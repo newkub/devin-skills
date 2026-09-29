@@ -10,7 +10,7 @@ related:
   - run-deploy
   - watch-deploy
   - follow-deploy
-  - review-quality
+  - review-code-quality
   - review-architecture
   - report
   - run-review
@@ -101,6 +101,151 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 | `changelog`, `notes` — completeness + format | `subskills/check-changelog/SKILL.md` |
 | `readiness`, `report` — go/no-go checklist verdict | `subskills/report-readiness/SKILL.md` |
 
+## Check: Release Drift
+
+
+### Goal
+
+ตรวจความสอดคล้องของ version ระหว่าง package manifest, git tags, GitHub releases และ changelog — หา drift เช่น manifest สูงกว่า tag ล่าสุด, tag ที่ไม่มี changelog entry, หรือ release ที่ไม่มี tag
+
+### Scope
+
+- Version sources: `package.json`/`Cargo.toml`/`pyproject.toml` version field, git tags (`v*`), GitHub releases, `CHANGELOG.md` headings
+- รองรับ monorepo: ตรวจทุก package ใน workspace ถ้ามี version แยก
+- Read-only: รายงาน drift อย่างเดียว
+
+### Execute
+
+#### 1. Collect Versions
+
+> Goal: รวบรวม version จากทุก source
+
+1. อ่าน version จาก package manifest(s) — ใช้ `/list-workspaces` ถ้าเป็น monorepo
+2. รัน `git tag --sort=-creatordate` เพื่อดึง tags ล่าสุด
+3. อ่าน `CHANGELOG.md` หา version headings ล่าสุด
+4. ถ้ามี remote GitHub → `gh release list --limit 5` ดู releases
+
+#### 2. Compare And Detect Drift
+
+> Goal: หาความไม่ตรงกัน
+
+1. `manifest > latest tag` → มี version bump ที่ยังไม่ tag/release
+2. `latest tag > manifest` → tag เกิน version ใน manifest (ผิดปกติ)
+3. Tag ที่ไม่มี changelog entry → changelog ขาด
+4. Changelog entry ที่ไม่มี tag → entry เพี้ยนหรือ tag หาย
+5. GitHub release ที่ไม่มี tag → release drift
+
+#### 3. Report
+
+> Goal: สรุป drift
+
+1. ใช้ `/report` คอลัมน์: `No.`, `Source`, `Version`, `Expected`, `Drift Type`, `Fix`
+2. สรุป recommended action: สร้าง tag, อัปเดต changelog, หรือสร้าง release
+3. แนะนำ `/follow-release` หรือ `/gen-changelog-md` สำหรับการแก้ไข
+
+### Rules
+
+#### 1. Evidence-Based
+
+- ทุก drift ต้องระบุค่าจริงที่พบในแต่ละ source
+- ถ้า source ใดไม่มี (ไม่มี changelog/tags) → ระบุ `missing` ไม่ใช่เดา
+
+#### 2. Read-Only
+
+- ไม่สร้าง tag, release หรือแก้ changelog — แนะนำ skill ที่เกี่ยวข้อง
+
+#### 3. Monorepo Aware
+
+- ตรวจต่อ package ถ้า workspace มี independent versioning (changesets, lerna)
+- ใช้ tag prefix convention ที่ repo ใช้จริง (เช่น `pkg-a@1.0.0`)
+
+- ใช้ /follow-release สำหรับ release process
+- ใช้ /gen-changelog-md สำหรับสร้าง changelog
+- ใช้ /git-commit สำหรับ commit conventions
+- ใช้ /run-release ถ้าจำเป็น
+
+### Expected Outcome
+
+- ตาราง version comparison ข้ามทุก source
+- รายการ drift พร้อม recommended fix
+
+## Check: Release Notes
+
+### Goal
+
+ดึง release notes ล่าสุดของ package/tool จาก GitHub Releases หรือ official website (blog/changelog/releases page) — สรุป latest version, release date, breaking changes และเทียบกับ version ที่ skill/document อ้างถึง
+
+### Scope
+
+- Target: package name (`vite`, `react`), repo (`owner/repo`), หรือ skill name (resolve package จาก `references/package-manifest.md`)
+- Sources ตามลำดับ: GitHub Releases API → official changelog/releases page → official blog post → registry metadata
+- Read-only — รายงาน findings; การแก้ไขทำโดย `/update-devin-global-skills` หรือ `/update-version-to-latest`
+- ต่างจาก `/list-github-release` ที่ list releases ดิบ — skill นี้อ่าน notes content และเทียบกับ documented version
+
+### Execute
+
+#### 1. Resolve Package And Sources
+
+> Goal: รู้ package, repo, และ official release channel
+
+1. รับ target จาก argument; ถ้าเป็น skill name → อ่าน `references/package-manifest.md` หรือ `Latest:` line ใน SKILL.md
+2. หา GitHub repo จาก manifest (`Repository` field) หรือ registry metadata
+3. หา official release channel: `/releases`, `/changelog`, `/blog`, CHANGELOG.md
+
+#### 2. Fetch Latest Release Notes
+
+> Goal: ได้ version + notes จริงจาก official source
+
+1. GitHub Releases (preferred): `gh release view --repo <owner/repo> --json tagName,publishedAt,body` หรือ GitHub MCP `list_releases`; registry fallback: `https://api.github.com/repos/<owner>/<repo>/releases/latest`
+2. Official site: `webfetch` changelog/releases/blog page — หา release post ล่าสุด (เช่น `vite.dev/blog`, `react.dev/blog`)
+3. Registry fallback: npm `https://registry.npmjs.org/<pkg>/latest` (version + time), crates.io `/api/v1/crates/<name>` — ได้ version/date แต่ไม่มี notes
+4. บันทึก: `latest version`, `release date`, `breaking changes`, `new features`, `deprecations`, source URL
+
+#### 3. Compare And Report
+
+> Goal: รู้ว่า skill/document stale หรือไม่
+
+1. หา documented version จาก SKILL.md (`Latest:` line), `references/package-manifest.md`, หรือ install commands ที่ pin version
+2. เทียบ documented vs latest — classify: `current`, `patch-behind`, `minor-behind`, `major-behind`, `unknown`
+3. Report ตาราง: No. | Package | Documented | Latest | Released | Drift | Breaking | Source
+
+### Rules
+
+#### 1. Official Sources First
+
+- GitHub Releases / official changelog / official blog เท่านั้น — ไม่ใช้ third-party aggregators
+- ระบุ source URL ในทุก finding; ถ้าหาไม่ได้ → `unknown` ไม่เดา
+
+#### 2. Semver Drift
+
+- เทียบ semver: major-behind = risk สูงสุด ต้องรายงาน breaking changes
+- prerelease/alpha/beta/rc ไม่นับเป็น latest stable ยกเว้น package publish เฉพาะ prerelease
+
+#### 3. Evidence
+
+- ทุก version/date ต้องมาจาก source ที่ fetch จริง — ห้ามใช้ memory
+- ถ้า notes ไม่ระบุ breaking → ระบุ "not stated" อย่า assume
+
+- ใช้ /review-delivery ถ้าจำเป็น
+- ใช้ `## Check: Release Notes` ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
+
+
+### Expected Outcome
+
+- รายงาน latest version + release date + breaking changes ต่อ package พร้อม source URL
+- Drift classification ต่อ skill — พร้อมให้ `/update-devin-global-skills` หรือ `/update-version-to-latest` apply
+
+## Domain Checks
+
+> Goal: เลือกทำเฉพาะ dimension ที่ตรง scope arg
+
+| Scope | Section |
+|-------|---------|
+| `release-drift` | `## Check: Release Drift` |
+| `release-notes` | `## Check: Release Notes` |
+
 ## Rules
 
 1. Review Independence
@@ -119,7 +264,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
    - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /test-release ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
 
 - ถ้า pass → ทำ `/ship` หรือ release ถ้า fail → แก้ findings ก่อน release
@@ -131,7 +276,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 1. ทำตาม `references/deploy-verify.md`
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
 3. ทำ `/deep-test api` สำหรับ endpoints สำคัญ
-4. ทำ `/check-security-headers` บน deployed URL
+4. ทำ `/review-security` บน deployed URL
 5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
 6. ถ้า failed → แนะนำ rollback ด้วย `git revert <merge-commit>` หรือ redeploy version เดิม พร้อม evidence
 
@@ -154,7 +299,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-1. แก้ release blockers ตาม checklist: version drift → `/check-release-drift`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
+1. แก้ release blockers ตาม checklist: version drift → `/review-release`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
 2. แก้ deploy step ที่ไม่พร้อม → `/follow-deploy` หรือ `/resolve-cicd`
 3. verify: re-run readiness checks แล้วเทียบ go/no-go ก่อน-หลัง
 

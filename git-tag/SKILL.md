@@ -3,7 +3,7 @@ name: git-tag
 description: จัดการ git tags — annotated release tags, semver, sync กับ manifest และ remote
 argument-hint: "[create|list|push|delete] [version]"
 related:
-  - check-release-drift
+  - review-release
   - git-push
   - git-commit
   - run-release
@@ -17,7 +17,7 @@ related:
 ## Scope
 
 - create annotated/lightweight tags, list, push, delete (local + remote)
-- เชื่อมกับ `/check-release-drift` — tag ต้องตรง `package.json`/manifest version
+- เชื่อมกับ `/review-release` — tag ต้องตรง `package.json`/manifest version
 - ไม่ครอบคลุม full release process → `/run-release` (skill นี้จัดการ tag อย่างเดียว)
 
 ## Execute
@@ -27,7 +27,7 @@ related:
 > Goal: tag version ตรงกับ release จริง
 
 1. ตรวจ version ใน manifest (`package.json`, `Cargo.toml`, `pyproject.toml`)
-2. `git tag -l` + `git ls-remote --tags origin` — tag ยังไม่ซ้ำ, ไม่มี drift (`/check-release-drift`)
+2. `git tag -l` + `git ls-remote --tags origin` — tag ยังไม่ซ้ำ, ไม่มี drift (`/review-release`)
 3. tag ต้องชี้ commit ที่ release จริง — ปกติ merge commit ของ release บน main
 
 ### 2. Create Tag
@@ -62,9 +62,9 @@ git tag -a v1.2.3 <sha> -m "..."           # tag commit ย้อนหลัง
 
 - release tag = annotated เสมอ; lightweight เฉพาะ marker ชั่วคราว
 - tag pushed แล้วถือเป็น immutable — move = breaking change สำหรับ consumers
-- ชื่อ tag ต้องตรง manifest version — drift = `/check-release-drift` finding
+- ชื่อ tag ต้องตรง manifest version — drift = `/review-release` finding
 - ไม่ push `--tags` ทั้งหมด — push เฉพาะ tag ที่ตั้งใจ
-- ใช้ /check-release-drift ถ้าจำเป็น
+- ใช้ /review-release ถ้าจำเป็น
 
 ## Expected Outcome
 

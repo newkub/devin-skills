@@ -6,9 +6,9 @@ related:
   - scan-codebase
   - review-api
   - review-techstack
-  - review-quality
+  - review-code-quality
   - review-docs
-  - check-backward-compatibility
+  - review-api
   - deep-review-then-fix
   - report
   - suggest-next-action
@@ -20,7 +20,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ## Scope
 
-- ใช้กับ package ที่ publish (npm/JSR/crates/PyPI) หรือ internal library ที่มี consumers — ไม่รวม REST/HTTP API design (`/review-api`), stack selection (`/review-techstack`), general code quality (`/review-quality`), docs structure (`/review-docs`)
+- ใช้กับ package ที่ publish (npm/JSR/crates/PyPI) หรือ internal library ที่มี consumers — ไม่รวม REST/HTTP API design (`/review-api`), stack selection (`/review-techstack`), general code quality (`/review-code-quality`), docs structure (`/review-docs`)
 - deep checklists ตาม `references/` ด้านล่าง
 
 ## Execute
@@ -56,7 +56,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 > Goal: versioning contract เคารพ consumers — ทำตาม `references/semver.md`
 
-1. ทำ `/check-backward-compatibility` — public API diff ระหว่าง versions
+1. ทำ `/review-api` — public API diff ระหว่าง versions
 2. breaking changes ต้อง major bump + changelog entry + migration notes
 3. deprecations มี path ชัด — `@deprecated` JSDoc, runtime warnings, removal timeline
 4. peer dependencies ranges ไม่แคบ/กว้างเกิน — React/framework peers ใช้ range ที่รองรับหลาย version
@@ -106,7 +106,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
-- ทุก finding มี evidence — export path, line number, หรือ diff จาก `/check-backward-compatibility`
+- ทุก finding มี evidence — export path, line number, หรือ diff จาก `/review-api`
 - HTTP API contract issues → `/review-api`; dep health → `/review-dependencies`
 - ตรวจจากมุม consumer เสมอ — คำถามคือ "คนใช้เจออะไร"
 

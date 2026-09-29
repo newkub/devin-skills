@@ -1,9 +1,9 @@
 ---
-name: review-delivery-check-infra
+name: review-delivery-review-iac
 description: Check infrastructure — provisioning, environments, containers, deploy surface
 argument-hint: "[scope]"
 related:
-  - check-infra
+  - review-iac
   - scan-codebase
   - report
 ---
@@ -15,7 +15,7 @@ Run the infrastructure dimension of `/review-delivery` แบบ focused — inf
 ## Scope
 
 - ใช้เมื่อ `/review-delivery` dispatch มาที่ `infra`/`infrastructure`/`docker` หรือเรียก standalone
-- ครอบคลุม: IaC config, Dockerfiles, environment parity, deploy config — live infra probing (DNS/SSL/ports) → `/check-infra`
+- ครอบคลุม: IaC config, Dockerfiles, environment parity, deploy config — live infra probing (DNS/SSL/ports) → `/review-iac`
 
 ## Execute
 
@@ -39,9 +39,9 @@ Run the infrastructure dimension of `/review-delivery` แบบ focused — inf
 
 - Review เท่านั้น ไม่แก้ไข infra config — fix ใน parent `## Fix`
 - ทุก finding มี evidence: Dockerfile line, IaC file, deploy config
-- live infra probing (DNS, SSL, open ports) → delegate `/check-infra` แล้วรวม findings
+- live infra probing (DNS, SSL, open ports) → delegate `/review-iac` แล้วรวม findings
 
 ## Expected Outcome
 
 - Infra findings แยกตาม containers/environments/deploy
-- Clear handoff: config issues fix ที่นี่, live issues → `/check-infra`
+- Clear handoff: config issues fix ที่นี่, live issues → `/review-iac`

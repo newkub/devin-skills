@@ -59,8 +59,8 @@
 
 > Goal: ไม่มี broken refs, cycles หรือ chain ที่เปราะ
 
-1. ทำ `/check-skills-related` mode `Cycles` หรือ `/check-repo-hygiene circular-dependencies` ก่อน ship
-2. ทำ `/check-broken-skills-references` เพื่อ verify ทุก `/skill-name` ที่เรียกมีอยู่จริง
+1. ทำ `/review-devin-global-harness` mode `Cycles` หรือ `/check-repo-hygiene circular-dependencies` ก่อน ship
+2. ทำ `/review-devin-global-harness` เพื่อ verify ทุก `/skill-name` ที่เรียกมีอยู่จริง
 3. ห้ามเรียก skill ตัวเอง หรือ skill ที่กำลัง deprecated
 4. ถ้า scope ทับ skill อื่นมาก → merge เข้าตัวเดิมแทนสร้าง invocation chain ยาว
 

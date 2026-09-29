@@ -6,7 +6,7 @@ related:
   - follow-tool-rolldown
   - run-bench
   - check-bottlenecks
-  - check-bundle-regression
+  - review-bundle
   - report-before-after
 ---
 

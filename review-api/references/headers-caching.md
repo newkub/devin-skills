@@ -15,7 +15,7 @@
 - [ ] `Access-Control-Allow-Credentials` — เฉพาะ origins ที่ trust, ไม่คู่กับ `*`
 - [ ] `Access-Control-Allow-Methods`/`Headers` — เฉพาะที่ใช้จริง
 - [ ] preflight (`OPTIONS`) handled — cache `Max-Age` สมเหตุ, ไม่ hit handler ทุก request
-- [ ] ทำ `/check-cors-policy` ถ้ามี
+- [ ] ทำ `/review-security` ถ้ามี
 
 ## Content Negotiation
 
@@ -51,6 +51,6 @@
 
 - curl/inspect response headers ต่อ endpoint type
 - grep `Access-Control`, `Cache-Control`, `etag`, `vary` ใน middleware/handler code
-- ทำ `/check-cors-policy`, `/check-rate-limiting`
+- ทำ `/review-security`, `/review-api`
 
 Severity: `Access-Control-Allow-Origin: *` + credentials = Critical, secrets in cacheable responses = High, missing nosniff/HSTS = Medium, no rate-limit headers = Low

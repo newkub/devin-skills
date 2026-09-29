@@ -6,7 +6,7 @@ related:
   - move-to
   - update-references
   - report-file-structure
-  - review-refactor
+  - review-code-quality
   - deep-validate
   - report
   - report-progress
@@ -15,7 +15,7 @@ related:
   - check-reference
   - clean-empty-dirs
   - ask-me
-  - check-broken-skills-references
+  - review-devin-global-harness
 ---
 
 ## Goal
@@ -56,7 +56,7 @@ related:
 
 > Goal: ออกแบบ target structure และ mapping ก่อนย้าย
 
-1. ทำ `/review-refactor` — วางแผน relocation ที่ไม่ทำลาย grouping ที่มีค่า
+1. ทำ `/review-code-quality` — วางแผน relocation ที่ไม่ทำลาย grouping ที่มีค่า
 2. สร้าง mapping `old path → new path`:
    - mode `refs`: `references/<name>/SKILL.md` → `references/<name>.md` โดย `<name>` ต้องตรง `name` ใน frontmatter
    - mode `code`: `old/path/file.ext` → `flat-name.ext` เป็น kebab-case โดยเติมชื่อ parent dirs เพื่อ uniqueness (เช่น `domain-user-service.ts`) — index files ให้ rename เป็น `dirname-index.ext`
@@ -86,7 +86,7 @@ related:
 
 > Goal: ไม่มี broken references และ structure ใหม่ใช้งานได้
 
-1. ทำ `/check-reference` เพื่อตรวจ broken path references — ถ้าแก้ skills repo ให้ทำ `/check-broken-skills-references` ด้วย
+1. ทำ `/check-reference` เพื่อตรวจ broken path references — ถ้าแก้ skills repo ให้ทำ `/review-devin-global-harness` ด้วย
 2. ทำ `/deep-validate` — รัน build / test / lint ตาม project ถ้า mode `code`/`all`
 3. ถ้าพบปัญหา → แก้และ re-validate สูงสุด 3 รอบ → ถ้ายังไม่ผ่าน stop และ report
 

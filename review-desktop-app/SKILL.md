@@ -7,7 +7,7 @@ related:
   - review-frontend
   - review-security
   - review-performance
-  - check-source-maps
+  - review-bundle
   - follow-create-desktop-tauri
   - deep-review
   - deep-review-then-fix
@@ -51,7 +51,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 2. CSP ตั้งค่า, remote content ไม่ load ใน privileged context
 3. secrets/filesystem access ผ่าน scoped APIs — ไม่เปิด full FS/shell
 4. auto-update channel ใช้ signed updates เท่านั้น
-5. ทำ `/check-source-maps` กับ packaged build — Electron/Tauri dist ห้าม leak `.map` files หรือ source code
+5. ทำ `/review-bundle` กับ packaged build — Electron/Tauri dist ห้าม leak `.map` files หรือ source code
 
 ### 4. Check Packaging And Updates
 

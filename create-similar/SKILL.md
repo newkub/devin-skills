@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - edit-this-repo
   - update-devin-global-skills
-  - review-quality
+  - review-code-quality
   - use-related-skills
   - edit-by-use-scripts
   - deep-validate
@@ -95,7 +95,7 @@ related:
 - ถ้าสร้าง skill ใหม่ → อัปเดต `AGENTS.md`
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (similar)
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /use-related-skills ถ้าจำเป็น
 - ใช้ /edit-by-use-scripts ถ้าจำเป็น
 

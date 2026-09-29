@@ -3,9 +3,10 @@ name: check-reference
 description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
 argument-hint: "[scope]"
 related:
-  - check-skills-related
+  - review-devin-global-harness
   - check-secrets
   - update-references
+
 ---
 ## Goal
 
@@ -82,7 +83,7 @@ related:
 - ตรวจสอบ version ล่าสุด
 - ตรวจสอบ deprecation notices
 
-- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 

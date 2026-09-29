@@ -61,7 +61,7 @@ Runner ของ mutation domain เท่านั้น — mutation analysis 
 > Goal: รายงาน audit ได้
 
 1. สรุป mutation score (before→after), survived mutants ที่เหลือ + เหตุผล, equivalent/noise count
-2. persist → `.devin/reports/<workspace>/mutation-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/mutation-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

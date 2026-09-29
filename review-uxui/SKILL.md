@@ -18,6 +18,7 @@ related:
   - review-accessibility
   - watch-browser-and-improve-uxui
   - deep-review-then-fix
+
 ---
 
 ## Goal
@@ -158,7 +159,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - ไม่ review frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
 - ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/deep-review`
 - ไม่ review SEO → ใช้ `/review-seo`
-- ไม่ review code quality, bug-prone patterns → ใช้ `/review-quality`
+- ไม่ review code quality, bug-prone patterns → ใช้ `/review-code-quality`
 - focus ที่ design quality: design system, visual, interaction, accessibility, settings, motion, handoff
 
 ### 6. Health Score
@@ -183,7 +184,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 1. browser fix pass → `/watch-browser-and-improve-uxui` (orchestrates watch passes + UXUI features + Playwright sync)
 2. findings → `subskills/improve-uxui-fix/SKILL.md` — functional → visual → accessibility order
-3. verify: re-run browser pass + `/deep-test e2e`; persist `.devin/reports/<workspace>/uxui-<time>.md`
+3. verify: re-run browser pass + `/deep-test e2e`; persist `.devin/temp/report/<workspace>/uxui-<time>.md`
 
 ## References
 

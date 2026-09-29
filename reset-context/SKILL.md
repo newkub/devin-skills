@@ -17,7 +17,7 @@ triggers:
 related:
   - scan-codebase
   - use-astgrep
-  - check-skills-related
+  - review-devin-global-harness
   - deep-thinking
   - follow-best-practice
   - review-architecture
@@ -42,7 +42,7 @@ related:
 - ถ้าระบุ target เป็นไฟล์หรือ directory → reset มุมมองต่อไฟล์/ไดเรกทอรีนั้น โดยทำตามขั้นตอน `Assume Reset Context For Target` ด้านล่าง
 - ไม่ลบไฟล์ใด ๆ แต่ reset แบบจำลองความเข้าใจของบทสนทนาหรือไฟล์
 
-ดูเพิ่มเติม: `/scan-codebase`, `/use-astgrep`, `/check-skills-related`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
+ดูเพิ่มเติม: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
 
 ## Execute
 
@@ -86,7 +86,7 @@ related:
 
 1. อ่าน target file ทั้งไฟล์ ไม่ข้ามบรรทัด
 2. อ่าน `imports`, `exports`, dependencies และ reverse dependencies
-3. ทำ `/scan-codebase` พร้อม `/use-astgrep` และ `/check-skills-related`
+3. ทำ `/scan-codebase` พร้อม `/use-astgrep` และ `/review-devin-global-harness`
 4. ทำ `/deep-thinking` เพื่อวิเคราะห์โครงสร้าง, issues, และ improvements
 5. ทำ `/follow-best-practice` และ `/review-architecture` เพื่อเทียบมาตรฐาน
 6. ทำ `/plan` เพื่อวางแผนการแก้ไขตาม findings ใหม

@@ -8,9 +8,10 @@ related:
   - update-dot-devin
   - update-devin
   - update-docs
-  - check-skills-related
+  - review-devin-global-harness
   - scan-codebase
   - deep-validate
+
 ---
 
 ## Goal
@@ -41,7 +42,7 @@ related:
 > Goal: ไม่ซ้ำกับ skills ที่มีและตรง conventions
 
 1. ตรวจ `.devin/skills/` ของ project และ `%APPDATA%\devin\skills` ว่ามี skill คล้ายกันไหม
-2. ทำ `/check-skills-related` หรือ `/use-related-skills` ถ้าพบ skill ที่อาจซ้ำ
+2. ทำ `/review-devin-global-harness` หรือ `/use-related-skills` ถ้าพบ skill ที่อาจซ้ำ
 3. อ่าน `AGENTS.md` root และ workspace เพื่อดึง project conventions, commands และ tech stack
 4. อ่าน skills ที่มีอยู่ใน `.devin/skills/` เพื่อเลือก directory pattern และ style ให้สอดคล้องกับ project
 

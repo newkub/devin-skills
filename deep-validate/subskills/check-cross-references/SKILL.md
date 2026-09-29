@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - check-reference
   - update-references
-  - check-api-contract
+  - review-api
   - report
 ---
 
@@ -32,7 +32,7 @@ related:
 > Goal: references ภายในและ contract ตรงกัน
 
 1. ตรวจสอบ references ระหว่าง modules ถูกต้อง — ทำ `/check-reference` ถ้าต้องการ deep pass
-2. ตรวจสอบ API contracts ตรงกับ implementation — ทำ `/check-api-contract` ถ้ามี API surface
+2. ตรวจสอบ API contracts ตรงกับ implementation — ทำ `/review-api` ถ้ามี API surface
 3. ตรวจสอบ dependencies ไม่ conflict กับ existing versions
 
 ### 3. Check Docs References

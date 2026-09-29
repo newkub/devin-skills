@@ -30,4 +30,4 @@ description: How this project compares to alternatives
 
 - Facts only — same bar as `/compare-*` skills: sourced, no "better" without evidence
 - Include "when to choose an alternative" — this is a comparison, not marketing
-- Link the deep report (`.devin/reports/`) if one exists
+- Link the deep report (`.devin/temp/report/`) if one exists

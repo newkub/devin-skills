@@ -3,6 +3,7 @@ name: idea-new-devin-global-skills
 description: สร้างไอเดีย devin global skills ใหม่หรือปรับปรุง refactor, merge, rename, extract
 argument-hint: "[scope]"
 related:
+  - idea-use-skills-relations
   - check-my-global-cli
   - review-coverage
   - follow-devin-global-skills
@@ -14,6 +15,7 @@ related:
   - deep-research
   - follow-math-concepts
   - update-devin-global-skills
+
 ---
 
 ## Goal
@@ -31,7 +33,7 @@ related:
 > Goal: เข้าใจสถานะปัจจุบันของ skills repo
 
 1. ทำ `/review-devin-global-harness` สำหรับ quality conventions
-2. ทำ `/check-skills-related` เพื่อหา broken references
+2. ทำ `/review-devin-global-harness` เพื่อหา broken references
 3. ทำ `/scan-codebase` เพื่อหา duplicated logic หรือ overlapping skills
 4. ทำ `/report-file-structure` เพื่อดูโครงสร้างปัจจุบัน
 5. ทำ `/check-my-global-cli` เพื่อตรวจ CLI tools ที่ติดตั้งและหาไอเดีย skill ใหม่

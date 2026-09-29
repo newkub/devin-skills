@@ -16,8 +16,9 @@ related:
   - gen-changelog-md
   - publish-package-to-registry
   - use-my-packages-on-registry
-  - check-backward-compatibility
+  - review-api
   - update-devin-global-skills
+
 ---
 
 ## Goal
@@ -210,7 +211,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /watch-release ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /review-api ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (release)
 
 - ใช้ /resolve-errors ถ้าจำเป็น

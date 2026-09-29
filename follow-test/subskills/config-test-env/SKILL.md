@@ -6,7 +6,7 @@ related:
   - follow-test
   - follow-config
   - check-secrets
-  - check-test-isolation
+  - review-test
   - follow-secret-manager
   - follow-monorepo
   - setup-cicd
@@ -52,7 +52,7 @@ related:
 1. สร้าง `tests/fixtures/` และ `tests/helpers/` ตาม structure ของ parent — หรือตาม convention ที่ project ใช้
 2. test database: แยก db name/schema จาก dev — ใช้ ephemeral option (container, in-memory, per-run db) ตาม stack
 3. seed/migration strategy สำหรับ test db — deterministic และ reset ระหว่าง runs
-4. ทำ `/check-test-isolation` — tests ไม่ share state และไม่ depend กัน
+4. ทำ `/review-test` — tests ไม่ share state และไม่ depend กัน
 
 ### 4. Configure CI Test Env
 

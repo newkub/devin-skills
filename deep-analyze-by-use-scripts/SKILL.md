@@ -4,6 +4,7 @@ description: alias → /deep-analyze (วิเคราะห์โปรเจ
 argument-hint: "[scope|report]"
 related:
   - deep-analyze
+
 ---
 
 ## Goal

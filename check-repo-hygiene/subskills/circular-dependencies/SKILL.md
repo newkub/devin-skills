@@ -4,7 +4,7 @@ description: ตรวจจับและรายงาน circular dependenc
 argument-hint: "[scope]"
 related:
   - check-reference
-  - check-skills-related
+  - review-devin-global-harness
   - deep-validate
   - use-scripts
   - resolve-errors
@@ -111,7 +111,7 @@ related:
 - ถ้า cycle เกิดจาก skill references → แก้ไข `related` หรือ links ใน `SKILL.md`
 
 - ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /run-install ถ้าจำเป็น
 

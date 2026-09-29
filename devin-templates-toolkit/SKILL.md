@@ -11,6 +11,7 @@ related:
   - setup-package
   - write-how-to
   - update-docs
+
 ---
 
 ## Goal
@@ -50,7 +51,7 @@ related:
 
 1. รัน `/review-dependencies`
 2. รัน `/report-config-files`
-3. รัน `/check-broken-skills-references`
+3. รัน `/review-devin-global-harness`
 
 ## Templates
 

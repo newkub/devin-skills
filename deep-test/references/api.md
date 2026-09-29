@@ -61,9 +61,9 @@
    ```
    options: `--method`, `--timeout`, `--slow`, `--header "Authorization: Bearer <token>"`, `--allow-write`, `--out`; fallback `scripts/check-routes.ps1` (PowerShell + curl.exe)
 3. Classify severity ต่อ route: `ok` (2xx), `redirect` (3xx — API ไม่ควร redirect), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx ผิด expected, timeout, DNS/TLS), `skipped` (non-safe method), `missing` (อยู่ใน spec แต่ 404)
-4. Report table: `No.`, `Method`, `Route`, `Status`, `Expected`, `Time (ms)`, `Severity`, `Recommendation`; persist → `.devin/reports/<workspace>/api-routes-<time>.md`
+4. Report table: `No.`, `Method`, `Route`, `Status`, `Expected`, `Time (ms)`, `Severity`, `Recommendation`; persist → `.devin/temp/report/<workspace>/api-routes-<time>.md`
 5. ถ้า routes เยอะและแบ่ง group ได้ → spawn `subagents/route-checker.md` ทีละ group ผ่าน `/use-subagents` แล้ว merge ผล
-6. spec กับ implementation ไม่ตรง → `/check-api-contract`; routes ไม่ครบ → `/gen-openapi`
+6. spec กับ implementation ไม่ตรง → `/review-api`; routes ไม่ครบ → `/gen-openapi`
 
 Rules เพิ่มเติม: mask credentials ใน report เสมอ, ทุก route ต้องมีผล tested หรือ skipped พร้อมเหตุผล, ห้ามยิง production โดยไม่ได้ confirm
 

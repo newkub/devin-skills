@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-eslint
   - run-lint
-  - check-deprecated-apis
+  - review-code-quality
   - report-before-after
 ---
 

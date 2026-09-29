@@ -6,7 +6,7 @@ related:
   - follow-tool-vite
   - run-bench
   - check-bottlenecks
-  - check-bundle-regression
+  - review-bundle
   - report-before-after
 ---
 
@@ -78,7 +78,7 @@ related:
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /run-bench ถ้าจำเป็น
-- ใช้ /check-bundle-regression ถ้าจำเป็น
+- ใช้ /review-bundle ถ้าจำเป็น
 
 ## Expected Outcome
 

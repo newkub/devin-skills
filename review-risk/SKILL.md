@@ -14,6 +14,7 @@ related:
   - suggest-next-action
   - scan-codebase
   - run-review
+
 ---
 
 ## Goal
@@ -23,7 +24,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 ## Scope
 
 ใช้ก่อน execute plan, migration, deploy หรือตรวจ project ใดๆ:
-- ตรวจ risks ใน `.devin/plan/<workspace>/`, `AGENTS.md`, chat plan, หรือ code/workspace
+- ตรวจ risks ใน `.devin/temp/plan/<workspace>/`, `AGENTS.md`, chat plan, หรือ code/workspace
 - ครอบคลุม technical, schedule, security, compliance, business, operational, financial
 - รองรับ target: `plan`, `project`, `deploy`, `migration`, หรือ default เป็น current workspace
 - ส่งต่อให้ `review-plan`, `review-migration`, `review-release`, `review-security`, `review-compliance` เมื่อ target ชัดเจน

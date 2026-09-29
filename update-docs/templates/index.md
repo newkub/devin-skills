@@ -15,7 +15,7 @@ Every page template lives here — one file per docs page. `content-page.md` is 
 | 7 | [usage.md](usage.md) | `docs/getting-started/usage.md` |
 | 8 | [architecture.md](architecture.md) | `docs/development/architecture.md` |
 | 9 | [workflows.md](workflows.md) | `docs/development/workflows.md` |
-| 10 | [testing.md](testing.md) | `docs/development/testing.md` — Latest Results from `.devin/reports/` |
+| 10 | [testing.md](testing.md) | `docs/development/testing.md` — Latest Results from `.devin/temp/report/` |
 | 11 | [deployment.md](deployment.md) | `docs/development/deployment.md` |
 | 12 | [troubleshooting.md](troubleshooting.md) | `docs/development/troubleshooting.md` |
 | 13 | [roadmap.md](roadmap.md) | `docs/roadmap/index.md` |

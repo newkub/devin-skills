@@ -5,7 +5,7 @@ argument-hint: "[workflow-or-skill]"
 related:
   - review-devin-global-harness
   - update-devin-global-skills
-  - review-quality
+  - review-code-quality
   - deep-validate
   - suggest-next-action
   - use-subagents
@@ -13,6 +13,7 @@ related:
   - report
   - run-deploy
   - run-review
+
 ---
 
 ## Goal
@@ -73,7 +74,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 - ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (workflow)
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
 

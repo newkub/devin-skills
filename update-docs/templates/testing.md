@@ -11,8 +11,8 @@ Use this for `docs/development/testing.md`. The `## Latest Results` section summ
 
 | No. | Type | Runner | Raw artifact | Summary artifact |
 |-----|------|--------|--------------|------------------|
-| 1 | unit | Vitest | `.devin/reports/<ws>/vitest-<time>.json` (`--reporter=json`) | `unit-test-<time>.md` |
-| 2 | e2e | Playwright | `.devin/reports/<ws>/playwright-<time>.json` + `playwright-report/` | `e2e-<time>.md` |
+| 1 | unit | Vitest | `.devin/temp/report/<ws>/vitest-<time>.json` (`--reporter=json`) | `unit-test-<time>.md` |
+| 2 | e2e | Playwright | `.devin/temp/report/<ws>/playwright-<time>.json` + `playwright-report/` | `e2e-<time>.md` |
 | 3 | coverage | coverage runner | `coverage/` (html/lcov) | `coverage-<time>.md` |
 | 4 | exploratory | agent-browser | — | `browser-test-*`, `e2e-exploratory-*`, `uxui-*` (findings only — do NOT put in Latest Results) |
 
@@ -47,7 +47,7 @@ bun run build       # typecheck + build
 
 | No. | Date | Type | Runner | Passed | Failed | Skipped | Duration | Report |
 |-----|------|------|--------|--------|--------|---------|----------|--------|
-| 1 | 2026-09-12 | unit | Vitest | 12 | 0 | 0 | 1.2s | `.devin/reports/<ws>/unit-test-<time>.md` |
+| 1 | 2026-09-12 | unit | Vitest | 12 | 0 | 0 | 1.2s | `.devin/temp/report/<ws>/unit-test-<time>.md` |
 | 2 | 2026-09-12 | e2e | Playwright | 15 | 0 | 1 | 8.4s | `playwright-report/index.html` |
 
 ## Coverage
@@ -64,5 +64,5 @@ bun run build       # typecheck + build
 - Latest Results = real runner output only: Vitest JSON reporter, Playwright report, coverage — **ห้าม**ใส่ exploratory results จาก agent-browser (`browser-test-*`, `e2e-exploratory-*`) ลงในตารางนี้
 - Exploratory/UX findings ใส่ได้เฉพาะใน Known Gaps หรือส่วน notes — ระบุว่าเป็น exploratory
 - Always summarize — link the raw artifact, never paste it whole
-- If `.devin/reports/` is gitignored, keep the table but omit file links
+- If `.devin/temp/report/` is gitignored, keep the table but omit file links
 - If no artifacts exist yet, write the page without `## Latest Results` — do not fabricate results

@@ -10,7 +10,7 @@ allowed-tools:
   - read
 related:
   - follow-skills-map
-  - check-skill-usage
+  - update-devin-global-skills
   - review-devin-global-harness
   - deep-test
   - update-docs
@@ -18,6 +18,7 @@ related:
   - review-test
   - report
   - suggest-next-action
+
 ---
 
 ## Goal
@@ -42,7 +43,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 > Goal: รู้ว่าอะไร "ควรถูก cover"
 
 1. `skills` → surface = actions/domains ใน `../follow-skills-map/references/tool-map.md` + intents ใน `global_rules.md` + task types จาก skills-map categories
-2. `tests` → surface = routes/endpoints/public modules จาก codebase (ทำ `/check-all-routes` หรือ scan route files)
+2. `tests` → surface = routes/endpoints/public modules จาก codebase (ทำ `/review-delivery` หรือ scan route files)
 3. `docs` → surface = features/public API จาก `FEATURES.md`, exports, routes
 4. custom → ใช้ list ที่ user ให้หรือ extract จาก spec/config ที่ระบุ
 5. ทำ `/use-scripts` ถ้า surface ใหญ่ — เขียน `scripts/review-coverage.ts` extract + compare
@@ -51,7 +52,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 > Goal: รู้ว่ามีอะไร cover อยู่จริง
 
-1. `skills` → scan `*/SKILL.md` descriptions + `related` + `/check-skill-usage` สำหรับ usage signal
+1. `skills` → scan `*/SKILL.md` descriptions + `related` + `/update-devin-global-skills` สำหรับ usage signal
 2. `tests` → scan test files (`*.test.*`, `*.spec.*`, `tests/`) เทียบกับ surface items; ถ้ามี coverage report จริง (`vitest --coverage`, istanbul) ให้อ่านค่าจาก report
 3. `docs` → scan docs pages, README sections, `docs/` nav เทียบ features
 4. normalize ทั้งสองฝั่งเป็น key เดียวกัน (action name / route path / feature id)
@@ -108,7 +109,7 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 - coverage % เป็น signal ไม่ใช่เป้าหมาย — critical path uncovered สำคัญกว่า % ต่ำใน trivial items
 - orphan coverage ให้รายงานแยก อย่ารวมเป็น gap
 
-- ใช้ /check-skill-usage ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-skills-map ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 

@@ -4,17 +4,17 @@ description: Refactor ไฟล์, workspace, หรือ codebase ตาม c
 argument-hint: "[@files... | scope]"
 related:
   - refactor-workspace
-  - refactor-shared
+  - refactor-to-packages-shared
   - no-hard-code
   - no-use-ignore
   - update-references
   - update-agents-md
+  - update-config
   - update-tests
   - run-verify
   - check-code-structure
-  - check-function-quality
+  - review-code-quality
   - check-long-files
-  - check-single-responsibility
   - resolve-errors
   - dont-over-engineer
   - follow-single-of-source
@@ -22,6 +22,8 @@ related:
   - follow-architecture
   - edit-by-astgrep
   - migration-by-astgrep
+  - use-subagents
+
 ---
 
 ## Goal
@@ -33,7 +35,8 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้า context คือจัด architecture ตาม directory (`packages/` = clean, `apps/` = layered) → ใช้ `/follow-architecture`
-- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-shared`
+- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
+- ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
 - ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
@@ -53,9 +56,10 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/check-single-responsibility` (SRP counts), `/check-function-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
-7. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-8. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/review-code-quality` (SRP counts), `/review-code-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
+7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
+8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
+9. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -97,6 +101,19 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 1. ทำ `/report` สรุป sub-skill/scope, การเปลี่ยนแปลง, status
 2. ทำ `/report-before-after` ถ้ามี baseline
 3. ทำ `/suggest-next-action`
+
+### Subagents
+
+> Goal: dispatch งาน refactor ที่อิสระไปยัง subagent profiles
+
+| Task | Subagent |
+|------|----------|
+| เก็บ baseline evidence หา refactor targets (read-only) | `subagents/hotspot-scout.md` |
+| refactor ไฟล์/scope เดียว — spawn ทีละไฟล์ขนานกันเมื่อมีหลายไฟล์อิสระ | `subagents/file-worker.md` |
+
+1. spawn ผ่าน `/use-subagents` โดยส่ง inputs ตามที่แต่ละ profile กำหนด
+2. `hotspot-scout` เป็น read-only — `file-worker` แก้เฉพาะ `files` ที่ได้รับ
+3. parent เป็นคน rewire consumers, checkpoint commit และ verify รวมเสมอ
 
 ## Rules
 

@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-tsdown
   - follow-tool-rolldown
-  - check-deprecated-apis
+  - review-code-quality
   - report-before-after
 ---
 
@@ -78,7 +78,7 @@ related:
 
 - ใช้ /follow-tool-tsdown ถ้าจำเป็น
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
-- ใช้ /check-deprecated-apis ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 
 ## Expected Outcome
 

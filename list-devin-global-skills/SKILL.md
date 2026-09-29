@@ -6,6 +6,7 @@ related:
   - report
   - search
   - follow-skills-map
+
 ---
 
 ## Goal

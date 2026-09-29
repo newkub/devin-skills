@@ -29,7 +29,7 @@
 | Vue | `/follow-lib-vue`, `/follow-create-web` (nuxt), `/follow-lib-vueuse` |
 | React | `/follow-lib-react`, `/follow-create-web` (nextjs) |
 | Rust | `/follow-lang-rust` |
-| Bun | `/use-bun-native-api`, `/use-bun-native-api` |
+| Bun | `/use-bun-native-api` |
 
 ### Utility Workflows
 

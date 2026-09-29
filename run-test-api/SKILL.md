@@ -60,7 +60,7 @@ Runner ของ API domain เท่านั้น — spec/coverage analysis 
 > Goal: รายงาน audit ได้
 
 1. สรุป endpoints covered, pass/fail, spec violations, classification ต่อ failure
-2. persist → `.devin/reports/<workspace>/api-test-<time>.md` ตาม format `/create-report-in-dot-devin`
+2. persist → `.devin/temp/report/<workspace>/api-test-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
 
 ## Rules

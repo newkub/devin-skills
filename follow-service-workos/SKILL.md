@@ -7,6 +7,7 @@ related:
   - open-web-for-config-secret
   - follow-create-product
   - follow-lib-better-auth
+
 ---
 
 ## Goal

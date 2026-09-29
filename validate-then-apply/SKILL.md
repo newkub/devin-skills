@@ -42,7 +42,7 @@ related:
 
 1. ถ้าเป็น code → ทำ `/run-check` (lint, typecheck, tests)
 2. ถ้าเป็น skill/rules/config → ทำ `/deep-validate`
-3. ถ้าเป็น reference/path → ทำ `/check-reference` หรือ `/check-broken-skills-references`
+3. ถ้าเป็น reference/path → ทำ `/check-reference` หรือ `/review-devin-global-harness`
 4. ถ้าเป็น architecture/design → ทำ `/review` ทีเหมาะสม
 5. ถ้าเป็นการตัดสินใจ → ทำ `/rethink`
 

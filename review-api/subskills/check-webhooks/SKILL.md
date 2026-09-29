@@ -3,7 +3,7 @@ name: review-api-check-webhooks
 description: Check webhooks/realtime — signature verify, retry/idempotency, replay safety
 argument-hint: "[scope]"
 related:
-  - check-webhook
+  - review-api
   - report
 ---
 
@@ -15,7 +15,7 @@ Run the webhooks/realtime dimension of `/review-api` แบบ focused — deliv
 
 - ใช้เมื่อ `/review-api` dispatch มาที่ `webhooks`/`realtime` หรือเรียก standalone
 - ครอบคลุม: webhook signing, retry policy, idempotency, ordering, realtime channels (WS/SSE)
-- Deep delivery/security probe → delegate `/check-webhook` แล้วรวม findings
+- Deep delivery/security probe → delegate `/review-api` แล้วรวม findings
 
 ## Execute
 

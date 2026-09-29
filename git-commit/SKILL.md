@@ -10,6 +10,7 @@ related:
   - refactor-commit
   - review-diff
   - ship
+
 ---
 ## Goal
 
@@ -33,6 +34,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 | `selected-files`         | `subskills/selected-files/SKILL.md` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
 | `and-push`               | `/git-commit-and-push` — top-level skill จริง (commit + push + resolve CI/CD) |
 | `at-devin-global-skills` | `subskills/at-devin-global-skills/SKILL.md` — pre-commit validation สำหรับ devin global skills |
+| `commit-quality`          | `subskills/commit-quality/SKILL.md` — lint commit messages ตาม conventional commits |
 
 ### 1. Navigate To Global Devin Skills
 

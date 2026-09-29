@@ -5,7 +5,8 @@ argument-hint: "[scope]"
 related:
   - review-architecture
   - update-references
-  - review-quality
+  - review-code-quality
+
 ---
 
 ## Goal
@@ -59,7 +60,7 @@ related:
 
 รักษาคุณภาพโค้ดตามมาตรฐาน
 
-- ทำ `/review-quality` สำหรับการแก้ไข
+- ทำ `/review-code-quality` สำหรับการแก้ไข
 - รักษา consistency กับ codebase
 - เพิ่ม comments เมื่อจำเป็น
 

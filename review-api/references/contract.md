@@ -20,7 +20,7 @@
 - [ ] version strategy ชัด — URL path (`/v1/`), header, media type — consistent ทั้ง API
 - [ ] breaking vs non-breaking แยก — additive changes ไม่ต้อง version ใหม่
 - [ ] version lifecycle — support window, sunset timeline, migration docs
-- [ ] ทำ `/check-api-versioning` + `/check-backward-compatibility` เมื่อมีหลาย versions
+- [ ] ทำ `/review-api` + `/review-api` เมื่อมีหลาย versions
 
 ## Deprecation And Sunset
 

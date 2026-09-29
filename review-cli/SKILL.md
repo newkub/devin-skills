@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-review-then-fix
   - deep-review
-  - review-quality
+  - review-code-quality
   - review-test
   - review-docs
   - deep-validate
@@ -25,7 +25,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 ไม่รวม:
 - multi-platform spot check (CLI เป็นแค่ dimension เดียว) → ใช้ `/deep-review`
-- general code quality, bug-prone patterns → ใช้ `/review-quality`
+- general code quality, bug-prone patterns → ใช้ `/review-code-quality`
 - docs completeness โดยละเอียด → ใช้ `/review-docs`
 - แก้ findings → ใช้ `/deep-review-then-fix` (dedicated fix pass) หรือ section `## Fix` ด้านล่าง
 
@@ -157,7 +157,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 ### 1. Scope Boundary
 
 - เน้น CLI surface: commands, I/O contract, exit codes, distribution
-- ไม่ซ้ำ `/deep-review` (spot check), `/review-quality` (code patterns), `/review-test` (test quality ทั่วไป)
+- ไม่ซ้ำ `/deep-review` (spot check), `/review-code-quality` (code patterns), `/review-test` (test quality ทั่วไป)
 
 ### 2. Skip Conditions
 

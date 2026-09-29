@@ -26,8 +26,8 @@ target/
 # Wrangler cache / account info
 .wrangler/
 
-# Generated reports
-.devin/reports/
+# Generated temp artifacts (reports, plans)
+.devin/temp/
 
 
 target/

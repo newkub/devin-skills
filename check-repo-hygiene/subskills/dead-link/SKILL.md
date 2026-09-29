@@ -3,10 +3,11 @@ name: check-repo-hygiene-dead-link
 description: ตรวจ markdown links ขาดใน docs, skills และ project ทั้ง relative และ external URLs
 argument-hint: "[path-or-glob]"
 related:
-  - check-broken-skills-references
+  - review-devin-global-harness
   - check-reference
   - search
   - report
+
 ---
 
 ## Goal
@@ -18,7 +19,7 @@ related:
 - ใช้กับ `*.md` files ใน project, `docs/`, `.devin/`, `references/` และ skill directories
 - ครอบคลุม relative links `[text](path)`, image links `![alt](path)`, reference links และ external `http(s)` URLs
 - Read-only: ตรวจและรายงานเท่านั้น ไม่แก้ไขไฟล์
-- ไม่ซ้ำกับ `/check-broken-skills-references` ที่เช็คเฉพาะ `/skill-name` references ใน skills repo — skill นี้เช็ค markdown links ทั่วไป
+- ไม่ซ้ำกับ `/review-devin-global-harness` ที่เช็คเฉพาะ `/skill-name` references ใน skills repo — skill นี้เช็ค markdown links ทั่วไป
 
 ## Execute
 
@@ -80,10 +81,10 @@ related:
 
 ### 3. Scope Discipline
 
-- อย่าเช็ค `/skill-name` references ซ้ำกับ `/check-broken-skills-references` — รวมเฉพาะเป็น type `skill` ในรายงาน
+- อย่าเช็ค `/skill-name` references ซ้ำกับ `/review-devin-global-harness` — รวมเฉพาะเป็น type `skill` ในรายงาน
 - ข้าม generated files และ vendored docs
 
-- ใช้ /check-broken-skills-references ถ้าจำเป็น
+- ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /search-files-patterns ถ้าจำเป็น
 

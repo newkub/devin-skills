@@ -70,9 +70,9 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 - ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /review-devin-global-harness ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
+- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /follow-single-responsibility ถ้าจำเป็น
 
 ## Metrics

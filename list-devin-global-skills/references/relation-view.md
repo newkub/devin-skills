@@ -16,7 +16,7 @@ triggers:
 related:
   - list-devin
   - check-repo-hygiene
-  - check-broken-skills-references
+  - review-devin-global-harness
   - use-scripts
   - report-table
   - open-devin-in-web
@@ -34,7 +34,7 @@ related:
 - หา flow chain ความลึก 3 ระดับ
 - ไม่เปลี่ยนแปลง skill files
 
-- ดูเพิ่มเติม: /list-devin-global-skills, /check-broken-skills-references, /use-scripts
+- ดูเพิ่มเติม: /list-devin-global-skills, /review-devin-global-harness, /use-scripts
 
 ## Execute
 

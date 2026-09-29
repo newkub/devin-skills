@@ -29,7 +29,7 @@ related:
 |------|-------|----------|
 | project-manager | task hygiene, milestones, scope visibility | `subskills/project-manager/SKILL.md` |
 | engineering-manager | team scalability, ownership signals, onboarding friction | `subskills/engineering-manager/SKILL.md` |
-| technical-lead | code health, tech debt, architecture quality → `/review-quality` | `subskills/technical-lead/SKILL.md` |
+| technical-lead | code health, tech debt, architecture quality → `/review-code-quality` | `subskills/technical-lead/SKILL.md` |
 | scrum-master | sprint artifacts, blocker signals, DoD compliance | `subskills/scrum-master/SKILL.md` |
 
 2. อ่าน `subskills/<role>/SKILL.md` ของ role ที่เลือก
