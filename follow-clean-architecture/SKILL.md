@@ -1,6 +1,6 @@
 ---
 name: follow-clean-architecture
-description: Apply Clean Architecture ให้ package — functional core, ports & adapters, domain ไม่พึ่ง infrastructure
+description: Apply Clean Architecture — functional core, ports & adapters, domain ไม่พึ่ง infrastructure
 argument-hint: "[@path]"
 related:
   - follow-architecture

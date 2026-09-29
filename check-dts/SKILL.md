@@ -1,6 +1,6 @@
 ---
 name: check-dts
-description: ตรวจ .d.ts emit config ของ project — declaration options, types field, bundler dts — report เป็น table
+description: ตรวจ .d.ts emit config — declaration options, types field, bundler dts
 argument-hint: "[workspace]"
 related:
   - run-typecheck

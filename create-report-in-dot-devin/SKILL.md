@@ -1,6 +1,6 @@
 ---
 name: create-report-in-dot-devin
-description: สร้าง report ละเอียดใน .devin/temp/report/<workspace>/ พร้อม 3 tables, file structure และ what-you-do
+description: สร้าง report ละเอียดใน .devin/temp/report/<workspace>/ — tables, file structure, what-you-do
 argument-hint: "[title]"
 related:
   - create-plan-in-dot-devin

@@ -1,6 +1,6 @@
 ---
 name: no-use-ignore
-description: หาและลบ ignore/suppression comments (ts-ignore, eslint-disable, biome-ignore, noqa และอื่นๆ) โดยแก้ root cause
+description: หาและลบ ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa) โดยแก้ root cause
 argument-hint: "[@files... | scope]"
 related:
   - refactor

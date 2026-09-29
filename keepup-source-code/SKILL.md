@@ -1,6 +1,6 @@
 ---
 name: keepup-source-code
-description: ทำให้ source code ทันสมัย — ตรวจ staleness signals แล้ว dispatch ไป update-* ทีตรง domain จนผ่าน validation
+description: ทำให้ source code ทันสมัย — ตรวจ staleness signals แล้ว dispatch update-* ที่ตรง domain
 argument-hint: "[scope]"
 related:
   - update-project

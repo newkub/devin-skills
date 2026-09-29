@@ -95,7 +95,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 | Topic | Subskill |
 |-------|----------|
 | `ci-cd`, `pipeline`, `ci` — build times, caching, parallelism, workflow security | `subskills/check-ci-cd/SKILL.md` |
-| `infra`, `infrastructure`, `docker` — containers, environments, deploy surface | `subskills/review-iac/SKILL.md` |
+| `infra`, `infrastructure`, `docker` — containers, environments, deploy surface | `subskills/check-infra/SKILL.md` |
 | `efficiency`, `build` — build/dev-loop efficiency, tooling overhead | `subskills/check-efficiency/SKILL.md` |
 | `ops`, `logging`, `versioning` — logging/debugging, versioning, PR process, analytics | `subskills/check-ops/SKILL.md` |
 
