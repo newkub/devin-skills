@@ -3,7 +3,7 @@ name: follow-lib-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
 argument-hint: "[scope]"
 related:
-  - follow-lib-unocss-design-system
+  - follow-design-system
   - follow-lib-css
   - follow-tool-formatter
   - follow-best-practice
@@ -27,7 +27,7 @@ related:
 1. ตรวจสอบ framework ที่ใช้ (`Vite`, `Nuxt`, `Next.js`, `Astro`, `HTML/CLI`)
 2. อ่าน config ที่มีอยู่แล้ว (`uno.config.*`, `vite.config.*`, `nuxt.config.*`, `postcss.config.*`, `astro.config.*`)
 3. ระบุ CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`, ฯลฯ)
-4. ตรวจสอบ UnoCSS version ที่ install (ควรเป็น v66+; ล่าสุด v66.10.2, verified 2026-09-13)
+4. ตรวจสอบ UnoCSS version ที่ install (ควรเป็น v66+; ล่าสุด v66.10.5, verified 2026-09-24)
 
 ### 2. Install Dependencies
 
@@ -165,13 +165,14 @@ related:
 ### Subskills
 
 - First-time install + `uno.config.ts` + presets + framework integration → `subskills/setup-unocss/SKILL.md`
+- First-time theme setup — `theme.css`, HSL variables, dark mode → `subskills/setup-theme/SKILL.md`
 - Theme tokens, shortcuts, rules, dark mode → `subskills/config-theme/SKILL.md`
 
 ## Rules
 
 ### Installation
 
-- ใช้ `unocss` v66+ (latest v66.10.2, verified 2026-09-13)
+- ใช้ `unocss` v66+ (latest v66.10.5, verified 2026-09-24)
 - สำหรับ Next.js ติดตั้ง `@unocss/postcss`
 - สำหรับ Nuxt ติดตั้ง `@unocss/nuxt`
 - สำหรับ Astro ติดตั้ง `@unocss/astro`
@@ -211,7 +212,7 @@ related:
 - Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
 - `@property` rules generate ภายใต้ `properties` layer
 
-- ทำ `/follow-lib-unocss-design-system` ถ้าต้องปรับ theme colors, dark mode หรือ design tokens
+- ทำ subskill `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/unocss-theme.md`
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

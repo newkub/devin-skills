@@ -20,7 +20,6 @@ related:
   - follow-single-of-source
   - follow-reusable
   - review-architecture
-  - follow-orm
   - review-database
   - deep-review
   - deep-validate
@@ -45,7 +44,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor — เลือก pattern ตาม target table ใน step 5
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
-- ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` — repository pattern detail อยู่ `/follow-orm`
+- ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` + `references/repository-pattern.md`
 - ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ทำ structure refactor ตาม `references/scope-structure.md`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
@@ -114,7 +113,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 > Goal: restructure data access ให้ใช้ ORM type-safe — หนึ่ง ORM ต่อ project
 
 1. ทำตาม [references/orm.md](references/orm.md) — select ORM → models/relations → queries → migrations → tests
-2. repository pattern (interfaces, mappers, UnitOfWork) → ทำตาม `/follow-orm` (SSOT)
+2. repository pattern (interfaces, mappers, UnitOfWork, QuerySpec) → ทำตาม [references/repository-pattern.md](references/repository-pattern.md)
 3. schema review/migration drift → `/review-database`; boundary validation → `/follow-tool-data-validation`
 
 ### 7. Structure Refactor

@@ -40,4 +40,4 @@ bunx unocss "src/**/*.{html,ts}" --out-file dist/uno.css
 ## Notes
 
 - เมื่อมี `uno.config.ts` อยู่แล้ว CLI จะใช้ config นั้น — `--preset` ถูก ignore
-- สำหรับ design tokens / theme ดูเพิ่มเติมที่ [unocss.md](unocss.md) และ `/follow-lib-unocss-design-system`
+- สำหรับ design tokens / theme ดูเพิ่มเติมที่ [unocss.md](unocss.md) และ [unocss-theme.md](unocss-theme.md)

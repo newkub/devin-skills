@@ -7,7 +7,7 @@ description: เลือก roles ของ `roleplay-by-all-stakeholder` ต�
 
 ## Goal
 
-เลือก `roleplay-*` ตาม context
+เลือก roles จาก `roleplay-by-all-stakeholder/subskills/` ตาม context
 
 ## Checks
 

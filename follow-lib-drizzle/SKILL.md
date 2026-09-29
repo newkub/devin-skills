@@ -3,7 +3,7 @@ name: follow-lib-drizzle
 description: ติดตั้งและใช้งาน Drizzle ORM 0.45+ สำหรับ type-safe database operations ด้วย SQL-like syntax
 argument-hint: "[scope]"
 related:
-  - follow-orm
+  - refactor
   - follow-tool-drizzle-kit
   - run-drizzle-studio
   - follow-lib-zod
@@ -29,9 +29,9 @@ related:
 
 ขอบเขต:
 - ใช้ skill นี้เฉพาะเมื่อ project เลือก/ใช้ Drizzle ORM
-- ถ้าต้องการ ORM-agnostic data access patterns (repository pattern, mappers) → ใช้ `/follow-orm` เป็น dispatcher
+- ถ้าต้องการ ORM-agnostic data access patterns (repository pattern, mappers) → ใช้ `/refactor` orm scope (`refactor/references/repository-pattern.md`)
 - ถ้า task เน้น `drizzle-kit` CLI (generate/migrate/push/studio) → ใช้ `/follow-tool-drizzle-kit`
-- ORM อื่น (Prisma, TypeORM) อยู่นอก scope — ทำ `/follow-orm` แทน
+- ORM อื่น (Prisma, TypeORM) อยู่นอก scope — ทำ `/refactor` orm scope (`refactor/references/orm.md`) แทน
 
 - References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md) | [manifest](references/package-manifest.md)
 
@@ -169,7 +169,7 @@ related:
 - v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` (ปัจจุบัน `1.0.0-rc.4`, verified 2026-09-13) มี breaking changes ได้แก่ `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` ถูกเอาออก, migration folder v3
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 
-- ใช้ `/follow-orm` ถ้าต้องการ ORM-agnostic data access pattern
+- ใช้ `/refactor` orm scope (`refactor/references/repository-pattern.md`) ถ้าต้องการ ORM-agnostic data access pattern
 - ใช้ `/follow-tool-drizzle-kit` ถ้า task เน้น drizzle-kit CLI
 - ใช้ `/run-drizzle-studio` ถ้าจำเป็น
 - ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator

@@ -1,9 +1,8 @@
 ---
-name: follow-lib-unocss-design-system-setup-theme
+name: follow-lib-unocss-setup-theme
 description: Setup design tokens layer — theme.css, HSL variables, dark mode variants
 argument-hint: "[scope]"
 related:
-  - follow-lib-unocss-design-system
   - follow-lib-unocss
   - follow-design-system
   - run-dev
@@ -16,7 +15,7 @@ Setup design tokens layer ของ UnoCSS — สร้าง `theme.css` ด�
 
 ## Scope
 
-ใช้เมื่อต้อง setup theme ครั้งแรกใน UnoCSS project ที่ติดตั้งแล้ว — ครอบคลุม `theme.css`, CSS variables structure, color mapping และ dark mode (first-time theme setup — ใช้ `config-tokens` สำหรับปรับแต่ง tokens ที่มีอยู่)
+ใช้เมื่อต้อง setup theme ครั้งแรกใน UnoCSS project ที่ติดตั้งแล้ว — ครอบคลุม `theme.css`, CSS variables structure, color mapping และ dark mode (first-time theme setup — ใช้ `config-theme` สำหรับปรับแต่ง tokens ที่มีอยู่)
 
 ## Execute
 
@@ -26,7 +25,7 @@ Setup design tokens layer ของ UnoCSS — สร้าง `theme.css` ด�
 
 1. ทำ `/follow-lib-unocss` หรือ subskill `setup-unocss` ให้เสร็จก่อน — ต้องมี `uno.config.ts` กับ `presetWind4()`
 2. ระบุ CSS entry point ของ framework (`main.ts`, `app/layout.tsx`, `app.vue`)
-3. ตรวจว่ามี `theme.css` หรือ CSS variables อยู่แล้วหรือไม่ — ถ้ามี → ทำ `config-tokens` แทน
+3. ตรวจว่ามี `theme.css` หรือ CSS variables อยู่แล้วหรือไม่ — ถ้ามี → ทำ `config-theme` แทน
 
 ### 2. Create theme.css
 
@@ -98,7 +97,7 @@ Setup design tokens layer ของ UnoCSS — สร้าง `theme.css` ด�
 - ชื่อ token ต้องตรงกันระหว่าง `theme.css` และ `uno.config.ts` ทุกตัว
 - ใช้ `dark: 'class'` เป็น default strategy
 - tokens ทั้ง `:root` และ `.dark` ต้องครบชุดเดียวกัน
-- ใช้ `/follow-lib-unocss-design-system` สำหรับ full reference
+- ดูตัวอย่างเต็ม (full config, nested colors, extendTheme) ใน `../../references/unocss-theme.md`
 
 ## Expected Outcome
 

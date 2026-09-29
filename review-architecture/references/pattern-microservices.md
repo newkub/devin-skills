@@ -42,7 +42,7 @@
 
 ##### 6. Implement Data Isolation
 
-1. กำหนด database per service — ทำ `/follow-orm` สำหรับ data access patterns
+1. กำหนด database per service — ทำ `/refactor` orm scope สำหรับ data access patterns (`refactor/references/orm.md`, `refactor/references/repository-pattern.md`)
 2. ตั้งค่า data replication ถ้าจำเป็น
 3. กำหนด eventual consistency strategy
 4. ตรวจสอบ transaction boundaries

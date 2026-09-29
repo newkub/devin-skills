@@ -2,7 +2,19 @@
 
 ## Goal
 
-ตรวจสอบ design tokens, component library, design system compliance, และ theme support
+ตรวจสอบ design tokens, component library, design system compliance, และ theme support — ประเมินเทียบกับ design system principles ด้านล่าง
+
+## Design System Principles
+
+หลักการที่ใช้เป็นเกณฑ์ประเมิน — ทุก check ด้านล่าง map กลับมาที่หลักการเหล่านี้:
+
+1. **Single source of truth** — design decisions (color, spacing, type) อยู่ในที่เดียว (tokens/theme config) ไม่ซ้ำหลายจุด — แก้ที่เดียวแล้วกระทบทั้งระบบ
+2. **Semantic over raw** — ใช้ semantic tokens (`bg-primary`, `surface`) แทน raw values (`#fff`, `blue-500`) — ให้ intent ชัดและรองรับ theming
+3. **Consistency** — pattern เดียวกันต้องดูและทำงานเหมือนกันทุกจุด — spacing scale, radius, typography ไม่ deviate โดยไม่มีเหตุผล
+4. **Composability** — system ประกอบจาก primitives เล็กๆ ที่ compose ได้ (tokens → utilities → components) ไม่ใช่ one-off monolith
+5. **Theme-ability** — design แยกจากค่าสี/ค่าจริงผ่าน token layer — สลับ theme (dark/light/brand) ได้โดยไม่แตะ component
+6. **Scalability** — เพิ่ม color/component/page ใหม่โดยไม่ต้องแก้ระบบเดิม — token structure และ variant system รองรับการขยาย
+7. **Constraint by default** — system บังคับค่าที่ถูกต้อง (scale เท่านั้น) แทนปล่อยให้เลือกอิสระ — ลด inconsistency ตั้งแต่ต้น
 
 ## Checks
 

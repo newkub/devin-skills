@@ -8,9 +8,9 @@
 |-------|-------|
 | Package | `unocss` |
 | Registry | `npm` |
-| Latest Version | `66.10.4` |
-| Release Date | `2026-09-11` |
-| Verified | `2026-09-13` (date this file was last checked) |
+| Latest Version | `66.10.5` |
+| Release Date | `2026-09-24` |
+| Verified | `2026-09-24` (date this file was last checked) |
 | Author / Publisher | `Anthony Fu (antfu)` |
 | License | `MIT` |
 | Repository | `<https://github.com/unocss/unocss>` |
@@ -40,4 +40,4 @@ bun add -D unocss
 ## Notes
 
 - Breaking changes in latest major: presetWind4 theme keys renamed vs wind3 (`font`, `radius`, `shadow`, `breakpoint`, `ease`, `property`, `spacing`) — see SKILL.md migration section
-- Version pinned in SKILL.md: `unocss@66.10.4`
+- Version pinned in SKILL.md: `unocss@66.10.5`

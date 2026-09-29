@@ -51,7 +51,7 @@ related:
 > Goal: ให้ tokens ใช้ผ่าน utilities ได้จริง
 
 1. Tailwind: ตรวจ `tailwind.config`/`@theme` block map variables เข้า color names (`primary`, `muted`, ฯลฯ)
-2. UnoCSS: map เข้า `theme.colors` ตาม `/follow-lib-unocss` และ `/follow-lib-unocss-design-system`
+2. UnoCSS: map เข้า `theme.colors` ตาม `/follow-lib-unocss config-theme`
 3. ทดสอบ utilities ใหม่ เช่น `bg-success`, `text-warning-foreground`
 
 ### 5. Verify

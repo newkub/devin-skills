@@ -4,7 +4,7 @@ description: ตั้งค่า UnoCSS theme — tokens, shortcuts, rules, da
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
-  - follow-lib-unocss-design-system
+  - follow-design-system
   - follow-lib-css
   - check-config-drift
   - resolve-errors
@@ -44,8 +44,28 @@ related:
    }
    ```
 
-2. ใช้ `hsl(var(--color-{name}))` เพื่อ map กับ CSS variables — คู่กับ `theme.css` ตาม `/follow-lib-unocss-design-system`
-3. ใช้ `extendTheme` เมื่อต้อง mutate merged theme แทนการ replace
+2. ใช้ `hsl(var(--color-{name}))` เพื่อ map กับ CSS variables — คู่กับ `theme.css` ตาม subskill `setup-theme`
+3. ใช้ nested object กับ `DEFAULT` สำหรับ base + variants — `bg-brand` + `bg-brand-foreground`:
+
+   ```ts
+   colors: {
+     brand: {
+       DEFAULT: 'hsl(var(--color-brand))',
+       foreground: 'hsl(var(--color-brand-foreground))',
+     },
+   }
+   ```
+
+4. ใช้ `extendTheme` เมื่อต้อง merge/inherit defaults แทน replace (เช่น override `breakpoint` บางตัว):
+
+   ```ts
+   extendTheme: (theme) => {
+     theme.breakpoint.xs = '480px'
+     return theme
+   }
+   ```
+
+5. semantic tokens (primary, destructive, success, warning) มาก่อน palette tokens (blue-500 ฯลฯ) — token ใหม่ต้องเพิ่มทั้ง `:root` และ `.dark` ใน `theme.css` พร้อมกัน
 
 ### 3. Configure Shortcuts And Rules
 
@@ -79,7 +99,7 @@ related:
 - shortcuts ต้องตั้งชื่อสื่อความหมาย — ห้าม shortcut ที่ชนกับ utility เดิม
 - custom rules เป็น last resort — ใช้ theme/shortcuts ก่อน
 - merge config เดิมเสมอ ห้าม clobber
-- ใช้ `/follow-lib-unocss-design-system` สำหรับ full design tokens layer
+- ใช้ subskill `setup-theme` สำหรับ first-time `theme.css` creation — full examples ใน `references/unocss-theme.md`
 
 ## Expected Outcome
 
