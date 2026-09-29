@@ -15,7 +15,7 @@ related:
   - dont-ask-me
   - update-references
   - plan
-  - follow-skills-map
+  - search-skills
 
 ---
 
@@ -92,7 +92,7 @@ related:
 3. อ้างอิง project manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) และ conventions เพื่อระบุ default และ recommended
 4. ถ้า tech stack ซับซ้อน → แบ่งเป็น multi-step: `runtime` → `language` → `framework` → `library` → `deploy-target`
 5. ตัวเลือกแนะนำต้องระบุเหตุผลเชิงเทคนิค เช่น "Bun ใช้ native APIs ได้เร็วกว่า Node.js ในโปรเจกต์นี้"
-6. ถ้าต้องการแสดง map ของ skills ตาม tech stack หรือ task ให้ทำ `/follow-skills-map`
+6. ถ้าต้องการแสดง map ของ skills ตาม tech stack หรือ task ให้ทำ `/search-skills`
 
 ## Rules
 

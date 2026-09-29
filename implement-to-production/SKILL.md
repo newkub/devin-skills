@@ -7,6 +7,7 @@ related:
   - deep-analyze
   - deep-plan
   - review-architecture
+  - follow-architecture
   - ask-me
   - check-secrets
   - review-database
@@ -52,8 +53,9 @@ related:
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
 1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/review-architecture` เพื่อดู boundary, layer, data flow
-2. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
-3. ระบุ critical path: schema → data → API → UX/UI
+2. ทำ `/follow-architecture` เมื่อ implement ใน `packages/`, `crates/` หรือ `apps/` เพื่อ apply pattern convention ของ directory นั้น (`packages/`/`crates/` → clean, `apps/` → layered)
+3. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
+4. ระบุ critical path: schema → data → API → UX/UI
 
 ### 3. Verify Infrastructure
 

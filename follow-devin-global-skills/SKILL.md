@@ -4,7 +4,7 @@ description: อ่านและใช้ skills ทีมีใน global แ
 argument-hint: "[skill-name]"
 related:
   - list-devin
-  - follow-skills-map
+  - search-skills
   - update-project-skills
   - check-reference
   - update-devin-global-skills
@@ -40,7 +40,7 @@ related:
 
 > Goal: ใช้ map เพื่อหา skill เร็วขึ้น
 
-1. ถ้าไม่ระบุ `argument [skill-name]` → ทำ `/follow-skills-map` เพื่อหา skills ทีตรงกับ task
+1. ถ้าไม่ระบุ `argument [skill-name]` → ทำ `/search-skills` เพื่อหา skills ทีตรงกับ task
 2. ถ้ามีหลาย skills → แสดง map และให้ user เลือก
 
 ### 3. Resolve Skill Name

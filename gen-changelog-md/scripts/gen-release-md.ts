@@ -6,9 +6,9 @@
  * Source: git tag --sort=-version:refname
  *
  * Usage:
- *   bun run scripts/gen-release-md           # gen CHANGELOG.md
- *   bun run scripts/gen-release-md --dry     # print to stdout, no file write
- *   bun run scripts/gen-release-md --output RELEASE.md  # custom output path
+ *   bun run scripts/gen-release-md.ts           # gen CHANGELOG.md
+ *   bun run scripts/gen-release-md.ts --dry     # print to stdout, no file write
+ *   bun run scripts/gen-release-md.ts --output RELEASE.md  # custom output path
  *
  * Rules:
  *   - Never edit CHANGELOG.md manually — rerun this script instead
@@ -199,7 +199,7 @@ No releases yet. First release will appear here.
 	}
 	sections.push("");
 
-	const content = sections.join("\n");
+	const content = sections.join("\n").replace(/\n{3,}/g, "\n\n");
 
 	if (isDryRun) {
 		console.log(content);

@@ -24,7 +24,7 @@
 
 1. ทำ `/use-related-skills` ถ้ามี skill ปัจจุบัน
 2. ทำ `/suggest-next-action` ถ้ามี task ทั่วไป
-3. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills
+3. ทำ `/search-skills` เพื่อดูกลุ่ม skills
 4. กรอง candidates ให้เหลือ 1-3 ตัว
 
 ### 3. Select And Invoke

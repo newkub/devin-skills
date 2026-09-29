@@ -11,4 +11,4 @@
 3. ถ้ามี `@files` → อัปเดตเฉพาะ skill ที่ระบุ
 4. ถ้า `SKILL.md` ยังไม่มี → ส่งต่อ `/new-skills`
 5. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ
-6. ทำ `/use-related-skills` และ `/follow-skills-map` เพื่อหากลุ่ม skills ที่เกี่ยวข้อง
+6. ทำ `/use-related-skills` และ `/search-skills` เพื่อหากลุ่ม skills ที่เกี่ยวข้อง

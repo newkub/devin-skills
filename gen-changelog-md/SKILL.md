@@ -26,15 +26,15 @@ Generate `CHANGELOG.md` จาก `git tag --sort=-version:refname` ด้วย
 
 1. รัน script เพื่อ gen `CHANGELOG.md`:
 ```bash
-bun run skills/gen-changelog-md/scripts/gen-release-md
+bun run skills/gen-changelog-md/scripts/gen-release-md.ts
 ```
 2. สำหรับ dry-run (print ไป stdout ไม่เขียนไฟล์):
 ```bash
-bun run skills/gen-changelog-md/scripts/gen-release-md --dry
+bun run skills/gen-changelog-md/scripts/gen-release-md.ts --dry
 ```
 3. สำหรับ custom output path:
 ```bash
-bun run skills/gen-changelog-md/scripts/gen-release-md --output PATH
+bun run skills/gen-changelog-md/scripts/gen-release-md.ts --output PATH
 ```
 
 ### 2. Verify Output
@@ -58,7 +58,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md --output PATH
 
 ### 1. Generation Only
 
-- `CHANGELOG.md` เกิดจากการ gen ด้วย `scripts/gen-release-md` จาก `git tag --sort=-version:refname` เท่านั้น
+- `CHANGELOG.md` เกิดจากการ gen ด้วย `scripts/gen-release-md.ts` จาก `git tag --sort=-version:refname` เท่านั้น
 - ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
 - ใช้ `Bun.$` สำหรับ shell commands และ `Bun.write()` สำหรับ write file
 

@@ -3,7 +3,7 @@ name: write-how-to
 description: เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ
 argument-hint: "[topic]"
 related:
-  - how-to-works
+  - explain
   - write-explicit
   - write-solutions
   - think-reframe
@@ -135,7 +135,7 @@ related:
 - ใช้ semantic headings สำหรับ screen readers
 - ให้ keyboard navigation สำหรับ interactive elements
 
-- ใช้ /how-to-works ถ้าจำเป็น
+- ใช้ /explain ถ้าจำเป็น
 - ใช้ /write-explicit ถ้าจำเป็น
 - ใช้ /write-solutions ถ้าจำเป็น
 - ใช้ /think-reframe ถ้าจำเป็น

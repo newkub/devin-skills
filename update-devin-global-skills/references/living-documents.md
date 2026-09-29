@@ -9,7 +9,7 @@
 | No. | Document | Path | Stale Signal | Update Action |
 |-----|----------|------|--------------|---------------|
 | 1 | CLI inventory | `check-my-global-cli/references/global-cli-commands.md` | tool ใหม่ติดตั้ง / date เก่า >30 วัน / tool ใน list ใช้ไม่ได้ | re-run `mise list` + `scoop list`, rewrite ตาราง |
-| 2 | Tool map | `follow-skills-map/references/tool-map.md` | skill/tool เพิ่ม/ลบ/merge | เพิ่ม/แก้แถว action→tool→skill |
+| 2 | Tool map | `check-my-global-cli/references/tool-map.md` | skill/tool เพิ่ม/ลบ/merge | เพิ่ม/แก้แถว action→tool→skill |
 | 3 | Tech catalog | `review-dependencies/references/techstack-catalog.md` | เลือก dep ใหม่ / lib EOL / major release | update entry + verify กับ official source |
 | 4 | Skills index | `skills/AGENTS.md` | เพิ่ม/ลบ/merge/rename skill | recount family, แก้รายละเอียด skill ที่เปลี่ยน |
 | 5 | Subagent registry | `use-subagents/SKILL.md` (ตาราง subagents) | เพิ่ม/ลบ `subagents/*.md` ใน skill ใดก็ได้ | แก้แถวในตาราง |

@@ -44,7 +44,7 @@ related:
 > Goal: ติดตั้ง Vitest และ verify requirements
 
 1. ทำ `/follow-tool-vite` เพื่อตรวจสอบ Vite setup
-2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-13)
+2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.2`, verified 2026-09-29)
 3. ติดตั้ง coverage tool ด้วย `bun add -D @vitest/coverage-v8`
 4. ตรวจสอบว่ามี Vite >= v6.4.0 และ Node >= v22.12.0 (Vitest 5 requirements)
 5. เพิ่ม test script ใน `package.json`
@@ -136,7 +136,7 @@ related:
 > Goal: mock modules และเขียน in-source tests
 
 1. เปิดใช้งาน `includeSource` ใน config และเขียน tests ใน source code ด้วย `if (import.meta.vitest)` block สำหรับ test utilities ที่อยู่ใกล้กับ implementation
-2. ใช้ `vi.mock` สำหรับ mocking modules และ `vi.fn` สำหรับ creating mock functions
+2. ใช้ `vi.mock` สำหรับ mocking modules, `vi.fn` สำหรับ creating mock functions และ `vi.when` สำหรับ conditional mocking ตาม arguments (Vitest 5)
 3. ใช้ `vi.spyOn` สำหรับ spying on methods และ `vi.defineHelper` สำหรับ wrap utility functions เพื่อ stack traces ที่ชี้ไป call site
 4. ใช้ chai-style assertions เช่น `expect(fn).to.have.been.called` สำหรับ migrate จาก Sinon
 5. ใช้ `vi.clearAllMocks` สำหรับ cleanup ระหว่าง tests
@@ -145,7 +145,7 @@ related:
 
 > Goal: ตั้งค่า coverage, watch mode และ CI integration
 
-1. ใช้ `coverage.include` แบบ explicit เพราะ Vitest 4 รายงานเฉพาะ files ที่ loaded ระหว่าง test run
+1. ใช้ `coverage.include` แบบ explicit เพราะ Vitest 4+ รายงานเฉพาะ files ที่ loaded ระหว่าง test run
 2. ใช้ `coverage.changed` เพื่อ limit coverage report เฉพาะ changed files และ `/* v8 ignore start */`/`/* v8 ignore stop */` สำหรับ ignore specific lines
 3. ตั้งค่า `coverage.htmlDir` สำหรับ custom HTML coverage output และ coverage thresholds สำหรับ quality gates
 4. ตั้งค่า watch mode สำหรับ development และใช้ `vitest run` สำหรับ CI/CD
@@ -208,7 +208,13 @@ related:
 
 ## References
 
+- [Vitest overview](references/vitest.md)
+- [API & dependencies](references/apis.md)
 - [CLI reference](references/cli.md)
+- [jsdom environment](references/jsdom.md)
+- [Package manifest](references/package-manifest.md)
+- [Docs routes](references/routes.md)
+- [Official resources](references/website.md)
 
 ## Expected Outcome
 

@@ -10,7 +10,7 @@ related:
   - follow-your-suggestion
   - implement-to-production
   - scan-codebase
-  - follow-skills-map
+  - search-skills
 
 ---
 
@@ -34,7 +34,7 @@ related:
 1. อ่าน prompt ล่าสุดและ context ที่มีอยู่
 2. ทำ `/scan-codebase` หรือ `/deep-analyze` เพื่อเข้าใจ project
 3. ระบุว่าผู้ใช้ต้องการอะไร: feature ใหม่, ขยาย feature เดิม, หรืองานทั่วไป
-4. ทำ `/follow-skills-map` เพื่อหา skills ที่เกี่ยวข้องกับ topic
+4. ทำ `/search-skills` เพื่อหา skills ที่เกี่ยวข้องกับ topic
 
 ### 2. Ask User With Multi-Step Questions
 

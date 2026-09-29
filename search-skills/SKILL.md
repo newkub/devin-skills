@@ -9,7 +9,6 @@ related:
   - resolve-errors
   - follow-tool-crw
   - learn
-  - follow-skills-map
 
 ---
 
@@ -32,7 +31,7 @@ related:
 1. ระบุ keyword ที่ต้องการค้นหา (เช่น framework, library, task, domain)
 2. พิจารณาคำที่เกี่ยวข้องและ synonyms ถ้าจำเป็น
 3. กำหนด scope ของการค้นหา (specific หรือ general)
-4. ถ้าต้องการดู map ของ skills ตาม task หรือ ecosystem ให้ทำ `/follow-skills-map` ก่อน
+4. ถ้า query เป็นอาการ/ปัญหา (symptom เช่น "disk เต็ม", "build fail") → เปิด [references/issue-map.md](references/issue-map.md) — symptom → skill table (merged จาก follow-skills-map)
 
 ### 2. Execute Skills Find
 

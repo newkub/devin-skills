@@ -78,7 +78,7 @@ related:
 
 > Goal: how-to ใน skill ใช้ tool จริงที่ติดตั้งแล้ว ไม่เขียน script/logic เองถ้า CLI ทำได้
 
-1. ก่อนเขียน how-to ใดๆ (search/replace, JSON/YAML, diff, benchmark, files, git, API calls, screenshots, video) → เช็ค inventory ที่ติดตั้งจริงใน `check-my-global-cli/references/global-cli-commands.md` + `follow-skills-map/references/tool-map.md` ก่อนเสมอ
+1. ก่อนเขียน how-to ใดๆ (search/replace, JSON/YAML, diff, benchmark, files, git, API calls, screenshots, video) → เช็ค inventory ที่ติดตั้งจริงใน `check-my-global-cli/references/global-cli-commands.md` + `check-my-global-cli/references/tool-map.md` ก่อนเสมอ
 2. ถ้า tool ตรงปัญหา → เขียน how-to อ้างถึง command จริงของ tool นั้น (เช่น `sd`/`sad` แทน PowerShell replace, `yq`/`jq` แทน parse เอง, `hyperfine` แทน timing เอง, `xh` แทน curl script, `ast-grep` แทน regex refactor, `agent-browser`/`playwright` แทน browser automation เอง)
 3. ถ้าไม่รู้ว่ามี tool ไหน → ทำ `/check-my-global-cli` สำรวจเครื่อง หรือ `/deep-research` หา CLI tool ที่แก้ปัญหาได้จริงก่อน — ค่อยเขียนเองเฉพาะเมื่อไม่มี tool เลย
 4. ถ้าพบ tool ที่ติดตั้งแต่ไม่มีใน inventory/map → อัปเดต `global-cli-commands.md` และ `tool-map.md` พร้อมกัน
@@ -146,7 +146,7 @@ related:
 
 ### 5. Content Standard
 
-- เนื้อหา how-to ต้องอ้างอิง CLI tools ที่ติดตั้งจริง (inventory: `check-my-global-cli/references/global-cli-commands.md`, map: `follow-skills-map/references/tool-map.md`) — ห้ามเขียน script/logic เองถ้ามี CLI ทำได้; ถ้าไม่มี tool ติดตั้ง → หา tool จริงผ่าน `/deep-research` หรือติดตั้งผ่าน `mise use -g` ก่อน
+- เนื้อหา how-to ต้องอ้างอิง CLI tools ที่ติดตั้งจริง (inventory: `check-my-global-cli/references/global-cli-commands.md`, map: `check-my-global-cli/references/tool-map.md`) — ห้ามเขียน script/logic เองถ้ามี CLI ทำได้; ถ้าไม่มี tool ติดตั้ง → หา tool จริงผ่าน `/deep-research` หรือติดตั้งผ่าน `mise use -g` ก่อน
 
 - `name` ตรง directory name, `description` ≤100 ตัวอักษร
 - ไม่มี TODO/MOCK/placeholder — ถ้าข้อมูลไม่ชัดให้ระบุความไม่แน่นอน

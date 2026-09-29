@@ -3,7 +3,7 @@
 ## Surface Definition
 
 - [ ] surface source declared — spec, map, config, routes, or user-provided list
-- [ ] `skills` surface — actions/domains from `../follow-skills-map/references/tool-map.md`, `global_rules.md` intents, skills-map categories
+- [ ] `skills` surface — actions/domains from `../check-my-global-cli/references/tool-map.md`, `global_rules.md` intents, skills-map categories
 - [ ] `tests` surface — routes/endpoints/public modules via `/review-delivery` or route-file scan
 - [ ] `docs` surface — features/public API from `FEATURES.md`, exports, routes
 - [ ] custom surface — extracted from user list or spec, normalized to keys

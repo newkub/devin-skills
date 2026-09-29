@@ -10,7 +10,7 @@ related:
   - deep-validate
   - follow-deep
   - check-reference
-  - follow-skills-map
+  - search-skills
   - update-devin-harness
   - review-docs
   - check-content-correctness
@@ -80,7 +80,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 
 1. เช็ค evidence แต่ละ finding
 2. ทำตาม `references/content-quality.md` และ `references/parallel-usage.md`
-3. ทำ `/follow-skills-map` ตรวจว่า map sync กับ skills จริง
+3. ทำ `/check-my-global-cli` ตรวจว่า `references/tool-map.md` sync กับ tools ที่ติดตั้งจริง
 
 ### 6. Plan And Execute Refactor
 

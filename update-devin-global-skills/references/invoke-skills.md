@@ -10,7 +10,7 @@
 
 ไม่ครอบคลุม:
 
-- การค้นหา skills ที่เกี่ยวข้อง → ทำ `/use-related-skills` หรือ `/follow-skills-map`
+- การค้นหา skills ที่เกี่ยวข้อง → ทำ `/use-related-skills` หรือ `/search-skills`
 - การเลือก skill ถัดไปตอน runtime → ดู `use-related-skills/references/in-another-skills.md`
 - การสร้าง skill ใหม่ → ทำ `/new-skills`
 

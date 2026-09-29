@@ -5,7 +5,7 @@ argument-hint: "[scope] [--relation]"
 related:
   - report
   - search
-  - follow-skills-map
+  - search-skills
 
 ---
 
@@ -46,7 +46,7 @@ related:
 
 1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
 2. ทำ `/report` สำหรับจัดรูปแบบ
-3. ทำ `/follow-skills-map` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
+3. ทำ `/search-skills` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
 4. ถ้าต้องการดูความสัมพันธ์/flow ของ skills → ใช้ `--relation` mode ของ skill นี้ (ดู [references/relation-view.md](references/relation-view.md))
 
 ## Rules

@@ -164,4 +164,4 @@ scoop list          # scoop apps
 winget list         # system packages (ช้า — ใช้เมื่อจำเป็น)
 ```
 
-เมื่อพบ tool ใหม่ที่ติดตั้ง → เพิ่มแถวในตารางนี้ + เพิ่ม mapping ใน `follow-skills-map/references/tool-map.md` ถ้ามี skill ที่เกี่ยว
+เมื่อพบ tool ใหม่ที่ติดตั้ง → เพิ่มแถวในตารางนี้ + เพิ่ม mapping ใน `check-my-global-cli/references/tool-map.md` ถ้ามี skill ที่เกี่ยว

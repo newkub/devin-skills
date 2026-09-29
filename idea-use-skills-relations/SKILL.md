@@ -55,7 +55,7 @@ related:
 2. skill ประเภท `create-*`, `update-*`, `new-*` ที่แตะ `SKILL.md` หรือ `global_rules.md` แต่ไม่จบด้วย `/use-related-skills` → เสนอเพิ่ม step
 3. skills ที่ Goal/Scope ซ้อนทับกันแต่ไม่ link กัน (เช่น `idea-*` กับ `review-*` ใน domain เดียวกัน) → เสนอ complementary edges
 4. skill ที่ถูกเรียกบ่อยแต่ไม่มีใคร link กลับ → เสนอ reverse edges
-5. เปรียบเทียบกับ `follow-skills-map` — skill ที่ map แนะนำร่วมกันแต่ `related` ไม่สะท้อน
+5. เปรียบเทียบกับผล `/search-skills` — skill ที่ search แนะนำร่วมกันแต่ `related` ไม่สะท้อน
 
 ### 4. Draft Relation Ideas
 

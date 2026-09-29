@@ -1,6 +1,6 @@
 ---
 name: follow-architecture
-description: Dispatcher เลือก architecture pattern ตาม directory — packages ใช้ Clean, apps ใช้ Layered
+description: Dispatcher เลือก architecture pattern ตาม directory — packages/crates ใช้ Clean, apps ใช้ Layered
 argument-hint: "[clean|layered|path]"
 related:
   - follow-clean-architecture
@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-เลือกและ apply architecture pattern ที่ถูกต้องให้แต่ละส่วนของ monorepo/project — `packages/` ใช้ Clean Architecture, `apps/` ใช้ Layered Architecture — โดย route ไปยัง skill เฉพาะ pattern
+เลือกและ apply architecture pattern ที่ถูกต้องให้แต่ละส่วนของ monorepo/project — `packages/`/`crates/` ใช้ Clean Architecture, `apps/` ใช้ Layered Architecture — โดย route ไปยัง skill เฉพาะ pattern
 
 ## Scope
 
@@ -29,14 +29,14 @@ related:
 
 | Target | Skill |
 |--------|-------|
-| `packages/*` (shared libs, modules, domain packages) | `/follow-clean-architecture` |
+| `packages/*`, `crates/*` (shared libs, modules, domain packages, Rust crates) | `/follow-clean-architecture` |
 | `apps/*` (web, mobile, api entry points) | `/follow-layered-architecture` |
 | directory อื่น หรือไม่ใช่ monorepo | ถาม user หรือเลือกตามลักษณะ code (testability สูง/domain-heavy → clean; UI-driven/CRUD → layered) |
 
 1. ถ้า argument ระบุ `clean` → `/follow-clean-architecture`; `layered` → `/follow-layered-architecture`
 2. ถ้า argument เป็น path → map ตามตารางแล้ว dispatch
-3. ถ้าไม่ระบุ → scan root: มี `packages/` → clean ทุก package; มี `apps/` → layered ทุก app; ทั้งคู่ → ทำทีละอันตาม severity
-4. ถ้า project เดี่ยวไม่มี `packages/`/`apps/` → ถาม user ว่าต้องการ pattern ใด
+3. ถ้าไม่ระบุ → scan root: มี `packages/` หรือ `crates/` → clean ทุก package/crate; มี `apps/` → layered ทุก app; หลายกลุ่ม → ทำทีละอันตาม severity
+4. ถ้า project เดี่ยวไม่มี `packages/`/`crates/`/`apps/` → ถาม user ว่าต้องการ pattern ใด
 
 ### 2. Apply Pattern
 
@@ -55,13 +55,13 @@ related:
 
 ## Rules
 
-- Convention: `packages/` = Clean Architecture, `apps/` = Layered Architecture — ห้าม apply สลับกันโดยไม่มีเหตุผลจาก user
+- Convention: `packages/`, `crates/` = Clean Architecture, `apps/` = Layered Architecture — ห้าม apply สลับกันโดยไม่มีเหตุผลจาก user
 - ทีละ target เสร็จก่อนไปต่อ — ห้าม restructure หลาย package พร้อมกัน
 - รักษา public API/behavior เดิม — เป็น structural change ไม่ใช่ feature change
 - ใช้ /refactor, /restructure, /update-references ระหว่าง apply
 
 ## Expected Outcome
 
-- ทุก `packages/*` เป็น Clean Architecture (functional core, ports & adapters)
+- ทุก `packages/*`, `crates/*` เป็น Clean Architecture (functional core, ports & adapters)
 - ทุก `apps/*` เป็น Layered Architecture (presentation → domain → data)
 - ไม่มี broken imports หรือ circular dependencies หลัง restructure

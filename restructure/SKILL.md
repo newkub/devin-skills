@@ -1,9 +1,10 @@
 ---
 name: restructure
-description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
+description: ปรับโครงสร้างไฟล์/โฟลเดอร์ให้ single responsibility และแยก content ตาม concern
 argument-hint: "[scope]"
 related:
   - refactor
+  - follow-architecture
   - relocation
   - update-references
   - rethink
@@ -19,7 +20,7 @@ related:
 
 ## Scope
 
-ครอบคลุม naming, relocation, grouping ของ physical structure สำหรับจัดระเบียบไฟล์ตาม domain สำหรับ logical concern separation ให้ใช้ `/refactor`
+ครอบคลุม naming, relocation, grouping ของ physical structure และ separation of content — แยก content ที่ต่าง concern (types, constants, config, logic, docs sections) ออกเป็นไฟล์เฉพาะทาง สำหรับ logical concern separation ให้ใช้ `/refactor`
 
 ## Execute
 
@@ -56,29 +57,42 @@ related:
 
 > Goal reminder: เป้าหมายคือทุกไฟล์มี single responsibility ไม่เกิน 250 บรรทัด
 
-### 4. Relocate And Group By Domain
+### 4. Separate Content By Concern
+
+> Goal: ทุกไฟล์มี content ประเภทเดียว ไม่ผสม concern
+
+แยก content ที่ต่าง concern ในไฟล์เดียวกันออกเป็นไฟล์เฉพาะทาง
+
+1. ระบุไฟล์ที่ผสม content หลายประเภท เช่น types + logic, constants + config, schema + validation, หรือ markdown ที่ผสมหลายเรื่อง
+2. แยกเป็นไฟล์ตาม content type — `types.ts`, `constants.ts`, `config.ts`, `schema.ts` หรือไฟล์ตามชื่อ concern
+3. ทำ `/refactor` สำหรับ content split ที่ต้องปรับ logic
+4. ทำ `/update-references` เพื่ออัปเดต imports/references ของ content ที่ย้าย
+5. ถ้าไม่มีไฟล์ที่ผสม concern → skip ไป Step 5
+
+### 5. Relocate And Group By Domain
 
 > Goal: ไฟล์อยู่ในโฟลเดอร์ที่สอดคล้องกับ domain
 
 ย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ domain — high-risk action
 
-1. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
-2. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
-3. ทำ `/review-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
-4. ทำ `/update-references` เพื่ออัปเดต imports
-5. ทำ `/update-agents-md` เมื่อโครงสร้างที่เปลี่ยนกระทบ layout ที่ AGENTS.md อธิบายไว้
-6. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
+1. ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention ก่อน relocate (`packages/`/`crates/` → `/follow-clean-architecture`, `apps/` → `/follow-layered-architecture`)
+2. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
+3. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
+4. ทำ `/review-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
+5. ทำ `/update-references` เพื่ออัปเดต imports
+6. ทำ `/update-agents-md` เมื่อโครงสร้างที่เปลี่ยนกระทบ layout ที่ AGENTS.md อธิบายไว้
+7. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 
-### 5. Refactor Imports And Exports
+### 6. Refactor Imports And Exports
 
 > Goal: barrel exports และ import aliases ใช้ alias แทน relative paths ซับซ้อน
 
 ปรับปรุง barrel exports, import aliases และ import paths ให้ใช้ alias แทน relative paths ที่ซับซ้อน
 
 1. ทำ `/review-architecture` เพื่อ refactor barrel exports และแทนที่ relative paths ที่ซับซ้อนด้วย import aliases
-2. ถ้า barrel files และ import aliases ไม่ต้องปรับ → skip ไป Step 6
+2. ถ้า barrel files และ import aliases ไม่ต้องปรับ → skip ไป Step 7
 
-### 6. Validate Single Responsibility
+### 7. Validate Single Responsibility
 
 > Goal: ยืนยันผลลัพธ์เป็นไปตามเป้าหมาย single responsibility
 
@@ -102,6 +116,7 @@ related:
 ### 2. File And Folder Boundaries
 
 - หนึ่งไฟล์ทำหนึ่งเรื่อง ไม่เกิน 250 บรรทัด
+- หนึ่งไฟล์มี content ประเภทเดียว — แยก types, constants, config, logic เป็นคนละไฟล์
 - หนึ่งโฟลเดอร์รวมไฟล์ที่เกี่ยวข้องกับ domain เดียว
 - naming สะท้อน responsibility ของไฟล์
 
@@ -112,7 +127,7 @@ related:
 
 ### 4. High-Risk Governance
 
-- การย้ายไฟล์ (Step 4) เป็น high-risk action → ต้องมี user confirmation และ dry run mode
+- การย้ายไฟล์ (Step 5) เป็น high-risk action → ต้องมี user confirmation และ dry run mode
 - ถ้า validation ไม่ผ่าน → rollback การเปลี่ยนแปลง
 
 - ใช้ /rethink ถ้าจำเป็น
@@ -120,6 +135,7 @@ related:
 ## Expected Outcome
 
 - ทุกไฟล์มี `single responsibility` ชัดเจน ไม่เกิน 250 บรรทัด
+- content ที่ต่าง concern ถูกแยกเป็นไฟล์เฉพาะทาง
 - ทุกโฟลเดอร์จัดกลุ่มตาม domain เดียว
 - naming สะท้อน responsibility ทั่วทั้งโปรเจกต์
 - import paths ถูกต้อง ใช้ alias แทน relative paths ที่ซับซ้อน
