@@ -21,6 +21,8 @@ related:
   - dont-over-engineer
   - follow-single-of-source
   - follow-reusable
+  - follow-my-techstack
+  - use-lib-effective
   - review-architecture
   - review-database
   - deep-review
@@ -185,6 +187,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 ### 5. Minimal Change
 
 - `/dont-over-engineer` + `/follow-reusable` (reuse > extend > extract > create); แก้ root cause ตาม `references/code-smells.md`; ห้าม perf tuning ใน refactor pass
+- ก่อนเลือก/เพิ่ม dependency → `/follow-my-techstack` (เทียบ `review-dependencies/references/techstack-catalog.md`) + `/use-lib-effective` (ใช้ dep ที่มีแทน reinvent)
 
 ### 6. SRP And Consistency
 
