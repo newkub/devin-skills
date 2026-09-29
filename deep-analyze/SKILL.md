@@ -14,7 +14,6 @@ related:
   - use-scripts
   - deep-review
   - deep-analyze-by-use-scripts
-  - deep-analyze-and-refactor
 
 ---
 
@@ -196,7 +195,6 @@ related:
 - ให้ recommendations + roadmap + action items ตาม priority และ impact
 - ใช้ `/report-deep` สำหรับ detailed report หรือ `/report` สำหรับ chat table
 - alias stub: `/deep-analyze-by-use-scripts` — forward มาที่ skill นี้ (extract จาก `subskills/by-use-scripts` เดิม)
-- ใช้ `/deep-analyze-and-refactor` ถ้าจำเป็น
 
 ### 7. Deep Analysis Scripts
 

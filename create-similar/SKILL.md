@@ -3,7 +3,6 @@ name: create-similar
 description: สร้างไฟล์ skill หรือ project ใหม่โดยอ้างอิงโครงสร้างจากตัวอย่าง
 argument-hint: "[scope]"
 related:
-  - edit-this-repo
   - update-devin-global-skills
   - review-code-quality
   - use-related-skills
@@ -18,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการสร้าง skill, file, component, หรือ project structure ใหม่โดยอ้างอิงจากตัวอย่างเดิม เช่น สร้าง `edit-<repo>` จาก `edit-this-repo`
+ใช้เมื่อต้องการสร้าง skill, file, component, หรือ project structure ใหม่โดยอ้างอิงจากตัวอย่างเดิม เช่น สร้าง `edit-<repo>` จาก `edit-*` ตัวอย่างเดิม
 
 ## Execute
 
