@@ -152,6 +152,18 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 - Use `/ship` for the release workflow.
 - Follow project conventions and validation before release.
 
+## MCP Servers
+
+Read-only MCP servers (Rust + rmcp) live at `D:/newkub/devin-mcp` and are registered in `%APPDATA%\devin\mcp_config.json`:
+
+| Server | Covers skills |
+|--------|---------------|
+| `devin-git-mcp` | `check-merge-conflicts`, `check-uncommit`, `check-unpush`, `list-git-*`, `git-file-history`, `check-git-logs` |
+| `devin-sys-env-mcp` | `check-system-env`, `list-computer-info`, `list-program-in-computer` |
+| `devin-code-metrics-mcp` | `check-long-files`, `check-dts`, `check-code-structure`, `list-workspaces` |
+
+Prefer `mcp_call_tool` over re-running the skill workflow when only the structured data is needed.
+
 ## Expected Outcome
 
 - `AGENTS.md` follows Devin CLI standards and stays under 250 lines.
