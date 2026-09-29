@@ -23,8 +23,7 @@ related:
 
 | Topic | Skill |
 |-------|-------|
-| References / Web / CLI | `/learn-from-references` — เรียนรู้จาก `references/`, official docs (DeepWiki, Context7, Web Search) และ CLI discovery แล้วเขียน content ครอบคลุม |
-| Web | `/learn-from-web` — learning path จาก URL/topic ภายนอก พร้อม citations |
+| Web / Docs | `/learn-from-web` — เรียนรู้จาก official docs (DeepWiki, Context7, Web Search) แล้วเขียน content ครอบคลุม |
 | CLI tool | `/learn-from-cli` — command surface จาก `--help`, subcommands, binary จริง |
 | Library API | `/learn-from-dts` — API surface จาก `.d.ts` declarations ใน `node_modules` |
 | Codebase | `/learn-from-codebase` — `/deep-analyze` + learning path และ concept map ของ codebase |
@@ -60,7 +59,7 @@ related:
 
 > Goal: Learn From Sources
 
-ทำ `/learn-from-references` สำหรับเรียนรู้จาก references, เว็บไซต์หลัก และ CLI:
+ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก และ `/learn-from-cli` สำหรับ CLI discovery:
 
 1. ใช้ DeepWiki สำหรับ GitHub repositories
 2. ใช้ Context7 สำหรับ libraries และ frameworks
@@ -115,7 +114,7 @@ related:
 ### 2. Research Standards
 
 - ทำ `/deep-research` สำหรับค้นหาข้อมูลลึกจาก multiple sources
-- ทำ `/learn-from-references` สำหรับเรียนรู้จากเว็บไซต์หลัก
+- ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก, `/learn-from-cli` สำหรับ CLI, `/learn-from-dts` สำหรับ API surface
 - ตรวจสอบ credibility และ freshness ของข้อมูล
 - บันทึก code examples และ configuration examples
 

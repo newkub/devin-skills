@@ -8,7 +8,8 @@ related:
   - research-dependencies
   - deep-research
   - follow-best-practice
-  - learn-from-references
+  - learn-from-web
+  - learn-from-dts
   - follow-reusable
   - refactor
   - implement-to-production
@@ -44,7 +45,7 @@ related:
 > Goal: ตอบคำถาม "ของที่มีทำได้แล้วหรือยัง" ก่อนเสมอ
 
 1. แปลงความต้องการเป็น category (เช่น retry → `Schedule` ใน `effect`; validation → `zod`; dates → `date-fns`)
-2. ศึกษา capability ของ dep ที่มี: ทำ `/deep-research`, `/learn-from-references`, DeepWiki (repo ของ lib) หรือ context7 (API reference) และอ่าน `d.ts` ใน `node_modules` เพื่อรู้ API ที่พร้อมใช้ — ตรวจ changelog หา features ใหม่ที่ยังไม่ได้ใช้
+2. ศึกษา capability ของ dep ที่มี: ทำ `/deep-research`, `/learn-from-web`, DeepWiki (repo ของ lib) หรือ context7 (API reference) และทำ `/learn-from-dts` อ่าน `d.ts` ใน `node_modules` เพื่อรู้ API ที่พร้อมใช้ — ตรวจ changelog หา features ใหม่ที่ยังไม่ได้ใช้
 3. ถ้า dep ที่มีอยู่ทำได้ → ใช้ dep นั้น ห้ามเขียนเองและห้ามเพิ่ม dep ใหม่
 4. ถ้า dep ทำได้บางส่วน → ใช้ dep เป็นหลัก เขียนเฉพาะส่วนที่ขาดเป็น thin wrapper
 5. ถ้ามีหลายตัวทำได้ → เลือกตาม `/follow-my-techstack`
@@ -61,7 +62,7 @@ related:
 
 > Goal: ใช้ lib ที่เลือกให้ถูกและครบ capability ที่จำเป็น
 
-1. อ่าน docs ผ่าน context7 หรือ `/learn-from-references` เมื่อไม่แน่ใจ API surface
+1. อ่าน docs ผ่าน context7, `/learn-from-web` หรือ `/learn-from-dts` เมื่อไม่แน่ใจ API surface
 2. ใช้ feature ที่ lib มีให้ครบ (เช่น `Effect.retry`+`Schedule` แทน handwritten retry loop; connection pooling, tree-shaking, lazy loading, feature flags)
 3. ลบ code ที่ reinvent สิ่งที่ lib ทำ — ถ้า refactor → เพิ่มเป็น finding ใน report
 4. ถ้าพบ dep ซ้ำซ้อน (สองตัวทำอย่างเดียวกัน) → flag ใน report ให้ user ตัดสินใจ ไม่ลบเอง
