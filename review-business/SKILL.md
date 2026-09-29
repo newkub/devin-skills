@@ -7,6 +7,7 @@ related:
   - suggest-next-action
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -23,79 +24,79 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 
 > Goal: เข้าใจ business logic setup ใน codebase
 
-- ดูรายละเอียดใน [references/prepare-and-scan.md](references/prepare-and-scan.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/prepare-and-scan.md](subagents/business-reviewer/prepare-and-scan.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 2. Payment Review
 
 > Goal: ครอบคลุมทุก payment dimension
 
-- ดูรายละเอียดใน [references/payment-review.md](references/payment-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/payment-review.md](subagents/business-reviewer/payment-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 3. Subscription Review
 
 > Goal: ครอบคลุมทุก subscription dimension
 
-- ดูรายละเอียดใน [references/subscription-review.md](references/subscription-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/subscription-review.md](subagents/business-reviewer/subscription-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 4. Multi-Tenancy Review
 
 > Goal: ครอบคลุมทุก multi-tenancy dimension
 
-- ดูรายละเอียดใน [references/multi-tenancy-review.md](references/multi-tenancy-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/multi-tenancy-review.md](subagents/business-reviewer/multi-tenancy-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 5. Feature Flags Review
 
 > Goal: ครอบคลุมทุก feature flag dimension
 
-- ดูรายละเอียดใน [references/feature-flags-review.md](references/feature-flags-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/feature-flags-review.md](subagents/business-reviewer/feature-flags-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 6. Realtime Review
 
 > Goal: ครอบคลุมทุก realtime dimension
 
-- ดูรายละเอียดใน [references/realtime-review.md](references/realtime-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/realtime-review.md](subagents/business-reviewer/realtime-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 7. Email Review
 
 > Goal: ครอบคลุมทุก email dimension
 
-- ดูรายละเอียดใน [references/email-review.md](references/email-review.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/email-review.md](subagents/business-reviewer/email-review.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 8. Validate Findings
 
 > Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
-- ดูรายละเอียดใน [references/validate-findings.md](references/validate-findings.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/validate-findings.md](subagents/business-reviewer/validate-findings.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 9. Report
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-- ดูรายละเอียดใน [references/report.md](references/report.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/report.md](subagents/business-reviewer/report.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ### 10. Implement All
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-- ดูรายละเอียดใน [references/implement-all.md](references/implement-all.md)
+- ดูรายละเอียดใน [subagents/business-reviewer/implement-all.md](subagents/business-reviewer/implement-all.md)
 - บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (business)
-- ข้าม section ที่ไม่เกียวข้อง: ดู [references/prepare-and-scan.md](references/prepare-and-scan.md)
-- จัดลำดับ severity และ evidence: ดู [references/validate-findings.md](references/validate-findings.md)
-- คำนวณ score และ metrics: ดู [references/scoring.md](references/scoring.md)
-- Format รายงาน: ดู [references/report.md](references/report.md)
+- ข้าม section ที่ไม่เกียวข้อง: ดู [subagents/business-reviewer/prepare-and-scan.md](subagents/business-reviewer/prepare-and-scan.md)
+- จัดลำดับ severity และ evidence: ดู [subagents/business-reviewer/validate-findings.md](subagents/business-reviewer/validate-findings.md)
+- คำนวณ score และ metrics: ดู [subagents/business-reviewer/scoring.md](subagents/business-reviewer/scoring.md)
+- Format รายงาน: ดู [subagents/business-reviewer/report.md](subagents/business-reviewer/report.md)
 
 - ใช้ /review-compliance ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
@@ -111,15 +112,16 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Payment](references/payment-review.md)
-- [Subscription](references/subscription-review.md)
-- [Multi-tenancy](references/multi-tenancy-review.md)
-- [Feature flags](references/feature-flags-review.md)
-- [Realtime](references/realtime-review.md)
-- [Email](references/email-review.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/business-reviewer/checklist.md)
+- [Payment](subagents/business-reviewer/payment-review.md)
+- [Subscription](subagents/business-reviewer/subscription-review.md)
+- [Multi-tenancy](subagents/business-reviewer/multi-tenancy-review.md)
+- [Feature flags](subagents/business-reviewer/feature-flags-review.md)
+- [Realtime](subagents/business-reviewer/realtime-review.md)
+- [Email](subagents/business-reviewer/email-review.md)
+- [Scoring](subagents/business-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

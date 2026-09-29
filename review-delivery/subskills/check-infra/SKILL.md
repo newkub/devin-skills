@@ -23,7 +23,7 @@ Run the infrastructure dimension of `/review-delivery` แบบ focused — inf
 
 > Goal: ครอบคลุมทุก infra dimension
 
-ทำตาม `../../references/infrastructure.md`
+ทำตาม `../../subagents/delivery-reviewer/infrastructure.md`
 
 1. containers — multi-stage builds, layer cache, minimal base, non-root user
 2. environments — dev/staging/prod parity, config per env ไม่ hardcode

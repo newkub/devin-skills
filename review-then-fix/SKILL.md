@@ -4,6 +4,7 @@ description: alias → /deep-review-then-fix (review แล้ว apply fix ต�
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
+  - use-subagents
 ---
 
 ## Goal
@@ -22,6 +23,7 @@ Alias ของ `/deep-review-then-fix` — review แล้ว apply fix ตา
 
 - ห้าม duplicate workflow ของ `/deep-review-then-fix` ในไฟล์นี้
 - ถ้า alias ขาด steps → อ่าน `deep-review-then-fix/SKILL.md` เสมอ
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

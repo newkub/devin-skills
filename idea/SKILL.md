@@ -9,6 +9,7 @@ related:
   - then-apply
   - suggest-next-action
   - implement-to-production
+  - idea-grouping
 
 ---
 ## Goal
@@ -29,6 +30,7 @@ related:
 | ไอเดีย improve scope ใดๆ (quick wins, strategic, Extends/New/Remove) | `/idea-improve` |
 | ตั้งชื่อไฟล์/directory สำหรับ idea | `/idea-naming` |
 | ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |
+| ไอเดียจัดกลุ่ม items ตาม criteria/themes | `/idea-grouping` |
 | ไอเดียจาก review findings/reports ที่มีอยู่ | `/idea-review` |
 | ไอเดีย UX/UI improvements และ features | `/idea-uxui` |
 | ไอเดีย refactor workspace ใน monorepo | `/idea-refactor-workspace` |

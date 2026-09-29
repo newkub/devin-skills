@@ -15,79 +15,61 @@ related:
   - suggest-next-action
   - review-frontend
   - review-dependencies
+  - use-subagents
 ---
 
 ## Goal
 
-Review SEO ครอบคลุม technical SEO, on-page SEO, structured data, Core Web Vitals, sitemap, international SEO, semantic HTML พร้อม severity ratings และ review score
+Review SEO ครอบคลุม technical SEO, on-page SEO, structured data, Core Web Vitals, sitemap, international SEO, semantic HTML พร้อม severity ratings และ review score — domain checklist อยู่ใน `subagents/seo-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้สำหรับ review SEO ของ web applications:
-- `technical`: crawling, indexing, `robots.txt`, sitemap, canonical, hreflang, URL structure
-- `on-page`: title tags, meta descriptions, headings, Open Graph, Twitter Cards, internal linking
-- `structured-data`: JSON-LD, schema types, validity
-- `performance-for-seo`: LCP, INP, CLS, FCP, TBT, Speed Index
-- `content`: semantic HTML, image alt texts, heading hierarchy, content discoverability
-- `international`: hreflang, locale-specific URLs
+
+| Dimension | Checklist |
+|-----------|-----------|
+| `technical` — crawling, indexing, `robots.txt`, sitemap, canonical, URL structure | `subagents/seo-reviewer/seo-checklist.md` |
+| `on-page` — title tags, meta descriptions, headings, Open Graph, Twitter Cards, internal linking | `subagents/seo-reviewer/seo-checklist.md` |
+| `structured-data` — JSON-LD, schema types, validity | `subagents/seo-reviewer/seo-checklist.md` |
+| `performance-for-seo` — LCP, INP, CLS, FCP, TBT, Speed Index | `subagents/seo-reviewer/seo-checklist.md` |
+| `content` — semantic HTML, image alt texts, heading hierarchy, content discoverability | `subagents/seo-reviewer/seo-checklist.md` |
+| `international` — hreflang, locale-specific URLs | `subagents/seo-reviewer/seo-checklist.md` |
 
 ไม่รวม UX/UI design, accessibility, general performance — ใช้ `/review-uxui`, `/review-performance` ตามทีเหมาะสม
 
 ## Execute
-### 1. Prepare And Scan
+
+### 1. Prepare And Baseline
 
 > Goal: เข้าใจ web structure, framework, และ SEO setup
 
 1. ทำ `/scan-codebase`
 2. ระบุ SEO tools ที่มี
-3. ทำ `/deep-analyze` และ `/run-review`
+3. ทำ `/deep-analyze` และ `/run-review` เก็บ baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Technical SEO Review
+### 2. Dispatch Seo-Reviewer
 
-> Goal: search engines สามารถ crawl และ index ได้
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน Technical SEO
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply (ตาม skip conditions ใน Rules)
+2. Spawn `subagents/seo-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. On-Page SEO Review
-
-> Goal: แต่ละ page มี on-page signals ที่ถูกต้อง
-
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน On-Page SEO
-
-### 4. Structured Data And Schema Review
-
-> Goal: structured data ถูกต้องและครอบคลุม
-
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน Structured Data And Schema
-
-### 5. Core Web Vitals For SEO
-
-> Goal: page experience signals ผ่านเกณฑ์ SEO
-
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน Core Web Vitals For SEO
-
-### 6. International And SSR SEO
-
-> Goal: SEO รองรับหลาย locale และ rendering strategy
-
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน International And SSR SEO
-
-### 7. Content And Semantic HTML
-
-> Goal: content ถูกโครงสร้างและ discoverable
-
-1. ทำตาม [references/seo-checklist.md](references/seo-checklist.md) — ส่วน Content And Semantic HTML
-
-### 8. Validate, Score And Report
+### 3. Aggregate And Score
 
 > Goal: findings ถูกต้อง พร้อม review score
 
-1. ทำ `/deep-validate`
-2. ทำ `/deep-validate` สำหรับ issues จาก scripts
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. ทำ `/deep-validate`
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
-4. ทำตาม `references/scoring.md`
-5. ทำ `/report`
-6. ทำ `/suggest-next-action`
+4. ทำตาม `subagents/seo-reviewer/scoring.md`
+
+### 4. Report
+
+> Goal: รายงานครบทุก dimension พร้อม next actions
+
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
+2. ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -105,6 +87,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 - เน้น SEO บน web applications
 - ไม่ซ้ำกับ `/review-uxui`, `/review-performance`, `/deep-review`
 - ถ้าพบ accessibility/performance issues → ระบุเป็น info และแนะนำ sub-skill
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/seo-reviewer/` เท่านั้น
 
 ### 2. Skip Conditions
 
@@ -151,8 +134,8 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 ## References
 
-- [Full SEO checklist](references/seo-checklist.md)
-- [Scoring guide](references/scoring.md)
+- [Full SEO checklist](subagents/seo-reviewer/seo-checklist.md)
+- [Scoring guide](subagents/seo-reviewer/scoring.md)
 
 ## Expected Outcome
 - รายงาน SEO findings ครอบคลุมทุก dimension

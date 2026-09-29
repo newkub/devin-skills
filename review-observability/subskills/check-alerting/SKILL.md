@@ -22,7 +22,7 @@ Run the alerting + incident response dimension of `/review-observability` แบ
 
 > Goal: alerts ปลุกเฉพาะเรื่องที่ต้อง act
 
-ทำตาม `../../references/alerting.md` + `../../references/incident-response.md`
+ทำตาม `../../subagents/observability-reviewer/alerting.md` + `../../subagents/observability-reviewer/incident-response.md`
 
 1. actionable — ทุก alert มี action ที่ชัด; symptom-based (user impact) ไม่ใช่ cause-based เท่านั้น
 2. thresholds — static thresholds ที่ flap, missing burn-rate alerts บน SLOs

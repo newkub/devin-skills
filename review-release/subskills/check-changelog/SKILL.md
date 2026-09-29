@@ -26,7 +26,7 @@ Run the changelog dimension of `/review-release` แบบ focused — changelog
 
 > Goal: changelog ตรง reality — parent Execute §3 + §6
 
-ทำตาม `../../references/changelog.md` + `../../references/version-semver.md`
+ทำตาม `../../subagents/release-reviewer/changelog.md` + `../../subagents/release-reviewer/version-semver.md`
 
 1. completeness — merged PRs/commits ตั้งแต่ tag ล่าสุดครบใน changelog (เทียบ `/review-release`)
 2. format — Keep a Changelog categories (Added/Changed/Fixed/Removed/Security), dates, version headers

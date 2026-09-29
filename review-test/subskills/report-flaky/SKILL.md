@@ -24,7 +24,7 @@ related:
 
 > Goal: list จาก history จริงไม่ใช่ code smell เดา
 
-ทำตาม `../../references/analyze-coverage-flaky.md`
+ทำตาม `../../subagents/test-reviewer/analyze-coverage-flaky.md`
 
 1. flaky tests จาก CI retry history, `@flaky` markers, retry config, failure patterns
 2. `No.`, `Test`, `Flake Rate`, `First Seen`, `Last Seen`, `Evidence` — real run data

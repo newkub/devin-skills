@@ -90,7 +90,7 @@ related:
 
 - ไม่บังคับ symmetry — เสนอ reverse edge เฉพาะเมื่อ target ควรรู้ว่ามี source เรียกใช้มัน
 - จำกัด `related` ≤ 10 entries ต่อ skill — ถ้าเกินให้เสนอเฉพาะที่เกี่ยวข้องสุดและเหตุผลว่าควรตัดอะไร
-- เมื่อเสนอ invocation step ให้เขียนตาม `update-devin-global-skills/references/invoke-skills.md`
+- เมื่อเสนอ invocation step ให้เขียนตาม `update-devin-global-skills` (`## Conventions → Invoke Skills`)
 - continuous numbering ต่อจาก idea report เดิมถ้ามี — ไม่ลบไอเดียเก่า
 
 ## Expected Outcome

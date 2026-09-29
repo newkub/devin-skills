@@ -6,6 +6,7 @@ related:
   - deep-analyze
   - deep-validate
   - resolve-errors
+  - refactor-all-files-in-workspace
 ---
 
 ## Goal

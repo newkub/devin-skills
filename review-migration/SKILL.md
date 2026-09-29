@@ -13,6 +13,7 @@ related:
   - scan-codebase
   - run-drizzle-studio
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -21,7 +22,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Scope
 
-ใช้ก่อน migration ด้วย `follow-tool-renovate`, `/update-version-to-latest` หรือ execution ตาม `references/migration-checklist.md` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags แล้วสรุป migration risk score พร้อม go/no-go recommendation
+ใช้ก่อน migration ด้วย `follow-tool-renovate`, `/update-version-to-latest` หรือ execution ตาม `subagents/migration-reviewer/migration-checklist.md` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags แล้วสรุป migration risk score พร้อม go/no-go recommendation
 
 ## Execute
 
@@ -29,25 +30,25 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 > Goal: เข้าใจ migration scope และ project context
 
-ทำตาม references/prepare-context.md
+ทำตาม subagents/migration-reviewer/prepare-context.md
 
 ### 2. Check Backward Compatibility
 
 > Goal: ตรวจ backward compatibility
 
-ทำตาม references/backward-compat.md
+ทำตาม subagents/migration-reviewer/backward-compat.md
 
 ### 3. Check Data Integrity
 
 > Goal: ตรวจ data integrity และ migration scripts
 
-ทำตาม references/data-integrity.md
+ทำตาม subagents/migration-reviewer/data-integrity.md
 
 ### 4. Check Rollback And Cutover
 
 > Goal: ตรวจ rollback strategy และ cutover plan
 
-ทำตาม references/rollback-cutover.md
+ทำตาม subagents/migration-reviewer/rollback-cutover.md
 
 ### 5. Check Migration Types
 
@@ -62,13 +63,13 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 > Goal: ตรวจ execution readiness ก่อนลงมือ
 
-ทำตาม references/migration-checklist.md
+ทำตาม subagents/migration-reviewer/migration-checklist.md
 
 ### 7. Score And Report
 
 > Goal: สรุป migration risk score และ go/no-go
 
-ทำตาม references/scoring.md
+ทำตาม subagents/migration-reviewer/scoring.md
 
 - คำนวณ migration risk score, level และ supplementary metrics
 - สร้างตาราง Risk Summary, Breaking Changes, Rollback Plan
@@ -89,7 +90,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 1. Review Independence
    - ทำ review เท่านั้น ไม่ execute migration ระหว่าง review
-   - ถ้าต้อง migrate ให้ทำตาม `references/migration-checklist.md` หลัง review
+   - ถ้าต้อง migrate ให้ทำตาม `subagents/migration-reviewer/migration-checklist.md` หลัง review
    - ทุก finding ต้องมี file path และ evidence (migration)
 2. Evidence-Based Findings
    - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
@@ -98,7 +99,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 3. Scoring
    - คะแนนต่อ category: ✅ = 1, ⚠️ = 0.5, ❌ = 0
    - Migration risk score = (total risk / total categories) × 100%
-   - Risk level ตาม thresholds ใน references/scoring.md
+   - Risk level ตาม thresholds ใน subagents/migration-reviewer/scoring.md
    - Score < 70 → No-Go แนะนำให้ปรับ migration plan ก่อน
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
@@ -122,7 +123,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 > ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied
 
-1. ทำตาม `references/verify-migration-data.md`
+1. ทำตาม `subagents/migration-reviewer/verify-migration-data.md`
 2. ใช้ `/review-database` ยืนยัน version ล่าสุด
 3. ทำ `/report-before-after` เทียบ row counts/aggregates
 4. ถ้า mismatch → ระบุ rows/columns ที่ต่าง และแนะนำ fix-forward หรือ rollback
@@ -131,12 +132,13 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## References
 
-- [Migration checklist](references/migration-checklist.md)
-- [Backward compat](references/backward-compat.md)
-- [Data integrity](references/data-integrity.md)
-- [Rollback and cutover](references/rollback-cutover.md)
-- [Verify migration data](references/verify-migration-data.md)
-- [Scoring](references/scoring.md)
+- [Migration checklist](subagents/migration-reviewer/migration-checklist.md)
+- [Backward compat](subagents/migration-reviewer/backward-compat.md)
+- [Data integrity](subagents/migration-reviewer/data-integrity.md)
+- [Rollback and cutover](subagents/migration-reviewer/rollback-cutover.md)
+- [Verify migration data](subagents/migration-reviewer/verify-migration-data.md)
+- [Scoring](subagents/migration-reviewer/scoring.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

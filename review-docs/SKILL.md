@@ -12,6 +12,7 @@ related:
   - update-vitepress-docs
   - run-docs
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -22,7 +23,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 ใช้ก่อนเรียก `update-docs` หรือ `update-vitepress-docs` — ตรวจ `docs/` structure, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-docs`)
 
-- content coverage ดู `references/content-coverage-checklist.md`, README checks ดู `references/readme-*.md`
+- content coverage ดู `subagents/docs-reviewer/content-coverage-checklist.md`, README checks ดู `subagents/docs-reviewer/readme-*.md`
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
@@ -41,38 +42,38 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 > Goal: ตรวจ `docs/` directory structure ครบถ้วน
 
-1. ทำตาม `references/structure.md`
+1. ทำตาม `subagents/docs-reviewer/structure.md`
 
 ### 3. Check VitePress Config (conditional)
 
 > Goal: ตรวจ nav และ sidebar ครบถ้วน เฉพาะเมื่อ project ใช้ VitePress
 
 1. ถ้าไม่มี `docs/.vitepress/` และไม่มี `vitepress` dependency → skip step นี้
-2. ถ้ามี → ทำตาม `references/vitepress-config.md`
+2. ถ้ามี → ทำตาม `subagents/docs-reviewer/vitepress-config.md`
 
 ### 4. Check Frontmatter
 
 > Goal: ตรวจ frontmatter ในทุก markdown ไฟล์
 
-1. ทำตาม `references/frontmatter.md`
+1. ทำตาม `subagents/docs-reviewer/frontmatter.md`
 
 ### 5. Check Content Quality
 
 > Goal: ตรวจ content quality และ real data
 
-1. ทำตาม `references/content-quality.md`
+1. ทำตาม `subagents/docs-reviewer/content-quality.md`
 
 ### 6. Check No Workspace Duplicates
 
 > Goal: ตรวจไม่มี duplicated docs ใน monorepo
 
-1. ทำตาม `references/workspace-links.md#check-no-workspace-duplicates`
+1. ทำตาม `subagents/docs-reviewer/workspace-links.md#check-no-workspace-duplicates`
 
 ### 7. Check Links
 
 > Goal: ตรวจ internal links และ references
 
-1. ทำตาม `references/workspace-links.md#check-links`
+1. ทำตาม `subagents/docs-reviewer/workspace-links.md#check-links`
 
 ### 8. Check README.md
 
@@ -80,12 +81,12 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 > Goal: ตรวจ `README.md` ทั้ง root และ workspace — section order, tables, coverage
 
-1. ตรวจ section order ตาม `references/readme-section-order.md`
-2. ตรวจ table columns และ icon format ตาม `references/readme-tables-icons.md`
-3. ตรวจ content standards ตาม `references/readme-content-standards.md`
-4. ตรวจ Usage coverage ตาม `references/readme-usage-coverage.md` และ Features coverage ตาม `references/readme-features-coverage.md`
-5. ตรวจ workspace READMEs ตาม `references/readme-workspace-consistency.md`
-6. คำนวณ README score ตาม `references/readme-scoring.md`
+1. ตรวจ section order ตาม `subagents/docs-reviewer/readme-section-order.md`
+2. ตรวจ table columns และ icon format ตาม `subagents/docs-reviewer/readme-tables-icons.md`
+3. ตรวจ content standards ตาม `subagents/docs-reviewer/readme-content-standards.md`
+4. ตรวจ Usage coverage ตาม `subagents/docs-reviewer/readme-usage-coverage.md` และ Features coverage ตาม `subagents/docs-reviewer/readme-features-coverage.md`
+5. ตรวจ workspace READMEs ตาม `subagents/docs-reviewer/readme-workspace-consistency.md`
+6. คำนวณ README score ตาม `subagents/docs-reviewer/readme-scoring.md`
 7. ถ้า README score < 70 → แนะนำ `update-docs readme-md`
 
 ### 9. Drift And Changelog
@@ -99,7 +100,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 > Goal: สรุป review score และ findings
 
-1. ทำตาม `references/scoring.md`
+1. ทำตาม `subagents/docs-reviewer/scoring.md`
 2. ทำ `/report` พร้อม findings
 3. ทำ `/suggest-next-action`
 
@@ -114,7 +115,7 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 | `drift`, `freshness` — docs vs code drift, dead docs | `subskills/check-drift/SKILL.md` |
 
 ## Check: Content Outdate
-ทำตาม [references/check-content-outdate.md](references/check-content-outdate.md)
+ทำตาม [subagents/docs-reviewer/check-content-outdate.md](subagents/docs-reviewer/check-content-outdate.md)
 
 ## Domain Checks
 
@@ -178,14 +179,15 @@ Review documentation structure ก่อนเรียก `update-docs` (markdo
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Structure](references/structure.md)
-- [VitePress config](references/vitepress-config.md)
-- [Frontmatter](references/frontmatter.md)
-- [Content quality](references/content-quality.md)
-- [Workspace links](references/workspace-links.md)
-- [README scoring](references/readme-scoring.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/docs-reviewer/checklist.md)
+- [Structure](subagents/docs-reviewer/structure.md)
+- [VitePress config](subagents/docs-reviewer/vitepress-config.md)
+- [Frontmatter](subagents/docs-reviewer/frontmatter.md)
+- [Content quality](subagents/docs-reviewer/content-quality.md)
+- [Workspace links](subagents/docs-reviewer/workspace-links.md)
+- [README scoring](subagents/docs-reviewer/readme-scoring.md)
+- [Scoring](subagents/docs-reviewer/scoring.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

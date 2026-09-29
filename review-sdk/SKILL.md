@@ -12,6 +12,7 @@ related:
   - deep-review-then-fix
   - report
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
@@ -21,7 +22,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 ## Scope
 
 - ใช้กับ package ที่ publish (npm/JSR/crates/PyPI) หรือ internal library ที่มี consumers — ไม่รวม REST/HTTP API design (`/review-api`), stack selection (`/review-techstack`), general code quality (`/review-code-quality`), docs structure (`/review-docs`)
-- deep checklists ตาม `references/` ด้านล่าง
+- deep checklists ตาม `subagents/sdk-reviewer/` ด้านล่าง
 
 ## Execute
 
@@ -34,7 +35,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ### 2. Check Exports And Entry Points
 
-> Goal: surface ชัดเจน ไม่ leak internals — ทำตาม `references/exports.md`
+> Goal: surface ชัดเจน ไม่ leak internals — ทำตาม `subagents/sdk-reviewer/exports.md`
 
 1. `exports` map ครบ — `.` + subpaths, `types`/`import`/`require` conditions ถูกต้อง
 2. ไม่ leak internal paths — deep imports ที่ไม่ได้ declare, `_internal`/`private` modules exposed
@@ -44,7 +45,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ### 3. Check Packaging And Interop
 
-> Goal: install แล้วใช้ได้จริงทุก ecosystem — ทำตาม `references/packaging.md`
+> Goal: install แล้วใช้ได้จริงทุก ecosystem — ทำตาม `subagents/sdk-reviewer/packaging.md`
 
 1. `publint` — packaging errors (types resolution, missing files, ESM/CJS interop)
 2. `attw` (`arethetypeswrong`) — types work ทุก consumer setup (ESM, CJS, bundler)
@@ -54,7 +55,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ### 4. Check Semver And Compatibility
 
-> Goal: versioning contract เคารพ consumers — ทำตาม `references/semver.md`
+> Goal: versioning contract เคารพ consumers — ทำตาม `subagents/sdk-reviewer/semver.md`
 
 1. ทำ `/review-api` — public API diff ระหว่าง versions
 2. breaking changes ต้อง major bump + changelog entry + migration notes
@@ -64,7 +65,7 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ### 5. Check Types And Ergonomics
 
-> Goal: DX ของ consumer ดี — ทำตาม `references/types-dx.md`
+> Goal: DX ของ consumer ดี — ทำตาม `subagents/sdk-reviewer/types-dx.md`
 
 1. `.d.ts` ถูก generate และ map กับ runtime exports — no `any` leaks ใน public signatures
 2. generics/overloads อ่านง่าย, error types exported, options objects มี defaults
@@ -124,10 +125,11 @@ Review public API surface ของ library/SDK/package ครบทุกมิ
 
 ## References
 
-- [Exports checklist](references/exports.md)
-- [Packaging and interop checklist](references/packaging.md)
-- [Semver and compatibility checklist](references/semver.md)
-- [Types and DX checklist](references/types-dx.md)
+- [Exports checklist](subagents/sdk-reviewer/exports.md)
+- [Packaging and interop checklist](subagents/sdk-reviewer/packaging.md)
+- [Semver and compatibility checklist](subagents/sdk-reviewer/semver.md)
+- [Types and DX checklist](subagents/sdk-reviewer/types-dx.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

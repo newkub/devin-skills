@@ -92,7 +92,7 @@ Review infrastructure-as-code — Terraform, Pulumi, CDK, Helm, K8s manifests �
 | `state`, `backend` — state locking, secrets, prevent_destroy | `subskills/check-state/SKILL.md` |
 
 ## Check: Infra
-ทำตาม [references/check-infra.md](references/check-infra.md)
+ทำตาม [subagents/iac-reviewer/check-infra.md](subagents/iac-reviewer/check-infra.md)
 
 ## Domain Checks
 

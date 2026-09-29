@@ -118,7 +118,7 @@ related:
 
 ## Subagent Profiles
 
-Skills เหล่านี้มี subagent profiles สำหรับ parallel independent work — อ่าน `<skill>/subagents/<name>.md` เพื่อดู inputs/tools/output contract แล้ว spawn ผ่าน `run_subagent`:
+Skills เหล่านี้มี subagent profiles สำหรับ parallel independent work — อ่าน `<skill>/subagents/<name>.md` หรือ `<skill>/subagents/<name>/AGENT.md` (dir-style profile พร้อม checklist files) เพื่อดู inputs/tools/output contract แล้ว spawn ผ่าน `run_subagent`:
 
 | No. | Parent Skill | Profile | Use For |
 |-----|--------------|---------|---------|
@@ -149,7 +149,8 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 25 | `update-project` | `update-project/subagents/project-files-updater.md` | update project files ต่อ domain (config/docs/rules/specs) |
 | 26 | `update-project` | `update-project/subagents/project-skills-updater.md` | sync `.devin/skills` กับ codebase |
 | 27 | `update-project` | `update-project/subagents/github-metadata-updater.md` | sync GitHub repo metadata และ branch protection |
-| 28 | `update-devin-global-skills` | `update-devin-global-skills/subagents/skill-updater.md` | update skill เดียวตาม instructions ใน bulk update |
+| 28 | `update-devin-global-skills` | `update-devin-global-skills` (`## Conventions → Subagents`, profile `skill-updater`) | update skill เดียวตาม instructions ใน bulk update |
+| 29 | `review-*` ทุกตัว | `review-<domain>/subagents/<name>-reviewer/AGENT.md` (dir-style: AGENT.md + checklist files) | review domain เดียวตาม checklist — read-only, report severity + evidence |
 
 ## CLI — `subagents` (mission control)
 

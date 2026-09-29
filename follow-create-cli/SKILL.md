@@ -21,7 +21,7 @@ related:
 
 ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — skill นี้เป็น dispatcher เท่านั้น: เลือก stack แล้วส่งต่อ implementation ไปยัง `/follow-create-rust-cli` หรือ `/follow-create-bun-cli` ตามความเหมาะสมเสมอ ไม่ implement CLI เองใน skill นี้
 
-- Latest: `cac@7.0.0` (ESM-only, Node ≥20.19/Bun), `clap@4.6.7` (crates.io), `commander@15.0.0`, `clipanion@4.0.0-rc.4` (verified 2026-09-16)
+- Frameworks: Bun → `cac`/`clipanion`/`commander` + `picocolors`; Rust → `clap` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -29,9 +29,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create cli)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create cli)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ framework pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create cli)
 
 ### 2. Decide CLI Stack
 
@@ -41,8 +40,6 @@ related:
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency
 3. เลือก Bun ถ้า: ทีมใช้ TypeScript, ต้องการ rapid development, มี Bun runtime ติดตั้ง
 4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/choose-and-apply` ก่อน
-
-ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ stack comparison และ framework examples
 
 ### 3. Create CLI Project
 
@@ -87,8 +84,6 @@ related:
 - ไม่ force ใช้ stack ที่ไม่เหมาะกับ context
 - เมื่อเลือก stack แล้วต้อง delegate ไปยัง `/follow-create-bun-cli` หรือ `/follow-create-rust-cli` เสมอ ห้าม implement เองใน skill นี้
 - บันทึกเหตุผลที่เลือก stack ใน `README.md` หรือ plan
-
-ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ framework details และ stack selection guide
 
 ### 2. Architecture Selection
 

@@ -14,6 +14,7 @@ related:
   - review-architecture
   - report
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -40,25 +41,25 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 > Goal: ตรวจ version bump correctness และ semver compliance
 
-ทำตาม references/version-semver.md
+ทำตาม subagents/release-reviewer/version-semver.md
 
 ### 3. Check Changelog Completeness
 
 > Goal: ตรวจ changelog completeness ก่อน publish
 
-ทำตาม references/changelog.md
+ทำตาม subagents/release-reviewer/changelog.md
 
 ### 4. Check Breaking Changes
 
 > Goal: ระบุ breaking changes ก่อน publish
 
-ทำตาม references/breaking-changes.md
+ทำตาม subagents/release-reviewer/breaking-changes.md
 
 ### 5. Check Platform Targets And Rollback
 
 > Goal: ตรวจ platform targets และ rollback plan
 
-ทำตาม references/platform-targets.md
+ทำตาม subagents/release-reviewer/platform-targets.md
 
 ### 6. Check License And Release Notes
 
@@ -73,17 +74,17 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 > Goal: ตรวจ deployment readiness — ข้ามถ้า release นี้ไม่มี deploy step
 
-1. ตรวจ env vars และ secrets ตาม `references/deploy-env-secrets.md`
-2. ตรวจ build artifacts และ config ตาม `references/deploy-build-artifacts.md`
-3. ตรวจ health checks และ rollback plan ตาม `references/deploy-health-rollback.md`
-4. ตรวจ zero-downtime strategy และ migration scripts ตาม `references/deploy-zero-downtime.md`
-5. คำนวณ deploy readiness score ตาม `references/deploy-readiness-score.md` และ `references/deploy-scoring.md`
+1. ตรวจ env vars และ secrets ตาม `subagents/release-reviewer/deploy-env-secrets.md`
+2. ตรวจ build artifacts และ config ตาม `subagents/release-reviewer/deploy-build-artifacts.md`
+3. ตรวจ health checks และ rollback plan ตาม `subagents/release-reviewer/deploy-health-rollback.md`
+4. ตรวจ zero-downtime strategy และ migration scripts ตาม `subagents/release-reviewer/deploy-zero-downtime.md`
+5. คำนวณ deploy readiness score ตาม `subagents/release-reviewer/deploy-readiness-score.md` และ `subagents/release-reviewer/deploy-scoring.md`
 
 ### 8. Score And Report
 
 > Goal: สรุป release readiness score และ go/no-go
 
-ทำตาม references/scoring.md
+ทำตาม subagents/release-reviewer/scoring.md
 
 - คำนวณ release readiness score, grade และ supplementary metrics
 - ทำ `/report` สรุป category, status, findings, score
@@ -102,10 +103,10 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 | `readiness`, `report` — go/no-go checklist verdict | `subskills/report-readiness/SKILL.md` |
 
 ## Check: Release Drift
-ทำตาม [references/check-release-drift.md](references/check-release-drift.md)
+ทำตาม [subagents/release-reviewer/check-release-drift.md](subagents/release-reviewer/check-release-drift.md)
 
 ## Check: Release Notes
-ทำตาม [references/check-release-notes.md](references/check-release-notes.md)
+ทำตาม [subagents/release-reviewer/check-release-notes.md](subagents/release-reviewer/check-release-notes.md)
 
 ## Domain Checks
 
@@ -127,7 +128,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 3. Scoring
    - คะแนนต่อ category: ✅ = 1, ⚠️ = 0.5, ❌ = 0
    - Release readiness score = (total score / total categories) × 100%
-   - Grade A-F ตาม thresholds ใน references/scoring.md
+   - Grade A-F ตาม thresholds ใน subagents/release-reviewer/scoring.md
    - Score < 70 → No-Go แนะนำให้แก้ก่อน publish
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
@@ -143,7 +144,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 > ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ
 
-1. ทำตาม `references/deploy-verify.md`
+1. ทำตาม `subagents/release-reviewer/deploy-verify.md`
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
 3. ทำ `/deep-test api` สำหรับ endpoints สำคัญ
 4. ทำ `/review-security` บน deployed URL
@@ -152,17 +153,17 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Version and semver](references/version-semver.md)
-- [Changelog](references/changelog.md)
-- [Breaking changes](references/breaking-changes.md)
-- [Platform targets](references/platform-targets.md)
-- [Deploy env/secrets](references/deploy-env-secrets.md)
-- [Deploy build artifacts](references/deploy-build-artifacts.md)
-- [Deploy health/rollback](references/deploy-health-rollback.md)
-- [Deploy zero-downtime](references/deploy-zero-downtime.md)
-- [Deploy verify](references/deploy-verify.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/release-reviewer/checklist.md)
+- [Version and semver](subagents/release-reviewer/version-semver.md)
+- [Changelog](subagents/release-reviewer/changelog.md)
+- [Breaking changes](subagents/release-reviewer/breaking-changes.md)
+- [Platform targets](subagents/release-reviewer/platform-targets.md)
+- [Deploy env/secrets](subagents/release-reviewer/deploy-env-secrets.md)
+- [Deploy build artifacts](subagents/release-reviewer/deploy-build-artifacts.md)
+- [Deploy health/rollback](subagents/release-reviewer/deploy-health-rollback.md)
+- [Deploy zero-downtime](subagents/release-reviewer/deploy-zero-downtime.md)
+- [Deploy verify](subagents/release-reviewer/deploy-verify.md)
+- [Scoring](subagents/release-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix
@@ -172,6 +173,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 1. แก้ release blockers ตาม checklist: version drift → `/review-release`, changelog → `/gen-changelog-md`, tests fail → `/resolve-errors`
 2. แก้ deploy step ที่ไม่พร้อม → `/follow-deploy` หรือ `/resolve-cicd`
 3. verify: re-run readiness checks แล้วเทียบ go/no-go ก่อน-หลัง
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

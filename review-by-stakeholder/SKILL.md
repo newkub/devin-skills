@@ -16,6 +16,7 @@ related:
   - scan-codebase
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -37,7 +38,7 @@ Review project จากมุมมอง stakeholder — เลือก perso
 1. ถ้ามี `persona-or-area` หรือ `sub-role` จาก argument → map เข้า Persona Table
 2. ถ้าไม่มี → แสดง Persona Table แล้ว `/ask-me`
 3. ถ้าไม่ชัด → ใช้ default `staff-engineer`
-4. ถ้าต้อง run หลาย persona → ทำตาม `references/select-stakeholders.md` และ `references/run-stakeholder-reviews.md`
+4. ถ้าต้อง run หลาย persona → ทำตาม `subagents/stakeholder-reviewer/select-stakeholders.md` และ `subagents/stakeholder-reviewer/run-stakeholder-reviews.md`
 
 ### 2. Scan And Understand
 
@@ -78,7 +79,7 @@ Review project จากมุมมอง stakeholder — เลือก perso
 
 1. ทำ `/report` พร้อม file/line หรือ visual evidence
 2. ระบุ top 3-5 issues
-3. ทำตาม `references/aggregate-findings.md` และ `references/generate-stakeholder-report.md` ถ้า run หลาย persona
+3. ทำตาม `subagents/stakeholder-reviewer/aggregate-findings.md` และ `subagents/stakeholder-reviewer/generate-stakeholder-report.md` ถ้า run หลาย persona
 4. ทำ `/suggest-next-action`
 
 ## Persona Table
@@ -170,11 +171,11 @@ Review project จากมุมมอง stakeholder — เลือก perso
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Select stakeholders](references/select-stakeholders.md)
-- [Run stakeholder reviews](references/run-stakeholder-reviews.md)
-- [Aggregate findings](references/aggregate-findings.md)
-- [Stakeholder report](references/generate-stakeholder-report.md)
+- [Full-dimension checklist](subagents/stakeholder-reviewer/checklist.md)
+- [Select stakeholders](subagents/stakeholder-reviewer/select-stakeholders.md)
+- [Run stakeholder reviews](subagents/stakeholder-reviewer/run-stakeholder-reviews.md)
+- [Aggregate findings](subagents/stakeholder-reviewer/aggregate-findings.md)
+- [Stakeholder report](subagents/stakeholder-reviewer/generate-stakeholder-report.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix
@@ -184,6 +185,7 @@ Review project จากมุมมอง stakeholder — เลือก perso
 1. จัดลำดับ findings ตาม stakeholder priority ที่เก็บได้ แล้วส่งต่อ `## Fix` ของ `review-*` ที่ตรง domain
 2. findings ที่หลาย persona flag ซ้ำ → fix ก่อนเสมอ (highest consensus)
 3. verify: re-review ด้วย persona เดิมเทียบก่อน-หลัง
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

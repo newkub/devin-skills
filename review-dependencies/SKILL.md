@@ -11,12 +11,13 @@ related:
   - ask-me
   - run-install
   - run-review
+  - use-subagents
 
 ---
 
 ## Goal
 
-ตรวจสอบ dependencies ของ project — outdated versions, vulnerabilities, license compliance, duplicates และ unused packages ก่อนตัดสินใจ update
+ตรวจสอบ dependencies ของ project — outdated versions, vulnerabilities, license compliance, duplicates และ unused packages ก่อนตัดสินใจ update — domain checklist อยู่ใน `subagents/deps-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
@@ -24,61 +25,44 @@ related:
 
 ## Execute
 
-### 1. Inventory Dependencies
+### 1. Prepare And Baseline
 
-> Goal: รายการ deps ทั้งหมดพร้อม version และประเภท
+> Goal: เข้าใจ manifests, ecosystem และเก็บ baseline
 
-1. อ่าน `package.json`, `Cargo.toml`, `go.mod` หรือ manifests ที่ตรวจพบ
-2. รัน outdated check ของ ecosystem (`bun outdated`, `npm outdated`, `cargo outdated`)
-3. รัน audit (`bun audit`, `npm audit`, `cargo audit`) สำหรับ vulnerabilities
+1. อ่าน `package.json`, `Cargo.toml`, `go.mod` หรือ manifests ที่ตรวจพบ — ระบุ package manager และ monorepo workspaces
+2. ทำ `/run-review` + `/scan-codebase` เก็บ baseline (ใช้เป็น findings-file ให้ subagent cross-check)
+3. รัน outdated/audit ของ ecosystem (`bun outdated`, `npm audit`, `cargo outdated`) เก็บ raw output เป็น baseline
 
-### 2. Check Usage And Duplicates
+### 2. Dispatch Deps-Reviewer
 
-> Goal: แยก deps ที่ใช้จริงออกจากที่ไม่ใช้
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ทำ `/scan-codebase` ค้นหา imports ของแต่ละ dep
-2. ระบุ unused packages และ duplicate functionality (หลาย lib ทำอย่างเดียวกัน)
-3. ตรวจ version conflicts ใน monorepo workspaces
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension (`inventory`, `usage`, `health`, `versions`, `licenses`, `alternatives`, `stack`)
+2. Spawn `subagents/deps-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. monorepo หลาย workspace → spawn หลาย instance ทีละ workspace ขนานกัน — dimensions ต่างกันใน workspace เดียวรวมเป็น instance เดียว
 
-### 3. Check Licenses And Policies
+### 3. Aggregate And Score
 
-> Goal: deps ไม่ขัดกับ license policy
+> Goal: findings รวมกันพร้อม severity + alternatives scoring
 
-1. รัน license check (`license-checker` หรือเทียบเท่า)
-2. ระบุ copyleft/restricted licenses ที่ขัด policy
-3. ตรวจ abandoned packages (ไม่มี release/commit นาน)
-
-### 4. Assess Update Risk
-
-> Goal: จัดลำดับ update ตาม risk
-
-1. แยก patch/minor/major updates — flag major ที่มี breaking changes
-2. ตรวจว่า dep สอดคล้องกับ canonical catalog `references/techstack-catalog.md` — flag ตัวที่ไม่ใช่ Default เป็น drift
-3. ระบุ deps ที่ต้อง pin version และ deps ที่ auto-update ได้
-
-### 5. Score Alternatives
-
-> Goal: เปรียบเทียบและให้คะแนน candidates สำหรับ deps ที่ควร replace
-
-เมื่อ finding เป็น `replace` หรือต้องเลือก library:
-
-1. หา alternatives ด้วย `/deep-research` หรือ `/learn` (web) — npm trends, GitHub stars, release frequency, bundle size, security advisories
-2. จำกัดเหลือ 2-3 candidates แล้วให้คะแนน apples-to-apples:
+1. รวม findings จากทุก instance — dedup ตาม package name + issue type
+2. เมื่อ finding เป็น `replace` หรือต้องเลือก library → score alternatives แบบ apples-to-apples:
 
 | Criteria | Weight |
 |---|:---:|
 | Modern / Type Safety / Performance / DX / Maintenance / Bundle Size / Dependencies | 5 ต่อข้อ (รวม 35) |
 
-3. ระบุ Migration Effort และ Risk (Low/Medium/High) ต่อ candidate
-4. จัด priority: High = Score ≥25 + Effort Low + Risk Low
+3. ระบุ Migration Effort และ Risk (Low/Medium/High) ต่อ candidate — priority High = Score ≥25 + Effort Low + Risk Low
+4. เทียบ deps กับ canonical catalog `../shared/techstack-catalog.md` — flag ตัวที่ไม่ใช่ Default เป็น drift
+5. ถ้าพบ vulnerability → เชื่อม `/review-security`
 
-### 6. Rate And Report
+### 4. Report
 
 > Goal: สรุป findings พร้อม action plan
 
 1. ทำ `/report` พร้อม columns: No., Package, Current, Latest, Severity, Issue, Action
 2. แยก actions: update now, update with caution, remove, replace, keep
-3. ถ้ามี vulnerability → เชื่อม `/review-security`
+3. ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -88,12 +72,21 @@ related:
 |-------|----------|
 | `report`, `deps` — dep audit matrix + action plan + update order | `subskills/report-deps/SKILL.md` |
 
+### Subagents
+
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
+
+| Domain | Subagent |
+|--------|----------|
+| dependencies audit — inventory, usage, health, versions, licenses, alternatives, stack drift | `subagents/deps-reviewer/AGENT.md` |
+
 ## Rules
 
 ### 1. Read Only
 
 - ห้าม install, update หรือแก้ lockfile ระหว่าง review
 - ใช้ registry metadata และ local manifests เท่านั้น
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/deps-reviewer/` เท่านั้น
 
 ### 2. Evidence Based
 
@@ -122,10 +115,11 @@ related:
 3. vulnerabilities: patch Critical/High; major upgrade ที่ break → migration plan
 4. stale: patch/minor batch, major ทีละตัว — ห้าม version <7 วัน
 5. verify: clean install + `/run-check` + tests
+
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Techstack catalog](references/techstack-catalog.md)
+- [Full-dimension checklist](subagents/deps-reviewer/checklist.md)
+- [Techstack catalog](../shared/techstack-catalog.md)
 - ใช้ /run-install ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 

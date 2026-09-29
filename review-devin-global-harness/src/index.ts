@@ -1,5 +1,4 @@
 import { Glob } from "bun";
-import { existsSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { checkFrontmatter } from "./checks/frontmatter";
 import { checkLineCount } from "./checks/line-count";
@@ -8,7 +7,6 @@ import { checkReferences } from "./checks/references";
 import { checkSections } from "./checks/sections";
 import { checkCrossSkill } from "./checks/cross-skill";
 import { checkLanguage, checkStyle } from "./checks/style";
-import { checkTemplate } from "./checks/template";
 import { applyFixes } from "./fix";
 import {
   countExecuteSteps,
@@ -27,7 +25,7 @@ const CI = args.includes("--ci");
 const cliRoot = args.find((a) => !a.startsWith("--")) || Bun.env.DEVIN_SKILLS_ROOT;
 const SKILLS_ROOT = cliRoot
   ? cliRoot.replace(/%APPDATA%/g, Bun.env.APPDATA || "")
-  : (Bun.env.APPDATA || "/tmp") + "\\devin\\skills";
+  : join(Bun.env.APPDATA || "/tmp", "devin", "skills");
 const SELF_DIR = join(SKILLS_ROOT, "review-devin-global-harness");
 
 const findings: Finding[] = [];
@@ -71,7 +69,6 @@ for (const skill of skillDirs) {
     hasFrontmatterOpen: hasFrontmatterOpen(text),
     sections: extractSectionsWithLevels(text),
     executeSteps: countExecuteSteps(text),
-    hasReferences: existsSync(join(SKILLS_ROOT, skill, "references")),
     allMdFiles,
     body,
     bodyLines: body.split(/\r?\n/),
@@ -86,7 +83,6 @@ for (const skill of skillDirs) {
   checkLanguage(meta, ctx);
   checkReferences(meta, ctx);
   checkParallel(meta, ctx);
-  await checkTemplate(meta, ctx);
 }
 
 checkCrossSkill(skills, ctx);

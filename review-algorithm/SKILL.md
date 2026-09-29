@@ -10,6 +10,7 @@ related:
   - report
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -20,7 +21,7 @@ related:
 
 - ใช้กับ functions/modules ที่มี performance bottleneck หรือ suspect inefficient algorithmic complexity
 - ครอบคลุม hot paths, data structures, recursion, numeric/string processing, concurrency hazards
-- deep checklists ตาม `references/` ด้านล่าง
+- deep checklists ตาม `subagents/algorithm-reviewer/` ด้านล่าง
 
 ## Execute
 
@@ -34,7 +35,7 @@ related:
 
 ### 2. Review Complexity
 
-> Goal: ประเมิน big-O — ทำตาม `references/complexity.md`
+> Goal: ประเมิน big-O — ทำตาม `subagents/algorithm-reviewer/complexity.md`
 
 1. วิเคราะห์ time complexity ของ key functions — best/average/worst
 2. วิเคราะห์ space complexity และ allocation patterns
@@ -43,7 +44,7 @@ related:
 
 ### 3. Review Data Structures
 
-> Goal: structure choice เหมาะกับ access pattern — ทำตาม `references/data-structure-checklist.md`
+> Goal: structure choice เหมาะกับ access pattern — ทำตาม `subagents/algorithm-reviewer/data-structure-checklist.md`
 
 1. lookup patterns — `Map`/`Set` vs `Object`/array `find`/`includes`
 2. ordering needs — sorted structures, heaps, deques vs re-sort ทุกครั้ง
@@ -52,7 +53,7 @@ related:
 
 ### 4. Review Correctness
 
-> Goal: ตรวจ correctness และ edge cases — ทำตาม `references/correctness.md`
+> Goal: ตรวจ correctness และ edge cases — ทำตาม `subagents/algorithm-reviewer/correctness.md`
 
 1. ตรวจ edge cases (empty, single, large, duplicate, cycle, negative, unicode)
 2. ตรวจ termination conditions และ invariants
@@ -61,7 +62,7 @@ related:
 
 ### 5. Review Memory And Allocation
 
-> Goal: allocation patterns ไม่ก่อ GC pressure — ทำตาม `references/memory.md`
+> Goal: allocation patterns ไม่ก่อ GC pressure — ทำตาม `subagents/algorithm-reviewer/memory.md`
 
 1. allocation ใน loops — temp objects/arrays/closures ต่อ iteration
 2. string building — concat ใน loop vs join/builder
@@ -70,7 +71,7 @@ related:
 
 ### 6. Review Numeric And String Safety
 
-> Goal: numeric/string ops ถูกต้อง — ทำตาม `references/numeric-strings.md`
+> Goal: numeric/string ops ถูกต้อง — ทำตาม `subagents/algorithm-reviewer/numeric-strings.md`
 
 1. floating point — equality checks, accumulation error, `Number.EPSILON`
 2. integer bounds — overflow, `BigInt` needs, signed/unsigned
@@ -79,7 +80,7 @@ related:
 
 ### 7. Review Concurrency Hazards
 
-> Goal: shared state ปลอดภัย — ทำตาม `references/concurrency.md`
+> Goal: shared state ปลอดภัย — ทำตาม `subagents/algorithm-reviewer/concurrency.md`
 
 1. shared mutable state ข้าม async boundaries
 2. parallel algorithms — race conditions, ordering assumptions
@@ -117,15 +118,16 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Complexity checklist](references/complexity.md)
-- [Data structure checklist](references/data-structure-checklist.md)
-- [Correctness checklist](references/correctness.md)
-- [Memory and allocation checklist](references/memory.md)
-- [Numeric and strings checklist](references/numeric-strings.md)
-- [Concurrency checklist](references/concurrency.md)
+- [Full-dimension checklist](subagents/algorithm-reviewer/checklist.md)
+- [Complexity checklist](subagents/algorithm-reviewer/complexity.md)
+- [Data structure checklist](subagents/algorithm-reviewer/data-structure-checklist.md)
+- [Correctness checklist](subagents/algorithm-reviewer/correctness.md)
+- [Memory and allocation checklist](subagents/algorithm-reviewer/memory.md)
+- [Numeric and strings checklist](subagents/algorithm-reviewer/numeric-strings.md)
+- [Concurrency checklist](subagents/algorithm-reviewer/concurrency.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /follow-algorithms ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

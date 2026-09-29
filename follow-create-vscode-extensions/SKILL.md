@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับสร้าง VSCode extension ทั่วไป รองรับทั้ง official `yo generator-code`, `reactive-vscode`, และ manual setup
 
-- Latest: VS Code `1.137.0` / `generator-code@1.12.0` / `@vscode/vsce@4.0.0` (verified 2026-09-16) — `vsce` ถูก rename เป็น `@vscode/vsce`
+- Packages: `generator-code`, `@vscode/vsce` (`vsce` deprecated/rename แล้ว — ต้อง Node 20+) — ยืนยันเวอร์ชัน VS Code/ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -29,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create vscode extensions)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create vscode extensions)
 
@@ -47,7 +47,7 @@ related:
 > Goal: กำหนด `package.json` ตาม VSCode schema
 
 1. ระบุ `name`, `displayName`, `description`, `version`, `publisher`
-2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.0, verified 2026-09-16)
+2. ระบุ `engines.vscode` เช่น `^<major>.0.0` ตาม VS Code เวอร์ชันล่าสุดที่ research ได้
 3. ระบุ `categories`, `keywords`, `activationEvents`, `main`
 4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
 5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`

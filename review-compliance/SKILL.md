@@ -11,14 +11,15 @@ related:
   - report
   - suggest-next-action
   - run-review
+  - use-subagents
 ---
 ## Goal
 
-สร้าง short orchestrator สำหรับ review compliance ทุก dimension โดย delegate ไปยัง reference files แล้ว aggregate findings และ review score
+Review compliance ทุก dimension พร้อม aggregate findings และ review score — domain checklist อยู่ใน `subagents/compliance-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
-compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Thailand), consent management, DSAR, audit trails, data retention, cross-border transfer, privacy by design
+compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Thailand), consent management, DSAR, audit trails, data retention, cross-border transfer, privacy by design — checklist ต่อ dimension อยู่ที่ `subagents/compliance-reviewer/`
 
 ไม่รวม `/review-security` และ `/review-business`
 
@@ -26,51 +27,35 @@ compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Tha
 
 ### 1. Prepare And Scan
 
-> Goal: เข้าใจ compliance setup ใน codebase
+> Goal: เข้าใจ compliance setup ใน codebase และเก็บ baseline
 
 1. ทำ `/scan-codebase` เพื่อ map data handling, privacy controls, และ compliance tooling
 2. ระบุ applicable regulations และ data classification (PII, PHI, payment, sensitive, public)
 3. ระบุ consent tool, retention policy, และ audit logging setup
-4. ทำ `/deep-analyze` และ review CLI เพื่อดึง metrics ปัจจุบัน
+4. ทำ `/deep-analyze` และ `/run-review` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Regulation Reviews
+### 2. Dispatch Compliance-Reviewer
 
-> Goal: ตรวจแต่ละ regulation
-Review แต่ละ regulation ที่เกี่ยวข้องโดยใช้ reference checklist แลกบันทึก findings พร้อม file paths และ severity
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. GDPR — ดู `references/gdpr.md`
-2. CCPA — ดู `references/ccpa.md`
-3. HIPAA — ดู `references/hipaa.md`
-4. PCI-DSS — ดู `references/pci-dss.md`
-5. SOC2 — ดู `references/soc2.md`
-6. PDPA — ดู `references/pdpa.md`
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply: `gdpr`, `ccpa`, `hipaa`, `pci-dss`, `soc2`, `pdpa`, `consent`, `dsar`, `audit-trail`, `data-retention`, `cross-border`, `privacy-design`
+2. Spawn `subagents/compliance-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย jurisdiction → spawn หลาย instance ทีละ regulation group ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. Cross-Cutting Reviews
+### 3. Aggregate And Score
 
-> Goal: ตรวจ cross-cutting topics
-1. Consent management — ดู `references/consent.md`
-2. DSAR process — ดู `references/dsar.md`
-3. Audit trail — ดู `references/audit-trail.md`
-4. Data retention — ดู `references/data-retention.md`
-5. Cross-border transfer — ดู `references/cross-border.md`
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-### 4. Privacy By Design And Breach Readiness
+1. รวม findings จากทุก instance — dedup ตาม file:line + requirement type
+2. ทำ `/deep-validate` สำหรับทุก finding; จัดลำดับตาม `../shared/review-rules.md` Severity Classification และ `subagents/compliance-reviewer/rules.md`
+3. คำนวณ per-dimension และ overall score ตาม `subagents/compliance-reviewer/scoring.md`
 
-> Goal: privacy embedded + incident handling — ทำตาม `references/privacy-design.md`
+### 4. Report
 
-1. cookie consent / tracking opt-out implementation
-2. data retention schedule per data category + enforcement
-3. data minimization — collect เฉพาะที่จำเป็น, purpose limitation documented
-4. breach notification — detection → notify window (72h GDPR), comms template, regulator contacts
+> Goal: รายงานครบทุก regulation พร้อม next actions
 
-### 5. Validate, Score And Report
-
-> Goal: validate findings และสร้าง score-based report
-
-1. ทำ `/deep-validate` สำหรับทุก finding
-2. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
-3. คำนวณ per-dimension และ overall score ตาม `references/scoring.md`
-4. รายงานด้วย `/report` และ `/suggest-next-action`
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
+2. ทำ `/suggest-next-action`
 
 
 ### Subskills
@@ -88,7 +73,8 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 - สร้าง backup branch ก่อน review
 - ใช้ evidence-based findings พร้อม file path และ regulation อ้างอิง
 - ไม่แก้ไข code ระหว่าง review
-- ดูรายละเอียด severity, formatting, และ independence rules ใน `references/rules.md`
+- ดูรายละเอียด severity, formatting, และ independence rules ใน `subagents/compliance-reviewer/rules.md`
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/compliance-reviewer/` เท่านั้น
 - รายงานผลด้วย `/report` และ `/suggest-next-action`
 
 ## Fix
@@ -98,12 +84,6 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
 2. แก้ตาม finding — licenses, privacy, audit และ data handling (compliance)
 3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
-
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- [Privacy by design](references/privacy-design.md)
-- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

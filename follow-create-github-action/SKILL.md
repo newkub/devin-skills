@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับสร้าง action สำหรับ GitHub Marketplace หรือ private repos ครอบคลุม inputs, outputs, runs, branding, และ `dist/` สำหรับ TS actions
 
-- Latest: JavaScript actions ใช้ `node24` runtime (node20 EOL/ถูกลบจาก runners 2026-09-23) / `@actions/core@3.0.1` / `@actions/github@9.1.1` (verified 2026-09-12) — pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
+- Packages: `@actions/core`, `@actions/github` + bundler (`esbuild`/`@vercel/ncc`) — ยืนยันเวอร์ชันและ `runs.using` runtime ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
 
 ## Execute
 
@@ -30,8 +30,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create github action)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `@actions/*` และ `runs.using` runtime ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
 
 ### 2. Choose Action Type

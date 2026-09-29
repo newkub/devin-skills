@@ -25,7 +25,7 @@ Run the error-handling dimension of `/review-stability` แบบ focused — �
 
 > Goal: failure paths ครอบคลุม — parent Execute §4
 
-ทำตาม `../../references/error-handling.md` + `../../references/error-patterns.md`
+ทำตาม `../../subagents/stability-reviewer/error-handling.md` + `../../subagents/stability-reviewer/error-patterns.md`
 
 1. unhandled — throws/rejections ที่ไม่มี catch path (`/review-test`, `/review-backend`)
 2. swallowed — empty catch, `catch → null/[]` ที่ซ่อน failures

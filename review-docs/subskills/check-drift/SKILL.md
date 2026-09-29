@@ -26,7 +26,7 @@ Run the drift dimension of `/review-docs` แบบ focused — docs เล่�
 
 1. commands/APIs — code blocks เทียบ CLI flags, API signatures, env vars กับ source จริง → `/check-content-correctness`
 2. freshness — sections ที่ stale เทียบ changelog/git history → `/review-docs`
-3. coverage — features/public APIs ที่ไม่มี docs (`../../references/features-coverage.md`)
+3. coverage — features/public APIs ที่ไม่มี docs (`../../subagents/docs-reviewer/features-coverage.md`)
 4. dead docs — docs ของ features ที่ถูกลบไปแล้ว (orphaned pages)
 
 ### 2. Report

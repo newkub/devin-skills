@@ -30,10 +30,10 @@ Run the `skills` layer of `/review-devin-global-harness` แบบ focused — s
 
 > Goal: ตรวจสิ่งที่ script ทำไม่ได้
 
-ทำตาม `../../references/content-quality.md`
+ทำตาม `../../SKILL.md` (`## Checklists → Content Quality`)
 
 1. เช็ค evidence แต่ละ script finding — แยก false positives
-2. เกณฑ์ที่ script ใช้อยู่ใน `../../references/frontmatter.md`, `sections.md`, `style.md`, `line-count.md`, `template-selection.md`
+2. เกณฑ์ที่ script ใช้อยู่ใน `../../SKILL.md` (`## Checklists → Package Checks`)
 
 ### 3. Report
 

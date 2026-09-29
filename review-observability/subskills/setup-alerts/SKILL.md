@@ -24,7 +24,7 @@ related:
 
 > Goal: รู้ว่ามี signal อะไรให้ alert ได้
 
-1. list metrics/logs/traces ที่มีอยู่ (จาก `../../references/metrics.md` inventory ของ parent)
+1. list metrics/logs/traces ที่มีอยู่ (จาก `../../subagents/observability-reviewer/metrics.md` inventory ของ parent)
 2. critical user journeys ที่ต้อง cover — availability, error rate, latency
 3. ถ้า signals ไม่มี → escalate ไป `../improve-observability/SKILL.md` (instrument ก่อน)
 

@@ -22,7 +22,7 @@ Run the metrics dimension of `/review-observability` แบบ focused — golde
 
 > Goal: metrics ตอบคำถาม incident ได้
 
-ทำตาม `../../references/metrics.md`
+ทำตาม `../../subagents/observability-reviewer/metrics.md`
 
 1. golden signals — RED (rate/errors/duration) หรือ USE (utilization/saturation/errors) ครบ critical paths
 2. cardinality — labels ที่ unbounded (user_id, session_id) ทำ metrics explode

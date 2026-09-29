@@ -63,7 +63,7 @@ related:
 > Goal: ผลลัพธ์ตรง context การเรียก
 
 - ถ้าเรียนเพื่อตัวเอง → เขียน learning path ตามโครงสร้างข้างล่าง
-- ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน reference files จริงตาม `update-devin-global-skills/references/write-references.md` (บังคับ ห้ามข้าม)
+- ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน reference files จริงตาม `update-devin-global-skills` (`## Conventions → Write References`) (บังคับ ห้ามข้าม)
 - ถ้าเขียน content หลายไฟล์ → ทำ `/check-content-correctness` ทุกชิ้น และ `/use-scripts` ถ้า >10 ไฟล์
 
 ```markdown

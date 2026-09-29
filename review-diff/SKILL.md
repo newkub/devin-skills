@@ -16,51 +16,56 @@ related:
   - delete
   - resolve-errors
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
 
-รีวิว git diff อย่างรวดเร็ว สรุปสิ่งที่เปลี่ยนแปลง ตรวจหาปัญหาทีอาจเกิด และถาม user ก่อนตัดสินใจ keep, revert หรือดำเนินการต่อ
+รีวิว git diff อย่างรวดเร็ว สรุปสิ่งที่เปลี่ยนแปลง ตรวจหาปัญหาทีอาจเกิด และถาม user ก่อนตัดสินใจ keep, revert หรือดำเนินการต่อ — domain checklist อยู่ใน `subagents/diff-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้ก่อน `git-commit`, `/ship`, `/follow-enter-dot` หรือทุกครั้งที่ working tree มีการเปลี่ยนแปลงจำนวนมากและต้องการ user confirmation ก่อนลงมือ
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `summary`/`risks` — capture state, summarize, risks | `subagents/diff-reviewer/diff-review-checklist.md` |
+| `quality` — secrets, junk, leftovers, noise | `subagents/diff-reviewer/diff-quality.md` |
+| `scoring` — score/grade | `subagents/diff-reviewer/scoring.md` |
+
 ## Execute
 
 ### 1. Capture Diff State
-> Goal: อ่าน diff state ปัจจุบัน
-ทำตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
+> Goal: อ่าน diff state ปัจจุบัน — baseline สำหรับ subagent
+ทำตาม [subagents/diff-reviewer/diff-review-checklist.md](subagents/diff-reviewer/diff-review-checklist.md) — ระบุ refs/paths (`HEAD`, `HEAD~1`, `staged`, `unstaged` — ไม่ระบุ → `HEAD` กับ `HEAD~1`; ไม่ชัด → `/ask-me`)
 
-### 2. Summarize Changes
-> Goal: สรุป changes ทั้งหมด
-สรุป changes ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
+### 2. Dispatch Diff-Reviewer
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-### 3. Check Risks
-> Goal: ตรวจหา risks
-ตรวจหา risks ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
+1. Spawn `subagents/diff-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions` (`summary`, `risks`, `quality` — default ทั้งหมด), `findings-file` (diff state จาก step 1)
+2. subagent สรุป changes, ตรวจ risks และ diff quality ตาม checklist — secrets/credentials, debug leftovers, accidental files, formatting noise, scope creep
 
-### 4. Check Diff Quality
+### 3. Aggregate And Score
+> Goal: รวม findings พร้อม severity + score
 
-> Goal: ไม่มี junk/secrets/leftovers หลุดใน diff — ทำตาม `references/diff-quality.md`
+1. รวม findings — dedup ตาม file:hunk + issue type; สรุปให้พอตัดสินใจ ไม่ dump diff ทั้งหมด
+2. คำนวณ score/grade ตาม [subagents/diff-reviewer/scoring.md](subagents/diff-reviewer/scoring.md)
+3. ถ้า diff มีการลบ/ย้าย/overwrite ต้อง flag และถาม user ก่อนเสมอ
 
-1. secrets/credentials — API keys, tokens, passwords, private keys, `.env` contents
-2. debug leftovers — `console.log`/`debugger`/`println!`/`fmt.Println`, commented-out blocks, `TODO` ใหม่
-3. accidental files — editor swap, `node_modules`, build output, `.DS_Store`, personal notes
-4. formatting noise — whitespace-only changes, line-ending flips, unrelated refactors ปน
-5. scope creep — changes นอกเหนือ task scope ที่ไม่ได้ตั้งใจ
+### 4. Present Options And Report
+> Goal: เสนอตัวเลือกและดำเนินการตาม decision ของ user
 
-### 5. Present Options
-> Goal: เสนอตัวเลือกถัดไป
-เสนอตัวเลือกถัดไปตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
+1. เสนอตัวเลือกถัดไป (keep / revert / fix-then-continue) — ตัวเลือกต้องชัดเจนให้ user เลือกได้
+2. ดำเนินการตาม decision ของ user — ไม่ commit หรือ ship ถ้ายังไม่ได้ user confirmation
+3. ทำ `/report` และ `/suggest-next-action` (diff)
 
-### 6. Act On Decision
-> Goal: ดำเนินการตาม decision
-ดำเนินการตาม decision ของ user ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
+### Subagents
 
-### 7. Score And Report
-> Goal: รายงาน score และสรุปผล
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (diff)
+> Goal: dispatch domain review ไปยัง subagent
+
+| Topic | Subagent |
+|-------|----------|
+| diff dimensions — summary, risks, quality พร้อม severity | `subagents/diff-reviewer/AGENT.md` |
 
 ## Check: Git Diff
 
@@ -151,6 +156,7 @@ related:
 - ไม่ commit หรือ ship ถ้ายังไม่ได้ user confirmation
 - ทุกสรุปต้องมาจาก `git status`, `git diff` หรือการอ่านไฟล์จริง
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (diff)
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/diff-reviewer/` เท่านั้น
 
 - ใช้ /report-git-diff ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
@@ -172,9 +178,9 @@ related:
 
 ## References
 
-- [Diff review checklist](references/diff-review-checklist.md)
-- [Diff quality checklist](references/diff-quality.md)
-- [Scoring](references/scoring.md)
+- [Diff review checklist](subagents/diff-reviewer/diff-review-checklist.md)
+- [Diff quality checklist](subagents/diff-reviewer/diff-quality.md)
+- [Scoring](subagents/diff-reviewer/scoring.md)
 
 ## Expected Outcome
 

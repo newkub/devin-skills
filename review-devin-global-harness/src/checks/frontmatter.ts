@@ -1,8 +1,8 @@
-import { escapeRegExp } from "../parse";
+import { escapeRegExp, relativePath } from "../parse";
 import type { Context, SkillMeta } from "../types";
 
 export function checkFrontmatter(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
   const { frontmatter: fm, body } = m;
 
   if (!fm) {

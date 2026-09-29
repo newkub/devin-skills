@@ -4,6 +4,7 @@ description: Refactor workspace members ให้มี SRP, แนะนำ wor
 argument-hint: "[scope]"
 related:
   - refactor
+  - refactor-all-workspace
   - refactor-to-packages-shared
   - follow-single-responsibility
   - relocation

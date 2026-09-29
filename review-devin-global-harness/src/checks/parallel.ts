@@ -1,7 +1,8 @@
+import { relativePath } from "../parse";
 import type { Context, SkillMeta } from "../types";
 
 export function checkParallel(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
   const rulesIdx = m.body.indexOf("## Rules");
   const expectedIdx = m.body.indexOf("## Expected Outcome");
   const ruleRegion = rulesIdx >= 0 ? m.body.slice(rulesIdx, expectedIdx >= 0 ? expectedIdx : undefined) : "";

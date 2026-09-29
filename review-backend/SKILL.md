@@ -9,6 +9,7 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
@@ -39,30 +40,30 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ทำตาม references แต่ละ dimension:
 
-- `api` → references/api.md
-- `service` → references/service.md
-- `database` → references/database.md
-- `data-flow` → references/data-flow.md
-- `data-fetching` → references/data-fetching.md
-- `data-validation` → references/data-validation.md
-- `integration` → references/integration.md
-- `jobs` → references/jobs.md
-- `resilience` → references/resilience.md
-- `caching` → references/caching.md
-- `concurrency` → references/concurrency.md
+- `api` → subagents/backend-reviewer/api.md
+- `service` → subagents/backend-reviewer/service.md
+- `database` → subagents/backend-reviewer/database.md
+- `data-flow` → subagents/backend-reviewer/data-flow.md
+- `data-fetching` → subagents/backend-reviewer/data-fetching.md
+- `data-validation` → subagents/backend-reviewer/data-validation.md
+- `integration` → subagents/backend-reviewer/integration.md
+- `jobs` → subagents/backend-reviewer/jobs.md
+- `resilience` → subagents/backend-reviewer/resilience.md
+- `caching` → subagents/backend-reviewer/caching.md
+- `concurrency` → subagents/backend-reviewer/concurrency.md
 
 ข้าม sub-review ที่ไม่เกี่ยวข้องกับ project หรือพบ critical issues ให้หยุดทำ `/deep-validate` ก่อน
 
 ### 3. Jobs And Consumers
 
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/jobs.md`
+> Goal: coverage เพิ่มเติมของ domain — ทำตาม `subagents/backend-reviewer/jobs.md`
 
 1. queue/job health — dead letters, retry policy, backlog alerts
 2. idempotent consumers — redelivery ไม่ double-apply
 
 ### 4. Errors Resilience And Caching
 
-> Goal: failure paths และ cache behavior ครบ — ทำตาม `references/resilience.md`, `references/caching.md`
+> Goal: failure paths และ cache behavior ครบ — ทำตาม `subagents/backend-reviewer/resilience.md`, `subagents/backend-reviewer/caching.md`
 
 1. error handling — typed errors, error boundaries, status mapping, ไม่ swallow errors
 2. resilience — timeouts, retries+backoff, circuit breakers, bulkheads, graceful degradation
@@ -70,7 +71,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ### 5. Concurrency And Transactions
 
-> Goal: shared state ปลอดภัย — ทำตาม `references/concurrency.md`
+> Goal: shared state ปลอดภัย — ทำตาม `subagents/backend-reviewer/concurrency.md`
 
 1. race conditions — check-then-act, shared mutable state, async ordering
 2. transactions — atomicity ข้าม writes, isolation levels, lock ordering, deadlocks
@@ -82,7 +83,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 - ทำ `/deep-validate` เพื่อ validate findings
 - จัดลำดับตาม severity: Critical → High → Medium → Low
-- คำนวณ review score, dimension scores และ supplementary metrics ตาม references/scoring.md
+- คำนวณ review score, dimension scores และ supplementary metrics ตาม subagents/backend-reviewer/scoring.md
 - ทำ `/report`
 - ทำ `/suggest-next-action`
 
@@ -174,7 +175,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 1. Delegation
    - Orchestrator เรียก sub-review workflows โดยตรง
-   - checklist ของแต่ละ dimension อยู่ใน `references/`
+   - checklist ของแต่ละ dimension อยู่ใน `subagents/backend-reviewer/`
    - ข้าม dimension ที่ project ไม่มี
 2. Skip Conditions
    - ข้าม API, service, database, data-flow, data-fetching, data-validation, integration, jobs, resilience, caching, concurrency ตามที่ project ไม่มี
@@ -206,12 +207,13 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](subagents/backend-reviewer/checklist.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 
 - Findings และ recommendations จาก 7 backend sub-review workflows
 - Issues ที่พบถูก validate ตาม severity
-- Review score ต่อ dimension และ overall ตาม references/scoring.md
+- Review score ต่อ dimension และ overall ตาม subagents/backend-reviewer/scoring.md
 - รายงานในแชทเป็นตาราง
 - แนะนำ action ถัดไป

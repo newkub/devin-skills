@@ -21,29 +21,29 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ใช้สำหรับ review pull request ก่อน merge — ทำงานบน PR จาก GitHub หรือ local branch diff — ไม่แก้ไข code โดยไม่ได้รับอนุญาต
 
-- ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
+- ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `subagents/pr-checklist-reviewer/deep-pr-review.md`
 
 ## Execute
 
 ### 1. Fetch PR Context
 > Goal: ดึง PR context
-ทำตาม [references/fetch-pr-context.md](references/fetch-pr-context.md)
+ทำตาม [subagents/pr-checklist-reviewer/fetch-pr-context.md](subagents/pr-checklist-reviewer/fetch-pr-context.md)
 
 ### 2. Review PR Metadata
 > Goal: ตรวจ PR metadata
-ทำตาม [references/pr-metadata.md](references/pr-metadata.md)
+ทำตาม [subagents/pr-checklist-reviewer/pr-metadata.md](subagents/pr-checklist-reviewer/pr-metadata.md)
 
 ### 3. Review Code Changes
 > Goal: ตรวจ code changes
-ทำตาม [references/code-changes.md](references/code-changes.md)
+ทำตาม [subagents/pr-checklist-reviewer/code-changes.md](subagents/pr-checklist-reviewer/code-changes.md)
 
 ### 4. Validate Findings
 > Goal: ยืนยัน findings
-ทำตาม [references/validate-findings.md](references/validate-findings.md)
+ทำตาม [subagents/pr-checklist-reviewer/validate-findings.md](subagents/pr-checklist-reviewer/validate-findings.md)
 
 ### 5. Governance
 
-> Goal: PR governance ถูกบังคับ — ทำตาม `references/governance.md`
+> Goal: PR governance ถูกบังคับ — ทำตาม `subagents/pr-checklist-reviewer/governance.md`
 
 1. CODEOWNERS enforcement — required reviewers ถูกต้อง
 2. PR size limits — oversized PRs flagged
@@ -52,11 +52,11 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 6. Score And Report
 > Goal: รายงาน score และสรุปผล
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
+คำนวณ score/grade ตาม [subagents/pr-checklist-reviewer/scoring.md](subagents/pr-checklist-reviewer/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
 
 ### 7. Report And Recommend
 > Goal: รายงานและแนะนำ
-ทำตาม [references/report-and-recommend.md](references/report-and-recommend.md)
+ทำตาม [subagents/pr-checklist-reviewer/report-and-recommend.md](subagents/pr-checklist-reviewer/report-and-recommend.md)
 
 ### Subagents
 
@@ -98,13 +98,13 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Fetch PR context](references/fetch-pr-context.md)
-- [PR metadata](references/pr-metadata.md)
-- [Code changes](references/code-changes.md)
-- [Governance](references/governance.md)
-- [Deep PR review](references/deep-pr-review.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/pr-checklist-reviewer/checklist.md)
+- [Fetch PR context](subagents/pr-checklist-reviewer/fetch-pr-context.md)
+- [PR metadata](subagents/pr-checklist-reviewer/pr-metadata.md)
+- [Code changes](subagents/pr-checklist-reviewer/code-changes.md)
+- [Governance](subagents/pr-checklist-reviewer/governance.md)
+- [Deep PR review](subagents/pr-checklist-reviewer/deep-pr-review.md)
+- [Scoring](subagents/pr-checklist-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

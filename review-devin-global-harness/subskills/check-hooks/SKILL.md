@@ -22,7 +22,7 @@ Run the `hooks` layer of `/review-devin-global-harness` แบบ focused — ho
 
 > Goal: ครอบคลุมทุก hooks dimension
 
-ทำตาม `../../references/hooks.md`
+ทำตาม `../../SKILL.md` (`## Checklists → Hooks`)
 
 1. trigger event ถูกต้อง — hook ไม่ fire ผิดจังหวะ
 2. command path มีจริง — script/binary ที่ hook เรียก exists และ executable

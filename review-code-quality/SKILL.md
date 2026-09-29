@@ -14,82 +14,57 @@ related:
   - review-test
   - review-security
   - review-stability
+  - use-subagents
 ---
 
 ## Goal
 
-Review คุณภาพ code โดยรวม ครอบคลุม code quality, bug-prone patterns, correctness, time complexity, tech debt, และ overall quality score
+Review คุณภาพ code โดยรวม ครอบคลุม code quality, bug-prone patterns, correctness, time complexity, tech debt, และ overall quality score — domain checklist อยู่ใน `subagents/quality-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 - code, configuration, rule files, workflows, และ skills
-- ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
-- ไม่รวม naming conventions deep review (identifiers, files, exports) → ใช้ `/review-writing` (`references/naming.md` ใน skill นี้เหลือไว้เป็น checklist เบาสำหรับ code review เท่านั้น)
+- ทบทวนตาม `subagents/quality-reviewer/code-quality.md`, `subagents/quality-reviewer/bug-prone.md`, `subagents/quality-reviewer/correctness.md`, `subagents/quality-reviewer/best-practices.md`, `subagents/quality-reviewer/consistency.md`, `../shared/time-complexity.md`, `subagents/quality-reviewer/tech-debt.md`, และ `subagents/quality-reviewer/scoring.md`
+- ไม่รวม naming conventions deep review (identifiers, files, exports) → ใช้ `/review-writing` (`subagents/quality-reviewer/naming.md` ใน skill นี้เหลือไว้เป็น checklist เบาสำหรับ code review เท่านั้น)
 
 - ดูเพิ่มเติม: /deep-review
 
 ## Execute
 
-### 1. Prepare
+### 1. Prepare And Baseline
 
-> Goal: เข้าใจ project structure, tools, scope
+> Goal: เข้าใจ project structure, tools, scope และเก็บ baseline
 
 1. ทำ `/scan-codebase`
 2. อ่าน `AGENTS.md`
 3. ระบุ quality tools: `biome`, `tsc`, `ast-grep`, `knip`, `jscpd`, `madge`
-4. ถ้า project ไม่มี code ที่ต้อง review → stop และ report
+4. ทำ `/run-review` + `/deep-analyze` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
+5. ถ้า project ไม่มี code ที่ต้อง review → stop และ report
 
-### 2. Code Quality
+### 2. Dispatch Quality-Reviewer
 
-> Goal: รวบรวม findings ด้าน static analysis, architecture, types, naming, readability, hardcode
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-ทำตาม `references/code-quality.md`
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply (ตาม Domain Checks ด้านล่าง)
+2. Spawn `subagents/quality-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. Best Practices, Naming, And Consistency
+### 3. Aggregate And Validate
 
-> Goal: ตรวจ best practices, naming, และ consistency
+> Goal: findings รวมกันถูกต้อง จัดลำดับชัดเจน ไม่มี false positives
 
-1. ทำตาม `references/best-practices.md` สำหรับ conventions, error handling, testing, security, performance
-2. ทำตาม `references/naming.md` สำหรับ identifiers, files, skill names
-3. ทำตาม `references/consistency.md` สำหรับ structure, formatting, terminology, references
-4. บันทึก findings พร้อม severity และ evidence
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. ทำ `/deep-validate`
+3. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
+4. ระบุ false positives พร้อมเหตุผล — ถ้า validation ไม่ผ่าน → กลับไป Step 2
+5. ลบ findings ที่ไม่มีผลต่อ quality จริง (noise, style-only ที่ไม่มี convention)
 
-### 4. Bug-Prone
+### 4. Report
 
-> Goal: ระบุรูปแบบโค้ดที่มีแนวโน้มก่อให้เกิด bugs
+> Goal: รายงานครบทุก dimension พร้อม next actions
 
-ทำตาม `references/bug-prone.md`
-
-### 5. Correctness
-
-> Goal: ตรวจสอบ logic correctness, edge cases, และ invariant checks
-
-ทำตาม `references/correctness.md`
-
-### 6. Tech Debt And Complexity
-
-> Goal: รู้ debt และ hotspots ที่ต้อง monitor
-
-1. ทำตาม `references/tech-debt.md` — TODO/FIXME density, deprecated usage, dead code, duplication hotspots
-2. ตรวจสอบ time complexity ของ critical paths ทำตาม `references/time-complexity.md`
-
-### 7. Validate
-
-> Goal: Findings ถูกต้อง จัดลำดับชัดเจน ไม่มี false positives
-
-1. ทำ `/deep-validate`
-2. จัดลำดับ findings ตาม severity — ตาม `../shared/review-rules.md` Severity Classification
-3. ระบุ false positives พร้อมเหตุผล
-4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3
-
-### 8. Simplify
-
-> Goal: Findings กระชับ อ่านง่าย ไม่มี noise
-
-1. รวม findings ที่ซ้ำกันเป็น single finding พร้อม evidence ทั้งหมด
-2. ลบ findings ที่ไม่มีผลต่อ quality จริง (noise, style-only ที่ไม่มี convention)
-3. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
-
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
+2. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้; ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -102,19 +77,19 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 | Apply type findings — strict flags, any→unknown (user confirm) | `subskills/improve-types/SKILL.md` |
 
 ## Review Before Refactor
-ทำตาม [references/review-before-refactor.md](references/review-before-refactor.md)
+ทำตาม [subagents/quality-reviewer/review-before-refactor.md](subagents/quality-reviewer/review-before-refactor.md)
 
 ## Check: Function Quality
-ทำตาม [references/check-function-quality.md](references/check-function-quality.md)
+ทำตาม [subagents/quality-reviewer/check-function-quality.md](subagents/quality-reviewer/check-function-quality.md)
 
 ## Check: Single Responsibility
-ทำตาม [references/check-single-responsibility.md](references/check-single-responsibility.md)
+ทำตาม [subagents/quality-reviewer/check-single-responsibility.md](subagents/quality-reviewer/check-single-responsibility.md)
 
 ## Check: File Relations
-ทำตาม [references/check-file-relations.md](references/check-file-relations.md)
+ทำตาม [subagents/quality-reviewer/check-file-relations.md](subagents/quality-reviewer/check-file-relations.md)
 
 ## Check: Deprecated APIs
-ทำตาม [references/check-deprecated-apis.md](references/check-deprecated-apis.md)
+ทำตาม [subagents/quality-reviewer/check-deprecated-apis.md](subagents/quality-reviewer/check-deprecated-apis.md)
 
 ## Domain Checks
 
@@ -133,8 +108,8 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (quality)
 - ทุก finding ต้องมี file path, line number, code snippet
 - ระบุ false positives พร้อมเหตุผล
-- ให้คะแนนตาม criteria ใน references ไม่ตามความชอบส่วนบุคคล
-- ปฏิบัติตาม hardcode exclusions ใน `references/code-quality.md`
+- ให้คะแนนตาม criteria ใน `subagents/quality-reviewer/` ไม่ตามความชอบส่วนบุคคล
+- ปฏิบัติตาม hardcode exclusions ใน `subagents/quality-reviewer/code-quality.md`
 - รวม findings จากหลาย source เป็น single finding ถ้าซ้ำกัน
 - ข้าม sub-workflow ที่ไม่เกี่ยวข้องกับ project
 - ตรวจ pattern ทีใช้ว่าช่วย maintainability และ extensibility หรือไม่
@@ -142,6 +117,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ tools, commands, paths, skill references
 - รายงานเป็นตารางด้วย `/report`
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/quality-reviewer/` เท่านั้น
 
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
@@ -166,20 +142,20 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Code quality](references/code-quality.md)
-- [Best practices](references/best-practices.md)
-- [Naming](references/naming.md)
-- [Consistency](references/consistency.md)
-- [Bug-prone patterns](references/bug-prone.md)
-- [Correctness](references/correctness.md)
-- [Tech debt](references/tech-debt.md)
-- [Time complexity](references/time-complexity.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/quality-reviewer/checklist.md)
+- [Code quality](subagents/quality-reviewer/code-quality.md)
+- [Best practices](subagents/quality-reviewer/best-practices.md)
+- [Naming](subagents/quality-reviewer/naming.md)
+- [Consistency](subagents/quality-reviewer/consistency.md)
+- [Bug-prone patterns](subagents/quality-reviewer/bug-prone.md)
+- [Correctness](subagents/quality-reviewer/correctness.md)
+- [Tech debt](subagents/quality-reviewer/tech-debt.md)
+- [Time complexity](../shared/time-complexity.md)
+- [Scoring](subagents/quality-reviewer/scoring.md)
 
 ## Expected Outcome
 
 - รายงาน Quality Metrics Summary, Findings by Category, Recommended Actions
-- Review score พร้อม grade และ progress bar ตาม `references/scoring.md`
+- Review score พร้อม grade และ progress bar ตาม `subagents/quality-reviewer/scoring.md`
 - คะแนนต่อ dimension: code quality, bug-prone, correctness, general quality
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

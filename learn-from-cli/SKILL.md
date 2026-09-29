@@ -58,7 +58,7 @@ related:
 > Goal: ความรู้ถูกบันทึกครอบคลุม
 
 1. ถ้าเรียนเพื่อตัวเอง → สรุปในแชทตาม `/report`
-2. ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน `references/<dep>/cli.md` จริงตาม `update-devin-global-skills/references/write-references.md` (บังคับ ห้ามข้าม)
+2. ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน `references/<dep>/cli.md` จริงตาม `update-devin-global-skills` (`## Conventions → Write References`) (บังคับ ห้ามข้าม)
 3. ใช้ output จริงจากการรัน — ห้ามเดา flags หรือ options
 4. ถ้าต้องเขียน >10 ไฟล์ → ทำ `/use-scripts`
 5. ทำ `/check-content-correctness` กับ commands ที่เขียน

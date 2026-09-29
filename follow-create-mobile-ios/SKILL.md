@@ -21,7 +21,7 @@ related:
 - ครอบคลุม setup, project structure, SwiftUI, architecture, build, test และ deploy
 - ใช้ Xcode เป็น primary IDE
 
-- Latest: Xcode `26.6` (includes Swift `6.3.3`, SDKs iOS 26.5; Xcode 27 เป็น beta พร้อม Swift 6.4) (verified 2026-09-12)
+- Packages: Xcode + Swift toolchain — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (App Store Connect ยอมรับเฉพาะ builds จาก Xcode >= 26 ตั้งแต่เม.ย. 2026 — ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
 - ตั้งแต่ April 2026 App Store Connect รับเฉพาะ build จาก Xcode >= 26 (iOS 26 SDK) เท่านั้น
 
 ## Execute
@@ -30,8 +30,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create mobile ios)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mobile ios)
 
 ### 2. Gather Requirements
@@ -48,7 +47,7 @@ related:
 
 > Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
 
-1. ตรวจสอบ Xcode >= 26.0 (latest stable 26.6; requires macOS Tahoe 26.2+)
+1. ตรวจสอบ Xcode >= 26.0 (เช็ค latest stable ด้วย `/deep-research`; ต้องใช้ macOS เวอร์ชันที่รองรับ)
 2. ตรวจสอบ macOS รองรับ iOS development
 3. ตรวจสอบ iOS Simulator หรือ real device พร้อมใช้
 4. ตรวจสอบ Apple Developer account ถ้าจะ deploy ไป device/store
@@ -131,7 +130,7 @@ related:
 
 ### 1. Swift And SwiftUI
 
-- ใช้ Swift 6.x (Xcode 26.6 bundle Swift 6.3.3)
+- ใช้ Swift 6.x (strict concurrency checking — เวอร์ชัน bundle กับ Xcode เสมอ)
 - ใช้ SwiftUI เป็น UI framework
 - ตั้ง deployment target iOS >= 15
 

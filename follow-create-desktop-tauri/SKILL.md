@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-create-web-solid-tanstack-router`
+สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-create-solid-tanstack`
 
 ## Scope
 
@@ -27,7 +27,7 @@ related:
 - เพิ่ม plugins ตามต้องการ
 - build และ test บน target platforms
 
-- Latest: `tauri@2.11.6` (crate) / `@tauri-apps/cli@2.11.5` / `@tauri-apps/api@2.11.1` (verified 2026-09-26)
+- Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); v2 ใช้ capabilities files (`src-tauri/capabilities/*.json`) แทน v1 allowlist, รองรับ mobile targets
 
 ## Execute
 
@@ -38,6 +38,7 @@ related:
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
 2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
 3. ยืนยัน WebView2 บน Windows (ติดตั้งอัตโนมัติตอน run ครั้งแรก)
+4. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `tauri`/`@tauri-apps/*` versions และ v2 API ล่าสุด
 
 ### 2. Install Dependencies
 
@@ -131,7 +132,7 @@ desktop-apps/{project}/
 - อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
 - ไม่เปิด permission กว้างเกินความจำเป็น
 
-- ใช้ /follow-create-web-solid-tanstack-router สำหรับ frontend (Solid + TanStack Router + UnoCSS)
+- ใช้ /follow-create-solid-tanstack สำหรับ frontend (Solid + TanStack Router + UnoCSS)
 - ใช้ /follow-create-tauri-plugin ถ้าจำเป็น
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create desktop tauri)

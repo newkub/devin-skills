@@ -15,6 +15,7 @@ related:
   - report
   - suggest-next-action
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -44,19 +45,19 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 > Goal: ตรวจสอบ `.devin/rules/` subdirectories และ absence ของ `workflows/`
 
-ทำตาม references/directories.md
+ทำตาม subagents/dot-devin-reviewer/directories.md
 
 ### 3. Check Hooks
 
 > Goal: ตรวจสอบ `.devin/hooks/` scripts และ `hooks.json`
 
-ทำตาม references/hooks.md
+ทำตาม subagents/dot-devin-reviewer/hooks.md
 
 ### 4. Check Rules Content And Alignment
 
 > Goal: rules ไม่ซ้ำซ้อน frontmatter ถูก และ `.devin/rules` ↔ `rules/` sync
 
-ทำตาม references/devin-rules.md และ references/ast-grep-rules.md
+ทำตาม subagents/dot-devin-reviewer/devin-rules.md และ subagents/dot-devin-reviewer/ast-grep-rules.md
 
 - ระบุ duplicate rules และ rules ที่ขาด frontmatter (`trigger`, `title` Title Case, `description` ≤100 chars)
 - เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/` และ `ruleDirs` ใน `sgconfig.yml`
@@ -66,7 +67,7 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 > Goal: ตรวจโครงสร้าง, references และ coverage ของ AGENTS.md
 
-ทำตาม references/agents-md.md
+ทำตาม subagents/dot-devin-reviewer/agents-md.md
 
 - ตรวจ frontmatter, section order, skills map — ยืนยันว่าไม่มี section Workflows
 - ดึง references `skill-name` จาก `AGENTS.md` แล้วยืนยันว่า directory ของ skill มีอยู่จริง
@@ -76,13 +77,13 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 > Goal: ตรวจ `sgconfig.yml` ที่ project root
 
-ทำตาม references/sgconfig.md
+ทำตาม subagents/dot-devin-reviewer/sgconfig.md
 
 ### 7. Score And Report
 
 > Goal: สรุป review score และ findings
 
-ทำตาม references/scoring.md และ references/rules-scoring.md
+ทำตาม subagents/dot-devin-reviewer/scoring.md และ subagents/dot-devin-reviewer/rules-scoring.md
 
 - คำนวณ review score, grade และ supplementary metrics
 - ทำ `/deep-validate`, `/check-reference`
@@ -113,7 +114,7 @@ Review `.devin` ครบทั้ง structure และ content — directorie
    - Info: ข้อเสนอแนะ
 4. Scoring
    - review score = weighted average ของ findings
-   - Grade A-F ตาม thresholds ใน references/scoring.md
+   - Grade A-F ตาม thresholds ใน subagents/dot-devin-reviewer/scoring.md
 5. Safety
    - ไม่ลบ rule หรือไฟล์โดยไม่มี user confirm
 6. Formatting
@@ -135,16 +136,17 @@ Review `.devin` ครบทั้ง structure และ content — directorie
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md) และ [rules checklist](references/rules-checklist.md)
-- [Directories](references/directories.md)
-- [Hooks](references/hooks.md)
-- [Devin rules](references/devin-rules.md)
-- [Ast-grep rules](references/ast-grep-rules.md)
-- [AGENTS.md](references/agents-md.md)
-- [Sgconfig](references/sgconfig.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/dot-devin-reviewer/checklist.md) และ [rules checklist](subagents/dot-devin-reviewer/rules-checklist.md)
+- [Directories](subagents/dot-devin-reviewer/directories.md)
+- [Hooks](subagents/dot-devin-reviewer/hooks.md)
+- [Devin rules](subagents/dot-devin-reviewer/devin-rules.md)
+- [Ast-grep rules](subagents/dot-devin-reviewer/ast-grep-rules.md)
+- [AGENTS.md](subagents/dot-devin-reviewer/agents-md.md)
+- [Sgconfig](subagents/dot-devin-reviewer/sgconfig.md)
+- [Scoring](subagents/dot-devin-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ `/review-code-quality` ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

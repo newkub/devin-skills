@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { textOutsideInlineCode } from "../parse";
+import { relativePath, textOutsideInlineCode } from "../parse";
 import type { Context, SkillMeta } from "../types";
 
 const MD_LINK_RE = /\[[^\]]*\]\(([^)\s]+)\)/g;
@@ -11,7 +11,7 @@ const IGNORED_PATH_TOKENS = new Set([
 ]);
 
 export function checkReferences(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
 
   const dir = dirname(m.path);
   const skillDir = resolve(dir);

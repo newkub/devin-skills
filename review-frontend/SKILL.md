@@ -13,15 +13,28 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
 
-Review frontend code quality ครอบคลุม component architecture, state management, rendering performance, type safety, CSS/styling architecture, form and error handling, และ frontend testing พร้อม severity ratings และ review score
+Review frontend code quality ครอบคลุม component architecture, state management, rendering performance, type safety, CSS/styling architecture, form and error handling, และ frontend testing พร้อม severity ratings และ review score — domain checklist อยู่ใน `subagents/frontend-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 frontend code review สำหรับ project ที่มี UI code (React, Vue, Solid, Svelte, Angular) — ตรวจ component patterns, state management, rendering optimization, type safety, CSS architecture, form handling, error boundaries, และ test coverage
+
+| Dimension | Checklist |
+|-----------|-----------|
+| `components` — composition, boundaries, reusability, API, organization | `subagents/frontend-reviewer/components.md` |
+| `state` — organization, reactivity, persistence, immutability, hooks/composables | `subagents/frontend-reviewer/state-management.md`, `subagents/frontend-reviewer/hooks-composables.md` |
+| `rendering` — re-renders, virtualization, code splitting, bundle, event handling | `subagents/frontend-reviewer/rendering-performance.md`, `subagents/frontend-reviewer/event-handling.md` |
+| `types` — `any` usage, inference, generics, compatibility | `subagents/frontend-reviewer/type-safety.md` |
+| `css` — styling architecture, specificity, responsive, CSS perf | `subagents/frontend-reviewer/css-styling.md` |
+| `forms` — validation, UX, error boundaries, error handling | `subagents/frontend-reviewer/forms.md` |
+| `testing` — component/hook/integration/E2E quality | `subagents/frontend-reviewer/testing.md` |
+| `fetching` — waterfalls, caching, races, async states | `subagents/frontend-reviewer/data-fetching.md` |
+| `web` — rendered-app checks (routes, console, PWA, vitals) | `subagents/frontend-reviewer/web-checklist.md` |
 
 ไม่รวม:
 - design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
@@ -30,92 +43,53 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - general code quality, bug-prone patterns → ใช้ `/review-code-quality`
 - architecture, modularity, boundaries → ใช้ `/review-architecture`
 
-- rendered-app checks (routes, console, PWA, vitals) refs `references/web-*.md`
-
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare And Baseline
 
-> Goal: เข้าใจ frontend stack และ structure
+> Goal: เข้าใจ frontend stack และ structure พร้อมเก็บ baseline
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ frontend structure และ stack
-2. ระบุ frontend framework, state management library, styling system, form library, testing framework
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-4. ทำ `/deep-review` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-7. ถ้าสแกนไม่ได้ → stop และ report
+1. ทำตาม `subagents/frontend-reviewer/prepare.md` — framework, state library, styling system, form library, testing framework
+2. ทำ `/scan-codebase` เพื่อเข้าใจ frontend structure และ stack
+3. ทำ `/deep-analyze` + `/deep-review` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
+4. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics; ทำ `/run-review` ดึง metrics ล่าสุด
+5. ถ้าสแกนไม่ได้ → stop และ report
 
-### 2. Component Architecture Review
+### 2. Dispatch Frontend-Reviewer
 
-> Goal: ตรวจ component composition, boundaries, reusability, API, organization
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-ทำตาม `references/components.md`
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply (ตาม skip conditions ใน Rules)
+2. Spawn `subagents/frontend-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย entry → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. State Management And Hooks Review
+### 3. Aggregate And Validate
 
-> Goal: ตรวจ state organization, reactivity, side effects, persistence, immutability, hooks/composables
+> Goal: findings รวมกันถูกต้องพร้อม severity + score ต่อ dimension
 
-ทำตาม `references/state-management.md` และ `references/hooks-composables.md`
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance — จัดลำดับการ validate ตาม severity Critical → Info และระบุ false positives
+3. ถ้า validation ไม่ผ่าน → ส่ง dimension นั้นกลับให้ reviewer ตรวจซ้ำ
+4. Validate score ตาม `subagents/frontend-reviewer/scoring.md`
 
-### 4. Rendering Performance And Event Handling Review
+### 4. Report
 
-> Goal: ตรวจ re-renders, virtualization, code splitting, bundle, event handling
+> Goal: รายงานครบทุก dimension พร้อม actionable recommendations และ next actions
 
-ทำตาม `references/rendering-performance.md` และ `references/event-handling.md`
-
-### 5. Type Safety Review
-
-> Goal: ตรวจ type safety
-
-ทำตาม `references/type-safety.md`
-
-### 6. CSS And Styling Review
-
-> Goal: ตรวจ CSS/styling architecture
-
-ทำตาม `references/css-styling.md`
-
-### 7. Form And Error Handling Review
-
-> Goal: ตรวจ form validation, UX, error boundaries, error handling
-
-ทำตาม `references/forms.md`
-
-### 8. Frontend Testing Review
-
-> Goal: ตรวจ testing strategy and quality
-
-ทำตาม `references/testing.md`
-
-### 9. Data Fetching And Async States
-
-> Goal: async surface ครบ — ทำตาม `references/data-fetching.md`
-
-1. error boundaries ครบทุก route/section — crash ไม่ลากทั้ง app
-2. loading/skeleton/empty states coverage ต่อ async surface
-3. fetch patterns — cancellation, dedup, race-safe updates, retry
-4. realtime/subscriptions — cleanup, reconnect, missed-message handling
-
-### 10. Validate Findings And Report
-
-> Goal: Issues ถูกต้อง จัดลำดับตาม severity และรายงานพร้อม actionable recommendations
-
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance — ครอบ issues จากทุก section
-2. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
-3. ระบุ false positives ที่พบ
-4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ section ที่เกี่ยวข้อง
-5. รายงานตาม `references/reporting.md`
+1. รายงานตาม `subagents/frontend-reviewer/reporting.md` — ทำ `/report` ตาราง No./Dimension/Severity/File/Finding/Suggestion + Metrics Summary + score ต่อ dimension และ overall
+2. ทำ `/suggest-next-action`
 
 ### Subskills
+
+> Goal: dispatch งานเฉพาะรูปแบบ — check-* report subskill format findings, improve-* fix เมื่อ user confirm
+
+| Topic | Subskill |
+|-------|----------|
 | `state`, `hooks` — state placement, derived state, drilling | `subskills/check-state/SKILL.md` |
 | `forms`, `errors` — validation, submit states, a11y | `subskills/check-forms/SKILL.md` |
 | `fetching`, `async`, `data` — waterfalls, caching, races | `subskills/check-fetching/SKILL.md` |
 | Fix hydration mismatches + reduce scope (user confirm) | `subskills/improve-hydration/SKILL.md` |
-
-> Goal: dispatch งาน fix/improve ไปยัง subskill ที่ตรง topic
-
-- rendering performance findings (re-renders, memoization, lists, lazy components) → `subskills/improve-rendering/SKILL.md`
+| rendering performance findings (re-renders, memoization, lists, lazy components) | `subskills/improve-rendering/SKILL.md` |
 
 ## Rules
 
@@ -123,6 +97,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - เน้น frontend code quality
 - ไม่ซ้ำกับ `/review-uxui`, `/deep-review`, `/review-seo`, `/review-code-quality`, `/review-architecture`
 - focus ที่ component patterns, state, rendering, types, CSS, forms, testing
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/frontend-reviewer/` เท่านั้น
 
 ### 2. Skip Conditions
 - ถ้า project ไม่มี UI code → stop และ report
@@ -150,7 +125,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
 ### 6. Health Score
-- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `subagents/frontend-reviewer/scoring.md`)
 
 ### 7. Formatting
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (frontend)
@@ -165,13 +140,9 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 2. dispatch ตาม subskills — rendering → `subskills/improve-rendering/SKILL.md`; hydration → mismatch แก้ที่ root cause (browser-only APIs ย้ายไป post-mount, non-deterministic values ทำ stable, invalid HTML nesting; `suppressHydrationWarning` เฉพาะ leaf ที่จำเป็น), cost ลด scope (ลบ `'use client'`/`client:load` บน display-only, islands, `client:visible`/`client:idle`, defer third-party) — findings อื่น (components, state, type safety, CSS, forms, offline) แก้ตาม finding ตรงๆ (frontend)
 3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
 
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-
 ## Expected Outcome
 
-- รายงานตาราง findings จากทุก frontend section พร้อม severity และ location
+- รายงานตาราง findings จากทุก frontend dimension พร้อม severity และ location
 - รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
 - รายงาน recommended actions พร้อม priority (frontend)
 - Review score ต่อ dimension และ overall พร้อม grade

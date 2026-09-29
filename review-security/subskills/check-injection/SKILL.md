@@ -16,7 +16,7 @@ Run the injection prevention dimension of `/review-security` แบบ focused �
 
 - ใช้เมื่อ `/review-security` dispatch มาที่ `injection`/`sqli`/`xss` หรือเรียก standalone
 - ครอบคลุม: SQL/NoSQL injection, command injection, template injection/SSTI, XSS (stored/reflected/DOM), path traversal, LDAP/header injection
-- ไม่รวม: OWASP Top 10 เต็ม → parent Execute §4 (`references/owasp-top-10.md`)
+- ไม่รวม: OWASP Top 10 เต็ม → parent Execute §4 (`subagents/security-reviewer/owasp-top-10.md`)
 
 ## Execute
 
@@ -32,7 +32,7 @@ Run the injection prevention dimension of `/review-security` แบบ focused �
 
 > Goal: ครอบคลุมทุก injection dimension
 
-ทำตาม `../../references/injection.md`
+ทำตาม `../../subagents/security-reviewer/injection.md`
 
 1. parameterized queries ทุกจุด — string concat ใน query = finding
 2. escaping/sanitization ที่ boundary — output encoding ตาม context (HTML/attr/JS/URL)

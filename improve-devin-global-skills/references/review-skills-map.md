@@ -2,7 +2,7 @@
 
 Catalog ครบทุก `review-*` skill (58 ตัว) สำหรับ dispatch ใน improve workflow — เลือกตาม tier แล้วรัน independent แบบ parallel ผ่าน `/follow-parallel` (≤10 ต่อ batch)
 
-> Canonical dispatch catalog สำหรับ codebase review อยู่ที่ `review/references/review-skills.md` — ไฟล์นี้เก็บเฉพาะ tier/dispatch condition สำหรับ context "improve devin global skills"; ถ้าเพิ่ม/ลบ/merge `review-*` skill ให้อัปเดตทั้งสองไฟล์
+> Canonical dispatch catalog สำหรับ codebase review อยู่ที่ `../../shared/review-skills.md` — ไฟล์นี้เก็บเฉพาะ tier/dispatch condition สำหรับ context "improve devin global skills"; ถ้าเพิ่ม/ลบ/merge `review-*` skill ให้อัปเดตทั้งสองไฟล์
 
 ## Tiers
 

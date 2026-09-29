@@ -24,7 +24,7 @@ Run the breaking-changes dimension of `/review-release` แบบ focused — re
 
 > Goal: ทุก break detected ก่อน ship — parent Execute §4
 
-ทำตาม `../../references/breaking-changes.md` + `../../references/version-semver.md`
+ทำตาม `../../subagents/release-reviewer/breaking-changes.md` + `../../subagents/release-reviewer/version-semver.md`
 
 1. API breaks — removed/renamed endpoints, field type changes, required-field additions → `/review-api` diff หรือ `/review-api`
 2. schema breaks — DB/config/storage format changes ที่ต้อง migration

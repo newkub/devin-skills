@@ -21,7 +21,7 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 
 ## Scope
 
-ใช้เมื่อต้องการ DX review เฉพาะทางและละเอียด — `review-delivery` มี DX summary pass (`../review-delivery/references/dx.md`); skill นี้คือ dedicated deep review ที่วัดจริงและให้ findings ละเอียดกว่า ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
+ใช้เมื่อต้องการ DX review เฉพาะทางและละเอียด — `review-delivery` มี DX summary pass (`../shared/dx.md`); skill นี้คือ dedicated deep review ที่วัดจริงและให้ findings ละเอียดกว่า ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
 
 ## Execute
 
@@ -55,7 +55,7 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 
 > Goal: คนใหม่ setup ได้โดยไม่ต้องถาม
 
-1. README/prerequisites/env vars ครบ — ตาม `../review-delivery/references/dx.md`
+1. README/prerequisites/env vars ครบ — ตาม `../shared/dx.md`
 2. `.env.example` ครบทุก var ที่ code อ่านจริง
 3. setup guide verify ได้บน clean environment — ไม่พึ่ง global state ที่ไม่ได้เขียนไว้
 4. troubleshooting section ครอบ error ที่เจอจริง (port ชน, version mismatch, missing secrets)
@@ -124,7 +124,7 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 
 ## References
 
-- [DX summary checklist](../review-delivery/references/dx.md)
+- [DX summary checklist](../shared/dx.md)
 - ใช้ /follow-tasks ถ้าจำเป็น
 
 ## Expected Outcome

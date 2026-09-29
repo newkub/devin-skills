@@ -11,6 +11,7 @@ related:
   - run-review
   - use-related-skills
   - report
+  - use-subagents
 ---
 
 ## Goal
@@ -39,7 +40,7 @@ Review ความเสถียรของ application ครอบคลุ
 3. ตรวจสอบ logging statements, error messages, naming conventions, code complexity และ nesting
 4. ระบุ files ที่เกี่ยวข้องกับ top-level error boundaries หรือ crash handlers
 5. ค้นหา patterns: try-catch, unhandled rejections, global error handlers, memory leaks, infinite loops
-6. ถ้ามี log หรือ error aggregation ให้ทำตาม `references/error-patterns.md`
+6. ถ้ามี log หรือ error aggregation ให้ทำตาม `subagents/stability-reviewer/error-patterns.md`
 
 ### 2. Deep Analyze
 
@@ -55,25 +56,25 @@ Review ความเสถียรของ application ครอบคลุ
 
 > Goal: app ไม่ crash ทั้งหมดเมื่อส่วนใดส่วนหนึ่งพัง
 
-ทำตาม `references/app-stability.md`
+ทำตาม `subagents/stability-reviewer/app-stability.md`
 
 ### 4. Error Handling
 
 > Goal: errors ถูกจัดการอย่างถูกต้อง ครอบคลุมทุก dimension
 
-ทำตาม `references/error-handling.md`
+ทำตาม `subagents/stability-reviewer/error-handling.md`
 
 ### 5. Debuggability
 
 > Goal: รู้ว่า logging, error messages, naming, complexity เหมาะสมหรือไม่
 
-ทำตาม `references/debuggability.md`
+ทำตาม `subagents/stability-reviewer/debuggability.md`
 
 ### 6. Recovery
 
 > Goal: ระบบพังบางส่วนได้โดยไม่หยุดทำงานทั้งหมด
 
-ทำตาม `references/recovery.md`
+ทำตาม `subagents/stability-reviewer/recovery.md`
 
 ### 7. Related Workflows
 
@@ -87,7 +88,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 ### 8. Degradation Matrix
 
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/degradation.md`
+> Goal: coverage เพิ่มเติมของ domain — ทำตาม `subagents/stability-reviewer/degradation.md`
 
 1. graceful-degradation matrix — dependency down → expected behavior ต่อ feature
 2. failure-injection coverage — ทุก critical path มี chaos test
@@ -98,7 +99,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 1. ทำ `/deep-validate` เพื่อ validate findings จากทุก section
 2. จัดลำดับตาม severity: Critical → High → Medium → Low
-3. คำนวณ review score ตาม `references/scoring.md`
+3. คำนวณ review score ตาม `subagents/stability-reviewer/scoring.md`
 4. ทำ `/report` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
 5. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
 6. ทำ `/suggest-next-action`
@@ -121,7 +122,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 - เน้นความเสถียรของ app โดยรวม ไม่ใช่แค่ app crash
 - ไม่ซ้ำกับ `/deep-review` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
-- รายละเอียด debuggability principles อยู่ใน `references/debuggability.md`
+- รายละเอียด debuggability principles อยู่ใน `subagents/stability-reviewer/debuggability.md`
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 
 ### 2. Skip Conditions
@@ -171,14 +172,15 @@ Review ความเสถียรของ application ครอบคลุ
 5. verify: failure-injection tests ผ่าน
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [App stability](references/app-stability.md)
-- [Error handling](references/error-handling.md)
-- [Debuggability](references/debuggability.md)
-- [Recovery](references/recovery.md)
-- [Error patterns](references/error-patterns.md)
-- [Degradation matrix](references/degradation.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/stability-reviewer/checklist.md)
+- [App stability](subagents/stability-reviewer/app-stability.md)
+- [Error handling](subagents/stability-reviewer/error-handling.md)
+- [Debuggability](subagents/stability-reviewer/debuggability.md)
+- [Recovery](subagents/stability-reviewer/recovery.md)
+- [Error patterns](subagents/stability-reviewer/error-patterns.md)
+- [Degradation matrix](subagents/stability-reviewer/degradation.md)
+- [Scoring](subagents/stability-reviewer/scoring.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

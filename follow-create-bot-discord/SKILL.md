@@ -97,8 +97,9 @@ argument-hint: "[features]"
 - ต้องมี `deploy-commands` script สำหรับ register slash commands
 - ไม่ commit `.env`
 - ใช้ TypeScript first ตาม `/follow-lang-typescript`
-- ใช้ intents ตาม least privilege
-- ดู `references/setup.md` สำหรับ official docs
+- ใช้ intents ตาม least privilege — `GatewayIntentBits.Guilds` จำเป็นสำหรับ slash commands; `GuildMessages`/`MessageContent` เฉพาะเมื่ออ่าน messages
+- Bot app: สร้างที่ Discord Developer Portal → `Bot` tab → `Reset Token`; invite ผ่าน `OAuth2 → URL Generator` scopes `bot` + `applications.commands`
+- Slash commands: build ด้วย `SlashCommandBuilder`, register guild-level (`Routes.applicationGuildCommands`) ตอน dev เพราะเร็วกว่า, global (`Routes.applicationCommands`) ตอน production
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
@@ -115,7 +116,7 @@ argument-hint: "[features]"
 
 ## Guide
 
-- `references/setup.md` — official docs, intents, OAuth scopes
+- `/deep-research` + `/follow-best-practice` — official docs/versions ล่าสุด (ไม่ pin ในไฟล์)
 - `/follow-lang-typescript` — TypeScript best practices
 - `/follow-create-bun-cli` — ถ้า bot เป็น Bun CLI project
 - `/search-npm-libraries` — เลือก library ตาม use case

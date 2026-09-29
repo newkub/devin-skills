@@ -9,7 +9,7 @@ related:
   - follow-tool-mutants-rs
   - follow-create-rust-cli
   - follow-create-rust-crate
-  - follow-create-website-rust
+  - follow-create-web-wasm
 
 ---
 
@@ -124,7 +124,7 @@ related:
 - ใช้ `//!`, `#![warn(missing_docs)]`, `# Errors`/`# Panics`/`# Safety` sections
 - ใช้ `/follow-create-rust-cli` ถ้าจำเป็น
 - ใช้ `/follow-create-rust-crate` ถ้าจำเป็น
-- ใช้ `/follow-create-website-rust` ถ้าจำเป็น
+- ใช้ `/follow-create-web-wasm` ถ้าจำเป็น
 - ใช้ `RUSTDOCFLAGS`
 - ดู [references/rust-documentation.md](references/rust-documentation.md)
 

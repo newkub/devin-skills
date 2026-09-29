@@ -23,7 +23,7 @@ related:
 
 > Goal: รู้ว่ามี SLO อะไรและวัดยังไง
 
-ทำตาม `../../references/slo-sli.md`
+ทำตาม `../../subagents/observability-reviewer/slo-sli.md`
 
 1. list SLOs/SLIs ที่ declared — availability, latency, error rate
 2. map ไป metrics ที่ measure จริง — flag SLO ที่ไม่มี SLI วัด

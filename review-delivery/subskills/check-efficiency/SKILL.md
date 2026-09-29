@@ -23,7 +23,7 @@ Run the build efficiency dimension of `/review-delivery` แบบ focused — d
 
 > Goal: ครอบคลุมทุก efficiency dimension
 
-ทำตาม `../../references/efficiency.md`
+ทำตาม `../../subagents/delivery-reviewer/efficiency.md`
 
 1. build time — incremental config, cache strategy, unnecessary work ใน pipeline
 2. dev loop — HMR/watch performance, slow transpile steps

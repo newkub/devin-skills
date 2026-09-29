@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`) — ถ้ายังไม่ชัด Bun หรือ Rust ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
-- Latest: Bun `1.4.2`, `cac@7.0.0` (ESM-only, `cli.on` → `cli.addEventListener`), `picocolors@1.1.1`, `bunup@0.16.32` (verified 2026-09-12)
+- Packages: `bun`, `cac` (ESM-only — `cli.on` → `cli.addEventListener`), `picocolors`, `bunup` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); Bun native APIs ล่าสุดดูผ่าน `/learn-from-cli` (`bun --help`)
 
 ## Execute
 
@@ -75,8 +75,6 @@ related:
 3. ใช้ `cac` สำหรับ argument parsing และ command structure
 4. หลีกเลี่ยง `chalk`, `commander` และ `node:fs`/`node:child_process` ถ้ามี Bun native equivalent
 
-ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ CLI libraries เต็ม
-
 ### 6. Development Workflow
 
 > Goal: ใช้ development workflow ที่มีประสิทธิภาพ
@@ -125,8 +123,6 @@ related:
 - ใช้ `cac` แทน `commander`
 - ใช้ Bun native APIs (`Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob`) แทน `node:*` modules
 - bundle dependencies ด้วย `bunup` เพื่อลด runtime dependencies ถ้าเหมาะสม
-
-ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ library versions
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น

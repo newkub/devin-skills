@@ -24,7 +24,7 @@ related:
 
 > Goal: cases ที่ representative + versioned
 
-ทำตาม `../../references/evals.md`
+ทำตาม `../../subagents/ai-reviewer/evals.md`
 
 1. เลือก cases จาก real usage + edge cases ที่ findings ชี้ — 20-50 cases เริ่มต้น
 2. expected output ต่อ case: exact match / rubric / properties

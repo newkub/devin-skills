@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับสร้าง Claude Code plugin จาก scratch เพื่อขยายความสามารถของ Claude ด้วย custom skills, agents, hooks, MCP servers หรือ slash commands
 
-- Latest: Claude Code plugin format — รองรับ skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — docs: code.claude.com/docs/en/plugins (verified 2026-09-12)
+- Components ที่รองรับ: skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — ยืนยัน schema/docs ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -30,9 +30,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create claude plugin)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create claude plugin)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin schema ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack/components สำหรับ reference ต่อไป (create claude plugin)
 
 ### 2. Gather Requirements
 
@@ -82,7 +81,7 @@ related:
 2. รัน `/reload-plugins` ใน session เพื่อรับ changes โดยไม่ต้อง restart
 3. ทดสอบ skills ผ่าน `/plugin-name:skill-name` และตรวจ `/plugin` manager Errors tab
 4. รัน `claude plugin validate <plugin-path>` ก่อน submit/distribute (`--strict` ถ้าต้องการ fail เมื่อมี warnings)
-5. ตรวจสอบ `plugin.json` ด้วย schema ตาม `references/claude-plugin.md`
+5. ตรวจ `plugin.json` มี `name` (kebab-case — เป็น namespace `/plugin-name:skill-name`), `description` ครบ; `version` ถ้าตั้ง users จะได้ update เมื่อ bump เท่านั้น
 6. ถ้ามี agents/hooks → ทำ `/deep-validate` สำหรับแต่ละ agent `.md`/`hooks.json`
 
 ### 6. Document And Distribute
@@ -92,11 +91,11 @@ related:
 1. สร้าง `README.md` อธิบาย purpose, components, setup, usage
 2. อัปเดต `AGENTS.md` ถ้า plugin เป็นส่วนหนึ่งของ project skills
 3. สร้าง `.gitignore` สำหรับ sensitive files
-4. ถ้าต้องการ publish → ทำตามคำแนะนำในของ Claude plugin marketplace/team sharing
+4. ถ้าต้องการ publish → marketplace ใช้ `.claude-plugin/marketplace.json` catalog; public submission ผ่าน claude.ai admin-settings directory form หรือ platform.claude.com/plugins/submit (approved plugins pin commit SHA)
 
 ## Rules
 
-- ใช้ directory layout ตาม `references/claude-plugin.md`
+- ใช้ directory layout ตาม `### 3` — ทุก component อยู่ plugin root, `.claude-plugin/` มีแค่ `plugin.json`
 - manifest `plugin.json` ต้องมี `name`, `description`, `version`
 - ไม่ hardcode secrets หรือ credentials ใน plugin files
 - ใช้ environment variables สำหรับ API keys และ sensitive paths
@@ -116,7 +115,7 @@ related:
 
 ## Guide
 
-- `references/claude-plugin.md` — official docs, manifest schema, component details
+- `/deep-research` + `/follow-best-practice` — official docs/schema ล่าสุด (ไม่ pin ในไฟล์)
 - `/update-devin-global-skills` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

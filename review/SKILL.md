@@ -166,12 +166,12 @@ related:
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (review)
+- ดู metrics สำหรับ review ใน [subagents/codebase-reviewer/scoring.md](subagents/codebase-reviewer/scoring.md) (review)
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `references/review-skills.md`
+- [Full-dimension checklist](subagents/codebase-reviewer/checklist.md) — codebase review subagent: `subagents/codebase-reviewer/AGENT.md` (spawn ผ่าน `/use-subagents` สำหรับ codebase-wide scan)
+- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `../shared/review-skills.md`
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

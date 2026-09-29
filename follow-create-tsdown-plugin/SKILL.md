@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับสร้าง plugins สำหรับ `tsdown` bundler ด้วย TypeScript ครอบคลุม plugin object, hooks, build, tests, และ npm package
 
-- Latest: `tsdown@0.23.0` (verified 2026-09-12)
+- Package: `tsdown` (0.x — API เปลี่ยนได้) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); `TsdownPlugin` จาก `tsdown/plugins` + hooks `tsdownConfig`/`tsdownConfigResolved` บน Rolldown plugin API
 
 ## Execute
 
@@ -26,7 +26,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create tsdown plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create tsdown plugins)
 

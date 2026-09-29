@@ -17,6 +17,7 @@ related:
   - list-raindrop-favorite
   - search
 
+  - use-subagents
 ---
 
 ## Goal
@@ -27,7 +28,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ใช้สำหรับ project หรือ workspace ที่มี manifest files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) — ครอบคลุม framework selection, runtime compatibility, build tools, package manager, technology alignment, library API design, export strategy, module format, tree-shaking, peer deps, semver compliance, compatibility matrix, type declarations และ cloud/infrastructure selection — เน้น review และปรับปรุง ไม่รวมการติดตั้งใหม่ (ใช้ `/run-install`)
 
-- Boundary: tech stack selection, preferred catalog (`../review-dependencies/references/techstack-catalog.md`), framework/cloud choices, library design → skill นี้; dependency health เท่านั้น (outdated, vulnerabilities, unused, licenses) → `/review-dependencies`
+- Boundary: tech stack selection, preferred catalog (`../shared/techstack-catalog.md`), framework/cloud choices, library design → skill นี้; dependency health เท่านั้น (outdated, vulnerabilities, unused, licenses) → `/review-dependencies`
 
 ดูเพิ่มเติม: /deep-review
 
@@ -37,25 +38,25 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 > Goal: เข้าใจ tech stack structure, dependency landscape และ library config
 
-ทำตาม `references/prepare.md`
+ทำตาม `subagents/techstack-reviewer/prepare.md`
 
 ### 2. Deep Analyze
 
 > Goal: วิเคราะห์ tech stack และ dependencies อย่างลึกซึ้ง
 
-ทำตาม `references/deep-analyze.md`
+ทำตาม `subagents/techstack-reviewer/deep-analyze.md`
 
 ### 3. Tech Stack Selection
 
 > Goal: ตรวจสอบ decision process เมื่อเลือก tech stack ใหม่
 
-ทำตาม `references/choosing.md`
+ทำตาม `subagents/techstack-reviewer/choosing.md`
 
 ### 4. Cloud And Infrastructure
 
 > Goal: เลือก cloud providers และ deployment targets ให้เหมาะสมกับ workload
 
-ทำตาม `references/cloud-selection.md`
+ทำตาม `subagents/techstack-reviewer/cloud-selection.md`
 
 ### 5. Compare With Preferred Stack
 
@@ -70,25 +71,25 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 > Goal: ตรวจสอบทุก dimension ตาม reference files
 
-ทำตาม `references/techstack.md`, `references/dependencies.md`, `references/lib-design.md` และ `references/type-declarations.md`
+ทำตาม `subagents/techstack-reviewer/techstack.md`, `subagents/techstack-reviewer/dependencies.md`, `subagents/techstack-reviewer/lib-design.md` และ `subagents/techstack-reviewer/type-declarations.md`
 
 ### 7. Validate Findings
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
-ทำตาม `references/validate.md`
+ทำตาม `subagents/techstack-reviewer/validate.md`
 
 ### 8. Report
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
-ทำตาม `references/report.md`
+ทำตาม `subagents/techstack-reviewer/report.md`
 
 ### 9. Implement All
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-ทำตาม `references/implement.md`
+ทำตาม `subagents/techstack-reviewer/implement.md`
 
 ## Rules
 
@@ -138,22 +139,23 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Choosing stack](references/choosing.md)
-- [Cloud selection](references/cloud-selection.md)
-- [Techstack](references/techstack.md)
-- [Dependencies](references/dependencies.md)
-- [Lib design](references/lib-design.md)
-- [Type declarations](references/type-declarations.md)
-- [Techstack catalog](../review-dependencies/references/techstack-catalog.md)
+- [Full-dimension checklist](subagents/techstack-reviewer/checklist.md)
+- [Choosing stack](subagents/techstack-reviewer/choosing.md)
+- [Cloud selection](subagents/techstack-reviewer/cloud-selection.md)
+- [Techstack](subagents/techstack-reviewer/techstack.md)
+- [Dependencies](subagents/techstack-reviewer/dependencies.md)
+- [Lib design](subagents/techstack-reviewer/lib-design.md)
+- [Type declarations](subagents/techstack-reviewer/type-declarations.md)
+- [Techstack catalog](../shared/techstack-catalog.md)
 
 ## Fix
 
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. แก้ตาม priority: security vulnerabilities ก่อน → `/run-audit` + update, unused deps → remove, outdated → `/update-version-to-latest`
-2. library ที่ไม่ตรง techstack catalog → แนะนำทางเลือกตาม `../review-dependencies/references/techstack-catalog.md` หรือ `/use-lib-effective`
+2. library ที่ไม่ตรง techstack catalog → แนะนำทางเลือกตาม `../shared/techstack-catalog.md` หรือ `/use-lib-effective`
 3. verify: `/run-check` + regression check หลังเปลี่ยน stack
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

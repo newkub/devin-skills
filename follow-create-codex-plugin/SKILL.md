@@ -23,7 +23,7 @@ related:
 
 ใช้สำหรับสร้าง Codex plugin จาก scratch เพื่อขยายความสามารถของ ChatGPT Work และ Codex ด้วย custom skills, MCP tools, และ apps
 
-- Latest: portable Agent Plugins format — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` เป็น compatibility fallback (verified 2026-09-12)
+- Format: portable Agent Plugins — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` เป็น compatibility fallback — ยืนยัน schema ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (Codex CLI 0.x มี breaking ได้ — ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -91,7 +91,7 @@ related:
 
 ## Rules
 
-- ใช้ directory layout ตาม `references/codex-plugin.md` — portable `plugin.json`, `mcp.json`, `skills/` อยู่ที่ plugin root เท่านั้น
+- ใช้ directory layout ตาม `### 3` — portable `plugin.json`, `mcp.json`, `skills/` อยู่ที่ plugin root เท่านั้น; `.mcp.json` (dotfile, ไม่มี `type`) เป็น legacy format — ห้าม rename มาใช้แทน `mcp.json`
 - manifest `plugin.json` ต้องมี `$schema` (agent-plugins 1.0.0), `name`, `description`; `version`/`author` แนะนำ
 - paths ใน `extensions.com.openai` ต้องขึ้นต้น `./` relative จาก plugin root และอยู่ใน root เท่านั้น
 - ไม่ hardcode secrets หรือ credentials ใน plugin files
@@ -116,7 +116,7 @@ related:
 
 ## Guide
 
-- `references/codex-plugin.md` — official docs, manifest schema, component details
+- `/deep-research` + `/follow-best-practice` — official docs/schema ล่าสุด (ไม่ pin ในไฟล์)
 - `/update-devin-global-skills` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

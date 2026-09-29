@@ -14,6 +14,7 @@ related:
   - use-pwsh-shell
   - search
   - run-profiler
+  - use-subagents
 ---
 
 ## Goal
@@ -54,7 +55,7 @@ Review production output ทั้งหมด — bundle size, build output, ch
 
 ### 4. Delivery And Loading Strategy
 
-> Goal: output ส่งถึง browser อย่างมีประสิทธิภาพ — ทำตาม `references/loading-strategy.md`
+> Goal: output ส่งถึง browser อย่างมีประสิทธิภาพ — ทำตาม `subagents/bundle-reviewer/loading-strategy.md`
 
 1. compression — brotli/gzip precompressed (`.br`/`.gz` artifacts) หรือ server-level
 2. cache headers — hashed assets `immutable` + long TTL, HTML `no-cache`
@@ -66,7 +67,7 @@ Review production output ทั้งหมด — bundle size, build output, ch
 
 > Goal: assets optimize ถูก format และ loading strategy เหมาะสม
 
-ทำตาม references/assets-checklist.md
+ทำตาม subagents/bundle-reviewer/assets-checklist.md
 
 1. images — `png`/`jpg` ที่ควรเป็น `webp`/`avif`, ขาด `srcset`/`sizes`, `loading="lazy"`, `decoding="async"`, ขาด `width`/`height` (CLS risk)
 2. fonts — `font-display: swap`, preloading, subset fonts และ weights ที่ใช้จริง
@@ -89,13 +90,13 @@ Review production output ทั้งหมด — bundle size, build output, ch
 | Apply bundle findings - dedupe deps, splitting, lazy loading | `subskills/optimize-bundle/SKILL.md` |
 
 ## Check: Bundle Regression
-ทำตาม [references/check-bundle-regression.md](references/check-bundle-regression.md)
+ทำตาม [subagents/bundle-reviewer/check-bundle-regression.md](subagents/bundle-reviewer/check-bundle-regression.md)
 
 ## Check: Source Maps
-ทำตาม [references/check-source-maps.md](references/check-source-maps.md)
+ทำตาม [subagents/bundle-reviewer/check-source-maps.md](subagents/bundle-reviewer/check-source-maps.md)
 
 ## Check: Bundle Size
-ทำตาม [references/check-bundle-size.md](references/check-bundle-size.md)
+ทำตาม [subagents/bundle-reviewer/check-bundle-size.md](subagents/bundle-reviewer/check-bundle-size.md)
 
 ## Domain Checks
 
@@ -136,11 +137,12 @@ Review production output ทั้งหมด — bundle size, build output, ch
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Assets checklist](references/assets-checklist.md)
-- [Loading strategy](references/loading-strategy.md)
+- [Full-dimension checklist](subagents/bundle-reviewer/checklist.md)
+- [Assets checklist](subagents/bundle-reviewer/assets-checklist.md)
+- [Loading strategy](subagents/bundle-reviewer/loading-strategy.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ `/scan-codebase` ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

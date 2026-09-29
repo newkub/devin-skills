@@ -23,7 +23,7 @@ Run the indexes/queries dimension of `/review-database` แบบ focused — in
 
 > Goal: ทุก hot query มี index รองรับ — parent Execute §3
 
-ทำตาม `../../references/checklist.md` (index/query section)
+ทำตาม `../../subagents/database-reviewer/checklist.md` (index/query section)
 
 1. missing — WHERE/JOIN/ORDER BY columns ที่ไม่มี index (เทียบ query log/code จริง)
 2. unused/duplicate — indexes ที่ไม่มี query ใช้, overlapping composite indexes

@@ -101,7 +101,7 @@ related:
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
 - ใช้ /review-diff ถ้าจำเป็น
-- เมื่อต้องเขียน invocation ของ skills อื่นใน `SKILL.md` → ดู `update-devin-global-skills/references/invoke-skills.md`
+- เมื่อต้องเขียน invocation ของ skills อื่นใน `SKILL.md` → ดู `update-devin-global-skills` (`## Conventions → Invoke Skills`)
 
 ## Expected Outcome
 

@@ -1,17 +1,25 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 
-const data = JSON.parse(readFileSync("review-skills-report.json", "utf8"));
+const packageDir = import.meta.dir;
+const data = JSON.parse(readFileSync(join(packageDir, "..", "review-skills-report.json"), "utf8"));
 const now = new Date();
 const time = now.toISOString().replace(/[-:T.Z]/g, "").slice(0, 14);
-const outDir = join("..", "..", ".devin", "reports", "skills");
+const outDir = join(packageDir, "..", "..", ".devin", "reports", "skills");
 mkdirSync(outDir, { recursive: true });
 const outFile = join(outDir, `review-devin-global-harness-${time}.md`);
 
+const esc = (v: unknown) => String(v).replace(/\|/g, "\\|");
 const rows = data.findings.map(
   (f: any, i: number) =>
-    `| ${i + 1} | ${f.skill} | ${f.category} | ${f.severity} | ${f.finding} | ${String(f.evidence).replace(/\|/g, "\\|")} | ${f.file} |`
+    `| ${i + 1} | ${f.skill} | ${f.category} | ${f.severity} | ${f.finding} | ${esc(f.evidence)} | ${f.file} |`
 );
+
+const SEVERITIES = ["Critical", "High", "Medium", "Low", "Info"];
+const categories = Object.keys(data.meta.byCategory).sort();
+
+const sevTable = `| ${SEVERITIES.join(" | ")} |\n|${SEVERITIES.map(() => "---").join("|")}|\n| ${SEVERITIES.map((s) => data.meta.bySeverity[s] ?? 0).join(" | ")} |`;
+const catTable = `| ${categories.join(" | ")} |\n|${categories.map(() => "---").join("|")}|\n| ${categories.map((c) => data.meta.byCategory[c]).join(" | ")} |`;
 
 const md = `---
 title: review-devin-global-harness
@@ -41,15 +49,11 @@ created: ${now.toISOString()}
 
 ## Findings by Severity
 
-| Critical | Medium | Low |
-|---|---|---|
-| ${data.meta.bySeverity.Critical} | ${data.meta.bySeverity.Medium} | ${data.meta.bySeverity.Low} |
+${sevTable}
 
 ## Findings by Category
 
-| frontmatter | style | references |
-|---|---|---|
-| ${data.meta.byCategory.frontmatter} | ${data.meta.byCategory.style} | ${data.meta.byCategory.references} |
+${catTable}
 
 ## Findings
 
@@ -59,7 +63,7 @@ ${rows.join("\n")}
 
 ## Observations
 
-${data.observations.map((o: any, i: number) => `${i + 1}. ${o}`).join("\n")}
+${data.observations.map((o: any, i: number) => `${i + 1}. [${o.severity}/${o.category}] ${o.finding} — ${o.evidence} (${o.skill})`).join("\n")}
 
 ## Next Action
 

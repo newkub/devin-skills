@@ -12,6 +12,7 @@ related:
   - deep-review-then-fix
   - loop-until-complete
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
@@ -39,49 +40,49 @@ Review app/package เพื่อหา "สิ่งที่ optimize ได�
 
 > Goal: รู้ว่า optimize อะไร มี baseline และไม่แตะ optimization ที่ตั้งใจไว้
 
-ทำตาม `references/scope-and-baseline.md`
+ทำตาม `subagents/optimize-reviewer/scope-and-baseline.md`
 
 ### 2. Scan Startup
 
 > Goal: boot path ไม่แบกงานที่ไม่จำเป็น — sequential awaits, eager imports, pre-paint services
 
-ทำตาม `references/scan-startup.md`
+ทำตาม `subagents/optimize-reviewer/scan-startup.md`
 
 ### 3. Scan Render, CSS And Memory
 
 > Goal: DOM/render/layout work ไม่โตตาม data — heap ไม่โตไม่รู้จบ
 
-ทำตาม `references/scan-render.md` + `references/scan-css-layout.md` + `references/scan-memory.md`
+ทำตาม `subagents/optimize-reviewer/scan-render.md` + `subagents/optimize-reviewer/scan-css-layout.md` + `subagents/optimize-reviewer/scan-memory.md`
 
 ### 4. Scan Streaming And Concurrency
 
 > Goal: streams ไม่ re-render/re-parse ต่อ delta — งานหนักไม่ block main thread
 
-ทำตาม `references/scan-streaming.md` + `references/scan-concurrency.md`
+ทำตาม `subagents/optimize-reviewer/scan-streaming.md` + `subagents/optimize-reviewer/scan-concurrency.md`
 
 ### 5. Scan Polling, IPC And Persistence
 
 > Goal: timers/IPC/storage ไม่ทำงานซ้ำที่ cache, gate หรือ batch ได้
 
-ทำตาม `references/scan-polling-ipc.md` + `references/scan-io-persistence.md`
+ทำตาม `subagents/optimize-reviewer/scan-polling-ipc.md` + `subagents/optimize-reviewer/scan-io-persistence.md`
 
 ### 6. Scan Bundle And Assets
 
 > Goal: initial parse น้อยลง — slim imports, lazy heavies, defer assets
 
-ทำตาม `references/scan-bundle.md` + `references/scan-assets.md`
+ทำตาม `subagents/optimize-reviewer/scan-bundle.md` + `subagents/optimize-reviewer/scan-assets.md`
 
 ### 7. Scan Native And Build
 
 > Goal: release profile และ native handlers ได้ optimization เต็มในงบที่ยอมรับ
 
-ทำตาม `references/scan-native-build.md`
+ทำตาม `subagents/optimize-reviewer/scan-native-build.md`
 
 ### 8. Prioritize And Report Plan
 
 > Goal: findings เป็น fix candidates พร้อม evidence — user เห็น plan ก่อนแก้
 
-ทำตาม `references/prioritize-and-report.md` — จัด `apply now` / `needs measurement` / `deferred`
+ทำตาม `subagents/optimize-reviewer/prioritize-and-report.md` — จัด `apply now` / `needs measurement` / `deferred`
 
 ### 9. Apply And Verify
 
@@ -129,32 +130,33 @@ Review app/package เพื่อหา "สิ่งที่ optimize ได�
 
 > ทำ section นี้เมื่อ user confirm ให้แก้ findings หรือสั่ง optimize ตรงๆ — review/report-only โดย default; multi-domain fix orchestration → `/deep-review-then-fix`
 
-แก้ findings ที่อยู่ในกลุ่ม `apply now` ตาม recipe ใน `references/patterns.md` — map symptom → recipe แล้ว apply ตรงๆ; symptom ที่ไม่มีใน catalog ให้แก้ตาม finding recommendation
+แก้ findings ที่อยู่ในกลุ่ม `apply now` ตาม recipe ใน `subagents/optimize-reviewer/patterns.md` — map symptom → recipe แล้ว apply ตรงๆ; symptom ที่ไม่มีใน catalog ให้แก้ตาม finding recommendation
 
 ### Fix Order
 
 1. baseline ก่อนแก้เสมอ (จาก step 1 ของ Execute)
 2. แก้ทีละ finding เรียง impact — verify หลังแต่ละ fix ก่อนไปต่อ
-3. verify รวมท้ายงานตาม `references/verify-and-measure.md` — typecheck + lint + tests + build, เทียบ measurements กับ baseline; regression → revert จุดนั้น
+3. verify รวมท้ายงานตาม `subagents/optimize-reviewer/verify-and-measure.md` — typecheck + lint + tests + build, เทียบ measurements กับ baseline; regression → revert จุดนั้น
 
 ## References
 
-- [Scope and baseline](references/scope-and-baseline.md)
-- [Scan startup](references/scan-startup.md)
-- [Scan render](references/scan-render.md)
-- [Scan CSS and layout](references/scan-css-layout.md)
-- [Scan memory](references/scan-memory.md)
-- [Scan streaming](references/scan-streaming.md)
-- [Scan concurrency](references/scan-concurrency.md)
-- [Scan polling and IPC](references/scan-polling-ipc.md)
-- [Scan I/O and persistence](references/scan-io-persistence.md)
-- [Scan bundle](references/scan-bundle.md)
-- [Scan assets](references/scan-assets.md)
-- [Scan native and build](references/scan-native-build.md)
-- [Prioritize and report](references/prioritize-and-report.md)
-- [Verify and measure](references/verify-and-measure.md)
-- [Patterns catalog](references/patterns.md)
-- [Full-dimension checklist](references/checklist.md)
+- [Scope and baseline](subagents/optimize-reviewer/scope-and-baseline.md)
+- [Scan startup](subagents/optimize-reviewer/scan-startup.md)
+- [Scan render](subagents/optimize-reviewer/scan-render.md)
+- [Scan CSS and layout](subagents/optimize-reviewer/scan-css-layout.md)
+- [Scan memory](subagents/optimize-reviewer/scan-memory.md)
+- [Scan streaming](subagents/optimize-reviewer/scan-streaming.md)
+- [Scan concurrency](subagents/optimize-reviewer/scan-concurrency.md)
+- [Scan polling and IPC](subagents/optimize-reviewer/scan-polling-ipc.md)
+- [Scan I/O and persistence](subagents/optimize-reviewer/scan-io-persistence.md)
+- [Scan bundle](subagents/optimize-reviewer/scan-bundle.md)
+- [Scan assets](subagents/optimize-reviewer/scan-assets.md)
+- [Scan native and build](subagents/optimize-reviewer/scan-native-build.md)
+- [Prioritize and report](subagents/optimize-reviewer/prioritize-and-report.md)
+- [Verify and measure](subagents/optimize-reviewer/verify-and-measure.md)
+- [Patterns catalog](subagents/optimize-reviewer/patterns.md)
+- [Full-dimension checklist](subagents/optimize-reviewer/checklist.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

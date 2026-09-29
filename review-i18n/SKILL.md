@@ -14,58 +14,49 @@ related:
 
 ## Goal
 
-Review internationalization/localization ของ project — message catalogs, hardcoded strings, pluralization, date/number/currency formats, RTL support, locale routing — report-only
+Review internationalization/localization ของ project — message catalogs, hardcoded strings, pluralization, date/number/currency formats, RTL support, locale routing — report-only; domain checklist อยู่ใน `subagents/i18n-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้เมื่อ app มีหลาย locale หรือต้องเตรียม i18n — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `catalogs` — key coverage, plurals, interpolation | `subagents/i18n-reviewer/catalogs.md` |
+| `extraction` — hardcoded strings, detection patterns | `subagents/i18n-reviewer/extraction.md` |
+| `formats-rtl` — date/number/currency, RTL, locale routing | `subagents/i18n-reviewer/formats-rtl.md` |
+
 ## Execute
 
-### 1. Detect i18n Setup
+### 1. Prepare And Baseline
 
 > Goal: รู้ framework และ coverage
 
 1. ตรวจ i18n library จาก manifest (`i18next`, `react-intl`, `vue-i18n`, `next-intl`, ICU)
-2. inventory locale files/message catalogs — locales ที่มี vs ที่ app อ้างถึง
+2. inventory locale files/message catalogs — locales ที่มี vs ที่ app อ้างถึง (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Check Catalog Coverage
+### 2. Dispatch I18n-Reviewer
 
-> Goal: keys ครบทุก locale
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. เทียบ keys ข้าม locale files — missing/unused keys
-2. pluralization rules ตาม CLDR ของแต่ละ locale
-3. interpolation variables ตรงกันข้าม locales
+1. เลือก dimensions จาก scope argument — `catalogs`, `extraction`, `formats-rtl`; ไม่ระบุ → ทุก dimension ที่ apply
+2. Spawn `subagents/i18n-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (inventory จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. Find Hardcoded Strings
+### 3. Aggregate And Validate
 
-> Goal: ไม่มี user-facing string ตรงใน code
+> Goal: findings รวมกันถูกต้อง ไม่มี false positives
 
-1. grep JSX/template literals/UI text ที่ไม่ผ่าน i18n function
-2. error messages, validation text, aria-labels, alt text ต้องผ่าน catalog ด้วย
+1. รวม findings จากทุก instance — dedup ตาม file:line + key
+2. coverage เพิ่มเติมของ domain: pseudo-localization run — layout breaks, truncation, encoding; machine translation quality gate + review process
+3. จัดลำดับ findings ตาม severity — ระบุ false positives พร้อมเหตุผล
 
-### 4. Check Formats And RTL
-
-> Goal: locale-aware rendering ถูก
-
-1. date/time/number/currency ใช้ `Intl` API หรือ i18n formatter — ห้าม format เอง
-2. RTL: `dir` attribute, logical CSS properties (`margin-inline` vs `margin-left`), layout mirror
-3. locale routing/negotiation — URL strategy, `Accept-Language`, fallback chain
-
-### 5. Testing And Quality
-
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/catalogs.md`, `references/formats-rtl.md`, `references/extraction.md`
-
-1. pseudo-localization run — layout breaks, truncation, encoding
-2. machine translation quality gate + review process
-
-### 6. Report
+### 4. Report
 
 > Goal: ส่งมอบ findings
 
 1. ทำ `/report` — missing keys, hardcoded strings พร้อม file:line, format/RTL issues, coverage %
 2. ทำ `/suggest-next-action`
-
 
 ### Subskills
 
@@ -79,6 +70,7 @@ Review internationalization/localization ของ project — message catalogs,
 
 - Report only — ห้ามแก้ไขใน skill นี้
 - ทุก finding มี evidence (file:line + key)
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/i18n-reviewer/` เท่านั้น
 - ใช้ /use-subagents ถ้า scope ใหญ่
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /review-frontend สำหรับ frontend code deep-dive
@@ -98,9 +90,9 @@ Review internationalization/localization ของ project — message catalogs,
 
 ## References
 
-- [Catalog coverage checklist](references/catalogs.md)
-- [Formats and RTL checklist](references/formats-rtl.md)
-- [Hardcoded-string extraction checklist](references/extraction.md)
+- [Catalog coverage checklist](subagents/i18n-reviewer/catalogs.md)
+- [Formats and RTL checklist](subagents/i18n-reviewer/formats-rtl.md)
+- [Hardcoded-string extraction checklist](subagents/i18n-reviewer/extraction.md)
 
 ## Expected Outcome
 

@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง Zed extension ที provide languages, themes, icon themes, snippets, debuggers, หรือ MCP servers รองรับทั้ง pure manifest และ Rust/WASM custom code
 
-- Latest: `zed_extension_api@0.7.0` (crates.io), target `wasm32-wasip2`, `schema_version = 1` (verified 2026-09-12)
+- Package: `zed_extension_api` (crates.io, 0.x — check compat กับ Zed version เป้าหมาย) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); target `wasm32-wasip2` (wasip1 deprecated), `schema_version = 1`
 
 ## Execute
 
@@ -27,7 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create zed extensions)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create zed extensions)
 

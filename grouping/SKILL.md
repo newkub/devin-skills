@@ -6,6 +6,7 @@ related:
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
+  - idea-grouping
 ---
 
 ## Goal

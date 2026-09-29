@@ -21,7 +21,7 @@ related:
 - ครอบคลุม setup, project structure, Compose UI, architecture, build, test และ deploy
 - ใช้ Android Studio เป็น primary IDE
 
-- Latest: Android Studio Quail 4 `2026.1.4`, Kotlin `>=2.4.20`, AGP `9.4.0` (stable; 9.5.0 เป็น alpha) (verified 2026-09-12)
+- Packages: Android Studio, Kotlin, AGP — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (AGP 9.x ต้องใช้ Gradle 9.x และ JDK 21 — ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -29,8 +29,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create mobile android)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mobile android)
 
 ### 2. Gather Requirements
@@ -148,7 +147,7 @@ related:
 
 - compileSdk >= 36, targetSdk >= 36, minSdk >= 24
 - ใช้ version catalog (`libs.versions.toml`)
-- ใช้ AGP 9.x (latest stable `9.4.0`) — AGP 9.x ต้องใช้ Gradle 9.x (AGP 9.3 ต้อง Gradle >= 9.5)
+- ใช้ AGP latest stable — AGP 9.x ต้องใช้ Gradle 9.x และ JDK 21 (เช็ค compatibility matrix ด้วย `/deep-research`)
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น

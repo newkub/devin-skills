@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับสร้าง plugins สำหรับ Bun runtime และ `bun build` bundler ด้วย TypeScript ครอบคลุม `Bun.plugin`, namespaces, filters, loaders, build, และ tests
 
-- Latest: Bun `1.4.2`, `bun-types@1.4.2` (verified 2026-09-12)
+- Packages: `bun`, `bun-types` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -26,8 +26,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create bun plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ `Bun.plugin` API ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun plugins)
 
 ### 2. Setup Project

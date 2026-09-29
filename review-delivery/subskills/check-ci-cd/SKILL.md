@@ -23,7 +23,7 @@ Run the CI/CD pipeline dimension of `/review-delivery` แบบ focused — pip
 
 > Goal: ครอบคลุมทุก CI/CD dimension
 
-ทำตาม `../../references/ci-cd.md`
+ทำตาม `../../subagents/delivery-reviewer/ci-cd.md`
 
 1. duration — job times, slow steps, ไม่มี timeout
 2. caching — lockfile keys, build cache, `--frozen-lockfile`

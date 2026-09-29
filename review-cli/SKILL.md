@@ -13,6 +13,7 @@ related:
   - suggest-next-action
   - run-test
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -139,7 +140,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 1. ทำ `/deep-validate` — reproduce commands จริงก่อน flag
 2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info และระบุ false positives
 3. ทำ `/report` ตาราง: `No.`, `Command/Area`, `Finding`, `Severity`, `Evidence`, `Recommendation`
-4. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
+4. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `subagents/cli-reviewer/checklist.md` เป็น checklist ครบทุกมิติ
 5. ทำ `/suggest-next-action` แนะนำ fix order
 
 
@@ -192,6 +193,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 - รายงานเป็นตารางด้วย `/report` ทุก report table เริ่มด้วยคอลัมน์ `No.`
 - ใช้ /deep-test cli ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -215,4 +217,4 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](subagents/cli-reviewer/checklist.md)

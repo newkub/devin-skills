@@ -23,7 +23,7 @@ Run the prompts dimension of `/review-ai` แบบ focused — prompts ปล�
 
 > Goal: prompts robust ต่อ injection และ drift
 
-ทำตาม `../../references/prompts.md`
+ทำตาม `../../subagents/ai-reviewer/prompts.md`
 
 1. injection surface — user input interpolated ตรงๆ ใน system prompt, missing delimiters/instructions
 2. structure — system/user/assistant separation ถูก, instructions ชัด, examples ไม่ขัดกัน

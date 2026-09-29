@@ -11,6 +11,7 @@ related:
   - report
   - deep-review
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -41,7 +42,7 @@ related:
 
 ### 3. Check Semantics And Structure
 
-> Goal: HTML สื่อความหมายถูกต้อง — ทำตาม `references/semantics.md`
+> Goal: HTML สื่อความหมายถูกต้อง — ทำตาม `subagents/a11y-reviewer/semantics.md`
 
 1. ตรวจ landmark regions (`header`, `nav`, `main`, `footer`) และ heading hierarchy `h1`-`h6`
 2. ตรวจ interactive elements ใช้ semantic tags (`button`, `a`, `input`) ไม่ใช่ `div`+click
@@ -49,7 +50,7 @@ related:
 
 ### 4. Check Keyboard And Focus
 
-> Goal: ใช้งานได้ครบด้วย keyboard เท่านั้น — ทำตาม `references/keyboard-focus.md`
+> Goal: ใช้งานได้ครบด้วย keyboard เท่านั้น — ทำตาม `subagents/a11y-reviewer/keyboard-focus.md`
 
 1. กด `Tab` ผ่าน interactive elements ทั้งหมด — ตรวจ focus order และ visible focus indicator
 2. ทดสอบ `Enter`/`Space`/`Escape`/`Arrow keys` บน interactive patterns (menus, dialogs, tabs)
@@ -57,7 +58,7 @@ related:
 
 ### 5. Check Visual And ARIA
 
-> Goal: perceivable สำหรับทุกผู้ใช้ — ทำตาม `references/visual-aria.md`
+> Goal: perceivable สำหรับทุกผู้ใช้ — ทำตาม `subagents/a11y-reviewer/visual-aria.md`
 
 1. ตรวจ color contrast ขั้นต่ำ 4.5:1 (text) และ 3:1 (UI components, large text)
 2. ตรวจ ARIA attributes — ใช้เฉพาะเมื่อ semantic HTML ไม่พอ ตรวจ `aria-label`, `role`, `aria-live`
@@ -65,7 +66,7 @@ related:
 
 ### 6. Check Forms And Errors
 
-> Goal: form accessibility ครบ — ทำตาม `references/forms-errors.md`
+> Goal: form accessibility ครบ — ทำตาม `subagents/a11y-reviewer/forms-errors.md`
 
 1. labels — ทุก input มี `<label>`/`aria-label`/`aria-labelledby`, error messages เชื่อม `aria-describedby`
 2. validation — errors announced ให้ screen reader, focus ไปที่ error/summary
@@ -74,7 +75,7 @@ related:
 
 ### 7. Check Media And Motion
 
-> Goal: media perceivable ทุกคน — ทำตาม `references/media.md`
+> Goal: media perceivable ทุกคน — ทำตาม `subagents/a11y-reviewer/media.md`
 
 1. images — meaningful alt, decorative `alt=""`, complex images longdesc/caption
 2. video/audio — captions, transcripts, audio descriptions, no auto-play sound
@@ -83,7 +84,7 @@ related:
 
 ### 8. Check Screen Reader And Cognitive
 
-> Goal: usable ผ่าน AT และเข้าใจง่าย — ทำตาม `references/screenreader-cognitive.md`
+> Goal: usable ผ่าน AT และเข้าใจง่าย — ทำตาม `subagents/a11y-reviewer/screenreader-cognitive.md`
 
 1. screen reader flow — landmark nav, headings, live regions announce dynamic changes
 2. language — `<html lang>` set, `lang` on foreign phrases
@@ -93,7 +94,7 @@ related:
 
 ### 9. Check Touch And Mobile
 
-> Goal: usable บน touch devices — ทำตาม `references/mobile.md`
+> Goal: usable บน touch devices — ทำตาม `subagents/a11y-reviewer/mobile.md`
 
 1. touch targets — ≥44×44px, spacing adequate
 2. zoom — no `user-scalable=no`, pinch-zoom works
@@ -148,15 +149,16 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Semantics checklist](references/semantics.md)
-- [Keyboard and focus checklist](references/keyboard-focus.md)
-- [Visual and ARIA checklist](references/visual-aria.md)
-- [Forms and errors checklist](references/forms-errors.md)
-- [Media checklist](references/media.md)
-- [Screen reader and cognitive checklist](references/screenreader-cognitive.md)
-- [Mobile checklist](references/mobile.md)
+- [Full-dimension checklist](subagents/a11y-reviewer/checklist.md)
+- [Semantics checklist](subagents/a11y-reviewer/semantics.md)
+- [Keyboard and focus checklist](subagents/a11y-reviewer/keyboard-focus.md)
+- [Visual and ARIA checklist](subagents/a11y-reviewer/visual-aria.md)
+- [Forms and errors checklist](subagents/a11y-reviewer/forms-errors.md)
+- [Media checklist](subagents/a11y-reviewer/media.md)
+- [Screen reader and cognitive checklist](subagents/a11y-reviewer/screenreader-cognitive.md)
+- [Mobile checklist](subagents/a11y-reviewer/mobile.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

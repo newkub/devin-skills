@@ -9,6 +9,7 @@ related:
   - report
   - suggest-next-action
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -27,55 +28,55 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 > Goal: เข้าใจ observability setup ใน codebase
 
-ทำตาม `references/prepare.md`
+ทำตาม `subagents/observability-reviewer/prepare.md`
 
 ### 2. Metrics
 
 > Goal: ครอบคลุมทุก metrics dimension
 
-ทำตาม `references/metrics.md`
+ทำตาม `subagents/observability-reviewer/metrics.md`
 
 ### 3. Tracing
 
 > Goal: ครอบคลุมทุก tracing dimension
 
-ทำตาม `references/tracing.md`
+ทำตาม `subagents/observability-reviewer/tracing.md`
 
 ### 4. Logging
 
 > Goal: ครอบคลุมทุก logging dimension
 
-ทำตาม `references/logging.md`
+ทำตาม `subagents/observability-reviewer/logging.md`
 
 ### 5. Alerting
 
 > Goal: ครอบคลุมทุก alerting dimension
 
-ทำตาม `references/alerting.md`
+ทำตาม `subagents/observability-reviewer/alerting.md`
 
 ### 6. Dashboards
 
 > Goal: ครอบคลุมทุก dashboard dimension
 
-ทำตาม `references/dashboards.md`
+ทำตาม `subagents/observability-reviewer/dashboards.md`
 
 ### 7. SLO/SLI
 
 > Goal: ครอบคลุมทุก SLO/SLI dimension
 
-ทำตาม `references/slo-sli.md`
+ทำตาม `subagents/observability-reviewer/slo-sli.md`
 
 ### 8. APM
 
 > Goal: ครอบคลุมทุก APM dimension
 
-ทำตาม `references/apm.md`
+ทำตาม `subagents/observability-reviewer/apm.md`
 
 ### 9. Incident Response And Alert Quality
 
 > Goal: ครอบคลุม incident response + alerts actionable พร้อม error budgets
 
-ทำตาม `references/incident-response.md` แล้วตรวจ:
+ทำตาม `subagents/observability-reviewer/incident-response.md` แล้วตรวจ:
 
 1. SLO/SLI + error budgets ต่อ service — budget burn-rate alerts
 2. alert fatigue — ratio actionable:total alerts, runbook link ทุก alert
@@ -85,7 +86,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
-ทำตาม `references/scoring.md`
+ทำตาม `subagents/observability-reviewer/scoring.md`
 
 ### Subskills
 | `metrics` — golden signals, cardinality, business metrics | `subskills/check-metrics/SKILL.md` |
@@ -132,7 +133,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 ### 5. Health Score
 
-- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `subagents/observability-reviewer/scoring.md`)
 
 ### 6. Formatting
 
@@ -152,17 +153,18 @@ observability review สำหรับ: metrics collection, distributed tracing
 5. verify: trigger test error → log/metric/trace/alert ปรากฏ
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Metrics](references/metrics.md)
-- [Tracing](references/tracing.md)
-- [Logging](references/logging.md)
-- [Alerting](references/alerting.md)
-- [Dashboards](references/dashboards.md)
-- [SLO/SLI](references/slo-sli.md)
-- [APM](references/apm.md)
-- [Incident response](references/incident-response.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/observability-reviewer/checklist.md)
+- [Metrics](subagents/observability-reviewer/metrics.md)
+- [Tracing](subagents/observability-reviewer/tracing.md)
+- [Logging](subagents/observability-reviewer/logging.md)
+- [Alerting](subagents/observability-reviewer/alerting.md)
+- [Dashboards](subagents/observability-reviewer/dashboards.md)
+- [SLO/SLI](subagents/observability-reviewer/slo-sli.md)
+- [APM](subagents/observability-reviewer/apm.md)
+- [Incident response](subagents/observability-reviewer/incident-response.md)
+- [Scoring](subagents/observability-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

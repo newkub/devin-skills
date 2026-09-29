@@ -24,13 +24,13 @@ Run the authentication + authorization dimensions of `/review-security` as a foc
 
 > Goal: auth baseline ปลอดภัย
 
-ทำตาม `../../references/authentication.md`
+ทำตาม `../../subagents/security-reviewer/authentication.md`
 
 ### 2. Authorization Checks
 
 > Goal: access control ครบทุก protected action
 
-ทำตาม `../../references/authorization.md`
+ทำตาม `../../subagents/security-reviewer/authorization.md`
 
 1. authz matrix — role x resource table ครบทุก protected action
 2. IDOR surface — object references ที่ขาด ownership check

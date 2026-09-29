@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง plugin ที extend Nitro runtime ใน Nuxt 3/4 หรือ standalone Nitro project รองรับทั้ง project plugin (`server/plugins/`) และ npm package
 
-- Latest: `nitropack@2.13.4` stable; `nitro@3.0.260903-beta` (v3 beta, npm tag `latest` ของ package `nitro`) (verified 2026-09-12)
+- Packages: `nitro` (v3 — เดิม `nitropack`), `h3` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); v3 breaking: `defineNitroPlugin` → `definePlugin`, ไม่มี auto-imports (explicit `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req`), Node ≥20
 - Nitro v3 breaking changes: package `nitropack` → `nitro`, `defineNitroPlugin` → `definePlugin`, auto-imports ถูกลบ (ต้อง explicit import จาก `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req` web APIs), Node.js >= 20
 
 ## Execute
@@ -28,7 +28,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create nitro plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create nitro plugin)
 

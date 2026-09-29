@@ -7,71 +7,66 @@ related:
   - report
   - review-security
   - run-review
+  - use-subagents
 
 ---
 
 ## Goal
 
-ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่ ก่อนส่งต่อไปยัง section `## Fix`
+ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่ ก่อนส่งต่อไปยัง section `## Fix` — domain checklist อยู่ใน `subagents/data-validation-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้กับ backend, API routes, forms, database operations โดย audit validation logic โดยไม่แก้ไข code
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `coverage` — boundaries, endpoints, input sources | `subagents/data-validation-reviewer/coverage.md` |
+| `schema-lifecycle` — versioning, PII tagging, business rules | `subagents/data-validation-reviewer/schema-lifecycle.md` |
+| overview — full-dimension checklist | `subagents/data-validation-reviewer/checklist.md` |
+
 ## Execute
 
-### 1. Discover Validation Stack
+### 1. Prepare And Baseline
 
 > Goal: รู้ว่าใช้ validation library อะไร
 
 1. ทำ `/scan-codebase` หา schemas, validation files และ `package.json` สำหรับ `zod`, `valibot`, `arktype`, `joi`, `class-validator`
 2. ตรวจ schemas ใน `src/schemas`, `src/validations`
-3. ตรวจ API routes สำหรับ input validation
-4. ตรวจ forms สำหรับ client-side validation
+3. ตรวจ API routes สำหรับ input validation และ forms สำหรับ client-side validation
+4. ทำ `/run-review` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Review Validation Coverage
+### 2. Dispatch Data-Validation-Reviewer
 
-> Goal: หาช่องโหว่และ gaps
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ตรวจ API endpoints ทีรับ input จาก client
-2. ตรวจ database queries ทีใช้ user input
-3. ตรวจ file uploads, date, email, URL validation
-4. ตรวจ numeric ranges, string lengths, enum values
-5. ระบุ endpoints ทีขาด validation
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension (`coverage`, `schema-lifecycle`)
+2. Spawn `subagents/data-validation-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย bounded context → spawn หลาย instance ทีละ scope ขนานกัน
 
-### 3. Review Security And Type Safety
+### 3. Aggregate And Score
 
-> Goal: ประเมินความปลอดภัย
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-1. ตรวจ strict/passthrough modes (`strict()`, `strip()`)
-2. ระบุ SQL injection, XSS, NoSQL injection risks
-3. ตรวจ type coercion และ unsafe defaults
-4. ตรวจ error messages ที leak sensitive data
+1. รวม findings จากทุก instance — dedup ตาม endpoint/schema + issue type
+2. classify severity ตาม impact (data leak, injection, crash): Critical → Info
+3. security risk สูงนอกขอบเขต → ระบุเป็น info + เชื่อม `/review-security`
 
-### 4. Boundary And Output Validation
-
-> Goal: ทุก boundary ปลอดภัยทั้งขาเข้าและขาออก — ทำตาม `references/coverage.md`
-
-1. server-side validation — client validation ไม่ใช่ security boundary, server ต้อง validate ซ้ำ
-2. output serialization — response fields whitelist, ไม่ leak internal fields (password hash, internal ids)
-3. third-party/webhook payloads — validate ข้อมูลจาก external systems ด้วย เช่นเดียวกับ client input
-4. env/config validation — startup validation สำหรับ env vars (fail fast)
-
-### 5. Schema Lifecycle
-
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/schema-lifecycle.md`
-
-1. schema evolution/versioning strategy — backward compat
-2. PII field tagging ใน schemas
-3. business rules — cross-field invariants (start<end, totals match), state transitions
-
-### 6. Rate And Report
+### 4. Rate And Report
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report` ด้วย columns: No., Endpoint/Form, Issue, Severity, Fix
+1. ทำ `/report` ด้วย columns: No., Endpoint/Form, Issue, Severity, Fix + score ต่อ dimension และ overall
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
-3. ถ้ามี security risk สูง → เชื่อม `/review-security`
+3. ทำ `/suggest-next-action`
+
+### Subagents
+
+> Goal: domain reviewer ที่ถือ checklist ทั้งหมด — spawn ผ่าน `/use-subagents`
+
+| Agent | Path |
+|-------|------|
+| `data-validation-reviewer` — validation dimensions พร้อม severity + evidence | `subagents/data-validation-reviewer/AGENT.md` |
 
 ## Rules
 
@@ -79,6 +74,7 @@ related:
 
 - ห้ามแก้ไข schemas หรือ validation rules ระหว่าง review
 - ห้ามรัน queries หรือ submit ข้อมูลจริง
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/data-validation-reviewer/` เท่านั้น
 
 ### 2. Evidence Required
 
@@ -92,13 +88,6 @@ related:
 1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
 2. แก้ตาม finding — validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe (data validation)
 3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
-
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- [Coverage](references/coverage.md)
-- [Schema lifecycle](references/schema-lifecycle.md)
-- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

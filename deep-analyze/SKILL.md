@@ -121,7 +121,7 @@ related:
 
 > Goal: ครอบคลุมทุก dimension — dispatch ไป `review-*` ตาม stack ที่ตรวจพบ
 
-- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `review/references/review-skills.md` (single source of truth — ห้าม duplicate table ที่นี่)
+- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `../shared/review-skills.md` (single source of truth — ห้าม duplicate table ที่นี่)
 - dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
 - parallel ผ่าน `/use-subagents` เมื่อหลาย domains
 - findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag

@@ -22,7 +22,7 @@ Run the lifecycle/offline dimension of `/review-mobile` แบบ focused — ap
 
 > Goal: state ไม่หายตอน OS reclaim — parent Execute §3
 
-ทำตาม `../../references/lifecycle-offline.md`
+ทำตาม `../../subagents/mobile-reviewer/lifecycle-offline.md`
 
 1. state persistence — form drafts, scroll position, navigation state รอด process death
 2. resume — app resume ที่ถูกจุด, stale data refresh policy

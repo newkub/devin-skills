@@ -22,7 +22,7 @@ related:
 - ครอบคลุม module layout, naming (Verb-Noun), parameter validation, pipeline support และ error handling
 - ไม่ครอบคลุมการ publish ขึ้น PSGallery นอกเหนือ checklist พื้นฐาน
 
-- Latest: PowerShell `7.6.6` (LTS, .NET 10) — stable `7.5.10`, preview `7.7` (ใช้ `pwsh`, ไม่ใช่ Windows PowerShell 5.1) (verified 2026-09-12)
+- Target `pwsh` 7.x (PowerShell Core, cross-platform — ไม่ใช่ Windows PowerShell 5.1) — ยืนยันเวอร์ชัน LTS/preview ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -30,7 +30,7 @@ related:
 
 > Goal: เตรียม context ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อดูเครื่องมือที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อดูเครื่องมือ
 2. ทำ `/review-dependencies` ถ้า module เกี่ยวข้องกับ project dependencies
 3. ตรวจ PowerShell version ด้วย `$PSVersionTable.PSVersion` — target `pwsh` 7.6+ (LTS) เป็น default
 

@@ -22,12 +22,12 @@ Run the recovery dimension of `/review-stability` แบบ focused — ระ�
 
 > Goal: failure modes มี recovery path — parent Execute §6 + §8
 
-ทำตาม `../../references/recovery.md` + `../../references/degradation.md`
+ทำตาม `../../subagents/stability-reviewer/recovery.md` + `../../subagents/stability-reviewer/degradation.md`
 
 1. degradation — dep ล้ม → feature degrade gracefully vs hard fail (degradation matrix)
 2. shutdown/restart — graceful shutdown (drain connections, finish in-flight), fail-fast startup เมื่อ config ผิด
 3. rollback — deploy rollback path, feature flags kill-switch, data migration rollback
-4. backup/restore — restore tested จริงไหม (`../../references/verify-backup-restore.md`) ไม่ใช่แค่มี backup
+4. backup/restore — restore tested จริงไหม (`../../subagents/stability-reviewer/verify-backup-restore.md`) ไม่ใช่แค่มี backup
 
 ### 2. Report
 

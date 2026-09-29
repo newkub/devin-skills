@@ -25,7 +25,7 @@ Run the breach-readiness dimension of `/review-compliance` แบบ focused —
 
 1. detection — security event logging + alerting บน auth anomalies, mass export, permission changes
 2. notification — flow สำหรับ regulator/user notification มี deadline tracking (72h GDPR)
-3. audit trail — who-did-what-when immutable logs (`../../references/audit-trail.md`)
+3. audit trail — who-did-what-when immutable logs (`../../subagents/compliance-reviewer/audit-trail.md`)
 4. forensics — log retention พอสำหรับ investigation, access review trails
 5. playbook — breach response steps documented + owner assigned
 

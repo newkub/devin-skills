@@ -22,7 +22,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ## Scope
 
-ใช้เมื่อ project เป็น desktop app — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`; mobile ใช้ `/review-mobile`; web frontend ใช้ `/review-frontend`; เบื้องหลัง desktop conventions ดู `references/platform-mobile-desktop.md` (Desktop Review section)
+ใช้เมื่อ project เป็น desktop app — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`; mobile ใช้ `/review-mobile`; web frontend ใช้ `/review-frontend`; เบื้องหลัง desktop conventions ดู `../shared/platform-mobile-desktop.md` (Desktop Review section)
 
 ## Execute
 
@@ -32,11 +32,11 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 1. ตรวจ manifest: Tauri (`tauri.conf.json`, `src-tauri/`), Electron (`electron` dep, `main.js`), native (Qt/.NET/Swift)
 2. ระบุ target platforms — Windows/macOS/Linux — และ installer formats (msi/dmg/AppImage/deb)
-3. อ่าน desktop conventions — ดู `references/platform-mobile-desktop.md`
+3. อ่าน desktop conventions — ดู `../shared/platform-mobile-desktop.md`
 
 ### 2. Check Window And Shell
 
-> Goal: window behavior ถูกต้องตาม platform — ทำตาม `references/window-shell.md`
+> Goal: window behavior ถูกต้องตาม platform — ทำตาม `subagents/desktop-reviewer/window-shell.md`
 
 1. window state persistence — size/position restore, multi-monitor
 2. native menus, keyboard shortcuts, system tray, notifications, clipboard integration
@@ -45,7 +45,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ### 3. Check IPC And Security
 
-> Goal: renderer↔native boundary ปลอดภัย — ทำตาม `references/ipc-security.md`
+> Goal: renderer↔native boundary ปลอดภัย — ทำตาม `subagents/desktop-reviewer/ipc-security.md`
 
 1. IPC surface minimal — Tauri `allowlist`/`capabilities`, Electron `contextIsolation: true`, `nodeIntegration: false`
 2. CSP ตั้งค่า, remote content ไม่ load ใน privileged context
@@ -55,7 +55,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ### 4. Check Packaging And Updates
 
-> Goal: distribution ปลอดภัยและ rollback ได้ — ทำตาม `references/packaging-updates.md`
+> Goal: distribution ปลอดภัยและ rollback ได้ — ทำตาม `subagents/desktop-reviewer/packaging-updates.md`
 
 1. code signing ทุก platform (Authenticode/Apple notarization)
 2. installer size, silent install, per-user vs system install
@@ -64,7 +64,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ### 5. Check Lifecycle And Offline
 
-> Goal: app รอด desktop lifecycle จริง — ทำตาม `references/lifecycle.md`
+> Goal: app รอด desktop lifecycle จริง — ทำตาม `subagents/desktop-reviewer/lifecycle.md`
 
 1. minimize-to-tray vs quit semantics ตรง platform convention
 2. offline behavior — local data persistence, queued ops
@@ -73,7 +73,7 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ### 6. Check Performance And Resources
 
-> Goal: ไม่กิน resource เกินตัว — ทำตาม `references/performance.md`
+> Goal: ไม่กิน resource เกินตัว — ทำตาม `subagents/desktop-reviewer/performance.md`
 
 1. startup time, idle memory/CPU, binary/installer size budget
 2. background work เมื่อ minimized — ไม่ burn CPU/GPU
@@ -127,11 +127,11 @@ Review desktop app (Tauri/Electron/native) — window management, system tray/me
 
 ## References
 
-- [Window and shell checklist](references/window-shell.md)
-- [IPC and security checklist](references/ipc-security.md)
-- [Packaging and updates checklist](references/packaging-updates.md)
-- [Lifecycle checklist](references/lifecycle.md)
-- [Performance checklist](references/performance.md)
+- [Window and shell checklist](subagents/desktop-reviewer/window-shell.md)
+- [IPC and security checklist](subagents/desktop-reviewer/ipc-security.md)
+- [Packaging and updates checklist](subagents/desktop-reviewer/packaging-updates.md)
+- [Lifecycle checklist](subagents/desktop-reviewer/lifecycle.md)
+- [Performance checklist](subagents/desktop-reviewer/performance.md)
 
 ## Expected Outcome
 

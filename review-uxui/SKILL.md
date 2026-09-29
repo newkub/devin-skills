@@ -19,6 +19,7 @@ related:
   - watch-browser-and-improve-uxui
   - deep-review-then-fix
 
+  - use-subagents
 ---
 
 ## Goal
@@ -47,7 +48,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 2. ระบุ design token system, component library, CSS framework, theme config, icon set, typography setup
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
 4. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
-5. ถ้ามี user flow หรือ journey ให้ map ตาม `references/user-flow.md`
+5. ถ้ามี user flow หรือ journey ให้ map ตาม `subagents/uxui-reviewer/user-flow.md`
 6. ถ้าสแกนไม่ได้ → stop และ report
 7. ถ้าต้องการ capture ภาพ component สำหรับ review ให้ทำ `/capture`
 
@@ -55,43 +56,43 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: ครอบคลุมทุก design system dimension
 
-ทำตาม `references/design-system.md`
+ทำตาม `subagents/uxui-reviewer/design-system.md`
 
 ### 3. Visual Design
 
 > Goal: ครอบคลุมทุก visual design dimension
 
-ทำตาม `references/visual-design.md`
+ทำตาม `subagents/uxui-reviewer/visual-design.md`
 
 ### 4. Interaction Design
 
 > Goal: ครอบคลุมทุก interaction design dimension
 
-ทำตาม `references/interaction-design.md`
+ทำตาม `subagents/uxui-reviewer/interaction-design.md`
 
 ### 5. Accessibility
 
 > Goal: ครอบคลุมทุก accessibility dimension
 
-ทำตาม `references/accessibility.md`
+ทำตาม `subagents/uxui-reviewer/accessibility.md`
 
 ### 6. Settings And Preferences
 
 > Goal: settings ครบ features พื้นฐาน และ visual/interactive พอ
 
-ทำตาม `references/settings.md` — expected sections (profile, appearance, shortcuts, notifications, privacy, data, about), settings UX (nav, deep-link, save model, danger zone) และ interactive controls (preview, recorder, toggles)
+ทำตาม `subagents/uxui-reviewer/settings.md` — expected sections (profile, appearance, shortcuts, notifications, privacy, data, about), settings UX (nav, deep-link, save model, danger zone) และ interactive controls (preview, recorder, toggles)
 
 ### 7. Motion And Delight
 
 > Goal: motion purpose-driven, consistent และ respect reduced-motion
 
-ทำตาม `references/motion.md` — motion tokens, easing consistency, `prefers-reduced-motion`, skeleton loading, micro-interactions, anti-patterns; implementation reference → `/follow-lib-animejs`
+ทำตาม `subagents/uxui-reviewer/motion.md` — motion tokens, easing consistency, `prefers-reduced-motion`, skeleton loading, micro-interactions, anti-patterns; implementation reference → `/follow-lib-animejs`
 
 ### 8. Design-Dev Handoff
 
 > Goal: ครอบคลุมทุก handoff dimension
 
-ทำตาม `references/handoff.md`
+ทำตาม `subagents/uxui-reviewer/handoff.md`
 
 ### 9. Validate Findings
 
@@ -108,7 +109,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 1. ทำ `/report table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
-3. คำนวณ review score ตามสูตรใน `references/scoring.md`
+3. คำนวณ review score ตามสูตรใน `subagents/uxui-reviewer/scoring.md`
 4. สร้าง design maturity scorecard: 7 dimensions, score 1-5
 5. สรุป top 3-5 design issues ที่ต้องแก้ก่อน
 6. สรุป top 3-5 design wins ที่ทำดี
@@ -164,7 +165,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### 6. Health Score
 
-- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `subagents/uxui-reviewer/scoring.md`)
 
 ### 7. Formatting
 
@@ -188,17 +189,18 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Design system](references/design-system.md)
-- [Visual design](references/visual-design.md)
-- [Interaction design](references/interaction-design.md)
-- [Accessibility signals](references/accessibility.md)
-- [Settings](references/settings.md)
-- [Motion](references/motion.md)
-- [Handoff](references/handoff.md)
-- [User flow](references/user-flow.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/uxui-reviewer/checklist.md)
+- [Design system](subagents/uxui-reviewer/design-system.md)
+- [Visual design](subagents/uxui-reviewer/visual-design.md)
+- [Interaction design](subagents/uxui-reviewer/interaction-design.md)
+- [Accessibility signals](subagents/uxui-reviewer/accessibility.md)
+- [Settings](subagents/uxui-reviewer/settings.md)
+- [Motion](subagents/uxui-reviewer/motion.md)
+- [Handoff](subagents/uxui-reviewer/handoff.md)
+- [User flow](subagents/uxui-reviewer/user-flow.md)
+- [Scoring](subagents/uxui-reviewer/scoring.md)
 - ใช้ /run-dev ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

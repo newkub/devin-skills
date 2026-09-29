@@ -83,10 +83,12 @@ argument-hint: "[features]"
 
 - ไม่ hardcode `BOT_TOKEN`; ใช้ `/follow-secret-manager` สำหรับจัดการ token ก่อน inject เข้า app
 - ใช้ `grammy` เป็น default library บน Bun
-- ใช้ long-polling สำหรับ dev, webhook สำหรับ production
+- ใช้ long-polling สำหรับ dev, webhook สำหรับ production — webhook path ต้องมี token เป็น secret เช่น `/webhook/${BOT_TOKEN}`; ใช้ `webhookCallback(bot, 'hono'|'express')`
+- Token: สร้างผ่าน `@BotFather` → `/newbot`; เก็บใน env เสมอ
+- Commands: register ด้วย `bot.api.setMyCommands([{ command, description }])`; user state ใช้ `session()` middleware
 - ไม่ commit `.env`
 - ใช้ TypeScript first ตาม `/follow-lang-typescript`
-- ดู `references/setup.md` สำหรับ official docs
+- Libraries: `grammy` (default), `gramio`, `node-telegram-bot-api` (v2 รันบน Workers ได้)
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
@@ -103,7 +105,7 @@ argument-hint: "[features]"
 
 ## Guide
 
-- `references/setup.md` — official docs และ library choices
+- `/deep-research` + `/follow-best-practice` — official docs/versions ล่าสุด (ไม่ pin ในไฟล์)
 - `/follow-lang-typescript` — TypeScript best practices
 - `/follow-create-bun-cli` — ถ้า bot เป็น Bun CLI project
 - `/search-npm-libraries` — เลือก library ตาม use case

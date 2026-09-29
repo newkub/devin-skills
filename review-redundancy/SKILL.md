@@ -9,6 +9,7 @@ related:
   - check-repo-hygiene
   - report
   - ask-me
+  - use-subagents
 ---
 
 ## Goal
@@ -77,6 +78,7 @@ related:
 - ใช้ /idea-merge ถ้าจำเป็น
 - ใช้ /batch-rename-files ถ้าจำเป็น
 - ใช้ /check-repo-hygiene ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

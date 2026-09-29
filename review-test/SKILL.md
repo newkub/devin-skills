@@ -18,6 +18,7 @@ related:
   - deep-debug
   - resolve-errors
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -47,47 +48,47 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 ### 1. Prepare
 
 > Goal: เตรียม context ก่อน review
-ทำตาม `references/prepare.md` เพื่อเข้าใจ project structure, test framework, test config และ directory structure ก่อน review
+ทำตาม `subagents/test-reviewer/prepare.md` เพื่อเข้าใจ project structure, test framework, test config และ directory structure ก่อน review
 
 ### 2. Coverage
 
 > Goal: ตรวจ coverage ครอบคลุม
-ทำตาม `references/coverage-gaps.md` เพื่อระบุ source files, functions, branches และ coverage categories ที่ยังไม่ถูก test
+ทำตาม `subagents/test-reviewer/coverage-gaps.md` เพื่อระบุ source files, functions, branches และ coverage categories ที่ยังไม่ถูก test
 
 ### 3. Edge Cases
 
 > Goal: ตรวจ edge cases ครบ
-ทำตาม `references/edge-cases.md` เพื่อตรวจ happy path, error path, boundary values, validation และ security tests
+ทำตาม `subagents/test-reviewer/edge-cases.md` เพื่อตรวจ happy path, error path, boundary values, validation และ security tests
 
 ### 4. Isolation
 
 > Goal: ตรวจ test isolation
-ทำตาม `references/test-isolation.md` เพื่อตรวจ test isolation, cleanup, fixtures/factories, mock strategy และ flakiness
+ทำตาม `subagents/test-reviewer/test-isolation.md` เพื่อตรวจ test isolation, cleanup, fixtures/factories, mock strategy และ flakiness
 
 ### 5. Pyramid
 
 > Goal: ตรวจ test pyramid balance
-ทำตาม `references/test-pyramid.md` เพื่อตรวจ distribution unit/integration/e2e, performance targets, test types และ CI integration
+ทำตาม `subagents/test-reviewer/test-pyramid.md` เพื่อตรวจ distribution unit/integration/e2e, performance targets, test types และ CI integration
 
 ### 6. Regression
 
 > Goal: ตรวจ regression coverage
-ทำตาม `references/regression-coverage.md` เพื่อตรวจ regression tests สำหรับ bug fixes, critical paths, mutation testing และ CI pipeline
+ทำตาม `subagents/test-reviewer/regression-coverage.md` เพื่อตรวจ regression tests สำหรับ bug fixes, critical paths, mutation testing และ CI pipeline
 
 ### 7. Pre-Run Score
 
 > Goal: คำนวณ score ก่อน run
-ทำตาม `references/test-quality-score.md` เพื่อคำนวณ test quality score, grade และ go/no-go ก่อน run
+ทำตาม `subagents/test-reviewer/test-quality-score.md` เพื่อคำนวณ test quality score, grade และ go/no-go ก่อน run
 
 ### 8. Capture Output
 
 > Goal: อ่าน test output
-ทำตาม `references/capture-output.md` เพื่ออ่าน stdout/stderr, บันทึกไฟล์ output, ตรวจ exit code และจัดหมวดหมู่ failure
+ทำตาม `subagents/test-reviewer/capture-output.md` เพื่ออ่าน stdout/stderr, บันทึกไฟล์ output, ตรวจ exit code และจัดหมวดหมู่ failure
 
 ### 9. Analyze Coverage/Flaky
 
 > Goal: วิเคราะห์ coverage และ flaky
-ทำตาม `references/analyze-coverage-flaky.md` เพื่อเปรียบเทียบ coverage target, หา missing branches, รัน test ซ้ำ และตรวจ root cause ของ flaky
+ทำตาม `subagents/test-reviewer/analyze-coverage-flaky.md` เพื่อเปรียบเทียบ coverage target, หา missing branches, รัน test ซ้ำ และตรวจ root cause ของ flaky
 
 1. flaky quarantine policy — process + SLA สำหรับ flaky tests
 2. mutation testing / contract tests ตามที่เหมาะ
@@ -96,25 +97,25 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 ### 10. Decide Actions
 
 > Goal: สรุป action ถัดไป
-ทำตาม `references/decide-actions.md` เพื่อสรุป action ถัดไป, อัปเดต skill เมื่อพบ systemic gap และสร้างรายงาน
+ทำตาม `subagents/test-reviewer/decide-actions.md` เพื่อสรุป action ถัดไป, อัปเดต skill เมื่อพบ systemic gap และสร้างรายงาน
 
 ## Check: Flaky Tests
-ทำตาม [references/check-flaky-tests.md](references/check-flaky-tests.md)
+ทำตาม [subagents/test-reviewer/check-flaky-tests.md](subagents/test-reviewer/check-flaky-tests.md)
 
 ## Check: Test Isolation
-ทำตาม [references/check-test-isolation.md](references/check-test-isolation.md)
+ทำตาม [subagents/test-reviewer/check-test-isolation.md](subagents/test-reviewer/check-test-isolation.md)
 
 ## Check: Test Quality
-ทำตาม [references/check-test-quality.md](references/check-test-quality.md)
+ทำตาม [subagents/test-reviewer/check-test-quality.md](subagents/test-reviewer/check-test-quality.md)
 
 ## Check: Coverage Config
-ทำตาม [references/check-coverage-config.md](references/check-coverage-config.md)
+ทำตาม [subagents/test-reviewer/check-coverage-config.md](subagents/test-reviewer/check-coverage-config.md)
 
 ## Check: Types Coverage
-ทำตาม [references/check-types-coverage.md](references/check-types-coverage.md)
+ทำตาม [subagents/test-reviewer/check-types-coverage.md](subagents/test-reviewer/check-types-coverage.md)
 
 ## Check: Error Coverage
-ทำตาม [references/check-error-coverage.md](references/check-error-coverage.md)
+ทำตาม [subagents/test-reviewer/check-error-coverage.md](subagents/test-reviewer/check-error-coverage.md)
 
 ## Domain Checks
 
@@ -158,16 +159,17 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 5. verify: `/run-test-all` ผ่าน 3 รอบติดทุกลำดับ + parallel, coverage delta — preserve coverage tests ที่แก้ต้องตรวจ behavior เดิม
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Coverage gaps](references/coverage-gaps.md)
-- [Edge cases](references/edge-cases.md)
-- [Test isolation](references/test-isolation.md)
-- [Test pyramid](references/test-pyramid.md)
-- [Regression coverage](references/regression-coverage.md)
-- [Analyze coverage and flaky](references/analyze-coverage-flaky.md)
-- [Test quality score](references/test-quality-score.md)
+- [Full-dimension checklist](subagents/test-reviewer/checklist.md)
+- [Coverage gaps](subagents/test-reviewer/coverage-gaps.md)
+- [Edge cases](subagents/test-reviewer/edge-cases.md)
+- [Test isolation](subagents/test-reviewer/test-isolation.md)
+- [Test pyramid](subagents/test-reviewer/test-pyramid.md)
+- [Regression coverage](subagents/test-reviewer/regression-coverage.md)
+- [Analyze coverage and flaky](subagents/test-reviewer/analyze-coverage-flaky.md)
+- [Test quality score](subagents/test-reviewer/test-quality-score.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /review-coverage ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

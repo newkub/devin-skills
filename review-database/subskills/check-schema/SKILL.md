@@ -23,7 +23,7 @@ Run the schema design dimension of `/review-database` แบบ focused — sche
 
 > Goal: ครอบคลุมทุก schema dimension — parent Execute §2
 
-ทำตาม `../../references/checklist.md` (schema section)
+ทำตาม `../../subagents/database-reviewer/checklist.md` (schema section)
 
 1. constraints — PK ทุก table, FK มี index, unique/not-null/check constraints ครบ
 2. types — ขนาดพอดี (varchar length, int range, timestamp tz), money → numeric/decimal

@@ -24,7 +24,7 @@ related:
 
 > Goal: รู้ event flows จริง
 
-ทำตาม `../../references/patterns.md`
+ทำตาม `../../subagents/events-reviewer/patterns.md`
 
 1. map topics/queues → producers/consumers จาก code
 2. list findings: missing schemas, non-idempotent consumers, no-DLQ queues

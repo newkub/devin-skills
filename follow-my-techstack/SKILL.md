@@ -23,7 +23,7 @@ related:
 
 ใช้เมื่อ task ต้องเลือก library/tool/service สำหรับความต้องการหนึ่งอย่าง (เช่น validator, HTTP client, ORM, testing, styling) — ไม่ว่าจะติดตั้งใหม่หรือใช้ของที่มีอยู่
 
-- Canonical catalog: `review-dependencies/references/techstack-catalog.md` — source of truth เดียว ห้าม copy เนื้อหามาไว้ที่นี่
+- Canonical catalog: `../shared/techstack-catalog.md` — source of truth เดียว ห้าม copy เนื้อหามาไว้ที่นี่
 - Review stack ทั้ง project เทียบ catalog → `/review-techstack`
 - หา package ที่ยังไม่มีใน catalog → `/research-dependencies` หรือ `/deep-research`
 - ติดตั้ง package → `/run-install`
@@ -34,7 +34,7 @@ related:
 
 > Goal: ได้ Default pick ของ category ที่ต้องการ
 
-1. อ่าน `review-dependencies/references/techstack-catalog.md`
+1. อ่าน `../shared/techstack-catalog.md`
 2. หา category ที่ตรงกับความต้องการ (เช่น "Validator", "HTTP Client", "ORM")
 3. เลือก column `Default` ของ ecosystem ที่ตรงกับ project (TS / Rust / Vue / TanStack / Cloudflare / Third-Party)
 
@@ -66,7 +66,7 @@ related:
 
 ### 1. Catalog Is Source Of Truth
 
-- อ่านจาก `review-dependencies/references/techstack-catalog.md` เท่านั้น ห้าม hardcode list ซ้ำ
+- อ่านจาก `../shared/techstack-catalog.md` เท่านั้น ห้าม hardcode list ซ้ำ
 - ถ้าพบว่า catalog ล้าสมัย → เสนออัปเดต catalog ไม่ใช่แก้ใน skill นี้
 
 ### 2. Existing Before New

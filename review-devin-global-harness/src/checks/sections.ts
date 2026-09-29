@@ -1,9 +1,10 @@
+import { relativePath } from "../parse";
 import type { Context, SkillMeta } from "../types";
 
 const REQUIRED = ["Goal", "Scope", "Execute", "Rules", "Expected Outcome"];
 
 export function checkSections(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
 
   const h2s = m.sections.filter((l) => l.startsWith("## ")).map((l) => l.slice(3));
   for (const r of REQUIRED) {

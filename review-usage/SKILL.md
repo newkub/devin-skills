@@ -12,6 +12,7 @@ related:
   - report
   - suggest-next-action
   - deep-review-then-fix
+  - use-subagents
 ---
 
 ## Goal
@@ -81,6 +82,7 @@ Review usage surface ของ project จากมุมผู้ใช้ — 
 - parity gaps (docs ผิด/ขาด) → `/update-usage-md` หรือ `/update-docs`
 - API/CLI/web surface issues → `## Fix` ของ `review-api`/`review-cli`/`review-frontend` ตาม domain
 - multi-domain → `/deep-review-then-fix`
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

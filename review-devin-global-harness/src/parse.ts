@@ -1,4 +1,9 @@
+import { sep } from "node:path";
 import type { Frontmatter } from "./types";
+
+export function relativePath(path: string, root: string): string {
+  return path.startsWith(root + sep) || path.startsWith(root + "/") ? path.slice(root.length + 1) : path;
+}
 
 export function hasFrontmatterOpen(text: string): boolean {
   return /^\uFEFF?---\r?\n/.test(text);

@@ -34,7 +34,7 @@ Apply rendering performance findings จาก `/review-frontend` — ลด unn
 1. รัน production build แล้วเปิด DevTools Performance panel หรือ `/run-profiler`
 2. บันทึก long frames, forced reflows, commit count ต่อ interaction
 3. ใช้ React DevTools Profiler หรือ equivalent หา components ที่ re-render เกิน
-4. จับคู่ findings จาก `/review-frontend` (`references/rendering-performance.md`) กับ measurements จริง
+4. จับคู่ findings จาก `/review-frontend` (`subagents/frontend-reviewer/rendering-performance.md`) กับ measurements จริง
 
 ### 2. Fix Re-Renders
 

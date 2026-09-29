@@ -8,16 +8,24 @@ related:
   - deep-review
   - resolve-errors
   - run-review
+  - use-subagents
 
 ---
 
 ## Goal
 
-ตรวจสอบ issue (ไฟล์, chat หรือ external tracker) เพื่อดูคุณภาพ, ความชัดเจน, ความครบถ้วน และความพร้อมก่อน implementation
+ตรวจสอบ issue (ไฟล์, chat หรือ external tracker) เพื่อดูคุณภาพ, ความชัดเจน, ความครบถ้วน และความพร้อมก่อน implementation — domain checklist อยู่ใน `subagents/issue-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้สำหรับ issue source ใดๆ ไม่ใช่แค่ GitHub ครอบคลุม title, description, acceptance criteria, scope, dependencies, risks และ next steps ที่นำไปปฏิบัติได้ ไม่แก้ไข issue เว้นแต่ได้รับการร้องขอ
+
+| Dimension | Checklist |
+|-----------|-----------|
+| `collect` — รับข้อความและ context แบบเต็ม | `subagents/issue-reviewer/collect-issue-content.md` |
+| `completeness` — ข้อมูลเพียงพอเริ่มงาน | `subagents/issue-reviewer/issue-completeness.md` |
+| `quality` — ความชัดเจนและความเป็นไปได้ | `subagents/issue-reviewer/issue-quality.md` |
+| `rating` — severity และ next action | `subagents/issue-reviewer/issue-rating.md` |
 
 ดูเพิ่มเติม: /deep-review
 
@@ -25,27 +33,39 @@ related:
 
 ### 1. Collect Issue Content
 
-> Goal: รับข้อความและ context ของ issue แบบเต็ม
+> Goal: รับข้อความและ context ของ issue แบบเต็ม — baseline สำหรับ subagent
 
-ทำตาม [references/collect-issue-content.md](references/collect-issue-content.md)
+ทำตาม [subagents/issue-reviewer/collect-issue-content.md](subagents/issue-reviewer/collect-issue-content.md) — ได้ issue text เต็มพร้อม source (ใช้เป็น findings-file/context ให้ subagent)
 
-### 2. Check Completeness
+### 2. Dispatch Issue-Reviewer
 
-> Goal: ยืนยันว่า issue มีข้อมูลเพียงพอที่จะเริ่มงานได้
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-ทำตาม [references/issue-completeness.md](references/issue-completeness.md)
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → `completeness`, `quality`, `rating` ทั้งหมด
+2. Spawn `subagents/issue-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (issue content จาก step 1)
 
-### 3. Assess Quality
+### 3. Aggregate And Rate
 
-> Goal: ระบุปัญหาด้านความชัดเจนและความเป็นไปได้
+> Goal: รวม findings พร้อม severity และ readiness verdict
 
-ทำตาม [references/issue-quality.md](references/issue-quality.md)
+1. รวม findings — dedup ตาม quote/section + issue type
+2. Classify severity ตาม `subagents/issue-reviewer/issue-rating.md`
+3. ระบุความพร้อมโดยรวม: Ready, Needs Clarification, Blocked หรือ Not Ready
 
-### 4. Rate Severity And Recommend
+### 4. Report
 
-> Goal: สร้างรายงานการตรวจสอบที่นำไปปฏิบัติได้
+> Goal: รายงานที่นำไปปฏิบัติได้
 
-ทำตาม [references/issue-rating.md](references/issue-rating.md)
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score และ readiness verdict
+2. ทำ `/suggest-next-action`
+
+### Subagents
+
+> Goal: dispatch domain review ไปยัง subagent
+
+| Topic | Subagent |
+|-------|----------|
+| issue dimensions — completeness, quality, rating, readiness พร้อม severity | `subagents/issue-reviewer/AGENT.md` |
 
 ## Rules
 
@@ -72,7 +92,7 @@ related:
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (issue)
+- ดู metrics สำหรับ review ใน [subagents/issue-reviewer/scoring.md](subagents/issue-reviewer/scoring.md) (issue)
 
 - ถ้า fail → ปรับ issue ให้ชัดเจนก่อน implement
 
@@ -81,7 +101,7 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](subagents/issue-reviewer/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix

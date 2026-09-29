@@ -25,7 +25,7 @@ Run the complexity dimension of `/review-code-quality` แบบ focused — ห
 
 > Goal: hotspots พร้อม numbers — parent Execute §6
 
-ทำตาม `../../references/time-complexity.md` + `../../references/code-quality.md`
+ทำตาม `../../../shared/time-complexity.md` + `../../references/code-quality.md`
 
 1. long functions/files — thresholds ตาม convention (`/check-long-files`, `/review-code-quality`)
 2. nesting/cyclomatic — deep branches, guard-clause opportunities

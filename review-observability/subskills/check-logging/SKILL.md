@@ -24,7 +24,7 @@ Run the logging dimension of `/review-observability` แบบ focused — logs 
 
 > Goal: logs ใช้ debug ได้จริง ไม่ leak
 
-ทำตาม `../../references/logging.md`
+ทำตาม `../../subagents/observability-reviewer/logging.md`
 
 1. structured — JSON/consistent format ไม่ใช่ string concat; `console.log` leftovers → `/check-repo-hygiene`
 2. context — trace_id/request_id/user context propagate ครบ error paths

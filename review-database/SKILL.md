@@ -10,81 +10,56 @@ related:
   - report
   - check-reference
   - run-review
+  - use-subagents
 ---
 
 ## Goal
 
-ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity โดยไม่แก้ไข — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm
+ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity โดยไม่แก้ไข — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm — domain checklist อยู่ใน `subagents/database-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้เมื่อต้อง review database ของ project: schema, relations, indexes, query patterns, migration safety — รองรับ ORM ทั่วไป (Drizzle, Prisma) และ raw SQL — ไม่แก้ไข schema หรือ data ระหว่าง review (แก้ไขตาม section `## Fix`)
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `schema`, `indexes-queries`, `migrations`, `integrity` — full overview | `subagents/database-reviewer/checklist.md` |
+| `operations` — replication, PII inventory, capacity | `subagents/database-reviewer/operations.md` |
+| `concurrency` — pooling, locks, isolation, long transactions | `subagents/database-reviewer/concurrency.md` |
+| `injection` — parameterization, raw SQL audit, least-privilege | `subagents/database-reviewer/injection.md` |
+
 ## Execute
 
-### 1. Discover Database Layer
+### 1. Prepare And Baseline
 
 > Goal: เข้าใจ database stack และ schema
 
 1. ทำ `/scan-codebase` หา schema files, migrations, queries และ ORM config
 2. ระบุ ORM/database จาก manifests (`drizzle`, `prisma`, raw SQL)
 3. ถ้ามี Drizzle → ใช้ `/run-drizzle-studio` เพื่อ inspect data จริง
+4. ทำ `/run-review` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Review Schema Design
+### 2. Dispatch Database-Reviewer
 
-> Goal: schema ถูกออกแบบถูกต้อง
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ตรวจ normalization, primary keys, foreign keys และ relations
-2. ตรวจ column types, nullability, defaults และ constraints
-3. ตรวจ naming conventions และ orphaned tables/columns
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension (`schema`, `indexes-queries`, `migrations`, `operations`, `concurrency`, `injection`)
+2. Spawn `subagents/database-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย schema → spawn หลาย instance ทีละ scope ขนานกัน
 
-### 3. Review Indexes And Queries
+### 3. Aggregate And Score
 
-> Goal: queries ใช้ indexes และไม่มี anti-patterns
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-1. ตรวจ indexes ครอบคลุม WHERE/JOIN/ORDER BY ที่ใช้บ่อย
-2. ค้นหา N+1 queries และ missing eager loading
-3. ตรวจ queries ที่ไม่มี LIMIT, `SELECT *` และ sequential scans บนตารางใหญ่
+1. รวม findings จากทุก instance — dedup ตาม table/query + issue type
+2. classify severity — data loss, destructive migration, injection = Critical
+3. findings ที่เป็น perf deep-dive → ระบุเป็น info + เชื่อม `/review-performance`
 
-### 4. Review Migrations And Integrity
-
-> Goal: migrations ปลอดภัยและ data integrity ครบ
-
-1. ตรวจ migrations reversible และไม่มี destructive ops โดยไม่จำเป็น
-2. ตรวจ constraints: unique, check, foreign key cascades, soft deletes
-3. ตรวจ transaction usage สำหรับ multi-step writes
-
-### 5. Operations And Pii
-
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/operations.md`
-
-1. replication lag, vacuum/maintenance health
-2. PII columns inventory + retention per table
-3. capacity headroom — growth rate vs limits
-
-### 6. Concurrency And Pooling
-
-> Goal: connection lifecycle และ lock behavior ปลอดภัย — ทำตาม `references/concurrency.md`
-
-1. connection pooling — pool size vs workers, leak detection, idle reaping
-2. locks — `SELECT FOR UPDATE` scope, lock ordering, deadlock handling
-3. isolation levels — ตรงความต้องการจริง (serializable anomalies ถ้ามี)
-4. long transactions — ไม่ครอบ network/slow work, idle-in-transaction monitoring
-
-### 7. Query Safety And Injection
-
-> Goal: SQL surface ปลอดภัย — ทำตาม `references/injection.md`
-
-1. parameterized queries — ไม่มี string interpolation เข้า SQL
-2. raw SQL audit — escape/quote helpers ถูก, whitelist สำหรับ identifiers (orderBy, table names)
-3. ORM raw escapes — `sql`/`raw`/`whereRaw` ทุกจุดมี justification
-4. least-privilege DB user — app user ไม่ใช่ superuser/DDL rights
-
-### 8. Rate And Report
+### 4. Rate And Report
 
 > Goal: สรุป findings พร้อม severity และ fix direction
 
-1. ทำ `/report` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix
+1. ทำ `/report` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix + score ต่อ dimension และ overall
 2. ชี้ไป section `## Fix` เมื่อ user confirm ให้แก้
 
 ### Subskills
@@ -99,11 +74,19 @@ related:
 | `slow-queries`, `report` — slow-query table + index recs | `subskills/report-slow-queries/SKILL.md` |
 | Apply migration findings — expand-contract, rollback (user confirm) | `subskills/improve-migrations/SKILL.md` |
 
+### Subagents
+
+> Goal: domain reviewer ที่ถือ checklist ทั้งหมด — spawn ผ่าน `/use-subagents`
+
+| Agent | Path |
+|-------|------|
+| `database-reviewer` — database dimensions พร้อม severity + evidence | `subagents/database-reviewer/AGENT.md` |
+
 ## Check: Migrations
-ทำตาม [references/check-migrations.md](references/check-migrations.md)
+ทำตาม [subagents/database-reviewer/check-migrations.md](subagents/database-reviewer/check-migrations.md)
 
 ## Check: Schema Change
-ทำตาม [references/check-schema-change.md](references/check-schema-change.md)
+ทำตาม [subagents/database-reviewer/check-schema-change.md](subagents/database-reviewer/check-schema-change.md)
 
 ## Domain Checks
 
@@ -120,6 +103,7 @@ related:
 
 - ห้ามแก้ schema, data หรือ run migrations ระหว่าง review
 - ใช้ read-only queries เท่านั้นเมื่อ inspect data
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/database-reviewer/` เท่านั้น
 
 ### 2. Evidence Required
 
@@ -147,15 +131,6 @@ related:
 4. queries: เลือก columns ที่ใช้, keyset pagination, transactions สั้น
 5. migrations: backup DB ก่อน → drift แก้ด้วย reconcile migration (ห้ามแก้ migration ที่ apply แล้ว สร้างใหม่เสมอ), failed migrations mark resolved/rollback ตาม tool — เพิ่ม down/rollback ให้ครบ, destructive ops แยกเป็น expand-contract — verify migrate up/down บน fresh DB + `## Check: Migrations` diff เป็นศูนย์
 5. verify: EXPLAIN before/after, tests ผ่าน
-
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- [Operations and PII checklist](references/operations.md)
-- [Concurrency and pooling checklist](references/concurrency.md)
-- [Query safety and injection checklist](references/injection.md)
-- ใช้ /run-review ถ้าจำเป็น
-- ใช้ /review-performance ถ้าจำเป็น
 
 ## Expected Outcome
 

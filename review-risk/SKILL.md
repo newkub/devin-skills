@@ -14,12 +14,13 @@ related:
   - suggest-next-action
   - scan-codebase
   - run-review
+  - use-subagents
 
 ---
 
 ## Goal
 
-Review project, plan, or implementation risks เพื่อระบุความเสี่ยงทั้งหมด ประเมิน probability และ impact ตรวจสอบ mitigation และ rollback แล้วสรุป risk score
+Review project, plan, or implementation risks เพื่อระบุความเสี่ยงทั้งหมด ประเมิน probability และ impact ตรวจสอบ mitigation และ rollback แล้วสรุป risk score — domain checklist อยู่ใน `subagents/risk-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
@@ -29,7 +30,15 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - รองรับ target: `plan`, `project`, `deploy`, `migration`, หรือ default เป็น current workspace
 - ส่งต่อให้ `review-plan`, `review-migration`, `review-release`, `review-security`, `review-compliance` เมื่อ target ชัดเจน
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `categories` — risk categories ครบทุกด้าน | `subagents/risk-reviewer/risk-categories.md` |
+| `identify` — technical/schedule/security/business risks + mitigation | `subagents/risk-reviewer/risk-checklist.md` |
+| `assess` — probability, impact, severity per risk | `subagents/risk-reviewer/risk-scoring.md` |
+| `score` — readiness score + grade | `subagents/risk-reviewer/scoring.md` |
+
 ## Execute
+
 ### 1. Prepare Context
 
 > Goal: เข้าใจ review target และ project context
@@ -39,51 +48,38 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 3. ถ้า target เป็น `plan`/`deploy`/`migration` → อ่าน target หรือเรียก review skill ที่เหมาะสม
 4. ถ้าไม่พบ target → stop และ report
 
-### 2. Identify Technical Risks
+### 2. Dispatch Risk-Reviewer
 
-> Goal: ระบุ technical risks
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ทำตาม [references/risk-checklist.md](references/risk-checklist.md) — Identify Technical Risks
+1. เลือก dimensions จาก target — ไม่ระบุ → ทุก dimension (`technical`, `schedule`, `security-compliance`, `business-operational`, `mitigation`)
+2. Spawn `subagents/risk-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope` (target), `dimensions`, `findings-file` (baseline จาก step 1)
+3. target ใหญ่/หลาย plan → spawn หลาย instance ทีละ target ขนานกัน
 
-### 3. Identify Schedule And Resource Risks
+### 3. Aggregate And Score
 
-> Goal: ระบุ schedule และ resource risks
+> Goal: risk register หน่วยเดียวพร้อม severity + readiness score
 
-1. ทำตาม [references/risk-checklist.md](references/risk-checklist.md) — Identify Schedule And Resource Risks
+1. รวม findings จากทุก instance — dedup ตาม risk + source; ไม่สร้าง duplicate findings ระหว่าง review skills
+2. ประเมิน probability/impact/score ตาม `subagents/risk-reviewer/risk-scoring.md`; readiness score + grade ตาม `subagents/risk-reviewer/scoring.md`
+3. ตรวจ mitigation และ rollback ครบถ้วนตาม `subagents/risk-reviewer/risk-checklist.md` — Check Mitigation And Rollback
 
-### 4. Identify Security And Compliance Risks
-
-> Goal: ระบุ security และ compliance risks
-
-1. ทำตาม [references/risk-checklist.md](references/risk-checklist.md) — Identify Security And Compliance Risks
-
-### 5. Identify Business And Operational Risks
-
-> Goal: ระบุ business และ operational risks
-
-1. ทำตาม [references/risk-checklist.md](references/risk-checklist.md) — Identify Business And Operational Risks
-
-### 6. Assess Probability, Impact, Severity
-
-> Goal: ประเมินแต่ละ risk ด้วยตัวเลขและระดับ
-
-1. ทำตาม `references/risk-scoring.md`
-
-### 7. Check Mitigation And Rollback
-
-> Goal: ตรวจสอบ mitigation และ rollback ครบถ้วน
-
-1. ทำตาม [references/risk-checklist.md](references/risk-checklist.md) — Check Mitigation And Rollback
-
-### 8. Score And Report
+### 4. Report
 
 > Goal: สรุป risk score และ prioritized actions
 
-1. ทำตาม `references/scoring.md`
-2. ทำ `/report` risk register: No., Risk, Category, Probability, Impact, Score, Severity, Mitigation
-3. ทำ `/report` Risk Summary และ Action Items
-4. แสดง go/no-go หรือ proceed-with-caution
-5. ทำ `/suggest-next-action`
+1. ทำ `/report` risk register: No., Risk, Category, Probability, Impact, Score, Severity, Mitigation
+2. ทำ `/report` Risk Summary และ Action Items
+3. แสดง go/no-go หรือ proceed-with-caution
+4. ทำ `/suggest-next-action`
+
+### Subagents
+
+> Goal: domain reviewer ที่ถือ checklist ทั้งหมด — spawn ผ่าน `/use-subagents`
+
+| Agent | Path |
+|-------|------|
+| `risk-reviewer` — risk identification + assessment พร้อม severity + evidence | `subagents/risk-reviewer/AGENT.md` |
 
 ## Rules
 
@@ -93,6 +89,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `plan` หลัง review
 - ถ้าต้องแก้ไข implementation ให้ใช้ `fix`, `resolve-errors`, หรือ `refactor` หลัง review
 - ทุก finding ต้องมี evidence และ location
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/risk-reviewer/` เท่านั้น
 
 ### 2. Evidence-Based Findings
 
@@ -107,7 +104,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - Risk readiness score = (total score / total categories) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - Score < 70 → แนะนำปรับ mitigation หรือ scope ก่อน proceed
-- คำนวณ individual risk score ตาม `references/risk-scoring.md`
+- คำนวณ individual risk score ตาม `subagents/risk-reviewer/risk-scoring.md`
 
 ### 4. Cross-Reference Discipline
 
@@ -135,12 +132,6 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 1. apply mitigations ตาม risk register — Critical/High ก่อนเสมอ
 2. risks ที่ลดไม่ได้ → เพิ่ม monitoring/rollback plan หรือ escalate ให้ user ตัดสิน
 3. verify: re-score risk register เทียบก่อน-หลัง mitigation
-
-## References
-
-- [Risk checklist](references/risk-checklist.md)
-- [Risk scoring](references/risk-scoring.md)
-- [Scoring](references/scoring.md)
 
 ## Expected Outcome
 

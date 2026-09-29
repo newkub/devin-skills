@@ -39,7 +39,7 @@ related:
 
 ดูเพิ่มเติม: `/review-dependencies`, `/follow-lang-rust`, `/follow-lang-typescript`
 
-- Latest: `@modelcontextprotocol/sdk@1.30.1` (TS), `rmcp@3.4.1` (Rust) (verified 2026-09-26)
+- SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` เป็น legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -47,7 +47,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. อ่าน `review-dependencies/references/techstack-catalog.md` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด แล้วอ่าน `../shared/techstack-catalog.md` เพื่อสรุป tech stack ที่ใช้
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create mcp)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mcp)
 
@@ -59,14 +59,14 @@ related:
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency, หรือ deploy เป็น native binary
 3. เลือก TypeScript ถ้า: ทีมใช้ TS/Bun หลัก, ต้องการ rapid iteration, หรือต้อง integration กับ JS ecosystem
 4. ถ้าไม่ชัด → ใช้ Rust เป็น default
-5. ดูรายละเอียด stack ใน `references/mcp-stacks.md` ถ้ามี
+5. Decision matrix — Rust: ไม่มี runtime dep, single binary, performance สูง; TypeScript: ต้อง Node/Bun/Deno, ecosystem เยอะกว่า, iterate เร็วกว่า
 
 ### 3. Create MCP Server Project
 
 > Goal: สร้าง scaffold ตาม stack ที่เลือก
 
-1. ถ้าเลือก Rust → สร้าง Rust project ด้วย `cargo new` แล้วเพิ่ม `rmcp` หรือ `rust-mcp-sdk` เป็น dependency ตามตัวอย่างใน `references/mcp-stacks.md` ถ้ามี
-2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (latest `1.30.1`, verified 2026-09-26 — `@modelcontextprotocol/server` เป็น package เก่าที่ถูกแทนด้วย `sdk`)
+1. ถ้าเลือก Rust → `cargo new` แล้ว `cargo add rmcp --features server` (community alternative: `rust-mcp-sdk`)
+2. ถ้าเลือก TypeScript → `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (`@modelcontextprotocol/server` เป็น legacy ที่ถูกแทน)
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
 5. ทำ `/review-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน

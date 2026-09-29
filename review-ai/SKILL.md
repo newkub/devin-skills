@@ -22,7 +22,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 - ใช้เมื่อ project มี LLM/AI features: chat, completion, summarization, classification, embeddings/RAG, agents, tool-use
 - ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
-- deep checklists ตาม `references/` ด้านล่าง
+- deep checklists ตาม `subagents/ai-reviewer/` ด้านล่าง
 - ไม่รวม general code quality → `/review-code-quality`, infra cost รวม → `/review-cost`
 
 ## Execute
@@ -38,7 +38,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 2. Check Prompts
 
-> Goal: prompts มีคุณภาพ ทดสอบได้ และปลอดภัย — ทำตาม `references/prompts.md`
+> Goal: prompts มีคุณภาพ ทดสอบได้ และปลอดภัย — ทำตาม `subagents/ai-reviewer/prompts.md`
 
 1. prompt files/templates — versioning, centralized location, testability, diff-able
 2. system prompts — ไม่ leak secrets/internal info, role/boundary ชัด, output contract ระบุ
@@ -47,7 +47,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 3. Check RAG And Retrieval
 
-> Goal: retrieval มีคุณภาพวัดได้และ grounding จริง — ทำตาม `references/rag.md`
+> Goal: retrieval มีคุณภาพวัดได้และ grounding จริง — ทำตาม `subagents/ai-reviewer/rag.md`
 
 1. chunking strategy — size, overlap, semantic boundaries, metadata
 2. embedding model — pinned, dimension ตรง index, re-embed path ตอนเปลี่ยน model
@@ -56,7 +56,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 4. Check Agents And Tool Use
 
-> Goal: agent loops คุมได้ ไม่วนไม่จบ — ทำตาม `references/agents.md`
+> Goal: agent loops คุมได้ ไม่วนไม่จบ — ทำตาม `subagents/ai-reviewer/agents.md`
 
 1. tool schemas — names/descriptions/params ชัด, validation ที่ boundary
 2. loop control — max iterations, max tokens per turn, stop conditions, timeout
@@ -65,7 +65,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 5. Check Guardrails And Output
 
-> Goal: output ปลอดภัยและใช้งานได้ — ทำตาม `references/guardrails.md`
+> Goal: output ปลอดภัยและใช้งานได้ — ทำตาม `subagents/ai-reviewer/guardrails.md`
 
 1. output validation — structured output/JSON schema vs raw text trust
 2. hallucination mitigations — grounding, citations, confidence checks, human review path
@@ -75,7 +75,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 6. Check Cost And Tokens
 
-> Goal: cost คุมได้และวัดได้ — ทำตาม `references/cost.md`
+> Goal: cost คุมได้และวัดได้ — ทำตาม `subagents/ai-reviewer/cost.md`
 
 1. token usage tracking/logging — in/out tokens ต่อ call site, per-user/tenant
 2. context size control — truncation, chunking, summarization ของ context ยาว
@@ -84,7 +84,7 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ### 7. Check Evals And Observability
 
-> Goal: คุณภาพวัดได้ regression จับได้ — ทำตาม `references/evals.md`
+> Goal: คุณภาพวัดได้ regression จับได้ — ทำตาม `subagents/ai-reviewer/evals.md`
 
 1. eval suite/golden sets — regression ตอนเปลี่ยน prompt/model, CI gate
 2. LLM observability — traces, latency, error rates, finish reasons per call site
@@ -153,12 +153,12 @@ Review AI/LLM integration ของ project ครบทุกมิติ — p
 
 ## References
 
-- [Prompt checklist](references/prompts.md)
-- [RAG checklist](references/rag.md)
-- [Agents and tool-use checklist](references/agents.md)
-- [Guardrails checklist](references/guardrails.md)
-- [Cost checklist](references/cost.md)
-- [Evals checklist](references/evals.md)
+- [Prompt checklist](subagents/ai-reviewer/prompts.md)
+- [RAG checklist](subagents/ai-reviewer/rag.md)
+- [Agents and tool-use checklist](subagents/ai-reviewer/agents.md)
+- [Guardrails checklist](subagents/ai-reviewer/guardrails.md)
+- [Cost checklist](subagents/ai-reviewer/cost.md)
+- [Evals checklist](subagents/ai-reviewer/evals.md)
 
 ## Expected Outcome
 

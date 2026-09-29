@@ -37,37 +37,37 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 > Goal: รู้ว่า review workspace ใด และอยู่ที่ไหน
 
-ทำตาม references/identify-workspace.md
+ทำตาม subagents/workspace-reviewer/identify-workspace.md
 
 ### 2. Analyze Manifest
 
 > Goal: ตรวจสอบ manifest quality และ scripts
 
-ทำตาม references/analyze-manifest.md
+ทำตาม subagents/workspace-reviewer/analyze-manifest.md
 
 ### 3. Review Structure
 
 > Goal: โครงสร้าง workspace สอดคล้องกับ tech stack และ conventions
 
-ทำตาม references/review-structure.md
+ทำตาม subagents/workspace-reviewer/review-structure.md
 
 ### 4. Review Dependencies
 
 > Goal: dependencies ถูกต้อง ไม่ซ้ำซ้อน ไม่ขาด ไม่เกิน
 
-ทำตาม references/review-dependencies.md
+ทำตาม subagents/workspace-reviewer/review-dependencies.md
 
 ### 5. Review Config Consistency
 
 > Goal: config files สอดคล้องกับ root workspace และ project standards
 
-ทำตาม references/review-config-consistency.md
+ทำตาม subagents/workspace-reviewer/review-config-consistency.md
 
 ### 6. Run Checks
 
 > Goal: พบ runtime และ build issues ก่อน report
 
-ทำตาม references/run-checks.md
+ทำตาม subagents/workspace-reviewer/run-checks.md
 
 ### 7. Graph Hygiene
 
@@ -80,7 +80,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 > Goal: findings ถูกต้อง พร้อม review score และ recommendations
 
-ทำตาม references/validate-findings-and-report.md และ references/scoring.md
+ทำตาม subagents/workspace-reviewer/validate-findings-and-report.md และ subagents/workspace-reviewer/scoring.md
 
 - คำนวณ review score, dimension scores และ supplementary metrics
 - ทำ `/report`
@@ -115,7 +115,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
    - ถ้าเป็น monorepo ให้เปรียบเทียบกับ root workspace
    - ใช้ monorepo run command ที่เหมาะสม
 4. Health Score
-   - คำนวณ review score เป็น percentage 0-100 ตาม references/scoring.md
+   - คำนวณ review score เป็น percentage 0-100 ตาม subagents/workspace-reviewer/scoring.md
 5. Formatting
    - ใช้ backticks สำหรับ paths, commands, skill names
    - ไม่ใช้ bold markers
@@ -141,14 +141,14 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Identify workspace](references/identify-workspace.md)
-- [Analyze manifest](references/analyze-manifest.md)
-- [Review structure](references/review-structure.md)
-- [Review dependencies](references/review-dependencies.md)
-- [Config consistency](references/review-config-consistency.md)
-- [Run checks](references/run-checks.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/workspace-reviewer/checklist.md)
+- [Identify workspace](subagents/workspace-reviewer/identify-workspace.md)
+- [Analyze manifest](subagents/workspace-reviewer/analyze-manifest.md)
+- [Review structure](subagents/workspace-reviewer/review-structure.md)
+- [Review dependencies](subagents/workspace-reviewer/review-dependencies.md)
+- [Config consistency](subagents/workspace-reviewer/review-config-consistency.md)
+- [Run checks](subagents/workspace-reviewer/run-checks.md)
+- [Scoring](subagents/workspace-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 

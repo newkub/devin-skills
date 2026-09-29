@@ -22,7 +22,7 @@ Run the `mcp` layer of `/review-devin-global-harness` แบบ focused — MCP 
 
 > Goal: ครอบคลุมทุก MCP dimension
 
-ทำตาม `../../references/mcp.md`
+ทำตาม `../../SKILL.md` (`## Checklists → Mcp`)
 
 1. enabled — server ที่ config ไว้ยังใช้งานจริง, disabled ที่ควรลบ
 2. env vars ครบ — required env มีจริง ไม่ missing

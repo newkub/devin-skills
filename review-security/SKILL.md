@@ -15,88 +15,62 @@ related:
   - run-audit
   - run-review
   - search
+  - use-subagents
 ---
 ## Goal
 
-Review security ครอบคลุมทุก dimension ของ application security พร้อม aggregate findings, severity, และ review score
+Review security ครอบคลุมทุก dimension ของ application security พร้อม aggregate findings, severity, และ review score — domain checklist อยู่ใน `subagents/security-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
-ครอบคลุม: auth posture (high-level เท่านั้น), OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, encryption, file upload security, security scoring
+ครอบคลุม: auth posture (high-level เท่านั้น), OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, encryption, file upload security, supply chain, security scoring
+
+| Dimension | Checklist |
+|-----------|-----------|
+| `authn` — login flow, password, session, MFA | `subagents/security-reviewer/authentication.md` |
+| `authz` — RBAC, permission mapping, IDOR | `subagents/security-reviewer/authorization.md` |
+| `owasp` — OWASP Top 10 categories | `subagents/security-reviewer/owasp-top-10.md` |
+| `secrets` — hardcoded secrets, env handling, rotation | `subagents/security-reviewer/secrets.md` |
+| `injection` — SQL/NoSQL/command/template/XSS | `subagents/security-reviewer/injection.md` |
+| `api` — rate limiting, input validation, authn/z on endpoints | `subagents/security-reviewer/api-security.md` |
+| `file-upload` — type validation, storage, serving | `subagents/security-reviewer/file-upload.md` |
+| `encryption` — at rest, in transit, key management | `subagents/security-reviewer/encryption.md` |
+| `supply-chain` — deps audit, lockfile, typosquat, pinning | `subagents/security-reviewer/supply-chain.md` |
 
 ไม่รวม: auth subsystem deep-dive — identity flows, sessions, tokens, OAuth, MFA, RBAC/ABAC (ใช้ `/review-auth`), compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare And Baseline
 
 > Goal: เข้าใจ security setup และสร้าง baseline findings
 
-ทำตาม `references/security-risk.md`
+1. ทำตาม `subagents/security-reviewer/security-risk.md` — risk profile, threat model, severity framework
+2. ทำ `/scan-codebase` เพื่อระบุ auth framework, session strategy, API framework, encryption library, และ secret manager
+3. ทำ `/run-review` + `/run-audit` เก็บ analyzer/dependency baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-ก่อนเริ่มให้ `/scan-codebase` เพื่อระบุ auth framework, session strategy, API framework, encryption library, และ secret manager
+### 2. Dispatch Security-Reviewer
 
-### 2. Authentication
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-> Goal: ครอบคลุมทุก authentication dimension
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply (ตาม skip conditions ใน Rules)
+2. Spawn `subagents/security-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-ทำตาม `references/authentication.md`
+### 3. Aggregate And Score
 
-### 3. Authorization
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-> Goal: ครอบคลุมทุก authorization dimension
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. Validate score ตาม `subagents/security-reviewer/scoring.md`
+3. findings ที่เป็น compliance/observability/auth deep-dive → ระบุเป็น info + route ไป skill ที่เหมาะสม
 
-ทำตาม `references/authorization.md`
-
-### 4. OWASP
-
-> Goal: ครอบคลุมทุก OWASP Top 10 category
-
-ทำตาม `references/owasp-top-10.md`
-
-### 5. Secrets
-
-> Goal: ครอบคลุมทุก secrets management dimension
-
-ทำตาม `references/secrets.md`
-
-ถ้าต้องปรับปรุง secrets management → ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret`
-
-### 6. Injection
-
-> Goal: ครอบคลุมทุก injection prevention dimension
-
-ทำตาม `references/injection.md`
-
-### 7. API Security And File Upload
-
-> Goal: ครอบคลุมทุก API security + file upload dimension
-
-ทำตาม `references/api-security.md` และ `references/file-upload.md`
-
-### 8. Encryption
-
-> Goal: ครอบคลุมทุก encryption dimension
-
-ทำตาม `references/encryption.md`
-
-### 9. Supply Chain And Hardening
-
-> Goal: deps และ deployed surface ปลอดภัย — ทำตาม `references/supply-chain.md`
-
-1. authz matrix — role x resource table ครบทุก protected action
-2. SBOM + lockfile integrity, secret rotation age
-3. verify security headers บน deployed response จริง (curl) ไม่ใช่แค่ config
-4. dependency audit — `/run-audit` สำหรับ known CVEs, typosquatting, abandoned packages
-5. logging safety — ไม่ log secrets/PII/tokens, audit trail สำหรับ security events
-
-### 10. Validate Score And Report
+### 4. Report
 
 > Goal: ตรวจสอบ findings, คำนวณ score, และรายงานผล
 
-ทำตาม `references/scoring.md`
-
-ทำ `/deep-validate` ก่อนรายงาน แล้วทำ `/report`
+1. ทำ `/deep-validate` ก่อนรายงาน แล้วทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
+2. ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -109,17 +83,25 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 | `injection`, `sqli`, `xss` — injection surfaces source→sink | `subskills/check-injection/SKILL.md` |
 | `report`, `vulns` — vuln matrix + exploit paths + fix mapping | `subskills/report-vulns/SKILL.md` |
 
+### Subagents
+
+> Goal: domain reviewer ที่ถือ checklist ทั้งหมด — spawn ผ่าน `/use-subagents`
+
+| Agent | Path |
+|-------|------|
+| `security-reviewer` — security dimensions พร้อม severity + evidence | `subagents/security-reviewer/AGENT.md` |
+
 ## Check: CORS Policy
-ทำตาม [references/check-cors-policy.md](references/check-cors-policy.md)
+ทำตาม [subagents/security-reviewer/check-cors-policy.md](subagents/security-reviewer/check-cors-policy.md)
 
 ## Check: Security Headers
-ทำตาม [references/check-security-headers.md](references/check-security-headers.md)
+ทำตาม [subagents/security-reviewer/check-security-headers.md](subagents/security-reviewer/check-security-headers.md)
 
 ## Check: Supply Chain
-ทำตาม [references/check-supply-chain.md](references/check-supply-chain.md)
+ทำตาม [subagents/security-reviewer/check-supply-chain.md](subagents/security-reviewer/check-supply-chain.md)
 
 ## Check: Unicode Homoglyph
-ทำตาม [references/check-unicode-homoglyph.md](references/check-unicode-homoglyph.md)
+ทำตาม [subagents/security-reviewer/check-unicode-homoglyph.md](subagents/security-reviewer/check-unicode-homoglyph.md)
 
 ## Domain Checks
 
@@ -139,14 +121,15 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (security)
 - ไม่ซ้ำกับ `/review-compliance` สำหรับ compliance
 - ไม่ซ้ำกับ `/review-delivery` Section 15 สำหรับ security เชิงลึก
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/security-reviewer/` เท่านั้น
 
 ### 2. Skip Conditions
 
-- ถ้า project ไม่มี authentication → ข้าม Section 2
-- ถ้า project ไม่มี authorization → ข้าม Section 3
-- ถ้า project ไม่มี API → ข้าม api-security checks ใน Section 7
-- ถ้า project ไม่มี file upload → ข้าม file-upload checks ใน Section 7
-- ถ้า project ไม่มี encryption → ข้าม Section 8
+- ถ้า project ไม่มี authentication → ข้าม `authn`
+- ถ้า project ไม่มี authorization → ข้าม `authz`
+- ถ้า project ไม่มี API → ข้าม `api`
+- ถ้า project ไม่มี file upload → ข้าม `file-upload`
+- ถ้า project ไม่มี encryption → ข้าม `encryption`
 
 ### 3. Severity
 
@@ -169,7 +152,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ### 6. Health Score
 
-- ตาม `../shared/review-rules.md` — Health Score (score ตาม `references/scoring.md`)
+- ตาม `../shared/review-rules.md` — Health Score (score ตาม `subagents/security-reviewer/scoring.md`)
 
 ### 7. Formatting
 
@@ -191,12 +174,6 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 3. deps: `/run-audit` — patch Critical/High ก่อน, semver-safe upgrade ก่อนเสมอ, major → อ่าน changelog/migration guide, transitive → `overrides`/`resolutions` พร้อม comment อ้าง advisory, package เสี่ยง → `## Check: Supply Chain`, upgrade ไม่ได้ → report residual risk ห้ามปล่อยเงียบ
 4. injection: parameterized queries, escaping, validation ที่ boundary
 5. auth/session: HttpOnly+Secure+SameSite cookies, server-side checks, rate limit auth endpoints
-## References
-
-- [Full-dimension checklist](references/checklist.md)
-- [Supply chain](references/supply-chain.md)
-- ใช้ /run-audit ถ้าจำเป็น
-- ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome
 

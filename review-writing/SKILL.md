@@ -12,6 +12,7 @@ related:
   - review-docs
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -42,25 +43,25 @@ related:
 
 > Goal: ตรวจสอบคุณภาพการเขียน
 
-ทำตาม references/writing-quality.md และ references/content-quality.md
+ทำตาม subagents/writing-reviewer/writing-quality.md และ subagents/writing-reviewer/content-quality.md
 
 ### 3. Review Naming Conventions
 
 > Goal: วิเคราะห์ naming patterns และ inconsistencies
 
-ทำตาม references/naming.md
+ทำตาม subagents/writing-reviewer/naming.md
 
 ### 4. Review Discoverability
 
 > Goal: ตรวจสอบ code, docs, features discoverability
 
-ทำตาม references/discoverability.md
+ทำตาม subagents/writing-reviewer/discoverability.md
 
 ### 5. Validate And Report
 
 > Goal: ตรวจสอบผลลัพธ์ คำนวณ score และรายงาน
 
-ทำตาม references/scoring.md
+ทำตาม subagents/writing-reviewer/scoring.md
 
 - ทำ `/deep-validate`
 - คำนวณ review score และ supplementary metrics
@@ -103,13 +104,14 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Writing quality](references/writing-quality.md)
-- [Content quality](references/content-quality.md)
-- [Naming](references/naming.md)
-- [Discoverability](references/discoverability.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/writing-reviewer/checklist.md)
+- [Writing quality](subagents/writing-reviewer/writing-quality.md)
+- [Content quality](subagents/writing-reviewer/content-quality.md)
+- [Naming](subagents/writing-reviewer/naming.md)
+- [Discoverability](subagents/writing-reviewer/discoverability.md)
+- [Scoring](subagents/writing-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -18,7 +18,7 @@ related:
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
 - ทำตาม `/review-dependencies` สำหรับ runtime และ dependencies
 
-- Latest: `discord.js@14.27.0`, `grammy@1.46.0`, `@slack/bolt@5.1.0`, `@line/bot-sdk@11.2.0`, `probot@14.3.2` (verified 2026-09-12)
+- SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 - Breaking: `@line/bot-sdk` v11 ลบ legacy `Client`/`OAuth` — ใช้ `LineBotClient.fromChannelAccessToken()` หรือ `messagingApi.MessagingApiClient` แทน
 - Breaking: `@slack/bolt` v5 ต้อง Node.js ≥20, ลบ `agent`/`clientTls` options และ `WorkflowStep`/`app.step()` (ใช้ `app.function()`)
 - Breaking: `discord.js` v14 deprecate event `ready` → ใช้ `Events.ClientReady` (ถูกลบใน v15)
@@ -39,7 +39,7 @@ related:
 | GitHub App | `/follow-create-bot-github-app` — app manifest, JWT auth, installation |
 
 1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
-2. ทำ `/review-dependencies`
+2. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุดของ platform SDK จากนั้นทำ `/review-dependencies`
 3. เรียก skill ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Setup Project

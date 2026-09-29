@@ -23,7 +23,7 @@ Run the data fetching dimension of `/review-frontend` แบบ focused — fetc
 
 > Goal: data layer มีประสิทธิภาพ
 
-ทำตาม `../../references/data-fetching.md`
+ทำตาม `../../subagents/frontend-reviewer/data-fetching.md`
 
 1. waterfalls — serial awaits ที่ parallel ได้, fetch-in-render vs prefetch/loader
 2. caching — dedup, stale-while-revalidate, cache keys ถูก, over/under-fetching

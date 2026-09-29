@@ -31,7 +31,7 @@ related:
 
 ผลลัพธ์รายงานลง `.devin/temp/report/<workspace>/deep-review-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code — แก้ findings → `/deep-review-then-fix`
 
-- dispatch catalog: `review/references/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
+- dispatch catalog: `../shared/review-skills.md` — `/review-<domain>` ทั้งหมด + `deep-*` ผ่าน `/follow-deep` ตาม phase ต่อ workspace
 - domain reviews: `review-*` 53 skills เป็น top-level skills จริง (ย้ายออกจาก subskills เดิม) — dispatch เรียก `/review-<domain>` โดยตรง; ยกเว้น `review-devin-global-harness`, `review-gaps`, `review-code-quality`, `review-coverage`, `review-then-fix` ที่เป็น top-level อยู่แล้ว
 
 ## Execute
@@ -103,7 +103,7 @@ related:
 > Goal: review ครบทุก `review-*` (ยกเว้น `review-github-pr`) ทีละ workspace ตามความสำคัญ ภายใต้ budget ของ Step 1
 
 1. ถ้า monorepo → ทำ `/list-workspaces` แล้วเรียง workspace ตามความสำคัญ: user-facing apps → shared packages → tools/infra — ทำ `/follow-monorepo` ตาม conventions; ถ้า workspaces > budget → เลือก top-N และ mark ที่เหลือ `skipped (budget)` ใน ledger
-2. ต่อ workspace → รัน pipeline ใน `review/references/review-skills.md` ตามลำดับ phase:
+2. ต่อ workspace → รัน pipeline ใน `../shared/review-skills.md` ตามลำดับ phase:
    - Phase 1 entry: `/review-config` → `/review-techstack` → `/review-architecture` → ที่เหลือตาม condition
    - Phase 2 source code: `/review-code-quality`, `/review-writing`, `/review-cli`/`/review-api`/`/review-backend`/`/review-frontend` ฯลฯ ตาม workspace type
    - Phase 3 cross-cutting: `/review-security`, `/review-performance`, `/review-stability` และ metrics อื่นครบ
@@ -182,7 +182,7 @@ related:
 
 ### 5. Coverage Dispatch
 
-- dispatch `review-*` ครบทุกตัวต่อ workspace ตาม `review/references/review-skills.md` ยกเว้น `/review-github-pr` — ภายใต้ budget
+- dispatch `review-*` ครบทุกตัวต่อ workspace ตาม `../shared/review-skills.md` ยกเว้น `/review-github-pr` — ภายใต้ budget
 - dispatch `deep-*` ผ่าน `/follow-deep` เมื่อ `--deep` หรือมี Critical/High findings
 - skip domain ได้เฉพาะ condition N/A ชัดเจนหรือ budget — ต้องระบุเหตุใน ledger และ report `## Coverage`
 - metric ที่ `ใน update-review-cli-then-run = N` → บันทึก analyzer gap ส่ง `/update-review-cli-then-run` และอ้างใน `run-review`

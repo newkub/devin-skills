@@ -19,6 +19,7 @@ related:
   - report
   - suggest-next-action
 
+  - use-subagents
 ---
 
 ## Goal
@@ -125,7 +126,8 @@ Review ว่า "surface ที่ควรครอบคลุม" ถูก 
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](subagents/coverage-reviewer/checklist.md)
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

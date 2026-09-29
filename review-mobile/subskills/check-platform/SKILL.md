@@ -22,7 +22,7 @@ Run the platform conventions dimension of `/review-mobile` แบบ focused —
 
 > Goal: app รู้สึก native บนแต่ละ platform — parent Execute §4 + §2
 
-ทำตาม `../../references/conventions.md` + `../../references/touch-layout.md`
+ทำตาม `../../subagents/mobile-reviewer/conventions.md` + `../../subagents/mobile-reviewer/touch-layout.md`
 
 1. navigation — back gesture/button semantics, deep links, tab/stack patterns ตาม platform
 2. touch/layout — targets ≥44pt/48dp, safe areas, keyboard avoidance

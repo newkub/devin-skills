@@ -23,7 +23,7 @@ related:
 - แยก pure logic ออกจาก browser API integration
 - ตั้งค่า CI/CD สำหรับ release ไป Chrome Web Store
 
-- Latest: `wxt@0.21.4` (verified 2026-09-12)
+- Package: `wxt` (0.x — minor releases อาจมี breaking) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -31,7 +31,7 @@ related:
 
 > Goal: เริ่มต้น WXT project ด้วย template ทีเหมาะสม
 
-1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐาน
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. รัน `bunx wxt@latest init` เพื่อเริ่มต้นโปรเจกต์
 3. เลือก template ที่ต้องการ (vanilla, react, vue, svelte, solid)
 4. ติดตั้ง dependencies ด้วย `bun install`
@@ -113,7 +113,7 @@ project/
 - ใช้ host permissions แทน `<all_urls>` หากเป็นไปได้
 - Version ต้อง follow semantic versioning
 - Name และ description ต้องชัดเจน
-- ใช้ Manifest V3 สำหรับ Chrome/Edge — WXT build Firefox เป็น MV2 โดย default (`wxt build -b firefox` → `.output/firefox-mv2`) (ดู `references/browser-extension-manifest.md`)
+- ใช้ Manifest V3 สำหรับ Chrome/Edge — WXT build Firefox เป็น MV2 โดย default (`wxt build -b firefox` → `.output/firefox-mv2`); manifest กำหนดผ่าน `manifest` option ใน `wxt.config.ts` ไม่ใช่ `manifest.json` ดิบ
 
 ### 4. Build Configuration
 

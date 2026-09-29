@@ -22,7 +22,7 @@ Run the RAG/retrieval dimension of `/review-ai` แบบ focused — retrieval 
 
 > Goal: retrieval quality วัดและคุมได้
 
-ทำตาม `../../references/rag.md`
+ทำตาม `../../subagents/ai-reviewer/rag.md`
 
 1. chunking — size/overlap เหมาะกับ content type, ไม่ตัดกลางประโยค/semantic unit
 2. retrieval — top-k + score threshold มี, fallback เมื่อ retrieval ว่าง

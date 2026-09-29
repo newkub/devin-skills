@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง plugin ใหม่หรือปรับปรุง plugin ที่มีอยู่ ให้ติดตั้งและแชร์ผ่าน GitHub repo, git URL, หรือ local folder
 
-- Latest: Devin CLI `3000.6.14` (ตรวจ `devin --version`) (verified 2026-09-12)
+- Devin CLI ไม่ publish บน npm (`devin` npm = unrelated stub) — ตรวจเวอร์ชันด้วย `devin --version`; ยืนยัน docs/format ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -27,8 +27,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create devin plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin format และ docs ล่าสุดที่ https://docs.devin.ai จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
 
 ### 2. Plan Plugin Scope

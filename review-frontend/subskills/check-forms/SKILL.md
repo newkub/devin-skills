@@ -23,7 +23,7 @@ Run the forms + error handling dimension of `/review-frontend` แบบ focused
 
 > Goal: forms ทำงานถูกและปลอดภัย
 
-ทำตาม `../../references/forms.md`
+ทำตาม `../../subagents/frontend-reviewer/forms.md`
 
 1. validation — schema at boundary, client validation ไม่ใช่ source of truth (server validates ซ้ำ)
 2. submit states — loading disable, error display, success feedback, double-submit prevention

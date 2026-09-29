@@ -105,7 +105,7 @@ related:
 
 ### 4. Related Workflows
 
-- ทำ `/follow-create-web-solid-tanstack-router` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-create-solid-tanstack` สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 

@@ -9,6 +9,7 @@ related:
   - update-devin-harness
   - align-devin-layers
   - report
+  - use-subagents
 ---
 
 ## Goal
@@ -67,6 +68,7 @@ related:
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /update-devin-harness ถ้าจำเป็น
 - ใช้ /review-api ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

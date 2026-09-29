@@ -24,7 +24,7 @@ related:
 - ครอบคลุม `Dockerfile`, `.dockerignore`, `compose.yaml`/`docker-compose.yml` และ health checks
 - ไม่ครอบคลุม Kubernetes manifests หรือ orchestration ระดับ production cluster
 
-- Latest: Docker Engine `29.8.0` (29.x series; ตรวจ `docker --version` ในเครื่อง) (verified 2026-09-12)
+- ตรวจ `docker --version` ในเครื่อง; ยืนยัน engine/compose ล่าสุดและ release notes ด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`) — Compose spec ไม่ใช้ top-level `version:` แล้ว
 
 ## Execute
 

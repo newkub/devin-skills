@@ -24,7 +24,7 @@ related:
 
 > Goal: numbers จริงจาก usage data
 
-ทำตาม `../../references/cost.md`
+ทำตาม `../../subagents/ai-reviewer/cost.md`
 
 1. token usage ต่อ feature/endpoint — input/output split, calls/day
 2. model mix — cost per call เทียบ capability ที่ใช้จริง

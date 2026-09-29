@@ -23,25 +23,25 @@ Run the operations dimensions of `/review-delivery` แบบ focused — loggin
 
 > Goal: debuggability พร้อมใช้ตอน incident
 
-ทำตาม `../../references/logging-debugging.md`
+ทำตาม `../../subagents/delivery-reviewer/logging-debugging.md`
 
 ### 2. Versioning
 
 > Goal: release versioning เป็นระบบ
 
-ทำตาม `../../references/versioning.md`
+ทำตาม `../../subagents/delivery-reviewer/versioning.md`
 
 ### 3. PR Process
 
 > Goal: PR workflow มีประสิทธิภาพ
 
-ทำตาม `../../references/pr-review.md`
+ทำตาม `../../subagents/delivery-reviewer/pr-review.md`
 
 ### 4. Analytics
 
 > Goal: instrumentation ครบและถูกต้อง
 
-ทำตาม `../../references/analytics.md`
+ทำตาม `../../subagents/delivery-reviewer/analytics.md`
 
 ### 5. Report
 

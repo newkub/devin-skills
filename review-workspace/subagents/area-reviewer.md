@@ -12,7 +12,7 @@ Subagent สำหรับ review area เดียวของ workspace — �
 - `area`: path เดียวที่รับผิดชอบ เช่น `src/api/`, `packages/ui`, `apps/web`
 - `workspace-path`: root ของ workspace ที่ review
 - `conventions` (optional): conventions ที่เกี่ยวข้อง เช่น `AGENTS.md`, structure rules, naming rules
-- `checklist-ref` (optional): reference file เช่น `references/checklist.md`
+- `checklist-ref` (optional): reference file เช่น `workspace-reviewer/checklist.md`
 
 ## Tools
 

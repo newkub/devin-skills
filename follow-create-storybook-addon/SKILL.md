@@ -17,7 +17,7 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้าง Storybook addon ใหม่ หรือแปลง feature เดิมให้เป็น addon
 
-- Latest: Storybook `10.6.0` (verified 2026-09-12) — addon API notes below อิง Storybook 9.x (`storybook/manager-api` ฯลฯ); ตรวจ SB10 migration guide ก่อนใช้
+- Package: `storybook` + addon APIs (`storybook/manager-api`, `preview-api`, `theming`) — ยืนยันเวอร์ชันและ migration guide ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 - Storybook 9 ใช้ imports จาก `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — `ห้ามใช้` `@storybook/addons`, `@storybook/api` (deprecated)
 - `@storybook/addon-kit` ถูก archive แล้ว — scaffold ด้วยมือตาม structure ด้านล่าง
 
@@ -27,7 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review libraries ที่จะใช้ (react, storybook version, bundler)
 3. ตรวจว่า target Storybook version ตรงกับ API ที่ใช้ (9.x = `storybook/manager-api`)
 

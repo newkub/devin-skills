@@ -23,7 +23,7 @@ Run the state management dimension of `/review-frontend` แบบ focused — s
 
 > Goal: state architecture สะอาด
 
-ทำตาม `../../references/state-management.md` + `../../references/hooks-composables.md`
+ทำตาม `../../subagents/frontend-reviewer/state-management.md` + `../../subagents/frontend-reviewer/hooks-composables.md`
 
 1. state placement — server state ใน query cache ไม่ใช่ store, UI state local ก่อน global
 2. derived state — computed จาก source ไม่ duplicate sync ด้วย effects

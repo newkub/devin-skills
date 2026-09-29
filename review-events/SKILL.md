@@ -58,7 +58,7 @@ Review event-driven architecture — event schemas, producer/consumer contracts,
 
 ### 5. Check Reliability Patterns
 
-> Goal: produce/consume รอดเมื่อ broker หรือ DB พัง — ทำตาม `references/patterns.md`
+> Goal: produce/consume รอดเมื่อ broker หรือ DB พัง — ทำตาม `subagents/events-reviewer/patterns.md`
 
 1. outbox pattern — event ไม่หลุดเมื่อ DB commit แล้ว publish fail
 2. inbox pattern — consumer dedupe persisted ไม่ใช่ in-memory
@@ -120,7 +120,7 @@ Review event-driven architecture — event schemas, producer/consumer contracts,
 
 ## References
 
-- [Reliability patterns](references/patterns.md)
+- [Reliability patterns](subagents/events-reviewer/patterns.md)
 
 ## Expected Outcome
 

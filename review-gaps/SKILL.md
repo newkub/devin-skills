@@ -9,6 +9,7 @@ related:
   - suggest-next-action
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -19,7 +20,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 ใช้เมื่อต้องการรวม findings จากหลาย dimensional reviews เป็นรายการเดียวที่เรียงลำดับแล้ว ไม่ทำ dimensional review เอง — รวบรวม ตัดซ้ำ และจัดลำดับเท่านั้น
 
-- ถ้าต้องสแกนกว้างหา "improve อะไรได้บ้าง" โดยยังไม่มี findings → ใช้ [references/dimension-map.md](references/dimension-map.md) สแกนแต่ละ dimension แบบเบาแล้ว map ไป `## Fix` ของ `review-*`
+- ถ้าต้องสแกนกว้างหา "improve อะไรได้บ้าง" โดยยังไม่มี findings → ใช้ [../shared/dimension-map.md](../shared/dimension-map.md) สแกนแต่ละ dimension แบบเบาแล้ว map ไป `## Fix` ของ `review-*`
 
 ## Execute
 
@@ -27,35 +28,35 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 > Goal: ระบุ review reports ที่จะรวม
 
-1. ดูรายละเอียดใน [references/prepare.md](references/prepare.md)
+1. ดูรายละเอียดใน [subagents/gaps-reviewer/prepare.md](subagents/gaps-reviewer/prepare.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Collect
 
 > Goal: รวม findings จากทุก dimensional review
 
-1. ดูรายละเอียดใน [references/collect.md](references/collect.md)
+1. ดูรายละเอียดใน [subagents/gaps-reviewer/collect.md](subagents/gaps-reviewer/collect.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Deduplicate
 
 > Goal: ตัด findings ที่ซ้ำกันข้าม dimensions
 
-1. ดูรายละเอียดใน [references/deduplicate.md](references/deduplicate.md)
+1. ดูรายละเอียดใน [subagents/gaps-reviewer/deduplicate.md](subagents/gaps-reviewer/deduplicate.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Prioritize
 
 > Goal: จัดลำดับ opportunities ตาม impact และ effort
 
-1. ดูรายละเอียดใน [references/prioritize.md](references/prioritize.md)
+1. ดูรายละเอียดใน [subagents/gaps-reviewer/prioritize.md](subagents/gaps-reviewer/prioritize.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Report
 
 > Goal: ส่งมอบ prioritized list พร้อม action skill
 
-1. ดูรายละเอียดใน [references/report.md](references/report.md)
+1. ดูรายละเอียดใน [subagents/gaps-reviewer/report.md](subagents/gaps-reviewer/report.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
@@ -93,16 +94,16 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (gaps)
+- ดู metrics สำหรับ review ใน [subagents/gaps-reviewer/scoring.md](subagents/gaps-reviewer/scoring.md) (gaps)
 
 - ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /review-risk ถ้าจำเป็น
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Dimension map](references/dimension-map.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/gaps-reviewer/checklist.md)
+- [Dimension map](../shared/dimension-map.md)
+- [Scoring](subagents/gaps-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix
@@ -112,6 +113,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 1. ส่งแต่ละ gap ที่ confirm ไปยัง `## Fix` ของ `review-*` ที่ตรง domain หรือ `/deep-review-then-fix`
 2. gap ที่ไม่มี owner skill → `/new-skills` หรือ `/idea-merge` ตามประเภท
 3. verify: re-aggregate gaps หลัง fix — matrix ต้องไม่มี gap เดิมเหลือ
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

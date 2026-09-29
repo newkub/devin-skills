@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับสร้าง Obsidian desktop/mobile plugin ด้วย sample plugin หรือ setup เอง พร้อม esbuild, manifest, styles, และ GitHub release
 
-- Latest: `obsidian@1.13.1` (npm typings package) (verified 2026-09-12)
+- Package: `obsidian` (npm typings — ตาม app API) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); `manifest.json` `minAppVersion` ต้องตรง release จริง
 
 ## Execute
 
@@ -29,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create obsidian plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create obsidian plugin)
 

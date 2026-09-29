@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับสร้าง JavaScript/TypeScript plugins สำหรับ Rolldown หรือ Vite 8+ ครอบคลุม plugin object, hooks, filters, build, และ tests
 
-- Latest: `rolldown@1.2.11` — bundler หลักใน `vite@8.x` (latest `8.3.1`) (verified 2026-09-26)
+- Packages: `rolldown` (bundler หลักใน `vite` Rolldown-powered), `vite` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); 1.x มี hook filters (`rolldown/filter`: `exactRegex`, `prefixRegex`); external `rolldown`/`vite` ใน plugin build
 
 ## Execute
 
@@ -28,7 +28,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
 2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create rolldown plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create rolldown plugins)
 

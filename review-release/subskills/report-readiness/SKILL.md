@@ -23,7 +23,7 @@ related:
 
 > Goal: ทุก gate เห็น status ทันที — parent Execute §7
 
-ทำตาม `../../references/release-readiness-score.md` + `../../references/deploy-readiness-score.md`
+ทำตาม `../../subagents/release-reviewer/release-readiness-score.md` + `../../subagents/release-reviewer/deploy-readiness-score.md`
 
 1. ตาราง: `No.`, `Gate`, `Status`, `Evidence`, `Blocker?`
 2. gates: version/semver, changelog, breaking changes documented, tests/CI green, platform targets, rollback plan, license/release notes, deploy steps ready

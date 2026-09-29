@@ -10,6 +10,7 @@ related:
   - report
   - check-reference
   - run-review
+  - use-subagents
 ---
 
 ## Goal
@@ -56,7 +57,7 @@ related:
 
 ### 5. Contract And Governance
 
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/contract.md`
+> Goal: coverage เพิ่มเติมของ domain — ทำตาม `subagents/api-reviewer/contract.md`
 
 1. OpenAPI/contract drift — spec vs implementation ตรงกัน
 2. idempotency keys บน mutating endpoints
@@ -64,7 +65,7 @@ related:
 
 ### 6. Headers Caching And Cors
 
-> Goal: HTTP semantics ถูกต้อง — ทำตาม `references/headers-caching.md`
+> Goal: HTTP semantics ถูกต้อง — ทำตาม `subagents/api-reviewer/headers-caching.md`
 
 1. `Cache-Control`/`ETag`/`Last-Modified` ตาม resource type — private vs public ถูก
 2. CORS policy — origins จำกัด, credentials handling, preflight ไม่ over-permissive (`review-security`)
@@ -73,7 +74,7 @@ related:
 
 ### 7. Webhooks And Realtime
 
-> Goal: async surface ครบ — ทำตาม `references/webhooks-realtime.md`
+> Goal: async surface ครบ — ทำตาม `subagents/api-reviewer/webhooks-realtime.md`
 
 1. webhooks — signature verification, retry/backoff, ordering, idempotent receivers (`review-api`)
 2. websockets/SSE — auth on connect, reconnect contract, backpressure, message schema
@@ -99,22 +100,22 @@ related:
 | Reconcile contract drift — sync spec/impl (user confirm) | `subskills/update-contract/SKILL.md` |
 
 ## Check: API Contract
-ทำตาม [references/check-api-contract.md](references/check-api-contract.md)
+ทำตาม [subagents/api-reviewer/check-api-contract.md](subagents/api-reviewer/check-api-contract.md)
 
 ## Check: API Versioning
-ทำตาม [references/check-api-versioning.md](references/check-api-versioning.md)
+ทำตาม [subagents/api-reviewer/check-api-versioning.md](subagents/api-reviewer/check-api-versioning.md)
 
 ## Check: Rate Limiting
-ทำตาม [references/check-rate-limiting.md](references/check-rate-limiting.md)
+ทำตาม [subagents/api-reviewer/check-rate-limiting.md](subagents/api-reviewer/check-rate-limiting.md)
 
 ## Check: Webhook
-ทำตาม [references/check-webhook.md](references/check-webhook.md)
+ทำตาม [subagents/api-reviewer/check-webhook.md](subagents/api-reviewer/check-webhook.md)
 
 ## Check: Idempotency
-ทำตาม [references/check-idempotency.md](references/check-idempotency.md)
+ทำตาม [subagents/api-reviewer/check-idempotency.md](subagents/api-reviewer/check-idempotency.md)
 
 ## Check: Backward Compatibility
-ทำตาม [references/check-backward-compatibility.md](references/check-backward-compatibility.md)
+ทำตาม [subagents/api-reviewer/check-backward-compatibility.md](subagents/api-reviewer/check-backward-compatibility.md)
 
 ## Domain Checks
 
@@ -166,14 +167,15 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Contract and governance checklist](references/contract.md)
-- [Headers caching and CORS checklist](references/headers-caching.md)
-- [Webhooks and realtime checklist](references/webhooks-realtime.md)
+- [Full-dimension checklist](subagents/api-reviewer/checklist.md)
+- [Contract and governance checklist](subagents/api-reviewer/contract.md)
+- [Headers caching and CORS checklist](subagents/api-reviewer/headers-caching.md)
+- [Webhooks and realtime checklist](subagents/api-reviewer/webhooks-realtime.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -18,15 +18,34 @@ related:
   - run-review
   - check-repo-hygiene
   - follow-tool-crw
+  - use-subagents
 ---
 
 ## Goal
 
-Review delivery ครอบคลุมทุก dimension ของ delivery พร้อม aggregate findings และ review score
+Review delivery ครอบคลุมทุก dimension ของ delivery พร้อม aggregate findings และ review score — domain checklist อยู่ใน `subagents/delivery-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 delivery review สำหรับ: documentation, SEO, developer experience, analytics, testing, PR, logging, debugging, versioning, build efficiency, config health, CI/CD pipeline, infrastructure, performance, security
+
+| Dimension | Checklist |
+|-----------|-----------|
+| `docs` — README, setup guide, API docs, changelogs | `subagents/delivery-reviewer/docs.md` |
+| `dx` — developer experience | `../shared/dx.md` |
+| `analytics` — tracking coverage, consent | `subagents/delivery-reviewer/analytics.md` |
+| `testing` — coverage, isolation, reliability | `subagents/delivery-reviewer/testing.md` |
+| `pr-review` — PR process ก่อน merge | `subagents/delivery-reviewer/pr-review.md` |
+| `logging-debugging` — logs, errors, debuggability | `subagents/delivery-reviewer/logging-debugging.md` |
+| `versioning` — strategy, changelog, deprecation | `subagents/delivery-reviewer/versioning.md` |
+| `efficiency` — build/dev-loop efficiency | `subagents/delivery-reviewer/efficiency.md` |
+| `config` — config health | `subagents/delivery-reviewer/config.md` |
+| `ci-cd` — pipeline speed, reliability, security | `subagents/delivery-reviewer/ci-cd.md` |
+| `infrastructure` — deploy, workers, scalability | `subagents/delivery-reviewer/infrastructure.md` |
+| `containerization` — Dockerfile, engines | `subagents/delivery-reviewer/containerization.md` |
+| `performance` — network, bundler, memory, I/O | `subagents/delivery-reviewer/performance.md` |
+| `security` — auth, secrets, injection, deps | `subagents/delivery-reviewer/security.md` |
+| `routes` — route coverage/status | `subagents/delivery-reviewer/check-all-routes.md` |
 
 ## Execute
 
@@ -36,57 +55,31 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup, project structure, tech stack
 2. ระบุ delivery channels, documentation tools, versioning strategy, build tool, CI/CD platform, infrastructure, security tools
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/deep-review` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
+4. ทำ `/deep-review` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Documentation And Web Presence
+### 2. Dispatch Delivery-Reviewer
 
-> Goal: ตรวจ documentation และ web presence
-- ตรวจ documentation ใน `references/docs.md` — dedicated deep pass → `/review-docs`
-- ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ แล้วรวม findings — website/frontend code → `/review-frontend`
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-### 3. Experience And Insights
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply (ข้าม dimension ที่ project ไม่มี ตาม criteria ในแต่ละ checklist)
+2. Spawn `subagents/delivery-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน
+4. dedicated deep pass ยัง delegate ตาม Rules: docs→`/review-docs`, dx→`/review-dx`, testing→`/review-test`, config→`/review-config`, perf→`/review-performance`, security→`/review-security`, seo→`/review-seo`, frontend→`/review-frontend`
 
-> Goal: ตรวจ DX และ analytics
-- ตรวจ DX ใน `references/dx.md` — dedicated deep pass → `/review-dx`
-- ตรวจ analytics ใน `references/analytics.md`
+### 3. Aggregate And Score
 
-### 4. Quality
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-> Goal: ตรวจ testing และ PR process
-- ตรวจ testing ใน `references/testing.md` — dedicated deep pass → `/review-test`
-- ตรวจ PR ใน `references/pr-review.md`
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
+3. จัดลำดับ severity และคำนวณ review score ตาม `subagents/delivery-reviewer/scoring.md`
 
-### 5. Operations
+### 4. Report
 
-> Goal: ตรวจ logging, debugging และ versioning
-- ตรวจ logging และ debugging ใน `references/logging-debugging.md`
-- ตรวจ versioning ใน `references/versioning.md`
+> Goal: รายงานครบทุก dimension พร้อม next actions
 
-### 6. Build And Configuration
-
-> Goal: ตรวจ build efficiency และ config health
-- ตรวจ build efficiency ใน `references/efficiency.md`
-- ตรวจ config health ใน `references/config.md` — dedicated deep pass → `/review-config`
-
-### 7. Infrastructure And Pipeline
-
-> Goal: ตรวจ CI/CD pipeline และ infrastructure
-- ตรวจ CI/CD pipeline ใน `references/ci-cd.md`
-- ตรวจ infrastructure ใน `references/infrastructure.md`
-
-### 8. Performance And Security
-
-> Goal: ตรวจ performance และ security
-- ทำ `/review-performance` แล้วดู `references/performance.md` สำหรับรายละเอียด
-- ทำ `/review-security` แล้วดู `references/security.md` สำหรับรายละเอียด
-
-### 9. Validate And Report
-
-> Goal: validate findings และรายงาน
-1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
-2. จัดลำดับ severity ตาม `references/scoring.md`
-3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` และ `/suggest-next-action`
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
+2. ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -99,11 +92,20 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 | `efficiency`, `build` — build/dev-loop efficiency, tooling overhead | `subskills/check-efficiency/SKILL.md` |
 | `ops`, `logging`, `versioning` — logging/debugging, versioning, PR process, analytics | `subskills/check-ops/SKILL.md` |
 
+### Subagents
+
+> Goal: dispatch งานที่ต้องทำซ้ำหลาย section/scope ไปยัง subagent
+
+| Topic | Subagent |
+|-------|----------|
+| `routes`, `all-routes`, `routes-status` — route coverage/status เทียบ expected set ต่อ site section | `subagents/route-checker.md` |
+| delivery dimensions — full checklist review พร้อม severity | `subagents/delivery-reviewer/AGENT.md` |
+
 ## Check: All Routes
-ทำตาม [references/check-all-routes.md](references/check-all-routes.md)
+ทำตาม [subagents/delivery-reviewer/check-all-routes.md](subagents/delivery-reviewer/check-all-routes.md)
 
 ## Check: Routes Status
-ทำตาม [references/check-routes-status.md](references/check-routes-status.md)
+ทำตาม [subagents/delivery-reviewer/check-routes-status.md](subagents/delivery-reviewer/check-routes-status.md)
 
 ## Domain Checks
 
@@ -116,16 +118,17 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ## Rules
 
-- ข้าม dimension ใด ถ้า project ไม่มี — ดู criteria ในแต่ละ reference
+- ข้าม dimension ใด ถ้า project ไม่มี — ดู criteria ในแต่ละ checklist file
 - ทุก finding ต้องมี file path และ line number (delivery)
 - ใช้ tools สำหรับ verification ไม่เดา
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
-- คำนวณ score เป็น percentage (0-100) ตาม `references/scoring.md` แล้วเปรียบเทียบ before/after
+- คำนวณ score เป็น percentage (0-100) ตาม `subagents/delivery-reviewer/scoring.md` แล้วเปรียบเทียบ before/after
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (delivery)
 - ใช้ `/report` สำหรับรายงาน findings, score, actions
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/delivery-reviewer/` เท่านั้น
 
-- refs ใน skill นี้ใช้เป็น checklist เบาเท่านั้น — domain deep-dive ให้ delegate: docs→`/review-docs`, dx→`/review-dx`, testing→`/review-test`, config→`/review-config`, perf→`/review-performance`, security→`/review-security`, seo→`/review-seo`, frontend→`/review-frontend`, quality→`/review-code-quality`
-- delivery-unique dims (ci-cd, infrastructure, efficiency, versioning, logging-debugging, pr-review, analytics, containerization) review ใน skill นี้โดยตรง
+- checklist files ใน `subagents/delivery-reviewer/` ใช้เป็น checklist เบาเท่านั้น — domain deep-dive ให้ delegate: docs→`/review-docs`, dx→`/review-dx`, testing→`/review-test`, config→`/review-config`, perf→`/review-performance`, security→`/review-security`, seo→`/review-seo`, frontend→`/review-frontend`, quality→`/review-code-quality`
+- delivery-unique dims (ci-cd, infrastructure, efficiency, versioning, logging-debugging, pr-review, analytics, containerization) review ใน skill นี้โดยตรงผ่าน `delivery-reviewer` subagent
 
 ## Fix
 
@@ -139,17 +142,18 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 4. reliability: path filters, flaky root-cause fixes
 5. security: pin SHAs, least-privilege permissions, OIDC แทน long-lived keys
 6. docker images: multi-stage, layer cache, minimal base
+
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [CI/CD pipeline](references/ci-cd.md)
-- [Infrastructure](references/infrastructure.md)
-- [Build efficiency](references/efficiency.md)
-- [Versioning](references/versioning.md)
-- [Logging and debugging](references/logging-debugging.md)
-- [PR review](references/pr-review.md)
-- [Analytics](references/analytics.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/delivery-reviewer/checklist.md)
+- [CI/CD pipeline](subagents/delivery-reviewer/ci-cd.md)
+- [Infrastructure](subagents/delivery-reviewer/infrastructure.md)
+- [Build efficiency](subagents/delivery-reviewer/efficiency.md)
+- [Versioning](subagents/delivery-reviewer/versioning.md)
+- [Logging and debugging](subagents/delivery-reviewer/logging-debugging.md)
+- [PR review](subagents/delivery-reviewer/pr-review.md)
+- [Analytics](subagents/delivery-reviewer/analytics.md)
+- [Scoring](subagents/delivery-reviewer/scoring.md)
 - ใช้ /run-watch ถ้าจำเป็น
 
 ## Expected Outcome

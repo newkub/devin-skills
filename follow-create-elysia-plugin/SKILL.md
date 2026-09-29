@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง reusable Elysia plugin สำหรับ Bun/Node runtime รองรับ typed context, lifecycle hooks, prefix, scope, และ build package
 
-- Latest: `elysia@1.4.30` (verified 2026-09-12)
+- ยืนยัน `elysia` เวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`) — peerDeps ต้องมี `typescript >=5` และ `@sinclair/typebox`
 
 ## Execute
 
@@ -27,8 +27,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create elysia plugin)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `elysia` plugin API ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create elysia plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create elysia plugin)
 
 ### 2. Setup Project

@@ -23,7 +23,7 @@ Run the `global rules` layer of `/review-devin-global-harness` แบบ focused
 
 > Goal: ครอบคลุมทุก rules dimension
 
-ทำตาม `../../references/refs-check-global-rules.md`
+ทำตาม `../../SKILL.md` (`## Checklists → References Integrity` ข้อ global rules)
 
 1. skills ที่อ้างมีจริง — ทุก `/skill-name` ใน rules มี `*/SKILL.md` ตรงกัน
 2. ลำดับ Execute ไม่ขัดแย้ง — rules ไม่สั่ง A ก่อน B ในขณะที่ส่วนอื่นสั่ง B ก่อน A

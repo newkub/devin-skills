@@ -11,97 +11,60 @@ related:
   - report
   - ask-me
   - run-review
+  - use-subagents
 ---
 
 ## Goal
 
-Review authentication (authn) and authorization (authz) ของ codebase ให้ครอบคลุม identity, sessions, tokens, OAuth, MFA, password policy, RBAC/ABAC, secrets, audit logging, และ account lifecycle
+Review authentication (authn) and authorization (authz) ของ codebase ให้ครอบคลุม identity, sessions, tokens, OAuth, MFA, password policy, RBAC/ABAC, secrets, audit logging, และ account lifecycle — domain checklist อยู่ใน `subagents/auth-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้เมื่อต้องประเมิน auth subsystem ทั้งหมดหรือเฉพาะส่วน เช่น `/review-auth packages/auth` หรือ `/review-auth apps/website/src/routes/auth`
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `authn` — identity, credentials, MFA, password policy | `subagents/auth-reviewer/auth-checklist.md` |
+| `session-token` — sessions, JWT, cookies, refresh tokens | `subagents/auth-reviewer/auth-checklist.md` |
+| `authz` — RBAC/ABAC, ownership, middleware, IDOR | `subagents/auth-reviewer/auth-checklist.md` |
+| `account-lifecycle` — registration, recovery, lockout, deletion | `subagents/auth-reviewer/account-lifecycle.md` |
+| `oauth-sso` — OIDC, SAML, social, account linking | `subagents/auth-reviewer/oauth-sso.md` |
+| `secrets-audit` — secrets hygiene, audit logs | `subagents/auth-reviewer/auth-checklist.md` |
+
 ไม่รวม: general security posture (ใช้ `/review-security`), compliance (ใช้ `/review-compliance`)
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare And Baseline
 
 > Goal: รวบรวม context และ baseline
 
 1. รับ `scope-or-subsystem` จาก argument หรือ default เป็น repo ทั้งหมด
-2. ทำ `/scan-codebase` หา auth libraries, providers, middleware, guards, hooks, session stores
-3. อ่าน `references/auth-checklist.md` ก่อนเริ่ม
-4. ระบุ tech stack ที่ใช้: Supabase Auth, Better Auth, jose, simplewebauthn, custom JWT, sessions, RBAC
+2. ทำ `/scan-codebase` หา auth libraries, providers, middleware, guards, hooks, session stores (ใช้เป็น findings-file ให้ subagent cross-check)
+3. ระบุ tech stack ที่ใช้: Supabase Auth, Better Auth, jose, simplewebauthn, custom JWT, sessions, RBAC
 
-### 2. Authentication Review
+### 2. Dispatch Auth-Reviewer
 
-> Goal: ตรวจสอบ identity และ credential flows
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ตรวจ sign up / sign in / sign out / password reset flows
-2. ตรวจ password policy, hashing algorithm, salting/pepper
-3. ตรวจ MFA/2FA/TOTP/WebAuthn/passkey ถ้ามี
-4. ตรวจ OAuth / OIDC providers, callback, state/nonce, PKCE
-5. ตรวจ account verification email, link expiration, replay risk
-6. ตรวจ brute-force / rate-limiting / account lockout
+1. เลือก dimensions จาก scope argument — `authn`, `session-token`, `authz`, `account-lifecycle`, `oauth-sso`, `secrets-audit`; ไม่ระบุ → ทุก dimension ที่ apply
+2. Spawn `subagents/auth-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย subsystem → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. Session And Token Review
+### 3. Aggregate And Validate
 
-> Goal: ตรวจสอบ session และ token security
+> Goal: findings รวมกันถูกต้อง ไม่มี false positives
 
-1. ตรวจ JWT signing algorithm, key rotation, issuer/audience, expiration
-2. ตรวจ refresh token strategy, rotation, binding, revocation
-3. ตรวจ cookie flags: HttpOnly, Secure, SameSite, domain/path
-4. ตรวจ session storage: server-side, client-side, DB, Redis
-5. ตรวจ token transport: header, cookie, URL ห้าม token ใน URL
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. จัดกลุ่ม findings ตาม category: authn, authz, session, token, secrets, audit
+3. ให้ severity: Critical/High/Medium/Low พร้อม evidence — ระบุ false positives พร้อมเหตุผล
 
-### 4. Authorization Review
-
-> Goal: ตรวจสอบ access control
-
-1. ตรวจ RBAC/ABAC/permission model, roles, scopes
-2. ตรวจ resource-level authorization (ownership, tenant, org)
-3. ตรวจ middleware/guards บน routes/API
-4. ตรวจ privilege escalation, admin bypass, insecure direct object reference
-5. ตรวจ CORS, CSRF, CSP ที่เกี่ยวข้องกับ auth flow
-
-### 5. Account Lifecycle And Recovery
-
-> Goal: account มี lifecycle ครบ — ทำตาม `references/account-lifecycle.md`
-
-1. registration/verification — email verify, disposable-email policy, enumeration resistance
-2. recovery — reset flows, magic links expiry, no user enumeration via reset responses
-3. lockout/disable — admin disable, compromised account freeze, session invalidation
-4. deletion — data purge path, GDPR erasure, dependent-resource handling
-5. devices/sessions — session list, remote logout, concurrent-session policy
-
-### 6. Oauth Sso And Federation
-
-> Goal: federated identity ถูกต้อง — ทำตาม `references/oauth-sso.md`
-
-1. OAuth/OIDC — state/nonce, PKCE, redirect URI allowlist, `iss`/`aud` validation
-2. SAML/enterprise SSO — signature validation, assertion expiry, IdP metadata trust
-3. social providers — scope minimality, email verification trust per provider
-4. account linking — same-email linking policy, takeover prevention
-
-### 7. Secrets And Audit
-
-> Goal: ตรวจสอบ secrets และ observability
-
-1. ตรวจ secrets ที่เกี่ยวข้อง: JWT secret, API keys, OAuth client secret, DB credentials
-2. ตรวจว่า secrets ไม่อยู่ใน source code
-3. ตรวจ audit logs สำหรับ auth events
-4. ตรวจ error handling ไม่ leak sensitive info
-
-### 8. Report And Next Action
+### 4. Report
 
 > Goal: สรุป findings
 
-1. จัดกลุ่ม findings ตาม category: authn, authz, session, token, secrets, audit
-2. ให้ severity: Critical/High/Medium/Low พร้อม evidence
-3. ทำ `/report` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
-4. ทำ `/suggest-next-action`
-
+1. ทำ `/report` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
+2. ทำ `/suggest-next-action`
 
 ### Subskills
 
@@ -119,6 +82,7 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 - ไม่ exploit หรือ test บน production
 - ทุก finding ต้องมี evidence จาก code, config, หรือ dependencies
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/auth-reviewer/` เท่านั้น
 - ถ้าพบ critical → แนะนำ `/review-security` ทันที
 - ถ้าต้องปรับปรุง implementation → ใช้ `/follow-lib-better-auth` หรือ `/follow-lib-simplewebauthn`
 - ถ้าขาด context → `/ask-me`
@@ -138,9 +102,9 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 ## References
 
-- [Auth checklist](references/auth-checklist.md)
-- [Account lifecycle](references/account-lifecycle.md)
-- [OAuth and SSO](references/oauth-sso.md)
+- [Auth checklist](subagents/auth-reviewer/auth-checklist.md)
+- [Account lifecycle](subagents/auth-reviewer/account-lifecycle.md)
+- [OAuth and SSO](subagents/auth-reviewer/oauth-sso.md)
 
 ## Expected Outcome
 

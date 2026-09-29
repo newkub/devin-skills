@@ -28,39 +28,39 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ### 1. Read Flow
 > Goal: อ่าน flow ปัจจุบัน
-ทำตาม [references/read-flow.md](references/read-flow.md)
+ทำตาม [subagents/workflow-reviewer/read-flow.md](subagents/workflow-reviewer/read-flow.md)
 
 ### 2. Check Speed
 > Goal: ตรวจ speed
-ทำตาม [references/check-speed.md](references/check-speed.md)
+ทำตาม [subagents/workflow-reviewer/check-speed.md](subagents/workflow-reviewer/check-speed.md)
 
 ### 3. Check Safety
 > Goal: ตรวจ safety
-ทำตาม [references/check-safety.md](references/check-safety.md)
+ทำตาม [subagents/workflow-reviewer/check-safety.md](subagents/workflow-reviewer/check-safety.md)
 
 ### 4. Check Usability
 > Goal: ตรวจ usability
-ทำตาม [references/check-usability.md](references/check-usability.md)
+ทำตาม [subagents/workflow-reviewer/check-usability.md](subagents/workflow-reviewer/check-usability.md)
 
 ### 5. Check Efficiency
 > Goal: ตรวจ efficiency
-ทำตาม [references/check-efficiency.md](references/check-efficiency.md)
+ทำตาม [subagents/workflow-reviewer/check-efficiency.md](subagents/workflow-reviewer/check-efficiency.md)
 
 ### 6. Remove Redundancy
 > Goal: ลบ redundancy
-ทำตาม [references/remove-redundancy.md](references/remove-redundancy.md)
+ทำตาม [subagents/workflow-reviewer/remove-redundancy.md](subagents/workflow-reviewer/remove-redundancy.md)
 
 ### 7. Report
 > Goal: รายงานผล
-ทำตาม [references/report.md](references/report.md)
+ทำตาม [subagents/workflow-reviewer/report.md](subagents/workflow-reviewer/report.md)
 
 ### 8. Validate
 > Goal: ยืนยัน findings
-ทำตาม [references/validate.md](references/validate.md)
+ทำตาม [subagents/workflow-reviewer/validate.md](subagents/workflow-reviewer/validate.md)
 
 ### 9. Score And Report
 > Goal: รายงาน score และสรุปผล
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (workflow)
+คำนวณ score/grade ตาม [subagents/workflow-reviewer/scoring.md](subagents/workflow-reviewer/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (workflow)
 
 ## Rules
 
@@ -80,14 +80,14 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Read flow](references/read-flow.md)
-- [Check speed](references/check-speed.md)
-- [Check safety](references/check-safety.md)
-- [Check usability](references/check-usability.md)
-- [Check efficiency](references/check-efficiency.md)
-- [Remove redundancy](references/remove-redundancy.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/workflow-reviewer/checklist.md)
+- [Read flow](subagents/workflow-reviewer/read-flow.md)
+- [Check speed](subagents/workflow-reviewer/check-speed.md)
+- [Check safety](subagents/workflow-reviewer/check-safety.md)
+- [Check usability](subagents/workflow-reviewer/check-usability.md)
+- [Check efficiency](subagents/workflow-reviewer/check-efficiency.md)
+- [Remove redundancy](subagents/workflow-reviewer/remove-redundancy.md)
+- [Scoring](subagents/workflow-reviewer/scoring.md)
 - ใช้ /run-deploy ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 

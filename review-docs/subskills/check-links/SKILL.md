@@ -25,7 +25,7 @@ Run the links dimension of `/review-docs` แบบ focused — ทุก link/a
 
 > Goal: ไม่มี dead references — parent Execute §7
 
-ทำตาม `../../references/workspace-links.md`
+ทำตาม `../../subagents/docs-reviewer/workspace-links.md`
 
 1. internal links — relative paths resolve จริง (case-sensitive)
 2. anchors — `#section` targets มี heading ตรง (slug rules ของ docs engine)

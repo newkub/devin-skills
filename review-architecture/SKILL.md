@@ -10,6 +10,7 @@ related:
   - report
   - suggest-next-action
 
+  - use-subagents
 ---
 
 ## Goal
@@ -87,13 +88,14 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ## Pattern Guides
 
-> Merged จาก `references/patterns-*.md` เดิม — guides สำหรับ `## Fix` เมื่อต้องเปลี่ยน architecture pattern
+> Merged จาก `subagents/arch-reviewer/patterns-*.md` เดิม — guides สำหรับ `## Fix` เมื่อต้องเปลี่ยน architecture pattern
 
 | Pattern | Reference |
 |---------|-----------|
-| Clean | [references/pattern-clean.md](references/pattern-clean.md) |
-| Layered | [references/pattern-layered.md](references/pattern-layered.md) |
-| Microservices | [references/pattern-microservices.md](references/pattern-microservices.md) |
+| Clean | [subagents/arch-reviewer/pattern-clean.md](subagents/arch-reviewer/pattern-clean.md) |
+| Layered | [subagents/arch-reviewer/pattern-layered.md](subagents/arch-reviewer/pattern-layered.md) |
+| Microservices | [subagents/arch-reviewer/pattern-microservices.md](subagents/arch-reviewer/pattern-microservices.md) |
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

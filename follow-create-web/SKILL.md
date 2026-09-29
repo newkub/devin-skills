@@ -33,10 +33,10 @@ related:
 | Nuxt | `/follow-create-web-nuxt` |
 | SvelteKit | `/follow-create-web-svelte` |
 | SolidStart | `/follow-create-web-solidstart` |
-| TanStack Start (Solid) | `/follow-create-web-solid-tanstack-router` |
+| TanStack Start (Solid) | `/follow-create-solid-tanstack` |
 | Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
 
-- Latest: Vite `8.3.1` (default toolchain, Rolldown-powered) (verified 2026-09-26)
+- Default toolchain: `vite` (Rolldown-powered ตั้งแต่ v8) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -48,6 +48,7 @@ related:
 2. ระบุ integrations ทีต้องการ: auth, payments, dashboard, CMS, analytics
 3. ระบุ SSR, SPA, หรือ full-stack
 4. ถ้า user ไม่รู้อยากได้ web แบบไหน → ถามก่อนดำเนินการ
+5. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน framework/toolchain versions ล่าสุดก่อนเลือก stack
 
 ### 2. Choose Web Type
 
@@ -57,7 +58,7 @@ related:
 2. ถ้ามี services + pricing + auth + dashboard → สร้างแบบ SaaS ตาม flow ของ skill นี้
 3. ถ้าเป็น saas + advanced UI/UX → สร้างแบบ PaaS/advanced ตาม flow ของ skill นี้
 4. ถ้าต้องการ TUI Rust → ทำ `/follow-create-tui-ratatui`
-5. ถ้า stack ไม่ชัด → ใช้ default `/follow-create-web-solid-tanstack-router`
+5. ถ้า stack ไม่ชัด → ใช้ default `/follow-create-solid-tanstack`
 
 ### 3. Delegate And Validate
 

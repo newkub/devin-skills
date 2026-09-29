@@ -29,7 +29,7 @@ Run the `subagents` layer of `/review-devin-global-harness` แบบ focused �
 
 > Goal: แต่ละ agent ตรงมาตรฐาน
 
-ใช้มาตรฐานเดียวกับ skills ตาม `../../references/frontmatter.md`, `sections.md`, `style.md`
+ใช้มาตรฐานเดียวกับ skills ตาม `../../SKILL.md` (`## Checklists → Package Checks`)
 
 1. frontmatter — name/description/tools ครบและถูกต้อง
 2. sections — Goal/Scope/Execute/Rules/Expected Outcome

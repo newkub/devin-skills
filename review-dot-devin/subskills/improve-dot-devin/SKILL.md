@@ -34,7 +34,7 @@ related:
 
 > Goal: layout ตรง convention + hooks ทำงาน
 
-ทำตาม `../../references/directories.md` + `../../references/hooks.md`
+ทำตาม `../../subagents/dot-devin-reviewer/directories.md` + `../../subagents/dot-devin-reviewer/hooks.md`
 
 1. สร้าง subdirs ที่ขาด, ย้าย misplaced files
 2. hooks — command paths มีจริง, try/catch + exit codes ถูก, ไม่มี loops
@@ -43,7 +43,7 @@ related:
 
 > Goal: ไม่มี dupes/broken refs
 
-ทำตาม `../../references/rules-checklist.md`, `agents-md.md`, `sgconfig.md`, `ast-grep-rules.md`
+ทำตาม `../../subagents/dot-devin-reviewer/rules-checklist.md`, `../../subagents/dot-devin-reviewer/agents-md.md`, `../../subagents/dot-devin-reviewer/sgconfig.md`, `../../subagents/dot-devin-reviewer/ast-grep-rules.md`
 
 1. rules — merge duplicates (หลัง confirm), frontmatter ถูก, ไม่ stale
 2. AGENTS.md — skill refs resolve, workspace coverage ครบ

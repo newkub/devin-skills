@@ -25,7 +25,7 @@ related:
 
 > Goal: รู้ surface ปัจจุบันก่อนแก้
 
-ทำตาม `../../references/exports.md` + `../../references/packaging.md`
+ทำตาม `../../subagents/sdk-reviewer/exports.md` + `../../subagents/sdk-reviewer/packaging.md`
 
 1. run `publint` + `attw --pack` — baseline errors/warnings
 2. list current entrypoints + findings (missing subpaths, wrong types resolution)

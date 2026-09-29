@@ -45,7 +45,7 @@ related:
 2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values — ถ้า codebase ใหญ่ → spawn `subagents/gap-scanner.md` (read-only) คืน gap inventory table แทนการสแกนเอง และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/temp/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
-5. อ่าน `refactor/SKILL.md` `## Rules` (และ `references/principles.md` ถ้าต้องการ detail) ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน: SRP, ≤250 บรรทัด, preserve public API, minimal change
+5. อ่าน `refactor/SKILL.md` `## Rules` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน: SRP, ≤250 บรรทัด, preserve public API, minimal change
 
 ### 2. Review Architecture
 

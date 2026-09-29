@@ -1,0 +1,149 @@
+total skills with subskills = 148
+bench-competitors [1]: report-comparison
+check-config-drift [1]: report-drift
+check-files [6]: encoding, locks, long-files, path-length, permissions, structure
+check-monorepo [3]: boundaries, config, pipeline
+check-repo-hygiene [5]: broken-symlinks, circular-dependencies, console-logs, dead-link, unused
+check-secrets [4]: env-vars, hardcoded-values, report-inventory, secrets-leak
+deep-analyze [1]: report-analysis
+deep-research [1]: report-findings
+deep-review-then-fix [0]: 
+deep-validate [7]: check-compliance, check-correctness, check-cross-references, check-quality, check-security, check-type-safety, report-findings
+download-program [1]: package-manager
+follow-config [3]: config-env, config-gitignore, config-vscode
+follow-create-docker [3]: config-compose, optimize-image, setup-dockerfile
+follow-create-product [2]: deploy-mvp, setup-scaffold
+follow-deploy [4]: deploy-cloudflare, deploy-railway, deploy-vercel, verify-deploy
+follow-lib-arktype [1]: setup-arktype
+follow-lib-better-auth [2]: config-providers, setup-auth
+follow-lib-devframe [1]: create-devframe
+follow-lib-drizzle [3]: migrate-schema, optimize-queries, setup-drizzle
+follow-lib-effect-ts [2]: migrate-to-effect, setup-effect
+follow-lib-elysia [2]: deploy-elysia, setup-elysia
+follow-lib-iconify [2]: optimize-icons, setup-iconify
+follow-lib-ioredis [2]: optimize-pool, setup-ioredis
+follow-lib-jose [1]: setup-jose
+follow-lib-mcp-sdk [2]: deploy-mcp, setup-server
+follow-lib-openai [2]: config-providers, optimize-tokens
+follow-lib-orpc [1]: setup-orpc
+follow-lib-otplib [1]: setup-otplib
+follow-lib-pinia [1]: setup-pinia
+follow-lib-postgres [2]: optimize-pool, setup-postgres
+follow-lib-react [1]: optimize-render
+follow-lib-remotion [2]: optimize-render, setup-remotion
+follow-lib-shadcn-solid [2]: config-tokens, setup-theme
+follow-lib-simplewebauthn [1]: setup-simplewebauthn
+follow-lib-tanstack-ecosystem [3]: config-devtools, setup-query, setup-router
+follow-lib-testing-library [1]: setup-testing
+follow-lib-unocss [3]: config-theme, setup-theme, setup-unocss
+follow-lib-vue [1]: migrate-vue2-to-3
+follow-lib-vueuse [1]: setup-vueuse
+follow-lib-web-vitals [2]: optimize-vitals, setup-vitals
+follow-lib-zaidan-ui [2]: config-tokens, setup-theme
+follow-lib-zod [1]: migrate-zod-v4
+follow-monorepo [2]: config-workspaces, migrate-to-monorepo
+follow-release [3]: deploy-crates, deploy-docker, deploy-vscode-marketplace
+follow-service-aws-sdk [3]: config-aws-sdk, setup-aws-sdk, verify-connection
+follow-service-claude-agent-sdk [3]: config-claude-agent-sdk, setup-claude-agent-sdk, verify-connection
+follow-service-cloudflare [5]: config-bindings, deploy-worker, migrate-pages-to-workers, setup-wrangler, verify-connection
+follow-service-firebase-admin [3]: config-firebase-admin, setup-firebase-admin, verify-connection
+follow-service-instantdb [3]: config-instantdb, setup-instantdb, verify-connection
+follow-service-resend [3]: config-resend, setup-resend, verify-connection
+follow-service-run-on [3]: config-run-on, setup-run-on, verify-connection
+follow-service-signoz [3]: config-signoz, setup-signoz, verify-connection
+follow-service-stripe [3]: config-stripe, setup-stripe, verify-connection
+follow-service-supabase [3]: config-supabase, setup-supabase, verify-connection
+follow-service-twilio [3]: config-twilio, setup-twilio, verify-connection
+follow-service-vercel [3]: config-vercel, setup-vercel, verify-connection
+follow-service-workos [3]: config-workos, setup-workos, verify-connection
+follow-tdd [1]: setup-coverage
+follow-test [1]: config-test-env
+follow-tool-biome [2]: migrate-from-eslint-prettier, setup-biome
+follow-tool-changelogen [1]: setup-changelogen
+follow-tool-changesets [2]: config-changesets, setup-changesets
+follow-tool-drizzle-kit [2]: config-drizzle-kit, migrate-schema
+follow-tool-eslint [2]: config-flat, migrate-to-oxlint
+follow-tool-github-actions [2]: optimize-ci, setup-workflows
+follow-tool-mise [2]: config-tools, setup-mise
+follow-tool-moonrepo [4]: config-pipeline, optimize-cache, run-ci, setup-moonrepo
+follow-tool-msw [2]: config-handlers, setup-msw
+follow-tool-mutants-rs [2]: optimize-mutation, setup-mutants
+follow-tool-playwright [3]: config-projects, migrate-from-cypress, setup-playwright
+follow-tool-release-it [2]: config-release-it, setup-release-it
+follow-tool-renovate [2]: config-renovate, setup-renovate
+follow-tool-rolldown [3]: migrate-from-rollup, optimize-bundle, setup-rolldown
+follow-tool-semantic-release [2]: config-semantic-release, setup-semantic-release
+follow-tool-semgrep [1]: config-rules
+follow-tool-storybook [2]: config-addons, setup-storybook
+follow-tool-stryker-mutator [2]: optimize-mutation, setup-stryker
+follow-tool-taze [1]: setup-taze
+follow-tool-tsdown [2]: migrate-from-tsup, setup-tsdown
+follow-tool-turborepo [3]: config-pipeline, optimize-cache, setup-turborepo
+follow-tool-vite [3]: config-vite, migrate-to-rolldown, optimize-build
+follow-tool-vitepress [3]: config-theme, migrate-from-docusaurus, setup-vitepress
+follow-tool-vitest [3]: migrate-from-jest, optimize-tests, setup-vitest
+git-commit [4]: at-devin-global-skills, commit-quality, no-verify, selected-files
+implement-to-production [2]: deploy-production, setup-infra
+merge-git-branch [1]: verify-merge
+merge-github-pr [1]: verify-merge
+morning-briefing [1]: report-digest
+report [4]: codeblock, html, numbered, table
+resolve-cicd [1]: verify-resolved
+resolve-errors [1]: verify-resolved
+resolve-github-actions-fails [1]: verify-resolved
+resolve-merge-conflicts [1]: verify-resolved
+restore-files [1]: verify-restore
+review-accessibility [2]: check-wcag, improve-a11y
+review-ai [5]: check-guardrails, check-prompts, check-rag, report-token-cost, setup-evals
+review-api [4]: check-contract, check-webhooks, report-endpoints, update-contract
+review-auth [5]: check-authz, check-oauth, check-sessions, improve-auth, report-authz
+review-backend [3]: check-jobs, check-resilience, check-transactions
+review-browser-ext [1]: migrate-mv3
+review-bundle [2]: optimize-bundle, report-size
+review-cli [2]: improve-cli-ux, report-ux
+review-code-quality [3]: check-complexity, check-debt, improve-types
+review-compliance [3]: check-breach, check-privacy, report-compliance
+review-config [2]: check-env, setup-env-validation
+review-cost [2]: optimize-cost, report-cost
+review-coverage [1]: report-coverage
+review-database [5]: check-indexes, check-schema, improve-migrations, optimize-queries, report-slow-queries
+review-delivery [4]: check-ci-cd, check-efficiency, check-infra, check-ops
+review-dependencies [1]: report-deps
+review-desktop-app [1]: setup-auto-update
+review-devin-global-harness [7]: broken-skills-references, check-hooks, check-mcp, check-rules, check-skills, check-subagents, skills-related
+review-docs [2]: check-drift, check-links
+review-dot-devin [1]: improve-dot-devin
+review-dx [1]: improve-dev-loop
+review-events [1]: improve-events
+review-frontend [5]: check-fetching, check-forms, check-state, improve-hydration, improve-rendering
+review-github-pr [1]: report-comments
+review-i18n [1]: improve-i18n
+review-iac [3]: check-drift, check-k8s, check-state
+review-mcp [1]: improve-mcp
+review-migration [2]: check-data-integrity, check-rollback
+review-mobile [4]: check-offline, check-platform, improve-offline, report-store
+review-observability [6]: check-alerting, check-logging, check-metrics, improve-observability, report-slos, setup-alerts
+review-performance [2]: optimize-performance, report-vitals
+review-release [3]: check-breaking, check-changelog, report-readiness
+review-sdk [1]: update-exports
+review-security [4]: check-authn, check-headers, check-injection, report-vulns
+review-seo [3]: check-meta, check-structured-data, improve-seo
+review-stability [4]: check-errors, check-recovery, improve-resilience, report-degradation
+review-test [2]: improve-coverage, report-flaky
+review-uxui [1]: improve-uxui-fix
+review-workspace [1]: optimize-workspace
+roleplay-by-all-stakeholder [18]: business(4), communication(3), content(4), creative(3), customer(4), data(4), engineering(6), finance(4), growth(4), legal(4), management(4), marketing(5), operations(4), product(4), quality(6), research(4), technical(4), user(4)
+ship [1]: verify-release
+update-config [2]: config-env, update-shared-config
+update-devin-harness [1]: devin-knowledge
+update-tests [3]: update-e2e, update-snapshot, update-unit
+update-version-to-latest [2]: migrate-major, verify-upgrade
+watch-all-task [1]: report-status
+watch-browser [1]: report-status
+watch-browser-and-improve-uxui [1]: report-status
+watch-browser-console [1]: report-status
+watch-browser-fix [1]: report-status
+watch-browser-test [1]: report-status
+watch-deploy [1]: report-status
+watch-release [1]: report-status
+watch-terminal [1]: report-status

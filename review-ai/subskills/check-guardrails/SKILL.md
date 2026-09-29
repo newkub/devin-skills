@@ -22,7 +22,7 @@ Run the guardrails/agents dimension of `/review-ai` แบบ focused — output
 
 > Goal: output ผ่าน validation ก่อนใช้
 
-ทำตาม `../../references/guardrails.md`
+ทำตาม `../../subagents/ai-reviewer/guardrails.md`
 
 1. output validation — schema/structured output + fallback เมื่อ parse ไม่ได้
 2. content safety — PII leakage, harmful output filters ตาม policy
@@ -32,7 +32,7 @@ Run the guardrails/agents dimension of `/review-ai` แบบ focused — output
 
 > Goal: agent loops มี guards ครบ
 
-ทำตาม `../../references/agents.md`
+ทำตาม `../../subagents/ai-reviewer/agents.md`
 
 1. iteration limits — max steps/timeout กัน runaway
 2. tool confirmation — destructive/expensive tools ต้อง confirm

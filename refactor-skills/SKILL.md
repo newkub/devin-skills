@@ -48,7 +48,7 @@ Restructure skill ที่มีอยู่ — skill เดียว, family 
 
 > Goal: เลือก fix ต่อ violation จาก conventions — ไม่ ad hoc
 
-1. อ่าน `update-devin-global-skills/references/refactor-guidelines.md` (violation → fix) และ `subskills-and-subagents.md` (decision matrix + consolidation)
+1. อ่าน `update-devin-global-skills` `## Conventions` — `When To Split` (violation → fix) และ `Subskills And Subagents` (decision matrix + consolidation)
 2. สรุป skill → violation → action → target — report ก่อนแก้ถ้า scope >3 skills
 3. Merge top-level skills → `git mv` เข้า `parent/subskills/<domain>/`, parent เป็น dispatcher, bulk-update callers ก่อนลบ dir เดิม
 

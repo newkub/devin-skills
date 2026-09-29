@@ -17,65 +17,50 @@ related:
 
 ## Goal
 
-Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, safe areas, gestures, offline behavior, app lifecycle, platform conventions (HIG/Material), battery/data usage — report-only
+Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, safe areas, gestures, offline behavior, app lifecycle, platform conventions (HIG/Material), battery/data usage — report-only — domain checklist อยู่ใน `subagents/mobile-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้เมื่อ project เป็น mobile app หรือ responsive web ที่ต้องผ่าน mobile — ตรวจและรายงาน ไม่แก้ไข; แก้ findings → `/deep-review-then-fix`
 
+| Dimension | Checklist |
+|-----------|-----------|
+| `touch-layout` — targets, safe areas, gestures | `subagents/mobile-reviewer/touch-layout.md` |
+| `lifecycle-offline` — transitions, state restore, offline queue | `subagents/mobile-reviewer/lifecycle-offline.md` |
+| `conventions` — HIG/Material, permissions, navigation | `subagents/mobile-reviewer/conventions.md` |
+| `performance` — startup, memory, battery/data | `subagents/mobile-reviewer/performance.md` |
+
 ## Execute
 
-### 1. Detect Mobile Stack
+### 1. Prepare And Baseline
 
 > Goal: รู้ platform และ framework
 
 1. ตรวจ manifest: React Native, Flutter, native (Android/iOS), Tauri mobile, PWA
-2. อ่าน platform conventions — HIG (iOS) / Material (Android) — ดู `review-desktop-app/references/platform-mobile-desktop.md` ถ้าต้องการ
+2. อ่าน platform conventions — HIG (iOS) / Material (Android) — ดู `../shared/platform-mobile-desktop.md` ถ้าต้องการ
+3. ทำ `/run-review` เก็บ analyzer baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Check Touch And Layout
+### 2. Dispatch Mobile-Reviewer
 
-> Goal: UI ใช้งานได้บนหน้าจอสัมผัส
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. touch targets ≥44x44pt (iOS) / 48x48dp (Android)
-2. safe areas — notch, home indicator, status bar insets
-3. gestures ไม่ชน system gestures; scroll/overscroll behavior ถูก
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply
+2. Spawn `subagents/mobile-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1)
+3. scope ใหญ่/หลาย platform → spawn หลาย instance ทีละ scope/platform ขนานกัน
 
-### 3. Check Lifecycle And Offline
+### 3. Aggregate And Score
 
-> Goal: app รอด lifecycle จริง
+> Goal: findings รวมกันพร้อม severity + score ต่อ dimension
 
-1. background/foreground transitions — state ไม่หาย, tasks resume ถูก
-2. offline behavior — network loss handling, queued ops, cache strategy
-3. deep links / app links / push notification entry points
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. แยก findings ตาม platform (iOS/Android/shared) เมื่อ convention ต่างกัน
+3. findings ที่เป็น a11y/perf deep-dive → ระบุเป็น info + route ไป `/review-accessibility` หรือ `/review-performance`
 
-### 4. Check Platform Conventions
-
-> Goal: ตาม HIG/Material
-
-1. navigation patterns ตรง platform (tab bar, back behavior)
-2. permissions — requested เมื่อจำเป็น + rationale
-3. keyboard handling, input accessories, orientation support
-
-### 5. Check Performance And Resources
-
-> Goal: ไม่กิน battery/data เกิน
-
-1. bundle/startup time, image sizes, list virtualization
-2. background work ที่เหมาะสม, network batching
-3. memory pressure handling
-
-### 6. Store And Health
-
-> Goal: coverage เพิ่มเติมของ domain — ทำตาม `references/touch-layout.md`, `references/lifecycle-offline.md`, `references/conventions.md`, `references/performance.md`
-
-1. store compliance — permissions declarations, privacy labels, review guidelines
-2. app size budget + crash-free sessions rate
-
-### 7. Report
+### 4. Report
 
 > Goal: ส่งมอบ findings
 
-1. ทำ `/report` — findings ต่อ dimension พร้อม severity + evidence
+1. ทำ `/report` — ตาราง No./Dimension/Severity/File/Finding/Suggestion + score ต่อ dimension และ overall
 2. ทำ `/suggest-next-action`
 
 
@@ -90,10 +75,19 @@ Review mobile app (native/React Native/Flutter/PWA mobile) — touch targets, sa
 | `report-store` — per-platform go/no-go checklist | `subskills/report-store/SKILL.md` |
 | Apply offline findings — cache/queue/sync (user confirm) | `subskills/improve-offline/SKILL.md` |
 
+### Subagents
+
+> Goal: domain reviewer ที่ถือ checklist ทั้งหมด — spawn ผ่าน `/use-subagents`
+
+| Agent | Path |
+|-------|------|
+| `mobile-reviewer` — mobile dimensions พร้อม severity + evidence | `subagents/mobile-reviewer/AGENT.md` |
+
 ## Rules
 
 - Report only — ห้ามแก้ไขใน skill นี้
 - ทุก finding มี evidence
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/mobile-reviewer/` เท่านั้น
 - ใช้ /use-subagents ถ้า scope ใหญ่
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /review-frontend สำหรับ shared UI code

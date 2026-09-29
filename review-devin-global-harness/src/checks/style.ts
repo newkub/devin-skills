@@ -1,8 +1,8 @@
-import { isPlaceholderMarker, isProhibitedOrLegit, textOutsideInlineCode } from "../parse";
+import { isPlaceholderMarker, isProhibitedOrLegit, relativePath, textOutsideInlineCode } from "../parse";
 import type { Context, SkillMeta } from "../types";
 
 export function checkStyle(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
 
   // Bold markers outside code
   for (let i = 0; i < m.nonCodeLines.length; i++) {
@@ -39,7 +39,7 @@ const THAI_RE = /[฀-๿]/g;
 const LATIN_WORD_RE = /[A-Za-z]{4,}/g;
 
 export function checkLanguage(m: SkillMeta, ctx: Context) {
-  const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
+  const rpath = relativePath(m.path, ctx.skillsRoot);
   const prose = m.nonCodeLines.map(textOutsideInlineCode).join("\n");
   const thai = (prose.match(THAI_RE) || []).length;
   const latinWords = (prose.match(LATIN_WORD_RE) || []).length;

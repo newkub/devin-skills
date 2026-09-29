@@ -14,6 +14,7 @@ related:
   - follow-tool-moonrepo
   - deep-validate
   - run-review
+  - use-subagents
 ---
 
 ## See Also
@@ -23,7 +24,7 @@ related:
 
 ## Goal
 
-Review ทุก configuration files ใน project หา drift, missing, duplicate, และโอกาสใช้ extends config หรือ dependencies catalog
+Review ทุก configuration files ใน project หา drift, missing, duplicate, และโอกาสใช้ extends config หรือ dependencies catalog — domain checklist อยู่ใน `subagents/config-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
@@ -34,54 +35,37 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 
 ## Execute
 
-### 1. Discover Config Files
+### 1. Prepare And Baseline
 
-> Goal: รวบรวม config files ทั้งหมด
+> Goal: รวบรวม config files ทั้งหมดและเก็บ baseline
 
 1. ใช้ `/report-config-files`
-2. ทำตาม `references/config-checks.md#discover-config-files`
-3. จัดกลุ่มไฟล์ตาม category
+2. ทำตาม `subagents/config-reviewer/config-checks.md#discover-config-files`
+3. จัดกลุ่มไฟล์ตาม category — ใช้ inventory เป็น findings-file ให้ subagent cross-check
 
-### 2. Analyze Config Coverage
+### 2. Dispatch Config-Reviewer
 
-> Goal: ระบุ config ที่มี, ขาด, หรือซ้ำซ้อน
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ทำตาม `references/config-checks.md#analyze-config-coverage`
+1. เลือก dimensions จาก scope argument — `inventory`, `coverage`, `shared-config`, `security`, `versions`, `flags-secrets`; ไม่ระบุ → ทุก dimension ที่ apply
+2. Spawn `subagents/config-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (inventory จาก step 1)
+3. scope ใหญ่/หลาย workspace → spawn หลาย instance ทีละ scope ขนานกัน — dimensions ต่างกันใน scope เดียวรวมเป็น instance เดียว
 
-### 3. Check Shared Config Opportunities
+### 3. Aggregate And Score
 
-> Goal: หาโอกาสรวม config ด้วย extends / catalog
+> Goal: findings รวมกันพร้อม severity + score
 
-1. ทำตาม `references/config-checks.md#check-shared-config-opportunities`
+1. รวม findings จากทุก instance — dedup ตาม file:line + issue type
+2. ทำ `/deep-validate`; ทำตาม `subagents/config-reviewer/scoring.md`
+3. coverage เพิ่มเติมของ domain: feature-flag config drift ข้าม environments + stale flags; secret references hygiene — ไม่มี inline secrets, rotation path ชัด
 
-### 4. Review Security And Secrets
-
-> Goal: ตรวจ config ด้านความปลอดภัย
-
-1. ทำตาม `references/config-checks.md#review-security-and-secrets`
-
-### 5. Check Tool Versions And Consistency
-
-> Goal: ให้ tool versions สอดคล้องกัน
-
-1. ทำตาม `references/config-checks.md#check-tool-versions-and-consistency`
-
-### 6. Flags And Secrets
-
-> Goal: coverage เพิ่มเติมของ domain
-
-1. feature-flag config drift ข้าม environments + stale flags
-2. secret references hygiene — ไม่มี inline secrets, rotation path ชัด
-
-### 7. Generate Report
+### 4. Report
 
 > Goal: สรุป findings สำหรับ update
 
-1. ทำตาม `references/scoring.md`
-2. ทำ `/report` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
-3. ทำ `/report-file-structure` สำหรับ config tree
-4. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-cicd`
-
+1. ทำ `/report` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
+2. ทำ `/report-file-structure` สำหรับ config tree
+3. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-cicd`
 
 ### Subskills
 
@@ -99,6 +83,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - ไม่แก้ไข config files
 - ไม่ expose secrets
 - ไม่ commit
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/config-reviewer/` เท่านั้น
 
 ### 2. Ecosystem Aware
 
@@ -144,11 +129,12 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 3. secrets/hardcode: ย้าย env/secret manager, prefix rules ถูก (client vs server)
 4. drift: `/check-config-drift` report-drift subskill reconcile ข้าม envs; consolidate sprawl
 5. verify: boot ทุก env ผ่าน + missing-var error ชัด
+
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [Config checks](references/config-checks.md)
-- [Scoring](references/scoring.md)
+- [Full-dimension checklist](subagents/config-reviewer/checklist.md)
+- [Config checks](subagents/config-reviewer/config-checks.md)
+- [Scoring](subagents/config-reviewer/scoring.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Expected Outcome

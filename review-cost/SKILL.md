@@ -6,68 +6,55 @@ related:
   - report
   - review-performance
   - run-review
+  - use-subagents
 
 ---
 
 ## Goal
 
-ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources โดยไม่แก้ไข resources — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm
+ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources โดยไม่แก้ไข resources — ส่งต่อ fix ไปยัง section `## Fix` เมื่อ user confirm — domain checklist อยู่ใน `subagents/cost-reviewer/` (dispatch ไป subagent ไม่ตรวจเอง)
 
 ## Scope
 
 ใช้กับ cloud deployment: Cloudflare Workers, AWS, Vercel, fly.io โดย audit usage โดยไม่แก้ไข resources
 
-- ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
+| Dimension | Checklist |
+|-----------|-----------|
+| `overview` — full-dimension cost checklist | `subagents/cost-reviewer/checklist.md` |
+| `finops` — attribution, anomaly, commitment, egress, tagging | `subagents/cost-reviewer/finops.md` |
+| `deep-analysis` — cost model, unit economics, projection | `subagents/cost-reviewer/deep-cost-analysis.md` |
+
+- ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `subagents/cost-reviewer/deep-cost-analysis.md`
 
 สำหรับ dedicated fix pass อยู่ที่ `/deep-review-then-fix`
 
 ## Execute
 
-### 1. Audit Costs
+### 1. Prepare And Audit
 
-> Goal: รู้ cost drivers
+> Goal: รู้ cost drivers และเก็บ baseline
 
 1. ตรวจ billing dashboard และ invoices
 2. ระบุ top cost drivers ตาม service
-3. ตรวจ logs/metrics usage
-4. ตรวจ storage ทีไม่จำเป็น
+3. ตรวจ logs/metrics usage — เก็บ baseline (ใช้เป็น findings-file ให้ subagent cross-check)
 
-### 2. Review Compute And Concurrency
+### 2. Dispatch Cost-Reviewer
 
-> Goal: ตรวจ compute efficiency
+> Goal: domain review ทำโดย subagent ที่มี checklist เต็ม
 
-1. ตรวจ cold starts, idle instances
-2. ตรวจ concurrency limits ทีเกินความจำเป็น
-3. ตรวจ edge vs origin compute split
+1. เลือก dimensions จาก scope argument — ไม่ระบุ → ทุก dimension ที่ apply
+2. Spawn `subagents/cost-reviewer/AGENT.md` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions`, `findings-file` (baseline จาก step 1) — ครอบคลุม compute (cold starts, idle, concurrency, edge vs origin), storage/bandwidth (unused DBs/buckets, lifecycle, CDN hit ratio), third-party (per-request APIs, underused services, duplicates, LLM token spend), finops (attribution, anomaly, commitment pricing, egress, tagging)
+3. scope ใหญ่/หลาย service → spawn หลาย instance ทีละ scope ขนานกัน
 
-### 3. Review Storage And Bandwidth
+### 3. Aggregate And Score
 
-> Goal: ตรวจ storage/bandwidth waste
+> Goal: รวม findings พร้อม severity
 
-1. ตรวจ unused databases, tables, buckets
-2. ตรวจ logs/artifacts lifecycle
-3. ตรวจ CDN cache hit ratio
+1. รวม findings จากทุก instance — dedup ตาม resource/service + issue type
+2. ทุก finding ต้องมี billing amount, usage metric หรือ resource id
+3. จัดลำดับ severity พร้อม savings direction
 
-### 4. Review Third-party Services
-
-> Goal: ตรวจค่าใช้จ่าย third-party
-
-1. ตรวจ API calls ที charge ตาม request
-2. ตรวจ managed services ทีใช้น้อย
-3. ระบุ services ที duplicate กัน
-4. ตรวจ LLM token spend — prompt bloat, missing prompt caching, model tier ทีแพงเกินงาน
-
-### 5. Attribution And Finops
-
-> Goal: รู้ใครจ่ายอะไร และมี cost governance — ทำตาม `references/finops.md`
-
-1. per-feature/per-tenant unit cost attribution
-2. cost anomaly detection + budget alerts
-3. commitment pricing — reserved instances, savings plans, spot สำหรับ interruptible workloads
-4. egress/data-transfer — cross-region, cross-cloud, internet egress เป็น hidden driver หรือไม่
-5. tagging hygiene — resources tagged (env/team/feature) เพื่อ cost allocation
-
-### 6. Rate And Report
+### 4. Rate And Report
 
 > Goal: สรุป findings พร้อม fix direction
 
@@ -83,6 +70,14 @@ related:
 | `report`, `cost` — per-service breakdown + savings ranked | `subskills/report-cost/SKILL.md` |
 | Apply cost findings — compute, storage, bandwidth, third-party, LLM token spend reductions | `subskills/optimize-cost/SKILL.md` |
 
+### Subagents
+
+> Goal: dispatch domain review ไปยัง subagent
+
+| Topic | Subagent |
+|-------|----------|
+| cost dimensions — compute, storage, bandwidth, third-party, finops พร้อม severity | `subagents/cost-reviewer/AGENT.md` |
+
 ## Rules
 
 ### 1. Read Only
@@ -94,6 +89,7 @@ related:
 
 - ทุก finding ต้องมี billing amount, usage metric หรือ resource id
 - ไม่แนะนำ cost cut โดยไม่มี risk assessment
+- ห้าม duplicate checklist detail ใน SKILL.md — canonical อยู่ที่ `subagents/cost-reviewer/` เท่านั้น
 
 ## Fix
 
@@ -106,9 +102,9 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
-- [FinOps](references/finops.md)
-- [Deep cost analysis](references/deep-cost-analysis.md)
+- [Full-dimension checklist](subagents/cost-reviewer/checklist.md)
+- [FinOps](subagents/cost-reviewer/finops.md)
+- [Deep cost analysis](subagents/cost-reviewer/deep-cost-analysis.md)
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /review-performance ถ้าจำเป็น
 

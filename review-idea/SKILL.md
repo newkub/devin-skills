@@ -13,6 +13,7 @@ related:
   - pick-bestest
   - run-review
 
+  - use-subagents
 ---
 
 ## Goal
@@ -102,7 +103,7 @@ related:
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
+- [Full-dimension checklist](subagents/idea-reviewer/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
 ## Fix
@@ -112,6 +113,7 @@ related:
 1. ปรับ idea ตาม findings: ตัดส่วนที่ score ต่ำ/ไม่คุ้ม, แก้ scope ที่เบลอ, เพิ่มข้อมูลที่ขาด
 2. ถ้า verdict `go` → ทำ `/create-plan-in-dot-devin` หรือ `/plan` ต่อ
 3. ถ้า verdict `no-go` → บันทึกเหตุผล ไม่ implement
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

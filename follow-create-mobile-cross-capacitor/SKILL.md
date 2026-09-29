@@ -18,27 +18,26 @@ related:
 
 ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
 
-- Latest: `@capacitor/core@8.5.2` / `@capacitor/cli@8.5.2` (verified 2026-09-12)
+- Packages: `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` (version เดียวกันเสมอ) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Environment Setup
 
 > Goal: ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
-ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
 
-1. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
-2. ตรวจสอบ Android Studio >= Otter 2025.2.1 (latest stable: Quail 4 `2026.1.4`, verified 2026-09-12)
-3. ตรวจสอบ Xcode >= 26.0 สำหรับ iOS development (Capacitor 8 requirement; latest Xcode 26.6 / Swift 6.3.3)
-4. ตรวจสอบ JDK 21 หรือสูงกว่า
-5. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
-6. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
-7. ทำ `/review-delivery` สำหรับ configuration files
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ requirements ล่าสุดของ Capacitor major ปัจจุบัน จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+2. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
+3. ตรวจสอบ Android Studio เวอร์ชันล่าสุดที่ Capacitor รองรับ (เช็คด้วย `/deep-research`)
+4. ตรวจสอบ Xcode >= 26.0 สำหรับ iOS development (Capacitor 8 requirement — toolchain bundle Swift เสมอ)
+5. ตรวจสอบ JDK 21 หรือสูงกว่า
+6. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
+7. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
+8. ทำ `/review-delivery` สำหรับ configuration files
 
 ### 2. Project Configuration
 
 > Goal: ตั้งค่า `capacitor.config.ts` อย่างถูกต้องตาม best practices
-ตั้งค่า Capacitor config อย่างถูกต้อง
 
 1. สร้าง `capacitor.config.ts` ด้วย `CapacitorConfig` type จาก `@capacitor/cli`
 2. กำหนด `appId` เป็น reverse domain name notation (เช่น `com.company.appname`)
@@ -54,7 +53,6 @@ related:
 ### 3. SPA Integration
 
 > Goal: เชื่อมต่อ web app เข้ากับ Capacitor native container อย่างถูกต้อง
-เชื่อมต่อ web app เข้ากับ Capacitor native container
 
 1. ทำ `/follow-tool-vite` สำหรับ SPA build configuration
 2. สร้าง SPA build config แยก (เช่น `vite.config.spa.ts`) ที่ตั้งค่า `ssr: false`
@@ -67,7 +65,6 @@ related:
 ### 4. Plugin Management
 
 > Goal: จัดการ Capacitor plugins อย่างเป็นระบบและเข้ากันกับเวอร์ชัน 8
-จัดการ Capacitor plugins อย่างเป็นระบบ
 
 1. ติดตั้ง plugins ด้วย `bun add @capacitor/<plugin-name>`
 2. ติดตั้ง third-party plugins ด้วย `bun add @<vendor>/capacitor-<plugin-name>`
@@ -95,7 +92,6 @@ related:
 ### 6. Platform-Specific Code
 
 > Goal: จัดการ platform-specific code อย่างถูกต้องด้วย feature detection
-จัดการ platform-specific code อย่างถูกต้อง
 
 1. ใช้ `Capacitor.platform` สำหรับตรวจจับ platform (`ios`, `android`, `web`)
 2. ใช้ `Capacitor.isNativePlatform()` สำหรับตรวจจับ native environment
@@ -108,7 +104,6 @@ related:
 ### 7. Build And Deployment
 
 > Goal: Build และ deploy ไปยัง app stores อย่างปลอดภัย
-Build และ deploy ไปยัง app stores
 
 1. ทำ `/follow-deploy` สำหรับ deployment strategy
 2. รัน `cap sync` ก่อน build ทุกครั้ง
@@ -123,7 +118,6 @@ Build และ deploy ไปยัง app stores
 ### 8. OTA Updates
 
 > Goal: จัดการ over-the-air updates สำหรับ web bundle อย่างปลอดภัย
-จัดการ over-the-air updates สำหรับ web bundle
 
 1. ติดตั้ง `@capgo/capacitor-updater` สำหรับ OTA update support
 2. กำหนด `CapacitorUpdater` config ใน `capacitor.config.ts`: `appId`, `autoUpdateUrl`, `notifyUpdate`, `resetWhenUpdate`
@@ -134,7 +128,6 @@ Build และ deploy ไปยัง app stores
 ### 9. Security
 
 > Goal: ทำตาม security best practices สำหรับ Capacitor apps
-ทำตาม security best practices สำหรับ Capacitor apps
 
 1. ไม่ embed secrets ใน app code ใช้ server-side สำหรับ sensitive operations
 2. ใช้ PKCE สำหรับ OAuth2 authentication flows

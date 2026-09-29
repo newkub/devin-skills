@@ -12,6 +12,7 @@ related:
   - deep-review-then-fix
   - report
   - suggest-next-action
+  - use-subagents
 ---
 
 ## Goal
@@ -119,6 +120,7 @@ Review browser extension (Chrome/Edge/Firefox/Safari) — manifest, permissions,
 6. verify: load unpacked + test บนทุก target browser, store lint (`web-ext lint`)
 - ใช้ `/review-performance` ถ้าจำเป็น
 
+- ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 

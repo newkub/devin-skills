@@ -23,7 +23,7 @@ related:
 
 > Goal: dep ล้ม → impact เห็นครบ — parent Execute §8
 
-ทำตาม `../../references/degradation.md`
+ทำตาม `../../subagents/stability-reviewer/degradation.md`
 
 1. inventory external dependencies — APIs, DB, cache, queue, third-party, storage
 2. ตาราง: `No.`, `Dependency`, `Failure Scenario`, `Current Behavior`, `Fallback`, `Severity`
