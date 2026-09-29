@@ -27,11 +27,11 @@ related:
 
 | Target | Refactor Scope |
 |--------|----------------|
-| `packages/*`, `crates/*` (shared libs, modules, domain packages, Rust crates) | `/refactor` clean → `references/architecture-clean.md` |
-| `apps/*` (web, mobile, api entry points) | `/refactor` layered → `references/architecture-layered.md` |
+| `packages/*`, `crates/*` (shared libs, modules, domain packages, Rust crates) | `/refactor` clean → `refactor/references/architecture-clean.md` |
+| `apps/*` (web, mobile, api entry points) | `/refactor` layered → `refactor/references/architecture-layered.md` |
 | directory อื่น หรือไม่ใช่ monorepo | ถาม user หรือเลือกตามลักษณะ code (testability สูง/domain-heavy → clean; UI-driven/CRUD → layered) |
 
-1. ถ้า argument ระบุ `clean` → `/refactor` ตาม `references/architecture-clean.md`; `layered` → `/refactor` ตาม `references/architecture-layered.md`
+1. ถ้า argument ระบุ `clean` → `/refactor` ตาม `refactor/references/architecture-clean.md`; `layered` → `/refactor` ตาม `refactor/references/architecture-layered.md`
 2. ถ้า argument เป็น path → map ตามตารางแล้ว dispatch ไป `/refactor` scope นั้น
 3. ถ้าไม่ระบุ → scan root: มี `packages/` หรือ `crates/` → clean ทุก package/crate; มี `apps/` → layered ทุก app; หลายกลุ่ม → ทำทีละอันตาม severity
 4. ถ้า project เดี่ยวไม่มี `packages/`/`crates/`/`apps/` → ถาม user ว่าต้องการ pattern ใด

@@ -20,6 +20,11 @@ related:
   - follow-single-of-source
   - follow-reusable
   - follow-architecture
+  - review-architecture
+  - relocation
+  - scan-codebase
+  - follow-review
+  - run-check
   - edit-by-astgrep
   - migration-by-astgrep
   - use-subagents
@@ -56,7 +61,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/review-code-quality` (SRP counts), `/review-code-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
+6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/review-code-quality` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
 9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor
@@ -84,7 +89,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 > Goal: apply architecture pattern ให้ target — `packages/`/`crates/` = Clean, `apps/` = Layered
 
-1. ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention (dispatcher เลือก target→pattern mapping)
+1. ถ้า pattern ยังไม่ชัด → ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention (ถ้าถูก dispatch มาจาก `/follow-architecture` อยู่แล้ว ให้ข้าม step นี้)
 2. Clean Architecture (`packages/*`, `crates/*`, domain-heavy targets) → ทำตาม [references/architecture-clean.md](references/architecture-clean.md)
 3. Layered Architecture (`apps/*`, UI-driven/CRUD targets) → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
 4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT)
@@ -166,7 +171,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 ## Expected Outcome
 
 - Scope ที่เหมาะสมถูกเลือกและดำเนินการ
-- ไฟล์/ packages มีขนาดเหมาะสม
+- ไฟล์/packages มีขนาดเหมาะสม
 - imports/exports สะอาด ใช้ alias แทน relative paths ที่ซับซ้อน
 - SRP ชัดเจน
 - naming, patterns, structure สอดคล้อง
