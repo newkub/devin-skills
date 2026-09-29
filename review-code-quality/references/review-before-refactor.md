@@ -6,7 +6,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ### Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor-workspace`, `restructure` หรือ `relocation` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns และ file/folder structure (naming, grouping, barrel exports, nesting, relocation plan) ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor-workspace` หรือ `relocation` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns และ file/folder structure (naming, grouping, barrel exports, nesting, relocation plan) ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ### Execute
 

@@ -89,7 +89,7 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 > Goal: ไม่ให้มี broken references จาก source ทีถูกลบ
 
 1. ทำ `/update-references` เพื่ออัปเดตทุก skills ทีอ้างอิงถึง source
-2. ตรวจหา skills ที่เกี่ยวกับ file ops (`move-to`, `batch-rename-files`, `all-this-patterns`, `edit-only`, `restructure`, `refactor`, `flatten-directory`) และอัปเดต references ให้ชี้ไป destination
+2. ตรวจหา skills ที่เกี่ยวกับ file ops (`move-to`, `batch-rename-files`, `all-this-patterns`, `edit-only`, `refactor`, `flatten-directory`) และอัปเดต references ให้ชี้ไป destination
 3. ใช้ `grep` ตรวจซ้ำเพื่อหา reference เก่าทีหลงเหลือ
 
 ### 7. Validate

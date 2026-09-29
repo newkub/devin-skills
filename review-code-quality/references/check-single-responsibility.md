@@ -91,7 +91,7 @@ bun skills/shared/scripts/check-single-responsibility.ts src --max-symbols 5 --m
 
 #### 4. Scope Boundary
 
-- check เท่านั้น ไม่ refactor — การแก้ไขอยู่ใน `/refactor` และ `/restructure`
+- check เท่านั้น ไม่ refactor — การแก้ไขอยู่ใน `/refactor` (รวม structure scope)
 - ไม่ซ้ำกับ `## Check: Function Quality` (function internals) — section นี้ดู file/class level
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks
 

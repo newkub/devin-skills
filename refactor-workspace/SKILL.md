@@ -6,7 +6,6 @@ related:
   - refactor
   - refactor-to-packages-shared
   - follow-single-responsibility
-  - restructure
   - relocation
   - review-architecture
   - update-references
@@ -79,7 +78,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 > Goal: ดำเนินการ refactor ตามแผน
 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
-2. ใช้ `/restructure` หรือ `/relocation` สำหรับ file operations
+2. ใช้ `/refactor` structure scope หรือ `/relocation` สำหรับ file operations
 3. ใช้ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases
 4. ทำ `/update-references` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
 5. ลบ dependencies ที่ไม่จำเป็น

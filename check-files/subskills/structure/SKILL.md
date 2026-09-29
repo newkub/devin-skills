@@ -80,7 +80,7 @@ related:
 
 1. ทำ `/report` หรือ `/report-file-structure` แสดง: Issue type, Path, Severity, Evidence, Recommended action
 2. ระบุ severity: Critical / High / Medium / Low
-3. ทำ `/suggest-next-action` เพื่อแนะนำ `/restructure`, `/refactor`, `/cleanup-files-in-project`, หรือ `/check-code-structure`
+3. ทำ `/suggest-next-action` เพื่อแนะนำ `/refactor` structure scope, `/cleanup-files-in-project`, หรือ `/check-code-structure`
 4. ถ้าไม่พบ issues → report ว่า file structure ผ่านเกณฑ์
 
 ## Rules

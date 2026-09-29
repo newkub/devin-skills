@@ -95,7 +95,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-1. แก้ workflow ตาม findings: ลดขั้นตอนซ้ำ, แก้ steps ที่ช้า/ไม่ปลอดภัย, ตัดส่วนที่เกิน scope → `/restructure` หรือ `/refactor`
+1. แก้ workflow ตาม findings: ลดขั้นตอนซ้ำ, แก้ steps ที่ช้า/ไม่ปลอดภัย, ตัดส่วนที่เกิน scope → `/refactor` structure scope
 2. capability ที่ควรเป็น skill แยก → ส่งต่อ `/new-skills` หรือ merge ตาม `/idea-merge`
 3. verify: `/deep-validate` workflow หลังแก้เทียบก่อน-หลัง
 

@@ -74,7 +74,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
 1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
-2. structural fixes (boundary violations, coupling, misplaced files) → ทำ `/refactor`, `/restructure` และ `/update-references` — รักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี
+2. structural fixes (boundary violations, coupling, misplaced files) → ทำ `/refactor` และ `/update-references` — รักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี
 3. เลือก/apply architecture pattern ตาม guides ใน `## Pattern Guides` เมื่อ finding ต้องเปลี่ยน pattern:
 
 | Finding | Guide |

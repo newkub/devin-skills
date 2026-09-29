@@ -28,7 +28,7 @@ Restructure target (default: ทุก package ใน `packages/` หรือ `
 1. สร้าง structure ตาม guide: `domain/` (pure types + logic), `application/` (use cases, ports), `infrastructure/` (adapters), entry ที่ `index`
 2. ย้าย pure logic → `domain/`; orchestration → `application/`; IO/framework → `infrastructure/` — ทำ `/refactor` ทีละ move
 3. กำหนด ports (interfaces) ที่ `application/` ต้องการ — adapters implement ฝั่ง infrastructure
-4. ทำ `/update-references` + `/restructure` หลังย้ายแต่ละชุด
+4. ทำ `/update-references` + structure refactor (`scope-structure.md`) หลังย้ายแต่ละชุด
 
 ### 3. Verify
 
@@ -44,7 +44,7 @@ Restructure target (default: ทุก package ใน `packages/` หรือ `
 - Domain ต้อง pure — ไม่มี IO, framework imports, side effects
 - Public API ผ่าน `index` เท่านั้น — ห้าม deep imports ข้าม layer จากภายนอก
 - รักษา behavior เดิม — ทดสอบต้องผ่านเหมือนก่อน restructure
-- ใช้ /refactor, /restructure, /update-references ถ้าจำเป็น
+- ใช้ /refactor, /update-references ถ้าจำเป็น
 
 ## Expected Outcome
 

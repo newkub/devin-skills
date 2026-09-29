@@ -13,7 +13,6 @@ related:
   - report
   - ask-me
   - refactor
-  - restructure
   - edit-only
   - move-to
   - batch-rename-files
@@ -56,7 +55,7 @@ related:
 2. ทำ `/rethink` โดยถามว่าควรใช้ file op แบบไหน:
    - `/edit-only` — แก้ไขเฉพาะจุด
    - `/refactor` — refactor code โดยรักษา behavior
-   - `/restructure` — ย้าย/จัดโครงสร้างไฟล์
+   - `/refactor` structure scope — ย้าย/จัดโครงสร้างไฟล์
    - `/move-to` — ย้ายไฟล์/โฟลเดอร
    - `/batch-rename-files` — เปลี่ยนชื่อหลายไฟล์
    - `/all-this-patterns` — แก้หลายจุดตาม pattern

@@ -6,7 +6,7 @@ related:
   - deep-analyze
   - use-astgrep
   - review-architecture
-  - restructure
+  - refactor
   - deep-review
   - deep-validate
   - scan-codebase
@@ -85,7 +85,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
 6. ทำ `/rename` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
-7. ถ้าต้องปรับ physical structure ให้ทำ `/restructure`
+7. ถ้าต้องปรับ physical structure ให้ทำ `/refactor` structure scope
 
 ### 6. Verify
 

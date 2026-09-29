@@ -52,7 +52,7 @@
 1. ตรวจสอบ service independence
 2. ทดสอบ fault tolerance และ resilience
 3. ตรวจสอบ scalability
-4. ทำ `/restructure` หลังจาก implement เสร็จ
+4. ทำ `/refactor` structure scope หลังจาก implement เสร็จ
 
 #### Rules — Microservices
 

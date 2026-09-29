@@ -28,7 +28,7 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 1. สร้าง structure ตาม variant ที่เลือกจาก guide
 2. ย้าย UI/routes → presentation; business rules → domain; persistence/external calls → data — ทำ `/refactor` ทีละ move
 3. Enforce dependencies: presentation → domain → data เท่านั้น; public API ผ่าน `index` barrel ต่อ layer
-4. Align tests ตาม layers; ทำ `/update-references` + `/restructure` หลังย้ายแต่ละชุด
+4. Align tests ตาม layers; ทำ `/update-references` + structure refactor (`scope-structure.md`) หลังย้ายแต่ละชุด
 
 ### 3. Verify
 
@@ -44,7 +44,7 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 - Public API ผ่าน `index` entry point ของแต่ละ layer — ห้าม deep imports
 - ใช้ path aliases ของ project แทน relative imports ข้าม layer
 - รักษา behavior เดิม — routes/pages ทำงานเหมือนก่อน restructure
-- ใช้ /refactor, /restructure, /update-references ถ้าจำเป็น
+- ใช้ /refactor, /update-references ถ้าจำเป็น
 
 ## Expected Outcome
 

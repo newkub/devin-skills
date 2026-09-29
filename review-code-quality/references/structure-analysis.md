@@ -34,7 +34,7 @@ Checks (pass / warning / fail):
 
 - 5 metrics: file naming, folder grouping, barrel exports, import complexity, nesting depth — น้ำหนักเท่ากัน (20%)
 - pass = 1, warning = 0.5, fail = 0; score = (total/5) × 100%; Grade A(90+) B(80+) C(70+) D(60+) F(<60)
-- Score < 70 → แนะนำ `restructure` หรือ `relocation`; score < 50 → หยุดและ report
+- Score < 70 → แนะนำ `refactor` structure scope หรือ `relocation`; score < 50 → หยุดและ report
 
 Structure Health Metrics table columns: Metric, Count, Threshold, Status
 
