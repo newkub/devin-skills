@@ -5,6 +5,7 @@ argument-hint: "[skill | family-prefix | all]"
 related:
   - update-devin-global-skills
   - refactor
+  - simplify
   - new-skills
   - use-subagents
   - use-related-skills
@@ -61,6 +62,7 @@ Restructures existing skills only — one skill, a family (`follow-lib-*`, `revi
 | Reclassify | Workflow ↔ `subskills/<name>/` (`name: <parent>-<name>`), knowledge ↔ `references/`, per matrix |
 | Merge | Fold duplicates into one place — never leave the same content twice |
 | Metadata | `name` = dir, `description` ≤100, `related` complete and resolvable |
+| Simplify | Condense verbose prose/steps → `/simplify` |
 | Flatten | `references/` has no nested dirs |
 
 Always `git mv` moves to preserve history.

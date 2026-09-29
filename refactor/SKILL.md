@@ -4,6 +4,7 @@ description: Refactor ไฟล์, workspace, หรือ codebase ตาม c
 argument-hint: "[@files... | scope | clean | layered | orm | structure]"
 related:
   - refactor-skills
+  - simplify
   - refactor-workspace
   - refactor-to-packages-shared
   - no-hard-code
@@ -50,6 +51,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
 - ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
+- ถ้า context คือทำไฟล์สั้น/อ่านง่ายขึ้นโดยไม่เปลี่ยน boundaries (verbosity, redundancy, nesting) → ใช้ `/simplify`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ

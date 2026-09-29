@@ -3,6 +3,7 @@ name: improve
 description: หาสิ่งที่ improve ใน scope รวม findings แล้วแก้ผ่าน review-* หลัง user confirm
 argument-hint: "[scope]"
 related:
+  - simplify
   - review-gaps
   - review-issue
   - review

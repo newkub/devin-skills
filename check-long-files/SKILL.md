@@ -4,6 +4,7 @@ description: ตรวจสอบและรายงานไฟล์ที�
 argument-hint: "[threshold]"
 related:
   - refactor
+  - simplify
   - review-code-quality
   - check-code-structure
 ---
@@ -42,7 +43,7 @@ Skill นี้ใช้ Rust CLI แทน Bun/TS CLI เพราะต้อ�
 1. ไฟล์ที่ flag ไม่ใช่ defect อัตโนมัติ — อ่าน implementation ก่อนตัดสิน
 2. Cohesive units ที่ยอมรับได้: single class fluent API (เช่น `FxImpl`), declarative catalog (เช่น schema combinators, op delegates), barrel/facade
 3. Targets ที่ควร refactor: mixed concerns (หลาย feature ในไฟล์เดียว), shared module state ที่แยกได้, กลุ่ม functions ที่ cohesive เป็นกลุ่มย่อยชัดเจน
-4. ส่งต่อไปยัง `/refactor` พร้อมรายการ targets ที่ triage แล้ว
+4. ส่งต่อไปยัง `/refactor` พร้อมรายการ targets ที่ triage แล้ว — ไฟล์ที่ยาวจาก verbosity/redundancy ล้วน (ไม่ใช่ mixed concerns) → `/simplify`
 
 ## Rules
 
