@@ -138,9 +138,19 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 14 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
 | 15 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
 | 16 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
-| 17 | `merge` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
+| 17 | `merge-all-branch-by-me-to-main` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
 | 18 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
 | 19 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
+| 20 | `refactor` | `refactor/subagents/hotspot-scout.md` | เก็บ baseline evidence หา refactor targets (read-only) |
+| 21 | `refactor` | `refactor/subagents/file-worker.md` | refactor ไฟล์/scope เดียวทีละไฟล์ขนานกัน |
+| 22 | `implement-to-production` | `implement-to-production/subagents/gap-scanner.md` | inventory TODO/MOCK/placeholder ทั้ง codebase (read-only) |
+| 23 | `implement-to-production` | `implement-to-production/subagents/feature-implementer.md` | implement feature/gap item เดียว end-to-end |
+| 24 | `implement-to-production` | `implement-to-production/subagents/review-sweeper.md` | review changes ทีละ domain ขนานกัน (read-only) |
+| 25 | `update-project` | `update-project/subagents/git-log-collector.md` | เก็บ git log/diff stat ของ workspace เดียว |
+| 26 | `update-project` | `update-project/subagents/project-files-updater.md` | update project files ต่อ domain (config/docs/rules/specs) |
+| 27 | `update-project` | `update-project/subagents/project-skills-updater.md` | sync `.devin/skills` กับ codebase |
+| 28 | `update-project` | `update-project/subagents/github-metadata-updater.md` | sync GitHub repo metadata และ branch protection |
+| 29 | `update-devin-global-skills` | `update-devin-global-skills/subagents/skill-updater.md` | update skill เดียวตาม instructions ใน bulk update |
 
 ## CLI — `subagents` (mission control)
 
