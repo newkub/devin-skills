@@ -3,8 +3,10 @@ name: follow-orm
 description: ใช้งาน ORM และ data access patterns ด้วย repository pattern และ type-safe mappings
 argument-hint: "[scope]"
 related:
+  - refactor
   - review-architecture
   - review-dependencies
+  - review-database
   - follow-lib-drizzle
   - update-tests
   - delete
@@ -18,6 +20,8 @@ related:
 ## Scope
 
 ใช้สำหรับ projects ที่ใช้ ORM (Drizzle, Prisma, TypeORM) และต้องการแยก data access ออกจาก business logic
+
+- Boundary: skill นี้ครอบคลุม repository pattern เท่านั้น — ORM selection, models, queries, migrations mechanics ใช้ `/refactor` orm scope (`refactor/references/orm.md`)
 
 ## Execute
 

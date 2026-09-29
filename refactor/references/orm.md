@@ -1,32 +1,20 @@
----
-name: follow-tool-orm
-description: ใช้งาน ORM ใน project — models, queries, migrations และ relations อย่าง type-safe
-argument-hint: "[scope]"
-related:
-  - follow-tool-data-validation
-  - follow-tool-drizzle-kit
-  - review-database
-  - review-database
-  - update-tests
-  - run-test
-  - resolve-errors
----
+# Data Access Refactor (ORM)
 
 ## Goal
 
-ใช้งาน ORM ใน project เพื่อจัดการ data access — models, relations, queries และ migrations — อย่าง type-safe และ consistent
+Restructure data access layer ให้ใช้ ORM อย่าง type-safe และ consistent — models, relations, queries, migrations — โดยรักษา behavior เดิม
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้อง data access layer ผ่าน ORM แทน raw SQL รองรับ TypeScript, Rust, Python, Go
+- ใช้กับ projects ที่ต้อง restructure data access เป็น ORM แทน raw SQL/scattered queries รองรับ TypeScript, Rust, Python, Go
+- Repository pattern (interfaces, mappers, UnitOfWork, QuerySpec) — canonical: `/follow-orm` (SSOT ไม่ duplicate)
+- Schema design/review และ migration drift audit → `/review-database`; drizzle-kit commands ลึก → `/follow-tool-drizzle-kit`; boundary validation → `/follow-tool-data-validation`
 
-- Boundary: skill นี้ครอบคลุม ORM usage เท่านั้น — schema design/review ใช้ `/review-database`; migration drift audit ใช้ `/review-database`; drizzle-kit commands ลึกใช้ `/follow-tool-drizzle-kit`
-
-## Execute
+## Steps
 
 ### 1. Select ORM
 
-> Goal: เลือก ORM ตาม tech stack
+> Goal: เลือก ORM ตาม tech stack — หนึ่ง ORM ต่อ project
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก ORM ตามความเหมาะสม:
@@ -100,14 +88,11 @@ related:
 - ทุก migration ต้อง rollback-able (มี down path) หรือระบุไว้ชัดเจน
 - ไม่ edit applied migrations — สร้าง migration ใหม่แทน
 
-- ใช้ /follow-tool-drizzle-kit ถ้าจำเป็น
-- ใช้ /follow-tool-data-validation ถ้าจำเป็น
-- ใช้ /review-database ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /follow-orm, /follow-tool-drizzle-kit, /follow-tool-data-validation, /review-database, /run-test ถ้าจำเป็น
 
 ## Expected Outcome
 
-- ORM ถูกเลือกและตั้งค่าตาม tech stack — หนึ่ง ORM ต่อ project
+- Data access layer ใช้ ORM ตัวเดียวตาม tech stack
 - Models/relations ครบและ type-safe, queries ไม่มี N+1 หรือ injection surface
 - Migrations versioned, tested และ sync กับ code
 - Tests ครอบคลุม data layer บน real test DB

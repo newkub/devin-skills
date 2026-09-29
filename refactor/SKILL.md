@@ -1,7 +1,7 @@
 ---
 name: refactor
 description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
-argument-hint: "[@files... | scope | clean | layered]"
+argument-hint: "[@files... | scope | clean | layered | orm]"
 related:
   - refactor-workspace
   - refactor-to-packages-shared
@@ -21,6 +21,8 @@ related:
   - follow-reusable
   - follow-architecture
   - review-architecture
+  - follow-orm
+  - review-database
   - relocation
   - scan-codebase
   - follow-review
@@ -41,6 +43,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor ตาม `references/architecture-clean.md` หรือ `references/architecture-layered.md` — เลือก pattern ผ่าน `/follow-architecture`
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
+- ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` — repository pattern detail อยู่ `/follow-orm`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
 - ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
@@ -65,7 +68,8 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
 9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor
-10. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+10. ถ้า argument/context เป็น `orm` หรือ data access restructure → data access refactor
+11. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -94,7 +98,15 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. Layered Architecture (`apps/*`, UI-driven/CRUD targets) → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
 4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT)
 
-### 6. Update References
+### 6. Data Access Refactor
+
+> Goal: restructure data access ให้ใช้ ORM type-safe — หนึ่ง ORM ต่อ project
+
+1. ทำตาม [references/orm.md](references/orm.md) — select ORM → models/relations → queries → migrations → tests
+2. repository pattern (interfaces, mappers, UnitOfWork) → ทำตาม `/follow-orm` (SSOT)
+3. schema review/migration drift → `/review-database`; boundary validation → `/follow-tool-data-validation`
+
+### 7. Update References
 
 > Goal: ไม่มี broken references
 
@@ -103,13 +115,13 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้า structure/paths เปลี่ยน (ย้าย/rename/สร้าง dir ใหม่) → ทำ `/update-agents-md` ให้ AGENTS.md ตรงกับ structure ใหม่
 4. ถ้ามี broken references → ทำ `/resolve-errors`
 
-### 7. Verify
+### 8. Verify
 
 > Goal: ตรวจสอบว่า refactor ผ่าน
 
 ทำตาม [references/verify.md](references/verify.md)
 
-### 8. Report
+### 9. Report
 
 > Goal: สรุปผล
 
