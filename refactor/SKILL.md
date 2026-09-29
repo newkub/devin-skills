@@ -1,7 +1,7 @@
 ---
 name: refactor
 description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
-argument-hint: "[@files... | scope]"
+argument-hint: "[@files... | scope | clean | layered]"
 related:
   - refactor-workspace
   - refactor-to-packages-shared
@@ -34,7 +34,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
-- ถ้า context คือจัด architecture ตาม directory (`packages/` = clean, `apps/` = layered) → ใช้ `/follow-architecture`
+- ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor ตาม `references/architecture-clean.md` หรือ `references/architecture-layered.md` — เลือก pattern ผ่าน `/follow-architecture`
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
@@ -59,7 +59,8 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/review-code-quality` (SRP counts), `/review-code-quality` (function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-9. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor
+10. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -79,7 +80,16 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 ทำตาม [references/scope-codebase.md](references/scope-codebase.md)
 
-### 5. Update References
+### 5. Architecture Refactor
+
+> Goal: apply architecture pattern ให้ target — `packages/`/`crates/` = Clean, `apps/` = Layered
+
+1. ทำ `/follow-architecture` เพื่อเลือก pattern ตาม directory convention (dispatcher เลือก target→pattern mapping)
+2. Clean Architecture (`packages/*`, `crates/*`, domain-heavy targets) → ทำตาม [references/architecture-clean.md](references/architecture-clean.md)
+3. Layered Architecture (`apps/*`, UI-driven/CRUD targets) → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
+4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT)
+
+### 6. Update References
 
 > Goal: ไม่มี broken references
 
@@ -88,13 +98,13 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้า structure/paths เปลี่ยน (ย้าย/rename/สร้าง dir ใหม่) → ทำ `/update-agents-md` ให้ AGENTS.md ตรงกับ structure ใหม่
 4. ถ้ามี broken references → ทำ `/resolve-errors`
 
-### 6. Verify
+### 7. Verify
 
 > Goal: ตรวจสอบว่า refactor ผ่าน
 
 ทำตาม [references/verify.md](references/verify.md)
 
-### 7. Report
+### 8. Report
 
 > Goal: สรุปผล
 

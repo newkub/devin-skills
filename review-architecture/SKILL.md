@@ -99,4 +99,4 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 - รายงานตาราง findings พร้อม severity และ location
 - รายงาน recommended actions พร้อม priority
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action` แยกเป็น follow-clean-architecture, follow-layered-architecture
+- แนะนำ action ถัดไปผ่าน `/suggest-next-action` — pattern restructure dispatch ผ่าน `/follow-architecture` → `/refactor` (clean/layered scope)

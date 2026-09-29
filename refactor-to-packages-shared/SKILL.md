@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - refactor
   - refactor-workspace
-  - follow-clean-architecture
   - follow-single-of-source
   - follow-reusable
   - use-lib-effective
@@ -53,7 +52,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 
 > Goal: แผนที่ย้ายทีละหน่วยได้โดยไม่พังและตรง Clean Architecture
 
-1. ทำ `/follow-clean-architecture` — จัดกลุ่ม candidates ตาม layer: `domain/` (pure types, constants, domain logic — ไม่มี IO/framework), `application/` (use cases, ports, orchestration), `infrastructure/` (adapters: framework, DB, external APIs)
+1. ทำ `/refactor` clean scope (`references/architecture-clean.md`) — จัดกลุ่ม candidates ตาม layer: `domain/` (pure types, constants, domain logic — ไม่มี IO/framework), `application/` (use cases, ports, orchestration), `infrastructure/` (adapters: framework, DB, external APIs)
 2. จัดลำดับ leaf-first: pure types/constants → domain utilities → application use cases/ports → infrastructure adapters → UI/framework-bound code เฉพาะที่ share จริงและเหมาะกับ shared
 3. ระบุทุก consumer site ต่อ candidate — import sites, re-export sites, test usage
 4. ทำ `/plan` แล้วขอ confirm ถ้า candidates > 5 หน่วยหรือแตะ critical paths
@@ -108,7 +107,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 
 ### 4. Clean Architecture In Shared
 
-- shared package ต้องตาม `/follow-clean-architecture`: `domain/` pure (no IO/framework/side effects), `application/` = use cases + ports, `infrastructure/` = adapters
+- shared package ต้องตาม clean architecture (`/refactor` clean scope): `domain/` pure (no IO/framework/side effects), `application/` = use cases + ports, `infrastructure/` = adapters
 - Public API ผ่าน root/domain barrels เท่านั้น — ห้าม deep import เข้า `packages/shared/src/**`
 - `packages/shared` ห้าม depend บน workspace member อื่น — foundation เท่านั้น
 

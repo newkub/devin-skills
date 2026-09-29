@@ -1,35 +1,23 @@
----
-name: follow-clean-architecture
-description: Apply Clean Architecture — functional core, ports & adapters, domain ไม่พึ่ง infrastructure
-argument-hint: "[@path]"
-related:
-  - follow-architecture
-  - follow-layered-architecture
-  - review-architecture
-  - refactor
-  - restructure
-  - update-references
-  - run-check
----
+# Clean Architecture Refactor
 
 ## Goal
 
-Restructure target (default: ทุก package ใน `packages/`) ให้เป็น Clean Architecture — pure domain core, application orchestration, ports & adapters — โดยรักษา behavior และ public API เดิม
+Restructure target (default: ทุก package ใน `packages/` หรือ `crates/`) ให้เป็น Clean Architecture — pure domain core, application orchestration, ports & adapters — โดยรักษา behavior และ public API เดิม
 
 ## Scope
 
-- ใช้กับ `packages/*` (shared libraries, domain modules) และ target ที่ user ระบุชัดเจน
-- Pattern detail ฉบับเต็ม: `/review-architecture` `## Pattern Guides` → `### Pattern: Clean Architecture` (Execute — Clean steps 1-8 + Rules)
-- `apps/*` → ใช้ `/follow-layered-architecture` แทน
+- ใช้กับ `packages/*`, `crates/*` (shared libraries, domain modules, Rust crates) และ target ที่ user ระบุชัดเจน
+- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `references/pattern-clean.md`
+- `apps/*` → ใช้ `references/architecture-layered.md` แทน
 
-## Execute
+## Steps
 
 ### 1. Prepare
 
 > Goal: เข้าใจ structure ปัจจุบันและ blast radius
 
 1. ทำ `/scan-codebase` บน target — ระบุ domain logic, side effects, external deps
-2. อ่าน `### Pattern: Clean Architecture` ใน `/review-architecture` — canonical guide สำหรับ structure, rules และ splitting thresholds
+2. อ่าน `references/pattern-clean.md` ของ `/review-architecture` — canonical guide สำหรับ structure, rules และ splitting thresholds
 3. ระบุ public API ปัจจุบัน (barrel `index`, exported symbols) — ต้องรักษาไว้
 4. หา consumers ของ package — ทำ `/update-references` ไว้ในแผน
 

@@ -1,16 +1,4 @@
----
-name: follow-layered-architecture
-description: Apply Layered Architecture ให้ app — presentation → domain → data, public API ผ่าน index
-argument-hint: "[@path]"
-related:
-  - follow-architecture
-  - follow-clean-architecture
-  - review-architecture
-  - refactor
-  - restructure
-  - update-references
-  - run-check
----
+# Layered Architecture Refactor
 
 ## Goal
 
@@ -19,17 +7,17 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 ## Scope
 
 - ใช้กับ `apps/*` (web, mobile, api entry points) และ target ที่ user ระบุชัดเจน
-- Pattern detail ฉบับเต็ม: `/review-architecture` `## Pattern Guides` → `### Pattern: Layered Architecture` (Execute — Layered steps 1-5 + Rules รวม Nuxt-specific)
-- `packages/*` → ใช้ `/follow-clean-architecture` แทน
+- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `references/pattern-layered.md` (รวม Nuxt-specific)
+- `packages/*`, `crates/*` → ใช้ `references/architecture-clean.md` แทน
 
-## Execute
+## Steps
 
 ### 1. Prepare
 
 > Goal: เข้าใจ structure ปัจจุบันและเลือก layered variant ที่เหมาะ
 
 1. ทำ `/scan-codebase` บน target — ระบุ routes/pages, business logic, data access
-2. อ่าน `### Pattern: Layered Architecture` ใน `/review-architecture` — เลือก variant (traditional / feature-based / four-layer / hybrid) ตามขนาด app
+2. อ่าน `references/pattern-layered.md` ของ `/review-architecture` — เลือก variant (traditional / feature-based / four-layer / hybrid) ตามขนาด app
 3. ระบุ public API และ route entry points ปัจจุบัน — ต้องรักษาไว้
 4. วางแผน layer mapping: presentation (pages/routes/components/controllers), domain (use cases/services), data (repositories/clients)
 

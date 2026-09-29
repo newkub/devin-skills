@@ -3,8 +3,6 @@ name: follow-architecture
 description: Dispatcher เลือก architecture pattern ตาม directory — packages/crates ใช้ Clean, apps ใช้ Layered
 argument-hint: "[clean|layered|path]"
 related:
-  - follow-clean-architecture
-  - follow-layered-architecture
   - review-architecture
   - refactor
   - restructure
@@ -13,7 +11,7 @@ related:
 
 ## Goal
 
-เลือกและ apply architecture pattern ที่ถูกต้องให้แต่ละส่วนของ monorepo/project — `packages/`/`crates/` ใช้ Clean Architecture, `apps/` ใช้ Layered Architecture — โดย route ไปยัง skill เฉพาะ pattern
+เลือกและ apply architecture pattern ที่ถูกต้องให้แต่ละส่วนของ monorepo/project — `packages/`/`crates/` ใช้ Clean Architecture, `apps/` ใช้ Layered Architecture — โดย route ไปยัง `/refactor` scope ที่ตรง pattern
 
 ## Scope
 
@@ -27,14 +25,14 @@ related:
 
 > Goal: แต่ละ directory ได้ pattern ที่ถูกต้องตาม convention
 
-| Target | Skill |
-|--------|-------|
-| `packages/*`, `crates/*` (shared libs, modules, domain packages, Rust crates) | `/follow-clean-architecture` |
-| `apps/*` (web, mobile, api entry points) | `/follow-layered-architecture` |
+| Target | Refactor Scope |
+|--------|----------------|
+| `packages/*`, `crates/*` (shared libs, modules, domain packages, Rust crates) | `/refactor` clean → `references/architecture-clean.md` |
+| `apps/*` (web, mobile, api entry points) | `/refactor` layered → `references/architecture-layered.md` |
 | directory อื่น หรือไม่ใช่ monorepo | ถาม user หรือเลือกตามลักษณะ code (testability สูง/domain-heavy → clean; UI-driven/CRUD → layered) |
 
-1. ถ้า argument ระบุ `clean` → `/follow-clean-architecture`; `layered` → `/follow-layered-architecture`
-2. ถ้า argument เป็น path → map ตามตารางแล้ว dispatch
+1. ถ้า argument ระบุ `clean` → `/refactor` ตาม `references/architecture-clean.md`; `layered` → `/refactor` ตาม `references/architecture-layered.md`
+2. ถ้า argument เป็น path → map ตามตารางแล้ว dispatch ไป `/refactor` scope นั้น
 3. ถ้าไม่ระบุ → scan root: มี `packages/` หรือ `crates/` → clean ทุก package/crate; มี `apps/` → layered ทุก app; หลายกลุ่ม → ทำทีละอันตาม severity
 4. ถ้า project เดี่ยวไม่มี `packages/`/`crates/`/`apps/` → ถาม user ว่าต้องการ pattern ใด
 
