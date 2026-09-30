@@ -40,12 +40,15 @@ Exit.isFailure(exit) && Cause.pretty(exit.cause)
 
 ```ts
 effect.pipe(Effect.orElse(() => fallback))       // fallback on any failure
+effect.pipe(Effect.orElseSucceed(() => fallback))// fallback as success value
 effect.pipe(Effect.orElseFail(() => newErr))     // replace error
 effect.pipe(Effect.option)                       // Effect<Option<A>> — None on failure
 effect.pipe(Effect.either)                       // Effect<Either<E, A>>
 effect.pipe(Effect.ignore)                       // discard success + swallow failures
 Effect.try(() => JSON.parse(raw))                // wrap throwing code → UnknownException
-Effect.tryPromise({ try, catch })                // wrap Promise → typed error
+Effect.tryPromise({ try, catch })                // wrap Promise → typed error — always wrap promise libs
+effect.pipe(Effect.matchEffect({ onFailure, onSuccess })) // fold, can return Effects
+effect.pipe(Effect.catchAllDefect((defect) => ...))       // boundary only — defects are not business flow
 ```
 
 ## Config (env configuration)
@@ -111,9 +114,11 @@ import { Effect, Fiber } from "effect"
 // Parallel — results as tuple/array; fails fast on first error
 const [a, b] = yield* Effect.all([taskA, taskB], { concurrency: 2 })
 const users = yield* Effect.forEach(ids, fetchUser, { concurrency: "unbounded" })
+const partial = yield* Effect.all([taskA, taskB], { mode: "either" }) // keep partial results
 
-// Racing
+// Racing and timeouts
 const fastest = yield* Effect.race(taskA, taskB)
+yield* taskA.pipe(Effect.timeoutFail({ duration: "5 seconds", onTimeout: () => new TimeoutErr() }))
 
 // Background work
 const fiber = yield* Effect.fork(longRunning)
@@ -183,6 +188,7 @@ import { BunRuntime, BunContext } from "@effect/platform-bun"
 Effect.runPromise(program.pipe(Effect.provide(AppLayer)))
 Effect.runSync(pureProgram)
 Effect.runFork(program)
+Effect.runCallback(program, { onExit: (exit) => console.log(exit) }) // fire-and-forget with Exit
 
 // Bun entrypoint — handles interrupts + exit codes
 BunRuntime.runMain(program.pipe(Effect.provide(BunContext.layer)))

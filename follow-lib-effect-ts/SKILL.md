@@ -155,6 +155,8 @@ related:
 - `Schedule` + `Effect.retry` สำหรับ resilience; `Effect.timeout` สำหรับ deadline
 - `Effect.acquireRelease`/`Scope`/`Layer.scoped` สำหรับ resources ที่ต้อง cleanup
 - Run (`Effect.run*`) เฉพาะที่ application boundary เท่านั้น
+- requirements ผ่าน `R` channel/Layer เท่านั้น — ห้าม import singletons/globals ตรงใน Effect code
+- validate external data ด้วย `Schema` — ห้าม cast `as T` ที่ boundary
 
 ### 4. Project Structure
 
