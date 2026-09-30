@@ -7,7 +7,7 @@ related:
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - review-dependencies
+  - deep-review
 
 ---
 
@@ -24,7 +24,7 @@ related:
 - พัฒนา desktop application ด้วย Rust
 - Build สำหรับหลาย platforms
 
-- Latest: `dioxus@0.7.10` / `dioxus-cli@0.7.10` (crates.io stable; 0.8.0-alpha.1 pre-release) (verified 2026-09-12)
+- Packages: `dioxus` crate + `dioxus-cli` (`dx`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (0.8.x เป็น pre-release — ห้าม adopt โดยไม่เช็ค migration notes; ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -32,10 +32,11 @@ related:
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
 
-1. ตรวจสอบ Rust ติดตั้งแล้ว (`rustc --version`)
-2. ตรวจสอบ Cargo ติดตั้งแล้ว (`cargo --version`)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ตรวจสอบ Rust/Cargo ติดตั้งแล้ว (`rustc --version`, `cargo --version`)
 3. ติดตั้ง `wasm32-unknown-unknown` target ถ้าทำ Web (`rustup target add wasm32-unknown-unknown`)
-4. หลังติดตั้ง CLI ให้รัน `dx doctor` เพื่อตรวจ toolchains ที่ขาดสำหรับแต่ละ platform
+4. Linux desktop build ต้องใช้ WebKitGTK — `sudo apt install libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev`; Windows ใช้ WebView2 (มากับ Edge); macOS ไม่ต้องลงเพิ่ม
+5. หลังติดตั้ง CLI ให้รัน `dx doctor` เพื่อตรวจ toolchains ที่ขาดสำหรับแต่ละ platform
 
 ### 2. Setup
 
@@ -99,11 +100,10 @@ related:
 - Web: ต้องมี `wasm32-unknown-unknown` target
 - Mobile: ใช้ Dioxus mobile target ตาม official docs
 
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create cross dioxus)
+- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create cross dioxus)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

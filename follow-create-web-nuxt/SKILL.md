@@ -7,7 +7,7 @@ related:
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - review-dependencies
+  - deep-review
   - follow-lib-vue
   - run-dev
 ---
@@ -20,7 +20,7 @@ related:
 
 ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
-- Latest: `nuxt@4.5.2`, `@nuxt/ui@4.11.2` (verified 2026-09-24)
+- Packages: `nuxt` 4.x (Node `^22.19.0 || ^24.11.0 || >=26.0.0`, Vue 3.5+, server engine Nitro สร้าง `.output` deploy ได้ทั้ง Node/serverless/edge), `nuxi` CLI, `@nuxt/ui` 4.x (Reka UI + Tailwind CSS + Tailwind Variants — `bun add @nuxt/ui tailwindcss` แล้ว `@import "tailwindcss"; @import "@nuxt/ui";` ใน `app/assets/css/main.css`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -29,24 +29,23 @@ related:
 > Goal: วางแผน project architecture
 
 1. ระบุ project location ใน monorepo เช่น `apps/web/`
-2. ใช้ Nuxt 4.x (Nuxt 3 EOL July 2026 — ใช้ Nuxt 4 เท่านั้นสำหรับ projects ใหม่)
-   - Scaffold project ใหม่ด้วย `bunx nuxi@latest init <project-name>` (`nuxi@3.37.0`, verified 2026-09-16)
-3. กำหนด Rendering Mode: SSR, SSG, CSR, หรือ Hybrid
+2. ใช้ Nuxt 4.x (Nuxt 3 EOL July 2026 — ใช้ Nuxt 4 เท่านั้นสำหรับ projects ใหม่; Nuxt 4 ใช้ `app/` dir, Nuxt 3 ใช้ root-level `pages/` `components/` `composables/`)
+   - Scaffold ด้วย `bunx nuxi@latest init <project-name>` — เพิ่ม module ด้วย `bunx nuxi@latest module add <name>`; nuxi รองรับ `dev`, `build`, `generate`, `preview`, `analyze`, `prepare`, `typecheck`, `add`, `upgrade`, `cleanup`, `info`, `devtools`
+3. กำหนด Rendering Mode: SSR (default), SSG (`nuxt generate`), CSR (`ssr: false`), หรือ Hybrid ผ่าน `routeRules`
 4. ตัดสินใจใช้ Database หรือไม่ (เช่น Drizzle ORM)
 5. เลือก UI Framework: UnoCSS, Tailwind, หรืออื่นๆ
 6. กำหนด Architecture: ใช้ Layers และ Modules หรือไม่
-7. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
+7. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด (docs: https://nuxt.com/docs)
 
 ### 2. Directory Structure
 
 > Goal: สร้างโครงสร้างโฟลเดอร์
 
-1. ใช้ `app/` directory สำหรับ Nuxt 4
+1. ใช้ `app/` directory สำหรับ Nuxt 4 (`app/pages/`, `app/components/`, `app/composables/`) + `public/`, `server/`, `shared/`, `layers/`
 2. สร้าง `layers/` สำหรับ feature-based architecture
 3. จัดกลุ่ม components, composables ตาม feature ในแต่ละ layer
-4. ใช้ auto-imports สำหรับ components และ composables
-5. แยก business logic เป็น services และ repositories ใน `server/`
-6. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
+4. ใช้ auto-imports: `ref`, `computed`, `watch`, `useFetch`, `useAsyncData`, `useState`, `useHead`, `useStorage`, `navigateTo`, `useRoute`, `useRouter`, `useRuntimeConfig`, `useRequestFetch`, `defineNuxtPlugin`, `defineNuxtRouteMiddleware` — components ใน `app/components/` auto-import ด้วย path prefix
+5. แยก business logic เป็น services และ repositories ใน `server/` — Nitro conventions: `server/api/*`, `server/routes/*` (`defineEventHandler`, `[id].ts` dynamic params), `server/middleware/*`, `server/plugins/*` (`defineNitroPlugin`)
 
 ### 3. Configuration
 
@@ -123,7 +122,6 @@ related:
    const storage = useStorage()
    await storage.setItem('session:token', sessionToken)
    ```
-7. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
 
 ### 7. Plugins Best Practices
 
@@ -203,7 +201,7 @@ related:
 
 ### 4. UI And Assets
 
-- ใช้ `@nuxt/icon` ด้วย preset `mdi` สำหรับ icons ทั้งหมด
+- ใช้ `@nuxt/icon` ด้วย preset `mdi` สำหรับ icons ทั้งหมด — เลือก modules จาก official catalog https://nuxt.com/modules, templates จาก https://ui.nuxt.com/templates
 - Components ที่ใช้ซ้ำต้อง import จาก `components/ui/`
 - ใช้ `~/assets` สำหรับ processed files
 - ใช้ `~/public` สำหรับ static files
@@ -215,11 +213,10 @@ related:
 - ใช้ `Lazy` prefix สำหรับ lazy loading
 - หลีกเลี่ยง costly plugins
 
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create web nuxt)
+- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create web nuxt)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome

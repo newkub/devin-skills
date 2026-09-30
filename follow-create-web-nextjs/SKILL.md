@@ -3,12 +3,11 @@ name: follow-create-web-nextjs
 description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 16 applications
 argument-hint: "[scope]"
 related:
-  - review-architecture
+  - deep-review
   - follow-create-web
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - review-dependencies
   - run-dev
 ---
 
@@ -20,7 +19,8 @@ related:
 
 จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.3, Cache Components และ TypeScript
 
-- Latest: `next@16.3.6` / `react@19.3.0` (verified 2026-09-24)
+- Packages: `next` 16.x (Node >= 20.9, TypeScript >= 5.1, Turbopack เป็น stable default ทั้ง dev+build, React Compiler stable), `react`/`react-dom` 19.x — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Scaffold: `bun create next-app@latest my-app --ts --app --tailwind --src-dir --import-alias "@/*"` (Turbopack default; flags `--react-compiler`, `--biome`; fallback `next dev/build --webpack` ได้)
 
 ## Execute
 
@@ -35,7 +35,6 @@ related:
 5. สร้าง `app/error.tsx`, `loading.tsx`, `not-found.tsx` สำหรับ error handling
 6. ใช้ `app/api/` สำหรับ API routes
 7. ใช้ route groups `(group)` สำหรับ organize routes โดยไม่กระทบ URL
-8. ดูรายละเอียดใน [references/nextjs-core.md](references/nextjs-core.md)
 
 ### 2. Directory Organization
 
@@ -55,8 +54,7 @@ related:
 2. ตั้งค่า `tsconfig.json` ด้วย strict mode (TypeScript 5.1+)
 3. ตั้งค่า `package.json` scripts (dev, build, start, lint, typecheck)
 4. สร้าง `proxy.ts` สำหรับ auth checks เท่านั้น (ไม่ใช่ database calls) — แทน `middleware.ts`
-5. ใช้ Turbopack สำหรับ dev และ build (stable default ใน Next.js 16)
-6. ดูรายละเอียดใน [references/nextjs-core.md](references/nextjs-core.md)
+5. ใช้ Turbopack สำหรับ dev และ build (stable default ใน Next.js 16 — fallback `next dev --webpack` / `next build --webpack` เมื่อจำเป็น)
 
 ### 4. Server And Client Components
 
@@ -77,8 +75,7 @@ related:
 3. `params` และ `searchParams` เป็น `Promise` ใน Next.js 15+ ต้อง `await`
 4. ใช้ `'use cache'` directive สำหรับ Cache Components (Next.js 16 — explicit opt-in caching)
 5. ใช้ `generateMetadata` สำหรับ SEO ในทุก page
-6. ใช้ `generateStaticParams` สำหรับ static generation
-7. ดูรายละเอียดใน [references/nextjs-advanced.md](references/nextjs-advanced.md)
+6. ใช้ `generateStaticParams` สำหรับ static generation; invalidate cache ด้วย `updateTag()`/`revalidateTag()` จาก `next/cache`
 
 ### 6. Server Actions
 
@@ -165,12 +162,11 @@ related:
 - ห้ามทำ database calls ใน proxy
 - รันบน Edge Runtime
 
-- ใช้ /review-architecture ถ้าจำเป็น
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create web nextjs)
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create web nextjs)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
 ## Expected Outcome

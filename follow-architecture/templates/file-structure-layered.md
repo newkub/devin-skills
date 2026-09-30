@@ -107,4 +107,4 @@ project/
 - Public API ผ่าน `index.ts` barrel — ห้าม deep imports ข้าม layer
 - ใช้ path aliases ของ project แทน relative imports ข้าม folder
 - รักษา behavior เดิม — routes/pages ทำงานเหมือนก่อน restructure
-- app นี้โตเป็นหลาย apps ที่ต้องแชร์ domain → upgrade เป็น Clean (`/follow-clean-arch` `templates/file-structure.md`)
+- app นี้โตเป็นหลาย apps ที่ต้องแชร์ domain → upgrade เป็น Clean (`/follow-architecture` `### Pattern: Clean` — `templates/file-structure-clean.md`)

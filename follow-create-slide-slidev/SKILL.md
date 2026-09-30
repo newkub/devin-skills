@@ -264,7 +264,6 @@ Compact usage table (sync จาก upstream `skills/slidev/SKILL.md` — docs �
 - Export slides เมื่อพร้อมแชร์
 
 - ใช้ /create-slide-in-newkub-slides ถ้าจำเป็น
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create slide slidev)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

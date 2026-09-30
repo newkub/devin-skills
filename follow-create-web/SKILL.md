@@ -4,13 +4,11 @@ description: เลือกและสร้าง web project ตามปร
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
-  - review-dependencies
+  - deep-review
   - follow-lib-unocss
   - follow-robots-txt
   - follow-design-system
-  - review-uxui
   - follow-service-cloudflare
-  - review-frontend
   - run-dev
 
 ---
@@ -28,7 +26,6 @@ related:
 
 | Framework | Skill |
 |---|---|
-| Astro | `/follow-create-web-astro` |
 | Next.js | `/follow-create-web-nextjs` |
 | Nuxt | `/follow-create-web-nuxt` |
 | SvelteKit | `/follow-create-web-svelte` |
@@ -79,8 +76,8 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
-- ทำ `/review-seo` และ `/review-bundle` สำหรับ SEO/bundle
-- ทำ `/review-frontend` ก่อน deploy
+- ทำ `/deep-review` และ `/deep-review` สำหรับ SEO/bundle
+- ทำ `/deep-review` ก่อน deploy
 - ทำ `/implement-to-production` หลัง website เสร็จ
 
 ### 3. Safety
@@ -96,11 +93,11 @@ related:
 - ใช้ backticks สำหรับ paths, commands, skill names
 - รายงานด้วย `/report`
 
-- ใช้ /review-dependencies ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-lib-unocss ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น

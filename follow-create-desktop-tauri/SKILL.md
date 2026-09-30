@@ -8,7 +8,7 @@ related:
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - review-dependencies
+  - deep-review
 
 ---
 
@@ -134,11 +134,10 @@ desktop-apps/{project}/
 
 - ใช้ /follow-create-solid-tanstack สำหรับ frontend (Solid + TanStack Router + UnoCSS)
 - ใช้ /follow-create-tauri-plugin ถ้าจำเป็น
-- ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create desktop tauri)
+- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create desktop tauri)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น
 
 
