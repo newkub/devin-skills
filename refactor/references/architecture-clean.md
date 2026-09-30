@@ -2,52 +2,21 @@
 
 ## Goal
 
-Restructure target (default: ทุก package ใน `packages/` หรือ `crates/`) ให้เป็น Clean Architecture — pure domain core, application orchestration, ports & adapters — โดยรักษา behavior และ public API เดิม
+Restructure target (default: ทุก package ใน `packages/` หรือ `crates/` หรือหลาย `apps/*` ที่ต้อง unified support) ให้เป็น Clean Architecture — โดยรักษา behavior และ public API เดิม
 
-## Scope
+## Canonical Sources (SSOT)
 
-- ใช้กับ `packages/*`, `crates/*` (shared libraries, domain modules, Rust crates) และ target ที่ user ระบุชัดเจน
-- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `references/pattern-clean.md`
-- `apps/*` → ใช้ `references/architecture-layered.md` แทน
+- Workflow: `/follow-clean-arch` — dispatch ผ่าน `/follow-architecture` เท่านั้น
+- Pattern guide: `review-architecture/subagents/arch-reviewer/pattern-clean.md`
+- File structure + layer table: `follow-clean-arch/templates/file-structure.md`
 
 ## Steps
 
-### 1. Prepare
-
-> Goal: เข้าใจ structure ปัจจุบันและ blast radius
-
-1. ทำ `/scan-codebase` บน target — ระบุ domain logic, side effects, external deps
-2. อ่าน `references/pattern-clean.md` ของ `/review-architecture` — canonical guide สำหรับ structure, rules และ splitting thresholds
-3. ระบุ public API ปัจจุบัน (barrel `index`, exported symbols) — ต้องรักษาไว้
-4. หา consumers ของ package — ทำ `/update-references` ไว้ในแผน
-
-### 2. Restructure To Layers
-
-> Goal: code แยกตาม dependency direction — domain ไม่พึ่ง infrastructure
-
-1. สร้าง structure ตาม guide: `domain/` (pure types + logic), `application/` (use cases, ports), `infrastructure/` (adapters), entry ที่ `index`
-2. ย้าย pure logic → `domain/`; orchestration → `application/`; IO/framework → `infrastructure/` — ทำ `/refactor` ทีละ move
-3. กำหนด ports (interfaces) ที่ `application/` ต้องการ — adapters implement ฝั่ง infrastructure
-4. ทำ `/update-references` + structure refactor (`scope-structure.md`) หลังย้ายแต่ละชุด
-
-### 3. Verify
-
-> Goal: dependency direction ถูกต้องและ build ผ่าน
-
-1. ตรวจไม่มี import จาก `domain`/`application` ไป `infrastructure` — รัน `madge` หา circular deps ถ้ามี
-2. ทำ `/run-check` (lint/typecheck) และ test ของ package
-3. ทำ `/report-before-after` — structure เดิม vs ใหม่
+1. ทำ `/follow-architecture` กับ target — เลือก clean pattern → dispatch `/follow-clean-arch` โดยอัตโนมัติ
+2. ถ้าเจอ mixed concerns ระหว่างย้าย → ทำ `/separate-of-concerns` ก่อนจัด layer
+3. หลังย้ายแต่ละชุด → ทำ `/update-references` + `/run-check`
 
 ## Rules
 
-- Dependency direction: domain ← application ← infrastructure ← entry — ห้ามกลับทิศ
-- Domain ต้อง pure — ไม่มี IO, framework imports, side effects
-- Public API ผ่าน `index` เท่านั้น — ห้าม deep imports ข้าม layer จากภายนอก
+- ห้าม duplicate execute steps ที่นี่ — canonical อยู่ `/follow-clean-arch` เท่านั้น
 - รักษา behavior เดิม — ทดสอบต้องผ่านเหมือนก่อน restructure
-- ใช้ /refactor, /update-references ถ้าจำเป็น
-
-## Expected Outcome
-
-- Package เป็น Clean Architecture: `domain/` pure, `application/` orchestrate ผ่าน ports, `infrastructure/` implement adapters
-- ไม่มี circular dependencies; public API เดิมยังใช้ได้
-- ผ่าน `/run-check` และ tests

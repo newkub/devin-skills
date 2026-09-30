@@ -24,6 +24,8 @@ related:
   - follow-my-techstack
   - use-lib-effective
   - review-architecture
+  - follow-architecture
+  - separate-of-concerns
   - review-database
   - deep-review
   - deep-validate
@@ -46,7 +48,8 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
-- ถ้า context คือจัด architecture ตาม directory (`packages/`/`crates/` = clean, `apps/` = layered) → ทำ architecture refactor — เลือก pattern ตาม target table ใน step 5
+- ถ้า context คือจัด architecture ตาม directory หรือเลือก clean/layered → ทำ architecture refactor — selection + dispatch ผ่าน `/follow-architecture` (หลาย apps unified → clean, app เดียว → layered)
+- ถ้า context คือไฟล์/โมดูลที่รวมหลาย concerns ปนกัน (UI + logic + IO + config ในที่เดียว) → ใช้ `/separate-of-concerns`
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
 - ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` + `references/repository-pattern.md`
 - ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ทำ structure refactor ตาม `references/scope-structure.md`
@@ -74,10 +77,11 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/review-code-quality` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor
-10. ถ้า argument/context เป็น `orm` หรือ data access restructure → data access refactor
-11. ถ้า argument/context เป็น `structure` หรือ physical file/folder restructure → structure refactor
-12. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor (dispatch `/follow-architecture`)
+10. ถ้า argument/context คือ concerns ปนกันในไฟล์/โมดูล → `/separate-of-concerns`
+11. ถ้า argument/context เป็น `orm` หรือ data access restructure → data access refactor
+12. ถ้า argument/context เป็น `structure` หรือ physical file/folder restructure → structure refactor
+13. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -99,17 +103,11 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 ### 5. Architecture Refactor
 
-> Goal: apply architecture pattern ให้ target — `packages/`/`crates/` = Clean, `apps/` = Layered
+> Goal: apply architecture pattern ให้ target — selection + execution dispatch ผ่าน `/follow-architecture`
 
-| Target | Pattern |
-|--------|---------|
-| `packages/*`, `crates/*` (shared libs, domain packages) | Clean → `references/architecture-clean.md` |
-| `apps/*` (web, mobile, api entry points) | Layered → `references/architecture-layered.md` |
-| directory อื่นหรือไม่ใช่ monorepo | เลือกตามลักษณะ code (testability สูง/domain-heavy → clean; UI-driven/CRUD → layered) — ไม่ชัดให้ `/ask-me` |
-
-1. เลือก target+pattern: argument `clean`/`layered` → pattern นั้น; argument เป็น path → map ตามตาราง; ไม่ระบุ → scan root (`packages/`/`crates/` → clean ทุกตัว, `apps/` → layered ทุกตัว; หลายกลุ่ม → ทีละอันตาม severity)
-2. Clean Architecture → ทำตาม [references/architecture-clean.md](references/architecture-clean.md)
-3. Layered Architecture → ทำตาม [references/architecture-layered.md](references/architecture-layered.md)
+1. ทำ `/follow-architecture` กับ target — เลือก pattern ตาม context (หลาย `apps/*` unified → clean; app เดียว/`apps/*` → layered; `packages/`/`crates/` → clean); argument `clean`/`layered` → pattern นั้นโดยตรง
+2. Detail procedure ตาม [references/architecture-clean.md](references/architecture-clean.md) / [references/architecture-layered.md](references/architecture-layered.md) เมื่อต้องการรายละเอียดใน refactor context
+3. ถ้าเจอ mixed concerns ระหว่าง restructure → ทำ `/separate-of-concerns` แยก concern ก่อนจัด layer
 4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; หลังแต่ละ target → `/update-references` + `/run-check` ก่อน target ถัดไป
 5. Canonical pattern detail อยู่ที่ `/review-architecture` `## Pattern Guides` (SSOT); microservices ไม่ครอบคลุม — อ่าน `### Pattern: Microservices Architecture` ที่นั่นโดยตรง
 

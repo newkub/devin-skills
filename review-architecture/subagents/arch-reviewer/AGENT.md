@@ -30,6 +30,8 @@ arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที
 
 | Dimension | File |
 |-----------|------|
+| pattern-clean | `pattern-clean.md` |
+| pattern-layered | `pattern-layered.md` |
 | pattern-microservices | `pattern-microservices.md` |
 
 ## Execute

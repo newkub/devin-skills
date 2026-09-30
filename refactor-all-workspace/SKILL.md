@@ -44,7 +44,7 @@ Refactor ทุก workspace ใน monorepo อย่างเป็นระ�
 2. เลือก scope ต่อ workspace:
    - restructure members/boundaries → ทำ `/refactor-workspace`
    - refactor ทุกไฟล์ใน workspace → ทำ `/refactor-all-files-in-workspace`
-   - architecture pattern → `/refactor` architecture scope (`packages/`/`crates/` → `/follow-clean-arch`, `apps/` → `/follow-layered-arch`)
+   - architecture pattern → `/refactor` architecture scope → `/follow-architecture` (หลาย `apps/*` unified + `packages/`/`crates/` → clean, app เดียว → layered)
    - extract shared code ข้าม packages → ทำ `/refactor-to-packages-shared`
 3. workspace อิสระกันจำนวนมาก → ทำ `/use-subagents` dispatch ทีละ workspace/batch ขนานกัน; workspaces ที่แก้ shared refs ชนกัน → sequential
 4. หลังแต่ละ workspace → `/update-references` + `/run-check` ก่อน workspace ถัดไป; `/git-commit` checkpoint ทุก workspace

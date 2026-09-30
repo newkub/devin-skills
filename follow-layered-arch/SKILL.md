@@ -4,7 +4,9 @@ description: Restructure target เป็น Layered Architecture — presentati
 argument-hint: "[target-path]"
 related:
   - refactor
+  - follow-architecture
   - follow-clean-arch
+  - separate-of-concerns
   - review-architecture
   - scan-codebase
   - update-references
@@ -19,10 +21,11 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 
 ## Scope
 
-- ใช้กับ `apps/*` (web, mobile, api entry points) และ target ที่ user ระบุชัดเจน
-- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `references/pattern-layered.md` (รวม Nuxt-specific)
-- `packages/*`, `crates/*` → ใช้ `/follow-clean-arch` แทน
-- ถูก dispatch จาก `/refactor` architecture scope (`apps/` → layered)
+- ใช้กับ app เดียว — `apps/*` ตัวเดียว หรือ single-app project (web, mobile, api entry points) และ target ที่ user ระบุชัดเจน
+- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `subagents/arch-reviewer/pattern-layered.md`
+- File structure + layer table (canonical): [templates/file-structure.md](templates/file-structure.md)
+- หลาย `apps/*` ต้อง unified support หรือ `packages/*`, `crates/*` → ใช้ `/follow-clean-arch` แทน
+- ถูก dispatch จาก `/follow-architecture` และ `/refactor` architecture scope
 
 ## Execute
 
@@ -31,18 +34,20 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 > Goal: เข้าใจ structure ปัจจุบันและเลือก layered variant ที่เหมาะ
 
 1. ทำ `/scan-codebase` บน target — ระบุ routes/pages, business logic, data access
-2. อ่าน `references/pattern-layered.md` ของ `/review-architecture` — เลือก variant (traditional / feature-based / four-layer / hybrid) ตามขนาด app
-3. ระบุ public API และ route entry points ปัจจุบัน — ต้องรักษาไว้
-4. วางแผน layer mapping: presentation (pages/routes/components/controllers), domain (use cases/services), data (repositories/clients)
+2. อ่าน `subagents/arch-reviewer/pattern-layered.md` ของ `/review-architecture` — เลือก variant (traditional / feature-based / four-layer / hybrid) ตามขนาด app
+3. อ่าน [templates/file-structure.md](templates/file-structure.md) — canonical file structure + layer table ของ target
+4. ระบุ public API และ route entry points ปัจจุบัน — ต้องรักษาไว้
+5. วางแผน layer mapping: presentation (pages/routes/components/controllers), domain (use cases/services), data (repositories/clients)
 
 ### 2. Restructure To Layers
 
 > Goal: code แยกตาม layer — ไม่ bypass, dependencies ชี้ลงทางเดียว
 
-1. สร้าง structure ตาม variant ที่เลือกจาก guide
+1. สร้าง structure ตาม variant ที่เลือกจาก guide — baseline ตาม [templates/file-structure.md](templates/file-structure.md)
 2. ย้าย UI/routes → presentation; business rules → domain; persistence/external calls → data — ทำ `/refactor` ทีละ move
-3. Enforce dependencies: presentation → domain → data เท่านั้น; public API ผ่าน `index` barrel ต่อ layer
-4. Align tests ตาม layers; ทำ `/update-references` + structure refactor (`/refactor` structure scope) หลังย้ายแต่ละชุด
+3. ถ้า concerns ปนกันในไฟล์เดียว (handler + logic + query) → ทำ `/separate-of-concerns` แยก concern ก่อนจัด layer
+4. Enforce dependencies: presentation → domain → data เท่านั้น; public API ผ่าน `index` barrel ต่อ layer
+5. Align tests ตาม layers; ทำ `/update-references` + structure refactor (`/refactor` structure scope) หลังย้ายแต่ละชุด
 
 ### 3. Verify
 
@@ -58,13 +63,9 @@ Restructure target (default: ทุก app ใน `apps/`) ให้เป็น
 - Public API ผ่าน `index` entry point ของแต่ละ layer — ห้าม deep imports
 - ใช้ path aliases ของ project แทน relative imports ข้าม layer
 - รักษา behavior เดิม — routes/pages ทำงานเหมือนก่อน restructure
-- ใช้ /refactor, /update-references ถ้าจำเป็น
+- ใช้ /refactor, /update-references, /separate-of-concerns ถ้าจำเป็น
 
-| No. | Layer | File Structure | Tests | Deps | Risk |
-|-----|-------|----------------|-------|------|------|
-| 1 | presentation | pages/routes/components/controllers | component + e2e tests | → domain เท่านั้น — ห้ามเรียก data ตรง | ต่ำ |
-| 2 | domain | use cases/services + barrel `index` | unit tests | → data เท่านั้น | สูง — business rules |
-| 3 | data | repositories/clients + barrel `index` | integration tests | leaf — ไม่ import layer อื่น | กลาง |
+File structure และ layer table ฉบับเต็ม → [templates/file-structure.md](templates/file-structure.md)
 
 ## Expected Outcome
 
