@@ -1,5 +1,5 @@
 ---
-name: follow-create-mobile-cross-capacitor
+name: follow-create-mobile-cross-with-capacitor
 description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
 argument-hint: "[scope]"
 related:
@@ -8,6 +8,7 @@ related:
   - follow-tool-vite
   - learn
   - follow-deploy
+  - follow-create-mobile
 
 ---
 ## Goal
@@ -73,7 +74,8 @@ related:
 5. ใช้ `includePlugins` สำหรับ allowlist plugins ใน `cap sync`
 6. ตรวจสอบ plugin versions ให้เข้ากันกับ Capacitor major version
 7. ใช้ Capacitor 8 compatible plugins เท่านั้น
-8. ทำ `/learn-from-web` เมื่อต้องการค้นหา plugins ใหม่
+8. เลือก official plugin จาก `## Official Plugins Catalog` ด้านล่าง — ครบทุกตัวที่ Capacitor team maintain
+9. ทำ `/learn-from-web` เมื่อต้องการ community/third-party plugins เพิ่มเติม
 
 ### 5. Platform Development
 

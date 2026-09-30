@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **721** top-level skills (~941 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills` (`## Conventions → Subskills And Subagents`). Fix workflows live in `## Fix` sections (`deep-review/references/review-fix.md`), not `fix-*` subskills.
+The repository currently contains **724** top-level skills (~941 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills` (`## Conventions → Subskills And Subagents`). Fix workflows live in `## Fix` sections (`deep-review/references/review-fix.md`), not `fix-*` subskills.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 

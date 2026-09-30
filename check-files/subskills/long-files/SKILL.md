@@ -5,7 +5,6 @@ argument-hint: "[threshold]"
 related:
   - check-code-structure
   - refactor
-  - report-scan-todo
 
 ---
 ## Goal
@@ -59,7 +58,6 @@ Skill นี้ใช้ Rust CLI แทน Bun/TS CLI เพราะต้อ�
 
 - ใช้ /check-code-structure ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
-- ใช้ /report-scan-todo ถ้าจำเป็น
 
 ## Expected Outcome
 

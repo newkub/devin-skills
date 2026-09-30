@@ -1,6 +1,6 @@
 ---
 name: follow-create-mobile
-description: สร้าง mobile app — native หรือ cross-platform ผ่าน follow-create-mobile-* skills
+description: สร้าง mobile app — native (Kotlin Multiplatform) หรือ cross-platform (Capacitor)
 argument-hint: "[domain]"
 related:
   - follow-create-web
@@ -24,14 +24,13 @@ Dispatch ไป skill ตาม mobile target — parent ทำ routing เท�
 
 | Domain | Skill |
 |---|---|
-| `ios` | `/follow-create-mobile-ios` — native iOS ด้วย Swift + SwiftUI |
-| `android` | `/follow-create-mobile-android` — native Android ด้วย Kotlin |
-| `cross-capacitor` | `/follow-create-mobile-cross-capacitor` — web stack + Capacitor |
-| `cross-flutter` | `/follow-create-mobile-cross-flutter` — Flutter cross-platform |
+| `native`, `ios`, `android`, `kmp` | `/follow-create-ios-android-native-by-kotlin-multiplatform` — native iOS+Android ด้วย Kotlin Multiplatform |
+| `cross-capacitor`, `capacitor` | `/follow-create-mobile-cross-with-capacitor` — web stack + Capacitor |
 
-1. ระบุ domain จาก argument (เช่น `/follow-create-mobile ios`)
-2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. ทำ `/deep-research` + `/follow-best-practice` สำหรับ platform ที่เลือก ตาม conventions ใน `/update-devin-global-skills` (ทำใน target skill ที่ dispatch ไป)
+2. ระบุ domain จาก argument (เช่น `/follow-create-mobile ios`)
+3. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
+4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 

@@ -7,7 +7,7 @@ related:
   - plan
   - rethink
   - deep-thinking
-  - report-scan-todo
+  - update-todo-md
   - report-file-structure
 ---
 
@@ -75,7 +75,7 @@ related:
 ### 4. Use Reports
 
 - ถ้าต้องการแสดง plan ละเอียด → ใช้ `/plan`
-- ถ้าต้องการแสดง todo list → ใช้ `/report-scan-todo`
+- ถ้าต้องการแสดง todo list → ใช้ `/update-todo-md` (อ่าน `TODO.md`) หรือ `/list-todo-gist` (gist)
 - ถ้าต้องการแสดง file structure → ใช้ `/report-file-structure`
 
 - ใช้ /rethink ถ้าจำเป็น

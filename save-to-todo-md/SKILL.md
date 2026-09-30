@@ -4,7 +4,8 @@ description: เก็บงานค้าง/ขั้นตอนที่ย
 argument-hint: "[title-or-auto]"
 related:
   - update-docs
-  - report-scan-todo
+  - update-todo-md
+  - save-to-todo-gist
   - implement-to-production
   - report-progress
   - report
@@ -95,5 +96,5 @@ related:
 
 - งานค้างทั้งหมดถูกเก็บใน `TODO.md` เป็น tracked items พร้อม priority และเหตุ
 - ไม่มี items ซ้ำกับที่มีอยู่
-- Session หน้า resume ได้จาก TODO.md ผ่าน `/report-scan-todo` และ `/implement-to-production`
+- Session หน้า resume ได้จาก TODO.md ผ่าน `/update-todo-md` และ `/implement-to-production`
 
