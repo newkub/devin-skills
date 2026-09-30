@@ -7,7 +7,6 @@ related:
   - deploy-to-cloudflare
   - follow-service-cloudflare
   - open-web-for-config-secret
-  - open
 
 ---
 

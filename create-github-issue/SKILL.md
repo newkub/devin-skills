@@ -8,7 +8,6 @@ related:
   - create-github
   - update-github-issue
   - ask-me
-  - open
   - list-github
 
 ---

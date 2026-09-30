@@ -127,7 +127,6 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 3 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
 | 4 | `deep-review` | `deep-review` | verify docs routes ต่อ site section |
 | 5 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
-| 6 | `morning-briefing` | `morning-briefing/subagents/signal-collector.md` | collect signal type เดียว |
 | 7 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
 | 8 | `update-all-program-in-computer` | `update-all-program-in-computer/subagents/program-updater.md` | update program เดียวผ่าน package manager |
 | 9 | `implement-features-to-mvp` | `implement-features-to-mvp/subagents/feature-implementer.md` | implement feature เดียว end-to-end |

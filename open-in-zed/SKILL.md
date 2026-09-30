@@ -5,7 +5,6 @@ argument-hint: "[path]"
 related:
   - follow-create-plugins
   - open-in-devin
-  - open
 ---
 
 ## Goal

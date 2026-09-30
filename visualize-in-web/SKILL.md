@@ -4,9 +4,8 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
 argument-hint: "[scope]"
 related:
   - report
-  - open
   - open-files-in-web
-  - open-readme-html
+  - report-readme-html
   - run-test
 
 ---
@@ -50,7 +49,7 @@ related:
 1. ทำ `/report html` สำหรับ HTML structure พื้นฐาน
 2. ใช้ runtime ที่เลือกจากข้อ 2
 3. ใช้ Tailwind CSS สำหรับ styling
-4. ถ้าต้องการ tab system ให้อ้างอิง `/open-readme-html`
+4. ถ้าต้องการ tab system ให้อ้างอิง `/report-readme-html`
 5. สร้างไฟล์ใน OS temp directory:
    - Windows: `$env:TEMP\visualize-<name>.html`
    - macOS/Linux: `tmp/visualize-<name>.html`
@@ -93,7 +92,7 @@ related:
 - เลือก frontend runtime ตาม user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
 - ใช้ Tailwind CSS CDN
 - รองรับ dark mode
-- ถ้าต้องการ Element Plus components ให้อ้างอิง `/open-readme-html`
+- ถ้าต้องการ Element Plus components ให้อ้างอิง `/report-readme-html`
 
 ### 3. No Build
 

@@ -6,7 +6,6 @@ related:
   - convert
   - deep-review
   - visualize-in-web
-  - open
   - open-files-in-web
   - gen-media
 ---

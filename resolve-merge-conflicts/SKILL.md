@@ -94,7 +94,6 @@ related:
 - ถ้า rebase มีหลาย conflict ให้ squash ถ้าเหมาะสม
 
 - ใช้ /idea-merge ถ้าจำเป็น
-- ใช้ /merge-git-branch ถ้าจำเป็น
 - ใช้ /merge-github-pr ถ้าจำเป็น
 
 ## Merged Details

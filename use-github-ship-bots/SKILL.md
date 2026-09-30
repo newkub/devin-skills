@@ -23,7 +23,6 @@ related:
   - setup-cicd
   - deploy-to-cloudflare
   - deploy-to-vercel
-  - open
   - report-progress
 
 ---

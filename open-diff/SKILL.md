@@ -6,7 +6,6 @@ related:
   - follow-create-web
   - follow-lib-unocss
   - use-gh-cli
-  - open
   - report-git-diff
   - deep-review
 ---

@@ -6,7 +6,6 @@ related:
   - follow-create-rust-crate
   - follow-create-sdk
   - follow-lang-rust
-  - open
   - deep-review
   - report
 

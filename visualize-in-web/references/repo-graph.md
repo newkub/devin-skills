@@ -17,7 +17,6 @@ related:
   - alternative
   - review-frontend
   - resolve-errors
-  - open
   - ship-to-dev-branch
   - suggest-next-action
 ---

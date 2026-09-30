@@ -6,7 +6,6 @@ related:
   - check-open-ports
   - resolve-errors
   - watch-terminal
-  - open
   - watch-browser
   - test-usage
   - run-verify

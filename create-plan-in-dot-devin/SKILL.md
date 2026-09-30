@@ -11,7 +11,6 @@ related:
   - report-architecture-diagram
   - implement-to-production
   - ask-me
-  - open
 ---
 
 ## Goal

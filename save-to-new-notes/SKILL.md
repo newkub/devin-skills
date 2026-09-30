@@ -4,7 +4,6 @@ description: สร้าง note ใหม่ใน repo D:\newkub\notes จา
 argument-hint: "[scope]"
 related:
   - list-newkub-notes
-  - open
 
 ---
 

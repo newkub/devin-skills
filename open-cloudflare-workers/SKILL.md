@@ -3,7 +3,6 @@ name: open-cloudflare-workers
 description: เปิดหน้า Cloudflare Workers dashboard ใน browser
 argument-hint: "[account-id]"
 related:
-  - open
   - list-cloudflare-projects
   - resolve-errors
   - follow-service-cloudflare

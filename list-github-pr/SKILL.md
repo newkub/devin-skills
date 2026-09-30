@@ -3,7 +3,6 @@ name: list-github-pr
 description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
 argument-hint: "[repo]"
 related:
-  - open
   - create-github
   - review-github-pr
   - report

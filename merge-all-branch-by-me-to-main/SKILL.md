@@ -61,7 +61,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 > Goal: merge branch ของ user เข้า main ตามลำดับความเสี่ยง
 
 1. เรียง branches: merged-already → fast-forward-able → unmerged (เสี่ยง conflict น้อย → มาก)
-2. ทำ `/merge-git-branch` หรือ `git merge <branch>` ทีละ branch — ใช้ `--no-ff` ถ้า project ต้องการ history
+2. ทำ `git merge <branch>` ทีละ branch — ใช้ `--no-ff` ถ้า project ต้องการ history
 3. ถ้า conflict → ทำ `/resolve-merge-conflicts` หรือหยุดและ report branch นั้น
 4. หลังแต่ละ merge ให้ verify build/test ตาม `AGENTS.md` ถ้ากำหนดไว้
 

@@ -6,7 +6,6 @@ related:
   - deep-review
   - follow-lib-drizzle
   - resolve-errors
-  - open
 ---
 
 ## Goal

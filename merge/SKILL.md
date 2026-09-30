@@ -108,7 +108,6 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 
 | Domain | Skill |
 |--------|----------|
-| `git-branch` | /merge-git-branch — merge feature branch `--no-ff` + push + cleanup |
 | `github-pr` | /merge-github-pr — merge PR ด้วย strategy ที่เหมาะสม |
 | `all-branch-by-me-to-main` | /merge-all-branch-by-me-to-main — merge ทุก branch ของ user เข้า `main` |
 

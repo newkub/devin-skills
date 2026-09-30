@@ -5,7 +5,6 @@ argument-hint: "[path]"
 related:
   - create-report-in-dot-devin
   - list-devin
-  - open
 ---
 
 ## Goal

@@ -4,7 +4,6 @@ description: เปิดเบราว์เซอร์และ watch termin
 argument-hint: "[scope|report]"
 related:
   - capture
-  - open
   - record-video-terminal-with-asciinema
   - resolve-errors
   - run-watch

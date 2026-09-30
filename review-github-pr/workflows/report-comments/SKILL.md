@@ -4,7 +4,6 @@ description: สร้าง PR review comment set — inline comments พร้
 argument-hint: "[pr-number]"
 related:
   - report
-  - open
   - merge
 ---
 
@@ -41,7 +40,7 @@ related:
 
 1. Critical/High inline comments ก่อน → suggestions → nits
 2. จำกัด nit comments — เกิน ~3 ให้รวมเป็น single style note
-3. รายงาน draft ในแชท — submit เฉพาะเมื่อ user confirm (`/open` หรือ gh CLI ตามที่ user เลือก)
+3. รายงาน draft ในแชท — submit เฉพาะเมื่อ user confirm (`/open-web` หรือ gh CLI ตามที่ user เลือก)
 
 ## Rules
 

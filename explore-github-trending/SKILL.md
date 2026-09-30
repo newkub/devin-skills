@@ -4,7 +4,6 @@ description: สำรวจ repository ทีกำลัง trending บน Gi
 argument-hint: "[language] [daily|weekly|monthly]"
 related:
   - search
-  - open
   - report
   - enhance-prompt
   - ask-me

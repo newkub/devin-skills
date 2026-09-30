@@ -3,7 +3,6 @@ name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 argument-hint: "[pr-number]"
 related:
-  - open
   - list-github
   - merge
   - resolve-errors

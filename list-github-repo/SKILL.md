@@ -15,7 +15,6 @@ triggers:
   - user
   - model
 related:
-  - open
   - all-github-repo
   - list-github
   - list-projects-git-in-drive-d

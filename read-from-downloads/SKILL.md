@@ -17,7 +17,6 @@ related:
   - check-screenshots-dir
   - capture
   - deep-review
-  - open
 ---
 
 ## Goal

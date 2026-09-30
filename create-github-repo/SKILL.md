@@ -6,7 +6,6 @@ related:
   - git-commit
   - git-push
   - follow-gitignore
-  - open
 
 ---
 

@@ -7,7 +7,6 @@ related:
   - refactor-commit
   - update-github-metadata
   - resolve-errors
-  - open
 
 ---
 

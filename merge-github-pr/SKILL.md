@@ -8,7 +8,6 @@ related:
   - git-commit
   - git-push
   - deep-validate
-  - open
   - review-github-pr
 ---
 

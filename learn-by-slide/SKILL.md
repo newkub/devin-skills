@@ -6,7 +6,6 @@ related:
   - learn
   - create-slide-in-newkub-slides
   - translate-to-lang-th
-  - open
   - follow-create-slide-slidev
 ---
 

@@ -4,7 +4,6 @@ description: เปิดไฟล์หรือ directory ใน Windows Explo
 argument-hint: "[path]"
 related:
   - open-in-devin
-  - open
 ---
 
 ## Goal

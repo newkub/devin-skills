@@ -5,7 +5,6 @@ argument-hint: "[program-name]"
 related:
   - update-all-program-in-computer
   - use-pwsh-shell
-  - open
   - search
   - follow-best-practice
   - enhance-prompt

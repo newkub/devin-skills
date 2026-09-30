@@ -4,7 +4,6 @@ description: เปิด directory ใน WezTerm terminal ด้วย wezterm
 argument-hint: "[path]"
 related:
   - open-in-devin
-  - open
 ---
 
 ## Goal

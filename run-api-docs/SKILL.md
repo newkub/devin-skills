@@ -6,7 +6,6 @@ related:
   - follow-tool-scalar
   - review-api
   - run-dev
-  - open
   - resolve-errors
 
 ---

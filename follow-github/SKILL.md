@@ -8,7 +8,6 @@ related:
   - report
   - suggest-next-action
   - follow-git-flow
-  - open
 
 ---
 

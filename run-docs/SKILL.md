@@ -9,7 +9,6 @@ related:
   - deep-debug
   - resolve-errors
   - watch-browser
-  - open
 
 ---
 

@@ -6,7 +6,6 @@ related:
   - update-project
   - follow-tool-github-actions
   - follow-secret-manager
-  - open
   - follow-tasks
   - deep-review
   - run-verify

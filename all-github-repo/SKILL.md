@@ -13,7 +13,6 @@ triggers:
   - model
 related:
   - list-github
-  - open
   - search
   - report
   - suggest-next-action
