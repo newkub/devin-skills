@@ -140,6 +140,15 @@ related:
 9. ใช้ `@capgo/capacitor-native-biometric` สำหรับ biometric authentication
 10. ตั้งค่า `webContentsDebuggingEnabled: false` ใน production
 
+### 10. Migration And Testing
+
+> Goal: migrate ระหว่าง major versions และทดสอบอย่างครบถ้วน
+
+1. Migrate major version: `bun add -D @capacitor/cli@latest` แล้วรัน `npx cap migrate` — ตรวจ breaking changes ของทุก plugin และอัพเดท SDK targets ตาม Rules §1
+2. อย่าใช้ `cap migrate` ใน monorepo — migrate ด้วยมือ (ดู Rules §6)
+3. เช็ค platform gotchas ของ major ใหม่ (เช่น Capacitor 8: `@capacitor/system-bars` แทน `adjustMarginsForEdgeToEdge`, iOS `appendUserAgent` whitespace fix)
+4. ทดสอบบน real devices + emulators หลายรุ่น — plugin functionality, offline/network transitions, push/local notifications, deep links, OTA flow + rollback, biometric, app lifecycle, WebView edge cases (process termination, memory pressure)
+
 ## Rules
 
 ### 1. Version Requirements
@@ -150,9 +159,9 @@ Capacitor 8 requirements:
 - Xcode >= 26.0, iOS deployment target >= 15
 - Android minSdkVersion >= 24, compileSdkVersion >= 36, targetSdkVersion >= 36
 - JDK >= 21
-- Android Studio >= Otter 2025.2.1 (latest stable: Quail 4 `2026.1.4`)
-- Kotlin >= 2.2.20 (latest `2.4.20`, verified 2026-09-12)
-- Gradle plugin >= 8.13.0, wrapper >= 8.14.3 (ถ้าใช้ AGP 9.x ต้องใช้ Gradle 9.x)
+- Android Studio >= Otter 2025.2.1 (เช็ค latest stable ด้วย `/deep-research`)
+- Kotlin >= 2.2.20
+- Gradle plugin >= 8.13.0, wrapper >= 8.14.3 (ถ้าใช้ AGP 9.x ต้องใช้ Gradle 9.x + JDK 21)
 
 ### 2. Configuration Rules
 

@@ -60,12 +60,12 @@ Restructure target (default: ทุก package ใน `packages/` หรือ `
 - รักษา behavior เดิม — ทดสอบต้องผ่านเหมือนก่อน restructure
 - ใช้ /refactor, /update-references ถ้าจำเป็น
 
-| No. | Layer | File Structure | Tests | Deps | Risk |
-|-----|-------|----------------|-------|------|------|
-| 1 | `domain/` | pure types + logic เท่านั้น | unit tests pure — ไม่ mock IO | ไม่ import จาก layer อื่น | สูง — core logic ห้ามพึ่ง infra |
-| 2 | `application/` | use cases + ports (interfaces) | unit tests ด้วย mock ports | → `domain/` เท่านั้น | กลาง — orchestration |
-| 3 | `infrastructure/` | adapters implement ports | integration tests | → `application/` ports, `domain/` | กลาง — IO/framework |
-| 4 | `index` | barrel exports เท่านั้น | smoke test public API | → ทุก layer (composition root) | ต่ำ |
+| No. | Layer | File Structure | Naming | Exports | Tests | Deps | Risk |
+|-----|-------|----------------|--------|---------|-------|------|------|
+| 1 | `domain/` | pure types + logic เท่านั้น | entities/value objects ตาม business terms — ไม่มี tech suffix | types + pure functions | unit tests pure — ไม่ mock IO | ไม่ import จาก layer อื่น | สูง — core logic ห้ามพึ่ง infra |
+| 2 | `application/` | use cases + ports (interfaces) | `*UseCase`/`*.use-case`, ports = `*Port` หรือ interface ตาม convention | use cases, port types | unit tests ด้วย mock ports | → `domain/` เท่านั้น | กลาง — orchestration |
+| 3 | `infrastructure/` | adapters implement ports | `*Adapter`/`*Repository`/`*.impl` ผูกกับ tech ที่ใช้ | concrete adapters | integration tests | → `application/` ports, `domain/` | กลาง — IO/framework |
+| 4 | `index` | barrel exports เท่านั้น | re-export เท่านั้น — ไม่มี logic | public API ทั้งหมด | smoke test public API | → ทุก layer (composition root) | ต่ำ |
 
 ## Expected Outcome
 
