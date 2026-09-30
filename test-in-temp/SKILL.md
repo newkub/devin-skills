@@ -1,5 +1,5 @@
 ---
-name: try-in-temp
+name: test-in-temp
 description: รันคำสั่งหรือการทดลองใน OS temp directory โดยไม่แตะต้อง workspace
 argument-hint: "<command-or-experiment>"
 allowed-tools:
@@ -19,7 +19,7 @@ related:
   - run-check
   - deep-validate
   - resolve-errors
-  - review-dependencies
+  - deep-review
   - use-scripts
 ---
 
@@ -31,7 +31,7 @@ related:
 
 ใช้เมื่อผู้ใช้ต้องการทดลองบางสิ่งโดยไม่เปลี่ยนแปลงโปรเจกต์จริง ใช้ได้กับสคริปต์ติดตั้ง คำสั่ง build การทดสอบ package manager ต้นแบบอย่างรวดเร็ว และการทดลองครั้งเดียว
 
-ดูเพิ่มเติม: /run-program, /run-check, /deep-validate, /resolve-errors, /review-dependencies, /use-scripts
+ดูเพิ่มเติม: /run-program, /run-check, /deep-validate, /resolve-errors, /deep-review, /use-scripts
 
 ## Execute
 
@@ -39,7 +39,7 @@ related:
 
 > Goal: เตรียม temp directory
 
-1. สร้าง temp directory ใหม่ภายใต้ `%TEMP%\try-in-temp-<random>` โดยใช้ `[System.IO.Path]::GetTempPath()` และ `New-Item -ItemType Directory`
+1. สร้าง temp directory ใหม่ภายใต้ `%TEMP%\test-in-temp-<random>` โดยใช้ `[System.IO.Path]::GetTempPath()` และ `New-Item -ItemType Directory`
 2. บันทึกเส้นทางไว้ใน `todo_write`
 3. ถ้าผู้ใช้ต้องการเริ่มต้นจากไฟล์ที่มีอยู่ ให้คัดลอกไฟล์หรือไดเรกทอรีที่จำเป็นเข้าไปใน temp directory
 4. ถ้าการทดลองต้องการ scaffold เฉพาะเจาะจง ให้สร้างไฟล์ขั้นต่ำที่จำเป็น
