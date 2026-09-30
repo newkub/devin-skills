@@ -3,8 +3,7 @@ name: run-load-test
 description: รัน load test กับ endpoints ด้วย k6 หรือ autocannon วัด throughput, latency และ breaking point
 argument-hint: "[url-or-endpoints] [--vus N] [--duration Ns]"
 related:
-  - review-performance
-  - check-bottlenecks
+  - deep-review
   - run-profiler
   - check-open-ports
   - report-before-after
@@ -24,7 +23,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-performance` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (load test)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (load test)
 
 ### 1. Prepare Target
 
@@ -57,7 +56,7 @@ related:
 > Goal: ตีความผลและแนะนำ
 
 1. ใช้ `/report-before-after` หรือ table: `No.`, `Endpoint`, `RPS`, `p50`, `p95`, `p99`, `Errors`, `Verdict`
-2. ระบุ bottleneck ที่เห็น (CPU-bound, connection limits, DB saturation) — ส่งต่อ `/check-bottlenecks` หรือ `/run-profiler` ถ้าต้อง drill down
+2. ระบุ bottleneck ที่เห็น (CPU-bound, connection limits, DB saturation) — ส่งต่อ `/deep-optimize` หรือ `/run-profiler` ถ้าต้อง drill down
 3. เทียบ baseline ก่อนหน้าถ้ามี — flag regression
 4. บันทึก k6 script ที่ใช้ไว้ใน `.devin/` ถ้า user ต้องการรันซ้ำ
 

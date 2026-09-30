@@ -31,7 +31,7 @@
 
 > Goal: แปลง spec เป็น runnable collection เมื่อทีมใช้ Bruno
 
-1. Export spec จาก code — `/gen-openapi` หรือ framework generator (Elysia/Hono/Fastify route, oRPC `OpenAPIGenerator`)
+1. Export spec จาก code — framework generator (Elysia/Hono/Fastify route, oRPC `OpenAPIGenerator`)
 2. ถ้า spec เป็น Postman collection → แปลงด้วย `bunx scalar document convert <collection.json>`
 3. Import เข้า Bruno: `bru import openapi --source <spec> --output tests/api --collection-name "API"` (default `opencollection`; ใช้ `--collection-format=bru` ถ้าต้องการ classic `.bru`)
 4. เพิ่ม assertions/`tests` blocks ใน requests ที่สร้าง — import ให้เฉพาะ request shape ไม่ใช่ assertions
@@ -63,7 +63,7 @@
 3. Classify severity ต่อ route: `ok` (2xx), `redirect` (3xx — API ไม่ควร redirect), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx ผิด expected, timeout, DNS/TLS), `skipped` (non-safe method), `missing` (อยู่ใน spec แต่ 404)
 4. Report table: `No.`, `Method`, `Route`, `Status`, `Expected`, `Time (ms)`, `Severity`, `Recommendation`; persist → `.devin/temp/report/<workspace>/api-routes-<time>.md`
 5. ถ้า routes เยอะและแบ่ง group ได้ → spawn `subagents/route-checker.md` ทีละ group ผ่าน `/use-subagents` แล้ว merge ผล
-6. spec กับ implementation ไม่ตรง → `/review-api`; routes ไม่ครบ → `/gen-openapi`
+6. spec กับ implementation ไม่ตรง → `/review-api`; routes ไม่ครบ → framework generator
 
 Rules เพิ่มเติม: mask credentials ใน report เสมอ, ทุก route ต้องมีผล tested หรือ skipped พร้อมเหตุผล, ห้ามยิง production โดยไม่ได้ confirm
 

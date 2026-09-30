@@ -152,11 +152,11 @@ jobs:
         run: biome ci .
 ```
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| first-time setup (install, biome.json, editor, CLI) | `subskills/setup-biome/SKILL.md` | migrate จาก ESLint/Prettier | `subskills/migrate-from-eslint-prettier/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, biome.json, editor, CLI) | `workflows/setup-biome/SKILL.md` | migrate จาก ESLint/Prettier | `workflows/migrate-from-eslint-prettier/SKILL.md` 
 ## Rules
 
 ### 1. Installation

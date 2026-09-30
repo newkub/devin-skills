@@ -18,8 +18,8 @@ argument-hint: "[features]"
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review dependencies และ library design
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
+2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
 3. บันทึกเหตุผลที่เลือก stack สำหรับ reference
 
 ### 2. Gather Requirements

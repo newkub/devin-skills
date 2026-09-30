@@ -5,10 +5,9 @@ argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-rust-cli
-  - review-architecture
+  - deep-review
   - flatten-directory
-  - review-dependencies
-  - ship
+  - ship-to-dev-branch
   - rethink
   - run-test
 
@@ -29,7 +28,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ framework pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ framework pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create cli)
 
 ### 2. Decide CLI Stack
@@ -47,9 +46,9 @@ related:
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
+3. ทำ `/deep-review` หรือ `/deep-review` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
 4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
-5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/review-dependencies` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
+5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/deep-review` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
 6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 4. Review CLI
@@ -72,7 +71,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -88,18 +87,18 @@ related:
 ### 2. Architecture Selection
 
 - ทุก CLI ต้องแยก concerns ชัดเจน
-- ใช้ `/review-architecture` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
+- ใช้ `/deep-review` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
 - Domain layer ต้อง pure ไม่มี side effects เมื่อเหมาะสม
 - Adapters จัดการ I/O และ external dependencies
 - Presentation เป็น entry points
 
 ### 3. Library Selection
 
-- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/review-dependencies` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
+- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/deep-review` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
 - ถ้า CLI ต้องรับ command/subcommand → ใช้ `clap` (Rust) หรือ `cac` (Bun/TS)
 - ถ้า CLI ต้อง interactive prompt → ใช้ `dialoguer`/`inquire` (Rust) หรือ `@clack/prompts`/`inquirer` (Bun/TS)
 - ถ้า CLI ต้อง TUI → ใช้ `ratatui` (Rust) หรือ `blessed`/`ink` (Bun/TS)
-- ทำ `/review-dependencies` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
+- ทำ `/deep-review` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
 
 ### 4. Review Before Ship
 

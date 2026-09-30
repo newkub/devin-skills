@@ -3,11 +3,11 @@ name: follow-monorepo
 description: ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
 argument-hint: "[workspace-or-command]"
 related:
-  - ship
+  - ship-to-dev-branch
   - run-build
   - run-verify
   - follow-tool-vite
-  - review-bundle
+  - deep-review
   - report
   - suggest-next-action
   - run-test-all
@@ -83,14 +83,14 @@ related:
 4. รัน `moon run :lint` หรือ `turbo run lint`
 5. ถ้า fail → ทำ `/resolve-errors`
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+> Goal: dispatch งานเฉพาะทางไปยัง workflow ที่ละเอียดกว่า
 
-| Topic | Subskill |
+| Topic | Workflow |
 |-------|----------|
-| ย้าย single repo → monorepo — workspace config, dep hoisting, git history | `subskills/migrate-to-monorepo/SKILL.md` |
-| ตั้งค่า workspaces สำหรับ bun/npm/pnpm + moon/turbo | `subskills/config-workspaces/SKILL.md` |
+| ย้าย single repo → monorepo — workspace config, dep hoisting, git history | `workflows/migrate-to-monorepo/SKILL.md` |
+| ตั้งค่า workspaces สำหรับ bun/npm/pnpm + moon/turbo | `workflows/config-workspaces/SKILL.md` |
 
 ## Rules
 
@@ -124,11 +124,11 @@ related:
 - ไม่ refactor workspaces ทั้งหมดในครั้งเดียว
 - แก้เฉพาะ workspaces ทีมีปัญหา
 
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-to-dev-branch ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /review-bundle ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น

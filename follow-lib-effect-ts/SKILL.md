@@ -17,10 +17,10 @@ related:
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ที่ต้องการ functional programming ด้วย Effect-TS — เลือก subskill ตามสถานะ project:
+ใช้สำหรับโปรเจกต์ที่ต้องการ functional programming ด้วย Effect-TS — เลือก workflow ตามสถานะ project:
 
-- First-time setup (ยังไม่มี `effect`) → `subskills/setup-effect/SKILL.md`
-- ย้าย codebase เดิม (neverthrow/Promise/try-catch) มาเป็น Effect แบบ incremental → `subskills/migrate-to-effect/SKILL.md`
+- First-time setup (ยังไม่มี `effect`) → `workflows/setup-effect/SKILL.md`
+- ย้าย codebase เดิม (neverthrow/Promise/try-catch) มาเป็น Effect แบบ incremental → `workflows/migrate-to-effect/SKILL.md`
 - ถ้า task ไม่เกี่ยวกับ `effect` package → อย่าใช้ skill นี้
 
 - ตรวจ version ของ `effect` ใน `package.json` ก่อนเลือก API (v3.x vs v4 RC ต่างกัน)
@@ -32,9 +32,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-effect/SKILL.md` — install, Effect/Layer/Service basics | Migrate | `subskills/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-effect/SKILL.md` — install, Effect/Layer/Service basics | Migrate | `workflows/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally 
 ### 1. Detect Version And Ecosystem
 
 > Goal: เลือก API ที่ตรงกับ effect version และ package manager ของ project

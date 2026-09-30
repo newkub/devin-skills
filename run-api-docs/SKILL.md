@@ -4,7 +4,6 @@ description: Start Scalar API docs server จาก OpenAPI spec พร้อม
 argument-hint: "[scope]"
 related:
   - follow-tool-scalar
-  - gen-openapi
   - review-api
   - run-dev
   - open
@@ -30,7 +29,7 @@ Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve
 
 1. หา spec ใน repo: `openapi.json`, `openapi.yaml`, `docs/openapi.*`, `api/spec.*`
 2. ถ้า framework generate ได้ → หา route เช่น `/openapi.json`, `/docs/json` (Elysia/Hono/Fastify/oRPC `OpenAPIGenerator`)
-3. ถ้ายังไม่มี spec → ทำ `/gen-openapi` สร้างจาก code ก่อน แล้วใช้ไฟล์ที่ได้
+3. ถ้ายังไม่มี spec → ทำ framework generator สร้างจาก code ก่อน แล้วใช้ไฟล์ที่ได้
 4. Validate ก่อน serve: `bunx @scalar/cli document validate <spec>`
 
 ### 2. Install Scalar CLI

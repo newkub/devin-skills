@@ -27,9 +27,9 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration | Deploy | `subskills/deploy-mcp/SKILL.md` — transport options, remote hosting, client config 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration | Deploy | `workflows/deploy-mcp/SKILL.md` — transport options, remote hosting, client config 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

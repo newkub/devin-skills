@@ -73,15 +73,15 @@ related:
 3. ทำ `/run-verify` เพื่อตรวจ project-wide
 4. ทำ `/git-commit` ถ้ามีการเปลี่ยนแปลง
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ตาม topic/argument
+> Goal: dispatch ไปยัง workflow ตาม topic/argument
 
-| Topic/Argument | Subskill |
+| Topic/Argument | Workflow |
 |----------------|----------|
-| `setup-coverage`, `coverage` | `subskills/setup-coverage/SKILL.md` — coverage tooling ตาม ecosystem (vitest, llvm-cov, go cover) |
+| `setup-coverage`, `coverage` | `workflows/setup-coverage/SKILL.md` — coverage tooling ตาม ecosystem (vitest, llvm-cov, go cover) |
 
-1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ตรง topic → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-6 ตามลำดับ
 
 ## Rules

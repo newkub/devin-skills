@@ -8,7 +8,7 @@ related:
   - scan-codebase
   - check-reference
   - update-references
-  - review-diff
+  - deep-review
   - report
 
 ---
@@ -100,7 +100,7 @@ related:
 - ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
-- ใช้ /review-diff ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - เมื่อต้องเขียน invocation ของ skills อื่นใน `SKILL.md` → ดู `update-devin-global-skills` (`## Conventions → Invoke Skills`)
 
 ## Expected Outcome

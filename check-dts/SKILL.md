@@ -8,7 +8,7 @@ related:
   - check-monorepo
   - list-workspaces
   - follow-lang-typescript
-  - review-config
+  - deep-review
   - report
 
 ---

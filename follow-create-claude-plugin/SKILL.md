@@ -9,8 +9,7 @@ related:
   - ask-me
   - search
   - follow-harness-engineering
-  - review-dependencies
-  - review-architecture
+  - deep-review
 
 ---
 
@@ -30,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin schema ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin schema ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack/components สำหรับ reference ต่อไป (create claude plugin)
 
 ### 2. Gather Requirements
@@ -104,7 +103,7 @@ related:
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search-skills ถ้าจำเป็น
-- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

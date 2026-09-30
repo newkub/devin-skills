@@ -4,7 +4,6 @@ description: alias → /update-review-cli-then-run (รัน review CLI วิ�
 argument-hint: "[target]"
 related:
   - update-review-cli-then-run
-  - review-dot-devin
   - deep-review
   - run-verify
   - suggest-next-action
@@ -29,7 +28,7 @@ Alias ของ `/update-review-cli-then-run` — รัน `tools/review-codeba
 
 - ห้าม duplicate workflow ของ `/update-review-cli-then-run` ในไฟล์นี้
 - ถ้า alias ขาด steps → อ่าน `update-review-cli-then-run/SKILL.md` เสมอ
-- ถ้าต้อง review กว้างกว่า CLI → ใช้ `/deep-review`; ถ้าเจาะ `.devin` ใช้ `/review-dot-devin`
+- ถ้าต้อง review กว้างกว่า CLI → ใช้ `/deep-review`; ถ้าเจาะ `.devin` ใช้ `/deep-review`
 - verify ผลหลัง review ด้วย `/run-verify` แล้วปิดท้ายด้วย `/suggest-next-action`
 
 ## Expected Outcome

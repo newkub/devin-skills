@@ -4,8 +4,7 @@ description: เลือกและ implement algorithms ตามปัญห
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - review-algorithm
-  - review-code-quality
+  - deep-review
   - ask-me
 
 ---
@@ -16,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องเลือกหรือ implement algorithm ใหม่ — ถ้าจะประเมินของเดิมใช้ `/review-algorithm` ถ้าจะปรับของเดิมใช้ `/review-algorithm`
+ใช้เมื่อต้องเลือกหรือ implement algorithm ใหม่ — ถ้าจะประเมินของเดิมใช้ `/deep-review` ถ้าจะปรับของเดิมใช้ `/deep-review`
 
 ## Execute
 
@@ -45,7 +44,7 @@ related:
 1. คำนวณ best/average/worst time complexity
 2. คำนวณ space complexity
 3. ระบุ bottlenecks
-4. ทำ `/review-code-quality` อ้างอิง [../shared/time-complexity.md](../shared/time-complexity.md) ถ้าต้องการตรวจสอบละเอียด
+4. ทำ `/deep-review` อ้างอิง [`deep-review/SKILL.md`](`deep-review/SKILL.md`) ถ้าต้องการตรวจสอบละเอียด
 
 ### 4. Implement
 

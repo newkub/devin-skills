@@ -9,7 +9,6 @@ related:
   - learn
   - delete
   - report
-  - then-apply
   - run-test
 
 ---
@@ -93,7 +92,7 @@ related:
 2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
 3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
 4. ถ้าต้องปรับ → ทำ `/check-my-global-cli` อีกรอบหรือ `/learn` (cli)
-5. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+5. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 6. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
 
 ## Rules

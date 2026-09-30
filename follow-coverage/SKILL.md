@@ -3,11 +3,10 @@ name: follow-coverage
 description: ทำให้ครอบคลุม ตรวจและเติมส่วนที่ขาดใน content skill และ code
 argument-hint: "[scope]"
 related:
-  - review-docs
+  - deep-review
   - ask-me
   - scan-codebase
   - report
-  - review-writing
   - use-scripts
   - check-reference
   - run-test
@@ -20,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ ensure coverage ของ skill package, documentation, หรือ codebase โดยวิเคราะห์ gaps และเติมส่วนที่ขาด ไม่ใช่ review quality (ใช้ `/review-docs` สำหรับ review)
+ใช้เมื่อต้องการ ensure coverage ของ skill package, documentation, หรือ codebase โดยวิเคราะห์ gaps และเติมส่วนที่ขาด ไม่ใช่ review quality (ใช้ `/deep-review` สำหรับ review)
 
 ## Execute
 
@@ -68,7 +67,7 @@ related:
    - เพิ่ม `examples/` สำหรับ APIs ที่ขาด
 3. สำหรับ documentation: เพิ่ม sections ที่ขาด
 4. สำหรับ code: เพิ่ม tests สำหรับ edge cases ที่ขาด
-5. ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
+5. ทำ `/deep-review` สำหรับ content ใหม่ทุกชิ้น
 6. ถ้าต้องเขียน >10 ไฟล์ → ทำ `/use-scripts`
 
 ### 5. Verify Completeness
@@ -100,12 +99,12 @@ related:
 ### 2. Differentiate From Review
 
 - `follow-coverage` เติมส่วนที่ขาด (implement)
-- `review-docs` วิเคราะห์ quality ของ content (review)
-- ใช้ `follow-coverage` ก่อน แล้วใช้ `review-docs` ตรวจทีหลังได้
+- `deep-review` วิเคราะห์ quality ของ content (review)
+- ใช้ `follow-coverage` ก่อน แล้วใช้ `deep-review` ตรวจทีหลังได้
 
 ### 3. Content Quality
 
-- ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
+- ทำ `/deep-review` สำหรับ content ใหม่ทุกชิ้น
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
@@ -123,6 +122,6 @@ related:
 
 - content, skill, หรือ code ครอบคลุมทุก features, APIs, use cases, references, และ edge cases
 - gaps ทั้งหมดถูกเติมให้ครบ พร้อม before-after comparison
-- ไฟล์ใหม่ทุกไฟล์ผ่าน `/review-writing` ไม่เกิน 250 บรรทัด
+- ไฟล์ใหม่ทุกไฟล์ผ่าน `/deep-review` ไม่เกิน 250 บรรทัด
 - references ครบถ้วน ไม่มี missing/unused
 - รายงาน coverage before-after ชัดเจน พร้อม next actions

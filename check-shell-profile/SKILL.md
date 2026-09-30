@@ -94,11 +94,11 @@ related:
 
 ## Fix
 
-> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
 
-1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `deep-review/SKILL.md`
 2. แก้ตาม finding — profile profiling, plugin audit, lazy loading สำหรับ startup ที่ช้า (shell profile)
-3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
+3. preserve behavior + verify + report — canonical ที่ `deep-review/SKILL.md`
 
 ## Expected Outcome
 

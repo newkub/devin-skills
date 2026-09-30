@@ -17,8 +17,7 @@ related:
   - follow-create-cli
   - follow-lang-rust
   - follow-lang-typescript
-  - review-dependencies
-  - review-architecture
+  - deep-review
   - follow-single-responsibility
   - deep-validate
   - create-devin-global-mcp
@@ -37,7 +36,7 @@ related:
 - ถ้าต้องการ register ลง Devin global MCP config ให้ใช้ `/create-devin-global-mcp` หลังจากนี้
 - ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin-project-mcp`
 
-ดูเพิ่มเติม: `/review-dependencies`, `/follow-lang-rust`, `/follow-lang-typescript`
+ดูเพิ่มเติม: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 
 - SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` เป็น legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
@@ -47,8 +46,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด แล้วอ่าน `../shared/techstack-catalog.md` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create mcp)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด แล้วอ่าน `../follow-my-techstack/references/techstack-catalog.md` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create mcp)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mcp)
 
 ### 2. Decide Stack
@@ -69,7 +68,7 @@ related:
 2. ถ้าเลือก TypeScript → `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (`@modelcontextprotocol/server` เป็น legacy ที่ถูกแทน)
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
-5. ทำ `/review-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
+5. ทำ `/deep-review` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
 
 ### 4. Implement Tools And Resources
 
@@ -103,7 +102,7 @@ related:
 > Goal: ส่งมอบ MCP server
 
 1. ทำ `/deep-validate` เพื่อตรวจ conventions, references, และ security
-2. ทำ `/ship`
+2. ทำ `/ship-to-dev-branch`
 3. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -146,5 +145,5 @@ related:
 - MCP server ทำงานได้ทั้ง Rust หรือ TypeScript
 - Tools/resources/prompts ถูก expose ผ่าน MCP protocol
 - Transport ทีเลือกทดสอบผ่าน
-- ผ่าน `/deep-validate` และ `/ship`
+- ผ่าน `/deep-validate` และ `/ship-to-dev-branch`
 - พร้อมส่งต่อไป register ด้วย `/create-devin-global-mcp` หรือ `/update-devin-project-mcp` ถ้าต้องการ

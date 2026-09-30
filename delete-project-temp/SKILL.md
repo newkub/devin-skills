@@ -8,7 +8,7 @@ related:
   - cleanup-artifact
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
-  - review-bundle
+  - deep-review
   - ask-me
   - report
   - suggest-next-action
@@ -35,7 +35,7 @@ related:
 1. ตรวจว่า `.devin/temp/` มีอยู่ที่ project root
 2. ถ้าไม่มี → รายงานว่าไม่มีอะไรให้ลบและจบ
 3. list contents ทั้งหมด (`report/`, `plan/` และไฟล์อื่น) พร้อมจำนวนไฟล์
-4. วัดขนาดรวมด้วย `/review-bundle` scope `size` หรือ `du -sh .devin/temp`
+4. วัดขนาดรวมด้วย `/deep-review` scope `size` หรือ `du -sh .devin/temp`
 
 ### 2. Dry Run And Confirm
 

@@ -62,6 +62,6 @@ bun <skill-dir>/src/presentation/cli.ts app --title "WezTerm" --out wez.png   # 
 
 #### App — Expected Outcome
 
-- `public/screenshots/` มีภาพครบทุก routes/components/views สำคัญ พร้อมใช้กับ `/review-uxui`
+- `public/screenshots/` มีภาพครบทุก routes/components/views สำคัญ พร้อมใช้กับ `/deep-review`
 - หรือได้ภาพ OS window/screen ตาม `--title` ที่ระบุ
 

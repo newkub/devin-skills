@@ -15,7 +15,6 @@ triggers:
   - model
 related:
   - list-devin
-  - check-repo-hygiene
   - review-devin-global-harness
   - use-scripts
   - report-table
@@ -80,7 +79,7 @@ related:
 > Goal: ดู graph ถ้าต้องการ
 
 1. ถ้าต้องการดู graph แบบ interactive → ทำ `/open-devin-in-web`
-2. ถ้าต้องการตรวจ circular dependencies → ทำ `/check-repo-hygiene circular-dependencies`
+2. ถ้าต้องการตรวจ circular dependencies → ทำ `/follow-tool-madge`
 
 ## Rules
 

@@ -4,7 +4,7 @@ description: สร้างหรือแก้ไข robots.txt สำหร�
 argument-hint: "[scope]"
 related:
   - follow-create-web
-  - review-seo
+  - deep-review
 ---
 
 ## Goal
@@ -68,7 +68,7 @@ related:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /review-seo ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

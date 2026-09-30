@@ -90,11 +90,11 @@ related:
 4. ใช้ `vite preview` เพื่อ test production build
 5. deploy ไปยัง static host ที project ใช้
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| ตั้งค่า/แก้ `vite.config.ts` (plugins, resolve, build, server) | `subskills/config-vite/SKILL.md` | optimize build/bundle (chunk splitting, minify, sourcemap) | `subskills/optimize-build/SKILL.md` | migrate จาก Vite ≤7 ไป `rolldown-vite` | `subskills/migrate-to-rolldown/SKILL.md` 
+| Topic | Workflow |-------|----------| ตั้งค่า/แก้ `vite.config.ts` (plugins, resolve, build, server) | `workflows/config-vite/SKILL.md` | optimize build/bundle (chunk splitting, minify, sourcemap) | `workflows/optimize-build/SKILL.md` | migrate จาก Vite ≤7 ไป `rolldown-vite` | `workflows/migrate-to-rolldown/SKILL.md` 
 ## Rules
 
 ### 1. Configuration

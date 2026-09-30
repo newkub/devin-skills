@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - follow-create-cli
   - follow-create-mcp
-  - review-dependencies
+  - deep-review
   - update-devin-global-skills
   - follow-best-practice
   - implement-features-to-mvp
@@ -55,14 +55,15 @@ related:
 | `vscode`, `vs-code` | `/follow-create-vscode-extensions` — VS Code extension |
 | `zed` | `/follow-create-zed-extensions` — Zed extension |
 
-1. ระบุ target จาก argument (เช่น `/follow-create-plugins vite`)
-2. ถ้า target รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก target → `/ask-me` เลือก target จากตาราง
+1. ทำ `/deep-research` + `/follow-best-practice` สำหรับ target ที่เลือก ตาม conventions ใน `/update-devin-global-skills` (ทำใน target skill ที่ dispatch ไป)
+2. ระบุ target จาก argument (เช่น `/follow-create-plugins vite`)
+3. ถ้า target รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
+4. ถ้าไม่ระบุหรือไม่รู้จัก target → `/ask-me` เลือก target จากตาราง
 
 ## Rules
 
 - parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill ในไฟล์นี้
-- เลือก library/tooling ตาม `/review-dependencies` (techstack catalog) ก่อนเสมอ
+- เลือก library/tooling ตาม `/deep-review` (techstack catalog) ก่อนเสมอ
 - scaffold เสร็จ → `/implement-features-to-mvp` ตาม convention
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
@@ -74,4 +75,4 @@ related:
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง target แล้วสร้าง plugin ตาม flow นั้น
+- caller ถูก dispatch ไป workflow ที่ตรง target แล้วสร้าง plugin ตาม flow นั้น

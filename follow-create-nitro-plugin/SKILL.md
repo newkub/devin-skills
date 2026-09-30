@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - follow-lang-typescript
   - run-test
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -28,8 +28,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create nitro plugin)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create nitro plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create nitro plugin)
 
 ### 2. Choose Plugin Type
@@ -99,7 +99,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

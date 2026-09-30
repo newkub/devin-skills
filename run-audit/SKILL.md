@@ -3,7 +3,7 @@ name: run-audit
 description: Audit dependencies และ security เพื่อตรวจสอบ vulnerabilities
 argument-hint: "[scope]"
 related:
-  - review-dependencies
+  - deep-review
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
@@ -22,7 +22,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dependencies` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (audit)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (audit)
 
 ### 1. Audit Dependencies
 

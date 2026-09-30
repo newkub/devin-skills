@@ -38,7 +38,7 @@ git switch -c feature/my-workflow
 ```
 
 2. Follow `/update-devin-global-skills` for workflow structure
-3. Follow `/review-writing` for content standards
+3. Follow `/deep-review` for content standards
 4. Test workflows thoroughly before submitting
 5. Commit your changes
 

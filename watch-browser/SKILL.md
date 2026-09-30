@@ -22,7 +22,7 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 - `watch-browser-and-test` เป็น alias stub ของ `watch-browser-test`; `watch-browser-and-fix` เป็น canonical merged skill (watch + console monitor + fix — merged จาก `watch-browser-fix`/`watch-browser-console`)
 - ถ้าต้องการแก้ errors/console ที่พบทันที → `/watch-browser-and-fix`
-- ถ้าต้องการ analyze + improve UX/UI → `/review-uxui`
+- ถ้าต้องการ analyze + improve UX/UI → `/deep-review` (domain `review-uxui`)
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
@@ -82,18 +82,18 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 
 > Goal: สรุปผลและปิด session อย่างถูกต้อง
 
-1. ทำตาม `subskills/report-status/SKILL.md` — timeline, errors, state changes
+1. ทำตาม `workflows/report-status/SKILL.md` — timeline, errors, state changes
 2. เรียก close tool ผ่าน `mcp_call_tool` เพื่อปิด browser session
 3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `agent-browser close` ผ่าน CLI
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `status` | `subskills/report-status/SKILL.md` — watch session report (timeline, errors, verdict) |
+| `report`, `status` | `workflows/report-status/SKILL.md` — watch session report (timeline, errors, verdict) |
 
-1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่ ไม่ watch ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน subskill `report-status` มา execute
+1. ถ้า argument เป็น `report`/`status` → อ่าน `workflows/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่ ไม่ watch ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 5 อ่าน workflow `report-status` มา execute
 
 ### Watch Skills
 
@@ -102,7 +102,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 | Domain | Skill |
 |--------|-------|
 | `fix` | `/watch-browser-and-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
-| `uxui` | `/review-uxui` — review UX/UI จาก screenshots/routes |
+| `uxui` | `/deep-review` (domain `review-uxui`) — review UX/UI จาก screenshots/routes |
 | `test` | `/watch-browser-test` — watch + subagents roleplay user test flows |
 
 1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน

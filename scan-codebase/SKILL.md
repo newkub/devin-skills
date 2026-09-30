@@ -47,7 +47,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 > Goal: พบ quality issues และ anti-patterns พร้อม priority
 
-1. ทำ `/review-code-quality` หา duplicate code
+1. ทำ `/deep-review` หา duplicate code
 2. ทำ `Grep` หา anti-patterns (`any`, `console.log`, nested ternary)
 
 ### 5. Structured Data And Report (30 วินาที)

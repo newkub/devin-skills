@@ -54,10 +54,10 @@ related:
 2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib web vitals)
 
-### Subskills
+### Workflows
 
-- Install + `on*` callbacks + reporting to endpoint → `subskills/setup-vitals/SKILL.md`
-- ปรับปรุง LCP/INP/CLS patterns → `subskills/optimize-vitals/SKILL.md`
+- Install + `on*` callbacks + reporting to endpoint → `workflows/setup-vitals/SKILL.md`
+- ปรับปรุง LCP/INP/CLS patterns → `workflows/optimize-vitals/SKILL.md`
 
 ## Rules
 

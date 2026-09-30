@@ -11,11 +11,10 @@ related:
   - follow-service-cloudflare
   - follow-lib-unocss
   - follow-design-system
-  - review-uxui
-  - ship
+  - deep-review
+  - ship-to-dev-branch
   - report
   - enhance-prompt
-  - review-dependencies
   - implement-to-production
 
 ---
@@ -31,28 +30,28 @@ related:
 - เรียก `/follow-create-web` เพื่อสร้าง website project
 - เรียก `/follow-service-workos` สำหรับ auth
 - เรียก `/follow-service-stripe` สำหรับ payments, pricing, billing
-- เรียก `/ship` เมื่องานเสร็จ
+- เรียก `/ship-to-dev-branch` เมื่องานเสร็จ
 
 - Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-12)
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `scaffold`, `setup` | `subskills/setup-scaffold/SKILL.md` — scaffold product structure (monorepo, packages) |
-| `deploy` | `subskills/deploy-mvp/SKILL.md` — deploy product MVP ไป platform + verify live URL |
+| `scaffold`, `setup` | `workflows/setup-scaffold/SKILL.md` — scaffold product structure (monorepo, packages) |
+| `deploy` | `workflows/deploy-mvp/SKILL.md` — deploy product MVP ไป platform + verify live URL |
 
-1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
+1. ถ้า argument ตรงกับ workflow → อ่าน `workflows/<arg>/SKILL.md` แล้วทำตาม flow
 2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ
 
 ### 1. Review Tech Stack And Understand Input
 
 > Goal: ตรวจสอบ tech stack และวิเคราะห์ product idea ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create product)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
+2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create product)
 4. รับ `product-idea`, requirements, หรือ feedback จาก user
 5. ระบุ target users และ personas
@@ -97,7 +96,7 @@ related:
 1. ใช้ `/follow-design-system` เพื่อกำหนด design principles
 2. ใช้ `/follow-lib-unocss` เพื่อติดตั้ง UnoCSS และสร้าง HSL theme tokens
 3. วาง page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
-4. ใช้ `/review-uxui` ตรวจ layout, navigation, responsive, CTA
+4. ใช้ `/deep-review` ตรวจ layout, navigation, responsive, CTA
 5. สร้าง wireframe/sketch ด้วย `/report-uxui` ถ้าจำเป็น
 
 ### 6. Create Website
@@ -144,7 +143,7 @@ related:
 
 1. เรียก `/deep-validate` สำหรับ type, quality, security, cross-reference
 2. เรียก `/run-test-all` ถ้ามี tests
-3. เรียก `/ship` เพื่อ commit และ deploy
+3. เรียก `/ship-to-dev-branch` เพื่อ commit และ deploy
 4. รายงาน product URL, features, และ next actions
 
 ## Rules
@@ -177,7 +176,7 @@ related:
 
 ### 5. UX Quality
 
-- ใช้ `/review-uxui` ก่อน ship
+- ใช้ `/deep-review` ก่อน ship
 - ทำ responsive, dark mode, accessible
 - ใช้ design tokens สม่ำเสมอ
 

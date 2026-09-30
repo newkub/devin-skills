@@ -6,7 +6,7 @@ related:
   - idea
   - plan
   - deep-review-then-fix
-  - review-plan
+  - deep-review
   - report-uxui
   - report-architecture-diagram
   - implement-to-production
@@ -55,7 +55,7 @@ related:
 > Goal: ทำให้แผนกระชับและอ่านง่าย
 
 1. ทำ `/deep-review-then-fix` กับเนื้อหาแผน
-2. ทำ `/review-plan` เพื่อตรวจคุณภาพ
+2. ทำ `/deep-review` เพื่อตรวจคุณภาพ
 3. ถ้าพบปัญหา → `/deep-review-then-fix` ซ้ำ (max 3 รอบ)
 4. ทำ `/report-uxui` หรือ `/report-architecture-diagram` สำหรับภาพรวม visual (ถ้าต้องการ)
 

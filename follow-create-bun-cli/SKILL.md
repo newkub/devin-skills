@@ -7,10 +7,9 @@ related:
   - follow-create-web
   - use-bun-native-api
   - follow-tool-bunup
-  - review-architecture
+  - deep-review
   - flatten-directory
   - rethink
-  - review-dependencies
   - run-test
 
 ---
@@ -30,15 +29,15 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create bun cli)
+1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create bun cli)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun cli)
 
 ### 2. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
 
-1. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
+1. ทำ `/deep-review` หรือ `/deep-review` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
 2. เลือก structure ตามลักษณะงาน:
    - CLI ง่ายๆ → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
    - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
@@ -88,7 +87,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -179,7 +178,7 @@ export default defineConfig({
 
 ## Guide
 
-- `/review-architecture` — architecture selection
+- `/deep-review` — architecture selection
 - `/use-bun-native-api` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards

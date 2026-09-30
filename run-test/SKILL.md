@@ -3,7 +3,7 @@ name: run-test
 description: รัน unit/fast tests ทั้งหมด — auto-detect framework, isolate, report failures พร้อม root cause
 argument-hint: "[scope]"
 related:
-  - review-test
+  - deep-review
   - run-test-all
   - deep-test
   - run-check
@@ -30,7 +30,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
 
 ### Domain Dispatch
 

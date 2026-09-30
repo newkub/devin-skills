@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-Alias ของ `/deep-analyze` — วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ (extract จาก `deep-analyze/subskills/by-use-scripts` เดิมที่เป็น alias stub)
+Alias ของ `/deep-analyze` — วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ (extract จาก `deep-analyze/workflows/by-use-scripts` เดิมที่เป็น alias stub)
 
 ## Scope
 

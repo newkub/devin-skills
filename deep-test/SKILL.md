@@ -15,7 +15,6 @@ related:
   - follow-tool-stryker-mutator
   - use-agent-browser
   - capture
-  - gen-openapi
   - report
   - suggest-next-action
 
@@ -73,7 +72,6 @@ related:
 - ใช้ /follow-tool-stryker-mutator ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น
-- ใช้ /gen-openapi ถ้าจำเป็น
 
 
 ## Expected Outcome

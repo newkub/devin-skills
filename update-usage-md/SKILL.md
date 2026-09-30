@@ -4,7 +4,7 @@ description: สร้างหรืออัปเดต USAGE.md usage docume
 argument-hint: "[scope]"
 related:
   - update-docs
-  - review-docs
+  - deep-review
   - report-usage
   - report
   - suggest-next-action
@@ -31,7 +31,7 @@ related:
 > Goal: เข้าใจสถานะปัจจุบันของ `USAGE.md`
 
 1. ตรวจว่า `<workspace>/USAGE.md` มีอยู่หรือไม่
-2. ถ้ามี → ทำ `/review-docs` เพื่อหา gaps และ stale content
+2. ถ้ามี → ทำ `/deep-review` เพื่อหา gaps และ stale content
 3. ถ้าไม่มี → บันทึก status `missing` เตรียมสร้างใหม่
 4. บันทึก findings จาก review
 

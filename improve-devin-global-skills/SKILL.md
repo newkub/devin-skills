@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - review-devin-global-harness
   - review
-  - review-gaps
   - deep-review
   - update-devin-global-skills
   - improve
@@ -88,7 +87,7 @@ related:
 ## References
 
 - [Review skills map — review-* ทั้ง 54 ตัวแบ่งตาม tier](references/review-skills-map.md)
-- ใช้ /review-gaps ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 
 

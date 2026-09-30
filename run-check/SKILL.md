@@ -3,8 +3,7 @@ name: run-check
 description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
 argument-hint: "[scope]"
 related:
-  - review-code-quality
-  - check-bottlenecks
+  - deep-review
   - run-lint
   - run-typecheck
   - run-scan
@@ -21,7 +20,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-code-quality` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (check)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (check)
 
 ### 1. Run Lint
 
@@ -67,7 +66,7 @@ related:
 - ใช้ cache เพื่อเพิ่มความเร็ว
 - รัน checks ใน CI environment
 
-- ใช้ /check-bottlenecks ถ้าจำเป็น
+- ใช้ /deep-optimize ถ้าจำเป็น
 
 ## Expected Outcome
 

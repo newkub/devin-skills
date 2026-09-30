@@ -84,18 +84,18 @@ related:
 3. ทดสอบ application ว่าทำงานได้
 4. ตรวจสอบ logs ว่าไม่มี error
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง platform subskill ตาม argument
+> Goal: dispatch ไปยัง platform workflow ตาม argument
 
-| Platform  | Subskill |
+| Platform  | Workflow |
 |-----------|----------|
-| `cloudflare` | `subskills/deploy-cloudflare/SKILL.md` — delegate ไป `/deploy-to-cloudflare` |
-| `vercel`    | `subskills/deploy-vercel/SKILL.md` — delegate ไป `/deploy-to-vercel` |
-| `railway`   | `subskills/deploy-railway/SKILL.md` — delegate ไป `/deploy-to-railway` |
-| `verify`    | `subskills/verify-deploy/SKILL.md` — post-deploy verify: URL, version, health, logs, rollback |
+| `cloudflare` | `workflows/deploy-cloudflare/SKILL.md` — delegate ไป `/deploy-to-cloudflare` |
+| `vercel`    | `workflows/deploy-vercel/SKILL.md` — delegate ไป `/deploy-to-vercel` |
+| `railway`   | `workflows/deploy-railway/SKILL.md` — delegate ไป `/deploy-to-railway` |
+| `verify`    | `workflows/verify-deploy/SKILL.md` — post-deploy verify: URL, version, health, logs, rollback |
 
-1. ถ้า argument ระบุ platform → อ่าน `subskills/deploy-<platform>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ระบุ platform → อ่าน `workflows/deploy-<platform>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-5 เพื่อเลือก platform ก่อน
 
 ## Rules

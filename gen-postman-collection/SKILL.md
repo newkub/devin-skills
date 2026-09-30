@@ -3,7 +3,6 @@ name: gen-postman-collection
 description: สร้าง Postman/Bruno collection จาก API routes หรือ OpenAPI spec พร้อม environments
 argument-hint: "[spec-or-framework]"
 related:
-  - gen-openapi
   - review-api
   - scan-codebase
   - report
@@ -28,7 +27,7 @@ Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec ห�
 > Goal: รวบรวม endpoints ทั้งหมด
 
 1. ถ้ามี OpenAPI spec → ใช้เป็น source of truth
-2. ถ้าไม่มี → ทำ `/gen-openapi` ก่อน หรือ extract routes จาก code ด้วย `scan-codebase`/`use-astgrep`
+2. ถ้าไม่มี → ทำ framework generator ก่อน หรือ extract routes จาก code ด้วย `scan-codebase`/`use-astgrep`
 3. จัดกลุ่ม endpoints ตาม resource/tag
 
 ### 2. Generate Collection Structure

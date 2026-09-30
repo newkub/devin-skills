@@ -11,7 +11,7 @@ allowed-tools:
   - web_search
   - webfetch
 related:
-  - review-test
+  - deep-review
   - update-tests
   - run-test
   - deep-verify
@@ -25,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ verify correctness ของ assertions และ test semantics — ต่างจาก `/review-test` (test strategy/quality ภาพรวม รวม `## Check: Test Quality` สำหรับ structure/isolation) — skill นี้ตอบคำถาม "test นี้ถ้า implementation ผิด มันจะ fail จริงไหม"
+ใช้สำหรับ verify correctness ของ assertions และ test semantics — ต่างจาก `/deep-review` (test strategy/quality ภาพรวม รวม `## Check: Test Quality` สำหรับ structure/isolation) — skill นี้ตอบคำถาม "test นี้ถ้า implementation ผิด มันจะ fail จริงไหม"
 
 ## Execute
 
@@ -64,7 +64,7 @@ related:
 
 1. ทำ `/report` ตาราง: No, File, Line, Test, Problem, Severity, Suggested Fix
 2. Severity: `high` (vacuous/false-positive — test ไม่ป้องกัน bug), `medium` (assertion อ่อน/mock drift), `low` (naming mismatch)
-3. Route fixes → `/update-tests` หรือ `/review-test` สำหรับ redesign
+3. Route fixes → `/update-tests` หรือ `/deep-review` สำหรับ redesign
 4. ถ้าไม่มี findings → report "test assertions verified" — verify ด้วย `/run-test` ถ้าต้องยืนยันว่า suite ยังเขียว
 5. ทำ `/suggest-next-action`
 
@@ -82,10 +82,10 @@ related:
 
 ### 3. Discipline
 
-- ตรวจเท่านั้น ไม่แก้ test — fixes ผ่าน `/update-tests` หรือ `/review-test`
+- ตรวจเท่านั้น ไม่แก้ test — fixes ผ่าน `/update-tests` หรือ `/deep-review`
 - ห้าม flag test ที่ตั้งใจเป็น smoke/contract test ว่าเป็น vacuous ถ้า intent ชัดเจน
 
-- ใช้ /review-test ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /deep-verify ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

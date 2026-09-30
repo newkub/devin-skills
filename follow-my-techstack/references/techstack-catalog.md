@@ -215,7 +215,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 - ถ้ามี mobile: เพิ่ม `Capacitor`
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-tool-pitchfork`)
 - ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-tool-usage`)
-- ถ้ามี animation/interactive visuals: เพิ่ม `/review-frontend`
+- ถ้ามี animation/interactive visuals: เพิ่ม `/deep-review`
 
 ## Fast Parser And Bundler
 

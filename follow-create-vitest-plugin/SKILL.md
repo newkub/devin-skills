@@ -4,10 +4,10 @@ description: สร้างและใช้งาน Vitest plugins ตาม
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - review-dependencies
+  - deep-review
   - follow-tool-vitest
   - follow-create-plugins
-  - ship
+  - ship-to-dev-branch
   - run-test
 
 ---
@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างและใช้งาน Vitest plugins ตาม Plugin API มาตรฐาน
 
-- Latest: `vitest@5.0.1` (verified 2026-09-16) — ต้องการ Vite >= 6.4.0 และ Node.js >= 22.12.0
+- Packages: `vitest` (5.x ต้องการ Vite >= 6.4.0, Node.js >= 22.12.0), `@vitest/coverage-v8` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -27,16 +27,15 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create vitest plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create vitest plugins)
 
 ### 2. Understand Plugin API
 
 > Goal: ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
 
-1. ศึกษา Plugin API 3.1.0+ จาก [references/plugin-api.md](references/plugin-api.md)
-2. เข้าใจ `configureVitest` hook
+1. ศึกษา Vitest Plugin API (เสถียรตั้งแต่ 3.1.0) — ทำงานกับ Vitest lifecycle ระดับ config resolution
+2. เข้าใจ `configureVitest` hook — เรียก early ก่อน reporters ถูกสร้าง (ต่างจาก `reporter.onInit` ทีช้ากว่า) จึงแก้ `coverage`/`reporters` ได้
 3. รู้จัก context: `project`, `vitest`, `injectTestProjects`
 4. ศึกษา `defineCacheKeyGenerator` (stable ตั้งแต่ 5.0.0, เดิม `experimental_defineCacheKeyGenerator` ใน 4.x)
 
@@ -44,7 +43,7 @@ related:
 
 > Goal: สร้าง plugin ด้วย `configureVitest` method
 
-1. สร้าง plugin ด้วย `configureVitest` method — ดูตัวอย่างใน [references/plugin-api.md](references/plugin-api.md)
+1. สร้าง plugin ด้วย `configureVitest` method — ถ้า plugin ใช้ทั้ง Vite+Vitest ให้ใช้ `Plugin` type จาก `vite` + `/// <reference types="vitest/config" />`
 2. รับ context parameter
 3. Implement plugin logic ที่ต้องการ
 4. กำหนด `name` ที่ unique
@@ -68,16 +67,16 @@ export function myPlugin(options: PluginOptions) {
 
 > Goal: ใช้ context properties ตามจุดประสงค์
 
-1. ใช้ `project` เข้าถึง test project ปัจจุบัน — ดู [references/test-project.md](references/test-project.md)
+1. ใช้ `project` เข้าถึง test project ปัจจุบัน (TestProject — มี `name`, `vitest`, `config`, `globalConfig`, `vite`, `browser`, `hash`, `provide()`, `globTestFiles()`, `matchesTestGlob()`, `import()`, `isBrowserEnabled()`); ถ้าใช้ browser feature `project.browser` ยังไม่ set — ใช้ `reporter.onBrowserInit` แทน
 2. ใช้ `vitest` เข้าถึง global Vitest instance
-3. ใช้ `injectTestProjects` เพื่อ inject projects เพิ่มเติม — ดู [references/test-project.md](references/test-project.md)
+3. ใช้ `injectTestProjects` เพื่อ inject projects เพิ่มเติม — รับ glob pattern, filepath หรือ inline config (`extends: project.vite.config.configFile` + `test: {...}`) คืน `TestProject[]`
 4. แก้ไข `vitest.config` โดยตรงถ้าจำเป็น
 
 ### 5. Implement Cache Key Generator
 
 > Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 5.0.0+)
 
-1. ใช้ `defineCacheKeyGenerator` (stable ใน 5.0.0, เดิม `experimental_defineCacheKeyGenerator` ใน 4.0.11+) — ดู [references/plugin-api.md](references/plugin-api.md)
+1. ใช้ `defineCacheKeyGenerator` (stable ใน 5.0, เดิม `experimental_defineCacheKeyGenerator` ใน 4.0.11+) เมื่อ plugin register ด้วย options ต่างกัน — return `false` = disable fs cache ของ module; ทำงานเฉพาะเมื่อเปิด top-level `test.fsModuleCache` (เดิม `experimental.fsModuleCache`); opt-out ด้วย `api.vitest.ignoreFsModuleCache: true`
 2. Return unique string จาก plugin options
 3. Handle `false` เพื่อ disable caching
 4. ใช้เมื่อเปิด `test.fsModuleCache` (top-level config ตั้งแต่ 5.0, เดิม `experimental.fsModuleCache`)
@@ -105,20 +104,20 @@ configureVitest({ defineCacheKeyGenerator }) {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 
 ### 1. Plugin Structure
 
-- ใช้ `configureVitest` สำหรับ plugin configuration — ดู [references/plugin-api.md](references/plugin-api.md)
+- ใช้ `configureVitest` สำหรับ plugin configuration — แก้ config ผ่าน `vitest.config` เท่านั้น (แก้ `vitest.reporters` ตรงๆ ไม่มีผลเพราะถูก overwrite; `setupFile` ไม่ resolved ซ้ำ — resolve path เองก่อน push)
 - ตั้งชื่อ `name` ที่ unique
 - Plugin ควรมี interface ที่ชัดเจน
 
 ### 2. Context Usage
 
-- `project`: Test project ปัจจุบันที่ plugin อยู่ — ดู [references/test-project.md](references/test-project.md)
+- `project`: Test project ปัจจุบันที่ plugin อยู่
 - `vitest`: Global Vitest instance - mutate `vitest.config` ได้
 - `injectTestProjects`: Function สำหรับ inject projects เพิ่ม
 - Config ถูก resolved แล้ว - บาง properties อาจมี type ต่างจาก user config

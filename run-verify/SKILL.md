@@ -13,7 +13,7 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - ship
+  - ship-to-dev-branch
   - resolve-errors
   - report
 
@@ -95,8 +95,8 @@ related:
 
 > Goal: ส่งมอบงานหลัง verify ผ่าน
 
-- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั้งหมด ตั้งแต่ verify, release, deploy, จนถึง rollback plan
-- ทำ `/suggest-next-action` หลัง `/ship` เสร็จ
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship-to-dev-branch` สำหรับ ship ทั้งหมด ตั้งแต่ verify, release, deploy, จนถึง rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship-to-dev-branch` เสร็จ
 
 ## Rules
 
@@ -125,7 +125,7 @@ related:
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /deep-test coverage ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-to-dev-branch ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 

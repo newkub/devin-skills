@@ -3,7 +3,6 @@ name: run-profiler
 description: Profile performance เพื่อหา bottlenecks และ optimize
 argument-hint: "[scope]"
 related:
-  - check-bottlenecks
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
@@ -25,7 +24,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 ## Execute
 
-> Pre-Run: ทำ `/check-bottlenecks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (profiler)
+> Pre-Run: ทำ `/deep-optimize` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (profiler)
 
 ### 1. Setup Profiling
 

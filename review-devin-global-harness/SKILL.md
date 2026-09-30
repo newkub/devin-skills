@@ -105,8 +105,8 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. ทำ `/report` แยก section ตาม layer: `skills`, `subagents`, `hooks`, `mcp`, `global rules`, `cross-layer` — แต่ละมี Skill/Layer, Category, Severity, Finding, Evidence, Action
 3. สรุป "improve อะไรอีกบ้าง" + "SKILL.md ที่ควร refactor" เป็น prioritized action list → `/suggest-next-action`
 
-### Subskills
-> Goal: dispatch focused pass เมื่อ argument ระบุ layer เดียว (`[layer|all]`) — merged จาก `subskills/` เดิม (CLI tools ย้ายไป `scripts/`)
+### Workflows
+> Goal: dispatch focused pass เมื่อ argument ระบุ layer เดียว (`[layer|all]`) — merged จาก `workflows/` เดิม (CLI tools ย้ายไป `scripts/`)
 
 | Layer Arg | Focused Pass |
 |-----------|--------------|

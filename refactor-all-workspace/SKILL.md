@@ -8,7 +8,7 @@ related:
   - refactor-all-files-in-workspace
   - refactor-workspace
   - follow-monorepo
-  - review-code-quality
+  - deep-review
   - update-references
   - run-verify
   - run-test-all
@@ -34,7 +34,7 @@ Refactor ทุก workspace ใน monorepo อย่างเป็นระ�
 1. ทำ `/check-monorepo` + `/deep-analyze` เพื่อดู workspace configuration ทั้งหมด
 2. อ่าน root manifest (`package.json` workspaces / `Cargo.toml` members / `moon.yml` / `pnpm-workspace.yaml`) — list members
 3. จัดลำดับตาม dependency graph: foundation (shared packages, utilities) ก่อน → dependents → applications ทีหลัง; ห้ามสร้าง circular dependencies
-4. เก็บ baseline ต่อ workspace ด้วย `/check-long-files` + `/review-code-quality` — เลือก priority ตาม severity
+4. เก็บ baseline ต่อ workspace ด้วย `/check-long-files` + `/deep-review` — เลือก priority ตาม severity
 
 ### 2. Refactor Each Workspace
 

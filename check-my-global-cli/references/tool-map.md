@@ -11,7 +11,7 @@
 | run API collections | `bru` | `scoop install bruno` / `bun add -D @usebruno/cli` | `/deep-test api`, `/follow-tool-bruno` |
 | import spec → collection | `bru import openapi` | เหมือนข้างบน | `/follow-tool-bruno` |
 | serve/mock/validate OpenAPI | `scalar` | `bun add -D @scalar/cli` (Node >=24) | `/run-api-docs`, `/follow-tool-scalar` |
-| generate spec from code | generator ของ framework | per framework | `/gen-openapi` |
+| generate spec from code | generator ของ framework | per framework | framework generator |
 | property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/deep-test api` |
 | quick request / ad-hoc HTTP | `xh` | installed (mise cargo:xh) | `/deep-test api` |
 | interactive API client | `slumber` | installed | `/deep-test api` |
@@ -81,7 +81,7 @@
 | clone template | `giget` | installed | `/create-*` |
 | compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
 | compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defer ให้ `RUSTC_WRAPPER` ที่ชี้ sccache) |
-| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-lib-devframe` |
+| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devframe` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
 | OCI image from source | `nixpacks` | installed (scoop) | `/follow-create-docker` |
 

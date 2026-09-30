@@ -7,9 +7,8 @@ related:
   - all-files
   - refactor-all-workspace
   - refactor-workspace
-  - refactor-to-srp
   - check-long-files
-  - review-code-quality
+  - deep-review
   - update-references
   - run-verify
   - resolve-errors
@@ -40,7 +39,7 @@ Refactor ทุกไฟล์ใน workspace (single workspace/package) ตา
 
 > Goal: มี baseline ก่อนลงมือ
 
-1. ทำ `/check-long-files` หาไฟล์ >250 บรรทัด และ `/review-code-quality` หา SRP/naming issues
+1. ทำ `/check-long-files` หาไฟล์ >250 บรรทัด และ `/deep-review` หา SRP/naming issues
 2. บันทึก baseline: file count, lint/typecheck/test status — ใช้เทียบหลังจบ
 
 ### 3. Refactor Each File
@@ -49,7 +48,7 @@ Refactor ทุกไฟล์ใน workspace (single workspace/package) ตา
 
 1. Refactor ทีละไฟล์ตาม file refactor scope ของ `/refactor` — read → review → minimal edit → preserve public API
 2. ไฟล์อิสระกันหลายไฟล์ → spawn `refactor/subagents/file-worker.md` ทีละไฟล์ขนานกันผ่าน `/use-subagents` — parent rewire consumers + commit รวมเสมอ
-3. ไฟล์ >250 บรรทัดหรือหลาย responsibility → ใช้ `/refactor-to-srp` split → `/update-references` ทันที
+3. ไฟล์ >250 บรรทัดหรือหลาย responsibility → ใช้ `/refactor` `### /refactor-to-srp` split → `/update-references` ทันที
 4. เจอ bug หรือต้องเปลี่ยน behavior → commit fix แยกก่อน (Two Hats) แล้วค่อย refactor ต่อ
 5. ทำ `/git-commit` checkpoint ทุก batch ที่สัมพันธ์กัน
 

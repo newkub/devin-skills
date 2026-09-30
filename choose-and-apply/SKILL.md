@@ -5,7 +5,6 @@ argument-hint: "[options...]"
 related:
   - ask-me
   - rethink
-  - then-apply
   - follow-your-suggestion
   - report
   - suggest-next-action
@@ -57,7 +56,7 @@ related:
 
 > Goal: ดำเนินการตาม option ทีเลือก
 
-1. ถ้าต้องทำต่อเนื่องจาก context ก่อนหน้า → ใช้ `/then-apply`
+1. ถ้าต้องทำต่อเนื่องจาก context ก่อนหน้า → ใช้ `/follow-your-suggestion`
 2. ถ้าเป็น action เดียว → ใช้ `/follow-your-suggestion` หรือ `/continue`
 3. ถ้าต้องจัดการหลาย step → ใช้ `/manage`
 4. ถ้า apply แล้วส่งผลหลายที → ใช้ `/all-this-patterns`

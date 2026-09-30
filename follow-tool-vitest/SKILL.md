@@ -26,12 +26,12 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ที่ตรง topic
+> Goal: dispatch ไปยัง workflow ที่ตรง topic
 
-| Topic | Subskill |-------|----------| setup | `subskills/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider | migrate | `subskills/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify | optimize | `subskills/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+| Topic | Workflow |-------|----------| setup | `workflows/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider | migrate | `workflows/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify | optimize | `workflows/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes 
+1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Installation

@@ -19,16 +19,16 @@ related:
 
 - ใช้ skill นี้สำหรับเลือก/ติดตั้ง icon components และ icon data — integration เชิงลึกกับ UnoCSS `presetIcons` ให้ทำ `/follow-lib-unocss` แทน
 - Tailwind v3 ใช้ `@iconify/tailwind`; Tailwind v4 ใช้ `@iconify/tailwind4`
-- Optimize bundle (offline bundles, subsetting, lazy loading) → `subskills/optimize-icons/SKILL.md`
+- Optimize bundle (offline bundles, subsetting, lazy loading) → `workflows/optimize-icons/SKILL.md`
 - ถ้า project ใช้ icons น้อยมากและไม่ต้องการ dependency → พิจารณา inline SVG แทน
 
 - Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.3` / `iconify-icon@3.0.3` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-24)
 - References: [apis](references/apis.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-iconify/SKILL.md` — install + usage patterns ตาม framework | Optimize | `subskills/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-iconify/SKILL.md` — install + usage patterns ตาม framework | Optimize | `workflows/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

@@ -89,9 +89,9 @@ related:
 2. persist raw results → `.devin/temp/report/<workspace>/browser-fix-<time>.md` ตาม format `/create-report-in-dot-devin`
 3. ปิด browser ด้วย `agent-browser close`
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
 | `report`, `status` | `### report-status` — watch/fix report (grouped errors, found vs fixed, verdict) |
 

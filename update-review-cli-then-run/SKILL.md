@@ -5,7 +5,6 @@ argument-hint: "[target-or-iteration]"
 related:
   - run-review
   - deep-review
-  - review-dot-devin
   - update-create-analyze-cli
   - check-should-update
   - scan-codebase
@@ -31,7 +30,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dot-devin` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Prepare And Keep Up With Codebase
 
@@ -88,7 +87,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 
 1. สร้าง `src/adapters/file-utils.ts` (`walk`, `readText`, `getRel`), `src/adapters/git-grep.ts` (`gitGrep`, `gitGrepCount`), `src/domain/models.ts` (`CategoryFinding`, `CategoryResult`, `ReviewReport`), `src/application/review.ts` (import `runAllAnalyzers` จาก `tools-analyze`), `src/presentation/cli.ts` (entry point), `src/index.ts` (export `runReview`/`createReviewPorts`)
 2. แปลง `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
-3. กำหนด `reviewWorkflow` map ไปยัง review skills — ต้องครอบคลุม `review-*` ทุกตัวใน `../shared/review-skills.md` (54 ตัว ยกเว้น `review-github-pr` ที่เป็น PR-scoped)
+3. กำหนด `reviewWorkflow` map ไปยัง review skills — ต้องครอบคลุม `review-*` ทุกตัวใน `deep-review/SKILL.md` (54 ตัว ยกเว้น `review-github-pr` ที่เป็น PR-scoped)
 4. metric หรือ review domain ใดที่ยังไม่มี analyzer → บันทึกเป็น analyzer gap (name + review skill + metric ที่ขาด) ใน `references/known-issues.md` และ report
 5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียด
 6. ถ้าต้องเพิ่ม AST-based analyzer (structural patterns ที่ regex/git-grep ทำไม่ได้ เช่น function metrics, SRP counts, custom lint rules) → ทำ `/use-astgrep-programmatic` เพื่อ integrate `@ast-grep/napi` หรือ `ast-grep scan --json` เข้า `tools/analyze`/`tools/review-codebase` — findings ต้องมี file:line + rule id ตาม ### 4. Evidence-Based
@@ -113,7 +112,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 2. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อเขียน `reports/review-report.json` ภายใน workspace ที่ถูก review (เช่น `apps/website/reports/review-report.json`) — ห้ามเขียนลง root `reports/`
 3. stdout mode: `bun --filter tools-review-codebase review-codebase:json -- --out-file -`; custom path: `--out-file <path>`
 4. บันทึก score, grade, domain breakdown, category coverage, findings count, analyzerErrors, falsePositiveRate
-5. ระบุ findings Critical/High → จัดกลุ่มตาม `reviewWorkflow` map ไปยัง `/review-*` ที่เหมาะสม (coverage ครบตาม `../shared/review-skills.md`)
+5. ระบุ findings Critical/High → จัดกลุ่มตาม `reviewWorkflow` map ไปยัง `/review-*` ที่เหมาะสม (coverage ครบตาม `deep-review/SKILL.md`)
 6. metric/finding ใดไม่มี analyzer ครอบคลุม → mark `ใน update-review-cli-then-run = N` เป็น analyzer gap
 7. ถ้าผลตรง Metric Triggers ใด → ทำ `/update-create-analyze-cli` แล้วทำ Step 4-7 กลับมารัน Step 8 ใหม่ (ไม่เกิน 3 รอบ):
    - `categories` น้อยกว่า 60
@@ -122,7 +121,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
    - `analyzerErrors` > 0 → ทำ `/resolve-errors` ก่อน
    - `falsePositiveRate` สูงกว่า 20%
    - findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-   - `reviewWorkflow` ไม่ map ไปยัง review skills ที่มีอยู่ หรือไม่ครบ `../shared/review-skills.md`
+   - `reviewWorkflow` ไม่ map ไปยัง review skills ที่มีอยู่ หรือไม่ครบ `deep-review/SKILL.md`
    - มี analyzer gap — review domain/metric ที่ CLI ไม่ครอบคลุม
 8. ถ้าหลัง 3 รอบยังไม่ผ่าน → stop และ report
 
@@ -140,7 +139,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 
 1. แสดง table output จาก Step 8 (run ใหม่ได้เฉพาะเมื่อต้อง refresh — full scan แพง)
 2. ใช้ `/report` แสดง summary: domain scores, findings (Category, Finding, Severity, Location, Recommendation), recommended workflows
-3. แนะนำ `/review-*` workflows สำหรับแต่ละ finding ตาม `reviewWorkflow` field — dispatch catalog: `../shared/review-skills.md`
+3. แนะนำ `/review-*` workflows สำหรับแต่ละ finding ตาม `reviewWorkflow` field — dispatch catalog: `deep-review/SKILL.md`
 4. ทำ `/suggest-next-action`
 
 ## CLI Output
@@ -176,7 +175,7 @@ Table output spec อยู่ใน [references/cli-output.md](references/cli-o
 
 ### 4b. Review Coverage
 
-- `reviewWorkflow` map ต้องครอบคลุม `review-*` ทุกตัวใน `../shared/review-skills.md` ยกเว้น `review-github-pr`
+- `reviewWorkflow` map ต้องครอบคลุม `review-*` ทุกตัวใน `deep-review/SKILL.md` ยกเว้น `review-github-pr`
 - ทุก metric ที่ `deep-review`/skill นี้ mark ว่า `ใน update-review-cli-then-run = N` → เพิ่ม analyzer หรือบันทึก gap พร้อมเหตุผลใน `references/known-issues.md`
 - deep-review dispatch `review-*` ทีละ workspace ตาม phase (entry → source → cross-cutting → meta) — CLI ต้อง output findings ที่ map กลับไปหา review skill เหล่านั้นได้
 
@@ -211,7 +210,7 @@ Table output spec อยู่ใน [references/cli-output.md](references/cli-o
 - `tools/review-codebase` CLI มีอยู่และรันได้ที่ project root
 - Review ทำงานผ่าน `bun run review-codebase`
 - Findings ครอบคลุม 60+ categories พร้อม evidence และ severity
-- `reviewWorkflow` ครอบคลุม `review-*` ทุกตัวใน `../shared/review-skills.md` — analyzer gaps ถูกบันทึกใน `references/known-issues.md`
+- `reviewWorkflow` ครอบคลุม `review-*` ทุกตัวใน `deep-review/SKILL.md` — analyzer gaps ถูกบันทึกใน `references/known-issues.md`
 - Before-after review score แสดงผ่าน table output
 - ไม่มี analyzer errors
 - ตาราง summary พร้อม top findings + recommended `/review-*` workflows ต่อปัญหา

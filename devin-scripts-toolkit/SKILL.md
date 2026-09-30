@@ -5,10 +5,9 @@ argument-hint: "[scope]"
 related:
   - devin-templates-toolkit
   - review-devin-global-harness
-  - review-devin-global-harness
   - follow-create-web
   - setup-cicd
-  - ship
+  - ship-to-dev-branch
 ---
 
 ## Goal
@@ -69,7 +68,7 @@ related:
 
 ## Rules
 
-- ใช้ scripts นี้ก่อน `/ship`
+- ใช้ scripts นี้ก่อน `/ship-to-dev-branch`
 - ใช้ `/devin-templates-toolkit` สำหรับ templates
 - ไม่ hardcode paths ใน scripts
 - ใช้ `Write-Host` สีเขียวสำหรับ OK, เหลืองสำหรับ warning, แดงสำหรับ error

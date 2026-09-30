@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - deep-plan
-  - review-gaps
   - report
   - suggest-next-action
 ---
@@ -18,7 +17,7 @@ related:
 
 ใช้ก่อน `/deep-plan`, implementation, หรือ refactor ที่ต้องการ evidence จาก review — aggregate findings จาก `/deep-review` report หรือ dimensional reviews ที่เคยรัน
 
-- ดูเพิ่มเติม: /deep-review, /review-gaps
+- ดูเพิ่มเติม: /deep-review, /deep-review
 
 ## Execute
 
@@ -28,7 +27,7 @@ related:
 
 1. ตรวจว่ามี deep-review findings ล่าสุดสำหรับ scope นี้หรือไม่ (report ใน session, report files, dimensional review results)
 2. ถ้า findings เก่าหรือครอบคลุมไม่พอ → ทำ `/deep-review` กับ scope นั้น
-3. ถ้ามี dimensional findings กระจายอยู่ → ทำ `/review-gaps` รวมเป็น prioritized list
+3. ถ้ามี dimensional findings กระจายอยู่ → ทำ `/deep-review` รวมเป็น prioritized list
 
 ### 2. Extract Relevant Findings
 

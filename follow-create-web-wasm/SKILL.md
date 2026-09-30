@@ -13,7 +13,7 @@ related:
   - follow-lib-solidjs
   - follow-tool-vite
   - follow-tool-cargo
-  - review-dependencies
+  - deep-review
   - follow-create-plugins
   - follow-service-cloudflare
   - deploy-to-vercel
@@ -38,7 +38,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack และยืนยันว่า Rust และ wasm-pack พร้อมใช้
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `wasm-pack`/`wasm-bindgen` เวอร์ชันล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `wasm-pack`/`wasm-bindgen` เวอร์ชันล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (web wasm)
 4. รัน `rustc --version` และ `cargo --version`
 5. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`
@@ -160,7 +160,7 @@ related:
 2. ถ้า Cloudflare Pages → ทำ `/follow-service-cloudflare`
 3. ตรวจสอบว่า `.wasm` files ถูก serve ด้วย MIME type `application/wasm`
 4. ทดสอบ production URL กับ function หนัก
-5. ทำ `/ship`
+5. ทำ `/ship-to-dev-branch`
 6. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -201,7 +201,7 @@ related:
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugin ถ้าจำเป็น (create website rust)
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น

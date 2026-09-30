@@ -6,7 +6,7 @@ related:
   - run-test-all
   - run-test
   - deep-test
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - create-report-in-dot-devin
@@ -25,7 +25,7 @@ Runner ของ contract domain เท่านั้น — analysis ลึก
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test contract)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test contract)
 
 ### 1. Detect Contract Tooling
 

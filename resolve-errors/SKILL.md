@@ -41,14 +41,14 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 | Cloudflare Workers/Pages ทั้ง account | `/resolve-all-cloudflare-worker-fails` |
 | CI/CD pipeline repo-scoped หรือ single run/URL (watch + dispatch) | `/resolve-cicd` |
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — re-run command เดิม, ไม่มี error ใหม่, ไม่มี suppression |
+| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — re-run command เดิม, ไม่มี error ใหม่, ไม่มี suppression |
 
-1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่แก้ไขใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ โดย Step 5 อ่าน subskill `verify-resolved` มา execute
+1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่แก้ไขใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ โดย Step 5 อ่าน workflow `verify-resolved` มา execute
 
 ### 1. Prepare Context
 
@@ -100,7 +100,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
 
-1. ทำตาม `subskills/verify-resolved/SKILL.md` — re-run command เดิม, ตรวจ side effects และ suppression
+1. ทำตาม `workflows/verify-resolved/SKILL.md` — re-run command เดิม, ตรวจ side effects และ suppression
 2. ถ้า verdict ไม่ใช่ `resolved` → กลับไป Step 4 (loop) — ถ้าเกิน 3 รอบ → ทำ `/deep-debug`
 
 ### 6. Document And Prevent

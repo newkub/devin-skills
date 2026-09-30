@@ -4,9 +4,8 @@ description: สร้าง TUI application ด้วย Rust และ Ratatui
 argument-hint: "[scope]"
 related:
   - follow-create-rust-cli
-  - review-frontend
+  - deep-review
   - run-test-all
-  - review-dependencies
   - follow-single-responsibility
   - follow-release
 
@@ -19,11 +18,10 @@ related:
 ## Scope
 
 - สร้าง TUI project ด้วย Rust จาก scratch
-- ใช้ [references/ratatui.md](references/ratatui.md) สำหรับ setup และ patterns
 - รองรับ layout, components, events, state, styling
 - ไม่ใช้ web stack
 
-- Latest: `ratatui@0.30.2` (crates.io, MSRV Rust 1.88) / `crossterm@0.29.0` (verified 2026-09-12)
+- Packages: `ratatui` (latest stable, MSRV ตาม crates.io — 0.30 ต้องการ Rust 1.88+), `crossterm` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -31,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบ stack
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. ยืนยันว่าใช้ Rust + Ratatui + crossterm
 3. บันทึกเหตุผลทีเลือก stack
 
@@ -39,16 +37,15 @@ related:
 
 > Goal: สร้าง scaffold
 
-1. ทำ `/follow-create-rust-cli` สำหรับ Rust project structure
-2. เพิ่ม `ratatui`, `crossterm`, `anyhow` ใน `Cargo.toml`
+1. ทำ `/follow-create-rust-cli` สำหรับ Rust project structure — หรือ scaffold จาก official templates: `cargo install cargo-generate` แล้ว `cargo generate ratatui/templates <name>`
+2. `cargo add ratatui crossterm anyhow` (หรือ `color-eyre`) — crossterm เป็น default backend; alternatives ผ่าน features: `termion`, `termwiz`, `termina` (`--no-default-features --features <backend>`)
 3. รัน `cargo build` เพื่อ verify setup
 
 ### 3. Setup Terminal
 
 > Goal: ตั้งค่า terminal
 
-1. ใช้ [references/ratatui.md](references/ratatui.md) เพื่อ setup terminal
-2. ใช้ helper ของ 0.30: `ratatui::init()` / `ratatui::try_init()` / `ratatui::restore()` หรือ `ratatui::run(app)` สำหรับ app ง่าย (จัดการ raw mode + alternate screen + restore ให้อัตโนมัติ)
+1. ใช้ helper ของ 0.30: `ratatui::init()` / `ratatui::try_init()` / `ratatui::restore()` หรือ `ratatui::run(app)` สำหรับ app ง่าย (จัดการ raw mode + alternate screen + restore ให้อัตโนมัติ); manual path ใช้ `Terminal::new(CrosstermBackend::new(stdout()))` + `terminal.draw(render)`
 3. ถ้า setup manual: ตั้งค่า `enable_raw_mode`, `enter_alternate_screen` กับ `CrosstermBackend`
 4. ตั้งค่า `PanicHook` (หรือ `color-eyre`) สำหรับ restore terminal state
 5. จัดการ graceful shutdown เมื่อ exit
@@ -84,7 +81,7 @@ related:
 
 > Goal: จัดการ state
 
-1. แยก business logic จาก render logic
+1. แยก business logic จาก render logic — ใช้ Elm Architecture (TEA) pattern: `Model` struct + `Message` enum + `update(model, msg)` + `view(model, frame)`
 2. ใช้ structs สำหรับ state management
 3. จัดการ state updates ใน event loop
 4. ใช้ immutable updates เมื่อเป็นไปได้
@@ -93,7 +90,7 @@ related:
 
 > Goal: จัดการ style
 
-1. ใช้ `Style`, `Color`, `Modifier` จาก `ratatui::style`
+1. ใช้ `Style`, `Color`, `Modifier` จาก `ratatui::style` — หรือ `Stylize` methods บน `Line`/`Span`/`&str` (`.red()`, `.bold()`, `.bg()`, `.on_<color>()`)
 2. สร้าง design tokens สำหรับ colors และ borders
 3. ตรวจสอบ contrast และ readability
 4. ใช้ consistent styling ทุก component
@@ -104,7 +101,7 @@ related:
 
 1. รัน `cargo build` และ `cargo test` — ใช้ `ratatui::backend::TestBackend` + `assert_buffer()` สำหรับ snapshot-test rendering
 2. ทำ `/run-test-all` ถ้ามี integration tests
-3. ทำ `/review-frontend` ตรวจสอบ usability
+3. ทำ `/deep-review` ตรวจสอบ usability
 4. ทดสอบ event handling บน terminal จริง
 
 ### 10. Package And Ship
@@ -136,8 +133,8 @@ related:
 - ใช้ `enable_raw_mode()` / `disable_raw_mode()` และ `enter_alternate_screen()` / `exit_alternate_screen()` เป็นคู่
 - ตั้งค่า `PanicHook` สำหรับ restore terminal state
 - ใช้ `Constraint` แทน hardcoded sizes และจัดเก็บ layout state แยกจาก render logic
-- จัดการ partial updates และใช้ `Frame` สำหรับ area calculations
-- ดูรายละเอียดใน [references/ratatui.md](references/ratatui.md) และ [references/apis.md](references/apis.md)
+- จัดการ partial updates และใช้ `Frame` สำหรับ area calculations — `Frame::render_widget` สำหรับ `Widget`, `render_stateful_widget` สำหรับ `StatefulWidget`
+- Docs: https://ratatui.rs/ + https://docs.rs/ratatui/latest/ratatui/ — companion crates `ratatui-core`, `ratatui-widgets`, `ratatui-macros` ใช้แยกได้
 
 ### 4. Safety
 

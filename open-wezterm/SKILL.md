@@ -63,8 +63,7 @@ related:
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /open-in-devin ถ้าจำเป็น
-- ใช้ /open-explorer ถ้าจำเป็น
-- ใช้ /open-windows-terminal ถ้าจำเป็น
+- ใช้ /open-in-explorer ถ้าจำเป็น
 
 ## Expected Outcome
 

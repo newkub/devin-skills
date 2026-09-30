@@ -26,9 +26,9 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-auth/SKILL.md` — install, `auth.ts`, database adapter | Providers | `subskills/config-providers/SKILL.md` — social/email plugins config 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-auth/SKILL.md` — install, `auth.ts`, database adapter | Providers | `workflows/config-providers/SKILL.md` — social/email plugins config 
 ### 1. Install
 
 > Goal: ติดตั้ง Better Auth และ database adapter

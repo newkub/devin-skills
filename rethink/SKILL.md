@@ -10,7 +10,6 @@ related:
   - deep-research
   - deep-review
   - deep-validate
-  - review-architecture
   - refactor
   - deep-review-then-fix
   - ask-me
@@ -133,7 +132,7 @@ related:
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น
 - ใช้ /think-reframe ถ้าจำเป็น

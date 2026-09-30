@@ -4,7 +4,7 @@ description: ใช้ dependencies ที่มีอยู่และ preferr
 argument-hint: "[need-or-feature]"
 related:
   - follow-my-techstack
-  - review-dependencies
+  - deep-review
   - research-dependencies
   - deep-research
   - follow-best-practice
@@ -27,7 +27,7 @@ related:
 ใช้เมื่อ task กำลังจะ: เขียน utility/helper ใหม่, implement feature ที่ lib น่าจะทำได้, เพิ่ม dependency, หรือ refactor code ที่อาจถูกแทนด้วย lib ที่มีอยู่ — caller หลัก: `/refactor`, `/implement-to-production`, งาน implement ทั่วไป
 
 - เลือก lib ตาม preferred stack → `/follow-my-techstack`
-- Audit deps (outdated, unused, vulnerabilities) → `/review-dependencies`
+- Audit deps (outdated, unused, vulnerabilities) → `/deep-review`
 - reuse internal code ที่มีอยู่ก่อนเขียนใหม่ (DRY) → `/follow-reusable`
 
 ## Execute

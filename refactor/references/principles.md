@@ -6,7 +6,7 @@
 
 - refactor = เปลี่ยน structure โดยไม่เปลี่ยน observable behavior — ห้าม mix feature change/bug fix ใน commit เดียวกับ refactor
 - ถ้าเจอ bug ระหว่าง refactor → commit fix แยกก่อน แล้วค่อย refactor ต่อ
-- public API และ behavior ที่ consumer เห็นต้องเหมือนเดิม — ตรวจด้วย `/review-api` เมื่อแตะ exported API
+- public API และ behavior ที่ consumer เห็นต้องเหมือนเดิม — ตรวจด้วย `/deep-review` เมื่อแตะ exported API
 
 ## 2. Safety Net First
 
@@ -31,10 +31,10 @@
 - ทำ `/use-lib-effective` เมื่อเจอ code ที่อาจ reinvent dep ที่มีอยู่ — แทนด้วย lib ใน manifest หรือ catalog แทนการเขียนเอง
 - ทำ `/follow-reusable` ก่อนเขียน implementation ใหม่หรือเมื่อเจอ duplicates — reuse > extend > extract > create ตาม rule of three
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น; รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
-- dead code ที่เจอระหว่าง refactor → ลบด้วย `/check-repo-hygiene unused` ยืนยันก่อน
+- dead code ที่เจอระหว่าง refactor → ลบด้วย `/follow-tool-knip` ยืนยันก่อน
 - เลือก technique จาก `references/code-smells.md` — smell → technique ตรง root cause
 - แก้ที่ root cause เสมอ — shotgun surgery (fix เดียวต้องแก้หลายจุด) → รวมไป canonical source เดียว
-- ห้าม perf tuning ใน refactor pass — optimization เปลี่ยน behavior/timing เสี่ยง regression; เจอ perf issue → note ไว้แยก commit (`/review-performance`)
+- ห้าม perf tuning ใน refactor pass — optimization เปลี่ยน behavior/timing เสี่ยง regression; เจอ perf issue → note ไว้แยก commit (`/deep-review`)
 
 ## 6. SRP And Consistency
 

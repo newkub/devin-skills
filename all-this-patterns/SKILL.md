@@ -7,7 +7,6 @@ related:
   - batch-rename-files
   - update-references
   - use-scripts
-  - then-apply
   - follow-parallel
   - report
   - suggest-next-action
@@ -48,7 +47,7 @@ related:
 2. เลือก strategy: bulk edit, script, หรือ manual
 3. ถ้ามีหลาย file ให้ใช้ `/use-scripts`
 4. ถ้า rename ให้ใช้ `/batch-rename-files`
-5. ถ้าต้องสลับ skill ต่อเนื่อง ใช้ `/then-apply`
+5. ถ้าต้องสลับ skill ต่อเนื่อง ใช้ `/follow-your-suggestion`
 
 ### 4. Apply Patterns
 

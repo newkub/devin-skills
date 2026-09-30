@@ -4,7 +4,7 @@ description: อัปเดต .vscode สำหรับ workspace settings, e
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
-  - review-delivery
+  - deep-review
   - deep-analyze
   - check-monorepo
   - learn
@@ -20,7 +20,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-create-plugins` (vscode) (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
+ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-create-plugins` (vscode) (สร้าง VSCode extension) และ `/deep-review` (config consistency)
 
 ### Standard Project
 
@@ -173,7 +173,7 @@ related:
 ### 1. No Overlap With Specialized Workflows
 
 - ใช้ `/follow-create-plugins` (vscode) สำหรับสร้าง VSCode extension (ไม่ใช่ config)
-- ใช้ `/review-delivery` สำหรับ config consistency ทั่วไป
+- ใช้ `/deep-review` สำหรับ config consistency ทั่วไป
 - `update-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
 
 ### 2. Settings Priority

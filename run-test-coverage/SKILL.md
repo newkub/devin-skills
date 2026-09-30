@@ -3,7 +3,7 @@ name: run-test-coverage
 description: รัน test coverage แล้วเพิ่ม tests จน coverage ถึง 100% ทุก category — ไม่ลด target ไม่ยอมต่ำกว่าเป้า
 argument-hint: "[scope] [target%]"
 related:
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - report
@@ -24,13 +24,13 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test coverage)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test coverage)
 
 ### 1. Define Coverage Scope
 
 > Goal: วัดสิ่งที่ตั้งใจจะวัด — deterministic และซ้ำได้
 
-1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage — audit ความครบของ config ด้วย `/review-test` ก่อนวัด
+1. ตรวจ coverage config ที่มีอยู่ (`vitest.config`, `jest.config`, `nyc`, `c8`, `cargo-llvm-cov` ฯลฯ) และ script ที่รัน coverage — audit ความครบของ config ด้วย `/deep-review` ก่อนวัด
 2. กำหนด include/exclude จาก argument + signals:
    - ระบุ scope → include เฉพาะ scope นั้น
    - "logic-only" → ตัด UI components, runtime-bound modules (native glue, DOM-only side effects) ที่ทดสอบไม่ได้จริงในสภาพแวดล้อม test ออก แล้วบันทึกเหตุผลของ exclusion ไว้ใน config/comment
@@ -49,7 +49,7 @@ related:
 
 > Goal: เพิ่ม tests จนครบ — วนจนถึงเป้า
 
-1. ส่ง uncovered analysis เข้า `/review-test coverage` — เจ้าของ gap-closing loop (prioritize → เขียน tests ผ่าน `/update-tests` → re-measure)
+1. ส่ง uncovered analysis เข้า `/deep-review coverage` — เจ้าของ gap-closing loop (prioritize → เขียน tests ผ่าน `/update-tests` → re-measure)
 2. ถ้า test เผย `source bug` → แก้ source แยก (`/resolve-errors`) ไม่ใช่ปรับ assertion ให้อ่อนลง
 3. วนจนทุก category ถึงเป้า — failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report blocker
 

@@ -3,10 +3,9 @@ name: idea
 description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
 argument-hint: "[topic]"
 related:
-  - review-frontend
+  - deep-review
   - think-reframe
   - report
-  - then-apply
   - suggest-next-action
   - implement-to-production
   - idea-grouping
@@ -55,7 +54,7 @@ related:
 สร้างไอเดียตาม context:
 
 1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
-2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/review-frontend` สร้างไอเดีย UX/UI improvements
+2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/deep-review` สร้างไอเดีย UX/UI improvements
 3. สร้างไอเดียปรับปรุงจากเดิม (Extends)
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
 5. ระบุ problem ที่แต่ละไอเดียจะ solve
@@ -70,7 +69,7 @@ related:
 1. จัดลำดับตาม value vs effort
 2. ระบุ quick wins และ strategic ideas
 3. ทำ `/report table` แสดงผลเป็นตาราง: `No.`, `Idea`, `Type`, `Problem`, `Impact`, `Effort`
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 4. ใช้ Impact: 🔴 สูง → 🟡 ปานกลาง → 🟢 ต่ำ
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 

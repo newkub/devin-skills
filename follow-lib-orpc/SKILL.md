@@ -29,9 +29,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler 
 ### 1. Install Packages
 
 > Goal: ติดตั้ง oRPC packages และ dependencies

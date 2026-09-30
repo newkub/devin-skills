@@ -4,7 +4,7 @@ description: สร้างและเปิดไฟล์ README.html ด้
 argument-hint: "[file]"
 related:
   - report
-  - review-docs
+  - deep-review
   - update-docs
   - open
   - run-docs
@@ -221,7 +221,7 @@ const getPriorityType = (priority) => {
 - Tailwind classes ใช้ `dark:` prefix สำหรับ dark mode styling
 
 - ใช้ /report html ถ้าจำเป็น
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /update-readme-md ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น

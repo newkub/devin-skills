@@ -3,7 +3,7 @@ name: follow-lang-rust
 description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
 argument-hint: "[scope]"
 related:
-  - review-architecture
+  - deep-review
   - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
@@ -47,7 +47,7 @@ related:
 3. สร้าง `tests/` สำหรับ integration tests
 4. สร้าง `benches/` สำหรับ benchmarks
 5. สร้าง `examples/` สำหรับ usage examples
-6. ถ้า project มี Clean Architecture: ทำ `/review-architecture`
+6. ถ้า project มี Clean Architecture: ทำ `/deep-review`
 7. ดูรายละเอียดใน [references/rust-project-structure.md](references/rust-project-structure.md)
 
 ### 3. Configuration

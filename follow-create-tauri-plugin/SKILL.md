@@ -4,9 +4,9 @@ description: สร้าง custom Tauri plugins ด้วย Rust และ Ja
 argument-hint: "[scope]"
 related:
   - follow-create-web
-  - review-dependencies
+  - deep-review
   - follow-tool-cargo
-  - ship
+  - ship-to-dev-branch
 
 ---
 ## Goal
@@ -17,7 +17,7 @@ related:
 
 ครอบคลุมการสร้าง plugins สำหรับ desktop และ mobile platforms พร้อม commands, state management, lifecycle events และ mobile native code
 
-- Latest: `tauri@2.11.6` / `@tauri-apps/cli@2.11.5` (verified 2026-09-26)
+- Packages: `tauri` crate, `@tauri-apps/cli`, `@tauri-apps/api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -25,17 +25,14 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create tauri plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create tauri plugins)
 
 ### 2. Initialize Plugin Project
 
 > Goal: สร้าง plugin project ใหม่ด้วย Tauri CLI พร้อมโครงสร้างมาตรฐาน
 
-สร้าง plugin ใหม่ด้วย Tauri CLI — ดู CLI options ใน [references/tauri-cli.md](references/tauri-cli.md)
-
-1. รัน `bunx @tauri-apps/cli plugin new <name>` สำหรับสร้าง plugin ใหม่
+1. รัน `bunx @tauri-apps/cli plugin new <name>` สำหรับสร้าง plugin ใหม่ (ทางเลือก: `cargo tauri plugin new <name>`)
 2. ใช้ `--no-api` หากไม่ต้องการ NPM package
 3. ใช้ `--android` และ `--ios` สำหรับ mobile support
 4. ใช้ `--github-workflows` ถ้าต้องการ `.github` CI workflows (CLI ปัจจุบันไม่ generate `.github` โดย default)
@@ -45,19 +42,15 @@ related:
 
 > Goal: กำหนด configuration ของ plugin ผ่าน Builder และ Config struct
 
-กำหนด configuration ของ plugin — ดู Builder API ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
-
-1. กำหนด plugin configuration ใน `tauri.conf.json`
-2. กำหนด Config struct ใน Rust code
-3. ใช้ Builder สำหรับ setup plugin ด้วย config
+1. กำหนด plugin configuration ใน `tauri.conf.json > plugins` — `api.config()` ใน `setup` คืนค่า config ที่ parse จาก section นี้
+2. กำหนด `Config` struct (derive `Deserialize`) — ใช้ `Builder::<R, Option<Config>>` ถ้า config เป็น optional
+3. ใช้ `tauri::plugin::Builder::<R, Config>::new("<plugin-name>").setup(|app, api| { ... Ok(()) }).build()` คืน `TauriPlugin<R, Config>`
 
 ### 4. Define Commands
 
 > Goal: สร้าง commands สำหรับให้ webview เรียกใช้ผ่าน invoke handler
 
-สร้าง commands สำหรับ webview เรียกใช้ — ดู commands macro ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
-
-1. สร้าง commands ใน `src/commands.rs` ด้วย `#[tauri::command]` macro
+1. สร้าง commands ใน `src/commands.rs` ด้วย `#[tauri::command]` macro — ใช้ `tauri::ipc::Channel` parameter สำหรับ stream progress กลับ frontend
 2. Register commands ใน `src/lib.rs` ผ่าน `invoke_handler(tauri::generate_handler![commands::my_command])`
 3. Commands สามารถ access `AppHandle`, `Window`, state และ input parameters
 
@@ -65,17 +58,13 @@ related:
 
 > Goal: เชื่อม lifecycle hooks ของ plugin เพื่อจัดการ state และ events
 
-Hook ลง lifecycle events ของ plugin — ดู lifecycle hooks ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
-
-1. Implement lifecycle hooks: `setup`, `on_navigation`, `on_page_load`, `on_webview_ready`, `on_event`, `on_drop`
-2. จัดการ state ใน `setup` hook ผ่าน `app.manage()`
-3. Access state ผ่าน extension trait บน Manager instances
+1. Implement lifecycle hooks: `setup`, `on_navigation` (คืน `false` เพื่อ cancel navigation), `on_page_load`, `on_webview_ready` (init scripts เมื่อ window สร้าง), `on_event` (`RunEvent::ExitRequested`/`Exit`), `on_drop`
+2. จัดการ state ใน `setup` hook ผ่าน `app.manage()` — commands access ผ่าน `tauri::State<T>`, นอก commands ใช้ `Manager` trait (`app.state::<T>()`, `app.emit()`)
+3. Export plugin API ใน `desktop.rs`/`mobile.rs` เป็น struct + extension trait (เช่น `<Name>Ext`) เพื่อ access ผ่าน `app.<name>()...`
 
 ### 6. Create JavaScript API
 
 > Goal: สร้าง JavaScript/TypeScript bindings สำหรับเรียก commands จาก frontend
-
-สร้าง bindings สำหรับ JavaScript/TypeScript — ดู JavaScript API build ใน [references/tauri-cli.md](references/tauri-cli.md)
 
 1. สร้าง bindings ใน `webview-src/index.ts`:
 
@@ -109,7 +98,7 @@ export async function myCommand() {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -142,7 +131,9 @@ tauri-plugin-<name>/
 
 ### 3. Command Permissions
 
-- Commands จะถูก generate permissions อัตโนมัติใน `permissions/` — ดู [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
+- Commands ไม่ accessible โดย default — generate permissions ผ่าน `build.rs`: `tauri_plugin::Builder::new(&["cmd1", "cmd2"]).build()` สร้าง `allow-<cmd>`/`deny-<cmd>` ใน `permissions/` อัตโนมัติ (เพิ่ม `global_scope_schema` สำหรับ scope autocomplete)
+- `permissions/default.toml` define default permission set (`"$schema" = "schemas/schema.json"` + `[default] permissions = [...]`)
+- ประกาศ platform support ใน `Cargo.toml > [package.metadata.platforms.support]` — `windows`/`linux`/`macos`/`android`/`ios` ระดับ `"full"`/`"partial"`(+`notes`)/`"none"`
 - Define permissions ใน `tauri.conf.json > capabilities`
 - ใช้ `allow-<command-name>` สำหรับ grant access
 

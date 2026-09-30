@@ -8,7 +8,7 @@ related:
   - use-gh-cli
   - open
   - report-git-diff
-  - review-diff
+  - deep-review
 ---
 
 ## Goal
@@ -144,7 +144,7 @@ related:
 - `/follow-create-web` (solid-tanstack-router) สำหรับ stack
 - /open-web สำหรับเปิด browser
 - /report-git-diff สำหรับสร้างรายงาน diff
-- /review-diff สำหรับ review diff
+- /deep-review สำหรับ review diff
 
 ## Expected Outcome
 

@@ -5,7 +5,7 @@ argument-hint: "[query]"
 related:
   - list-recent-bookmark-raindrop
   - list-raindrop-favorite
-  - review-dependencies
+  - deep-review
   - download-program
   - use-scripts
 
@@ -101,7 +101,7 @@ related:
 - ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
 - ใช้ /list-raindrop-favorite ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 
 ## Expected Outcome

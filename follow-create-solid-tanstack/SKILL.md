@@ -37,18 +37,19 @@ related:
 
 > Goal: สร้าง project ใหม่
 
-1. ใช้ TanStack CLI:
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills` จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ใช้ TanStack CLI:
    ```bash
    npx @tanstack/cli@latest create --framework solid
    ```
    หรือ clone official example (`npx gitpick TanStack/router/tree/main/examples/solid/start-basic my-app`)
-2. ตรวจสอบ project structure และไฟล์ config
+3. ตรวจสอบ project structure และไฟล์ config — จัด feature-based modules ใน `src/modules/<feature>/` (แต่ละมี `components/`, `hooks/`, `schemas/`, `utils/`, `types/` + `index.ts` barrel สำหรับ public API), shared UI ใน `src/components/`, utilities ใน `src/lib/`
 
 ### 2. Install Dependencies
 
 > Goal: ติดตั้ง packages ที่จำเป็น
 
-1. Core (verified 2026-09-16 — `@tanstack/solid-start@1.168.55`, `@tanstack/solid-router@1.170.36`; start ต้องการ `vite >=7.0.0` และ `solid-js >=1.0.0`):
+1. Core (เช็คเวอร์ชันล่าสุดด้วย `/deep-research` — start ต้องการ `vite >=7.0.0` และ `solid-js >=1.0.0`):
    ```bash
    bun i @tanstack/solid-start @tanstack/solid-router solid-js
    bun i -D vite vite-plugin-solid typescript @types/node
@@ -96,6 +97,7 @@ related:
 3. ใช้ `.handler(async ({ data }) => ...)` — code ใน handler รันบน server เท่านั้น
 4. Client เรียก server function เหมือน local async function แล้ว `router.invalidate()` เพื่อ refetch loader data
 5. แยก server-only code ไว้ใน `.server.ts` files หรือใช้ `serverOnly()` guard เพื่อกัน bundle รั่วไป client
+6. ใช้ `createServerOnlyFn` (server เท่านั้น เช่น DB/filesystem), `createClientOnlyFn` (browser เท่านั้น เช่น DOM/localStorage), `createIsomorphicFn` (แยก implementation ตาม env) และ `useHydrated` สำหรับ hydration-dependent behavior
 
 ### 6. Define Server Routes
 
@@ -121,7 +123,7 @@ related:
 
 > Goal: สร้าง type-safe routing
 
-1. ใช้ `createFileRoute` สำหรับ file-based routing — routeTree ถูก generate อัตโนมัติเป็น `src/routeTree.gen.ts`
+1. ใช้ `createFileRoute` สำหรับ file-based routing — routeTree ถูก generate อัตโนมัติเป็น `src/routeTree.gen.ts` (ห้ามแก้ไข); conventions: `index.tsx` = index route, `$param.tsx` = dynamic, `route.tsx` = layout, `_group/` = pathless layout, `$.tsx` = catch-all
 2. ใช้ `loader` สำหรับ data loading และ `validateSearch` สำหรับ search params
 3. ใช้ `HydrationScript` สำหรับ client-side hydration
 4. ทำตาม `/follow-lib-tanstack-ecosystem`

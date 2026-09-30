@@ -8,8 +8,7 @@ related:
   - check-secrets
   - follow-secret-manager
   - follow-config
-  - review-i18n
-  - review-config
+  - deep-review
   - follow-single-of-source
   - edit-by-astgrep
   - update-references
@@ -25,8 +24,8 @@ related:
 
 - ถ้า user ระบุ `@files...` → เคลียร์เฉพาะไฟล์นั้น; ไม่ระบุ → scan scope ที่ให้มาหรือทั้ง project
 - secrets/credentials → route ไป `/check-secrets` + `/follow-secret-manager` (rotate ก่อนเสมอ)
-- user-facing strings → route ไป `/review-i18n` (extraction ไป locale files)
-- config inconsistency ข้าม envs → route ไป `/review-config`
+- user-facing strings → route ไป `/deep-review` (extraction ไป locale files)
+- config inconsistency ข้าม envs → route ไป `/deep-review`
 - mechanical batch หลายไฟล์ → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ)
 
 ## Execute
@@ -51,7 +50,7 @@ related:
 | env-specific values | env vars พร้อม safe default + `.env.example` placeholder |
 | domain constants | `constants/` หรือ shared config module — หนึ่ง fact หนึ่ง source (`/follow-single-of-source`) |
 | magic numbers ที่อธิบายตัวเองไม่ได้ | named constant พร้อมชื่อบอก intent |
-| i18n strings | `/review-i18n` extraction flow |
+| i18n strings | `/deep-review` extraction flow |
 
 ### 3. Extract
 

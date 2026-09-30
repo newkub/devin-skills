@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **722** top-level skills (~940 `SKILL.md` on disk including subskills) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `subskills/` and are invoked as `/<parent> <domain>` — lifecycle subskills use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills` (`## Conventions → Subskills And Subagents`). Fix workflows live in `## Fix` sections (`deep-review/SKILL.md`), not `fix-*` subskills.
+The repository currently contains **722** top-level skills (~940 `SKILL.md` on disk including workflows) under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`; domain variants live under `workflows/` and are invoked as `/<parent> <domain>` — lifecycle workflows use prefixes (`setup-`, `config-`, `verify-`, `check-`, `report-`, …) per `update-devin-global-skills` (`## Conventions → Workflows And Subagents`). Fix workflows live in `## Fix` sections (`deep-review/SKILL.md`), not `fix-*` workflows.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `/list-devin-global-skills`.
 
@@ -90,7 +90,7 @@ Core:
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `update-devin-global-skills: /update-devin-global-skills`
-- `update-devin-global-subagents: /update-devin-global-subagents` — create/update agents/ aligned with skills (subskill)
+- `update-devin-global-subagents: /update-devin-global-subagents` — create/update agents/ aligned with skills (workflow)
 - `review-devin-global-harness: /review-devin-global-harness` — review all layers: skills, subagents, hooks, MCP, global rules
 - `update-devin: /update-devin [domain]` — routes to `update-devin-global-*` / `update-devin-project-*` / `update-devin-harness` top-level skills
 - `git-commit: /git-commit`

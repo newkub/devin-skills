@@ -8,7 +8,7 @@
 
 1. หา service boundaries: API calls ข้าม service, event schemas, shared types
 2. ระบุ contract artifacts ที่มี: OpenAPI specs, shared types, Pact files
-3. ถ้าไม่มี contract → ทำ `/gen-openapi` หรือ extract expectations จาก consumer code ก่อน
+3. ถ้าไม่มี contract → ทำ framework generator หรือ extract expectations จาก consumer code ก่อน
 
 ## 2. Capture Consumer Expectations
 

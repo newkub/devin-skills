@@ -6,7 +6,6 @@ related:
   - grouping
 
   - report
-  - visualize-project
 ---
 
 ## Goal
@@ -95,8 +94,6 @@ related:
 
 - ใช้ /grouping ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /visualize-project ถ้าจำเป็น
 
 ## Expected Outcome
 

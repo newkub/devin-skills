@@ -3,17 +3,15 @@ name: setup-cicd
 description: ตรวจจับ platform และตั้งค่า CI/CD config files, secrets และ workflows
 argument-hint: "[scope]"
 related:
-  - setup-package
-  - setup-release
+  - update-project
   - follow-tool-github-actions
   - follow-secret-manager
   - open
   - follow-tasks
-  - review-delivery
-  - review-config
+  - deep-review
   - run-verify
   - run-test-all
-  - ship
+  - ship-to-dev-branch
   - report
   - suggest-next-action
   - run-deploy
@@ -27,7 +25,7 @@ related:
 
 ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, deploy หรือ release (setup release workflow ได้ แต่ไม่รัน release)
 
-ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship` แทน
+ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-to-dev-branch` แทน
 
 ## Execute
 
@@ -51,7 +49,7 @@ related:
 > Goal: มั่นใจว่า package manifest มี scripts ที CI จะเรียก ตามขนาด project
 
 1. อ่าน `package.json` หรือ `Cargo.toml` หรือไฟล์ manifest ที่เหมาะสม
-2. ถ้า package manifest ขาด fields พื้นฐานสำหรับ publish (`name`, `version`, `description`, `license`, `repository`) → ทำ `/setup-package` ก่อน
+2. ถ้า package manifest ขาด fields พื้นฐานสำหรับ publish (`name`, `version`, `description`, `license`, `repository`) → ทำ `/update-project` `### setup-package` ก่อน
 3. ตรวจสอบขนาด project:
    - ถ้า project เล็ก (ไม่ monorepo, build/test ไม่หนัก) → `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
    - ถ้า project ใหญ่ (monorepo หรือ build/test หนัก) → CI/CD pipeline จะรัน full suite แทน; package manifest ต้องมี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
@@ -117,7 +115,7 @@ jobs:
 4. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
 
 5. ถ้าต้องการ release:
-   - ถ้ายังไม่มี release tool หรือ release workflow → ทำ `/setup-release` ก่อน
+   - ถ้ายังไม่มี release tool → เลือกผ่าน `/follow-tool-changesets`, `/follow-tool-changelogen`, `/follow-tool-semantic-release` หรือ `/follow-tool-release-it` ก่อน
    - สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
 
 ```yaml
@@ -179,8 +177,8 @@ jobs:
 
 > Goal: ตรวจสอบว่า CI/CD config ถูกต้อง
 
-1. ทำ `/review-config` เพื่อตรวจ drift และ duplication
-2. ทำ `/review-delivery` เพื่อตรวจว่า config ครอบคลุม security, testing, deployment
+1. ทำ `/deep-review` เพื่อตรวจ drift และ duplication
+2. ทำ `/deep-review` เพื่อตรวจว่า config ครอบคลุม security, testing, deployment
 3. รัน dry run ถ้า platform รองรับ (เช่น `act` สำหรับ GitHub Actions) — optional
 4. ถ้าต้องการ validate test suite ใน local → ทำ `/run-test-all` ก่อนขึ้น CI
 5. ถ้ามี syntax error → แก้ไขก่อนจบ
@@ -196,7 +194,7 @@ jobs:
 
 > Goal: ตั้งค่า release workflow ถ้าจำเป็น
 
-1. ถ้า project ต้องการ release บน tag → ทำ `/setup-release`
+1. ถ้า project ต้องการ release บน tag → ทำตาม Step 5 release workflow + เลือก release tool ผ่าน `/follow-tool-*`
 2. ถ้าไม่ต้องการ release → ข้าม
 
 ## Rules
@@ -205,7 +203,7 @@ jobs:
 
 - `setup-cicd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
 - ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
-- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship`
+- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-to-dev-branch`
 
 ### 2. Platform First
 
@@ -230,7 +228,7 @@ jobs:
 ### 5. No Auto Commit
 
 - ไม่ commit หรือ push config files โดยอัตโนมัติ
-- ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship` หลัง setup
+- ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship-to-dev-branch` หลัง setup
 
 ### 6. Overlap And Cost
 

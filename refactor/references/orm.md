@@ -8,7 +8,7 @@ Restructure data access layer ให้ใช้ ORM อย่าง type-safe �
 
 - ใช้กับ projects ที่ต้อง restructure data access เป็น ORM แทน raw SQL/scattered queries รองรับ TypeScript, Rust, Python, Go
 - Repository pattern (interfaces, mappers, UnitOfWork, QuerySpec) → ทำตาม `references/repository-pattern.md`
-- Schema design/review และ migration drift audit → `/review-database`; drizzle-kit commands ลึก → `/follow-tool-drizzle-kit`; boundary validation → `/follow-tool-data-validation`
+- Schema design/review และ migration drift audit → `/deep-review`; drizzle-kit commands ลึก → `/follow-tool-drizzle-kit`; boundary validation → `/follow-tool-data-validation`
 
 ## Steps
 
@@ -50,7 +50,7 @@ Restructure data access layer ให้ใช้ ORM อย่าง type-safe �
 > Goal: schema changes versioned และ reproducible
 
 1. generate migration จาก model changes — review generated SQL ก่อน apply เสมอ
-2. ทำ `/review-database` เทียบ pending vs applied ก่อน deploy
+2. ทำ `/deep-review` เทียบ pending vs applied ก่อน deploy
 3. destructive changes (drop column/table) → dry-run + user confirm
 4. seed script แยกจาก migrations — ไม่ผสม data กับ schema
 5. ถ้า migration fail → `/resolve-errors` ก่อนดำเนินต่อ
@@ -88,7 +88,7 @@ Restructure data access layer ให้ใช้ ORM อย่าง type-safe �
 - ทุก migration ต้อง rollback-able (มี down path) หรือระบุไว้ชัดเจน
 - ไม่ edit applied migrations — สร้าง migration ใหม่แทน
 
-- ใช้ /follow-tool-drizzle-kit, /follow-tool-data-validation, /review-database, /run-test ถ้าจำเป็น
+- ใช้ /follow-tool-drizzle-kit, /follow-tool-data-validation, /deep-review, /run-test ถ้าจำเป็น
 
 ## Expected Outcome
 

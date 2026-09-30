@@ -4,9 +4,7 @@ description: Design system principles พื้นฐานที่ใช้ไ
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
-  - review-frontend
   - deep-review
-  - review-uxui
   - capture
 ---
 
@@ -46,7 +44,7 @@ related:
 > Goal: แปลง tokens และ guidelines ตาม platform
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
-2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
+2. ถ้า project เป็น web ทำ `/deep-review` สำหรับ web-specific guidelines
 3. ถ้า project มี mobile ทำ `/deep-review`
 4. ถ้า project มี TUI ทำ `/deep-review`
 
@@ -105,7 +103,7 @@ related:
 - kebab-case สำหรับ CSS classes
 - UPPER_SNAKE_CASE สำหรับ constants
 
-- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

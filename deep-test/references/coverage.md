@@ -43,7 +43,7 @@
 3. ตรวจสอบ `functions` coverage ถึง 100%
 4. ตรวจสอบ `statements` coverage ถึง 100%
 5. ถ้า coverage ถึง 100% ทุก category → ไป Report
-6. ถ้า coverage ไม่ถึง 100% → ทำ `/review-test` วิเคราะห์ gaps เติม tests ที่ขาด
+6. ถ้า coverage ไม่ถึง 100% → ทำ `/deep-review` วิเคราะห์ gaps เติม tests ที่ขาด
 7. ถ้าเขียน tests แล้ว → กลับไป Step 3 Run Coverage Analysis ใหม่
 8. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report พร้อม remaining gaps
 
@@ -69,13 +69,13 @@
 ### 2. Coverage Threshold And Loop
 
 - Coverage 100% ทุก category เท่านั้นที่ผ่าน
-- หาก coverage ไม่ถึง 100% ต้องทำ `/review-code-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- หาก coverage ไม่ถึง 100% ต้องทำ `/deep-review` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
 - วน loop run coverage → write tests → run coverage จนกว่าจะ 100% สูงสุด 5 รอบ
 - ถ้าเกิน 5 รอบ → stop และ report remaining gaps
 - ไม่มีข้อยกเว้นสำหรับ critical code, edge cases, error paths
 
 - ใช้ /follow-coverage ถ้าจำเป็น
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

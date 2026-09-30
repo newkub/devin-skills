@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI (promoted จาก `use-astgrep` subskill กลับเป็น top-level skill)
+ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI (promoted จาก `use-astgrep` workflow กลับเป็น top-level skill)
 
 ## Scope
 

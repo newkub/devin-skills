@@ -13,16 +13,16 @@ Alias ของ `/git-commit at-devin-global-skills` — commit ทุกไฟ�
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/git-commit-at-devin-global-skills` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `git-commit/subskills/at-devin-global-skills`
+ใช้เมื่อ user เรียก `/git-commit-at-devin-global-skills` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `git-commit/workflows/at-devin-global-skills`
 
 ## Execute
 
-ทำ `/git-commit at-devin-global-skills` เต็ม workflow (อ่าน `git-commit/subskills/at-devin-global-skills/SKILL.md`)
+ทำ `/git-commit at-devin-global-skills` เต็ม workflow (อ่าน `git-commit/workflows/at-devin-global-skills/SKILL.md`)
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `git-commit/subskills/at-devin-global-skills` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `git-commit/subskills/at-devin-global-skills/SKILL.md` เสมอ
+- ห้าม duplicate workflow ของ `git-commit/workflows/at-devin-global-skills` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `git-commit/workflows/at-devin-global-skills/SKILL.md` เสมอ
 - ถ้าต้องการ push ต่อ → ใช้ `/git-commit-and-push` หลังจากนี้
 
 ## Expected Outcome

@@ -4,7 +4,7 @@ description: สร้าง SVG image จากคำอธิบายหร�
 argument-hint: "[description]"
 related:
   - convert
-  - review-architecture
+  - deep-review
   - visualize-in-web
   - open
   - open-files-in-web
@@ -74,7 +74,7 @@ related:
 - ถ้า description complex หรือ user ต้องการ photorealistic → แนะนำ `gen-ai-images` + `convert-to-svg`
 - ถ้าต้องการ preview → ใช้ `/visualize-in-web` หรือ `/open-web`
 
-- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 
 - ใช้ /gen-media ถ้าจำเป็น

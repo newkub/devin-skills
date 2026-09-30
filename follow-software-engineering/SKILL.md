@@ -4,8 +4,7 @@ description: ออกแบบและเขียน software ที่ test 
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - review-architecture
-  - review-frontend
+  - deep-review
 ---
 
 ## Goal
@@ -24,7 +23,7 @@ related:
 
 ออกแบบ architecture ที่ test ง่ายและ scale ง่าย
 
-1. ทำ `/review-architecture` สำหรับโครงสร้างพื้นฐาน
+1. ทำ `/deep-review` สำหรับโครงสร้างพื้นฐาน
 2. แยก business logic จาก infrastructure
 3. ใช้ dependency injection สำหรับ external dependencies
 4. สร้าง interfaces สำหรับ external services
@@ -39,7 +38,7 @@ related:
 
 เขียน code ที่ debug ง่ายและ test ง่าย
 
-1. ทำ `/review-architecture` เพื่อแยก pure logic จาก side effects
+1. ทำ `/deep-review` เพื่อแยก pure logic จาก side effects
 2. เขียน business logic เป็น pure functions
 3. ใช้ naming ที่ชัดเจนและ meaningful
 4. เขียน functions ที่ small และ focused (max 20-30 lines)
@@ -54,7 +53,7 @@ related:
 
 ออกแบบให้ใช้งานง่าย
 
-1. ทำ `/review-frontend` สำหรับ design system principles
+1. ทำ `/deep-review` สำหรับ design system principles
 2. ออกแบบ API ที่ intuitive และ consistent
 3. ใช้ sensible defaults
 4. เพิ่ม auto-completion และ discoverability
@@ -69,7 +68,7 @@ related:
 
 สร้าง boundaries ที่ชัดเจนระหว่าง layers
 
-1. ทำ `/review-architecture` สำหรับแยก layers
+1. ทำ `/deep-review` สำหรับแยก layers
 2. กำหนด interfaces ระหว่าง layers
 3. ใช้ ports และ adapters pattern
 4. แยก domain logic จาก application logic

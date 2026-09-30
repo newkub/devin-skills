@@ -39,7 +39,7 @@ related:
 
 > Goal: หาว่า program ถูกติดตั้งโดย package manager ใด
 
-1. ทำตาม `download-program/subskills/package-manager` ด้วย `<program-name> uninstall`
+1. ทำตาม `download-program/workflows/package-manager` ด้วย `<program-name> uninstall`
 2. หรือเรียก `/list-program-in-computer <program-name>` เพื่อดู package manager
 3. ตรวจสอบ `mise list`, `scoop list`, `winget list` ด้วย filter
 4. บันทึก package manager ทีพบ

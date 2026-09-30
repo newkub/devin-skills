@@ -5,7 +5,7 @@ argument-hint: "[package-or-path]"
 related:
   - use-astgrep
   - run-typecheck
-  - review-api
+  - deep-review
   - update-references
   - run-build
   - run-test
@@ -31,7 +31,7 @@ Migrate JavaScript/TypeScript project จาก CommonJS (`require`/`module.expo
 1. นับ `require`/`module.exports` sites ด้วย `use-astgrep` หรือ `search-files-patterns`
 2. ตรวจ `package.json` `"type"` field และ runtime/tooling support (Node version, bundler, test runner)
 3. หา blockers: dynamic `require()` ที่ static ไม่ได้, conditional requires, CJS-only deps
-4. ตรวจ dependencies ที่ import project นี้ — ทำ `/review-api`
+4. ตรวจ dependencies ที่ import project นี้ — ทำ `/deep-review`
 
 ### 2. Plan Migration Order
 
@@ -85,7 +85,7 @@ Migrate JavaScript/TypeScript project จาก CommonJS (`require`/`module.expo
 ### 3. No Semantic Changes
 
 - แปลง syntax/module system เท่านั้น — ห้าม refactor logic ไปด้วย
-- circular imports ที่ CJS ทนได้อาจพังใน ESM — flag ให้ `/check-repo-hygiene circular-dependencies`
+- circular imports ที่ CJS ทนได้อาจพังใน ESM — flag ให้ `/follow-tool-madge`
 
 ## Expected Outcome
 

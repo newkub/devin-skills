@@ -3,7 +3,7 @@ name: gen-media
 description: สร้าง media ด้วย AI — images, videos, character consistency, 3D models ผ่าน gen-media-* skills
 argument-hint: "[domain]"
 related:
-  - generate-prompt-from-image
+  - report-prompt-from-image
   - draw-svg-image
   - convert
   - ask-me
@@ -39,7 +39,7 @@ Dispatch ไป skill ตาม media domain — parent ทำ routing เท่
 - parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
 - ทุก prompt ที่สร้างต้อง confirm output path ก่อน generate
 
-- ใช้ /generate-prompt-from-image ถ้าจำเป็น
+- ใช้ /report-prompt-from-image ถ้าจำเป็น
 - ใช้ /draw-svg-image ถ้าจำเป็น
 - ใช้ /convert ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

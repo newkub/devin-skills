@@ -20,15 +20,15 @@ related:
 - ใช้ skill นี้แทน `jsonwebtoken` เมื่อต้องรันบน edge runtimes (Cloudflare Workers, Deno, browsers) หรือต้องการ zero-dependency WebCrypto suite — `jsonwebtoken` ต้อง `node:crypto`
 - v6 คืน `CryptoKey` ไม่ใช่ `KeyObject` — ถ้า codebase ผูกกับ Node `KeyObject` อยู่ → ติดอยู่ที่ v5 หรือ migrate
 - Keys/secrets จาก env ผ่าน `/follow-secret-manager` — ห้าม hardcode
-- First-time setup + JWKS → `subskills/setup-jose/SKILL.md`
+- First-time setup + JWKS → `workflows/setup-jose/SKILL.md`
 
 - Latest: `jose@6.2.12` (verified 2026-09-13) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
 - References: [apis](references/apis.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

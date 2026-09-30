@@ -6,7 +6,7 @@ related:
   - run-test-all
   - run-test
   - deep-test
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - follow-tool-playwright
@@ -28,7 +28,7 @@ Runner ของ E2E domain เท่านั้น — flow/coverage analysis 
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test e2e)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test e2e)
 
 ### 1. Detect E2E Tooling
 
@@ -53,7 +53,7 @@ Runner ของ E2E domain เท่านั้น — flow/coverage analysis 
 
 1. element missing/flow broken → source bug → `/resolve-errors`
 2. selector outdated/timing assertion → test issue → `/update-tests`
-3. flaky (ผ่านบ้าง fail บ้าง) → report flakiness + `/review-test` — ห้ามเพิ่ม retry เพื่อให้ผ่าน
+3. flaky (ผ่านบ้าง fail บ้าง) → report flakiness + `/deep-review` — ห้ามเพิ่ม retry เพื่อให้ผ่าน
 4. environment (server ไม่ขึ้น, port ชน) → แก้ env ไม่แก้ test
 5. Failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report
 

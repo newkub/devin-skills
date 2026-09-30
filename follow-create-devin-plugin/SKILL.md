@@ -6,8 +6,8 @@ related:
   - follow-create-sdk
   - update-devin-global-skills
   - update-devin
-  - review-dependencies
-  - ship
+  - deep-review
+  - ship-to-dev-branch
   - update-references
 
 ---
@@ -27,7 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin format และ docs ล่าสุดที่ https://docs.devin.ai จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin format และ docs ล่าสุดที่ https://docs.devin.ai จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
 
@@ -118,7 +118,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -28,9 +28,9 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Init, `.changeset/` flow, version/publish commands | `subskills/setup-changesets/SKILL.md` | `config.json`, `fixed`/`linked` packages, access | `subskills/config-changesets/SKILL.md` 
+| Topic | Workflow |-------|----------| Init, `.changeset/` flow, version/publish commands | `workflows/setup-changesets/SKILL.md` | `config.json`, `fixed`/`linked` packages, access | `workflows/config-changesets/SKILL.md` 
 ### 1. Install Changesets
 
 > Goal: ติดตั้ง Changesets CLI และ init config

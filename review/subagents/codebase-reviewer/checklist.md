@@ -8,16 +8,16 @@
 
 ## 2. Domain Coverage Map
 
-- [ ] code quality → `/review-code-quality`, `/review-writing`
-- [ ] structure → `/review-architecture`, `/review-code-quality`, `/review-workspace`
-- [ ] surface → `/review-frontend`, `/review-cli`, `/deep-review`, `/review-api`, `/review-backend`
-- [ ] safety → `/review-security`, `/review-auth`, `/review-compliance`, `/review-data-validation`
-- [ ] ops → `/review-release`, `/review-delivery`, `/review-observability`, `/review-stability`, `/review-cost`
-- [ ] docs/meta → `/review-docs`, `/review-writing`, `/review-dot-devin`
-- [ ] process → `/review-plan`, `/review-risk`, `/review-idea`, `/review-issue`, `/review-github-pr`, `/review-diff`, `/review-migration`
-- [ ] persona → `/review-by-stakeholder` via `/roleplay-by-all-stakeholder`
-- [ ] devin repos → `/review-devin-global-harness`, `/update-devin-global-subagents`, `/review-dot-devin`
-- [ ] aggregate → `/review-gaps`, `/deep-review-then-fix`
+- [ ] code quality → `/deep-review`, `/deep-review`
+- [ ] structure → `/deep-review`, `/deep-review`, `/deep-review`
+- [ ] surface → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`
+- [ ] safety → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`
+- [ ] ops → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`
+- [ ] docs/meta → `/deep-review`, `/deep-review`, `/deep-review`
+- [ ] process → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/review-github-pr`, `/deep-review`, `/deep-review`
+- [ ] persona → `/deep-review` via `/roleplay-by-all-stakeholder`
+- [ ] devin repos → `/review-devin-global-harness`, `/update-devin-global-subagents`, `/deep-review`
+- [ ] aggregate → `/deep-review`, `/deep-review-then-fix`
 
 ## 3. Execution Discipline
 

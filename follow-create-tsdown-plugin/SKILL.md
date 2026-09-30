@@ -6,7 +6,7 @@ related:
   - follow-tool-tsdown
   - follow-create-plugins
   - follow-lang-typescript
-  - review-dependencies
+  - deep-review
   - follow-tool-turborepo
 
 ---
@@ -26,8 +26,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create tsdown plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create tsdown plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create tsdown plugins)
 
 ### 2. Setup Project
@@ -117,7 +117,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -5,7 +5,6 @@ argument-hint: "[action-or-context]"
 related:
   - review
   - deep-review
-  - review-code-quality
   - deep-review-then-fix
   - follow-parallel
   - report
@@ -19,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ pre-action review gate — เช่น ก่อน `/implement-to-production`, `/refactor`, `/ship` หรือ action เสี่ยงอื่น
+ใช้เมื่อต้องการ pre-action review gate — เช่น ก่อน `/implement-to-production`, `/refactor`, `/ship-to-dev-branch` หรือ action เสี่ยงอื่น
 
 - ถ้าต้องการ review แบบ standalone ครบวงจร → ใช้ `/review` (canonical router สำหรับเลือกและ execute `review-*`)
 - skill นี้เน้น "ดูว่า review-* ตัวไหน applicable กับ context ที่จะทำ" แล้วรันแค่ที่จำเป็นก่อนลงมือ
@@ -43,14 +42,14 @@ related:
 | No. | Action / Context | Reviews ที่ตรง |
 |-----|------------------|----------------|
 | 1 | ก่อน implement / productionize | `/implement-to-production` |
-| 2 | ก่อน refactor | `/review-code-quality`, `/review-architecture` |
-| 3 | ก่อน restructure / move files | `/review-code-quality`, `/review-devin-global-harness` |
-| 4 | ก่อน ship / deploy / release | `/review-release`, `/review-delivery` |
-| 5 | ก่อน update docs / plan / config | `/review-docs`, `/review-plan` |
-| 6 | แตะ security-sensitive code | `/review-security`, `/review-compliance` |
-| 7 | แตะ tests | `/review-test` |
-| 8 | แตะ dependencies / tech stack | `/review-dependencies` |
-| 9 | แตะ UX/UI / frontend | `/review-uxui`, `/review-frontend` |
+| 2 | ก่อน refactor | `/deep-review`, `/deep-review` |
+| 3 | ก่อน restructure / move files | `/deep-review`, `/review-devin-global-harness` |
+| 4 | ก่อน ship / deploy / release | `/deep-review`, `/deep-review` |
+| 5 | ก่อน update docs / plan / config | `/deep-review`, `/deep-review` |
+| 6 | แตะ security-sensitive code | `/deep-review`, `/deep-review` |
+| 7 | แตะ tests | `/deep-review` |
+| 8 | แตะ dependencies / tech stack | `/deep-review` |
+| 9 | แตะ UX/UI / frontend | `/deep-review`, `/deep-review` |
 | 10 | ไม่ชัดหรือครอบหลายมิติ | `/deep-review`, `/review` |
 
 1. เลือก primary 1-3 ตัวที่ตรงที่สุด — ห้ามรันทุก review-*

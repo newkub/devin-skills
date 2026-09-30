@@ -5,7 +5,7 @@ argument-hint: "[module-name]"
 related:
   - use-pwsh-shell
   - devin-scripts-toolkit
-  - review-dependencies
+  - deep-review
   - follow-best-practice
   - run-test
   - run-check
@@ -30,8 +30,8 @@ related:
 
 > Goal: เตรียม context ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อดูเครื่องมือ
-2. ทำ `/review-dependencies` ถ้า module เกี่ยวข้องกับ project dependencies
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อดูเครื่องมือ
+2. ทำ `/deep-review` ถ้า module เกี่ยวข้องกับ project dependencies
 3. ตรวจ PowerShell version ด้วย `$PSVersionTable.PSVersion` — target `pwsh` 7.6+ (LTS) เป็น default
 
 ### 2. Gather Requirements

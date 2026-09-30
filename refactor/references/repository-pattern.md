@@ -51,4 +51,4 @@
 - Interfaces ใช้ business types + error types ของตัวเอง + `QuerySpec` + `UnitOfWork` — framework-agnostic
 - Mappers เป็น pure functions — ห้าม `any` สำหรับ database results
 - Anti-patterns: import ORM ใน business logic, ORM row types เป็น business types, leak query builder, transaction ใน business logic
-- ใช้ /review-architecture, /review-dependencies, /run-drizzle-studio ถ้าจำเป็น
+- ใช้ /deep-review, /deep-review, /run-drizzle-studio ถ้าจำเป็น

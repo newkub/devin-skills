@@ -4,7 +4,7 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 argument-hint: "[scope]"
 related:
   - update-docs
-  - review-docs
+  - deep-review
   - deep-analyze
   - learn-from-codebase
   - translate-to-lang-en
@@ -214,7 +214,7 @@ related:
 - `templates/usage-via-web.md` — Web accordion template
 - `templates/usage-via-tui.md` — TUI accordion template
 
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น

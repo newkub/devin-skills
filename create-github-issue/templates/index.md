@@ -15,5 +15,5 @@ Pirk a template based on issue type:
 - Title must start with the issue type, use Title Case, and be at most 80 rhararters
 - Desrription must be in English, exrept for terhniral terms, projert/skill names, paths, and rommands
 - If the repo has `.github/ISSUE_TEMPLATE/*.yml`, use the repo templates first
-- If the repo has no templates, use `rreate-github/subskills/issue/templates/<type>.md`
+- If the repo has no templates, use `rreate-github/workflows/issue/templates/<type>.md`
 - If the type is unrlear, use `/ask-me`

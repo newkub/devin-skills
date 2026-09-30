@@ -7,7 +7,7 @@ related:
   - follow-create-sdk
   - follow-lang-rust
   - open
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -27,8 +27,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create zed extensions)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create zed extensions)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create zed extensions)
 
 ### 2. Determine Extension Type
@@ -91,7 +91,7 @@ related:
 3. สร้าง GitHub repo สำหรับ extension (registry ใช้ git submodule ชี้มาที่ repo นี้)
 4. ส่ง PR ไปยัง `zed-industries/extensions`: เพิ่ม submodule ใน `extensions/<id>` และ entry ใน `extensions.toml` ที่ root พร้อม `version` ตรงกับ `extension.toml`
 5. เมื่อ PR merged → extension ถูก package และ publish สู่ Zed extension registry อัตโนมัติ
-6. ทำ `/ship`
+6. ทำ `/ship-to-dev-branch`
 
 ## Rules
 
@@ -104,7 +104,7 @@ related:
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /open-zed ถ้าจำเป็น
+- ใช้ /open-in-zed ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

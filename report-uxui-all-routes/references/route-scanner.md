@@ -84,7 +84,7 @@ description: ขั้นตอน scan routes ทั้งหมดของ we
 - ระบุ routes ทีอาจ conflict หรือซ้ำซ้อน
 
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
-- ใช้ /review-delivery ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /deep-test api (all-routes check) ถ้าจำเป็น
 
 ## Expected Outcome

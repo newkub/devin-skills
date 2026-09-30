@@ -6,7 +6,6 @@ related:
   - report
   - open
   - open-files-in-web
-  - visualize-project
   - open-readme-html
   - run-test
 
@@ -21,7 +20,7 @@ related:
 - ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน
 - สร้างไฟล์เดียวใน OS temp directory แบบ no-build
 - เลือก runtime ตาม context: `Vue 3`, `solid-js/html`, `Alpine.js`, หรือ `Vanilla JS`
-- ถ้าต้องการ preview `TSX` component หรือ build → ใช้ `/visualize-project`
+- no-build เท่านั้น — ไม่รองรับ `TSX` component หรือ build step
 
 ## Execute
 
@@ -42,7 +41,7 @@ related:
 3. ถ้า user ใช้ `Vue` → ใช้ Vue 3 global build จาก unpkg
 4. ถ้า user ใช้ `Alpine` → ใช้ Alpine.js CDN
 5. ถ้าไม่ชัด → ใช้ Vue 3 เป็น default
-6. ถ้าต้องการ build หรือ `TSX` → เปลี่ยนไปใช้ `/visualize-project`
+6. `TSX`/build ไม่รองรับใน skill นี้ — แจ้ง limitation ให้ user
 
 ### 3. Generate Web Mode
 
@@ -100,7 +99,7 @@ related:
 
 - ไฟล์เดียว ไม่มี build step
 - JS/CSS/Runtime โหลดจาก CDN
-- ถ้าต้องการ `TSX` หรือ build → ใช้ `/visualize-project` แทน
+- ไม่รองรับ `TSX` หรือ build — ถ้าต้องการให้แจ้ง limitation ให้ user
 
 ### 4. Content Clarity
 

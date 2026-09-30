@@ -6,7 +6,7 @@ related:
   - report-file-structure
   - report
   - follow-create-rust-cli
-  - review-dependencies
+  - deep-review
 
 ---
 
@@ -51,7 +51,7 @@ related:
 - ไม่แก้ไขไฟล์ source ใน project ทีสแกน — อ่านอย่างเดียว
 - default กรอง build/cache ออก
 - ระบุ depth สำหรับ project ใหญ่
-- ถ้า CLI ยังไม่ถูกต้องตาม tech stack → ทำ `/review-dependencies` ก่อน
+- ถ้า CLI ยังไม่ถูกต้องตาม tech stack → ทำ `/deep-review` ก่อน
 
 - ใช้ /follow-create-rust-cli ถ้าจำเป็น
 ## Expected Outcome

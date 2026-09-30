@@ -6,7 +6,7 @@ related:
   - run-test-all
   - run-test
   - deep-test
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - create-report-in-dot-devin
@@ -25,7 +25,7 @@ Runner ของ integration domain เท่านั้น — boundary analys
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test integration)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test integration)
 
 ### 1. Detect Integration Tooling
 
@@ -51,7 +51,7 @@ Runner ของ integration domain เท่านั้น — boundary analys
 1. boundary/logic fail → source bug → `/resolve-errors`
 2. fixture/seed ผิด, assertion outdated → test issue → `/update-tests`
 3. dependency ไม่ขึ้น, port ชน, timeout เชื่อมต่อ → environment — แก้ env ไม่แก้ test
-4. shared-state interference ระหว่าง tests → report + `/review-test`
+4. shared-state interference ระหว่าง tests → report + `/deep-review`
 5. Failure เดิมซ้ำ ≥3 รอบโดยไม่คืบหน้า → stop และ report
 
 ### 4. Report

@@ -137,16 +137,16 @@ related:
 9. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
 10. ทำ `/suggest-next-action`
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ตาม topic/argument
+> Goal: dispatch ไปยัง workflow ตาม topic/argument
 
-| Topic/Argument | Subskill |
+| Topic/Argument | Workflow |
 |----------------|----------|
-| `setup-infra`, `infra`, `env`, `secrets`, `ci`, `observability` | `subskills/setup-infra/SKILL.md` — infra readiness: env vars, secrets, CI, observability |
-| `deploy-production`, `deploy`, `production` | `subskills/deploy-production/SKILL.md` — production deploy gate, verify, rollback |
+| `setup-infra`, `infra`, `env`, `secrets`, `ci`, `observability` | `workflows/setup-infra/SKILL.md` — infra readiness: env vars, secrets, CI, observability |
+| `deploy-production`, `deploy`, `production` | `workflows/deploy-production/SKILL.md` — production deploy gate, verify, rollback |
 
-1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ตรง topic → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-9 ตามลำดับ
 
 ### Subagents

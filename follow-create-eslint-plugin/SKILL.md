@@ -4,9 +4,9 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - review-dependencies
+  - deep-review
   - follow-tool-eslint
-  - ship
+  - ship-to-dev-branch
   - report
   - run-lint
   - run-format
@@ -19,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง custom ESLint plugins ด้วย JavaScript/TypeScript ครอบคลุม plugin entry, custom rules, metadata, testing และ flat config
 
-- Latest: `eslint@10.11.0` / `typescript-eslint@8.70.1` (verified 2026-09-24)
+- Packages: `eslint` (10.x — flat config only, Node >= 20.19, deprecated `context`/`SourceCode` members removed, fixer text ต้องเป็น string, RuleTester เข้มขึ้น), `typescript-eslint` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -27,8 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create eslint plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create eslint plugins)
 
 ### 2. Setup
@@ -44,16 +43,16 @@ related:
 > Goal: สร้าง entry file ที่ export plugin object พร้อม properties ครบถ้วน
 
 1. สร้าง entry file ที่ export plugin object
-2. กำหนด properties: meta, configs, rules, processors
-3. Export สำหรับ ESM หรือ CommonJS — ดู [references/flat-config-basics.md](references/flat-config-basics.md)
+2. กำหนด properties: `meta` (`name`, `version`), `configs`, `rules`, `processors`
+3. Export ESM (`export default plugin`) หรือ CommonJS (`module.exports = plugin`) — ถ้าต้องรองรับทั้ง flat config และ eslintrc ใช้ dual export: `plugin.configs["flat/recommended"]` (array ที่มี `plugins: { ns: plugin }`) + `plugin.configs.recommended` (eslintrc object `plugins: ["ns"]`)
 
 ### 4. Create Custom Rules
 
 > Goal: สร้าง rule files และ implement rule logic ด้วย meta และ create function
 
-1. สร้าง rule files ใน rules directory
-2. กำหนด rule structure ด้วย meta object — ดู [references/rule-structure-meta.md](references/rule-structure-meta.md)
-3. Implement create function สำหรับ rule logic — ดู [references/rule-structure-context.md](references/rule-structure-context.md)
+1. สร้าง rule files ใน rules directory — rule export object ที่มี `meta` + `create(context)`
+2. `create(context)` return visitor object — key เป็น node type/selector (เรียกตอน going down), `<type>:exit` (going up), หรือ code path events (`onCodePathStart`/`onCodePathEnd`)
+3. ใช้ `context.options` (array ไม่รวม severity), `context.settings` (shared config), `context.sourceCode` (`getText`, `getFirstToken`/`getLastToken`/`getTokenBefore`/`getTokenAfter`, `getAncestors`, `getScope`, `getDeclaredVariables`, `isSpaceBetween`, comments APIs) — report ผ่าน `context.report()` หรือ `messageId`
 
 ### 5. Configure Rule Metadata
 
@@ -62,7 +61,7 @@ related:
 1. กำหนด type: problem, suggestion, หรือ layout
 2. เพิ่ม docs สำหรับ documentation
 3. กำหนด fixable ถ้า rule สามารถ auto-fix ได้
-4. กำหนด schema ถ้า rule มี options — ดู [references/rule-structure-meta.md](references/rule-structure-meta.md)
+4. กำหนด `schema` (JSON Schema array — validate `context.options` ตามตำแหน่ง) ถ้า rule มี options; `fixable`/`hasSuggestions` เป็น mandatory เมื่อ rule produce fix/suggestions — ถ้าไม่ระบุ ESLint throw error
 
 ### 6. Test Plugin
 
@@ -77,7 +76,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -90,7 +89,7 @@ related:
 
 ### 2. Plugin Structure
 
-- Export object ที่มี properties: meta, configs, rules, processors — ดู [references/flat-config-basics.md](references/flat-config-basics.md)
+- Export object ที่มี properties: meta, configs, rules, processors
 - Meta: information เกี่ยวกับ plugin
 - Configs: named configurations
 - Rules: custom rule definitions
@@ -98,7 +97,7 @@ related:
 
 ### 3. Rule Structure
 
-- meta object ที่มี type, docs, messages, fixable, hasSuggestions, schema — ดู [references/rule-structure-meta.md](references/rule-structure-meta.md)
+- meta object ที่มี type, docs (`description`, `dialects`, `url`), messages (อ้างด้วย `messageId`, รองรับ `{{ placeholder }}`), fixable, hasSuggestions, schema
 - type: problem (error/confusing behavior), suggestion (better way), layout (whitespace/formatting)
 - fixable: "code" หรือ "whitespace" ถ้า rule สามารถ auto-fix ได้
 - hasSuggestions: true ถ้า rule สามารถให้ suggestions ได้
@@ -106,17 +105,18 @@ related:
 
 ### 4. Rule Implementation
 
-- Export function ที่รับ context object — ดู [references/rule-structure-context.md](references/rule-structure-context.md)
-- ใช้ context.report() เพื่อรายงาน violations
-- ใช้ context.sourceCode สำหรับ access source code (ESLint 10 ลบ deprecated `context.getSourceCode()` และ deprecated `context`/`SourceCode` members ออกแล้ว)
+- `create(context)` return visitor object — ใช้ `context.report()` เพื่อรายงาน violations
+- ใช้ `context.sourceCode` สำหรับ access source code (ESLint 10 ลบ deprecated `context.getSourceCode()` และ deprecated `context`/`SourceCode` members ออกแล้ว)
+- fixer: `insertTextBefore/After(node|range)`, `remove(Range)`, `replaceText(Range)` — `fix()` คืน fixing object, array หรือ generator; fixes เล็กที่สุด หนึ่ง fix ต่อ message ไม่เปลี่ยน runtime behavior (ESLint รัน rules ซ้ำสูงสุด 10 รอบ)
 - fixer methods ต้องส่ง `text` เป็น string เสมอ (ESLint 10)
 - ใช้ AST traversal สำหรับ analyze code
 
 ### 5. Configuration
 
 - ESLint 10 รองรับ flat config เท่านั้น (legacy `.eslintrc` format ถูกลบออกแล้ว) และต้องการ Node.js >= 20.19 (ไม่รองรับ v21, v23)
-- ใช้ plugins key ใน flat config format — ดู [references/flat-config-basics.md](references/flat-config-basics.md) และ [references/flat-config-advanced.md](references/flat-config-advanced.md)
-- Import plugin และ assign namespace
+- `eslint.config.js`/`mjs`/`cjs` export array ผ่าน `defineConfig` จาก `eslint/config`; config object มี `name`, `files`, `ignores`, `plugins`, `rules`, `languageOptions`, `settings` (shared ให้ทุก rule), `extends`
+- ใน flat config `plugins` เป็น object ที่ map namespace → plugin object (ไม่ใช่ array เหมือน eslintrc) — define plugin inline ใน config ได้
+- Import plugin และ assign namespace; ใช้ `extends` กับ `"ns/recommended"` หรือ `plugin.configs.recommended` ได้ (ต้อง declare `plugins` ก่อน)
 - ใช้ rule format `namespace/rule-name` ใน rules object
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น

@@ -24,9 +24,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `subskills/setup-taze/SKILL.md` 
+| Topic | Workflow |-------|----------| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `workflows/setup-taze/SKILL.md` 
 ### 1. Run Taze
 
 > Goal: ตรวจสอบ updates เริ่มต้น

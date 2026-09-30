@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - ask-me
   - report
-  - then-apply
 ---
 
 ## Goal
@@ -61,7 +60,7 @@ related:
 
 1. ใช้ `/report table` แสดง: `No.`, `Type`, `Suggested Name`, `Convention`, `Notes`
 2. แยกเป็น groups: directories, source files, tests, docs
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 3. ถ้ามีหลายทางเลือกให้เรียงตาม preference
 
 ## Rules

@@ -52,16 +52,16 @@ related:
 
 > Goal: รวมเป็น briefing เดียว
 
-ทำตาม `subskills/report-digest/SKILL.md` — แยก sections ตาม urgency, top 3 actions, `/suggest-next-action`
+ทำตาม `workflows/report-digest/SKILL.md` — แยก sections ตาม urgency, top 3 actions, `/suggest-next-action`
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `digest` | `subskills/report-digest/SKILL.md` — daily digest report รวม signals ทั้งหมด |
+| `report`, `digest` | `workflows/report-digest/SKILL.md` — daily digest report รวม signals ทั้งหมด |
 
-1. ถ้า argument เป็น `report`/`digest` → อ่าน `subskills/report-digest/SKILL.md` แล้วทำตาม flow — ใช้ signals ที่เก็บแล้ว
-2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน subskill `report-digest` มา execute
+1. ถ้า argument เป็น `report`/`digest` → อ่าน `workflows/report-digest/SKILL.md` แล้วทำตาม flow — ใช้ signals ที่เก็บแล้ว
+2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน workflow `report-digest` มา execute
 
 ### Subagents
 

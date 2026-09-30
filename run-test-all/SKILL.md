@@ -3,7 +3,7 @@ name: run-test-all
 description: Orchestrate test suite ทั้งหมด — เลือก /run-test-* ตาม signals แล้วรันจนครบ จำแนก failures
 argument-hint: "[scope]"
 related:
-  - review-test
+  - deep-review
   - run-lint
   - run-typecheck
   - run-test
@@ -44,7 +44,7 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test all)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test all)
 
 ### 1. Lint And Typecheck First
 
@@ -92,8 +92,8 @@ Orchestrator ของ test runners ทั้งหมด — ไม่รัน
 
 > Goal: ครอบคลุมและรายงาน
 
-1. ทำ `/run-test-coverage` เมื่อ project มี coverage target — วัดและ report; gap-closing loop อยู่ที่ `/review-test coverage` ซึ่งเขียน tests ผ่าน `/update-tests` จนถึงเป้า (default 100%)
-2. ถ้าไม่ถึงเป้า → `/review-test coverage` ปิด gaps แล้วรัน `/run-test-coverage` ใหม่เพื่อยืนยัน
+1. ทำ `/run-test-coverage` เมื่อ project มี coverage target — วัดและ report; gap-closing loop อยู่ที่ `/deep-review coverage` ซึ่งเขียน tests ผ่าน `/update-tests` จนถึงเป้า (default 100%)
+2. ถ้าไม่ถึงเป้า → `/deep-review coverage` ปิด gaps แล้วรัน `/run-test-coverage` ใหม่เพื่อยืนยัน
 3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 4. persist raw results → `.devin/temp/report/<workspace>/test-all-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
 

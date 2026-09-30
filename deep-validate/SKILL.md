@@ -5,7 +5,7 @@ argument-hint: "[scope|correctness|type-safety|quality|security|compliance|cross
 related:
   - rethink
   - run-test
-  - review-code-quality
+  - deep-review
   - run-typecheck
   - report
   - suggest-next-action
@@ -26,7 +26,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
 - ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
-- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-code-quality`
+- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/deep-review`
 
 ## Execute
 
@@ -44,64 +44,64 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ระบุ standards หรือ principles ที่ใช้เป็นเกณฑ์
 - ถ้าไม่ทราบ scope ให้ถามผู้ใช้
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง dimension subskill ตาม argument — หรือรันครบทุก dimension ถ้าไม่ระบุ
+> Goal: dispatch ไปยัง dimension workflow ตาม argument — หรือรันครบทุก dimension ถ้าไม่ระบุ
 
-| Dimension/Argument | Subskill |
+| Dimension/Argument | Workflow |
 |--------------------|----------|
-| `correctness` | `subskills/check-correctness/SKILL.md` — requirements, logic, edge cases, error handling |
-| `type-safety`, `types` | `subskills/check-type-safety/SKILL.md` — typecheck, `any`/`@ts-ignore`, type flow |
-| `quality` | `subskills/check-quality/SKILL.md` — readability, consistency, docs, best practices |
-| `security` | `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection |
-| `compliance` | `subskills/check-compliance/SKILL.md` — requirements fit, conventions, regulatory |
-| `cross-reference`, `refs` | `subskills/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs |
-| `report`, `findings` | `subskills/report-findings/SKILL.md` — รวม findings ทุก dimension เป็น severity matrix |
+| `correctness` | `workflows/check-correctness/SKILL.md` — requirements, logic, edge cases, error handling |
+| `type-safety`, `types` | `workflows/check-type-safety/SKILL.md` — typecheck, `any`/`@ts-ignore`, type flow |
+| `quality` | `workflows/check-quality/SKILL.md` — readability, consistency, docs, best practices |
+| `security` | `workflows/check-security/SKILL.md` — input validation, auth, secrets, injection |
+| `compliance` | `workflows/check-compliance/SKILL.md` — requirements fit, conventions, regulatory |
+| `cross-reference`, `refs` | `workflows/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs |
+| `report`, `findings` | `workflows/report-findings/SKILL.md` — รวม findings ทุก dimension เป็น severity matrix |
 
-1. ถ้า argument ระบุ dimension เดียว → อ่าน `subskills/check-<dim>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม dimensions อื่น แต่ยังทำ Step 8 (Report)
-2. ถ้าไม่ระบุ → ทำ Steps 2-7 ตามลำดับ โดยแต่ละ step อ่าน subskill ที่ตรงมา execute
+1. ถ้า argument ระบุ dimension เดียว → อ่าน `workflows/check-<dim>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม dimensions อื่น แต่ยังทำ Step 8 (Report)
+2. ถ้าไม่ระบุ → ทำ Steps 2-7 ตามลำดับ โดยแต่ละ step อ่าน workflow ที่ตรงมา execute
 
 ### 2. Check Correctness
 
 > Goal: Check Correctness
 
-ทำตาม `subskills/check-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
 
 ### 3. Check Type Safety
 
 > Goal: Check Type Safety
 
-ทำตาม `subskills/check-type-safety/SKILL.md` — typecheck, weak types (`any`/`@ts-ignore`), type flow พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-type-safety/SKILL.md` — typecheck, weak types (`any`/`@ts-ignore`), type flow พร้อมบันทึก findings + severity
 
 ### 4. Check Quality
 
 > Goal: Check Quality
 
-ทำตาม `subskills/check-quality/SKILL.md` — readability, consistency, docs, conventions พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-quality/SKILL.md` — readability, consistency, docs, conventions พร้อมบันทึก findings + severity
 
 ### 5. Check Security
 
 > Goal: Check Security
 
-ทำตาม `subskills/check-security/SKILL.md` — input validation, auth, secrets, injection, rate limiting พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-security/SKILL.md` — input validation, auth, secrets, injection, rate limiting พร้อมบันทึก findings + severity
 
 ### 6. Check Compliance
 
 > Goal: Check Compliance
 
-ทำตาม `subskills/check-compliance/SKILL.md` — requirements fit, conventions (`AGENTS.md`), regulatory พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-compliance/SKILL.md` — requirements fit, conventions (`AGENTS.md`), regulatory พร้อมบันทึก findings + severity
 
 ### 7. Cross-Reference Validation
 
 > Goal: Cross-Reference Validation
 
-ทำตาม `subskills/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs พร้อมบันทึก findings + severity
+ทำตาม `workflows/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs พร้อมบันทึก findings + severity
 
 ### 8. Report And Suggest
 
 > Goal: Report And Suggest
 
-ทำตาม `subskills/report-findings/SKILL.md` — รวม findings เป็น severity matrix พร้อม recommendations แล้วทำ `/suggest-next-action`
+ทำตาม `workflows/report-findings/SKILL.md` — รวม findings เป็น severity matrix พร้อม recommendations แล้วทำ `/suggest-next-action`
 
 ## Rules
 

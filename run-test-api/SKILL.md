@@ -6,7 +6,7 @@ related:
   - run-test-all
   - run-test
   - deep-test
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - follow-tool-hurl
@@ -27,7 +27,7 @@ Runner ของ API domain เท่านั้น — spec/coverage analysis 
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test api)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test api)
 
 ### 1. Detect API Tooling
 

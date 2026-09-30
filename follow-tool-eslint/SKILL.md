@@ -140,11 +140,11 @@ export default defineConfig([
 }
 ```
 
-### 8. Dispatch To Subskill
+### 8. Dispatch To Workflow
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| เขียน/แก้ flat config (`eslint.config.js`) | `subskills/config-flat/SKILL.md` | migrate ไป oxlint | `subskills/migrate-to-oxlint/SKILL.md` 
+| Topic | Workflow |-------|----------| เขียน/แก้ flat config (`eslint.config.js`) | `workflows/config-flat/SKILL.md` | migrate ไป oxlint | `workflows/migrate-to-oxlint/SKILL.md` 
 ## Rules
 
 ### 1. Vue/Nuxt Configuration

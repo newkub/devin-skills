@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-release
   - report
-  - review-release
+  - deep-review
   - follow-tool-changelogen
   - follow-tool-semantic-release
 ---
@@ -80,7 +80,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md.ts --output PATH
 
 - การ publish ไปยัง platforms อยู่ใน `run-release` แล้ว
 - การรายงาน changelog อยู่ใน `report` แล้ว
-- การ review changelog completeness อยู่ใน `review-release` แล้ว
+- การ review changelog completeness อยู่ใน `deep-review` แล้ว
 - สำหรับ projects ที่ใช้ changelogen หรือ semantic-release ให้ใช้ `follow-tool-changelogen` หรือ `follow-tool-semantic-release` แทน
 
 ## Expected Outcome

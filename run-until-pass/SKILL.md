@@ -3,7 +3,7 @@ name: run-until-pass
 description: run command จนกว่าจะผ่าน และแก้ไข error ทั้งหมด
 argument-hint: "[command]"
 related:
-  - review-plan
+  - deep-review
   - loop-until-complete
   - follow-best-practice
   - suggest-next-action
@@ -23,7 +23,7 @@ run command จนกว่าจะผ่าน ถ้าเจอ error ให
 
 ## Execute
 
-> Pre-Run: ทำ `/review-plan` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (until pass)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (until pass)
 
 ### 1. Run Command
 

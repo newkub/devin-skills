@@ -112,9 +112,9 @@ related:
 5. ใช้ `useHead` ในทุก page component สำหรับ meta tags
 6. ใช้ `useSeoMeta` สำหรับ declarative SEO meta tags
 
-### Subskills
+### Workflows
 
-- Migrate Vue 2 → Vue 3 — options→composition, breaking changes, `@vue/compat` → `subskills/migrate-vue2-to-3/SKILL.md`
+- Migrate Vue 2 → Vue 3 — options→composition, breaking changes, `@vue/compat` → `workflows/migrate-vue2-to-3/SKILL.md`
 
 ## Rules
 

@@ -8,7 +8,7 @@ related:
   - follow-tool-vite
   - use-bun-native-api
   - follow-create-web
-  - review-dependencies
+  - deep-review
   - run-dev
 
 ---
@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับสร้าง SolidStart (SolidJS meta-framework) project ที่ใช้ Vite เป็น build tool และ Nitro เป็น server engine ผ่าน `@solidjs/start` v2 + `nitro` v3 — อ้างอิง https://nitro.build/examples/vite-ssr-solidstart
 
-- Latest: `@solidjs/start@2.0.5` (stable), `@solidjs/router@1.0.0`, `@solidjs/meta@0.29.4`, `solid-js@1.9.15`, `nitro@3.x` (verified 2026-09-12)
+- Packages: `@solidjs/start`, `@solidjs/router`, `@solidjs/meta`, `solid-js`, `nitro` (v3 มี `nitro/vite` plugin), `vite` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -29,7 +29,7 @@ related:
 
 > Goal: ยืนยัน stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. ยืนยันว่าใช้ SolidJS + SolidStart + Nitro + Vite
 3. ทำ `/follow-lib-solidjs` สำหรับ component patterns
 
@@ -38,9 +38,8 @@ related:
 > Goal: สร้าง project structure และติดตั้ง dependencies
 
 1. สร้าง `package.json` ด้วย `"type": "module"` และ scripts `dev: "vite dev"`, `build: "vite build"`
-2. ติดตั้ง dependencies ด้วย `bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite` (`@solidjs/start@2.0.5` stable แล้ว — ไม่ต้องใช้ `@alpha`; `nitro` v3 มี `nitro/vite` plugin; verified 2026-09-12)
+2. ติดตั้ง dependencies ด้วย `bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite` (`@solidjs/start` 2.x stable แล้ว — ไม่ต้องใช้ `@alpha`; `nitro` v3 มี `nitro/vite` plugin — เช็คเวอร์ชันล่าสุดด้วย `/deep-research`)
 3. ตั้งค่า `engines.node >= 22`
-4. ดูรายละเอียดใน [references/solid-start-nitro.md](references/solid-start-nitro.md)
 
 ### 3. Configure Vite And TypeScript
 
@@ -117,7 +116,7 @@ related:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /use-bun-native-api ถ้าต้องเขียน Bun APIs เพิ่มเติม
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น

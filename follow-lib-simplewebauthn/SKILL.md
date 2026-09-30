@@ -24,9 +24,9 @@ related:
 - References: [apis](references/apis.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

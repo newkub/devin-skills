@@ -35,14 +35,14 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `report-analysis` | `subskills/report-analysis/SKILL.md` — analysis report พร้อม evidence + root cause chains |
+| `report`, `report-analysis` | `workflows/report-analysis/SKILL.md` — analysis report พร้อม evidence + root cause chains |
 
-1. ถ้า argument เป็น `report` → อ่าน `subskills/report-analysis/SKILL.md` แล้วทำตาม flow — ใช้ผล analysis ที่มีอยู่ ไม่ analyze ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-10 ตามปกติ โดย Step 10 อ่าน subskill `report-analysis` มา execute
+1. ถ้า argument เป็น `report` → อ่าน `workflows/report-analysis/SKILL.md` แล้วทำตาม flow — ใช้ผล analysis ที่มีอยู่ ไม่ analyze ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-10 ตามปกติ โดย Step 10 อ่าน workflow `report-analysis` มา execute
 
 ### 1. Deep Thinking And Quick Scan
 
@@ -94,7 +94,7 @@ related:
 2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
 3. หา code smells ด้วย `Grep` multiline mode
 4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
-5. ทำ `/review-code-quality`, `/check-repo-hygiene unused` แบบ parallel
+5. ทำ `/deep-review`, `/follow-tool-knip` แบบ parallel
 6. ตรวจหา hardcoded secrets ด้วย `Grep`
 
 ### 6. Dependencies And Tech Stack
@@ -121,7 +121,7 @@ related:
 
 > Goal: ครอบคลุมทุก dimension — dispatch ไป `review-*` ตาม stack ที่ตรวจพบ
 
-- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `../shared/review-skills.md` (single source of truth — ห้าม duplicate table ที่นี่)
+- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `deep-review/SKILL.md` (single source of truth — ห้าม duplicate table ที่นี่)
 - dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
 - parallel ผ่าน `/use-subagents` เมื่อหลาย domains
 - findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag
@@ -142,7 +142,7 @@ related:
 
 > Goal: สร้างรายงานครบถ้วน
 
-1. ทำตาม `subskills/report-analysis/SKILL.md` — จัด findings, root cause chains, evidence
+1. ทำตาม `workflows/report-analysis/SKILL.md` — จัด findings, root cause chains, evidence
 2. aggregate per-domain scores จาก dispatched `review-*` → overall score + grade — ตาราง `No. | Domain | Score | Grade | Top Finding`
 3. ทำ `/report-deep` หรือ `/create-report-in-dot-devin` สำหรับ persistent artifact
 4. ให้ recommendations ตาม priority และ impact พร้อม action items + roadmap
@@ -194,7 +194,7 @@ related:
 - จัดกลุ่ม findings ตามหมวดหมู่
 - ให้ recommendations + roadmap + action items ตาม priority และ impact
 - ใช้ `/report-deep` สำหรับ detailed report หรือ `/report` สำหรับ chat table
-- alias stub: `/deep-analyze-by-use-scripts` — forward มาที่ skill นี้ (extract จาก `subskills/by-use-scripts` เดิม)
+- alias stub: `/deep-analyze-by-use-scripts` — forward มาที่ skill นี้ (extract จาก `workflows/by-use-scripts` เดิม)
 
 ### 7. Deep Analysis Scripts
 

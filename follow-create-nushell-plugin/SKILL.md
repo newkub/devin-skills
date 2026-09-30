@@ -4,7 +4,7 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 argument-hint: "[plugin-name]"
 related:
   - follow-create-plugins
-  - ship
+  - ship-to-dev-branch
 
 ---
 
@@ -22,10 +22,9 @@ related:
 
 > Goal: สร้างโครงสร้าง project สำหรับ NuShell plugin
 
-1. สร้าง project ด้วย `cargo new nu_plugin_<name>`
-2. แก้ไข `Cargo.toml` เพื่อเพิ่ม dependencies:
-   - `nu-plugin = "0.104.0"`
-   - `nu-protocol = "0.104.0"`
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชัน NuShell/nu-plugin ล่าสุด ตาม conventions ใน `/update-devin-global-skills` — `nu-plugin`/`nu-protocol` ต้องตรงกับ NuShell version ที่ติดตั้ง
+2. สร้าง project ด้วย `cargo new nu_plugin_<name>`
+3. แก้ไข `Cargo.toml` เพื่อเพิ่ม dependencies: `nu-plugin` + `nu-protocol` (version เดียวกับ NuShell ที่ติดตั้ง — ไม่ pin ใน skill นี้)
 3. ตั้งค่า `edition = "2024"` และให้ version ตรงกับติดตั้ง NuShell
 4. สร้าง `src/main.rs` เป็น entry point ของ plugin
 
@@ -82,7 +81,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

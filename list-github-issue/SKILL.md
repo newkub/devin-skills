@@ -5,7 +5,7 @@ argument-hint: "[repo]"
 related:
   - open
   - create-github
-  - review-issue
+  - deep-review
   - list-github
   - report
 ---
@@ -15,7 +15,7 @@ related:
 แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github`, `review-issue`, `list-github`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github`, `deep-review`, `list-github`
 
 ใช้สำหรับดู issues ของ repository ใดๆ บน GitHub ที่ authenticated user มีสิทธิ์เข้าถึง
 

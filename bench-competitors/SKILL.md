@@ -15,7 +15,7 @@ related:
   - idea
   - ask-me
   - suggest-next-action
-  - ship
+  - ship-to-dev-branch
   - run-bench
 ---
 
@@ -35,14 +35,14 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `report-comparison` | `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
+| `report`, `report-comparison` | `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
 
-1. ถ้า argument เป็น `report` → อ่าน `subskills/report-comparison/SKILL.md` แล้วทำตาม flow — ใช้ data ที่รวมไว้แล้ว ไม่ research ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 7 อ่าน subskill `report-comparison` มา execute
+1. ถ้า argument เป็น `report` → อ่าน `workflows/report-comparison/SKILL.md` แล้วทำตาม flow — ใช้ data ที่รวมไว้แล้ว ไม่ research ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 7 อ่าน workflow `report-comparison` มา execute
 
 ### 1. Research Competitors
 
@@ -107,7 +107,7 @@ related:
 
 > Goal: บันทึกผล benchmark และผลการ implement เป็น report ใน .devin
 
-1. ทำตาม `subskills/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
+1. ทำตาม `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
 2. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
 3. รายงาน `REPORT_PATH` ให้ user
 
@@ -115,8 +115,8 @@ related:
 
 > Goal: ส่งมอบเมื่อดีกว่าคู่แข่งครบทุกมิติ
 
-1. ทำ `/ship` เพื่อ ship improvements ทั้งหมด
-2. หลัง `/ship` เสร็จ ลบ `PLAN_PATH`
+1. ทำ `/ship-to-dev-branch` เพื่อ ship improvements ทั้งหมด
+2. หลัง `/ship-to-dev-branch` เสร็จ ลบ `PLAN_PATH`
 3. ทำ `/suggest-next-action` โดยแนะนำ `/idea-features` ถ้าต้องการขยายไอเดียต่อ
 
 ## Rules
@@ -165,6 +165,57 @@ related:
 - ไม่ทำ over-engineering หรือเพิ่ม features ที่ไม่จำเป็น
 - ย้ายไปทำงานอื่นเมื่อสำเร็จเป้าหมายแล้ว
 - ใช้ /run-bench ถ้าจำเป็น
+
+## Merged Details
+
+### report-comparison
+
+##### Goal
+
+สร้าง report ของ `/bench-competitors` — comparison matrix + gap list + re-benchmark delta หลัง implement — persistent artifact ใน `.devin/temp/report/`
+
+##### Scope
+
+- ใช้เมื่อ `/bench-competitors` dispatch มาที่ `report` หรือต้องการ report เฟสไหนเฟสหนึ่ง
+- Output: `/create-report-in-dot-devin` artifact เสมอ (report นี้เป็น deliverable ของ workflow)
+
+##### Execute
+
+###### 1. Collect Evidence
+
+> Goal: รวม data จาก research/compare/bench phases
+
+1. รวม feature matrix + gap list จาก `/compare-competitors` output
+2. รวม benchmark numbers ต่อ dimension (perf, UX/UI, architecture, DX, security, scalability, business)
+3. ถ้า post-implement → รวม re-bench delta (before vs after)
+4. ทุก competitor claim ต้องมี source citation
+
+###### 2. Build Report Structure
+
+> Goal: report ครบตาม contract ของ parent
+
+1. ตาราง matrix: `No.`, `Dimension/Feature`, `Ours`, `Competitor A`, ..., `Gap`
+2. Gap list เรียง priority พร้อม evidence
+3. Re-bench delta table ถ้าเป็น post-implement phase
+4. จำกัด ≤ 1 A4 page ต่อ competitor — รวม summary เดียวถ้าเยอะ
+
+###### 3. Emit Artifact
+
+> Goal: report ถาวรที่ trace ย้อนได้
+
+1. ทำ `/create-report-in-dot-devin` — ตั้งชื่อตาม convention `bench-competitors-<date>`
+2. แยก facts จาก assumptions ชัดเจนใน report
+3. ลงท้ายด้วย verdict: ดีกว่า/ด้อยกว่า ต่อ dimension
+
+##### Rules
+
+- ทุก claim มี citation — ไม่มี citation = ติดป้าย assumption
+- ไม่เขียน report ยาว — density สูงกว่า prose
+- re-bench delta ต้องใช้ methodology เดียวกับ baseline
+
+##### Expected Outcome
+
+- `.devin/temp/report/` artifact พร้อม matrix + gap list + verdict ต่อ dimension
 
 ## Expected Outcome
 

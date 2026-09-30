@@ -5,8 +5,7 @@ argument-hint: "[service-or-incident-type]"
 related:
   - learn
   - create-report-in-dot-devin
-  - review-observability
-  - review-stability
+  - deep-review
   - report-architecture-diagram
   - report
   - run-docs
@@ -36,7 +35,7 @@ related:
 
 > Goal: รวบรวมวิธีที่ระบบพังได้
 
-1. จาก `/review-stability` findings — error handling, resilience gaps
+1. จาก `/deep-review` findings — error handling, resilience gaps
 2. External dependencies: DB down, API limits, queue backlog, cert expiry, DNS issues
 3. App-level: memory leaks, deadlocks, bad deploys, config errors
 4. จัดกลุ่มเป็น incident types: `outage`, `degraded`, `data-issue`, `security`
@@ -90,7 +89,7 @@ related:
 
 1. บันทึกด้วย `/create-report-in-dot-devin` หรือ `docs/runbook-<service>.md`
 2. ใช้ `/report` สรุป: sections ที่ครบ vs ที่ต้อง user เติม
-3. แนะนำ `/review-observability` ถ้า diagnosis steps ขาด signals ที่ต้องมี
+3. แนะนำ `/deep-review` ถ้า diagnosis steps ขาด signals ที่ต้องมี
 
 ## Rules
 

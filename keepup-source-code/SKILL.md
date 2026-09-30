@@ -10,8 +10,7 @@ related:
   - update-features-md
   - update-tests
   - update-config
-  - review-code-quality
-  - review-docs
+  - deep-review
   - check-config-drift
   - check-should-update
   - run-check
@@ -36,8 +35,8 @@ related:
 > Goal: รู้ว่าอะไรใน project stale
 
 1. ทำ `/check-should-update` ดู git changes เพื่อประเมินว่า target ต้องอัปเดต
-2. ทำ `/review-code-quality` scope `deprecated-apis` หา code ที่ใช้ deprecated APIs/dependencies
-3. ทำ `/review-docs` scope `content-outdate` ตรวจ skills/docs/specs ที่ล้าสมัย
+2. ทำ `/deep-review` scope `deprecated-apis` หา code ที่ใช้ deprecated APIs/dependencies
+3. ทำ `/deep-review` scope `content-outdate` ตรวจ skills/docs/specs ที่ล้าสมัย
 4. ทำ `/check-config-drift` ตรวจ config ที่ drift จาก defaults
 5. ตรวจ manifest drift — `package.json`/`Cargo.toml`/`go.mod` เปลี่ยนแต่ lockfile หรือ code ไม่ตาม
 6. รวม signals เป็น list: `{area, signal, severity}`

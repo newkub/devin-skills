@@ -5,7 +5,7 @@ argument-hint: "[task]"
 related:
   - follow-agents-md
   - update-docs
-  - review-docs
+  - deep-review
   - suggest-next-action
 
 ---
@@ -49,7 +49,7 @@ related:
 - README มี priority ต่ำกว่า `AGENTS.md` — ถ้าขัดกันให้ทำตาม `AGENTS.md`
 - ห้ามเดา commands — ใช้จาก README หรือ manifest เท่านั้น
 - ถ้า README ไม่มีหรือว่าง → ทำ `/update-readme-md` สร้างใหม่
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น
 

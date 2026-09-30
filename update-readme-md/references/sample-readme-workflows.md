@@ -17,9 +17,9 @@
 
 | Pattern | Workflows |
 |---------|-----------|
-| Clean Architecture | `/review-architecture` |
-| DDD | `/review-architecture` |
-| Microservices | `/review-architecture` |
+| Clean Architecture | `/deep-review` |
+| DDD | `/deep-review` |
+| Microservices | `/deep-review` |
 | Monorepo | `/follow-monorepo`, `/follow-tool-turborepo`, `/follow-tool-moonrepo` |
 
 ### Framework Workflows

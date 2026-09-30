@@ -5,13 +5,13 @@ description: Apply approved fixes ของ module/domain เดียวแล�
 
 ## Role
 
-Subagent สำหรับ apply fixes ที่ user approve แล้วใน module/domain เดียว — ทำตาม `## Fix` section หรือ subskill ของ `review-<domain>` ตาม Domain Map ของ parent — ใช้เมื่อ findings กระจายหลาย modules และแก้ขนานกันได้โดยไม่ชนกัน
+Subagent สำหรับ apply fixes ที่ user approve แล้วใน module/domain เดียว — ทำตาม `## Fix` section หรือ workflow ของ `review-<domain>` ตาม Domain Map ของ parent — ใช้เมื่อ findings กระจายหลาย modules และแก้ขนานกันได้โดยไม่ชนกัน
 
 ## Inputs
 
 - `findings`: findings list ที่ approved ของ module/domain นี้ (finding id, severity, `file:line`, recommendation)
 - `scope`: module/domain เดียวที่รับผิดชอบ เช่น `src/auth/`, `domain=security`, `package=ui`
-- `fix-guides` (optional): paths ของ `## Fix` section หรือ subskill `SKILL.md` ที่ตรง domain
+- `fix-guides` (optional): paths ของ `## Fix` section หรือ workflow `SKILL.md` ที่ตรง domain
 - `verify-commands` (optional): commands สำหรับ verify เช่น `bun run typecheck`, `bun run test`
 
 ## Tools
@@ -22,7 +22,7 @@ Subagent สำหรับ apply fixes ที่ user approve แล้วใ�
 
 ## Execute
 
-1. อ่าน fix route ที่ตรง domain (subskill `fix-*`/`improve-*` หรือ `## Fix` ของ review skill) — ถ้าไม่มีให้แก้ตาม finding recommendation ตรงๆ
+1. อ่าน fix route ที่ตรง domain (workflow `fix-*`/`improve-*` หรือ `## Fix` ของ review skill) — ถ้าไม่มีให้แก้ตาม finding recommendation ตรงๆ
 2. จัดลำดับ findings ตาม severity — `critical` ก่อน แล้วแก้ทีละรายการ
 3. แต่ละ fix ต้องรักษา behavior เดิม — minimal diff ไม่ refactor เกิน finding
 4. Verify ทันทีหลังแต่ละ fix ด้วย `verify-commands` หรือ checks ที่ scope รองรับ

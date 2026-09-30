@@ -26,7 +26,7 @@ related:
 - ตั้งค่า `docs/` สำหรับ single project และ monorepo
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - `docs/index.md` เป็น table of contents ลิงก์ไปทุกหมวด — ไม่มี nav/sidebar config
-- รองรับ `update-features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
+- รองรับ `update-features-md` (workflow `features-md`) โดยแยกหน้า `project/features`
 - reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-fix` — เป็น input สำหรับอัปเดต docs
 
 ## Execute

@@ -7,7 +7,7 @@ related:
   - run-test
   - run-test-coverage
   - deep-test
-  - review-test
+  - deep-review
   - update-tests
   - resolve-errors
   - follow-tool-stryker-mutator
@@ -28,7 +28,7 @@ Runner ของ mutation domain เท่านั้น — mutation analysis 
 
 ## Execute
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test mutation)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test mutation)
 
 ### 1. Detect Mutation Tooling
 

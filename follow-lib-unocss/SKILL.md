@@ -162,11 +162,11 @@ related:
 5. ตรวจสอบ transformers ทำงาน (variant groups, directives)
 6. รัน build เพื่อตรวจสอบว่าไม่มี error
 
-### Subskills
+### Workflows
 
-- First-time install + `uno.config.ts` + presets + framework integration → `subskills/setup-unocss/SKILL.md`
-- First-time theme setup — `theme.css`, HSL variables, dark mode → `subskills/setup-theme/SKILL.md`
-- Theme tokens, shortcuts, rules, dark mode → `subskills/config-theme/SKILL.md`
+- First-time install + `uno.config.ts` + presets + framework integration → `workflows/setup-unocss/SKILL.md`
+- First-time theme setup — `theme.css`, HSL variables, dark mode → `workflows/setup-theme/SKILL.md`
+- Theme tokens, shortcuts, rules, dark mode → `workflows/config-theme/SKILL.md`
 
 ## Rules
 
@@ -205,7 +205,7 @@ related:
 - Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
 - `@property` rules generate ภายใต้ `properties` layer
 
-- ทำ subskill `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/apis.md`
+- ทำ workflow `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/apis.md`
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

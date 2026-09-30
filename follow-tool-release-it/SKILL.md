@@ -31,9 +31,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Install, release script, hooks/plugins basics | `subskills/setup-release-it/SKILL.md` | `.release-it.json` — git, github, npm, changelog options | `subskills/config-release-it/SKILL.md` 
+| Topic | Workflow |-------|----------| Install, release script, hooks/plugins basics | `workflows/setup-release-it/SKILL.md` | `.release-it.json` — git, github, npm, changelog options | `workflows/config-release-it/SKILL.md` 
 ### 1. Install
 
 > Goal: ติดตั้ง release-it ใน project

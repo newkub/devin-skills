@@ -4,9 +4,7 @@ description: รวม independent operations เป็น parallel execution �
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - review-performance
-  - review-code-quality
-  - check-repo-hygiene
+  - deep-review
 
 ---
 
@@ -16,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับจัดการ parallel execution ใน 3 ระดับ: tool calls, script execution, และ workflow orchestration — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/review-performance`)
+ใช้สำหรับจัดการ parallel execution ใน 3 ระดับ: tool calls, script execution, และ workflow orchestration — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/deep-review`)
 
 ## Execute
 
@@ -55,7 +53,7 @@ related:
 > Goal: รัน independent workflows แบบ parallel ใน orchestrator workflows
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
-2. รัน independent sub-workflows พร้อมกัน เช่น `/review-code-quality`, `/check-repo-hygiene unused`, `/check-repo-hygiene unused`
+2. รัน independent sub-workflows พร้อมกัน เช่น `/deep-review`, `/follow-tool-knip`
 3. รัน dependent sub-workflows แบบ sequential เช่น `/deep-validate` หลัง `/review-*`
 4. รวบรวม results จากทุก sub-workflow ก่อน aggregate report
 5. ถ้า sub-workflow หนึ่งพบ critical issue → หยุดและ validate ก่อนดำเนินต่อ

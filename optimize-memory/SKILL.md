@@ -7,7 +7,6 @@ related:
   - deep-review
   - deep-review-then-fix
   - deep-optimize
-  - check-bottlenecks
   - report
   - suggest-next-action
   - ask-me
@@ -22,7 +21,7 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "memory optimize อะไรได้" — thin entry point ที่ delegate การ review ไป `/deep-review` (domain `review-performance` scope memory) ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - allocation hotspots, memory leaks, large object retention, unbounded growth (cache/listeners/subscriptions), buffer/copy overhead
-- ถ้าต้องการ broad optimization ทุก dimension → `/deep-optimize`; เจาะจง bottleneck จุดเดียว → `/check-bottlenecks`
+- ถ้าต้องการ broad optimization ทุก dimension → `/deep-optimize`; เจาะจง bottleneck จุดเดียว → `/deep-optimize`
 
 ## Execute
 

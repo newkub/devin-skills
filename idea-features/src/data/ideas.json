@@ -1,0 +1,49 @@
+{
+  "project": "example",
+  "topic": "seed data — overwritten by /idea-features",
+  "generatedAt": "2026-10-01",
+  "ideas": [
+    {
+      "no": 1,
+      "title": "Example Idea Card",
+      "kind": "new",
+      "category": "dx",
+      "tags": ["cli", "onboarding"],
+      "phase": "mvp",
+      "impact": "high",
+      "effort": "m",
+      "risk": "Low — additive feature, no breaking change",
+      "mvpScore": 8,
+      "features": ["Feature one", "Feature two", "Feature three"],
+      "description": "Seed entry showing the card layout. /idea-features regenerates this file with 30 real ideas for the target project.",
+      "why": "Demonstrates schema and layout before real generation.",
+      "usage": "Hover any card to preview full details in the right panel.",
+      "ansi": "+----------------+\n|  #1  Example   |\n|  [card grid]   |\n+----------------+",
+      "fileChanges": [
+        { "path": "src/components/Example.tsx", "action": "create", "note": "per /follow-architecture layered" }
+      ],
+      "testCases": ["renders idea card with all fields", "filters by category"]
+    },
+    {
+      "no": 2,
+      "title": "Example Extends Idea",
+      "kind": "extends",
+      "category": "uxui",
+      "tags": ["grid", "preview"],
+      "phase": "v2",
+      "impact": "medium",
+      "effort": "s",
+      "risk": "Medium — touches shared layout",
+      "mvpScore": 6,
+      "features": ["Extend existing grid", "Add density toggle"],
+      "description": "Second seed entry for the extends kind.",
+      "why": "Shows kind=extends styling and grouping.",
+      "usage": "Select kind=extends in the Filter dropdown.",
+      "ansi": "+----------------+\n|  #2  Extends   |\n|  [v2 phase]    |\n+----------------+",
+      "fileChanges": [
+        { "path": "src/components/IdeaCard.tsx", "action": "edit", "note": "add density prop" }
+      ],
+      "testCases": ["density toggle switches card size"]
+    }
+  ]
+}

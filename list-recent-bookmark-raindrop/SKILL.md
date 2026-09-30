@@ -4,7 +4,7 @@ description: รายการ bookmarks ล่าสุดจาก Raindrop.i
 argument-hint: "[collection]"
 related:
   - search
-  - review-dependencies
+  - deep-review
   - report
 ---
 
@@ -54,7 +54,7 @@ related:
 - full JSON: `raindrop list --json --all --sort="-created"`
 
 - ใช้ /search-raindrop ถ้าจำเป็น
-- ใช้ /review-dependencies ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

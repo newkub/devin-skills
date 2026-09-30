@@ -29,9 +29,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `subskills/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `subskills/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `subskills/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `subskills/run-ci/SKILL.md` 
+| Topic | Workflow |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `workflows/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `workflows/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `workflows/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `workflows/run-ci/SKILL.md` 
 ### Subagents
 
 - ใช้ `subagents/project-configurator.md` เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
@@ -100,7 +100,7 @@ related:
 1. ใช้ `moon ci` แทน `moon run` บน CI — รันเฉพาะ affected tasks ที่มี `runInCI`
 2. ตั้ง `runInCI: false` สำหรับ long-running tasks (`dev`, `start`, `serve` ปิด default)
 3. ต้อง full git history — ห้าม shallow clone (ใช้ `filter: 'blob:none'`)
-4. ทำตาม `subskills/run-ci/SKILL.md` สำหรับ provider config, sharding และ reports
+4. ทำตาม `workflows/run-ci/SKILL.md` สำหรับ provider config, sharding และ reports
 
 ### 7. Configure VCS Hooks (Optional)
 

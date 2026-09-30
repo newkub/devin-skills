@@ -31,9 +31,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Install, CI auth tokens, workflow integration | `subskills/setup-semantic-release/SKILL.md` | `branches`, `plugins`, `tagFormat` config | `subskills/config-semantic-release/SKILL.md` 
+| Topic | Workflow |-------|----------| Install, CI auth tokens, workflow integration | `workflows/setup-semantic-release/SKILL.md` | `branches`, `plugins`, `tagFormat` config | `workflows/config-semantic-release/SKILL.md` 
 ### 1. Installation
 
 > Goal: ติดตั้ง semantic-release ใน project

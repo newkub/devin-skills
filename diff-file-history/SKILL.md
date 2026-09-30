@@ -44,7 +44,7 @@ related:
 1. Major rewrites: commits ที่ diff ใหญ่ผิดปกติ (>50% ของไฟล์)
 2. Regression candidates: ถ้า bug ปัจจุบัน → bisect-style หา commit ที่ introduce
 3. `git log -S"<pattern>"` — หาเมื่อไหร่ที่ string/symbol เข้าหรือออก (pickaxe)
-4. `/review-diff` หรือ `/git-file-history` สำหรับ diff ละเอียดต่อ commit ที่สนใจ
+4. `/deep-review` หรือ `/git-file-history` สำหรับ diff ละเอียดต่อ commit ที่สนใจ
 
 ### 4. Report Evolution
 

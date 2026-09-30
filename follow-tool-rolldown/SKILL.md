@@ -83,11 +83,11 @@ related:
 4. อัปเดต plugin list เป็นระยะ โดยอ้างอิง official docs
 5. ดู plugin list ใน 
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| first-time setup (install, config, entry/output) | `subskills/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `subskills/optimize-bundle/SKILL.md` | migrate จาก Rollup | `subskills/migrate-from-rollup/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, config, entry/output) | `workflows/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `workflows/optimize-bundle/SKILL.md` | migrate จาก Rollup | `workflows/migrate-from-rollup/SKILL.md` 
 ## Rules
 
 ### 1. Installation

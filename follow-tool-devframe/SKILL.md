@@ -26,9 +26,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Scaffold devtool | `subskills/create-devframe/SKILL.md` — install, defineDevframe, RPC, SPA, run dev/build/mcp 
+| Topic | Workflow |-------|----------| Scaffold devtool | `workflows/create-devframe/SKILL.md` — install, defineDevframe, RPC, SPA, run dev/build/mcp 
 ### 1. Install Packages
 
 > Goal: ติดตั้ง `devframe` และ dependencies ที่จำเป็น

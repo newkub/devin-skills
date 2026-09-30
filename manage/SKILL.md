@@ -7,7 +7,7 @@ related:
   - suggest-next-action
   - report-todo
   - continue
-  - ship
+  - ship-to-dev-branch
   - follow-parallel
   - follow-enter-dot
   - report
@@ -67,7 +67,7 @@ related:
 
 1. ถ้ามีงานค้างให้ทำต่อ → `/continue`
 2. ถ้าหลายงานอิสระให้ทำขนาน → `/follow-parallel`
-3. ถ้างานเสร็จแล้วให้ ship → `/ship`
+3. ถ้างานเสร็จแล้วให้ ship → `/ship-to-dev-branch`
 4. ถ้าต้อง planning → `/report-todo` แล้วทำตามลำดับ
 5. ถ้างานยาวหรือต้องวนซ้ำ → `/loop-until-complete`
 

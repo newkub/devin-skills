@@ -31,7 +31,7 @@ related:
 
 > Goal: เริ่มต้น WXT project ด้วย template ทีเหมาะสม
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. รัน `bunx wxt@latest init` เพื่อเริ่มต้นโปรเจกต์
 3. เลือก template ที่ต้องการ (vanilla, react, vue, svelte, solid)
 4. ติดตั้ง dependencies ด้วย `bun install`

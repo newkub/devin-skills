@@ -4,7 +4,7 @@ description: แสดงข้อมูลเครื่องคอมพิ�
 argument-hint: "[summary|full]"
 related:
   - list-program-in-computer
-  - review-bundle
+  - deep-review
   - use-pwsh-shell
   - report
 ---
@@ -94,7 +94,7 @@ related:
 2. คอลัมน์ summary: `Category`, `Value`
 3. คอลัมน์ full: `Category`, `Item`, `Value`
 4. เรียงตาม category: OS, CPU, RAM, Disk, GPU, System
-5. ใช้ `review-bundle` หรือ `Get-Volume` สำหรับ disk ถ้าต้องการเปรียบเทียบ
+5. ใช้ `deep-review` หรือ `Get-Volume` สำหรับ disk ถ้าต้องการเปรียบเทียบ
 
 ## Rules
 

@@ -31,9 +31,9 @@ related:
 - References: [apis](references/apis.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-arktype/SKILL.md` — install, `type()` basics, scope config 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-arktype/SKILL.md` — install, `type()` basics, scope config 
 ### 1. Install ArkType
 
 > Goal: ติดตั้ง ArkType และเตรียม environment

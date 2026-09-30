@@ -21,14 +21,14 @@ related:
 ใช้กับ TypeScript projects ทุกประเภท รวมถึง frontend, backend, full-stack และ libraries ที่ต้องการ runtime validation พร้อม static type inference
 
 - ใช้ skill นี้สำหรับ Zod v4 API (`z.object`, `.safeParse`, `z.infer`, `zod/mini`, `zod/v4` subpaths)
-- Migrate v3 → v4 → subskill `subskills/migrate-zod-v4/SKILL.md`
+- Migrate v3 → v4 → workflow `workflows/migrate-zod-v4/SKILL.md`
 - ถ้า project ใช้ ArkType หรือต้องเปรียบเทียบ schema libraries → `/follow-lib-arktype`; Zod v4 รองรับ Standard Schema ใช้ร่วมกับ form/validation libs ได้
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Migrate v3→v4 | `subskills/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames 
+| Topic | Workflow |-------|----------| Migrate v3→v4 | `workflows/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames 
 ### 1. Install Zod
 
 > Goal: ติดตั้ง Zod เวอร์ชันล่าสุด

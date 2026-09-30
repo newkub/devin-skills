@@ -38,7 +38,7 @@
 
 1. เปิด diff images ของ findings ที่ใหญ่สุด
 2. เช็คว่า change ตรงกับสิ่งที่แก้จริง (จาก git diff) หรือเป็น regression
-3. ถ้าไม่แน่ใจ → ทำ `/review-uxui` หรือ `/review-diff` ประกอบ
+3. ถ้าไม่แน่ใจ → ทำ `/deep-review` หรือ `/deep-review` ประกอบ
 4. จัดกลุ่ม: `intended`, `suspect`, `regression`
 
 ## 5. Report

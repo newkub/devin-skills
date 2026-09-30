@@ -17,7 +17,7 @@ related:
 
 ## Goal
 
-Canonical fix skill — review แล้ว fix findings ทุก domain ตาม Domain Map ผ่าน `## Fix` section และ `subskills/` ของ `review-*` แต่ละตัว
+Canonical fix skill — review แล้ว fix findings ทุก domain ตาม Domain Map ผ่าน `## Fix` section และ `workflows/` ของ `review-*` แต่ละตัว
 
 ## Scope
 
@@ -31,23 +31,23 @@ Canonical fix skill — review แล้ว fix findings ทุก domain ตา
 
 ## Domain Map
 
-fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
+fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
 
 | Domain | Review skill | Fix route |
 |--------|-------------|-----------|
-| seo | `/deep-review` | `subskills/improve-seo` |
+| seo | `/deep-review` | `workflows/improve-seo` |
 | security | `/deep-review` | `## Fix` — secrets rotation, headers, vuln deps |
 | auth | `/deep-review` | `## Fix` — sessions, tokens |
 | api | `/deep-review` | `## Fix` — contract drift, versioning |
-| database | `/deep-review` | `## Fix` (migrations) + `subskills/optimize-queries` |
-| bundle+assets | `/deep-review` | `subskills/optimize-bundle` |
-| performance | `/deep-review` | `subskills/optimize-performance` |
-| cost | `/deep-review` | `subskills/optimize-cost` |
-| tests | `/deep-review` | `## Fix` (flaky) + `subskills/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/deep-review` | `subskills/improve-uxui-fix` + `/watch-browser-and-fix` (browser pass) |
-| observability | `/deep-review` | `subskills/improve-observability` |
-| accessibility | `/deep-review` | `subskills/improve-a11y` |
-| frontend | `/deep-review` | `## Fix` (hydration) + `subskills/improve-rendering` |
+| database | `/deep-review` | `## Fix` (migrations) + `workflows/optimize-queries` |
+| bundle+assets | `/deep-review` | `workflows/optimize-bundle` |
+| performance | `/deep-review` | `workflows/optimize-performance` |
+| cost | `/deep-review` | `workflows/optimize-cost` |
+| tests | `/deep-review` | `## Fix` (flaky) + `workflows/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
+| uxui | `/deep-review` | `workflows/improve-uxui-fix` + `/watch-browser-and-fix` (browser pass) |
+| observability | `/deep-review` | `workflows/improve-observability` |
+| accessibility | `/deep-review` | `workflows/improve-a11y` |
+| frontend | `/deep-review` | `## Fix` (hydration) + `workflows/improve-rendering` |
 | quality/types | `/deep-review` | `## Fix` — complexity, imports |
 | อื่นๆ (cli, config, migration, backend, dependencies, delivery, docs, stability, i18n, mobile, desktop, browser-ext, dx, iac, sdk, usage, ai, mcp, events) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
@@ -79,7 +79,7 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 > Goal: แก้ไข issues ตามแผน
 
 1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
-2. Dispatch approved fixes ตาม domain — จัดกลุ่ม findings แล้ว map ไป `## Fix` section หรือ subskills ของ `review-*` ตาม Domain Map ด้านบน; domain ที่ไม่มีในตาราง → `/ask-me` ก่อนแก้
+2. Dispatch approved fixes ตาม domain — จัดกลุ่ม findings แล้ว map ไป `## Fix` section หรือ workflows ของ `review-*` ตาม Domain Map ด้านบน; domain ที่ไม่มีในตาราง → `/ask-me` ก่อนแก้
 3. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Verify
@@ -116,11 +116,11 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 
 ## Fix
 
-> ทำตาม `../deep-review/references/review-fix.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
 
-1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../deep-review/references/review-fix.md`
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `deep-review/SKILL.md`
 2. เลือก fix route ที่ตรงกับ finding จาก Domain Map ด้านบน (then fix)
-3. preserve behavior + verify + report — canonical ที่ `../deep-review/references/review-fix.md`
+3. preserve behavior + verify + report — canonical ที่ `deep-review/SKILL.md`
 
 ## References
 

@@ -5,11 +5,10 @@ argument-hint: "[scope]"
 related:
   - idea-use-skills-relations
   - check-my-global-cli
-  - review-coverage
+  - deep-review
   - follow-devin-global-skills
   - rethink
   - report
-  - then-apply
   - follow-single-responsibility
   - review-devin-global-harness
   - deep-research
@@ -83,7 +82,7 @@ related:
 1. ทำ `/report table` ด้วย numbered หลัก + bullet ย่อย
 2. แสดง `## Summary` ก่อน
 3. แสดง `## Refactor Ideas` ตามลำดับ priority
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 5. แสดง `## References` ที่เกี่ยวข้อง
 6. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/refactor`
 
@@ -114,7 +113,7 @@ related:
 - ไม่เกิน 250 บรรทัด
 
 - ใช้ `/follow-math-concepts` ถ้าจำเป็น
-- ใช้ /review-coverage ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 
 ## Expected Outcome

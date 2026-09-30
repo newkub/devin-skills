@@ -79,11 +79,11 @@ related:
 3. วัด re-render ของ components
 4. ตรวจสอบ error boundaries, pending และ loading states
 
-### Subskills
+### Workflows
 
-- Query setup + QueryClientProvider + query/mutation basics → `subskills/setup-query/SKILL.md`
-- Router setup + createRouter + file-based vs code-based → `subskills/setup-router/SKILL.md`
-- Devtools integration (Query/Router/unified panel) → `subskills/config-devtools/SKILL.md`
+- Query setup + QueryClientProvider + query/mutation basics → `workflows/setup-query/SKILL.md`
+- Router setup + createRouter + file-based vs code-based → `workflows/setup-router/SKILL.md`
+- Devtools integration (Query/Router/unified panel) → `workflows/config-devtools/SKILL.md`
 
 ## Rules
 

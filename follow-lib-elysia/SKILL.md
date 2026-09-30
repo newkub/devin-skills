@@ -17,10 +17,10 @@ related:
 
 ## Scope
 
-ใช้สำหรับ project ที่ใช้ Elysia เป็น web framework บน Bun runtime — เลือก subskill ตาม phase:
+ใช้สำหรับ project ที่ใช้ Elysia เป็น web framework บน Bun runtime — เลือก workflow ตาม phase:
 
-- Setup ครั้งแรก (install, `new Elysia()`, routes/plugins พื้นฐาน) → `subskills/setup-elysia/SKILL.md`
-- Production deploy (`bun build`, env config, platform targets) → `subskills/deploy-elysia/SKILL.md`
+- Setup ครั้งแรก (install, `new Elysia()`, routes/plugins พื้นฐาน) → `workflows/setup-elysia/SKILL.md`
+- Production deploy (`bun build`, env config, platform targets) → `workflows/deploy-elysia/SKILL.md`
 - Skill นี้ครอบคลุม full reference — ถ้า task เป็น Bun HTTP server ทั่วไปที่ไม่ใช้ Elysia → ใช้ `/use-bun-native-api` แทน
 
 - ติดตั้ง Elysia, Eden, และ plugins ที่จำเป็น
@@ -31,9 +31,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Setup | `subskills/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน | Deploy | `subskills/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets 
+| Topic | Workflow |-------|----------| Setup | `workflows/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน | Deploy | `workflows/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets 
 ### 1. Install And Setup
 
 > Goal: ติดตั้ง Elysia และ setup บน Bun runtime

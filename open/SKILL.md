@@ -25,12 +25,11 @@ Dispatch ไป skill ปลายทาง ตาม target ที่ต้อ�
 
 | Domain | Skill |
 |---|---|
-| `explorer` | /open-explorer — เปิด path ใน file explorer |
+| `explorer` | /open-in-explorer — เปิด path ใน file explorer |
 | `github` | /open-github — เปิด repo/page บน GitHub |
 | `web` | /open-web — เปิด URL ใน browser |
 | `wezterm` | /open-wezterm — เปิดใน WezTerm |
-| `windows-terminal` | /open-windows-terminal — เปิดใน Windows Terminal |
-| `zed` | /open-zed — เปิดใน Zed editor |
+| `zed` | /open-in-zed — เปิดใน Zed editor |
 
 1. ระบุ domain จาก argument (เช่น `/open-web`)
 2. ถ้า domain รองรับ → ทำตาม `/open-<domain>` ทั้ง flow

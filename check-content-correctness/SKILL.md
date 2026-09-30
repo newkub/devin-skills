@@ -15,7 +15,7 @@ related:
   - deep-research
   - deep-validate
   - deep-verify
-  - review-docs
+  - deep-review
   - resolve-errors
   - report
 
@@ -27,7 +27,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ verify factual correctness ของ content ที่ระบุ — ต่างจาก `/review-docs` (เน้น freshness) และ `/deep-verify` (เน้น implementation vs plan)
+ใช้สำหรับ verify factual correctness ของ content ที่ระบุ — ต่างจาก `/deep-review` (เน้น freshness) และ `/deep-verify` (เน้น implementation vs plan)
 
 ## Execute
 
@@ -62,7 +62,7 @@ related:
 | Info | ถูกต้องแต่พยานอ่อน — ควร cite source |
 
 - ระบุ file:line, claim เดิม, ground truth, source
-- ถ้าพบเนื้อหาถูกแต่ล้าสมัย → route ไป `/review-docs`
+- ถ้าพบเนื้อหาถูกแต่ล้าสมัย → route ไป `/deep-review`
 
 ### 4. Report And Route
 
@@ -87,7 +87,7 @@ related:
 
 - ตรวจเท่านั้น ไม่แก้ — fixes ผ่าน skill ที่ตรง domain
 - claim ที่ verify ไม่ได้ → ระบุ "unverified" พร้อมเหตุผล ไม่ใช่เดาว่าถูก
-- ห้าม mark ผิดถ้า claim ถูกใน version เดิมที่ content ระบุไว้ — ถ้าเจอแบบนั้น route ไป `/review-docs` แทน
+- ห้าม mark ผิดถ้า claim ถูกใน version เดิมที่ content ระบุไว้ — ถ้าเจอแบบนั้น route ไป `/deep-review` แทน
 
 ### 3. Efficiency
 
@@ -97,7 +97,7 @@ related:
 - ใช้ /deep-research ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 
 ## Expected Outcome

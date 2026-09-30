@@ -1,37 +1,30 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอรใหม่/ขยาย และตอบกลับในแชท ไม่สร้างไฟล์
+description: สร้าง 30 ไอเดียฟีเจอร์แล้วแสดงใน web viewer (Solid + TanStack Start + Nitro bun) ที่ src/ ของ skill นี้
 argument-hint: "[topic]"
 related:
-  - bench-competitors
-  - compare-competitors
-  - suggest-me
-  - enhance-prompt
-  - think-reframe
+  - follow-create-solid-tanstack-nitro-bun
+  - follow-architecture
+  - draw-ansi
   - deep-analyze
   - learn-from-codebase
-  - report
-  - report-todo
-  - then-apply
-  - implement-to-production
-  - run-test-all
-
+  - enhance-prompt
+  - think-reframe
+  - open-web
+  - run-dev
+  - ship-verify
+  - implement-features-to-mvp
 ---
 
 ## Goal
 
-สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิม แล้วสรุปผลกลับในแชททันที โดยไม่สร้างไฟล์
+สร้าง 30 ไอเดียฟีเจอร์ (`extends` + `new`) สำหรับ project/topic แล้วเขียนลง `src/data/ideas.json` ของ viewer app ใน skill นี้ จากนั้น serve web ให้ user ดู — grid 4 col + preview panel + search/filter/grouping/tags/category
 
 ## Scope
 
-- วิเคราะห์ project context และ prompt
-- สร้างไอเดีย `Extends` และ `New` พร้อมระบุ impact/effort/risk
-- ตอบกลับในแชทด้วย idea table + `/report-todo` table เท่านั้น (sort ตาม impact)
-- ไม่สร้าง report/plan ไฟล์
-- ไม่ implement
-- ถ้าต้องการเปรียบเทียบ features กับ competitors/alternatives เฉยๆ (ไม่ implement) → ใช้ `/compare-competitors`
-- ถ้าต้องการ benchmark features เทียบคู่แข่งแล้ว implement ให้ดีกว่า → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
-- ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/plan` หรือ `/implement-features-to-mvp`
+- Web viewer อยู่ใน directory ของ skill นี้ (`src/`) — TanStack Start (SolidJS) + Nitro `preset: bun` ตาม `/follow-create-solid-tanstack-nitro-bun`
+- Agent generate ไอเดีย → เขียน `src/data/ideas.json` → run web → user browse ใน browser
+- ไม่ implement ไอเดีย — implement → `/implement-features-to-mvp`; plan → `/deep-plan`
 
 ## Execute
 
@@ -39,76 +32,59 @@ related:
 
 > Goal: เข้าใจ topic และ project
 
-1. รับ `<topic>` จาก argument หรือ conversation context
-2. ถ้า idea ต้อง ground กับ codebase จริง → ทำ `/learn-from-codebase` แบบ lightweight เพื่อได้ learning path และ concept map ของส่วนที่เกี่ยวข้องกับ topic
-3. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ
-4. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
+1. รับ `<topic>` จาก argument หรือ conversation context — ไม่ชัด → `/suggest-next-action` หรือ `/enhance-prompt`
+2. ทำ `/learn-from-codebase` แบบ lightweight เพื่อ ground ไอเดียกับ codebase จริง
+3. อ่าน manifest + structure เพื่อรู้ architecture pattern (`/follow-architecture`) — ใช้กับ `fileChanges` ของทุก idea
 
-### 2. Generate Ideas
+### 2. Generate 30 Ideas
 
-> Goal: สร้างไอเดียฟีเจอร
+> Goal: 30 ไอเดียครบทุก field ตาม schema
 
-1. สร้างไอเดีย `Extends` (ขยายฟีเจอรที่มี) และ `New` (ฟีเจอรใหม่)
-2. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
-3. แต่ละ feature ระบุ: feature, description, impact, effort, risk, mvp score (1-10)
-4. ลำดับเลขต่อเนื่อง: `Extends` เริ่ม 1, `New` ต่อจาก `Extends`
+สร้างไอเดีย **30 รายการเสมอ** (`extends` + `new` ผสม) — ทุก idea ต้องครบ fields ของ `src/types/idea.ts`:
 
-### 3. Rank And Format
+1. `no` (1-30), `title`, `kind` (`extends|new`), `category`, `tags[]`, `phase` (`mvp|v2|v3`), `impact` (`high|medium|low`), `effort` (`s|m|l|xl`), `mvpScore` (1-10)
+2. `features[]` — bullet features สั้นๆ 3-5 ข้อ
+3. `description`, `why`, `usage`, `risk` — ภาษาเดียวกับ user
+4. `ansi` — UX/UI sketch ด้วย box-drawing ตาม `/draw-ansi` (กล่องเท่ากัน ไม่เพี้ยน)
+5. `fileChanges[]` — `{ path, action: create|edit|delete|move, note }` — ระบุไฟล์จริงที่จะสร้าง/แก้ ตาม architecture pattern ของ target project จาก `/follow-architecture`
+6. `testCases[]` — test cases ที่วัดได้
 
-> Goal: จัดลำดับตาม impact และจัดรูปแบบตอบกลับ
+### 3. Write Data
 
-1. จัดลำดับตาม impact สูง → ต่ำ (tie-break ด้วย mvp score)
-2. สร้าง markdown tables ด้วย `/report table`
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
-4. ระบุ phase: MVP, v2, v3
+> Goal: ideas.json valid ตาม zod schema
 
-### 4. Reply In Chat
+1. เขียนผลลง `src/data/ideas.json` ใน skill directory นี้ — `{ project, topic, generatedAt, ideas: [...30] }`
+2. validate กับ `ideaSchema`/`ideasFileSchema` — ห้ามมี missing field หรือ placeholder
+3. sort `ideas` ไม่จำเป็น — UI sort ตาม impact เอง
 
-> Goal: ตอบกลับ user ทันทีด้วย table เท่านั้น
+### 4. Serve Web
 
-1. แสดง idea tables (`Extends`, `New`) ที่ sort ตาม impact แล้ว
-2. ทำ `/report-todo` แสดง action table (No., Action, Before, After, Why, File Change, Risk) พร้อมสรุป numbered list
-3. ไม่ต้องสร้าง UX/UI sketch, รูปภาพ หรือข้อความอธิบายยาว
+> Goal: user เห็น viewer ใน browser
+
+1. `bun install` ใน skill directory (ครั้งแรกเท่านั้น)
+2. `bun run dev` → dev server port `3030` — ทำตาม `/run-dev` ถ้ามี error
+3. เปิด browser ด้วย `/open-web` → `http://localhost:3030`
+4. Production mode: `bun run build` → `bun .output/server/index.mjs` (Nitro bun preset)
+5. บอก user: ซ้าย = grid 4 col (card: no, ansi, features, description), hover card → preview เต็มด้านขวา (description, why, usage, risk, impact, file changes, test cases), บน = search/filter/grouping/tags/category
+
+### 5. Ship Verify
+
+> Goal: งานผ่าน verification gate
+
+1. ทำ `/ship-verify` — เฉพาะ gates ที่ apply (skills repo ไม่มี test suite → ข้าม `/run-test-all` พร้อมเหตุผล)
+2. สรุปผลในแชท
 
 ## Rules
 
-### 1. Chat Only
-
-- ตอบกลับในแชทเท่านั้น
-- ไม่สร้างไฟล์ใน `.devin/temp/report/<workspace>/` หรือ `.devin/temp/plan/<workspace>/`
-- ไม่สร้าง web app ถาวร
-- ไม่เรียก `/implement-to-production` หรือ `/ship`
-
-### 2. Lightweight
-
-- ไม่ต้อง `/learn` (web) ลึก ยกเว้น user บอก
-- ไม่ต้องวิเคราะห์ codebase ละเอียด ถ้า context พอ
-- ใช้เวลาไม่เกิน 5-10 นาที
-
-### 3. Suggest Deep Workflow
-
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
-- ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
-- ถ้า user ต้องการแค่ไอเดียเพิ่ม → ทำต่อใน skill นี้
-- เมื่อ features ใดๆ ถูก implement → ต้องทำ `/run-test-all` เสมอเพื่อ verify ว่า features ทำงานและไม่พังของเดิม
-
-### 4. Format
-
-- ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
-- เรียงลำดับ 1, 2, 3, ...
-- sort แถวตาม impact สูง → ต่ำ
-- ตอบด้วย idea table + `/report-todo` table เท่านั้น — ไม่สร้าง UX/UI sketch หรือ prose ยาว
-- คำแนะนำถัดไปใส่ใน `/report-todo` table (คอลัมน์ Action)
-- ใช้ `/report` สำหรับ tables
-- ไม่ต้องตอบยาวเกินความจำเป็น
-
-- ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ
+- 30 ไอเดียเสมอ — ห้ามน้อยกว่า; ทุก field ของ schema ต้องมีค่าจริง ห้าม placeholder
+- `ansi` ต้องเป็น box-drawing ที่ align ถูกต้อง (ทำ `/draw-ansi` ถ้าเพี้ยน)
+- `fileChanges` ต้องสอดคล้อง architecture จริงของ target project — ห้ามเดา path
+- ห้ามแก้ source code ของ viewer (`src/`) นอกจาก `src/data/ideas.json` เว้น user สั่ง
+- ห้าม commit/push ใน skill นี้ — ship ทำผ่าน `/ship-to-dev-branch`
 - ใช้ /think-reframe ถ้าจำเป็น
 
 ## Expected Outcome
 
-- User ได้รับไอเดีย features ในแชททันทีเป็น tables (sort ตาม impact)
-- มี `/report-todo` action table สำหรับ steps ถัดไป
-- ไม่มีไฟล์ถูกสร้าง
-- ไม่มี implementation หรือ UX/UI sketch เกิดขึ้น
-
+- `src/data/ideas.json` มี 30 ไอเดียครบ schema
+- Web viewer รันและเปิดใน browser — user เห็น grid + preview + filters ครบ
+- ผ่าน `/ship-verify` gates ที่ apply

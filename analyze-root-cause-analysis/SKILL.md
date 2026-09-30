@@ -3,7 +3,7 @@ name: analyze-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
 argument-hint: "[target]"
 related:
-  - review-stability
+  - deep-review
   - deep-debug
   - use-bun-shell
   - resolve-errors
@@ -171,7 +171,7 @@ related:
 - แนบ evidence ทั้งหมด
 - ระบุ action items สำหรับ prevention
 
-- ใช้ /review-stability ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 ## Expected Outcome
 
 - Root cause ถูกระบุอย่างชัดเจน

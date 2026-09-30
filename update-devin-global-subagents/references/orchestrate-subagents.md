@@ -51,7 +51,7 @@
 > Goal: ตรวจสอบคุณภาพของผลรวม
 
 1. ทำ `/deep-review-then-fix` กับ output ที่ได้
-2. ถ้า subtask ใดมี workflow หรือ flow ที่ซับซ้อน ให้ทำ `/review-workflow` เพิ่มเติม
+2. ถ้า subtask ใดมี workflow หรือ flow ที่ซับซ้อน ให้ทำ `/deep-review` เพิ่มเติม
 3. ถ้ามี gaps ให้ spawn subagent เพิ่ม
 4. ตรวจสอบว่าผลลัพธ์ตอบ scope เดิม
 
@@ -61,7 +61,7 @@
 
 1. ทำ `/deep-validate`
 2. ทำ `/deep-validate` ถ้างานเสี่ยงสูง
-3. ทำ `/ship` ถ้ามีการเปลี่ยนแปลง
+3. ทำ `/ship-to-dev-branch` ถ้ามีการเปลี่ยนแปลง
 4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
 
 ## Rules

@@ -5,7 +5,7 @@ argument-hint: "<web|component|terminal|app|all> [options]"
 related:
   - use-agent-browser
   - run-dev
-  - review-uxui
+  - deep-review
 
 ---
 
@@ -60,7 +60,7 @@ bun <skill-dir>/src/presentation/cli.ts <mode> [options]
 - ตั้งชื่อไฟล์สื่อความหมาย มีวันที่ถ้าเป็น evidence
 - ไม่ capture หน้าจอที่มี secrets/credentials โดยไม่จำเป็น — ถ้า target ต้อง auth ให้ถาม user ก่อน
 - แจ้ง path ของไฟล์ที่ capture เสมอ
-- ใช้ /run-dev, /use-agent-browser, /resolve-errors, /review-uxui ถ้าจำเป็น
+- ใช้ /run-dev, /use-agent-browser, /resolve-errors, /deep-review ถ้าจำเป็น
 
 ## Mode Guides
 
@@ -75,4 +75,4 @@ bun <skill-dir>/src/presentation/cli.ts <mode> [options]
 ## Expected Outcome
 
 - ไฟล์ภาพ/วิดีโอ/PDF หลักฐานพร้อมใช้ ตาม mode ที่ระบุ
-- `all` mode ให้ `manifest.json` สรุปผล + errors พร้อมใช้ต่อใน `/review-uxui` หรือ report
+- `all` mode ให้ `manifest.json` สรุปผล + errors พร้อมใช้ต่อใน `/deep-review` หรือ report

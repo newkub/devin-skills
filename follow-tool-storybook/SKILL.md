@@ -25,9 +25,9 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Init, framework detection, `.storybook/` config files | `subskills/setup-storybook/SKILL.md` | `main.ts` addons — docs, a11y, vitest | `subskills/config-addons/SKILL.md` 
+| Topic | Workflow |-------|----------| Init, framework detection, `.storybook/` config files | `workflows/setup-storybook/SKILL.md` | `main.ts` addons — docs, a11y, vitest | `workflows/config-addons/SKILL.md` 
 ### 1. Installation
 
 > Goal: ติดตั้ง Storybook ด้วย CLI

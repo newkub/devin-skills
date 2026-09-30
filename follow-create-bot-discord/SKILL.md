@@ -18,8 +18,8 @@ argument-hint: "[features]"
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
+2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
 
 ### 2. Gather Requirements
@@ -35,7 +35,7 @@ argument-hint: "[features]"
 
 > Goal: สร้างโครงสร้าง project
 
-1. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อสร้าง `src/`
+1. ทำ `/deep-review` หรือ `/deep-review` เพื่อสร้าง `src/`
 2. สร้าง `src/index.ts`, `src/client.ts`, `src/commands/`, `src/events/`, `src/handlers/`, `src/types.ts`, `src/config.ts`
 3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
 4. รัน `bun init` หรือ `npm init`

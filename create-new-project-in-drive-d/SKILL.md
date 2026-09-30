@@ -6,7 +6,7 @@ related:
   - follow-create-cli
   - follow-create-web
   - follow-create-sdk
-  - review-dependencies
+  - deep-review
   - follow-your-suggestion
   - follow-create-mobile
   - follow-create-bot
@@ -38,7 +38,7 @@ related:
 
 1. `cli` → `/follow-create-cli`
 2. `website` หรือ `web` → `/follow-create-web`
-3. `mobile` → `/follow-create-mobile-cross-capacitor`
+3. `mobile` → `/follow-create-mobile-cross-with-capacitor`
 4. `telegram-bot` → `/follow-create-bot`
 5. `discord-bot` → `/follow-create-bot`
 6. `line-bot` → `/follow-create-bot`
@@ -63,7 +63,7 @@ related:
 > Goal: Run Create Skill
 
 1. ส่ง `project-name` และ `target-path` ให้ skill ทีเลือก
-2. ถ้า skill ต้องการ stack ให้ใช้ `/review-dependencies` เพื่อยืนยัน
+2. ถ้า skill ต้องการ stack ให้ใช้ `/deep-review` เพื่อยืนยัน
 3. ติดตามให้ skill ทีเลือกสร้าง project จนเสร็จ
 
 ### 5. Validate And Ship
@@ -72,7 +72,7 @@ related:
 
 1. ตรวจสอบว่า project files ถูกสร้างจริงที target path
 2. รัน `/run-check` ตาม stack ถ้าจำเป็น
-3. ทำ `/ship` เมื่องานเสร็จสมบูรณ์
+3. ทำ `/ship-to-dev-branch` เมื่องานเสร็จสมบูรณ์
 4. รายงาน path และ next actions
 
 ## Rules

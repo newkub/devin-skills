@@ -10,7 +10,6 @@ related:
   - relocation
   - scan-codebase
   - report
-  - then-apply
   - suggest-next-action
   - dont-over-engineer
 ---
@@ -81,7 +80,7 @@ related:
 1. ทำ `/report table`
 2. คอลัมน์: No., Items, Group, Criteria, Issue, Idea, Action, Impact, Effort
 3. จัดลำดับตาม impact/effort ratio
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 5. ทำ `/suggest-next-action`
 6. ถ้าพร้อม execute → แนะนำให้ทำ `/grouping` หรือ `/relocation` ตามชนิดของ items
 

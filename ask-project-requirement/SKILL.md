@@ -6,7 +6,7 @@ related:
   - ask-me
   - update-docs
   - alternative
-  - ship
+  - ship-to-dev-branch
   - plan
   - follow-goal
 
@@ -60,7 +60,7 @@ related:
 
 - ถามว่าควรใช้ `/alternative` หรือไม่
 - ถ้า library ที่ต้องการไม่มี ให้ถามว่าควรแนะนำตัวไหน แบบ multi_select จาก candidates
-- ถาม build/ship tools ที่ต้องการ แบบ multi_select
+- ถาม build/ship-to-dev-branch tools ที่ต้องการ แบบ multi_select
 
 ### 3. Synthesize Requirements
 

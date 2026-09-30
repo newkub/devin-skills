@@ -13,7 +13,7 @@ Restructure target (default: app เดียวใน `apps/` หรือ sing
 ## Steps
 
 1. ทำ `/follow-architecture` กับ target — เลือก layered pattern → ทำตาม `### Pattern: Layered` โดยอัตโนมัติ
-2. ถ้าเจอ mixed concerns ระหว่างย้าย → ทำ `/separate-of-concerns` ก่อนจัด layer
+2. ถ้าเจอ mixed concerns ระหว่างย้าย → ทำ `/refactor` `### /separate-of-concerns` ก่อนจัด layer
 3. หลังย้ายแต่ละชุด → ทำ `/update-references` + `/run-check`
 
 ## Rules

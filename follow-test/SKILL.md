@@ -3,7 +3,7 @@ name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
 argument-hint: "[config-test-env] [scope]"
 related:
-  - review-test
+  - deep-review
   - follow-math-concepts
   - follow-monorepo
 
@@ -76,15 +76,15 @@ related:
 - ตรวจสอบ coverage ตามเป้าหมาย
 - ตรวจสอบ test quality ตาม best practices
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ตาม topic/argument
+> Goal: dispatch ไปยัง workflow ตาม topic/argument
 
-| Topic/Argument | Subskill |
+| Topic/Argument | Workflow |
 |----------------|----------|
-| `config-test-env`, `test-env`, `env`, `fixtures`, `test-db` | `subskills/config-test-env/SKILL.md` — test env vars, fixtures, test db, CI test env |
+| `config-test-env`, `test-env`, `env`, `fixtures`, `test-db` | `workflows/config-test-env/SKILL.md` — test env vars, fixtures, test db, CI test env |
 
-1. ถ้า argument ตรง topic → อ่าน `subskills/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ตรง topic → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-7 ตามลำดับ
 
 ## Rules

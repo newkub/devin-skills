@@ -3,7 +3,7 @@ name: run-task-all
 description: รันงานที่ค้างอยู่ทั้งหมดจากคิวตามลำดับ
 argument-hint: "[target]"
 related:
-  - review-plan
+  - deep-review
   - run-verify
   - run-test
   - report
@@ -22,7 +22,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-plan` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (task all)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (task all)
 
 ### 1. Read queue
 

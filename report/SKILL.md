@@ -18,18 +18,18 @@ related:
 
 ใช้สำหรับรายงานผลในแชท โดย `/report` จะ dispatch ไปยัง `report-table` หรือ `report-numbered` ตามประเภทข้อมูล
 
-- รวม capability จาก skills เดิมที่ถูกย้ายเข้า subskills
+- รวม capability จาก skills เดิมที่ถูกย้ายเข้า workflows
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Domain      | Subskill |
+| Domain      | Workflow |
 |-------------|----------|
-| `table`     | `subskills/table/SKILL.md` — ตอบเป็นตารางพร้อมคอลัมน์ `No.` เรียงลำดับ |
-| `html`      | `subskills/html/SKILL.md` — ไฟล์ HTML ไฟล์เดียวโต้ตอบได้บน browser |
-| `numbered`  | `subskills/numbered/SKILL.md` — numbered list เรียงลำดับความสำคัญ |
-| `codeblock` | `subskills/codeblock/SKILL.md` — code blocks สำหรับ commands, snippets, config, logs, diff |
+| `table`     | `workflows/table/SKILL.md` — ตอบเป็นตารางพร้อมคอลัมน์ `No.` เรียงลำดับ |
+| `html`      | `workflows/html/SKILL.md` — ไฟล์ HTML ไฟล์เดียวโต้ตอบได้บน browser |
+| `numbered`  | `workflows/numbered/SKILL.md` — numbered list เรียงลำดับความสำคัญ |
+| `codeblock` | `workflows/codeblock/SKILL.md` — code blocks สำหรับ commands, snippets, config, logs, diff |
 
 ### 1. Select Format
 

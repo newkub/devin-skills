@@ -23,15 +23,15 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic  | Subskill |
+| Topic  | Workflow |
 |--------|----------|
-| Setup  | `subskills/setup-vercel/SKILL.md` — Vercel CLI, login, link project |
-| Config | `subskills/config-vercel/SKILL.md` — env vars, `vercel.json` config |
-| Verify | `subskills/verify-connection/SKILL.md` — CLI auth, project linked, env vars ครบ |
+| Setup  | `workflows/setup-vercel/SKILL.md` — Vercel CLI, login, link project |
+| Config | `workflows/config-vercel/SKILL.md` — env vars, `vercel.json` config |
+| Verify | `workflows/verify-connection/SKILL.md` — CLI auth, project linked, env vars ครบ |
 
-อ่าน `subskills/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 1. Install Vercel CLI
 
@@ -217,7 +217,7 @@ jobs:
 ##### Scope
 
 - ครอบคลุม `vercel.json`, `vercel env` และ project settings
-- ถ้ายังไม่ได้ link project → ทำ `subskills/setup-vercel/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ link project → ทำ `workflows/setup-vercel/SKILL.md` ก่อน
 - deploy จริง → `/deploy-to-vercel`
 
 ##### Execute
@@ -276,7 +276,7 @@ jobs:
 
 - ติดตั้ง `vercel` CLI, `vercel login`, `vercel link`
 - สร้าง `.vercel/project.json` ที่มี `orgId`/`projectId`
-- ถ้า link แล้ว → verify เท่านั้น; config env/vercel.json → `subskills/config-vercel/SKILL.md`; deploy → `/deploy-to-vercel`
+- ถ้า link แล้ว → verify เท่านั้น; config env/vercel.json → `workflows/config-vercel/SKILL.md`; deploy → `/deploy-to-vercel`
 
 ##### Execute
 
@@ -330,7 +330,7 @@ jobs:
 
 - Vercel CLI ติดตั้งและ authenticated
 - project link แล้วพร้อม `.vercel/project.json`
-- พร้อมไป `subskills/config-vercel/SKILL.md` หรือ `/deploy-to-vercel`
+- พร้อมไป `workflows/config-vercel/SKILL.md` หรือ `/deploy-to-vercel`
 
 ### verify-connection
 
@@ -351,7 +351,7 @@ jobs:
 
 1. `vercel whoami` — ต้องคืน user/team
 2. ตรวจ scope ตรงกับ project owner (personal vs team) — `vercel teams ls` ถ้าจำเป็น
-3. auth fail → แนะนำ `subskills/setup-vercel/SKILL.md` — ไม่ login เอง
+3. auth fail → แนะนำ `workflows/setup-vercel/SKILL.md` — ไม่ login เอง
 
 ###### 2. Check Project Link
 
@@ -372,7 +372,7 @@ jobs:
 
 - ใช้ ls/inspect commands เท่านั้น — ห้าม deploy/env add
 - ไม่ print env var values — แสดงแค่ names ที่ขาด
-- not-linked → รายงานให้รัน `vercel link` ผ่าน setup subskill
+- not-linked → รายงานให้รัน `vercel link` ผ่าน setup workflow
 
 ##### Expected Outcome
 

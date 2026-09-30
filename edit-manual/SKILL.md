@@ -3,7 +3,7 @@ name: edit-manual
 description: แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม rollback
 argument-hint: "[file]"
 related:
-  - review-delivery
+  - deep-review
   - ask-me
   - learn
   - follow-best-practice
@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับการแก้ไข configuration files ด้วยมือ เช่น `vite.config.ts`, `turbo.json`, `package.json`, `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `uno.config.ts`, `drizzle.config.ts`, `.github/workflows/*.yml` และ config files อื่นๆ
 
-ไม่ใช้สำหรับการสร้าง configuration ใหม่ทั้งหมด (ใช้ `/review-delivery` แทน)
+ไม่ใช้สำหรับการสร้าง configuration ใหม่ทั้งหมด (ใช้ `/deep-review` แทน)
 
 ## Execute
 

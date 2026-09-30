@@ -43,10 +43,18 @@ related:
 1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
 2. วิเคราะห์ workflows และ skills ที่ระบุ
 3. ถ้ามี workflow เดียว ทำตามโดยตรง
-4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/use-subagents` หรือ `/update-devin-global-subagents` เพื่อใช้ subagents ทำขนานกัน
-5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
+4. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
 
-### 4. Verify Execution
+### 4. Use Subagents
+
+> Goal: workflows ที่ independent ทำขนานด้วย subagents เสมอ
+
+1. ถ้ามีหลาย workflows/skills ที่ independent (จาก Step 2) → ทำ `/use-subagents` เพื่อ spawn subagents ทำขนานกัน — 1 workflow = 1 subagent
+2. ให้แต่ละ subagent: workspace path, workflow ที่รับผิดชอบ, deliverable, acceptance criteria
+3. รวม structured reports จากทุก subagent ก่อน verify — subagent ห้าม commit
+4. ถ้าต้อง custom subagent profiles → ทำ `/update-devin-global-subagents` ก่อน `/use-subagents`
+
+### 5. Verify Execution
 
 > Goal: ตรวจสอบว่า workflows และ skills ถูก execute ครบถ้วน
 

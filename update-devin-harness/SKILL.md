@@ -27,11 +27,11 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Domain | Subskill |
+| Domain | Workflow |
 |--------|----------|
-| `devin-knowledge`, `knowledge` — ตรวจ Devin knowledge notes/suggestions | `subskills/devin-knowledge/SKILL.md` |
+| `devin-knowledge`, `knowledge` — ตรวจ Devin knowledge notes/suggestions | `workflows/devin-knowledge/SKILL.md` |
 
 ### 1. Inventory All Layers
 

@@ -25,12 +25,12 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ที่ตรง topic
+> Goal: dispatch ไปยัง workflow ที่ตรง topic
 
-| Topic | Subskill |-------|----------| setup | `subskills/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน | config | `subskills/config-handlers/SKILL.md` — handler organization, error simulation, passthrough 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+| Topic | Workflow |-------|----------| setup | `workflows/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน | config | `workflows/config-handlers/SKILL.md` — handler organization, error simulation, passthrough 
+1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Review Tech Stack

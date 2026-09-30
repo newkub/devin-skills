@@ -3,7 +3,7 @@ name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
 argument-hint: "[scope]"
 related:
-  - review-database
+  - deep-review
   - follow-lib-drizzle
   - resolve-errors
   - open
@@ -19,7 +19,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-database` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (drizzle studio)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (drizzle studio)
 
 ### 1. Verify Prerequisites
 

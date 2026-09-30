@@ -3,7 +3,6 @@ name: report-health-repo
 description: สร้าง health scorecard ต่อ repo — hygiene, deps, CI, activity และ risks รวมตารางเดียว
 argument-hint: "[repo-or-all]"
 related:
-  - check-repo-hygiene
   - resolve-errors
   - check-git-logs
   - list-dependencies
@@ -32,7 +31,7 @@ related:
 
 > Goal: เก็บ health signals ต่อ repo
 
-1. Hygiene: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
+1. Hygiene: ตรวจ repo essentials — LICENSE, README, SECURITY.md, CODEOWNERS, `.github/` templates
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
 3. CI: `/resolve-github-actions-fails` — latest run status, failure rate
 4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
@@ -69,7 +68,7 @@ related:
 
 1. ระบุ quick wins ต่อ repo (เช่น เพิ่ม LICENSE, enable CI, ลบ stale branches)
 2. flag repos ที่ควร archive หรือ revive
-3. เชื่อมไป skills ที่เกี่ยว: `/check-repo-hygiene`, `/review-dependencies`, `/review-delivery`
+3. เชื่อมไป skills ที่เกี่ยว: `/deep-review`
 4. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/validate-then-apply`
 5. ทำ `/suggest-next-action`
 

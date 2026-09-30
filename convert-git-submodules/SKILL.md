@@ -11,7 +11,7 @@ related:
   - update-references
   - update-gitignore
   - deep-validate
-  - ship
+  - ship-to-dev-branch
   - suggest-next-action
   - ask-me
 
@@ -93,7 +93,7 @@ related:
 > Goal: บันทึกการเปลี่ยนแปลง
 
 1. ทำ `/git-commit`
-2. ทำ `/ship` ถ้าต้องการ push
+2. ทำ `/ship-to-dev-branch` ถ้าต้องการ push
 3. ยืนยันว่าไม่มี broken references หลังลบ
 
 ### 8. Validate And Finalize
@@ -153,5 +153,5 @@ related:
 - `git submodule status` แสดง submodule ที่ชี้ไปยัง commit ที่ถูกต้อง
 - clone ใหม่กับ `--recurse-submodules` ทำงานได้
 - ไม่มี broken references หลังการแปลง
-- ทุกการเปลี่ยนแปลงผ่าน `/deep-validate` และ `/ship`
+- ทุกการเปลี่ยนแปลงผ่าน `/deep-validate` และ `/ship-to-dev-branch`
 

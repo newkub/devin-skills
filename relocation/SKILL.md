@@ -3,7 +3,7 @@ name: relocation
 description: ย้ายไฟล์และโฟลเดอร์ไปยังตำแหน่งที่เหมาะสมตาม domain และ responsibility
 argument-hint: "[scope]"
 related:
-  - review-architecture
+  - deep-review
   - update-references
   - use-scripts
 ---
@@ -49,7 +49,7 @@ related:
 1. ทำ `use-scripts` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่เหมาะสม
 2. ย้ายไฟล์ตามลำดับที่วางแผนไว้
 3. ตรวจสอบว่าไม่มีไฟล์หลงเหลือในตำแหน่งเดิม
-4. ทำ `/review-architecture` เพื่อสร้าง barrel exports และตั้งค่า import aliases สำหรับโฟลเดอร์ใหม่ถ้าจำเป็น
+4. ทำ `/deep-review` เพื่อสร้าง barrel exports และตั้งค่า import aliases สำหรับโฟลเดอร์ใหม่ถ้าจำเป็น
 
 ### 4. Update Import Paths
 
@@ -98,7 +98,7 @@ related:
 - หลีกเลี่ยง deep imports ที่ซับซ้อน
 - ตรวจสอบทุก import paths ที่อ้างอิงถึงไฟล์ที่ย้าย
 - สร้าง `index.ts` สำหรับโฟลเดอร์ที่มีหลายไฟล์
-- ใช้ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases
+- ใช้ `/deep-review` เพื่อจัดการ barrel exports และ import aliases
 
 ## Expected Outcome
 

@@ -18,14 +18,13 @@ allowed-tools:
   - mcp_call_tool
 related:
   - deep-research
-  - review-dependencies
+  - deep-review
   - follow-best-practice
   - check-reference
   - report
   - suggest-next-action
   - search
   - list-dependencies
-  - check-repo-hygiene
   - open-web-dependencies
   - run-install
 ---
@@ -40,7 +39,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 - รองรับ `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
 - ใช้ `/search-github-star`, `/search-raindrop`, `/search-npmx` เพื่อหา deps ที fast/modern
-- ไม่แก้ไข manifest files โดยตรง — ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
+- ไม่แก้ไข manifest files โดยตรง — ส่งต่อ `/list-dependencies` หรือ `/deep-review`
 
 ## Execute
 
@@ -52,13 +51,13 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 2. ระบุ package name หรือ capability ที่ต้องการ เช่น "HTTP client in Bun" หรือ "existing deps ที outdated"
 3. ระบุ ecosystem: `npm` / `crates.io` / `go` / `pypi`
 4. ระบุ constraints: fast, modern, minimal bundle, secure, maintained
-5. ถ้าไม่ชัด → ทำ `/review-dependencies` ก่อน
+5. ถ้าไม่ชัด → ทำ `/deep-review` ก่อน
 
 ### 2. Analyze Manifest
 
 > Goal: รวบรวม dependencies ทีมีอยู่
 
-1. ใช้ `/list-dependencies` หรือ `/check-repo-hygiene circular-dependencies` ดู tree
+1. ใช้ `/list-dependencies` หรือ `/follow-tool-madge` ดู tree
 2. ตรวจ version ปัจจุบันและ source ของแต่ละ dep
 3. ระบุ outdated, duplicate, heavy, หรือ unused deps
 4. บันทึก baseline: จำนวน deps, size, จำนวน outdated
@@ -134,14 +133,14 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 ### 4. Integration
 
-- ถ้า library ไม่อยู่ใน `/review-dependencies` table → ใช้ `/deep-research` เพิ่ม
-- ถ้าต้อง add ลง tech stack table → แนะนำ update `/review-dependencies`
-- ถ้าต้องแก้ไข manifest → ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
+- ถ้า library ไม่อยู่ใน `/deep-review` table → ใช้ `/deep-research` เพิ่ม
+- ถ้าต้อง add ลง tech stack table → แนะนำ update `/deep-review`
+- ถ้าต้องแก้ไข manifest → ส่งต่อ `/list-dependencies` หรือ `/deep-review`
 
 ### 5. Safety
 
 - ไม่แก้ไข manifest files โดยตรง
-- ใช้ `/check-repo-hygiene circular-dependencies` หรือ `/list-dependencies` ก่อนการเปลี่ยนแปลง
+- ใช้ `/follow-tool-madge` หรือ `/list-dependencies` ก่อนการเปลี่ยนแปลง
 - ถ้า dep มี security issues → แจ้งและหา alternatives
 
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

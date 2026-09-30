@@ -9,7 +9,7 @@ related:
   - ask-project-requirement
   - suggest-next-action
   - loop-until-complete
-  - ship
+  - ship-to-dev-branch
 
 ---
 
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-- ใช้เมื่อผู้ใช้ระบุ `dont-ask-me`, `dont ask me`, `ห้ามถาม`, `ไม่ต้องถาม`, `proceed`, หรือ `no ask` หรือเมื่อ workflow เช่น `/ship` ใน `dont-ask-me` mode เปิดโหมดนี้ให้
+- ใช้เมื่อผู้ใช้ระบุ `dont-ask-me`, `dont ask me`, `ห้ามถาม`, `ไม่ต้องถาม`, `proceed`, หรือ `no ask` หรือเมื่อ workflow เช่น `/ship-to-dev-branch` ใน `dont-ask-me` mode เปิดโหมดนี้ให้
 - มีผลเป็น session mode: เมื่อเปิดแล้วมีผลกับทุก instruction ใน session เดียวกัน รวมถึง `global_rules.md` และ skills ทีอ้างถึง `/ask-me`
 - ไม่ใช่เก็บ requirement หรือความชอบ — ถ้า prompt มีคำถามที่ต้องตอบก่อนเริ่มงาน ให้ตอบด้วย safe default ผ่าน `/follow-your-suggestion` แทนการถาม
 

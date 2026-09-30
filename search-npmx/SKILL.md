@@ -8,7 +8,7 @@ related:
   - follow-tool-crw
   - learn
   - use-my-packages-on-registry
-  - review-dependencies
+  - deep-review
   - ask-me
   - run-install
 ---
@@ -87,7 +87,7 @@ related:
 2. ระบุ exact version ทีแนะนำให้ pin
 3. ให้ URL ที share ได้ เช่น `https://npmx.dev/<package>@<version>`
 4. ถ้าไม่แน่ใจ → ทำ `/ask-me` ก่อนตัดสินใจ
-5. ถ้าต้องใช้ package ใน project → ส่งต่อ `/use-my-packages-on-registry` หรือ `/review-dependencies`
+5. ถ้าต้องใช้ package ใน project → ส่งต่อ `/use-my-packages-on-registry` หรือ `/deep-review`
 
 ## Rules
 
@@ -124,7 +124,7 @@ related:
 - ใช้ `follow-tool-crw` หรือ `crw_scrape` เพื่อดึงข้อมูลจาก npmx.dev
 - ใช้ `follow-tool-crw` ถ้าต้องหา context เพิ่มเติม
 - ใช้ `learn` (web) ถ้าต้องอ่าน docs นอก npmx
-- ใช้ `review-dependencies` ถ้าต้อง audit ลึก
+- ใช้ `deep-review` ถ้าต้อง audit ลึก
 
 ### 5. Safety
 

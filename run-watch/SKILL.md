@@ -3,7 +3,7 @@ name: run-watch
 description: รัน watch mode สำหรับ build, test หรือ typecheck เพื่อตรวจ errors อย่างต่อเนื่อง
 argument-hint: "<build|test|typecheck> [scope]"
 related:
-  - review-config
+  - deep-review
   - resolve-errors
   - deep-debug
 
@@ -20,7 +20,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-config` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (watch)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (watch)
 
 ### 1. Detect Command
 

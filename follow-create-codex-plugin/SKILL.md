@@ -4,14 +4,13 @@ description: สร้าง Codex plugin ด้วย manifest, skills, MCP ser
 argument-hint: "[scope]"
 related:
   - ask-me
-  - review-architecture
+  - deep-review
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
   - search
   - update-devin-global-skills
   - update-devin
-  - review-dependencies
   - report
 
 ---
@@ -31,8 +30,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create codex plugin)
+1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create codex plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create codex plugin)
 
 ### 2. Gather Requirements
@@ -100,7 +99,7 @@ related:
 - ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
 - plugin-bundled hooks เป็น non-managed — Codex จะ skip จนกว่า user trust hook definition
 
-- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search-skills ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

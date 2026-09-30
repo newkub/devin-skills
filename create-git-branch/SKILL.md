@@ -5,7 +5,7 @@ argument-hint: "[branch-name]"
 related:
   - cleanup
   - delete
-  - ship
+  - ship-to-dev-branch
 
 ---
 
@@ -49,7 +49,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

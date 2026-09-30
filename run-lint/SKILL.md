@@ -3,10 +3,8 @@ name: run-lint
 description: รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และห้ามแก้ไข config ไฟล์
 argument-hint: "[scope]"
 related:
-  - review-code-quality
   - deep-review
   - resolve-errors
-  - check-repo-hygiene
   - run-format
 ---
 
@@ -20,7 +18,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-code-quality` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (lint)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (lint)
 
 ### 1. Run Lint
 
@@ -98,7 +96,7 @@ related:
 - รัน lint อีกครั้งเพื่อยืนยัน
 - รัน tests ทั้งหมด
 - ตรวจสอบว่าไม่มี regressions
-- ทำ `/check-repo-hygiene unused` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
+- ทำ `/follow-tool-knip` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
 - ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
 - ใช้ /run-format ถ้าจำเป็น
 

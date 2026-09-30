@@ -16,7 +16,7 @@ related:
   - update-devin
   - follow-deep
   - deep-validate
-  - ship
+  - ship-to-dev-branch
   - report
   - ask-me
 ---
@@ -83,7 +83,7 @@ related:
 > Goal: ส่งมอบงานทีผ่าน check
 
 1. รัน `run-check` ตาม ecosystem ทีตรวจพบ
-2. ถ้าผ่าน → ทำ `/ship`
+2. ถ้าผ่าน → ทำ `/ship-to-dev-branch`
 3. ถ้าไม่ผ่าน → report สถานะและขั้นตอนถัดไป
 4. ทำ `/report` สรุปสิ่งทีแต่ละ subagent ทำ
 
@@ -125,7 +125,7 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 1 | `review-github-pr` | `review-github-pr/subagents/pr-reviewer.md` | review PR slice per-domain/file-group |
 | 2 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
 | 3 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
-| 4 | `review-delivery` | `review-delivery/subagents/route-checker.md` | verify docs routes ต่อ site section |
+| 4 | `deep-review` | `deep-review` | verify docs routes ต่อ site section |
 | 5 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
 | 6 | `morning-briefing` | `morning-briefing/subagents/signal-collector.md` | collect signal type เดียว |
 | 7 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
@@ -134,7 +134,7 @@ Skills เหล่านี้มี subagent profiles สำหรับ paral
 | 10 | `resolve-github-issue-by-me` | `resolve-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
 | 11 | `deep-research` | `deep-research/subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
 | 12 | `deep-validate` | `deep-validate/subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
-| 13 | `review-workspace` | `review-workspace/subagents/area-reviewer.md` | review workspace area เดียวเทียบ conventions |
+| 13 | `deep-review` | `deep-review` | review workspace area เดียวเทียบ conventions |
 | 14 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
 | 15 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
 | 16 | `merge-all-branch-by-me-to-main` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |

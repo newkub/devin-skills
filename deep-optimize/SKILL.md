@@ -4,7 +4,6 @@ description: Review ทุก dimension หา optimization opportunities ด้
 argument-hint: "[path-or-target] [--diff] [--apply]"
 related:
   - deep-review
-  - check-bottlenecks
   - use-subagents
   - follow-parallel
   - deep-analyze
@@ -22,8 +21,8 @@ Review ทุกมิติของ codebase เพื่อหา optimizatio
 
 ใช้เมื่อต้องการ optimize แบบครอบคลุมหลายมิติพร้อมกัน — report-only โดย default; `--apply` ค่อย fix ตาม plan หลัง user confirm
 
-- เทียบกับ skills ใกล้เคียง: `/deep-review` = review ความถูกต้อง/standard/report; `/check-bottlenecks` = เจาะ bottleneck เฉพาะจุด; `deep-optimize` = fan-out ทุก dimension ด้วย subagents แล้วรวม plan เป็น prioritized actions
-- `/ship` เรียก skill นี้ใน Validate step ก่อน merge/release เสมอ
+- เทียบกับ skills ใกล้เคียง: `/deep-review` = review ความถูกต้อง/standard/report; `/deep-optimize` = เจาะ bottleneck เฉพาะจุด; `deep-optimize` = fan-out ทุก dimension ด้วย subagents แล้วรวม plan เป็น prioritized actions
+- `/ship-to-dev-branch` เรียก skill นี้ใน Validate step ก่อน merge/release เสมอ
 
 ## Execute
 
@@ -83,7 +82,7 @@ Review ทุกมิติของ codebase เพื่อหา optimizatio
 - measurement ก่อนเสนอ optimization ที่ซับซ้อน — micro-optimization ที่ไม่มี evidence → ไม่เสนอ
 - ไม่เสนอการเปลี่ยน architecture ใหญ่โดยไม่มี expected gain ชัดเจน
 - preserved behavior: optimization ต้องไม่เปลี่ยน output/public API (ยกเว้น performance fixes ที่จงใจ)
-- ใช้ /check-bottlenecks ถ้าจำเป็น (deep-dive lane เดียว)
+- ใช้ /deep-optimize ถ้าจำเป็น (deep-dive lane เดียว)
 - ใช้ /deep-analyze ถ้าจำเป็น (root cause ไม่ชัด)
 - ใช้ /deep-review ถ้าจำเป็น (ครบทุก review-* ไม่ใช่แค่ optimization)
 

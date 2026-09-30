@@ -3,7 +3,6 @@ name: cleanup-files-in-project
 description: Clean up unnecessary source files in the project, not build artifacts or dependency caches
 argument-hint: "[target]"
 related:
-  - check-repo-hygiene
   - report
   - report-file-structure
   - check-reference
@@ -25,8 +24,8 @@ related:
 
 > Goal: หา source files ที่ไม่จำเป็น
 
-1. ทำ `/check-repo-hygiene unused` เพื่อหาไฟล์ที่ไม่ถูกใช้
-2. ทำ `/check-repo-hygiene unused` เพื่อหา dependencies ที่ไม่ต้องใช้
+1. ทำ `/follow-tool-knip` เพื่อหาไฟล์ที่ไม่ถูกใช้
+2. ทำ `/follow-tool-knip` เพื่อหา dependencies ที่ไม่ต้องใช้
 3. ค้นหา duplicate files ด้วย `glob` และ `exec` (hash comparison)
 4. ค้นหา empty files, orphan test fixtures, abandoned stubs
 

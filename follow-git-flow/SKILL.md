@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-github
   - update-docs
-  - ship
+  - ship-to-dev-branch
   - report
   - suggest-next-action
 
@@ -34,7 +34,7 @@ related:
 2. ทำ `git branch --list main` หรือ `git branch --list master`
 3. ถ้าไม่มี `main` หรือ `master` → stop และ report
 4. ตรวจ `git status --porcelain` ต้องว่าง
-5. ถ้าไม่ว่าง → ให้ user `/ship` ก่อน
+5. ถ้าไม่ว่าง → ให้ user `/ship-to-dev-branch` ก่อน
 
 ### 2. Determine Integration Branch
 
@@ -64,7 +64,7 @@ related:
    #!/bin/sh
    branch=$(git rev-parse --abbrev-ref HEAD)
    if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-     echo "Do not commit directly on main. Use /ship."
+     echo "Do not commit directly on main. Use /ship-to-dev-branch."
      exit 1
    fi
    exit 0
@@ -74,7 +74,7 @@ related:
    #!/bin/sh
    while read local_ref local_sha remote_ref remote_sha; do
      if [ "$remote_ref" = "refs/heads/main" ] || [ "$remote_ref" = "refs/heads/master" ]; then
-       echo "Direct push to main is not allowed. Use /ship."
+       echo "Direct push to main is not allowed. Use /ship-to-dev-branch."
        exit 1
      fi
    done

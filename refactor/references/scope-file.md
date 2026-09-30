@@ -7,13 +7,13 @@
 ## Steps
 
 1. อ่านแต่ละไฟล์ใน `@files...`
-2. ทำ `/review-code-quality` เพื่อหา issues เฉพาะไฟล์
-3. ทำ `/review-writing` ถ้าไฟล์อ่านยาก
+2. ทำ `/deep-review` เพื่อหา issues เฉพาะไฟล์
+3. ทำ `/deep-review` ถ้าไฟล์อ่านยาก
 4. บันทึก baseline: responsibilities, imports, exports, public API
 5. ระบุ action ที่เหมาะสม:
    - ไฟล์ยาว >250 บรรทัด หรือหลาย responsibility → ทำ SRP refactor
    - ไฟล์อยู่ในตำแหน่งไม่เหมาะสม → ทำ `/relocation`
-   - imports/exports ซับซ้อน → ทำ `/review-architecture`
+   - imports/exports ซับซ้อน → ทำ `/deep-review`
    - naming/style issues → แก้ไขเฉพาะจุด
    - dead code หรือ unused exports → ลบ
 6. แก้ไขไฟล์ที่ระบุให้สอดคล้องกับ findings

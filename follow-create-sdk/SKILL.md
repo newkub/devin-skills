@@ -6,9 +6,9 @@ related:
   - ask-me
   - search
   - report
-  - ship
+  - ship-to-dev-branch
   - update-references
-  - review-dependencies
+  - deep-review
   - run-test
   - update-tests
   - update-devin-global-skills
@@ -26,9 +26,9 @@ related:
 
 ใช้เมื่อ user ต้องการสร้าง project/plugin/library/extension/CLI/skills/subagents/MCP/web/mobile แต่ยังไม่แน่ใจว่าควรใช้ `follow-create-*` หรือ skill ทีเหมาะสมใด
 
-- ถ้า goal เป็น `sdk`/`library`/`framework-agnostic` → ใช้ [references/framework-agnostic-sdk.md](references/framework-agnostic-sdk.md) (Core + Adapters pattern)
+- ถ้า goal เป็น `sdk`/`library`/`framework-agnostic` → ใช้ `## Framework-Agnostic Pattern` ด้านล่าง (Core + Adapters)
 
-- Latest: `typescript@7.0.2` (native) + `tsdown@0.23.0` สำหรับ build — tsdown รองรับ TS `^5 || ^6 || ^7` (verified 2026-09-12)
+- Build toolchain: `typescript` + `tsdown` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -36,8 +36,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create sdk)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create sdk)
 
 ### 2. Parse Argument
@@ -63,9 +62,9 @@ related:
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web` (+ `follow-create-web-nextjs`, `-nuxt`, `-astro`, `-svelte`, `-solidstart` ตาม framework)
    - `cli` → `follow-create-cli`, `follow-create-bun-cli`, `follow-create-rust-cli`
-   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-cross-capacitor`, `follow-create-mobile-cross-flutter`
+   - `mobile` → `follow-create-ios-android-native-by-kotlin-multiplatform`, `follow-create-mobile-cross-with-capacitor`
    - `extension` → `follow-create-vscode-extensions`, `follow-create-zed-extensions`, `follow-create-raycast-extensions`, `follow-create-obsidian-plugin`, `follow-create-nvim-plugins`
-   - `sdk`/`library`/`framework-agnostic` → `references/framework-agnostic-sdk.md` (Core + Adapters pattern)
+   - `sdk`/`library`/`framework-agnostic` → `## Framework-Agnostic Pattern` ด้านล่าง
 4. ใช้ `/report` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
 ### 4. Build And Ask Options
@@ -89,7 +88,7 @@ related:
 1. ถ้า user เลือก skill เดียว → เรียก `skill` tool ด้วย `skill: <selected-skill-name>`
 2. ถ้า user เลือกหลาย skills → ยืนยันลำดับกับ user ด้วย `/ask-me` ก่อน แล้วเรียกตามลำดับ
 3. ถ้า user ตอบเอง (custom text) → ใช้ `search-skills` หรือ string match กับ `follow-create-*` แล้ว invoke ถ้าตรง
-4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุให้ ship → invoke `/ship` หลัง skill ทีเลือกเสร็จ
+4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุให้ ship → invoke `/ship-to-dev-branch` หลัง skill ทีเลือกเสร็จ
 
 ### 6. Handle Mismatch
 
@@ -107,7 +106,7 @@ related:
 - ไม่เพิ่ม `follow-create-*` ใหม่เองถ้ายังไม่มี
 - หลัง user เลือกต้อง invoke skill ด้วย `skill` tool
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
-- ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
+- ถ้า user ต้องการ ship ให้ invoke `/ship-to-dev-branch` หลัง skill ทีเลือกเสร็จ
 
 - ใช้ /follow-create-biome-plugin ถ้าจำเป็น
 - ใช้ /follow-create-bot ถ้าจำเป็น
@@ -138,9 +137,20 @@ related:
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 
+## Framework-Agnostic Pattern
+
+ใช้เมื่อ goal เป็น `sdk`/`library` ที่ทำงานได้หลาย frameworks (React, Vue, Svelte, Solid หรือ vanilla) — pattern เดียวกับ TanStack (`*-core` + framework adapters):
+
+- `src/core/` (หรือ package `@scope/name-core`) = business logic vanilla TS เท่านั้น — ห้าม import framework deps; API รับ/คืน plain data ผ่าน standard Web APIs (`URL`, `Request`, `Response`, `AbortSignal`, `EventTarget`)
+- ถ้าต้อง interop validation libraries → implement `StandardSchemaV1` (รองรับ Zod, Valibot, ArkType โดยไม่ผูกตัวใดตัวหนึ่ง)
+- Adapters `src/react/`, `src/vue/` ฯลฯ = thin wrapper map กับ framework reactivity/lifecycle เท่านั้น — API ต้อง consistent ข้าม adapters
+- framework ทุกตัวเป็น `peerDependencies` + `peerDependenciesMeta.optional` — ห้ามใส่ใน `dependencies`
+- `package.json` ใช้ subpath `exports` (`"."` → core, `"./react"` → adapter) — ทำ `/follow-tool-tsdown` สำหรับ multi-entry build
+- เก็บ types ใน `core/types.ts` — ไม่ผูก core กับ framework lifecycle หรือ global state
+
 ## Expected Outcome
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด
 - User เลือก skill ทีต้องการผ่าน `/ask-me`
-- Skill ทีเลือกถูก invoke พร้อม `/ship` ถ้าจำเป็น
+- Skill ทีเลือกถูก invoke พร้อม `/ship-to-dev-branch` ถ้าจำเป็น
 

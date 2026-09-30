@@ -1,6 +1,6 @@
 ---
 name: refactor-skills
-description: Refactor skill packages ตาม update-devin-global-skills — split, merge, subskills, naming
+description: Refactor skill packages ตาม update-devin-global-skills — split, merge, workflows, naming
 argument-hint: "[skill | family-prefix | all]"
 related:
   - update-devin-global-skills
@@ -48,9 +48,9 @@ Restructure skill ที่มีอยู่ — skill เดียว, family 
 
 > Goal: เลือก fix ต่อ violation จาก conventions — ไม่ ad hoc
 
-1. อ่าน `update-devin-global-skills` `## Conventions` — `When To Split` (violation → fix) และ `Subskills And Subagents` (decision matrix + consolidation)
+1. อ่าน `update-devin-global-skills` `## Conventions` — `When To Split` (violation → fix) และ `Workflows And Subagents` (decision matrix + consolidation)
 2. สรุป skill → violation → action → target — report ก่อนแก้ถ้า scope >3 skills
-3. Merge top-level skills → `git mv` เข้า `parent/subskills/<domain>/`, parent เป็น dispatcher, bulk-update callers ก่อนลบ dir เดิม
+3. Merge top-level skills → `git mv` เข้า `parent/workflows/<domain>/`, parent เป็น dispatcher, bulk-update callers ก่อนลบ dir เดิม
 
 ### 3. Apply
 
@@ -59,7 +59,7 @@ Restructure skill ที่มีอยู่ — skill เดียว, family 
 | Action | How |
 |--------|-----|
 | Split | เนื้อหาละเอียด → `references/<topic>.md`; SKILL.md เหลือ workflow + pointer |
-| Reclassify | workflow ↔ `subskills/<name>/` (`name: <parent>-<name>`), knowledge ↔ `references/` |
+| Reclassify | workflow ↔ `workflows/<name>/` (`name: <parent>-<name>`), knowledge ↔ `references/` |
 | Merge | รวมเนื้อหาซ้ำเข้าที่เดียว |
 | Metadata | `name` = dir, `description` ≤100, `related` resolve ได้ |
 | Simplify | ย่อ prose ที่ verbose → `/simplify` |
@@ -91,7 +91,7 @@ Scope >3 skills อิสระกัน → spawn `skill-updater` subagent ท�
 
 - มาตรฐานอยู่ที่ `/update-devin-global-skills` references — point ไปอ่าน ห้ามเขียนซ้ำ
 - prefix contract (`check-*`/`review-*`/`deep-*`, lifecycle prefixes) ตาม `new-skills` — ห้าม refactor จนขาด
-- ห้ามสร้าง `subskills/fix-*/` หรือ `references/fix-*.md` — fix อยู่ใน `## Fix`
+- ห้ามสร้าง `workflows/fix-*/` หรือ `references/fix-*.md` — fix อยู่ใน `## Fix`
 
 ### 2. No Content Loss
 
@@ -109,6 +109,6 @@ Scope >3 skills อิสระกัน → spawn `skill-updater` subagent ท�
 
 ## Expected Outcome
 
-- ไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat, `subskills/` = invocable workflows, `subagents/` = profiles
+- ไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat, `workflows/` = invocable workflows, `subagents/` = profiles
 - ไม่มี content ซ้ำ, stale refs หรือ dangling `related`; `AGENTS.md` + living docs sync
 - ผ่าน `/deep-validate` พร้อมรายงาน before/after

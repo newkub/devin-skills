@@ -25,9 +25,9 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Install, changelog generation, release command | `subskills/setup-changelogen/SKILL.md` 
+| Topic | Workflow |-------|----------| Install, changelog generation, release command | `workflows/setup-changelogen/SKILL.md` 
 ### 1. Configure Changelogen
 
 > Goal: สร้าง `changelog.config.ts` สำหรับ project

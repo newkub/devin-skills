@@ -11,7 +11,7 @@
 - `C`/`H`/`M`/`L` = findings count ตาม severity (Critical/High/Medium/Low)
 - `Status` = `new` / `existing` / `regression` / `fixed` เทียบ `reports/review-report.json` ครั้งก่อน — สำคัญสำหรับ iteration 3 รอบของ Step 8
 - `Evidence` = `file:line` ของ top finding
-- `Fix Skill` = จาก `reviewWorkflow` map — `/review-<domain>` สำหรับ domain finding, `/deep-review-then-fix` เมื่อต้อง apply fix
+- `Fix Skill` = จาก `reviewWorkflow` map — `/deep-review` (domain `review-<domain>` ใน `## Review Domains`) สำหรับ domain finding, `/deep-review-then-fix` เมื่อต้อง apply fix
 - `Delta` = score diff เทียบ `reports/review-report.json` ครั้งก่อน (ถ้ามี baseline)
 - sort: Critical ก่อน → score ต่ำสุดก่อน
 

@@ -26,11 +26,11 @@ related:
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
-### 1. Pick Subskill
+### 1. Pick Workflow
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| Workflow file structure, triggers, jobs, permissions | `subskills/setup-workflows/SKILL.md` | Caching, matrix, concurrency groups, artifact reuse | `subskills/optimize-ci/SKILL.md` 
+| Topic | Workflow |-------|----------| Workflow file structure, triggers, jobs, permissions | `workflows/setup-workflows/SKILL.md` | Caching, matrix, concurrency groups, artifact reuse | `workflows/optimize-ci/SKILL.md` 
 ### 2. Select Workflows
 
 > Goal: เลือก Workflows ที่เหมาะสม

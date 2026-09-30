@@ -2,7 +2,7 @@
 
 ทดสอบ CLI commands ด้วยการรันผ่าน shell จริง ตรวจสอบ exit codes, stdout, stderr, help text, flags, subcommands, และ error paths — ใช้กับ CLI tools ที่สร้างด้วย Bun/Node/Rust/Go/Python โดยรันจาก built binary หรือ package script
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ## 1. Detect CLI
 

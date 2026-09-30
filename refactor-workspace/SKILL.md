@@ -8,13 +8,12 @@ related:
   - refactor-to-packages-shared
   - follow-single-responsibility
   - relocation
-  - review-architecture
+  - deep-review
   - update-references
   - run-verify
   - run-test
   - run-typecheck
   - deep-analyze
-  - review-code-quality
   - run-build
   - run-test-all
 
@@ -38,7 +37,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 2. ทำ `/deep-analyze` เพื่อดูภาพรวม project type และ structure
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
 4. ทำ `/scan-codebase` ∥ `/check-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
-5. ทำ `/review-code-quality` และ `/check-repo-hygiene circular-dependencies`
+5. ทำ `/deep-review` และ `/follow-tool-madge`
 6. ถ้าเป็น monorepo → ทำ `/follow-monorepo`
 
 ### 2. Evaluate Refactor Necessity
@@ -80,7 +79,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
 2. ใช้ `/refactor` structure scope หรือ `/relocation` สำหรับ file operations
-3. ใช้ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases
+3. ใช้ `/deep-review` เพื่อจัดการ barrel exports และ import aliases
 4. ทำ `/update-references` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
 5. ลบ dependencies ที่ไม่จำเป็น
 
@@ -91,7 +90,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 1. ทำ `/run-verify`
    - ทำ `/run-test`
    - ทำ `/run-typecheck`
-2. ทำ `/check-repo-hygiene circular-dependencies` และ `/review-code-quality`
+2. ทำ `/follow-tool-madge` และ `/deep-review`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
 5. ทำ `/update-references` สำหรับทุก references ที่เปลี่ยน

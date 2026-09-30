@@ -45,20 +45,20 @@ related:
 4. ลบ `<<<<<<<`, `=======`, `>>>>>>>` ทั้งหมด
 5. บันทึกทำไมถึงเลือกแบบนั้นใน commit message
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `subskills/verify-resolved/SKILL.md` — ไม่มี markers, intent ครบทั้งสองฝั่ง, build/test ผ่าน |
+| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — ไม่มี markers, intent ครบทั้งสองฝั่ง, build/test ผ่าน |
 
-1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 4 อ่าน subskill `verify-resolved` มา execute
+1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-5 ตามปกติ โดย Step 4 อ่าน workflow `verify-resolved` มา execute
 
 ### 4. Validate
 
 > Goal: ตรวจสอบว่า conflict resolution ไม่พัง
 
-1. ทำตาม `subskills/verify-resolved/SKILL.md` — ตรวจ markers, intent preservation และ build/test
+1. ทำตาม `workflows/verify-resolved/SKILL.md` — ตรวจ markers, intent preservation และ build/test
 2. ถ้า verdict ไม่ใช่ `clean` → กลับไป resolve ใหม่
 
 ### 5. Stage And Commit
@@ -96,6 +96,63 @@ related:
 - ใช้ /idea-merge ถ้าจำเป็น
 - ใช้ /merge-git-branch ถ้าจำเป็น
 - ใช้ /merge-github-pr ถ้าจำเป็น
+
+## Merged Details
+
+### verify-resolved
+
+##### Goal
+
+ยืนยันหลัง `/resolve-merge-conflicts` ว่า conflicts หมดจริง ไม่มี markers หลุม ไม่เสีย changes ฝั่งไหน และ project ยัง green
+
+##### Scope
+
+- ใช้เมื่อ parent dispatch มาที่ `verify` หรือเรียกหลัง resolve เสร็จ
+- ครอบคลุม: conflict markers, unmerged paths, intent preservation, build/test
+- Read-only: ตรวจสอบ — ไม่ re-resolve
+
+##### Execute
+
+###### 1. Check No Conflict Residue
+
+> Goal: markers และ unmerged paths หมด
+
+1. `rg '^(<<<<<<<|=======|>>>>>>>)'` ทั้ง tree — ต้องไม่เจอ
+2. `git status` → ไม่มี unmerged paths (`UU`, `AA`)
+3. `git diff --check` → ไม่มี conflict artifacts
+
+###### 2. Check Intent Preservation
+
+> Goal: ทั้งสองฝั่งของ conflict ไม่หาย
+
+1. `git diff` ไฟล์ที่เคย conflict — ตรวจว่า changes ของทั้ง ours/theirs ยังอยู่ตาม intent ที่ user ยืนยัน
+2. flag hunks ที่ resolution ลบ changes ฝั่งใดฝั่งหนึ่งโดยไม่ตั้งใจ
+
+###### 3. Verify Project Green
+
+> Goal: merge result ใช้งานได้
+
+1. รัน typecheck/build best-effort (`bun run typecheck`, `bun run build`)
+2. ถ้า conflict แตะ critical paths → ทำ `/run-verify`
+3. ถ้า fail → verdict `broken-merge` พร้อมรายการไฟล์ที่ต้อง re-resolve
+
+###### 4. Report
+
+> Goal: สรุป resolution status
+
+1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+2. Verdict: `clean` / `residue-found` / `intent-lost` / `broken-merge`
+
+##### Rules
+
+- marker พบจริง = `residue-found` — report ทันที
+- intent-lost = changes หายโดยไม่ตั้งใจ — severity สูงกว่า build fail
+- ไม่แก้ conflicts ใน workflow นี้ — report กลับให้ parent
+
+##### Expected Outcome
+
+- Verdict ว่า merge resolution สะอาดจริงพร้อม evidence
+- รายการไฟล์ที่ต้อง re-resolve ถ้ามี
 
 ## Expected Outcome
 

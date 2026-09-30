@@ -6,7 +6,7 @@
 - `agent-browser` (headless) ใช้สำหรับ exploratory route/action testing เมื่อยังไม่มี Playwright suite หรือต้องการ ad-hoc verification
 - ถ้าต้องการ update/เขียน Playwright tests → `/update-tests` (run-only ไม่แก้ tests)
 
-> Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ## 1. Detect Setup
 
@@ -97,7 +97,7 @@
 - ดู error, screenshot, video, trace ก่อนแก้
 - แก้ root cause ไม่ suppress; ห้าม `.skip`/`.only` หลีกเลี่ยง failure
 - Flaky test ที่ fail ซ้ำ ≥3 ครั้ง → tag และ report แทนการ re-run ไปเรื่อย
-- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น

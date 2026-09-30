@@ -9,10 +9,10 @@ related:
   - follow-agents-md
   - update-docs
   - use-subagents
-  - review-workflow
+  - deep-review
   - deep-review-then-fix
   - deep-validate
-  - ship
+  - ship-to-dev-branch
   - report
   - ask-me
 
@@ -94,7 +94,7 @@ Review-only → `/review-devin-global-harness` (layer `subagents`)
 2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
 3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
 4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/deep-review-then-fix`
-5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/review-workflow`
+5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/deep-review`
 6. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
 
 ### 7. Update References
@@ -111,7 +111,7 @@ Review-only → `/review-devin-global-harness` (layer `subagents`)
 > Goal: ส่งมอบงาน
 
 1. ทำ `/deep-validate`
-2. ทำ `/ship`
+2. ทำ `/ship-to-dev-branch`
 3. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

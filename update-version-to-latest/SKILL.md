@@ -3,7 +3,6 @@ name: update-version-to-latest
 description: อัปเดต dependencies, runtime, tools, CI ในทุก workspace ให้ latest พร้อม verify
 argument-hint: "[scope|verify]"
 related:
-  - update-versions
   - resolve-errors
   - report
   - test-usage
@@ -23,7 +22,7 @@ related:
 - ใช้เครื่องมือตาม ecosystem: `bun`/`bunx taze` สำหรับ Node/Bun, `cargo update` สำหรับ Rust, `go get -u ./...` สำหรับ Go, `pip install -U` หรือ `uv` สำหรับ Python
 - รองรับ monorepo: Moon, Turbo, pnpm workspace, Cargo workspace
 - รันทีเดียวจบ: dry-run → update → install → build → test → test-usage → report
-- fast path: `/update-versions` — Rust CLI รันทีเดียวอัปเดตทุก ecosystem (detect → update latest → verify); skill นี้ใช้เมื่อต้องการ changelog analysis, major-migration subskill หรือ commit แยก batch
+- fast path: section `update-versions` ใน Merged Details — one-shot flow อัปเดตทุก ecosystem (detect → dry-run → snapshot → update → install → diff report → verify) โดยไม่มี changelog analysis หรือ commit แยก batch; ใช้ flow เต็ม Steps 1-8 เมื่อต้องการ changelog analysis, major-migration หรือ commit แยก batch
 
 ## Execute
 
@@ -103,17 +102,19 @@ related:
 2. ใช้ `/report` สรุป: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
 3. รายงาน breaking changes หรือ action ที่ต้องทำต่อ
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+> Goal: dispatch งานเฉพาะทางไปยัง workflow ที่ละเอียดกว่า
 
-| Topic | Subskill |
+| Topic | Section (Merged Details) |
 |-------|----------|
-| Major version upgrade — breaking changes scan, codemods, staged rollout, rollback | `subskills/migrate-major/SKILL.md` |
-| `verify`, `verify-upgrade` — ยืนยัน versions bumped, lockfile consistent, project green | `subskills/verify-upgrade/SKILL.md` |
+| Major version upgrade — breaking changes scan, codemods, staged rollout, rollback | `migrate-major` |
+| `verify`, `verify-upgrade` — ยืนยัน versions bumped, lockfile consistent, project green | `verify-upgrade` |
+| Fast path — one-shot update ทุก ecosystem ไม่มี changelog analysis | `update-versions` |
 
-1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-upgrade/SKILL.md` แล้วทำตาม flow — ไม่ re-update
-2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Steps 6-7 อ่าน subskill `verify-upgrade` มา execute
+1. ถ้า argument เป็น `verify` → ทำตาม flow ใน section `verify-upgrade` — ไม่ re-update
+2. ถ้า argument เป็น `fast` → ทำตาม flow ใน section `update-versions`
+3. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Steps 6-7 อ่าน section `verify-upgrade` มา execute
 
 ## Rules
 
@@ -151,6 +152,366 @@ related:
 - ต้องทำ `/test-usage` ทุกครั้งหลัง update เสร็จ
 - ถ้า usage example พัง → แก้ไขหรืออัปเดต docs ก่อน commit
 - ใช้ /run-release ถ้าจำเป็น
+
+## Merged Details
+
+### migrate-major
+
+##### Goal
+
+
+
+อัปเกรด dependency/runtime ข้าม major version อย่างปลอดภัย — สแกน breaking changes ครบ, ใช้ codemods, แบ่ง rollout เป็น stages และมี rollback path ชัดเจน
+
+
+
+##### Scope
+
+
+
+- ใช้เมื่อ `/update-version-to-latest` พบ major updates ที่มี breaking changes เสี่ยงสูง หรือ user สั่ง migrate major โดยตรง
+
+- ครอบคลุม: npm/bun packages, frameworks, runtime majors — ทีละ package หรือทีละ batch ที่เกี่ยวข้องกัน
+
+- ไม่ใช้กับ patch/minor — ทำผ่าน `/update-version-to-latest` flow ปกติ
+
+
+
+##### Execute
+
+
+
+###### 1. Scan Breaking Changes
+
+
+
+> Goal: รู้ทุก breaking change ก่อนแก้ code
+
+
+
+1. อ่าน CHANGELOG, migration guide และ release notes ของ package จาก official docs/repo — ถ้าไม่มี guide ให้ `/learn` (web)
+
+2. สร้าง checklist: removed APIs, renamed APIs, behavior changes, new required config, peer dep requirements
+
+3. `scan-codebase` หา call sites ทุกจุดที่ใช้ API ที่เปลี่ยน — ระบุ file:line ทั้งหมด
+
+4. ประเมิน risk — ถ้ากระทบ public API หรือหลาย workspace → `/ask-me` confirm ก่อนเริ่ม
+
+
+
+###### 2. Prepare Rollback
+
+
+
+> Goal: rollback ได้ทุกเมื่อ
+
+
+
+1. ตรวจ `git status` clean — commit หรือ stash งานค้างก่อน
+
+2. บันทึก current version และ lockfile state — rollback = revert commit + reinstall
+
+3. เขียน rollback steps ชัดเจนก่อนเริ่ม migrate
+
+
+
+###### 3. Apply Codemods Then Manual Fixes
+
+
+
+> Goal: แปลง code ด้วยเครื่องมือก่อน manual edit
+
+
+
+1. รัน official codemod ถ้า package มีให้ — ดู migration guide
+
+2. ถ้าไม่มี codemod → ใช้ `/use-astgrep` หรือ `/migration-by-astgrep` เขียน patterns แปลง renamed/removed APIs
+
+3. manual fix ส่วนที่ codemod ทำไม่ได้ — behavior changes, config moves, type changes
+
+4. อัปเดต version ใน manifest แล้ว install — แยก commit: `chore: migrate <pkg> to v<N>`
+
+
+
+###### 4. Staged Verify And Rollout
+
+
+
+> Goal: verify ทีละชั้น ไม่ big-bang
+
+
+
+1. ต่อ package/batch: typecheck → lint → unit tests → `/run-verify` → `/test-usage`
+
+2. monorepo → verify ทีละ workspace ที่ depend, leaf packages ก่อน consumers
+
+3. ทำ `/deep-review` เพื่อหา deprecated usage ที่เหลือ
+
+4. runtime smoke test บน critical paths ที่ใช้ package นั้น
+
+
+
+###### 5. Report
+
+
+
+> Goal: สรุปผลพร้อมสิ่งที่ค้าง
+
+
+
+1. ทำ `/report-before-after` — version, breaking changes ที่เจอ, call sites ที่แก้
+
+2. ระบุ follow-ups ที่ยังไม่ได้ทำ เช่น deprecated APIs ที่ยังใช้อยู่
+
+
+
+##### Rules
+
+
+
+- ห้ามอัปเดตหลาย unrelated majors พร้อมกัน — ทีละ batch ที่เกี่ยวข้องกันเท่านั้น
+
+- ต้องมี breaking changes checklist และ rollback plan ก่อน write
+
+- ใช้ codemods/ast-grep แทน manual edit เมื่อเป็นไปได้
+
+- ห้าม commit ถ้า verify ไม่ผ่าน — revert แล้ว report
+
+- ถ้า breaking changes กระทบ public API ของ project เอง → `/ask-me` ก่อน
+
+
+
+##### Expected Outcome
+
+
+
+- major version ถูก migrate ครบ พร้อม verify ผ่านทุก stage
+
+- breaking changes ทั้งหมดถูกจัดการ ไม่มี deprecated usage ค้างโดยไม่รู้ตัว
+
+- rollback path ชัดเจน — revert commit เดียวกลับได้
+
+### verify-upgrade
+
+##### Goal
+
+
+
+ยืนยันหลัง `/update-version-to-latest` ว่า versions ถูก bump จริง, lockfile consistent และ project ยังทำงาน — เรียก standalone เมื่อต้อง re-verify หรือสงสัยว่า upgrade ครบไหม
+
+
+
+##### Scope
+
+
+
+- ใช้เมื่อ parent dispatch มาที่ `verify`/`verify-upgrade` หรือเรียกหลัง update เสร็จ
+
+- ครอบคลุม: manifest versions, lockfile consistency, build/test/typecheck, usage examples
+
+- Read-only: ตรวจสอบ — ไม่ re-update
+
+
+
+##### Execute
+
+
+
+###### 1. Verify Versions Actually Bumped
+
+
+
+> Goal: manifests แสดง versions ใหม่จริง
+
+
+
+1. `git diff` manifests — versions เปลี่ยนตามที่ report ไว้
+
+2. `bunx taze` dry-run อีกครั้ง → ไม่ควรเหลือ updates (หรือเหลือเฉพาะที่ defer)
+
+3. flag packages ที่ claimed updated แต่ manifest ยังเป็น version เดิม
+
+
+
+###### 2. Verify Lockfile Consistency
+
+
+
+> Goal: lockfile ตรง manifest ไม่มี drift
+
+
+
+1. `bun install --frozen-lockfile` (dry check) หรือ `cargo metadata`/`go mod verify` ตาม ecosystem
+
+2. flag lockfile ที่ resolve versions ไม่ตรง manifest ranges
+
+3. ตรวจไม่มี duplicate/conflicting resolutions
+
+
+
+###### 3. Verify Project Green
+
+
+
+> Goal: upgrade ไม่พังอะไร
+
+
+
+1. ทำ `/run-verify` — build, typecheck, lint, test
+
+2. ทำ `/test-usage` — usage examples ยังทำงาน
+
+3. ถ้า fail → รายงาน package ที่น่าสงสัย (diff ล่าสุด) เป็น rollback candidate — ไม่ rollback เอง
+
+
+
+###### 4. Report
+
+
+
+> Goal: สรุป upgrade health
+
+
+
+1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`, `Notes`
+
+2. Verdict: `clean-upgrade` / `partial` / `broken` พร้อม packages ที่เป็น rollback candidates
+
+
+
+##### Rules
+
+
+
+- claimed-but-not-bumped = inconsistency ที่ต้อง report เสมอ
+
+- runtime verification (dev server, actual run) เพิ่มเติมจาก typecheck ถ้า major upgrade
+
+- ไม่ re-update หรือ downgrade ใน workflow นี้
+
+
+
+##### Expected Outcome
+
+
+
+- ยืนยัน versions/lockfile/project สอดคล้องกันหลัง upgrade
+
+- รายการ rollback candidates ถ้า verify fail
+
+### update-versions
+
+##### Goal
+
+
+
+Fast path — อัปเดต dependencies, runtime, tools และ CI versions ทุก workspace/package เป็น latest รันทีเดียวจบ: detect → dry-run → snapshot → update → install → diff report → verify (ไม่มี changelog analysis, ไม่มี commit แยก batch — ถ้าต้องการให้ทำ Steps 1-8 แทน)
+
+
+
+##### Scope
+
+
+
+- ครอบคลุมทุก ecosystem ที่ตรวจพบ: `Bun/Node` (`package.json` → `bunx taze` + `bun install`), `Rust` (`Cargo.toml` → `cargo update` + `cargo upgrade` ถ้ามี cargo-edit), `Go` (`go.mod` → `go get -u ./...` + `go mod tidy`), `Python` (`uv.lock` → `uv lock --upgrade` / `requirements.txt` → `pip install -U`), `mise` (`mise upgrade --bump`), `GitHub Actions` (`uses:` tags ผ่าน `gh api` latest release)
+
+- `--level`: `patch` / `minor` / `latest` (default `latest` = bump ทั้ง major/minor/patch เป็น newest)
+
+- Dockerfile `FROM img:tag` — detect และ report เท่านั้น (registry check ต้อง tool ภายนอก)
+
+
+
+##### Execute
+
+
+
+###### 1. Detect Ecosystems
+
+
+
+> Goal: รู้ว่า repo มี ecosystem อะไรให้อัปเดต
+
+
+
+1. สแกน manifests ใน scope: `package.json`, `Cargo.toml`, `go.mod`, `uv.lock`/`requirements.txt`, `mise.toml`/`.tool-versions`, `.github/workflows/*.yml`, `Dockerfile` — report counts ต่อ ecosystem
+
+2. ถ้าไม่มี ecosystem → report และจบ
+
+3. ตรวจ tools ที่จำเป็น: `bun`/`bunx`, `cargo`, `go`, `uv`/`pip`, `mise`, `gh` — skip ecosystem ที่ tool ไม่มีและระบุเหตุ
+
+
+
+###### 2. Dry-Run And Confirm
+
+
+
+> Goal: report ก่อนเขียน — ห้ามแก้ manifest/lockfile โดยไม่ confirm
+
+
+
+1. รัน dry-run ต่อ ecosystem: `bunx taze`, `cargo update --dry-run`, `go list -u -m all`
+
+2. ทำ `/report` แสดง ecosystems + ตาราง `dep old -> new` — ถาม user ด้วย `ask_user_question` (level `latest`/`minor`/`patch`)
+
+3. เตือน user ถ้า git working tree ไม่ clean (revert ไม่ได้)
+
+
+
+###### 3. Snapshot Update And Install
+
+
+
+> Goal: อัปเดตเป็น latest ตาม level ทุก ecosystem
+
+
+
+1. บันทึก snapshot versions เดิม (manifests + lockfiles) ไว้ทำ diff report
+
+2. รัน updaters ต่อ ecosystem ตาม level: `bunx taze <level> -w -r` + `bun install`, `cargo update` (+ `cargo upgrade --incompatible` ถ้ามี cargo-edit และ level เป็น latest), `go get -u ./...` + `go mod tidy`, `uv lock --upgrade` หรือ `pip install -U`, `mise upgrade --bump`, bump `uses:` tags ผ่าน `gh api` latest release
+
+3. Re-snapshot → ตาราง `No.`, `Package`, `Old`, `New`, `File`
+
+
+
+###### 4. Verify And Report
+
+
+
+> Goal: ยืนยัน project ยังเขียว
+
+
+
+1. Verify อัตโนมัติ: `bun run verify`/`build`, `cargo check --workspace`, `go build ./...` ตาม ecosystem ที่พบ
+
+2. ถ้า fail → ทำ `/resolve-errors` แล้ว recheck (max 3)
+
+3. ทำ `/test-usage` ตาม convention — usage examples ต้องยังทำงาน
+
+4. ทำ `/report` สรุป: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
+
+
+
+##### Rules
+
+
+
+- Dry-run first — ห้ามเขียน manifest/lockfile โดยไม่ confirm; level `latest` bump majors ด้วย ถ้าเสี่ยงสูงให้ user เลือก `minor`
+
+- Skip ecosystem ที่ tool ไม่มีอย่าง graceful และระบุเหตุเสมอ — ไม่มี silent failures
+
+- ไม่ downgrade เพื่อแก้ปัญหา — ถ้า update แล้วพังให้ `/resolve-errors` ไม่ใช่ rollback versions เองโดยไม่ถาม
+
+
+
+##### Expected Outcome
+
+
+
+- Ecosystem detection report ก่อนลงมือ
+
+- ทุก deps/tools/CI versions เป็น latest ตาม level ที่เลือก + lockfiles synced
+
+- ตาราง `old -> new` ต่อ dep + verify results
 
 ## Expected Outcome
 

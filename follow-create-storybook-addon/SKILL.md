@@ -4,9 +4,9 @@ description: สร้าง Storybook addon — manager UI, preview decorators,
 argument-hint: "[addon-name]"
 related:
   - follow-create-sdk
-  - review-dependencies
+  - deep-review
   - follow-tool-release-it
-  - ship
+  - ship-to-dev-branch
 ---
 
 ## Goal
@@ -27,8 +27,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review libraries ที่จะใช้ (react, storybook version, bundler)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review libraries ที่จะใช้ (react, storybook version, bundler)
 3. ตรวจว่า target Storybook version ตรงกับ API ที่ใช้ (9.x = `storybook/manager-api`)
 
 ### 2. Prepare
@@ -126,7 +126,7 @@ src/
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

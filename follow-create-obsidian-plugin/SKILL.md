@@ -8,7 +8,7 @@ related:
   - follow-lang-typescript
   - run-test
   - update-dot-vscode
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -29,8 +29,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create obsidian plugin)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create obsidian plugin)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create obsidian plugin)
 
 ### 2. Setup Project
@@ -96,7 +96,7 @@ related:
 1. อัปเดต `manifest.json` และ `versions.json` ด้วย version ใหม่
 2. สร้าง git tag ตาม version
 3. สร้าง GitHub release พร้อมแนบ `main.js`, `manifest.json`, `styles.css`
-4. ทำ `/ship`
+4. ทำ `/ship-to-dev-branch`
 
 ## Rules
 

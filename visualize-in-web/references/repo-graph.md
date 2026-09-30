@@ -11,7 +11,6 @@ triggers:
   - user
   - model
 related:
-  - visualize-project
   - follow-lib-solidjs
   - follow-create-rust-crate
   - follow-tool-vite
@@ -19,7 +18,7 @@ related:
   - review-frontend
   - resolve-errors
   - open
-  - ship
+  - ship-to-dev-branch
   - suggest-next-action
 ---
 
@@ -96,7 +95,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ถ้า user ต้องการ keep project → ทำ `/ship`
+1. ถ้า user ต้องการ keep project → ทำ `/ship-to-dev-branch`
 2. รายงานจำนวน nodes, edges, ประเภททีพบ
 3. ทำ `/suggest-next-action`
 
@@ -120,7 +119,6 @@ related:
 - รองรับหลาย package manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
 - ใช้ commands ตาม ecosystem เช่น `cargo run` สำหรับ Rust, `bun install` สำหรับ JS/TS
 
-- ใช้ /visualize-project ถ้าจำเป็น
 - ใช้ /follow-lib-solidjs ถ้าจำเป็น
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /review-frontend ถ้าจำเป็น

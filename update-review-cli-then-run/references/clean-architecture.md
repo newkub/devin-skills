@@ -24,7 +24,7 @@
 
 ตรวจว่าทุกไฟล์ใช้ `kebab-case`:
 
-- ตัวอย่างที่ถูก: `user-facing.ts`, `code-arch.ts`, `review-workflow.ts`
+- ตัวอย่างที่ถูก: `user-facing.ts`, `code-arch.ts`, `deep-review.ts`
 - ตัวอย่างที่ผิด: `UserFacing.ts`, `userFacing.ts`, `user_facing.ts`
 
 ถ้าพบไฟล์ที่ไม่ใช้ `kebab-case` → flag เป็น `Low` severity

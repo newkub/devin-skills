@@ -54,4 +54,4 @@ Codebase reviewer — ตรวจ codebase/scope ที่ได้รับต
 
 - Read-only — ห้ามแก้ไขไฟล์ใดๆ
 - ไม่มี evidence ไม่มี finding; ระบุ uncertainty แทนการเดา
-- Dispatch catalog ข้าม skill → `../shared/review-skills.md` (อ่านอย่างเดียว ไม่แก้)
+- Dispatch catalog ข้าม skill → `../`deep-review/SKILL.md`` (อ่านอย่างเดียว ไม่แก้)

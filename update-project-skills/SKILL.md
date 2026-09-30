@@ -9,7 +9,6 @@ related:
   - check-monorepo
   - deep-validate
   - update-docs
-  - check-repo-hygiene
   - report
 
 ---
@@ -79,7 +78,7 @@ related:
 > Goal: project skills พร้อมใช้งานและผ่าน validation
 
 1. ทำ `/deep-validate` เพื่อตรวจ `.devin/skills/` structure และ references
-2. ทำ `/check-repo-hygiene circular-dependencies` ถ้ามีการเพิ่ม `related` fields
+2. ทำ `/follow-tool-madge` ถ้ามีการเพิ่ม `related` fields
 3. ทำ `/report` สรุป:
    - skills ที่สร้างใหม่
    - skills ที่อัปเดต

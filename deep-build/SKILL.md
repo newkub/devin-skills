@@ -7,7 +7,7 @@ related:
   - run-check
   - run-verify
   - run-test
-  - review-performance
+  - deep-review
   - resolve-errors
   - deep-validate
   - report
@@ -60,8 +60,8 @@ Build project อย่างละเอียด ครอบคลุมท�
 1. ตรวจขนาด output / bundle size
 2. ตรวจ source maps, assets, chunks
 3. ตรวจ warnings / errors ที build อาจข้าม
-4. ใช้ `/review-bundle` ถ้า bundle ใหญ่ หรือ `/check-bottlenecks` ถ้ามี performance issue
-5. ใช้ `/review-performance` ถ้าจำเป็น
+4. ใช้ `/deep-review` ถ้า bundle ใหญ่ หรือ `/deep-optimize` ถ้ามี performance issue
+5. ใช้ `/deep-review` ถ้าจำเป็น
 
 ### 5. Smoke Test
 

@@ -24,7 +24,7 @@ related:
 
 ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
-- Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-12)
+- Format: Devin skill = `SKILL.md` เป็น entry point — ไม่ต้องสร้าง `references/` โดย default (merge เนื้อหาเข้า `SKILL.md` ตาม conventions ใน `/update-devin-global-skills`; แยกไฟล์เฉพาะเมื่อมีเหตุผลชัดเจน เช่น workflows/scripts) — ยืนยัน format ล่าสุดด้วย `/deep-research` + `/follow-best-practice`
 
 ## Execute
 
@@ -53,7 +53,7 @@ related:
 1. สร้าง `<project-or-workspace>/.devin/skills/<skill-name>/SKILL.md`
 2. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
 3. ถ้าต้องการ code → สร้าง `src/` ตาม project stack ที่ตรวจจาก manifest
-4. ถ้ามีรายละเอียดเพิ่ม → สร้าง `references/` พร้อม `index.md`
+4. ถ้ามีรายละเอียดเพิ่ม → merge เข้า `SKILL.md` ให้อยู่ใน 250 บรรทัด (ไม่สร้าง `references/` โดย default); ถ้าจำเป็นจริงให้ใช้ `workflows/` หรือ `scripts/` แทน
 5. ถ้ามี rules → ใช้ `.devin/rules/` ตาม `/update-devin-project-rules` แทนการฝังใน skill
 
 ### 4. Write SKILL.md
@@ -65,7 +65,7 @@ related:
 3. เขียนเนื้อหาเป็นภาษาอังกฤษทั้งหมด ยกเว้น project กำหนดภาษาอื่น
 4. ใช้ commands และ paths ของ project จริงจาก `package.json`, `AGENTS.md`, หรือ scripts ที่มี
 5. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
-6. ไม่เกิน 250 บรรทัด — แยกรายละเอียดไป `references/`
+6. ไม่เกิน 250 บรรทัด — บีบอัดรายละเอียดให้กระชับใน `SKILL.md` แทนการแยก `references/`
 
 ### 5. Sync With Project
 

@@ -57,7 +57,7 @@ Output layout:
 ##### 5. Review Output
 
 1. เช็ค `manifest.json` errors ก่อนเสมอ
-2. นำภาพไปต่อด้วย `/deep-review` หรือ `/review-uxui`
+2. นำภาพไปต่อด้วย `/deep-review` (domain `review-uxui` สำหรับ UX/UI)
 
 #### All — Rules
 

@@ -197,10 +197,10 @@ bunx remotion render MyComp --sequence
 
 - ใช้ `@remotion/lambda` (AWS), `@remotion/cloudrun` (GCP), หรือ `@remotion/vercel` ตาม platform — ดูรายละเอียดที่ docs.remotion.dev
 
-### Subskills
+### Workflows
 
-- Setup project — `create-video`, Composition, Studio smoke test → `subskills/setup-remotion/SKILL.md`
-- Render performance, codecs/flags, Lambda notes → `subskills/optimize-render/SKILL.md`
+- Setup project — `create-video`, Composition, Studio smoke test → `workflows/setup-remotion/SKILL.md`
+- Render performance, codecs/flags, Lambda notes → `workflows/optimize-render/SKILL.md`
 
 ## Rules
 

@@ -17,7 +17,7 @@ Catalog smell → symptom → refactoring technique — ใช้ตอน Detec
 | Shotgun Surgery | เปลี่ยนเรื่องเดียวต้องแก้หลายไฟล์ | Move Method/Field รวมไว้ที่เดียว (SSOT) |
 | Duplicated Code | block/logic เดียวกันหลายจุด | Extract Function/Module — canonical เดียวตาม `/follow-single-of-source` |
 | Speculative Generality | abstraction ที่ไม่มี consumer จริง | Inline/Collapse — `/dont-over-engineer` |
-| Dead Code | unreachable/unused | Remove — `/check-repo-hygiene unused` ยืนยันก่อน |
+| Dead Code | unreachable/unused | Remove — `/follow-tool-knip` ยืนยันก่อน |
 | Switch/Conditional Sprawl | switch/if-chain กระจายตาม type | Replace Conditional with Polymorphism หรือ dispatch table |
 | Comments As Deodorant | comment อธิบาย intent เยอะ | Rename/Extract ให้ code อธิบายตัวเอง ลบ comment |
 | Mutable Globals | shared state แก้จากหลายที่ | Encapsulate, inject dependency, narrow scope |
@@ -27,4 +27,4 @@ Catalog smell → symptom → refactoring technique — ใช้ตอน Detec
 
 - เลือก technique ที่แก้ **cause** ของ smell ไม่ใช่ mask symptom
 - ทีละ technique เดียว → verify green → commit checkpoint
-- smell ที่เป็น emergent (architecture-level) → `/review-architecture` ไม่ใช่ file refactor
+- smell ที่เป็น emergent (architecture-level) → `/deep-review` ไม่ใช่ file refactor

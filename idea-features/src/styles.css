@@ -1,0 +1,18 @@
+@import 'virtual:uno.css';
+
+.ansi-sketch {
+  white-space: pre;
+  tab-size: 2;
+}
+
+aside::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+aside::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 3px;
+}

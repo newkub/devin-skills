@@ -8,7 +8,6 @@ related:
   - list-devin
   - update-devin-global-skills
   - report
-  - then-apply
 
 ---
 
@@ -57,7 +56,7 @@ related:
 
 1. ใช้ `/report table` ตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
 2. จัดลำดับตาม reusability × frequency ที่เห็นใน session
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 4. ถาม user เลือกตัวที่จะสร้าง — ไม่สร้างเอง
 
 ## Rules

@@ -16,9 +16,9 @@ related:
 ## Scope
 
 ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
-หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode ของ skill นี้ — ดู [references/sveltekit-ssr.md](references/sveltekit-ssr.md)
+หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode (Step 8) — SSR/CSR/prerendering + file-based routing ใน `src/routes/`
 
-- Latest: `svelte@5.57.1`, `@sveltejs/kit@2.70.3`, `@sveltejs/vite-plugin-svelte@7.3.1`, `sv@0.17.1` (verified 2026-09-24)
+- Packages: `svelte` 5.x (runes, Node >= 18), `@sveltejs/kit` 2.x, `@sveltejs/vite-plugin-svelte`, `sv` CLI (`bunx sv create`, `sv check`, `sv migrate svelte-5`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -31,7 +31,7 @@ related:
 3. ตั้งค่า `tsconfig.json` ด้วย `moduleResolution: bundler`
 4. เพิ่ม scripts ใน `package.json` (dev, build, preview)
 5. ตั้งค่า server port และ build options
-6. ใช้ Svelte 5.57.1+ (latest `5.57.1`, verified 2026-09-16)
+6. ใช้ Svelte 5.x ล่าสุด — ยืนยันเวอร์ชันด้วย `/deep-research` + `/follow-best-practice` ก่อน setup
 
 ### 2. Configure TypeScript
 
@@ -95,6 +95,17 @@ related:
 1. ใช้ `onclick` แทน `on:click` (Svelte 5 syntax)
 2. Event handlers เป็น properties เหมือน attributes อื่นๆ
 3. ใช้ event attributes สำหรับ DOM elements
+
+### 8. SvelteKit Mode (Optional Fullstack)
+
+> Goal: fullstack SvelteKit เมื่อ client-side ไม่พอ
+
+1. Scaffold ด้วย `bunx sv create <project>` (`--types ts`, `--add-ons`, `--no-install`; `create-svelte` deprecated แล้ว) — `sv sync`/`sv prepare` generate types, `sv check` ตรวจสอบ, `sv migrate svelte-5` สำหรับ auto-migration
+2. File-based routing ใน `src/routes/` — `+page.svelte`, `+layout.svelte`, `+page.ts`/`+page.server.ts` (`load`), `+server.ts` (API routes), `+error.svelte`
+3. Data loading: `export const load: PageLoad | PageServerLoad` ใน `+page.ts`/`+layout.ts`; form mutations ด้วย `export const actions` ใน `+page.server.ts`
+4. Runtime modules: `$app/state` (`page`, `navigating`, `updated` — Svelte 5; `$app/stores` สำหรับ Svelte 4 compat), `$app/navigation` (`goto`, `invalidate`, `invalidateAll`, `preloadData`), `$app/forms` (`enhance`, `applyAction`), `@sveltejs/kit` exports (`error`, `redirect`, `fail`, `json`)
+5. Rendering: SSR default — ปิดด้วย `export const ssr = false` หรือ prerender ด้วย `export const prerender = true` ต่อ route
+6. Progressive enhancement: form actions ทำงานโดยไม่ต้อง JS (`use:enhance` สำหรับ enhancement)
 
 ## Rules
 

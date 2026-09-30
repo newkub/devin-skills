@@ -76,7 +76,7 @@
 - ใช้ `pipe`/`compose` สำหรับ function composition
 - ใช้ library เช่น `fp-ts`, `effect` ถ้าจำเป็น
 
-- ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome

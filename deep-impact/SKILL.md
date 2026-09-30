@@ -3,7 +3,7 @@ name: deep-impact
 description: วิเคราะห์ผลกระทบลึกของ change ก่อน refactor, delete, rename, หรือ upgrade
 argument-hint: "[scope]"
 related:
-  - review-code-quality
+  - deep-review
   - search
   - report-workspace-graph
   - report-public-api
@@ -11,7 +11,6 @@ related:
   - rename
   - run-test
   - deep-validate
-  - review-risk
 ---
 
 ## Goal
@@ -39,7 +38,7 @@ related:
 
 > Goal: หา consumers ทีใช้งาน target โดยตรง
 
-1. ทำ `/review-code-quality` เพื่อหา imports, consumers, references
+1. ทำ `/deep-review` เพื่อหา imports, consumers, references
 2. ทำ `/search-files-patterns` เพื่อค้นหา call sites, imports, string references
 3. ใช้ ast-grep หา pattern ทีอาจหายไปถ้า target เปลี่ยน
 4. ตรวจสอบ public API: `/report-public-api` ถ้าเป็น library/project
@@ -69,7 +68,7 @@ related:
 
 > Goal: ประเมินความเสี่ยงและ mitigation
 
-1. ทำ `/review-risk` เพื่อประเมิน probability และ impact
+1. ทำ `/deep-review` เพื่อประเมิน probability และ impact
 2. ระบุ risks ตามมิติ: correctness, performance, security, compatibility, DX
 3. จัดลำดับ risk ตาม severity
 4. ออกแบบ mitigation สำหรับแต่ละ risk สูง
@@ -121,7 +120,7 @@ related:
 
 ### 3. Tool-First
 
-- ใช้ `/review-code-quality`, `/search-files-patterns`, ast-grep, report workspace graph
+- ใช้ `/deep-review`, `/search-files-patterns`, ast-grep, report workspace graph
 - ไม่ทำการเปลี่ยนแปลงกว่างขวางโดยไม่มี evidence
 - บันทึกผลการ analysis ก่อนลงมือ
 

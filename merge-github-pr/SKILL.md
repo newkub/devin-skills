@@ -69,22 +69,22 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 3. ถ้ามี auto-merge → ใช้ `gh pr merge <pr> --auto`
 4. รอจน merge สำเร็จ
 
-### Subskills
+### Workflows
 
 > Goal: dispatch post-merge verification แยกจาก merge flow
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-merge` | `subskills/verify-merge/SKILL.md` — PR merged บน remote, base updated, cleanup ครบ |
+| `verify`, `verify-merge` | `workflows/verify-merge/SKILL.md` — PR merged บน remote, base updated, cleanup ครบ |
 
-1. ถ้า argument เป็น `verify` → อ่าน `subskills/verify-merge/SKILL.md` แล้วทำตาม flow — ไม่ merge ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 6 อ่าน subskill `verify-merge` มา execute ก่อน cleanup
+1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-merge/SKILL.md` แล้วทำตาม flow — ไม่ merge ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 6 อ่าน workflow `verify-merge` มา execute ก่อน cleanup
 
 ### 6. Verify And Cleanup
 
 > Goal: ยืนยันและ cleanup
 
-1. ทำตาม `subskills/verify-merge/SKILL.md` — ยืนยัน PR merged บน remote ก่อน
+1. ทำตาม `workflows/verify-merge/SKILL.md` — ยืนยัน PR merged บน remote ก่อน
 2. รัน `git fetch` และ `git pull` บน base branch
 3. ลบ local branch ถ้าไม่ต้องการ `git branch -d <branch>`
 4. รัน `gh pr delete-branch <pr>` ถ้าต้องการ
@@ -103,6 +103,64 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 - ไม่ merge โดยไม่มี approval (ยกเว้น user สั่ง)
 - ใช้ strategy ตาม project conventions
 - ทำ final checks ก่อน merge เสมอ
+
+## Merged Details
+
+### verify-merge
+
+##### Goal
+
+ยืนยันหลัง `gh pr merge` ว่า PR merged จริงบน remote, base branch อัปเดต และ cleanup ครบ — เรียก standalone หลัง merge เสร็จ
+
+##### Scope
+
+- ใช้เมื่อ `/merge-github-pr` dispatch มาที่ `verify` หรือเรียกหลัง merge
+- ครอบคลุม: PR state บน remote, base branch sync, merge commit บน remote, branch cleanup
+- Read-only: ตรวจสอบ — ไม่ re-merge
+
+##### Execute
+
+###### 1. Verify PR State
+
+> Goal: PR เป็น merged จริงบน GitHub
+
+1. `gh pr view <pr> --json state,mergedAt,mergeCommit` — state = `MERGED`
+2. บันทึก merge commit sha และ strategy ที่ใช้
+3. flag ถ้า state เป็น `CLOSED` โดยไม่ merge หรือยัง `OPEN` (auto-merge pending)
+
+###### 2. Verify Base Branch
+
+> Goal: base branch บน remote มี merge commit
+
+1. `git fetch origin` แล้ว `git log origin/<base> --oneline -3` — merge commit อยู่บน remote
+2. `gh pr checks <pr>` หรือดู CI run บน base หลัง merge — post-merge CI ผ่านหรือกำลังรัน
+3. flag ถ้า merge commit ไม่อยู่บน remote base
+
+###### 3. Verify Cleanup
+
+> Goal: branch hygiene หลัง merge
+
+1. `gh pr view <pr> --json headRefName` → ตรวจ remote branch ถูกลบหรือยัง (`git ls-remote --heads origin <branch>`)
+2. local branch cleanup: `git branch --merged <base>`
+3. flag stale branches ที่ merge แล้วแต่ยังอยู่
+
+###### 4. Report
+
+> Goal: สรุป merge status
+
+1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+2. Verdict: `merged-clean` / `merged-pending-ci` / `not-merged` พร้อม items ที่ค้าง
+
+##### Rules
+
+- evidence ต้องมาจาก remote (`gh`/`git ls-remote`) ไม่ใช่ local state เพียงอย่างเดียว
+- auto-merge pending ≠ merged — รายงานเป็น pending
+- ไม่ delete branches ใน workflow นี้ — รายงานให้ caller ทำ
+
+##### Expected Outcome
+
+- ยืนยัน PR merged บน remote พร้อม merge commit sha
+- รายการ cleanup ที่ค้างถ้ามี
 
 ## Expected Outcome
 

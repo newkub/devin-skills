@@ -5,10 +5,9 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-tool-cargo
-  - review-architecture
+  - deep-review
   - flatten-directory
   - rethink
-  - review-dependencies
   - run-test
 
 ---
@@ -20,7 +19,7 @@ related:
 
 ใช้สำหรับสร้าง CLI applications ด้วย Rust runtime — ถ้ายังไม่ชัดว่า Rust หรือ Bun ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
-- Latest: Rust `1.98.1`, `clap@4.6.7`, `color-eyre@0.6.5`, `cargo-dist@0.32.0` (verified 2026-09-16)
+- Packages: Rust toolchain (`edition = "2024"`), `clap` (derive API — 4.x renamed builder `App` → `Command`), `color-eyre`, `cargo-dist`, `thiserror`/`anyhow`, `serde` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -28,8 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create rust cli)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create rust cli)
 
 ### 2. Decide Architecture
@@ -37,7 +35,7 @@ related:
 > Goal: เลือก architecture ที่เหมาะสมกับ CLI
 
 1. ถ้ายังไม่ชัด Rust หรือ Bun → ทำ `/follow-create-cli` ก่อน
-2. ทำ `/review-architecture` หรือ `/review-architecture` เพื่อประเมิน context
+2. ทำ `/deep-review` หรือ `/deep-review` เพื่อประเมิน context
 3. เลือก architecture ตามลักษณะงาน:
    - CLI ง่ายๆ มี subcommands ไม่กี่ตัว → Command/Handler split
    - ต้อง support หลาย output modes (TTY/JSON/agent) → Functional Core / Imperative Shell
@@ -47,8 +45,6 @@ related:
 ### 3. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เลือก
-
-สร้างโครงสร้างโปรเจกต์ตาม template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. สร้าง project ด้วย `cargo new --name <project> <path>`
 2. สร้าง directories ตาม architecture ที่เลือก:
@@ -64,9 +60,7 @@ related:
 
 > Goal: เพิ่ม dependencies ที่จำเป็นสำหรับ CLI ใน `Cargo.toml`
 
-ตั้งค่า dependencies ใน `Cargo.toml` — ดูตัวอย่างใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
-
-1. เพิ่ม CLI dependencies: `clap` (argument parsing), `serde` (serialization), `serde_json` (JSON)
+1. เพิ่ม CLI dependencies: `cargo add clap --features derive,env` (argument parsing), `serde` (serialization), `serde_json` (JSON)
 2. เพิ่ม logging: `tracing`, `tracing-subscriber`
 3. เพิ่ม error handling: `thiserror` (library), `anyhow` (application)
 4. เพิ่ม colored output: `colored` หรือ `nu-ansi-term`
@@ -79,8 +73,6 @@ related:
 
 > Goal: ตั้งค่า build profiles สำหรับ development และ production
 
-ตั้งค่า build profiles สำหรับ development และ production — ดูตัวอย่างใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
-
 1. ตั้งค่า `[profile.dev]` ด้วย `debug = "line-tables-only"` และ `incremental = true`
 2. ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
 3. ตั้งค่า `[profile.dev.package."*"]` ด้วย `debug = false` เพื่อ speed up deps compilation
@@ -88,8 +80,6 @@ related:
 ### 6. Setup Scripts
 
 > Goal: สร้าง justfile สำหรับ development scripts ที่ใช้ซ้ำได้
-
-ตั้งค่า development scripts ใน `justfile` — ดู template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. เพิ่ม `dev` recipe: `cargo watch -x run`
 2. เพิ่ม `build` recipe: `cargo build --release`
@@ -112,7 +102,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

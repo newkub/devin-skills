@@ -44,8 +44,8 @@ related:
 4. Refactoring → `refactor`
 5. Testing → `run-test`
 6. Validation → `deep-validate`
-7. Security → `review-delivery`
-8. Performance → `/deep-review` (comprehensive) หรือ `review-delivery` (specific)
+7. Security → `deep-review`
+8. Performance → `/deep-review` (comprehensive) หรือ `deep-review` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)
 10. Thinking → `deep-thinking` (systematic) หรือ `deep-thinking` (reflective)
 

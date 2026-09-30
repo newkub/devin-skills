@@ -16,7 +16,7 @@ related:
   - use-scripts
   - follow-monorepo
   - follow-tool-moonrepo
-  - review-delivery
+  - deep-review
   - update-version-to-latest
 
 ---
@@ -26,7 +26,7 @@ related:
 
 ## Scope
 
-ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) เพื่อรัน scripts ที่ตั้งค่า
+ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/deep-review`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) เพื่อรัน scripts ที่ตั้งค่า
 
 ## Execute
 
@@ -75,7 +75,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 > Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
 
-1. `/review-delivery` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
+1. `/deep-review` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
 2. ถ้ามี `.infisical.json` หรือใช้ secret manager → ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets scripts
 3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run` (ตารางใน reference)
 4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า

@@ -46,5 +46,5 @@ bun <skill-dir>/src/presentation/cli.ts component <url> --selector "<css>" --out
 
 #### Component — Expected Outcome
 
-- ได้ภาพของแต่ละ component/variant แยกไฟล์ พร้อมใช้กับ `/review-uxui`, `/update-readme-md`
+- ได้ภาพของแต่ละ component/variant แยกไฟล์ พร้อมใช้กับ `/deep-review`, `/update-readme-md`
 

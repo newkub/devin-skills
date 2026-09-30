@@ -7,12 +7,11 @@ related:
   - idea-features
   - idea-merge
   - improve
-  - review-gaps
+  - deep-review
   - scan-codebase
   - think-reframe
   - report
   - report-todo
-  - then-apply
   - suggest-next-action
 ---
 
@@ -35,7 +34,7 @@ related:
 
 1. รับ `scope` จาก argument — ถ้าไม่มีใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
 2. ทำ `/scan-codebase` เพื่อดู structure, stack, state ปัจจุบัน
-3. ถ้าต้องการ evidence-based gaps → ทำ `/review-gaps` หรืออ่าน findings ล่าสุดใน `.devin/temp/report/`
+3. ถ้าต้องการ evidence-based gaps → ทำ `/deep-review` หรืออ่าน findings ล่าสุดใน `.devin/temp/report/`
 4. ระบุ pain points: friction, debt, missing capability, manual steps, inconsistency
 
 ### 2. Generate Ideas
@@ -56,7 +55,7 @@ related:
 2. ทำ `/report table` columns: `No.`, `Idea`, `Type`, `Problem`, `Impact`, `Effort`, `Fix Skill`
 3. Impact: High = เปลี่ยนผลลัพธ์จริง / Medium = ดีขึ้นชัดเจน / Low = nice-to-have
 4. map แต่ละ idea ไปยัง skill ที่ทำได้จริง (`improve`, `review-*` `## Fix`, `update-*`, `follow-*`)
-5. ทำ `/suggest-next-action` — ถ้า user confirm idea ไหน → `/then-apply` ส่งไป skill นั้น
+5. ทำ `/suggest-next-action` — ถ้า user confirm idea ไหน → `/follow-your-suggestion` ส่งไป skill นั้น
 
 ## Rules
 

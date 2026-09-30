@@ -3,10 +3,10 @@ name: run-bench
 description: รัน benchmark tests เพื่อวัดประสิทธิภาพและเปรียบเทียบ performance
 argument-hint: "[scope]"
 related:
-  - review-performance
+  - deep-review
   - run-install
 
-  - review-code-quality
+  - deep-review
   - report
 ---
 
@@ -20,7 +20,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-performance` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (bench)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (bench)
 
 ### 1. Setup Environment
 
@@ -45,7 +45,7 @@ related:
 > Goal: Analyze Results
 
 1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
-2. ทำ `/review-code-quality` อ้างอิง `../shared/time-complexity.md` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
+2. ทำ `/deep-review` อ้างอิง `deep-review/SKILL.md` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
 3. หา benchmarks ที่มี variance สูงหรือ outliers
 4. ระบุ potential optimizations สำหรับ slow benchmarks
 5. ถ้ามี variance สูง ให้รันซ้ำเพื่อยืนยันผลลัพธ์

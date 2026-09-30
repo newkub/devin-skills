@@ -82,7 +82,7 @@ related:
 
 1. บันทึกไฟล์ด้วยชื่อ `<platform>-cover-<topic>.png` หรือ `.jpg`
 2. ตรวจสอบขนาดไฟล์และ dimension
-3. ใช้ `/review-bundle` ดูขนาดไฟล์
+3. ใช้ `/deep-review` ดูขนาดไฟล์
 4. แสดง preview ถ้าเป้นไปได้
 
 ### 7. Report

@@ -3,7 +3,7 @@ name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
 argument-hint: "[scope]"
 related:
-  - review-dependencies
+  - deep-review
   - update-version-to-latest
   - follow-tool-mise
 
@@ -19,7 +19,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dependencies` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (install)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (install)
 
 ### 1. Update Dependencies
 

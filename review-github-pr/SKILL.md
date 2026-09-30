@@ -50,11 +50,20 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 3. branch protection — required checks ผ่าน, reviews ครบตาม policy
 4. draft/WIP state — ไม่ merge PR ที่ยัง draft หรือมี unresolved comments
 
-### 6. Score And Report
+### 6. Check Gate (Blocking)
+
+> Goal: ทุก gate ผ่านก่อน approve/recommend merge — ห้ามข้าม
+
+1. CI checks ผ่านทั้งหมด: `gh pr checks <n>` — ห้ามมี `fail`/`pending` เหลือ; pending → `gh pr checks <n> --watch` หรือ `/resolve-cicd` จนเขียว
+2. ทำ `/deep-validate` บน merge result (frontmatter, types, contract) — fail → ห้าม recommend merge
+3. ทำ `/deep-review` ตาม scope ของ PR (domain ที่ diff แตะ) — blocker findings → fix ก่อน ห้าม merge
+4. เฉพาะเมื่อ 3 ข้อผ่านครบ → verdict `ready-to-merge`; ไม่งั้น `blocked` พร้อมระบุ gate ที่ค้าง
+
+### 7. Score And Report
 > Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [subagents/pr-checklist-reviewer/scoring.md](subagents/pr-checklist-reviewer/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
 
-### 7. Report And Recommend
+### 8. Report And Recommend
 > Goal: รายงานและแนะนำ
 ทำตาม [subagents/pr-checklist-reviewer/report-and-recommend.md](subagents/pr-checklist-reviewer/report-and-recommend.md)
 
@@ -64,17 +73,18 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 - ใช้ `subagents/pr-reviewer.md` เมื่อ PR ใหญ่และแบ่งเป็น slices ที่ independent กันได้ (per-domain เช่น security/tests/api หรือ per-file-group) — spawn ผ่าน `/use-subagents` แล้ว merge findings ทุก slice ก่อน score/report
 
-### Subskills
+### Workflows
 
-> Goal: dispatch report formatting ไปยัง subskill เมื่อต้องการ review comments พร้อม submit
+> Goal: dispatch report formatting ไปยัง workflow เมื่อต้องการ review comments พร้อม submit
 
-| Topic | Subskill |
+| Topic | Workflow |
 |-------|----------|
-| `comments`, `report-comments` — inline comment drafts + summary verdict | `subskills/report-comments/SKILL.md` |
+| `comments`, `report-comments` — inline comment drafts + summary verdict | `workflows/report-comments/SKILL.md` |
 
 ## Rules
 
 - Review เท่านั้น ไม่แก้ source โดยไม่ได้รับอนุญาต
+- ห้าม verdict `ready-to-merge` ถ้า Step 6 (Check Gate) ไม่ผ่านครบ — CI + `/deep-validate` + `/deep-review` เป็น blocking gates
 - Focus บน changed files ไม่ต้อง review ทั้ง codebase
 - ถ้า PR ใหญ่ → แนะนำ split ก่อน review ละเอียด
 - Title และ commits ต้องตาม conventional commits
@@ -88,13 +98,13 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 - ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
-- ใช้ /review-code-quality ถ้าจำเป็น
-- ใช้ /review-test ถ้าจำเป็น
-- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Fix
 
-> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
 
 ## References
 

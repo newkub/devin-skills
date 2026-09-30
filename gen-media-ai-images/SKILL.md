@@ -5,7 +5,7 @@ argument-hint: "[prompt]"
 related:
   - convert
   - draw-svg-image
-  - generate-prompt-from-image
+  - report-prompt-from-image
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ related:
 
 - ใช้ /convert-svg ถ้าจำเป็น
 - ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /generate-prompt-from-image ถ้าจำเป็น
+- ใช้ /report-prompt-from-image ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -3,8 +3,7 @@ name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
 argument-hint: "[scope]"
 related:
-  - review-bundle
-  - review-delivery
+  - deep-review
   - run-typecheck
   - resolve-errors
   - run-clean
@@ -26,9 +25,9 @@ related:
 
 > Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
 
-1. ทำ `/review-bundle` เพื่อวิเคราะห์ bundle size, build config, manual chunks, และ externalization
-2. ทำ `/review-delivery` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-3. ถ้า `/review-bundle` หรือ `/review-delivery` ล้มเหลว → stop และ report
+1. ทำ `/deep-review` เพื่อวิเคราะห์ bundle size, build config, manual chunks, และ externalization
+2. ทำ `/deep-review` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
+3. ถ้า `/deep-review` หรือ `/deep-review` ล้มเหลว → stop และ report
 
 ### 2. Typecheck
 
@@ -76,7 +75,7 @@ related:
 
 ### 1. Build Order
 
-- Optimize: ทำ `/review-bundle` ก่อน แล้วทำ `/review-delivery`
+- Optimize: ทำ `/deep-review` ก่อน แล้วทำ `/deep-review`
 - Typecheck: ทำ `/run-typecheck` ก่อน build
 - Install: ติดตั้ง dependencies
 - Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า
@@ -110,7 +109,7 @@ title: Run Build
 description: รัน build process สำหรับ production-ready artifacts
 auto_execution_mode: 3
 related:
-  - /review-delivery
+  - /deep-review
   - /run-typecheck
   - /run-clean
   - /resolve-errors
@@ -130,7 +129,7 @@ related:
 
 > Goal: build config พร้อม
 
-1. ทำ `/review-delivery`
+1. ทำ `/deep-review`
 
 #### 2. Typecheck
 

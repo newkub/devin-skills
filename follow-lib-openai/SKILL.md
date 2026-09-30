@@ -18,7 +18,7 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ `openai` SDK — OpenAI API client ฝั่ง server บน Node.js 22+/Bun (lib openai)
 
-- Compatible providers (Azure, OpenRouter, Ollama, local LLMs) ผ่าน `baseURL` → `subskills/config-providers/SKILL.md`
+- Compatible providers (Azure, OpenRouter, Ollama, local LLMs) ผ่าน `baseURL` → `workflows/config-providers/SKILL.md`
 - Vendor อื่น (Anthropic/Claude ฯลฯ) อยู่นอก scope — ใช้ skill ของ vendor นั้น
 - API keys/org/project จัดการผ่าน `/follow-secret-manager` — ห้ามเรียก API จาก client-side
 - Structured output schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
@@ -27,9 +27,9 @@ related:
 - References: [apis](references/apis.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Topic | Subskill |-------|----------| Config | `subskills/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys | Optimize | `subskills/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing 
+| Topic | Workflow |-------|----------| Config | `workflows/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys | Optimize | `workflows/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

@@ -7,7 +7,7 @@ related:
   - follow-tool-vite
   - deploy-to-cloudflare
   - run-dev
-  - ship
+  - ship-to-dev-branch
 
 ---
 
@@ -31,9 +31,10 @@ related:
 
 > Goal: project เป็น TanStack Start (SolidJS) ที่ build ได้ก่อนเพิ่ม Nitro
 
-1. ทำ `/follow-create-solid-tanstack` ถ้ายังไม่มี project — หรือตรวจว่า `vite.config.ts` มี `tanstackStart()` อยู่แล้ว
-2. รัน `bun run build` ให้ผ่านก่อน — แก้ error ของ base build ก่อนเพิ่ม Nitro
-3. ยืนยัน SSR/streaming และ server functions ทำงานใน `bun run dev`
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชัน `nitro`/`nitropack` และ preset `bun` ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
+2. ทำ `/follow-create-solid-tanstack` ถ้ายังไม่มี project — หรือตรวจว่า `vite.config.ts` มี `tanstackStart()` อยู่แล้ว
+3. รัน `bun run build` ให้ผ่านก่อน — แก้ error ของ base build ก่อนเพิ่ม Nitro
+4. ยืนยัน SSR/streaming และ server functions ทำงานใน `bun run dev`
 
 ### 2. Install And Configure Nitro
 
@@ -84,7 +85,7 @@ related:
 1. Self-host/VPS → copy `.output/` ทั้งโฟลเดอร์แล้ว `bun server/index.mjs` (ต้องมี Bun บน target, เวอร์ชันใกล้กับ dev)
 2. Container → `FROM oven/bun` + copy `.output/` + `CMD ["bun", "server/index.mjs"]`
 3. Platform อื่น → เปลี่ยนเฉพาะ preset (`node-server`, `cloudflare-module`, `vercel` ฯลฯ) แล้วทำ `/deploy-to-cloudflare` หรือ deploy skill ของ platform นั้น
-4. ทำ `/ship` เมื่อ production ตอบถูก
+4. ทำ `/ship-to-dev-branch` เมื่อ production ตอบถูก
 
 ## Rules
 
@@ -119,4 +120,4 @@ related:
 - `bun run build` ผลิต `.output/server/index.mjs` + `.output/public/`
 - `bun .output/server/index.mjs` serve SSR, server functions และ server routes ครบใน production mode
 - `.output/` พร้อมย้ายไป target ที่มี Bun โดยไม่ต้องติดตั้ง dependencies เพิ่ม
-- Deploy สำเร็จผ่าน `/ship`
+- Deploy สำเร็จผ่าน `/ship-to-dev-branch`

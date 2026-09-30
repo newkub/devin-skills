@@ -15,9 +15,9 @@ allowed-tools:
 related:
   - follow-create-mcp
   - update-devin
-  - review-dependencies
+  - deep-review
   - deep-validate
-  - ship
+  - ship-to-dev-branch
 ---
 
 ## Goal
@@ -39,8 +39,8 @@ related:
 
 > Goal: ตรวจ tech stack และสรุป scope
 
-1. ทำ `/review-dependencies` เพื่อดู tech stack ปัจจุบัน
-2. ทำ `/review-dependencies` เพื่อ review dependencies
+1. ทำ `/deep-review` เพื่อดู tech stack ปัจจุบัน
+2. ทำ `/deep-review` เพื่อ review dependencies
 3. บันทึกชื่อ server, transport, tools/resources ทีต้องการ
 
 ### 2. Create MCP Server
@@ -73,7 +73,7 @@ related:
 > Goal: ส่งมอบ
 
 1. ทำ `/deep-validate` กับทั้ง project และ skill repo
-2. ทำ `/ship` สำหรับ server project
+2. ทำ `/ship-to-dev-branch` สำหรับ server project
 3. รายงานชื่อ server, command, และสถานะ register
 
 ## Rules
@@ -101,4 +101,4 @@ related:
 - Server ถูก register ใน `%APPDATA%\devin\mcp_config.json`
 - `mcp_list_servers` แสดง server และ `mcp_call_tool` สามารถ list tools ได้
 - มี backup ของ global mcp config
-- ผ่าน `/deep-validate` และ `/ship`
+- ผ่าน `/deep-validate` และ `/ship-to-dev-branch`

@@ -8,7 +8,7 @@ related:
   - follow-create-plugins
   - create-cloudflare
   - setup-cicd
-  - setup-package
+  - update-project
   - write-how-to
   - update-docs
 
@@ -23,7 +23,7 @@ related:
 - Web templates (landing, saas, paas) สำหรับ `/follow-create-web`
 - TUI templates (`/follow-create-tui-ratatui`) แบบ Ratatui
 - CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
-- Package setup templates สำหรับ `/setup-package`
+- Package setup templates สำหรับ `/update-project` `### setup-package`
 - Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)
 - Cloudflare templates สำหรับ `/create-cloudflare-worker`
 
@@ -49,7 +49,7 @@ related:
 
 > Goal: ยืนยันว่า template ใช้งานได้
 
-1. รัน `/review-dependencies`
+1. รัน `/deep-review`
 2. รัน `/report-config-files`
 3. รัน `/review-devin-global-harness`
 

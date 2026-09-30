@@ -5,7 +5,6 @@ argument-hint: "[workspace]"
 related:
   - update-usage-md
   - ask-me
-  - suggest-me
   - choose-and-apply
   - report
   - suggest-next-action
@@ -23,7 +22,7 @@ related:
 
 - คุยและร่างในแชทเท่านั้น — `ห้ามสร้างไฟล์ใดๆ` (ไม่มี temp file, ไม่แตะ workspace) จนกว่า user confirm
 - โครงเนื้อหาตามมาตรฐาน `/update-usage-md` — code เป็น source of truth
-- เริ่มจาก `/ask-me` และ `/suggest-me` เพื่อเข้าใจความต้องการเสมอ
+- เริ่มจาก `/ask-me` และ `/suggest-next-action` เพื่อเข้าใจความต้องการเสมอ
 - ไม่ commit — ต้อง user confirm ก่อนส่งต่อเขียนจริง
 
 ## Execute
@@ -32,7 +31,7 @@ related:
 
 > Goal: เข้าใจว่า USAGE doc ต้อง cover อะไร
 
-1. ทำ `/suggest-me` ดูตัวเลือกทั่วไปสำหรับ usage docs (library API / CLI / service / internal tool)
+1. ทำ `/suggest-next-action` ดูตัวเลือกทั่วไปสำหรับ usage docs (library API / CLI / service / internal tool)
 2. ทำ `/ask-me` ถาม: audience (dev/ops/end-user), depth (quick-start vs full reference), sections พิเศษที่ต้องการ
 3. สรุป requirements ด้วย `/report table` คอลัมน์: `No.`, `Requirement`, `Priority`
 
@@ -66,7 +65,7 @@ related:
 ## Rules
 
 - คุยและร่างในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ จนกว่า user confirm
-- เริ่มด้วย `/ask-me` และ `/suggest-me` เสมอ
+- เริ่มด้วย `/ask-me` และ `/suggest-next-action` เสมอ
 - code เป็น source of truth — ห้ามเขียน API/commands ที่ไม่มีใน code (ยกเว้น user ระบุเป็น planned feature และ mark ชัด)
 - ไม่ commit/push โดยอัตโนมัติ
 - ใช้ `/update-docs` ถ้าจำเป็น

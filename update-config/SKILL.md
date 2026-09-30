@@ -3,7 +3,7 @@ name: update-config
 description: อัปเดต project config ให้ครบถ้วน สอดคล้อง ลด duplication โดยใช้ shared config/dependencies catalog
 argument-hint: "[path]"
 related:
-  - review-config
+  - deep-review
   - report-config-files
   - follow-devin-global-skills
   - follow-tool-mise
@@ -25,7 +25,7 @@ related:
 
 - ใช้กับ root project หรือ workspace ใดๆ
 - ครอบคลุม package manifest, tool configs, monorepo setup, CI/CD, editor, env, git
-- เรียก `/review-config` ก่อนเพื่อดู findings
+- เรียก `/deep-review` ก่อนเพื่อดู findings
 - ถ้า monorepo → ใช้ `/follow-tool-moonrepo`
 
 ## Execute
@@ -34,7 +34,7 @@ related:
 
 > Goal: รู้สภาพ config ปัจจุบัน
 
-1. ทำ `/review-config` เพื่อดู findings
+1. ทำ `/deep-review` เพื่อดู findings
 2. บันทึก priority list จาก severity
 3. ระบุ config ที่ต้องสร้าง ลบ หรือ refactor
 4. ถ้า project ยังไม่มี `.devin/rules` หรือ `AGENTS.md` → ทำ `/update-dot-devin` และ `/update-agents-md`
@@ -168,20 +168,20 @@ related:
 3. ทำ `/report-config-files` อีกครั้งเพื่อ verify
 4. ทำ `/report` สรุป changes
 
-### Subskills
+### Workflows
 
-> Goal: dispatch config domain เฉพาะทางไปยัง subskill ที่ละเอียดกว่า
+> Goal: dispatch config domain เฉพาะทางไปยัง workflow ที่ละเอียดกว่า
 
-| Topic | Subskill |
+| Topic | Workflow |
 |-------|----------|
-| อัปเดต env config — diff current vs needed, apply, verify | `subskills/config-env/SKILL.md` |
-| รวม duplicate config/dependencies ไป shared config หรือ catalog | `subskills/update-shared-config/SKILL.md` |
+| อัปเดต env config — diff current vs needed, apply, verify | `workflows/config-env/SKILL.md` |
+| รวม duplicate config/dependencies ไป shared config หรือ catalog | `workflows/update-shared-config/SKILL.md` |
 
 ## Rules
 
 ### 1. Review First
 
-- ต้องทำ `/review-config` ก่อน update
+- ต้องทำ `/deep-review` ก่อน update
 - ไม่แก้ไขก่อนมี findings และ priority
 - ถ้า project ใหญ่หรือ monorepo ซับซ้อน → ใช้ `/update-devin-global-subagents`
 
@@ -211,6 +211,122 @@ related:
 
 - ใช้ /update-project ถ้าจำเป็น
 - ใช้ /report-idea-cleanup-files-in-computer ถ้าจำเป็น
+
+## Merged Details
+
+### config-env
+
+##### Goal
+
+อัปเดต env configuration ของ project — diff ระหว่าง vars ที่มีกับที่ code ต้องการ, apply เฉพาะ keys ที่จำเป็น, verify ว่า app ยังรันได้ — ไม่ clobber values เดิม
+
+##### Scope
+
+- ใช้เมื่อต้องเพิ่ม/แก้/ลบ env vars หรือ sync `.env.example` กับ code
+- ครอบคลุม: `.env`, `.env.local`, `.env.<mode>`, `.env.example`, env validation schema
+- สำหรับ audit patterns/conventions → `follow-config/workflows/config-env/SKILL.md`
+
+##### Execute
+
+###### 1. Diff Current Vs Needed
+
+> Goal: รู้ว่าขาด/เกิน/เปลี่ยน key ไหน
+
+1. ทำ `/check-secrets env-vars` — vars ที่ code อ่าน (`process.env.*`, `import.meta.env.*` ตาม stack) เทียบกับที่ define
+2. อ่าน env files ปัจจุบันและ `.env.example` — list keys ทั้งหมด
+3. สร้าง diff: missing keys (code ใช้แต่ไม่มี), stale keys (มีแต่ code ไม่ใช้), keys ที่ต้องเปลี่ยนค่า/format
+4. ทำ `/check-config-drift` report-drift workflow ถ้าต้องดู drift ข้าม environments/workspaces
+
+###### 2. Apply Changes
+
+> Goal: แก้เฉพาะ keys ที่จำเป็น
+
+1. เพิ่ม missing keys ใน `.env.example` พร้อม placeholder + comment ว่าใช้ทำอะไร
+2. อัปเดต validation schema (ถ้ามี) ให้ครอบคลุม keys ใหม่ — required/optional, types, defaults
+3. ถาม user ก่อนลบ stale keys — อาจใช้ใน environment อื่นหรือ runtime ภายนอก
+4. secrets/ค่าจริง → `/follow-secret-manager` — ห้ามใส่ในไฟล์ที่ commit; local `.env` แก้ได้แต่ห้าม commit
+
+###### 3. Verify
+
+> Goal: app รันได้กับ env ใหม่
+
+1. รัน dev/build — startup validation ผ่าน ไม่มี missing var crash
+2. ทดสอบ path ที่ใช้ vars ใหม่ — smoke test เฉพาะจุดที่แก้
+3. ทำ `/check-secrets secrets-leak` — ยืนยันไม่มี secrets ใน git-tracked files
+4. `git status` ยืนยัน `.env` ไม่ถูก stage — commit เฉพาะ `.env.example`/schema
+
+##### Rules
+
+- merge เฉพาะ keys ที่เปลี่ยน — ห้าม rewrite ทั้งไฟล์ env ถ้าไม่จำเป็น
+- ห้าม commit `.env`/`.env.local` หรือค่าจริง — commit เฉพาะ example/schema/code
+- ห้ามลบ keys โดยไม่ confirm — stale ใน repo นี้อาจ required ใน environment อื่น
+- prefix conventions ต้องถูก — public vars ตาม framework (`NEXT_PUBLIC_*`, `VITE_*`)
+- ถ้าพบ secret ที่ commit ไปแล้ว → แจ้ง user ต้อง rotate ไม่ใช่แค่แก้ไฟล์
+
+##### Expected Outcome
+
+- env files ตรงกับ vars ที่ code ใช้ — ไม่มี missing/stale ที่ไม่ได้ตั้งใจ
+- `.env.example` และ validation schema sync กัน
+- verify ผ่าน — app รันได้ ไม่มี secrets leak
+
+### update-shared-config
+
+##### Goal
+
+รวม tool config และ dependency versions ที่ซ้ำกันข้าม workspaces ไปไว้ที่ shared config หรือ catalog จุดเดียว — หนึ่ง fact หนึ่ง source — แล้วให้แต่ละ workspace อ้างอิงกลับผ่าน `extends`/`catalog:`
+
+##### Scope
+
+- ใช้เมื่อ config เดียวกัน (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) ถูก duplicate ใน 2+ workspaces
+- ใช้เมื่อ dependency version เดียวกันกระจายใน package manifests หลายตัว
+- สำหรับ shared code (utils, types, components) ที่ duplicate ข้าม packages → `/refactor-to-packages-shared` แทน
+- สำหรับ env vars → `workflows/config-env/SKILL.md` แทน
+
+##### Execute
+
+###### 1. Find Duplicate Config
+
+> Goal: รู้ว่า config ไหนซ้ำจริงและคุ้มรวม
+
+1. ทำ `/check-config-drift` — หา config ที่ซ้ำหรือ drift ข้าม workspaces
+2. เทียบ config ต่อ domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
+3. เทียบ dependency versions ข้าม package manifests — หา version drift และ duplicates
+4. เก็บ candidates เฉพาะที่ซ้ำจริงใน 2+ workspaces — ห้ามรวมเผื่อ
+
+###### 2. Extract To Shared
+
+> Goal: config หลักอยู่จุดเดียว workspaces อ้างกลับ
+
+1. สร้าง/อัปเดต root shared config ตาม ecosystem:
+   - `tsconfig.base.json` → workspaces `extends`
+   - `eslint.config.js` flat config ที่ root → workspaces import/extend
+   - `prettier.config.*` ที่ root → อ้างผ่าน `package.json#prettier`
+   - test/build config → `defineConfig` จาก shared
+2. ย้าย dependency versions ที่ซ้ำไป catalog ตาม package manager (`pnpm-workspace.yaml` catalogs, `bun.catalogs`, หรือ root `overrides`)
+3. แทนที่ version ใน package manifests ด้วย `catalog:` reference
+4. ถ้างานนี้มี shared code duplication ปน → dispatch `/refactor-to-packages-shared` สำหรับส่วน code
+
+###### 3. Rewire And Verify
+
+> Goal: ทุก workspace ใช้ shared config จริงและไม่พัง
+
+1. ทำ `/update-references` — ลบ config ลูกที่ duplicate, เก็บเฉพาะ workspace-specific overrides
+2. รัน validate ตาม ecosystem: `tsc -b`, `eslint .`, `prettier --check .`, install ใหม่เพื่อ resolve catalog
+3. ทำ `/check-config-drift` อีกครั้ง — ยืนยันว่าเหลือ canonical config เดียวต่อ domain
+4. ถ้า fail → revert batch นั้นแล้วแก้ สูงสุด 3 รอบ → stop/report
+
+##### Rules
+
+- รวมเฉพาะ config ที่ซ้ำจริง — workspace-specific options อยู่ที่ workspace เดิม
+- shared config ห้ามพึ่ง workspace ใดๆ — เป็น foundation เท่านั้น
+- behavior เหมือนเดิม — resolved config หลัง extends ต้องเท่าเดิม (ยกเว้น drift ที่ตั้งใจ unify)
+- lockfile ต้อง regenerate หลังย้าย deps ไป catalog — commit lockfile ด้วย
+
+##### Expected Outcome
+
+- config แต่ละ domain มี canonical version เดียวที่ root — workspaces แค่ extends/override
+- dependency versions อยู่ใน catalog — manifests ใช้ `catalog:` ไม่ pin ซ้ำ
+- validate ผ่านทุก workspace — ไม่มี config drift เหลือ
 
 ## Expected Outcome
 

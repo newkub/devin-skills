@@ -10,14 +10,13 @@ related:
   - use-bun-native-api
   - list-my-npm-packages
   - use-my-packages-on-registry
-  - ship
+  - ship-to-dev-branch
   - ask-me
-  - watch-release
   - follow-tool-release-it
   - follow-tool-semantic-release
   - follow-tool-changelogen
   - follow-tool-changesets
-  - review-api
+  - deep-review
 ---
 
 ## Goal
@@ -133,13 +132,12 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
-- ใช้ /watch-release ถ้าจำเป็น
+- ใช้ /ship-to-dev-branch ถ้าจำเป็น
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น (package to registry)
 - ใช้ /follow-tool-changelogen ถ้าจำเป็น
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /review-api ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 

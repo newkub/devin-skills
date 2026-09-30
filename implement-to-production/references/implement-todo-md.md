@@ -66,7 +66,7 @@
 
 1. ทำ `/deep-validate` เพื่อตรวจ references และ structure
 2. ทำ `/run-verify` ถ้ามี
-3. ทำ `/ship`
+3. ทำ `/ship-to-dev-branch`
 4. ใช้ `/report` สรุป tasks ทั้งหมด
 
 ## Rules

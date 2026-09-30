@@ -4,7 +4,6 @@ description: สร้าง health scorecard ของ devin global skills repo
 argument-hint: "[path]"
 related:
   - review-devin-global-harness
-  - review-devin-global-harness
   - check-uncommit
   - check-unpush
   - check-git-logs

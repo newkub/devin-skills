@@ -6,10 +6,8 @@ related:
   - idea
   - idea-improve
   - review
-  - review-gaps
   - deep-review
   - report
-  - then-apply
   - suggest-next-action
 ---
 
@@ -56,7 +54,7 @@ related:
 1. จัดอันดับตาม severity ของ finding ต้นทาง + impact/effort
 2. ทำ `/report table` columns: `No.`, `Idea`, `Type`, `Source Finding`, `Severity`, `Impact`, `Effort`, `Fix Skill`
 3. แยก quick wins (High impact / Low effort) ออกมาชัดเจน
-4. ทำ `/suggest-next-action` — idea ที่ confirm ส่งต่อผ่าน `/then-apply` ไป `review-*` `## Fix` หรือ `/deep-review-then-fix`
+4. ทำ `/suggest-next-action` — idea ที่ confirm ส่งต่อผ่าน `/follow-your-suggestion` ไป `## Fix` ของ domain ใน `/deep-review` (`## Review Domains`) หรือ `/deep-review-then-fix`
 
 ## Rules
 
@@ -68,12 +66,12 @@ related:
 ### 2. Ideas Not Fixes
 
 - skill นี้ produce ideas เท่านั้น — ไม่แก้ไข, ไม่ dispatch fix โดยไม่ confirm
-- confirmed ideas → `/deep-review-then-fix` (multi-domain) หรือ `## Fix` ของ `review-*` ตรง domain
+- confirmed ideas → `/deep-review-then-fix` (multi-domain) หรือ `## Fix` ของ domain ตรงกันใน `/deep-review` (`## Review Domains`)
 
 ### 3. No Duplicate Review
 
 - ไม่ run review ซ้ำ — ใช้ findings ที่มี; ถ้าขาด coverage ให้แนะนำ review skill ที่ตรง
-- ใช้ `/review-gaps` ถ้าจำเป็น
+- ใช้ `/deep-review` ถ้าจำเป็น
 
 
 ## Expected Outcome

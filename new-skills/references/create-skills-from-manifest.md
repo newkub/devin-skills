@@ -50,7 +50,7 @@
 > Goal: Validate And Finalize
 
 1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
-2. ใช้ `/review-writing` สำหรับทุกไฟล์
+2. ใช้ `/deep-review` สำหรับทุกไฟล์
 3. ตรวจสอบ folder structure ถูกต้อง
 4. ใช้ `/update-references` หากมี file operations
 

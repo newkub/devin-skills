@@ -9,7 +9,7 @@ related:
   - report-flow
   - report-architecture-diagram
   - use-scripts
-  - ship
+  - ship-to-dev-branch
   - open-files-in-web
   - report-workspace-graph
 
@@ -109,7 +109,7 @@ related:
 - ใช้ /draw-excalidraw ถ้าจำเป็น
 - ใช้ /draw-tldraw ถ้าจำเป็น
 - ใช้ /report-flow ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-to-dev-branch ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 
 ## Expected Outcome

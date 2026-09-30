@@ -22,7 +22,7 @@ related:
 
 ใช้เมื่อสร้าง/แก้ skills, docs, config, หรือ data ที่มีโอกาสซ้ำซ้อน:
 
-- skill content — canonical catalog/dispatch table อยู่ที่เดียว (เช่น `../shared/review-skills.md`)
+- skill content — canonical catalog/dispatch table อยู่ที่เดียว (เช่น `deep-review/SKILL.md`)
 - config values — define ที่เดียวแล้ว inject/import (env, tokens, versions)
 - docs — facts ที่เปลี่ยนบ่อย (counts, versions, commands) มี source เดียว
 - data/schema — model definition เดียว derive types/forms/validation

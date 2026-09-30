@@ -3,7 +3,7 @@ name: analyze-attack-surface
 description: วิเคราะห์ attack surface และ exposed endpoints ของระบบ
 argument-hint: "[app-url|repo-path]"
 related:
-  - review-security
+  - deep-review
   - check-secrets
   - report-uxui-all-routes
 
@@ -63,7 +63,7 @@ related:
 - แยก internal vs external exposure
 - ระบุ trust boundaries
 
-- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 ## Expected Outcome
 - attack surface list พร้อม severity

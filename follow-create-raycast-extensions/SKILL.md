@@ -4,7 +4,7 @@ description: สร้าง Raycast Extensions ด้วย TypeScript, React �
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - review-dependencies
+  - deep-review
   - follow-tool-vite
 
 ---
@@ -16,7 +16,7 @@ related:
 
 ใช้สำหรับสร้าง Raycast Extensions บน macOS ด้วย TypeScript, React และ Raycast API
 
-- Latest: `@raycast/api@2.5.2` / `@raycast/utils@2.3.2` (verified 2026-09-26) — extensions รันบน Node 22 + React 19
+- Packages: `@raycast/api` 2.x (requires Node >= 22 + React 19 — migrate ด้วย `bunx ray migrate`), `@raycast/utils` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -24,8 +24,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create raycast extensions)
+1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create raycast extensions)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create raycast extensions)
 
 ### 2. Setup Environment
@@ -41,7 +41,7 @@ related:
 > Goal: สร้าง extension project ด้วย CLI
 
 1. ใช้ `Create Extension` command ใน Raycast (แนะนำ) หรือ scaffold จาก terminal ด้วย `bun create raycast-extension -t {template}` (`npm init raycast-extension`)
-2. เลือก template: `detail`, `form`, `list`, `menu-bar`, `no-view`, หรือ `ai` (tools) — ดู [references/raycast-resources.md](references/raycast-resources.md)
+2. เลือก template: `detail`, `form`, `list`, `menu-bar`, `no-view`, หรือ `ai` (tools) — docs/api/examples ที่ developers.raycast.com
 3. ย้าย project เข้า `desktop-apps/raycast-extensions/{extension-name}/`
 4. ตรวจสอบโครงสร้าง: `package.json`, `src/`, `tsconfig.json`
 

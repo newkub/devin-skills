@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
-- Boundary: ใช้ tsdown เมื่อ bundle library (publish ไป registry) — app bundling/dev server ใช้ `/follow-tool-vite`; raw bundler tuning ใช้ `/follow-tool-rolldown`; alternative library bundler ดู `/follow-tool-bunup`; migrate จาก `tsup` ดู `subskills/migrate-from-tsup`
+- Boundary: ใช้ tsdown เมื่อ bundle library (publish ไป registry) — app bundling/dev server ใช้ `/follow-tool-vite`; raw bundler tuning ใช้ `/follow-tool-rolldown`; alternative library bundler ดู `/follow-tool-bunup`; migrate จาก `tsup` ดู `workflows/migrate-from-tsup`
 - Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 | ^24.11.0 | >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
 
 ## Execute
@@ -81,11 +81,11 @@ related:
 3. ทดสอบ import output ใน project อื่น
 4. ทำ `/follow-test` เพื่อรัน tests หลัง build
 
-### Subskills
+### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `subskills/setup-tsdown/SKILL.md` | migrate จาก tsup | `subskills/migrate-from-tsup/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` | migrate จาก tsup | `workflows/migrate-from-tsup/SKILL.md` 
 ## Rules
 
 ### 1. Installation

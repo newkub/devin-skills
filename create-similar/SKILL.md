@@ -4,7 +4,7 @@ description: สร้างไฟล์ skill หรือ project ใหม่
 argument-hint: "[scope]"
 related:
   - update-devin-global-skills
-  - review-code-quality
+  - deep-review
   - use-related-skills
   - edit-by-use-scripts
   - deep-validate
@@ -94,7 +94,7 @@ related:
 - ถ้าสร้าง skill ใหม่ → อัปเดต `AGENTS.md`
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (similar)
-- ใช้ /review-code-quality ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /use-related-skills ถ้าจำเป็น
 - ใช้ /edit-by-use-scripts ถ้าจำเป็น
 

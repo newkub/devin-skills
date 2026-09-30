@@ -36,7 +36,7 @@
 
 1. ใช้ `/report`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
 2. รายงาน top surviving mutants พร้อม suggested test cases
-3. แนะนำ `/review-test` สำหรับ files ที่ score ต่ำ
+3. แนะนำ `/deep-review` สำหรับ files ที่ score ต่ำ
 
 ## Rules
 

@@ -6,7 +6,7 @@ related:
   - use-bun-native-api
   - follow-create-bun-cli
   - follow-tool-bunup
-  - review-dependencies
+  - deep-review
   - follow-create-plugins
 
 ---
@@ -26,7 +26,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ `Bun.plugin` API ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ `Bun.plugin` API ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun plugins)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun plugins)
 
@@ -121,7 +121,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -11,10 +11,8 @@ related:
   - watch-browser-and-fix
   - deep-analyze
   - report
-  - then-apply
   - enhance-prompt
   - think-reframe
-  - suggest-me
 
 ---
 
@@ -29,7 +27,7 @@ related:
 - ครอบคลุมมิติ: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์ ไม่ implement
-- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/review-uxui` หรือ `/deep-review`
+- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/deep-review` (domain `review-uxui`)
 - ถ้าต้องการ implement → ส่งต่อ `/implement-features-to-mvp`
 
 ## Execute
@@ -41,7 +39,7 @@ related:
 1. รับ `<topic-or-url>` จาก argument หรือ conversation context
 2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ — ดู routes, components, design system ที่มี
 3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/deep-review` หรือ `/report-uxui` ก่อนคิดไอเดีย
-4. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
+4. ถ้า topic ไม่ชัด → ใช้ `/suggest-next-action` ถาม user
 
 ### 2. Generate Ideas
 
@@ -58,7 +56,7 @@ related:
 
 1. จัดลำดับตาม MVP score สูง → ต่ำ
 2. สร้าง markdown tables ด้วย `/report table`
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 4. สรุป top 3-5 ideas สั้นๆ ด้วย bullets
 5. ระบุ phase: quick win, short-term, long-term
 
@@ -70,13 +68,13 @@ related:
 2. แสดง tables ในแชท
 3. บอกว่าเป็นไอเดียสำหรับพิจารณา
 4. ถ้าต้องการ implement → แนะนำ `/implement-features-to-mvp`
-5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
+5. ถ้าต้องการถามต่อ → ใช้ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Chat Only
 
-- ตอบกลับในแชทเท่านั้น — ไม่สร้างไฟล์ใน `.devin/temp/report/` หรือ `.devin/temp/plan/` ไม่สร้าง web app ถาวร ไม่เรียก `/ship`
+- ตอบกลับในแชทเท่านั้น — ไม่สร้างไฟล์ใน `.devin/temp/report/` หรือ `.devin/temp/plan/` ไม่สร้าง web app ถาวร ไม่เรียก `/ship-to-dev-branch`
 
 ### 2. Lightweight
 

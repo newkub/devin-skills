@@ -4,8 +4,7 @@ description: หาสิ่งที่ improve ใน scope รวม findings
 argument-hint: "[scope]"
 related:
   - simplify
-  - review-gaps
-  - review-issue
+  - deep-review
   - review
   - report
   - suggest-next-action
@@ -18,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไร" — เป็น thin entry point ที่ delegate การ review ไป `/review-gaps` ไม่ทำ review เองและไม่แก้ไขโดยตรง
+ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไร" — เป็น thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 ## Execute
 
@@ -27,8 +26,8 @@ related:
 > Goal: ได้ prioritized improvement list
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/review-issue` เพื่อรวบรวม findings ของ issue
-3. ทำ `/review-gaps` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `../shared/dimension-map.md` ของ `/review-gaps` สแกนกว้างก่อน
+2. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/deep-review` เพื่อรวบรวม findings ของ issue
+3. ทำ `/deep-review` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `deep-review/SKILL.md` ของ `/deep-review` สแกนกว้างก่อน
 4. รวบรวม prioritized list พร้อม severity และ evidence
 
 ### 2. Present And Confirm
@@ -47,12 +46,12 @@ related:
 
 ## Rules
 
-- ไม่ทำ review เอง — delegate ไป `/review-gaps` หรือ `/review-issue` ถ้าเป้น issue
+- ไม่ทำ review เอง — delegate ไป `/deep-review` หรือ `/deep-review` ถ้าเป้น issue
 - ไม่แก้ไขโดยไม่ได้ user confirm
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
-- Prioritized improvement list จาก `/review-gaps` หรือ `/review-issue` ถ้าเป้น issue
+- Prioritized improvement list จาก `/deep-review` หรือ `/deep-review` ถ้าเป้น issue
 - User เลือกสิ่งที่จะแก้
 - Findings ที่ confirm ถูกส่งไปแก้ที่ `## Fix` ของ `review-*` ที่ถูกต้อง

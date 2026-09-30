@@ -22,12 +22,12 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ที่ตรง topic
+> Goal: dispatch ไปยัง workflow ที่ตรง topic
 
-| Topic | Subskill |-------|----------| config | `subskills/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+| Topic | Workflow |-------|----------| config | `workflows/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating 
+1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Ensure Semgrep Available

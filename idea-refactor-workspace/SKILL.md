@@ -6,7 +6,6 @@ related:
   - refactor-workspace
   - follow-single-responsibility
   - report
-  - then-apply
   - report-file-structure
   - report-before-after
   - suggest-next-action
@@ -32,8 +31,8 @@ related:
 2. ทำ `/report-file-structure` เพื่อสแกนโครงสร้างไฟล์, สถิติ, และปัญหาเกี่ยวกับ organization
 3. ทำ `/report-before-after` ใน mode `before` เพื่อบันทึก baseline ก่อน refactor
 4. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
-5. ทำ `/check-repo-hygiene circular-dependencies` เพื่อหา circular dependencies ระหว่าง workspaces
-6. ทำ `/check-files long-files` และ `/review-code-quality` เพื่อหา code smells
+5. ทำ `/follow-tool-madge` เพื่อหา circular dependencies ระหว่าง workspaces
+6. ทำ `/check-files long-files` และ `/deep-review` เพื่อหา code smells
 7. ระบุ workspaces ที่มีหลาย reasons to change, coupling สูง หรือ cohesion ต่ำ
 
 ### 2. Decompose Responsibilities
@@ -73,7 +72,7 @@ related:
    - `Impact`
    - `Effort`
    - `Risk`
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 5. ระบุ Top 3 ไอเดียทีควรทำก่อน
 
 ### 5. Propose Execution
@@ -96,7 +95,7 @@ related:
 
 ### 2. Evidence Based
 
-- ทุกไอเดียต้องมาจาก `/deep-analyze`, `/list-workspaces`, หรือ `/review-code-quality`
+- ทุกไอเดียต้องมาจาก `/deep-analyze`, `/list-workspaces`, หรือ `/deep-review`
 - ระบุ file, workspace, หรือ dependency ทีเกี่ยวข้อง
 - ไม่เสนอไอเดีย generic ทีไม่มีพื้นฐานจากข้อมูลจริง
 

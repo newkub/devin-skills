@@ -1,9 +1,8 @@
 ---
 name: check-files
-description: ตรวจ file hygiene — encoding, locks, length, paths, permissions และ structure ผ่าน subskills
+description: ตรวจ file hygiene — encoding, locks, length, paths, permissions และ structure ผ่าน workflows
 argument-hint: "[domain]"
 related:
-  - check-repo-hygiene
   - check-system-env
   - report
   - ask-me
@@ -12,7 +11,7 @@ related:
 
 ## Goal
 
-Dispatch ไป subskill ตาม domain ของ file hygiene check — parent ทำ routing เท่านั้น ไม่ duplicate logic ของ subskill
+Dispatch ไป workflow ตาม domain ของ file hygiene check — parent ทำ routing เท่านั้น ไม่ duplicate logic ของ workflow
 
 ## Scope
 
@@ -20,30 +19,30 @@ Dispatch ไป subskill ตาม domain ของ file hygiene check — paren
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Domain | Subskill |
+| Domain | Workflow |
 |---|---|
-| `encoding` | `subskills/encoding/SKILL.md` — file encodings, BOM, mixed line endings |
-| `locks` | `subskills/locks/SKILL.md` — lockfile consistency ทุก package manager |
-| `long-files` | `subskills/long-files/SKILL.md` — ไฟล์เกิน line limit |
-| `path-length` | `subskills/path-length/SKILL.md` — path ยาวเกิน OS limit |
-| `permissions` | `subskills/permissions/SKILL.md` — file permissions/exec bits |
-| `structure` | `subskills/structure/SKILL.md` — file/folder structure และ naming |
+| `encoding` | `workflows/encoding/SKILL.md` — file encodings, BOM, mixed line endings |
+| `locks` | `workflows/locks/SKILL.md` — lockfile consistency ทุก package manager |
+| `long-files` | `workflows/long-files/SKILL.md` — ไฟล์เกิน line limit |
+| `path-length` | `workflows/path-length/SKILL.md` — path ยาวเกิน OS limit |
+| `permissions` | `workflows/permissions/SKILL.md` — file permissions/exec bits |
+| `structure` | `workflows/structure/SKILL.md` — file/folder structure และ naming |
 
 1. ระบุ domain จาก argument (เช่น `/check-files encoding`)
-2. ถ้า domain รองรับ → ทำตาม `subskills/<domain>/SKILL.md` ทั้ง flow
+2. ถ้า domain รองรับ → ทำตาม `workflows/<domain>/SKILL.md` ทั้ง flow
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ subskill
-- ทุก reference path ต้องอยู่ใต้ `subskills/<domain>/`
+- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ workflow
+- ทุก reference path ต้องอยู่ใต้ `workflows/<domain>/`
 
-- ใช้ /check-repo-hygiene ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น (repo essentials audit)
 - ใช้ /check-system-env ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป subskill ที่ตรง domain แล้วทำ file check ตาม flow นั้น
+- caller ถูก dispatch ไป workflow ที่ตรง domain แล้วทำ file check ตาม flow นั้น

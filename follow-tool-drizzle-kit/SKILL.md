@@ -24,11 +24,11 @@ related:
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
-### 1. Pick Subskill
+### 1. Pick Workflow
 
-> Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
+> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
 
-| Topic | Subskill |-------|----------| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `subskills/config-drizzle-kit/SKILL.md` | generate/push/migrate commands, workflow, rollback | `subskills/migrate-schema/SKILL.md` 
+| Topic | Workflow |-------|----------| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `workflows/config-drizzle-kit/SKILL.md` | generate/push/migrate commands, workflow, rollback | `workflows/migrate-schema/SKILL.md` 
 ### 2. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

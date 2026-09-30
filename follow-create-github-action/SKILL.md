@@ -10,7 +10,7 @@ related:
   - follow-release
   - follow-tool-github-actions
   - run-test
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -30,7 +30,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `@actions/*` และ `runs.using` runtime ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `@actions/*` และ `runs.using` runtime ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
 
@@ -95,7 +95,7 @@ related:
 1. สร้าง git tag `v1.0.0`
 2. ย้าย major tag `v1` ไป commit ล่าสุด
 3. สร้าง GitHub release พร้อม release notes
-4. ทำ `/ship`
+4. ทำ `/ship-to-dev-branch`
 
 ## Rules
 

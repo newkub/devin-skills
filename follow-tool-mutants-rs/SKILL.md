@@ -27,12 +27,12 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ที่ตรง topic
+> Goal: dispatch ไปยัง workflow ที่ตรง topic
 
-| Topic | Subskill |-------|----------| setup | `subskills/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run | optimize | `subskills/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
+| Topic | Workflow |-------|----------| setup | `workflows/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run | optimize | `workflows/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration 
+1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
 ### 1. Installation

@@ -4,7 +4,7 @@ description: สร้างรายงาน database schema, tables, columns,
 argument-hint: "[path]"
 related:
   - create-mermaid-diagram
-  - review-database
+  - deep-review
   - report
   - search
   - run-drizzle-studio
@@ -76,7 +76,7 @@ related:
 - รวมทุก table และ relation ไม่ตัดทอน
 - ถ้า schema ใหญ่ → แบ่ง report ตาม domain พร้อม index
 
-- ใช้ /review-database ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /create-mermaid-diagram ถ้าจำเป็น
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
 - alias stub: `/report-schema` — forward มาที่ skill นี้

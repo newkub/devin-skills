@@ -27,7 +27,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ใช้เมื่อต้องการ exploratory/functional testing ผ่าน browser จริงโดยครอบคลุมทุก route — ต่างจาก `/run-test` (e2e) ที่รัน test suite เขียนไว้ล่วงหน้า (skill นี้คือ manual-style exploration ผ่าน subagents)
 
-- ถ้าต้องการ review/improve UX/UI ทุก route → `/review-uxui`
+- ถ้าต้องการ review/improve UX/UI ทุก route → `/deep-review` (domain `review-uxui`)
 - ถ้าต้องการแก้ console/page errors → `/watch-browser-and-fix`
 - ถ้ามี Playwright suite อยู่แล้ว → `/run-test` (e2e)
 - ถ้าไม่มี `agent-browser` MCP server → fallback ไป `/use-agent-browser` (CLI)
@@ -99,20 +99,20 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 > Goal: ส่งมอบผล test
 
-1. ทำตาม `subskills/report-status/SKILL.md` — scenarios pass/fail, failure evidence, flaky signals
+1. ทำตาม `workflows/report-status/SKILL.md` — scenarios pass/fail, failure evidence, flaky signals
 2. persist raw exploratory results → `.devin/temp/report/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
 3. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
 4. ปิด browser session ด้วย `agent-browser close`
 5. ทำ `/suggest-next-action`
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `status` | `subskills/report-status/SKILL.md` — test watch report (pass/fail, flaky, verdict) |
+| `report`, `status` | `workflows/report-status/SKILL.md` — test watch report (pass/fail, flaky, verdict) |
 
-1. ถ้า argument เป็น `report`/`status` → อ่าน `subskills/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
-2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 8 อ่าน subskill `report-status` มา execute
+1. ถ้า argument เป็น `report`/`status` → อ่าน `workflows/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
+2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 8 อ่าน workflow `report-status` มา execute
 
 ## Rules
 

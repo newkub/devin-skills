@@ -3,20 +3,16 @@ name: run-release
 description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
 argument-hint: "[scope]"
 related:
-  - review-release
+  - deep-review
   - follow-secret-manager
-  - ship
+  - ship-to-dev-branch
   - setup-cicd
-  - setup-package
-  - setup-release
-  - test-release
+  - update-project
   - run-verify
   - resolve-errors
-  - watch-release
   - gen-changelog-md
   - publish-package-to-registry
   - use-my-packages-on-registry
-  - review-api
   - update-devin-global-skills
 
 ---
@@ -31,7 +27,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ## Execute
 
-> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (release)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (release)
 
 ### 1. Check Conditions And Detect Platforms
 
@@ -39,7 +35,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 1. ตรวจ `git branch --show-current` และ `git describe --tags --exact-match` หรือ `git tag --points-at HEAD`
    - ถ้า HEAD ไม่อยู่บน tag `v*` และไม่อยู่บน `main` หรือ `master` → stop และ report
-2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship` ก่อน
+2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship-to-dev-branch` ก่อน
 3. ตรวจ `git status --porcelain` ต้อง clean
 4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
    - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-cicd <run-id>`
@@ -63,7 +59,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `crates`: ตรวจสอบ `Cargo.toml` มี name, version, description, license, repository, categories, keywords, edition, rust-version
 - `webstore`: ตรวจสอบ `manifest.json` มี name, version, manifest_version, permissions, icons, action
 - `docker`: ตรวจสอบ `Dockerfile` มี FROM, WORKDIR, COPY, RUN และ `.dockerignore` มีการ exclude files
-- ถ้า package manifest หรือ release config ไม่ครบ → ทำ `/setup-package` หรือ `/setup-release` ก่อน แล้วกลับมาทำ `/run-release` ใหม
+- ถ้า package manifest หรือ release config ไม่ครบ → ทำ `/update-project` `### setup-package` หรือตั้งค่า release tool/workflow ผ่าน `/setup-cicd` + `/follow-tool-*` ก่อน แล้วกลับมาทำ `/run-release` ใหม
 
 ### 3. Setup Authentication
 
@@ -112,11 +108,17 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ### 7. Test Release Artifact
 
-> Goal: smoke test artifact ก่อน publish
+> Goal: smoke test artifact ก่อน publish — ห้าม publish ในขั้นนี้
 
-1. ทำ `/test-release` เพื่อ build และรัน smoke test บน artifact
-2. ถ้ามี artifact จาก step prerelease อยู่แล้ว `test-release` สามารถ reuse ได้
-3. ถ้า test ไม่ผ่าน → แก้ไขและรันใหม่
+1. ถ้ามี artifact จาก step prerelease อยู่แล้วและ version ตรง → reuse ได้
+2. smoke test ตาม platform:
+   - `npm`: `npm pack` + `npm install <tarball>` ใน temp dir แล้ว `node -e "require('<pkg>')"`
+   - `crates`: `cargo test --release` + `cargo publish --dry-run`
+   - `vscode`: validate `.vsix` ด้วย `vsce ls` หรือ `code --install-extension` ใน temp profile
+   - `webstore`: `chrome-webstore-upload validate` หรือ upload แบบ draft
+   - `docker`: `docker run --rm <image>:test --help` หรือ health check
+3. ตรวจ version ใน artifact ตรง manifest + audit deps (`npm audit`, `cargo audit`)
+4. ถ้า test ไม่ผ่าน → stop และแก้ไขก่อน ห้ามข้ามไป publish; ล้าง temp files หลัง test
 
 ### 8. Run Release
 
@@ -159,7 +161,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 ### 1. Conditions
 
 - ต้องอยู่บน tag `v*` หรือ `main`/`master` เท่านั้น
-- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship`
+- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship-to-dev-branch`
 - working tree ต้อง clean
 - CI ต้องผ่านก่อน release
 - secrets สำหรับ platforms ที detect ต้องพร้อม
@@ -209,9 +211,8 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน
 
 - ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /watch-release ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /review-api ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (release)
 
 - ใช้ /resolve-errors ถ้าจำเป็น

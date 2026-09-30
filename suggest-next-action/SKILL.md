@@ -1,6 +1,6 @@
 ---
 name: suggest-next-action
-description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ พร้อม /ask-me เพื่อให้ user เลือก
+description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไป พร้อม /ask-me — intent ไม่ชัดให้ถามจนเข้าใจก่อน (merged /suggest-me)
 argument-hint: "[context]"
 related:
   - loop-until-complete
@@ -9,7 +9,7 @@ related:
   - update-devin
   - report
   - ask-me
-  - ship
+  - ship-to-dev-branch
   - continue
   - idea
   - rethink
@@ -22,6 +22,8 @@ related:
 ## Scope
 
 ใช้สำหรับวิเคราะห์สถานการณ์หลังจากทำงานเสร็จ task ใด task หนึ่ง หรือเมื่อไม่แน่ใจว่าควรทำอะไรต่อ ครอบคลุมทั้ง context ของโปรเจกต์และสถานะปัจจุบัน พร้อมอธิบายสิ่งทีกำลังทำถ้า user ถาม
+
+- ถ้า user intent ยังไม่ชัด (บอกแค่ "อยากทำ..." / "อยากได้ features...") → ทำ Step 4 (Clarify Vague Intent — merged จาก `/suggest-me`) ก่อนแนะนำ action
 
 ## Execute
 
@@ -64,7 +66,17 @@ related:
 - เป็นการ review หรือ audit
 - เป็นการ learning หรือ research
 
-### 4. Evaluate Priority
+### 4. Clarify Vague Intent (merged จาก `/suggest-me`)
+
+> Goal: เข้าใจว่า user อยากทำอะไรก่อนแนะนำ — สำหรับ request ที่ยังไม่ชัดเจน
+
+ใช้เมื่อ user บอกแค่ว่า "อยากทำ.../อยากได้ features..." โดยยังไม่ระบุ scope — merged จาก `/suggest-me` เดิม:
+
+1. ถามด้วย `/ask-me` 1-4 ข้อต่อ step — เป้าหมาย, ผู้ใช้, scope, ลำดับความสำคัญ; user ไม่แน่ใจ → ให้ตัวเลือก + คำแนะนำ
+2. ถามต่อเนื่องจนเข้าใจครบ → สรุป bullet สั้นๆ ใน chat ให้ user confirm — ห้ามสร้าง report files
+3. confirm แล้ว → ต่อ Step 5 แนะนำ action, หรือ hand off `/idea-features`, `/implement-to-production`, `/create-plan-in-dot-devin` ตาม context
+
+### 5. Evaluate Priority
 
 > Goal: Evaluate Priority
 
@@ -77,7 +89,7 @@ related:
 - Dependencies กับ tasks อื่น
 - Time sensitivity
 
-### 5. Suggest Actions
+### 6. Suggest Actions
 
 > Goal: Suggest Actions
 
@@ -95,7 +107,7 @@ related:
 10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
 11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/idea-features` ถ้าต้องการ plan/implementation
 
-### 6. Present Options
+### 7. Present Options
 
 > Goal: Present Options
 
@@ -108,7 +120,7 @@ related:
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
 6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report`
 
-### 7. Report
+### 8. Report
 
 > Goal: นำเสนอผลลัพธ์ให้ user เห็นภาพรวม
 
@@ -189,7 +201,7 @@ related:
 - ใช้ /loop-until-complete ถ้าจำเป็น
 - ใช้ /follow-enter-dot ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-to-dev-branch ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
 - ใช้ /idea-features หรือ /idea-features ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น

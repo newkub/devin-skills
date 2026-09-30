@@ -9,7 +9,7 @@ related:
   - follow-best-practice
   - learn
   - check-reference
-  - review-dependencies
+  - deep-review
 
 ---
 
@@ -23,14 +23,14 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `report`, `report-findings` | `subskills/report-findings/SKILL.md` — research report พร้อม sources + confidence |
+| `report`, `report-findings` | `workflows/report-findings/SKILL.md` — research report พร้อม sources + confidence |
 
-1. ถ้า argument เป็น `report` → อ่าน `subskills/report-findings/SKILL.md` แล้วทำตาม flow — ใช้ findings ที่มีอยู่ ไม่ research ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 0-9 ตามปกติ โดย Step 9 อ่าน subskill `report-findings` มา execute หลัง synthesize
+1. ถ้า argument เป็น `report` → อ่าน `workflows/report-findings/SKILL.md` แล้วทำตาม flow — ใช้ findings ที่มีอยู่ ไม่ research ใหม่
+2. ถ้าไม่ระบุ → ทำ Steps 0-9 ตามปกติ โดย Step 9 อ่าน workflow `report-findings` มา execute หลัง synthesize
 
 ### 0. Dispatch To Focused Research Skill
 
@@ -38,7 +38,7 @@ related:
 
 1. ถ้าหัวข้อเกี่ยวกับ dependencies/libraries → ใช้ `/research-dependencies` แล้ว stop
 2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/learn-pattern` ถ้ามี หรือทำต่อ
-3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/review-dependencies` หรือ `/review-techstack`
+3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/deep-review` หรือ `/deep-review`
 4. ถ้าไม่มี focused skill ทีตรง → ทำตามขั้นตอนด้านล่าง
 
 ### 1. Identify Topic And Scope

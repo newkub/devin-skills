@@ -3,7 +3,7 @@ name: follow-create-bot
 description: สร้าง bot สำหรับ Slack, Discord, Telegram, LINE หรือ GitHub App/bot ด้วย TypeScript/Bun
 argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
-  - review-dependencies
+  - deep-review
   - follow-secret-manager
   - open-web-for-config-secret
 
@@ -16,7 +16,7 @@ related:
 ## Scope
 
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
-- ทำตาม `/review-dependencies` สำหรับ runtime และ dependencies
+- ทำตาม `/deep-review` สำหรับ runtime และ dependencies
 
 - SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 - Breaking: `@line/bot-sdk` v11 ลบ legacy `Client`/`OAuth` — ใช้ `LineBotClient.fromChannelAccessToken()` หรือ `messagingApi.MessagingApiClient` แทน
@@ -39,7 +39,7 @@ related:
 | GitHub App | `/follow-create-bot-github-app` — app manifest, JWT auth, installation |
 
 1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
-2. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุดของ platform SDK จากนั้นทำ `/review-dependencies`
+2. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุดของ platform SDK จากนั้นทำ `/deep-review`
 3. เรียก skill ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Setup Project

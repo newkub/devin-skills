@@ -10,7 +10,6 @@ related:
   - use-lib-effective
   - follow-monorepo
   - update-references
-  - check-repo-hygiene
   - run-verify
   - run-test
   - report-before-after
@@ -76,7 +75,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 > Goal: ไม่มี duplication เหลือ, ไม่มี regression, dependency direction ถูกต้อง
 
 1. ทำ `/run-verify` — typecheck + lint + test + build ตามที่ workspace รองรับ
-2. ทำ `/check-repo-hygiene circular-dependencies` — shared ต้องไม่พึ่ง consumers และไม่มี cycle ใน layer graph
+2. ทำ `/follow-tool-madge` — shared ต้องไม่พึ่ง consumers และไม่มี cycle ใน layer graph
 3. ตรวจ `packages/shared` ไม่ import workspace member อื่น (foundation เท่านั้น) และ domain layer ไม่มี framework/IO imports
 4. re-run duplication scan — candidates เดิมต้องเหลือ canonical version เดียว
 5. ถ้า verify fail → revert batch นั้นแล้วแก้ สูงสุด 3 รอบ → stop/report

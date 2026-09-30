@@ -42,7 +42,7 @@ termshot <command>            # หรือ termshot --raw-read < file.txt
 - เก็บไฟล์ใน `docs/screenshots/` หรือ `test/screenshots/` — ชื่อตาม command/test case เช่น `cli-help.png`
 - ตั้ง terminal size เหมาะสม (80x24 หรือ 120x30), font monospace อ่านง่าย, contrast ดี
 - หลีกเลี่ยง output ยาวเกิน — ใช้ `--max-height` ถ้า tool รองรับ
-- ใช้ /capture web ถ้าต้อง capture web terminal (ttyd ฯลฯ) — ใช้ /open-windows-terminal ถ้าจำเป็น
+- ใช้ /capture web ถ้าต้อง capture web terminal (ttyd ฯลฯ)
 
 #### Terminal — Expected Outcome
 

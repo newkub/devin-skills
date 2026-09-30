@@ -9,7 +9,7 @@ related:
   - follow-release
   - follow-tool-vite
   - run-test
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -29,8 +29,8 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create vscode extensions)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
+2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create vscode extensions)
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create vscode extensions)
 
 ### 2. Setup Project
@@ -88,7 +88,7 @@ related:
 2. รัน `bunx @vscode/vsce package` เพื่อสร้าง `.vsix` (ใช้ `--allow-missing-repository` เฉพาะกรณีไม่มี git repo)
 3. สร้าง publisher account ใน Marketplace
 4. รัน `bunx @vscode/vsce publish` หรือใช้ GitHub Actions
-5. ทำ `/ship`
+5. ทำ `/ship-to-dev-branch`
 
 ## Rules
 

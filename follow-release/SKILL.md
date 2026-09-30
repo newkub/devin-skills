@@ -123,17 +123,17 @@ Latest: `@vscode/vsce@4.0.0` (verified 2026-09-16) — package `vsce` เดิ�
 2. ทำ `/run-release` สำหรับ multi-platform release อัตโนมัติ
 3. ตรวจสอบ tags, changelogs และ published artifacts
 
-### Subskills
+### Workflows
 
-> Goal: dispatch ไปยัง subskill ตาม release target
+> Goal: dispatch ไปยัง workflow ตาม release target
 
-| Target/Argument | Subskill |
+| Target/Argument | Workflow |
 |-----------------|----------|
-| `crates`, `cargo` | `subskills/deploy-crates/SKILL.md` — `cargo publish` ไป crates.io |
-| `docker`, `image` | `subskills/deploy-docker/SKILL.md` — build/tag/push Docker image |
-| `vscode-marketplace`, `vsce`, `extension` | `subskills/deploy-vscode-marketplace/SKILL.md` — `vsce publish` ไป Marketplace |
+| `crates`, `cargo` | `workflows/deploy-crates/SKILL.md` — `cargo publish` ไป crates.io |
+| `docker`, `image` | `workflows/deploy-docker/SKILL.md` — build/tag/push Docker image |
+| `vscode-marketplace`, `vsce`, `extension` | `workflows/deploy-vscode-marketplace/SKILL.md` — `vsce publish` ไป Marketplace |
 
-1. ถ้า argument ระบุ target → อ่าน `subskills/deploy-<target>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. ถ้า argument ระบุ target → อ่าน `workflows/deploy-<target>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-8 เพื่อเลือก release strategy ก่อน
 
 ## Rules

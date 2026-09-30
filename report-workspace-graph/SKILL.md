@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - check-monorepo
   - list-workspaces
-  - check-repo-hygiene
   - refactor-workspace
   - all-workspace
 
@@ -76,7 +75,7 @@ related:
 
 > Goal: ตรวจหา circular dependencies ระหว่าง workspaces
 
-1. ทำ `/check-repo-hygiene circular-dependencies` ระหว่าง workspaces
+1. ทำ `/follow-tool-madge` ระหว่าง workspaces
 2. ระบุวงจรทั้งหมดถ้ามี
 3. ระบุ severity ของแต่ละวงจร
 4. แนะนำวิธีแก้ไข
@@ -126,7 +125,7 @@ related:
 
 ### 3. Circular Dependencies
 
-- ใช้ `/check-repo-hygiene circular-dependencies`
+- ใช้ `/follow-tool-madge`
 - ระบุ severity ของ circular
 - แนะนำ next step ให้ชัดเจน
 
@@ -139,14 +138,14 @@ related:
 ### 5. Non-Redundancy
 
 - ไม่ซ้ำกับ `/list-workspaces`
-- ไม่ซ้ำกับ `/check-repo-hygiene circular-dependencies`
+- ไม่ซ้ำกับ `/follow-tool-madge`
 - ใช้ results จาก skills เหล่านั้นแล้วเพิ่ม relation analysis
 
 ### 6. Chat-Only Output
 
 - รายงานทั้งหมดต้องอยู่ใน chat เท่านั้น
 - ห้ามเปิด browser, web preview, หรือ HTML report
-- ไม่เรียก `/open-web`, `/visualize-in-web`, `/visualize-project`, `/open-devin-in-web`, `/report html`
+- ไม่เรียก `/open-web`, `/visualize-in-web`, `/open-devin-in-web`, `/report html`
 - ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
 
 - ใช้ /refactor-workspace ถ้าจำเป็น

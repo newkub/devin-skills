@@ -3,7 +3,7 @@ name: follow-create-docker
 description: สร้าง Dockerfile, .dockerignore และ docker-compose ตาม best practices ตาม stack
 argument-hint: "[path]"
 related:
-  - review-dependencies
+  - deep-review
   - follow-deploy
   - setup-cicd
   - follow-secret-manager
@@ -28,23 +28,23 @@ related:
 
 ## Execute
 
-### Subskills
+### Workflows
 
-| Argument | Subskill |
+| Argument | Workflow |
 |----------|----------|
-| `dockerfile`, `setup` | `subskills/setup-dockerfile/SKILL.md` — Dockerfile production-ready |
-| `compose` | `subskills/config-compose/SKILL.md` — docker-compose multi-service |
-| `optimize` | `subskills/optimize-image/SKILL.md` — harden/optimize docker image |
+| `dockerfile`, `setup` | `workflows/setup-dockerfile/SKILL.md` — Dockerfile production-ready |
+| `compose` | `workflows/config-compose/SKILL.md` — docker-compose multi-service |
+| `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image |
 
-1. ถ้า argument ตรงกับ subskill → อ่าน `subskills/<arg>/SKILL.md` แล้วทำตาม flow
+1. ถ้า argument ตรงกับ workflow → อ่าน `workflows/<arg>/SKILL.md` แล้วทำตาม flow
 2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ (default = `setup-dockerfile`)
 
 ### 1. Review Tech Stack
 
 > Goal: รู้ stack และ requirements ก่อนเขียน Dockerfile
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review dependencies และ library design
+1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/deep-review` เพื่อ review dependencies และ library design
 3. ตรวจ manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
 4. ระบุ runtime, build command, start command, port และ required env vars
 

@@ -5,9 +5,9 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-tool-biome
-  - review-dependencies
+  - deep-review
   - follow-tool-formatter
-  - ship
+  - ship-to-dev-branch
   - run-lint
   - run-format
 ---
@@ -19,7 +19,7 @@ related:
 
 ครอบคลุมการสร้าง `.grit` plugin files, การเขียน GritQL patterns, การกำหนดค่าใน `biome.jsonc`, และการ verify plugins
 
-- Latest: `@biomejs/biome@2.5.14` / `@biomejs/js-api@6.0.0` (verified 2026-09-24)
+- Packages: `@biomejs/biome` (2.x — config เป็น `biome.jsonc`, เพิ่ม GritQL plugin support + `engine biome(1.0)` directive), `@biomejs/js-api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
 
 ## Execute
 
@@ -27,8 +27,7 @@ related:
 
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
-1. ทำ `/review-dependencies` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-dependencies` เพื่อ review tech stack, dependencies, และ library design (create biome plugins)
+1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create biome plugins)
 
 ### 2. Setup
@@ -49,8 +48,7 @@ related:
 4. เขียน GritQL patterns สำหรับ custom rules
 5. ใช้ `register_diagnostic()` เพื่อรายงาน diagnostics
 6. ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
-
-ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ pattern syntax เต็ม
+7. Syntax: backtick snippets = structural match (ละเว้น whitespace/quote style); `$var` named, `$_` anonymous, `$...` spread metavariables; `where` conditions คั่นด้วย comma; `<:` match operator (`$x <: or { \`a\`, \`b\` }`, `<: not \`null\``); modifiers `as`/`contains`/`within`/`after`/`before`/`some`/`every`; `r"..."` regex; `=>` rewrite (`fix_kind` กำกับ safe/unsafe — `--write` apply เฉพาะ safe, `--write --unsafe` รวม unsafe)
 
 ### 4. Configure Plugin
 
@@ -58,10 +56,8 @@ related:
 
 1. เพิ่ม plugin path ใน `biome.jsonc` ผ่าน `plugins` array
 2. ใช้ relative path จาก root ของโปรเจกต์
-3. ใช้ `includes` เพื่อจำกัดไฟล์ที่ plugin ทำงาน (optional)
+3. ใช้ `includes` เพื่อจำกัดไฟล์ที่ plugin ทำงาน (optional) — omit = ทำงานทุกไฟล์, `[]` = ไม่ทำงานเลย; negated `!pattern` เป็น exception เท่านั้น — ต้องมี positive `**` pattern ก่อนเสมอ
 4. ตรวจสอบว่า plugin ถูก load อย่างถูกต้อง
-
-ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration options เต็ม
 
 ### 5. Discover CST Node Names
 
@@ -77,7 +73,7 @@ related:
 
 > Goal: ทดสอบ plugin กับ Biome
 
-1. รัน `bunx biome lint` เพื่อทดสอบ plugin
+1. รัน `bunx biome lint` เพื่อทดสอบ plugin (`biome check` = lint+format; `lint --write` apply safe rewrites, `--unsafe` รวม unsafe)
 2. ตรวจสอบว่า custom rules ทำงานได้ถูกต้อง
 3. ทดสอบ edge cases และ false positives
 4. ทดสอบ rewrites (`=>`) สำหรับ fixable diagnostics
@@ -86,7 +82,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-to-dev-branch`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -127,8 +123,6 @@ related:
 - Rewrites: ใช้ `=>` operator เช่น `` `console.log($msg)` => `console.warn($msg)` ``
 - Multiple rules: ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
 
-ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับตัวอย่าง patterns ทั้งหมด
-
 ### 5. Configuration
 
 - กำหนด plugin ผ่าน `plugins` array ใน `biome.jsonc`
@@ -139,8 +133,6 @@ related:
 - Plugins สามารถกำหนดใน root `biome.jsonc` และ extended โดย child configs
 - Suppress diagnostic ด้วย `// biome-ignore lint/plugin: <reason>`
 
-ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration format เต็ม
-
 ### 6. Common CST Node Names
 
 - JavaScript: `JsIfStatement`, `JsCallExpression`, `JsArrowFunctionExpression`, `JsVariableDeclaration`, `JsxElement`, `JsxAttribute`
@@ -148,8 +140,6 @@ related:
 - CSS: `CssDeclarationWithSemicolon`, `CssComplexSelector`, `CssDeclarationImportant`
 - JSON: `JsonMember`, `JsonMemberName`, `JsonObjectValue`, `JsonArrayValue`
 - ตรวจสอบ node names ใน [Biome Playground](https://biomejs.dev/playground/) เสมอ
-
-ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ CST node matching syntax
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-tool-formatter ถ้าจำเป็น

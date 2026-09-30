@@ -3,9 +3,8 @@ name: edit-only
 description: แก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal
 argument-hint: "[scope]"
 related:
-  - review-architecture
+  - deep-review
   - update-references
-  - review-code-quality
 
 ---
 
@@ -23,7 +22,7 @@ related:
 
 > Goal: ยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
 
-ทำ `/review-architecture` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
+ทำ `/deep-review` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
 
 ### 2. Code Modification
 
@@ -60,7 +59,7 @@ related:
 
 รักษาคุณภาพโค้ดตามมาตรฐาน
 
-- ทำ `/review-code-quality` สำหรับการแก้ไข
+- ทำ `/deep-review` สำหรับการแก้ไข
 - รักษา consistency กับ codebase
 - เพิ่ม comments เมื่อจำเป็น
 
