@@ -87,21 +87,13 @@ related:
 6. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
 7. ทำ `/deep-review` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
-### 6. Review By Stakeholder
-
-> Goal: review By Stakeholder
-1. ทำ `/deep-review` เพื่อรับมุมมองจาก stakeholders ที่เหมาะสม
-2. บันทึก findings พร้อม severity, stakeholder, recommendation
-3. ถ้าพบ issues ที่มีผลต่อ `AGENTS.md` → แก้ไขก่อนดำเนินต่อ
-4. สรุป stakeholder coverage map และ top findings
-
-### 7. Validate
+### 6. Validate
 
 > Goal: ยื่นยัน Validate
 1. ทำ `/deep-review` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-4. ถ้าผ่าน → ถ้าต้อง ship ต่อให้ทำ `/ship` (canonical ship workflow อยู่ที่ `ship/references/ship-workflow.md` — ไม่ duplicate ใน skill นี้)
+4. ถ้าผ่าน → ถ้าต้อง ship ต่อให้ทำ `/ship` (canonical ship workflow อยู่ที่ `### references/ship-workflow` ของ `ship/SKILL.md` — ไม่ duplicate ใน skill นี้)
 
 ## Rules
 
@@ -161,7 +153,6 @@ related:
 - `### Platform` และ `### Target User` ถูกต้อง
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
-- ได้รับ review จาก stakeholders ที่เหมาะสมก่อน `/deep-validate`
-- ผ่าน `/deep-review` และ `/deep-validate`
+- ผ่าน `/deep-review` และ `/deep-validate` — stakeholder review อยู่ใน `/ship` merge gate (`/roleplay-by-all-stakeholder`)
 - subagents สามารถอ่าน `AGENTS.md` แล้วดำเนินการตามขั้นตอนได้
 

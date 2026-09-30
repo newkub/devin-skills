@@ -21,7 +21,11 @@ related:
   - follow-parallel
   - run-verify
   - deep-validate
+  - git-commit
+  - git-push
+  - git-commit-and-push
   - resolve-cicd
+  - roleplay-by-all-stakeholder
   - dont-ask-me
   - follow-your-suggestion
   - loop-until-complete
@@ -38,7 +42,7 @@ Ship code ผ่าน `AGENTS.md` ของ project + canonical ship workflow �
 - ใช้กับ project ที่มี `AGENTS.md` (สร้าง/อัปเดตผ่าน `/update-agents-md` ก่อนเสมอ)
 - ทุก ship action ทำผ่าน workflow ใน `AGENTS.md` ตาม `/follow-agents-md` + `### references/ship-workflow` — `/ship` ไม่รัน release เอง (release → `/ship-release`)
 - งานใหญ่หลายด้าน (multi-workspace, multi-concern) → ใช้ swarm flow ใน Step 5; งานเล็ก/lane เดียว → sequential ตาม workflow
-- Local-only ship (ไม่มี staging/production deploy target — เช่น skills repo, dotfiles, config-only changes) → ข้าม Stage/Production ได้: verify + `/git-commit` ตรงๆ แล้ว report
+- Local-only ship (ไม่มี staging/production deploy target — เช่น skills repo, dotfiles, config-only changes) → ข้าม Stage/Production ได้: verify + `/git-commit-and-push` ตรงๆ แล้ว report
 - argument `dont-ask-me` หรือ session ที่ `/dont-ask-me` active → ทำงานตาม Step 6 โดยไม่ถาม user เลย
 
 ## Execute
@@ -188,7 +192,7 @@ Canonical ship workflow ของ `/ship` — feature branch → validate → st
 
 ##### Branch Hygiene
 
-1. ตรวจ `git status` — uncommitted changes → commit ด้วย `/git-commit` หรือ `git stash`
+1. ตรวจ `git status` — uncommitted changes → commit ด้วย `/git-commit` หรือ `git stash`; ถ้าทำงานต่อบน branch เดิม → push ด้วย `/git-push` หรือ `/git-commit-and-push` ภายหลัง
 2. `git switch main` + `git pull` — main ล่าสุด
 3. switch/สร้าง feature branch ด้วย `/create-git-branch` — ห้ามทำงานต่อบน main
 4. ถ้า step ก่อนหน้าทำบน main → commit ย้ายไป feature branch
@@ -218,8 +222,9 @@ Canonical ship workflow ของ `/ship` — feature branch → validate → st
 
 1. repo ที่มี remote + PR workflow → `/create-github-pr` + `/review-github-pr`
 2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
-3. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
-4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge-github-pr` เมื่อ user ยืนยัน)
+3. ทำ `/roleplay-by-all-stakeholder` — review change จากมุม stakeholders ที่เกี่ยวข้อง (product, engineering, quality, user ฯลฯ) ก่อน merge; findings ที่เป็น blocker → fix กลับ Validate
+4. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
+5. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge-github-pr` เมื่อ user ยืนยัน)
 
 ##### Production
 
