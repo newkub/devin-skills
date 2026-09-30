@@ -15,8 +15,8 @@ project/
 │  │  │  ├─ middleware/                     # auth.ts, error.ts, logging.ts
 │  │  │  └─ server.ts
 │  │  ├─ web/
-│  │  │  ├─ routes/
-│  │  │  ├─ middleware/
+│  │  │  ├─ routes/                         # home.ts, dashboard.ts
+│  │  │  ├─ middleware/                     # session.ts
 │  │  │  └─ server.ts
 │  │  ├─ cli/
 │  │  │  ├─ commands/                       # user.ts, migrate.ts, seed.ts
@@ -39,11 +39,26 @@ project/
 │  │  │  ├─ domain/                         # model.ts, errors.ts — pure types + rules, ไม่มี IO/framework
 │  │  │  ├─ features/                       # login.ts, logout.ts, session.ts — use cases/orchestration
 │  │  │  ├─ ports/                          # interfaces ที่ module ต้องการ — session-store, token-issuer
-│  │  │  ├─ adapters/                       # module-level boundary translation/mappers
+│  │  │  ├─ adapters/                       # dto.ts, mappers/ — module-level boundary translation
 │  │  │  └─ index.ts                        # module barrel — public API เท่านั้น
-│  │  ├─ users/                             # domain/, features/ (create/get/update/delete), ports/, adapters/, index.ts
-│  │  ├─ orders/                            # domain/, features/ (create/get/cancel/refund), ports/, adapters/, index.ts
-│  │  └─ payments/                          # domain/, features/ (charge/refund/webhook), ports/, adapters/, index.ts
+│  │  ├─ users/
+│  │  │  ├─ domain/                         # model.ts, errors.ts, schema.ts
+│  │  │  ├─ features/                       # create.ts, get.ts, update.ts, delete.ts
+│  │  │  ├─ ports/                          # user-store, notifier
+│  │  │  ├─ adapters/                       # dto.ts, mappers/
+│  │  │  └─ index.ts
+│  │  ├─ orders/
+│  │  │  ├─ domain/                         # model.ts, errors.ts
+│  │  │  ├─ features/                       # create.ts, get.ts, cancel.ts, refund.ts
+│  │  │  ├─ ports/                          # order-store, payment-gateway
+│  │  │  ├─ adapters/                       # dto.ts, mappers/
+│  │  │  └─ index.ts
+│  │  └─ payments/
+│  │     ├─ domain/                         # model.ts, errors.ts
+│  │     ├─ features/                       # charge.ts, refund.ts, webhook.ts
+│  │     ├─ ports/                          # payment-gateway, payment-store
+│  │     ├─ adapters/                       # dto.ts, mappers/
+│  │     └─ index.ts
 │  │
 │  ├─ core/                                 # Pure / fundamental — shared kernel
 │  │  ├─ errors/                            # error.ts, domain-error.ts, system-error.ts

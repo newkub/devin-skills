@@ -5,9 +5,9 @@ argument-hint: "[target-path]"
 related:
   - refactor
   - follow-architecture
-  - follow-layered-arch
+  - follow-architecture
   - separate-of-concerns
-  - review-architecture
+  - deep-review
   - scan-codebase
   - update-references
   - run-check
@@ -22,9 +22,9 @@ Restructure target (default: ทุก package ใน `packages/` หรือ `
 ## Scope
 
 - ใช้กับ `packages/*`, `crates/*` (shared libraries, domain modules, Rust crates), หลาย `apps/*` ที่ต้อง unified support (แชร์ modules ข้าม entry points) และ target ที่ user ระบุชัดเจน
-- Pattern detail ฉบับเต็ม (SSOT): `/review-architecture` `## Pattern Guides` → `subagents/arch-reviewer/pattern-clean.md`
+- Pattern detail ฉบับเต็ม (SSOT): `/deep-review` `## Pattern Guides` → `references/pattern-clean.md`
 - File structure + layer table (canonical): [templates/file-structure.md](templates/file-structure.md)
-- app เดียว (`apps/*` ตัวเดียว, ไม่ต้อง unified support) → ใช้ `/follow-layered-arch` แทน
+- app เดียว (`apps/*` ตัวเดียว, ไม่ต้อง unified support) → ใช้ `/follow-architecture` `### Pattern: Layered` (flat type-grouped) แทน
 - ถูก dispatch จาก `/follow-architecture` และ `/refactor` architecture scope
 
 ## Execute
@@ -34,7 +34,7 @@ Restructure target (default: ทุก package ใน `packages/` หรือ `
 > Goal: เข้าใจ structure ปัจจุบันและ blast radius
 
 1. ทำ `/scan-codebase` บน target — ระบุ domain logic, side effects, external deps
-2. อ่าน `subagents/arch-reviewer/pattern-clean.md` ของ `/review-architecture` — canonical guide สำหรับ structure, rules และ splitting thresholds
+2. อ่าน `references/pattern-clean.md` ของ `/deep-review` — canonical guide สำหรับ structure, rules และ splitting thresholds
 3. อ่าน [templates/file-structure.md](templates/file-structure.md) — canonical file structure + layer table ของ target
 4. ระบุ public API ปัจจุบัน (barrel `index`, exported symbols) — ต้องรักษาไว้
 5. หา consumers ของ package — ทำ `/update-references` ไว้ในแผน

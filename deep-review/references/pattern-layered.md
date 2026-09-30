@@ -14,22 +14,32 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 
 ##### 2. Create Structure
 
-Traditional Layered (โปรเจกต์ขนาดเล็ก หรือ classic):
+Flat Type-Grouped (canonical — canonical template: `follow-architecture/templates/file-structure-layered.md`):
 
 ```
 src/
-├── components/        // UI components (global)
-├── composables/      // Vue composables / React hooks
-├── stores/           // state management (Pinia/Zustand)
-├── services/         // API calls and business logic
-├── utils/            // pure utility functions
-├── types/            // TypeScript types
+├── app/              // entry, routes/pages, middleware, server
+├── components/       // UI components (PascalCase, presentational)
+├── hooks/            // composables / hooks — UI state + view logic
+├── usecases/         // application use cases — orchestration entry
+├── services/         // domain services — business rules
+├── features/         // feature-level logic เฉพาะ domain (optional)
+├── infra/            // repositories, database/, external APIs
+├── lib/              // third-party wrappers / singleton clients
+├── utils/            // pure utilities — no IO
+├── types/            // shared types — pure types only
 ├── constants/        // app constants
-├── middleware/       // route middleware
-└── plugins/          // framework plugins
+├── config/           // env/app config
+└── index.ts          // barrel — public API
 ```
 
-Feature-Based (features ชัดเจน แยกกันได้):
+- Flat เท่านั้น — ห้าม nest ตาม capability; prefix ชื่อไฟล์ตาม domain (`user-service.ts`)
+- layer mapping: presentation = `app/`+`components/`+`hooks/`; domain = `usecases/`+`services/`+`features/`; data = `infra/`+`lib/`; shared leaves = `types/`+`constants/`+`utils/`+`config/`
+- framework flat conventions (frontend เล็ก-กลาง): `stores/` (Pinia/Zustand), `middleware/`, `plugins/` เพิ่มได้ตาม framework — จัดเข้า layer ตาม role
+
+Alternative Variants (เลือกเฉพาะเมื่อ flat ไม่พอ):
+
+Feature-Based (features ชัดเจน แยกกันได้ — ยอม nest ตาม feature):
 
 ```
 src/
@@ -102,19 +112,19 @@ src/
 
 ##### 1. Pattern Selection
 
-- `traditional layered` เหมาะกับโปรเจกต์ขนาดเล็ก หรือต้องการโครงสร้าง classic
-- `feature-based` เหมาะกับโปรเจกต์ที่มี features ชัดเจนและแยกกันได้
-- `4-layer` เหมาะกับโปรเจกต์ที่ต้องการ separation of concerns แบบชัดเจน
+- `flat type-grouped` = canonical default สำหรับ app เดียวทุกขนาด — grouping by type ไม่ nest ตาม capability
+- `feature-based` เหมาะกับโปรเจกต์ที่มี features ชัดเจนและแยกกันได้ (ยอม nest ตาม feature)
+- `4-layer` เหมาะกับโปรเจกต์ที่ต้องการ separation of concerns แบบชัดเจน (nested layers)
 - `hybrid` (vertical slices + internal layering) เหมาะกับโปรเจกต์ขนาดใหญ่
 - พิจารณา team experience และ project lifecycle
 
 ##### 2. Dependency Discipline
 
-- `Presentation` → `Application` / `Domain` เท่านั้น
-- `Application` → `Domain` เท่านั้น
-- `Infrastructure` → `Domain` (สำหรับ mapping) เท่านั้น
-- `Domain` ห้าม import จาก layer อื่นทั้งหมด
-- ใช้ path aliases (`@/domain/...`, `@/application/...`) เพื่อให้ layer transitions ชัดเจน
+- presentation folders (`app/`, `components/`, `hooks/`) → domain folders เท่านั้น — ห้ามเรียก `infra/`/`lib/` ตรง
+- domain folders (`usecases/` → `services/`/`features/` → `infra/`) — `app/` เรียก `usecases/`/`features/` เท่านั้น
+- data folders (`infra/`, `lib/`) = leaf — ห้าม import presentation/domain
+- `types/`/`constants/`/`utils/`/`config/` = shared leaves — ทุก layer ใช้ได้ ห้าม import กลับ; `utils/`/`types/` ต้อง pure
+- ใช้ path aliases (`@/usecases/...`, `@/services/...`) เพื่อให้ layer transitions ชัดเจน
 - ถ้า project มี `Biome` → เพิ่ม restricted import rules
 - ถ้า project มี CI → เพิ่ม dependency graph checks สำหรับ cycle detection
 - หลีกเลี่ยง circular dependencies โดยใช้ dependency injection ผ่าน interfaces

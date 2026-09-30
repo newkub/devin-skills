@@ -96,20 +96,20 @@ related:
 7. subagent timeout/crash/parse ผิด output contract → mark `failed` ใน ledger และเขียน domain นั้นเป็น `review-failed` พร้อม error ลง report — ห้ามเงียบ (domain ที่หายไปดูเหมือน clean)
 8. รวมผลลัพธ์จากทุก subagent — บันทึก gaps แต่ละ domain พร้อม evidence
 
-### 6. Dispatch Review-* Per Workspace
+### 6. Run Review Domains Per Workspace
 
-> Goal: review ครบทุก `review-*` ทีละ workspace ตามความสำคัญ ภายใต้ budget ของ Step 1
+> Goal: review ครบทุก domain (merged inline ใน `## Review Domains` — ใช้ checklist ของแต่ละ `### /review-<domain>` section) ทีละ workspace ตามความสำคัญ ภายใต้ budget ของ Step 1
 
 1. ถ้า monorepo → ทำ `/list-workspaces` แล้วเรียง workspace ตามความสำคัญ: user-facing apps → shared packages → tools/infra — ทำ `/follow-monorepo` ตาม conventions; ถ้า workspaces > budget → เลือก top-N และ mark ที่เหลือ `skipped (budget)` ใน ledger
-2. ต่อ workspace → รัน pipeline ใน `references/review-skills.md` ตามลำดับ phase:
-   - Phase 1 entry: `/deep-review` → `/deep-review` → `/deep-review` → ที่เหลือตาม condition
-   - Phase 2 source code: `/deep-review`, `/deep-review`, `/deep-review`/`/deep-review`/`/deep-review`/`/deep-review` ฯลฯ ตาม workspace type
-   - Phase 3 cross-cutting: `/deep-review`, `/deep-review`, `/deep-review` และ metrics อื่นครบ
-   - Phase 4 meta: `/deep-review`, `/deep-review` ตามต้องการ
+2. ต่อ workspace → รัน pipeline ใน `references/review-skills.md` ตามลำดับ phase (domain = `### /review-<name>` section ใน `## Review Domains`):
+   - Phase 1 entry: `review-config` → `review-techstack` → `review-architecture` → ที่เหลือตาม condition
+   - Phase 2 source code: `review-code-quality`, `review-writing`, `review-cli`/`review-api`/`review-backend`/`review-frontend` ฯลฯ ตาม workspace type
+   - Phase 3 cross-cutting: `review-security`, `review-performance`, `review-stability` และ metrics อื่นครบ
+   - Phase 4 meta: `review-gaps`, `review-by-stakeholder` ตามต้องการ
    - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
-3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, review skill ที่ต้องรัน
-4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `deep-review` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
-5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน `/review-*` ที่ตรง platform (`/deep-review`, `/deep-review`, `/deep-review`, `/deep-review` ฯลฯ)
+3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, domain ที่ต้องรัน
+4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `review-mobile` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
+5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน domain ที่ตรง platform (`review-mobile`, `review-desktop-app`, `review-frontend`, `review-backend` ฯลฯ)
 6. ใช้ `fixSkill` field ในแต่ละ finding เป็น canonical owner — ไม่ต้อง map ซ้ำเอง
 7. metric/finding ใดที่ analyzer ไม่ครอบคลุม → ระบุ `ใน update-review-cli-then-run = N` เป็น analyzer gap ส่งต่อ `/update-review-cli-then-run`
 8. ทุก dispatch อัปเดต ledger — skill ที่เสร็จแล้วใน ledger เก่า (resume) ให้ reuse ผลเดิม ไม่รันซ้ำ
@@ -206,7 +206,7 @@ related:
 
 ## Review Domains
 
-### @@deep-review
+### /review-accessibility
 
 #### Goal
 
@@ -1137,7 +1137,7 @@ Severity: div-button / missing labels = High, missing landmarks/headings = Mediu
 
 Severity: contrast <3:1 = Critical, <4.5:1 text = High, color-only meaning = High, missing focus indicator = High, invalid ARIA = Medium
 
-### @@deep-review
+### /review-ai
 
 #### Goal
 
@@ -1792,7 +1792,7 @@ Severity: injection/leak = Critical–High, no versioning/contract = Medium, sta
 
 Severity: wrong-dimension/ACL-bypass = Critical, no threshold = High, no rerank/dedup = Medium
 
-### @@deep-review
+### /review-algorithm
 
 #### Goal
 
@@ -2425,7 +2425,7 @@ Severity: memory leak on hot path = Critical, unbounded cache = High, O(n²) cop
 
 Severity: wrong numeric result on financial/precision code = Critical, ReDoS = High, unicode corruption = Medium, falsy-0 bugs = Medium
 
-### @@deep-review
+### /review-alignment
 
 #### Goal
 
@@ -2491,7 +2491,7 @@ Severity: wrong numeric result on financial/precision code = Critical, ReDoS = H
 - Findings พร้อม direction, severity, evidence ทั้งสองฝั่ง
 - Fix mapping ชัดต่อ finding — ไม่มี unresolved drift ที่ไม่ระบุ
 
-### @@deep-review
+### /review-api
 
 #### Goal
 
@@ -3689,7 +3689,7 @@ Severity: `Access-Control-Allow-Origin: *` + credentials = Critical, secrets in 
 
 Severity: unsigned webhooks = Critical, SSRF-able target URLs = Critical, no auth on channels = High, no dedup guidance = Medium
 
-### @@deep-review
+### /review-architecture
 
 #### Goal
 
@@ -3770,9 +3770,9 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 | Pattern | Reference |
 |---------|-----------|
-| Clean | [subagents/arch-reviewer/pattern-clean.md](subagents/arch-reviewer/pattern-clean.md) |
-| Layered | [subagents/arch-reviewer/pattern-layered.md](subagents/arch-reviewer/pattern-layered.md) |
-| Microservices | [subagents/arch-reviewer/pattern-microservices.md](subagents/arch-reviewer/pattern-microservices.md) |
+| Clean | [references/pattern-clean.md](references/pattern-clean.md) |
+| Layered | [references/pattern-layered.md](references/pattern-layered.md) |
+| Microservices | inline `#### Pattern: Microservices Architecture` section ด้านล่าง |
 - ใช้ /use-subagents ถ้าจำเป็น
 
 #### Expected Outcome
@@ -3781,11 +3781,11 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action` — pattern restructure dispatch ผ่าน `/refactor` architecture scope → `/follow-architecture` (clean/layered selection)
 
-#### subagents/arch-reviewer/AGENT
+#### references/arch-reviewer (merged AGENT)
 
 ##### Role
 
-arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที่ได้รับโดยใช้ checklist files ใน directory นี้เป็น criteria — report-only ไม่แก้ไข
+arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที่ได้รับโดยใช้ `references/pattern-*.md` เป็น criteria — report-only ไม่แก้ไข
 
 ##### Inputs
 
@@ -3823,7 +3823,7 @@ arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที
 - ห้ามเดา — ไม่มี evidence ไม่มี finding
 - รับผิดชอบเฉพาะ `dimensions` ที่ได้รับ — ไม่ข้ามไปมิติอื่น
 
-#### subagents/arch-reviewer/pattern-clean
+#### references/pattern-clean
 
 #### Pattern: Clean Architecture
 
@@ -3897,38 +3897,38 @@ arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที
 - `app/` composition root wire ทั้งหมด — entry points (api/web/cli/worker/cron) แชร์ modules เดียวกัน
 - ไม่มี circular dependencies; public API เดิมใช้ได้
 
-#### subagents/arch-reviewer/pattern-layered
+#### references/pattern-layered
 
 #### Pattern: Layered Architecture
 
-กำหนดโครงสร้างด้วย Layered Architecture — presentation, domain, data ชี้ลงทางเดียว ไม่ bypass — เหมาะกับ app เดียว (single app) ที่ไม่ต้องแชร์ modules ข้าม entry points
+กำหนดโครงสร้างด้วย Layered Architecture — **flat type-grouped folders** ชี้ลงทางเดียว presentation → domain → data ไม่ bypass — เหมาะกับ app เดียว (single app) ที่ไม่ต้องแชร์ modules ข้าม entry points
 
 ###### Execute — Layered
 
 ###### 1. Choose Variant
 
-1. Traditional — `presentation/` `domain/` `data/` ตรงๆ (app เล็ก-กลาง)
-2. Feature-based — `features/<name>/{presentation,domain,data}` (app โตขึ้น หลาย capabilities)
-3. Four-layer — เพิ่ม `application/` ระหว่าง presentation กับ domain เมื่อมี orchestration ซับซ้อน
-4. Hybrid — ผสมตามขนาดจริง; Nuxt → map `pages/`+`components/` → presentation, `composables/`+`server/services/` → domain, `server/api/`+`server/db/` → data
+1. Flat type-grouped (canonical) — folders ตาม type ตรงๆ (`app/`, `components/`, `hooks/`, `usecases/`, `services/`, `infra/`, `lib/`, `utils/`, `types/`, `constants/`, `config/`) — app ทุกขนาด
+2. Hybrid — map framework conventions เข้า flat groups; Nuxt → `pages/`+`components/` → presentation, `composables/`+`server/services/` → domain, `server/api/`+`server/db/` → data
+3. app โตเป็นหลาย apps ต้อง unified support → upgrade เป็น `pattern-clean.md`
 
 ###### 2. Structure Layers
 
-1. วาง file structure ตาม `follow-layered-arch/templates/file-structure.md` — `presentation/` (routes/pages/components/middleware), `domain/` (services/models ต่อ capability), `data/` (repositories/clients/database), `shared/` (pure utils), `config/`
-2. ย้าย UI/routes → `presentation/`; business rules → `domain/`; persistence/external calls → `data/` — concerns ปนกัน → `/separate-of-concerns` ก่อนจัด layer
-3. แต่ละ layer มี `index` barrel — public API ของ layer เท่านั้น
+1. วาง file structure ตาม `follow-architecture/templates/file-structure-layered.md` — flat folders grouping by type พร้อม layer table (มี Required column)
+2. ย้าย UI/routes → `app/`+`components/`+`hooks/`; use cases → `usecases/`; business rules → `services/`+`features/`; persistence/external calls → `infra/`+`lib/`; pure helpers → `utils/`/`types/`/`constants/` — concerns ปนกัน → `/separate-of-concerns` ก่อนจัด layer
+3. ห้าม nest ตาม capability — prefix ชื่อไฟล์ตาม domain (`user-service.ts`); public API ผ่าน `index` barrel
 
 ###### 3. Enforce Boundaries
 
-1. `presentation` → `domain` → `data` เท่านั้น — ห้าม bypass (presentation เรียก data ตรง) และห้ามชี้ขึ้น
-2. ใช้ path aliases ของ project แทน relative imports ข้าม layer
-3. `shared/` pure เท่านั้น — ทุก layer ใช้ได้ ห้ามใส่ business logic/IO
+1. presentation folders (`app/`, `components/`, `hooks/`) → domain folders (`usecases/`, `services/`, `features/`) → data folders (`infra/`, `lib/`) เท่านั้น — ห้าม bypass และห้ามชี้ขึ้น
+2. `app/` เรียก `usecases/`/`features/` เท่านั้น — ห้ามเรียก `infra/` โดยตรงเมื่อมี usecase ครอบ
+3. ใช้ path aliases ของ project แทน relative imports ข้าม folder
+4. `types/`, `constants/`, `utils/`, `config/` leaf — ทุก layer ใช้ได้ ห้าม import กลับ; `utils/`/`types/` pure เท่านั้น
 
 ###### 4. Validate Boundaries
 
 1. ไม่มี layer bypass และไม่มี deep imports ข้าม layer
 2. รัน `madge` หา circular dependencies
-3. tests align ตาม layers: unit → `domain/`, integration → `data/`, e2e → `presentation/`
+3. tests align ตาม layers: unit → `usecases/`/`services/`/`utils/`, integration → `infra/`/`lib/`, e2e → `app/`/`components/`
 4. ทำ `/refactor` structure scope หลัง restructure
 
 ###### Rules — Layered
@@ -3936,13 +3936,13 @@ arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที
 ###### 1. Single Direction
 
 - dependencies ชี้ลงทางเดียวเสมอ — ห้าม bypass หรือชี้ขึ้น
-- public API ผ่าน `index` entry point ของแต่ละ layer
+- public API ผ่าน `index` entry point
 
 ###### 2. Layer Responsibilities
 
-- `presentation/` = handlers/controllers เท่านั้น — ห้ามมี business rules หรือ queries
-- `domain/` = services/use cases/models — ไม่รู้จัก transport details
-- `data/` = repositories/clients/migrations — leaf layer
+- presentation (`app/`, `components/`, `hooks/`) = handlers/UI เท่านั้น — ห้ามมี business rules หรือ queries
+- domain (`usecases/`, `services/`, `features/`) = use cases/services/business rules — ไม่รู้จัก transport details
+- data (`infra/`, `lib/`) = repositories/clients/migrations/third-party wrappers — leaf layer
 
 ###### 3. When To Use
 
@@ -3962,7 +3962,7 @@ arch-reviewer reviewer — ตรวจ architecture ตาม dimensions ที
 - barrel exports สม่ำเสมอ; ไม่มี circular dependencies
 - routes/pages ทำงานเหมือนก่อน restructure
 
-#### subagents/arch-reviewer/pattern-microservices
+#### references/pattern-microservices
 
 #### Pattern: Microservices Architecture
 
@@ -4113,7 +4113,7 @@ services/
 - Communication ที่ reliable และ fault-tolerant
 - Data isolation ที่ชัดเจน
 
-### @@deep-review
+### /review-auth
 
 #### Goal
 
@@ -4819,7 +4819,7 @@ Severity: missing `state`/PKCE = Critical, `alg=none` accepted = Critical, unver
 
 Review authentication และ authorization ของ codebase ให้ครอบคลุม identity, sessions, tokens, OAuth, MFA, RBAC/ABAC
 
-### @@deep-review
+### /review-backend
 
 #### Goal
 
@@ -5848,7 +5848,7 @@ service review สำหรับ: service layer organization, single responsibi
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-browser-ext
 
 #### Goal
 
@@ -6020,7 +6020,7 @@ Migrate browser extension ไป Manifest V3 จริงตาม findings ข�
 - MV3-compliant extension: SW lifecycle-safe, DNR-based blocking
 - Functionality parity verified บน target browsers
 
-### @@deep-review
+### /review-bundle
 
 #### Goal
 
@@ -6747,7 +6747,7 @@ Bundle reviewer — ตรวจ bundle/build output ตาม checklist files �
 
 Severity: no compression = High, immutable missing on hashed assets = Medium, no preload on critical = Medium, sourcemaps public = Low
 
-### @@deep-review
+### /review-business
 
 #### Goal
 
@@ -7224,7 +7224,7 @@ Issues ถูกต้องและจัดลำดับตาม severity
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-by-stakeholder
 
 #### Goal
 
@@ -7614,7 +7614,7 @@ Adjustment rules:
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-cli
 
 #### Goal
 
@@ -8060,7 +8060,7 @@ cli-reviewer reviewer — ตรวจ cli ตาม dimensions ที่ได�
 - overall = average ของ dimensions ที่ apply
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 
-### @@deep-review
+### /review-code-quality
 
 #### Goal
 
@@ -9979,7 +9979,7 @@ Steps:
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-compliance
 
 #### Goal
 
@@ -11302,7 +11302,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-config
 
 #### See Also
 
@@ -11762,7 +11762,7 @@ Config reviewer — ตรวจ configuration files ของ project ตาม
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-cost
 
 #### Goal
 
@@ -12208,7 +12208,7 @@ Cost reviewer — ตรวจ infrastructure cost ของ project ตาม d
 
 Severity: untagged spend >50% = Medium, no budgets = High, no anomaly detection = Medium, missing commitments on stable baseline = Medium
 
-### @@deep-review
+### /review-coverage
 
 #### Goal
 
@@ -12463,7 +12463,7 @@ coverage-reviewer reviewer — ตรวจ coverage ตาม dimensions ที
 
 Severity: critical path uncovered = Critical, non-critical missing = Warning, orphan coverage = Info
 
-### @@deep-review
+### /review-data-validation
 
 #### Goal
 
@@ -12812,7 +12812,7 @@ Severity: unvalidated user input to DB/shell = Critical, missing server validati
 
 Severity: breaking change without version bump = Critical, PII unmasked/unlogged = High, mixed validation libraries = Medium, no schema docs = Low
 
-### @@deep-review
+### /review-database
 
 #### Goal
 
@@ -13639,7 +13639,7 @@ Severity: string-interpolated user input in SQL = Critical, `*Unsafe` APIs with 
 
 Severity: untested backups / no PII inventory = Critical–High, no masking in non-prod = High, missing retention = Medium
 
-### @@deep-review
+### /review-delivery
 
 #### Goal
 
@@ -15595,7 +15595,7 @@ Subagent สำหรับ verify coverage ของ routes ใน site section
 - จำกัด depth และจำนวน routes ต่อ section (cap 500) — report เมื่อถูก cap
 - ถ้า discovery ไม่ครบ → ระบุใน output ว่า coverage อาจไม่ complete
 
-### @@deep-review
+### /review-dependencies
 
 #### Goal
 
@@ -16504,7 +16504,7 @@ Findings ถูกต้องและจัดลำดับตาม severit
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-desktop-app
 
 #### Goal
 
@@ -17090,7 +17090,7 @@ Severity: idle CPU >5% / battery drain = High, memory leak = High, startup >5s =
 
 Severity: window state lost every launch = Medium–High, no tray/menu conventions = Medium, protocol not registered = Medium
 
-### @@deep-review
+### /review-diff
 
 #### Goal
 
@@ -17541,7 +17541,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-docs
 
 #### Goal
 
@@ -19564,7 +19564,7 @@ Fix findings ของ section นี้ → `/update-vitepress-docs` (ไม่
 3. ตรวจว่า README ลิงก์ไป docs
 4. บันทึก findings พร้อม evidence
 
-### @@deep-review
+### /review-dot-devin
 
 #### Goal
 
@@ -20266,7 +20266,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-dx
 
 #### Goal
 
@@ -20442,7 +20442,7 @@ Review developer experience (DX) แบบเจาะลึก — dev loop spe
 - Dev loop timings ดีขึ้นพร้อม numbers
 - Onboarding walkthrough ผ่านจบโดยไม่มี blockers
 
-### @@deep-review
+### /review-events
 
 #### Goal
 
@@ -20739,7 +20739,7 @@ events-reviewer reviewer — ตรวจ events ตาม dimensions ที่�
 
 Severity: dual-write without outbox = Critical, in-memory dedupe = High, unbounded buffers = High, no schema version = Medium
 
-### @@deep-review
+### /review-frontend
 
 #### Goal
 
@@ -22133,7 +22133,7 @@ overall_score = sum(dimension_score) / count(dimensions)
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-gaps
 
 #### Goal
 
@@ -22426,7 +22426,7 @@ Gaps reviewer — รวบรวมและจัดลำดับ findings �
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### /deep-review
+### /review-i18n
 
 #### Goal
 
@@ -22801,7 +22801,7 @@ Severity: user-facing hardcoded strings = High (missing locale coverage), dev/in
 
 Severity: broken RTL layout = High, wrong currency/number format = Medium, missing lang attr = Medium, font gaps = Low–Medium
 
-### @@deep-review
+### /review-iac
 
 #### Goal
 
@@ -23302,7 +23302,7 @@ iac-reviewer reviewer — ตรวจ iac ตาม dimensions ที่ได�
 - Renewal readiness ต่อ domain — auto vs manual
 - Early warnings ก่อน cert หมดอายุ
 
-### @@deep-review
+### /review-idea
 
 #### Goal
 
@@ -23488,7 +23488,7 @@ idea-reviewer reviewer — ตรวจ idea ตาม dimensions ที่ไ�
 
 - pass = 1, warning = 0.5, fail = 0; grade A (90+), B (80+), C (70+), D (60+), F (<60)
 
-### @@deep-review
+### /review-issue
 
 #### Goal
 
@@ -23787,7 +23787,7 @@ Issue reviewer — ตรวจ issue (ไฟล์, chat หรือ external 
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-mcp
 
 #### Goal
 
@@ -24116,7 +24116,7 @@ Severity: schema ไม่ validate/wrong types = High, text-dump errors = High,
 
 Severity: no TLS on remote / secrets in URL = Critical, no auth on HTTP transport = High, no cleanup/reconnect = Medium
 
-### @@deep-review
+### /review-migration
 
 #### Goal
 
@@ -24824,7 +24824,7 @@ migration_risk_score = (sum(category_scores) / total_categories) × 100
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-mobile
 
 #### Goal
 
@@ -25469,7 +25469,7 @@ Severity: startup >5s = High, unbounded memory growth = High, battery drain comp
 
 Severity: unusable touch targets / covered safe-area content = High, system gesture conflicts = High, no keyboard avoidance = Medium
 
-### @@deep-review
+### /review-observability
 
 #### Goal
 
@@ -26624,7 +26624,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-optimize
 
 #### Goal
 
@@ -27403,7 +27403,7 @@ revert fix นั้นแล้ว report เมื่อ:
 - Medium: instrumentation ค้างใน prod path
 - Low: missing median/multi-run averaging
 
-### @@deep-review
+### /review-performance
 
 #### Goal
 
@@ -28316,7 +28316,7 @@ findings ถูกต้อง พร้อม review score
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-plan
 
 #### Goal
 
@@ -28823,7 +28823,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-redundancy
 
 #### Goal
 
@@ -28900,7 +28900,7 @@ review score = weighted average ของ findings ทั้งหมด
 - Canonical absorber ระบุชัด + alias plan
 - ไม่มีการแก้ไขโดยไม่ confirm
 
-### @@deep-review
+### /review-release
 
 #### Goal
 
@@ -30071,7 +30071,7 @@ release_readiness_score = (sum(category_scores) / total_categories) × 100
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-risk
 
 #### Goal
 
@@ -30532,7 +30532,7 @@ risk score = probability value × impact value
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-sdk
 
 #### Goal
 
@@ -30939,7 +30939,7 @@ Severity: silent breaking = Critical, no migration notes = High, deprecation wit
 
 Severity: `any` leaks = Medium–High, no `.d.ts` = High, poor inference = Medium, no type tests = Low–Medium
 
-### @@deep-review
+### /review-security
 
 #### Goal
 
@@ -32746,7 +32746,7 @@ Severity: known CVE unpatched = Critical, secret in repo/logs = Critical, missin
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-seo
 
 #### Goal
 
@@ -33274,7 +33274,7 @@ overall_score = sum(dimension_score) / count(dimensions)
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-stability
 
 #### Goal
 
@@ -34223,7 +34223,7 @@ Severity: no fallback for critical dep = Critical, cascading failure unhandled =
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-techstack
 
 #### Goal
 
@@ -35067,7 +35067,7 @@ Findings ถูกต้องและจัดลำดับตาม severit
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-test
 
 #### Goal
 
@@ -36301,7 +36301,7 @@ test_quality_score = (sum(category_scores) / total_categories) × 100
 
 - This skill is a workflow; see [SKILL.md](../../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-then-fix
 
 #### Goal
 
@@ -36325,7 +36325,7 @@ Alias ของ `/deep-review-then-fix` — review แล้ว apply fix ตา
 
 - `/deep-review-then-fix` ถูก execute ครบทุก step
 
-### @@deep-review
+### /review-usage
 
 #### Goal
 
@@ -36403,7 +36403,7 @@ Review usage surface ของ project จากมุมผู้ใช้ — 
 - usage coverage % ชัดเจน
 - next action ผ่าน `/suggest-next-action`
 
-### @@deep-review
+### /review-uxui
 
 #### Goal
 
@@ -37340,7 +37340,7 @@ map user flows, identify friction points, and suggest UX improvements
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-workflow
 
 #### Goal
 
@@ -37845,7 +37845,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-workspace
 
 #### Goal
 
@@ -38358,7 +38358,7 @@ findings ถูกต้อง พร้อม review score และ recommenda
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
 
-### @@deep-review
+### /review-writing
 
 #### Goal
 
@@ -39173,7 +39173,7 @@ review_score = sum(severity_score) / count(findings)
 ## Expected Outcome
 
 - `tools/review-codebase` CLI รันได้และ produce `reports/review-report.json` (full หรือ diff-scoped ตาม mode)
-- Review ครอบคลุม 53 `/review-<domain>` skills ตาม priority order (P0 Critical → P4 Meta) + `deep-*` ผ่าน `/follow-deep` ภายใต้ budget — coverage ตรวจได้จาก ledger + `## Coverage` matrix
+- Review ครอบคลุม 56 review domains (sections `### /review-<domain>` ใน `## Review Domains`) ตาม priority order (P0 Critical → P4 Meta) + `deep-*` ผ่าน `/follow-deep` ภายใต้ budget — coverage ตรวจได้จาก ledger + `## Coverage` matrix
 - Findings มี priority, risk, fixSkill, status (new/existing/fixed/regressed), dedup แล้ว และ delta เทียบ baseline
 - ทุก high-priority finding ถูก route ไปยัง review/deep-review-then-fix skill ที่เหมาะสม
 - รายงานสรุปพร้อม Executive Summary, Result, Coverage matrix, per-domain sections, per-finding `หลักฐาน`/`เหตุผล`/`ความเสี่ยง`/`ลำดับความสำคัญ`/`fix skill`/`ใน update-review-cli-then-run`, Fix Status, Recommendations — verify ครบ section ก่อนจบ
