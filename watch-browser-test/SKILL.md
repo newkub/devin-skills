@@ -5,7 +5,7 @@ argument-hint: "[url|report]"
 related:
   - watch-browser
   - watch-browser-and-test
-  - watch-browser-and-improve-uxui
+  - watch-browser-and-fix
   - use-agent-browser
   - use-subagents
   - resolve-errors
@@ -27,9 +27,8 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ใช้เมื่อต้องการ exploratory/functional testing ผ่าน browser จริงโดยครอบคลุมทุก route — ต่างจาก `/run-test` (e2e) ที่รัน test suite เขียนไว้ล่วงหน้า (skill นี้คือ manual-style exploration ผ่าน subagents)
 
-- ถ้าต้องการ orchestrate ทั้ง functional + visual UX pass → `/watch-browser-and-improve-uxui`
-- ถ้าต้องการ improve UX/UI → `/watch-browser-and-improve-uxui`
-- ถ้าต้องการแก้ console/page errors → `/watch-browser-fix`
+- ถ้าต้องการ review/improve UX/UI ทุก route → `/review-uxui`
+- ถ้าต้องการแก้ console/page errors → `/watch-browser-and-fix`
 - ถ้ามี Playwright suite อยู่แล้ว → `/run-test` (e2e)
 - ถ้าไม่มี `agent-browser` MCP server → fallback ไป `/use-agent-browser` (CLI)
 
@@ -144,6 +143,55 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 - `timeout` = `900` วินาทีต่อ batch, `maxRetries` = `3` ต่อ agent crash
 - `/watch-browser-and-test` — top-level skill แยก (copy ของ skill นี้)
 
+
+## Merged Details
+
+### report-status
+
+##### Goal
+
+แปลง session ของ `/watch-browser-test` เป็น report — test scenarios ที่ผ่าน/ไม่ผ่าน พร้อม failure evidence
+
+##### Scope
+
+- ใช้เมื่อ `/watch-browser-test` dispatch มาที่ `report`/`status` หรือเรียกหลัง session จบ
+- Output: ตารางในแชท หรือ persistent artifact ผ่าน `/create-report-in-dot-devin`
+
+##### Execute
+
+###### 1. Collect Test Results
+
+> Goal: รวมผลต่อ scenario
+
+1. รวมต่อ scenario: pass/fail, duration, failure point (step ที่พัง)
+2. รวม evidence ต่อ failure: screenshot, console error, network fail
+3. flag flaky signals: pass บ้าง fail บ้างข้าม runs
+
+###### 2. Build Report
+
+> Goal: ตอบว่า flows สำคัญทำงานไหม
+
+1. ตาราง: `No.`, `Scenario`, `Result`, `Duration`, `Failure Point`, `Evidence`
+2. Summary: pass rate, slowest scenarios, failures by cause
+3. Flaky scenarios แยก section
+
+###### 3. Verdict
+
+> Goal: ตัดสิน test health
+
+1. Verdict: `all-pass` / `has-failures` / `flaky`
+2. failures → แนะนำ `/resolve-errors` หรือ `/deep-review` แล้ว fix ตาม `## Fix` (flaky)
+3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
+
+##### Rules
+
+- failure ต้องมี evidence (screenshot/console) — ไม่ใช่แค่ status
+- แยก product bug จาก test bug (selector หลุด, timing)
+- flaky ต้องมีอย่างน้อย 2 runs ที่ผลต่างกันก่อน flag
+
+##### Expected Outcome
+
+- Test report พร้อม per-scenario results + flaky signals + verdict
 
 ## Expected Outcome
 

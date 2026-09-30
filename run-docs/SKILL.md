@@ -3,10 +3,9 @@ name: run-docs
 description: รัน documentation site และแก้ไขข้อผิดพลาด
 argument-hint: "[scope]"
 related:
-  - review-docs
+  - deep-review
   - follow-tool-vitepress
   - update-vitepress-docs
-  - deep-review
   - deep-debug
   - resolve-errors
   - watch-browser
@@ -26,7 +25,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-docs` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (docs)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (docs)
 
 ### 1. Check Documentation Setup
 
@@ -63,7 +62,7 @@ related:
 > Goal: Open Browser and Watch (ถ้าจำเป็น)
 
 1. ถ้าต้องเปิด URL ให้เลือก:
-   - ถ้าต้องการตรวจสอบผ่าน browser automation → รัน `/watch-browser-fix`
+   - ถ้าต้องการตรวจสอบผ่าน browser automation → รัน `/watch-browser-and-fix`
    - ถ้าต้องการเปิดใน browser เท่านั้น → รัน `/open-web`
    - ถ้าต้องการ watch terminal ทุก 5 วินาที → รัน `/watch-terminal`
 2. ตรวจสอบว่า documentation site โหลดได้จริง

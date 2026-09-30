@@ -9,8 +9,7 @@ related:
   - use-subagents
   - report-workspace-graph
   - follow-monorepo
-  - review-dot-devin
-  - review-by-stakeholder
+  - deep-review
   - deep-validate
   - implement-to-production
   - run-verify
@@ -86,12 +85,12 @@ related:
    - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้
 5. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
 6. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
-7. ทำ `/review-dot-devin` เพื่อตรวจสอบทุก workspace `AGENTS.md`
+7. ทำ `/deep-review` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
 ### 6. Review By Stakeholder
 
 > Goal: review By Stakeholder
-1. ทำ `/review-by-stakeholder` เพื่อรับมุมมองจาก stakeholders ที่เหมาะสม
+1. ทำ `/deep-review` เพื่อรับมุมมองจาก stakeholders ที่เหมาะสม
 2. บันทึก findings พร้อม severity, stakeholder, recommendation
 3. ถ้าพบ issues ที่มีผลต่อ `AGENTS.md` → แก้ไขก่อนดำเนินต่อ
 4. สรุป stakeholder coverage map และ top findings
@@ -99,64 +98,10 @@ related:
 ### 7. Validate
 
 > Goal: ยื่นยัน Validate
-1. ทำ `/review-dot-devin` เพื่อ review `AGENTS.md`
+1. ทำ `/deep-review` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-4. ถ้าผ่าน → ดำเนิน `### 8. Ship` ต่อไป
-
-### 8. Ship
-
-> Goal: ship ผ่าน feature branch → validate → staging → merge → production พร้อม rollback path
-
-#### Branch Hygiene
-
-1. ตรวจ `git status` — uncommitted changes → commit ด้วย `/git-commit` หรือ `git stash`
-2. `git switch main` + `git pull` — main ล่าสุด
-3. switch/สร้าง feature branch ด้วย `/create-git-branch` — ห้ามทำงานต่อบน main
-4. ถ้า step ก่อนหน้าทำบน main → commit ย้ายไป feature branch
-
-#### Validate
-
-1. ถ้า scope ใหญ่หลาย workspace → `/ship` swarm mode (Step 4); diff เล็ก (typo/docs/config) → ข้าม step 2-8 ไป step 9 ได้
-2. ทำ `/deep-review-then-fix` — review + fix issues ก่อน ship (canonical fix path)
-3. ทำ `/check-bottlenecks` — optimize ทุก layer ที่เกี่ยวข้อง
-4. ทำ `/review-test`, `/review-dependencies` + `/update-version-to-latest`, `/review-architecture`, `/review-docs` ตาม scope
-5. ทำ `/follow-monorepo` ถ้า monorepo
-6. ทำ `/run-verify` + `/run-test-all`
-7. ถ้ามี TODO/MOCK/placeholder → `/implement-to-production`; structural issues → `/refactor`
-8. ทำ `/update-project` sync project files/docs; `/deep-validate` เป็น final gate
-9. ถ้า fail → `/resolve-errors` retry สูงสุด 3 รอบ แล้ว `/loop-until-complete`
-
-#### Stage
-
-1. `git pull --rebase origin main` — feature branch sync กับ main
-2. ทำ `/git-commit-and-push` push changes ที่ผ่าน validation
-3. deploy staging ด้วย `/run-deploy` ตาม AGENTS.md/package.json — บันทึก deploy URL, commit hash
-4. ทำ `/watch-deploy` + smoke tests (critical flows, API health); e2e ผ่าน `/run-test` ถ้ามี
-5. ถ้า staging fail → fix code กลับ Validate — retry สูงสุด 3 รอบ; ผ่าน = `ready-for-production`
-
-#### Merge
-
-1. repo ที่มี remote + PR workflow → `/create-github-pr` + `/review-github-pr`
-2. ถ้า `/deep-review` ยังไม่ได้ทำ → ทำก่อน merge อย่างน้อย 1 รอบ
-3. CI gate — `/resolve-cicd` (watch + resolve PR checks) หรือ `gh pr checks <n> --watch`; ห้าม merge ตอน check fail/pending
-4. CI ผ่าน → `/open-diff pr <n>` เปิด diff UI ให้ user review + กด `Merge ▼`; AI ห้าม merge เองโดยไม่มี user confirm (`/merge-github-pr` เมื่อ user ยืนยัน)
-
-#### Production
-
-1. user confirm ก่อน deploy production — แสดง commit hash, changes, staging result; breaking change → `/ask-me`
-2. บันทึก version ก่อน deploy (rollback target)
-3. deploy production ด้วย `/run-deploy`; `/watch-deploy` + health checks + smoke tests
-4. health check fail → rollback: `git revert <merge-commit>` + redeploy version ก่อนหน้า — ห้าม force-push
-5. ทำ `/resolve-cicd` บน production branch; กลับ `git switch main` + sync local/remote
-
-#### Wrap Up
-
-1. ทำ `/report-progress`, `/report`
-2. ทำ `/report-scan-todo` — pending items ไป `TODO.md`
-3. ถ้าต้อง release → `/run-release --dry-run` ก่อน → `/run-release` เมื่อ user ยืนยัน
-4. ถ้ามี stash → `git stash pop`; ปิด issue/task ที่เกี่ยวข้อง
-5. ทำ `/suggest-next-action`
+4. ถ้าผ่าน → ถ้าต้อง ship ต่อให้ทำ `/ship` (canonical ship workflow อยู่ที่ `ship/references/ship-workflow.md` — ไม่ duplicate ใน skill นี้)
 
 ## Rules
 
@@ -205,9 +150,9 @@ related:
 
 ### 7. Validation
 
-- ทำ `/review-dot-devin` เพื่อ review AGENTS.md
+- ทำ `/deep-review` เพื่อ review AGENTS.md
 - ทำ `/deep-validate` ก่อน ship
-- ไม่ commit เองระหว่างเขียน `AGENTS.md` — ship workflow ดำเนินการต่อหลัง validate ผ่าน
+- ไม่ commit เองระหว่างเขียน `AGENTS.md` — ship ต่อด้วย `/ship` หลัง validate ผ่าน
 
 ## Expected Outcome
 
@@ -217,6 +162,6 @@ related:
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
 - ได้รับ review จาก stakeholders ที่เหมาะสมก่อน `/deep-validate`
-- ผ่าน `/review-dot-devin` และ `/deep-validate`
+- ผ่าน `/deep-review` และ `/deep-validate`
 - subagents สามารถอ่าน `AGENTS.md` แล้วดำเนินการตามขั้นตอนได้
 

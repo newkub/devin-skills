@@ -35,20 +35,20 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 
 | Domain | Review skill | Fix route |
 |--------|-------------|-----------|
-| seo | `/review-seo` | `subskills/improve-seo` |
-| security | `/review-security` | `## Fix` — secrets rotation, headers, vuln deps |
-| auth | `/review-auth` | `## Fix` — sessions, tokens |
-| api | `/review-api` | `## Fix` — contract drift, versioning |
-| database | `/review-database` | `## Fix` (migrations) + `subskills/optimize-queries` |
-| bundle+assets | `/review-bundle` | `subskills/optimize-bundle` |
-| performance | `/review-performance` | `subskills/optimize-performance` |
-| cost | `/review-cost` | `subskills/optimize-cost` |
-| tests | `/review-test` | `## Fix` (flaky) + `subskills/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/review-uxui` | `subskills/improve-uxui-fix` + `/watch-browser-and-improve-uxui` (browser pass) |
-| observability | `/review-observability` | `subskills/improve-observability` |
-| accessibility | `/review-accessibility` | `subskills/improve-a11y` |
-| frontend | `/review-frontend` | `## Fix` (hydration) + `subskills/improve-rendering` |
-| quality/types | `/review-code-quality` | `## Fix` — complexity, imports |
+| seo | `/deep-review` | `subskills/improve-seo` |
+| security | `/deep-review` | `## Fix` — secrets rotation, headers, vuln deps |
+| auth | `/deep-review` | `## Fix` — sessions, tokens |
+| api | `/deep-review` | `## Fix` — contract drift, versioning |
+| database | `/deep-review` | `## Fix` (migrations) + `subskills/optimize-queries` |
+| bundle+assets | `/deep-review` | `subskills/optimize-bundle` |
+| performance | `/deep-review` | `subskills/optimize-performance` |
+| cost | `/deep-review` | `subskills/optimize-cost` |
+| tests | `/deep-review` | `## Fix` (flaky) + `subskills/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
+| uxui | `/deep-review` | `subskills/improve-uxui-fix` + `/watch-browser-and-fix` (browser pass) |
+| observability | `/deep-review` | `subskills/improve-observability` |
+| accessibility | `/deep-review` | `subskills/improve-a11y` |
+| frontend | `/deep-review` | `## Fix` (hydration) + `subskills/improve-rendering` |
+| quality/types | `/deep-review` | `## Fix` — complexity, imports |
 | อื่นๆ (cli, config, migration, backend, dependencies, delivery, docs, stability, i18n, mobile, desktop, browser-ext, dx, iac, sdk, usage, ai, mcp, events) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
 ## Execute
@@ -104,7 +104,7 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 - ระบุ file path และ line number
 
 - ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
-- ใช้ /watch-browser-fix ถ้าจำเป็น
+- ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
@@ -116,11 +116,11 @@ fix ทำผ่าน `## Fix` section หรือ `subskills/` ของ `rev
 
 ## Fix
 
-> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `../deep-review/references/review-fix.md` เมื่อ user confirm ให้แก้ findings
 
-1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../shared/review-fix.md`
+1. จัดลำดับ findings ตาม severity — canonical steps ที่ `../deep-review/references/review-fix.md`
 2. เลือก fix route ที่ตรงกับ finding จาก Domain Map ด้านบน (then fix)
-3. preserve behavior + verify + report — canonical ที่ `../shared/review-fix.md`
+3. preserve behavior + verify + report — canonical ที่ `../deep-review/references/review-fix.md`
 
 ## References
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - review-release
+  - deep-review
   - resolve-errors
   - resolve-cicd
   - run-verify
@@ -24,13 +24,13 @@ related:
 Deploy application ไปยัง platform ที่กำหนด พร้อม post-deploy validation, commit/push และ watch browser จนกว่า deployment จะ live
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `review-release`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `deep-review`
 
 ครอบคลุมการ verify, build, deploy, commit/push, post-deploy validation, watch until live และ rollback & recovery
 
 ## Execute
 
-> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (deploy)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (deploy)
 
 ### 1. Verify
 
@@ -84,7 +84,7 @@ Commit และ push changes ไปยัง repository
 1. เปิด URL ของ deployment
 2. ตรวจสอบว่า application ทำงานได้
 3. ตรวจสอบ logs ว่าไม่มี error
-4. ทำ `/watch-browser-fix` ถ้ามี URL
+4. ทำ `/watch-browser-and-fix` ถ้ามี URL
 
 ### 6. Watch Until Live
 
@@ -92,7 +92,7 @@ Commit และ push changes ไปยัง repository
 
 Watch deployment ด้วย browser จนกว่าจะ live
 
-1. ทำ `/watch-browser-fix` ด้วย deployment URL
+1. ทำ `/watch-browser-and-fix` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
 4. ทำ `/resolve-errors` ถ้าพบปัญหา
@@ -149,7 +149,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ### 5. Watch Until Live
 
-- ใช้ `/watch-browser-fix` สำหรับ monitoring
+- ใช้ `/watch-browser-and-fix` สำหรับ monitoring
 - ใช้ `/resolve-errors` เมื่อพบปัญหา
 - ตรวจสอบ console และ network errors
 - ทำ `/loop-until-complete` จนกว่า deployment live

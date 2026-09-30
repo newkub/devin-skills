@@ -13,7 +13,7 @@ related:
 เปิด website ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-files-in-web`, `use-agent-browser`, `watch-browser-fix`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-files-in-web`, `use-agent-browser`, `watch-browser-and-fix`
 
 ใช้ `open-web` เมื่อต้องเปิด URL ใน external browser หรือ integrated browser
 

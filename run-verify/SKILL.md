@@ -3,7 +3,7 @@ name: run-verify
 description: รัน verify แบบครบวงจรบน local หรือ CI/CD ตามขนาด project
 argument-hint: "[scope]"
 related:
-  - review-config
+  - deep-review
   - run-scan
   - run-lint
   - run-typecheck
@@ -35,7 +35,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-config` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (verify)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (verify)
 
 ### 1. Detect Mode
 
@@ -85,7 +85,7 @@ related:
 
 > Goal: ยืนยัน project ทำงานได้จริง end-to-end — ใช้เมื่อ `--deep` หรือก่อน ship/deploy ใหญ่
 
-1. Runtime gate: ทำ `/run-test` (e2e) ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser-fix` จับ console/network errors ถ้ามี web URL
+1. Runtime gate: ทำ `/run-test` (e2e) ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser-and-fix` จับ console/network errors ถ้ามี web URL
 2. Usage gate: ทำ `/test-usage` ยืนยัน examples ใน README/docs ทำงานได้จริง
 3. Deep validation: ทำ `/deep-validate` สำหรับ cross-reference, compliance, security ครั้งสุดท้าย; ถ้าพบ issues → `/deep-review-then-fix` แล้ว verify ใหม่
 4. แต่ละ gate fail → fix แล้วเริ่ม gate นั้นใหม่ ไม่ข้าม; retry สูงสุด 3 ครั้ง → stop + report

@@ -4,8 +4,8 @@ description: Watch หน้าเว็บอย่างต่อเนื่�
 argument-hint: "[domain|report] [url]"
 related:
   - use-agent-browser
-  - watch-browser-console
-  - watch-browser-and-improve-uxui
+  - watch-browser-and-fix
+  - watch-browser-test
   - use-mcp
   - update-devin
   - resolve-errors
@@ -20,12 +20,10 @@ Watch หน้าเว็บอย่างต่อเนื่องผ่�
 
 ใช้เมื่อต้องการ monitor หน้าเว็บผ่าน MCP protocol — เช่น watch dev server, ตรวจ visual/state changes หลังแก้ code, หรือเฝ้า console/errors ระหว่าง session
 
-- `watch-browser-and-fix` / `watch-browser-and-test` เป็น alias stubs ของ `watch-browser-fix` / `watch-browser-test`; `watch-browser-and-improve-uxui` เป็น canonical combined-flow skill
-- ถ้าต้องการแก้ errors ที่พบทันที → `/watch-browser-fix`
-- ถ้า focus เฉพาะ console errors → `/watch-browser-console`
-- ถ้าต้องการ analyze + improve UX/UI ทุก route → `/watch-browser-and-improve-uxui`
+- `watch-browser-and-test` เป็น alias stub ของ `watch-browser-test`; `watch-browser-and-fix` เป็น canonical merged skill (watch + console monitor + fix — merged จาก `watch-browser-fix`/`watch-browser-console`)
+- ถ้าต้องการแก้ errors/console ที่พบทันที → `/watch-browser-and-fix`
+- ถ้าต้องการ analyze + improve UX/UI → `/review-uxui`
 - ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
-- ถ้าต้องการ orchestrate functional + visual UX pass ครบทุก route → `/watch-browser-and-improve-uxui`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
 ## Execute
@@ -78,7 +76,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 2. แต่ละรอบดึง: console, errors และ state (title/url) ผ่าน `mcp_call_tool`
 3. เทียบกับ poll ก่อนหน้า — บันทึกเฉพาะ delta ที่เปลี่ยน (new errors, URL change, console ใหม่)
 4. ถ้าพบ error ใหม่ → capture `screenshot` + บันทึก console/errors ก่อน action
-5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser-fix`
+5. ถ้า user ต้องการแก้ไข → ทำ `/resolve-errors` หรือส่งต่อ `/watch-browser-and-fix`
 
 ### 5. Report And Cleanup
 
@@ -103,8 +101,8 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 
 | Domain | Skill |
 |--------|-------|
-| `fix` | `/watch-browser-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
-| `improve-uxui` | `/watch-browser-and-improve-uxui` — watch + subagents improve UX/UI ทุก route |
+| `fix` | `/watch-browser-and-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
+| `uxui` | `/review-uxui` — review UX/UI จาก screenshots/routes |
 | `test` | `/watch-browser-test` — watch + subagents roleplay user test flows |
 
 1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน
@@ -147,6 +145,55 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 - หยุดทันทีเมื่อ user กด `Ctrl+C` หรือสั่งหยุด
 - ปิด browser session ก่อนจบ — ไม่ทิ้ง daemon ค้าง
 - ใช้ /use-mcp ถ้าจำเป็น
+
+## Merged Details
+
+### report-status
+
+##### Goal
+
+แปลง watch session ของ `/watch-browser` เป็น status report — timeline ของ events, errors, state changes
+
+##### Scope
+
+- ใช้เมื่อ `/watch-browser` dispatch มาที่ `report`/`status` หรือเรียกหลัง watch จบ
+- Output: ตารางในแชท หรือ persistent artifact ผ่าน `/create-report-in-dot-devin`
+
+##### Execute
+
+###### 1. Collect Events
+
+> Goal: รวม events จาก watch session
+
+1. รวมจาก agent-browser: navigation, console errors, network fails, state changes, screenshots ที่จับได้
+2. จัดเรียงเป็น timeline พร้อม timestamps
+3. dedupe events ที่ซ้ำ (error เดิม fire หลายครั้ง)
+
+###### 2. Build Status Report
+
+> Goal: report ที่ตอบว่า app ทำงานยังไงระหว่าง watch
+
+1. Summary: session duration, pages visited, error count
+2. ตาราง: `No.`, `Time`, `Event`, `Severity`, `Detail`
+3. Screenshots reference ถ้ามี — link path ไม่ embed
+
+###### 3. Verdict
+
+> Goal: สรุป health ของ session
+
+1. Verdict: `healthy` / `warnings` / `errors-found`
+2. Top issues ที่ต้อง follow-up (`/watch-browser-and-fix` หรือ `/resolve-errors`)
+3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
+
+##### Rules
+
+- timeline ต้องมี timestamps จริง — ไม่ reconstruct จาก memory
+- error เดิมที่ซ้ำ count ไว้ ไม่ list ซ้ำ
+- screenshots เป็น references ไม่ inline
+
+##### Expected Outcome
+
+- Status report พร้อม timeline + error counts + verdict
 
 ## Expected Outcome
 

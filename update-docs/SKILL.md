@@ -6,15 +6,14 @@ related:
   - check-should-update
   - follow-single-of-source
   - check-monorepo
-  - review-docs
+  - deep-review
   - check-content-correctness
   - think-reframe
-  - review-writing
   - update-references
   - update-vitepress-docs
   - create-report-in-dot-devin
   - watch-browser
-  - watch-browser-and-improve-uxui
+  - watch-browser-and-fix
 
 ---
 
@@ -28,7 +27,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - `docs/index.md` เป็น table of contents ลิงก์ไปทุกหมวด — ไม่มี nav/sidebar config
 - รองรับ `update-features-md` (subskill `features-md`) โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-improve-uxui` — เป็น input สำหรับอัปเดต docs
+- reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-fix` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -115,7 +114,7 @@ related:
 
 > Goal: เนื้อหาอ่านง่าย สม่ำเสมอ ไม่ซ้ำ
 
-1. ทำ `/review-writing`
+1. ทำ `/deep-review`
 2. ตรวจ heading structure, frontmatter, links
 3. แก้ไขซ้ำซ้อนหรือ placeholder
 4. หน้าละ ≤ ~150 บรรทัด — เกินให้ split เป็นหน้าย่อยแล้ว link จาก index
@@ -199,7 +198,7 @@ related:
 - examples ต้องรันได้
 - ไม่ใช้ placeholder หรือ lorem ipsum
 - ใช้ /run-docs ถ้าจำเป็น
-- ใช้ /review-docs ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /check-content-correctness ถ้าจำเป็น
 - ใช้ /think-reframe ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น

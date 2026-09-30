@@ -6,7 +6,7 @@ related:
   - deep-debug
   - analyze-root-cause-analysis
   - run-profiler
-  - watch-browser-console
+  - watch-browser-and-fix
   - use-astgrep
   - search
   - report
@@ -133,7 +133,7 @@ Trace ลึกตามทางเดินของ execution, data flow, req
 - ตรวจสอบ network, database, serialization, concurrency
 - ไม่มองข้าม async หรือ event-driven flow
 
-- ใช้ /watch-browser-console ถ้าจำเป็น
+- ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /follow-tool-git ถ้าจำเป็น
 

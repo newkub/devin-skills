@@ -4,12 +4,11 @@ description: สร้างไอเดีย UX/UI improvements และ feat
 argument-hint: "[topic-or-url]"
 related:
   - idea
-  - review-uxui
-  - review-accessibility
+  - deep-review
   - follow-design-system
   - report-uxui
   - watch-browser
-  - watch-browser-and-improve-uxui
+  - watch-browser-and-fix
   - deep-analyze
   - report
   - then-apply
@@ -30,8 +29,8 @@ related:
 - ครอบคลุมมิติ: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์ ไม่ implement
-- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/watch-browser-and-improve-uxui` หรือ `/review-uxui`
-- ถ้าต้องการ implement → ส่งต่อ `/watch-browser-and-improve-uxui` หรือ `/implement-features-to-mvp`
+- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/review-uxui` หรือ `/deep-review`
+- ถ้าต้องการ implement → ส่งต่อ `/implement-features-to-mvp`
 
 ## Execute
 
@@ -41,7 +40,7 @@ related:
 
 1. รับ `<topic-or-url>` จาก argument หรือ conversation context
 2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ — ดู routes, components, design system ที่มี
-3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/review-uxui` หรือ `/report-uxui` ก่อนคิดไอเดีย
+3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/deep-review` หรือ `/report-uxui` ก่อนคิดไอเดีย
 4. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
 
 ### 2. Generate Ideas
@@ -70,7 +69,7 @@ related:
 1. แสดง summary 1-2 บรรทัด
 2. แสดง tables ในแชท
 3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ implement → แนะนำ `/watch-browser-and-improve-uxui` (end-to-end pass) หรือ `/implement-features-to-mvp`
+4. ถ้าต้องการ implement → แนะนำ `/implement-features-to-mvp`
 5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
 
 ## Rules
@@ -86,12 +85,12 @@ related:
 
 ### 3. UX Dimension Coverage
 
-- ทุก run ต้อง cover อย่างน้อย 3 มิติ: visual, interaction, a11y (ตาม `/review-accessibility` checklist)
+- ทุก run ต้อง cover อย่างน้อย 3 มิติ: visual, interaction, a11y (ตาม `/deep-review` checklist)
 - ไอเดียต้อง actionable และอิง design system ที่มี (`/follow-design-system`) — ไม่เสนอ pattern ที่ขัดกันโดยไม่มีเหตุผล
 
 ### 4. Suggest Deep Workflow
 
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/watch-browser-and-improve-uxui` หรือ `/implement-features-to-mvp`
+- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
 - ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
 - เมื่อ idea ใดถูก implement → ต้องทำ `/run-test-all` เสมอ
 
