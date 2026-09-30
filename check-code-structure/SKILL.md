@@ -5,9 +5,8 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - use-astgrep
-  - review-architecture
-  - refactor
   - deep-review
+  - refactor
   - deep-validate
   - scan-codebase
 
@@ -30,7 +29,7 @@ related:
 > Goal: Review And Inventory
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
-2. ทำ `/update-project-rules` ถ้ามี `ast-grep` rules หรือ `.devin/rules` ที่เกี่ยวข้อง
+2. ทำ `/update-astgrep-rules` ถ้ามี `ast-grep` rules หรือ `.devin/rules` ที่เกี่ยวข้อง
 3. อ่าน `## Sg Outline` ด้านล่างเพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
 4. เลือก `sg outline` flags ตาม scope (ดู `## Sg Outline`)
 5. ระบุ target paths ที่จะ improve
@@ -81,7 +80,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 1. แยกไฟล์ที่มี top-level symbols เกิน 5 ออกเป็นไฟล์ย่อยตาม domain หรือ responsibility
 2. ลด public members ใน type/class ที่เกิน 10 โดย extract ออกเป็น sub-type หรือ helper
-3. ทำ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
+3. ทำ `/deep-review` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
 6. ทำ `/rename` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename

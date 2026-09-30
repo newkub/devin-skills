@@ -3,12 +3,12 @@ name: use-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - update-project-rules
+  - update-astgrep-rules
   - check-code-structure
   - replace
   - search-by-astgrep
   - use-astgrep-programmatic
-  - review-code-quality
+  - deep-review
 
 ---
 ## Goal
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules`, ad-hoc search workflow อยู่ใน `/search-by-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic`
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-astgrep-rules`, ad-hoc search workflow อยู่ใน `/search-by-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic`
 
 ## Execute
 
@@ -79,7 +79,7 @@ related:
 8. ถ้า matches เยอะเกิน → ปรับ pattern ให้จำเพาะขึ้น
 9. ถ้าต้องการแก้ไข → ส่งต่อ `/replace`
 10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
-11. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
+11. ถ้าต้องการเขียน rules ให้ทำ `/update-astgrep-rules`
 
 ## Rules
 
@@ -118,7 +118,7 @@ related:
 
 ### 4. Rule Writing
 
-- การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
+- การเขียน rules อยู่ใน `/update-astgrep-rules` ไม่ใช่ workflow นี้
 
 ### 5. Ad-Hoc Search
 
@@ -128,11 +128,11 @@ related:
 - ปล่อยให้ ast-grep auto-detect ภาษา หรือระบุ `--lang` ถ้า extension ไม่มาตรฐาน
 - ถ้า matches เยอะเกิน → เพิ่ม constraints หรือ filters
 - ถ้า pattern ซับซ้อน → ทำ `/use-astgrep-programmatic`
-- ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-project-rules`
+- ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-astgrep-rules`
 
 - ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ `/review-code-quality` ถ้าจำเป็น
-- ใช้ `/review-code-quality` ถ้าจำเป็น
+- ใช้ `/deep-review` ถ้าจำเป็น
+- ใช้ `/deep-review` ถ้าจำเป็น
 
 ### Related Workflows
 

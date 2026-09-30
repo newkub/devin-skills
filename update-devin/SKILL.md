@@ -29,14 +29,14 @@ Dispatch ไป skill ปลายทาง ตาม Devin config domain — pa
 | Domain | Skill |
 |---|---|
 | `global-mcp` | /update-devin-global-mcp — global MCP server config |
-| `global-rules` | /update-devin-global-rules — global rules (`global_rules.md`) |
+| `global-rules` | /update-devin-harness — global rules (`global_rules.md`) |
 | `global-subagents` | /update-devin-global-subagents — global subagent profiles |
 | `harness` | /update-devin-harness — agent harness config |
 | `project-hooks` | /update-devin-project-hooks — project-level hooks |
 | `project-mcp` | /update-devin-project-mcp — project-level MCP config |
 | `project-rules` | /update-devin-project-rules — project-level rules |
 
-1. ระบุ domain จาก argument (เช่น `/update-devin-global-rules`)
+1. ระบุ domain จาก argument (เช่น `/update-devin-harness`)
 2. ถ้า domain รองรับ → ทำตาม `/update-devin-<domain>` ทั้ง flow
 3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 

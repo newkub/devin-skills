@@ -5,9 +5,9 @@ argument-hint: "[scope]"
 related:
   - update-tests
   - update-project
-  - update-project-rules
+  - update-astgrep-rules
   - run-test
-  - review-writing
+  - deep-review
   - deep-validate
   - check-reference
 
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-tests`, `/update-project`, `/update-project-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
+ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-tests`, `/update-project`, `/update-astgrep-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
 
 ## Execute
 
@@ -87,7 +87,7 @@ related:
 
 ### 4. Quality
 
-- ใช้ `/review-writing` เพื่อตรวจคุณภาพเนื้อหา
+- ใช้ `/deep-review` เพื่อตรวจคุณภาพเนื้อหา
 - ใช้ backticks สำหรับ `commands`, `paths`, `skill names`
 - ภาษา: ไทย/อังกฤษ ตาม project convention
 

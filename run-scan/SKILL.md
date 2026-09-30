@@ -3,10 +3,10 @@ name: run-scan
 description: รัน ast-grep scan เพื่อตรวจสอบ codebase ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - review-dot-devin
+  - deep-review
   - use-astgrep
   - update-astgrep-rules
-  - update-project-rules
+  - update-astgrep-rules
   - report
   - loop-until-complete
   - resolve-errors
@@ -23,7 +23,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dot-devin` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (scan)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (scan)
 
 ### 1. Setup And Write Rules
 
@@ -31,7 +31,7 @@ related:
 
 1. ทำ `/use-astgrep` เพื่อติดตั้งและตั้งค่า `ast-grep`
 2. ตรวจสอบ `sgconfig.yml` มี `ruleDirs: rules` และมี `scan` script ใน `package.json`
-3. ถ้ายังไม่มี rules ให้ทำ `/update-project-rules` เพื่อสร้าง rules ใน `rules/` directory
+3. ถ้ายังไม่มี rules ให้ทำ `/update-astgrep-rules` เพื่อสร้าง rules ใน `rules/` directory
 4. ทำ `/update-astgrep-rules` เพื่ออัปเดตและตรวจสอบ rules `ก่อน`รัน scan เสมอ — rules stale ทำให้ findings คลาดเคลื่อน
 
 ### 2. Run Scan

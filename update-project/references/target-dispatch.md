@@ -12,7 +12,7 @@
 | 4 | `config` | `/update-config` |
 | 5 | `versions` (runtime, deps, tools, CI, Docker) | `/update-version-to-latest` |
 | 6 | `project-docs` | `/update-readme-md`, `/update-agents-md`, `/update-usage-md`, `/update-features-md` |
-| 7 | `rules` | `/update-project-rules` |
+| 7 | `rules` | `/update-astgrep-rules` |
 | 8 | `skills` ใน project | `/update-project-skills` |
 | 9 | `examples` | `/update-examples` |
 | 10 | `tests` | `/update-tests` |

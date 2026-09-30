@@ -44,7 +44,7 @@ Subagent ที่รับผิดชอบ update domain เดียวข�
    - `vscode` → `.vscode/`
    - `todo` → `TODO.md`
    - `contributing` → `CONTRIBUTING.md`
-2. รัน update-* skill ที่ตรง domain (`/update-config`, `/update-docs`, `/update-project-rules`, `/update-specs`, `/update-examples`, `/update-gitignore`, `/update-dot-vscode`, `/update-todo-md`, `/update-contributing-md`)
+2. รัน update-* skill ที่ตรง domain (`/update-config`, `/update-docs`, `/update-astgrep-rules`, `/update-specs`, `/update-examples`, `/update-gitignore`, `/update-dot-vscode`, `/update-todo-md`, `/update-contributing-md`)
 3. ใช้ `changed-info` เพื่อข้ามไฟล์ที่ไม่ drift — ไม่เขียนใหม่ถ้าไม่เปลี่ยน
 4. ห้ามแตะไฟล์นอก `domain` — domain อื่นเป็นหน้าที่ของ subagent คู่ขนาน
 

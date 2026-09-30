@@ -6,7 +6,7 @@ related:
   - update-config
   - update-dot-devin
   - update-docs
-  - update-project-rules
+  - update-astgrep-rules
   - update-specs
   - update-examples
   - update-project-skills
@@ -62,7 +62,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 3. ตรวจสอบ `docs/`, `rules/`, `.devin/`, `.vscode/`
 4. ระบุ orchestration tools (moon, turbo)
 5. รัน updates ตามลำดับ:
-   - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ)
+   - `/deep-review` (ถ้ามี CI/CD ต้องตรวจ)
    - `/setup-cicd` (ถ้า CI/CD config drift หรือยังไม่พร้อม)
    - `/update-version-to-latest` (ถ้าต้องการอัปเดต dependencies ทุก workspace เป็น latest)
    - `/update-version-to-latest` (ถ้าต้องการอัปเดต runtime, deps, tools, และ versioned config ทั้งหมดเป็น latest)
@@ -70,12 +70,13 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
+   - package manifest setup (merged `/setup-package`) — ตรวจ required fields + scripts ตาม `### setup-package` ใน `## Merged Details`
    - `/update-readme-md`
    - `/update-agents-md`
    - `/update-usage-md` เพื่อสร้าง/อัปเดต `USAGE.md` ที่ root ของแต่ละ workspace
    - `/update-features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
-   - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+   - `/update-astgrep-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
    - `/update-specs` เพื่อสร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
    - `/update-tests` เพื่ออัปเดต test setup
@@ -85,7 +86,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/deep-review` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing-md`
-6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
+6. ทำ `/deep-review` เพื่อ sync config ทั้งหมด
 7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
 8. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
 
@@ -152,13 +153,13 @@ Dispatch rules:
 
 - แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`) และ project config
 - ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
+- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-to-dev-branch` ใน workspace นั้น
 
 ### 3. No Commit
 
 - `update-project` ไม่ commit การเปลี่ยนแปลง
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
-- ถ้าใช้ใน monorepo → เรียก `/ship` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
+- ถ้าใช้ใน monorepo → เรียก `/ship-to-dev-branch` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
 ### 4. Idempotency
 
@@ -176,6 +177,24 @@ Dispatch rules:
 - ไม่อ้างว่า check ผ่าน ถ้า command fail
 
 - ใช้ /update-project ถ้าจำเป็น
+
+## Merged Details
+
+### setup-package
+
+Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) — ใช้ครั้งเดียวตอนเริ่ม project หรือเมื่อ manifest ไม่พร้อม publish — merged จาก `/setup-package`
+
+1. Detect ecosystem จาก manifest file — หลาย ecosystems → ทำทีละตัว; ไม่มีเลย → ข้าม
+2. Required fields ตาม ecosystem:
+   - Node/Bun `package.json`: `name`, `version`, `description`, `license`, `repository`, `homepage`, `files` (ระบุสิ่งที่ publish เช่น `dist`, `README.md`, `LICENSE`), `exports`/`main` ชี้ build output; ถ้า `private: true` → ถาม user ว่าจะ release public ไหม
+   - Rust `Cargo.toml`: `package.name`, `version`, `description`, `license`, `repository`, `categories`, `keywords`, `edition`, `rust-version`; `[[bin]]`/`[lib]` ตาม project type; monorepo → `workspace` + `/follow-monorepo`
+   - Python `pyproject.toml`: `project.name`, `version`, `description`, `license`, `readme`, `requires-python`, `classifiers`, `build-system` (setuptools/hatchling/flit), `project.scripts` ถ้ามี CLI
+   - Go `go.mod`: `module` path, `go` version; ไม่มี `LICENSE`/`README.md` → แนะนำเพิ่ม
+3. Scripts: ต้องมี `build`, `test:all`, `verify` (`verify` = `check && test` หรือ `lint && typecheck && test`) — ห้ามใส่ `release` script (release ผ่าน `/setup-cicd` workflow หรือ `/follow-tool-*`)
+4. ขาด field → ให้ user กรอก หรือใช้ค่า default จาก project; ทำ `/follow-tasks` ปรับ scripts ให้สมบูรณ์
+5. Validate: `/deep-review` manifest + `/run-verify` — fail → แก้และ retry ≤3
+6. Monorepo: `/follow-monorepo` ก่อน; workspace packages ไม่ต้อง `private: false` ถ้า publish ที่ root
+7. ไม่ publish เอง — publish ผ่าน `/publish-package-to-registry` หรือ `/run-release`
 
 ## Expected Outcome
 

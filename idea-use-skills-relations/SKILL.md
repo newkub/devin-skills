@@ -7,16 +7,15 @@ related:
   - read-related
   - idea-new-devin-global-skills
   - update-devin-global-skills
-  - update-devin-global-rules
+  - update-devin-harness
   - list-devin-global-skills
   - create-plan-in-dot-devin
-  - then-apply
   - report
 ---
 
 ## Goal
 
-สร้างไอเดียและ draft สำหรับปรับปรุง skill relations — วิเคราะห์ `related` graph ทั้งหมด หา edges ที่ขาด จุดที่ควรเรียก `use-related-skills` และโครงสร้าง relation ใหม่ที่ควรมี (ไม่ implement จริงจนกว่า user confirm → `/then-apply`)
+สร้างไอเดียและ draft สำหรับปรับปรุง skill relations — วิเคราะห์ `related` graph ทั้งหมด หา edges ที่ขาด จุดที่ควรเรียก `use-related-skills` และโครงสร้าง relation ใหม่ที่ควรมี (ไม่ implement จริงจนกว่า user confirm → `/follow-your-suggestion`)
 
 ## Scope
 
@@ -74,15 +73,15 @@ related:
 
 1. ตรวจว่า target skill ทุกตัวมีอยู่จริง ไม่ซ้ำ `related` เดิม และไม่เสนอ self-reference
 2. จัดลำดับตาม impact: broken refs > missing invocation steps > missing edges > new-skill ideas
-3. ถ้า user confirm → ทำ `/then-apply` แล้ว apply ผ่าน `/use-related-skills` (step Update Related Skills) หรือ `/update-devin-global-skills` — skill นี้คือ idea/draft เท่านั้น
-4. ถ้า draft แตะ `global_rules.md` → ระบุว่า apply ต้องผ่าน `/update-devin-global-rules`
+3. ถ้า user confirm → ทำ `/follow-your-suggestion` แล้ว apply ผ่าน `/use-related-skills` (step Update Related Skills) หรือ `/update-devin-global-skills` — skill นี้คือ idea/draft เท่านั้น
+4. ถ้า draft แตะ `global_rules.md` → ระบุว่า apply ต้องผ่าน `/update-devin-harness`
 5. ถ้าไม่มี gaps → report ว่า graph สมบูรณ์แล้วและทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Draft Only
 
-- ห้ามแก้ `SKILL.md`, `related` หรือ `global_rules.md` ใน skill นี้ — ออก draft เท่านั้น แล้ว handoff ให้ `/use-related-skills`, `/update-devin-global-skills` หรือ `/update-devin-global-rules`
+- ห้ามแก้ `SKILL.md`, `related` หรือ `global_rules.md` ใน skill นี้ — ออก draft เท่านั้น แล้ว handoff ให้ `/use-related-skills`, `/update-devin-global-skills` หรือ `/update-devin-harness`
 - ทุก idea ต้องอ้าง evidence จากไฟล์จริง (frontmatter, Execute steps) — ห้ามเดาจากชื่ออย่างเดียว
 - `related` edge ที่เสนอต้องสมเหตุสมผลทั้งทาง (`Goal`/`Scope`/`Execute` เกี่ยวข้องจริง) — ไม่ใช่ link ทุกอย่างเข้าด้วยกัน
 
@@ -98,4 +97,4 @@ related:
 - relations graph ของ skills ใน scope พร้อม broken/asymmetric edges ที่พบ
 - ตาราง ideas: edges ที่ควรเพิ่ม, จุดที่ควรเรียก `/use-related-skills`, skill ideas ใหม่
 - priority + rationale ต่อ idea พร้อม diff draft ที่ apply ได้ทันทีหลัง confirm
-- handoff path ชัดเจน (`/then-apply` → `/use-related-skills` หรือ `/update-devin-global-skills`)
+- handoff path ชัดเจน (`/follow-your-suggestion` → `/use-related-skills` หรือ `/update-devin-global-skills`)

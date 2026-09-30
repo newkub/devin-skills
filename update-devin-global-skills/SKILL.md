@@ -85,7 +85,7 @@ related:
 
 1. `/review-devin-global-harness` — conventions/naming/structure; `/check-content-correctness` — commands/APIs/claims; `/think-reframe` เมื่อ skill ใหม่หรือ rewrite ใหญ่
 2. `/deep-validate` — frontmatter, sections, ความยาว, `related` missing/unused, TODO/MOCK/placeholder; แก้ `related` → `/follow-tool-madge`; มี `.devin/rules/` → `/deep-review`
-3. `/update-references` sync refs ทั่ว repo + `/use-related-skills` หา integration; rename/ย้าย → อัปเดต `AGENTS.md`; เกี่ยว global rules → `global_rules.md` + `/update-devin-global-rules`
+3. `/update-references` sync refs ทั่ว repo + `/use-related-skills` หา integration; rename/ย้าย → อัปเดต `AGENTS.md`; เกี่ยว global rules → `global_rules.md` + `/update-devin-harness`
 4. หลังเพิ่ม/ลบ/merge/rename skill หรือ tool → sync living documents ตาม `## Conventions → Living Documents` เสมอ — ไม่ใช่ optional; ไม่ผ่าน → แก้และ recheck (max 3 → stop/report)
 
 ### 9. Ship

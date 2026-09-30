@@ -5,7 +5,7 @@ argument-hint: "[pattern-or-target]"
 related:
   - use-astgrep
   - use-astgrep-programmatic
-  - update-project-rules
+  - update-astgrep-rules
   - replace
   - migration-by-astgrep
   - scan-codebase
@@ -19,7 +19,7 @@ related:
 ## Scope
 
 - ครอบคลุม ad-hoc structural search (`ast-grep run -p`), temporary rules (`--inline-rules`), pattern syntax และการเลือก interface
-- ไม่รวมการตั้งค่า project (`/use-astgrep`), การเขียน rules ถาวร (`/update-project-rules`), rewrite/migration (`/replace`, `/migration-by-astgrep`)
+- ไม่รวมการตั้งค่า project (`/use-astgrep`), การเขียน rules ถาวร (`/update-astgrep-rules`), rewrite/migration (`/replace`, `/migration-by-astgrep`)
 
 (restored จาก merge เข้า `use-astgrep` — แยกกลับเป็น standalone workflow สำหรับ search โดยเฉพาะ)
 
@@ -31,7 +31,7 @@ related:
 
 1. Search ครั้งเดียว / verify pattern / ดู context รอบ match → CLI `ast-grep run` (default ของ workflow นี้)
 2. ต้อง aggregate ข้ามหลายไฟล์, post-process, หรือ feed เข้า scripts/CLI → `/use-astgrep-programmatic`
-3. Pattern เดิมต้องรันซ้ำบ่อย → promote เป็น rule ด้วย `/update-project-rules`
+3. Pattern เดิมต้องรันซ้ำบ่อย → promote เป็น rule ด้วย `/update-astgrep-rules`
 4. ต้อง rewrite หลังเจอ matches → `/replace` หรือ `/migration-by-astgrep`
 5. ต้องดู structure ก่อนค้น → `ast-grep outline <path>` หรือ `/check-code-structure`
 
@@ -72,7 +72,7 @@ rule:
 ```
 
 2. fields สำคัญ: `rule.pattern`, `rule.kind`, `rule.inside`, `rule.has`, `rule.follows`, `rule.precedes`, `constraints` บน metavariables (`regex`, `kind`, `not`)
-3. ถ้า inline rule เริ่มยาวหรือต้อง reuse → ย้ายไป `rules/` ผ่าน `/update-project-rules`
+3. ถ้า inline rule เริ่มยาวหรือต้อง reuse → ย้ายไป `rules/` ผ่าน `/update-astgrep-rules`
 
 ### 5. Common Recipes
 
@@ -96,7 +96,7 @@ rule:
 2. นับ/aggregate → `--json` แล้ว process ด้วย `/use-scripts` หรือ `/use-astgrep-programmatic`
 3. แก้ไขจุดเดียว/few points → แก้มือ
 4. แก้หลายจุด mechanical → `/replace` (rewrite rules) หรือ `/migration-by-astgrep`
-5. ถ้า search นี้เป็น hygiene check ที่ควรรันประจำ → `/update-project-rules` หรือ `check-*` skill
+5. ถ้า search นี้เป็น hygiene check ที่ควรรันประจำ → `/update-astgrep-rules` หรือ `check-*` skill
 
 ## Rules
 
