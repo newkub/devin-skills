@@ -59,6 +59,7 @@ related:
    - `skipLibCheck: true`
    - `module: "ESNext"`/`"Preserve"` + `moduleResolution: "bundler"` หรือ `"nodenext"` ตาม runtime
    - `target: "ES2022"` หรือใหม่กว่า
+3. (optional) เพิ่ม Effect LSP plugin ใน `compilerOptions.plugins`: `{ "name": "@effect/language-service" }` — ต้องติดตั้งตาม step 3 และตั้ง editor ใช้ workspace TypeScript; ถ้า TypeScript `>= 7.0` ใช้ `@effect/tsgo` แทน
 
 ### 3. Install Effect Packages
 
@@ -71,6 +72,7 @@ related:
 5. รัน `bun add -D vitest@^3.2 @effect/vitest` สำหรับ testing — `@effect/vitest@0.30.0` ต้องการ peer `vitest ^3.2.0` ถ้า project ใช้ vitest 4/5 ให้ตรวจ peer ก่อน
 6. รัน `bun add -D tstyche` สำหรับ type-level tests (optional)
 7. รัน `bun add @effect/cli` เมื่อสร้าง CLI app หรือ `bun add @effect/experimental` สำหรับ experimental APIs (optional)
+8. (optional) รัน `bun add -D @effect/language-service` สำหรับ editor LSP plugin — Effect diagnostics/quickfixes เช่น `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `runEffectInsideEffect`; monorepo ติดตั้งที่ root + configure ใน root `tsconfig.json`; TypeScript `>= 7.0` ใช้ `@effect/tsgo` แทน
 
 ### 4. Create Project Structure
 
@@ -172,7 +174,7 @@ related:
 
 - Latest stable (verified 2026-09-16): `effect@3.22.2`, `@effect/platform@0.97.2`, `@effect/platform-bun@0.91.2`, `@effect/platform-node@0.108.2`, `@effect/vitest@0.30.0`
 - Effect v4 RC: `effect@rc` (`4.0.0-rc.115`, verified 2026-09-16) มี breaking changes หลัก: package consolidation (`effect/unstable/*`), `Context.Service` แทน `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types ต้องใช้ `.asEffect()`, `Layer`/`Runtime` API เปลี่ยน
-- TypeScript latest: `7.0.2` (native/tsgo) — `effect` ต้องการขั้นต่ำ `5.4`; ตรวจ compatibility กับ toolchain ของ project ก่อนใช้
+- TypeScript latest: `7.0.2` (native/tsgo) — `effect` ต้องการขั้นต่ำ `5.4`; ตรวจ compatibility กับ toolchain ของ project ก่อนใช้; editor LSP: `@effect/language-service` รองรับเฉพาะ TS `< 7`, TS `>= 7` ใช้ `@effect/tsgo`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API เสมอ
 
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

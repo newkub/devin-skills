@@ -4,6 +4,7 @@ description: พัฒนา TypeScript ด้วย Effect — Effect.gen, Laye
 argument-hint: "[task]"
 related:
   - follow-tool-vitest
+  - follow-lib-effect-ts
   - deep-research
 ---
 
@@ -101,6 +102,7 @@ related:
 
 - ใช้ /deep-research ถ้าจำเป็น (Effect ecosystem API เปลี่ยนเร็ว — เช็ค official docs)
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ `@effect/language-service` editor plugin เตือน violations พวกนี้ตอนเขียนโค้ด (`floatingEffect`, `tryCatchInEffectGen`, `runEffectInsideEffect`, `missingStarInYieldEffectGen` ฯลฯ) — setup ดู `/follow-lib-effect-ts`; TypeScript `>= 7` ใช้ `@effect/tsgo`
 
 ## Expected Outcome
 

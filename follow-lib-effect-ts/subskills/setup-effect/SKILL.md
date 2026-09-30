@@ -46,6 +46,7 @@ related:
 2. `bun add @effect/platform` + `@effect/platform-bun` (Bun) หรือ `@effect/platform-node` (Node) ตาม runtime
 3. `bun add -D vitest @effect/vitest` สำหรับ tests — ตรวจ peer `vitest ^3.2` ก่อน (setup ดู `/follow-tool-vitest`)
 4. `Schema` อยู่ใน core `effect` — ห้ามติดตั้ง `@effect/schema` แยก (legacy)
+5. (optional) `bun add -D @effect/language-service` + ใส่ `{ "name": "@effect/language-service" }` ใน `tsconfig.compilerOptions.plugins` สำหรับ editor diagnostics; TypeScript `>= 7` ใช้ `@effect/tsgo` แทน
 
 ### 4. Create Structure And Basics
 

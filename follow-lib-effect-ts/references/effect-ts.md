@@ -46,10 +46,19 @@ bun add -D tstyche
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "target": "ES2022"
+    "target": "ES2022",
+    "plugins": [{ "name": "@effect/language-service" }]
   }
 }
 ```
+
+### Editor LSP Plugin
+
+`bun add -D @effect/language-service` ให้ Effect-specific diagnostics, quickfixes และ refactors ใน editor (เช่น `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `missingEffectError`, `runEffectInsideEffect`, `tryCatchInEffectGen`) — register ผ่าน `compilerOptions.plugins` ใน `tsconfig.json` ตามตัวอย่างข้างบน
+
+- Monorepo: ติดตั้งที่ root + configure ใน root `tsconfig.json`
+- Editor ต้องใช้ workspace TypeScript version (VSCode: "TypeScript: Select TypeScript version" → workspace)
+- TypeScript `>= 7.0`: ใช้ `@effect/tsgo` แทน (`@effect/language-service` รองรับเฉพาะ TS `< 7`)
 
 ## Hello World
 
