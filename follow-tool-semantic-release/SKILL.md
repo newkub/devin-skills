@@ -27,17 +27,13 @@ related:
 - ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
 - ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
 
-- Latest: `semantic-release@25.0.9` (verified 2026-09-13) — requires Node.js `^22.14.0 || >=24.10.0`
+- Latest: `semantic-release@25.0.9` (verified 2026-09-13) — requires Node.js `^22.14.0 | >=24.10.0`
 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install, CI auth tokens, workflow integration | `subskills/setup-semantic-release/SKILL.md` |
-| `branches`, `plugins`, `tagFormat` config | `subskills/config-semantic-release/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install, CI auth tokens, workflow integration | `subskills/setup-semantic-release/SKILL.md` | `branches`, `plugins`, `tagFormat` config | `subskills/config-semantic-release/SKILL.md` 
 ### 1. Installation
 
 > Goal: ติดตั้ง semantic-release ใน project
@@ -45,7 +41,7 @@ related:
 1. ตรวจสอบ `package.json` และ repository URL
 2. ติดตั้งด้วย `bun add -D semantic-release`
 3. ติดตั้ง additional plugins ถ้าจำเป็น เช่น `bun add -D @semantic-release/changelog @semantic-release/git`
-4. ดู plugin list ใน [references/semantic-release.md](references/semantic-release.md)
+4. ดู plugin list ใน 
 
 ### 2. Configuration
 
@@ -55,7 +51,7 @@ related:
 2. กำหนด `branches`, `tagFormat`, `plugins`
 3. ตั้งค่า plugin options เช่น `changelogFile`, `assets`
 4. ตรวจสอบ authentication tokens (`GITHUB_TOKEN`, `NPM_TOKEN`)
-5. ดู config options ใน [references/semantic-release.md](references/semantic-release.md)
+5. ดู config options ใน 
 
 ### 3. Local Dry Run
 
@@ -74,7 +70,7 @@ related:
 2. กำหนด permissions `contents: write`, `pull-requests: write`, `id-token: write`
 3. รัน `bunx semantic-release` ใน release job หลังจาก tests ผ่าน
 4. ใช้ trusted publishing (OIDC) สำหรับ npm ถ้าได้
-5. ดู CI example ใน [references/semantic-release.md](references/semantic-release.md)
+5. ดู CI example ใน 
 
 ### 5. Validate and Monitor
 

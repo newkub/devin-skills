@@ -1,22 +1,10 @@
-# Lib Better Auth API & Dependencies
-
-## Install
-
-```sh
-bun add better-auth
-```
-
-## Version
-
-- Latest: `1.7.4` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/better-auth)
-- [Repository](https://github.com/better-auth/better-auth)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add better-auth` |
+| version | 1.7.4 |
+| package registry | https://www.npmjs.com/package/better-auth |
+| repository | https://github.com/better-auth/better-auth |
+| docs | https://better-auth.com |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -34,8 +22,3 @@ bun add better-auth
 | `import 'better-auth/solid'` | Subpath export for solid | entry as documented | (none) |
 | `import 'better-auth/types'` | Subpath export for types | entry as documented | (none) |
 | `import 'better-auth/client'` | Subpath export for client | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://better-auth.com
-- Description: The most comprehensive authentication framework for TypeScript.

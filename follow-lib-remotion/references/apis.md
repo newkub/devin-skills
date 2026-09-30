@@ -1,47 +1,8 @@
-# Remotion API Reference
-
-## Install
-
-ติดตั้ง package หลักพร้อม React peer dependencies:
-
-```bash
-bun add remotion react react-dom
-```
-
-สำหรับ CLI:
-
-```bash
-bun add -D @remotion/cli
-```
-
-สำหรับ Player ใน React app:
-
-```bash
-bun add @remotion/player
-```
-
-สำหรับ media สมัยใหม่ (`<Video>`/`<Audio>` แบบ Mediabunny):
-
-```bash
-bun add @remotion/media
-```
-
-## Version
-
-- Latest version: `4.0.524` (verified 2026-09-13)
-- Package Registry: https://www.npmjs.com/package/remotion
-- Repository: https://github.com/remotion-dev/remotion
-
-## Dependencies
-
-- Peer dependencies: `react >=16.8.0`, `react-dom >=16.8.0`
-- CLI ใช้ `@remotion/cli` เป็น dev dependency
-- Optional: `@remotion/player`, `@remotion/media`, `zod`, `@remotion/zod-types` สำหรับ props schema
-- Rendering ใช้ Chromium/Chrome headless โดยอัตโนมัติ (ดู [browser management](https://www.remotion.dev/docs/cli/browser))
-
-## Common API / Commands
-
-### CLI
+| key | value |
+|---|---|
+| package registry | https://www.npmjs.com/package/remotion |
+| repository | https://github.com/remotion-dev/remotion |
+| docs | https://www.remotion.dev/docs |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -54,8 +15,6 @@ bun add @remotion/media
 | `bunx remotion benchmark [entry] [comp-ids]` | Benchmark การ render | ถาม composition | `--runs`, `--concurrencies`, `--codec`, `--crf`, `--frames`, `--log`, `--bundle-cache` |
 | `bunx remotion upgrade` | อัปเกรด Remotion packages ทั้งหมด | ใช้ package manager ของโปรเจกต์ | `--package-manager`, `--version`, `--skip-skills` |
 | `bunx remotion versions` | แสดงเวอร์ชัน Remotion packages | - | - |
-
-### Components
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -73,8 +32,6 @@ bun add @remotion/media
 | `<Loop>` | วนซ้ำ children | `durationInFrames` หรือ `times` | `durationInFrames`, `times`, `children` |
 | `<Folder>` | จัดกลุ่ม composition ใน sidebar | `name`* | `name`*, `children` |
 | `<Player>` (from `@remotion/player`) | Embed Remotion video ใน React app | `controls=false` | `component`*, `durationInFrames`*, `fps`*, `compositionWidth`*, `compositionHeight`*, `inputProps`, `controls`, `loop`, `autoPlay`, `style`, `className` |
-
-### Hooks & Utility Functions
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -98,15 +55,3 @@ bun add @remotion/media
 | `continueRender(handle)` | บอกให้ render ดำเนินต่อ | - | `handle` (จาก `delayRender`) |
 | `cancelRender(err)` | ยกเลิก render เมื่อเกิด error | - | `error` |
 | `calculateMetadata(function)` | Prop ของ `<Composition>` สำหรับ dynamic metadata/props | - | `({defaultProps, props, abortSignal, compositionId, isRendering}) => {...}` |
-
-## Source
-
-- Official docs: https://www.remotion.dev/docs
-- CLI reference: https://www.remotion.dev/docs/cli
-- Composition: https://www.remotion.dev/docs/composition
-- Sequence: https://www.remotion.dev/docs/sequence
-- Series: https://www.remotion.dev/docs/series
-- interpolate: https://www.remotion.dev/docs/interpolate
-- spring: https://www.remotion.dev/docs/spring
-- Player: https://www.remotion.dev/docs/player/player
-- npm: https://www.npmjs.com/package/remotion

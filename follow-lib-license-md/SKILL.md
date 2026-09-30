@@ -24,8 +24,7 @@ related:
 - Package `license-md` เป็น badge generator เก่า (unmaintained) — งานหลักใช้ `gh api licenses/{key}` + manifest fields โดยตรง ไม่บังคับติดตั้ง
 
 - Latest: version-agnostic (license/linting guide; Python build backends pinned ใน skill) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Choose License

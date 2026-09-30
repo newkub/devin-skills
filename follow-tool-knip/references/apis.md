@@ -1,22 +1,10 @@
-# Tool Knip API & Dependencies
-
-## Install
-
-```sh
-bun add -D knip
-```
-
-## Version
-
-- Latest: `6.38.0` (verified 2026-09-26)
-- [Package Registry](https://www.npmjs.com/package/knip)
-- [Repository](https://github.com/webpro-nl/knip)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D knip` |
+| version | 6.38.0 |
+| package registry | https://www.npmjs.com/package/knip |
+| repository | https://github.com/webpro-nl/knip |
+| docs | https://knip.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -26,8 +14,3 @@ bun add -D knip
 | `configure` | Configure via config file | project defaults | --config, --file |
 | `import 'knip/config'` | Subpath export for config | entry as documented | (none) |
 | `import 'knip/session'` | Subpath export for session | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://knip.dev
-- Description: Find and fix unused dependencies, exports and files in your TypeScript and JavaScript projects

@@ -1,25 +1,9 @@
-# Lib Mcp Sdk API & Dependencies
-
-## Install
-
-```sh
-bun add @modelcontextprotocol/sdk
-# server runtime helpers ถ้าต้องการ stdio express
-bun add zod    # สำหรับ tool schemas
-```
-
-## Version
-
-- Latest: `1.30.0` (verified 2026-09-13) — package เดิม `@modelcontextprotocol/server` deprecated ให้ใช้ `/sdk`
-- [Package Registry](https://www.npmjs.com/package/@modelcontextprotocol/sdk)
-- [Repository](https://github.com/modelcontextprotocol/typescript-sdk)
-
-## Dependencies
-
-- Runtime: `zod`, `@modelcontextprotocol/core` internals, transport libs (`express` สำหรับ Streamable HTTP)
-- Bun/Node 18+
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 1.30.0 |
+| package registry | https://www.npmjs.com/package/@modelcontextprotocol/sdk |
+| repository | https://github.com/modelcontextprotocol/typescript-sdk |
+| docs | https://modelcontextprotocol.io |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -30,8 +14,3 @@ bun add zod    # สำหรับ tool schemas
 | `new StdioServerTransport()` | stdio transport | - | - |
 | `new StreamableHTTPServerTransport(cfg)` | HTTP transport | - | `sessionIdGenerator` |
 | `Client` + `StdioClientTransport` | MCP client | - | - |
-
-## Source
-
-- Official docs: https://modelcontextprotocol.io
-- Description: Official TypeScript SDK for Model Context Protocol servers/clients.

@@ -24,8 +24,7 @@ related:
 
 - Boundary: skill นี้ช่วยเลือกและ wire linter เข้า repo/CI — หลังเลือก tool แล้วให้ใช้ skill เฉพาะทาง (`/follow-tool-eslint`, `/follow-tool-biome`) สำหรับ config ละเอียด; formatting อยู่ที่ `/follow-tool-formatter`
 - Latest: oxlint `1.85.0`, biome `2.5.14`, eslint `10.11.0`, ruff `0.16.7`, golangci-lint `2.13.2` (verified 2026-09-26)
-- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Select Linter

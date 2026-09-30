@@ -1,18 +1,8 @@
-# moonrepo CLI
-
-## Install
-
-```sh
-bun add -D @moonrepo/cli
-```
-
-## Version
-
-- Latest: see https://moonrepo.dev/
-- Repository: https://github.com/moonrepo/moon
-- Docs: https://moonrepo.dev/docs/commands/overview
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D @moonrepo/cli` |
+| repository | https://github.com/moonrepo/moon |
+| docs | https://moonrepo.dev/docs/commands/overview |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -31,8 +21,6 @@ bun add -D @moonrepo/cli
 | `moon ext <name>` | Run moon extension (e.g. `migrate-turborepo`, `migrate-nx`) | — | (none) |
 | `moon --help` | Show help | — | (none) |
 
-## Global Options
-
 | Option | Description |
 |---|---|
 | `--cache` | Cache mode: `off`, `read`, `read-write` (default), `write` |
@@ -43,26 +31,3 @@ bun add -D @moonrepo/cli
 | `--quiet`, `-q` | Hide non-important output |
 | `--theme` | Terminal theme |
 | `--version` | Show version |
-
-## moon ci
-
-```sh
-moon ci                      # all affected tasks with runInCI
-moon ci :build :lint         # explicit targets (still affected-filtered)
-moon ci --base main --head HEAD~1
-moon ci --job 0 --job-total 2  # sharding across CI jobs
-```
-
-- prefills: `--affected --ci --on-failure=continue --summary=detailed --upstream=deep --downstream=direct`
-- report: `.moon/cache/ciReport.json`
-- requires full git history — no shallow clones
-- details: [ci.md](ci.md)
-
-## Examples
-
-```sh
-bunx moon run app:build
-bunx moon run :test
-bunx moon exec client:dev server:dev
-bunx moon query --affected
-```

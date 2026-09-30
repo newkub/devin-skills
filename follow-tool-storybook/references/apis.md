@@ -1,22 +1,10 @@
-# Tool Storybook API & Dependencies
-
-## Install
-
-```sh
-bun add -D storybook
-```
-
-## Version
-
-- Latest: 10.6.0
-- [Package Registry](https://www.npmjs.com/package/storybook)
-- [Repository](https://github.com/storybookjs/storybook)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D storybook` |
+| version | 10.6.0 |
+| package registry | https://www.npmjs.com/package/storybook |
+| repository | https://github.com/storybookjs/storybook |
+| docs | https://storybook.js.org |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -33,8 +21,3 @@ bun add -D storybook
 | `import 'storybook/preview-api'` | Subpath export for preview-api | entry as documented | (none) |
 | `import 'storybook/internal/cli'` | Subpath export for internal/cli | entry as documented | (none) |
 | `import 'storybook/internal/csf'` | Subpath export for internal/csf | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://storybook.js.org
-- Description: Storybook: Develop, document, and test UI components in isolation

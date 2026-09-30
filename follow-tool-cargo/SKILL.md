@@ -20,8 +20,8 @@ related:
 
 - Boundary: skill นี้ครอบคลุมเฉพาะ lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — สำหรับ Rust language/idioms ดู `/follow-lang-rust`; สำหรับ verify หลัง config ใช้ `/run-verify`; สำหรับ Cargo build cache (mbx) ดู `/follow-tool-mr-boxington`
 - Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cargo](references/cargo.md) | [cli](references/cli.md) | [clippy](references/clippy.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-- สำหรับ Clippy lint rules และ error handling ดู `references/clippy.md`
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
+- สำหรับ Clippy lint rules และ error handling ดู `references/cli.md`
 
 ## Execute
 
@@ -68,7 +68,7 @@ related:
    pedantic = "warn"
    ```
 
-4. ดูรายละเอียดใน [references/cargo.md](references/cargo.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Configure Workspace Lints
 
@@ -81,7 +81,7 @@ related:
    [lints]
    workspace = true
    ```
-4. ดูรายละเอียดใน [references/cargo.md](references/cargo.md)
+4. ดูรายละเอียดใน 
 
 ### 4. Setup Pre-commit Hooks
 
@@ -123,14 +123,14 @@ related:
 - `unused_qualifications`: warn (unused type qualifications)
 - `variant_size_differences`: warn (enum variant size differences)
 - `missing_docs`: warn (missing documentation)
-- ดู [references/cargo.md](references/cargo.md)
+- ดู 
 
 ### 2. Clippy Lint Categories
 
 - `all`: warn (all clippy lints)
 - `pedantic`: warn (pedantic lints)
 - `nursery`: warn (experimental lints)
-- ดู [references/cargo.md](references/cargo.md)
+- ดู 
 
 ### 3. Workspace Configuration
 
@@ -138,7 +138,7 @@ related:
 - ใช้ `[workspace.lints]` สำหรับ shared lint rules
 - แต่ละ crate สามารถ inherit ด้วย `workspace = true`
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
-- ดู [references/cargo.md](references/cargo.md)
+- ดู 
 
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น

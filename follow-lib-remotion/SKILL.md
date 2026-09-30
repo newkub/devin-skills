@@ -23,8 +23,7 @@ related:
 
 - Latest: `remotion@4.0.527` (verified 2026-09-24)
 - เป็น React-based — ใช้ `/follow-lib-react` สำหรับ component patterns และ `/follow-lib-zod` สำหรับ prop schemas
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [config](references/remotion-config.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Create Project

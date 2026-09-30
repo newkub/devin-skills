@@ -1,18 +1,8 @@
-# changelogen CLI
-
-## Install
-
-```sh
-bun add -D changelogen
-```
-
-## Version
-
-- Latest: see `changelogen` on npm
-- Repository: https://github.com/unjs/changelogen
-- Docs: https://github.com/unjs/changelogen
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D changelogen` |
+| repository | https://github.com/unjs/changelogen |
+| docs | https://github.com/unjs/changelogen |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -22,12 +12,3 @@ bun add -D changelogen
 | `changelogen --publish` | Publish package to npm | — | `--publishTag`, `--nameSuffix`, `--versionSuffix` |
 | `changelogen --canary` | Shortcut for `--bump --versionSuffix` | — | `--nameSuffix` |
 | `changelogen --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx changelogen
-bunx changelogen --from v1.0.0 --to HEAD
-bunx changelogen --bump --release --push
-bunx changelogen --canary
-```

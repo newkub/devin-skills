@@ -7,7 +7,6 @@ related:
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
-  - gen-openapi
   - deep-test
   - run-api-docs
   - follow-tool-bruno
@@ -26,16 +25,13 @@ related:
 - สร้าง procedures พร้อม input/output validation และ type-safe errors
 - ตั้งค่า middleware, server handler, client
 - ใช้ TanStack Query และ OpenAPI ถ้าจำเป็น
-- ไม่มี CLI ของตัวเอง — ใช้งานผ่าน programmatic API (จึงไม่มี `references/cli.md`)
+- ไม่มี CLI ของตัวเอง — ใช้งานผ่าน programmatic API (จึงไม่มี)
 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler 
 ### 1. Install Packages
 
 > Goal: ติดตั้ง oRPC packages และ dependencies
@@ -185,7 +181,6 @@ related:
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ /gen-openapi ถ้าจำเป็น
 - ใช้ /follow-tool-bruno ถ้าจำเป็น
 
 

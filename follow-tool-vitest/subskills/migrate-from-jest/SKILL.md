@@ -64,10 +64,10 @@ Migrate test suite จาก Jest ไป Vitest อย่างปลอดภ�
 > Goal: suite เขียวทั้งหมดบน Vitest แล้วลบ Jest
 
 1. รัน `vitest run` — ต้องเขียวทั้งหมด; ถ้า fail ให้แก้ทีละกลุ่ม ห้าม skip มั่ว
-2. ทำ `/review-code-quality` เช็ค `jest.` ที่เหลือ
+2. ทำ `/deep-review` เช็ค `jest.` ที่เหลือ
 3. เมื่อเขียวแล้ว: ลบ `jest`, `@types/jest`, `ts-jest`, `babel-jest`, `jest.config.*` แยก commit
 4. สลับ `"test": "vitest run"` แล้วรัน `/run-test` ยืนยันอีกครั้ง
-5. เสร็จ → `/report-before-after` แล้ว `/ship`
+5. เสร็จ → `/report-before-after` แล้ว `/ship-to-dev-branch`
 
 ## Rules
 

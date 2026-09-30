@@ -1,32 +1,8 @@
-# Tool Github Actions API & Dependencies
-
-GitHub Actions เป็น hosted platform — ไม่มี package ให้ติดตั้ง; CLI ที่เกี่ยวข้องคือ `gh` (GitHub CLI) สำหรับจัดการ workflows/runs และ `actionlint` สำหรับ lint workflow files
-
-## Install
-
-```sh
-# gh — GitHub CLI binary (npm package `gh` ไม่ใช่ตัวจริง)
-mise use -g gh
-# or
-winget install GitHub.cli
-
-# actionlint — workflow linter
-mise use -g actionlint
-```
-
-## Version
-
-- Latest: gh CLI `2.101.0` (github.com/cli/cli, verified 2026-09-26) — หมายเหตุ: npm package `gh` ไม่ใช่ GitHub CLI ตัวจริง ติดตั้งผ่าน `mise use -g gh` หรือ https://cli.github.com
-- actionlint `1.7.12` (github.com/rhysd/actionlint, verified 2026-09-26)
-- [Repository (gh)](https://github.com/cli/cli)
-- [Repository (actionlint)](https://github.com/rhysd/actionlint)
-
-## Dependencies
-
-- `gh` เป็น static binary — ไม่มี npm transitive dependencies
-- Actions ที่ pin ใน SKILL.md: `actions/checkout@v7`, `actions/setup-node@v7`, `actions/cache@v6`, `actions/upload-artifact@v7`
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `mise use -g gh` |
+| repository | https://github.com/rhysd/actionlint |
+| docs | https://docs.github.com/en/actions |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -41,9 +17,3 @@ mise use -g actionlint
 | `gh run download <id>` | Download artifacts | — | -n/--name, -D/--dir |
 | `gh secret set/list` | Manage repo secrets | — | --body, --env, -R/--repo |
 | `actionlint` | Lint workflow files | `.github/workflows/` | -oneline, -ignore, -shellcheck |
-
-## Source
-
-- Official docs: https://docs.github.com/en/actions
-- gh manual: https://cli.github.com/manual/gh_workflow
-- actionlint: https://rhysd.github.io/actionlint/

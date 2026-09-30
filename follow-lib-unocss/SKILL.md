@@ -190,14 +190,7 @@ related:
 
 ### Framework Integration
 
-| Framework | Config Files | CSS Entry / Notes |
-|-----------|--------------|-------------------|
-| Vite | `vite.config.ts`, `uno.config.ts` | `import 'virtual:uno.css'` in `main.ts` |
-| Nuxt | `nuxt.config.ts`, `uno.config.ts` | `uno.css` auto-injected |
-| Next.js | `postcss.config.mjs`, `uno.config.ts` | `app/globals.css` ใส่ `@unocss all;` |
-| Astro | `astro.config.mjs`, `uno.config.ts` | `UnoCSS()` integration, optional `injectReset` |
-| CLI | `uno.config.ts` | `unocss --preset wind4 --watch` |
-
+| Framework | Config Files | CSS Entry / Notes |-----------|--------------|-------------------| Vite | `vite.config.ts`, `uno.config.ts` | `import 'virtual:uno.css'` in `main.ts` | Nuxt | `nuxt.config.ts`, `uno.config.ts` | `uno.css` auto-injected | Next.js | `postcss.config.mjs`, `uno.config.ts` | `app/globals.css` ใส่ `@unocss all;` | Astro | `astro.config.mjs`, `uno.config.ts` | `UnoCSS()` integration, optional `injectReset` | CLI | `uno.config.ts` | `unocss --preset wind4 --watch` 
 ### Transformers
 
 - `transformerVariantGroup`: group utilities
@@ -212,7 +205,7 @@ related:
 - Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
 - `@property` rules generate ภายใต้ `properties` layer
 
-- ทำ subskill `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/unocss-theme.md`
+- ทำ subskill `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/apis.md`
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

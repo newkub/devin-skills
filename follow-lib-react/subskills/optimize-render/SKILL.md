@@ -7,7 +7,6 @@ related:
   - follow-tool-react-scan
   - run-bench
   - run-profiler
-  - check-bottlenecks
   - report-before-after
 ---
 
@@ -26,7 +25,7 @@ related:
 > Goal: ระบุ re-render bottleneck จริงก่อนแก้ ห้ามเดา
 
 1. ใช้ React DevTools Profiler หรือ `react-scan` (`/follow-tool-react-scan`) — บันทึก components ที่ re-render บ่อย/ช้า
-2. ทำ `/check-bottlenecks` — แยกปัญหา: unnecessary re-renders vs expensive render vs state กว้างเกิน
+2. ทำ `/deep-optimize` — แยกปัญหา: unnecessary re-renders vs expensive render vs state กว้างเกิน
 3. เก็บ baseline numbers (render count, render duration) สำหรับ compare หลังแก้
 
 ### 2. Fix Root Causes First

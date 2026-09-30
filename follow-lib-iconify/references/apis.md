@@ -1,30 +1,8 @@
-# Lib Iconify API & Dependencies
-
-## Install
-
-```sh
-# Framework component (เลือกตาม framework)
-bun add @iconify/vue          # Vue — 5.0.1
-bun add @iconify/react        # React
-bun add @iconify/svelte       # Svelte
-bun add @iconify-icon/solid   # Solid
-
-# Icon data on-demand (ตัวอย่าง set)
-bun add -D @iconify-icons/mdi  # หรือ @iconify/json สำหรับ full collection
-```
-
-## Version
-
-- `@iconify/vue`: `5.0.1`, `@iconify/react`: `6.0.2`, `@iconify/svelte`: `5.2.2`, `iconify-icon`: `3.0.2` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/@iconify/vue)
-- [Repository](https://github.com/iconify/iconify)
-
-## Dependencies
-
-- Framework components มี peer dep ตาม framework (`vue`, `react`, `svelte`, `solid-js`)
-- Icon data โหลด on-demand จาก Iconify API หรือใช้ `@iconify/icons-<set>` / `@iconify/json` แบบ offline
-
-## Common API / Commands
+| key | value |
+|---|---|
+| package registry | https://www.npmjs.com/package/@iconify/vue |
+| repository | https://github.com/iconify/iconify |
+| docs | https://iconify.design/docs/ |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -33,8 +11,3 @@ bun add -D @iconify-icons/mdi  # หรือ @iconify/json สำหรับ f
 | `addCollection(data)` | Register ทั้ง set | - | - |
 | `getIcon(name)` | Lookup icon data | - | - |
 | `iconToSVG(data)` | Build SVG เอง | - | `customisations` |
-
-## Source
-
-- Official docs: https://iconify.design/docs/
-- Description: Universal icon framework — 200k+ icons, framework-agnostic.

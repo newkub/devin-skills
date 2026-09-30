@@ -17,12 +17,11 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับการวัด Core Web Vitals ด้วย `web-vitals` — setup reporting, metric callbacks, attribution, debugging
 
-- ใช้ skill นี้สำหรับ field data (real-user metrics) — lab tools (Lighthouse) และ profiling ใช้ `/run-profiler` หรือ `/check-bottlenecks` แทน
+- ใช้ skill นี้สำหรับ field data (real-user metrics) — lab tools (Lighthouse) และ profiling ใช้ `/run-profiler` หรือ `/deep-optimize` แทน
 - Thresholds: LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 ถือว่า good
 
 - Latest: `web-vitals@6.2.2` (verified 2026-09-16)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Setup And Usage

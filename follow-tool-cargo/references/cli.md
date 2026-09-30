@@ -1,18 +1,8 @@
-# Cargo CLI
-
-## Install
-
-```sh
-rustup component add cargo
-```
-
-## Version
-
-- Latest with Rust
-- Repository: https://github.com/rust-lang/cargo
-- Docs: https://doc.rust-lang.org/cargo/commands/index.html
-
-## Commands
+| key | value |
+|---|---|
+| install | `rustup component add cargo` |
+| repository | https://github.com/rust-lang/cargo |
+| docs | https://doc.rust-lang.org/cargo/commands/index.html |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -26,14 +16,3 @@ rustup component add cargo
 | `cargo add <dep>` | Add dependency | — | --dev, --build, --features |
 | `cargo publish` | Publish to crates.io | — | --dry-run, --allow-dirty |
 | `cargo install <crate>` | Install binary crate | — | --version, --locked, --force |
-## Examples
-
-```sh
-cargo build --release
-```
-```sh
-cargo test --workspace
-```
-```sh
-cargo add serde --features derive
-```

@@ -1,35 +1,10 @@
-# Framework SolidJS API & Dependencies
-
-## Install
-
-```sh
-# Create new project with Vite template (recommended)
-bun create vite@latest my-app --template solid-ts
-# or
-bunx degit solidjs/templates/ts my-app
-
-# SolidStart (meta-framework)
-bun create solid@latest my-app
-
-# Manual install
-bun add solid-js
-bun add -D babel-preset-solid vite-plugin-solid
-```
-
-## Version
-
-- Latest: 1.9.15 (`solid-js`, verified 2026-09-13); `vite-plugin-solid` 2.11.14; `@solidjs/start` 2.0.5; Solid 2.0 in beta/rc
-- [Package Registry](https://www.npmjs.com/package/solid-js)
-- [Repository](https://github.com/solidjs/solid)
-
-## Dependencies
-
-- Runtime deps: `csstype`, `seroval`, `seroval-plugins`.
-- JSX compilation requires `babel-preset-solid` (or `vite-plugin-solid` which includes it); TypeScript uses `"jsx": "preserve"` + `"jsxImportSource": "solid-js"`.
-- Router: `@solidjs/router`; meta-framework: `@solidjs/start`.
-- Fine-grained reactivity — no virtual DOM; components run once.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 1.9.15 |
+| package registry | https://www.npmjs.com/package/solid-js |
+| repository | https://github.com/solidjs/solid |
+| docs | https://docs.solidjs.com/ |
+| website | https://www.solidjs.com/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -49,9 +24,3 @@ bun add -D babel-preset-solid vite-plugin-solid
 | `import 'solid-js/html'` | Tagged-template runtime | `` html`...` `` | lit-html style templates |
 | `bun run dev` / `vite` | Dev server (Vite-based) | localhost:5173 | `--port`, `--host`, `--open` |
 | `bun run build` / `vite build` | Production build | `dist/` | `--mode`, `--outDir`, `--watch` |
-
-## Source
-
-- Official docs: https://docs.solidjs.com/
-- Website: https://www.solidjs.com/
-- Description: SolidJS — a declarative JavaScript library for building UIs with fine-grained reactivity and no virtual DOM.

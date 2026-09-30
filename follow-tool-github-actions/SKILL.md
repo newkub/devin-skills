@@ -23,19 +23,14 @@ related:
 
 - Boundary: GitHub Actions คือ hosted platform (ไม่ใช่ package ที่ install) — companion tools คือ `gh` CLI (`gh workflow`/`gh run`) และ `actionlint` สำหรับ local validation; secrets ใช้ `/follow-secret-manager`
 - Latest: `gh@2.101.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-26)
-- References: [cli](references/cli.md) | [github-cli-commands](references/github-cli-commands.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Pick Subskill
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| Workflow file structure, triggers, jobs, permissions | `subskills/setup-workflows/SKILL.md` |
-| Caching, matrix, concurrency groups, artifact reuse | `subskills/optimize-ci/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Workflow file structure, triggers, jobs, permissions | `subskills/setup-workflows/SKILL.md` | Caching, matrix, concurrency groups, artifact reuse | `subskills/optimize-ci/SKILL.md` 
 ### 2. Select Workflows
 
 > Goal: เลือก Workflows ที่เหมาะสม

@@ -4,7 +4,6 @@ description: optimize ioredis — pipelining, connection reuse, retry/offline qu
 argument-hint: "[command-or-scope]"
 related:
   - follow-lib-ioredis
-  - check-bottlenecks
   - run-bench
   - scan-codebase
   - report-before-after
@@ -29,7 +28,7 @@ related:
 1. ทำ `/run-bench` หรือจับเวลา command paths ที่ช้า — commands/sec, latency, RTT count
 2. ทำ `/scan-codebase` หา: sequential `await` commands ใน loop, `new Redis()` ที่สร้างซ้ำต่อ request/function
 3. ดู `MONITOR` หรือ `SLOWLOG` ฝั่ง Redis ถ้าเข้าถึงได้ — แยกช้าจาก RTT vs command เอง
-4. ทำ `/check-bottlenecks` ถ้าต้อง wider analysis
+4. ทำ `/deep-optimize` ถ้าต้อง wider analysis
 
 ### 2. Pipelining
 

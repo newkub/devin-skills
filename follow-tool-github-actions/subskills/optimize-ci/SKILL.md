@@ -4,7 +4,6 @@ description: ปรับ GitHub Actions CI — caching, matrix, concurrency, ar
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
-  - check-bottlenecks
   - run-verify
 ---
 
@@ -23,7 +22,7 @@ related:
 > Goal: วัดเวลา CI ปัจจุบันก่อน optimize
 
 1. ดู workflow run history ใน GitHub — บันทึก duration ของ jobs ที่ช้าที่สุด
-2. ระบุ steps ที่กินเวลามากสุด: dependency install, build, test — ทำ `/check-bottlenecks` ถ้าต้องวิเคราะห์ลึก
+2. ระบุ steps ที่กินเวลามากสุด: dependency install, build, test — ทำ `/deep-optimize` ถ้าต้องวิเคราะห์ลึก
 3. ตรวจ cache hit rate ของ `actions/cache` หรือ setup-action caching ที่มีอยู่
 
 ### 2. Dependency Caching
@@ -78,7 +77,7 @@ related:
 - matrix ใหญ่และ fail-fast ปิด = minutes สูง — balance coverage vs cost
 - `cancel-in-progress: true` สำหรับ PR workflows; ระวังบน release workflows (อาจ cancel release กลางคัน — ใช้เฉพาะ CI)
 
-- ใช้ /check-bottlenecks ถ้าจำเป็น
+- ใช้ /deep-optimize ถ้าจำเป็น
 
 ## Expected Outcome
 

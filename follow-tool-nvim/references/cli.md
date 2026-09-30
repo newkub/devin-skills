@@ -1,18 +1,8 @@
-# Neovim CLI
-
-## Install
-
-```sh
-mise use -g neovim          # or: scoop install neovim / brew install neovim
-```
-
-## Version
-
-- Latest
-- Repository: https://github.com/neovim/neovim
-- Docs: https://neovim.io/doc/user/starting.html
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g neovim          # or: scoop install neovim / brew install neovim` |
+| repository | https://github.com/neovim/neovim |
+| docs | https://neovim.io/doc/user/starting.html |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -20,11 +10,3 @@ mise use -g neovim          # or: scoop install neovim / brew install neovim
 | `nvim <file>` | Open file | — | +<cmd>, -o, -O, -p, -d, -R |
 | `nvim --version` | Print version | — | (none) |
 | `nvim --headless` | Run headless | — | +<cmd>, -c, -u |
-## Examples
-
-```sh
-nvim init.lua
-```
-```sh
-nvim --headless -c "Lazy sync" -c "qa"
-```

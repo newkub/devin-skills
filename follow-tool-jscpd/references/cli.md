@@ -1,18 +1,9 @@
-# jscpd CLI
-
-## Install
-
-```sh
-bun add -D jscpd # or: npm i -g jscpd / cargo install jscpd / brew install jscpd / pipx install jscpd
-```
-
-## Version
-
-- Latest: `5.3.2` (verified 2026-09-26) — Rust engine, self-contained binary (no Node.js at runtime); `cpd` = alias command
-- Repository: https://github.com/kucherenko/jscpd
-- Docs: https://jscpd.dev/getting-started/configuration
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D jscpd # or: npm i -g jscpd / cargo install jscpd / brew install jscpd / pipx install jscpd` |
+| version | 5.3.2 |
+| repository | https://github.com/kucherenko/jscpd |
+| docs | https://jscpd.dev/getting-started/configuration |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -23,8 +14,6 @@ bun add -D jscpd # or: npm i -g jscpd / cargo install jscpd / brew install jscpd
 | `jscpd --history <range>` | Duplication trend over git history | — | e.g. `v5.0.0..HEAD` |
 | `jscpd --mcp` | Run MCP server over stdio | — | — |
 | `jscpd --help` | Show help | — | (none) |
-
-## Options
 
 | Option | Description | Default |
 |---|---|---|
@@ -55,13 +44,3 @@ bun add -D jscpd # or: npm i -g jscpd / cargo install jscpd / brew install jscpd
 | `--fail-on-empty` | Exit 1 when scan analyzes no files | off |
 | `--exit-code N` | Exit code when clones found | 1 |
 | `--no-tips` / `--silent` | Quiet CI output | `false` |
-
-## Examples
-
-```sh
-bunx jscpd ./src
-bunx jscpd ./src -r html -o ./report
-bunx jscpd ./src --threshold 10 --min-tokens 30
-bunx jscpd . --baseline .jscpd-baseline.json --fail-on-new-clones
-bunx jscpd . --cross-formats js-ts --reporters console,json
-```

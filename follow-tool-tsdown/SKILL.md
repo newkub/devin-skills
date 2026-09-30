@@ -22,7 +22,7 @@ related:
 ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
 - Boundary: ใช้ tsdown เมื่อ bundle library (publish ไป registry) — app bundling/dev server ใช้ `/follow-tool-vite`; raw bundler tuning ใช้ `/follow-tool-rolldown`; alternative library bundler ดู `/follow-tool-bunup`; migrate จาก `tsup` ดู `subskills/migrate-from-tsup`
-- Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 || ^24.11.0 || >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
+- Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 | ^24.11.0 | >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
 
 ## Execute
 
@@ -31,7 +31,7 @@ related:
 > Goal: ตรวจสอบว่า project เหมาะกับ tsdown
 
 1. ยืนยันว่าเป็น TypeScript library project
-2. ตรวจสอบ `package.json` และ Node.js version `^22.18.0 || ^24.11.0 || >=26.0.0`
+2. ตรวจสอบ `package.json` และ Node.js version `^22.18.0 | ^24.11.0 | >=26.0.0`
 3. ระบุ output formats ทีต้องการ
 4. ตรวจสอบ `src/index.ts` หรือ entry files
 
@@ -42,7 +42,7 @@ related:
 1. ติดตั้งด้วย `bun add -D tsdown` หรือ scaffold project ใหม่ด้วย `bun create tsdown@latest`
 2. ตรวจสอบ version ด้วย `bunx tsdown --version`
 3. ใช้ `bunx tsdown --help` ดู CLI options
-4. ดูรายละเอียดใน [references/tsdown.md](references/tsdown.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Configuration
 
@@ -52,7 +52,7 @@ related:
 2. ใช้ `defineConfig` จาก `tsdown`
 3. กำหนด `entry`, `format`, `dts`, `outDir`, `clean`
 4. ตั้งค่า `platform` เป็น `node`, `browser`, หรือ `neutral`
-5. ดู config options ใน [references/tsdown.md](references/tsdown.md)
+5. ดู config options ใน 
 
 ### 4. Build Scripts
 
@@ -85,11 +85,7 @@ related:
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| first-time setup (install, config, entry/dts/sourcemap) | `subskills/setup-tsdown/SKILL.md` |
-| migrate จาก tsup | `subskills/migrate-from-tsup/SKILL.md` |
-
+| Topic | Subskill |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `subskills/setup-tsdown/SKILL.md` | migrate จาก tsup | `subskills/migrate-from-tsup/SKILL.md` 
 ## Rules
 
 ### 1. Installation

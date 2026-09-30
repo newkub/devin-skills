@@ -27,17 +27,13 @@ related:
 - ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
 - ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
 
-- Latest: `release-it@21.1.0` (verified 2026-09-24) — v21 ต้องใช้ Node.js `^22.21.0 || >=24.0.0`
+- Latest: `release-it@21.1.0` (verified 2026-09-24) — v21 ต้องใช้ Node.js `^22.21.0 | >=24.0.0`
 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install, release script, hooks/plugins basics | `subskills/setup-release-it/SKILL.md` |
-| `.release-it.json` — git, github, npm, changelog options | `subskills/config-release-it/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install, release script, hooks/plugins basics | `subskills/setup-release-it/SKILL.md` | `.release-it.json` — git, github, npm, changelog options | `subskills/config-release-it/SKILL.md` 
 ### 1. Install
 
 > Goal: ติดตั้ง release-it ใน project
@@ -45,7 +41,7 @@ related:
 1. รัน `bun add -D release-it`
 2. เพิ่ม script ใน `package.json`: `"release": "release-it"`
 3. ยืนยันด้วย `bunx release-it --version`
-4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Configure
 
@@ -54,7 +50,7 @@ related:
 1. สร้าง `.release-it.json` ที่ project root
 2. ตั้งค่า `git`, `npm`, `github` และ `hooks` ตาม project policy
 3. ใช้ `requireCleanWorkingDir: false` เฉพาะเมื่อ CI รันโดยไม่ต้อง clean working dir
-4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Manual Release
 
@@ -63,7 +59,7 @@ related:
 1. รัน `bun run release` สำหรับ interactive mode
 2. รัน `bun run release --ci` สำหรับ non-interactive mode
 3. ใช้ `major`, `minor`, `patch` หรือ `--release-version` เพื่อควบคุม version
-4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
+4. ดูรายละเอียดใน 
 
 ### 4. GitHub Actions Workflow
 
@@ -73,7 +69,7 @@ related:
 2. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN` secrets หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง tokens
 3. ใช้ `actions/checkout@v7` และ `oven-sh/setup-bun@v2`
 4. รัน `bun install` แล้ว `bun run release --ci`
-5. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
+5. ดูรายละเอียดใน 
 
 ### 5. Plugins
 
@@ -82,7 +78,7 @@ related:
 1. ใช้ `@release-it/conventional-changelog` สำหรับ auto changelog
 2. ใช้ `@release-it/bumper` สำหรับ custom manifest files
 3. ใช้ `@release-it/keep-a-changelog` สำหรับ maintain `CHANGELOG.md`
-4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

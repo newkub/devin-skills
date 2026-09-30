@@ -4,7 +4,6 @@ description: ปรับปรุง Core Web Vitals — LCP, INP, CLS optimiza
 argument-hint: "[metric]"
 related:
   - follow-lib-web-vitals
-  - check-bottlenecks
   - report-before-after
   - run-profiler
 ---
@@ -24,7 +23,7 @@ related:
 > Goal: ระบุ root cause ของ metric ที่พังด้วยข้อมูลจริง
 
 1. ใช้ `web-vitals/attribution` build เพื่อดูว่า element/sub-part ไหนทำ metric พัง (เช่น LCP element, INP interaction target, CLS shift sources)
-2. ทำ `/check-bottlenecks` — แยกปัญหา: server slow (TTFB), render-blocking resources, long tasks, layout shifts
+2. ทำ `/deep-optimize` — แยกปัญหา: server slow (TTFB), render-blocking resources, long tasks, layout shifts
 3. เก็บ baseline numbers ก่อนแก้ — ทำ `/run-profiler` หรือเช็ค field data ที่ report อยู่
 
 ### 2. Optimize LCP

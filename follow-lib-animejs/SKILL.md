@@ -28,8 +28,7 @@ related:
 
 - Latest: `animejs@4.5.0` (verified 2026-09-13)
 - v5 beta: `animejs@beta` (`5.0.0-beta.2`) มี breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), function-based value callback arg ที่ 3 เปลี่ยนจาก `total` (Number) เป็น `targets` (Array), stagger `use` signature เปลี่ยนตาม, `matrix`/`matrix3d` animate ตรงไม่ได้
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [core api](references/animejs-core-api.md) | [advanced api](references/animejs-advanced-api.md) | [configuration](references/animejs-configuration.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install And Setup

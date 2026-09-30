@@ -21,7 +21,7 @@ related:
 ใช้สำหรับการ `import` modules ผ่าน `HTTPS URL` พร้อม `tree-shaking`, `bundling`, `dependency rewriting` และ `import maps` อัตโนมัติ
 
 - ใช้ skill นี้เฉพาะเมื่อโหลด modules ผ่าน CDN URL โดยไม่มี bundler (browser, Deno, no-build setups) — ถ้า project มี `package.json` + bundler → install package ตามปกติแทน
-- CDN อื่นดู `references/js-delivr.md` และ `references/jspm.md`
+- CDN อื่น: jsDelivr (`cdn.jsdelivr.net`), JSPM (`jspm.io`) — ดู official docs ผ่าน `/learn-from-web`
 - `esm.sh` มี CLI สำหรับจัดการ import maps ใน `index.html` — ดู `references/cli.md`
 
 ## Execute
@@ -90,8 +90,8 @@ related:
 - ใช้ `?dev` สำหรับ development build เท่านั้น
 - ใช้ `?no-dts` หาก type declaration จาก CDN ทำให้ `Deno` ตรวจ type ผิด
 
-- ใช้ `references/js-delivr.md` ถ้าต้องการ `multi-CDN` (jsDelivr)
-- ใช้ `references/jspm.md` ถ้าต้องการ `import maps package manager` (JSPM)
+- jsDelivr ใช้เป็น `multi-CDN` alternative — ดู official docs ผ่าน `/learn-from-web`
+- JSPM ใช้เป็น `import maps package manager` — ดู official docs ผ่าน `/learn-from-web`
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-arktype` ถ้าจำเป็น
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น

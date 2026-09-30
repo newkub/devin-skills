@@ -29,8 +29,7 @@ related:
 
 - Boundary: skill นี้ครอบคลุมการใช้งาน Devin/Cascade ฝั่ง user — สำหรับอัปเดต Devin CLI/skills ของเครื่องใช้ `/update-devin`; สำหรับกฎและ conventions ของ global skills ดู `/follow-devin-global-skills`
 - Latest model: `SWE-2` (released 2026-09-10, post-trained จาก Kimi K3 2.8T params) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Verify Installation

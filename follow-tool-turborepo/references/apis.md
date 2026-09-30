@@ -1,30 +1,13 @@
-# Tool Turborepo API & Dependencies
-
-## Install
-
-```sh
-bun add -D turbo
-```
-
-## Version
-
-- Latest: 2.11.4
-- [Package Registry](https://www.npmjs.com/package/turbo)
-- [Repository](https://github.com/vercel/turborepo)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D turbo` |
+| version | 2.11.4 |
+| package registry | https://www.npmjs.com/package/turbo |
+| repository | https://github.com/vercel/turborepo |
+| docs | https://turborepo.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
 | `install` | Install turbo in project | latest version | --save-dev, --save, --global |
 | `turbo` | Run the turbo CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://turborepo.dev
-- Description: Turborepo is the build system for coding agents.

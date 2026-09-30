@@ -23,8 +23,7 @@ related:
 - ถ้า project ใช้ utility-first engine (UnoCSS/Tailwind) → ใช้ `/follow-lib-unocss` แทน
 - ถ้าเป็น JS-driven animation (timelines, staggers) → ใช้ `/follow-lib-animejs` แทน; CSS transitions/animations ธรรมดาอยู่ใน scope นี้
 
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [best practices](references/css-best-practices.md) | [manifest](references/package-manifest.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Analyze CSS Setup

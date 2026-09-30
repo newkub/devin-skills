@@ -4,7 +4,6 @@ description: ลด token usage และ cost — prompt sizing, caching, model
 argument-hint: "[scope]"
 related:
   - follow-lib-openai
-  - check-bottlenecks
   - report-before-after
 ---
 
@@ -23,7 +22,7 @@ related:
 > Goal: เก็บ token/cost baseline ก่อน optimize
 
 1. Log `usage` field จากทุก response (`prompt_tokens`, `completion_tokens`, `total_tokens`) — ถ้ายังไม่ได้ log → เพิ่มก่อนเพื่อมี baseline
-2. ระบุ calls ที่แพงสุด — model × tokens × frequency คือ cost drivers จริง ทำ `/check-bottlenecks`
+2. ระบุ calls ที่แพงสุด — model × tokens × frequency คือ cost drivers จริง ทำ `/deep-optimize`
 3. คำนวณ cost จาก pricing ปัจจุบันของ model ที่ใช้ — ดู `https://openai.com/api/pricing` (อย่าเดาราคา)
 
 ### 2. Reduce Prompt And Context Size

@@ -19,18 +19,14 @@ related:
 
 - ครอบคลุม: TOTP/HOTP secret generation, token generate/verify, `otpauth://` URI provisioning, crypto plugins, secret storage
 - ไม่ครอบคลุม: render QR image จาก otpauth URI — ใช้ `/follow-lib-qrcode`; general auth/session design — ดู sibling skills ตาม stack
-- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี)
 - Latest: `otplib@13.5.0` (verified 2026-09-13) — v13 เป็น rewrite ใหม่ทั้งหมด (breaking changes)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-otplib/SKILL.md` — install, TOTP generate/verify, secret storage |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-otplib/SKILL.md` — install, TOTP generate/verify, secret storage 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

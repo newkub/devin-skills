@@ -1,32 +1,13 @@
-# Tool Usage API & Dependencies
-
-## Install
-
-```sh
-mise use -g usage
-# or
-mise use usage
-```
-
-## Version
-
-- Latest: `6.11.1` (usage CLI โดย jdx, verified 2026-09-26)
-- [Registry](https://crates.io/crates/usage-cli) — npm package `usage` ไม่ใช่ตัวจริง
-- [Repository](https://github.com/jdx/usage)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `mise use -g usage` |
+| version | 6.11.1 |
+| registry | https://crates.io/crates/usage-cli |
+| repository | https://github.com/jdx/usage |
+| docs | https://usage.jdx.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
 | `install` | Install usage in project | latest version | --save-dev, --save, --global |
 | `usage` | Run the tool CLI | current workspace | see cli.md |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://usage.jdx.dev
-- Description: CLI spec tool by jdx — generate completions/docs/SDK from usage.kdl

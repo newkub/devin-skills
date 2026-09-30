@@ -34,7 +34,7 @@ related:
 4. ยืนยันด้วย `pitchfork --version`
 5. ติดตั้ง shell completion ด้วย `pitchfork completion <bash|zsh|fish>` (แยกจาก shell hook)
 6. บน Windows: default daemon shell คือ `cmd /C` — ถ้าต้องการ POSIX behavior ให้วาง `sh.exe` บน PATH และตั้ง `general.shell = "sh -c"`
-7. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+7. ดูรายละเอียดใน 
 
 ### 2. Create Configuration
 
@@ -49,7 +49,7 @@ related:
 7. ใช้ `auto = ["start", "stop"]` สำหรับ shell hook, `watch` + `watch_mode` สำหรับ restart on change, `cron` สำหรับ schedule, `boot_start` สำหรับ start at login
 8. ใช้ `[env]` top-level สำหรับ shared env และ `env` ต่อ daemon — ใช้ Tera template `{{ daemons.<name>.port }}` เพื่อเชื่อม services
 9. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit) และ `[groups.<name>]` สำหรับ batch operations
-10. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+10. ดูรายละเอียดใน 
 
 ### 3. Manage Daemons
 
@@ -77,7 +77,7 @@ related:
 4. IDE/tools ใช้ `pitchfork project enter --pid <PID> [--directory <DIR>]` / `leave` / `list --json` แทน shell hook
 5. PID ต่อ shell: `$$` (bash/zsh), `$fish_pid` (fish), `$SHELL_PID` (nushell)
 6. บน Windows session ที่ crash ไม่ถูก cleanup อัตโนมัติ — ต้อง `project leave` เอง
-7. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+7. ดูรายละเอียดใน 
 
 ### 5. Lifecycle Hooks
 
@@ -87,7 +87,7 @@ related:
 2. `on_output` รับ shorthand string หรือ `{ run, filter?, regex?, debounce? }` (filter/regex ห้ามใช้คู่กัน)
 3. Hooks เป็น fire-and-forget ทำงาน background ไม่ block daemon — อย่าใช้ `on_ready` ทำ setup ที่ต้องเสร็จก่อน serve
 4. ใช้ environment variables: `PITCHFORK_DAEMON_ID`, `PITCHFORK_DAEMON_NAMESPACE`, `PITCHFORK_RETRY_COUNT`, `PITCHFORK_EXIT_CODE`, `PITCHFORK_EXIT_REASON`, `PITCHFORK_MATCHED_LINE`, `PITCHFORK_PORT0..N`
-5. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
+5. ดูรายละเอียดใน 
 
 ### 6. Ports, Proxy & Dashboards
 
@@ -100,7 +100,7 @@ related:
 5. MCP server: client config `{ "command": "pitchfork", "args": ["mcp"] }` — tools: status, start, stop, restart, logs
 6. ใช้ `mise = true` ต่อ daemon (หรือ `[settings.general] mise = true`) เมื่อ daemon ต้องการ mise tools/env นอก interactive shell
 7. `pitchfork boot enable` ลงทะเบียน supervisor ที่ login (macOS launchd / Linux systemd) + `boot_start = true` ต่อ daemon
-8. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md) และ [references/apis.md](references/apis.md)
+8. ดูรายละเอียดใน  และ [references/apis.md](references/apis.md)
 
 ## Rules
 
@@ -174,13 +174,8 @@ daemons = ["redis", "api"]
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 
 ## References
-
-- [Pitchfork reference](references/pitchfork.md)
 - [CLI reference](references/cli.md)
 - [HTTP API & MCP](references/apis.md)
-- [Docs route map](references/routes.md)
-- [Official resources](references/website.md)
-
 ## Expected Outcome
 
 - pitchfork ติดตั้งและทำงานผ่าน mise

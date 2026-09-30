@@ -1,18 +1,8 @@
-# Git CLI
-
-## Install
-
-```sh
-git --version # or package manager
-```
-
-## Version
-
-- Latest: `2.55.0` (verified 2026-09-13)
-- Repository: https://git-scm.com/
-- Docs: https://git-scm.com/docs
-
-## Commands
+| key | value |
+|---|---|
+| version | 2.55.0 |
+| repository | https://git-scm.com/ |
+| docs | https://git-scm.com/docs |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -40,17 +30,3 @@ git --version # or package manager
 | `git worktree` | Manage worktrees | — | add, list, remove |
 | `git bisect` | Binary search for bad commit | — | start, bad, good, reset |
 | `git blame <file>` | Show per-line authorship | — | -L, -w |
-
-See also: [git-commands.md](git-commands.md) (full reference), [git-config.md](git-config.md) (config options), [git-libraries.md](git-libraries.md) (programmatic APIs)
-
-## Examples
-
-```sh
-git add -A
-```
-```sh
-git commit -m "feat: add x"
-```
-```sh
-git push -u origin main
-```

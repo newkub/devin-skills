@@ -25,17 +25,12 @@ related:
 
 - Boundary: Changesets ใช้ changeset files (`.changeset/*.md`) สำหรับ multi-package versioning + release PR flow — เหมาะกับ monorepo; สำหรับ single-package changelog จาก conventional commits ใช้ `/follow-tool-changelogen`; สำหรับ PR-label releases ดู `/follow-tool-auto-it`; alternatives: `/follow-tool-release-it`, `/follow-tool-semantic-release`
 - Latest: `@changesets/cli@3.0.3` (verified 2026-09-26) — `changesets/action@v2` (v2.1.2), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
-- References: [apis](references/apis.md) | [changesets](references/changesets.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Init, `.changeset/` flow, version/publish commands | `subskills/setup-changesets/SKILL.md` |
-| `config.json`, `fixed`/`linked` packages, access | `subskills/config-changesets/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Init, `.changeset/` flow, version/publish commands | `subskills/setup-changesets/SKILL.md` | `config.json`, `fixed`/`linked` packages, access | `subskills/config-changesets/SKILL.md` 
 ### 1. Install Changesets
 
 > Goal: ติดตั้ง Changesets CLI และ init config

@@ -1,23 +1,9 @@
-# Lib Edgejs API & Dependencies
-
-## Install
-
-```sh
-bun add edge.js   # runtime dependency (Edge template engine)
-```
-
-## Version
-
-- Latest: `6.5.1` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/edge.js)
-- [Repository](https://github.com/edge-js/edge)
-
-## Dependencies
-
-- Runtime deps น้อย — template compiler + lexer ในตัว
-- TypeScript types รวมใน package (ESM-only)
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 6.5.1 |
+| package registry | https://www.npmjs.com/package/edge.js |
+| repository | https://github.com/edge-js/edge |
+| docs | https://edgejs.dev |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -27,8 +13,3 @@ bun add edge.js   # runtime dependency (Edge template engine)
 | `edge.renderSync` / `renderRaw` | Variants | - | - |
 | `edge.registerTemplate(name, {template})` | Inline template | - | - |
 | `{{ }}` / `@if` / `@each` / `@component` | Template syntax | escaped | `@!{}` raw |
-
-## Source
-
-- Official docs: https://edgejs.dev
-- Description: Edge.js — template engine สำหรับ Node.js (AdonisJS ecosystem).

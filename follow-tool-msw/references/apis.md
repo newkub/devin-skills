@@ -1,24 +1,9 @@
-# Tool Msw API & Dependencies
-
-## Install
-
-```sh
-bun add -D msw
-```
-
-## Version
-
-- Latest: `2.15.0` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/msw)
-- [Repository](https://github.com/mswjs/msw)
-
-## Dependencies
-
-- Node: `msw/node` (setupServer) — intercept http/https/fetch/undici/axios/graphql
-- Browser: Service Worker — `msw init public/` สร้าง `mockServiceWorker.js`
-- Peer optional: `graphql` (สำหรับ `graphql.query`/`mutation` handlers)
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 2.15.0 |
+| package registry | https://www.npmjs.com/package/msw |
+| repository | https://github.com/mswjs/msw |
+| docs | https://mswjs.io |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -29,8 +14,3 @@ bun add -D msw
 | `msw init <dir> --save` | สร้าง SW script | public/ | --save writes to package.json |
 | `HttpResponse.json/ text/ error()` | Mock response | - | `{status, headers}` |
 | `passthrough()` / `delay()` | Utilities | - | - |
-
-## Source
-
-- Official docs: https://mswjs.io
-- Description: API mocking via request interception — browser SW + Node interceptors.

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-test
   - implement-to-production
-  - review-dependencies
+  - deep-review
   - report
 
 ---
@@ -22,19 +22,14 @@ related:
 - ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
 
 - Latest: `msw@2.15.0` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
 > Goal: dispatch ไปยัง subskill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| setup | `subskills/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน |
-| config | `subskills/config-handlers/SKILL.md` — handler organization, error simulation, passthrough |
-
+| Topic | Subskill |-------|----------| setup | `subskills/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน | config | `subskills/config-handlers/SKILL.md` — handler organization, error simulation, passthrough 
 1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
@@ -42,7 +37,7 @@ related:
 
 > Goal: รู้ stack และ test runner ก่อนติดตั้ง
 
-1. ทำ `/review-dependencies`
+1. ทำ `/deep-review`
 2. ระบุ environment: browser dev, Node tests, หรือทั้งสอง
 3. ระบุ HTTP client ที่ใช้ (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
 

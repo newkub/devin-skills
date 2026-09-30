@@ -5,8 +5,7 @@ argument-hint: "[target-area]"
 related:
   - follow-tool-vite
   - run-bench
-  - check-bottlenecks
-  - review-bundle
+  - deep-review
   - report-before-after
 ---
 
@@ -28,7 +27,7 @@ related:
 
 1. รัน `bunx vite build` เก็บ build time และขนาด output ต่อ chunk
 2. เปิด `build.reportCompressedSize` เพื่อดู gzip size ใน output (หรือใช้ bundle visualizer — ดู official docs)
-3. ทำ `/check-bottlenecks` ถ้าต้องหา chunk ที่ใหญ่ผิดปกติ
+3. ทำ `/deep-optimize` ถ้าต้องหา chunk ที่ใหญ่ผิดปกติ
 
 ### 2. Chunk Splitting
 
@@ -78,7 +77,7 @@ related:
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /run-bench ถ้าจำเป็น
-- ใช้ /review-bundle ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

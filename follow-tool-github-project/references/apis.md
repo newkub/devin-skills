@@ -1,29 +1,8 @@
-# Tool Github Project API & Dependencies
-
-`gh project` เป็น subcommand ของ GitHub CLI — ไม่มี package แยก (npm package `gh` ไม่ใช่ตัวจริง)
-
-## Install
-
-```sh
-mise use -g gh
-# or
-winget install GitHub.cli
-# then
-gh auth login && gh auth refresh -s project
-```
-
-## Version
-
-- Latest: gh CLI `2.101.0` (github.com/cli/cli, verified 2026-09-26)
-- [Repository](https://github.com/cli/cli)
-- [Manual](https://cli.github.com/manual/gh_project)
-
-## Dependencies
-
-- `gh` เป็น static binary — ไม่มี npm transitive dependencies
-- ต้องการ token scope `project` (`gh auth refresh -s project`)
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `mise use -g gh` |
+| repository | https://github.com/cli/cli |
+| docs | https://cli.github.com/manual/gh_project |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -45,8 +24,3 @@ gh auth login && gh auth refresh -s project
 | `gh project field-list <number>` | List fields + IDs | — | --owner, --format |
 | `gh project field-create <number>` | Create field | — | --owner, --name, --data-type (TEXT/SINGLE_SELECT/DATE/NUMBER), --single-select-options |
 | `gh project field-delete <number>` | Delete field (destructive) | — | --owner, --id |
-
-## Source
-
-- Official docs: https://cli.github.com/manual/gh_project
-- GitHub Projects docs: https://docs.github.com/en/issues/planning-and-tracking-with-projects

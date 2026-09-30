@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับ modern web applications ทีใช้ Vite เป็น build tool และ dev server
 
-- สำหรับ gzip/brotli pre-compression ดู `references/plugin-compression.md`
+- gzip/brotli pre-compression ดู `references/apis.md`
 
 - Boundary: ใช้ Vite สำหรับ app dev server/build — library bundling ใช้ `/follow-tool-tsdown`; raw bundler internals ใช้ `/follow-tool-rolldown`; static docs site ใช้ `/follow-tool-vitepress`
 
@@ -34,7 +34,7 @@ related:
 1. ตรวจสอบ Node.js version ไม่ต่ำกว่า 20.19 หรือ 22.12
 2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.1`, verified 2026-09-26)
 3. ตรวจสอบ version ด้วย `bunx vite --version`
-4. ดูรายละเอียดใน [references/vite.md](references/vite.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Configuration
 
@@ -47,7 +47,7 @@ related:
 5. เปิดใช้ `resolve.tsconfigPaths: true`
 6. ใช้ top-level `tsconfig` option (Vite 8.3+) ถ้าต้องการระบุ tsconfig ที่ Vite ใช้ resolve/transform
 7. ตั้งค่า `envPrefix` ถ้าจำเป็น
-8. ดู config patterns ใน [references/vite.md](references/vite.md)
+8. ดู config patterns ใน 
 
 ### 3. Development
 
@@ -94,12 +94,7 @@ related:
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| ตั้งค่า/แก้ `vite.config.ts` (plugins, resolve, build, server) | `subskills/config-vite/SKILL.md` |
-| optimize build/bundle (chunk splitting, minify, sourcemap) | `subskills/optimize-build/SKILL.md` |
-| migrate จาก Vite ≤7 ไป `rolldown-vite` | `subskills/migrate-to-rolldown/SKILL.md` |
-
+| Topic | Subskill |-------|----------| ตั้งค่า/แก้ `vite.config.ts` (plugins, resolve, build, server) | `subskills/config-vite/SKILL.md` | optimize build/bundle (chunk splitting, minify, sourcemap) | `subskills/optimize-build/SKILL.md` | migrate จาก Vite ≤7 ไป `rolldown-vite` | `subskills/migrate-to-rolldown/SKILL.md` 
 ## Rules
 
 ### 1. Configuration

@@ -23,16 +23,12 @@ related:
 - First-time setup + JWKS → `subskills/setup-jose/SKILL.md`
 
 - Latest: `jose@6.2.12` (verified 2026-09-13) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

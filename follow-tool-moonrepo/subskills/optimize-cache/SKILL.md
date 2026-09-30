@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-monorepo
   - run-build
-  - check-bottlenecks
 ---
 
 ## Goal
@@ -24,7 +23,7 @@ related:
 
 1. รัน `moon run :build` แบบ cold และจับเวลา
 2. รัน warm run ซ้ำ — บันทึกว่า tasks ใด cache hit/miss จาก output
-3. ใช้ `moon query` ดู project/task graph เพื่อหา bottlenecks — ทำ `/check-bottlenecks` ถ้าต้องวิเคราะห์ลึก
+3. ใช้ `moon query` ดู project/task graph เพื่อหา bottlenecks — ทำ `/deep-optimize` ถ้าต้องวิเคราะห์ลึก
 
 ### 2. Fix Cache Misses
 
@@ -77,7 +76,7 @@ related:
 - credentials ของ remote cache ผ่าน secrets manager เท่านั้น
 - ถ้าไม่แน่ใจ option/flag ให้ดู `moon <cmd> --help` หรือ official docs
 
-- ใช้ /check-bottlenecks ถ้าจำเป็น
+- ใช้ /deep-optimize ถ้าจำเป็น
 
 ## Expected Outcome
 

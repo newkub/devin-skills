@@ -67,7 +67,7 @@ adopt Effect-TS เข้า codebase ที่ใช้ neverthrow/Promise/try-
 
 1. ตรวจ `Effect.run*` เหลือเฉพาะ entry point — ไม่มีใน service code
 2. ถ้า migrate ไม่ครบ → ระบุ TODO list ต่อ module พร้อมสาเหตุ
-3. เสร็จ → `/report-before-after` แล้ว `/ship`
+3. เสร็จ → `/report-before-after` แล้ว `/ship-to-dev-branch`
 
 ## Rules
 

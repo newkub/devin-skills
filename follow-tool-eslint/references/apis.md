@@ -1,22 +1,10 @@
-# Tool Eslint API & Dependencies
-
-## Install
-
-```sh
-bun add -D eslint
-```
-
-## Version
-
-- Latest: 10.11.0
-- [Package Registry](https://www.npmjs.com/package/eslint)
-- [Repository](https://github.com/eslint/eslint)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D eslint` |
+| version | 10.11.0 |
+| package registry | https://www.npmjs.com/package/eslint |
+| repository | https://github.com/eslint/eslint |
+| docs | https://eslint.org |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -27,8 +15,3 @@ bun add -D eslint
 | `import 'eslint/config'` | Subpath export for config | entry as documented | (none) |
 | `import 'eslint/universal'` | Subpath export for universal | entry as documented | (none) |
 | `import 'eslint/use-at-your-own-risk'` | Subpath export for use-at-your-own-risk | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://eslint.org
-- Description: An AST-based pattern checker for JavaScript.

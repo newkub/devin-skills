@@ -1,18 +1,8 @@
-# release-it CLI
-
-## Install
-
-```sh
-bun add -D release-it
-```
-
-## Version
-
-- Latest on npm
-- Repository: https://github.com/release-it/release-it
-- Docs: https://github.com/release-it/release-it
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D release-it` |
+| repository | https://github.com/release-it/release-it |
+| docs | https://github.com/release-it/release-it |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,14 +11,3 @@ bun add -D release-it
 | `release-it major` | Release major version | — | --config, --only-version |
 | `release-it patch` | Release patch version | — | --pre-release, --github.release |
 | `release-it --dry-run` | Preview release | — | --no-increment |
-## Examples
-
-```sh
-bunx release-it --dry-run
-```
-```sh
-bunx release-it minor
-```
-```sh
-bunx release-it --ci
-```

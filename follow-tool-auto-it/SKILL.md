@@ -22,8 +22,7 @@ related:
 
 - Boundary: Auto คำนวณ semver bump จาก PR labels (ไม่ใช่ commit messages โดยตรง) — ถ้าต้องการ changelog จาก conventional commits ให้ใช้ `/follow-tool-changelogen`, สำหรับ monorepo multi-package versioning ใช้ `/follow-tool-changesets`, สำหรับ alternatives ดู `/follow-tool-release-it` และ `/follow-tool-semantic-release`
 - Latest: `auto@11.3.6` / `@auto-it/core@11.3.6` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [auto-it](references/auto-it.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Install Auto

@@ -21,24 +21,19 @@ related:
 - Boundary: skill นี้ครอบคลุม `drizzle-kit` CLI เท่านั้น (generate/migrate/push/pull/check/studio) — สำหรับ `drizzle-orm` schema/query API ใช้ `/follow-lib-drizzle`
 - Latest: `drizzle-kit@0.31.11` (pair กับ `drizzle-orm@0.45.3`) (verified 2026-09-26)
 - Note: v1.0.0 อยู่ใน beta/rc channel (`beta` dist-tag, ล่าสุด 1.0.0-rc.x) — มี breaking changes (casing API, ลบ RQB v1 `db._query`); production ยังใช้ stable 0.31.x
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Pick Subskill
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `subskills/config-drizzle-kit/SKILL.md` |
-| generate/push/migrate commands, workflow, rollback | `subskills/migrate-schema/SKILL.md` |
-
+| Topic | Subskill |-------|----------| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `subskills/config-drizzle-kit/SKILL.md` | generate/push/migrate commands, workflow, rollback | `subskills/migrate-schema/SKILL.md` 
 ### 2. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs
 
-1. ติดตั้ง `bun add -D drizzle-kit` (ต้องมี `drizzle-orm` + database driver เป็น peer — ดู `references/package-manifest.md`)
+1. ติดตั้ง `bun add -D drizzle-kit` (ต้องมี `drizzle-orm` + database driver เป็น peer — ดู `references/apis.md`)
 1. `drizzle-kit generate` สร้าง SQL migration จาก schema diff (`--name`, `--custom`, `--breakpoints`)
 1. `drizzle-kit migrate` apply migrations; `push` สำหรับ dev prototyping (`--force`, `--strict`)
 1. `drizzle-kit pull` introspect DB → drizzle schema; `check` ตรวจ migration collisions; `up` upgrade snapshots; `export` แปลง schema เป็น SQL DDL

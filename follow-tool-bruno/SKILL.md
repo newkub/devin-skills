@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-test
   - follow-tool-hurl
-  - gen-openapi
   - follow-tool-github-actions
   - follow-test
 
@@ -49,7 +48,7 @@ related:
 2. Single file: `--output-file collection.json` แทน `--output`
 3. WSDL (SOAP): `bru import wsdl --source <file.wsdl> --output <dir>`
 4. Shorthand: `-s` (source), `-o` (output), `-n` (collection-name)
-5. รายละเอียดใน [references/bru-cli.md](references/bru-cli.md)
+5. รายละเอียดใน 
 
 ### 4. Run Collections
 
@@ -76,7 +75,7 @@ related:
 1. ใช้ `usebruno/bruno-cli-action@v1` — composite action ที่ prepend `bru` ให้เอง (เขียน `run --env prod` ไม่ใช่ `bru run --env prod`)
 2. Auto-inject `--reporter-junit` ถ้าไม่ระบุ, expose outputs: `exit-code`, `passed`, `failed`, `total`, `duration-ms`
 3. Inputs: `command` (required), `bru-version`, `working-directory`
-4. ดูตัวอย่าง workflow และ downstream actions ใน [references/github-actions.md](references/github-actions.md)
+4. ดูตัวอย่าง workflow และ downstream actions ใน 
 
 ## Rules
 
@@ -102,11 +101,9 @@ related:
 
 ## References
 
-- [bru CLI commands](references/bru-cli.md)
-- [GitHub Actions](references/github-actions.md)
-- [Package manifest](references/package-manifest.md)
-- [Official resources](references/website.md)
-- ใช้ /gen-openapi ถ้าจำเป็น
+
+
+
 - ใช้ /follow-test ถ้าจำเป็น
 
 

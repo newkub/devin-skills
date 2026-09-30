@@ -36,7 +36,7 @@ related:
 2. ติดตั้ง shadcn-solid CLI ผ่าน `bunx shadcn-solid@latest init` (หรือ `pnpm dlx shadcn-solid@latest init`)
 3. เลือก CSS framework `TailwindCSS` หรือ `UnoCSS` ตามคำถามของ CLI
 4. ตั้งค่า `components.json` ด้วย base color, global CSS file, import alias (`@/components`), utils alias (`@/lib/utils`)
-5. อ่านคำแนะนำเพิ่มเติมที่ [references/shadcn-solid.md](references/shadcn-solid.md)
+5. อ่านคำแนะนำเพิ่มเติมที่ 
 
 ### 2. Add Components
 
@@ -57,7 +57,7 @@ related:
 3. สร้างบน Kobalte UI primitives สำหรับ accessibility
 4. รองรับ Tailwind CSS และ UnoCSS
 5. ไม่ต้องติดตั้ง component library เป็น dependency
-6. ดูรายละเอียดเพิ่มเติมใน [references/shadcn-solid.md](references/shadcn-solid.md)
+6. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 4. Configure Styles
 

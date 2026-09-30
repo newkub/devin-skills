@@ -1,18 +1,8 @@
-# Renovate CLI
-
-## Install
-
-```sh
-bun add -D renovate
-```
-
-## Version
-
-- Latest on npm
-- Repository: https://github.com/renovatebot/renovate
-- Docs: https://docs.renovatebot.com/
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D renovate` |
+| repository | https://github.com/renovatebot/renovate |
+| docs | https://docs.renovatebot.com/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -20,11 +10,3 @@ bun add -D renovate
 | `renovate --dry-run` | Simulate only | — | --autodiscover, --repositories, --token |
 | `renovate-config-validator` | Validate Renovate config | — | --strict |
 | `renovate --help` | Show help | — | (none) |
-## Examples
-
-```sh
-bunx renovate --dry-run
-```
-```sh
-bunx renovate-config-validator
-```

@@ -3,7 +3,7 @@ name: follow-lib-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
 argument-hint: "[scope]"
 related:
-  - review-auth
+  - deep-review
   - follow-lib-jose
   - follow-lib-simplewebauthn
 ---
@@ -20,20 +20,15 @@ related:
 - ใช้ skill นี้เมื่อต้องการ auth framework ครบวงจร (session, providers, plugins, adapters)
 - ถ้าต้องการแค่ JWT sign/verify → ใช้ `/follow-lib-jose` แทน
 - ถ้าต้องการแค่ WebAuthn/passkey โดยไม่ใช้ auth framework → ใช้ `/follow-lib-simplewebauthn` แทน
-- ถ้าต้อง review auth design/security ของ code ที่มีอยู่ → ใช้ `/review-auth`
+- ถ้าต้อง review auth design/security ของ code ที่มีอยู่ → ใช้ `/deep-review`
 
 - Latest: `better-auth@1.7.5` (verified 2026-09-16)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md) | [better-auth](references/better-auth.md) | [manifest](references/package-manifest.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-auth/SKILL.md` — install, `auth.ts`, database adapter |
-| Providers | `subskills/config-providers/SKILL.md` — social/email plugins config |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-auth/SKILL.md` — install, `auth.ts`, database adapter | Providers | `subskills/config-providers/SKILL.md` — social/email plugins config 
 ### 1. Install
 
 > Goal: ติดตั้ง Better Auth และ database adapter
@@ -115,7 +110,7 @@ related:
 
 - อัปเกรด `better-auth` และ `@better-auth/*` พร้อมกัน
 - อ่าน migration guide ก่อน upgrade major version (เช่น v1.7 มี breaking changes สำหรับ OAuth, MCP, SCIM)
-- ใช้ /review-auth ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-lib-jose ถ้าจำเป็น
 - ใช้ /follow-lib-simplewebauthn ถ้าจำเป็น
 

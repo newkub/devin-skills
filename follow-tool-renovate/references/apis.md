@@ -1,22 +1,10 @@
-# Tool Renovate API & Dependencies
-
-## Install
-
-```sh
-bun add -D renovate
-```
-
-## Version
-
-- Latest: 44.115.10
-- [Package Registry](https://www.npmjs.com/package/renovate)
-- [Repository](https://github.com/renovatebot/renovate)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D renovate` |
+| version | 44.115.10 |
+| package registry | https://www.npmjs.com/package/renovate |
+| repository | https://github.com/renovatebot/renovate |
+| docs | https://renovatebot.com |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -24,8 +12,3 @@ bun add -D renovate
 | `renovate` | Run the renovate CLI | current workspace | --help, --version, --config |
 | `renovate-config-validator` | Run the renovate-config-validator CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://renovatebot.com
-- Description: Automated dependency updates. Flexible so you don't need to be.

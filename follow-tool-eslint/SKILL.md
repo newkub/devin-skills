@@ -22,11 +22,10 @@ related:
 
 ใช้สำหรับตั้งค่า ESLint 10 ใน TypeScript, Vue, และ Nuxt projects
 
-- Latest: `eslint@10.11.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 || ^22.13 || >=24` (verified 2026-09-26) — pair กับ `typescript-eslint@8.70.1`
+- Latest: `eslint@10.11.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 | ^22.13 | >=24` (verified 2026-09-26) — pair กับ `typescript-eslint@8.70.1`
 
-- สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
-- References: [cli](references/cli.md) | [eslint](references/eslint.md) | [oxlint](references/oxlint.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- eslint-plugin-oxlint ดู official docs ผ่าน `/learn-from-web`
+- References: [cli](references/cli.md) 
 ## Execute
 
 ### 1. Install Core Dependencies
@@ -145,11 +144,7 @@ export default defineConfig([
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| เขียน/แก้ flat config (`eslint.config.js`) | `subskills/config-flat/SKILL.md` |
-| migrate ไป oxlint | `subskills/migrate-to-oxlint/SKILL.md` |
-
+| Topic | Subskill |-------|----------| เขียน/แก้ flat config (`eslint.config.js`) | `subskills/config-flat/SKILL.md` | migrate ไป oxlint | `subskills/migrate-to-oxlint/SKILL.md` 
 ## Rules
 
 ### 1. Vue/Nuxt Configuration

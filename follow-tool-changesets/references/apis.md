@@ -1,22 +1,10 @@
-# Tool Changesets API & Dependencies
-
-## Install
-
-```sh
-bun add -D @changesets/cli
-```
-
-## Version
-
-- Latest: 3.0.2
-- [Package Registry](https://www.npmjs.com/package/@changesets/cli)
-- [Repository](https://github.com/changesets/changesets)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D @changesets/cli` |
+| version | 3.0.2 |
+| package registry | https://www.npmjs.com/package/@changesets/cli |
+| repository | https://github.com/changesets/changesets |
+| docs | https://changesets.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -26,8 +14,3 @@ bun add -D @changesets/cli
 | `import '@changesets/cli/bin.js'` | Subpath export for bin.js | entry as documented | (none) |
 | `import '@changesets/cli/commit'` | Subpath export for commit | entry as documented | (none) |
 | `import '@changesets/cli/changelog'` | Subpath export for changelog | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://changesets.dev
-- Description: A tool to manage versioning and changelogs with a focus on monorepos

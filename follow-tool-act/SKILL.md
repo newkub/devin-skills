@@ -21,8 +21,7 @@ related:
 - ใช้ร่วมกับ `/resolve-github-actions-fails` (ดูและแก้ fails บน remote)
 
 - Latest: `act@0.2.89` (nektos/act) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Install act

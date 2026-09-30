@@ -21,8 +21,7 @@ related:
 ใช้กับทุก project ทีใช้ git ไมว่าจะเป็น local workflow, collaboration, หรือ history investigation
 
 - Latest: `git@2.55.0` (git-for-windows), `simple-git@4.0.1` / `isomorphic-git@1.42.2` / gh CLI `2.101.0` (verified 2026-09-26)
-- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Setup Repository

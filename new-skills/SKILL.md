@@ -7,8 +7,7 @@ related:
   - follow-single-of-source
   - update-devin-global-skills
   - refactor-skills
-  - review-delivery
-  - review-release
+  - deep-review
   - scan-codebase
   - review-devin-global-harness
   - update-devin
@@ -59,7 +58,7 @@ related:
 1. ใช้ `/update-devin-global-skills` เพื่อเลือก template และเขียน `SKILL.md`
 2. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
 3. ใส่ `related` ครบถ้วน
-4. ถ้า skill มี lib/package ให้ติดตั้ง → สร้าง `references/package-manifest.md` จาก [templates/package-manifest.md](templates/package-manifest.md) — ใส่ metadata จริง (registry, latest version, release date, author, license, repo, website, docs, changelog) จาก official sources
+4. ถ้า skill มี lib/package ให้ติดตั้ง → สร้าง `references/apis.md` (+ `references/cli.md` ถ้ามี CLI) ตาม `update-devin-global-skills` `## Conventions → Write References` — metadata table `| key | value |` (package, install cmd, stable version, license, docs/repo URL) + API/CLI tables เท่านั้น ไม่มี prose
 5. ถ้าไฟล์เกิน 250 บรรทัด → แยกส่วนลง `references/`
 
 ### 5. Validate And Ship
@@ -70,7 +69,7 @@ related:
 2. ทำ `/update-devin-global-rules` เพื่อตรวจ global rules
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, TODO, placeholders
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo
-5. ทำ `/ship` เมื่องานเสร็จ
+5. ทำ `/ship-to-dev-branch` เมื่องานเสร็จ
 
 ## Rules
 
@@ -111,8 +110,8 @@ related:
 - ตรวจ markdown links ไม่ให้ broken
 - อัปเดต `AGENTS.md` ถ้า skill นี้เป้น workflow หลัก
 
-- ใช้ /review-delivery ถ้าจำเป็น
-- ใช้ /review-release ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ## Expected Outcome

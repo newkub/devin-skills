@@ -1,24 +1,9 @@
-# Lib Pdfkit API & Dependencies
-
-## Install
-
-```sh
-bun add pdfkit
-bun add -D @types/pdfkit   # TypeScript
-```
-
-## Version
-
-- Latest: `0.20.2` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/pdfkit)
-- [Repository](https://github.com/foliojs/pdfkit)
-
-## Dependencies
-
-- Runtime: `fontkit`, `png-js`, `crypto-js` (embedded subset), `linebreak`, `vite-compatible-readable-stream`/`brotli`
-- Browser: ใช้ bundle ที่แนบมา (`pdfkit.standalone.js`) + `blob-stream`
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 0.20.2 |
+| package registry | https://www.npmjs.com/package/pdfkit |
+| repository | https://github.com/foliojs/pdfkit |
+| docs | http://pdfkit.org |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -29,8 +14,3 @@ bun add -D @types/pdfkit   # TypeScript
 | `doc.rect/circle/lineTo` | Vector drawing | - | `.fill`, `.stroke` |
 | `doc.addPage()` | หน้าใหม่ | - | page opts |
 | `doc.pipe(fs.createWriteStream)` + `doc.end()` | Output | - | - |
-
-## Source
-
-- Official docs: http://pdfkit.org
-- Description: PDF generation library for Node and the browser.

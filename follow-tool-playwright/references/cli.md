@@ -1,18 +1,8 @@
-# Playwright CLI
-
-## Install
-
-```sh
-bun add -D @playwright/test
-```
-
-## Version
-
-- Latest: see `@playwright/test` on npm
-- Repository: https://github.com/microsoft/playwright
-- Docs: https://playwright.dev/docs/test-cli
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D @playwright/test` |
+| repository | https://github.com/microsoft/playwright |
+| docs | https://playwright.dev/docs/test-cli |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -22,12 +12,3 @@ bun add -D @playwright/test
 | `playwright codegen [url]` | Generate test code by recording | — | `--target`, `--output` |
 | `playwright install` | Install browsers | — | `--with-deps`, `--force` |
 | `playwright --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx playwright test
-bunx playwright test --project=chromium --headed
-bunx playwright test --grep "signin"
-bunx playwright install --with-deps
-```

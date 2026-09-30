@@ -1,18 +1,9 @@
-# Storybook CLI
-
-## Install
-
-```sh
-bun add -D storybook
-```
-
-## Version
-
-- Latest: `10.6.x` (verified 2026-09-13)
-- Repository: https://github.com/storybookjs/storybook
-- Docs: https://storybook.js.org/docs/api/cli-options/
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D storybook` |
+| version | 10.6.x |
+| repository | https://github.com/storybookjs/storybook |
+| docs | https://storybook.js.org/docs/api/cli-options/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -25,11 +16,3 @@ bun add -D storybook
 | `storybook add <addon>` | Install an addon | — | (none) |
 | `storybook doctor` | Diagnose project issues | — | (none) |
 | `storybook --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx storybook dev -p 9009
-bunx storybook build -o ./dist/storybook
-bunx storybook add @storybook/addon-a11y
-```

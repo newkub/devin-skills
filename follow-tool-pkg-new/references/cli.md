@@ -1,18 +1,8 @@
-# pkg-pr-new CLI
-
-## Install
-
-```sh
-bun add -D pkg-pr-new
-```
-
-## Version
-
-- Latest on npm
-- Repository: https://github.com/stackblitz-labs/pkg.pr.new
-- Docs: https://github.com/stackblitz-labs/pkg.pr.new#readme
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D pkg-pr-new` |
+| repository | https://github.com/stackblitz-labs/pkg.pr.new |
+| docs | https://github.com/stackblitz-labs/pkg.pr.new#readme |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -20,11 +10,3 @@ bun add -D pkg-pr-new
 | `pkg-pr-new publish` | Publish packages | — | --json, --yes |
 | `pkg-pr-new check` | Check repository | — | --token |
 | `pkg-pr-new --help` | Show help | — | (none) |
-## Examples
-
-```sh
-bunx pkg-pr-new
-```
-```sh
-bunx pkg-pr-new publish ./packages/*
-```

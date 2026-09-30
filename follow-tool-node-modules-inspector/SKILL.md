@@ -34,7 +34,7 @@ related:
 1. รัน `bunx node-modules-inspector` ที่ root ของ project
 2. หรือรันด้วย package manager ที่ project ใช้ เช่น `bunx node-modules-inspector`
 3. รอจน UI เปิดใน browser
-4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Explore UI
 
@@ -43,7 +43,7 @@ related:
 1. ดู dependency tree, versions และ installed sizes
 2. ค้นหา duplicate packages หรือ multiple versions
 3. ตรวจดู publish metadata และ `publint` warnings ถ้าเปิดใช้
-4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Generate Reports
 
@@ -53,7 +53,7 @@ related:
 2. รัน `bunx node-modules-inspector report sizes`
 3. รัน `bunx node-modules-inspector report maintainers`
 4. ใช้ flag `--json` เพื่อ output เป็น JSON
-5. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
+5. ดูรายละเอียดใน 
 
 ### 4. MCP Server
 
@@ -62,7 +62,7 @@ related:
 1. รัน `bunx node-modules-inspector mcp`
 2. ลงทะเบียน stdio server ใน MCP config ของ client
 3. ใช้ tools `nmi:report-duplicates`, `nmi:report-sizes`, `nmi:report-maintainers`
-4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
+4. ดูรายละเอียดใน 
 
 ### 5. Static Build
 
@@ -71,7 +71,7 @@ related:
 1. รัน `bunx node-modules-inspector build`
 2. ได้ `dist/__node-modules-inspector` directory (v2 default outDir)
 3. ใช้ static file server หรือ host บน GitHub Pages
-4. ดูรายละเอียดใน [references/node-modules-inspector.md](references/node-modules-inspector.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

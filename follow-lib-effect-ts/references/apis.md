@@ -1,33 +1,9 @@
-# Lib Effect Ts API & Dependencies
-
-## Install
-
-```sh
-# Runtime dependency — do NOT use -D/--save-dev
-bun add effect
-```
-
-## Versions (verified 2026-09-13)
-
-- `effect` latest stable: `3.22.2` (v4 RC: `4.0.0-rc.115`)
-- `@effect/platform`: `0.97.2`
-- `@effect/platform-bun`: `0.91.2`
-- `@effect/platform-node`: `0.108.2`
-- `@effect/vitest`: `0.30.0` (peers: `effect ^3.22.0`, `vitest ^3.2.0`)
-- [Package Registry](https://www.npmjs.com/package/effect)
-- [Repository](https://github.com/Effect-TS/effect)
-
-## Import Styles
-
-```ts
-// Namespace style (recommended, idiomatic in docs)
-import { Effect, Schema, Layer, Context, Schedule, Option, Either } from "effect"
-
-// Subpath style (equivalent — pick one style per project)
-import * as Effect from "effect/Effect"
-```
-
-## Common Modules (core `effect` package)
+| key | value |
+|---|---|
+| install | `bun add effect` |
+| package registry | https://www.npmjs.com/package/effect |
+| repository | https://github.com/Effect-TS/effect |
+| docs | https://effect.website/docs/ |
 
 | Module | Purpose |
 |---|---|
@@ -47,8 +23,6 @@ import * as Effect from "effect/Effect"
 | `TestClock`, `TestContext` | Deterministic test services |
 | `ManagedRuntime`, `Runtime` | Running layer-provided effects |
 
-## @effect/platform Packages
-
 | Package | Purpose |
 |---|---|
 | `@effect/platform` | FileSystem, Path, Terminal, HttpClient, PlatformError |
@@ -57,9 +31,3 @@ import * as Effect from "effect/Effect"
 | `@effect/cli` | CLI argument parsing and commands |
 | `@effect/vitest` | it.effect, it.scoped, it.live, it.layer, it.prop |
 | `@effect/experimental` | Experimental APIs (unstable) |
-
-## Source
-
-- Official docs: https://effect.website/docs/
-- v3 API index: https://effect.website/docs/v3/api
-- Description: The missing standard library for TypeScript, for writing production-grade software.

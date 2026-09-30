@@ -1,22 +1,10 @@
-# Lib Arktype API & Dependencies
-
-## Install
-
-```sh
-bun add arktype
-```
-
-## Version
-
-- Latest: `2.2.3` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/arktype)
-- [Repository](https://github.com/arktypeio/arktype)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add arktype` |
+| version | 2.2.3 |
+| package registry | https://www.npmjs.com/package/arktype |
+| repository | https://github.com/arktypeio/arktype |
+| docs | https://arktype.io |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -27,8 +15,3 @@ bun add arktype
 | `import 'arktype/config'` | Subpath export for config | entry as documented | (none) |
 | `import 'arktype/internal/*.ts'` | Subpath export for internal/*.ts | entry as documented | (none) |
 | `import 'arktype/internal/*.js'` | Subpath export for internal/*.js | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://arktype.io
-- Description: TypeScript's 1:1 validator, optimized from editor to runtime

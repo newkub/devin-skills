@@ -1,24 +1,8 @@
-# Tool Capgo API & Dependencies
-
-## Install
-
-```sh
-# Capgo CLI (live update สำหรับ Capacitor apps)
-bun add -D @capgo/cli
-```
-
-## Version
-
-- `@capgo/cli`: `8.51.0` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/@capgo/cli)
-- [Repository](https://github.com/Cap-go/capgo)
-
-## Dependencies
-
-- ต้องมี Capgo account + `CAPGO_TOKEN` (หรือ login ผ่าน CLI)
-- Capacitor project — `@capacitor/core` + `@capgo/capacitor-updater` plugin ใน app
-
-## Common API / Commands
+| key | value |
+|---|---|
+| package registry | https://www.npmjs.com/package/@capgo/cli |
+| repository | https://github.com/Cap-go/capgo |
+| docs | https://capgo.app/docs |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,8 +12,3 @@ bun add -D @capgo/cli
 | `bunx capgo channel set` | Set channel for device/version | - | --channel, --latest |
 | `bunx capgo app add` | Register app | - | --name, --icon |
 | `bunx capgo key save` | Store encryption/signing key | - | --key, --force |
-
-## Source
-
-- Official docs: https://capgo.app/docs
-- Description: Capgo — live updates (OTA) สำหรับ Capacitor apps.

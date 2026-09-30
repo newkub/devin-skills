@@ -1,18 +1,8 @@
-# Tool Madge CLI
-
-## Install
-
-```sh
-bun add -D madge
-```
-
-## Version
-
-- Latest: `8.0.0` (npm, verified 2026-09-13) — requires Node.js >=18
-- Repository: https://github.com/pahen/madge
-- Docs: https://github.com/pahen/madge#readme
-
-## Commands
+| key | value |
+|---|---|
+| version | 8.0.0 |
+| repository | https://github.com/pahen/madge |
+| docs | https://github.com/pahen/madge#readme |
 
 | Command | Description | Options |
 |---|---|---|
@@ -25,8 +15,6 @@ bun add -D madge
 | `bunx madge --json src/` | Machine-readable output | --dot (graphviz text) |
 | `bunx madge --summary src/` | Summary stats | - |
 
-## Common Flags
-
 | Flag | Description |
 |---|---|
 | `--ts-config <file>` | Resolve TS path aliases |
@@ -36,12 +24,3 @@ bun add -D madge
 | `--warning` | Show skipped files |
 | `--debug` | Verbose parse details |
 | `--basedir`, `--ts-config`, `--webpack-config` | Resolver hints |
-
-## Examples
-
-```sh
-bunx madge --circular --exit-code 1 --extensions ts,tsx src/
-bunx madge --image deps.svg --layout circo src/
-bunx madge --orphans src/ | wc -l
-bunx madge --depends src/utils/date.ts src/
-```

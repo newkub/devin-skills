@@ -1,19 +1,8 @@
-# GitHub Projects CLI (gh project)
-
-## Install
-
-```sh
-mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง
-gh auth login && gh auth refresh -s project
-```
-
-## Version
-
-- Latest: `gh@2.101.0` (verified 2026-09-26)
-- Repository: https://github.com/cli/cli
-- Docs: https://cli.github.com/manual/gh_project
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง` |
+| repository | https://github.com/cli/cli |
+| docs | https://cli.github.com/manual/gh_project |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -36,19 +25,3 @@ gh auth login && gh auth refresh -s project
 | `gh project field-list <number>` | List fields and field IDs | — | --owner, --format |
 | `gh project field-create <number>` | Create field | — | --owner, --name, --data-type (`TEXT`, `SINGLE_SELECT`, `DATE`, `NUMBER`), --single-select-options |
 | `gh project field-delete <number>` | Delete field (destructive) | — | --owner, --id |
-
-## Output
-
-- `--format json` for machine-readable output (ใช้ `--format` ไม่ใช่ `--json`)
-- `-q/--jq <expr>` filter JSON; `-t/--template <tpl>` Go template — ดู `gh help formatting`
-- `--web` เปิด project ใน browser
-
-## Examples
-
-```sh
-gh project list --owner "@me"
-gh project create --title "Roadmap" --owner "@me"
-gh project item-add 5 --url https://github.com/org/repo/issues/1
-gh project item-edit 5 --owner "@me" --url https://github.com/org/repo/issues/1 --field "Status" --value "In Progress"
-gh project field-create 5 --owner "@me" --name "Priority" --data-type SINGLE_SELECT --single-select-options "high,medium,low"
-```

@@ -4,7 +4,6 @@ description: optimize Drizzle queries — indexes, relations, select/where perfo
 argument-hint: "[table-or-query]"
 related:
   - follow-lib-drizzle
-  - check-bottlenecks
   - run-bench
   - scan-codebase
   - report-before-after
@@ -29,7 +28,7 @@ related:
 1. ทำ `/run-bench` หรือจับเวลา query ที่ช้า — เก็บ baseline (latency, row count, query count)
 2. ใช้ `EXPLAIN ANALYZE` บน SQL ที่ generate (ดึง SQL จริงด้วย `.toSQL()`)
 3. ทำ `/scan-codebase` หา call sites ที่รัน query ใน loop (N+1 candidates)
-4. ทำ `/check-bottlenecks` ถ้าต้องวิเคราะห์ wider scope
+4. ทำ `/deep-optimize` ถ้าต้องวิเคราะห์ wider scope
 
 ### 2. Add Indexes
 

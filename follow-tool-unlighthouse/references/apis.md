@@ -1,22 +1,10 @@
-# Tool Unlighthouse API & Dependencies
-
-## Install
-
-```sh
-bun add -D unlighthouse
-```
-
-## Version
-
-- Latest: 0.18.1
-- [Package Registry](https://www.npmjs.com/package/unlighthouse)
-- [Repository](https://github.com/harlan-zw/unlighthouse)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D unlighthouse` |
+| version | 0.18.1 |
+| package registry | https://www.npmjs.com/package/unlighthouse |
+| repository | https://github.com/harlan-zw/unlighthouse |
+| docs | https://github.com/harlan-zw/unlighthouse#readme |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -25,8 +13,3 @@ bun add -D unlighthouse
 | `unlighthouse-ci` | Run the unlighthouse-ci CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
 | `import 'unlighthouse/config'` | Subpath export for config | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://github.com/harlan-zw/unlighthouse#readme
-- Description: Delightfully scan your entire website with Google Lighthouse. Navigate your performance, accessibility and SEO.

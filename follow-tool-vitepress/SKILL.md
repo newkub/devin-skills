@@ -26,12 +26,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Init, `config.ts` nav/sidebar, docs structure | `subskills/setup-vitepress/SKILL.md` |
-| Theme config, `.vitepress/theme/`, i18n | `subskills/config-theme/SKILL.md` |
-| Docusaurus → VitePress content/frontmatter migration | `subskills/migrate-from-docusaurus/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Init, `config.ts` nav/sidebar, docs structure | `subskills/setup-vitepress/SKILL.md` | Theme config, `.vitepress/theme/`, i18n | `subskills/config-theme/SKILL.md` | Docusaurus → VitePress content/frontmatter migration | `subskills/migrate-from-docusaurus/SKILL.md` 
 ### 1. Project Initialization
 
 > Goal: สร้าง docs structure พร้อม workspace config

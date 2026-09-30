@@ -16,9 +16,8 @@ related:
 
 ใช้กับทุกโปรเจกต์ที่ต้องการวิเคราะห์ unused code — รองรับทั้ง single project และ monorepo ที่มี workspaces; ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
 
-- Latest: `knip@6.38.0` (verified 2026-09-24) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 || >=22.12.0` หรือ Bun
-- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- Latest: `knip@6.38.0` (verified 2026-09-24) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 | >=22.12.0` หรือ Bun
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install And Create Config

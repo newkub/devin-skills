@@ -19,19 +19,14 @@ related:
 
 - ครอบคลุม: `postgres` (postgres.js) driver — tagged templates, pool, transactions, LISTEN/NOTIFY, `sql.subscribe`
 - ไม่ครอบคลุม: ORM/schema layer — ใช้ `/follow-lib-drizzle` (drizzle ใช้ postgres.js เป็น driver); `Bun.sql` built-in สำหรับ Bun-only project
-- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี)
 - Latest: `postgres@3.4.9` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-postgres/SKILL.md` — install, connection string, client |
-| Optimize | `subskills/optimize-pool/SKILL.md` — pool sizing, prepared statements |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-postgres/SKILL.md` — install, connection string, client | Optimize | `subskills/optimize-pool/SKILL.md` — pool sizing, prepared statements 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

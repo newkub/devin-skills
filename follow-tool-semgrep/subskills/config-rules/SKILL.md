@@ -18,7 +18,7 @@ related:
 
 - Config rules สำหรับ Semgrep ที่ install แล้ว (scan-only usage → parent skill)
 - ครอบคลุม: `.semgrep/` custom rules, rule YAML anatomy, `p/*` registry rulesets, `--test`, CI gating
-- ไม่ครอบคลุม: fix findings (`/review-security` หรือ `/fix`)
+- ไม่ครอบคลุม: fix findings (`/deep-review` หรือ `/fix`)
 
 ## Execute
 

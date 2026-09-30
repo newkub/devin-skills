@@ -24,8 +24,7 @@ related:
 - ไม่ใช่ output encoding สำหรับ URL/text node — text ธรรมดาไม่ต้อง sanitize (framework escape ให้แล้ว)
 
 - Latest: `dompurify@3.4.16` (verified 2026-09-24)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [manifest](references/package-manifest.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install

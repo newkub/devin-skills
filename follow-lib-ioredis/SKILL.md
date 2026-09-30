@@ -22,17 +22,12 @@ related:
 - First-time setup → `subskills/setup-ioredis/SKILL.md`; perf tuning → `subskills/optimize-pool/SKILL.md`
 
 - Latest: `ioredis@6.0.0` (verified 2026-09-13) — v6 major (2026-07-31): ต้อง Node ≥20, ใช้ RESP3 โดย default (`HELLO 3` พร้อม auto-fallback เป็น RESP2 เมื่อ server ไม่รองรับ); ตั้ง `protocol: 2` เพื่อคง v5 wire protocol และ `replyStyle: "resp3"` เพื่อรับ RESP3 reply shapes (default `"legacy"` คงรูปแบบเดิม)
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-ioredis/SKILL.md` — install, cluster/sentinel options |
-| Optimize | `subskills/optimize-pool/SKILL.md` — pipelining, connection reuse |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-ioredis/SKILL.md` — install, cluster/sentinel options | Optimize | `subskills/optimize-pool/SKILL.md` — pipelining, connection reuse 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

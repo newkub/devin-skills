@@ -1,22 +1,9 @@
-# Tool Vitest API & Dependencies
-
-## Install
-
-```sh
-bun add -D vitest
-```
-
-## Version
-
-- Latest: 5.0.2 (verified 2026-09-29) — requires Vite >= 6.4.0, Node >= 22.12.0
-- [Package Registry](https://www.npmjs.com/package/vitest)
-- [Repository](https://github.com/vitest-dev/vitest)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 5.0.2 |
+| package registry | https://www.npmjs.com/package/vitest |
+| repository | https://github.com/vitest-dev/vitest |
+| docs | https://vitest.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -33,8 +20,3 @@ bun add -D vitest
 | `import 'vitest/globals'` | Subpath export for globals | entry as documented | (none) |
 | `import 'vitest/runners'` | Subpath export for runners | entry as documented | (none) |
 | `import 'vitest/runtime'` | Subpath export for runtime | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://vitest.dev
-- Description: Next generation testing framework powered by Vite

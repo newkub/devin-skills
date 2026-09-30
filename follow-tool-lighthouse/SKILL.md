@@ -4,10 +4,7 @@ description: ใช้ Lighthouse CLI audit หน้าเว็บเดีย
 argument-hint: "<url> [options]"
 related:
   - follow-tool-unlighthouse
-  - review-performance
-  - review-accessibility
-  - review-seo
-  - check-bottlenecks
+  - deep-review
   - run-dev
   - report
 ---
@@ -92,7 +89,7 @@ bunx lighthouse <url> -GA           # gather + audit
 - Lighthouse score เปลี่ยนได้ระหว่างรัน (variance) — อย่าสรุปจากรันเดียว ใช้ median ของหลายรัน
 - authenticated pages → launch Chrome ด้วย profile ที่ login แล้วผ่าน `--chrome-flags`/`--port` หรือใช้ `--disable-storage-reset`
 - ไม่ audit production third-party sites ที่ไม่มีสิทธิ์
-- ใช้ /follow-tool-unlighthouse เมื่อต้อง site-wide; /review-performance เมื่อจะวิเคราะห์ลึกกว่า scores
+- ใช้ /follow-tool-unlighthouse เมื่อต้อง site-wide; /deep-review เมื่อจะวิเคราะห์ลึกกว่า scores
 
 ## Expected Outcome
 

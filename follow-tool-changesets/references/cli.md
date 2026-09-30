@@ -1,18 +1,8 @@
-# Changesets CLI
-
-## Install
-
-```sh
-bun add -D @changesets/cli
-```
-
-## Version
-
-- Latest: see `@changesets/cli` on npm
-- Repository: https://github.com/changesets/changesets
-- Docs: https://github.com/changesets/changesets/blob/main/packages/cli/README.md
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D @changesets/cli` |
+| repository | https://github.com/changesets/changesets |
+| docs | https://github.com/changesets/changesets/blob/main/packages/cli/README.md |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -25,12 +15,3 @@ bun add -D @changesets/cli
 | `changeset pre exit` | Exit prerelease mode | — | (none) |
 | `changeset tag` | Push git tags for packages | — | (none) |
 | `changeset --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx changeset init
-bunx changeset --empty
-bunx changeset version
-bunx changeset publish --otp 123456
-```

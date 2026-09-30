@@ -1,31 +1,13 @@
-# Tool Loc API & Dependencies
-
-## Install
-
-```sh
-cargo install loc
-# or download binary จาก https://github.com/cgag/loc/releases
-```
-
-## Version
-
-- Latest: `0.5.0` (crates.io, verified 2026-09-13)
-- [Package Registry](https://crates.io/crates/loc)
-- [Repository](https://github.com/cgag/loc)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `cargo install loc` |
+| version | 0.5.0 |
+| package registry | https://crates.io/crates/loc |
+| repository | https://github.com/cgag/loc |
+| docs | https://github.com/cgag/loc |
 
 | commands | description | default | options |
 |---|---|---|---|
 | `install` | Install loc in project | latest version | --save-dev, --save, --global |
 | `loc` | Run the tool CLI | current workspace | see cli.md |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://github.com/cgag/loc
-- Description: Count lines of code quickly (Rust implementation of `cloc`, ~100x faster; ~2-10x faster than `tokei`)

@@ -1,22 +1,10 @@
-# Tool Bunup API & Dependencies
-
-## Install
-
-```sh
-bun add -D bunup
-```
-
-## Version
-
-- Latest: 0.16.32
-- [Package Registry](https://www.npmjs.com/package/bunup)
-- [Repository](https://github.com/bunup/bunup)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D bunup` |
+| version | 0.16.32 |
+| package registry | https://www.npmjs.com/package/bunup |
+| repository | https://github.com/bunup/bunup |
+| docs | https://bunup.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -24,8 +12,3 @@ bun add -D bunup
 | `bunup` | Run the bunup CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
 | `import 'bunup/plugins'` | Subpath export for plugins | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://bunup.dev
-- Description: ⚡ A blazing-fast build tool for your libraries built with Bun.

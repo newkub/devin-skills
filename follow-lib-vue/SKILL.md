@@ -37,7 +37,7 @@ related:
 5. ติดตั้ง UnoCSS หรือ Tailwind CSS สำหรับ styling
 6. ใช้ Vite 8 เป็น build tool
 7. พิจารณา Vue 3.6 RC สำหรับ Vapor Mode ในกรณีทดสอบ performance สำคัญ (ยังไม่ stable สำหรับ production)
-8. ดูรายละเอียดเพิ่มเติมใน [references/vue.md](references/vue.md)
+8. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 2. Component Development
 

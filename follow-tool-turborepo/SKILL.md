@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับ monorepos ที่ต้องการ orchestrate tasks, cache outputs, remote cache, package boundaries
 
-- สำหรับ package build pipeline ดู `references/build-packages.md`
+- package build pipeline ดู `references/apis.md`
 
 - Boundary: ใช้ Turborepo สำหรับ JS/TS monorepo task orchestration; ถ้า project ใช้ Moon ให้ใช้ `/follow-tool-moonrepo` แทน; สำหรับ dependency updates ข้าม workspace ใช้ `/follow-tool-taze`
 - Latest: `turbo@2.11.4` (verified 2026-09-26)
@@ -31,12 +31,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install, `turbo.json` init, workspace layout | `subskills/setup-turborepo/SKILL.md` |
-| `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `subskills/config-pipeline/SKILL.md` |
-| Remote cache, `--filter`, `--affected`, cache hit tuning | `subskills/optimize-cache/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install, `turbo.json` init, workspace layout | `subskills/setup-turborepo/SKILL.md` | `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `subskills/config-pipeline/SKILL.md` | Remote cache, `--filter`, `--affected`, cache hit tuning | `subskills/optimize-cache/SKILL.md` 
 ### 1. Repository Structure
 
 > Goal: จัดโครงสร้าง workspace สำหรับ Turborepo
@@ -53,7 +48,7 @@ related:
 
 1. ติดตั้งด้วย `bun add -D turbo`
 2. ตรวจสอบ version ด้วย `bunx turbo --version`
-3. ดูรายละเอียด CLI ใน [references/turborepo.md](references/turborepo.md)
+3. ดูรายละเอียด CLI ใน 
 
 ### 3. Configure turbo.json
 
@@ -64,7 +59,7 @@ related:
 3. ตั้งค่า `dependsOn`, `inputs`, `outputs`, `cache`
 4. ตั้งค่า `env` และ `passThroughEnv`
 5. เปิดใช้ `futureFlags.globalConfiguration` เพื่อย้าย global keys ไปยัง `global`
-6. ดู config details ใน [references/turborepo.md](references/turborepo.md)
+6. ดู config details ใน 
 
 ### 4. Package-Level Config
 

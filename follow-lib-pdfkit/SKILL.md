@@ -18,10 +18,9 @@ related:
 
 - ครอบคลุม: programmatic PDF generation ฝั่ง server — streaming output, text/vector/image layout, custom fonts, multi-page
 - ไม่ครอบคลุม: HTML→PDF — ใช้ Playwright `page.pdf()` หรือ print pipeline แทน; edge/workerd runtime — pdfkit ต้อง Node
-- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี `references/cli.md`)
+- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี)
 - Latest: `pdfkit@0.20.2` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Setup And Usage

@@ -35,7 +35,7 @@ related:
    - mise: `mise use -g neovim` (ถ้าใช้ mise)
 2. ติดตั้ง Git >= 2.19.0 (lazy.nvim ใช้ partial clones)
 3. ตรวจสอบ `nvim --version` ก่อนดำเนินการต่อ
-4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Bootstrap lazy.nvim
 
@@ -45,7 +45,7 @@ related:
 2. สร้าง `lua/config/lazy.lua` เพื่อ clone stable branch ของ `lazy.nvim`
 3. ใช้ `require("config.lazy")` ใน `init.lua`
 4. รัน `:checkhealth lazy` เพื่อตรวจสอบ
-5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+5. ดูรายละเอียดใน 
 
 ### 3. Structure Config
 
@@ -55,7 +55,7 @@ related:
 2. สร้าง `lua/core/keymaps.lua` สำหรับ keymaps
 3. สร้าง `lua/core/autocmds.lua` สำหรับ autocommands
 4. สร้าง `lua/plugins/*.lua` สำหรับ plugin specs
-5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+5. ดูรายละเอียดใน 
 
 ### 4. Add Plugins
 
@@ -65,7 +65,7 @@ related:
 2. ใช้ `ft`, `cmd`, `keys`, `event` สำหรับ lazy-loading
 3. ใช้ `dependencies` สำหรับ plugin dependencies
 4. ใช้ `version`, `tag`, `branch` หรือ `commit` เพื่อ pin version
-5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+5. ดูรายละเอียดใน 
 
 ### 5. Configure LSP and Formatting
 
@@ -75,7 +75,7 @@ related:
 2. ใช้ `conform.nvim` สำหรับ formatting และ `nvim-lint` สำหรับ linting (null-ls archived แล้ว ห้ามใช้)
 3. ตั้งค่า auto format on save ผ่าน autocommand
 4. ใช้ `stylua` สำหรับ format Lua
-5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+5. ดูรายละเอียดใน 
 
 ### 6. Add Tests
 
@@ -84,7 +84,7 @@ related:
 1. ติดตั้ง `plenary.nvim`
 2. สร้าง `tests/utils_spec.lua` สำหรับ unit tests
 3. รัน `:PlenaryBustedFile %` หรือ `:PlenaryBustedDirectory tests/`
-4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+4. ดูรายละเอียดใน 
 
 ### 7. CI and Quality
 
@@ -93,7 +93,7 @@ related:
 1. ใช้ GitHub Actions รัน `stylua --check .`
 2. รัน Plenary tests ด้วย `nvim --headless -c "PlenaryBustedDirectory tests/ { minimal_init = 'init.lua' }"`
 3. ตรวจ startup time ให้ < 50ms
-4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

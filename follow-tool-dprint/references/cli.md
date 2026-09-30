@@ -1,18 +1,8 @@
-# dprint CLI
-
-## Install
-
-```sh
-bun add -D dprint
-```
-
-## Version
-
-- Latest: see `dprint` on npm
-- Repository: https://github.com/dprint/dprint
-- Docs: https://dprint.dev/cli/
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D dprint` |
+| repository | https://github.com/dprint/dprint |
+| docs | https://dprint.dev/cli/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -24,8 +14,6 @@ bun add -D dprint
 | `dprint add <plugin>` | Add plugin to config | — | `--checksum` |
 | `dprint --help` | Show help | — | (none) |
 
-## Options
-
 | Option | Description |
 |---|---|---||---|---|---||
 | `--config`, `-c` | Path to config file |
@@ -34,12 +22,3 @@ bun add -D dprint
 | `--config-discovery` | Control config discovery (`default`, `ignore-descendants`, `global`, `false`) |
 | `--plugins <urls>` | Load plugins via CLI |
 | `--allow-no-config` | Allow running without config |
-
-## Examples
-
-```sh
-bunx dprint fmt
-bunx dprint fmt --check
-bunx dprint init --yes
-bunx dprint config update --dry-run
-```

@@ -1,22 +1,10 @@
-# Lib Orpc API & Dependencies
-
-## Install
-
-```sh
-bun add @orpc/server
-```
-
-## Version
-
-- Latest: `1.15.0` (verified 2026-09-13; v2 beta: `2.0.0-beta.35`)
-- [Package Registry](https://www.npmjs.com/package/@orpc/server)
-- [Repository](https://github.com/middleapi/orpc)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add @orpc/server` |
+| version | 1.15.0 |
+| package registry | https://www.npmjs.com/package/@orpc/server |
+| repository | https://github.com/middleapi/orpc |
+| docs | https://orpc.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -34,8 +22,3 @@ bun add @orpc/server
 | `import '@orpc/server/plugins'` | Subpath export for plugins | entry as documented | (none) |
 | `import '@orpc/server/standard'` | Subpath export for standard | entry as documented | (none) |
 | `import '@orpc/server/websocket'` | Subpath export for websocket | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://orpc.dev
-

@@ -34,16 +34,12 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-effect/SKILL.md` — install, Effect/Layer/Service basics |
-| Migrate | `subskills/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-effect/SKILL.md` — install, Effect/Layer/Service basics | Migrate | `subskills/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally 
 ### 1. Detect Version And Ecosystem
 
 > Goal: เลือก API ที่ตรงกับ effect version และ package manager ของ project
 
-1. อ่าน `package.json` → ถ้า `effect` เป็น `3.x` ใช้ v3 API; ถ้า `4.x` หรือ `-rc`/`-beta` ใช้ v4 API (ดู Version Notes ใน [references/effect-ts.md](references/effect-ts.md))
+1. อ่าน `package.json` → ถ้า `effect` เป็น `3.x` ใช้ v3 API; ถ้า `4.x` หรือ `-rc`/`-beta` ใช้ v4 API (ดู Version Notes ใน )
 2. ตรวจ package manager จาก lockfile (`bun.lock`/`bun.lockb` → `bun`, `pnpm-lock.yaml` → `pnpm`, `package-lock.json` → `npm`) แล้วใช้ command ที่ตรงกัน
 3. ถ้า project ยังไม่มี `effect` → ติดตั้ง latest stable (v3.x) ตาม step 3
 
@@ -93,7 +89,7 @@ related:
 
 ### 5. Implement Effect Patterns
 
-> Goal: เขียน code ตาม Effect patterns มาตรฐาน — ตัวอย่างครบใน [references/effect-ts.md](references/effect-ts.md) และ [references/patterns.md](references/patterns.md)
+> Goal: เขียน code ตาม Effect patterns มาตรฐาน — ตัวอย่างครบใน  และ 
 
 1. ใช้ `Effect.gen` + `yield*` สำหรับ effect composition และ `pipe` สำหรับ chaining
 2. ใช้ `Effect.fn`/`Effect.fnUntraced` สำหรับ named functions ที่ traceable
@@ -110,7 +106,7 @@ related:
 
 ### 6. Write Tests
 
-> Goal: เขียน tests ด้วย vitest และ @effect/vitest — รายละเอียดใน [references/testing.md](references/testing.md)
+> Goal: เขียน tests ด้วย vitest และ @effect/vitest — รายละเอียดใน 
 
 1. ใช้ `it.effect` จาก `@effect/vitest` สำหรับ Effect-based tests (ได้ `TestContext` อัตโนมัติ)
 2. ใช้ `it.live` เมื่อต้องการ live clock/environment และ `it.scoped` เมื่อ test ต้องการ `Scope`

@@ -22,7 +22,7 @@ related:
 - docs site: <https://gpui-kit.com> (มี `llms-full.txt` รวมเอกสารทั้งหมดเป็นไฟล์เดียว)
 - crate `gpui-kit` รวม GPUI + GPUI Base + GPUI Component + default icon assets ใน dependency เดียว — `use gpui_kit::*` re-export GPUI essentials, components อยู่ใต้ `gpui_kit::component::*`
 - API reference: `docs.rs/gpui-component` และ `docs.rs/gpui-kit`
-- component catalog ทั้งหมดอยู่ใน [references/components.md](references/components.md); app skeleton อยู่ใน [references/getting-started.md](references/getting-started.md)
+- component catalog ทั้งหมดอยู่ใน ; app skeleton อยู่ใน 
 
 ## Execute
 
@@ -33,13 +33,13 @@ related:
 1. ตรวจ `Cargo.toml` ของ project ว่ามี `gpui-kit` แล้วหรือยัง
 2. รัน `cargo search gpui-kit --limit 3` หรือ `/deep-research` เพื่อยืนยัน version ล่าสุด (docs แสดง v0.7.0 เป็น latest)
 3. ติดตั้งด้วย `cargo add gpui-kit` — ไม่ pin version ตายตัวใน skill (ตรวจสดทุกครั้ง)
-4. อ่าน `references/package-manifest.md` + `references/website.md` สำหรับ metadata และ links
+4. ดึง metadata + links จาก official docs ผ่าน `/learn-from-web`
 
 ### 2. Scaffold App Skeleton
 
 > Goal: app บูตได้ถูกต้องตาม official pattern
 
-1. `main()` เรียก `application().with_assets(assets::Assets).run(|cx| { init(cx); open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| MyView)).expect(...) })` — ดู skeleton เต็มใน [references/getting-started.md](references/getting-started.md)
+1. `main()` เรียก `application().with_assets(assets::Assets).run(|cx| { init(cx); open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| MyView)).expect(...) })` — ดู skeleton เต็มใน 
 2. `init(cx)` ต้องถูกเรียกก่อนเปิด window หรือสร้าง component — initialize Kit layers + component themes
 3. `open_window` wrap view ใน `Root` อัตโนมัติ (Root เป็นเจ้าของ dialog/sheet/notification overlays) — return content view ตรงๆ ห้ามสร้าง `Root` เอง
 4. view struct implement `Render` — `render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement`
@@ -58,7 +58,7 @@ related:
 
 > Goal: เลือก component ถูกและใช้ API ถูก
 
-1. เลือกจาก catalog ใน [references/components.md](references/components.md) — import pattern `use gpui_kit::component::<name>::<Type>;`
+1. เลือกจาก catalog ใน  — import pattern `use gpui_kit::component::<name>::<Type>;`
 2. builder pattern: `Checkbox::new("id").label("...").checked(self.flag).on_change(cx.listener(|v, checked, _, cx| { v.flag = *checked; cx.notify(); }))`
 3. shared traits: `Sizable` (`text_xs`/`text_sm`/`text_base`/`text_lg`) และ `Disableable` (`disabled(bool)`) — import trait `use gpui_kit::component::Sizable as _;`
 4. layout ด้วย `div()`/`v_flex()`/`h_flex()` + tailwind-style methods (`flex_col`, `size_full`, `gap_2`, `p_4`, `items_center`, `justify_center`)

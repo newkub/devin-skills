@@ -1,18 +1,9 @@
-# Knip CLI
-
-## Install
-
-```sh
-bun add -D knip
-```
-
-## Version
-
-- Latest: `6.38.0` (verified 2026-09-26)
-- Repository: https://github.com/webpro-nl/knip
-- Docs: https://knip.dev/reference/cli
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D knip` |
+| version | 6.38.0 |
+| repository | https://github.com/webpro-nl/knip |
+| docs | https://knip.dev/reference/cli |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,8 +12,6 @@ bun add -D knip
 | `knip --fix` | Auto-fix issues (only when config settled) | — | `--fix-type`, `--allow-remove-files` |
 | `knip-bun` | Bun-specific runner (= `bunx --bun knip`) | — | same as `knip` |
 | `knip --help` | Show help | — | (none) |
-
-## Options
 
 | Option | Description |
 |---|---|
@@ -44,13 +33,3 @@ bun add -D knip
 | `--treat-config-hints-as-errors` | Exit 1 on config hints |
 | `--no-gitignore` | Ignore `.gitignore` files |
 | `--performance` / `--duration` | Print timing |
-
-## Examples
-
-```sh
-bunx knip
-bunx knip --include files,dependencies
-bunx knip --production --no-exit-code
-bunx knip -W apps/website
-bunx knip --debug
-```

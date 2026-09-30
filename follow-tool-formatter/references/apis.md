@@ -1,35 +1,6 @@
-# Tool Formatter API & Dependencies
-
-Skill นี้เป็น generic formatter guide — ไม่มี package เดียวชื่อ `formatter`; เลือกตัวจริงตาม tech stack:
-
-## Install
-
-```sh
-# TypeScript/JavaScript (เลือกตัวเดียว)
-bun add -D prettier        # prettier@3.9.6
-bun add -D @biomejs/biome  # 2.5.14
-bun add -D dprint          # 0.57.4
-
-# Rust
-rustup component add rustfmt
-
-# Python
-pipx install ruff          # ruff format
-
-# Go — gofmt มาพร้อม toolchain
-```
-
-## Version
-
-- prettier `3.9.6`, biome `2.5.14`, dprint `0.57.4` (verified 2026-09-26)
-- [prettier](https://prettier.io) / [biome](https://biomejs.dev) / [dprint](https://dprint.dev)
-
-## Dependencies
-
-- biome/dprint เป็น Rust binaries — ไม่ต้องการ runtime JS deps
-- prettier เป็น pure JS — plugin system เช่น `prettier-plugin-*`
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D prettier        # prettier@3.9.6` |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -38,7 +9,3 @@ pipx install ruff          # ruff format
 | `dprint fmt` | Format ด้วย dprint | config spec | --incremental |
 | `cargo fmt` | Format Rust | all crates | --check |
 | `ruff format` | Format Python | current dir | --check, --diff |
-
-## Source
-
-- เลือก tool ตาม `/follow-tool-biome`, `/follow-tool-dprint` หรือ official docs ของแต่ละตัว

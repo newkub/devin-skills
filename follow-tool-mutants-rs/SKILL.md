@@ -31,11 +31,7 @@ related:
 
 > Goal: dispatch ไปยัง subskill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| setup | `subskills/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run |
-| optimize | `subskills/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration |
-
+| Topic | Subskill |-------|----------| setup | `subskills/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run | optimize | `subskills/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration 
 1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
@@ -46,7 +42,7 @@ related:
 1. ติดตั้งด้วย `cargo install --locked cargo-mutants`
 2. หรือติดตั้งด้วย `cargo binstall cargo-mutants`
 3. ตรวจสอบ version ด้วย `cargo mutants --version`
-4. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Prerequisites
 
@@ -55,7 +51,7 @@ related:
 1. รัน `cargo test` หรือ `cargo nextest run` เพื่อตรวจสอบว่า tests ไม่ flaky
 2. ตรวจสอบว่า project build ได้บน host platform
 3. หลีกเลี่ยงการรัน mutation testing ถ้า tests ยังไม่เสถียร
-4. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Run Mutation Testing
 
@@ -65,7 +61,7 @@ related:
 2. รันเฉพาะ file ด้วย `cargo mutants -f src/file.rs`
 3. รันกับ toolchain เฉพาะด้วย `cargo +1.48 mutants`
 4. แสดง caught/unviable mutants ด้วย `cargo mutants --caught` หรือ `cargo mutants --unviable`
-5. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+5. ดูรายละเอียดใน 
 
 ### 4. Understand Results
 
@@ -75,7 +71,7 @@ related:
 2. `CAUGHT`: tests จับ mutant นี้ได้ → test coverage ดี
 3. `UNVIABLE`: mutant นี้ build ไม่ได้ → ไม่ต้องทำอะไร
 4. `timeout`: mutant ทำให้ tests แขวน → ตรวจสอบหรือ skip
-5. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+5. ดูรายละเอียดใน 
 
 ### 5. Configuration
 
@@ -86,7 +82,7 @@ related:
 3. ใช้ `test_tool = "nextest"` หรือ `--test-tool=nextest` เพื่อรัน tests ผ่าน nextest (เร็วกว่าเพราะ fail-fast)
 4. ใช้ `#[mutants::skip]` สำหรับ functions หรือ impls ที่ไม่ต้องการ mutate (ต้องเพิ่ม `mutants` crate เป็น dependency ธรรมดา)
 5. ใช้ `--exclude-re "pattern"` หรือ `exclude_re` ใน config เพื่อกรอง mutations เฉพาะ (`#[mutants::exclude_re]` attribute ยัง unreleased — ต้องรอ `mutants` crate ≥ 0.0.5)
-6. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+6. ดูรายละเอียดใน 
 
 ### 6. CI Integration
 
@@ -95,7 +91,7 @@ related:
 1. เพิ่ม step `cargo mutants` ใน GitHub Actions หรือ CI ที่ใช้
 2. ใช้ `cargo mutants --file` สำหรับ incremental testing ใน PR
 3. ใช้ `cargo mutants` เต็มรูปแบบสำหรับ main branch
-4. ดูรายละเอียดใน [references/cargo-mutants.md](references/cargo-mutants.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

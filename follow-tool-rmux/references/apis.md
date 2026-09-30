@@ -1,32 +1,13 @@
-# Tool Rmux API & Dependencies
-
-## Install
-
-```sh
-mise use -g rmux
-# or
-cargo install rmux --locked
-```
-
-## Version
-
-- Latest: `0.10.0` (crates.io, verified 2026-09-13)
-- [Package Registry](https://crates.io/crates/rmux)
-- [Repository](https://github.com/Helvesec/rmux) — npm package `rmux` ไม่ใช่ตัวจริง
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `mise use -g rmux` |
+| version | 0.10.0 |
+| package registry | https://crates.io/crates/rmux |
+| repository | https://github.com/Helvesec/rmux |
+| docs | https://rmux.io |
 
 | commands | description | default | options |
 |---|---|---|---|
 | `install` | Install rmux in project | latest version | --save-dev, --save, --global |
 | `rmux` | Run the tool CLI | current workspace | see cli.md |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://rmux.io
-

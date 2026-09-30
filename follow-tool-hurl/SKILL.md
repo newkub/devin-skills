@@ -7,7 +7,6 @@ related:
   - run-test
   - follow-test
   - follow-tool-bruno
-  - gen-openapi
   - follow-tool-github-actions
 
 ---
@@ -43,7 +42,7 @@ related:
 2. Format: request block ตามด้วย expected response — อย่างน้อย status code
 3. เพิ่ม `[Asserts]` ด้วย queries: `jsonpath`, `xpath`, `header`, `status`, `duration`, `body`, `regex`, `sha256`
 4. ใช้ predicates: `==`, `!=`, `contains`, `startsWith`, `matches`, `exists`, `>`, `<`
-5. ดู syntax เต็มใน [references/hurl-file.md](references/hurl-file.md)
+5. ดู syntax เต็มใน 
 
 ### 3. Chain Requests
 
@@ -70,7 +69,7 @@ related:
 1. ใช้ `hurl --test` + `--report-junit` ใน CI step
 2. ไม่มี official GitHub Action — install ด้วย package manager หรือ npm binary ใน workflow
 3. เก็บ reports เป็น artifacts; pair กับ JUnit reporters (dorny/test-reporter ฯลฯ)
-4. ดูตัวอย่างใน [references/ci.md](references/ci.md)
+4. ดูตัวอย่างใน 
 
 ## Rules
 
@@ -97,13 +96,12 @@ related:
 ## References
 
 - [CLI options](references/cli.md)
-- [Hurl file format](references/hurl-file.md)
-- [CI integration](references/ci.md)
-- [Package manifest](references/package-manifest.md)
-- [Official resources](references/website.md)
+
+
+
+
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /gen-openapi ถ้าจำเป็น
 
 
 ## Expected Outcome

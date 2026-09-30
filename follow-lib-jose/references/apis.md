@@ -1,23 +1,9 @@
-# Lib Jose API & Dependencies
-
-## Install
-
-```sh
-bun add jose
-```
-
-## Version
-
-- Latest: `6.2.12` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/jose)
-- [Repository](https://github.com/panva/jose)
-
-## Dependencies
-
-- Zero runtime dependencies — ใช้ WebCrypto API
-- รองรับ Node.js, Bun, Deno, browsers, edge runtimes
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 6.2.12 |
+| package registry | https://www.npmjs.com/package/jose |
+| repository | https://github.com/panva/jose |
+| docs | https://github.com/panva/jose#readme |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -28,8 +14,3 @@ bun add jose
 | `exportJWK(key)` / `importJWK(jwk, alg)` | JWK convert | - | - |
 | `EncryptJWT` / `jwtDecrypt` | JWE | - | - |
 | `SignRequest` / `unsecuredJWT` | Advanced | - | - |
-
-## Source
-
-- Official docs: https://github.com/panva/jose#readme
-- Description: JWA, JWS, JWE, JWT, JWK, JWKS — universal crypto suite, zero deps.

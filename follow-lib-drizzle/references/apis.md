@@ -1,23 +1,10 @@
-# Lib Drizzle API & Dependencies
-
-## Install
-
-```sh
-bun add drizzle-orm
-bun add -D drizzle-kit
-```
-
-## Version
-
-- Latest: `0.45.3` (verified 2026-09-26)
-- [Package Registry](https://www.npmjs.com/package/drizzle-orm)
-- [Repository](https://github.com/drizzle-team/drizzle-orm)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add drizzle-orm` |
+| version | 0.45.3 |
+| package registry | https://www.npmjs.com/package/drizzle-orm |
+| repository | https://github.com/drizzle-team/drizzle-orm |
+| docs | https://orm.drizzle.team |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -35,8 +22,3 @@ bun add -D drizzle-kit
 | `import 'drizzle-orm/table'` | Subpath export for table | entry as documented | (none) |
 | `import 'drizzle-orm/utils'` | Subpath export for utils | entry as documented | (none) |
 | `import 'drizzle-orm/casing'` | Subpath export for casing | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://orm.drizzle.team
-- Description: Drizzle ORM package for SQL databases

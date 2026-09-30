@@ -1,23 +1,9 @@
-# Lib Ioredis API & Dependencies
-
-## Install
-
-```sh
-bun add ioredis
-```
-
-## Version
-
-- Latest: `6.0.0` — major version: Node ≥20, RESP3 โดย default (`protocol: 2` คง wire protocol เดิม, `replyStyle: "resp3"` สำหรับ RESP3 shapes) (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/ioredis)
-- [Repository](https://github.com/redis/ioredis)
-
-## Dependencies
-
-- Runtime: `cluster-key-slot`, `debug`, `redis-errors`, `redis-parser`, `standard-as-callback` ฯลฯ
-- TypeScript types รวมอยู่ใน package
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 6.0.0 |
+| package registry | https://www.npmjs.com/package/ioredis |
+| repository | https://github.com/redis/ioredis |
+| docs | https://redis.github.io/ioredis/ |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -28,8 +14,3 @@ bun add ioredis
 | `redis.subscribe` / `psubscribe` | Pub/Sub | - | - |
 | `new Redis.Cluster([...])` | Cluster client | - | `redisOptions`, `clusterRetryStrategy` |
 | `new Redis(..., {sentinels})` | Sentinel mode | - | `name`, `sentinelPassword` |
-
-## Source
-
-- Official docs: https://redis.github.io/ioredis/
-- Description: Robust Redis client for Node.js — cluster, sentinel, streams, Lua.

@@ -1,22 +1,10 @@
-# Tool Playwright API & Dependencies
-
-## Install
-
-```sh
-bun add -D @playwright/test
-```
-
-## Version
-
-- Latest: 1.63.0
-- [Package Registry](https://www.npmjs.com/package/@playwright/test)
-- [Repository](https://github.com/microsoft/playwright)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D @playwright/test` |
+| version | 1.63.0 |
+| package registry | https://www.npmjs.com/package/@playwright/test |
+| repository | https://github.com/microsoft/playwright |
+| docs | https://playwright.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -25,8 +13,3 @@ bun add -D @playwright/test
 | `configure` | Configure via config file | project defaults | --config, --file |
 | `import '@playwright/test/cli'` | Subpath export for cli | entry as documented | (none) |
 | `import '@playwright/test/reporter'` | Subpath export for reporter | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://playwright.dev
-- Description: A high-level API to automate web browsers

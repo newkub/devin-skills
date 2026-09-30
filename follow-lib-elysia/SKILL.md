@@ -33,11 +33,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน |
-| Deploy | `subskills/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน | Deploy | `subskills/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets 
 ### 1. Install And Setup
 
 > Goal: ติดตั้ง Elysia และ setup บน Bun runtime

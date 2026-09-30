@@ -30,11 +30,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| GitHub App / self-hosted install, `RENOVATE_TOKEN`, workflow | `subskills/setup-renovate/SKILL.md` |
-| `renovate.json` presets, `packageRules`, automerge | `subskills/config-renovate/SKILL.md` |
-
+| Topic | Subskill |-------|----------| GitHub App / self-hosted install, `RENOVATE_TOKEN`, workflow | `subskills/setup-renovate/SKILL.md` | `renovate.json` presets, `packageRules`, automerge | `subskills/config-renovate/SKILL.md` 
 ### 1. Configure Renovate
 
 > Goal: สร้าง renovate config ที project
@@ -45,7 +41,7 @@ related:
 4. ตั้ง `schedule` เช่น `["every day"]`
 5. ตั้ง `automerge: true` สำหรับ `dependencies` และ `devDependencies` ผ่าน `packageRules`
 6. ตั้ง `docker: false` และ `"platform": "github"` ถ้าใช้ self-hosted
-7. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
+7. ดูรายละเอียดใน 
 
 ### 2. Create Workflow
 
@@ -56,7 +52,7 @@ related:
 3. เพิ่ม `workflow_dispatch` สำหรับ manual trigger
 4. กำหนด permissions `contents: write`, `pull-requests: write`, `issues: write`
 5. ใช้ `renovatebot/github-action@v46` (ล่าสุด `v46.3.4`) หรือ pin version เต็ม
-6. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
+6. ดูรายละเอียดใน 
 
 ### 3. Setup Token
 
@@ -65,7 +61,7 @@ related:
 1. ใช้ `/follow-secret-manager` เพื่อจัดการ `RENOVATE_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง GitHub PAT ด้วย `repo` scope
 2. ตั้งค่า secret ใน repository โดย user เอง หรือใช้ `gh secret set RENOVATE_TOKEN -b "token"`
 3. ตรวจสอบ secret ด้วย `gh secret list` หรือ secret manager dashboard
-4. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
+4. ดูรายละเอียดใน 
 
 ### 4. Validate Config
 
@@ -74,7 +70,7 @@ related:
 1. รัน `bunx -- renovate-config-validator .github/renovate.json`
 2. ตรวจ `extends` ว่า preset มีอยู่จริง
 3. ตรวจ `packageRules` matchers ว่าถูกต้อง
-4. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
+4. ดูรายละเอียดใน 
 
 ### 5. Monitor Pull Requests
 
@@ -83,7 +79,7 @@ related:
 1. ตรวจ PRs ทีถูกสร้างตาม schedule
 2. ตรวจสอบ `automerge` ว่า merge ผ่านหรือต้อง review
 3. ปรับ `packageRules` เมื่อมี deps ทีไม่ต้องการ auto update
-4. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

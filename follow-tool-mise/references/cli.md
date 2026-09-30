@@ -1,19 +1,7 @@
-# mise CLI
-
-## Install
-
-```sh
-# See https://mise.jdx.dev/getting-started.html
-curl https://mise.run | sh
-```
-
-## Version
-
-- Latest: see https://mise.jdx.dev/
-- Repository: https://github.com/jdx/mise
-- Docs: https://mise.jdx.dev/cli/
-
-## Commands
+| key | value |
+|---|---|
+| repository | https://github.com/jdx/mise |
+| docs | https://mise.jdx.dev/cli/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -38,16 +26,3 @@ curl https://mise.run | sh
 | `mise settings` | Manage mise settings | — | `get`, `set`, `ls`, `unset` subcommands |
 | `mise watch` / `mise w` | Re-run task on file changes | — | `-t, --task`, `-g, --glob` |
 | `mise --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-mise install
-mise use node@20 bun@1
-mise use -g pitchfork@latest
-mise x node@20 -- node -v
-mise run build
-mise up --bump --dry-run
-mise env --shell bash
-mise doctor
-```

@@ -23,17 +23,12 @@ related:
 - ถ้า project ใช้ icons น้อยมากและไม่ต้องการ dependency → พิจารณา inline SVG แทน
 
 - Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.3` / `iconify-icon@3.0.3` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-24)
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-iconify/SKILL.md` — install + usage patterns ตาม framework |
-| Optimize | `subskills/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-iconify/SKILL.md` — install + usage patterns ตาม framework | Optimize | `subskills/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

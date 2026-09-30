@@ -1,25 +1,9 @@
-# Lib Dompurify API & Dependencies
-
-## Install
-
-```sh
-bun add dompurify
-# v3 ship built-in TypeScript types (dist/purify.cjs.d.ts) — ไม่ต้องติดตั้ง @types/dompurify (ใช้เฉพาะ v2)
-bun add isomorphic-dompurify    # SSR/Node wrapper (jsdom-based)
-```
-
-## Version
-
-- Latest: `3.4.15` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/dompurify)
-- [Repository](https://github.com/cure53/DOMPurify)
-
-## Dependencies
-
-- Zero runtime dependencies — pure browser/DOM library
-- Server-side (Node/Bun) ต้องใช้ร่วมกับ `jsdom` หรือ `happy-dom` (`bun add -D jsdom`)
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 3.4.15 |
+| package registry | https://www.npmjs.com/package/dompurify |
+| repository | https://github.com/cure53/DOMPurify |
+| docs | https://github.com/cure53/DOMPurify#readme |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -28,8 +12,3 @@ bun add isomorphic-dompurify    # SSR/Node wrapper (jsdom-based)
 | `DOMPurify.addHook('afterSanitizeAttributes', fn)` | Add post-processing hook | - | hook name |
 | `DOMPurify.isSupported` | Check DOM support | boolean | - |
 | `DOMPurify.setConfig(cfg)` | Set global config | - | - |
-
-## Source
-
-- Official docs: https://github.com/cure53/DOMPurify#readme
-- Description: XSS sanitizer for HTML, MathML and SVG.

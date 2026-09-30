@@ -33,18 +33,12 @@ related:
 - ถ้า task เน้น `drizzle-kit` CLI (generate/migrate/push/studio) → ใช้ `/follow-tool-drizzle-kit`
 - ORM อื่น (Prisma, TypeORM) อยู่นอก scope — ทำ `/refactor` orm scope (`#### 6.1 ORM Workflow`) แทน
 
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md) | [manifest](references/package-manifest.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-drizzle/SKILL.md` — install, `schema.ts`, db client |
-| Migrate | `subskills/migrate-schema/SKILL.md` — generate/migrate/push flow, rollback |
-| Optimize | `subskills/optimize-queries/SKILL.md` — indexes, relations, select/where perf |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-drizzle/SKILL.md` — install, `schema.ts`, db client | Migrate | `subskills/migrate-schema/SKILL.md` — generate/migrate/push flow, rollback | Optimize | `subskills/optimize-queries/SKILL.md` — indexes, relations, select/where perf 
 ### 1. Check Precondition
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
@@ -59,7 +53,7 @@ related:
 > Goal: ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
 
 1. รัน `bun add drizzle-orm@0.45.3` หรือ `bun add drizzle-orm` (latest stable)
-2. ติดตั้ง driver ตาม runtime และ database — ดูรายละเอียดใน [references/components/drivers.md](references/components/drivers.md)
+2. ติดตั้ง driver ตาม runtime และ database — ดูรายละเอียดใน 
 3. รัน `bun add -D drizzle-kit@0.31.11` หรือ `bun add -D drizzle-kit`
 4. ตรวจสอบว่า dependencies อยู่ใน `package.json`
 5. ถ้าต้องการ v1.0 RC (`drizzle-orm@rc`, `drizzle-kit@rc`) → ดูหมายเหตุใน Rules
@@ -68,7 +62,7 @@ related:
 
 > Goal: สร้าง `drizzle.config.ts` และเลือก dialect/driver
 
-1. สร้าง `drizzle.config.ts` ด้วย `defineConfig` — ดูตัวอย่างใน [references/components/config.md](references/components/config.md)
+1. สร้าง `drizzle.config.ts` ด้วย `defineConfig` — ดูตัวอย่างใน 
 2. ระบุ `dialect` ตาม database: `postgresql`, `mysql`, `sqlite`, `singlestore`, `mssql`, หรือ `cockroach`
 3. ระบุ `driver` เฉพาะเมื่อใช้ driver พิเศษ: `turso`, `d1-http`, `expo`, `aws-data-api`, `pglite`, `neon-http`, `bun-sql`
 4. ระบุ `schema`, `out`, และ `dbCredentials.url` อ่านจาก `DATABASE_URL` หรือ environment ที่เหมาะสม
@@ -79,7 +73,7 @@ related:
 > Goal: สร้าง database schema ด้วย type-safe columns
 
 1. สร้าง `src/db/schema.ts` หรือแยกเป็นไฟล์ใน `src/db/schema/`
-2. นิยาม tables, columns, indexes, และ relations — ดู [references/api/schema.md](references/api/schema.md)
+2. นิยาม tables, columns, indexes, และ relations — ดู 
 3. ใช้ `pgTable` (PostgreSQL/CockroachDB), `mysqlTable` (MySQL/SingleStore), `sqliteTable` (SQLite), `mssqlTable` (MS SQL)
 4. ระบุ `notNull`, `unique`, `defaultNow` ตามที่จำเป็น
 5. สร้าง type จาก schema ด้วย `typeof table.$inferSelect` และ `$inferInsert`
@@ -89,7 +83,7 @@ related:
 
 > Goal: สร้าง database client สำหรับ runtime ที่ใช้
 
-1. สร้าง `src/db/index.ts` ตาม runtime — ดู [references/components/drivers.md](references/components/drivers.md)
+1. สร้าง `src/db/index.ts` ตาม runtime — ดู 
 2. สำหรับ SQLite: เปิดใช้งาน WAL mode (`PRAGMA journal_mode = WAL`) เพื่อ performance
 3. สำหรับ relational queries: ส่ง `schema` object เข้า `drizzle()` เช่น `drizzle(url, { schema })`
 4. export `db` instance ที่ import schema ทั้งหมด
@@ -113,9 +107,9 @@ related:
 > Goal: ใช้งาน type-safe queries และ relational API
 
 1. import `db` และ schema จาก `src/db`
-2. ใช้ SQL-like API: `db.insert()`, `db.select().from()`, `db.update()`, `db.delete()` — ดู [references/api/queries.md](references/api/queries.md)
+2. ใช้ SQL-like API: `db.insert()`, `db.select().from()`, `db.update()`, `db.delete()` — ดู 
 3. ใช้ relational API: `db.query.<table>.findMany({ with: {...} })` สำหรับ nested data
-4. ใช้ `db.transaction()` สำหรับ atomic operations — ดู [references/api/transactions.md](references/api/transactions.md)
+4. ใช้ `db.transaction()` สำหรับ atomic operations — ดู 
 5. ใช้ `eq`, `and`, `or`, `like`, `gt` ฯลฯ จาก `drizzle-orm` สำหรับ filters
 
 ### 8. Inspect With Studio
@@ -161,7 +155,7 @@ related:
 - ใช้ driver ที่เหมาะสมกับ runtime และ database
 - Serverless: `neon-http`, `neon-serverless`, `vercel-pg`, `planetscale-serverless`, `d1`
 - Edge/browser: `pglite`
-- ดูรายละเอียดใน [references/components/drivers.md](references/components/drivers.md)
+- ดูรายละเอียดใน 
 
 ### 6. Version Notes
 

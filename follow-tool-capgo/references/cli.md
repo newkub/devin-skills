@@ -1,13 +1,3 @@
-# Tool Capgo CLI
-
-## Install
-
-```sh
-bun add -D @capgo/cli
-```
-
-## Commands
-
 | Command | Description | Options |
 |---|---|---|
 | `capgo init` | Initialize config | --apikey, --force |
@@ -18,10 +8,3 @@ bun add -D @capgo/cli
 | `capgo channel set` | Assign bundle to channel | --channel, --latest |
 | `capgo channel delete` | Remove channel | --channel |
 | `capgo key save` / `key delete` | Manage update signing keys | --key |
-
-## Examples
-
-```sh
-bunx capgo bundle upload --channel production --path dist
-bunx capgo channel set --channel production --latest
-```

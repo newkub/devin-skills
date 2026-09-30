@@ -17,8 +17,7 @@ related:
 ใช้กับ GitHub Projects (Projects v2) ของผู้ใช้ องค์กร หรือ repository ที่เชื่อมโยง ไม่ครอบคลุม `gh issue` หรือ `gh pr` โดยตรง
 
 - Latest: `gh@2.101.0` (github.com/cli/cli, verified 2026-09-26)
-- References: [cli](references/cli.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 0. Setup

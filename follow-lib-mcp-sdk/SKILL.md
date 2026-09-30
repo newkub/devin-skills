@@ -24,17 +24,12 @@ related:
 - Tool input schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
 
 - Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration |
-| Deploy | `subskills/deploy-mcp/SKILL.md` — transport options, remote hosting, client config |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration | Deploy | `subskills/deploy-mcp/SKILL.md` — transport options, remote hosting, client config 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

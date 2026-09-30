@@ -28,10 +28,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Migrate v3→v4 | `subskills/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames |
-
+| Topic | Subskill |-------|----------| Migrate v3→v4 | `subskills/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames 
 ### 1. Install Zod
 
 > Goal: ติดตั้ง Zod เวอร์ชันล่าสุด

@@ -3,7 +3,7 @@ name: follow-tool-stryker-mutator
 description: ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing ใน JavaScript/TypeScript projects
 argument-hint: "[scope]"
 related:
-  - review-test
+  - deep-review
   - follow-test
   - update-tests
   - run-test
@@ -32,11 +32,7 @@ related:
 
 > Goal: dispatch ไปยัง subskill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| setup | `subskills/setup-stryker/SKILL.md` — install, stryker config, test runner integration |
-| optimize | `subskills/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds |
-
+| Topic | Subskill |-------|----------| setup | `subskills/setup-stryker/SKILL.md` — install, stryker config, test runner integration | optimize | `subskills/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds 
 1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
@@ -48,7 +44,7 @@ related:
 2. ติดตั้ง `@stryker-mutator/core` ด้วย `bun add -D @stryker-mutator/core`
 3. ติดตั้ง runner plugin เช่น `bun add -D @stryker-mutator/vitest-runner`
 4. ติดตั้ง TypeScript checker ถ้าใช้ TypeScript: `bun add -D @stryker-mutator/typescript-checker`
-5. ดูรายละเอียดใน [references/stryker-mutator.md](references/stryker-mutator.md)
+5. ดูรายละเอียดใน 
 
 ### 2. Initialize and Configure
 
@@ -58,7 +54,7 @@ related:
 2. ตรวจสอบ `stryker.config.json` หรือ `stryker.config.mjs`
 3. กำหนด `testRunner`, `mutator`, `reporters`, `coverageAnalysis`
 4. ตั้งค่า `mutate` และ `ignorePatterns` glob
-5. ดู config options ใน [references/stryker-mutator.md](references/stryker-mutator.md)
+5. ดู config options ใน 
 
 ### 3. Run Mutation Testing
 

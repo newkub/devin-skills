@@ -26,10 +26,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `subskills/setup-taze/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `subskills/setup-taze/SKILL.md` 
 ### 1. Run Taze
 
 > Goal: ตรวจสอบ updates เริ่มต้น
@@ -37,7 +34,7 @@ related:
 1. รัน `bunx taze` เพื่อ scan dependencies
 2. ใช้ `bunx taze major|minor|patch|latest` ตาม mode ทีต้องการ
 3. ใช้ `bunx taze --json` สำหรับ machine-readable output
-4. ดูรายละเอียด options ใน [references/taze.md](references/taze.md)
+4. ดูรายละเอียด options ใน 
 
 ### 2. Configure Update Behavior
 
@@ -56,7 +53,7 @@ related:
 1. เพิ่ม `prepare` script ใน `package.json`: `"prepare": "bunx taze latest -w -r -i"`
 2. ตรวจสอบว่า `prepare` ไม่ break CI
 3. ใช้ `pre-commit` hook ถ้า prefer แทน `prepare`
-4. ดู package scripts example ใน [references/taze.md](references/taze.md)
+4. ดู package scripts example ใน 
 
 ### 4. Advanced Configuration
 

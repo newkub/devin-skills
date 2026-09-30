@@ -21,12 +21,11 @@ related:
 ใช้ `follow-tool-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (tool crw)
 
 - Boundary: ใช้ `crw` เมื่อต้อง scrape/crawl/search/map แบบ batch หรือ structured output เพื่อลด AI token — สำหรับ interactive browser session (click, form, login) ใช้ `/use-agent-browser` แทน; สำหรับ fetch หน้าเดียวแบบง่ายใช้ webfetch ในตัวได้
-- สำหรับ web search/scrape ด้วย crw ดู `references/websearch.md`
+- สำหรับ web search/scrape ด้วย crw ดู `references/apis.md`
 
 - Latest: `crw-mcp@0.36.0` / `crw` CLI v0.36.0 (verified 2026-09-24)
 - Install: `curl -fsSL https://fastcrw.com/install | sh` · `brew install us/crw/crw` · `cargo install crw-cli` · `npx crw-mcp` (MCP only) · `docker run ghcr.io/us/crw`
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [websearch](references/websearch.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Web Search

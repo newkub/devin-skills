@@ -1,17 +1,8 @@
-# Drizzle Kit CLI
-
-## Install
-
-```sh
-bun add -D drizzle-kit
-```
-
-## Version
-
-- Latest: `0.31.11` (verified 2026-09-26); v1.0 RC: `1.0.0-rc.4` — CLI deep-dive ดู `/follow-tool-drizzle-kit`
-- Docs: https://orm.drizzle.team/docs/kit-overview
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D drizzle-kit` |
+| version | 0.31.11 |
+| docs | https://orm.drizzle.team/docs/kit-overview |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -23,17 +14,9 @@ bun add -D drizzle-kit
 | `drizzle-kit check` | Check schema drift between migrations and schema | report drift | `--config` |
 | `drizzle-kit studio` | Open Drizzle Studio GUI | open browser | `--config`, `--port`, `--host` |
 
-## Migration Strategy
-
 | Use case | Command | Notes |
 |---|---|---|
 | Rapid prototyping | `drizzle-kit push` | Sync schema directly, no migration files |
 | Production / team | `drizzle-kit generate` + `drizzle-kit migrate` | Versioned migration files in `out/` |
 | Existing database | `drizzle-kit pull` | Introspect DB → generate schema files |
 | Drift detection | `drizzle-kit check` | Verify migrations match current schema |
-
-## Sources
-
-- CLI: https://orm.drizzle.team/docs/kit-overview
-- Migrations: https://orm.drizzle.team/docs/migrations
-- Studio: https://orm.drizzle.team/drizzle-studio/overview

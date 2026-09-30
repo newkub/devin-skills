@@ -24,8 +24,7 @@ related:
 
 - Boundary: dprint เป็น formatter-only แบบ pluggable (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — ไม่มี linting; ถ้าต้องการ lint+format สำหรับ JS/TS ใน tool เดียวใช้ `/follow-tool-biome` แทน (หรือใช้ dprint เฉพาะภาษาที่ Biome ไม่ครอบคลุม)
 - Latest: `dprint@0.57.4` (verified 2026-09-24) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [dprint](references/dprint.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Precondition Check

@@ -21,16 +21,12 @@ related:
 - ถ้า project ใช้ Better Auth อยู่แล้ว ให้ใช้ `passkey()` plugin ผ่าน `/follow-lib-better-auth` แทน manual setup
 
 - Latest: `@simplewebauthn/server@14.0.2` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-16)
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

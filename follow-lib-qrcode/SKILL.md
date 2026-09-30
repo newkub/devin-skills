@@ -20,8 +20,7 @@ related:
 - ครอบคลุม: QR code generation — PNG/SVG/dataURL/terminal output ฝั่ง server, browser หรือ CLI (`qrcode` command — ดู [cli](references/cli.md))
 - ไม่ครอบคลุม: TOTP/2FA logic — ใช้ `/follow-lib-otplib` สำหรับสร้าง `otpauth://` URI แล้ว render QR ด้วย skill นี้
 - Latest: `qrcode@1.5.4` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Setup And Usage

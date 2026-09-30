@@ -80,7 +80,7 @@ edge.mount(new URL('./views', import.meta.url))
 4. ใช้ `@each(item in items)` หรือ `@each((item, index) in items)` สำหรับ loops
 5. ใช้ `@include('partial')` สำหรับ partials และ `@includeIf(condition, 'partial')` สำหรับ conditional include
 6. ใช้ `{{-- comment --}}` สำหรับ comments
-7. ดูรายละเอียด syntax ใน `references/syntax.md`
+7. ดู API surface ใน `references/apis.md`
 
 ### 5. Use Components and Layouts
 
@@ -91,7 +91,7 @@ edge.mount(new URL('./views', import.meta.url))
 3. ใช้ `@<componentTag>()` เมื่อ component อยู่ใน `components/` directory
 4. ใช้ `$props` สำหรับจัดการ props และ `$slots.main()` สำหรับ slots
 5. สร้าง layouts ด้วย `@layout.app({ title: '...' })` และ `@slot('main')` / `@endslot`
-6. ดูตัวอย่าง components และ slots ใน `references/components.md`
+6. ดู API surface ใน `references/apis.md`
 
 ### 6. Manage Template State
 
@@ -101,7 +101,7 @@ edge.mount(new URL('./views', import.meta.url))
 2. ใช้ `edge.createRenderer().share({ ... })` สำหรับ locals ที่ isolated ต่อ request
 3. ใช้ `await edge.render('view', data)` สำหรับ render data ที่ไม่แชร์กับ components
 4. ใช้ `@let(name = value)` และ `@assign(name = newValue)` สำหรับ inline variables
-5. ดูรายละเอียด state layers ใน `references/state.md`
+5. ดู API surface ใน `references/apis.md`
 
 ### 7. Render and Integrate
 
@@ -142,7 +142,7 @@ server.listen(3000)
 2. รัน `bun test` หรือ test suite ที่มี
 3. ตรวจสอบว่าไม่มี reserved keywords ถูก override
 4. ทำ `/report table` สรุป status คอลัมน์: `No.`, `Check`, `Status`, `Notes`
-5. ทำ `/deep-validate` แล้ว `/ship`
+5. ทำ `/deep-validate` แล้ว `/ship-to-dev-branch`
 
 ## Rules
 

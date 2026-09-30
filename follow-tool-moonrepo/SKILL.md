@@ -31,13 +31,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install moon, `moon init`, `.moon/` workspace layout | `subskills/setup-moonrepo/SKILL.md` |
-| `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `subskills/config-pipeline/SKILL.md` |
-| Cache tuning, `--affected` targets | `subskills/optimize-cache/SKILL.md` |
-| `moon ci` — CI pipeline, `runInCI`, sharding, reports | `subskills/run-ci/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `subskills/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `subskills/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `subskills/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `subskills/run-ci/SKILL.md` 
 ### Subagents
 
 - ใช้ `subagents/project-configurator.md` เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
@@ -55,7 +49,7 @@ related:
    - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
 2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.5`, verified 2026-09-16)
 3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (default ใช้ `bun add -D @moonrepo/cli`)
-4. ดูรายละเอียดเพิ่มเติมใน [references/moonrepo.md](references/moonrepo.md)
+4. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 2. Identify Workspace
 
@@ -159,7 +153,7 @@ related:
 - ใช้ moonrepo implicit project detection
 - ไม่ซ้อน project boundaries ซ้ำซ้อน
 - JS/Bun project = package, Rust project = crate (Cargo package)
-- ใช้ `tags` ใน `moon.yml` + `dependsOn` สำหรับ boundaries ที่ชัด — ดู `references/moonrepo-advanced.md`
+- ใช้ `tags` ใน `moon.yml` + `dependsOn` สำหรับ boundaries ที่ชัด — ดู `references/apis.md`
 
 ### 4. Git Hooks
 
@@ -180,8 +174,6 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [moon ci — CI guide, providers, sharding](references/ci.md)
-
 ## Expected Outcome
 
 - `.moon/` config ถูกต้องและสมบูรณ์

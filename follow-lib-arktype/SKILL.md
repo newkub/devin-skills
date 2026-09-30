@@ -4,7 +4,7 @@ description: ใช้ ArkType สำหรับ TypeScript runtime validation 
 argument-hint: "[scope]"
 related:
   - follow-lib-zod
-  - review-data-validation
+  - deep-review
   - follow-lib-better-auth
   - follow-lang-typescript
   - follow-best-practice
@@ -24,20 +24,16 @@ related:
 ขอบเขต:
 - ใช้ skill นี้เมื่อ project เลือก/ใช้ ArkType เป็น validator หลัก
 - ถ้า project ใช้ Zod อยู่แล้ว → ใช้ `/follow-lib-zod` แทน (อย่าผสม validator หลักสองตัวใน domain เดียวกัน)
-- ถ้ายังไม่ได้เลือก validation library → ทำ `/review-data-validation` เพื่อเปรียบเทียบก่อน
+- ถ้ายังไม่ได้เลือก validation library → ทำ `/deep-review` เพื่อเปรียบเทียบก่อน
 
 - Latest: `arktype@2.2.3` (verified 2026-09-13)
 - v2.2 features หลัก: `type.fn` (validated functions), type-safe regex ผ่าน `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators ฝังใน definitions ได้โดยตรง, `|>` pipe operator, `type.valueOf` สำหรับ TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
-- References: [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [resources](references/arktype-resources.md) | [manifest](references/package-manifest.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Setup | `subskills/setup-arktype/SKILL.md` — install, `type()` basics, scope config |
-
+| Topic | Subskill |-------|----------| Setup | `subskills/setup-arktype/SKILL.md` — install, `type()` basics, scope config 
 ### 1. Install ArkType
 
 > Goal: ติดตั้ง ArkType และเตรียม environment
@@ -66,7 +62,7 @@ related:
 }
 ```
 
-6. ดูรายละเอียดเพิ่มเติมใน [references/arktype-config-build-dev.md](references/arktype-config-build-dev.md)
+6. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 3. Define Schemas
 
@@ -77,7 +73,7 @@ related:
 3. กำหนด object เช่น `type({ name: "string", "age?": "number" })`
 4. ใช้ optional fields ด้วย `"field?"` syntax
 5. ใช้ union และ intersection ด้วย `"|"` และ `"&"` หรือ `.or()` และ `.and()`
-6. ดูรายละเอียดเพิ่มเติมใน [references/arktype-api-core.md](references/arktype-api-core.md)
+6. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 4. Validate Data
 
@@ -87,7 +83,7 @@ related:
 2. ใช้ `Schema.assert(data)` เมื่อต้องการ throw `TraversalError`
 3. ใช้ `Schema.allows(data)` เมื่อต้องการ boolean type guard (ไม่ apply morphs)
 4. ตรวจ `instanceof type.errors` หรือ `instanceof ArkErrors` สำหรับ error handling
-5. ดูรายละเอียดเพิ่มเติมใน [references/arktype-api-core.md](references/arktype-api-core.md)
+5. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 5. Pattern Matching
 
@@ -106,7 +102,7 @@ related:
 1. ใช้ `configure()` จาก `arktype/config` สำหรับ global configuration
 2. กำหนด custom error messages ด้วย `.configure({ actual: () => "..." })` หรือ `.describe(...)`
 3. ใช้ keyword configuration สำหรับ built-in types (เช่น `numberAllowsNaN`, `jitless`)
-4. ดูรายละเอียดเพิ่มเติมใน [references/arktype-config-type-validation.md](references/arktype-config-type-validation.md)
+4. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 7. Type Inference And Scope
 
@@ -115,7 +111,7 @@ related:
 1. ใช้ `typeof Schema.t` หรือ `typeof Schema.infer` สำหรับ type inference
 2. ใช้ `scope()` จาก `arktype` สำหรับ grouped type definitions ที่ reference กัน
 3. หลีกเลี่ยง type assertions ที่ไม่จำเป็น ให้ใช้ inference จาก ArkType
-4. ดูรายละเอียดเพิ่มเติมใน [references/arktype-api-advanced.md](references/arktype-api-advanced.md)
+4. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 8. Performance And Integration
 
@@ -126,7 +122,7 @@ related:
 3. ใช้ Standard Schema integration (`~standard`) เมื่อจำเป็น — v2.2 ฝัง Standard Schema validators (Zod, Valibot ฯลฯ) ใน definitions ได้โดยตรง
 4. ใช้ `type.fn(args, ":", returnType)` สำหรับ runtime-validated functions และ `arkregex` (`type("x/^...$/")`) สำหรับ type-safe regex พร้อม inferred capture groups
 5. ใช้ `@ark/json-schema` เมื่อต้องการ bidirectional JSON Schema conversion (`toJsonSchema()` รองรับ fallbacks และ draft-07/2020-12)
-6. ดู official resources ใน [references/arktype-resources.md](references/arktype-resources.md)
+6. ดู official resources ใน 
 
 ## Rules
 
@@ -168,7 +164,7 @@ related:
 
 - ใช้ Standard Schema (`~standard`) เมื่อจำเป็น
 - ใช้ `/follow-lib-zod` ถ้า project ใช้ Zod เป็น validator หลัก
-- ใช้ `/review-data-validation` ถ้าต้องเลือก/เปรียบเทียบ validation library
+- ใช้ `/deep-review` ถ้าต้องเลือก/เปรียบเทียบ validation library
 - ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
 - ใช้ `/follow-lang-typescript` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

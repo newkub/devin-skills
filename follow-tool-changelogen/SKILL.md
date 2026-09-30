@@ -22,16 +22,12 @@ related:
 
 - Boundary: changelogen สร้าง changelog + bump version จาก conventional commits ใน git repo เดียว — สำหรับ monorepo multi-package versioning ใช้ `/follow-tool-changesets`; สำหรับ PR-label-based releases ใช้ `/follow-tool-auto-it`; สำหรับ full release pipelines ดู `/follow-tool-release-it` หรือ `/follow-tool-semantic-release`
 - Latest: `changelogen@0.6.2` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [changelogen](references/changelogen.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Install, changelog generation, release command | `subskills/setup-changelogen/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Install, changelog generation, release command | `subskills/setup-changelogen/SKILL.md` 
 ### 1. Configure Changelogen
 
 > Goal: สร้าง `changelog.config.ts` สำหรับ project

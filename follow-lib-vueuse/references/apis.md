@@ -1,22 +1,10 @@
-# Lib Vueuse API & Dependencies
-
-## Install
-
-```sh
-bun add @vueuse/core
-```
-
-## Version
-
-- Latest: 14.4.0
-- [Package Registry](https://www.npmjs.com/package/@vueuse/core)
-- [Repository](https://github.com/vueuse/vueuse)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add @vueuse/core` |
+| version | 14.4.0 |
+| package registry | https://www.npmjs.com/package/@vueuse/core |
+| repository | https://github.com/vueuse/vueuse |
+| docs | https://github.com/vueuse/vueuse#readme |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -26,8 +14,3 @@ bun add @vueuse/core
 | `use` | Use the main API / runtime | as documented | (none) |
 | `import '@vueuse/core/*'` | Subpath export for * | entry as documented | (none) |
 | `import '@vueuse/core/metadata'` | Subpath export for metadata | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://github.com/vueuse/vueuse#readme
-- Description: Collection of essential Vue Composition Utilities

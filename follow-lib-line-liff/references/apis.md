@@ -1,23 +1,9 @@
-# Lib Line Liff API & Dependencies
-
-## Install
-
-```sh
-bun add @line/liff
-```
-
-## Version
-
-- Latest: `2.31.0` (verified 2026-09-13) — npm package เป็น v2.x; "LIFF v2" ใน docs หมายถึง API generation
-- [Package Registry](https://www.npmjs.com/package/@line/liff)
-- [Repository](https://github.com/line/line-liff-v2-starter)
-
-## Dependencies
-
-- Peer: LINE LIFF app + channel ต้องสร้างผ่าน LINE Developers Console ก่อน
-- `@line/liff` เป็น browser-only SDK — ใช้ใน SPA/frontend เท่านั้น
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 2.31.0 |
+| package registry | https://www.npmjs.com/package/@line/liff |
+| repository | https://github.com/line/line-liff-v2-starter |
+| docs | https://developers.line.biz/en/docs/liff/ |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -29,8 +15,3 @@ bun add @line/liff
 | `liff.shareTargetPicker([...])` | Share picker | - | `isMultiple` |
 | `liff.scanCodeV2()` | QR scanner | - | - |
 | `liff.getContext()` | LIFF context | - | `type`, `userId`, `chatId` |
-
-## Source
-
-- Official docs: https://developers.line.biz/en/docs/liff/
-- Description: LINE Front-end Framework SDK สำหรับ web apps ใน LINE app.

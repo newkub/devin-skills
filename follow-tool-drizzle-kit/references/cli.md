@@ -1,18 +1,8 @@
-# Tool Drizzle Kit CLI
-
-## Install
-
-```sh
-bun add -D drizzle-kit
-```
-
-## Version
-
-- Latest: `0.31.11` (npm, verified 2026-09-26) — pair with `drizzle-orm@0.45.3`; v1.0.0 อยู่ใน beta/rc channel
-- Repository: https://github.com/drizzle-team/drizzle-orm
-- Docs: https://orm.drizzle.team/docs/kit-overview
-
-## Commands
+| key | value |
+|---|---|
+| version | 0.31.11 |
+| repository | https://github.com/drizzle-team/drizzle-orm |
+| docs | https://orm.drizzle.team/docs/kit-overview |
 
 | Command | Description | Options |
 |---|---|---|
@@ -24,11 +14,3 @@ bun add -D drizzle-kit
 | `drizzle-kit studio` | Launch Drizzle Studio UI | --port, --host |
 | `drizzle-kit up` | Upgrade snapshot format | - |
 | `drizzle-kit export` | Export schema เป็น SQL DDL (ไม่ต้องมี DB) | --config |
-
-## Examples
-
-```sh
-bunx drizzle-kit generate --name add_users_table
-bunx drizzle-kit migrate
-bunx drizzle-kit studio --port 4983
-```

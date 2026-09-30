@@ -1,22 +1,10 @@
-# Tool Taze API & Dependencies
-
-## Install
-
-```sh
-bun add -D taze
-```
-
-## Version
-
-- Latest: 21.1.0
-- [Package Registry](https://www.npmjs.com/package/taze)
-- [Repository](https://github.com/antfu-collective/taze)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D taze` |
+| version | 21.1.0 |
+| package registry | https://www.npmjs.com/package/taze |
+| repository | https://github.com/antfu-collective/taze |
+| docs | https://github.com/antfu-collective/taze#readme |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -24,8 +12,3 @@ bun add -D taze
 | `taze` | Run the taze CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
 | `import 'taze/cli'` | Subpath export for cli | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://github.com/antfu-collective/taze#readme
-- Description: A modern CLI tool that keeps your dependencies fresh in any repo and monorepo

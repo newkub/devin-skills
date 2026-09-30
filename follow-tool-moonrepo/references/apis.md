@@ -1,22 +1,10 @@
-# Tool Moonrepo API & Dependencies
-
-## Install
-
-```sh
-bun add -D @moonrepo/cli
-```
-
-## Version
-
-- Latest: 2.5.5 (verified 2026-09-16)
-- [Package Registry](https://www.npmjs.com/package/@moonrepo/cli)
-- [Repository](https://github.com/moonrepo/moon)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D @moonrepo/cli` |
+| version | 2.5.5 |
+| package registry | https://www.npmjs.com/package/@moonrepo/cli |
+| repository | https://github.com/moonrepo/moon |
+| docs | https://github.com/moonrepo/moon#readme |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -24,8 +12,3 @@ bun add -D @moonrepo/cli
 | `moon` | Run the moon CLI | current workspace | --help, --version, --config |
 | `moonx` | Run the moonx CLI | current workspace | --help, --version, --config |
 | `configure` | Configure via config file | project defaults | --config, --file |
-
-## Source
-
-- Official docs: https://github.com/moonrepo/moon#readme
-- Description: moon command line and core system.

@@ -1,18 +1,9 @@
-# Taze CLI
-
-## Install
-
-```sh
-bun add -D taze
-```
-
-## Version
-
-- Latest: `21.1.0` (verified 2026-09-13)
-- Repository: https://github.com/antfu-collective/taze
-- Docs: https://www.npmjs.com/package/taze
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D taze` |
+| version | 21.1.0 |
+| repository | https://github.com/antfu-collective/taze |
+| docs | https://www.npmjs.com/package/taze |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,8 +12,6 @@ bun add -D taze
 | `taze minor` | Allow minor updates within same major | — | same as above |
 | `taze patch` | Allow patch updates | — | same as above |
 | `taze --help` | Show help | — | (none) |
-
-## Options
 
 | Option | Description |
 |---|---|
@@ -34,12 +23,3 @@ bun add -D taze
 | `--install` | Run install after writing |
 | `--json` | Output JSON for agents |
 | `--interactive` | Interactive selection |
-
-## Examples
-
-```sh
-bunx taze
-bunx taze major --write --install
-bunx taze -r --json
-bunx taze --include esbuild
-```

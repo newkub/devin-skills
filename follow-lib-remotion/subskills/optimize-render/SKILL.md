@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-lib-remotion
   - run-bench
-  - check-bottlenecks
   - report-before-after
   - resolve-errors
 ---
@@ -25,7 +24,7 @@ related:
 > Goal: วัด render time ปัจจุบันก่อน optimize
 
 1. จับเวลา render ปัจจุบัน: `bunx remotion render MyComp` — บันทึก duration และ output size
-2. ระบุ bottleneck: composition complexity, assets ขนาดใหญ่, codec, concurrency — ทำ `/check-bottlenecks`
+2. ระบุ bottleneck: composition complexity, assets ขนาดใหญ่, codec, concurrency — ทำ `/deep-optimize`
 3. ใช้ `--log=verbose` ดู render phases ถ้าต้องเจาะลึก
 
 ### 2. Optimize Composition

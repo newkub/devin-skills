@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-tool-stryker-mutator
   - run-test
-  - check-bottlenecks
   - setup-cicd
 ---
 
@@ -26,7 +25,7 @@ related:
 > Goal: เก็บตัวเลขเดิมก่อน tune
 
 1. รัน `bunx stryker run` จับเวลา — เก็บ duration, mutant count, mutation score
-2. ระบุ bottleneck: mutant count สูง, sandbox rebuild, slow tests — ทำ `/check-bottlenecks`
+2. ระบุ bottleneck: mutant count สูง, sandbox rebuild, slow tests — ทำ `/deep-optimize`
 3. ดู report ว่า mutants กระจุกตัวที่ไหน — files ที่มี mutants เยอะแต่ low value
 
 ### 2. Enable Incremental Mode

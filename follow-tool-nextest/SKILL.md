@@ -35,7 +35,7 @@ related:
 3. Windows สามารถใช้ `winget install nextest.cargo-nextest`
 4. ติดตั้งจาก source ด้วย `cargo install cargo-nextest --locked`
 5. อัปเดตด้วย `cargo nextest self-update`
-6. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+6. ดูรายละเอียดใน 
 
 ### 2. Run Tests
 
@@ -44,7 +44,7 @@ related:
 1. รัน all tests ด้วย `cargo nextest run`
 2. รันเฉพาะ package ด้วย `cargo nextest run -p my-package`
 3. รัน doctests แยก (nextest ไม่รองรับ doctests) ด้วย `cargo test --doc`
-4. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+4. ดูรายละเอียดใน 
 
 ### 3. Configuration
 
@@ -53,7 +53,7 @@ related:
 1. สร้าง `.config/nextest.toml` ที่ Cargo workspace root
 2. กำหนด profiles สำหรับ local และ CI runs
 3. ใช้ profile เมื่อรัน: `cargo nextest run --profile ci`
-4. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+4. ดูรายละเอียดใน 
 
 ### 4. List Tests
 
@@ -61,7 +61,7 @@ related:
 
 1. รัน `cargo nextest list` สำหรับ list all tests
 2. รัน `cargo nextest list --verbose` สำหรับ verbose output (binary paths, skipped tests)
-3. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+3. ดูรายละเอียดใน 
 
 ### 5. Profiles
 
@@ -71,7 +71,7 @@ related:
 2. `ci`: สำหรับ CI (`fail-fast = false`)
 3. สร้าง custom profiles ใน `.config/nextest.toml` ด้วย `inherits` keyword
 4. หลีกเลี่ยง naming profiles ที่ขึ้นต้นด้วย `default-`
-5. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+5. ดูรายละเอียดใน 
 
 ### 6. CI Integration
 
@@ -80,7 +80,7 @@ related:
 1. ติดตั้ง cargo-nextest ใน CI ด้วย `cargo binstall cargo-nextest --secure`
 2. รัน tests ด้วย `cargo nextest run --profile ci`
 3. ใช้ JUnit output สำหรับ test reporting
-4. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
+4. ดูรายละเอียดใน 
 
 ## Rules
 

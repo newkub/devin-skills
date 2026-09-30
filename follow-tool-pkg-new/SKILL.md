@@ -32,7 +32,7 @@ related:
 1. ไปที่ `https://github.com/apps/pkg-pr-new`
 2. Install application บน repository
 3. ตรวจสอบ permissions ที่จำเป็น
-4. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+4. ดูรายละเอียดใน 
 
 ### 2. Install Package
 
@@ -40,7 +40,7 @@ related:
 
 1. รัน `bun add -D pkg-pr-new`
 2. ใน CI ให้รันจาก lockfile (`bun run pkg-pr-new publish` หรือ `pnpm exec pkg-pr-new publish`) แทน `bunx`/`npx`
-3. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+3. ดูรายละเอียดใน 
 
 ### 3. Configure Workflow
 
@@ -50,7 +50,7 @@ related:
 2. trigger บน `push` และ `pull_request`
 3. รัน `bun install`, `bun run build` แล้ว `bunx pkg-pr-new publish`
 4. สำหรับ monorepos ระบุ packages paths เช่น `'./packages/*'`
-5. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+5. ดูรายละเอียดใน 
 
 ### 4. Configure Options
 
@@ -61,7 +61,7 @@ related:
 3. ใช้ `--comment=update` สำหรับ custom comments
 4. ใช้ `--packageManager=bun` สำหรับ package manager ใน comments
 5. ใช้ `--commentWithSha` เมื่อต้องการ commit SHA URLs ใน comments แทน PR number URLs
-6. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+6. ดูรายละเอียดใน 
 
 ### 5. Verify Preview Publish
 
@@ -71,7 +71,7 @@ related:
 2. ทดสอบ install ด้วย npm-compatible URL: `bun add https://pkg.pr.new/<owner>/<repo>/<package>@<commit>`
 3. ใช้ step outputs `sha`, `urls`, `packages` จาก `pkg-pr-new publish` เพื่อ chain E2E job (`needs.<job>.outputs.urls`)
 4. ถ้า publish ไม่เกิด → ตรวจว่า GitHub Application install บน repo แล้ว และ workflow มี permissions ถูกต้อง
-5. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
+5. ดูรายละเอียดใน 
 
 ## Rules
 

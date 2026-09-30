@@ -1,22 +1,10 @@
-# Tool Tsdown API & Dependencies
-
-## Install
-
-```sh
-bun add -D tsdown
-```
-
-## Version
-
-- Latest: 0.23.0
-- [Package Registry](https://www.npmjs.com/package/tsdown)
-- [Repository](https://github.com/rolldown/tsdown)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D tsdown` |
+| version | 0.23.0 |
+| package registry | https://www.npmjs.com/package/tsdown |
+| repository | https://github.com/rolldown/tsdown |
+| docs | http://tsdown.dev/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,8 +16,3 @@ bun add -D tsdown
 | `import 'tsdown/config'` | Subpath export for config | entry as documented | (none) |
 | `import 'tsdown/plugins'` | Subpath export for plugins | entry as documented | (none) |
 | `import 'tsdown/internal'` | Subpath export for internal | entry as documented | (none) |
-
-## Source
-
-- Official docs: http://tsdown.dev/
-- Description: The Elegant Bundler for Libraries

@@ -19,10 +19,9 @@ related:
 
 - Boundary: ถ้า repo ใช้ moonrepo อยู่แล้ว → `vcs.hooks` ของ moon (v1.9+) พอสำหรับ hooks ทั่วไป (`moon run :lint --affected --status=staged`) — ใช้ hk เมื่อต้องการ parallel staged-file linting, non-moon hook steps, หรือ hook config เดียวข้าม repos
 
-- สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
+- git hooks patterns ทั่วไป ดู `references/apis.md`
 - Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config เป็น Pkl-only (ลบ `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) ถูกแทนด้วย typed options เช่น `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage อัตโนมัติ — migration guide: `https://hk.jdx.dev/migration-v2`
-- References: [cli](references/cli.md) | [githooks](references/githooks.md) | [apis](references/apis.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install hk

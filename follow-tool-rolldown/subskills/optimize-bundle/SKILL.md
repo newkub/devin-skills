@@ -5,8 +5,7 @@ argument-hint: "[target-area]"
 related:
   - follow-tool-rolldown
   - run-bench
-  - check-bottlenecks
-  - review-bundle
+  - deep-review
   - report-before-after
 ---
 
@@ -27,7 +26,7 @@ related:
 > Goal: วัดก่อนแก้ ห้ามเดา bottleneck
 
 1. รัน `bunx rolldown -c` เก็บ build time และขนาดไฟล์ต่อ chunk
-2. ระบุ chunk ที่ใหญ่ผิดปกติหรือ module ที่ไม่ควร bundle — ทำ `/check-bottlenecks`
+2. ระบุ chunk ที่ใหญ่ผิดปกติหรือ module ที่ไม่ควร bundle — ทำ `/deep-optimize`
 3. บันทึก baseline ไว้ compare (ใช้ `/report-before-after` ตอนจบ)
 
 ### 2. Tree-shaking

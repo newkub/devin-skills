@@ -22,8 +22,7 @@ related:
 - มี CLI ในตัว (`markdown-it <file>`) — ดู [cli](references/cli.md)
 
 - Latest: `markdown-it@15.0.2` (verified 2026-09-13) — v15: ESM+CJS dual, types รวมใน package (ไม่ต้อง `@types/markdown-it`)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Setup And Usage

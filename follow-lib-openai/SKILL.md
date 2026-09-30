@@ -24,17 +24,12 @@ related:
 - Structured output schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
 
 - Latest: `openai@7.23.0` (verified 2026-09-24) — v7 requires Node.js 22+
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Config | `subskills/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys |
-| Optimize | `subskills/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing |
-
+| Topic | Subskill |-------|----------| Config | `subskills/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys | Optimize | `subskills/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing 
 ### 1. Setup And Usage
 
 > Goal: ใช้งานถูกต้องตาม official docs

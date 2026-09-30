@@ -6,7 +6,7 @@ related:
   - follow-tool-msw
   - follow-tool-vitest
   - run-test
-  - review-dependencies
+  - deep-review
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ related:
 
 > Goal: รู้ stack และ environments ที่ต้อง mock
 
-1. ทำ `/review-dependencies` — ระบุ HTTP client (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
+1. ทำ `/deep-review` — ระบุ HTTP client (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
 2. ระบุ environments: browser dev, Node tests (Vitest/Jest), หรือทั้งสอง
 3. ระบุ public dir ของ dev server (`public/` สำหรับ Vite เป็นต้น)
 4. ตรวจ `package.json` — ถ้ามี `msw` แล้ว (idempotent check) → skip install

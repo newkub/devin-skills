@@ -1,18 +1,8 @@
-# hk CLI
-
-## Install
-
-```sh
-mise use -g hk@latest
-```
-
-## Version
-
-- Latest: `hk@2.2.0` (verified 2026-09-26)
-- Repository: https://github.com/jdx/hk
-- Docs: https://hk.jdx.dev
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g hk@latest` |
+| repository | https://github.com/jdx/hk |
+| docs | https://hk.jdx.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -33,21 +23,3 @@ mise use -g hk@latest
 | `hk util` | utilities | — | `detect-private-key`, `check-*`, `trailing-whitespace`, `end-of-file-fixer` |
 | `hk completion` | shell completions | — | `--install`, `<shell>` |
 | `hk version` | print version | — | — |
-
-Global flags: `--cd <dir>`, `-j/--jobs`, `-p/--profile`, `-v/--verbose`, `-n/--no-progress`, `-q/--quiet`, `--silent`, `--json`, `--format human|json|jsonl`
-
-## Examples
-
-```sh
-mise x -- hk install
-hk run pre-commit
-hk fix --all
-hk check --all
-hk agent
-```
-
-## Notes
-
-- Config เป็น `hk.pkl` (Pkl) — `amends "package://github.com/jdx/hk/releases/download/v<ver>/hk@<ver>#/Config.pkl"`
-- `effect = "destructive"` ต้อง confirm ใน agent/MCP contexts (v1.55+)
-- `hk agent` เป็น read-only — ไม่แก้ config เอง

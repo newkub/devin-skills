@@ -1,18 +1,8 @@
-# Node Modules Inspector CLI
-
-## Install
-
-```sh
-bun add -D node-modules-inspector
-```
-
-## Version
-
-- Latest on npm
-- Repository: https://github.com/antfu/node-modules-inspector
-- Docs: https://github.com/antfu/node-modules-inspector
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D node-modules-inspector` |
+| repository | https://github.com/antfu/node-modules-inspector |
+| docs | https://github.com/antfu/node-modules-inspector |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -23,14 +13,3 @@ bun add -D node-modules-inspector
 | `node-modules-inspector report maintainers` | Upgrade opportunities + publint | — | --json, --sort, --no-latest-only |
 | `node-modules-inspector mcp` | Start MCP server (stdio) | — | — |
 | `node-modules-inspector --help` | Show help | — | (none) |
-## Examples
-
-```sh
-bunx node-modules-inspector
-```
-```sh
-bunx node-modules-inspector build
-```
-```sh
-bunx node-modules-inspector report duplicates --json | jq '.[].name'
-```

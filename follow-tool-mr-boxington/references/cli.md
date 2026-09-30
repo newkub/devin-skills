@@ -1,31 +1,7 @@
-# mbx CLI
-
-## Install
-
-```sh
-mise use --global --tool-option mr_boxington=true rust mr-boxington  # mise >=2026.9.2
-# or: cargo install mbx --locked
-```
-
-## Version
-
-- Latest: `mbx@1.18.0` (verified 2026-09-26)
-- Repository: https://github.com/jdx/mr-boxington
-- Docs: https://mr-boxington.jdx.dev
-- Usage: `mbx [+TOOLCHAIN] <SUBCOMMAND>` — `+TOOLCHAIN` เลือก toolchain แบบ rustup (`mbx +1.91 check`)
-
-## Build Passthrough
-
-`mbx <cargo-subcommand>` ส่งต่อให้ Cargo ทุก subcommand/alias/installed subcommand:
-
-```sh
-mbx build
-mbx test --workspace --all-features
-mbx clippy --workspace --all-targets -- -D warnings
-mbx +stable check --workspace
-```
-
-## Commands
+| key | value |
+|---|---|
+| repository | https://github.com/jdx/mr-boxington |
+| docs | https://mr-boxington.jdx.dev |
 
 | command | description | options |
 |---|---|---|
@@ -41,8 +17,6 @@ mbx +stable check --workspace
 | `mbx clean` | ล้าง outputs ของ workspace | `[WORKSPACE]` |
 | `mbx gc` | เก็บกวาด store | `--dry-run`, `--max-size` |
 
-## `mbx cache` Subcommands
-
 | command | description | options |
 |---|---|---|
 | `mbx cache dir` | path ของ local store | `--json` |
@@ -54,22 +28,3 @@ mbx +stable check --workspace
 | `mbx cache export <ARCHIVE>` | export closure ของ receipts ใน group เป็น tar | `--group <GROUP>`, `--format <FORMAT>` |
 | `mbx cache import <ARCHIVE>` | import bundle — restore scheduler state + target layout เมื่อ target ว่าง | — |
 | `mbx cache remove` | ลบ entries ของ workspace | `--interactive`, `[WORKSPACE]` |
-
-## Examples
-
-```sh
-mbx setup --yes
-mbx setup --status
-mbx doctor
-mbx explain --last
-mbx cache stats
-mbx gc --dry-run
-mbx adopt --recursive --dry-run ~/src
-MBX_SCHEDULER_TESTS=1 mbx test --workspace
-```
-
-## Notes
-
-- `MBX_SUMMARY=short|full|ci|off` override build summary; CI ใช้ explanatory summary อัตโนมัติ
-- `mbx cache export --group` อ่าน group จาก `MBX_CACHE_EXPORT_GROUP` — `jdx/mr-boxington-action` ตั้งให้เอง
-- `mbx setup --uninstall` ต่อ scope ที่เคย enable — ไม่ลบ binary หรือ cache

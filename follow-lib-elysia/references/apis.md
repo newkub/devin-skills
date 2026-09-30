@@ -1,26 +1,9 @@
-# Lib Elysia API & Dependencies
-
-## Install
-
-```sh
-bun add elysia            # core framework (runtime dependency)
-bun add @elysia/eden      # type-safe client (optional)
-bun add @elysia/openapi   # OpenAPI spec + docs UI (optional)
-bun create elysia app     # scaffold new project
-```
-
-## Version
-
-- Latest stable: `1.4.30` — v2.0.0-beta.14 ผ่าน `elysia@next` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/elysia)
-- [Repository](https://github.com/elysiajs/elysia)
-
-## Dependencies
-
-- ไม่มี peer dependencies — ต้องการ Bun runtime (รองรับ runtime อื่นผ่าน adapter)
-- Validation ผ่าน `Elysia.t` (TypeBox built-in) หรือ Standard Schema libraries ที่ติดตั้งเอง
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add elysia            # core framework (runtime dependency)` |
+| package registry | https://www.npmjs.com/package/elysia |
+| repository | https://github.com/elysiajs/elysia |
+| docs | https://elysiajs.com |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -40,8 +23,3 @@ bun create elysia app     # scaffold new project
 | `t` (`Elysia.t`) | TypeBox schema builder | - | `t.Object`, `t.Number`, ฯลฯ |
 | `treaty<App>(url)` (`@elysia/eden`) | Type-safe client | - | `{ data, error }` returns |
 | `openapi()` (`@elysia/openapi`) | OpenAPI docs UI | - | `fromTypes()` สำหรับ TS types |
-
-## Source
-
-- Official docs: https://elysiajs.com (LLM-friendly index: https://elysiajs.com/llms.txt)
-- Description: Ergonomic Framework for Humans — Bun-first, end-to-end type safety.

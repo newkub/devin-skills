@@ -25,8 +25,7 @@ related:
 
 - Boundary: Bunup เหมาะกับ library bundling (ESM/CJS + dts) บน Bun — ถ้า project ไม่ผูกกับ Bun หรือต้องการ Rolldown-based bundler ดู `/follow-tool-tsdown`; สำหรับ bundler ระดับล่างดู `/follow-tool-rolldown`; สำหรับ app dev server/build ดู `/follow-tool-vite`
 - Latest: `bunup@0.16.32` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [bunup](references/bunup.md) | [cli](references/cli.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Analyze Project
@@ -111,5 +110,5 @@ project/
 - รองรับ ESM และ CJS formats
 - สร้าง type declarations (dts) อัตโนมัติ
 
-สำหรับ CLI options ทั้งหมด, default entry points, config file format และ scaffolding (`bunx @bunup/cli@latest create`) ดู `references/bunup.md` และ `references/cli.md`
+สำหรับ CLI options ทั้งหมด, default entry points, config file format และ scaffolding (`bunx @bunup/cli@latest create`) ดู `references/apis.md` และ `references/cli.md`
 

@@ -1,18 +1,9 @@
-# Vite CLI
-
-## Install
-
-```sh
-bun add -D vite
-```
-
-## Version
-
-- Latest: `8.x` (`8.3.1`, verified 2026-09-26) — Rolldown is the default bundler
-- Repository: https://github.com/vitejs/vite
-- Docs: https://vite.dev/guide/
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D vite` |
+| version | 8.x |
+| repository | https://github.com/vitejs/vite |
+| docs | https://vite.dev/guide/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,11 +12,3 @@ bun add -D vite
 | `vite preview` | Preview production build on `localhost:4173` | — | `--port`, `--host`, `--https`, `--open`, `--base` |
 | `vite --help` | Show help | — | (none) |
 | `vite --version` | Print version | — | (none) |
-
-## Examples
-
-```sh
-bunx vite --port 3000
-bunx vite build --sourcemap
-bunx vite preview --port 8080
-```

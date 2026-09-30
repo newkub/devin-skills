@@ -1,18 +1,9 @@
-# VitePress CLI
-
-## Install
-
-```sh
-bun add -D vitepress
-```
-
-## Version
-
-- Latest: `1.6.4` stable (`next` = `2.0.0-alpha.20`, verified 2026-09-13)
-- Repository: https://github.com/vuejs/vitepress
-- Docs: https://vitepress.dev/guide/getting-started
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D vitepress` |
+| version | 1.6.4 |
+| repository | https://github.com/vuejs/vitepress |
+| docs | https://vitepress.dev/guide/getting-started |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,14 +12,3 @@ bun add -D vitepress
 | `vitepress preview [dir]` | Preview built docs | — | --port, --host, --base |
 | `vitepress init` | Initialize VitePress project | — | --yes |
 | `vitepress --help` | Show help | — | (none) |
-## Examples
-
-```sh
-bunx vitepress dev
-```
-```sh
-bunx vitepress build
-```
-```sh
-bunx vitepress preview --port 8080
-```

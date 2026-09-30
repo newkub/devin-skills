@@ -1,19 +1,7 @@
-# CRW (fastCRW) CLI
-
-## Install
-
-```sh
-# See https://fastcrw.com/ for install
-# Common: curl install or package manager
-```
-
-## Version
-
-- Latest: see https://fastcrw.com/
-- Repository: https://github.com/us/crw
-- Docs: https://github.com/us/crw
-
-## Commands
+| key | value |
+|---|---|
+| repository | https://github.com/us/crw |
+| docs | https://github.com/us/crw |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -21,8 +9,6 @@
 | `crw crawl <url>` | Crawl a site to markdown/JSON | — | `-d, --depth`, `-l, --limit`, `--format`, `--js`, `--rate-limit`, `--concurrency`, `--timeout`, `--proxy`, `--stealth`, `--raw` |
 | `crw extract <url>` | Extract structured data with JSON schema | — | `--extract @schema.json`, `-o`, `--llm-provider`, `--llm-key`, `--llm-model` |
 | `crw --help` | Show help | — | (none) |
-
-## Options
 
 | Option | Description |
 |---|---|---||---|---|---||
@@ -34,11 +20,3 @@
 | `--stealth` | Stealth mode |
 | `--raw` | Disable nav/footer stripping |
 | `--extract` | JSON schema for extraction |
-
-## Examples
-
-```sh
-crw scrape "https://example.com" -o page.md
-crw crawl "https://docs.example.com" -d 2 -l 50 --format json
-crw scrape "https://example.com" --extract @schema.json -o result.json
-```

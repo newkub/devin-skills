@@ -20,8 +20,7 @@ related:
 
 - Boundary: ถ้าต้องการ cache compiler อื่นนอกเหนือ Rust/C/C++ หรือ distributed compilation → ใช้ `sccache`; mbx defer ให้ `RUSTC_WRAPPER` ที่ชี้ไป cache อื่นอยู่แล้ว
 - Latest: `mbx@1.18.0` (verified 2026-09-26, GitHub `jdx/mr-boxington` releases) — crate name `mbx`, mise tool name `mr-boxington`
-- References: [cli](references/cli.md) | [configuration](references/configuration.md) | [ci](references/ci.md) | [routes](references/routes.md) | [website](references/website.md) | [package-manifest](references/package-manifest.md)
-
+- References: [cli](references/cli.md) 
 ## Execute
 
 ### 1. Install mbx
@@ -96,13 +95,13 @@ related:
 2. Unknown TOML keys ถูก reject — typo เป็น error ทันที
 3. Settings ที่ใช้บ่อย: `gc.max_size`, `target.max_size`/`target.max_age`, `scheduler.reserve_cpus`, `summary = "short"|"full"|"ci"|"off"`, `savings = "quips"|"plain"|"off"`, `[linker.profiles.*]`
 4. `[remote]` settings ใส่ได้เฉพาะ global config หรือ `MBX_REMOTE_*` env — `.mbx.toml` ใน repo ไม่รับ
-5. รายละเอียด settings ทั้งหมดดู [references/configuration.md](references/configuration.md)
+5. รายละเอียด settings ทั้งหมดดู 
 
 ### 8. Set Up CI Sharing
 
 > Goal: CI restore cache ที่ trusted builds publish
 
-1. GitHub Actions: ใช้ `jdx/mr-boxington-action@v1` ก่อน build step — push ขึ้น default branch save entry, PRs (รวม forks) เป็น restore-only; ดู inputs เต็มที่ [references/ci.md](references/ci.md)
+1. GitHub Actions: ใช้ `jdx/mr-boxington-action@v1` ก่อน build step — push ขึ้น default branch save entry, PRs (รวม forks) เป็น restore-only; ดู inputs เต็มที่ 
 2. Remote cache server: `[remote] url`, `namespace` (required เมื่อมี url), `mode = "read-write"` + bearer token หรือ OIDC (`id-token: write`)
 3. S3-compatible (รวม R2/MinIO): `url = "s3://bucket[/prefix]"` + AWS env credentials + `s3_endpoint`/`s3_region` สำหรับ non-AWS
 4. Transport อื่น: `MBX_CACHE_EXPORT_GROUP` per job → `mbx cache export --group <g> out.tar` / `mbx cache import in.tar`

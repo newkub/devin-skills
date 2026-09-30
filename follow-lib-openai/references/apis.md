@@ -1,24 +1,9 @@
-# Lib Openai API & Dependencies
-
-## Install
-
-```sh
-bun add openai
-bun add zod          # สำหรับ structured outputs + zodResponseFormat
-```
-
-## Version
-
-- Latest: `7.15.0` (verified 2026-09-13) — v7 requires Node.js 22+
-- [Package Registry](https://www.npmjs.com/package/openai)
-- [Repository](https://github.com/openai/openai-node)
-
-## Dependencies
-
-- Runtime deps น้อย — ใช้ `fetch` ของ runtime (v7 ต้อง Node.js 22+, Bun รองรับ)
-- Helpers: `zod` (`openai/helpers/zod` → `zodResponseFormat`)
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 7.15.0 |
+| package registry | https://www.npmjs.com/package/openai |
+| repository | https://github.com/openai/openai-node |
+| docs | https://platform.openai.com/docs |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -29,8 +14,3 @@ bun add zod          # สำหรับ structured outputs + zodResponseFormat
 | `client.embeddings.create` | Embeddings | - | `model: 'text-embedding-3-*'`, `input` |
 | `client.images.generate` | Images | - | `model`, `prompt`, `size` |
 | `client.audio.speech` / `transcriptions` | Audio | - | - |
-
-## Source
-
-- Official docs: https://platform.openai.com/docs
-- Description: Official OpenAI API client — Responses API, streaming, structured outputs.

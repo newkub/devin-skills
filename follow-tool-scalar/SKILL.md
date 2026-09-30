@@ -33,7 +33,7 @@ related:
 2. ติดตั้ง `@scalar/cli` ด้วย `bun add -D @scalar/cli` (binary ชื่อ `scalar`, ต้องใช้ Node `>=24`)
 3. ตรวจสอบ version ด้วย `bunx @scalar/cli --version` และรัน `bunx @scalar/cli init` เพื่อสร้าง config เริ่มต้น
 4. ใช้ `@scalar/api-reference` เมื่อต้องการ embed API reference ใน app (React/Vue/standalone)
-5. ดูคำสั่ง CLI ใน [references/scalar-cli.md](references/scalar-cli.md)
+5. ดูคำสั่ง CLI ใน 
 
 ### 2. Configuration
 
@@ -42,7 +42,7 @@ related:
 1. สร้าง `scalar.config.json`, `scalar.config.yaml` หรือ `scalar.config.ts`
 2. กำหนด `title`, `description`, `proxyUrl`, `theme`, `layout`
 3. ตั้งค่า environment variables เช่น `SCALAR_PORT`, `SCALAR_API_URL`
-4. ดูตัวเลือก config ใน [references/scalar-config.md](references/scalar-config.md)
+4. ดูตัวเลือก config ใน 
 
 ### 3. Schema Design
 
@@ -52,7 +52,7 @@ related:
 2. ตั้งชื่อ types, fields, operations ทีชัดเจน
 3. เพิ่ม descriptions, examples, deprecation notes
 4. ใช้ enums สำหรับ fixed values และ input types สำหรับ mutations
-5. ดู API patterns ใน [references/scalar-api.md](references/scalar-api.md)
+5. ดู API patterns ใน 
 
 ### 4. Mock and Test
 
@@ -73,7 +73,7 @@ related:
 2. ใช้ `@scalar/api-reference` (standalone script tag หรือ framework integration) สำหรับ HTML docs หรือ publish ผ่าน `scalar registry`/`scalar project`
 3. ตั้งค่า GitHub Actions หรือ CI/CD pipeline สำหรับ `document validate` และ deploy docs
 4. deploy ไปยัง static host เช่น GitHub Pages, Cloudflare Pages
-5. ดู official resources ใน [references/official-resources.md](references/official-resources.md)
+5. ดู official resources ใน 
 
 ## Rules
 

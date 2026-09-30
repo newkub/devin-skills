@@ -3,7 +3,7 @@ name: follow-tool-vitest
 description: ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ด้วย Vite
 argument-hint: "[scope]"
 related:
-  - review-test
+  - deep-review
   - follow-tool-vite
   - follow-tool-playwright
   - follow-lib-testing-library
@@ -20,7 +20,7 @@ related:
 
 ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
 
-- สำหรับ jsdom DOM environment ดู `references/jsdom.md`
+- jsdom DOM environment ดู `references/apis.md`
 
 - Boundary: ใช้ Vitest สำหรับ unit/integration tests — E2E/browser flows ใช้ `/follow-tool-playwright`; component DOM queries ใช้ `/follow-lib-testing-library`
 
@@ -30,12 +30,7 @@ related:
 
 > Goal: dispatch ไปยัง subskill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| setup | `subskills/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider |
-| migrate | `subskills/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify |
-| optimize | `subskills/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes |
-
+| Topic | Subskill |-------|----------| setup | `subskills/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider | migrate | `subskills/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify | optimize | `subskills/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes 
 1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
@@ -208,13 +203,11 @@ related:
 
 ## References
 
-- [Vitest overview](references/vitest.md)
 - [API & dependencies](references/apis.md)
 - [CLI reference](references/cli.md)
-- [jsdom environment](references/jsdom.md)
-- [Package manifest](references/package-manifest.md)
-- [Docs routes](references/routes.md)
-- [Official resources](references/website.md)
+
+
+
 
 ## Expected Outcome
 

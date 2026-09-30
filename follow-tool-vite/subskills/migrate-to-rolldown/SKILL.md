@@ -6,7 +6,7 @@ related:
   - follow-tool-vite
   - follow-tool-rolldown
   - deep-impact
-  - review-code-quality
+  - deep-review
   - report-before-after
 ---
 
@@ -54,7 +54,7 @@ related:
 
 1. `build.rollupOptions` → `build.rolldownOptions`
 2. `optimizeDeps.esbuildOptions` → `optimizeDeps.rolldownOptions`; `esbuild.*` top-level → `oxc.*`
-3. เช็ค deprecated options เหลือด้วย `/review-code-quality`
+3. เช็ค deprecated options เหลือด้วย `/deep-review`
 4. options ที่ไม่แน่ใจ → ดู official docs ห้ามเดา
 
 ### 5. Verify

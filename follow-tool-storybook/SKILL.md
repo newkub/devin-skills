@@ -27,11 +27,7 @@ related:
 
 ### Subskills
 
-| Topic | Subskill |
-|-------|----------|
-| Init, framework detection, `.storybook/` config files | `subskills/setup-storybook/SKILL.md` |
-| `main.ts` addons — docs, a11y, vitest | `subskills/config-addons/SKILL.md` |
-
+| Topic | Subskill |-------|----------| Init, framework detection, `.storybook/` config files | `subskills/setup-storybook/SKILL.md` | `main.ts` addons — docs, a11y, vitest | `subskills/config-addons/SKILL.md` 
 ### 1. Installation
 
 > Goal: ติดตั้ง Storybook ด้วย CLI
@@ -39,7 +35,7 @@ related:
 1. รัน `bun create storybook@latest` ใน project root (หรือ `bunx storybook@latest create` ใน v10)
 2. เลือก framework ถ้า CLI ไม่ detect ด้วย `--type`
 3. ตรวจสอบ dependencies ทีติดตั้งอัตโนมัติ
-4. ดูคำสั่ง CLI ใน [references/storybook-cli.md](references/storybook-cli.md)
+4. ดูคำสั่ง CLI ใน 
 
 ### 2. Configuration
 
@@ -49,7 +45,7 @@ related:
 2. สร้าง `.storybook/preview.ts` สำหรับ global parameters, decorators, styles
 3. สร้าง `.storybook/manager.ts` ถ้าต้องการปรับ UI behavior
 4. ตั้งค่า `staticDirs` สำหรับ static assets
-5. ดูรายละเอียด config ใน [references/storybook-configuration.md](references/storybook-configuration.md)
+5. ดูรายละเอียด config ใน 
 
 ### 3. Write Stories
 

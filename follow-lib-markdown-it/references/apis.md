@@ -1,24 +1,9 @@
-# Lib Markdown It API & Dependencies
-
-## Install
-
-```sh
-bun add markdown-it
-# v15 bundle types ในตัว — @types/markdown-it เฉพาะ ≤v14
-```
-
-## Version
-
-- Latest: `15.0.2` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/markdown-it)
-- [Repository](https://github.com/markdown-it/markdown-it)
-
-## Dependencies
-
-- Runtime: `entities`, `linkify-it`, `mdurl`, `punycode2`, `uc.micro` (v15: `punycode2` แทน punycode)
-- ESM+CJS dual exports
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 15.0.2 |
+| package registry | https://www.npmjs.com/package/markdown-it |
+| repository | https://github.com/markdown-it/markdown-it |
+| docs | https://markdown-it.github.io |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -29,8 +14,3 @@ bun add markdown-it
 | `md.enable` / `md.disable` | Toggle rules | - | rule names |
 | `md.renderer.rules.x` | Override render rule | - | custom fn |
 | `markdown-it <file>` CLI | CLI render | stdout | --html, --linkify |
-
-## Source
-
-- Official docs: https://markdown-it.github.io
-- Description: Fast pluggable Markdown parser — CommonMark compliant.

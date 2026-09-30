@@ -43,7 +43,7 @@ related:
 2. เพิ่ม `"audit:ci": "bunx unlighthouse-ci --site \${APP_URL:-http://localhost:3000} --budget 75"`
 3. เพิ่ม `"audit:ci:strict": "bunx unlighthouse-ci --site \${APP_URL:-http://localhost:3000} --budget 90 --build-static"`
 4. รัน `bun run audit` เพื่อทดสอบ
-5. ดู CLI options ใน [references/unlighthouse.md](references/unlighthouse.md)
+5. ดู CLI options ใน 
 
 ### 3. Run Development Scan
 
@@ -61,7 +61,7 @@ related:
 1. สร้าง `unlighthouse.config.ts` ที root
 2. กำหนด `site`, `outputDir`, `scanner` options
 3. ตั้งค่า budgets สำหรับ performance, accessibility, best-practices, seo
-4. ดูตัวอย่าง config ใน [references/unlighthouse.md](references/unlighthouse.md)
+4. ดูตัวอย่าง config ใน 
 
 ### 5. CI Integration
 

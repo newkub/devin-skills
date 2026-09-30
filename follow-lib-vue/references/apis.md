@@ -1,22 +1,10 @@
-# Lib Vue API & Dependencies
-
-## Install
-
-```sh
-bun add vue
-```
-
-## Version
-
-- Latest: 3.5.42
-- [Package Registry](https://www.npmjs.com/package/vue)
-- [Repository](https://github.com/vuejs/core)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add vue` |
+| version | 3.5.42 |
+| package registry | https://www.npmjs.com/package/vue |
+| repository | https://github.com/vuejs/core |
+| docs | https://vuejs.org/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -30,8 +18,3 @@ bun add vue
 | `import 'vue/compiler-sfc'` | Subpath export for compiler-sfc | entry as documented | (none) |
 | `import 'vue/jsx-dev-runtime'` | Subpath export for jsx-dev-runtime | entry as documented | (none) |
 | `import 'vue/server-renderer'` | Subpath export for server-renderer | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://vuejs.org/
-- Description: The progressive JavaScript framework for building modern web UI.

@@ -1,23 +1,10 @@
-# Tool Vitepress API & Dependencies
-
-## Install
-
-```sh
-bun add -D vitepress
-```
-
-## Version
-
-- Latest: 1.6.4 (verified 2026-09-13); `@next` channel: 2.0.0-alpha.20
-- Peer: `vue` ^3.5+
-- [Package Registry](https://www.npmjs.com/package/vitepress)
-- [Repository](https://github.com/vuejs/vitepress)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D vitepress` |
+| version | 1.6.4 |
+| package registry | https://www.npmjs.com/package/vitepress |
+| repository | https://github.com/vuejs/vitepress |
+| docs | https://vitepress.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,8 +15,3 @@ bun add -D vitepress
 | `import 'vitepress/theme'` | Theme API entry | entry as documented | (none) |
 | `import { defineConfig }` | Site config helper | `vitepress` | (none) |
 | `import { useData, useRoute }` | Runtime composables | `vitepress` | (none) |
-
-## Source
-
-- Official docs: https://vitepress.dev
-- Description: Vite & Vue powered static site generator.

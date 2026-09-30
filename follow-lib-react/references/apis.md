@@ -1,24 +1,10 @@
-# Lib React API & Dependencies
-
-## Install
-
-```sh
-bun add react react-dom
-```
-
-## Version
-
-- Latest: `19.3.0` (verified 2026-09-13)
-- Package Registry: https://www.npmjs.com/package/react
-- Repository: https://github.com/react/react
-
-## Dependencies
-
-- `react` and `react-dom` ต้องมี version เดียวกัน
-- `babel-plugin-react-compiler` สำหรับ React Compiler (optional)
-- `eslint-plugin-react-hooks` ล่าสุดสำหรับ compiler lint rules
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add react react-dom` |
+| version | 19.3.0 |
+| package registry | https://www.npmjs.com/package/react |
+| repository | https://github.com/react/react |
+| docs | https://react.dev/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,10 +14,3 @@ bun add react react-dom
 | `typecheck` | Run TypeScript type check | `tsc --noEmit` | (none) |
 | `import 'react/jsx-runtime'` | Subpath export for jsx-runtime | entry as documented | (none) |
 | `import 'react/compiler-runtime'` | Subpath export for compiler-runtime | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://react.dev/
-- Versions: https://react.dev/versions
-- React Compiler: https://react.dev/learn/react-compiler
-- Description: React is a JavaScript library for building user interfaces.

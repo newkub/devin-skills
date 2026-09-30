@@ -1,22 +1,10 @@
-# Lib Animejs API & Dependencies
-
-## Install
-
-```sh
-bun add animejs
-```
-
-## Version
-
-- Latest: `4.5.0` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/animejs)
-- [Repository](https://github.com/juliangarnier/anime)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add animejs` |
+| version | 4.5.0 |
+| package registry | https://www.npmjs.com/package/animejs |
+| repository | https://github.com/juliangarnier/anime |
+| docs | https://animejs.com |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -34,8 +22,3 @@ bun add animejs
 | `import 'animejs/events'` | Subpath export for events | entry as documented | (none) |
 | `import 'animejs/layout'` | Subpath export for layout | entry as documented | (none) |
 | `import 'animejs/easings'` | Subpath export for easings | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://animejs.com
-- Description: JavaScript animation engine

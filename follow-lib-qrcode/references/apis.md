@@ -1,24 +1,9 @@
-# Lib Qrcode API & Dependencies
-
-## Install
-
-```sh
-bun add qrcode
-bun add -D @types/qrcode   # TypeScript
-```
-
-## Version
-
-- Latest: `1.5.4` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/qrcode)
-- [Repository](https://github.com/soldair/node-qrcode)
-
-## Dependencies
-
-- Runtime: `dijkstrajs`, `pngjs`, `yargs` (CLI)
-- Browser bundle แยก (`qrcode/build/qrcode.js`) ไม่ต้องการ canvas lib
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 1.5.4 |
+| package registry | https://www.npmjs.com/package/qrcode |
+| repository | https://github.com/soldair/node-qrcode |
+| docs | https://github.com/soldair/node-qrcode#readme |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -28,8 +13,3 @@ bun add -D @types/qrcode   # TypeScript
 | `QRCode.toCanvas(canvas, text)` | Browser canvas | - | - |
 | `QRCode.create(text)` | Segment-level control | - | `segments` for mixed data |
 | `qrcode` CLI | Terminal/file output | stdout | `-o file.png`, `-t svg` |
-
-## Source
-
-- Official docs: https://github.com/soldair/node-qrcode#readme
-- Description: QR code generator — Node, browser, CLI.

@@ -1,18 +1,7 @@
-# Biome CLI
-
-## Install
-
-```sh
-bun add -D @biomejs/biome
-```
-
-## Version
-
-- Latest: see `@biomejs/biome` on npm
-- Repository: https://github.com/biomejs/biome
-- CLI docs: https://biomejs.dev/reference/cli/
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D @biomejs/biome` |
+| repository | https://github.com/biomejs/biome |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -23,12 +12,3 @@ bun add -D @biomejs/biome
 | `biome init` | Create `biome.json` with default settings | — | (none) |
 | `biome migrate [prettier\|eslint]` | Migrate from Prettier or ESLint config | — | `--write` |
 | `biome version` | Print version | — | `--help` |
-
-## Examples
-
-```sh
-bunx @biomejs/biome lint --write ./src
-bunx @biomejs/biome format --write ./src
-bunx @biomejs/biome check --staged --write
-bunx @biomejs/biome ci .
-```

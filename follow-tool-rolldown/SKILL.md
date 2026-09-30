@@ -21,7 +21,7 @@ related:
 - ใช้ standalone `rolldown` เมื่อ bundle นอก Vite (เช่น libraries, custom toolchain); ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ไปที่ `follow-tool-vite`
 - ใช้ `follow-tool-tsdown` สำหรับ library builds ทีต้องการ zero-config บน Rolldown (dts, dual format) แทนเขียน config เอง
 
-- Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 || >=22.12.0`
+- Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 | >=22.12.0`
 
 ## Execute
 
@@ -32,7 +32,7 @@ related:
 1. ตรวจสอบ `package.json` และ package manager ที่ project ใช้
 2. ติดตั้ง `rolldown` ด้วย `bun add -D rolldown`
 3. ตรวจสอบ version ด้วย `bunx rolldown --version`
-4. ดูรายละเอียดเพิ่มเติมใน [references/rolldown-commands.md](references/rolldown-commands.md)
+4. ดูรายละเอียดเพิ่มเติมใน 
 
 ### 2. Project Analysis
 
@@ -41,7 +41,7 @@ related:
 1. ตรวจสอบ existing bundler จาก `package.json` scripts และ config files
 2. ถ้ามี `rollup.config.*` → วิเคราะห์ plugins, input, output ปัจจุบัน
 3. ระบุ entry points, output formats (esm/cjs/iife/umd), และ target environment
-4. ดูรายละเอียด ecosystem และ official resources ใน [references/official-resources.md](references/official-resources.md)
+4. ดูรายละเอียด ecosystem และ official resources ใน 
 
 ### 3. Configuration
 
@@ -51,7 +51,7 @@ related:
 2. ใช้ `defineConfig` จาก `rolldown` เพื่อ type safety
 3. กำหนด `input`, `output.dir`, `output.format`, `treeshake`, `plugins`
 4. เปิดใช้ `clear: true` สำหรับ production build ถ้าจำเป็น
-5. อ่านตัวเลือก top-level ใน [references/rolldown-config-toplevel.md](references/rolldown-config-toplevel.md)
+5. อ่านตัวเลือก top-level ใน 
 
 ### 4. Build and Watch
 
@@ -61,7 +61,7 @@ related:
 2. ใช้ `bunx rolldown --watch` สำหรับ development
 3. ตรวจสอบ output ใน `dist/` หรือ `output.dir` ที่กำหนด
 4. รัน `bun run build` ผ่าน package script ถ้ามี
-5. ดูรายละเอียด output options ใน [references/rolldown-config-output.md](references/rolldown-config-output.md)
+5. ดูรายละเอียด output options ใน 
 
 ### 5. Migration from Rollup
 
@@ -81,25 +81,20 @@ related:
 2. ตรวจสอบ community plugins ว่า active และ compatible กับ Rolldown version
 3. ใช้ `rolldown-plugin-dts` ถ้าต้องการ generate type definitions
 4. อัปเดต plugin list เป็นระยะ โดยอ้างอิง official docs
-5. ดู plugin list ใน [references/official-resources.md](references/official-resources.md)
+5. ดู plugin list ใน 
 
 ### Subskills
 
 > Goal: dispatch งานเฉพาะทางไป subskill ที่เหมาะสม
 
-| Topic | Subskill |
-|-------|----------|
-| first-time setup (install, config, entry/output) | `subskills/setup-rolldown/SKILL.md` |
-| optimize bundle (splitting, treeshaking, advancedChunks) | `subskills/optimize-bundle/SKILL.md` |
-| migrate จาก Rollup | `subskills/migrate-from-rollup/SKILL.md` |
-
+| Topic | Subskill |-------|----------| first-time setup (install, config, entry/output) | `subskills/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `subskills/optimize-bundle/SKILL.md` | migrate จาก Rollup | `subskills/migrate-from-rollup/SKILL.md` 
 ## Rules
 
 ### 1. Installation
 
 - ใช้ `bun add -D rolldown` สำหรับ local install
 - ใช้ `bunx rolldown` สำหรับ one-off build
-- ตรวจสอบ version และ Node.js compatibility ก่อนใช้ (Rolldown 1.x ต้องใช้ Node `^20.19.0 || >=22.12.0`)
+- ตรวจสอบ version และ Node.js compatibility ก่อนใช้ (Rolldown 1.x ต้องใช้ Node `^20.19.0 | >=22.12.0`)
 - ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ใช้ standalone `rolldown` เฉพาะเมื่อต้องการ bundle นอก Vite (เช่น libraries)
 
 ### 2. Configuration

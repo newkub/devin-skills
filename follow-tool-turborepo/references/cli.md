@@ -1,18 +1,9 @@
-# Turborepo CLI
-
-## Install
-
-```sh
-bun add -D turbo
-```
-
-## Version
-
-- Latest: `2.11.4` (verified 2026-09-26)
-- Repository: https://github.com/vercel/turborepo
-- Docs: https://turborepo.dev/docs/reference
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D turbo` |
+| version | 2.11.4 |
+| repository | https://github.com/vercel/turborepo |
+| docs | https://turborepo.dev/docs/reference |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,11 +19,3 @@ bun add -D turbo
 | `turbo login` / `turbo logout` / `turbo unlink` | Remote cache auth / unlink | — | (none) |
 | `turbo devtools` | Start devtools server | — | `--port`, `--no-open` |
 | `turbo --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx turbo run build --filter=web
-bunx turbo dev --parallel
-bunx turbo prune web --out-dir ./out
-```

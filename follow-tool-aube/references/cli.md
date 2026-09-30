@@ -1,18 +1,8 @@
-# Aube CLI
-
-## Install
-
-```sh
-bun add -D aube
-```
-
-## Version
-
-- Latest on npm
-- Repository: https://github.com/aubepkg/aube
-- Docs: https://github.com/aubepkg/aube
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D aube` |
+| repository | https://github.com/aubepkg/aube |
+| docs | https://github.com/aubepkg/aube |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -23,11 +13,3 @@ bun add -D aube
 | `aube search <pkg>` | Search registry | — | --registry, --limit |
 | `aube update` | Update dependencies | — | -g, --global, --interactive |
 | `aube run <script>` | Run package script | — | --watch, --env |
-## Examples
-
-```sh
-bunx aube install
-```
-```sh
-bunx aube add lodash -D
-```

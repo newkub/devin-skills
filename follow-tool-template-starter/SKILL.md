@@ -39,7 +39,7 @@ related:
 2. ถ้าต้องการ preserve git history ให้ใช้ `git clone` แทน — degit เป็น tar snapshot เสมอ และ `--mode=git` deprecated ใน v3
 3. ใช้ `--files` เพื่อ clone เฉพาะไฟล์ทีต้องการ
 4. ใช้ `--force` ด้วยความระมัดระวังถ้า target directory ไม่ว่าง
-5. ดูรายละเอียด degit ใน [references/degit.md](references/degit.md)
+5. ดูรายละเอียด degit ใน 
 
 ### 3. Setup Cloned Template
 

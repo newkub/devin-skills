@@ -1,18 +1,8 @@
-# GitHub Actions CLI (gh)
-
-## Install
-
-```sh
-mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง
-```
-
-## Version
-
-- Latest: `gh@2.101.0` (verified 2026-09-26)
-- Repository: https://github.com/cli/cli
-- Docs: https://cli.github.com/manual/gh_workflow
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง` |
+| repository | https://github.com/cli/cli |
+| docs | https://cli.github.com/manual/gh_workflow |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -32,15 +22,3 @@ mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช�
 | `gh secret list` | List secrets | — | -R, --repo, -e, --env |
 | `gh secret set <name>` | Set secret | — | --body, --env-file, -R, --repo |
 | `gh variable list` | List variables | — | -R, --repo, -e, --env |
-
-## Examples
-
-```sh
-gh workflow list
-```
-```sh
-gh run list --status in_progress
-```
-```sh
-gh workflow run ci.yml -f env=staging
-```

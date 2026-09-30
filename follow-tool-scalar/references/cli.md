@@ -1,18 +1,8 @@
-# Scalar CLI
-
-## Install
-
-```sh
-bun add -D @scalar/cli
-```
-
-## Version
-
-- Latest: `@scalar/cli@2.5.2` (verified 2026-09-26)
-- Repository: https://github.com/scalar/scalar
-- Docs: https://guides.scalar.com
-
-## Commands
+| key | value |
+|---|---|
+| install | `bun add -D @scalar/cli` |
+| repository | https://github.com/scalar/scalar |
+| docs | https://guides.scalar.com |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -26,15 +16,3 @@ bun add -D @scalar/cli
 | `scalar registry` | Manage Scalar registry | — | (none) |
 | `scalar project` | Manage Scalar docs project | — | (none) |
 | `scalar --help` | Show help | — | (none) |
-
-## Examples
-
-```sh
-bunx @scalar/cli document validate openapi.yaml
-```
-```sh
-bunx @scalar/cli document mock openapi.yaml --watch --port 8080
-```
-```sh
-bunx @scalar/cli document serve openapi.yaml
-```

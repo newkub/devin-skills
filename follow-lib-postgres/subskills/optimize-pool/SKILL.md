@@ -4,7 +4,6 @@ description: tune postgres.js pool — max connections, prepared statements, tim
 argument-hint: "[pool-or-query]"
 related:
   - follow-lib-postgres
-  - check-bottlenecks
   - run-bench
   - report-before-after
 ---
@@ -27,7 +26,7 @@ tune postgres.js connection pool และ query options — `max`, `prepare`, t
 
 1. ทำ `/run-bench` หรือจับเวลา endpoints/queries ที่ช้า — latency, throughput, error rate
 2. นับ connections ฝั่ง DB: `SELECT count(*) FROM pg_stat_activity` — เทียบกับ `max_connections` ของ server
-3. ทำ `/check-bottlenecks` — แยกว่าช้าจาก pool (queue waiting) หรือ query เอง (seq scan, lock)
+3. ทำ `/deep-optimize` — แยกว่าช้าจาก pool (queue waiting) หรือ query เอง (seq scan, lock)
 4. ระบุ topology: instances × `max` ต่อ instance ต้องไม่เกิน `max_connections` ของ Postgres
 
 ### 2. Tune Pool Size

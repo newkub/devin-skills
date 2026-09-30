@@ -29,7 +29,7 @@ related:
 2. บน Windows ใช้ `winget install rmux`, `choco install rmux` หรือ `scoop bucket add rmux https://github.com/Helvesec/scoop-rmux` แล้ว `scoop install rmux`
 3. บน macOS ใช้ `brew install rmux`
 4. ยืนยันด้วย `rmux -V` หรือ `rmux --version`
-5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
+5. ดูรายละเอียดใน 
 
 ### 2. Create and Attach Sessions
 
@@ -39,7 +39,7 @@ related:
 2. Attach ด้วย `rmux attach -t mysession`
 3. Detach ด้วย `rmux detach`
 4. แสดง sessions ทั้งหมดด้วย `rmux ls`
-5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
+5. ดูรายละเอียดใน 
 
 ### 3. Manage Panes and Windows
 
@@ -49,7 +49,7 @@ related:
 2. Split pane ด้วย `rmux split-window -h` หรือ `rmux split-window -v`
 3. เลือก pane/window ด้วย `rmux select-pane -t 0.1` หรือ `rmux select-window -t 1`
 4. ส่งคำสั่งไปยัง pane ด้วย `rmux send-keys -t 0.0 "ls" Enter`
-5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
+5. ดูรายละเอียดใน 
 
 ### 4. Configure RMUX
 
@@ -58,7 +58,7 @@ related:
 1. สร้างไฟล์ config ที่ `~/.rmux.conf` (Linux/macOS) หรือ `%USERPROFILE%\.rmux.conf` (Windows)
 2. ตั้งค่า prefix key, mouse support, history limit และ status line
 3. รีโหลด config ด้วย `rmux source-file ~/.rmux.conf`
-4. ดูรายละเอียดใน [references/rmux-config.md](references/rmux-config.md)
+4. ดูรายละเอียดใน 
 
 ### 5. Automate with SDK
 
@@ -67,7 +67,7 @@ related:
 1. ใช้ Rust crate `rmux-sdk` สำหรับ typed async API
 2. ใช้ Python package `librmux` หรือ npm `@rmux/sdk` สำหรับ TypeScript
 3. สร้าง session, spawn pane, send text, capture output และ wait for text
-4. ดูรายละเอียดใน [references/rmux-api.md](references/rmux-api.md)
+4. ดูรายละเอียดใน 
 
 ### 6. CI Integration
 
@@ -77,7 +77,7 @@ related:
 2. ใช้ `rmux new-session -d -s ci` เพื่อสร้าง detached session
 3. ส่งคำสั่งและ capture output ด้วย CLI หรือ SDK
 4. ใช้ `rmux diagnose --human` เมื่อต้อง troubleshoot runtime/CLI issues (ตั้ง `RMUX_DISABLE_TINY_CLI=1` เพื่อบังคับใช้ full CLI helper)
-5. ดูรายละเอียดใน [references/rmux-cli.md](references/rmux-cli.md)
+5. ดูรายละเอียดใน 
 
 ## Rules
 

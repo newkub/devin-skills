@@ -1,19 +1,8 @@
-# RMUX CLI
-
-## Install
-
-```sh
-mise use -g rmux
-# or: cargo install rmux --locked | brew install rmux | winget install rmux
-```
-
-## Version
-
-- Latest: see https://rmux.io/
-- Repository: https://github.com/Helvesec/rmux
-- Docs: https://rmux.io/docs/cli/
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g rmux` |
+| repository | https://github.com/Helvesec/rmux |
+| docs | https://rmux.io/docs/cli/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -27,20 +16,8 @@ mise use -g rmux
 | `rmux-cli surface split <right\|down>` | Split pane | — | `--socket`, `--json` |
 | `rmux-cli --help` | Show help | — | (none) |
 
-## Options
-
 | Option | Description |
 |---|---|
 | `--socket <path>` | Override `$RMUX_SOCKET_PATH` |
 | `--json` | Machine-readable JSON output |
 | `-V, --version` | Print version |
-
-## Examples
-
-```sh
-rmux new-session -d -s ci
-rmux send-keys -t ci "echo ok" Enter
-rmux wait-for ci-done
-rmux capture-pane -p -t ci
-rmux-cli system ping
-```

@@ -1,23 +1,9 @@
-# Tool Madge API & Dependencies
-
-## Install
-
-```sh
-bun add -D madge
-```
-
-## Version
-
-- Latest: `8.0.0` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/madge)
-- [Repository](https://github.com/pahen/madge)
-
-## Dependencies
-
-- ใช้ `dependency-tree` + `tsconfig-paths` เป็นต้น; graphviz optional สำหรับ image output
-- รองรับ JS/TS, JSX/TSX, CoffeeScript — ESM+CJS
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 8.0.0 |
+| package registry | https://www.npmjs.com/package/madge |
+| repository | https://github.com/pahen/madge |
+| docs | https://github.com/pahen/madge |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -28,8 +14,3 @@ bun add -D madge
 | `madge --leaves` | Modules ไม่มี deps | - | - |
 | `madge --image out.svg` | Export graph | - | requires graphviz |
 | `madge --json` | JSON output | - | สำหรับ CI checks |
-
-## Source
-
-- Official docs: https://github.com/pahen/madge
-- Description: Dependency graph analysis — circular detection, orphans, leaves.

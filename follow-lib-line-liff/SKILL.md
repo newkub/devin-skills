@@ -22,8 +22,7 @@ related:
 - Channel secrets/credentials จัดการผ่าน `/follow-secret-manager` — ห้าม commit
 
 - Latest: `@line/liff@2.31.0` (verified 2026-09-13)
-- References: [apis](references/apis.md) | [package-manifest](references/package-manifest.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Check Preconditions

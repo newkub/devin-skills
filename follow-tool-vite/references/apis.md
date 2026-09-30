@@ -1,23 +1,10 @@
-# Tool Vite API & Dependencies
-
-## Install
-
-```sh
-bun add -D vite
-```
-
-## Version
-
-- Latest: 8.3.1 (verified 2026-09-26)
-- Vite 8 uses Rolldown as the single bundler (esbuild + Rollup replaced); `esbuild`/`optimizeDeps.esbuildOptions` options are deprecated in favor of `oxc`/`optimizeDeps.rolldownOptions`
-- [Package Registry](https://www.npmjs.com/package/vite)
-- [Repository](https://github.com/vitejs/vite)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D vite` |
+| version | 8.3.1 |
+| package registry | https://www.npmjs.com/package/vite |
+| repository | https://github.com/vitejs/vite |
+| docs | https://vite.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -30,8 +17,3 @@ bun add -D vite
 | `import 'vite/dist/client/*'` | Subpath export for dist/client/* | entry as documented | (none) |
 | `import 'vite/module-runner'` | Subpath export for module-runner | entry as documented | (none) |
 | `import 'vite/types/internal/*'` | Subpath export for types/internal/* | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://vite.dev
-- Description: Native-ESM powered web dev build tool

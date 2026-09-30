@@ -1,22 +1,10 @@
-# Lib Unocss API & Dependencies
-
-## Install
-
-```sh
-bun add -D unocss
-```
-
-## Version
-
-- Latest: 66.10.2 (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/unocss)
-- [Repository](https://github.com/unocss/unocss)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D unocss` |
+| version | 66.10.2 |
+| package registry | https://www.npmjs.com/package/unocss |
+| repository | https://github.com/unocss/unocss |
+| docs | https://unocss.dev |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -34,8 +22,3 @@ bun add -D unocss
 | `import 'unocss/preset-uno'` | Subpath export for preset-uno | entry as documented | (none) |
 | `import 'unocss/preset-web-fonts'` | Subpath export for preset-web-fonts | entry as documented | (none) |
 | `import 'unocss/preset-wind'` | Subpath export for preset-wind | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://unocss.dev
-- Description: The instant on-demand Atomic CSS engine.

@@ -1,22 +1,10 @@
-# Tool Rolldown API & Dependencies
-
-## Install
-
-```sh
-bun add -D rolldown
-```
-
-## Version
-
-- Latest: 1.2.11
-- [Package Registry](https://www.npmjs.com/package/rolldown)
-- [Repository](https://github.com/rolldown-rs/rolldown)
-
-## Dependencies
-
-- See package registry for transitive dependencies.
-
-## Common API / Commands
+| key | value |
+|---|---|
+| install | `bun add -D rolldown` |
+| version | 1.2.11 |
+| package registry | https://www.npmjs.com/package/rolldown |
+| repository | https://github.com/rolldown-rs/rolldown |
+| docs | https://rolldown.rs/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -33,8 +21,3 @@ bun add -D rolldown
 | `import 'rolldown/parallelPlugin'` | Subpath export for parallelPlugin | entry as documented | (none) |
 | `import 'rolldown/experimental/runtime'` | Subpath export for experimental/runtime | entry as documented | (none) |
 | `import 'rolldown/experimental/runtime-types'` | Subpath export for experimental/runtime-types | entry as documented | (none) |
-
-## Source
-
-- Official docs: https://rolldown.rs/
-- Description: Fast JavaScript/TypeScript bundler in Rust with Rollup-compatible API.

@@ -1,23 +1,9 @@
-# Lib Postgres API & Dependencies
-
-## Install
-
-```sh
-bun add postgres   # postgres.js — porsager/postgres
-```
-
-## Version
-
-- Latest: `3.4.9` (verified 2026-09-13)
-- [Package Registry](https://www.npmjs.com/package/postgres)
-- [Repository](https://github.com/porsager/postgres)
-
-## Dependencies
-
-- Zero runtime dependencies — pure JS driver
-- Bun มี `Bun.sql` built-in (postgres.js-compatible API) — พิจารณาถ้าบน Bun only
-
-## Common API / Commands
+| key | value |
+|---|---|
+| version | 3.4.9 |
+| package registry | https://www.npmjs.com/package/postgres |
+| repository | https://github.com/porsager/postgres |
+| docs | https://github.com/porsager/postgres |
 
 | api | description | default | options |
 |---|---|---|---|
@@ -28,8 +14,3 @@ bun add postgres   # postgres.js — porsager/postgres
 | `` sql([{...}]).insert/update `` | Helper insert/update | - | `sql(table)` |
 | `sql.listen(channel, cb)` | LISTEN/NOTIFY | - | - |
 | `sql.end()` | Close pool | - | `{timeout}` |
-
-## Source
-
-- Official docs: https://github.com/porsager/postgres
-- Description: Fastest full-featured PostgreSQL client — tagged template literals.

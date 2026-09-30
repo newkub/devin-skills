@@ -1,20 +1,9 @@
-# Usage CLI
-
-## Install
-
-```sh
-mise use -g usage        # recommended
-cargo install usage-cli  # crates.io package `usage-cli` provides `usage` bin
-brew install usage
-```
-
-## Version
-
-- Latest: `6.11.1` (verified 2026-09-26)
-- Repository: https://github.com/jdx/usage
-- Docs: https://usage.jdx.dev/cli/reference/
-
-## Commands
+| key | value |
+|---|---|
+| install | `mise use -g usage        # recommended` |
+| version | 6.11.1 |
+| repository | https://github.com/jdx/usage |
+| docs | https://usage.jdx.dev/cli/reference/ |
 
 | commands | description | default | options |
 |---|---|---|---|
@@ -36,17 +25,3 @@ brew install usage
 | `usage explain [argv]` | Explain a command line against a spec | — | (none) |
 | `usage --usage-spec` | Output usage.kdl spec for usage CLI itself | — | (none) |
 | `usage --completions <shell>` | Output completions for the usage CLI itself | — | (none) |
-
-## Examples
-
-```sh
-usage generate completion bash mycli -f usage.kdl
-usage generate markdown -f usage.kdl -m --out-dir ./docs
-usage generate sdk -l typescript -o ./sdk -f usage.kdl
-usage lint usage.kdl
-```
-
-## Notes
-
-- Full spec format (KDL nodes, flags, args, effects, config binding) ดู `references/usage-cli.md`
-- npm package `usage` ไม่ใช่ตัวจริง — install ผ่าน `mise`, `cargo install usage-cli`, หรือ `brew install usage`

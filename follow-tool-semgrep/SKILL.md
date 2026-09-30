@@ -16,21 +16,17 @@ related:
 
 - ใช้เมื่อ: security scanning (`p/security-audit`, `p/owasp-top-ten`), framework-specific rules, custom org rules, taint tracking
 - เปรียบเทียบ: `use-astgrep` เหมาะกับ structural patterns ง่ายๆ, Semgrep เหมาะกับ dataflow/taint และ rulesets สำเร็จรูป
-- Scan-only ใน skill นี้ — fix ผ่าน `/review-security` หรือ `/fix`
+- Scan-only ใน skill นี้ — fix ผ่าน `/deep-review` หรือ `/fix`
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) | [routes](references/routes.md) | [website](references/website.md)
-
+- References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Subskills
 
 > Goal: dispatch ไปยัง subskill ที่ตรง topic
 
-| Topic | Subskill |
-|-------|----------|
-| config | `subskills/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating |
-
+| Topic | Subskill |-------|----------| config | `subskills/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating 
 1. ถ้า argument ตรง topic → อ่านและทำตาม `subskills/<name>/SKILL.md` แทน steps ด้านล่าง
 2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
 
@@ -65,7 +61,7 @@ related:
 1. จัดกลุ่มตาม rule severity และ confidence — semgrep มีทั้ง false positives
 2. ใช้ `// nosemgrep` สำหรับ intentional patterns พร้อม comment เหตุผล
 3. ใช้ `/report` คอลัมน์: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
-4. ส่งต่อ `/review-security` หรือ `/fix` สำหรับ remediation
+4. ส่งต่อ `/deep-review` หรือ `/fix` สำหรับ remediation
 
 ### 5. Integrate (ถ้าต้องการถาวร)
 
