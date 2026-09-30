@@ -23,7 +23,7 @@ related:
   - use-related-skills
   - review-devin-global-harness
   - idea
-  - from-chat-session
+  - list-devin-session
   - ask-me
 ---
 
@@ -41,7 +41,7 @@ related:
 
 > Goal: รับและสรุป context ทีต้องการเพิ่ม
 
-1. ถ้ามี argument จาก user ให้ทำ `/from-chat-session` เพื่อดึง context จาก session แล้วทำ `/ask-me` ถาม user ว่าเหมายถึงอันไหน
+1. ถ้ามี argument จาก user ให้ทำ `/list-devin-session` เพื่อดึง context จาก session แล้วทำ `/ask-me` ถาม user ว่าเหมายถึงอันไหน
 2. รับ input จาก user เช่น สรุป context, keyword, topic, prompt, หรือสรุปสิ่งทีคุยกัน
 3. ถ้า input เป้น link/URL ให้ fetch หรือ scrape เพื่อสรุป title และคำอธิบาย
 4. ถ้า input กว้างหรือไม่ชัด ให้ถาม user ว่าต้องการ save อะไร

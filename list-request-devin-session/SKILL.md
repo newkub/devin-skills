@@ -1,5 +1,5 @@
 ---
-name: list-devin-user-requests
+name: list-request-devin-session
 description: รายการ requests จาก user ตาม scope — ทุก session, session นี้ หรือ repo นี้
 argument-hint: "[--scope all|session|repo]"
 related:

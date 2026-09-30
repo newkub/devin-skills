@@ -4,8 +4,13 @@ description: แสดงรายการ Devin sessions ทั้งหมด
 argument-hint: "[limit] [keyword]"
 related:
   - list-devin
+  - list-request-devin-session
+  - search-request-in-devin-session
   - report
+  - report-todo
   - search
+  - suggest-next-action
+  - follow-context-engineering
   - use-bun-shell
 ---
 
@@ -15,7 +20,9 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการค้นหา กรอง หรือดูประวัติ sessions ทีเคยสร้าง รองรับการระบุจำนวนสูงสุด และ keyword สำหรับกรอง `title` หรือ `working_directory`
+- ใช้เมื่อต้องการค้นหา กรอง หรือดูประวัติ sessions ทีเคยสร้าง รองรับการระบุจำนวนสูงสุด และ keyword สำหรับกรอง `title` หรือ `working_directory`
+- ใช้เมื่อต้องการสรุป session หรือ context ที่ผ่านมาเป็น action plan — ทำ `### Session To Action Plan`
+- ต้องการ list หรือ search เฉพาะ user requests → ใช้ `/list-request-devin-session` หรือ `/search-request-in-devin-session`
 
 ## Execute
 
@@ -88,6 +95,17 @@ related:
 2. ถ้า database ถูก lock หรืออ่านไม่ออก → รายงาน error และลอง fallback
 3. ถ้า query ไม่สำเร็จ → แสดง SQL error และ stop
 
+### Session To Action Plan
+
+> Goal: สรุป session/context ที่ผ่านมาเป็น action plan — merged from from-chat-session
+
+1. อ่าน context หรือ summary ของ session เป้าหมาย — ระบุ session จาก `### 3. Query Sessions` หรือ history file ตาม `### 4. Fallback`
+2. ระบุสถานะปัจจุบัน: งานเสร็จ/ค้าง/blocked และ files/skills ที่เกี่ยวข้อง
+3. ถ้า context ยาวหรือใกล้เต็ม → ทำ `/follow-context-engineering`
+4. ทำ `/suggest-next-action` + `/use-related-skills` หา next actions — แยกเป็นข้อย่อย ข้อละสิ่งเดียว; ถ้าคำถามไม่ชัด → ทำ `/ask-me`
+5. ทำ `/report-todo` คอลัมน์ `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` — ด้านล่างตารางทำ `/report numbered`
+6. ตอบเฉพาะเมื่อ user ถามหรือระบุชัดว่าไม่ต้องทำทันที — ไม่ลงมือทำ action เอง; ไม่เดาไฟล์ที่จะเปลี่ยน
+
 ## Rules
 
 - เปิด database แบบ `readonly` เสมอ
@@ -97,7 +115,7 @@ related:
 - ถ้า user ไม่ระบุ `limit` ใช้ `50` เป็นค่า default
 - ใช้ `/report` สำหรับ output
 
-- ใช้ /list-devin-user-requests ถ้าจำเป็น
+- ใช้ /list-request-devin-session ถ้าจำเป็น
 - ใช้ /list-devin-global-skills ถ้าจำเป็น
 - ใช้ /use-bun-shell ถ้าจำเป็น
 

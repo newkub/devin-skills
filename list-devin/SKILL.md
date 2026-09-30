@@ -29,7 +29,7 @@ Dispatch ไป top-level skill ตาม Devin resource ที่ต้อง l
 | `global-skills` | /list-devin-global-skills — global skills catalog |
 | `global-subagents` | /list-devin-global-subagents — global subagent profiles |
 | `session` | /list-devin-session — Devin sessions |
-| `user-requests` | /list-devin-user-requests — user request history |
+| `user-requests` | /list-request-devin-session — user request history |
 
 1. ระบุ domain จาก argument (เช่น `/list-devin-global-skills`)
 2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
