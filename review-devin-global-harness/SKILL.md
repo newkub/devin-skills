@@ -12,11 +12,9 @@ related:
   - check-reference
   - search-skills
   - update-devin-harness
-  - review-docs
-  - check-content-correctness
-  - review-coverage
-  - update-references
   - deep-review
+  - check-content-correctness
+  - update-references
 
   - use-subagents
 ---
@@ -35,7 +33,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 - `mcp` — ตรวจ MCP servers ว่า enable/ใช้งานจริง, ไม่ซ้ำ server, ไม่ dead config
 - `global rules` — ตรวจ `global_rules.md` ว่า skills ที่อ้างมีจริง, ไม่ขัดแย้งกัน, ไม่ stale
 
-ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused), `references integrity`, `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions ที่ยังไม่มี skill — `/review-coverage`)
+ข้าม-layer checks: `alignment` (rules↔skills↔subagents อ้างกันถูก), `redundancy` (duplicate purpose/scope/content/unused), `references integrity`, `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions ที่ยังไม่มี skill — `/deep-review`)
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่แก้ code (ใช้ `/deep-validate`)
 
@@ -61,7 +59,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. `subagents` → ตรวจ AGENT.md ทุกตัวใน `%APPDATA%\devin\agents`: frontmatter, sections, line count, style, safety — ใช้มาตรฐานเดียวกับ skills; รายงาน finding ต่อ agent
 3. `hooks` → ตาม `### Hooks`; `mcp` → ตาม `### Mcp`; `global rules` → ตาม `### References Integrity` ข้อ global rules — skills ที่อ้างมีจริง, ลำดับ Execute ไม่ขัดแย้ง, ไม่มี stale skill names
 
-### 4. Cross-Layer Alignment — ทำตาม `/review-alignment` (canonical)
+### 4. Cross-Layer Alignment — ทำตาม `/deep-review` (canonical)
 > Goal: ตรวจ layers อ้างกันถูกต้อง
 
 1. `global_rules.md` อ้าง skills → ทุกชื่อมี skill จริง
@@ -82,7 +80,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 1. ทำตาม `### Refactor Guide` (plan → execute → cross-skill consistency)
 2. ระบุ SKILL.md ที่ควร refactor — เนื้อหาซ้ำ, >250 บรรทัด, ขาด sections, SRP เบลอ → รายการเป็น action items
 
-### 7. Redundancy Audit — ทำตาม `/review-redundancy` (canonical)
+### 7. Redundancy Audit — ทำตาม `/deep-review` (canonical)
 > Goal: ตรวจหา skills/layers ที่ซ้ำซ้อนหรือไม่จำเป็น
 
 ทำตาม `### Redundancy` — inventory → detect ×4 → recommend → user confirm → score ตาม `### Scoring`; remove/merge ต้อง user confirm เสมอ
@@ -97,8 +95,8 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ### 9. Context Rot And Coverage
 > Goal: ตรวจ content ที่เน่าเสื่อมตามเวลา และ domain gaps
 
-1. ทำตาม `### Context Rot` — stale content (`/review-docs`), incorrect content (`/check-content-correctness`), dead weight, context bloat
-2. ทำ `/review-coverage` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
+1. ทำตาม `### Context Rot` — stale content (`/deep-review`), incorrect content (`/check-content-correctness`), dead weight, context bloat
+2. ทำ `/deep-review` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
 3. รวม findings เข้า report แยก section `context-rot` และ `coverage`
 
 ### 10. Score And Report
@@ -109,19 +107,30 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 3. สรุป "improve อะไรอีกบ้าง" + "SKILL.md ที่ควร refactor" เป็น prioritized action list → `/suggest-next-action`
 
 ### Subskills
-> Goal: dispatch focused pass ไปยัง subskill เมื่อ argument ระบุ layer เดียว (`[layer|all]`)
+> Goal: dispatch focused pass เมื่อ argument ระบุ layer เดียว (`[layer|all]`) — merged จาก `subskills/` เดิม (CLI tools ย้ายไป `scripts/`)
 
-| Layer | Subskill |
-|-------|----------|
-| `skills` — script findings + manual quality pass | `subskills/check-skills/SKILL.md` |
-| `subagents`, `agents` — AGENT.md standards + orphans | `subskills/check-subagents/SKILL.md` |
-| `hooks` — trigger/command/loop/blocking checks | `subskills/check-hooks/SKILL.md` |
-| `mcp` — server config, env, duplicates, dead config | `subskills/check-mcp/SKILL.md` |
-| `rules`, `global-rules` — `global_rules.md` refs + consistency | `subskills/check-rules/SKILL.md` |
-| `broken-refs`, `references` — broken skill references checker (Bun CLI) | `subskills/broken-skills-references/SKILL.md` |
-| `skills-related`, `relations` — skill relations graph (Rust CLI) | `subskills/skills-related/SKILL.md` |
+| Layer Arg | Focused Pass |
+|-----------|--------------|
+| `skills` | `bun run review` findings + manual pass ตาม `### Content Quality` (เกณฑ์ที่ script ใช้ = `### Package Checks`) — แยก false positives; report No./Skill/Category/Severity/Finding/Evidence/Action |
+| `subagents`, `agents` | inventory `AGENT.md` ทุกตัวใน `%APPDATA%\devin\agents` — frontmatter/sections ตาม `### Package Checks` + safety (permissions เหมาะสม, ไม่มี destructive default) + orphan agents (ไม่มี skill อ้างถึง — ห้ามลบโดยไม่ confirm) |
+| `hooks` | ตาม `### Hooks` — trigger/command/loop/duplicate/blocking; broken command + infinite loop = High |
+| `mcp` | ตาม `### Mcp` — enabled/env/duplicate/tool-name clash/dead config; ห้าม log secrets — ระบุแค่ missing/present |
+| `rules`, `global-rules` | ตาม `### References Integrity` ข้อ global rules — skill refs มีจริง, Execute ไม่ขัดแย้ง, ไม่ stale |
+| `broken-refs`, `references` | `bun scripts/broken-skills-references.ts [path]` (default `%APPDATA%\devin\skills`) — Critical = broken `related`, Warning = broken body `/skill-name`; filter URL/file-path/npm/placeholder false positives; report-only → fix ผ่าน `/update-references` |
+| `skills-related`, `relations` | `cargo build --release` ใน `scripts/skills-related/` แล้วรัน `scripts/skills-related/target/release/check-skills-related.exe` — modes: `Summary` (default), `Quick`, `Tree` (`-Skill <name> -TreeDepth N`), `Cycles`, `Verify` (exit 1 เมื่อมี cycle — CI), `Full`; report-only |
+
+- ทุก focused pass review-only — ไม่แก้ไขระหว่าง check; ทุก finding ต้องมี path + evidence
 
 ## Checklists
+
+### Subagent: harness-reviewer (merged AGENT)
+
+Read-only reviewer contract สำหรับ fan-out ผ่าน `/use-subagents` — merged จาก `subagents/harness-reviewer/` เดิม:
+
+- inputs: `scope` (path/dir เป้าหมาย), `dimensions` (optional — subset ของ dimensions), `findings-file` (optional baseline เช่น `review-skills-report.json`)
+- dimension → checklist section: `frontmatter`/`sections`/`line-count`/`style`/`template-selection`/`checklist` → `### Package Checks`; `content-quality` → `### Content Quality`; `parallel-usage` → `### Parallel And Scripts`; `hooks` → `### Hooks`; `mcp` → `### Mcp`; `redundancy-*` → `### Redundancy`; `refs-*` → `### References Integrity` + `### Artifact Alignment`; `context-rot` → `### Context Rot`; `refactor-guide` → `### Refactor Guide`; `scoring`/`redundancy-scoring`/`refs-scoring` → `### Scoring`
+- output contract: table `No. | Dimension | Severity | File | Finding | Suggestion` เรียง Critical→Info + score ต่อ dimension — รายงานทั้ง strengths และ weaknesses
+- constraints: read-only (ห้ามแก้ไข — fix อยู่ `## Fix`), ไม่มี evidence ไม่มี finding, รับผิดชอบเฉพาะ `dimensions` ที่ได้รับ
 
 ### Package Checks
 
@@ -141,7 +150,7 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 
 ### Content Quality
 
-- simplify: `/review-writing` ∥ `/review-code-quality` กระชับเนื้อหา; Execute↔Rules ซ้ำ → ลบ; Rules ซ้ำ skill อื่น → reference; `/dont-over-engineer` กำหนดขอบเขต minimal; gaps ใน coverage → `/deep-review`
+- simplify: `/deep-review` ∥ `/deep-review` กระชับเนื้อหา; Execute↔Rules ซ้ำ → ลบ; Rules ซ้ำ skill อื่น → reference; `/dont-over-engineer` กำหนดขอบเขต minimal; gaps ใน coverage → `/deep-review`
 - high impact: ทุก bullet ตอบ "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ไม่เปลี่ยน → ลบ; ห้าม TODO/MOCK/placeholder/filler คำสวยไม่ actionable; simplify ต้องเก็บ context ครบ
 - clarity: active voice ระบุ subject/object, validation criteria measurable (threshold/expected/pass-fail/retry limit), ไม่มี unstated assumptions; กำกวม → rewrite recheck max 3
 - severity: Critical = TODO/MOCK/ทำตามไม่ได้; High = Execute↔Rules ซ้ำ/ขาด criteria; Medium = filler/ไม่ active voice; Low = กระชับได้อีก
@@ -156,7 +165,7 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 2. Detect ×4: duplicate purpose — `description`/`## Goal` overlap >70% หรือ prefix ต่างแต่ purpose ใกล้กัน; overlapping scope — `## Scope` บอก "ไม่ใช่" แต่ทำเหมือนกัน, `related` อ้างกันเอง, `## Execute` steps เหมือนกันมาก; redundant content — `/use-scripts` hash blocks >50% ระหว่าง skills (เทียบ `## Rules`/`## Expected Outcome`); unused — `/check-reference`+`AGENTS.md` → แยก standalone vs orphan
 3. Recommend: duplicate → merge (`/idea-merge`)/rename (`/batch-rename-files`)/split; scope overlap → ปรับ `## Scope`; content ซ้ำ → ย้าย `references/` หรือ shared reference; unused → keep/document/remove — report table skill/issue/action/priority + `/suggest-next-action`
 4. Confirm+execute: `/ask-me` ก่อนเสมอ; merge → re-review, rename → `/rename`+`/update-references`, remove → `git rm`+`/update-references`; `/deep-validate` หลังทุก action
-5. Fix flow (canonical): detect → classify (code/content/config/cross-skill — deps → `/review-dependencies`, pattern → `/review-code-quality`, code จำนวนมาก → `/follow-tool-jscpd`) → เลือก canonical (ใช้มากสุด/test ครอบสุด — ไม่ชัด → `/ask-me`) → แทนด้วย reference → `/run-check`+`/run-test` ต่อ batch → report No./Duplicate Type/Canonical/Files Fixed/Status; ห้ามลบ redundancy ที่ตั้งใจ (backup/fail-over), แก้ทีละ dimension
+5. Fix flow (canonical): detect → classify (code/content/config/cross-skill — deps → `/deep-review`, pattern → `/deep-review`, code จำนวนมาก → `/follow-tool-jscpd`) → เลือก canonical (ใช้มากสุด/test ครอบสุด — ไม่ชัด → `/ask-me`) → แทนด้วย reference → `/run-check`+`/run-test` ต่อ batch → report No./Duplicate Type/Canonical/Files Fixed/Status; ห้ามลบ redundancy ที่ตั้งใจ (backup/fail-over), แก้ทีละ dimension
 
 ### References Integrity
 
@@ -168,11 +177,11 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 
 ### Artifact Alignment
 
-หลังเปลี่ยน rules/architecture/deps/skills/docs → inventory `.devin/rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (บันทึก version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-project-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/review-architecture`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code ขัด → `/ask-me` ถามฝ่ายตั้ง; detect ก่อนแก้, minimal scope, rename/move → `/update-references`, ห้ามสร้าง circular refs
+หลังเปลี่ยน rules/architecture/deps/skills/docs → inventory `.devin/rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (บันทึก version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-project-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/deep-review`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code ขัด → `/ask-me` ถามฝ่ายตั้ง; detect ก่อนแก้, minimal scope, rename/move → `/update-references`, ห้ามสร้าง circular refs
 
 ### Context Rot
 
-- stale: `/review-docs` — version pins, `(verified YYYY-MM-DD)` markers (>90 วัน), deprecated commands, dead links → route `/update-devin-global-skills`/`update-*-md`
+- stale: `/deep-review` — version pins, `(verified YYYY-MM-DD)` markers (>90 วัน), deprecated commands, dead links → route `/update-devin-global-skills`/`update-*-md`
 - incorrect: `/check-content-correctness` บน skill ที่แก้ล่าสุด/high-traffic; unverified claims → Warning
 - dead weight: skills/subagents ไม่ถูก invoke, orphan `references/` (ไม่ถูก link จาก SKILL.md), `related` ชี้ skill ที่ลบแล้ว
 - bloat: SKILL.md ใกล้ 250 → split ไป `references/`; `references/` รวม >~1500 → consolidate; `related` >15 → ตัดเหลือจำเป็น
@@ -180,7 +189,7 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 
 ### Refactor Guide
 
-Categories: split (>250/หลาย resp), merge (scope ซ้อน/ซ้ำ — รักษา intent ลบตัวที่ถูกรวม), restructure (≤10 steps), deduplicate (→ references/`related`), relocate (`/relocation` ตาม prefix); priority: redundancy สูง → ไฟล์ใหญ่ → structure พัง; เทียบ change frequency/usage — ไม่ over-refactor; sub-skills ใหม่ → `/update-devin-global-skills` ทีละตัว; consistency → `/review-code-quality` + `/update-references` + bidirectional refs ครบ
+Categories: split (>250/หลาย resp), merge (scope ซ้อน/ซ้ำ — รักษา intent ลบตัวที่ถูกรวม), restructure (≤10 steps), deduplicate (→ references/`related`), relocate (`/relocation` ตาม prefix); priority: redundancy สูง → ไฟล์ใหญ่ → structure พัง; เทียบ change frequency/usage — ไม่ over-refactor; sub-skills ใหม่ → `/update-devin-global-skills` ทีละตัว; consistency → `/deep-review` + `/update-references` + bidirectional refs ครบ
 
 ### Scoring
 
@@ -224,15 +233,13 @@ Categories: split (>250/หลาย resp), merge (scope ซ้อน/ซ้ำ 
 - ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /review-dot-devin ถ้าจำเป็น
-- ใช้ /review-code-quality ถ้าจำเป็น
 - ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้ (alias: /align-devin-layers)
 - ใช้ /check-reference, /update-devin-global-skills, /update-devin-harness สำหรับเจาะลึก layer เดียว
 - ใช้ /run-review, /follow-single-of-source ถ้าจำเป็น
 
 ## Fix
 
-> ทำตาม `../shared/review-fix.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `../deep-review/references/review-fix.md` เมื่อ user confirm ให้แก้ findings
 - ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
