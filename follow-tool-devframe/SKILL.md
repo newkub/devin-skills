@@ -145,6 +145,8 @@ related:
 - Docs fetch raw markdown ได้ทุกหน้า: `https://devfra.me/raw/<path>.md`, full docs `https://devfra.me/llms-full.txt` (ดู `references/apis.md`)
 - ตรวจ `package.json` + `/deep-review` ก่อนเลือก API — spec อาจ drift หลัง 1.0
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `DevframeDefinition` เดียว deploy ได้หลาย surface โดยไม่ fork code ต่อ framework

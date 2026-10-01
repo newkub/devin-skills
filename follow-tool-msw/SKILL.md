@@ -95,6 +95,8 @@ related:
 - ใช้ /deep-test api ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - MSW ทำงานทั้ง browser dev และ test environments

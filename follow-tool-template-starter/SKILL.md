@@ -104,6 +104,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Template ถูก clone มาใช้งาน

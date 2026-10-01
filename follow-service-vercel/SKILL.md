@@ -228,7 +228,7 @@ jobs:
 
 1. อ่าน `vercel.json`, `.vercel/project.json` และ env files ที่มีอยู่
 2. รัน `bunx vercel pull` เพื่อ sync project settings ล่าสุดจาก dashboard
-3. ทำ `/check-config-drift` หรือ `/report-config-files` ถ้าต้องรู้ drift
+3. ทำ `/deep-review` domain `review-config` หรือ `/report-config-files` ถ้าต้องรู้ drift
 
 ###### 2. Configure Environment Variables
 

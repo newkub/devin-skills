@@ -44,7 +44,7 @@ Migrate Vue 2 application ไป Vue 3 อย่างปลอดภัย — 
 
 > Goal: แปลง Vue 2 APIs เป็น Vue 3 ทีละ pattern
 
-1. Options → Composition: แปลง `data`/`methods`/`computed`/`watch` เป็น `<script setup>` + `ref`/`computed`/`watch` — ทำทีละ component หรือใช้ codemod (`/use-astgrep`, `/migration-by-astgrep`)
+1. Options → Composition: แปลง `data`/`methods`/`computed`/`watch` เป็น `<script setup>` + `ref`/`computed`/`watch` — ทำทีละ component หรือใช้ codemod (`/use-astgrep`, `/migration-with-astgrep`)
 2. Breaking changes หลัก:
    - Filters ถูกลบ — แปลง `{{ x | filter }}` เป็น method/computed
    - `v-model`: `modelValue` prop + `update:modelValue` event แทน `value`/`input`; `.sync` → `v-model:propName`

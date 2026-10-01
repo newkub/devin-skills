@@ -184,6 +184,8 @@ related:
 - ใช้ /follow-tool-bruno ถ้าจำเป็น
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - API แบบ type-safe ครบวงจร (server → client)

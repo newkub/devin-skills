@@ -6,7 +6,7 @@ related:
   - write-how-to
   - write-solutions
   - follow-best-practice
-  - think-reframe
+  - reframe
   - deep-validate
 
 ---
@@ -87,7 +87,7 @@ related:
 - ใช้ /write-how-to ถ้าจำเป็น
 - ใช้ /write-solutions ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 
 ## Expected Outcome

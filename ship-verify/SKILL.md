@@ -8,24 +8,26 @@ related:
   - deep-review
   - deep-review-then-fix
   - deep-validate
-  - run-check
   - update-tests
   - run-test-all
   - run-dev
   - test-usage
-  - ship-to-dev-branch
   - git-commit-and-push
   - report
+  - refactor
+  - update-project
+  - follow-improve
+  - follow-optimize
 ---
 
 ## Goal
 
-Verification gate เดียวก่อน ship งานใดๆ — ตรวจ `AGENTS.md`, review changes, validate correctness, tests ผ่าน, dev server รันได้ และ usage examples ทำงานจริง — ผ่านครบแล้วค่อย push ผ่าน `/ship-to-dev-branch`
+Verification gate เดียวก่อน ship งานใดๆ — ตรวจ `AGENTS.md`, review changes, validate correctness, tests ผ่าน, dev server รันได้ และ usage examples ทำงานจริง — ผ่านครบแล้วค่อย commit/push
 
 ## Scope
 
 - ใช้เป็น gate สุดท้ายก่อน commit/push — ทุก project ที่จะ ship ต้องผ่าน skill นี้
-- **Verify only** — ห้าม commit/push ใน skill นี้ (push ทำใน `/ship-to-dev-branch` หรือ `/git-commit-and-push`)
+- **Verify only** — ห้าม commit/push ใน skill นี้ (push ทำใน `/git-commit-and-push`)
 - canonical ของทุก verify step — skill อื่น (เช่น `/update-agents-md`, `/new-skills`) reference ที่นี่ ห้าม duplicate verify workflow
 
 ## Execute
@@ -50,7 +52,7 @@ Verification gate เดียวก่อน ship งานใดๆ — ตร
 > Goal: correctness ผ่านทุกมิติ
 
 1. ทำ `/deep-validate` — cross-reference, type safety, conventions
-2. ทำ `/run-check` — lint + typecheck ต้องผ่าน
+2. รัน lint + typecheck ของ project — ต้องผ่าน
 
 ### 4. Tests
 
@@ -71,7 +73,7 @@ Verification gate เดียวก่อน ship งานใดๆ — ตร
 > Goal: สรุปผล verify พร้อม ship หรือไม่
 
 1. ทำ `/report` — table: `No. | Gate | Result | Evidence`
-2. ผ่านครบ → แนะนำ `/ship-to-dev-branch` (push `dev`) หรือ `/git-commit-and-push` เป็น next action
+2. ผ่านครบ → แนะนำ `/git-commit-and-push` เป็น next action
 3. ไม่ผ่าน → report blockers ชัดเจน ห้าม ship
 
 ## Rules
@@ -85,4 +87,4 @@ Verification gate เดียวก่อน ship งานใดๆ — ตร
 
 - `AGENTS.md` สด, review/validate/check ผ่าน, tests เขียว, dev run ได้, usage ตรงจริง
 - Report ชัดเจนว่า ready-to-ship หรือมี blockers อะไร
-- พร้อม `/ship-to-dev-branch` ต่อได้ทันทีเมื่อผ่านครบ
+- พร้อม commit/push ต่อได้ทันทีเมื่อผ่านครบ

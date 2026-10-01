@@ -201,6 +201,8 @@ export default defineConfig([
 - ใช้ `/run-lint` ถ้าจำเป็น
 - ใช้ `/run-format` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 1. ESLint 10 พร้อม flat config และ plugins ครบถ้วน

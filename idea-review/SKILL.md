@@ -45,7 +45,7 @@ related:
 3. `New` — findings ที่ชี้ missing surface → idea คือสร้างใหม่
 4. `Remove` — findings ที่ชี้ redundancy/dead weight → idea คือตัดทิ้ง
 5. ทุก idea อ้าง finding จริง — finding ID, file path, หรือ evidence — ห้ามเดา
-6. ถ้า ideas จำเจหรือติดกรอบ → ใช้ `/think-reframe`
+6. ถ้า ideas จำเจหรือติดกรอบ → ใช้ `/reframe`
 
 ### 3. Prioritize And Report
 

@@ -60,7 +60,7 @@ related:
 
 1. ลบ `turbo.json` และ `turbo` ออกจาก devDependencies
 2. แก้ root scripts จาก `turbo run` → `moon run`
-3. อัปเดต README, AGENTS, `.devin/rules` ที่อ้างอิง turborepo — ทำ `/update-references`
+3. อัปเดต README, AGENTS, `rules/` ที่อ้างอิง turborepo — ทำ `/update-references`
 
 ### 5. Verify
 

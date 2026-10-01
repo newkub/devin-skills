@@ -65,7 +65,7 @@ Extract code ที่ใช้ซ้ำข้าม workspace members (duplicat
 > Goal: ทุก consumer import จาก shared เหมือนกัน
 
 1. แทนที่ local copies ด้วย import จาก `packages/shared` ผ่าน package name/path alias ของ project — ทีละ consumer
-2. mechanical replace หลายไฟล์ → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ)
+2. mechanical replace หลายไฟล์ → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ)
 3. audit external consumers ของทุกไฟล์ที่ extract อีกครั้งหลัง rewire แต่ละ batch — ยืนยันว่ามี consumer จริงก่อนลบ local copies
 4. ลบ local copies หลัง consumer ทั้งหมด rewire แล้วเท่านั้น — ห้ามลบก่อน verify
 5. ทำ `/update-references` หลังทุก batch — barrel exports, tsconfig paths, package deps

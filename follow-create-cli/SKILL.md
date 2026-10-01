@@ -112,6 +112,10 @@ related:
 - ใช้ /run-test ถ้าจำเป็น
 
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-cli.md](templates/file-structure-cli.md)
+
 ## Expected Outcome
 
 - CLI project ที่เลือก stack เหมาะสม

@@ -10,7 +10,7 @@ related:
   - follow-config
   - deep-review
   - follow-single-of-source
-  - edit-by-astgrep
+  - use-astgrep
   - update-references
   - run-verify
   - report-before-after
@@ -26,7 +26,7 @@ related:
 - secrets/credentials → route ไป `/check-secrets` + `/follow-secret-manager` (rotate ก่อนเสมอ)
 - user-facing strings → route ไป `/deep-review` (extraction ไป locale files)
 - config inconsistency ข้าม envs → route ไป `/deep-review`
-- mechanical batch หลายไฟล์ → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ)
+- mechanical batch หลายไฟล์ → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ)
 
 ## Execute
 
@@ -57,7 +57,7 @@ related:
 > Goal: code อ่านค่าจาก source เดียว ไม่มี literal กระจาย
 
 1. ย้ายค่าไป destination ตามตาราง — ใช้ existing config/env pattern ของ project ก่อนสร้างใหม่
-2. แทนที่ literal ด้วย reference (env lookup, config import, constant) — mechanical batch → `/edit-by-astgrep`
+2. แทนที่ literal ด้วย reference (env lookup, config import, constant) — mechanical batch → `/use-astgrep rewrite`
 3. ถ้าค่าเดียวกันปรากฏหลายที่ → extract ครั้งเดียวแล้ว share — ห้ามคง duplicate
 4. เพิ่ม validation/fail-fast ที่ boundary ถ้าค่าขาดแล้วพังเงียบๆ (`/follow-config`)
 

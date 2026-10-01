@@ -6,7 +6,7 @@ related:
   - follow-lib-unocss
   - follow-design-system
   - follow-lib-css
-  - check-config-drift
+  - improve-config
   - resolve-errors
 ---
 
@@ -26,7 +26,7 @@ related:
 
 1. เปิด `uno.config.*` — ถ้าไม่มี → ทำ workflow `setup-unocss` ก่อน
 2. ตรวจ `theme`, `shortcuts`, `rules`, `presets` options ที่มีอยู่ — merge กับของเดิม ห้าม overwrite ทั้งไฟล์
-3. ทำ `/check-config-drift` ถ้าสงสัยว่า config ต่างจากที่ควร
+3. ทำ `/deep-review` domain `review-config` ถ้าสงสัยว่า config ต่างจากที่ควร
 
 ### 2. Define Theme Tokens
 

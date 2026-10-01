@@ -143,6 +143,8 @@ jobs:
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Changesets ติดตั้งและทำงานได้

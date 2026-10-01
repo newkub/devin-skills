@@ -9,7 +9,7 @@ related:
   - improve
   - deep-review
   - scan-codebase
-  - think-reframe
+  - reframe
   - report
   - report-todo
   - suggest-next-action
@@ -44,7 +44,7 @@ related:
 1. `Extends` — ปรับสิ่งที่มีอยู่ให้ดีขึ้น (faster, clearer, safer, cheaper)
 2. `New` — capability/automation ที่ยังไม่มี
 3. `Remove` — สิ่งที่ควรตัดทิ้ง (dead weight, redundancy, over-engineering)
-4. ใช้ `/think-reframe` ถ้า ideas จำเจหรือติดกรอบเดิม
+4. ใช้ `/reframe` ถ้า ideas จำเจหรือติดกรอบเดิม
 5. ทุก idea ต้องมี problem ที่ solve ชัดเจน — ห้าม generic filler
 
 ### 3. Prioritize And Report

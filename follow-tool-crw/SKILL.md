@@ -232,6 +232,8 @@ crw serve --port 3000
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้ CRW อย่างมีประสิทธิภาพสูงสุด

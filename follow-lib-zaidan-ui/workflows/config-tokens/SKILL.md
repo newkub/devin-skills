@@ -6,7 +6,7 @@ related:
   - follow-lib-zaidan-ui
   - follow-lib-shadcn-solid
   - follow-design-system
-  - check-config-drift
+  - improve-config
   - resolve-errors
 ---
 
@@ -27,7 +27,7 @@ related:
 1. เปิด `src/styles/globals.css` — ดู CSS variables ใน `:root` และ dark block รวมถึง `@theme` mapping
 2. เปิด `components.json` — ดู `tailwind.css` path และ aliases
 3. ถ้ายังไม่มี theme → ทำ workflow `setup-theme` ก่อน; merge เดิมเสมอ ห้าม overwrite
-4. ทำ `/check-config-drift` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
+4. ทำ `/deep-review` domain `review-config` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
 
 ### 2. Adjust Color And Radius Tokens
 

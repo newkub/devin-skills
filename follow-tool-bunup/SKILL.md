@@ -102,6 +102,8 @@ project/
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Bunup ติดตั้งและกำหนดค่าใน project

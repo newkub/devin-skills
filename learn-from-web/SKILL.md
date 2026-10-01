@@ -5,12 +5,12 @@ argument-hint: "[url-or-topic]"
 related:
   - learn
   - learn-from-cli
-  - learn-from-dts
+  - check-types-definition
   - learn-from-codebase
   - deep-research
   - report
   - create-report-in-dot-devin
-  - check-content-correctness
+  - check-reference
   - use-scripts
 ---
 
@@ -20,7 +20,7 @@ related:
 
 ## Scope
 
-- ใช้เมื่อต้องเรียนรู้จาก URL/docs/article/repo ภายนอก — ไม่ใช่ codebase ในเครื่อง (ใช้ `/learn-from-codebase`), ไม่ใช่ CLI binary (ใช้ `/learn-from-cli`), ไม่ใช่ `.d.ts` API surface (ใช้ `/learn-from-dts`)
+- ใช้เมื่อต้องเรียนรู้จาก URL/docs/article/repo ภายนอก — ไม่ใช่ codebase ในเครื่อง (ใช้ `/learn-from-codebase`), ไม่ใช่ CLI binary (ใช้ `/learn-from-cli`), ไม่ใช่ `.d.ts` API surface (ใช้ `/check-types-definition`)
 - ครอบคลุม: official docs, guides, API references, blog posts, GitHub repos
 - Output: learning path ในแชท, content files, หรือ `references/` ของ skill — ไม่แก้ code
 - ดูเพิ่มเติม: `/deep-research` (cross-check หลายแหล่ง/เสี่ยงสูง), `/learn` (dispatcher)
@@ -64,7 +64,7 @@ related:
 
 - ถ้าเรียนเพื่อตัวเอง → เขียน learning path ตามโครงสร้างข้างล่าง
 - ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน reference files จริงตาม `update-devin-global-skills` (`## Conventions → Write References`) (บังคับ ห้ามข้าม)
-- ถ้าเขียน content หลายไฟล์ → ทำ `/check-content-correctness` ทุกชิ้น และ `/use-scripts` ถ้า >10 ไฟล์
+- ถ้าเขียน content หลายไฟล์ → ทำ `/check-reference` ทุกชิ้น และ `/use-scripts` ถ้า >10 ไฟล์
 
 ```markdown
 # Learning Path: <topic>

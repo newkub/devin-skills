@@ -152,6 +152,8 @@ related:
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - CSS ที่เขียนตาม modern best practices และ Baseline ปี 2025/2026

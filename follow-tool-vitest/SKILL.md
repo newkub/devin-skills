@@ -6,7 +6,7 @@ related:
   - deep-review
   - follow-tool-vite
   - follow-tool-playwright
-  - follow-lib-testing-library
+  - follow-tool-vite
   - update-tests
   - run-test
 
@@ -22,7 +22,7 @@ related:
 
 - jsdom DOM environment ดู `references/apis.md`
 
-- Boundary: ใช้ Vitest สำหรับ unit/integration tests — E2E/browser flows ใช้ `/follow-tool-playwright`; component DOM queries ใช้ `/follow-lib-testing-library`
+- Boundary: ใช้ Vitest สำหรับ unit/integration tests — E2E/browser flows ใช้ `/follow-tool-playwright`; component DOM queries ใช้ `/follow-tool-vite` workflow `testing-library`
 
 ## Execute
 
@@ -197,7 +197,7 @@ related:
 - unawaited `resolves`/`rejects` assertions fail แทนที่จะ pass เงียบๆ
 
 - ใช้ /follow-tool-playwright ถ้าจำเป็น
-- ใช้ /follow-lib-testing-library ถ้าจำเป็น
+- ใช้ `/follow-tool-vite testing-library` (workflows/testing-library) ถ้าจำเป็น
 - ใช้ /update-tests ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 
@@ -208,6 +208,8 @@ related:
 
 
 
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

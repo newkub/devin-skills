@@ -3,7 +3,7 @@ name: run-clean
 description: Clean build artifacts และ cache เพื่อเริ่มต้นใหม่
 argument-hint: "[scope]"
 related:
-  - check-files
+  - check-long-files
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
@@ -22,7 +22,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 
 ## Execute
 
-> Pre-Run: ทำ `/check-files locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (clean)
+> Pre-Run: ตรวจ locked files ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (clean)
 
 ### 1. Clean Build Artifacts
 

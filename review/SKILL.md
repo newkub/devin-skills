@@ -61,7 +61,7 @@ related:
 | 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/deep-review` | `/deep-review`, `/deep-review` |
 | 17 | ตรวจความพร้อมก่อน deploy | `/deep-review` | `/deep-review`, `/watch-deploy` |
 | 18 | ตรวจความพร้อมก่อน release | `/deep-review` | `/deep-review`, `/deep-review` |
-| 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/deep-review` | `/deep-review`, `/review-devin-global-harness` |
+| 19 | ตรวจ `rules/` (ast-grep), `sgconfig.yml`, `.devin/`, `AGENTS.md` | `/deep-review` | `/deep-review`, `/review-devin-global-harness` |
 | 20 | ตรวจ docs structure ก่อน `update-docs` | `/deep-review` | `/deep-review` |
 | 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/deep-review` | `/deep-review` |
 | 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/deep-review` | `/deep-review` |

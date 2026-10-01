@@ -7,6 +7,7 @@ related:
   - update-dot-devin
   - update-docs
   - update-astgrep-rules
+  - update-tests
   - update-specs
   - update-examples
   - update-project-skills

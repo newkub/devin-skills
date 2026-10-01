@@ -126,5 +126,5 @@ related:
 - Techstack Skills table ครบทุก dependency ที่มี skill ตรง
 - `### Platform` และ `### Target User` ถูกต้อง
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` + workspace usage table
-- ผ่าน `/ship-verify` — stakeholder review อยู่ใน `/ship-to-dev-branch` merge gate (`/roleplay-by-all-stakeholder`)
+- ผ่าน `/ship-verify` — stakeholder review อยู่ใน `/ship-to-dev-branch` merge gate (`/review-by-all-stakeholder`)
 - subagents สามารถอ่าน `AGENTS.md` แล้วดำเนินการตามขั้นตอนได้

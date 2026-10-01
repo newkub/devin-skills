@@ -22,7 +22,7 @@ related:
 
 ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills` แทน)
 
-ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
+ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-astgrep-rules, /update-agents-md
 
 - Format: Devin skill = `SKILL.md` เป็น entry point — ไม่ต้องสร้าง `references/` โดย default (merge เนื้อหาเข้า `SKILL.md` ตาม conventions ใน `/update-devin-global-skills`; แยกไฟล์เฉพาะเมื่อมีเหตุผลชัดเจน เช่น workflows/scripts) — ยืนยัน format ล่าสุดด้วย `/deep-research` + `/follow-best-practice`
 
@@ -54,7 +54,7 @@ related:
 2. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
 3. ถ้าต้องการ code → สร้าง `src/` ตาม project stack ที่ตรวจจาก manifest
 4. ถ้ามีรายละเอียดเพิ่ม → merge เข้า `SKILL.md` ให้อยู่ใน 250 บรรทัด (ไม่สร้าง `references/` โดย default); ถ้าจำเป็นจริงให้ใช้ `workflows/` หรือ `scripts/` แทน
-5. ถ้ามี rules → ใช้ `.devin/rules/` ตาม `/update-devin-project-rules` แทนการฝังใน skill
+5. ถ้ามี enforceable conventions → ใช้ ast-grep rules ใน `rules/` ตาม `/update-astgrep-rules` แทนการฝังใน skill
 
 ### 4. Write SKILL.md
 

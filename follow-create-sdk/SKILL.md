@@ -148,6 +148,10 @@ related:
 - `package.json` ใช้ subpath `exports` (`"."` → core, `"./react"` → adapter) — ทำ `/follow-tool-tsdown` สำหรับ multi-entry build
 - เก็บ types ใน `core/types.ts` — ไม่ผูก core กับ framework lifecycle หรือ global state
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-sdk.md](templates/file-structure-sdk.md)
+
 ## Expected Outcome
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด

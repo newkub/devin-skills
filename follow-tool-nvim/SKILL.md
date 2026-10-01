@@ -131,6 +131,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Neovim config เป็น modular และ easy to maintain

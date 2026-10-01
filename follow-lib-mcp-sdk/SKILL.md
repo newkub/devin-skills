@@ -60,6 +60,7 @@ related:
 - ใช้ `/use-mcp` ถ้าต้อง consume MCP servers ฝั่ง client
 - ใช้ `/run-verify` ถ้าจำเป็น
 - ใช้ `/run-test` ถ้าจำเป็น
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

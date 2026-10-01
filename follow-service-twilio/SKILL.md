@@ -76,7 +76,7 @@ Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add t
 
 1. อ่าน env keys ที่มีอยู่: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`, `TWILIO_MESSAGING_SERVICE_SID`, `TWILIO_VERIFY_SERVICE_SID`
 2. อ่าน code ที่สร้าง client และ webhook handlers ปัจจุบัน
-3. ทำ `/check-config-drift` ถ้าต้องรู้ drift ระหว่าง env กับ code
+3. ทำ `/deep-review` domain `review-config` ถ้าต้องรู้ drift ระหว่าง env กับ code
 
 ###### 2. Configure Phone Numbers And Services
 

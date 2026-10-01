@@ -29,7 +29,7 @@ related:
 > Goal: Review And Inventory
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
-2. ทำ `/update-astgrep-rules` ถ้ามี `ast-grep` rules หรือ `.devin/rules` ที่เกี่ยวข้อง
+2. ทำ `/update-astgrep-rules` ถ้ามี `ast-grep` rules (`rules/`) ที่เกี่ยวข้อง
 3. อ่าน `## Sg Outline` ด้านล่างเพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
 4. เลือก `sg outline` flags ตาม scope (ดู `## Sg Outline`)
 5. ระบุ target paths ที่จะ improve

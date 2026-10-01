@@ -199,6 +199,8 @@ related:
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - API แบบ type-safe ครบวงจร (server → client ผ่าน Eden)

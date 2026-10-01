@@ -80,6 +80,8 @@ related:
 - ใช้ `/run-test` ถ้าจำเป็น
 - ใช้ `/follow-tool-vitest` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `fast-check` ติดตั้งเป็น devDependency และ integrate กับ test runner ของ project

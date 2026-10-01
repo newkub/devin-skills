@@ -9,6 +9,7 @@ related:
   - setup-cicd
   - resolve-errors
   - follow-tool-mise
+  - research-setup-integrations
 ---
 
 ## Goal
@@ -138,6 +139,10 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 
 - [CLI reference](references/cli.md)
 
+- ใช้ /research-setup-integrations ถ้าจำเป็น (shell completions/framework integrations ของ usage)
+
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

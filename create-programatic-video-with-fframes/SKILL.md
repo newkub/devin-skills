@@ -4,7 +4,7 @@ description: สร้างวิดีโอ programmatic ด้วย fframes
 argument-hint: "[video-idea-or-scope]"
 related:
   - follow-lang-rust
-  - edit-video-by-remotion
+  - edit-video-with-remotion
   - create-video-story
   - run-check
   - resolve-errors
@@ -18,7 +18,7 @@ related:
 
 - ใช้เมื่อ user ต้องการ video, animation, motion graphic, explainer, promo, social clip, title card, lyric/caption video หรือ `.mp4`/`.webm` ที่ render จาก code — รวมถึง fix/speed up/check fframes video ที่มีอยู่
 - ครอบคลุม: install, scaffold, design, animation, audio, review ผ่าน CLI (`inspect`/`strip`/`frame`/`onion`/`preview`), render และ verify
-- ตัดต่อ footage ด้วย React → `/edit-video-by-remotion`; สร้างจากโครงเรื่องด้วย AI media → `/create-video-story`
+- ตัดต่อ footage ด้วย React → `/edit-video-with-remotion`; สร้างจากโครงเรื่องด้วย AI media → `/create-video-story`
 - Reference เต็มของ upstream: `skills/fframes-video/references/{api,audio,design}.md` ใน repo และ examples `motion-graphics`, `beta`, `audio-announce`, `teej-podcast`, `shaders` ใต้ `examples/`
 
 ## Execute

@@ -176,6 +176,8 @@ daemons = ["redis", "api"]
 ## References
 - [CLI reference](references/cli.md)
 - [HTTP API & MCP](references/apis.md)
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - pitchfork ติดตั้งและทำงานผ่าน mise

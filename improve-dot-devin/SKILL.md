@@ -20,7 +20,7 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ ".devin/Devin harness ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-dot-devin` — `.devin/` structure, hooks, `.devin/rules`, ast-grep rules, `AGENTS.md`, skills/agents alignment, MCP config
+- `review-dot-devin` — `.devin/` structure, hooks, `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md`, skills/agents alignment, MCP config
 - ถ้า scope คือ global skills repo ทั้งชุด → `/review-devin-global-harness` แทน
 
 ## Execute

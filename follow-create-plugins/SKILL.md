@@ -73,6 +73,10 @@ related:
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-plugins.md](templates/file-structure-plugins.md)
+
 ## Expected Outcome
 
 - caller ถูก dispatch ไป workflow ที่ตรง target แล้วสร้าง plugin ตาม flow นั้น

@@ -189,6 +189,8 @@ server.listen(3000)
 - ใช้ `/report` ถ้าจำเป็น
 - ใช้ `/deep-validate` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `edge.js` ติดตั้งและกำหนดค่าถูกต้องด้วย ESM

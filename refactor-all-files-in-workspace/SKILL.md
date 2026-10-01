@@ -75,7 +75,7 @@ Refactor ทุกไฟล์ใน workspace (single workspace/package) ตา
 ### 2. Batch Operations
 
 - อ่าน files แบบ parallel — แก้ไขแบบ sequential หรือผ่าน `file-worker` subagents ที่ scope ไม่ทับกัน
-- mechanical batch (rename/pattern เดียวหลายไฟล์) → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับ)
+- mechanical batch (rename/pattern เดียวหลายไฟล์) → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับ)
 
 ### 3. Safety
 

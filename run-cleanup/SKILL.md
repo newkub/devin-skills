@@ -3,7 +3,7 @@ name: run-cleanup
 description: รัน cleanup tasks เพื่อลบ build artifacts และ cache
 argument-hint: "[scope]"
 related:
-  - check-files
+  - check-long-files
   - cleanup-files-in-computer
   - cleanup-files-in-project
   - cleanup
@@ -23,7 +23,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/check-files locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (cleanup)
+> Pre-Run: ตรวจ locked files ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (cleanup)
 
 ### 1. Identify Cleanup Targets
 
@@ -45,7 +45,7 @@ related:
 1. ลบ build artifacts ด้วย command ที่เหมาะสม (`rm -rf`, `cargo clean`, `bun pm cache rm` ฯลฯ)
 2. ถ้าต้องการ system-wide cleanup → ทำ `/cleanup-files-in-computer`
 3. ถ้าต้องการ project cleanup → ทำ `/cleanup-files-in-project`
-4. ถ้ามี file locks → ทำ `/check-files locks` แล้วแก้ก่อนลบ
+4. ถ้ามี file locks → ปิด process ที่ lock แล้วลบใหม่
 
 ### 3. Verify
 

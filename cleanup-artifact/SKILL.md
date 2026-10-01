@@ -8,6 +8,7 @@ related:
   - cleanup
   - ask-me
   - report
+  - follow-tool-mr-boxington
 ---
 
 ## Goal

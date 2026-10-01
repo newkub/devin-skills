@@ -26,7 +26,7 @@ related:
 
 1. เปิดอ่าน `vite.config.ts`/`vite.config.js` ที่ root — ถ้าไม่มี → ไป step 2 เพื่อสร้างใหม่
 2. ตรวจ framework ที่ใช้จาก `package.json` เพื่อเลือก official plugin (`@vitejs/plugin-react`, `@vitejs/plugin-vue`, ฯลฯ)
-3. ถ้า config เดิมใหญ่ → ทำ `/check-config-drift` เพื่อดู options ที่ไม่จำเป็น
+3. ถ้า config เดิมใหญ่ → ทำ `/deep-review` domain `review-config` เพื่อดู options ที่ไม่จำเป็น
 
 ### 2. Config Structure
 

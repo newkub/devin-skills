@@ -165,6 +165,7 @@ related:
 - ใช้ `/run-scan` ถ้าจำเป็น
 - ใช้ `/follow-tool-biome` ถ้าจำเป็น
 - ใช้ `/use-astgrep` ถ้าจำเป็น
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

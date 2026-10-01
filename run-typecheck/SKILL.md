@@ -3,7 +3,7 @@ name: run-typecheck
 description: Run typecheck with config check
 argument-hint: "[scope]"
 related:
-  - check-config-drift
+  - improve-config
   - deep-review
   - deep-debug
   - resolve-errors
@@ -20,7 +20,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/check-config-drift` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (typecheck)
+> Pre-Run: ทำ `/deep-review` domain `review-config` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (typecheck)
 
 ### 1. Check Config
 

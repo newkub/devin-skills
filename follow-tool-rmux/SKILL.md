@@ -111,6 +111,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - RMUX CLI ติดตั้งและทำงานได้บน target platform

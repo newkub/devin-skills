@@ -9,6 +9,9 @@ related:
   - report
   - suggest-next-action
   - ask-me
+  - follow-lib-unocss
+  - follow-design-system
+  - run-lint
 ---
 
 ## Goal
@@ -19,7 +22,7 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ "UX/UI ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-uxui` — UX flow, interaction, visual design, navigation, layouts, design system, theme, motion
+- `review-uxui` — UX flow, interaction, visual design, navigation, layouts, design system, theme (รวม smooth theme toggle — theme switch ต้องมี animated transition ไม่ hard swap), motion
 - `review-accessibility` — a11y, ARIA, keyboard nav, contrast, screen reader
 - `review-mobile` — responsive, mobile-friendly, touch targets, pages/components adaptiveness, realtime feedback
 

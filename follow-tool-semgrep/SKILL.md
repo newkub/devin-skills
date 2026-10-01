@@ -89,6 +89,8 @@ related:
 - pin ruleset versions ใน CI — ruleset เปลี่ยน = findings เปลี่ยน
 - ใช้ /run-scan ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Scan สำเร็จพร้อม findings ที่ triaged

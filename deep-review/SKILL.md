@@ -294,7 +294,7 @@ Catalog review domains ทั้งหมดสำหรับ `deep-review` —
 | 3 | `review-architecture` | modularity, isolation, boundaries, resilience | ทุก workspace |
 | 4 | `review-workspace` | manifest, deps, scripts ของ workspace | monorepo members |
 | 5 | `review-workflow` | workflows/pipelines ใน workspace | ทุก workspace |
-| 6 | `review-dot-devin` | `.devin/` structure, hooks, `.devin/rules`, ast-grep rules, `AGENTS.md` | workspace ที่มี `.devin/` หรือ rules |
+| 6 | `review-dot-devin` | `.devin/` structure, hooks, `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md` | workspace ที่มี `.devin/` หรือ rules |
 | 7 | `review-docs` | docs structure, README, USAGE, FEATURES | workspace ที่มี docs |
 
 ### Phase 2 — Source Code

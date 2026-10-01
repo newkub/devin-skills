@@ -1,6 +1,6 @@
 ---
 name: update-dot-devin
-description: สร้าง .devin structure ครบถ้วนรวม rules และ hooks โดยไม่มี workflows directory
+description: สร้าง .devin structure ที่ repo root เท่านั้น (hooks, skills, MCP) — ไม่มี rules/ หรือ workflows/
 argument-hint: "[scope]"
 related:
   - check-monorepo
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-สร้าง `.devin` structure ครบถ้วนสำหรับ project workspace รวม rules และ hooks โดยไม่มี `workflows/` directory
+สร้าง `.devin` structure ที่ repo root เท่านั้นสำหรับ project workspace — hooks, skills, MCP — ไม่มี `workflows/` หรือ `rules/` directory
 
 ## Scope
 
@@ -38,13 +38,13 @@ related:
 1. ทำ `/deep-analyze` เพื่อดู tech stack, structure, และ patterns
 2. อ่าน `package.json` ทั้ง root และ workspace เพื่อดู dependencies ทั้งหมด
 
-### 3. Setup Root Rules
+### 3. Remove Deprecated And Nested Config
 
-> Goal: สร้าง `.devin/rules` สำหรับ Devin CLI
+> Goal: ลบ `.devin/rules/` (deprecated) และ `.devin/` ใน sub-workspace
 
-1. อ่าน https://docs.devin.ai/cli/extensibility/rules เพื่อเข้าใจ rules
-2. ทำ `/update-devin-project-rules` เพื่อสร้าง `.devin/rules/always-on/`, `model_decision/`, `glob/`
-3. ทำตาม Rules section ด้านล่างสำหรับ frontmatter และ format
+1. ถ้ามี `.devin/rules/` → ลบทั้ง directory (markdown rules deprecated — ใช้ ast-grep `rules/` แทน)
+2. ถ้าเป็น monorepo → ลบ `.devin/` ในทุก sub-workspace (ย้าย content ที่ต้องการ เช่น skills/hooks ขึ้น root `.devin/` ก่อน)
+3. `.devin/` อยู่ที่ repo root เท่านั้น — sub-workspace มีแค่ `AGENTS.md`
 
 ### 4. Setup Hooks
 
@@ -78,9 +78,9 @@ related:
 
 > Goal: เขียน ast-grep rules ใน `rules/` directory ที่ project root ตาม devin rules ที่สร้างขึ้น
 
-1. ทำ `/update-astgrep-rules` เพื่อแปลง devin rules เป็น ast-grep YAML format
-2. สร้าง ast-grep rules ใน `rules/always-on/`, `rules/model_decision/`, และ `rules/glob/` ที่ project root (แยกจาก `.devin/rules/` ที่เก็บ devin rules เป็น Markdown)
-3. อัพเดท `sgconfig.yml` ให้ `ruleDirs` ชี้ไปที่ `rules/always-on`, `rules/model_decision`, และ `rules/glob`
+1. ทำ `/update-astgrep-rules` เพื่อสร้าง/อัปเดต ast-grep rules ตาม re-analysis ของ project
+2. Canonical layout: `rules/dependencies/`, `rules/architecture/`, `rules/glob/` ที่ project root (ไม่ใช้ `.devin/rules/` — deprecated)
+3. อัพเดท `sgconfig.yml` ให้ `ruleDirs` ชี้ไปที่ `rules/dependencies`, `rules/architecture`, และ `rules/glob`
 4. ตั้งค่า `sgconfig.yml` `languageAliases` สำหรับ TypeScript และ JavaScript file extensions
 5. ตั้งค่า `sgconfig.yml` `devPaths` สำหรับ source directories ที่ต้องการ scan
 6. รัน `bunx ast-grep scan --inspect summary` เพื่อตรวจสอบว่า rules parse ได้
@@ -116,19 +116,18 @@ related:
 
 ### 3. File Structure
 
-- ต้องมี `.devin/rules` directory พร้อม subdirectories: `always-on/`, `model_decision/`, `glob/`
-- ตั้งชื่อไฟล์ด้วย `kebab-case.md`
+- `.devin/` อยู่ที่ repo root เท่านั้น — มี `hooks/`, `skills/`, `mcp_config.json` — ห้ามมี `.devin/rules/` (deprecated)
+- ตั้งชื่อไฟล์ด้วย `kebab-case`
 - ถ้าเป็น monorepo แต่ละ workspace ต้องมี `AGENTS.md` ของตัวเอง ไม่สร้าง `.devin/` ใน sub-workspace
 
-### 4. Frontmatter Validation
+### 4. Root-Only .devin
 
-- `always-on` rules ต้องมี `trigger: always_on`
-- `model_decision` rules ต้องมี `trigger: model_decision`
-- `glob` rules ต้องมี `trigger: glob` พร้อม `globs:` list
+- `.devin/` อยู่ที่ repo root เท่านั้น — ไม่มี `.devin/` ใน sub-workspace
+- ถ้าพบ `.devin/` ใน sub-workspace → ย้าย content ที่ต้องการขึ้น root แล้วลบ
 
 ### 5. Rules Update
 
-- ใช้ `/update-devin-project-rules` สำหรับเขียนและอัพเดท `.devin/rules/` ที่ root
+- ใช้ `/update-astgrep-rules` สำหรับเขียนและอัพเดท ast-grep rules ใน `rules/` ที่ root
 - ใช้ `/update-devin-project-hooks` สำหรับเขียนและอัพเดท `.devin/hooks/`
 - ใช้ `/update-project-skills` สำหรับสร้าง `.devin/skills/`
 - ใช้ `/update-devin-project-mcp` สำหรับตั้งค่า `.devin/mcp_config.json`
@@ -156,15 +155,15 @@ related:
 ### 9. Ast-Grep Rules
 
 - ใช้ `/update-astgrep-rules` สำหรับสร้าง ast-grep rules ใน `rules/` ที่ project root
-- `sgconfig.yml` ต้องชี้ `ruleDirs` ไปที่ `rules/always-on`, `rules/model_decision`, และ `rules/glob`
-- ast-grep rules (YAML) อยู่ใน `rules/` ที่ project root แยกจาก devin rules (Markdown) ใน `.devin/rules/`
+- `sgconfig.yml` ต้องชี้ `ruleDirs` ไปที่ `rules/dependencies`, `rules/architecture`, และ `rules/glob`
+- ast-grep rules (YAML) อยู่ใน `rules/` ที่ project root — `.devin/rules/` deprecated
 - `sgconfig.yml` ต้องมี `languageAliases` สำหรับ `ts`, `tsx`, `js`, `jsx`
 - `sgconfig.yml` ต้องมี `devPaths` สำหรับ source directories ของแต่ละ workspace
 
 ### 10. Sgconfig Configuration
 
 - `sgconfig.yml` ต้องอยู่ที่ project root
-- `ruleDirs` ต้องระบุครบทั้ง 3 directories: `rules/always-on`, `rules/model_decision`, `rules/glob`
+- `ruleDirs` ต้องระบุครบทั้ง 3 directories: `rules/dependencies`, `rules/architecture`, `rules/glob`
 - `languageAliases` ต้อง map `ts` และ `tsx` เป็น `TypeScript`, `js` และ `jsx` เป็น `JavaScript`
 - `devPaths` ต้องระบุ source directories ของแต่ละ workspace สำหรับ scan ที่แม่นยำ
 - `testConfigs` ใช้สำหรับ test directory ของ ast-grep rules
@@ -175,7 +174,7 @@ related:
 - ถ้าเป็น monorepo แต่ละ workspace อาจมี ast-grep rules เฉพาะใน `rules/` ที่ project root โดยใช้ `files` field เพื่อจำกัด scope
 - ใช้ `files` field ใน ast-grep rules เพื่อระบุ workspace ที่ rule ใช้
 - ใช้ `ignores` field เพื่อยกเว้นไฟล์ที่ไม่ต้องการตรวจสอบ
-- Workspace-specific devin rules อยู่ใน `.devin/rules/` ที่ root เป็น Markdown ไม่มี `.devin/` ใน sub-workspace
+- ไม่มี `.devin/` ใน sub-workspace — workspace-specific conventions เขียนใน workspace `AGENTS.md` แทน
 - Workspace-specific ast-grep rules อยู่ใน `rules/` ที่ project root เป็น YAML โดยใช้ `files` field จำกัด scope
 
 ### 12. Hook Scripts Best Practices
@@ -191,12 +190,12 @@ related:
 
 ## Expected Outcome
 
-- `.devin` มี rules และ hooks ครบถ้วน ไม่มี `workflows/` directory
+- `.devin` มี hooks และ config ครบถ้วนที่ root เท่านั้น ไม่มี `workflows/` หรือ `rules/` directory
 - ถ้าเป็น monorepo แต่ละ workspace มี `AGENTS.md` ของตัวเอง ไม่มี `.devin/` ใน sub-workspace
 - Root `AGENTS.md` บอกให้ทำตาม workspace `AGENTS.md`
-- Rules จัดรูปแบบถูกต้องตามมาตรฐาน
+- ไม่มี `.devin/` ใน sub-workspace
 - Hooks ทำงานตาม events ที่กำหนด ใช้ `bun` runtime
-- ast-grep rules อยู่ใน `rules/` ที่ project root แยกจาก `.devin/rules/`
+- ast-grep rules อยู่ใน `rules/` ที่ project root ตาม canonical layout
 - `sgconfig.yml` ครบถ้วน: `ruleDirs`, `languageAliases`, `devPaths`
 - `bunx ast-grep scan --inspect summary` แสดง rules ทั้งหมด effective
 - `bun run scan` ทำงานได้และ report ผลลัพธ์

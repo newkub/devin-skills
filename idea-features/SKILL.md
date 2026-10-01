@@ -3,13 +3,14 @@ name: idea-features
 description: สร้าง 30 ไอเดียฟีเจอร์แล้วแสดงใน web viewer (Solid + TanStack Start + Nitro bun) ที่ src/ ของ skill นี้
 argument-hint: "[topic]"
 related:
-  - follow-create-solid-tanstack-nitro-bun
+  - follow-solid-framework
+  - follow-lib-nitro
   - follow-architecture
   - draw-ansi
   - deep-analyze
   - learn-from-codebase
   - enhance-prompt
-  - think-reframe
+  - reframe
   - open-web
   - run-dev
   - ship-verify
@@ -18,11 +19,11 @@ related:
 
 ## Goal
 
-สร้าง 30 ไอเดียฟีเจอร์ (`extends` + `new`) สำหรับ project/topic แล้วเขียนลง `src/data/ideas.json` ของ viewer app ใน skill นี้ จากนั้น serve web ให้ user ดู — grid 4 col + preview panel + search/filter/grouping/tags/category
+สร้าง 30 ไอเดียฟีเจอร์ (`extends` + `new`) สำหรับ project/topic แล้วเขียนลง `src/data/ideas.json` ของ viewer app ใน skill นี้ + สรุปเป็น `<project>-idea-features.md` ใน OS temp dir จากนั้น serve web ให้ user ดู — grid 4 col + preview panel + search/filter/grouping/tags/category
 
 ## Scope
 
-- Web viewer อยู่ใน directory ของ skill นี้ (`src/`) — TanStack Start (SolidJS) + Nitro `preset: bun` ตาม `/follow-create-solid-tanstack-nitro-bun`
+- Web viewer อยู่ใน directory ของ skill นี้ (`src/`) — TanStack Start (SolidJS) + Nitro `preset: bun` ตาม `/follow-lib-nitro`
 - Agent generate ไอเดีย → เขียน `src/data/ideas.json` → run web → user browse ใน browser
 - ไม่ implement ไอเดีย — implement → `/implement-features-to-mvp`; plan → `/deep-plan`
 
@@ -35,6 +36,8 @@ related:
 1. รับ `<topic>` จาก argument หรือ conversation context — ไม่ชัด → `/suggest-next-action` หรือ `/enhance-prompt`
 2. ทำ `/learn-from-codebase` แบบ lightweight เพื่อ ground ไอเดียกับ codebase จริง
 3. อ่าน manifest + structure เพื่อรู้ architecture pattern (`/follow-architecture`) — ใช้กับ `fileChanges` ของทุก idea
+4. **Topic selection** — เสนอ 8-12 topic clusters (เช่น reporting, ux, data, mobile, privacy, workflow) แล้วทำ `/ask-me` multi-select ให้ user เลือกว่าจะ generate topics ไหน — default: ทั้งหมด; ideas 30 รายการกระจายตาม topics ที่เลือก
+5. **Regenerate queue** — อ่าน `src/data/regenerate-queue.json` ถ้ามี: regenerate idea ตาม `no` ที่ queue ไว้ (propose ทางเลือกใหม่ ห้ามซ้ำ idea เดิม) แล้วล้าง queue หลังเขียน `ideas.json` สำเร็จ
 
 ### 2. Generate 30 Ideas
 
@@ -56,6 +59,8 @@ related:
 1. เขียนผลลง `src/data/ideas.json` ใน skill directory นี้ — `{ project, topic, generatedAt, ideas: [...30] }`
 2. validate กับ `ideaSchema`/`ideasFileSchema` — ห้ามมี missing field หรือ placeholder
 3. sort `ideas` ไม่จำเป็น — UI sort ตาม impact เอง
+4. ล้าง `src/data/regenerate-queue.json` (write `[]`) ถ้า queue ถูกประมวลผลแล้ว
+5. เขียน markdown summary ลง OS temp dir เป็น `<project>-idea-features.md` (`$env:TEMP` บน Windows, `$TMPDIR` หรือ `/tmp` บน Unix) — ตาราง `No.`, `Title`, `Kind`, `Category`, `Phase`, `Impact`, `Effort`, `MVP Score` ครบ 30 rows + รายละเอียดต่อ idea (description, why, usage, risk, features, fileChanges, testCases) — user เปิดอ่านนอก viewer ได้
 
 ### 4. Serve Web
 
@@ -65,7 +70,7 @@ related:
 2. `bun run dev` → dev server port `3030` — ทำตาม `/run-dev` ถ้ามี error
 3. เปิด browser ด้วย `/open-web` → `http://localhost:3030`
 4. Production mode: `bun run build` → `bun .output/server/index.mjs` (Nitro bun preset)
-5. บอก user: ซ้าย = grid 4 col (card: no, ansi, features, description), hover card → preview เต็มด้านขวา (description, why, usage, risk, impact, file changes, test cases), บน = search/filter/grouping/tags/category
+5. บอก user: ซ้าย = grid responsive (card: no, surface chips, features, description), hover/focus card → preview เต็มด้านขวา พร้อมปุ่ม **📋 Copy prompt** (copy implementation prompt ครบทุก field) และ **♻️ Regenerate** (queue `regenerate-queue.json` + copy regen prompt), บน = search/filter/grouping/tags/category + theme toggle
 
 ### 5. Ship Verify
 
@@ -81,10 +86,11 @@ related:
 - `fileChanges` ต้องสอดคล้อง architecture จริงของ target project — ห้ามเดา path
 - ห้ามแก้ source code ของ viewer (`src/`) นอกจาก `src/data/ideas.json` เว้น user สั่ง
 - ห้าม commit/push ใน skill นี้ — ship ทำผ่าน `/ship-to-dev-branch`
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 ## Expected Outcome
 
 - `src/data/ideas.json` มี 30 ไอเดียครบ schema
+- `<project>-idea-features.md` อยู่ใน OS temp dir — markdown summary ครบ 30 ไอเดีย
 - Web viewer รันและเปิดใน browser — user เห็น grid + preview + filters ครบ
 - ผ่าน `/ship-verify` gates ที่ apply

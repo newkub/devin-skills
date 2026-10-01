@@ -71,7 +71,17 @@ related:
 3. ถ้า `dev` หรือ server scripts ไม่จำเป็นต้องทดสอบ → skip และบันทึก
 4. บันทึกผลลัพธ์
 
-### 5. Review Correctness
+### 5. Test In Temp
+
+> Goal: ทดลอง/ทดสอบใน OS temp directory โดยไม่แตะ workspace — merged จาก `/test-in-temp`
+
+- ใช้ test-in-temp เมื่อ test สิ่งที่ไม่เกี่ยวกับ workspace: experiments, package-manager trials, repro bugs, one-off prototypes — ถ้า test เกี่ยวกับ workspace ให้ทำขั้นตอน 1-4 ข้างบนใน project
+1. สร้าง temp dir `%TEMP%	est-in-temp-<random>` — copy เฉพาะไฟล์ที่จำเป็นเข้าไป
+2. รัน experiment/command ใน temp — จับ stdout, stderr, exit code; command นาน → timeout
+3. เก็บ temp ไว้จนจบ session ให้ user ตรวจ — default ลบเมื่อเสร็จ เว้นแต่ user ขอเก็บ
+4. ห้ามแตะ workspace หรือ install deps จาก temp — copy ผลกลับ workspace ต้องได้ user confirm ชัดเจน
+
+### 6. Review Correctness
 
 > Goal: ตรวจสอบความถูกต้องก่อน report ผล
 
@@ -80,7 +90,7 @@ related:
 3. ถ้า `/deep-review` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
 4. บันทึกผลการ review
 
-### 6. Report And Fix
+### 7. Report And Fix
 
 > Goal: รายงานผลและจัดการ issues
 

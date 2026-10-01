@@ -42,7 +42,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
 5. ถ้าผลเป็น `skip` → ไป Step 7
 6. ถ้าผลเป็น `update` หรือ `create` → ดำเนินขั้นตอนถัดไป
-7. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
+7. อ่าน `AGENTS.md`, `rules/`, `tools/review-codebase/README.md` ถ้ามี
 8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` ตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count และ evidence
 9. ถ้า pre-review score < 70 → ทำ Step 2-6 ก่อน Step 7
 
@@ -60,7 +60,7 @@ Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\
 > Goal: มั่นใจว่า skills/rules ครอบคลุม dependencies และ features
 
 1. ทำ `/new-skills` เพื่อสร้าง skills ที่ขาดจาก dependencies
-2. ตรวจ `AGENTS.md` และ `.devin/rules` อัปเดตตาม features ใหม่
+2. ตรวจ `AGENTS.md` และ `rules/` อัปเดตตาม features ใหม่
 3. ถ้ามี skill หรือ rule ขาด → สร้างหรืออัปเดต
 
 ### 4. Update Analyze CLI

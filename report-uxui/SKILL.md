@@ -8,7 +8,7 @@ related:
   - report
   - report-architecture-diagram
   - follow-design-system
-  - roleplay-by-all-stakeholder
+  - review-by-all-stakeholder
   - ask-me
   - suggest-next-action
   - open-files-in-web
@@ -122,7 +122,7 @@ related:
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /draw-ansi ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /roleplay-by-all-stakeholder ถ้าจำเป็น
+- ใช้ /review-by-all-stakeholder ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 

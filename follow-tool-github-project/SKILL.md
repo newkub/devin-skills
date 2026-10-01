@@ -32,7 +32,7 @@ related:
 2. Verify: `gh --version`
 3. Login: `gh auth login`
 4. ขอ scope `project`: `gh auth refresh -s project`
-5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup gh`
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/deep-research setup gh`
 
 ### 1. Verify Authentication And Scope
 
@@ -128,6 +128,8 @@ related:
 
 - ใช้ `/list-github` เพื่อค้นหา project number/owner ก่อนเรียกคำสั่ง
 - ใช้ `/delete` flow สำหรับคำสั่ง destructive (`delete`, `close`)
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

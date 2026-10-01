@@ -24,7 +24,7 @@ related:
 > Goal: รวบรวมข้อมูล project
 
 1. อ่าน `package.json`, `README.md`, `AGENTS.md`
-2. อ่าน `.devin/rules` หรือ project rules
+2. อ่าน `rules/` (ast-grep) หรือ project rules
 3. อ่าน `docs/` ที่เกี่ยวกับ development
 4. ระบุ tech stack, package manager, และ scripts
 

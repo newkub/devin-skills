@@ -134,6 +134,8 @@ related:
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - UI components ที่ accessible และ customizable

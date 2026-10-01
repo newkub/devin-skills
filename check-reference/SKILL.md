@@ -6,6 +6,8 @@ related:
   - review-devin-global-harness
   - check-secrets
   - update-references
+  - check-types-definition
+  - deep-research
 
 ---
 ## Goal
@@ -25,6 +27,7 @@ related:
 1. อ่าน reference จากไฟล์ใน project
 2. ตรวจสอบว่าข้อมูลถูกต้องและเป็นปัจจุบัน
 3. เปรียบเทียบกับ implementation จริง
+4. เช็ค claims เรื่อง type surface (options, defaults, types, signatures) ของ lib/config ด้วย `/check-types-definition` — CLI table เทียบกับ `.d.ts`/Rust source จริง
 
 ### 2. Read Web References
 
@@ -33,6 +36,7 @@ related:
 1. ค้นหาข้อมูลจาก official documentation
 2. ตรวจสอบความถูกต้องของข้อมูล
 3. ตรวจสอบว่าเป็น version ล่าสุด
+4. ถ้าต้อง verify เชิงลึกหลาย sources (deprecation, breaking changes, claims ที่ขัดกัน) → ทำ `/deep-research`
 
 ### 3. Read CLI Help
 
@@ -83,6 +87,8 @@ related:
 - ตรวจสอบ version ล่าสุด
 - ตรวจสอบ deprecation notices
 
+- ใช้ /check-types-definition ถ้าจำเป็น (type/API surface vs source จริง)
+- ใช้ /deep-research ถ้าจำเป็น (verify เชิงลึกหลาย sources)
 - ใช้ /review-devin-global-harness ถ้าจำเป็น
 - ใช้ /check-secrets secrets-leak ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น

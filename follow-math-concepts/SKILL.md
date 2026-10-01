@@ -78,7 +78,7 @@ related:
 
 ### 5. Cross Skills
 
-- ใช้ `/follow-algorithms`, `/report-math-equation`, `/explain`, `/learn-from-web`, `/follow-lib-fast-check`, `/deep-review`, `/learn-by-slide` ตาม context ของปัญหา
+- ใช้ `/follow-algorithms`, `/report-math-equation`, `/explain`, `/learn-from-web`, `/follow-lib-fast-check`, `/deep-review`, `/report-slides` ตาม context ของปัญหา
 
 ## Expected Outcome
 

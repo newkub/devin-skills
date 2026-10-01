@@ -90,6 +90,8 @@ related:
 - ใช้ `/follow-deploy` เมื่อต้องการ deployment guidance
 - ใช้ `/run-deploy` เพื่อ trigger deployment
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - เลือก workflows ที่เหมาะสมกับ project

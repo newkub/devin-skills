@@ -12,7 +12,9 @@ related:
   - update-dot-devin
   - refactor-to-packages-shared
   - update-gitignore
+  - research-setup-integrations
   - deep-validate
+  - follow-default-config
   - report-idea-cleanup-files-in-computer
 
 ---
@@ -37,7 +39,7 @@ related:
 1. ทำ `/deep-review` เพื่อดู findings
 2. บันทึก priority list จาก severity
 3. ระบุ config ที่ต้องสร้าง ลบ หรือ refactor
-4. ถ้า project ยังไม่มี `.devin/rules` หรือ `AGENTS.md` → ทำ `/update-dot-devin` และ `/update-agents-md`
+4. ถ้า project ยังไม่มี `rules/` + `sgconfig.yml` หรือ `AGENTS.md` → ทำ `/update-astgrep-rules` และ `/update-agents-md`
 
 ### 2. Plan Shared Config Strategy
 
@@ -209,6 +211,11 @@ related:
 - ใช้ conventions ของ Bun, pnpm, Node, Rust, Python ตามทีตรวจพบ
 - ใช้ `/follow-devin-global-skills` เพื่อหา config skills เฉพาะทาง
 
+### 6. Defaults Minimal
+
+- ใช้ `/follow-default-config` — config files เก็บเฉพาะ overrides; ลบ keys ที่เท่า default (เช็ค defaults ด้วย `/check-types-definition`)
+
+- ใช้ /research-setup-integrations ถ้าจำเป็น (เลือก plugins/extensions/providers ของ tool จาก official sources)
 - ใช้ /update-project ถ้าจำเป็น
 - ใช้ /report-idea-cleanup-files-in-computer ถ้าจำเป็น
 
@@ -235,7 +242,7 @@ related:
 1. ทำ `/check-secrets env-vars` — vars ที่ code อ่าน (`process.env.*`, `import.meta.env.*` ตาม stack) เทียบกับที่ define
 2. อ่าน env files ปัจจุบันและ `.env.example` — list keys ทั้งหมด
 3. สร้าง diff: missing keys (code ใช้แต่ไม่มี), stale keys (มีแต่ code ไม่ใช้), keys ที่ต้องเปลี่ยนค่า/format
-4. ทำ `/check-config-drift` report-drift workflow ถ้าต้องดู drift ข้าม environments/workspaces
+4. ทำ `/deep-review` domain `review-config` report-drift workflow ถ้าต้องดู drift ข้าม environments/workspaces
 
 ###### 2. Apply Changes
 
@@ -288,7 +295,7 @@ related:
 
 > Goal: รู้ว่า config ไหนซ้ำจริงและคุ้มรวม
 
-1. ทำ `/check-config-drift` — หา config ที่ซ้ำหรือ drift ข้าม workspaces
+1. ทำ `/deep-review` domain `review-config` — หา config ที่ซ้ำหรือ drift ข้าม workspaces
 2. เทียบ config ต่อ domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
 3. เทียบ dependency versions ข้าม package manifests — หา version drift และ duplicates
 4. เก็บ candidates เฉพาะที่ซ้ำจริงใน 2+ workspaces — ห้ามรวมเผื่อ
@@ -312,7 +319,7 @@ related:
 
 1. ทำ `/update-references` — ลบ config ลูกที่ duplicate, เก็บเฉพาะ workspace-specific overrides
 2. รัน validate ตาม ecosystem: `tsc -b`, `eslint .`, `prettier --check .`, install ใหม่เพื่อ resolve catalog
-3. ทำ `/check-config-drift` อีกครั้ง — ยืนยันว่าเหลือ canonical config เดียวต่อ domain
+3. ทำ `/deep-review` domain `review-config` อีกครั้ง — ยืนยันว่าเหลือ canonical config เดียวต่อ domain
 4. ถ้า fail → revert batch นั้นแล้วแก้ สูงสุด 3 รอบ → stop/report
 
 ##### Rules

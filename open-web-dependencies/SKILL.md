@@ -3,7 +3,7 @@ name: open-web-dependencies
 description: เปิด website ของ dependencies จาก package manifest
 argument-hint: "[manifest]"
 related:
-  - research-dependencies
+  - deep-research
   - list-dependencies
   - run-dev
   - run-install
@@ -45,7 +45,7 @@ related:
 3. ใช้ environment variables หรือ secrets management tools
 4. อย่าแชร์ secrets กับบุคคลอื่น
 
-- ใช้ /research-dependencies ถ้าจำเป็น
+- ใช้ /deep-research dependencies ถ้าจำเป็น
 - ใช้ /follow-tool-madge ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น

@@ -210,7 +210,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 
 1. อ่าน `supabase/config.toml` และ `.env*` ที่มีอยู่
 2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาดหรือซ้ำ
-3. ทำ `/check-config-drift` ถ้าสงสัยว่า local config ต่างจาก remote
+3. ทำ `/deep-review` domain `review-config` ถ้าสงสัยว่า local config ต่างจาก remote
 4. ถ้าไม่มี `supabase/config.toml` เลย → ทำ `workflows/setup-supabase/SKILL.md` แทน
 
 ###### 2. Configure Env Vars

@@ -116,6 +116,8 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - เข้าใจและใช้งาน Devin/Cascade ได้อย่างมีประสิทธิภาพ

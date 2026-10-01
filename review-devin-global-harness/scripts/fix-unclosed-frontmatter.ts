@@ -7,7 +7,7 @@ const dirs = [
   "follow-deep",
   "follow-create-web-svelte",
   "follow-service-vercel",
-  "follow-create-solid-tanstack",
+  "follow-solid-framework",
   "follow-tool-playwright",
   "follow-tool-renovate",
   "list-devin-global-skills",

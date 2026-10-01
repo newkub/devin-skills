@@ -4,26 +4,23 @@
 
 ```
 .devin/
-├── rules/
-│   ├── always-on/
-│   ├── model_decision/
-│   └── glob/
 ├── hooks/
 │   ├── hooks.json
 │   ├── run-lint.ts
 │   └── run-typecheck.ts
 ├── skills/ (optional)
-└── mcp/ (optional)
+└── mcp_config.json (optional)
+
+rules/ (ast-grep — project root, ไม่ใช่ใน .devin)
+├── dependencies/
+├── architecture/
+└── glob/
 ```
 
 ### Monorepo
 
 ```
-.devin/
-├── rules/
-│   ├── always-on/
-│   ├── model_decision/
-│   └── glob/
+.devin/ (repo root เท่านั้น)
 ├── hooks/
 │   ├── hooks.json
 │   ├── run-lint.ts
@@ -36,4 +33,4 @@ tools/<workspace>/
 ├── AGENTS.md
 ```
 
-ไม่สร้าง `.devin/` ใน sub-workspace — rules ทั้งหมดอยู่ที่ root `.devin/rules/` เท่านั้น
+ไม่สร้าง `.devin/` ใน sub-workspace — `.devin/` อยู่ที่ repo root เท่านั้น และ ast-grep rules อยู่ที่ `rules/` root (ไม่ใช่ `.devin/rules/`)

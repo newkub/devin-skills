@@ -108,6 +108,8 @@ related:
 - ใช้ `Pacer` สำหรับ debounce/throttle แทนเขียนเอง
 - แยก reactivity scope ใน `Store`/`DB` ให้เหมาะสม
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - TanStack library ที่เลือกถูกต้องตาม use case และ maturity

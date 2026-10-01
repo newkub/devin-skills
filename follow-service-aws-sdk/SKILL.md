@@ -104,7 +104,7 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 > Goal: รู้ config ปัจจุบันก่อนแก้
 
 1. อ่าน client construction ปัจจุบัน, env keys (`AWS_REGION`, `AWS_PROFILE`, `AWS_ENDPOINT_URL*`) และ `~/.aws/config` ถ้าเกี่ยวข้อง
-2. ทำ `/check-config-drift` ถ้าต้องเทียบ env กับ code
+2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ env กับ code
 3. ถ้าไม่พบ client → ทำ `workflows/setup-aws-sdk/SKILL.md` ก่อน
 
 ###### 2. Configure Region

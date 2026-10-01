@@ -128,6 +128,8 @@ related:
 - ใช้ /run-test ถ้าจำเป็น
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Mutation testing ทำงานได้อัตโนมัติ

@@ -5,7 +5,6 @@ argument-hint: "[category-or-need]"
 related:
   - deep-review
   - use-lib-effective
-  - research-dependencies
   - deep-research
   - list-raindrop-favorite
   - search-raindrop
@@ -24,7 +23,7 @@ related:
 
 - Canonical catalog: `../follow-my-techstack/references/techstack-catalog.md` — source of truth เดียว ห้าม copy เนื้อหามาไว้ที่นี่
 - Review stack ทั้ง project เทียบ catalog → `/deep-review`
-- หา package ที่ยังไม่มีใน catalog → `/research-dependencies` หรือ `/deep-research`
+- หา package ที่ยังไม่มีใน catalog → `/deep-research dependencies`
 - ติดตั้ง package → `/run-install`
 
 ## Execute
@@ -44,7 +43,7 @@ related:
 1. ใช้ `Default` เสมอ — ยกเว้นเงื่อนไข `(→ ...)` ใน `Alternatives` ตรงกับ project (เช่น `Hono` → CF Workers)
 2. ถ้า project มี lib ใน category นั้นอยู่แล้ว → ใช้ของเดิมต่อ ไม่เปลี่ยนเพื่อให้ตรง default โดยไม่มีเหตุผล
 3. ถ้า project ใช้ตัวที่ไม่ใช่ default และไม่มีเหตุผล → flag drift ให้ user ตัดสินใจผ่าน `/ask-me` อย่า migrate เอง
-4. ถ้า lib ที่ต้องการไม่อยู่ใน catalog → ทำ `/research-dependencies` หรือ `/deep-research` แล้วเสนออัปเดต catalog
+4. ถ้า lib ที่ต้องการไม่อยู่ใน catalog → ทำ `/deep-research dependencies` แล้วเสนออัปเดต catalog
 
 ### 3. Consult Preference Signals
 

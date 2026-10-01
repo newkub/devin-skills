@@ -112,6 +112,8 @@ related:
 - ใช้ `/use-scripts` เพื่อ parse `report/jscpd-report.json`
 - ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `.jscpd.json` config ที่ project root

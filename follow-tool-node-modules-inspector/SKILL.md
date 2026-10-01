@@ -104,6 +104,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `node-modules-inspector` รันได้ทั้ง `bunx` และ package manager ของ project

@@ -149,6 +149,8 @@ related:
 
 - [CLI reference](references/cli.md)
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - React app หา performance issues ได้ชัดเจนขึ้น

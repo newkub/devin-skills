@@ -15,6 +15,11 @@ related:
   - follow-agents-md
   - update-devin
   - follow-deep
+  - deep-analyze
+  - deep-analyze-by-use-scripts
+  - use-scripts
+  - transform
+  - follow-math-concepts
   - deep-validate
   - ship-to-dev-branch
   - report
@@ -37,18 +42,23 @@ related:
 
 > Goal: รวบรวม context ลึกก่อน spawn subagents
 
-1. ทำ `/follow-deep` เพื่อวิเคราะห์ root cause, impact, consumers และ dependencies
-2. บันทึก context สำคัญ: paths, conventions, ไฟล์ที่เกี่ยวข้อง, ข้อจำกัด
-3. ถ้าไม่แน่ใจ scope → ทำ `/ask-me` ก่อน
+1. ทำ `/follow-deep` + `/deep-analyze` เพื่อวิเคราะห์ root cause, impact, consumers และ dependencies (`/deep-analyze-by-use-scripts` forward → `/deep-analyze`)
+2. scope กว้าง → ใช้ `/use-scripts` เก็บ context แบบ async/parallel (file lists, import graph, grep counts, git log) แทน sequential reads
+3. บันทึก context สำคัญ: paths, conventions, ไฟล์ที่เกี่ยวข้อง, ข้อจำกัด
+4. ถ้าไม่แน่ใจ scope → ทำ `/ask-me` ก่อน
 
 ### 2. Decompose Task
 
 > Goal: แบ่งงานออกเป็น subtasks ที่ชัดเจน
 
-1. อ่านผลจาก `/follow-deep`
+1. อ่านผลจาก `/follow-deep`/`/deep-analyze`
 2. แบ่ง subtasks ตาม package, layer, หรือ role
 3. แต่ละ subtask ต้องมี: input, expected output, success criteria, files ที่ต้องแก้
-4. ระบุ dependencies ระหว่าง subtasks ถ้ามี
+4. Partition ด้วย `/follow-math-concepts` (set-theory, graph-theory) เพื่อให้ขนานได้โดยไม่ชนกัน:
+   - file sets ของทุก subtask ต้อง disjoint: `∪Sᵢ = scope` และ `Sᵢ ∩ Sⱼ = ∅` (i≠j) — ไฟล์ที่ถูกแก้ร่วมกันอยู่ subtask เดียว
+   - dependency ระหว่าง subtasks ต้องเป็น DAG → topological order เป็น waves: wave เดียวกัน spawn พร้อมกัน, wave ถัดไปรอ wave ก่อนเสร็จ
+   - ไม่มี dependency เลย → embarrassingly parallel: spawn ทั้งหมด `is_background=true` ในครั้งเดียว
+   - เจอ cycle ใน dep graph → merge subtasks ที่ติด cycle เข้าด้วยกัน
 
 ### 3. Select Subagents
 
@@ -64,10 +74,11 @@ related:
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `run_subagent` แบบ `is_background=true` เพื่อรัน parallel
-2. ห้ามส่ง subtasks ซ้ำซ้อนหรือทับซ้อนกัน
-3. รอผลด้วย `read_subagent` หรือ continue ทำงานอื่นไป
-4. ถ้า subagent ติด error → ทำ `resolve-errors` ก่อน spawn ตัวใหม่
+1. ใช้ `run_subagent` แบบ `is_background=true` เพื่อรัน parallel — spawn ทีละ wave ตาม DAG (step 2)
+2. ห้ามส่ง subtasks ซ้ำซ้อนหรือทับซ้อนกัน — file sets ต้อง disjoint เสมอ
+3. รอผลด้วย `read_subagent` (non-blocking) หรือ continue ทำงานอื่นไป — เช็ค async ไม่ poll loop
+4. subtask ที่แก้หลายไฟล์ตาม pattern → สั่งใน prompt ให้ใช้ `/use-scripts` (edit workflow) หรือ `/use-astgrep rewrite` — บังคับ dry-run ก่อนเสมอเพื่อ audit trail
+5. ถ้า subagent ติด error → ทำ `resolve-errors` ก่อน spawn ตัวใหม่
 
 ### 5. Merge And Fix
 
@@ -101,9 +112,9 @@ related:
 
 ### 2. Independence
 
-- แต่ละ subtask ต้องไม่พึ่งพากัน
-- ไม่ให้หลาย agent แก้ไขไฟล์เดียวกัน
-- ใช้ `/follow-parallel` สำหรับ parallelization
+- แต่ละ subtask ต้องไม่พึ่งพากัน — ถ้าพึ่งพาให้เข้า wave ถัดไปตาม DAG ไม่ใช่ spawn พร้อมกัน
+- ไม่ให้หลาย agent แก้ไขไฟล์เดียวกัน — file sets ต้อง disjoint (`∩ = ∅`) ตาม partition ใน step 2
+- ใช้ `/follow-parallel` + `/follow-math-concepts` สำหรับ parallelization — ไม่มี shared mutable state ระหว่าง agents
 
 ### 3. Clear Prompts
 

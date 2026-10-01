@@ -15,7 +15,7 @@
 - [ ] ops → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`
 - [ ] docs/meta → `/deep-review`, `/deep-review`, `/deep-review`
 - [ ] process → `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/review-github-pr`, `/deep-review`, `/deep-review`
-- [ ] persona → `/deep-review` via `/roleplay-by-all-stakeholder`
+- [ ] persona → `/deep-review` via `/review-by-all-stakeholder`
 - [ ] devin repos → `/review-devin-global-harness`, `/update-devin-global-subagents`, `/deep-review`
 - [ ] aggregate → `/deep-review`, `/deep-review-then-fix`
 

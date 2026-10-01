@@ -99,6 +99,8 @@ related:
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - โหลด `ES Modules` ได้โดยไม่ต้อง `bundler`

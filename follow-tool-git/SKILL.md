@@ -101,6 +101,8 @@ related:
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - สามารถใช้งาน git ได้ตามสถานการณ์ตั้งแต่ daily workflow ถึง advanced operations

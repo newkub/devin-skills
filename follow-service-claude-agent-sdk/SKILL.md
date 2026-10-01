@@ -74,7 +74,7 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 > Goal: รู้ options ปัจจุบันก่อนแก้
 
 1. อ่าน call sites ของ `query()` และ options ที่ส่งอยู่
-2. ทำ `/check-config-drift` ถ้ามี config แยกในไฟล์อื่น
+2. ทำ `/deep-review` domain `review-config` ถ้ามี config แยกในไฟล์อื่น
 3. ถ้าไม่พบ `query()` → ทำ `workflows/setup-claude-agent-sdk/SKILL.md` ก่อน
 
 ###### 2. Configure Model And Prompt

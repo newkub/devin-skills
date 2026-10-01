@@ -9,7 +9,7 @@ allowed-tools:
   - todo_write
 related:
   - ask-project-requirement
-  - understand-me
+  - follow-my-persona
   - follow-your-suggestion
   - ask-again
   - dont-ask-me
@@ -25,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-project-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/understand-me`)
+ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-project-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/follow-my-persona`)
 
 รองรับคำถามเกี่ยวกับ tech stack เช่น runtime, language, framework, library, database, test tool, deploy target, CI tool และ package manager
 
@@ -111,7 +111,7 @@ related:
 
 - คำตอบชัดเจนจาก context หรือจาก memory
 - เป็นการเก็บ requirements (ใช้ `/ask-project-requirement`)
-- เป็นการสัมภาษณ์ preferences (ใช้ `/understand-me`)
+- เป็นการสัมภาษณ์ preferences (ใช้ `/follow-my-persona`)
 - เป็น low-risk action ที่ทำได้เลย
 - ผู้ใช้หรือ workflow ระบุ `/dont-ask-me`
 

@@ -225,7 +225,7 @@ related:
 
 1. รัน official codemod ถ้า package มีให้ — ดู migration guide
 
-2. ถ้าไม่มี codemod → ใช้ `/use-astgrep` หรือ `/migration-by-astgrep` เขียน patterns แปลง renamed/removed APIs
+2. ถ้าไม่มี codemod → ใช้ `/use-astgrep` หรือ `/migration-with-astgrep` เขียน patterns แปลง renamed/removed APIs
 
 3. manual fix ส่วนที่ codemod ทำไม่ได้ — behavior changes, config moves, type changes
 

@@ -27,7 +27,7 @@ related:
 - Global workflows (`~/.codeium/windsurf/global_workflows/`)
 - Global skills (`%APPDATA%\devin\skills\` หรือ `~/.codeium/windsurf/skills/`)
 - Project codebase (source code, configs, docs)
-- `.devin/rules/` ในแต่ละ workspace
+- `rules/` (ast-grep) ที่ repo root
 - `AGENTS.md` ในแต่ละ workspace
 - Workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
 
@@ -56,7 +56,7 @@ related:
 1. ค้นหาใน global workflows ด้วย `findstr` หรือ `Grep`
 2. ค้นหาใน global skills ด้วย `findstr` หรือ `Grep`
 3. ค้นหาใน project codebase ด้วย `Grep` หรือ `ast-grep`
-4. ค้นหาใน `.devin/rules/` ของทุก workspace
+4. ค้นหาใน `rules/` ที่ repo root
 5. ค้นหาใน `AGENTS.md` ของทุก workspace
 6. ค้นหาใน workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
 7. ค้นหาชื่อไฟล์เก่า เส้นทางเก่า import statements และ workflow references
@@ -88,7 +88,7 @@ related:
 1. อัปเดท references ใน global workflows (`old-name` → `new-name`)
 2. อัปเดท references ใน global skills
 3. อัปเดท references ใน `AGENTS.md` ของทุก workspace
-4. อัปเดท references ใน `.devin/rules/` ของทุก workspace
+4. อัปเดท references ใน `rules/` ที่ repo root
 5. อัปเดท references ใน workspace workflows
 6. อัปเดท references ใน project codebase
 
@@ -111,7 +111,7 @@ related:
 - ค้นหาทั้งชื่อไฟล์และ extension
 - ค้นหาทั้ง import statements และ string references
 - ค้นหาในทุก file types (.ts, .js, .md, .json, .yml, .jsonc)
-- ค้นหาใน global workflows, global skills, codebase, `.devin/rules/`, `AGENTS.md`, workspace workflows
+- ค้นหาใน global workflows, global skills, codebase, `rules/`, `AGENTS.md`, workspace workflows
 
 ### 2. Update Strategy
 

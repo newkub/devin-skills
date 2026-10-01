@@ -5,7 +5,6 @@ argument-hint: "[pr <n>] | [git <ref>] | [branch <base>..<head>] | [file <old> <
 related:
   - follow-create-web
   - follow-lib-unocss
-  - use-gh-cli
   - report-git-diff
   - deep-review
 ---
@@ -138,7 +137,7 @@ related:
 
 ### 6. Use Existing Skills
 
-- `/use-gh-cli` สำหรับ PR
+- `gh` CLI สำหรับ PR
 - `/follow-lib-unocss` สำหรับ styling
 - `/follow-create-web` (solid-tanstack-router) สำหรับ stack
 - /open-web สำหรับเปิด browser

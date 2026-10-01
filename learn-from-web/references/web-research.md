@@ -83,4 +83,4 @@
 
 - ทำ `/deep-research` เมื่อต้องการค้นหาจาก NPM, GitHub, DeepWiki, Context7 และ WebSearch พร้อมกัน
 - ทำ `/follow-best-practice` เพื่อใช้ความรู้ตามมาตรฐานของ language, runtime, และ library
-- ทำ `/research-setup` ถ้าจำเป็น
+- ทำ `/deep-research setup` ถ้าจำเป็น

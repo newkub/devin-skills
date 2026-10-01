@@ -5,7 +5,6 @@ argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url> | verify]"
 related:
   - resolve-errors
   - git-commit
-  - use-gh-cli
   - use-wrangler
   - run-check
   - loop-until-complete
@@ -110,7 +109,7 @@ CD (Cloudflare และอื่นๆ):
 ### 4. Integration
 
 - `/git-commit-and-push` — ใช้หลัง fix เพื่อ push แล้ว watch ต่อ
-- `/use-gh-cli` — command reference สำหรับ gh runs/workflows
+- `gh` CLI — command reference สำหรับ runs/workflows
 - `/use-wrangler` — command reference สำหรับ wrangler deployments
 - `/run-check` — local gate ก่อน push fix
 

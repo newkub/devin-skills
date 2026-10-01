@@ -97,6 +97,8 @@ madge --circular --exit-code 1 --extensions ts,tsx src/
 - ใช้ `/run-test` เมื่อต้องการยืนยัน module ที่แตะหลัง refactor
 - ใช้ `/run-scan` เมื่อต้องการ audit เพิ่มเติมนอกเหนือ dependency graph
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Dependency graph report พร้อม circular list และ file impact

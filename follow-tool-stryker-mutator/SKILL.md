@@ -122,6 +122,8 @@ related:
 
 - ใช้ /deep-test mutation ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Stryker ติดตั้งและทำงานได้

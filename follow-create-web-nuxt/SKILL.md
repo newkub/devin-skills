@@ -219,6 +219,10 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-web-nuxt.md](templates/file-structure-web-nuxt.md)
+
 ## Expected Outcome
 
 - Nuxt 4 project ที่มีโครงสร้างถูกต้อง

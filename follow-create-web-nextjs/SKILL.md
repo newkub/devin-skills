@@ -169,6 +169,10 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-web-nextjs.md](templates/file-structure-web-nextjs.md)
+
 ## Expected Outcome
 
 - Next.js 16 project ที่มีโครงสร้างถูกต้อง

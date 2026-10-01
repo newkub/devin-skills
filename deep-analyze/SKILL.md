@@ -5,7 +5,7 @@ argument-hint: "[scope|report]"
 related:
   - deep-thinking
   - scan-codebase
-  - check-files
+  - check-long-files
   - check-code-structure
   - use-astgrep
   - report-deep
@@ -51,7 +51,7 @@ related:
 1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
 2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
 3. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
-4. ทำ `/check-files structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
+4. ทำ `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
 5. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
 6. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
    - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
@@ -63,7 +63,7 @@ related:
 
 > Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
 
-1. ทำ `/check-files structure` ด้วย `eza --tree --level 2` หรือ `tree` ดู directory structure
+1. ทำ `eza --tree --level 2` หรือ `tree` ดู directory structure
 2. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
 3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
 4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
@@ -159,7 +159,7 @@ related:
 
 ### 2. Tool Selection
 
-- Structure: `/scan-codebase`, `/check-files structure`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
+- Structure: `/scan-codebase`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
 - Architecture: `/use-astgrep`, `Grep`
 - Features: `/scan-codebase`, `/use-astgrep`
 - Code Quality: `/use-astgrep`, `/use-astgrep-programmatic`, `Grep`, `/use-scripts`
@@ -201,7 +201,7 @@ related:
 - ตรวจสอบ `tools/review-codebase` และ `tools/analyze` ก่อนใช้
 - ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis
 - รวบรวม metrics จาก knip, biome, vitest, madge
-- รัน `bunx ast-grep outline` ดู structure และ `eza --tree --level 2` หรือ `/check-files structure` ดู physical layout
+- รัน `bunx ast-grep outline` ดู structure และ `eza --tree --level 2` ดู physical layout
 
 ## Expected Outcome
 

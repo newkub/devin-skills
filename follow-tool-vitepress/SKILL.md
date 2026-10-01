@@ -233,6 +233,8 @@ export default {
 
 - [CLI reference](references/cli.md)
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - VitePress config พร้อมใช้งาน

@@ -10,10 +10,12 @@ related:
   - deep-review
   - run-verify
   - run-test-all
+  - follow-tool-mr-boxington
   - ship-to-dev-branch
   - report
   - suggest-next-action
   - run-deploy
+  - research-setup-integrations
 ---
 
 ## Goal
@@ -234,6 +236,7 @@ jobs:
 - `run-verify`, `check-quality`, `review-*`, `check-*` ทำงานซ้ำซ้อนกันได้ ควรรวมลงใน `verify` job เดียว
 - ใช้ `concurrency`, `timeout-minutes`, `cache`, runner เดียว และหลีกเลี่ง matrix เพื่อประหยัด cost
 - ถ้าไม่มี root package.json ให้รัน verify จาก tool directories แทนการสร้าง root package หลอก
+- ใช้ /research-setup-integrations ถ้าจำเป็น (เลือก CI actions/plugins จาก official sources ก่อนเขียน workflow)
 - ใช้ /run-deploy ถ้าจำเป็น
 
 ## Expected Outcome

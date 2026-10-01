@@ -5,7 +5,7 @@ argument-hint: "[framework]"
 related:
   - follow-lib-tanstack-ecosystem
   - run-install
-  - check-config-drift
+  - improve-config
   - resolve-errors
 ---
 

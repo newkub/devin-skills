@@ -99,8 +99,8 @@ related:
 1. ลบ `lefthook.yml` และ `lefthook-local.yml` ออกจาก repo
 2. เอา `bunx lefthook install` ออกจาก `package.json` `prepare`
 3. เปลี่ยน `prepare` เป็น `mise x -- hk install`
-4. อัปเดต `.devin/rules/always-on/follow-lefthook.md` เป็น `hk.md`
-5. ลบ ast-grep rule `rules/always-on/follow-lefthook.yml` ถ้ามี
+4. อัปเดต references ของ lefthook ใน `AGENTS.md` เป็น `hk`
+5. ลบ ast-grep rule `follow-lefthook.yml` ใน `rules/` ถ้ามี
 
 ## Rules
 
@@ -238,6 +238,7 @@ hooks {
 - ใช้ `/follow-tool-mise` สำหรับติดตั้งและจัดการ tools
 - ใช้ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
 - ใช้ `/fix` เมื่อ hooks พบ issues ที่ต้องแก้
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

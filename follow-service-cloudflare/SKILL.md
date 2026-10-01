@@ -244,7 +244,7 @@ export default defineNuxtConfig({
 > Goal: เข้าใจ config เดิมก่อนแก้
 
 1. อ่าน `wrangler.toml` หรือ `wrangler.jsonc` ที่มีอยู่ — ถ้าไม่พบ → ทำ `workflows/setup-wrangler` หรือ `wrangler init` ก่อน
-2. ทำ `/check-config-drift` ถ้าสงสัยว่า config ไม่ตรงกับ resources จริง
+2. ทำ `/deep-review` domain `review-config` ถ้าสงสัยว่า config ไม่ตรงกับ resources จริง
 3. ระบุ bindings ที่ต้องเพิ่ม/แก้ จาก argument หรือ code usage (`env.MY_KV` ฯลฯ)
 
 ###### 2. Provision Resources

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/solid-router'
-import { For, Show, createMemo, createSignal } from 'solid-js'
+import { For, Show, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
 import IdeaCard from '../components/IdeaCard'
 import PreviewPanel from '../components/PreviewPanel'
 import TopBar from '../components/TopBar'
@@ -30,12 +30,27 @@ function IdeasPage() {
   const grouped = createMemo(() => groupIdeas(filtered(), groupBy()))
   const preview = () => hovered() ?? pinned() ?? filtered()[0] ?? null
 
+  const hasFilters = () =>
+    filters().query !== '' ||
+    filters().kind !== 'all' ||
+    filters().category !== 'all' ||
+    filters().phase !== 'all' ||
+    filters().tags.length > 0
+
+  onMount(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPinned(null)
+    }
+    document.addEventListener('keydown', onKey)
+    onCleanup(() => document.removeEventListener('keydown', onKey))
+  })
+
   const patch = (p: Partial<IdeaFilters>) => setFilters((f) => ({ ...f, ...p }))
   const toggleTag = (t: string) =>
     patch({ tags: filters().tags.includes(t) ? filters().tags.filter((x) => x !== t) : [...filters().tags, t] })
 
   return (
-    <div class="min-h-screen bg-neutral-950 font-sans text-neutral-100">
+    <div class="min-h-screen bg-[var(--bg)] font-sans text-[var(--text)]">
       <TopBar
         filters={filters()}
         categories={allCategories(allIdeas)}
@@ -49,23 +64,25 @@ function IdeasPage() {
         onPhase={(phase) => patch({ phase })}
         onToggleTag={toggleTag}
         onGroupBy={setGroupBy}
+        hasFilters={hasFilters()}
+        onClear={() => setFilters(defaultFilters)}
       />
       <Show when={meta.project || meta.topic}>
-        <div class="border-b border-neutral-800 px-4 py-1.5 text-xs text-neutral-500">
+        <div class="border-b border-[var(--border)] px-4 py-1.5 text-xs text-[var(--muted)]">
           {meta.project} {meta.topic ? `— ${meta.topic}` : ''} {meta.generatedAt ? `· generated ${meta.generatedAt}` : ''}
         </div>
       </Show>
-      <main class="grid grid-cols-[1fr_24rem] gap-4 p-4">
+      <main class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-[1fr_24rem]">
         <div class="space-y-5">
           <For each={grouped()}>
             {([name, list]) => (
               <section>
                 <Show when={groupBy() !== 'none'}>
-                  <h2 class="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">
-                    {name} <span class="text-neutral-600">({list.length})</span>
+                  <h2 class="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">
+                    {name} <span class="text-[var(--faint)]">({list.length})</span>
                   </h2>
                 </Show>
-                <div class="grid grid-cols-4 gap-3">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                   <For each={list}>
                     {(idea) => (
                       <IdeaCard
@@ -82,12 +99,23 @@ function IdeasPage() {
             )}
           </For>
           <Show when={filtered().length === 0}>
-            <p class="py-12 text-center text-sm text-neutral-500">
-              No ideas match — adjust filters, or run <code>/idea-features</code> to generate <code>src/data/ideas.json</code>.
-            </p>
+            <div class="py-12 text-center">
+              <p class="text-sm text-[var(--muted)]">
+                No ideas match — adjust filters, or run <code>/idea-features</code> to generate <code>src/data/ideas.json</code>.
+              </p>
+              <Show when={hasFilters()}>
+                <button
+                  type="button"
+                  onClick={() => setFilters(defaultFilters)}
+                  class="mt-3 rounded-md border border-[var(--border2)] bg-[var(--panel)] px-3 py-1.5 text-xs text-[var(--sub)] hover:border-sky-500"
+                >
+                  Clear all filters
+                </button>
+              </Show>
+            </div>
           </Show>
         </div>
-        <aside class="sticky top-24 h-fit max-h-[calc(100vh-8rem)] overflow-auto">
+        <aside class="h-fit overflow-auto lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)]">
           <PreviewPanel idea={preview()} />
         </aside>
       </main>

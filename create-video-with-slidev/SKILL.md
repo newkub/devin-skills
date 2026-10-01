@@ -11,7 +11,7 @@ related:
   - gen-voice
   - gen-subtitle-video
   - convert-files-format
-  - edit-video-by-remotion
+  - edit-video-with-remotion
   - create-programatic-video-with-fframes
   - report
 
@@ -26,7 +26,7 @@ related:
 - สร้างหรือ enhance `slides.md` ผ่าน `/follow-create-slide-slidev` — ทุก slide ต้องมี motion (ไม่ใช่ static deck)
 - ใช้ `slidev` MCP server (`bunx slidev mcp slides.md` — ลงทะเบียนแล้วใน `%APPDATA%\devin\mcp_config.json` ผ่าน `/update-devin-global-mcp`) เพื่อ inspect, edit, reorder และ navigate slides
 - บันทึกวิดีโอด้วย `/record-video-web-with-agents-browser` (agent-browser) ขณะ auto-advance deck จนจบ
-- ทางเลือกนอก scope หลัก: วิดีโอ programmatic ขั้นสูง (multi-track, effects) → `/edit-video-by-remotion` หรือ `/create-programatic-video-with-fframes` แทน
+- ทางเลือกนอก scope หลัก: วิดีโอ programmatic ขั้นสูง (multi-track, effects) → `/edit-video-with-remotion` หรือ `/create-programatic-video-with-fframes` แทน
 
 ## Execute
 

@@ -104,6 +104,8 @@ related:
 - ใช้ /follow-test ถ้าจำเป็น
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `.hurl` test files อยู่ใน version control และรันผ่าน `hurl --test`

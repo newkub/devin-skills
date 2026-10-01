@@ -20,7 +20,7 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "config ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-config` — config file correctness, schema, CI/CD config, best practices
-- ใช้ `/check-config-drift` ถ้าต้องเทียบ drift ข้าม env
+- ใช้ `/deep-review` domain `review-config` ถ้าต้องเทียบ drift ข้าม env
 
 ## Execute
 

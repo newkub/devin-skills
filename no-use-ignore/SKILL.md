@@ -9,7 +9,7 @@ related:
   - run-lint
   - run-typecheck
   - run-verify
-  - edit-by-astgrep
+  - use-astgrep
   - report-before-after
   - dont-over-engineer
 ---
@@ -23,7 +23,7 @@ related:
 - ถ้า user ระบุ `@files...` → เคลียร์เฉพาะไฟล์นั้น; ไม่ระบุ → scan scope ที่ให้มาหรือทั้ง project
 - suppression ที่อยู่ใน config files (`.eslintignore`, `coveragePathIgnorePatterns`, `.gitignore` เพื่อ build outputs) → ไม่ใช่ scope นี้ — skill นี้จัดการ code-level suppression comments/annotations เท่านั้น
 - security-scan ignores (`# nosec`, `#checkov:skip`, `#tfsec:ignore`) → escalate severity — suppressing security finding ต้องมี written justification + issue link เสมอ
-- mechanical batch หลายไฟล์ → `/edit-by-astgrep` (dry-run + confirm ก่อนเขียนทับเสมอ)
+- mechanical batch หลายไฟล์ → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ)
 
 ## Execute
 

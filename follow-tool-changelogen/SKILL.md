@@ -127,6 +127,8 @@ changelogen ทำงานต่อ git repository เดียว — ไม�
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น
 - ใช้ /follow-tool-auto-it ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Changelog สร้างอัตโนมัติจาก conventional commits

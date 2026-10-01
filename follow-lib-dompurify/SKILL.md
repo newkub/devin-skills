@@ -93,6 +93,8 @@ const clean = purify.sanitize(dirty);
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - HTML ทุกจุดที่มาจาก untrusted source ผ่าน `DOMPurify.sanitize()` ก่อน render

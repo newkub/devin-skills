@@ -114,13 +114,15 @@ related:
 - หลีกเลี่ยงการแก้ไข core Kobalte primitives โดยตรง
 - ใช้ `diff` ตรวจสอบ upstream updates
 
-- ใช้ `/follow-create-solid-tanstack` ถ้าจำเป็น
+- ใช้ `/follow-solid-framework` ถ้าจำเป็น
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-unocss` ถ้าจำเป็น
 - ใช้ `/follow-lib-zaidan-ui` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

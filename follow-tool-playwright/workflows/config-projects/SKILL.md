@@ -25,7 +25,7 @@ related:
 
 > Goal: เข้าใจ config เดิมก่อนแก้
 
-1. อ่าน `playwright.config.ts` ปัจจุบัน — ทำ `/check-config-drift` ถ้าสงสัย config ค้าง
+1. อ่าน `playwright.config.ts` ปัจจุบัน — ทำ `/deep-review` domain `review-config` ถ้าสงสัย config ค้าง
 2. ระบุ keys ที่มีอยู่แล้ว — merge กับเดิม ห้าม overwrite ทั้งไฟล์
 3. ถ้าไม่พบ config → ทำ `workflows/setup-playwright` แทน
 

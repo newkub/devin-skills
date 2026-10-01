@@ -57,6 +57,8 @@ related:
 - ใช้ `/run-test` ถ้าจำเป็น
 - ใช้ `/follow-lib-qrcode` ถ้าต้อง render QR จาก `otpauth://` URI
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (lib otplib)

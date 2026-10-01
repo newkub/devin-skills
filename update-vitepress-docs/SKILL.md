@@ -116,7 +116,7 @@ related:
 - workspace pages อยู่ `docs/workspaces/<name>.md` และลิงก์ผ่าน dropdown nav
 
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-content-correctness ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
 
 ## Expected Outcome
 

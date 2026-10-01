@@ -6,7 +6,7 @@ related:
   - explain
   - write-explicit
   - write-solutions
-  - think-reframe
+  - reframe
   - update-references
 
 ---
@@ -138,7 +138,7 @@ related:
 - ใช้ /explain ถ้าจำเป็น
 - ใช้ /write-explicit ถ้าจำเป็น
 - ใช้ /write-solutions ถ้าจำเป็น
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 
 ## Expected Outcome

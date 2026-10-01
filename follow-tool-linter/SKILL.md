@@ -87,6 +87,8 @@ related:
 - ใช้ `/run-format` เพื่อรัน format
 - ใช้ `/run-verify` เพื่อ verify lint + typecheck
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Linter ตั้งค่าเรียบร้อย

@@ -130,6 +130,8 @@ related:
 - ใช้ `/follow-tasks` เพื่อ wire knip เข้า task runner scripts
 - ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `knip.json` ตั้งค่าครบถ้วนตาม official best practices

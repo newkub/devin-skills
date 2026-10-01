@@ -10,7 +10,7 @@ related:
   - report
   - suggest-next-action
   - merge
-  - batch-rename-files
+  - rename
 ---
 
 ## Goal
@@ -89,7 +89,7 @@ related:
 3. จัดลำดับตาม impact/effort ratio
 4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
 5. ทำ `/suggest-next-action`
-6. ถ้าพร้อม execute → แนะนำให้ทำ `/merge` หรือ `/batch-rename-files`
+6. ถ้าพร้อม execute → แนะนำให้ทำ `/merge` หรือ `/rename`
 
 ## Rules
 

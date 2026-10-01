@@ -70,6 +70,8 @@ related:
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /run-profiler ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (lib web vitals)

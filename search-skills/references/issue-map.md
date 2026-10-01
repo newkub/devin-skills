@@ -17,7 +17,7 @@
 | unused dependencies | `/follow-tool-knip`, `/follow-tool-knip` |
 | dead code / unused files | `/follow-tool-knip` |
 | circular dependencies | `/follow-tool-madge` |
-| long files (>250 บรรทัด) | `/check-files long-files`, `/refactor` |
+| long files (>250 บรรทัด) | `/check-long-files`, `/refactor` |
 | code duplication | `/check-code-structure`, `/follow-tool-jscpd` |
 | broken references / skill refs ขาด | `/review-devin-global-harness`, `/update-references` |
 | package manifest ไม่พร้อม publish | `/update-project` (`### setup-package`) |

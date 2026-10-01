@@ -45,17 +45,17 @@
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
 | structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
 | pretty diff | `delta` / `git-split-diffs` | installed | `/review-diff` |
-| .env lint | `dotenv-linter` | installed | `/check-config-drift` |
+| .env lint | `dotenv-linter` | installed | `/deep-review` domain `review-config` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |
 
 ## Git And GitHub
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/use-gh-cli`, `/create-github-*` |
+| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*` |
 | git worktrees | `worktrunk` / `git worktree` | installed | `/use-git-worktrees` |
 | TUI git | `lazygit` / `gitui` / `gitu` | installed | interactive |
-| Linear | `linear` CLI | installed | ad-hoc (`/use-gh-cli` สำหรับ GitHub) |
+| Linear | `linear` CLI | installed | ad-hoc (`gh` สำหรับ GitHub) |
 | update GH Actions versions | `actions-up` | installed | `/setup-cicd` |
 | AI commit message | `aicommits` | installed | `/git-commit` |
 | commits/branches | `git` | built-in | `/git-commit`, `/list-git` |
@@ -100,7 +100,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| video/audio | `ffmpeg` | installed (mise 9.0) | `/edit-video-by-remotion`, `/convert-*` |
+| video/audio | `ffmpeg` | installed (mise 9.0) | `/edit-video-with-remotion`, `/convert-*` |
 | video → gif | `gifify` | installed | media skills |
 | download media | `yt-dlp` | installed | `/download-*` |
 | images/PDF | `imagemagick` / `resvg` / `poppler` / `ghostscript` | installed (scoop) | `/convert-*` |

@@ -7,8 +7,8 @@ related:
   - follow-single-of-source
   - check-monorepo
   - deep-review
-  - check-content-correctness
-  - think-reframe
+  - check-reference
+  - reframe
   - update-references
   - update-vitepress-docs
   - create-report-in-dot-devin
@@ -199,8 +199,8 @@ related:
 - ไม่ใช้ placeholder หรือ lorem ipsum
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-content-correctness ถ้าจำเป็น
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 

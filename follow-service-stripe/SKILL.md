@@ -219,7 +219,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 1. เปิด customer portal ใน dashboard settings และกำหนด features ที่อนุญาต (cancel, update payment method)
 2. ตั้ง `return_url` ไปยังหน้า billing ของ app
 3. ก่อน go live: แทน test keys ด้วย live keys, ยืนยัน webhook endpoint เป็น HTTPS
-4. ทำ `/check-config-drift` ระหว่าง test/live config ถ้าจำเป็น
+4. ทำ `/deep-review` domain `review-config` ระหว่าง test/live config ถ้าจำเป็น
 
 ###### 5. Verify
 

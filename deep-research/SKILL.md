@@ -1,21 +1,21 @@
 ---
 name: deep-research
-description: ค้นหาข้อมูลลึกจาก multiple sources — packages, repos, docs, benchmarks, security, compatibility
-argument-hint: "[query|report]"
+description: ค้นหาข้อมูลลึกจาก multiple sources — packages, repos, docs, benchmarks, security, compatibility — dispatcher เข้า workflows
+argument-hint: "[general|dependencies|setup|api-references|improve|report|query]"
 related:
   - rethink
-  - research-dependencies
-  - research-setup
+  - research-setup-integrations
   - follow-best-practice
   - learn
   - check-reference
   - deep-review
-
+  - follow-improve
+  - use-subagents
 ---
 
 ## Goal
 
-ค้นหาข้อมูลลึกจาก multiple sources เพื่อให้ได้คำตอบที่ครบถ้วน ถูกต้อง และ current
+ค้นหาข้อมูลลึกจาก multiple sources เพื่อให้ได้คำตอบที่ครบถ้วน ถูกต้อง และ current — dispatcher เข้า focused workflows
 
 ## Scope
 
@@ -23,96 +23,54 @@ related:
 
 ## Execute
 
-### Workflows
+### 1. Choose Workflow
 
-| Argument | Workflow |
-|----------|----------|
-| `report`, `report-findings` | `workflows/report-findings/SKILL.md` — research report พร้อม sources + confidence |
+> Goal: route ไป workflow ที่ตรงกับหัวข้อ
 
-1. ถ้า argument เป็น `report` → อ่าน `workflows/report-findings/SKILL.md` แล้วทำตาม flow — ใช้ findings ที่มีอยู่ ไม่ research ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 0-9 ตามปกติ โดย Step 9 อ่าน workflow `report-findings` มา execute หลัง synthesize
+| หัวข้อ | Workflow |
+|--------|----------|
+| dependencies/libraries/packages (เลือก, เปรียบเทียบ, outdated) | `workflows/dependencies/SKILL.md` — `/deep-research dependencies` |
+| setup/config/CI/boilerplate ของ tool/service | `workflows/setup/SKILL.md` — `/deep-research setup` |
+| integrations: plugins, extensions, providers, adapters, marketplace | `/research-setup-integrations` (top-level) |
+| API references ของ library/tool | `workflows/api-references/SKILL.md` — `/deep-research api-references` |
+| research-driven improvement opportunities | `workflows/improve/SKILL.md` — `/deep-research improve` |
+| สรุป report จาก findings ที่มีอยู่ | `workflows/report-findings/SKILL.md` — `/deep-research report` |
+| หัวข้อทั่วไป / ไม่ตรงข้างบน | `workflows/general/SKILL.md` — full pipeline steps 1-9 |
 
-### 0. Dispatch To Focused Research Skill
-
-> Goal: ใช้ research skill เฉพาะทางถ้ามี
-
-1. ถ้าหัวข้อเกี่ยวกับ dependencies/libraries → ใช้ `/research-dependencies` แล้ว stop
-2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/learn-pattern` ถ้ามี หรือทำต่อ
-3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/deep-review` หรือ `/deep-review`
-4. ถ้าไม่มี focused skill ทีตรง → ทำตามขั้นตอนด้านล่าง
-
-### 1. Identify Topic And Scope
-
-> Goal: ระบุหัวข้อและ scope
-
-ทำตาม [references/topic-and-scope.md](references/topic-and-scope.md)
-
-### 2. Select Sources
-
-> Goal: เลือก sources ตามประเภทข้อมูล
-
-ทำตาม [references/sources.md](references/sources.md)
-
-### 3. Research Packages And Code
-
-> Goal: ค้นหาจาก package registries และ code repositories
-
-ทำตาม [references/package-code-research.md](references/package-code-research.md)
-
-### 4. Use AI Documentation Tools
-
-> Goal: ใช้ DeepWiki, Context7, GitHub MCP
-
-ทำตาม [references/ai-docs.md](references/ai-docs.md)
-
-### 5. Crawl Official Documentation
-
-> Goal: ใช้ CRW สำหรับ official docs
-
-ทำตาม [references/crw.md](references/crw.md)
-
-### 6. Use Web Search
-
-> Goal: ใช้ Windsurf WebSearch สำหรับ sources ทั่วไป
-
-ทำตาม [references/websearch.md](references/websearch.md)
-
-### 7. Check Freshness And Compatibility
-
-> Goal: ตรวจปี, version, breaking changes, migration
-
-ทำตาม [references/freshness.md](references/freshness.md)
-
-### 8. Cross-Reference And Validate
-
-> Goal: ตรวจ credibility, security, license
-
-ทำตาม [references/cross-validate.md](references/cross-validate.md)
-
-### 9. Synthesize Findings
-
-> Goal: รวบรวมและสรุปผล
-
-ทำตาม [references/synthesize.md](references/synthesize.md)
+1. ถ้า argument ตรง workflow → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น
+2. ถ้าไม่ระบุ/ไม่ตรง → ทำ `workflows/general/` (full pipeline) — Step สุดท้าย execute `workflows/report-findings` หลัง synthesize
 
 ## Rules
 
-1. ใช้เมื่อต้องเปรียบเทียบ tools, best practices หลายแหล่ง หรือตัดสินใจสำคัญ
-2. ไม่ใช้สำหรับอ่าน docs ตัวเดียว (ใช้ `/follow-best-practice`) หรือ low-risk
-3. ใช้ multiple sources: NPM, GitHub, DeepWiki, Context7, CRW, Windsurf WebSearch, security DB
-4. ตรวจ credibility: reputation, maintenance, GitHub activity, เปรียบเทียบหลายแหล่ง
-5. ตรวจ security: advisories, CVE, open issues
-6. เน้นข้อมูลปีล่าสุดและระบุ gaps
-7. ดูรายละเอียดใน [references/research-rules.md](references/research-rules.md)
+### 1. When To Use
+
+- ใช้เมื่อต้องเปรียบเทียบ tools, best practices หลายแหล่ง หรือตัดสินใจสำคัญ
+- ไม่ใช้สำหรับอ่าน docs ตัวเดียว (ใช้ `/follow-best-practice`) หรือ low-risk
+- ใช้ multiple sources: NPM, GitHub, DeepWiki, Context7, CRW, Windsurf WebSearch, security DB
+- ดูรายละเอียดใน `references/research-rules.md`
+
+### 2. Research Best Practices
+
+- Official sources ก่อนเสมอ — docs > repo > registry > community; community เป็น fallback/corroboration เท่านั้น
+- Cross-validate ≥ 2-3 sources ก่อนสรุป — claim ที่เห็นแหล่งเดียวระบุเป็น low confidence
+- Freshness: ระบุ version + ปี ของทุก claim; เช็ค deprecation/breaking-change notices ก่อนเสนอแนะ
+- Cite ทุก finding: source URL + accessed date + confidence (high/medium/low)
+- Time-box ตามขนาดงาน (เล็ก ≤ 5 นาที, กลาง ≤ 15 นาที) — ลึกกว่านั้น fan-out ผ่าน `subagents/source-researcher.md` + `/use-subagents`
+- แยก facts กับ assumptions/กับ gaps ชัดเจน — gaps เป็น output ที่มีค่า ไม่ใช่ความล้มเหลว
+- Note conflicts ระหว่าง sources แทนที่จะเลือกเงียบๆ — แสดงทั้งสองฝั่งพร้อมเหตุผล
+- ห้ามเดา API/command/version — ถ้าไม่มี evidence ให้ระบุว่า unverified
+
+### 3. Routing Discipline
+
+- หัวข้อที่มี focused workflow ต้อง route — ห้ามรัน general pipeline ทับ
+- Workflow ที่เลือกเป็น canonical — ห้าม duplicate steps นอก workflow
 
 - ใช้ /rethink ถ้าจำเป็น
-- ใช้ /research-setup ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /follow-improve ถ้าจำเป็น
 
 ## Expected Outcome
 
 - ข้อมูลครบถ้วนจาก multiple sources ที่ cross-referenced
-- สรุป findings ที่สำคัญพร้อม source, version, และปี
-- ข้อมูลที่ใช้เป็นปีล่าสุด
-- ระบุ gaps, risks, breaking changes
-- คำตอบที่ credible และ actionable
+- สรุป findings พร้อม source, version, ปี, confidence — gaps/risks/breaking changes ระบุชัด
+- คำตอบที่ credible และ actionable พร้อม report

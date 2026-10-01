@@ -7,7 +7,7 @@ related:
   - deep-review
   - deep-analyze
   - learn-from-codebase
-  - translate-to-lang-en
+  - convert-to-lang-en
 
   - deep-validate
   - report
@@ -126,7 +126,7 @@ related:
 
 ### 6. Content Standards
 
-- ทำ `/translate-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
+- ทำ `/convert-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
 - ใช้ข้อมูลจริงจาก `/deep-analyze`, code รันได้จริง
 - ไม่ใช้ placeholder ยกเว้น banner image
 - ไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก

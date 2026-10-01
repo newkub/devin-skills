@@ -4,7 +4,7 @@ description: สร้างไอเดียตาม user context วิเ�
 argument-hint: "[topic]"
 related:
   - deep-review
-  - think-reframe
+  - reframe
   - report
   - suggest-next-action
   - implement-to-production
@@ -85,7 +85,7 @@ related:
 
 - ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/implement-to-production` เลย
 - ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 ## Expected Outcome
 

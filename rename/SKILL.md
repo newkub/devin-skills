@@ -1,9 +1,11 @@
 ---
 name: rename
-description: เปลี่ยนชื่อ identifier, file, หรือ skill พร้อมอัปเดท context และ references ทั้งหมด
-argument-hint: "[old-name] [new-name]"
+description: เปลี่ยนชื่อ identifier, file, directory หรือ skill รวม batch rename ตาม pattern พร้อมอัปเดต references
+argument-hint: "[old-name] [new-name] หรือ <pattern> <replacement> [path]"
 related:
   - update-references
+  - check-long-files
+  - search-files-patterns
   - review-devin-global-harness
   - resolve-errors
   - report
@@ -17,7 +19,7 @@ related:
 
 ## Scope
 
-Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/directory พร้อม update context: `name`, `description`, `related`, `AGENTS.md`, `global_rules.md`, paths
+Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/directory พร้อม update context: `name`, `description`, `related`, `AGENTS.md`, `global_rules.md`, paths — รวม mass/batch file rename ตาม pattern (merged จาก `/batch-rename-files` เดิม)
 
 ## Execute
 
@@ -45,15 +47,15 @@ Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/di
 
 > Goal: ใช้ ast-grep สำหรับ rename identifier ทั้ง definition และ usage
 
-1. ใช้ `--rewrite` flag สำหรับ ad-hoc rename แบบเร็ว:
+1. Batch rewrite หลายไฟล์ → ทำ `/use-astgrep rewrite` (dry-run + diff preview + confirm ในตัว) แทนรัน `--rewrite` ตรงๆ:
    ```sh
    ast-grep run -p 'oldName' --rewrite 'newName' --lang ts <path>
    ```
-2. ใช้ `--interactive` flag เพื่อ review ทุก change ก่อน apply:
+2. ใช้ interactive mode เพื่อ review ทุก change ก่อน apply — `-i`/`--interactive` หรือ flow ของ `/use-astgrep rewrite`:
    ```sh
    ast-grep run -p 'oldName' --rewrite 'newName' --lang ts -i <path>
    ```
-3. สำหรับ rename ที่ต้อง match เฉพาะประเภท (เช่น function เท่านั้น) ให้สร้าง YAML rule:
+3. สำหรับ rename ที่ต้อง match เฉพาะประเภท (เช่น function เท่านั้น) ให้สร้าง YAML rule (apply ผ่าน `/use-astgrep rewrite` rule-file flow):
    ```yaml
    id: rename-function
    language: TypeScript
@@ -111,6 +113,16 @@ Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/di
 7. ทำ `/update-references` ทั่ว repo
 8. ทำ `/review-devin-global-harness` ยืนยันครบ
 
+### 7. Batch Rename Files By Pattern
+
+> Goal: rename ไฟล์จำนวนมากตาม pattern — preview + collision handling + reference updates
+
+1. รับ pattern + replacement — literal/regex (`-replace`), case transforms, numbering; ระบุ scope: recursive, include/exclude patterns
+2. Preview `old → new` mapping ทุกไฟล์ก่อนเสมอ (dry-run default); flag issues: collisions (หลายไฟล์ map ไปชื่อเดียวกัน), no-ops, case-only (Windows case-insensitive fs ต้อง two-phase via temp name), locked files (ตรวจ locked files ด้วย handle/Resource Monitor)
+3. Confirm แล้วค่อย rename — `git mv` ใน repo เพื่อรักษา history; collisions → two-phase (temp name ก่อน); error >0 ใน critical scope → หยุดทั้ง batch
+4. ทำ `/update-references` เสมอ — imports, requires, config, docs; ค้น filename เดิมด้วย `/search-files-patterns`; reference update ที่เป็น AST pattern → `/use-astgrep rewrite`
+5. Verify: build/tests/lint ผ่าน; `/report` สรุป renamed / skipped / failed + undo path (`git revert`)
+
 ## Rules
 
 ### 1. Ast-grep First
@@ -155,7 +167,13 @@ Rename ต้องครอบคลุมทุกรูปแบบการ�
 - ใช้ `rewriters` สำหรับ nested transformation
 - เก็บ rule ไว้ใน `rules/` หา้งต้องการ reuse
 
-### 5. Validation Checklist
+### 5. Batch File Rename
+
+- Preview `old → new` mapping ครบก่อน execute — ไม่ rename เองโดยไม่ confirm; collisions/no-ops ต้อง resolve ก่อน
+- ใช้ `git mv` ใน repo — history ต้องไม่หาย; case-only rename บน Windows ต้อง two-phase via temp
+- `/update-references` บังคับทุกครั้งหลัง mass rename — verify ไม่มีชื่อเดิมเหลือก่อนจบ
+
+### 6. Validation Checklist
 
 ตรวจสอบหลัง rename ทุกครั้ง:
 

@@ -153,6 +153,8 @@ Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน life
 - ใช้ /follow-lib-css ถ้าจำเป็น
 - ใช้ /follow-lib-react ถ้า integrate กับ React
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Animation ที่รวดเร็วและมีประสิทธิภาพ

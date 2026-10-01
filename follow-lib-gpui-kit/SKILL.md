@@ -106,6 +106,7 @@ related:
 
 - ใช้ /deep-research ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

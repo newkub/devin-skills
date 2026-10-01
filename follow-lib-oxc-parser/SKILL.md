@@ -117,6 +117,8 @@ visitor.visit(result.program);
 - ใช้ `/use-scripts` ถ้าต้องประมวลผลไฟล์จำนวนมาก
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Parse JS/TS ได้ AST ที่ถูกต้องและเร็ว (เร็วกว่า Babel ~3x, SWC ~2x)

@@ -60,6 +60,8 @@ related:
 - ใช้ `/run-verify` เพื่อ verify lint + typecheck
 - ใช้ `/run-test` สำหรับ tests ที่เกี่ยวข้อง
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (tool drizzle kit)

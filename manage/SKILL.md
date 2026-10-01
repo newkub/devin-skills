@@ -15,7 +15,7 @@ related:
   - refactor
   - edit-only
   - move-to
-  - batch-rename-files
+  - rename
   - all-this-patterns
 ---
 
@@ -57,7 +57,7 @@ related:
    - `/refactor` — refactor code โดยรักษา behavior
    - `/refactor` structure scope — ย้าย/จัดโครงสร้างไฟล์
    - `/move-to` — ย้ายไฟล์/โฟลเดอร
-   - `/batch-rename-files` — เปลี่ยนชื่อหลายไฟล์
+   - `/rename` — เปลี่ยนชื่อ identifier/ไฟล์ รวม batch rename
    - `/all-this-patterns` — แก้หลายจุดตาม pattern
 3. เลือกตามผล `/rethink` โดย user confirm ถ้ามีหลายทางเลือกใกล้เคียงกัน
 

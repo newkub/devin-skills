@@ -91,6 +91,8 @@ bunx lighthouse <url> -GA           # gather + audit
 - ไม่ audit production third-party sites ที่ไม่มีสิทธิ์
 - ใช้ /follow-tool-unlighthouse เมื่อต้อง site-wide; /deep-review เมื่อจะวิเคราะห์ลึกกว่า scores
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Lighthouse report (html/json/csv) ต่อ URL ที่ระบุ พร้อม scores ทุก category ที่เลือก

@@ -4,7 +4,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 argument-hint: "[scope]"
 related:
   - use-astgrep
-  - search-by-astgrep
+  - search-with-astgrep
   - update-astgrep-rules
   - update-review-cli-then-run
   - use-bun-native-api
@@ -34,7 +34,7 @@ related:
 2. ตรวจสอบ CLI: `bunx ast-grep --version` (ad-hoc โดยไม่ติดตั้ง: `bunx -p @ast-grep/cli ast-grep --version`)
 3. ถ้าต้องใช้ napi bindings → `bun add -D @ast-grep/napi` (latest `0.45.3 (verified 2026-09-12)` — native Node-API module ต้องติดตั้งจริง ห้าม import ผ่าน esm.sh — ดู [references/package-manifest.md](references/package-manifest.md))
 4. สร้าง `sgconfig.yml` ที root ถ้ายังไม่มี
-5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup ast-grep`
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/deep-research setup ast-grep`
 
 ### 1. Prepare Context
 
@@ -51,8 +51,9 @@ related:
 
 1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `$env:TEMP`
 2. เลือก ast-grep interface:
-   - napi bindings: `import { parse, parseAsync, Lang, findInFiles, kind } from '@ast-grep/napi'` — in-process analysis; `parse(Lang.TypeScript, src).root().find('pattern')` / `root.findAll(...)` / `node.getMatch('A')` / `node.replace(...)` + `root.commitEdits([...])`; ใช้ `findInFiles(Lang.TypeScript, { paths: ['src'], rule: {...} }, cb)` สำหรับ multi-file scan
+   - napi bindings: `import { parse, parseAsync, Lang, findInFiles, kind, registerDynamicLanguage } from '@ast-grep/napi'` — in-process analysis; `parse(Lang.TypeScript, src).root().find('pattern')` / `root.findAll(...)` / `node.getMatch('A')` / `node.getMultipleMatches('$$$')` / `node.replace(text)` + `root.commitEdits([...])`; `findInFiles(Lang.TypeScript, { paths: ['src'], matcher: { rule: {...} } }, cb)` สำหรับ multi-file scan — API surface + perf tips เต็มที่ [references/napi-api.md](references/napi-api.md)
    - CLI wrapper: `Bun.$\`ast-grep scan --json pretty\`` — สำหรับ batch scanning
+   - ภาษานอก JS ecosystem → `bun add -D @ast-grep/lang-<name>` + `registerDynamicLanguage({ <name>: langPkg })` ครั้งเดียวต่อ process (ดู `references/napi-api.md → Dynamic Languages`)
 3. เขียน script ด้วย Bun native APIs:
    - ใช้ `Bun.Glob` สำหรับ file discovery
    - ใช้ `Bun.$` สำหรับ CLI invocation
@@ -88,6 +89,7 @@ related:
 - script ต้องมี `dryRun` option
 - script ต้อง output เป็น JSON สำหรับ machine consumption
 - เก็บ scripts ใน `.devin/scripts/` (permanent) หรือ `$env:TEMP` (throwaway)
+- rewrite ที่ metavar replacement ธรรมดาไม่พอ (case conversion, per-subnode fix) → ใช้ YAML `transform`/`rewriters` (ดู `use-astgrep/workflows/transform/` + `references/rewrite.md`); ใน napi ใช้ `node.replace(text)` + host-language string ops — `replace()` ไม่ expand `$VAR`
 
 ### 2. Integration
 
@@ -96,7 +98,14 @@ related:
 - แต่ละ finding ต้องมี: file path, line number, code snippet, rule id
 - ถ้า finding เป็น false positive → ปรับ rule และรันซ้ำ
 
-### 3. Scope Boundary
+### 3. Performance (napi)
+
+- prefer `parseAsync` มากกว่า `parse` — parse ขนานบน libuv thread pool
+- prefer `findAll`/`find` มากกว่า manual `children()` recursion — traversal ผ่าน FFI call ต่อ node ช้ามาก
+- prefer `findInFiles` สำหรับหลายไฟล์ — parse+match ขนานบน Rust threads; Promise resolve ก่อน callback ครบได้ → guard ด้วย file-count counter (pattern ใน `references/napi-api.md`)
+- `registerDynamicLanguage` เรียกครั้งเดียวต่อ process รวมทุกภาษาในครั้งเดียว — call ซ้ำถูก ignore (first call wins)
+
+### 4. Scope Boundary
 
 - ไม่รวมการอัปเดต rules — อยู่ใน `/update-astgrep-rules`
 - ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/update-review-cli-then-run`
@@ -107,7 +116,7 @@ related:
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (astgrep programmatic)
 - รายงานเป็นตารางด้วย `/report`
 - ใช้ /run-program ถ้าจำเป็น
-- ใช้ `/search-by-astgrep` ถ้าจำเป็น
+- ใช้ `/search-with-astgrep` ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -177,6 +177,8 @@ related:
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Vue 3 components ที่มีโครงสร้างถูกต้องตาม Composition API

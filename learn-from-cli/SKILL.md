@@ -5,10 +5,10 @@ argument-hint: "[cli-command]"
 related:
   - learn
   - learn-from-web
-  - learn-from-dts
+  - check-types-definition
   - check-my-global-cli
   - use-scripts
-  - check-content-correctness
+  - check-reference
   - report
 ---
 
@@ -24,7 +24,7 @@ related:
 - ยืนยัน version และ output format จริงก่อนเขียน docs หรือ how-to
 - เติม CLI reference ให้ skill ที่ผูกกับ tool นั้น
 
-ไม่ใช่เรียนรู้จาก web docs (ใช้ `/learn-from-web`) หรือ TypeScript API surface (ใช้ `/learn-from-dts`)
+ไม่ใช่เรียนรู้จาก web docs (ใช้ `/learn-from-web`) หรือ TypeScript API surface (ใช้ `/check-types-definition`)
 
 ## Execute
 
@@ -61,7 +61,7 @@ related:
 2. ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน `references/<dep>/cli.md` จริงตาม `update-devin-global-skills` (`## Conventions → Write References`) (บังคับ ห้ามข้าม)
 3. ใช้ output จริงจากการรัน — ห้ามเดา flags หรือ options
 4. ถ้าต้องเขียน >10 ไฟล์ → ทำ `/use-scripts`
-5. ทำ `/check-content-correctness` กับ commands ที่เขียน
+5. ทำ `/check-reference` กับ commands ที่เขียน
 
 ## Rules
 

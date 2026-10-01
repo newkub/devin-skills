@@ -32,7 +32,7 @@ related:
 3. ทำ `/report-before-after` ใน mode `before` เพื่อบันทึก baseline ก่อน refactor
 4. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
 5. ทำ `/follow-tool-madge` เพื่อหา circular dependencies ระหว่าง workspaces
-6. ทำ `/check-files long-files` และ `/deep-review` เพื่อหา code smells
+6. ทำ `/check-long-files` และ `/deep-review` เพื่อหา code smells
 7. ระบุ workspaces ที่มีหลาย reasons to change, coupling สูง หรือ cohesion ต่ำ
 
 ### 2. Decompose Responsibilities

@@ -1,5 +1,5 @@
 ---
-name: deep-validate-check-content-correctness
+name: deep-validate-check-correctness
 description: Validate correctness dimension — requirements, logic, edge cases, error handling
 argument-hint: "[scope]"
 related:

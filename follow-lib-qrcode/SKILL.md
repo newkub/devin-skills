@@ -50,6 +50,8 @@ related:
 - ใช้ `/run-test` ถ้าจำเป็น
 - ใช้ `/follow-lib-otplib` ถ้า QR คือ `otpauth://` TOTP enrollment
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (lib qrcode)

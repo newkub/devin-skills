@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - ask-again
   - ask-me
-  - understand-me
+  - follow-my-persona
   - dont-ask-me
   - continue
   - ask-project-requirement
@@ -20,7 +20,7 @@ related:
 
 ใช้เมื่อผู้ใช้พิมพ์ "ไม่เข้าใจ", "ฉันไม่เข้าใจ", "dont understand", "confused", "งง" หรือคล้ายกัน
 
-ไม่ใช่สำหรับเก็บ requirements (ใช้ `/ask-project-requirement`) หรือสัมภาษณ์ preferences (ใช้ `/understand-me`)
+ไม่ใช่สำหรับเก็บ requirements (ใช้ `/ask-project-requirement`) หรือสัมภาษณ์ preferences (ใช้ `/follow-my-persona`)
 
 ## Execute
 
@@ -82,7 +82,7 @@ related:
 
 ### 4. Escalation
 
-- ถ้าผู้ใช้ต้องการความชอบ/สไตล์ → ใช้ `/understand-me`
+- ถ้าผู้ใช้ต้องการความชอบ/สไตล์ → ใช้ `/follow-my-persona`
 - ถ้าข้อมูลไม่พอ → ใช้ `/ask-project-requirement`
 - ถ้าผู้ใช้บอกให้หยุดถาม/ทำเลย → ใช้ `/dont-ask-me`
 

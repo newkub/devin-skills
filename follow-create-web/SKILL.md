@@ -30,7 +30,7 @@ related:
 | Nuxt | `/follow-create-web-nuxt` |
 | SvelteKit | `/follow-create-web-svelte` |
 | SolidStart | `/follow-create-web-solidstart` |
-| TanStack Start (Solid) | `/follow-create-solid-tanstack` |
+| TanStack Start (Solid) | `/follow-solid-framework` |
 | Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
 
 - Default toolchain: `vite` (Rolldown-powered ตั้งแต่ v8) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
@@ -55,7 +55,7 @@ related:
 2. ถ้ามี services + pricing + auth + dashboard → สร้างแบบ SaaS ตาม flow ของ skill นี้
 3. ถ้าเป็น saas + advanced UI/UX → สร้างแบบ PaaS/advanced ตาม flow ของ skill นี้
 4. ถ้าต้องการ TUI Rust → ทำ `/follow-create-tui-ratatui`
-5. ถ้า stack ไม่ชัด → ใช้ default `/follow-create-solid-tanstack`
+5. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-framework`
 
 ### 3. Delegate And Validate
 

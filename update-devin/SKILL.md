@@ -34,7 +34,7 @@ Dispatch ไป skill ปลายทาง ตาม Devin config domain — pa
 | `harness` | /update-devin-harness — agent harness config |
 | `project-hooks` | /update-devin-project-hooks — project-level hooks |
 | `project-mcp` | /update-devin-project-mcp — project-level MCP config |
-| `project-rules` | /update-devin-project-rules — project-level rules |
+| `project-rules` | /update-astgrep-rules — project-level ast-grep rules (`rules/` at root) |
 
 1. ระบุ domain จาก argument (เช่น `/update-devin-harness`)
 2. ถ้า domain รองรับ → ทำตาม `/update-devin-<domain>` ทั้ง flow

@@ -3,7 +3,7 @@ name: follow-tool-loc
 description: ใช้งาน loc tool สำหรับนับ lines of code แบบเร็ว กรองไฟล์ และวิเคราะห์ขนาดไฟล์
 argument-hint: "[path] [options]"
 related:
-  - check-files
+  - check-long-files
   - report-file-structure
   - scan-codebase
   - use-scripts
@@ -71,7 +71,7 @@ related:
    pwsh -NoProfile -Command "loc --files --sort Lines | Select-String -Pattern '^\|' | ForEach-Object { $line = $_.Line; if ($line -match '\|\s*(\S+)\s+(\d+)\s+') { if ([int]$Matches[2] -gt 250) { $line } } }"
    ```
 2. เปลี่ยนตัวเลข `250` เป็น threshold ที่ต้องการ
-3. ดู `/check-files long-files` สำหรับ workflow เฉพาะ
+3. ดู `/check-long-files` สำหรับ workflow เฉพาะ
 
 ## Rules
 
@@ -113,6 +113,8 @@ related:
 - ใช้ `/report-file-structure` เพื่อรายงานโครงสร้างไฟล์
 - ใช้ `/scan-codebase` เพื่อ scan codebase เพิ่มเติม
 - ใช้ `/use-scripts` เพื่อ post-process output
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
   - run-install
-  - check-config-drift
+  - improve-config
 ---
 
 ## Goal
@@ -23,7 +23,7 @@ related:
 > Goal: อ่าน config เดิมก่อนแก้
 
 1. หา config: `renovate.json`, `.github/renovate.json`, `renovate.json5`, หรือ `"renovate"` field ใน `package.json`
-2. บันทึก keys ปัจจุบัน — ทำ `/check-config-drift` ถ้าสงสัย config ค้าง
+2. บันทึก keys ปัจจุบัน — ทำ `/deep-review` domain `review-config` ถ้าสงสัย config ค้าง
 3. ถ้าไม่มี config → ทำ `workflows/setup-renovate/SKILL.md` ก่อน
 
 ### 2. Base Config And Presets
@@ -80,7 +80,7 @@ related:
 - `config:recommended` อาจเพิ่ม checks ที่ไม่ต้องการ — รู้ว่า preset ทำอะไรก่อน extends
 - matchers ผิด = rule ไม่ทำงานเงียบๆ — ตรวจ PRs จริงหลังแก้
 
-- ใช้ /check-config-drift ถ้าจำเป็น
+- ใช้ /deep-review review-config ถ้าจำเป็น
 
 ## Expected Outcome
 

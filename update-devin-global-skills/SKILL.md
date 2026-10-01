@@ -8,12 +8,13 @@ related:
   - refactor-skills
   - follow-single-of-source
   - deep-review
-  - check-content-correctness
+  - check-reference
   - deep-research
+  - research-setup-integrations
   - deep-validate
   - learn-from-web
   - learn-from-cli
-  - learn-from-dts
+  - check-types-definition
   - report
   - ship-to-dev-branch
   - use-subagents
@@ -58,7 +59,7 @@ related:
 ### 5. Deep Research
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
-1. `/deep-research` ระบุ topic/skill (ข้ามถ้าไม่ต้อง research); เลือก source: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/learn-from-dts` — official docs เป็นแหล่งหลัก
+1. `/deep-research` ระบุ topic/skill (ข้ามถ้าไม่ต้อง research); เลือก source: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/check-types-definition`, integrations/plugins/extensions → `/research-setup-integrations` — official docs เป็นแหล่งหลัก
 2. `/deep-review` หา stale versions/commands/links; `/deep-review` verify latest + breaking changes; `/deep-review` verify `references/apis.md`/`cli.md` เทียบ API/commands จริง
 3. บันทึก latest version, breaking changes, new commands, deprecations, env vars, URLs — หาตัวอย่างจริง ห้ามเดา
 
@@ -83,8 +84,8 @@ related:
 ### 8. Validate, Sync And Update References
 > Goal: skill ผ่านเกณฑ์ทั้งหมด และ living documents ไม่ stale
 
-1. `/review-devin-global-harness` — conventions/naming/structure; `/check-content-correctness` — commands/APIs/claims; `/think-reframe` เมื่อ skill ใหม่หรือ rewrite ใหญ่
-2. `/deep-validate` — frontmatter, sections, ความยาว, `related` missing/unused, TODO/MOCK/placeholder; แก้ `related` → `/follow-tool-madge`; มี `.devin/rules/` → `/deep-review`
+1. `/review-devin-global-harness` — conventions/naming/structure; `/check-reference` — commands/APIs/claims; `/reframe` เมื่อ skill ใหม่หรือ rewrite ใหญ่
+2. `/deep-validate` — frontmatter, sections, ความยาว, `related` missing/unused, TODO/MOCK/placeholder; แก้ `related` → `/follow-tool-madge`; มี `rules/` หรือ `sgconfig.yml` → `/deep-review`
 3. `/update-references` sync refs ทั่ว repo + `/use-related-skills` หา integration; rename/ย้าย → อัปเดต `AGENTS.md`; เกี่ยว global rules → `global_rules.md` + `/update-devin-harness`
 4. หลังเพิ่ม/ลบ/merge/rename skill หรือ tool → sync living documents ตาม `## Conventions → Living Documents` เสมอ — ไม่ใช่ optional; ไม่ผ่าน → แก้และ recheck (max 3 → stop/report)
 
@@ -117,11 +118,11 @@ Execute pattern core ต่อ prefix (เลือก longest match ก่อ�
 | Prefix | Execute Pattern Core |
 |--------|----------------------|
 | `run-*` | prereq check (ขาด → stop) → run พร้อม timeout (non-block long-running, block short tasks) → fail: `/resolve-errors`, dep → `/run-install` retry×1, config → `/deep-review`; ซ้ำ×3 → stop; report success/duration/metrics; ห้าม destructive โดยไม่ confirm |
-| `follow-lib-*` | เช็ค manifest+registry+ecosystem → `/learn` official ยืนยัน install cmd/version/peer deps → config+entry point → `/deep-validate`; `references/` มีแค่ `apis.md`+`cli.md` (tables only — ตาม `## Conventions → Write References`; ไม่มี CLI → ไม่มี `cli.md`); หลาย use cases → `workflows/<lib>/` |
+| `follow-lib-*` | เช็ค manifest+registry+ecosystem → `/learn` official ยืนยัน install cmd/version/peer deps → config+entry point → `/deep-validate`; `references/` มีแค่ `apis.md`+`cli.md` (tables only — ตาม `## Conventions → Write References`; ไม่มี CLI → ไม่มี `cli.md`); ต้องมี `best-practices/` (flat `.md` — patterns/pitfalls/do-don't เขียนจริงจาก research); หลาย use cases → `workflows/<lib>/` |
 | `follow-create-*` | ระบุ target → `../follow-my-techstack/references/techstack-catalog.md` + `/deep-review` → dispatch `follow-create-cli`/`-web`/`-mcp` → scaffold `src/` → dev/build/test ผ่าน → MCP → `mcp_config.json` → `/deep-validate` + `/ship-to-dev-branch` |
 | `follow-*` | เช็ค version ใน manifest (ไม่พบ tool → stop) → `/learn` official + version compat → config minimal diff → typecheck/lint/tests → `/ship-to-dev-branch`; ไม่ rewrite ทั้งไฟล์ ไม่บังคับ upgrade |
 | `setup-*` | prereq + idempotent check (setup แล้ว → verify เท่านั้น) → official docs, secrets → `/follow-secret-manager` ห้าม commit → smoke check (`--version`/`doctor`/`status`); fail → `/resolve-errors`×3 |
-| `config-*` | อ่าน current config ก่อน (`/check-config-drift`) → merge เฉพาะ keys จำเป็น ห้าม clobber, secrets ห้ามใน config → verify ด้วย validate command ของ tool → `/report-before-after` |
+| `config-*` | อ่าน current config ก่อน (`/deep-review` domain `review-config`) → merge เฉพาะ keys จำเป็น ห้าม clobber, secrets ห้ามใน config → verify ด้วย validate command ของ tool → `/report-before-after` |
 | `deploy-*` | readiness (build/tests/secrets; มี `deploy-to-<platform>` → ใช้ตัวนั้น) → official CLI staging→prod เก็บ URL+revision, destructive → confirm → smoke test+logs fail → rollback/`/resolve-errors`×3 |
 | `migrate-*` | `/plan` from→to + official migration guide + rollback path + backup data → incremental config→deps→code→data ใช้ `/use-astgrep` แทน manual, แยก commit → lint/test/smoke + เช็ค deprecated เหลือ → `/report-before-after`+`/ship-to-dev-branch` |
 | `optimize-*` | baseline ก่อนเสมอ (`/run-bench`, `/deep-optimize`) → แก้ทีละจุด impact มาก→น้อย preserve behavior (optimize ≠ เปลี่ยน output) → วัดซ้ำ `/report-before-after`; ไม่ดีขึ้น → revert |
@@ -134,14 +135,13 @@ Execute pattern core ต่อ prefix (เลือก longest match ก่อ�
 | `review-*` | `/scan-codebase`+`/deep-review`+ast-grep → cross-check evidence กรอง false positives → severity Critical/High/Medium/Low/Info + score (weighted 0/25/50/75/100) → fixes grouped immediate/short/long-term `/report-review` |
 | `report-*` | `/scan-codebase` จัดกลุ่ม+metrics+patterns → `/report table` headings/lists สรุปบนสุด → next actions + `/suggest-next-action`; ระบุ source+วันที่ ไม่ dump ทั้งหมด |
 | `idea-*` | `/deep-analyze`+`/bench-competitors` หา gaps/opportunities → ideas + continuous numbering + scope/impact/effort `/report table` เรียง impact/effort; actionable เท่านั้น ไม่ reset numbering |
-| `think-*` | ระบุ frame/assumptions ก่อน → `/deep-thinking` alternatives + `/deep-research` precedents → verdict keep/reframe/split พร้อม pros/cons/rework cost — ไม่ rewrite เอง route ไป `/rewrite`/`/refactor`/`update-*`; เสี่ยง → `/ask-me`; read-only tools |
-
 ### Directory Structure
 
 ```text
 <skill>/ SKILL.md (entry — workflow + dispatch) · references/ (passive knowledge, flat) ·
+best-practices/ (recommended patterns + pitfalls — required for follow-lib-*/follow-tool-*) ·
 workflows/<name>/SKILL.md (invocable child) · subagents/<name>.md|<name>/AGENT.md ·
-templates/ examples/ scripts/ src/ guide/ .devin/rules/
+templates/ examples/ scripts/ src/ guide/
 ```
 
 เริ่มต้นด้วย `SKILL.md` เดียว — เพิ่ม subdirs เฉพาะเมื่อจำเป็นจริง; ทุกไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat — nested → `/flatten-directory --mode refs`; `## Execute` ระบุ CLI/web/MCP → `src/` (`### Src` ด้านล่าง)
@@ -185,10 +185,11 @@ Profile `skill-updater` (bulk update): inputs `skill`, `instructions`, `conventi
 
 ### Write References
 
-ทุก skill ที่มี dependencies ต้องมี `references/` (บังคับ ห้ามข้าม — ยกเว้น `follow-create-*`/`review-*` ที่ `Directory Structure` กำหนดเป็น `SKILL.md` เดียว → merge เนื้อหาเดียวกันนี้เข้า `SKILL.md` แบบ condensed แทน) — ทุก dependency มีไฟล์ของตัวเองเขียนจริงจาก `/learn-from-web`/`/learn-from-cli`/`/learn-from-dts` (ห้าม placeholder/TODO — learn แล้วไม่เขียน = task ล้มเหลว):
+ทุก skill ที่มี dependencies ต้องมี `references/` (บังคับ ห้ามข้าม — ยกเว้น `follow-create-*`/`review-*` ที่ `Directory Structure` กำหนดเป็น `SKILL.md` เดียว → merge เนื้อหาเดียวกันนี้เข้า `SKILL.md` แบบ condensed แทน) — ทุก dependency มีไฟล์ของตัวเองเขียนจริงจาก `/learn-from-web`/`/learn-from-cli`/`/check-types-definition` (ห้าม placeholder/TODO — learn แล้วไม่เขียน = task ล้มเหลว):
 
 - แต่ละไฟล์ต้องมี: install command จริง, stable version (เผยแพร่ ≥7 วัน — หลีกเลี่ยง `latest`/`*`/unbounded `>=`), peer deps, config + examples จาก official docs, source URL, migration steps ถ้ามี breaking; optional dep → ถามก่อน install
 - `follow-lib-*`/`follow-service-*`/`follow-tool-*` → `references/` มีแค่ `apis.md` + `cli.md` (เฉพาะที่มี CLI จริง) เท่านั้น — ห้ามมีไฟล์อื่น; ทั้งสองไฟล์เป็น tables เท่านั้น ไม่มี prose sections — `apis.md`: metadata table `| key | value |` (package, install cmd, stable version ≥7 วัน, license, docs/repo URL) + API table `| api | description | signature/example |`; `cli.md`: `| command | description | options |` (+ `| flag | default |` ถ้าต้องการ)
+- `follow-lib-*`/`follow-tool-*` ต้องมี `best-practices/` (flat `.md` ต่อ topic — recommended patterns, pitfalls, do/don't, perf notes เขียนจริงจาก `/learn-from-web`+`/deep-research` ไม่ใช่ placeholder; ไม่ pin versions — live-check ผ่าน `/deep-research` ตอนใช้) — แยกจาก `references/` เพราะเป็น guidance ไม่ใช่ API/CLI tables; `SKILL.md` ต้องมี pointer ไป `best-practices/` ใน `## Scope` หรือ `## Rules`
 - skills อื่นที่มี dependencies (ไม่ใช่ `follow-lib-*`/`follow-service-*`/`follow-tool-*`/`follow-create-*`/`review-*`) → `references/<dep>.md` ต่อ dependency ตามเดิม — เนื้อหาหลักเป็น tables ตามข้างบน
 - หลังเขียน → `/check-reference`
 
@@ -239,7 +240,7 @@ Triggers: `mise use -g`/`scoop install` → 1+2; สร้าง skill → 2,4,6
 ### 4. Content Standard
 
 - how-to อ้าง CLI tools ที่ติดตั้งจริง (inventory `check-my-global-cli/references/global-cli-commands.md`, map `follow-skills-map/references/tool-map.md`) — ห้ามเขียน script เองถ้า CLI ทำได้; ไม่มี → `/deep-research` หา หรือ `mise use -g`
-- `name` ตรง directory name, `description` ≤100 ตัวอักษร; ไม่มี TODO/MOCK/placeholder — ไม่ชัดให้ระบุความไม่แน่นอน; global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ; ห้าม `**` bold; ใช้ `/check-content-correctness`, `/follow-single-of-source` ถ้าจำเป็น
+- `name` ตรง directory name, `description` ≤100 ตัวอักษร; ไม่มี TODO/MOCK/placeholder — ไม่ชัดให้ระบุความไม่แน่นอน; global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ; ห้าม `**` bold; ใช้ `/check-reference`, `/follow-single-of-source` ถ้าจำเป็น
 - install commands ตาม ecosystem: `bun add`/`bun install` (JS/TS — default), `cargo add` (Rust), `go get` (Go), `pip install` (Python), `mise use -g npm:<package>` global npm CLI — หลีกเลี่ยง floating ranges
 
 ## Expected Outcome

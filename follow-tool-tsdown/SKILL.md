@@ -131,6 +131,12 @@ related:
 - [CLI reference](references/cli.md)
 
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-lib.md](templates/file-structure-lib.md)
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `tsdown.config.ts` ถูกต้อง

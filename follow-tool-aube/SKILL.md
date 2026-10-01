@@ -169,6 +169,8 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Aube ติดตั้งและทำงานได้

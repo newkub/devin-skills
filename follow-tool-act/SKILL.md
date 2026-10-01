@@ -101,6 +101,8 @@ related:
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `act` ติดตั้งและรัน workflows บน local ได้

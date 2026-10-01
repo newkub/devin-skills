@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - analyze-root-cause-analysis
   - deep-research
-  - think-reframe
+  - reframe
   - deep-review
   - update-devin-global-skills
   - resolve-errors
@@ -120,7 +120,7 @@ related:
 - ตั้งค่า monitoring และ alerts สำหรับ metrics ที่เกี่ยวข้อง
 - รวบรวม feedback จาก users และ stakeholders
 - ปรับปรุง solution ตาม data และ feedback
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 
 ## Expected Outcome

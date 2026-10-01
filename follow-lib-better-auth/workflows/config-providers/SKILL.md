@@ -5,7 +5,7 @@ argument-hint: "[provider-or-plugin]"
 related:
   - follow-lib-better-auth
   - follow-secret-manager
-  - check-config-drift
+  - improve-config
   - report-before-after
   - learn
 ---
@@ -28,7 +28,7 @@ related:
 
 1. อ่าน `auth.ts` ทั้งไฟล์ — ระบุ database, plugins, providers ที่มีอยู่
 2. ตรวจ env vars ที่ใช้ (`BETTER_AUTH_*`, provider `CLIENT_ID`/`CLIENT_SECRET`)
-3. ทำ `/check-config-drift` ถ้าสงสัย config ต่าง env — ถ้าไม่พบ config → ทำ `setup-auth` แทน
+3. ทำ `/deep-review` domain `review-config` ถ้าสงสัย config ต่าง env — ถ้าไม่พบ config → ทำ `setup-auth` แทน
 
 ### 2. Configure Social Providers
 

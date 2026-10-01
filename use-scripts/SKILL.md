@@ -11,6 +11,9 @@ related:
   - use-astgrep
   - follow-tool-rolldown
   - follow-lib-esm-sh
+  - transform
+  - run-verify
+  - update-references
 
 ---
 
@@ -20,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง scripts ใน workspace ด้วย Bun native APIs, nushell, pwsh, หรือ ast-grep
+ใช้สำหรับสร้าง scripts ใน workspace ด้วย Bun native APIs, nushell, pwsh, หรือ ast-grep — รวมการแก้ไขหลายไฟล์ผ่าน scripts (merged `/edit-with-use-scripts`, ดู `### 5. Edit Files Via Scripts`)
 
 ## Execute
 
@@ -85,6 +88,24 @@ related:
    - `ast-grep scan` สำหรับ AST operations
 4. ลบ scripts จาก OS temp หลังใช้งานเสร็จ หรือให้ `/create-files-in-os-temp` จัดการ cleanup
 
+### 5. Edit Files Via Scripts
+
+> Goal: แก้ไขหลายไฟล์ผ่าน script ที่ reproducible และ audit ได้ (merged `/edit-with-use-scripts`)
+
+ใช้เมื่อ task เป็นการแก้ไขไฟล์ที่ซับซ้อน ต้องแก้หลายไฟล์พร้อมกัน หรือต้องการ reproducibility และ audit trail — ไม่ใช่สำหรับไฟล์เดียวแบบ simple (`/edit-only`), config files (`/edit-manual`) หรือ AST-pattern edits (`/use-astgrep rewrite`)
+
+1. Identify: รับรายการไฟล์ + changes จาก user — ทำ `/scan-codebase` หาไฟล์ที่เกี่ยวข้องและ patterns, วางแผน minimal changes ด้วย `/dont-over-engineer`
+2. Script requirements (บังคับทุกข้อ):
+   - dry run mode เป็น default — execute จริงเฉพาะหลัง preview + user confirm เท่านั้น
+   - backup mode: สำเนาไฟล์เดิมก่อนแก้
+   - validate โครงสร้างไฟล์หลังแก้ (JSON/YAML/TS syntax)
+   - report สรุป: ไฟล์ที่แก้, จำนวน changes, errors ถ้ามี
+   - เก็บใน OS temp เท่านั้น ห้าม commit เข้า repo
+3. AST edit logic ใน script → ใช้ ast-grep ผ่าน `Bun.$`/napi ตาม `/use-astgrep-programmatic` หรือ delegate ทั้ง flow ไป `/use-astgrep rewrite`
+4. Dry run → ตรวจ output → แก้ script → dry run ใหม่จนถูก → ขอ user confirmation → execute
+5. หลัง execute: ทำ `/run-verify` (lint/typecheck/scan) → fail แก้ด้วย `/resolve-errors` (max 3 ครั้ง → rollback จาก backup + report) → ทำ `/update-references`
+6. Cleanup: ลบ scripts จาก temp + ลบ backup หลัง validation ผ่านครบ — เก็บ script/output เป็น audit trail ถ้าจำเป็น
+
 ## Rules
 
 ### 1. Script Type Selection
@@ -100,7 +121,14 @@ related:
 - `.devin/scripts/` — permanent scripts (committed)
 - ใช้ `.ts` สำหรับ Bun, `.nu` สำหรับ Nushell, `.ps1` สำหรับ PowerShell
 
-### 3. Bun Native API Preference
+### 3. Edit Scripts Safety
+
+- Script ที่แก้ไฟล์ต้องมี dry run mode เสมอก่อน execute จริง และต้องสร้าง backup ก่อนแก้
+- ถ้า validation ไม่ผ่าน → rollback จาก backup และ report
+- ห้าม execute จริงโดยไม่มี user confirmation หลัง dry run
+- Script ต้องให้ผลเหมือนเดิมเมื่อรันด้วย input เดิม — ไม่สร้าง side effects นอกจากการแก้ไฟล์ที่กำหนด
+
+### 4. Bun Native API Preference
 
 - เมื่อใช้ Bun ให้ใช้ Bun native APIs เท่านั้นสำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก
 - `Bun.Glob` แทน `fast-glob`, `Bun.$` แทน `execa`, `Bun.file()` + `Bun.write()` แทน `fs-extra`
@@ -108,7 +136,7 @@ related:
 - ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ก่อน `acorn` หรือ `babel`
 - ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown`
 
-### 4. CDN Libraries
+### 5. CDN Libraries
 
 ```typescript
 import { z } from "https://esm.sh/zod"
@@ -124,7 +152,7 @@ import { render } from "https://esm.sh/eta@4.6.0"
 - Async: `p-limit`, `p-queue`, `p-map`
 - Template: `eta` สำหรับ generate text/files จาก template
 
-### 5. Decision Records
+### 6. Decision Records
 
 - ระบุเหตุผลทุกครั้งที่เลือก shell ใด shell หนึ่ง
 - บันทึกเหตุผลใน comment หรือ docstring ของ script

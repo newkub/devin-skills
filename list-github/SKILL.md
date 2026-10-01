@@ -4,7 +4,6 @@ description: List GitHub resources — branches, issues, PRs, projects, releases
 argument-hint: "[domain]"
 related:
   - all-github-repo
-  - use-gh-cli
   - report
   - ask-me
 
@@ -42,7 +41,6 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 - ใช้ `gh` CLI หรือ GitHub MCP tools ตามที่ available
 
 - ใช้ /all-github-repo ถ้าจำเป็น
-- ใช้ /use-gh-cli ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

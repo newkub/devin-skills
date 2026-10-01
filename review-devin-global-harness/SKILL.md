@@ -12,7 +12,7 @@ related:
   - search-skills
   - update-devin-harness
   - deep-review
-  - check-content-correctness
+  - check-reference
   - update-references
   - use-subagents
   - simplify
@@ -94,7 +94,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ### 9. Context Rot And Coverage
 > Goal: ตรวจ content ที่เน่าเสื่อมตามเวลา และ domain gaps
 
-1. ทำตาม `### Context Rot` — stale content (`/deep-review` domain `usage`), incorrect content (`/check-content-correctness`), dead weight, context bloat
+1. ทำตาม `### Context Rot` — stale content (`/deep-review` domain `usage`), incorrect content (`/check-reference`), dead weight, context bloat
 2. ทำ `/deep-review` domain `gaps` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
 3. รวม findings เข้า report แยก section `context-rot` และ `coverage`
 
@@ -162,7 +162,7 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 
 1. Inventory: `/scan-codebase` list ทุก skill (name/description/files/size) จัดกลุ่มตาม prefix + สรุป purpose จาก `description`+`## Goal`
 2. Detect ×4: duplicate purpose — `description`/`## Goal` overlap >70% หรือ prefix ต่างแต่ purpose ใกล้กัน; overlapping scope — `## Scope` บอก "ไม่ใช่" แต่ทำเหมือนกัน, `related` อ้างกันเอง, `## Execute` steps เหมือนกันมาก; redundant content — `/use-scripts` hash blocks >50% ระหว่าง skills (เทียบ `## Rules`/`## Expected Outcome`); unused — `/check-reference`+`AGENTS.md` → แยก standalone vs orphan
-3. Recommend: duplicate → merge (`/idea-merge`)/rename (`/batch-rename-files`)/split; scope overlap → ปรับ `## Scope`; content ซ้ำ → ย้าย `references/` หรือ shared reference; unused → keep/document/remove — report table skill/issue/action/priority + `/suggest-next-action`
+3. Recommend: duplicate → merge (`/idea-merge`)/rename (`/rename`)/split; scope overlap → ปรับ `## Scope`; content ซ้ำ → ย้าย `references/` หรือ shared reference; unused → keep/document/remove — report table skill/issue/action/priority + `/suggest-next-action`
 4. Confirm+execute: `/ask-me` ก่อนเสมอ; merge → re-review, rename → `/rename`+`/update-references`, remove → `git rm`+`/update-references`; `/deep-validate` หลังทุก action
 5. Fix flow (canonical): detect → classify (code/content/config/cross-skill — deps → `/deep-review` domain `dependencies`, pattern → `/deep-review` domain `redundancy`, code จำนวนมาก → `/follow-tool-jscpd`) → เลือก canonical (ใช้มากสุด/test ครอบสุด — ไม่ชัด → `/ask-me`) → แทนด้วย reference → `/run-check`+`/run-test` ต่อ batch → report No./Duplicate Type/Canonical/Files Fixed/Status; ห้ามลบ redundancy ที่ตั้งใจ (backup/fail-over), แก้ทีละ dimension
 
@@ -176,12 +176,12 @@ Config: `config.json → mcpServers` global + project — checks: server ตอ�
 
 ### Artifact Alignment
 
-หลังเปลี่ยน rules/architecture/deps/skills/docs → inventory `.devin/rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (บันทึก version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-astgrep-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/deep-review`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code ขัด → `/ask-me` ถามฝ่ายตั้ง; detect ก่อนแก้, minimal scope, rename/move → `/update-references`, ห้ามสร้าง circular refs
+หลังเปลี่ยน rules/architecture/deps/skills/docs → inventory `rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (บันทึก version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-astgrep-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/deep-review`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code ขัด → `/ask-me` ถามฝ่ายตั้ง; detect ก่อนแก้, minimal scope, rename/move → `/update-references`, ห้ามสร้าง circular refs
 
 ### Context Rot
 
 - stale: `/deep-review` — version pins, `(verified YYYY-MM-DD)` markers (>90 วัน), deprecated commands, dead links → route `/update-devin-global-skills`/`update-*-md`
-- incorrect: `/check-content-correctness` บน skill ที่แก้ล่าสุด/high-traffic; unverified claims → Warning
+- incorrect: `/check-reference` บน skill ที่แก้ล่าสุด/high-traffic; unverified claims → Warning
 - dead weight: skills/subagents ไม่ถูก invoke, orphan `references/` (ไม่ถูก link จาก SKILL.md), `related` ชี้ skill ที่ลบแล้ว
 - bloat: SKILL.md ใกล้ 250 → split ไป `references/`; `references/` รวม >~1500 → consolidate; `related` >15 → ตัดเหลือจำเป็น
 - severity: command/API ใช้ไม่ได้ใน skill active = Critical; version pin เก่า >1 major / orphan refs = Warning; bloat / marker เก่าแต่ตรง = Info

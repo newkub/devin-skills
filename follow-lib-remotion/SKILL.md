@@ -3,7 +3,7 @@ name: follow-lib-remotion
 description: ใช้ Remotion v4 สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React และ render ผ่าน CLI
 argument-hint: "[composition-or-task]"
 related:
-  - edit-video-by-remotion
+  - edit-video-with-remotion
   - follow-lib-react
   - follow-lib-zod
 
@@ -236,8 +236,10 @@ bunx remotion render MyComp --sequence
 - test ใน Studio ก่อน render
 - ใช้ `--no-open` สำหรับ remote/CI
 - render ด้วย `--codec` ทีเหมาะสม (`h264`, `h265`, `vp9`, `gif`, `png`)
-- ใช้ `/edit-video-by-remotion` สำหรับตัดต่อวิดีโอจาก footage มีอยู่
+- ใช้ `/edit-video-with-remotion` สำหรับตัดต่อวิดีโอจาก footage มีอยู่
 - ใช้ `/follow-lib-react` หรือ `/follow-lib-zod` ถ้าจำเป็น
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

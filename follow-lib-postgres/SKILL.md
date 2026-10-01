@@ -56,6 +56,8 @@ related:
 - ใช้ `/run-drizzle-studio` ถ้าจำเป็น
 - ใช้ `/follow-lib-drizzle` ถ้าต้องการ ORM layer
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (lib postgres)

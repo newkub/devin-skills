@@ -139,6 +139,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `mise.toml` สร้างและถูกต้อง

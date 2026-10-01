@@ -6,7 +6,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 
 - เลือกจาก column `Default` เสมอ — ยกเว้นเงื่อนไข `(→ ...)` ใน `Alternatives` ตรงกับ project
 - ถ้า project มีตัวที่ไม่ใช่ default → ตรวจว่ามีเหตุผลหรือ drift — ถ้า drift flag ใน report ให้ user ตัดสินใจ
-- ถ้า library ที่ต้องการไม่อยู่ใน table → ทำ `/deep-research` หรือ `/research-dependencies` แล้วอัปเดต catalog นี้
+- ถ้า library ที่ต้องการไม่อยู่ใน table → ทำ `/deep-research dependencies` แล้วอัปเดต catalog นี้
 
 ## Core — TypeScript ↔ Rust
 
@@ -80,7 +80,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 
 | Category | Default | Alternatives |
 |---|---|---|
-| Bundler | `Rolldown` | `rolldown-vite` (→Vite 7 migration path), `Vite` (Rolldown engine ใน Vite 8) |
+| Bundler | `Rolldown` | `rolldown` (standalone bundler), `vite@^8` (Rolldown engine ในตัว — `rolldown-vite` preview เลิกใช้แล้ว) |
 | Library Bundler | `tsdown` | - |
 | Unified Toolchain | - | `Vite+` (→ต้องการตัวเดียวจบ, ยังใหม่) |
 | Dev Server / HMR | `Vite` | - |
@@ -88,7 +88,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 | Docs | `VitePress` | `Slidev` (→slides), `Astro` (→content site) |
 | Browser Extension | `WXT` | - |
 | Universal Plugin API | `unplugin` | `unplugin-auto-import`, `unplugin-vue-components`, `unplugin-icons` |
-| Plugin Authoring | `withFilter` (rolldown-vite filter) | native plugins (`enableNativePlugin`, experimental) |
+| Plugin Authoring | `withFilter` (Rolldown hook filter) | native plugins (`enableNativePlugin`, experimental) |
 | Common Plugins | - | `@cloudflare/vite-plugin` (→Workers in Vite), `vite-plugin-pwa`, `vite-tsconfig-paths`, `vite-plugin-devtools` |
 | Native Speed | `lightningcss` (CSS) | `oxfmt` (format) |
 | Bundle Analysis | `sonda` | `bundlewatch` |
@@ -220,6 +220,6 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 ## Fast Parser And Bundler
 
 - ใช้ `oxc-parser` แทน `acorn`, `babel`, `typescript` parser สำหรับ JS/TS AST เมื่อต้องการความเร็วสูง
-- ใช้ `rolldown`/`rolldown-vite` แทน Rollup/esbuild engine — Vite 8 ใช้ Rolldown เป็น default อยู่แล้ว
+- ใช้ `rolldown` แทน Rollup/esbuild engine — Vite 8 ใช้ Rolldown เป็น default อยู่แล้ว (upgrade `vite` ตรงๆ ไม่ต้องใช้ `rolldown-vite` preview)
 - ดู `/follow-tool-rolldown` และ `/follow-tool-eslint` สำหรับ setup และ best practices
 - ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด

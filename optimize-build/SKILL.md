@@ -10,6 +10,7 @@ related:
   - report-before-after
   - report
   - suggest-next-action
+  - follow-tool-mr-boxington
   - ask-me
 ---
 

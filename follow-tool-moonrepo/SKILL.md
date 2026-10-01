@@ -91,7 +91,7 @@ related:
 3. ลบ `turbo` ออกจาก `package.json` devDependencies
 4. แก้ไข scripts ใน `package.json` จาก `turbo run` ไป `moon run`
 5. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
-6. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
+6. อัปเดต `rules/` (ast-grep) และ skills ที่อ้างอิงถึง turborepo
 
 ### 6. Integrate CI
 
@@ -174,6 +174,8 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - `.moon/` config ถูกต้องและสมบูรณ์

@@ -207,6 +207,8 @@ jobs:
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-format ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Biome ติดตั้งและทำงานได้

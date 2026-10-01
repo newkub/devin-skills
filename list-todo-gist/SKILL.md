@@ -5,7 +5,6 @@ argument-hint: "[--status|--project|--all]"
 related:
   - save-to-todo-gist
   - update-todo-md
-  - use-gh-cli
   - implement-to-production
   - report
 ---
@@ -17,7 +16,7 @@ related:
 ## Scope
 
 - read-only — ไม่แก้ items; เพิ่ม/อัปเดตใช้ `/save-to-todo-gist` หรือ `/update-todo-md`
-- ต้องมี `gh` authenticated (`gh auth status`) — ถ้าไม่มี → stop แล้วแนะนำ `/use-gh-cli`
+- ต้องมี `gh` authenticated (`gh auth status`) — ถ้าไม่มี → stop แล้วแนะนำ `gh auth login`
 - รองรับ filter: `--status pending`, `--project <name>`, `--all` (รวม completed)
 
 ## Execute

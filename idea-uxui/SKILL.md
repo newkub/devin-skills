@@ -12,7 +12,7 @@ related:
   - deep-analyze
   - report
   - enhance-prompt
-  - think-reframe
+  - reframe
 
 ---
 
@@ -97,7 +97,7 @@ related:
 - ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก เรียง 1, 2, 3, ...
 - ใช้ `/report` สำหรับ tables — ไม่ตอบยาวเกินความจำเป็น
 - ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 
 ## Expected Outcome

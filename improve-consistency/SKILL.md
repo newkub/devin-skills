@@ -8,6 +8,7 @@ related:
   - improve-writing
   - deep-review
   - deep-review-then-fix
+  - rename
   - report
   - suggest-next-action
   - ask-me
@@ -49,7 +50,7 @@ related:
 > Goal: แก้เฉพาะสิ่งที่ user เลือก
 
 1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง) — แก้ให้ตรง canonical ที่ user เลือก ไม่สร้าง convention ที่ 3
-2. rename/restructure ข้ามหลายไฟล์ → ใช้ `/all-this-patterns` หรือ `/batch-rename-files` ให้ครบทุก occurrence
+2. rename/restructure ข้ามหลายไฟล์ → ใช้ `/all-this-patterns` หรือ `/rename` ให้ครบทุก occurrence
 3. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules

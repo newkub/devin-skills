@@ -6,7 +6,7 @@ related:
   - follow-lib-shadcn-solid
   - follow-lib-unocss
   - follow-design-system
-  - check-config-drift
+  - improve-config
   - resolve-errors
 ---
 
@@ -35,7 +35,7 @@ related:
 1. แก้ค่า variables ใน `:root` และ dark block พร้อมกัน — ทุก token ที่แก้ต้องมีทั้งสอง mode
 2. ปรับ `--radius` เป็น single source ของ corner radius — components ใช้ `rounded-md` ฯลฯ ที่ derive จากมัน
 3. เพิ่ม semantic tokens ใหม่ (เช่น `success`, `warning`) โดยตั้งชื่อตาม convention เดิม แล้ว map เข้า utility ของ CSS framework
-4. ทำ `/check-config-drift` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
+4. ทำ `/deep-review` domain `review-config` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
 
 ### 3. Customize Component Variants
 

@@ -6,7 +6,6 @@ related:
   - list-todo-gist
   - save-to-todo-md
   - update-todo-md
-  - use-gh-cli
   - report-progress
   - report
 ---
@@ -19,7 +18,7 @@ related:
 
 - ใช้เมื่อ: ต้องการเก็บงานค้างไว้นอก repo, sync ข้ามเครื่อง/ข้าม project, หรือ user สั่งเก็บ todo ลง gist
 - ไม่ implement งาน — เก็บเป็น tracked items เท่านั้น
-- ต้องมี `gh` authenticated (`gh auth status`) — ถ้าไม่มี → stop แล้วแนะนำ `/use-gh-cli`
+- ต้องมี `gh` authenticated (`gh auth status`) — ถ้าไม่มี → stop แล้วแนะนำ `gh auth login`
 
 ## Execute
 

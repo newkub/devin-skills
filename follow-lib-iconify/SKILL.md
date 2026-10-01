@@ -56,6 +56,7 @@ related:
 - ใช้ `/follow-lib-unocss` ถ้าต้อง config UnoCSS `presetIcons` เชิงลึก
 - ใช้ `/run-verify` ถ้าจำเป็น
 - ใช้ `/run-test` ถ้าจำเป็น
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

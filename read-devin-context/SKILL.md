@@ -30,14 +30,14 @@ related:
    - `C:\Users\<user>\.codeium\windsurf\memories\global_rules.md`
    - `C:\Users\<user>\.codeium\windsurf\skills`
 3. ตรวจหา project context:
-   - `.devin/`, `.windsurf/`, `.devin/skills/`, `.devin/rules/`, `.devin/mcp.json`, `.devin/hooks/`
+   - `.devin/`, `.windsurf/`, `.devin/skills/`, `.devin/mcp.json`, `.devin/hooks/`, `rules/`, `sgconfig.yml`
 4. ถ้าหาไม่เจอ path สำคัญ → รายงานและ skip
 
 ### 2. Read Global Rules
 
 > Goal: อ่าน global rules
 
-1. อ่าน `global_rules.md` จาก windsurf memories หรือ project `.devin/rules/`
+1. อ่าน `global_rules.md` จาก windsurf memories หรือ project `AGENTS.md`
 2. สรุปลำดับ steps, restrictions, และ required references
 3. ถ้าไฟล์ไม่มี → รายงานว่าไม่พบ global rules
 

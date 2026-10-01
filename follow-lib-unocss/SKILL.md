@@ -137,7 +137,7 @@ related:
 
 > Goal: ใช้ presets เพิ่มเติมตามความต้องการ
 
-1. `presetWebFonts`: โหลด web fonts
+1. `presetWebFonts`: โหลด web fonts — ภาษาไทย: `bun add @fontsource-variable/noto-sans-thai` แล้ว `import "@fontsource-variable/noto-sans-thai"` ใน entry; ตั้ง theme font stack เป็น `[<default font>, 'Noto Sans Thai Variable', sans-serif]` — per-glyph fallback ทำให้อังกฤษใช้ default font และไทยใช้ Noto Sans Thai อัตโนมัติ ไม่ต้องใช้ `:lang(th)`
 2. `presetTypography`: prose styling
 3. `presetAttributify`: attributify mode
 4. `presetTagify`: tagify mode
@@ -209,6 +209,8 @@ related:
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

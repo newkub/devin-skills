@@ -4,7 +4,7 @@ description: ทบทวนและ re-evaluate การตัดสินใ
 argument-hint: "[topic]"
 related:
   - deep-thinking
-  - think-reframe
+  - reframe
   - plan
   - deep-analyze
   - deep-research
@@ -135,7 +135,7 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /deep-review-then-fix ถ้าจำเป็น
-- ใช้ /think-reframe ถ้าจำเป็น
+- ใช้ /reframe ถ้าจำเป็น
 
 
 ## Expected Outcome

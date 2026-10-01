@@ -164,6 +164,10 @@ Migration จาก Svelte 4:
 - ทำ `/refactor` เสมอเมื่อพัฒนา
 - ใช้ /run-dev ถ้าจำเป็น
 
+## File Structure
+
+Canonical file structure + layer table: [templates/file-structure-web-svelte.md](templates/file-structure-web-svelte.md)
+
 ## Expected Outcome
 
 - Svelte 5 project ตั้งค่าครบถ้วนด้วย Vite และ Runes

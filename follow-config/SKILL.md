@@ -62,7 +62,7 @@ related:
 2. ตรวจ shared settings: root `package.json`, `tsconfig.json`, `biome.json`, `eslint.config.*`
 3. ตรวจ workspace overrides: `turbo.json`, `moon.yml`, `pnpm-workspace.yaml`
 4. ตรวจ CI/CD: `.github/workflows/`, `.gitlab-ci.yml`
-5. ตรวจ project rules: `.devin/rules/`, `AGENTS.md`
+5. ตรวจ project rules: `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md`
 
 ### 3. Sync Configs
 
@@ -128,5 +128,5 @@ related:
 
 - Config files ทั่งหมดสอดคล้องกัน
 - ไม่มี config drift ระหว่าง root กับ workspaces
-- Project conventions ถูกบันทึกใน `AGENTS.md` หรือ `.devin/rules/`
+- Project conventions ถูกบันทึกใน `AGENTS.md` หรือ `rules/` (ast-grep)
 - ผ่าน lint, typecheck, build โดยไม่มี errors จาก config

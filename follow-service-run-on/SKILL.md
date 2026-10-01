@@ -147,7 +147,7 @@ related:
 > Goal: รู้ runner config ปัจจุบันก่อนแก้
 
 1. อ่าน `.github/runs-on.yml` และ workflows ที่ใช้ `runs-on:` อยู่แล้ว
-2. ทำ `/check-config-drift` ถ้าต้องเทียบ config กับ stack ที่ deploy จริง
+2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ config กับ stack ที่ deploy จริง
 3. ถ้าไม่พบ config → ทำ `workflows/setup-run-on/SKILL.md` ก่อน
 
 ###### 2. Define Runners

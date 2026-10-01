@@ -27,7 +27,7 @@ related:
 > Goal: รู้ context ก่อนถาม
 
 1. อ่าน `AGENTS.md` ถ้ามี
-2. อ่าน `.devin/rules/*.md` ถ้ามี
+2. อ่าน `rules/**/*.yml` ถ้ามี
 3. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest สำคัญ
 4. ถ้าไม่มี `AGENTS.md` → ทำ `/update-agents-md` ก่อน
 

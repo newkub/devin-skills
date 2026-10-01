@@ -26,7 +26,7 @@ Catalog ครบทุก `review-*` skill (58 ตัว) สำหรับ di
 | 2 | `/deep-review` | writing quality, naming conventions, discoverability | default |
 | 3 | `/deep-review` | docs structure, README/AGENTS ก่อน update | default |
 | 4 | `/deep-review` | declared surface เทียบของจริง — skills ที่อ้างใน rules/AGENTS มีจริง | default |
-| 5 | `/deep-review` | `.devin/` structure, hooks, `.devin/rules`, ast-grep rules, `AGENTS.md` ถูกต้อง ไม่ซ้ำซ้อน | default |
+| 5 | `/deep-review` | `.devin/` structure, hooks, `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md` ถูกต้อง ไม่ซ้ำซ้อน | default |
 | 6 | `/deep-review` | workflow ในแต่ละ skill เร็ว ปลอดภัย ไม่ซ้ำซ้อน ไม่เกิน scope | default |
 | 7 | `/deep-review` | config files ใน repo: `package.json`, hooks config, MCP config, drift | default |
 | 8 | `/deep-review` | modularity, isolation, boundaries ของ skill packages และ orchestration | default |

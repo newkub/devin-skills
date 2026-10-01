@@ -108,6 +108,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Validator ถูกเลือกและติดตั้งถูกต้องตาม tech stack

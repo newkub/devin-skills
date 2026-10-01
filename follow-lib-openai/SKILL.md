@@ -60,6 +60,8 @@ related:
 - ใช้ `/run-verify` ถ้าจำเป็น
 - ใช้ `/run-test` ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - ใช้งาน library ถูกต้องตาม best practices (lib openai)

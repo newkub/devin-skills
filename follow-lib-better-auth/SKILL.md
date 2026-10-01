@@ -114,6 +114,8 @@ related:
 - ใช้ /follow-lib-jose ถ้าจำเป็น
 - ใช้ /follow-lib-simplewebauthn ถ้าจำเป็น
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Auth flow ทำงานถูกต้อง

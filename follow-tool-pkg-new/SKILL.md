@@ -115,6 +115,8 @@ related:
 - [CLI reference](references/cli.md)
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - pkg.pr.new ติดตั้งและทำงานได้

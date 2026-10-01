@@ -5,7 +5,6 @@ argument-hint: "[domain]"
 related:
   - list-github
   - git-push
-  - use-gh-cli
   - ask-me
 
 ---
@@ -41,7 +40,6 @@ Dispatch ไป skill ตาม GitHub resource ที่ต้องสร้�
 - ใช้ /list-github ถ้าจำเป็น
 - ใช้ /open-github ถ้าจำเป็น
 - ใช้ /git-push ถ้าจำเป็น
-- ใช้ /use-gh-cli ถ้าจำเป็น
 
 ## Expected Outcome
 

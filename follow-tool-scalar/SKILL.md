@@ -114,6 +114,8 @@ related:
 - ใช้ /follow-tool-hurl ถ้าจำเป็น
 
 
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
 ## Expected Outcome
 
 - Scalar ติดตั้งและตั้งค่าเสร็จ

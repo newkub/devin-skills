@@ -8,7 +8,7 @@ related:
   - follow-single-of-source
   - search-similar
   - search-files-patterns
-  - search-by-astgrep
+  - search-with-astgrep
   - use-astgrep
   - follow-tool-jscpd
   - deep-review
@@ -43,7 +43,7 @@ related:
 > Goal: รู้ว่า codebase มี implementation ที่ทำสิ่งเดียวกันอยู่แล้วหรือไม่
 
 1. ค้นด้วย keyword/symbol — `rg` หรือ `/search-files-patterns` ตามชื่อ function, concept, domain term
-2. ค้น structural — `/search-by-astgrep` เมื่อชื่อต่างแต่ logic เหมือนกัน (pattern เดียวกัน ต่างแค่ชื่อ/ค่า)
+2. ค้น structural — `/search-with-astgrep` เมื่อชื่อต่างแต่ logic เหมือนกัน (pattern เดียวกัน ต่างแค่ชื่อ/ค่า)
 3. สำรวจ shared locations — `utils/`, `shared/`, `common/`, `lib/`, `hooks/`, `components/`, และ internal packages (`packages/*`, `@org/*` ใน monorepo)
 4. ตรวจ exports และ consumers ของ candidate ด้วย `/deep-review` เพื่อยืนยันว่า reusable จริง
 

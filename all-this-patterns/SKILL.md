@@ -4,7 +4,7 @@ description: ค้นหา patterns ทั่งหมดใน scope แล�
 argument-hint: "[patterns...]"
 related:
   - search
-  - batch-rename-files
+  - rename
   - update-references
   - use-scripts
   - follow-parallel
@@ -46,7 +46,7 @@ related:
 1. จัดกลุ่ม matches ตาม pattern
 2. เลือก strategy: bulk edit, script, หรือ manual
 3. ถ้ามีหลาย file ให้ใช้ `/use-scripts`
-4. ถ้า rename ให้ใช้ `/batch-rename-files`
+4. ถ้า rename ให้ใช้ `/rename` (รองรับ batch file rename ตาม pattern)
 5. ถ้าต้องสลับ skill ต่อเนื่อง ใช้ `/follow-your-suggestion`
 
 ### 4. Apply Patterns

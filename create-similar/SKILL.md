@@ -6,7 +6,7 @@ related:
   - update-devin-global-skills
   - deep-review
   - use-related-skills
-  - edit-by-use-scripts
+  - transform
   - deep-validate
   - search
 ---
@@ -96,7 +96,7 @@ related:
 - ใช้ /update-devin-global-skills ถ้าจำเป็น (similar)
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /use-related-skills ถ้าจำเป็น
-- ใช้ /edit-by-use-scripts ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
 
 ## Expected Outcome
 

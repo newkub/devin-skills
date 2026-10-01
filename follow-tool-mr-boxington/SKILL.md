@@ -8,6 +8,11 @@ related:
   - follow-lang-rust
   - follow-tool-github-actions
   - resolve-errors
+  - optimize-build
+  - use-git-worktrees
+  - setup-cicd
+  - cleanup-artifact
+  - follow-tool-nextest
 ---
 
 ## Goal
@@ -147,6 +152,8 @@ related:
 - ใช้ `/follow-tool-cargo` สำหรับ Cargo config และ lint rules
 - ใช้ `/follow-lang-rust` สำหรับ Rust project structure
 - ใช้ `/follow-tool-github-actions` สำหรับ CI workflow ทั่วไป
+
+- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

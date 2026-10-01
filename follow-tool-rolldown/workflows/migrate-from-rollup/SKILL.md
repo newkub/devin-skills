@@ -18,7 +18,7 @@ related:
 
 - ใช้กับ projects ที่มี `rollup.config.js/ts/mjs` และต้องการย้ายไป Rolldown standalone
 - ครอบคลุม config translation, plugin mapping (`@rollup/plugin-*` → Rolldown equivalents), output verification
-- ถ้า Rollup ถูกใช้ผ่าน Vite → ใช้ `follow-tool-vite` workflow `migrate-to-rolldown` แทน
+- ถ้า Rollup ถูกใช้ผ่าน Vite → ใช้ `follow-tool-vite` workflow `migrate-to-vite8` แทน (Vite 8 ใช้ Rolldown เป็น default)
 
 ## Execute
 

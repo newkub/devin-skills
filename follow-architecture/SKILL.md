@@ -22,21 +22,20 @@ Entry point เดียวสำหรับ architecture restructure — เ�
 - ใช้เมื่อต้อง restructure codebase/package/app ตาม architecture pattern — ถูก dispatch จาก `/refactor` architecture scope และ callers อื่น
 - Pattern detail ฉบับเต็ม (SSOT): `/deep-review` `## Pattern Guides` → `references/pattern-clean.md`, `references/pattern-layered.md`
 - File structures (canonical): Clean → [templates/file-structure-clean.md](templates/file-structure-clean.md); Layered → [templates/file-structure-layered.md](templates/file-structure-layered.md)
-- Stack-specific file structures (canonical per target type):
+- Stack-specific file structures ย้ายไปอยู่ใน skill เจ้าของ stack (canonical per target type):
 
-| Target | Template |
+| Target | Template (ใน skill นั้น) |
 |--------|----------|
-| Vite SPA (React/Vue/Solid client-only) | [templates/file-structure-web-vite-spa.md](templates/file-structure-web-vite-spa.md) |
-| Vite frontend + backend repo เดียว | [templates/file-structure-web-vite-fullstack.md](templates/file-structure-web-vite-fullstack.md) |
-| Nuxt | [templates/file-structure-web-nuxt.md](templates/file-structure-web-nuxt.md) |
-| SvelteKit | [templates/file-structure-web-svelte.md](templates/file-structure-web-svelte.md) |
-| Solid + TanStack Router/Query | [templates/file-structure-web-solid-tanstack.md](templates/file-structure-web-solid-tanstack.md) |
-| TanStack Start (Nitro) + Bun | [templates/file-structure-web-solid-tanstack-nitro-bun.md](templates/file-structure-web-solid-tanstack-nitro-bun.md) |
-| Next.js App Router | [templates/file-structure-web-nextjs.md](templates/file-structure-web-nextjs.md) |
-| CLI tool | [templates/file-structure-cli.md](templates/file-structure-cli.md) |
-| Plugin package | [templates/file-structure-plugins.md](templates/file-structure-plugins.md) |
-| SDK/client library | [templates/file-structure-sdk.md](templates/file-structure-sdk.md) |
-| Library package | [templates/file-structure-lib.md](templates/file-structure-lib.md) |
+| Vite SPA | `/follow-tool-vite` → `follow-tool-vite/templates/file-structure-web-vite-spa.md` |
+| Nuxt | `/follow-create-web-nuxt` → `follow-create-web-nuxt/templates/file-structure-web-nuxt.md` |
+| SvelteKit | `/follow-create-web-svelte` → `follow-create-web-svelte/templates/file-structure-web-svelte.md` |
+| Solid SPA + TanStack Router | `/follow-solid-framework` → `follow-solid-framework/templates/file-structure-web-solid-spa.md` |
+| TanStack Start + Nitro → CF Workers | `/follow-solid-framework` → `follow-solid-framework/templates/file-structure-web-solid-start.md` |
+| Next.js App Router | `/follow-create-web-nextjs` → `follow-create-web-nextjs/templates/file-structure-web-nextjs.md` |
+| CLI tool | `/follow-create-cli` → `follow-create-cli/templates/file-structure-cli.md` |
+| Plugin package | `/follow-create-plugins` → `follow-create-plugins/templates/file-structure-plugins.md` |
+| SDK/client library | `/follow-create-sdk` → `follow-create-sdk/templates/file-structure-sdk.md` |
+| Library package | `/follow-tool-tsdown` → `follow-tool-tsdown/templates/file-structure-lib.md` |
 
 - ไม่ครอบ microservices — อ่าน `/deep-review` `### Pattern: Microservices Architecture` โดยตรง
 

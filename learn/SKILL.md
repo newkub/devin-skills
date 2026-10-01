@@ -25,10 +25,10 @@ related:
 |-------|-------|
 | Web / Docs | `/learn-from-web` — เรียนรู้จาก official docs (DeepWiki, Context7, Web Search) แล้วเขียน content ครอบคลุม |
 | CLI tool | `/learn-from-cli` — command surface จาก `--help`, subcommands, binary จริง |
-| Library API | `/learn-from-dts` — API surface จาก `.d.ts` declarations ใน `node_modules` |
+| Library API | `/check-types-definition` — API surface จาก `.d.ts` declarations ใน `node_modules` |
 | Codebase | `/learn-from-codebase` — `/deep-analyze` + learning path และ concept map ของ codebase |
 | Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
-| Slides | `/learn-by-slide` — สร้าง Slidev presentation สรุปความรู้ |
+| Slides | `/report-slides` — สร้าง Slidev presentation สรุปความรู้ใน `.devin/temp/` |
 
 เรียก skill ตามตารางตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -114,7 +114,7 @@ related:
 ### 2. Research Standards
 
 - ทำ `/deep-research` สำหรับค้นหาข้อมูลลึกจาก multiple sources
-- ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก, `/learn-from-cli` สำหรับ CLI, `/learn-from-dts` สำหรับ API surface
+- ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก, `/learn-from-cli` สำหรับ CLI, `/check-types-definition` สำหรับ API surface
 - ตรวจสอบ credibility และ freshness ของข้อมูล
 - บันทึก code examples และ configuration examples
 
