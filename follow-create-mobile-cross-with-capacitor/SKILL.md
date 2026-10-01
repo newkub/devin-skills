@@ -4,7 +4,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 argument-hint: "[scope]"
 related:
   - use-bun-native-api
-  - review-delivery
+  - deep-review
   - follow-tool-vite
   - learn
   - follow-deploy
@@ -34,7 +34,7 @@ related:
 5. ตรวจสอบ JDK 21 หรือสูงกว่า
 6. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
 7. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
-8. ทำ `/review-delivery` สำหรับ configuration files
+8. ทำ `/deep-review` สำหรับ configuration files
 
 ### 2. Project Configuration
 

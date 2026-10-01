@@ -4,7 +4,7 @@ description: Start Scalar API docs server จาก OpenAPI spec พร้อม
 argument-hint: "[scope]"
 related:
   - follow-tool-scalar
-  - review-api
+  - deep-review
   - run-dev
   - resolve-errors
 
@@ -20,7 +20,7 @@ Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve
 
 ## Execute
 
-> Pre-Run: ทำ `/review-api` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (api docs)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (api docs)
 
 ### 1. Locate OpenAPI Spec
 

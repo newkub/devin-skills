@@ -5,7 +5,6 @@ argument-hint: "[action-or-context]"
 related:
   - deep-validate
   - run-check
-  - then-apply
   - follow-your-suggestion
   - report
   - report-progress
@@ -68,7 +67,6 @@ related:
 
 > Goal: ดำเนินการตาม context หลัง validate ผ่าน
 
-1. ถ้าเป็น action ต่อเนื่อง → ใช้ `/then-apply`
 2. ถ้ามี suggestion เฉพาะ → ใช้ `/follow-your-suggestion`
 3. ถ้าเป็น file ops หลายที่ → ใช้ `/all-this-patterns`
 4. ถ้าต้องจัดการหลาย step → ใช้ `/manage`
