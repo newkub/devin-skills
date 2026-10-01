@@ -32,9 +32,9 @@ jobs:
 
       - name: check broken skill references
         run: |
-          cd review-devin-global-harness/subskills/broken-skills-references
+          cd review-devin-global-harness
           bun install
-          bun run src/index.ts ../../..
+          bun run scripts/broken-skills-references.ts ..
 
       - name: review devin global skills
         if: always()
