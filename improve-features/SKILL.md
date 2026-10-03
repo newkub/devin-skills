@@ -1,13 +1,15 @@
 ---
 name: improve-features
-description: หา feature improvements ใน scope — core business (gaps, UX) + platform (auth, perf, stability, release) — แก้หลัง confirm
+description: หา feature improvements ใน scope — extends/gaps ของ features เดิมเท่านั้น (core business + platform) — แก้หลัง confirm
 argument-hint: "[scope]"
 related:
   - improve
   - improve-stability
+  - idea-new-features
+  - refactor-to-srp
   - deep-review
   - deep-review-then-fix
-  - deep-plan
+  - create-plan-in-dot-devin
   - idea
   - report
   - suggest-next-action
@@ -16,7 +18,7 @@ related:
 
 ## Goal
 
-ตอบคำถาม "features improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — ครอบคลุม 2 กลุ่ม: `core business` (user-facing functionality) และ `platform` (cross-cutting capabilities) — รวม findings จาก `/deep-review` domains เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "features improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — ครอบคลุม 2 กลุ่ม: `core business` (user-facing functionality) และ `platform` (cross-cutting capabilities) — เฉพาะ extends/gaps ของ features เดิมเท่านั้น ไม่ใช่ new features (`/idea-new-features`) — รวม findings จาก `/deep-review` domains เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
 
 ## Scope
 
@@ -38,7 +40,7 @@ related:
 - `review-release` — release readiness, versioning, rollout safety
 - `review-observability` — logging, metrics, tracing, alerting
 - Feature flags setup → `### setup-feature-flags` ใน `## Merged Details`
-- ถ้า user ต้องการ feature ideas ใหม่ → `/idea`
+- ถ้า user ต้องการ feature ideas ใหม่ (net-new capabilities ไม่ใช่ extends/gaps) → `/idea-new-features`
 
 ## Execute
 
@@ -66,8 +68,9 @@ related:
 1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง)
 2. Feature flags request → ทำตาม `### setup-feature-flags` ใน `## Merged Details`
 3. Stability findings เจาะลึก → ส่งต่อ `/improve-stability`
-4. Feature/platform additions ใหญ่ (auth provider, observability stack, flag provider) → plan ผ่าน `/deep-plan` ก่อน implement
-5. ทำ `/suggest-next-action` หลังแก้ครบ
+4. Feature/platform additions ใหญ่ (auth provider, observability stack, flag provider) → ทำ `/create-plan-in-dot-devin` เสมอ ก่อน implement
+5. หลังแก้ findings ครบ → ทำ `/refactor-to-srp` กับไฟล์ที่สร้าง/แตะเสมอ — ทุก unit เหลือ 1 responsibility, ≤250 บรรทัด ตาม global rules
+6. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
@@ -75,6 +78,7 @@ related:
 - ไม่แก้ไขโดยไม่ได้ user confirm
 - แยกชัดใน report: `core business` vs `platform` — report ต้องมี Group column
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
+- ทุก addition ที่ confirm → ทำ `/create-plan-in-dot-devin` ก่อน implement เสมอ ห้ามข้าม
 
 ## Merged Details
 
@@ -125,4 +129,4 @@ related:
 
 - Prioritized improvement list จาก `/deep-review` แยก 2 groups (core business + platform รวม stability)
 - Feature flags setup ผ่าน merged `### setup-feature-flags` เมื่อเลือก — registry เดียว, typed flags, lifecycle ชัดเจน
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`; additions ใหญ่ผ่าน `/deep-plan`
+- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`; additions ทั้งหมดผ่าน `/create-plan-in-dot-devin` (บังคับ)

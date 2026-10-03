@@ -7,6 +7,7 @@ related:
   - deep-review
   - deep-analyze
   - learn-from-codebase
+  - create-plan-in-dot-devin
   - convert-to-lang-en
 
   - deep-validate
@@ -178,7 +179,7 @@ related:
 - มีเฉพาะถ้ามี `CONTRIBUTING.md` ใน root
 - สั้นๆ 1-2 บรรทัด บอกให้อ่านที่ `CONTRIBUTING.md`
 - ถ้าไม่มี `CONTRIBUTING.md` → ไม่มี `## Contributing` section
-- ทำ `/update-contributing-md` ก่อนถ้าต้องการสร้าง
+- ทำ `/update-contributing` ก่อนถ้าต้องการสร้าง
 
 ### 13. License Section
 
@@ -219,6 +220,10 @@ related:
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /run-docs ถ้าจำเป็น
 - ใช้ /update-docs ถ้าจำเป็น
+
+### 17. Plan Always
+
+- ทำ `/create-plan-in-dot-devin` เสมอ ก่อนเริ่มเขียน/อัปเดต README ทุกครั้ง — เพื่อกำหนด scope, sections และงานต่อ workspace ให้ชัดเจน
 
 
 ## Expected Outcome

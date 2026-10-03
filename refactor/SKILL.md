@@ -5,6 +5,8 @@ argument-hint: "[@files... | scope | clean | layered | orm | structure]"
 related:
   - refactor-skills
   - simplify
+  - refactor-to-srp
+  - create-plan-in-dot-devin
   - refactor-workspace
   - refactor-to-packages-shared
   - no-hard-code
@@ -53,13 +55,15 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
 - ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
 - ถ้า context คือทำไฟล์สั้น/อ่านง่ายขึ้นโดยไม่เปลี่ยน boundaries (verbosity, redundancy, nesting) → ใช้ `/simplify`
-- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ `### /refactor-to-srp` (merged)
+- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ `/refactor-to-srp`
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 - mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-with-astgrep`
 
 ## Execute
+
+> Bulk scope: ถ้า scope ครอบคลุมหลายไฟล์/workspace/codebase หรือ user ขอ refactor หลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ แล้วค่อย refactor ตาม plan
 
 ### 1. Detect Scope
 
@@ -68,7 +72,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 1. ทำ `/follow-review` ก่อน refactor เสมอ — เลือกและรัน `review-*` ที่ตรง context ก่อนลงมือ
 2. ถ้ามี `@files...` → file refactor
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
-4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
+4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → `/refactor-to-srp`
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
 6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/deep-review` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
@@ -196,6 +200,10 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 
 - ผ่าน `/run-verify`; ไม่มี broken references
 
+### 9. Plan Before Bulk Refactor
+
+- scope ใหญ่ (หลายไฟล์/workspace/codebase) หรือ user ขอหลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ — ห้ามเริ่ม refactor ใหญ่โดยไม่มี plan
+
 ## Merged Details
 
 ### /separate-of-concerns (merged)
@@ -209,16 +217,9 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 
 Rules: 1 extraction = 1 concern ไม่ mix behavior change; pure logic extractable ก่อนเสมอ; placement ตาม dependency direction; preserve public API
 
-### /refactor-to-srp (merged)
+### /refactor-to-srp (promoted)
 
-แยก unit ที่มีหลาย responsibility — 1 unit = 1 reason to change, ไฟล์ ≤250 บรรทัด (ยกเว้น barrel/index)
-
-1. Identify: list responsibilities ทั้งหมด (smells: Divergent Change, Shotgun Surgery, Long Method — `references/code-smells.md`) + `/deep-review` SRP counts/function metrics เป็น evidence → จัดกลุ่มตาม reason to change (ใครขอเปลี่ยน, เปลี่ยนบ่อย, เปลี่ยนพร้อมกันไหม); ไม่มี violation จริง → stop + report (`/dont-over-engineer`)
-2. Split: เลือก technique ตาม smell — Extract Method → Extract Class/Module → Move Method/Field ทีละตัว; แยก content ประเภทเดียวรวมกัน (`types.ts`, `constants.ts`, `config.ts`, `schema.ts` หรือตามชื่อ domain); คง public API ผ่าน barrel re-export; หลายไฟล์อิสระ → `subagents/file-worker.md` ขนานผ่าน `/use-subagents`
-3. `/update-references` ทุก split — rewire importers + ค้น refs เก่าไม่ให้เหลือ (broken → `/resolve-errors`)
-4. Verify: `/run-verify` + `/check-long-files` + `/check-code-structure` เทียบ baseline — ทุกไฟล์ ≤250 บรรทัด; ไม่ผ่าน → กลับ step 2 (max 3 รอบ → stop + report)
-
-Rules: 1 file/class/function = 1 reason to change, 1 โฟลเดอร์ = domain เดียว; หนึ่ง fact หนึ่ง canonical source (`/follow-single-of-source`); ไม่มี tests → characterization tests ก่อน (`/update-tests`); minimal split — cohesion สูงที่เปลี่ยนด้วยกันเสมออย่าแยก
+SRP splitting ถูก promote เป็น top-level skill `/refactor-to-srp` (canonical SRP splitter — 1 unit = 1 reason to change, ไฟล์ ≤250 บรรทัด) — dispatch ตาม `## Scope` เมื่อเจอไฟล์ยาวหรือหลาย responsibility
 
 ## Expected Outcome
 

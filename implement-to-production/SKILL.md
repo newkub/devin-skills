@@ -5,17 +5,18 @@ argument-hint: "[setup-infra|deploy-production] [scope-or-plan]"
 related:
   - deep-review
   - deep-analyze
-  - deep-plan
+  - create-plan-in-dot-devin
   - ask-me
   - check-secrets
   - deep-validate
   - run-verify
-  - run-test-coverage
+  - run-test
   - resolve-errors
   - use-lib-effective
   - follow-tdd
   - use-subagents
   - refactor
+  - refactor-to-srp
 
 ---
 
@@ -40,13 +41,13 @@ related:
 2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values — ถ้า codebase ใหญ่ → spawn `subagents/gap-scanner.md` (read-only) คืน gap inventory table แทนการสแกนเอง และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/temp/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
-5. อ่าน `refactor/SKILL.md` `## Rules` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน: SRP, ≤250 บรรทัด, preserve public API, minimal change
+5. อ่าน `refactor/SKILL.md` `## Rules` และ `/refactor-to-srp` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน: 1 unit = 1 reason to change, ≤250 บรรทัด, preserve public API, minimal change
 
 ### 2. Review Architecture
 
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
-1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/deep-review` เพื่อดู boundary, layer, data flow
+1. ทำ `/create-plan-in-dot-devin` เสมอ เพื่อวางแผน implement อย่างละเอียด (ถ้ามี plan file อยู่แล้วให้อ่านและทำตาม) แล้วทำ `/deep-review` เพื่อดู boundary, layer, data flow
 2. ทำ `/refactor` architecture scope เมื่อ implement ใน `packages/`, `crates/` หรือ `apps/` เพื่อ apply pattern convention ของ directory นั้น (`packages/`/`crates/` → clean, `apps/` → layered — target table ใน step 5)
 3. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
 4. ระบุ critical path: schema → data → API → UX/UI
@@ -116,7 +117,7 @@ related:
 
 > Goal: ปรับปรุงคุณภาพโค้ด ตรวจ references และ cleanup
 
-1. ทำ `/refactor` เสมอหลัง implementation เสร็จ — ลด long files, SRP issues และ import/exports ให้ผ่าน refactor rules ที่อ่านไว้ตอน step 1
+1. ทำ `/refactor` + `/refactor-to-srp` เสมอหลัง implementation เสร็จ — ลด long files, SRP issues (ทุก unit ที่สร้าง/แตะ = 1 reason to change) และ import/exports ให้ผ่าน refactor rules ที่อ่านไว้ตอน step 1
 2. ทำ `/update-references` ถ้ามี move/rename/delete
 3. ทำ `/follow-tool-knip` — พิจารณาลบหรือ implement dead code ที่พบ
 4. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
@@ -126,7 +127,7 @@ related:
 
 > Goal: code ผ่าน validation พร้อม rollback plan
 
-1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test-coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify
+1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. pre-ship sweep: scan debug leftovers ด้วย `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` ยืนยันไม่มี secrets หลุด, และ `/run-audit` ตรวจ dependency vulnerabilities
@@ -185,16 +186,20 @@ related:
 
 ### 4. Minimal And Maintainable
 
-- อ่าน `/refactor` rules ก่อนลงมือ implement เสมอ — และทำ `/refactor` หลัง implement เสร็จเสมอ (step 8) ไม่ข้าม
+- อ่าน `/refactor` rules และ `/refactor-to-srp` ก่อนลงมือ implement เสมอ — และทำ `/refactor` + `/refactor-to-srp` หลัง implement เสร็จเสมอ (step 8) ไม่ข้าม
 - ทำ `/dont-over-engineer`
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ใช้ /run-build ถ้าจำเป็น
+
+### 5. Plan Always
+
+- ทุกงาน implement ต้องมี plan จาก `/create-plan-in-dot-devin` ก่อน — ห้ามเริ่ม Step 3 โดยไม่มี plan
 
 ## Expected Outcome
 
 - ไม่มี TODO/MOCK/placeholder ใน production code
 - schema, validation, types, API, UX/UI สมบูรณ์และเชื่อมต่อกัน
 - infrastructure พร้อม production: security, observability, resilience
-- ผ่าน `/run-test-all` และ `/run-verify`
+- ผ่าน `/run-test all` และ `/run-verify`
 - มี rollback plan

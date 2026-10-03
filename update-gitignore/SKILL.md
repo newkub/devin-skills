@@ -46,6 +46,7 @@ related:
 3. เพิ่ม IDE files (`.vscode/` ถ้าไม่ต้องการ share, `.idea/`)
 4. เพิ่ม lock files ทีไม่ใช้ (ถ้าใช้ bun ให้ ignore `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`)
 5. เพิ่ม OS files (`.DS_Store`, `Thumbs.db`)
+6. เพิ่ม `.devin/temp/` — temp artifacts ของ Devin CLI (`.devin/temp/plan/`, `.devin/temp/report/` และอื่นๆ) ห้าม commit
 
 ### 4. Update Workspace .gitignore
 
@@ -77,6 +78,7 @@ related:
 - ใช้ Moonrepo ให้ ignore `.moon/cache`
 - ใช้ Rust/Tauri ให้ ignore `target/`, `pkg/`, `gen/`
 - ใช้ VitePress ให้ ignore `.vitepress/dist`, `.vitepress/cache`
+- ใช้ Devin CLI ให้ ignore `.devin/temp/` เสมอ (plan/report artifacts — สร้างโดย `/create-plan-in-dot-devin` และ `/report`)
 
 ### 3. Consistency
 
@@ -93,3 +95,4 @@ related:
 - `.gitignore` ครอบคลุม stack ที่ใช้
 - ไม่เกิน 250 บรรทัด (ถ้าเกินให้ split เป็น workspace-specific)
 - `git status` ไม่แสดง artifacts ทีไม่ควร commit
+- `.devin/temp/` (plan/report artifacts) ถูก ignore เสมอ

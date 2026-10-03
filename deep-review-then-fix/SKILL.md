@@ -8,7 +8,7 @@ related:
   - watch-browser
   - follow-best-practice
   - deep-review
-  - deep-plan
+  - create-plan-in-dot-devin
   - suggest-next-action
   - resolve-errors
   - run-review
@@ -127,7 +127,7 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 - [Full-dimension checklist](references/checklist.md)
 - ใช้ /run-review ถ้าจำเป็น
 
-- ใช้ /deep-plan ถ้าจำเป็น
+- ใช้ /create-plan-in-dot-devin ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -48,7 +48,7 @@ related:
 
 1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain `review-docs`)
 2. Findings เกี่ยวกับ writing quality/clarity ของ `.md` → ส่งต่อ `/improve-writing`
-3. Docs restructure ใหญ่ → plan ผ่าน `/deep-plan` หรือ `/update-docs`
+3. Docs restructure ใหญ่ → ทำ `/create-plan-in-dot-devin` หรือ `/update-docs`
 4. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules

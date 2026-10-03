@@ -7,6 +7,7 @@ related:
   - review-devin-global-harness
   - use-subagents
   - update-devin
+  - create-plan-in-dot-devin
 
 ---
 
@@ -44,6 +45,7 @@ related:
 2. วิเคราะห์ workflows และ skills ที่ระบุ
 3. ถ้ามี workflow เดียว ทำตามโดยตรง
 4. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
+5. ถ้า `AGENTS.md` ระบุงานใหม่หลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ แล้วค่อย execute ตาม plan
 
 ### 4. Use Subagents
 
@@ -75,6 +77,10 @@ related:
 - ตรวจสอบว่า workflows และ skills มีอยู่จริง
 - ข้าม workflows หรือ skills ที่ไม่มีอยู่
 - ใช้ /update-docs ถ้าจำเป็น
+
+### 3. Plan Always
+
+- งานใหม่จำนวนเยอะในคราวเดียว (หลาย features/files/tasks) → ทำ `/create-plan-in-dot-devin` เสมอ ก่อน execute ตาม `AGENTS.md`
 
 
 ## Expected Outcome

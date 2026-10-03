@@ -1,28 +1,31 @@
 ---
 name: plan
-description: alias → /deep-plan (analyze + plan — วิเคราะห์ลึกแล้ววางแผน implementation-ready)
-argument-hint: "[scope]"
+description: alias → /create-plan-in-dot-devin (canonical analyze + plan)
+argument-hint: "[scope] [chat-only]"
 related:
-  - deep-plan
+  - create-plan-in-dot-devin
 ---
 
 ## Goal
 
-Alias ของ `/deep-plan` — วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้ววางแผน implementation-ready ในขั้นตอนเดียว
+Alias ของ `/create-plan-in-dot-devin` — analyze + plan ที่ persist ลง `.devin/temp/plan/<workspace>/` (retarget จาก `/deep-plan` — canonical ย้ายไป `create-plan-in-dot-devin`)
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/plan` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-plan`
+ใช้เมื่อ user หรือ skill อื่นเรียก `/plan` — workflow จริงอยู่ใน `create-plan-in-dot-devin`
+
+- Default: forward เต็ม workflow (สร้าง plan file)
+- Caller ที่ต้องการ chat-only → forward แบบระบุ `chat-only`
 
 ## Execute
 
-ทำ `/deep-plan` เต็ม workflow
+ทำ `/create-plan-in-dot-devin` เต็ม workflow — ส่งต่อ `<scope>` และ `chat-only` hint ตามที่ caller ระบุ
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/deep-plan` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `deep-plan/SKILL.md` เสมอ
+- ห้าม duplicate workflow ของ `/create-plan-in-dot-devin` ในไฟล์นี้
+- ถ้า alias ขาด steps → อ่าน `create-plan-in-dot-devin/SKILL.md` เสมอ
 
 ## Expected Outcome
 
-- `/deep-plan` ถูก execute ครบทุก step จนได้ implementation-ready plan
+- `/create-plan-in-dot-devin` ถูก execute ครบทุก step จนได้ implementation-ready plan

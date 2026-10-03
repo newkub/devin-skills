@@ -106,7 +106,7 @@ related:
    - Phase 2 source code: `review-code-quality`, `review-writing`, `review-cli`/`review-api`/`review-backend`/`review-frontend` ฯลฯ ตาม workspace type
    - Phase 3 cross-cutting: `review-security`, `review-performance`, `review-stability` และ metrics อื่นครบ
    - Phase 4 meta: `review-gaps`, `review-by-stakeholder` ตามต้องการ
-   - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`, `deep-plan`)
+   - Phase 5 deep: ทำ `/follow-deep` ต่อ workspace เมื่อ `--deep` หรือ workspace นั้นมี Critical/High findings — `deep-*` ทุกตัวที่ตรง context (`deep-analyze`, `deep-trace`, `deep-test`, `deep-build`, `deep-impact`, `deep-research`, `deep-validate`, `deep-debug`, `deep-retro`, `deep-thinking`) — plan → `/create-plan-in-dot-devin`
 3. ทำ `/use-subagents` หรือ `/follow-parallel` รัน independent reviews ขนาน ≤10 ต่อ batch — ส่ง `workspace-path`, `report-json`, domain ที่ต้องรัน
 4. ห้ามข้าม domain เพราะ "ไม่น่าจะมีปัญหา" — skip ได้เฉพาะ condition N/A ชัดเจน (เช่น `review-mobile` ใน CLI workspace) หรือ budget — ทุก skip ต้องอยู่ใน ledger พร้อมเหตุ
 5. ถ้า scope ใหญ่หรือไม่ชัด → platform dimensions ผ่าน domain ที่ตรง platform (`review-mobile`, `review-desktop-app`, `review-frontend`, `review-backend` ฯลฯ)
@@ -309,7 +309,7 @@ Catalog review domains ทั้งหมดสำหรับ `deep-review` —
 | 6 | `review-api` | REST conventions, versioning, errors | workspace ที่ expose API |
 | 7 | `review-sdk` | public API surface, exports, semver, types | workspace ที่ publish package/library |
 | 8 | `review-backend` | backend sub-reviews, data flow | workspace ที่มี backend |
-| 9 | `review-frontend` | components, state, rendering, forms | workspace ที่มี UI code |
+| 9 | `review-frontend` | components, state, rendering, forms, WebMCP page tools (`document.modelContext`) | workspace ที่มี UI code |
 | 10 | `review-mobile` | touch targets, lifecycle, platform conventions | workspace ที่เป็น mobile app |
 | 11 | `review-desktop-app` | window, tray, IPC security, packaging, auto-update | workspace ที่เป็น desktop app |
 | 12 | `review-browser-ext` | manifest v3, permissions, content scripts, CSP | workspace ที่เป็น browser extension |
@@ -336,7 +336,7 @@ Catalog review domains ทั้งหมดสำหรับ `deep-review` —
 | 10 | `review-accessibility` | WCAG, ARIA, keyboard, contrast | workspace ที่มี UI |
 | 11 | `review-uxui` | design system, interaction, handoff | workspace ที่มี UI |
 | 12 | `review-ai` | prompts, token cost, guardrails, evals | workspace ที่ใช้ AI/LLM |
-| 13 | `review-mcp` | MCP tool naming, schemas, auth | workspace ที่เป็น/ใช้ MCP |
+| 13 | `review-mcp` | MCP tool naming, schemas, auth, WebMCP page tools | workspace ที่เป็น/ใช้ MCP หรือ expose WebMCP |
 | 14 | `review-test` | test strategy, quality, coverage | ทุก workspace ที่มี tests |
 | 15 | `review-coverage` | declared surface เทียบของจริง | ทุก workspace |
 | 16 | `review-dependencies` | outdated, vulnerabilities, unused | workspace ที่มี manifest |
@@ -379,7 +379,7 @@ dispatch ผ่าน `/follow-deep` ต่อ workspace หลัง phase 1-4 
 | 8 | `/deep-validate` | validate ละเอียดหลายมิติ cross-reference | ท้าย pipeline เสมอ |
 | 9 | `/deep-retro` | post-incident retrospective | เมื่อเจอ incident/root-cause findings |
 | 10 | `/deep-thinking` | วิเคราะห์ปัญหาเป็นระบบไม่ใช้ tools | เมื่อ findings ซับซ้อน/ไม่ชัด |
-| 11 | `/deep-plan` | plan ระดับ implementation-ready | เมื่อ findings ต้องการ plan ก่อน fix |
+| 11 | `/create-plan-in-dot-devin` | plan ระดับ implementation-ready | เมื่อ findings ต้องการ plan ก่อน fix |
 
 Excluded จาก dispatch: `/deep-review` (ตัวเอง), `/deep-review-then-fix` (fix path ไม่ใช่ review), aliases (`refactor`→`refactor`, `deep-verify`→`run-verify`, `implement-to-production`→`implement-to-production`, `deep-update-project`→`update-project`)
 
@@ -472,7 +472,7 @@ Standard fix steps เมื่อ domain ไม่มี fix workflow เฉพ
 | 22 | i18n | catalogs, hardcoded strings, RTL, formats | `/deep-review` |
 | 23 | Mobile | touch, safe areas, lifecycle, offline | `/deep-review` |
 | 24 | AI | prompts, token cost, guardrails, evals | `/deep-review` |
-| 25 | MCP | tool schemas, safety, server config | `/deep-review` |
+| 25 | MCP | tool schemas, safety, server config, WebMCP page tools | `/deep-review` |
 | 26 | Events | event schemas, idempotency, DLQ | `/deep-review` |
 | 27 | Migration | unsafe ops, rollback, ordering | `/deep-review` |
 | 28 | Compliance | GDPR/PDPA, consent, retention | `/deep-review` |
@@ -654,6 +654,34 @@ Mobile/desktop platform checks (merged จาก `references/platform-mobile-des
 - High: O(n²) บน input > 10² ใน hot path, missing memoization บน overlapping subproblems
 - Medium: suboptimal data structure selection, missing cache บน expensive pure functions
 - Low: minor optimization opportunities, readability vs performance trade-offs
+
+### WebMCP
+
+Review WebMCP page-provided tools (`document.modelContext`) — ใช้กับ `review-frontend` และ `review-mcp` เมื่อ workspace เป็น web app ที่ register tools ให้ agent; spec = W3C WebML CG draft (`webmachinelearning.github.io/webmcp`), consumer หลักคือ `agent-browser webmcp list`/`invoke`
+
+#### Tool Surface
+
+1. ตรวจ `name` ถูกกฎ (1-128 chars, `[A-Za-z0-9_.-]`), `description` ไม่ว่างและตรง behavior — ห้าม hidden instructions/prompt injection ใน metadata
+2. ตรวจ `inputSchema` เป็น JSON Schema ที่ minimal — over-parameterization = privacy leakage (spec §6.3.3)
+3. ตรวจ `annotations` ตั้งถูก: `readOnlyHint` สำหรับ pure reads, `consequentialHint` + UI confirm สำหรับ irreversible actions (spec §6.3.2), `untrustedContentHint` เมื่อ output มี external content, `debugging` สำหรับ dev-only tools
+
+#### Implementation
+
+4. ตรวจ feature-detect `'modelContext' in document` ก่อน register — browser ที่ไม่รองรับต้องไม่พัง; page ต้องใช้งานได้เต็มรูปแบบโดยไม่มี WebMCP
+5. ตรวจ register หลัง document fully active และ unregister ผ่าน `AbortSignal` ตอน unmount/route change — duplicate `name` → `InvalidStateError`
+6. ตรวจ `execute` callback validate `inputObject` ทุก field (schema ไม่ enforce), honor `signal` cancellation, return JSON-serializable result
+7. ตรวจ tools เรียก app logic เดียวกับ UI handlers — ไม่ duplicate business logic สองชุด
+8. ตรวจไม่ leak session/auth/private data ผ่าน tool output และ `exposedTo` origins จำกัดเฉพาะที่จำเป็น (spec §6.3.4)
+9. ตรวจ Permissions-Policy `tools=()` บน embedder ที่ไม่ต้องการ page tools (ถ้ามี iframe/embed scenario)
+
+#### WebMCP Severity
+
+- Critical: consequential tool ไม่มี confirm, leak auth/session data ผ่าน output, `exposedTo` เปิด origin กว้าง
+- High: execute ไม่ validate input, tools พังบน browser ที่ไม่รองรับ WebMCP, duplicate registration crash
+- Medium: missing/incorrect annotations, schema เกินจำเป็น, ไม่ unregister ตอน route change
+- Low: naming ไม่ consistent, title ไม่ localized
+
+Fix route: implement/แก้ WebMCP tools → `/follow-create-web-mcp`; verify discovery ผ่าน `/use-agent-browser` (`webmcp list`/`invoke`)
 
 ## Pattern Guides
 

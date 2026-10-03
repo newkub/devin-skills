@@ -25,7 +25,7 @@ related:
 
 - Web viewer อยู่ใน directory ของ skill นี้ (`src/`) — TanStack Start (SolidJS) + Nitro `preset: bun` ตาม `/follow-lib-nitro`
 - Agent generate ไอเดีย → เขียน `src/data/ideas.json` → run web → user browse ใน browser
-- ไม่ implement ไอเดีย — implement → `/implement-features-to-mvp`; plan → `/deep-plan`
+- ไม่ implement ไอเดีย — implement → `/implement-features-to-mvp`; plan → `/create-plan-in-dot-devin`
 
 ## Execute
 
@@ -76,7 +76,7 @@ related:
 
 > Goal: งานผ่าน verification gate
 
-1. ทำ `/ship-verify` — เฉพาะ gates ที่ apply (skills repo ไม่มี test suite → ข้าม `/run-test-all` พร้อมเหตุผล)
+1. ทำ `/ship-verify` — เฉพาะ gates ที่ apply (skills repo ไม่มี test suite → ข้าม `/run-test all` พร้อมเหตุผล)
 2. สรุปผลในแชท
 
 ## Rules

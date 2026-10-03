@@ -4,7 +4,7 @@ description: บังคับทำตาม deep-review — รัน/อ่�
 argument-hint: "[scope]"
 related:
   - deep-review
-  - deep-plan
+  - create-plan-in-dot-devin
   - report
   - suggest-next-action
 ---
@@ -15,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้ก่อน `/deep-plan`, implementation, หรือ refactor ที่ต้องการ evidence จาก review — aggregate findings จาก `/deep-review` report หรือ dimensional reviews ที่เคยรัน
+ใช้ก่อน `/create-plan-in-dot-devin`, implementation, หรือ refactor ที่ต้องการ evidence จาก review — aggregate findings จาก `/deep-review` report หรือ dimensional reviews ที่เคยรัน
 
 - ดูเพิ่มเติม: /deep-review, /deep-review
 
@@ -50,7 +50,7 @@ related:
 > Goal: สรุปว่า findings ถูกนำไปใช้อย่างไร
 
 1. ทำ `/report` คอลัมน์: `No.`, `Finding`, `Severity`, `Action`, `Mapped To`
-2. ทำ `/suggest-next-action` — ปกติคือ `/deep-plan` หรือ `/deep-review-then-fix`
+2. ทำ `/suggest-next-action` — ปกติคือ `/create-plan-in-dot-devin` หรือ `/deep-review-then-fix`
 
 ## Rules
 
@@ -66,5 +66,5 @@ related:
 
 - Findings ล่าสุดพร้อมใช้ก่อนงานหลักเสมอ
 - ทุก Critical/High finding ใน scope ถูก map เข้างาน
-- งานถัดไป (`/deep-plan`, implementation) มี evidence base ชัดเจน
+- งานถัดไป (`/create-plan-in-dot-devin`, implementation) มี evidence base ชัดเจน
 - รายงาน mapping findings → actions ครบถ้วน
