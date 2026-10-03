@@ -137,6 +137,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 
 | Category | Default | Alternatives |
 |---|---|---|
+| Utilities | `remeda` (ดู `/follow-lib-remedajs`) | `es-toolkit`, `radash`, `lodash-es` |
 | Styling | `UnoCSS` | `TailwindCSS` |
 | Icons | `@iconify-json/*` | - |
 | Animation / Interactive | `animejs` | `Motion` (→spring UI), `GSAP` (→complex timeline), `Lottie`, `Rive` (→designer assets) |
