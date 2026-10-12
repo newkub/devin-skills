@@ -74,7 +74,7 @@
 - ถ้าเกิน 5 รอบ → stop และ report remaining gaps
 - ไม่มีข้อยกเว้นสำหรับ critical code, edge cases, error paths
 
-- ใช้ /follow-coverage ถ้าจำเป็น
+- ใช้ /improve-coverage ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น

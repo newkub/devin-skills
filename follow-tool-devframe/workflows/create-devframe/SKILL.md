@@ -26,7 +26,7 @@ Scaffold devtool ใหม่ด้วย Devframe จนรันได้จ�
 
 > Goal: ตรวจ environment ก่อน scaffold
 
-1. อ่าน `package.json` — ถ้ามี `devframe` แล้ว → skip ไป verify; เช็ค version ตรง `references/package-manifest.md`
+1. อ่าน `package.json` — ถ้ามี `devframe` แล้ว → skip ไป verify; เช็ค version กับ parent SKILL.md `### 4. Version Notes`
 2. ระบุ SPA stack ที่จะใช้ (Vue/Nuxt/React) และ runtime (Bun/Node)
 3. ถ้า project เป็น CLI ใหม่ทั้งหมด → ทำ `/follow-create-cli` สำหรับ skeleton ก่อน
 

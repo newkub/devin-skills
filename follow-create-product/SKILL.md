@@ -142,7 +142,7 @@ related:
 > Goal: ส่งมอบ product
 
 1. เรียก `/deep-validate` สำหรับ type, quality, security, cross-reference
-2. เรียก `/run-test-all` ถ้ามี tests
+2. เรียก `/run-test all` ถ้ามี tests
 3. เรียก `/ship-to-dev-branch` เพื่อ commit และ deploy
 4. รายงาน product URL, features, และ next actions
 

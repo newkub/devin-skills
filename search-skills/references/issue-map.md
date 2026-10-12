@@ -10,7 +10,7 @@
 | build fail | `/run-build`, `/resolve-errors` |
 | lint fail | `/run-lint`, `/resolve-errors` |
 | typecheck fail | `/run-typecheck`, `/resolve-errors` |
-| test fail / flaky | `/run-test`, `/run-test-all`, `/resolve-errors` |
+| test fail / flaky | `/run-test`, `/run-test all`, `/resolve-errors` |
 | CI/CD pipeline fail | `/resolve-cicd`, `/resolve-github-actions-fails`, `/setup-cicd` |
 | deploy fail | `/resolve-cicd`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
 | secrets leak / สงสัย hardcoded secret | `/check-secrets secrets-leak`, `/follow-secret-manager`, `/open-github secrets` |

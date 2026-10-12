@@ -10,7 +10,7 @@ related:
   - report-before-after
   - suggest-next-action
   - run-build
-  - run-test-all
+  - run-test
 ---
 
 ## Goal
@@ -111,7 +111,7 @@ related:
 - ระบุลำดับการทำงานและ dependency direction
 - ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง `/implement-to-production`
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 
 ## Expected Outcome
 

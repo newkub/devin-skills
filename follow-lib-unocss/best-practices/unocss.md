@@ -4,11 +4,12 @@ Atomic CSS engine — presets, shortcuts และ config discipline
 
 ## Recommended Patterns
 
-- `presetWind4`/`presetWind3` (Tailwind-compatible) เป็น base — เลือก preset ตาม syntax ที่ต้องการ
+- `presetWind4` เป็น canonical base (Tailwind 4-compatible, theme เป็น CSS vars on-demand) — `presetWind3`/`presetUno` เฉพาะ legacy หรือ migration เท่านั้น
 - Theme tokens ใน `uno.config.ts` — `theme.colors`, `theme.fontSize` — single source ไม่ hardcode ใน utilities
 - `shortcuts` สำหรับ repeated combos — ชื่อ semantic (`btn-primary`) ไม่ใช่ utility dump
 - `presetAttributify` สำหรับ attribute-mode ถ้าชอบ — แต่เลือก mode เดียวให้ทีม (consistency)
 - `presetIcons` สำหรับ icons — `i-carbon-*` etc., icon เป็น font/svg inline
+- เปิด `@unocss/eslint-plugin` (`unocss/order`, `unocss/blocklist`) เมื่อ project ใช้ ESLint — setup + manual checks ใน /follow-unocss-theme lint
 
 ## Common Pitfalls
 

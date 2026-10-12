@@ -10,7 +10,7 @@ related:
   - report
   - report-progress
   - suggest-next-action
-  - validate-then-apply
+  - apply
 ---
 
 ## Goal
@@ -71,7 +71,7 @@ related:
 2. ถ้ามี broken refs → แนะนำ `/update-references`
 3. ถ้ามี uncommit → แนะนำ `/git-commit`
 4. ถ้ามี unpush → แนะนำ `/git-push`
-5. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/validate-then-apply`
+5. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/apply` mode `validate`
 6. ทำ `/suggest-next-action`
 
 ## Rules

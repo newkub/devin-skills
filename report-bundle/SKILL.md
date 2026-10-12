@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - run-build
 
+  - follow-tool-sonda
+  - follow-tool-node-modules-inspector
   - report
   - suggest-next-action
 ---
@@ -36,6 +38,7 @@ related:
 3. ระบุไฟล์ใหญ่ที่สุด (top 10) ด้วย `du -a <output-dir> | sort -n -r | head -10`
 4. ระบุ chunk files: `*.js`, `*.css`, `*.woff2`, `*.png`
 5. แยก gzipped size ถ้ามี (`.gz` files)
+6. ถ้ามี `sonda` plugin ใน bundler config → ใช้ `.sonda/*.json` report เป็น source of truth สำหรับ sizes แทน `du` estimate; ถ้ายังไม่มี → แนะนำติดตั้งตาม `/follow-tool-sonda` (accurate กว่าเพราะอ่าน final source maps)
 
 ### 3. Analyze Chunks
 
@@ -52,11 +55,12 @@ related:
 
 > Goal: วิเคราะห์ dependencies ที่มีผลต่อ bundle size
 
-1. ระบุ dependencies ที่อยู่ใน vendor chunks
-2. ประเมินขนาดของแต่ละ dependency ใน bundle
-3. ระบุ dependencies ที่ใหญ่เกินคาด (เช่น > 50KB)
-4. ระบุ dependencies ที่ไม่ได้ tree-shake อย่างมีประสิทธิภาพ
-5. ระบุ dependencies ที่ควรเป็น dynamic import
+1. ระบุ dependencies ที่อยู่ใน vendor chunks — ใช้ Sonda JSON report (`deep: true`) แตก deps เป็น source files ถ้ามี
+2. ทำ `/follow-tool-node-modules-inspector` — `bunx node-modules-inspector report duplicates` และ `report sizes --json` สำหรับ versions, duplicates, installed sizes
+3. ประเมินขนาดของแต่ละ dependency ใน bundle
+4. ระบุ dependencies ที่ใหญ่เกินคาด (เช่น > 50KB)
+5. ระบุ dependencies ที่ไม่ได้ tree-shake อย่างมีประสิทธิภาพ
+6. ระบุ dependencies ที่ควรเป็น dynamic import
 
 ### 5. Check Tree-Shaking
 

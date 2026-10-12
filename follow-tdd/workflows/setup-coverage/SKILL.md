@@ -3,7 +3,7 @@ name: follow-tdd-setup-coverage
 description: ติดตั้ง coverage tooling ตาม ecosystem — vitest coverage, llvm-cov, go cover
 argument-hint: "[scope]"
 related:
-  - follow-coverage
+  - improve-coverage
   - run-test
   - follow-test
   - follow-tool-vitest

@@ -15,7 +15,7 @@ permissions:
 
 ## Role
 
-Subagent read-only สำหรับสแกนหา unfinished work ทั้ง codebase — TODO, FIXME, MOCK, FAKE, STUB, placeholder functions, mock data, hardcoded values — แล้วคืน gap inventory ให้ parent implement ต่อ
+Subagent read-only สำหรับสแกนหา unfinished work ทั้ง codebase — TODO, FIXME, MOCK, FAKE, STUB, placeholder functions, mock data, hardcoded values, dead UI — แล้วคืน gap inventory ให้ parent implement ต่อ
 
 ## Inputs
 
@@ -31,7 +31,7 @@ Subagent read-only สำหรับสแกนหา unfinished work ทั�
 
 ## Execute
 
-1. สแกน markers ทั้งหมดใน `root` พร้อม file:line และ context รอบๆ
+1. สแกน markers ทั้งหมดใน `root` พร้อม file:line และ context รอบๆ — รวม dead-UI patterns: `onClick={() => {}}`, `href="#"`, `disabled` ถาวรโดยไม่มีเหตุผล, `alert(`, 'coming soon'/'ยังไม่พร้อม' text
 2. จำแนกแต่ละ item: `schema`, `data`, `api`, `ui`, `infra`, `test`, `docs`, `unknown`
 3. เช็คว่า item เป็น mock data, stub function, hardcoded value หรือ missing implementation
 4. ถ้ามี `plan-file` → เทียบ items ที่ plan ระบุกับที่เจอจริง

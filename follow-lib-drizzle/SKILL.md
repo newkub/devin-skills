@@ -38,7 +38,17 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-drizzle/SKILL.md` — install, `schema.ts`, db client | Migrate | `workflows/migrate-schema/SKILL.md` — generate/migrate/push flow, rollback | Optimize | `workflows/optimize-queries/SKILL.md` — indexes, relations, select/where perf 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-drizzle/SKILL.md` — install, `schema.ts`, db client |
+| Schema design | `workflows/define-schema/SKILL.md` — dialect tables, columns, indexes, `relations()` |
+| Relational queries | `workflows/query-relational/SKILL.md` — `db.query`, `with`/`columns`/`extras`, vs `select()` |
+| Mutations/transactions | `workflows/use-transactions/SKILL.md` — insert/update/delete, `returning`, upsert, nested tx |
+| Migrate | `workflows/migrate-schema/SKILL.md` — generate/migrate/push flow, rollback |
+| Seed/fixtures | `workflows/seed-data/SKILL.md` — `drizzle-seed`, `seed()`/`reset()`, deterministic fixtures |
+| Optimize | `workflows/optimize-queries/SKILL.md` — indexes, relations, select/where perf |
+| drizzle-kit CLI ลึก | `/follow-tool-drizzle-kit` — `generate`/`migrate`/`push`/`pull`/`studio`/`check` |
+
 ### 1. Check Precondition
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม

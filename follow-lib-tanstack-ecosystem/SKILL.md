@@ -24,7 +24,7 @@ related:
 - Performance: `Virtual` (virtualized lists, v3), `Pacer` (debounce/throttle/batch, 0.x)
 - Tooling: `Devtools` (unified devtools panel), `Config`, `CLI`, `Intent`
 
-- Latest: query `5.102.8` / router `1.170.35` / start `1.168.52` / table `9.2.4` / form `1.33.5` / virtual `3.14.12` / store `0.11.1` / db `0.3.8` / pacer `0.23.0` / ai `0.54.0` (verified 2026-09-13)
+- Latest: query `5.104.1` / router `1.170.41` / start `1.168.60` / table `9.2.4` / form `1.33.5` / virtual `3.14.13` / store `0.11.2` / db `0.11.1` / ai `0.63.0` / pacer `0.23.0` (react-pacer `0.24.0`) / charts `0.18.0` / hotkeys `0.12.1` / markdown `1.0.0` / highlight `1.0.0` / intent `0.5.0` / config `0.22.2` / cli `0.71.1` (verified 2026-10-02)
 
 ## Execute
 
@@ -69,6 +69,10 @@ related:
 6. `Table`: ตั้งค่า columns, sorting, filtering, pagination (headless — render UI เอง)
 7. `Virtual`: ตั้งค่า virtualizer กับ list/table ที่ยาว
 8. `DB`/`AI`: ตั้งค่า collections/sync engine หรือ AI provider adapters ตาม docs ล่าสุด
+9. `Charts`: declarative chart จาก data + axes + series (grammar-of-graphics)
+10. `Markdown`/`Highlight`: doc model render หรือ syntax highlighting (streaming-friendly)
+11. `Hotkeys`: keyboard shortcuts + sequences + scopes
+12. `Pacer`: debounce/throttle/rate-limit/queue/batch hooks
 
 ### 4. Test And Optimize
 
@@ -81,9 +85,26 @@ related:
 
 ### Workflows
 
-- Query setup + QueryClientProvider + query/mutation basics → `workflows/setup-query/SKILL.md`
-- Router setup + createRouter + file-based vs code-based → `workflows/setup-router/SKILL.md`
-- Devtools integration (Query/Router/unified panel) → `workflows/config-devtools/SKILL.md`
+| Library | Skill |
+|---------|----------|
+| Start — full-stack framework (SSR, server fns) | `/follow-lib-tanstack-start` |
+| Router — type-safe routing | `/follow-lib-tanstack-router` |
+| Query — server state | `/follow-lib-tanstack-query` |
+| DB — reactive client store, live queries, sync | `/follow-lib-tanstack-db` |
+| Store — client state | `/follow-lib-tanstack-store` |
+| AI — provider-agnostic AI SDK | `/follow-lib-tanstack-ai` |
+| Table — headless datagrid | `/follow-lib-tanstack-table` |
+| Form — headless forms + Standard Schema | `/follow-lib-tanstack-form` |
+| Charts — grammar-of-graphics charts | `/follow-lib-tanstack-charts` |
+| Markdown — serializable doc model / AI streams | `/follow-lib-tanstack-markdown` |
+| Highlight — themeable syntax highlighting | `/follow-lib-tanstack-highlight` |
+| Virtual — virtualized lists | `/follow-lib-tanstack-virtual` |
+| Pacer — debounce/throttle/rate-limit/queue/batch | `/follow-lib-tanstack-pacer` |
+| Hotkeys — type-safe shortcuts/sequences/scopes | `/follow-lib-tanstack-hotkeys` |
+| Devtools — unified devtools panel | `/follow-lib-tanstack-devtools` |
+| CLI — project scaffolding + add-ons | `/follow-lib-tanstack-cli` |
+| Intent — ship agent skills in npm packages | `/follow-lib-tanstack-intent` |
+| Config — publish/maintain packages | `/follow-lib-tanstack-config` |
 
 ## Rules
 
@@ -93,7 +114,7 @@ related:
 - `Query` กับ `Store` ไม่ทดแทนกัน — ใช้ `Query` สำหรับ server state, `Store` สำหรับ client state
 - `Router`/`Start` รองรับเฉพาะ React และ Solid — ถ้าใช้ Vue/Svelte ให้ใช้ router ของ framework นั้น
 - อ้างอิง official docs `https://tanstack.com` เป็นแหล่งหลักเสมอ
-- ดูรายละเอียดเพิ่มเติมที่ `references/` (versions, API, CLI, config) และ `workflows/` (Query, Table)
+- รายละเอียดต่อ library อยู่ที่ skill เฉพาะทาง `/follow-lib-tanstack-*` (ครบทุก 18 libs — ดูตาราง Workflows; `references/apis.md` ต่อ skill มี package versions + API tables)
 
 ### 2. Type Safety
 
@@ -108,7 +129,7 @@ related:
 - ใช้ `Pacer` สำหรับ debounce/throttle แทนเขียนเอง
 - แยก reactivity scope ใน `Store`/`DB` ให้เหมาะสม
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- ดู `best-practices/` ของแต่ละ `/follow-lib-tanstack-*` skill สำหรับ recommended patterns และ pitfalls
 
 ## Expected Outcome
 

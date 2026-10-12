@@ -4,6 +4,7 @@ description: สร้าง Dockerfile, .dockerignore และ docker-compose 
 argument-hint: "[path]"
 related:
   - deep-review
+  - optimize-docker
   - follow-deploy
   - setup-cicd
   - follow-secret-manager
@@ -34,7 +35,7 @@ related:
 |----------|----------|
 | `dockerfile`, `setup` | `workflows/setup-dockerfile/SKILL.md` — Dockerfile production-ready |
 | `compose` | `workflows/config-compose/SKILL.md` — docker-compose multi-service |
-| `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image |
+| `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image (findings-driven pass → `/optimize-docker`) |
 
 1. ถ้า argument ตรงกับ workflow → อ่าน `workflows/<arg>/SKILL.md` แล้วทำตาม flow
 2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ (default = `setup-dockerfile`)

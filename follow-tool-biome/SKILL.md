@@ -98,8 +98,9 @@ related:
 ### 4. Optional Domains
 
 > Goal: เพิ่ม linter domains ตาม tech stack
-1. เลือก domains ที่เกี่ยวข้องกับโปรเจกต์
+1. เลือก domains ที่เกี่ยวข้องกับโปรเจกต์ — ดูรายการและ dependency ที่ trigger แต่ละ domain ได้ที่ https://biomejs.dev/linter/domains/ (domain จะ activate อัตโนมัติเมื่อ dep ที่เกี่ยวข้องถูก declare ใน `package.json` เช่น `solid` เมื่อมี `solid-js`)
 2. เพิ่ม domains ใน `biome.jsonc` ผ่าน `linter.domains`
+3. Validate config ด้วย `bunx biome lint` — key/rule ที่วางผิด group จะขึ้น `deserialize` error พร้อม list ของ known keys
 
 ```json [biome.jsonc]
 {
@@ -193,8 +194,11 @@ jobs:
 - Tailwind: สำหรับ Tailwind CSS projects
 - Test: สำหรับ test files
 - Turborepo: สำหรับ Turborepo projects
-- Types: สำหรับ type analysis (มีผลต่อ performance)
+- Types: สำหรับ type analysis (มีผลต่อ performance — scan ทั้ง project + inference engine)
 - Vue: สำหรับ Vue projects
+- Tailwind ห้ามใช้กับ project ที่ใช้ UnoCSS/Tailwind-free stack
+- Stack ตัวอย่าง: Solid SPA/Start → `solid` + `project` + `types`
+- Rule ต้องอยู่ใต้ group ที่ตรงกับ diagnostic category ของมัน (เช่น `useOptionalChain` → `complexity`, `noDescendingSpecificity` → `style`) — nursery rules วางใต้ group `nursery`; เช็ค group ด้วย `bunx biome explain <rule>`
 
 - ใช้ /follow-create-plugins (biome) ถ้าจำเป็น
 - ใช้ /use-agent-browser ถ้าจำเป็น

@@ -4,6 +4,7 @@ description: วิเคราะห์คุณภาพของ codebase ด
 argument-hint: "[scope]"
 related:
   - deep-validate
+  - check-code-structure
   - report
   - suggest-next-action
 
@@ -49,6 +50,8 @@ related:
 - `analyze-codebase-quality` เป็น source of truth
 - ถ้าไม่สามารถเรียก CLI ได้ → ติดตั้งหรือ build ก่อน
 - ไม่เกิน 250 บรรทัด
+
+- ใช้ /check-code-structure ถ้าจำเป็น — `sg outline` เติม symbol-level metrics (top-level symbols, exports, members) ที่ CLI ไม่ครอบ
 
 ## Expected Outcome
 

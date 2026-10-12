@@ -15,6 +15,7 @@ related:
   - follow-lang-typescript
   - follow-single-responsibility
   - run-dev
+  - test-component
 ---
 
 ## Goal
@@ -158,6 +159,7 @@ plugins: [tsConfigPaths(), tanstackStart(), nitro(), UnoCSS(), viteSolid({ ssr: 
 - `routeTree.gen.ts` ห้าม edit; `virtual:uno.css` import ผ่าน JS entry เท่านั้น
 - shared leaves (`utils/`/`types/`) ต้อง isomorphic-safe บน start — ห้าม `node:*`/`bun:*` (ย้าย `server/utils/`)
 - Performance: `defaultPreload: 'intent'`, lazy routes + `Suspense`, `manualChunks` vendor split
+- ใช้ /test-component verify component render/states
 
 ## Expected Outcome
 

@@ -1,12 +1,12 @@
 ---
 name: improve-features
-description: หา feature improvements ใน scope — extends/gaps ของ features เดิมเท่านั้น (core business + platform) — แก้หลัง confirm
+description: หา feature improvements ของ core business — extends/gaps ของ features เดิมเท่านั้น — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
   - improve-stability
-  - idea-new-features
-  - refactor-to-srp
+  - idea-features
+  - refactor
   - deep-review
   - deep-review-then-fix
   - create-plan-in-dot-devin
@@ -18,67 +18,59 @@ related:
 
 ## Goal
 
-ตอบคำถาม "features improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — ครอบคลุม 2 กลุ่ม: `core business` (user-facing functionality) และ `platform` (cross-cutting capabilities) — เฉพาะ extends/gaps ของ features เดิมเท่านั้น ไม่ใช่ new features (`/idea-new-features`) — รวม findings จาก `/deep-review` domains เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "features improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — เฉพาะ `core business` (user-facing functionality) และเฉพาะ extends/gaps ของ features เดิมเท่านั้น — net-new features, platform capabilities (auth, security, performance, stability, observability ฯลฯ) และ feature ideas ใหม่ทั้งหมดส่งต่อ `/idea-features` — รวม findings จาก `/deep-review` domains เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
 ใช้เมื่อ user ถามว่า scope นี้ "features ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-### Group 1 — Core Business
+### Core Business — domains ที่ review
 
 - `review-gaps` — feature gaps, missing capabilities, incomplete implementations
 - `review-uxui` — UX flow, interaction quality, accessibility ของ features
 - `review-business` — payment, subscription, feature flags usage ในธุรกิจ
 
-### Group 2 — Platform
+### Out Of Scope → ส่งต่อ `/idea-features`
 
-- `review-auth` — authentication, sessions, tokens, authorization posture
-- `review-security` — OWASP, secrets, injection, API security
-- `review-performance` — latency, throughput, resource usage
-- `review-stability` — error handling, recovery, degradation, debuggability
-- `review-optimize` — optimization opportunities ทุก layer (startup, render, bundle, memory)
-- `review-release` — release readiness, versioning, rollout safety
-- `review-observability` — logging, metrics, tracing, alerting
-- Feature flags setup → `### setup-feature-flags` ใน `## Merged Details`
-- ถ้า user ต้องการ feature ideas ใหม่ (net-new capabilities ไม่ใช่ extends/gaps) → `/idea-new-features`
+- Feature ideas ใหม่ (net-new capabilities ไม่ใช่ extends/gaps)
+- Platform/cross-cutting capabilities — auth, security, performance, stability, optimize, release, observability — ถ้าระหว่าง review เจอ finding ฝั่งนี้ให้ note ไว้แนะนำ `/idea-features` หรือ `/improve-<domain>` ไม่นับเป็น finding ของ skill นี้
+- Feature flags setup → `### setup-feature-flags` ใน `## Merged Details` (ยังใช้ได้กับ core business findings)
 
 ## Execute
 
 ### 1. Review Features
 
-> Goal: ได้ prioritized feature findings ทั้ง 2 groups
+> Goal: ได้ prioritized feature findings ของ core business
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ถาม scope: `core`, `platform`, หรือ `all` (default `all`) — ผ่าน `/ask-me` ถ้าไม่ชัด
-3. ทำ `/deep-review` กับ scope นั้น — core: `review-gaps` + `review-uxui` + `review-business`; platform: `review-auth` + `review-security` + `review-performance` + `review-stability` + `review-optimize` + `review-release` + `review-observability` ตาม context
-4. เช็ค feature flags maturity — ถ้าไม่มี flag system เลย → เสนอ `### setup-feature-flags`
-5. รวบรวม prioritized list พร้อม severity และ evidence
+2. ทำ `/deep-review` กับ core domains: `review-gaps` + `review-uxui` + `review-business`
+3. เช็ค feature flags maturity — ถ้าไม่มี flag system เลย → เสนอ `### setup-feature-flags`
+4. รวบรวม prioritized list พร้อม severity และ evidence
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
-1. ทำ `/report` แสดง improvements แยกตาม group: No., Group, Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+1. ทำ `/report` แสดง improvements: No., Finding, Severity, Evidence, Fix Skill
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง)
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain ที่ตรง)
 2. Feature flags request → ทำตาม `### setup-feature-flags` ใน `## Merged Details`
-3. Stability findings เจาะลึก → ส่งต่อ `/improve-stability`
-4. Feature/platform additions ใหญ่ (auth provider, observability stack, flag provider) → ทำ `/create-plan-in-dot-devin` เสมอ ก่อน implement
-5. หลังแก้ findings ครบ → ทำ `/refactor-to-srp` กับไฟล์ที่สร้าง/แตะเสมอ — ทุก unit เหลือ 1 responsibility, ≤250 บรรทัด ตาม global rules
-6. ทำ `/suggest-next-action` หลังแก้ครบ
+3. Feature additions ใหญ่ (module ใหม่, external provider) → ทำ `/create-plan-in-dot-devin` เสมอ ก่อน implement
+4. หลังแก้ findings ครบ → ทำ `/refactor-to-srp` กับไฟล์ที่สร้าง/แตะเสมอ — ทุก unit เหลือ 1 responsibility, ≤250 บรรทัด ตาม global rules
+5. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domains ที่ระบุ
-- ไม่แก้ไขโดยไม่ได้ user confirm
-- แยกชัดใน report: `core business` vs `platform` — report ต้องมี Group column
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
+- Findings ต้องเป็น extends/gaps ของ feature เดิมเท่านั้น — net-new หรือ platform → ส่งต่อ `/idea-features` / `/improve-<domain>` ไม่ใส่ใน report
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
-- ทุก addition ที่ confirm → ทำ `/create-plan-in-dot-devin` ก่อน implement เสมอ ห้ามข้าม
+- ทุก addition → ทำ `/create-plan-in-dot-devin` ก่อน implement เสมอ ห้ามข้าม
 
 ## Merged Details
 
@@ -127,6 +119,6 @@ related:
 
 ## Expected Outcome
 
-- Prioritized improvement list จาก `/deep-review` แยก 2 groups (core business + platform รวม stability)
+- Prioritized improvement list จาก `/deep-review` เฉพาะ core business (extends/gaps เท่านั้น)
 - Feature flags setup ผ่าน merged `### setup-feature-flags` เมื่อเลือก — registry เดียว, typed flags, lifecycle ชัดเจน
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`; additions ทั้งหมดผ่าน `/create-plan-in-dot-devin` (บังคับ)
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix`; additions ทั้งหมดผ่าน `/create-plan-in-dot-devin` (บังคับ)

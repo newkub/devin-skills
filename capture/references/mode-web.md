@@ -3,6 +3,8 @@
 
 Screenshot/PDF หน้าเว็บเดียวด้วย `agent-browser` CLI ผ่าน `capture web` (merged จาก `capture-web`)
 
+Boundary: screenshot อย่างเดียว (ไม่ต้อง PDF/`--annotate`/env options) และ `chrome-devtools-mcp` register อยู่ → ใช้ `take_screenshot` ผ่าน MCP ได้โดยไม่ต้อง install CLI (ดู `/use-chrome-devtools`); PDF และ annotate flow ใช้ `agent-browser` เท่านั้น
+
 #### Web — Execute
 
 ##### 1. Install And Verify
@@ -13,9 +15,9 @@ Screenshot/PDF หน้าเว็บเดียวด้วย `agent-browse
 ##### 2. Capture
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts web <url> --out <file.png>
-bun <skill-dir>/src/presentation/cli.ts web <url> --out <file.png> --full --annotate
-bun <skill-dir>/src/presentation/cli.ts web <url> --pdf <file.pdf>
+bun D:/newkub/agents-capture/src/presentation/cli.ts web <url> --out <file.png>
+bun D:/newkub/agents-capture/src/presentation/cli.ts web <url> --out <file.png> --full --annotate
+bun D:/newkub/agents-capture/src/presentation/cli.ts web <url> --pdf <file.pdf>
 ```
 
 - `--out` ไม่ระบุ → save ไป `~/.agent-browser/tmp/screenshots/`

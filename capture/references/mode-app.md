@@ -23,7 +23,7 @@
 ##### 3. Capture Web Routes
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 \
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --routes /,/request,/examples --devices desktop --full \
   --out public/screenshots
 ```
@@ -35,7 +35,7 @@ bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 \
 ##### 4. Capture Terminal Views
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts terminal --cmd "<cli-command>" --out public/screenshots/terminal/<name>.png
+bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "<cli-command>" --out public/screenshots/terminal/<name>.png
 ```
 
 ##### 5. Verify And Report
@@ -47,8 +47,8 @@ bun <skill-dir>/src/presentation/cli.ts terminal --cmd "<cli-command>" --out pub
 #### App — Execute: OS Window (desktop app)
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts app --out window.png                  # primary screen
-bun <skill-dir>/src/presentation/cli.ts app --title "WezTerm" --out wez.png   # window by title
+bun D:/newkub/agents-capture/src/presentation/cli.ts app --out window.png                  # primary screen
+bun D:/newkub/agents-capture/src/presentation/cli.ts app --title "WezTerm" --out wez.png   # window by title
 ```
 
 - Windows-only (PowerShell `CopyFromScreen`) — `--title` = substring ของ window title ที่มองเห็น

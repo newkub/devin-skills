@@ -5,9 +5,15 @@ argument-hint: "[scope]"
 related:
   - deep-optimize
   - optimize-build
+  - optimize-bundle
+  - optimize-ci
   - optimize-cost
+  - optimize-docker
   - optimize-memory
+  - optimize-network
   - optimize-perf
+  - optimize-queries
+  - optimize-startup
   - report
 ---
 
@@ -17,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ optimize scope ใดๆ — route ไป `optimize-*` domain skill ที่ตรงกัน (`optimize-build`, `optimize-cost`, `optimize-memory`, `optimize-perf`) หรือ `/deep-optimize` เมื่อต้องการ fan-out ทุกมิติหรือไม่รู้ bottleneck
+ใช้เมื่อต้องการ optimize scope ใดๆ — route ไป `optimize-*` domain skill ที่ตรงกัน (`optimize-{build,bundle,ci,cost,docker,memory,network,perf,queries,startup}`) หรือ `/deep-optimize` เมื่อต้องการ fan-out ทุกมิติหรือไม่รู้ bottleneck
 
 ## Execute
 
@@ -25,7 +31,7 @@ related:
 
 > Goal: เลือก optimize path ที่ตรง scope
 
-1. scope ชัดเจน → ใช้ `optimize-{domain}` ตรงๆ (`build`, `cost`, `memory`, `perf`)
+1. scope ชัดเจน → ใช้ `optimize-{domain}` ตรงๆ (`build` speed, `bundle` size, `ci` pipeline, `cost` cloud spend, `docker` image, `memory` usage, `network` payloads, `perf` runtime, `queries` DB, `startup` boot)
 2. scope กว้างหรือ bottleneck ไม่รู้ → ใช้ `/deep-optimize` fan-out subagents ทุก dimension แล้วรวม prioritized plan
 3. ถ้าเป็น bottleneck hunting เฉพาะจุด → `/deep-optimize`/`/run-profiler` ตาม AGENTS.md convention
 

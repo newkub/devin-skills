@@ -10,6 +10,7 @@ related:
   - implement-to-production
   - report
   - suggest-next-action
+  - test-load
 
 ---
 
@@ -85,6 +86,7 @@ Review ทุกมิติของ codebase เพื่อหา optimizatio
 - ใช้ /deep-optimize ถ้าจำเป็น (deep-dive lane เดียว)
 - ใช้ /deep-analyze ถ้าจำเป็น (root cause ไม่ชัด)
 - ใช้ /deep-review ถ้าจำเป็น (ครบทุก review-* ไม่ใช่แค่ optimization)
+- ใช้ /test-load เก็บ perf evidence สำหรับ throughput/latency lanes
 
 ## Expected Outcome
 

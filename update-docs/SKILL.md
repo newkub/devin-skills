@@ -27,7 +27,7 @@ related:
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - `docs/index.md` เป็น table of contents ลิงก์ไปทุกหมวด — ไม่มี nav/sidebar config
 - รองรับ `update-features-md` (workflow `features-md`) โดยแยกหน้า `project/features`
-- reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-test`, `/watch-browser-and-fix` — เป็น input สำหรับอัปเดต docs
+- reuse raw findings ที่ skills persist ลง `.devin/temp/report/<workspace>/` ผ่าน `/create-report-in-dot-devin` — เช่น `/watch-browser-and-test`, `/watch-browser-and-fix` — เป็น input สำหรับอัปเดต docs
 
 ## Execute
 
@@ -37,12 +37,16 @@ related:
 
 1. ทำ `/check-should-update` ถ้ามี git changes
 2. ทำ `/check-monorepo` เพื่อระบุ monorepo
-3. ระบุ docs type ตาม detection ใน `references/<type>.md`:
-   - `product`: มี auth, `private: true`, license commercial — `references/product.md`
-   - `open-source`: ไม่มี auth, license เปิด — `references/open-source.md`
+3. ระบุ docs type ตาม detection ใน `references/<type>.md` — file structure แตกต่างตามรูปแบบ project:
+   - `lib`/`library`: มี `exports`/`main`+`types` ไม่มี `bin` ผู้ใช้ install ผ่าน package manager — `references/library.md`
+   - `sdk`: client library ของ service/API (มี client entry, `*_URL`/`*_KEY` env) — `references/sdk.md`
+   - `tool`: dev/internal tool, toolkit, generator, runner (ทำงานกับ dev/CI ไม่ใช่ end user) — `references/tool.md`
    - `cli`: มี `bin` หรือ CLI framework ใน `package.json` — `references/cli.md`
-   - `library`: มี `exports`/`main`+`types` ไม่มี `bin` ผู้ใช้ install ผ่าน package manager — `references/library.md`
    - `website`: deployable web app (framework + `dev`/`build` output) — `references/website.md`
+   - `open-source`: ไม่มี auth, license เปิด — `references/open-source.md`
+   - `opensource-product`: OSS ที่เป็น product สำหรับ end user (app/framework/platform มี releases + community) — `references/opensource-product.md`
+   - `product`: มี auth, `private: true`, license commercial — `references/product.md`
+   - `saas-product`: hosted SaaS (dashboard, billing, multi-tenant) — `references/saas-product.md`
    - `monorepo`: layered on base type — `references/monorepo.md`
 4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product) — ถ้า CLI ให้ใช้ `cli` docs type; ถ้า publish เป็น package ให้ใช้ `library` docs type; ถ้า deployable web app ให้ใช้ `website` docs type
 
@@ -69,7 +73,7 @@ related:
    - `docs/references/`
    - `docs/roadmap/index.md`
 4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
-5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`, `references/api.md` + `comparison.md` + `glossary.md` สำหรับ `library`
+5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`, `references/api.md` + `comparison.md` + `glossary.md` สำหรับ `library`, `references/endpoints.md` + `errors.md` สำหรับ `sdk`, `operations/` สำหรับ `saas-product`, `guides/` สำหรับ `opensource-product`
 
 ### 3. Write Index TOC
 
@@ -143,7 +147,7 @@ related:
 | Domain | Topic | Skill |
 |--------|-------|-------|
 | `agents-md` | สร้าง/อัปเดต `AGENTS.md` root + workspaces | `/update-agents-md` |
-| `contributing-md` | สร้าง/อัปเดต `CONTRIBUTING.md` | `/update-contributing-md` |
+| `contributing-md` | สร้าง/อัปเดต `CONTRIBUTING.md` | `/update-contributing` |
 | `features-md` | วิเคราะห์ features เขียน `FEATURES.md` | `/update-features-md` |
 | `readme-md` | สร้าง `README.md` + `LICENSE.md` จาก template | `/update-readme-md` |
 | `todo-md` | จัดการ `TODO.md` (add/read/enhance prompt) | `/update-todo-md` |

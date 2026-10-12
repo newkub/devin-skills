@@ -2,6 +2,11 @@
 name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
 argument-hint: "[scope]"
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 related:
   - deep-analyze
   - use-astgrep

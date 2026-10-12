@@ -23,7 +23,8 @@ related:
 
 > Goal: เลือก improve-* skill ที่ตรง scope
 
-1. scope ตรง domain → ใช้ `improve-{domain}` (เช่น `improve-security` → review-security, `improve-code-quality` → `/improve-correctness`, `improve-consistency` → review-alignment+review-redundancy+review-code-quality+review-writing)
+1. scope ตรง domain → ใช้ `improve-{domain}` (เช่น `improve-security` → review-security, `improve-code-quality` → `/improve-correctness`, `improve-consistency` → review-alignment+review-redundancy+review-code-quality+review-writing, `improve-rbac` → review-auth+review-frontend (RBAC surface), `improve-form` → review-frontend+review-data-validation+review-accessibility, `improve-a11y` → review-accessibility, `improve-observability` → review-observability, `improve-backend` → review-backend, `improve-i18n` → review-i18n, `improve-iac` → review-iac, `improve-events` → review-events, `improve-compliance` → review-compliance, `improve-business` → review-business, `improve-release` → review-release, `improve-deps` → review-dependencies)
+   - metric-driven scope → `optimize-*` แทน (`optimize-bundle`, `optimize-docker`, `optimize-ci`, `optimize-queries`, `optimize-network`, `optimize-startup` + `optimize-{build,cost,memory,perf}` เดิม + `optimize-{web-vitals,api-latency,cache,test-suite,concurrency,mobile,storage,images}` ใหม่) — convention อยู่ที่ `/follow-optimize`
 2. scope ไม่ชัด → ใช้ `/improve` thin entry ให้ dispatch เอง
 3. ทุก `improve-*` เป็น thin entry → `/deep-review` domain ตามชื่อ — ห้ามเขียน review logic ซ้ำเอง
 

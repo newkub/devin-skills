@@ -11,6 +11,7 @@ related:
   - deep-analyze
   - scan-codebase
   - open-files-in-web
+  - deep-analyze-and-report
 
 ---
 

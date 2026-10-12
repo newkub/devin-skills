@@ -16,6 +16,8 @@ project/
 │  │  │  └─ server.ts
 │  │  ├─ web/
 │  │  │  ├─ routes/                         # home.ts, dashboard.ts
+│  │  │  ├─ components/                     # UI components (optional — ถ้า web entry render UI)
+│  │  │  ├─ hooks/                          # hooks/composables — UI state + view logic (optional)
 │  │  │  ├─ middleware/                     # session.ts
 │  │  │  └─ server.ts
 │  │  ├─ cli/
@@ -141,6 +143,7 @@ project/
 - modules ข้ามกันผ่าน `contracts/` events หรือ ports เท่านั้น — ห้าม import module อื่นตรงๆ
 - `usecases/` optional ต่อ module — ใช้เมื่อ orchestration ข้าม features หรือหลาย entry points แชร์ flow เดียวกัน; `app/` เรียก `usecases/` ก่อนเสมอถ้ามี (fallback → `features/`); ทิศทาง `usecases → features → domain` เท่านั้น ห้ามกลับ
 - `app/runtime.ts` เป็น composition root เดียวที่ wire ports → implementations
+- `app/web/components/` + `app/web/hooks/` optional — UI ของ web entry เท่านั้น; เรียก `modules/<name>/usecases/` (หรือ `features/` fallback) + `contracts/` — ห้ามเรียก `infra/`/`domain/` ตรง
 - public API ผ่าน `index.ts` barrel ของ module/layer เท่านั้น — ห้าม deep imports จากภายนอก
 - `domain/` + `core/` ต้อง pure — ไม่มี IO, framework imports, side effects
 - ไม่มี `fx/` หรือ effect system layer — side effects อยู่ใน `infra/` และ orchestrate ผ่าน `features/` + ports

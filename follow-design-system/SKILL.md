@@ -4,6 +4,7 @@ description: Design system principles พื้นฐานที่ใช้ไ
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
+  - follow-unocss-theme
   - deep-review
   - capture
 ---
@@ -27,7 +28,7 @@ related:
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
 2. กำหนด interaction tokens: transitions, animations, cursors
 3. กำหนด language tokens: terminology, tone of voice, iconography
-4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss` สำหรับ UnoCSS และ HSL theme variables
+4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss` สำหรับ UnoCSS setup และ `/follow-unocss-theme` สำหรับ theme.css token layer + enforcement
 
 ### 2. Create Component Guidelines
 

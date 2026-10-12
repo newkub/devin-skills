@@ -33,7 +33,15 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน | Deploy | `workflows/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน |
+| Routing | `workflows/define-routes/SKILL.md` — methods, params/wildcards, `.group`/`.guard`/`.mount`, `.ws` |
+| Validation | `workflows/validate-requests/SKILL.md` — TypeBox `t.*` schemas, coercion, shared models, Standard Schema |
+| Lifecycle/hooks | `workflows/use-lifecycle/SKILL.md` — hook order, `derive`/`decorate`/`resolve`, `onError`, scoping |
+| Eden client | `workflows/use-eden/SKILL.md` — `treaty`, typed calls, WS subscriptions |
+| Plugins | `workflows/use-plugins/SKILL.md` — `@elysiajs/*` openapi/cors/jwt/static/cron + custom plugins |
+| Deploy | `workflows/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets | 
 ### 1. Install And Setup
 
 > Goal: ติดตั้ง Elysia และ setup บน Bun runtime

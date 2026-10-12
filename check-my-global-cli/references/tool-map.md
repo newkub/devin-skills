@@ -71,7 +71,7 @@
 | monorepo tasks | `moon` / `task` | installed | `/follow-monorepo` |
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
 | lint/format JS/TS | `biome` / `oxlint` / `oxfmt` | installed | `/run-lint`, `/run-format` |
-| test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test-coverage` → `/review-test coverage` |
+| test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test coverage` → `/review-test coverage` |
 | fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
 | benchmark commands | `hyperfine` | installed | `/review-performance` |
@@ -82,6 +82,8 @@
 | compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
 | compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defer ให้ `RUSTC_WRAPPER` ที่ชี้ sccache) |
 | build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devframe` |
+| bundle analyze/visualize (source-map accurate) | `sonda` (bundler plugin) | `bun add -D sonda` | `/follow-tool-sonda`, `/report-bundle` |
+| inspect node_modules (tree, dupes, sizes) | `node-modules-inspector` | `bunx node-modules-inspector` | `/follow-tool-node-modules-inspector`, `/report-bundle` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
 | OCI image from source | `nixpacks` | installed (scoop) | `/follow-create-docker` |
 
@@ -89,11 +91,15 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| browser automation | `agent-browser` | installed | `/use-agent-browser`, `/watch-browser-*` |
+| browser automation (flows, record, PDF, a11y, batch) | `agent-browser` | installed | `/use-agent-browser`, `/watch-browser-*` |
+| browser inspect/debug via MCP (console, network, CSS, perf, memory, Lighthouse) | `chrome-devtools-mcp` | installed (MCP server) | `/use-chrome-devtools` |
+| WebMCP consume (list/invoke page tools) | `agent-browser webmcp` | เหมือนข้างบน | `/use-agent-browser` |
+| WebMCP implement บนเว็บตัวเอง | `document.modelContext` (page-side API) | — | `/follow-create-web-mcp` |
 | screenshot web | `agent-browser` | เหมือนข้างบน | `/capture web` |
 | capture evidence (component/terminal/app/all-routes) | `capture` CLI (Bun, `capture/src/presentation/cli.ts`) | — | `/capture` |
 | E2E tests | `playwright` | installed (mise npm:playwright 1.63) | `/deep-test e2e`, `/follow-tool-playwright` |
-| CDP/DevTools MCP | `chrome-devtools-mcp` / `crw` | installed | `/use-agent-browser` |
+| scrape/crawl web | `crw` | installed (MCP server) | `/follow-tool-crw` |
+| site-wide Lighthouse audit (perf/a11y/SEO) | `unlighthouse` | `bunx unlighthouse --site <url>` | `/follow-tool-unlighthouse`, `/improve-seo`, `/improve-uxui`, `/optimize-perf` |
 | web → desktop | `pake` | installed | `/follow-create-*` |
 
 ## Media And Docs Gen
@@ -105,7 +111,9 @@
 | download media | `yt-dlp` | installed | `/download-*` |
 | images/PDF | `imagemagick` / `resvg` / `poppler` / `ghostscript` | installed (scoop) | `/convert-*` |
 | diagrams | `mmdc` (mermaid-cli) | installed | `/report-architecture-diagram` |
-| code highlight | `shiki` CLI | installed | docs gen |
+| code highlight | `shiki` CLI | installed | `/follow-lib-shiki` |
+| OG images/social cards/PDFs from JSX | `takumi-js` | `bun add takumi-js` | `/follow-tool-takumi`, `/improve-seo` |
+| markdown parse/render multi-target (html/ansi/vue/react/svelte/angular) | `comark` + `@comark/*` | `bun add comark @comark/<target>` | `/follow-lib-comark`, `/improve-uxui` |
 | markdown render | `glow` | installed | preview docs |
 | LaTeX → PDF | `tectonic` | installed | docs |
 

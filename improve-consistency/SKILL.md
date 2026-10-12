@@ -1,6 +1,6 @@
 ---
 name: improve-consistency
-description: หา consistency improvements ใน scope — naming, patterns, style, layer alignment, divergent duplicates — แก้หลัง user confirm
+description: หา consistency improvements ใน scope — naming, patterns, style, layer alignment, divergent duplicates — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-ตอบคำถาม "consistency improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-alignment` + `review-redundancy` + `review-code-quality`/`review-writing` (scope consistency) เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "consistency improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-alignment` + `review-redundancy` + `review-code-quality`/`review-writing` (scope consistency) เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
@@ -38,30 +38,30 @@ related:
 2. ทำ `/deep-review` กับ scope นั้น domains `review-alignment` + `review-redundancy` + `review-code-quality` + `review-writing` (scope consistency)
 3. รวบรวม prioritized list พร้อม severity และ evidence — จับคู่ "canonical ที่ถูก" กับ "จุดที่ deviate" ไว้ในทุก finding
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Canonical/Chosen Convention, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหนและเลือก convention ไหนเป็น canonical — รอการยืนยันก่อนลงมือ
+2. ใช้ canonical convention ที่ dominant ใน scope แล้วแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง) — แก้ให้ตรง canonical ที่ user เลือก ไม่สร้าง convention ที่ 3
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain ที่ตรง) — แก้ให้ตรง canonical ที่ dominant ใน scope ไม่สร้าง convention ที่ 3
 2. rename/restructure ข้ามหลายไฟล์ → ใช้ `/all-this-patterns` หรือ `/rename` ให้ครบทุก occurrence
 3. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domains ที่ระบุ
-- ไม่แก้ไขโดยไม่ได้ user confirm — และ user เป็นคนเลือก canonical convention
+- แก้ทุก finding ทันทีโดยไม่รอ confirm — canonical convention เลือกจากตัวที่ dominant ใน scope
 - ห้ามแก้ครึ่งทาง — consistency fix ต้องครบทุก occurrence ใน scope (`/all-this-patterns`)
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
 - Prioritized consistency improvement list จาก `/deep-review` พร้อม canonical convention ต่อ finding
-- User เลือกสิ่งที่จะแก้และ convention เป้าหมาย
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix` ครบทุก occurrence ใน scope
+- Canonical convention ถูกเลือกจาก dominant pattern ใน scope
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix` ครบทุก occurrence ใน scope

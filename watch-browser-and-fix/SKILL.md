@@ -1,10 +1,11 @@
 ---
 name: watch-browser-and-fix
-description: เปิด browser ด้วย agent-browser watch console/errors อย่างต่อเนื่อง แก้ไข และ confirm web server
+description: เปิด browser watch console/errors อย่างต่อเนื่อง แก้ไข และ confirm web server
 argument-hint: "[url|report]"
 related:
   - watch-browser
-  - watch-browser-test
+  - watch-browser-and-test
+  - use-chrome-devtools
   - resolve-errors
   - run-dev
   - run-program
@@ -13,26 +14,25 @@ related:
 
 ## Goal
 
-เปิด browser ด้วย `agent-browser` watch console messages และ page errors อย่างต่อเนื่อง แก้ไข errors ที่พบที่ root cause แล้ว confirm ว่า web server ทำงานได้ — merged จาก `/watch-browser-fix` + `/watch-browser-console`
+เปิด browser watch console messages และ page errors อย่างต่อเนื่อง แก้ไข errors ที่พบที่ root cause แล้ว confirm ว่า web server ทำงานได้ — merged จาก `/watch-browser-fix` + `/watch-browser-console` — ใช้ `chrome-devtools-mcp` เมื่อ register อยู่ (tools ครบสำหรับ watch+fix) หรือ `agent-browser` CLI เป็น fallback ตาม `/use-chrome-devtools` `## Tool Selection`
 
 ## Scope
 
 ใช้สำหรับ browser automation ที่ต้อง monitor หน้าเว็บ จับและแก้ console/page errors และ ensure web server ทำงานได้
 
 - ถ้า focus เฉพาะ console watching โดยไม่ต้องแก้ → ทำ Steps 1-3 + watch loop เท่านั้น
-- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
+- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
 - ถ้าต้องการ analyze UX/UI จาก screenshots → `/deep-review`
 
 ## Execute
 
-### 1. Install And Verify Agent Browser
+### 1. Select Browser Tool
 
-> Goal: เตรียม browser automation tool
+> Goal: เตรียม browser tool ที่พร้อมใช้ — prefer MCP ที่ register อยู่
 
-1. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
-2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser`
-3. ดาวน์โหลด Chrome ด้วย `agent-browser install`
-4. ถ้าติดตั้งไม่ได้หรือ `daemon` error → ใช้ `browser-preview` tool แทน
+1. `mcp_list_servers` — มี `chrome-devtools-mcp` → ใช้ server นี้ตาม `/use-chrome-devtools` (`new_page` + `list_console_messages` + `list_network_requests` + `take_screenshot` + `get_css_styles` ครบสำหรับ watch+fix) แล้วข้ามไป Step 2 โดยแทนคำสั่ง `agent-browser` ด้วย MCP tools ที่ตรงกัน
+2. ไม่มี MCP → ตรวจ `agent-browser --help`; ถ้าไม่ได้ติดตั้ง → `bun add -g agent-browser` แล้ว `agent-browser install`
+3. ถ้าติดตั้งไม่ได้หรือ `daemon` error → ใช้ `browser-preview` tool แทน
 
 ### 2. Open Browser And Clear State
 
@@ -59,8 +59,9 @@ related:
 
 1. แยกประเภท error: runtime, network, auth, build, environment
 2. ตรวจ file/line จาก stack trace
-3. ตรวจ network requests ด้วย `agent-browser network` — response status/body ถ้า error มาจาก API
-4. ทำ `/deep-debug` ถ้าต้อง tracing
+3. ตรวจ network requests ด้วย `agent-browser network` (หรือ `list_network_requests`/`get_network_request` ใน devtools-mcp) — response status/body ถ้า error มาจาก API
+4. error เกี่ยวกับ CSS/layout → `get_css_styles` (devtools-mcp) ดู matched/overridden rules — `agent-browser` ทำไม่ได้ให้ `evaluate_script` หรือ inspect element แทน
+5. ทำ `/deep-debug` ถ้าต้อง tracing
 
 ### 5. Fix Errors
 
@@ -135,7 +136,7 @@ related:
 
 ### 7. Fallback Order
 
-- `agent-browser` ไม่ติดตั้ง/daemon error → `browser-preview` tool
+- `chrome-devtools-mcp` ไม่มี → `agent-browser` CLI → `browser-preview` tool → แจ้ง user ติดตั้ง
 - environment issue → `/ask-me`; build issue → `/resolve-errors`
 
 ## Merged Details

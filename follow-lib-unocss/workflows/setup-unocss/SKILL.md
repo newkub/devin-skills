@@ -16,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้อง setup UnoCSS ครั้งแรกบน Vite, Nuxt, Next.js, Astro หรือ CLI — ครอบคลุม install, config file พื้นฐาน และ smoke test (first-time setup ไม่ใช่ theme customization — ใช้ `config-theme` สำหรับ theme)
+ใช้เมื่อต้อง setup UnoCSS ครั้งแรกบน Vite, Nuxt, Next.js, Astro หรือ CLI — ครอบคลุม install, config file พื้นฐาน และ smoke test (first-time setup ไม่ใช่ theme customization — ใช้ /follow-unocss-theme สำหรับ theme)
 
 ## Execute
 
@@ -52,7 +52,7 @@ export default defineConfig({
 1. เริ่มด้วย `presetWind4()` เท่านั้น — ค่อยเพิ่ม `presetIcons`, transformers ทีหลัง
 2. ตั้ง `dark: 'class'` ใน `presetWind4` options ถ้าต้องการ class-based dark mode
 3. เพิ่ม `content.filesystem` เฉพาะเมื่อ auto-scan ไม่ครอบคลุม
-4. สำหรับ theme/shortcuts/rules → ทำ workflow `config-theme`
+4. สำหรับ theme/shortcuts/rules → ทำ /follow-unocss-theme
 
 ### 4. Wire Framework Integration
 

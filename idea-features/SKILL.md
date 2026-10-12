@@ -1,31 +1,35 @@
 ---
 name: idea-features
-description: สร้าง 30 ไอเดียฟีเจอร์แล้วแสดงใน web viewer (Solid + TanStack Start + Nitro bun) ที่ src/ ของ skill นี้
+description: สร้าง 30 ไอเดียฟีเจอร์ (extends + net-new + platform) → web viewer (Solid + TanStack Table) ใน skill dir serve data จาก OS temp `idea-features-<id>/ideas.json` + ตอบในแชทเป็นตาราง grouped — merged idea-new-features + platform scope
 argument-hint: "[topic]"
 related:
-  - follow-solid-framework
-  - follow-lib-nitro
   - follow-architecture
-  - draw-ansi
+  - follow-solid-framework
+  - follow-lib-tanstack-ecosystem
   - deep-analyze
   - learn-from-codebase
-  - enhance-prompt
   - reframe
+  - test-usage
+  - ask-me
   - open-web
   - run-dev
-  - ship-verify
   - implement-features-to-mvp
+  - implement-to-production
+  - improve-features
+  - create-plan-in-dot-devin
+  - bench-competitors
 ---
 
 ## Goal
 
-สร้าง 30 ไอเดียฟีเจอร์ (`extends` + `new`) สำหรับ project/topic แล้วเขียนลง `src/data/ideas.json` ของ viewer app ใน skill นี้ + สรุปเป็น `<project>-idea-features.md` ใน OS temp dir จากนั้น serve web ให้ user ดู — grid 4 col + preview panel + search/filter/grouping/tags/category
+สร้าง 30 ไอเดียฟีเจอร์สำหรับ project/topic — ครอบคลุม 3 กลุ่ม: `extends` (ขยาย feature เดิม), `new` (net-new capabilities — merged จาก `/idea-new-features`), และ `platform` (cross-cutting capabilities: auth, security, performance, stability, optimize, release, observability — merged จาก platform group ของ `/improve-features`) — เขียน data ลง OS temp `idea-features-<id>/ideas.json` → serve web viewer (อยู่ใน skill dir นี้ — SolidJS + TanStack Table: list table พร้อม search/filter/grouping/sorting และ detail: description/why/benefit) → ตอบในแชทเป็นตาราง grouped ตาม routes/commands/features พร้อมสรุป phase ที่แนะนำ
 
 ## Scope
 
-- Web viewer อยู่ใน directory ของ skill นี้ (`src/`) — TanStack Start (SolidJS) + Nitro `preset: bun` ตาม `/follow-lib-nitro`
-- Agent generate ไอเดีย → เขียน `src/data/ideas.json` → run web → user browse ใน browser
-- ไม่ implement ไอเดีย — implement → `/implement-features-to-mvp`; plan → `/create-plan-in-dot-devin`
+- **Viewer source อยู่ใน skill dir นี้** (`src/`, `vite.config.ts`, `package.json`) — scaffold ครั้งเดียว run ถัดไปแก้เฉพาะ data
+- **Data เขียนลง OS temp เท่านั้น**: `$env:TEMP/idea-features-<id>/ideas.json` (Windows) / `${TMPDIR:-/tmp}/idea-features-<id>/ideas.json` (Unix) — `<id>` = project slug เช่น `wrikka-platform`; shape = `{ project, topic, generatedAt, ideas: [...30] }`
+- Idea kinds: `extends` + `new` (net-new user flow/module/integration/surface) + `platform` (infrastructure/cross-cutting) — ใช้ `kind` field แยก; idea ที่เป็น gap-fix ของ implementation เดิมและเน้น review findings → `/improve-features`
+- ไม่ implement ไอเดีย — idea ที่ confirm ส่งต่อ `/create-plan-in-dot-devin` เสมอ แล้วจึง `/implement-features-to-mvp` (MVP scope) หรือ `/implement-to-production` (full)
 
 ## Execute
 
@@ -34,63 +38,65 @@ related:
 > Goal: เข้าใจ topic และ project
 
 1. รับ `<topic>` จาก argument หรือ conversation context — ไม่ชัด → `/suggest-next-action` หรือ `/enhance-prompt`
-2. ทำ `/learn-from-codebase` แบบ lightweight เพื่อ ground ไอเดียกับ codebase จริง
-3. อ่าน manifest + structure เพื่อรู้ architecture pattern (`/follow-architecture`) — ใช้กับ `fileChanges` ของทุก idea
+2. ทำ `/learn-from-codebase` แบบ lightweight เพื่อ ground ไอเดียกับ codebase จริง — ดู routes, commands, features หลักของ target project
+3. อ่าน manifest + structure เพื่อรู้ architecture pattern (`/follow-architecture`) — ใช้กับ file changes ของทุก idea
 4. **Topic selection** — เสนอ 8-12 topic clusters (เช่น reporting, ux, data, mobile, privacy, workflow) แล้วทำ `/ask-me` multi-select ให้ user เลือกว่าจะ generate topics ไหน — default: ทั้งหมด; ideas 30 รายการกระจายตาม topics ที่เลือก
-5. **Regenerate queue** — อ่าน `src/data/regenerate-queue.json` ถ้ามี: regenerate idea ตาม `no` ที่ queue ไว้ (propose ทางเลือกใหม่ ห้ามซ้ำ idea เดิม) แล้วล้าง queue หลังเขียน `ideas.json` สำเร็จ
 
 ### 2. Generate 30 Ideas
 
-> Goal: 30 ไอเดียครบทุก field ตาม schema
+> Goal: 30 ไอเดียครบทุก field
 
-สร้างไอเดีย **30 รายการเสมอ** (`extends` + `new` ผสม) — ทุก idea ต้องครบ fields ของ `src/types/idea.ts`:
+สร้างไอเดีย **30 รายการเสมอ** (`extends` + `new` + `platform` ผสมตาม topic clusters ที่เลือก) — ทุก idea ต้องครบ fields:
 
-1. `no` (1-30), `title`, `kind` (`extends|new`), `category`, `tags[]`, `phase` (`mvp|v2|v3`), `impact` (`high|medium|low`), `effort` (`s|m|l|xl`), `mvpScore` (1-10)
+0. Kind semantics — `new` ต้องเป็น net-new capability (new user flow, module, integration, surface) ห้ามปน extends/gap-fill ของของเดิม; `platform` = cross-cutting capability (auth, security, performance, stability, optimize, release, observability); ถ้าพบ idea ที่แค่อุด gap ของ implementation เดิมให้ tag `extends` หรือส่งต่อ `/improve-features`; ถ้าต้องการ market evidence สำหรับ net-new → `/bench-competitors`
+1. `no` (1-30), `title`, `kind` (`extends|new|platform`), `group` (route/command/feature surface ของ target project), `category`, `tags[]`, `phase` (`mvp|v2|v3`), `impact` (`high|medium|low`), `effort` (`s|m|l|xl`), `mvp` (1-10)
 2. `features[]` — bullet features สั้นๆ 3-5 ข้อ
-3. `description`, `why`, `usage`, `risk` — ภาษาเดียวกับ user
-4. `ansi` — UX/UI sketch ด้วย box-drawing ตาม `/draw-ansi` (กล่องเท่ากัน ไม่เพี้ยน)
-5. `fileChanges[]` — `{ path, action: create|edit|delete|move, note }` — ระบุไฟล์จริงที่จะสร้าง/แก้ ตาม architecture pattern ของ target project จาก `/follow-architecture`
-6. `testCases[]` — test cases ที่วัดได้
+3. `description`, `why`, `benefit`, `usage`, `risk` — ภาษาเดียวกับ user (why = pain/motivation, benefit = outcome ที่ได้)
+4. `fileChanges`/`files` — ระบุไฟล์จริงที่จะสร้าง/แก้ ตาม architecture pattern ของ target project จาก `/follow-architecture`
+5. `routes`, `comps`, `store`, `schema`, `types`, `fns`, `deps`, `pkgs`, `cfg`, `tests` — artifacts ที่ idea จะเพิ่ม/แก้ ตามจริงของ codebase
 
-### 3. Write Data
+### 3. Write Data + Serve Viewer
 
-> Goal: ideas.json valid ตาม zod schema
+> Goal: user browse ไอเดียใน browser ด้วย list table
 
-1. เขียนผลลง `src/data/ideas.json` ใน skill directory นี้ — `{ project, topic, generatedAt, ideas: [...30] }`
-2. validate กับ `ideaSchema`/`ideasFileSchema` — ห้ามมี missing field หรือ placeholder
-3. sort `ideas` ไม่จำเป็น — UI sort ตาม impact เอง
-4. ล้าง `src/data/regenerate-queue.json` (write `[]`) ถ้า queue ถูกประมวลผลแล้ว
-5. เขียน markdown summary ลง OS temp dir เป็น `<project>-idea-features.md` (`$env:TEMP` บน Windows, `$TMPDIR` หรือ `/tmp` บน Unix) — ตาราง `No.`, `Title`, `Kind`, `Category`, `Phase`, `Impact`, `Effort`, `MVP Score` ครบ 30 rows + รายละเอียดต่อ idea (description, why, usage, risk, features, fileChanges, testCases) — user เปิดอ่านนอก viewer ได้
+1. เขียน `ideas.json` ลง OS temp `idea-features-<id>/ideas.json` — `{ project, topic, generatedAt, ideas }` ครบ 30 ideas ทุก field; ถ้า temp drive เต็ม/เขียนไม่ได้ → fallback `<drive>:/temp/idea-features-<id>` + แจ้ง user (redirect package-manager cache ด้วยถ้าจำเป็น เช่น `BUN_INSTALL_CACHE_DIR`)
+2. Viewer ใน skill dir นี้ (มีอยู่แล้ว): SolidJS + Vite + `@tanstack/solid-table` ตาม `/follow-solid-framework` + `/follow-lib-tanstack-ecosystem`; `vite.config.ts` มี plugin serve `/ideas.json` — อ่าน `IDEA_DATA` env ก่อน, fallback = `ideas.json` ล่าสุดใน `tmpdir()/idea-features-*`
+3. UI: list/table — **default grouping = `group`** (surface: routes/commands/main-api — expand ทุก group ตอนโหลด), **search** (global filter: title/desc/tags), **filter row ใน thead** (per-column: select สำหรับ kind/phase/impact/effort/group — group options จาก unique values ของ data, text input สำหรับ title/tags), **grouping select** ใน toolbar (none/group/kind/phase/impact/effort → `getGroupedRowModel` + expand), **sorting** (คลิก header label row → asc/desc), row click → **detail panel** (description, why, benefit, usage, risk, features, artifacts ครบ, tests, files) — dark theme
+4. Run: `bun install` ใน skill dir (ครั้งแรกเท่านั้น — ถ้า drive ของ skill เต็มให้ junction `node_modules` ไป drive ที่ว่าง) → `IDEA_DATA=<path/to/ideas.json> bun run dev` port 3030 (ชนให้เลือก port ถัดไป) ตาม `/run-dev` ถ้ามี error → `/open-web http://localhost:<port>`
+5. Verify `/ideas.json` คืน 30 items และ viewer render ครบก่อนสรุป — ทำ `/test-usage` เพื่อยืนยัน usage flow ทำงานจริง (`bun install`, `IDEA_DATA=<path> bun run dev`, endpoint `/ideas.json`) ก่อน report link ให้ user
 
-### 4. Serve Web
+### 4. Answer In Chat
 
-> Goal: user เห็น viewer ใน browser
+> Goal: user เห็นไอเดียครบจัดกลุ่มอ่านง่ายในแชท
 
-1. `bun install` ใน skill directory (ครั้งแรกเท่านั้น)
-2. `bun run dev` → dev server port `3030` — ทำตาม `/run-dev` ถ้ามี error
-3. เปิด browser ด้วย `/open-web` → `http://localhost:3030`
-4. Production mode: `bun run build` → `bun .output/server/index.mjs` (Nitro bun preset)
-5. บอก user: ซ้าย = grid responsive (card: no, surface chips, features, description), hover/focus card → preview เต็มด้านขวา พร้อมปุ่ม **📋 Copy prompt** (copy implementation prompt ครบทุก field) และ **♻️ Regenerate** (queue `regenerate-queue.json` + copy regen prompt), บน = search/filter/grouping/tags/category + theme toggle
-
-### 5. Ship Verify
-
-> Goal: งานผ่าน verification gate
-
-1. ทำ `/ship-verify` — เฉพาะ gates ที่ apply (skills repo ไม่มี test suite → ข้าม `/run-test all` พร้อมเหตุผล)
-2. สรุปผลในแชท
+1. **Group ideas** ตาม routes/commands/features หลักของ target project (เช่น `apps/desktop` routes, `tools/wrikka` commands, `packages/shared` features, domain apps, platform/cross-cutting) — แต่ละ group มีหัวข้อ + ตารางของตัวเอง
+2. **Table columns** (ครบทุก col ต่อ group):
+   `No. | Title | Kind | Phase | Impact | Effort | MVP | Routes/Cmd | Comps | Store | Schema | Types | Fns/API | Deps | Pkgs | Cfg | Tests | Files | Risk`
+   - `Routes/Cmd` — app routes, `wrikka://` deep links, CLI commands, `/api` endpoints ที่เพิ่ม/แก้
+   - `Comps` — UI components ที่สร้าง/แก้ (`-` ถ้าไม่มี)
+   - `Store` — TanStack store / state module ที่เพิ่ม/แก้
+   - `Schema` — zod schema / db table / config schema ที่เพิ่มหรือแก้ (`-` ถ้าไม่มี)
+   - `Types` — TS types/interfaces หลักที่เพิ่ม
+   - `Fns/API` — functions, orpc procedures, Tauri/Rust commands, modules หลักที่เพิ่มหรือแก้
+   - `Deps` — external npm dependencies ที่ต้องเพิ่ม (`-` ถ้าไม่มี)
+   - `Pkgs` — internal workspace packages ที่ใช้/แก้ (`@wrikka/*`)
+   - `Cfg` — config/env files ที่แตะ (wrangler.toml, moon.yml, vite.config, package.json, env vars; `-` ถ้าไม่มี)
+   - `Tests` — test cases ที่วัดได้ (ย่อ)
+   - `Files` — file paths จริงที่จะ create/edit/delete (ย่อ, ตาม architecture จริง)
+   - `Risk` — risk หลักของ idea (สั้น)
+3. **Phase recommendation** — สรุปท้ายคำตอบ: แนะนำทำ phase ไหนก่อน (mvp/v2/v3) พร้อมเหตุผล + รายการ no. ที่อยู่ใน phase นั้น + link ไป viewer ที่รันอยู่
 
 ## Rules
 
-- 30 ไอเดียเสมอ — ห้ามน้อยกว่า; ทุก field ของ schema ต้องมีค่าจริง ห้าม placeholder
-- `ansi` ต้องเป็น box-drawing ที่ align ถูกต้อง (ทำ `/draw-ansi` ถ้าเพี้ยน)
-- `fileChanges` ต้องสอดคล้อง architecture จริงของ target project — ห้ามเดา path
-- ห้ามแก้ source code ของ viewer (`src/`) นอกจาก `src/data/ideas.json` เว้น user สั่ง
-- ห้าม commit/push ใน skill นี้ — ship ทำผ่าน `/ship-to-dev-branch`
+- 30 ไอเดียเสมอ — ห้ามน้อยกว่า; ทุก field ต้องมีค่าจริง ห้าม placeholder
+- `kind` ต้องตรง semantics — `new` = net-new เท่านั้น, `platform` = cross-cutting เท่านั้น, `extends` = ขยายของเดิม
+- `files`/`fileChanges` ต้องสอดคล้อง architecture จริงของ target project — ห้ามเดา path
+- Grouping ต้องอิง surface จริงของ target project (routes/commands/features ที่มีอยู่หรือสอดคล้อง pattern) — ห้าม group มั่ว
+- **Data → OS temp เท่านั้น** (`idea-features-<id>/ideas.json`) — ห้ามเขียน data ลง skill dir หรือ target repo เว้น user สั่ง; viewer source ใน skill dir แก้ได้เฉพาะตอน user สั่ง
 - ใช้ /reframe ถ้าจำเป็น
 
 ## Expected Outcome
 
-- `src/data/ideas.json` มี 30 ไอเดียครบ schema
-- `<project>-idea-features.md` อยู่ใน OS temp dir — markdown summary ครบ 30 ไอเดีย
-- Web viewer รันและเปิดใน browser — user เห็น grid + preview + filters ครบ
-- ผ่าน `/ship-verify` gates ที่ apply
+- `idea-features-<id>/ideas.json` ใน OS temp มี 30 ไอเดียครบ field
+- Web viewer ใน skill dir serve data นั้นอยู่ — list table พร้อม search/filter/grouping/sorting + detail panel ครบ description/why/benefit
+- คำตอบในแชทมี 30 ไอเดีย grouped by routes/commands/features หลัก พร้อมตารางครบทุก column + phase recommendation

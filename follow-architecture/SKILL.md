@@ -19,23 +19,94 @@ Entry point เดียวสำหรับ architecture restructure — เ�
 
 ## Scope
 
-- ใช้เมื่อต้อง restructure codebase/package/app ตาม architecture pattern — ถูก dispatch จาก `/refactor` architecture scope และ callers อื่น
+- ใช้เมื่อต้อง restructure codebase/package/app ตาม architecture pattern — ถูก dispatch จาก `/refactor` architecture scope และ `/restructure` รวมถึง callers อื่น
 - Pattern detail ฉบับเต็ม (SSOT): `/deep-review` `## Pattern Guides` → `references/pattern-clean.md`, `references/pattern-layered.md`
 - File structures (canonical): Clean → [templates/file-structure-clean.md](templates/file-structure-clean.md); Layered → [templates/file-structure-layered.md](templates/file-structure-layered.md)
-- Stack-specific file structures ย้ายไปอยู่ใน skill เจ้าของ stack (canonical per target type):
+- Stack-specific file structures — canonical owner per target (ห้าม copy structure มาที่นี่):
 
-| Target | Template (ใน skill นั้น) |
-|--------|----------|
-| Vite SPA | `/follow-tool-vite` → `follow-tool-vite/templates/file-structure-web-vite-spa.md` |
-| Nuxt | `/follow-create-web-nuxt` → `follow-create-web-nuxt/templates/file-structure-web-nuxt.md` |
-| SvelteKit | `/follow-create-web-svelte` → `follow-create-web-svelte/templates/file-structure-web-svelte.md` |
-| Solid SPA + TanStack Router | `/follow-solid-framework` → `follow-solid-framework/templates/file-structure-web-solid-spa.md` |
-| TanStack Start + Nitro → CF Workers | `/follow-solid-framework` → `follow-solid-framework/templates/file-structure-web-solid-start.md` |
-| Next.js App Router | `/follow-create-web-nextjs` → `follow-create-web-nextjs/templates/file-structure-web-nextjs.md` |
-| CLI tool | `/follow-create-cli` → `follow-create-cli/templates/file-structure-cli.md` |
-| Plugin package | `/follow-create-plugins` → `follow-create-plugins/templates/file-structure-plugins.md` |
-| SDK/client library | `/follow-create-sdk` → `follow-create-sdk/templates/file-structure-sdk.md` |
-| Library package | `/follow-tool-tsdown` → `follow-tool-tsdown/templates/file-structure-lib.md` |
+  Web:
+
+  | Target | Owner skill | Template |
+  |--------|-------------|----------|
+  | Web (dispatcher — เลือก framework) | `/follow-create-web` | — |
+  | Next.js App Router | `/follow-create-web-nextjs` | `templates/file-structure-web-nextjs.md` |
+  | Nuxt | `/follow-create-web-nuxt` | `templates/file-structure-web-nuxt.md` |
+  | SvelteKit | `/follow-create-web-svelte` | `templates/file-structure-web-svelte.md` |
+  | SolidStart | `/follow-create-web-solidstart` | ดู skill (structure ใน SKILL.md) |
+  | Solid SPA + TanStack Router | `/follow-solid-framework` | `templates/file-structure-web-solid-spa.md` |
+  | TanStack Start + Nitro → CF Workers | `/follow-solid-framework` | `templates/file-structure-web-solid-start.md` |
+  | Vite SPA | `/follow-tool-vite` | `templates/file-structure-web-vite-spa.md` |
+  | Docs site | `/follow-create-web-docs` | ดู skill |
+  | WebMCP (page tools) | `/follow-create-web-mcp` | ดู skill |
+  | Rust WASM | `/follow-create-web-wasm` | ดู skill |
+
+  Mobile และ Desktop:
+
+  | Target | Owner skill | Template |
+  |--------|-------------|----------|
+  | Mobile (dispatcher) | `/follow-create-mobile` | — |
+  | Capacitor cross-platform | `/follow-create-mobile-cross-with-capacitor` | ดู skill |
+  | iOS + Android native (KMP) | `/follow-create-ios-android-native-by-kotlin-multiplatform` | ดู skill |
+  | Tauri desktop | `/follow-create-desktop-tauri` | ดู skill |
+  | Dioxus cross-platform | `/follow-create-cross-dioxus` | ดู skill |
+
+  CLI และ TUI:
+
+  | Target | Owner skill | Template |
+  |--------|-------------|----------|
+  | CLI (dispatcher) | `/follow-create-cli` | `templates/file-structure-cli.md` |
+  | Bun CLI | `/follow-create-bun-cli` | ดู skill |
+  | Rust CLI | `/follow-create-rust-cli` | ดู skill |
+  | Rust crate (library) | `/follow-create-rust-crate` | ดู skill |
+  | TUI (Ratatui) | `/follow-create-tui-ratatui` | ดู skill |
+  | Nushell module | `/follow-create-nushell-plugin` | ดู skill |
+  | PowerShell module | `/follow-create-powershell-module` | ดู skill |
+  | Library package (TS) | `/follow-tool-tsdown` | `templates/file-structure-lib.md` |
+
+  Plugin และ Extension:
+
+  | Target | Owner skill | Template |
+  |--------|-------------|----------|
+  | Plugin (dispatcher) | `/follow-create-plugins` | `templates/file-structure-plugins.md` |
+  | Vite plugin | `/follow-create-vite-plugin` | ดู skill |
+  | Rolldown plugin | `/follow-create-rolldown-plugin` | ดู skill |
+  | Bun plugin | `/follow-create-bun-plugin` | ดู skill |
+  | Nitro plugin | `/follow-create-nitro-plugin` | ดู skill |
+  | Elysia plugin | `/follow-create-elysia-plugin` | ดู skill |
+  | Biome plugin | `/follow-create-biome-plugin` | ดู skill |
+  | ESLint plugin | `/follow-create-eslint-plugin` | ดู skill |
+  | Oxlint plugin | `/follow-create-oxlint-plugin` | ดู skill |
+  | Vitest plugin | `/follow-create-vitest-plugin` | ดู skill |
+  | Storybook addon | `/follow-create-storybook-addon` | ดู skill |
+  | Tauri plugin | `/follow-create-tauri-plugin` | ดู skill |
+  | VS Code extension | `/follow-create-vscode-extensions` | ดู skill |
+  | Browser extension (WXT) | `/follow-create-browser-extensions-wxt` | ดู skill |
+  | Obsidian plugin | `/follow-create-obsidian-plugin` | ดู skill |
+  | Neovim plugin | `/follow-create-nvim-plugin` | ดู skill |
+  | Zed extension | `/follow-create-zed-extensions` | ดู skill |
+  | Raycast extension | `/follow-create-raycast-extensions` | ดู skill |
+  | Claude Code plugin | `/follow-create-claude-plugin` | ดู skill |
+  | Codex plugin | `/follow-create-codex-plugin` | ดู skill |
+  | Devin CLI plugin | `/follow-create-devin-plugin` | ดู skill |
+
+  Bot และ Service:
+
+  | Target | Owner skill | Template |
+  |--------|-------------|----------|
+  | Bot (dispatcher) | `/follow-create-bot` | — |
+  | Discord bot | `/follow-create-bot-discord` | ดู skill |
+  | GitHub bot | `/follow-create-bot-github` | ดู skill |
+  | GitHub App | `/follow-create-bot-github-app` | ดู skill |
+  | LINE bot | `/follow-create-bot-line` | ดู skill |
+  | Slack bot | `/follow-create-bot-slack` | ดู skill |
+  | Telegram bot | `/follow-create-bot-telegram` | ดู skill |
+  | SDK / client library | `/follow-create-sdk` | `templates/file-structure-sdk.md` |
+  | MCP server | `/follow-create-mcp` | ดู skill |
+  | Docker image | `/follow-create-docker` | ดู skill |
+  | GitHub Action | `/follow-create-github-action` | ดู skill |
+  | Product scaffold | `/follow-create-product` | ดู skill |
+  | Slidev deck | `/follow-create-slide-slidev` | ดู skill |
+  | Devin project skills | `/follow-create-devin-project-skills` | ดู skill |
 
 - ไม่ครอบ microservices — อ่าน `/deep-review` `### Pattern: Microservices Architecture` โดยตรง
 

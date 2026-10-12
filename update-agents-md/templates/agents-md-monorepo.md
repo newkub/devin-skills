@@ -45,7 +45,7 @@ related:
 
 ### 4. Ship Verify
 
-1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test-all`, `/run-dev`, `/test-usage`.
+1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`.
 2. Only after every gate passes → `/ship-to-dev-branch`.
 3. Run `/report` to summarize.
 
@@ -88,8 +88,8 @@ Quality (include as relevant to the project):
 - `review-test: /review-test`
 
 Improvements (pick variants matching the project):
-- `improve-*: /improve-features (core business + platform) /improve-security /improve-data /improve-database /improve-cli /improve-web /improve-seo /improve-dx /improve-uxui /improve-code-quality /improve-error-handling /improve-api /improve-techstack /improve-config /improve-tests`
-- `optimize-*: /optimize-perf /optimize-build /optimize-cost /optimize-memory`
+- `improve-*: /improve-features (core business + platform) /improve-security /improve-data /improve-data-validation /improve-database /improve-cli /improve-web /improve-seo /improve-dx /improve-uxui /improve-a11y /improve-code-quality /improve-error-handling /improve-api /improve-backend /improve-rbac /improve-form /improve-techstack /improve-deps /improve-config /improve-tests /improve-observability /improve-i18n /improve-iac /improve-events /improve-compliance /improve-business /improve-release /improve-stability /improve-delivery`
+- `optimize-*: /optimize-perf /optimize-build /optimize-bundle /optimize-cost /optimize-memory /optimize-docker /optimize-ci /optimize-queries /optimize-network /optimize-startup`
 
 ### 5. Workspaces
 

@@ -12,6 +12,7 @@ related:
   - use-astgrep
   - report-before-after
   - dont-over-engineer
+  - improve-typesafe
 ---
 
 ## Goal

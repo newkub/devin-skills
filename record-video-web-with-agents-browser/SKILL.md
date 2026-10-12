@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับบันทึกวิดีโอการใช้งานหน้าเว็บ, demo และ record test scenarios ด้วย `agent-browser` CLI (recording pipes frames เข้า `ffmpeg` — `agent-browser` ส่วนอื่นไม่ต้องใช้ ffmpeg)
 
+Boundary: video recording ทำได้เฉพาะ `agent-browser` — `chrome-devtools-mcp` ไม่มี record tool (inspect/screenshot/perf trace เท่านั้น ดู `/use-chrome-devtools` `## Tool Selection`)
+
 ## Execute
 
 ### 1. Install And Verify

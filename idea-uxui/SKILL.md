@@ -90,7 +90,7 @@ related:
 
 - ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
 - ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
-- เมื่อ idea ใดถูก implement → ต้องทำ `/run-test-all` เสมอ
+- เมื่อ idea ใดถูก implement → ต้องทำ `/run-test all` เสมอ
 
 ### 5. Format
 

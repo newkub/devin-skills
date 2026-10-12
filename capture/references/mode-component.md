@@ -23,7 +23,7 @@ Capture UI component เฉพาะส่วนสำหรับ docs/review/t
 ##### 3. Capture
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts component <url> --selector "<css>" --out public/screenshots/components/<name>.png
+bun D:/newkub/agents-capture/src/presentation/cli.ts component <url> --selector "<css>" --out public/screenshots/components/<name>.png
 ```
 
 - CLI จะ `scrollintoview` selector แล้ว screenshot viewport

@@ -21,6 +21,13 @@ related:
   - implement-to-production
   - ship-to-dev-branch
   - report
+  - test-website
+  - test-cli
+  - test-api
+  - test-e2e
+  - test-component
+  - test-a11y
+  - test-all
 
 ---
 
@@ -32,9 +39,29 @@ related:
 
 ใช้กับ CLI commands, SDK code examples, package scripts และ instructions ที่ปรากฏใน docs ก่อน release — ถูกเรียกจาก `/implement-to-production` ใน step Verify ก่อน ship
 
+- ถ้า scope ของงานทดสอบครอบ domain อื่นด้วย → เลือก `test-*` skills ตาม dispatch table ใน Step 1 — test-usage ครอบ docs/usage verification; domain tests ไป skill เฉพาะทาง
+
 ## Execute
 
-### 1. Discover Usage Examples
+### 1. Select Test Domains
+
+> Goal: เลือก `test-*` skills ที่ตรง scope ก่อนลงมือ
+
+| Target/Context | Skill |
+|----------------|-------|
+| website/web app — click-through ทุก route, forms, dead UI, states | `/test-website` (real Chrome ผ่าน `/use-playwriter`) |
+| CLI commands/flags/scripts | `/test-cli` |
+| API endpoints, schemas, contracts | `/test-api` (เฉพาะ contract drift → `/test-contract` ผ่าน `/run-test`) |
+| UI components DOM-isolated | `/test-component` |
+| user flows, regression suite | `/test-e2e` |
+| accessibility (WCAG/axe) | `/test-a11y` |
+| docs usage examples (README/SDK/scripts) | ทำตาม Step 2-8 ของ skill นี้ |
+| หลาย domains พร้อมกัน | `/run-test all` หรือ `/test-all` — domains อื่น (contract, load, coverage, database, mobile, property, visual, mutation, smoke, unit) dispatch ผ่าน `/run-test <domain>` |
+
+1. เลือก domain skills จากตารางตาม target — domain ไม่ชัด → `/ask-me`
+2. ทำ domain skills ที่เลือกก่อนหรือขนานกัน แล้วทำ Step 2-8 สำหรับ docs usage examples เสมอเมื่องานเกี่ยวกับ docs/package
+
+### 2. Discover Usage Examples
 
 > Goal: ค้นหา usage examples ทั้งหมด
 
@@ -43,7 +70,7 @@ related:
 3. แยกประเภท: `bash` (CLI commands), `typescript`/`javascript` (SDK examples), `json` (scripts)
 4. บันทึกรายการ examples พร้อมตำแหน่งไฟล์
 
-### 2. Test CLI Commands
+### 3. Test CLI Commands
 
 > Goal: ทดสอบ CLI commands ที่ไม่ทำลายข้อมูล
 
@@ -52,7 +79,7 @@ related:
 3. ถ้า command ต้องรัน server → ใช้ `--no-open` และ `--port=0` หรือ kill หลังจากทดสอบ
 4. บันทึกผลลัพธ์ของแต่ละ command
 
-### 3. Test SDK Examples
+### 4. Test SDK Examples
 
 > Goal: ทดสอบ SDK code examples
 
@@ -62,7 +89,7 @@ related:
 4. ถ้าต้องการ build ก่อน → ทำ `/resolve-errors` แล้วลอง `build`
 5. บันทึกผลลัพธ์
 
-### 4. Test Package Scripts
+### 5. Test Package Scripts
 
 > Goal: ทดสอบ package.json scripts ที่เกี่ยวข้องกับ usage
 
@@ -71,7 +98,7 @@ related:
 3. ถ้า `dev` หรือ server scripts ไม่จำเป็นต้องทดสอบ → skip และบันทึก
 4. บันทึกผลลัพธ์
 
-### 5. Test In Temp
+### 6. Test In Temp
 
 > Goal: ทดลอง/ทดสอบใน OS temp directory โดยไม่แตะ workspace — merged จาก `/test-in-temp`
 
@@ -81,7 +108,7 @@ related:
 3. เก็บ temp ไว้จนจบ session ให้ user ตรวจ — default ลบเมื่อเสร็จ เว้นแต่ user ขอเก็บ
 4. ห้ามแตะ workspace หรือ install deps จาก temp — copy ผลกลับ workspace ต้องได้ user confirm ชัดเจน
 
-### 6. Review Correctness
+### 7. Review Correctness
 
 > Goal: ตรวจสอบความถูกต้องก่อน report ผล
 
@@ -90,7 +117,7 @@ related:
 3. ถ้า `/deep-review` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
 4. บันทึกผลการ review
 
-### 7. Report And Fix
+### 8. Report And Fix
 
 > Goal: รายงานผลและจัดการ issues
 

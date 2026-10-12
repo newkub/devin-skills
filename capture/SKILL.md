@@ -4,6 +4,7 @@ description: Capture หลักฐานภาพ/วิดีโอ — web, 
 argument-hint: "<web|component|terminal|app|all> [options]"
 related:
   - use-agent-browser
+  - use-chrome-devtools
   - run-dev
   - deep-review
 
@@ -15,15 +16,15 @@ Capture ภาพหรือวิดีโอหลักฐานตาม ta
 
 ## Scope
 
-CLI อยู่ที่ `src/` (Bun/TypeScript, entry `src/presentation/cli.ts`) — ใช้ได้กับทุก project โดยไม่ต้องติดตั้ง dependency ฝั่ง project:
+CLI อยู่ที่ `D:/newkub/agents-capture/src/` (Bun/TypeScript, entry `src/presentation/cli.ts` — merged into `agents-capture` project) — ใช้ได้กับทุก project โดยไม่ต้องติดตั้ง dependency ฝั่ง project:
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts <mode> [options]
+bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 ```
 
 | Mode | ทำอะไร | Guide |
 |------|--------|-------|
-| `web` | screenshot/PDF หน้าเว็บเดียว ผ่าน `agent-browser` | [Web](#capture-web) |
+| `web` | screenshot/PDF หน้าเว็บเดียว ผ่าน `agent-browser` (screenshot-only ใช้ `chrome-devtools-mcp` `take_screenshot` ได้ถ้า register อยู่ — ดู `/use-chrome-devtools`) | [Web](#capture-web) |
 | `component` | screenshot element เดียว (CSS selector) บน URL | [Component](#capture-component) |
 | `terminal` | render output ของ command เป็น PNG/SVG/HTML | [Terminal](#capture-terminal) |
 | `app` | screenshot หน้าต่าง/จอ OS-level (Windows PowerShell) + app sweep workflow | [App](#capture-app) |

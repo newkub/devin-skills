@@ -1,5 +1,5 @@
 ---
-name: update-contributing-md
+name: update-contributing
 description: อัปเดต CONTRIBUTING.md ให้สอดคล้องกับ project workflows และ conventions
 argument-hint: "[scope]"
 related:

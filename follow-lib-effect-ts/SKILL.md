@@ -34,7 +34,18 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-effect/SKILL.md` — install, Effect/Layer/Service basics | Migrate | `workflows/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-effect/SKILL.md` — install, Effect/Layer/Service basics |
+| Migrate | `workflows/migrate-to-effect/SKILL.md` — adopt Effect into neverthrow/promise codebase incrementally |
+| Services/DI/Layer | `workflows/define-services/SKILL.md` — `Effect.Service`, `Context.Tag`, Layer composition |
+| Errors/retry/Schedule | `workflows/handle-errors/SKILL.md` — `TaggedError`, `catchTag*`, `Cause`/`Exit`, timeout |
+| Schema/validation | `workflows/use-schema/SKILL.md` — `Schema.Class`, decode/encode, transforms, branded |
+| Concurrency/fibers | `workflows/use-concurrency/SKILL.md` — `Effect.all`, `forEach`, `fork`, race, Deferred/Queue |
+| Streams/Sink | `workflows/use-stream/SKILL.md` — `Stream`, `Sink`, `Channel`, backpressure |
+| Platform services | `workflows/use-platform/SKILL.md` — `FileSystem`, `HttpClient`, `Command`, runtime layers |
+| Testing | `workflows/test-effect/SKILL.md` — `@effect/vitest`, `TestClock`, `Layer.mock`, `Exit` |
+
 ### 1. Detect Version And Ecosystem
 
 > Goal: เลือก API ที่ตรงกับ effect version และ package manager ของ project

@@ -9,6 +9,7 @@ related:
   - follow-default-config
   - use-lib-effective
   - report
+  - improve-typesafe
 ---
 
 ## Goal

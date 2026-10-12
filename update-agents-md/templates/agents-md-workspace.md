@@ -43,7 +43,7 @@ Map every dependency in the workspace manifest to its global skill — use `/use
 
 ### 4. Ship Verify
 
-1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test-all`, `/run-dev`, `/test-usage`.
+1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`.
 2. Only after every gate passes → `/ship-to-dev-branch`.
 3. Run `/report` to summarize.
 

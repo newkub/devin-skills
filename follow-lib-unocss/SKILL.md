@@ -3,6 +3,7 @@ name: follow-lib-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
 argument-hint: "[scope]"
 related:
+  - follow-unocss-theme
   - follow-design-system
   - follow-lib-css
   - follow-tool-formatter
@@ -110,7 +111,7 @@ related:
 3. ถ้า auto-scan ไม่ครอบคลุม ให้เพิ่ม `content.filesystem`:
 
    ```ts
-   content: { filesystem: ['./src//*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
+   content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
    ```
 
 ### 4. Setup Framework Integration
@@ -165,8 +166,7 @@ related:
 ### Workflows
 
 - First-time install + `uno.config.ts` + presets + framework integration → `workflows/setup-unocss/SKILL.md`
-- First-time theme setup — `theme.css`, HSL variables, dark mode → `workflows/setup-theme/SKILL.md`
-- Theme tokens, shortcuts, rules, dark mode → `workflows/config-theme/SKILL.md`
+- Theme create/modify/lint — `theme.css` tokens, `uno.config.ts` map, UI token enforcement, dark mode, biome plugin → ทำ `/follow-unocss-theme` (promoted จาก workflows/theme + workflows/lint เดิม)
 
 ## Rules
 
@@ -187,10 +187,17 @@ related:
 - ใช้ `presetIcons` สำหรับ icon bundler พร้อม collections import
 - เพิ่ม transformers ตามต้องการ: `transformerVariantGroup`, `transformerDirectives`, `transformerAttributifyJsx`
 - ตั้งค่า `content.filesystem` เมื่อ auto-scan ไม่ครอบคลุม
+- ห้ามใช้ `shortcuts` — เขียน utilities ตรงใน markup เสมอ (อ่านง่าย, scan ตรง, ไม่มี hidden indirection); marker classes เช่น `btn`, `menu` เป็น plain classes ได้ แต่เฉพาะเพื่อให้ variant selectors (`[.btn&]`, `[.menu_&]`) หรือ JS hooks อ้างถึง — ไม่ใช่เพื่อแพ็ค styles
 
 ### Framework Integration
 
-| Framework | Config Files | CSS Entry / Notes |-----------|--------------|-------------------| Vite | `vite.config.ts`, `uno.config.ts` | `import 'virtual:uno.css'` in `main.ts` | Nuxt | `nuxt.config.ts`, `uno.config.ts` | `uno.css` auto-injected | Next.js | `postcss.config.mjs`, `uno.config.ts` | `app/globals.css` ใส่ `@unocss all;` | Astro | `astro.config.mjs`, `uno.config.ts` | `UnoCSS()` integration, optional `injectReset` | CLI | `uno.config.ts` | `unocss --preset wind4 --watch` 
+| Framework | Config Files | CSS Entry / Notes |
+|-----------|--------------|-------------------|
+| Vite | `vite.config.ts`, `uno.config.ts` | `import 'virtual:uno.css'` in `main.ts` |
+| Nuxt | `nuxt.config.ts`, `uno.config.ts` | `uno.css` auto-injected |
+| Next.js | `postcss.config.mjs`, `uno.config.ts` | `app/globals.css` ใส่ `@unocss all;` |
+| Astro | `astro.config.mjs`, `uno.config.ts` | `UnoCSS()` integration, optional `injectReset` |
+| CLI | `uno.config.ts` | `unocss --preset wind4 --watch` |
 ### Transformers
 
 - `transformerVariantGroup`: group utilities
@@ -205,7 +212,8 @@ related:
 - Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
 - `@property` rules generate ภายใต้ `properties` layer
 
-- ทำ workflow `setup-theme` สำหรับ first-time `theme.css` + HSL tokens, `config-theme` สำหรับปรับ tokens/shortcuts/dark mode — ตัวอย่างเต็มใน `references/apis.md`
+- ทำ `/follow-unocss-theme` สำหรับทุก theme task (create `theme.css` + full semantic token set, modify tokens/shortcuts/dark mode, biome plugin enforcement) — branch ตาม state
+- ทำ `/follow-unocss-theme lint` สำหรับ UnoCSS lint ทั้งหมด — theme lint preset (`follow-unocss-theme/scripts/theme-lint.ts`: token parity, dark-mode completeness, semantic violations) + class order/conflict/dynamic-class + linter wiring
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

@@ -16,6 +16,7 @@ related:
   - deploy-to-cloudflare
   - deploy-to-railway
   - create-cloudflare
+  - test-smoke
 
 ---
 
@@ -170,6 +171,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (deploy)
+- ใช้ /test-smoke ใน Post-Deploy Validation — sanity check critical paths บน live URL
 
 ## Expected Outcome
 

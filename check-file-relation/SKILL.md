@@ -8,6 +8,7 @@ related:
   - update-devin-global-skills
   - deep-review
   - check-long-files
+  - check-code-structure
   - analyze-file-structure
   - run-check
 
@@ -125,7 +126,7 @@ cfr src --pattern 'from\s+([\w./-]+)\s+import' --ext py
 ### 3. Accuracy
 
 - Regex extraction ไม่ใช่ full parser — import ใน comments, re-export chains, conditional imports, macro-generated mods อาจหลุด/เกิน
-- ต้องการ precision สูง → `/use-astgrep` หรือ compiler API (`tsc --listFiles`, `cargo modules`) ตาม `/check-my-global-cli` tool map
+- ต้องการ precision สูง → `/use-astgrep`, `/check-code-structure` (`sg outline --items imports`) หรือ compiler API (`tsc --listFiles`, `cargo modules`) ตาม `/check-my-global-cli` tool map
 
 ## Expected Outcome
 

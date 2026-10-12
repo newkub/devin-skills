@@ -1,7 +1,7 @@
 # Capture All
 
 
-Capture screenshots ทุก route x ทุก device size ในรันเดียว — framework-agnostic ผ่าน `capture all` (engine: `src/all.ts`, merged จาก `capture-all-components-all-routes`)
+Capture screenshots ทุก route x ทุก device size ในรันเดียว — framework-agnostic ผ่าน `capture all` (engine: `agents-capture/src/all.ts`, merged จาก `capture-all-components-all-routes`)
 
 #### All — Execute
 
@@ -22,21 +22,21 @@ Capture screenshots ทุก route x ทุก device size ในรันเ�
 ##### 3. Run Capture
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 --discover
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 --discover
 
 # routes ชัดเจน + เฉพาะ desktop/mobile
-bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 \
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --routes /,/request,/examples --devices desktop,mobile
 
 # routes + components (selector per route)
-bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 \
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --routes /,/request --components "nav=header@/,form=form@/request,card=.rounded-3xl@/request"
 
 # routes จาก crw_map → routes.txt
-bun <skill-dir>/src/presentation/cli.ts all --base https://example.com --routes-file routes.txt --full
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base https://example.com --routes-file routes.txt --full
 
 # custom viewport
-bun <skill-dir>/src/presentation/cli.ts all --base http://localhost:3000 \
+bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --discover --devices "wide=1920x1080,mobile"
 ```
 

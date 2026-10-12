@@ -3,8 +3,8 @@ import { createEffect, onMount, type Accessor, type Setter } from 'solid-js';
 export function usePrefs(
   theme: Accessor<'dark' | 'light'>,
   setTheme: Setter<'dark' | 'light'>,
-  diffStyle: Accessor<'unified' | 'split'>,
-  setDiffStyle: Setter<'unified' | 'split'>,
+  diffStyle: Accessor<'unified' | 'split' | 'stacked'>,
+  setDiffStyle: Setter<'unified' | 'split' | 'stacked'>,
   wrap: Accessor<boolean>,
   setWrap: Setter<boolean>
 ) {
@@ -15,7 +15,7 @@ export function usePrefs(
       if (t === 'dark' || t === 'light') setTheme(t);
       else if (window.matchMedia?.('(prefers-color-scheme: light)').matches) setTheme('light');
       const ds = localStorage.getItem('od-diff-style');
-      if (ds === 'unified' || ds === 'split') setDiffStyle(ds);
+      if (ds === 'unified' || ds === 'split' || ds === 'stacked') setDiffStyle(ds);
       if (localStorage.getItem('od-wrap') === '1') setWrap(true);
     } catch {}
   });

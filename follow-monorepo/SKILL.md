@@ -7,10 +7,24 @@ related:
   - run-build
   - run-verify
   - follow-tool-vite
+  - follow-tool-moonrepo
+  - follow-tool-mise
+  - follow-tool-mr-boxington
+  - follow-tool-linter
+  - follow-tool-formatter
+  - follow-tool-gitleaks
+  - update-license-md
+  - update-contributing
+  - update-astgrep-rules
+  - update-gitignore
+  - update-dot-vscode
+  - update-dot-devin
+  - improve-config
+  - setup-cicd
   - deep-review
   - report
   - suggest-next-action
-  - run-test-all
+  - run-test
 ---
 
 ## Goal
@@ -50,7 +64,17 @@ related:
 2. ตรวจ `moon.yml` ถ้าใช้ moon
 3. ตรวจ `tsconfig.json`, `biome.jsonc` มีหรือไม่
 4. ตรวจ `README.md` หรือ `AGENTS.md` ใน workspace
-5. บันทึก workspaces ทีขาด conventions
+5. ตรวจ `.vscode/` และ `.devin/` ในแต่ละ workspace (settings, hooks, skills, MCP)
+6. บันทึก workspaces ทีขาด conventions
+7. Sync convention layers เมื่อขาดหรือ drift:
+   - `/follow-tool-moonrepo` (default orchestrator) หรือ `/follow-tool-mr-boxington` ตาม tool ทีใช้
+   - `/follow-tool-mise` สำหรับ toolchain/runtime versions
+   - `/follow-tool-linter` + `/follow-tool-formatter` สำหรับ lint/format wiring
+   - `/follow-tool-gitleaks` สำหรับ secrets scanning hook (เช่น pre-push)
+   - `/setup-cicd` ถ้ายังไม่มี pipeline หรือ config drift
+   - `/update-license-md`, `/update-contributing`, `/update-astgrep-rules`, `/update-gitignore` สำหรับ repo hygiene files
+   - `/update-dot-vscode`, `/update-dot-devin` สำหรับ `.vscode`/`.devin` config ของ workspace
+   - `/improve-config` เมื่อ config ใช้งานได้แล้วแต่ยังปรับปรุงได้
 
 ### 4. Run Workspace Command
 
@@ -82,6 +106,14 @@ related:
 3. รัน `moon run :typecheck` หรือ `turbo run typecheck`
 4. รัน `moon run :lint` หรือ `turbo run lint`
 5. ถ้า fail → ทำ `/resolve-errors`
+
+### 7. Report
+
+> Goal: สรุปสถานะทุก workspace รวม `.vscode`/`.devin`
+
+1. ทำ `/report table` คอลัมน์: `No.`, `Workspace`, `Type`, `Conventions`, `.vscode`, `.devin`, `Deps`, `Status`
+2. workspace ที่ขาด `.vscode` → ทำ `/update-dot-vscode`; ขาด `.devin` → ทำ `/update-dot-devin`
+3. ทำ `/suggest-next-action`
 
 ### Workflows
 
@@ -131,7 +163,9 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
+- ใช้ /update-dot-vscode ถ้าจำเป็น
+- ใช้ /update-dot-devin ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -139,4 +173,4 @@ related:
 - Workspaces ถูก list และ verify conventions
 - Dependencies consistent
 - Build/typecheck/lint ผ่าน
-- Report table สรุปสถานะทุก workspace
+- Report table สรุปสถานะทุก workspace รวม `.vscode`/`.devin` (`/update-dot-vscode`, `/update-dot-devin`)

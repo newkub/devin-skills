@@ -7,6 +7,9 @@ related:
   - open-web-for-config-secret
   - use-scripts
   - follow-tool-mr-boxington
+  - follow-tool-fnox
+  - follow-tool-packslip
+  - follow-tool-usage
 ---
 
 ## Goal

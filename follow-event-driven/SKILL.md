@@ -4,6 +4,8 @@ description: Implement Event-Driven Architecture สำหรับ async workfl
 argument-hint: "[scope]"
 related:
   - deep-review
+  - improve-events
+  - improve-stability
 
 ---
 
@@ -220,5 +222,6 @@ Design Issues
 ## Guide
 
 - ทำ `/deep-review` สำหรับ base architecture
+- existing event system findings (schemas, ordering, idempotency, DLQ) → `/improve-events`
 - ทำ `/deep-review` สำหรับ distributed event-driven systems
 - ทำ `/deep-review` สำหรับ event handler structure

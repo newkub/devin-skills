@@ -31,7 +31,14 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-orpc/SKILL.md` — install, router/procedure basics, zod, server handler |
+| Contract-first design | `workflows/define-contracts/SKILL.md` — `oc` builder, `.input`/`.output`/`.errors`/`.route` |
+| Procedures + router impl | `workflows/define-procedures/SKILL.md` — `implement()`, handlers, context, lazy routers |
+| Client + TanStack Query | `workflows/connect-client/SKILL.md` — `createORPCClient`, `RPCLink`, query options |
+| Middleware + auth | `workflows/use-middleware/SKILL.md` — `.use()`, context extension, interceptors |
+| Serve + OpenAPI/docs | `workflows/serve-openapi/SKILL.md` — `RPCHandler`/`OpenAPIHandler`, spec gen, CORS | 
 ### 1. Install Packages
 
 > Goal: ติดตั้ง oRPC packages และ dependencies

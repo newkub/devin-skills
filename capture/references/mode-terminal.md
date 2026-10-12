@@ -8,8 +8,8 @@ Capture terminal output เป็นภาพ PNG/SVG/HTML สำหรับ do
 ##### 1. Capture
 
 ```bash
-bun <skill-dir>/src/presentation/cli.ts terminal --cmd "<command>" --out <file.png>
-bun <skill-dir>/src/presentation/cli.ts terminal --cmd "git log --oneline -5" --out docs/screenshots/git-log.png --title "Git Log"
+bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "<command>" --out <file.png>
+bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "git log --oneline -5" --out docs/screenshots/git-log.png --title "Git Log"
 ```
 
 - CLI รัน `--cmd` เก็บ stdout/stderr เป็น text แล้ว pipe เข้า tool ที่ติดตั้ง

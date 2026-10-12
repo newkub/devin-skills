@@ -12,6 +12,7 @@ related:
   - suggest-next-action
   - resolve-errors
   - run-review
+  - run-test
 
 ---
 
@@ -35,21 +36,37 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 
 | Domain | Review skill | Fix route |
 |--------|-------------|-----------|
-| seo | `/deep-review` | `workflows/improve-seo` |
-| security | `/deep-review` | `## Fix` — secrets rotation, headers, vuln deps |
-| auth | `/deep-review` | `## Fix` — sessions, tokens |
-| api | `/deep-review` | `## Fix` — contract drift, versioning |
-| database | `/deep-review` | `## Fix` (migrations) + `workflows/optimize-queries` |
-| bundle+assets | `/deep-review` | `workflows/optimize-bundle` |
-| performance | `/deep-review` | `workflows/optimize-performance` |
-| cost | `/deep-review` | `workflows/optimize-cost` |
-| tests | `/deep-review` | `## Fix` (flaky) + `workflows/improve-coverage` + `/update-tests` สำหรับเขียน test ใหม่ |
-| uxui | `/deep-review` | `workflows/improve-uxui-fix` + `/watch-browser-and-fix` (browser pass) |
-| observability | `/deep-review` | `workflows/improve-observability` |
-| accessibility | `/deep-review` | `workflows/improve-a11y` |
-| frontend | `/deep-review` | `## Fix` (hydration) + `workflows/improve-rendering` |
+| seo | `/deep-review` | `/improve-seo` |
+| security | `/deep-review` | `/improve-security` (`## Fix` — secrets rotation, headers, vuln deps) |
+| auth | `/deep-review` | `/improve-auth` (RBAC surface → `/improve-rbac`; `## Fix` — sessions, tokens) |
+| rbac | `/deep-review` | `/improve-rbac` |
+| api | `/deep-review` | `/improve-api` (`## Fix` — contract drift, versioning) |
+| backend | `/deep-review` | `/improve-backend` |
+| frontend | `/deep-review` | `## Fix` (hydration) + scoped: `/improve-form`, `/improve-i18n`, `/improve-a11y` |
+| forms | `/deep-review` | `/improve-form` |
+| data-validation | `/deep-review` | `/improve-data-validation` |
+| database | `/deep-review` | `/improve-database` (migrations) + query perf → `/optimize-queries` |
+| dependencies | `/deep-review` | `/improve-deps` |
+| bundle+assets | `/deep-review` | `/optimize-bundle` (build speed → `/optimize-build`) |
+| performance | `/deep-review` | `/optimize-perf` (network → `/optimize-network`; startup → `/optimize-startup`) |
+| memory | `/deep-review` | `/optimize-memory` |
+| cost | `/deep-review` | `/optimize-cost` |
+| ci/pipeline | `/deep-review` | `/optimize-ci` |
+| docker | `/deep-review` | `/optimize-docker` (guided workflow → `follow-create-docker/workflows/optimize-image`) |
+| tests | `/deep-review` | `/improve-tests` + `## Fix` (flaky) + `/update-tests` สำหรับเขียน test ใหม่ |
+| uxui | `/deep-review` | `/improve-uxui` + `/watch-browser-and-fix` (browser pass) |
+| observability | `/deep-review` | `/improve-observability` |
+| accessibility | `/deep-review` | `/improve-a11y` |
+| i18n | `/deep-review` | `/improve-i18n` |
+| iac | `/deep-review` | `/improve-iac` |
+| events | `/deep-review` | `/improve-events` |
+| compliance | `/deep-review` | `/improve-compliance` |
+| business | `/deep-review` | `/improve-business` |
+| release | `/deep-review` | `/improve-release` |
+| delivery | `/deep-review` | `/improve-delivery` |
+| stability | `/deep-review` | `/improve-stability` |
 | quality/types | `/deep-review` | `## Fix` — complexity, imports |
-| อื่นๆ (cli, config, migration, backend, dependencies, delivery, docs, stability, i18n, mobile, desktop, browser-ext, dx, iac, sdk, usage, ai, mcp, events) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
+| อื่นๆ (cli, config, migration, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
 ## Execute
 
@@ -128,6 +145,7 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 - ใช้ /run-review ถ้าจำเป็น
 
 - ใช้ /create-plan-in-dot-devin ถ้าจำเป็น
+- re-run ผ่าน /run-test <domain> หลัง fix เพื่อ verify tests เขียว
 
 ## Expected Outcome
 

@@ -4,8 +4,10 @@ description: Refactor ไฟล์, workspace, หรือ codebase ตาม c
 argument-hint: "[@files... | scope | clean | layered | orm | structure]"
 related:
   - refactor-skills
-  - simplify
   - refactor-to-srp
+  - restructure
+  - simplify
+  - idea-naming
   - create-plan-in-dot-devin
   - refactor-workspace
   - refactor-to-packages-shared
@@ -15,6 +17,7 @@ related:
   - update-agents-md
   - update-config
   - update-tests
+  - improve-tests
   - run-verify
   - check-code-structure
   - deep-review
@@ -26,8 +29,8 @@ related:
   - follow-my-techstack
   - use-lib-effective
   - follow-architecture
+  - follow-tool-data-validation
   - deep-validate
-  - check-long-files
   - relocation
   - scan-codebase
   - follow-review
@@ -50,16 +53,18 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 - ถ้า context คือไฟล์/โมดูลที่รวมหลาย concerns ปนกัน (UI + logic + IO + config ในที่เดียว) → ทำ `### /separate-of-concerns` (merged)
 - ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
 - ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` + `references/repository-pattern.md`
-- ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ทำ structure refactor ตาม `references/scope-structure.md`
+- ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ใช้ `/restructure`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
 - ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
 - ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
 - ถ้า context คือทำไฟล์สั้น/อ่านง่ายขึ้นโดยไม่เปลี่ยน boundaries (verbosity, redundancy, nesting) → ใช้ `/simplify`
-- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ `/refactor-to-srp`
+- ถ้า context คือ refactor tests (test/spec files เอง — flaky, duplication, shared setup, naming, assertions) → refactor test suite: หา improvements ผ่าน `/improve-tests` แล้ว rewrite specs ผ่าน `/update-tests` — rules เดียวกัน (assertion semantics เหมือนเดิม, green before/after)
+- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ใช้ `/refactor-to-srp`
 - ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 - mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-with-astgrep`
+- ถ้า context คือ refactor skill packages (`SKILL.md`, `workflows/`, `references/` ของ skills) → ใช้ `/refactor-skills`
 
 ## Execute
 
@@ -74,14 +79,15 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → `/refactor-to-srp`
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/deep-review` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
+6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/scan-codebase` (quick overview), `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/deep-review` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
 7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
 9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor (dispatch `/follow-architecture`)
 10. ถ้า argument/context คือ concerns ปนกันในไฟล์/โมดูล → `### /separate-of-concerns` (merged)
 11. ถ้า argument/context เป็น `orm` หรือ data access restructure → data access refactor
-12. ถ้า argument/context เป็น `structure` หรือ physical file/folder restructure → structure refactor
-13. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+12. ถ้า argument/context เป็น `structure` หรือ physical file/folder restructure → `/restructure`
+13. ถ้า argument/context เป็น `tests` หรือ refactor test suite → test refactor scope — `/improve-tests` (findings) + `/update-tests` (rewrite specs)
+14. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
@@ -123,7 +129,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 
 > Goal: physical file/folder structure ทุกไฟล์มี single responsibility — naming, split, content separation, relocation, imports
 
-ทำตาม [references/scope-structure.md](references/scope-structure.md)
+ทำตาม `/restructure` — procedure ละเอียด [references/structure.md](references/structure.md)
 
 ### 8. Update References
 
@@ -192,15 +198,12 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 - ไฟล์ ≤250 บรรทัด (`/check-long-files`); หนึ่ง fact หนึ่ง source (`/follow-single-of-source`); naming/patterns สอดคล้อง
 - import paths ใช้ path alias ของ project (เช่น `~/*`) แทน relative paths ที่ซับซ้อน — ห้าม relative import 3+ levels (`../../../`)
 
-### 7. Safety
+### 7. Safety And Verification
 
 - ย้าย/ลบ/rename → `/update-references`; destructive → dry run + confirm; ไม่ force push
-
-### 8. Verification
-
 - ผ่าน `/run-verify`; ไม่มี broken references
 
-### 9. Plan Before Bulk Refactor
+### 8. Plan Before Bulk Refactor
 
 - scope ใหญ่ (หลายไฟล์/workspace/codebase) หรือ user ขอหลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ — ห้ามเริ่ม refactor ใหญ่โดยไม่มี plan
 
@@ -217,9 +220,13 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 
 Rules: 1 extraction = 1 concern ไม่ mix behavior change; pure logic extractable ก่อนเสมอ; placement ตาม dependency direction; preserve public API
 
-### /refactor-to-srp (promoted)
+### /refactor-to-srp → `/refactor-to-srp`
 
-SRP splitting ถูก promote เป็น top-level skill `/refactor-to-srp` (canonical SRP splitter — 1 unit = 1 reason to change, ไฟล์ ≤250 บรรทัด) — dispatch ตาม `## Scope` เมื่อเจอไฟล์ยาวหรือหลาย responsibility
+Canonical SRP splitter — promoted เป็น top-level skill (`refactor-to-srp/SKILL.md`); smells catalog อยู่ที่ `references/code-smells.md`, parallel file workers อยู่ที่ `subagents/file-worker.md`
+
+### /restructure → `/restructure`
+
+Canonical structure refactor — promoted เป็น top-level skill (`restructure/SKILL.md`); procedure ละเอียด [references/structure.md](references/structure.md)
 
 ## Expected Outcome
 

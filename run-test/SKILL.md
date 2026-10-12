@@ -1,129 +1,91 @@
 ---
 name: run-test
-description: รัน unit/fast tests ทั้งหมด — auto-detect framework, isolate, report failures พร้อม root cause
-argument-hint: "[scope]"
+description: Test dispatcher — เลือก test-* skill จาก domain arg หรือ signals (unit default, all = orchestrator) — auto-detect framework
+argument-hint: "[scope|domain] [target%]"
 related:
+  - test-unit
+  - test-all
+  - test-api
+  - test-cli
+  - test-contract
+  - test-coverage
+  - test-e2e
+  - test-integration
+  - test-mutation
+  - test-visual
+  - test-load
+  - test-smoke
+  - test-component
+  - test-a11y
+  - test-property
+  - test-database
+  - test-mobile
   - deep-review
-  - run-test-all
   - deep-test
-  - run-check
-  - run-verify
   - update-tests
   - resolve-errors
-  - create-report-in-dot-devin
-  - update-docs
-  - suggest-next-action
-
+  - run-check
+  - run-verify
+  - run-lint
+  - run-typecheck
+  - report
 ---
 
 ## Goal
 
-รัน unit tests / fast tests ของ project ครบทุก framework — detect runner อัตโนมัติ, จัดการ failures แยก source vs test issue, รายงานผลพร้อม root cause
+Test dispatcher — เลือก `test-*` skill ที่ตรง domain จาก argument หรือ signals แล้ว delegate — unit/fast tests เป็น default; `all` → `/test-all` orchestrator
 
 ## Scope
 
-ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (domain tests ย้ายไป `/run-test-*` runners — api, cli, contract, e2e, integration, mutation, visual; coverage → `/run-test-coverage`; analysis ลึก → `/deep-test <domain>`)
+ใช้สำหรับรัน tests ทุกประเภท — skill นี้เป็น dispatcher เท่านั้น ไม่รัน test เอง; workflow จริงอยู่ใน `test-*` skills
 
-ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
+ครอบคลุม framework detection (delegated): Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
-- ถ้าต้องการ update/เขียน unit tests → `/update-tests` (run-only skill นี้ไม่แก้ tests)
+- ถ้าต้องการ update/เขียน tests → `/update-tests`
+- ถ้าต้องการ analysis ลึกของ domain (route coverage, exploratory, subagent fan-out) → `/deep-test <domain>`
+
+| No. | Signal ที่พบ | Domain → Skill |
+|----:|-------------|----------------|
+| 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | unit (default) → `/test-unit` |
+| 2 | shared modules, DB, services integration | `integration` → `/test-integration` |
+| 3 | HTTP endpoints, OpenAPI spec, API routes | `api` → `/test-api` |
+| 4 | CLI binary, `bin` field, command definitions | `cli` → `/test-cli` |
+| 5 | consumer/provider services, Pact, contract files | `contract` → `/test-contract` |
+| 6 | web frontend, browser flows | `e2e` → `/test-e2e` |
+| 7 | UI components, design system, screenshots | `visual` → `/test-visual` |
+| 8 | coverage config หรือ target กำหนดไว้ | `coverage` → `/test-coverage` (default 100%) |
+| 9 | critical logic, mutation config | `mutation` → `/test-mutation` |
+| 10 | perf concern, k6/autocannon config, load scripts | `load` → `/test-load` |
+| 11 | post-build/deploy sanity, `smoke` scripts/tags, health checks | `smoke` → `/test-smoke` |
+| 12 | `@testing-library/*`, Vitest browser, Playwright CT, Storybook | `component` → `/test-component` |
+| 13 | axe/pa11y config, WCAG/a11y specs | `a11y` → `/test-a11y` |
+| 14 | fast-check/proptest/hypothesis, fuzz targets | `property` → `/test-property` |
+| 15 | migrations dir, ORM config, testcontainers, test DB scripts | `database` → `/test-database` |
+| 16 | `.maestro/`, detox, androidTest, XCUITest, mobile apps | `mobile` → `/test-mobile` |
+| 17 | หลาย domains พร้อมกัน | `all` → `/test-all` (orchestrator) |
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
 
 ### Domain Dispatch
 
-> Goal: domain tests ไปที่ `/run-test-*` runners — skill นี้ unit tests เท่านั้น
+> Goal: เลือก `test-*` จาก argument หรือ signals
 
-- ถ้า argument คือ domain (`api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual`) → ส่งต่อ `/run-test-<domain>` (เช่น `api` → `/run-test-api`); สำหรับ analysis ลึก (route coverage, exploratory) → `/deep-test <domain>`
-- `coverage` domain → `/run-test-coverage`; `load` → `/run-load-test`
-- ถ้าไม่ระบุหรือเป็น unit scope → ทำตาม steps ด้านล่างตามปกติ
-
-### 1. Detect Test Framework
-
-> Goal: ตรวจสอบ test framework ที่ project ใช้จริง
-
-1. ตรวจ `package.json` — `scripts.test`, `scripts.test:unit`, devDependencies (`vitest`, `jest`, `@vitest/*`, `mocha`, `tap`, `ava`)
-2. ตรวจ config files — `vitest.config.ts`, `vite.config.ts` (test block), `jest.config.*`, `pytest.ini`, `pyproject.toml` ([tool.pytest]), `go.mod`, `Cargo.toml`, `*.csproj`
-3. ตรวจ test file patterns — `*.test.*`, `*.spec.*`, `test_*.py`, `*_test.go`, `#[cfg(test)]`, `*_test.rs`, `__tests__/`
-4. ถ้า monorepo → ใช้ workspace runner (`moon run :test`, `turbo run test`, `bun run --filter '*' test`, `pnpm -r test`)
-5. ถ้าหลาย framework → รันทุกตัวที่พบ รายงานแยกกัน
-
-### 2. Run Tests
-
-> Goal: รัน tests ด้วย command ที่ถูกต้อง
-
-1. Prefer script จาก `package.json` / task runner config เสมอ (เช่น `bun run test`, `bun test`)
-2. Fallback ตาม framework:
-   - Vitest → `bunx vitest run`
-   - Jest → `bunx jest --runInBand` (serial ถ้า flaky) หรือ `bunx jest`
-   - Bun → `bun test`
-   - Node → `node --test`
-   - Python → `pytest` / `python -m pytest`
-   - Go → `go test ./...`
-   - Rust → `cargo test` หรือ `cargo nextest run`
-   - .NET → `dotnet test`
-3. ใช้ `--reporter=verbose` หรือ equivalent เมื่อต้องการ per-test results
-4. ใช้ filter/pattern เมื่อ scope ระบุ (`bunx vitest run src/foo`, `pytest tests/unit/test_x.py::test_y`, `go test ./pkg/... -run TestX`)
-5. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
-
-### 3. Classify Failures
-
-> Goal: แยก source issue กับ test issue
-
-1. จำแนกแต่ละ failure:
-   - assertion fail → ตรวจว่า expected หรือ actual ผิด
-   - error/exception → อ่าน stack trace หา file:line
-   - timeout → performance หรือ hanging async
-   - environment → missing deps, wrong cwd, missing fixtures
-2. ห้ามแก้ assertion ให้ผ่าน — ถ้า source ผิด → แก้ source (`/resolve-errors`); ถ้า test outdated → `/update-tests`
-3. ถ้า failure เดิมเกิดซ้ำ → หยุดแล้ว report แทนการวนแก้
-
-### 4. Report
-
-> Goal: รายงานผลชัดเจน
-
-1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
-2. List failures พร้อม file:line และ classification (source/test/environment)
-3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/temp/report/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
-4. ถ้ามี coverage flag → ทำ `/deep-test coverage` ต่อ
-5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
+- argument เป็น domain (`a11y`, `api`, `cli`, `component`, `contract`, `coverage`, `database`, `e2e`, `integration`, `load`, `mobile`, `mutation`, `property`, `smoke`, `visual`) → ทำ `/test-<domain>`
+- argument เป็น `all` → `/test-all`; argument เป็น `unit` → `/test-unit`
+- ไม่ระบุหรือเป็น unit scope → `/test-unit` (default)
+- หลาย signals พร้อมกันแต่ไม่ได้ระบุ `all` → `/test-all` ให้ orchestrator เลือก
 
 ## Rules
 
-### 1. Test Scope
-
-- Unit tests ทดสอบ pure functions เท่านั้น — ไม่ใช้ real database, network, หรือ file I/O
-- ใช้ mocks/stubs สำหรับ dependencies
-- แต่ละ test ต้อง independent และรันแยกได้
-
-### 2. Performance
-
-- Unit tests ต้องเร็ว (< 10ms per test โดยเฉลี่ย)
-- ไม่มี `setTimeout`/`sleep` ที่ไม่จำเป็น
-- ใช้ parallel execution ถ้า framework รองรับ
-
-### 3. Edge Cases
-
-- ทดสอบ happy path, edge cases, และ error cases
-- ทดสอบ boundary values, null/undefined/empty inputs
-- ทดสอบ parameterized cases
-
-### 4. Failure Discipline
-
-- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure
-- ห้ามแก้ test หรือ source โดยไม่มี evidence จากการตรวจสอบ
-- ถ้า failure มาจาก missing dependency → `/run-install`
-- ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ domain skills ตาม `### Test Domain Skills` dispatch table ถ้าจำเป็น
+- skill นี้เป็น dispatcher เท่านั้น — ห้าม duplicate workflow ของ `test-*` ในไฟล์นี้
+- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure (กำกับโดย `test-*` ปลายทาง)
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-watch ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 
-- Unit tests รันครบด้วย runner ที่ถูกต้อง
-- Test report แสดงผลชัดเจน พร้อม per-test status
-- Failures ถูก classify เป็น source/test/environment พร้อม file:line
-- ไม่มีการ suppress failures
+- Domain ถูก dispatch ไป `test-*` ที่ถูกต้อง — unit default, `all` → orchestrator
+- Test report persist ใน `.devin/temp/report/` (โดย `test-*` ปลายทาง)

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-rust-cli
   - deep-review
-  - run-test-all
+  - run-test
   - follow-single-responsibility
   - follow-release
 
@@ -100,7 +100,7 @@ related:
 > Goal: ตรวจสอบ TUI
 
 1. รัน `cargo build` และ `cargo test` — ใช้ `ratatui::backend::TestBackend` + `assert_buffer()` สำหรับ snapshot-test rendering
-2. ทำ `/run-test-all` ถ้ามี integration tests
+2. ทำ `/run-test all` ถ้ามี integration tests
 3. ทำ `/deep-review` ตรวจสอบ usability
 4. ทดสอบ event handling บน terminal จริง
 

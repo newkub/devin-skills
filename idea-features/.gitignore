@@ -1,4 +1,2 @@
-node_modules/
-.output/
-.tanstack/
-dist/
+node_modules
+dist

@@ -11,7 +11,7 @@ related:
   - run-release
   - run-check
   - run-build
-  - run-test-all
+  - run-test
   - run-verify
 ---
 
@@ -173,7 +173,7 @@ Latest: `@vscode/vsce@4.0.0` (verified 2026-09-16) — package `vsce` เดิ�
 - `pkg.pr.new` เหมาะกับ PR preview ไม่กระทบ npm Registry
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome

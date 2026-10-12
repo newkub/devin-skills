@@ -1,6 +1,6 @@
 ---
 name: improve-astgrep-rules
-description: หา improvements ใน ast-grep ruleset — rule quality, coverage, false positives, sgconfig — รวม findings แล้วแก้หลัง user confirm
+description: หา improvements ใน ast-grep ruleset — rule quality, coverage, false positives, sgconfig — รวม findings แล้วแก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-ตอบคำถาม "ast-grep rules ของ project นี้ improve อะไรได้บ้าง" — review `rules/` + `sgconfig.yml` เป็น prioritized findings แล้วแก้ผ่าน `/update-astgrep-rules` หลัง user confirm
+ตอบคำถาม "ast-grep rules ของ project นี้ improve อะไรได้บ้าง" — review `rules/` + `sgconfig.yml` เป็น prioritized findings แล้วแก้ผ่าน `/update-astgrep-rules` ทันที
 
 ## Scope
 
@@ -37,25 +37,25 @@ related:
 4. ตรวจ coverage gaps — deps/architecture จริงที่ยังไม่มี rule (เช่น dep ใหม่ที่เพิ่งเพิ่ม, layer ใหม่)
 5. รวบรวม prioritized list พร้อม severity และ evidence
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่ง findings ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง) — rule add/edit/regenerate ผ่าน `/update-astgrep-rules`
+1. ส่ง findings ไป `/deep-review-then-fix` (domain ที่ตรง) — rule add/edit/regenerate ผ่าน `/update-astgrep-rules`
 2. หลังแก้ → re-run `ast-grep scan` verify rules parse + findings เปลี่ยนตามคาด
 3. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domains ข้างบน
-- ไม่แก้ไขโดยไม่ได้ user confirm
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
 - rules ต้อง grounded — ห้ามเพิ่ม rule สำหรับ dep/pattern ที่ไม่มีใน project จริง
 - new/adjusted rules เริ่มที่ `severity: warning` ตาม `/update-astgrep-rules` convention — promote เป็น `error` เมื่อ codebase clean แล้วเท่านั้น
 - หลังแก้ต้อง `ast-grep scan` verify เสมอ
@@ -63,5 +63,5 @@ related:
 ## Expected Outcome
 
 - Prioritized improvement list ต่อ `rules/` + `sgconfig.yml` พร้อม evidence
-- User เลือกสิ่งที่จะแก้
+- ไม่มี confirm gate — แก้ทุก finding ทันที
 - Rules ที่แก้ scan ผ่าน — ไม่มี stale/บึ้ม rules ค้าง

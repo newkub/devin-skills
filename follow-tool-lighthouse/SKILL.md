@@ -4,6 +4,7 @@ description: ใช้ Lighthouse CLI audit หน้าเว็บเดีย
 argument-hint: "<url> [options]"
 related:
   - follow-tool-unlighthouse
+  - use-chrome-devtools
   - deep-review
   - run-dev
   - report
@@ -17,7 +18,7 @@ related:
 
 ใช้สำหรับ audit หน้าเดียว/route เฉพาะเจาะจงด้วย `lighthouse` CLI โดยตรง
 
-- Boundary: site-wide crawl ทุก route → `/follow-tool-unlighthouse`; E2E user-flow assertions → `/follow-tool-playwright`; Lighthouse ใน CI workflow → `/follow-tool-github-actions`
+- Boundary: site-wide crawl ทุก route → `/follow-tool-unlighthouse`; E2E user-flow assertions → `/follow-tool-playwright`; Lighthouse ใน CI workflow → `/follow-tool-github-actions`; audit ใน browser ที่เปิดอยู่โดยไม่ต้อง CLI (a11y/SEO/best-practices/agentic — ไม่รวม perf) → `lighthouse_audit` ใน `chrome-devtools-mcp` ตาม `/use-chrome-devtools`
 - Latest: `lighthouse@13.5.0` (verified 2026-09-28) — categories เพิ่ม `agentic-browsing` ใน v13
 - ต้องมี Chrome/Chromium ≥ v66 ในเครื่อง — หรือระบุด้วย env `CHROME_PATH`
 

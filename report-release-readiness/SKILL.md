@@ -5,7 +5,7 @@ argument-hint: "[version-or-tag]"
 related:
   - follow-release
   - deep-review
-  - run-test-all
+  - run-test
   - check-uncommit
   - check-unpush
   - report
@@ -44,7 +44,7 @@ related:
 
 > Goal: verification ครบก่อน release
 
-1. `/run-test-all` — ผ่านทั้งหมด ไม่มี skipped/failed ที่ค้าง
+1. `/run-test all` — ผ่านทั้งหมด ไม่มี skipped/failed ที่ค้าง
 2. `/run-build` — production build สำเร็จ
 3. `/run-lint` + `/run-typecheck` — clean
 4. `/run-audit` — ไม่มี critical vulnerabilities

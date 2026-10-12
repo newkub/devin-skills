@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - deep-validate
   - run-verify
-  - run-test-all
+  - run-test
   - run-check
   - run-deploy
   - follow-deploy
@@ -33,7 +33,7 @@ related:
 > Goal: ทุก check ผ่านก่อน deploy — ห้ามข้าม
 
 1. ทำ `/deep-validate` — validate หลายมิติต้องผ่าน
-2. ทำ `/run-test-all` — unit, integration, e2e ต้องเขียว
+2. ทำ `/run-test all` — unit, integration, e2e ต้องเขียว
 3. ทำ `/run-verify` — scan, format, lint, typecheck, build ผ่าน
 4. pre-ship sweep: `/check-secrets secrets-leak` (ไม่มี secrets หลุด) และไม่มี debug leftovers
 5. ทำ `/test-usage` — usage examples ใน README/docs ทำงานจริง

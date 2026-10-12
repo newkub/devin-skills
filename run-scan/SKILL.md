@@ -6,7 +6,7 @@ related:
   - deep-review
   - use-astgrep
   - update-astgrep-rules
-  - update-astgrep-rules
+  - check-code-structure
   - report
   - loop-until-complete
   - resolve-errors
@@ -60,6 +60,7 @@ related:
 - รัน scan ซ้ำหลัง apply fixes และตรวจสอบว่า code ยังทำงานได้
 - ถ้า project มี CI/CD ให้เพิ่ม scan ใน pipeline และรัน scan ก่อน commit
 - อัปเดต rules เมื่อมี patterns ใหม่ และตรวจสอบ false positives เพื่อ tune rules
+- structure scan (symbols, exports, members) ที่ไม่ต้องการ rules → ใช้ `/check-code-structure` (`sg outline`)
 
 ## Expected Outcome
 

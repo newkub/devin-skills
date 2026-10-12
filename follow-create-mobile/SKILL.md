@@ -7,6 +7,7 @@ related:
   - follow-best-practice
   - implement-features-to-mvp
   - ask-me
+  - test-mobile
 
 ---
 
@@ -40,6 +41,7 @@ Dispatch ไป skill ตาม mobile target — parent ทำ routing เท�
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /implement-features-to-mvp ถ้าจำเป็น
+- ใช้ /test-mobile verify device/emulator flows หลัง scaffold
 
 ## Expected Outcome
 

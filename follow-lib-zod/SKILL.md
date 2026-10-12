@@ -28,7 +28,14 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Migrate v3→v4 | `workflows/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames 
+| Topic | Workflow |
+|-------|----------|
+| Setup/install/version detect | `workflows/setup-zod/SKILL.md` — v3 vs v4 detect, install, tsconfig |
+| Schema design | `workflows/define-schemas/SKILL.md` — objects/unions/refinements/transforms/`z.infer` |
+| Boundary validation | `workflows/validate-data/SKILL.md` — `parse`/`safeParse`, API/env/file boundaries |
+| Error handling | `workflows/handle-errors/SKILL.md` — `ZodError`, issues, `treeifyError`, custom messages, locales |
+| Integration | `workflows/integrate-forms/SKILL.md` — Standard Schema, RHF/TanStack Form, JSON Schema/OpenAPI |
+| Migrate v3→v4 | `workflows/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames | 
 ### 1. Install Zod
 
 > Goal: ติดตั้ง Zod เวอร์ชันล่าสุด

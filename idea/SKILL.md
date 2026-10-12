@@ -25,7 +25,7 @@ related:
 
 | Topic | Skill |
 |-------|-------|
-| ไอเดีย features ใหม่/ขยาย | `/idea-features` |
+| ไอเดีย features (extends + net-new + platform) | `/idea-features` |
 | ไอเดีย improve scope ใดๆ (quick wins, strategic, Extends/New/Remove) | `/idea-improve` |
 | ตั้งชื่อไฟล์/directory สำหรับ idea | `/idea-naming` |
 | ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |

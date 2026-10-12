@@ -8,6 +8,8 @@ related:
   - implement-to-production
   - dont-over-engineer
   - report
+  - test-unit
+  - test-e2e
 ---
 
 ## Goal
@@ -110,6 +112,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 - Over-engineer solutions สำหรับ MVP
 - ไม่หยุดเมื่อ MVP ครบถ้วน
 - เพิ่ม features ตาม request โดยไม่ประเมิน impact
+- ใช้ /test-unit สำหรับ core logic และ /test-e2e verify critical user flows ก่อนสรุป MVP
 
 ## Expected Outcome
 

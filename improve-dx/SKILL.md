@@ -1,6 +1,6 @@
 ---
 name: improve-dx
-description: หา DX improvements ใน scope — project setup, CI/CD, dev server, build speed — รวม findings แล้วแก้หลัง user confirm
+description: หา DX improvements ใน scope — project setup, CI/CD, dev server, build speed — รวม findings แล้วแก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-ตอบคำถาม "DX improve/optimize อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-dx` + `review-bundle` เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "DX improve/optimize อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-dx` + `review-bundle` เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
@@ -32,28 +32,28 @@ related:
 2. ทำ `/deep-review` กับ scope นั้น domains `review-dx` + `review-bundle`
 3. รวบรวม prioritized list พร้อม severity และ evidence
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง)
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain ที่ตรง)
 2. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domains `review-dx` + `review-bundle`
-- ไม่แก้ไขโดยไม่ได้ user confirm
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
 - Prioritized improvement list จาก `/deep-review`
-- User เลือกสิ่งที่จะแก้
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`
+- ไม่มี confirm gate — แก้ทุก finding ทันที
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix`

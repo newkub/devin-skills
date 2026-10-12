@@ -16,6 +16,8 @@ related:
   - follow-create-web
   - follow-create-cli
   - follow-create-rust-cli
+  - test-api
+  - test-contract
 
 ---
 ## Goal
@@ -151,6 +153,7 @@ related:
 ## File Structure
 
 Canonical file structure + layer table: [templates/file-structure-sdk.md](templates/file-structure-sdk.md)
+- ใช้ /test-api และ /test-contract verify SDK surface กับ API contract
 
 ## Expected Outcome
 

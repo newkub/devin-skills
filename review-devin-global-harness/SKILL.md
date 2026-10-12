@@ -1,7 +1,14 @@
 ---
 name: review-devin-global-harness
 description: Review ทั้ง devin harness — skills, subagents, hooks, MCP, global rules ให้ alignment ไม่ซ้ำซ้อน
-argument-hint: "[layer|all]"
+argument-hint: "[skills|subagents|hooks|mcp|rules|broken-refs|relations|all]"
+allowed-tools:
+  - exec
+  - read
+  - grep
+  - glob
+  - find_file_by_name
+  - ask_user_question
 related:
   - update-devin-global-skills
   - follow-single-of-source
@@ -12,7 +19,6 @@ related:
   - search-skills
   - update-devin-harness
   - deep-review
-  - check-reference
   - update-references
   - use-subagents
   - simplify
@@ -58,7 +64,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 2. `subagents` → ตรวจ AGENT.md ทุกตัวใน `%APPDATA%\devin\agents`: frontmatter, sections, line count, style, safety — ใช้มาตรฐานเดียวกับ skills; รายงาน finding ต่อ agent
 3. `hooks` → ตาม `### Hooks`; `mcp` → ตาม `### Mcp`; `global rules` → ตาม `### References Integrity` ข้อ global rules — skills ที่อ้างมีจริง, ลำดับ Execute ไม่ขัดแย้ง, ไม่มี stale skill names
 
-### 4. Cross-Layer Alignment — ทำตาม ``deep-review/SKILL.md` alignment` (canonical)
+### 4. Cross-Layer Alignment — ทำตาม `deep-review/SKILL.md` `alignment` (canonical)
 > Goal: ตรวจ layers อ้างกันถูกต้อง
 
 1. `global_rules.md` อ้าง skills → ทุกชื่อมี skill จริง
@@ -79,7 +85,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 1. ทำตาม `### Refactor Guide` (plan → execute → cross-skill consistency)
 2. ระบุ SKILL.md ที่ควร refactor — เนื้อหาซ้ำ, >250 บรรทัด, ขาด sections, SRP เบลอ → รายการเป็น action items
 
-### 7. Redundancy Audit — ทำตาม ``deep-review/SKILL.md` redundancy` (canonical)
+### 7. Redundancy Audit — ทำตาม `deep-review/SKILL.md` `redundancy` (canonical)
 > Goal: ตรวจหา skills/layers ที่ซ้ำซ้อนหรือไม่จำเป็น
 
 ทำตาม `### Redundancy` — inventory → detect ×4 → recommend → user confirm → score ตาม `### Scoring`; remove/merge ต้อง user confirm เสมอ
@@ -95,8 +101,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 > Goal: ตรวจ content ที่เน่าเสื่อมตามเวลา และ domain gaps
 
 1. ทำตาม `### Context Rot` — stale content (`/deep-review` domain `usage`), incorrect content (`/check-reference`), dead weight, context bloat
-2. ทำ `/deep-review` domain `gaps` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps
-3. รวม findings เข้า report แยก section `context-rot` และ `coverage`
+2. ทำ `/deep-review` domain `gaps` — เช็คว่า domains/actions ที่ harness ตั้งใจครอบคลุม มี skill รองรับจริงหรือมี gaps — รวม findings เข้า report แยก section `context-rot` และ `coverage`
 
 ### 10. Score And Report
 > Goal: สรุป score ต่อ layer + findings + refactor plan
@@ -230,19 +235,15 @@ Categories: split (>250/หลาย resp), merge (scope ซ้อน/ซ้ำ 
 - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /idea-new-devin-global-skills, /follow-deep, /deep-review, /run-review, /follow-single-of-source ถ้าจำเป็น
-- ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment ที่ต้องแก้
-- ใช้ /check-reference, /update-devin-global-skills, /update-devin-harness สำหรับเจาะลึก layer เดียว
+- ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment; ใช้ /check-reference, /update-devin-global-skills สำหรับเจาะลึก layer เดียว
 
 ## Fix
 
-> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
-- ใช้ /use-subagents ถ้าจำเป็น
+> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings — ใช้ /use-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 
 - รายงาน Harness Review พร้อม score + grade ต่อ layer
-- findings พร้อม layer, severity, evidence, action
-- ยืนยันครบ: skills frontmatter/sections/line/style, subagents AGENT.md, hooks, MCP, global rules
+- findings พร้อม layer, severity, evidence, action — ยืนยันครบทุก layer (skills, subagents, hooks, MCP, global rules)
 - cross-layer alignment ผ่าน ไม่มี broken/orphan references
-- รายการ SKILL.md ที่ควร refactor + improve items พร้อม priority
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- รายการ SKILL.md ที่ควร refactor + improve items พร้อม priority — แนะนำ action ถัดไปผ่าน `/suggest-next-action`

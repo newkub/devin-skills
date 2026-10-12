@@ -5,7 +5,7 @@ argument-hint: "[scope] [flaky|coverage|report-flaky]"
 related:
   - deep-review
   - improve-tests
-  - run-test-all
+  - run-test
   - deep-test
   - update-tests
   - report
@@ -17,7 +17,7 @@ Review test strategy และ quality (ก่อน run/write) + วิเค�
 
 ## Scope
 
-- ใช้ก่อน `/run-test-all`, `/update-tests`, `/deep-test` — ตรวจ strategy: coverage, edge cases, isolation, pyramid balance, regression
+- ใช้ก่อน `/run-test all`, `/update-tests`, `/deep-test` — ตรวจ strategy: coverage, edge cases, isolation, pyramid balance, regression
 - ใช้หลัง test run — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action ถัดไป
 - หา improvements ที่ต้องแก้ → `/improve-tests`
 

@@ -20,7 +20,7 @@ related:
   - deep-validate
   - ask-me
   - deep-analyze
-  - validate-then-apply
+  - apply
   - report
   - report-progress
 
@@ -63,7 +63,7 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 
 > Goal: วางแผนการ merge อย่างปลอดภัย
 
-1. ทำ `/validate-then-apply` เพื่อ validate ก่อน merge
+1. ทำ `/apply` mode `validate` เพื่อ validate ก่อน merge
 2. ระบุ references ทีอ้างอิงถึง source
 3. วางแผนการ update references ไปยัง destination
 4. ถ้ามี references ซับซ้อน → ทำ `/update-references` ล่วงหน้า
@@ -123,7 +123,7 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ถ้ามี references ชี้ไปยัง source → ทำ `/update-references` ก่อนลบ
 - ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก → ทำ `/deep-validate` แล้วเลือกสิ่งทีดีทีสุด
-- ทุก merge ต้องผ่าน `/validate-then-apply` ก่อน
+- ทุก merge ต้องผ่าน `/apply` mode `validate` ก่อน
 
 ## Expected Outcome
 

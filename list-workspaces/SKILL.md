@@ -8,7 +8,7 @@ related:
   - resolve-errors
   - report
   - run-build
-  - run-test-all
+  - run-test
 ---
 
 ## Goal
@@ -122,7 +122,7 @@ related:
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 
 ## Expected Outcome
 

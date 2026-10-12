@@ -31,7 +31,7 @@ export default function Sidebar(props: Props) {
   // Re-expand everything when a new diff loads (file list identity changes)
   createEffect(() => {
     props.files.length;
-    setCollapsedDirs(new Set());
+    setCollapsedDirs(new Set<string>());
     setAllCollapsed(false);
   });
 
@@ -52,7 +52,7 @@ export default function Sidebar(props: Props) {
 
   const toggleAll = () => {
     if (allCollapsed()) {
-      setCollapsedDirs(new Set());
+      setCollapsedDirs(new Set<string>());
       setAllCollapsed(false);
     } else {
       setCollapsedDirs(new Set(allDirPaths(tree())));

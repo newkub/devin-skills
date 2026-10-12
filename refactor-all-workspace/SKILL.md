@@ -11,7 +11,7 @@ related:
   - deep-review
   - update-references
   - run-verify
-  - run-test-all
+  - run-test
   - resolve-errors
   - use-subagents
 
@@ -61,7 +61,7 @@ Refactor ทุก workspace ใน monorepo อย่างเป็นระ�
 
 > Goal: monorepo ผ่าน verify รวม
 
-1. ทำ `/run-verify` แบบ monorepo (`moon run`, `turbo run`, `pnpm --recursive`, `bun run --filter` ตามที่ตรวจพบ) + `/run-test-all` ถ้ามี test suites
+1. ทำ `/run-verify` แบบ monorepo (`moon run`, `turbo run`, `pnpm --recursive`, `bun run --filter` ตามที่ตรวจพบ) + `/run-test all` ถ้ามี test suites
 2. ตรวจไม่มี workspace ถูกข้ามหรือปัญหาค้าง — เทียบ baseline จาก step 1
 3. ไม่ผ่าน → กลับแก้ที่ workspace ที่ fail (max 3 รอบ → stop + report)
 
@@ -85,4 +85,4 @@ Refactor ทุก workspace ใน monorepo อย่างเป็นระ�
 
 - ทุก workspace ใน monorepo ผ่าน refactor ครบตาม dependency order
 - Boundaries ชัด ไม่มี circular dependencies หรือ broken references
-- ผ่าน `/run-verify` และ `/run-test-all`; รายงาน before/after ต่อ workspace ครบ
+- ผ่าน `/run-verify` และ `/run-test all`; รายงาน before/after ต่อ workspace ครบ

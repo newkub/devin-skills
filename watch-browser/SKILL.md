@@ -1,11 +1,12 @@
 ---
 name: watch-browser
-description: Watch หน้าเว็บอย่างต่อเนื่องผ่าน agent-browser MCP server — state, console, errors
+description: Watch หน้าเว็บอย่างต่อเนื่องผ่าน browser MCP server — state, console, errors
 argument-hint: "[domain|report] [url]"
 related:
   - use-agent-browser
+  - use-chrome-devtools
   - watch-browser-and-fix
-  - watch-browser-test
+  - watch-browser-and-test
   - use-mcp
   - update-devin
   - resolve-errors
@@ -14,38 +15,40 @@ related:
 
 ## Goal
 
-Watch หน้าเว็บอย่างต่อเนื่องผ่าน `agent-browser` MCP server (`agent-browser mcp`) — ตรวจจับ state changes, console messages, page errors และ capture screenshots โดยใช้ `mcp_list_tools` / `mcp_call_tool` แทน CLI โดยตรง
+Watch หน้าเว็บอย่างต่อเนื่องผ่าน browser MCP server — ตรวจจับ state changes, console messages, page errors และ capture screenshots โดยใช้ `mcp_list_tools` / `mcp_call_tool` แทน CLI โดยตรง — เลือก server ตาม Step 1 (`chrome-devtools-mcp` หรือ `agent-browser mcp`)
 
 ## Scope
 
 ใช้เมื่อต้องการ monitor หน้าเว็บผ่าน MCP protocol — เช่น watch dev server, ตรวจ visual/state changes หลังแก้ code, หรือเฝ้า console/errors ระหว่าง session
 
-- `watch-browser-and-test` เป็น alias stub ของ `watch-browser-test`; `watch-browser-and-fix` เป็น canonical merged skill (watch + console monitor + fix — merged จาก `watch-browser-fix`/`watch-browser-console`)
+- `watch-browser-test` merged เข้า `watch-browser-and-test` แล้ว — ใช้ `watch-browser-and-test` โดยตรง; `watch-browser-and-fix` เป็น canonical merged skill (watch + console monitor + fix — merged จาก `watch-browser-fix`/`watch-browser-console`)
 - ถ้าต้องการแก้ errors/console ที่พบทันที → `/watch-browser-and-fix`
 - ถ้าต้องการ analyze + improve UX/UI → `/deep-review` (domain `review-uxui`)
-- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-test`
+- ถ้าต้องการ roleplay user ทดสอบ actions/flows ทุก route → `/watch-browser-and-test`
 - ถ้าไม่มี MCP server → fallback ไป `/use-agent-browser` (CLI)
 
 ## Execute
 
 ### 1. Check MCP Server
 
-> Goal: ยืนยันว่า `agent-browser` MCP server พร้อมใช้งาน
+> Goal: เลือก browser MCP server ที่พร้อมใช้งาน — prefer `chrome-devtools-mcp` สำหรับ watch/inspect
 
-Latest: `agent-browser@0.38.1` (verified 2026-09-26)
+Latest: `chrome-devtools-mcp@1.10.1`, `agent-browser@0.38.1` (verified 2026-10-03)
 
-1. เรียก `mcp_list_servers` เพื่อหา server ชื่อ `agent-browser` (หรือชื่อที่ตั้งไว้)
-2. ถ้ายังไม่มี → ทำ `/update-devin-global-mcp` เพิ่ม server ด้วยค่า:
-   - `command`: `agent-browser`, `args`: `["mcp"]` (ต้อง `bun add -g agent-browser` ก่อน)
-   - หรือ `command`: `bunx`, `args`: `["-y", "agent-browser", "mcp"]` สำหรับ run โดยไม่ติดตั้ง global
-   - เพิ่ม `args` เป็น `["mcp", "--tools", "all"]` ถ้าต้องการ full CLI parity (default คือ profile `core`)
-3. ถ้า register ไม่ได้หรือ server ไม่ขึ้น → fallback ไป `/use-agent-browser` (CLI) หรือ `browser-preview` tool
+1. เรียก `mcp_list_servers`:
+   - มี `chrome-devtools-mcp` → ใช้ server นี้สำหรับ watch/inspect (`new_page`, `take_snapshot`, `list_console_messages`, `list_network_requests`, `take_screenshot`, `wait_for` — ดู `/use-chrome-devtools`)
+   - ต้องการ features เฉพาะ agent-browser (WebMCP, record, a11y, sessions) → ใช้ server `agent-browser` ถ้ามี
+   - ไม่มีทั้งคู่ → ทำ `/update-devin-global-mcp` เพิ่ม `agent-browser` ด้วยค่า:
+     - `command`: `agent-browser`, `args`: `["mcp"]` (ต้อง `bun add -g agent-browser` ก่อน)
+     - หรือ `command`: `bunx`, `args`: `["-y", "agent-browser", "mcp"]` สำหรับ run โดยไม่ติดตั้ง global
+     - เพิ่ม `args` เป็น `["mcp", "--tools", "all"]` ถ้าต้องการ full CLI parity (default คือ profile `core`)
+2. ถ้า register ไม่ได้หรือ server ไม่ขึ้น → fallback ไป `/use-agent-browser` (CLI) หรือ `browser-preview` tool
 
 ### 2. Discover Tools
 
-> Goal: รู้ว่า MCP server มี tools อะไรใช้ได้
+> Goal: รู้ว่า MCP server ที่เลือกมี tools อะไรใช้ได้
 
-1. เรียก `mcp_list_tools` บน server `agent-browser` เสมอก่อน call — ห้ามเดาชื่อ tool หรือ arguments
+1. เรียก `mcp_list_tools` บน server ที่เลือกจาก Step 1 เสมอก่อน call — ห้ามเดาชื่อ tool หรือ arguments (tool names ของ `chrome-devtools-mcp` ต่างจาก `agent-browser` — ดู map ที่ `/use-chrome-devtools` `references/tools.md`)
 2. map tools ที่พบกับ capabilities ที่ต้องใช้:
 
 | No. | Capability | หมายเหตุ |
@@ -84,7 +87,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 
 1. ทำตาม `workflows/report-status/SKILL.md` — timeline, errors, state changes
 2. เรียก close tool ผ่าน `mcp_call_tool` เพื่อปิด browser session
-3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `agent-browser close` ผ่าน CLI
+3. ถ้า MCP server ไม่มี close tool → ปิดด้วย `close_page` (devtools-mcp) หรือ `agent-browser close` ผ่าน CLI
 
 ### Workflows
 
@@ -103,7 +106,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 |--------|-------|
 | `fix` | `/watch-browser-and-fix` — watch + แก้ errors ที่พบ แล้ว confirm ด้วย re-capture |
 | `uxui` | `/deep-review` (domain `review-uxui`) — review UX/UI จาก screenshots/routes |
-| `test` | `/watch-browser-test` — watch + subagents roleplay user test flows |
+| `test` | `/watch-browser-and-test` — watch + subagents roleplay user test flows |
 
 1. อ่าน domain จาก argument — ถ้าไม่ระบุ → run watch flow ปกติด้านบน
 2. เรียก skill ตามตารางแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
@@ -137,7 +140,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 
 ### 5. Fallback Order
 
-- MCP server ไม่มี → `/use-agent-browser` (CLI) → `browser-preview` tool → แจ้ง user ติดตั้ง `agent-browser`
+- `chrome-devtools-mcp` ไม่มี → server `agent-browser` (MCP) → `/use-agent-browser` (CLI) → `browser-preview` tool → แจ้ง user ติดตั้ง `agent-browser`
 - daemon/session error → retry ด้วย `agent-browser close --all` แล้วเปิดใหม่ผ่าน MCP
 
 ### 6. Graceful Shutdown
@@ -197,7 +200,7 @@ Latest: `agent-browser@0.38.1` (verified 2026-09-26)
 
 ## Expected Outcome
 
-- watch หน้าเว็บผ่าน `agent-browser` MCP server ได้ต่อเนื่อง
+- watch หน้าเว็บผ่าน browser MCP server ที่พร้อมใช้ (`chrome-devtools-mcp` หรือ `agent-browser`) ได้ต่อเนื่อง
 - ตรวจจับ state changes, console messages และ errors ใหม่พร้อม evidence
 - report สรุป delta ที่พบและ screenshots ที่เก็บ
 - session ถูก cleanup และมี fallback path เมื่อ MCP ไม่พร้อม

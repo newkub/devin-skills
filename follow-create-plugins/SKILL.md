@@ -7,6 +7,7 @@ related:
   - follow-create-web
   - follow-create-cli
   - follow-create-mcp
+  - follow-create-web-mcp
   - deep-review
   - update-devin-global-skills
   - follow-best-practice
@@ -53,6 +54,7 @@ related:
 | `vite` | `/follow-create-vite-plugin` — Vite plugin (hooks, transform, HMR) |
 | `vitest` | `/follow-create-vitest-plugin` — Vitest plugin (reporters, environment) |
 | `vscode`, `vs-code` | `/follow-create-vscode-extensions` — VS Code extension |
+| `webmcp`, `web-mcp` | `/follow-create-web-mcp` — WebMCP tools บน web page (page-provided agent tools) |
 | `zed` | `/follow-create-zed-extensions` — Zed extension |
 
 1. ทำ `/deep-research` + `/follow-best-practice` สำหรับ target ที่เลือก ตาม conventions ใน `/update-devin-global-skills` (ทำใน target skill ที่ dispatch ไป)
@@ -70,6 +72,7 @@ related:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /follow-create-mcp ถ้าจำเป็น
+- ใช้ /follow-create-web-mcp ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 

@@ -9,6 +9,8 @@ related:
   - setup-cicd
   - resolve-errors
   - follow-tool-mise
+  - follow-tool-fnox
+  - follow-tool-packslip
   - research-setup-integrations
 ---
 
@@ -21,7 +23,7 @@ related:
 ครอบคลุม installation, KDL spec, `usage generate` subcommands, integrations, และ validation
 
 - Boundary: ใช้ usage เมื่อต้องการ spec-driven CLI (single `usage.kdl` → completions/docs/SDK); ถ้า project ใช้ framework-native spec อยู่แล้ว (clap/cobra/commander) ให้ generate integration แทนเขียน parser เอง — ไม่ใช่ npm package `usage` (ตัวจริงคือ `usage-cli` บน crates.io)
-- Latest: `usage@6.11.1` (usage CLI โดย jdx, verified 2026-09-26)
+- Latest: `usage@6.12.0` (usage CLI โดย jdx — usage-rs/usage-go + spec + generators, verified 2026-10-02)
 
 ## Execute
 

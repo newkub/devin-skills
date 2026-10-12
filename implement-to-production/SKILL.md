@@ -1,6 +1,6 @@
 ---
 name: implement-to-production
-description: แปลง TODO, MOCK, FAKE, placeholder เป็น production code จริง end-to-end
+description: แปลง TODO, MOCK, FAKE, placeholder เป็น production code จริง end-to-end — รวม dead UI ให้ใช้งานได้จริงทุกจุด และ improve ครอบคลุม scope
 argument-hint: "[setup-infra|deploy-production] [scope-or-plan]"
 related:
   - deep-review
@@ -16,7 +16,25 @@ related:
   - follow-tdd
   - use-subagents
   - refactor
-  - refactor-to-srp
+  - follow-review
+  - follow-architecture
+  - follow-lib-drizzle
+  - follow-lib-effect-ts
+  - follow-lib-orpc
+  - follow-lib-tanstack-ecosystem
+  - implement-features-to-mvp
+  - update-todo-md
+  - use-astgrep
+  - update-references
+  - follow-tool-knip
+  - test-e2e
+  - test-usage
+  - run-audit
+  - dont-over-engineer
+  - improve
+  - improve-tests
+  - update-tests
+  - watch-browser-and-test
 
 ---
 
@@ -31,6 +49,9 @@ related:
 
 แปลงทุก unfinished features เป็น production code: schema, data, API, UX/UI, external services พร้อม infrastructure จริง end-to-end — ไม่รวมงานที่ควรเริ่มจาก architecture ใหม่ (ใช้ `/deep-review` ก่อน)
 
+- UI ที่ดูเสร็จแต่ใช้ไม่ได้จริง นับเป็น placeholder เช่นกัน — dead buttons, `onClick={() => {}}`, `href="#"`, `disabled` ถาวรโดยไม่มีเหตุผล, dialogs/menus/tabs ที่ไม่เปิด, forms ที่ submit ไม่ได้, 'coming soon' text — ต้อง wire ให้ทำงานจริงหรือลบออก
+- ครอบคลุม improvement รอบ scope งาน ไม่ใช่แค่ TODO items — หลัง implement ต้องผ่าน `/improve` domains ที่เกี่ยวข้อง (uxui, error handling, consistency, stability, a11y)
+
 ## Execute
 
 ### 1. Review And Baseline
@@ -41,14 +62,14 @@ related:
 2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values — ถ้า codebase ใหญ่ → spawn `subagents/gap-scanner.md` (read-only) คืน gap inventory table แทนการสแกนเอง และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/temp/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
-5. อ่าน `refactor/SKILL.md` `## Rules` และ `/refactor-to-srp` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน: 1 unit = 1 reason to change, ≤250 บรรทัด, preserve public API, minimal change
+5. อ่าน `refactor/SKILL.md` `## Rules` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน (รวม `/refactor-to-srp`): 1 unit = 1 reason to change, ≤250 บรรทัด, preserve public API, minimal change
 
 ### 2. Review Architecture
 
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
 1. ทำ `/create-plan-in-dot-devin` เสมอ เพื่อวางแผน implement อย่างละเอียด (ถ้ามี plan file อยู่แล้วให้อ่านและทำตาม) แล้วทำ `/deep-review` เพื่อดู boundary, layer, data flow
-2. ทำ `/refactor` architecture scope เมื่อ implement ใน `packages/`, `crates/` หรือ `apps/` เพื่อ apply pattern convention ของ directory นั้น (`packages/`/`crates/` → clean, `apps/` → layered — target table ใน step 5)
+2. ทำ `/refactor` architecture scope เมื่อ implement ใน `packages/`, `crates/` หรือ `apps/` เพื่อ apply pattern convention ของ directory นั้น (`packages/`/`crates/` → clean, `apps/` → layered — dispatch table ใน `/follow-architecture`)
 3. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
 4. ระบุ critical path: schema → data → API → UX/UI
 
@@ -69,26 +90,28 @@ related:
 1. สร้าง schema สำหรับ data models ที่ขาด, validation schemas และ types
 2. ตรวจ type flow: schema → validation schema → API types → UI types
 3. สร้าง migrations ด้วย dry-run ก่อน apply — ถ้า destructive ต้อง user confirm
-4. แทนที่ mock data ด้วย real queries — implement repository/queries
+4. แทนที่ mock data ด้วย real queries — implement repository/queries; ถ้า project ใช้/เลือก ORM → ทำ `/follow-lib-drizzle` สำหรับ schema, migrations, queries (ORM อื่น → `/refactor` orm scope)
 5. สร้าง seed script สำหรับ test/dev
 6. ถ้า migrations/seed fail → `/resolve-errors` ก่อนดำเนินต่อ
 
 ### 5. Implement API And UX/UI Layer
 
-> Goal: Implement API handlers และเชื่อม UX/UI เข้ากับ API จริง
+> Goal: Implement API handlers และเชื่อม UX/UI เข้ากับ API จริง — ทุก interactive element ใช้งานได้จริง end-to-end
 
-1. Implement API handlers ที่ query data source จริง พร้อม validation, auth middleware และ rate limit
+1. Implement API handlers ที่ query data source จริง พร้อม validation, auth middleware และ rate limit — ถ้า project ใช้ oRPC → ทำ `/follow-lib-orpc` (contracts, procedures, typed errors); domain services/error handling ด้วย Effect → ทำ `/follow-lib-effect-ts`
 2. ตรวจ API types ตรงกับ schema และ validation schemas
-3. แทนที่ mock data ใน components ด้วย real API calls พร้อม loading, error, empty states
+3. แทนที่ mock data ใน components ด้วย real API calls — เชื่อมผ่าน lib ของ project: TanStack → ทำ `/follow-lib-tanstack-ecosystem` (`Query` = server state, `Form` = forms+validation, `Store` = client state)
 4. Implement form validation ด้วย validation schemas ที่ตรงกับ API และเชื่อม auth UI กับ auth service จริง
-5. ถ้าเหมาะสม → implement optimistic updates; ถ้า validation fail → `/resolve-errors`
+5. Audit UI ให้ใช้งานได้จริงทุกจุด — ทุก button/link/nav/menu/tab/dialog/dropdown ต้องทำงาน end-to-end: ไม่มี `onClick={() => {}}`, `href="#"`, `disabled` ถาวรโดยไม่มีเหตุผล, 'coming soon', `alert()` placeholder — wire เข้า real action หรือลบออก
+6. ครบทุก UI state — loading, error (พร้อม retry), empty, success, disabled-during-submit — ทุก form submit ได้จริงและ feedback ชัดเจน
+7. ถ้าเหมาะสม → implement optimistic updates; ถ้า validation fail → `/resolve-errors`
 
 ### 6. Convert TODOs And Placeholders
 
 > Goal: ลบ TODO/FIXME/HACK และ placeholders
 
 1. อ่าน `TODO.md` ใน workspace โดยตรงเพื่อรวบรวม pending items ก่อน implement (หรือ `/update-todo-md` เพื่ออ่าน/enhance prompt)
-2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-astgrep` หรือ `grep` — และทำ `/check-secrets hardcoded-values` หา hardcoded URLs, credentials, magic strings
+2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-astgrep` หรือ `grep` — รวม dead-UI markers (`onClick={() => {}}`, `href="#"`, `disabled` ถาวร, `alert(`, 'coming soon') — และทำ `/check-secrets hardcoded-values` หา hardcoded URLs, credentials, magic strings
 3. ถ้ามี `TODO.md` → ทำตาม `references/implement-todo-md.md`
 4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้ — items ที่ independent กันหลายตัว → spawn `subagents/feature-implementer.md` ทีละ item ขนานกัน (ส่ง contracts จากขั้น 4-5 ให้)
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
@@ -117,26 +140,28 @@ related:
 
 > Goal: ปรับปรุงคุณภาพโค้ด ตรวจ references และ cleanup
 
-1. ทำ `/refactor` + `/refactor-to-srp` เสมอหลัง implementation เสร็จ — ลด long files, SRP issues (ทุก unit ที่สร้าง/แตะ = 1 reason to change) และ import/exports ให้ผ่าน refactor rules ที่อ่านไว้ตอน step 1
-2. ทำ `/update-references` ถ้ามี move/rename/delete
-3. ทำ `/follow-tool-knip` — พิจารณาลบหรือ implement dead code ที่พบ
-4. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
-5. ทำ `/update-todo-md` ถ้า TODO.md items เปลี่ยน
+1. ทำ `/refactor` เสมอหลัง implementation เสร็จ — ลด long files, SRP issues (`/refactor-to-srp` — ทุก unit ที่สร้าง/แตะ = 1 reason to change) และ import/exports ให้ผ่าน refactor rules ที่อ่านไว้ตอน step 1
+2. ทำ `/improve` ให้ครอบคลุม scope งาน — หา improvements ในไฟล์ที่แตะและระบบที่เกี่ยวข้อง (uxui, error handling, consistency, stability, a11y ตาม context) แล้วแก้ผ่าน domain skills — ไม่จำกัดแค่ TODO items
+3. ทำ `/update-references` ถ้ามี move/rename/delete
+4. ทำ `/follow-tool-knip` — พิจารณาลบหรือ implement dead code ที่พบ
+5. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
+6. ทำ `/update-todo-md` ถ้า TODO.md items เปลี่ยน
 
 ### 9. Verify, Rollback Plan, And Finalize
 
 > Goal: code ผ่าน validation พร้อม rollback plan
 
-1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify
+1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify; test gaps ที่เจอระหว่างทาง → `/improve-tests` (review-test + review-coverage findings) แล้วเขียน/แก้ specs ผ่าน `/update-tests`
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. pre-ship sweep: scan debug leftovers ด้วย `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` ยืนยันไม่มี secrets หลุด, และ `/run-audit` ตรวจ dependency vulnerabilities
-5. ทำ `/test-usage` เพื่อทดสอบ usage examples ใน `README.md`, docs และ `package.json` scripts ว่าทำงานได้จริงก่อน ship
-6. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
-7. ถ้างานซับซ้อนหรือหลาย workspace → ทำ deep pass เพิ่ม: front-load `/deep-thinking`, `/deep-impact` สำหรับ high-impact changes, จัดลำดับ critical path (schema → data → API → UX) และกำหนด rollback plan ก่อนแต่ละ batch
-8. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
-9. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
-10. ทำ `/suggest-next-action`
+5. ทำ `/watch-browser-and-test` แบบครบทุก route — dispatch user-roleplay subagents ทุก route ใน app (ไม่ใช่แค่ route ที่แตะ): ทุก interactive element, forms valid + invalid, flows หลัก, error/empty/loading states พร้อม evidence; จากนั้น codify flows ที่ผ่านเป็น Playwright suite ผ่าน `/test-e2e` — Playwright report คือ authoritative result
+6. ทำ `/test-usage` เพื่อทดสอบ usage examples ใน `README.md`, docs และ `package.json` scripts ว่าทำงานได้จริงก่อน ship
+7. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
+8. ถ้างานซับซ้อนหรือหลาย workspace → ทำ deep pass เพิ่ม: front-load `/deep-thinking`, `/deep-impact` สำหรับ high-impact changes, จัดลำดับ critical path (schema → data → API → UX) และกำหนด rollback plan ก่อนแต่ละ batch
+9. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
+10. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
+11. ทำ `/suggest-next-action`
 
 ### Workflows
 
@@ -171,6 +196,7 @@ related:
 - ไม่มี mock implementations ใน production code
 - ไม่ใช้ simulated delay หรือ in-memory stores แทน real services
 - ไม่ silently fall back ไป mock data
+- UI ที่ render ได้แต่ใช้ไม่ได้ = mock — ทุก interactive element ต้องทำงานจริงหรือถูกลบออก ไม่มี dead buttons/no-op handlers
 
 ### 2. Type And Validation Flow
 
@@ -186,7 +212,7 @@ related:
 
 ### 4. Minimal And Maintainable
 
-- อ่าน `/refactor` rules และ `/refactor-to-srp` ก่อนลงมือ implement เสมอ — และทำ `/refactor` + `/refactor-to-srp` หลัง implement เสร็จเสมอ (step 8) ไม่ข้าม
+- อ่าน `/refactor` rules ก่อนลงมือ implement เสมอ — และทำ `/refactor` (`/refactor-to-srp`) หลัง implement เสร็จเสมอ (step 8) ไม่ข้าม
 - ทำ `/dont-over-engineer`
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 - ไฟล์ไม่เกิน 250 บรรทัด
@@ -198,8 +224,10 @@ related:
 
 ## Expected Outcome
 
-- ไม่มี TODO/MOCK/placeholder ใน production code
+- ไม่มี TODO/MOCK/placeholder ใน production code — รวม dead UI ทุกจุด
 - schema, validation, types, API, UX/UI สมบูรณ์และเชื่อมต่อกัน
+- ทุก interactive element ใช้งานได้จริง end-to-end — ผ่าน click-through จริงใน browser
+- improvements รอบ scope ถูกหาและแก้ครอบคลุมผ่าน `/improve`
 - infrastructure พร้อม production: security, observability, resilience
 - ผ่าน `/run-test all` และ `/run-verify`
 - มี rollback plan

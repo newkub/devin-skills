@@ -1,5 +1,5 @@
 ---
-name: follow-coverage
+name: improve-coverage
 description: ทำให้ครอบคลุม ตรวจและเติมส่วนที่ขาดใน content skill และ code
 argument-hint: "[scope]"
 related:
@@ -10,6 +10,7 @@ related:
   - use-scripts
   - check-reference
   - run-test
+  - test-coverage
 
 ---
 
@@ -98,9 +99,9 @@ related:
 
 ### 2. Differentiate From Review
 
-- `follow-coverage` เติมส่วนที่ขาด (implement)
+- `improve-coverage` เติมส่วนที่ขาด (implement)
 - `deep-review` วิเคราะห์ quality ของ content (review)
-- ใช้ `follow-coverage` ก่อน แล้วใช้ `deep-review` ตรวจทีหลังได้
+- ใช้ `improve-coverage` ก่อน แล้วใช้ `deep-review` ตรวจทีหลังได้
 
 ### 3. Content Quality
 
@@ -116,6 +117,7 @@ related:
 - Minimal changes เสมอ ไม่ rewrite ทั้งไฟล์ถ้าเปลี่ยนเฉพาะส่วน
 - ใช้ /deep-test coverage ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
+- ใช้ /test-coverage วัด coverage จริงแล้ววนเติม tests จนถึง target
 
 
 ## Expected Outcome

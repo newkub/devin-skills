@@ -23,6 +23,19 @@ related:
 
 ## Execute
 
+### Workflows
+
+> Goal: dispatch ไปยัง workflow ตาม task
+
+| Topic | Workflow |
+|-------|----------|
+| `setup`, `install`, `scaffold` | `workflows/setup-solid/SKILL.md` — vite-plugin-solid, JSX config, render root |
+| `component`, `props`, `control-flow` | `workflows/build-components/SKILL.md` — render-once, `splitProps`, `<For>`/`<Show>`/`<Switch>` |
+| `signal`, `store`, `memo`, `state` | `workflows/manage-state/SKILL.md` — `createSignal`, `createStore`, `createMemo`, `batch` |
+| `async`, `resource`, `suspense`, `fetch` | `workflows/handle-async/SKILL.md` — `createResource`, `Suspense`, `useTransition`, `lazy` |
+| `test`, `testing-library` | `workflows/test-solid/SKILL.md` — vitest, `@solidjs/testing-library`, `createRoot` |
+| `migrate`, `2.0`, `upgrade` | `workflows/migrate-solid-2/SKILL.md` — Solid 1.x → 2.0 incremental migration |
+
 ### 1. Setup And Components
 
 > Goal: โครงสร้าง component ถูกต้องตาม Solid.js mental model

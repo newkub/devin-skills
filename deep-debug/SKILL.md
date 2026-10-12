@@ -3,7 +3,7 @@ name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
 argument-hint: "[scope]"
 related:
-  - validate-then-apply
+  - apply
   - check-git-logs
   - analyze-root-cause-analysis
   - resolve-errors
@@ -12,7 +12,7 @@ related:
   - report-progress
   - suggest-next-action
   - run-check
-  - run-test-all
+  - run-test
   - run-until-pass
 ---
 
@@ -86,7 +86,7 @@ related:
 
 > Goal: แก้น้อยที่สุดที่จบ root cause แล้ว verify ว่าไม่ทำลายอย่างอื่น
 
-1. ทำ `/validate-then-apply` เพื่อ validate ก่อนแก้
+1. ทำ `/apply` mode `validate` เพื่อ validate ก่อนแก้
 2. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
 3. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
 4. ทำ `/run-test` เพื่อยืนยันว่า fix ใช้งานได้
@@ -120,7 +120,7 @@ related:
 - ห้ามแก้ symptom — ต้องถึง root cause
 - ห้าม bypass — ไม่ใช้ `@ts-ignore`, `eslint-disable`, หรือ try-catch ซ่อน error
 - ต้อง reproduce ได้ก่อนแก้
-- ทุก fix ต้องผ่าน `/validate-then-apply` ก่อน apply
+- ทุก fix ต้องผ่าน `/apply` mode `validate` ก่อน apply
 
 ### 2. Debug Strategy
 
@@ -153,7 +153,7 @@ related:
 - ถ้าเกินเวลา → ทำ `/deep-thinking` หรือ `/deep-research`
 - ถ้าหา root cause ไม่ได้หลังพยายาม 3 รอบ → ทำ `/deep-thinking` หรือขอความช่วยเหลือ
 - ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 - ใช้ /run-until-pass ถ้าจำเป็น
 - alias stub: `/follow-debugging` — forward มาที่ skill นี้
 

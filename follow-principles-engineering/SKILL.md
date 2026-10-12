@@ -5,6 +5,7 @@ argument-hint: "[file]"
 related:
   - refactor
   - deep-review
+  - check-code-structure
   - suggest-next-action
 ---
 
@@ -35,7 +36,8 @@ related:
 
 1. อ่านไฟล์เป้าหมายทั้งหมด
 2. ตรวจสอบ structure, logic, และ naming match กับ principle หรือไม่
-3. ทำ `/deep-review` สำหรับปรับปรุง naming ให้ match กับ principle
+3. ทำ `/check-code-structure` (`sg outline`) เก็บ objective evidence — SRP = top-level symbols ต่อไฟล์, members ต่อ type/class
+4. ทำ `/deep-review` สำหรับปรับปรุง naming ให้ match กับ principle
 
 ### 3. Analyze Violations
 

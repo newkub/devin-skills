@@ -12,7 +12,6 @@ related:
   - run-test
   - run-verify
   - deep-validate
-  - run-test-all
   - follow-tool-hk
 ---
 
@@ -167,7 +166,7 @@ related:
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

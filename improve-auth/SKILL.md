@@ -1,9 +1,10 @@
 ---
 name: improve-auth
-description: หา auth improvements ใน scope — sessions, tokens, OAuth, MFA, RBAC, secrets — แก้หลัง user confirm
+description: หา auth improvements ใน scope — sessions, tokens, OAuth, MFA, RBAC, secrets — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
+  - improve-rbac
   - improve-security
   - deep-review
   - deep-review-then-fix
@@ -14,13 +15,14 @@ related:
 
 ## Goal
 
-ตอบคำถาม "auth improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domain `review-auth` เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "auth improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domain `review-auth` เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
 ใช้เมื่อ user ถามว่า scope นี้ "authentication/authorization ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-auth` — sessions, tokens, OAuth flows, MFA, password policy, RBAC/ABAC matrix, secrets handling, audit logging, account recovery
+- scope เจาะ RBAC/permissions/roles (authz + role-based UI) → `/improve-rbac`
 - findings ที่เป็น general security (injection, headers, supply chain) → `/improve-security` แทน
 
 ## Execute
@@ -33,30 +35,30 @@ related:
 2. ทำ `/deep-review` กับ scope นั้น domain `review-auth`
 3. รวบรวม prioritized list พร้อม severity และ evidence — auth findings ส่วนใหญ่เป็น Critical/High ให้เรียง P0 ก่อน
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain `review-auth`)
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain `review-auth`)
 2. Auth changes ต้องมี tests ครอบ authz matrix — ห้าม relax access control โดยไม่มี test
 3. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domain `review-auth`
-- ไม่แก้ไขโดยไม่ได้ user confirm
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
 - ห้าม bypass/weaken auth เพื่อให้ test ผ่าน
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
 - Prioritized auth improvement list จาก `/deep-review`
-- User เลือกสิ่งที่จะแก้
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix` พร้อม authz test coverage
+- ไม่มี confirm gate — แก้ทุก finding ทันที
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix` พร้อม authz test coverage

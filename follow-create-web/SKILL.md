@@ -4,12 +4,16 @@ description: เลือกและสร้าง web project ตามปร
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
+  - follow-create-web-mcp
   - deep-review
   - follow-lib-unocss
   - follow-robots-txt
   - follow-design-system
   - follow-service-cloudflare
+  - follow-tool-devframe
   - run-dev
+  - test-component
+  - test-e2e
 
 ---
 ## Goal
@@ -21,6 +25,7 @@ related:
 - รับ requirement และระบุประเภท web: landing, saas, paas
 - ส่งต่องานสร้าง project ไปยัง skill ที่เหมาะสม
 - ไม่ลงมือ implement เองโดยตรง
+- เพิ่ม WebMCP tools ให้เว็บที่มีอยู่ (page-provided agent tools) → `/follow-create-web-mcp`
 
 ### Framework Skills
 
@@ -87,7 +92,13 @@ related:
 - ใช้ `environment variables` สำหรับ non-sensitive config
 - ถ้ามี destructive changes → dry run ก่อน
 
-### 4. Formatting
+### 4. Route Structure
+
+- โครง `src/routes/` mirror URL จริง — folder = path segment (`settings/` → `/settings/*`, `business/$id.tsx` → `/business/:id`)
+- ใช้ `(group)` เฉพาะเมื่อเป็น pathless layout/guard boundary ที่แบก `route.tsx` ร่วมของหลาย route (เช่น `(authed)` ครอบ route ที่ต้อง login) — 1 group = 1 layout boundary
+- ห้ามใช้ `(group)` เพื่อจัดไฟล์อย่างเดียวโดยไม่มี `route.tsx` — ถ้าไม่มี layout ร่วมให้ flatten ออกตาม URL
+
+### 5. Formatting
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, commands, skill names
@@ -101,6 +112,9 @@ related:
 - ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /follow-create-plugins ถ้าจำเป็น
+- ใช้ /follow-create-web-mcp ถ้าจำเป็น
+- ใช้ /follow-tool-devframe ถ้าเว็บต้องการ devtools (inspector/analyzer)
+- ใช้ /test-component สำหรับ component tests และ /test-e2e สำหรับ user flows
 
 ## Expected Outcome
 

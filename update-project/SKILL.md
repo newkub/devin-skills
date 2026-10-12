@@ -3,10 +3,15 @@ name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
 argument-hint: "[scope]"
 related:
+  - follow-tasks
+  - follow-monorepo
   - update-config
   - update-dot-devin
   - update-docs
   - update-astgrep-rules
+  - update-gitignore
+  - update-readme-md
+  - update-agents-md
   - update-tests
   - update-specs
   - update-examples
@@ -14,6 +19,7 @@ related:
   - update-github-metadata
   - update-version-to-latest
   - keepup-source-code
+  - use-subagents
   - deep-review
 
 ---
@@ -34,8 +40,9 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 
 > Goal: เช็ค git log ล่าสุดของทุก workspace
 
-1. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status
-2. ทำ `/all-workspace` เพื่อระบุทุก workspace
+1. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status และ `/follow-monorepo` เพื่อ sync conventions
+2. ทำ `/follow-tasks` เพื่อติดตาม update checklist
+3. ทำ `/all-workspace` เพื่อระบุทุก workspace
 3. สำหรับแต่ละ workspace:
    - รัน `git log --oneline -5` เพื่อดู commit ล่าสุด
    - รัน `git diff HEAD~1 --stat` เพื่อดูไฟล์ที่เปลี่ยน
@@ -86,7 +93,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-gitignore` เพื่อ sync `.gitignore`
    - `/deep-review` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
-   - `/update-contributing-md`
+   - `/update-contributing`
 6. ทำ `/deep-review` เพื่อ sync config ทั้งหมด
 7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
 8. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน

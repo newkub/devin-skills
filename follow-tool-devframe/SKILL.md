@@ -46,8 +46,8 @@ related:
 
 1. สร้าง `devframe.ts` export default `defineDevframe({ ... })` จาก `devframe`
 2. ระบุ required fields: `id` (kebab-case), `name`, `version`, `packageName`, `importMetaUrl: import.meta.url`, `homepage`, `description`, `setup(ctx)`
-3. ใส่ `icon` (Iconify เช่น `ph:gauge-duotone`), `clientAssets` (path หรือ `{ package, version }`), `basePath` ถ้าต้อง override
-4. ตั้ง `cli` defaults ถ้า ship CLI: `command`, `port`, `portRange`, `open`, `configure(cli)`, `flags` ผ่าน `defineCliFlags`
+3. ใส่ `icon` (Iconify เช่น `ph:gauge-duotone`), `clientAssets` (path หรือ `{ package, version }`), `basePath` ถ้าต้อง override, `services` (wire services ที่ consume — `{ package, version? }`), `capabilities` (per-runtime `{ dev?, build? }` flags), `rpc.snapshot` (opt RPC ของ devframe อื่นเข้า static dump), `duplicationStrategy` (`warn`/`silent`/`throw`/`duplicate` — hub เท่านั้น)
+4. ตั้ง `cli` defaults ถ้า ship CLI: `command`, `port`, `portRange`, `open` (boolean หรือ string = path), `configure(cli)`, `flags` ผ่าน `defineCliFlags` — parsed bag อ่านได้จาก `setup(ctx, { flags })` arg ที่สอง
 5. ใน `setup(ctx)` ใช้ `const my = ctx.scope('<id>')` เสมอ — auto-namespace ทุก RPC id, shared-state key, channel
 6. Gate runtime-specific work ด้วย `ctx.mode` (`'dev'` watchers / `'build'` static dump)
 
@@ -72,6 +72,7 @@ related:
 3. ใช้ `ctx.rpc.streaming.create<T>('<id>:channel', { replayWindow })` สำหรับ chunk feeds (ดู `references/apis.md`)
 4. ใช้ `my.settings` (persisted store) สำหรับ tool settings; `ctx.staticConfig` สำหรับ boot-time config จาก connection handshake
 5. ใช้ `ctx.host.getStorageDir(scope)` — `workspace` (committable), `project` (per-checkout), `global` (per-user)
+6. Host surfaces อื่นบน `ctx`: `ctx.views.hostStatic` (serve static files จาก `setup`), `ctx.agent` (expose tools/resources ให้ coding agents), `ctx.diagnostics` (namespaced diagnostics), `ctx.rpc.addFunctions` (batch register เช่นภายใต้ `mode === 'build'`)
 
 ### 5. Client Assets (SPA)
 
@@ -140,8 +141,8 @@ related:
 
 ### 4. Version Notes
 
-- Latest stable: `devframe@1.0.0` (released 2026-09-16, verified 2026-09-18)
-- `@devframes/*` kits ตาม version เดียวกัน (`1.0.0`); `@vitejs/devtools-kit@0.7.x` เป็น adapter แยก
+- Latest stable: `devframe@1.2.1` (verified 2026-10-06)
+- `@devframes/*` kits ตาม version เดียวกัน (`1.2.x`); `@vitejs/devtools-kit@0.7.x` เป็น adapter แยก
 - Docs fetch raw markdown ได้ทุกหน้า: `https://devfra.me/raw/<path>.md`, full docs `https://devfra.me/llms-full.txt` (ดู `references/apis.md`)
 - ตรวจ `package.json` + `/deep-review` ก่อนเลือก API — spec อาจ drift หลัง 1.0
 

@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-ตอบคำถาม "docs improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — ครอบคลุม docs ทั้งหมด (`README`, `*.md`, docs site, guides) — รวม findings จาก `/deep-review` domain `review-docs` เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "docs improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — ครอบคลุม docs ทั้งหมด (`README`, `*.md`, docs site, guides) — รวม findings จาก `/deep-review` domain `review-docs` เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
@@ -35,18 +35,18 @@ related:
 2. ทำ `/deep-review` กับ scope นั้น domain `review-docs`
 3. รวบรวม prioritized list พร้อม severity และ evidence
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain `review-docs`)
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain `review-docs`)
 2. Findings เกี่ยวกับ writing quality/clarity ของ `.md` → ส่งต่อ `/improve-writing`
 3. Docs restructure ใหญ่ → ทำ `/create-plan-in-dot-devin` หรือ `/update-docs`
 4. ทำ `/suggest-next-action` หลังแก้ครบ
@@ -54,12 +54,12 @@ related:
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domain `review-docs`
-- ไม่แก้ไขโดยไม่ได้ user confirm
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
 - Writing quality issues → `/improve-writing` เสมอ ไม่แก้ใน skill นี้
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
 - Prioritized docs improvement list จาก `/deep-review`
-- User เลือกสิ่งที่จะแก้
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`; writing issues ผ่าน `/improve-writing`
+- ไม่มี confirm gate — แก้ทุก finding ทันที
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix`; writing issues ผ่าน `/improve-writing`

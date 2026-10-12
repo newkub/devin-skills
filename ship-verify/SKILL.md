@@ -9,7 +9,7 @@ related:
   - deep-review-then-fix
   - deep-validate
   - update-tests
-  - run-test-all
+  - run-test
   - run-dev
   - test-usage
   - git-commit-and-push
@@ -18,6 +18,7 @@ related:
   - update-project
   - follow-improve
   - follow-optimize
+  - test-smoke
 ---
 
 ## Goal
@@ -59,7 +60,7 @@ Verification gate เดียวก่อน ship งานใดๆ — ตร
 > Goal: tests ครบและผ่านจริง
 
 1. ทำ `/update-tests` — test specs ครบทุก layer ตาม changes
-2. ทำ `/run-test-all` — ทุก suite ต้องผ่าน; fail → แก้ root cause แล้วรันใหม่
+2. ทำ `/run-test all` — ทุก suite ต้องผ่าน; fail → แก้ root cause แล้วรันใหม่
 
 ### 5. Runtime And Usage
 
@@ -82,6 +83,7 @@ Verification gate เดียวก่อน ship งานใดๆ — ตร
 - ทุก gate ต้องผ่านจริง — ห้ามข้าม gate ที่ fail; fix loop สูงสุด 3 รอบแล้ว stop + report
 - ข้าม gate ที่ไม่ apply ได้เฉพาะเมื่อ project ไม่มี artifact นั้นจริง (เช่น ไม่มี dev server → ข้าม `/run-dev`) — ต้องระบุเหตุผลใน report
 - ห้าม duplicate verify steps ใน skill อื่น — reference `/ship-verify` เท่านั้น
+- ใช้ /test-smoke เป็น post-build sanity gate บน critical paths
 
 ## Expected Outcome
 

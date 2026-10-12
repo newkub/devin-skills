@@ -16,6 +16,7 @@ related:
   - review
   - report
   - suggest-next-action
+  - check-code-structure
 
 ---
 
@@ -223,7 +224,7 @@ related:
 | `review-business` | Review business logic ครอบคลุมทุก dimension พร้อม aggregate findings และ review score |
 | `review-by-stakeholder` | Review project จากมุมมอง stakeholder |
 | `review-cli` | Review CLI/TUI application แบบเจาะลึก |
-| `review-code-quality` | Review คุณภาพ code — quality, bug-prone patterns, correctness, time complexity, tech debt, quality score |
+| `review-code-quality` | Review คุณภาพ code — quality, bug-prone patterns, correctness, time complexity, tech debt, quality score — structure metrics (symbols, exports, members, SRP, cohesion) ผ่าน `/check-code-structure` (`sg outline`) |
 | `review-compliance` | Review compliance ทุก dimension พร้อม aggregate findings และ review score |
 | `review-config` | Review configuration files — drift, missing, duplicate, extends config / deps catalog opportunities |
 | `review-cost` | ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services, idle resources |
@@ -301,7 +302,7 @@ Catalog review domains ทั้งหมดสำหรับ `deep-review` —
 
 | No. | Domain | ตรวจอะไร | Condition |
 |-----|--------|----------|-----------|
-| 1 | `review-code-quality` | code quality, naming, bug-prone patterns, correctness | ทุก workspace ที่มี source |
+| 1 | `review-code-quality` | code quality, naming, bug-prone patterns, correctness — structure metrics ผ่าน `/check-code-structure` (`sg outline`) | ทุก workspace ที่มี source |
 | 2 | `review-writing` | writing quality, discoverability | ทุก workspace |
 | 3 | `review-algorithm` | time/space complexity, hot paths | workspace ที่มี logic |
 | 4 | `review-data-validation` | validation coverage, type-safety | workspace ที่รับ input |

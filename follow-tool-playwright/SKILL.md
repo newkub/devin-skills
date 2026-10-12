@@ -4,6 +4,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 argument-hint: "[scope]"
 related:
   - use-agent-browser
+  - use-chrome-devtools
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -21,7 +22,7 @@ related:
 
 ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
 
-- ใช้ skill นี้สำหรับ browser E2E suite จริง — ถ้าต้องการ check ด่วนแบบ headless โดยไม่สร้าง suite ใช้ `/use-agent-browser` เป็น stopgap
+- ใช้ skill นี้สำหรับ browser E2E suite จริง — ถ้าต้องการ check/smoke ด่วนโดยไม่สร้าง suite ใช้ `/use-agent-browser` (CLI/record) หรือ `/use-chrome-devtools` (inspect/debug ผ่าน MCP ที่ register อยู่) เป็น stopgap — เลือกตาม `/use-chrome-devtools` `## Tool Selection`
 - สำหรับ API mocking ใน unit/integration tests → ใช้ `/follow-tool-msw` แทน
 
 - Latest: `@playwright/test@1.63.0` (verified 2026-09-13)
@@ -145,7 +146,7 @@ related:
 7. List routes จาก `/report-uxui-all-routes` หรือ route config/filesystem routes
 8. สร้าง smoke spec ที่ visit ทุก route แล้ว assert: page load 200, ไม่มี console errors, ไม่มี uncaught page errors
 9. สำหรับ critical routes → เขียน spec เฉพาะพร้อม interaction tests (click, form submit, navigation)
-10. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) เป็น stopgap แทน Playwright suite ชั่วคราว
+10. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) หรือ `chrome-devtools-mcp` (`new_page` + `take_snapshot` + `list_console_messages`) เป็น stopgap แทน Playwright suite ชั่วคราว
 11. Track route gaps — route ที่ยังไม่มี test ต้องถูกบันทึก
 
 ### 10. CI/CD Integration
@@ -218,6 +219,7 @@ related:
 - ติดตั้งเฉพาะ browsers ที่จำเป็นใน CI
 
 - ใช้ /use-agent-browser ถ้าจำเป็น
+- ใช้ /use-chrome-devtools ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

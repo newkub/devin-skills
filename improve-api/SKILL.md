@@ -1,19 +1,23 @@
 ---
 name: improve-api
-description: หา API improvements ใน scope — design, contracts, errors, versioning — รวม findings แล้วแก้หลัง user confirm
+description: หา API improvements ใน scope — design, contracts, errors, versioning — รวม findings แล้วแก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
+  - improve-backend
+  - improve-data-validation
   - deep-review
   - deep-review-then-fix
   - report
   - suggest-next-action
   - ask-me
+  - test-api
+  - test-contract
 ---
 
 ## Goal
 
-ตอบคำถาม "API improve/optimize อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-api` + `review-backend` เป็น prioritized list แล้วส่งต่อไปแก้หลัง user confirm
+ตอบคำถาม "API improve/optimize อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review` domains `review-api` + `review-backend` เป็น prioritized list แล้วส่งต่อไปแก้ทันที
 
 ## Scope
 
@@ -21,6 +25,7 @@ related:
 
 - `review-api` — API design, contracts, error responses, versioning, docs
 - `review-backend` — backend structure, handlers, middleware, service boundaries
+- payload/request validation findings → `/improve-data-validation`; backend structure/service boundaries เจาะจง → `/improve-backend`
 
 ## Execute
 
@@ -32,28 +37,29 @@ related:
 2. ทำ `/deep-review` กับ scope นั้น domains `review-api` + `review-backend`
 3. รวบรวม prioritized list พร้อม severity และ evidence
 
-### 2. Present And Confirm
+### 2. Present Findings
 
-> Goal: แสดงผลและให้ user เลือกสิ่งที่จะแก้
+> Goal: แสดงผล findings ก่อนแก้
 
 1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ถาม user ว่าจะแก้ข้อไหน — รอการยืนยันก่อนลงมือ
+2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
 
-### 3. Fix Confirmed Items
+### 3. Fix All Findings
 
-> Goal: แก้เฉพาะสิ่งที่ user เลือก
+> Goal: แก้ทุก finding ที่พบ
 
-1. ส่งแต่ละ finding ที่ confirm ไป `/deep-review-then-fix` (domain ที่ตรง)
+1. ส่งแต่ละ finding ไป `/deep-review-then-fix` (domain ที่ตรง)
 2. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
 - ไม่ทำ review เอง — delegate ไป `/deep-review` domains `review-api` + `review-backend`
-- ไม่แก้ไขโดยไม่ได้ user confirm
+- แก้ทุก finding ทันทีโดยไม่รอ confirm
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
+- ใช้ /test-api และ /test-contract verify fixes (endpoints, consumer/provider compat)
 
 ## Expected Outcome
 
 - Prioritized improvement list จาก `/deep-review`
-- User เลือกสิ่งที่จะแก้
-- Findings ที่ confirm ถูกแก้ผ่าน `/deep-review-then-fix`
+- ไม่มี confirm gate — แก้ทุก finding ทันที
+- Findings ทั้งหมดถูกแก้ผ่าน `/deep-review-then-fix`

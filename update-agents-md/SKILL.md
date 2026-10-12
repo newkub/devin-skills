@@ -71,7 +71,7 @@ related:
 
 > Goal: verify ผ่าน canonical gate แล้วค่อย ship
 
-1. ทำ `/ship-verify` — canonical gate ครอบ `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test-all`, `/run-dev`, `/test-usage` — ไม่ duplicate verify steps ที่นี่
+1. ทำ `/ship-verify` — canonical gate ครอบ `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage` — ไม่ duplicate verify steps ที่นี่
 2. ผ่านครบแล้ว → `/ship-to-dev-branch` เพื่อ release
 3. ทำ `/report` สรุป
 

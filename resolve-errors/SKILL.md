@@ -12,7 +12,7 @@ related:
   - use-scripts
   - deep-review
   - run-check
-  - run-test-all
+  - run-test
   - run-until-pass
   - check-secrets
   - open-web-for-config-secret
@@ -176,7 +176,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 
 - ใช้ /resolve-cicd ถ้าจำเป็น
 

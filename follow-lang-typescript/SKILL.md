@@ -10,6 +10,7 @@ related:
   - setup-cicd
   - use-scripts
   - run-typecheck
+  - improve-typesafe
 ---
 
 ## Goal

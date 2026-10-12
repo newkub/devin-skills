@@ -85,6 +85,16 @@ export default {
 }
 ```
 
+### Workflows
+
+| Topic | Workflow |
+|-------|----------|
+| Install + vite plugin + dev/build + `.output` | `workflows/setup-nitro/SKILL.md` |
+| Routes/handlers/api/websockets/tasks | `workflows/define-routes/SKILL.md` |
+| Storage/cache/routeRules/prerender | `workflows/config-storage/SKILL.md` |
+| Middleware/plugins/hooks/runtimeConfig | `workflows/config-middleware/SKILL.md` |
+| Deploy per preset/provider | `workflows/deploy-preset/SKILL.md` |
+
 ## Rules
 
 - `nitro()` v3 ไม่รับ `preset` ใน options — ใช้ `NITRO_PRESET` env หรือ `nitro.config.ts`

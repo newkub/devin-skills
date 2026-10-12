@@ -6,6 +6,7 @@ related:
   - run-watch
   - ask-me
   - run-deploy
+  - test-smoke
 ---
 
 ## Goal
@@ -246,6 +247,7 @@ Common deploy targets and how to obtain a preview/production URL.
 #### Watch Deploy Official Resources
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
+- ใช้ /test-smoke หลัง deploy ผ่าน health gate
 
 ## Expected Outcome
 

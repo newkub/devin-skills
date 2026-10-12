@@ -8,6 +8,7 @@ related:
   - deep-debug
   - resolve-errors
 
+  - improve-typesafe
 ---
 
 ## Goal

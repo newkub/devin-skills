@@ -7,7 +7,7 @@ related:
   - deep-validate
   - resolve-errors
   - run-build
-  - run-test-all
+  - run-test
   - use-subagents
   - refactor
   - refactor-all-workspace
@@ -82,7 +82,7 @@ related:
 - ประมวลผล workspaces แบบ sequential เพื่อหลีกเลี่ยง conflicts
 - จัดกลุ่ม workspaces ที่มีลักษณะเดียวกันเพื่อประมวลผลร่วมกัน
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 
 ## Expected Outcome
 

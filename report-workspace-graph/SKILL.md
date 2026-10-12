@@ -13,7 +13,7 @@ related:
   - follow-tasks
   - follow-monorepo
   - run-build
-  - run-test-all
+  - run-test
 ---
 
 ## Goal
@@ -153,7 +153,7 @@ related:
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /run-test all ถ้าจำเป็น
 
 ## Expected Outcome
 

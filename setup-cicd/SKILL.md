@@ -4,12 +4,13 @@ description: ตรวจจับ platform และตั้งค่า CI/CD
 argument-hint: "[scope]"
 related:
   - update-project
+  - optimize-ci
   - follow-tool-github-actions
   - follow-secret-manager
   - follow-tasks
   - deep-review
   - run-verify
-  - run-test-all
+  - run-test
   - follow-tool-mr-boxington
   - ship-to-dev-branch
   - report
@@ -181,7 +182,7 @@ jobs:
 1. ทำ `/deep-review` เพื่อตรวจ drift และ duplication
 2. ทำ `/deep-review` เพื่อตรวจว่า config ครอบคลุม security, testing, deployment
 3. รัน dry run ถ้า platform รองรับ (เช่น `act` สำหรับ GitHub Actions) — optional
-4. ถ้าต้องการ validate test suite ใน local → ทำ `/run-test-all` ก่อนขึ้น CI
+4. ถ้าต้องการ validate test suite ใน local → ทำ `/run-test all` ก่อนขึ้น CI
 5. ถ้ามี syntax error → แก้ไขก่อนจบ
 
 ### 6. Report
@@ -238,6 +239,7 @@ jobs:
 - ถ้าไม่มี root package.json ให้รัน verify จาก tool directories แทนการสร้าง root package หลอก
 - ใช้ /research-setup-integrations ถ้าจำเป็น (เลือก CI actions/plugins จาก official sources ก่อนเขียน workflow)
 - ใช้ /run-deploy ถ้าจำเป็น
+- pipeline ช้าหลัง setup → `/optimize-ci`
 
 ## Expected Outcome
 

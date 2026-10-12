@@ -17,7 +17,7 @@
 | `portRange` | forwarded to get-port-please | — |
 | `random` | prefer random open port | `false` |
 | `host` | host (`--host` overrides) | `localhost` |
-| `open` | auto-open browser (embeds OTP) | `true` |
+| `open` | auto-open browser (embeds OTP); `boolean | string` — string = path to open | `true` |
 | `flags` | typed flags via `defineCliFlags` | — |
 | `configure(cli)` | contribute cac options/commands | — |
 
