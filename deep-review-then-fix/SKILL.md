@@ -3,6 +3,8 @@ name: deep-review-then-fix
 description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
 argument-hint: "[scope]"
 related:
+  - deep-thinking
+  - deep-analyze
   - review
   - fix
   - watch-browser
@@ -77,8 +79,9 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 
 > Goal: รู้ว่าจะ review และ fix อะไร
 
-1. ดูรายละเอียดใน [references/identify-scope.md](references/identify-scope.md)
-2. บันทึก findings พร้อม severity และ evidence
+1. ทำ `/deep-thinking` วิเคราะห์ context และเป้าหมายของ scope ก่อนเริ่ม
+2. ดูรายละเอียดใน [references/identify-scope.md](references/identify-scope.md)
+3. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Plan Fixes
 

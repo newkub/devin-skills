@@ -33,7 +33,7 @@ related:
 | งาน | Route |
 |-----|-------|
 | แก้ไขหลายไฟล์ผ่าน script — reproducible, audit trail | `/edit-with-use-scripts` → `/use-scripts` (`### Edit Files Via Scripts`) |
-| AST pattern rewrite หลายไฟล์ (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` (alias `/edit-by-astgrep`) |
+| AST pattern rewrite หลายไฟล์ (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
 | migration ทั้ง codebase แบบ staged batches | `/use-astgrep migration` → `/migration-with-astgrep` |
 | format conversion (json↔yaml, cjs→esm, svg, scripts) | `/convert-files-format` หรือ `/convert` domain |

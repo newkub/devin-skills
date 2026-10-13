@@ -3,6 +3,8 @@ name: deep-test
 description: Deep testing — API, CLI, contract, coverage, e2e, integration, mutation, visual domains
 argument-hint: "[domain] [scope]"
 related:
+  - deep-thinking
+  - deep-analyze
   - run-test
   - deep-validate
   - review-test
@@ -50,14 +52,16 @@ related:
 
 ### Flow
 
-1. ระบุ domain จาก argument (เช่น `/deep-test api` → ทำตาม `references/api.md`)
-2. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
-3. ถ้าต้องการรันทุก domain → `/run-test all`
-4. ทำตาม Execute + Rules ใน reference ของ domain นั้น
-5. failures แก้ผ่าน `/resolve-errors` — ห้าม suppress
+1. ทำ `/deep-thinking` วิเคราะห์ scope, เป้าหมาย test และเกณฑ์ pass/fail ก่อนเริ่ม
+2. ระบุ domain จาก argument (เช่น `/deep-test api` → ทำตาม `references/api.md`)
+3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+4. ถ้าต้องการรันทุก domain → `/run-test all`
+5. ทำตาม Execute + Rules ใน reference ของ domain นั้น
+6. failures แก้ผ่าน `/resolve-errors` — ห้าม suppress; ถ้า root cause ไม่ชัด → เก็บหลักฐานแบบ `/deep-analyze` (exit code, log, screenshot) ก่อนส่งต่อ
 
 ## Rules
 
+- เริ่มด้วย `/deep-thinking` เสมอ และสรุปผลจากหลักฐานรันจริงแบบ `/deep-analyze` ห้ามเดา
 - ทุก domain ต้อง pre-check ด้วย review skill ที่ตรง domain ก่อนรัน ตาม global rules (`/review-api` สำหรับ api, `/review-test` สำหรับที่เหลือ)
 - ทุก domain ใช้ test isolation, cleanup side effects, และ report ผลตาม reference นั้น
 - ใช้ /review-test ถ้าจำเป็น

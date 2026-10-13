@@ -3,6 +3,8 @@ name: deep-research
 description: ค้นหาข้อมูลลึกจาก multiple sources — packages, repos, docs, benchmarks, security, compatibility — dispatcher เข้า workflows
 argument-hint: "[general|dependencies|setup|api-references|improve|report|query]"
 related:
+  - deep-thinking
+  - deep-analyze
   - rethink
   - research-setup-integrations
   - follow-best-practice
@@ -37,8 +39,9 @@ related:
 | สรุป report จาก findings ที่มีอยู่ | `workflows/report-findings/SKILL.md` — `/deep-research report` |
 | หัวข้อทั่วไป / ไม่ตรงข้างบน | `workflows/general/SKILL.md` — full pipeline steps 1-9 |
 
-1. ถ้า argument ตรง workflow → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น
-2. ถ้าไม่ระบุ/ไม่ตรง → ทำ `workflows/general/` (full pipeline) — Step สุดท้าย execute `workflows/report-findings` หลัง synthesize
+1. ทำ `/deep-thinking` กำหนดคำถาม, scope และเกณฑ์ "ตอบครบ" ก่อน search เสมอ
+2. ถ้า argument ตรง workflow → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น
+3. ถ้าไม่ระบุ/ไม่ตรง → ทำ `workflows/general/` (full pipeline) — Step สุดท้าย execute `workflows/report-findings` หลัง synthesize
 
 ## Rules
 
@@ -51,6 +54,7 @@ related:
 
 ### 2. Research Best Practices
 
+- เริ่มด้วย `/deep-thinking` เสมอ; ต้องเก็บหลักฐานเชิงประจักษ์แบบ `/deep-analyze` ก่อนสรุป (cross-validate หลายแหล่ง ไม่ใช่เดาจาก memory)
 - Official sources ก่อนเสมอ — docs > repo > registry > community; community เป็น fallback/corroboration เท่านั้น
 - Cross-validate ≥ 2-3 sources ก่อนสรุป — claim ที่เห็นแหล่งเดียวระบุเป็น low confidence
 - Freshness: ระบุ version + ปี ของทุก claim; เช็ค deprecation/breaking-change notices ก่อนเสนอแนะ

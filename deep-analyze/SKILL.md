@@ -14,7 +14,6 @@ related:
   - use-scripts
   - deep-review
   - deep-analyze-by-use-scripts
-  - deep-analyze-and-report
 
 ---
 

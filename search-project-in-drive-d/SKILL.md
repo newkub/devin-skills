@@ -5,7 +5,7 @@ argument-hint: "[keyword]"
 related:
   - ask-me
   - report
-  - deep-analyze-and-report
+  - deep-analyze
 ---
 
 ## Goal

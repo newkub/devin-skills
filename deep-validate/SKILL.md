@@ -3,6 +3,8 @@ name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
 argument-hint: "[scope|correctness|type-safety|quality|security|compliance|cross-reference]"
 related:
+  - deep-thinking
+  - deep-analyze
   - rethink
   - run-test
   - deep-review
@@ -37,6 +39,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 กำหนดขอบเขตการ validate ตามสิ่งที่ต้องตรวจสอบ
 
+- เริ่มด้วย `/deep-thinking` วิเคราะห์ปัญหาและเป้าหมาย validate ก่อนกำหนด scope เสมอ
 - ระบุสิ่งที่ต้อง validate: code, documentation, design, decision, workflow, configuration
 - ระบุ dimensions ที่เกี่ยวข้อง: correctness, type safety, runtime, security, compliance, cross-reference
 - กำหนด success criteria สำหรับแต่ละ dimension
@@ -106,7 +109,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 1. Validation Approach
 
-- ตรวจสอบอย่างเคร่งครัดและ systematic
+- ตรวจสอบอย่างเคร่งครัดและ systematic; เริ่มด้วย `/deep-thinking` เสมอ
+- ถ้า scope/root cause ไม่ชัด → เก็บหลักฐานแบบ `/deep-analyze` ก่อน validate
 - พิจารณา context และ constraints ที่เกี่ยวข้อง
 - ใช้ criteria ที่ชัดเจนในการตรวจสอบ
 - ทุก finding ต้องมี evidence (file path, line number, code snippet)

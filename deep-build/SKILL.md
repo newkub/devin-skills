@@ -3,6 +3,8 @@ name: deep-build
 description: รัน build แบบลึก ครอบคลุมหลาย target, platforms, bundle analysis, และ performance smoke test
 argument-hint: "[target]"
 related:
+  - deep-thinking
+  - deep-analyze
   - run-build
   - run-check
   - run-verify
@@ -31,9 +33,10 @@ Build project อย่างละเอียด ครอบคลุมท�
 
 > Goal: รู้ว่าต้อง build อะไรบ้าง
 
-1. อ่าน `package.json`, `Cargo.toml`, `Dockerfile` หรือ build config ทีเกี่ยวข้อง
-2. ระบุ targets: dev, prod, ssr, static, docker, mobile, desktop
-3. ถ้าไม่ชัด → ทำ `/ask-me`
+1. ทำ `/deep-thinking` วิเคราะห์เป้าหมาย build, ปัญหาที่เคยพบ และเกณฑ์ก่อนเริ่ม
+2. อ่าน `package.json`, `Cargo.toml`, `Dockerfile` หรือ build config ทีเกี่ยวข้อง
+3. ระบุ targets: dev, prod, ssr, static, docker, mobile, desktop
+4. ถ้าไม่ชัด → ทำ `/ask-me`
 
 ### 2. Clean Build
 
@@ -81,6 +84,8 @@ Build project อย่างละเอียด ครอบคลุมท�
 
 ## Rules
 
+- เริ่มด้วย `/deep-thinking` เสมอ
+- สรุปผลต้องเก็บหลักฐานจาก build output จริงแบบ `/deep-analyze` (size, warnings, errors) ห้ามเดา
 - ต้อง clean build ก่อนรัน
 - ไม่ ignore build warnings
 - ต้อง smoke test หลัง build

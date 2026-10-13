@@ -8,7 +8,6 @@ related:
   - report
   - suggest-next-action
   - update-docs
-  - deep-analyze-and-report
 
 ---
 

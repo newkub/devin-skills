@@ -22,7 +22,7 @@ related:
 
 ## Goal
 
-วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้วสร้างแผน implementation-ready ที่อ่านง่าย มี scoring และติดตามผลได้ — canonical สำหรับทุก analyze+plan (merged `/deep-plan` + `/deep-analyze-and-plan`) — เขียนลง `.devin/temp/plan/<workspace>/<title-date>.md` พร้อมเปิดไฟล์แผนใน editor
+วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้วสร้างแผน implementation-ready ที่อ่านง่าย มี scoring และติดตามผลได้ — canonical สำหรับทุก analyze+plan (merged `/deep-plan`; เริ่มด้วย `/deep-thinking` แล้ววิเคราะห์แบบ `/deep-analyze`) — เขียนลง `.devin/temp/plan/<workspace>/<title-date>.md` พร้อมเปิดไฟล์แผนใน editor
 
 ## Scope
 
@@ -152,8 +152,8 @@ related:
 
 ### 5. Merged Scope
 
-- merged จาก `/deep-plan` + `/deep-analyze-and-plan` — canonical เดียวสำหรับ analyze+plan ทุกกรณี
-- `/deep-plan`, `/deep-analyze-and-plan`, `/plan` เป็น alias stubs ที่ forward มาที่ skill นี้
+- merged จาก `/deep-plan` (และ `/deep-analyze-and-plan` เดิม — ถูกลบแล้ว) — canonical เดียวสำหรับ analyze+plan ทุกกรณี
+- `/deep-plan`, `/plan` เป็น alias stubs ที่ forward มาที่ skill นี้
 - งาน planning ที่ต้อง persist ต้องผ่าน skill นี้เท่านั้น — ห้ามสร้าง plan file นอก `.devin/temp/plan/`
 
 ## Expected Outcome
