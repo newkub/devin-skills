@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - follow-secret-manager
-  - ship-to-dev-branch
+  - ship
   - setup-cicd
   - update-project
   - run-verify
@@ -35,7 +35,7 @@ Release to npm, crates.io, VSCode Marketplace, Chrome Web Store, and Docker Hub,
 
 1. Check `git branch --show-current` and `git describe --tags --exact-match` or `git tag --points-at HEAD`
    - If HEAD is not on a `v*` tag and not on `main` or `master` → stop and report
-2. If on `main`/`master` but there is no tag yet → stop and recommend creating a tag or using `/ship-to-dev-branch` first
+2. If on `main`/`master` but there is no tag yet → stop and recommend creating a tag or using `/ship` first
 3. Check that `git status --porcelain` is clean
 4. Check that CI passes for the current SHA:
    - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5`, then `/resolve-cicd <run-id>`
@@ -161,7 +161,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 ### 1. Conditions
 
 - Must be on a tag `v*` or on `main`/`master` only
-- If on `main` without a tag → stop and recommend `/ship-to-dev-branch`
+- If on `main` without a tag → stop and recommend `/ship`
 - The working tree must be clean
 - CI must pass before release
 - Secrets for the detected platforms must be ready

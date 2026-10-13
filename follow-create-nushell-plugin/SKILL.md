@@ -4,7 +4,7 @@ description: Build NuShell plugins in Rust per the official contributor guide
 argument-hint: "[plugin-name]"
 related:
   - follow-create-plugins
-  - ship-to-dev-branch
+  - ship
 
 ---
 
@@ -81,7 +81,7 @@ Use for creating a new NuShell plugin in Rust with the `nu-plugin` and `nu-proto
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

@@ -130,7 +130,7 @@ Use when you want to sync/update every project in `D:\` in one pass. Supports a 
 
 - This skill does not commit or push for the user
 - If a project has changes from a pull → inform the user
-- To commit, use `/git-commit` or `/ship-to-dev-branch` separately per project
+- To commit, use `/git-commit` or `/ship` separately per project
 
 - Use /sync-drive-d-submodules if needed
 - Use /check-should-update if needed

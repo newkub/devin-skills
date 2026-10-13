@@ -31,7 +31,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues — ถูก dispatch จาก `/refactor` (scope detect) และ callers อื่น (implement-to-production, review-issue, refactor-all-files-in-workspace); สกัดกั้นด้วย `/dont-over-engineer` เมื่อไม่มี violation จริง
+ใช้เมื่อไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues — ถูก dispatch จาก `/refactor` (scope detect) และ callers อื่น (implement-to-production, review-issue, `/refactor` coverage scopes); สกัดกั้นด้วย `/dont-over-engineer` เมื่อไม่มี violation จริง
 
 - Physical restructure (naming/relocate/barrel) → `/restructure`
 - Mixed concerns (UI+logic+IO ปนกัน) → `/refactor` `### /separate-of-concerns` (merged)

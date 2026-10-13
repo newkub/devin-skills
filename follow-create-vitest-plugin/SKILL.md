@@ -7,7 +7,7 @@ related:
   - deep-review
   - follow-tool-vitest
   - follow-create-plugins
-  - ship-to-dev-branch
+  - ship
   - run-test
 
 ---
@@ -104,7 +104,7 @@ configureVitest({ defineCacheKeyGenerator }) {
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

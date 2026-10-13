@@ -7,7 +7,7 @@ related:
   - review-devin-global-harness
   - follow-create-web
   - setup-cicd
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal
@@ -68,7 +68,7 @@ Collect reusable PowerShell scripts across the devin skills ecosystem and projec
 
 ## Rules
 
-- Run these scripts before `/ship-to-dev-branch`
+- Run these scripts before `/ship`
 - Use `/devin-templates-toolkit` for templates
 - Do not hardcode paths in scripts
 - Use `Write-Host` with green for OK, yellow for warning, red for error

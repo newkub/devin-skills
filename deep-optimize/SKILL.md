@@ -24,7 +24,7 @@ Review every dimension of the codebase to find optimization opportunities using 
 Use when you want to optimize across many dimensions at once — report-only by default; `--apply` fixes according to the plan after user confirm
 
 - Compared with nearby skills: `/deep-review` = correctness/standard/report review; `/deep-optimize` = drill into specific bottlenecks; `deep-optimize` = fan out every dimension with subagents then merge the plan into prioritized actions
-- `/ship-to-dev-branch` always calls this skill in the Validate step before merge/release
+- `/ship` always calls this skill in the Validate step before merge/release
 
 ## Execute
 

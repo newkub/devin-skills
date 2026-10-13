@@ -7,7 +7,7 @@ related:
   - follow-tool-biome
   - deep-review
   - follow-tool-formatter
-  - ship-to-dev-branch
+  - ship
   - run-lint
   - run-format
 ---
@@ -82,7 +82,7 @@ Covers creating `.grit` plugin files, writing GritQL patterns, configuring `biom
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

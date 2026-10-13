@@ -9,6 +9,9 @@ related:
   - report
   - suggest-next-action
   - run-review
+  - deep-thinking
+  - deep-analyze
+  - deep-validate
 
 ---
 
@@ -23,6 +26,8 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
 
 ## Execute
+
+ทุกรอบเริ่มด้วย deep pre-pass — ทำ `/deep-thinking` → `/deep-analyze` → `/deep-validate` ก่อน fetch/review ใดๆ (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 
 ### 1. Fetch PR Context
 > Goal: ดึง PR context

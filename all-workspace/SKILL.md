@@ -10,7 +10,6 @@ related:
   - run-test
   - use-subagents
   - refactor
-  - refactor-all-workspace
 
 ---
 

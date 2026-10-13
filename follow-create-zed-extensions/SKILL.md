@@ -90,7 +90,7 @@ Use to create Zed extensions that provide languages, themes, icon themes, snippe
 3. Create a GitHub repo for the extension (the registry uses a git submodule pointing to this repo)
 4. Submit a PR to `zed-industries/extensions`: add the submodule at `extensions/<id>` and an entry in the root `extensions.toml`, with `version` matching `extension.toml`
 5. Once the PR is merged → the extension is packaged and published to the Zed extension registry automatically
-6. Run `/ship-to-dev-branch`
+6. Run `/ship`
 
 ## Rules
 

@@ -74,7 +74,7 @@ related:
 
 ### 1. Chat Only
 
-- ตอบกลับในแชทเท่านั้น — ไม่สร้างไฟล์ใน `.devin/temp/report/` หรือ `.devin/temp/plan/` ไม่สร้าง web app ถาวร ไม่เรียก `/ship-to-dev-branch`
+- ตอบกลับในแชทเท่านั้น — ไม่สร้างไฟล์ใน `.devin/temp/report/` หรือ `.devin/temp/plan/` ไม่สร้าง web app ถาวร ไม่เรียก `/ship`
 
 ### 2. Lightweight
 

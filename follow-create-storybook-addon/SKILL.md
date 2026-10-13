@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - deep-review
   - follow-tool-release-it
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal
@@ -126,7 +126,7 @@ src/
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

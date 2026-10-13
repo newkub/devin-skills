@@ -10,7 +10,7 @@ related:
   - git-commit
   - git-push
   - git-commit-and-push
-  - ship-to-dev-branch
+  - ship
   - dont-ask-me
   - ask-me
   - suggest-next-action
@@ -37,7 +37,7 @@ Use when the user sends a message containing only `.` or uses `.` as a trigger t
 1. Check the current todo list (if any) — if a `[scope]` argument is given, limit the state check to that scope
 2. Check open files, recent changes, git status
 3. Check the user's latest message and context
-4. Check whether this session has used `/ship-to-dev-branch` in `dont-ask-me` mode or `/dont-ask-me` — if so, keep `dont-ask-me` mode for every subsequent decision (replace `/ask-me` with `/follow-your-suggestion` + safe default)
+4. Check whether this session has used `/ship` in `dont-ask-me` mode or `/dont-ask-me` — if so, keep `dont-ask-me` mode for every subsequent decision (replace `/ask-me` with `/follow-your-suggestion` + safe default)
 5. Run `/report-progress` to summarize the current status
 
 ### 2. Determine Next Action
@@ -49,7 +49,7 @@ Choose by order of items 1-8 — the first item that matches the state wins
 1. If there is pending work or unfinished todos → run `/continue`
 2. If there are uncommitted changes whose work is done and validation passed → run `/git-commit-and-push` (commit + push + resolve CI/CD); if only a commit is needed without pushing → run `/git-commit`
 3. If committed but there are still unpushed commits → run `/git-push`
-4. If the work is ready to ship and validation passed → run `/ship-to-dev-branch` then follow with `/suggest-next-action`; but if the session is in `dont-ask-me` mode → run `/ship-to-dev-branch` in `dont-ask-me` mode (Step 6 of `/ship-to-dev-branch`)
+4. If the work is ready to ship and validation passed → run `/ship` then follow with `/suggest-next-action`; but if the session is in `dont-ask-me` mode → run `/ship` in `dont-ask-me` mode
 5. If guidance on direction or next steps is needed → run `/suggest-next-action` or `/follow-your-suggestion`
 6. If the context indicates a need for feature ideas or brainstorming (e.g. previous messages mention "ideas", "features", or the user asks open-ended questions about features) → run `/idea-features`
 7. If the context is unclear or needs an answer from the user → run `/ask-me`; but if the session is in `dont-ask-me` mode → run `/follow-your-suggestion` with a safe default instead
@@ -63,8 +63,8 @@ Choose by order of items 1-8 — the first item that matches the state wins
 2. `/git-commit-and-push` — commit + push finished work with CI/CD resolution
 3. `/git-commit` — commit changes only (no push) when appropriate
 4. `/git-push` — push the pending commits
-5. `/ship-to-dev-branch` — deliver finished work, then run `/suggest-next-action` to recommend the next action
-6. `/ship-to-dev-branch` (dont-ask-me mode) — ship without asking the user when the session is in `dont-ask-me` mode
+5. `/ship` — deliver finished work, then run `/suggest-next-action` to recommend the next action
+6. `/ship` (dont-ask-me mode) — ship without asking the user when the session is in `dont-ask-me` mode
 7. `/suggest-next-action` — recommend the next step
 8. `/idea-features` — generate feature ideas in chat when the context is about ideas
 9. `/follow-your-suggestion` — follow the previously analyzed suggestion
@@ -85,10 +85,10 @@ Choose by order of items 1-8 — the first item that matches the state wins
 
 - `.` is a trigger, not a full command
 - Always check the state before deciding
-- If the work is not finished → run `/continue` before `/git-commit-and-push` or `/ship-to-dev-branch`
+- If the work is not finished → run `/continue` before `/git-commit-and-push` or `/ship`
 - If commit/push or ship is needed → validation must pass first
 - Never commit/push changes that are unfinished or failed validation
-- If the session is in `dont-ask-me` mode → run `/ship-to-dev-branch` in `dont-ask-me` mode and keep the mode (replace `/ask-me` with `/follow-your-suggestion`)
+- If the session is in `dont-ask-me` mode → run `/ship` in `dont-ask-me` mode and keep the mode (replace `/ask-me` with `/follow-your-suggestion`)
 - If the context is unclear → run `/ask-me` (except in `dont-ask-me` mode)
 - Do not make risky changes without user confirmation (except in `dont-ask-me` mode, where you choose a safe default and report)
 - Anything not yet doable → run `/save-to-todo-md` first, then skip; never leave pending work unrecorded

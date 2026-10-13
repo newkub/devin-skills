@@ -92,7 +92,7 @@ Use for building a LINE bot from scratch on Bun or Node.js; supports command bot
 1. For `Cloudflare Workers`: use `/deploy-to-cloudflare` with a `Hono` adapter
 2. For `Railway/Vercel/VPS`: use `/deploy-to-railway` or `/deploy-to-vercel` with environment variables
 3. Update the webhook URL to the production endpoint
-4. Run `/ship-to-dev-branch`
+4. Run `/ship`
 
 ## Rules
 

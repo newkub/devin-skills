@@ -9,7 +9,7 @@ related:
   - list-git
   - refactor-commit
   - deep-review
-  - ship-to-dev-branch
+  - ship
 
 ---
 ## Goal
@@ -148,7 +148,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ /list-git-commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /ship-to-dev-branch ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 
 ## Merged Details
 

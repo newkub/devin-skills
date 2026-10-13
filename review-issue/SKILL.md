@@ -13,6 +13,9 @@ related:
   - report
   - ask-me
   - suggest-next-action
+  - deep-thinking
+  - deep-analyze
+  - deep-validate
 ---
 
 ## Goal
@@ -65,6 +68,7 @@ Every finding must have `file:line` evidence — no guessing; never count an int
 
 ## Rules
 
+- Every run starts with the deep pre-pass — `/deep-thinking` → `/deep-analyze` → `/deep-validate` before scoping any area (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 - Delegate to `/deep-review` domains when a mapping exists — review yourself only for areas with no matching domain
 - Every finding must have `file:line` evidence — no evidence = no finding
 - Don't fix without confirmation — unless the user puts `and fix` in the command

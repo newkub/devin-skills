@@ -69,7 +69,7 @@ related:
 2. ทำ `/update-devin-harness` เพื่อตรวจ global rules alignment
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, TODO, placeholders
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo
-5. ทำ `/ship-to-dev-branch` เมื่องานเสร็จ
+5. ทำ `/ship` เมื่องานเสร็จ
 
 ## Rules
 

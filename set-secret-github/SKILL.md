@@ -4,7 +4,7 @@ description: Set GitHub repository secrets safely with the gh CLI
 argument-hint: "<owner>/<repo> <secret-name>"
 related:
   - resolve-errors
-  - ship-to-dev-branch
+  - ship
   - run-audit
 
 ---
@@ -63,7 +63,7 @@ gh secret list -R <owner>/<repo>
 - `NPM_TOKEN` — publish to npm
 - `GH_PAT` — access private repo / trigger dispatch
 
-These secrets are used by workflows monitored with `/resolve-github-actions-fails` and the deploy pipeline of `/ship-to-dev-branch`
+These secrets are used by workflows monitored with `/resolve-github-actions-fails` and the deploy pipeline of `/ship`
 
 ## Rules
 

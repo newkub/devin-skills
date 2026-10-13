@@ -41,11 +41,10 @@ Map every dependency in the workspace manifest to its global skill — use `/use
 1. Apply the pattern selected by `/follow-architecture` (`layered` for a single app, `clean` for multi-app/shared packages).
 2. Keep file placement, naming, and layer boundaries consistent with that pattern.
 
-### 4. Ship Verify
+### 4. Ship
 
-1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`.
-2. Only after every gate passes → `/ship-to-dev-branch`.
-3. Run `/report` to summarize.
+1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`), then commit/push, PR review gate, and merge into `main`.
+2. Run `/report` to summarize.
 
 ## Rules
 
@@ -78,7 +77,7 @@ Map every dependency in the workspace manifest to its global skill — use `/use
 
 ### 6. Ship
 
-- Use `/ship-verify` as the gate, then `/ship-to-dev-branch` for release.
+- Use `/ship` for verify + push + merge into `main` — never commit/push outside it.
 - Follow project conventions and validation before release.
 
 ## Expected Outcome

@@ -7,7 +7,7 @@ related:
   - update-devin-global-skills
   - update-devin
   - deep-review
-  - ship-to-dev-branch
+  - ship
   - update-references
 
 ---
@@ -118,7 +118,7 @@ Use for creating a new plugin or improving an existing one so it can be installe
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

@@ -35,6 +35,8 @@ Results are reported to `.devin/temp/report/<workspace>/deep-review-<time>.md` v
 
 ## Execute
 
+Every `review-*` run starts with the deep pre-pass — `/deep-thinking` → `/deep-analyze` → `/deep-validate` — before any scan (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`); thin entries forwarding here inherit it.
+
 ### 0. Manual Pre-Pass
 
 > Goal: check repo health by eye and hand before trusting the analyzer — if you find a CLI/analyzer issue, record it in `update-review-cli-then-run/references/known-issues.md`

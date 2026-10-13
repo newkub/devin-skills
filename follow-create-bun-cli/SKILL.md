@@ -87,7 +87,7 @@ For building CLI applications with the Bun runtime — does not cover library bu
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

@@ -115,7 +115,7 @@ Use for building a GitHub bot with TypeScript/Bun/Node.js — covers app registr
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

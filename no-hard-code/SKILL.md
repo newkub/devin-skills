@@ -4,7 +4,6 @@ description: หาและย้าย hardcoded values (secrets, URLs, magic 
 argument-hint: "[@files... | scope]"
 related:
   - refactor
-  - refactor-to-packages-shared
   - check-secrets
   - follow-secret-manager
   - follow-config

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - create-slide-in-newkub-slides
   - run-dev
-  - ship-to-dev-branch
+  - ship
   - follow-create-web
   - follow-create-mobile
   - follow-best-practice
@@ -88,7 +88,7 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

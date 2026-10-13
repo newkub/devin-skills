@@ -6,7 +6,7 @@ related:
   - improve
   - improve-delivery
   - improve-dx
-  - optimize-build
+  - optimize-bundle
   - setup-cicd
   - resolve-cicd
   - deep-review
@@ -28,7 +28,7 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "CI pipeline ควร optimize อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-workflow` (CI scope) — pipeline duration, job parallelism, cache usage, redundant jobs, matrix strategy, artifact handling, trigger efficiency
-- CI setup/correctness → `/setup-cicd` หรือ `/improve-delivery`; failing runs → `/resolve-cicd`; local build speed → `/optimize-build`
+- CI setup/correctness → `/setup-cicd` หรือ `/improve-delivery`; failing runs → `/resolve-cicd`; local build speed → `/optimize-bundle`
 
 ## Execute
 

@@ -96,7 +96,7 @@ Use for creating Obsidian desktop/mobile plugins from the sample plugin or a man
 1. Update `manifest.json` and `versions.json` with the new version
 2. Create a git tag matching the version
 3. Create a GitHub release attaching `main.js`, `manifest.json`, `styles.css`
-4. Run `/ship-to-dev-branch`
+4. Run `/ship`
 
 ## Rules
 

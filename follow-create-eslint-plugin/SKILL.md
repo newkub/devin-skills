@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - deep-review
   - follow-tool-eslint
-  - ship-to-dev-branch
+  - ship
   - report
   - run-lint
   - run-format
@@ -76,7 +76,7 @@ Use for creating custom ESLint plugins with JavaScript/TypeScript, covering the 
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

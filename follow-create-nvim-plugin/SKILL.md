@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - deep-review
-  - ship-to-dev-branch
+  - ship
 
 ---
 ## Goal
@@ -75,7 +75,7 @@ Use for projects that create or manage Neovim plugins
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

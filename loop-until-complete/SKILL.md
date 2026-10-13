@@ -86,7 +86,7 @@ related:
 
 1. สรุปจำนวนรอบ, สิ่งทีเปลี่ยน, metrics before/after, และเหตุผลทีหยุด
 2. ทำ `/report` หรือ `/report-progress` แสดง progress ตามลำดับรอบ
-3. ถ้าพร้อม ให้ทำ `/ship-to-dev-branch` หรือ `/continue` ตาม context
+3. ถ้าพร้อม ให้ทำ `/ship` หรือ `/continue` ตาม context
 
 ## Rules
 

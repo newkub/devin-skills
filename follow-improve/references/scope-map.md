@@ -21,6 +21,7 @@ Every thin entry: review → `/deep-review <domain>` | fix → `/deep-review-the
 | `improve-billing` | review-api, review-business, review-security | payments, invoicing, webhooks; raw spend optimization → `/optimize-cost` |
 | `improve-browser-extensions` | review-browser-ext | manifest V3, permissions, content scripts |
 | `improve-business` | review-business | domain logic vs requirements |
+| `improve-cache` | review-backend, review-data-validation | cache correctness: invalidation ทุก write path, TTL, cache key design, stale data; hit rate/perf → `/optimize-cache`; source data integrity → `/improve-data` |
 | `improve-cli` | review-cli | flags, output, exit codes |
 | `improve-code-quality` | review-code-quality, review-redundancy | error-handling findings → `/improve-error-handling`; correctness → `/improve-correctness` |
 | `improve-collaboration` | review-frontend, review-backend, review-data-validation | concurrent edits, CRDT/OT merge, presence; transport → `/improve-realtime`, messaging → `/improve-events` |
@@ -75,6 +76,7 @@ Every thin entry: review → `/deep-review <domain>` | fix → `/deep-review-the
 | `improve-scheduled-jobs` | review-backend, review-stability | cron idempotency, catch-up, missed-run handling; queue ops → `/improve-queues` |
 | `improve-sdk` | review-sdk | public API surface, compat |
 | `improve-search` | review-backend, review-frontend, review-performance | relevance, ranking, query parsing, result UX; index/store → `/improve-database` |
+| `improve-secrets` | review-security, review-config | secrets hygiene fix path — hardcoded values, git-history leaks, rotation; detection-only → `/check-secrets`, general vulns → `/improve-security`, secret store tooling → `/follow-secret-manager` |
 | `improve-security` | review-security | vulnerabilities, OWASP |
 | `improve-seo` | review-seo | meta, sitemap, structured data |
 | `improve-service-integrations` | review-api, review-stability, review-security | external APIs/webhooks/credentials |

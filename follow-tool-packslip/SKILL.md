@@ -8,7 +8,7 @@ related:
   - follow-tool-usage
   - setup-cicd
   - run-release
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal

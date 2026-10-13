@@ -15,7 +15,7 @@ related:
   - idea
   - ask-me
   - suggest-next-action
-  - ship-to-dev-branch
+  - ship
   - run-bench
 ---
 
@@ -115,8 +115,8 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 
 > Goal: Deliver once the project is better than competitors in every dimension
 
-1. Run `/ship-to-dev-branch` to ship all improvements
-2. After `/ship-to-dev-branch` finishes, delete `PLAN_PATH`
+1. Run `/ship` to ship all improvements
+2. After `/ship` finishes, delete `PLAN_PATH`
 3. Run `/suggest-next-action`, recommending `/idea-features` if you want to extend the ideas further
 
 ## Rules

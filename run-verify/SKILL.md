@@ -13,7 +13,7 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - ship-to-dev-branch
+  - ship
   - resolve-errors
   - report
 
@@ -95,8 +95,8 @@ Use as the single consolidation point for all verify work
 
 > Goal: Deliver the work after verify passes
 
-- If the user wants to ship the work after verify passes → run `/ship-to-dev-branch` for the full ship flow, from verify, release, and deploy through the rollback plan
-- Run `/suggest-next-action` after `/ship-to-dev-branch` finishes
+- If the user wants to ship the work after verify passes → run `/ship` for the full ship flow, from verify, release, and deploy through the rollback plan
+- Run `/suggest-next-action` after `/ship` finishes
 
 ## Rules
 
@@ -125,7 +125,7 @@ Use as the single consolidation point for all verify work
 - Use /run-build if needed
 - Use /deep-test coverage if needed
 - Use /run-test all if needed
-- Use /ship-to-dev-branch if needed
+- Use /ship if needed
 - Use /report if needed
 - Use /suggest-next-action if needed
 

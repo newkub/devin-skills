@@ -140,13 +140,13 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 - Modify only root docs (`AGENTS.md`, `README.md`) and project config
 - Do not modify workspace code or workspace docs
-- If workspace docs need changes → use `/ship-to-dev-branch` in that workspace
+- If workspace docs need changes → use `/ship` in that workspace
 
 ### 3. No Commit
 
 - `update-project` does not commit changes
 - If used standalone → run `/git-commit` after `/update-project`
-- If used in a monorepo → run `/ship-to-dev-branch` per workspace, then `/git-commit` at the root after `/update-project`
+- If used in a monorepo → run `/ship` per workspace, then `/git-commit` at the root after `/update-project`
 
 ### 4. Idempotency
 

@@ -445,7 +445,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 - push code
 
-- `/run-deploy`, `/deploy-to-*`, `/ship-to-dev-branch`, `/run-release`
+- `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
 
 - หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
 

@@ -10,7 +10,7 @@ related:
   - run-docs
   - update-docs
   - follow-tool-github-actions
-  - ship-to-dev-branch
+  - ship
   - report
 
 ---
@@ -90,7 +90,7 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 - Use /follow-create-web when needed
 - Use /follow-create-web-nuxt when needed
 - Use /update-docs when needed
-- Use /ship-to-dev-branch when needed
+- Use /ship when needed
 - Use /report when needed
 
 

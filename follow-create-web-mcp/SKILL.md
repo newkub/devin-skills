@@ -89,7 +89,7 @@ Add WebMCP tools to a web page/web app (page-provided tools that agents discover
 > Goal: Review and validate before delivery
 
 1. Run `/deep-review` — the `review-frontend` and `review-mcp` domains have a `### WebMCP` checklist for reviewing this implementation
-2. Run `/deep-validate` then `/ship-to-dev-branch` per the project flow
+2. Run `/deep-validate` then `/ship` per the project flow
 
 ## Rules
 

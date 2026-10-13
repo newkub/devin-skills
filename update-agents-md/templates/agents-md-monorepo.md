@@ -3,8 +3,7 @@ name: <repo-name>
 description: <one-line purpose of the project>
 related:
   - dont-ask-me
-  - ship-to-dev-branch
-  - ship-verify
+  - ship
   - report-progress
   - save-to-todo-md
   - suggest-next-action
@@ -43,11 +42,10 @@ related:
 
 2. Keep the table in sync with manifests and real imports.
 
-### 4. Ship Verify
+### 4. Ship
 
-1. Run `/ship-verify` — covers `/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`.
-2. Only after every gate passes → `/ship-to-dev-branch`.
-3. Run `/report` to summarize.
+1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`), then commit/push, PR review gate, and merge into `main`.
+2. Run `/report` to summarize.
 
 ## Rules
 
@@ -73,8 +71,7 @@ related:
 
 Core (keep simple — only these unless project-specific need):
 - `dont-ask-me: /dont-ask-me`
-- `ship-verify: /ship-verify`
-- `ship-to-dev-branch: /ship-to-dev-branch`
+- `ship: /ship`
 - `report-progress: /report-progress`
 - `save-to-todo-md: /save-to-todo-md`
 - `suggest-next-action: /suggest-next-action`
@@ -89,7 +86,7 @@ Quality (include as relevant to the project):
 
 Improvements (pick variants matching the project):
 - `improve-*: /improve-features (core business + platform) /improve-security /improve-data /improve-data-validation /improve-database /improve-cli /improve-web /improve-seo /improve-dx /improve-uxui /improve-a11y /improve-code-quality /improve-error-handling /improve-api /improve-backend /improve-rbac /improve-form /improve-techstack /improve-deps /improve-config /improve-tests /improve-observability /improve-i18n /improve-iac /improve-events /improve-compliance /improve-business /improve-release /improve-stability /improve-delivery`
-- `optimize-*: /optimize-perf /optimize-build /optimize-bundle /optimize-cost /optimize-memory /optimize-docker /optimize-ci /optimize-queries /optimize-network /optimize-startup`
+- `optimize-*: /optimize-perf /optimize-bundle /optimize-cost /optimize-memory /optimize-docker /optimize-ci /optimize-queries /optimize-network /optimize-startup`
 
 ### 5. Workspaces
 
@@ -102,7 +99,7 @@ Improvements (pick variants matching the project):
 
 ### 7. Ship
 
-- Use `/ship-verify` as the gate, then `/ship-to-dev-branch` for release.
+- Use `/ship` for verify + push + merge into `main` — never commit/push outside it.
 - Follow project conventions and validation before release.
 
 ## Expected Outcome

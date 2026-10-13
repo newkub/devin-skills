@@ -5,7 +5,7 @@ argument-hint: "[branch-name]"
 related:
   - cleanup
   - delete
-  - ship-to-dev-branch
+  - ship
 
 ---
 
@@ -49,7 +49,7 @@ Use before starting a feature, bugfix, hotfix, or experiment
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` doesn't pass → report the status
 
 ## Rules

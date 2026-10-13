@@ -9,7 +9,7 @@ related:
   - report-flow
   - report-architecture-diagram
   - use-scripts
-  - ship-to-dev-branch
+  - ship
   - open-files-in-web
   - report-workspace-graph
 
@@ -109,7 +109,7 @@ Supports both a direct prompt and reading from files/images. To visualize from c
 - Use /draw-excalidraw if needed
 - Use /draw-tldraw if needed
 - Use /report-flow if needed
-- Use /ship-to-dev-branch if needed
+- Use /ship if needed
 - Use /open-files-in-web if needed
 
 ## Expected Outcome

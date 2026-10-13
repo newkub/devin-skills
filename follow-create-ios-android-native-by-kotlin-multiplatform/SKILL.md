@@ -121,7 +121,7 @@ Build a native mobile app for iOS and Android from a single Kotlin codebase usin
 1. Run `/deep-review` to check UI/UX and architecture
 2. Run `/run-test` for the test suite
 3. Run `/follow-lang-kotlin` to verify conventions
-4. Run `/ship-to-dev-branch`
+4. Run `/ship`
 
 ## Rules
 

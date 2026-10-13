@@ -142,7 +142,7 @@ server.listen(3000)
 2. รัน `bun test` หรือ test suite ที่มี
 3. ตรวจสอบว่าไม่มี reserved keywords ถูก override
 4. ทำ `/report table` สรุป status คอลัมน์: `No.`, `Check`, `Status`, `Notes`
-5. ทำ `/deep-validate` แล้ว `/ship-to-dev-branch`
+5. ทำ `/deep-validate` แล้ว `/ship`
 
 ## Rules
 

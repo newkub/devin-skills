@@ -120,7 +120,7 @@ Use the table below to map the context to a primary review skill and, where appl
 
 1. Run `/report`
 2. Build the Review Skills Used, Findings Count, Severity Breakdown, Review Score table
-3. Identify the next skill to run, e.g. `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, or `/ship-to-dev-branch`
+3. Identify the next skill to run, e.g. `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, or `/ship`
 4. Run `/suggest-next-action`
 
 ## Rules

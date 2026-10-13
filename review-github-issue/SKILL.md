@@ -14,6 +14,9 @@ related:
   - use-subagents
   - report
   - suggest-next-action
+  - deep-thinking
+  - deep-analyze
+  - deep-validate
 
 ---
 
@@ -28,6 +31,8 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 - quality dimensions (completeness, quality, rating) reuse checklists ของ `/deep-review` → `deep-review` — ห้าม duplicate checklists ใน skill นี้
 
 ## Execute
+
+ทุกรอบเริ่มด้วย deep pre-pass — ทำ `/deep-thinking` → `/deep-analyze` → `/deep-validate` ก่อน fetch/review ใดๆ (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 
 ### 1. Fetch Issue Context
 

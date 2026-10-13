@@ -7,7 +7,7 @@ related:
   - follow-create-rust-cli
   - deep-review
   - flatten-directory
-  - ship-to-dev-branch
+  - ship
   - rethink
   - run-test
   - test-cli
@@ -72,7 +72,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-to-dev-branch`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

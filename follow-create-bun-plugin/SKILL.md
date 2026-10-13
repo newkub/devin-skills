@@ -121,7 +121,7 @@ For building plugins for the Bun runtime and the `bun build` bundler in TypeScri
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

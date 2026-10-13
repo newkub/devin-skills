@@ -16,7 +16,7 @@ related:
   - learn-from-cli
   - check-types-definition
   - report
-  - ship-to-dev-branch
+  - ship
   - use-subagents
 ---
 
@@ -92,7 +92,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 ### 9. Ship
 > Goal: deliver the work
 
-Run `/ship-to-dev-branch` — fails → report the status and stop — then `/report` summarizing topic, old/new info, files changed, next actions
+Run `/ship` — fails → report the status and stop — then `/report` summarizing topic, old/new info, files changed, next actions
 
 ## Conventions
 
@@ -119,12 +119,12 @@ Execute pattern core per prefix (choose longest match first, e.g. `follow-lib-*`
 |--------|----------------------|
 | `run-*` | prereq check (missing → stop) → run with timeout (non-block long-running, block short tasks) → fail: `/resolve-errors`, dep → `/run-install` retry×1, config → `/deep-review`; repeats ×3 → stop; report success/duration/metrics; never destructive without confirm |
 | `follow-lib-*` | check manifest+registry+ecosystem → `/learn` official to confirm install cmd/version/peer deps → config+entry point → `/deep-validate`; `references/` has only `apis.md`+`cli.md` (tables only — per `## Conventions → Write References`; no CLI → no `cli.md`); must have `best-practices/` (flat `.md` — patterns/pitfalls/do-don't written from actual research); many use cases → `workflows/<lib>/` |
-| `follow-create-*` | identify target → `../follow-my-techstack/references/techstack-catalog.md` + `/deep-review` → dispatch `follow-create-cli`/`-web`/`-mcp` → scaffold `src/` → dev/build/test pass → MCP → `mcp_config.json` → `/deep-validate` + `/ship-to-dev-branch` |
-| `follow-*` | check version in manifest (tool not found → stop) → `/learn` official + version compat → config with minimal diff → typecheck/lint/tests → `/ship-to-dev-branch`; never rewrite the whole file, don't force upgrades |
+| `follow-create-*` | identify target → `../follow-my-techstack/references/techstack-catalog.md` + `/deep-review` → dispatch `follow-create-cli`/`-web`/`-mcp` → scaffold `src/` → dev/build/test pass → MCP → `mcp_config.json` → `/deep-validate` + `/ship` |
+| `follow-*` | check version in manifest (tool not found → stop) → `/learn` official + version compat → config with minimal diff → typecheck/lint/tests → `/ship`; never rewrite the whole file, don't force upgrades |
 | `setup-*` | prereq + idempotent check (already set up → verify only) → official docs, secrets → `/follow-secret-manager`, never commit → smoke check (`--version`/`doctor`/`status`); fail → `/resolve-errors`×3 |
 | `config-*` | read current config first (`/deep-review` domain `review-config`) → merge only necessary keys, never clobber, no secrets in config → verify with the tool's validate command → `/report-before-after` |
 | `deploy-*` | readiness (build/tests/secrets; a `deploy-to-<platform>` exists → use it) → official CLI staging→prod recording URL+revision, destructive → confirm → smoke test+logs, fail → rollback/`/resolve-errors`×3 |
-| `migrate-*` | `/plan` from→to + official migration guide + rollback path + data backup → incremental config→deps→code→data use `/use-astgrep` instead of manual, separate commits → lint/test/smoke + check leftover deprecated → `/report-before-after`+`/ship-to-dev-branch` |
+| `migrate-*` | `/plan` from→to + official migration guide + rollback path + data backup → incremental config→deps→code→data use `/use-astgrep` instead of manual, separate commits → lint/test/smoke + check leftover deprecated → `/report-before-after`+`/ship` |
 | `optimize-*` | always baseline first (`/run-bench`, `/deep-optimize`) → fix one point at a time high impact→low, preserve behavior (optimize ≠ change output) → re-measure `/report-before-after`; no improvement → revert; + `### Tools And Libraries` per `Skill Prefixes` |
 | `improve-*` | run `/review-*`/`/check-*` to find real targets first, never guess → apply one at a time, preserve behavior, never mix refactor+behavior in one commit → verify lint/tests → `/report` what improved; + `### Tools And Libraries` per `Skill Prefixes` |
 | `fix-*` | confirm root cause first, never fix by symptom (unclear → `/analyze-root-cause-analysis`/`/deep-debug`) → minimal fix → verify `/run-check` no regression; fail → `/resolve-errors`×3 |
@@ -132,7 +132,7 @@ Execute pattern core per prefix (choose longest match first, e.g. `follow-lib-*`
 | `check-*` | target+criteria → `/scan-codebase` + grep/ast-grep/jscpd/knip → `scripts/<name>.ts` runnable repeatedly → Critical/Warning/Info + file:line + recommendation for every finding; cover all workspaces incl. gitignored; `allowed-tools` include `exec`/`grep`/`find_file_by_name` |
 | `analyze-*` | the agent analyzes first → insufficient data → `/deep-analyze`; repeatable → `/use-scripts` helper, not an agent replacement → `/report table` ordered by impact, every finding has evidence (assumption → state it) |
 | `deep-*` | must have `/deep-thinking` as the first step always → identify dimensions → `/deep-research`+`/deep-analyze` per dimension, stepwise, gathering evidence before acting (every non-alias; alias stubs that forward → canonical are exempt — the canonical holds these two steps) → cross-reference for shared root causes → `/report table` ordered by impact/effort + immediate/long-term; cover all dimensions or report "no issues" |
-| `review-*` | `/scan-codebase`+`/deep-review`+ast-grep → cross-check evidence, filter false positives → severity Critical/High/Medium/Low/Info + score (weighted 0/25/50/75/100) → fixes grouped immediate/short/long-term `/report-review` |
+| `review-*` | deep pre-pass always first: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (mandatory for every `review-*`; thin entries forwarding to a canonical inherit it there) → `/scan-codebase`+`/deep-review`+ast-grep → cross-check evidence, filter false positives → severity Critical/High/Medium/Low/Info + score (weighted 0/25/50/75/100) → fixes grouped immediate/short/long-term `/report-review` |
 | `report-*` | `/scan-codebase` to group+metrics+patterns → `/report table` headings/lists with the summary on top → next actions + `/suggest-next-action`; state source+date, don't dump everything |
 | `idea-*` | `/deep-analyze`+`/bench-competitors` to find gaps/opportunities → ideas + continuous numbering + scope/impact/effort `/report table` ordered by impact/effort; actionable only, never reset numbering |
 
@@ -196,7 +196,7 @@ Every skill with dependencies must have `references/` (mandatory, never skip —
 
 ### Src
 
-CLI/terminal/web/browser/MCP → create `src/`: CLI → `/follow-create-cli` (Rust or Bun/TS); web → `/deep-review` first + `/visualize-in-web` HTML entry; MCP → `/follow-create-mcp` (try Rust) + update `mcp_config.json`; test dev/build/run per stack; helper scripts → `/use-scripts`; has `src/` → `/convert-git-submodules` + `/ship-to-dev-branch` after validation
+CLI/terminal/web/browser/MCP → create `src/`: CLI → `/follow-create-cli` (Rust or Bun/TS); web → `/deep-review` first + `/visualize-in-web` HTML entry; MCP → `/follow-create-mcp` (try Rust) + update `mcp_config.json`; test dev/build/run per stack; helper scripts → `/use-scripts`; has `src/` → `/convert-git-submodules` + `/ship` after validation
 
 ### Create From URL
 

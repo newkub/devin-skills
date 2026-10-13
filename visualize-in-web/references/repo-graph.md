@@ -17,7 +17,7 @@ related:
   - alternative
   - review-frontend
   - resolve-errors
-  - ship-to-dev-branch
+  - ship
   - suggest-next-action
 ---
 
@@ -94,7 +94,7 @@ Works with general repos such as projects with a `package.json`, `Cargo.toml`, `
 
 > Goal: Deliver the project
 
-1. If the user wants to keep the project → run `/ship-to-dev-branch`
+1. If the user wants to keep the project → run `/ship`
 2. Report the number of nodes, edges, and types found
 3. Run `/suggest-next-action`
 

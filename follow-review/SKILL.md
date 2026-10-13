@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ pre-action review gate — เช่น ก่อน `/implement-to-production`, `/refactor`, `/ship-to-dev-branch` หรือ action เสี่ยงอื่น
+ใช้เมื่อต้องการ pre-action review gate — เช่น ก่อน `/implement-to-production`, `/refactor`, `/ship` หรือ action เสี่ยงอื่น
 
 - ถ้าต้องการ review แบบ standalone ครบวงจร → ใช้ `/review` (canonical router สำหรับเลือกและ execute `review-*`)
 - skill นี้เน้น "ดูว่า review-* ตัวไหน applicable กับ context ที่จะทำ" แล้วรันแค่ที่จำเป็นก่อนลงมือ

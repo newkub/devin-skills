@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-github
   - update-docs
-  - ship-to-dev-branch
+  - ship
   - report
   - suggest-next-action
 
@@ -34,7 +34,7 @@ If you only need to create the integration branch → follow the Create Integrat
 2. Run `git branch --list main` or `git branch --list master`
 3. If there is no `main` or `master` → stop and report
 4. Check that `git status --porcelain` is empty
-5. If not empty → have the user run `/ship-to-dev-branch` first
+5. If not empty → have the user run `/ship` first
 
 ### 2. Determine Integration Branch
 
@@ -64,7 +64,7 @@ If you only need to create the integration branch → follow the Create Integrat
    #!/bin/sh
    branch=$(git rev-parse --abbrev-ref HEAD)
    if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-     echo "Do not commit directly on main. Use /ship-to-dev-branch."
+     echo "Do not commit directly on main. Use /ship."
      exit 1
    fi
    exit 0
@@ -74,7 +74,7 @@ If you only need to create the integration branch → follow the Create Integrat
    #!/bin/sh
    while read local_ref local_sha remote_ref remote_sha; do
      if [ "$remote_ref" = "refs/heads/main" ] || [ "$remote_ref" = "refs/heads/master" ]; then
-       echo "Direct push to main is not allowed. Use /ship-to-dev-branch."
+       echo "Direct push to main is not allowed. Use /ship."
        exit 1
      fi
    done

@@ -72,7 +72,7 @@ Use when the user wants to start a new project on drive D, whether CLI, website,
 
 1. Verify the project files were actually created at the target path
 2. Run `/run-check` for the stack if needed
-3. Run `/ship-to-dev-branch` when the work is complete
+3. Run `/ship` when the work is complete
 4. Report the path and next actions
 
 ## Rules

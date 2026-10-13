@@ -11,7 +11,7 @@ related:
   - update-references
   - update-gitignore
   - deep-validate
-  - ship-to-dev-branch
+  - ship
   - suggest-next-action
   - ask-me
 
@@ -93,7 +93,7 @@ Use when a repo directory has grown too large, needs to be split into its own re
 > Goal: Save the changes
 
 1. Run `/git-commit`
-2. Run `/ship-to-dev-branch` if you want to push
+2. Run `/ship` if you want to push
 3. Confirm there are no broken references after the removal
 
 ### 8. Validate And Finalize
@@ -153,4 +153,4 @@ Use when a repo directory has grown too large, needs to be split into its own re
 - `git submodule status` shows the submodule pointing to the correct commit
 - A fresh clone with `--recurse-submodules` works
 - No broken references after the conversion
-- Every change passes `/deep-validate` and `/ship-to-dev-branch`
+- Every change passes `/deep-validate` and `/ship`

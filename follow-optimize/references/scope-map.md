@@ -4,8 +4,7 @@ Table-only SSOT (`/follow-single-of-source`) — canonical mapping ที่ `/f
 
 | Signal (วัดได้) | Skill | `/deep-review` domain(s) |
 |-----------------|-------|--------------------------|
-| build/time ช้า, toolchain cache พัง | `/optimize-build` | `review-bundle` (build speed) |
-| bundle output ใหญ่, chunks ไม่ balance | `/optimize-bundle` | `review-bundle` |
+| bundle output ใหญ่, chunks ไม่ balance, build/time ช้า, toolchain cache พัง | `/optimize-bundle` | `review-bundle` |
 | CI pipeline นาน, ไม่มี cache/parallelism | `/optimize-ci` | `review-delivery` |
 | cloud/infra spend สูง | `/optimize-cost` | `review-cost` |
 | LLM token/spend สูง, no caching, oversized context | `/optimize-llm` | `review-ai` + `review-cost` |

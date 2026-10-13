@@ -29,6 +29,7 @@ Review test strategy and quality (before running/writing) + analyze test results
 
 ## Rules
 
+- Deep pre-pass (`/deep-thinking` → `/deep-analyze` → `/deep-validate`) per the `review-*` convention (`update-devin-global-skills` `## Conventions → Templates`) — this thin entry forwards to canonical `/deep-review`, which holds those steps
 - Never duplicate review steps here — the canonical version is in `deep-review/SKILL.md` domain `review-test` only
 - Review only — fix via `/deep-review-then-fix` or `/update-tests` after user confirmation
 

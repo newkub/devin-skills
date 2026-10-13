@@ -102,7 +102,7 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 > Goal: deliver the MCP server
 
 1. Run `/deep-validate` to check conventions, references, and security
-2. Run `/ship-to-dev-branch`
+2. Run `/ship`
 3. If `ship` fails → report the status
 
 ## Rules
@@ -145,5 +145,5 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 - The MCP server works in either Rust or TypeScript
 - Tools/resources/prompts are exposed over the MCP protocol
 - The chosen transport has been tested and passes
-- Passes `/deep-validate` and `/ship-to-dev-branch`
+- Passes `/deep-validate` and `/ship`
 - Ready to hand off for registration via `/create-devin-global-mcp` or `/update-devin-project-mcp` if needed

@@ -17,7 +17,7 @@ related:
   - update-devin
   - deep-review
   - deep-validate
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal
@@ -73,7 +73,7 @@ Use when creating a new MCP server that should be visible to Devin through the g
 > Goal: Deliver
 
 1. Run `/deep-validate` on both the project and the skill repo
-2. Run `/ship-to-dev-branch` for the server project
+2. Run `/ship` for the server project
 3. Report the server name, command, and registration status
 
 ## Rules
@@ -101,4 +101,4 @@ Use when creating a new MCP server that should be visible to Devin through the g
 - The server is registered in `%APPDATA%\devin\mcp_config.json`
 - `mcp_list_servers` shows the server and `mcp_call_tool` can list its tools
 - A backup of the global mcp config exists
-- Passes `/deep-validate` and `/ship-to-dev-branch`
+- Passes `/deep-validate` and `/ship`

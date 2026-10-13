@@ -95,7 +95,7 @@ Use when creating actions for GitHub Marketplace or private repos, covering inpu
 1. Create the git tag `v1.0.0`
 2. Point the major tag `v1` at the latest commit
 3. Create a GitHub release with release notes
-4. Run `/ship-to-dev-branch`
+4. Run `/ship`
 
 ## Rules
 

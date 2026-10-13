@@ -100,7 +100,7 @@ Use for building library crates in pure Rust or with FFI, covering `Cargo.toml`,
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

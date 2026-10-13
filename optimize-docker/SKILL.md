@@ -4,7 +4,7 @@ description: หา Docker optimization — image size, layers, cache, multi-sta
 argument-hint: "[scope]"
 related:
   - improve
-  - optimize-build
+  - optimize-bundle
   - improve-iac
   - cleanup-docker
   - deep-review

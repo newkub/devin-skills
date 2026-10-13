@@ -10,7 +10,7 @@ related:
   - follow-tool-moonrepo
   - update-project
   - update-dot-devin
-  - refactor-to-packages-shared
+  - refactor
   - update-gitignore
   - research-setup-integrations
   - deep-validate
@@ -286,7 +286,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 - Use when the same config (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) is duplicated in 2+ workspaces
 - Use when the same dependency version is spread across several package manifests
-- For duplicated shared code (utils, types, components) across packages → use `/refactor-to-packages-shared` instead
+- For duplicated shared code (utils, types, components) across packages → use `/refactor` packages-shared scope instead
 - For env vars → use `workflows/config-env/SKILL.md` instead
 
 ##### Execute
@@ -311,7 +311,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
    - test/build config → `defineConfig` from the shared one
 2. Move duplicated dependency versions into a catalog per package manager (`pnpm-workspace.yaml` catalogs, `bun.catalogs`, or root `overrides`)
 3. Replace versions in package manifests with a `catalog:` reference
-4. If this work also involves shared code duplication → dispatch `/refactor-to-packages-shared` for the code part
+4. If this work also involves shared code duplication → dispatch `/refactor` packages-shared scope for the code part
 
 ###### 3. Rewire And Verify
 

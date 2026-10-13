@@ -9,7 +9,7 @@ related:
   - ask-project-requirement
   - suggest-next-action
   - loop-until-complete
-  - ship-to-dev-branch
+  - ship
 
 ---
 
@@ -19,7 +19,7 @@ Enable a "no-ask" mode from invocation until the end of the session — never us
 
 ## Scope
 
-- Use when the user says `dont-ask-me`, `dont ask me`, `do not ask`, `no need to ask`, `proceed`, or `no ask`, or when a workflow such as `/ship-to-dev-branch` enables this mode in `dont-ask-me` mode
+- Use when the user says `dont-ask-me`, `dont ask me`, `do not ask`, `no need to ask`, `proceed`, or `no ask`, or when a workflow such as `/ship` enables this mode in `dont-ask-me` mode
 - Works as a session mode: once enabled it applies to every instruction in the same session, including `global_rules.md` and any skills that reference `/ask-me`
 - Not a store of requirements or preferences — if a prompt contains a question that must be answered before starting, answer it with a safe default via `/follow-your-suggestion` instead of asking
 

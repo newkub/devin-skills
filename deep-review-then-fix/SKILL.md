@@ -49,7 +49,7 @@ Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill ma
 | data-validation | `/deep-review` | `/improve-data-validation` |
 | database | `/deep-review` | `/improve-database` (migrations) + query perf → `/optimize-queries` |
 | dependencies | `/deep-review` | `/improve-deps` |
-| bundle+assets | `/deep-review` | `/optimize-bundle` (build speed → `/optimize-build`) |
+| bundle+assets+build speed | `/deep-review` | `/optimize-bundle` |
 | performance | `/deep-review` | `/optimize-perf` (network → `/optimize-network`; startup → `/optimize-startup`) |
 | memory | `/deep-review` | `/optimize-memory` |
 | cost | `/deep-review` | `/optimize-cost` |

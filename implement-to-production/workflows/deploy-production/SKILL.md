@@ -13,7 +13,7 @@ related:
   - test-usage
   - resolve-errors
   - ask-me
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ related:
 
 1. report URL, version และผล verify
 2. ถ้ามี items ค้าง/blocked → เก็บลง `TODO.md` ตาม parent flow
-3. ทำ `/ship-to-dev-branch` แล้ว `/suggest-next-action`
+3. ทำ `/ship` แล้ว `/suggest-next-action`
 
 ## Rules
 

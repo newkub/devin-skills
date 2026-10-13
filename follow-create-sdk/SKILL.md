@@ -6,7 +6,7 @@ related:
   - ask-me
   - search
   - report
-  - ship-to-dev-branch
+  - ship
   - update-references
   - deep-review
   - run-test
@@ -90,7 +90,7 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 1. If the user picks one skill → call the `skill` tool with `skill: <selected-skill-name>`
 2. If the user picks several skills → confirm the order with the user via `/ask-me` first, then invoke in order
 3. If the user answers free-form (custom text) → use `search-skills` or string match against `follow-create-*`, then invoke if there's a match
-4. If the selected skill creates a project/app/CLI that must ship, or the user asks to ship → invoke `/ship-to-dev-branch` after the selected skill finishes
+4. If the selected skill creates a project/app/CLI that must ship, or the user asks to ship → invoke `/ship` after the selected skill finishes
 
 ### 6. Handle Mismatch
 
@@ -108,7 +108,7 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 - Don't invent new `follow-create-*` entries that don't exist
 - After the user selects, the skill must be invoked with the `skill` tool
 - If multiple skills are selected, confirm the order first
-- If the user wants to ship, invoke `/ship-to-dev-branch` after the selected skill finishes
+- If the user wants to ship, invoke `/ship` after the selected skill finishes
 
 - Use /follow-create-biome-plugin if needed
 - Use /follow-create-bot if needed
@@ -159,5 +159,5 @@ Canonical file structure + layer table: [templates/file-structure-sdk.md](templa
 
 - The user sees the full list of existing `follow-create-*` skills
 - The user picks the desired skill via `/ask-me`
-- The selected skill is invoked, with `/ship-to-dev-branch` if needed
+- The selected skill is invoked, with `/ship` if needed
 

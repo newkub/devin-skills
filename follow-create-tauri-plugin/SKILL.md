@@ -6,7 +6,7 @@ related:
   - follow-create-web
   - deep-review
   - follow-tool-cargo
-  - ship-to-dev-branch
+  - ship
 
 ---
 ## Goal
@@ -98,7 +98,7 @@ export async function myCommand() {
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

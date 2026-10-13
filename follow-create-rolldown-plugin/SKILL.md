@@ -98,7 +98,7 @@ Use for building JavaScript/TypeScript plugins for Rolldown or Vite 8+, covering
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

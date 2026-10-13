@@ -10,7 +10,6 @@ related:
   - idea-naming
   - create-plan-in-dot-devin
   - refactor-workspace
-  - refactor-to-packages-shared
   - no-hard-code
   - no-use-ignore
   - update-references
@@ -24,6 +23,7 @@ related:
   - check-long-files
   - resolve-errors
   - dont-over-engineer
+  - follow-devin-global-skills
   - follow-single-of-source
   - follow-reusable
   - follow-my-techstack
@@ -48,10 +48,10 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 ## Scope
 
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
-- ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
+- ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`; refactor ทุกไฟล์ใน workspace เดียวจนครบ / ทุก workspace ใน monorepoจนครบ → `## Merged Details`
 - ถ้า context คือจัด architecture ตาม directory หรือเลือก clean/layered → ทำ architecture refactor — selection + dispatch ผ่าน `/follow-architecture` (หลาย apps unified → clean, app เดียว → layered)
 - ถ้า context คือไฟล์/โมดูลที่รวมหลาย concerns ปนกัน (UI + logic + IO + config ในที่เดียว) → ทำ `### /separate-of-concerns` (merged)
-- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ใช้ `/refactor-to-packages-shared`
+- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ทำ `### /refactor-to-packages-shared (merged)`
 - ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` + `references/repository-pattern.md`
 - ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ใช้ `/restructure`
 - ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
@@ -178,7 +178,7 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 ### 5. Minimal Change
 
 - `/dont-over-engineer` + `/follow-reusable` (reuse > extend > extract > create); แก้ root cause ตาม `references/code-smells.md`; ห้าม perf tuning ใน refactor pass
-- ก่อนเลือก/เพิ่ม dependency → `/follow-my-techstack` (เทียบ `deep-review`) + `/use-lib-effective` (ใช้ dep ที่มีแทน reinvent)
+- ก่อนเลือก/เพิ่ม dependency หรือหา skill/stack มาช่วย → `/follow-devin-global-skills` (catalog ของ skills ที่ใช้ได้ในระบบ), `/follow-my-techstack` (เทียบ tech catalog ก่อนเลือก stack/tool) + `/use-lib-effective` (ใช้ dep ที่มีแทน reinvent)
 
 ### 6. SRP And Consistency
 
@@ -234,6 +234,10 @@ Canonical SRP splitter — promoted เป็น top-level skill (`refactor-to-s
 ### /restructure → `/restructure`
 
 Canonical structure refactor — promoted เป็น top-level skill (`restructure/SKILL.md`); procedure ละเอียด [references/structure.md](references/structure.md)
+
+### /refactor-all-files-in-workspace, /refactor-all-workspace, /refactor-to-packages-shared (merged)
+
+Coverage scopes ที่ merge เข้า dispatcher นี้: ทุกไฟล์ใน workspace เดียวจนครบ → [references/scope-all-files.md](references/scope-all-files.md) · ทุก workspace ใน monorepo ตาม dependency order → [references/scope-all-workspace.md](references/scope-all-workspace.md) · extract shared code ข้าม packages ไป `packages/shared` → [references/packages-shared.md](references/packages-shared.md)
 
 ## Expected Outcome
 

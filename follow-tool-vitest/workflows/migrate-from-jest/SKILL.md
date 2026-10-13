@@ -67,7 +67,7 @@ Migrate test suite จาก Jest ไป Vitest อย่างปลอดภ�
 2. ทำ `/deep-review` เช็ค `jest.` ที่เหลือ
 3. เมื่อเขียวแล้ว: ลบ `jest`, `@types/jest`, `ts-jest`, `babel-jest`, `jest.config.*` แยก commit
 4. สลับ `"test": "vitest run"` แล้วรัน `/run-test` ยืนยันอีกครั้ง
-5. เสร็จ → `/report-before-after` แล้ว `/ship-to-dev-branch`
+5. เสร็จ → `/report-before-after` แล้ว `/ship`
 
 ## Rules
 

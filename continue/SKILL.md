@@ -6,7 +6,7 @@ related:
   - report-progress
   - follow-best-practice
   - suggest-next-action
-  - ship-to-dev-branch
+  - ship
 ---
 
 ## Goal
@@ -54,8 +54,8 @@ Use for work that is stalled or needs to pick up from where it was paused.
 
 1. Summarize the completed work in a table
 2. If the work is complete and the user asked to ship or deploy, suggest the next action based on context:
-   - Deploying to staging → `/ship-to-dev-branch`
-   - Releasing a patch → `/ship-to-dev-branch`
+   - Deploying to staging → `/ship`
+   - Releasing a patch → `/ship`
    - Unsure → use `/suggest-next-action` to pick the right ship option
 3. Stop when everything is complete or when there is a clear next action
 

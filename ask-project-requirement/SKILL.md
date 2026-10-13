@@ -6,7 +6,7 @@ related:
   - ask-me
   - update-docs
   - alternative
-  - ship-to-dev-branch
+  - ship
   - plan
   - follow-goal
 
@@ -60,7 +60,7 @@ Use when starting a new project, or when the context is unclear, before making a
 
 - Ask whether `/alternative` should be used
 - If a needed library is missing, ask which one should be recommended, multi_select from the candidates
-- Ask about the required build/ship-to-dev-branch tools, multi_select
+- Ask about the required build/ship tools, multi_select
 
 ### 3. Synthesize Requirements
 

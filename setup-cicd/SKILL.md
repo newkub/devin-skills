@@ -12,7 +12,7 @@ related:
   - run-verify
   - run-test
   - follow-tool-mr-boxington
-  - ship-to-dev-branch
+  - ship
   - report
   - suggest-next-action
   - run-deploy
@@ -27,7 +27,7 @@ Detect the CI/CD platform the project uses, then set up workflow files, secrets,
 
 Run once at setup or when the CI/CD config is not ready. Does not include running pipelines, committing, pushing, deploying, or releasing (it can set up the release workflow but never runs a release).
 
-To run cloud verify or ship on cloud, use `/run-verify` or `/ship-to-dev-branch` instead.
+To run cloud verify or ship on cloud, use `/run-verify` or `/ship` instead.
 
 ## Execute
 
@@ -204,7 +204,7 @@ Check `vercel.json` and add a GitHub Actions workflow, or use Vercel Git Integra
 
 - `setup-cicd` only configures; it never runs pipelines
 - No commit, push, deploy, or release
-- To run pipelines, use `/run-verify` or `/ship-to-dev-branch`
+- To run pipelines, use `/run-verify` or `/ship`
 
 ### 2. Platform First
 
@@ -229,7 +229,7 @@ Check `vercel.json` and add a GitHub Actions workflow, or use Vercel Git Integra
 ### 5. No Auto Commit
 
 - Never commit or push config files automatically
-- If the user wants to commit → run `/git-commit` or `/ship-to-dev-branch` after setup
+- If the user wants to commit → run `/git-commit` or `/ship` after setup
 
 ### 6. Overlap And Cost
 

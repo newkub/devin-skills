@@ -61,7 +61,7 @@ related:
 2. ทำ `link check ด้วย lychee หรือ markdown-link-check` บน site ใหม่
 3. spot-check admonitions, code blocks, images, i18n routes
 4. ผ่านแล้ว → ลบ Docusaurus deps/config ออก, แก้ deploy workflow เป็น VitePress build — ทำ `/update-references` และอัปเดต docs/README
-5. ทำ `/report-before-after` แล้ว `/ship-to-dev-branch`
+5. ทำ `/report-before-after` แล้ว `/ship`
 
 ## Rules
 

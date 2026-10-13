@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - deep-review
   - follow-tool-eslint
-  - ship-to-dev-branch
+  - ship
   - run-lint
   - run-format
 ---
@@ -71,7 +71,7 @@ For setting up Oxlint plugins, both built-in (native) and JavaScript plugins, fo
 
 > Goal: Deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

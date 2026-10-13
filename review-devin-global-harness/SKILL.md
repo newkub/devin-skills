@@ -47,7 +47,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 ### 1. Prepare Context
 > Goal: inventory ทุก layer ของ harness
 
-1. ทำ `/scan-codebase` ใน skills dir → list skills ทั้งหมดจัดกลุ่มตาม prefix → อ่าน `update-devin-global-skills` + `AGENTS.md` + `global_rules.md` เพื่อทราบมาตรฐานปัจจุบัน
+1. ทำ deep pre-pass ตาม convention `review-*` (`update-devin-global-skills` `## Conventions → Templates`): `/deep-thinking` → `/deep-analyze` → `/deep-validate` ก่อนเสมอ แล้วทำ `/scan-codebase` ใน skills dir → list skills ทั้งหมดจัดกลุ่มตาม prefix → อ่าน `update-devin-global-skills` + `AGENTS.md` + `global_rules.md` เพื่อทราบมาตรฐานปัจจุบัน
 2. รวบรวม inventory: skills dirs, `%APPDATA%\devin\agents\*` (AGENT.md), hooks config, MCP config, `global_rules.md`
 
 ### 2. Run Review Script

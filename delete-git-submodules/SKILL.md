@@ -4,7 +4,7 @@ description: Remove a git submodule from the repo: .gitmodules, .git/modules, an
 argument-hint: "[submodule-path]"
 related:
   - git-commit
-  - ship-to-dev-branch
+  - ship
 
 ---
 ## Goal
@@ -76,7 +76,7 @@ Use for removing git submodule that are no longer needed, with cleanup of everyt
 - Always run `git gc` after the removal is done
 
 - Use /git-commit if needed
-- Use /ship-to-dev-branch if needed
+- Use /ship if needed
 
 ## Expected Outcome
 

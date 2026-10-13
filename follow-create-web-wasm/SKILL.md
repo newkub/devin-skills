@@ -160,7 +160,7 @@ Use when a task needs Rust performance in the browser without writing a backend,
 2. If Cloudflare Pages → follow `/follow-service-cloudflare`
 3. Verify `.wasm` files are served with the MIME type `application/wasm`
 4. Test the production URL with a heavy function
-5. Run `/ship-to-dev-branch`
+5. Run `/ship`
 6. If `ship` fails → report the status
 
 ## Rules

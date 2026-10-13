@@ -88,7 +88,7 @@ For building general VSCode extensions, supporting the official `yo generator-co
 2. Run `bunx @vscode/vsce package` to create the `.vsix` (use `--allow-missing-repository` only when there is no git repo)
 3. Create a publisher account in the Marketplace
 4. Run `bunx @vscode/vsce publish` or use GitHub Actions
-5. Run `/ship-to-dev-branch`
+5. Run `/ship`
 
 ## Rules
 

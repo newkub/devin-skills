@@ -9,6 +9,9 @@ related:
   - ask-me
   - report
   - suggest-next-action
+  - deep-thinking
+  - deep-analyze
+  - deep-validate
 ---
 
 ## Goal
@@ -22,6 +25,8 @@ Use for any project that needs an outside perspective — covers 18 categories i
 If you need feedback from real stakeholders (not roleplay) → use `/deep-review` instead.
 
 ## Execute
+
+Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before identifying/roleplaying any role (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`).
 
 ### 1. Identify Role
 

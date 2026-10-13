@@ -12,7 +12,7 @@ related:
   - follow-lib-unocss
   - follow-design-system
   - deep-review
-  - ship-to-dev-branch
+  - ship
   - report
   - enhance-prompt
   - implement-to-production
@@ -30,7 +30,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 - Invoke `/follow-create-web` to create the website project
 - Invoke `/follow-service-workos` for auth
 - Invoke `/follow-service-stripe` for payments, pricing, billing
-- Invoke `/ship-to-dev-branch` when the work is done
+- Invoke `/ship` when the work is done
 
 - Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-12)
 
@@ -143,7 +143,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 
 1. Invoke `/deep-validate` for types, quality, security, cross-reference
 2. Invoke `/run-test all` if tests exist
-3. Invoke `/ship-to-dev-branch` to commit and deploy
+3. Invoke `/ship` to commit and deploy
 4. Report the product URL, features, and next actions
 
 ## Rules

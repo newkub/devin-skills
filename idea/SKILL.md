@@ -32,7 +32,6 @@ related:
 | ไอเดียจัดกลุ่ม items ตาม criteria/themes | `/idea-grouping` |
 | ไอเดียจาก review findings/reports ที่มีอยู่ | `/idea-review` |
 | ไอเดีย UX/UI improvements และ features | `/idea-uxui` |
-| ไอเดีย refactor workspace ใน monorepo | `/idea-refactor-workspace` |
 | ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
 | skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
 | แปลง CLI tools เป็น Devin skills | `/idea-convert-my-global-cli-to-skills` |

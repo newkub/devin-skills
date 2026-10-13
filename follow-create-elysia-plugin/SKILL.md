@@ -88,7 +88,7 @@ Use for creating a reusable Elysia plugin for the Bun/Node runtime, supporting t
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

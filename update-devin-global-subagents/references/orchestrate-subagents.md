@@ -61,7 +61,7 @@ Use when a task spans multiple areas, e.g. frontend + backend + QA + DevOps, or 
 
 1. Run `/deep-validate`
 2. Run `/deep-validate` if the work is high risk
-3. Run `/ship-to-dev-branch` if there are changes
+3. Run `/ship` if there are changes
 4. Run `/report` summarizing what each subagent did
 
 ## Rules

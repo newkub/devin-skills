@@ -21,7 +21,7 @@ related:
   - transform
   - follow-math-concepts
   - deep-validate
-  - ship-to-dev-branch
+  - ship
   - report
   - ask-me
 ---
@@ -94,7 +94,7 @@ See more: /follow-agents-md
 > Goal: Deliver work that passes the checks
 
 1. Run `run-check` for the ecosystem(s) detected
-2. If it passes → run `/ship-to-dev-branch`
+2. If it passes → run `/ship`
 3. If it fails → report the status and next steps
 4. Run `/report` summarizing what each subagent did
 

@@ -11,13 +11,12 @@ related:
   - follow-monorepo
   - refactor-workspace
   - follow-architecture
-  - ship-verify
+  - ship
   - update-tests
   - run-dev
   - test-usage
   - implement-to-production
   - update-review-cli-then-run
-  - ship-to-dev-branch
   - git-commit-and-push
   - report
 ---
@@ -62,7 +61,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 2. Root `AGENTS.md` → start from `templates/agents-md-monorepo.md`
 3. Workspace `AGENTS.md` → start from `templates/agents-md-workspace.md` for each workspace
 4. Write the sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-5. `## Execute` follows the template — a workspace has `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (choose the pattern via `/follow-architecture`) + `### Ship Verify`; a monorepo has follow-monorepo → subagents follow workspace AGENTS.md → `/refactor-workspace` workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship-verify`
+5. `## Execute` follows the template — a workspace has `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (choose the pattern via `/follow-architecture`) + `### Ship`; a monorepo has follow-monorepo → subagents follow workspace AGENTS.md → `/refactor-workspace` workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship`
 6. Every step in `## Execute` must be an actionable command an agent can run
 7. If several workspaces are independent of each other, use `/use-subagents` — 1 workspace = 1 subagent (workspace path, manifest, deliverable)
 8. If the context is unclear → stop and report
@@ -71,9 +70,8 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 
 > Goal: Verify through the canonical gate, then ship
 
-1. Run `/ship-verify` — the canonical gate covering `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage` — do not duplicate verify steps here
-2. Once everything passes → `/ship-to-dev-branch` to release
-3. Run `/report` to summarize
+1. Run `/ship` — the canonical gate covering `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`, then commit/push, PR review gate, and merge into `main` — do not duplicate verify or ship steps here
+2. Run `/report` to summarize
 
 ## Rules
 
@@ -104,7 +102,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 
 ### 5. Skills Mapping
 
-- `### Skills` in the generated `AGENTS.md` stays simple — core: `/dont-ask-me`, `/ship-verify`, `/ship-to-dev-branch`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
+- `### Skills` in the generated `AGENTS.md` stays simple — core: `/dont-ask-me`, `/ship`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
 - Quality/improvement group (per project): `/deep-review`, `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
 - Add only the project-specific skills that are truly needed
 
@@ -117,8 +115,8 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 
 ### 7. Validation
 
-- All verification lives in `/ship-verify` (canonical) — this skill only invokes it and must not duplicate it
-- Do not commit on your own while writing `AGENTS.md` — after `/ship-verify` passes, ship with `/ship-to-dev-branch`
+- All verification lives in `/ship` (canonical) — this skill only invokes it and must not duplicate it
+- Do not commit on your own while writing `AGENTS.md` — ship through `/ship`, which verifies then pushes and merges
 
 ## Expected Outcome
 
@@ -126,5 +124,5 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 - A Techstack Skills table covering every dependency that has a matching skill
 - `### Platform` and `### Target User` are correct
 - For a monorepo: every workspace has an `AGENTS.md` plus a workspace usage table
-- Passes `/ship-verify` — stakeholder review happens in the `/ship-to-dev-branch` merge gate (`/review-by-all-stakeholder`)
+- Passes `/ship` — stakeholder review happens in the `/ship` merge gate (`/review-by-all-stakeholder`)
 - Subagents can read `AGENTS.md` and carry out the steps

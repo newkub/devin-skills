@@ -35,6 +35,8 @@ related:
   - improve-tests
   - update-tests
   - watch-browser-and-test
+  - ship
+  - release-new-version
 
 ---
 
@@ -130,7 +132,7 @@ related:
 4. Implement retry logic, exponential backoff, graceful degradation — ทำ `/deep-review` กับ mutation endpoints ให้ retry-safe
 5. ทำ `/deep-review` — ไม่มี throw ที่ไม่มี handler หรือ catch ที่ swallow errors
 6. ทำ `/deep-review` กับ endpoints ที่เปิดใหม่ — กัน abuse/brute force/cost exposure
-7. ตั้งค่า structured logging สำหรับ external calls
+7. ตั้งค่า structured logging สำหรับ external calls — ทำ `/improve-observability` เพื่อหา observability gaps ครบทั้ง logging/metrics/tracing
 8. เพิ่ม metrics: response time, error rate
 9. เพิ่ม correlation IDs สำหรับ tracing
 10. ถ้าจำเป็น → ทำ `/deep-review`
@@ -151,7 +153,7 @@ related:
 
 > Goal: code ผ่าน validation พร้อม rollback plan
 
-1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test all` เพื่อรัน unit, integration, e2e, specialized tests — ถ้า project มี coverage target ให้ทำ `/run-test coverage` จน coverage ถึงเป้า (default 100%) ก่อน verify; test gaps ที่เจอระหว่างทาง → `/improve-tests` (review-test + review-coverage findings) แล้วเขียน/แก้ specs ผ่าน `/update-tests`
+1. ทำ `/ship verify-only` เป็น canonical verify gate (ห้าม duplicate gate เอง — reference `/ship` ตาม SSOT ของ repo): รัน `/deep-review` → `/deep-validate` → `/run-check` → `/update-tests` + `/run-test all` → `/run-dev` + `/test-usage` ครบชุด แล้วหยุดก่อน push/merge — test gaps ที่เจอระหว่างทาง → `/improve-tests` แล้วเขียน/แก้ specs ผ่าน `/update-tests`; ถ้า project มี coverage target → `/run-test coverage` จนถึงเป้า (default 100%)
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. pre-ship sweep: scan debug leftovers ด้วย `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` ยืนยันไม่มี secrets หลุด, และ `/run-audit` ตรวจ dependency vulnerabilities
@@ -161,7 +163,7 @@ related:
 8. ถ้างานซับซ้อนหรือหลาย workspace → ทำ deep pass เพิ่ม: front-load `/deep-thinking`, `/deep-impact` สำหรับ high-impact changes, จัดลำดับ critical path (schema → data → API → UX) และกำหนด rollback plan ก่อนแต่ละ batch
 9. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
 10. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
-11. ทำ `/suggest-next-action`
+11. ทำ `/suggest-next-action` — ถ้าทุกอย่างผ่านและ user ต้องการขึ้น production → ทำ `/ship` ตัวเต็ม (commit/push → PR review gate → merge `main`) หรือ `/release-new-version` เมื่อต้องออก version
 
 ### Workflows
 
@@ -243,5 +245,5 @@ related:
 - ทุก interactive element ใช้งานได้จริง end-to-end — ผ่าน click-through จริงใน browser
 - improvements รอบ scope ถูกหาและแก้ครอบคลุมผ่าน `/improve`
 - infrastructure พร้อม production: security, observability, resilience
-- ผ่าน `/run-test all` และ `/run-verify`
+- ผ่าน canonical verify gate `/ship verify-only` ครบชุด (รวม `/run-test all` และ `/run-verify`) พร้อม handoff ไป `/ship` หรือ `/release-new-version`
 - มี rollback plan

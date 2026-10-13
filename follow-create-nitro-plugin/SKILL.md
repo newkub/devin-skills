@@ -99,7 +99,7 @@ Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standal
 
 > Goal: deliver the work
 
-1. Run `/ship-to-dev-branch`
+1. Run `/ship`
 2. If `ship` fails → report the status
 
 ## Rules

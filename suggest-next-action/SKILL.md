@@ -9,7 +9,7 @@ related:
   - update-devin
   - report
   - ask-me
-  - ship-to-dev-branch
+  - ship
   - continue
   - idea
   - rethink
@@ -201,7 +201,7 @@ Explain the trade-offs between options
 - Use /loop-until-complete when needed
 - Use /follow-enter-dot when needed
 - Use /report when needed
-- Use /ship-to-dev-branch when needed
+- Use /ship when needed
 - Use /continue when needed
 - Use /idea-features or /idea-features when needed
 - Use /rethink when needed

@@ -3,7 +3,7 @@ name: follow-monorepo
 description: ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
 argument-hint: "[workspace-or-command]"
 related:
-  - ship-to-dev-branch
+  - ship
   - run-build
   - run-verify
   - follow-tool-vite
@@ -156,7 +156,7 @@ related:
 - ไม่ refactor workspaces ทั้งหมดในครั้งเดียว
 - แก้เฉพาะ workspaces ทีมีปัญหา
 
-- ใช้ /ship-to-dev-branch ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น

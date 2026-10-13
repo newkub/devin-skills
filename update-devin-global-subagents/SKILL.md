@@ -12,7 +12,7 @@ related:
   - deep-review
   - deep-review-then-fix
   - deep-validate
-  - ship-to-dev-branch
+  - ship
   - report
   - ask-me
 
@@ -111,7 +111,7 @@ See also: /follow-agents-md, /update-agents-md
 > Goal: deliver the work
 
 1. Run `/deep-validate`
-2. Run `/ship-to-dev-branch`
+2. Run `/ship`
 3. If `ship` fails → report the status
 
 ## Rules

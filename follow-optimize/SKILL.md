@@ -4,7 +4,6 @@ description: Convention optimization — route ผ่าน optimize-* หรื
 argument-hint: "[scope]"
 related:
   - deep-optimize
-  - optimize-build
   - optimize-bundle
   - optimize-ci
   - optimize-cost
@@ -35,7 +34,7 @@ related:
 
 > Goal: เลือก optimize path ที่ตรง scope
 
-1. scope ชัดเจน → lookup `references/scope-map.md` แล้วใช้ `optimize-{domain}` ตรงๆ (ครบ 18 domains: build, bundle, ci, cost, docker, memory, network, perf, queries, startup, api-latency, cache, concurrency, images, mobile, storage, test-suite, web-vitals)
+1. scope ชัดเจน → lookup `references/scope-map.md` แล้วใช้ `optimize-{domain}` ตรงๆ (ครบ 18 domains: bundle, ci, cost, llm, docker, memory, network, perf, queries, startup, api-latency, cache, concurrency, images, mobile, storage, test-suite, web-vitals)
 2. scope กว้างหรือ bottleneck ไม่รู้ → ใช้ `/deep-optimize` fan-out subagents ทุก dimension แล้วรวม prioritized plan
 3. ถ้าเป็น bottleneck hunting เฉพาะจุด → `/deep-optimize`/`/run-profiler` ตาม AGENTS.md convention
 

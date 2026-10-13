@@ -19,7 +19,7 @@ related:
   - resolve-errors
   - check-should-update
   - implement-to-production
-  - ship-to-dev-branch
+  - ship
   - report
   - test-website
   - test-cli
