@@ -1,6 +1,6 @@
 ---
 name: update-devin-global-skills
-description: "จัดการ global Devin skills: สร้าง อัปเดต refactor และตรวจสอบมาตรฐาน"
+description: "Maintain global Devin skills: create, update, refactor, and validate against repo standards"
 argument-hint: "[@files-or-topic...]"
 related:
   - idea-use-skills-relations
@@ -241,7 +241,7 @@ Triggers: `mise use -g`/`scoop install` → 1+2; สร้าง skill → 2,4,6
 ### 4. Content Standard
 
 - how-to อ้าง CLI tools ที่ติดตั้งจริง (inventory `check-my-global-cli/references/global-cli-commands.md`, map `follow-skills-map/references/tool-map.md`) — ห้ามเขียน script เองถ้า CLI ทำได้; ไม่มี → `/deep-research` หา หรือ `mise use -g`
-- `name` ตรง directory name, `description` ≤100 ตัวอักษร; ไม่มี TODO/MOCK/placeholder — ไม่ชัดให้ระบุความไม่แน่นอน; global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ; ห้าม `**` bold; ใช้ `/check-reference`, `/follow-single-of-source` ถ้าจำเป็น
+- `name` matches directory name, `description` ≤100 characters; no TODO/MOCK/placeholder — flag uncertainty explicitly; global skills are written in English (technical terms stay English); no `**` bold; use `/check-reference`, `/follow-single-of-source` when needed
 - install commands ตาม ecosystem: `bun add`/`bun install` (JS/TS — default), `cargo add` (Rust), `go get` (Go), `pip install` (Python), `mise use -g npm:<package>` global npm CLI — หลีกเลี่ยง floating ranges
 
 ## Expected Outcome
