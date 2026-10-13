@@ -382,7 +382,7 @@ dispatch ผ่าน `/follow-deep` ต่อ workspace หลัง phase 1-4 
 | 10 | `/deep-thinking` | วิเคราะห์ปัญหาเป็นระบบไม่ใช้ tools | เมื่อ findings ซับซ้อน/ไม่ชัด |
 | 11 | `/create-plan-in-dot-devin` | plan ระดับ implementation-ready | เมื่อ findings ต้องการ plan ก่อน fix |
 
-Excluded จาก dispatch: `/deep-review` (ตัวเอง), `/deep-review-then-fix` (fix path ไม่ใช่ review), aliases (`refactor`→`refactor`, `deep-verify`→`run-verify`, `implement-to-production`→`implement-to-production`, `deep-update-project`→`update-project`)
+Excluded จาก dispatch: `/deep-review` (ตัวเอง), `/deep-review-then-fix` (fix path ไม่ใช่ review), aliases (`refactor`→`refactor`, `deep-verify`→`run-verify`, `implement-to-production`→`implement-to-production`)
 
 ### Pipeline Rules
 

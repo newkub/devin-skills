@@ -98,7 +98,7 @@ related:
 
 > Goal: parallelize updates เมื่อ projects เยอะ
 
-- ใช้ `subagents/project-updater.md` เมื่อมีมากกว่า 5 projects ที่ independent กัน — spawn ทีละ project ผ่าน `/use-subagents` โดยส่ง `project-path` และ `mode` เดียวกัน แล้วรวม update reports ก่อน summary
+- ใช้ profile `project-updater` (ดู `## Subagents` ด้านล่าง) เมื่อมีมากกว่า 5 projects ที่ independent กัน — spawn ทีละ project ผ่าน `/use-subagents` โดยส่ง `project-path` และ `mode` เดียวกัน แล้วรวม update reports ก่อน summary
 
 ## Rules
 
@@ -134,6 +134,26 @@ related:
 
 - ใช้ /sync-drive-d-submodules ถ้าจำเป็น
 - ใช้ /check-should-update ถ้าจำเป็น
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### project-updater — อัปเดต project dir เดียวใน drive D (pull, submodules, checks) แล้วคืน update report
+
+- **Inputs**: `project-path` (absolute path ของ project เช่น `D:\projects\my-app`), `mode` (`quick` = fetch+pull / `submodules` = รวม submodule sync / `full` = รวม `/update-project`), `default-branch` (optional — branch ที่อนุญาตให้ pull default `main`/`master`)
+- **Tools**: `exec` — git commands `git status --porcelain`, `git fetch --prune`, `git pull --ff-only`, `git submodule update --init --recursive`, `git rev-list`, `git branch --show-current`, `git rev-parse`; `read`/`find_file_by_name` — ตรวจ `package.json`, `.gitmodules`, `.devin`, `AGENTS.md`
+- **Execute**:
+  1. ตรวจว่า `project-path` ขึ้นต้นด้วย `D:\` และเป็น git repo — ถ้าไม่ใช่คืน `skipped`
+  2. รัน `git status --porcelain` และ `git branch --show-current` — บันทึก dirty state และ branch
+  3. รัน `git rev-list --left-right --count HEAD...@{upstream}` — บันทึก behind/ahead
+  4. ถ้า dirty หรือไม่อยู่บน default branch → ข้าม pull และคืน `skipped` พร้อมเหตุผล
+  5. ถ้า clean และ behind → `git fetch --prune` แล้ว `git pull --ff-only`; conflicts → คืน `error` ให้ user แก้เอง
+  6. mode `submodules`/`full` และมี `.gitmodules` → `git submodule update --init --recursive`
+  7. mode `full` และมี `package.json`/`.devin`/`AGENTS.md` → ทำ `/update-project`
+  8. บันทึก before/after commit hash
+- **Output**: ตาราง field ต่อ project เดียว `| Field | Value |` — Project, Path, Branch, Before, After, Action (`pull`/`pull+submodules`/`pull+update-project`/`skipped`), Status (`updated`/`skipped`/`error`/`already-latest`); ระบุเหตุผลเมื่อ `skipped` หรือ `error`
+- **Constraints**: Scope `D:\` เท่านั้น — ห้ามแตะ drives อื่น; ไม่ force pull, ไม่ `git push --force`, ห้าม `git push`/`git reset --hard`/`git clean`, ไม่ commit หรือ push ให้ user; ไม่แตะ project ที่ dirty หรืออยู่นอก default branch; รับผิดชอบ project เดียว — ห้ามแตะ project อื่น; Idempotent — project ที่ latest อยู่แล้วคืน `already-latest` ไม่ทำอะไรเพิ่ม
 
 ## Expected Outcome
 

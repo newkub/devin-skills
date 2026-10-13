@@ -6,6 +6,7 @@ related:
   - follow-create-web
   - follow-create-plugins
   - follow-create-mobile
+  - follow-lib-native-sdk
   - follow-best-practice
   - setup-cicd
   - deep-review
@@ -28,6 +29,8 @@ related:
 - build และ test บน target platforms
 
 - Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); v2 ใช้ capabilities files (`src-tauri/capabilities/*.json`) แทน v1 allowlist, รองรับ mobile targets
+
+- Boundary: ถ้าต้องการ native จริง ไม่มี WebView/JS runtime ใน binary (TS core + `.native` markup, AOT ผ่าน Zig) → `/follow-lib-native-sdk` แทน Tauri
 
 ## Execute
 

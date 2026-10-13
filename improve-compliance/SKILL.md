@@ -24,6 +24,7 @@ related:
 
 - `review-compliance` — GDPR/PDPA requirements, consent flows, data retention policies, right-to-erasure, data minimization, PII handling, audit trails, cookie consent
 - security controls (encryption, access) → `/improve-security`; PII ใน logs → `/improve-observability` scope
+- data retention/purge → `/improve-retention`
 
 ## Execute
 

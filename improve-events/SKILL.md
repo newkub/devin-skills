@@ -22,8 +22,10 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ "events/queues ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-events` — event schemas, versioning, ordering guarantees, idempotency, at-least-once semantics, DLQ handling, consumer lag, retry policies
-- service boundaries/handlers → `/improve-backend`; crash/recovery กว้าง → `/improve-stability`; architecture pattern → `/follow-event-driven`
+- `review-events` — event schemas, versioning, ordering guarantees, idempotency, at-least-once semantics, DLQ handling, retry/backoff policies
+- queue ops (consumer lag, worker sizing, priority, poison-message ops) → `/improve-queues`; realtime transport (WebSocket/SSE reconnect, heartbeat, presence) → `/improve-realtime`; service boundaries/handlers → `/improve-backend`; crash/recovery กว้าง → `/improve-stability`; architecture pattern → `/follow-event-driven`
+- เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
+- scheduled-run ops (idempotency, catch-up) → `/improve-scheduled-jobs`
 
 ## Execute
 

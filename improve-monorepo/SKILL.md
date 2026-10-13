@@ -1,6 +1,6 @@
 ---
 name: improve-monorepo
-description: หา improvements ของ monorepo — workspace boundaries, cross-package deps, tooling — รวม findings แล้วแก้ทันที
+description: หา improvements ของ monorepo — workspace boundaries, cross-package deps — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

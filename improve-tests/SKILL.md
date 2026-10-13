@@ -28,6 +28,7 @@ related:
 - `review-test` — test strategy, test case quality, unit/integration/e2e pyramid balance, isolation, flaky, test results
 - `review-coverage` — coverage gaps, uncovered paths/branches, coverage targets
 - รัน tests จริง → `/run-test all`; deep analysis ต่อ domain → `/deep-test`; เขียน/แก้ test specs → `/update-tests`
+- flaky detection/quarantine → `/check-flaky-tests`; fixtures/factories/seeds → `/improve-test-data`
 
 ## Execute
 

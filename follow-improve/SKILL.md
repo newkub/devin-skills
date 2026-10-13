@@ -1,9 +1,12 @@
 ---
 name: follow-improve
-description: Convention การทำ improvement — route ผ่าน improve-* domain skills → deep-review findings → confirm → deep-review-then-fix
+description: Convention improvement — route ผ่าน improve-* → deep-review findings → deep-review-then-fix
 argument-hint: "[scope]"
 related:
   - improve
+  - optimize
+  - follow-optimize
+  - follow-single-of-source
   - deep-review
   - deep-review-then-fix
   - report
@@ -15,7 +18,11 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ improve scope ใดๆ — feature, quality, security, performance, docs — route ไป `improve-*` domain skill ที่ตรงกัน หรือ `/improve` thin entry ถ้าไม่ชัด
+ใช้เมื่อต้องการ improve scope ใดๆ — feature, quality, security, performance, docs — route ไป `improve-*` domain skill ที่ตรงกัน ตาม mapping ใน `references/scope-map.md` (SSOT เดียวของ skill → review domain + ownership boundary) หรือ `/improve` thin entry ถ้าไม่ชัด — metric-driven scope เป็นหน้าที่ `optimize-*` (`/follow-optimize`)
+
+## References
+
+- `references/scope-map.md` — ตาราง SSOT: ทุก `improve-*` → review domain(s) + ownership/boundary notes — ห้าม copy ตารางนี้ไป skill อื่น (`/follow-single-of-source`)
 
 ## Execute
 
@@ -23,8 +30,8 @@ related:
 
 > Goal: เลือก improve-* skill ที่ตรง scope
 
-1. scope ตรง domain → ใช้ `improve-{domain}` (เช่น `improve-security` → review-security, `improve-code-quality` → `/improve-correctness`, `improve-consistency` → review-alignment+review-redundancy+review-code-quality+review-writing, `improve-rbac` → review-auth+review-frontend (RBAC surface), `improve-form` → review-frontend+review-data-validation+review-accessibility, `improve-a11y` → review-accessibility, `improve-observability` → review-observability, `improve-backend` → review-backend, `improve-i18n` → review-i18n, `improve-iac` → review-iac, `improve-events` → review-events, `improve-compliance` → review-compliance, `improve-business` → review-business, `improve-release` → review-release, `improve-deps` → review-dependencies)
-   - metric-driven scope → `optimize-*` แทน (`optimize-bundle`, `optimize-docker`, `optimize-ci`, `optimize-queries`, `optimize-network`, `optimize-startup` + `optimize-{build,cost,memory,perf}` เดิม + `optimize-{web-vitals,api-latency,cache,test-suite,concurrency,mobile,storage,images}` ใหม่) — convention อยู่ที่ `/follow-optimize`
+1. scope ตรง domain → lookup `references/scope-map.md` แล้วใช้ `improve-{domain}` ตามแถวที่ตรง (รวมถึง boundary/ownership note ของ cluster ที่ซ้ำกัน เช่น events, stability, data)
+   - metric-driven scope → `optimize-*` แทน (ครบ 18 domains ดู `follow-optimize/references/scope-map.md`) — convention อยู่ที่ `/follow-optimize`
 2. scope ไม่ชัด → ใช้ `/improve` thin entry ให้ dispatch เอง
 3. ทุก `improve-*` เป็น thin entry → `/deep-review` domain ตามชื่อ — ห้ามเขียน review logic ซ้ำเอง
 

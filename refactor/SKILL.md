@@ -80,7 +80,7 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → `/refactor-to-srp`
 5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
 6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/scan-codebase` (quick overview), `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/deep-review` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
-7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `subagents/hotspot-scout.md` (read-only) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
+7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `hotspot-scout` (read-only — profile อยู่ใน `## Subagents`) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
 8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
 9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor (dispatch `/follow-architecture`)
 10. ถ้า argument/context คือ concerns ปนกันในไฟล์/โมดูล → `### /separate-of-concerns` (merged)
@@ -154,19 +154,6 @@ Refactor ตาม context โดยเลือก scope ที่เหมา�
 2. ทำ `/report-before-after` ถ้ามี baseline
 3. ทำ `/suggest-next-action`
 
-### Subagents
-
-> Goal: dispatch งาน refactor ที่อิสระไปยัง subagent profiles
-
-| Task | Subagent |
-|------|----------|
-| เก็บ baseline evidence หา refactor targets (read-only) | `subagents/hotspot-scout.md` |
-| refactor ไฟล์/scope เดียว — spawn ทีละไฟล์ขนานกันเมื่อมีหลายไฟล์อิสระ | `subagents/file-worker.md` |
-
-1. spawn ผ่าน `/use-subagents` โดยส่ง inputs ตามที่แต่ละ profile กำหนด
-2. `hotspot-scout` เป็น read-only — `file-worker` แก้เฉพาะ `files` ที่ได้รับ
-3. parent เป็นคน rewire consumers, checkpoint commit และ verify รวมเสมอ
-
 ## Rules
 
 Checklist สั้น — detail ฉบับเต็มของแต่ละ rule อยู่ที่ `references/principles.md`
@@ -207,6 +194,26 @@ Checklist สั้น — detail ฉบับเต็มของแต่ล�
 
 - scope ใหญ่ (หลายไฟล์/workspace/codebase) หรือ user ขอหลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ — ห้ามเริ่ม refactor ใหญ่โดยไม่มี plan
 
+## Subagents
+
+> Goal: งาน refactor อิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก; spawn ผ่าน `/use-subagents` โดยส่ง inputs ตามที่แต่ละ profile กำหนด และ parent เป็นคน rewire consumers, checkpoint commit และ verify รวมเสมอ
+
+### hotspot-scout — เก็บ baseline evidence (churn, long files, SRP issues) หา refactor targets แล้วคืน prioritized list; ใช้เมื่อ parent ต้องการ baseline ก่อนเลือก target โดยไม่แก้ไฟล์ใดๆ
+
+- **Inputs**: `root` = directory เป้าหมายที่ต้องสแกน; `focus` (optional) = domain เช่น `long-files`, `srp`, `naming`, `all` (default `all`); `threshold` (optional) = ความยาวไฟล์ที่นับเป็น long file (default 250)
+- **Tools**: `exec` — รัน `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` สำหรับ churn และ CLI checks ที่มี; `read`, `grep`, `find_file_by_name` — นับบรรทัด, หา symbols/exports, ตรวจ patterns
+- **Execute**: 1) เก็บ churn evidence: ไฟล์ที่แก้บ่อยสุดจาก git log → 2) เก็บ size evidence: ไฟล์ที่ยาวเกิน `threshold` บรรทัด → 3) เก็บ structure evidence: symbols/exports ต่อไฟล์, mixed concerns, relative imports 3+ levels → 4) รวมเป็น target list — score = churn × severity ของ structural issues
+- **Output**: คืน prioritized target table `| No. | File | Churn | Lines | Issues | Priority |` (ตัวอย่าง `1 | src/foo.ts | 45 | 380 | SRP, deep imports | high`); `Priority` = `high`/`medium`/`low` พร้อมเหตุผลสั้น; ปิดท้ายด้วยสรุป total files scanned, targets found, recommended first target
+- **Constraints**: model `sonnet`; allowed tools จำกัดที่ `read`/`exec`/`grep`/`find_file_by_name` และ deny `write`/`edit` — read-only ห้ามแก้ไขไฟล์ใดๆ สแกนอย่างเดียว; รายงานเฉพาะไฟล์ที่มี evidence จริง — ห้ามเดา; scope อยู่ใน `root` ที่ parent กำหนดเท่านั้น
+
+### file-worker — refactor ไฟล์/scope เดียวตาม instructions ที่ parent กำหนด แล้วคืน diff summary + verify status; spawn ทีละไฟล์ขนานกันเมื่อมีหลายไฟล์อิสระกัน
+
+- **Inputs**: `files` = ไฟล์หรือ glob scope ที่รับผิดชอบ; `instructions` = transformation ที่ต้องทำ เช่น SRP split, naming, import alias, extract function; `conventions` = style/patterns ของ project ที่ต้องรักษา; `verify-cmd` (optional) = command เร็วๆ ที่รันเช็ค scope นี้ เช่น `tsc --noEmit <file>`
+- **Tools**: `read`, `write`, `edit` — แก้ไฟล์ใน scope; `exec` — รัน `verify-cmd` และ formatter/linter ต่อไฟล์ (allow `Exec(tsc *)`, `Exec(eslint *)`, `Exec(sg *)`); `grep` — เช็ค consumers/importers ก่อนเปลี่ยน exports
+- **Execute**: 1) อ่านไฟล์ใน `files` และเช็ค importers ของ exports ที่จะเปลี่ยน → 2) apply `instructions` ทีละ transformation — หนึ่งไฟล์ต่อรอบ verify → 3) รัน `verify-cmd` ถ้ามี — fail ให้ revert scope นั้นแล้วรายงาน
+- **Output**: คืน per-file result table `| No. | File | Change | Verified | Notes |` (ตัวอย่าง `1 | src/foo.ts | split into 2 modules | ok | —`); `Verified` = `ok`/`failed`/`skipped` พร้อม error ถ้า fail; ปิดท้ายด้วยสรุป files changed, exports changed (ที่ parent ต้อง follow-up `/update-references`), blockers
+- **Constraints**: model `sonnet`; preserve behavior เสมอ — ห้าม mix feature/fix; รับผิดชอบเฉพาะ `files` ที่ได้รับ — ห้ามแตะไฟล์นอก `files` หรือข้าม scope ถ้าจำเป็นให้รายงานกลับให้ parent ทำ; exports/API ที่เปลี่ยนต้องรายงานกลับ — parent เป็นคน rewire consumers; ไม่ commit — parent เป็นคน checkpoint
+
 ## Merged Details
 
 ### /separate-of-concerns (merged)
@@ -222,7 +229,7 @@ Rules: 1 extraction = 1 concern ไม่ mix behavior change; pure logic extrac
 
 ### /refactor-to-srp → `/refactor-to-srp`
 
-Canonical SRP splitter — promoted เป็น top-level skill (`refactor-to-srp/SKILL.md`); smells catalog อยู่ที่ `references/code-smells.md`, parallel file workers อยู่ที่ `subagents/file-worker.md`
+Canonical SRP splitter — promoted เป็น top-level skill (`refactor-to-srp/SKILL.md`); smells catalog อยู่ที่ `references/code-smells.md`, parallel file workers อยู่ที่ `## Subagents` (`### file-worker`)
 
 ### /restructure → `/restructure`
 

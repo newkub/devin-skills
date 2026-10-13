@@ -25,6 +25,7 @@ related:
 
 - `review-backend` — handler structure, middleware chain, service boundaries, business logic placement, data flow, data fetching patterns
 - API surface/contracts → `/improve-api`; DB layer → `/improve-database`; payload validation → `/improve-data-validation`
+- email delivery pipeline → `/improve-email`; upload handling → `/improve-uploads`
 
 ## Execute
 

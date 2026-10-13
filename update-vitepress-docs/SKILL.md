@@ -33,14 +33,14 @@ related:
 
 1. ทำ `/check-should-update` ถ้ามี git changes
 2. ทำ `/check-monorepo` เพื่อระบุ monorepo
-3. ระบุ docs type (`product` / `open-source` / `cli`) ตาม detection ใน `update-docs/references/<type>.md`
+3. ระบุ docs type (`product` / `saas-product` / `opensource-product` / `open-source` / `cli` / `library` / `sdk` / `tool` / `website` / `monorepo` / `development`) ตาม detection ใน `update-docs/references/<type>.md`
 4. ถ้ามี `docs/` อยู่แล้ว → ทำ `/deep-review` ก่อนเพื่อหา gaps
 
 ### 2. Ensure Content Pages
 
 > Goal: markdown pages ครบก่อนตั้งค่า site
 
-1. ทำ `/update-docs` เพื่อสร้าง/อัปเดต `docs/` structure และ content pages ทั้งหมด (index, project, getting-started, development, references, roadmap, workspaces สำหรับ monorepo)
+1. ทำ `/update-docs` เพื่อสร้าง/อัปเดต `docs/` structure และ content pages ทั้งหมด (index, project, getting-started, guides/examples/integrations/plugins/adapters/ecosystem เฉพาะ section ที่มีเนื้อหาจริง, development, references, roadmap, workspaces สำหรับ monorepo)
 2. `docs/index.md` จาก `/update-docs` จะถูกแทนด้วย `templates/homepage.md` (`layout: home`) ใน Step 5
 
 ### 3. VitePress Setup
@@ -60,8 +60,8 @@ related:
 > Goal: `docs/.vitepress/config.ts` มี nav และ sidebar ครบตาม type
 
 1. สร้าง `config.ts` ด้วย `defineConfig` — full structure จาก `references/vitepress-config.md`
-2. nav จาก `templates/nav-config.md` ตาม type — map มาจาก `## Index Links` ใน `update-docs/references/<type>.md`
-3. sidebar จาก `templates/sidebar-<type>.md` — map มาจาก `## Page Groups` ใน `update-docs/references/<type>.md`; หมวด `/development/` ใช้ `templates/sidebar-development.md` ร่วมกันทุก type
+2. nav จาก `templates/nav-config.md` — ใช้ Base Nav + type variation ของ docs type นั้น (ไม่ใส่ `Project` / `Development` / `Auth` / `Review` ใน nav — section เหล่านั้นอยู่ใน sidebar เท่านั้น) และใส่เฉพาะ item ที่ directory มีจริงใน `docs/`
+3. sidebar จาก `templates/sidebar-<type>.md` — map มาจาก `## Page Groups` ใน `update-docs/references/<type>.md`; หมวด `/development/` ใช้ `templates/sidebar-development.md` ร่วมกันทุก type; extensibility sections (`/guides/` `/examples/` `/integrations/` `/plugins/` `/adapters/` `/ecosystem/`) copy จาก `templates/sidebar-extensibility.md` เฉพาะ section ที่ directory มีจริง
 4. ถ้า monorepo → เพิ่ม `templates/sidebar-monorepo.md` + dropdown nav (`items`) สำหรับ workspace pages
 5. ใช้ `collapsed: true` เมื่อหมวดมี >5 หน้า; ใช้ relative path เริ่มต้นด้วย `/`
 6. ถ้า multi-language → `references/i18n.md`
@@ -120,7 +120,7 @@ related:
 
 ## Expected Outcome
 
-- `docs/` ที่ root มี VitePress config, nav, sidebar ครบตาม type (+ Commands สำหรับ cli, Workspaces สำหรับ monorepo)
+- `docs/` ที่ root มี VitePress config, nav (Base Nav + type variation — ไม่มี Project/Development/Auth/Review), sidebar ครบตาม type (+ Commands สำหรับ cli, Workspaces สำหรับ monorepo, extensibility sections ตาม directory ที่มีจริง)
 - เนื้อหาทุกหน้ามาจาก `/update-docs` — frontmatter ครบ, real data, ไม่มี placeholder
 - `vitepress dev`/`build`/`preview` ทำงาน, `vitepress build` ไม่มี dead-links error
 - README ลิงก์ไป docs site

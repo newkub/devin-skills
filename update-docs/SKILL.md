@@ -72,8 +72,9 @@ related:
    - `docs/development/troubleshooting.md`
    - `docs/references/`
    - `docs/roadmap/index.md`
+   - extensibility sections (ตามเนื้อหาจริงของ project): `docs/guides/index.md` + `docs/guides/<topic>.md`, `docs/examples/index.md` + `docs/examples/<name>.md`, `docs/integrations/index.md`, `docs/plugins/index.md`, `docs/adapters/index.md`, `docs/ecosystem/index.md` — สร้างเฉพาะ section ที่มีเนื้อหาจริง ห้ามสร้าง placeholder ว่าง; section ที่ไม่มี directory ห้ามถูก link จาก index/nav/sidebar
 4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
-5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`, `references/api.md` + `comparison.md` + `glossary.md` สำหรับ `library`, `references/endpoints.md` + `errors.md` สำหรับ `sdk`, `operations/` สำหรับ `saas-product`, `guides/` สำหรับ `opensource-product`
+5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` + `admin.md` + `pricing.md` สำหรับ `product` (ไม่มี template เฉพาะ ใช้ `templates/content-page.md` fallback), `references/api.md` + `comparison.md` + `glossary.md` สำหรับ `library`, `references/endpoints.md` + `errors.md` สำหรับ `sdk`, `operations/` สำหรับ `saas-product`, `guides/` สำหรับ `opensource-product`
 
 ### 3. Write Index TOC
 

@@ -109,6 +109,6 @@ Scope >3 skills อิสระกัน → spawn `skill-updater` subagent ท�
 
 ## Expected Outcome
 
-- ไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat, `workflows/` = invocable workflows, `subagents/` = profiles
+- ไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat, `workflows/` = invocable workflows, subagent profiles = `SKILL.md ## Subagents` (ไม่มี `subagents/`)
 - ไม่มี content ซ้ำ, stale refs หรือ dangling `related`; `AGENTS.md` + living docs sync
 - ผ่าน `/deep-validate` พร้อมรายงาน before/after

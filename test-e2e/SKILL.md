@@ -13,13 +13,14 @@ related:
   - follow-tool-playwright
   - use-agent-browser
   - use-chrome-devtools
+  - use-midscenejs
   - create-report-in-dot-devin
   - report
 ---
 
 ## Goal
 
-รัน end-to-end tests ผ่าน browser — user flows จริงจาก entry ถึง outcome — signals: `playwright.config`, `cypress.config`, `e2e/` dirs, web frontend; ไม่มี suite แต่ต้อง smoke/interact → `agent-browser` headless ตาม `/use-agent-browser`; smoke/debug ผ่าน MCP ที่ register อยู่ → `chrome-devtools-mcp` ตาม `/use-chrome-devtools`
+รัน end-to-end tests ผ่าน browser — user flows จริงจาก entry ถึง outcome — signals: `playwright.config`, `cypress.config`, `e2e/` dirs, web frontend; ไม่มี suite แต่ต้อง smoke/interact → `agent-browser` headless ตาม `/use-agent-browser`; smoke/debug ผ่าน MCP ที่ register อยู่ → `chrome-devtools-mcp` ตาม `/use-chrome-devtools`; flow ภาษาธรรมชาติ (vision/NL assertions ไม่ผูก selector ตายตัว) → Midscene agent บน Playwright ตาม `/use-midscenejs`
 
 ## Scope
 

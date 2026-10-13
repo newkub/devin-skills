@@ -53,7 +53,7 @@ related:
 1. Extract Method → Extract Class/Module → Move Method/Field
 2. Content ประเภทเดียวรวมกัน (`types.ts`, `constants.ts`, `config.ts`, `schema.ts` หรือตามชื่อ domain)
 3. คง public API ผ่าน barrel re-export — consumer ไม่เปลี่ยน import surface
-4. หลายไฟล์อิสระ → `refactor/subagents/file-worker.md` ขนาน
+4. หลายไฟล์อิสระ → `refactor` profile `file-worker` (`refactor/SKILL.md ## Subagents`) ขนาน
 5. `/git-commit` ทุก batch (1 split = 1 concern ไม่ mix behavior)
 
 ### 3. References

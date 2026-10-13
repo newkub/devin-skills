@@ -161,13 +161,26 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile สั้นอยู่ใน section นี้ รายละเอียดเต็มอยู่ใน links
+
+### codebase-reviewer — ตรวจ codebase/scope ตาม full-dimension checklist แบบ report-only (spawn ผ่าน `/use-subagents` สำหรับ codebase-wide scan)
+
+- **Inputs**: `scope` (path/directory เป้าหมาย review), `context-hints` (optional — stack/domain ที่ parent ตรวจไว้แล้ว), `findings-file` (optional — baseline analyzer output เพื่อ cross-check)
+- **Tools**: `read`, `exec`, `grep`, `glob`, `find_file_by_name` (no `write`/`edit`)
+- **Execute**: อ่าน `references/detect-context.md` ระบุ stack/entry points ของ `scope` → อ่าน `references/checklist.md` ตรวจ code จริงตาม dimensions ทุก finding มี `file:line` + evidence → classify severity + คำนวณ score ตาม `references/scoring.md` → false positive ทิ้ง, domain ลึกกว่า map ไป `/review-*` ตาม `references/route-to-review-skill.md` เป็น recommendation → สรุปผลตาม `references/report.md`
+- **Output**: ตาราง `| No. | Dimension | Severity | File | Finding | Suggestion |` เรียง Critical → Info ปิดท้ายด้วย score + follow-up `/review-*` recommendations
+- **Constraints**: Read-only — ห้าม `write`/`edit` ห้ามแก้ไขไฟล์ใดๆ; ไม่มี evidence ไม่มี finding; ระบุ uncertainty แทนการเดา; dispatch catalog ข้าม skill → `deep-review/SKILL.md` (อ่านอย่างเดียว ไม่แก้)
+- **Full detail**: `references/checklist.md`, `references/detect-context.md`, `references/report.md`, `references/route-to-review-skill.md`, `references/scoring.md`, `references/website.md`
+
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [subagents/codebase-reviewer/scoring.md](subagents/codebase-reviewer/scoring.md) (review)
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (review)
 
 ## References
 
-- [Full-dimension checklist](subagents/codebase-reviewer/checklist.md) — codebase review subagent: `subagents/codebase-reviewer/AGENT.md` (spawn ผ่าน `/use-subagents` สำหรับ codebase-wide scan)
+- [Full-dimension checklist](references/checklist.md) — ดู `## Subagents` สำหรับ profile ของ codebase-reviewer
 - `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `deep-review/SKILL.md`
 - ใช้ /run-review ถ้าจำเป็น
 

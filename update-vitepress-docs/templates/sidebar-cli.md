@@ -6,12 +6,12 @@ description: VitePress sidebar config for CLI documentation
 # CLI Sidebar Template
 
 Use this config in `docs/.vitepress/config.ts` for command-line tools.
-Nav is defined separately — copy the CLI array from `templates/nav-config.md`.
+Nav is defined separately — copy the Base Nav (with cli variation) from `templates/nav-config.md`.
 
 ```ts
 export default {
   themeConfig: {
-    // nav: copy "CLI Nav" from templates/nav-config.md
+    // nav: Base Nav from templates/nav-config.md (cli variation)
     sidebar: {
       '/project/': [
         {
@@ -34,6 +34,8 @@ export default {
           ],
         },
       ],
+      // extensibility sections (/guides/ /examples/ /integrations/ /plugins/ /adapters/ /ecosystem/) —
+      // copy only the sections whose directories exist from templates/sidebar-extensibility.md
       '/commands/': [
         {
           text: 'Commands',
@@ -62,8 +64,7 @@ export default {
             { text: 'Architecture', link: '/development/architecture' },
             { text: 'Workflows', link: '/development/workflows' },
             { text: 'Testing', link: '/development/testing' },
-            { text: 'CI/CD', link: '/development/ci-cd' },
-            { text: 'Scripts', link: '/development/scripts' },
+            { text: 'Deployment', link: '/development/deployment' },
             { text: 'Troubleshooting', link: '/development/troubleshooting' },
           ],
         },

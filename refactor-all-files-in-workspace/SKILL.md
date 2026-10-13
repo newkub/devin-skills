@@ -34,7 +34,7 @@ Refactor ทุกไฟล์ใน workspace (single workspace/package) ตา
 1. ทำ `/deep-analyze` เพื่อดู structure และ conventions ของ workspace
 2. List ไฟล์ source ทั้งหมดด้วย `find_file_by_name`/`list_dir` — respect `.gitignore`, ข้าม generated/lock/binary/test snapshots
 3. จัดลำดับไฟล์: foundation ก่อน (config, types, utilities) → dependents ทีหลัง
-4. ถ้าไฟล์เยอะ → spawn `refactor/subagents/hotspot-scout.md` เก็บ evidence แทนการสแกนเอง
+4. ถ้าไฟล์เยอะ → spawn `refactor` profile `hotspot-scout` (`refactor/SKILL.md ## Subagents`) เก็บ evidence แทนการสแกนเอง
 
 ### 2. Baseline
 
@@ -48,7 +48,7 @@ Refactor ทุกไฟล์ใน workspace (single workspace/package) ตา
 > Goal: ทุกไฟล์ผ่าน file refactor ครบ
 
 1. Refactor ทีละไฟล์ตาม file refactor scope ของ `/refactor` — read → review → minimal edit → preserve public API
-2. ไฟล์อิสระกันหลายไฟล์ → spawn `refactor/subagents/file-worker.md` ทีละไฟล์ขนานกันผ่าน `/use-subagents` — parent rewire consumers + commit รวมเสมอ
+2. ไฟล์อิสระกันหลายไฟล์ → spawn `refactor` profile `file-worker` (`refactor/SKILL.md ## Subagents`) ทีละไฟล์ขนานกันผ่าน `/use-subagents` — parent rewire consumers + commit รวมเสมอ
 3. ไฟล์ >250 บรรทัดหรือหลาย responsibility → ใช้ `/refactor-to-srp` split → `/update-references` ทันที
 4. เจอ bug หรือต้องเปลี่ยน behavior → commit fix แยกก่อน (Two Hats) แล้วค่อย refactor ต่อ
 5. ทำ `/git-commit` checkpoint ทุก batch ที่สัมพันธ์กัน

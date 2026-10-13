@@ -20,7 +20,9 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "background jobs/queues ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-backend` — job handlers, producers, consumers, scheduling
-- `review-stability` — retries, DLQ, idempotency, poison messages
+- `review-stability` — consumer lag, worker sizing, priority, backpressure, poison-message ops
+- messaging semantics (event schema, versioning, ordering, idempotency, DLQ design) → `/improve-events`; crash/recovery กว้าง → `/improve-stability`; เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
+- scheduled-run ops → `/improve-scheduled-jobs`
 
 ## Execute
 

@@ -1,11 +1,11 @@
 ---
 title: Development Sidebar Template
-description: Shared development sidebar for product and open-source docs
+description: Shared development sidebar for all docs types
 ---
 
 # Development Sidebar Template
 
-Use this for the `development/` section in `product`, `open-source`, and `cli` projects.
+Use this for the `development/` section in every docs type. It is sidebar-only — Development is not in nav (see `nav-config.md`).
 
 ```ts
 {
@@ -16,8 +16,7 @@ Use this for the `development/` section in `product`, `open-source`, and `cli` p
     { text: 'Architecture', link: '/development/architecture' },
     { text: 'Workflows', link: '/development/workflows' },
     { text: 'Testing', link: '/development/testing' },
-    { text: 'CI/CD', link: '/development/ci-cd' },
-    { text: 'Scripts', link: '/development/scripts' },
+    { text: 'Deployment', link: '/development/deployment' },
     { text: 'Troubleshooting', link: '/development/troubleshooting' },
   ],
 }

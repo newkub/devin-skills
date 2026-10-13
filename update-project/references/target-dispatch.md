@@ -6,7 +6,7 @@
 
 | No. | Target Type | Skill |
 |-----|-------------|-------|
-| 1 | `root-project` | `/deep-update-project` (skill นี้) |
+| 1 | `root-project` | `/update-project` (skill นี้) |
 | 2 | `skill` ใน global skills | `/update-devin-global-skills <skill-name>` |
 | 3 | `all` global skills | `/update-devin-global-skills` |
 | 4 | `config` | `/update-config` |

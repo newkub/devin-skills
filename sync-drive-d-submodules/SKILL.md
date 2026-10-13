@@ -88,7 +88,7 @@ Commit submodule updates ถ้าต้องการ
 
 > Goal: parallelize sync เมื่อมีหลาย submodules ที่ independent กัน
 
-- ใช้ `subagents/submodule-syncer.md` ใน Step 4 เมื่อมีหลาย submodules/repos ใน drive D ที่ update แยกกันได้ — spawn ทีละ submodule ผ่าน `/use-subagents` แล้วรวม status (updated/skipped/conflict/error) ก่อน verify และ commit ใน Step 5-6
+- ใช้ profile `submodule-syncer` (ดู `## Subagents` ด้านล่าง) ใน Step 4 เมื่อมีหลาย submodules/repos ใน drive D ที่ update แยกกันได้ — spawn ทีละ submodule ผ่าน `/use-subagents` แล้วรวม status (updated/skipped/conflict/error) ก่อน verify และ commit ใน Step 5-6
 - ถ้า submodule มี nested dependencies ที่ต้อง update ตามลำดับ → ทำ sequential ไม่ spawn
 
 ## Rules
@@ -130,6 +130,24 @@ Commit submodule updates ถ้าต้องการ
 - ใช้ /convert-git-submodules ถ้าจำเป็น
 - ใช้ /delete-git-submodules ถ้าจำเป็น
 - ใช้ /list-git-submodules ถ้าจำเป็น
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### submodule-syncer — sync git submodule เดียวใน drive D ไปยัง latest remote แล้วคืนสถานะ
+
+- **Inputs**: `repo-path` (path ของ repo บน drive D เช่น `D:\projects\app`), `submodule-path` (path ของ submodule เดียวใน repo เช่น `libs/shared`), `branch` (optional — remote branch ที่ track เช่น `main` — default ตาม `.gitmodules`), `commit` (optional — `true` ถ้า parent ต้องการให้ stage/commit update ใน repo หลัก)
+- **Tools**: `exec` — git commands `git submodule status`, `git submodule update --remote`, `git status`, `git diff`; `read` — อ่าน `.gitmodules` และ config; ห้าม `edit`/`write` — ทุกอย่างผ่าน git commands เท่านั้น
+- **Execute**:
+  1. ยืนยัน `repo-path` อยู่บน drive D (`D:` หรือ `/mnt/d`) — ถ้าไม่ใช่คืน `error` ทันที
+  2. บันทึก state ก่อน update: `git submodule status <submodule-path>` และตรวจ uncommitted changes ใน submodule
+  3. ถ้า submodule มี local changes หรือ detached HEAD ที่มีงานค้าง → คืน `skipped` พร้อมสาเหตุ ไม่ force
+  4. รัน `git submodule update --remote <submodule-path>` แล้วตรวจ conflicts
+  5. Verify: `git submodule status` อีกครั้ง ยืนยัน new commit และ repo หลักเห็น diff ที่ pointer
+  6. ถ้า `commit` = `true` → `git add <submodule-path>` พร้อม commit message อธิบาย update (ไม่ push)
+- **Output**: ตาราง status `| No. | Submodule | Repo | Before | After | Status |` — `status`: `updated`/`already-current`/`skipped`/`conflict`/`error` พร้อมรายละเอียด; ระบุ committed state `staged`/`committed`/`uncommitted` ตาม `commit` input; ถ้า `conflict`/`error` → แนบ git output สาเหตุและคำแนะนำ rollback
+- **Constraints**: รับผิดชอบ submodule เดียวเท่านั้น ห้ามแตะ submodule/repo อื่น; Drive D เท่านั้น — path นอก drive D คืน `error`; ห้าม `--force`, `git checkout -f` หรือ discard local changes — เจอ changes ให้ `skipped`; ห้าม push remote — parent ตัดสินใจ push หลังรวมผล; network error → retry สูงสุด 2 รอบแล้วคืน `error`
 
 ## Expected Outcome
 

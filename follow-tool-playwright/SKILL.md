@@ -23,7 +23,7 @@ related:
 ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
 
 - ใช้ skill นี้สำหรับ browser E2E suite จริง — ถ้าต้องการ check/smoke ด่วนโดยไม่สร้าง suite ใช้ `/use-agent-browser` (CLI/record) หรือ `/use-chrome-devtools` (inspect/debug ผ่าน MCP ที่ register อยู่) เป็น stopgap — เลือกตาม `/use-chrome-devtools` `## Tool Selection`
-- สำหรับ API mocking ใน unit/integration tests → ใช้ `/follow-tool-msw` แทน
+- สำหรับ API mocking ใน unit/integration tests → ใช้ `/follow-lib-mswjs` แทน
 
 - Latest: `@playwright/test@1.63.0` (verified 2026-09-13)
 

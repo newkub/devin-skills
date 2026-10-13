@@ -1,6 +1,6 @@
 ---
 name: optimize-network
-description: หา network optimization ใน scope — payload size, caching headers, HTTP/2, preload, waterfalls — รวม findings แล้วแก้ทันที
+description: หา network optimization — payload size, headers, preload, waterfalls — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

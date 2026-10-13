@@ -73,6 +73,23 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 | app | [references/mode-app.md](references/mode-app.md) |
 | all | [references/mode-all.md](references/mode-all.md) |
 
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### route-capturer — capture route เดียวทุก device size แล้วคืน artifact paths (ใช้เมื่อ routes เยอะต้อง capture ขนาน)
+
+- **Inputs**: `route` (path เดียวที่ต้อง capture เช่น `/request`, `/examples/form`), `base-url` (dev/prod URL เช่น `http://localhost:3000`), `devices` (เช่น `desktop,mobile` หรือ custom `wide=1920x1080`), `components` (optional — selector map เช่น `nav=header,form=form`), `out-dir` (เช่น `.devin/temp/report/<workspace>/captures-<ts>/`), `browser-session` (optional — `agent-browser` session info ถ้า parent เปิดไว้แล้ว)
+- **Tools**: `exec` (รัน `bun <skill-dir>/src/all.ts` หรือ `agent-browser` CLI), `read` (อ่าน `manifest.json` และตรวจ errors)
+- **Execute**:
+  1. ยืนยัน `base-url` ตอบกลับก่อน capture — ถ้าพังคืน `error` ทันที
+  2. รัน `bun src/all.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>` สำหรับ route เดียวครบทุก device
+  3. ถ้ามี `components` → เพิ่ม `--components "<name>=<selector>@<route>"`
+  4. อ่าน `manifest.json` เช็ค errors ของ route นี้
+  5. เก็บ artifact paths ทั้งหมดที่สร้างได้
+- **Output**: ตาราง artifacts `| No. | Artifact | Path | Device | Status |` — `status`: `ok`/`failed` พร้อม error message ถ้า fail; ปิดท้ายด้วยสรุป total artifacts, failed count, `manifest.json` path
+- **Constraints**: รับผิดชอบ route เดียวเท่านั้น ห้าม capture routes อื่น — read-only ต่อ target ไม่แก้ไข code ของ site ที่ capture (ห้าม write/edit); `--wait` ต้องพอให้ hydration + fonts โหลด — เพิ่มถ้า SPA ช้า; capture fail ต่อ device ให้เก็บใน output เป็น `failed` — ห้ามหยุดทั้งรัน; artifacts ต้องลง `out-dir` ที่ parent กำหนดเท่านั้น ไม่ commit เข้า repo
+
 ## Expected Outcome
 
 - ไฟล์ภาพ/วิดีโอ/PDF หลักฐานพร้อมใช้ ตาม mode ที่ระบุ

@@ -35,6 +35,7 @@ related:
 - Feature ideas ใหม่ (net-new capabilities ไม่ใช่ extends/gaps)
 - Platform/cross-cutting capabilities — auth, security, performance, stability, optimize, release, observability — ถ้าระหว่าง review เจอ finding ฝั่งนี้ให้ note ไว้แนะนำ `/idea-features` หรือ `/improve-<domain>` ไม่นับเป็น finding ของ skill นี้
 - Feature flags setup → `### setup-feature-flags` ใน `## Merged Details` (ยังใช้ได้กับ core business findings)
+- flag lifecycle/stale flags → `/improve-features-flags`
 
 ## Execute
 

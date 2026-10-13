@@ -114,27 +114,6 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 2. ทำ `/follow-github` เพื่อตั้ง branch protection บน `main` และ integration branch ตาม project conventions และ `.github` templates (optional)
 3. ยืนยันว่า metadata และ branch protection ตรงกับ project conventions
 
-### Subagents
-
-> Goal: แยกแต่ละ Execute step ที่ independent ให้ subagent รับผิดชอบ — parent เหลือแค่ orchestration, aggregate และ validate
-
-แต่ละ step ที่ทำขนานได้ delegate ไปที่ subagent ใต้ `subagents/` — spawn ผ่าน `/use-subagents` แล้วรวม structured reports ทั้งหมดก่อน Step 6 — parent เก็บ Step 2 (restore changed info ต้องเห็น context รวม) และ Step 6 (validate/report) ไว้เอง
-
-| Step | Subagent | Parallelism | Input |
-|------|----------|-------------|-------|
-| 1. Git log | `git-log-collector.md` | 1 agent ต่อ workspace | `project-path`, `log-count` |
-| 3. Project files | `project-files-updater.md` | 1 agent ต่อ `domain` | `domain`, `changed-info` |
-| 3. Per-workspace | `project-updater.md` | 1 agent ต่อ `project-path` | `project-path`, `update-scope`, `shared-rules` |
-| 4. Project skills | `project-skills-updater.md` | ขนานกับ Step 3 domains | `project-path`, `changed-info` |
-| 5. GitHub metadata | `github-metadata-updater.md` | remote-only ไม่ชน local files | `repo`, `check-protection` |
-
-Dispatch rules:
-
-- Spawn subagents ที่ไม่ overlap กันแบบ concurrent — รอ structured reports ครบทุกตัวก่อนเข้า Step 6
-- ถ้า workspaces/domains แชร์ config/deps กัน → ทำ sequential ไม่ spawn parallel และส่ง `shared-rules` ให้ทุก `project-updater` agent
-- subagents ห้าม commit — parent เป็นเจ้าของ Working rules และ final report
-- ถ้า subagent report `skipped` / `no-changes` / `blocked` → นำไปแสดงใน report แทนที่จะ retry
-
 ### 6. Validate And Report
 
 > Goal: root project ผ่าน validation
@@ -203,6 +182,56 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
 5. Validate: `/deep-review` manifest + `/run-verify` — fail → แก้และ retry ≤3
 6. Monorepo: `/follow-monorepo` ก่อน; workspace packages ไม่ต้อง `private: false` ถ้า publish ที่ root
 7. ไม่ publish เอง — publish ผ่าน `/publish-package-to-registry` หรือ `/run-release`
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile สั้นอยู่ใน section นี้ รายละเอียดเต็มอยู่ใน links
+> Delegate ผ่าน `/use-subagents` — parent เก็บ Step 2 (restore changed info ต้องเห็น context รวม) และ Step 6 (validate/report) ไว้เอง; รอ structured reports ครบทุกตัวก่อนเข้า Step 6; subagents ห้าม commit — parent เป็นเจ้าของ Working rules และ final report; report `skipped`/`no-changes`/`blocked` → แสดงใน report แทนที่จะ retry; workspaces/domains แชร์ config/deps → ทำ sequential และส่ง `shared-rules` ให้ทุก `project-updater`
+
+### git-log-collector — เก็บ git log และ diff stat ของ workspace เดียว (Step 1; 1 agent ต่อ workspace)
+
+- **Inputs**: `project-path`, `log-count` (optional, default 5)
+- **Tools**: `read`, `exec` (`git log`, `git diff`, `git status`)
+- **Execute**: รัน `git log --oneline -<log-count>` บันทึก hash+message ทุก commit → รัน `git diff HEAD~1 --stat` บันทึก changed files → ไม่มี commits ใหม่หรือไม่ใช่ git repo → report `no-changes`
+- **Output**: structured summary — `project-path`, commits ล่าสุด (hash+message), changed files list พร้อมสถิติ, `no-changes` flag
+- **Constraints**: read-only ห้ามแก้ไข/สร้างไฟล์; ทำงานเฉพาะใน `project-path`; deterministic (input เดิมได้ report เดิม)
+- **Full detail**: `references/subagent-git-log-collector.md`
+
+### project-files-updater — อัปเดต project files ตาม domain (Step 3; 1 agent ต่อ `domain`)
+
+- **Inputs**: `domain` (`config`|`docs`|`rules`|`specs`|`examples`|`gitignore`|`vscode`|`todo`|`contributing`), `changed-info` (optional — summary จาก Step 1-2 เพื่อ prioritize), `root-path` (optional, default cwd)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- **Execute**: ระบุ files ใน `domain` (`config`→`package.json`/`tsconfig.json`/`biome.jsonc`/`mise.toml`/`.moon/`; `docs`→`docs/`/`README.md`/`USAGE.md`/`FEATURES.md`/`CHANGELOG.md`; `rules`→`rules/`/`sgconfig.yml`; `specs`→`<workspace>/specs/`; `examples`→`examples/`; `gitignore`→`.gitignore`; `vscode`→`.vscode/`; `todo`→`TODO.md`; `contributing`→`CONTRIBUTING.md`) → รัน `/update-config`/`/update-docs`/`/update-astgrep-rules`/`/update-specs`/`/update-examples`/`/update-gitignore`/`/update-dot-vscode`/`/update-todo-md`/`/update-contributing` → ใช้ `changed-info` ข้ามไฟล์ที่ไม่ drift ไม่เขียนใหม่ถ้าไม่เปลี่ยน
+- **Output**: structured summary — `domain` ที่ทำ, files ที่อัปเดต (path+เหตุผล), skills ที่เรียกใช้และผลลัพธ์, blockers/cross-domain conflicts
+- **Constraints**: ทำงานเฉพาะใน `domain` ห้ามแตะ domain อื่น; ไม่ commit; deterministic; ไม่มีไฟล์/ไม่จำเป็น → report `skipped`
+- **Full detail**: `references/subagent-project-files-updater.md`
+
+### project-updater — อัปเดต sub-project/workspace เดียว (Step 3 per-workspace; 1 agent ต่อ `project-path`)
+
+- **Inputs**: `project-path`, `update-scope` (optional เช่น `deps`/`config`/`docs`), `shared-rules` (optional — reference files จาก root ที่ต้อง sync)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- **Execute**: รัน `git log --oneline -5` + `git diff HEAD~1 --stat` ใน `project-path` → sync config drift เทียบ `shared-rules`/root conventions (tsconfig, lint, format, gitignore) → อัปเดต docs เฉพาะที่ drift → แชร์ config/deps กับ sub-project อื่น → report warning ไม่แก้เอง
+- **Output**: structured summary — `project-path`, commits ล่าสุด (hash+message), config/docs ที่เปลี่ยน (file list+เหตุผล), blockers/shared-dependency warnings
+- **Constraints**: ทำงานเฉพาะใน `project-path` ห้ามแก้ root หรือ sub-project อื่น; ไม่ commit; deterministic; workspaces แชร์ config/deps → sequential + ส่ง `shared-rules`
+- **Full detail**: `references/subagent-project-updater.md`
+
+### project-skills-updater — อัปเดต project skills ใน .devin/skills/ (Step 4; ขนานกับ Step 3 domains)
+
+- **Inputs**: `project-path`, `changed-info` (optional — ระบุ skills ที่ต้อง sync)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- **Execute**: ทำ `/update-project-skills` สร้าง/อัปเดต skills ตาม codebase → ใช้ `changed-info` map features/flows ที่เปลี่ยน → skill ที่ต้อง sync → ตรวจผ่าน `/deep-validate` (frontmatter, references, no broken links) → ยืนยัน root `AGENTS.md` อ้างถึง skills ใหม่ครบ → report gap ถ้าขาด
+- **Output**: structured summary — skills ที่สร้าง/อัปเดต/ลบ (path+เหตุผล), validation results, AGENTS.md gaps ที่ให้ parent แก้
+- **Constraints**: แก้เฉพาะ `.devin/skills/` ห้ามแตะ root docs/code (ห้ามแก้ `AGENTS.md` เอง — parent จัดการ); ไม่ commit; `.devin/skills/` ไม่มี/ไม่จำเป็น → report `skipped`
+- **Full detail**: `references/subagent-project-skills-updater.md`
+
+### github-metadata-updater — sync GitHub repo metadata และ branch protection (Step 5; remote-only ไม่ชน local files)
+
+- **Inputs**: `repo` (optional — owner/repo, default detect จาก git remote), `check-protection` (optional, default true)
+- **Tools**: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
+- **Execute**: ทำ `/update-github-metadata` sync description/homepage/topics กับ `README.md` + `package.json` → ถ้า `check-protection` → ทำ `/follow-github` ตรวจ branch protection บน `main`/integration branch → ยืนยัน metadata ตรงกับ project conventions
+- **Output**: structured summary — metadata fields ที่เปลี่ยน (before → after), branch protection status, permissions errors หรือ blockers (gh auth, repo not found)
+- **Constraints**: remote mutations เท่านั้น (`gh api`/`gh repo edit`) ห้ามแก้ local files; ไม่ push ไม่ commit (parent จัดการ); ไม่มี remote หรือ gh auth ไม่ผ่าน → report `blocked` ไม่ fail
+- **Full detail**: `references/subagent-github-metadata-updater.md`
 
 ## Expected Outcome
 

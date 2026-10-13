@@ -6,6 +6,7 @@ related:
   - improve
   - deep-review
   - deep-review-then-fix
+  - follow-lib-native-sdk
   - report
   - suggest-next-action
   - ask-me
@@ -20,6 +21,8 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "desktop app ควร improve อะไร" (Tauri/Electron/native) — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-desktop-app` — window management/lifecycle, system tray, IPC validation + security boundaries, packaging/signing, auto-update + rollback, offline/local persistence
+- update channel/failure paths → `/improve-auto-update`
+- app ที่เป็น Native SDK (`src/core.ts` + `.native`, `app.json`) — fix ตาม findings ให้ทำตาม `/follow-lib-native-sdk` (automation/assert, Cmd/Sub, capability declarations)
 
 ## Execute
 

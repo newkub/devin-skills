@@ -81,7 +81,7 @@ Pipeline หลักของ `/deep-research` — ค้นหาข้อม�
 - ตรวจ credibility: reputation, maintenance, GitHub activity, เปรียบเทียบหลายแหล่ง
 - ตรวจ security: advisories, CVE, open issues
 - เน้นข้อมูลปีล่าสุดและระบุ gaps
-- Fan-out subtasks อิสระผ่าน `subagents/source-researcher.md` เมื่อหลาย dimensions
+- Fan-out subtasks อิสระผ่าน profile `source-researcher` (`deep-research/SKILL.md ## Subagents`) เมื่อหลาย dimensions
 - ใช้ `/rethink` ถ้าจำเป็น
 - ใช้ `/check-reference` ถ้าจำเป็น
 

@@ -1,6 +1,6 @@
 ---
 name: optimize-bundle
-description: หา bundle optimization ใน scope — size, chunks, tree-shaking, static assets — รวม findings แล้วแก้ทันที
+description: หา bundle optimization — size, chunks, tree-shaking, static assets — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

@@ -26,6 +26,7 @@ related:
 - `review-api` — API design, contracts, error responses, versioning, docs
 - `review-backend` — backend structure, handlers, middleware, service boundaries
 - payload/request validation findings → `/improve-data-validation`; backend structure/service boundaries เจาะจง → `/improve-backend`
+- endpoint sunset/deprecation → `/improve-api-deprecation`; list paging contracts → `/improve-pagination`
 
 ## Execute
 

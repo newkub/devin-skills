@@ -27,6 +27,8 @@ related:
 
 - `review-seo` — SEO, meta tags, sitemap, structured data, search engine visibility (fix path → `/improve-seo`)
 - `review-frontend` — routing, page structure, client-side UX, web vitals (form findings → `/improve-form`; a11y findings → `/improve-a11y`; i18n findings → `/improve-i18n`; bundle/network perf → `/optimize-bundle`/`/optimize-network`)
+- error states/error UI/error boundaries ใน frontend scope → owned by `/improve-error-handling` — not this skill
+- offline/sync behavior → `/improve-offline`; search UX+relevance → `/improve-search`
 
 ## Execute
 

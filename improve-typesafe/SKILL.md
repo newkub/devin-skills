@@ -1,6 +1,6 @@
 ---
 name: improve-typesafe
-description: หา type-safety improvements ใน scope — any leaks, unsafe casts, type drift, ignore comments — แก้ทันที
+description: หา type-safety improvements — any leaks, unsafe casts, type drift — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

@@ -1,6 +1,6 @@
 ---
 name: improve-astgrep-rules
-description: หา improvements ใน ast-grep ruleset — rule quality, coverage, false positives, sgconfig — รวม findings แล้วแก้ทันที
+description: หา improvements ใน ast-grep ruleset — rule quality, coverage, false positives — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

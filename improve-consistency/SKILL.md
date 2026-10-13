@@ -1,6 +1,6 @@
 ---
 name: improve-consistency
-description: หา consistency improvements ใน scope — naming, patterns, style, layer alignment, divergent duplicates — แก้ทันที
+description: หา consistency improvements — naming, patterns, style, layer alignment — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

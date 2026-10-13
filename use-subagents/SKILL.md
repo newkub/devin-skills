@@ -129,38 +129,30 @@ related:
 
 ## Subagent Profiles
 
-Skills เหล่านี้มี subagent profiles สำหรับ parallel independent work — อ่าน `<skill>/subagents/<name>.md` หรือ `<skill>/subagents/<name>/AGENT.md` (dir-style profile พร้อม checklist files) เพื่อดู inputs/tools/output contract แล้ว spawn ผ่าน `run_subagent`:
+Skills เหล่านี้มี subagent profiles สำหรับ parallel independent work — profile อยู่ใน `SKILL.md` ของ parent skill ใต้ section `## Subagents` (ไม่มี `subagents/` folder แล้ว) อ่าน section นั้นแล้วส่งเป็น prompt ให้ subagent ผ่าน `run_subagent`; profile ที่มีรายละเอียดเกินกว่าจะ inline ได้ เก็บเต็มไว้ที่ `<skill>/references/subagent-<name>.md` และ link ไว้จาก block นั้น:
 
 | No. | Parent Skill | Profile | Use For |
 |-----|--------------|---------|---------|
-| 1 | `review-github-pr` | `review-github-pr/subagents/pr-reviewer.md` | review PR slice per-domain/file-group |
-| 2 | `capture` | `capture/subagents/route-capturer.md` | capture route เดียวทุก device |
-| 3 | `deep-test api` | `deep-test/subagents/route-checker.md` | test API route group เดียว |
-| 4 | `deep-review` | `deep-review` | verify docs routes ต่อ site section |
-| 5 | `update-tests` | `update-tests/subagents/suite-updater.md` | update test suite เดียว (unit/e2e/snapshot) |
-| 7 | `update-project-all-drive-d` | `update-project-all-drive-d/subagents/project-updater.md` | update project dir เดียวใน drive D |
-| 8 | `update-all-program-in-computer` | `update-all-program-in-computer/subagents/program-updater.md` | update program เดียวผ่าน package manager |
-| 9 | `implement-features-to-mvp` | `implement-features-to-mvp/subagents/feature-implementer.md` | implement feature เดียว end-to-end |
-| 10 | `resolve-github-issue-by-me` | `resolve-github-issue-by-me/subagents/issue-implementer.md` | implement issue เดียวจน PR-ready |
-| 11 | `deep-research` | `deep-research/subagents/source-researcher.md` | research source/topic เดียวเชิงลึก |
-| 12 | `deep-validate` | `deep-validate/subagents/dimension-validator.md` | validate dimension เดียว pass/fail + evidence |
-| 13 | `deep-review` | `deep-review` | review workspace area เดียวเทียบ conventions |
-| 14 | `deep-review-then-fix` | `deep-review-then-fix/subagents/fix-worker.md` | apply approved fixes ของ module/domain เดียว |
-| 15 | `sync-drive-d-submodules` | `sync-drive-d-submodules/subagents/submodule-syncer.md` | sync submodule เดียวบน drive D |
-| 16 | `merge-all-branch-by-me-to-main` | `merge-all-branch-by-me-to-main/subagents/branch-merger.md` | merge branch เดียวเข้า main |
-| 17 | `update-project` | `update-project/subagents/project-updater.md` | update sub-project เดียว (deps/checks) |
-| 18 | `follow-tool-moonrepo` | `follow-tool-moonrepo/subagents/project-configurator.md` | configure/verify `moon.yml` ของ project เดียว |
-| 19 | `refactor` | `refactor/subagents/hotspot-scout.md` | เก็บ baseline evidence หา refactor targets (read-only) |
-| 20 | `refactor` | `refactor/subagents/file-worker.md` | refactor ไฟล์/scope เดียวทีละไฟล์ขนานกัน |
-| 21 | `implement-to-production` | `implement-to-production/subagents/gap-scanner.md` | inventory TODO/MOCK/placeholder ทั้ง codebase (read-only) |
-| 22 | `implement-to-production` | `implement-to-production/subagents/feature-implementer.md` | implement feature/gap item เดียว end-to-end |
-| 23 | `implement-to-production` | `implement-to-production/subagents/review-sweeper.md` | review changes ทีละ domain ขนานกัน (read-only) |
-| 24 | `update-project` | `update-project/subagents/git-log-collector.md` | เก็บ git log/diff stat ของ workspace เดียว |
-| 25 | `update-project` | `update-project/subagents/project-files-updater.md` | update project files ต่อ domain (config/docs/rules/specs) |
-| 26 | `update-project` | `update-project/subagents/project-skills-updater.md` | sync `.devin/skills` กับ codebase |
-| 27 | `update-project` | `update-project/subagents/github-metadata-updater.md` | sync GitHub repo metadata และ branch protection |
-| 28 | `update-devin-global-skills` | `update-devin-global-skills` (`## Conventions → Subagents`, profile `skill-updater`) | update skill เดียวตาม instructions ใน bulk update |
-| 29 | `review-*` ทุกตัว | `review-<domain>/subagents/<name>-reviewer/AGENT.md` (dir-style: AGENT.md + checklist files) | review domain เดียวตาม checklist — read-only, report severity + evidence |
+| 1 | `review-github-pr` | `SKILL.md ## Subagents` → `pr-reviewer`, `pr-checklist-reviewer` (+ full detail ใน `references/`) | review PR slice per-domain/file-group |
+| 2 | `capture` | `SKILL.md ## Subagents` → `route-capturer` | capture route เดียวทุก device |
+| 3 | `deep-test` | `SKILL.md ## Subagents` → `route-checker` | test API route group เดียว |
+| 4 | `deep-review` | `SKILL.md` (inline dispatch contract ไม่มี profile file) | review workspace area / docs routes ต่อ section |
+| 5 | `update-tests` | `SKILL.md ## Subagents` → `suite-updater` | update test suite เดียว (unit/e2e/snapshot) |
+| 6 | `update-project-all-drive-d` | `SKILL.md ## Subagents` → `project-updater` | update project dir เดียวใน drive D |
+| 7 | `update-all-program-in-computer` | `SKILL.md ## Subagents` → `program-updater` | update program เดียวผ่าน package manager |
+| 8 | `implement-features-to-mvp` | `SKILL.md ## Subagents` → `feature-implementer` | implement feature เดียว end-to-end |
+| 9 | `resolve-github-issue-by-me` | `SKILL.md ## Subagents` → `issue-implementer` | implement issue เดียวจน PR-ready |
+| 10 | `deep-research` | `SKILL.md ## Subagents` → `source-researcher` | research source/topic เดียวเชิงลึก |
+| 11 | `deep-validate` | `SKILL.md ## Subagents` → `dimension-validator` | validate dimension เดียว pass/fail + evidence |
+| 12 | `deep-review-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes ของ module/domain เดียว |
+| 13 | `sync-drive-d-submodules` | `SKILL.md ## Subagents` → `submodule-syncer` | sync submodule เดียวบน drive D |
+| 14 | `merge-all-branch-by-me-to-main` | `SKILL.md ## Subagents` → `branch-merger` | merge branch เดียวเข้า main |
+| 15 | `update-project` | `SKILL.md ## Subagents` → `project-updater`, `git-log-collector`, `project-files-updater`, `project-skills-updater`, `github-metadata-updater` | update sub-project และ collect inputs ต่อ domain |
+| 16 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` ของ project เดียว |
+| 17 | `refactor` | `SKILL.md ## Subagents` → `hotspot-scout`, `file-worker` | เก็บ baseline evidence (read-only) และ refactor ทีละไฟล์ขนานกัน |
+| 18 | `implement-to-production` | `SKILL.md ## Subagents` → `gap-scanner`, `feature-implementer`, `review-sweeper` | inventory gaps, implement ต่อ item, review ต่อ domain |
+| 19 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report ใน `references/`) | codebase-wide review ต่อ dimension |
+| 20 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update skill เดียวตาม instructions ใน bulk update |
 
 ## CLI — `subagents` (mission control)
 

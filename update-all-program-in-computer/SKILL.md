@@ -76,7 +76,7 @@ related:
 
 > Goal: parallelize updates เมื่อ programs เยอะ
 
-- ใช้ `subagents/program-updater.md` เมื่อต้อง update หลาย programs ที่ independent กัน — spawn ทีละ program ผ่าน `/use-subagents` แล้วรวมผล updated/skipped/failed ก่อน report
+- ใช้ profile `program-updater` (ดู `## Subagents` ด้านล่าง) เมื่อต้อง update หลาย programs ที่ independent กัน — spawn ทีละ program ผ่าน `/use-subagents` แล้วรวมผล updated/skipped/failed ก่อน report
 
 ## Rules
 
@@ -101,6 +101,24 @@ related:
 - ใช้ /list-program-in-computer ถ้าจำเป็น
 - ใช้ /download-program ถ้าจำเป็น
 - ใช้ /run-program ถ้าจำเป็น
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### program-updater — ตรวจ/อัปเดต program เดียวผ่าน package manager แล้วคืน updated/skipped/failed
+
+- **Inputs**: `program` (ชื่อ program เดียวที่ต้อง update เช่น `ripgrep`, `node`, `git`), `package-manager` (optional — manager ที่ต้องใช้ ไม่ระบุให้ auto-detect ตามลำดับ `mise` → OS package manager), `allow-major` (optional — อนุญาต major version bump หรือไม่ default ปลอดภัยตาม manager)
+- **Tools**: `exec` เท่านั้น — version checks และ upgrade commands: `mise use -g`, `scoop update`, `choco upgrade`, `winget upgrade`, `brew upgrade`, `cargo install-update`, `npm update -g` (ห้าม `write`/`edit`)
+- **Execute**:
+  1. ตรวจว่า program ติดตั้งอยู่และจัดการโดย manager ไหน — เช็ค `mise ls`, `scoop list`, `winget list` ฯลฯ
+  2. ถ้า program ไม่ได้ติดตั้งผ่าน package manager → คืน `skipped` พร้อมเหตุผล
+  3. บันทึก version ก่อน update (`<program> --version` หรือ list ของ manager)
+  4. รัน update ด้วย non-interactive flags (`-y`, `--yes`, `--no-confirm`) — ถ้า command บังคับ interactive → คืน `skipped` ให้ user รันเอง
+  5. ตรวจ version หลัง update และเปรียบเทียบก่อน/หลัง
+  6. smoke check สั้น ๆ ว่า program ยังรันได้ (`--version` หรือ `--help`)
+- **Output**: ตาราง field ต่อ program เดียว `| Field | Value |` — Program, Manager, Before, After, Status (`updated`/`skipped`/`failed`/`already-latest`), Note (เหตุผลเมื่อ skipped/failed)
+- **Constraints**: Global packages เท่านั้น — ห้ามแตะ project-local dependencies; ใช้ `exec` อย่างเดียว ห้าม `write`/`edit`; ลอง `mise` ก่อนถ้า program อยู่ใน mise — ไม่ mix package managers สำหรับ program เดียวกัน; ใช้ non-interactive flags เสมอ — ถ้าทำไม่ได้ให้ `skipped` ไม่ใช่ค้างรอ input; รับผิดชอบ program เดียว — ห้าม `update *` หรือ `upgrade --all`; ถ้า program เสี่ยงทำระบบเสียหาย (OS-level tools) → คืน `skipped` ให้ parent ถาม user
 
 ## Expected Outcome
 

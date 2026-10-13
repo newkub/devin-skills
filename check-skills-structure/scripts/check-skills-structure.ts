@@ -86,11 +86,12 @@ function countNested(dir: string, file: string): number {
   return nestedList(dir, file).length;
 }
 
-function parseFm(text: string): { keys: string[]; name?: string; related: string[] } {
+function parseFm(text: string): { keys: string[]; name?: string; desc?: string; related: string[] } {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!m) return { keys: [], related: [] };
   const keys: string[] = [];
   let name: string | undefined;
+  let desc: string | undefined;
   const related: string[] = [];
   let inRelated = false;
   for (const line of m[1].split(/\r?\n/)) {
@@ -100,13 +101,14 @@ function parseFm(text: string): { keys: string[]; name?: string; related: string
       if (FM_KEYS.includes(km[1]) && (km[2].trim() !== "" || km[1] === "related")) {
         keys.push(km[1]);
         if (km[1] === "name") name = km[2].trim().replace(/^["']|["']$/g, "");
+        if (km[1] === "description") desc = km[2].trim().replace(/^["']|["']$/g, "");
         if (km[1] === "related") inRelated = true;
       }
     } else if (inRelated && /^\s+-\s+(\S+)/.test(line)) {
       related.push(line.trim().replace(/^-\s+/, ""));
     }
   }
-  return { keys, name, related };
+  return { keys, name, desc, related };
 }
 
 function inspect(dir: string): Row {
@@ -145,6 +147,8 @@ function inspect(dir: string): Row {
   r.nameOk = fm.name === name ? "ok" : fm.name ? `!= ${fm.name}` : "missing";
   if (fm.name !== name) r.warn.push(fm.name ? `name!=dir (${fm.name})` : "no name");
   if (!fm.keys.includes("description")) r.warn.push("no description");
+  else if (fm.desc && [...fm.desc].length > 100)
+    r.warn.push(`desc ${[...fm.desc].length} >100 chars`);
   if (fm.keys.length === 0) r.warn.push("no frontmatter");
   if (r.lines > 250) r.warn.push(`${r.lines} lines >250`);
 

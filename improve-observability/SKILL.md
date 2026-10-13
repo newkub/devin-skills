@@ -25,6 +25,7 @@ related:
 
 - `review-observability` — metrics coverage, distributed tracing, structured logging, log levels, alerting rules, dashboards, error tracking, SLO/SLI
 - infra capabilities กว้าง → `/improve-platform`; crash/recovery paths → `/improve-stability`
+- alert noise/routing/escalation → `/improve-alerting`
 
 ## Execute
 

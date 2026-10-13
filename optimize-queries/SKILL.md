@@ -1,6 +1,6 @@
 ---
 name: optimize-queries
-description: หา query optimization ใน scope — N+1, missing indexes, slow queries, over-fetching — รวม findings แล้วแก้ทันที
+description: หา query optimization — N+1, missing indexes, slow queries — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

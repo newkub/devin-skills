@@ -22,9 +22,10 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ "ควร improve data อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-data-validation` — input/output validation, schema contracts, boundary checks, data integrity
-- scope เจาะ validation โดยเฉพาะ (schemas, sanitization, boundary checks) → `/improve-data-validation`
+- `review-data-validation` — input/output validation, schema contracts, boundary checks, data integrity (integrity ทั้งสาย — เจ้าของพื้นที่นี้)
+- validation layer เจาะจง (schema-per-input, DTO, sanitization ที่ trust boundary) → `/improve-data-validation`
 - ORM, schema, query perf, indexes, migrations → `/improve-database`
+- เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
 
 ## Execute
 

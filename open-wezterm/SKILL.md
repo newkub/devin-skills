@@ -4,6 +4,7 @@ description: เปิด directory ใน WezTerm terminal ด้วย wezterm
 argument-hint: "[path]"
 related:
   - open-in-devin
+  - open-file-in-gitui
 ---
 
 ## Goal
@@ -63,6 +64,7 @@ related:
 
 - ใช้ /open-in-devin ถ้าจำเป็น
 - ใช้ /open-in-explorer ถ้าจำเป็น
+- ใช้ /open-file-in-gitui ถ้าจำเป็น — เปิด `gitui -f <file>` ใน WezTerm window ใหม่
 
 ## Expected Outcome
 

@@ -1,15 +1,17 @@
 ---
 name: improve-resilience
-description: หา improvements ของ resilience — timeouts, retries, circuit breakers, degradation — รวม findings แล้วแก้ทันที
+description: หา improvements ของ resilience — timeouts, retries, circuit breakers — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
+  - improve-stability
+  - improve-error-handling
+  - improve-events
   - deep-review
   - deep-review-then-fix
   - report
   - suggest-next-action
   - ask-me
-  - improve-stability
 ---
 
 ## Goal
@@ -20,8 +22,9 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ "resilience ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-stability` — timeouts, retries, circuit breakers, fallbacks
+- `review-stability` — timeouts, retries, circuit breakers, fallbacks, bulkheads, graceful degradation (resilience patterns — เจ้าของพื้นที่นี้)
 - `review-backend` — failure propagation, dependency isolation
+- crash/recovery กว้าง → `/improve-stability`; error paths/error UI → `/improve-error-handling`; messaging semantics → `/improve-events`; เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
 
 ## Execute
 

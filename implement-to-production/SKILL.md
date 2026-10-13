@@ -59,7 +59,7 @@ related:
 > Goal: เข้าใจ scope และปัญหาก่อน implement
 
 1. ทำ `/follow-review` เป็น gate ก่อน implement — เลือกและรัน `review-*` ที่ตรง context แล้วทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
-2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values — ถ้า codebase ใหญ่ → spawn `subagents/gap-scanner.md` (read-only) คืน gap inventory table แทนการสแกนเอง และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
+2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values — ถ้า codebase ใหญ่ → spawn profile `gap-scanner` (ใน `## Subagents`, read-only) คืน gap inventory table แทนการสแกนเอง และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/temp/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
 5. อ่าน `refactor/SKILL.md` `## Rules` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน (รวม `/refactor-to-srp`): 1 unit = 1 reason to change, ≤250 บรรทัด, preserve public API, minimal change
@@ -113,7 +113,7 @@ related:
 1. อ่าน `TODO.md` ใน workspace โดยตรงเพื่อรวบรวม pending items ก่อน implement (หรือ `/update-todo-md` เพื่ออ่าน/enhance prompt)
 2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-astgrep` หรือ `grep` — รวม dead-UI markers (`onClick={() => {}}`, `href="#"`, `disabled` ถาวร, `alert(`, 'coming soon') — และทำ `/check-secrets hardcoded-values` หา hardcoded URLs, credentials, magic strings
 3. ถ้ามี `TODO.md` → ทำตาม `references/implement-todo-md.md`
-4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้ — items ที่ independent กันหลายตัว → spawn `subagents/feature-implementer.md` ทีละ item ขนานกัน (ส่ง contracts จากขั้น 4-5 ให้)
+4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้ — items ที่ independent กันหลายตัว → spawn profile `feature-implementer` (ใน `## Subagents`) ทีละ item ขนานกัน (ส่ง contracts จากขั้น 4-5 ให้)
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
 6. implement แต่ละ feature/fix ด้วย `/follow-tdd` — เขียน failing test ที่ lock behavior ก่อน แล้วค่อยเขียน code ให้ผ่าน
 7. ทำ `/use-lib-effective` ก่อนเขียน implementation ใหม่ — ใช้ dep ที่ติดตั้งอยู่หรือ preferred stack ให้เต็มประสิทธิภาพแทนการ reinvent
@@ -134,7 +134,7 @@ related:
 8. เพิ่ม metrics: response time, error rate
 9. เพิ่ม correlation IDs สำหรับ tracing
 10. ถ้าจำเป็น → ทำ `/deep-review`
-11. reviews หลาย domain บน changes เดียวกัน → spawn `subagents/review-sweeper.md` ทีละ domain ขนานกัน (read-only) แล้วรวม findings ก่อนแก้
+11. reviews หลาย domain บน changes เดียวกัน → spawn profile `review-sweeper` (ใน `## Subagents`) ทีละ domain ขนานกัน (read-only) แล้วรวม findings ก่อนแก้
 
 ### 8. Refactor And Cleanup
 
@@ -175,20 +175,6 @@ related:
 1. ถ้า argument ตรง topic → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 2. ถ้าไม่ระบุ → ทำตาม steps 1-9 ตามลำดับ
 
-### Subagents
-
-> Goal: dispatch งาน implement ที่อิสระไปยัง subagent profiles
-
-| Task | Subagent |
-|------|----------|
-| inventory TODO/MOCK/placeholder/hardcoded ทั้ง codebase (read-only) | `subagents/gap-scanner.md` |
-| implement feature/gap item เดียว end-to-end — spawn ทีละ item ขนานกัน | `subagents/feature-implementer.md` |
-| review changes ทีละ domain (security/api/test/observability/resilience) ขนานกัน | `subagents/review-sweeper.md` |
-
-1. spawn ผ่าน `/use-subagents` โดยส่ง inputs ตามที่แต่ละ profile กำหนด
-2. `gap-scanner`/`review-sweeper` เป็น read-only — `feature-implementer` แก้เฉพาะ `files` ที่ได้รับ
-3. parent เป็นคนรวมผล, checkpoint commit และ verify รวมเสมอ
-
 ## Rules
 
 ### 1. No Mock In Production
@@ -221,6 +207,34 @@ related:
 ### 5. Plan Always
 
 - ทุกงาน implement ต้องมี plan จาก `/create-plan-in-dot-devin` ก่อน — ห้ามเริ่ม Step 3 โดยไม่มี plan
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile inline ที่นี่ไม่ต้องมีไฟล์แยก; spawn ผ่าน `/use-subagents` ส่ง inputs ตามที่แต่ละ profile กำหนด; `gap-scanner`/`review-sweeper` เป็น read-only, `feature-implementer` แก้เฉพาะ `files` ที่ได้รับ; parent เป็นคนรวมผล + checkpoint commit + verify รวมเสมอ
+
+### feature-implementer — implement feature/gap item เดียว end-to-end — spawn ทีละ item ขนานกัน (full profile: `references/subagent-feature-implementer.md`)
+
+- **Inputs**: `item` (gap item/feature spec จาก gap-scanner หรือ plan file), `files` (scope ไฟล์ที่แก้ได้), `contracts` (types/schemas/API contracts ที่ parent ให้ canonical มา), `conventions` (stack/libraries ที่มีอยู่/style), `verify-cmd` (เช่น `bun test <path>` หรือ `tsc --noEmit`)
+- **Tools**: `read`/`write`/`edit` (implement ใน scope `files`), `exec` (รัน `verify-cmd` และ tests — allow `tsc`/`eslint`/`* test`/`* vitest`), `grep` (หา usage patterns เดิม)
+- **Execute**: 1 เขียน failing test ที่ lock expected behavior ก่อน (TDD) → 2 implement ตาม `item` ใช้ dep ที่มีก่อน ห้ามเพิ่ม dep ใหม่โดยไม่รายงาน → 3 เชื่อม `contracts` ห้าม redefine types ซ้ำ → 4 รัน `verify-cmd` fail ให้แก้จนผ่านหรือรายงาน blocker → 5 ลบ marker เดิม (`TODO`/`MOCK`/placeholder) เมื่อ implement จริงแล้ว
+- **Output**: ตาราง No./File/Change/Test/Notes (เช่น `src/api/users.ts` | real query impl | `pass`); `Test` = `pass`/`fail`/`skipped` + output ถ้า fail; ปิดท้าย files changed, new deps ที่เพิ่ม, markers removed, blockers/deferred items
+- **Constraints**: ห้าม mock/stub/placeholder ใหม่ (production code เท่านั้น); รับผิดชอบเฉพาะ `files` (cross-cutting รายงาน parent); ห้าม commit/push — parent เป็นคน checkpoint; secrets ห้าม hardcode — ขาด env/credentials ให้ blocker กลับทันที; ห้าม `git push`/`rm -rf`
+
+### gap-scanner — inventory TODO/MOCK/placeholder/hardcoded ทั้ง codebase (read-only) (full profile: `references/subagent-gap-scanner.md`)
+
+- **Inputs**: `root` (directory ที่ต้องสแกน), `markers` optional (เพิ่มจาก `TODO|FIXME|XXX|HACK|MOCK|FAKE|STUB|placeholder`), `plan-file` optional (path plan/TODO.md ที่ต้องเทียบ items)
+- **Tools**: `exec` (รัน ast-grep/grep หา markers + hardcoded values), `read`/`grep` (อ่าน context รอบ marker จำแนกงาน), `find_file_by_name` (หา `TODO.md`, `.env.example`, config files)
+- **Execute**: 1 สแกน markers ทั้งหมดใน `root` พร้อม file:line+context รวม dead-UI (`onClick={() => {}}`, `href="#"`, `disabled` ถาวร, `alert(`, 'coming soon'/'ยังไม่พร้อม') → 2 จำแนกแต่ละ item `schema`/`data`/`api`/`ui`/`infra`/`test`/`docs`/`unknown` → 3 เช็คว่าเป็น mock data/stub function/hardcoded value/missing implementation → 4 ถ้ามี `plan-file` เทียบ items → 5 ห้ามแก้ไขไฟล์ (inventory อย่างเดียว)
+- **Output**: ตาราง No./Location/Type/Item/Blocking/Effort (เช่น `src/api/users.ts:42` | api | `TODO: real query` | `schema` | small); `Type`=domain category, `Blocking`=item ที่ต้องทำก่อน; ปิดท้าย total items ต่อ domain, suggested order, critical path candidates
+- **Constraints**: ห้าม write/edit — scan อย่างเดียว; รายงานทุก marker ที่เจอ ไม่ filter เอง (parent prioritize); อยู่ใน `root` ที่กำหนดเท่านั้น
+
+### review-sweeper — review changes ทีละ domain (security/api/test/observability/resilience) ขนานกัน (read-only) (full profile: `references/subagent-review-sweeper.md`)
+
+- **Inputs**: `domain` เดียว (`security`/`api`/`test`/`observability`/`resilience`), `scope` (ไฟล์/diff ที่ต้อง review), `context` (สิ่งที่ implement ไป)
+- **Tools**: `read`/`grep` (อ่าน code + หา patterns ที่เสี่ยง), `exec` (รัน `git diff`, linters, audit commands ของ domain นั้น)
+- **Execute**: 1 อ่าน changes ใน `scope` เข้าใจว่า implement อะไร → 2 review ตาม checklist ของ `domain` (security=injection/authz gaps/secrets leak/input validation, api=validation/error handling/rate limit/retry-safety, test=assertion-less tests/unhandled throws/swallowed errors, observability=logging/metrics/correlation IDs, resilience=retry/backoff/graceful degradation/timeouts) → 3 รายงาน findings พร้อม severity ห้ามแก้ไขเอง
+- **Output**: ตาราง No./Severity/Location/Finding/Suggested Fix (เช่น high | `src/api/x.ts:20` | unvalidated input to query | use schema validation); `Severity` = `critical`/`high`/`medium`/`low`; ปิดท้าย verdict `pass`/`pass-with-warnings`/`fail` + blocking findings count
+- **Constraints**: ห้าม write/edit — review อย่างเดียว; review เฉพาะ `domain` ที่ได้รับ ห้ามข้าม domain; findings ต้องชี้ file:line จริง ห้ามคิดว่าน่าจะมีปัญหา
 
 ## Expected Outcome
 

@@ -73,7 +73,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 
 > Goal: parallelize implementation เมื่อมีหลาย must-have features
 
-- ใช้ `subagents/feature-implementer.md` เมื่อ features ที่ independent กัน (ไม่แชร์ files/modules) ต้องทำพร้อมกัน — spawn ทีละ feature ผ่าน `/use-subagents` โดยกำหนด `target-paths` ไม่ให้ overlap แล้วรวมผลก่อน validate MVP completeness
+- ใช้ profile `feature-implementer` (ใน `## Subagents` ข้างล่าง) เมื่อ features ที่ independent กัน (ไม่แชร์ files/modules) ต้องทำพร้อมกัน — spawn ทีละ feature ผ่าน `/use-subagents` โดยกำหนด `target-paths` ไม่ให้ overlap แล้วรวมผลก่อน validate MVP completeness
 
 ## Rules
 
@@ -113,6 +113,18 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 - ไม่หยุดเมื่อ MVP ครบถ้วน
 - เพิ่ม features ตาม request โดยไม่ประเมิน impact
 - ใช้ /test-unit สำหรับ core logic และ /test-e2e verify critical user flows ก่อนสรุป MVP
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### feature-implementer — implement feature เดียว end-to-end (code + tests) ตาม spec แล้วคืนไฟล์ที่แก้และผล verify
+
+- **Inputs**: `feature-spec` (requirements ของ feature เดียว — acceptance criteria, user flow, edge cases), `conventions` (architecture/style/test patterns ของ project — `AGENTS.md`, existing code patterns), `target-paths` optional (files/modules ที่ feature นี้ครอบ — กัน overlap กับ agent อื่น), `verify-commands` (commands สำหรับ verify เช่น `bun run test`, `bun run lint`, `bun run typecheck`)
+- **Tools**: `read`/`grep`/`find_file_by_name` (อ่าน code และ conventions เดิม), `edit`/`write` (implement code และ tests), `exec` (รัน verify commands: test/lint/typecheck/build ผ่าน `bun run`/`pnpm test`/`npm test`)
+- **Execute**: 1 อ่าน `feature-spec` + existing code ที่เกี่ยว (เข้าใจ integration points ก่อนเขียน) → 2 implement เฉพาะ must-have ตาม spec ใช้ `/dont-over-engineer` ห้ามทำ optional enhancements → 3 เขียน tests ตาม conventions ครอบคลุม acceptance criteria → 4 รัน `verify-commands` (lint/typecheck/tests ต้องผ่าน) → 5 ถ้า fail → แก้และ retry สูงสุด 3 รอบ ถ้ายังไม่ผ่านคืน `blocked` พร้อมสาเหตุ
+- **Output**: ตาราง No./File/Action/Purpose (เช่น `src/features/x.ts` `added` core logic, `tests/x.test.ts` `added` acceptance tests); `action` = `added`/`modified`/`deleted`; ปิดท้าย feature status `done`/`blocked` + verify results ต่อ command + acceptance criteria checklist (pass/fail ต่อข้อ)
+- **Constraints**: implement เฉพาะ feature เดียวตาม spec ห้ามขยาย scope หรือทำ nice-to-have; แก้เฉพาะไฟล์ใน `target-paths` (ถ้าต้องแตะไฟล์ shared ให้ report ให้ parent ตัดสิน); minimal changes ไม่ refactor ส่วนที่ไม่เกี่ยว/ไม่เพิ่ม dependencies ใหม่โดยไม่จำเป็น; รักษา public API และ architecture เดิม follow existing style; verify ต้องผ่านก่อนคืน `done` ห้ามอ้างว่าเสร็จถ้า tests ยังแดง; ห้าม `git push` และห้าม `rm`
 
 ## Expected Outcome
 

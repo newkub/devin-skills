@@ -1,6 +1,6 @@
 ---
 name: improve-billing
-description: หา improvements ของ billing — checkout, subscriptions, invoices, proration — รวม findings แล้วแก้ทันที
+description: หา improvements ของ billing — checkout, subscriptions, invoices — รวม findings แล้วแก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -30,6 +30,7 @@ related:
 |---|---|
 | `f` | o |
 | `S` | t |
+- failed-payment/dunning recovery → `/improve-payment-recovery`; usage tracking → `/improve-metering`
 
 
 ## Execute

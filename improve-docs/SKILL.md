@@ -1,6 +1,6 @@
 ---
 name: improve-docs
-description: หา docs improvements ใน scope — README, guides, .md files, structure — writing quality ผ่าน /improve-writing
+description: หา docs improvements — README, guides, structure — writing ผ่าน /improve-writing
 argument-hint: "[scope]"
 related:
   - improve
@@ -24,6 +24,7 @@ related:
 - `review-docs` — docs structure, README completeness, missing guides, stale content, broken links, missing pages
 - writing quality/readability ของเนื้อหา docs → `/improve-writing`
 - สร้าง/อัปเดต docs ใหญ่ (VitePress site, restructure) → `/update-docs`
+- API migration guides → `/improve-api-deprecation`
 
 ## Execute
 

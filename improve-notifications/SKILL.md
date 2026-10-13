@@ -1,6 +1,6 @@
 ---
 name: improve-notifications
-description: หา improvements ของ notifications — email/push/in-app, delivery, preferences — รวม findings แล้วแก้ทันที
+description: หา improvements ของ notifications — email/push/in-app, delivery — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -21,6 +21,7 @@ related:
 
 - `review-backend` — delivery pipeline, fan-out, dedup
 - `review-api` — notification APIs, preference endpoints, unsubscribe contract
+- email deliverability → `/improve-email`
 
 ## Execute
 

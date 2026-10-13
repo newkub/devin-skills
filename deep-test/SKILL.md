@@ -39,7 +39,7 @@ related:
 
 | Domain | Reference | ครอบคลุม |
 |--------|-----------|----------|
-| api | [references/api.md](references/api.md) | REST/GraphQL/tRPC/WebSocket endpoints, response contract checks, Bruno/Hurl/Schemathesis, all-routes check (`scripts/check-routes.*` + `subagents/route-checker.md`) |
+| api | [references/api.md](references/api.md) | REST/GraphQL/tRPC/WebSocket endpoints, response contract checks, Bruno/Hurl/Schemathesis, all-routes check (`scripts/check-routes.*` + profile `route-checker` ใน `## Subagents`) |
 | cli | [references/cli.md](references/cli.md) | CLI commands, exit codes, stdout/stderr, flags, error paths |
 | contract | [references/contract.md](references/contract.md) | consumer/provider contract verification, drift detection |
 | coverage | [references/coverage.md](references/coverage.md) | coverage analysis, thresholds, gap loop จน 100% |
@@ -72,6 +72,17 @@ related:
 - ใช้ /use-chrome-devtools ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น
 
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### route-checker — ทดสอบ API route group เดียวแล้วคืน pass/fail ต่อ route พร้อม evidence
+
+- **Inputs**: `route-group` (list routes ที่รับผิดชอบ เช่น `GET /api/users`, `GET /api/users/{id}`), `base-url` (target เช่น `http://localhost:3000`), `method-policy` (safe methods only default หรือ `allow-write` เมื่อ user confirm แล้ว), `headers` (optional — auth headers เช่น `Authorization: Bearer <token>`; parent ต้อง mask ก่อน report), `timeout`/`slow-threshold` (optional — default timeout และ threshold ของ `slow`)
+- **Tools**: `exec` — รัน `bun <skill-dir>/scripts/check-routes.ts` หรือ `scripts/check-routes.ps1` fallback (อนุญาตเฉพาะ `bun *check-routes.ts *` และ `*check-routes.ps1 *`), `read` — อ่าน manifest/results file
+- **Execute**: 1) เขียน route list ของ group ลง temp routes file หรือส่งผ่าน `--routes` 2) รัน `bun scripts/check-routes.ts --base <base-url> --routes-file <file> --out <result-file>` 3) dynamic segments `{id}` ถูกแทนด้วย `1` โดย script 4) classify แต่ละ route: `ok` (2xx/expected), `redirect` (3xx), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx/timeout/DNS/TLS), `skipped` (non-safe method), `missing` (404) 5) ถ้าทุก route fail pattern เดียวกัน → flag เป็น group-level issue (เช่น base path ผิด) ไม่ใช่ per-route
+- **Output**: ตารางต่อ route `| No. | Method | Route | Status | Expected | Time (ms) | Severity | Evidence |` ปิดท้ายด้วย group summary (tested, skipped, ok, protected, critical, missing) และระบุ result file path ที่ persist ไว้
+- **Constraints**: ยิงเฉพาะ `GET`/`HEAD`/`OPTIONS` เว้นแต่ parent ส่ง `allow-write` ที่ user confirm แล้ว; ห้ามยิง production ถ้า parent ไม่ได้ระบุ confirmation; mask credentials/tokens ทุกครั้ง — ห้ามส่ง secrets จริงกลับ; ทุก route ต้องมีผล tested หรือ skipped พร้อมเหตุผล — ห้ามเดา status; รับผิดชอบเฉพาะ route group ที่ได้รับ ไม่ยิง routes นอก group; read-only — ห้าม `write`/`edit`
 
 ## Expected Outcome
 

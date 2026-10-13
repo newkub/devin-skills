@@ -5,6 +5,7 @@ argument-hint: "[path]"
 related:
   - follow-create-plugins
   - open-in-devin
+  - open-file-in-gitui
 ---
 
 ## Goal
@@ -75,6 +76,7 @@ related:
 - ใช้ /follow-create-plugins (zed) ถ้าจำเป็น
 - ใช้ /open-in-devin ถ้าจำเป็น
 - ใช้ /open-in-explorer ถ้าจำเป็น
+- ใช้ /open-file-in-gitui ถ้าจำเป็น — ดูสถานะ/diff ของไฟล์ใน gitui TUI แทน editor
 
 ## Expected Outcome
 

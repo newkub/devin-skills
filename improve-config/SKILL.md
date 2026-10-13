@@ -1,6 +1,6 @@
 ---
 name: improve-config
-description: หา config improvements ใน scope — config files, CI/CD config, best practices, drift — รวม findings แล้วแก้ทันที
+description: หา config improvements — config files, CI/CD config, drift — รวม findings แล้วแก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -21,6 +21,7 @@ related:
 
 - `review-config` — config file correctness, schema, CI/CD config, best practices
 - ใช้ `/deep-review` domain `review-config` ถ้าต้องเทียบ drift ข้าม env
+- env parity dev/staging/prod → `/improve-env-parity`; flag lifecycle → `/improve-features-flags`
 
 ## Execute
 

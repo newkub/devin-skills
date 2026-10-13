@@ -1,6 +1,6 @@
 ---
 name: improve-code-quality
-description: หา code quality improvements ใน scope — readability, consistency, smells, duplication — รวม findings แล้วแก้ทันที
+description: หา code quality improvements — readability, consistency, smells, duplication — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -26,6 +26,7 @@ related:
 - `review-redundancy` — duplication, dead code, redundant abstractions
 - error-handling quality (error paths, messages, recovery) → `/improve-error-handling`
 - correctness (bugs, logic errors, expected-vs-actual) → `/improve-correctness`
+- datetime/timezone correctness → `/improve-datetime`
 
 ## Execute
 

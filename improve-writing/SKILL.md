@@ -1,6 +1,6 @@
 ---
 name: improve-writing
-description: หา writing improvements ใน scope — readability, clarity, naming, discoverability ของ .md/prose — แก้ทันที
+description: หา writing improvements — clarity, readability, tone ของ docs/prose — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

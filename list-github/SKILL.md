@@ -4,6 +4,8 @@ description: List GitHub resources — branches, issues, PRs, projects, releases
 argument-hint: "[domain]"
 related:
   - all-github-repo
+  - list-all-github-issue
+  - list-all-github-pr
   - report
   - ask-me
 
@@ -23,6 +25,8 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 
 | Domain | Skill |
 |---|---|
+| `all-issue` | /list-all-github-issue — issues ข้ามทุก repo ของ personal + orgs |
+| `all-pr` | /list-all-github-pr — pull requests ข้ามทุก repo ของ personal + orgs |
 | `branch` | /list-github-branch — branches ใน repo |
 | `issue` | /list-github-issue — issues พร้อม filter |
 | `pr` | /list-github-pr — pull requests พร้อม status |
@@ -32,8 +36,9 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 | `star` | /list-github-star-latest — starred repos |
 
 1. ระบุ domain จาก argument (เช่น `/list-github-pr`)
-2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+2. ถ้า domain รองรับ → เรียก skill จากคอลัมน์ Skill ในตารางข้างบน แล้วทำตาม flow นั้น
+3. domain `all-*` คือมุมมองข้ามทุก repo ของ personal + orgs ส่วน domain อื่นเจาะจง repo เดียว
+4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules
 

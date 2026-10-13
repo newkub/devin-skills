@@ -65,8 +65,8 @@ bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>    
 
 > Goal: จัดการ warnings ที่พบ
 
-1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `no frontmatter`, `>250 lines`
-2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`>250 lines`
+1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`
+2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`
 3. findings ที่ต้องแก้ → `/update-devin-global-skills`; deep lint → `/review-devin-global-harness`; validate ต่อ skill → `/deep-validate`
 
 ## Rules

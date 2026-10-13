@@ -20,7 +20,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 | Tool Version Manager | `mise` | - | `mise` | - |
 | Web Framework | `Elysia` | `Hono` (→CF Workers/multi-runtime), `Nitro` (→ใน Nuxt) | `Axum` | `Actix Web` |
 | Full-stack Framework | `Nuxt 4` (Vue), `TanStack Start` (Solid) | `Astro` (→content site), `SvelteKit` (→Svelte) | `Dioxus` | - |
-| Desktop App | `Tauri` | `Native SDK` (→native toolkit) | `Tauri` (Rust backend) | - |
+| Desktop App | `Tauri` | `Native SDK` (→`/follow-lib-native-sdk` — TS+markup AOT ไม่มี runtime) | `Tauri` (Rust backend) | `gpui-kit` (→`/follow-lib-gpui-kit`) |
 | Mobile App | `Capacitor` | - | - | - |
 | ORM | `Drizzle` | - | `SQLx` | `SeaORM` (→ต้องการ full ORM) |
 | SQL / KV Driver | `postgres`, `ioredis` | - | `sqlx`, `fred` | - |
@@ -212,7 +212,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 - ถ้าเป็น Rust app: เพิ่ม `thiserror`/`anyhow`, `tracing`, `Clap`
 - ถ้าเป็น monorepo: เพิ่ม Build System, Documentation
 - ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-lib-tanstack-ecosystem`)
-- ถ้ามี desktop: เพิ่ม `Tauri`
+- ถ้ามี desktop: เพิ่ม `Tauri` (webview shell) หรือ `Native SDK` (native AOT ไม่มี runtime — ดู `/follow-lib-native-sdk`)
 - ถ้ามี mobile: เพิ่ม `Capacitor`
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-tool-pitchfork`)
 - ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-tool-usage`)

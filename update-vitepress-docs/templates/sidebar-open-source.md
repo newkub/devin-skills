@@ -6,12 +6,12 @@ description: VitePress sidebar config for open-source documentation
 # Open Source Sidebar Template
 
 Use this config in `docs/.vitepress/config.ts` for open-source projects.
-Nav is defined separately — copy the open-source array from `templates/nav-config.md`.
+Nav is defined separately — copy the Base Nav (with open-source variation) from `templates/nav-config.md`.
 
 ```ts
 export default {
   themeConfig: {
-    // nav: copy "Open Source Nav" from templates/nav-config.md
+    // nav: Base Nav from templates/nav-config.md (open-source variation)
     sidebar: {
       '/project/': [
         {
@@ -34,6 +34,8 @@ export default {
           ],
         },
       ],
+      // extensibility sections (/guides/ /examples/ /integrations/ /plugins/ /adapters/ /ecosystem/) —
+      // copy only the sections whose directories exist from templates/sidebar-extensibility.md
       '/roadmap/': [
         {
           text: 'Roadmap',
@@ -52,8 +54,7 @@ export default {
             { text: 'Architecture', link: '/development/architecture' },
             { text: 'Workflows', link: '/development/workflows' },
             { text: 'Testing', link: '/development/testing' },
-            { text: 'CI/CD', link: '/development/ci-cd' },
-            { text: 'Scripts', link: '/development/scripts' },
+            { text: 'Deployment', link: '/development/deployment' },
             { text: 'Troubleshooting', link: '/development/troubleshooting' },
           ],
         },

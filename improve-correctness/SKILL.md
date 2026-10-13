@@ -1,6 +1,6 @@
 ---
 name: improve-correctness
-description: หา correctness improvements ใน scope — bugs, logic errors, edge cases, contract violations — แก้ทันที
+description: หา correctness improvements — bugs, logic errors, edge cases — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

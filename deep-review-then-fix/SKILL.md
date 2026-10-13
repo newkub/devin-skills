@@ -64,9 +64,12 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 | business | `/deep-review` | `/improve-business` |
 | release | `/deep-review` | `/improve-release` |
 | delivery | `/deep-review` | `/improve-delivery` |
-| stability | `/deep-review` | `/improve-stability` |
+| stability | `/deep-review` | `/improve-stability` (error paths/UI → `/improve-error-handling`; messaging → `/improve-events`) |
+| error-handling | `/deep-review` | `/improve-error-handling` (เจ้าของเดียว: error paths, retries, recovery, error states, error UI, error boundaries) |
+| architecture | `/deep-review` | `/improve-architecture` (เลือก pattern → `/follow-architecture`; ย้ายไฟล์/แยก layer → `/refactor`) |
+| migration | `/deep-review` | `/improve-migration` (backward compat, data integrity, rollback, cutover) |
 | quality/types | `/deep-review` | `## Fix` — complexity, imports |
-| อื่นๆ (cli, config, migration, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
+| อื่นๆ (cli, config, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
 
 ## Execute
 
@@ -146,6 +149,23 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 
 - ใช้ /create-plan-in-dot-devin ถ้าจำเป็น
 - re-run ผ่าน /run-test <domain> หลัง fix เพื่อ verify tests เขียว
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### fix-worker — apply fixes ที่ user approve แล้วใน module/domain เดียว แล้ว verify คืน changed files + results (ใช้เมื่อ findings กระจายหลาย modules แก้ขนานกันได้โดยไม่ชนกัน)
+
+- **Inputs**: `findings` (findings list ที่ approved ของ module/domain นี้ — finding id, severity, `file:line`, recommendation), `scope` (module/domain เดียวที่รับผิดชอบ เช่น `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — paths ของ `## Fix` section หรือ workflow `SKILL.md` ที่ตรง domain), `verify-commands` (optional — commands สำหรับ verify เช่น `bun run typecheck`, `bun run test`)
+- **Tools**: `read`, `grep`, `find_file_by_name` (อ่าน fix guides และ source ที่จะแก้), `edit`/`write` (apply fixes ตาม findings ที่ approved เท่านั้น), `exec` (รัน lint, typecheck, tests หลังแต่ละ fix)
+- **Execute**:
+  1. อ่าน fix route ที่ตรง domain (workflow `fix-*`/`improve-*` หรือ `## Fix` ของ review skill ตาม Domain Map ด้านบน) — ถ้าไม่มีให้แก้ตาม finding recommendation ตรงๆ
+  2. จัดลำดับ findings ตาม severity — `critical` ก่อน แล้วแก้ทีละรายการ
+  3. แต่ละ fix ต้องรักษา behavior เดิม — minimal diff ไม่ refactor เกิน finding
+  4. Verify ทันทีหลังแต่ละ fix ด้วย `verify-commands` หรือ checks ที่ scope รองรับ
+  5. ถ้า fix ทำ check พัง → revert fix นั้นและ mark `failed` พร้อมสาเหตุ แล้วทำต่อ
+- **Output**: ตาราง `| No. | Finding | Status | Changed Files | Verify Result |` — `status`: `fixed`/`failed`/`skipped` (ไม่อยู่ใน scope หรือขาด approval); ปิดท้ายด้วยสรุป total fixed/failed/skipped, changed files ทั้งหมด, verify รวม (`pass`/`fail`); ถ้า verify รวม fail → ระบุ fixes ที่ revert แล้วและ residual risk
+- **Constraints**: แก้เฉพาะ findings ที่อยู่ใน `findings` list และ `scope` ที่ได้รับ — ห้ามแก้ finding ของ module อื่น; ห้าม fix ที่ยังไม่ได้ approved — ถ้าไม่ชัดให้ mark `skipped` พร้อมเหตุผล; ทุก fix ต้องผ่าน verify ของตัวเอง — fail ให้ revert ทันทีไม่ทิ้ง broken state; ห้ามแตะ files นอก `scope` เว้นแต่ finding บังคับ (เช่น shared import) — ต้องระบุใน output; ไม่ commit — parent เป็นผู้ commit หลังรวมผลทุก worker
 
 ## Expected Outcome
 

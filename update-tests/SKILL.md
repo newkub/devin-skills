@@ -101,7 +101,7 @@ related:
 
 > Goal: parallelize suite updates เมื่อ changes กระทบหลาย suites
 
-- ใช้ `subagents/suite-updater.md` เมื่อต้อง update หลาย test suites ที่ independent กัน (unit/integration/e2e/snapshot) — spawn ทีละ suite ผ่าน `/use-subagents` โดยแต่ละ agent แก้คนละชุด test files แล้วรวมผลก่อน `/run-test all`
+- ใช้ profile `suite-updater` (`## Merged Details → suite-updater`) เมื่อต้อง update หลาย test suites ที่ independent กัน (unit/integration/e2e/snapshot) — spawn ทีละ suite ผ่าน `/use-subagents` โดยแต่ละ agent แก้คนละชุด test files แล้วรวมผลก่อน `/run-test all`
 
 ### Workflows
 
@@ -395,7 +395,7 @@ related:
 - Accessibility: WCAG/ARIA/keyboard nav บน UI components
 - Visual: screenshot regression ผ่าน Playwright/component snapshots — `/deep-test visual`
 
-### subagents/suite-updater
+### suite-updater
 
 ##### Role
 

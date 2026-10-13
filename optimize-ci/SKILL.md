@@ -1,6 +1,6 @@
 ---
 name: optimize-ci
-description: หา CI optimization ใน scope — pipeline time, caching, parallelism, job efficiency — รวม findings แล้วแก้ทันที
+description: หา CI optimization — pipeline time, caching, parallelism — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

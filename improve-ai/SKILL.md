@@ -20,6 +20,7 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "AI/LLM ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-ai` — prompt quality, token usage/cost, model selection, guardrails, evals, latency, fallback/error handling
+- safety findings (prompt injection, jailbreak, output sanitization) → `/improve-ai-safety`; LLM token/spend → `/optimize-llm`
 
 ## Execute
 

@@ -144,6 +144,23 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ใช้ /run-test all ถ้าจำเป็น
 - ใช้ /run-typecheck ถ้าจำเป็น
 
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### dimension-validator — validate เพียง dimension เดียวของ scope แล้วคืน verdict พร้อม evidence
+
+- **Inputs**: `dimension` (`tests`/`lint`/`types`/`docs`/`refs`/`security`/`runtime`), `scope` (path หรือ target ที่ validate เช่น workspace, file list, feature), `success-criteria` (optional: เกณฑ์ผ่านที่ parent กำหนด เช่น `typecheck 0 errors`), `ecosystem` (optional: `bun`/`pnpm`/`cargo` เพื่อเลือก commands ที่ถูก)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` (รัน validation commands เช่น `bun run test`, `bun run lint`, `bun run typecheck`)
+- **Execute**:
+  1. ระบุ command/checklist ของ `dimension` ตาม ecosystem ที่ตรวจพบ เช่น `types` → typecheck, `tests` → test suite, `refs` → imports/links
+  2. รัน check หลักของ dimension แล้วเก็บ raw output และ exit code
+  3. ตรวจ supplementary items ของ dimension เช่น `types` → `any`, `@ts-ignore`; `docs` → README drift; `refs` → broken imports
+  4. จัด severity ต่อ failure: `critical`/`high`/`medium`/`low` พร้อม `file:line` evidence
+  5. สรุป verdict ของ dimension: `pass` / `fail` / `skip` (dimension นี้ไม่มีใน scope)
+- **Output**: ตาราง `| No. | Check | Result | Severity | Evidence |` (เช่น `1` | `bun run typecheck` | `fail` | `high` | `src/x.ts:42`); บรรทัดแรกคือ verdict `pass`/`fail`/`skip` พร้อมเหตุผลสั้น; แนบ commands ที่รันและ exit code เสมอ — verdict ต้อง reproduce ได้; check รันไม่ได้ → คืน `error` พร้อมสาเหตุ ไม่ตีเป็น `pass`
+- **Constraints**: read-only — ห้าม `edit`/`write`; validate เฉพาะ dimension ที่ได้รับ ห้ามข้ามไป dimension อื่น; report only — ห้ามแก้ code/config/tests และห้ามรัน auto-fix (`--fix`, `--write`); ทุก failure ต้องมี evidence จาก output จริง ห้ามเดาจาก code โดยไม่รัน; dimension ไม่ applicable กับ scope → คืน `skip` พร้อมเหตุผล ไม่ fabricate results; infra error → retry ไม่เกิน 3 รอบแล้วคืน `error`
+
 ## Expected Outcome
 
 - ความถูกต้องได้รับการตรวจสอบครบทุกมิติ

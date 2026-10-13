@@ -52,7 +52,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*` |
+| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*`, `/list-all-github-pr`, `/list-all-github-issue` |
 | git worktrees | `worktrunk` / `git worktree` | installed | `/use-git-worktrees` |
 | TUI git | `lazygit` / `gitui` / `gitu` | installed | interactive |
 | Linear | `linear` CLI | installed | ad-hoc (`gh` สำหรับ GitHub) |

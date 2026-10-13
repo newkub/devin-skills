@@ -1,6 +1,6 @@
 ---
 name: improve-realtime
-description: หา improvements ของ realtime features — websockets/SSE, reconnect, presence — รวม findings แล้วแก้ทันที
+description: หา improvements ของ realtime — websockets/SSE, reconnect, presence — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -20,7 +20,9 @@ related:
 ใช้เมื่อ user ถามว่า scope นี้ "realtime features ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
 - `review-backend` — realtime handlers, connection lifecycle, message routing
-- `review-stability` — reconnect, backoff, presence consistency ตอน network ขาด
+- `review-stability` — reconnect, backoff, presence consistency ตอน network ขาด (transport layer)
+- message/event semantics (schema, ordering, idempotency) → `/improve-events`; background job processing → `/improve-queues`; เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
+- multi-user edit merge/presence semantics → `/improve-collaboration`
 
 ## Execute
 

@@ -1,6 +1,6 @@
 ---
 name: improve-mobile-app
-description: หา mobile app improvements ใน scope — touch targets, lifecycle, offline, platform conventions — แก้ทันที
+description: หา mobile app improvements — touch targets, offline, platform conventions — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -22,6 +22,7 @@ related:
 
 - `review-mobile` — touch targets, safe areas, lifecycle, platform conventions, offline support, push notifications, native bridge
 - visual/interaction polish ทั่วไป → `/improve-uxui` แทน
+- store update flow → `/improve-auto-update`
 
 ## Execute
 

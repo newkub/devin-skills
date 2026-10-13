@@ -52,7 +52,7 @@ Output layout:
 
 ##### 4. Parallel Routes (subagent)
 
-ถ้า routes เยอะ → spawn `capture/subagents/route-capturer.md` ทีละ route ขนานกัน (อ่าน inputs/tools/output contract ในไฟล์)
+ถ้า routes เยอะ → spawn profile `route-capturer` (`capture/SKILL.md ## Subagents`) ทีละ route ขนานกัน (อ่าน inputs/tools/output contract ใน section นั้น)
 
 ##### 5. Review Output
 

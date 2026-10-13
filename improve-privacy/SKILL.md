@@ -22,6 +22,7 @@ related:
 
 - `review-security` — PII exposure, access control, data minimization
 - `review-compliance` — consent flows, retention policies, GDPR/LGPD surface
+- retention/purge enforcement → `/improve-retention`
 
 ## Execute
 

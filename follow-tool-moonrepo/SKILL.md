@@ -33,7 +33,7 @@ related:
 | Topic | Workflow |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `workflows/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `workflows/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `workflows/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `workflows/run-ci/SKILL.md` 
 ### Subagents
 
-- ใช้ `subagents/project-configurator.md` เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
+- ใช้ profile `project-configurator` (inline อยู่ด้านล่างใน `## Subagents` section) เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
 
 ### 1. Install moon
 
@@ -174,6 +174,24 @@ related:
 
 - [CLI reference](references/cli.md)
 - ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+
+## Subagents
+
+> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+
+### project-configurator — configure หรือ verify `moon.yml` + task definitions ของ project เดียวใน monorepo
+
+- **Inputs**: `project-path` (เช่น `apps/web`, `packages/ui`, `crates/cli`), `stack` (`bun`/`node`/`rust` — detect จาก manifest ถ้าไม่ระบุ), `shared-config` (path ไป `.moon/tasks/all.yml` ถ้ามี), `mode` (`configure` เขียน/แก้ moon.yml, `verify` ตรวจรายงานอย่างเดียว)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` — ทุก mode; `edit`/`write` เฉพาะ mode `configure`
+- **Execute**:
+  1. อ่าน `package.json` scripts (JS/Bun) หรือ `Cargo.toml` (Rust) ของ project
+  2. อ่าน `.moon/tasks/all.yml` และ shared config ที่มีผลกับ project
+  3. ตรวจ `moon.yml` ปัจจุบันของ project (ถ้ามี)
+  4. mode `configure`: เขียน `moon.yml` ด้วย task names มาตรฐาน (`build`, `dev`, `test`, `lint`, `typecheck`, `check`), `deps` ที่ถูก (`^build` สำหรับ build), `outputs` สำหรับ build tasks, `inputs` ครอบคลุม sources+configs, `runInCI: false` สำหรับ dev/serve tasks
+  5. mode `verify`: ตรวจ task coverage, missing `deps`, missing `outputs`, `runInCI` violations แล้วรายงาน
+  6. รัน `moon project <name>` เพื่อยืนยัน project ถูก detect ถูกต้อง
+- **Output**: updated `moon.yml` (mode configure) หรือ verification report (mode verify) + list ของ task issues: missing deps, missing outputs, runInCI ผิด, naming drift
+- **Constraints**: แก้เฉพาะ `moon.yml` ของ project ที่ได้รับมอบหมาย — ห้ามแตะ `.moon/` workspace config หรือ project อื่น; ใช้ชื่อ task ตาม shared config เดิม ไม่สร้าง convention ใหม่; ไม่เปลี่ยน `package.json`/`Cargo.toml` scripts — report เป็น finding แทน; mode `verify` ห้ามเขียนไฟล์
 
 ## Expected Outcome
 

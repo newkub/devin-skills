@@ -1,6 +1,6 @@
 ---
 name: improve-database
-description: หา database improvements ใน scope — ORM, schema, query perf, indexes, migrations — รวม findings แล้วแก้ทันที
+description: หา database improvements — ORM, schema, query perf, indexes, migrations — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -23,6 +23,7 @@ related:
 
 - `review-database` — schema design, ORM usage, query performance, indexes, migrations, integrity
 - query performance เจาะจง (N+1, index tuning, EXPLAIN before/after) → `/optimize-queries`
+- pagination query strategy → `/improve-pagination`; retention purge jobs → `/improve-retention`
 
 ## Execute
 

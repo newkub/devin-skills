@@ -1,6 +1,6 @@
 ---
 name: optimize-startup
-description: หา startup optimization ใน scope — cold start, boot time, init blocking, lazy loading — รวม findings แล้วแก้ทันที
+description: หา startup optimization — cold start, boot time, lazy loading — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

@@ -1,6 +1,6 @@
 ---
 name: optimize-docker
-description: หา Docker optimization ใน scope — image size, layers, cache, multi-stage, security — รวม findings แล้วแก้ทันที
+description: หา Docker optimization — image size, layers, cache, multi-stage — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve

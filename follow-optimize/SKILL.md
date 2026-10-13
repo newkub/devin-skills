@@ -1,6 +1,6 @@
 ---
 name: follow-optimize
-description: Convention การทำ optimization — route ผ่าน optimize-* domain skills หรือ /deep-optimize fan-out → prioritized plan → apply หลัง confirm
+description: Convention optimization — route ผ่าน optimize-* หรือ /deep-optimize → plan → apply หลัง confirm
 argument-hint: "[scope]"
 related:
   - deep-optimize
@@ -23,7 +23,11 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ optimize scope ใดๆ — route ไป `optimize-*` domain skill ที่ตรงกัน (`optimize-{build,bundle,ci,cost,docker,memory,network,perf,queries,startup}`) หรือ `/deep-optimize` เมื่อต้องการ fan-out ทุกมิติหรือไม่รู้ bottleneck
+ใช้เมื่อต้องการ optimize scope ใดๆ — route ไป `optimize-*` domain skill ที่ตรงกัน according to `references/scope-map.md` (SSOT: signal → skill → review domain ครอบครบ 18 `optimize-*`) หรือ `/deep-optimize` เมื่อต้องการ fan-out ทุกมิติหรือไม่รู้ bottleneck
+
+## References
+
+- `references/scope-map.md` — ตาราง signal → `optimize-*` skill → `/deep-review` domain (canonical เดียว — `/optimize` และ callersใช้อ้างจากที่นี่)
 
 ## Execute
 
@@ -31,7 +35,7 @@ related:
 
 > Goal: เลือก optimize path ที่ตรง scope
 
-1. scope ชัดเจน → ใช้ `optimize-{domain}` ตรงๆ (`build` speed, `bundle` size, `ci` pipeline, `cost` cloud spend, `docker` image, `memory` usage, `network` payloads, `perf` runtime, `queries` DB, `startup` boot)
+1. scope ชัดเจน → lookup `references/scope-map.md` แล้วใช้ `optimize-{domain}` ตรงๆ (ครบ 18 domains: build, bundle, ci, cost, docker, memory, network, perf, queries, startup, api-latency, cache, concurrency, images, mobile, storage, test-suite, web-vitals)
 2. scope กว้างหรือ bottleneck ไม่รู้ → ใช้ `/deep-optimize` fan-out subagents ทุก dimension แล้วรวม prioritized plan
 3. ถ้าเป็น bottleneck hunting เฉพาะจุด → `/deep-optimize`/`/run-profiler` ตาม AGENTS.md convention
 

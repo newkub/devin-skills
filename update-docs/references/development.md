@@ -5,7 +5,7 @@ description: Reference for the shared development page group
 
 # Development Pages Reference
 
-The development page group is shared between `product`, `open-source`, and `cli` docs — used for `docs/index.md` TOC and VitePress sidebar.
+The development page group is shared by all docs types — used for `docs/index.md` TOC and VitePress sidebar (`update-vitepress-docs/templates/sidebar-development.md`).
 
 ## Pages
 
@@ -15,8 +15,7 @@ The development page group is shared between `product`, `open-source`, and `cli`
 | `architecture.md` | Project structure, conventions, and design |
 | `workflows.md` | Development workflows and slash commands |
 | `testing.md` | Testing strategy and commands |
-| `ci-cd.md` | CI/CD pipeline and release process |
-| `scripts.md` | Bun shell scripts and common commands |
+| `deployment.md` | Deployment pipeline, secrets, rollback |
 | `troubleshooting.md` | Common issues and debug tips |
 
 ## Content Format

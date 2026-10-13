@@ -1,6 +1,6 @@
 ---
 name: improve-stability
-description: หา stability improvements ใน scope — error handling, recovery, retries, degradation, debuggability — แก้ทันที
+description: หา stability improvements — error handling, recovery, debuggability — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
@@ -22,8 +22,8 @@ related:
 
 ใช้เมื่อ user ถามว่า scope นี้ "stability/reliability ควร improve อะไร" — thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
 
-- `review-stability` — error handling coverage, retries/timeouts, graceful degradation, recovery paths, crash safety, debuggability
-- error-handling findings เจาะลึกเฉพาะทาง → `/improve-error-handling` แทน; event-driven recovery (ordering, idempotency, DLQ) → `/improve-events`; debuggability/metrics/tracing → `/improve-observability`
+- `review-stability` — retries/timeouts, recovery paths, crash safety, debuggability (crash/recovery กว้าง — เจ้าของพื้นที่นี้)
+- error paths/error states/error UI/error boundaries → `/improve-error-handling` (เจ้าของเดียว); resilience patterns (circuit breaker, bulkhead, graceful degradation) → `/improve-resilience`; event-driven recovery (ordering, idempotency, DLQ) → `/improve-events`; debuggability/metrics/tracing → `/improve-observability`; เกณฑ์ boundary เต็ม: `follow-improve/references/scope-map.md`
 
 ## Execute
 

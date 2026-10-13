@@ -26,9 +26,11 @@ related:
 > Goal: ได้ prioritized improvement list
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/deep-review` เพื่อรวบรวม findings ของ issue
-3. ทำ `/deep-review` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `deep-review/SKILL.md` ของ `/deep-review` สแกนกว้างก่อน
-4. รวบรวม prioritized list พร้อม severity และ evidence
+2. ถ้า scope ตรง domain ใน `follow-improve/references/scope-map.md` → ส่งต่อไป `improve-{domain}` ที่ตรงแทนการทำกว้างเอง
+3. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/deep-review` เพื่อรวบรวม findings ของ issue
+4. ทำ `/deep-review` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `deep-review/SKILL.md` ของ `/deep-review` สแกนกว้างก่อน
+5. รวบรวม prioritized list พร้อม severity และ evidence
+6. ถ้าพบ metric-driven finding/bottleneck (bundle size, build/CI speed, queries, network, startup, memory, cost) → ส่งต่อไป `/optimize` domain ที่ตรงตาม `follow-optimize/references/scope-map.md` (convention: `/follow-optimize`) — ไม่แก้ perf แบบ ad-hoc ใน improve path
 
 ### 2. Present Findings
 

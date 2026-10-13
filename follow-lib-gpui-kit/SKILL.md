@@ -5,6 +5,7 @@ argument-hint: "[component-or-feature]"
 related:
   - follow-lang-rust
   - follow-create-rust-cli
+  - follow-lib-native-sdk
   - follow-my-techstack
   - deep-research
   - learn-from-web

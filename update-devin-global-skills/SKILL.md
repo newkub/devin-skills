@@ -26,7 +26,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ skill ใหม่หรือ skill ที่มีอยู่: อัปเดต skill เดียว หลาย skill หรือทั้ง repo; สร้าง skill ใหม่จาก idea/topic (skill เดียวแบบ focused → `/new-skills`); refactor ให้ SRP ชัดเจน (restructure → `/refactor-skills`); จัด `workflows/`/`subagents/` ตาม `## Conventions → Workflows And Subagents`
+ใช้สำหรับ skill ใหม่หรือ skill ที่มีอยู่: อัปเดต skill เดียว หลาย skill หรือทั้ง repo; สร้าง skill ใหม่จาก idea/topic (skill เดียวแบบ focused → `/new-skills`); refactor ให้ SRP ชัดเจน (restructure → `/refactor-skills`); จัด `workflows/` และ subagent profiles (`SKILL.md ## Subagents`) ตาม `## Conventions → Workflows And Subagents`
 
 ## Execute
 
@@ -78,7 +78,7 @@ related:
 ### 7. Add References, Workflows, Examples, And Src
 > Goal: skill package ครบถ้วนและไม่ซ้ำซ้อน
 
-1. มี dependencies → เขียน `references/` จริงตาม `## Conventions → Write References` (บังคับ — ยกเว้น prefix ที่ `Directory Structure` กำหนดให้เป็น `SKILL.md` เดียว เช่น `follow-create-*`/`review-*` ให้ merge เข้า `SKILL.md` แทน); sub-workflows invoke แยกได้ → `workflows/`, subagent profiles → `subagents/` ตาม `Workflows And Subagents`
+1. มี dependencies → เขียน `references/` จริงตาม `## Conventions → Write References` (บังคับ — ยกเว้น prefix ที่ `Directory Structure` กำหนดให้เป็น `SKILL.md` เดียว เช่น `follow-create-*`/`review-*` ให้ merge เข้า `SKILL.md` แทน); sub-workflows invoke แยกได้ → `workflows/`, subagent profiles → `SKILL.md ## Subagents` ตาม `Workflows And Subagents`
 2. CLI/web/MCP → `src/` ตาม `## Conventions → Src`; templates/examples → `templates/`, `examples/`; ตรวจ markdown links ชี้ไฟล์จริงทั้งหมด
 
 ### 8. Validate, Sync And Update References
@@ -141,7 +141,7 @@ Execute pattern core ต่อ prefix (เลือก longest match ก่อ�
 ```text
 <skill>/ SKILL.md (entry — workflow + dispatch) · references/ (passive knowledge, flat) ·
 best-practices/ (recommended patterns + pitfalls — required for follow-lib-*/follow-tool-*) ·
-workflows/<name>/SKILL.md (invocable child) · subagents/<name>.md|<name>/AGENT.md ·
+workflows/<name>/SKILL.md (invocable child) ·
 templates/ examples/ scripts/ src/ guide/
 ```
 
@@ -153,7 +153,7 @@ templates/ examples/ scripts/ src/ guide/
 
 ### When To Split
 
-1. `SKILL.md` >250 → ดึงเนื้อหาละเอียดไป `references/<topic>.md` เหลือ high-level workflow + pointer; หลาย responsibility → แยก `references/`; หลาย execute pattern → `templates/`; เนื้อหาซ้ำ skill อื่น → merge; หลาย goals ต่างกันมาก → `workflows/`/`subagents/` ตาม matrix
+1. `SKILL.md` >250 → ดึงเนื้อหาละเอียดไป `references/<topic>.md` เหลือ high-level workflow + pointer; หลาย responsibility → แยก `references/`; หลาย execute pattern → `templates/`; เนื้อหาซ้ำ skill อื่น → merge; หลาย goals ต่างกันมาก → `workflows/` หรือ `SKILL.md ## Subagents` ตาม matrix
 2. How: ระบุส่วนเกิน/ซ้ำ → สร้างไฟล์ย่อย → แทนด้วย pointer สั้น → อัปเดต internal links → `/review-devin-global-harness` + `/deep-validate`
 
 ### Workflows And Subagents
@@ -162,7 +162,7 @@ templates/ examples/ scripts/ src/ guide/
 |---------|-------|
 | parent อ่านเป็น context/lookup (docs, checklists, snapshots) | `references/` |
 | workflow invoke แยกได้ มี Goal/Execute ของตัวเอง | `workflows/` |
-| งานอิสระต้อง context แยก ทำขนาน หรือ custom tools/model | `workflows/` ตั้ง `subagent: true`/`agent:` หรือ `subagents/` |
+| งานอิสระต้อง context แยก ทำขนาน หรือ custom tools/model | `workflows/` ตั้ง `subagent: true`/`agent:` หรือ `SKILL.md ## Subagents` |
 | งาน mechanical/deterministic | `scripts/` |
 
 Workflows: `workflows/<name>/SKILL.md` spec เดียวกับ skill ปกติ, `name` = `<parent>-<name>`; runtime ไม่ register เป็น `/command` — parent dispatch ผ่าน `argument-hint` + dispatch table; งาน self-contained → `subagent: true`/`agent:`
@@ -171,7 +171,7 @@ Lifecycle prefixes (ใช้เมื่อมีหลาย lifecycle จร�
 
 Consolidation: top-level skills หลายตัวงานเดียวกันใน domain เดียว → ย้ายไป `parent/workflows/<domain>/`, parent เป็น dispatcher, bulk-update callers `/old` → `/parent` + verify ไม่มี dangling refs ก่อนลบ dir เดิม; กลับกัน workflow เป็น standalone intent → promote เป็น `<parent>-<domain>`; ห้าม `workflows/` สำหรับ pure knowledge → `references/`; ห้ามซ้ำ workflow ทั้ง `references/`+`workflows/`; workflow ของ merged skills ไป `workflows/` ไม่ใช่ `references/`; `/update-references` หลังย้ายเสมอ
 
-Subagents: `subagents/<name>.md` หรือ `subagents/<name>/AGENT.md` — runtime ไม่ register ตรงๆ ต้อง materialize ผ่าน `/update-devin-global-subagents` ไป `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\`; role มีอยู่แล้ว (`reviewer`, `qa`, `security-auditor`) → อ้าง `agent:` ตรงๆ ห้ามสร้างใหม่; profile frontmatter: `name`, `description`, `model`, `allowed-tools`, `permissions`
+Subagents: no `subagents/` folder — profiles inline อยู่ใต้ `## Subagents` ใน `SKILL.md` ของ parent (หนึ่ง `### <role>` ต่อ profile: `Inputs`/`Tools`/`Execute`/`Output`/`Constraints`) และบังคับ `SKILL.md` ≤250 บรรทัด; profile ละเอียดเกิน → เก็บเต็มไว้ที่ `references/subagent-<name>.md` แล้ว link จาก block นั้น; runtime ไม่ register profiles เหล่านี้ตรงๆ ต้อง materialize เป็น agent ผ่าน `/update-devin-global-subagents` ไป `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` หรือ `%APPDATA%\devin\agents\`; role มีอยู่แล้ว (`reviewer`, `qa`, `security-auditor`) → อ้าง `agent:` ตรงๆ ห้ามสร้างใหม่; permission/model/tool semantics เขียนลง `Constraints`/`Tools` แทน frontmatter
 
 Profile `skill-updater` (bulk update): inputs `skill`, `instructions`, `conventions`, `references?`; tools read/write/edit/exec/grep; อ่าน package → apply instructions minimal diff → เช็ค callers (report refs ต้อง follow-up ไม่แก้เอง) → validate frontmatter+≤250+no-placeholder → คืน per-file result table + summary; constraints: แก้เฉพาะ skill ของตัวเอง ห้ามแตะ `AGENTS.md`/`global_rules.md`, ไม่ commit, ไม่เดา content
 
@@ -219,7 +219,7 @@ Audit dead/dying skills (argument `usage`/`skill-usage` — read-only): parse `r
 | Tool map | `check-my-global-cli/references/tool-map.md` | skill/tool เพิ่ม/ลบ/merge |
 | Tech catalog | `../follow-my-techstack/references/techstack-catalog.md` | เลือก dep ใหม่ / lib EOL / major release |
 | Skills index | `skills/AGENTS.md` | เพิ่ม/ลบ/merge/rename skill |
-| Subagent registry | `use-subagents/SKILL.md` | เพิ่ม/ลบ `subagents/*` ใน skill ใดก็ได้ |
+| Subagent registry | `use-subagents/SKILL.md` | เพิ่ม/ลบ profile ใน `SKILL.md ## Subagents` ของ skill ใดก็ได้ |
 | `related:` frontmatter | ทุก `SKILL.md` | skill ที่อ้างถูก merge/rename/ลบ |
 
 Triggers: `mise use -g`/`scoop install` → 1+2; สร้าง skill → 2,4,6; ลบ/merge → 2,4,5,6; rename → 4,6 + ทุกไฟล์ที่อ้าง; dep ใหม่ → 3. Verify: `rg "<old-name>" skills/` — เหลือแค่ mentions ที่จงใจ (เช่น "merged จาก …")

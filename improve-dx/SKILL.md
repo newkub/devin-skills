@@ -1,6 +1,6 @@
 ---
 name: improve-dx
-description: หา DX improvements ใน scope — project setup, CI/CD, dev server, build speed — รวม findings แล้วแก้ทันที
+description: หา DX improvements — project setup, CI/CD, dev server, build speed — แก้ทันที
 argument-hint: "[scope]"
 related:
   - improve
