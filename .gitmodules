@@ -7,3 +7,6 @@
 [submodule "create-github-pr"]
 	path = create-github-pr
 	url = ../create-github-pr.git
+[submodule "use-devfra"]
+	path = use-devfra
+	url = ../use-devfra.git
