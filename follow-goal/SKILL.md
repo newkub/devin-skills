@@ -1,6 +1,6 @@
 ---
 name: follow-goal
-description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
+description: Set goals and plan work in a systematic way
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ตั้งเป้าหมายที่ชัดเจนและวางแผนงานอย่างเป็นระบบก่อนเริ่มทำงาน
+Set clear goals and plan work systematically before starting a task
 
 ## Scope
 
-ใช้สำหรับทุกงานที่ต้องการวางแผนหรือตั้งเป้าหมาย โดยเฉพาะงานที่ซับซ้อนหรือมีหลายขั้นตอน
+Use for any task that needs planning or goal-setting, especially complex or multi-step work
 
 ## Execute
 
@@ -23,84 +23,84 @@ related:
 
 > Goal: Define Goal
 
-ตั้งเป้าหมายที่ชัดเจนและวัดผลได้
+Set a clear, measurable goal
 
-1. ทำ `/deep-thinking` เพื่อทบทวนว่าเป้าหมายสอดคล้องกับ context และผลกระทบระยะยาว
-2. ระบุสิ่งที่ต้องการทำให้ชัดเจน
-3. ตั้งเป้าหมายที่วัดผลได้ (measurable)
-4. กำหนดเวลาที่ชัดเจน (time-bound)
-5. ตรวจสอบว่าเป้าหมายสอดคล้องกับ context ปัจจุบัน
+1. Run `/deep-thinking` to review whether the goal fits the context and long-term impact
+2. Clearly identify what you want to accomplish
+3. Set a measurable goal
+4. Define a clear deadline (time-bound)
+5. Verify the goal aligns with the current context
 
 ### 2. Analyze Context
 
 > Goal: Analyze Context
 
-วิเคราะห์สถานการณ์และ constraints
+Analyze the situation and constraints
 
-1. อ่าน `/review-devin-global-harness` เพื่อดู workflows ที่เกี่ยวข้อง
-2. ตรวจสอบ dependencies และ constraints
-3. ประเมิน resources ที่มีอยู่
-4. ระบุ risks และ assumptions
+1. Read `/review-devin-global-harness` to see the relevant workflows
+2. Check dependencies and constraints
+3. Assess the available resources
+4. Identify risks and assumptions
 
 ### 3. Create Plan
 
 > Goal: Create Plan
 
-สร้างแผนงานที่เป็นระบบ
+Build a systematic plan
 
-1. แบ่งงานออกเป็น tasks ย่อยๆ
-2. จัดลำดับความสำคัญของ tasks
-3. ระบุ dependencies ระหว่าง tasks
-4. กำหนด milestones และ deliverables
+1. Break the work into smaller tasks
+2. Prioritize the tasks
+3. Identify dependencies between tasks
+4. Define milestones and deliverables
 
 ### 4. Validate Plan
 
 > Goal: Validate Plan
 
-ตรวจสอบแผนงานก่อนเริ่มทำ
+Review the plan before starting work
 
-1. ทำ `/deep-thinking` เพื่อทบทวนแผนงาน
-2. ตรวจสอบว่าแผนครอบคลุมทุกอย่าง
-3. ประเมินความเป็นไปได้ของแผน
-4. ปรับแผนตาม feedback
+1. Run `/deep-thinking` to review the plan
+2. Check that the plan covers everything
+3. Assess the plan's feasibility
+4. Adjust the plan based on feedback
 
 ## Rules
 
 ### 1. Goal Setting
 
-- เป้าหมายต้องชัดเจนและเฉพาะเจาะจง
-- ต้องวัดผลได้ (measurable)
-- ต้องมีเวลาที่ชัดเจน (time-bound)
-- ต้องสอดคล้องกับ context และ resources
+- Goals must be clear and specific
+- Goals must be measurable
+- Goals must be time-bound
+- Goals must fit the context and resources
 
 ### 2. Planning
 
-- แบ่งงานให้เล็กพอที่จะจัดการได้
-- จัดลำดับความสำคัญอย่างชัดเจน
-- ระบุ dependencies ระหว่าง tasks
-- กำหนด milestones ที่ชัดเจน
+- Break work into manageable pieces
+- Prioritize clearly
+- Identify dependencies between tasks
+- Define clear milestones
 
 ### 3. Documentation
 
-- บันทึกแผนงานในไฟล์ที่เหมาะสม
-- ใช้ format ที่อ่านง่ายและเข้าใจได้
-- อัปเดตแผนเมื่อมีการเปลี่ยนแปลง
-- แชร์แผนกับทีมถ้าจำเป็น
+- Record the plan in an appropriate file
+- Use a readable, easy-to-understand format
+- Update the plan when things change
+- Share the plan with the team when needed
 
 ### 4. Validation
 
-- ทบทวนแผนงานก่อนเริ่มทำ
-- ตรวจสอบความเป็นไปได้ของแผน
-- ปรับแผนตาม feedback
-- ตรวจสอบว่าแผนครอบคลุมทุกอย่าง
+- Review the plan before starting work
+- Check the plan's feasibility
+- Adjust the plan based on feedback
+- Check that the plan covers everything
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts when needed
 
 ## Expected Outcome
 
-- เป้าหมายที่ชัดเจนและวัดผลได้
-- แผนงานที่เป็นระบบและครอบคลุม
-- งานที่แบ่งเป็น tasks ย่อยๆ ชัดเจน
-- ลำดับความสำคัญของ tasks ที่ชัดเจน
-- Dependencies ระหว่าง tasks ที่ชัดเจน
-- Milestones และ deliverables ที่ชัดเจน
+- Clear, measurable goals
+- A systematic, comprehensive plan
+- Work broken into well-defined smaller tasks
+- Clear task priorities
+- Clear dependencies between tasks
+- Clear milestones and deliverables

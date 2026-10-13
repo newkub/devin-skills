@@ -1,6 +1,6 @@
 ---
 name: delete
-description: alias → /apply delete (ลบไฟล์และโฟลเดอร์อย่างปลอดภัย — dry-run, confirm, update references)
+description: alias → /apply delete (safe file/folder deletion — dry-run, confirm, update references)
 argument-hint: "[scope]"
 related:
   - apply
@@ -14,23 +14,23 @@ related:
 
 ## Goal
 
-Alias ของ `/apply` mode `delete` — ลบไฟล์หรือโฟลเดอร์ที่ระบุอย่างปลอดภัย โดยตรวจสอบ impact, ขอ confirm, backup ถ้าจำเป็น และ update references
+Alias of `/apply` mode `delete` — safely delete the specified files or folders by checking impact, asking for confirmation, backing up when needed, and updating references
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/delete` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `apply` (`### Mode: Delete`)
+Use when the user invokes `/delete` — this skill is only an alias stub; the real workflow lives in `apply` (`### Mode: Delete`)
 
-สำหรับ domain-specific deletes เรียก skill ตรง: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects`, `/delete-project-temp`
+For domain-specific deletes, invoke the skills directly: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects`, `/delete-project-temp`
 
 ## Execute
 
-ทำ `/apply` mode `delete` เต็ม workflow
+Run the full `/apply` mode `delete` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/apply` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `apply/SKILL.md` เสมอ
+- Never duplicate the `/apply` workflow in this file
+- If the alias is missing steps → always read `apply/SKILL.md`
 
 ## Expected Outcome
 
-- `/apply` mode `delete` ถูก execute ครบทุก step — targets ถูกลบ + ไม่มี broken refs + rollback ได้
+- `/apply` mode `delete` is executed through every step — targets deleted + no broken refs + rollback possible

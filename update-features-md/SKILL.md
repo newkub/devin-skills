@@ -1,6 +1,6 @@
 ---
 name: update-features-md
-description: วิเคราะห์ features ที่มีอยู่ใน project และเขียน FEATURES.md ที่ root ของ workspace
+description: Analyze the features in a project and write FEATURES.md at the workspace root
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -11,78 +11,78 @@ related:
 
 ## Goal
 
-วิเคราะห์ features ที่มีอยู่ใน project และสร้าง `FEATURES.md` ที่ root ของ workspace พร้อมตาราง features
+Analyze the features in a project and create `FEATURES.md` at the workspace root with a features table
 
 ## Scope
 
-- วิเคราะห์ routes, modules, database schemas, API endpoints
-- ระบุ existing features พร้อม name, description, module, domain, status
-- เขียน `FEATURES.md` ที่ root ของ workspace (monorepo ให้สร้างทุก workspace)
-- แสดง existing features สั้นๆ ในแชทเป็นตาราง
+- Analyze routes, modules, database schemas, API endpoints
+- Identify existing features with name, description, module, domain, status
+- Write `FEATURES.md` at the workspace root (for a monorepo, create one per workspace)
+- Show the existing features briefly in chat as a table
 
 ## Execute
 
 ### 1. Analyze Project Structure
 
-> Goal: ระบุ workspace และ tech stack ที่ต้องวิเคราะห์
+> Goal: Identify the workspaces and tech stack to analyze
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ project structure
-2. ระบุ workspace ที่ต้องวิเคราะห์ (monorepo ให้ระบุทุก workspace)
-3. บันทึก tech stack และ dependencies
+1. Run `/deep-analyze` to analyze the project structure
+2. Identify the workspaces to analyze (for a monorepo, list every workspace)
+3. Record the tech stack and dependencies
 
 ### 2. Identify Features
 
-> Goal: ระบุ features จากทุก source
+> Goal: Identify features from every source
 
-1. อ่าน routes directory เพื่อระบุ pages และ user-facing features
-2. อ่าน modules directory เพื่อระบุ business logic features
-3. อ่าน database schema files เพื่อระบุ tables และ relationships
-4. อ่าน server handlers และ API routes เพื่อระบุ endpoints
-5. จัดกลุ่ม features ตาม domain และระบุ name, description, module
-6. ถ้า monorepo เกิน 10 workspaces ให้ใช้ `/use-scripts`
+1. Read the routes directory to identify pages and user-facing features
+2. Read the modules directory to identify business logic features
+3. Read the database schema files to identify tables and relationships
+4. Read the server handlers and API routes to identify endpoints
+5. Group features by domain and identify name, description, module
+6. If the monorepo has more than 10 workspaces, use `/use-scripts`
 
 ### 3. Write FEATURES.md
 
-> Goal: สร้าง `FEATURES.md` ที่ root ของ workspace
+> Goal: Create `FEATURES.md` at the workspace root
 
-1. สร้าง/อัปเดท `FEATURES.md` ที่ root ของ workspace ด้วยตาราง markdown:
+1. Create/update `FEATURES.md` at the workspace root with a markdown table:
    - `| Feature | Description | Module | Domain | Status |`
-2. กลุ่ม features ตาม domain ด้วย heading `## <domain>`
-3. เขียนรายละเอียดสั้นใต้แต่ละ feature ด้วย bullet
-4. monorepo ให้สร้าง `FEATURES.md` ที่ root ของทุก workspace ที่มี features
-5. ไม่ต้องสร้าง `.devin/features/` หรือ `docs/project/features.md`
+2. Group features by domain using a `## <domain>` heading
+3. Write a short description under each feature as a bullet
+4. For a monorepo, create `FEATURES.md` at the root of every workspace that has features
+5. Do not create `.devin/features/` or `docs/project/features.md`
 
 ### 4. Report In Chat
 
-> Goal: สรุปผลลัพธ์ให้ user
+> Goal: Summarize the result for the user
 
-1. แสดงตาราง existing features ในแชทตาม `/report`
-2. ระบุ path `FEATURES.md` ที่สร้างและ action ถัดไป
+1. Show the existing features table in chat per `/report`
+2. State the path of the `FEATURES.md` created and the next action
 
 ## Rules
 
 ### 1. Feature Identification
 
-- ระบุ feature จาก: routes, modules, schemas, API endpoints
-- แต่ละ feature ต้องมี name, description, module, domain, status
-- monorepo วิเคราะห์ทุก workspace
+- Identify features from: routes, modules, schemas, API endpoints
+- Each feature must have name, description, module, domain, status
+- For a monorepo, analyze every workspace
 
 ### 2. File Location
 
-- สร้าง `FEATURES.md` ที่ root ของ workspace เท่านั้น
-- ไม่สร้าง `docs/project/features.md`
-- ไม่สร้างไฟล์ใน `.devin/features/`
-- ไม่ delegate ให้ `/update-docs`
+- Create `FEATURES.md` only at the workspace root
+- Do not create `docs/project/features.md`
+- Do not create files in `.devin/features/`
+- Do not delegate to `/update-docs`
 
 ### 3. Markdown Only
 
-- ไม่ใช้ HTML หรือ interactive UX
-- ตารางใช้ markdown table
-- รายละเอียด feature ใช้ heading และ bullet
+- Do not use HTML or interactive UX
+- Use a markdown table
+- Use headings and bullets for feature details
 
 ## Expected Outcome
 
-- `FEATURES.md` ที่ root ของ workspace มีตาราง existing features ครบถ้วน
-- ตาราง existing features แสดงในแชท
-- Features ครอบคลุม routes, modules, schemas, API endpoints
+- `FEATURES.md` at the workspace root has a complete existing-features table
+- The existing-features table is shown in chat
+- Features cover routes, modules, schemas, API endpoints
 

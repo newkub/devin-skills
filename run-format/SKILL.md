@@ -1,6 +1,6 @@
 ---
 name: run-format
-description: ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter
+description: Format code and resolve formatter issues
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -16,133 +16,133 @@ related:
 
 ## Goal
 
-ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter ให้ผ่านทั้งหมด
+Format code and resolve formatter issues until everything passes
 
 ## Scope
 
-รัน format สำหรับทุก project types และจัดการ errors/warnings จาก formatter
+Run format for all project types and handle errors/warnings from the formatter
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (format)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (format)
 
 ### 1. Check Formatter Config
 
 > Goal: Check Formatter Config
 
-ตรวจสอบ formatter ที่ใช้ใน project
+Check the formatter used in the project
 
-1. ตรวจสอบ `biome.jsonc` สำหรับ Biome
-2. ตรวจสอบ `dprint.jsonc` สำหรับ dprint
-3. ตรวจสอบ `.prettierrc` สำหรับ Prettier
-4. ตรวจสอบ scripts ใน `package.json`
+1. Check `biome.jsonc` for Biome
+2. Check `dprint.jsonc` for dprint
+3. Check `.prettierrc` for Prettier
+4. Check the scripts in `package.json`
 
 ### 2. Run Format Command
 
 > Goal: Run Format Command
 
-รัน formatter command ตามที่ตั้งค่าไว้
+Run the formatter command as configured
 
-1. ถ้าใช้ Biome: รัน `biome format --write` (ห้ามใช้ `--unsafe` flag)
-2. ถ้าใช้ dprint: รัน `dprint fmt`
-3. ถ้าใช้ Prettier: รัน `prettier --write`
-4. ใช้ script จาก `package.json` ถ้ามี
-5. รอให้ format เสร็จสิ้นก่อนดำเนินการต่อ
+1. If using Biome: run `biome format --write` (never use the `--unsafe` flag)
+2. If using dprint: run `dprint fmt`
+3. If using Prettier: run `prettier --write`
+4. Use the script from `package.json` if one exists
+5. Wait for formatting to finish before continuing
 
 ### 3. Analyze Format Issues
 
 > Goal: Analyze Format Issues
 
-วิเคราะห์ปัญหาที่เกิดจาก formatter
+Analyze the problems caused by the formatter
 
-1. ตรวจสอบ output จาก formatter
-2. ตรวจสอบประเภทของ issues:
+1. Check the output from the formatter
+2. Check the types of issues:
    - syntax errors
    - config-related errors
    - unsupported files
    - format violations
-3. ระบุ files ที่มีปัญหา
+3. Identify the problematic files
 
 ### 4. Fix Config Issues
 
 > Goal: Fix Config Issues
 
-แก้ไขปัญหาที่เกี่ยวกับ config
+Resolve problems related to the config
 
-1. ถ้าเป็น config-related errors ให้ทำ `formatter` เพื่อแก้ config
-2. ปรับ formatter config ให้เหมาะสมกับ codebase
-3. ปรับ rules ที่เหมาะสมกับ project
-4. รัน format อีกครั้งเพื่อทดสอบ
+1. If there are config-related errors, use `formatter` to fix the config
+2. Adjust the formatter config to suit the codebase
+3. Adjust the rules to suit the project
+4. Run format again to test
 
 ### 5. Fix Code Issues
 
 > Goal: Fix Code Issues
 
-แก้ไขปัญหาที่เกิดใน code
+Resolve problems occurring in the code
 
-1. แก้ syntax errors ก่อน format
-2. แก้ format violations ตามลำดับความสำคัญ
-3. จัดการ files ที่ไม่รองรับ
-4. รัน format ซ้ำจนไม่มี errors
+1. Fix syntax errors before formatting
+2. Fix format violations in priority order
+3. Handle unsupported files
+4. Run format again until there are no errors
 
 ### 6. Verify
 
 > Goal: Verify
 
-ตรวจสอบผลลัพธ์
+Check the result
 
-1. รัน format อีกครั้งเพื่อยืนยัน
-2. ตรวจสอบว่าไม่มี format errors เหลือ
-3. ตรวจสอบว่าทุก files ถูก format แล้ว
-4. รัน lint ตามด้วยเพื่อยืนยัน
+1. Run format again to confirm
+2. Check that no format errors remain
+3. Check that every file has been formatted
+4. Run lint afterward to confirm
 
 ## Rules
 
 ### 1. Config Adjustments
 
-พยายามแก้ config ก่อนแก้ code เสมอ
+Always try to fix the config before fixing the code
 
-- ปรับ formatter config ให้เหมาะสมกับ codebase
-- ปรับ rules ที่เหมาะสมกับ project
-- ใช้ `formatter` เพื่อแก้ config อย่างถูกต้อง
-- หลีกเลี่ยงการปิด rules โดยไม่จำเป็น
+- Adjust the formatter config to suit the codebase
+- Adjust the rules to suit the project
+- Use `formatter` to fix the config correctly
+- Avoid disabling rules unnecessarily
 
 ### 2. Syntax Errors
 
-แก้ syntax errors ก่อน format เสมอ
+Always fix syntax errors before formatting
 
-- ตรวจสอบ syntax errors ก่อนรัน format
-- แก้ syntax errors ให้ครบถ้วน
-- ใช้ linter ช่วยตรวจสอบ syntax
-- รัน format หลังจาก syntax ถูกต้อง
+- Check for syntax errors before running format
+- Fix all syntax errors completely
+- Use a linter to help verify syntax
+- Run format after the syntax is correct
 
 ### 3. Format Scope
 
-กำหนด scope สำหรับการ format
+Define the scope for formatting
 
-- Format ทั้ง project โดย default
-- ใช้ glob patterns สำหรับ specific files
-- ใช้ `--write` flag สำหรับ auto-fix
-- ใช้ `--check` flag สำหรับ CI
+- Format the whole project by default
+- Use glob patterns for specific files
+- Use the `--write` flag for auto-fix
+- Use the `--check` flag for CI
 
 ### 4. Verification
 
-ตรวจสอบว่า code ทำงานได้ปกติ
+Check that the code still works normally
 
-- รัน format อีกครั้งเพื่อยืนยัน
-- รัน lint ตามด้วย
-- ตรวจสอบว่าไม่มี regressions
-- ห้ามใช้ `--unsafe` flag กับ biome commands
+- Run format again to confirm
+- Run lint afterward
+- Check that there are no regressions
+- Never use the `--unsafe` flag with biome commands
 
-- ใช้ /convert-files-format ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- Use /convert-files-format if needed
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /run-check if needed
+- Use /run-verify if needed
+- Use /resolve-errors if needed
+- Use /run-lint if needed
+- Use /run-drizzle-studio if needed
 
 ## Expected Outcome
 
-โค้ดที่ผ่าน format โดยไม่มี format errors พร้อมรายงานผลลัพธ์การรัน format
+Code that passes format with no format errors, plus a report of the format run

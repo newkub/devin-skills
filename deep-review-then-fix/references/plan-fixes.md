@@ -1,18 +1,18 @@
 ---
 name: plan-fixes
-description: วางแผนการแก้ไข
+description: Plan the fixes
 ---
 
 # Plan Fixes
 
 ## Goal
 
-วางแผนการแก้ไข
+Plan the fixes
 
 ## Checks
 
-1. ทำ `/create-plan-in-dot-devin` เพื่อวางแผน fix อย่างละเอียดก่อนลงมือ
-2. จัดลำดับ fixes ตาม severity ก่อน effort
-3. ระบุ files ที่ต้องแก้
-4. ทำ `/report-before-after` สรุปแผนก่อนลงมือ
+1. Run `/create-plan-in-dot-devin` to plan the fixes in detail before starting
+2. Prioritize fixes by severity, then effort
+3. Identify the files to change
+4. Run `/report-before-after` to summarize the plan before starting
 

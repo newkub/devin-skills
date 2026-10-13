@@ -12,86 +12,86 @@ related:
 
 ## Goal
 
-ลบ source files ที่ไม่จำเป็นใน project เช่น ไฟล์ที่ไม่ถูกใช้ ซ้ำซ้อน หรือ dead code โดยไม่แตะ build artifacts หรือ dependency caches
+Delete unnecessary source files in the project — unused, duplicated, or dead-code files — without touching build artifacts or dependency caches
 
 ## Scope
 
-ใช้กับ source files ใน project workspace — ไม่รวม `node_modules`, `dist`, `target`, `.next`, `.nuxt`, `.output`, `coverage`, logs, caches, หรือ generated build files
+Applies to source files in the project workspace — excludes `node_modules`, `dist`, `target`, `.next`, `.nuxt`, `.output`, `coverage`, logs, caches, and generated build files
 
 ## Execute
 
 ### 1. Identify Candidates
 
-> Goal: หา source files ที่ไม่จำเป็น
+> Goal: Find unnecessary source files
 
-1. ทำ `/follow-tool-knip` เพื่อหาไฟล์ที่ไม่ถูกใช้
-2. ทำ `/follow-tool-knip` เพื่อหา dependencies ที่ไม่ต้องใช้
-3. ค้นหา duplicate files ด้วย `glob` และ `exec` (hash comparison)
-4. ค้นหา empty files, orphan test fixtures, abandoned stubs
+1. Run `/follow-tool-knip` to find unused files
+2. Run `/follow-tool-knip` to find unneeded dependencies
+3. Find duplicate files with `glob` and `exec` (hash comparison)
+4. Find empty files, orphan test fixtures, abandoned stubs
 
 ### 2. Analyze Impact
 
-> Goal: ประเมินผลกระทบก่อนลบ
+> Goal: Assess impact before deleting
 
-1. ใช้ `grep` ค้นหา imports หรือ references ของแต่ละ file
-2. ตรวจสอบว่าไฟล์อยู่ใน `.gitignore` หรือไม่
-3. ระบุไฟล์ที่เป็น source จริง (`.ts`, `.js`, `.rs`, `.py`, `.go`, `.vue`, `.svelte` ฯลฯ)
-4. ยกเว้น build artifacts, lock files, config files, `.env`, `AGENTS.md`, `README.md`
+1. Use `grep` to find each file's imports or references
+2. Check whether the file is in `.gitignore`
+3. Identify real source files (`.ts`, `.js`, `.rs`, `.py`, `.go`, `.vue`, `.svelte`, etc.)
+4. Exclude build artifacts, lock files, config files, `.env`, `AGENTS.md`, `README.md`
 
 ### 3. Confirm With User
 
-> Goal: ขอ explicit confirmation ก่อนลบ
+> Goal: Get explicit confirmation before deleting
 
-1. ทำ `/report` รายงาน candidates พร้อมเหตุผลและ path
-2. ทำ `/report-file-structure` แสดง top-level files ที่จะลบ
-3. ถาม user ด้วย `ask_user_question` ว่าต้องการลบไหม
+1. Produce a `/report` of candidates with reasons and paths
+2. Run `/report-file-structure` to show the top-level files to be deleted
+3. Ask the user with `ask_user_question` whether to delete
 
 ### 4. Remove Source Files
 
-> Goal: ลบเฉพาะไฟล์ที่ได้รับ approval
+> Goal: Delete only approved files
 
-1. ลบทีละไฟล์ด้วย `Remove-Item` หรือ `rm`
-2. อัปเดท imports/references ที่ใช้ไฟล์นั้นด้วย `edit`
-3. อัปเดท `README`, `AGENTS.md` ถ้าจำเป็น
+1. Delete files one at a time with `Remove-Item` or `rm`
+2. Update the imports/references that used each file with `edit`
+3. Update `README`, `AGENTS.md` if needed
 
 ### 5. Validate
 
-> Goal: ตรวจสอบหลังลบ
+> Goal: Check after deleting
 
-1. รัน `git status` เพื่อดู files ที่ถูกลบ
-2. ทำ `/check-reference` เพื่อตรวจ broken references
-3. รัน project tests หรือ build ถ้ามี
+1. Run `git status` to review the deleted files
+2. Run `/check-reference` to catch broken references
+3. Run the project tests or build if available
 
 ## Rules
 
 ### 1. Source Only
 
-- ลบเฉพาะ source files เช่น `.ts`, `.js`, `.tsx`, `.jsx`, `.vue`, `.svelte`, `.rs`, `.py`, `.go`
-- ไม่ลบ build artifacts (`dist`, `target`, `.output`), dependency caches (`node_modules`, `.bun/install/cache`), logs, coverage
-- ไม่ลบ lock files, config files, `.env`, `AGENTS.md`, `README.md`
+- Delete only source files such as `.ts`, `.js`, `.tsx`, `.jsx`, `.vue`, `.svelte`, `.rs`, `.py`, `.go`
+- Never delete build artifacts (`dist`, `target`, `.output`), dependency caches (`node_modules`, `.bun/install/cache`), logs, coverage
+- Never delete lock files, config files, `.env`, `AGENTS.md`, `README.md`
 
 ### 2. Explicit Confirmation
 
-- ห้ามลบอัตโนมัติ
-- ต้องได้รับ approval จาก user ก่อนลบ
-- ถ้าไม่แน่ใจให้ ask ก่อน
+- Never delete automatically
+- Require user approval before deleting
+- If unsure, ask first
 
 ### 3. Safe Impact
 
-- ใช้ `grep` ตรวจ references ก่อนลบ
-- อัปเดท imports/exports ทั้งหมดหลังลบ
-- ตรวจสอบ `git status` ก่อนและหลัง
+- Check references with `grep` before deleting
+- Update all imports/exports after deleting
+- Verify `git status` before and after
 
 ### 4. Ecosystem Aware
 
-- ปฏิบัติตาม conventions ของภาษา/เฟรมเวิร์ค
-- ถ้ามี barrel exports ให้อัปเดท
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Follow the language/framework conventions
+- Update barrel exports if present
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- source files ที่ไม่จำเป็นถูกลบ
-- ไม่มี build artifacts หรือ dependency caches ถูกแตะ
-- imports/exports อัปเดทถูกต้อง
-- รายงานตารางและ file structure ก่อน/หลัง
+- Unnecessary source files removed
+- No build artifacts or dependency caches touched
+- Imports/exports updated correctly
+- Before/after report table and file structure

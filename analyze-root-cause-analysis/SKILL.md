@@ -1,6 +1,6 @@
 ---
 name: analyze-root-cause-analysis
-description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
+description: Analyze the root cause of problems with a systematic method
 argument-hint: "[target]"
 related:
   - deep-review
@@ -12,170 +12,170 @@ related:
 
 ## Goal
 
-วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบเพื่อป้องกันปัญหาซ้ำ
+Find the root cause of a problem with a systematic method to prevent it from recurring
 
 ## Scope
 
-ใช้ `analyze-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (root cause analysis)
+Use `analyze-root-cause-analysis` for the specific tasks and workflows it covers (root cause analysis)
 
 ## Execute
 
 ### 1. Gather Evidence
 
-> Goal: รวบรวมข้อมูลและ evidence ที่เกี่ยวข้องกับปัญหา
+> Goal: Collect information and evidence related to the problem
 
-รวบรวมข้อมูลและ evidence ทั้งหมดที่เกี่ยวข้องกับปัญหา
+Collect all information and evidence related to the problem
 
-1. ทำ `/deep-debug` เพื่อเก็บข้อมูลเบื้องต้น
-2. เก็บ logs, metrics, traces ที่เกี่ยวข้อง
-3. เก็บ screenshots, error messages, stack traces
-4. เก็บ timeline ของเหตุการณ์
-5. เก็บ environment information (version, config, dependencies)
+1. Run `/deep-debug` to gather baseline data
+2. Collect relevant logs, metrics, and traces
+3. Collect screenshots, error messages, and stack traces
+4. Collect a timeline of events
+5. Collect environment information (version, config, dependencies)
 
 ### 2. Construct Causal Graph (Graph Theory)
 
-> Goal: สร้าง DAG ของ causal relationships เพื่อจัดลำดับเหตุการณ์
+> Goal: Build a DAG of causal relationships to order events
 
-สร้าง Directed Acyclic Graph (DAG) ของ causal relationships:
+Build a Directed Acyclic Graph (DAG) of causal relationships:
 
-สูตร: G = (V, E) โดย V = nodes (events/variables), E = directed edges (causal links)
+Formula: G = (V, E) where V = nodes (events/variables), E = directed edges (causal links)
 
-ขั้นตอน:
-1. ระบุ nodes V = {v₁, v₂, ..., vₙ} ทั้งหมดที่เกี่ยวข้อง (deploy, config, traffic, error)
-2. สร้าง directed edges E = {(vᵢ → vⱼ)} สำหรับ causal relationships
-3. ตรวจสอบว่า graph เป็น DAG (ไม่มี cycles)
-4. ใช้ Topological Sort เพื่อจัดลำดับ causal chain
-5. ระบุ root nodes (nodes ที่ไม่มี incoming edges) เป็น potential root causes
+Steps:
+1. Identify all relevant nodes V = {v₁, v₂, ..., vₙ} (deploy, config, traffic, error)
+2. Create directed edges E = {(vᵢ → vⱼ)} for causal relationships
+3. Verify the graph is a DAG (no cycles)
+4. Use Topological Sort to order the causal chain
+5. Mark root nodes (nodes with no incoming edges) as potential root causes
 
 ### 3. Use 5 Whys (Causal Inference)
 
-> Goal: ใช้เทคนิค 5 Whys ร่วมกับ causal inference เพื่อ trace root cause
+> Goal: Apply the 5 Whys technique with causal inference to trace the root cause
 
-ใช้เทคนิค 5 Whys ร่วมกับ Causal Inference:
+Apply the 5 Whys technique together with Causal Inference:
 
-สูตร: P(Y | do(X)) = causal effect ของ X บน Y
+Formula: P(Y | do(X)) = causal effect of X on Y
 
-ขั้นตอน:
-1. เริ่มจากปัญหาที่เห็น (effect node)
-2. ถาม "ทำไม" 5 ครั้ง โดย trace ย้อนกลับใน causal graph
-3. แต่ละคำตอบต้องเป็น parent node ใน DAG
-4. ใช้ do-calculus เพื่อตรวจสอบว่า intervention แก้ปัญหาได้จริง
-5. หยุดเมื่อถึง root node ที่สามารถ intervene ได้
+Steps:
+1. Start from the observed problem (effect node)
+2. Ask "why" 5 times, tracing backward through the causal graph
+3. Each answer must be a parent node in the DAG
+4. Use do-calculus to verify the intervention actually fixes the problem
+5. Stop at a root node that can be intervened on
 
-ตัวอย่าง:
-- ปัญหา: Server crash
-- ทำไม 1: Out of memory
-- ทำไม 2: Memory leak
-- ทำไม 3: Unclosed database connections
-- ทำไม 4: Missing connection pool cleanup
-- ทำไม 5: No proper shutdown handler in deployment script
-- Root Cause: Deployment script ไม่มี shutdown handler
+Example:
+- Problem: Server crash
+- Why 1: Out of memory
+- Why 2: Memory leak
+- Why 3: Unclosed database connections
+- Why 4: Missing connection pool cleanup
+- Why 5: No proper shutdown handler in deployment script
+- Root Cause: The deployment script has no shutdown handler
 
 ### 4. Analyze Causal Paths (Graph Theory)
 
-> Goal: วิเคราะห์ causal paths ใน DAG เพื่อหา nodes สำคัญที่สุด
+> Goal: Analyze causal paths in the DAG to find the most important nodes
 
-วิเคราะห์ causal paths ใน DAG:
+Analyze causal paths in the DAG:
 
-สูตร: Path(vᵢ → vⱼ) = sequence of edges จาก vᵢ ไป vⱼ
+Formula: Path(vᵢ → vⱼ) = sequence of edges from vᵢ to vⱼ
 
-ขั้นตอน:
-1. ระบุทุก causal paths จาก root nodes ไปยัง effect node
-2. คำนวณ path length (จำนวน edges) และ path strength
-3. ใช้ Betweenness Centrality เพื่อหา nodes ที่สำคัญที่สุด
-4. ระบุ bottleneck nodes (nodes ที่อยู่ในหลาย paths)
-5. เลือก root node ที่มี causal paths สั้นและ strong ที่สุด
+Steps:
+1. Identify every causal path from root nodes to the effect node
+2. Compute path length (number of edges) and path strength
+3. Use Betweenness Centrality to find the most important nodes
+4. Identify bottleneck nodes (nodes present in many paths)
+5. Pick the root node with the shortest and strongest causal paths
 
 ### 5. Validate Causal Hypothesis (Causal Inference)
 
-> Goal: ตรวจสอบ causal hypothesis ด้วย intervention
+> Goal: Test the causal hypothesis with an intervention
 
-ตรวจสอบ causal hypothesis ด้วย intervention:
+Validate the causal hypothesis with an intervention:
 
-สูตร: P(Y | do(X)) ≠ P(Y | X) แสดงว่า X เป็น causal cause
+Formula: P(Y | do(X)) ≠ P(Y | X) means X is a causal cause
 
-ขั้นตอน:
-1. ทำ `/use-bun-shell` เพื่อทดสอบ intervention do(X)
-2. สร้าง test case ที่ reproduce ปัญหา
-3. เปรียบเทียบ P(Y | do(X)) กับ P(Y | X)
-4. ถ้า P(Y | do(X)) ≠ P(Y | X) → X เป็น causal cause
-5. ตรวจสอบว่าไม่มี confounding variables ที่ซ่อนอยู่
+Steps:
+1. Run `/use-bun-shell` to test the intervention do(X)
+2. Create a test case that reproduces the problem
+3. Compare P(Y | do(X)) with P(Y | X)
+4. If P(Y | do(X)) ≠ P(Y | X) → X is a causal cause
+5. Check that no confounding variables are hidden
 
 ### 6. Document Root Cause
 
-> Goal: บันทึก root cause และการวิเคราะห์อย่างละเอียด
+> Goal: Record the root cause and the detailed analysis
 
-บันทึก root cause และการวิเคราะห์อย่างละเอียด
+Record the root cause and the detailed analysis
 
-1. เขียนรายงาน RCA (Root Cause Analysis)
-2. ระบุ root cause อย่างชัดเจน
-3. อธิบายวิธีการวิเคราะห์
-4. แนบ evidence ทั้งหมด
-5. ระบุ action items สำหรับ prevention
+1. Write an RCA (Root Cause Analysis) report
+2. State the root cause clearly
+3. Explain the analysis method
+4. Attach all evidence
+5. List action items for prevention
 
 ### 7. Define Preventive Actions
 
-> Goal: กำหนด action สำหรับป้องกันปัญหาซ้ำ
+> Goal: Define actions to prevent the problem from recurring
 
-กำหนด action สำหรับป้องกันปัญหาซ้ำ
+Define actions to prevent recurrence
 
-1. ทำ `/resolve-errors` เพื่อแก้ปัญหาปัจจุบัน
-2. เพิ่ม monitoring/alerting สำหรับ detect ปัญหาล่วงหน้า
-3. เพิ่ม test cases สำหรับป้องกัน regression
-4. อัพเดท documentation และ runbooks
-5. ทำ training หรือ knowledge sharing กับทีม
+1. Run `/resolve-errors` to fix the current problem
+2. Add monitoring/alerting to detect problems early
+3. Add test cases to prevent regressions
+4. Update documentation and runbooks
+5. Run training or knowledge sharing with the team
 
 ## Rules
 
 ### 1. Evidence-Based
 
-ต้องมี evidence สนับสนุนทุกข้อสรุป
+Every conclusion must be backed by evidence
 
-- เก็บ logs, metrics, traces ทั้งหมด
-- ใช้ data ในการตัดสินใจ ไม่ใช้ความรู้สึก
-- บันทึก source ของทุก evidence
+- Collect all logs, metrics, and traces
+- Decide with data, not gut feeling
+- Record the source of every piece of evidence
 
 ### 2. 5 Whys Technique
 
-ใช้เทคนิค 5 Whys อย่างถูกต้อง
+Use the 5 Whys technique correctly
 
-- แต่ละคำตอบต้องเป็นสาเหตุ ไม่ใช่ symptom
-- หยุดเมื่อถึงจุดที่สามารถแก้ไขได้
-- อย่าหยุดที่ human error (มักเป็น symptom ของ process ที่ไม่ดี)
+- Each answer must be a cause, not a symptom
+- Stop when you reach a fixable point
+- Don't stop at human error (usually a symptom of a bad process)
 
 ### 3. Causal Graph Theory
 
-ใช้ Graph Theory สำหรับ causal analysis:
+Use Graph Theory for causal analysis:
 
-- สร้าง DAG (Directed Acyclic Graph) สำหรับ causal relationships
-- ใช้ Topological Sort เพื่อจัดลำดับ causal chain
-- ใช้ Betweenness Centrality เพื่อหา nodes สำคัญ
-- วิเคราะห์ causal paths จาก root ไป effect
-- ตรวจสอบว่าไม่มี cycles (confounding loops)
+- Build a DAG (Directed Acyclic Graph) for causal relationships
+- Use Topological Sort to order the causal chain
+- Use Betweenness Centrality to find key nodes
+- Analyze causal paths from root to effect
+- Verify there are no cycles (confounding loops)
 
 ### 4. Causal Inference Standards
 
-ต้อง validate causal hypothesis ด้วย intervention:
+Causal hypotheses must be validated with interventions:
 
-- ใช้ do-calculus เพื่อตรวจสอบ causal effect
-- เปรียบเทียบ P(Y | do(X)) กับ P(Y | X)
-- ตรวจสอบว่าไม่มี confounding variables
-- ตรวจสอบว่า intervention แก้ปัญหาได้จริง
+- Use do-calculus to verify causal effect
+- Compare P(Y | do(X)) with P(Y | X)
+- Check for hidden confounding variables
+- Verify the intervention actually fixes the problem
 
 ### 5. Documentation Requirements
 
-บันทึก RCA อย่างละเอียด
+Document the RCA in detail
 
-- ระบุ root cause อย่างชัดเจน
-- อธิบายวิธีการวิเคราะห์
-- แนบ evidence ทั้งหมด
-- ระบุ action items สำหรับ prevention
+- State the root cause clearly
+- Explain the analysis method
+- Attach all evidence
+- List action items for prevention
 
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /deep-review if needed
 ## Expected Outcome
 
-- Root cause ถูกระบุอย่างชัดเจน
-- มี evidence สนับสนุนทุกข้อสรุป
-- มี preventive actions ที่ชัดเจน
-- มี documentation ที่สมบูรณ์
-- ปัญหาไม่เกิดซ้ำ
+- Root cause clearly identified
+- Every conclusion backed by evidence
+- Clear preventive actions
+- Complete documentation
+- The problem does not recur

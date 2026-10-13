@@ -1,6 +1,6 @@
 ---
 name: setup-cicd
-description: ตรวจจับ platform และตั้งค่า CI/CD config files, secrets และ workflows
+description: Detect the CI/CD platform and set up config files, secrets, and workflows
 argument-hint: "[scope]"
 related:
   - update-project
@@ -21,21 +21,21 @@ related:
 
 ## Goal
 
-ตรวจจับ CI/CD platform ที project ใช้ แล้วตั้งค่า workflow files, secrets, และ package scripts ให้พร้อมรัน verify, test, build, deploy, release บน CI
+Detect the CI/CD platform the project uses, then set up workflow files, secrets, and package scripts so verify, test, build, deploy, and release can run on CI.
 
 ## Scope
 
-ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, deploy หรือ release (setup release workflow ได้ แต่ไม่รัน release)
+Run once at setup or when the CI/CD config is not ready. Does not include running pipelines, committing, pushing, deploying, or releasing (it can set up the release workflow but never runs a release).
 
-ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-to-dev-branch` แทน
+To run cloud verify or ship on cloud, use `/run-verify` or `/ship-to-dev-branch` instead.
 
 ## Execute
 
 ### 1. Detect Platform
 
-> Goal: รู้ว่า project ใช้ CI/CD platform อะไร
+> Goal: Know which CI/CD platform the project uses
 
-1. ตรวจหาไฟล์ config ทีมีอยู่:
+1. Look for existing config files:
    - GitHub Actions: `.github/workflows/*.{yml,yaml}`
    - GitLab CI: `.gitlab-ci.yml`
    - Azure DevOps: `azure-pipelines.yml`
@@ -43,39 +43,39 @@ related:
    - Jenkins: `Jenkinsfile`
    - Cloudflare Pages: `wrangler.toml`, `wrangler.jsonc`
    - Vercel: `vercel.json`
-2. ถ้าพบหลาย platform → เลือกตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins → Cloudflare → Vercel
-3. ถ้าไม่พบ → ทำ `/ask-me` ถาม user หรือ default เป็น GitHub Actions
+2. If multiple platforms are found → pick in order: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins → Cloudflare → Vercel
+3. If none found → run `/ask-me` to ask the user, or default to GitHub Actions
 
 ### 2. Verify Package Scripts
 
-> Goal: มั่นใจว่า package manifest มี scripts ที CI จะเรียก ตามขนาด project
+> Goal: Make sure the package manifest has the scripts CI will call, according to project size
 
-1. อ่าน `package.json` หรือ `Cargo.toml` หรือไฟล์ manifest ที่เหมาะสม
-2. ถ้า package manifest ขาด fields พื้นฐานสำหรับ publish (`name`, `version`, `description`, `license`, `repository`) → ทำ `/update-project` `### setup-package` ก่อน
-3. ตรวจสอบขนาด project:
-   - ถ้า project เล็ก (ไม่ monorepo, build/test ไม่หนัก) → `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
-   - ถ้า project ใหญ่ (monorepo หรือ build/test หนัก) → CI/CD pipeline จะรัน full suite แทน; package manifest ต้องมี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
-4. ถ้าไม่มี scripts `verify`, `test:all`, `build` → ทำ `/follow-tasks` เพื่อตั้งค่า
-5. ตรวจว่า `verify` ครบตามขนาด project
-6. ถ้า project ไม่มี package manifest (เช่น skill collection, docs repo) → หา tool directories ที่มี package.json แล้วรัน verify จากแต่ละ subdir ใน CI
+1. Read `package.json`, `Cargo.toml`, or the appropriate manifest file
+2. If the package manifest lacks the basic publish fields (`name`, `version`, `description`, `license`, `repository`) → run `/update-project` `### setup-package` first
+3. Check the project size:
+   - Small project (not a monorepo, build/test not heavy) → `verify` must include `scan`, `lint`, `typecheck`, `test`, `build` directly in the package manifest
+   - Large project (monorepo or heavy build/test) → the CI/CD pipeline runs the full suite instead; the package manifest needs at least `test:all`, `build`, and a `verify` of `check && test`
+4. If the `verify`, `test:all`, `build` scripts are missing → use `/follow-tasks` to set them up
+5. Confirm `verify` is complete for the project size
+6. If the project has no package manifest (e.g. skill collection, docs repo) → find tool directories with their own package.json and run verify from each subdir in CI
 
 ### 3. Setup Secrets
 
-> Goal: ตั้งค่า secrets ที CI/CD ต้องใช้
+> Goal: Configure the secrets CI/CD needs
 
-1. ทำ `/follow-secret-manager` เพื่อจัดการ secrets อย่างปลอดภัย
-2. ถ้าใช้ GitHub Actions → เปิดหน้า GitHub Secrets ด้วย `/open-github`
-3. ตรวจสอบว่ามี secrets ทีจำเป็น เช่น `NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `CLOUDFLARE_API_TOKEN`, `VERCEL_TOKEN`
-4. ไม่ hardcode secrets ลงในไฟล์ config
+1. Run `/follow-secret-manager` to manage secrets safely
+2. If using GitHub Actions → open the GitHub Secrets page with `/open-github`
+3. Check that required secrets exist, such as `NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `CLOUDFLARE_API_TOKEN`, `VERCEL_TOKEN`
+4. Never hardcode secrets in config files
 
 ### 4. Create Workflow Files
 
-> Goal: สร้าง CI/CD config files ตาม platform
+> Goal: Create CI/CD config files for the platform
 
 #### GitHub Actions
 
-1. ทำ `/follow-tool-github-actions` เพื่อตั้งค่า workflows ครบถ้วน
-2. ถ้าอยากสร้างเอง → สร้าง `.github/workflows/ci.yml` ด้วยเนื้อหาพื้นฐาน:
+1. Run `/follow-tool-github-actions` to set up complete workflows
+2. To hand-roll one → create `.github/workflows/ci.yml` with this baseline content:
 
 ```yaml
 name: ci
@@ -112,13 +112,12 @@ jobs:
       - run: bun run build
 ```
 
-3. ถ้า project ไม่มี root package.json (เช่น skill collection, docs repo) → รัน verify จาก tool directories ที่มี package.json ของตัวเอง โดยไม่ต้อง `bun install` ที root
+3. If the project has no root package.json (e.g. skill collection, docs repo) → run verify from the tool directories that have their own package.json, without `bun install` at the root
+4. For deploy, create `.github/workflows/deploy.yml` triggered on `push` to `main`/`master`, calling `bun run deploy` or the platform's deploy tool
 
-4. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
-
-5. ถ้าต้องการ release:
-   - ถ้ายังไม่มี release tool → เลือกผ่าน `/follow-tool-changesets`, `/follow-tool-changelogen`, `/follow-tool-semantic-release` หรือ `/follow-tool-release-it` ก่อน
-   - สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
+5. For release:
+   - If no release tool exists yet → choose one via `/follow-tool-changesets`, `/follow-tool-changelogen`, `/follow-tool-semantic-release`, or `/follow-tool-release-it` first
+   - Create `.github/workflows/release.yml` triggered on `push` of `v*` tags only:
 
 ```yaml
 name: release
@@ -138,7 +137,7 @@ jobs:
       - run: bun run build
       - name: release
         run: |
-          # ใส่คำสั่ง release ตาม platform ที detect ไว้
+          # Add the release command matching the detected platform
           # npm: npm publish
           # crates: cargo publish
           # vscode: npx vsce publish
@@ -157,95 +156,95 @@ jobs:
 
 #### GitLab CI
 
-สร้าง `.gitlab-ci.yml` ด้วย stages: `verify`, `test`, `build`, `deploy`, `release`
+Create `.gitlab-ci.yml` with stages: `verify`, `test`, `build`, `deploy`, `release`
 
 #### Azure DevOps
 
-สร้าง `azure-pipelines.yml` ด้วย jobs: `verify`, `test`, `build`, `deploy`
+Create `azure-pipelines.yml` with jobs: `verify`, `test`, `build`, `deploy`
 
 #### CircleCI
 
-สร้าง `.circleci/config.yml` ด้วย workflows: `verify`, `test`, `build`, `deploy`
+Create `.circleci/config.yml` with workflows: `verify`, `test`, `build`, `deploy`
 
 #### Cloudflare Pages
 
-ตรวจ `wrangler.toml` แล้วเพิ่ม GitHub Actions workflow สำหรับ deploy ถ้าขาด
+Check `wrangler.toml` and add a GitHub Actions deploy workflow if missing
 
 #### Vercel
 
-ตรวจ `vercel.json` แล้วเพิ่ม GitHub Actions workflow หรือใช้ Vercel Git Integration
+Check `vercel.json` and add a GitHub Actions workflow, or use Vercel Git Integration
 
 ### 5. Validate Config
 
-> Goal: ตรวจสอบว่า CI/CD config ถูกต้อง
+> Goal: Confirm the CI/CD config is correct
 
-1. ทำ `/deep-review` เพื่อตรวจ drift และ duplication
-2. ทำ `/deep-review` เพื่อตรวจว่า config ครอบคลุม security, testing, deployment
-3. รัน dry run ถ้า platform รองรับ (เช่น `act` สำหรับ GitHub Actions) — optional
-4. ถ้าต้องการ validate test suite ใน local → ทำ `/run-test all` ก่อนขึ้น CI
-5. ถ้ามี syntax error → แก้ไขก่อนจบ
+1. Run `/deep-review` to check for drift and duplication
+2. Run `/deep-review` to check that the config covers security, testing, deployment
+3. Run a dry run if the platform supports it (e.g. `act` for GitHub Actions) — optional
+4. To validate the test suite locally → run `/run-test all` before going to CI
+5. If there are syntax errors → fix them before finishing
 
 ### 6. Report
 
-> Goal: สรุปสถานะ setup
+> Goal: Summarize the setup status
 
-1. ใช้ `/report` สรุป: platform, workflow files, missing scripts, missing secrets, next action
-2. ทำ `/suggest-next-action`
+1. Use `/report` to summarize: platform, workflow files, missing scripts, missing secrets, next action
+2. Run `/suggest-next-action`
 
 ### 7. Optional Release Setup
 
-> Goal: ตั้งค่า release workflow ถ้าจำเป็น
+> Goal: Set up the release workflow if needed
 
-1. ถ้า project ต้องการ release บน tag → ทำตาม Step 5 release workflow + เลือก release tool ผ่าน `/follow-tool-*`
-2. ถ้าไม่ต้องการ release → ข้าม
+1. If the project needs releases on tag → follow the Step 5 release workflow and pick a release tool via `/follow-tool-*`
+2. If releases are not needed → skip
 
 ## Rules
 
 ### 1. Setup Only
 
-- `setup-cicd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
-- ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
-- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-to-dev-branch`
+- `setup-cicd` only configures; it never runs pipelines
+- No commit, push, deploy, or release
+- To run pipelines, use `/run-verify` or `/ship-to-dev-branch`
 
 ### 2. Platform First
 
-- ตรวจหา platform ทีมีอยู่ก่อนสร้างไฟล์ใหม่
-- ถ้ามี config แล้ว → ตรวจสอบและเติมส่วนทีขาด ไม่ทับซ้ำ
-- ถ้าไม่พบ → default เป็น GitHub Actions หรือถาม user
+- Detect existing platforms before creating new files
+- If config already exists → audit it and fill the gaps; do not overwrite
+- If none found → default to GitHub Actions or ask the user
 
 ### 3. Secrets Safety
 
-- ใช้ `/follow-secret-manager` หรือ GitHub Secrets / GitLab CI Variables
-- ไม่ hardcode secrets ลง workflow files
-- ไม่ log secrets
+- Use `/follow-secret-manager` or GitHub Secrets / GitLab CI Variables
+- Never hardcode secrets in workflow files
+- Never log secrets
 
 ### 4. Package Scripts
 
-- ต้องมี package scripts ก่อนสร้าง CI workflow
-- project เล็ก: `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
-- project ใหญ่: CI/CD pipeline รัน full suite; package manifest มี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
-- `test:all` ควรรวม unit, integration, e2e, coverage ตาม project
-- ไม่ใส่ `release` ลง package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
+- Package scripts must exist before creating a CI workflow
+- Small project: `verify` must include `scan`, `lint`, `typecheck`, `test`, `build` directly in the package manifest
+- Large project: the CI/CD pipeline runs the full suite; the package manifest has `test:all`, `build`, and a `verify` of at least `check && test`
+- `test:all` should cover unit, integration, e2e, and coverage as appropriate for the project
+- Never put `release` in the package manifest — releases happen through the CI/CD workflow on tag or via `/run-release`
 
 ### 5. No Auto Commit
 
-- ไม่ commit หรือ push config files โดยอัตโนมัติ
-- ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship-to-dev-branch` หลัง setup
+- Never commit or push config files automatically
+- If the user wants to commit → run `/git-commit` or `/ship-to-dev-branch` after setup
 
 ### 6. Overlap And Cost
 
-- `run-verify`, `check-quality`, `review-*`, `check-*` ทำงานซ้ำซ้อนกันได้ ควรรวมลงใน `verify` job เดียว
-- ใช้ `concurrency`, `timeout-minutes`, `cache`, runner เดียว และหลีกเลี่ง matrix เพื่อประหยัด cost
-- ถ้าไม่มี root package.json ให้รัน verify จาก tool directories แทนการสร้าง root package หลอก
-- ใช้ /research-setup-integrations ถ้าจำเป็น (เลือก CI actions/plugins จาก official sources ก่อนเขียน workflow)
-- ใช้ /run-deploy ถ้าจำเป็น
-- pipeline ช้าหลัง setup → `/optimize-ci`
+- `run-verify`, `check-quality`, `review-*`, `check-*` can overlap; consolidate them into a single `verify` job
+- Use `concurrency`, `timeout-minutes`, `cache`, a single runner, and avoid matrix to save cost
+- If there is no root package.json, run verify from tool directories instead of creating a fake root package
+- Use /research-setup-integrations when needed (pick CI actions/plugins from official sources before writing workflows)
+- Use /run-deploy when needed
+- If the pipeline is slow after setup → `/optimize-ci`
 
 ## Expected Outcome
 
-- CI/CD platform ถูก detect หรือถาม user
-- Workflow files สร้างถูกต้องตาม platform
-- Package scripts ครบถ้วนสำหรับ verify, test, build, deploy — `release` ไม่อยู่ใน package manifest
-- Secrets ถูก setup อย่างปลอดภัย
-- ไม่มีการ commit/push/deploy/release โดยอัตโนมัติ
-- มีรายงาน setup status และ next action ชัดเจน
+- The CI/CD platform is detected or the user is asked
+- Workflow files are created correctly for the platform
+- Package scripts are complete for verify, test, build, deploy — `release` is not in the package manifest
+- Secrets are set up securely
+- No automatic commit/push/deploy/release happens
+- A setup status report and a clear next action are produced

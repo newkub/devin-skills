@@ -1,6 +1,6 @@
 ---
 name: deep-research-report-findings
-description: สร้าง research report จาก findings — sources, confidence, comparison, open questions
+description: Build a research report from findings — sources, confidence, comparison, open questions
 argument-hint: "[topic]"
 related:
   - report
@@ -10,47 +10,47 @@ related:
 
 ## Goal
 
-แปลง findings ของ `/deep-research` เป็น research report ที่ trace ย้อน source ได้ — deliverable หลักของ research workflow
+Turn `/deep-research` findings into a research report that traces back to its sources — the primary deliverable of the research workflow
 
 ## Scope
 
-- ใช้เมื่อ `/deep-research` dispatch มาที่ `report` หรือเรียก standalone กับ findings ที่มีอยู่
-- ครอบคลุม: summary, evidence per claim, confidence levels, source list, open questions
-- Output: ตารางในแชท หรือ persistent artifact ผ่าน `/create-report-in-dot-devin` ถ้า user ขอ
+- Use when `/deep-research` dispatches to `report`, or standalone over findings you already have
+- Covers: summary, evidence per claim, confidence levels, source list, open questions
+- Output: a table in chat, or a persistent artifact via `/create-report-in-dot-devin` if the user asks
 
 ## Execute
 
 ### 1. Organize Findings
 
-> Goal: จัด findings เป็น claims พร้อม evidence
+> Goal: Arrange findings into claims with evidence
 
-1. แตก findings เป็น claims — แต่ละ claim ผูก source (URL/doc/repo)
-2. กำหนด confidence: `verified` (primary source), `likely` (secondary หลายแหล่งตรงกัน), `unverified` (แหล่งเดียว/อนุมาน)
-3. flag claims ที่ sources ขัดกัน — แสดงทั้งสองฝั่ง
+1. Break findings into claims — bind each claim to its source (URL/doc/repo)
+2. Assign confidence: `verified` (primary source), `likely` (multiple secondary sources agree), `unverified` (single source/inference)
+3. Flag claims where sources conflict — show both sides
 
 ### 2. Build Report
 
-> Goal: report ที่อ่านแล้วตัดสินใจได้
+> Goal: A report that supports decisions
 
-1. Summary 3-5 บรรทัด — key findings ก่อน
-2. ตาราง: `No.`, `Finding`, `Confidence`, `Sources`, `Notes`
-3. Comparison matrix ถ้า research เทียบหลายตัวเลือก
-4. Open questions — สิ่งที่หาไม่เจอหรือต้อง validate เพิ่ม
+1. 3-5 line summary — key findings first
+2. Table: `No.`, `Finding`, `Confidence`, `Sources`, `Notes`
+3. Comparison matrix if the research compares several options
+4. Open questions — what wasn't found or still needs validation
 
 ### 3. Source List
 
-> Goal: references ครบและตรวจย้อนได้
+> Goal: Complete, verifiable references
 
-1. รวม sources ทั้งหมด — primary ก่อน secondary
-2. ระบุ access date และชนิด (official docs, repo, benchmark, article)
-3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
+1. Collect all sources — primary before secondary
+2. Note the access date and type (official docs, repo, benchmark, article)
+3. If it must be archived → create `/create-report-in-dot-devin`
 
 ## Rules
 
-- ทุก claim ต้องมีอย่างน้อย 1 source หรือ tag เป็น assumption
-- แยก fact จาก interpretation — report ต้องบอกว่าอันไหนคืออะไร
-- ห้าม fabricate sources — ถ้า claim ไม่มีหลักฐานให้เขียนว่าไม่พบ
+- Every claim needs at least 1 source or is tagged as an assumption
+- Separate fact from interpretation — the report must say which is which
+- Never fabricate sources — if a claim has no evidence, state that none was found
 
 ## Expected Outcome
 
-- Research report พร้อม confidence ต่อ claim + source list ครบ
+- Research report with confidence per claim + a complete source list

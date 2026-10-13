@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare-token
-description: สร้าง Cloudflare API token สำหรับ use case ทีระบุ ทังแบบ dashboard URL และ API (เมื่อมี seed token)
+description: Create a Cloudflare API token for a use case via dashboard URL or API (with a seed token)
 argument-hint: "<use-case>"
 related:
   - follow-secret-manager
@@ -12,52 +12,52 @@ related:
 
 ## Goal
 
-สร้าง Cloudflare API token ทีมี permissions ถูกต้องตาม use case ของ project โดย AI ไม่ต้องเห็นหรือเก็บ token secret
+Create a Cloudflare API token whose permissions match the project's use case, without the AI ever seeing or storing the token secret.
 
 ## Scope
 
-- ระบุ use case เช่น `workers`, `d1`, `pages`, `r2`, `kv`, `access`, `zero-trust`
-- สร้าง dashboard URL ที pre-fill permissions สำหรับ user สร้างเอง
-- ถ้ามี seed `CLOUDFLARE_API_TOKEN` ทีมีสิทธิ์ `API Tokens: Edit` สามารถสร้าง token ใหม่ผ่าน API ได้
-- แนะนำวิธีเก็บ token อย่างปลอดภัย (`wrangler secret`, GitHub Actions secrets, Infisical, `.env` gitignored)
+- Identify the use case, e.g. `workers`, `d1`, `pages`, `r2`, `kv`, `access`, `zero-trust`
+- Generate a dashboard URL with pre-filled permissions for the user to create the token themselves
+- If a seed `CLOUDFLARE_API_TOKEN` with `API Tokens: Edit` rights exists, a new token can be created through the API
+- Recommend secure token storage (`wrangler secret`, GitHub Actions secrets, Infisical, gitignored `.env`)
 
 ## Execute
 
 ### 1. Identify Use Case And Permissions
 
-> Goal: ระบุ Use Case And Permissions
-เลือก permissions ตาม use case:
+> Goal: Identify Use Case And Permissions
+Pick permissions based on the use case:
 
 | Use case | Permission keys |
 |---|---|
 | Workers deploy | `workers_scripts` `edit`, `workers_routes` `edit`, `account_settings` `read`, `user_details` `read`, `memberships` `read` |
-| D1 | `d1` `edit` (รวม Workers deploy permissions) |
+| D1 | `d1` `edit` (plus the Workers deploy permissions) |
 | Pages | `page` `edit`, `account_settings` `read` |
 | R2 | `workers_r2_storage` `edit` |
 | KV | `workers_kv_storage` `edit` |
 | Queues | `workers_queues` `edit` |
 | Tail | `workers_tail` `read` |
-| Cloudflare Access / Zero Trust | `access_orgs` `edit`, `access_apps` `edit`, `access_policies` `edit` (หรือ `access_apps_and_policies` `write`) |
+| Cloudflare Access / Zero Trust | `access_orgs` `edit`, `access_apps` `edit`, `access_policies` `edit` (or `access_apps_and_policies` `write`) |
 | Account info | `account_settings` `read`, `user_details` `read`, `memberships` `read` |
 
-สำหรับ Cloudflare Access โดยเฉพาะ ต้องใช้ permission groups:
+Cloudflare Access in particular needs these permission groups:
 - `Access: Apps and Policies Write` → key `access`, type `edit`
-- `Access: Organizations, Identity Providers, and Groups Write` → key `access_acct`, type `edit` (เพื่อ enable Zero Trust org)
+- `Access: Organizations, Identity Providers, and Groups Write` → key `access_acct`, type `edit` (to enable the Zero Trust org)
 
-ตรวจสอบ permission key ล่าสุดได้ที:
+Check the current permission keys at:
 - `https://cfdata.lol/tools/api-token-url-generator/`
-- `GET /client/v4/user/tokens/permission_groups` (ต้องมี token ก่อน)
+- `GET /client/v4/user/tokens/permission_groups` (requires a token first)
 
 Common permission keys:
 - Workers: `workers_scripts` `edit`, `workers_routes` `edit`, `workers_kv_storage` `edit`, `workers_r2` `edit`, `d1` `edit`
 - Access/Zero Trust: `access` `edit`, `access_acct` `edit`
 - Account: `account_settings` `read`, `user_details` `read`, `memberships` `read`
-- Token management: `account_api_tokens` `edit` (สำหรับสร้าง token ผ่าน API)
+- Token management: `account_api_tokens` `edit` (for creating tokens through the API)
 
 ### 2. Generate Dashboard URL
 
-> Goal: สร้าง Dashboard URL
-1. สร้าง JSON permissions array:
+> Goal: Create a Dashboard URL
+1. Build the JSON permissions array:
    ```json
    [
      { "key": "workers_scripts", "type": "edit" },
@@ -68,14 +68,14 @@ Common permission keys:
      { "key": "memberships", "type": "read" }
    ]
    ```
-2. URL-encode JSON ด้วย `encodeURIComponent`
-3. ประกอบ URL:
+2. URL-encode the JSON with `encodeURIComponent`
+3. Assemble the URL:
    ```
    https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=<ENCODED_JSON>&accountId=*&zoneId=all&name=<TOKEN_NAME>
    ```
-4. เปิด URL ใน browser หรือส่งให้ user
+4. Open the URL in a browser or hand it to the user
 
-ตัวอย่าง Bun script:
+Example Bun script:
 ```bash
 bun -e "
 const perms = [
@@ -93,11 +93,11 @@ console.log('https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=
 
 ### 3. Create Token Via API (If Seed Token Available)
 
-> Goal: สร้าง Token Via API If Seed Token Available
-ถ้ามี `CLOUDFLARE_API_TOKEN` seed ทีมีสิทธิ์ `User > API Tokens > Edit` หรือ `Account > API Tokens > Edit`:
+> Goal: Create a Token Via API If a Seed Token Is Available
+If a `CLOUDFLARE_API_TOKEN` seed with `User > API Tokens > Edit` or `Account > API Tokens > Edit` rights exists:
 
-1. หา permission group IDs ด้วย `GET /client/v4/user/tokens/permission_groups`
-2. สร้าง token ด้วย `POST /client/v4/user/tokens`:
+1. Look up the permission group IDs with `GET /client/v4/user/tokens/permission_groups`
+2. Create the token with `POST /client/v4/user/tokens`:
    ```json
    {
      "name": "projects-wrikka-com-access",
@@ -114,24 +114,24 @@ console.log('https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=
      ]
    }
    ```
-3. รับ `value` จาก response (แสดงครั้้งเดียว) แล้วให้ user เก็บเอง
+3. Take the `value` from the response (shown only once) and let the user store it themselves
 
-หมายเหตุ: ไม่สามารถสร้าง API token ผ่าน CLI โดยไม่มี seed token ก่อน ถ้าไม่มี seed token ให้ใช้ dashboard URL ในขั้นตอน 2
+Note: an API token cannot be created through the CLI without a seed token first. If there is no seed token, use the dashboard URL from step 2.
 
 ### 4. Store Token Securely
 
-> Goal: Store Token Securely
+> Goal: Store the Token Securely
 - `wrangler secret put CLOUDFLARE_API_TOKEN`
-- `gh secret set CLOUDFLARE_API_TOKEN --repo <owner>/<repo>` สำหรับ GitHub Actions
-- `.env` ที่ gitignored สำหรับ local dev
-- Infisical / 1Password สำหรับ team
+- `gh secret set CLOUDFLARE_API_TOKEN --repo <owner>/<repo>` for GitHub Actions
+- A gitignored `.env` for local dev
+- Infisical / 1Password for a team
 
-AI ไม่ควรเขียนค่า token ลงไฟล์ ยกเว้น user เป็นคนวางเอง
+The AI should never write the token value to a file, unless the user pasted it in themselves.
 
 ### 5. Verify Token
 
-> Goal: ตรวจสอบ Token
-ใช้ `GET /client/v4/user/tokens/verify` เพื่อตรวจสอบสิทธิ์ token:
+> Goal: Verify the Token
+Use `GET /client/v4/user/tokens/verify` to check the token's permissions:
 ```bash
 curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
   https://api.cloudflare.com/client/v4/user/tokens/verify
@@ -139,21 +139,21 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
 ## Rules
 
-1. AI ไม่รับค่า token secret จาก user และไม่เขียนลงไฟล์
-2. แนะนำให้ user ตั้งชื่อ token ทีบอก project และ use case
-3. Scope permissions ให้เล็กทีสุด ไม่ใส่ทุก permission
-4. Account resource ควรระบุ account ID เฉพาะ ไม่ใช้ `*` ถ้าไม่จำเป็น
-5. สำหรับ Cloudflare Access ตรวจให้ account เปิด Zero Trust แล้วหรือ token มีสิทธิ์ enable ได้
+1. The AI never accepts a token secret from the user and never writes it to a file
+2. Have the user name the token after the project and use case
+3. Scope permissions as narrowly as possible; don't grant every permission
+4. Pin the account resource to a specific account ID rather than `*` unless necessary
+5. For Cloudflare Access, confirm the account has Zero Trust enabled or that the token can enable it
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (cloudflare token)
+- Use /follow-secret-manager if needed
+- Use /deploy-to-cloudflare if needed
+- Use /follow-service-cloudflare if needed
+- Use /open-web-for-config-secret if needed (cloudflare token)
 
 ## Expected Outcome
 
-- ได้ dashboard URL หรือ API command สำหรับสร้าง token
-- User สร้าง token และเก็บใน secret manager เอง
-- Token มี permissions ตรงกับ use case (Workers, D1, Pages, R2, KV, Access, Zero Trust)
-- Project สามารถใช้ token สำหรับ deploy หรือจัดการ Cloudflare resources ต่อไป
+- A dashboard URL or API command for creating the token is produced
+- The user creates the token and stores it in a secret manager themselves
+- The token's permissions match the use case (Workers, D1, Pages, R2, KV, Access, Zero Trust)
+- The project can use the token to deploy or manage Cloudflare resources going forward
 

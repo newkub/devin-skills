@@ -1,6 +1,6 @@
 ---
 name: extract-pattern
-description: เขียน pattern rules จากข้อมูลที่ให้มา
+description: Write pattern rules from the provided data
 argument-hint: "[pattern]"
 related:
   - deep-review
@@ -11,67 +11,67 @@ related:
 
 ## Goal
 
-สร้าง pattern rules ที่อธิบายโครงสร้างและลักษณะเฉพาะจากข้อมูลที่ให้มา
+Create pattern rules that describe the structure and distinguishing characteristics derived from the provided data
 
 ## Scope
 
-ใช้ `extract-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (pattern)
+Use `extract-pattern` for well-covered specific tasks and workflows (patterns)
 
 ## Execute
 
 ### 1. Analyze Input Data
 
-> Goal: วิเคราะห์ข้อมูลเพื่อระบุประเภทและความสัมพันธ์
+> Goal: analyze the data to identify types and relationships
 
-1. อ่านและวิเคราะห์ข้อมูลที่ได้รับ
-2. ระบุประเภทของข้อมูล
-3. หาความสัมพันธ์ระหว่างข้อมูล
-4. ระบุลักษณะเฉพาะและความซ้ำซ้อน
+1. Read and analyze the provided data
+2. Identify the data types
+3. Find relationships between data items
+4. Identify distinguishing traits and redundancies
 
 ### 2. Identify Patterns
 
-> Goal: หา pattern ที่เกิดซ้ำและโครงสร้างที่สำคัญ
+> Goal: find recurring patterns and important structures
 
-1. หา pattern ที่เกิดซ้ำในข้อมูล
-2. ระบุโครงสร้างที่สำคัญ
-3. หาข้อยกเว้นและกรณีพิเศษ
-4. จัดกลุ่ม pattern ที่คล้ายกัน
+1. Find patterns that recur in the data
+2. Identify the important structures
+3. Find exceptions and special cases
+4. Group similar patterns together
 
 ### 3. Write Pattern Rules
 
-> Goal: เขียน rules ที่อธิบาย pattern อย่างชัดเจน
+> Goal: write rules that clearly describe the patterns
 
-1. เขียน rules ที่อธิบาย pattern อย่างชัดเจน
-2. ใช้ภาษาที่เข้าใจง่ายและกระชับ
-3. ให้ตัวอย่างที่ชัดเจนสำหรับแต่ละ rule
-4. ระบุเงื่อนไขและข้อจำกัด
+1. Write rules that clearly describe each pattern
+2. Use simple, concise language
+3. Give a clear example for each rule
+4. State the conditions and constraints
 
 ### 4. Validate Rules
 
-> Goal: ตรวจสอบความครบถ้วนและความใช้งานได้จริงของ rules
+> Goal: check that the rules are complete and practically usable
 
-1. ตรวจสอบว่า rules ครอบคลุมทุกกรณี
-2. ทดสอบ rules กับข้อมูลตัวอย่าง
-3. ตรวจสอบว่าไม่มีข้อยกเว้นที่ไม่ได้ระบุ
-4. ยืนยันว่า rules ใช้งานได้จริง
+1. Check that the rules cover every case
+2. Test the rules against sample data
+3. Check that no unlisted exceptions remain
+4. Confirm the rules are actually usable
 
 ## Rules
 
 ### 1. Pattern Rule Quality
 
-1. Pattern rules ต้องชัดเจนและเข้าใจง่าย
-2. ต้องมีตัวอย่างประกอบทุก rule
-3. ต้องระบุเงื่อนไขและข้อจำกัด
-4. ห้ามเขียน rules ที่ซับซ้อนเกินความจำเป็น
-5. ต้องครอบคลุมทุกกรณีที่เป็นไปได้
+1. Pattern rules must be clear and easy to understand
+2. Every rule must include an example
+3. Conditions and constraints must be stated
+4. Never write rules more complex than necessary
+5. Must cover every possible case
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /learn-pattern ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /learn-pattern if needed
+- Use /follow-best-practice if needed
 
 ## Expected Outcome
 
-- Pattern rules ที่ชัดเจนและเข้าใจง่าย
-- ตัวอย่างประกอบทุก rule
-- เงื่อนไขและข้อจำกัดที่ชัดเจน
-- Rules ที่ครอบคลุมทุกกรณี
+- Pattern rules that are clear and easy to understand
+- Examples attached to every rule
+- Clearly stated conditions and constraints
+- Rules that cover every case

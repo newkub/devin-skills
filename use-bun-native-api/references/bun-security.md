@@ -1,6 +1,6 @@
 # Bun Security APIs
 
-ใช้ Bun security APIs สำหรับ security operations
+Use Bun security APIs for security operations
 
 - `Bun.CSRF.generate()` / `Bun.CSRF.verify()` - CSRF token generation and verification
 - `Bun.CSRF.unsafe` - Low-level CSRF operations

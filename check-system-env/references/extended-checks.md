@@ -1,10 +1,10 @@
 ### 11. Check User Behavior Analysis
 
-ตรวจสอบ user behavior patterns:
+Check user behavior patterns:
 
-1. รัน `Get-ChildItem -Recurse -Directory -Filter ".git" -ErrorAction SilentlyContinue` เพื่อแสดง git repositories
-2. รัน `Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" -ErrorAction SilentlyContinue` เพื่อแสดง recent files
-3. รัน `Get-ChildItem $env:USERPROFILE\Documents -Recurse -Filter "*.json" -ErrorAction SilentlyContinue | Select-Object -First 20` เพื่อแสดง recent config files
+1. Run `Get-ChildItem -Recurse -Directory -Filter ".git" -ErrorAction SilentlyContinue` to show the git repositories
+2. Run `Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" -ErrorAction SilentlyContinue` to show recent files
+3. Run `Get-ChildItem $env:USERPROFILE\Documents -Recurse -Filter "*.json" -ErrorAction SilentlyContinue | Select-Object -First 20` to show recent config files
 
 ```powershell
 # Check git repositories
@@ -19,12 +19,12 @@ Get-ChildItem $env:USERPROFILE\Documents -Recurse -Filter "*.json" -ErrorAction 
 
 ### 12. Check Development Environment
 
-ตรวจสอบ development environment:
+Check the development environment:
 
-1. รัน `code --version 2>$null` เพื่อแสดง VS Code version
-2. รัน `code --list-extensions 2>$null` เพื่อแสดง VS Code extensions
-3. ตรวจสอบ `$env:USERPROFILE\.vscode\extensions` เพื่อแสดง extensions path
-4. ตรวจสอบ `$env:USERPROFILE\.vscode\settings.json` เพื่อแสดง settings path
+1. Run `code --version 2>$null` to show the VS Code version
+2. Run `code --list-extensions 2>$null` to show the VS Code extensions
+3. Check `$env:USERPROFILE\.vscode\extensions` to show the extensions path
+4. Check `$env:USERPROFILE\.vscode\settings.json` to show the settings path
 
 ```powershell
 # Check VS Code version
@@ -44,9 +44,9 @@ Test-Path "$env:USERPROFILE\.vscode\settings.json"
 
 ### 13. Generate Report
 
-รวบรวมข้อมูลทั้งหมดและรายงานในรูปแบบตารางตาม `/report table`:
+Gather all the data and report it in table format per `/report table`:
 
-1. รวบรวมข้อมูลจากทุก steps
-2. จัดรูปแบบตารางตาม `/report table`
-3. ใช้ numbered columns, headers ชัดเจน, alignment ที่เหมาะสม
-4. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
+1. Gather data from all steps
+2. Format the table per `/report table`
+3. Use numbered columns, clear headers, and appropriate alignment
+4. Use symbols (✅, ❌, ⚠️) for status

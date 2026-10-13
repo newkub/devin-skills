@@ -1,6 +1,6 @@
 ---
 name: follow-create-ios-android-native-by-kotlin-multiplatform
-description: สร้าง native iOS+Android app เดียวด้วย Kotlin Multiplatform และ Compose Multiplatform
+description: Build one native iOS+Android app with Kotlin Multiplatform and Compose Multiplatform
 argument-hint: "[project-name]"
 related:
   - follow-create-web
@@ -13,147 +13,147 @@ related:
 
 ## Goal
 
-สร้าง native mobile app สำหรับ iOS และ Android จาก codebase Kotlin เดียวด้วย Kotlin Multiplatform (KMP) และ Compose Multiplatform ตาม best practices — business logic, networking, storage และ UI แชร์ได้สูงสุดผ่าน `shared` module
+Build a native mobile app for iOS and Android from a single Kotlin codebase using Kotlin Multiplatform (KMP) and Compose Multiplatform per best practices — business logic, networking, storage, and UI are maximally shared through the `shared` module
 
 ## Scope
 
-- ใช้สร้าง app iOS+Android ใหม่ที่ต้องการ native performance + shared Kotlin code (แทนการเขียน Swift+Kotlin แยกสองทีม)
-- ครอบคลุม setup, project structure (KMP modules), Compose Multiplatform UI, expect/actual, build, test และ deploy ทั้งสอง store
-- ใช้ Android Studio เป็น primary IDE (ต้องมี Xcode สำหรับ iOS target — macOS only)
+- Use to create a new iOS+Android app that needs native performance + shared Kotlin code (instead of maintaining separate Swift+Kotlin teams)
+- Covers setup, project structure (KMP modules), Compose Multiplatform UI, expect/actual, build, test, and deploy to both stores
+- Use Android Studio as the primary IDE (Xcode is required for the iOS target — macOS only)
 
-- Packages: Kotlin, KMP plugin, Compose Multiplatform, AGP, Gradle — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
+- Packages: Kotlin, KMP plugin, Compose Multiplatform, AGP, Gradle — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file, per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชัน KMP, Compose Multiplatform, Kotlin, AGP และ breaking changes ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก KMP แทน native แยกหรือ Capacitor สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest KMP, Compose Multiplatform, Kotlin, and AGP versions and breaking changes, then run `/deep-review` to summarize the tech stack
+2. Record the rationale for choosing KMP over separate native codebases or Capacitor for future reference
 
 ### 2. Gather Requirements
 
-> Goal: เข้าใจ scope ของ app
+> Goal: understand the app scope
 
-1. รับ project name, package name (เช่น `com.example.app`), min SDK (Android) และ deployment target (iOS)
-2. ระบุ features, screens, navigation pattern
-3. ระบุ shared vs platform-specific code: networking (Ktor), storage (SQLDelight/DataStore), DI (Koin)
-4. ตัดสินใจ shared UI (Compose Multiplatform ทั้งสอง platform) หรือ shared logic เท่านั้น (iOS ใช้ SwiftUI ห่อ `shared` module)
-5. ถ้าไม่ชัด → ใช้ `/ask-me`
+1. Collect project name, package name (e.g. `com.example.app`), min SDK (Android), and deployment target (iOS)
+2. Define features, screens, and navigation pattern
+3. Define shared vs platform-specific code: networking (Ktor), storage (SQLDelight/DataStore), DI (Koin)
+4. Decide between shared UI (Compose Multiplatform on both platforms) or shared logic only (iOS uses SwiftUI wrapping the `shared` module)
+5. If anything is unclear → use `/ask-me`
 
 ### 3. Verify Environment
 
-> Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
+> Goal: check the environment before building
 
-1. ตรวจสอบ Android Studio เวอร์ชันล่าสุดที่รองรับ KMP (เช็คด้วย `/deep-research` — minimum Otter 2025.2.1)
-2. ตรวจสอบ JDK 21 หรือสูงกว่า และ Kotlin Multiplatform plugin ใน Android Studio
-3. สำหรับ iOS target: ตรวจสอบ Xcode >= 26.0 (macOS เท่านั้น — Windows build ได้เฉพาะ Android/desktop)
-4. ตรวจสอบ `kdoctor` (`brew install kdoctor` หรือ `scoop install kdoctor`) — run `kdoctor` ยืนยัน env ครบ
+1. Verify the latest Android Studio version that supports KMP (check with `/deep-research` — minimum Otter 2025.2.1)
+2. Verify JDK 21 or newer and the Kotlin Multiplatform plugin in Android Studio
+3. For the iOS target: verify Xcode >= 26.0 (macOS only — Windows can build Android/desktop targets only)
+4. Verify `kdoctor` (`brew install kdoctor` or `scoop install kdoctor`) — run `kdoctor` to confirm the environment is complete
 
 ### 4. Create Project
 
-> Goal: สร้าง KMP project ด้วย template ที่เหมาะสม
+> Goal: create the KMP project with the right template
 
-1. ใช้ Kotlin Multiplatform Wizard (`kmp.jetbrains.com`) หรือ Android Studio > New Project > Kotlin Multiplatform App
-2. เลือก shared UI (Compose Multiplatform) หรือ shared logic only ตามข้อ 2.4
-3. ตั้ง package name และ minimum versions: Android minSdk >= 24, iOS >= 15
-4. ตั้งค่า Gradle ให้ใช้ Kotlin DSL (`build.gradle.kts`) + version catalog (`libs.versions.toml`)
+1. Use the Kotlin Multiplatform Wizard (`kmp.jetbrains.com`) or Android Studio > New Project > Kotlin Multiplatform App
+2. Choose shared UI (Compose Multiplatform) or shared logic only per step 2.4
+3. Set the package name and minimum versions: Android minSdk >= 24, iOS >= 15
+4. Configure Gradle to use Kotlin DSL (`build.gradle.kts`) + a version catalog (`libs.versions.toml`)
 
 ### 5. Configure Modules
 
-> Goal: จัด module structure ตาม KMP conventions
+> Goal: organize module structure per KMP conventions
 
-1. โครงสร้างมาตรฐาน:
+1. Standard structure:
    ```text
    shared/          # KMP module — commonMain, androidMain, iosMain
    androidApp/      # Android entry (Jetpack Compose host)
-   iosApp/          # Xcode project — SwiftUI host หรือ Compose Multiplatform view
+   iosApp/          # Xcode project — SwiftUI host or Compose Multiplatform view
    ```
-2. `shared/build.gradle.kts`: ตั้ง `kotlin { androidTarget(); iosX64(); iosArm64(); iosSimulatorArm64() }` และ source sets `commonMain`/`androidMain`/`iosMain`
-3. เปิด Compose Multiplatform plugin `org.jetbrains.compose` + `org.jetbrains.kotlin.plugin.compose` (Compose Compiler ผูกกับ Kotlin ตั้งแต่ 2.0 — ไม่ตั้ง extension version เอง)
-4. ใช้ `libs.versions.toml` สำหรับ version catalog
+2. `shared/build.gradle.kts`: set `kotlin { androidTarget(); iosX64(); iosArm64(); iosSimulatorArm64() }` and the `commonMain`/`androidMain`/`iosMain` source sets
+3. Enable the Compose Multiplatform plugins `org.jetbrains.compose` + `org.jetbrains.kotlin.plugin.compose` (the Compose Compiler ships with Kotlin since 2.0 — don't set an extension version yourself)
+4. Use `libs.versions.toml` for the version catalog
 
 ### 6. Setup Shared Architecture
 
-> Goal: จัดโครงสร้าง shared module ตาม Clean Architecture
+> Goal: structure the shared module per Clean Architecture
 
-1. `commonMain` เก็บ: `data/` (repositories, DTOs, Ktor client), `domain/` (use cases, models, repository interfaces), `presentation/` (ViewModels, screens)
-2. `androidMain`/`iosMain` เก็บเฉพาะ platform implementations ผ่าน `expect`/`actual` (เช่น `expect fun platform(): String`)
-3. ใช้ `follow-lang-kotlin` สำหรับ conventions
-4. Networking → `io.ktor:ktor-client-*` (engine: `darwin` iOS, `okhttp`/`cio` Android)
-5. Storage → `app.cash.sqldelight` (SQL) หรือ `androidx.datastore` via multiplatform adapter
+1. Keep in `commonMain`: `data/` (repositories, DTOs, Ktor client), `domain/` (use cases, models, repository interfaces), `presentation/` (ViewModels, screens)
+2. Keep only platform implementations in `androidMain`/`iosMain` via `expect`/`actual` (e.g. `expect fun platform(): String`)
+3. Use `follow-lang-kotlin` for conventions
+4. Networking → `io.ktor:ktor-client-*` (engine: `darwin` on iOS, `okhttp`/`cio` on Android)
+5. Storage → `app.cash.sqldelight` (SQL) or `androidx.datastore` via a multiplatform adapter
 6. DI → `io.insert-koin:koin-core` (KMP-ready)
 
 ### 7. Implement Shared UI
 
-> Goal: สร้าง UI ด้วย Compose Multiplatform ใน commonMain
+> Goal: build the UI with Compose Multiplatform in commonMain
 
-1. สร้าง `App.kt` ใน `commonMain` — shared composable entry
-2. ใช้ Material 3 components จาก `org.jetbrains.compose.material3` (KMP)
+1. Create `App.kt` in `commonMain` — the shared composable entry
+2. Use Material 3 components from `org.jetbrains.compose.material3` (KMP)
 3. Navigation → `org.jetbrains.androidx.navigation:navigation-compose` (Navigation 3 multiplatform)
-4. Resources → `compose-multiplatform` resources API (`Res.drawable`, `Res.string`) ใน `commonMain/composeResources`
-5. Android host: `MainActivity` เรียก `setContent { App() }`; iOS host: `ComposeViewController()` หรือ SwiftUI + shared ViewModels
+4. Resources → the `compose-multiplatform` resources API (`Res.drawable`, `Res.string`) under `commonMain/composeResources`
+5. Android host: `MainActivity` calls `setContent { App() }`; iOS host: `ComposeViewController()` or SwiftUI + shared ViewModels
 
 ### 8. Platform-Specific Wiring
 
-> Goal: เชื่อมต่อ shared module เข้า host apps อย่างถูกต้อง
+> Goal: wire the shared module into the host apps correctly
 
-1. iOS: ใช้ `ComposeUIViewController { App() }` ใน `MainViewController.kt` (iosMain) หรือ export `shared` เป็น framework ให้ SwiftUI เรียกผ่าน `SharedModuleKt`/`skie`
-2. Android: `MainActivity` ใน `androidApp` เรียก `App()` จาก `shared` ตรงๆ
-3. ใช้ `expect`/`actual` สำหรับ platform APIs: file system, keychain/keystore, notifications, permissions
-4. iOS capabilities/signing ตั้งใน Xcode project (push, app groups, keychain sharing)
+1. iOS: use `ComposeUIViewController { App() }` in `MainViewController.kt` (iosMain), or export `shared` as a framework for SwiftUI to call via `SharedModuleKt`/`skie`
+2. Android: `MainActivity` in `androidApp` calls `App()` from `shared` directly
+3. Use `expect`/`actual` for platform APIs: file system, keychain/keystore, notifications, permissions
+4. Set iOS capabilities/signing in the Xcode project (push, app groups, keychain sharing)
 
 ### 9. Testing And Build
 
-> Goal: ตรวจสอบความถูกต้องและสร้าง release builds
+> Goal: verify correctness and produce release builds
 
-1. Unit tests ใน `commonTest` ด้วย `kotlin.test`; platform tests ใน `androidTest`/`iosTest`
-2. รัน `./gradlew :shared:testDebugUnitTest` (Android side) และ iOS tests ผ่าน Xcode
+1. Unit tests in `commonTest` with `kotlin.test`; platform tests in `androidTest`/`iosTest`
+2. Run `./gradlew :shared:testDebugUnitTest` (Android side) and run iOS tests through Xcode
 3. Android release: `./gradlew :androidApp:assembleRelease` → AAB → Play Console/`fastlane supply`
-4. iOS release: archive ผ่าน Xcode → App Store Connect/TestFlight (Xcode >= 26 เท่านั้นตั้งแต่ เม.ย. 2026)
-5. ไม่ commit keystore/provisioning secrets — ใช้ env vars
+4. iOS release: archive through Xcode → App Store Connect/TestFlight (Xcode >= 26 only since Apr 2026)
+5. Never commit keystore/provisioning secrets — use env vars
 
 ### 10. Validate And Ship
 
-> Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
+> Goal: check quality before delivery
 
-1. ทำ `/deep-review` เพื่อตรวจ UI/UX และ architecture
-2. ทำ `/run-test` สำหรับ test suite
-3. ทำ `/follow-lang-kotlin` เพื่อ verify conventions
-4. ทำ `/ship-to-dev-branch`
+1. Run `/deep-review` to check UI/UX and architecture
+2. Run `/run-test` for the test suite
+3. Run `/follow-lang-kotlin` to verify conventions
+4. Run `/ship-to-dev-branch`
 
 ## Rules
 
 ### 1. Kotlin Multiplatform
 
-- Shared code อยู่ใน `commonMain` เท่านั้น — platform code ผ่าน `expect`/`actual` เท่าที่จำเป็น
-- ใช้ KMP-compatible libraries เท่านั้น (Ktor, SQLDelight, Koin, Kotlinx.*) — JVM-only lib ห้ามอยู่ใน `commonMain`
-- Compose Multiplatform สำหรับ shared UI — ถ้า iOS ต้องการ SwiftUI ให้ share เฉพาะ `domain`/`data` + ViewModels
+- Shared code lives in `commonMain` only — platform code via `expect`/`actual` only when necessary
+- Use KMP-compatible libraries only (Ktor, SQLDelight, Koin, Kotlinx.*) — JVM-only libs must never be in `commonMain`
+- Use Compose Multiplatform for shared UI — if iOS needs SwiftUI, share only `domain`/`data` + ViewModels
 
 ### 2. Architecture
 
-- ใช้ Clean Architecture — `domain` ไม่พึ่ง platform/framework
-- ViewModel ใช้ `androidx.lifecycle` multiplatform (KMP-ready)
-- Repository pattern สำหรับ data layer
+- Use Clean Architecture — `domain` must not depend on platform/framework
+- ViewModels use `androidx.lifecycle` multiplatform (KMP-ready)
+- Repository pattern for the data layer
 
 ### 3. Security
 
-- ไม่ hardcode secrets — iOS ใช้ Keychain, Android ใช้ Keystore/EncryptedSharedPreferences ผ่าน `expect`/`actual`
-- HTTPS เท่านั้น; ATS compliance บน iOS, `usesCleartextTraffic="false"` บน Android
+- Never hardcode secrets — use Keychain on iOS and Keystore/EncryptedSharedPreferences on Android via `expect`/`actual`
+- HTTPS only; ATS compliance on iOS, `usesCleartextTraffic="false"` on Android
 
 ### 4. Build
 
 - Android: minSdk >= 24, targetSdk/compileSdk >= 36
 - iOS: deployment target >= 15; Xcode >= 26 (App Store Connect requirement)
-- ใช้ version catalog; Gradle wrapper ล่าสุดที่ AGP/Kotlin รองรับ (เช็ค matrix ด้วย `/deep-research`)
+- Use a version catalog; the latest Gradle wrapper supported by AGP/Kotlin (check the matrix with `/deep-research`)
 
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-with-capacitor ถ้า requirement เหมาะกับ web stack มากกว่า native
+- Use /follow-create-web if needed
+- Use /follow-create-mobile-cross-with-capacitor if the requirements fit a web stack better than native
 
 ## Expected Outcome
 
-- KMP project รันได้ทั้ง iOS และ Android จาก shared Kotlin codebase
-- Clean Architecture ชัดเจน; shared logic/UI สูงสุด, platform code แยกถูกที่
-- Tests, navigation, DI, storage, networking ครบถ้วน
-- Release builds พร้อมส่ง Play Store และ App Store
+- The KMP project runs on both iOS and Android from a shared Kotlin codebase
+- Clear Clean Architecture; maximal shared logic/UI, with platform code isolated in the right places
+- Tests, navigation, DI, storage, and networking complete
+- Release builds ready for the Play Store and App Store

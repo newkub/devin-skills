@@ -1,166 +1,166 @@
 ---
 name: follow-create-bot-github
-description: สร้าง GitHub bot ด้วย GitHub Apps หรือ Probot — webhooks, events, deploy
+description: Build a GitHub bot with GitHub Apps or Probot — webhooks, events, deploy
 argument-hint: "[features]"
 ---
 
 ## Goal
 
-สร้าง GitHub bot ด้วย GitHub Apps หรือ Probot framework พร้อมรับ webhooks, จัดการ events, และ deploy ไปยัง production
+Build a GitHub bot with GitHub Apps or the Probot framework, with webhook reception, event handling, and deployment to production
 
 ## Scope
 
-ใช้สำหรับสร้าง GitHub bot ด้วย TypeScript/Bun/Node.js ครอบคลุม app registration, webhooks (issues, pull requests, push), auth, tests, และ deployment
+Use for building a GitHub bot with TypeScript/Bun/Node.js — covers app registration, webhooks (issues, pull requests, push), auth, tests, and deployment
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the stack and library choices with reasons for later reference
 
 ### 2. Choose Stack
 
-> Goal: เลือก stack ทีเหมาะสมกับ use case
+> Goal: Pick the stack that fits the use case
 
-1. ใช้ Probot เมื่องต้องการ framework พร้อม built-in webhook handling และ `context.octokit`
-2. ใช้ `@octokit/app` + `@octokit/webhooks` เมื่องต้องการควบคุมเต็มรูปแบบหรือ deploy serverless
-3. ใช้ `follow-create-bun-cli` ถ้า bot เป็น Bun CLI + server
-4. ใช้ `follow-create-web` ถ้า bot มี dashboard หรือ configuration UI
+1. Use Probot when you want a framework with built-in webhook handling and `context.octokit`
+2. Use `@octokit/app` + `@octokit/webhooks` when you want full control or a serverless deploy
+3. Use `follow-create-bun-cli` if the bot is a Bun CLI + server
+4. Use `follow-create-web` if the bot has a dashboard or configuration UI
 
 ### 3. Setup Project
 
-> Goal: สร้าง project structure และ dependencies
+> Goal: Create the project structure and dependencies
 
-1. สร้าง directory `{bot-name}/`
-2. สร้าง `package.json` ด้วย `name: github-bot-{name}`
-3. ติดตั้ง dependencies ตาม stack:
+1. Create the `{bot-name}/` directory
+2. Create `package.json` with `name: github-bot-{name}`
+3. Install dependencies per stack:
    - Probot: `bun add probot @probot/adapter`
    - Octokit: `bun add @octokit/app @octokit/webhooks @octokit/rest`
    - Serverless: `bun add @octokit/app`
-4. สร้าง `tsconfig.json` ด้วย `strict: true`
-5. สร้าง `.env.example` ด้วย `APP_ID`, `PRIVATE_KEY`, `WEBHOOK_SECRET`, `WEBHOOK_PROXY_URL`
+4. Create `tsconfig.json` with `strict: true`
+5. Create `.env.example` with `APP_ID`, `PRIVATE_KEY`, `WEBHOOK_SECRET`, `WEBHOOK_PROXY_URL`
 
 ### 4. Register GitHub App
 
-> Goal: ลงทะเบียน GitHub App ให้ถูกต้อง
+> Goal: Register the GitHub App correctly
 
-1. ไปยัง GitHub Settings > Developer settings > GitHub Apps > New GitHub App
-2. ระบุ Homepage URL, Webhook URL, Webhook Secret
-3. เลือก permissions ตาม events ที bot จะใช้ เช่น `issues`, `pull_requests`, `contents`
-4. Subscribe events เช่น `issues`, `pull_request`, `push`
-5. ดาวน์โหลด private key และบันทึก `APP_ID`
-6. Install app เข้า repositories หรือ organization ทีต้องการ
+1. Go to GitHub Settings > Developer settings > GitHub Apps > New GitHub App
+2. Set the Homepage URL, Webhook URL, and Webhook Secret
+3. Select permissions per the events the bot will use, e.g. `issues`, `pull_requests`, `contents`
+4. Subscribe to events such as `issues`, `pull_request`, `push`
+5. Download the private key and save the `APP_ID`
+6. Install the app on the desired repositories or organization
 
 ### 5. Implement Webhook Handlers
 
-> Goal: implement event handlers สำหรับ bot
+> Goal: Implement the bot's event handlers
 
-1. สร้าง `src/index.ts` เป็น entry point
-2. สร้าง `src/handlers/` แยกตาม event type:
+1. Create `src/index.ts` as the entry point
+2. Create `src/handlers/` split by event type:
    - `issues.ts`
    - `pull-request.ts`
    - `push.ts`
-3. ใช้ Probot pattern:
+3. Use the Probot pattern:
    ```ts
    import { Probot } from "probot";
    export default (app: Probot) => {
      app.on("issues.opened", async (context) => { ... });
    };
    ```
-4. หรือใช้ `@octokit/webhooks`:
+4. Or use `@octokit/webhooks`:
    ```ts
    import { Webhooks } from "@octokit/webhooks";
    const webhooks = new Webhooks({ secret: Bun.env.WEBHOOK_SECRET });
    webhooks.on("issues.opened", async ({ payload }) => { ... });
    ```
-5. แยก business logic ออกจาก webhook wiring → `src/domain/`
-6. ใช้ `try/catch` รอบ handler และ log errors
+5. Separate business logic from webhook wiring → `src/domain/`
+6. Wrap handlers in `try/catch` and log errors
 
 ### 6. Add Local Development Proxy
 
-> Goal: ทดสอบ webhooks ใน local
+> Goal: Test webhooks locally
 
-1. ใช้ Smee (smee.io) สำหรับ webhook proxy
-2. ตั้งค่า `WEBHOOK_PROXY_URL` ใน `.env`
-3. รัน `bun run dev` หรือ `bunx smee -u <url> -p 3000`
-4. ทดสอบ events จาก GitHub จริง
+1. Use Smee (smee.io) as the webhook proxy
+2. Set `WEBHOOK_PROXY_URL` in `.env`
+3. Run `bun run dev` or `bunx smee -u <url> -p 3000`
+4. Test with real events from GitHub
 
 ### 7. Add Tests
 
-> Goal: ทดสอบ handlers โดยไม่ต้องรัน GitHub App จริง
+> Goal: Test handlers without running a real GitHub App
 
-1. สร้าง `test/handlers/` ด้วย fixtures ของ webhook payloads
-2. ใช้ `nock` หรือ `msw` สำหรับ mock Octokit API calls
-3. รัน `bun test`
-4. ตรวจสอบ idempotency และ error handling
+1. Create `test/handlers/` with webhook payload fixtures
+2. Use `nock` or `msw` to mock Octokit API calls
+3. Run `bun test`
+4. Check idempotency and error handling
 
 ### 8. Deploy
 
-> Goal: deploy bot ไปยัง production
+> Goal: Deploy the bot to production
 
-1. เลือก platform:
-   - Cloudflare Workers: ใช้ `follow-service-cloudflare`
-   - Vercel Functions: ใช้ `follow-service-vercel`
-   - Railway/Render/Fly.io: ใช้ `follow-deploy`
-   - VPS/Container: ใช้ Docker + `bun start`
-2. ตั้งค่า environment variables บน platform
-3. อัปเดต Webhook URL ใน GitHub App settings
-4. ตรวจสอบ health endpoint `/health` หรือ `/`
+1. Choose a platform:
+   - Cloudflare Workers: use `follow-service-cloudflare`
+   - Vercel Functions: use `follow-service-vercel`
+   - Railway/Render/Fly.io: use `follow-deploy`
+   - VPS/Container: use Docker + `bun start`
+2. Set environment variables on the platform
+3. Update the Webhook URL in the GitHub App settings
+4. Check the health endpoint `/health` or `/`
 
 ### 9. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Naming
 
-- ใช้ `github-bot-{name}` สำหรับ bot-specific
-- ใช้ `probot-{name}` สำหรับ Probot-based
-- ชื่อ GitHub App ใน GitHub settings ควรตรงกับ repo name
+- Use `github-bot-{name}` for bot-specific projects
+- Use `probot-{name}` for Probot-based ones
+- The GitHub App name in GitHub settings should match the repo name
 
 ### 2. Security
 
-- เก็บ `PRIVATE_KEY`, `WEBHOOK_SECRET` ใน environment variables / secret manager
-- ไม่ hardcode secrets ใน source code
-- ใช้ `WEBHOOK_SECRET` ตรวจสอบ signature ของทุก webhook
-- ใช้ `crypto.timingSafeEqual` เมื่องเปรียบเทียบ signatures
+- Keep `PRIVATE_KEY`, `WEBHOOK_SECRET` in environment variables / a secret manager
+- Never hardcode secrets in source code
+- Use `WEBHOOK_SECRET` to verify the signature of every webhook
+- Use `crypto.timingSafeEqual` when comparing signatures
 
 ### 3. Webhooks
 
-- ตอบ 200 OK ให้ GitHub ทันที แล้วประมวลผล async
-- จัดการ idempotency ด้วย `delivery` ID
-- รองรับ retries จาก GitHub โดยไม่ทำงานซ้ำ
-- จำกัด permissions ตามล่าสุดทีจำเป็น
+- Reply 200 OK to GitHub immediately, then process async
+- Handle idempotency with the `delivery` ID
+- Tolerate GitHub retries without repeating work
+- Limit permissions to the least actually needed
 
 ### 4. Error Handling
 
-- Log errors ด้วย context (event, repository, action)
-- ไม่ expose stack trace หรือ secrets ใน HTTP response
-- มี fallback handler สำหรับ unhandled events
+- Log errors with context (event, repository, action)
+- Never expose stack traces or secrets in HTTP responses
+- Provide a fallback handler for unhandled events
 
 ### 5. Testing
 
-- ทดสอบทุก handler ด้วย fixtures
-- Mock Octokit API calls ทังหมด
-- ทดสอบ error paths
+- Test every handler with fixtures
+- Mock all Octokit API calls
+- Test error paths
 
-- ใช้ /use-github-ship-bots ถ้าจำเป็น
+- Use /use-github-ship-bots if needed
 
 ## Expected Outcome
 
-- GitHub App ลงทะเบียนถูกต้องและ install บน target repos
-- Webhook handlers ทำงานได้ทัง local และ production
-- Tests ผ่านทุก event type
-- Secrets จัดการอย่างปลอดภัย
-- Deploy live พร้อม health endpoint
+- The GitHub App is registered correctly and installed on the target repos
+- Webhook handlers work both locally and in production
+- Tests pass for every event type
+- Secrets are managed securely
+- The deploy is live with a health endpoint
 
 ## Examples
 

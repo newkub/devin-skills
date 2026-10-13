@@ -1,23 +1,23 @@
 # Capture App
 
 
-สองบริบทของ "app" (merged จาก `capture-app`):
+Two contexts for "app" (merged from `capture-app`):
 
-1. **App sweep** — capture ทุก route/component ของ app ลง `public/screenshots/` (workflow)
-2. **OS window** — screenshot หน้าต่าง/จอของ desktop app (CLI `capture app`)
+1. **App sweep** — capture every route/component of the app into `public/screenshots/` (workflow)
+2. **OS window** — screenshot desktop app windows/screens (CLI `capture app`)
 
 #### App — Execute: App Sweep (web app / TUI)
 
 ##### 1. Detect App Type
 
-1. ตรวจ `package.json` scripts, dependencies และ file structure
-2. web → หา routes จาก `src/app`, `src/pages`, `src/routes`, `apps/*/pages`, `examples`
-3. TUI/CLI → ระบุ commands/views สำคัญ
-4. ถ้าไม่ชัด → ถาม user
+1. Inspect `package.json` scripts, dependencies, and file structure
+2. web → find routes from `src/app`, `src/pages`, `src/routes`, `apps/*/pages`, `examples`
+3. TUI/CLI → identify the key commands/views
+4. If unclear → ask the user
 
 ##### 2. Setup Output
 
-1. สร้าง `public/screenshots/` ถ้าไม่มี — แยก `routes/`, `components/`, `terminal/`
+1. Create `public/screenshots/` if missing — separate `routes/`, `components/`, `terminal/`
 2. Naming: `<route-or-component-name>.png`
 
 ##### 3. Capture Web Routes
@@ -28,9 +28,9 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost
   --out public/screenshots
 ```
 
-- เริ่ม dev server ก่อนถ้าจำเป็น (`bun dev`)
-- ถ้า project มี `playwright.config.*` → ใช้ Playwright ตาม `/follow-tool-playwright` แทน
-- component เฉพาะจุด → `capture component <url> --selector <css>`
+- Start the dev server first if needed (`bun dev`)
+- If the project has `playwright.config.*` → use Playwright per `/follow-tool-playwright` instead
+- For a specific component → `capture component <url> --selector <css>`
 
 ##### 4. Capture Terminal Views
 
@@ -40,9 +40,9 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "<cli-comman
 
 ##### 5. Verify And Report
 
-1. ตรวจ `public/screenshots/` ว่าไฟล์ถูกสร้างครบ
-2. ทำ `/report` table: No., Type, Name, File, Size
-3. route fail → `/resolve-errors` แล้ว retry
+1. Check `public/screenshots/` to confirm all files were created
+2. Build a `/report` table: No., Type, Name, File, Size
+3. A route fails → `/resolve-errors` then retry
 
 #### App — Execute: OS Window (desktop app)
 
@@ -51,17 +51,16 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts app --out window.png       
 bun D:/newkub/agents-capture/src/presentation/cli.ts app --title "WezTerm" --out wez.png   # window by title
 ```
 
-- Windows-only (PowerShell `CopyFromScreen`) — `--title` = substring ของ window title ที่มองเห็น
+- Windows-only (PowerShell `CopyFromScreen`) — `--title` = substring of the visible window title
 
 #### App — Rules
 
-- ไม่ commit ภาพถ้า user ไม่ต้องการ; ไม่ capture หน้าจอที่มีข้อมูล sensitive
-- route ที่ต้อง authentication → ถาม user ก่อน
-- ไม่ deploy/push screenshots อัตโนมัติ
-- ถ้าต้องการ script reproducible ใน project → สร้าง `tools/capture-screenshots.{ts,mjs}` ที่เรียก CLI นี้ (ตาม `/convert-scripts`)
+- Don't commit images unless the user wants them; don't capture screens with sensitive data
+- Routes that require authentication → ask the user first
+- Never auto deploy/push screenshots
+- If you need a reproducible script in the project → create `tools/capture-screenshots.{ts,msj}` that calls this CLI (per `/convert-scripts`)
 
 #### App — Expected Outcome
 
-- `public/screenshots/` มีภาพครบทุก routes/components/views สำคัญ พร้อมใช้กับ `/deep-review`
-- หรือได้ภาพ OS window/screen ตาม `--title` ที่ระบุ
-
+- `public/screenshots/` contains complete images of every key route/component/view, ready for `/deep-review`
+- Or the OS window/screen image as specified by `--title`

@@ -23,38 +23,38 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 > Goal: know the exact URL to poll
 
-1. รับ URL จาก user, deploy output, หรือ CI log
-2. ถ้า deploy ยังไม่เสร็จ ให้รอจนได้ URL ก่อน
-3. ดู `references/targets.md` สำหรับ URL patterns ของแต่ละ platform
-4. ถ้า URL ไม่ชัด → ทำ `/ask-me`
+1. Get the URL from the user, deploy output, or CI log
+2. If the deploy hasn't finished, wait until a URL is available
+3. See `references/targets.md` for each platform's URL patterns
+4. If the URL is unclear → run `/ask-me`
 
 ### 2. Configure Polling
 
-> Goal: กำหนดเงื่อนไขการ poll
+> Goal: set the polling conditions
 
-1. กำหนด `interval` (วินาทีระหว่าง poll) ค่าเริ่มต้น `10`
-2. กำหนด `timeout` (วินาทีรวม) ค่าเริ่มต้น `300`
-3. กำหนด `expectedStatus` ค่าเริ่มต้น `[200]`
-4. ดู `references/health-check.md` สำหรับ redirect, 4xx, 5xx handling
+1. Set `interval` (seconds between polls), default `10`
+2. Set `timeout` (total seconds), default `300`
+3. Set `expectedStatus`, default `[200]`
+4. See `references/health-check.md` for redirect, 4xx, 5xx handling
 
 ### 3. Poll URL
 
-> Goal: ตรวจสอบสถานะซ้ำจนกว่าจะผ่านหรือหมดเวลา
+> Goal: check the status repeatedly until it passes or time runs out
 
-1. ใช้ `curl -s -I -L` หรือ `fetch` เพื่อตรวจสอบ URL
-2. บันทึก timestamp, status, response time, elapsed time
-3. ถ้าสถานะตรงกับ `expectedStatus` → หยุด และ report success
-4. ถ้าเกิด network error → นับ retry และ report
-5. ถ้ายังไม่ผ่าน → รอ `interval` วินาที แล้ว poll ใหม่
+1. Use `curl -s -I -L` or `fetch` to check the URL
+2. Record timestamp, status, response time, elapsed time
+3. When the status matches `expectedStatus` → stop and report success
+4. On a network error → count the retry and report it
+5. If it hasn't passed yet → wait `interval` seconds, then poll again
 
 ### 4. Report Result
 
-> Goal: สรุปผลลัพธ์ให้ user ทราบ
+> Goal: summarize the outcome for the user
 
-1. ทำตาม `workflows/report-status/SKILL.md` — poll timeline, health transitions, time-to-live
-2. ถ้าผ่าน ให้ report URL, status, response time, elapsed time
-3. ถ้า timeout ให้ report last status, total polls, error summary
-4. ถ้า redirect ให้ report final URL และ status
+1. Follow `workflows/report-status/SKILL.md` — poll timeline, health transitions, time-to-live
+2. On success, report URL, status, response time, elapsed time
+3. On timeout, report last status, total polls, error summary
+4. On redirect, report the final URL and status
 
 ### Workflows
 
@@ -62,18 +62,18 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 |----------|----------|
 | `report`, `status` | `workflows/report-status/SKILL.md` — deploy watch report (poll timeline, verdict) |
 
-1. ถ้า argument เป็น `report`/`status` → อ่าน `workflows/report-status/SKILL.md` แล้วทำตาม flow — ใช้ poll data ที่มีอยู่ ไม่ poll ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน workflow `report-status` มา execute
+1. If the argument is `report`/`status` → read `workflows/report-status/SKILL.md` and follow its flow — use the existing poll data, do not poll anew
+2. If omitted → run Steps 1-4 as usual, with Step 4 reading the `report-status` workflow to execute
 
 ## Rules
 
 ### 1. Default Polling
 
-- `interval` = `10` วินาที
-- `timeout` = `300` วินาที
+- `interval` = `10` seconds
+- `timeout` = `300` seconds
 - `expectedStatus` = `[200]`
 - `followRedirects` = `true`
-- `maxInterval` = `60` วินาที (cap for 429 backoff)
+- `maxInterval` = `60` seconds (cap for 429 backoff)
 - `maxRedirects` = `5`
 
 ### 2. Status Handling
@@ -82,7 +82,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 - 301/302: follow redirect unless `followRedirects` = `false`
 - 401/403: stop immediately, report "authentication required" — URL may be protected
 - 404: continue polling (DNS/path may still propagate)
-- 429: increase interval by `5` วินาที (ไม่เกิน `maxInterval`)
+- 429: increase interval by `5` seconds (up to `maxInterval`)
 - 500–599: continue polling, report if repeated `3` times
 - SSL error: stop immediately, report "SSL certificate error" — do not retry
 - redirect loop (≥ 5 redirects): stop, report "redirect loop detected"
@@ -90,33 +90,33 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 ### 3. URL Sources
 
-- รับ URL จาก output ของ `wrangler pages deploy`
-- รับ URL จาก `vercel --yes` หรือ `netlify deploy`
-- รับ URL จาก CI environment variable เช่น `DEPLOY_URL`
-- ไม่ hardcode production domain ใน skill
+- Get the URL from `wrangler pages deploy` output
+- Get the URL from `vercel --yes` or `netlify deploy`
+- Get the URL from a CI environment variable such as `DEPLOY_URL`
+- Never hardcode a production domain in this skill
 
 ### 4. Output
 
-- แสดงทุก poll ด้วย timestamp, status, elapsed
-- ใช้ table สำหรับสรุปผลลัพธ์
-- ไม่ print HTML body
+- Show every poll with timestamp, status, elapsed
+- Use a table to summarize the result
+- Never print the HTML body
 
 ### 5. Rollback Recommendation
 
-- ถ้า timeout ถึงและ deployment ยังไม่ healthy → report แนะนำ rollback
-- ระบุ platform-specific rollback command (ดู `references/targets.md`)
-- ไม่ rollback อัตโนมัติ — ให้ user ตัดสินใจ
+- If the timeout elapses and the deployment is still unhealthy → report a rollback recommendation
+- Give the platform-specific rollback command (see `references/targets.md`)
+- Never roll back automatically — let the user decide
 
 ### 6. Safety
 
-- ไม่ poll URL ที่ user ไม่ยินยอม
-- ไม่ส่ง headers ลับ เช่น API keys, โดยไม่ได้รับอนุญาต
-- หยุดทันทีเมื่อ user กด `Ctrl+C`
+- Do not poll URLs the user hasn't consented to
+- Do not send secret headers such as API keys without permission
+- Stop immediately when the user presses `Ctrl+C`
 
-- ใช้ /run-watch ถ้าจำเป็น
-- ใช้ /run-watch ถ้าจำเป็น
-- ใช้ /run-watch ถ้าจำเป็น
-- ใช้ /run-deploy ถ้าจำเป็น
+- Use /run-watch if needed
+- Use /run-watch if needed
+- Use /run-watch if needed
+- Use /run-deploy if needed
 
 ## Merged Details
 
@@ -124,48 +124,48 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 ##### Goal
 
-แปลง poll session ของ `/watch-deploy` เป็น status report — timeline ของ health transitions และ time-to-live
+Convert the `/watch-deploy` poll session into a status report — timeline of health transitions and time-to-live
 
 ##### Scope
 
-- ใช้เมื่อ `/watch-deploy` dispatch มาที่ `report`/`status` หรือเรียกหลัง poll จบ
-- Chat-only report — ไม่สร้างไฟล์ถาวร
+- Use when `/watch-deploy` dispatches to `report`/`status` or when called after a poll finishes
+- Chat-only report — never create a permanent file
 
 ##### Execute
 
 ###### 1. Collect Poll Results
 
-> Goal: รวมผลแต่ละ poll
+> Goal: gather the result of each poll
 
-1. รวม status code + latency ต่อ poll พร้อม timestamps
-2. ระบุ transitions: `deploying` → `healthy` / `failed`
-3. คำนวณ time-to-live (first poll → first 200)
+1. Collect the status code + latency per poll with timestamps
+2. Identify transitions: `deploying` → `healthy` / `failed`
+3. Compute time-to-live (first poll → first 200)
 
 ###### 2. Build Status Report
 
-> Goal: ตอบว่า deploy สำเร็จไหมและนานแค่ไหน
+> Goal: answer whether the deploy succeeded and how long it took
 
 1. Summary: URL, total polls, duration, final status
-2. ตาราง: `No.`, `Time`, `Status`, `Latency`, `Notes` — show transitions + ตัวอย่าง polls (ไม่ใช่ทุก poll)
-3. flag anomalies: status flapping, slow-but-200
+2. Table: `No.`, `Time`, `Status`, `Latency`, `Notes` — show transitions + sample polls (not every poll)
+3. Flag anomalies: status flapping, slow-but-200
 
 ###### 3. Verdict
 
-> Goal: สรุปผล deploy
+> Goal: conclude the deploy outcome
 
 1. Verdict: `live` / `timeout` / `unhealthy` / `flapping`
-2. ถ้าไม่ live → แนะนำ `follow-deploy/workflows/verify-deploy/SKILL.md` หรือ rollback path
-3. เทียบ time-to-live กับ deploys ก่อนหน้าถ้ามีข้อมูล
+2. If not live → recommend `follow-deploy/workflows/verify-deploy/SKILL.md` or a rollback path
+3. Compare time-to-live against previous deploys when data exists
 
 ##### Rules
 
-- ไม่ list ทุก poll — แสดง transitions + samples เป็นพอ
-- ระบุ poll interval และ timeout ที่ใช้
-- timeout ≠ failed เสมอ — ระบุว่า app อาจกำลัง warm up
+- do not list every poll — transitions + samples are enough
+- state the poll interval and timeout used
+- timeout ≠ failure always — note that the app may still be warming up
 
 ##### Expected Outcome
 
-- Status report พร้อม time-to-live + verdict
+- Status report with time-to-live + verdict
 
 ### references/health-check
 
@@ -247,11 +247,11 @@ Common deploy targets and how to obtain a preview/production URL.
 #### Watch Deploy Official Resources
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
-- ใช้ /test-smoke หลัง deploy ผ่าน health gate
+- Use /test-smoke after deploy to pass the health gate
 
 ## Expected Outcome
 
-- URL ที่ deploy ไปถูก poll ซ้ำจนกว่าจะ healthy หรือหมดเวลา
-- ผลลัพธ์ report ครบ: final status, response time, elapsed, retries
-- ไม่มี TODO/MOCK/placeholder
-- `SKILL.md` และ references ไม่เกิน 250 บรรทัด
+- The deployed URL is polled repeatedly until healthy or the timeout expires
+- Complete result report: final status, response time, elapsed, retries
+- No TODO/MOCK/placeholder left
+- `SKILL.md` and references stay within 250 lines

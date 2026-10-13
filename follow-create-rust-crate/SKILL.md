@@ -1,6 +1,6 @@
 ---
 name: follow-create-rust-crate
-description: สร้าง Rust library crate ด้วย Cargo ตาม best practices
+description: Build Rust library crates with Cargo following best practices
 argument-hint: "[scope]"
 related:
   - follow-create-cli
@@ -15,116 +15,116 @@ related:
 ---
 ## Goal
 
-สร้าง Rust library crate ด้วย Cargo ทีมี public API ชัดเจน เอกสารครบ ทดสอบผ่าน และพร้อม publish ไป crates.io
+Build Rust library crates with Cargo that have a clear public API, complete docs, passing tests, and are ready to publish to crates.io
 
 ## Scope
 
-ใช้สำหรับสร้าง library crate เป็น pure Rust หรือ FFI ครอบคลุม `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, และ CI
+Use for building library crates in pure Rust or with FFI, covering `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, and CI
 
-- Rust stable + `edition = "2024"` ใน `Cargo.toml` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Rust stable + `edition = "2024"` in `Cargo.toml` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Inspect the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create rust crate)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create rust crate)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create rust crate)
+3. Record the reasons for choosing the stack and libraries for later reference (create rust crate)
 
 ### 2. Setup Project
 
-> Goal: สร้างโครงสร้าง crate
+> Goal: Create the crate structure
 
-1. รัน `cargo new --lib <crate-name>`
-2. สร้าง `justfile`, `rust-toolchain.toml`, `.gitignore`, `LICENSE`, `README.md`
-3. สร้าง directories `src/`, `tests/`, `examples/`, `benches/` ถ้าจำเป็น
-4. แยก modules ตาม responsibility
+1. Run `cargo new --lib <crate-name>`
+2. Create `justfile`, `rust-toolchain.toml`, `.gitignore`, `LICENSE`, `README.md`
+3. Create the `src/`, `tests/`, `examples/`, `benches/` directories if needed
+4. Split modules by responsibility
 
 ### 3. Configure Cargo.toml
 
-> Goal: กำหนด crate metadata และ build profiles
+> Goal: Define crate metadata and build profiles
 
-1. ระบุ `name`, `version`, `edition`, `description`, `license`, `repository`, `keywords`, `categories`
-2. ตั้ง `edition = "2024"`
-3. ตั้ง `rust-version` ถ้าจำเป็น
-4. ตั้งค่า `[lib]`, `crate-type` เป็น `["lib"]` หรือ `["cdylib"]` สำหรับ FFI
-5. ตั้งค่า `[profile.dev]` และ `[profile.release]`
+1. Specify `name`, `version`, `edition`, `description`, `license`, `repository`, `keywords`, `categories`
+2. Set `edition = "2024"`
+3. Set `rust-version` if needed
+4. Configure `[lib]`, setting `crate-type` to `["lib"]` or `["cdylib"]` for FFI
+5. Configure `[profile.dev]` and `[profile.release]`
 
 ### 4. Write Public API
 
-> Goal: ออกแบบ `lib.rs` ให้ชัดเจน
+> Goal: Design `lib.rs` to be clear
 
-1. ใช้ `pub mod` สำหรับ modules
-2. ใช้ `pub use` สำหรับ re-exports ที user ใช้บ่อย
-3. เขียน doc comments (`///`) บน public types และ functions
-4. ใช้ `#[cfg(...)]` สำหรับ feature flags
+1. Use `pub mod` for modules
+2. Use `pub use` for re-exports that users commonly use
+3. Write doc comments (`///`) on public types and functions
+4. Use `#[cfg(...)]` for feature flags
 
 ### 5. Implement Modules
 
-> Goal: แยก implementation ตาม concern
+> Goal: Split the implementation by concern
 
-1. สร้าง modules ใน `src/{module}.rs`
-2. ใช้ `mod.rs` หรือ `src/{module}.rs` ตาม edition 2024
-3. ใช้ `thiserror` สำหรับ error types
-4. ไม่ใช้ `unwrap()` หรือ `expect()` ใน library code
+1. Create modules in `src/{module}.rs`
+2. Use `mod.rs` or `src/{module}.rs` per edition 2024
+3. Use `thiserror` for error types
+4. Never use `unwrap()` or `expect()` in library code
 
 ### 6. Add Tests
 
-> Goal: ทดสอบ unit และ integration
+> Goal: Test units and integration
 
-1. สร้าง `tests/` สำหรับ integration tests
-2. สร้าง `#[cfg(test)] mod tests` ใน `src/`
-3. ใช้ `benches/` สำหรับ benchmarks ถ้าจำเป็น
-4. รัน `cargo test`, `cargo clippy`, `cargo fmt --check`
+1. Create `tests/` for integration tests
+2. Create `#[cfg(test)] mod tests` in `src/`
+3. Use `benches/` for benchmarks if needed
+4. Run `cargo test`, `cargo clippy`, `cargo fmt --check`
 
 ### 7. Add Documentation
 
-> Goal: สร้าง rustdoc
+> Goal: Generate rustdoc
 
-1. เขียน doc comments สำหรับทุก public item
-2. ใช้ `# Examples` ใน doc comments
-3. รัน `cargo doc --no-deps`
-4. ตรวจสอบว่า docs ไม่มี broken links
+1. Write doc comments for every public item
+2. Use `# Examples` in doc comments
+3. Run `cargo doc --no-deps`
+4. Check that the docs have no broken links
 
 ### 8. CI And Release
 
-> Goal: ตั้งค่า CI และ release
+> Goal: Configure CI and release
 
-1. สร้าง `.github/workflows/ci.yml` ดำเนินการ `test`, `clippy`, `fmt`, `doc`
-2. สร้าง `.github/workflows/release.yml` สำหรับ `cargo publish`
-3. ทำ `/follow-release` เมื่อ publish
+1. Create `.github/workflows/ci.yml` running `test`, `clippy`, `fmt`, `doc`
+2. Create `.github/workflows/release.yml` for `cargo publish`
+3. Run `/follow-release` when publishing
 
 ### 9. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
-- ใช้ `snake_case` สำหรับ modules, functions, variables
-- ใช้ `PascalCase` สำหรับ types, traits
-- ใช้ `thiserror` สำหรับ library errors, `anyhow` สำหรับ examples/binaries
-- ไม่ใช้ `unwrap()` ใน library code
-- ระบุ `edition = "2024"`
-- `crate-type` เป็น `["lib"]` ยกเว้นต้องใช้ FFI
+- Use `snake_case` for modules, functions, variables
+- Use `PascalCase` for types, traits
+- Use `thiserror` for library errors, `anyhow` for examples/binaries
+- Never use `unwrap()` in library code
+- Specify `edition = "2024"`
+- `crate-type` is `["lib"]` unless FFI is required
 
-- ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-cli if needed
+- Use /follow-create-sdk if needed
+- Use /follow-lang-rust if needed
+- Use /follow-tool-cargo if needed
+- Use /run-test if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- Rust crate build ผ่าน `cargo build`
-- `cargo test` ผ่าน
-- `cargo clippy` ไม่มี warnings
-- `cargo doc` สร้างเอกสารได้
-- Public API ชัดเจนผ่าน `lib.rs`
-- พร้อม publish ไป crates.io
+- Rust crate builds with `cargo build`
+- `cargo test` passes
+- `cargo clippy` has no warnings
+- `cargo doc` generates documentation
+- Public API is clear through `lib.rs`
+- Ready to publish to crates.io
 

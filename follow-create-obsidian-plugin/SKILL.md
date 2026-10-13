@@ -1,6 +1,6 @@
 ---
 name: follow-create-obsidian-plugin
-description: สร้าง Obsidian plugin ด้วย TypeScript พร้อม manifest, commands, settings
+description: Build an Obsidian plugin in TypeScript with manifest, commands, and settings
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -15,108 +15,108 @@ related:
 
 ## Goal
 
-สร้าง Obsidian plugin project ด้วย TypeScript ทีมี manifest ถูกต้อง command, settings tab, build, และพร้อม release
+Build an Obsidian plugin project in TypeScript with a correct manifest, commands, a settings tab, build, and release readiness.
 
 ## Scope
 
-ใช้สำหรับสร้าง Obsidian desktop/mobile plugin ด้วย sample plugin หรือ setup เอง พร้อม esbuild, manifest, styles, และ GitHub release
+Use for creating Obsidian desktop/mobile plugins from the sample plugin or a manual setup, with esbuild, manifest, styles, and GitHub release.
 
-- Package: `obsidian` (npm typings — ตาม app API) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); `manifest.json` `minAppVersion` ต้องตรง release จริง
+- Package: `obsidian` (npm typings — track the app API) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); `manifest.json` `minAppVersion` must match a real release.
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Review the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create obsidian plugin)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create obsidian plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create obsidian plugin)
+3. Record the rationale for the chosen stack and libraries for later reference (create obsidian plugin)
 
 ### 2. Setup Project
 
-> Goal: สร้างโครงสร้าง plugin
+> Goal: Create the plugin structure
 
-1. โคลน https://github.com/obsidianmd/obsidian-sample-plugin หรือสร้างโครงสร้างเอง
-2. สร้าง `src/`, `styles.css`, `manifest.json`, `versions.json`, `package.json`, `tsconfig.json`, `esbuild.config.mjs`
-3. เปลี่ยนชื่อ folder ให้ตรงกับ `id` ใน `manifest.json`
-4. ติดตั้ง dependencies ด้วย `bun install` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm install`)
+1. Clone https://github.com/obsidianmd/obsidian-sample-plugin or create the structure yourself
+2. Create `src/`, `styles.css`, `manifest.json`, `versions.json`, `package.json`, `tsconfig.json`, `esbuild.config.mjs`
+3. Rename the folder to match the `id` in `manifest.json`
+4. Install dependencies with `bun install` (if the project primarily uses npm, use `npm install`)
 
 ### 3. Configure Manifest
 
-> Goal: กำหนด plugin metadata
+> Goal: Define plugin metadata
 
-1. แก้ `manifest.json`:
+1. Edit `manifest.json`:
    - `id`: unique identifier
    - `name`, `description`, `author`, `version`
-   - `minAppVersion`: Obsidian version ต่ำสุด
-   - `isDesktopOnly`: `false` ถ้ารองรับ mobile
-2. แก้ `versions.json` ให้ map version กับ `minAppVersion`
+   - `minAppVersion`: minimum Obsidian version
+   - `isDesktopOnly`: `false` if mobile is supported
+2. Edit `versions.json` to map versions to `minAppVersion`
 
 ### 4. Implement Plugin Class
 
-> Goal: สร้าง `Plugin` subclass
+> Goal: Create the `Plugin` subclass
 
-1. สร้าง `src/main.ts` ด้วย `import { Plugin, Notice } from 'obsidian'`
-2. สร้าง class `MyPlugin extends Plugin`
-3. Implement `onload()` สำหรับ `addCommand`, `addRibbonIcon`, `addSettingTab`
-4. Implement `onunload()` สำหรับ cleanup
+1. Create `src/main.ts` with `import { Plugin, Notice } from 'obsidian'`
+2. Create class `MyPlugin extends Plugin`
+3. Implement `onload()` for `addCommand`, `addRibbonIcon`, `addSettingTab`
+4. Implement `onunload()` for cleanup
 
 ### 5. Add Settings
 
-> Goal: สร้าง settings tab
+> Goal: Create the settings tab
 
-1. สร้าง `src/settings.ts` ด้วย `PluginSettingTab`
-2. กำหนด interface สำหรับ default settings
-3. ใช้ `this.loadData()` และ `this.saveData()` อ่าน/เขียน settings
-4. สร้าง UI ด้วย `Setting` class
+1. Create `src/settings.ts` with `PluginSettingTab`
+2. Define an interface for the default settings
+3. Use `this.loadData()` and `this.saveData()` to read/write settings
+4. Build the UI with the `Setting` class
 
 ### 6. Build And Watch
 
-> Goal: build plugin เป้น `main.js`
+> Goal: Build the plugin into `main.js`
 
-1. ใช้ `esbuild.config.mjs` สำหรับ compile `src/main.ts` → `main.js`
-2. ตั้งค่า `external: ['obsidian', 'fs', 'path']` ใน esbuild
-3. รัน `bun run dev` สำหรับ watch (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm run dev`)
-4. ตรวจสอบ `main.js` และ `styles.css` อยู่ root
+1. Use `esbuild.config.mjs` to compile `src/main.ts` → `main.js`
+2. Set `external: ['obsidian', 'fs', 'path']` in esbuild
+3. Run `bun run dev` for watch mode (if the project primarily uses npm, use `npm run dev`)
+4. Verify `main.js` and `styles.css` are at the root
 
 ### 7. Test In Obsidian
 
-> Goal: ทดสอบ plugin ใน vault
+> Goal: Test the plugin in a vault
 
-1. คัดลอก plugin folder ไป `vault/.obsidian/plugins/{id}/`
-2. เปิด Obsidian → Settings → Community Plugins → เปิด plugin
-3. ทดสอบ command, ribbon icon, settings tab
-4. ใช้ `Ctrl+Shift+I` / `Cmd+Opt+I` ดู console errors
+1. Copy the plugin folder to `vault/.obsidian/plugins/{id}/`
+2. Open Obsidian → Settings → Community Plugins → enable the plugin
+3. Test commands, ribbon icon, and settings tab
+4. Use `Ctrl+Shift+I` / `Cmd+Opt+I` to inspect console errors
 
 ### 8. Release
 
-> Goal: สร้าง GitHub release
+> Goal: Create a GitHub release
 
-1. อัปเดต `manifest.json` และ `versions.json` ด้วย version ใหม่
-2. สร้าง git tag ตาม version
-3. สร้าง GitHub release พร้อมแนบ `main.js`, `manifest.json`, `styles.css`
-4. ทำ `/ship-to-dev-branch`
+1. Update `manifest.json` and `versions.json` with the new version
+2. Create a git tag matching the version
+3. Create a GitHub release attaching `main.js`, `manifest.json`, `styles.css`
+4. Run `/ship-to-dev-branch`
 
 ## Rules
 
-- `id` ใน `manifest.json` ต้อง unique และตรงกับ folder name
-- `manifest.json`, `main.js`, `styles.css` ต้องอยู่ root ของ release
-- ใช้ `external: ['obsidian']` ใน esbuild ไม่ bundle `obsidian`
-- ใช้ `loadData` / `saveData` สำหรับ settings ไม่เขียนไฟล์เอง
-- ระบุ `minAppVersion` ให้ถูกต้องทุก release
+- The `id` in `manifest.json` must be unique and match the folder name
+- `manifest.json`, `main.js`, `styles.css` must be at the root of the release
+- Use `external: ['obsidian']` in esbuild; do not bundle `obsidian`
+- Use `loadData` / `saveData` for settings; do not write files yourself
+- Specify `minAppVersion` correctly for every release
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /update-dot-vscode ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /follow-create-web when needed
+- Use /follow-lang-typescript when needed
+- Use /run-test when needed
+- Use /update-dot-vscode when needed
+- Use /report when needed
 
 ## Expected Outcome
 
-- Obsidian plugin build ผ่าน `bun run build`
-- Plugin โหลดใน Obsidian vault ได้
-- Command, ribbon icon, settings tab ทำงาน
-- Release มี `main.js`, `manifest.json`, `styles.css`
+- The Obsidian plugin builds via `bun run build`
+- The plugin loads in an Obsidian vault
+- Commands, ribbon icon, and settings tab work
+- The release contains `main.js`, `manifest.json`, `styles.css`
 

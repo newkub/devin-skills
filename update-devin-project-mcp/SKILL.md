@@ -1,6 +1,6 @@
 ---
 name: update-devin-project-mcp
-description: ตั้งค่าและอัปเดต MCP servers ใน .devin/mcp_config.json ตาม project requirements
+description: Configure and update MCP servers in .devin/mcp_config.json per project requirements
 argument-hint: "[server-or-config]"
 related:
   - update-devin
@@ -11,90 +11,90 @@ related:
 
 ## Goal
 
-ตั้งค่าและอัปเดต MCP servers สำหรับ project ใน `.devin/mcp_config.json` ตาม project requirements
+Configure and update MCP servers for a project in `.devin/mcp_config.json` per project requirements
 
 ## Scope
 
-ใช้เมื่อ project ต้องการ integrate กับ MCP servers เช่น `agent-browser`, `ast-grep`, หรือ custom MCP โดยสร้าง/แก้ไข `.devin/mcp_config.json`
+Use when a project needs to integrate with MCP servers such as `agent-browser`, `ast-grep`, or a custom MCP by creating/editing `.devin/mcp_config.json`
 
 ## Execute
 
 ### 1. Detect MCP Needs
 
-> Goal: รู้ว่าต้องใช้ MCP อะไร
+> Goal: learn which MCPs are needed
 
-1. อ่าน `package.json`, `AGENTS.md`
-2. ระบุ tools/services ทีต้องการ MCP เช่น browser, search, database, github
-3. ตรวจ global `mcp_config.json` ที่ `%APPDATA%\devin\mcp_config.json`
-4. ระบุ servers ทีต้อง register
+1. Read `package.json`, `AGENTS.md`
+2. Identify the tools/services needing MCP, such as browser, search, database, github
+3. Check the global `mcp_config.json` at `%APPDATA%\devin\mcp_config.json`
+4. Identify the servers that must be registered
 
 ### 2. Create Or Update .devin/mcp_config.json
 
-> Goal: มี config ถูกต้อง
+> Goal: have a correct config
 
-1. สร้าง `C:\...\project\.devin\mcp_config.json` ถ้ายังไม่มี
-2. ใช้ schema: `{ "mcpServers": { "<name>": { "command": "...", "args": [...], "env": {...} } } }`
-3. เพิ่ม/อัปเดต servers:
+1. Create `C:\...\project\.devin\mcp_config.json` if it doesn't exist
+2. Use the schema: `{ "mcpServers": { "<name>": { "command": "...", "args": [...], "env": {...} } } }`
+3. Add/update servers:
    - `agent-browser`: `agent-browser mcp --tools core`
-   - `ast-grep`: `npx @ast-grep/cli` (ถ้ามี)
+   - `ast-grep`: `npx @ast-grep/cli` (if present)
    - `github`: `npx -y @github/github-mcp-server`
-4. ใช้ `npx -y` สำหรับ package-based servers
-5. ใช้ `bun` ถ้า project ใช้ bun
+4. Use `npx -y` for package-based servers
+5. Use `bun` if the project uses bun
 
 ### 3. Register Servers In Global Config
 
-> Goal: register ใน global config ถ้าจำเป็น
+> Goal: register in the global config if needed
 
-1. ถ้าสร้าง custom MCP server → อัปเดต `%APPDATA%\devin\mcp_config.json`
-2. ใช้ absolute path หรือ package name
-3. อย่า commit secrets หรือ tokens
+1. If creating a custom MCP server → update `%APPDATA%\devin\mcp_config.json`
+2. Use an absolute path or package name
+3. Never commit secrets or tokens
 
 ### 4. Validate
 
-> Goal: ยื่นยันว่า MCP ทำงาน
+> Goal: confirm the MCP works
 
-1. ตรวจ JSON syntax
-2. รัน `agent-browser mcp --tools core` ถ้ามี
-3. ตรวจ logs ว่า server start ได้
-4. ถ้า fail → `/resolve-errors`
+1. Check the JSON syntax
+2. Run `agent-browser mcp --tools core` if present
+3. Check the logs that the server starts
+4. If it fails → `/resolve-errors`
 
 ### 5. Report
 
-> Goal: สรุปผล
+> Goal: summarize results
 
-1. ทำ `/report` แสดง servers, command, status
-2. ทำ `/suggest-next-action`
+1. Run `/report` showing servers, command, status
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. No Secrets
 
-- ไม่ใส่ tokens, keys ลงไฟล์ config
-- ใช้ env vars หรือ secret manager
-- ใช้ `.env` แล้วอ้างอิง
+- Never put tokens, keys in config files
+- Use env vars or a secret manager
+- Use `.env` and reference it
 
 ### 2. Local First
 
-- ใช้ local packages หรือ `npx -y` ก่อน
-- ถ้าต้อง install global → ระบุให้ชัดเจน
+- Use local packages or `npx -y` first
+- If a global install is required → state it clearly
 
 ### 3. Validate JSON
 
-- ต้องมี `mcpServers` object
-- แต่ละ server มี `command`, `args`, `env`
-- ตรวจ comma, quotes, brackets
+- Must have the `mcpServers` object
+- Each server has `command`, `args`, `env`
+- Check commas, quotes, brackets
 
 ### 4. Document
 
-- บันทึกวิธี start server ใน `README.md` หรือ `AGENTS.md`
-- ระบุ servers ทีต้อง manual setup
-- ใช้ /update-devin ถ้าจำเป็น
+- Record how to start each server in `README.md` or `AGENTS.md`
+- Note the servers needing manual setup
+- Use /update-devin if needed
 
 
 ## Expected Outcome
 
-- `.devin/mcp_config.json` ถูกต้อง
-- MCP servers start ได้
-- ไม่มี secrets ใน config
-- Document ครบถ้วน
+- `.devin/mcp_config.json` is correct
+- MCP servers can start
+- No secrets in config
+- Documentation is complete
 

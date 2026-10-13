@@ -1,6 +1,6 @@
 ---
 name: search-project-in-drive-d
-description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern
+description: Find projects on drive D matching a keyword or pattern
 argument-hint: "[keyword]"
 related:
   - ask-me
@@ -10,52 +10,52 @@ related:
 
 ## Goal
 
-ค้นหา git projects ใน `D:\` ที่ตรงกับ keyword หรือ pattern ที่ user ระบุ แล้วแสดงผลเป็นตาราง
+Find git projects in `D:\` matching the keyword or pattern the user specifies, and present the results as a table
 
 ## Scope
 
-ใช้เมื่อ user ต้องการค้นหา project บน drive D โดยไม่ต้อง list ทั้งหมด
+Use when the user wants to search for projects on drive D without listing all of them
 
 ## Execute
 
-### 1. รับ Search Criteria
+### 1. Take Search Criteria
 
-> Goal: ค้นหา Criteria
-1. ถ้า user ไม่ได้ระบุ keyword → ใช้ `/ask-me` ถาม
-2. รองรับ wildcard `*` และ `?`
-3. scope ค้นหาคือ `D:\` เท่านั้น
+> Goal: Find Criteria
+1. If the user did not give a keyword → ask via `/ask-me`
+2. Support wildcards `*` and `?`
+3. The search scope is `D:\` only
 
-### 2. ค้นหา Git Projects
+### 2. Search Git Projects
 
-> Goal: ค้นหา Git Projects
-รัน PowerShell command:
+> Goal: Search Git Projects
+Run the PowerShell command:
 
 ```powershell
 Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3 |
   Where-Object { $_.Name -like "<keyword>" -and (Test-Path (Join-Path $_.FullName ".git")) }
 ```
 
-- ถ้า keyword ต้องการ match ทั่ง path ให้ใช้ `$_.FullName -like "*<keyword>*"`
-- matching แบบ case-insensitive โดย default
-- ถ้า pattern ไม่ถูกต้อง → แจ้ง user และขอ keyword ใหม่
+- If the keyword should match the whole path, use `$_.FullName -like "*<keyword>*"`
+- Matching is case-insensitive by default
+- If the pattern is invalid → notify the user and ask for a new keyword
 
-### 3. แสดงผล
+### 3. Display Results
 
-> Goal: แสดงผล
-1. ใช้ `/report` สร้างตาราง
+> Goal: Display results
+1. Use `/report` to build the table
 2. columns: `No.`, `Project Name`, `Path`, `Match Type`
-3. เรียง `No.` ลำดับ 1, 2, 3, ...
-4. path ใส่ backticks
-5. สรุปจำนวน matches และ keyword ที่ใช้
+3. Order `No.` as 1, 2, 3, ...
+4. Wrap paths in backticks
+5. Summarize the match count and the keyword used
 
 ## Rules
 
-- อ่านอย่างเดียว ไม่เขียน ไม่ลบ ไม่เปลี่ยน state project
-- ค้นหาเฉพาะ `D:\` หรือ `/mnt/d` สำหรับ WSL
-- ถ้าไม่พบ → แจ้งว่าไม่มี project ที่ตรงกับ criteria
+- Read-only; no writing, no deleting, no changing project state
+- Search only `D:\` or `/mnt/d` for WSL
+- If nothing is found → report that no project matches the criteria
 
 ## Expected Outcome
 
-- ได้ตารางรายการ git projects ใน `D:\` ที่ตรงกับ keyword
-- ไม่มี project ขาดหรือเกินจาก criteria
-- สรุปจำนวน matches และ keyword ที่ใช้
+- A table of git projects in `D:\` matching the keyword
+- No projects missing or extra beyond the criteria
+- Summary of the match count and the keyword used

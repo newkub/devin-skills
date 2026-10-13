@@ -1,6 +1,6 @@
 ---
 name: deep-validate
-description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
+description: Detailed multi-dimension validation: cross-reference, type safety, runtime, security, compliance
 argument-hint: "[scope|correctness|type-safety|quality|security|compliance|cross-reference]"
 related:
   - deep-thinking
@@ -20,35 +20,35 @@ related:
 
 ## Goal
 
-Validate ละเอียดหลายมิติ: correctness, type safety, runtime, security, compliance, cross-reference พร้อม severity ratings
+Validate in detail across many dimensions: correctness, type safety, runtime, security, compliance, cross-reference, with severity ratings
 
 ## Scope
 
-ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
+Use for validation that needs high thoroughness, covering every dimension of the system
 
-- ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
-- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/deep-review`
+- If you need to verify after `/merge` or parallel work, see `references/post-merge-verify.md`
+- To validate tests use `/run-test`; to validate a review use `/deep-review`
 
 ## Execute
 
-Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ (Step N ขึ้นกับ Step N-1)
+Step dependencies: each step depends on the previous one in order (Step N depends on Step N-1)
 
 ### 1. Define Validation Scope
 
 > Goal: Define Validation Scope
 
-กำหนดขอบเขตการ validate ตามสิ่งที่ต้องตรวจสอบ
+Set the validation scope based on what must be checked
 
-- เริ่มด้วย `/deep-thinking` วิเคราะห์ปัญหาและเป้าหมาย validate ก่อนกำหนด scope เสมอ
-- ระบุสิ่งที่ต้อง validate: code, documentation, design, decision, workflow, configuration
-- ระบุ dimensions ที่เกี่ยวข้อง: correctness, type safety, runtime, security, compliance, cross-reference
-- กำหนด success criteria สำหรับแต่ละ dimension
-- ระบุ standards หรือ principles ที่ใช้เป็นเกณฑ์
-- ถ้าไม่ทราบ scope ให้ถามผู้ใช้
+- Start with `/deep-thinking`: always analyze the problem and validation goal before defining scope
+- Identify what to validate: code, documentation, design, decision, workflow, configuration
+- Identify the relevant dimensions: correctness, type safety, runtime, security, compliance, cross-reference
+- Set success criteria for each dimension
+- Identify the standards or principles used as the criteria
+- If the scope is unknown, ask the user
 
 ### Workflows
 
-> Goal: dispatch ไปยัง dimension workflow ตาม argument — หรือรันครบทุก dimension ถ้าไม่ระบุ
+> Goal: dispatch to the dimension workflow matching the argument — or run every dimension if none is given
 
 | Dimension/Argument | Workflow |
 |--------------------|----------|
@@ -58,62 +58,62 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 | `security` | `workflows/check-security/SKILL.md` — input validation, auth, secrets, injection |
 | `compliance` | `workflows/check-compliance/SKILL.md` — requirements fit, conventions, regulatory |
 | `cross-reference`, `refs` | `workflows/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs |
-| `report`, `findings` | `workflows/report-findings/SKILL.md` — รวม findings ทุก dimension เป็น severity matrix |
+| `report`, `findings` | `workflows/report-findings/SKILL.md` — merge findings from all dimensions into a severity matrix |
 
-1. ถ้า argument ระบุ dimension เดียว → อ่าน `workflows/check-<dim>/SKILL.md` แล้วทำตาม flow ในนั้น — ข้าม dimensions อื่น แต่ยังทำ Step 8 (Report)
-2. ถ้าไม่ระบุ → ทำ Steps 2-7 ตามลำดับ โดยแต่ละ step อ่าน workflow ที่ตรงมา execute
+1. If the argument names a single dimension → read `workflows/check-<dim>/SKILL.md` and follow its flow — skip the other dimensions but still do Step 8 (Report)
+2. If none is given → do Steps 2-7 in order, each step reading and executing the matching workflow
 
 ### 2. Check Correctness
 
 > Goal: Check Correctness
 
-ทำตาม `workflows/check-correctness/SKILL.md` — ตรวจ requirements, logic, edge cases, error handling พร้อมบันทึก findings + severity
+Follow `workflows/check-correctness/SKILL.md` — check requirements, logic, edge cases, error handling, recording findings + severity
 
 ### 3. Check Type Safety
 
 > Goal: Check Type Safety
 
-ทำตาม `workflows/check-type-safety/SKILL.md` — typecheck, weak types (`any`/`@ts-ignore`), type flow พร้อมบันทึก findings + severity
+Follow `workflows/check-type-safety/SKILL.md` — typecheck, weak types (`any`/`@ts-ignore`), type flow, recording findings + severity
 
 ### 4. Check Quality
 
 > Goal: Check Quality
 
-ทำตาม `workflows/check-quality/SKILL.md` — readability, consistency, docs, conventions พร้อมบันทึก findings + severity
+Follow `workflows/check-quality/SKILL.md` — readability, consistency, docs, conventions, recording findings + severity
 
 ### 5. Check Security
 
 > Goal: Check Security
 
-ทำตาม `workflows/check-security/SKILL.md` — input validation, auth, secrets, injection, rate limiting พร้อมบันทึก findings + severity
+Follow `workflows/check-security/SKILL.md` — input validation, auth, secrets, injection, rate limiting, recording findings + severity
 
 ### 6. Check Compliance
 
 > Goal: Check Compliance
 
-ทำตาม `workflows/check-compliance/SKILL.md` — requirements fit, conventions (`AGENTS.md`), regulatory พร้อมบันทึก findings + severity
+Follow `workflows/check-compliance/SKILL.md` — requirements fit, conventions (`AGENTS.md`), regulatory, recording findings + severity
 
 ### 7. Cross-Reference Validation
 
 > Goal: Cross-Reference Validation
 
-ทำตาม `workflows/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs พร้อมบันทึก findings + severity
+Follow `workflows/check-cross-references/SKILL.md` — config/env, module refs, API contracts, docs, recording findings + severity
 
 ### 8. Report And Suggest
 
 > Goal: Report And Suggest
 
-ทำตาม `workflows/report-findings/SKILL.md` — รวม findings เป็น severity matrix พร้อม recommendations แล้วทำ `/suggest-next-action`
+Follow `workflows/report-findings/SKILL.md` — merge findings into a severity matrix with recommendations, then run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Validation Approach
 
-- ตรวจสอบอย่างเคร่งครัดและ systematic; เริ่มด้วย `/deep-thinking` เสมอ
-- ถ้า scope/root cause ไม่ชัด → เก็บหลักฐานแบบ `/deep-analyze` ก่อน validate
-- พิจารณา context และ constraints ที่เกี่ยวข้อง
-- ใช้ criteria ที่ชัดเจนในการตรวจสอบ
-- ทุก finding ต้องมี evidence (file path, line number, code snippet)
+- Check strictly and systematically; always start with `/deep-thinking`
+- If scope/root cause is unclear → gather evidence like `/deep-analyze` before validating
+- Consider the relevant context and constraints
+- Use clear criteria when checking
+- Every finding must have evidence (file path, line number, code snippet)
 
 ### 2. Severity Classification
 
@@ -124,54 +124,54 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 3. Dimension Coverage
 
-- ครอบคลุมทุก dimension ที่เกี่ยวข้องกับสิ่งที่ตรวจสอบ
-- ถ้าไม่มี database ให้ข้าม database validation
-- ถ้าไม่มี API ให้ข้าม API validation
-- ปรับ scope ตาม characteristics ของสิ่งที่ตรวจสอบ
+- Cover every dimension relevant to what is being checked
+- If there is no database, skip database validation
+- If there is no API, skip API validation
+- Adjust scope to the characteristics of what is being checked
 
 ### 4. Feedback Style
 
-- ให้ feedback ที่ชัดเจนและ constructive
-- ระบุสิ่งที่ดีอยู่แล้วเสมอ
-- ให้ข้อเสนอแนะที่เป็นรูปธรรมและ actionable
-- ระบุ priority ของการปรับปรุง (Critical, High, Medium, Low)
+- Give clear, constructive feedback
+- Always note what is already good
+- Give concrete, actionable suggestions
+- State the improvement priority (Critical, High, Medium, Low)
 
 ### 5. Independence
 
-- ทำ `/deep-validate` เท่านั้น ไม่แก้ไข code ระหว่างดำเนินการ
-- แยก validation process จาก fix process
-- ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง validate
+- Run `/deep-validate` only; do not modify code during the run
+- Keep the validation process separate from the fix process
+- If a fix is needed, run `/resolve-errors` after validating
 
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-typecheck ถ้าจำเป็น
+- Use /rethink if needed
+- Use /run-check if needed
+- Use /run-build if needed
+- Use /run-test all if needed
+- Use /run-typecheck if needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: independent work that can be spawned in parallel — the profile lives in this section, no separate file needed
 
-### dimension-validator — validate เพียง dimension เดียวของ scope แล้วคืน verdict พร้อม evidence
+### dimension-validator — validate only one dimension of the scope and return a verdict with evidence
 
-- **Inputs**: `dimension` (`tests`/`lint`/`types`/`docs`/`refs`/`security`/`runtime`), `scope` (path หรือ target ที่ validate เช่น workspace, file list, feature), `success-criteria` (optional: เกณฑ์ผ่านที่ parent กำหนด เช่น `typecheck 0 errors`), `ecosystem` (optional: `bun`/`pnpm`/`cargo` เพื่อเลือก commands ที่ถูก)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` (รัน validation commands เช่น `bun run test`, `bun run lint`, `bun run typecheck`)
+- **Inputs**: `dimension` (`tests`/`lint`/`types`/`docs`/`refs`/`security`/`runtime`), `scope` (path or validation target, e.g. workspace, file list, feature), `success-criteria` (optional: the parent's passing criteria, e.g. `typecheck 0 errors`), `ecosystem` (optional: `bun`/`pnpm`/`cargo` to pick the right commands)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` (run validation commands such as `bun run test`, `bun run lint`, `bun run typecheck`)
 - **Execute**:
-  1. ระบุ command/checklist ของ `dimension` ตาม ecosystem ที่ตรวจพบ เช่น `types` → typecheck, `tests` → test suite, `refs` → imports/links
-  2. รัน check หลักของ dimension แล้วเก็บ raw output และ exit code
-  3. ตรวจ supplementary items ของ dimension เช่น `types` → `any`, `@ts-ignore`; `docs` → README drift; `refs` → broken imports
-  4. จัด severity ต่อ failure: `critical`/`high`/`medium`/`low` พร้อม `file:line` evidence
-  5. สรุป verdict ของ dimension: `pass` / `fail` / `skip` (dimension นี้ไม่มีใน scope)
-- **Output**: ตาราง `| No. | Check | Result | Severity | Evidence |` (เช่น `1` | `bun run typecheck` | `fail` | `high` | `src/x.ts:42`); บรรทัดแรกคือ verdict `pass`/`fail`/`skip` พร้อมเหตุผลสั้น; แนบ commands ที่รันและ exit code เสมอ — verdict ต้อง reproduce ได้; check รันไม่ได้ → คืน `error` พร้อมสาเหตุ ไม่ตีเป็น `pass`
-- **Constraints**: read-only — ห้าม `edit`/`write`; validate เฉพาะ dimension ที่ได้รับ ห้ามข้ามไป dimension อื่น; report only — ห้ามแก้ code/config/tests และห้ามรัน auto-fix (`--fix`, `--write`); ทุก failure ต้องมี evidence จาก output จริง ห้ามเดาจาก code โดยไม่รัน; dimension ไม่ applicable กับ scope → คืน `skip` พร้อมเหตุผล ไม่ fabricate results; infra error → retry ไม่เกิน 3 รอบแล้วคืน `error`
+  1. Determine the `dimension`'s command/checklist from the detected ecosystem, e.g. `types` → typecheck, `tests` → test suite, `refs` → imports/links
+  2. Run the dimension's primary check, capturing the raw output and exit code
+  3. Check the dimension's supplementary items, e.g. `types` → `any`, `@ts-ignore`; `docs` → README drift; `refs` → broken imports
+  4. Classify severity per failure: `critical`/`high`/`medium`/`low` with `file:line` evidence
+  5. Summarize the dimension verdict: `pass` / `fail` / `skip` (this dimension isn't in scope)
+- **Output**: a `| No. | Check | Result | Severity | Evidence |` table (e.g. `1` | `bun run typecheck` | `fail` | `high` | `src/x.ts:42`); the first line is the `pass`/`fail`/`skip` verdict with a short reason; always attach the commands run and their exit codes — the verdict must be reproducible; if a check cannot run → return `error` with the cause, never report it as `pass`
+- **Constraints**: read-only — `edit`/`write` forbidden; validate only the assigned dimension, never cross into another; report only — never modify code/config/tests and never run auto-fixes (`--fix`, `--write`); every failure needs evidence from real output, don't guess from code without running it; if a dimension doesn't apply to the scope → return `skip` with a reason, don't fabricate results; on an infra error → retry at most 3 times then return `error`
 
 ## Expected Outcome
 
-- ความถูกต้องได้รับการตรวจสอบครบทุกมิติ
-- Type safety ได้รับการตรวจสอบ
-- คุณภาพได้รับการประเมิน
-- Security ได้รับการตรวจสอบ
-- Compliance กับ standards และ constraints ได้รับการตรวจสอบ
-- Cross-references ถูกต้องทั้งหมด
-- ตารางสรุปผล: dimension, finding, severity, location, recommendation
-- ข้อเสนอแนะที่ actionable และมี priority
+- Correctness verified across every dimension
+- Type safety verified
+- Quality assessed
+- Security verified
+- Compliance with standards and constraints verified
+- All cross-references correct
+- A summary table: dimension, finding, severity, location, recommendation
+- Actionable, prioritized recommendations

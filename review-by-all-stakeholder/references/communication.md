@@ -5,19 +5,19 @@ Persona details for the `communication` category — merged from the original `w
 
 ##### Goal
 
-รับบท communication persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+Play the communication persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
 ##### Scope
 
-ใช้เมื่อต้องการมุมมอง communication — ส่งต่อจาก `/review-by-all-stakeholder`
+Use when a communication perspective is needed — handed off from `/review-by-all-stakeholder`.
 
 ##### Execute
 
 ###### 1. Identify Role
 
-> Goal: รู้ role ที่จะรับบท
+> Goal: Know the role to play
 
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
@@ -25,34 +25,34 @@ Persona details for the `communication` category — merged from the original `w
 | presenter | demo flows, presentable states, screenshot-ability | `### communication/presenter` |
 | public-relations | public-facing surface, reputation risk, news hooks | `### communication/public-relations` |
 
-2. อ่าน section `### communication/<role>` ในไฟล์นี้
+2. Read the `### communication/<role>` section in this file
 
 ###### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
 ###### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
 ##### Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
 ##### Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
 ### communication/communications-strategist
 
@@ -60,7 +60,7 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-รับบทเป็น Communications Strategist — นักวางแผนสื่อสารที่ดูแลว่า product พูดกับ user ด้วยเสียงเดียวกันทุก channel — review <scope> ผ่าน lens ของ role นี้ report-only
+Play a Communications Strategist — a communication planner who ensures the product speaks to users with one consistent voice across every channel — review <scope> through this role's lens; report-only.
 
 
 
@@ -68,21 +68,21 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- ตรวจ messaging consistency — value proposition, key messages, taglines ตรงกันระหว่าง site, app, docs
+- Check messaging consistency — value proposition, key messages, and taglines aligned across site, app, and docs
 
-- ตรวจ announcement/changelog surface — changelog, release notes, in-app announcements มีและ up-to-date
+- Check announcement/changelog surface — changelog, release notes, and in-app announcements exist and are up-to-date
 
-- ตรวจ notification/email copy — transactional emails, notification templates สอดคล้องกับ brand voice
+- Check notification/email copy — transactional emails and notification templates match the brand voice
 
-- ตรวจ crisis-comms readiness — status page, incident comms templates, error page messaging
+- Check crisis-comms readiness — status page, incident comms templates, error page messaging
 
-- ตรวจ audience segmentation — messaging สำหรับ user types ต่างกัน (dev vs buyer) เหมาะสม
+- Check audience segmentation — messaging for different user types (dev vs buyer) is appropriate
 
-- ตรวจ internal comms artifacts — PR descriptions, commit messages, release comms process
+- Check internal comms artifacts — PR descriptions, commit messages, release comms process
 
-- ตรวจ feature naming/positioning — feature names สื่อความหมาย, consistent กับ positioning
+- Check feature naming/positioning — feature names are meaningful and consistent with positioning
 
-- ตรวจ feedback channels — มีทางให้ user ส่ง feedback/report, contact surfaces ชัดเจน
+- Check feedback channels — users have ways to send feedback/reports, contact surfaces are clear
 
 
 
@@ -90,13 +90,13 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — do not modify anything
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
 
 
@@ -104,7 +104,7 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- findings จากมุมมอง communications-strategist พร้อม severity และ evidence
+- findings from the communications-strategist perspective with severity and evidence
 
 ### communication/presenter
 
@@ -112,7 +112,7 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-รับบทเป็น Presenter — ผู้นำเสนอที่ต้อง demo product ต่อหน้าคนและต้องการให้ทุก state พร้อมแสดงได้ทุกเมื่อ — review <scope> ผ่าน lens ของ role นี้ report-only
+Play a Presenter — a demo lead who presents the product to live audiences and needs every state to be show-ready at any moment — review <scope> through this role's lens; report-only.
 
 
 
@@ -120,21 +120,21 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- ตรวจ demo flows — happy paths ที่ demo ได้, seed/demo data สำหรับ showcase, guided tour surfaces
+- Check demo flows — demoable happy paths, seed/demo data for showcases, guided tour surfaces
 
-- ตรวจ presentable states — loading, empty, error states ดูดีพอจะแสดงต่อหน้าคนหรือไม่
+- Check presentable states — are loading, empty, and error states polished enough to show live
 
-- ตรวจ screenshot-ability — หน้าจอหลักถ่าย screenshot สวย, ไม่มี debug info/dev badges ปน
+- Check screenshot-ability — key screens photograph well, with no debug info/dev badges leaking in
 
-- ตรวจ storytelling structure — user journey เล่าเรื่องได้, key features โชว์ได้ในลำดับที่ make sense
+- Check storytelling structure — the user journey tells a story, key features showcase in a sensible order
 
-- ตรวจ demo blockers — flows ที่ต้องใช้ real credentials/payment, states ที่ reproduce ยาก
+- Check demo blockers — flows needing real credentials/payment, states that are hard to reproduce
 
-- ตรวจ presentation assets — slides/screenshots/videos ใน repo, demo scripts, talk track docs
+- Check presentation assets — slides/screenshots/videos in the repo, demo scripts, talk track docs
 
-- ตรวจ "wow moments" — features ที่ impressive เมื่อ demo, hidden gems ที่ไม่มีใครเห็น
+- Check "wow moments" — features that impress in a demo, hidden gems nobody sees
 
-- ตรวจ demo environment surface — staging/demo mode, feature flags สำหรับ demo scenarios
+- Check demo environment surface — staging/demo mode, feature flags for demo scenarios
 
 
 
@@ -142,13 +142,13 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — do not modify anything
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
 
 
@@ -156,7 +156,7 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- findings จากมุมมอง presenter พร้อม severity และ evidence
+- findings from the presenter perspective with severity and evidence
 
 ### communication/public-relations
 
@@ -164,7 +164,7 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-รับบทเป็น Public Relations — ฝ่าย PR ที่ดูแล public image, reputation risk และความพร้อมของข้อความที่โลกภายนอกเห็น — review <scope> ผ่าน lens ของ role นี้ report-only
+Play Public Relations — the PR function that guards public image, reputation risk, and the readiness of everything the outside world sees — review <scope> through this role's lens; report-only.
 
 
 
@@ -172,15 +172,15 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- ตรวจ public-facing surface — about page, press page, blog, careers, contact info ครบและ current
+- Check public-facing surface — about page, press page, blog, careers, contact info complete and current
 
-- ตรวจ reputation risks in copy — claims ที่พิสูจน์ไม่ได้ ("#1", "best"), promises ที่ทำไม่ได้, competitor mentions
+- Check reputation risks in copy — unverifiable claims ("#1", "best"), unkeepable promises, competitor mentions
 
-- ตรวจ news hooks — launch announcements, milestone content, press kit/assets พร้อมสำหรับ media
+- Check news hooks — launch announcements, milestone content, press kit/assets ready for media
 
-- ตรวจ legal-safe public claims — performance claims, security claims, compliance badges ที่ต้องจริง
+- Check legal-safe public claims — performance claims, security claims, compliance badges that must hold true
 
-- ตรวจ embarrassing leftovers — internal jokes, test content, profanity, placeholder text ใน public surfaces
+- Check embarrassing leftovers — internal jokes, test content, profanity, placeholder text in public surfaces
 
 - ตรวจ spokesperson/contact readiness — press contact, media inquiries path, response templates
 
@@ -194,13 +194,13 @@ Persona details for the `communication` category — merged from the original `w
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — do not modify anything
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
 
 

@@ -5,58 +5,58 @@ description: Ready-to-use AST patterns for common batch refactors per language
 
 # ast-grep Pattern Catalog
 
-Patterns พร้อมใช้ — ปรับ `$VAR`/`$$$ARGS` ตามจริง; metavar: `$X` = single node, `$$$` = zero-or-more nodes
+Ready-to-use patterns — adjust `$VAR`/`$$$ARGS` to your actual code; metavar: `$X` = single node, `$$$` = zero-or-more nodes
 
 ## TypeScript / JavaScript (`--lang ts` / `--lang js`)
 
 | Refactor | Pattern | Replacement | Caveat |
 |----------|---------|-------------|--------|
-| Remove console.log | `console.log($$$ARGS)` | (ว่าง — ใช้ `-r ''`) | ระวัง `logger.console.log` — scope ด้วย `inside` rule ถ้าจำเป็น |
-| API/method rename | `$OBJ.$OLD($$$ARGS)` | `$OBJ.$NEW($$$ARGS)` | ตั้ง `$OLD`/`$NEW` ตามจริง เช่น `.substr(` → `.slice(` |
-| `==` → `===` | `$A == $B` | `$A === $B` | อาจ match `==` ที่ตั้งใจ (null check idiom) — interactive mode |
-| require → import | `const $X = require($P)` | `import $X from $P` | named destructuring require ต้อง pattern แยก |
-| `var` → `let` | `var $X = $V` | `let $X = $V` | const/let แยกไม่ได้ด้วย pattern เดียว — เลือก `let` ปลอดภัยกว่า |
-| function → arrow | `function $N($$$P) { $$$B }` | `const $N = ($$$P) => { $$$B }` | ห้ามใช้กับ function ที่อาศัย `this`/hoisting |
-| `&&` → optional chain | `$A && $A.$B` | `$A?.$B` | match `$A` ซ้ำต้องเป็น node เดียวกัน — ast-grep เทียบให้ |
-| parseInt → Number.parseInt | `parseInt($A)` | `Number.parseInt($A)` | ใส่ radix ด้วยถ้าเดิมมี: `parseInt($A, $R)` → `Number.parseInt($A, $R)` |
+| Remove console.log | `console.log($$$ARGS)` | (empty — use `-r ''`) | beware `logger.console.log` — scope with an `inside` rule if needed |
+| API/method rename | `$OBJ.$OLD($$$ARGS)` | `$OBJ.$NEW($$$ARGS)` | set `$OLD`/`$NEW` to the real names, e.g. `.substr(` → `.slice(` |
+| `==` → `===` | `$A == $B` | `$A === $B` | may match intentional `==` (null-check idiom) — use interactive mode |
+| require → import | `const $X = require($P)` | `import $X from $P` | named-destructuring requires need a separate pattern |
+| `var` → `let` | `var $X = $V` | `let $X = $V` | const/let can't be split with one pattern — picking `let` is safer |
+| function → arrow | `function $N($$$P) { $$$B }` | `const $N = ($$$P) => { $$$B }` | never use on functions relying on `this`/hoisting |
+| `&&` → optional chain | `$A && $A.$B` | `$A?.$B` | the repeated `$A` must be the same node — ast-grep verifies that |
+| parseInt → Number.parseInt | `parseInt($A)` | `Number.parseInt($A)` | keep the radix if the original had one: `parseInt($A, $R)` → `Number.parseInt($A, $R)` |
 
 ## Rust (`--lang rust`)
 
 | Refactor | Pattern | Replacement | Caveat |
 |----------|---------|-------------|--------|
-| `vec![]` → `Vec::new()` | `vec![]` | `Vec::new()` | `vec![0; n]` ไม่ match — ปลอดภัย |
-| inline format args | `format!("{}", $A)` | `format!("{$A}")` | เฉพาะ arg เดียว — หลาย args ใช้ rule YAML |
-| `match` → `if let` | `match $X { Some($V) => $B, None => () }` | `if let Some($V) = $X { $B }` | `None => ()` ต้องตรงเป๊ะ |
-| `.clone()` หลัง to_owned | `.to_string().clone()` | `.to_string()` | เจอจาก clippy warning ก่อน |
-| find unwraps (report-only) | `$X.unwrap()` | — | ใช้หาเฉยๆ ไม่ rewrite — `expect` msg ต้องคิดเอง |
-| `&format!()` เป็น arg | `&format!($$$)` | `format!($$$).as_str()` | ตรวจ type context ก่อน |
+| `vec![]` → `Vec::new()` | `vec![]` | `Vec::new()` | `vec![0; n]` doesn't match — safe |
+| inline format args | `format!("{}", $A)` | `format!("{$A}")` | single arg only — for multiple args use a rule YAML |
+| `match` → `if let` | `match $X { Some($V) => $B, None => () }` | `if let Some($V) = $X { $B }` | `None => ()` must match exactly |
+| `.clone()` after to_owned | `.to_string().clone()` | `.to_string()` | typically found via a clippy warning first |
+| find unwraps (report-only) | `$X.unwrap()` | — | search only, no rewrite — `expect` messages must be chosen manually |
+| `&format!()` as arg | `&format!($$$)` | `format!($$$).as_str()` | check the type context first |
 
 ## Python (`--lang python`)
 
 | Refactor | Pattern | Replacement | Caveat |
 |----------|---------|-------------|--------|
-| `len(x) == 0` → falsy | `len($X) == 0` | `not $X` | ใช้ใน `if`/`while` context เท่านั้น |
-| bare except | `except:` | `except Exception:` | pattern ภาษาไวยากรณ์ — ทดสอบก่อน |
-| `for k in d.keys()` | `for $K in $D.keys():` | `for $K in $D:` | dict เท่านั้น — set/list ไม่มี .keys() |
-| `x == True` | `$X == True` | `$X` | `is True` ตั้งใจก็โดน — interactive |
-| `%` → f-string | `"%s" % $A` | `f"{$A}"` | หลาย %s ต้อง rule ซับซ้อน — เหมาะเคสเดียว |
-| print py2→py3 | `print $X` | `print($X)` | py2 files เท่านั้น |
+| `len(x) == 0` → falsy | `len($X) == 0` | `not $X` | only in `if`/`while` contexts |
+| bare except | `except:` | `except Exception:` | grammar-level pattern — test first |
+| `for k in d.keys()` | `for $K in $D.keys():` | `for $K in $D:` | dicts only — sets/lists have no .keys() |
+| `x == True` | `$X == True` | `$X` | intentional `is True` also matches — use interactive mode |
+| `%` → f-string | `"%s" % $A` | `f"{$A}"` | multiple %s need a complex rule — suits single-arg cases |
+| print py2→py3 | `print $X` | `print($X)` | py2 files only |
 
 ## Go (`--lang go`)
 
 | Refactor | Pattern | Replacement | Caveat |
 |----------|---------|-------------|--------|
-| `interface{}` → `any` | `interface{}` | `any` | go1.18+ เท่านั้น |
-| `errors.New(fmt.Sprintf)` | `errors.New(fmt.Sprintf($$$A))` | `fmt.Errorf($$$A)` | ต้องมี `%` verb — ไม่มีก็ `errors.New(fmt.Sprint)` |
-| ioutil deprecated | `ioutil.$F($$$A)` | (mapping ตาราง: ReadFile→os.ReadFile, ReadAll→io.ReadAll, WriteFile→os.WriteFile) | ทีละ pattern — ตาราง deprecated ใน Go 1.16 |
-| `x = append(x)` style check | — | — | ใช้หาเฉยๆ |
+| `interface{}` → `any` | `interface{}` | `any` | go1.18+ only |
+| `errors.New(fmt.Sprintf)` | `errors.New(fmt.Sprintf($$$A))` | `fmt.Errorf($$$A)` | needs a `%` verb — without one, `errors.New(fmt.Sprint)` |
+| ioutil deprecated | `ioutil.$F($$$A)` | (mapping table: ReadFile→os.ReadFile, ReadAll→io.ReadAll, WriteFile→os.WriteFile) | one pattern at a time — deprecation table from Go 1.16 |
+| `x = append(x)` style check | — | — | search only |
 
-## Rule YAML (เมื่อ pattern เดียวไม่พอ)
+## Rule YAML (when a single pattern isn't enough)
 
-ใช้เมื่อต้อง constraints: kind, regex, inside, has, precedes, follows:
+Use when you need constraints: kind, regex, inside, has, precedes, follows:
 
 ```yaml
-# sg-rules/remove-debug.yml — ลบ console.log เฉพาะใน src/ ไม่รวม logger wrapper
+# sg-rules/remove-debug.yml — remove console.log only in src/, excluding logger wrappers
 id: remove-console-log
 language: TypeScript
 rule:
@@ -66,11 +66,11 @@ rule:
 fix: ''
 ```
 
-รัน: `sg scan --rule sg-rules/remove-debug.yml --fix` (interactive) หรือ `--fix-all`
+Run: `sg scan --rule sg-rules/remove-debug.yml --fix` (interactive) or `--fix-all`
 
 ## Tips
 
-- ทดสอบ pattern ด้วย `sg run -p '<pattern>' <file>` บนไฟล์เดียวก่อน scope กว้าง
-- `$$$` หน้า/หลัง args list เก็บ trailing comma/whitespace ให้อัตโนมัติ
-- replacement ต้องใช้ metavar ที่ pattern capture จริง — ชื่อใหม่ที่ไม่ได้ capture = literal text
-- escape `$` ใน pattern เป็น `$$` ถ้าต้องการ literal dollar (เช่น template literal `${x}`)
+- Test the pattern with `sg run -p '<pattern>' <file>` on a single file before widening scope
+- `$$$` before/after an args list captures trailing commas/whitespace automatically
+- The replacement must use metavars the pattern actually captures — a name that isn't captured becomes literal text
+- Escape `$` in a pattern as `$$` when you need a literal dollar (e.g. template literal `${x}`)

@@ -1,6 +1,6 @@
 ---
 name: follow-create-devin-plugin
-description: สร้าง Devin CLI plugin ที่รวม skills, rules, agents, hooks และ MCP servers
+description: Create a Devin CLI plugin bundling skills, rules, agents, hooks, and MCP servers
 argument-hint: "[plugin-name]"
 related:
   - follow-create-sdk
@@ -13,169 +13,169 @@ related:
 ---
 ## Goal
 
-สร้าง Devin CLI plugin ที่ bundling skills, rules, agents, hooks, และ MCP servers ตามมาตรฐาน Devin CLI plugins documentation
+Create a Devin CLI plugin that bundles skills, rules, agents, hooks, and MCP servers per the Devin CLI plugins documentation standard
 
 ## Scope
 
-ใช้สำหรับสร้าง plugin ใหม่หรือปรับปรุง plugin ที่มีอยู่ ให้ติดตั้งและแชร์ผ่าน GitHub repo, git URL, หรือ local folder
+Use for creating a new plugin or improving an existing one so it can be installed and shared via GitHub repo, git URL, or local folder
 
-- Devin CLI ไม่ publish บน npm (`devin` npm = unrelated stub) — ตรวจเวอร์ชันด้วย `devin --version`; ยืนยัน docs/format ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ตาม `/update-devin-global-skills`)
+- Devin CLI is not published on npm (the `devin` npm package = unrelated stub) — check the version with `devin --version`; always confirm the latest docs/format with `/deep-research` + `/follow-best-practice` (per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin format และ docs ล่าสุดที่ https://docs.devin.ai จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create devin plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the plugin format and latest docs at https://docs.devin.ai , then run `/deep-review` to summarize the tech stack
+2. Record the rationale for the chosen stack and libraries for future reference (create devin plugins)
+3. Record the rationale for the chosen stack and libraries for future reference (create devin plugins)
 
 ### 2. Plan Plugin Scope
 
-> Goal: วางแผนว่า plugin ทำอะไร
+> Goal: plan what the plugin does
 
-1. ระบุ problem ที่ plugin แก้หรือช่องว่างที่เติม
-2. ตั้งชื่อ plugin ให้ unique และสื่อความหมาย
-3. ตัดสินใจว่า plugin รวม skills ประเภทใด: review, setup, architecture, tools
-4. ระบุ target consumers: project, team, หรือ public
-5. ตรวจสอบว่าไม่ซ้ำชื่อกับ plugins ที่ติดตั้งแล้ว
+1. Identify the problem the plugin solves or the gap it fills
+2. Give the plugin a unique, meaningful name
+3. Decide which skill types the plugin bundles: review, setup, architecture, tools
+4. Identify target consumers: project, team, or public
+5. Check that the name doesn't duplicate already installed plugins
 
 ### 3. Create Plugin Directory
 
-> Goal: สร้างโครงสร้าง plugin
+> Goal: create the plugin structure
 
-1. สร้าง root directory `<plugin-name>/`
-2. สร้าง `.devin-plugin/plugin.json` สำหรับ manifest
-3. สร้าง `skills/` และ skill ย่อยๆ ตาม `/update-devin-global-skills`
-4. สร้าง `AGENTS.md` ถ้าต้องการ always-on rules
-5. สร้าง `rules/` ถ้าต้องการ triggered rules
-6. สร้าง `agents/` ถ้าต้องการ custom subagents
-7. สร้าง `hooks.json` ถ้าต้องการ lifecycle hooks
-8. สร้าง `.mcp.json` (หรือ `mcp_config.json` รองรับเหมือนกัน) ถ้าต้องการ MCP servers
+1. Create the root directory `<plugin-name>/`
+2. Create `.devin-plugin/plugin.json` for the manifest
+3. Create `skills/` and the sub-skills per `/update-devin-global-skills`
+4. Create `AGENTS.md` if always-on rules are wanted
+5. Create `rules/` if triggered rules are wanted
+6. Create `agents/` if custom subagents are wanted
+7. Create `hooks.json` if lifecycle hooks are wanted
+8. Create `.mcp.json` (or `mcp_config.json`, which is equally supported) if MCP servers are wanted
 
 ### 4. Write Plugin Manifest
 
-> Goal: เขียน `.devin-plugin/plugin.json`
+> Goal: write `.devin-plugin/plugin.json`
 
-1. ใส่ `name` ที่ unique (จำเป็น) เป็น namespace สำหรับ `/<name>:<skill>`
-2. ใส่ `version` ตาม semantic versioning
-3. ใส่ `description` กระชับ
-4. ใส่ `author` ในรูปแบบ `{ name, email }`
-5. ใส่ `homepage`, `repository`, `license`, `keywords` ถ้ามี
-6. ระบุ `skills` path ถ้า skill directories ไม่อยู่ใน default `skills/`
-7. ระบุ `mcpServers` ถ้ามี MCP servers
-8. ระบุ `requiredPlugins`, `optionalPlugins`, `forbiddenPlugins` ตาม governance policy
+1. Set a unique `name` (required) as the namespace for `/<name>:<skill>`
+2. Set `version` per semantic versioning
+3. Set a concise `description`
+4. Set `author` in the `{ name, email }` form
+5. Add `homepage`, `repository`, `license`, `keywords` if available
+6. Specify the `skills` path if the skill directories aren't in the default `skills/`
+7. Specify `mcpServers` if there are MCP servers
+8. Specify `requiredPlugins`, `optionalPlugins`, `forbiddenPlugins` per the governance policy
 
 ### 5. Create Skills
 
-> Goal: สร้าง skills ภายใน plugin
+> Goal: create skills inside the plugin
 
-1. ทำตาม `/update-devin-global-skills` สำหรับแต่ละ skill
-2. วาง `SKILL.md` ใน `skills/<skill-name>/SKILL.md`
-3. ตรวจสอบว่า skill name ไม่ซ้ำภายใน plugin
-4. ทดสอบ invoke ด้วย `/<plugin-name>:<skill-name>`
+1. Follow `/update-devin-global-skills` for each skill
+2. Place `SKILL.md` at `skills/<skill-name>/SKILL.md`
+3. Check that skill names are unique within the plugin
+4. Test invocation with `/<plugin-name>:<skill-name>`
 
 ### 6. Add Rules And Agents
 
-> Goal: เพิ่ม rules และ custom subagents ถ้าจำเป็น
+> Goal: add rules and custom subagents if needed
 
-1. เขียน `AGENTS.md` เป็น always-on rule ถ้าต้องการ
-2. สร้าง `rules/<rule-name>.md` สำหรับ triggered rules พร้อม `trigger` frontmatter
-3. สร้าง `agents/<agent-name>.md` หรือ `agents/<agent-name>/AGENT.md` สำหรับ custom subagents
-4. ตรวจสอบว่า agents load ได้เฉพาะใน local Devin agents (CLI และ Devin Desktop)
+1. Write `AGENTS.md` as an always-on rule if wanted
+2. Create `rules/<rule-name>.md` for triggered rules with a `trigger` frontmatter
+3. Create `agents/<agent-name>.md` or `agents/<agent-name>/AGENT.md` for custom subagents
+4. Note that agents load only in local Devin agents (CLI and Devin Desktop)
 
 ### 7. Add Hooks And MCP
 
-> Goal: เพิ่ม lifecycle hooks และ MCP servers
+> Goal: add lifecycle hooks and MCP servers
 
-1. สร้าง `hooks.json` สำหรับ lifecycle hooks ถ้าจำเป็น
-2. สร้าง `.mcp.json` สำหรับ MCP servers ด้วย `mcpServers` map (`mcp_config.json` ยังรองรับ แต่ `.mcp.json` เป็น convention ปัจจุบัน)
-3. ตรวจสอบว่า MCP servers ไม่ expose secrets ใน plugin repository
+1. Create `hooks.json` for lifecycle hooks if needed
+2. Create `.mcp.json` for MCP servers with an `mcpServers` map (`mcp_config.json` is still supported, but `.mcp.json` is the current convention)
+3. Check that MCP servers don't expose secrets in the plugin repository
 
 ### 8. Test Plugin Locally
 
-> Goal: ทดสอบ plugin ก่อน publish
+> Goal: test the plugin before publishing
 
-1. รัน `devin plugins install ./<plugin-name>` จาก local path
-2. รัน `devin plugins list` เพื่อตรวจสอบว่าติดตั้งสำเร็จ
-3. รัน `devin plugins info <plugin-name>` เพื่อดู skills และ dependencies
-4. ทดสอบ invoke skill ด้วย `/<plugin-name>:<skill-name>`
-5. แก้ไข skill แล้วทดสอบใหม่ โดยไม่ต้อง `update` เพราะ local plugin linked
+1. Run `devin plugins install ./<plugin-name>` from the local path
+2. Run `devin plugins list` to confirm the installation succeeded
+3. Run `devin plugins info <plugin-name>` to see skills and dependencies
+4. Test invoking a skill with `/<plugin-name>:<skill-name>`
+5. Edit a skill and retest without `update`, since the local plugin is linked
 
 ### 9. Publish And Manage
 
-> Goal: publish plugin และจัดการ versions
+> Goal: publish the plugin and manage versions
 
-1. push plugin repository ไปยัง GitHub หรือ git host
-2. ติดตั้งจาก remote ด้วย `devin plugins install owner/repo`
-3. รัน `devin plugins update <plugin-name>` เมื่อมีการเปลี่ยนแปลง
-4. รัน `devin plugins remove <plugin-name>` ถ้าต้องการถอนการติดตั้ง
-5. รัน `devin plugins prune` เพื่อเก็บกวาด requirements จาก repo ที่ไม่มีอยู่แล้วและ plugin content ที่ไม่ถูกใช้
-6. ทำ `/update-references` ถ้ามี project อ้างอิง plugin
+1. Push the plugin repository to GitHub or a git host
+2. Install from remote with `devin plugins install owner/repo`
+3. Run `devin plugins update <plugin-name>` when there are changes
+4. Run `devin plugins remove <plugin-name>` to uninstall
+5. Run `devin plugins prune` to clean up requirements from removed repos and unused plugin content
+6. Run `/update-references` if any project references the plugin
 
 ### 10. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Plugin Structure
 
-- `.devin-plugin/plugin.json` จำเป็น และต้องมี `name` ที่ unique
-- `skills/` วาง skill files ตาม `/update-devin-global-skills`
-- `AGENTS.md` optional สำหรับ always-on rules
-- `rules/` optional สำหรับ triggered rules
-- `agents/` optional สำหรับ custom subagents (local only)
-- `hooks.json` optional สำหรับ lifecycle hooks
-- `.mcp.json` (หรือ `mcp_config.json`) optional สำหรับ MCP servers
-- Devin รองรับ plugin formats อื่นด้วย manifest precedence `.devin-plugin/plugin.json` > `.claude-plugin/plugin.json` > root `plugin.json` (Agent Plugins 1.0.0 spec)
+- `.devin-plugin/plugin.json` is required and must have a unique `name`
+- `skills/` holds skill files per `/update-devin-global-skills`
+- `AGENTS.md` optional for always-on rules
+- `rules/` optional for triggered rules
+- `agents/` optional for custom subagents (local only)
+- `hooks.json` optional for lifecycle hooks
+- `.mcp.json` (or `mcp_config.json`) optional for MCP servers
+- Devin also supports other plugin formats with manifest precedence `.devin-plugin/plugin.json` > `.claude-plugin/plugin.json` > root `plugin.json` (Agent Plugins 1.0.0 spec)
 
 ### 2. Manifest Fields
 
-- `name` ต้อง unique ระหว่าง installed plugins
-- `version` ใช้ semantic versioning
-- `description` กระชับ
-- `author` ใช้ `{ name, email }`
-- `requiredPlugins` สำหรับ dependencies ที่ต้องติดตั้ง auto
-- `optionalPlugins` สำหรับ allow-list endorsements
-- `forbiddenPlugins` สำหรับ deny-list และ glob patterns
-- `skills` ระบุ path ถ้าไม่อยู่ใน `skills/`
-- `mcpServers` ระบุ path หรือ inline map
+- `name` must be unique among installed plugins
+- `version` uses semantic versioning
+- `description` is concise
+- `author` uses `{ name, email }`
+- `requiredPlugins` for dependencies that must be auto-installed
+- `optionalPlugins` for allow-list endorsements
+- `forbiddenPlugins` for the deny-list and glob patterns
+- `skills` specifies a path if not under `skills/`
+- `mcpServers` specifies a path or an inline map
 
 ### 3. Dependency Governance
 
-- deny wins: plugin ถูก block ถ้ามีใคร forbid
-- self-override: plugin ของตัวเอง exempt จาก forbidden ของตัวเอง
-- no cross-scope re-permitting: ไม่อนุญาติให้ plugin หนึ่ง override forbidden ของ plugin อื่น
-- required plugins ถูก block ทั้ง plugin install จะล้มเหลว
+- deny wins: a plugin is blocked if anyone forbids it
+- self-override: a plugin's own manifest is exempt from its own forbidden list
+- no cross-scope re-permitting: one plugin can't override another plugin's forbidden list
+- if a required plugin is blocked, the whole plugin install fails
 
 ### 4. Safety And Security
 
-- ไม่ใส่ secrets หรือ credentials ใน `mcp_config.json` หรือ skill files
-- `forbiddenPlugins` อย่าใช้ `*` โดยไม่ระบุ `optionalPlugins` หรือ `requiredPlugins` ที่จำเป็น
-- ตรวจสอบ permissions ของ skills ก่อน bundle เข้า plugin
-- local path dependencies ต้องเป็น paths ที่ trusted
+- never put secrets or credentials in `mcp_config.json` or skill files
+- don't use `*` in `forbiddenPlugins` without declaring the needed `optionalPlugins` or `requiredPlugins`
+- review skill permissions before bundling them into the plugin
+- local path dependencies must be trusted paths
 
 ### 5. Versioning And Release
 
-- ใช้ semantic versioning ใน `plugin.json`
-- update `version` เมื่อมี breaking changes
-- ระบุ `license` ถ้า publish สาธารณะ
-- รักษา backward compatibility เมื่อได้ยกเว้น major version bump
+- use semantic versioning in `plugin.json`
+- update `version` on breaking changes
+- declare `license` when publishing publicly
+- maintain backward compatibility unless a major version bump is justified
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /update-devin-global-subagents when needed
 
 ## Expected Outcome
 
-- Plugin directory สร้างถูกต้องตาม Devin CLI spec
-- `plugin.json` valid และมี `name` ที่ unique
-- Skills ทำงานได้และ invoke ด้วย `/<plugin>:<skill>`
-- Rules, agents, hooks, MCP ประกาศถูกต้อง (ถ้ามี)
-- Plugin ติดตั้งจาก local และ remote ได้
-- Dependencies และ governance ชัดเจน
+- The plugin directory is created correctly per the Devin CLI spec
+- `plugin.json` is valid and has a unique `name`
+- Skills work and are invoked with `/<plugin>:<skill>`
+- Rules, agents, hooks, MCP are declared correctly (if present)
+- The plugin installs from both local and remote sources
+- Dependencies and governance are clear
 

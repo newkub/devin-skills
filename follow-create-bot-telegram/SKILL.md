@@ -1,111 +1,111 @@
 ---
 name: follow-create-bot-telegram
-description: สร้าง Telegram bot ด้วย TypeScript/Bun — grammy, commands, webhook/polling
+description: Build a Telegram bot with TypeScript/Bun — grammy, commands, webhook/polling
 argument-hint: "[features]"
 ---
 
 ## Goal
 
-สร้าง Telegram bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม command handling, middleware, sessions, error handling และ webhook/long-polling
+Create a runnable Telegram bot project with TypeScript/Bun, complete with command handling, middleware, sessions, error handling, and webhook/long-polling
 
 ## Scope
 
-ใช้สำหรับสร้าง Telegram bot จาก scratch บน Bun หรือ Node.js รองรับ command bots, conversational flows, notifications, และ webhook deployments
+Use for building a Telegram bot from scratch on Bun or Node.js; supports command bots, conversational flows, notifications, and webhook deployments
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the stack and library choices with reasons for later reference
 
 ### 2. Gather Requirements
 
-> Goal: รวบรวมข้อมูลก่อนสร้าง bot
+> Goal: Collect information before building the bot
 
-1. ถาม user ถึง purpose, ชื่อ bot, ประเภท (notification, command, conversational)
-2. ขอ `BOT_TOKEN` หรือแนะนำสร้างผ่าน @BotFather
-3. ระบุ runtime: `Bun` (default) หรือ `Node.js`
-4. ระบุ deployment mode: `long-polling` สำหรับ dev หรือ `webhook` สำหรับ production
+1. Ask the user about purpose, bot name, and type (notification, command, conversational)
+2. Request `BOT_TOKEN`, or guide the user to create it via @BotFather
+3. Identify the runtime: `Bun` (default) or `Node.js`
+4. Identify the deployment mode: `long-polling` for dev or `webhook` for production
 
 ### 3. Setup Project
 
-> Goal: สร้างโครงสร้าง project
+> Goal: Create the project structure
 
-1. ทำ `/deep-review` หรือ `/deep-review` เพื่อสร้าง `src/`
-2. สร้าง `src/bot.ts`, `src/index.ts`, `src/commands/`, `src/middleware/`, `src/handlers/`, `src/config.ts`
-3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
-4. รัน `bun init` หรือ `npm init` ตาม runtime
-5. ใช้ `/search-npm-libraries` เลือก library หลัก (default แนะนำ `grammy`)
+1. Use `/deep-review` or `/deep-review` to create `src/`
+2. Create `src/bot.ts`, `src/index.ts`, `src/commands/`, `src/middleware/`, `src/handlers/`, `src/config.ts`
+3. Create `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
+4. Run `bun init` or `npm init` per the runtime
+5. Use `/search-npm-libraries` to pick the main library (default recommendation: `grammy`)
 
 ### 4. Configure Bot And Handlers
 
-> Goal: เชื่อมต่อ Telegram Bot API
+> Goal: Connect to the Telegram Bot API
 
-1. ติดตั้ง library ทีเลือก เช่น `bun add grammy`
-2. สร้าง `src/bot.ts` ด้วย token จาก `Bun.env.BOT_TOKEN`
-3. สร้าง `src/index.ts` เป็น entry point
-4. สร้าง `src/commands/start.ts`, `src/commands/help.ts` เป็นตัวอย่าง
-5. เพิ่ม middleware สำหรับ logging, error handling, rate limiting
-6. ถ้าต้องการ session → ใช้ `grammy` session middleware หรือ memory/redis
+1. Install the chosen library, e.g. `bun add grammy`
+2. Create `src/bot.ts` with the token from `Bun.env.BOT_TOKEN`
+3. Create `src/index.ts` as the entry point
+4. Create `src/commands/start.ts` and `src/commands/help.ts` as examples
+5. Add middleware for logging, error handling, and rate limiting
+6. If you need sessions → use the `grammy` session middleware or memory/redis
 
 ### 5. Add Features
 
-> Goal: เพิ่ม features ตาม requirement
+> Goal: Add features per the requirements
 
-1. สร้าง handlers สำหรับ messages, callback queries, inline queries ตาม need
-2. ใช้ `bot.api.setMyCommands` เพื่อลงทะเบียน slash commands
-3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
-4. เพิ่ม type safety ด้วย TypeScript interfaces สำหรับ context/dependencies
+1. Create handlers for messages, callback queries, and inline queries as needed
+2. Use `bot.api.setMyCommands` to register slash commands
+3. Use `/use-bun-native-api` instead of `node:*` when using Bun
+4. Add type safety with TypeScript interfaces for context/dependencies
 
 ### 6. Test Locally
 
-> Goal: ทดสอบ bot
+> Goal: Test the bot
 
-1. รัน `bun dev` หรือ `bun run src/index.ts`
-2. ทดสอบ commands บน Telegram
-3. ตรวจสอบ logs และ error handling
-4. ทำ `/run-test` สำหรับ unit tests ของ handlers
+1. Run `bun dev` or `bun run src/index.ts`
+2. Test commands on Telegram
+3. Check logs and error handling
+4. Run `/run-test` for unit tests of the handlers
 
 ### 7. Deploy
 
-> Goal: deploy bot ไป production
+> Goal: Deploy the bot to production
 
-1. ถ้าใช้ long-polling: รัน `bun start` บน server หรือ container
-2. ถ้าใช้ webhook: setup `express`/`hono`/`elysia` endpoint แล้ว `webhookCallback`
-3. ตั้งค่า environment variables บน host
-4. ทำ `/deploy-to-cloudflare`, `/deploy-to-railway` หรือ `/deploy-to-vercel` ตาม target
+1. With long-polling: run `bun start` on a server or in a container
+2. With webhook: set up an `express`/`hono`/`elysia` endpoint, then `webhookCallback`
+3. Set environment variables on the host
+4. Use `/deploy-to-cloudflare`, `/deploy-to-railway`, or `/deploy-to-vercel` per the target
 
 ## Rules
 
-- ไม่ hardcode `BOT_TOKEN`; ใช้ `/follow-secret-manager` สำหรับจัดการ token ก่อน inject เข้า app
-- ใช้ `grammy` เป็น default library บน Bun
-- ใช้ long-polling สำหรับ dev, webhook สำหรับ production — webhook path ต้องมี token เป็น secret เช่น `/webhook/${BOT_TOKEN}`; ใช้ `webhookCallback(bot, 'hono'|'express')`
-- Token: สร้างผ่าน `@BotFather` → `/newbot`; เก็บใน env เสมอ
-- Commands: register ด้วย `bot.api.setMyCommands([{ command, description }])`; user state ใช้ `session()` middleware
-- ไม่ commit `.env`
-- ใช้ TypeScript first ตาม `/follow-lang-typescript`
-- Libraries: `grammy` (default), `gramio`, `node-telegram-bot-api` (v2 รันบน Workers ได้)
+- Never hardcode `BOT_TOKEN`; use `/follow-secret-manager` to manage the token before injecting it into the app
+- Use `grammy` as the default library on Bun
+- Use long-polling for dev and webhook for production — the webhook path must include the token as a secret, e.g. `/webhook/${BOT_TOKEN}`; use `webhookCallback(bot, 'hono'|'express')`
+- Token: create it via `@BotFather` → `/newbot`; always keep it in env
+- Commands: register with `bot.api.setMyCommands([{ command, description }])`; for user state use the `session()` middleware
+- Never commit `.env`
+- Be TypeScript-first per `/follow-lang-typescript`
+- Libraries: `grammy` (default), `gramio`, `node-telegram-bot-api` (v2 runs on Workers)
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /report table ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed
+- Use /follow-create-cli if needed
+- Use /follow-create-sdk if needed
+- Use /follow-create-web if needed
+- Use /report table if needed
 
 ## Expected Outcome
 
-- Telegram bot project รันได้ด้วย `bun dev`
-- Command handlers, middleware, error handling ครบ
-- รองรับ long-polling และ webhook
-- พร้อม deploy ด้วย environment variables
+- The Telegram bot project runs with `bun dev`
+- Command handlers, middleware, and error handling are complete
+- Both long-polling and webhook are supported
+- Ready to deploy with environment variables
 
 ## Guide
 
-- `/deep-research` + `/follow-best-practice` — official docs/versions ล่าสุด (ไม่ pin ในไฟล์)
+- `/deep-research` + `/follow-best-practice` — latest official docs/versions (not pinned in this file)
 - `/follow-lang-typescript` — TypeScript best practices
-- `/follow-create-bun-cli` — ถ้า bot เป็น Bun CLI project
-- `/search-npm-libraries` — เลือก library ตาม use case
+- `/follow-create-bun-cli` — if the bot is a Bun CLI project
+- `/search-npm-libraries` — pick a library per use case

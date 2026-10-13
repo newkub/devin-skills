@@ -1,6 +1,6 @@
 ---
 name: follow-create-mcp
-description: สร้าง MCP server ด้วย Rust หรือ TypeScript รองรับทุก client โดยไม่บังคับ register
+description: Build MCP servers in Rust or TypeScript for any client, without forcing registration
 argument-hint: "[scope]"
 allowed-tools:
   - exec
@@ -26,124 +26,124 @@ related:
 
 ## Goal
 
-สร้าง MCP server ใหม่ โดยเริ่มจาก Rust ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript รองรับทุก MCP client และ transport โดยไม่บังคับ register ลง config ใด
+Build a new MCP server, starting with Rust first and falling back to TypeScript when it doesn't fit; support every MCP client and transport without forcing registration into any config
 
 ## Scope
 
-ใช้เมื่อ skill หรือ project ต้อง expose tools, resources, หรือ prompts ผ่าน Model Context Protocol (MCP) รองรับทั้ง stdio, Streamable HTTP และ SSE transport
+Use when a skill or project needs to expose tools, resources, or prompts over the Model Context Protocol (MCP), supporting stdio, Streamable HTTP, and SSE transports
 
-- สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
-- ถ้าต้องการ register ลง Devin global MCP config ให้ใช้ `/create-devin-global-mcp` หลังจากนี้
-- ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin-project-mcp`
+- Build the server only; do not register it in `mcp_config.json`
+- To register in the Devin global MCP config, use `/create-devin-global-mcp` afterwards
+- To register in the project MCP config, use `/update-devin-project-mcp`
 
-ดูเพิ่มเติม: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
+See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 
-- SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` เป็น legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` is legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด แล้วอ่าน `../follow-my-techstack/references/techstack-catalog.md` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create mcp)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mcp)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then read `../follow-my-techstack/references/techstack-catalog.md` to summarize the tech stack in use
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create mcp)
+3. Record the rationale for the chosen stack and libraries for future reference (create mcp)
 
 ### 2. Decide Stack
 
-> Goal: เลือก stack ที่เหมาะสมกับ use case
+> Goal: pick the stack that fits the use case
 
-1. วิเคราะห์ requirements: performance, runtime dependency, team skill, deployment target
-2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency, หรือ deploy เป็น native binary
-3. เลือก TypeScript ถ้า: ทีมใช้ TS/Bun หลัก, ต้องการ rapid iteration, หรือต้อง integration กับ JS ecosystem
-4. ถ้าไม่ชัด → ใช้ Rust เป็น default
-5. Decision matrix — Rust: ไม่มี runtime dep, single binary, performance สูง; TypeScript: ต้อง Node/Bun/Deno, ecosystem เยอะกว่า, iterate เร็วกว่า
+1. Analyze requirements: performance, runtime dependency, team skill, deployment target
+2. Choose Rust when: you want a single binary, high performance, zero runtime dependencies, or a native-binary deployment
+3. Choose TypeScript when: the team primarily uses TS/Bun, you need rapid iteration, or you must integrate with the JS ecosystem
+4. If unclear → default to Rust
+5. Decision matrix — Rust: no runtime dep, single binary, high performance; TypeScript: requires Node/Bun/Deno, larger ecosystem, faster iteration
 
 ### 3. Create MCP Server Project
 
-> Goal: สร้าง scaffold ตาม stack ที่เลือก
+> Goal: scaffold per the chosen stack
 
-1. ถ้าเลือก Rust → `cargo new` แล้ว `cargo add rmcp --features server` (community alternative: `rust-mcp-sdk`)
-2. ถ้าเลือก TypeScript → `bun init` แล้ว `bun add @modelcontextprotocol/sdk` (`@modelcontextprotocol/server` เป็น legacy ที่ถูกแทน)
-3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
-4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
-5. ทำ `/deep-review` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
+1. If Rust → `cargo new` then `cargo add rmcp --features server` (community alternative: `rust-mcp-sdk`)
+2. If TypeScript → `bun init` then `bun add @modelcontextprotocol/sdk` (`@modelcontextprotocol/server` is the superseded legacy package)
+3. Create the entry point: `src/main.rs` for Rust or `src/index.ts` for TypeScript
+4. Define the server name, version, and capabilities (tools, resources, prompts)
+5. Run `/deep-review` to pick a suitable architecture (Clean not mandated), then clearly separate handlers, transport, and domain logic
 
 ### 4. Implement Tools And Resources
 
-> Goal: expose functionality ผ่าน MCP protocol
+> Goal: expose functionality over the MCP protocol
 
-1. ระบุ tools ที่ MCP server จะ expose พร้อม input schema
-2. ใช้ native type validation เช่น `zod` สำหรับ TypeScript หรือ `serde` สำหรับ Rust
-3. ระบุ resources และ prompts ถ้าจำเป็น
-4. ใช้ `/follow-single-responsibility` แยกแต่ละ tool handler ออกเป็น module
+1. Define the tools the MCP server will expose, with input schemas
+2. Use native type validation such as `zod` for TypeScript or `serde` for Rust
+3. Define resources and prompts if needed
+4. Use `/follow-single-responsibility` to split each tool handler into its own module
 
 ### 5. Choose Transport
 
-> Goal: เลือก transport ที่เหมาะสม
+> Goal: pick the right transport
 
-1. stdio: สำหรับ local spawn โดย client (default สำหรับ Devin/Cursor/Claude Code)
-2. Streamable HTTP: สำหรับ remote server หรือ multi-client
-3. SSE: สำหรับ backward compatibility
-4. ถ้าไม่ชัด → ใช้ stdio เป็น default สำหรับ CLI tool, Streamable HTTP สำหรับ service
+1. stdio: for local spawn by the client (default for Devin/Cursor/Claude Code)
+2. Streamable HTTP: for remote servers or multiple clients
+3. SSE: for backward compatibility
+4. If unclear → use stdio as the default for CLI tools, Streamable HTTP for services
 
 ### 6. Test Server
 
-> Goal: ยืนยันว่า server ทำงานถูกต้อง
+> Goal: confirm the server works correctly
 
-1. รัน server ด้วยคำสั่งของ stack เช่น `cargo run` หรือ `bun run dev`
-2. ทดสอบด้วย MCP inspector หรือ client ที่รองรับ
-3. ตรวจสอบว่า tools สามารถ list และ invoke ได้
-4. ถ้า transport เป็น stdio → ทดสอบ spawn ผ่าน client เช่น Claude Code หรือ `npx @modelcontextprotocol/inspector` (official inspector package)
+1. Run the server with the stack's command, e.g. `cargo run` or `bun run dev`
+2. Test with the MCP inspector or a compatible client
+3. Verify that tools can be listed and invoked
+4. If the transport is stdio → test spawning through a client such as Claude Code or `npx @modelcontextprotocol/inspector` (official inspector package)
 
 ### 7. Ship
 
-> Goal: ส่งมอบ MCP server
+> Goal: deliver the MCP server
 
-1. ทำ `/deep-validate` เพื่อตรวจ conventions, references, และ security
-2. ทำ `/ship-to-dev-branch`
-3. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/deep-validate` to check conventions, references, and security
+2. Run `/ship-to-dev-branch`
+3. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Stack Selection
 
-- Default คือ Rust (`rmcp` หรือ `rust-mcp-sdk`) เพราะ performance และ zero runtime dependency
-- TypeScript เป็น fallback เมื่อทีมหรือ ecosystem เอื้ออำนวย
-- บันทึกเหตุผลที่เลือก stack ใน README หรือ plan
+- Rust is the default (`rmcp` or `rust-mcp-sdk`) for performance and zero runtime dependencies
+- TypeScript is the fallback when the team or ecosystem favors it
+- Record the rationale for the chosen stack in the README or plan
 
 ### 2. Security
 
-- ไม่ hardcode secrets ลง server code
-- ใช้ `/follow-secret-manager` สำหรับจัดการ API keys และ credentials แล้ว inject เป็น environment variables
-- ถ้า server รับ input จาก client → validate schema ก่อนประมวลผล
+- Never hardcode secrets in server code
+- Use `/follow-secret-manager` to manage API keys and credentials, then inject them as environment variables
+- If the server accepts client input → validate the schema before processing
 
 ### 3. Transport
 
-- stdio เป็น default สำหรับ tools ที่ client spawn โดยตรง
-- Streamable HTTP เมื่อต้องการรองรับหลาย clients ผ่าน network
-- ไม่ใช้ SSE สำหรับ implementation ใหม่ ยกเว้น backward compatibility
+- stdio is the default for tools the client spawns directly
+- Streamable HTTP when serving multiple clients over the network
+- Don't use SSE for new implementations except for backward compatibility
 
 ### 4. No Registry In This Skill
 
-- สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
-- ถ้าต้องการ register ลง Devin global config ให้ส่งต่อ `/create-devin-global-mcp`
-- ถ้าต้องการ register ลง project config ให้ส่งต่อ `/update-devin-project-mcp`
+- Build the server only; do not register it in `mcp_config.json`
+- To register in the Devin global config, hand off to `/create-devin-global-mcp`
+- To register in the project config, hand off to `/update-devin-project-mcp`
 
 ### 5. Integration
 
-- ถ้า skill นี้ถูกสร้างใน global skills repo → อัปเดต `related` และ `AGENTS.md`
+- If this skill is built inside the global skills repo → update `related` and `AGENTS.md`
 
-- ใช้ `/open-web-for-config-secret` ถ้าจำเป็น
-- ใช้ `/follow-create-cli` ถ้าจำเป็น
-- ใช้ `/follow-lang-rust` ถ้าจำเป็น
-- ใช้ `/follow-lang-typescript` ถ้าจำเป็น
+- Use `/open-web-for-config-secret` if needed
+- Use `/follow-create-cli` if needed
+- Use `/follow-lang-rust` if needed
+- Use `/follow-lang-typescript` if needed
 
 ## Expected Outcome
 
-- MCP server ทำงานได้ทั้ง Rust หรือ TypeScript
-- Tools/resources/prompts ถูก expose ผ่าน MCP protocol
-- Transport ทีเลือกทดสอบผ่าน
-- ผ่าน `/deep-validate` และ `/ship-to-dev-branch`
-- พร้อมส่งต่อไป register ด้วย `/create-devin-global-mcp` หรือ `/update-devin-project-mcp` ถ้าต้องการ
+- The MCP server works in either Rust or TypeScript
+- Tools/resources/prompts are exposed over the MCP protocol
+- The chosen transport has been tested and passes
+- Passes `/deep-validate` and `/ship-to-dev-branch`
+- Ready to hand off for registration via `/create-devin-global-mcp` or `/update-devin-project-mcp` if needed

@@ -1,6 +1,6 @@
 ---
 name: follow-asynchronous
-description: ใช้งาน async patterns ใน JavaScript/TypeScript ให้ถูกต้อง
+description: Use async patterns in JavaScript/TypeScript correctly
 argument-hint: "[scope]"
 related:
   - ask-me
@@ -9,83 +9,83 @@ related:
 
 ## Goal
 
-ใช้งาน asynchronous operations ใน JavaScript/TypeScript ให้ถูกต้อง อ่านง่าย และ maintain ได้
+Use asynchronous operations in JavaScript/TypeScript correctly — readable and maintainable code
 
 ## Scope
 
-ใช้กับโค้ด JS/TS ที่ต้องจัดการ async/await, Promises, callbacks, event loop และ concurrency
+For JS/TS code that handles async/await, Promises, callbacks, the event loop, and concurrency
 
 ## Execute
 
 ### 1. Identify Async Pattern
 
-> Goal: ระบุลักษณะของงานที่ต้องทำ
+> Goal: Identify the nature of the work
 
-1. ดูว่า tasks เป็น sequential, parallel หรือ race condition
-2. ตรวจสอบ dependencies ระหว่าง tasks
-3. ระบุว่าจำเป็นต้อง cancel/retry/timeout หรือไม่
-4. ถ้าไม่ชัดให้ `ask-me`
+1. Determine whether tasks are sequential, parallel, or racing
+2. Check dependencies between tasks
+3. Decide whether cancel/retry/timeout is required
+4. If unclear, use `ask-me`
 
 ### 2. Choose The Right Primitive
 
-> Goal: เลือก API ที่เหมาะสมกับงาน
+> Goal: Pick the API that fits the job
 
-1. `async/await` สำหรับ sequential flow ทั่วไป
-2. `Promise.all` เมื่อต้องการ parallel และทุก task ต้องสำเร็จ
-3. `Promise.allSettled` เมื่อต้องการรู้ผลทุก task แม้บางอัน fail
-4. `Promise.race` สำหรับ timeout หรือ first-responder
-5. `AbortController` สำหรับ cancelation
+1. `async/await` for ordinary sequential flow
+2. `Promise.all` when running in parallel and every task must succeed
+3. `Promise.allSettled` when you need every result even if some fail
+4. `Promise.race` for a timeout or first-responder
+5. `AbortController` for cancellation
 
 ### 3. Implement Error Handling
 
-> Goal: จัดการ error ใน async flow
+> Goal: Handle errors in async flow
 
-1. ใช้ `try/catch` รอบ `await` หรือ `.catch()` สำหรับ Promise
-2. สร้าง custom error class ถ้าต้องการ context เพิ่ม
-3. ใช้ `Promise.allSettled` แล้ว filter rejected ถ้าต้องการ handle partial failure
-4. หลีกเลี่ยง throw ใน `.forEach` หรือ callbacks ที่ไม่มี await
+1. Use `try/catch` around `await` or `.catch()` on a Promise
+2. Create a custom error class when extra context is needed
+3. Use `Promise.allSettled` and filter rejected results for partial failures
+4. Avoid throwing inside `.forEach` or callbacks that never await
 
 ### 4. Optimize Concurrency
 
-> Goal: ควบคุมจำนวน concurrent operations
+> Goal: Control the number of concurrent operations
 
-1. ใช้ `p-limit` หรือ `AsyncPool` ถ้าต้องการ limit concurrency
-2. ใช้ queues สำหรับ backpressure
-3. ระวัง connection pool / rate limits
-4. ใช้ `Promise.all` เฉพาะที่จำเป็นจริงๆ
+1. Use `p-limit` or `AsyncPool` to cap concurrency
+2. Use queues for backpressure
+3. Watch out for connection pools / rate limits
+4. Use `Promise.all` only where truly necessary
 
 ### 5. Test Async Code
 
-> Goal: เขียน test สำหรับ async flow
+> Goal: Write tests for async flow
 
-1. ใช้ `async/await` ใน test
-2. Mock timers ถ้าต้องทดสอบ timeout/debounce
-3. ตรวจสอบ rejections ด้วย `rejects.toThrow()`
-4. รัน `run-test` เพื่อ verify
+1. Use `async/await` in tests
+2. Mock timers when testing timeout/debounce
+3. Assert rejections with `rejects.toThrow()`
+4. Run `run-test` to verify
 
 ## Rules
 
 ### 1. Avoid Callback Hell
 
-- ใช้ `async/await` แทน nested callbacks
-- ถ้าต้องใช้ callbacks ให้ใช้ named functions หรือ Promise wrapper
-- หลีกเลี่ยง `.then().then().catch()` chains ลึกๆ
+- Use `async/await` instead of nested callbacks
+- If callbacks are required, use named functions or a Promise wrapper
+- Avoid deep `.then().then().catch()` chains
 
 ### 2. Always Handle Rejections
 
-- ทุก Promise ต้องมี `.catch()` หรือ `try/catch`
-- ไม่ปล่อย unhandled promise rejection
-- Log error ที่จุดที่ถูกต้อง
+- Every Promise needs a `.catch()` or `try/catch`
+- Never leave unhandled promise rejections
+- Log errors at the right place
 
 ### 3. Be Explicit About Concurrency
 
-- ระบุว่า operations ทำงาน sequential หรือ parallel
-- ใช้ `Promise.all` อย่างระมัดระวังกับ I/O ที่มากเกินไป
-- Document สาเหตุที่เลือก pattern นั้น
+- State whether operations run sequentially or in parallel
+- Use `Promise.all` carefully to avoid excessive I/O
+- Document why each pattern was chosen
 
 ## Expected Outcome
 
-- Async code อ่านง่ายและ maintain ได้
-- ไม่มี callback hell หรือ unhandled rejection
-- Concurrency ถูกควบคุม
-- ผ่าน test และ typecheck
+- Async code is readable and maintainable
+- No callback hell or unhandled rejections
+- Concurrency is controlled
+- Passes tests and typecheck

@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare-deploy-button
-description: เพิ่ม Deploy to Cloudflare button ใน README ให้คนอื่น deploy project ได้ด้วยคลิกเดียว
+description: Add a Deploy to Cloudflare button to README so others can deploy the project in one click
 argument-hint: "[repo-url] [--subdir <path>] [--paid]"
 related:
   - create-cloudflare
@@ -16,108 +16,108 @@ related:
 
 ## Goal
 
-ทำให้ repo พร้อมใช้ Deploy to Cloudflare button — เมื่อคนอื่นกดปุ่มใน README, Cloudflare จะ clone repo ไปยัง account ของผู้กด, provision resources (KV, D1, R2) อัตโนมัติ, ตั้ง Workers Builds CI/CD และ deploy ให้ทันที
+Make the repo ready for the Deploy to Cloudflare button — when someone clicks it in the README, Cloudflare clones the repo into the clicker's account, auto-provisions resources (KV, D1, R2), sets up Workers Builds CI/CD, and deploys right away.
 
 ## Scope
 
-- รองรับเฉพาะ Workers applications เท่านั้น — Pages ไม่รองรับ
-- repo ต้อง public บน `github.com` หรือ `gitlab.com` เท่านั้น — private repo หรือ self-hosted Git ไม่รองรับ
-- ครอบคลุม: ตรวจ prerequisites, เตรียม `wrangler` config, สร้าง button URL, แทรก snippet ใน `README.md`
-- ใช้ /create-cloudflare-worker ถ้าจำเป็น
+- Workers applications only — Pages is not supported
+- The repo must be public on `github.com` or `gitlab.com` only — private repos and self-hosted Git are not supported
+- Covers: check prerequisites, prepare the `wrangler` config, build the button URL, insert the snippet into `README.md`
+- Use /create-cloudflare-worker if needed
 
 ## Execute
 
 ### 1. Verify Button Requirements
 
-> Goal: ยืนยันว่า repo ใช้ Deploy Button ได้
+> Goal: Confirm the repo can use the Deploy Button
 
-1. ตรวจ git remote ด้วย `git remote -v` — ต้องเป็น `github.com` หรือ `gitlab.com` เท่านั้น
-2. ตรวจว่า repo เป็น public — `gh repo view --json visibility` สำหรับ GitHub
-3. ตรวจ `wrangler.toml`/`wrangler.jsonc` มี `name`, `main` หรือ `[assets]` ครบ
-4. ถ้าไม่ผ่านข้อใด → report blocker และหยุด (เช่น private repo ต้องเปลี่ยนเป็น public ก่อน)
+1. Check the git remote with `git remote -v` — it must be `github.com` or `gitlab.com` only
+2. Verify the repo is public — `gh repo view --json visibility` for GitHub
+3. Check that `wrangler.toml`/`wrangler.jsonc` has `name` plus `main` or `[assets]` complete
+4. If any check fails → report the blocker and stop (e.g. a private repo must be made public first)
 
 ### 2. Prepare Worker Config
 
-> Goal: repo มี config ที่ button deploy ได้จริง
+> Goal: the repo has a config the button can really deploy
 
-1. ถ้าไม่มี `wrangler.toml`/`wrangler.jsonc` → ทำ `/follow-service-cloudflare` เพื่อสร้าง config ตาม project type (static assets, SPA, Workers API)
-2. ประกาศ bindings ทั้งหมดใน config (`[[kv_namespaces]]`, `[[d1_databases]]`, `[[r2_buckets]]`, `[[queues]]`) — Deploy flow จะ auto-provision ให้ผู้กด
-3. ถ้ามี build step → ตรวจ `package.json` มี `build` script และ output dir ตรงกับ `[assets].directory`
-4. ถ้าใช้ paid Workers features (เช่น Queues, Durable Objects) → ต้องใช้ `paid=true` ในขั้นตอนถัดไป
+1. If `wrangler.toml`/`wrangler.jsonc` is missing → run `/follow-service-cloudflare` to create the config per project type (static assets, SPA, Workers API)
+2. Declare all bindings in the config (`[[kv_namespaces]]`, `[[d1_databases]]`, `[[r2_buckets]]`, `[[queues]]`) — the Deploy flow auto-provisions them for the clicker
+3. If there is a build step → check `package.json` has a `build` script and the output dir matches `[assets].directory`
+4. If paid Workers features are used (e.g. Queues, Durable Objects) → `paid=true` is required in the next step
 
 ### 3. Build Button URL
 
-> Goal: ได้ URL ที่ถูกต้องตาม repo structure
+> Goal: get a URL correct for the repo structure
 
-1. รูปแบบหลัก:
+1. Base form:
    ```
    https://deploy.workers.cloudflare.com/?url=<git-repo-url>
    ```
-2. repo URL เอาจาก `git remote -v` — ตัด `.git` ออก เช่น `https://github.com/<owner>/<repo>`
-3. Monorepo → ระบุ subdirectory ผ่าน tree path:
+2. Take the repo URL from `git remote -v` — drop the `.git` suffix, e.g. `https://github.com/<owner>/<repo>`
+3. Monorepo → point at the subdirectory via a tree path:
    ```
    https://deploy.workers.cloudflare.com/?url=https://github.com/<owner>/<repo>/tree/<branch>/<subdir>
    ```
-   subdirectory ต้อง self-contained รวม dependencies — ไม่เช่นนั้น build จะ fail
-4. ถ้าใช้ paid features → เพิ่ม `&paid=true` ใน href และ `?paid=true` ใน image src
+   the subdirectory must be self-contained including dependencies — otherwise the build fails
+4. For paid features → add `&paid=true` to the href and `?paid=true` to the image src
 
 ### 4. Insert Snippet Into README
 
-> Goal: ปุ่มอยู่ใน README ในตำแหน่งที่เห็นง่าย
+> Goal: the button sits in the README where it is easy to see
 
-1. ถ้ามี `README.md` → แทรกใต้ title หรือใน badges row เดิม ถ้าไม่มี → ทำ `/update-readme-md` ก่อน
+1. If `README.md` exists → insert under the title or in the existing badges row; if not → run `/update-readme-md` first
 2. Markdown snippet:
    ```markdown
    [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<repo-url>)
    ```
-   หรือ HTML สำหรับ layout control:
+   Or HTML for layout control:
    ```html
    <a href="https://deploy.workers.cloudflare.com/?url=<repo-url>"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"/></a>
    ```
-3. ถ้า project deploy ผ่าน Workers Builds อยู่แล้ว → ทางเลือก: เปิด dashboard ของ Worker → กด share button แล้ว copy snippet ที่ generate ให้
-4. ตรวจว่า URL ใน snippet ตรงกับ repo จริง — ห้ามเผลอใส่ repo ตัวอย่าง
+3. If the project already deploys via Workers Builds → alternative: open the Worker dashboard → click the share button and copy the generated snippet
+4. Verify the URL in the snippet matches the real repo — never leave a placeholder repo in
 
 ### 5. Verify And Report
 
-> Goal: ยืนยันว่าปุ่มใช้งานได้
+> Goal: confirm the button works
 
-1. เปิด button URL ด้วย `/open-web` หรือ `webfetch` เพื่อดูว่า deploy flow render ถูกต้อง (แสดง repo, build config, resources ที่จะ provision)
-2. commit และ push `README.md` — ทำ `/git-commit`
-3. ทำ `/report` คอลัมน์: `No.`, `Field`, `Value` — แสดง repo URL, subdir, paid flag, resources ที่จะ auto-provision
-4. ทำ `/suggest-next-action`
+1. Open the button URL with `/open-web` or `webfetch` to check the deploy flow renders correctly (shows the repo, build config, and resources to provision)
+2. Commit and push `README.md` — run `/git-commit`
+3. Run `/report` with columns `No.`, `Field`, `Value` — show the repo URL, subdir, paid flag, and resources to auto-provision
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Platform Constraints
 
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- repo ต้อง public — ถ้า private → report และหยุด ห้ามเปลี่ยน visibility เอง
-- monorepo หลาย Workers apps → สร้าง button แยกต่อ subdirectory ห้ามใช้ปุ่มเดียว
+- Use /deploy-to-cloudflare if needed
+- The repo must be public — if private → report and stop; never change visibility yourself
+- Monorepo with several Workers apps → create a separate button per subdirectory, never one shared button
 
 ### 2. URL Correctness
 
-- `?url=` ต้องเป็น repo URL จริงที่ push ล่าสุด — verify กับ `git remote -v` เสมอ
-- subdirectory ต้อง self-contained — dependencies ที่อยู่นอก subdir ทำให้ build fail
-- `paid=true` ต้องใส่ทั้ง image src และ link href
+- `?url=` must be the real repo URL at the latest push — always verify against `git remote -v`
+- The subdirectory must be self-contained — dependencies outside the subdir make the build fail
+- `paid=true` must be set on both the image src and the link href
 
 ### 3. Secret Safety
 
-- ใช้ /README ถ้าจำเป็น
-- env vars ที่ต้องการให้ผู้กดตั้งเอง ให้ระบุใน README section `## Environment Variables`
+- Use /README if needed
+- For env vars the clicker must set themselves, list them in a README `## Environment Variables` section
 
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /create-cloudflare-worker ถ้าจำเป็น
-- ใช้ /update-readme-md ถ้าจำเป็น
+- Use /follow-service-cloudflare if needed
+- Use /create-cloudflare-worker if needed
+- Use /update-readme-md if needed
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /run-deploy ถ้าจำเป็น
-- ใช้ /ask-me ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /run-deploy if needed
+- Use /ask-me if needed
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-- `README.md` มี Deploy to Cloudflare button ที่ URL ถูกต้อง
-- repo ผ่าน prerequisites: public, Workers app, wrangler config ครบ
-- button URL เปิด deploy flow ได้จริง
-- report แสดง repo URL และ resources ที่จะ auto-provision
+- `README.md` has a Deploy to Cloudflare button with the correct URL
+- The repo passes the prerequisites: public, Workers app, complete wrangler config
+- The button URL really opens the deploy flow
+- The report shows the repo URL and the resources to auto-provision

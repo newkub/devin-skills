@@ -1,13 +1,13 @@
 ---
 title: Safety And Security Checks
-description: กฎตรวจสอบ safety และ security ของ subagent
+description: Safety and security validation rules for subagents
 ---
 
 # Safety And Security Checks
 
 ## Secrets Check
 
-ตรวจว่าไม่มี secrets หรือ credentials hardcoded ใน `AGENT.md`:
+Check that `AGENT.md` contains no hardcoded secrets or credentials:
 
 - API keys
 - passwords
@@ -17,50 +17,50 @@ description: กฎตรวจสอบ safety และ security ของ sub
 
 ### Patterns To Flag
 
-- คำว่า `password`, `secret`, `token`, `api_key` ตามด้วยค่าจริง
-- string ที่ดูเหมือน base64 หรือ hex ยาวผิดปกติ
-- ถ้าพบ → flag เป็น Critical
+- The words `password`, `secret`, `token`, `api_key` followed by a real value
+- Strings that look like base64 or unusually long hex
+- If found → flag as Critical
 
 ## Permissions Deny Risky Paths
 
-`permissions` ต้องระบุ `deny` สำหรับ system paths ที่เสี่ยง:
+`permissions` must specify `deny` for risky system paths:
 
-- `%APPDATA%` นอก scope
+- `%APPDATA%` outside scope
 - `C:\Windows`
 - `C:\Program Files`
 - `C:\Program Files (x86)`
-- `/etc`, `/usr`, `/bin` (สำหรับ Linux/macOS)
+- `/etc`, `/usr`, `/bin` (for Linux/macOS)
 - `~/.ssh`
 - `~/.aws`
 
 ### Rules
 
-- ถ้าขาด `permissions` → flag เป็น High
-- ถ้ามี `permissions` แต่ไม่มี `deny` → flag เป็น High
-- ถ้า `deny` ไม่ครอบคลุม risky paths → flag เป็น High
+- If `permissions` is missing → flag as High
+- If `permissions` exists but has no `deny` → flag as High
+- If `deny` does not cover risky paths → flag as High
 
 ## Allowed-Tools Appropriateness
 
-`allowed-tools` ต้องเหมาะสมกับ scope ของ subagent:
+`allowed-tools` must fit the subagent's scope:
 
-- ห้ามให้ tools ที่กว้างเกินจำเป็น เช่น `*` หรือ `all`
-- ห้ามให้ tools ที่เสี่ยง เช่น `exec` ถ้า subagent ไม่จำเป็นต้องรัน command
-- ถ้า `allowed-tools` กว้างเกินไป → flag เป็น Medium
+- Never grant overly broad tools such as `*` or `all`
+- Never grant risky tools such as `exec` when the subagent doesn't need to run commands
+- If `allowed-tools` is too broad → flag as Medium
 
 ## Severity Mapping
 
 | Finding | Severity |
 |---|---|
 | secrets/credentials hardcoded | Critical |
-| ขาด `permissions` หรือ `deny` | High |
-| `deny` ไม่ครอบคลุม risky paths | High |
-| `allowed-tools` กว้างเกินจำเป็น | Medium |
+| Missing `permissions` or `deny` | High |
+| `deny` does not cover risky paths | High |
+| `allowed-tools` overly broad | Medium |
 
 ## Evidence Format
 
-บันทึก finding พร้อม:
+Record each finding with:
 
-- file path ของ `AGENT.md`
-- line number ที่พบ
-- เนื้อหาที่เสี่ยง
-- action ที่แนะนำ เช่น ลบ secret, เพิ่ม `deny` path
+- file path of `AGENT.md`
+- line number where it was found
+- the risky content
+- recommended action, e.g. remove the secret, add a `deny` path

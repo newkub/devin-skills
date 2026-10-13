@@ -1,6 +1,6 @@
 ---
 name: update-create-analyze-cli
-description: สร้างหรืออัปเดต tools/analyze analyzers ให้ครอบคลุม features ปัจจุบัน 60+ categories 5 domains
+description: Create/update tools/analyze analyzers for current features: 60+ categories across 5 domains
 argument-hint: "[category-or-domain]"
 related:
   - report
@@ -12,111 +12,111 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `tools/analyze` analyzers ให้ครอบคลุม codebase features ปัจจุบัน 60+ categories 5 domains ลด false positives และ analyzer errors
+Create or update the `tools/analyze` analyzers so they cover the codebase's current features — 60+ categories across 5 domains — while reducing false positives and analyzer errors
 
 ## Scope
 
-ใช้กับ `tools/analyze` ใน monorepo โดย detect features, เพิ่ม/แก้ analyzer categories, tune rules และ validate ด้วย review CLI
+Applies to `tools/analyze` in a monorepo: detect features, add/fix analyzer categories, tune rules, and validate with the review CLI
 
 ## Execute
 
 ### 1. Detect Codebase Features
 
-> Goal: รู้ features ทีต้องวิเคราะห์
+> Goal: Know which features need analysis
 
-1. อ่าน root `package.json`, `moon.yml`, `turbo.json`
-2. สร้าง list workspaces: `apps`, `packages`, `integrations`, `tools`
-3. ระบุ tech stack: framework, database, API, auth, payments, realtime, search, integrations, notifications, mobile, AI, SEO
-4. สร้าง keyword/file patterns สำหรับแต่ละ feature
+1. Read the root `package.json`, `moon.yml`, `turbo.json`
+2. Build the list of workspaces: `apps`, `packages`, `integrations`, `tools`
+3. Identify the tech stack: framework, database, API, auth, payments, realtime, search, integrations, notifications, mobile, AI, SEO
+4. Create keyword/file patterns for each feature
 
 ### 2. Plan Analyzers
 
-> Goal: รู้ว่าต้องเพิ่ม/แก้ analyzers อะไร
+> Goal: Know which analyzers to add or change
 
-1. อ่าน `tools/analyze/src/domain/analyzers/index.ts` ดูกลุ่ม analyzers
-2. นับจำนวน categories ปัจจุบัน
-3. ระบุ categories ทีขาดหรือ score 0 แบบ false negative
-4. ระบุ categories ที mapping ผิด domain
-5. วางแผนเพิ่ม categories จนถึง 60+
+1. Read `tools/analyze/src/domain/analyzers/index.ts` to see the analyzer groups
+2. Count the current categories
+3. Identify categories that are missing or score 0 as false negatives
+4. Identify categories mapped to the wrong domain
+5. Plan the additions to reach 60+ categories
 
 ### 3. Implement Analyzers
 
-> Goal: เพิ่ม/แก้ analyzer code
+> Goal: Add/change analyzer code
 
-1. แก้ regex ให้รองรับ Windows และ Unix paths ด้วย `[\/]`
-2. normalize paths ใน context loader ถ้าจำเป็น
-3. เพิ่ม analyzer functions ใน group files เช่น `features.ts`, `architecture.ts`, `security.ts`
-4. เพิ่ม `Finding` พร้อม `evidence`: file path, line, message, severity
-5. กำหนด `reviewWorkflow` ให้ถูกต้อง
-6. ใช้ `countMatches`, `matchStats`, `countWordOccurrences` จาก `helpers.ts`
+1. Fix the regexes to handle both Windows and Unix paths using `[\/]`
+2. Normalize paths in the context loader when needed
+3. Add analyzer functions to the group files, e.g. `features.ts`, `architecture.ts`, `security.ts`
+4. Add a `Finding` with `evidence`: file path, line, message, severity
+5. Set the correct `reviewWorkflow`
+6. Use `countMatches`, `matchStats`, `countWordOccurrences` from `helpers.ts`
 
 ### 4. Tune Rules
 
-> Goal: ลด false positives และ analyzer errors
+> Goal: Reduce false positives and analyzer errors
 
-1. ตรวจ regex patterns ว่า match ถูกต้องบน Windows
-2. ใช้ `try/catch` ใน analyzer functions ไม่ให้ crash
-3. ตรวจ exceptions ถูกจับใน `runAllAnalyzers`
-4. ลด false positives ด้วย stricter patterns
-5. ตรวจ `analyzerErrors` ใน report
+1. Check that the regex patterns match correctly on Windows
+2. Wrap analyzer functions in `try/catch` so they cannot crash
+3. Check that exceptions are caught in `runAllAnalyzers`
+4. Reduce false positives with stricter patterns
+5. Check `analyzerErrors` in the report
 
 ### 5. Validate
 
-> Goal: ยื่นยันว่า analyzers ทำงาน
+> Goal: Confirm the analyzers work
 
-1. รัน `bun --filter tools-analyze lint`
-2. รัน `bun --filter tools-analyze typecheck`
-3. รัน `bun --filter tools-analyze test`
-4. รัน `bun --filter tools-review-codebase review-codebase`
-5. ถ้า fail → `/resolve-errors` แล้วแก้ (max 3)
+1. Run `bun --filter tools-analyze lint`
+2. Run `bun --filter tools-analyze typecheck`
+3. Run `bun --filter tools-analyze test`
+4. Run `bun --filter tools-review-codebase review-codebase`
+5. If it fails → `/resolve-errors` then fix (max 3)
 
 ### 6. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ทำ `/report` แสดง categories ก่อน/หลัง, score, falsePositiveRate
-2. ทำ `/suggest-next-action`
+1. Run `/report` showing categories before/after, score, falsePositiveRate
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Path Compatibility
 
-- ใช้ regex `[\/]` แทน `\` หรือ `/` ตรงๆ
-- normalize paths ก่อน match ถ้าได้
-- ทดสอบบน Windows และ Unix paths
+- Use the regex `[\/]` instead of a literal `\` or `/`
+- Normalize paths before matching where possible
+- Test on both Windows and Unix paths
 
 ### 2. Evidence-Based
 
-- ทุก finding ต้องมี file path
-- ใช้ metrics จริงจาก codebase
-- ไม่เดา
+- Every finding must have a file path
+- Use real metrics from the codebase
+- No guessing
 
 ### 3. Category Count
 
 - target 60+ categories
-- categories ต้องกระจายทั่ว 5 domains
-- ไม่รวม category ซ้ำ
+- categories must spread across all 5 domains
+- no duplicate categories
 
 ### 4. No Crash
 
-- จับ exceptions ใน `runAllAnalyzers`
-- ใช้ safe access
-- ไม่ throw จาก analyzer
+- Catch exceptions in `runAllAnalyzers`
+- Use safe access
+- Never throw from an analyzer
 
 ### 5. Minimal
 
-- แก้เฉพาะ categories ที metrics ระบุ
-- ไม่ rewrite analyzers ทั้งหมด
-- reuse helpers
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Change only the categories the metrics point to
+- Do not rewrite all the analyzers
+- Reuse the helpers
+- Use /deep-test cli if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- `tools/analyze` มี 60+ categories
-- categories ครอบคลุม features ปัจจุบัน
+- `tools/analyze` has 60+ categories
+- The categories cover the current features
 - falsePositiveRate <= 20%
 - analyzerErrors = 0
 - review score >= 70
-- build, typecheck, tests ผ่าน
+- build, typecheck, tests pass

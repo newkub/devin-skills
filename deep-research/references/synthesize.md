@@ -2,13 +2,13 @@
 
 ## Goal
 
-รวบรวมและสรุปผลการค้นหา
+Collect and summarize the search results
 
 ## Steps
 
-1. จัดกลุ่ม findings ตามหมวดหมู่
-2. เรียงลำดับตามความสำคัญและความเกี่ยวข้อง
-3. ระบุ source และปีของแต่ละ finding
-4. สรุป key takeaways 2-5 ข้อ
-5. ระบุ gaps ที่ยังไม่พบข้อมูล
-6. ถ้ามี gaps สำคัญ ให้ใช้ `/ask-me` เพื่อถามผู้ใช้ หรือค้นหาเพิ่ม
+1. Group findings by category
+2. Order them by importance and relevance
+3. Record the source and year of each finding
+4. Summarize 2-5 key takeaways
+5. Note gaps where no data was found
+6. If there are critical gaps, use `/ask-me` to ask the user or search further

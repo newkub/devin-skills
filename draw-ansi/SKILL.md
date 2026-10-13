@@ -1,6 +1,6 @@
 ---
 name: draw-ansi
-description: วาด/ปรับ ANSI box-drawing ให้กล่องภายนอกมีขนาดเท่ากัน ไม่เพี้ยน
+description: Draw/fix ANSI box-drawing so outer boxes are uniform width and never distorted
 argument-hint: "[input]"
 related:
   - draw-svg-image
@@ -10,20 +10,20 @@ related:
 
 ## Goal
 
-สร้างหรือปรับ ANSI box-drawing ให้มีกล่องภายนอก (outer box) ทีกว้างเท่ากันทุกบรรทัด ขอบขวาตรงกัน และไม่เพี้ยนจากเนื้อหาภายใน
+Create or fix ANSI box-drawing so every outer box has uniform width across all lines, with aligned right borders and no distortion of the inner content
 
 ## Scope
 
-ใช้สำหรับ:
-- สร้าง ` ```text ` codeblock สำหรับ README UI/CLI sketch
-- ตรวจสอบและซ่อม ANSI drawing ทีมีบรรทัดไม่เท่ากัน
-- ห่มเนื้อหา (text หรือ nested box) ด้วย outer box ทีขนาดคงที
+Use for:
+- Creating ` ```text ` codeblocks for README UI/CLI sketches
+- Checking and repairing ANSI drawings with uneven lines
+- Wrapping content (text or nested boxes) in an outer box of constant size
 
 ## Execute
 
 ### 1. Install / Run
 
-> Goal: รัน `draw-ansi` script
+> Goal: Run the `draw-ansi` script
 
 ```bash
 bunx /path/to/draw-ansi/scripts/draw-ansi.ts [options] < input.txt
@@ -33,60 +33,60 @@ bunx /path/to/draw-ansi/scripts/draw-ansi.ts --fix --width 60 existing-box.txt
 
 ### 2. Input Modes
 
-> Goal: รองรับทุกรูปแบบ input ของ box
+> Goal: Support every box input mode
 
-1. Plain lines: บรรทัดปกติ ไม่มี border → สคริปต์จะห่มด้วย outer box
-2. Existing box: บรรทัดเริ่มต้นด้วย `│` หรือ `┌`/`└` → สคริปต์จะลอง detect กล่องเดิม แล้ว wrap ใหม่
+1. Plain lines: normal lines without a border → the script wraps them in an outer box
+2. Existing box: lines start with `│` or `┌`/`└` → the script tries to detect the original box, then rewraps it
 
 ### 3. Output Modes
 
-> Goal: รองรับทุกรูปแบบ output ของ box
+> Goal: Support every box output mode
 
-- `--format text` (default): ข้อความธรรมดา เอาไปใส่ ` ```text ` block
-- `--format markdown`: ห่มด้วย ` ```text ` block พร้อม
+- `--format text` (default): plain text, put it into a ` ```text ` block
+- `--format markdown`: wrapped in a ` ```text ` block, ready to use
 
 ### 4. Options
 
-> Goal: ระบุ options ที่รองรับ
+> Goal: Specify the supported options
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `--width` | ความกว้างภายในกล่อง (ไม่รวม border) | 58 หรือ auto |
-| `--title` | ใส่ title บรรทัดแรก | none |
-| `--fix` | ซ่อม existing box ให้ขนาดเท่ากัน | false |
-| `--format` | `text` หรือ `markdown` | text |
+| `--width` | Inner box width (excluding borders) | 58 or auto |
+| `--title` | Add a title on the first line | none |
+| `--fix` | Fix an existing box to uniform size | false |
+| `--format` | `text` or `markdown` | text |
 
 ## Rules
 
 ### 1. Uniform Width
 
-- ทุกบรรทัดใน output ต้องมีความกว้างเท่ากันพอดี
-- ถ้าเนื้อหายาวเกิน `--width` ให้ตัด (truncate) หรือเตือน
-- ถ้าเนื้อหาสั้นกว่า `--width` ให้ pad space ทางขวา
+- Every line in the output must be exactly the same width
+- If content exceeds `--width`, truncate it or warn
+- If content is shorter than `--width`, pad spaces on the right
 
 ### 2. Outer Box
 
-- ขอบบน: `┌` + `─` × width + `┐`
-- ขอบล่าง: `└` + `─` × width + `┘`
-- ขอบซ้าย/ขวา: `│` + content (padded) + `│`
+- Top border: `┌` + `─` × width + `┐`
+- Bottom border: `└` + `─` × width + `┘`
+- Left/right borders: `│` + content (padded) + `│`
 
 ### 3. Nested Box Support
 
-- ถ้าภายในมี nested box ที่กว้างกว่า `--width` ให้ expand outer box ให้พอ หรือ warn
-- ไม่ทำให้ nested box หด/เพี้ยน ยกเว้นต้อง truncate
+- If a nested box inside is wider than `--width`, expand the outer box to fit or warn
+- Never shrink/distort the nested box, unless truncation is required
 
 ### 4. No Distortion
 
-- ไม่เพี้ยนจากตัวอักษรพิเศษหรือ emoji
-- ไม่ใช้ ` ```ansi ` block
-- output พร้อมใช้ใน README ` ```text ` block ทันที
-- ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /draw-excalidraw ถ้าจำเป็น
-- ใช้ /draw-tldraw ถ้าจำเป็น
+- No distortion from special characters or emoji
+- Do not use a ` ```ansi ` block
+- Output is ready to drop into a README ` ```text ` block immediately
+- Use /draw-svg-image if needed
+- Use /draw-excalidraw if needed
+- Use /draw-tldraw if needed
 
 ## Expected Outcome
 
-- บรรทัดทุกบรรทัดใน ANSI box มีความกว้างเท่ากัน
-- ขอบขวาตรงกัน
-- outer box ไม่เพี้ยนจากเนื้อหาภายใน
-- สามารถนำไปวางใน README ได้ทันที
+- Every line in the ANSI box has the same width
+- Right borders align
+- The outer box does not distort the inner content
+- Ready to paste into a README immediately

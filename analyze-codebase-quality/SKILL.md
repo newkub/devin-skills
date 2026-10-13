@@ -1,6 +1,6 @@
 ---
 name: analyze-codebase-quality
-description: วิเคราะห์คุณภาพของ codebase ด้วย analyze-codebase-quality CLI
+description: Analyze codebase quality with the analyze-codebase-quality CLI
 argument-hint: "[scope]"
 related:
   - deep-validate
@@ -12,49 +12,49 @@ related:
 
 ## Goal
 
-วิเคราะห์คุณภาพของ codebase ด้วย `analyze-codebase-quality` CLI
+Analyze codebase quality with the `analyze-codebase-quality` CLI
 
 ## Scope
 
-ใช้กับ TypeScript/JavaScript projects ทีต้องการ report คุณภาพ 8 มิติ
+For TypeScript/JavaScript projects that need an 8-dimension quality report
 
 ## Execute
 
 ### 1. Install
 
-> Goal: ติดตั้ง CLI
+> Goal: Install the CLI
 
-1. `bun add -g github:newkub/analyze-codebase-quality` — ไม่มีบน npm (verified 2026-09-12)
-2. หรือ clone `https://github.com/newkub/analyze-codebase-quality.git` แล้ว `bun install && bun run build`
+1. `bun add -g github:newkub/analyze-codebase-quality` — not on npm (verified 2026-09-12)
+2. Or clone `https://github.com/newkub/analyze-codebase-quality.git` then `bun install && bun run build`
 
 ### 2. Analyze
 
-> Goal: รัน analyzer บน target project
+> Goal: Run the analyzer on the target project
 
-1. ระบุ target path จาก user
-2. รันคำสั่ง `analyze-codebase-quality <path>`
-3. ถ้า CLI มีปัญหา → แจ้ง error ให้ user
+1. Get the target path from the user
+2. Run `analyze-codebase-quality <path>`
+3. If the CLI fails → report the error to the user
 
 ### 3. Validate And Report
 
-> Goal: สรุปผลและ validate
+> Goal: Summarize results and validate
 
-1. ทำ `/deep-validate` เพื่อตรวจ output
-2. ทำ `/report` ถ้ามีตาราง
-3. ทำ `/suggest-next-action`
+1. Run `/deep-validate` to check the output
+2. Run `/report` if there are tables
+3. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. CLI
 
-- `analyze-codebase-quality` เป็น source of truth
-- ถ้าไม่สามารถเรียก CLI ได้ → ติดตั้งหรือ build ก่อน
-- ไม่เกิน 250 บรรทัด
+- `analyze-codebase-quality` is the source of truth
+- If the CLI cannot be invoked → install or build it first
+- Keep under 250 lines
 
-- ใช้ /check-code-structure ถ้าจำเป็น — `sg outline` เติม symbol-level metrics (top-level symbols, exports, members) ที่ CLI ไม่ครอบ
+- Use /check-code-structure if needed — `sg outline` adds the symbol-level metrics (top-level symbols, exports, members) the CLI doesn't cover
 
 ## Expected Outcome
 
-- Report คุณภาพ codebase พร้อม evidence
-- ตาราง summary
-- Next action ทีชัดเจน
+- Codebase quality report with evidence
+- Summary table
+- Clear next action

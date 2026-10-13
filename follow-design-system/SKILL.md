@@ -1,6 +1,6 @@
 ---
 name: follow-design-system
-description: Design system principles พื้นฐานที่ใช้ได้กับทุก platform (TUI, Web, Desktop, Mobile)
+description: Fundamental design system principles applicable to every platform (TUI, Web, Desktop, Mobile)
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
@@ -11,82 +11,82 @@ related:
 
 ## Goal
 
-ใช้ design system principles ที่ universal ใช้ได้กับทุก platform เพื่อ consistency และ maintainability
+Apply universal design system principles across every platform for consistency and maintainability
 
 ## Scope
 
-ครอบคลุม design tokens, component guidelines, และ platform-specific adaptations สำหรับ TUI, Web, Desktop, และ Mobile
+Covers design tokens, component guidelines, and platform-specific adaptations for TUI, Web, Desktop, and Mobile
 
-ดูเพิ่มเติม: /deep-review
+See also: /deep-review
 
 ## Execute
 
 ### 1. Define Design Tokens
 
-> Goal: กำหนด visual, interaction, และ language tokens
+> Goal: define visual, interaction, and language tokens
 
-1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
-2. กำหนด interaction tokens: transitions, animations, cursors
-3. กำหนด language tokens: terminology, tone of voice, iconography
-4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss` สำหรับ UnoCSS setup และ `/follow-unocss-theme` สำหรับ theme.css token layer + enforcement
+1. Define visual tokens: colors, typography, spacing, shadows, borders
+2. Define interaction tokens: transitions, animations, cursors
+3. Define language tokens: terminology, tone of voice, iconography
+4. If the project uses UnoCSS, do `/follow-lib-unocss` for UnoCSS setup and `/follow-unocss-theme` for the theme.css token layer + enforcement
 
 ### 2. Create Component Guidelines
 
-> Goal: สร้างและ document reusable components
+> Goal: build and document reusable components
 
-1. สร้าง reusable components ด้วย atomic design (atoms → molecules → organisms)
-2. ใช้ design tokens สำหรับทุก component
-3. Document ทุก component และ pattern
-4. กำหนด component variants (sizes, states, colors)
-5. ทำ `/capture` เพื่อบันทึกภาพ component แต่ละตัวสำหรับ documentation
+1. Build reusable components with atomic design (atoms → molecules → organisms)
+2. Use design tokens for every component
+3. Document every component and pattern
+4. Define component variants (sizes, states, colors)
+5. Run `/capture` to record a screenshot of each component for documentation
 
 ### 3. Apply To Platforms
 
-> Goal: แปลง tokens และ guidelines ตาม platform
+> Goal: adapt tokens and guidelines per platform
 
-1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
-2. ถ้า project เป็น web ทำ `/deep-review` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/deep-review`
-4. ถ้า project มี TUI ทำ `/deep-review`
+1. Adapt tokens to platform constraints (see the table below)
+2. If the project is web, do `/deep-review` for web-specific guidelines
+3. If the project has mobile, do `/deep-review`
+4. If the project has TUI, do `/deep-review`
 
 ### 4. Ensure Accessibility
 
-> Goal: ตรวจสอบและ implement accessibility สำหรับทุก platform
+> Goal: review and implement accessibility for every platform
 
-1. ทำตาม WCAG 2.2 guidelines สำหรับทุก platform
-2. รองรับ keyboard navigation
-3. รองรับ screen readers
-4. ตรวจสอบ color contrast ratio
+1. Follow WCAG 2.2 guidelines on every platform
+2. Support keyboard navigation
+3. Support screen readers
+4. Check color contrast ratio
 
 ### 5. Test And Validate
 
-> Goal: ทดสอบ design system บนทุก platform
+> Goal: test the design system on every platform
 
-1. ทดสอบ visual consistency ทุก platform
-2. ทดสอบ component reusability
-3. ทดสอบ accessibility compliance
-4. ทดสอบ responsive behavior
+1. Test visual consistency across all platforms
+2. Test component reusability
+3. Test accessibility compliance
+4. Test responsive behavior
 
 ## Rules
 
 ### 1. Consistency
 
-- Visual consistency: colors, typography, spacing สม่ำเสมอ
-- Interaction consistency: patterns ซ้ำๆ ใช้วิธีเดียวกัน
-- Language consistency: terminology, tone of voice สม่ำเสมอ
+- Visual consistency: colors, typography, spacing applied uniformly
+- Interaction consistency: repeated patterns use the same approach
+- Language consistency: terminology, tone of voice applied uniformly
 
 ### 2. Scalability
 
-- Component-based: สร้าง reusable components
-- Token-based: ใช้ design tokens (colors, spacing, etc.)
-- Documentation: document ทุก component และ pattern
+- Component-based: build reusable components
+- Token-based: use design tokens (colors, spacing, etc.)
+- Documentation: document every component and pattern
 
 ### 3. Accessibility
 
-- WCAG compliance: ทำตามมาตรฐาน WCAG 2.2 accessibility
-- Keyboard navigation: รองรับ keyboard
-- Screen reader support: รองรับ screen readers
-- Color contrast: contrast ratio ถูกต้อง
+- WCAG compliance: follow the WCAG 2.2 accessibility standard
+- Keyboard navigation: support keyboard
+- Screen reader support: support screen readers
+- Color contrast: correct contrast ratio
 
 ### 4. Platform Adaptations
 
@@ -99,18 +99,18 @@ related:
 
 ### 5. Naming Conventions
 
-- PascalCase สำหรับ components
-- camelCase สำหรับ props และ variables
-- kebab-case สำหรับ CSS classes
-- UPPER_SNAKE_CASE สำหรับ constants
+- PascalCase for components
+- camelCase for props and variables
+- kebab-case for CSS classes
+- UPPER_SNAKE_CASE for constants
 
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /deep-review if needed
 
 ## Expected Outcome
 
-- Design tokens ที่สม่ำเสมอ
-- Component library ที่ reusable
-- Documentation ครบถ้วน
+- Consistent design tokens
+- Reusable component library
+- Complete documentation
 - Cross-platform consistency
 - Accessibility compliance
 

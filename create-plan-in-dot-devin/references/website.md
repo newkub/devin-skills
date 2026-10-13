@@ -18,4 +18,4 @@
 
 ## Description
 
-สร้างแผนฟีเจอร์พร้อมคะแนน scoring แล้วเขียนลง `.devin/temp/plan/<workspace>` พร้อมเปิดใน editor
+Generate a feature plan with scoring scores, write it to `.devin/temp/plan/<workspace>`, and open it in the editor

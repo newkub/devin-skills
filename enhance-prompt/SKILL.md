@@ -1,6 +1,6 @@
 ---
 name: enhance-prompt
-description: สรุป prompt เป็น numbered list แต่ละข้อ single responsibility เพื่อดำเนินการต่อชัดเจน
+description: Summarize a prompt into a numbered list, one single responsibility per item, for clear follow-up
 argument-hint: "[scope]"
 related:
   - ask-me
@@ -14,75 +14,75 @@ related:
 
 ## Goal
 
-สรุป prompt ของผู้ใช้เป็น numbered list โดยแต่ละข้อมีหน่วยงานเดียว (single responsibility) เพื่อให้ทีมหรือ agent ดำเนินการต่อได้ชัดเจน
+Summarize the user's prompt into a numbered list where each item has one single responsibility, so the team or agent can act on it clearly
 
 ## Scope
 
-ใช้หลังรับ prompt ทันที ก่อนวางแผนหรือลงมือ implement เพื่อแยกข้อกำหนดออกเป็นรายการทีไม่ซ้อนทับกัน
+Use right after receiving a prompt, before planning or implementing, to split requirements into non-overlapping items
 
 ## Execute
 
 ### 1. Parse Prompt
 
-> Goal: เข้าใจความต้องการทีผู้ใช้ระบุ
+> Goal: understand what the user asked for
 
-1. อ่าน prompt ล่าสุดของผู้ใช้จาก context
-2. ระบุ goal หลัก ขอบเขตงาน และสิ่งทีคาดหวัง
-3. ระบุ constraints, references, หรือ files ทีเกี่ยวข้อง
+1. Read the user's latest prompt from context
+2. Identify the main goal, scope of work, and expectations
+3. Identify constraints, references, or related files
 
 ### 2. Decompose Into Single Responsibilities
 
-> Goal: แยก prompt ออกเป็นหน่วยงานทีเล็กทีสุด
+> Goal: split the prompt into the smallest units
 
-1. แยกแต่ละคำสั่งหรือคำขอออกเป็นข้อๆ
-2. ตรวจสอบว่าแต่ละข้อทำสิ่งเดียวเท่านั้น (one thing per item)
-3. ถ้าข้อไหนมีหลายงาน → แบ่งย่อยอีก
-4. เรียงลำดับตาม dependency หรือลำดับการทำงานทีเหมาะสม
+1. Break each instruction or request into separate items
+2. Check that each item does exactly one thing (one thing per item)
+3. If an item contains multiple tasks → split it further
+4. Order items by dependency or a sensible execution sequence
 
 ### 3. Format As Numbered List
 
-> Goal: นำเสนอผลลัพธ์ในรูปแบบเข้าใจง่าย
+> Goal: present the result in an easy-to-understand format
 
-1. สรุปแต่ละข้อด้วยประโยคสั้น กระชับ ชัดเจน
-2. ใช้รูปแบบ `1. <responsibility> — <short detail>`
-3. แต่ละข้อต้องมี single responsibility ชัดเจน
-4. จัดลำดับตาม prepare → read → research → analyze → write → validate → report ถ้าเป็นไปได้
+1. Summarize each item in a short, concise, clear sentence
+2. Use the format `1. <responsibility> — <short detail>`
+3. Each item must have a clear single responsibility
+4. Order by prepare → read → research → analyze → write → validate → report where possible
 
 ### 4. Hand Off
 
-> Goal: พร้อมให้ step ถัดไปรับผิดชอบ
+> Goal: ready for the next step to take over
 
-1. แสดง numbered list ในแชททันที
-2. ไม่ลงมือ implement หรือแก้ไขไฟล์ใดๆ ในขั้นตอนนี้
-3. ถ้า prompt ไม่ชัดเจน → ใช้ `/ask-me` ก่อนสรุป
+1. Show the numbered list in chat immediately
+2. Do not implement or edit any files in this step
+3. If the prompt is unclear → use `/ask-me` before summarizing
 
 ## Rules
 
 ### 1. Single Responsibility Per Item
 
-- ข้อเดียวทำสิ่งเดียว ห้ามรวมหลายคำขอในข้อเดียว
-- ถ้าพบคำว่า "และ" หรือ "," หลายตัวในข้อเดียว → แบ่งย่อย
+- One item does one thing; never combine multiple requests in one item
+- If an item contains several "and" or "," → split it further
 
 ### 2. Preserve Original Intent
 
-- รักษาความหมายและข้อกำหนดดั้งเดิมของ prompt
-- ไม่เพิ่ม scope หรือลด scope โดยไม่มีเหตุผล
+- Keep the original meaning and requirements of the prompt
+- Never expand or shrink scope without reason
 
 ### 3. Use Same Language As User
 
-- ใช้ภาษาเดียวกับ prompt ต้นทาง (ไทยหรืออังกฤษ)
-- ไม่สลับภาษาระหว่างข้อ
+- Use the same language as the source prompt (Thai or English)
+- Never switch languages between items
 
 ### 4. No Execution
 
-- ไม่แก้ไขไฟล์ ไม่รัน commands และไม่ลงมือ implement
-- เป็นเพียงการสรุป prompt เท่านั้น
-- ใช้ /reframe ถ้าจำเป็น
+- Do not edit files, run commands, or implement anything
+- This is only a prompt summary
+- Use /reframe if needed
 
 ## Expected Outcome
 
-- Numbered list ทีอ่านง่าย แต่ละข้อมี single responsibility
-- ไฟล์/งานที่เกี่ยวข้องระบุชัดเจน
-- ข้อกำหนดของผู้ใช้ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
-- พร้อมส่งต่อให้ `/plan`, `/continue`, หรือ `/follow-devin-global-skills` ต่อไป
+- A readable numbered list with a single responsibility per item
+- Related files/tasks clearly identified
+- The user's requirements fully conveyed without additions or omissions
+- Ready to hand off to `/plan`, `/continue`, or `/follow-devin-global-skills`
 

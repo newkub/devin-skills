@@ -1,6 +1,6 @@
 ---
 name: cleanup-docker
-description: ล้าง Docker images, containers, volumes และ build cache ที่ไม่ใช้เพื่อคืนพื้นที่
+description: Remove unused Docker images, containers, volumes, and build cache to reclaim disk space
 argument-hint: "[--images|--volumes|--all]"
 related:
   - ask-me
@@ -10,81 +10,81 @@ related:
 
 ## Goal
 
-ล้าง Docker resources ที่ไม่ใช้แล้ว — dangling images, stopped containers, unused volumes, build cache — เพื่อคืนพื้นที่ disk อย่างปลอดภัย
+Clean up unused Docker resources — dangling images, stopped containers, unused volumes, build cache — to safely reclaim disk space
 
 ## Scope
 
-- ครอบคลุม: `docker system`, images, containers, volumes, build cache, networks
-- Destructive: ต้อง dry-run (แสดง reclaimable) + user confirmation ก่อนลบ
-- ข้าม: running containers, volumes ที่ mount อยู่, images ที่ใช้ล่าสุด
+- Covers: `docker system`, images, containers, volumes, build cache, networks
+- Destructive: requires a dry run (show reclaimable) + user confirmation before deleting
+- Skip: running containers, mounted volumes, recently used images
 
 ## Execute
 
 ### 1. Survey Usage
 
-> Goal: วัดพื้นที่และ resources ปัจจุบัน
+> Goal: Measure current space and resources
 
-1. `docker system df` — ดู reclaimable space แยกตามประเภท
-2. `docker images`, `docker ps -a`, `docker volume ls`, `docker network ls` — รวบรวมทั้งหมด
-3. `docker builder du` — ดู build cache breakdown
+1. `docker system df` — view reclaimable space by category
+2. `docker images`, `docker ps -a`, `docker volume ls`, `docker network ls` — gather everything
+3. `docker builder du` — view build cache breakdown
 
 ### 2. Classify Candidates
 
-> Goal: แยกสิ่งที่ลบได้ออกจากที่ต้องเก็บ
+> Goal: Separate deletable items from those to keep
 
-1. Safe: dangling images (`<none>`), stopped containers >N วัน, unused networks, build cache
-2. Caution: tagged images ที่ไม่มี container ใช้, volumes ที่ไม่ attach
-3. Keep: running containers, volumes ที่ mount, images ของ active projects, base images ล่าสุด
-4. เช็ค volumes กับ compose files ใน project — named volumes อาจมี data สำคัญ
+1. Safe: dangling images (`<none>`), stopped containers older than N days, unused networks, build cache
+2. Caution: tagged images with no container using them, unattached volumes
+3. Keep: running containers, mounted volumes, images of active projects, recent base images
+4. Cross-check volumes against compose files in the project — named volumes may hold important data
 
 ### 3. Dry-Run Report
 
-> Goal: แสดงสิ่งที่จะลบและพื้นที่ที่จะคืน
+> Goal: Show what will be deleted and the space reclaimed
 
-1. ใช้ table: `No.`, `Resource`, `Type`, `Size`, `Last Used`, `Safe`
-2. สรุป reclaimable total จาก `docker system df`
-3. รอ user confirmation ผ่าน `/ask-me` ก่อนลบ
+1. Use a table: `No.`, `Resource`, `Type`, `Size`, `Last Used`, `Safe`
+2. Summarize the reclaimable total from `docker system df`
+3. Wait for user confirmation via `/ask-me` before deleting
 
 ### 4. Clean
 
-> Goal: ลบตาม scope ที่ confirm
+> Goal: Delete according to the confirmed scope
 
 1. `docker container prune` — stopped containers
-2. `docker image prune` — dangling; `docker image prune -a` เฉพาะถ้า user เลือก
-3. `docker volume prune` — เฉพาะหลังยืนยันว่าไม่มี data สำคัญ
+2. `docker image prune` — dangling; `docker image prune -a` only if the user opts in
+3. `docker volume prune` — only after confirming no important data
 4. `docker builder prune` — build cache
 5. `docker network prune` — unused networks
-6. หรือ `docker system prune` ตาม scope — อย่าใส่ `-a`/`--volumes` ถ้าไม่ได้ confirm ชัดเจน
+6. Or `docker system prune` per scope — never add `-a`/`--volumes` without explicit confirmation
 
 ### 5. Verify
 
-> Goal: ยืนยันพื้นที่คืนและไม่มีอะไรพัง
+> Goal: Confirm space reclaimed and nothing broke
 
-1. `docker system df` อีกครั้ง — เทียบ reclaimable ก่อน/หลัง
-2. ยืนยัน running containers ยังทำงาน — `docker ps`
-3. รายงานพื้นที่ที่คืนได้จริง
+1. `docker system df` again — compare reclaimable before/after
+2. Confirm running containers still work — `docker ps`
+3. Report the space actually reclaimed
 
 ## Rules
 
 ### 1. Confirmation Required
 
-- ห้าม prune โดยไม่แสดง reclaimable ก่อนและได้รับยืนยัน
-- `prune -a` และ `--volumes` เป็น destructive มาก — ต้อง explicit approval แยก
+- Never prune without showing reclaimable first and getting confirmation
+- `prune -a` and `--volumes` are highly destructive — they require separate explicit approval
 
 ### 2. Data Safety
 
-- volumes อาจมี database data — ตรวจก่อนลบเสมอ
-- ถ้าไม่แน่ใจว่า volume สำคัญไหม → เก็บไว้และ flag ให้ user ตัดสินใจ
+- Volumes may hold database data — always check before deleting
+- If unsure whether a volume matters → keep it and flag it for the user to decide
 
 ### 3. Evidence-Based
 
-- รายงานขนาดจริงจาก `docker system df` ไม่ใช่คาดเดา
-- ระบุ last-used หรือ created date เมื่อช่วยตัดสินใจได้
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Report actual sizes from `docker system df`, not guesses
+- Include last-used or created date when it helps the decision
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- พื้นที่ disk คืนตามที่รายงาน พร้อมตัวเลขจริง
-- ไม่มี running services หรือ data สำคัญที่ถูกลบ
-- รายการ resources ที่เก็บไว้พร้อมเหตุผล
+- Disk space reclaimed as reported, with real numbers
+- No running services or important data deleted
+- List of kept resources with reasons

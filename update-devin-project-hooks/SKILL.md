@@ -1,6 +1,6 @@
 ---
 name: update-devin-project-hooks
-description: สร้างและอัปเดต .devin/hooks TypeScript scripts และ hooks.json ตาม project
+description: Create and update .devin/hooks TypeScript scripts and hooks.json per project
 argument-hint: "[hook-event]"
 related:
   - update-devin
@@ -11,42 +11,42 @@ related:
 
 ## Goal
 
-สร้างและอัปเดต `.devin/hooks/` directory พร้อม TypeScript scripts และ `hooks.json` ตาม project events
+Create and update the `.devin/hooks/` directory with TypeScript scripts and `hooks.json` per project events
 
 ## Scope
 
-ใช้สำหรับ project-level hooks เช่น `post_write_code` สำหรับ lint, typecheck, format หลังจาก agent เขียน code
+Use for project-level hooks such as `post_write_code` for lint, typecheck, format after the agent writes code
 
 ## Execute
 
 ### 1. Analyze Project
 
-> Goal: รู้ events และ commands ทีต้องใช้
+> Goal: learn the events and commands needed
 
-1. อ่าน root `package.json` scripts
-2. อ่าน `AGENTS.md` ถ้ามี
-3. ระบุ lint, typecheck, format, test commands
-4. ตรวจ `.devin/hooks/` ทีมีอยู่
+1. Read the root `package.json` scripts
+2. Read `AGENTS.md` if present
+3. Identify the lint, typecheck, format, test commands
+4. Check the existing `.devin/hooks/`
 
 ### 2. Create Or Update Hooks
 
-> Goal: สร้าง hooks directory และ scripts
+> Goal: create the hooks directory and scripts
 
-1. สร้าง `.devin/hooks/` ถ้ายังไม่มี
-2. สร้าง `run-lint.ts`, `run-typecheck.ts` ถ้าจำเป็น
-3. ใช้ shebang `#!/usr/bin/env bun`
-4. Parse JSON input จาก stdin
-5. ใช้ `try/catch` สำหรับ error handling
-6. ใช้ `process.exit(0)` สำหรับ success, `process.exit(1)` สำหรับ failure
+1. Create `.devin/hooks/` if it doesn't exist
+2. Create `run-lint.ts`, `run-typecheck.ts` as needed
+3. Use the shebang `#!/usr/bin/env bun`
+4. Parse JSON input from stdin
+5. Use `try/catch` for error handling
+6. Use `process.exit(0)` for success, `process.exit(1)` for failure
 
 ### 3. Configure hooks.json
 
-> Goal: register hooks กับ events
+> Goal: register hooks with events
 
-1. สร้าง `.devin/hooks/hooks.json`
-2. ระบุ `post_write_code` สำหรับ `run-lint.ts`
-3. ใช้ `show_output: true`
-4. ตัวอย่าง:
+1. Create `.devin/hooks/hooks.json`
+2. Set `post_write_code` for `run-lint.ts`
+3. Use `show_output: true`
+4. Example:
 
 ```json
 {
@@ -58,55 +58,55 @@ related:
 
 ### 4. Validate
 
-> Goal: ยื่นยันว่า hooks ทำงาน
+> Goal: confirm the hooks work
 
-1. รัน `bun .devin/hooks/run-lint.ts` ด้วย sample input
-2. ตรวจ exit code
-3. ตรวจ JSON syntax
-4. ถ้า fail → `/resolve-errors`
+1. Run `bun .devin/hooks/run-lint.ts` with sample input
+2. Check the exit code
+3. Check the JSON syntax
+4. If it fails → `/resolve-errors`
 
 ### 5. Report
 
-> Goal: สรุปผล
+> Goal: summarize results
 
-1. ทำ `/report` แสดง hook event, script, status
-2. ทำ `/suggest-next-action`
+1. Run `/report` showing hook event, script, status
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. TypeScript And Bun
 
-- ใช้ `bun` runtime เท่านั้น
-- ใช้ TypeScript สำหรับ scripts
-- มี shebang
+- Use the `bun` runtime only
+- Use TypeScript for scripts
+- Include a shebang
 
 ### 2. Parse stdin
 
-- Hooks ต้อง parse JSON จาก stdin
-- จัดการ malformed JSON ด้วย try/catch
+- Hooks must parse JSON from stdin
+- Handle malformed JSON with try/catch
 
 ### 3. Idempotent
 
-- Hooks ต้องรันได้ซ้ำโดยไม่เกิด side effects
-- ไม่ overwrite โดยไม่ dry run
+- Hooks must be re-runnable without side effects
+- Never overwrite without a dry run
 
 ### 4. Safe Exit
 
-- `process.exit(0)` สำหรับ success
-- `process.exit(1)` สำหรับ failure
-- ไม่ throw uncaught exceptions
+- `process.exit(0)` for success
+- `process.exit(1)` for failure
+- Never throw uncaught exceptions
 
 ### 5. No Workflows
 
-- อย่าสร้าง `.devin/workflows/`
-- Hooks ต้องอยู่ใน `.devin/hooks/`
-- ใช้ /update-devin ถ้าจำเป็น
+- Don't create `.devin/workflows/`
+- Hooks must live in `.devin/hooks/`
+- Use /update-devin if needed
 
 
 ## Expected Outcome
 
-- `.devin/hooks/` มี scripts และ `hooks.json`
-- Hooks ทำงานกับ events ทีกำหนด
-- exit code ถูกต้อง
-- ไม่มี `.devin/workflows/`
+- `.devin/hooks/` has scripts and `hooks.json`
+- Hooks work with the configured events
+- Correct exit codes
+- No `.devin/workflows/`
 

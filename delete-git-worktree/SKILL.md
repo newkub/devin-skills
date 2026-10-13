@@ -1,6 +1,6 @@
 ---
 name: delete-git-worktree
-description: ลบ git worktree ทีระบุอย่างปลอดภัย
+description: Safely delete the specified git worktree
 argument-hint: "[scope]"
 related:
   - list-git
@@ -12,69 +12,69 @@ related:
 
 ## Goal
 
-ลบ git worktree ทีระบุออก โดยไม่ทำลาย parent repository
+Remove the specified git worktree without harming the parent repository
 
 ## Scope
 
-ใช้เมื่อต้องการลบ worktree เฉพาะตัว
+Use when you need to delete a specific worktree
 
 ## Execute
 
 ### 1. Identify Worktree
 
-> Goal: ระบุ worktree ทีต้องการลบ
+> Goal: Identify the worktree to delete
 
-1. รัน `git worktree list`
-2. หรือทำ `/list-git-worktree`
-3. ยื่นยัน path ของ worktree ทีต้องการลบ
+1. Run `git worktree list`
+2. Or do `/list-git-worktree`
+3. Confirm the path of the worktree to delete
 
 ### 2. Check Status
 
-> Goal: ไม่ลบ worktree ทีมี changes
+> Goal: Avoid deleting a worktree with changes
 
-1. รัน `git -C <worktree-path> status --porcelain`
-2. ถ้ามี uncommitted/untracked changes → หยุดและถามก่อน
-3. ถ้าต้องการลบทั้ง changes → ใช้ `--force`
+1. Run `git -C <worktree-path> status --porcelain`
+2. If there are uncommitted/untracked changes → stop and ask first
+3. If you want to discard the changes too → use `--force`
 
 ### 3. Remove Worktree
 
-> Goal: ลบ worktree
+> Goal: Remove the worktree
 
-1. รัน `git worktree remove <path>`
-2. ถ้า lock หรือมีปัญหา → รัน `git worktree remove --force <path>`
-3. ตรวจสอบ `git worktree list` อีกครั้ง
+1. Run `git worktree remove <path>`
+2. If it is locked or has issues → run `git worktree remove --force <path>`
+3. Verify with `git worktree list` again
 
 ### 4. Prune
 
-> Goal: ทำความสะอาด tracking
+> Goal: Clean up tracking
 
-1. รัน `git worktree prune`
-2. ตรวจสอบว่า tracking references ถูกลบ
+1. Run `git worktree prune`
+2. Verify that the tracking references are removed
 
 ## Rules
 
 ### 1. Confirm Before Delete
 
-- ถาม user ก่อนลบ
-- ไม่ลบ worktree ทีมี uncommitted changes โดยไม่ถาม
-- ไม่ลบ main working tree
+- Ask the user before deleting
+- Never delete a worktree with uncommitted changes without asking
+- Never delete the main working tree
 
 ### 2. Force With Caution
 
-- `--force` ใช้เมื่อไม่สามารถ remove ปกติได้
-- ระบุเหตุผลก่อน force
+- Use `--force` only when a normal remove is not possible
+- State the reason before forcing
 
 ### 3. Preserve Branches
 
-- ลบ worktree ไม่ลบ branch
-- ถ้าต้องการลบ branch ด้วย → ทำ `/delete-git-branch`
+- Removing a worktree does not delete its branch
+- If you also want to delete the branch → do `/delete-git-branch`
 
-- ใช้ /use-git-worktrees ถ้าจำเป็น
-- ใช้ /cleanup-worktree ถ้าจำเป็น
+- Use /use-git-worktrees if needed
+- Use /cleanup-worktree if needed
 
 ## Expected Outcome
 
-- Worktree ถูกลบ
-- `git worktree list` ไม่แสดง worktree นั้น
-- Branch ยังคงมีอยู่
-- ไม่มี uncommitted changes สูญหาย
+- The worktree is removed
+- `git worktree list` no longer shows it
+- The branch still exists
+- No uncommitted changes lost

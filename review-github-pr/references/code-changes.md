@@ -2,23 +2,23 @@
 
 ## Goal
 
-ตรวจสอบ code changes ของ pull request ก่อน merge
+Review the code changes of a pull request before merge
 
 ## Checks
 
-1. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
-2. ทำ `/deep-review` บน files ที่เปลี่ยนแปลง
-3. ทำ `/deep-review` สำหรับ security-sensitive changes
-4. ทำ `/deep-review` สำหรับ test coverage และ test quality
-5. ทำ `/deep-review` สำหรับ docs, changelog, versioning, git hygiene
-6. ถ้า PR เป็น frontend → ทำ `/deep-review`
-7. ถ้า PR เป็น backend → ทำ `/deep-review`
-8. ถ้า PR เป็น API → ทำ `/deep-review`
-9. ถ้า PR เป็น auth → ทำ `/deep-review`
+1. Run `/run-verify` to run lint, typecheck, scan — if it fails, report first before continuing
+2. Run `/deep-review` on the changed files
+3. Run `/deep-review` for security-sensitive changes
+4. Run `/deep-review` for test coverage and test quality
+5. Run `/deep-review` for docs, changelog, versioning, git hygiene
+6. If the PR is frontend → run `/deep-review`
+7. If the PR is backend → run `/deep-review`
+8. If the PR is API → run `/deep-review`
+9. If the PR is auth → run `/deep-review`
 
 ## Severity
 
-- Critical: build fail, security risk, breaking change โดยไม่ migration
+- Critical: build fail, security risk, breaking change without migration
 - High: missing tests, lint fail, unreviewed auth change
 - Medium: missing docs/changelog, minor coverage drop
 - Low: formatting, cosmetic

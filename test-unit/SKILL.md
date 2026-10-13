@@ -1,6 +1,6 @@
 ---
 name: test-unit
-description: รัน unit/fast tests — pure functions, edge cases, parameterized — auto-detect framework, classify failures พร้อม root cause
+description: Run unit/fast tests — auto-detect framework, classify failures with root cause
 argument-hint: "[scope]"
 related:
   - run-test
@@ -17,104 +17,104 @@ related:
 
 ## Goal
 
-รัน unit tests ของ project — ทดสอบ pure functions, edge cases, parameterized tests — detect runner อัตโนมัติ, จัดการ failures แยก source vs test issue, รายงานผลพร้อม root cause
+Run the project's unit tests — pure functions, edge cases, parameterized tests — auto-detect the runner, split failures into source vs test issues, and report results with root cause
 
 ## Scope
 
-Default domain ของ `/run-test` — ใช้เมื่อรัน unit/fast tests (ไม่ใช้ real database, network, file I/O)
+Default domain of `/run-test` — used for running unit/fast tests (no real database, network, file I/O)
 
-ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
+Covers framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
-- ถ้าต้องการ update/เขียน tests → `/update-tests` (skill นี้ run-only ไม่แก้ tests)
-- ถ้าต้องการ analysis ลึก → `/deep-test`
-- domain อื่น → `/run-test <domain>` → `/test-<domain>`
+- To update/write tests → `/update-tests` (this skill is run-only, it does not edit tests)
+- For deep analysis → `/deep-test`
+- Other domains → `/run-test <domain>` → `/test-<domain>`
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: Always run `/deep-review` first — `test-*` skills must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect Test Framework
 
-> Goal: ตรวจสอบ test framework ที่ project ใช้จริง
+> Goal: Determine the test framework the project actually uses
 
-1. ตรวจ `package.json` — `scripts.test`, `scripts.test:unit`, devDependencies (`vitest`, `jest`, `@vitest/*`, `mocha`, `tap`, `ava`)
-2. ตรวจ config files — `vitest.config.ts`, `vite.config.ts` (test block), `jest.config.*`, `pytest.ini`, `pyproject.toml` ([tool.pytest]), `go.mod`, `Cargo.toml`, `*.csproj`
-3. ตรวจ test file patterns — `*.test.*`, `*.spec.*`, `test_*.py`, `*_test.go`, `#[cfg(test)]`, `*_test.rs`, `__tests__/`
-4. ถ้า monorepo → ใช้ workspace runner (`moon run :test`, `turbo run test`, `bun run --filter '*' test`, `pnpm -r test`)
-5. ถ้าหลาย framework → รันทุกตัวที่พบ รายงานแยกกัน
+1. Check `package.json` — `scripts.test`, `scripts.test:unit`, devDependencies (`vitest`, `jest`, `@vitest/*`, `mocha`, `tap`, `ava`)
+2. Check config files — `vitest.config.ts`, `vite.config.ts` (test block), `jest.config.*`, `pytest.ini`, `pyproject.toml` ([tool.pytest]), `go.mod`, `Cargo.toml`, `*.csproj`
+3. Check test file patterns — `*.test.*`, `*.spec.*`, `test_*.py`, `*_test.go`, `#[cfg(test)]`, `*_test.rs`, `__tests__/`
+4. If monorepo → use the workspace runner (`moon run :test`, `turbo run test`, `bun run --filter '*' test`, `pnpm -r test`)
+5. If multiple frameworks → run every one found, report separately
 
 ### 2. Run Tests
 
-> Goal: รัน tests ด้วย command ที่ถูกต้อง
+> Goal: Run tests with the correct command
 
-1. Prefer script จาก `package.json` / task runner config เสมอ (เช่น `bun run test`, `bun test`)
-2. Fallback ตาม framework:
+1. Always prefer the script from `package.json` / task runner config (e.g. `bun run test`, `bun test`)
+2. Fallback per framework:
    - Vitest → `bunx vitest run`
-   - Jest → `bunx jest --runInBand` (serial ถ้า flaky) หรือ `bunx jest`
+   - Jest → `bunx jest --runInBand` (serial if flaky) or `bunx jest`
    - Bun → `bun test`
    - Node → `node --test`
    - Python → `pytest` / `python -m pytest`
    - Go → `go test ./...`
-   - Rust → `cargo test` หรือ `cargo nextest run`
+   - Rust → `cargo test` or `cargo nextest run`
    - .NET → `dotnet test`
-3. ใช้ `--reporter=verbose` หรือ equivalent เมื่อต้องการ per-test results
-4. ใช้ filter/pattern เมื่อ scope ระบุ (`bunx vitest run src/foo`, `pytest tests/unit/test_x.py::test_y`, `go test ./pkg/... -run TestX`)
-5. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
+3. Use `--reporter=verbose` or the equivalent when per-test results are needed
+4. Use filter/pattern when a scope is given (`bunx vitest run src/foo`, `pytest tests/unit/test_x.py::test_y`, `go test ./pkg/... -run TestX`)
+5. Record results, duration, and the list of failing tests
 
 ### 3. Classify Failures
 
-> Goal: แยก source issue กับ test issue
+> Goal: Separate source issues from test issues
 
-1. จำแนกแต่ละ failure:
-   - assertion fail → ตรวจว่า expected หรือ actual ผิด
-   - error/exception → อ่าน stack trace หา file:line
-   - timeout → performance หรือ hanging async
+1. Classify each failure:
+   - assertion fail → check whether expected or actual is wrong
+   - error/exception → read the stack trace to find file:line
+   - timeout → performance or hanging async
    - environment → missing deps, wrong cwd, missing fixtures
-2. ห้ามแก้ assertion ให้ผ่าน — ถ้า source ผิด → แก้ source (`/resolve-errors`); ถ้า test outdated → `/update-tests`
-3. ถ้า failure เดิมเกิดซ้ำ → หยุดแล้ว report แทนการวนแก้
+2. Never edit an assertion just to pass — if the source is wrong → fix the source (`/resolve-errors`); if the test is outdated → `/update-tests`
+3. If the same failure recurs → stop and report instead of looping fixes
 
 ### 4. Report
 
-> Goal: รายงานผลชัดเจน
+> Goal: Report results clearly
 
-1. สรุป: passed/failed/skipped/total, duration, framework ที่ใช้
-2. List failures พร้อม file:line และ classification (source/test/environment)
-3. persist raw results → ถ้า runner เป็น Vitest ให้เก็บ JSON ด้วย `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json` แล้วเขียน summary `.devin/temp/report/<workspace>/unit-test-<time>.md` ตาม format `/create-report-in-dot-devin` — เพื่อให้ `/update-docs` reuse (runner อื่นเขียนแค่ summary md)
-4. ถ้ามี coverage flag → `/test-coverage` ต่อ
-5. ถ้า tests ผ่านหมดและต้องการ verify ครบวงจร → `/run-verify`
+1. Summary: passed/failed/skipped/total, duration, framework used
+2. List failures with file:line and classification (source/test/environment)
+3. persist raw results → if the runner is Vitest, keep JSON via `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json` then write summary `.devin/temp/report/<workspace>/unit-test-<time>.md` following the `/create-report-in-dot-devin` format — so `/update-docs` can reuse it (other runners write only the summary md)
+4. If a coverage flag exists → continue with `/test-coverage`
+5. If all tests pass and full verification is wanted → `/run-verify`
 
 ## Rules
 
 ### 1. Test Scope
 
-- Unit tests ทดสอบ pure functions เท่านั้น — ไม่ใช้ real database, network, หรือ file I/O
-- ใช้ mocks/stubs สำหรับ dependencies
-- แต่ละ test ต้อง independent และรันแยกได้
+- Unit tests test pure functions only — no real database, network, or file I/O
+- Use mocks/stubs for dependencies
+- Each test must be independent and runnable separately
 
 ### 2. Performance
 
-- Unit tests ต้องเร็ว (< 10ms per test โดยเฉลี่ย)
-- ไม่มี `setTimeout`/`sleep` ที่ไม่จำเป็น
-- ใช้ parallel execution ถ้า framework รองรับ
+- Unit tests must be fast (< 10ms per test on average)
+- No unnecessary `setTimeout`/`sleep`
+- Use parallel execution if the framework supports it
 
 ### 3. Edge Cases
 
-- ทดสอบ happy path, edge cases, และ error cases
-- ทดสอบ boundary values, null/undefined/empty inputs
-- ทดสอบ parameterized cases
+- Test happy path, edge cases, and error cases
+- Test boundary values, null/undefined/empty inputs
+- Test parameterized cases
 
 ### 4. Failure Discipline
 
-- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure
-- ห้ามแก้ test หรือ source โดยไม่มี evidence จากการตรวจสอบ
-- ถ้า failure มาจาก missing dependency → `/run-install`
-- ใช้ `/test-all` ถ้าต้องรันหลาย domains
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-watch ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Never use `.skip`, `.only`, `xit`, `xtest` to avoid failures
+- Never edit a test or source without evidence from inspection
+- If a failure comes from a missing dependency → `/run-install`
+- Use `/test-all` when multiple domains must run
+- Use /run-check if needed
+- Use /run-watch if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- Unit tests รันด้วย runner ที่ถูกต้อง — report แสดงผลชัดเจนพร้อม persist ใน `.devin/temp/report/`
-- Failures ถูก classify เป็น source/test/environment พร้อม file:line
-- ไม่มีการ suppress failures
+- Unit tests run with the correct runner — the report is clear and persisted in `.devin/temp/report/`
+- Failures classified as source/test/environment with file:line
+- No failure suppression

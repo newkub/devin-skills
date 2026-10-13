@@ -1,6 +1,6 @@
 ---
 name: edit-only
-description: แก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal
+description: Edit code without running any task or terminal
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -10,62 +10,62 @@ related:
 
 ## Goal
 
-กำหนดกฎสำหรับการแก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal ใดๆ
+Define the rules for editing code without running any task or terminal
 
 ## Scope
 
-ใช้ workflow นี้เมื่อ task เป็นการแก้ไขโค้ดเท่านั้น โดยไม่ต้องการ verify ผลลัพธ์ด้วยการรัน
+Use this workflow when the task is code editing only, with no need to verify the result by running it
 
 ## Execute
 
 ### 1. Task Identification
 
-> Goal: ยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
+> Goal: Confirm the task is a code-only edit
 
-ทำ `/deep-review` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
+Run `/deep-review` to check import usage and export strategy, and confirm the task is a code-only edit
 
 ### 2. Code Modification
 
-> Goal: ไฟล์ถูกแก้ไขด้วย file editing tools เท่านั้น
+> Goal: Files are modified with file editing tools only
 
-ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไขไฟล์ และ `write_to_file` สำหรับการสร้างไฟล์ใหม่ จากนั้นทำ `/update-references` เพื่ออัพเดท references ทั้งหมด
+Use `edit` or `multi_edit` for modifying files and `write_to_file` for creating new files, then run `/update-references` to update all references
 
 ### 3. Validation
 
-> Goal: ยืนยันไม่มี execution tools ถูกเรียก
+> Goal: Confirm no execution tools were invoked
 
-ตรวจสอบว่าไม่มี `run_command` ถูกเรียก ไม่มี background process ถูกรัน และไม่มี browser preview ถูกเปิด
+Verify that no `run_command` was invoked, no background process was run, and no browser preview was opened
 
 ## Rules
 
 ### 1. Execution Restrictions
 
-ห้ามใช้ execution tools ทั้งหมด ทำเฉพาะ file editing operations
+All execution tools are forbidden; perform only file editing operations
 
-- ห้ามรัน `run_command` ใดๆ
-- ห้ามรัน background process
-- ห้ามเปิด `browser_preview`
+- Never run any `run_command`
+- Never run background processes
+- Never open `browser_preview`
 
 ### 2. File Operations
 
-ใช้เฉพาะ file modification tools
+Use only file modification tools
 
-- `edit` - แก้ไขไฟล์ที่มีอยู่
-- `multi_edit` - แก้ไขหลายจุดในไฟล์เดียว
-- `write_to_file` - สร้างไฟล์ใหม่
-- `read_file` - อ่านไฟล์เพื่อตรวจสอบ
+- `edit` - edit existing files
+- `multi_edit` - edit multiple points in one file
+- `write_to_file` - create new files
+- `read_file` - read files for verification
 
 ### 3. Quality Assurance
 
-รักษาคุณภาพโค้ดตามมาตรฐาน
+Maintain code quality per the standard
 
-- ทำ `/deep-review` สำหรับการแก้ไข
-- รักษา consistency กับ codebase
-- เพิ่ม comments เมื่อจำเป็น
+- Run `/deep-review` for the edits
+- Keep consistency with the codebase
+- Add comments when necessary
 
 ## Expected Outcome
 
-- โค้ดถูกแก้ไขโดยไม่รัน command ใดๆ
-- การเปลี่ยนแปลงถูกบันทึกลงไฟล์อย่างถูกต้อง
-- ไม่มี process หรือ terminal ถูกรัน
-- Code quality ยังคงอยู่ตามมาตรฐาน
+- Code is edited without running any command
+- Changes are saved to files correctly
+- No process or terminal was run
+- Code quality still meets the standard

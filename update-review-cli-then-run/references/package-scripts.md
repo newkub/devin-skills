@@ -2,12 +2,12 @@
 
 ## Tools Review Scripts
 
-ตรวจว่า `tools/review-codebase/package.json` มี scripts ครบ:
+Verify that `tools/review-codebase/package.json` has all scripts:
 
-- `review-codebase` — รัน review ใน table format
-- `review-codebase:json` — รัน review ใน JSON format
+- `review-codebase` — run the review in table format
+- `review-codebase:json` — run the review in JSON format
 
-ตัวอย่าง:
+Example:
 
 ```json
 {
@@ -18,16 +18,16 @@
 }
 ```
 
-ถ้าขาด script → flag เป็น `Medium` severity
+If a script is missing → flag as `Medium` severity
 
 ## Root Package Scripts
 
-ตรวจว่า root `package.json` มี filter commands:
+Verify that the root `package.json` has filter commands:
 
 - `review-codebase` — `bun --filter tools-review-codebase review-codebase`
 - `review-codebase:json` — `bun --filter tools-review-codebase review-codebase:json`
 
-ตัวอย่าง:
+Example:
 
 ```json
 {
@@ -38,31 +38,31 @@
 }
 ```
 
-ถ้าขาด root script → flag เป็น `Medium` severity
+If a root script is missing → flag as `Medium` severity
 
 ## Script Consistency
 
-ตรวจว่า scripts สอดคล้องกัน:
+Verify that the scripts are consistent:
 
-- ชื่อ script ใน root ตรงกับใน `tools/review-codebase` (`review-codebase`, `review-codebase:json`)
-- filter command ใช้ workspace name ที่ถูกต้อง (`tools-review-codebase`)
-- ไม่มี script ที่ชี้ไปยัง path ผิด
+- The script name in root matches the one in `tools/review-codebase` (`review-codebase`, `review-codebase:json`)
+- The filter command uses the correct workspace name (`tools-review-codebase`)
+- There is no script pointing to a wrong path
 
-ถ้าพบ inconsistency → flag เป็น `Low` severity
+If an inconsistency is found → flag as `Low` severity
 
 ## Script Execution
 
-ตรวจว่า scripts รันได้จริง:
+Verify that the scripts actually run:
 
-- รัน `bun --filter tools-review-codebase review-codebase` และตรวจ exit code
-- รัน `bun --filter tools-review-codebase review-codebase:json` และตรวจ output format
+- Run `bun --filter tools-review-codebase review-codebase` and check the exit code
+- Run `bun --filter tools-review-codebase review-codebase:json` and check the output format
 
-ถ้า script รันไม่ได้ → flag เป็น `High` severity
+If a script does not run → flag as `High` severity
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must include:
 
-- file path เช่น `tools/review-codebase/package.json` หรือ root `package.json`
-- line number
-- code snippet ที่เป็นปัญหา
+- File path, e.g. `tools/review-codebase/package.json` or the root `package.json`
+- Line number
+- The code snippet that is problematic

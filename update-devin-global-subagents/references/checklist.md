@@ -2,14 +2,14 @@
 
 ## 1. Frontmatter
 
-- [ ] name ตรง directory, description ชัด, tools declared
-- [ ] model/permission fields valid ตาม spec ปัจจุบัน
+- [ ] name matches the directory, description is clear, tools declared
+- [ ] model/permission fields valid per the current spec
 
 ## 2. Prompt Quality
 
-- [ ] system prompt เฉพาะเจาะจง, single responsibility ชัด
-- [ ] input/output contract ระบุ, guardrails มี
-- [ ] ไม่ซ้ำ agent อื่น, scope boundaries ระบุ
+- [ ] system prompt is specific, single responsibility is clear
+- [ ] input/output contract stated, guardrails present
+- [ ] no overlap with other agents, scope boundaries stated
 
 ## 3. Safety
 
@@ -19,7 +19,7 @@
 
 ## 4. Integration
 
-- [ ] อ้างอิง skills/rules ที่มีอยู่จริง
+- [ ] references existing skills/rules that actually exist
 - [ ] AGENTS.md/registry consistent, related links valid
 
 ## Scoring

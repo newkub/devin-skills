@@ -1,6 +1,6 @@
 ---
 name: visualize-in-web
-description: สร้าง visual แบบ Web ใน browser บน OS temp directory
+description: Create Web visuals in the browser under the OS temp directory
 argument-hint: "[scope]"
 related:
   - report
@@ -12,109 +12,109 @@ related:
 
 ## Goal
 
-สร้าง visual แบบ Web (HTML) ใน browser ให้เข้าใจข้อมูล โครงสร้าง หรือ concept ได้ง่าย โดยเลือก frontend runtime ตาม user context
+Create a Web (HTML) visual in the browser to make data, structure, or concepts easy to understand, choosing the frontend runtime based on the user context
 
 ## Scope
 
-- ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน
-- สร้างไฟล์เดียวใน OS temp directory แบบ no-build
-- เลือก runtime ตาม context: `Vue 3`, `solid-js/html`, `Alpine.js`, หรือ `Vanilla JS`
-- no-build เท่านั้น — ไม่รองรับ `TSX` component หรือ build step
+- Visualize complex data, structure, or concepts
+- Generate a single no-build file in the OS temp directory
+- Pick the runtime based on context: `Vue 3`, `solid-js/html`, `Alpine.js`, or `Vanilla JS`
+- No-build only — `TSX` components or a build step are not supported
 
 ## Execute
 
 ### 1. Analyze Content
 
-> Goal: เข้าใจเนื้อหาที่จะ visualize
+> Goal: Understand the content to visualize
 
-1. ระบุประเภทเนื้อหา (`data`, `structure`, `flow`, `concept`, `comparison`)
-2. ระบุความสัมพันธ์และ hierarchy
-3. กำหนด layout ที่เหมาะสม (`tables`, `hierarchies`, `flows`, `comparisons`, `statistics`, `relationships`)
+1. Identify the content type (`data`, `structure`, `flow`, `concept`, `comparison`)
+2. Identify the relationships and hierarchy
+3. Choose a suitable layout (`tables`, `hierarchies`, `flows`, `comparisons`, `statistics`, `relationships`)
 
 ### 2. Select Runtime
 
-> Goal: เลือก frontend runtime ตาม user context
+> Goal: Select the frontend runtime based on the user context
 
-1. ดู context ของ user: project stack, active files, หรือ config
-2. ถ้า user ใช้ `Solid` → ใช้ `solid-js/html` หรือ `solid-js/h` จาก CDN
-3. ถ้า user ใช้ `Vue` → ใช้ Vue 3 global build จาก unpkg
-4. ถ้า user ใช้ `Alpine` → ใช้ Alpine.js CDN
-5. ถ้าไม่ชัด → ใช้ Vue 3 เป็น default
-6. `TSX`/build ไม่รองรับใน skill นี้ — แจ้ง limitation ให้ user
+1. Check the user context: project stack, active files, or config
+2. If the user uses `Solid` → use `solid-js/html` or `solid-js/h` from a CDN
+3. If the user uses `Vue` → use the Vue 3 global build from unpkg
+4. If the user uses `Alpine` → use the Alpine.js CDN
+5. If unclear → default to Vue 3
+6. `TSX`/build is not supported in this skill — tell the user about the limitation
 
 ### 3. Generate Web Mode
 
-> Goal: สร้าง visual แบบ HTML
+> Goal: Generate an HTML visual
 
-1. ทำ `/report html` สำหรับ HTML structure พื้นฐาน
-2. ใช้ runtime ที่เลือกจากข้อ 2
-3. ใช้ Tailwind CSS สำหรับ styling
-4. ถ้าต้องการ tab system ให้อ้างอิง `/report-readme-html`
-5. สร้างไฟล์ใน OS temp directory:
+1. Run `/report html` for the base HTML structure
+2. Use the runtime selected in step 2
+3. Use Tailwind CSS for styling
+4. For a tab system, refer to `/report-readme-html`
+5. Create the file in the OS temp directory:
    - Windows: `$env:TEMP\visualize-<name>.html`
    - macOS/Linux: `tmp/visualize-<name>.html`
-6. ทำ `/open-web` เพื่อเปิดใน browser
+6. Run `/open-web` to open it in the browser
 
 ### 4. Design Visual Layout
 
-> Goal: ออกแบบ layout ตามประเภทเนื้อหา
+> Goal: Design the layout by content type
 
-1. Data tables: ใช้ `<el-table>` หรือ HTML tables พร้อม sorting
-2. Hierarchies: ใช้ tree structure หรือ nested boxes
-3. Flows: ใช้ arrows และ decision points
-4. Comparisons: ใช้ side-by-side layout
-5. Statistics: ใช้ charts หรือ bar graphs
-6. Relationships: ใช้ graph หรือ matrix
+1. Data tables: use `<el-table>` or HTML tables with sorting
+2. Hierarchies: use a tree structure or nested boxes
+3. Flows: use arrows and decision points
+4. Comparisons: use a side-by-side layout
+5. Statistics: use charts or bar graphs
+6. Relationships: use a graph or matrix
 
 ### 5. Add Interactivity
 
-> Goal: เพิ่ม interaction สำหรับ Web mode
+> Goal: Add interaction for Web mode
 
-1. เพิ่ม search ด้วย `<el-input>` หรือ `<input v-model>`
-2. เพิ่ม filter ด้วย computed properties
-3. เพิ่ม expand/collapse ด้วย `<el-collapse>`
-4. เพิ่ม tabs สำหรับจัดกลุ่มข้อมูล
-5. เพิ่ม dark mode ด้วย `<html class="dark">`
+1. Add search with `<el-input>` or `<input v-model>`
+2. Add filtering with computed properties
+3. Add expand/collapse with `<el-collapse>`
+4. Add tabs to group data
+5. Add dark mode with `<html class="dark">`
 
 ## Rules
 
 ### 1. Output Location
 
-- สร้างไฟล์ใน OS temp directory เท่านั้น เป็นไฟล์ชั่วคราว
-- Windows: ใช้ `$env:TEMP` environment variable
-- macOS/Linux: ใช้ `tmp` directory
-- ตั้งชื่อไฟล์ `visualize-<descriptive-name>.html`
-- ไม่สร้างไฟล์ใน project directory
+- Create files only in the OS temp directory, as temporary files
+- Windows: use the `$env:TEMP` environment variable
+- macOS/Linux: use the `tmp` directory
+- Name the file `visualize-<descriptive-name>.html`
+- Do not create files in the project directory
 
 ### 2. Web Standards
 
-- ทำตาม `/report html` สำหรับ HTML structure
-- เลือก frontend runtime ตาม user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
-- ใช้ Tailwind CSS CDN
-- รองรับ dark mode
-- ถ้าต้องการ Element Plus components ให้อ้างอิง `/report-readme-html`
+- Follow `/report html` for the HTML structure
+- Pick the frontend runtime based on the user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
+- Use the Tailwind CSS CDN
+- Support dark mode
+- For Element Plus components, refer to `/report-readme-html`
 
 ### 3. No Build
 
-- ไฟล์เดียว ไม่มี build step
-- JS/CSS/Runtime โหลดจาก CDN
-- ไม่รองรับ `TSX` หรือ build — ถ้าต้องการให้แจ้ง limitation ให้ user
+- A single file with no build step
+- JS/CSS/Runtime loaded from a CDN
+- `TSX` or build is not supported — if needed, tell the user about the limitation
 
 ### 4. Content Clarity
 
-- เน้นความเข้าใจง่ายกว่าความสวยงาม
-- ใช้ labels และ annotations ชัดเจน
-- จัดกลุ่มข้อมูลที่เกี่ยวข้อง
-- ใช้ color/contrast สำหรับ emphasis
+- Prioritize clarity over aesthetics
+- Use clear labels and annotations
+- Group related data
+- Use color/contrast for emphasis
 
-- ใช้ /open-files-in-web ถ้าจำเป็น
-- ใช้ /deep-test visual ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /open-files-in-web if needed
+- Use /deep-test visual if needed
+- Use /run-test if needed
 
 ## Expected Outcome
 
-- Visual แบบ Web ที่เข้าใจง่าย
-- ไฟล์ชั่วคราวใน OS temp directory
-- เปิดใน browser พร้อม interaction
-- ข้อมูลที่ซับซ้อนกลายเป็น visual ที่เข้าใจได้ง่าย
-- ใช้ runtime ตาม context ของ user
+- An easy-to-understand Web visual
+- A temporary file in the OS temp directory
+- Opened in the browser with interaction
+- Complex data turned into an easy-to-understand visual
+- The runtime chosen based on the user context

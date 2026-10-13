@@ -1,6 +1,6 @@
 ---
 name: run-profiler
-description: Profile performance เพื่อหา bottlenecks และ optimize
+description: Profile performance to find bottlenecks and optimize
 argument-hint: "[scope]"
 related:
   - follow-best-practice
@@ -14,99 +14,99 @@ related:
 
 ## Goal
 
-Profile performance เพื่อหา bottlenecks และ optimize
+Profile performance to find bottlenecks and optimize
 
 ## Scope
 
-ใช้สำหรับ profiling ด้วย Chrome DevTools, Node.js profiler, หรือ Bun profiler เพื่อหา hot paths และ memory issues
+Use for profiling with Chrome DevTools, a Node.js profiler, or a Bun profiler to find hot paths and memory issues
 
-ดูเพิ่มเติม: /deep-review
+See also: /deep-review
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-optimize` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (profiler)
+> Pre-Run: Always run `/deep-optimize` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (profiler)
 
 ### 1. Setup Profiling
 
-> Goal: เลือก profiling tool และตั้งค่า environment
+> Goal: Choose a profiling tool and set up the environment
 
-1. เลือก profiling tool ที่เหมาะสม (Chrome DevTools, Node.js profiler, Bun profiler)
-2. ตั้งค่า profiling environment
-3. กำหนด scope ของ profiling
+1. Choose the appropriate profiling tool (Chrome DevTools, Node.js profiler, Bun profiler)
+2. Set up the profiling environment
+3. Define the profiling scope
 
 ### 2. Capture Profile
 
-> Goal: เริ่ม profiling session และบันทึกข้อมูล
+> Goal: Start a profiling session and record data
 
-1. เริ่ม profiling session
-2. ทำงานที่ต้อง profile (user flow, API call, etc.)
-3. หยุด profiling และบันทึกข้อมูล
+1. Start the profiling session
+2. Perform the work to profile (user flow, API call, etc.)
+3. Stop profiling and record the data
 
 ### 3. Analyze Profile
 
-> Goal: วิเคราะห์ profile data
+> Goal: Analyze the profile data
 
-1. วิเคราะห์ call tree และ flame graph
-2. ระบุ functions ที่ใช้เวลานาน
-3. ตรวจสอบ memory allocations
-4. ดู network requests และ I/O
+1. Analyze the call tree and flame graph
+2. Identify long-running functions
+3. Inspect memory allocations
+4. Review network requests and I/O
 
 ### 4. Identify Bottlenecks
 
-> Goal: ระบุ hot paths และ inefficient code
+> Goal: Identify hot paths and inefficient code
 
-1. ระบุ hot paths ใน code
-2. ตรวจสอบ unnecessary computations
-3. ดู inefficient algorithms
-4. ตรวจสอบ memory leaks
+1. Identify hot paths in the code
+2. Check for unnecessary computations
+3. Review inefficient algorithms
+4. Check for memory leaks
 
 ### 5. Optimize
 
-> Goal: ปรับปรุง performance ตาม findings
+> Goal: Improve performance based on findings
 
-1. ทำ `/deep-review` เพื่อปรับปรุง
-2. ใช้ caching ที่เหมาะสม
-3. Optimize algorithms และ data structures
-4. ลบ unnecessary work
+1. Run `/deep-review` to make improvements
+2. Use appropriate caching
+3. Optimize algorithms and data structures
+4. Remove unnecessary work
 
 ### 6. Verify Improvements
 
-> Goal: วัดผลหลัง optimize
+> Goal: Measure results after optimizing
 
-1. Profile อีกครั้งหลัง optimize
-2. เปรียบเทียบกับ profile เดิม
-3. ยืนยัน improvements
+1. Profile again after optimizing
+2. Compare against the original profile
+3. Confirm the improvements
 
 ## Rules
 
 ### 1. Profiling Scope
 
 - Profile realistic workloads
-- Profile ใน production-like environment
-- Profile ช่วงเวลาที่เพียงพอ
+- Profile in a production-like environment
+- Profile for a sufficient duration
 
 ### 2. Analysis Focus
 
-- มุ่งเน้นที่ bottlenecks ที่ impact สูง
-- ดูทั้ง CPU และ memory
-- ตรวจสอบ I/O และ network
+- Focus on high-impact bottlenecks
+- Look at both CPU and memory
+- Check I/O and network
 
 ### 3. Optimization Strategy
 
-- Optimize สิ่งที่ช้าก่อน
-- ใช้ measurements ไม่ใช่ assumptions
-- Optimize แบบ iterative
+- Optimize the slowest things first
+- Use measurements, not assumptions
+- Optimize iteratively
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
+- Use /run-check if needed
+- Use /run-verify if needed
 
 ## Expected Outcome
 
-- Performance bottlenecks ถูกระบุ
-- Hot paths ถูก optimize
-- Memory usage ถูกปรับปรุง
-- Performance improvements ถูกวัด
-- Code ทำงานเร็วขึ้น
+- Performance bottlenecks are identified
+- Hot paths are optimized
+- Memory usage is improved
+- Performance improvements are measured
+- Code runs faster

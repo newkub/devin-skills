@@ -1,6 +1,6 @@
 ---
 name: alternative
-description: ค้นหาและแนะนำ alternatives ทีดีกว่าสำหรับสิ่งที user ระบุ
+description: Find and recommend better alternatives for whatever the user specifies
 argument-hint: "<subject>"
 allowed-tools:
   - read
@@ -31,92 +31,92 @@ related:
 
 ## Goal
 
-ค้นหาและแนะนำ alternatives ทีดีกว่าสำหรับสิ่งที user ระบุ
+Find and recommend better alternatives for whatever the user specifies.
 
 ## Scope
 
-ใช้เมื่อ user ถามเกี่ยวกับ libraries, tools, frameworks, patterns หรือ solutions ต่าง ๆ
+Use when the user asks about libraries, tools, frameworks, patterns, or other solutions.
 
-ดูเพิ่มเติม: /learn-from-web, /choose-and-apply, /follow-best-practice, /deep-review, /suggest-next-action, /resolve-errors
+See also: /learn-from-web, /choose-and-apply, /follow-best-practice, /deep-review, /suggest-next-action, /resolve-errors
 
 ## Execute
 
 ### 1. Identify Subject
 
-> Goal: ระบุสิ่งทีต้องหา alternative
+> Goal: Identify what needs an alternative
 
-1. ระบุสิ่งที user ถาม (library, tool, framework, pattern)
-2. แยก keywords และ requirements สำคัญ
-3. กำหนด context และ use case
+1. Identify what the user is asking about (library, tool, framework, pattern)
+2. Extract the key terms and requirements
+3. Define the context and use case
 
 ### 2. Deep Research
 
-> Goal: รวบรวมข้อมูล alternatives
+> Goal: Gather alternative data
 
-1. ทำ `/deep-research` เพื่อค้นหาข้อมูลจาก multiple sources
-2. ใช้ CRW สำหรับ web search และ scraping
-3. ค้นหาใน NPM Registry และ GitHub
-4. ใช้ DeepWiki และ Context7 สำหรับ documentation
+1. Run `/deep-research` to gather information from multiple sources
+2. Use CRW for web search and scraping
+3. Search the NPM Registry and GitHub
+4. Use DeepWiki and Context7 for documentation
 
 ### 3. Compare Alternatives
 
-> Goal: เปรียบเทียบ alternatives
+> Goal: Compare the alternatives
 
-1. รวบรวม alternatives ทีเกี่ยวข้อง
-2. เปรียบเทียบ features, performance, maintenance
-3. วิเคราะห์ pros/cons ของแต่ละตัวเลือก
-4. ตรวจสอบ community support และ ecosystem
+1. Gather the relevant alternatives
+2. Compare features, performance, and maintenance
+3. Analyze the pros/cons of each option
+4. Check community support and ecosystem
 
 ### 4. Recommend Best Option
 
-> Goal: แนะนำตัวเลือกทีเหมาะสมทีสุด
+> Goal: Recommend the most suitable option
 
-1. แนะนำตัวเลือกทีเหมาะสมทีสุด
-2. อธิบายเหตุผลการเลือก
-3. ให้ examples หรือ migration guides
-4. ระบุ trade-offs ทีต้องพิจารณา
+1. Recommend the most suitable option
+2. Explain the reasoning behind the choice
+3. Provide examples or migration guides
+4. Note the trade-offs to consider
 
 ## Rules
 
 ### Research Strategy
 
-- ทำ `/deep-research` เสมอก่อนแนะนำ
-- ใช้ multiple sources (CRW, NPM, GitHub, DeepWiki, Context7)
-- ตรวจสอบ credibility ของ sources
-- เปรียบเทียบข้อมูลจากหลายแหล่ง
-- ตรวจสอบว่าข้อมูลเป็นปัจจุบัน
+- Always run `/deep-research` before recommending
+- Use multiple sources (CRW, NPM, GitHub, DeepWiki, Context7)
+- Verify the credibility of the sources
+- Compare data across several sources
+- Check that the information is up to date
 
 ### Comparison Criteria
 
-- Features และ capabilities
-- Performance และ benchmarks
-- Maintenance และ updates
-- Community support และ ecosystem
-- Learning curve และ documentation
-- License และ commercial support
+- Features and capabilities
+- Performance and benchmarks
+- Maintenance and updates
+- Community support and ecosystem
+- Learning curve and documentation
+- License and commercial support
 
 ### Context Awareness
 
-- Tech stack ทีใช้อยู่
-- Team expertise และ experience
-- Project requirements และ constraints
+- The tech stack in use
+- Team expertise and experience
+- Project requirements and constraints
 - Long-term maintenance considerations
-- Migration cost และ effort
+- Migration cost and effort
 
 ### Recommendation Guidelines
 
-- อธิบายเหตุผลอย่างชัดเจน
-- ระบุ trade-offs ทีต้องพิจารณา
-- ให้ examples หรือ code snippets
-- แนะนำ migration paths ถ้าจำเป็น
-- ให้ references สำหรับ deeper learning
-- ใช้ /compare-competitors ถ้าจำเป็น
+- Explain the reasoning clearly
+- Note the trade-offs to consider
+- Provide examples or code snippets
+- Recommend migration paths when needed
+- Give references for deeper learning
+- Use /compare-competitors when needed
 
 ## Expected Outcome
 
-- Alternatives ทีดีกว่าพร้อมเปรียบเทียบ
-- Recommendation ทีเหมาะสมกับ context
-- Pros/cons และ trade-offs ทีชัดเจน
-- Examples หรือ migration guides
-- References สำหรับ deeper learning
+- Better alternatives with a comparison
+- A recommendation suited to the context
+- Clear pros/cons and trade-offs
+- Examples or migration guides
+- References for deeper learning
 

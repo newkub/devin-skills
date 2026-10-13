@@ -1,6 +1,6 @@
 ---
 name: test-load
-description: รัน load test กับ endpoints ด้วย k6 หรือ autocannon วัด throughput, latency และ breaking point
+description: Run load tests with k6 or autocannon — measure throughput, latency, and breaking points
 argument-hint: "[url-or-endpoints] [--vus N] [--duration Ns]"
 related:
   - run-test
@@ -14,74 +14,74 @@ related:
 
 ## Goal
 
-รัน load test กับ app/API เพื่อวัด throughput, latency distribution และหา breaking point ก่อน deploy หรือหลัง performance changes
+Run a load test against the app/API to measure throughput, latency distribution, and find the breaking point before deploy or after performance changes
 
 ## Scope
 
-- เครื่องมือ: `k6` (preferred, scriptable) หรือ `autocannon` (quick, zero-script) ตาม availability
-- ตรวจ endpoints ที่ระบุ หรือ critical paths (health, hot endpoints, write paths)
-- Load patterns: smoke (ต่ำ), load (ปกติ), stress (หา limit), spike
-- ห้ามยิง production/external services โดยไม่ได้รับอนุญาตชัดเจน
-- analysis ลึก → `/deep-test`; รัน test domains อื่น → `/run-test <domain>` → `/test-<domain>`
+- Tools: `k6` (preferred, scriptable) or `autocannon` (quick, zero-script) based on availability
+- Check the specified endpoints or the critical paths (health, hot endpoints, write paths)
+- Load patterns: smoke (low), load (normal), stress (find the limit), spike
+- Never hit production/external services without explicit permission
+- Deep analysis → `/deep-test`; run other test domains → `/run-test <domain>` → `/test-<domain>`
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (load test)
+> Pre-Run: always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (load test)
 
 ### 1. Prepare Target
 
-> Goal: ให้ app พร้อมและเลือก endpoints
+> Goal: get the app ready and choose the endpoints
 
-1. ตรวจว่า app รันอยู่ — ทำ `/check-open-ports` ยืนยัน port หรือ `/run-dev` ถ้ายังไม่รัน
-2. เลือก endpoints: จาก argument, หรือ auto-pick (health, main reads, main writes)
-3. เตรียม auth/data ที่จำเป็น (test tokens, seed data)
-4. ยืนยัน target: ถ้าเป็น shared/staging/prod → ต้องถาม user ก่อนเสมอ
+1. Check that the app is running — run `/check-open-ports` to confirm the port, or `/run-dev` if it isn't running yet
+2. Choose endpoints: from the argument, or auto-pick (health, main reads, main writes)
+3. Prepare the required auth/data (test tokens, seed data)
+4. Confirm the target: if it is shared/staging/prod → always ask the user first
 
 ### 2. Select Tool And Scenario
 
-> Goal: เลือก tool และ load pattern ตามเป้าหมาย
+> Goal: pick the tool and load pattern that fit the objective
 
-1. `k6` ถ้าต้องการ scenarios ซับซ้อน (stages, thresholds, checks) — เขียน script ชั่วคราวใน temp
-2. `autocannon` ถ้าต้องการ quick benchmark: `autocannon -c <conn> -d <sec> <url>`
+1. `k6` when complex scenarios are needed (stages, thresholds, checks) — write a temporary script in temp
+2. `autocannon` when a quick benchmark is enough: `autocannon -c <conn> -d <sec> <url>`
 3. Default scenario: ramp 0→N VUs → sustain → ramp down
-4. กำหนด thresholds ที่วัดผลได้: p95 latency, error rate, RPS ขั้นต่ำ
+4. Define measurable thresholds: p95 latency, error rate, minimum RPS
 
 ### 3. Run And Monitor
 
-> Goal: เก็บ metrics ระหว่าง load
+> Goal: collect metrics during the load
 
-1. รัน load — เก็บ summary: RPS, latency p50/p95/p99, error rate, timeouts
-2. สังเกต server ระหว่าง test: CPU/memory, error logs, queue buildup
-3. ถ้า error rate พุ่ง → หยุดและบันทึกจุดที่พัง (breaking point)
+1. Run the load — collect the summary: RPS, latency p50/p95/p99, error rate, timeouts
+2. Watch the server during the test: CPU/memory, error logs, queue buildup
+3. If the error rate spikes → stop and record the failure point (breaking point)
 
 ### 4. Analyze And Report
 
-> Goal: ตีความผลและแนะนำ
+> Goal: interpret the results and give recommendations
 
-1. ใช้ `/report-before-after` หรือ table: `No.`, `Endpoint`, `RPS`, `p50`, `p95`, `p99`, `Errors`, `Verdict`
-2. ระบุ bottleneck ที่เห็น (CPU-bound, connection limits, DB saturation) — ส่งต่อ `/deep-optimize` หรือ `/run-profiler` ถ้าต้อง drill down
-3. เทียบ baseline ก่อนหน้าถ้ามี — flag regression
-4. บันทึก k6 script ที่ใช้ไว้ใน `.devin/` ถ้า user ต้องการรันซ้ำ
+1. Use `/report-before-after` or a table: `No.`, `Endpoint`, `RPS`, `p50`, `p95`, `p99`, `Errors`, `Verdict`
+2. Identify the observed bottleneck (CPU-bound, connection limits, DB saturation) — hand off to `/deep-optimize` or `/run-profiler` if a drill-down is needed
+3. Compare against the previous baseline if one exists — flag regressions
+4. Save the k6 script used in `.devin/` if the user wants to rerun it
 
 ## Rules
 
 ### 1. Target Consent
 
-- ห้าม load test production หรือ third-party endpoints โดยไม่มี explicit user approval
-- ระบุ target environment ชัดเจนในรายงาน
+- Never load test production or third-party endpoints without explicit user approval
+- State the target environment clearly in the report
 
 ### 2. Realistic Load
 
-- ใช้ payload และ auth จริง — ไม่ยิง endpoint เปล่าที่ไม่ represent traffic จริง
-- ระบุ client limits (local machine bandwidth, connection caps) ที่อาจ bottleneck ฝั่ง client เอง
+- Use realistic payloads and auth — don't hammer bare endpoints that don't represent real traffic
+- Note client-side limits (local machine bandwidth, connection caps) that could bottleneck the client itself
 
 ### 3. Clean Up
 
-- ลบ test artifacts/data ที่ load test สร้าง (seeded records, test users) หลังจบ
-- ไม่ทิ้ง load generator รันค้าง
+- Delete test artifacts/data created by the load test (seeded records, test users) when finished
+- Never leave a load generator running
 
 ## Expected Outcome
 
-- Metrics ครบ: RPS, latency percentiles, error rate ต่อ endpoint
-- Breaking point และ bottleneck hypothesis ที่ชัดเจน
-- Reproducible script สำหรับรันซ้ำหลัง optimization
+- Full metrics: RPS, latency percentiles, error rate per endpoint
+- A clear breaking point and bottleneck hypothesis
+- A reproducible script for rerunning after optimization

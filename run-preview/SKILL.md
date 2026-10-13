@@ -1,6 +1,6 @@
 ---
 name: run-preview
-description: รัน preview build เพื่อทดสอบก่อน deploy จริง
+description: Run a preview build to test before an actual deploy
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -16,132 +16,132 @@ related:
 
 ## Goal
 
-รัน preview build เพื่อทดสอบก่อน deploy จริง ครอบคลุม build, start server, test, verify และ share preview
+Run a preview build to test before an actual deploy, covering build, start server, test, verify, and share preview
 
 ## Scope
 
-ใช้สำหรับ preview ทุกประเภททั้ง local preview server และ deployment preview (Vercel, Cloudflare, Netlify) ก่อน deploy จริง
+Use for all kinds of preview, both a local preview server and a deployment preview (Vercel, Cloudflare, Netlify), before an actual deploy
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (preview)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (preview)
 
 ### 1. Build Preview
 
 > Goal: Build Preview
 
-สร้าง preview build สำหรับทดสอบ
+Create a preview build for testing
 
-1. ทำ `/run-build` เพื่อสร้าง preview build
-2. ตั้งค่า build mode เป็น preview ไม่ใช่ production
-3. ตรวจสอบ build output ว่าไม่มี errors
-4. ถ้าเป็น Vite: ใช้ `bun run build` แล้ว `bun run preview`
-5. ถ้าเป็น Next.js: ใช้ `bun run build` แล้ว `bun run start`
-6. ถ้าเป็น Nuxt: ใช้ `bun run build` แล้ว `bun run preview`
-7. ถ้าเป็น Vercel: ใช้ `bunx vercel preview` สำหรับ deployment preview
-8. ถ้าเป็น Cloudflare: ใช้ `bunx wrangler pages dev` สำหรับ local preview
+1. Run `/run-build` to create the preview build
+2. Set the build mode to preview, not production
+3. Check the build output for errors
+4. For Vite: use `bun run build` then `bun run preview`
+5. For Next.js: use `bun run build` then `bun run start`
+6. For Nuxt: use `bun run build` then `bun run preview`
+7. For Vercel: use `bunx vercel preview` for a deployment preview
+8. For Cloudflare: use `bunx wrangler pages dev` for a local preview
 
 ### 2. Start Preview Server
 
 > Goal: Start Preview Server
 
-รัน preview server ตาม framework
+Run the preview server per the framework
 
-1. รัน preview server command ตาม framework ที่ใช้
-2. ตรวจสอบว่า server ทำงานโดยดู console output
-3. บันทึก preview URL (local หรือ deployment URL)
-4. ถ้าเป็น deployment preview ให้รอจนกว่า URL จะพร้อม
+1. Run the preview server command per the framework in use
+2. Check that the server is running by watching the console output
+3. Record the preview URL (local or deployment URL)
+4. For a deployment preview, wait until the URL is ready
 
 ### 3. Test Preview
 
 > Goal: Test Preview
 
-ทดสอบ preview ใน browser
+Test the preview in the browser
 
-1. เปิด preview URL ใน browser
-2. ทำ `/watch-browser-and-fix` เพื่อตรวจสอบหน้าเว็บต่อเนื่อง
-3. ทดสอบ features สำคัญที่เปลี่ยนแปลงล่าสุด
-4. ตรวจสอบ console errors และ warnings
-5. ทำ `/run-test` สำหรับทดสอบแบบละเอียด
+1. Open the preview URL in the browser
+2. Run `/watch-browser-and-fix` to continuously check the page
+3. Test the key features that changed recently
+4. Check the console errors and warnings
+5. Run `/run-test` for detailed testing
 
 ### 4. Verify Preview
 
 > Goal: Verify Preview
 
-ตรวจสอบความถูกต้องของ preview
+Verify the correctness of the preview
 
-1. ตรวจสอบว่า pages โหลดถูกต้องทุกหน้า
-2. ตรวจสอบ assets และ static files โหลดครบ
-3. ทดสอบ critical user flows สำคัญ
-4. ตรวจสอบ responsive design บนหลาย screen sizes
-5. ตรวจสอบ API endpoints ทำงานถูกต้อง (ถ้ามี)
-6. ตรวจสอบ environment variables ถูกต้องสำหรับ preview
+1. Check that every page loads correctly
+2. Check that assets and static files all load
+3. Test the critical user flows
+4. Check the responsive design across multiple screen sizes
+5. Check that the API endpoints work correctly (if any)
+6. Check that the environment variables are correct for the preview
 
 ### 5. Report Issues
 
 > Goal: Report Issues
 
-รายงาน issues ที่พบในรูปแบบตาราง
+Report the issues found in a table
 
-1. ทำ `/report` เพื่อจัดรูปแบบตาราง
-2. สร้างตารางพร้อม columns: Category, Issue, Severity, Location, Action Required
-3. หมวดหมู่: Build, Pages, Assets, API, Console Errors, Responsive
-4. จัดลำดับ issues ตาม severity (critical, high, medium, low)
+1. Run `/report` to format a table
+2. Create a table with columns: Category, Issue, Severity, Location, Action Required
+3. Categories: Build, Pages, Assets, API, Console Errors, Responsive
+4. Order the issues by severity (critical, high, medium, low)
 
 ### 6. Share Preview
 
 > Goal: Share Preview
 
-แชร์ preview ให้ทีมและรวบรวม feedback
+Share the preview with the team and collect feedback
 
-1. แชร์ preview URL ให้ทีม
-2. รวบรวม feedback และบันทึก issues ที่พบ
-3. ถ้ามี issues ให้ทำ `/resolve-errors` แล้ว rebuild preview
-4. ถ้าทุกอย่างผ่าน ให้ทำ `/run-deploy` เพื่อ deploy จริง
+1. Share the preview URL with the team
+2. Collect feedback and record the issues found
+3. If there are issues, run `/resolve-errors` then rebuild the preview
+4. If everything passes, run `/run-deploy` for the actual deploy
 
 ## Rules
 
-- ใช้ preview build mode ไม่ใช่ production
-- ตั้งค่า environment variables สำหรับ preview แยกจาก production
-- ใช้ preview database หรือ staging database หากจำเป็น
-- ทดสอบ features ที่เปลี่ยนแปลงล่าสุดก่อน
-- ทดสอบ critical user flows ทุกครั้ง
-- ทดสอบ responsive design บนหลาย screen sizes
-- ใช้ `/watch-browser-and-fix` สำหรับตรวจสอบต่อเนื่อง
-- ใช้ `/run-test` สำหรับทดสอบแบบละเอียด
-- ใช้ `/report` สำหรับรายงาน issues
-- Preview server ควรหยุดเมื่อไม่ใช้งาน
-- ลบ preview builds เก่าเป็นระยะ
-- ใช้ preview URLs ชั่วคราว ห้ามใช้เป็น production
-- ถ้ามี issues ให้แก้ก่อน deploy จริง
-- ถ้าเป็น deployment preview ให้รอจนกว่า URL จะพร้อมก่อนทดสอบ
+- Use the preview build mode, not production
+- Set separate environment variables for preview from production
+- Use a preview or staging database if needed
+- Test the most recently changed features first
+- Always test the critical user flows
+- Test the responsive design across multiple screen sizes
+- Use `/watch-browser-and-fix` for continuous checking
+- Use `/run-test` for detailed testing
+- Use `/report` to report issues
+- Stop the preview server when not in use
+- Periodically delete old preview builds
+- Use preview URLs temporarily; never use them as production
+- If there are issues, fix them before the actual deploy
+- For a deployment preview, wait until the URL is ready before testing
 
 ## Common Mistakes
 
-- ใช้ production build แทน preview build
-- ไม่ตั้งค่า environment variables สำหรับ preview
-- ทดสอบเฉพาะหน้าที่เปลี่ยน ไม่ทดสอบ critical flows
-- ไม่ตรวจสอบ console errors
-- ลืมหยุด preview server เมื่อไม่ใช้งาน
-- ใช้ preview URL เป็น production
+- Using a production build instead of a preview build
+- Not setting environment variables for preview
+- Testing only the changed pages and not the critical flows
+- Not checking the console errors
+- Forgetting to stop the preview server when not in use
+- Using a preview URL as production
 
 ## Anti-Patterns
 
-- Deploy จริงโดยไม่ผ่าน preview ก่อน
-- ใช้ production database สำหรับ preview
-- ละเว้น responsive design testing
-- ไม่รายงาน issues ที่พบใน preview
-- ข้าม API testing ใน preview
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /run-review ถ้าจำเป็น
+- Deploying for real without going through a preview first
+- Using a production database for preview
+- Skipping responsive design testing
+- Not reporting the issues found in the preview
+- Skipping API testing in the preview
+- Use /run-dev if needed
+- Use /run-review if needed
 
 ## Expected Outcome
 
-- Preview build สำเร็จไม่มี errors
-- Preview server ทำงานได้
-- Features ทำงานถูกต้องใน preview
-- Console ไม่มี errors หรือ warnings
-- Responsive design ทำงานบนทุก screen sizes
-- Issues ถูกระบุ รายงานในตาราง และแก้ไขก่อน deploy
-- Feedback จากทีมถูกรวบรวม
-- พร้อมสำหรับ `/run-deploy` เพื่อ deploy จริง
+- The preview build succeeds with no errors
+- The preview server works
+- Features work correctly in the preview
+- The console has no errors or warnings
+- The responsive design works on every screen size
+- Issues are identified, reported in a table, and fixed before deploy
+- Team feedback is collected
+- Ready for `/run-deploy` for the actual deploy

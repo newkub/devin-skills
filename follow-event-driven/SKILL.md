@@ -1,6 +1,6 @@
 ---
 name: follow-event-driven
-description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
+description: Implement Event-Driven Architecture for async workflows and loose coupling
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -11,107 +11,107 @@ related:
 
 ## Goal
 
-Implement Event-Driven Architecture ที่รองรับ async workflows, scalability, และ loose coupling
+Implement an Event-Driven Architecture that supports async workflows, scalability, and loose coupling
 
 ## Scope
 
-ใช้สำหรับออกแบบและ implement Event-Driven Architecture สำหรับ async workflows, loose coupling, และ scalability
+Use for designing and implementing an Event-Driven Architecture for async workflows, loose coupling, and scalability
 
-- ออกแบบ event model และ message broker
-- สร้าง event bus, handlers, และ consumers
-- กำหนด delivery guarantees, idempotency, และ error handling
-- รองรับ event sourcing และ observability
+- Design the event model and message broker
+- Build the event bus, handlers, and consumers
+- Define delivery guarantees, idempotency, and error handling
+- Support event sourcing and observability
 
 ## Execute
 
 ### 1. Design Event Model
 
-> Goal: ออกแบบ event model และ event catalog
+> Goal: design the event model and event catalog
 
-1. ระบุ business events ที่สำคัญ:
+1. Identify key business events:
    - Domain events (business facts)
    - Integration events (cross-system)
    - Notification events (alerts, updates)
-2. กำหนด event schema และ versioning strategy
-3. สร้าง event catalog หรือ registry
-4. ระบุ event producers และ consumers
+2. Define the event schema and versioning strategy
+3. Create an event catalog or registry
+4. Identify event producers and consumers
 
 ### 2. Choose Message Broker
 
-> Goal: เลือก message broker ตาม scalability และ delivery requirements
+> Goal: choose the message broker based on scalability and delivery requirements
 
-1. เลือก message broker ตาม requirements:
+1. Choose the message broker based on requirements:
    - In-memory: Tokio mpsc, channels (single process)
    - Single node: Redis Pub/Sub, SQLite queue
    - Distributed: Apache Kafka, RabbitMQ, NATS
    - Cloud: AWS SNS/SQS, Google Pub/Sub
-2. กำหนด durability และ delivery guarantees
-3. Setup monitoring และ observability
-4. สร้าง connection management
+2. Define durability and delivery guarantees
+3. Set up monitoring and observability
+4. Build connection management
 
 ### 3. Implement Event Bus
 
-> Goal: สร้าง abstraction และ adapters สำหรับ event bus
+> Goal: build the abstraction and adapters for the event bus
 
-1. สร้าง abstraction layer สำหรับ event bus:
+1. Build an abstraction layer for the event bus:
    ```rust
    trait EventBus {
        async fn publish(&self, event: Event) -> Result<()>;
        async fn subscribe(&self, topic: &str) -> Stream<Event>;
    }
    ```
-2. Implement concrete adapters สำหรับแต่ละ broker
-3. สร้าง error handling และ retry mechanisms
-4. Add circuit breaker สำหรับ resilience
+2. Implement concrete adapters for each broker
+3. Build error handling and retry mechanisms
+4. Add a circuit breaker for resilience
 
 ### 4. Setup Event Handlers
 
-> Goal: สร้าง handlers ตาม event types พร้อม idempotency
+> Goal: build handlers by event type with idempotency
 
-1. สร้าง handler registry หรือ dispatcher
-2. Implement handlers ตาม event types:
+1. Build a handler registry or dispatcher
+2. Implement handlers by event type:
    - Synchronous handlers (quick operations)
    - Asynchronous handlers (background processing)
-3. กำหนด handler execution order
-4. Implement idempotency สำหรับ handlers
+3. Define handler execution order
+4. Implement idempotency for handlers
 
 ### 5. Configure Event Sourcing (Optional)
 
-> Goal: ตัดสินใจและตั้งค่า event sourcing ถ้าจำเป็น
+> Goal: decide and configure event sourcing when needed
 
-1. ตัดสินใจว่าต้องการ event sourcing หรือไม่:
+1. Decide whether event sourcing is required:
    - Event sourcing: Store events as source of truth
    - Event notification: Events notify state changes
-2. สร้าง event store (if needed)
-3. Implement projections หรือ read models
-4. Setup snapshotting สำหรับ performance
+2. Create an event store (if needed)
+3. Implement projections or read models
+4. Set up snapshotting for performance
 
 ### 6. Add Observability
 
-> Goal: เพิ่ม tracing, logging, และ monitoring สำหรับ event flow
+> Goal: add tracing, logging, and monitoring for the event flow
 
-1. Implement distributed tracing ผ่าน events
-2. Setup event logging และ audit trail
-3. Create dashboards สำหรับ event flow
-4. Add alerting สำหรับ failed events
+1. Implement distributed tracing across events
+2. Set up event logging and an audit trail
+3. Create dashboards for the event flow
+4. Add alerting for failed events
 
 ## Rules
 
 ### 1. Event Design
 
 Event Naming
-- ใช้ past tense สำหรับ domain events: `OrderPlaced`, `PaymentProcessed`
-- ใช้ descriptive names ที่บ่งบอก intent
-- หลีกเลี่ยง generic names เช่น `DataChanged`
+- Use past tense for domain events: `OrderPlaced`, `PaymentProcessed`
+- Use descriptive names that convey intent
+- Avoid generic names like `DataChanged`
 
 Event Payload
-- รวมข้อมูลที่จำเป็นใน event payload (event-carried state transfer)
-- ใช้ event IDs สำหรับ idempotency
-- รวม timestamps และ metadata
-- หลีกเลี่ยง large payloads (reference แทน if > 1KB)
+- Include the necessary data in the event payload (event-carried state transfer)
+- Use event IDs for idempotency
+- Include timestamps and metadata
+- Avoid large payloads (use references if > 1KB)
 
 Event Versioning
-- ใช้ semantic versioning สำหรับ event schemas
+- Use semantic versioning for event schemas
 - Implement schema evolution strategies:
   - Tolerant reader (ignore unknown fields)
   - Schema registry
@@ -128,28 +128,28 @@ Event Versioning
 Recommendations
 - Default to at-least-once delivery
 - Implement idempotent consumers
-- ใช้ exactly-once เฉพาะเมื่อจำเป็นจริงๆ
+- Use exactly-once only when truly necessary
 
 ### 3. Error Handling
 
 Retry Strategy
 - Implement exponential backoff
-- กำหนด max retry attempts
-- ใช้ dead letter queue (DLQ) สำหรับ failed events
-- แยก retryable vs non-retryable errors
+- Define max retry attempts
+- Use a dead letter queue (DLQ) for failed events
+- Separate retryable vs non-retryable errors
 
 Circuit Breaker
-- เปิด circuit เมื่อ failure rate สูง
-- ปิด circuit หลังจาก recovery
-- ใช้ half-open state สำหรับ testing
+- Open the circuit when the failure rate is high
+- Close the circuit after recovery
+- Use a half-open state for testing
 
 ### 4. Idempotency
 
 Consumer Idempotency
-- เก็บ processed event IDs
-- ใช้ idempotency keys จาก producers
+- Store processed event IDs
+- Use idempotency keys from producers
 - Implement deduplication logic
-- Set TTL สำหรับ idempotency storage
+- Set a TTL for idempotency storage
 
 Example Pattern
 ```rust
@@ -170,15 +170,15 @@ async fn handle_event(event: Event) -> Result<()> {
 ### 5. Eventual Consistency
 
 Handling Inconsistency
-- ออกแบบระบบรองรับ temporary inconsistency
-- ใช้ sagas หรือ process managers สำหรับ long-running transactions
+- Design the system to tolerate temporary inconsistency
+- Use sagas or process managers for long-running transactions
 - Implement compensation actions
-- แสดง pending states ใน UI
+- Show pending states in the UI
 
 Saga Pattern
 - Orchestration saga: Central coordinator
 - Choreography saga: Event-driven coordination
-- เลือกตาม complexity และ team preference
+- Choose based on complexity and team preference
 
 ### 6. Testing Strategy
 
@@ -200,28 +200,28 @@ End-to-End Tests
 ### 7. Anti-Patterns
 
 Over-Engineering
-- ใช้ event-driven สำหรับ simple CRUD operations
-- สร้าง too granular events
-- Premature optimization สำหรับ low-scale systems
+- Using event-driven for simple CRUD operations
+- Creating too-granular events
+- Premature optimization for low-scale systems
 
 Design Issues
-- Synchronous events (use RPC แทน)
+- Synchronous events (use RPC instead)
 - Circular event dependencies
 - Missing error handling
 - No observability
 
 ## Expected Outcome
 
-- Event-driven system ที่ scalable และ resilient
-- Loose coupling ระหว่าง components
-- Async processing ที่ reliable
-- Clear event contracts และ versioning
-- Complete observability ของ event flows
-- Path สำหรับ scale และ evolution
+- A scalable and resilient event-driven system
+- Loose coupling between components
+- Reliable async processing
+- Clear event contracts and versioning
+- Complete observability of event flows
+- A path for scale and evolution
 
 ## Guide
 
-- ทำ `/deep-review` สำหรับ base architecture
-- existing event system findings (schemas, ordering, idempotency, DLQ) → `/improve-events`
-- ทำ `/deep-review` สำหรับ distributed event-driven systems
-- ทำ `/deep-review` สำหรับ event handler structure
+- Run `/deep-review` for the base architecture
+- Existing event system findings (schemas, ordering, idempotency, DLQ) → `/improve-events`
+- Run `/deep-review` for distributed event-driven systems
+- Run `/deep-review` for event handler structure

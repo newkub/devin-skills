@@ -1,6 +1,6 @@
 ---
 name: scan-codebase
-description: Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality
+description: Quickly scan a codebase to understand its structure, patterns, and quality
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -13,63 +13,63 @@ related:
 
 ## Goal
 
-Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality ใน 3 นาที
+Quickly scan a codebase to understand its structure, patterns, and quality within 3 minutes
 
 ## Scope
 
-ใช้สำหรับ quick overview ก่อน `/deep-analyze` หรือ standalone snapshot เร็ว (sub-step ของ `/deep-analyze` Step 2)
+Use for a quick overview before `/deep-analyze`, or as a fast standalone snapshot (a sub-step of `/deep-analyze` Step 2)
 
 ## Execute
 
-### 1. File Structure Discovery (30 วินาที)
+### 1. File Structure Discovery (30 seconds)
 
-> Goal: เข้าใจโครงสร้าง project, project type และ workspace layout
+> Goal: Understand the project structure, project type, and workspace layout
 
-1. ทำ `find_by_name` หา manifest files
-2. ทำ `find_by_name` หา directory structure (`src/`, `app/`, `lib/`, `components/`)
-3. ระบุ project type และ monorepo structure
+1. Use `find_by_name` to locate manifest files
+2. Use `find_by_name` to locate the directory structure (`src/`, `app/`, `lib/`, `components/`)
+3. Identify the project type and monorepo structure
 
-### 2. Pattern Search (1 นาที)
+### 2. Pattern Search (1 minute)
 
-> Goal: ค้นพบ code patterns และ key terms ของ domain
+> Goal: Discover code patterns and the domain’s key terms
 
-1. ทำ `Grep` หา `import`, `export`, `function`, `class`, `const`, `interface` แบบ parallel
-2. ทำ `Grep` หา key terms ที่เกี่ยวข้องกับ domain
+1. Use `Grep` in parallel for `import`, `export`, `function`, `class`, `const`, `interface`
+2. Use `Grep` for key terms related to the domain
 
-### 3. Structural Analysis (1 นาที)
+### 3. Structural Analysis (1 minute)
 
-> Goal: ได้ภาพรวม structure ระดับ symbols และ outline
+> Goal: Get a symbol-level structure overview and outline
 
-1. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
-2. ทำ `/use-astgrep` สำหรับ ad-hoc AST patterns
+1. Run `/check-code-structure` to use `ast-grep outline`
+2. Run `/use-astgrep` for ad-hoc AST patterns
 
-### 4. Quality Check (30 วินาที)
+### 4. Quality Check (30 seconds)
 
-> Goal: พบ quality issues และ anti-patterns พร้อม priority
+> Goal: Find quality issues and anti-patterns with priority
 
-1. ทำ `/deep-review` หา duplicate code
-2. ทำ `Grep` หา anti-patterns (`any`, `console.log`, nested ternary)
+1. Run `/deep-review` to find duplicate code
+2. Use `Grep` to find anti-patterns (`any`, `console.log`, nested ternary)
 
-### 5. Structured Data And Report (30 วินาที)
+### 5. Structured Data And Report (30 seconds)
 
-> Goal: สรุปผล scan เป็น structured data และรายงานที่อ่านง่าย
+> Goal: Summarize the scan into structured data and a readable report
 
-1. ทำ `/use-scripts` สร้าง structured data
-2. ทำ `/report` สรุปผล
+1. Run `/use-scripts` to build structured data
+2. Run `/report` to summarize the results
 
 ## Rules
 
-- ประมวลผลแบบ parallel เพื่อความเร็ว
-- ใช้ `Grep` สำหรับ text search
-- ใช้ `ast-grep` สำหรับ semantic search
-- ใช้ `/deep-analyze` ถ้าต้องการวิเคราะห์ลึก
-- จำกัด scope ด้วย path, type, glob เพื่อลด noise
-- ใช้ /run-scan ถ้าจำเป็น
+- Process in parallel for speed
+- Use `Grep` for text search
+- Use `ast-grep` for semantic search
+- Use `/deep-analyze` when deeper analysis is needed
+- Limit scope with path, type, glob to reduce noise
+- Use /run-scan if needed
 
 ## Expected Outcome
 
-- Project structure ที่ชัดเจน
-- Code patterns ที่ใช้บ่อย
-- Structure overview ผ่าน `ast-grep outline`
-- Quality issues พร้อม priority
-- Recommendations ตาม impact
+- A clear project structure
+- The code patterns in common use
+- A structure overview via `ast-grep outline`
+- Quality issues with priority
+- Recommendations by impact

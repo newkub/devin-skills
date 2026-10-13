@@ -1,24 +1,24 @@
 # Capture Component
 
 
-Capture UI component เฉพาะส่วนสำหรับ docs/review/testing ผ่าน `capture component` (merged จาก `capture-component`)
+Capture specific UI components for docs/review/testing via `capture component` (merged from `capture-component`)
 
 #### Component — Execute
 
 ##### 1. Identify Component
 
-1. ถ้า user ระบุ component file → อ่านไฟล์เพื่อดู props และ variants
-2. ถ้า user ระบุ URL + selector → ใช้ตรงๆ
-3. ถ้าไม่ระบุ → ค้นหา components จาก `src/components`, `src/ui`, `packages/*/src/components`
+1. If the user names a component file → read it to see its props and variants
+2. If the user names a URL + selector → use them directly
+3. If nothing is given → search for components in `src/components`, `src/ui`, `packages/*/src/components`
 
 ##### 2. Prepare Component View
 
-> Goal: มีหน้าจอแสดง component เพียงอย่างเดียว
+> Goal: have a view that shows the component on its own
 
-1. ถ้ามี Storybook → เปิด story ของ component นั้น
-2. ถ้ามี dev server → สร้างหรือหา URL ที่ render component เปล่า ๆ
-3. ถ้าเป็น static HTML → สร้าง temp page ใน `public/screenshots/components/<name>.html`
-4. ถ้าเป็น TUI/CLI → ใช้ `capture terminal --cmd ...` แทน
+1. If Storybook exists → open that component's story
+2. If a dev server exists → create or find a URL that renders just the bare component
+3. For static HTML → create a temp page at `public/screenshots/components/<name>.html`
+4. For TUI/CLI → use `capture terminal --cmd ...` instead
 
 ##### 3. Capture
 
@@ -26,25 +26,25 @@ Capture UI component เฉพาะส่วนสำหรับ docs/review/t
 bun D:/newkub/agents-capture/src/presentation/cli.ts component <url> --selector "<css>" --out public/screenshots/components/<name>.png
 ```
 
-- CLI จะ `scrollintoview` selector แล้ว screenshot viewport
-- หลาย variants → แยกไฟล์ เช่น `<name>-primary.png`, `<name>-disabled.png`
-- หลาย selectors บน routes เดียวกัน → ใช้ `capture all --components "nav=header@/,form=form@/request"` แทน
+- The CLI `scrollintoview`s the selector then screenshots the viewport
+- Multiple variants → separate files, e.g. `<name>-primary.png`, `<name>-disabled.png`
+- Multiple selectors on the same routes → use `capture all --components "nav=header@/,form=form@/request"` instead
 
 ##### 4. Verify And Report
 
-1. เปิดดูภาพด้วย `read` — component ต้องชัดเจน
-2. ถ้าไม่ชัด → ปรับ viewport (`capture all --devices "name=WxH"`) หรือ theme แล้ว capture ใหม่
-3. ลบ temporary HTML หลัง capture เสร็จถ้าไม่ต้องการ
+1. Open the image with `read` — the component must be clearly visible
+2. If unclear → adjust the viewport (`capture all --devices "name=WxH"`) or theme, then capture again
+3. Delete the temporary HTML once the capture is done if you don't need it
 
 #### Component — Rules
 
-- component ต้องแสดงเพียงอย่างเดียวบนหน้าจอ — ไม่ capture navbar/sidebar/layout
-- ถ้า component ต้องใช้ provider → setup provider ก่อน capture
-- ตั้งชื่อตาม component (PascalCase หรือชื่อไฟล์) + variant suffix
-- บันทึกลง `public/screenshots/components/`
-- ถ้า component ต้อง authentication → ถาม user ก่อน
+- The component must appear alone on screen — don't capture navbar/sidebar/layout
+- If the component needs a provider → set up the provider before capturing
+- Name it after the component (PascalCase or filename) + variant suffix
+- Save into `public/screenshots/components/`
+- If the component requires authentication → ask the user first
 
 #### Component — Expected Outcome
 
-- ได้ภาพของแต่ละ component/variant แยกไฟล์ พร้อมใช้กับ `/deep-review`, `/update-readme-md`
+- Get a separate image per component/variant, ready for use with `/deep-review`, `/update-readme-md`
 

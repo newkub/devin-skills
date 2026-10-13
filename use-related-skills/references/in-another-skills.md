@@ -2,76 +2,76 @@
 
 ## Goal
 
-เลือกและใช้ skill อื่นที่เหมาะสมกับ task หรือ skill ปัจจุบัน เพื่อดำเนินการต่อ
+Pick and use another skill that fits the current task or skill so the work can continue
 
 ## Scope
 
-ใช้เมื่องานหรือ skill ปัจจุบันต้องการ skill อื่นมาช่วยต่อ โดยมีรายการ candidate skills หรือ context ที่ชัดเจน
+Use when the current task or skill needs another skill to carry on, with a clear set of candidate skills or context
 
 ## Execute
 
 ### 1. Analyze Context
 
-> Goal: เข้าใจสถานการณ์ปัจจุบัน
+> Goal: Understand the current situation
 
-1. อ่าน context, goal, และ current skill ถ้ามี
-2. ระบุว่าต้องการ skill ประเภทใด: แก้ไข, ตรวจสอบ, สร้าง, research, deploy
-3. ถ้าไม่ชัด → ทำ `/ask-me` ก่อน
+1. Read the context, goal, and current skill if present
+2. Determine what kind of skill is needed: fix, check, create, research, deploy
+3. If unclear → run `/ask-me` first
 
 ### 2. Get Candidates
 
-> Goal: หา skills ทีเหมาะสม
+> Goal: Find suitable skills
 
-1. ทำ `/use-related-skills` ถ้ามี skill ปัจจุบัน
-2. ทำ `/suggest-next-action` ถ้ามี task ทั่วไป
-3. ทำ `/search-skills` เพื่อดูกลุ่ม skills
-4. กรอง candidates ให้เหลือ 1-3 ตัว
+1. Run `/use-related-skills` if there is a current skill
+2. Run `/suggest-next-action` for a general task
+3. Run `/search-skills` to browse skill groups
+4. Narrow the candidates down to 1-3
 
 ### 3. Select And Invoke
 
-> Goal: เลือกและเรียก skill
+> Goal: Select and invoke a skill
 
-1. เปรียบเทียบ candidate จาก Goal, Scope, และข้อจำกัด
-2. เลือก skill ทีเหมาะสมทีสุด
-3. เรียก `/selected-skill` พร้อม context ที่ครบ
-4. ถ้าต้องการหลาย skills → ทำซ้ำตามลำดับ
+1. Compare candidates on Goal, Scope, and constraints
+2. Pick the most suitable skill
+3. Invoke `/selected-skill` with complete context
+4. If several skills are needed → repeat in order
 
 ### 4. Validate
 
-> Goal: ยื่นยันว่าผลลัพธ์ใช้ได้
+> Goal: Confirm the result is usable
 
-1. ตรวจ output จาก skill ทีเรียก
-2. ถ้าไม่ตรง goal → ทำซ้ำขั้นตอน 2-3
-3. ทำ `/check-reference` ถ้าอ้างอิง skills อื่น
+1. Check the output of the invoked skill
+2. If it misses the goal → repeat steps 2-3
+3. Run `/check-reference` if other skills were referenced
 
 ## Rules
 
 ### 1. Evidence Based
 
-- เลือก skill จาก Goal/Scope ไม่ใช่แค่ name
-- ระบุเหตุผลสั้นๆ ก่อนเรียก
-- ไม่เรียก skill ที่ไม่เกี่ยวข้อง
+- Choose a skill from its Goal/Scope, not just its name
+- Give a short reason before invoking
+- Do not invoke an unrelated skill
 
 ### 2. Context Preservation
 
-- ส่ง context สำคัญให้ skill ทีเลือก
-- ระบุ expected output และ success criteria
-- เก็บ log ของ skill ทีเรียก
+- Pass the important context to the chosen skill
+- State the expected output and success criteria
+- Keep a log of the skills invoked
 
 ### 3. Single Next Skill
 
-- ถ้าไม่จำเป็นต้องใช้หลาย skills → เลือกทีละตัว
-- ถ้าซับซ้อนมาก → ใช้ `/use-subagents` แทน
+- If several skills are not truly needed → pick one at a time
+- If it is very complex → use `/use-subagents` instead
 
 ### 4. Validation
 
-- ตรวจสอบว่า skill ทีเลือกมีอยู่จริง
-- ตรวจสอบว่าไม่เรียก skill ตัวเอง
-- ทำ `/report` สำหรับสรุป
+- Verify that the chosen skill actually exists
+- Verify that the skill does not invoke itself
+- Run `/report` for the summary
 
 ## Expected Outcome
 
-- skill ทีเหมาะสมถูกเลือกและเรียก
-- context ถูกส่งต่อไปยัง skill ทีเลือก
-- มีรายงานสรุป skill ทีใช้และผลลัพธ์
-- ใช้ร่วมกับ `/use-related-skills` ใน `/update-devin-global-skills`
+- The most suitable skill is selected and invoked
+- Context is passed on to the chosen skill
+- A summary report of the skills used and their results exists
+- Used together with `/use-related-skills` in `/update-devin-global-skills`

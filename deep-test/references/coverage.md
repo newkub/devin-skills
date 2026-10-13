@@ -1,88 +1,88 @@
 # Deep Test — Coverage Domain
 
-วิเคราะห์ test coverage ตรวจสอบ framework และบรรลุ 100% coverage ทุกประเภท
+Analyze test coverage, detect the framework, and reach 100% coverage in every category.
 
 ## 1. Detect Test Framework
 
 > Goal: Detect Test Framework
 
-1. ตรวจสอบ `package.json` สำหรับ test dependencies (`vitest`, `jest`, `mocha`, `pytest`, `go test`)
-2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`, `go.mod`)
-3. ตรวจสอบ test files patterns (`*.test.ts`, `*_test.go`, `test_*.py`)
-4. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
-5. บันทึก test framework และ coverage tools ที่ใช้
+1. Check `package.json` for test dependencies (`vitest`, `jest`, `mocha`, `pytest`, `go test`)
+2. Check config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`, `go.mod`)
+3. Check test file patterns (`*.test.ts`, `*_test.go`, `test_*.py`)
+4. Check coverage tools supported by the framework (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
+5. Record the test framework and coverage tools in use
 
 ## 2. Setup Coverage Config
 
 > Goal: Setup Coverage Config
 
-1. ตรวจสอบ coverage config ใน framework config
-2. ตั้งค่า coverage thresholds เป็น 100% ทุก category
-3. ตั้งค่า coverage output directory
-4. ตั้งค่า coverage reporters (`html`, `json`, `text`, `lcov`)
-5. ตรวจสอบ coverage excludes สำหรับ test files และ config
+1. Check the coverage config in the framework config
+2. Set coverage thresholds to 100% for every category
+3. Set the coverage output directory
+4. Set coverage reporters (`html`, `json`, `text`, `lcov`)
+5. Check coverage excludes for test files and config
 
 ## 3. Run Coverage Analysis
 
 > Goal: Run Coverage Analysis
 
-1. รัน coverage command ตาม framework (`bun run test:coverage`, `pytest --cov`, `go test -cover`)
-2. รอ tests เสร็จสิ้น
-3. ตรวจสอบ coverage report ถูกสร้าง
-4. บันทึก coverage metrics ทุก category
-5. บันทึก report location
+1. Run the coverage command for the framework (`bun run test:coverage`, `pytest --cov`, `go test -cover`)
+2. Wait for the tests to finish
+3. Verify the coverage report was generated
+4. Record coverage metrics for every category
+5. Record the report location
 
 ## 4. Verify And Loop Until 100% Coverage
 
 > Goal: Verify And Loop Until 100% Coverage
 
-ตรวจสอบว่า coverage ถึง 100% ทุกประเภท ถ้าไม่ถึงให้เขียน tests แล้ว run ใหม่จนกว่าจะ 100%
+Verify that coverage reaches 100% in every category; if not, write tests and re-run until 100%
 
-1. ตรวจสอบ `lines` coverage ถึง 100%
-2. ตรวจสอบ `branches` coverage ถึง 100%
-3. ตรวจสอบ `functions` coverage ถึง 100%
-4. ตรวจสอบ `statements` coverage ถึง 100%
-5. ถ้า coverage ถึง 100% ทุก category → ไป Report
-6. ถ้า coverage ไม่ถึง 100% → ทำ `/deep-review` วิเคราะห์ gaps เติม tests ที่ขาด
-7. ถ้าเขียน tests แล้ว → กลับไป Step 3 Run Coverage Analysis ใหม่
-8. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report พร้อม remaining gaps
+1. Verify `lines` coverage reaches 100%
+2. Verify `branches` coverage reaches 100%
+3. Verify `functions` coverage reaches 100%
+4. Verify `statements` coverage reaches 100%
+5. If every category reaches 100% → go to Report
+6. If coverage is below 100% → run `/deep-review` to analyze gaps and fill in the missing tests
+7. If tests were written → go back to Step 3 and re-run Coverage Analysis
+8. Loop at most 5 times; if exceeded → stop and report the remaining gaps
 
 ## 5. Report
 
 > Goal: Report coverage result
 
-1. ถ้า coverage ถึง 100% → report framework, metrics, report location
-2. ถ้าไม่ถึง 100% → report remaining gaps, categories ที่ยังไม่ผ่าน, next step
-3. persist raw results → `.devin/temp/report/<workspace>/coverage-<time>.md` ตาม format `/create-report-in-dot-devin` — metrics table + gaps เพื่อให้ `/update-docs` reuse
-4. ทำ `/suggest-next-action`
+1. If coverage reaches 100% → report framework, metrics, report location
+2. If below 100% → report remaining gaps, failing categories, next step
+3. Persist raw results → `.devin/temp/report/<workspace>/coverage-<time>.md` per the `/create-report-in-dot-devin` format — metrics table + gaps so `/update-docs` can reuse them
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Coverage Metrics
 
-- `lines` - % ของ lines ที่ถูก execute
-- `functions` - % ของ functions ที่ถูก call
-- `branches` - % ของ branches ที่ถูก test
-- `statements` - % ของ statements ที่ถูก execute
-- ทุก category ต้องถึง 100%
+- `lines` - % of lines executed
+- `functions` - % of functions called
+- `branches` - % of branches tested
+- `statements` - % of statements executed
+- Every category must reach 100%
 
 ### 2. Coverage Threshold And Loop
 
-- Coverage 100% ทุก category เท่านั้นที่ผ่าน
-- หาก coverage ไม่ถึง 100% ต้องทำ `/deep-review` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
-- วน loop run coverage → write tests → run coverage จนกว่าจะ 100% สูงสุด 5 รอบ
-- ถ้าเกิน 5 รอบ → stop และ report remaining gaps
-- ไม่มีข้อยกเว้นสำหรับ critical code, edge cases, error paths
+- Only 100% coverage in every category passes
+- If coverage is below 100%, run `/deep-review` to analyze gaps and write the missing tests
+- Loop run coverage → write tests → run coverage until 100%, at most 5 rounds
+- If more than 5 rounds → stop and report the remaining gaps
+- No exceptions for critical code, edge cases, or error paths
 
-- ใช้ /improve-coverage ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Use /improve-coverage if needed
+- Use /deep-review if needed
+- Use /run-check if needed
+- Use /run-verify if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- Test framework ถูกระบุอย่างถูกต้อง
-- Coverage config ถูกตั้งค่า thresholds 100% ทุก category
-- Coverage report ถูกสร้าง
-- Coverage ถึง 100% ทุก category หรือ report remaining gaps พร้อม next step
+- The test framework is correctly identified
+- Coverage config is set with 100% thresholds for every category
+- A coverage report is generated
+- Coverage reaches 100% in every category, or remaining gaps are reported with a next step

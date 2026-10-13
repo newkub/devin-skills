@@ -1,6 +1,6 @@
 ---
 name: create-github-repo
-description: บันทึก local project ที่ยังไม่มี remote ขึ้น GitHub repository ใหม่
+description: Publish a local project that has no remote to a new GitHub repository
 argument-hint: "[repo-name]"
 related:
   - git-commit
@@ -11,83 +11,83 @@ related:
 
 ## Goal
 
-บันทึก local project ที่ยังไม่มี remote ขึ้น GitHub repository ใหม่
+Publish a local project that has no remote to a new GitHub repository
 
 ## Scope
 
-- ใช้กับ directory ปัจจุบันที่มีหรือยังไม่มี `.git`
-- สร้าง GitHub repo ใหม่, add remote, commit, push
-- ไม่ครอบคลุม repo ที่มี remote อยู่แล้ว (ดู `/git-push`)
+- Works with the current directory, whether or not it already has `.git`
+- Creates a new GitHub repo, adds a remote, commits, and pushes
+- Does not cover repos that already have a remote (see `/git-push`)
 
 ## Execute
 
 ### 1. Validate Local Directory
 
-> Goal: ตรวจสอบสภาพ local repo ก่อนดำเนินการ
+> Goal: Check the state of the local repo before doing anything
 
-1. ตรวจสอบว่าอยู่ใน project directory
-2. รัน `git status` ถ้ามี `.git` เพื่อดู state
-3. ถ้ามี remote อยู่แล้วให้หยุดและบอกให้ใช้ `/git-push`
-4. รับ `repo-name` จาก argument หรือใช้ชื่อโฟลเดอร์ปัจจุบัน
-5. รับ visibility จาก argument (ค่าเริ่มต้น `--private`)
+1. Confirm you are in a project directory
+2. Run `git status` if `.git` exists to see the state
+3. If a remote already exists, stop and tell the user to use `/git-push`
+4. Take `repo-name` from the argument, or fall back to the current folder name
+5. Take visibility from the argument (default `--private`)
 
 ### 2. Initialize Git Repository
 
-> Goal: local directory มี `.git`
+> Goal: The local directory has `.git`
 
-1. ถ้าไม่มี `.git` ให้รัน `git init`
-2. ถ้ายังไม่มี `.gitignore` ให้สร้าง `.gitignore` พื้นฐานตาม project type
-3. รัน `git branch -M main`
+1. If there is no `.git`, run `git init`
+2. If there is no `.gitignore`, create a basic `.gitignore` suited to the project type
+3. Run `git branch -M main`
 
 ### 3. Create GitHub Repository
 
-> Goal: มี remote repository บน GitHub
+> Goal: There is a remote repository on GitHub
 
-1. ตรวจสอบ `gh auth status` ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
-2. รัน `gh repo create <repo-name> --<visibility>`
-3. ดึง URL ของ repo จาก output
-4. รัน `git remote add origin <repo-url>`
+1. Check `gh auth status`; if not logged in, stop and tell the user to run `gh auth login`
+2. Run `gh repo create <repo-name> --<visibility>`
+3. Extract the repo URL from the output
+4. Run `git remote add origin <repo-url>`
 
 ### 4. Commit And Push
 
-> Goal: โค้ดทั้งหมดถูก commit และ push ไป remote
+> Goal: All code is committed and pushed to the remote
 
-1. ทำตาม `/git-commit-and-push` เพื่อ commit และ push การเปลี่ยนแปลง
-2. ถ้า `git-commit-and-push` ล้มเหลว → ตรวจ `git status`, `git log`, แล้ว retry สูงสุด 1 ครั้ง
+1. Follow `/git-commit-and-push` to commit and push the changes
+2. If `git-commit-and-push` fails → check `git status` and `git log`, then retry up to 1 time
 
 ### 5. Verify
 
-> Goal: ยืนยันว่า repo พร้อมใช้งาน
+> Goal: Confirm the repo is ready to use
 
-1. ตรวจสอบ `git status` ว่า clean
-2. รัน `gh repo view <repo-name> --json url,defaultBranchRef --jq .url`
-3. ทำ `/open-web` เปิด repo URL
+1. Check that `git status` is clean
+2. Run `gh repo view <repo-name> --json url,defaultBranchRef --jq .url`
+3. Use `/open-web` to open the repo URL
 
 ## Rules
 
 ### 1. Repository Name
 
-- ใช้ชื่อโฟลเดอร์ปัจจุบันเป็นค่าเริ่มต้น
-- ถ้ามี argument ให้ใช้ argument แทน
-- ไม่ใช้ชื่อที่มีอักขระพิเศษหรือช่องว่าง
+- Default to the current folder name
+- If an argument is provided, use the argument instead
+- Do not use names with special characters or spaces
 
 ### 2. Initial State
 
-- ถ้าไม่มี commit เลย ให้ `git-commit-and-push` จัดการ commit ครั้งแรก
-- ถ้ามีไฟล์ที่ควร ignore ให้แก้ไข `.gitignore` ก่อน stage
-- ไม่ใช้ `git add .` โดยตรง ให้ `git-commit` จัดการ stage
+- If there are no commits yet, let `git-commit-and-push` handle the first commit
+- If there are files that should be ignored, fix `.gitignore` before staging
+- Do not run `git add .` directly; let `git-commit` handle staging
 
 ### 3. Safety
 
-- ตรวจสอบ `gh auth status` ก่อน
-- ไม่ force push
-- ถ้า repo มี remote อยู่แล้วให้หยุดและบอกให้ใช้ `/git-push`
+- Check `gh auth status` first
+- Never force push
+- If the repo already has a remote, stop and tell the user to use `/git-push`
 
-- ใช้ /follow-gitignore ถ้าจำเป็น
+- Use /follow-gitignore if needed
 
 ## Expected Outcome
 
-- Local project มี `.git` และ remote `origin`
-- GitHub repository ถูกสร้างด้วย visibility ที่ระบุ
-- ไฟล์ทั้งหมดถูก commit และ push
-- เปิดหน้า repo ใน browser ได้
+- The local project has `.git` and the `origin` remote
+- The GitHub repository is created with the specified visibility
+- All files are committed and pushed
+- The repo page can be opened in a browser

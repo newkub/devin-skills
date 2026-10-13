@@ -2,25 +2,25 @@
 
 ## Purpose
 
-สูตรการคำนวณ review score และ health indicator ของ codebase
+Formula for computing the review score and health indicator of a codebase
 
 ## Score Calculation
 
-คำนวณ review score เป็น percentage (0-100):
+Compute the review score as a percentage (0-100):
 
-- `0` = ทุก finding เป็น Critical
-- `100` = ไม่มี finding
+- `0` = every finding is Critical
+- `100` = no findings
 
 ## Score Breakdown
 
-แสดง score ทั้งสองระดับ:
+Show the score at both levels:
 
-- overall score: คะแนนรวมของทั้ง codebase
-- domain score: คะแนนแยกตาม domain
+- overall score: the combined score for the whole codebase
+- domain score: the score broken down by domain
 
 ## Grade Mapping
 
-แปลง score เป็น letter grade:
+Convert the score to a letter grade:
 
 - `A`: score >= 90
 - `B`: score >= 80
@@ -30,30 +30,30 @@
 
 ## Before-After Comparison
 
-ใช้ score เปรียบเทียบ before/after ในการปรับปรุง:
+Use the score to compare before/after during improvements:
 
-1. บันทึก before score ก่อนรัน improvement
-2. ทำ improvement ตาม findings
-3. รัน `bun run review-codebase` เพื่อวัด after score
-4. เปรียบเทียบ delta เพื่อวัดผลการปรับปรุง
+1. Record the before score before running improvements
+2. Make improvements per the findings
+3. Run `bun run review-codebase` to measure the after score
+4. Compare the delta to measure the impact of the improvements
 
 ## Category Coverage
 
-`categories` metric วัดความครอบคลุมของ review:
+The `categories` metric measures how comprehensively the review covered things:
 
 - target: `categories >= 60`
-- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `deep-review` เพื่อ integrate
+- If below 60 → run `/update-create-analyze-cli` to add analyzers in `tools/analyze`, then run `deep-review` to integrate
 
 ## Health Indicator
 
-สรุป overall assessment เป็น health indicator:
+Summarize the overall assessment as a health indicator:
 
-- พิจารณาจาก overall score, grade, และ severity distribution ของ findings
-- แสดงในรายงานพร้อมตาราง findings
+- Based on the overall score, grade, and severity distribution of findings
+- Displayed in the report alongside the findings table
 
 ## Severity Weights
 
-แต่ละ severity มี score weight ดังนี้:
+Each severity has the following score weight:
 
 - `Critical` = 0
 - `High` = 25
@@ -63,49 +63,49 @@
 
 ## Weighted Average Calculation
 
-review score = weighted average ของ findings ทั้งหมด:
+review score = weighted average of all findings:
 
 ```
 score = sum(severity_weight * count) / total_findings
 ```
 
-ตัวอย่าง:
+Example:
 
 - 1 Critical, 1 High, 1 Medium → (0 + 25 + 50) / 3 = 25
 - 2 Low, 1 Info → (75 + 75 + 100) / 3 = 83.3
 
 ## Action On Low Score
 
-ถ้า score < 70:
+If score < 70:
 
-- แนะนำให้เรียก `/deep-review` ก่อนดำเนินการ
-- ระบุ findings ที่ต้องแก้ไข
-- ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
+- Recommend running `/deep-review` before proceeding
+- Identify the findings that need fixing
+- Run `/suggest-next-action` to recommend the next step
 
 ## Report Format
 
-รายงานผลด้วย `/report table`:
+Report results with `/report table`:
 
 | Category | Severity | Finding | Evidence | Action |
 |----------|----------|---------|----------|--------|
 
-- Category — ประเภทการตรวจสอบ
+- Category — the type of check performed
 - Severity — `Critical` | `High` | `Medium` | `Low` | `Info`
-- Finding — ปัญหาที่พบ
+- Finding — the problem detected
 - Evidence — file path, line number, code snippet
-- Action — action ที่ต้องทำ
+- Action — the action to take
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must have:
 
 - file path
 - line number
-- code snippet ที่เป็นปัญหา
+- the code snippet causing the problem
 
 ## Supplementary Metrics
 
-ใช้ metrics เหล่านี้เพื่อวัดประสิทธิภาพและความครอบคลุมของ review process:
+Use these metrics to measure the effectiveness and coverage of the review process:
 
 | Metric | Description | How To Calculate |
 |--------|-------------|------------------|
@@ -120,7 +120,7 @@ score = sum(severity_weight * count) / total_findings
 | Issue Deduplication Rate | duplicate findings merged | `duplicates merged / total × 100` |
 | Before/After Trend | score improvement | `(after - before) / before × 100` |
 
-บันทึก metrics เหล่านี้หลังแต่ละรอบ review เพื่อเปรียบเทียบ before/after และตัดสินใจปรับปรุง CLI
+Record these metrics after each review round to compare before/after and decide on CLI improvements
 
 ## Domain-Specific Metrics
 

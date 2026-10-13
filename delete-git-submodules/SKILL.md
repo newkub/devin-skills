@@ -1,6 +1,6 @@
 ---
 name: delete-git-submodules
-description: ลบ git submodule ออกจาก repo ทั้งจาก .gitmodules, .git/modules และ working tree
+description: Remove a git submodule from the repo: .gitmodules, .git/modules, and working tree
 argument-hint: "[submodule-path]"
 related:
   - git-commit
@@ -9,11 +9,11 @@ related:
 ---
 ## Goal
 
-ลบ git submodule ออกจาก repository อย่างสมบูรณ์ ทั้งจาก `.gitmodules`, `.git/modules`, และ working tree
+Completely remove a git submodule from the repository — from `.gitmodules`, `.git/modules`, and the working tree
 
 ## Scope
 
-ใช้สำหรับการลบ git submodule ที่ไม่ต้องการอีกต่อไป พร้อม cleanup ทุกส่วนที่เกี่ยวข้อง
+Use for removing git submodule that are no longer needed, with cleanup of everything related
 
 ## Execute
 
@@ -21,67 +21,67 @@ related:
 
 > Goal: Deinit Submodule
 
-1. รัน `git submodule deinit -f <submodule-path>` เพื่อลบ submodule จาก configuration
-2. ตรวจสอบว่า submodule ถูก deinit สำเร็จ
+1. Run `git submodule deinit -f <submodule-path>` to remove the submodule from configuration
+2. Verify that the submodule was deinitialized successfully
 
 ### 2. Remove From Gitmodules
 
 > Goal: Remove From Gitmodules
 
-1. ลบ entry ของ submodule ออกจาก `.gitmodules`
-2. ลบ entry ของ submodule ออกจาก `.git/config`
-3. ถ้าไม่มี submodule เหลือ ลบไฟล์ `.gitmodules` ออกเลย
+1. Remove the submodule entry from `.gitmodules`
+2. Remove the submodule entry from `.git/config`
+3. If no submodules remain, delete the `.gitmodules` file entirely
 
 ### 3. Remove From Working Tree
 
 > Goal: Remove From Working Tree
 
-1. รัน `git rm -f <submodule-path>` เพื่อลบ submodule จาก working tree
-2. ตรวจสอบว่า submodule folder ถูกลบแล้ว
+1. Run `git rm -f <submodule-path>` to remove the submodule from the working tree
+2. Verify that the submodule folder is deleted
 
 ### 4. Clean Git Modules
 
 > Goal: Clean Git Modules
 
-1. ลบ submodule ออกจาก `.git/modules/<submodule-path>`
-2. ใช้ `Remove-Item .git/modules/<submodule-path> -Recurse -Force` บน Windows
-3. ใช้ `rm -rf .git/modules/<submodule-path>` บน macOS/Linux
+1. Remove the submodule from `.git/modules/<submodule-path>`
+2. On Windows, use `Remove-Item .git/modules/<submodule-path> -Recurse -Force`
+3. On macOS/Linux, use `rm -rf .git/modules/<submodule-path>`
 
 ### 5. Garbage Collect
 
 > Goal: Garbage Collect
 
-1. รัน `git gc` เพื่อ cleanup orphaned objects
-2. ตรวจสอบว่าไม่มี references เหลืออยู่
+1. Run `git gc` to clean up orphaned objects
+2. Verify that no references remain
 
 ## Rules
 
 ### 1. Order Of Operations
 
-- ทำ `git submodule deinit` ก่อนเสมอ
-- ลบจาก `.gitmodules` ก่อนลบจาก working tree
-- ลบ `.git/modules` หลังจากลบ working tree แล้ว
-- รัน `git gc` เป็นขั้นตอนสุดท้าย
+- Always run `git submodule deinit` first
+- Remove from `.gitmodules` before removing from the working tree
+- Remove `.git/modules` only after the working tree is removed
+- Run `git gc` as the final step
 
 ### 2. Safety Checks
 
-- ตรวจสอบว่าไม่มี uncommitted changes ใน submodule ก่อนลบ
-- ตรวจสอบว่าไม่มี dependencies อื่นอ้างถึง submodule นั้น
-- ถ้าเป็น monorepo ตรวจสอบว่าไม่มี workspace อื่นใช้ submodule นั้น
+- Check that the submodule has no uncommitted changes before deleting
+- Check that no other dependencies reference that submodule
+- In a monorepo, check that no other workspace uses that submodule
 
 ### 3. Cleanup Completeness
 
-- ลบทุกส่วน: `.gitmodules`, `.git/config`, `.git/modules`, working tree
-- ถ้าเป็น submodule ตัวเดียว ลบ `.gitmodules` ออกเลย
-- รัน `git gc` เสมอหลังลบเสร็จ
+- Remove every part: `.gitmodules`, `.git/config`, `.git/modules`, working tree
+- If it was the only submodule, delete `.gitmodules` entirely
+- Always run `git gc` after the removal is done
 
-- ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /ship-to-dev-branch ถ้าจำเป็น
+- Use /git-commit if needed
+- Use /ship-to-dev-branch if needed
 
 ## Expected Outcome
 
-- Submodule ลบออกจาก repository อย่างสมบูรณ์
-- ไม่มี references เหลืออยู่ใน `.gitmodules`, `.git/config`, `.git/modules`
-- Working tree สะอาด ไม่มี submodule folder
-- `git gc` ทำงานเสร็จโดยไม่มี error
+- The submodule is completely removed from the repository
+- No references remain in `.gitmodules`, `.git/config`, `.git/modules`
+- The working tree is clean with no submodule folder
+- `git gc` completes without errors
 

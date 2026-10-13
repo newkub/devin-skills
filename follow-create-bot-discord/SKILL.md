@@ -1,122 +1,122 @@
 ---
 name: follow-create-bot-discord
-description: สร้าง Discord bot ด้วย TypeScript/Bun — slash commands, auto-load, intents
+description: Build a Discord bot with TypeScript/Bun — slash commands, auto-load, intents
 argument-hint: "[features]"
 ---
 
 ## Goal
 
-สร้าง Discord bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม slash commands, event handlers, auto-load commands, และ modular architecture
+Create a runnable Discord bot project with TypeScript/Bun, complete with slash commands, event handlers, auto-loaded commands, and a modular architecture
 
 ## Scope
 
-ใช้สำหรับสร้าง Discord bot จาก scratch บน Bun หรือ Node.js รองรับ slash commands, buttons, select menus, modals, context menus, และ deployment
+Use for building a Discord bot from scratch on Bun or Node.js; supports slash commands, buttons, select menus, modals, context menus, and deployment
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the stack and library choices with reasons for later reference
 
 ### 2. Gather Requirements
 
-> Goal: รวบรวมข้อมูลก่อนสร้าง bot
+> Goal: Collect information before building the bot
 
-1. ถาม user ถึง purpose, ชื่อ bot, target guilds, และ commands ทีต้องการ
-2. ขอ `DISCORD_TOKEN`, `APPLICATION_ID`, และ `GUILD_ID` หรือแนะนำสร้าง app ที่ Discord Developer Portal
-3. ระบุ intents: `GatewayIntentBits.Guilds`, `GuildMessages`, `MessageContent`, etc.
-4. ระบุ deployment target: local dev หรือ server/serverless
+1. Ask the user about purpose, bot name, target guilds, and the commands needed
+2. Request `DISCORD_TOKEN`, `APPLICATION_ID`, and `GUILD_ID`, or guide the user to create an app in the Discord Developer Portal
+3. Identify intents: `GatewayIntentBits.Guilds`, `GuildMessages`, `MessageContent`, etc.
+4. Identify the deployment target: local dev or server/serverless
 
 ### 3. Setup Project
 
-> Goal: สร้างโครงสร้าง project
+> Goal: Create the project structure
 
-1. ทำ `/deep-review` หรือ `/deep-review` เพื่อสร้าง `src/`
-2. สร้าง `src/index.ts`, `src/client.ts`, `src/commands/`, `src/events/`, `src/handlers/`, `src/types.ts`, `src/config.ts`
-3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
-4. รัน `bun init` หรือ `npm init`
-5. ใช้ `/search-npm-libraries` เลือก library (default `discord.js` หรือ lightweight wrapper)
+1. Use `/deep-review` or `/deep-review` to create `src/`
+2. Create `src/index.ts`, `src/client.ts`, `src/commands/`, `src/events/`, `src/handlers/`, `src/types.ts`, `src/config.ts`
+3. Create `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
+4. Run `bun init` or `npm init`
+5. Use `/search-npm-libraries` to pick a library (default `discord.js` or a lightweight wrapper)
 
 ### 4. Configure Bot And Commands
 
-> Goal: เชื่อมต่อ Discord API
+> Goal: Connect to the Discord API
 
-1. ติดตั้ง library เช่น `bun add discord.js`
-2. สร้าง `src/client.ts` ด้วย token, intents, `Client` instance
-3. สร้าง `src/index.ts` เป็น entry point
-4. สร้าง `src/types.ts` สำหรับ `Command` interface (`data: SlashCommandBuilder; execute: ...`)
-5. สร้าง `src/deploy-commands.ts` เพื่อ register slash commands กับ Discord
-6. สร้าง `src/commands/ping.ts` เป็นตัวอย่าง
+1. Install the library, e.g. `bun add discord.js`
+2. Create `src/client.ts` with the token, intents, and a `Client` instance
+3. Create `src/index.ts` as the entry point
+4. Create `src/types.ts` for the `Command` interface (`data: SlashCommandBuilder; execute: ...`)
+5. Create `src/deploy-commands.ts` to register slash commands with Discord
+6. Create `src/commands/ping.ts` as an example
 
 ### 5. Auto-Load Commands And Events
 
-> Goal: โหลด commands/events จาก directory อัตโนมัติ
+> Goal: Auto-load commands/events from directories
 
-1. ใช้ `Bun.Glob` หรือ `readdirSync` เพื่อ scan `src/commands/`
-2. เก็บ commands ใน `Collection<string, Command>` ที่ client
-3. ใช้ `client.on(Events.InteractionCreate)` เพื่อ route slash commands, buttons, modals
-4. ใช้ `client.once(Events.ClientReady)` เพื่อ log login (event `ready` deprecated ใน v14, ถูกลบใน v15)
-5. เพิ่ม `src/events/` สำหรับ `clientReady`, `interactionCreate`, `messageCreate` ตาม need
+1. Use `Bun.Glob` or `readdirSync` to scan `src/commands/`
+2. Store commands in a `Collection<string, Command>` on the client
+3. Use `client.on(Events.InteractionCreate)` to route slash commands, buttons, and modals
+4. Use `client.once(Events.ClientReady)` to log the login (the `ready` event is deprecated in v14 and removed in v15)
+5. Add `src/events/` for `clientReady`, `interactionCreate`, and `messageCreate` as needed
 
 ### 6. Add Features
 
-> Goal: เพิ่ม features ตาม requirement
+> Goal: Add features per the requirements
 
-1. สร้าง slash commands ด้วย `SlashCommandBuilder`
-2. รองรับ buttons, select menus, modals, context menus ถ้าต้องการ
-3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
-4. เพิ่ม guards/middleware สำหรับ permission checks, rate limiting
-5. ใช้ `Interaction` types สำหรับ type safety
+1. Create slash commands with `SlashCommandBuilder`
+2. Support buttons, select menus, modals, and context menus when needed
+3. Use `/use-bun-native-api` instead of `node:*` when using Bun
+4. Add guards/middleware for permission checks and rate limiting
+5. Use `Interaction` types for type safety
 
 ### 7. Test Locally
 
-> Goal: ทดสอบ bot
+> Goal: Test the bot
 
-1. รัน `bun run deploy-commands` เพื่อ register commands
-2. รัน `bun dev` หรือ `bun run src/index.ts`
-3. ทดสอบ slash commands บน guild
-4. ตรวจสอบ logs และ error handling
-5. ทำ `/run-test` สำหรับ unit tests
+1. Run `bun run deploy-commands` to register commands
+2. Run `bun dev` or `bun run src/index.ts`
+3. Test slash commands in a guild
+4. Check logs and error handling
+5. Run `/run-test` for unit tests
 
 ### 8. Deploy
 
-> Goal: deploy bot ไป production
+> Goal: Deploy the bot to production
 
-1. ใช้ `bun start` บน server หรือ container
-2. ตั้งค่า `DISCORD_TOKEN` และ `APPLICATION_ID` บน host
-3. ถ้าใช้ serverless → ทำ `/deploy-to-cloudflare` หรือ `/deploy-to-railway` ตาม target
+1. Use `bun start` on a server or in a container
+2. Set `DISCORD_TOKEN` and `APPLICATION_ID` on the host
+3. If serverless → use `/deploy-to-cloudflare` or `/deploy-to-railway` per the target
 
 ## Rules
 
-- ไม่ hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; ใช้ `/follow-secret-manager` สำหรับจัดการ secrets
-- ใช้ `discord.js` เป็น default library บน Bun
-- ต้องมี `deploy-commands` script สำหรับ register slash commands
-- ไม่ commit `.env`
-- ใช้ TypeScript first ตาม `/follow-lang-typescript`
-- ใช้ intents ตาม least privilege — `GatewayIntentBits.Guilds` จำเป็นสำหรับ slash commands; `GuildMessages`/`MessageContent` เฉพาะเมื่ออ่าน messages
-- Bot app: สร้างที่ Discord Developer Portal → `Bot` tab → `Reset Token`; invite ผ่าน `OAuth2 → URL Generator` scopes `bot` + `applications.commands`
-- Slash commands: build ด้วย `SlashCommandBuilder`, register guild-level (`Routes.applicationGuildCommands`) ตอน dev เพราะเร็วกว่า, global (`Routes.applicationCommands`) ตอน production
+- Never hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; use `/follow-secret-manager` to manage secrets
+- Use `discord.js` as the default library on Bun
+- Always provide a `deploy-commands` script for registering slash commands
+- Never commit `.env`
+- Be TypeScript-first per `/follow-lang-typescript`
+- Use intents per least privilege — `GatewayIntentBits.Guilds` is required for slash commands; `GuildMessages`/`MessageContent` only when reading messages
+- Bot app: create it in the Discord Developer Portal → `Bot` tab → `Reset Token`; invite via `OAuth2 → URL Generator` with scopes `bot` + `applications.commands`
+- Slash commands: build with `SlashCommandBuilder`, register guild-level (`Routes.applicationGuildCommands`) during dev because it is faster, and global (`Routes.applicationCommands`) in production
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /report table ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed
+- Use /follow-create-cli if needed
+- Use /follow-create-sdk if needed
+- Use /follow-create-web if needed
+- Use /report table if needed
 
 ## Expected Outcome
 
-- Discord bot project รันได้ด้วย `bun dev`
-- Slash commands auto-load และทำงาน
-- Event handlers แยกออกเป็น modules
-- พร้อม deploy ด้วย environment variables
+- The Discord bot project runs with `bun dev`
+- Slash commands auto-load and work
+- Event handlers are split into modules
+- Ready to deploy with environment variables
 
 ## Guide
 
-- `/deep-research` + `/follow-best-practice` — official docs/versions ล่าสุด (ไม่ pin ในไฟล์)
+- `/deep-research` + `/follow-best-practice` — latest official docs/versions (not pinned in this file)
 - `/follow-lang-typescript` — TypeScript best practices
-- `/follow-create-bun-cli` — ถ้า bot เป็น Bun CLI project
-- `/search-npm-libraries` — เลือก library ตาม use case
+- `/follow-create-bun-cli` — if the bot is a Bun CLI project
+- `/search-npm-libraries` — pick a library per use case

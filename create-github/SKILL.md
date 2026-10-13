@@ -1,6 +1,6 @@
 ---
 name: create-github
-description: สร้าง GitHub resources — issue, PR, repo ผ่าน create-github-* skills
+description: Create GitHub resources — issue, PR, repo via create-github-* skills
 argument-hint: "[domain]"
 related:
   - list-github
@@ -11,12 +11,12 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ตาม GitHub resource ที่ต้องสร้าง — parent ทำ routing เท่านั้น
+Dispatch to the right skill based on the GitHub resource to create — the parent only does routing
 
 ## Scope
 
-- (pr เป็น submodule `create-github-pr`)
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- (pr is a submodule `create-github-pr`)
+- the argument is the domain; if not specified → `/ask-me` picks the domain
 
 ## Execute
 
@@ -24,23 +24,23 @@ Dispatch ไป skill ตาม GitHub resource ที่ต้องสร้�
 
 | Domain | Skill |
 |---|---|
-| `issue` | `/create-github-issue` — สร้าง issue พร้อม template/labels |
-| `pr` | `/create-github-pr` — สร้าง pull request (submodule: create-github-pr) |
-| `repo` | `/create-github-repo` — สร้าง repo ใหม่พร้อม init settings |
+| `issue` | `/create-github-issue` — create an issue with template/labels |
+| `pr` | `/create-github-pr` — create a pull request (submodule: create-github-pr) |
+| `repo` | `/create-github-repo` — create a new repo with init settings |
 
-1. ระบุ domain จาก argument (เช่น `/create-github pr`)
-2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Determine the domain from the argument (e.g. `/create-github pr`)
+2. If the domain is supported → call the skill from the table and follow that skill's flow
+3. If the domain is missing or unrecognized → `/ask-me` picks the domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- ใช้ `gh` CLI หรือ GitHub MCP tools ตามที่ available ใน skill นั้น
+- the parent only dispatches — never duplicate the target skill's workflow
+- use the `gh` CLI or GitHub MCP tools as available in that skill
 
-- ใช้ /list-github ถ้าจำเป็น
-- ใช้ /open-github ถ้าจำเป็น
-- ใช้ /git-push ถ้าจำเป็น
+- Use /list-github if needed
+- Use /open-github if needed
+- Use /git-push if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ที่ตรง domain แล้วสร้าง resource ตาม flow นั้น
+- the caller is dispatched to the skill matching the domain and creates the resource via that flow

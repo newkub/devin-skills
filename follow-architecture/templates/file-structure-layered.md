@@ -1,6 +1,6 @@
 # Layered Architecture File Structure
 
-Canonical file structure สำหรับ target ที่ restructure เป็น Layered Architecture — ออกแบบสำหรับ app เดียว (single app): **flat folders, grouping by type** — layers เป็น logical grouping ของ folders ชี้ลงทางเดียว `presentation` → `domain` → `data` ไม่ bypass
+Canonical file structure for targets restructured into Layered Architecture — designed for a single app (single app): **flat folders, grouping by type** — layers are a logical grouping of folders pointing one way down, `presentation` → `domain` → `data`, no bypass
 
 ## File Structure
 
@@ -10,7 +10,7 @@ project/
 ├─ src/
 │  │
 │  ├─ app/                                  # Entry & routes — wire layers (presentation)
-│  │  ├─ routes/                            # auth.ts, users.ts, orders.ts (หรือ pages/ สำหรับ web)
+│  │  ├─ routes/                            # auth.ts, users.ts, orders.ts (or pages/ for web)
 │  │  ├─ middleware/                        # auth.ts, error.ts, logging.ts
 │  │  ├─ server.ts
 │  │  └─ index.ts
@@ -23,17 +23,17 @@ project/
 │  │  ├─ use-session.ts
 │  │  └─ use-orders.ts
 │  │
-│  ├─ usecases/                             # application use cases — orchestration entry ที่ app/ เรียก (domain)
+│  ├─ usecases/                             # application use cases — orchestration entries called by app/ (domain)
 │  │  ├─ login.ts
 │  │  ├─ create-order.ts
 │  │  └─ refund-payment.ts
 │  │
-│  ├─ services/                             # domain services — business rules ที่ usecases เรียก (domain)
+│  ├─ services/                             # domain services — business rules called by usecases (domain)
 │  │  ├─ user-service.ts
 │  │  ├─ order-service.ts
 │  │  └─ payment-service.ts
 │  │
-│  ├─ features/                             # feature-level logic เฉพาะ domain — compose usecases+services (domain)
+│  ├─ features/                             # domain-specific feature-level logic — composes usecases+services (domain)
 │  │  ├─ checkout.ts
 │  │  └─ subscription.ts
 │  │
@@ -47,11 +47,11 @@ project/
 │  │  ├─ db.ts
 │  │  └─ stripe-client.ts
 │  │
-│  ├─ utils/                                # pure utilities — helpers ไม่มี IO (shared leaf)
+│  ├─ utils/                                # pure utilities — helpers with no IO (shared leaf)
 │  │  ├─ date.ts
 │  │  └─ slug.ts
 │  │
-│  ├─ types/                                # shared types — pure types เท่านั้น (shared leaf)
+│  ├─ types/                                # shared types — pure types only (shared leaf)
 │  │  ├─ user.ts
 │  │  ├─ order.ts
 │  │  └─ index.ts
@@ -83,28 +83,28 @@ project/
 
 | No. | Layer | Folder | Contains | Required | Tests | Deps | Risk |
 |-----|-------|--------|----------|----------|-------|------|------|
-| 1 | presentation | `app/` | routes/pages, middleware, `server.ts` — entry point wire layers | required | e2e tests | → `usecases/`, `features/` (+ shared leaves) | ต่ำ |
-| 2 | presentation | `components/` | UI components — PascalCase, presentational | optional (ถ้ามี UI) | component tests | → `hooks/`, `usecases/` (+ shared leaves) — ห้ามเรียก `infra/`/`lib/` ตรง | ต่ำ |
-| 3 | presentation | `hooks/` | hooks / composables — UI state + view logic | optional (ถ้ามี UI framework) | unit tests | → `usecases/` (+ shared leaves) | ต่ำ |
-| 4 | domain | `usecases/` | application use cases — orchestration entry (`login.ts`, `create-order.ts`) | required | unit tests ด้วย mock infra | → `services/`, `features/`, `infra/` ports (+ shared leaves) | กลาง — orchestration |
-| 5 | domain | `services/` | domain services (`*-service.ts`) — business rules pure | required | unit tests | → `infra/`, `lib/` (+ shared leaves) — ห้ามเรียก presentation | สูง — business rules |
-| 6 | domain | `features/` | feature-level logic เฉพาะ domain — compose usecases+services | optional | unit tests | → `usecases/`, `services/` (+ shared leaves) | กลาง |
-| 7 | data | `infra/` | repositories, `database/` (client, schema, migrations), external APIs | required | integration tests | leaf — ไม่ import presentation/domain (+ shared leaves) | กลาง — IO |
-| 8 | data | `lib/` | third-party wrappers / singleton clients (`db.ts`, `stripe-client.ts`) | optional | integration tests | leaf (+ shared leaves) | ต่ำ |
-| 9 | shared leaf | `types/` | shared types — pure types เท่านั้น | optional | — (types only) | leaf — ทุก layer ใช้ได้ ห้าม import กลับ | ต่ำ |
-| 10 | shared leaf | `constants/` | constants | optional | — | leaf — ทุก layer ใช้ได้ | ต่ำ |
-| 11 | shared leaf | `utils/` | pure utilities — helpers ไม่มี IO | optional | unit tests pure | leaf — ทุก layer ใช้ได้ | ต่ำ |
-| 12 | shared leaf | `config/` | `env.ts`, `app.ts`, `database.ts` | optional (ถ้ามี env/config) | config tests | leaf — ทุก layer ใช้ได้ | ต่ำ |
-| 13 | root | `index.ts` | barrel — public API | required | smoke test | → ทุก layer | ต่ำ |
+| 1 | presentation | `app/` | routes/pages, middleware, `server.ts` — entry points wiring the layers | required | e2e tests | → `usecases/`, `features/` (+ shared leaves) | low |
+| 2 | presentation | `components/` | UI components — PascalCase, presentational | optional (if there is UI) | component tests | → `hooks/`, `usecases/` (+ shared leaves) — never call `infra/`/`lib/` directly | low |
+| 3 | presentation | `hooks/` | hooks / composables — UI state + view logic | optional (if there is a UI framework) | unit tests | → `usecases/` (+ shared leaves) | low |
+| 4 | domain | `usecases/` | application use cases — orchestration entries (`login.ts`, `create-order.ts`) | required | unit tests with mocked infra | → `services/`, `features/`, `infra/` ports (+ shared leaves) | medium — orchestration |
+| 5 | domain | `services/` | domain services (`*-service.ts`) — pure business rules | required | unit tests | → `infra/`, `lib/` (+ shared leaves) — never call presentation | high — business rules |
+| 6 | domain | `features/` | domain-specific feature-level logic — composes usecases+services | optional | unit tests | → `usecases/`, `services/` (+ shared leaves) | medium |
+| 7 | data | `infra/` | repositories, `database/` (client, schema, migrations), external APIs | required | integration tests | leaf — no imports from presentation/domain (+ shared leaves) | medium — IO |
+| 8 | data | `lib/` | third-party wrappers / singleton clients (`db.ts`, `stripe-client.ts`) | optional | integration tests | leaf (+ shared leaves) | low |
+| 9 | shared leaf | `types/` | shared types — pure types only | optional | — (types only) | leaf — every layer may use it; never import back | low |
+| 10 | shared leaf | `constants/` | constants | optional | — | leaf — usable by every layer | low |
+| 11 | shared leaf | `utils/` | pure utilities — helpers with no IO | optional | pure unit tests | leaf — usable by every layer | low |
+| 12 | shared leaf | `config/` | `env.ts`, `app.ts`, `database.ts` | optional (if there is env/config) | config tests | leaf — usable by every layer | low |
+| 13 | root | `index.ts` | barrel — public API | required | smoke test | → every layer | low |
 
 ## Rules
 
-- **Flat folders เท่านั้น** — ห้าม nest folder ตาม capability/domain; grouping by type (`components/`, `services/`, `usecases/`…) และตั้งชื่อไฟล์ prefix ตาม domain แทน (`user-service.ts`, `order-service.ts`)
-- Dependencies ชี้ลงทางเดียว: presentation folders → domain folders → data folders — ห้าม bypass (เช่น `components/` เรียก `infra/` ตรง) และห้ามชี้ขึ้น
-- `app/` เรียก `usecases/`/`features/` เท่านั้น — ห้ามเรียก `services/` หรือ `infra/` โดยตรงเมื่อมี usecase ครอบอยู่
-- `types/`, `constants/`, `utils/`, `config/` เป็น leaf — ทุก layer import ได้ แต่ห้าม import กลับเข้า layer folders
-- `utils/`, `types/` ต้อง pure — ไม่มี IO, framework imports, side effects
-- Public API ผ่าน `index.ts` barrel — ห้าม deep imports ข้าม layer
-- ใช้ path aliases ของ project แทน relative imports ข้าม folder
-- รักษา behavior เดิม — routes/pages ทำงานเหมือนก่อน restructure
-- app นี้โตเป็นหลาย apps ที่ต้องแชร์ domain → upgrade เป็น Clean (`/follow-architecture` `### Pattern: Clean` — `templates/file-structure-clean.md`)
+- **Flat folders only** — never nest folders by capability/domain; group by type (`components/`, `services/`, `usecases/`…) and prefix file names with the domain instead (`user-service.ts`, `order-service.ts`)
+- Dependencies point one way down: presentation folders → domain folders → data folders — no bypassing (e.g. `components/` calling `infra/` directly) and never pointing up
+- `app/` calls `usecases/`/`features/` only — never call `services/` or `infra/` directly when a usecase wraps them
+- `types/`, `constants/`, `utils/`, `config/` are leaves — every layer may import them, but they must never import back into layer folders
+- `utils/` and `types/` must stay pure — no IO, framework imports, or side effects
+- Public API through the `index.ts` barrel — no deep imports across layers
+- Use the project's path aliases instead of cross-folder relative imports
+- Preserve existing behavior — routes/pages work exactly as before the restructure
+- If this app grows into several apps that must share a domain → upgrade to Clean (`/follow-architecture` `### Pattern: Clean` — `templates/file-structure-clean.md`)

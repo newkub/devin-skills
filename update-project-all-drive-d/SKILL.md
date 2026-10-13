@@ -1,6 +1,6 @@
 ---
 name: update-project-all-drive-d
-description: อัปเดต project ทั้งหมดใน drive D โดย pull/fetch/sync submodules/อัปเดต project files ตาม state
+description: Update all projects on drive D via pull/fetch/submodule sync and project-file updates based on state
 argument-hint: "[filter]"
 allowed-tools:
   - exec
@@ -22,145 +22,145 @@ related:
 
 ## Goal
 
-อัปเดต project ทั้งหมดใน `D:\` ทีเป็น git repository ให้เป็นปัจจุบัน โดยปลอดภัย ครอบคลุม `git fetch`, `git pull --ff-only`, `git submodule update`, และ `/update-project` ตาม state
+Bring every git repository under `D:\` up to date safely, covering `git fetch`, `git pull --ff-only`, `git submodule update`, and `/update-project` according to state
 
 ## Scope
 
-ใช้เมื่อต้องการ sync/อัปเดตทุก project ใน `D:\` ในครั้งเดียว รองรับ `filter` ตามชื่อ/keyword จำกัดการเขียนเฉพาะ repositories ทีมีสิทธิ์ update โดยไม่ทำลายข้อมูล local
+Use when you want to sync/update every project in `D:\` in one pass. Supports a `filter` by name/keyword and restricts writes to repositories eligible for update, without destroying local data
 
 ## Execute
 
 ### 1. List Target Projects
 
-> Goal: ระบุ project ทีจะอัปเดต
+> Goal: Identify the projects to update
 
-1. ถ้า user ระบุ `filter` → ทำ `/search-project-in-drive-d <filter>` เพื่อกรอง project
-2. ถ้าไม่ระบุ → ทำ `/list-projects-git-in-drive-d` เพื่อรายการทั้งหมด
-3. ตรวจสอบว่าได้รายการอย่างน้อย 1 project ถ้าไม่มี → stop และ report
-4. ถาม user ด้วย `/ask-me` ว่าจะ update ทั้งหมดหรือเลือกบาง project
+1. If the user gives a `filter` → run `/search-project-in-drive-d <filter>` to narrow down projects
+2. If none is given → run `/list-projects-git-in-drive-d` to get the full list
+3. Confirm at least 1 project was listed; if none → stop and report
+4. Ask the user with `/ask-me` whether to update all projects or select some
 
 ### 2. Choose Update Mode
 
-> Goal: ระบุระดับการอัปเดต
+> Goal: Determine the update level
 
-1. ถาม user เลือก mode:
+1. Ask the user to choose a mode:
    - `quick` — `git fetch` + `git pull --ff-only` (default)
-   - `submodules` — รวม `git submodule update --init --recursive`
-   - `full` — รวม `/update-project` หลัง pull (เฉพาะ repo ทีมี `package.json`, `.devin` หรือ `AGENTS.md`)
-2. ถ้า user ไม่ตอบ → ใช้ `quick` แล้ว report ให้ทราบ
+   - `submodules` — also runs `git submodule update --init --recursive`
+   - `full` — also runs `/update-project` after pull (only repos with `package.json`, `.devin`, or `AGENTS.md`)
+2. If the user does not answer → use `quick` and report the choice
 
 ### 3. Check Status Per Project
 
-> Goal: ตรวจสอบสถานะก่อนอัปเดต
+> Goal: Check status before updating
 
-1. สำหรับแต่ละ project รัน `git status --porcelain` และ `git branch --show-current`
-2. รัน `git rev-parse --abbrev-ref HEAD` เพื่อดู branch
-3. รัน `git rev-list --left-right --count HEAD...@{upstream}` เพื่อดู behind/ahead
-4. บันทึก: project, branch, dirty, behind, ahead
+1. For each project run `git status --porcelain` and `git branch --show-current`
+2. Run `git rev-parse --abbrev-ref HEAD` to see the branch
+3. Run `git rev-list --left-right --count HEAD...@{upstream}` to see behind/ahead
+4. Record: project, branch, dirty, behind, ahead
 
 ### 4. Pull Updates
 
-> Goal: ดึง remote updates สำหรับ project ทีพร้อม
+> Goal: Pull remote updates for ready projects
 
-1. ข้าม project ที dirty (มี uncommitted changes) และ report
-2. ข้าม project ทีไม่อยู่บน `main`, `master`, หรือ default branch ที่ user ระบุ
-3. สำหรับ project ที clean และ behind:
-   - รัน `git fetch --prune`
-   - รัน `git pull --ff-only` หรือ `git merge --ff-only @{upstream}`
-4. ถ้ามี conflicts → stop สำหรับ project นั้น report ให้ user แก้เอง
+1. Skip dirty projects (with uncommitted changes) and report them
+2. Skip projects not on `main`, `master`, or the user-specified default branch
+3. For projects that are clean and behind:
+   - Run `git fetch --prune`
+   - Run `git pull --ff-only` or `git merge --ff-only @{upstream}`
+4. If there are conflicts → stop for that project and report so the user resolves them manually
 
 ### 5. Sync Submodules (If Mode = submodules/full)
 
-> Goal: อัปเดต submodules ให้เป็นปัจจุบัน
+> Goal: Bring submodules up to date
 
-1. ถ้า project มี `.gitmodules` → รัน `git submodule update --init --recursive`
-2. ถ้า project มี changes ใน submodules → ข้ามและ report
-3. บันทึก status หลัง update
+1. If the project has `.gitmodules` → run `git submodule update --init --recursive`
+2. If the project has changes in submodules → skip and report
+3. Record status after update
 
 ### 6. Run Project Update (If Mode = full)
 
-> Goal: sync project docs/config/rules ตาม `/update-project`
+> Goal: Sync project docs/config/rules via `/update-project`
 
-1. ถ้า project มี `package.json` หรือ `.devin` หรือ `AGENTS.md` → ทำ `/update-project`
-2. ถ้าไม่มี → ข้าม
-3. บันทึกว่า project ได้รับ project update หรือไม่
+1. If the project has `package.json`, `.devin`, or `AGENTS.md` → run `/update-project`
+2. If none → skip
+3. Record whether the project received a project update
 
 ### 7. Report Summary
 
-> Goal: สรุปผลการอัปเดต
+> Goal: Summarize the update results
 
-1. ใช้ `/report` คอลัมน์: No., Project, Path, Branch, Before, After, Action, Status
-2. แสดง projects ที update สำเร็จ, skip, error
-3. ระบุ count แต่ละประเภท
-4. ทำ `/suggest-next-action`
+1. Use `/report` with columns: No., Project, Path, Branch, Before, After, Action, Status
+2. Show projects that updated successfully, were skipped, or errored
+3. Give a count for each category
+4. Run `/suggest-next-action`
 
 ### Subagents
 
-> Goal: parallelize updates เมื่อ projects เยอะ
+> Goal: Parallelize updates when there are many projects
 
-- ใช้ profile `project-updater` (ดู `## Subagents` ด้านล่าง) เมื่อมีมากกว่า 5 projects ที่ independent กัน — spawn ทีละ project ผ่าน `/use-subagents` โดยส่ง `project-path` และ `mode` เดียวกัน แล้วรวม update reports ก่อน summary
+- Use the `project-updater` profile (see `## Subagents` below) when there are more than 5 independent projects — spawn one per project via `/use-subagents`, passing `project-path` and the same `mode`, then merge the update reports before the summary
 
 ## Rules
 
 ### 1. Drive D Scope Only
 
-- ทำงานเฉพาะ paths ทีขึ้นต้นด้วย `D:\` หรือ `/mnt/d` (WSL)
-- ไม่แตะ drives อื่นโดยไม่ได้รับอนุญาต
-- ตรวจสอบ drive letter ก่อน execute ทุกครั้ง
+- Work only on paths starting with `D:\` or `/mnt/d` (WSL)
+- Do not touch other drives without permission
+- Verify the drive letter before every execute
 
 ### 2. Safety First
 
-- ไม่ force pull หรือใช้ `git push --force`
-- ไม่แก้ไข project ทีมี uncommitted changes
-- ไม่แก้ไข project ทีไม่อยู่บน default branch โดยไม่ถาม user
-- ถาม user ก่อน `full` mode เพราะอาจมีการแก้ไขไฟล์ project docs/config
+- Never force pull or use `git push --force`
+- Do not modify projects with uncommitted changes
+- Do not modify projects that are not on the default branch without asking the user
+- Ask the user before `full` mode, since it may modify project docs/config files
 
 ### 3. Parallel Execution
 
-- ถ้ามีมากกว่า 5 projects → ใช้ `/follow-parallel` หรือ `/use-subagents` เพื่อประมวลผลขนาน
-- แต่ละ subagent รับผิดชอบ project หนึ่ง หรือกลุ่ม project
-- รวมผลก่อน report
+- If there are more than 5 projects → use `/follow-parallel` or `/use-subagents` to process in parallel
+- Each subagent handles one project or a group of projects
+- Merge results before reporting
 
 ### 4. Idempotency
 
-- รัน skill ซ้ำได้โดยไม่เกิด side effects เพิ่ม
-- ถ้า project เป็น latest อยู่แล้ว → ไม่ต้อง pull
+- The skill can be re-run without extra side effects
+- If a project is already at latest → no pull needed
 
 ### 5. No Auto Commit
 
-- skill นี้ ไม่ commit หรือ push ให้ user
-- ถ้า project มี changes จาก pull → แจ้งให้ user ทราบ
-- ถ้าต้องการ commit ให้ใช้ `/git-commit` หรือ `/ship-to-dev-branch` แยกต่อ project
+- This skill does not commit or push for the user
+- If a project has changes from a pull → inform the user
+- To commit, use `/git-commit` or `/ship-to-dev-branch` separately per project
 
-- ใช้ /sync-drive-d-submodules ถ้าจำเป็น
-- ใช้ /check-should-update ถ้าจำเป็น
+- Use /sync-drive-d-submodules if needed
+- Use /check-should-update if needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: Independent work that can be spawned in parallel — profiles live in this section itself, no separate files needed
 
-### project-updater — อัปเดต project dir เดียวใน drive D (pull, submodules, checks) แล้วคืน update report
+### project-updater — Update one project dir on drive D (pull, submodules, checks) and return an update report
 
-- **Inputs**: `project-path` (absolute path ของ project เช่น `D:\projects\my-app`), `mode` (`quick` = fetch+pull / `submodules` = รวม submodule sync / `full` = รวม `/update-project`), `default-branch` (optional — branch ที่อนุญาตให้ pull default `main`/`master`)
-- **Tools**: `exec` — git commands `git status --porcelain`, `git fetch --prune`, `git pull --ff-only`, `git submodule update --init --recursive`, `git rev-list`, `git branch --show-current`, `git rev-parse`; `read`/`find_file_by_name` — ตรวจ `package.json`, `.gitmodules`, `.devin`, `AGENTS.md`
+- **Inputs**: `project-path` (absolute path of the project, e.g. `D:\projects\my-app`), `mode` (`quick` = fetch+pull / `submodules` = includes submodule sync / `full` = includes `/update-project`), `default-branch` (optional — branches allowed to pull, default `main`/`master`)
+- **Tools**: `exec` — git commands `git status --porcelain`, `git fetch --prune`, `git pull --ff-only`, `git submodule update --init --recursive`, `git rev-list`, `git branch --show-current`, `git rev-parse`; `read`/`find_file_by_name` — check `package.json`, `.gitmodules`, `.devin`, `AGENTS.md`
 - **Execute**:
-  1. ตรวจว่า `project-path` ขึ้นต้นด้วย `D:\` และเป็น git repo — ถ้าไม่ใช่คืน `skipped`
-  2. รัน `git status --porcelain` และ `git branch --show-current` — บันทึก dirty state และ branch
-  3. รัน `git rev-list --left-right --count HEAD...@{upstream}` — บันทึก behind/ahead
-  4. ถ้า dirty หรือไม่อยู่บน default branch → ข้าม pull และคืน `skipped` พร้อมเหตุผล
-  5. ถ้า clean และ behind → `git fetch --prune` แล้ว `git pull --ff-only`; conflicts → คืน `error` ให้ user แก้เอง
-  6. mode `submodules`/`full` และมี `.gitmodules` → `git submodule update --init --recursive`
-  7. mode `full` และมี `package.json`/`.devin`/`AGENTS.md` → ทำ `/update-project`
-  8. บันทึก before/after commit hash
-- **Output**: ตาราง field ต่อ project เดียว `| Field | Value |` — Project, Path, Branch, Before, After, Action (`pull`/`pull+submodules`/`pull+update-project`/`skipped`), Status (`updated`/`skipped`/`error`/`already-latest`); ระบุเหตุผลเมื่อ `skipped` หรือ `error`
-- **Constraints**: Scope `D:\` เท่านั้น — ห้ามแตะ drives อื่น; ไม่ force pull, ไม่ `git push --force`, ห้าม `git push`/`git reset --hard`/`git clean`, ไม่ commit หรือ push ให้ user; ไม่แตะ project ที่ dirty หรืออยู่นอก default branch; รับผิดชอบ project เดียว — ห้ามแตะ project อื่น; Idempotent — project ที่ latest อยู่แล้วคืน `already-latest` ไม่ทำอะไรเพิ่ม
+  1. Verify `project-path` starts with `D:\` and is a git repo — if not, return `skipped`
+  2. Run `git status --porcelain` and `git branch --show-current` — record dirty state and branch
+  3. Run `git rev-list --left-right --count HEAD...@{upstream}` — record behind/ahead
+  4. If dirty or not on the default branch → skip pull and return `skipped` with a reason
+  5. If clean and behind → `git fetch --prune` then `git pull --ff-only`; conflicts → return `error` for the user to resolve manually
+  6. In `submodules`/`full` mode with `.gitmodules` → `git submodule update --init --recursive`
+  7. In `full` mode with `package.json`/`.devin`/`AGENTS.md` → run `/update-project`
+  8. Record before/after commit hashes
+- **Output**: a per-project field table `| Field | Value |` — Project, Path, Branch, Before, After, Action (`pull`/`pull+submodules`/`pull+update-project`/`skipped`), Status (`updated`/`skipped`/`error`/`already-latest`); give a reason when `skipped` or `error`
+- **Constraints**: Scoped to `D:\` only — never touch other drives; no force pull, no `git push --force`, never `git push`/`git reset --hard`/`git clean`, never commit or push for the user; do not touch projects that are dirty or off the default branch; responsible for a single project — never touch other projects; idempotent — a project already at latest returns `already-latest` with nothing further
 
 ## Expected Outcome
 
-- รายการ project ใน `D:\` ถูก scan ครบ
-- ทุก project ทีสะอาดและอยู่บน default branch ถูก pull ไปยัง latest remote
-- submodules ถูก sync ถ้าเลือก mode `submodules` หรือ `full`
-- project docs/config ถูก update ถ้าเลือก mode `full`
-- ไม่มี project ที่มี uncommitted changes ถูกบังคับ update
-- รายงานสรุป status ทุก project ด้วยตาราง
+- Every project under `D:\` is scanned
+- Every clean project on its default branch is pulled to the latest remote
+- Submodules are synced if mode `submodules` or `full` was chosen
+- Project docs/config are updated if mode `full` was chosen
+- No project with uncommitted changes is force-updated
+- A summary report of every project's status as a table
 

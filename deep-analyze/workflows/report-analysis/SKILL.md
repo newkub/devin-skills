@@ -1,6 +1,6 @@
 ---
 name: deep-analyze-report-analysis
-description: สร้าง analysis report — structure overview, root cause chains, evidence, recommendations
+description: Generate an analysis report — structure overview, root cause chains, evidence, recommendations
 argument-hint: "[scope]"
 related:
   - report
@@ -9,47 +9,47 @@ related:
 
 ## Goal
 
-แปลงผล `/deep-analyze` เป็น analysis report — structure, findings, root cause chains พร้อม evidence
+Turn the result of `/deep-analyze` into an analysis report — structure, findings, and root cause chains with evidence
 
 ## Scope
 
-- ใช้เมื่อ `/deep-analyze` dispatch มาที่ `report` หรือเรียก standalone กับผล analysis ที่มีอยู่
-- ครอบคลุม: codebase structure, findings per area, root cause chains, tool/CLI analysis
-- Output: ตารางในแชท หรือ persistent artifact ผ่าน `/create-report-in-dot-devin` ถ้า user ขอ
+- Use when `/deep-analyze` dispatches to `report`, or invoke standalone against existing analysis results
+- Covers: codebase structure, findings per area, root cause chains, tool/CLI analysis
+- Output: tables in chat, or a persistent artifact via `/create-report-in-dot-devin` if the user asks
 
 ## Execute
 
 ### 1. Organize Analysis
 
-> Goal: จัดผล analysis เป็นหมวดที่ตัดสินใจได้
+> Goal: arrange the analysis into categories that support decisions
 
-1. จัดกลุ่ม findings ตาม area: structure, dependencies, data flow, error paths
-2. สร้าง root cause chains: symptom → cause → origin สำหรับ findings สำคัญ
-3. ทุก finding ผูก evidence (file:line, command output)
+1. Group findings by area: structure, dependencies, data flow, error paths
+2. Build root cause chains: symptom → cause → origin for key findings
+3. Attach evidence (file:line, command output) to every finding
 
 ### 2. Build Report
 
-> Goal: report ที่ตอบคำถาม analysis โดยตรง
+> Goal: a report that directly answers the analysis question
 
-1. Summary — คำตอบของ analysis question ก่อนเสมอ
-2. ตาราง: `No.`, `Area`, `Finding`, `Evidence`, `Impact`
-3. Root cause chains เป็น numbered steps สำหรับ findings ที่ซับซ้อน
-4. Diagram/visualization reference ถ้า analysis สร้างไว้
+1. Summary — always lead with the answer to the analysis question
+2. Tables: `No.`, `Area`, `Finding`, `Evidence`, `Impact`
+3. Root cause chains as numbered steps for complex findings
+4. Diagram/visualization references if the analysis produced any
 
 ### 3. Recommendations
 
-> Goal: actionable output ไม่ใช่แค่บรรยาย
+> Goal: actionable output, not just narration
 
-1. รายการ recommendations เรียงตาม impact/effort
-2. ระบุ quick wins vs structural changes
-3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
+1. Recommendations list ordered by impact/effort
+2. Distinguish quick wins vs structural changes
+3. If archiving is needed → run `/create-report-in-dot-devin`
 
 ## Rules
 
-- คำตอบหลักต้องอยู่บนสุด — report รองรับ ไม่ใช่นำ
-- ทุก claim มี evidence — ไม่มี = ติดป้าย hypothesis
-- แยก "พบจริง" จาก "น่าจะเป็น" ชัดเจน
+- The main answer must be at the top — the report supports, it doesn't lead
+- Every claim has evidence — without one, label it a hypothesis
+- Clearly separate "actually found" from "likely"
 
 ## Expected Outcome
 
-- Analysis report ที่ตอบคำถามตรงๆ พร้อม evidence และ recommendations
+- An analysis report that answers the question directly, with evidence and recommendations

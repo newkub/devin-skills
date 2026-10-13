@@ -1,56 +1,56 @@
 # Step: Draw Usage ANSI
 
-> Goal: วาด ANSI ประกอบสำหรับ Usage section แทนการ capture image
+> Goal: Draw supporting ANSI for the Usage section instead of capturing images
 
 ## Execute
 
 ### 1. Draw Web Usage ANSI
 
-> Goal: วาด ANSI แสดง layout หน้าเว็บสำหรับ Usage via Web
+> Goal: Draw ANSI showing the web page layout for Usage via Web
 
-1. ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
-2. ภายในวาด layout หลักของหน้าเว็บด้วย box-drawing characters
-3. แสดง key UI elements: header, main content, buttons, inputs
-4. ใช้ ` ```text ` codeblock
-5. ทุกบรรทัดต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
+1. Wrap the content in a `<details>` + `<summary>` accordion
+2. Inside, draw the main layout of the web page with box-drawing characters
+3. Show key UI elements: header, main content, buttons, inputs
+4. Use a ` ```text ` codeblock
+5. Every line must have the same length — pad with spaces so the right borders align
 
 ### 2. Draw CLI `--help` ANSI
 
-> Goal: วาด ANSI แสดง terminal output ของ `command --help` สำหรับ Usage via CLI
+> Goal: Draw ANSI showing the terminal output of `command --help` for Usage via CLI
 
-1. แสดง command `bunx <package> --help` หรือ `<cli-binary> --help` ใน bash codeblock
-2. วาด terminal output ของ `--help` ด้วย box-drawing characters
-3. รวม Usage, Options, Commands/Subcommands ทีปรากฏใน help
-4. ใช้ ` ```text ` codeblock
-5. ทุกบรรทัดต้องมีความยาวเท่ากัน
+1. Show the command `bunx <package> --help` or `<cli-binary> --help` in a bash codeblock
+2. Draw the `--help` terminal output with box-drawing characters
+3. Include the Usage, Options, and Commands/Subcommands shown in the help
+4. Use a ` ```text ` codeblock
+5. Every line must have the same length
 
 ### 3. Draw TUI Usage ANSI
 
-> Goal: วาด ANSI แสดง TUI layout สำหรับ Usage via TUI
+> Goal: Draw ANSI showing the TUI layout for Usage via TUI
 
-1. ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
-2. ภายในบอก key shortcuts (เช่น `↑`/`↓`, `Enter`, `q`)
-3. วาด TUI screen ด้วย box-drawing characters
-4. ใช้ ` ```text ` codeblock
-5. ทุกบรรทัดต้องมีความยาวเท่ากัน
+1. Wrap the content in a `<details>` + `<summary>` accordion
+2. Inside, list the key shortcuts (e.g. `↑`/`↓`, `Enter`, `q`)
+3. Draw the TUI screen with box-drawing characters
+4. Use a ` ```text ` codeblock
+5. Every line must have the same length
 
 ### 4. Draw Other Usage ANSI
 
-> Goal: วาด ANSI สำหรับ access methods อื่นๆ (Desktop, Extension)
+> Goal: Draw ANSI for other access methods (Desktop, Extension)
 
-1. วาด layout หรือ output ที่เหมาะสมด้วย box-drawing characters
-2. ใช้ ` ```text ` codeblock
-3. ทุกบรรทัดต้องมีความยาวเท่ากัน
+1. Draw a suitable layout or output with box-drawing characters
+2. Use a ` ```text ` codeblock
+3. Every line must have the same length
 
 ## Rules
 
-- ไม่ต้องใช้ `/capture web` หรือ `/capture terminal` สำหรับ README
-- ใช้ ANSI box-drawing characters วาดแทนการ capture image จริง
-- `Usage via Web` และ `Usage via TUI` ต้องอยู่ใน `<details>` + `<summary>` accordion
-- CLI: แสดง ANSI ของ `command --help` โดยเฉพาะ
-- ทุกบรรทัดใน ANSI codeblock ต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
-- ใช้ ` ```text ` codeblock (ไม่ใช้ ` ```ansi ` เพื่อหลีกเลี่ยง color rendering ใน GitHub)
-- ตรวจทุกบรรทัดว่ามี box-drawing border ครบทั้งซ้ายและขวา
-- ความกว้างควรเท่ากันทุกบรรทัด — ใช้ fixed width เช่น 60 ตัวอักษร
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section
+- No need to use `/capture web` or `/capture terminal` for the README
+- Use ANSI box-drawing characters to draw instead of capturing real images
+- `Usage via Web` and `Usage via TUI` must be inside a `<details>` + `<summary>` accordion
+- CLI: show the ANSI of `command --help` specifically
+- Every line in the ANSI codeblock must have the same length — pad with spaces so the right borders align
+- Use a ` ```text ` codeblock (not ` ```ansi ` to avoid color rendering on GitHub)
+- Check that every line has complete box-drawing borders on both left and right
+- Width should be identical on every line — use a fixed width, e.g. 60 characters
+- No ANSI below the logo/badges in the Hero section
 

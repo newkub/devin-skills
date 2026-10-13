@@ -1,6 +1,6 @@
 ---
 name: rethink
-description: ทบทวนและ re-evaluate การตัดสินใจ แผน หรือ implementation เมื่อติดหรือมีข้อมูลใหม
+description: Re-evaluate a decision, plan, or implementation when stuck or when new information arrives
 argument-hint: "[topic]"
 related:
   - deep-thinking
@@ -18,129 +18,129 @@ related:
 
 ## Goal
 
-ทบทวนและ re-evaluate การตัดสินใจ แผน หรือ implementation ทีมีอยู่ เมื่อเจอ dead end ผลลัพธ์ไม่ตรงเป้า หรือมีข้อมูลใหม่ที่ชี้วว่าควรเปลี่ยนแนวทาง
+Re-evaluate an existing decision, plan, or implementation when you hit a dead end, results miss the target, or new information suggests a change of direction.
 
 ## Scope
 
-ใช้เมื่องานดำเนินไปแล้ว แต่ต้องการถอยกลับมาทบทวน ไม่ใช่การคิดครั้งแรก (ใช้ `/deep-thinking`) และไม่ใช่การครุ่นคิดก่อนตัดสินใจ (ใช้ `/deep-thinking`)
+Use when work is already underway but you need to step back and reconsider. It is not first-time thinking (use `/deep-thinking`) and not deliberation before deciding (use `/deep-thinking`).
 
 ## Execute
 
 ### 1. Pause And State Current Position
 
-> Goal: ระบุสถานะปัจจุบันก่อนทบทวน
+> Goal: Pin down the current state before reconsidering
 
-1. ระบุ decision, plan, หรือ implementation ทีกำลัง rethink
-2. สรุปสิ่งที่ทำไปแล้วและผลลัพธ์ทีได้
-3. ระบุ assumptions และ constraints เดิม
-4. บันทึก evidence ทีใช้ตัดสินใจครั้งแรก
+1. Identify the decision, plan, or implementation being rethought
+2. Summarize what has been done and the results so far
+3. Identify the original assumptions and constraints
+4. Record the evidence behind the original decision
 
 ### 2. Identify Rethink Triggers
 
-> Goal: หาเหตุผลว่าทำไมต้อง rethink
+> Goal: Find out why a rethink is needed
 
-1. ตรวจสอบว่ามีข้อมูลใหม่หรือ context เปลี่ยนหรือไม่
-2. ตรวจสอบว่าผลลัพธ์ตรงกับ success criteria หรือไม่
-3. ระบุจุดที่ติดหรือ failure ที่เกิดขึ้น
-4. ประเมินว่าเป็น technical block, assumption wrong, หรือ scope drift
+1. Check whether new information exists or the context has changed
+2. Check whether results match the success criteria
+3. Identify where you are stuck or what failures occurred
+4. Assess whether it is a technical block, a wrong assumption, or scope drift
 
 ### 3. Challenge Assumptions
 
-> Goal: ทดสอบ assumptions ทีเคยใช้
+> Goal: Test the assumptions previously used
 
-1. รายการ assumptions ทั้งหมดทีเกี่ยวข้อง
-2. ถามย้อนกลับ: ถ้า assumption นี้ผิด จะเกิดอะไรขึ้น
-3. หา evidence สนับสนุนหรือโต้แย้งแต่ละ assumption
-4. ระบุ assumptions ที่ invalid หรือ outdated
+1. List all relevant assumptions
+2. Ask in reverse: if this assumption were wrong, what would happen
+3. Find evidence supporting or refuting each assumption
+4. Flag assumptions that are invalid or outdated
 
 ### 4. Generate Alternatives
 
-> Goal: คิดทางเลือกใหม่ทีเป็นไปได้
+> Goal: Brainstorm viable new options
 
-1. สร้างอย่างน้อย 2-3 alternatives นอกเหนือจากแผนเดิม
-2. รวมถึงทางเลือกง่ายๆ เช่น do nothing, simplify, pivot, stop
-3. ประเมิน effort, risk, และ expected outcome ของแต่ละทาง
-4. เปรียบเทียบ trade-offs อย่างชัดเจน
+1. Generate at least 2-3 alternatives beyond the original plan
+2. Include simple options such as do nothing, simplify, pivot, stop
+3. Assess effort, risk, and expected outcome of each option
+4. Compare trade-offs explicitly
 
 ### 5. Compare And Decide
 
-> Goal: เลือกแนวทางทีดีทีสุด
+> Goal: Pick the best approach
 
-1. ประเมินแต่ละ alternative ตาม success criteria
-2. ระบุทางเลือกที reversible และ irreversible
-3. เลือกทาง: continue, pivot, simplify, stop, หรือ gather more data
-4. ระบุเหตุผลและ evidence ทีสนับสนุนการตัดสินใจ
+1. Evaluate each alternative against the success criteria
+2. Mark which options are reversible and which are irreversible
+3. Choose: continue, pivot, simplify, stop, or gather more data
+4. State the reasoning and evidence supporting the decision
 
 ### 6. Update And Report
 
-> Goal: ปรับแผนและสื่อสาร
+> Goal: Update the plan and communicate
 
-1. อัปเดต plan, skill, หรือ code ตาม decision ใหม่
-2. ทำ `/update-references` ถ้ามีการเปลี่ยน path หรือชื่อ
-3. บันทึกสิ่งที่เปลี่ยนและเหตุผล
-4. ทำ `/suggest-next-action` เพื่อหาขั้นตอนถัดไป
+1. Update the plan, skill, or code per the new decision
+2. Run `/update-references` if paths or names changed
+3. Record what changed and why
+4. Run `/suggest-next-action` to find the next step
 
 ## Rules
 
 ### 1. When To Rethink
 
-ใช้ rethink เมื่อ:
+Use rethink when:
 
-- ทำไปครึ่งทางแล้วพบว่าทางเดิมไม่ไหว
-- มีข้อมูลใหม่ที่ทำให้ assumption เดิมผิด
-- ผลลัพธ์ไม่ตรงกับ success criteria
-- มี simpler alternative ทีเพิ่งมองเห็น
-- ต้องการ avoid sunk cost fallacy
-- งานเกิด scope creep หรือ over-engineering
+- You are halfway through and realize the original path is unworkable
+- New information invalidates an original assumption
+- Results do not match the success criteria
+- A simpler alternative has just become visible
+- You need to avoid the sunk cost fallacy
+- The work has scope creep or over-engineering
 
 ### 2. When Not To Rethink
 
-ไม่ใช้ rethink เมื่อ:
+Do not use rethink when:
 
-- เป็น low-risk change ทีแก้ไขง่าย
-- ยังไม่ได้เริ่มทำ หรือยังไม่มีข้อมูลพอ (ใช้ `/deep-thinking`)
-- แค่ต้องการทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`)
-- ทุกอย่างดำเนินไปตามแผนและไม่มี red flag
+- It is a low-risk, easily fixed change
+- Work has not started or there is not enough data yet (use `/deep-thinking`)
+- You just want to review before deciding (use `/deep-thinking`)
+- Everything is proceeding per plan with no red flags
 
 ### 3. Sunk Cost
 
-- ไม่ยึดติดกับเวลาหรือ effort ทีใช้ไปแล้ว
-- ตัดสินใจจาก expected future value ไม่ใช่ past investment
-- ถ้าหยุดหรือ pivot ดีกว่า ให้แนะนำอย่างตรงไปตรงมา
+- Do not cling to time or effort already spent
+- Decide based on expected future value, not past investment
+- If stopping or pivoting is better, recommend it plainly
 
 ### 4. Evidence Based
 
-- ทุกการเปลี่ยนแปลงต้องมีเหตุผลจาก evidence
-- ไม่เปลี่ยนแปลงเพียงเพราะความรู้สึกหรือ assumption ใหม่ไร้หลักฐาน
-- ถ้าขาด evidence ให้ใช้ `/deep-research` หรือ `/ask-me` ก่อน
+- Every change must be justified by evidence
+- Do not change course on gut feeling or an unsupported new assumption
+- If evidence is missing, run `/deep-research` or `/ask-me` first
 
 ### 5. Timebox
 
-- rethink เล็กไม่เกิน 3 นาที
-- rethink กลางไม่เกิน 10 นาที
-- rethink ใหญ่ไม่เกิน 20 นาที
-- ถ้าเกินกว่านี้ ให้ใช้ `/ask-me` เพื่อขอข้อมูลเพิ่ม
+- Small rethinks take at most 3 minutes
+- Medium rethinks take at most 10 minutes
+- Large rethinks take at most 20 minutes
+- If it takes longer, use `/ask-me` to request more information
 
 ### 6. Integration
 
-- ใช้ `/deep-thinking` ถ้าต้องวิเคราะห์เชิงโครงสร้างใหม่
-- ใช้ `/deep-thinking` ถ้าต้องทบทวนก่อนตัดสินใจ
-- ใช้ `/plan` ถ้าต้องสร้างแผนใหม่
-- ใช้ `/ask-me` ถ้าต้องการ user input
-- ใช้ `/update-references` ถ้ามีการเปลี่ยน structure
+- Use `/deep-thinking` if fresh structural analysis is needed
+- Use `/deep-thinking` if review is needed before deciding
+- Use `/plan` if a new plan must be created
+- Use `/ask-me` if user input is needed
+- Use `/update-references` if the structure changes
 
-- ใช้ /deep-analyze ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /refactor ถ้าจำเป็น
-- ใช้ /deep-review-then-fix ถ้าจำเป็น
-- ใช้ /reframe ถ้าจำเป็น
+- Use /deep-analyze if needed
+- Use /deep-review if needed
+- Use /deep-validate if needed
+- Use /deep-review if needed
+- Use /refactor if needed
+- Use /deep-review-then-fix if needed
+- Use /reframe if needed
 
 
 ## Expected Outcome
 
-- ชัดเจนว่าจะ continue, pivot, simplify, stop หรือ gather more data
-- assumptions ที invalid ถูกระบุและแทนที
-- แผนหรือ implementation อัปเดตตาม decision ใหม่
-- รายงานสรุปเหตุผลและ next action
+- It is clear whether to continue, pivot, simplify, stop, or gather more data
+- Invalid assumptions are identified and replaced
+- The plan or implementation is updated per the new decision
+- A report summarizing the reasoning and next action

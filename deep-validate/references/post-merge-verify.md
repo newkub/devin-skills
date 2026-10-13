@@ -1,44 +1,44 @@
 # Post-Merge Verify
 
-ใช้หลัง `/merge` ผลลัพธ์จาก `use-subagents` หรือหลัง implementation ซับซ้อน — verification ที่ลึกกว่า validate ปกติ
+Use after `/merge` results from `use-subagents` or after complex implementation — deeper verification than the normal validate pass
 
 ## Execute
 
 ### 1. Run Automated Checks
 
-> Goal: ตรวจสอบ checks อัตโนมัติผ่านทั้งหมด
+> Goal: all automated checks pass
 
-1. ทำ `/run-verify` เพื่อรัน lint, format, และ quality checks
-2. ทำ `/run-test` เพื่อรัน unit/integration tests
-3. ถ้า project มี `package.json` ระบุ typecheck script ให้รัน `bunx tsc --noEmit` หรือคำสั่งที่เหมาะสม
-4. บันทึกผลลัพธ์ของแต่ละ check พร้อม evidence
+1. Run `/run-verify` to execute lint, format, and quality checks
+2. Run `/run-test` to execute unit/integration tests
+3. If the project has a `package.json` with a typecheck script, run `bunx tsc --noEmit` or the appropriate command
+4. Record the result of each check with evidence
 
 ### 2. Check References
 
-> Goal: ตรวจสอบ references ไม่พัง
+> Goal: references are not broken
 
-1. ทำ `/check-reference` เพื่อหา broken references
-2. ถ้า project มี skills/workflows อ้างอิงกัน ตรวจสอบ `related` ให้ถูกต้อง
-3. ตรวจสอบว่าไฟล์ที่ถูกย้าย/ลบ/merge ถูกอ้างอิงถูกต้อง
+1. Run `/check-reference` to find broken references
+2. If the project has skills/workflows referencing each other, verify `related` is correct
+3. Verify that moved/deleted/merged files are referenced correctly
 
 ### 3. Scan Codebase
 
-> Goal: ตรวจสอบโครงสร้างและ quality ของ codebase
+> Goal: check codebase structure and quality
 
-1. ทำ `/scan-codebase` เพื่อหาไฟล์เกิน 250 บรรทัด, orphan files, หรือ issues ด้าน structure
-2. ตรวจสอบว่าไม่มี circular dependencies ระหว่าง modules
-3. ตรวจสอบว่าโครงสร้างไฟล์สอดคล้องกับ architecture ที่กำหนด
+1. Run `/scan-codebase` to find files over 250 lines, orphan files, or structural issues
+2. Verify there are no circular dependencies between modules
+3. Verify the file structure matches the defined architecture
 
 ## Rules
 
 ### Stop On Failure
 
-- ถ้า `/run-test` หรือ `/run-verify` ไม่ผ่าน → หยุดทันที
-- ถ้า `/deep-validate` พบ Critical หรือ High → หยุดทันที
-- ถ้า `/check-reference` พบ broken references → หยุดทันที
-- ถ้าต้องทำงานต่อ ให้ทำ `/resolve-errors` แล้ว verify ซ้ำ
+- If `/run-test` or `/run-verify` fails → stop immediately
+- If `/deep-validate` finds Critical or High findings → stop immediately
+- If `/check-reference` finds broken references → stop immediately
+- To continue, run `/resolve-errors` then re-verify
 
 ### Evidence
 
-- ทุก finding ต้องมี evidence: file path, line number, หรือ command output
-- ไม่อ้างผล verify ที่ยังไม่ได้รัน
+- Every finding needs evidence: file path, line number, or command output
+- Never cite verify results that were not actually run

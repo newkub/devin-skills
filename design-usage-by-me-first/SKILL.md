@@ -1,6 +1,6 @@
 ---
 name: design-usage-by-me-first
-description: ออกแบบ USAGE.md กับ user ในแชทก่อนเขียนจริง — iterate จนตกลงแล้วส่งต่อ /update-usage-md
+description: Design USAGE.md in chat with the user first — iterate until agreed, then /update-usage-md
 argument-hint: "[workspace]"
 related:
   - update-usage-md
@@ -14,65 +14,65 @@ related:
 
 ## Goal
 
-ออกแบบโครงและเนื้อหา `USAGE.md` ร่วมกับ user `ในแชทเท่านั้น` — iterate จน user ตกลงก่อน แล้วค่อยส่งต่อ `/update-usage-md` เขียน `USAGE.md` จริงที่ workspace
+Design the outline and content of `USAGE.md` together with the user `in chat only` — iterate until the user agrees, then hand off to `/update-usage-md` to actually write `USAGE.md` in the workspace
 
 ## Scope
 
-ใช้เมื่อต้องการลองวางโครง usage documentation ก่อนเขียนจริง — discussion-first, user ใน loop ทุก iteration
+Use when you want to lay out usage documentation before writing it for real — discussion-first, user in the loop for every iteration
 
-- คุยและร่างในแชทเท่านั้น — `ห้ามสร้างไฟล์ใดๆ` (ไม่มี temp file, ไม่แตะ workspace) จนกว่า user confirm
-- โครงเนื้อหาตามมาตรฐาน `/update-usage-md` — code เป็น source of truth
-- เริ่มจาก `/ask-me` และ `/suggest-next-action` เพื่อเข้าใจความต้องการเสมอ
-- ไม่ commit — ต้อง user confirm ก่อนส่งต่อเขียนจริง
+- Discuss and draft in chat only — `do not create any files` (no temp file, no touching the workspace) until the user confirms
+- Content structure follows the `/update-usage-md` standard — code is the source of truth
+- Always start from `/ask-me` and `/suggest-next-action` to understand the requirements
+- Do not commit — the user must confirm before handing off to the real write
 
 ## Execute
 
 ### 1. Clarify Intent
 
-> Goal: เข้าใจว่า USAGE doc ต้อง cover อะไร
+> Goal: Understand what the USAGE doc must cover
 
-1. ทำ `/suggest-next-action` ดูตัวเลือกทั่วไปสำหรับ usage docs (library API / CLI / service / internal tool)
-2. ทำ `/ask-me` ถาม: audience (dev/ops/end-user), depth (quick-start vs full reference), sections พิเศษที่ต้องการ
-3. สรุป requirements ด้วย `/report table` คอลัมน์: `No.`, `Requirement`, `Priority`
+1. Run `/suggest-next-action` to see the common options for usage docs (library API / CLI / service / internal tool)
+2. Run `/ask-me` to ask about: audience (dev/ops/end-user), depth (quick-start vs full reference), any special sections wanted
+3. Summarize the requirements with `/report table` columns: `No.`, `Requirement`, `Priority`
 
 ### 2. Detect Usage Surface
 
-> Goal: ได้ API/CLI surface จริงจาก code
+> Goal: Get the real API/CLI surface from the code
 
-1. ทำตาม step 2 ของ `/update-usage-md` — อ่าน manifest, public API, bin targets, examples จาก code จริง
-2. ห้ามเดา API — ทุก entry ต้องมาจาก code หรือ user ระบุชัด
-3. ถ้ามี `USAGE.md` เดิม → ดึงเป็น baseline เปรียบเทียบในแชท
+1. Follow step 2 of `/update-usage-md` — read the manifest, public API, bin targets, and examples from the real code
+2. Never guess the API — every entry must come from the code or be clearly stated by the user
+3. If an existing `USAGE.md` is present → pull it as a baseline and compare in chat
 
 ### 3. Draft In Chat
 
-> Goal: ร่างโครงและเนื้อหาในแชทจน user ตกลง — ไม่สร้างไฟล์
+> Goal: Draft the outline and content in chat until the user agrees — create no files
 
-1. แสดง draft outline ในแชทด้วย sections มาตรฐาน: `## Overview`, `## Installation`, `## Usage`, `## API Reference`/`## Commands`, `## Examples`, `## Configuration`
-2. ขยายเป็น full draft ในแชท (markdown block) ตาม requirements + code surface
-3. ถาม feedback ผ่าน `/ask-me` — เก็บเป็น checklist ก่อนแก้
-4. ปรับ draft ในแชทตาม feedback → ทำซ้ำจนตกลง — แสดง diff/ส่วนที่เปลี่ยนทุก iteration
-5. ถ้ามีหลายทางเลือก → ใช้ `/choose-and-apply`
+1. Show the draft outline in chat with the standard sections: `## Overview`, `## Installation`, `## Usage`, `## API Reference`/`## Commands`, `## Examples`, `## Configuration`
+2. Expand into a full draft in chat (markdown block) per the requirements + code surface
+3. Ask for feedback via `/ask-me` — collect it into a checklist before revising
+4. Revise the draft in chat per the feedback → repeat until agreed — show the diff/changed parts every iteration
+5. If there are multiple options → use `/choose-and-apply`
 
 ### 4. Handoff
 
-> Goal: draft ที่ตกลงไปสู่ไฟล์จริง
+> Goal: Turn the agreed draft into the real file
 
-1. ทำ `/report table` สรุป: `No.`, `Section`, `Source`, `Status`
-2. ถาม user: เขียน `USAGE.md` จริงที่ workspace เลยไหม
-3. ถ้า confirm → ทำ `/update-usage-md` โดยใช้ draft ในแชทเป็น spec
-4. ทำ `/suggest-next-action`
+1. Run `/report table` to summarize: `No.`, `Section`, `Source`, `Status`
+2. Ask the user: write the real `USAGE.md` in the workspace now?
+3. If confirmed → run `/update-usage-md` using the chat draft as the spec
+4. Run `/suggest-next-action`
 
 ## Rules
 
-- คุยและร่างในแชทเท่านั้น — ห้ามสร้างไฟล์ใดๆ จนกว่า user confirm
-- เริ่มด้วย `/ask-me` และ `/suggest-next-action` เสมอ
-- code เป็น source of truth — ห้ามเขียน API/commands ที่ไม่มีใน code (ยกเว้น user ระบุเป็น planned feature และ mark ชัด)
-- ไม่ commit/push โดยอัตโนมัติ
-- ใช้ `/update-docs` ถ้าจำเป็น
-- ใช้ `/report-usage` ถ้าจำเป็น
+- Discuss and draft in chat only — do not create any files until the user confirms
+- Always start with `/ask-me` and `/suggest-next-action`
+- Code is the source of truth — never write API/commands that do not exist in the code (unless the user marks them as a planned feature and states it clearly)
+- Do not commit/push automatically
+- Use `/update-docs` if needed
+- Use `/report-usage` if needed
 
 ## Expected Outcome
 
-- draft ในแชทที่ user ตกลงแล้ว — พร้อมเป็น spec สำหรับ `/update-usage-md`
-- Feedback log พร้อม iterations
-- Path สู่การเขียนจริงชัดเจน (`/update-usage-md`)
+- A chat draft the user has agreed to — ready as the spec for `/update-usage-md`
+- Feedback log with all iterations
+- A clear path to the real write (`/update-usage-md`)

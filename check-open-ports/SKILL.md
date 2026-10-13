@@ -1,6 +1,6 @@
 ---
 name: check-open-ports
-description: ตรวจ port ว่างหรือชนกันก่อน run-dev หรือ deploy พร้อมหา process เจ้าของ port
+description: Check whether ports are free or conflicting before run-dev or deploy and find the owning process
 argument-hint: "[port...]"
 related:
   - run-dev
@@ -12,81 +12,81 @@ related:
 
 ## Goal
 
-ตรวจสอบว่า ports ที่ต้องการว่างหรือถูก process อื่นใช้งานอยู่ ก่อนรัน dev server, build หรือ deploy — พร้อมระบุ process เจ้าของ port
+Check that the ports you need are free rather than in use by another process before running a dev server, build, or deploy — and identify the process owning each port
 
 ## Scope
 
-- ใช้ก่อน `run-dev`, `run-preview` หรือ deploy เมื่อ config ระบุ port
-- ครอบคลุมการตรวจ port เดียว, หลาย port และ port ranges
-- Read-only: ตรวจและรายงานเท่านั้น ไม่ kill process โดยไม่ได้รับคำสั่ง
+- Use before `run-dev`, `run-preview`, or deploy when the config specifies a port
+- Covers checking a single port, multiple ports, and port ranges
+- Read-only: inspects and reports only, never kills a process unless told to
 
 ## Execute
 
 ### 1. Identify Ports
 
-> Goal: รู้ว่าต้องตรวจ port ไหน
+> Goal: know which ports to check
 
-1. รับ `port...` จาก argument
-2. ถ้าไม่ระบุ → ดึง port จาก config ของ project: `vite.config.*`, `wrangler.toml`, `package.json` scripts, `.env`, `docker-compose.yml`
-3. ถ้าไม่พบใน config → ตรวจ ports นิยม: `3000`, `5173`, `8000`, `8080`, `8787`
+1. Take `port...` from the argument
+2. If none given → pull ports from the project config: `vite.config.*`, `wrangler.toml`, `package.json` scripts, `.env`, `docker-compose.yml`
+3. If nothing is found in config → check common ports: `3000`, `5173`, `8000`, `8080`, `8787`
 
 ### 2. Check Port Status
 
-> Goal: ตรวจว่าแต่ละ port ว่างหรือไม่
+> Goal: check whether each port is free
 
-1. บน Windows: ใช้ `Get-NetTCPConnection -LocalPort <port> -State Listen -ErrorAction SilentlyContinue`
-2. ข้าม platform: ใช้ `Test-NetConnection -Port <port>` หรือ `netstat -ano | findstr :<port>`
-3. บน macOS/Linux: ใช้ `lsof -i :<port>` หรือ `ss -tlnp`
-4. บันทึก state: `free`, `listening`, `time-wait`
+1. On Windows: use `Get-NetTCPConnection -LocalPort <port> -State Listen -ErrorAction SilentlyContinue`
+2. Cross-platform: use `Test-NetConnection -Port <port>` or `netstat -ano | findstr :<port>`
+3. On macOS/Linux: use `lsof -i :<port>` or `ss -tlnp`
+4. Record the state: `free`, `listening`, `time-wait`
 
 ### 3. Identify Owning Process
 
-> Goal: รู้ว่า process ไหนถือ port
+> Goal: know which process holds the port
 
-1. จาก `Get-NetTCPConnection` เอา `OwningProcess` แล้ว `Get-Process -Id <pid>`
-2. แสดง `ProcessName`, `Id`, `Path` และ command line ถ้าเป็นไปได้
-3. ระบุว่า process เป็น project dev server เดิมหรือ process อื่น
-4. ถ้าเป็น dev server เก่าของ project เดียวกัน → flag ว่า `restartable`
+1. From `Get-NetTCPConnection` take `OwningProcess`, then `Get-Process -Id <pid>`
+2. Show `ProcessName`, `Id`, `Path`, and the command line when possible
+3. Note whether the process is the project's previous dev server or some other process
+4. If it is an old dev server of the same project → flag it as `restartable`
 
 ### 4. Suggest Resolution
 
-> Goal: แนะนำทางแก้เมื่อ port ชน
+> Goal: recommend fixes when a port is taken
 
-1. เสนอ port ว่างถัดไป (เช่น `<port>+1` จนกว่าจะว่าง)
-2. ถ้า process เจ้าของเป็น dev server เก่าของ project เดียวกัน → เสนอ kill แล้วรันใหม่
-3. ถ้าเป็น process อื่น → รายงานชื่อและปล่อยให้ user ตัดสินใจ
-4. ห้าม kill process อัตโนมัติ — ถาม user ก่อนเสมอ
+1. Suggest the next free port (e.g. `<port>+1` until one is free)
+2. If the owning process is an old dev server of the same project → suggest killing it and rerunning
+3. If it is another process → report its name and let the user decide
+4. Never kill a process automatically — always ask the user first
 
 ### 5. Report
 
-> Goal: สรุปผลอ่านง่าย
+> Goal: summarize the results in an easy-to-read form
 
-1. ทำ `/report` คอลัมน์: `No.`, `Port`, `Status`, `Process`, `PID`, `Action`
+1. Produce a `/report` with columns: `No.`, `Port`, `Status`, `Process`, `PID`, `Action`
 2. Status: `free`, `listening`, `conflict`
-3. สรุปว่าพร้อม `run-dev` หรือไม่
+3. State whether the machine is ready for `run-dev`
 
 ## Rules
 
 ### 1. Read-Only Default
 
-- ไม่ kill process โดยไม่ได้รับคำสั่งชัดเจนจาก user
-- ไม่เปลี่ยน firewall rules หรือ network config
+- Never kill a process without an explicit instruction from the user
+- Never change firewall rules or network config
 
 ### 2. Cross-Platform
 
-- ใช้ `/use-pwsh-shell` commands บน Windows
-- ให้ command equivalent สำหรับ macOS/Linux ในรายงานเมื่อเกี่ยวข้อง
+- Use `/use-pwsh-shell` commands on Windows
+- Provide command equivalents for macOS/Linux in the report when relevant
 
 ### 3. Accuracy
 
-- ตรวจทั้ง TCP `Listen` state และ UDP ถ้า app ใช้
-- อย่าสรุปว่า port ว่างจาก `Test-NetConnection` fail เพียงอย่างเดียว — ตรวจ listen state ด้วย
+- Check both the TCP `Listen` state and UDP if the app uses it
+- Don't conclude a port is free from a failed `Test-NetConnection` alone — verify the listen state as well
 
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /run-dev if needed
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- รู้ว่า ports เป้าหมายว่างหรือชน พร้อม process เจ้าของ
-- ได้ทางเลือก port ว่างหรือแผน resolve conflict
-- พร้อม `run-dev` หรือ deploy โดยไม่เจอ `EADDRINUSE`
+- You know whether the target ports are free or conflicting, along with the owning process
+- You get free-port options or a conflict-resolution plan
+- Ready for `run-dev` or deploy without hitting `EADDRINUSE`

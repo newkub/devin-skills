@@ -1,6 +1,6 @@
 ---
 name: deep-debug
-description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
+description: Detailed multi-dimensional debugging from reproduction to preventing recurrence
 argument-hint: "[scope]"
 related:
   - apply
@@ -18,124 +18,124 @@ related:
 
 ## Goal
 
-ปฏิบัติตามหลักการ debug ที่เป็นระบบ เพื่อหา root cause ได้เร็วและแม่นยำ ลดการเดา และป้องกันปัญหาซ้ำ
+Follow systematic debugging principles to find the root cause quickly and precisely, reduce guessing, and prevent recurrence
 
 ## Scope
 
-ใช้สำหรับทุก debugging session — runtime errors, test failures, build errors, deployment issues, performance problems
+Use for every debugging session — runtime errors, test failures, build errors, deployment issues, performance problems
 
 ## Execute
 
 ### 1. Reproduce Consistently
 
-> Goal: สร้าง reproduction case ที่ trigger ปัญหาได้สม่ำเสมอก่อนเริ่ม debug
+> Goal: build a reproduction case that triggers the problem consistently before debugging
 
-1. สร้าง minimal reproduction case ที่ trigger ปัญหาได้ทุกครั้ง
-2. ระบุ exact steps, input, environment ที่ทำให้เกิดปัญหา
-3. ถ้า reproduce ไม่ได้ ให้เก็บ logs, screenshots, และ environment info ไว้ก่อน
-4. ใช้ `/use-bun-shell` เพื่อรัน reproduction script ซ้ำจนกว่าจะ stable
+1. Create a minimal reproduction case that triggers the problem every time
+2. Specify the exact steps, inputs, and environment that cause the problem
+3. If it can't be reproduced, capture logs, screenshots, and environment info first
+4. Use `/use-bun-shell` to rerun the reproduction script until it is stable
 
 ### 2. Define Problem Clearly
 
-> Goal: กำหนดปัญหาแบบ Expected vs Actual พร้อม scope และ impact ชัดเจน
+> Goal: state the problem as Expected vs Actual with a clear scope and impact
 
-1. เขียนปัญหาแบบ Expected vs Actual
-2. ระบุ scope: file, function, module, API endpoint, หรือ system level
-3. ระบุ frequency: always, intermittent, หรือ under specific conditions
-4. ระบุ impact: blocking, degraded, หรือ cosmetic
+1. Write the problem as Expected vs Actual
+2. Define the scope: file, function, module, API endpoint, or system level
+3. Define the frequency: always, intermittent, or under specific conditions
+4. Define the impact: blocking, degraded, or cosmetic
 
 ### 3. Gather Evidence
 
-> Goal: เก็บ error messages, logs, และ context ที่เกี่ยวข้องทั้งหมด
+> Goal: collect all relevant error messages, logs, and context
 
-1. เก็บ error messages, stack traces, และ logs ทั้งหมด
-2. ใช้ `/run-test` เพื่อดูว่า tests ไหน fail
-3. ตรวจสอบ recent changes ด้วย `git log` และ `git diff`
-4. ตรวจสอบ environment: runtime version, dependencies, config
-5. ถ้ามี monitoring ให้เก็บ metrics และ traces ด้วย
+1. Collect all error messages, stack traces, and logs
+2. Use `/run-test` to see which tests fail
+3. Review recent changes with `git log` and `git diff`
+4. Check the environment: runtime version, dependencies, config
+5. If monitoring exists, also collect metrics and traces
 
 ### 4. Form Hypotheses
 
-> Goal: สร้างและจัดลำดับ hypotheses ตาม evidence ไม่ใช่ความรู้สึก
+> Goal: generate and rank hypotheses by evidence, not gut feeling
 
-1. สร้าง 3-5 hypotheses ที่เป็นไปได้
-2. จัดลำดับตาม probability และ ease of testing
-3. ทำ `/deep-thinking` เพื่อใช้ Bayesian approach ในการจัดลำดับ
-4. เลือก top 1-2 hypotheses ที่ test ง่ายและมี probability สูงสุด
+1. Generate 3-5 plausible hypotheses
+2. Rank them by probability and ease of testing
+3. Run `/deep-thinking` to apply a Bayesian approach to the ranking
+4. Pick the top 1-2 hypotheses that are easy to test and most probable
 
 ### 5. Test And Eliminate
 
-> Goal: ทดสอบทีละ hypothesis เปลี่ยนทีละ variable เพื่อตัดที่ไม่ใช่
+> Goal: test one hypothesis at a time, changing one variable to rule others out
 
-1. ทดสอบทีละ hypothesis — เปลี่ยนทีละ variable เท่านั้น
-2. ใช้ `/use-bun-shell` เพื่อ execute test แต่ละ hypothesis
-3. บันทึกผลลัพธ์ทุกครั้ง: pass, fail, หรือ inconclusive
-4. ตัด hypothesis ที่ไม่ใช่ แล้วไปถัดไป
-5. ถ้าทดสอบหมดแล้วไม่ตรง ให้กลับไปสร้าง hypotheses ใหม่
+1. Test one hypothesis at a time — change only one variable
+2. Use `/use-bun-shell` to execute each hypothesis test
+3. Record every result: pass, fail, or inconclusive
+4. Rule out hypotheses that don't fit and move to the next
+5. If all tests miss, go back and generate new hypotheses
 
 ### 6. Isolate Root Cause
 
-> Goal: ยืนยัน root cause ที่ reproduce ได้ แก้แล้วหาย ถอนแล้วกลับมา
+> Goal: confirm a root cause that reproduces, disappears when fixed, and returns when reverted
 
-1. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
-2. ใช้ 5 Whys เพื่อ trace จาก symptom ไป root cause
-3. ยืนยัน root cause ด้วย 3 เงื่อนไข: reproduce ได้, fix แล้วหาย, กลับมาถ้าถอน fix
-4. ตรวจสอบว่าไม่ใช่ symptom ของปัญหาที่ลึกกว่า
+1. Run `/analyze-root-cause-analysis` to identify the main cause
+2. Use 5 Whys to trace from symptom to root cause
+3. Confirm the root cause with 3 conditions: it reproduces, the fix resolves it, and it returns if the fix is reverted
+4. Check that it isn't a symptom of a deeper problem
 
 ### 7. Validate And Fix
 
-> Goal: แก้น้อยที่สุดที่จบ root cause แล้ว verify ว่าไม่ทำลายอย่างอื่น
+> Goal: fix minimally at the root cause, then verify nothing else breaks
 
-1. ทำ `/apply` mode `validate` เพื่อ validate ก่อนแก้
-2. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
-3. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
-4. ทำ `/run-test` เพื่อยืนยันว่า fix ใช้งานได้
-5. ทดสอบว่า fix ไม่ทำลาย functionality อื่น
-6. ทำ `/run-lint` และ `/run-typecheck` เพื่อตรวจสอบ code quality
+1. Run `/apply` mode `validate` to validate before fixing
+2. Run `/resolve-errors` to fix the errors found
+3. Fix minimally — the smallest change that resolves the root cause, not the symptom
+4. Run `/run-test` to confirm the fix works
+5. Verify the fix doesn't break other functionality
+6. Run `/run-lint` and `/run-typecheck` to check code quality
 
 ### 8. Prevent Recurrence
 
-> Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
+> Goal: add test cases and improve debuggability to prevent the problem from recurring
 
-1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
-2. ทำ `/deep-review` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
-3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
-4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
+1. Add regression-prevention test cases — run `/follow-tool-vitest` or `/follow-tool-playwright`
+2. Run `/deep-review` if debugging was hard due to insufficient logging
+3. Update documentation if the problem was about config or setup
+4. Record the root cause and solution in `docs/` or the commit message
 
 ### 9. Report
 
-> Goal: สรุปผล debug และ next action
+> Goal: summarize the debug result and next action
 
-1. ทำ `/report table` คอลัมน์: `No.`, `Step`, `Hypothesis`, `Result`, `Status`
-2. สรุป root cause, fix, regression tests, preventive measures
-3. ทำ `/report-progress` ถ้ามีหลาย step
-4. ทำ `/suggest-next-action`
+1. Run `/report table` with columns: `No.`, `Step`, `Hypothesis`, `Result`, `Status`
+2. Summarize root cause, fix, regression tests, preventive measures
+3. Run `/report-progress` if there are multiple steps
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Core Principles
 
-- ห้ามเดา — ทุก hypothesis ต้องมี evidence สนับสนุน
-- ห้ามแก้หลายอย่างพร้อมกัน — เปลี่ยนทีละ variable
-- ห้ามแก้ symptom — ต้องถึง root cause
-- ห้าม bypass — ไม่ใช้ `@ts-ignore`, `eslint-disable`, หรือ try-catch ซ่อน error
-- ต้อง reproduce ได้ก่อนแก้
-- ทุก fix ต้องผ่าน `/apply` mode `validate` ก่อน apply
+- No guessing — every hypothesis must have supporting evidence
+- Don't fix multiple things at once — change one variable at a time
+- Don't fix symptoms — reach the root cause
+- No bypasses — don't use `@ts-ignore`, `eslint-disable`, or try-catch to hide errors
+- Must be reproducible before fixing
+- Every fix must pass `/apply` mode `validate` before apply
 
 ### 2. Debug Strategy
 
-- ไล่จากบนลงล่าง: UI → API → Database → Infrastructure
-- ไล่จาก narrow ไป broad: specific function → module → system
-- ใช้ binary search สำหรับ large codebase
-- ถ้า intermittent ให้เก็บ log ทุกครั้งจนกว่าจะ pattern ชัด
-- ถ้า environment-specific ให้เปรียบเทียบ working vs broken environment
+- Work top-down: UI → API → Database → Infrastructure
+- Work narrow to broad: specific function → module → system
+- Use binary search for large codebases
+- For intermittent issues, keep logging until the pattern is clear
+- For environment-specific issues, compare working vs broken environments
 
 ### 3. Logging For Debug
 
-- ใช้ structured logging ไม่ใช่ `console.log`
-- ใส่ context: function name, input values, state
-- ใช้ log levels: `debug`, `info`, `warn`, `error`
-- หลัง fix ให้ลบ debug logging ที่ไม่จำเป็น
+- Use structured logging, not `console.log`
+- Include context: function name, input values, state
+- Use log levels: `debug`, `info`, `warn`, `error`
+- After the fix, remove unnecessary debug logging
 
 ### 4. Tool Selection
 
@@ -149,18 +149,18 @@ related:
 
 ### 5. Time Budget And Escalation
 
-- ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที
-- ถ้าเกินเวลา → ทำ `/deep-thinking` หรือ `/deep-research`
-- ถ้าหา root cause ไม่ได้หลังพยายาม 3 รอบ → ทำ `/deep-thinking` หรือขอความช่วยเหลือ
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-until-pass ถ้าจำเป็น
-- alias stub: `/follow-debugging` — forward มาที่ skill นี้
+- Small problems: ≤ 5 minutes | medium: ≤ 15 minutes | large: ≤ 30 minutes
+- If over budget → run `/deep-thinking` or `/deep-research`
+- If the root cause isn't found after 3 attempts → run `/deep-thinking` or ask for help
+- Use /run-check if needed
+- Use /run-test all if needed
+- Use /run-until-pass if needed
+- Alias stub: `/follow-debugging` — forwards to this skill
 
 ## Expected Outcome
 
-- Root cause หาได้เร็วและแม่นยำ
-- ไม่มีการเดาหรือแก้หลายอย่างพร้อมกัน
-- Fix แก้ที่ root cause ไม่ใช่ symptom
-- มี test case ป้องกัน regression
-- Debugging experience ดีขึ้นเรื่อยๆ
+- Root cause found quickly and precisely
+- No guessing and no fixing multiple things at once
+- The fix addresses the root cause, not the symptom
+- Regression-prevention test cases exist
+- The debugging experience keeps improving

@@ -1,55 +1,55 @@
 ---
 title: Section Order Validation
-description: กฎตรวจสอบลำดับ sections และขนาดไฟล์
+description: Rules for validating section order and file size
 ---
 
 # Section Order Validation
 
 ## Required Section Order
 
-`AGENT.md` ต้องมี sections ตามลำดับนี้เท่านั้น:
+`AGENT.md` must contain sections in exactly this order:
 
-1. `## Goal` — เป้าหมายของ subagent
-2. `## Scope` — ขอบเขตการใช้งาน
-3. `## Execute` — ขั้นตอนการทำงาน
-4. `## Rules` — กฎและข้อจำกัด
-5. `## Expected Outcome` — ผลลัพธ์ที่คาดหวัง
+1. `## Goal` — the subagent's objective
+2. `## Scope` — intended usage scope
+3. `## Execute` — working steps
+4. `## Rules` — rules and constraints
+5. `## Expected Outcome` — expected result
 
 ## Validation Rules
 
 ### Order
 
-- sections ต้องเรียงตามลำดับด้านบน
-- ห้ามสลับหรือข้าม section
-- ห้ามเพิ่ม section นอกเหนือจากที่กำหนด
+- sections must follow the order above
+- never swap or skip a section
+- never add a section beyond the defined ones
 
 ### Line Count
 
-- ไฟล์ `AGENT.md` ทั้งหมดต้องไม่เกิน 250 บรรทัด
-- นับทั้ง frontmatter และ content
-- ถ้าเกิน 250 บรรทัด → flag เป็น High
+- the entire `AGENT.md` file must not exceed 250 lines
+- count both frontmatter and content
+- if over 250 lines → flag as High
 
 ### Placeholder Check
 
-- ห้ามมี `TODO` ใน content
-- ห้ามมี `MOCK` ใน content
-- ห้ามมี placeholder text เช่น `lorem ipsum`, `xxx`, `foo bar`
-- ถ้าพบ → flag เป็น Medium
+- no `TODO` in content
+- no `MOCK` in content
+- no placeholder text such as `lorem ipsum`, `xxx`, `foo bar`
+- if found → flag as Medium
 
 ## Severity Mapping
 
 | Finding | Severity |
 |---|---|
-| ขาด section จำเป็น | High |
-| ลำดับ sections ผิด | High |
-| เกิน 250 บรรทัด | High |
-| มี `TODO`/`MOCK`/placeholder | Medium |
+| Missing a required section | High |
+| Wrong section order | High |
+| Over 250 lines | High |
+| Contains `TODO`/`MOCK`/placeholder | Medium |
 
 ## Evidence Format
 
-บันทึก finding พร้อม:
+Record each finding with:
 
-- file path ของ `AGENT.md`
-- section ที่มีปัญหา หรือ line number
-- เนื้อหาที่พบ
-- action ที่แนะนำ
+- the `AGENT.md` file path
+- the problematic section, or line number
+- the content found
+- the recommended action

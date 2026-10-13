@@ -2,13 +2,13 @@
 
 ## Goal
 
-ระบุหัวข้อและ scope ให้ชัดเจนก่อน research
+Pin down the topic and scope clearly before research
 
 ## Steps
 
-1. เขียนหัวข้อในรูปแบบคำถามที่ต้องการคำตอบ
-2. แยก keywords สำคัญ 2-5 คำ
-3. ระบุประเภทข้อมูลที่ต้องการ:
+1. Write the topic as a question that needs an answer
+2. Extract 2-5 key words
+3. Identify the type of data needed:
    - API / usage
    - Benchmark / performance
    - Tutorial / getting started
@@ -17,5 +17,5 @@
    - Security / vulnerabilities
    - Migration / breaking changes
    - License / cost
-4. กำหนด scope: ใช้สำหรับอะไร, ระดับความลึก
-5. ระบุ constraints: version, ปี, ภาษา, framework, ecosystem
+4. Define the scope: what it is for, how deep to go
+5. Identify constraints: version, year, language, framework, ecosystem

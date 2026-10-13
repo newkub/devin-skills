@@ -1,6 +1,6 @@
 ---
 name: run-review
-description: alias → /update-review-cli-then-run (รัน review CLI วิเคราะห์ผล และแนะนำ action items)
+description: alias → /update-review-cli-then-run (run the review CLI, analyze results, suggest actions)
 argument-hint: "[target]"
 related:
   - update-review-cli-then-run
@@ -11,26 +11,26 @@ related:
 
 ## Goal
 
-Alias ของ `/update-review-cli-then-run` — รัน `tools/review-codebase` CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
+Alias of `/update-review-cli-then-run` — run the `tools/review-codebase` CLI, analyze the results, and suggest action items based on findings
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/run-review` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `update-review-cli-then-run`
+Use when the user invokes `/run-review` — this skill is just an alias stub; the real workflow lives in `update-review-cli-then-run`
 
 ## Execute
 
-ทำ `/update-review-cli-then-run` เต็ม workflow — run path คือ Steps 7-10 (Validate CLI → Run Review And Analyze → Verify And Follow Tasks → Report And Suggest Actions); ถ้าต้อง update CLI ก่อนให้เริ่ม Steps 1-6
+Run the full `/update-review-cli-then-run` workflow — the run path is Steps 7-10 (Validate CLI → Run Review And Analyze → Verify And Follow Tasks → Report And Suggest Actions); if the CLI needs updating first, start at Steps 1-6
 
-- ถ้าต้องแก้ไข analyzer logic → `/update-create-analyze-cli` ก่อน แล้วกลับมาทำ skill นี้
-- Known Issues อยู่ใน `update-review-cli-then-run/references/known-issues.md` เท่านั้น (single source)
+- If the analyzer logic needs changes → run `/update-create-analyze-cli` first, then come back to this skill
+- Known Issues live only in `update-review-cli-then-run/references/known-issues.md` (single source)
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/update-review-cli-then-run` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `update-review-cli-then-run/SKILL.md` เสมอ
-- ถ้าต้อง review กว้างกว่า CLI → ใช้ `/deep-review`; ถ้าเจาะ `.devin` ใช้ `/deep-review`
-- verify ผลหลัง review ด้วย `/run-verify` แล้วปิดท้ายด้วย `/suggest-next-action`
+- Never duplicate the `/update-review-cli-then-run` workflow in this file
+- If the alias is missing steps → always read `update-review-cli-then-run/SKILL.md`
+- If the review needs to be broader than the CLI → use `/deep-review`; to drill into `.devin`, use `/deep-review`
+- Verify the results after review with `/run-verify`, then close with `/suggest-next-action`
 
 ## Expected Outcome
 
-- `/update-review-cli-then-run` ถูก execute ครบตาม run path พร้อม action items จาก findings
+- `/update-review-cli-then-run` is executed fully along the run path, with action items from the findings

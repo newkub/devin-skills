@@ -1,6 +1,6 @@
 ---
 name: deep-research-api-references
-description: ค้นหา API references จากหลายแหล่ง — official docs, examples, type surface — สรุปพร้อมแหล่งอ้างอิง
+description: Find API references from many sources — official docs, examples, type surface — with citations
 argument-hint: "[api-or-library]"
 related:
   - deep-research
@@ -13,61 +13,61 @@ related:
 
 ## Goal
 
-ค้นหา API references ที่น่าเชื่อถือสำหรับ API, library หรือ tool ที่ระบุ — สรุปเป็นรายการพร้อมแหล่งอ้างอิง (merged `/research-api-references`)
+Find trustworthy API references for a given API, library, or tool — summarized as a cited list (merged `/research-api-references`)
 
 ## Scope
 
-ใช้เมื่อต้องการหา references ของ API/library/tool ใหม่หรือตรวจสอบ API ที่มีอยู่ — ค้นหาจากหลายแหล่งภายใต้ deep-research pipeline
+Use when you need references for a new API/library/tool or want to verify an existing one — searched from multiple sources under the deep-research pipeline
 
 ## Execute
 
 ### 1. Parse Query
 
-> Goal: เข้าใจสิ่งที่ต้องค้นหา
+> Goal: understand what to search for
 
-1. อ่านชื่อ API/library/tool จาก argument
-2. ระบุ scope: version, language, framework, platform + ประเภทข้อมูล (official docs, examples, tutorials, benchmarks)
-3. ถ้า query ไม่ชัดเจน → ใช้ `/ask-me` ก่อน
+1. Read the API/library/tool name from the argument
+2. Define the scope: version, language, framework, platform + data type (official docs, examples, tutorials, benchmarks)
+3. If the query is unclear → use `/ask-me` first
 
 ### 2. Plan Research
 
-> Goal: กำหนด strategy การค้นหา
+> Goal: set the search strategy
 
-1. เลือก sources หลัก: official docs, GitHub repo, NPM registry, DeepWiki, Context7
-2. ระบุคำค้นหาย่อยเพื่อ cross-reference — ลำดับ: official → code repo → community
+1. Pick primary sources: official docs, GitHub repo, NPM registry, DeepWiki, Context7
+2. Define sub-queries for cross-referencing — order: official → code repo → community
 
 ### 3. Gather References
 
-> Goal: รวบรวม references จากหลายแหล่ง
+> Goal: collect references from multiple sources
 
-1. รัน general pipeline ของ `/deep-research` ด้วย query หลัก
-2. ใช้ `/learn-from-web` เพื่ออ่าน official docs เฉพาะเจาะจงถ้ามี URL
-3. Type surface (options, defaults, signatures) → `/check-types-definition` บน type defs จริง
-4. ใช้ `/follow-best-practice` ถ้าหา best practices ของ API นั้น
-5. บันทึก source, URL, version และ credibility ของแต่ละ reference
+1. Run the general `/deep-research` pipeline with the main query
+2. Use `/learn-from-web` to read specific official docs when a URL exists
+3. Type surface (options, defaults, signatures) → `/check-types-definition` on the real type defs
+4. Use `/follow-best-practice` if looking up best practices for that API
+5. Record the source, URL, version, and credibility of each reference
 
 ### 4. Synthesize References
 
-> Goal: สรุปผลการค้นหา
+> Goal: summarize the search results
 
-1. กรอง references ซ้ำซ้อน — จัดกลุ่มตามหมวด (official, examples, tutorials, comparisons)
-2. เรียงตามความน่าเชื่อถือ/ความเกี่ยวข้อง — สรุป key takeaways 2-5 ข้อ
+1. Filter duplicate references — group by category (official, examples, tutorials, comparisons)
+2. Rank by credibility/relevance — summarize 2-5 key takeaways
 
 ### 5. Format Output
 
-> Goal: นำเสนอในรูปแบบที่อ่านง่าย
+> Goal: present it in a readable form
 
-1. markdown table หรือ numbered list — ระบุ URL, คำอธิบายสั้น, แหล่งที่มา, ปี/version
-2. ใช้ภาษาเดียวกับ query — แสดงผลในแชททันที
+1. Markdown table or numbered list — include URL, short description, source, year/version
+2. Use the same language as the query — show results inline in the chat
 
 ## Rules
 
-- Official docs เป็นแหล่งหลักเสมอ; GitHub repo สำหรับ source/examples; registry สำหรับ package info; community sources เป็น fallback เท่านั้น
-- ต้องผ่าน research pipeline ทุกกรณี — ไม่ใช่การค้นหาผิวเดียว; ถ้าไม่พบข้อมูลให้รายงาน gaps
-- Credibility: ตรวจปี/version, maintenance status (last commit, release), ระบุข้อมูลที่ไม่แน่ใจ
-- No execution — ไม่แก้ไขไฟล์ project, ไม่ติดตั้ง dependencies
-- ใช้ `/check-reference` ถ้าจำเป็น
+- Official docs are always the primary source; GitHub repos for source/examples; registries for package info; community sources only as a fallback
+- Always go through the research pipeline — no single superficial search; if no data is found, report the gaps
+- Credibility: check year/version, maintenance status (last commit, release), flag uncertain information
+- No execution — do not modify project files, do not install dependencies
+- Use `/check-reference` when needed
 
 ## Expected Outcome
 
-- รายการ API references ครบถ้วน ไม่ซ้ำซ้อน — official เป็น primary, ระบุ URL/version/takeaways — ส่งต่อ `/follow-best-practice` หรือ `/learn-from-web` ได้
+- A complete, de-duplicated list of API references — official as primary, with URL/version/takeaways — handoff to `/follow-best-practice` or `/learn-from-web` possible

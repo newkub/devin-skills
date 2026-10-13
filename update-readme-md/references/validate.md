@@ -1,26 +1,26 @@
 # Step: Validate
 
-> Goal: ตรวจสอบคุณภาพและอัปเดต references
+> Goal: Check quality and update references
 
 ## Execute
 
-1. `/deep-review`, `/update-references` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
-2. ตรวจว่า README มี sections ครบตาม Rule `Section Order And Format`
-3. ตรวจว่า:
-   - ไม่มี `>` description ที่ด้านบน (เฉพาะ status badge)
-   - `## Get Started` ไม่มี `###` subsection
-   - `## Features` 3 columns (ไม่มี Benefit, Usage)
-   - ไม่มี `## API References` แยก
-   - ไม่มี ANSI codeblock ด้านล่างสุด
-   - `## Contributing` มีเฉพาะถ้ามี `CONTRIBUTING.md`
-   - `## License` มีเฉพาะถ้ามี `LICENSE.md`
-4. ถ้า validation ไม่ผ่าน → revise และ recheck (max 3 ครั้ง → stop/report)
+1. `/deep-review`, `/update-references` to check quality and update references at the same time
+2. Verify that the README has all sections per Rule `Section Order And Format`
+3. Verify that:
+   - no `>` description at the top (status badge only)
+   - `## Get Started` has no `###` subsection
+   - `## Features` has 3 columns (no Benefit, Usage)
+   - no separate `## API References`
+   - no ANSI codeblock at the very bottom
+   - `## Contributing` only if `CONTRIBUTING.md` exists
+   - `## License` only if `LICENSE.md` exists
+4. If validation fails → revise and recheck (max 3 times → stop/report)
 
 ## Checklist
 
 - [ ] Status callout (red/green badge)
-- [ ] Hero section (title + badges) — ไม่มี ANSI ใต้ badges
-- [ ] UI Sketch (text codeblock ด้านบน Get Started)
+- [ ] Hero section (title + badges) — no ANSI below the badges
+- [ ] UI Sketch (text codeblock above Get Started)
 - [ ] Get Started (numbered, no `###`)
 - [ ] Features (3 columns)
 - [ ] Usage (with ANSI drawing + inline references)
@@ -28,5 +28,5 @@
 - [ ] License (if LICENSE.md exists)
 - [ ] No bottom ANSI
 - [ ] No `## API References`
-- [ ] ANSI ทุกบรรทัดมีความยาวเท่ากัน (border ตรง)
+- [ ] All ANSI lines are the same length (aligned border)
 

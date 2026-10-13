@@ -2,41 +2,41 @@
 
 ## Goal
 
-ทำให้ไฟล์แผนที่สร้างอ่านง่าย สวยงาม และใช้งานได้จริงใน markdown renderer ใดก็ได้
+Make the generated plan files easy to read, well-formatted, and genuinely usable in any markdown renderer
 
 ## Visual Hierarchy
 
-- `##` สำหรับ main sections
-- `###` สำหรับ subsections
-- ห้ามกระโดดข้าม heading level
-- ใช้ `>` สำหรับ highlight สั้นๆ เท่านั้น
+- Use `##` for main sections
+- Use `###` for subsections
+- Never skip heading levels
+- Use `>` only for short highlights
 
 ## Icons And Color
 
-- ใช้ Iconify CDN icons ใน column `Icon` และ headings
-- ใช้ color query `?color=%23hex` เพื่อบ่งบอกระดับ เช่น green สำหรับ Low risk, red สำหรับ High risk
-- ไม่ใช้ emoji ถ้าไม่จำเป็น
+- Use Iconify CDN icons in the `Icon` column and in headings
+- Use a color query `?color=%23hex` to signal levels, e.g. green for Low risk, red for High risk
+- Avoid emoji unless necessary
 
 ## Tables
 
-- หัวตารางใช้ภาษาอังกฤษ Title Case
-- ข้อมูลใน row สั้น ไม่เกิน 1-2 บรรทัด
-- ใช้ align ธรรมดา (ไม่ต้องระบุ)
+- Use English Title Case for header rows
+- Keep cell data short, no more than 1-2 lines
+- Use plain alignment (no need to specify it)
 
 ## Diagrams
 
-- วาง ANSI diagram ใน `<div align="center">`
-- ใช้ code block ภายใน plain text
-- ไม่ใช้ image ถ้าไม่มีหลักฐานจริง
+- Place ANSI diagrams inside `<div align="center">`
+- Use a code block within plain text
+- Do not use images without real evidence
 
 ## Checkboxes
 
-- ใช้ `- [ ]` สำหรับ acceptance criteria
-- 1 checkbox ต่อ 1 criterion
-- ระบุ action ที่ต้องทำชัดเจน
+- Use `- [ ]` for acceptance criteria
+- One checkbox per criterion
+- State the required action clearly
 
 ## Accessibility
 
-- ไม่พึ่งพิงสีเพียงอย่างเดียว
-- ใช้ label ข้อความประกอบ icon
-- หลีกเลี่ยง table ที่กว้างเกินไป
+- Don't rely on color alone
+- Pair icons with text labels
+- Avoid overly wide tables

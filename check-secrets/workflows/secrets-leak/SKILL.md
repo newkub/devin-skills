@@ -1,6 +1,6 @@
 ---
 name: check-secrets-secrets-leak
-description: ตรวจหา secrets หลุดใน git history และไฟล์ด้วย automated scanners
+description: Detect secrets leaked in git history and files using automated scanners
 argument-hint: "[path]"
 related:
   - follow-secret-manager
@@ -11,66 +11,66 @@ related:
 
 ---
 ## Goal
-ตรวจหา secrets, API keys, tokens หรือ credentials ทีอาจหลุดรอดใน repository หรือไฟล์
+Detect secrets, API keys, tokens, or credentials that may have leaked into the repository or files
 
 ## Scope
 
-- รองรับ git history scan และ filesystem scan
-- ใช้ gitleaks, trufflehog, หรือ regex patterns
-- รายงานพร้อม severity และ location
+- Supports git history scan and filesystem scan
+- Uses gitleaks, trufflehog, or regex patterns
+- Reports with severity and location
 
 ## Execute
 ### 1. Prepare
 
 > Goal: Prepare
 
-1. ระบุ target path หรือ repo
-2. ตรวจสอบเครื่องมือทีมี เช่น gitleaks, trufflehog
-3. ตรวจสอบว่า repo มี git history
+1. Identify the target path or repo
+2. Check which tools are available, e.g. gitleaks, trufflehog
+3. Check whether the repo has git history
 
 ### 2. Scan Git History
 
 > Goal: Scan Git History
 
-1. รัน `gitleaks detect --source <path> -v`
-2. หรือ `trufflehog git file://<path>`
-3. บันทึกผลลัพธ์เป็น JSON หรือ CSV
+1. Run `gitleaks detect --source <path> -v`
+2. Or `trufflehog git file://<path>`
+3. Save the results as JSON or CSV
 
 ### 3. Scan Filesystem
 
 > Goal: Scan Filesystem
 
-1. รัน `gitleaks detect --no-git --source <path>` ถ้าต้องการ scan ไฟล์ปัจจุบัน
-2. ใช้ regex scan เสริมสำหรับ patterns เฉพาะ
-3. กรอง false positives เช่น examples, test fixtures
+1. Run `gitleaks detect --no-git --source <path>` when you need to scan current files
+2. Add regex scans for specific patterns
+3. Filter out false positives such as examples and test fixtures
 
 ### 4. Report
 
 > Goal: Report
 
-1. สรุป secrets ทีพบพร้อม commit hash, file, line
-2. ระบุ severity: Critical/High/Medium/Low
-3. แนะนำ next action: revoke, rotate, หรือ `git filter-repo`
-4. หลังจากนั้น ใช้ `/follow-secret-manager` เพื่อ rotation และจัดการ secrets ใหม่ หรือ `/open-web-for-config-secret` เพื่อสร้าง API keys ใหม่
+1. Summarize the secrets found with commit hash, file, line
+2. Set severity: Critical/High/Medium/Low
+3. Recommend next actions: revoke, rotate, or `git filter-repo`
+4. After that, use `/follow-secret-manager` to rotate and manage the new secrets, or `/open-web-for-config-secret` to create new API keys
 
 ## Rules
 ### 1. No Expose
 
-- ไม่แสดงค่า secret จริงใน report
-- ไม่บันทึกผลลัพธ์ลง repo โดยไม่ได้ตรวจสอบ
-- ใช้ environment variable สำหรับ scanner credentials
+- Never show real secret values in the report
+- Never save results into the repo without review
+- Use environment variables for scanner credentials
 
 ### 2. False Positives
 
-- ตรวจสอบ patterns ก่อนแจ้ง
-- ระบุ allowlist ถ้ามี
-- แยก test data ออกจาก real secrets
+- Verify patterns before reporting
+- Note the allowlist if there is one
+- Separate test data from real secrets
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /run-audit ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /check-reference if needed
+- Use /run-audit if needed
 
 ## Expected Outcome
-- รายการ secrets ทีพบพร้อม location และ severity
-- ไม่มี secret จริงรั่วไหลใน report
-- แนวทาง remediation ชัดเจน
+- List of secrets found with location and severity
+- No real secrets leaked in the report
+- Clear remediation guidance

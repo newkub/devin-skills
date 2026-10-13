@@ -1,78 +1,78 @@
 # Deep Test — Visual Domain
 
-ตรวจ visual regression โดย capture screenshots ของ routes/components แล้วเทียบกับ baseline — หา layout shifts, style breaks และ UI changes ที่ไม่ตั้งใจ
+Check visual regression by capturing screenshots of routes/components and comparing them against the baseline — to find layout shifts, style breaks, and unintended UI changes
 
-- ใช้เมื่อมีการเปลี่ยน CSS, design system, layout หรือ dependency UI แล้วต้องการยืนยันว่าหน้าจอไม่พัง
-- ครอบคลุม page-level screenshots ผ่าน `agent-browser` หรือ Playwright และ component-level ผ่าน Storybook/Playwright component tests
-- Report only: รายงาน diffs ไม่ auto-approve หรือ revert
+- Use when CSS, the design system, layout, or UI dependencies changed and you need to confirm the screens aren't broken
+- Covers page-level screenshots via `agent-browser` or Playwright and component-level via Storybook/Playwright component tests
+- Report only: reports diffs, never auto-approves or reverts
 
 ## 1. Establish Baseline
 
-> Goal: มี baseline screenshots เพื่อเทียบ
+> Goal: Have baseline screenshots to compare against
 
-1. รับ scope: routes, components หรือทั้ง app
-2. ถ้ามี baseline เดิมใน `tests/visual/baseline/` → ใช้ต่อ; ถ้าไม่มี → capture ก่อนจาก branch ปัจจุบัน (git worktree ถ้าต้องเทียบข้าม commit)
-3. เก็บ baseline ด้วย naming deterministic: `<route-or-component>.png` เช่น `home.png`, `settings-profile.png`
+1. Take the scope: routes, components, or the whole app
+2. If an existing baseline is in `tests/visual/baseline/` → keep using it; if not → capture it first from the current branch (use a git worktree when comparing across commits)
+3. Store the baseline with deterministic naming: `<route-or-component>.png`, e.g. `home.png`, `settings-profile.png`
 
 ## 2. Run App And Capture
 
-> Goal: ได้ screenshots ชุดปัจจุบัน
+> Goal: Get the current set of screenshots
 
-1. ทำ `/run-dev` เพื่อเปิด app หรือใช้ preview build
-2. ใช้ `/capture` หรือ `agent-browser` capture ทุก route/component ใน scope
-3. Fix viewport (เช่น `1280x720`) และ disable animations ถ้าจำเป็นเพื่อลด noise
-4. เก็บลง `tests/visual/current/`
+1. Run `/run-dev` to start the app, or use a preview build
+2. Use `/capture` or `agent-browser` to capture every route/component in scope
+3. Fix the viewport (e.g. `1280x720`) and disable animations if needed to reduce noise
+4. Store them in `tests/visual/current/`
 
 ## 3. Compare Screenshots
 
-> Goal: หา pixel diffs ที่มีนัยสำคัญ
+> Goal: Find significant pixel diffs
 
-1. เทียบทีละคู่ด้วย Playwright `toHaveScreenshot()`, `pixelmatch` หรือ `looks-same`
-2. Threshold default: diff ratio >0.1% → flag `changed`
-3. แยก `missing` (route หาย), `new` (route ใหม่), `changed`, `same`
-4. สร้าง diff images ลง `tests/visual/diff/` สำหรับการตรวจด้วยตา
+1. Compare pairs one by one with Playwright `toHaveScreenshot()`, `pixelmatch`, or `looks-same`
+2. Default threshold: diff ratio >0.1% → flag `changed`
+3. Separate `missing` (route gone), `new` (new route), `changed`, `same`
+4. Generate diff images in `tests/visual/diff/` for visual inspection
 
 ## 4. Analyze Changes
 
-> Goal: แยก intended vs unintended changes
+> Goal: Separate intended vs unintended changes
 
-1. เปิด diff images ของ findings ที่ใหญ่สุด
-2. เช็คว่า change ตรงกับสิ่งที่แก้จริง (จาก git diff) หรือเป็น regression
-3. ถ้าไม่แน่ใจ → ทำ `/deep-review` หรือ `/deep-review` ประกอบ
-4. จัดกลุ่ม: `intended`, `suspect`, `regression`
+1. Open the diff images of the largest findings
+2. Check whether the change matches what was actually modified (from the git diff) or is a regression
+3. If unsure → run `/deep-review` or use `/deep-review` for additional context
+4. Group findings: `intended`, `suspect`, `regression`
 
 ## 5. Report
 
-> Goal: สรุปให้ตัดสินใจ approve baseline หรือแก้ bug
+> Goal: Summarize so the user can approve the baseline or fix a bug
 
-1. ทำ `/report` คอลัมน์: `No.`, `Route/Component`, `Diff %`, `Status`, `Verdict`
-2. แนบ diff image paths สำหรับ findings สำคัญ
-3. ถ้าทุก change เป็น intended → เสนออัปเดต baseline
-4. ถ้ามี regression → ส่งต่อ `/resolve-errors` หรือ `/fix`
+1. Build a `/report` with columns: `No.`, `Route/Component`, `Diff %`, `Status`, `Verdict`
+2. Attach diff image paths for the important findings
+3. If every change is intended → propose updating the baseline
+4. If there's a regression → hand off to `/resolve-errors` or `/fix`
 
 ## Rules
 
 ### 1. Deterministic Capture
 
-- Fix viewport, device scale factor และ wait ให้ fonts/images load ก่อน capture
-- Disable animations และ dynamic content (timestamps, random data) ด้วย mock หรือ CSS override
-- Capture ครั้งเดียวกันต้องได้ภาพเหมือนกัน — ถ้า flake ให้แก้ flakiness ก่อนเชื่อผล
+- Fix the viewport and device scale factor, and wait for fonts/images to load before capturing
+- Disable animations and dynamic content (timestamps, random data) via mocks or CSS overrides
+- Captures in the same run must produce identical images — if they flake, fix the flakiness before trusting the results
 
 ### 2. Read-Only Verdict
 
-- ไม่ auto-update baseline เมื่อพบ diff — ให้ user approve
-- ไม่แก้ code เพื่อให้ test ผ่านโดยไม่เข้าใจสาเหตุ
+- Never auto-update the baseline when a diff is found — let the user approve
+- Never change code just to make a test pass without understanding the cause
 
 ### 3. Coverage
 
-- ครอบทุก route ใน scope และอย่างน้อย critical flows
-- ระบุ routes ที่ข้ามและเหตุผล (auth-required, external deps)
+- Cover every route in scope and at least the critical flows
+- List the skipped routes with reasons (auth-required, external deps)
 
-- ใช้ /capture ถ้าจำเป็น
-- ใช้ /use-agent-browser ถ้าจำเป็น
+- Use /capture if needed
+- Use /use-agent-browser if needed
 
 ## Expected Outcome
 
-- Baseline และ current screenshots ครบตาม scope
-- รายการ visual diffs พร้อม verdict intended/suspect/regression
-- ชัดเจนว่าควร approve baseline ใหม่หรือแก้ regression ก่อน
+- Baseline and current screenshots complete per scope
+- A list of visual diffs with an intended/suspect/regression verdict
+- A clear call on whether to approve the new baseline or fix the regression first

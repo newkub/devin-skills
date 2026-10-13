@@ -1,6 +1,6 @@
 ---
 name: devin-templates-toolkit
-description: รวม templates สำหรับ web, TUI, CI/CD, docs ใช้ copy แล้วปรับตาม project
+description: Templates for web, TUI, CI/CD, and docs — copy and adapt to each project
 argument-hint: "[scope]"
 related:
   - devin-scripts-toolkit
@@ -16,42 +16,42 @@ related:
 
 ## Goal
 
-รวม templates เริ่มต้นสำหรับสร้าง project, CI/CD, docs และ TUI apps
+Collect starter templates for creating projects, CI/CD, docs, and TUI apps
 
 ## Scope
 
-- Web templates (landing, saas, paas) สำหรับ `/follow-create-web`
-- TUI templates (`/follow-create-tui-ratatui`) แบบ Ratatui
-- CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
-- Package setup templates สำหรับ `/update-project` `### setup-package`
+- Web templates (landing, saas, paas) for `/follow-create-web`
+- TUI templates (`/follow-create-tui-ratatui`) in Ratatui style
+- CI/CD templates (GitHub Actions) for `/setup-cicd`
+- Package setup templates for `/update-project` `### setup-package`
 - Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)
-- Cloudflare templates สำหรับ `/create-cloudflare-worker`
+- Cloudflare templates for `/create-cloudflare-worker`
 
 ## Execute
 
 ### 1. Choose Template
 
-> Goal: เลือก template ตาม project type
+> Goal: pick the template matching the project type
 
-1. ตรวจ project type
-2. เลือก template จาก `templates/<category>/`
-3. Copy ไปยัง project directory
+1. Detect the project type
+2. Choose a template from `templates/<category>/`
+3. Copy it into the project directory
 
 ### 2. Adapt Template
 
-> Goal: ปรับให้เข้ากับ project
+> Goal: adapt the template to the project
 
-1. แก้ placeholders เช่น `<project-name>`, `<repo-name>`
-2. ลบส่วนทีไม่จำเป็น
-3. ใช้ `/devin-scripts-toolkit` ตรวจหลัง copy
+1. Replace placeholders such as `<project-name>`, `<repo-name>`
+2. Remove unnecessary parts
+3. Use `/devin-scripts-toolkit` to check after copying
 
 ### 3. Verify
 
-> Goal: ยืนยันว่า template ใช้งานได้
+> Goal: confirm the template works
 
-1. รัน `/deep-review`
-2. รัน `/report-config-files`
-3. รัน `/review-devin-global-harness`
+1. Run `/deep-review`
+2. Run `/report-config-files`
+3. Run `/review-devin-global-harness`
 
 ## Templates
 
@@ -64,16 +64,16 @@ related:
 
 ## Rules
 
-- ใช้ templates นี้ก่อนสร้าง project
-- ปรับ template ให้เข้ากับ stack จริง
-- ไม่ commit template ทียังไม่ปรับ
-- คู่กับ `/devin-scripts-toolkit`
-- ใช้ /follow-create-plugins ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
+- Use these templates before creating a project
+- Adapt each template to the actual stack
+- Do not commit an unadapted template
+- Pair with `/devin-scripts-toolkit`
+- Use /follow-create-plugins if needed
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-- สร้าง project ได้เร็วขึ้น
-- ลด setup time
-- มาแบบสม่ำเสมอ
+- Faster project creation
+- Less setup time
+- Consistent results

@@ -1,6 +1,6 @@
 ---
 name: check-downloads-dir
-description: ดึงกลุ่มไฟล์ล่าสุดจาก Downloads dir ตามช่วงเวลา แล้ว analyze บริบทร่วมกัน ไม่ใช่ไฟล์เดียว
+description: Pull the latest file group from Downloads by time range, then analyze their shared context together
 argument-hint: "[time-range-or-count]"
 related:
   - check-screenshots-dir
@@ -13,95 +13,95 @@ related:
 
 ## Goal
 
-ดึงกลุ่มไฟล์ล่าสุดจาก `C:\Users\Veerapong\Downloads` ตามช่วงเวลาหรือจำนวนกลุ่ม แล้ว analyze เนื้อหา/บริบทที่เกิดขึ้นพร้อมกัน ไม่ใช่แค่ไฟล์ล่าสุดไฟล์เดียว
+Pull the latest file group from `C:\Users\Veerapong\Downloads` by time range or group count, then analyze the content/context that occurred together, not just the single most recent file
 
 ## Scope
 
-- ใช้สำหรับไฟล์ที่ save ไว้ใน `Downloads` — images, documents, archives, installers
-- วิเคราะห์กลุ่มไฟล์ ไม่ใช่ไฟล์เดียว
-- ไม่ upload หรือส่งไฟล์ออกไปนอก environment
-- ถ้าต้องการ list/read ไฟล์เดียวตาม pattern → ใช้ `/read-from-downloads` แทน
+- For files saved in `Downloads` — images, documents, archives, installers
+- Analyze file groups, not a single file
+- Never upload or send files outside the environment
+- To list/read a single file by pattern → use `/read-from-downloads` instead
 
 ## Execute
 
 ### 1. Locate Downloads
 
-> Goal: หาไฟล์ทั้งหมดใน Downloads path
+> Goal: find all files in the Downloads path
 
-1. ใช้ `exec` รัน `Get-ChildItem -Path 'C:\Users\Veerapong\Downloads' -File | Sort-Object LastWriteTime -Descending`
-2. บันทึกรายการไฟล์: ชื่อ, ขนาด, วันที่แก้ไข
-3. ถ้าโฟลเดอร์ไม่มีไฟล์ → stop และ report
+1. Use `exec` to run `Get-ChildItem -Path 'C:\Users\Veerapong\Downloads' -File | Sort-Object LastWriteTime -Descending`
+2. Record the file list: name, size, modified date
+3. If the folder has no files → stop and report
 
 ### 2. Group By Recent Window
 
-> Goal: เลือกกลุ่มไฟล์ล่าสุดจากช่วงเวลาเดียวกัน
+> Goal: select the latest file group from the same time window
 
-1. ถ้า user ระบุ `time-range-or-count` (เช่น `5m`, `30m`, `10`) → ใช้ตามนั้น
-2. ถ้าไม่ระบุ → ใช้ default `5 นาที` ก่อนไฟล์ล่าสุด หรือ `10` ไฟล์ล่าสุดที่ใกล้กัน
-3. กรองไฟล์ที่มี `LastWriteTime` อยู่ในช่วงเวลาเดียวกัน (ห่างกันไม่เกิน 5 นาทีต่อ default)
-4. เรียงลำดับจากเก่าไปใหม่เพื่อดูลำดับเหตุการณ์
+1. If the user gives `time-range-or-count` (e.g. `5m`, `30m`, `10`) → use it
+2. If not given → default to files within `5 minutes` before the latest, or the `10` closest recent files
+3. Filter files whose `LastWriteTime` falls in the same window (no more than 5 minutes apart by default)
+4. Sort oldest to newest to see the event sequence
 
 ### 3. Read Files
 
-> Goal: อ่านเนื้อหาไฟล์ที่เลือก
+> Goal: read the content of the selected files
 
-1. image (png, jpg, jpeg, gif, webp, bmp, svg) → ใช้ `read` อ่านเนื้อหาภาพ
-2. text (txt, md, json, csv, yml, yaml, log) → ใช้ `read`
-3. binary/archive (zip, exe, msi, pdf) → รายงานชื่อ ขนาด ประเภท แทนการอ่านเนื้อหา
-4. ถ้าไฟล์มากเกิน 20 ไฟล์ → ขอ user ยืนยันก่อน analyze ทั้งหมด หรือเลือก top 20 ล่าสุด
+1. image (png, jpg, jpeg, gif, webp, bmp, svg) → use `read` to read the image content
+2. text (txt, md, json, csv, yml, yaml, log) → use `read`
+3. binary/archive (zip, exe, msi, pdf) → report name, size, type instead of reading content
+4. If more than 20 files → ask the user to confirm before analyzing all, or take the top 20 most recent
 
 ### 4. Analyze Group
 
-> Goal: วิเคราะห์บริบทจากกลุ่มไฟล์
+> Goal: analyze the context from the file group
 
-1. ดูลำดับเหตุการณ์จากไฟล์แรกไปไฟล์สุดท้าย — ชุด download เดียวกันมัก relate กัน (installer + docs, assets ชุดเดียว)
-2. หา pattern: ไฟล์จาก source เดียวกัน, versions, file sets, export bundles
-3. สรุป action, intent และผลลัพธ์ที่อาจเกิดขึ้น — เช่น กำลัง setup tool, export งาน, เก็บ reference
-4. ถ้าเป็น images → วิเคราะห์เนื้อหาภาพเหมือน `/check-screenshots-dir`
+1. Trace the sequence from the first to the last file — files from the same download batch usually relate (installer + docs, one asset set)
+2. Find patterns: files from the same source, versions, file sets, export bundles
+3. Summarize the action, intent, and likely outcome — e.g. setting up a tool, exporting work, saving references
+4. If images → analyze the image content like `/check-screenshots-dir`
 
 ### 5. Report
 
-> Goal: สรุปผลการ analyze
+> Goal: summarize the analysis
 
-1. ทำ `/report` ด้วยคอลัมน์: No, Filename, Timestamp, Type, Key Observations
-2. สรุป overall context และ likely next steps
-3. ทำ `/suggest-next-action` ถ้าจำเป็น
+1. Run `/report` with columns: No, Filename, Timestamp, Type, Key Observations
+2. Summarize the overall context and likely next steps
+3. Run `/suggest-next-action` if needed
 
 ## Rules
 
 ### 1. Group Not Single
 
-- ไม่ analyze แค่ไฟล์ล่าสุดไฟล์เดียว เว้นแต่ user ระบุชัดเจน
-- กลุ่มต้องมีอย่างน้อย 2 ไฟล์ ถ้าได้มาเพียงไฟล์เดียว → รายงานและหยุด
+- Don't analyze just the single latest file unless the user is explicit
+- A group needs at least 2 files; if only one is found → report and stop
 
 ### 2. Time Window
 
-- Default ช่วงเวลาห่างกันไม่เกิน 5 นาทีจากไฟล์ล่าสุด
-- ถ้า user ระบุ `time-range-or-count` ให้ใช้ค่านั้น
-- ถ้าไฟล์ห่างกันเกินช่วง ให้แบ่งเป็นกลุ่มแยก และเลือกกลุ่มล่าสุด
+- Default window: no more than 5 minutes back from the latest file
+- If the user gives `time-range-or-count`, use that value
+- If files fall outside the window, split them into separate groups and pick the latest group
 
 ### 3. Privacy
 
-- ไม่อัปโหลด ไม่ส่ง ไม่แชร์ไฟล์ออกนอกเครื่อง
-- ไม่คัดลอกไฟล์ไปยังที่อื่นนอกเวอร์ก์สเปซ
-- ถ้าไฟล์ดู sensitive (credentials, personal docs) → ถาม user ก่อนอ่าน และ censored ใน report
+- Never upload, send, or share files off the machine
+- Never copy files elsewhere outside the workspace
+- If a file looks sensitive (credentials, personal docs) → ask the user before reading and censor it in the report
 
 ### 4. Safety
 
-- ไม่ลบ ไม่ย้าย ไม่แก้ไขไฟล์ต้นฉบับ
-- ไม่ execute installers/binaries ที่พบ — analyze เท่านั้น
-- ถ้าไฟล์เยอะเกิน 20 ให้ confirm ก่อน
+- Never delete, move, or edit the original files
+- Never execute the installers/binaries found — analyze only
+- If there are more than 20 files, confirm first
 
-- ใช้ /check-screenshots-dir ถ้าจำเป็น
-- ใช้ /read-from-downloads ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ `/capture` ถ้าจำเป็น
-- ใช้ `/analyze-codebase-quality` ถ้าจำเป็น
+- Use /check-screenshots-dir if needed
+- Use /read-from-downloads if needed
+- Use /report if needed
+- Use `/capture` if needed
+- Use `/analyze-codebase-quality` if needed
 
 ## Expected Outcome
 
-- กลุ่มไฟล์ล่าสุดถูกเลือกตามช่วงเวลา
-- ไฟล์ทุกตัวในกลุ่มถูก analyze หรือรายงานสาเหตุที่ไม่ analyze
-- ได้ summary ของบริบท/เหตุการณ์ที่เกิดขึ้น
-- ได้ตารางรายละเอียดแต่ละไฟล์
-- ได้ `/suggest-next-action` ถ้ามี
+- The latest file group is selected by time window
+- Every file in the group is analyzed, or the reason it wasn't is reported
+- A summary of the context/events that occurred
+- A table of details for each file
+- `/suggest-next-action` if applicable

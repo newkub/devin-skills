@@ -1,6 +1,6 @@
 ---
 name: test-usage
-description: ทดสอบ usage examples จาก README/docs/package.json เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
+description: Test usage examples from README/docs/package.json to confirm they really work before shipping
 argument-hint: "[scope]"
 allowed-tools:
   - read
@@ -33,143 +33,143 @@ related:
 
 ## Goal
 
-ทดสอบ usage examples ใน `README.md`, เอกสารประกอบ และ `package.json` scripts เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
+Test the usage examples in `README.md`, supporting docs, and `package.json` scripts to confirm they really work before shipping
 
 ## Scope
 
-ใช้กับ CLI commands, SDK code examples, package scripts และ instructions ที่ปรากฏใน docs ก่อน release — ถูกเรียกจาก `/implement-to-production` ใน step Verify ก่อน ship
+Apply to CLI commands, SDK code examples, package scripts, and instructions that appear in docs before release — invoked by `/implement-to-production` in the Verify step before ship
 
-- ถ้า scope ของงานทดสอบครอบ domain อื่นด้วย → เลือก `test-*` skills ตาม dispatch table ใน Step 1 — test-usage ครอบ docs/usage verification; domain tests ไป skill เฉพาะทาง
+- If the test scope also covers other domains → pick the matching `test-*` skills from the dispatch table in Step 1 — test-usage covers docs/usage verification; domain tests go to the specialized skills
 
 ## Execute
 
 ### 1. Select Test Domains
 
-> Goal: เลือก `test-*` skills ที่ตรง scope ก่อนลงมือ
+> Goal: Pick the `test-*` skills that match the scope before starting
 
 | Target/Context | Skill |
 |----------------|-------|
-| website/web app — click-through ทุก route, forms, dead UI, states | `/test-website` (real Chrome ผ่าน `/use-playwriter`) |
+| website/web app — click-through every route, forms, dead UI, states | `/test-website` (real Chrome via `/use-playwriter`) |
 | CLI commands/flags/scripts | `/test-cli` |
-| API endpoints, schemas, contracts | `/test-api` (เฉพาะ contract drift → `/test-contract` ผ่าน `/run-test`) |
+| API endpoints, schemas, contracts | `/test-api` (contract drift only → `/test-contract` via `/run-test`) |
 | UI components DOM-isolated | `/test-component` |
 | user flows, regression suite | `/test-e2e` |
 | accessibility (WCAG/axe) | `/test-a11y` |
-| docs usage examples (README/SDK/scripts) | ทำตาม Step 2-8 ของ skill นี้ |
-| หลาย domains พร้อมกัน | `/run-test all` หรือ `/test-all` — domains อื่น (contract, load, coverage, database, mobile, property, visual, mutation, smoke, unit) dispatch ผ่าน `/run-test <domain>` |
+| docs usage examples (README/SDK/scripts) | follow Step 2-8 of this skill |
+| multiple domains at once | `/run-test all` or `/test-all` — other domains (contract, load, coverage, database, mobile, property, visual, mutation, smoke, unit) dispatch via `/run-test <domain>` |
 
-1. เลือก domain skills จากตารางตาม target — domain ไม่ชัด → `/ask-me`
-2. ทำ domain skills ที่เลือกก่อนหรือขนานกัน แล้วทำ Step 2-8 สำหรับ docs usage examples เสมอเมื่องานเกี่ยวกับ docs/package
+1. Select domain skills from the table based on the target — unclear domain → `/ask-me`
+2. Run the selected domain skills first or in parallel, then always do Step 2-8 for docs usage examples when the work involves docs/package
 
 ### 2. Discover Usage Examples
 
-> Goal: ค้นหา usage examples ทั้งหมด
+> Goal: Find all usage examples
 
-1. หา `README.md` ทั้งหมดใน project (root และ workspaces)
-2. ดึง code blocks จาก `## Usage` และ `### Usage via ...` sections
-3. แยกประเภท: `bash` (CLI commands), `typescript`/`javascript` (SDK examples), `json` (scripts)
-4. บันทึกรายการ examples พร้อมตำแหน่งไฟล์
+1. Locate every `README.md` in the project (root and workspaces)
+2. Extract code blocks from `## Usage` and `### Usage via ...` sections
+3. Categorize: `bash` (CLI commands), `typescript`/`javascript` (SDK examples), `json` (scripts)
+4. Record the example list with file locations
 
 ### 3. Test CLI Commands
 
-> Goal: ทดสอบ CLI commands ที่ไม่ทำลายข้อมูล
+> Goal: Test CLI commands that do not destroy data
 
-1. ทดสอบ commands ที่ปลอดภัย (`--help`, `--version`, `help`, `version`)
-2. ถ้ามี custom directory → ทดสอบด้วย directory ที่มี markdown files อยู่จริง
-3. ถ้า command ต้องรัน server → ใช้ `--no-open` และ `--port=0` หรือ kill หลังจากทดสอบ
-4. บันทึกผลลัพธ์ของแต่ละ command
+1. Test safe commands (`--help`, `--version`, `help`, `version`)
+2. If a custom directory exists → test with a directory that really contains markdown files
+3. If the command must start a server → use `--no-open` and `--port=0`, or kill it after testing
+4. Record the result of each command
 
 ### 4. Test SDK Examples
 
-> Goal: ทดสอบ SDK code examples
+> Goal: Test SDK code examples
 
-1. สร้างไฟล์ชั่วคราว (`tmp/test-usage-<ts|js>`) จาก code example
-2. แก้ไข relative paths ให้ตรงกับ test environment
-3. รันด้วย `bun` หรือ `node`
-4. ถ้าต้องการ build ก่อน → ทำ `/resolve-errors` แล้วลอง `build`
-5. บันทึกผลลัพธ์
+1. Create a temporary file (`tmp/test-usage-<ts|js>`) from the code example
+2. Adjust relative paths to match the test environment
+3. Run with `bun` or `node`
+4. If a build is required first → run `/resolve-errors` then try `build`
+5. Record the result
 
 ### 5. Test Package Scripts
 
-> Goal: ทดสอบ package.json scripts ที่เกี่ยวข้องกับ usage
+> Goal: Test package.json scripts related to usage
 
-1. ระบุ scripts ที่มีอยู่ใน `package.json` (root และ workspaces)
-2. ทดสอบ scripts ที่ไม่เสี่ยง: `build`, `typecheck`, `lint`, `test`
-3. ถ้า `dev` หรือ server scripts ไม่จำเป็นต้องทดสอบ → skip และบันทึก
-4. บันทึกผลลัพธ์
+1. Identify the scripts present in `package.json` (root and workspaces)
+2. Test low-risk scripts: `build`, `typecheck`, `lint`, `test`
+3. If `dev` or server scripts need not be tested → skip and record it
+4. Record the result
 
 ### 6. Test In Temp
 
-> Goal: ทดลอง/ทดสอบใน OS temp directory โดยไม่แตะ workspace — merged จาก `/test-in-temp`
+> Goal: Experiment/test in the OS temp directory without touching the workspace — merged from `/test-in-temp`
 
-- ใช้ test-in-temp เมื่อ test สิ่งที่ไม่เกี่ยวกับ workspace: experiments, package-manager trials, repro bugs, one-off prototypes — ถ้า test เกี่ยวกับ workspace ให้ทำขั้นตอน 1-4 ข้างบนใน project
-1. สร้าง temp dir `%TEMP%	est-in-temp-<random>` — copy เฉพาะไฟล์ที่จำเป็นเข้าไป
-2. รัน experiment/command ใน temp — จับ stdout, stderr, exit code; command นาน → timeout
-3. เก็บ temp ไว้จนจบ session ให้ user ตรวจ — default ลบเมื่อเสร็จ เว้นแต่ user ขอเก็บ
-4. ห้ามแตะ workspace หรือ install deps จาก temp — copy ผลกลับ workspace ต้องได้ user confirm ชัดเจน
+- Use test-in-temp when testing things unrelated to the workspace: experiments, package-manager trials, repro bugs, one-off prototypes — for workspace-related tests, do steps 1-4 above within the project
+1. Create a temp dir `%TEMP%	est-in-temp-<random>` — copy only the necessary files into it
+2. Run the experiment/command in temp — capture stdout, stderr, exit code; long-running command → timeout
+3. Keep temp until the session ends for the user to inspect — delete by default when done, unless the user asks to keep it
+4. Never touch the workspace or install deps from temp — copying results back into the workspace requires clear user confirm
 
 ### 7. Review Correctness
 
-> Goal: ตรวจสอบความถูกต้องก่อน report ผล
+> Goal: Verify correctness before reporting results
 
-1. ทำ `/deep-review` เพื่อตรวจ logic, types, edge cases, contracts, concurrency, tests ของ examples
-2. ถ้าพบ issues ให้บันทึก severity และ evidence
-3. ถ้า `/deep-review` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
-4. บันทึกผลการ review
+1. Run `/deep-review` to check logic, types, edge cases, contracts, concurrency, and tests of the examples
+2. If issues are found, record severity and evidence
+3. If `/deep-review` finds things to fix → run `/resolve-errors` or fix the README/code before continuing
+4. Record the review results
 
 ### 8. Report And Fix
 
-> Goal: รายงานผลและจัดการ issues
+> Goal: Report results and handle issues
 
-1. รวบรวมผลการทดสอบเป็นตาราง (example, expected, actual, status)
-2. รวม findings จาก `/deep-review`
-3. ถ้ามี failures → แสดงรายการและถาม user ว่าจะ fix หรือ skip
-4. ถ้า fix → แก้ไข README หรือ code ตามความเหมาะสม
-5. ทดสอบซ้ำจนกว่าจะผ่าน (max 3 → stop/report)
+1. Collect test results into a table (example, expected, actual, status)
+2. Include findings from `/deep-review`
+3. If there are failures → list them and ask the user whether to fix or skip
+4. If fixing → edit the README or code as appropriate
+5. Re-test until passing (max 3 → stop/report)
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่รัน commands ที่อาจทำลายข้อมูล (`clean`, `rm -rf`, `push`, `deploy`)
-- ไม่รัน `bun run dev` หรือ `tauri dev` โดยไม่มี `--no-open` และ timeout
-- ถ้า command ต้องรัน server ให้ set timeout แล้ว kill
-- ถาม user ก่อนรัน commands ที่มี side effects
+- Never run commands that could destroy data (`clean`, `rm -rf`, `push`, `deploy`)
+- Never run `bun run dev` or `tauri dev` without `--no-open` and a timeout
+- If a command must start a server, set a timeout then kill it
+- Ask the user before running commands with side effects
 
 ### 2. Scope
 
-- ทดสอบเฉพาะ examples ที่อยู่ใน docs ที่จะ ship
-- ไม่ต้องทดสอบ examples ที่เป็น pseudo-code หรือต้องการ external setup
-- ข้าม examples ที่ require network, API keys, หรือ hardware จริง
+- Test only the examples in the docs that will ship
+- No need to test examples that are pseudo-code or require external setup
+- Skip examples that require network, API keys, or real hardware
 
 ### 3. Environment
 
-- ใช้ `bun` เป็นหลักถ้า project ใช้ Bun
-- ถ้าไม่มี `bun` ให้ใช้ `node`
-- ตรวจสอบ `package.json` เพื่อเลือก runtime และ package manager
-- สร้างไฟล์ชั่วคราวใน `temp` แล้วลบหลังทดสอบ
+- Prefer `bun` if the project uses Bun
+- If `bun` is unavailable, use `node`
+- Check `package.json` to choose the runtime and package manager
+- Create temporary files in `temp` and delete them after testing
 
 ### 4. Reporting
 
-- รายงาน status ของแต่ละ example: ✅ ผ่าน, ❌ ไม่ผ่าน, ⏭️ ข้าม
-- เก็บ error output ไว้ใช้ debug
-- ถ้าไม่มี examples ให้ report ว่าไม่มีอะไรต้อง test
+- Report the status of each example: ✅ pass, ❌ fail, ⏭️ skipped
+- Keep error output for debugging
+- If there are no examples, report that there is nothing to test
 
 ### 5. Correctness Review
 
-- ทำ `/deep-review` ก่อน report/final fix เสมอ
-- บันทึก findings จาก deep-review ใน report
-- ถ้ามี critical/high issues → ถาม user ก่อน ship
+- Always run `/deep-review` before reporting/final fix
+- Record deep-review findings in the report
+- If there are critical/high issues → ask the user before shipping
 
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-should-update ถ้าจำเป็น
+- Use /run-test if needed
+- Use /deep-review if needed
+- Use /check-should-update if needed
 
 ## Expected Outcome
 
-- ทุก usage example ใน docs ถูกทดสอบ
-- ไม่มี broken examples ก่อน ship
-- มี report สรุปสถานะทดสอบ
-- มีการทำ `/deep-review` เพื่อตรวจความถูกต้องก่อนส่งมอบ
-- ผู้ใช้ทราบก่อน ship หากมี examples ที่ยังไม่ทำงาน
+- Every usage example in the docs is tested
+- No broken examples before ship
+- A report summarizing test status exists
+- `/deep-review` was run to verify correctness before delivery
+- The user is informed before ship if any examples still do not work
 

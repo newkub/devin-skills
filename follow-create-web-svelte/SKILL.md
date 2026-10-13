@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-svelte
-description: ตั้งค่า Vite + Svelte 5 Runes + TypeScript (client-side only)
+description: Set up Vite + Svelte 5 Runes + TypeScript (client-side only)
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
@@ -11,14 +11,14 @@ related:
 
 ## Goal
 
-ตั้งค่าและพัฒนา Svelte 5 project ด้วย Runes, Vite และ TypeScript (client-side only)
+Set up and develop a Svelte 5 project with Runes, Vite, and TypeScript (client-side only)
 
 ## Scope
 
-ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
-หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode (Step 8) — SSR/CSR/prerendering + file-based routing ใน `src/routes/`
+For Svelte 5 projects that use Vite as the build tool (client-side only)
+Note: if you need a fullstack meta-framework, use SvelteKit mode (Step 8) — SSR/CSR/prerendering + file-based routing in `src/routes/`
 
-- Packages: `svelte` 5.x (runes, Node >= 18), `@sveltejs/kit` 2.x, `@sveltejs/vite-plugin-svelte`, `sv` CLI (`bunx sv create`, `sv check`, `sv migrate svelte-5`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `svelte` 5.x (runes, Node >= 18), `@sveltejs/kit` 2.x, `@sveltejs/vite-plugin-svelte`, `sv` CLI (`bunx sv create`, `sv check`, `sv migrate svelte-5`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
@@ -26,143 +26,143 @@ related:
 
 > Goal: Setup Project
 
-1. สร้าง `vite.config.ts` ด้วย `@sveltejs/vite-plugin-svelte`
-2. สร้าง `svelte.config.js` ด้วย `vitePreprocess` และ `runes: true`
-3. ตั้งค่า `tsconfig.json` ด้วย `moduleResolution: bundler`
-4. เพิ่ม scripts ใน `package.json` (dev, build, preview)
-5. ตั้งค่า server port และ build options
-6. ใช้ Svelte 5.x ล่าสุด — ยืนยันเวอร์ชันด้วย `/deep-research` + `/follow-best-practice` ก่อน setup
+1. Create `vite.config.ts` with `@sveltejs/vite-plugin-svelte`
+2. Create `svelte.config.js` with `vitePreprocess` and `runes: true`
+3. Set up `tsconfig.json` with `moduleResolution: bundler`
+4. Add scripts to `package.json` (dev, build, preview)
+5. Configure the server port and build options
+6. Use the latest Svelte 5.x — verify the version with `/deep-research` + `/follow-best-practice` before setup
 
 ### 2. Configure TypeScript
 
 > Goal: Configure TypeScript
 
-1. ตั้งค่า `target: ES2022` และ `module: ESNext`
-2. ใช้ `moduleResolution: bundler`
-3. ตั้งค่า `paths` สำหรับ import aliases — ห้ามใช้ `baseUrl` (ถูก remove ใน TypeScript 7; ใช้ relative `"./..."` ใน `paths` แทน)
-4. เปิดใช้ `strict: true`
-5. รองรับ TypeScript 6.0 (svelte-check 4.7.6+, svelte2tsx 0.7.61+) — pin `typescript@6` จนกว่า TS 7.1 (svelte-check ใช้ compiler API ที่ยังไม่ stable ใน 7.0)
+1. Set `target: ES2022` and `module: ESNext`
+2. Use `moduleResolution: bundler`
+3. Configure `paths` for import aliases — never use `baseUrl` (removed in TypeScript 7; use relative `"./..."` in `paths` instead)
+4. Enable `strict: true`
+5. Support TypeScript 6.0 (svelte-check 4.7.6+, svelte2tsx 0.7.61+) — pin `typescript@6` until TS 7.1 (svelte-check uses a compiler API not yet stable in 7.0)
 
 ### 3. Svelte 5 Runes
 
 > Goal: Svelte 5 Runes
 
-ใช้ Runes สำหรับ reactivity อย่างถูกต้อง
+Use Runes correctly for reactivity
 
-1. ใช้ `$state()` สำหรับ reactive state (deeply reactive by default)
-2. ใช้ `$derived()` สำหรับ computed values (lazy evaluation)
-3. ใช้ `$effect()` สำหรับ side effects เท่านั้น (DOM, network, analytics)
-4. ใช้ `$props()` สำหรับ component props พร้อม destructuring
-5. ใช้ `$bindable()` สำหรับ bindable props
-6. ใช้ `$state` ใน plain `.ts` files แทน Svelte stores
-7. ห้ามใช้ `$effect` สำหรับ sync state ใช้ `$derived` แทน
-8. ใช้ `$effect.pre` สำหรับ effects ที่ต้องทำงานก่อน DOM updates
+1. Use `$state()` for reactive state (deeply reactive by default)
+2. Use `$derived()` for computed values (lazy evaluation)
+3. Use `$effect()` for side effects only (DOM, network, analytics)
+4. Use `$props()` for component props with destructuring
+5. Use `$bindable()` for bindable props
+6. Use `$state` in plain `.ts` files instead of Svelte stores
+7. Never use `$effect` to sync state; use `$derived` instead
+8. Use `$effect.pre` for effects that must run before DOM updates
 
 ### 4. Snippets And Components
 
 > Goal: Snippets And Components
 
-ใช้ Snippets แทน Slots
+Use Snippets instead of Slots
 
-1. ใช้ `{#snippet name()}` สำหรับ reusable markup
-2. ใช้ `{@render children()}` สำหรับ render snippet content
-3. ใช้ snippets แทน slots ของ Svelte 4
-4. ใช้ `mount(Component, props)` แทน `new Component()`
-5. อนุญาต declarations ใน markup ได้ (Svelte 5.56+)
+1. Use `{#snippet name()}` for reusable markup
+2. Use `{@render children()}` to render snippet content
+3. Use snippets instead of Svelte 4 slots
+4. Use `mount(Component, props)` instead of `new Component()`
+5. Declarations in markup are allowed (Svelte 5.56+)
 
 ### 5. Setup Styling
 
 > Goal: Setup Styling
 
-1. ทำ `/follow-lib-unocss` สำหรับ styling
-2. ใช้ UnoCSS ทั้งหมดถ้าเป็นไปได้
-3. หลีกเลี่ยง style scoped
+1. Run `/follow-lib-unocss` for styling
+2. Use UnoCSS throughout where possible
+3. Avoid scoped styles
 
 ### 6. State Management Patterns
 
 > Goal: State Management Patterns
 
-1. ใช้ `$state` ใน classes สำหรับ business logic ที่ reusable
-2. จัดกลุ่ม related state ใน cohesive objects (granular reactivity)
-3. ใช้ Svelte stores (`writable`, `readable`, `derived`) สำหรับ RxJS-style subscriptions
-4. Stores ยังรองรับและไม่ deprecated แต่ใช้ runes เป็น default
-5. ใช้ `$state.snapshot()` สำหรับ get immutable snapshot
+1. Use `$state` in classes for reusable business logic
+2. Group related state into cohesive objects (granular reactivity)
+3. Use Svelte stores (`writable`, `readable`, `derived`) for RxJS-style subscriptions
+4. Stores are still supported and not deprecated, but runes are the default
+5. Use `$state.snapshot()` to get an immutable snapshot
 
 ### 7. Event Handling
 
 > Goal: Event Handling
 
-1. ใช้ `onclick` แทน `on:click` (Svelte 5 syntax)
-2. Event handlers เป็น properties เหมือน attributes อื่นๆ
-3. ใช้ event attributes สำหรับ DOM elements
+1. Use `onclick` instead of `on:click` (Svelte 5 syntax)
+2. Event handlers are properties like any other attribute
+3. Use event attributes for DOM elements
 
 ### 8. SvelteKit Mode (Optional Fullstack)
 
-> Goal: fullstack SvelteKit เมื่อ client-side ไม่พอ
+> Goal: fullstack SvelteKit when client-side alone isn't enough
 
-1. Scaffold ด้วย `bunx sv create <project>` (`--types ts`, `--add-ons`, `--no-install`; `create-svelte` deprecated แล้ว) — `sv sync`/`sv prepare` generate types, `sv check` ตรวจสอบ, `sv migrate svelte-5` สำหรับ auto-migration
-2. File-based routing ใน `src/routes/` — `+page.svelte`, `+layout.svelte`, `+page.ts`/`+page.server.ts` (`load`), `+server.ts` (API routes), `+error.svelte`
-3. Data loading: `export const load: PageLoad | PageServerLoad` ใน `+page.ts`/`+layout.ts`; form mutations ด้วย `export const actions` ใน `+page.server.ts`
-4. Runtime modules: `$app/state` (`page`, `navigating`, `updated` — Svelte 5; `$app/stores` สำหรับ Svelte 4 compat), `$app/navigation` (`goto`, `invalidate`, `invalidateAll`, `preloadData`), `$app/forms` (`enhance`, `applyAction`), `@sveltejs/kit` exports (`error`, `redirect`, `fail`, `json`)
-5. Rendering: SSR default — ปิดด้วย `export const ssr = false` หรือ prerender ด้วย `export const prerender = true` ต่อ route
-6. Progressive enhancement: form actions ทำงานโดยไม่ต้อง JS (`use:enhance` สำหรับ enhancement)
+1. Scaffold with `bunx sv create <project>` (`--types ts`, `--add-ons`, `--no-install`; `create-svelte` is deprecated) — `sv sync`/`sv prepare` generate types, `sv check` verifies, `sv migrate svelte-5` handles auto-migration
+2. File-based routing in `src/routes/` — `+page.svelte`, `+layout.svelte`, `+page.ts`/`+page.server.ts` (`load`), `+server.ts` (API routes), `+error.svelte`
+3. Data loading: `export const load: PageLoad | PageServerLoad` in `+page.ts`/`+layout.ts`; form mutations with `export const actions` in `+page.server.ts`
+4. Runtime modules: `$app/state` (`page`, `navigating`, `updated` — Svelte 5; `$app/stores` for Svelte 4 compat), `$app/navigation` (`goto`, `invalidate`, `invalidateAll`, `preloadData`), `$app/forms` (`enhance`, `applyAction`), `@sveltejs/kit` exports (`error`, `redirect`, `fail`, `json`)
+5. Rendering: SSR by default — disable with `export const ssr = false` or prerender with `export const prerender = true` per route
+6. Progressive enhancement: form actions work without JS (use `use:enhance` for enhancement)
 
 ## Rules
 
 ### 1. Configuration
 
-ตั้งค่า project ตามมาตรฐาน Svelte 5:
+Set up the project to Svelte 5 standards:
 
-- ใช้ `@sveltejs/vite-plugin-svelte` สำหรับ Svelte transformation
-- ใช้ `vitePreprocess` สำหรับ TypeScript preprocessing
-- ตั้งค่า `runes: true` สำหรับ Svelte 5 Runes
-- ตั้งค่า `moduleResolution: bundler` ใน TypeScript
-- รองรับ TypeScript 6.0
+- Use `@sveltejs/vite-plugin-svelte` for Svelte transformation
+- Use `vitePreprocess` for TypeScript preprocessing
+- Set `runes: true` for Svelte 5 Runes
+- Set `moduleResolution: bundler` in TypeScript
+- Support TypeScript 6.0
 
 ### 2. Runes Best Practices
 
-ใช้ Runes อย่างถูกต้อง:
+Use Runes correctly:
 
-- `$state` สำหรับ reactive values (explicit, opt-in)
-- `$derived` สำหรับ computed values (lazy, composable)
-- `$effect` สำหรับ side effects เท่านั้น (เป็น escape hatch)
-- ห้ามใช้ `$effect` สำหรับ sync state ใช้ `$derived` แทน
-- `$props` สำหรับ component props พร้อม destructuring
-- ใช้ `$state` ใน `.ts` files แทน stores เมื่อเป็นไปได้
+- `$state` for reactive values (explicit, opt-in)
+- `$derived` for computed values (lazy, composable)
+- `$effect` for side effects only (it's an escape hatch)
+- Never use `$effect` to sync state; use `$derived` instead
+- `$props` for component props with destructuring
+- Use `$state` in `.ts` files instead of stores where possible
 
 ### 3. Component Development
 
-พัฒนา components ตาม best practices:
+Develop components following best practices:
 
-- ใช้ `.svelte` พร้อม `lang="ts"` สำหรับทุก components
-- ใช้ `$props()` สำหรับ typed props
-- ใช้ snippets แทน slots
-- ใช้ `onclick` แทน `on:click`
-- ใช้ `mount()` แทน `new Component()`
-- ใช้ UnoCSS สำหรับ styling
+- Use `.svelte` with `lang="ts"` for all components
+- Use `$props()` for typed props
+- Use snippets instead of slots
+- Use `onclick` instead of `on:click`
+- Use `mount()` instead of `new Component()`
+- Use UnoCSS for styling
 
 ### 4. Migration From Svelte 4
 
-Migration จาก Svelte 4:
+Migrating from Svelte 4:
 
 - `let count = 0` → `let count = $state(0)`
 - `$: doubled = count * 2` → `let doubled = $derived(count * 2)`
 - `$: { console.log(count) }` → `$effect(() => { console.log(count) })`
 - `export let prop` → `let { prop } = $props()`
 - `on:click` → `onclick`
-- Slots → Snippets (`{#snippet}` และ `{@render}`)
-- ใช้ `npx sv migrate svelte-5` สำหรับ auto migration
-- สามารถ mix old และ new syntax ได้ระหว่าง migration
+- Slots → Snippets (`{#snippet}` and `{@render}`)
+- Use `npx sv migrate svelte-5` for auto migration
+- Old and new syntax can be mixed during migration
 
 ### 5. Code Quality
 
-รักษาคุณภาพโค้ด:
+Maintain code quality:
 
-- ใช้ TypeScript strict mode
-- ตั้งค่า path aliases อย่างถูกต้อง
-- ใช้ svelte-check สำหรับ type checking
-- ทำ `/refactor` เสมอเมื่อพัฒนา
-- ใช้ /run-dev ถ้าจำเป็น
+- Use TypeScript strict mode
+- Set up path aliases correctly
+- Use svelte-check for type checking
+- Always run `/refactor` while developing
+- Use /run-dev if needed
 
 ## File Structure
 
@@ -170,9 +170,9 @@ Canonical file structure + layer table: [templates/file-structure-web-svelte.md]
 
 ## Expected Outcome
 
-- Svelte 5 project ตั้งค่าครบถ้วนด้วย Vite และ Runes
-- Reactivity ใช้ `$state`, `$derived`, `$effect` อย่างถูกต้อง
-- Snippets แทน slots สำหรับ reusable markup
-- TypeScript configuration ถูกต้อง
-- UnoCSS integration สำเร็จ
-- Component development ตาม Svelte 5 best practices
+- A fully configured Svelte 5 project with Vite and Runes
+- Reactivity using `$state`, `$derived`, and `$effect` correctly
+- Snippets instead of slots for reusable markup
+- Correct TypeScript configuration
+- Successful UnoCSS integration
+- Component development following Svelte 5 best practices

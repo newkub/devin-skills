@@ -1,6 +1,6 @@
 ---
 name: follow-create-docker-setup-dockerfile
-description: สร้าง Dockerfile ที่ production-ready — multi-stage, non-root, layer caching
+description: Create a production-ready Dockerfile — multi-stage, non-root, layer caching
 argument-hint: "[app-type]"
 related:
   - follow-create-docker
@@ -11,45 +11,45 @@ related:
 
 ## Goal
 
-สร้าง Dockerfile ที่ถูกต้องตาม ecosystem — multi-stage build, non-root user, layer caching และ image เล็ก
+Create a Dockerfile that is correct for the ecosystem — multi-stage build, non-root user, layer caching, and a small image
 
 ## Scope
 
-- ครอบคลุม Dockerfile สำหรับ app ตาม ecosystem (node/bun, rust, go, python)
-- ไม่ครอบคลุม compose orchestration (ใช้ `workflows/config-compose`) หรือ image size tuning เชิงลึก (ใช้ `workflows/optimize-image`)
+- Covers Dockerfiles for apps by ecosystem (node/bun, rust, go, python)
+- Does not cover compose orchestration (use `workflows/config-compose`) or deep image-size tuning (use `workflows/optimize-image`)
 
 ## Execute
 
 ### 1. Detect Ecosystem
 
-> Goal: รู้ base image และ build steps ที่เหมาะ
+> Goal: know the right base image and build steps
 
-1. ตรวจ `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` เพื่อระบุ runtime
-2. เลือก slim/distroless base ตาม stack
-3. ถ้า runtime ไม่ชัด → `/ask-me`
+1. Check `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` to identify the runtime
+2. Pick a slim/distroless base per the stack
+3. If the runtime is unclear → `/ask-me`
 
 ### 2. Write Dockerfile
 
-> Goal: Dockerfile production-ready
+> Goal: a production-ready Dockerfile
 
-1. multi-stage: build stage แยกจาก runtime stage
-2. copy dependency manifests ก่อน source → layer caching
-3. non-root `USER`, `HEALTHCHECK` ถ้าเป็น service
-4. `.dockerignore` ครอบ `node_modules`, `.git`, build artifacts
+1. multi-stage: separate the build stage from the runtime stage
+2. copy dependency manifests before source → layer caching
+3. non-root `USER`, `HEALTHCHECK` if it's a service
+4. `.dockerignore` covering `node_modules`, `.git`, build artifacts
 
 ### 3. Verify
 
-> Goal: image build ได้และรันจริง
+> Goal: the image builds and really runs
 
-1. `docker build` ผ่านไม่มี warning สำคัญ
-2. container start และ health check ผ่าน
+1. `docker build` passes with no significant warnings
+2. The container starts and the health check passes
 
 ## Rules
 
-- ห้าม `latest` tag ใน base image — pin version
-- ห้ามรันเป็น root
-- ถ้าต้องหลาย services → delegate `workflows/config-compose`
+- Never use the `latest` tag in a base image — pin the version
+- Never run as root
+- If multiple services are needed → delegate to `workflows/config-compose`
 
 ## Expected Outcome
 
-- Dockerfile + `.dockerignore` build ได้และรัน production ได้
+- Dockerfile + `.dockerignore` that builds and runs in production

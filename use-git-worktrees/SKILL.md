@@ -1,6 +1,6 @@
 ---
 name: use-git-worktrees
-description: "ใช้ git worktrees ครบวงจร: สร้าง ทำงาน merge กลับ และ cleanup"
+description: "Full git worktree lifecycle: create, work, merge back, and cleanup"
 argument-hint: "[branch-name] [base-branch]"
 related:
   - list-git
@@ -16,137 +16,137 @@ related:
 
 ## Goal
 
-ใช้ git worktrees ครบวงจร: สร้าง worktree ใน `worktrees/` ที root ทำงานบน branch คู่ขนาน แล้ว merge กลับเข้า branch ต้นทางเมื่องานเสร็จ
+The full git worktree lifecycle: create a worktree under `worktrees/` at the repo root, work on a branch in parallel, then merge back into the source branch when the work is done
 
 ## Scope
 
-ใช้สำหรับ git repository ที่ต้องการทำงานหลาย branches พร้อมกันโดยไม่กระทบ main working tree ครอบคลุมตั้งแต่สร้าง worktree ทำงาน merge กลับ และ cleanup
+Use for git repositories that need to work on several branches at once without disturbing the main working tree. Covers creating worktrees, doing the work, merging back, and cleanup
 
 ## Execute
 
 ### 0. Setup
 
-> Goal: ตรวจสอบ git worktrees พร้อมใช้งาน
+> Goal: Confirm git worktrees are ready to use
 
-1. ตรวจสอบ git: `git --version` (worktree เสถียรตั้งแต่ 2.15+; latest stable `2.55.0 (verified 2026-09-12)`)
-2. ถ้ายังไม่มี git → ติดตั้งตาม OS:
-   - macOS: `mise use -g git` หรือ `brew install git`
-   - Windows: `winget install Git.Git` หรือ `scoop install git`
+1. Check git: `git --version` (worktree has been stable since 2.15+; latest stable `2.55.0 (verified 2026-09-12)`)
+2. If git is missing → install per OS:
+   - macOS: `mise use -g git` or `brew install git`
+   - Windows: `winget install Git.Git` or `scoop install git`
    - Linux: `apt install git`
-3. ตรวจสอบ repository มี remote ทีถูกต้อง: `git remote -v`
+3. Verify the repository has the correct remote: `git remote -v`
 4. Verify worktree: `git worktree list`
 
 ### 1. Create Worktree
 
-> Goal: สร้าง worktree สำหรับ branch ใหม่
+> Goal: Create a worktree for a new branch
 
-1. หา project root ด้วย `git rev-parse --show-toplevel`
-2. สร้าง `worktrees/` directory ที root ถ้ายังไม่มี
-3. รับ `[branch-name]` จาก argument หรือถาม user
-4. รับ `[base-branch]` ถ้ามี ถ้าไม่มีใช้ branch ปัจจุบัน
-5. ตรวจสอบ working tree สะอาดหรือระบุให้ user ทราบ
-6. รัน `git worktree add worktrees/<branch-name> -b <branch-name> <base-branch>`
-7. ตรวจสอบด้วย `git worktree list`
+1. Find the project root with `git rev-parse --show-toplevel`
+2. Create a `worktrees/` directory at the root if it does not exist
+3. Take `[branch-name]` from the argument or ask the user
+4. Take `[base-branch]` if provided; otherwise use the current branch
+5. Verify the working tree is clean, or tell the user otherwise
+6. Run `git worktree add worktrees/<branch-name> -b <branch-name> <base-branch>`
+7. Verify with `git worktree list`
 
 ### 2. Do Work In Worktree
 
-> Goal: ทำงานใน worktree จนเสร็จ
+> Goal: Work in the worktree until done
 
-1. เปลี่ยน directory ไปยัง `worktrees/<branch-name>/`
-2. ทำงานตาม task ทีได้รับมอบหมาย
-3. รัน checks/tests ตามเกณฑ์ของ project
-4. commit การเปลี่ยนแปลงใน worktree
-5. ถ้า base branch มีการเปลี่ยนแปลงใหม่ → `git pull --rebase` หรือ `git merge origin/<base-branch>`
+1. Change directory to `worktrees/<branch-name>/`
+2. Do the assigned task
+3. Run checks/tests per the project's standards
+4. Commit the changes in the worktree
+5. If the base branch has new changes → `git pull --rebase` or `git merge origin/<base-branch>`
 
 ### 3. Prepare To Merge Back
 
-> Goal: เตรียม merge กลับ branch ต้นทาง
+> Goal: Prepare to merge back into the source branch
 
-1. รัน `git fetch` เพื่ออัปเดต remote refs
-2. ใน worktree ตรวจสอบ `git status` ว่าไม่มี uncommitted changes
-3. ระบุ target branch: `main`, `master` หรือ base branch เดิม (ทางเลือก: `gh pr checkout <n> --worktree <path>` สำหรับ checkout PR เข้า worktree โดยตรง — gh >= 2.98.0)
-4. ถ้ามีการเปลี่ยนแปลงใน target branch → rebase หรือ merge ก่อน
+1. Run `git fetch` to update remote refs
+2. In the worktree, verify `git status` shows no uncommitted changes
+3. Identify the target branch: `main`, `master`, or the original base branch (option: `gh pr checkout <n> --worktree <path>` to check a PR out directly into a worktree — gh >= 2.98.0)
+4. If the target branch has changed → rebase or merge first
 
 ### 4. Merge Back
 
-> Goal: รวมงานกลับเข้า branch ต้นทาง
+> Goal: Merge the work back into the source branch
 
-1. cd ไปยัง main working tree หรือ worktree ที target branch
+1. cd to the main working tree or the worktree holding the target branch
 2. `git switch <target-branch>`
-3. รัน `git status` ให้สะอาด
-4. ถ้า feature worktree มี commit history รก → สลับไป feature worktree แล้วทำ `/refactor-commit` ก่อน merge
+3. Run `git status` and make sure the tree is clean
+4. If the feature worktree has a messy commit history → switch to the feature worktree and run `/refactor-commit` before merging
 5. `git merge <feature-branch>`
-6. ถ้ามี conflict → ใช้ `/resolve-merge-conflicts`
-7. ถ้าต้องการ squash → `git merge --squash <feature-branch>`
-8. ถ้าต้องการ rebase → rebase ใน feature worktree ก่อน merge
+6. If there are conflicts → use `/resolve-merge-conflicts`
+7. To squash → `git merge --squash <feature-branch>`
+8. To rebase → rebase in the feature worktree before merging
 
 ### 5. Verify Merge
 
-> Goal: ยืนยัน merge ถูกต้อง
+> Goal: Verify the merge is correct
 
-1. รัน `git log --oneline -5`
-2. รัน `git diff <target-branch>~1..<target-branch>`
-3. รัน `git status`
-4. รัน tests/lint/typecheck ถ้ามี
-5. ถ้าทุกอย่างผ่าน → commit ถ้า squash merge ยังไม่ commit
+1. Run `git log --oneline -5`
+2. Run `git diff <target-branch>~1..<target-branch>`
+3. Run `git status`
+4. Run tests/lint/typecheck if present
+5. If everything passes → commit, if the squash merge is not committed yet
 
 ### 6. Cleanup
 
-> Goal: ลบ worktree หลัง merge ถ้าไม่ใช้
+> Goal: Remove the worktree after merging if it is no longer needed
 
-1. ถ้า merge สำเร็จ → ลบ worktree ด้วย `git worktree remove worktrees/<branch-name>`
-2. ถ้า directory ยังอยู่ → ลบ directory ด้วย
-3. รัน `git worktree prune`
-4. ถ้าต้องการ push → ใช้ `git push` (ไม่ push โดยอัตโนมัติ)
+1. If the merge succeeded → remove the worktree with `git worktree remove worktrees/<branch-name>`
+2. If the directory still exists → delete the directory too
+3. Run `git worktree prune`
+4. To push → use `git push` (no automatic push)
 
 ### 7. Report
 
-> Goal: สรุปผล
+> Goal: Summarize results
 
-1. ใช้ `/report` แสดง: Worktree Path, Branch, Target Branch, Merge Status, Cleanup Status
-2. ทำ `/suggest-next-action`
+1. Use `/report` to show: Worktree Path, Branch, Target Branch, Merge Status, Cleanup Status
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Worktree Directory Structure
 
-- สร้าง worktree ใน `worktrees/<branch-name>/` ที project root
-- ใช้ชื่อ directory ตรงกับ branch name
-- หลีกเลี่ยงชื่อทีซับซ้อนหรือมี spaces
+- Create the worktree in `worktrees/<branch-name>/` at the project root
+- Use a directory name matching the branch name
+- Avoid complex names or names containing spaces
 
 ### 2. Working Tree Clean
 
-- ต้อง commit หรือ stash uncommitted changes ก่อน merge
-- ไม่ merge branch ทียังมี uncommitted changes
-- ตรวจสอบ status ก่อนทุกขั้นตอนสำคัญ
+- Commit or stash uncommitted changes before merging
+- Never merge a branch that still has uncommitted changes
+- Check status before every major step
 
 ### 3. No Force Merge
 
-- ไม่ force push โดยไม่ได้รับ user confirmation
-- ไม่ merge ถ้า CI หรือ test ล้มเหลวโดยไม่ได้รับการยืนยัน
-- ถ้ามี conflict → หยุดและแก้ก่อน continue
+- Never force push without user confirmation
+- Do not merge when CI or tests fail without confirmation
+- If there are conflicts → stop and resolve them before continuing
 
 ### 4. Merge Strategy
 
-- ใช้ fast-forward หรือ merge commit ตาม project conventions
-- ถ้า project ใช้ squash merge → `git merge --squash`
-- ถ้า project ใช้ rebase → rebase ก่อน merge
+- Use fast-forward or a merge commit per project conventions
+- If the project uses squash merge → `git merge --squash`
+- If the project uses rebase → rebase before merging
 
 ### 5. Cleanup
 
-- ลบ worktree หลัง merge ถ้าไม่ใช้งานต่อ
-- รัน `git worktree prune` เพื่อลบ tracking ทีตกค้าง
-- ไม่ลบ worktree โดยตรงเกินไปก่อน `git worktree remove`
+- Remove the worktree after merging if it is no longer in use
+- Run `git worktree prune` to remove leftover tracking
+- Do not delete the worktree directory manually before running `git worktree remove`
 
-- ใช้ /list-git-worktree ถ้าจำเป็น
-- ใช้ /delete-git-worktree ถ้าจำเป็น
-- ใช้ /cleanup-worktree ถ้าจำเป็น
+- Use /list-git-worktree if needed
+- Use /delete-git-worktree if needed
+- Use /cleanup-worktree if needed
 
 ## Expected Outcome
 
-- Worktree ถูกสร้างใน `worktrees/<branch-name>/`
-- งานถูกทำและ commit บน feature branch
-- feature branch ถูก merge กลับ target branch อย่างปลอดภัย
-- history สะอาดตาม project conventions
-- worktree ถูกลบและ prune หลัง merge ถ้าไม่ใช้งานต่อ
-- ไม่มี uncommitted changes หรือ conflict ค้าง
+- The worktree is created in `worktrees/<branch-name>/`
+- The work is done and committed on the feature branch
+- The feature branch is safely merged back into the target branch
+- History stays clean per project conventions
+- The worktree is removed and pruned after merging when no longer in use
+- No leftover uncommitted changes or conflicts

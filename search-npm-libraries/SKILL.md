@@ -1,6 +1,6 @@
 ---
 name: search-npm-libraries
-description: หา libraries ตาม keyword หรือคล้ายกัน โดย libraries นั้นต้องเป็น TypeScript + ESM
+description: Find libraries by keyword or similar, restricted to TypeScript + ESM libraries
 argument-hint: "[keyword]"
 related:
   - list-my-npm-packages
@@ -13,42 +13,42 @@ related:
 
 ## Goal
 
-ค้นหา Npm Libraries
+Search Npm Libraries
 
 ## Scope
 
-ใช้ `search-npm-libraries` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (npm libraries)
+Use `search-npm-libraries` for the covered specific tasks and workflows (npm libraries)
 
 ## Execute
 
 ### 1. Search Libraries
 
-> Goal: หา libraries ที่ตรงกับ keyword
+> Goal: Find libraries matching the keyword
 
-1. รับ `<keyword>` จาก argument — ถ้าไม่มีให้ถาม user
-2. ใช้ `follow-tool-crw` หรือ `learn` (web) ค้นหา libraries ที่ตรงกับ keyword หรือคล้ายกัน
-3. กรองเฉพาะ libraries ที่เขียนด้วย TypeScript และเป็น ESM
-4. ถ้าไม่เจอที่ตรงเงื่อนไข → แนะนำตัวที่ใกล้เคียงที่สุดพร้อมระบุข้อจำกัด
+1. Take `<keyword>` from the argument — if missing, ask the user
+2. Use `follow-tool-crw` or `learn` (web) to find libraries matching the keyword or similar
+3. Keep only libraries written in TypeScript and published as ESM
+4. If nothing meets the criteria → recommend the closest match and state the limitations
 
 ### 2. Compare And Recommend
 
-> Goal: เปรียบเทียบและแนะนำตัวที่เหมาะสม
+> Goal: Compare and recommend the best fit
 
-1. สรุปในตารางเปรียบเทียบแต่ละตัว — features, bundle size, maintenance, popularity
-2. แนะนำตัวที่เหมาะสมที่สุดพร้อมเหตุผล
-3. ถ้ามีหลายตัวที่ดีพอๆ กัน → แสดง trade-offs ให้ user เลือก
+1. Summarize each candidate in a comparison table — features, bundle size, maintenance, popularity
+2. Recommend the best fit with reasons
+3. If several are about equally good → show the trade-offs for the user to choose
 
 ## Rules
 
-- กรองเฉพาะ TypeScript + ESM เสมอ
-- ใช้ `follow-tool-crw` หรือ `learn` (web) สำหรับ search
-- ใช้ `list-my-npm-packages` ถ้าต้องการดู packages ที่มีอยู่แล้ว
-- ใช้ `follow-best-practice` ถ้าต้องการ best practices ของ library ที่เลือก
-- ใช้ `suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
-- ใช้ /run-install ถ้าจำเป็น
+- Always filter to TypeScript + ESM only
+- Use `follow-tool-crw` or `learn` (web) for search
+- Use `list-my-npm-packages` if you want to see packages already installed
+- Use `follow-best-practice` if you want the chosen library's best practices
+- Use `suggest-next-action` afterwards to recommend the next step
+- Use /run-install if needed
 
 ## Expected Outcome
 
-- ได้รายการ libraries ที่ตรงกับ keyword และเป็น TypeScript + ESM
-- มีตารางเปรียบเทียบ features, bundle size, maintenance
-- มี recommendation พร้อมเหตุผลหรือ trade-offs ให้เลือก
+- A list of libraries matching the keyword that are TypeScript + ESM
+- A comparison table of features, bundle size, maintenance
+- A recommendation with reasons, or trade-offs to choose from

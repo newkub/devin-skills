@@ -1,6 +1,6 @@
 ---
 name: update-project
-description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
+description: Update the root project by checking git log and sync project docs/config/rules/tooling
 argument-hint: "[scope]"
 related:
   - follow-tasks
@@ -26,222 +26,222 @@ related:
 
 ## Goal
 
-อัปเดต root project โดยเช็ค git log ล่าสุดของทุก workspace และ sync ทุก project docs, config, rules และ tooling
+Update the root project by checking the latest git log of every workspace and syncing all project docs, config, rules, and tooling
 
 ## Scope
 
-ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies, runtime, tools หรือ versioned config ใดๆ → ใช้ `/update-version-to-latest` ก่อน update config อื่น
+Use after shipping every workspace — check each workspace's latest git log, restore the information into the root `AGENTS.md` and `README.md`, sync project files, update project skills and GitHub metadata. Do not modify workspace code. If dependencies, runtime, tools, or any versioned config need updating → run `/update-version-to-latest` before updating other config
 
-Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → front-load `/deep-analyze` + `/deep-review` ก่อน Step 1
+Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review` before Step 1
 
 ## Execute
 
 ### 1. Check Latest Git Log
 
-> Goal: เช็ค git log ล่าสุดของทุก workspace
+> Goal: Check the latest git log of every workspace
 
-1. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status และ `/follow-monorepo` เพื่อ sync conventions
-2. ทำ `/follow-tasks` เพื่อติดตาม update checklist
-3. ทำ `/all-workspace` เพื่อระบุทุก workspace
-3. สำหรับแต่ละ workspace:
-   - รัน `git log --oneline -5` เพื่อดู commit ล่าสุด
-   - รัน `git diff HEAD~1 --stat` เพื่อดูไฟล์ที่เปลี่ยน
-   - บันทึก commit hash, message และ changed files
-4. รวมข้อมูลจากทุก workspace เป็น summary
+1. Run `/check-monorepo` to confirm monorepo status and `/follow-monorepo` to sync conventions
+2. Run `/follow-tasks` to track the update checklist
+3. Run `/all-workspace` to identify every workspace
+3. For each workspace:
+   - Run `git log --oneline -5` to see the latest commits
+   - Run `git diff HEAD~1 --stat` to see changed files
+   - Record commit hash, message, and changed files
+4. Consolidate data from all workspaces into a summary
 
 ### 2. Restore Changed Info
 
-> Goal: restore ข้อมูลที่เปลี่ยนแปลงมาอัปเดต root
+> Goal: Restore the changed information into the root
 
-1. วิเคราะห์ changed files จาก git log ของทุก workspace
-2. ระบุข้อมูลที่ต้อง restore มาที่ root:
-   - Architecture changes → อัปเดต `### Architecture` ใน `AGENTS.md`
-   - Skills changes → อัปเดต `### Skills` ใน `AGENTS.md`
-   - Workspaces changes → อัปเดต `### Workspaces` ใน `AGENTS.md`
-   - Features changes → อัปเดต `README.md` features table
-3. ถ้า workspace เพิ่ม/ลบ dependency → อัปเดต root mapping
+1. Analyze changed files from every workspace's git log
+2. Identify information to restore to the root:
+   - Architecture changes → update `### Architecture` in `AGENTS.md`
+   - Skills changes → update `### Skills` in `AGENTS.md`
+   - Workspaces changes → update `### Workspaces` in `AGENTS.md`
+   - Features changes → update the `README.md` features table
+3. If a workspace added/removed a dependency → update the root mapping
 
 ### 3. Update Project Files
 
-> Goal: อัปเดต project docs, config, rules และ tooling ให้สอดคล้องกัน
+> Goal: Update project docs, config, rules, and tooling to stay consistent
 
-1. อ่าน root `package.json`
-2. อ่าน `AGENTS.md` ถ้ามี
-3. ตรวจสอบ `docs/`, `rules/`, `.devin/`, `.vscode/`
-4. ระบุ orchestration tools (moon, turbo)
-5. รัน updates ตามลำดับ:
-   - `/deep-review` (ถ้ามี CI/CD ต้องตรวจ)
-   - `/setup-cicd` (ถ้า CI/CD config drift หรือยังไม่พร้อม)
-   - `/update-version-to-latest` (ถ้าต้องการอัปเดต dependencies ทุก workspace เป็น latest)
-   - `/update-version-to-latest` (ถ้าต้องการอัปเดต runtime, deps, tools, และ versioned config ทั้งหมดเป็น latest)
-   - `/follow-config` เพื่อ validate และ sync config files ตาม conventions
-   - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
+1. Read the root `package.json`
+2. Read `AGENTS.md` if present
+3. Inspect `docs/`, `rules/`, `.devin/`, `.vscode/`
+4. Identify orchestration tools (moon, turbo)
+5. Run updates in order:
+   - `/deep-review` (must run if the project has CI/CD)
+   - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
+   - `/update-version-to-latest` (if all workspaces' dependencies need updating to latest)
+   - `/update-version-to-latest` (if runtime, deps, tools, and all versioned config need updating to latest)
+   - `/follow-config` to validate and sync config files per conventions
+   - `/update-config` to sync project config, shared config, and the dependencies catalog
    - `/update-dot-devin`
-   - `/cleanup-files-in-project` (ถ้าจำเป็น)
-   - package manifest setup (merged `/setup-package`) — ตรวจ required fields + scripts ตาม `### setup-package` ใน `## Merged Details`
+   - `/cleanup-files-in-project` (if needed)
+   - package manifest setup (merged `/setup-package`) — check required fields + scripts per `### setup-package` in `## Merged Details`
    - `/update-readme-md`
    - `/update-agents-md`
-   - `/update-usage-md` เพื่อสร้าง/อัปเดต `USAGE.md` ที่ root ของแต่ละ workspace
-   - `/update-features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
-   - `/update-docs` (ถ้ามี `docs/`)
-   - `/update-astgrep-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
-   - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
-   - `/update-specs` เพื่อสร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
-   - `/update-tests` เพื่ออัปเดต test setup
-   - `/update-todo-md` (ถ้ามี `TODO.md`)
-   - `/update-references` เพื่อ sync references
-   - `/update-gitignore` เพื่อ sync `.gitignore`
-   - `/deep-review` (ถ้ามี `tools/review-codebase/`)
+   - `/update-usage-md` to create/update `USAGE.md` at each workspace root
+   - `/update-features-md` to create/update `FEATURES.md` at every workspace root
+   - `/update-docs` (if there is a `docs/`)
+   - `/update-astgrep-rules` (if there are `sgconfig.yml` and `rules/`)
+   - `/update-examples` (if there are `examples/` or the public APIs changed)
+   - `/update-specs` to create/update `<workspace>/specs/` for test specs
+   - `/update-tests` to update the test setup
+   - `/update-todo-md` (if there is a `TODO.md`)
+   - `/update-references` to sync references
+   - `/update-gitignore` to sync `.gitignore`
+   - `/deep-review` (if there is a `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing`
-6. ทำ `/deep-review` เพื่อ sync config ทั้งหมด
-7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
-8. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
+6. Run `/deep-review` to sync all config
+7. Run `/follow-gitignore` to sync `.gitignore`
+8. Verify the scripts in `package.json` are consistent
 
 ### 4. Update Project Skills
 
-> Goal: project skills ใน `.devin/skills/` เป็นปัจจุบัน
+> Goal: Project skills in `.devin/skills/` are current
 
-1. ทำ `/update-project-skills` เพื่อสร้างหรืออัปเดต skills ใน `.devin/skills/`
-2. ตรวจว่า skills ที่สร้างผ่าน `/deep-validate`
-3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
+1. Run `/update-project-skills` to create or update skills in `.devin/skills/`
+2. Verify the created skills pass `/deep-validate`
+3. Confirm the project `AGENTS.md` references all new skills
 
 ### 5. Update GitHub Metadata And Settings
 
-> Goal: GitHub repo metadata และ branch protection สะท้อน project จริง
+> Goal: GitHub repo metadata and branch protection reflect the real project
 
-1. ทำ `/update-github-metadata` เพื่อ sync description, homepage, topics กับ `README.md` และ `package.json`
-2. ทำ `/follow-github` เพื่อตั้ง branch protection บน `main` และ integration branch ตาม project conventions และ `.github` templates (optional)
-3. ยืนยันว่า metadata และ branch protection ตรงกับ project conventions
+1. Run `/update-github-metadata` to sync description, homepage, and topics with `README.md` and `package.json`
+2. Run `/follow-github` to set branch protection on `main` and the integration branch per project conventions and `.github` templates (optional)
+3. Confirm metadata and branch protection match project conventions
 
 ### 6. Validate And Report
 
-> Goal: root project ผ่าน validation
+> Goal: The root project passes validation
 
-1. ทำ `/deep-validate` เพื่อตรวจ root structure และ references
-2. รัน `git diff --check`
-3. รัน checks ตาม project เช่น `bun run scan`, `bun run lint`
-4. ทำ `/report` สรุป:
-   - workspace commits ที่ตรวจพบ
-   - ข้อมูลที่ restore มา
-   - project files ที่อัปเดต
-   - project skills ที่สร้างหรืออัปเดต
-   - GitHub metadata ที่อัปเดต
+1. Run `/deep-validate` to check the root structure and references
+2. Run `git diff --check`
+3. Run project checks such as `bun run scan`, `bun run lint`
+4. Run `/report` summarizing:
+   - workspace commits found
+   - information restored
+   - project files updated
+   - project skills created or updated
+   - GitHub metadata updated
 
 ## Rules
 
 ### 1. Git Log First
 
-- ตรวจ `git log` ของทุก workspace ก่อนเสมอ
-- ใช้ `git log --oneline -5` และ `git diff HEAD~1 --stat` เป็นหลัก
-- บันทึก commit hash และ changed files ก่อนอัปเดต
+- Always check every workspace's `git log` first
+- Use `git log --oneline -5` and `git diff HEAD~1 --stat` as the baseline
+- Record commit hashes and changed files before updating
 
 ### 2. Root Only
 
-- แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`) และ project config
-- ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-to-dev-branch` ใน workspace นั้น
+- Modify only root docs (`AGENTS.md`, `README.md`) and project config
+- Do not modify workspace code or workspace docs
+- If workspace docs need changes → use `/ship-to-dev-branch` in that workspace
 
 ### 3. No Commit
 
-- `update-project` ไม่ commit การเปลี่ยนแปลง
-- ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
-- ถ้าใช้ใน monorepo → เรียก `/ship-to-dev-branch` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
+- `update-project` does not commit changes
+- If used standalone → run `/git-commit` after `/update-project`
+- If used in a monorepo → run `/ship-to-dev-branch` per workspace, then `/git-commit` at the root after `/update-project`
 
 ### 4. Idempotency
 
-- รัน `update-project` ซ้ำได้โดยไม่เกิด side effects
-- ไม่ลบหรือ overwrite โดยไม่ dry run
+- `update-project` can be re-run without side effects
+- Never delete or overwrite without a dry run
 
 ### 5. Conditionality
 
-- รัน steps ที่มี conditions ตามที่กำหนด
-- ข้าม steps ที่ไม่จำเป็น
+- Run conditional steps as specified
+- Skip steps that aren't needed
 
 ### 6. Validation
 
-- รัน validation หลัง update
-- ไม่อ้างว่า check ผ่าน ถ้า command fail
+- Run validation after updates
+- Never claim a check passed if the command failed
 
-- ใช้ /update-project ถ้าจำเป็น
+- Use /update-project if needed
 
 ## Merged Details
 
 ### setup-package
 
-Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) — ใช้ครั้งเดียวตอนเริ่ม project หรือเมื่อ manifest ไม่พร้อม publish — merged จาก `/setup-package`
+Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) — used once at project start or when the manifest isn't publish-ready — merged from `/setup-package`
 
-1. Detect ecosystem จาก manifest file — หลาย ecosystems → ทำทีละตัว; ไม่มีเลย → ข้าม
-2. Required fields ตาม ecosystem:
-   - Node/Bun `package.json`: `name`, `version`, `description`, `license`, `repository`, `homepage`, `files` (ระบุสิ่งที่ publish เช่น `dist`, `README.md`, `LICENSE`), `exports`/`main` ชี้ build output; ถ้า `private: true` → ถาม user ว่าจะ release public ไหม
-   - Rust `Cargo.toml`: `package.name`, `version`, `description`, `license`, `repository`, `categories`, `keywords`, `edition`, `rust-version`; `[[bin]]`/`[lib]` ตาม project type; monorepo → `workspace` + `/follow-monorepo`
-   - Python `pyproject.toml`: `project.name`, `version`, `description`, `license`, `readme`, `requires-python`, `classifiers`, `build-system` (setuptools/hatchling/flit), `project.scripts` ถ้ามี CLI
-   - Go `go.mod`: `module` path, `go` version; ไม่มี `LICENSE`/`README.md` → แนะนำเพิ่ม
-3. Scripts: ต้องมี `build`, `test:all`, `verify` (`verify` = `check && test` หรือ `lint && typecheck && test`) — ห้ามใส่ `release` script (release ผ่าน `/setup-cicd` workflow หรือ `/follow-tool-*`)
-4. ขาด field → ให้ user กรอก หรือใช้ค่า default จาก project; ทำ `/follow-tasks` ปรับ scripts ให้สมบูรณ์
-5. Validate: `/deep-review` manifest + `/run-verify` — fail → แก้และ retry ≤3
-6. Monorepo: `/follow-monorepo` ก่อน; workspace packages ไม่ต้อง `private: false` ถ้า publish ที่ root
-7. ไม่ publish เอง — publish ผ่าน `/publish-package-to-registry` หรือ `/run-release`
+1. Detect ecosystems from manifest files — several ecosystems → handle one at a time; none → skip
+2. Required fields per ecosystem:
+   - Node/Bun `package.json`: `name`, `version`, `description`, `license`, `repository`, `homepage`, `files` (state what is published, e.g. `dist`, `README.md`, `LICENSE`), `exports`/`main` pointing at build output; if `private: true` → ask the user whether to release publicly
+   - Rust `Cargo.toml`: `package.name`, `version`, `description`, `license`, `repository`, `categories`, `keywords`, `edition`, `rust-version`; `[[bin]]`/`[lib]` per project type; monorepo → `workspace` + `/follow-monorepo`
+   - Python `pyproject.toml`: `project.name`, `version`, `description`, `license`, `readme`, `requires-python`, `classifiers`, `build-system` (setuptools/hatchling/flit), `project.scripts` if there is a CLI
+   - Go `go.mod`: `module` path, `go` version; no `LICENSE`/`README.md` → recommend adding them
+3. Scripts: must have `build`, `test:all`, `verify` (`verify` = `check && test` or `lint && typecheck && test`) — never add a `release` script (release goes through the `/setup-cicd` workflow or `/follow-tool-*`)
+4. Missing field → have the user fill it in or use the project's defaults; run `/follow-tasks` to complete the scripts
+5. Validate: `/deep-review` the manifest + `/run-verify` — fail → fix and retry ≤3
+6. Monorepo: `/follow-monorepo` first; workspace packages don't need `private: false` if publishing happens at the root
+7. Never publish yourself — publish via `/publish-package-to-registry` or `/run-release`
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile สั้นอยู่ใน section นี้ รายละเอียดเต็มอยู่ใน links
-> Delegate ผ่าน `/use-subagents` — parent เก็บ Step 2 (restore changed info ต้องเห็น context รวม) และ Step 6 (validate/report) ไว้เอง; รอ structured reports ครบทุกตัวก่อนเข้า Step 6; subagents ห้าม commit — parent เป็นเจ้าของ Working rules และ final report; report `skipped`/`no-changes`/`blocked` → แสดงใน report แทนที่จะ retry; workspaces/domains แชร์ config/deps → ทำ sequential และส่ง `shared-rules` ให้ทุก `project-updater`
+> Goal: independent work that can be spawned in parallel — short profiles in this section, full detail in the links
+> Delegate via `/use-subagents` — the parent keeps Step 2 (restore changed info needs the combined context) and Step 6 (validate/report) for itself; wait for all structured reports before entering Step 6; subagents must not commit — the parent owns the working rules and final report; `skipped`/`no-changes`/`blocked` reports → show them in the report instead of retrying; workspaces/domains sharing config/deps → run sequentially and pass `shared-rules` to every `project-updater`
 
-### git-log-collector — เก็บ git log และ diff stat ของ workspace เดียว (Step 1; 1 agent ต่อ workspace)
+### git-log-collector — Collect git log and diff stat for one workspace (Step 1; 1 agent per workspace)
 
 - **Inputs**: `project-path`, `log-count` (optional, default 5)
 - **Tools**: `read`, `exec` (`git log`, `git diff`, `git status`)
-- **Execute**: รัน `git log --oneline -<log-count>` บันทึก hash+message ทุก commit → รัน `git diff HEAD~1 --stat` บันทึก changed files → ไม่มี commits ใหม่หรือไม่ใช่ git repo → report `no-changes`
-- **Output**: structured summary — `project-path`, commits ล่าสุด (hash+message), changed files list พร้อมสถิติ, `no-changes` flag
-- **Constraints**: read-only ห้ามแก้ไข/สร้างไฟล์; ทำงานเฉพาะใน `project-path`; deterministic (input เดิมได้ report เดิม)
+- **Execute**: run `git log --oneline -<log-count>` recording hash+message for every commit → run `git diff HEAD~1 --stat` recording changed files → no new commits or not a git repo → report `no-changes`
+- **Output**: structured summary — `project-path`, latest commits (hash+message), changed-files list with stats, `no-changes` flag
+- **Constraints**: read-only, never modify/create files; work only inside `project-path`; deterministic (same input yields the same report)
 - **Full detail**: `references/subagent-git-log-collector.md`
 
-### project-files-updater — อัปเดต project files ตาม domain (Step 3; 1 agent ต่อ `domain`)
+### project-files-updater — Update project files by domain (Step 3; 1 agent per `domain`)
 
-- **Inputs**: `domain` (`config`|`docs`|`rules`|`specs`|`examples`|`gitignore`|`vscode`|`todo`|`contributing`), `changed-info` (optional — summary จาก Step 1-2 เพื่อ prioritize), `root-path` (optional, default cwd)
+- **Inputs**: `domain` (`config`|`docs`|`rules`|`specs`|`examples`|`gitignore`|`vscode`|`todo`|`contributing`), `changed-info` (optional — summary from Steps 1-2 to prioritize), `root-path` (optional, default cwd)
 - **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: ระบุ files ใน `domain` (`config`→`package.json`/`tsconfig.json`/`biome.jsonc`/`mise.toml`/`.moon/`; `docs`→`docs/`/`README.md`/`USAGE.md`/`FEATURES.md`/`CHANGELOG.md`; `rules`→`rules/`/`sgconfig.yml`; `specs`→`<workspace>/specs/`; `examples`→`examples/`; `gitignore`→`.gitignore`; `vscode`→`.vscode/`; `todo`→`TODO.md`; `contributing`→`CONTRIBUTING.md`) → รัน `/update-config`/`/update-docs`/`/update-astgrep-rules`/`/update-specs`/`/update-examples`/`/update-gitignore`/`/update-dot-vscode`/`/update-todo-md`/`/update-contributing` → ใช้ `changed-info` ข้ามไฟล์ที่ไม่ drift ไม่เขียนใหม่ถ้าไม่เปลี่ยน
-- **Output**: structured summary — `domain` ที่ทำ, files ที่อัปเดต (path+เหตุผล), skills ที่เรียกใช้และผลลัพธ์, blockers/cross-domain conflicts
-- **Constraints**: ทำงานเฉพาะใน `domain` ห้ามแตะ domain อื่น; ไม่ commit; deterministic; ไม่มีไฟล์/ไม่จำเป็น → report `skipped`
+- **Execute**: identify the files in the `domain` (`config`→`package.json`/`tsconfig.json`/`biome.jsonc`/`mise.toml`/`.moon/`; `docs`→`docs/`/`README.md`/`USAGE.md`/`FEATURES.md`/`CHANGELOG.md`; `rules`→`rules/`/`sgconfig.yml`; `specs`→`<workspace>/specs/`; `examples`→`examples/`; `gitignore`→`.gitignore`; `vscode`→`.vscode/`; `todo`→`TODO.md`; `contributing`→`CONTRIBUTING.md`) → run `/update-config`/`/update-docs`/`/update-astgrep-rules`/`/update-specs`/`/update-examples`/`/update-gitignore`/`/update-dot-vscode`/`/update-todo-md`/`/update-contributing` → use `changed-info` to skip files that haven't drifted and never rewrite unchanged files
+- **Output**: structured summary — the `domain` handled, files updated (path+reason), skills invoked and their results, blockers/cross-domain conflicts
+- **Constraints**: work only inside the given `domain`, never touch other domains; no commits; deterministic; no files/not needed → report `skipped`
 - **Full detail**: `references/subagent-project-files-updater.md`
 
-### project-updater — อัปเดต sub-project/workspace เดียว (Step 3 per-workspace; 1 agent ต่อ `project-path`)
+### project-updater — Update one sub-project/workspace (Step 3 per-workspace; 1 agent per `project-path`)
 
-- **Inputs**: `project-path`, `update-scope` (optional เช่น `deps`/`config`/`docs`), `shared-rules` (optional — reference files จาก root ที่ต้อง sync)
+- **Inputs**: `project-path`, `update-scope` (optional, e.g. `deps`/`config`/`docs`), `shared-rules` (optional — reference files from the root that must be synced)
 - **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: รัน `git log --oneline -5` + `git diff HEAD~1 --stat` ใน `project-path` → sync config drift เทียบ `shared-rules`/root conventions (tsconfig, lint, format, gitignore) → อัปเดต docs เฉพาะที่ drift → แชร์ config/deps กับ sub-project อื่น → report warning ไม่แก้เอง
-- **Output**: structured summary — `project-path`, commits ล่าสุด (hash+message), config/docs ที่เปลี่ยน (file list+เหตุผล), blockers/shared-dependency warnings
-- **Constraints**: ทำงานเฉพาะใน `project-path` ห้ามแก้ root หรือ sub-project อื่น; ไม่ commit; deterministic; workspaces แชร์ config/deps → sequential + ส่ง `shared-rules`
+- **Execute**: run `git log --oneline -5` + `git diff HEAD~1 --stat` in `project-path` → sync config drift against `shared-rules`/root conventions (tsconfig, lint, format, gitignore) → update docs only where they drifted → if sharing config/deps with other sub-projects → report a warning, don't fix them
+- **Output**: structured summary — `project-path`, latest commits (hash+message), config/docs changed (file list+reason), blockers/shared-dependency warnings
+- **Constraints**: work only inside `project-path`, never modify the root or other sub-projects; no commits; deterministic; workspaces sharing config/deps → sequential + pass `shared-rules`
 - **Full detail**: `references/subagent-project-updater.md`
 
-### project-skills-updater — อัปเดต project skills ใน .devin/skills/ (Step 4; ขนานกับ Step 3 domains)
+### project-skills-updater — Update project skills in .devin/skills/ (Step 4; parallel with the Step 3 domains)
 
-- **Inputs**: `project-path`, `changed-info` (optional — ระบุ skills ที่ต้อง sync)
+- **Inputs**: `project-path`, `changed-info` (optional — identifies skills that need syncing)
 - **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: ทำ `/update-project-skills` สร้าง/อัปเดต skills ตาม codebase → ใช้ `changed-info` map features/flows ที่เปลี่ยน → skill ที่ต้อง sync → ตรวจผ่าน `/deep-validate` (frontmatter, references, no broken links) → ยืนยัน root `AGENTS.md` อ้างถึง skills ใหม่ครบ → report gap ถ้าขาด
-- **Output**: structured summary — skills ที่สร้าง/อัปเดต/ลบ (path+เหตุผล), validation results, AGENTS.md gaps ที่ให้ parent แก้
-- **Constraints**: แก้เฉพาะ `.devin/skills/` ห้ามแตะ root docs/code (ห้ามแก้ `AGENTS.md` เอง — parent จัดการ); ไม่ commit; `.devin/skills/` ไม่มี/ไม่จำเป็น → report `skipped`
+- **Execute**: run `/update-project-skills` to create/update skills per the codebase → use `changed-info` to map the features/flows that changed → skills needing sync → verify via `/deep-validate` (frontmatter, references, no broken links) → confirm the root `AGENTS.md` references all new skills → report a gap if any are missing
+- **Output**: structured summary — skills created/updated/removed (path+reason), validation results, AGENTS.md gaps for the parent to fix
+- **Constraints**: modify only `.devin/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.devin/skills/` missing/not needed → report `skipped`
 - **Full detail**: `references/subagent-project-skills-updater.md`
 
-### github-metadata-updater — sync GitHub repo metadata และ branch protection (Step 5; remote-only ไม่ชน local files)
+### github-metadata-updater — Sync GitHub repo metadata and branch protection (Step 5; remote-only, never touches local files)
 
-- **Inputs**: `repo` (optional — owner/repo, default detect จาก git remote), `check-protection` (optional, default true)
+- **Inputs**: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
 - **Tools**: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
-- **Execute**: ทำ `/update-github-metadata` sync description/homepage/topics กับ `README.md` + `package.json` → ถ้า `check-protection` → ทำ `/follow-github` ตรวจ branch protection บน `main`/integration branch → ยืนยัน metadata ตรงกับ project conventions
-- **Output**: structured summary — metadata fields ที่เปลี่ยน (before → after), branch protection status, permissions errors หรือ blockers (gh auth, repo not found)
-- **Constraints**: remote mutations เท่านั้น (`gh api`/`gh repo edit`) ห้ามแก้ local files; ไม่ push ไม่ commit (parent จัดการ); ไม่มี remote หรือ gh auth ไม่ผ่าน → report `blocked` ไม่ fail
+- **Execute**: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/follow-github` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
+- **Output**: structured summary — metadata fields changed (before → after), branch protection status, permission errors or blockers (gh auth, repo not found)
+- **Constraints**: remote mutations only (`gh api`/`gh repo edit`), never modify local files; no push, no commit (the parent handles it); no remote or gh auth failure → report `blocked`, don't fail
 - **Full detail**: `references/subagent-github-metadata-updater.md`
 
 ## Expected Outcome
 
-- git log ของทุก workspace ถูกตรวจและบันทึก
-- ข้อมูลที่เปลี่ยนแปลงถูก restore มาอัปเดต root docs
-- root `AGENTS.md` และ `README.md` อัปเดต
-- project docs, config, rules, และ tooling sync กัน
-- project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
-- GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
-- root project ผ่าน `/deep-validate`
-- dependencies และ versioned items อัปเดตถ้าเลือกใช้ `/update-version-to-latest`
-- รายงานสรุป workspace commits, project files, project skills และ GitHub metadata ครบถ้วน
+- Every workspace's git log was checked and recorded
+- Changed information was restored into the root docs
+- Root `AGENTS.md` and `README.md` were updated
+- Project docs, config, rules, and tooling are in sync
+- Project skills in `.devin/skills/` were updated via `/update-project-skills`
+- GitHub repo metadata was updated via `/update-github-metadata`
+- The root project passed `/deep-validate`
+- Dependencies and versioned items were updated if `/update-version-to-latest` was chosen
+- A complete summary report of workspace commits, project files, project skills, and GitHub metadata
 

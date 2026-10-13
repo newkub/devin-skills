@@ -1,25 +1,25 @@
 # Step: Write Root README
 
-> Goal: เขียน README หลักของ monorepo
+> Goal: Write the main README of the monorepo
 
 ## Execute
 
-1. ทำ `/deep-analyze` เพื่อเก็บข้อมูล root
-2. อ่าน `manifest files`, `source code`, `config files`
-3. เขียน README ตาม template ใน `template-example.md`
-4. ใช้ข้อมูลจาก Step Prepare:
+1. Run `/deep-analyze` to gather root information
+2. Read `manifest files`, `source code`, `config files`
+3. Write the README following the template in `template-example.md`
+4. Use the data from Step Prepare:
    - status → `>` callout (red/green badge)
-   - has `CONTRIBUTING.md` → ใส่ `## Contributing` section
-   - has `LICENSE.md` → ใส่ `## License` section
-5. ถ้าข้อมูลไม่ครบ → stop และ report ไม่ใช้ placeholder
-6. ถ้า write fail → retry (max 3 → stop/report)
+   - has `CONTRIBUTING.md` → include the `## Contributing` section
+   - has `LICENSE.md` → include the `## License` section
+5. If the data is incomplete → stop and report; don't use placeholders
+6. If the write fails → retry (max 3 → stop/report)
 
 ## Rules
 
-- ไม่มี `>` description ที่ด้านบน — เฉพาะ status badge
-- `#` Title เป็นบรรทัดแรกของ README
-- `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
+- No `>` description at the top — status badge only
+- `#` Title is the first line of the README
+- `## Get Started` uses a plain numbered list, no `###` subsection
 - `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)
-- ไม่มี `## API References` แยก — references ใน Usage section
-- ไม่มี ANSI codeblock ด้านล่างสุด
+- No separate `## API References` — references go in the Usage section
+- No ANSI codeblock at the very bottom
 

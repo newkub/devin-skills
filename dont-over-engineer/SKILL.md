@@ -1,6 +1,6 @@
 ---
 name: dont-over-engineer
-description: หลีกเลี่ยงการ over-engineering ใช้ minimal changes
+description: Avoid over-engineering — use minimal changes
 argument-hint: "[scope]"
 related:
   - dont-ask-me
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-แก้ปัญหาด้วย minimal changes ที่เป็นไปได้เสมอ
+Always solve problems with minimal changes
 
 ## Scope
 
-ใช้สำหรับทุกการแก้ไข code และ implementation
+Use for every code change and implementation
 
 ## Execute
 
@@ -24,78 +24,78 @@ related:
 
 > Goal: Analyze Problem
 
-วิเคราะห์ปัญหาเพื่อหา root cause
+Analyze the problem to find the root cause
 
-1. ทำ `/deep-debug` เพื่อวิเคราะห์ปัญหา
-2. หา solution ที่เรียบง่ายที่สุด
-3. ไม่สร้าง abstraction ที่ไม่จำเป็น
+1. Run `/deep-debug` to analyze the problem
+2. Find the simplest solution
+3. Do not create unnecessary abstractions
 
 ### 2. Apply Minimal Fix
 
 > Goal: Apply Minimal Fix
 
-ใช้ minimal changes ที่เป็นไปได้
+Use minimal changes whenever possible
 
-1. ใช้ `single-line change` เมื่อเป็นไปได้
-2. ไม่ refactor ทั้งโค้ดเบสเพื่อแก้ปัญหาเล็กๆ
-3. ไม่สร้าง generic solution สำหรับปัญหาเฉพาะ
+1. Use a `single-line change` when possible
+2. Do not refactor the whole codebase to fix a small problem
+3. Do not build a generic solution for a specific problem
 
 ### 3. Verify Solution
 
 > Goal: Verify Solution
 
-ตรวจสอบว่าแก้ปัญหาได้จริง
+Verify that the problem is really solved
 
-1. ทดสอบว่าแก้ปัญหาได้จริง
-2. ตรวจสอบไม่มี side effects
-3. ลบ code ที่ไม่จำเป็นที่เพิ่มขึ้น
+1. Test that the problem is really fixed
+2. Check that there are no side effects
+3. Remove any unnecessary code that was added
 
 ## Rules
 
 ### 1. Minimal Changes
 
-ใช้ minimal changes ที่เป็นไปได้เสมอ
+Use minimal changes whenever possible
 
-- ใช้ `single-line change` เมื่อเป็นไปได้
-- ไม่ refactor ทั้งโค้ดเบสเพื่อแก้ปัญหาเล็กๆ
-- ไม่สร้าง abstraction ที่ไม่จำเป็น
-- ไม่เพิ่ม complexity โดยไม่จำเป็น
+- Use a `single-line change` when possible
+- Do not refactor the whole codebase to fix a small problem
+- Do not create unnecessary abstractions
+- Do not add complexity unnecessarily
 
 ### 2. Root Cause First
 
-ต้องเข้าใจ root cause ก่อนแก้
+Understand the root cause before fixing
 
-- ทำ `/deep-debug` เพื่อวิเคราะห์ปัญหา
-- ไม่แก้ symptom โดยไม่รู้สาเหตุ
-- ไม่เดา solution โดยไม่วิเคราะห์
-- ใช้ solution ที่เรียบง่ายที่สุด
+- Run `/deep-debug` to analyze the problem
+- Do not fix symptoms without knowing the cause
+- Do not guess solutions without analysis
+- Use the simplest possible solution
 
 ### 3. Simple Solutions
 
-ใช้ solution ที่เรียบง่ายและตรงประเด็น
+Use simple, to-the-point solutions
 
-- ไม่สร้าง generic solution สำหรับปัญหาเฉพาะ
-- ไม่เพิ่ม dependency ที่ไม่จำเป็น
-- ไม่สร้าง architecture ที่ซับซ้อนเกินไป
-- ใช้ `YAGNI` principle (You Aren't Gonna Need It)
+- Do not build a generic solution for a specific problem
+- Do not add unnecessary dependencies
+- Do not build overly complex architecture
+- Use the `YAGNI` principle (You Aren't Gonna Need It)
 
 ### 4. Verify Impact
 
-ตรวจสอบผลกระทบของการเปลี่ยนแปลง
+Verify the impact of the change
 
-- ทดสอบว่าแก้ปัญหาได้จริง
-- ตรวจสอบไม่มี side effects
-- ลบ code ที่ไม่จำเป็นที่เพิ่มขึ้น
-- วัดผลกระทบ (performance, complexity)
+- Test that the problem is really fixed
+- Check that there are no side effects
+- Remove any unnecessary code that was added
+- Measure the impact (performance, complexity)
 
-- ใช้ /dont-ask-me ถ้าจำเป็น
-- ใช้ /dont-understand ถ้าจำเป็น
-- ใช้ /review-by-all-stakeholder ถ้าจำเป็น
+- Use /dont-ask-me if needed
+- Use /dont-understand if needed
+- Use /review-by-all-stakeholder if needed
 
 ## Expected Outcome
 
-- แก้ปัญหาด้วย minimal changes
-- ไม่มี over-engineering
-- Code ยังเรียบง่ายและเข้าใจง่าย
-- ไม่มี abstraction ที่ไม่จำเป็น
-- Solution ตรงประเด็นและเข้าใจง่าย
+- Problems solved with minimal changes
+- No over-engineering
+- Code stays simple and easy to understand
+- No unnecessary abstractions
+- Solutions are to-the-point and easy to understand

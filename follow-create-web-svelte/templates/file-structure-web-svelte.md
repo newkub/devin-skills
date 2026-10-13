@@ -1,6 +1,6 @@
 # Web Svelte (SvelteKit) File Structure
 
-Canonical file structure สำหรับ SvelteKit app — `src/routes` + `src/lib` conventions + layered mapping
+Canonical file structure for a SvelteKit app — `src/routes` + `src/lib` conventions + layered mapping
 
 ## File Structure
 
@@ -26,7 +26,7 @@ project/
 │  │  ├─ components/                      # UI components (presentation)
 │  │  │  ├─ ui/
 │  │  │  └─ features/
-│  │  ├─ usecases/                        # application use cases — called จาก load/actions (domain)
+│  │  ├─ usecases/                        # application use cases — called from load/actions (domain)
 │  │  │  ├─ login.ts
 │  │  │  └─ create-order.ts
 │  │  ├─ services/                        # domain services — business rules (domain)
@@ -54,17 +54,17 @@ project/
 
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
-| 1 | presentation | `routes/` (+page/+layout/+server) | routes, load, actions, endpoints | → `lib/usecases`, `lib/components` — ห้ามเรียก `lib/server` จาก client files |
+| 1 | presentation | `routes/` (+page/+layout/+server) | routes, load, actions, endpoints | → `lib/usecases`, `lib/components` — never call `lib/server` from client files |
 | 2 | presentation | `lib/components` | UI | → `lib/stores`, `lib/usecases` |
 | 3 | domain | `lib/usecases`+`services` | business rules | → `lib/server`, `lib/stores` |
 | 4 | domain | `lib/stores` | client state | leaf |
-| 5 | data | `lib/server/` | db, repositories, auth — server-only | leaf — ห้าม import จาก client |
-| 6 | shared leaf | `lib/utils|types|constants|config` | pure/shared | leaf — ทุก layer ใช้ได้ |
+| 5 | data | `lib/server/` | db, repositories, auth — server-only | leaf — never import from client |
+| 6 | shared leaf | `lib/utils|types|constants|config` | pure/shared | leaf — usable by every layer |
 
 ## Rules
 
-- Server code อยู่ `lib/server/` หรือ `*.server.ts` เท่านั้น — SvelteKit enforce เอง ห้าม hack รอบ
-- `+page.server.ts`/`+server.ts` = thin boundary — delegate ไป `lib/usecases/`
-- `lib/utils|types` pure — ไม่มี IO
-- ใช้ `$lib/` alias — ห้าม relative imports ข้าม folder
-- Business rules ห้ามอยู่ใน `.svelte` components
+- Server code lives only in `lib/server/` or `*.server.ts` — SvelteKit enforces this itself, don't work around it
+- `+page.server.ts`/`+server.ts` are thin boundaries — delegate to `lib/usecases/`
+- `lib/utils|types` are pure — no IO
+- Use the `$lib/` alias — no relative imports across folders
+- Business rules must not live in `.svelte` components

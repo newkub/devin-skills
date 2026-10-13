@@ -1,6 +1,6 @@
 ---
 name: update-devin-global-subagents
-description: สร้าง อัปเดต และ orchestrate global subagents ตาม AGENT.md และ job roles
+description: Create, update, and orchestrate global subagents via AGENT.md and job roles
 argument-hint: "[agent-name]"
 related:
   - update-devin
@@ -20,144 +20,144 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `AGENT.md` สำหรับ Devin subagent ให้ถูกต้อง ครบถ้วน ใช้งานได้จริง และ align กับ skills มาตรฐาน — frontmatter, sections, line count, style, safety (merged review dims from: review-devin-global-subagents)
+Create or update `AGENT.md` for Devin subagents so they are correct, complete, practically usable, and aligned with standard skills — frontmatter, sections, line count, style, safety (merged review dims from: review-devin-global-subagents)
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง agent ใหม่หรือแก้ไข agent ใน `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, หรือ `%APPDATA%\devin\agents\` รวมถึง orchestrate subagents เมื่องานซับซ้อน
+Use when creating a new agent or editing an agent in `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, or `%APPDATA%\devin\agents\`, including orchestrating subagents for complex work
 
 Review-only → `/review-devin-global-harness` (layer `subagents`)
 
-ดูเพิ่มเติม: /follow-agents-md, /update-agents-md
+See also: /follow-agents-md, /update-agents-md
 
 ## Execute
 
 ### 1. Identify Target Subagent
 
-> Goal: ระบุ subagent ที่ต้องสร้างหรืออัปเดต
+> Goal: identify the subagent to create or update
 
-1. รับชื่อ agent และบทบาทจาก user
-2. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า agent มีอยู่หรือไม่
-3. ระบุ target directory: `<agents-root>/<agent-name>/`
-4. ถ้าชื่อซ้ำหรือไม่ชัด → ทำ `/ask-me`
+1. Take the agent name and role from the user
+2. Run `/list-devin-global-subagents` to confirm whether the agent exists
+3. Determine the target directory: `<agents-root>/<agent-name>/`
+4. If the name is duplicated or unclear → run `/ask-me`
 
 ### 2. Select Archetype
 
-> Goal: เลือกโครงสร้างสิทธิ์ตามบทบาท
+> Goal: choose the right permission structure for the role
 
 1. Read-only auditor: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
-2. Builder/Implementer: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` สำหรับ test/lint/build
-3. Planner/Designer: `architect`, `api-designer`, `uxui-designer` — อาจอนุญาตให้เขียน spec/design doc แต่ไม่แก้ source หลัก
-4. Executor/Operator: `test-runner`, `release`, `deployment-specialist` — allow รันคำสั่งทีเกี่ยวข้อง
+2. Builder/Implementer: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` for test/lint/build
+3. Planner/Designer: `architect`, `api-designer`, `uxui-designer` — may be allowed to write spec/design docs but not modify main source
+4. Executor/Operator: `test-runner`, `release`, `deployment-specialist` — allow running the relevant commands
 
 ### 3. Write Frontmatter
 
-> Goal: frontmatter ถูกต้องตาม Devin spec
+> Goal: frontmatter conforms to the Devin spec
 
-1. `name`: lowercase, คั่นด้วย `-`, ตรงกับ directory name
-2. `description`: กระชับ ≤100 ตัวอักษร
-3. `model`: `sonnet` โดย default
-4. `allowed-tools`: เลือกเฉพาะ tools ทีจำเป็น เช่น `read`, `grep`, `find_file_by_name`, `code_search`, `exec`, `edit`, `write`
+1. `name`: lowercase, separated by `-`, matching the directory name
+2. `description`: concise, ≤100 characters
+3. `model`: `sonnet` by default
+4. `allowed-tools`: only the tools actually needed, e.g. `read`, `grep`, `find_file_by_name`, `code_search`, `exec`, `edit`, `write`
 5. `permissions`:
-   - `allow`: คำสั่งปลอดภัย เช่น `Exec(bun run test)`, `Exec(bun run lint)`, `Exec(bun run typecheck)`, `Exec(bun run build)`
-   - `deny`: `write`, `edit` สำหรับ read-only; หรือ `exec` ถ้าไม่ต้องการให้รัน terminal
+   - `allow`: safe commands such as `Exec(bun run test)`, `Exec(bun run lint)`, `Exec(bun run typecheck)`, `Exec(bun run build)`
+   - `deny`: `write`, `edit` for read-only; or `exec` if terminal execution is not wanted
 
 ### 4. Write Prompt Body
 
-> Goal: prompt สอดคล้องกับบทบาทและ spec
+> Goal: prompt consistent with the role and spec
 
-1. `## Goal`: ประโยคเดียวชัดเจน
-2. `## Scope`: ขอบเขตงานและ focus areas
-3. `## Execute`: แบ่งเป็น steps ไม่เกิน 10 ขั้นตอน ใช้ `### N. Step Name`, `> Goal:`, และ numbered list
-4. `## Rules`: 3-5 กฎเฉพาะบทบาท
-5. `## Expected Outcome`: สิ่งทีต้องได้รับ
-6. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `agent-name`
-7. ห้ามใช้ `**` bold markers
+1. `## Goal`: one clear sentence
+2. `## Scope`: work boundaries and focus areas
+3. `## Execute`: broken into at most 10 steps using `### N. Step Name`, `> Goal:`, and numbered lists
+4. `## Rules`: 3-5 role-specific rules
+5. `## Expected Outcome`: what must be delivered
+6. Use backticks for `tools`, `commands`, `paths`, `agent-name`
+7. Never use `**` bold markers
 
 ### 5. Validate
 
-> Goal: AGENT.md พร้อมใช้งาน
+> Goal: AGENT.md is ready to use
 
-1. ตรวจว่ามี frontmatter `---` ครบท้งสองฝั่ง
-2. ตรวจ required fields: `name`, `description`, `model`, `allowed-tools`
-3. ตรวจ required sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-4. นับบรรทัด ต้องไม่เกิน 250 บรรทัด
-5. ตรวจหา markers ทีบ่งบอกว่าเนื้อหายังไม่สมบูรณ์
-6. ตรวจว่า `name` ตรงกับ directory name และไม่ซ้ำกับ agent ตัวอื่น
-7. ถ้ามีปัญหา → แก้ไขและ revalidate จนผ่าน
+1. Check that the frontmatter `---` delimiters are complete on both sides
+2. Check required fields: `name`, `description`, `model`, `allowed-tools`
+3. Check required sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+4. Count lines; it must not exceed 250 lines
+5. Look for markers indicating incomplete content
+6. Check that `name` matches the directory name and doesn't duplicate another agent
+7. If there are issues → fix and revalidate until it passes
 
 ### 6. Orchestrate Subagents In Complex Tasks
 
-> Goal: ใช้หลาย subagents ตาม roles ทำงานขนานกัน
+> Goal: use multiple subagents by role working in parallel
 
-1. ถ้างานมีหลายด้านอิสระกัน → อ่าน [references/orchestrate-subagents.md](references/orchestrate-subagents.md)
-2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
-3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
-4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/deep-review-then-fix`
-5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/deep-review`
-6. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
+1. If the work spans independent areas → read [references/orchestrate-subagents.md](references/orchestrate-subagents.md)
+2. Run `/list-devin-global-subagents` to pick roles
+3. Use `/use-subagents` to spawn subagents in parallel
+4. Merge results, resolve conflicts with `/resolve-errors`, then `/deep-review-then-fix`
+5. If any subtask has a complex workflow → run `/deep-review`
+6. Run `/report` summarizing what each subagent did
 
 ### 7. Update References
 
-> Goal: รักษาความสอดคล้องกับ catalog
+> Goal: keep consistency with the catalog
 
-1. ถ้ามี agent อื่นเกี่ยวข้อง → อัปเดต `related` หรือ cross-reference
-2. ถ้ามี skill ที agent ควรใช้ → เพิ่มลงใน `## Execute` หรือ `## Rules`
-3. ทำ `/update-references` ถ้ามีชื่อเปลี่ยน
-4. ทำ `/suggest-next-action` เมื่อเสร็จ
+1. If other agents are involved → update `related` or cross-references
+2. If a skill the agent should use exists → add it to `## Execute` or `## Rules`
+3. Run `/update-references` if any names changed
+4. Run `/suggest-next-action` when done
 
 ### 8. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/deep-validate`
-2. ทำ `/ship-to-dev-branch`
-3. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/deep-validate`
+2. Run `/ship-to-dev-branch`
+3. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Agent Identity
 
-- `name` ต้องสะท้อนบทบาทเฉพาะ ไม่ generic เช่น `helper`, `expert`
-- ห้ามซ้ำกับ existing agent ทีมีอยู่
+- `name` must reflect a specific role, not something generic like `helper` or `expert`
+- Never duplicate an existing agent
 
 ### 2. Permissions
 
-- Read-only agents ต้อง `deny: [write, edit]`
-- Builder agents อนุญาต `edit`, `write` และ `exec` สำหรับ check/test
-- Release/deploy agents ต้อง ask ก่อน remote side effects
+- Read-only agents must have `deny: [write, edit]`
+- Builder agents may have `edit`, `write`, and `exec` for check/test
+- Release/deploy agents must ask before remote side effects
 
 ### 3. Tool Selection
 
-- `allowed-tools` ต้องเพียงพอต่อบทบาท ไม่มากเกิน
-- อย่าเพิ่ม `glob` ถ้า runtime ไม่รองรับ ให้ใช้ `find_file_by_name` แทน
+- `allowed-tools` must be sufficient for the role, not excessive
+- Don't add `glob` if the runtime doesn't support it; use `find_file_by_name` instead
 
 ### 4. Format
 
-- ใช้ heading ภาษาอังกฤษ Title Case หรือตาม convention ของ project
-- รายการภาษาไทยสำหรับรายละเอียด
-- ไฟล์ไม่เกิน 250 บรรทัด
+- Use English headings in Title Case or per the project convention
+- Use Thai-language lists for details
+- Files must not exceed 250 lines
 
 ### 5. Safety
 
-- ถ้า overwrite `AGENT.md` เดิม → ทำ dry run ขอ user confirmation ก่อน
-- ไม่แก้ไข agent อื่นโดยไม่จำเป็น
-- ถ้าเปลี่ยน directory name → อัปเดต `name` ใน frontmatter ให้ตรง
+- If overwriting an existing `AGENT.md` → do a dry run and get user confirmation first
+- Don't modify other agents unnecessarily
+- If the directory name changes → update the frontmatter `name` to match
 
-- ใช้ /review-devin-global-harness (layer `subagents`) สำหรับ review-only
-- ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
-- ใช้ /update-devin ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
+- Use /review-devin-global-harness (layer `subagents`) for review-only
+- Use /follow-create-plugins (devin) if needed
+- Use /update-devin if needed
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-- `AGENT.md` ใหม่หรืออัปเดทที `<agents-root>/<agent-name>/AGENT.md`
-- frontmatter ครบถ้วนและถูกต้อง
-- prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
-- ไฟล์ไม่เกิน 250 บรรทัด ไม่มี markers ทีบ่งบอกว่าเนื้อหายังไม่สมบูรณ์
-- ชื่อ agent ตรงกับ directory name และไม่ซ้ำ
-- `permissions` เหมาะสมกับบทบาท
-- references อัปเดตครบถ้วน
+- A new or updated `AGENT.md` at `<agents-root>/<agent-name>/AGENT.md`
+- Frontmatter complete and correct
+- Prompt body has `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
+- File is under 250 lines with no markers of incomplete content
+- Agent name matches the directory name and is unique
+- `permissions` fit the role
+- References fully updated
 
 

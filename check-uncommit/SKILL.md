@@ -1,6 +1,6 @@
 ---
 name: check-uncommit
-description: สแกน git repos ทั้งเครื่องหา uncommitted changes (modified, staged, untracked)
+description: Scan all git repos on the machine for uncommitted changes (modified, staged, untracked)
 argument-hint: "[path]"
 related:
   - list-projects-git-in-drive-d
@@ -12,73 +12,73 @@ related:
 
 ## Goal
 
-สแกน git repositories ทั้งเครื่อง (หรือ path ที่ระบุ) เพื่อหา uncommitted changes: modified, staged และ untracked files — ป้องกันงานค้างที่ลืม commit
+Scan git repositories across the whole machine (or a given path) for uncommitted changes: modified, staged, and untracked files — so no work is left sitting there forgotten instead of committed
 
 ## Scope
 
-- ใช้เมื่อต้องการ audit repos ทั้งหมดหางานที่ยังไม่ commit
-- Default scope: ทุก repo ที่พบในเครื่องผ่าน `/list-projects-git-in-drive-d` หรือ path ที่ระบุ
-- Read-only: รายงานสถานะเท่านั้น ไม่ commit หรือแก้ไข
+- Use when you want to audit every repo for work that has not been committed yet
+- Default scope: every repo found on the machine via `/list-projects-git-in-drive-d`, or the given path
+- Read-only: reports status only — never commits or modifies anything
 
 ## Execute
 
 ### 1. Collect Repositories
 
-> Goal: รู้ว่าต้อง scan repo ไหนบ้าง
+> Goal: know which repos to scan
 
-1. รับ `path` จาก argument — default: scan ทุก drive ผ่าน `/list-projects-git-in-drive-d`
-2. หา directories ที่มี `.git` (รวม worktrees และ submodules)
-3. ข้าม bare repos และ cache directories
+1. Take `path` from the argument — default: scan every drive via `/list-projects-git-in-drive-d`
+2. Find directories containing `.git` (including worktrees and submodules)
+3. Skip bare repos and cache directories
 
 ### 2. Check Working Tree Status
 
-> Goal: นับ uncommitted changes ต่อ repo
+> Goal: count uncommitted changes per repo
 
-1. รัน `git -C <repo> status --porcelain` ต่อ repo
-2. แยกประเภท: `staged` (index), `modified` (unstaged), `untracked` (`??`)
-3. นับจำนวนไฟล์ต่อประเภท
-4. ตรวจ `git -C <repo> stash list` สำหรับ stashes ที่ค้าง
+1. Run `git -C <repo> status --porcelain` for each repo
+2. Classify: `staged` (index), `modified` (unstaged), `untracked` (`??`)
+3. Count files per category
+4. Check `git -C <repo> stash list` for leftover stashes
 
 ### 3. Assess Severity
 
-> Goal: จัดลำดับ repo ที่เสี่ยงสูญหาย
+> Goal: rank the repos most at risk of losing work
 
-1. Flag `high` ถ้า repo มี untracked files ที่ดูเป็น source code หรือ staged changes ค้างนาน
-2. Flag `medium` ถ้ามี modified files แต่ tracked ทั้งหมด
-3. Flag `low` ถ้ามีแค่ untracked build artifacts (จาก `.gitignore` patterns)
-4. รวมกับผล `/check-unpush` ถ้ารันคู่กัน — repo ที่ทั้ง uncommit และ unpush เสี่ยงสุด
+1. Flag `high` if the repo has untracked files that look like source code, or staged changes left sitting for a long time
+2. Flag `medium` if it has modified files but everything is tracked
+3. Flag `low` if there are only untracked build artifacts (from `.gitignore` patterns)
+4. Combine with `/check-unpush` results when run together — repos that are both uncommitted and unpushed are the most at risk
 
 ### 4. Report
 
-> Goal: สรุป repos ที่มีงานค้าง
+> Goal: summarize the repos with pending work
 
-1. ทำ `/report` คอลัมน์: `No.`, `Repo`, `Path`, `Staged`, `Modified`, `Untracked`, `Stashes`, `Severity`
-2. เรียง severity สูง → ต่ำ
-3. แนะนำ `/git-commit` หรือ `/git-commit selected-files` ต่อ repo ที่มีงานค้าง
+1. Build a `/report` with columns: `No.`, `Repo`, `Path`, `Staged`, `Modified`, `Untracked`, `Stashes`, `Severity`
+2. Sort severity high → low
+3. Recommend `/git-commit` or `/git-commit selected-files` per repo with pending work
 
 ## Rules
 
 ### 1. Read-Only
 
-- ไม่ commit, stash หรือแก้ไข working tree
-- รายงานเท่านั้น — ให้ user เลือก action
+- Never commit, stash, or modify the working tree
+- Report only — the user chooses the action
 
 ### 2. Performance
 
-- จำกัด scan depth และข้าม directories เช่น `node_modules`, `.git` internals
-- ถ้า repos เยอะ → รัน parallel หรือ report แบบ streaming
+- Limit scan depth and skip directories such as `node_modules` and `.git` internals
+- With many repos → run in parallel or report in streaming fashion
 
 ### 3. Accuracy
 
-- ใช้ `git status --porcelain` เท่านั้น — ไม่เดาจาก file timestamps
-- ระบุ detached HEAD และ merge/rebase in-progress ในรายงาน
+- Use `git status --porcelain` only — never guess from file timestamps
+- Note detached HEAD and merge/rebase in progress in the report
 
-- ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
-- ใช้ /check-unpush ถ้าจำเป็น
-- ใช้ /git-commit ถ้าจำเป็น
+- Use /list-projects-git-in-drive-d if needed
+- Use /check-unpush if needed
+- Use /git-commit if needed
 
 ## Expected Outcome
 
-- รายการ repos ทั้งหมดที่มี uncommitted changes พร้อม breakdown
-- ระบุ severity เพื่อ prioritize repos ที่เสี่ยงสูญหายงาน
-- พร้อมส่งต่อ `/git-commit` ต่อ repo
+- A list of every repo with uncommitted changes, with a full breakdown
+- Severity flags to prioritize the repos most at risk of losing work
+- Ready to hand off to `/git-commit` per repo

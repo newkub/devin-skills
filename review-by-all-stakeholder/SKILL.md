@@ -1,6 +1,6 @@
 ---
 name: review-by-all-stakeholder
-description: Review dispatcher — review project จากมุมมอง stakeholder/persona ตาม role details ใน references/
+description: Review dispatcher — review a project from stakeholder/persona views defined in references/
 argument-hint: "<category-or-role> [role]"
 related:
   - deep-review
@@ -13,48 +13,48 @@ related:
 
 ## Goal
 
-รับบท persona หรือ stakeholder ที่ user เลือก โดยอ่าน role details จาก `references/<category>.md` (section `### <category>/<role>`) แล้ว review project จากมุมมองนั้น
+Play the persona or stakeholder the user selects, read the role details from `references/<category>.md` (section `### <category>/<role>`), then review the project from that point of view.
 
 ## Scope
 
-ใช้กับทุก project ที่ต้องการมุมมองภายนอก — ครอบคลุม 18 categories ใน `references/` (75 roles): product, engineering, quality, user, customer, research, marketing, growth, business, data, operations, finance, legal, content, creative, communication, management, technical — ไม่แก้ code โดยตรง
+Use for any project that needs an outside perspective — covers 18 categories in `references/` (75 roles): product, engineering, quality, user, customer, research, marketing, growth, business, data, operations, finance, legal, content, creative, communication, management, technical — does not edit code directly.
 
-ถ้าต้องการ feedback จาก stakeholder จริง (ไม่ใช่ roleplay) → ใช้ `/deep-review` แทน
+If you need feedback from real stakeholders (not roleplay) → use `/deep-review` instead.
 
 ## Execute
 
 ### 1. Identify Role
 
-> Goal: รู้ persona ที่จะรับบท
+> Goal: Know the persona to play
 
-1. ถ้ามี `<role-or-category>` argument → ใช้ role/category นั้น
-2. ถ้าไม่มี → แสดงตาราง Category Mapping แล้ว `/ask-me` ให้ user เลือก
-3. ถ้า role ไม่อยู่ในตาราง → แจ้ง และถามว่าจะใช้ closest role ไหน
+1. If a `<role-or-category>` argument is given → use that role/category
+2. If not → show the Category Mapping table and use `/ask-me` to let the user choose
+3. If the role is not in the table → notify the user and ask which closest role to use
 
 ### 2. Map To Category Reference
 
-> Goal: หา `references/<category>.md` และ role section ที่ถูกต้อง
+> Goal: Find the right `references/<category>.md` and role section
 
-1. ใช้ตาราง Category Mapping ด้านล่าง — แต่ละ category map ไป `references/<category>.md`; role details อยู่ใน section `### <category>/<role>` ภายในไฟล์นั้น
-2. role ที่เป็น security/compliance domain → ส่งต่อ `/deep-review` แทน
-3. ถ้า role ตกอยู่ในหลาย category → ให้ user ยืนยัน
-4. เปิด `references/<category>.md` → อ่าน role table ด้านบน + section `### <category>/<role>` ของ role ที่เลือก
+1. Use the Category Mapping table below — each category maps to `references/<category>.md`; role details are in the `### <category>/<role>` section inside that file
+2. For roles in the security/compliance domain → hand off to `/deep-review` instead
+3. If a role falls under multiple categories → have the user confirm
+4. Open `references/<category>.md` → read the role table at the top + the `### <category>/<role>` section of the chosen role
 
 ### 3. Roleplay And Collect
 
-> Goal: review ตาม lens ของ role จาก reference details
+> Goal: Review through the role's lens from the reference details
 
-1. ทำ `/scan-codebase` เพื่อรวบรวม context ก่อน
-2. รับบท role ตาม persona details (Goal/Scope/Execute/focus areas ใน section)
-3. รับ findings, severity และ recommendations
+1. Run `/scan-codebase` first to gather context
+2. Play the role per the persona details (Goal/Scope/Execute/focus areas in the section)
+3. Collect findings, severity, and recommendations
 
 ### 4. Report
 
-> Goal: สรุปผลจากมุมมอง persona
+> Goal: Summarize the result from the persona's point of view
 
-1. ทำ `/report` พร้อม findings และ recommendation
-2. ระบุ top 3-5 ประเด็นที่สำคัญที่สุด
-3. ทำ `/suggest-next-action`
+1. Run `/report` with findings and recommendations
+2. Highlight the top 3-5 most important issues
+3. Run `/suggest-next-action`
 
 ## Category Mapping
 
@@ -81,15 +81,15 @@ related:
 
 ## Rules
 
-- ไม่แก้ code ระหว่าง roleplay review
-- ทุก finding ต้องมี evidence จาก code หรือ config
-- ถ้า role ไม่ชัด → ถามก่อน
-- ส่งต่อไปยัง role เดียวต่อครั้ง — ไม่ mixed perspective; ถ้าต้องการหลายมุมให้รันทีละ role หรือใช้ `/deep-review`
-- ไม่ deploy หรือรันอะไรจริง
+- Do not edit code during a roleplay review
+- Every finding must have evidence from code or config
+- If the role is unclear → ask first
+- Hand off to one role at a time — no mixed perspectives; for multiple viewpoints, run one role at a time or use `/deep-review`
+- Do not deploy or run anything for real
 
 ## Expected Outcome
 
-- รายงาน findings จากมุมมอง persona ที่เลือก
-- Top issues พร้อม recommendation
-- รายงาน severity ชัดเจน
-- Next actions ผ่าน `/suggest-next-action`
+- A findings report from the chosen persona's point of view
+- Top issues with recommendations
+- A clear severity report
+- Next actions via `/suggest-next-action`

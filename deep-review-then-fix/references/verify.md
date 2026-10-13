@@ -1,17 +1,17 @@
 ---
 name: verify
-description: ตรวจสอบผลหลัง fix
+description: Verify the results after a fix
 ---
 
 # Verify
 
 ## Goal
 
-ตรวจสอบผลหลัง fix
+Verify the results after a fix
 
 ## Checks
 
-1. รัน tests/build/typecheck ตาม ecosystem
-2. ทำ `/deep-validate`
-3. ทำ `/suggest-next-action`
+1. Run tests/build/typecheck according to the ecosystem
+2. Run `/deep-validate`
+3. Run `/suggest-next-action`
 

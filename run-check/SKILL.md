@@ -1,6 +1,6 @@
 ---
 name: run-check
-description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
+description: Run lint, typecheck and scan to verify quality
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -12,65 +12,65 @@ related:
 
 ## Goal
 
-รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
+Run lint, typecheck and scan to verify quality
 
 ## Scope
 
-ใช้ `run-check` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (check)
+Use `run-check` for tasks and workflows within its coverage (check)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (check)
+> Pre-Run: Always run `/deep-review` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (check)
 
 ### 1. Run Lint
 
 > Goal: Run Lint
 
-1. ทำ `/run-lint` เพื่อตรวจสอบ code style
-2. แก้ไข lint errors ถ้ามี
-3. ยืนยันว่า lint ผ่าน
+1. Run `/run-lint` to check code style
+2. Fix lint errors if any
+3. Confirm lint passes
 
 ### 2. Run Typecheck
 
 > Goal: Run Typecheck
 
-1. ทำ `/run-typecheck` เพื่อตรวจสอบ types
-2. แก้ไข type errors ถ้ามี
-3. ยืนยันว่า typecheck ผ่าน
+1. Run `/run-typecheck` to check types
+2. Fix type errors if any
+3. Confirm typecheck passes
 
 ### 3. Run Scan
 
 > Goal: Run Scan
 
-1. ทำ `/run-scan` เพื่อตรวจสอบ code patterns
-2. แก้ไข scan issues ถ้ามี
-3. ยืนยันว่า scan ผ่าน
+1. Run `/run-scan` to check code patterns
+2. Fix scan issues if any
+3. Confirm scan passes
 
 ## Rules
 
 ### 1. Check Order
 
-- Lint: ตรวจสอบ code style ก่อน
-- Typecheck: ตรวจสอบ types
-- Scan: ตรวจสอบ code patterns
+- Lint: check code style first
+- Typecheck: check types
+- Scan: check code patterns
 
 ### 2. Failure Handling
 
-- Lint ล้มเหลว: แก้ไข lint errors
-- Typecheck ล้มเหลว: แก้ไข type errors
-- Scan ล้มเหลว: แก้ไข scan issues
+- Lint fails: fix lint errors
+- Typecheck fails: fix type errors
+- Scan fails: fix scan issues
 
 ### 3. Parallel Execution
 
-- รัน lint, typecheck และ scan แบบ parallel เมื่อเป็นไปได้
-- ใช้ cache เพื่อเพิ่มความเร็ว
-- รัน checks ใน CI environment
+- Run lint, typecheck and scan in parallel when possible
+- Use cache to speed things up
+- Run checks in the CI environment
 
-- ใช้ /deep-optimize ถ้าจำเป็น
+- Use /deep-optimize if needed
 
 ## Expected Outcome
 
-- Lint ผ่านทั้งหมด
-- Typecheck ผ่านทั้งหมด
-- Scan ผ่านทั้งหมด
-- Code พร้อมสำหรับ commit/deploy
+- All lint checks pass
+- All typecheck checks pass
+- All scan checks pass
+- Code is ready for commit/deploy

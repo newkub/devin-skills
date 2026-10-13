@@ -42,11 +42,11 @@
 
 ## Analysis Guidelines
 
-- ระบุ best/average/worst case เสมอ
-- คำนวณ space complexity รวม input และ auxiliary space
-- ระบุ bottlenecks และ hot paths
-- พิจารณา amortized complexity สำหรับ data structures (e.g. dynamic arrays)
-- พิจารณา cache-friendly access patterns (locality of reference)
+- Always state best/average/worst case
+- Compute space complexity including input and auxiliary space
+- Identify bottlenecks and hot paths
+- Consider amortized complexity for data structures (e.g. dynamic arrays)
+- Consider cache-friendly access patterns (locality of reference)
 
 ## Source
 

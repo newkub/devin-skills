@@ -1,30 +1,30 @@
 # Issue To Solution Map
 
-ตาราง map อาการ (symptom) ทั่วไปไปยัง skill หรือ workflow ทีควรใช้
+Table mapping common symptoms to the skill or workflow that should be used
 
-| ถ้า (Issue) | ทำอย่างไร (Solution) |
+| Issue | Solution |
 |---|---|
-| disk เต็ม / ใกล้เต็ม | `/cleanup-files-in-computer` หรือ `/uninstall-program-in-computer` หรือ `/follow-tool-mise` (`mise cleanup`) |
-| memory leak / ใช้ RAM สูง | `/run-profiler` หรือ `/deep-optimize`; ถ้าต้องการให้ CI ตรวจ → `/setup-cicd` + `/run-verify` |
-| CPU สูง / ช้าผิดปกติ | `/deep-optimize`, `/run-bench`, `/run-profiler` |
+| disk full / nearly full | `/cleanup-files-in-computer` or `/uninstall-program-in-computer` or `/follow-tool-mise` (`mise cleanup`) |
+| memory leak / high RAM usage | `/run-profiler` or `/deep-optimize`; to have CI check it → `/setup-cicd` + `/run-verify` |
+| high CPU / abnormal slowness | `/deep-optimize`, `/run-bench`, `/run-profiler` |
 | build fail | `/run-build`, `/resolve-errors` |
 | lint fail | `/run-lint`, `/resolve-errors` |
 | typecheck fail | `/run-typecheck`, `/resolve-errors` |
 | test fail / flaky | `/run-test`, `/run-test all`, `/resolve-errors` |
 | CI/CD pipeline fail | `/resolve-cicd`, `/resolve-github-actions-fails`, `/setup-cicd` |
 | deploy fail | `/resolve-cicd`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
-| secrets leak / สงสัย hardcoded secret | `/check-secrets secrets-leak`, `/follow-secret-manager`, `/open-github secrets` |
+| secrets leak / suspected hardcoded secret | `/check-secrets secrets-leak`, `/follow-secret-manager`, `/open-github secrets` |
 | unused dependencies | `/follow-tool-knip`, `/follow-tool-knip` |
 | dead code / unused files | `/follow-tool-knip` |
 | circular dependencies | `/follow-tool-madge` |
-| long files (>250 บรรทัด) | `/check-long-files`, `/refactor` |
+| long files (>250 lines) | `/check-long-files`, `/refactor` |
 | code duplication | `/check-code-structure`, `/follow-tool-jscpd` |
-| broken references / skill refs ขาด | `/review-devin-global-harness`, `/update-references` |
-| package manifest ไม่พร้อม publish | `/update-project` (`### setup-package`) |
-| release workflow/config ขาด | `/setup-cicd`, `/follow-release`, `/follow-tool-release-it` |
-| TODO/MOCK/placeholder เหลือ | `/scan-codebase`, `/update-todo-md`, `/implement-to-production` |
+| broken references / missing skill refs | `/review-devin-global-harness`, `/update-references` |
+| package manifest not publish-ready | `/update-project` (`### setup-package`) |
+| release workflow/config missing | `/setup-cicd`, `/follow-release`, `/follow-tool-release-it` |
+| TODO/MOCK/placeholder left over | `/scan-codebase`, `/update-todo-md`, `/implement-to-production` |
 | dependencies outdated | `/update-version-to-latest`, `/follow-tool-taze` |
-| ไฟล์/branch/worktree รก | `/run-cleanup`, `/cleanup-files-in-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
+| cluttered files/branches/worktrees | `/run-cleanup`, `/cleanup-files-in-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
 | git conflict | `/resolve-merge-conflicts`, `/deep-debug` |
-| workspace หลายอันไม่ตรงกัน | `/review-devin-global-harness`, `/sync-drive-d-submodules` |
-| ไม่รู้ว่าควรใช้ skill ใด | `/search-skills`, `/suggest-next-action`, `/ask-me` |
+| multiple inconsistent workspaces | `/review-devin-global-harness`, `/sync-drive-d-submodules` |
+| unsure which skill to use | `/search-skills`, `/suggest-next-action`, `/ask-me` |

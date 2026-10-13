@@ -1,6 +1,6 @@
 ---
 name: review
-description: เลือกและ execute review skill(s) ที่เหมาะสมกับ context รองรับ parallel multi-dimension
+description: Select and execute review skill(s) fit for the context; supports parallel multi-dimension
 argument-hint: "[topic-or-goal]"
 related:
   - deep-review
@@ -15,179 +15,179 @@ related:
 
 ## Goal
 
-เลือกและ execute `review-*` skill(s) ที่เหมาะสมกับ context ปัจจุบัน โดยพิจารณาทั้ง target object, user intent, workspace type และ risk level พร้อมรองรับ parallel execution
+Select and execute the `review-*` skill(s) best suited to the current context, considering the target object, user intent, workspace type, and risk level, with support for parallel execution
 
 ## Scope
 
-ใช้เมื่อ user ต้องการ review แต่ยังไม่รู้จะใช้ review-* skill ใด หรือต้องการให้ระบบเลือก/จัดลำดับ/execute review skills ให้ รองรับ code, docs, plan, GitHub, devin skills, release, delivery และ cross-dimensional review
+Use when the user wants a review but isn't sure which review-* skill to use, or wants the system to select, order, and execute review skills. Covers code, docs, plans, GitHub, devin skills, release, delivery, and cross-dimensional review
 
 ## Execute
 
 ### 1. Detect Review Context
 
-> Goal: รู้ว่าควร review อะไรและเน้นด้านใด
+> Goal: know what to review and which aspects to emphasize
 
-1. ตรวจ workspace files: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `AGENTS.md`, `README.md`, `git status`
-2. ถ้ามี `apps/`, `src/`, `packages/` → น่าจะเป็น project code
-3. ถ้าเป็น `.md`, `.kdl`, `USAGE.md`, `FEATURES.md` → น่าจะเป็น docs
-4. ถ้า workspace อยู่ใน `%APPDATA%\devin\skills` หรือมี `.devin/skills/` → น่าจะเป็น devin skills
-5. ถ้า user ระบุ issue/PR number หรือ `github` → น่าจะเป็น GitHub
-6. ถ้ามี git diff หรือ `git diff` ใน scope → อาจใช้ `/deep-review`
-7. สอบถาม user ถ้า context ยังไม่ชัด
+1. Check workspace files: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `AGENTS.md`, `README.md`, `git status`
+2. If there are `apps/`, `src/`, `packages/` → likely project code
+3. If it's `.md`, `.kdl`, `USAGE.md`, `FEATURES.md` → likely docs
+4. If the workspace is under `%APPDATA%\devin\skills` or has `.devin/skills/` → likely devin skills
+5. If the user names an issue/PR number or `github` → likely GitHub
+6. If there is a git diff or `git diff` in scope → `/deep-review` may apply
+7. Ask the user if the context is still unclear
 
 ### 2. Select Review Skills
 
-> Goal: เลือก review skill(s) ที่ตรงกับ context มากที่สุด
+> Goal: pick the review skill(s) that best match the context
 
-ใช้ตารางด้านล่างเพื่อ map context ไปยัง review skill หลัก (primary) และ review skill รอง (secondary) ถ้ามี:
+Use the table below to map the context to a primary review skill and, where applicable, secondary review skills:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/deep-review` |
-| 2 | เน้น code quality, bug-prone patterns, smells | `/deep-review` | `/deep-review` |
-| 3 | เน้น logic, types, edge cases, contracts, tests | `/deep-review` | `/deep-review` |
-| 4 | เน้น security | `/deep-review` | `/deep-review`, `/deep-review` |
-| 5 | เน้น performance | `/deep-review` | `/deep-review`, `/deep-review` |
-| 6 | เน้น frontend code (React/Vue/Solid/Svelte/Angular) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 7 | เน้น backend (API, service, database, data flow) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 8 | เน้น architecture, modularity, boundaries | `/deep-review` | `/deep-review`, `/deep-review` |
-| 9 | เน้น UX/UI, design system, accessibility | `/deep-review` | `/deep-review`, `/deep-review` |
-| 10 | เน้น platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 11 | เน้น business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 12 | เน้น tech stack / dependencies / library design | `/deep-review` | `/deep-review`, `/deep-review` |
-| 13 | เน้น stability, error handling, debuggability | `/deep-review` | `/deep-review`, `/deep-review` |
-| 14 | เน้น observability (metrics, tracing, logging, alerting) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 15 | เน้น compliance (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 16 | เน้น delivery (docs, DX, CI/CD, infra, performance, security) | `/deep-review` | `/deep-review`, `/deep-review` |
-| 17 | ตรวจความพร้อมก่อน deploy | `/deep-review` | `/deep-review`, `/watch-deploy` |
-| 18 | ตรวจความพร้อมก่อน release | `/deep-review` | `/deep-review`, `/deep-review` |
-| 19 | ตรวจ `rules/` (ast-grep), `sgconfig.yml`, `.devin/`, `AGENTS.md` | `/deep-review` | `/deep-review`, `/review-devin-global-harness` |
-| 20 | ตรวจ docs structure ก่อน `update-docs` | `/deep-review` | `/deep-review` |
-| 21 | ตรวจ `README.md` ก่อน `update-docs readme-md` | `/deep-review` | `/deep-review` |
-| 22 | ตรวจ `FEATURES.md` ก่อน `update-docs features-md` | `/deep-review` | `/deep-review` |
-| 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/deep-review` | `/deep-review` |
-| 24 | ตรวจ content coverage ครบทุก features/API | `/deep-review` | `/deep-review` |
-| 25 | ตรวจ naming conventions | `/deep-review` | `/deep-review` |
-| 26 | ตรวจ readability | `/deep-review` | `/deep-review` |
-| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/deep-review` | `/deep-review`, `/follow-tool-knip` |
-| 28 | ตรวจ consistency ข้าม skills / code | `/deep-review` | `/deep-review` |
-| 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/deep-review` | `/review-devin-global-harness` |
-| 30 | ตรวจ git diff ก่อน keep/revert | `/deep-review` | `/deep-review` |
-| 31 | ตรวจ migration plan ก่อนลงมือ | `/deep-review` | `/deep-review` |
-| 32 | ตรวจก่อน refactor | `/deep-review` | `/deep-review` |
-| 33 | รวม findings จาก dimensional reviews | `/deep-review` | `/deep-review` |
-| 34 | ต้องการ multi-stakeholder / roleplay review | `/deep-review` | `/deep-review` |
-| 35 | ตรวจ GitHub issue | `/deep-review` | `/review-github-pr` |
-| 36 | ตรวจ GitHub PR | `/review-github-pr` | `/deep-review`, `/deep-review` |
-| 37 | ตรวจ issue ทั่วไป | `/deep-review` | `/deep-review` |
-| 38 | ตรวจ devin global skills repo | `/review-devin-global-harness` | `/deep-review` |
-| 39 | ตรวจ devin global subagents | `/update-devin-global-subagents` | `/review-devin-global-harness` |
-| 40 | ตรวจแล้วค่อย fix ตาม context | `/deep-review-then-fix` | `/deep-review` |
-| 41 | ตรวจ dead code / unused files / unused deps ใน code | `/follow-tool-knip` | `/review-devin-global-harness`, `/deep-review` |
-| 42 | เน้น DX — dev loop speed, onboarding, error messages | `/deep-review` | `/deep-review`, `/deep-review` |
-| 43 | เน้น desktop app (Tauri/Electron) — window, tray, IPC, packaging | `/deep-review` | `/deep-review`, `/deep-review` |
-| 44 | เน้น browser extension — manifest, permissions, content scripts | `/deep-review` | `/deep-review`, `/deep-review` |
-| 45 | เน้น IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/deep-review` | `/deep-review`, `/deep-review` |
-| 49 | เน้น SDK/library public surface — exports, semver, types | `/deep-review` | `/deep-review`, `/deep-review` |
-| 50 | เน้น usage surface — API/CLI/web parity กับ docs (refresh `/update-usage-md` ก่อน) | `/deep-review` | `/deep-review`, `/deep-review`, `/deep-review` |
+| 1 | Want a review of the whole codebase / don't know where to start | `/deep-review` | `/deep-review` |
+| 2 | Focus on code quality, bug-prone patterns, smells | `/deep-review` | `/deep-review` |
+| 3 | Focus on logic, types, edge cases, contracts, tests | `/deep-review` | `/deep-review` |
+| 4 | Focus on security | `/deep-review` | `/deep-review`, `/deep-review` |
+| 5 | Focus on performance | `/deep-review` | `/deep-review`, `/deep-review` |
+| 6 | Focus on frontend code (React/Vue/Solid/Svelte/Angular) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 7 | Focus on backend (API, service, database, data flow) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 8 | Focus on architecture, modularity, boundaries | `/deep-review` | `/deep-review`, `/deep-review` |
+| 9 | Focus on UX/UI, design system, accessibility | `/deep-review` | `/deep-review`, `/deep-review` |
+| 10 | Focus on platform (mobile, desktop, CLI, SSR, i18n, SEO) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 11 | Focus on business logic (payment, subscription, multi-tenancy, feature flags, realtime, email) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 12 | Focus on tech stack / dependencies / library design | `/deep-review` | `/deep-review`, `/deep-review` |
+| 13 | Focus on stability, error handling, debuggability | `/deep-review` | `/deep-review`, `/deep-review` |
+| 14 | Focus on observability (metrics, tracing, logging, alerting) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 15 | Focus on compliance (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 16 | Focus on delivery (docs, DX, CI/CD, infra, performance, security) | `/deep-review` | `/deep-review`, `/deep-review` |
+| 17 | Check readiness before deploy | `/deep-review` | `/deep-review`, `/watch-deploy` |
+| 18 | Check readiness before release | `/deep-review` | `/deep-review`, `/deep-review` |
+| 19 | Check `rules/` (ast-grep), `sgconfig.yml`, `.devin/`, `AGENTS.md` | `/deep-review` | `/deep-review`, `/review-devin-global-harness` |
+| 20 | Check docs structure before `update-docs` | `/deep-review` | `/deep-review` |
+| 21 | Check `README.md` before `update-docs readme-md` | `/deep-review` | `/deep-review` |
+| 22 | Check `FEATURES.md` before `update-docs features-md` | `/deep-review` | `/deep-review` |
+| 23 | Check `USAGE.md` / `usage.kdl` | `/deep-review` | `/deep-review` |
+| 24 | Check content coverage across every feature/API | `/deep-review` | `/deep-review` |
+| 25 | Check naming conventions | `/deep-review` | `/deep-review` |
+| 26 | Check readability | `/deep-review` | `/deep-review` |
+| 27 | Check redundancy / duplication / unnecessary things in skills or code | `/deep-review` | `/deep-review`, `/follow-tool-knip` |
+| 28 | Check consistency across skills / code | `/deep-review` | `/deep-review` |
+| 29 | Check references between skills and `AGENTS.md` | `/deep-review` | `/review-devin-global-harness` |
+| 30 | Check the git diff before keep/revert | `/deep-review` | `/deep-review` |
+| 31 | Check the migration plan before starting | `/deep-review` | `/deep-review` |
+| 32 | Check before refactor | `/deep-review` | `/deep-review` |
+| 33 | Aggregate findings from dimensional reviews | `/deep-review` | `/deep-review` |
+| 34 | Want a multi-stakeholder / roleplay review | `/deep-review` | `/deep-review` |
+| 35 | Check a GitHub issue | `/deep-review` | `/review-github-pr` |
+| 36 | Check a GitHub PR | `/review-github-pr` | `/deep-review`, `/deep-review` |
+| 37 | Check a general issue | `/deep-review` | `/deep-review` |
+| 38 | Check the devin global skills repo | `/review-devin-global-harness` | `/deep-review` |
+| 39 | Check devin global subagents | `/update-devin-global-subagents` | `/review-devin-global-harness` |
+| 40 | Review first, then fix per context | `/deep-review-then-fix` | `/deep-review` |
+| 41 | Check dead code / unused files / unused deps in code | `/follow-tool-knip` | `/review-devin-global-harness`, `/deep-review` |
+| 42 | Focus on DX — dev loop speed, onboarding, error messages | `/deep-review` | `/deep-review`, `/deep-review` |
+| 43 | Focus on desktop app (Tauri/Electron) — window, tray, IPC, packaging | `/deep-review` | `/deep-review`, `/deep-review` |
+| 44 | Focus on browser extension — manifest, permissions, content scripts | `/deep-review` | `/deep-review`, `/deep-review` |
+| 45 | Focus on IaC — Terraform/Pulumi/CDK/K8s, state, secrets, drift | `/deep-review` | `/deep-review`, `/deep-review` |
+| 49 | Focus on SDK/library public surface — exports, semver, types | `/deep-review` | `/deep-review`, `/deep-review` |
+| 50 | Focus on usage surface — API/CLI/web parity with docs (refresh `/update-usage-md` first) | `/deep-review` | `/deep-review`, `/deep-review`, `/deep-review` |
 
-1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
-2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง
-3. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report` แล้วถาม user ก่อนเลือก
+1. If the user names a specific review skill → use that skill as primary, then check the table for secondaries
+2. If several contexts are clearly present → select all relevant primaries
+3. If the context is unclear → run `/scan-codebase`, then `/report`, then ask the user before choosing
 
 ### 3. Execute Selected Skills
 
-> Goal: รัน review skill(s) ที่เลือกอย่างมีประสิทธิภาพ
+> Goal: run the selected review skill(s) effectively
 
-1. ถ้ามี skill เดียว → เรียก skill นั้นโดยตรง
-2. ถ้ามีหลาย skills และ independent → ใช้ `/follow-parallel` รัน parallel (จำกัดไม่เกิน 10 ต่อ batch)
-3. ถ้ามี dependency เช่น `/deep-review` ก่อน `/implement-to-production` → รันตามลำดับ
-4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/deep-review` ก่อน
-5. บันทึก output และ findings จากแต่ละ skill
+1. If there is one skill → invoke that skill directly
+2. If there are several skills and they are independent → use `/follow-parallel` to run them in parallel (limit to no more than 10 per batch)
+3. If there are dependencies, e.g. `/deep-review` before `/implement-to-production` → run in order
+4. If a skill needs a deep scan → run `/deep-analyze` or `/deep-review` first
+5. Record the output and findings from each skill
 
 ### 4. Validate And Aggregate
 
-> Goal: รวมผลและตรวจสอบความถูกต้อง
+> Goal: combine results and verify correctness
 
-1. ทำ `/deep-validate` เพื่อ validate findings จากทุก review skill
-2. กรอง false positives และ duplicate findings
-3. จัดลำดับ findings ตาม severity — ตาม `deep-review/SKILL.md` Severity Classification
-4. ถ้ามี conflicts ระหว่าง findings จาก skills ต่างกัน → ทำ `/rethink` แล้วสรุป
+1. Run `/deep-validate` to validate findings from every review skill
+2. Filter out false positives and duplicate findings
+3. Order findings by severity — per `deep-review/SKILL.md` Severity Classification
+4. If there are conflicts between findings from different skills → run `/rethink` then summarize
 
 ### 5. Report And Suggest Next Action
 
-> Goal: สรุปผล review และแนะนำทางต่อ
+> Goal: summarize the review results and recommend what to do next
 
-1. ทำ `/report`
-2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
-3. ระบุ skill ถัดไปที่ควรทำ เช่น `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship-to-dev-branch`
-4. ทำ `/suggest-next-action`
+1. Run `/report`
+2. Build the Review Skills Used, Findings Count, Severity Breakdown, Review Score table
+3. Identify the next skill to run, e.g. `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, or `/ship-to-dev-branch`
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Context First
-- ไม่เดาหาก context ไม่ชัด
-- ถาม user ก่อนเลือก review skill ถ้าจำเป็น
-- ใช้ `/scan-codebase` และ `/report` เพื่อช่วยตัดสินใจ
+- Don't guess when the context is unclear
+- Ask the user before picking a review skill when needed
+- Use `/scan-codebase` and `/report` to support the decision
 
 ### 2. Skill Selection
-- เลือก skill ตาม target object และ user intent ไม่ใช่แค่ชื่อ file
-- หลีกเลี่ยงการเลือก review skills ที่ซ้ำซ้อนในขอบเขตเดียวกัน
-- สามารถเลือกหลาย skills ถ้า task มีหลาย context
+- Choose skills by the target object and user intent, not just file names
+- Avoid selecting overlapping review skills within the same scope
+- Several skills may be selected if the task spans multiple contexts
 
 ### 3. Parallel Execution
-- ใช้ `/follow-parallel` เมื่อ review skills ที่เลือกเป็น independent
-- จำกัด parallel ไม่เกิน 10 ต่อ batch
-- ถ้ามี dependency ต้องรันตามลำดับ
+- Use `/follow-parallel` when the selected review skills are independent
+- Limit parallelism to no more than 10 per batch
+- Skills with dependencies must run in order
 
 ### 4. Evidence-Based
-- ทุก finding ต้องมี file, line, หรือ reference
-- ไม่สรุป finding โดยไม่มี evidence
-- ไม่แก้ไขหรือ implement fixes — รายงาน findings เท่านั้น ส่งต่อไป section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/fix`
+- Every finding must have a file, line, or reference
+- Never conclude a finding without evidence
+- Don't modify or implement fixes — report findings only, then hand off to the `## Fix` section of the matching-domain `review-*` skill or `/fix`
 
 ### 5. No Duplication
-- `/review` คือ canonical entry สำหรับ routing — ไม่เรียกซ้อนกับ router อื่น
-- ถ้า `/review` ทำงานอยู่แล้ว ไม่ต้องเรียกซ้ำ
+- `/review` is the canonical entry for routing — don't nest it with other routers
+- If `/review` is already running, don't invoke it again
 
 ### 6. Formatting
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (review)
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report`
-- ทุก report table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
+- Never use `**` (bold markers) — use backticks for emphasis (review)
+- Use heading levels for structure
+- Report as tables via `/report`
+- Every report table must have `No.` as its first column
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-deep ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /deep-review if needed
+- Use /deep-review if needed
+- Use /deep-review if needed
+- Use /follow-deep if needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile สั้นอยู่ใน section นี้ รายละเอียดเต็มอยู่ใน links
+> Goal: independent work that spawned agents can run in parallel — short profile here, full detail in the links
 
-### codebase-reviewer — ตรวจ codebase/scope ตาม full-dimension checklist แบบ report-only (spawn ผ่าน `/use-subagents` สำหรับ codebase-wide scan)
+### codebase-reviewer — checks the codebase/scope against the full-dimension checklist, report-only (spawn via `/use-subagents` for codebase-wide scan)
 
-- **Inputs**: `scope` (path/directory เป้าหมาย review), `context-hints` (optional — stack/domain ที่ parent ตรวจไว้แล้ว), `findings-file` (optional — baseline analyzer output เพื่อ cross-check)
+- **Inputs**: `scope` (target path/directory to review), `context-hints` (optional — stack/domain already detected by the parent), `findings-file` (optional — baseline analyzer output for cross-checking)
 - **Tools**: `read`, `exec`, `grep`, `glob`, `find_file_by_name` (no `write`/`edit`)
-- **Execute**: อ่าน `references/detect-context.md` ระบุ stack/entry points ของ `scope` → อ่าน `references/checklist.md` ตรวจ code จริงตาม dimensions ทุก finding มี `file:line` + evidence → classify severity + คำนวณ score ตาม `references/scoring.md` → false positive ทิ้ง, domain ลึกกว่า map ไป `/review-*` ตาม `references/route-to-review-skill.md` เป็น recommendation → สรุปผลตาม `references/report.md`
-- **Output**: ตาราง `| No. | Dimension | Severity | File | Finding | Suggestion |` เรียง Critical → Info ปิดท้ายด้วย score + follow-up `/review-*` recommendations
-- **Constraints**: Read-only — ห้าม `write`/`edit` ห้ามแก้ไขไฟล์ใดๆ; ไม่มี evidence ไม่มี finding; ระบุ uncertainty แทนการเดา; dispatch catalog ข้าม skill → `deep-review/SKILL.md` (อ่านอย่างเดียว ไม่แก้)
+- **Execute**: read `references/detect-context.md` to identify the `scope`'s stack/entry points → read `references/checklist.md` and check real code across all dimensions, every finding with `file:line` + evidence → classify severity + compute the score per `references/scoring.md` → drop false positives, map deeper domains to `/review-*` per `references/route-to-review-skill.md` as recommendations → summarize per `references/report.md`
+- **Output**: table `| No. | Dimension | Severity | File | Finding | Suggestion |` ordered Critical → Info, ending with the score + follow-up `/review-*` recommendations
+- **Constraints**: Read-only — `write`/`edit` forbidden, no modifying any file; no evidence, no finding; state uncertainty instead of guessing; the cross-skill dispatch catalog → `deep-review/SKILL.md` (read only, never modify)
 - **Full detail**: `references/checklist.md`, `references/detect-context.md`, `references/report.md`, `references/route-to-review-skill.md`, `references/scoring.md`, `references/website.md`
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (review)
+- See review metrics in [references/scoring.md](references/scoring.md) (review)
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md) — ดู `## Subagents` สำหรับ profile ของ codebase-reviewer
-- `review-*` dispatch catalog ครบทุกตัว (per-workspace phases): `deep-review/SKILL.md`
-- ใช้ /run-review ถ้าจำเป็น
+- [Full-dimension checklist](references/checklist.md) — see `## Subagents` for the codebase-reviewer profile
+- `review-*` full dispatch catalog (per-workspace phases): `deep-review/SKILL.md`
+- Use /run-review if needed
 
 ## Expected Outcome
 
-- รู้ว่า review อะไรและใช้ review skill ใด
-- `review-*` skill(s) ที่เหมาะสมถูกเลือกและ execute
-- ไม่เรียก skills ที่ไม่เกี่ยวข้อง
-- Findings ถูก validate, กรอง false positives, และรวมเป็น report
-- รู้ skill ถัดไปที่ควรทำ
+- Know what to review and which review skill to use
+- The fitting `review-*` skill(s) are selected and executed
+- No irrelevant skills are invoked
+- Findings are validated, false positives filtered, and combined into a report
+- Know the next skill to run

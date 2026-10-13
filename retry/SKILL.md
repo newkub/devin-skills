@@ -1,6 +1,6 @@
 ---
 name: retry
-description: ทำตาม user prompt ล่าสุดอีกครั้ง เพื่อแก้ไขปัญหาหรือลองใหม
+description: Re-run the latest user prompt to fix an issue or try again
 argument-hint: "[prompt]"
 related:
   - ask-again
@@ -13,46 +13,46 @@ related:
 
 ## Goal
 
-ทำตาม user prompt ล่าสุดอีกครั้ง เพื่อแก้ไขปัญหาหรือลองใหม โดยเน้นที root cause
+Re-execute the latest user prompt to fix an issue or try again, focusing on the root cause.
 
 ## Scope
 
-ใช้เมื่อต้องการทำงานซ้ำตาม user prompt ล่าสุด เช่นหลังจากพบ error, ผลไม่ผ่าน หรือต้องการลอง approach ใหม
+Use when work must be redone per the latest user prompt, e.g. after an error, a failing result, or wanting to try a new approach.
 
 ## Execute
 
 ### 1. Identify Latest Prompt
 
-> Goal: รู้ prompt ล่าสุดทีต้องทำซ้ำ
+> Goal: Know the latest prompt that must be redone
 
-1. อ่าน user prompt ล่าสุดจาก conversation history
-2. ถ้าไม่พบ ให้ถามผู้ใช้
-3. ระบุสถานะปัจจุบันว่าไปถึงไหนแล้ว
+1. Read the latest user prompt from the conversation history
+2. If not found, ask the user
+3. Identify the current state and how far it got
 
 ### 2. Re-Execute
 
-> Goal: ทำซ้ำและแก้ไขให้ดีขึ้น
+> Goal: Redo it and improve the result
 
-1. ทำตาม user prompt ล่าสุดอีกครั้ง
-2. แก้ไขปัญหาที root cause ไม่ใช่ symptoms
-3. ใช้ minimal changes เสมอ
-4. ถ้ายังไม่ผ่าน → ทำ `/loop-until-complete` หรือ `/resolve-errors` ตาม context
+1. Re-execute the latest user prompt
+2. Fix problems at the root cause, not the symptoms
+3. Always use minimal changes
+4. If it still fails → run `/loop-until-complete` or `/resolve-errors` per context
 
 ## Rules
 
-- ทำตาม user prompt ล่าสุดเท่านั้น
-- แก้ที root cause ไม่ใช่ symptoms
-- ใช้ minimal changes เสมอ
-- ถ้าทำซ้ำหลายครั้ง ให้บันทึกสิ่งทีลองแล้วไม่ได้ผล
+- Follow only the latest user prompt
+- Fix at the root cause, not the symptoms
+- Always use minimal changes
+- If retried several times, record what was tried that did not work
 
-- ใช้ /ask-again ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /run-until-pass ถ้าจำเป็น
+- Use /ask-again if needed
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
+- Use /run-until-pass if needed
 
 ## Expected Outcome
 
-- งานที่ทำซ้ำเสร็จสมบูรณ์
-- ปัญหาถูกแก้ไขที root cause
-- ไม่เกิด regression จากการทำซ้ำ
+- The redone work is complete
+- The problem is fixed at the root cause
+- No regression from the retry

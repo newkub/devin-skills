@@ -2,48 +2,48 @@
 
 ## Workspace Imports
 
-ตรวจว่า `tools/review-codebase` imports analyzers จาก `tools-analyze` ผ่าน workspace:
+Verify that `tools/review-codebase` imports analyzers from `tools-analyze` via workspace:
 
-- ใช้ workspace protocol เช่น `"tools-analyze": "workspace:*"`
-- import จาก `tools-analyze` ไม่ใช่ copy code มาใหม่
-- ตรวจใน `package.json` ของ `tools/review-codebase`
+- Use the workspace protocol, e.g. `"tools-analyze": "workspace:*"`
+- Import from `tools-analyze` instead of copying code
+- Check in the `package.json` of `tools/review-codebase`
 
-ถ้าไม่มี workspace import → flag เป็น `High` severity
+If there is no workspace import → flag as `High` severity
 
 ## No Duplicated Logic
 
-ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review-codebase/src/`:
+Verify that there is no duplicated analyzer logic in `tools/review-codebase/src/`:
 
-- ห้าม copy analyzer functions จาก `tools-analyze`
-- ห้าม re-implement logic ที่มีใน `tools-analyze` แล้ว
-- ตรวจใน `src/domain/analyzers/` และ `src/adapters/`
+- Never copy analyzer functions from `tools-analyze`
+- Never re-implement logic already present in `tools-analyze`
+- Check in `src/domain/analyzers/` and `src/adapters/`
 
-ถ้าพบ duplicated logic → flag เป็น `Medium` severity
+If duplicated logic is found → flag as `Medium` severity
 
 ## Dependency Check
 
-ตรวจว่า `tools-analyze` เป็น dependency ของ `tools/review-codebase`:
+Verify that `tools-analyze` is a dependency of `tools/review-codebase`:
 
-- อ่าน `tools/review-codebase/package.json`
-- ตรวจ `dependencies` มี `tools-analyze`
-- ตรวจ version ใช้ `workspace:*` protocol
+- Read `tools/review-codebase/package.json`
+- Check that `dependencies` includes `tools-analyze`
+- Check that the version uses the `workspace:*` protocol
 
-ถ้าขาด dependency → flag เป็น `High` severity
+If the dependency is missing → flag as `High` severity
 
 ## Import Path Validation
 
-ตรวจว่า import paths ถูกต้อง:
+Verify that import paths are correct:
 
-- import จาก `tools-analyze` ใช้ barrel export หรือ direct path
-- ไม่มี broken imports หรือ missing modules
-- ตรวจด้วย `bun run` หรือ typecheck
+- Imports from `tools-analyze` use a barrel export or a direct path
+- There are no broken imports or missing modules
+- Check with `bun run` or typecheck
 
-ถ้าพบ broken imports → flag เป็น `High` severity
+If broken imports are found → flag as `High` severity
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must include:
 
-- file path เช่น `tools/review-codebase/package.json`
-- line number
-- code snippet ที่เป็นปัญหา
+- File path, e.g. `tools/review-codebase/package.json`
+- Line number
+- The code snippet that is problematic

@@ -1,6 +1,6 @@
 ---
 name: cleanup-artifact
-description: ลบ build artifacts และ dependency caches ด้วย Rust CLI — dry-run ก่อนเสมอ
+description: Delete build artifacts and dependency caches with a Rust CLI — always dry-run first
 argument-hint: "[path] [--yes] [--deep] [--min MB]"
 related:
   - cleanup-files-in-project
@@ -13,71 +13,71 @@ related:
 
 ## Goal
 
-คืน disk space และ clean state โดยลบ build artifacts และ dependency caches (`node_modules`, `target`, `dist`, `.next`, `coverage`, `__pycache__`, `.venv` ฯลฯ) ด้วย Rust CLI ใน skill นี้ — dry-run รายงานขนาดก่อนเสมอ
+Reclaim disk space and restore a clean state by deleting build artifacts and dependency caches (`node_modules`, `target`, `dist`, `.next`, `coverage`, `__pycache__`, `.venv`, etc.) with the Rust CLI in this skill — always dry-run first and report sizes
 
 ## Scope
 
-- ครอบคลุม artifacts ทุก ecosystem: JS/Bun (`node_modules`, `dist`, `.next`, `.nuxt`, `.output`, `.turbo`, `coverage`), Rust (`target`), Python (`__pycache__`, `.venv`, `.pytest_cache`, `*.egg-info`), .NET (`bin`, `obj` — เฉพาะเมื่อ parent มี `.csproj`/`.sln`), Java/Kotlin (`.gradle`, `build`), Swift (`.build`), Zig (`zig-out`, `.zig-cache`), CMake (`cmake-build-*`), iOS (`Pods`, `DerivedData`)
-- `--deep` เพิ่ม global caches: `~/.bun/install/cache`, `~/.npm`, `~/.cargo/registry`, `~/go/pkg/mod`, pip cache, pnpm store, `~/.m2`, `~/.gradle/caches`
-- ต่างจาก `/cleanup-files-in-project` ที่ลบ source files ไม่แตะ artifacts — skill นี้กลับกัน
+- Covers artifacts across every ecosystem: JS/Bun (`node_modules`, `dist`, `.next`, `.nuxt`, `.output`, `.turbo`, `coverage`), Rust (`target`), Python (`__pycache__`, `.venv`, `.pytest_cache`, `*.egg-info`), .NET (`bin`, `obj` — only when the parent has a `.csproj`/`.sln`), Java/Kotlin (`.gradle`, `build`), Swift (`.build`), Zig (`zig-out`, `.zig-cache`), CMake (`cmake-build-*`), iOS (`Pods`, `DerivedData`)
+- `--deep` adds global caches: `~/.bun/install/cache`, `~/.npm`, `~/.cargo/registry`, `~/go/pkg/mod`, pip cache, pnpm store, `~/.m2`, `~/.gradle/caches`
+- The inverse of `/cleanup-files-in-project`, which deletes source files and never touches artifacts
 
 ## Execute
 
 ### 1. Build CLI
 
-> Goal: มี binary พร้อมใช้
+> Goal: have a ready-to-use binary
 
-1. `cargo build --release` ใน skill directory — binary อยู่ที่ `target/release/cleanup-artifact` (เพิ่ม `.exe` บน Windows)
-2. ถ้า `cargo` ไม่มี → stop และ report
+1. `cargo build --release` in the skill directory — the binary lands at `target/release/cleanup-artifact` (append `.exe` on Windows)
+2. If `cargo` is missing → stop and report
 
 ### 2. Scan And Report
 
-> Goal: รู้ว่ามี artifacts อะไร ขนาดเท่าไร
+> Goal: know which artifacts exist and how big they are
 
-1. รัน `cleanup-artifact <path>` (default `.`) — output เป็นตารางเรียงตามขนาด + total
-2. ใช้ `--min <MB>` filter dirs เล็กๆ ออกถ้า scan กว้าง
-3. ใช้ `--deep` เฉพาะเมื่อต้องการ global caches ด้วย
-4. ทำ `/report` แสดงผล dry-run ให้ user
+1. Run `cleanup-artifact <path>` (default `.`) — output is a table sorted by size plus a total
+2. Use `--min <MB>` to filter out small dirs on a broad scan
+3. Use `--deep` only when global caches are wanted too
+4. Present the dry-run output to the user via `/report`
 
 ### 3. Confirm And Delete
 
-> Goal: ลบเฉพาะที่ user อนุมัติ
+> Goal: delete only what the user approves
 
-1. ถาม user ด้วย `ask_user_question` — ลบ artifacts ที่ report ไหม (และ scope ไหน: project only / `--deep` ด้วย)
-2. รัน `cleanup-artifact <path> --yes` (หรือ `--yes --deep`) เพื่อลบจริง — CLI รายงาน freed space ทีละ dir
-3. ห้ามลบถ้ายังไม่ได้ confirm — dry-run เป็น default เสมอ
+1. Ask the user with `ask_user_question` — delete the reported artifacts, and in which scope (project only / with `--deep` as well)
+2. Run `cleanup-artifact <path> --yes` (or `--yes --deep`) for the real deletion — the CLI reports freed space dir by dir
+3. Never delete without confirmation — dry-run is always the default
 
 ### 4. Validate
 
-> Goal: ยืนยัน workspace ยังใช้ได้
+> Goal: confirm the workspace still works
 
-1. รายงาน freed space จาก CLI output
-2. แนะนำ reinstall ถ้าลบ `node_modules`/`.venv`: `bun install` / `cargo fetch` / `pip install -r requirements.txt`
-3. ถ้าลบแล้ว build/test พัง → ทำ `/resolve-errors` (เกือบจะแก้ด้วย reinstall เสมอ)
+1. Report the freed space from the CLI output
+2. Recommend reinstalling when `node_modules`/`.venv` were deleted: `bun install` / `cargo fetch` / `pip install -r requirements.txt`
+3. If the build/tests break after deletion → run `/resolve-errors` (a reinstall almost always fixes it)
 
 ## Rules
 
 ### 1. Dry-Run First
 
-- ไม่มี `--yes` = report เท่านั้น — ห้ามลบโดยไม่ confirm
-- `--deep` ต้องระบุชัดเจนใน confirmation (แตะ global caches นอก workspace)
+- No `--yes` = report only — never delete without confirmation
+- `--deep` must be called out explicitly in the confirmation (it touches global caches outside the workspace)
 
 ### 2. Never Touch
 
-- ห้ามลบ `.git`, `.devin`, `.env`, lock files, source files, config files — CLI skip `.git`/`.devin`/`.idea`/`.vscode` อยู่แล้ว
-- `bin`/`obj` ลบเฉพาะเมื่อ parent มี `.csproj`/`.fsproj`/`.vcxproj`/`.sln` — กันลบ `bin/` ที่เป็น user scripts
+- Never delete `.git`, `.devin`, `.env`, lock files, source files, or config files — the CLI already skips `.git`/`.devin`/`.idea`/`.vscode`
+- Delete `bin`/`obj` only when the parent has a `.csproj`/`.fsproj`/`.vcxproj`/`.sln` — this guards against deleting a `bin/` that holds user scripts
 
 ### 3. Symlink Safe
 
-- CLI ไม่ follow symlinks/junctions ตอน scan และ `remove_dir_all` ลบ reparse point ไม่ตามไปลบ target — ปลอดภัยบน Windows junctions
+- The CLI does not follow symlinks/junctions while scanning, and `remove_dir_all` deletes the reparse point without following it to the target — safe on Windows junctions
 
-- ใช้ /cleanup-files-in-project ถ้าจำเป็น (ฝั่ง source files)
-- ใช้ /cleanup-files-in-computer ถ้าจำเป็น (system-wide)
-- ใช้ /ask-me ถ้าจำเป็น
+- Use /cleanup-files-in-project if needed (the source-files side)
+- Use /cleanup-files-in-computer if needed (system-wide)
+- Use /ask-me if needed
 
 ## Expected Outcome
 
-- ตาราง artifacts + ขนาดก่อนลบ (dry-run)
-- artifacts ถูกลบหลัง confirm พร้อม freed space report
-- ไม่มี source/lockfile/.env/.git ถูกแตะ
-- reinstall hint ถ้าลบ dependency dirs
+- A table of artifacts with sizes before deletion (dry-run)
+- Artifacts deleted after confirmation, with a freed-space report
+- No source/lockfile/.env/.git files touched
+- Reinstall hints when dependency directories were deleted

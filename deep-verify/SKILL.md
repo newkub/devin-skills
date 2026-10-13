@@ -1,6 +1,6 @@
 ---
 name: deep-verify
-description: alias → /run-verify (รัน verify ครบทั้ง local และ CI/CD ตาม project)
+description: alias → /run-verify (run full local and CI/CD verification per project)
 argument-hint: "[scope]"
 related:
   - run-verify
@@ -9,21 +9,21 @@ related:
 
 ## Goal
 
-Alias ของ `/run-verify` — รัน verify ครบทั้ง local และ CI/CD ตาม project
+Alias of `/run-verify` — run full local and CI/CD verification per project
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/deep-verify` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `run-verify`
+Use when the user invokes `/deep-verify` — this skill is only an alias stub; the real workflow lives in `run-verify`
 
 ## Execute
 
-ทำ `/run-verify` เต็ม workflow
+Run the full `/run-verify` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/run-verify` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `run-verify/SKILL.md` เสมอ
+- Never duplicate the `/run-verify` workflow in this file
+- If the alias is missing steps → always read `run-verify/SKILL.md`
 
 ## Expected Outcome
 
-- `/run-verify` ถูก execute ครบทุก step
+- `/run-verify` is executed through every step

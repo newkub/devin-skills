@@ -1,6 +1,6 @@
 ---
 name: deep-research-improve
-description: Research หา improvement opportunities — best practices, modern alternatives, known issues — feed เข้า improve-*/deep-review
+description: Research improvement opportunities — best practices, alternatives, issues → improve-*/deep-review
 argument-hint: "[area-or-topic]"
 related:
   - deep-research
@@ -14,53 +14,53 @@ related:
 
 ## Goal
 
-Research เพื่อหา improvement opportunities ของ project/area ที่ระบุ — best practices ปัจจุบัน, modern alternatives, known issues/pitfalls, benchmarks — แล้วส่ง findings เข้า `/follow-improve` convention (review → confirm → fix)
+Research improvement opportunities for a given project/area — current best practices, modern alternatives, known issues/pitfalls, benchmarks — then hand the findings to the `/follow-improve` convention (review → confirm → fix)
 
 ## Scope
 
-ใช้เมื่อต้องการ research-driven improvement — เช่น "stack นี้ยัง current ไหม", "มี pattern ที่ดีกว่าไหม", "tools ใหม่ที่แทนของเดิม" — ไม่ใช่ scan codebase (นั่นคือ `/deep-review`) แต่คือ research ภายนอกเพื่อเทียบกับสิ่งที่มี
+Use when you want research-driven improvement — e.g. "is this stack still current", "is there a better pattern", "new tools that replace the current ones" — not a codebase scan (that is `/deep-review`); this is external research compared against what you already have
 
 ## Execute
 
 ### 1. Define Improvement Area
 
-> Goal: ระบุว่าจะ improve อะไรและเทียบกับอะไร
+> Goal: Decide what to improve and what to compare it against
 
-1. ระบุ area: dependency, pattern, tool, config, architecture, performance approach
-2. บันทึก current state จาก codebase (`/scan-codebase`, manifest, config ที่มี)
-3. ถ้า area ตรง `improve-*` domain → จด domain เพื่อ route findings ตอนจบ
+1. Identify the area: dependency, pattern, tool, config, architecture, performance approach
+2. Record the current state from the codebase (`/scan-codebase`, manifest, existing config)
+3. If the area matches an `improve-*` domain → note the domain to route findings at the end
 
 ### 2. Research Current Best Practices
 
-> Goal: รู้ว่า "ดี" ตอนนี้หน้าตาเป็นอย่างไร
+> Goal: Learn what "good" looks like right now
 
-1. รัน general pipeline ของ `/deep-research`: official docs, changelogs, migration guides, benchmarks
-2. หา modern alternatives + deprecation notices ของสิ่งที่ใช้อยู่ (`/deep-research dependencies` ถ้าเป็น deps, `/research-setup-integrations` ถ้าเป็น integrations)
-3. รวบรวม known issues/pitfalls จาก GitHub issues, RFCs, community comparisons
+1. Run the general pipeline of `/deep-research`: official docs, changelogs, migration guides, benchmarks
+2. Find modern alternatives + deprecation notices for what is in use (`/deep-research dependencies` for deps, `/research-setup-integrations` for integrations)
+3. Collect known issues/pitfalls from GitHub issues, RFCs, community comparisons
 
 ### 3. Gap Analysis
 
-> Goal: เทียบ current vs best practice เป็นรายการ findings
+> Goal: Compare current vs best practice as a findings list
 
-1. สร้าง findings list: `Gap`, `Current`, `Best Practice`, `Evidence/Source`, `Impact`, `Effort`
-2. จัดกลุ่มตาม `improve-*`/`optimize-*` domain หรือ `/deep-review` review domain ที่ตรง
-3. แยก quick wins ออกจาก structural changes
+1. Build a findings list: `Gap`, `Current`, `Best Practice`, `Evidence/Source`, `Impact`, `Effort`
+2. Group by `improve-*`/`optimize-*` domain or the matching `/deep-review` review domain
+3. Separate quick wins from structural changes
 
 ### 4. Hand Off To Improve Flow
 
-> Goal: findings เข้าสู่ improvement convention
+> Goal: Feed the findings into the improvement convention
 
-1. ทำ `/report` table ของ findings พร้อม sources
-2. Route ตาม `/follow-improve` — findings ที่ตรง domain → `improve-*` skill นั้น; ไม่ตรง → `/deep-review` domain + `/deep-review-then-fix` หลัง user confirm
-3. ถ้าเป็น repo นี้ (devin skills) → `/improve-devin-global-skills`
+1. Produce a `/report` table of findings with sources
+2. Route per `/follow-improve` — findings matching a domain → that `improve-*` skill; no match → `/deep-review` domain + `/deep-review-then-fix` after user confirm
+3. If this is this repo (devin skills) → `/improve-devin-global-skills`
 
 ## Rules
 
-- Findings ต้องมี evidence + source + version/ปี — ห้ามเสนอ improvement ที่ไม่มีฐาน
-- Research เท่านั้น — ไม่แก้ไขใน workflow นี้; fix ผ่าน `/follow-improve` convention หลัง user confirm
-- Current-state claims ต้องเช็คจาก codebase จริงก่อนเทียบ — ไม่เดา
-- ใช้ `/deep-review`, `/follow-optimize` ถ้าจำเป็น
+- Findings must have evidence + source + version/year — never propose an improvement without a basis
+- Research only — no edits in this workflow; fixes go through the `/follow-improve` convention after user confirm
+- Verify current-state claims against the real codebase before comparing — don't guess
+- Use `/deep-review`, `/follow-optimize` if needed
 
 ## Expected Outcome
 
-- Findings table: gaps เทียบ best practices พร้อม evidence, impact/effort, routed ไป improve path ที่ถูกต้อง
+- Findings table: gaps vs best practices with evidence, impact/effort, routed to the correct improve path

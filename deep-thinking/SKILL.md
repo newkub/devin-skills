@@ -1,6 +1,6 @@
 ---
 name: deep-thinking
-description: คิดวิเคราะห์ปัญหาอย่างเป็นระบบก่อนทำงาน โดยไม่ใช้ external tools
+description: Analyze problems systematically with structured thinking before acting, using no external tools
 argument-hint: "[topic]"
 related:
   - rethink
@@ -13,11 +13,11 @@ related:
 ---
 ## Goal
 
-ใช้ structured thinking เพื่อวิเคราะห์ปัญหาอย่างเป็นระบบ ก่อนดำเนินการใดๆ โดย AI คิดเอง
+Use structured thinking to analyze problems systematically before taking any action, with the AI reasoning on its own
 
 ## Scope
 
-ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`) และไม่ใช่การวางแผนงาน (ใช้ `/plan`)
+Use for tasks that need deep analysis, planning, or complex problem-solving — not for a pre-decision review (use `/deep-thinking`) and not for work planning (use `/plan`)
 
 ## Execute
 
@@ -25,152 +25,152 @@ related:
 
 > Goal: Define Problem Clearly
 
-กำหนดปัญหาหรือเป้าหมายให้ชัดเจน:
+Define the problem or goal clearly:
 
-1. เขียนปัญหาในรูปแบบคำถาม
-2. ระบุ constraints และ requirements
-3. กำหนด success criteria
-4. ระบุ stakeholders ที่เกี่ยวข้อง
+1. Write the problem as a question
+2. State the constraints and requirements
+3. Set success criteria
+4. Identify the involved stakeholders
 
 ### 2. Break Down Problem
 
 > Goal: Break Down Problem
 
-แบ่งปัญหาออกเป็นส่วนย่อย:
+Split the problem into sub-parts:
 
-1. ระบุ sub-problems ทั้งหมด
-2. จัดลำดับความสำคัญของแต่ละส่วน
-3. ระบุ dependencies ระหว่างส่วนต่างๆ
-4. ระบุสิ่งที่ไม่รู้ (unknowns)
+1. List all sub-problems
+2. Prioritize each part
+3. Identify dependencies between the parts
+4. Identify the unknowns
 
 ### 3. Generate Alternatives
 
 > Goal: Generate Alternatives
 
-สร้างทางเลือกที่เป็นไปได้:
+Generate possible alternatives:
 
-1. คิดหลายทางเลือก (อย่างน้อย 2-3 ทาง)
-2. ประเมิน pros/cons ของแต่ละทาง
-3. เปรียบเทียบ trade-offs ระหว่างทางเลือก
-4. พิจารณา worst-case scenario ของแต่ละทาง
-5. เลือกทางที่ดีที่สุดพร้อมระบุเหตุผล
+1. Think of several options (at least 2-3)
+2. Evaluate the pros/cons of each
+3. Compare the trade-offs between options
+4. Consider the worst-case scenario of each
+5. Pick the best option with clear reasons
 
 ### 4. Validate Assumptions
 
 > Goal: Validate Assumptions
 
-ตรวจสอบสมมติฐานที่ใช้:
+Check the assumptions used:
 
-1. ระบุ assumptions ทั้งหมดที่ใช้ในการวิเคราะห์
-2. แยกระหว่าง safe assumptions และ risky assumptions
-3. ตรวจสอบว่า assumptions ถูกต้องโดยหา evidence สนับสนุน
-4. ปรับแก้ assumptions หากผิด และวิเคราะห์ใหม่หากจำเป็น
+1. List all assumptions used in the analysis
+2. Separate safe assumptions from risky assumptions
+3. Verify the assumptions with supporting evidence
+4. Correct any wrong assumptions and re-analyze if needed
 
 ### 5. Create Action Plan
 
 > Goal: Create Action Plan
 
-สร้างแผนการดำเนินการ:
+Create an action plan:
 
-1. แบ่งเป็น steps ที่ชัดเจนและลำดับได้
-2. ระบุ dependencies ของแต่ละ step
-3. กำหนด success criteria สำหรับแต่ละ step
-4. ระบุ risks และ mitigation plans
-5. ระบุว่าแต่ละ step สามารถย้อนกลับได้หรือไม่
+1. Break the work into clear, ordered steps
+2. State the dependencies of each step
+3. Set success criteria for each step
+4. Identify risks and mitigation plans
+5. Note whether each step is reversible
 
 ### 6. Execute And Iterate
 
 > Goal: Execute And Iterate
 
-ดำเนินการตามแผน:
+Carry out the plan:
 
-1. ทำตาม steps ที่วางแผนไว้ทีละขั้น
-2. ตรวจสอบผลลัพธ์ทีละ step เทียบกับ success criteria
-3. ปรับแก้แผนหากผลลัพธ์ไม่ตรงตามที่คาดหวัง
-4. บันทึกสิ่งที่เรียนรู้เพื่อใช้ในครั้งต่อไป
+1. Follow the planned steps one by one
+2. Check each step's result against its success criteria
+3. Adjust the plan if results are not as expected
+4. Record lessons learned for next time
 
 ## Rules
 
 ### 1. When To Use Deep Thinking
 
-ใช้ deep thinking เมื่อ:
+Use deep thinking when:
 
-- ปัญหามีความซับซ้อนสูง
-- มีหลายทางเลือกที่เป็นไปได้
-- ต้องการวิเคราะห์เชิงลึก
-- ไม่แน่ใจเกี่ยวกับแนวทาง
-- มีความเสี่ยงสูง
-- ปัญหามีโครงสร้างซับซ้อนที่ต้องแบ่งส่วน
+- The problem is highly complex
+- There are multiple possible options
+- Deep analysis is needed
+- The approach is uncertain
+- The risk is high
+- The problem has complex structure that must be decomposed
 
 ### 2. When Not To Use Deep Thinking
 
-ไม่ใช้ deep thinking เมื่อ:
+Do not use deep thinking when:
 
-- เป็น low-risk action ที่ทำได้เลย
-- คำตอบชัดเจนจาก context หรือ memory
-- ต้องการแค่ทบทวนเบาๆ ก่อนตัดสินใจ
-- เป็น reversible change ที่แก้ไขง่าย
-- การวิเคราะห์นานกว่าการทำจะเสียเวลามากกว่า
+- It is a low-risk action that can just be done
+- The answer is obvious from context or memory
+- Only a light review before deciding is needed
+- It is an easily reversible change
+- Analyzing would take longer than just doing the work
 
 ### 3. Thinking Process
 
-กระบวนการคิดต้อง:
+The thinking process must:
 
-- เริ่มจากปัญหาที่ชัดเจน
-- แบ่งปัญหาออกเป็นส่วนย่อย
-- คิดหลายทางเลือก
-- เปรียบเทียบและเลือกที่ดีที่สุด
-- ตรวจสอบ assumptions
-- สร้างแผนการดำเนินการ
-- ตรวจสอบผลทีละ step
+- Start from a clearly defined problem
+- Break the problem into sub-parts
+- Consider multiple options
+- Compare and pick the best one
+- Check the assumptions
+- Create an action plan
+- Verify results step by step
 
 ### 4. Quality Of Thinking
 
-คุณภาพของการคิดต้อง:
+The quality of thinking must:
 
-- มี logic ที่ชัดเจนและตรวจสอบได้
-- มี evidence สนับสนุน
-- ไม่ข้ามขั้นตอนสำคัญ
-- ครอบคลุมทุกด้าน
-- แยกแยะระหว่าง facts และ assumptions
-- สามารถ reproduce ได้โดยคนอื่น
+- Have clear, verifiable logic
+- Be backed by evidence
+- Skip no critical step
+- Cover every aspect
+- Distinguish facts from assumptions
+- Be reproducible by others
 
 ### 5. Common Pitfalls
 
-หลีกเลี่ยงข้อผิดพลาดทั่วไป:
+Avoid common mistakes:
 
-- ไม่กำหนดปัญหาชัดเจน
-- ข้ามขั้นตอนวิเคราะห์
-- คิดทางเดียวโดยไม่เปรียบเทียบ
-- ไม่ตรวจสอบ assumptions
-- ไม่ปรับแก้แผนเมื่อจำเป็น
-- ยึดติดทางเลือกแรกที่คิดได้
-- ไม่พิจารณา worst-case scenario
+- Not defining the problem clearly
+- Skipping analysis steps
+- Thinking of only one option without comparison
+- Not checking assumptions
+- Failing to adjust the plan when needed
+- Anchoring on the first option that comes to mind
+- Ignoring worst-case scenarios
 
 ### 6. Time Budget
 
-- ถ้าเป็นปัญหาเล็ก ใช้เวลาวิเคราะห์ไม่เกิน 3 นาที
-- ถ้าเป็นปัญหากลาง ใช้เวลาวิเคราะห์ไม่เกิน 10 นาที
-- ถ้าเป็นปัญหาใหญ่ ใช้เวลาวิเคราะห์ตามความจำเป็น แต่ต้องสรุปได้
-- ถ้าวิเคราะห์นานเกินไป ให้ใช้ `/ask-me` เพื่อขอข้อมูลเพิ่มจากผู้ใช้
+- For a small problem, spend at most 3 minutes analyzing
+- For a medium problem, spend at most 10 minutes analyzing
+- For a large problem, spend as long as needed, but always produce a summary
+- If analysis runs too long, use `/ask-me` to gather more information from the user
 
 ### 8. Integration With Other Workflows
 
-เชื่อมโยงกับ workflows อื่น:
+Connect with other workflows:
 
-- ทบทวนมุมมอง (pondering) ก่อนเริ่มวิเคราะห์ได้ภายใน skill นี้
-- ทำ `/deep-debug` สำหรับปัญหาที่ต้องแก้ไข
-- ทำ `/analyze-root-cause-analysis` สำหรับหาสาเหตุหลัก
-- ทำ `/plan` สำหรับวางแผนงานหลังวิเคราะห์
-- ทำ `/ask-me` ถ้าวิเคราะห์แล้วยังไม่ชัดเจน
-- ทำ `/suggest-next-action` หลังวิเคราะห์เพื่อรู้ว่าควรทำอะไรต่อ
+- Pondering perspectives before starting analysis can happen inside this skill
+- Use `/deep-debug` for problems that need fixing
+- Use `/analyze-root-cause-analysis` to find the root cause
+- Use `/plan` to plan the work after analysis
+- Use `/ask-me` if the analysis still isn't clear
+- Use `/suggest-next-action` after analysis to know what to do next
 
-- ใช้ /rethink ถ้าจำเป็น
+- Use /rethink if needed
 
 ## Expected Outcome
 
-- การวิเคราะห์ปัญหาอย่างเป็นระบบและครบถ้วน
-- แผนการทำงานที่ชัดเจน พร้อม success criteria และ mitigation plans
-- ลดความเสี่ยงจากการตัดสินใจที่ผิดพลาด
-- เพิ่มคุณภาพของการแก้ปัญหาด้วย evidence-based analysis
-- การเรียนรู้จากแต่ละกรณ์เพื่อใช้ในอนาคต
+- A systematic, complete problem analysis
+- A clear work plan with success criteria and mitigation plans
+- Reduced risk from poor decisions
+- Better problem-solving quality through evidence-based analysis
+- Lessons learned from each task for future use

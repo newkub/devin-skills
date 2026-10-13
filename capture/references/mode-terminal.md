@@ -1,7 +1,7 @@
 # Capture Terminal
 
 
-Capture terminal output เป็นภาพ PNG/SVG/HTML สำหรับ docs/README/reports ผ่าน `capture terminal` (merged จาก `capture-terminal`)
+Capture terminal output as PNG/SVG/HTML images for docs/README/reports via `capture terminal` (merged from `capture-terminal`)
 
 #### Terminal — Execute
 
@@ -12,39 +12,39 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "<command>" 
 bun D:/newkub/agents-capture/src/presentation/cli.ts terminal --cmd "git log --oneline -5" --out docs/screenshots/git-log.png --title "Git Log"
 ```
 
-- CLI รัน `--cmd` เก็บ stdout/stderr เป็น text แล้ว pipe เข้า tool ที่ติดตั้ง
-- `--tool auto` (default) เลือกตามนามสกุลไฟล์: `terminal-shot` → `termframe` → `termshot`
-- `--theme dark` (default) — เลือกได้ `dark`, `catppuccin`, `tokyo-night`, `github-dark`
+- The CLI runs `--cmd`, captures stdout/stderr as text, then pipes it into the installed tool
+- `--tool auto` (default) picks by file extension: `terminal-shot` → `termframe` → `termshot`
+- `--theme dark` (default) — choices are `dark`, `catppuccin`, `tokyo-night`, `github-dark`
 
-##### 2. Tool Selection (เลือกเองผ่าน `--tool`)
+##### 2. Tool Selection (choose it yourself via `--tool`)
 
-| Tool | Formats | เหมาะกับ | Install |
+| Tool | Formats | Best for | Install |
 |------|---------|---------|---------|
 | `terminal-shot` | png, svg, html | documentation/README — themes + window chrome | `bun add -g terminal-shot` |
 | `termframe` | svg | precise vector output, auto-sizing | `scoop install termframe` |
 | `termshot` | png | CI/CD pipelines | GitHub releases: `mr-pmillz/termshot` |
 
-- ถ้าไม่มี tool ติดตั้ง → CLI error พร้อม install hint
-- Quick screenshot โดยไม่มี tool → Windows Snipping Tool (`Win + Shift + S`)
+- If no tool is installed → the CLI errors with an install hint
+- Quick screenshot without a tool → Windows Snipping Tool (`Win + Shift + S`)
 
-##### 3. Direct Tool Usage (options ขั้นสูง)
+##### 3. Direct Tool Usage (advanced options)
 
 ```bash
 terminal-shot --output <path>.png --theme dark --title "Title"   # stdin
-termframe -o <path>.svg -- <command>                              # รัน cmd เอง
-echo "text" | termframe -o <path>.svg                             # จาก text
-termshot <command>            # หรือ termshot --raw-read < file.txt
+termframe -o <path>.svg -- <command>                              # runs the cmd itself
+echo "text" | termframe -o <path>.svg                             # from text
+termshot <command>            # or termshot --raw-read < file.txt
 ```
 
 #### Terminal — Rules
 
-- PNG สำหรับ raster/web, SVG สำหรับ vector/print, HTML สำหรับ interactive docs
-- เก็บไฟล์ใน `docs/screenshots/` หรือ `test/screenshots/` — ชื่อตาม command/test case เช่น `cli-help.png`
-- ตั้ง terminal size เหมาะสม (80x24 หรือ 120x30), font monospace อ่านง่าย, contrast ดี
-- หลีกเลี่ยง output ยาวเกิน — ใช้ `--max-height` ถ้า tool รองรับ
-- ใช้ /capture web ถ้าต้อง capture web terminal (ttyd ฯลฯ)
+- PNG for raster/web, SVG for vector/print, HTML for interactive docs
+- Store files in `docs/screenshots/` or `test/screenshots/` — name them after the command/test case, e.g. `cli-help.png`
+- Set a suitable terminal size (80x24 or 120x30), a readable monospace font, and good contrast
+- Avoid overly long output — use `--max-height` if the tool supports it
+- Use /capture web when you need to capture a web terminal (ttyd, etc.)
 
 #### Terminal — Expected Outcome
 
-- ภาพ terminal output คุณภาพสูงใน path ที่กำหนด อ่านง่าย เหมาะกับ documentation
+- A high-quality terminal output image at the given path, easy to read and suitable for documentation
 

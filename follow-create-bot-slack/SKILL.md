@@ -1,100 +1,100 @@
 ---
 name: follow-create-bot-slack
-description: สร้าง Slack bot ด้วย TypeScript/Bun — slash commands, events, Socket Mode
+description: Build a Slack bot with TypeScript/Bun — slash commands, events, Socket Mode
 argument-hint: "[features]"
 ---
 
 ## Goal
 
-สร้าง Slack bot project ด้วย TypeScript/Bun ที่รันได้จริง พร้อม slash commands, event handlers, interactivity (buttons, modals) และ Socket Mode หรือ HTTP endpoint
+Create a runnable Slack bot project with TypeScript/Bun, complete with slash commands, event handlers, interactivity (buttons, modals), and Socket Mode or an HTTP endpoint
 
 ## Scope
 
-ใช้สำหรับสร้าง Slack bot จาก scratch บน Bun หรือ Node.js รองรับ notification bots, slash command workflows, interactive messages และ workspace integrations
+Use for building a Slack bot from scratch on Bun or Node.js; supports notification bots, slash command workflows, interactive messages, and workspace integrations
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the stack and library choices with reasons for later reference
 
 ### 2. Gather Requirements
 
-> Goal: รวบรวมข้อมูลก่อนสร้าง bot
+> Goal: Collect information before building the bot
 
-1. ถาม user ถึง purpose, ชื่อ bot, ประเภท (notification, slash commands, interactive)
-2. แนะนำสร้าง Slack App ที่ api.slack.com/apps แล้วขอ `SLACK_BOT_TOKEN` (`xoxb-...`), `SLACK_SIGNING_SECRET` และ `SLACK_APP_TOKEN` (`xapp-...` ถ้าใช้ Socket Mode)
-3. ระบุ runtime: `Bun` (default) หรือ `Node.js`
-4. ระบุ connection mode: `socket-mode` สำหรับ dev หรือ `http` (Events API endpoint) สำหรับ production
+1. Ask the user about purpose, bot name, and type (notification, slash commands, interactive)
+2. Guide the user to create a Slack App at api.slack.com/apps, then request `SLACK_BOT_TOKEN` (`xoxb-...`), `SLACK_SIGNING_SECRET`, and `SLACK_APP_TOKEN` (`xapp-...` if using Socket Mode)
+3. Identify the runtime: `Bun` (default) or `Node.js`
+4. Identify the connection mode: `socket-mode` for dev or `http` (Events API endpoint) for production
 
 ### 3. Setup Project
 
-> Goal: สร้างโครงสร้าง project
+> Goal: Create the project structure
 
-1. ทำ `/deep-review` หรือ `/deep-review` เพื่อสร้าง `src/`
-2. สร้าง `src/app.ts`, `src/index.ts`, `src/commands/`, `src/events/`, `src/actions/`, `src/config.ts`
-3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
-4. รัน `bun init` หรือ `npm init` ตาม runtime
-5. ใช้ `/search-npm-libraries` เลือก library หลัก (default แนะนำ `@slack/bolt`)
+1. Use `/deep-review` or `/deep-review` to create `src/`
+2. Create `src/app.ts`, `src/index.ts`, `src/commands/`, `src/events/`, `src/actions/`, `src/config.ts`
+3. Create `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
+4. Run `bun init` or `npm init` per the runtime
+5. Use `/search-npm-libraries` to pick the main library (default recommendation: `@slack/bolt`)
 
 ### 4. Configure Bot And Handlers
 
-> Goal: เชื่อมต่อ Slack API
+> Goal: Connect to the Slack API
 
-1. ติดตั้ง `bun add @slack/bolt`
-2. สร้าง `src/app.ts` ด้วย `new App({ token, signingSecret, socketMode, appToken })`
-3. สร้าง `src/index.ts` เป็น entry point เรียก `app.start()`
-4. สร้าง `src/commands/` ตัวอย่าง `app.command('/hello', ...)`
-5. สร้าง `src/events/` ตัวอย่าง `app.event('app_mention', ...)` และ `app.message(...)`
-6. เพิ่ม error handling ด้วย `app.error()` และ ack pattern (`ack()` ก่อน process)
+1. Install with `bun add @slack/bolt`
+2. Create `src/app.ts` with `new App({ token, signingSecret, socketMode, appToken })`
+3. Create `src/index.ts` as the entry point calling `app.start()`
+4. Create `src/commands/` with an example `app.command('/hello', ...)`
+5. Create `src/events/` with examples `app.event('app_mention', ...)` and `app.message(...)`
+6. Add error handling with `app.error()` and the ack pattern (call `ack()` before processing)
 
 ### 5. Add Features
 
-> Goal: เพิ่ม features ตาม requirement
+> Goal: Add features per the requirements
 
-1. สร้าง `src/actions/` สำหรับ `app.action()`, `app.view()` (modals), `app.shortcut()`
-2. ใช้ Block Kit (`blocks`) สำหรับ rich messages
-3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
-4. เพิ่ม type safety ด้วย TypeScript interfaces สำหรับ payloads และ dependencies
+1. Create `src/actions/` for `app.action()`, `app.view()` (modals), and `app.shortcut()`
+2. Use Block Kit (`blocks`) for rich messages
+3. Use `/use-bun-native-api` instead of `node:*` when using Bun
+4. Add type safety with TypeScript interfaces for payloads and dependencies
 
 ### 6. Test Locally
 
-> Goal: ทดสอบ bot
+> Goal: Test the bot
 
-1. รัน `bun dev` หรือ `bun run src/index.ts`
-2. ถ้า HTTP mode → tunnel ด้วย `cloudflared` หรือ ngrok แล้วตั้ง Request URL ใน Slack App
-3. ทดสอบ slash commands, mentions และ interactive actions ใน Slack workspace
-4. ทำ `/run-test` สำหรับ unit tests ของ handlers
+1. Run `bun dev` or `bun run src/index.ts`
+2. In HTTP mode → tunnel with `cloudflared` or ngrok, then set the Request URL in the Slack App
+3. Test slash commands, mentions, and interactive actions in a Slack workspace
+4. Run `/run-test` for unit tests of the handlers
 
 ### 7. Deploy
 
-> Goal: deploy bot ไป production
+> Goal: Deploy the bot to production
 
-1. ถ้าใช้ Socket Mode → รัน `bun start` บน server หรือ container ที่ outbound ได้
-2. ถ้าใช้ HTTP mode → expose endpoint แล้วตั้ง Event/Interactivity Request URL
-3. ตั้งค่า environment variables บน host
-4. ทำ `/deploy-to-cloudflare`, `/deploy-to-railway` หรือ `/deploy-to-vercel` ตาม target
+1. With Socket Mode → run `bun start` on a server or container with outbound access
+2. With HTTP mode → expose the endpoint, then set the Event/Interactivity Request URL
+3. Set environment variables on the host
+4. Use `/deploy-to-cloudflare`, `/deploy-to-railway`, or `/deploy-to-vercel` per the target
 
 ## Rules
 
-- ไม่ hardcode `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `SLACK_APP_TOKEN`; ใช้ `/follow-secret-manager` ก่อน inject เข้า app
-- ใช้ `@slack/bolt` เป็น default library บน Bun/Node
-- ใช้ Socket Mode สำหรับ dev, HTTP endpoint สำหรับ production
-- ทุก listener ต้องเรียก `ack()` ภายใน 3 วินาที ก่อนทำงานหนัก
-- ไม่ commit `.env`
-- ใช้ TypeScript first ตาม `/follow-lang-typescript`
+- Never hardcode `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `SLACK_APP_TOKEN`; use `/follow-secret-manager` before injecting them into the app
+- Use `@slack/bolt` as the default library on Bun/Node
+- Use Socket Mode for dev and an HTTP endpoint for production
+- Every listener must call `ack()` within 3 seconds before doing heavy work
+- Never commit `.env`
+- Be TypeScript-first per `/follow-lang-typescript`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-bot-discord ถ้าจำเป็น
-- ใช้ /report table ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed
+- Use /follow-create-bot-discord if needed
+- Use /report table if needed
 
 ## Expected Outcome
 
-- Slack bot project รันได้ด้วย `bun dev`
-- Slash commands, event handlers และ interactive actions ครบตาม requirement
-- รองรับ Socket Mode และ HTTP endpoint
-- พร้อม deploy ด้วย environment variables
+- The Slack bot project runs with `bun dev`
+- Slash commands, event handlers, and interactive actions cover the requirements
+- Both Socket Mode and the HTTP endpoint are supported
+- Ready to deploy with environment variables

@@ -1,6 +1,6 @@
 ---
 name: check-flaky-tests
-description: ตรวจ flaky tests — re-run analysis, CI history, quarantine — แล้วส่งต่อ fix
+description: Detect flaky tests — re-run analysis, CI history, quarantine — then route to fixes
 argument-hint: "[scope]"
 related:
   - improve-tests
@@ -16,45 +16,45 @@ related:
 
 ## Goal
 
-ตอบคำถาม "มี flaky tests ตัวไหนบ้าง และจัดการยังไง" — สแกนประวัติ re-run/CI หา test ที่ผลไม่ deterministic, quarantine อย่างมีหลักฐาน แล้วส่ง finding ไป fix ผ่าน `/improve-tests` / `/optimize-test-suite`
+Answer the question "which tests are flaky, and how do we handle them" — scan re-run/CI history for non-deterministic tests, quarantine them with evidence, then route findings to fixes via `/improve-tests` / `/optimize-test-suite`
 
 ## Scope
 
-ใช้เมื่อสงสัยว่า test suite มี flakiness — check workflow ตรง (ไม่ใช่ thin review entry); คุมเฉพาะ detection + quarantine policy ไม่แก้ assertion เอง
+Use when you suspect flakiness in a test suite — a direct check workflow (not a thin review entry); governs detection + quarantine policy only, never fixes assertions itself
 
-- Detection: re-run N ครั้งเทียบผล, CI history failure rate ต่อ test, time-of-day/parallelism correlation
-- Quarantine policy: mark + issue + owner + expiry — ห้าม quarantine ถาวร
-- Root causes ที่พบบ่อย: shared state, timing/race, wall-clock dependence, external services — สอดคล้อง `/follow-test`
-- test ที่ assert ผิดจริง (ไม่ flaky) → `/check-test-correctness`; suite ช้า → `/optimize-test-suite`
+- Detection: re-run N times and compare results, CI-history failure rate per test, time-of-day/parallelism correlation
+- Quarantine policy: mark + issue + owner + expiry — never quarantine permanently
+- Common root causes: shared state, timing/race, wall-clock dependence, external services — aligned with `/follow-test`
+- Tests that genuinely assert wrong (not flaky) → `/check-test-correctness`; slow suite → `/optimize-test-suite`
 
 ## Execute
 
 ### 1. Detect
 
-1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. รัน test ที่สงสัยซ้ำ (เช่น 10–20 iterations ผ่าน `/run-test` หรือ `--repeat`) จดผลที่กลับกัน (pass↔fail)
-3. เช็ก CI history ผ่าน `/check-git-logs` / `gh run list` — failure ที่ไม่ผูกกับ diff = flaky candidate
+1. Take `scope` from the argument — if absent, use the current project; if unclear → `/ask-me`
+2. Re-run the suspected tests (e.g. 10–20 iterations via `/run-test` or `--repeat`) and record inverted results (pass↔fail)
+3. Check CI history via `/check-git-logs` / `gh run list` — failures not tied to a diff = flaky candidates
 
 ### 2. Report + Quarantine
 
-1. ทำ `/report` ตาราง: Test, Fail rate, Correlation (parallel/time/deps), Quarantine decision
-2. Quarantine เฉพาะตัวที่พิสูจน์แล้วว่าไม่ deterministic — ใส่ tag/skip พร้อม reason + issue + expiry date
-3. ห้าม quarantine เพื่อปลด CI โดยไม่มีหลักฐาน re-run
+1. Produce a `/report` table: Test, Fail rate, Correlation (parallel/time/deps), Quarantine decision
+2. Quarantine only tests proven non-deterministic — add tag/skip with reason + issue + expiry date
+3. Never quarantine just to unblock CI without re-run evidence
 
 ### 3. Route Fixes
 
-1. flaky ที่เกิดจาก test design (shared state, sleep) → `/improve-tests`
-2. flaky จาก infra/parallelism ทั้ง suite → `/optimize-test-suite`
-3. flaky จาก product code race → `/improve-correctness`; ปิดด้วย `/suggest-next-action`
+1. Flakiness from test design (shared state, sleep) → `/improve-tests`
+2. Flakiness from infra/parallelism across the whole suite → `/optimize-test-suite`
+3. Flakiness from a product-code race → `/improve-correctness`; close with `/suggest-next-action`
 
 ## Rules
 
-- ทุก flaky verdict ต้องมีหลักฐาน re-run/CI — ห้ามเดาจาก fail ครั้งเดียว
-- Quarantine มี owner + expiry เสมอ
-- ไม่แก้ test ใน skill นี้ — ทำ routing ต่อ skill เจ้าของ fix
+- Every flaky verdict requires re-run/CI evidence — never guess from a single failure
+- Quarantines always have an owner + expiry
+- Do not fix tests in this skill — route on to the skill that owns the fix
 
 ## Expected Outcome
 
-- รายการ flaky tests พร้อม fail rate และหลักฐาน
-- Quarantine ที่ manage ได้ (ไม่รั่วเป็น ignore ถาวร)
-- ทุก finding ถูกส่งต่อ skill fix ที่ถูกต้อง
+- A list of flaky tests with fail rates and evidence
+- Manageable quarantines (never leaking into permanent ignores)
+- Every finding routed to the correct fix skill

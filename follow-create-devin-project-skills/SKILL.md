@@ -1,6 +1,6 @@
 ---
 name: follow-create-devin-project-skills
-description: มาตรฐานการสร้าง project-local Devin skills ใน .devin/skills/ ตาม project conventions
+description: Standards for creating project-local Devin skills in .devin/skills/ per project conventions
 argument-hint: "[skill-name...]"
 related:
   - update-project-skills
@@ -16,106 +16,106 @@ related:
 
 ## Goal
 
-กำหนดมาตรฐานการสร้าง project-local Devin skills ใน `.devin/skills/` — naming, structure, content rules และการ sync กับ `AGENTS.md` ของ project
+Define the standard for creating project-local Devin skills in `.devin/skills/` — naming, structure, content rules, and syncing with the project's `AGENTS.md`
 
 ## Scope
 
-ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills` แทน)
+Use as the primary reference when creating a new skill in a project or monorepo workspace's `.devin/skills/` — not for global skills in `%APPDATA%\devin\skills` (use `/update-devin-global-skills` instead)
 
-ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-astgrep-rules, /update-agents-md
+See also: /update-project-skills, /update-devin-global-skills, /update-astgrep-rules, /update-agents-md
 
-- Format: Devin skill = `SKILL.md` เป็น entry point — ไม่ต้องสร้าง `references/` โดย default (merge เนื้อหาเข้า `SKILL.md` ตาม conventions ใน `/update-devin-global-skills`; แยกไฟล์เฉพาะเมื่อมีเหตุผลชัดเจน เช่น workflows/scripts) — ยืนยัน format ล่าสุดด้วย `/deep-research` + `/follow-best-practice`
+- Format: a Devin skill = `SKILL.md` as the entry point — no `references/` by default (merge content into `SKILL.md` per the conventions in `/update-devin-global-skills`; split files only with a clear reason, e.g. workflows/scripts) — confirm the latest format with `/deep-research` + `/follow-best-practice`
 
 ## Execute
 
 ### 1. Identify Skill And Workspace
 
-> Goal: รู้ว่าจะสร้าง skill อะไรที่ workspace ไหน
+> Goal: know which skill to create and in which workspace
 
-1. รับ `skill-name` จาก argument หรือ context — ถ้าไม่ชัด → ทำ `/ask-me`
-2. ระบุ target: root `.devin/skills/` หรือ `apps/<workspace>/.devin/skills/`
-3. ตรวจว่า skill นั้นเฉพาะ project จริง — ถ้าใช้ได้ทั่วไป → ส่งต่อ `/update-devin-global-skills`
-4. ทำ `/scan-codebase` เพื่อหา workflow/pattern เฉพาะ project ที่ skill จะครอบคลุม
+1. Take `skill-name` from the argument or context — if unclear → run `/ask-me`
+2. Identify the target: root `.devin/skills/` or `apps/<workspace>/.devin/skills/`
+3. Verify the skill is truly project-specific — if it's generally useful → hand off to `/update-devin-global-skills`
+4. Run `/scan-codebase` to find the project-specific workflows/patterns the skill will cover
 
 ### 2. Check Duplicates And Conventions
 
-> Goal: ไม่ซ้ำกับ skills ที่มีและตรง conventions
+> Goal: no duplication with existing skills and matching conventions
 
-1. ตรวจ `.devin/skills/` ของ project และ `%APPDATA%\devin\skills` ว่ามี skill คล้ายกันไหม
-2. ทำ `/review-devin-global-harness` หรือ `/use-related-skills` ถ้าพบ skill ที่อาจซ้ำ
-3. อ่าน `AGENTS.md` root และ workspace เพื่อดึง project conventions, commands และ tech stack
-4. อ่าน skills ที่มีอยู่ใน `.devin/skills/` เพื่อเลือก directory pattern และ style ให้สอดคล้องกับ project
+1. Check the project's `.devin/skills/` and `%APPDATA%\devin\skills` for similar skills
+2. Run `/review-devin-global-harness` or `/use-related-skills` if a possibly duplicate skill is found
+3. Read the root and workspace `AGENTS.md` to extract project conventions, commands, and tech stack
+4. Read the existing skills in `.devin/skills/` to pick a directory pattern and style consistent with the project
 
 ### 3. Create Structure
 
-> Goal: skill มีโครงสร้างเริ่มต้นที่ถูกต้อง
+> Goal: the skill has a correct starting structure
 
-1. สร้าง `<project-or-workspace>/.devin/skills/<skill-name>/SKILL.md`
-2. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
-3. ถ้าต้องการ code → สร้าง `src/` ตาม project stack ที่ตรวจจาก manifest
-4. ถ้ามีรายละเอียดเพิ่ม → merge เข้า `SKILL.md` ให้อยู่ใน 250 บรรทัด (ไม่สร้าง `references/` โดย default); ถ้าจำเป็นจริงให้ใช้ `workflows/` หรือ `scripts/` แทน
-5. ถ้ามี enforceable conventions → ใช้ ast-grep rules ใน `rules/` ตาม `/update-astgrep-rules` แทนการฝังใน skill
+1. Create `<project-or-workspace>/.devin/skills/<skill-name>/SKILL.md`
+2. Use kebab-case and the frontmatter `name` must match the directory name
+3. If code is needed → create `src/` per the project stack detected from the manifest
+4. If more detail is needed → merge it into `SKILL.md` staying within 250 lines (no `references/` by default); if truly necessary use `workflows/` or `scripts/` instead
+5. If there are enforceable conventions → use ast-grep rules in `rules/` per `/update-astgrep-rules` instead of embedding them in the skill
 
 ### 4. Write SKILL.md
 
-> Goal: เอกสาร skill ถูกต้องตาม spec ฝั่ง project
+> Goal: the skill document is correct per the project-side spec
 
-1. Frontmatter ครบ: `name`, `description` ≤100 ตัวอักษร, `argument-hint`, `related`
+1. Complete frontmatter: `name`, `description` ≤100 characters, `argument-hint`, `related`
 2. Sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-3. เขียนเนื้อหาเป็นภาษาอังกฤษทั้งหมด ยกเว้น project กำหนดภาษาอื่น
-4. ใช้ commands และ paths ของ project จริงจาก `package.json`, `AGENTS.md`, หรือ scripts ที่มี
-5. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
-6. ไม่เกิน 250 บรรทัด — บีบอัดรายละเอียดให้กระชับใน `SKILL.md` แทนการแยก `references/`
+3. Write the content entirely in English, unless the project specifies another language
+4. Use the project's real commands and paths from `package.json`, `AGENTS.md`, or existing scripts
+5. Use backticks for `tools`, `commands`, `paths`, `skill-name`
+6. Stay under 250 lines — compress details concisely into `SKILL.md` instead of splitting `references/`
 
 ### 5. Sync With Project
 
-> Goal: skill เชื่อมกับ project artifacts
+> Goal: the skill is wired into project artifacts
 
-1. ทำ `/update-agents-md` ให้ `AGENTS.md` อ้างถึง skill ใหม่ถ้าเป็น workflow หลัก
-2. ตรวจ `related` ชี้ไป skills ที่มีอยู่จริงทั้ง project และ global
-3. ถ้า skill เกี่ยวกับ hooks/MCP → sync กับ `/update-devin-project-hooks` หรือ `/update-devin-project-mcp`
-4. ทำ `/update-dot-devin` ถ้า `.devin/` manifest ต้องอัปเดต
+1. Run `/update-agents-md` so `AGENTS.md` references the new skill if it's a primary workflow
+2. Check that `related` points to skills that really exist in both the project and global sets
+3. If the skill concerns hooks/MCP → sync with `/update-devin-project-hooks` or `/update-devin-project-mcp`
+4. Run `/update-dot-devin` if the `.devin/` manifest needs updating
 
 ### 6. Validate And Ship
 
-> Goal: skill ผ่านมาตรฐานก่อนส่งมอบ
+> Goal: the skill passes the standard before delivery
 
-1. ทำ `/deep-validate` — frontmatter, ความยาว, TODO/placeholder, broken links
-2. ตรวจ `related` ไม่มี missing หรือ circular
-3. ถ้าไม่ผ่าน → แก้และ recheck ไม่เกิน 3 รอบ
-4. ส่งต่อ `/update-project-skills` สำหรับการอัปเดตภายหลัง
+1. Run `/deep-validate` — frontmatter, length, TODO/placeholder, broken links
+2. Check that `related` has no missing or circular entries
+3. If it fails → fix and recheck no more than 3 rounds
+4. Hand off to `/update-project-skills` for later updates
 
 ## Rules
 
 ### 1. Project-Local Only
 
-- สร้างเฉพาะ skills ที่ใช้เฉพาะ project — skill ทั่วไปใช้ `/update-devin-global-skills`
-- ไม่ duplicate กับ global skills ที่มีอยู่
+- Create only project-specific skills — for general skills use `/update-devin-global-skills`
+- Don't duplicate existing global skills
 
 ### 2. English Content
 
-- Project-local skills เขียนด้วยภาษาอังกฤษทั้งหมด
-- ยกเว้น project กำหนดให้ใช้ภาษาอื่นไว้ชัดเจน
+- Project-local skills are written entirely in English
+- Unless the project explicitly specifies another language
 
 ### 3. Naming And Structure
 
-- `name` ตรง directory name, kebab-case
-- `description` ≤100 ตัวอักษร
-- ทุกไฟล์ไม่เกิน 250 บรรทัด
-- ไม่มี TODO/MOCK/placeholder
+- `name` matches the directory name, kebab-case
+- `description` ≤100 characters
+- No file over 250 lines
+- No TODO/MOCK/placeholder
 
 ### 4. Project Truth
 
-- ใช้ commands, paths และ conventions จาก `AGENTS.md` และ manifests จริงของ project
-- ไม่ hardcode commands ที่ไม่มีใน project
-- ทำ dry run ก่อน overwrite skill เดิม และขอ confirmation เสมอ
-- ใช้ /update-docs ถ้าจำเป็น
+- Use commands, paths, and conventions from the project's real `AGENTS.md` and manifests
+- Don't hardcode commands that don't exist in the project
+- Do a dry run before overwriting an existing skill and always ask for confirmation
+- Use /update-docs when needed
 
 
 ## Expected Outcome
 
-- Skill ใหม่อยู่ใน `.devin/skills/<skill-name>/` ของ project หรือ workspace ที่ถูกต้อง
-- `SKILL.md` เป็นภาษาอังกฤษ ผ่าน frontmatter spec และ section order
-- ใช้ project commands/paths จริง ไม่ซ้ำกับ global skills
-- `AGENTS.md` และ `.devin/` sync ถูกต้อง
-- ผ่าน `/deep-validate` พร้อมใช้งาน
+- The new skill lives in the correct project or workspace `.devin/skills/<skill-name>/`
+- `SKILL.md` is in English and passes the frontmatter spec and section order
+- Uses real project commands/paths, no duplication with global skills
+- `AGENTS.md` and `.devin/` are synced correctly
+- Passes `/deep-validate` and is ready to use

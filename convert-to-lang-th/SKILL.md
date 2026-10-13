@@ -1,6 +1,6 @@
 ---
 name: convert-to-lang-th
-description: ใช้ภาษาไทยเป็นภาษาหลักในการสื่อสารและทำงาน
+description: Use Thai as the primary language for communication and work
 argument-hint: "[target]"
 related:
   - convert-to-lang-en
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ใช้ภาษาไทยเป็นภาษาหลักในการสื่อสารและทำงาน
+Use Thai as the primary language for communication and work
 
 ## Scope
 
-ใช้เมื่อต้องการสื่อสาร เขียน documentation หรือทำงานเป็นภาษาไทย
+Use when you need to communicate, write documentation, or work in Thai
 
 ## Execute
 
@@ -23,61 +23,61 @@ related:
 
 > Goal: Set Language Context
 
-ตั้งค่าใช้ภาษาไทยเป็นหลัก:
+Set Thai as the primary language:
 
-1. ตอบเป็นภาษาไทยทุกครั้ง
-2. ใช้คำศัพท์เทคนิคที่เข้าใจง่าย
-3. รักษาความชัดเจนและกระชับ
-4. ใช้คำศัพท์ภาษาอังกฤษเฉพาะ technical terms ที่ไม่มีคำแปลไทย
+1. Always reply in Thai
+2. Use easy-to-understand technical vocabulary
+3. Keep things clear and concise
+4. Use English words only for technical terms with no Thai translation
 
 ### 2. Communicate In Thai
 
 > Goal: Communicate In Thai
 
-สื่อสารเป็นภาษาไทย:
+Communicate in Thai:
 
-1. ตอบเป็นภาษาไทยกระชับ ตรงประเด็น
-2. รายงานผลเป็น bullet points สั้นๆ
-3. อธิบาย concepts ด้วยภาษาไทยที่เข้าใจง่าย
-4. ใช้ technical terms ภาษาอังกฤษเมื่อจำเป็น
+1. Answer in Thai, concise and on point
+2. Report results as short bullet points
+3. Explain concepts in plain, easy-to-understand Thai
+4. Use English technical terms when needed
 
 ### 3. Documentation
 
 > Goal: Documentation
 
-เขียน documentation เป็นภาษาไทย:
+Write documentation in Thai:
 
-1. เขียน README, comments, และ documentation เป็นภาษาไทย
-2. ใช้ code examples พร้อมคำอธิบายภาษาไทย
-3. รักษา technical accuracy ในขณะที่เขียนเป็นภาษาไทย
+1. Write READMEs, comments, and documentation in Thai
+2. Use code examples with Thai explanations
+3. Keep technical accuracy while writing in Thai
 
 ## Rules
 
 ### 1. Communication Style
 
-- ตอบเป็นภาษาไทยกระชับ ตรงประเด็น
-- ไม่เริ่มตอบด้วย acknowledgment phrases
-- รายงานผลเป็น bullet points สั้นๆ
-- ใช้คำศัพท์ภาษาอังกฤษสำหรับ technical terms
+- Answer in Thai, concise and on point
+- Do not start replies with acknowledgment phrases
+- Report results as short bullet points
+- Use English words for technical terms
 
 ### 2. Technical Terms
 
-- ใช้คำศัพท์ภาษาอังกฤษสำหรับ terms ที่ไม่มีคำแปลไทยที่ชัดเจน
-- รักษาความถูกต้องทางเทคนิค
-- ใช้ code syntax ที่ถูกต้อง
+- Use English words for terms with no clear Thai translation
+- Keep technical correctness
+- Use correct code syntax
 
 ### 3. Clarity
 
-- เขียนให้เข้าใจง่าย
-- ใช้ประโยคสั้นๆ
-- หลีกเลี่ยงความคลุมเครือ
+- Write so it is easy to understand
+- Use short sentences
+- Avoid ambiguity
 
-- ใช้ /convert-to-lang-en ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Use /convert-to-lang-en if needed
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- การสื่อสารเป็นภาษาไทยที่ชัดเจน
-- Documentation เป็นภาษาไทยที่เข้าใจง่าย
-- ความถูกต้องทางเทคนิคคงอยู่
+- Clear Thai communication
+- Documentation in Thai that is easy to understand
+- Technical accuracy preserved

@@ -1,6 +1,6 @@
 ---
 name: use-astgrep-transform
-description: เขียน rule-YAML transformations ด้วย ast-grep — fix, constraints, transform, rewriters สำหรับ rewrite ที่ pattern string เดียวทำไม่ได้
+description: ast-grep rule-YAML transformations: fix, constraints, transform, rewriters for complex rewrites
 argument-hint: "[rule-or-intent]"
 related:
   - use-astgrep
@@ -12,60 +12,60 @@ related:
 
 ## Goal
 
-สร้าง ast-grep rule YAML ที่ transform code ได้เกิน metavar replacement — case conversion, conditional text, regex capture, per-subnode fix — แล้ว apply อย่างปลอดภัยด้วย dry-run → confirm → fix flow
+Build ast-grep rule YAML that transforms code beyond metavar replacement — case conversion, conditional text, regex capture, per-subnode fixes — then apply safely with a dry-run → confirm → fix flow
 
 ## Scope
 
-- ครอบคลุม `rule` fields (`pattern`, `kind`, `inside`, `has`, `follows`, `precedes`, `all`/`any`/`not`), `constraints`, `fix`, `transform`, `rewriters`, `utils` — deep-dive อยู่ใน `references/rewrite.md`
-- Pattern string ธรรมดาพอ → `/use-astgrep rewrite`; permanent lint rules → `/update-astgrep-rules`; transform ที่ YAML ไม่รองรับ (cross-file, stateful) → `/use-astgrep-programmatic`
+- Covers `rule` fields (`pattern`, `kind`, `inside`, `has`, `follows`, `precedes`, `all`/`any`/`not`), `constraints`, `fix`, `transform`, `rewriters`, `utils` — deep-dive in `references/rewrite.md`
+- A plain pattern string suffices → `/use-astgrep rewrite`; permanent lint rules → `/update-astgrep-rules`; transforms YAML cannot express (cross-file, stateful) → `/use-astgrep-programmatic`
 
 ## Execute
 
 ### 1. Detect Need
 
-> Goal: รู้ว่าต้อง rule YAML ไม่ใช่ pattern string
+> Goal: determine that rule YAML is needed, not a pattern string
 
-1. ต้อง constraints บน metavar (`regex`, `kind`, `not`) หรือ context (`inside`/`has`/`follows`) → rule YAML
-2. ต้องแปลง captured text — case convert, substring, regex replace, conditional text → `transform:` (ดู `references/rewrite.md`)
-3. Sub-nodes ใน match เดียวต้อง fix ต่างกัน → `rewriters:` + `transform.rewrite` (ดู `references/rewrite.md`)
-4. ถ้าไม่เข้าเงื่อนไขเลย → `/use-astgrep rewrite` พอ
+1. Need constraints on metavars (`regex`, `kind`, `not`) or context (`inside`/`has`/`follows`) → rule YAML
+2. Need to transform captured text — case conversion, substring, regex replace, conditional text → `transform:` (see `references/rewrite.md`)
+3. Sub-nodes in one match need different fixes → `rewriters:` + `transform.rewrite` (see `references/rewrite.md`)
+4. If none of these apply → `/use-astgrep rewrite` is enough
 
 ### 2. Write Rule YAML
 
-> Goal: rule file ที่ correct และจำกัด scope ชัด
+> Goal: a correct rule file with a clearly bounded scope
 
-1. Scaffold: `ast-grep new rule <name> --lang <lang>` หรือเขียนเองใน temp/`sg-rules/` (ไม่ใช่ `rules/` ถ้ายังไม่ promote)
-2. โครงขั้นต่ำ: `id`, `language`, `rule`, `fix` — เพิ่ม `severity`, `message`, `constraints`, `transform`, `rewriters`, `utils` ตามต้องการ
-3. เขียน `fix` ด้วย metavars ที่ capture จริง — var จาก `transform:` ใช้ใน `fix` ได้ (chain ตามลำดับ)
-4. อ้าง `utils` rules ผ่าน `matches: <util-id>` เมื่อต้อง shared helpers
+1. Scaffold: `ast-grep new rule <name> --lang <lang>` or hand-write in temp/`sg-rules/` (not `rules/` until promoted)
+2. Minimal skeleton: `id`, `language`, `rule`, `fix` — add `severity`, `message`, `constraints`, `transform`, `rewriters`, `utils` as needed
+3. Write `fix` using actually captured metavars — vars from `transform:` are usable in `fix` (chained in order)
+4. Reference `utils` rules via `matches: <util-id>` when shared helpers are needed
 
 ### 3. Dry-Run And Preview
 
-> Goal: เห็น findings + diff ก่อน apply — บังคับ
+> Goal: see findings + diff before applying — mandatory
 
 1. `sg scan --rule <file>` = list findings (dry run)
-2. `sg scan --rule <file> --fix` = interactive diff ทีละ change — ตรวจ 3-5 match แรก
-3. False positives → เพิ่ม constraints/inside; missed targets → ลด constraints หรือแยก rule
+2. `sg scan --rule <file> --fix` = interactive diff per change — review the first 3-5 matches
+3. False positives → add constraints/inside; missed targets → loosen constraints or split the rule
 
 ### 4. Apply And Verify
 
-> Goal: apply หลัง confirm แล้วยืนยันผล
+> Goal: apply after confirm, then verify the result
 
-1. หลัง user confirm: `sg scan --rule <file> --fix-all` หรือ interactive accept (`a`)
-2. Re-scan rule เดิม → 0 findings (ยกเว้น intentional)
-3. ทำ `/run-check` — lint/typecheck ผ่าน; fail → `git restore` ไฟล์ที่พัง + ปรับ rule (max 3 รอบ)
-4. Rule ที่ควรใช้ซ้ำถาวร → promote เข้า `rules/` ผ่าน `/update-astgrep-rules`
-5. ทำ `/report`: `No.`, `Rule`, `Files`, `Changes`, `Status`
+1. After user confirm: `sg scan --rule <file> --fix-all` or interactive accept (`a`)
+2. Re-scan the original rule → 0 findings (unless intentional)
+3. Run `/run-check` — lint/typecheck must pass; on failure → `git restore` the broken files + adjust the rule (max 3 rounds)
+4. Rules worth keeping permanently → promote into `rules/` via `/update-astgrep-rules`
+5. Run `/report`: `No.`, `Rule`, `Files`, `Changes`, `Status`
 
 ## Rules
 
-- Dry-run + diff preview + user confirm ก่อน `--fix`/`--fix-all` ทุกครั้ง — เหมือน `/use-astgrep rewrite`
-- git working tree ควร clean ก่อน apply — sg rewrite ไม่มี undo
-- regex capture groups ใช้ได้เฉพาะใน `transform.replace` — `regex` rule ธรรมดาไม่รองรับ
-- `rewriters` entries ต้องมี `id`/`rule`/`fix` เท่านั้น — ไม่มี `severity`/`message`; ลำดับใน list สำคัญ (ตัวแรกที่ match ชนะ)
-- ใช้ `/use-astgrep-programmatic` ถ้าจำเป็น
+- Always dry-run + diff preview + user confirm before `--fix`/`--fix-all` — same as `/use-astgrep rewrite`
+- The git working tree should be clean before applying — sg rewrite has no undo
+- Regex capture groups work only in `transform.replace` — plain `regex` rules do not support them
+- `rewriters` entries take only `id`/`rule`/`fix` — no `severity`/`message`; list order matters (first match wins)
+- Use `/use-astgrep-programmatic` if needed
 
 ## Expected Outcome
 
-- Rule YAML transform ถูกต้อง — preview ผ่าน, apply แล้ว 0 findings, checks เขียว
-- Rule พร้อม promote เข้า `rules/` ถ้าต้องใช้ซ้ำ
+- Correct rule YAML transform — preview passes, 0 findings after apply, checks green
+- Rules ready to promote into `rules/` if reusable

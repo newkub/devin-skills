@@ -1,6 +1,6 @@
 ---
 name: follow-enter-dot
-description: จัดการ trigger "." โดยตรวจ state แล้วเลือก continue, git commit/push, suggest, ship หรือ ask-me
+description: Handle the "." trigger: check state, then choose continue, commit/push, suggest, ship, or ask-me
 argument-hint: "[scope]"
 related:
   - continue
@@ -22,83 +22,83 @@ related:
 
 ## Goal
 
-จัดการ trigger `.` จาก user โดยตรวจสอบ state ปัจจุบัน แล้วเลือก action ทีเหมาะสม: ทำงานต่อ, commit/push งานที่เสร็จ, แนะนำขั้นตอนถัดไป, ship งาน, สร้างไอเดีย features หรือถาม user
+Handle the `.` trigger from the user by inspecting the current state, then choosing the appropriate action: continue work, commit/push finished work, suggest next steps, ship the work, generate feature ideas, or ask the user
 
 ## Scope
 
-ใช้เมื่อ user ส่งข้อความทีมีเฉพาะ `.` หรือใช้ `.` เป็น trigger ให้ทำงานถัดไปตาม state ปัจจุบัน
+Use when the user sends a message containing only `.` or uses `.` as a trigger to perform the next action based on the current state
 
 ## Execute
 
 ### 1. Read Current State
 
-> Goal: รู้ state ปัจจุบันก่อนตัดสินใจ
+> Goal: know the current state before deciding
 
-1. ตรวจสอบ todo list ปัจจุบัน (ถ้ามี) — ถ้ามี `[scope]` argument ให้จำกัดการตรวจ state เฉพาะ scope นั้น
-2. ตรวจสอบ open files, recent changes, git status
-3. ตรวจสอบข้อความล่าสุดของ user และ context
-4. ตรวจสอบว่า session นี้เคยใช้ `/ship-to-dev-branch` ใน `dont-ask-me` mode หรือ `/dont-ask-me` หรือไม่ — ถ้าเคย ให้คง `dont-ask-me` mode ไว้ในการตัดสินใจทุกขั้นตอนถัดไป (แทน `/ask-me` ด้วย `/follow-your-suggestion` + safe default)
-5. ทำ `/report-progress` เพื่อสรุปสถานะปัจจุบัน
+1. Check the current todo list (if any) — if a `[scope]` argument is given, limit the state check to that scope
+2. Check open files, recent changes, git status
+3. Check the user's latest message and context
+4. Check whether this session has used `/ship-to-dev-branch` in `dont-ask-me` mode or `/dont-ask-me` — if so, keep `dont-ask-me` mode for every subsequent decision (replace `/ask-me` with `/follow-your-suggestion` + safe default)
+5. Run `/report-progress` to summarize the current status
 
 ### 2. Determine Next Action
 
-> Goal: เลือก action ทีเหมาะสม
+> Goal: choose the appropriate action
 
-เลือกตามลำดับข้อ 1-8 — ข้อแรกที่ match state ชนะ
+Choose by order of items 1-8 — the first item that matches the state wins
 
-1. ถ้ามีงานค้างหรือ todos ยังไม่เสร็จ → ทำ `/continue`
-2. ถ้ามี uncommitted changes ที่งานเสร็จและ validation ผ่านแล้ว → ทำ `/git-commit-and-push` (commit + push + resolve CI/CD); ถ้าต้องการเฉพาะ commit ไม่ push → ทำ `/git-commit`
-3. ถ้า committed แล้วแต่ยังมี unpushed commits → ทำ `/git-push`
-4. ถ้างานพร้อม ship และ validation ผ่าน → ทำ `/ship-to-dev-branch` แล้วตามด้วย `/suggest-next-action`; แต่ถ้า session อยู่ใน `dont-ask-me` mode → ทำ `/ship-to-dev-branch` ใน `dont-ask-me` mode (Step 6 ของ `/ship-to-dev-branch`)
-5. ถ้าต้องการแนะนำทิศทางหรือขั้นตอนถัดไป → ทำ `/suggest-next-action` หรือ `/follow-your-suggestion`
-6. ถ้า context บ่งบอกว่าต้องการไอเดีย features หรือกำลัง brainstorm (เช่นข้อความก่อนหน้าพูดถึง "ไอเดีย", "features", "ฟีเจอร", หรือ user ถามคำถามเปิดกว้างเกี่ยวกับฟีเจอร) → ทำ `/idea-features`
-7. ถ้า context ไม่ชัดหรือต้องการคำตอบจาก user → ทำ `/ask-me`; แต่ถ้า session อยู่ใน `dont-ask-me` mode → ทำ `/follow-your-suggestion` ด้วย safe default แทน
-8. ถ้า user บ่งบอกเจตนาเฉพาะ (เช่น ship, continue, commit, push, ask) → ทำตามที user ต้องการ
+1. If there is pending work or unfinished todos → run `/continue`
+2. If there are uncommitted changes whose work is done and validation passed → run `/git-commit-and-push` (commit + push + resolve CI/CD); if only a commit is needed without pushing → run `/git-commit`
+3. If committed but there are still unpushed commits → run `/git-push`
+4. If the work is ready to ship and validation passed → run `/ship-to-dev-branch` then follow with `/suggest-next-action`; but if the session is in `dont-ask-me` mode → run `/ship-to-dev-branch` in `dont-ask-me` mode (Step 6 of `/ship-to-dev-branch`)
+5. If guidance on direction or next steps is needed → run `/suggest-next-action` or `/follow-your-suggestion`
+6. If the context indicates a need for feature ideas or brainstorming (e.g. previous messages mention "ideas", "features", or the user asks open-ended questions about features) → run `/idea-features`
+7. If the context is unclear or needs an answer from the user → run `/ask-me`; but if the session is in `dont-ask-me` mode → run `/follow-your-suggestion` with a safe default instead
+8. If the user indicates a specific intent (e.g. ship, continue, commit, push, ask) → do what the user wants
 
 ### 3. Execute Action
 
-> Goal: ดำเนินการตามทีเลือก
+> Goal: carry out the chosen action
 
-1. `/continue` — ทำงานค้างให้เสร็จ
-2. `/git-commit-and-push` — commit + push งานที่เสร็จแล้วพร้อม resolve CI/CD
-3. `/git-commit` — commit เฉพาะ changes (ไม่ push) เมื่อเหมาะสม
-4. `/git-push` — push commits ที่ค้างอยู่
-5. `/ship-to-dev-branch` — ส่งมอบงานทีเสร็จแล้ว จากนั้นทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-6. `/ship-to-dev-branch` (dont-ask-me mode) — ship โดยไม่ถาม user เมื่อ session อยู่ใน `dont-ask-me` mode
-7. `/suggest-next-action` — แนะนำขั้นตอนถัดไป
-8. `/idea-features` — สร้างไอเดียฟีเจอรในแชท ถ้า context เกี่ยวกับไอเดีย
-9. `/follow-your-suggestion` — ทำตามข้อเสนอทีเคยวิเคราะห์ไว้
-10. `/ask-me` — ถาม user เมื่อ context ไม่พอ (ยกเว้นใน `dont-ask-me` mode ให้ใช้ `/follow-your-suggestion` แทน)
-11. ถ้า action ที่เลือกทำไม่ได้ (blocked, ขาด dependencies, หรือเสี่ยงเกินไป) → ทำ `/save-to-todo-md` บันทึกงานค้างไว้ก่อน แล้วข้ามไป action ถัดไป
+1. `/continue` — finish the pending work
+2. `/git-commit-and-push` — commit + push finished work with CI/CD resolution
+3. `/git-commit` — commit changes only (no push) when appropriate
+4. `/git-push` — push the pending commits
+5. `/ship-to-dev-branch` — deliver finished work, then run `/suggest-next-action` to recommend the next action
+6. `/ship-to-dev-branch` (dont-ask-me mode) — ship without asking the user when the session is in `dont-ask-me` mode
+7. `/suggest-next-action` — recommend the next step
+8. `/idea-features` — generate feature ideas in chat when the context is about ideas
+9. `/follow-your-suggestion` — follow the previously analyzed suggestion
+10. `/ask-me` — ask the user when context is insufficient (except in `dont-ask-me` mode, where you use `/follow-your-suggestion` instead)
+11. If the chosen action cannot be done (blocked, missing dependencies, or too risky) → run `/save-to-todo-md` to record the pending work first, then skip to the next action
 
 ### 4. Report
 
-> Goal: สรุป action ทีทำ
+> Goal: summarize the action taken
 
-1. รายงาน action ทีเลือก
-2. รายงาน state ทีทำให้เลือก action นั้น
-3. ถ้า commit/push แล้ว → รายงาน commit hash และ remote state
-4. ถ้า ship แล้ว → รายงานสรุปผล
-5. ถ้า continue → รายงานขั้นตอนถัดไปทีทำ
+1. Report the chosen action
+2. Report the state that led to choosing that action
+3. If committed/pushed → report the commit hash and remote state
+4. If shipped → report the result summary
+5. If continuing → report the next step taken
 
 ## Rules
 
-- `.` เป็น trigger ไม่ใช่คำสั่่งเต็มรูปแบบ
-- ต้องตรวจ state ก่อนตัดสินใจเสมอ
-- ถ้างานยังไม่เสร็จ → ทำ `/continue` ก่อน `/git-commit-and-push` หรือ `/ship-to-dev-branch`
-- ถ้าต้อง commit/push หรือ ship → ต้องผ่าน validation ก่อน
-- ห้าม commit/push changes ที่ยังไม่เสร็จหรือ validation ไม่ผ่าน
-- ถ้า session อยู่ใน `dont-ask-me` mode → ต้องทำ `/ship-to-dev-branch` ใน `dont-ask-me` mode และคง mode ไว้ (แทน `/ask-me` ด้วย `/follow-your-suggestion`)
-- ถ้า context ไม่ชัด → ทำ `/ask-me` (ยกเว้นใน `dont-ask-me` mode)
-- ไม่ทำการเปลี่ยนแปลงทีเสี่ยงโดยไม่มี user confirmation (ยกเว้นใน `dont-ask-me` mode ให้เลือก safe default แล้ว report)
-- อะไรที่ยังทำไม่ได้ → ทำ `/save-to-todo-md` ไว้ก่อน แล้วค่อยข้าม ห้ามทิ้งงานค้างโดยไม่บันทึก
+- `.` is a trigger, not a full command
+- Always check the state before deciding
+- If the work is not finished → run `/continue` before `/git-commit-and-push` or `/ship-to-dev-branch`
+- If commit/push or ship is needed → validation must pass first
+- Never commit/push changes that are unfinished or failed validation
+- If the session is in `dont-ask-me` mode → run `/ship-to-dev-branch` in `dont-ask-me` mode and keep the mode (replace `/ask-me` with `/follow-your-suggestion`)
+- If the context is unclear → run `/ask-me` (except in `dont-ask-me` mode)
+- Do not make risky changes without user confirmation (except in `dont-ask-me` mode, where you choose a safe default and report)
+- Anything not yet doable → run `/save-to-todo-md` first, then skip; never leave pending work unrecorded
 
 ## Expected Outcome
 
-- User ได้รับ action ทีถูกต้องตาม state
-- งานค้างถูก continue จนครบ
-- งานที่เสร็จและ validation ผ่านถูก commit/push ผ่าน `/git-commit-and-push`, `/git-commit` หรือ `/git-push`
-- งานพร้อมถูก ship ตามมาตรฐาน แล้วตามด้วย `/suggest-next-action` หรือ ship ใน `dont-ask-me` mode เมื่อ session อยู่ใน mode นั้น
-- ไอเดีย features ถูกสร้างด้วย `/idea-features` เมื่อ context บ่งบอก
-- Context ไม่ชัดถูกถามก่อนลงมือ หรือตัดสินใจด้วย safe default เมื่ออยู่ใน `dont-ask-me` mode
-- งานที่ยังทำไม่ได้ถูกบันทึกลง `/save-to-todo-md` ก่อนข้าม ไม่หายไปเฉยๆ
+- The user gets the action appropriate for the state
+- Pending work is continued until complete
+- Finished, validated work is committed/pushed via `/git-commit-and-push`, `/git-commit`, or `/git-push`
+- Ready work is shipped per the standard, followed by `/suggest-next-action`, or shipped in `dont-ask-me` mode when the session is in that mode
+- Feature ideas are generated with `/idea-features` when the context indicates
+- Unclear context is asked about before starting, or decided with a safe default when in `dont-ask-me` mode
+- Work that cannot be done yet is recorded in `/save-to-todo-md` before skipping, never silently lost

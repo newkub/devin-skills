@@ -1,6 +1,6 @@
 ---
 name: deep-trace
-description: Trace ลึกตาม execution flow, logs, metrics, หรือ distributed trace
+description: Deeply trace execution flow, logs, metrics, or distributed traces
 argument-hint: "[scope]"
 related:
   - deep-debug
@@ -16,132 +16,132 @@ related:
 
 ## Goal
 
-Trace ลึกตามทางเดินของ execution, data flow, request lifecycle, logs, metrics, หรือ distributed traces เพื่อหาจุดทีผิดปกติ
+Trace deeply along the path of execution, data flow, request lifecycle, logs, metrics, or distributed traces to find anomalies
 
 ## Scope
 
-ใช้เมื่อต้องการรู้ว่า code ทำงานยังไง, ข้อมูลไหลไปไหน, request ผ่านอะไรบ้าง, หรือ error เกิดตรงไหน
-เหมาะสำหรับ async timing, race condition, distributed system, data pipeline, หรือ request path
-ไม่ใช้สำหรับหา root cause ทั่วไป — ใช้ `/deep-debug`
-ไม่ใช้สำหรับดู performance ล้วนๆ — ใช้ `/run-profiler`
+Use when you need to know how the code runs, where data flows, what a request passes through, or where an error occurs
+Best for async timing, race conditions, distributed systems, data pipelines, or request paths
+Not for general root-cause hunting — use `/deep-debug`
+Not for pure performance analysis — use `/run-profiler`
 
 ## Execute
 
 ### 1. Define Trace Target
 
-> Goal: ระบุสิ่งทีต้อง trace
+> Goal: Identify what to trace
 
-1. ระบุ target: function, request, event, variable, error, latency spike
-2. ระบุ entry point และ expected exit point
-3. ระบุ boundaries ทีต้องข้าม: process, network, database, queue, service
-4. ทำ `/deep-thinking` ถ้า trace target ซับซ้อน
+1. Pin down the target: function, request, event, variable, error, latency spike
+2. Identify the entry point and the expected exit point
+3. Identify the boundaries to cross: process, network, database, queue, service
+4. Run `/deep-thinking` if the trace target is complex
 
 ### 2. Choose Trace Source
 
-> Goal: เลือกแหล่งข้อมูลทีเหมาะสม
+> Goal: Pick the right data source
 
-1. ถ้ามี logs → ใช้ structured logs หา correlation id หรือ request id
-2. ถ้ามี metrics → ดู dashboard หา spike หรือ pattern
-3. ถ้ามี distributed traces → ใช้ trace id เพื่อตาม path
-4. ถ้าไม่มี telemetry → ใช้ code reading: `/search-files-patterns`, `/use-astgrep`
-5. ถ้าต้องดู runtime → เพิ่ม temporary instrumentation
+1. If logs exist → use structured logs to find a correlation id or request id
+2. If metrics exist → look at dashboards for spikes or patterns
+3. If distributed traces exist → use the trace id to follow the path
+4. If there is no telemetry → use code reading: `/search-files-patterns`, `/use-astgrep`
+5. If runtime behavior is needed → add temporary instrumentation
 
 ### 3. Instrument If Needed
 
-> Goal: เพิ่ม visibility ถ้า trace ไม่ชัด
+> Goal: Add visibility when the trace is unclear
 
-1. เพิ่ม structured logs ชั่วคราว: function name, input, output, state
-2. เพิ่ม metrics ชั่วคราว สำหรับ duration หรือ count
-3. เพิ่ม trace span ถ้าใช้ OpenTelemetry หรือ observability tool
-4. ระบุว่า instrumentation เป็นชั่วคราว ต้องลบหลัง trace เสร็จ
-5. ไม่เพิ่ม `console.log` ถาวร
+1. Add temporary structured logs: function name, input, output, state
+2. Add temporary metrics for duration or count
+3. Add trace spans if using OpenTelemetry or an observability tool
+4. Mark the instrumentation as temporary — it must be removed once tracing is done
+5. Never leave permanent `console.log`
 
 ### 4. Reproduce And Capture
 
-> Goal: สร้าง trace data ที repeat ได้
+> Goal: Produce repeatable trace data
 
-1. สร้าง reproduction case สำหรับ target
-2. รันและ capture logs, metrics, traces
-3. ใช้ correlation id หรือ request id เดียวกัน
-4. บันทึก timestamp, environment, input
-5. ถ้า trace ไม่เสถียร → ทำซ้ำ 3-5 ครั้ง
+1. Build a reproduction case for the target
+2. Run it and capture logs, metrics, traces
+3. Use the same correlation id or request id
+4. Record timestamp, environment, input
+5. If the trace is unstable → repeat 3-5 times
 
 ### 5. Follow The Path
 
-> Goal: ตามทางเดินของ execution หรือ data
+> Goal: Follow the path of execution or data
 
-1. เริ่มจาก entry point ไปจนถึง exit point
-2. บันทึกทุก step: function, service, database, queue, external API
-3. ตรวจสอบ state/variable ทีเปลี่ยนแปลงในแต่ละ step
-4. ระบุ async point, await, callback, event loop cycle
-5. ใช้ `/use-astgrep` หรือ `/search-files-patterns` เพื่อหา call graph
+1. Start at the entry point and go to the exit point
+2. Record every step: function, service, database, queue, external API
+3. Check the state/variables that change at each step
+4. Identify async points, awaits, callbacks, event loop cycles
+5. Use `/use-astgrep` or `/search-files-patterns` to find the call graph
 
 ### 6. Identify Boundary Crossings
 
-> Goal: หาจุดทีข้อมูลหรือ control ข้าม boundary
+> Goal: Find where data or control crosses a boundary
 
-1. ระบุ network call: HTTP, gRPC, message queue
-2. ระบุ database operations: query, transaction, migration
-3. ระบุ process boundaries: microservices, workers, edge functions
-4. ตรวจสอบ serialization/deserialization, encoding, timeout, retry
-5. ระบุ clock, ordering, concurrency boundary
+1. Identify network calls: HTTP, gRPC, message queue
+2. Identify database operations: query, transaction, migration
+3. Identify process boundaries: microservices, workers, edge functions
+4. Check serialization/deserialization, encoding, timeout, retry
+5. Identify clock, ordering, concurrency boundaries
 
 ### 7. Pinpoint Anomaly
 
-> Goal: หาจุดทีผิดปกติใน trace
+> Goal: Find the anomaly in the trace
 
-1. เปรียบเทียบ expected flow กับ actual flow
-2. หาความล่าช้า, missing event, duplicated event, unexpected error
-3. หา state ทีไม่ตรงกับ expectation
-4. ใช้ diff หรือ side-by-side ของ flow ทีเคยทำงาน กับ flow ทีเสีย
-5. ทำ `/analyze-root-cause-analysis` ถ้าต้องการ causal chain
+1. Compare the expected flow with the actual flow
+2. Look for delays, missing events, duplicated events, unexpected errors
+3. Look for state that doesn't match expectations
+4. Diff or compare side-by-side a once-working flow with the broken one
+5. Run `/analyze-root-cause-analysis` if a causal chain is needed
 
 ### 8. Fix And Verify
 
-> Goal: แก้ปัญหาและยืนยันว่า trace กลับมาถูกต้อง
+> Goal: Fix the problem and confirm the trace is correct again
 
-1. ทำ `/resolve-errors` สำหรับ fix เฉพาะจุด
-2. ถ้าแก้โครงสร้าง flow → ทำ `/deep-impact` ก่อน
-3. ลบ instrumentation ชั่วคราว
-4. รัน reproduction case ซ้ำและ capture trace ใหม
-5. ตรวจสอบว่า flow กลับมาตรงกับ expected
-6. รัน test suite ทั้งหมดเพื่อยืนยัน
+1. Run `/resolve-errors` for a targeted fix
+2. If changing the flow structure → run `/deep-impact` first
+3. Remove the temporary instrumentation
+4. Re-run the reproduction case and capture a new trace
+5. Verify the flow matches the expected one again
+6. Run the full test suite to confirm
 
 ## Rules
 
 ### 1. One Trace At A Time
 
-- ติดตาม target เดียวในแต่ละ trace session
-- ไม่ trace หลายสิ่งพร้อมกัน
-- บันทึกทุก step เพื่อ reproducibility
+- Follow a single target per trace session
+- Don't trace multiple things at once
+- Record every step for reproducibility
 
 ### 2. Structured Telemetry
 
-- ใช้ structured logs ไม่ใช่ ad-hoc print
-- ใช้ correlation id / request id / trace id
-- อย่าเพิ่ม telemetry ถาวรโดยไม่จำเป็น
+- Use structured logs, not ad-hoc prints
+- Use correlation id / request id / trace id
+- Don't add permanent telemetry without a reason
 
 ### 3. Tool First
 
-- ใช้ existing observability ก่อนเพิ่ม log
-- ใช้ `/search-files-patterns` และ `/use-astgrep` เพื่อ trace in code
-- ใช้ `/run-profiler` ถ้าต้องการ latency breakdown
+- Use existing observability before adding logs
+- Use `/search-files-patterns` and `/use-astgrep` to trace in code
+- Use `/run-profiler` if a latency breakdown is needed
 
 ### 4. Boundary Aware
 
-- ให้ความสำคัญกับ boundary crossings
-- ตรวจสอบ network, database, serialization, concurrency
-- ไม่มองข้าม async หรือ event-driven flow
+- Give priority to boundary crossings
+- Check network, database, serialization, concurrency
+- Don't overlook async or event-driven flows
 
-- ใช้ /watch-browser-and-fix ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /follow-tool-git ถ้าจำเป็น
+- Use /watch-browser-and-fix if needed
+- Use /report if needed
+- Use /follow-tool-git if needed
 
 ## Expected Outcome
 
-1. รายการ step-by-step ของ execution หรือ data flow
-2. จุดทีผิดปกติและ evidence
-3. Causal chain ของปัญหา
-4. Fix ทีเป้าหมายชัดเจน
-5. Trace data ที reproduce ได้
-6. Regression tests ป้องกัน flow ผิดซ้ำ
+1. A step-by-step list of the execution or data flow
+2. The anomaly point with evidence
+3. The causal chain of the problem
+4. A clearly targeted fix
+5. Reproducible trace data
+6. Regression tests to prevent the broken flow from recurring

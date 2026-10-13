@@ -1,6 +1,6 @@
 ---
 name: use-astgrep-programmatic
-description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis และ integrate กับ review CLI
+description: Use ast-grep programmatically via scripts to automate analysis and integrate with the review CLI
 argument-hint: "[scope]"
 related:
   - use-astgrep
@@ -16,112 +16,112 @@ related:
 
 ## Goal
 
-ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI (promoted จาก `use-astgrep` workflow กลับเป็น top-level skill)
+Use ast-grep programmatically via Bun scripts to automate code analysis and integrate with the review CLI (promoted back to a top-level skill from the `use-astgrep` workflow)
 
 ## Scope
 
-ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-astgrep`) — ไม่รวมการอัปเดต rules (ดู `/update-astgrep-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli-then-run`)
+Covers using ast-grep through napi bindings and the CLI inside Bun scripts, building programmatic analyzers, and integrating with the review CLI — excludes manual ast-grep CLI usage (see `/use-astgrep`) — excludes updating rules (see `/update-astgrep-rules`) or updating the review CLI (see `/update-review-cli-then-run`)
 
 ## Execute
 
 ### 0. Setup
 
-> Goal: ติดตั้ง ast-grep สำหรับ Bun scripts
+> Goal: Install ast-grep for Bun scripts
 
-1. ติดตั้ง `@ast-grep/cli` ใน project (latest `0.45.3 (verified 2026-09-12)`):
+1. Install `@ast-grep/cli` in the project (latest `0.45.3 (verified 2026-09-12)`):
    - `bun add -D @ast-grep/cli`
-   - หรือ global: `mise use -g 'npm:@ast-grep/cli'`
-2. ตรวจสอบ CLI: `bunx ast-grep --version` (ad-hoc โดยไม่ติดตั้ง: `bunx -p @ast-grep/cli ast-grep --version`)
-3. ถ้าต้องใช้ napi bindings → `bun add -D @ast-grep/napi` (latest `0.45.3 (verified 2026-09-12)` — native Node-API module ต้องติดตั้งจริง ห้าม import ผ่าน esm.sh — ดู [references/package-manifest.md](references/package-manifest.md))
-4. สร้าง `sgconfig.yml` ที root ถ้ายังไม่มี
-5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/deep-research setup ast-grep`
+   - or globally: `mise use -g 'npm:@ast-grep/cli'`
+2. Verify the CLI: `bunx ast-grep --version` (ad-hoc without installing: `bunx -p @ast-grep/cli ast-grep --version`)
+3. If napi bindings are needed → `bun add -D @ast-grep/napi` (latest `0.45.3 (verified 2026-09-12)` — a native Node-API module must be really installed, never import it via esm.sh — see [references/package-manifest.md](references/package-manifest.md))
+4. Create `sgconfig.yml` at the root if it doesn't exist yet
+5. If installation fails → use `/deep-research setup ast-grep`
 
 ### 1. Prepare Context
 
-> Goal: อ่าน context และเตรียม environment ก่อนเขียน scripts
+> Goal: Read context and prepare the environment before writing scripts
 
-1. ทำ `/use-astgrep`, ทำ `/use-bun-native-api`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
-2. อ่าน `tools/review-codebase/` directory เพื่อเข้าใจ analyzer structure ที่มีอยู่
-3. อ่าน `rules/` directory เพื่อดู ast-grep rules ที่มีอยู่
-4. ทำ `/scan-codebase` เพื่อเข้าใจ codebase structure ที่จะ analyze
+1. Do `/use-astgrep`, `/use-bun-native-api`, `/follow-create-bun-cli` — read ast-grep patterns, Bun native APIs, and CLI best practices
+2. Read the `tools/review-codebase/` directory to understand the existing analyzer structure
+3. Read the `rules/` directory to see the existing ast-grep rules
+4. Do `/scan-codebase` to understand the codebase structure you will analyze
 
 ### 2. Create Programmatic Script
 
-> Goal: สร้าง Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
+> Goal: Create a Bun script that uses ast-grep programmatically for automated analysis
 
-1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `$env:TEMP`
-2. เลือก ast-grep interface:
-   - napi bindings: `import { parse, parseAsync, Lang, findInFiles, kind, registerDynamicLanguage } from '@ast-grep/napi'` — in-process analysis; `parse(Lang.TypeScript, src).root().find('pattern')` / `root.findAll(...)` / `node.getMatch('A')` / `node.getMultipleMatches('$$$')` / `node.replace(text)` + `root.commitEdits([...])`; `findInFiles(Lang.TypeScript, { paths: ['src'], matcher: { rule: {...} } }, cb)` สำหรับ multi-file scan — API surface + perf tips เต็มที่ [references/napi-api.md](references/napi-api.md)
-   - CLI wrapper: `Bun.$\`ast-grep scan --json pretty\`` — สำหรับ batch scanning
-   - ภาษานอก JS ecosystem → `bun add -D @ast-grep/lang-<name>` + `registerDynamicLanguage({ <name>: langPkg })` ครั้งเดียวต่อ process (ดู `references/napi-api.md → Dynamic Languages`)
-3. เขียน script ด้วย Bun native APIs:
-   - ใช้ `Bun.Glob` สำหรับ file discovery
-   - ใช้ `Bun.$` สำหรับ CLI invocation
-   - ใช้ `Bun.file()` + `Bun.write()` สำหรับ file I/O
-4. script ต้องมี `dryRun` option สำหรับ testing
-5. script ต้อง output เป็น JSON สำหรับ review CLI consumption
-6. ใช้ CDN imports เฉพาะ pure-JS deps เช่น `https://esm.sh/zod` — `@ast-grep/napi` เป็น native module ต้อง `bun add -D` เท่านั้น
+1. Do `/use-scripts` to create a script in `.devin/scripts/` or `$env:TEMP`
+2. Choose the ast-grep interface:
+   - napi bindings: `import { parse, parseAsync, Lang, findInFiles, kind, registerDynamicLanguage } from '@ast-grep/napi'` — in-process analysis; `parse(Lang.TypeScript, src).root().find('pattern')` / `root.findAll(...)` / `node.getMatch('A')` / `node.getMultipleMatches('$$$')` / `node.replace(text)` + `root.commitEdits([...])`; `findInFiles(Lang.TypeScript, { paths: ['src'], matcher: { rule: {...} } }, cb)` for multi-file scans — full API surface + perf tips at [references/napi-api.md](references/napi-api.md)
+   - CLI wrapper: `Bun.$\`ast-grep scan --json pretty\`` — for batch scanning
+   - languages outside the JS ecosystem → `bun add -D @ast-grep/lang-<name>` + `registerDynamicLanguage({ <name>: langPkg })` once per process with all languages at once (see `references/napi-api.md → Dynamic Languages`)
+3. Write the script with Bun native APIs:
+   - Use `Bun.Glob` for file discovery
+   - Use `Bun.$` for CLI invocation
+   - Use `Bun.file()` + `Bun.write()` for file I/O
+4. The script must have a `dryRun` option for testing
+5. The script must output JSON for review CLI consumption
+6. Use CDN imports only for pure-JS deps such as `https://esm.sh/zod` — `@ast-grep/napi` is a native module and must only be added via `bun add -D`
 
 ### 3. Run Analysis
 
-> Goal: รัน programmatic analysis และ integrate ผลลัพธ์กับ review CLI
+> Goal: Run the programmatic analysis and integrate the results with the review CLI
 
-1. รัน script ใน dry run mode เพื่อดูผลลัพธ์ก่อน
-2. ถ้า dry run ผ่าน → รันจริง
-3. ถ้า review CLI ไม่รวม ast-grep findings → รัน script แยกและ merge ผลลัพธ์
-4. ตรวจสอบ findings ว่ามี evidence ครบ: file path, line number, code snippet, rule id
+1. Run the script in dry-run mode first to inspect the output
+2. If the dry run passes → run for real
+3. If the review CLI doesn't include ast-grep findings → run the script separately and merge the results
+4. Verify each finding has complete evidence: file path, line number, code snippet, rule id
 
 ### 4. Validate And Report
 
-> Goal: ตรวจสอบ findings และรายงานผล
+> Goal: Validate findings and report results
 
-1. ทำ `/deep-validate` สำหรับ validate issues จาก ast-grep analysis
-2. จัดลำดับตาม severity: Critical → High → Medium → Low
-3. ถ้าพบ false positives → ปรับ rules และรันซ้ำ (max 3 → stop/report)
-4. ทำ `/suggest-next-action`
+1. Do `/deep-validate` to validate issues from the ast-grep analysis
+2. Order by severity: Critical → High → Medium → Low
+3. If false positives are found → adjust the rules and re-run (max 3 → stop/report)
+4. Do `/suggest-next-action`
 
 ## Rules
 
 ### 1. Script Standards
 
-- ใช้ Bun native APIs เสมอ: `Bun.Glob`, `Bun.$`, `Bun.file()`, `Bun.write()`
-- `@ast-grep/napi` เป็น native Node-API module — ต้อง `bun add -D @ast-grep/napi` เสมอ (esm.sh ไม่สามารถ serve native binary ได้); CDN imports ใช้ได้เฉพาะ pure-JS deps
-- script ต้องมี `dryRun` option
-- script ต้อง output เป็น JSON สำหรับ machine consumption
-- เก็บ scripts ใน `.devin/scripts/` (permanent) หรือ `$env:TEMP` (throwaway)
-- rewrite ที่ metavar replacement ธรรมดาไม่พอ (case conversion, per-subnode fix) → ใช้ YAML `transform`/`rewriters` (ดู `use-astgrep/workflows/transform/` + `references/rewrite.md`); ใน napi ใช้ `node.replace(text)` + host-language string ops — `replace()` ไม่ expand `$VAR`
+- Always use Bun native APIs: `Bun.Glob`, `Bun.$`, `Bun.file()`, `Bun.write()`
+- `@ast-grep/napi` is a native Node-API module — always `bun add -D @ast-grep/napi` (esm.sh cannot serve a native binary); CDN imports are only usable for pure-JS deps
+- The script must have a `dryRun` option
+- The script must output JSON for machine consumption
+- Keep scripts in `.devin/scripts/` (permanent) or `$env:TEMP` (throwaway)
+- Rewrites where plain metavar replacement isn't enough (case conversion, per-subnode fixes) → use YAML `transform`/`rewriters` (see `use-astgrep/workflows/transform/` + `references/rewrite.md`); in napi use `node.replace(text)` + host-language string ops — `replace()` does not expand `$VAR`
 
 ### 2. Integration
 
-- ast-grep findings ต้อง integrate กับ review CLI output
-- ถ้า review CLI ไม่รวม ast-grep findings → รัน script แยกและ merge
-- แต่ละ finding ต้องมี: file path, line number, code snippet, rule id
-- ถ้า finding เป็น false positive → ปรับ rule และรันซ้ำ
+- ast-grep findings must integrate with the review CLI output
+- If the review CLI doesn't include ast-grep findings → run the script separately and merge
+- Each finding must have: file path, line number, code snippet, rule id
+- If a finding is a false positive → adjust the rule and re-run
 
 ### 3. Performance (napi)
 
-- prefer `parseAsync` มากกว่า `parse` — parse ขนานบน libuv thread pool
-- prefer `findAll`/`find` มากกว่า manual `children()` recursion — traversal ผ่าน FFI call ต่อ node ช้ามาก
-- prefer `findInFiles` สำหรับหลายไฟล์ — parse+match ขนานบน Rust threads; Promise resolve ก่อน callback ครบได้ → guard ด้วย file-count counter (pattern ใน `references/napi-api.md`)
-- `registerDynamicLanguage` เรียกครั้งเดียวต่อ process รวมทุกภาษาในครั้งเดียว — call ซ้ำถูก ignore (first call wins)
+- Prefer `parseAsync` over `parse` — parses in parallel on the libuv thread pool
+- Prefer `findAll`/`find` over manual `children()` recursion — traversal via one FFI call per node is very slow
+- Prefer `findInFiles` for many files — parse+match run in parallel on Rust threads; the Promise may resolve before all callbacks finish → guard with a file-count counter (pattern in `references/napi-api.md`)
+- Call `registerDynamicLanguage` once per process, registering all languages in that single call — repeated calls are ignored (first call wins)
 
 ### 4. Scope Boundary
 
-- ไม่รวมการอัปเดต rules — อยู่ใน `/update-astgrep-rules`
-- ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/update-review-cli-then-run`
-- เน้นเฉพาะการใช้ ast-grep แบบ programmatic ผ่าน scripts
+- Excludes updating rules — that lives in `/update-astgrep-rules`
+- Excludes updating review CLI analyzers — that lives in `/update-review-cli-then-run`
+- Focused solely on using ast-grep programmatically via scripts
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (astgrep programmatic)
-- รายงานเป็นตารางด้วย `/report`
-- ใช้ /run-program ถ้าจำเป็น
-- ใช้ `/search-with-astgrep` ถ้าจำเป็น
+- Never use `**` (bold markers) — use backticks for emphasis (astgrep programmatic)
+- Report as tables with `/report`
+- Use /run-program when needed
+- Use `/search-with-astgrep` when needed
 
 ## Expected Outcome
 
-- Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
-- Review report พร้อม ast-grep findings ที่ครอบคลุมและ accurate
-- Findings ถูก validate และรายงานเป็นตาราง
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- A Bun script that uses ast-grep programmatically for automated analysis
+- A review report with comprehensive and accurate ast-grep findings
+- Findings are validated and reported as tables
+- The next action is suggested via `/suggest-next-action`
 

@@ -1,6 +1,6 @@
 ---
 name: run-test
-description: Test dispatcher — เลือก test-* skill จาก domain arg หรือ signals (unit default, all = orchestrator) — auto-detect framework
+description: Test dispatcher — pick a test-* skill from the domain arg or signals; auto-detect framework
 argument-hint: "[scope|domain] [target%]"
 related:
   - test-unit
@@ -33,18 +33,18 @@ related:
 
 ## Goal
 
-Test dispatcher — เลือก `test-*` skill ที่ตรง domain จาก argument หรือ signals แล้ว delegate — unit/fast tests เป็น default; `all` → `/test-all` orchestrator
+Test dispatcher — pick the matching `test-*` skill from the domain argument or signals, then delegate — unit/fast tests are the default; `all` → `/test-all` orchestrator
 
 ## Scope
 
-ใช้สำหรับรัน tests ทุกประเภท — skill นี้เป็น dispatcher เท่านั้น ไม่รัน test เอง; workflow จริงอยู่ใน `test-*` skills
+Use to run every kind of test — this skill is a dispatcher only, it does not run tests itself; the real workflows live in the `test-*` skills
 
-ครอบคลุม framework detection (delegated): Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
+Covers framework detection (delegated): Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
 
-- ถ้าต้องการ update/เขียน tests → `/update-tests`
-- ถ้าต้องการ analysis ลึกของ domain (route coverage, exploratory, subagent fan-out) → `/deep-test <domain>`
+- To update/write tests → `/update-tests`
+- For deep domain analysis (route coverage, exploratory, subagent fan-out) → `/deep-test <domain>`
 
-| No. | Signal ที่พบ | Domain → Skill |
+| No. | Signal found | Domain → Skill |
 |----:|-------------|----------------|
 | 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | unit (default) → `/test-unit` |
 | 2 | shared modules, DB, services integration | `integration` → `/test-integration` |
@@ -53,7 +53,7 @@ Test dispatcher — เลือก `test-*` skill ที่ตรง domain จ
 | 5 | consumer/provider services, Pact, contract files | `contract` → `/test-contract` |
 | 6 | web frontend, browser flows | `e2e` → `/test-e2e` |
 | 7 | UI components, design system, screenshots | `visual` → `/test-visual` |
-| 8 | coverage config หรือ target กำหนดไว้ | `coverage` → `/test-coverage` (default 100%) |
+| 8 | coverage config or defined target | `coverage` → `/test-coverage` (default 100%) |
 | 9 | critical logic, mutation config | `mutation` → `/test-mutation` |
 | 10 | perf concern, k6/autocannon config, load scripts | `load` → `/test-load` |
 | 11 | post-build/deploy sanity, `smoke` scripts/tags, health checks | `smoke` → `/test-smoke` |
@@ -62,30 +62,30 @@ Test dispatcher — เลือก `test-*` skill ที่ตรง domain จ
 | 14 | fast-check/proptest/hypothesis, fuzz targets | `property` → `/test-property` |
 | 15 | migrations dir, ORM config, testcontainers, test DB scripts | `database` → `/test-database` |
 | 16 | `.maestro/`, detox, androidTest, XCUITest, mobile apps | `mobile` → `/test-mobile` |
-| 17 | หลาย domains พร้อมกัน | `all` → `/test-all` (orchestrator) |
+| 17 | multiple domains at once | `all` → `/test-all` (orchestrator) |
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: Always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (test)
 
 ### Domain Dispatch
 
-> Goal: เลือก `test-*` จาก argument หรือ signals
+> Goal: Choose a `test-*` from the argument or signals
 
-- argument เป็น domain (`a11y`, `api`, `cli`, `component`, `contract`, `coverage`, `database`, `e2e`, `integration`, `load`, `mobile`, `mutation`, `property`, `smoke`, `visual`) → ทำ `/test-<domain>`
-- argument เป็น `all` → `/test-all`; argument เป็น `unit` → `/test-unit`
-- ไม่ระบุหรือเป็น unit scope → `/test-unit` (default)
-- หลาย signals พร้อมกันแต่ไม่ได้ระบุ `all` → `/test-all` ให้ orchestrator เลือก
+- argument is a domain (`a11y`, `api`, `cli`, `component`, `contract`, `coverage`, `database`, `e2e`, `integration`, `load`, `mobile`, `mutation`, `property`, `smoke`, `visual`) → run `/test-<domain>`
+- argument is `all` → `/test-all`; argument is `unit` → `/test-unit`
+- not specified, or a unit scope → `/test-unit` (default)
+- multiple signals at once but `all` not specified → `/test-all` lets the orchestrator choose
 
 ## Rules
 
-- skill นี้เป็น dispatcher เท่านั้น — ห้าม duplicate workflow ของ `test-*` ในไฟล์นี้
-- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure (กำกับโดย `test-*` ปลายทาง)
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-watch ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- this skill is a dispatcher only — never duplicate the `test-*` workflows in this file
+- never use `.skip`, `.only`, `xit`, `xtest` to avoid failures (governed by the target `test-*`)
+- Use /run-check if needed
+- Use /run-watch if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- Domain ถูก dispatch ไป `test-*` ที่ถูกต้อง — unit default, `all` → orchestrator
-- Test report persist ใน `.devin/temp/report/` (โดย `test-*` ปลายทาง)
+- the domain is dispatched to the correct `test-*` — unit default, `all` → orchestrator
+- the test report is persisted in `.devin/temp/report/` (by the target `test-*`)

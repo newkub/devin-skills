@@ -1,6 +1,6 @@
 ---
 name: update-all-program-in-computer
-description: อัปเดต programs ทั้งหมดในเครื่องทีติดตั้งผ่าน package managers
+description: Update all programs installed on the machine through package managers
 argument-hint: "[scope]"
 related:
   - download-program
@@ -12,117 +12,117 @@ related:
 
 ## Goal
 
-อัปเดต programs, tools, CLIs ทั้งหมดในเครื่องทีจัดการด้วย package managers เช่น `mise`, `scoop`, `choco`, `winget`, `brew`, `cargo`, `npm`
+Update all programs, tools, and CLIs on the machine that are managed by package managers such as `mise`, `scoop`, `choco`, `winget`, `brew`, `cargo`, `npm`
 
 ## Scope
 
-ใช้เมื่อต้องการ update ทุก tool ในเครื่องให้เป็นเวอร์ชันล่าสุด โดยไม่ทำลาย project-specific dependencies
+Use when you want to update every tool on the machine to its latest version without breaking project-specific dependencies
 
 ## Execute
 
 ### 1. Detect Package Managers And Global Configs
 
-> Goal: รู้ว่ามี package managers ใดบ้าง และอ่าน global configs
+> Goal: Find which package managers exist and read the global configs
 
-1. ใช้ `/download-program` เพื่อ detect package manager ที่พร้อมใช้บนเครื่อง
-2. รัน `mise --version`
-3. ถ้า `mise` มีอยู่ → ตรวจหา global config ที่ `~/.config/mise/config.toml` หรือ `~/.mise.toml`
-4. อ่าน `mise` global config เพื่อดู tools ทีจัดการไว้
-5. รัน `scoop --version`
-6. รัน `choco --version`
-7. รัน `winget --version`
-8. รัน `brew --version`
-9. รัน `cargo --version`
-10. รัน `npm --version`
-11. บันทึก package managers ทีพร้อมใช้
+1. Use `/download-program` to detect the package managers available on the machine
+2. Run `mise --version`
+3. If `mise` is present → look for the global config at `~/.config/mise/config.toml` or `~/.mise.toml`
+4. Read the `mise` global config to see the tools it manages
+5. Run `scoop --version`
+6. Run `choco --version`
+7. Run `winget --version`
+8. Run `brew --version`
+9. Run `cargo --version`
+10. Run `npm --version`
+11. Record the available package managers
 
 ### 2. Update Each Manager
 
-> Goal: อัปเดต programs
+> Goal: Update the programs
 
-1. `mise` → `mise up` หรือ `mise upgrade` เพื่ออัปเดตทุก tools ตาม global config
-2. `scoop` → `scoop update` แล้ว `scoop update *`
+1. `mise` → `mise up` or `mise upgrade` to update every tool in the global config
+2. `scoop` → `scoop update` then `scoop update *`
 3. `choco` → `choco upgrade all -y`
 4. `winget` → `winget upgrade --all --include-unknown`
-5. `brew` → `brew update` แล้ว `brew upgrade`
-6. `cargo` → `cargo install-update -a` หรือ `cargo install-update`
+5. `brew` → `brew update` then `brew upgrade`
+6. `cargo` → `cargo install-update -a` or `cargo install-update`
 7. `npm -g` → `npm update -g`
-8. บันทึก command output สำหรับแต่ละ manager
+8. Record the command output for each manager
 
 ### 3. Verify Versions
 
-> Goal: ตรวจสอบว่า update สำเร็จ
+> Goal: Check that the updates succeeded
 
-1. รัน `mise ls` หรือ `mise list` เพื่อตรวจ versions ของ tools ใน global config
-2. รัน `mise outdated` เพื่อดู tools ทียังล้าหลัง
-3. รัน `scoop list` หรือ `scoop status`
-4. รัน `choco list --local-only`
-5. รัน `winget list`
-6. รัน `brew list`
-7. รัน `cargo install --list`
-8. รัน `npm list -g --depth=0`
-9. เปรียบเทียบ versions ก่อน/หลัง
+1. Run `mise ls` or `mise list` to check the versions of the tools in the global config
+2. Run `mise outdated` to see the tools that are still behind
+3. Run `scoop list` or `scoop status`
+4. Run `choco list --local-only`
+5. Run `winget list`
+6. Run `brew list`
+7. Run `cargo install --list`
+8. Run `npm list -g --depth=0`
+9. Compare the before/after versions
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ใช้ `/report` คอลัมน์: Manager, Command, Status, Notes
-2. ระบุ manager ใดสำเร็จ ใดมี error
-3. ระบุ programs ทียังไม่อัปเดตและเหตุผล
-4. ทำ `/suggest-next-action`
+1. Use `/report` with columns: Manager, Command, Status, Notes
+2. State which managers succeeded and which reported errors
+3. List the programs that were not updated and why
+4. Run `/suggest-next-action`
 
 ### Subagents
 
-> Goal: parallelize updates เมื่อ programs เยอะ
+> Goal: Parallelize the updates when there are many programs
 
-- ใช้ profile `program-updater` (ดู `## Subagents` ด้านล่าง) เมื่อต้อง update หลาย programs ที่ independent กัน — spawn ทีละ program ผ่าน `/use-subagents` แล้วรวมผล updated/skipped/failed ก่อน report
+- Use the `program-updater` profile (see `## Subagents` below) when several independent programs need updating — spawn one per program via `/use-subagents`, then merge the updated/skipped/failed results before reporting
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่อัปเดต project-local dependencies
-- global packages เท่านั้น
-- ถ้ามี program ทีอาจทำให้ระบบเสียหาย → ถาม user ก่อน
+- Never update project-local dependencies
+- Global packages only
+- If a program could break the system → ask the user first
 
 ### 2. Package Manager Priority
 
-- ลอง `mise` ก่อนถ้าติดตั้ง เพราะเป็น universal
-- ใช้ package manager ของ OS ถัดไป
-- ไม่ mix package managers สำหรับ program เดียวกัน
+- Try `mise` first when it is installed, because it is universal
+- Then use the OS package manager
+- Do not mix package managers for the same program
 
 ### 3. Non-Interactive
 
-- ใช้ flags `-y`, `--yes` ถ้าจำเป็น
-- ถ้า command ถาม interactive → ใช้ `--no-confirm` หรือเลือก default
-- ถ้าไม่สามารถ non-interactive ได้ → report ให้ user รันเอง
+- Use the `-y`, `--yes` flags when needed
+- If a command prompts interactively → use `--no-confirm` or accept the default
+- If non-interactive execution is impossible → report it so the user runs it manually
 
-- ใช้ /list-program-in-computer ถ้าจำเป็น
-- ใช้ /download-program ถ้าจำเป็น
-- ใช้ /run-program ถ้าจำเป็น
+- Use /list-program-in-computer if needed
+- Use /download-program if needed
+- Use /run-program if needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: Independent work that spawned agents can run in parallel — the profiles live in this section, no separate files
 
-### program-updater — ตรวจ/อัปเดต program เดียวผ่าน package manager แล้วคืน updated/skipped/failed
+### program-updater — check and update a single program through a package manager, then return updated/skipped/failed
 
-- **Inputs**: `program` (ชื่อ program เดียวที่ต้อง update เช่น `ripgrep`, `node`, `git`), `package-manager` (optional — manager ที่ต้องใช้ ไม่ระบุให้ auto-detect ตามลำดับ `mise` → OS package manager), `allow-major` (optional — อนุญาต major version bump หรือไม่ default ปลอดภัยตาม manager)
-- **Tools**: `exec` เท่านั้น — version checks และ upgrade commands: `mise use -g`, `scoop update`, `choco upgrade`, `winget upgrade`, `brew upgrade`, `cargo install-update`, `npm update -g` (ห้าม `write`/`edit`)
+- **Inputs**: `program` (the name of one program to update, e.g. `ripgrep`, `node`, `git`), `package-manager` (optional — the manager that must be used; when omitted, auto-detect in the order `mise` → OS package manager), `allow-major` (optional — whether a major version bump is allowed, defaulting to whatever is safe for the manager)
+- **Tools**: `exec` only — version checks and upgrade commands: `mise use -g`, `scoop update`, `choco upgrade`, `winget upgrade`, `brew upgrade`, `cargo install-update`, `npm update -g` (never `write`/`edit`)
 - **Execute**:
-  1. ตรวจว่า program ติดตั้งอยู่และจัดการโดย manager ไหน — เช็ค `mise ls`, `scoop list`, `winget list` ฯลฯ
-  2. ถ้า program ไม่ได้ติดตั้งผ่าน package manager → คืน `skipped` พร้อมเหตุผล
-  3. บันทึก version ก่อน update (`<program> --version` หรือ list ของ manager)
-  4. รัน update ด้วย non-interactive flags (`-y`, `--yes`, `--no-confirm`) — ถ้า command บังคับ interactive → คืน `skipped` ให้ user รันเอง
-  5. ตรวจ version หลัง update และเปรียบเทียบก่อน/หลัง
-  6. smoke check สั้น ๆ ว่า program ยังรันได้ (`--version` หรือ `--help`)
-- **Output**: ตาราง field ต่อ program เดียว `| Field | Value |` — Program, Manager, Before, After, Status (`updated`/`skipped`/`failed`/`already-latest`), Note (เหตุผลเมื่อ skipped/failed)
-- **Constraints**: Global packages เท่านั้น — ห้ามแตะ project-local dependencies; ใช้ `exec` อย่างเดียว ห้าม `write`/`edit`; ลอง `mise` ก่อนถ้า program อยู่ใน mise — ไม่ mix package managers สำหรับ program เดียวกัน; ใช้ non-interactive flags เสมอ — ถ้าทำไม่ได้ให้ `skipped` ไม่ใช่ค้างรอ input; รับผิดชอบ program เดียว — ห้าม `update *` หรือ `upgrade --all`; ถ้า program เสี่ยงทำระบบเสียหาย (OS-level tools) → คืน `skipped` ให้ parent ถาม user
+  1. Check that the program is installed and which manager handles it — check `mise ls`, `scoop list`, `winget list`, etc.
+  2. If the program was not installed through a package manager → return `skipped` with the reason
+  3. Record the version before the update (`<program> --version` or the manager's list output)
+  4. Run the update with non-interactive flags (`-y`, `--yes`, `--no-confirm`) — if the command forces interaction → return `skipped` so the user runs it manually
+  5. Check the version after the update and compare before/after
+  6. Do a short smoke check that the program still runs (`--version` or `--help`)
+- **Output**: one per-program field table `| Field | Value |` — Program, Manager, Before, After, Status (`updated`/`skipped`/`failed`/`already-latest`), Note (the reason when skipped/failed)
+- **Constraints**: Global packages only — never touch project-local dependencies; use `exec` only, never `write`/`edit`; try `mise` first when the program is under mise — do not mix package managers for the same program; always use non-interactive flags — if that is impossible, return `skipped` rather than hanging on input; own a single program — never `update *` or `upgrade --all`; if the program risks breaking the system (OS-level tools) → return `skipped` so the parent asks the user
 
 ## Expected Outcome
 
-- Programs ทั้งหมดถูกอัปเดตผ่าน package managers ทีมี
-- รายงาน status แต่ละ manager
-- ระบุ programs ที update ไม่ได้
-- ระบบทำงานปกติหลัง update
+- All programs are updated through the available package managers
+- The status of each manager is reported
+- The programs that could not be updated are listed
+- The system still works normally after the updates

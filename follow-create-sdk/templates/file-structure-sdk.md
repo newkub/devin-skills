@@ -1,6 +1,6 @@
 # SDK File Structure
 
-Canonical file structure สำหรับ SDK/client library — resource-grouped API surface + transport internals
+Canonical file structure for an SDK/client library — resource-grouped API surface + transport internals
 
 ## File Structure
 
@@ -8,11 +8,11 @@ Canonical file structure สำหรับ SDK/client library — resource-grou
 project/
 │
 ├─ src/
-│  ├─ index.ts                            # public API barrel — export Client + types + errors เท่านั้น
+│  ├─ index.ts                            # public API barrel — exports Client + types + errors only
 │  │
 │  ├─ client.ts                           # Client class — config, auth, resource wiring (presentation)
 │  │
-│  ├─ resources/                          # API resources — 1 file ต่อ resource (presentation)
+│  ├─ resources/                          # API resources — 1 file per resource (presentation)
 │  │  ├─ users.ts                         # client.users.list/get/create
 │  │  ├─ orders.ts
 │  │  └─ index.ts                         # resource registry
@@ -48,14 +48,14 @@ project/
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
 | 1 | presentation | `client.ts`+`resources/` | public API surface | → `core/` (+ leaves) |
-| 2 | data | `core/` | http, auth, retry, pagination | leaf (+ leaves) — ไม่ export ผ่าน index |
-| 3 | shared leaf | `types/`+`errors/`+`schemas/`+`utils/` | public types, errors, pure helpers | leaf — ทุก layer ใช้ได้ |
+| 2 | data | `core/` | http, auth, retry, pagination | leaf (+ leaves) — not exported through index |
+| 3 | shared leaf | `types/`+`errors/`+`schemas/`+`utils/` | public types, errors, pure helpers | leaf — usable by every layer |
 
 ## Rules
 
-- `index.ts` = public API เดียว — internals ห้าม leak (ใช้ `exports` map enforce)
-- `resources/*` thin — 1 method = 1 endpoint, delegate transport ไป `core/http.ts`
-- Auth/retry/pagination logic อยู่ `core/` เท่านั้น — resources ห้ามทำเอง
-- `types/` export ทั้งหมด — users import `import type { User } from 'sdk'`
-- Errors เป็น typed + catchable — ห้าม throw raw `Error` จาก HTTP layer
-- Runtime agnostic — ใช้ `fetch` standard, ห้ามผูก `node:*` ถ้าไม่จำเป็น
+- `index.ts` = the single public API — internals must never leak (enforce via the `exports` map)
+- `resources/*` thin — 1 method = 1 endpoint, delegate transport to `core/http.ts`
+- Auth/retry/pagination logic lives in `core/` only — resources must not reimplement it
+- `types/` exports everything — users import `import type { User } from 'sdk'`
+- Errors are typed + catchable — never throw a raw `Error` from the HTTP layer
+- Runtime agnostic — use standard `fetch`, never bind `node:*` unless necessary

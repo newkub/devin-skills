@@ -1,6 +1,6 @@
 ---
 name: follow-create-biome-plugin
-description: สร้าง custom Biome linter plugins ด้วย GritQL
+description: Build custom Biome linter plugins with GritQL
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -13,125 +13,125 @@ related:
 ---
 ## Goal
 
-สร้าง custom Biome linter plugins ด้วย GritQL เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์
+Build custom Biome linter plugins with GritQL to add project-specific rules
 
 ## Scope
 
-ครอบคลุมการสร้าง `.grit` plugin files, การเขียน GritQL patterns, การกำหนดค่าใน `biome.jsonc`, และการ verify plugins
+Covers creating `.grit` plugin files, writing GritQL patterns, configuring `biome.jsonc`, and verifying plugins
 
-- Packages: `@biomejs/biome` (2.x — config เป็น `biome.jsonc`, เพิ่ม GritQL plugin support + `engine biome(1.0)` directive), `@biomejs/js-api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `@biomejs/biome` (2.x — config is `biome.jsonc`, adds GritQL plugin support + `engine biome(1.0)` directive), `@biomejs/js-api` — always confirm the latest version via `/deep-research` + `/follow-best-practice` (no pinning in the file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Check the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create biome plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then `/deep-review` to summarize the tech stack
+3. Record the stack and library choices for the next reference (create biome plugins)
 
 ### 2. Setup
 
-> Goal: ตรวจสอบ Biome และ project prerequisites
+> Goal: Check Biome and project prerequisites
 
-1. ตรวจสอบว่ามี Biome ติดตั้งแล้วโดยทำ `/follow-tool-biome`
-2. ตรวจสอบว่ามี `biome.jsonc` อยู่แล้ว
-3. ระบุ target language และ rules ที่ต้องการตรวจสอบ
+1. Verify Biome is installed by running `/follow-tool-biome`
+2. Verify a `biome.jsonc` already exists
+3. Identify the target language and the rules to enforce
 
 ### 3. Create Plugin File
 
-> Goal: สร้างและเขียน `.grit` plugin file
+> Goal: Create and write the `.grit` plugin file
 
-1. สร้างไฟล์ `.grit` ที่ root ของโปรเจกต์
-2. เพิ่ม `language` directive ที่ด้านบนของไฟล์ (เช่น `language css`, `language js`, `language json`)
-3. เพิ่ม `engine biome(1.0)` directive เมื่อใช้ Biome CST node names
-4. เขียน GritQL patterns สำหรับ custom rules
-5. ใช้ `register_diagnostic()` เพื่อรายงาน diagnostics
-6. ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
-7. Syntax: backtick snippets = structural match (ละเว้น whitespace/quote style); `$var` named, `$_` anonymous, `$...` spread metavariables; `where` conditions คั่นด้วย comma; `<:` match operator (`$x <: or { \`a\`, \`b\` }`, `<: not \`null\``); modifiers `as`/`contains`/`within`/`after`/`before`/`some`/`every`; `r"..."` regex; `=>` rewrite (`fix_kind` กำกับ safe/unsafe — `--write` apply เฉพาะ safe, `--write --unsafe` รวม unsafe)
+1. Create a `.grit` file at the project root
+2. Add the `language` directive at the top of the file (e.g. `language css`, `language js`, `language json`)
+3. Add the `engine biome(1.0)` directive when using Biome CST node names
+4. Write GritQL patterns for the custom rules
+5. Use `register_diagnostic()` to report diagnostics
+6. Use an `or` block to combine multiple rules in one file
+7. Syntax: backtick snippets = structural match (ignores whitespace/quote style); `$var` named, `$_` anonymous, `$...` spread metavariables; `where` conditions separated by comma; `<:` match operator (`$x <: or { \`a\`, \`b\` }`, `<: not \`null\``); modifiers `as`/`contains`/`within`/`after`/`before`/`some`/`every`; `r"..."` regex; `=>` rewrite (`fix_kind` marks safe/unsafe — `--write` applies safe only, `--write --unsafe` includes unsafe)
 
 ### 4. Configure Plugin
 
-> Goal: ตั้งค่า plugin ใน `biome.jsonc`
+> Goal: Configure the plugin in `biome.jsonc`
 
-1. เพิ่ม plugin path ใน `biome.jsonc` ผ่าน `plugins` array
-2. ใช้ relative path จาก root ของโปรเจกต์
-3. ใช้ `includes` เพื่อจำกัดไฟล์ที่ plugin ทำงาน (optional) — omit = ทำงานทุกไฟล์, `[]` = ไม่ทำงานเลย; negated `!pattern` เป็น exception เท่านั้น — ต้องมี positive `**` pattern ก่อนเสมอ
-4. ตรวจสอบว่า plugin ถูก load อย่างถูกต้อง
+1. Add the plugin path to the `plugins` array in `biome.jsonc`
+2. Use a relative path from the project root
+3. Use `includes` to limit which files the plugin runs on (optional) — omit = runs on all files, `[]` = runs on none; negated `!pattern` are exceptions only — a positive `**` pattern must come first
+4. Verify the plugin loads correctly
 
 ### 5. Discover CST Node Names
 
-> Goal: หา CST node names สำหรับ GritQL patterns
+> Goal: Find CST node names for GritQL patterns
 
-1. เปิด [Biome Playground](https://biomejs.dev/playground/)
-2. วาง code snippet ที่ต้องการ match
-3. สลับไปที่ Syntax tab เพื่อดู syntax tree
-4. ใช้ node name (PascalCase) ใน GritQL pattern
-5. ตรวจสอบ node names ใน `.ungram` files ใน Biome repository สำหรับ complete list
+1. Open the [Biome Playground](https://biomejs.dev/playground/)
+2. Paste the code snippet you want to match
+3. Switch to the Syntax tab to view the syntax tree
+4. Use the node name (PascalCase) in the GritQL pattern
+5. Check node names in the `.ungram` files in the Biome repository for the complete list
 
 ### 6. Verify
 
-> Goal: ทดสอบ plugin กับ Biome
+> Goal: Test the plugin with Biome
 
-1. รัน `bunx biome lint` เพื่อทดสอบ plugin (`biome check` = lint+format; `lint --write` apply safe rewrites, `--unsafe` รวม unsafe)
-2. ตรวจสอบว่า custom rules ทำงานได้ถูกต้อง
-3. ทดสอบ edge cases และ false positives
-4. ทดสอบ rewrites (`=>`) สำหรับ fixable diagnostics
+1. Run `bunx biome lint` to test the plugin (`biome check` = lint+format; `lint --write` applies safe rewrites, `--unsafe` includes unsafe)
+2. Verify the custom rules behave correctly
+3. Test edge cases and false positives
+4. Test rewrites (`=>`) for fixable diagnostics
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Plugin File
 
-- ใช้นามสกุล `.grit` สำหรับ plugin files
-- วางไฟล์ที่ root ของโปรเจกต์
-- ใช้ `language` directive ที่ด้านบนเสมอ
-- เพิ่ม `engine biome(1.0)` เมื่อใช้ Biome CST node names
-- ใช้ `//` สำหรับ comments
+- Use the `.grit` extension for plugin files
+- Place the file at the project root
+- Always put the `language` directive at the top
+- Add `engine biome(1.0)` when using Biome CST node names
+- Use `//` for comments
 
 ### 2. Target Languages
 
-- `language js` สำหรับ JavaScript (default)
-- `language js(typescript)` สำหรับ TypeScript
-- `language js(typescript, jsx)` สำหรับ TypeScript + JSX
-- `language css` สำหรับ CSS
-- `language json` สำหรับ JSON
-- ถ้าไม่ระบุ จะใช้ JavaScript เป็น default
+- `language js` for JavaScript (default)
+- `language js(typescript)` for TypeScript
+- `language js(typescript, jsx)` for TypeScript + JSX
+- `language css` for CSS
+- `language json` for JSON
+- If unspecified, JavaScript is the default
 
 ### 3. register_diagnostic()
 
-- `span` (required): syntax node ที่ต้องการ attach diagnostic
-- `message` (required): message ที่จะแสดง
+- `span` (required): the syntax node to attach the diagnostic to
+- `message` (required): the message to display
 - `severity` (optional): `hint`, `info`, `warn`, `error` (default: `error`)
-- `fix_kind` (optional): `safe` หรือ `unsafe` (default: `unsafe`) ใช้เมื่อมี rewrite `=>`
+- `fix_kind` (optional): `safe` or `unsafe` (default: `unsafe`) — used when a rewrite `=>` is present
 
 ### 4. GritQL Patterns
 
-- Code snippets: ใช้ backticks `` ` `` ครอบ code
-- Metavariables: ใช้ `$` prefix เช่น `$message`, `$value`
-- Regex: ใช้ `r"..."` สำหรับ match text content ของ node
+- Code snippets: wrap code in backticks `` ` ``
+- Metavariables: use the `$` prefix, e.g. `$message`, `$value`
+- Regex: use `r"..."` to match a node's text content
 - Conditions: `where`, `<:` (match operator), `and`, `or`, `!`
 - Pattern modifiers: `contains`, `within`, `after`, `before`, `some`, `every`, `as`
-- CST nodes: ใช้ PascalCase function call เช่น `JsIfStatement()`, `CssDeclarationWithSemicolon()`
-- CST fields: ใช้ named args เช่น `JsConditionalExpression(consequent = $cons)`
-- Rewrites: ใช้ `=>` operator เช่น `` `console.log($msg)` => `console.warn($msg)` ``
-- Multiple rules: ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
+- CST nodes: use PascalCase function calls, e.g. `JsIfStatement()`, `CssDeclarationWithSemicolon()`
+- CST fields: use named args, e.g. `JsConditionalExpression(consequent = $cons)`
+- Rewrites: use the `=>` operator, e.g. `` `console.log($msg)` => `console.warn($msg)` ``
+- Multiple rules: use an `or` block to combine several rules in one file
 
 ### 5. Configuration
 
-- กำหนด plugin ผ่าน `plugins` array ใน `biome.jsonc`
-- ใช้ relative path จาก root ของโปรเจกต์
-- รูปแบบ string: `["./custom-rules.grit"]`
-- รูปแบบ object กับ `includes`: `[{ "path": "./plugin.grit", "includes": ["src/**/*.css"] }]`
-- `includes` ใช้ glob patterns และรองรับ negation (`!`)
-- Plugins สามารถกำหนดใน root `biome.jsonc` และ extended โดย child configs
-- Suppress diagnostic ด้วย `// biome-ignore lint/plugin: <reason>`
+- Define plugins via the `plugins` array in `biome.jsonc`
+- Use relative paths from the project root
+- String form: `["./custom-rules.grit"]`
+- Object form with `includes`: `[{ "path": "./plugin.grit", "includes": ["src/**/*.css"] }]`
+- `includes` uses glob patterns and supports negation (`!`)
+- Plugins can be defined in the root `biome.jsonc` and extended by child configs
+- Suppress a diagnostic with `// biome-ignore lint/plugin: <reason>`
 
 ### 6. Common CST Node Names
 
@@ -139,21 +139,21 @@ related:
 - TypeScript: `TsAnyType`, `TsTypeAlias`, `TsInterfaceDeclaration`
 - CSS: `CssDeclarationWithSemicolon`, `CssComplexSelector`, `CssDeclarationImportant`
 - JSON: `JsonMember`, `JsonMemberName`, `JsonObjectValue`, `JsonArrayValue`
-- ตรวจสอบ node names ใน [Biome Playground](https://biomejs.dev/playground/) เสมอ
+- Always verify node names in the [Biome Playground](https://biomejs.dev/playground/)
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-tool-formatter ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
+- Use /follow-create-sdk if needed
+- Use /follow-tool-formatter if needed
+- Use /run-lint if needed
+- Use /run-format if needed
 
 ## Expected Outcome
 
-- Plugin file `.grit` สร้างขึ้นที่ root
-- `language` และ `engine` directives ถูกต้อง
-- GritQL patterns ทำงานตามที่คาดหวัง
-- Plugin กำหนดใน `biome.jsonc` อย่างถูกต้อง
-- Custom rules ทำงานได้เมื่อรัน `bunx biome lint`
-- ไม่มี false positives หรือ missing matches
+- The `.grit` plugin file is created at the root
+- `language` and `engine` directives are correct
+- GritQL patterns behave as expected
+- The plugin is configured correctly in `biome.jsonc`
+- Custom rules work when running `bunx biome lint`
+- No false positives or missing matches
 
 ## Guide
 

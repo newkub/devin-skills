@@ -1,26 +1,26 @@
 ---
 title: ast-grep Rewrite — transform & rewriters
-description: YAML transform/rewriters fields สำหรับ fix ที่ metavar replacement ธรรมดาทำไม่ได้
+description: YAML transform/rewriters fields for fixes plain metavar replacement cannot do
 ---
 
 # ast-grep Rewrite Reference
 
 Source: `https://ast-grep.github.io/guide/rewrite/transform` + `.../rewriter` (checked 2026-10-01)
 
-ใช้เมื่อ `-r '<replacement>'` ธรรมดาไม่พอ — ต้องแปลง case, ตัด/ต่อข้อความ, ใส่ข้อความแบบมีเงื่อนไข หรือ rewrite sub-nodes หลายแบบใน match เดียว ทั้งหมดทำใน rule YAML ผ่าน `transform:` + `rewriters:`
+Use when a plain `-r '<replacement>'` is not enough — case conversion, slicing/joining text, conditional text, or rewriting several kinds of sub-nodes in one match. All of it happens in rule YAML via `transform:` + `rewriters:`
 
-## `transform` — แปลง metavariable ก่อนใส่ `fix`
+## `transform` — convert a metavariable before inserting it into `fix`
 
-`transform:` = dict — key = ชื่อ var ใหม่ (ไม่มี `$` นำหน้า), value = transformation object (หรือ string-style ตั้งแต่ `0.38.3`) — var ใหม่ใช้ใน `fix` หรือ transform ถัดไปได้ (chain)
+`transform:` = dict — key = new var name (no leading `$`), value = transformation object (or string-style since `0.38.3`) — new vars are usable in `fix` or in the next transform (chain)
 
 | op | args | use |
 |----|------|-----|
-| `replace` | `source: $X`, `replace: <regex>`, `by: <text>` | regex replace; capture group `(?<NAME>.*)` อ้างใน `by` เป็น `$NAME` |
-| `substring` | `source: $X`, `startChar`, `endChar` | ตัดหัว/ท้าย (`endChar: -1` = ตัดตัวสุดท้าย) |
-| `convert` | `source: $X`, `toCase` | แปลง case — `camelCase`, `kebabCase`, `snake_case` ฯลฯ |
-| `rewrite` | `source: $X`, `rewriters: [id...]`, `joinBy?` | apply rewriter rules กับ sub-nodes (ดูหัวข้อล่าง) |
+| `replace` | `source: $X`, `replace: <regex>`, `by: <text>` | regex replace; capture group `(?<NAME>.*)` referenced in `by` as `$NAME` |
+| `substring` | `source: $X`, `startChar`, `endChar` | trim head/tail (`endChar: -1` = drop the last char) |
+| `convert` | `source: $X`, `toCase` | case conversion — `camelCase`, `kebabCase`, `snake_case`, etc. |
+| `rewrite` | `source: $X`, `rewriters: [id...]`, `joinBy?` | apply rewriter rules to sub-nodes (see section below) |
 
-String style (`0.38.3+` — ถ้า ast-grep เก่ากว่าใช้ object style):
+String style (`0.38.3+` — use object style on older ast-grep):
 
 ```yaml
 transform:
@@ -31,9 +31,9 @@ transform:
 
 ### Limitations & Tricks
 
-- regex capture groups ใช้ได้เฉพาะใน `replace` transform (`replace:` field) และอ้างได้เฉพาะใน `by:` ของ transform เดียวกัน — `regex` rule ธรรมดาไม่รองรับ capture groups
-- concat metavar กับตัวพิมพ์ใหญ่ตรงๆ ไม่ได้ — `$REGRelease` ถูกตีเป็น var ชื่อ `REGRelease` → workaround: chain `convert`/`replace`
-- Conditional text (DasSurma trick) — var มีค่าเฉพาะเมื่อ source match:
+- Regex capture groups work only in the `replace` transform (`replace:` field) and are referenced only in that same transform's `by:` — plain `regex` rules do not support capture groups
+- Concatenating a metavar with uppercase letters directly does not work — `$REGRelease` parses as a var named `REGRelease` → workaround: chain `convert`/`replace`
+- Conditional text (DasSurma trick) — the var gets a value only when the source matches:
 
 ```yaml
 rule: { pattern: $FUNC($$$ARGS) }
@@ -43,7 +43,7 @@ transform:
 fix: $FUNC(new_argument$MAYBE_COMMA$$$ARGS)
 ```
 
-`$$$ARGS` ว่าง → replace ไม่ทำงาน → `f(new_argument)`; มี args → `f(new_argument, ...old)`
+`$$$ARGS` empty → replace does not fire → `f(new_argument)`; with args → `f(new_argument, ...old)`
 
 ### Chain Example — `fooDebug` → `fooRelease`
 
@@ -57,15 +57,15 @@ transform:
 fix: $UNKEBABED($$$ARGS)
 ```
 
-## `rewriters` — fix ต่างกันต่อ sub-node ใน match เดียว
+## `rewriters` — a different fix per sub-node in one match
 
-`fix` ธรรมดาแทน matched node ทั้งก้อนทีละอัน — `rewriters` ให้ sub-nodes แต่ละตัวมี rule+fix ของตัวเอง แล้ว join กลับ
+A plain `fix` replaces the whole matched node at once — `rewriters` gives each sub-node its own rule+fix, then joins the results back
 
 ### 3 Steps
 
-1. ประกาศ `rewriters:` list ที่ top level ของ rule file — แต่ละตัวต้องมี `id`, `rule`, `fix` (เพิ่ม `transform`/`constraints` ได้; ไม่มี `severity`/`message` — เฉพาะ Finding + Patching fields)
-2. Apply ผ่าน `transform` → `rewrite: { rewriters: [id...], source: $VAR, joinBy? }`
-3. ใช้ var ใหม่ใน `fix:`
+1. Declare the `rewriters:` list at the top level of the rule file — each entry needs `id`, `rule`, `fix` (`transform`/`constraints` may be added; no `severity`/`message` — Finding + Patching fields only)
+2. Apply via `transform` → `rewrite: { rewriters: [id...], source: $VAR, joinBy? }`
+3. Use the new var in `fix:`
 
 ### Example — `dict(a=1, b=2)` → `{'a': 1, 'b': 2}` (Python)
 
@@ -89,9 +89,9 @@ fix: '{ $LITERAL }'
 
 ### Multiple Rewriters & Joiner
 
-- `rewriters: [rewrite-num, rewrite-str]` — แต่ละ sub-node ใช้ตัวแรกที่ match → ลำดับใน list สำคัญ
-- `joinBy: ' + '` — join transformed nodes ด้วย joiner แทน in-place replace (`1, 2, 3` → `integer + integer + integer`)
+- `rewriters: [rewrite-num, rewrite-str]` — each sub-node uses the first matching entry → list order matters
+- `joinBy: ' + '` — join transformed nodes with the joiner instead of in-place replacement (`1, 2, 3` → `integer + integer + integer`)
 
-## Safety (เหมือน flow หลัก)
+## Safety (same as the main flow)
 
-Dry run ก่อนเสมอ: `sg scan --rule <file>` list findings → `sg scan --rule <file> --fix` preview diff ทีละ change → user confirm → `--fix-all`
+Always dry run first: `sg scan --rule <file>` lists findings → `sg scan --rule <file> --fix` previews the diff per change → user confirm → `--fix-all`

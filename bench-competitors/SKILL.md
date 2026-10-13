@@ -1,6 +1,6 @@
 ---
 name: bench-competitors
-description: ศึกษาคู่แข่งแล้ว implement-to-production จน project ดีกว่าทุกมิติ
+description: Research competitors and implement-to-production until the project beats them on every dimension
 argument-hint: "[scope|report]"
 related:
   - create-report-in-dot-devin
@@ -21,17 +21,17 @@ related:
 
 ## Goal
 
-ศึกษาคู่แข่งด้วย `/deep-research` วางแผนด้วย `/create-plan-in-dot-devin` แล้ว `/implement-to-production` จน project ดีกว่าคู่แข่งในทุกมิติ
+Research competitors with `/deep-research`, plan with `/create-plan-in-dot-devin`, then `/implement-to-production` until the project beats competitors in every dimension.
 
 ## Scope
 
-ครอบคลุมทุกมิติของ product: features, performance, UX/UI, architecture, DX, security, scalability, business ไม่ใช่แค่มิติใดมิติหนึ่ง
+Covers every dimension of the product: features, performance, UX/UI, architecture, DX, security, scalability, business — not just one.
 
-- มิติ features ทำ inline ใน skill นี้ (merged จาก `bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
-- skill นี้ implement จริงจนถึง production ไม่ใช่แค่ plan — ถ้าต้องการแค่ไอเดีย features → ใช้ `/idea-features`
-- ต่างจาก `/compare-competitors` ตรงที่ skill นี้ compare แล้ว implement เลย ส่วน `/compare-competitors` ตอบ comparison (matrix + gap list + ideas) เท่านั้นไม่ implement
+- The features dimension is handled inline in this skill (merged from `bench-features`) — use `/deep-research` to collect competitor features, build a comparison matrix, and find gaps
+- This skill implements for real through to production, not just planning — if you only want feature ideas → use `/idea-features`
+- Unlike `/compare-competitors`, which only returns the comparison (matrix + gap list + ideas) without implementing, this skill compares and then implements
 
-ดูเพิ่มเติม: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /compare-competitors
+See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /compare-competitors
 
 ## Execute
 
@@ -41,130 +41,130 @@ related:
 |----------|----------|
 | `report`, `report-comparison` | `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
 
-1. ถ้า argument เป็น `report` → อ่าน `workflows/report-comparison/SKILL.md` แล้วทำตาม flow — ใช้ data ที่รวมไว้แล้ว ไม่ research ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 7 อ่าน workflow `report-comparison` มา execute
+1. If the argument is `report` → read `workflows/report-comparison/SKILL.md` and follow its flow — reuse the data already gathered, no new research
+2. If not specified → run Steps 1-8 as usual, with Step 7 reading and executing the `report-comparison` workflow
 
 ### 1. Research Competitors
 
-> Goal: วิจัยคู่แข่งที่ relevant ด้วย deep-research
+> Goal: Research relevant competitors with deep-research
 
-1. รับ `<scope>` จาก argument หรือ conversation context
-2. ทำ `/deep-research` เพื่อระบุ direct และ indirect competitors
-3. เลือก competitors 3-5 รายที่ใกล้เคียงหรือเหนือกว่า
-4. วิเคราะห์ strengths, weaknesses, unique selling points, tech stack, UX patterns
-5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน; ถ้าหาข้อมูลไม่ได้ → stop และ report
+1. Take `<scope>` from the argument or conversation context
+2. Run `/deep-research` to identify direct and indirect competitors
+3. Pick 3-5 competitors that are close to or better than the project
+4. Analyze strengths, weaknesses, unique selling points, tech stack, UX patterns
+5. If the scope is unclear → use `/ask-me` first; if the data can't be found → stop and report
 
 ### 2. Benchmark Features
 
-> Goal: เปรียบเทียบและหา gaps มิติ features
+> Goal: Compare the features dimension and find gaps
 
-1. ทำ `/compare-competitors` โดย subject = project, alternatives = competitors จาก Step 1, criteria = features (รวม feature matrix และ pricing tiers ที่ผูกกับ features) — skill จะทำ `/deep-research` ต่อ competitor จาก official docs, changelogs, reviews และ user feedback แล้วคืน comparison matrix + gap list
-2. จัดกลุ่ม features ใน matrix ตามหมวด เช่น core, advanced, integrations, automation
-3. บันทึกผลเป็น `comparison-features.md` ใน `docs/project/`
-4. ตรวจ gap list จาก `/compare-competitors` — แต่ละ gap ต้องระบุ feature, competitor ที่มี, impact, effort ครบ
-5. ระบุ unique features ของ project ที่คู่แข่งไม่มีเพื่อรักษาไว้
-6. สร้าง prioritized feature list: Critical, High, Medium, Nice-to-have
-7. ถ้า `/compare-competitors` หาข้อมูลไม่ได้ → stop และ report
+1. Run `/compare-competitors` with subject = project, alternatives = the competitors from Step 1, criteria = features (including the feature matrix and the pricing tiers tied to features) — the skill runs `/deep-research` on each competitor from official docs, changelogs, reviews, and user feedback, then returns a comparison matrix + gap list
+2. Group the features in the matrix by category, e.g. core, advanced, integrations, automation
+3. Save the result as `comparison-features.md` in `docs/project/`
+4. Review the gap list from `/compare-competitors` — each gap must state the feature, the competitor that has it, impact, and effort
+5. Identify the project's unique features that competitors lack, to preserve them
+6. Build a prioritized feature list: Critical, High, Medium, Nice-to-have
+7. If `/compare-competitors` can't find the data → stop and report
 
 ### 3. Benchmark Other Dimensions
 
-> Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
+> Goal: Compare the remaining dimensions beyond features
 
-1. ทำ `/deep-review` วัด state ปัจจุบันของ project สำหรับ performance
-2. ทำ `/deep-review` สำหรับ UX/UI
-3. ทำ `/compare-competitors` ต่อมิติที่เทียบกับคู่แข่งได้ (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
-4. บันทึกผลใน `docs/project.md`
+1. Run `/deep-review` to measure the project's current state for performance
+2. Run `/deep-review` for UX/UI
+3. Run `/compare-competitors` on each dimension that can be compared against competitors (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
+4. Record the results in `docs/project.md`
 
 ### 4. Deep Plan Improvements
 
-> Goal: วางแผนลึกด้วย create-plan-in-dot-devin เพื่อปรับปรุงให้ดีกว่าคู่แข่ง
+> Goal: Plan in depth with create-plan-in-dot-devin to improve beyond competitors
 
-1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
-2. ทำ `/create-plan-in-dot-devin` โหมด `chat-only` เพื่อสร้าง roadmap ละเอียดครอบทุกมิติในแชท — ระบุ per-dimension actions, dependencies, sequencing และ success metrics ที่เทียบกับคู่แข่งได้ (chat-only — ไม่สร้าง plan file)
-3. ระบุ priority: Critical, High, Medium, Nice-to-have
-4. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
+1. Run `/deep-thinking` to review priorities and impact
+2. Run `/create-plan-in-dot-devin` in `chat-only` mode to build a detailed roadmap covering every dimension in chat — specify per-dimension actions, dependencies, sequencing, and success metrics comparable to competitors (chat-only — no plan file created)
+3. Set priorities: Critical, High, Medium, Nice-to-have
+4. If the scope is unclear → use `/ask-me` before planning
 
 ### 5. Implement To Production
 
-> Goal: implement-to-production ตาม plan จน production-ready ไม่เหลือ gap
+> Goal: implement-to-production per the plan until production-ready with no gaps left
 
-1. ทำ `/implement-to-production` ตาม roadmap ในแชทจาก Step 4 — implement ทุก gap เป็น production code จริง end-to-end ไม่เหลือ TODO/MOCK/placeholder
-2. ทำ `/run-check` หลัง implement แต่ละ batch เพื่อตรวจ lint, typecheck และ scan
-3. ทำ `/run-test all` เพื่อ verify features ทำงานและไม่พังของเดิม
-4. ติดตามความคืบหน้าอย่างสม่ำเสมอ — ปิด gap ทีละรายการตาม priority Critical → Nice-to-have
+1. Run `/implement-to-production` following the in-chat roadmap from Step 4 — implement every gap as real production code end-to-end, leaving no TODO/MOCK/placeholder
+2. Run `/run-check` after each implementation batch to check lint, typecheck, and scan
+3. Run `/run-test all` to verify the features work and nothing existing breaks
+4. Track progress consistently — close gaps one at a time in priority order Critical → Nice-to-have
 
 ### 6. Verify And Re-benchmark
 
-> Goal: ยืนยันว่าดีกว่าคู่แข่งจริงทุกมิติ ไม่ใช่แค่ implement เสร็จ
+> Goal: Confirm the project genuinely beats competitors in every dimension, not just that implementation finished
 
-1. ทำ `/deep-review` สำหรับ performance improvements
-2. ทำ `/deep-review` สำหรับ UX/UI improvements
-3. Re-benchmark เทียบ competitors ซ้ำทุกมิติ — อัปเดต status ในตารางเปรียบเทียบ
-4. ถ้ายังไม่ดีกว่าคู่แข่งในมิติใด → loop กลับ Step 4 เพื่อ `/create-plan-in-dot-devin` + `/implement-to-production` เฉพาะ gap ที่เหลือ จนกว่าจะดีกว่าครบทุกมิติ
-5. หยุด loop เมื่อดีกว่าคู่แข่งทั้งหมด หรือ gap ที่เหลือต้องการข้อมูล/decision จาก user → ใช้ `/ask-me`
+1. Run `/deep-review` for performance improvements
+2. Run `/deep-review` for UX/UI improvements
+3. Re-benchmark against competitors across all dimensions — update the status in the comparison table
+4. If any dimension still isn't better than competitors → loop back to Step 4 for `/create-plan-in-dot-devin` + `/implement-to-production` on the remaining gaps only, until every dimension is better
+5. Stop the loop when the project beats all competitors, or when the remaining gaps need data/decisions from the user → use `/ask-me`
 
 ### 7. Report Results
 
-> Goal: บันทึกผล benchmark และผลการ implement เป็น report ใน .devin
+> Goal: Record the benchmark results and implementation outcomes as a report in .devin
 
-1. ทำตาม `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
-2. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
-3. รายงาน `REPORT_PATH` ให้ user
+1. Follow `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
+2. Run `/update-docs` to update `docs/project.md`
+3. Report `REPORT_PATH` to the user
 
 ### 8. Ship
 
-> Goal: ส่งมอบเมื่อดีกว่าคู่แข่งครบทุกมิติ
+> Goal: Deliver once the project is better than competitors in every dimension
 
-1. ทำ `/ship-to-dev-branch` เพื่อ ship improvements ทั้งหมด
-2. หลัง `/ship-to-dev-branch` เสร็จ ลบ `PLAN_PATH`
-3. ทำ `/suggest-next-action` โดยแนะนำ `/idea-features` ถ้าต้องการขยายไอเดียต่อ
+1. Run `/ship-to-dev-branch` to ship all improvements
+2. After `/ship-to-dev-branch` finishes, delete `PLAN_PATH`
+3. Run `/suggest-next-action`, recommending `/idea-features` if you want to extend the ideas further
 
 ## Rules
 
 ### 1. Focus On Actionable Insights
 
-- เน้น metrics ที่ measurable และ actionable
-- ไม่ research ลึกเกินความจำเป็น
-- รายงานกระชับไม่เกิน 1 หน้า A4 ต่อ competitor
+- Focus on metrics that are measurable and actionable
+- Don't research deeper than necessary
+- Keep reports concise, no more than 1 A4 page per competitor
 
 ### 2. Document Structure
 
-- ไฟล์หลัก `comparison.md` ใน `docs/project/`
-- อนุญาตไฟล์ย่อย `comparison-*.md` จาก sub-workflows เช่น `comparison-features.md`
-- ผล benchmark ต้องถูกบันทึกเป็น report ผ่าน `/create-report-in-dot-devin` ใน `.devin/temp/report/<workspace>/`
-- 2-3 sections หลักพอ
-- ไม่ต้องมี timeline ละเอียด
+- Main file `comparison.md` in `docs/project/`
+- Child files `comparison-*.md` from sub-workflows are allowed, e.g. `comparison-features.md`
+- Benchmark results must be saved as a report via `/create-report-in-dot-devin` in `.devin/temp/report/<workspace>/`
+- 2-3 main sections are enough
+- No detailed timeline needed
 
 ### 3. Multi-Dimension Focus
 
-- ไม่ใช่แค่ features แต่ครอบคลุมทุกมิติ
-- วัดด้วย metrics ที่ objective
-- เปรียบเทียบกับ competitors ที่ relevant
+- Not just features — cover every dimension
+- Measure with objective metrics
+- Compare against relevant competitors
 
 ### 4. Features Evidence
 
-- ใช้ `/deep-research` ทุกครั้งที่ต้องการข้อมูลคู่แข่ง ไม่เดาจาก memory
-- อ้างอิงแหล่งข้อมูลของแต่ละ feature claim
-- ทุก feature gap ต้องมี evidence จาก competitor docs หรือ reviews
-- ไม่สรุปว่า project ด้อยกว่าถ้าไม่มีหลักฐาน
-- แยก `fact` (คู่แข่งมีจริง) ออกจาก `assumption` (คาดว่ามี)
-- ทุก gap ต้อง map เป็น feature ที่ implement ได้ — ไม่รายงาน gap ที่กว้างเกินไปโดยไม่แตกเป็น feature ย่อย
-- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-in-dot-devin` (chat-only) หรือ `/idea-features`
+- Always use `/deep-research` whenever competitor data is needed; never guess from memory
+- Cite a source for each feature claim
+- Every feature gap must have evidence from competitor docs or reviews
+- Don't conclude the project is inferior without evidence
+- Separate `fact` (the competitor really has it) from `assumption` (presumed to exist)
+- Every gap must map to an implementable feature — don't report a broad gap without breaking it into smaller features
+- Results must be ready to hand off to `/create-plan-in-dot-devin` (chat-only) or `/idea-features`
 
 ### 5. Implementation Discipline
 
-- วาง deep plan ในแชทผ่าน `/create-plan-in-dot-devin` โหมด `chat-only` ก่อน implement เสมอ — ห้ามสร้าง plan file ใน `.devin/`
-- implement ด้วย `/implement-to-production` เท่านั้น — ทุก gap ต้องเป็น production code จริง ไม่เหลือ TODO/MOCK
-- ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง — ไม่หยุดแค่ research หรือ plan
-- ติดตามความคืบหน้าอย่างสม่ำเสมอ
-- Re-benchmark หลังการปรับปรุงแต่ละครั้ง
+- Always make the deep plan in chat via `/create-plan-in-dot-devin` `chat-only` mode before implementing — never create a plan file in `.devin/`
+- Implement only with `/implement-to-production` — every gap must become real production code, no TODO/MOCK left
+- Follow the plan until the project beats competitors — don't stop at research or plan
+- Track progress consistently
+- Re-benchmark after each improvement
 
 ### 6. Stop When Better
 
-- หยุดทันทีเมื่อ project ดีกว่าคู่แข่งในทุกมิติ
-- ไม่ทำ over-engineering หรือเพิ่ม features ที่ไม่จำเป็น
-- ย้ายไปทำงานอื่นเมื่อสำเร็จเป้าหมายแล้ว
-- ใช้ /run-bench ถ้าจำเป็น
+- Stop as soon as the project is better than competitors in every dimension
+- No over-engineering or adding unnecessary features
+- Move on to other work once the goal is achieved
+- Use /run-bench if needed
 
 ## Merged Details
 
@@ -172,57 +172,57 @@ related:
 
 ##### Goal
 
-สร้าง report ของ `/bench-competitors` — comparison matrix + gap list + re-benchmark delta หลัง implement — persistent artifact ใน `.devin/temp/report/`
+Build the report for `/bench-competitors` — comparison matrix + gap list + post-implementation re-benchmark delta — a persistent artifact in `.devin/temp/report/`
 
 ##### Scope
 
-- ใช้เมื่อ `/bench-competitors` dispatch มาที่ `report` หรือต้องการ report เฟสไหนเฟสหนึ่ง
-- Output: `/create-report-in-dot-devin` artifact เสมอ (report นี้เป็น deliverable ของ workflow)
+- Use when `/bench-competitors` dispatches to `report` or when a report for one phase is needed
+- Output: always a `/create-report-in-dot-devin` artifact (this report is the workflow's deliverable)
 
 ##### Execute
 
 ###### 1. Collect Evidence
 
-> Goal: รวม data จาก research/compare/bench phases
+> Goal: Gather data from the research/compare/bench phases
 
-1. รวม feature matrix + gap list จาก `/compare-competitors` output
-2. รวม benchmark numbers ต่อ dimension (perf, UX/UI, architecture, DX, security, scalability, business)
-3. ถ้า post-implement → รวม re-bench delta (before vs after)
-4. ทุก competitor claim ต้องมี source citation
+1. Collect the feature matrix + gap list from the `/compare-competitors` output
+2. Collect benchmark numbers per dimension (perf, UX/UI, architecture, DX, security, scalability, business)
+3. If post-implement → collect the re-bench delta (before vs after)
+4. Every competitor claim must have a source citation
 
 ###### 2. Build Report Structure
 
-> Goal: report ครบตาม contract ของ parent
+> Goal: a report complete per the parent's contract
 
-1. ตาราง matrix: `No.`, `Dimension/Feature`, `Ours`, `Competitor A`, ..., `Gap`
-2. Gap list เรียง priority พร้อม evidence
-3. Re-bench delta table ถ้าเป็น post-implement phase
-4. จำกัด ≤ 1 A4 page ต่อ competitor — รวม summary เดียวถ้าเยอะ
+1. Matrix table: `No.`, `Dimension/Feature`, `Ours`, `Competitor A`, ..., `Gap`
+2. Gap list ordered by priority with evidence
+3. Re-bench delta table if this is the post-implement phase
+4. Limit to ≤ 1 A4 page per competitor — merge into one summary if there are many
 
 ###### 3. Emit Artifact
 
-> Goal: report ถาวรที่ trace ย้อนได้
+> Goal: a permanent report that can be traced back
 
-1. ทำ `/create-report-in-dot-devin` — ตั้งชื่อตาม convention `bench-competitors-<date>`
-2. แยก facts จาก assumptions ชัดเจนใน report
-3. ลงท้ายด้วย verdict: ดีกว่า/ด้อยกว่า ต่อ dimension
+1. Run `/create-report-in-dot-devin` — name it following the `bench-competitors-<date>` convention
+2. Clearly separate facts from assumptions in the report
+3. End with a verdict: better/worse per dimension
 
 ##### Rules
 
-- ทุก claim มี citation — ไม่มี citation = ติดป้าย assumption
-- ไม่เขียน report ยาว — density สูงกว่า prose
-- re-bench delta ต้องใช้ methodology เดียวกับ baseline
+- Every claim has a citation — no citation = tag it as an assumption
+- Don't write long reports — density over prose
+- The re-bench delta must use the same methodology as the baseline
 
 ##### Expected Outcome
 
-- `.devin/temp/report/` artifact พร้อม matrix + gap list + verdict ต่อ dimension
+- `.devin/temp/report/` artifact with matrix + gap list + verdict per dimension
 
 ## Expected Outcome
 
-- Feature comparison matrix เทียบ project กับคู่แข่ง 3-5 ราย พร้อม prioritized gap list (impact + effort) และ unique features ที่ต้องรักษา
-- Deep plan roadmap ครอบทุกมิติแสดงในแชทก่อน implement (chat-only — ไม่มี plan file)
-- ทุก gap ถูก `/implement-to-production` เป็น production code จริง ไม่เหลือ TODO/MOCK
-- ไฟล์ report ใน `.devin/temp/report/<workspace>/` จาก `/create-report-in-dot-devin`
-- ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
-- Project ดีกว่าคู่แข่งในทุกมิติ — verified ด้วย re-benchmark
-- ใช้เวลาไม่เกิน 30 นาทีในการ benchmark
+- Feature comparison matrix against 3-5 competitors with a prioritized gap list (impact + effort) and the unique features to preserve
+- Deep plan roadmap covering every dimension shown in chat before implementing (chat-only — no plan file)
+- Every gap turned into real production code via `/implement-to-production`, no TODO/MOCK left
+- Report file in `.devin/temp/report/<workspace>/` from `/create-report-in-dot-devin`
+- A `docs/project.md` file containing comparison tables for every dimension
+- The project better than competitors in every dimension — verified by re-benchmark
+- Benchmarking takes no more than 30 minutes

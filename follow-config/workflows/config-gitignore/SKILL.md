@@ -1,6 +1,6 @@
 ---
 name: follow-config-config-gitignore
-description: จัดการ .gitignore patterns ตาม ecosystem — deps, build, env, OS, IDE files
+description: Manage .gitignore patterns per ecosystem — deps, build, env, OS, IDE files
 argument-hint: "[path]"
 related:
   - follow-config
@@ -11,60 +11,60 @@ related:
 
 ## Goal
 
-ตรวจและจัดการ `.gitignore` ให้ครบตาม ecosystem — dependencies, build output, env files, OS/IDE files — ไม่ track ไฟล์ที่ไม่ควร และไม่ ignore เกินจำเป็น
+Inspect and manage `.gitignore` so it fully covers the ecosystem — dependencies, build output, env files, OS/IDE files — tracking nothing it shouldn't and ignoring nothing beyond need
 
 ## Scope
 
-- ใช้กับ `.gitignore` ที่ root และ per-workspace/subdirectory ถ้ามี
-- ครอบคลุม: ecosystem patterns (Node, Rust, Python, Go), build outputs, env/secrets, OS files, IDE files
-- รายละเอียด pattern เต็มอยู่ใน `/follow-gitignore` และ `/update-gitignore`
+- Apply to `.gitignore` at root and per-workspace/subdirectory where present
+- Covers: ecosystem patterns (Node, Rust, Python, Go), build outputs, env/secrets, OS files, IDE files
+- Full pattern detail lives in `/follow-gitignore` and `/update-gitignore`
 
 ## Execute
 
 ### 1. Detect Ecosystems
 
-> Goal: รู้ว่าต้อง ignore อะไรตาม stack
+> Goal: Know what to ignore for the stack
 
-1. ตรวจ manifests: `package.json`/`bun.lock` → Node, `Cargo.toml` → Rust, `pyproject.toml` → Python, `go.mod` → Go
-2. ตรวจ tools ที่สร้าง artifacts: `dist/`, `.next/`, `.turbo/`, `.moon/`, `target/`, `__pycache__/`, `.venv/`
-3. ตรวจ IDE/OS ที่ใช้: `.vscode/`, `.idea/`, `.DS_Store`, `Thumbs.db`
+1. Check manifests: `package.json`/`bun.lock` → Node, `Cargo.toml` → Rust, `pyproject.toml` → Python, `go.mod` → Go
+2. Check tools that generate artifacts: `dist/`, `.next/`, `.turbo/`, `.moon/`, `target/`, `__pycache__/`, `.venv/`
+3. Check IDEs/OS in use: `.vscode/`, `.idea/`, `.DS_Store`, `Thumbs.db`
 
 ### 2. Audit Current .gitignore
 
-> Goal: หา gaps และ over-ignoring
+> Goal: Find gaps and over-ignoring
 
-1. อ่าน `.gitignore` ปัจจุบัน — เทียบกับ patterns ที่ ecosystem ต้องการ
-2. หา tracked files ที่ควร ignore: `git ls-files` เทียบกับ patterns — เช่น `.env`, `node_modules`, build output ที่ commit ไปแล้ว
-3. หา patterns ที่ ignore เกิน — เช่น ignore `*.json` ทั้งหมดแล้ว config ที่ต้อง commit หลุด
-4. ทำ `/check-secrets secrets-leak` — ไฟล์ที่มี secrets ต้องถูก ignore หรือย้ายออก
+1. Read the current `.gitignore` — compare against the patterns the ecosystem needs
+2. Find tracked files that should be ignored: `git ls-files` vs the patterns — e.g. `.env`, `node_modules`, build output already committed
+3. Find over-broad ignore patterns — e.g. ignoring all `*.json` caused committable config to be dropped
+4. Run `/check-secrets secrets-leak` — files containing secrets must be ignored or moved out
 
 ### 3. Fix Patterns
 
-> Goal: .gitignore ครบและแม่นยำ
+> Goal: .gitignore complete and precise
 
-1. เพิ่ม missing patterns ตาม ecosystem — ใช้ standard patterns ของแต่ละ stack ดู `/follow-gitignore`
-2. แก้ tracked-but-should-ignore: `git rm -r --cached <path>` แล้วเพิ่ม pattern — แจ้ง user ก่อนเพราะเปลี่ยน index
-3. แก้ over-broad patterns ให้เฉพาะเจาะจง — ใช้ path prefix แทน global glob เมื่อทำได้
-4. จัด group patterns พร้อม comment headers (# Dependencies, # Build, # Env, # OS, # IDE)
+1. Add missing patterns per ecosystem — use each stack's standard patterns, see `/follow-gitignore`
+2. Fix tracked-but-should-ignore: `git rm -r --cached <path>` then add the pattern — notify the user first since it changes the index
+3. Narrow over-broad patterns — use path prefixes instead of global globs where possible
+4. Group patterns with comment headers (# Dependencies, # Build, # Env, # OS, # IDE)
 
 ### 4. Verify
 
-> Goal: ยืนยัน ignore ทำงานถูก
+> Goal: Confirm ignoring behaves correctly
 
-1. `git check-ignore -v <file>` ทดสอบไฟล์สำคัญทั้งที่ควรและไม่ควร ignore
-2. `git status` — ไม่มี artifacts/env files เป็น untracked ที่ควรถูก ignore
-3. ยืนยัน config files ที่ต้อง commit ยัง tracked อยู่
+1. `git check-ignore -v <file>` tests key files both to ignore and not to ignore
+2. `git status` — no artifacts/env files left untracked that should be ignored
+3. Confirm config files that must be committed are still tracked
 
 ## Rules
 
-- ใช้ standard patterns ของ ecosystem — ห้ามเดา pattern เองถ้าไม่แน่ใจ ดู official docs/gitignore templates
-- `.env*` ต้องถูก ignore ยกเว้น `.env.example` — secrets ที่ tracked แล้วต้อง rotate ไม่ใช่แค่ untrack
-- ห้าม ignore ไฟล์ source หรือ config ที่ project ต้องการ
-- `git rm --cached` เป็น index change — แจ้ง user ก่อนทำกับไฟล์จำนวนมาก
-- ignore เฉพาะ generated/local files — ห้าม ignore เพื่อซ่อนปัญหา
+- Use the ecosystem's standard patterns — never guess a pattern; when unsure check official docs/gitignore templates
+- `.env*` must be ignored except `.env.example` — tracked secrets must be rotated, not just untracked
+- Never ignore source or config files the project needs
+- `git rm --cached` is an index change — notify the user before doing it on many files
+- Ignore only generated/local files — never ignore to hide a problem
 
 ## Expected Outcome
 
-- `.gitignore` ครอบคลุม deps, build, env, OS, IDE ตาม ecosystem
-- ไม่มี generated/secret files ถูก track
-- ไม่มี over-ignoring ที่ทำ config หลุด
+- `.gitignore` covers deps, build, env, OS, IDE per the ecosystem
+- No generated/secret files are tracked
+- No over-ignoring that drops config

@@ -1,6 +1,6 @@
 ---
 name: all-folders
-description: รัน task หรือ workflow เดียวกันกับทุก folder ใน project จนครบ scope
+description: Run one task or workflow across every folder in the project until the scope is covered
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -12,62 +12,62 @@ related:
 
 ## Goal
 
-ทำงานกับทุก folder ใน project จนครบทั้งหมดตาม workflow ที่กำหนด
+Work through every folder in the project following the specified workflow
 
 ## Scope
 
-ใช้เมื่องานต้องประมวลผลหลายๆ folders ใน project ตาม workflow หรือ pattern ที่ระบุ
+Use when a task must process multiple folders in the project according to a given workflow or pattern
 
 ## Execute
 
 ### 1. Discover Folders
 
-> Goal: รู้ว่า project มี folders อะไรบ้างและเรียงลำดับยังไง
+> Goal: Find out which folders the project has and how to order them
 
-1. ทำ `/deep-analyze` เพื่อดูโครงสร้างหลัก
-2. ทำ `/scan-codebase` เพื่อหา directories ที่เกี่ยวข้อง
-3. ใช้ `glob` หรือ `find_file_by_name` เพื่อค้นหา folders ตาม pattern
-4. บันทึกรายการ folders พร้อมลำดับ processing
+1. Run `/deep-analyze` to inspect the main structure.
+2. Run `/scan-codebase` to find the relevant directories.
+3. Use `glob` or `find_file_by_name` to locate folders by pattern.
+4. Record the folder list together with the processing order.
 
 ### 2. Process Each Folder
 
-> Goal: ประมวลผลแต่ละ folder ตาม workflow โดยไม่ทิ้ง conflicts
+> Goal: Process each folder per the workflow without leaving conflicts
 
-1. อ่าน folder contents ด้วย `exec` `ls` หรือ `Get-ChildItem`
-2. เลือก workflow ที่เหมาะสมสำหรับ folder นั้น
-3. ประมวลผลแบบ sequential ตามลำดับ foundation → dependent folders
-4. บันทึก status ของแต่ละ folder
+1. Read folder contents with `exec` using `ls` or `Get-ChildItem`.
+2. Pick the workflow that fits the folder.
+3. Process sequentially in order: foundation → dependent folders.
+4. Record the status of each folder.
 
 ### 3. Verify
 
-> Goal: ตรวจสอบว่าทุก folder ประมวลผลครบและถูกต้อง
+> Goal: Confirm every folder was processed completely and correctly
 
-1. ตรวจสอบว่าทุก folder ใน scope ได้รับการประมวลผลแล้ว
-2. ทำ `/deep-validate`
-3. ถ้าไม่มี่ errors ให้ทำ `/resolve-errors`
-4. ทำ `/report` สรุปผล
+1. Confirm every folder in scope has been processed.
+2. Run `/deep-validate`.
+3. If there are errors, run `/resolve-errors`.
+4. Run `/report` to summarize the results.
 
 ## Rules
 
 ### 1. Processing Order
 
-- ทำ folders ที่เป็น foundation ก่อน (root, config, types)
-- ทำ folders ที่มี่ dependencies ซับซ้อนทีหลัง
+- Process foundation folders first (root, config, types)
+- Process folders with complex dependencies later
 
 ### 2. Batch Operations
 
-- อ่าน folders แบบ parallel
-- ประมวลผล folders แบบ sequential เพื่อหลีกเลี่ยง conflicts
+- Read folders in parallel
+- Process folders sequentially to avoid conflicts
 
 ### 3. Error Handling
 
-- บันทึก folders ที่มี่ปัญหา
-- ทำ `/resolve-errors` สำหรับ folders ที่มี่ issues
-- ถ้า error สูง → หยุดและ report ก่อนทำต่อ
+- Record folders that had problems
+- Run `/resolve-errors` for folders with issues
+- If the error rate is high → stop and report before continuing
 
 ## Expected Outcome
 
-- ทุก folder ใน scope ได้รับการประมวลผลครบถ้วน
-- ไม่มี่ broken references หรือ missing folders
-- ผ่าน `/deep-validate`
-- มี่รายงานสรุปผล
+- Every folder in scope is fully processed
+- No broken references or missing folders
+- Passes `/deep-validate`
+- A summary report exists

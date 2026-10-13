@@ -1,6 +1,6 @@
 ---
 name: check-unpush
-description: สแกน git repos ทั้งเครื่องหา commits ที่ยังไม่ push และ branches ที่ไม่มี upstream
+description: Scan all git repos on the machine for unpushed commits and branches without an upstream
 argument-hint: "[path]"
 related:
   - list-projects-git-in-drive-d
@@ -13,74 +13,74 @@ related:
 
 ## Goal
 
-สแกน git repositories ทั้งเครื่อง (หรือ path ที่ระบุ) เพื่อหา commits ที่ยังไม่ push, branches ที่ไม่มี upstream และ repos ที่ remote หายไป — ป้องกันงานที่ commit แล้วแต่ยังไม่ backup
+Scan git repositories across the whole machine (or a given path) for commits not yet pushed, branches without an upstream, and repos whose remote is missing — so work that is committed but not yet backed up is not lost
 
 ## Scope
 
-- ใช้เมื่อต้องการ audit repos ทั้งหมดหา commits ที่ยังไม่ขึ้น remote
-- Default scope: ทุก repo ที่พบในเครื่องผ่าน `/list-projects-git-in-drive-d` หรือ path ที่ระบุ
-- Read-only: รายงานสถานะเท่านั้น ไม่ push หรือแก้ไข remote config
+- Use when you want to audit every repo for commits that have not reached a remote
+- Default scope: every repo found on the machine via `/list-projects-git-in-drive-d`, or the given path
+- Read-only: reports status only — never pushes or changes remote config
 
 ## Execute
 
 ### 1. Collect Repositories
 
-> Goal: รู้ว่าต้อง scan repo ไหนบ้าง
+> Goal: know which repos to scan
 
-1. รับ `path` จาก argument — default: scan ทุก repo จาก `/list-projects-git-in-drive-d`
-2. ข้าม repos ที่ไม่มี remote (`git remote` ว่าง) แต่ flag เป็น `no-remote`
-3. ข้าม bare repos
+1. Take `path` from the argument — default: scan every repo from `/list-projects-git-in-drive-d`
+2. Skip repos with no remote (empty `git remote`) but flag them as `no-remote`
+3. Skip bare repos
 
 ### 2. Check Ahead/Behind Status
 
-> Goal: นับ unpushed commits ต่อ branch
+> Goal: count unpushed commits per branch
 
-1. รัน `git -C <repo> status -sb` หา `[ahead N]` / `[behind M]`
-2. รัน `git -C <repo> log '@{u}..HEAD' --oneline` สำหรับ commits ที่ยังไม่ push (ถ้ามี upstream)
-3. นับ ahead count ต่อ branch ทุก branch: `git -C <repo> for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads`
+1. Run `git -C <repo> status -sb` looking for `[ahead N]` / `[behind M]`
+2. Run `git -C <repo> log '@{u}..HEAD' --oneline` for commits not yet pushed (when an upstream exists)
+3. Count the ahead number for every branch: `git -C <repo> for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads`
 
 ### 3. Detect Orphan Branches
 
-> Goal: หา branches ที่ไม่มี upstream
+> Goal: find branches without an upstream
 
-1. หา local branches ที่ `%(upstream)` ว่าง — commits บนนั้นไม่ถูก push เลย
-2. หา branches ที่ upstream ชี้ remote branch ที่ถูกลบ (`[gone]`)
-3. ตรวจว่า remote reachable (`git ls-remote --heads` แบบ short timeout) — flag `unreachable` ถ้า remote ตาย
+1. Find local branches whose `%(upstream)` is empty — their commits have never been pushed
+2. Find branches whose upstream points at a deleted remote branch (`[gone]`)
+3. Check remote reachability (`git ls-remote --heads` with a short timeout) — flag `unreachable` when the remote is dead
 
 ### 4. Report
 
-> Goal: สรุป repos ที่มีงานยังไม่ backup
+> Goal: summarize the repos whose work is not yet backed up
 
-1. ทำ `/report` คอลัมน์: `No.`, `Repo`, `Branch`, `Ahead`, `Behind`, `Upstream`, `Status`
+1. Build a `/report` with columns: `No.`, `Repo`, `Branch`, `Ahead`, `Behind`, `Upstream`, `Status`
 2. Status: `unpushed`, `no-upstream`, `gone`, `no-remote`, `unreachable`, `clean`
-3. เรียง `unpushed` มากสุดก่อน
-4. แนะนำ `/git-push` ต่อ repo/branch ที่ต้อง push — ถ้า unpushed commits รก แนะนำ `/refactor-commit` ก่อน push
+3. Sort the most `unpushed` first
+4. Recommend `/git-push` per repo/branch that needs pushing — when the unpushed commits are messy, recommend `/refactor-commit` before pushing
 
 ## Rules
 
 ### 1. Read-Only
 
-- ไม่ push, fetch หรือแก้ remote config
-- รายงานเท่านั้น — ให้ user เลือก action
+- Never push, fetch, or change remote config
+- Report only — the user chooses the action
 
 ### 2. No Network Surprise
 
-- `git status` และ `for-each-ref` ใช้ local data — ไม่ต้อง network
-- `git ls-remote` ทำเฉพาะเมื่อต้องตรวจ remote reachable และใช้ timeout สั้น
-- ถ้า offline → รายงานจาก local tracking info พร้อมระบุว่า remote ไม่ได้ verify
+- `git status` and `for-each-ref` use local data — no network needed
+- Run `git ls-remote` only when remote reachability must be verified, with a short timeout
+- When offline → report from local tracking info and state that the remote was not verified
 
 ### 3. Accuracy
 
-- นับ commits จาก `@{u}..HEAD` ไม่ใช่การเดา
-- แยกชัด `ahead` (local มีเพิ่ม) กับ `behind` (remote มีเพิ่ม)
+- Count commits from `@{u}..HEAD`, never by guessing
+- Keep `ahead` (extra commits locally) and `behind` (extra commits on the remote) clearly separate
 
-- ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
-- ใช้ /check-uncommit ถ้าจำเป็น
-- ใช้ /git-push ถ้าจำเป็น
-- ใช้ /refactor-commit ถ้าจำเป็น
+- Use /list-projects-git-in-drive-d if needed
+- Use /check-uncommit if needed
+- Use /git-push if needed
+- Use /refactor-commit if needed
 
 ## Expected Outcome
 
-- รายการ repos/branches ที่มี commits ยังไม่ push พร้อมจำนวน
-- ระบุ branches ที่ไม่มี upstream และ repos ที่ remote หาย
-- พร้อมส่งต่อ `/git-push` ต่อ repo
+- A list of repos/branches with unpushed commits, with exact counts
+- Branches without an upstream and repos with a missing remote are identified
+- Ready to hand off to `/git-push` per repo

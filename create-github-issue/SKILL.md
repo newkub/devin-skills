@@ -1,6 +1,6 @@
 ---
 name: create-github-issue
-description: สร้าง ค้นหา แก้ไข ปิด เปิดใหม ลบ และจัดการ GitHub issues ผ่าน `gh` CLI
+description: Create, search, edit, close, reopen, delete, and manage GitHub issues via the `gh` CLI
 argument-hint: "[action] [repo]"
 related:
   - follow-github-issue-templates
@@ -14,149 +14,149 @@ related:
 
 ## Goal
 
-ใช้ `gh issue` เพื่อสร้าง ค้นหา ดู แก้ไข ปิด เปิดใหม ลบ และจัดการ repository issues ผ่าน CLI ทั้งแบบ interactive และ scripted
+Use `gh issue` to create, search, view, edit, close, reopen, delete, and manage repository issues through the CLI, both interactively and scripted
 
 ## Scope
 
-- ใช้ร่วมกับ skills: `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/deep-review`, `/update-github-issue`
-- รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
-- ไม่ใช่ project management tool ครบวงจร
+- Works with the skills: `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/deep-review`, `/update-github-issue`
+- Supports the current repo or `--repo owner/repo`
+- Not a full-featured project management tool
 
-ดูเพิ่มเติม: `/resolve-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-web`
+See also: `/resolve-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-web`
 
 ## Execute
 
 ### 1. Verify Repository And Auth
 
-> Goal: ยืนยัน target repo
+> Goal: Confirm the target repo
 
-1. รัน `gh auth status`
-2. รัน `gh repo view` เพื่อดู repo ปัจจุบัน
-3. ถ้าอยู่นอก repo ให้ใช้ `--repo owner/repo` ทุก command
-4. ตรวจสอบสิทธิ์ create/edit issues
+1. Run `gh auth status`
+2. Run `gh repo view` to see the current repo
+3. If you are outside a repo, use `--repo owner/repo` for every command
+4. Check permissions to create/edit issues
 
 ### 2. List And View Issues
 
-> Goal: ค้นหาและตรวจสอบ issues
+> Goal: Find and inspect issues
 
-1. `gh issue list --state all --limit 50` สำหรับ open/closed
-2. `gh issue list --label <label> --assignee <user>` เพื่อกรอง
-3. `gh issue view <number>` สำหรับรายละเอียด
-4. `gh issue view <number> --comments` สำหรับ comments
-5. `gh issue view <number> --web` เพื่อเปิดใน browser
+1. `gh issue list --state all --limit 50` for open/closed
+2. `gh issue list --label <label> --assignee <user>` to filter
+3. `gh issue view <number>` for details
+4. `gh issue view <number> --comments` for comments
+5. `gh issue view <number> --web` to open in the browser
 
 ### 3. Check Duplicates
 
-> Goal: หลีกเลี่ยง duplicate issues
+> Goal: Avoid duplicate issues
 
 1. `gh issue list --search "<title>" --limit 10`
-2. ถ้า duplicate → update issue เดิมและระบุ `duplicateOf`
-3. ถ้าไม่ duplicate → สร้างใหม
+2. If a duplicate → update the existing issue and note `duplicateOf`
+3. If not a duplicate → create a new one
 
 ### 4. Use Issue Template
 
-> Goal: Format body ตาม issue type
+> Goal: Format the body according to the issue type
 
-1. ถ้า repo มี `.github/ISSUE_TEMPLATE/*.yml` → ใช้ repo templates
-2. ถ้า repo ไม่มี templates → อ่าน `create-github-issue/templates/index.md` เลือก type ที่ตรง:
+1. If the repo has `.github/ISSUE_TEMPLATE/*.yml` → use the repo templates
+2. If the repo has no templates → read `create-github-issue/templates/index.md` and pick the matching type:
    - `bug` → `templates/bug.md`
    - `feature` → `templates/feature.md`
    - `idea` → `templates/idea.md`
    - `plan` → `templates/plan.md`
    - `question` → `templates/question.md`
-3. ถ้า type เป็น `idea` → วาด ANSI UI sketch เองโดยอ่านไฟล์ project จริง ไม่ใช้ placeholder ใส่ sketch จริงข้างใน code fence
-4. อ่าน template ที่เลือกแล้วแทนที่ placeholders ด้วยข้อมูลจริง
-5. Title ต้องเป็น English Title Case ไม่เกิน 80 ตัวอักษร
-6. Description ใช้ภาษาอังกฤษ ยกเว้น technical terms, project/skill names, paths, commands
+3. If the type is `idea` → draw the ANSI UI sketch yourself by reading the real project files; never use placeholders, put the actual sketch inside the code fence
+4. Read the chosen template and replace placeholders with real information
+5. The title must be English Title Case, at most 80 characters
+6. Write the description in English, except technical terms, project/skill names, paths, and commands
 
 ### 5. Create Issue
 
-> Goal: สร้าง issue บน GitHub
+> Goal: Create the issue on GitHub
 
-1. `gh issue create` แบบ interactive
-2. หรือ `gh issue create --title "<title>" --body "<body>"`
-3. หรือ `gh issue create -F body.md` อ่าน body จาก file
-4. เพิ่ม `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent` ตามจำเป็น
-5. ถ้าเป็น project item → `gh project item-add <project-id>`
-6. ใช้ `--web` เพื่อเปิดหน้า create ใน browser
+1. `gh issue create` interactively
+2. Or `gh issue create --title "<title>" --body "<body>"`
+3. Or `gh issue create -F body.md` to read the body from a file
+4. Add `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent` as needed
+5. If it's a project item → `gh project item-add <project-id>`
+6. Use `--web` to open the create page in the browser
 
 ### 5.5 Create Idea-Feature Comments
 
-> Goal: เพิ่ม comment หนึ่ง comment ต่อหน่วง idea โดยใช้ template `idea`
+> Goal: Add one comment per idea group using the `idea` template
 
-1. อ่าน `create-github-issue/templates/idea.md`
-2. แทนที่ placeholders:
+1. Read `create-github-issue/templates/idea.md`
+2. Replace placeholders:
    - `{{number}}`, `{{feature}}`, `{{type}}`, `{{why}}`, `{{benefit}}`, `{{impact}}`, `{{phase}}`, `{{effort}}`, `{{mvpScore}}`, `{{risk}}`
-   - `{{uxui-sketch}}` ด้วย ANSI box-drawing sketch จริงจาก project analysis
-   - `{{todo-table}}` ด้วยแถว `| action | files | dependencies | workspace |`
-3. ตรวจ format:
-   - ตารางต้องเป็น `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
-   - header, separator, และแต่ละแถวต้องอยู่บนบรรทัดเดียว ห้ามขึ้นบรรทัดใหมภายใน cell
-   - นับ `|` เพื่อยืนยัน summary row มี 10 pipes (9 คอลัมน์) และ Todo row มี 5 pipes (4 คอลัมน์)
-   - `Todo` ต้องเป็นตารางมีคอลัมน์ `Action`, `Files`, `Dependencies`, `Workspace`
-   - `UX/UI Sketch` ต้องเป็น ANSI art จริง ไม่ใช่ text description หัวข้อต้องไม่มี `(ANSI)`
-4. Post ด้วย `gh issue comment <number> --body-file <comment.md>`
+   - `{{uxui-sketch}}` with a real ANSI box-drawing sketch from the project analysis
+   - `{{todo-table}}` with rows of `| action | files | dependencies | workspace |`
+3. Check the format:
+   - The table must be `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
+   - The header, separator, and every row must each be on a single line; never break a line inside a cell
+   - Count the `|` to confirm the summary row has 10 pipes (9 columns) and each Todo row has 5 pipes (4 columns)
+   - `Todo` must be a table with the columns `Action`, `Files`, `Dependencies`, `Workspace`
+   - `UX/UI Sketch` must be real ANSI art, not a text description, and the heading must not contain `(ANSI)`
+4. Post with `gh issue comment <number> --body-file <comment.md>`
 
 ### 6. Update And Edit Issues
 
-> Goal: อัปเดต metadata และเนื้อหา
+> Goal: Update metadata and content
 
 1. `gh issue edit <number> --title "<title>" --body "<body>"`
 2. `gh issue edit <number> --add-label bug --remove-label duplicate`
 3. `gh issue edit <number> --add-assignee <user> --remove-assignee <user>`
 4. `gh issue edit <number> --add-project "<title>" --remove-project <id>`
-5. `gh issue edit <number> --milestone "v1.0"` หรือ `--remove-milestone`
+5. `gh issue edit <number> --milestone "v1.0"` or `--remove-milestone`
 6. `gh issue edit <number> --type Bug --parent <number>`
 
-สำหรับ workflow update เต็มรูปแบบ ใช้ `/update-github-issue` ด้วย
+For the full update workflow, also use `/update-github-issue`
 
 ### 7. Manage Issue Lifecycle
 
-> Goal: ปิด เปิดใหม comment ปักหมุด ย้าย ลบ
+> Goal: Close, reopen, comment, pin, transfer, delete
 
-1. `gh issue close <number>` หรือ `gh issue reopen <number>`
+1. `gh issue close <number>` or `gh issue reopen <number>`
 2. `gh issue comment <number> --body "<comment>"`
 3. `gh issue pin <number>` / `gh issue unpin <number>`
-4. `gh issue lock <number>` / `gh issue unlock <number>` ระวัง
-5. `gh issue transfer <number> <owner/repo>` เพื่อย้าย
-6. `gh issue delete <number> --yes` ต้องถาม user ก่อน ถ้าจริง ๆ ใช้ `close` ดีกว่า `delete`
+4. `gh issue lock <number>` / `gh issue unlock <number>` — be careful
+5. `gh issue transfer <number> <owner/repo>` to move it
+6. `gh issue delete <number> --yes` — must ask the user first; in practice `close` is better than `delete`
 
 ### 8. Verify And Report
 
-> Goal: ยืนยันความสำเร็จและส่งมอบ
+> Goal: Confirm success and deliver
 
-1. ตรวจสอบว่า issue ถูกสร้าง/แก้ไขสำเร็จ
-2. `gh issue view <number>` สำหรับตรวจสอบสุดท้าย
-3. หลังสร้าง เปิดใน browser ด้วย `/open-web` หรือ `gh issue view <number> --web`
-4. รายงาน issue URL กลับ
+1. Verify the issue was created/edited successfully
+2. `gh issue view <number>` for a final check
+3. After creating, open it in the browser with `/open-web` or `gh issue view <number> --web`
+4. Report the issue URL back
 
 ## Rules
 
 ### 1. Repository Target
 
-- `gh issue` ใช้ repo จาก git remote ของ directory ปัจจุบัน
-- ใช้ `--repo owner/repo` หรือ `-R` สำหรับ repo อื่น
+- `gh issue` uses the repo from the current directory's git remote
+- Use `--repo owner/repo` or `-R` for another repo
 
 ### 2. Language
 
-- Title และ description ใช้ภาษาอังกฤษ
-- ยกเว้น technical terms, project/skill names, paths, commands และ repo conventions ที่กำหนดภาษาอื่น
-- ถ้า repo conventions ไม่ระบุภาษา ใช้ English เป็น default
+- Titles and descriptions use English
+- Except technical terms, project/skill names, paths, commands, and repo conventions that specify another language
+- If repo conventions don't specify a language, default to English
 
 ### 3. Issue Title
 
-- ขึ้นต้นด้วย issue type (`Bug:`, `Feature:`, `Enhancement:`, `Docs:`)
-- ใช้ Title Case
-- ไม่เกิน 80 ตัวอักษร
-- ตัวอย่าง: `Bug: Login fails after timeout`
+- Start with the issue type (`Bug:`, `Feature:`, `Enhancement:`, `Docs:`)
+- Use Title Case
+- At most 80 characters
+- Example: `Bug: Login fails after timeout`
 
 ### 4. Issue Description
 
-- ใช้ `create-github-issue/templates/<type>.md` ตาม type ที่เลือก
-- แทนที่ placeholders ด้วยข้อมูลจริง
-- ถ้า type เป็น `idea` ใช้ `templates/idea.md` พร้อมตาราง `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk`, ANSI sketch จริง และ `Todo` ตาราง `Action | Files | Dependencies | Workspace`
-- summary และ Todo แต่ละแถวต้องอยู่บนบรรทัดเดียว ห้ามขึ้นบรรทัดใหมภายใน cell
-- ถ้า type ไม่ตรง template ใด ใช้ `bug.md` เป็น base แล้วปรับ
+- Use `create-github-issue/templates/<type>.md` matching the chosen type
+- Replace placeholders with real information
+- If the type is `idea`, use `templates/idea.md` with the `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk` table, a real ANSI sketch, and a `Todo` table with `Action | Files | Dependencies | Workspace`
+- Each summary and Todo row must be on a single line; never break a line inside a cell
+- If the type matches no template, use `bug.md` as the base and adapt
 
 ### 5. Labels Convention
 
@@ -169,69 +169,69 @@ related:
 
 ### 6. Issue Relations
 
-- `blockedBy`: issue ที่ต้อง resolve ก่อน
-- `blocks`: issue ที่ถูก block โดย issue นี้
-- `relatedTo`: เกี่ยวข้องแต่ไม่ block
-- `duplicateOf`: issue ซ้ำ
+- `blockedBy`: issues that must be resolved first
+- `blocks`: issues blocked by this one
+- `relatedTo`: related but not blocking
+- `duplicateOf`: duplicate issue
 
 ### 7. Assignees
 
-- ระบุ primary assignee หนึ่งคน
-- หลีกเลี่ยงหลาย assignees เว้นแต่จำเป็น
-- ใช้ GitHub username ที่ถูกต้อง
+- Name one primary assignee
+- Avoid multiple assignees unless necessary
+- Use correct GitHub usernames
 
 ### 8. Update Existing Issues
 
-- ถ้า issue มี comments จากคนอื่น อย่า overwrite body โดยไม่ขอ user confirmation
-- ใช้ `--add-label` และ `--remove-label`
-- ใช้ `--add-assignee` และ `--remove-assignee`
-- ตรวจสอบ issue หลัง update
+- If the issue has comments from others, do not overwrite the body without user confirmation
+- Use `--add-label` and `--remove-label`
+- Use `--add-assignee` and `--remove-assignee`
+- Review the issue after updating
 
 ### 9. Safety
 
-- `delete`, `close`, `lock`, `transfer` เป้น destructive ต้องถาม user ก่อน
-- ตรวจสอบ issue number/repo ก่อนเปลี่ยน state
-- ถ้าต้องการปิด ใช้ `gh issue close` ดีกว่า `delete`
+- `delete`, `close`, `lock`, `transfer` are destructive and must be confirmed with the user first
+- Verify the issue number/repo before changing state
+- To close an issue, `gh issue close` is better than `delete`
 
 ### 10. Interactive And Script Mode
 
-- ใน TTY `gh issue create` จะ prompt title/body ถ้าขาด flags
-- ใน scripts/CI ต้องใส่ flags ครบเพื่อหลีกเลี่ยง interactivity
-- ใช้ `--json` หรือ `--jq` สำหรับ JSON output
-- ใช้ `--template` เพื่อ format output
+- In a TTY, `gh issue create` prompts for title/body if flags are missing
+- In scripts/CI, pass all flags to avoid interactivity
+- Use `--json` or `--jq` for JSON output
+- Use `--template` to format output
 
 ### 11. CLI Reference
 
 | Command | Description | Common Options |
 |---------|-------------|----------------|
-| `gh issue list` | รายการ issues | `-R`, `--state`, `--label`, `--assignee`, `--limit` |
-| `gh issue view <id>` | ดู issue | `-R`, `--comments`, `--json`, `--web` |
-| `gh issue create` | สร้าง issue | `-R`, `--title`, `--body`, `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent`, `--web` |
-| `gh issue edit <id>` | แก้ไข issue | `-R`, `--title`, `--body`, `--add-label`, `--remove-label`, `--add-assignee`, `--remove-assignee`, `--add-project`, `--remove-project`, `--milestone`, `--type`, `--parent` |
-| `gh issue close <id>` | ปิด issue | `-R`, `--comment`, `--reason` |
-| `gh issue reopen <id>` | เปิด issue ใหม | `-R`, `--comment` |
+| `gh issue list` | List issues | `-R`, `--state`, `--label`, `--assignee`, `--limit` |
+| `gh issue view <id>` | View an issue | `-R`, `--comments`, `--json`, `--web` |
+| `gh issue create` | Create an issue | `-R`, `--title`, `--body`, `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent`, `--web` |
+| `gh issue edit <id>` | Edit an issue | `-R`, `--title`, `--body`, `--add-label`, `--remove-label`, `--add-assignee`, `--remove-assignee`, `--add-project`, `--remove-project`, `--milestone`, `--type`, `--parent` |
+| `gh issue close <id>` | Close an issue | `-R`, `--comment`, `--reason` |
+| `gh issue reopen <id>` | Reopen an issue | `-R`, `--comment` |
 | `gh issue comment <id>` | Comment | `-R`, `--body`, `--edit-last` |
-| `gh issue delete <id>` | ลบ issue | `-R`, `--yes` |
+| `gh issue delete <id>` | Delete an issue | `-R`, `--yes` |
 
 ## Expected Outcome
 
-- สร้าง ค้นหา ดู แก้ไข และจัดการ lifecycle ของ issues ผ่าน `gh issue` ได้
-- ใช้งานได้ทั้ง interactive และ scripted modes
-- Issues เชื่อมโยง project, labels, assignees, milestones ถูกต้อง
-- ไม่มี issue ถูกลบ ย้าย หรือปิด โดยไม่ได้รับอนุญาต
-- ทีมสามารถเข้าใจและลงมือกับ issue ได้ทันที
+- Issues can be created, searched, viewed, edited, and lifecycle-managed through `gh issue`
+- Usable in both interactive and scripted modes
+- Issues linked to projects, labels, assignees, and milestones correctly
+- No issue is deleted, transferred, or closed without permission
+- The team can immediately understand and act on the issue
 
 ## Common Mistakes
 
-- ไม่ใช้ template ทำให้ขาดข้อมูล
-- Title ไม่ชัดหรือยาวเกินไป
-- ขาด environment details
-- ไม่เชื่อมโยง related issues
-- ใช้ labels ที่ไม่ตรง conventions
+- Not using a template, leaving out key information
+- Unclear or overly long title
+- Missing environment details
+- Not linking related issues
+- Using labels that don't match conventions
 
 ## Anti-Patterns
 
-- สร้าง issue กว้างเกินไป (ควรแยก)
-- สร้าง issue โดยไม่มี action items
-- สร้าง issue โดยไม่มี steps to reproduce
-- ใช้ description สั้นเกินไปและขาด context
+- Creating an issue that is too broad (split it instead)
+- Creating an issue with no action items
+- Creating an issue with no steps to reproduce
+- Using a description that is too short and lacks context

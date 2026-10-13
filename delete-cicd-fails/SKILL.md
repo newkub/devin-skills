@@ -1,6 +1,6 @@
 ---
 name: delete-cicd-fails
-description: ลบ CI/CD workflow runs ทีล้มเหลวออกจาก repo ปัจจุบันหรือทีระบุ
+description: Delete failed CI/CD workflow runs from the current or a specified repo
 argument-hint: "[workflow-or-run-id-or-all]"
 related:
   - resolve-errors
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ลบ CI/CD workflow runs ทีล้มเหลวออกจาก repo ปัจจุบันหรือ repo ทีระบุ โดย user confirmation ก่อนลบ
+Delete failed CI/CD workflow runs from the current or a specified repo, with user confirmation before deletion
 
 ## Scope
 
-ใช้สำหรับ cleanup failed workflow runs ทีไม่ต้องการเก็บ history เอาไว้อีกต่อไป
+Use for cleaning up failed workflow runs whose history is no longer needed
 
-ดูเพิ่มเติม: /resolve-errors
+See also: /resolve-errors
 
 ## Execute
 
 ### 1. Detect Target
 
-> Goal: ระบุ repo, workflow และ run IDs ทีจะลบ
+> Goal: Identify the repo, workflow, and run IDs to delete
 
-1. รัน `gh auth status` เพื่อตรวจสอบ authentication
-2. ถ้าไม่ authenticated → ทำ `/ask-me`
-3. ถ้าได้รับ `<run-id>` จาก argument → ลบเฉพาะ run ID นั้น
-4. ถ้าได้รับ `<workflow>` จาก argument → ลบ failed runs ของ workflow นั้น
-5. ถ้าได้รับ `all` → ลบ failed runs ทั้งหมดใน repo
-6. ถ้าไม่มี argument → ทำ `/resolve-errors` แสดงรายการก่อนแล้วถาม user
+1. Run `gh auth status` to check authentication
+2. If not authenticated → do `/ask-me`
+3. If given `<run-id>` from the argument → delete only that run ID
+4. If given `<workflow>` from the argument → delete that workflow's failed runs
+5. If given `all` → delete all failed runs in the repo
+6. If no argument → do `/resolve-errors`, list the runs first, then ask the user
 
 ### 2. Confirm
 
-> Goal: ยืนยันก่อนลบ
+> Goal: Confirm before deleting
 
-1. สรุปจำนวน run IDs ทีจะลบ
-2. ถ้าจำนวน > 1 หรือเป็น `all` → ถาม user ก่อนลบ
-3. ถ้า user ไม่ยืนยัน → stop และ report
+1. Summarize the number of run IDs to delete
+2. If the count > 1 or it is `all` → ask the user before deleting
+3. If the user does not confirm → stop and report
 
 ### 3. Delete Runs
 
-> Goal: ลบ failed runs
+> Goal: Delete the failed runs
 
-1. สร้าง list ของ database IDs ทีจะลบ
-2. รัน `gh run delete <databaseId>` ทีละ run
-3. ถ้ามี run ใดไม่ลบได้ → บันทึก error แล้ว continue
-4. รายงานจำนวนทีลบสำเร็จ/ไม่สำเร็จ
+1. Build the list of database IDs to delete
+2. Run `gh run delete <databaseId>` one run at a time
+3. If any run cannot be deleted → record the error and continue
+4. Report the number of runs deleted successfully and unsuccessfully
 
 ### 4. Verify
 
-> Goal: ตรวจสอบว่าไม่มี failed runs เหลือ
+> Goal: Check that no failed runs remain
 
-1. รัน `gh run list --status failure --limit 50`
-2. ถ้ายังมี → รายงานและแนะนำ `/resolve-errors`
-3. ถ้าไม่มี → รายงาน success
+1. Run `gh run list --status failure --limit 50`
+2. If any remain → report them and recommend `/resolve-errors`
+3. If none remain → report success
 
 ## Rules
 
 ### 1. User Confirmation
 
-- ลบหลาย run หรือ `all` ต้องยืนยันก่อนเสมอ
-- ไม่ลบ run ที status ไม่ใช่ `completed` หรือ `failure`
-- ไม่ force delete
+- Deleting multiple runs or `all` must always be confirmed first
+- Do not delete runs whose status is not `completed` or `failure`
+- No force delete
 
 ### 2. Dry Run Option
 
-- ถ้า user ระบุ `--dry-run` → แสดงรายการทีจะลบแต่ไม่ลบจริง
+- If the user passes `--dry-run` → list the runs to be deleted without actually deleting them
 
 ### 3. Safety
 
-- ไม่ลบ run ทีเกี่ยวข้องกับ branch ปัจจุบัน เว้นแต่ user ระบุชัดเจน
-- ไม่ expose secrets หรือ tokens ใน output
-- ใช้ /run-deploy ถ้าจำเป็น
+- Do not delete runs related to the current branch unless the user explicitly says so
+- Do not expose secrets or tokens in output
+- Use /run-deploy if needed
 
 ## Expected Outcome
 
-- Failed workflow runs ทีเลือกถูกลบออกจาก GitHub
-- รายงานจำนวนทีลบสำเร็จและไม่สำเร็จ
-- ไม่มี failed runs เหลือหลัง delete
+- The selected failed workflow runs are deleted from GitHub
+- A report of the number of runs deleted successfully and unsuccessfully
+- No failed runs remain after deletion

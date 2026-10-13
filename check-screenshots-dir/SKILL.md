@@ -1,6 +1,6 @@
 ---
 name: check-screenshots-dir
-description: ดึงกลุ่มภาพล่าสุดจาก Screenshots dir ตามช่วงเวลา แล้ว analyze บริบทร่วมกัน ไม่ใช่ไฟล์เดียว
+description: Fetch the latest screenshot groups by time range and analyze their shared context, not one file
 argument-hint: "[time-range-or-count]"
 related:
   - check-downloads-dir
@@ -15,93 +15,93 @@ related:
 
 ## Goal
 
-ดึงกลุ่มภาพ capture ล่าสุดจาก `C:\Users\Veerapong\Pictures\Screenshots` ตามช่วงเวลาหรือจำนวนกลุ่ม แล้ว analyze เนื้อหา/บริบททีเกิดขึ้นพร้อมกัน ไม่ใช่แค่ไฟล์ล่าสุดไฟล์เดียว
+Fetch the latest capture groups from `C:\Users\Veerapong\Pictures\Screenshots` by time range or group count, then analyze the content and context that occurred together, not just the single most recent file
 
 ## Scope
 
-- ใช้สำหรับ Windows screenshots ที save ไว้ใน `Pictures\Screenshots`
-- วิเคราะห์กลุ่มภาพ ไม่ใช่ภาพเดียว
-- ไม่ upload หรือส่งภาพออกไปนอก environment
+- Use for Windows screenshots saved in `Pictures\Screenshots`
+- Analyze groups of images, not a single image
+- Never upload or send images outside the environment
 
 ## Execute
 
 ### 1. Locate Screenshots
 
-> Goal: หาไฟล์ capture ทั้งหมดใน default path
+> Goal: Find all capture files in the default path
 
-1. ใช้ `exec` รัน `Get-ChildItem -Path 'C:\Users\Veerapong\Pictures\Screenshots' -File | Sort-Object LastWriteTime -Descending`
-2. บันทึกรายการไฟล์: ชื่อ, ขนาด, วันทีแก้ไข
-3. ถ้าโฟลเดอร์ไม่มีไฟล์ → stop และ report
+1. Use `exec` to run `Get-ChildItem -Path 'C:\Users\Veerapong\Pictures\Screenshots' -File | Sort-Object LastWriteTime -Descending`
+2. Record the file list: name, size, modified date
+3. If the folder has no files → stop and report
 
 ### 2. Group By Recent Window
 
-> Goal: เลือกกลุ่มไฟล์ล่าสุดจากช่วงเวลาเดียวกัน
+> Goal: Select the most recent file group from the same time window
 
-1. ถ้า user ระบุ `time-range-or-count` (เช่น `5m`, `30m`, `10`) → ใช้ตามนั้น
-2. ถ้าไม่ระบุ → ใช้ default `5 นาที` ก่อนไฟล์ล่าสุด หรือ `10` ไฟล์ล่าสุด ทีใกล้กัน
-3. กรองไฟล์ทีมี `LastWriteTime` อยู่ในช่วงเวลาเดียวกัน (ห่างกันไม่เกิน 5 นาทีต่อ default)
-4. เรียงลำดับจากเก่าไปใหม่เพื่อดูลำดับเหตุการณ์
+1. If the user specifies `time-range-or-count` (e.g. `5m`, `30m`, `10`) → use it as given
+2. If unspecified → use the default `5 min` before the latest file, or the `10` most recent files that are close together
+3. Filter files whose `LastWriteTime` falls within the same time window (no more than 5 minutes apart by default)
+4. Sort oldest to newest to follow the event sequence
 
 ### 3. Read Captures
 
-> Goal: อ่านเนื้อหาภาพทีเลือก
+> Goal: Read the content of the selected images
 
-1. ใช้ `read` อ่านทุกไฟล์ในกลุ่ม (รองรับ PNG/JPG)
-2. บันทึก index ของแต่ละภาพ
-3. ถ้าไฟล์มากเกิน 20 ไฟล์ → ขอ user ยืนยันก่อน analyze ทั้งหมด หรือเลือก top 20 ล่าสุด
+1. Use `read` on every file in the group (PNG/JPG supported)
+2. Record the index of each image
+3. If there are more than 20 files → ask the user to confirm before analyzing all of them, or pick the latest 20
 
 ### 4. Analyze Group
 
-> Goal: วิเคราะห์บริบทจากกลุ่มภาพ
+> Goal: Analyze context from the image group
 
-1. ดูลำดับเหตุการณ์จากภาพแรกไปภาพสุดท้าย
-2. หา UI/state changes, error messages, flow ทีกำลังทำ
-3. สรุป action, intent, และผลลัพธ์ทีอาจเกิดขึ้น
-4. ถ้าเป็นภาพ IDE/terminal → ดึง code, commands, paths ทีปรากฏ
+1. Follow the event sequence from the first image to the last
+2. Look for UI/state changes, error messages, and the flow being performed
+3. Summarize actions, intent, and likely outcomes
+4. For IDE/terminal captures → extract the code, commands, and paths that appear
 
 ### 5. Report
 
-> Goal: สรุปผลการ analyze
+> Goal: Summarize the analysis
 
-1. ทำ `/report` ด้วยคอลัมน์: No, Filename, Timestamp, Key Observations
-2. สรุป overall context และ likely next steps
-3. ทำ `/suggest-next-action` ถ้าจำเป็น
+1. Produce `/report` with columns: No, Filename, Timestamp, Key Observations
+2. Summarize the overall context and likely next steps
+3. Run `/suggest-next-action` if needed
 
 ## Rules
 
 ### 1. Group Not Single
 
-- ไม่ analyze แค่ไฟล์ล่าสุดไฟล์เดียว เว้นแต่ user ระบุชัดเจน
-- กลุ่มต้องมีอย่างน้อย 2 ไฟล์ ถ้าได้มาเพียงไฟล์เดียว → รายงานและหยุด
+- Never analyze only the latest file unless the user explicitly says so
+- A group must have at least 2 files; if only one is found → report and stop
 
 ### 2. Time Window
 
-- Default ช่วงเวลาห่างกันไม่เกิน 5 นาทีจากไฟล์ล่าสุด
-- ถ้า user ระบุ `time-range-or-count` ให้ใช้ค่านั้น
-- ถ้าไฟล์ห่างกันเกินช่วง ให้แบ่งเป็นกลุ่มแยก และเลือกกลุ่มล่าสุด
+- The default window spans no more than 5 minutes from the latest file
+- If the user provides `time-range-or-count`, use that value
+- If files fall outside the window, split them into separate groups and pick the latest one
 
 ### 3. Privacy
 
-- ไม่อัปโหลด ไม่ส่ง ไม่แชร์ภาพออกนอกเครื่อง
-- ไม่คัดลอกไฟล์ภาพไปยังที่อื่นนอกเวอร์ก์สเปซ
-- ถ้าภาพมี secrets ให้ censored ใน report
+- Never upload, transmit, or share images off the machine
+- Never copy image files elsewhere outside the workspace
+- If an image contains secrets, censor them in the report
 
 ### 4. Safety
 
-- ไม่ลบ ไม่ย้าย ไม่แก้ไขไฟล์ต้นฉบับ
-- ถ้าไฟล์เยอะเกิน 20 ให้ confirm ก่อน
+- Never delete, move, or modify the original files
+- If there are more than 20 files, confirm first
 
-- ใช้ /capture ถ้าจำเป็น
-- ใช้ /analyze-codebase-quality ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ `/check-downloads-dir` ถ้าจำเป็น
-- ใช้ `/read-from-downloads` ถ้าจำเป็น
+- Use /capture if needed
+- Use /analyze-codebase-quality if needed
+- Use /report if needed
+- Use /run-dev if needed
+- Use `/check-downloads-dir` if needed
+- Use `/read-from-downloads` if needed
 
 ## Expected Outcome
 
-- กลุ่มภาพ capture ล่าสุดถูกเลือกตามช่วงเวลา
-- ภาพทุกใบในกลุ่มถูก analyze หรือรายงานสาเหตุทีไม่ analyze
-- ได้ summary ของบริบท/เหตุการณ์ทีเกิดขึ้น
-- ได้ตารางรายละเอียดแต่ละภาพ
-- ได้ `/suggest-next-action` ถ้ามี
+- The latest capture group is selected by time window
+- Every image in the group is analyzed, or the reason for skipping is reported
+- A summary of the context/events that occurred
+- A detail table for each image
+- `/suggest-next-action` if applicable

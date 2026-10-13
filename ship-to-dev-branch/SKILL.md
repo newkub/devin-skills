@@ -1,6 +1,6 @@
 ---
 name: ship-to-dev-branch
-description: Ship work ลง dev branch — /ship-verify gate แล้ว /git-commit-and-push เข้า dev
+description: Ship work into the dev branch — /ship-verify gate then /git-commit-and-push into dev
 argument-hint: "[@issue-number-or-title|dont-ask-me]"
 triggers:
   - user
@@ -17,38 +17,38 @@ related:
 
 ## Goal
 
-Ship งานลง `dev` branch ในสองขั้น — `/ship-verify` เป็น gate ก่อนเสมอ แล้ว `/git-commit-and-push` เข้า `dev`
+Ship work into the `dev` branch in two steps — `/ship-verify` always as the gate first, then `/git-commit-and-push` into `dev`
 
 ## Scope
 
-- **Target = `dev` branch เท่านั้น** — merge เข้า `main` ทำผ่าน `/ship-to-main-branch`; release ทำผ่าน `/ship-release`
-- Verify workflow ทั้งหมดอยู่ใน `/ship-verify` (canonical) — skill นี้ไม่ duplicate
-- argument `dont-ask-me` หรือ session ที่ `/dont-ask-me` active → ส่งต่อ mode เดิมให้ทุก step
+- **Target = `dev` branch only** — merging into `main` goes through `/ship-to-main-branch`; releasing goes through `/ship-release`
+- All verify workflow lives in `/ship-verify` (canonical) — this skill does not duplicate it
+- `dont-ask-me` argument or a session with `/dont-ask-me` active → pass the same mode through to every step
 
 ## Execute
 
 ### 1. Ship Verify
 
-> Goal: งานผ่าน verification gate ครบก่อน push
+> Goal: work passes the full verification gate before push
 
-1. ทำ `/ship-verify` พร้อม arguments เดิมทั้งหมด — verify ทุก gate (AGENTS.md, review, validate, tests, dev run, usage)
-2. ถ้า `/ship-verify` ไม่ผ่าน → แก้ blockers แล้ว verify ใหม่ — ห้ามข้ามไป push
+1. Run `/ship-verify` with all the original arguments — verify every gate (AGENTS.md, review, validate, tests, dev run, usage)
+2. If `/ship-verify` fails → fix the blockers and verify again — never skip ahead to push
 
 ### 2. Ship To Dev
 
-> Goal: changes อยู่บน `origin/dev`
+> Goal: changes on `origin/dev`
 
-1. ตรวจ/switch ไป `dev` branch ตาม `/git-branch` (สร้างจาก `main` ถ้ายังไม่มี)
-2. ทำ `/git-commit-and-push` — commit changes + push เข้า `origin/dev` + resolve CI/CD จนผ่าน
-3. เสร็จแล้วแนะนำ `/ship-to-main-branch` เป็น next action (merge เข้า main) หรือ `/ship-release` ถ้าต้อง release
+1. Check/switch to the `dev` branch per `/git-branch` (create it from `main` if missing)
+2. Run `/git-commit-and-push` — commit changes + push into `origin/dev` + resolve CI/CD until green
+3. When done, suggest `/ship-to-main-branch` as the next action (merge into main), or `/ship-release` if a release is needed
 
 ## Rules
 
-- ห้าม duplicate verify workflow ที่นี่ — canonical อยู่ใน `/ship-verify` เท่านั้น
-- push เข้า `dev` เท่านั้น — ห้าม merge/push เข้า `main` (`/ship-to-main-branch` ทำ), ห้าม release (`/ship-release` ทำ)
-- ถ้า `/ship-verify` fail → ห้าม push — แก้จนผ่านหรือ stop + report
+- Never duplicate the verify workflow here — the canonical version lives only in `/ship-verify`
+- Push into `dev` only — never merge/push into `main` (`/ship-to-main-branch` does that), never release (`/ship-release` does that)
+- If `/ship-verify` fails → never push — fix until it passes, or stop + report
 
 ## Expected Outcome
 
-- `/ship-verify` ผ่านครบทุก gate
-- code push ขึ้น `origin/dev` สำเร็จและ CI/CD เขียว — merge เข้า `main` ทำต่อผ่าน `/ship-to-main-branch`
+- `/ship-verify` passes every gate
+- Code pushed successfully to `origin/dev` with green CI/CD — merging into `main` continues via `/ship-to-main-branch`

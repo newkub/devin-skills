@@ -1,49 +1,49 @@
-# project-files-updater — อัปเดต project files ตาม domain ที่ได้รับมอบ
+# project-files-updater — Update project files for the assigned domain
 
 ## Role
 
-Subagent ที่รับผิดชอบ update domain เดียวของ root project — config sync, docs update, ast-grep rules, specs, examples, gitignore หรือ vscode — ใช้เมื่อ Step 3 ของ `/update-project` มีหลาย domains ที่ independent กัน
+Subagent responsible for one update domain of the root project — config sync, docs update, ast-grep rules, specs, examples, gitignore, or vscode — used when Step 3 of `/update-project` has several independent domains
 
 ## Inputs
 
-- `domain`: domain ที่รับผิดชอบ — `config`, `docs`, `rules`, `specs`, `examples`, `gitignore`, `vscode`, `todo`, `contributing`
-- `changed-info` (optional): summary ของ changed files จาก Step 1-2 เพื่อ prioritize
-- `root-path` (optional): path ของ root project (default cwd)
+- `domain`: the domain handled — `config`, `docs`, `rules`, `specs`, `examples`, `gitignore`, `vscode`, `todo`, `contributing`
+- `changed-info` (optional): summary of changed files from Steps 1-2 to prioritize
+- `root-path` (optional): path of the root project (default cwd)
 
 ## Tools
 
-- `read`, `grep`, `find_file_by_name` — หา files ใน domain
-- `exec` — รัน update commands ตาม domain
-- `edit` — แก้ไฟล์ใน domain เท่านั้น
+- `read`, `grep`, `find_file_by_name` — find files in the domain
+- `exec` — run update commands per domain
+- `edit` — edit files within the domain only
 
 ## Execute
 
-1. ระบุ files ที่เกี่ยวกับ `domain`:
+1. Identify the files related to the `domain`:
    - `config` → `package.json`, `tsconfig.json`, `biome.jsonc`, `mise.toml`, `.moon/`
    - `docs` → `docs/`, `README.md`, `USAGE.md`, `FEATURES.md`, `CHANGELOG.md`
    - `rules` → `rules/`, `sgconfig.yml`
    - `specs` → `<workspace>/specs/`
-   - `examples` → `examples/` หรือ public API examples
-   - `gitignore` → `.gitignore` root + workspace
+   - `examples` → `examples/` or public API examples
+   - `gitignore` → `.gitignore` at root + workspaces
    - `vscode` → `.vscode/`
    - `todo` → `TODO.md`
    - `contributing` → `CONTRIBUTING.md`
-2. รัน update-* skill ที่ตรง domain (`/update-config`, `/update-docs`, `/update-astgrep-rules`, `/update-specs`, `/update-examples`, `/update-gitignore`, `/update-dot-vscode`, `/update-todo-md`, `/update-contributing`)
-3. ใช้ `changed-info` เพื่อข้ามไฟล์ที่ไม่ drift — ไม่เขียนใหม่ถ้าไม่เปลี่ยน
-4. ห้ามแตะไฟล์นอก `domain` — domain อื่นเป็นหน้าที่ของ subagent คู่ขนาน
+2. Run the update-* skill matching the domain (`/update-config`, `/update-docs`, `/update-astgrep-rules`, `/update-specs`, `/update-examples`, `/update-gitignore`, `/update-dot-vscode`, `/update-todo-md`, `/update-contributing`)
+3. Use `changed-info` to skip files that haven't drifted — don't rewrite a file that hasn't changed
+4. Never touch files outside the `domain` — other domains belong to the parallel subagents
 
 ## Report
 
-ส่งกลับ structured summary:
+Return a structured summary:
 
-- `domain` ที่ทำ
-- files ที่อัปเดต (path + เหตุผล)
-- skills ที่เรียกใช้และผลลัพธ์
-- blockers หรือ cross-domain conflicts
+- the `domain` handled
+- files updated (path + reason)
+- skills invoked and their results
+- blockers or cross-domain conflicts
 
 ## Rules
 
-- ทำงานเฉพาะใน `domain` ที่รับมา — ห้ามแก้ domain อื่น
-- ไม่ commit — parent เป็นคน commit ตาม `/update-project` rules
-- deterministic: input เดิมต้องได้ update set เดิม
-- ถ้า domain ไม่มีไฟล์หรือไม่จำเป็น → report `skipped` พร้อมเหตุผล
+- Work only inside the given `domain` — never modify other domains
+- No commit — the parent commits per the `/update-project` rules
+- Deterministic: the same input must produce the same update set
+- If the domain has no files or isn't needed → report `skipped` with a reason

@@ -1,6 +1,6 @@
 ---
 name: follow-create-tsdown-plugin
-description: สร้าง tsdown plugins ด้วย Rolldown API และ tsdown-specific hooks
+description: Build tsdown plugins with the Rolldown API and tsdown-specific hooks
 argument-hint: "[scope]"
 related:
   - follow-tool-tsdown
@@ -12,42 +12,42 @@ related:
 ---
 ## Goal
 
-สร้าง tsdown plugins ด้วย Rolldown-compatible plugin API พร้อม tsdown-specific lifecycle hooks
+Build tsdown plugins with a Rolldown-compatible plugin API plus tsdown-specific lifecycle hooks
 
 ## Scope
 
-ใช้สำหรับสร้าง plugins สำหรับ `tsdown` bundler ด้วย TypeScript ครอบคลุม plugin object, hooks, build, tests, และ npm package
+Use for building plugins for the `tsdown` bundler in TypeScript, covering plugin objects, hooks, build, tests, and the npm package
 
-- Package: `tsdown` (0.x — API เปลี่ยนได้) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); `TsdownPlugin` จาก `tsdown/plugins` + hooks `tsdownConfig`/`tsdownConfigResolved` บน Rolldown plugin API
+- Package: `tsdown` (0.x — API may change) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); `TsdownPlugin` from `tsdown/plugins` + the `tsdownConfig`/`tsdownConfigResolved` hooks on the Rolldown plugin API
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Review the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create tsdown plugins)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create tsdown plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create tsdown plugins)
+3. Record the rationale for the chosen stack and libraries for future reference (create tsdown plugins)
 
 ### 2. Setup Project
 
-> Goal: สร้าง plugin package
+> Goal: Create the plugin package
 
-1. สร้าง directory `packages/{plugin-name}/`
-2. สร้าง `package.json` ด้วย name `tsdown-plugin-{name}` หรือ `unplugin-{name}`
-3. ติดตั้ง `tsdown`, `rolldown`, `typescript`, `@types/bun`
-4. ติดตั้ง build tool: `bunup` หรือ `tsdown`
-5. สร้าง `tsconfig.json` ด้วย `strict: true`, `declaration: true`
+1. Create the `packages/{plugin-name}/` directory
+2. Create `package.json` with the name `tsdown-plugin-{name}` or `unplugin-{name}`
+3. Install `tsdown`, `rolldown`, `typescript`, `@types/bun`
+4. Install a build tool: `bunup` or `tsdown`
+5. Create `tsconfig.json` with `strict: true`, `declaration: true`
 
 ### 3. Create Plugin Object
 
-> Goal: implement plugin factory
+> Goal: Implement the plugin factory
 
-1. สร้าง `src/index.ts` ด้วย factory function
-2. Import type `TsdownPlugin` จาก `tsdown/plugins` ถ้าใช้ tsdown hooks
-3. หรือใช้ type `Plugin` จาก `rolldown` สำหรับ pure Rolldown plugin
-4. return object ด้วย `name` ที required:
+1. Create `src/index.ts` with a factory function
+2. Import the `TsdownPlugin` type from `tsdown/plugins` if using tsdown hooks
+3. Or use the `Plugin` type from `rolldown` for a pure Rolldown plugin
+4. Return an object with the required `name`:
    ```ts
    import type { TsdownPlugin } from "tsdown/plugins";
    export function myPlugin(options?: MyOptions): TsdownPlugin {
@@ -60,15 +60,15 @@ related:
 
 ### 4. Add Rolldown Hooks
 
-> Goal: ใช้ Rolldown plugin API
+> Goal: Use the Rolldown plugin API
 
-1. `options` — แก้ input options
-2. `buildStart` — เริ่ม build
-3. `resolveId` — resolve import
-4. `load` — โหลด module
-5. `transform` — แปลง code
+1. `options` — modify input options
+2. `buildStart` — start the build
+3. `resolveId` — resolve imports
+4. `load` — load a module
+5. `transform` — transform code
 6. `buildEnd` / `closeBundle` — cleanup
-7. ใช้ hook filters สำหรับ `resolveId`, `load`, `transform`:
+7. Use hook filters for `resolveId`, `load`, `transform`:
    ```ts
    transform: {
      filter: { id: /\.ts$/ },
@@ -78,94 +78,94 @@ related:
 
 ### 5. Add tsdown-Specific Hooks
 
-> Goal: ใช้ tsdown-specific lifecycle
+> Goal: Use the tsdown-specific lifecycle
 
-1. `tsdownConfig(config, inlineConfig)` — แก้ `UserConfig` ก่อน resolved (`inlineConfig` = CLI flags จาก `build()`)
-2. `tsdownConfigResolved` — หลัง resolved config (call ต่อ output format, read-only)
-3. ใช้ mutation สำหรับ `config.plugins` ใน `tsdownConfig` — merge แทนที่ array ไม่ concat
-4. ระวังว่า `fromVite` plugins ไม่ได้รับ `tsdownConfig` (แต่ได้รับ `tsdownConfigResolved`)
-5. ใช้ config-level `hooks` (`build:prepare`, `build:before`, `build:done` — hookable-based) สำหรับ lifecycle tasks ที่ไม่ต้องการ plugin เต็มรูปแบบ
+1. `tsdownConfig(config, inlineConfig)` — modify `UserConfig` before it is resolved (`inlineConfig` = CLI flags from `build()`)
+2. `tsdownConfigResolved` — after the config is resolved (called per output format, read-only)
+3. Use mutation on `config.plugins` in `tsdownConfig` — merge instead of replacing the array; don't concat
+4. Note that `fromVite` plugins don't receive `tsdownConfig` (but they do receive `tsdownConfigResolved`)
+5. Use config-level `hooks` (`build:prepare`, `build:before`, `build:done` — hookable-based) for lifecycle tasks that don't need a full plugin
 
 ### 6. Build Package
 
-> Goal: build plugin สำหรับ npm
+> Goal: Build the plugin for npm
 
-1. สร้าง `bunup.config.ts` หรือ `tsdown.config.ts`
-2. External `tsdown` และ `rolldown` จาก bundle
-3. Output `esm` และ `cjs` พร้อม `.d.ts`
-4. ระบุ `exports`, `types`, `main` ใน `package.json`
-5. รัน `bun run build`
+1. Create `bunup.config.ts` or `tsdown.config.ts`
+2. Externalize `tsdown` and `rolldown` from the bundle
+3. Output `esm` and `cjs` with `.d.ts`
+4. Specify `exports`, `types`, `main` in `package.json`
+5. Run `bun run build`
 
 ### 7. Add Tests
 
-> Goal: ทดสอบ plugin
+> Goal: Test the plugin
 
-1. สร้าง `test/plugin.test.ts`
-2. ใช้ `tsdown.build(...)` หรือ `rolldown.build(...)` ด้วย plugin
-3. ตรวจสอบ bundle output
-4. รัน `bun test`
+1. Create `test/plugin.test.ts`
+2. Use `tsdown.build(...)` or `rolldown.build(...)` with the plugin
+3. Check the bundle output
+4. Run `bun test`
 
 ### 8. Add Examples
 
-> Goal: สร้างตัวอย่างใช้งาน
+> Goal: Create usage examples
 
-1. สร้าง `examples/basic/` ด้วย plugin พื้นฐาน
-2. สร้าง `examples/tsdown-config/` แสดงการใช้ `tsdownConfig` hook
-3. รันตัวอย่างให้ผ่าน
+1. Create `examples/basic/` with a basic plugin
+2. Create `examples/tsdown-config/` showing the `tsdownConfig` hook in use
+3. Run the examples until they pass
 
 ### 9. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Naming
 
-- ใช้ `tsdown-plugin-{name}` สำหรับ tsdown-specific
-- ใช้ `unplugin-{name}` ถ้ารองรับหลาย bundlers
-- ชื่อ plugin ใน `name` field ต้อง unique ใน build
+- Use `tsdown-plugin-{name}` for tsdown-specific plugins
+- Use `unplugin-{name}` if supporting multiple bundlers
+- The plugin name in the `name` field must be unique within a build
 
 ### 2. Plugin Type
 
-- ใช้ `TsdownPlugin` จาก `tsdown/plugins` ถ้าต้องการ tsdown hooks
-- ใช้ `Plugin` จาก `rolldown` ถ้าไม่ต้องการ tsdown hooks
-- รักษา compatibility กับ Rollup plugins เมื่องเป็นไปได้
+- Use `TsdownPlugin` from `tsdown/plugins` if you need tsdown hooks
+- Use `Plugin` from `rolldown` if you don't need tsdown hooks
+- Keep compatibility with Rollup plugins where possible
 
 ### 3. Hook Filters
 
-- ใช้ `filter` ใน `resolveId`, `load`, `transform` เพื่อลด overhead
-- คืน `null` เร็วถ้าไม่ match
-- ระบุ regex ให้ชัดเจน เช่น `/\.ts$/` สำหรับ TypeScript files
+- Use `filter` in `resolveId`, `load`, `transform` to reduce overhead
+- Return `null` quickly when there is no match
+- Use precise regexes such as `/\.ts$/` for TypeScript files
 
 ### 4. tsdown Hooks
 
-- `tsdownConfig` สามารถ mutate `config.plugins` in place
-- หลีกเลี่ยงการ return partial config ถ้า plugins จำเป็นต้อง append
-- `tsdownConfigResolved` ใช้สำหรับ stash resolved config
+- `tsdownConfig` can mutate `config.plugins` in place
+- Avoid returning a partial config if plugins need to append
+- Use `tsdownConfigResolved` to stash the resolved config
 
 ### 5. Build And External
 
-- external `tsdown`, `rolldown`, `vite` ใน build
-- สร้าง `.d.ts` ด้วย `bunup` หรือ `tsdown`
-- ใช้ `exports` field ใน `package.json`
+- Externalize `tsdown`, `rolldown`, `vite` in the build
+- Generate `.d.ts` with `bunup` or `tsdown`
+- Use the `exports` field in `package.json`
 
 ### 6. Migration
 
-- ใช้ `bunx tsdown-migrate` สำหรับ migrate จาก `tsup`
-- ตรวจสอบ output หลัง migrate
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use `bunx tsdown-migrate` to migrate from `tsup`
+- Check the output after migrating
+- Use /follow-create-plugins when needed
 
 
 ## Expected Outcome
 
-- tsdown plugin build ผ่าน
-- Plugin ทำงานกับ `tsdown.build` ได้
-- Hook filters ลด overhead ระหว่าง Rust และ JS
-- Tests และ examples ผ่าน
-- `.d.ts` สร้างครบถ้วน
+- tsdown plugin builds successfully
+- Plugin works with `tsdown.build`
+- Hook filters reduce overhead between Rust and JS
+- Tests and examples pass
+- `.d.ts` files are generated completely
 
 ## Examples
 

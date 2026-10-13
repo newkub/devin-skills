@@ -1,6 +1,6 @@
 ---
 name: use-astgrep-migration
-description: Migration ทั้ง codebase ด้วย ast-grep rule files — staged batches, validate ต่อ batch, revert ได้
+description: Whole-codebase migration with ast-grep rule files — staged batches, per-batch validation, revertible
 argument-hint: "[migration-target]"
 related:
   - use-astgrep
@@ -13,63 +13,63 @@ related:
 
 ## Goal
 
-รัน codebase migration (API rename, framework upgrade, deprecation cleanup, import migration) ด้วย ast-grep rules แบบ staged — ทีละ batch, validate ทุก batch, revert ได้ตลอด
+Run a codebase migration (API rename, framework upgrade, deprecation cleanup, import migration) with ast-grep rules in a staged way — batch by batch, validating every batch, revertible throughout
 
 ## Scope
 
-- Orchestration layer สำหรับ migration ที่มีหลาย rules/หลาย batches — mechanics ของ rule writing + apply อยู่ใน `/migration-with-astgrep` (canonical), transform syntax ลึก → `/use-astgrep transform`, batch rewrite เดี่ยวๆ → `/use-astgrep rewrite`
+- Orchestration layer for migrations with many rules/many batches — the mechanics of rule writing + apply live in `/migration-with-astgrep` (canonical), deep transform syntax → `/use-astgrep transform`, a single standalone batch rewrite → `/use-astgrep rewrite`
 
 ## Execute
 
 ### 1. Scope Migration
 
-> Goal: รู้ว่าต้อง migrate อะไร กี่ patterns กี่ไฟล์
+> Goal: know what to migrate, how many patterns, how many files
 
-1. ทำ `/scan-codebase` หา patterns เก่า + ตรวจ `package.json` versions/breaking changes
-2. แตก migration เป็น list ของ patterns — แต่ละ pattern = 1 rule file
-3. ประมาณขนาด: matches/files ต่อ pattern ด้วย `ast-grep run -p '<pattern>'` (search only)
+1. Run `/scan-codebase` to find old patterns + check `package.json` versions/breaking changes
+2. Break the migration into a list of patterns — each pattern = 1 rule file
+3. Estimate size: matches/files per pattern with `ast-grep run -p '<pattern>'` (search only)
 
 ### 2. Write Migration Rules
 
-> Goal: มี rule ต่อ pattern พร้อม apply
+> Goal: have a rule per pattern, ready to apply
 
-1. เขียน rules ตาม `/migration-with-astgrep` (`id`, `language`, `rule`, `fix`) — transforms ซับซ้อน → `/use-astgrep transform`
-2. เก็บใน `sg-rules/` หรือ temp — promote เข้า `rules/` เฉพาะ rule ที่ควรอยู่ถาวรผ่าน `/update-astgrep-rules`
-3. Dry-run แต่ละ rule: `sg scan --rule <file>` — count matches, ตรวจ false positives
+1. Write rules per `/migration-with-astgrep` (`id`, `language`, `rule`, `fix`) — complex transforms → `/use-astgrep transform`
+2. Store them in `sg-rules/` or temp — promote only the rules that belong permanently into `rules/` via `/update-astgrep-rules`
+3. Dry-run each rule: `sg scan --rule <file>` — count matches, check for false positives
 
 ### 3. Stage Batches
 
-> Goal: apply เป็นล็อตเล็กที่ revert ได้
+> Goal: apply in small revertible batches
 
-1. Commit/stash ก่อนเริ่ม — migration ห้ามเริ่มบน dirty tree โดยไม่เตือน
-2. เรียง batches: pattern ที่ปลอดภัยสุด/impact น้อยสุดก่อน → ซับซ้อน/เสี่ยงสุดท้าย
-3. ต่อ batch: `sg scan --rule <file> --fix-all` หลัง confirm → validate ทันทีก่อน batch ถัดไป
-4. Batch เดียวกันอาจแยกตาม directory ถ้า matches เยอะ (`sg scan --rule <file> <subdir>`)
+1. Commit/stash before starting — never begin a migration on a dirty tree without warning
+2. Order the batches: safest / least-impact patterns first → complex / risky ones last
+3. Per batch: `sg scan --rule <file> --fix-all` after confirming → validate immediately before the next batch
+4. A single batch may be split by directory if there are many matches (`sg scan --rule <file> <subdir>`)
 
 ### 4. Validate Per Batch
 
-> Goal: ทุก batch ผ่านก่อนขยับ
+> Goal: every batch passes before moving on
 
-1. `git diff --stat` + review diff ของ batch
-2. ทำ `/run-check` — typecheck + lint ต้องผ่าน; run tests ที่เกี่ยวข้อง
-3. Fail → `git restore` เฉพาะไฟล์ที่พัง → ปรับ rule → dry-run ใหม่ (max 3 รอบต่อ batch แล้ว stop + report)
+1. `git diff --stat` + review the batch's diff
+2. Run `/run-check` — typecheck + lint must pass; run the relevant tests
+3. On failure → `git restore` only the broken files → adjust the rule → dry-run again (max 3 rounds per batch, then stop + report)
 
 ### 5. Report
 
-> Goal: audit trail ของ migration ทั้งหมด
+> Goal: an audit trail of the whole migration
 
-1. ทำ `/report` table: `No.`, `Rule`, `Batch`, `Files`, `Changes`, `Status`
-2. ระบุ leftovers ที่ตั้งใจ + rules ที่ควร promote/ลบ
+1. Build a `/report` table: `No.`, `Rule`, `Batch`, `Files`, `Changes`, `Status`
+2. Note intentional leftovers + rules that should be promoted/deleted
 
 ## Rules
 
-- Canonical mechanics อยู่ใน `/migration-with-astgrep` — workflow นี้เพิ่มเฉพาะ staging/orchestration ไม่ duplicate
-- Dry-run + commit ก่อนทุก batch — ไม่มี bulk apply ทั้ง codebase ในครั้งเดียว
-- ห้าม apply กับ generated files หรือ third-party code
-- ใช้ `/update-astgrep-rules` ถ้าจำเป็น
+- The canonical mechanics live in `/migration-with-astgrep` — this workflow only adds staging/orchestration, no duplication
+- Dry-run + commit before every batch — never bulk-apply the whole codebase in one shot
+- Never apply to generated files or third-party code
+- Use `/update-astgrep-rules` if needed
 
 ## Expected Outcome
 
-- Migration apply ครบทุก patterns เป็น batches ที่ review/revert ได้
-- Typecheck/lint/tests ผ่านหลังทุก batch
-- Report ชัดเจน: rules, files, changes, leftovers
+- The migration applies every pattern in reviewable/revertible batches
+- Typecheck/lint/tests pass after every batch
+- Clear report: rules, files, changes, leftovers

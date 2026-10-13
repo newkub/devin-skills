@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-wasm
-description: สร้าง website ด้วย Rust WASM + Solid frontend ผ่าน Vite plugin
+description: Build websites with Rust WASM + Solid frontend via a Vite plugin
 argument-hint: "[project-name]"
 allowed-tools:
   - exec
@@ -24,36 +24,36 @@ related:
 
 ## Goal
 
-สร้าง website project ที่ใช้ Rust คำนวณหนักใน browser ผ่าน WebAssembly และใช้ SolidJS บน Vite สำหรับ frontend
+Build a website project that runs heavy Rust computation in the browser via WebAssembly, with SolidJS on Vite for the frontend
 
 ## Scope
 
-ใช้เมื่องานต้องการ performance จาก Rust ใน browser โดยไม่เขียน backend เช่น image/audio processing, simulation, cryptography, graph layout หรือ computational geometry
+Use when a task needs Rust performance in the browser without writing a backend, e.g. image/audio processing, simulation, cryptography, graph layout, or computational geometry
 
-- Packages: `wasm-pack`, `wasm-bindgen`, `serde-wasm-bindgen`, `vite-plugin-wasm-pack` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); `--target web` flow + `crate-type = ["cdylib"]` ยังเป็น requirement
+- Packages: `wasm-pack`, `wasm-bindgen`, `serde-wasm-bindgen`, `vite-plugin-wasm-pack` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); the `--target web` flow + `crate-type = ["cdylib"]` is still a requirement
 
 ## Execute
 
 ### 1. Review Tech Stack And Verify Toolchain
 
-> Goal: ตรวจสอบ tech stack และยืนยันว่า Rust และ wasm-pack พร้อมใช้
+> Goal: Check the tech stack and confirm Rust and wasm-pack are ready
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `wasm-pack`/`wasm-bindgen` เวอร์ชันล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (web wasm)
-4. รัน `rustc --version` และ `cargo --version`
-5. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`
-6. รัน `bun --version` หรือ `node --version` สำหรับ frontend tooling
-7. ถ้ายังไม่มี `wasm32-unknown-unknown` target → รัน `rustup target add wasm32-unknown-unknown`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `wasm-pack`/`wasm-bindgen` versions, then run `/deep-review` to summarize the tech stack
+2. Record the stack and library choices for future reference (web wasm)
+4. Run `rustc --version` and `cargo --version`
+5. Run `wasm-pack --version`; if missing → install with `cargo install wasm-pack`
+6. Run `bun --version` or `node --version` for frontend tooling
+7. If the `wasm32-unknown-unknown` target is missing → run `rustup target add wasm32-unknown-unknown`
 
 ### 2. Create Rust Crate
 
-> Goal: สร้าง Rust library สำหรับ compile เป็น WASM
+> Goal: Create a Rust library to compile to WASM
 
-1. รัน `cargo new --lib <project-name>-core`
-2. แก้ไข `Cargo.toml`:
+1. Run `cargo new --lib <project-name>-core`
+2. Edit `Cargo.toml`:
    - `crate-type = ["cdylib"]`
-   - เพิ่ม `wasm-bindgen` กับ `serde` ถ้าต้องการ pass ข้อมูลซับซ้อน
-3. สร้าง `src/lib.rs` ด้วยฟังก์ชัน public เช่น:
+   - Add `wasm-bindgen` and `serde` if you need to pass complex data
+3. Create `src/lib.rs` with public functions, e.g.:
    ```rust
    use wasm_bindgen::prelude::*;
 
@@ -66,25 +66,25 @@ related:
        }
    }
    ```
-4. รัน `cargo check` เพื่อตรวจ syntax
+4. Run `cargo check` to verify syntax
 
 ### 3. Build WASM Package
 
-> Goal: สร้าง `.wasm` และ JS bindings จาก Rust crate
+> Goal: Generate the `.wasm` and JS bindings from the Rust crate
 
-1. รัน `wasm-pack build <project-name>-core --target web --out-dir pkg`
-2. ตรวจสอบว่าเกิด `pkg/<project-name>_core.js`, `pkg/<project-name>_core_bg.wasm`, และ `package.json`
-3. ถ้ามี dependencies ของ `wasm-pack` ขาดหาย → รัน `wasm-pack build` อีกครั้งหลังแก้ `Cargo.toml`
+1. Run `wasm-pack build <project-name>-core --target web --out-dir pkg`
+2. Verify that `pkg/<project-name>_core.js`, `pkg/<project-name>_core_bg.wasm`, and `package.json` are generated
+3. If `wasm-pack` dependencies are missing → rerun `wasm-pack build` after fixing `Cargo.toml`
 
 ### 4. Setup Vite + Solid Frontend
 
-> Goal: สร้าง frontend project ด้วย Solid
+> Goal: Create the frontend project with Solid
 
-1. รัน `bun create vite@latest <project-name>-web --template solid-ts`
-2. เข้า `<project-name>-web` แล้วรัน `bun install`
-3. ติดตั้ง wasm-pack Vite plugin: `bun add -D vite-plugin-wasm-pack`
-4. สร้าง symlink หรือ copy `pkg/` จาก crate มาไว้ใน `web/pkg`
-5. แก้ไข `package.json` ให้มี script:
+1. Run `bun create vite@latest <project-name>-web --template solid-ts`
+2. Enter `<project-name>-web` and run `bun install`
+3. Install the wasm-pack Vite plugin: `bun add -D vite-plugin-wasm-pack`
+4. Create a symlink or copy the crate's `pkg/` into `web/pkg`
+5. Edit `package.json` to include the scripts:
    ```json
    "wasm": "wasm-pack build ../<project-name>-core --target web --out-dir pkg",
    "dev": "bun wasm && vite",
@@ -93,9 +93,9 @@ related:
 
 ### 5. Configure Vite
 
-> Goal: ตั้งค่า Vite ให้โหลด WASM package ได้
+> Goal: Configure Vite to load the WASM package
 
-1. แก้ไข `vite.config.ts`:
+1. Edit `vite.config.ts`:
    ```ts
    import { defineConfig } from 'vite';
    import solid from 'vite-plugin-solid';
@@ -108,14 +108,14 @@ related:
      ],
    });
    ```
-2. ถ้าใช้ `vite-plugin-wasm` แทน ให้เพิ่ม `topLevelAwait` plugin
-3. ตรวจ `tsconfig.json` ให้รองรับ `esnext` module
+2. If using `vite-plugin-wasm` instead, add the `topLevelAwait` plugin
+3. Check that `tsconfig.json` supports the `esnext` module
 
 ### 6. Call Rust From Solid
 
-> Goal: ใช้งาน WASM function ใน Solid components
+> Goal: Use WASM functions in Solid components
 
-1. ใน `src/App.tsx` import ฟังก์ชันจาก crate:
+1. In `src/App.tsx`, import functions from the crate:
    ```tsx
    import { createResource, Show } from 'solid-js';
    import * as wasm from '<project-name>-core';
@@ -131,89 +131,89 @@ related:
      );
    }
    ```
-2. ใช้ `createResource` เมื่อ loading WASM แบบ async
-3. ถ้า plugin ทำให้ import เป็น sync → ใช้ `createSignal` ธรรมดาได้
+2. Use `createResource` when loading WASM asynchronously
+3. If the plugin makes the import sync → a plain `createSignal` works
 
 ### 7. Add State And UX
 
-> Goal: สร้าง UI ครอบคลุมการใช้งาน Rust function
+> Goal: Build UI covering the Rust function's usage
 
-1. สร้าง `src/components/` สำหรับ input form, result display, error boundary
-2. ใช้ `createStore` ถ้ามี state ซับซ้อน
-3. ใช้ `<ErrorBoundary>` รองรับ WASM init errors
-4. ทำ `/follow-lib-solidjs` เพื่อตรวจ patterns ของ Solid
+1. Create `src/components/` for the input form, result display, and error boundary
+2. Use `createStore` if state is complex
+3. Use `<ErrorBoundary>` to handle WASM init errors
+4. Follow `/follow-lib-solidjs` to check Solid patterns
 
 ### 8. Test And Build
 
-> Goal: ยืนยันว่า project build ผ่านทั้ง Rust และ Vite
+> Goal: Confirm the project builds for both Rust and Vite
 
-1. รัน `cargo test` ใน crate directory
-2. รัน `bun run build` ใน web directory
-3. รัน `bun run dev` เพื่อตรวจ dev mode
-4. ทำ `/run-test` สำหรับ frontend ถ้ามี test suites
+1. Run `cargo test` in the crate directory
+2. Run `bun run build` in the web directory
+3. Run `bun run dev` to check dev mode
+4. Run `/run-test` for the frontend if test suites exist
 
 ### 9. Deploy And Ship
 
-> Goal: deploy website ไปยัง platform ที่เลือก และส่งมอบ project
+> Goal: Deploy the website to the chosen platform and deliver the project
 
-1. ถ้า Vercel → `bunx vercel --prod`
-2. ถ้า Cloudflare Pages → ทำ `/follow-service-cloudflare`
-3. ตรวจสอบว่า `.wasm` files ถูก serve ด้วย MIME type `application/wasm`
-4. ทดสอบ production URL กับ function หนัก
-5. ทำ `/ship-to-dev-branch`
-6. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. If Vercel → `bunx vercel --prod`
+2. If Cloudflare Pages → follow `/follow-service-cloudflare`
+3. Verify `.wasm` files are served with the MIME type `application/wasm`
+4. Test the production URL with a heavy function
+5. Run `/ship-to-dev-branch`
+6. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Rust Crate
 
-- ใช้ `wasm-bindgen` สำหรับ expose function ไปยัง JS
-- ใช้ `serde-wasm-bindgen` ถ้าต้องส่ง object/complex data
-- หลีกเลี่ยง `unwrap()` ใน library code
-- `Cargo.toml` ต้องมี `crate-type = ["cdylib"]`
-- ใช้ `wasm-pack --target web` สำหรับ browser ESM
+- Use `wasm-bindgen` to expose functions to JS
+- Use `serde-wasm-bindgen` if you need to pass objects/complex data
+- Avoid `unwrap()` in library code
+- `Cargo.toml` must have `crate-type = ["cdylib"]`
+- Use `wasm-pack --target web` for browser ESM
 
 ### 2. Vite Plugin
 
-- ใช้ `vite-plugin-wasm-pack` สำหรับ crate ที่ build ด้วย `wasm-pack`
-- ใช้ `vite-plugin-wasm` + `vite-plugin-top-level-await` ถ้า import `.wasm` โดยตรง
-- ไม่ commit `pkg/` หรือ `target/` ให้เพิ่มลง `.gitignore`
+- Use `vite-plugin-wasm-pack` for crates built with `wasm-pack`
+- Use `vite-plugin-wasm` + `vite-plugin-top-level-await` if importing `.wasm` directly
+- Don't commit `pkg/` or `target/` — add them to `.gitignore`
 
 ### 3. Solid Frontend
 
-- ใช้ `.tsx` สำหรับทุก components
-- ห้าม destructure props — ใช้ `mergeProps`/`splitProps`
-- ใช้ `createResource` สำหรับ async WASM initialization
-- ใช้ `createSignal` สำหรับ sync state
+- Use `.tsx` for all components
+- Never destructure props — use `mergeProps`/`splitProps`
+- Use `createResource` for async WASM initialization
+- Use `createSignal` for sync state
 
 ### 4. Performance
 
-- ย้าย computation หนักลง Rust WASM ไม่ใช่ main thread
-- ถ้ามี batch processing ให้พิจารณา Web Workers
-- ตรวจ `cargo build --release` ก่อน deploy
+- Move heavy computation to Rust WASM, not the main thread
+- Consider Web Workers for batch processing
+- Check `cargo build --release` before deploying
 
 ### 5. Safety
 
-- ไม่ expose pointer/memory ตรงๆ ให้ JS ถ้าไม่จำเป็น
-- ใช้ `#[wasm_bindgen]` types ที support โดย `wasm-bindgen`
-- ไม่ commit secrets หรือ API keys
+- Don't expose raw pointers/memory to JS unless necessary
+- Use `#[wasm_bindgen]` types supported by `wasm-bindgen`
+- Don't commit secrets or API keys
 
-- ใช้ /follow-create-rust-crate ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugin ถ้าจำเป็น (create website rust)
-- ใช้ /deploy-to-vercel ถ้าจำเป็น
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use /follow-create-rust-crate if needed
+- Use /follow-tool-vite if needed
+- Use /follow-tool-cargo if needed
+- Use /deep-review if needed
+- Use /follow-create-vite-plugin if needed (create website rust)
+- Use /deploy-to-vercel if needed
+- Use /deploy-to-cloudflare if needed
+- Use /run-dev if needed
+- Use /follow-create-plugins if needed
 
 
 ## Expected Outcome
 
-- Rust crate build ผ่าน `wasm-pack` และ produce `pkg/` ที่ใช้ใน browser ได้
-- Vite + Solid project รัน `bun run dev` ได้โดยไม่มี errors
-- Rust function ถูกเรียกจาก Solid component และแสดงผลบนหน้าเว็บ
-- Production build สำเร็จและพร้อม deploy
-- Project structure ถูกต้องตาม convention ของ Rust + Vite + Solid
+- The Rust crate builds via `wasm-pack` and produces a `pkg/` usable in the browser
+- The Vite + Solid project runs `bun run dev` without errors
+- Rust functions are called from a Solid component and render results on the page
+- The production build succeeds and is ready to deploy
+- The project structure follows Rust + Vite + Solid conventions
 

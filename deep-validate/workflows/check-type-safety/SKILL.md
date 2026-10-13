@@ -10,48 +10,48 @@ related:
 
 ## Goal
 
-ตรวจ type safety dimension ของ `/deep-validate` — type errors, `any`/`@ts-ignore` ที่ไม่จำเป็น และ type flow ตั้งแต่ schema ถึง UI
+Check the type safety dimension of `/deep-validate` — type errors, unnecessary `any`/`@ts-ignore`, and type flow from schema to UI
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `type-safety`/`types` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings — ไม่แก้ types
+- Used when `/deep-validate` dispatches to the `type-safety`/`types` dimension, or invoked standalone
+- Read-only: record findings — do not fix types
 
 ## Execute
 
 ### 1. Run Typecheck
 
-> Goal: type errors ทั้งหมดพร้อม location
+> Goal: all type errors with locations
 
-1. ทำ `/run-typecheck` เพื่อตรวจสอบ type errors
-2. บันทึก errors พร้อม file:line
+1. Run `/run-typecheck` to check type errors
+2. Record errors with file:line
 
 ### 2. Check Weak Types
 
-> Goal: หา type escapes ที่ลด safety
+> Goal: find type escapes that reduce safety
 
-1. ตรวจสอบไม่มี `any` ที่ไม่จำเป็น — ทำ `/deep-review` ถ้าต้องการ coverage metric
-2. ตรวจสอบไม่มี `@ts-ignore` หรือ `@ts-nocheck`
-3. ตรวจสอบ type inference ใช้ถูกต้อง
+1. Check there are no unnecessary `any` — run `/deep-review` for a coverage metric
+2. Check there are no `@ts-ignore` or `@ts-nocheck`
+3. Check type inference is used correctly
 
 ### 3. Check Type Flow
 
-> Goal: types ไหลต่อเนื่องตลอด stack
+> Goal: types flow continuously across the stack
 
-1. ตรวจสอบ type flow: schema → validation → API → UI
-2. flag จุดที่ types ขาดต่อ (manual re-declaration, unsafe casts)
+1. Check type flow: schema → validation → API → UI
+2. Flag points where the type chain breaks (manual re-declaration, unsafe casts)
 
 ### 4. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
 
 ## Rules
 
-- `any` ที่จำเป็น (เช่น untyped third-party boundary) ให้ annotate ไว้ ไม่ flag
-- severity: type error จริง = High+, weak types = Medium/Low
+- Necessary `any` (e.g. an untyped third-party boundary) should be annotated, not flagged
+- Severity: real type error = High+, weak types = Medium/Low
 
 ## Expected Outcome
 
-- Findings ของ type safety dimension พร้อม severity และ evidence
+- Findings of the type safety dimension with severity and evidence

@@ -1,6 +1,6 @@
 ---
 name: design-cli-prototype
-description: สร้าง CLI explorer prototype (SolidJS+Vite+UnoCSS) ใน temp — เปิดด้วย /open-web
+description: Create a CLI explorer prototype (SolidJS+Vite+UnoCSS) in temp, open via /open-web
 argument-hint: "[cli-name-or-spec]"
 related:
   - design-prototype-in-html
@@ -19,14 +19,14 @@ related:
 
 ## Goal
 
-สร้าง CLI documentation/explorer prototype จริงด้วย SolidJS + TypeScript + Vite + UnoCSS — typed `Command` schema เป็น single source of truth แยกเป็น Human Mode (explore visually) + Agent Mode (Markdown/Raw/Copy) — build ใน OS temp แล้วเปิดด้วย `/open-web`
+Build a real CLI documentation/explorer prototype with SolidJS + TypeScript + Vite + UnoCSS — a typed `Command` schema as the single source of truth, split into Human Mode (visual exploration) + Agent Mode (Markdown/Raw/Copy) — built in OS temp and opened with `/open-web`
 
 ## Scope
 
-ใช้เมื่อต้องการ prototype CLI docs site ที่อิง schema จริง — command syntax explorer, option builder, inspector, terminal preview, agent-consumable markdown
+Use when you need a schema-driven CLI docs site prototype — command syntax explorer, option builder, inspector, terminal preview, agent-consumable markdown
 
-- Prototype UI ทั่วไป single-file HTML → `/design-prototype-in-html`
-- Production CLI docs site ใน project จริง → `/follow-solid-framework` ไม่ใช่ skill นี้
+- General single-file HTML UI prototype → `/design-prototype-in-html`
+- Production CLI docs site in a real project → `/follow-solid-framework`, not this skill
 
 Full spec: [references/spec.md](references/spec.md)
 
@@ -34,62 +34,62 @@ Full spec: [references/spec.md](references/spec.md)
 
 ### 1. Gather CLI Spec
 
-> Goal: รู้ว่า CLI มีอะไรบ้าง
+> Goal: Know what the CLI offers
 
-1. รับ CLI name + commands จาก argument หรือ context; ไม่ระบุ → ใช้ default dataset ใน `references/spec.md` (`run`, `build`, `dev`, `deploy` + `plugins`, `presets`, `config`)
-2. มี CLI จริง → ดึง command surface ตาม `/learn-from-cli` แล้ว map เข้า `Command` type
-3. scope ไม่ชัด (จำนวน commands, sections, theme) → ทำ `/ask-me`
+1. Take the CLI name + commands from the argument or context; if unspecified → use the default dataset in `references/spec.md` (`run`, `build`, `dev`, `deploy` + `plugins`, `presets`, `config`)
+2. A real CLI exists → extract the command surface per `/learn-from-cli`, then map it into the `Command` type
+3. Scope unclear (command count, sections, theme) → run `/ask-me`
 
 ### 2. Scaffold Project
 
-> Goal: SolidJS app พร้อมใน temp
+> Goal: A ready SolidJS app in temp
 
-1. ทำ `/create-files-in-os-temp` — สร้าง `<temp>/cli-prototype-<name>/`
-2. Scaffold ตาม `/follow-solid-framework`: `bun create vite` (template `solid-ts`) → `bun add -d unocss` + config ตาม `/follow-lib-unocss`
-3. สร้าง `src/` tree ตาม component architecture ใน `references/spec.md` — `data/` (typed schema), `lib/` (builder/parser/markdown-generator/search), `components/`, `routes/`
+1. Run `/create-files-in-os-temp` — create `<temp>/cli-prototype-<name>/`
+2. Scaffold per `/follow-solid-framework`: `bun create vite` (template `solid-ts`) → `bun add -d unocss` + config per `/follow-lib-unocss`
+3. Create the `src/` tree following the component architecture in `references/spec.md` — `data/` (typed schema), `lib/` (builder/parser/markdown-generator/search), `components/`, `routes/`
 
 ### 3. Implement Dual Modes
 
-> Goal: human + agent experiences จาก schema เดียว
+> Goal: human + agent experiences from one schema
 
-1. `data/commands.ts` = typed `Command[]` (name, description, usage, arguments, options, examples, exitCodes, relatedCommands) — single source ทุก UI derive จากที่นี่
-2. Human Mode: `CommandSyntax` (tokenized, hover/click token → inspector), `CommandBuilder` (toggle options/args → live command string), `CommandInspector`, `ExampleTerminal`, `StickyCommandBar` — ใช้ `createSignal`/`createMemo`/`createStore` ตาม `/follow-lib-solidjs`
-3. Agent Mode: `AgentMarkdown` + `MarkdownToolbar` — generate markdown จาก schema ผ่าน `lib/markdown-generator.ts` programmatically (ห้าม hand-write) + Raw (JSON) + Copy
-4. `ModeSwitcher` สลับ `?mode=human|agent`; builder state serialize เข้า query params (`?preset=production&port=8080`) — shareable
-5. Routing: `/commands/<name>`, `/plugins`, `/plugins/<name>`, `/presets`, `/presets/<name>`, `/config` — parse `location.pathname` + query ด้วย `lib/` router เบาๆ หรือ `@solidjs/router`
+1. `data/commands.ts` = typed `Command[]` (name, description, usage, arguments, options, examples, exitCodes, relatedCommands) — the single source every UI derives from
+2. Human Mode: `CommandSyntax` (tokenized, hover/click token → inspector), `CommandBuilder` (toggle options/args → live command string), `CommandInspector`, `ExampleTerminal`, `StickyCommandBar` — use `createSignal`/`createMemo`/`createStore` per `/follow-lib-solidjs`
+3. Agent Mode: `AgentMarkdown` + `MarkdownToolbar` — generate markdown from the schema via `lib/markdown-generator.ts` programmatically (never hand-write) + Raw (JSON) + Copy
+4. `ModeSwitcher` toggles `?mode=human|agent`; builder state serializes into query params (`?preset=production&port=8080`) — shareable
+5. Routing: `/commands/<name>`, `/plugins`, `/plugins/<name>`, `/presets`, `/presets/<name>`, `/config` — parse `location.pathname` + query with a lightweight `lib/` router or `@solidjs/router`
 
 ### 4. Apply UX Quality Bar
 
-> Goal: ครบตาม spec — responsive, a11y, microinteractions, error states
+> Goal: meet the spec — responsive, a11y, microinteractions, error states
 
-1. Responsive: desktop `Sidebar | Docs | Inspector`, tablet `Sidebar | Docs`, mobile `Header + Command + Docs + BottomNav` — ทุก hover interaction ต้องมี click/tap equivalent
-2. Accessibility: semantic HTML, keyboard nav, focus states, ARIA, accessible dialogs/tooltips, reduced motion, contrast — focus ring ผ่าน UnoCSS shortcuts
-3. UnoCSS: reusable shortcuts (`surface`, `code-surface`, `command-token`, `option-token`, `muted-text`, `interactive`, `focus-ring` ฯลฯ) + variants (`hover:`, `focus:`, `disabled:`, `group-hover:`, `dark:`, `sm:`–`xl:`) — ห้ามกระจาย arbitrary styles
-4. Microinteractions + error states ตาม `references/spec.md` — fast, subtle, purposeful
+1. Responsive: desktop `Sidebar | Docs | Inspector`, tablet `Sidebar | Docs`, mobile `Header + Command + Docs + BottomNav` — every hover interaction must have a click/tap equivalent
+2. Accessibility: semantic HTML, keyboard nav, focus states, ARIA, accessible dialogs/tooltips, reduced motion, contrast — focus ring via UnoCSS shortcuts
+3. UnoCSS: reusable shortcuts (`surface`, `code-surface`, `command-token`, `option-token`, `muted-text`, `interactive`, `focus-ring`, etc.) + variants (`hover:`, `focus:`, `disabled:`, `group-hover:`, `dark:`, `sm:`–`xl:`) — never scatter arbitrary styles
+4. Microinteractions + error states per `references/spec.md` — fast, subtle, purposeful
 
 ### 5. Run And Open
 
-> Goal: user เห็น prototype ทำงานจริง
+> Goal: the user sees a working prototype
 
-1. `bun install` → `bun run dev` background ตาม `/follow-tool-vite` (หรือ `bun run build` + `bun run preview` เพื่อ SPA fallback ของ deep routes)
-2. ทำ `/check-open-ports` ถ้า port ชน → เปลี่ยน port
-3. ทำ `/open-web` เปิด URL — verify console ไม่มี error, ทุก route เข้าได้, `?mode=agent` render markdown ถูกต้อง
-4. ทำ `/report` สรุป temp path, URL, commands/routes ที่ครอบคลุม; user ขอแก้ → แก้ใน temp เดิมแล้ว refresh
+1. `bun install` → `bun run dev` in the background per `/follow-tool-vite` (or `bun run build` + `bun run preview` for SPA fallback on deep routes)
+2. Run `/check-open-ports`; if the port conflicts → change the port
+3. Run `/open-web` to open the URL — verify no console errors, every route is reachable, `?mode=agent` renders markdown correctly
+4. Run `/report` summarizing the temp path, URL, and covered commands/routes; if the user asks for changes → edit in the same temp folder and refresh
 
 ## Rules
 
-- Prototype เขียนลง OS temp เท่านั้น — ห้ามเขียนลง project (ยกเว้น user สั่ง)
-- Typed `Command` schema = single source of truth — Human/Agent mode derive จาก schema เดียวกัน ห้าม hardcode docs แยก
-- Markdown สำหรับ Agent Mode ต้อง generate programmatically เสมอ
-- ทุก hover interaction ต้องมี click/tap equivalent — ห้าม rely on hover เพียงอย่างเดียว
-- UnoCSS เป็น primary styling — reusable shortcuts กลาง ไม่ scatter arbitrary values
-- Animations ต้อง fast + subtle — ห้ามเสีย performance เพื่อ visual effects
-- ใช้ `/follow-solid-framework`, `/follow-lib-unocss`, `/follow-lib-solidjs` conventions เสมอ
-- ใช้ `/create-files-in-os-temp`, `/open-web`, `/check-open-ports` เสมอ; ใช้ `/ask-me` ถ้าจำเป็น
+- Prototypes are written to OS temp only — never write into the project (unless the user orders it)
+- The typed `Command` schema = single source of truth — Human/Agent modes derive from the same schema; never hardcode docs separately
+- Agent Mode markdown must always be generated programmatically
+- Every hover interaction must have a click/tap equivalent — never rely on hover alone
+- UnoCSS is the primary styling approach — shared reusable shortcuts, no scattered arbitrary values
+- Animations must be fast + subtle — never sacrifice performance for visual effects
+- Always follow the `/follow-solid-framework`, `/follow-lib-unocss`, `/follow-lib-solidjs` conventions
+- Always use `/create-files-in-os-temp`, `/open-web`, `/check-open-ports`; use `/ask-me` when needed
 
 ## Expected Outcome
 
-- CLI explorer prototype รันบน localhost เปิดใน browser — ทุก route/mode ใช้งานจริง
-- Human Mode: explore syntax, build command, inspect options, ดู examples ใน terminal ได้ครบ
-- Agent Mode: markdown/raw output deterministic จาก schema + copy ได้
-- ไม่มี prototype files ปนใน project source
+- The CLI explorer prototype runs on localhost and opens in the browser — every route/mode works
+- Human Mode: explore syntax, build commands, inspect options, and view examples in the terminal
+- Agent Mode: markdown/raw output deterministic from the schema + copyable
+- No prototype files mixed into the project source

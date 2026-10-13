@@ -1,6 +1,6 @@
 ---
 name: follow-create-docker-config-compose
-description: สร้าง docker-compose สำหรับ multi-service — networks, volumes, healthchecks, profiles
+description: Create docker-compose for multi-service — networks, volumes, healthchecks, profiles
 argument-hint: "[services]"
 related:
   - follow-create-docker
@@ -10,44 +10,44 @@ related:
 
 ## Goal
 
-สร้าง `docker-compose.yml` สำหรับ multi-service stack — networks, volumes, healthcheck dependencies และ env wiring ถูกต้อง
+Create a `docker-compose.yml` for a multi-service stack — with correct networks, volumes, healthcheck dependencies, and env wiring
 
 ## Scope
 
-- ครอบคลุม compose สำหรับ dev และ production profiles
-- Dockerfile ของแต่ละ service → `workflows/setup-dockerfile`
+- Covers compose for dev and production profiles
+- Each service's Dockerfile → `workflows/setup-dockerfile`
 
 ## Execute
 
 ### 1. Inventory Services
 
-> Goal: รู้ services ทั้งหมดและ dependencies
+> Goal: know all services and their dependencies
 
-1. list services จาก architecture — app, db, cache, queue, proxy
-2. ระบุ depends_on ด้วย `condition: service_healthy`
-3. แยก dev vs prod profiles (`profiles:`)
+1. List services from the architecture — app, db, cache, queue, proxy
+2. Define depends_on with `condition: service_healthy`
+3. Split dev vs prod profiles (`profiles:`)
 
 ### 2. Write Compose
 
-> Goal: compose file ครบและ reproducible
+> Goal: a complete and reproducible compose file
 
-1. networks แยก frontend/backend ตาม boundary
-2. named volumes สำหรับ stateful services
-3. env ผ่าน `env_file` หรือ `${VAR}` — ห้าม hardcode secrets
-4. healthcheck ทุก long-running service
+1. Split networks into frontend/backend per the boundary
+2. Named volumes for stateful services
+3. Env via `env_file` or `${VAR}` — never hardcode secrets
+4. Healthcheck every long-running service
 
 ### 3. Verify
 
-> Goal: stack ขึ้นครบ
+> Goal: the full stack comes up
 
-1. `docker compose config` validate ผ่าน
-2. `docker compose up -d` แล้วทุก service healthy
+1. `docker compose config` validation passes
+2. After `docker compose up -d`, every service is healthy
 
 ## Rules
 
-- secrets ต้องมาจาก env/`/follow-secret-manager` — ห้าม commit ค่าจริง
-- pin image versions — ห้าม `latest`
+- Secrets must come from env/`/follow-secret-manager` — never commit real values
+- Pin image versions — never `latest`
 
 ## Expected Outcome
 
-- `docker-compose.yml` + env example พร้อมใช้ dev/prod
+- `docker-compose.yml` + env example ready for dev/prod use

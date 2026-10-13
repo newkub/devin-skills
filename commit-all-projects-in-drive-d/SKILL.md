@@ -1,6 +1,6 @@
 ---
 name: commit-all-projects-in-drive-d
-description: commit uncommitted changes ทุก git project ใน drive D ผ่าน check-uncommit + git-commit ต่อ repo
+description: Commit uncommitted changes across all drive-D git repos via check-uncommit + git-commit per repo
 argument-hint: "[filter]"
 allowed-tools:
   - exec
@@ -21,101 +21,101 @@ related:
 
 ## Goal
 
-commit uncommitted changes ของทุก git project ใน `D:\` อย่างปลอดภัย — scan ด้วย `/check-uncommit` ก่อน แล้ว commit ต่อ repo ผ่าน `/git-commit` โดยไม่ทำลายงานที่ค้าง
+Safely commit uncommitted changes in every git project under `D:\` — scan with `/check-uncommit` first, then commit per repo via `/git-commit` without destroying pending work
 
 ## Scope
 
-ใช้เมื่อต้องการ commit งานค้างทุก repo ใน `D:\` ในครั้งเดียว รองรับ `filter` ตามชื่อ/keyword — ไม่รวม push (ใช้ `/push-all-projects-in-drive-d` ต่อ) และไม่แก้ไขไฟล์ใดๆ นอกเหนือการ commit
+Use when you want to commit pending work in every repo under `D:\` in one pass. Supports a `filter` by name/keyword — excludes push (continue with `/push-all-projects-in-drive-d`) and does not modify any files beyond committing
 
 ## Execute
 
 ### 1. List Target Projects
 
-> Goal: ระบุ project ที่จะ commit
+> Goal: Identify the projects to commit
 
-1. ถ้า user ระบุ `filter` → ทำ `/search-project-in-drive-d <filter>` เพื่อกรอง project
-2. ถ้าไม่ระบุ → ทำ `/list-projects-git-in-drive-d` เพื่อรายการทั้งหมด
-3. ตรวจสอบว่าได้รายการอย่างน้อย 1 project ถ้าไม่มี → stop และ report
+1. If the user provides a `filter` → run `/search-project-in-drive-d <filter>` to narrow the projects
+2. If not provided → run `/list-projects-git-in-drive-d` for the full list
+3. Verify the list has at least 1 project; if none → stop and report
 
 ### 2. Check Uncommit Per Project
 
-> Goal: เหลือเฉพาะ repos ที่มีงานค้าง
+> Goal: Keep only repos with pending work
 
-1. ทำ `/check-uncommit` กับทุก project ใน list — ใช้ `git -C <repo> status --porcelain`
-2. ข้าม repo ที่ clean — ไม่มี staged/modified/untracked
-3. Flag repos ที่มี `merge`/`rebase` in-progress, detached HEAD หรือ staged secrets-suspect files — แยกไว้ report ไม่ commit
-4. แสดงรายการ repos ที่จะ commit พร้อม file counts ต่อประเภท
+1. Run `/check-uncommit` on every project in the list — using `git -C <repo> status --porcelain`
+2. Skip clean repos — no staged/modified/untracked files
+3. Flag repos with an in-progress `merge`/`rebase`, a detached HEAD, or staged secret-suspect files — set them aside for the report and do not commit
+4. Show the list of repos to commit with file counts per type
 
 ### 3. Confirm Commit Plan
 
-> Goal: user เลือก scope และ message strategy ก่อนลงมือ
+> Goal: The user picks the scope and message strategy before work starts
 
-1. ถาม user ด้วย `/ask-me`:
-   - `all` — commit ทุก repo ที่ dirty (default)
-   - `select` — user เลือก repos ที่จะ commit
-   - `dry-run` — แสดง commit plan โดยไม่ commit
-2. ถาม message strategy: ให้ `/git-commit` สร้าง conventional message ต่อ repo (default) หรือใช้ message เดียวกันทุก repo
-3. ถ้า user ไม่ตอบ → stop และ report — ห้าม commit โดยไม่ confirm
+1. Ask the user with `/ask-me`:
+   - `all` — commit every dirty repo (default)
+   - `select` — the user selects which repos to commit
+   - `dry-run` — show the commit plan without committing
+2. Ask for the message strategy: let `/git-commit` generate a conventional message per repo (default) or use one shared message for all repos
+3. If the user does not answer → stop and report — never commit without confirmation
 
 ### 4. Commit Each Project
 
-> Goal: commit ครบทุก repo ที่เลือก
+> Goal: Commit every selected repo
 
-1. วนลูป sequential ตาม list — repo หนึ่งทีเพื่อให้ message ตรง context ของ repo นั้น
-2. ทำ `/git-commit` ต่อ repo — ให้ skill นั้นจัดการ staging, message และ hooks
-3. ถ้า repo มีไฟล์เสี่ยง (`.env`, credentials, large binaries) → ทำ `/check-secrets` ก่อน แล้ว skip + flag ถ้าพบ
-4. ถ้า pre-commit hook fail → บันทึก error แล้วข้าม repo นั้น — ห้ามใช้ `--no-verify` โดยไม่ได้รับอนุญาต
-5. ถ้ามากกว่า 5 repos ที่ independent → อาจใช้ `/use-subagents` แบ่งต่อ repo แล้วรวม reports
+1. Loop sequentially through the list — one repo at a time so each message matches that repo's context
+2. Run `/git-commit` per repo — let that skill handle staging, message, and hooks
+3. If a repo has risky files (`.env`, credentials, large binaries) → run `/check-secrets` first, then skip + flag if anything is found
+4. If a pre-commit hook fails → record the error and skip that repo — never use `--no-verify` without permission
+5. If more than 5 independent repos → optionally use `/use-subagents` to split per repo, then merge the reports
 
 ### 5. Verify
 
-> Goal: ยืนยันว่าไม่มีงานค้างเหลือ
+> Goal: Confirm no pending work is left
 
-1. รัน `/check-uncommit` ซ้ำกับ repos ที่ commit แล้ว
-2. repos ที่ยัง dirty → ระบุสาเหตุ (hook fail, skipped, secrets flag)
+1. Re-run `/check-uncommit` on the repos that were committed
+2. Repos still dirty → identify the cause (hook fail, skipped, secrets flag)
 
 ### 6. Report Summary
 
-> Goal: สรุปผลการ commit
+> Goal: Summarize the commit results
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Project`, `Path`, `Files`, `Commit`, `Status`
+1. Use `/report` with columns: `No.`, `Project`, `Path`, `Files`, `Commit`, `Status`
 2. Status: `committed`, `clean`, `skipped`, `error`, `flagged`
-3. ระบุ count แต่ละประเภท
-4. ทำ `/suggest-next-action` — แนะนำ `/push-all-projects-in-drive-d` ถ้ามี repos ที่ commit แล้วยังไม่ push
+3. Report the count of each status
+4. Run `/suggest-next-action` — recommend `/push-all-projects-in-drive-d` if any repos are committed but not yet pushed
 
 ## Rules
 
 ### 1. Drive D Scope Only
 
-- ทำงานเฉพาะ paths ที่ขึ้นต้นด้วย `D:\` หรือ `/mnt/d` (WSL)
-- ไม่แตะ drives อื่นโดยไม่ได้รับอนุญาต
-- ตรวจสอบ drive letter ก่อน execute ทุกครั้ง
+- Work only under paths starting with `D:\` or `/mnt/d` (WSL)
+- Do not touch other drives without permission
+- Verify the drive letter before every execution
 
 ### 2. Confirm Before Commit
 
-- ต้องผ่าน `/ask-me` confirmation ก่อน commit เสมอ — dry run แสดง plan ก่อน
-- ห้าม commit repo ที่ merge/rebase ค้าง, detached HEAD หรือมี secrets flag
-- ห้าม `--no-verify` เว้น user อนุญาตชัดเจน
+- Always pass `/ask-me` confirmation before committing — show the plan with a dry run first
+- Never commit repos with a pending merge/rebase, a detached HEAD, or a secrets flag
+- Never `--no-verify` unless the user explicitly allows it
 
 ### 3. Per-Repo Context
 
-- commit message ต้องมาจาก diff ของ repo นั้นจริง — ห้ามใช้ generic message เดียวกันทุก repo เว้น user สั่ง
-- ใช้ conventional commits ตาม style ของ repo นั้น (ดู `git log` ล่าสุด)
+- Commit messages must come from that repo's actual diff — never reuse one generic message for all repos unless the user says so
+- Use conventional commits following that repo's style (check the latest `git log`)
 
 ### 4. No Push
 
-- skill นี้ commit เท่านั้น — ไม่ push, ไม่ pull, ไม่ fetch
-- ถ้าต้องการ push ให้ใช้ `/push-all-projects-in-drive-d` ต่อ
+- This skill only commits — no push, no pull, no fetch
+- If a push is needed, continue with `/push-all-projects-in-drive-d`
 
 ### 5. Idempotency
 
-- รันซ้ำแล้วไม่สร้าง empty commits — repo ที่ clean ถูก skip เสมอ
+- Re-running never creates empty commits — clean repos are always skipped
 
-- ใช้ /check-unpush ถ้าจำเป็น
-- ใช้ /refactor-commit ถ้าจำเป็น
+- Use /check-unpush if needed
+- Use /refactor-commit if needed
 
 ## Expected Outcome
 
-- ทุก repo ที่ dirty ใน `D:\` ถูก commit ด้วย message ที่ตรง context (หรือ skip พร้อมเหตุผล)
-- ไม่มี secrets หรืองานค้างที่เสี่ยงถูก commit โดยไม่ตั้งใจ
-- รายงานสรุป status ทุก repo พร้อม pointer ไป `/push-all-projects-in-drive-d`
+- Every dirty repo under `D:\` is committed with a message matching its context (or skipped with a reason)
+- No secrets or risky pending work gets committed accidentally
+- A summary report of every repo's status with a pointer to `/push-all-projects-in-drive-d`

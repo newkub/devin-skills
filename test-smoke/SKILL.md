@@ -1,6 +1,6 @@
 ---
 name: test-smoke
-description: รัน smoke tests — sanity check เฉพาะ critical paths หลัง build/deploy ว่าระบบตอบสนอง (fast gate)
+description: Run smoke tests — post-build/deploy sanity check that critical paths respond (fast gate)
 argument-hint: "[scope|url]"
 related:
   - run-test
@@ -18,44 +18,44 @@ related:
 
 ## Goal
 
-รัน smoke tests — minimal critical-path checks หลัง build/deploy เพื่อยืนยันว่าระบบ alive และ core flows ตอบสนอง — signals: `smoke` scripts/tags, `*.smoke.*`, health endpoints, deploy hooks
+Run smoke tests — minimal critical-path checks after build/deploy to confirm the system is alive and core flows respond — signals: `smoke` scripts/tags, `*.smoke.*`, health endpoints, deploy hooks
 
 ## Scope
 
-ใช้เมื่อต้องรัน smoke/sanity tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test`)
+Use when smoke/sanity tests must be run — run-only, never edits tests (deep analysis → `/deep-test`)
 
 - Full functional coverage → `/test-unit` / `/test-e2e`; performance under load → `/test-load`
-- Smoke = quick gate ไม่ใช่ correctness suite — เลือกเฉพาะ critical paths (boot, health, auth, main flow)
+- Smoke = quick gate, not a correctness suite — select only critical paths (boot, health, auth, main flow)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: Always run `/deep-review` first — `test-*` skills must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect
 
-`test:smoke`/`smoke` ใน package.json scripts, `*.smoke.*` files, tagged tests (`@smoke`, `-t smoke`), health endpoint (`/health`, `/healthz`, `/api/health`); ถ้าไม่มี suite → ad-hoc smoke: app responds + health 200 + critical route/endpoint OK
+`test:smoke`/`smoke` in package.json scripts, `*.smoke.*` files, tagged tests (`@smoke`, `-t smoke`), health endpoint (`/health`, `/healthz`, `/api/health`); if no suite exists → ad-hoc smoke: app responds + health 200 + critical route/endpoint OK
 
 ### 2. Run
 
-runner tags → `--grep smoke` / `-t @smoke`; ad-hoc → `curl -sf <base>/health` + critical endpoints, หรือ `autocannon -c 1 -d 5` สำหรับ response check; target <2 นาที — ถ้านานกว่านั้นไม่ใช่ smoke; ถ้า app ยังไม่รัน → `/check-open-ports` หรือ `/run-dev`
+runner tags → `--grep smoke` / `-t @smoke`; ad-hoc → `curl -sf <base>/health` + critical endpoints, or `autocannon -c 1 -d 5` for a response check; target <2 minutes — anything longer is not smoke; if the app is not running yet → `/check-open-ports` or `/run-dev`
 
 ### 3. Classify
 
-app ไม่ขึ้น/port ชน → environment; health 5xx หรือ boot crash → source → `/resolve-errors`; smoke check outdated → test → `/update-tests`; ซ้ำ ≥3 → stop+report
+app won't start/port conflict → environment; health 5xx or boot crash → source → `/resolve-errors`; smoke check outdated → test → `/update-tests`; same failure repeating ≥3 → stop+report
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/smoke-test-<time>.md` — checklist แต่ละ check pass/fail + latency; ผ่านหมด → `/run-verify` หรือส่งต่อ deploy gate
+persist → `.devin/temp/report/<workspace>/smoke-test-<time>.md` — checklist with pass/fail + latency per check; all passed → `/run-verify` or hand off to the deploy gate
 
 ## Rules
 
-- run-only (analysis ลึก → `/deep-test`)
-- Smoke ต้องเร็วและเล็ก — critical paths เท่านั้น ห้ามรัน full suite ในนาม smoke
-- ห้ามยิง production โดยไม่มี explicit user approval — ระบุ target env ในรายงานเสมอ
-- ห้าม `.skip`/retry mask — fail = fail
+- run-only (deep analysis → `/deep-test`)
+- Smoke must be fast and small — critical paths only; never run a full suite under the name of smoke
+- Never hit production without explicit user approval — always state the target env in the report
+- Never mask with `.skip`/retries — fail = fail
 
 ## Expected Outcome
 
-- Smoke checklist ผ่าน/ไม่ผ่านชัดเจนแบบ fast gate
-- Failures ถูก classify เป็น source/test/environment
-- Report persist ใน `.devin/temp/report/`
+- Smoke checklist pass/fail clearly reported as a fast gate
+- Failures classified as source/test/environment
+- Report persisted in `.devin/temp/report/`

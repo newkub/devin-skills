@@ -1,6 +1,6 @@
 ---
 name: save-to-new-notes
-description: สร้าง note ใหม่ใน repo D:\newkub\notes จากไฟล์หรือข้อความท่ีระบุ
+description: Create a new note in the repo D:\newkub\notes from a given file or text
 argument-hint: "[scope]"
 related:
   - list-newkub-notes
@@ -9,63 +9,63 @@ related:
 
 ## Goal
 
-สร้าง note ใหม่ใน `D:\newkub\notes` จากไฟล์หรือข้อความ
+Create a new note in `D:\newkub\notes` from a file or text
 
 ## Scope
 
-- รับ input จาก argument (file path หรือ content)
-- รองรับทั้งไฟล์และ content
-- commit และ push อัตโนมัติ
+- Takes input from the argument (file path or content)
+- Supports both files and content
+- Commits and pushes automatically
 
 ## Execute
 
 ### 1. Prepare Note Content
 
-> Goal: มีเนื้อหาท่ีจะบันทึกลง repo
+> Goal: Have the content to be saved into the repo
 
-1. รับ input จาก argument
-2. ถ้า input เป้น file path ให้อ่านเนื้อหา
-3. ถ้าไม่มี่ input ให้ถาม user
-4. รับ `--name` หรือ `--title` จาก argument หรือถาม user
-5. กำหนด filename `<title>.md` ใน `D:\newkub\notes`
+1. Take input from the argument
+2. If the input is a file path, read the content
+3. If there is no input, ask the user
+4. Take `--name` or `--title` from the argument, or ask the user
+5. Set the filename `<title>.md` in `D:\newkub\notes`
 
 ### 2. Create Note
 
-> Goal: note ถูกสร้างใน repo
+> Goal: The note is created in the repo
 
-1. เขียนเนื้อหาลง `D:\newkub\notes\<title>.md`
+1. Write the content to `D:\newkub\notes\<title>.md`
 2. `git add . && git commit -m "add: <title> note" && git push`
 
 ### 3. Open And Report
 
-> Goal: แสดงผล note URL
+> Goal: Show the note URL
 
-1. เปิด `https://github.com/newkub/notes/blob/main/<title>.md`
-2. รายงาน URL และ path
+1. Open `https://github.com/newkub/notes/blob/main/<title>.md`
+2. Report the URL and path
 
 ## Rules
 
 ### 1. Input Handling
 
-- ถ้า argument ตรงกับ file path ท่ีมีอยู่ ให้อ่านไฟล์
-- ถ้าไม่ตรง file path ให้ถือเป้นข้อความ
+- If the argument matches an existing file path, read the file
+- If it doesn't match a file path, treat it as text
 
 ### 2. Title
 
-- ถ้าไม่ระบุให้สรุปจากเนื้อหา
-- ใช้เป้น filename
+- If not specified, summarize from the content
+- Use it as the filename
 
 ### 3. Safety
 
-- ไม่บันทึกไฟล์ท่ีมี secrets หรือ credentials
-- ตรวจสอบเนื้อหาก่อน commit
-- ถ้าไฟล์ใหญ่เกิน 10 MB ให้แจ้ง user
+- Never save files containing secrets or credentials
+- Check the content before committing
+- If the file is larger than 10 MB, notify the user
 
-- ใช้ /list-newkub-notes ถ้าจำเป็น
-- ใช้ /open-web ถ้าจำเป็น
+- Use /list-newkub-notes if needed
+- Use /open-web if needed
 
 ## Expected Outcome
 
-- Note ถูกสร้างใน `D:\newkub\notes`
-- ได้รับ URL ท่ีถูกต้อง
-- บันทึกและ push เรียบร้อย
+- The note is created in `D:\newkub\notes`
+- A correct URL is returned
+- Saved and pushed successfully

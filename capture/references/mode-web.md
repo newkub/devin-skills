@@ -1,16 +1,16 @@
 # Capture Web
 
 
-Screenshot/PDF หน้าเว็บเดียวด้วย `agent-browser` CLI ผ่าน `capture web` (merged จาก `capture-web`)
+Screenshot/PDF a single web page with the `agent-browser` CLI via `capture web` (merged from `capture-web`)
 
-Boundary: screenshot อย่างเดียว (ไม่ต้อง PDF/`--annotate`/env options) และ `chrome-devtools-mcp` register อยู่ → ใช้ `take_screenshot` ผ่าน MCP ได้โดยไม่ต้อง install CLI (ดู `/use-chrome-devtools`); PDF และ annotate flow ใช้ `agent-browser` เท่านั้น
+Boundary: screenshot only (no PDF/`--annotate`/env options) and `chrome-devtools-mcp` is already registered → you can use `take_screenshot` via MCP without installing the CLI (see `/use-chrome-devtools`); PDF and annotate flows use `agent-browser` only
 
 #### Web — Execute
 
 ##### 1. Install And Verify
 
-1. ตรวจด้วย `agent-browser --help` — ถ้าไม่มี → `bun add -g agent-browser` แล้ว `agent-browser install` (ดู `/use-agent-browser`)
-2. ตรวจว่า target URL ตอบกลับก่อน capture
+1. Check with `agent-browser --help` — if it's missing → `bun add -g agent-browser` then `agent-browser install` (see `/use-agent-browser`)
+2. Verify the target URL responds before capturing
 
 ##### 2. Capture
 
@@ -20,30 +20,30 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts web <url> --out <file.png> 
 bun D:/newkub/agents-capture/src/presentation/cli.ts web <url> --pdf <file.pdf>
 ```
 
-- `--out` ไม่ระบุ → save ไป `~/.agent-browser/tmp/screenshots/`
-- `--full` = full-page, `--annotate` = numbered element labels (refs `@eN` สำหรับ interact ต่อ)
-- `--pdf` = save หน้าเว็บเป็น PDF
-- `--wait <ms>` = settle time หลัง networkidle (เพิ่มถ้า SPA ช้า)
+- `--out` omitted → saves to `~/.agent-browser/tmp/screenshots/`
+- `--full` = full-page, `--annotate` = numbered element labels (refs `@eN` for further interaction)
+- `--pdf` = save the web page as a PDF
+- `--wait <ms>` = settle time after networkidle (raise it for slow SPAs)
 
 ##### 3. Advanced Options
 
-- ใช้ `agent-browser screenshot` โดยตรงถ้าต้องการ options เพิ่ม: `--screenshot-dir`, `--screenshot-format jpeg`, `--screenshot-quality 0-100`
-- env ถาวร: `AGENT_BROWSER_SCREENSHOT_DIR`, `AGENT_BROWSER_SCREENSHOT_FORMAT`, `AGENT_BROWSER_SCREENSHOT_QUALITY`
-- ใช้ `agent-browser snapshot -i` ควบคู่ `--annotate` เพื่อดู refs ใน text format
+- Use `agent-browser screenshot` directly if you need more options: `--screenshot-dir`, `--screenshot-format jpeg`, `--screenshot-quality 0-100`
+- Persistent env vars: `AGENT_BROWSER_SCREENSHOT_DIR`, `AGENT_BROWSER_SCREENSHOT_FORMAT`, `AGENT_BROWSER_SCREENSHOT_QUALITY`
+- Use `agent-browser snapshot -i` alongside `--annotate` to view refs in text format
 
 ##### 4. Verify And Cleanup
 
-1. CLI ปิด browser เองหลังจบ (`agent-browser close`)
-2. ตรวจว่าไฟล์สร้างสำเร็จและไม่ว่าง แล้วรายงาน path + ขนาด
+1. The CLI closes the browser itself when done (`agent-browser close`)
+2. Verify the file was created and is non-empty, then report the path + size
 
 #### Web — Rules
 
-- เก็บไฟล์ใน `docs/screenshots/` หรือ `test/screenshots/` — ตั้งชื่อตาม page/test case
-- ไม่ capture หน้าจอที่มี secrets/credentials
-- รอ `networkidle` ก่อน screenshot เสมอ (CLI ทำให้แล้ว)
-- ใช้ /use-agent-browser ถ้าจำเป็น — ใช้ /resolve-errors เมื่อเจอ error
+- Store files in `docs/screenshots/` or `test/screenshots/` — name them after the page/test case
+- Don't capture screens that contain secrets/credentials
+- Always wait for `networkidle` before screenshotting (the CLI already does this)
+- Use /use-agent-browser if needed — use /resolve-errors when an error occurs
 
 #### Web — Expected Outcome
 
-- ได้ screenshot (viewport/full-page/annotated) หรือ PDF ตามที่ระบุ พร้อม path ที่รายงานได้
+- Get the requested screenshot (viewport/full-page/annotated) or PDF, with a reportable path
 

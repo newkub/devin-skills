@@ -1,147 +1,147 @@
 # Deep Test — CLI Domain
 
-ทดสอบ CLI commands ด้วยการรันผ่าน shell จริง ตรวจสอบ exit codes, stdout, stderr, help text, flags, subcommands, และ error paths — ใช้กับ CLI tools ที่สร้างด้วย Bun/Node/Rust/Go/Python โดยรันจาก built binary หรือ package script
+Test CLI commands by running them through a real shell — checking exit codes, stdout, stderr, help text, flags, subcommands, and error paths — works with CLI tools built with Bun/Node/Rust/Go/Python, run from a built binary or package script
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action; never skip; if a finding is a blocker, fix it or report before running
 
 ## 1. Detect CLI
 
-> Goal: รู้ว่า CLI อยู่ไหน
+> Goal: know where the CLI is
 
-1. ตรวจ `package.json` `bin` fields, `scripts`, `bin` ใน `Cargo.toml`, `pyproject.toml`, `go.mod`
-2. ตรวจ `tsup.config.*`, `bunup.config.*`, `Cargo.toml` สำหรับ build output
-3. หา executable path หรือใช้ `bun run src/presentation/cli.ts`
-4. ถ้าไม่พบ → `/ask-me`
+1. Check `package.json` `bin` fields, `scripts`, `bin` in `Cargo.toml`, `pyproject.toml`, `go.mod`
+2. Check `tsup.config.*`, `bunup.config.*`, `Cargo.toml` for build output
+3. Find the executable path or use `bun run src/presentation/cli.ts`
+4. If not found → `/ask-me`
 
 ## 2. Build CLI
 
-> Goal: ให้ CLI พร้อมทดสอบ
+> Goal: get the CLI ready to test
 
-1. รัน `bun run build` หรือ `cargo build` หรือ `go build` ตาม ecosystem
-2. ตรวจว่า executable ถูกสร้างใน `dist/`, `target/`, หรือ `bin/`
-3. ถ้า build ล้มเหลว → `/resolve-errors`
+1. Run `bun run build` or `cargo build` or `go build` per the ecosystem
+2. Verify the executable was created in `dist/`, `target/`, or `bin/`
+3. If the build fails → `/resolve-errors`
 
 ## 3. Test Help And Version
 
-> Goal: ตรวจ basic commands
+> Goal: check basic commands
 
-1. รัน `<cli> --help` ตรวจ exit code 0 และ stdout มี usage
-2. รัน `<cli> -h` ทดสอบ short flag
-3. รัน `<cli> --version` หรือ `<cli> -V` ตรวจ version output
-4. บันทึก flags, subcommands, และ options ที่แสดง
+1. Run `<cli> --help`, verify exit code 0 and usage in stdout
+2. Run `<cli> -h` to test the short flag
+3. Run `<cli> --version` or `<cli> -V`, verify the version output
+4. Record the displayed flags, subcommands, and options
 
 ## 4. List Commands And Subcommands
 
-> Goal: รู้ว่า CLI ทำอะไรได้บ้าง
+> Goal: know what the CLI can do
 
-1. อ่าน help output สร้างรายการ subcommands
-2. รัน `<cli> <subcommand> --help` เพื่อดู flags ของแต่ละ subcommand
-3. บันทึก subcommands, flags, positional args, และ default values
+1. Read the help output to build a list of subcommands
+2. Run `<cli> <subcommand> --help` to see each subcommand's flags
+3. Record subcommands, flags, positional args, and default values
 
 ## 5. Test Happy Path Commands
 
-> Goal: ทดสอบ command ที่ถูกต้อง
+> Goal: test correct commands
 
-1. รัน subcommand ด้วย valid arguments
-2. ตรวจ exit code 0
-3. ตรวจ stdout มี output ตาม expected
-4. ตรวจ side effects ถ้ามี เช่น ไฟล์ถูกสร้าง, DB ถูกเขียน
-5. ใช้ fixtures หรือ test data สำหรับ input
+1. Run each subcommand with valid arguments
+2. Verify exit code 0
+3. Verify stdout contains the expected output
+4. Check side effects if any, e.g. files created, DB written
+5. Use fixtures or test data for inputs
 
 ## 6. Test Error Paths
 
-> Goal: ทดสอบกรณีผิดพลาด
+> Goal: test failure cases
 
-1. รัน command โดยไม่มี required arguments → ตรวจ error และ exit code ≠ 0
-2. รัน command ด้วย invalid flag → ตรวจ error message
-3. รัน command ด้วย invalid input file → ตรวจ error handling
-4. รัน command โดยไม่มี permission → ตรวจ error ถ้าเกี่ยวข้อง
-5. รัน command ด้วย missing env vars → ตรวจ error
+1. Run a command without required arguments → check the error and exit code ≠ 0
+2. Run a command with an invalid flag → check the error message
+3. Run a command with an invalid input file → check error handling
+4. Run a command without permission → check the error if applicable
+5. Run a command with missing env vars → check the error
 
 ## 7. Test Flags And Options
 
-> Goal: ทดสอบทุก flag ที่มี
+> Goal: test every existing flag
 
 1. Test boolean flags: `--flag`, `--no-flag`, `-f`
 2. Test value flags: `--output path`, `--format json`, `--limit 10`
-3. Test default values เมื่อไม่ส่ง flag
-4. Test mutually exclusive flags ถ้ามี
-5. ใช้ parameterized tests สำหรับ flag matrix
+3. Test default values when a flag is not passed
+4. Test mutually exclusive flags if any
+5. Use parameterized tests for the flag matrix
 
 ## 8. Test Pipes And Stdin
 
-> Goal: ทดสอบ CLI ที่รับ input จาก stdin
+> Goal: test a CLI that accepts input from stdin
 
-1. ส่งข้อมูลผ่าน pipe: `cat fixture.json | <cli> process`
-2. ตรวจ stdout ของ command
-3. ตรวจ error handling เมื่อ stdin ว่างหรือ malformed
+1. Feed data through a pipe: `cat fixture.json | <cli> process`
+2. Check the command's stdout
+3. Check error handling when stdin is empty or malformed
 
 ## 9. Capture And Report
 
-> Goal: สรุปผลการทดสอบ
+> Goal: summarize the test results
 
-1. บันทึก exit codes, stdout, stderr ของแต่ละ command
-2. รวบรวม failures และ inconsistencies
-3. ทำ `/resolve-errors` สำหรับ failures
-4. ใช้ `/report` เพื่อแสดง test results
+1. Record exit codes, stdout, and stderr of each command
+2. Collect failures and inconsistencies
+3. Run `/resolve-errors` for failures
+4. Use `/report` to present test results
 
 ## 10. Re-run Until Pass
 
-> Goal: วนรัน CLI tests จนผ่าน
+> Goal: loop CLI tests until they pass
 
-1. แก้ไข CLI หรือ tests หลัง failures
-2. รันใหม่ทีละ command
-3. วนซ้ำสูงสุด 3 รอบ
-4. ถ้ายัง fail → stop และ report
+1. Fix the CLI or the tests after failures
+2. Re-run one command at a time
+3. Loop at most 3 rounds
+4. If still failing → stop and report
 
 ## Rules
 
 ### 1. Test Isolation
 
-- แต่ละ test ต้องรัน independent
-- Cleanup side effects หลังแต่ละ test (`afterEach`, `teardown`)
-- ใช้ temporary directories สำหรับ output files
+- Each test must run independently
+- Clean up side effects after each test (`afterEach`, `teardown`)
+- Use temporary directories for output files
 
 ### 2. No Hardcoded Secrets
 
-- ไม่ hardcode API keys, tokens, passwords ใน tests
-- ใช้ environment variables หรือ mock สำหรับ external services
+- Never hardcode API keys, tokens, or passwords in tests
+- Use environment variables or mocks for external services
 
 ### 3. Assert Output, Not Implementation
 
-- ตรวจ stdout, stderr, exit code เป็นหลัก
-- ไม่ assert การเรียก function ภายใน CLI
-- ใช้ `expect.stringContaining` สำหรับ output ที่ยืดหยุ่น
+- Mainly check stdout, stderr, and exit code
+- Do not assert on internal CLI function calls
+- Use `expect.stringContaining` for flexible output
 
 ### 4. Use Parameterized Tests
 
-- ใช้ `it.each` หรือ table-driven tests สำหรับ flag matrix
-- ใช้สำหรับ invalid input หลายกรณี
-- ใช้สำหรับ subcommands หลายตัว
+- Use `it.each` or table-driven tests for the flag matrix
+- Use them for many invalid-input cases
+- Use them for many subcommands
 
 ### 5. Ecosystem Aware
 
-- Bun/Node CLI: ใช้ `bunx` หรือ `bun run` สำหรับ execute
-- Rust CLI: ใช้ `cargo run` หรือ `target/debug/<binary>`
-- Go CLI: ใช้ `go run` หรือ built binary
-- Python CLI: ใช้ `python -m` หรือ `pytest` สำหรับ test scripts
+- Bun/Node CLI: use `bunx` or `bun run` to execute
+- Rust CLI: use `cargo run` or `target/debug/<binary>`
+- Go CLI: use `go run` or the built binary
+- Python CLI: use `python -m` or `pytest` for test scripts
 
 ### 6. Timeout And Retry
 
-- `perCommandTimeout` = 60 วินาที
-- `maxRetries` = 3 สำหรับ flaky commands
-- หยุดทันทีเมื่อเกิด infinite loop
+- `perCommandTimeout` = 60 seconds
+- `maxRetries` = 3 for flaky commands
+- Stop immediately on an infinite loop
 
 ### 7. Error Handling
 
-- แก้ที่ root cause ไม่ใช่ suppress
-- ถ้า error มาจาก build → `/resolve-errors`
-- ถ้า error มาจาก environment → `/ask-me`
+- Fix the root cause, do not suppress
+- If the error comes from the build → `/resolve-errors`
+- If the error comes from the environment → `/ask-me`
 
 ## Expected Outcome
 
-- CLI commands ทั้งหมดถูกทดสอบด้วย valid และ invalid inputs
-- Exit codes, stdout, stderr ถูก assert
-- Help, version, flags, subcommands ถูกตรวจสอบ
-- ไม่มี regression ใน command behavior
-- มี report table สรุปผล
+- All CLI commands tested with valid and invalid inputs
+- Exit codes, stdout, stderr asserted
+- Help, version, flags, subcommands verified
+- No regression in command behavior
+- A summary report table exists

@@ -1,6 +1,6 @@
 ---
 name: search-similar
-description: ค้นหา skills, code, หรือ patterns ทีคล้ายกับสิ่งทีระบุ
+description: Find skills, code, or patterns similar to the specified target
 argument-hint: "[scope]"
 related:
   - search
@@ -14,76 +14,76 @@ related:
 
 ## Goal
 
-ค้นหา skills, code patterns, files หรือ functions ทีคล้ายกับ target ทีระบุ เพื่อ reuse, avoid duplication หรือสร้างสิ่งใหม่บนพื้นฐานเดิม
+Search for skills, code patterns, files, or functions similar to a given target, for reuse, avoiding duplication, or building something new on the existing basis
 
 ## Scope
 
-ใช้เมื่อต้องการหาตัวอย่างเดิมทีคล้ายกัน ก่อนสร้าง skill ใหม่ หรือก่อน refactor
+Use when looking for similar existing examples before creating a new skill or before refactoring
 
-ดูเพิ่มเติม: /use-astgrep
+See also: /use-astgrep
 
 ## Execute
 
 ### 1. Define Target
 
-> Goal: ระบุสิ่งทีต้องการค้นหา similar
+> Goal: identify what you want to find similars of
 
-1. ถ้า user ระบุ skill name → อ่าน skill นั้น
-2. ถ้า user ระบุ code snippet → บันทึก snippet
-3. ถ้า user ระบุ pattern หรือ responsibility → สรุปเป็น keywords
-4. ถ้าไม่ชัด → ทำ `/ask-me`
+1. If the user gives a skill name → read that skill
+2. If the user gives a code snippet → record the snippet
+3. If the user gives a pattern or responsibility → distill it into keywords
+4. If unclear → run `/ask-me`
 
 ### 2. Search By Name And Prefix
 
-> Goal: หา similar ด้วย name matching
+> Goal: find similars via name matching
 
-1. ทำ `/list-devin-global-skills` เพื่อดูรายการ skills
-2. หา skills ทีมี prefix หรือ name คล้าย target
-3. หา skills ทีมี keywords ใน `description` หรือ `name`
-4. บันทึก candidates ทีมี score > 0
+1. Run `/list-devin-global-skills` to view the skill list
+2. Find skills whose prefix or name resembles the target
+3. Find skills with matching keywords in `description` or `name`
+4. Record candidates with score > 0
 
 ### 3. Search By Content
 
-> Goal: หา similar ด้วยเนื้อหา
+> Goal: find similars by content
 
-1. ทำ `/search-files-patterns` ด้วย keywords จาก target
-2. ทำ `/use-astgrep` สำหรับ code patterns (ถ้าเป็น code)
-3. ค้นหาใน `AGENTS.md` categories ทีเกี่ยวข้อง
-4. ค้นหา `related` frontmatter ทีอ้างถึง target
+1. Run `/search-files-patterns` with keywords from the target
+2. Run `/use-astgrep` for code patterns (if it is code)
+3. Search relevant categories in `AGENTS.md`
+4. Search `related` frontmatter that references the target
 
 ### 4. Compare Similarity
 
-> Goal: จัดลำดับ candidates
+> Goal: rank the candidates
 
-1. เปรียบเทียบเป้าหมายกับ candidate ในแง่:
+1. Compare the goal against each candidate in terms of:
    - responsibility / goal
-   - commands/tools ทีใช้
+   - commands/tools used
    - structure / sections
    - target domain
-2. ให้ score 0-100 สำหรับแต่ละ candidate
-3. ระบุเหตุผลทีคล้ายกัน
+2. Give a score of 0-100 to each candidate
+3. State why each is similar
 
 ### 5. Report
 
-> Goal: สรุปผล search
+> Goal: summarize the search results
 
-1. ใช้ `/report` คอลัมน์: No, Name, Type, SimilarityScore, Why
-2. เรียงตาม SimilarityScore จากสูงไปต่ำ
-3. ระบุ top 5 ทีคล้ายกว่าสุด
-4. แนะนำ next action: reuse, extend, หรือ `/create-similar`
+1. Use `/report` with columns: No, Name, Type, SimilarityScore, Why
+2. Sort by SimilarityScore from high to low
+3. Highlight the top 5 most similar
+4. Recommend a next action: reuse, extend, or `/create-similar`
 
 ## Rules
 
-- ไม่สร้าง duplicate ถ้ามี skill ทีครอบคลุมอยู่แล้ว
-- เปรียบเทียบจาก responsibility มากกว่า name เท่านั้น
-- ถ้าไม่พบ similar → รายงานว่าไม่พบและแนะนำ `/create-similar`
-- ไม่expose secrets หรือ sensitive ใน snippets
-- ถ้า context ไม่ชัด → ถาม user ก่อน
+- Do not create a duplicate when a skill already covers it
+- Compare by responsibility, not by name alone
+- If no similar is found → report not found and recommend `/create-similar`
+- Do not expose secrets or sensitive data in snippets
+- If the context is unclear → ask the user first
 
-- ใช้ /use-related-skills ถ้าจำเป็น
+- Use /use-related-skills if needed
 
 ## Expected Outcome
 
-- รายการ skills/files/patterns ทีคล้ายกับ target พร้อม similarity score
-- สรุปเหตุผลทีคล้ายกัน
-- แนะนำ next action ชัดเจน
+- List of skills/files/patterns similar to the target, with similarity scores
+- Summary of why each is similar
+- Clear recommended next action

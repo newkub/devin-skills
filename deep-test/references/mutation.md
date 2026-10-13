@@ -1,62 +1,62 @@
 # Deep Test — Mutation Domain
 
-วัดคุณภาพ test suite ด้วย mutation testing — แก้ code เล็กน้อย (mutants) แล้วดูว่า tests จับได้ไหม — เพื่อหา code ที่ coverage สูงแต่ tests ไม่ verify จริง
+Measure test suite quality with mutation testing — make small code changes (mutants) and see whether the tests catch them — to find code with high coverage that the tests don't actually verify
 
-- Tools ตาม stack: Stryker (JS/TS), mutants-rs (Rust), mutmut (Python), go-mutesting (Go)
-- ครอบคลุม: mutation score (killed/survived/timeout), surviving mutants analysis, weak assertions
-- ช้าโดยธรรมชาติ — scope ให้แคบ (module/PR diff) ไม่รันทั้ง repo
+- Tools per stack: Stryker (JS/TS), mutants-rs (Rust), mutmut (Python), go-mutesting (Go)
+- Covers: mutation score (killed/survived/timeout), surviving mutants analysis, weak assertions
+- Inherently slow — keep the scope narrow (module/PR diff), never run the whole repo
 
 ## 1. Select Tool And Scope
 
-> Goal: เลือก mutation tool ตาม ecosystem
+> Goal: Pick the mutation tool matching the ecosystem
 
-1. ตรวจ stack จาก manifest — เลือก tool ที่ตรง (`/follow-tool-stryker-mutator` สำหรับ JS/TS)
-2. จำกัด scope เสมอ: เลือก module/files ที่สำคัญหรือที่เพิ่งเปลี่ยน — mutation testing ทั้ง repo ใช้เวลานานมาก
-3. ติดตั้ง tool ถ้ายังไม่มี (`npx stryker`, `cargo install cargo-mutants`)
+1. Detect the stack from the manifest — pick the matching tool (`/follow-tool-stryker-mutator` for JS/TS)
+2. Always limit the scope: choose important or recently changed modules/files — repo-wide mutation testing takes a very long time
+3. Install the tool if missing (`npx stryker`, `cargo install cargo-mutants`)
 
 ## 2. Run Baseline
 
-> Goal: รัน mutation testing บน scope ที่เลือก
+> Goal: Run mutation testing on the selected scope
 
-1. รันกับ test suite ปัจจุบัน — ตั้ง timeout ที่เหมาะ
-2. เก็บผล: total mutants, killed, survived, timeout, no-coverage
-3. flag files ที่ mutation score ต่ำผิดปกติ
+1. Run against the current test suite — set a sensible timeout
+2. Collect results: total mutants, killed, survived, timeout, no-coverage
+3. Flag files with an unusually low mutation score
 
 ## 3. Analyze Survivors
 
-> Goal: เข้าใจ mutants ที่รอด
+> Goal: Understand the surviving mutants
 
-1. ตรวจ surviving mutants — แต่ละตัวคือ code change ที่ tests ไม่จับ
-2. จัดประเภท: missing assertions (test รันแต่ไม่ assert), equivalent mutants (เปลี่ยนแล้วเหมือนเดิม), boundary gaps
-3. แยก `no-coverage` mutants — code ที่ tests ไม่แตะเลย
+1. Inspect surviving mutants — each one is a code change the tests don't catch
+2. Classify: missing assertions (test runs but doesn't assert), equivalent mutants (the change makes no difference), boundary gaps
+3. Separate out `no-coverage` mutants — code the tests never touch
 
 ## 4. Report
 
-> Goal: สรุป mutation score พร้อม weak spots
+> Goal: Summarize the mutation score with weak spots
 
-1. ใช้ `/report`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
-2. รายงาน top surviving mutants พร้อม suggested test cases
-3. แนะนำ `/deep-review` สำหรับ files ที่ score ต่ำ
+1. Use `/report`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
+2. Report the top surviving mutants with suggested test cases
+3. Recommend `/deep-review` for files with a low score
 
 ## Rules
 
 ### 1. Scoped Always
 
-- ห้ามรัน mutation ทั้ง repo — scope เป็น module/diff เสมอ
-- แจ้ง user เรื่องเวลาที่ใช้ — mutation testing ช้าโดยธรรมชาติ
+- Never run mutation testing repo-wide — always scope to a module/diff
+- Warn the user about the time cost — mutation testing is inherently slow
 
 ### 2. Quality Over Score
 
-- เป้าหมายคือหา weak tests ไม่ใช่ตัวเลขสูง — surviving mutants สำคัญกว่า score
-- equivalent mutants (ไม่มีความหมายต่าง) ให้ mark ไม่ใช่นับเป็นปัญหา
+- The goal is finding weak tests, not big numbers — surviving mutants matter more than the score
+- Mark equivalent mutants (no semantic difference) instead of counting them as problems
 
 ### 3. Read-Only On Source
 
-- mutation tool แก้ code ชั่วคราวใน sandbox — ห้ามแก้ source จริง
-- verify working tree clean หลังรัน
+- The mutation tool temporarily modifies code in a sandbox — never touch the real source
+- Verify the working tree is clean after the run
 
 ## Expected Outcome
 
-- Mutation score ต่อ scoped module พร้อม breakdown
-- รายการ surviving mutants = test gaps ที่จริง
-- คำแนะนำ test cases ที่ควรเพิ่ม
+- A mutation score per scoped module with a breakdown
+- A list of surviving mutants = the real test gaps
+- Recommendations for the test cases that should be added

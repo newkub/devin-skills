@@ -1,6 +1,6 @@
 ---
 name: search-request-in-devin-session
-description: ค้นหา keyword/pattern ใน user requests ข้าม Devin sessions — เจอ request ไหน session ไหน เมื่อไร
+description: Search keyword/pattern in user requests across Devin sessions — find which request, session, when
 argument-hint: "[keyword-or-pattern] [--scope all|session|repo]"
 related:
   - list-devin-session
@@ -12,78 +12,78 @@ related:
 
 ## Goal
 
-ค้นหา requests ที่ user เคยส่ง โดย match `keyword` หรือ regex pattern กับเนื้อหา user messages ใน `history_*.md` ที่ `%APPDATA%\devin\cli\summaries` — ตอบว่า request นั้นอยู่ใน session ไหน message ไหน เมื่อไร
+Search requests the user has previously sent by matching a `keyword` or regex pattern against user-message content in `history_*.md` under `%APPDATA%\devin\cli\summaries` — answer which session, which message, and when the request appeared.
 
 ## Scope
 
-- `keyword-or-pattern` (required): ข้อความหรือ regex ที่ต้องการค้น — ต้องระบุเสมอ
-- `--scope all` (default): ค้นทุก session
-- `--scope session`: เฉพาะ session ปัจจุบัน
-- `--scope repo`: เฉพาะ sessions ที่ทำงานใน repo ปัจจุบัน
-- ค้นเฉพาะ user messages (`=== MESSAGE N - User ===`) — ไม่ค้น assistant/system messages
-- อ่านอย่างเดียว ไม่แก้ไข history files
-- ต้องการ list requests ทั้งหมดโดยไม่ filter → ใช้ `/list-request-devin-session` แทน
+- `keyword-or-pattern` (required): the text or regex to search for — always required
+- `--scope all` (default): search every session
+- `--scope session`: only the current session
+- `--scope repo`: only sessions working in the current repo
+- Search only user messages (`=== MESSAGE N - User ===`) — do not search assistant/system messages
+- Read-only; never modify history files
+- Want the full request list without filtering → use `/list-request-devin-session` instead
 
 ## Execute
 
 ### 1. Parse Arguments
 
-> Goal: ได้ pattern และ scope ที่ชัดเจน
+> Goal: get a clear pattern and scope
 
-1. รับ `keyword-or-pattern` — ถ้าไม่ระบุ → ถาม user ด้วย `/ask-me`
-2. ตัดสินใจ match mode:
-   - มี regex metachars (`.*`, `^`, `$`, `[`, `]`, `\d` ฯลฯ) → regex search
-   - อื่นๆ → literal/case-insensitive keyword search
+1. Take `keyword-or-pattern` — if not given → ask the user via `/ask-me`
+2. Decide the match mode:
+   - Contains regex metachars (`.*`, `^`, `$`, `[`, `]`, `\d`, etc.) → regex search
+   - Otherwise → literal/case-insensitive keyword search
 3. Parse `--scope` (default `all`)
 
 ### 2. Discover Session Files
 
-> Goal: หา history files ตาม scope — เหมือน `/list-request-devin-session` `### 1`
+> Goal: find history files per scope — same as `/list-request-devin-session` `### 1`
 
-1. หา directory `%APPDATA%\devin\cli\summaries`
-2. `--scope all` → `history_*.md` ทั้งหมด
-3. `--scope session` → history file ของ session ปัจจุบัน
-4. `--scope repo` → กรอง sessions ที่ workspace ตรง repo ปัจจุบัน
-5. เรียงตาม `LastWriteTime` ใหม่ไปเก่า
+1. Locate the directory `%APPDATA%\devin\cli\summaries`
+2. `--scope all` → all `history_*.md` files
+3. `--scope session` → the history file of the current session
+4. `--scope repo` → filter sessions whose workspace matches the current repo
+5. Sort by `LastWriteTime`, newest first
 
 ### 3. Search User Messages
 
-> Goal: match เฉพาะ user message sections
+> Goal: match only user message sections
 
-1. ใช้ `grep` (ripgrep) pattern กับ `history_*.md` — จำกัด hits ด้วย context ของ `=== MESSAGE N - User ===` sections
-2. สำหรับไฟล์ใหญ่ → ใช้ `grep` หา line numbers ของ `=== MESSAGE` markers ก่อน แล้ว `read` เฉพาะช่วง user messages ที่มี match
-3. บันทึก: session file (id จากชื่อไฟล์), message number, matched line, surrounding context (±1 บรรทัด), file `LastWriteTime`
-4. เก็บเฉพาะ matches ที่อยู่ใน `=== MESSAGE N - User ===` section — ตัด hits จาก assistant/system sections ทิ้ง
+1. Apply the `grep` (ripgrep) pattern to `history_*.md` — limit hits to the context of `=== MESSAGE N - User ===` sections
+2. For large files → use `grep` to find line numbers of the `=== MESSAGE` markers first, then `read` only the user-message ranges that match
+3. Record: session file (id from the file name), message number, matched line, surrounding context (±1 line), file `LastWriteTime`
+4. Keep only matches inside `=== MESSAGE N - User ===` sections — discard hits from assistant/system sections
 
 ### 4. Format And Report
 
-> Goal: นำเสนอผลที่ drill-down ต่อได้
+> Goal: present results that can be drilled into further
 
-1. ทำ `/report` คอลัมน์: No., Session, Msg #, Matched Text, Context, Date
-2. ตัด matched text ยาว > 80 ตัวอักษร แล้วเติม `...`
-3. เรียงตาม date ใหม่ไปเก่า แล้ว message number
-4. ระบุสถิติ: จำนวน sessions ที่ค้น, จำนวน matches, pattern ที่ใช้
-5. ชี้ session id + msg # ให้ user เปิดอ่านต่อได้ — หรือทำ `/list-devin-session` เพื่อดู session metadata
+1. Run `/report` with columns: No., Session, Msg #, Matched Text, Context, Date
+2. Truncate matched text longer than 80 characters and append `...`
+3. Sort by date newest first, then message number
+4. State the stats: number of sessions searched, number of matches, pattern used
+5. Point out session id + msg # so the user can open and read on — or run `/list-devin-session` for session metadata
 
 ### 5. Handle No Match
 
-> Goal: รายงานอย่างตรงไปตรงมา
+> Goal: report honestly
 
-1. ถ้าไม่พบ match → รายงานว่าไม่พบ พร้อม pattern และ scope ที่ใช้
-2. เสนอทางเลือก: ลอง keyword สั้นลง, regex กว้างขึ้น, หรือขยาย `--scope`
-3. ไม่เดา request ที่ user อาจหมายถึง
+1. If no match is found → report not found, along with the pattern and scope used
+2. Offer alternatives: try a shorter keyword, a broader regex, or widen `--scope`
+3. Do not guess which request the user might have meant
 
 ## Rules
 
-- ค้นเฉพาะ `=== MESSAGE N - User ===` sections — ห้ามนับ assistant/system messages เป็น match
-- ไม่โหลดทุก file พร้อมกัน — ใช้ grep ก่อน แล้ว read เฉพาะช่วงที่ match
-- ไม่แก้ไข history files
-- ใช้ `/report` เสมอ
-- ใช้ `/list-devin-session` ถ้าต้องการ session metadata ของ match
-- ใช้ `/use-bun-shell` หรือ ripgrep สำหรับ search
+- Search only `=== MESSAGE N - User ===` sections — never count assistant/system messages as matches
+- Do not load all files at once — grep first, then read only the matching ranges
+- Do not modify history files
+- Always use `/report`
+- Use `/list-devin-session` if you need the session metadata of a match
+- Use `/use-bun-shell` or ripgrep for the search
 
 ## Expected Outcome
 
-- ตาราง matches พร้อม session id, message number, context และ date
-- รองรับ literal keyword และ regex pattern + scope filtering
-- รายงานสถิติและ no-match อย่างชัดเจน พร้อมทางเลือกถัดไป
+- A matches table with session id, message number, context and date
+- Supports literal keywords and regex patterns plus scope filtering
+- Clear stats and no-match reporting, with next-step alternatives

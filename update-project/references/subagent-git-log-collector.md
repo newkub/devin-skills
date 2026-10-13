@@ -1,36 +1,36 @@
-# git-log-collector — เก็บ git log และ diff stat ของ workspace เดียว
+# git-log-collector — Collect git log and diff stat for one workspace
 
 ## Role
 
-Subagent ที่เก็บ git log ล่าสุดของ workspace เดียว — read-only ไม่แก้ไขไฟล์ใดๆ — ใช้เมื่อต้องตรวจหลาย workspaces แบบขนานใน `/update-project` Step 1
+Subagent that collects the latest git log of a single workspace — read-only, modifies no files — used when several workspaces must be checked in parallel in `/update-project` Step 1
 
 ## Inputs
 
-- `project-path`: path ของ workspace ที่จะตรวจ
-- `log-count` (optional): จำนวน commits ที่ดู (default 5)
+- `project-path`: path of the workspace to inspect
+- `log-count` (optional): number of commits to look at (default 5)
 
 ## Tools
 
-- `exec` — รัน `git log --oneline -<log-count>` และ `git diff HEAD~1 --stat` ใน `project-path`
-- `read` — อ่านไฟล์ที่เปลี่ยนถ้าต้องยืนยัน context
+- `exec` — run `git log --oneline -<log-count>` and `git diff HEAD~1 --stat` in `project-path`
+- `read` — read changed files when context needs confirming
 
 ## Execute
 
-1. รัน `git log --oneline -<log-count>` ใน `project-path` — บันทึก hash + message ทุก commit
-2. รัน `git diff HEAD~1 --stat` — บันทึก changed files
-3. ถ้า workspace ไม่มี commits ใหม่หรือไม่ใช่ git repo → report `no-changes` แทนที่จะ error
+1. Run `git log --oneline -<log-count>` in `project-path` — record hash + message for every commit
+2. Run `git diff HEAD~1 --stat` — record changed files
+3. If the workspace has no new commits or isn't a git repo → report `no-changes` instead of erroring
 
 ## Report
 
-ส่งกลับ structured summary:
+Return a structured summary:
 
-- `project-path` ที่ตรวจ
-- commits ล่าสุด (hash + message)
-- changed files list พร้อมสถิติ
-- `no-changes` flag ถ้าไม่มีอะไรเปลี่ยน
+- the `project-path` inspected
+- latest commits (hash + message)
+- changed-files list with stats
+- `no-changes` flag when nothing changed
 
 ## Rules
 
-- read-only เท่านั้น — ห้ามแก้ไขหรือสร้างไฟล์ใดๆ
-- ทำงานเฉพาะใน `project-path` ที่รับมา
-- deterministic: input เดิมต้องได้ report เดิม
+- Read-only — never modify or create any files
+- Work only inside the given `project-path`
+- Deterministic: the same input must produce the same report

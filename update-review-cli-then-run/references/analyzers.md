@@ -2,7 +2,7 @@
 
 ## Required Analyzer Files
 
-ตรวจว่า `src/domain/analyzers/` มี analyzer files ครบ 5 ไฟล์:
+Verify that `src/domain/analyzers/` has all 5 analyzer files:
 
 - `user-facing.ts` — UX, accessibility, UI patterns
 - `security.ts` — security vulnerabilities, auth, input validation
@@ -10,48 +10,48 @@
 - `infrastructure.ts` — deployment, CI/CD, config
 - `code-arch.ts` — code quality, architecture, patterns
 
-ถ้าขาด analyzer file → flag เป็น `High` severity
+If an analyzer file is missing → flag as `High` severity
 
 ## CategoryResult Contract
 
-ตรวจว่าทุก analyzer return `CategoryResult` พร้อม fields:
+Verify that every analyzer returns a `CategoryResult` with these fields:
 
 - `status` — `pass` | `fail` | `warn`
-- `score` — ตัวเลข 0-100
-- `findings` — array ของ finding objects
+- `score` — a number 0-100
+- `findings` — an array of finding objects
 
-ถ้า analyzer ไม่ return `CategoryResult` → flag เป็น `High` severity
+If an analyzer does not return `CategoryResult` → flag as `High` severity
 
 ## Review Workflow Map
 
-ตรวจว่าทุก analyzer มี `reviewWorkflow` map:
+Verify that every analyzer has a `reviewWorkflow` map:
 
-- map จาก category ไปยัง `/deep-review` หรือ references
-- ระบุ action ที่ต้องทำเมื่อพบ issue
+- Map from category to `/deep-review` or references
+- Specify the action to take when an issue is found
 
-ถ้าขาด `reviewWorkflow` → flag เป็น `Medium` severity
+If `reviewWorkflow` is missing → flag as `Medium` severity
 
 ## Shared Utilities
 
-ตรวจว่า analyzers ใช้ shared utilities จาก `src/adapters/`:
+Verify that analyzers use shared utilities from `src/adapters/`:
 
-- ห้าม duplicate utility code ระหว่าง analyzer files
-- ใช้ shared helpers สำหรับ file reading, pattern matching, scoring
+- Never duplicate utility code between analyzer files
+- Use shared helpers for file reading, pattern matching, and scoring
 
-ถ้าพบ duplicated code → flag เป็น `Medium` severity
+If duplicated code is found → flag as `Medium` severity
 
 ## Category Coverage
 
-ตรวจว่ามี 60+ categories จาก `/run-review`:
+Verify that there are 60+ categories from `/run-review`:
 
-- อ่าน `run-review` เพื่อทราบ category list ทั้งหมด
-- ตรวจว่า analyzers ครอบคลุม categories ครบ
+- Read `run-review` to learn the full category list
+- Verify that the analyzers cover all categories
 
-ถ้า category coverage ไม่ครบ → flag เป็น `Medium` severity
+If category coverage is incomplete → flag as `Medium` severity
 
 ## Domain Coverage
 
-ตรวจว่ามี 5 domains ครบ:
+Verify that all 5 domains are present:
 
 - `user-facing`
 - `security`
@@ -59,12 +59,12 @@
 - `infrastructure`
 - `code-arch`
 
-ถ้าขาด domain → flag เป็น `High` severity
+If a domain is missing → flag as `High` severity
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must include:
 
-- file path เช่น `tools/review-codebase/src/domain/analyzers/security.ts`
-- line number
-- code snippet ที่เป็นปัญหา
+- File path, e.g. `tools/review-codebase/src/domain/analyzers/security.ts`
+- Line number
+- The code snippet that is problematic

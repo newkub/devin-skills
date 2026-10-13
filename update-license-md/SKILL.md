@@ -1,6 +1,6 @@
 ---
 name: update-license-md
-description: เลือกและตั้งค่า license ด้วย SPDX identifier ให้ถูกต้องสำหรับ project
+description: Choose and set a license with the correct SPDX identifier for a project
 argument-hint: "[scope]"
 related:
   - follow-agents-md
@@ -14,35 +14,35 @@ related:
 
 ## Goal
 
-ตั้งค่า `LICENSE` file และระบุ SPDX license identifier ใน package manifest ให้ถูกต้องและสอดคล้องกัน
+Set up the `LICENSE` file and specify the SPDX license identifier in the package manifest so they are correct and consistent
 
 ## Scope
 
-ใช้สำหรับ project ที่ต้องการ license file ที่ root directory และ declaration ใน package manifest (`package.json`, `pyproject.toml`, `Cargo.toml` ฯลฯ)
+Use for a project that needs a license file at the root directory and a declaration in the package manifest (`package.json`, `pyproject.toml`, `Cargo.toml`, etc.)
 
-- ใช้ skill นี้สำหรับเลือก license, สร้าง `LICENSE` file และ sync SPDX declaration — ไม่ใช่สำหรับ audit license ของ dependencies (ใช้ tools เช่น `license-md` หรือ `license-checker` แยก)
-- Package `license-md` เป็น badge generator เก่า (unmaintained) — งานหลักใช้ `gh api licenses/{key}` + manifest fields โดยตรง ไม่บังคับติดตั้ง
+- Use this skill to choose a license, create the `LICENSE` file, and sync the SPDX declaration — not to audit dependency licenses (use tools like `license-md` or `license-checker` separately)
+- The `license-md` package is an old badge generator (unmaintained) — the main workflow uses `gh api licenses/{key}` plus manifest fields directly; installation is not required
 
-- Latest: version-agnostic (license/linting guide; Python build backends pinned ใน skill) (verified 2026-09-13)
+- Latest: version-agnostic (license/linting guide; Python build backends pinned in the skill) (verified 2026-09-13)
 - References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Choose License
 
-> Goal: เลือก license ที่เหมาะสมกับ project
+> Goal: Choose a license that fits the project
 
-1. เลือกจาก common licenses: `MIT`, `Apache-2.0`, `GPL-3.0-only`, `BSD-3-Clause`, `ISC`, `Unlicense`
-2. ดูรายละเอียดที่ `https://choosealicense.com` และ SPDX ID เต็มที่ `https://spdx.org/licenses`
-3. ถ้า contribute เข้า community ที่มี license อยู่แล้ว → ใช้ license เดียวกัน
-4. ถ้าไม่แน่ใจ → ใช้ `MIT` เป็น default; ถ้า project เป็น private/ไม่เผยแพร่ → ไม่สร้าง `LICENSE` และใช้ `UNLICENSED` ใน manifest
+1. Choose from common licenses: `MIT`, `Apache-2.0`, `GPL-3.0-only`, `BSD-3-Clause`, `ISC`, `Unlicense`
+2. See details at `https://choosealicense.com` and full SPDX IDs at `https://spdx.org/licenses`
+3. If contributing to a community that already has a license → use the same license
+4. If unsure → default to `MIT`; if the project is private/unpublished → do not create `LICENSE` and use `UNLICENSED` in the manifest
 
 ### 2. Create License File
 
-> Goal: สร้าง `LICENSE` file ที่ root directory
+> Goal: Create the `LICENSE` file at the root directory
 
-1. ดึง license text ที่ถูกต้องจาก GitHub Licenses API: `gh api licenses/{key} --jq .body` (เช่น `gh api licenses/mit`) หรือ copy จาก `https://choosealicense.com/licenses/{key}/`
-2. สร้างไฟล์ `LICENSE` (ไม่มี extension) ที่ root
-3. ระบุ copyright holder และปีให้ถูกต้อง ตัวอย่าง MIT:
+1. Fetch the canonical license text from the GitHub Licenses API: `gh api licenses/{key} --jq .body` (e.g. `gh api licenses/mit`) or copy from `https://choosealicense.com/licenses/{key}/`
+2. Create the `LICENSE` file (no extension) at the root
+3. Fill in the copyright holder and year correctly. MIT example:
 
 ```text
 MIT License
@@ -70,19 +70,19 @@ SOFTWARE.
 
 ### 3. Update Package Manifest
 
-> Goal: ระบุ license ใน manifest ด้วย SPDX expression ให้ตรงกับ `LICENSE` file
+> Goal: Declare the license in the manifest with an SPDX expression that matches the `LICENSE` file
 
-1. `package.json` — ใช้ SPDX expression string เท่านั้น:
+1. `package.json` — use only an SPDX expression string:
 
 ```json
 { "license": "MIT" }
 ```
 
-- หลาย license: `"license": "(MIT OR Apache-2.0)"`
-- ไม่เผยแพร่: `"license": "UNLICENSED"` พร้อม `"private": true`
-- ห้ามใช้ `licenses` array หรือ `license` object แบบเก่า (`{ "type": ..., "url": ... }`) — deprecated
+- Multiple licenses: `"license": "(MIT OR Apache-2.0)"`
+- Unpublished: `"license": "UNLICENSED"` together with `"private": true`
+- Never use the legacy `licenses` array or `license` object (`{ "type": ..., "url": ... }`) — deprecated
 
-2. `pyproject.toml` — ใช้ PEP 639 format (string + `license-files`):
+2. `pyproject.toml` — use the PEP 639 format (string + `license-files`):
 
 ```toml
 [project]
@@ -90,35 +90,35 @@ license = "MIT"
 license-files = ["LICENSE*"]
 ```
 
-- ห้ามใช้ table แบบเก่า `license = { text = "MIT" }` หรือ `license = { file = "LICENSE" }` — deprecated ตาม PEP 639
-- รองรับใน setuptools >=77.0.3, hatchling >=1.27.0, flit-core >=3.12, pdm-backend >=2.4.0, poetry-core >=2.2.0, uv-build >=0.7.19 — ถ้า build backend เก่ากว่านี้ให้อัปเกรดก่อน
+- Never use the legacy table forms `license = { text = "MIT" }` or `license = { file = "LICENSE" }` — deprecated under PEP 639
+- Supported in setuptools >=77.0.3, hatchling >=1.27.0, flit-core >=3.12, pdm-backend >=2.4.0, poetry-core >=2.2.0, uv-build >=0.7.19 — if your build backend is older, upgrade it first
 
-3. `Cargo.toml` — ใช้ `license = "MIT"` (SPDX expression) หรือ `license-file = "LICENSE"` สำหรับ license ที่ไม่มีใน SPDX
+3. `Cargo.toml` — use `license = "MIT"` (an SPDX expression), or `license-file = "LICENSE"` for a license not listed in SPDX
 
-4. ตรวจสอบว่าค่าใน manifest ตรงกับ `LICENSE` file
+4. Verify that the manifest value matches the `LICENSE` file
 
 ## Rules
 
-- ใช้ `LICENSE` (ไม่มี extension) เป็นชื่อไฟล์ อยู่ที่ root directory
-- ใช้ SPDX license identifier/expression เสมอ — ดู list ที่ `https://spdx.org/licenses`
-- ระบุ copyright holder และปีให้ถูกต้อง
-- ระบุ license ใน package manifest ให้ตรงกับ `LICENSE` file
-- Project ที่ไม่มี license = ไม่มีสิทธิ์ใช้งานโดย default (ดู `https://choosealicense.com/no-permission/`)
-- อ้างอิง `https://choosealicense.com` สำหรับเลือก license
+- Use `LICENSE` (no extension) as the filename, located at the root directory
+- Always use an SPDX license identifier/expression — see the list at `https://spdx.org/licenses`
+- Fill in the copyright holder and year correctly
+- Declare the license in the package manifest to match the `LICENSE` file
+- A project with no license = no usage rights by default (see `https://choosealicense.com/no-permission/`)
+- Reference `https://choosealicense.com` to pick a license
 
-- ใช้ `/follow-agents-md` ถ้าจำเป็น
-- ใช้ `/follow-tasks` ถ้าจำเป็น
-- ใช้ `/publish-package-to-registry` ถ้าจำเป็น
-- ใช้ `/update-readme-md` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-agents-md` if needed
+- Use `/follow-tasks` if needed
+- Use `/publish-package-to-registry` if needed
+- Use `/update-readme-md` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
+- Use /update-docs if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 
 ## Expected Outcome
 
-- `LICENSE` file อยู่ที่ root directory พร้อม license text ที่ถูกต้อง
-- Copyright holder และปีถูกต้อง
-- Package manifest ใช้ SPDX expression ตรงกับ `LICENSE` file
-- ไม่มี deprecated license format (`licenses` array, `license` object, pyproject table) เหลืออยู่
+- The `LICENSE` file sits at the root directory with the canonical license text
+- The copyright holder and year are correct
+- The package manifest's SPDX expression matches the `LICENSE` file
+- No deprecated license formats (`licenses` array, `license` object, pyproject table) remain

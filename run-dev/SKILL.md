@@ -1,6 +1,6 @@
 ---
 name: run-dev
-description: รัน development server และแก้ไขข้อผิดพลาด
+description: Run the development server and fix errors
 argument-hint: "[scope]"
 related:
   - check-open-ports
@@ -15,105 +15,105 @@ related:
 
 ## Goal
 
-รัน development server และแก้ไขข้อผิดพลาดที่เกิดขึ้น พร้อม watch terminal และ browser
+Run the development server and fix any errors that occur, with terminal and browser watching
 
 ## Scope
 
-ใช้สำหรับรัน development server ของ project ใดๆ พร้อมตรวจสอบและแก้ไข errors
+Used to run any project's development server with error checking and fixing
 
 ## Execute
 
-> Pre-Run: ทำ `/check-open-ports` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (dev)
+> Pre-Run: Always run `/check-open-ports` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (dev)
 
 ### 1. Check Configuration
 
 > Goal: Check Configuration
 
-1. ตรวจสอบ main config และ dev script ว่ามีการกำหนดไว้หรือไม่
-2. ถ้าไม่มี dev script ใน main config ต้องกำหนดให้
-3. ตรวจสอบว่า dependencies ที่จำเป็นถูกติดตั้งแล้ว
-4. ตรวจสอบว่า environment variables ที่จำเป็นถูกกำหนดแล้ว
+1. Check the main config and dev script to see if they are defined
+2. If the main config has no dev script, define one
+3. Verify the required dependencies are installed
+4. Verify the required environment variables are set
 
 ### 2. Run Dev Server
 
 > Goal: Run Dev Server
 
-1. รัน dev server ด้วยคำสั่งที่เหมาะสม (bun dev, npm run dev, cargo run)
-2. ถ้ามี errors ให้ทำ `/resolve-errors` เพื่อแก้ไข
-3. ติดตามและแก้ไขข้อผิดพลาดทันทีจนกว่าจะผ่าน
-4. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
+1. Run the dev server with the appropriate command (bun dev, npm run dev, cargo run)
+2. If there are errors, run `/resolve-errors` to fix them
+3. Track and fix errors immediately until they pass
+4. Verify the dev server starts successfully
 
 ### 3. Watch Terminal
 
 > Goal: Watch Terminal
 
-1. ทำ `/watch-terminal` เพื่อ watch terminal ทุก 5 วินาที
-2. ตรวจจับ errors และ warnings ใหม่ๆ อัตโนมัติ
-3. ถ้าพบ errors ให้ทำ `/resolve-errors` ทันที
+1. Run `/watch-terminal` to watch the terminal every 5 seconds
+2. Automatically detect new errors and warnings
+3. If errors are found, run `/resolve-errors` immediately
 
-### 4. Open Web (ถ้าเป็น web)
+### 4. Open Web (if it is a web project)
 
-> Goal: Open Web (ถ้าเป็น web)
+> Goal: Open Web (if it is a web project)
 
-1. ถ้าเป็น web project ให้ทำ `/open-web` เพื่อเปิด browser ที่ dev server URL
-2. ตรวจสอบว่า website เปิดได้และแสดงผลถูกต้อง
+1. For a web project, run `/open-web` to open the browser at the dev server URL
+2. Verify the website opens and renders correctly
 
-### 5. Watch Browser (ถ้าเป็น web)
+### 5. Watch Browser (if it is a web project)
 
-> Goal: Watch Browser (ถ้าเป็น web)
+> Goal: Watch Browser (if it is a web project)
 
-1. ถ้าเป็น web project ให้ทำ `/watch-browser-and-fix` เพื่อตรวจสอบ browser
-2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
-3. ทดสอบ features หลักทำงานได้
+1. For a web project, run `/watch-browser-and-fix` to inspect the browser
+2. Verify the dev server really works through the browser
+3. Test that the main features work
 
 ### 6. Test Usage
 
-> Goal: ทดสอบ flow การใช้งานสำคัญ
+> Goal: Test the key usage flows
 
-1. ทำ `/test-usage` เพื่อทดสอบ features หลัก
-2. ถ้าพบปัญหา → ทำ `/watch-browser-and-fix` หรือ `/resolve-errors`
-3. ยืนยันว่า user flow สำคัญทำงานได้
+1. Run `/test-usage` to test the main features
+2. If problems are found → run `/watch-browser-and-fix` or `/resolve-errors`
+3. Confirm the key user flows work
 
 ### 7. Verify
 
 > Goal: Verify
 
-1. ทำ `/run-verify`
-2. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
-3. ตรวจสอบว่า services ที่เกี่ยวข้องทำงานปกติ
-4. ยืนยันว่าไม่มี runtime errors ใน console
+1. Run `/run-verify`
+2. Confirm there are no critical errors blocking operation
+3. Check that the related services work normally
+4. Confirm there are no runtime errors in the console
 
 ### 8. Report
 
 > Goal: Report
 
-1. ทำ `/report` เพื่อแสดง terminal output
-2. สรุปสถานะ dev server และ issues ที่เหลือ
+1. Run `/report` to show the terminal output
+2. Summarize the dev server status and remaining issues
 
 ## Rules
 
 ### 1. Runtime Selection
 
-- ใช้คำสั่งที่เหมาะสมกับ runtime (bun dev, npm run dev, cargo run)
-- ตรวจสอบ ecosystem จาก package manifest ก่อนเลือกคำสั่ง
+- Use the command that fits the runtime (bun dev, npm run dev, cargo run)
+- Check the ecosystem from the package manifest before choosing a command
 
 ### 2. Error Resolution
 
-- ทำ `/resolve-errors` เมื่อพบ error
-- แก้ที่ root cause ไม่ใช่ symptoms
-- ตรวจสอบว่า dev server เริ่มต้นสำเร็จก่อน watch
+- Run `/resolve-errors` when an error is found
+- Fix the root cause, not the symptoms
+- Verify the dev server starts successfully before watching
 
 ### 3. Watch Strategy
 
-- ทำ `/open-web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
-- ทำ `/watch-terminal` สำหรับทุก project
-- ทำ `/watch-browser-and-fix` เฉพาะ web project
-- ถ้าพบ errors ระหว่าง watch ให้ทำ `/resolve-errors` ทันที
+- Run `/open-web` only for web projects to open the browser at the dev server URL
+- Run `/watch-terminal` for every project
+- Run `/watch-browser-and-fix` only for web projects
+- If errors are found while watching, run `/resolve-errors` immediately
 
 ## Expected Outcome
 
-- Development server ทำงานได้
-- ไม่มี critical errors
-- Terminal ถูก watch ต่อเนื่อง
-- Browser แสดงผลถูกต้อง (ถ้าเป็น web)
-- Features หลักทำงานได้
+- Development server works
+- No critical errors
+- Terminal is continuously watched
+- Browser renders correctly (if it is a web project)
+- Main features work

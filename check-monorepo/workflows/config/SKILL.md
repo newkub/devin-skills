@@ -1,6 +1,6 @@
 ---
 name: check-monorepo-config
-description: ตรวจ workspace config consistency — declared workspaces vs dirs จริง, manifest coherence
+description: Check workspace config consistency: declared workspaces vs actual dirs, manifest coherence
 argument-hint: "[workspace-or-package]"
 related:
   - follow-monorepo
@@ -10,55 +10,55 @@ related:
 
 ## Goal
 
-ตรวจ consistency ของ monorepo config — workspace globs ตรง dirs จริง, manifests สอดคล้องกัน, tool config ไม่ drift
+Check monorepo config consistency — workspace globs match real directories, manifests agree with each other, and tool config does not drift.
 
 ## Scope
 
-- ใช้เมื่อ `/check-monorepo` dispatch มาที่ `config` หรือเรียกเดี่ยวๆ
-- ครอบคลุม: `package.json` workspaces, `pnpm-workspace.yaml`, `turbo.json`, `nx.json`, `.moon/*`, `lerna.json`, `Cargo.toml` workspace
-- Read-only: รายงาน — แก้ผ่าน `/update-config` หรือ `/follow-monorepo`
+- Use when `/check-monorepo` dispatches to `config`, or call it standalone
+- Covers: `package.json` workspaces, `pnpm-workspace.yaml`, `turbo.json`, `nx.json`, `.moon/*`, `lerna.json`, `Cargo.toml` workspace
+- Read-only: report only — fix via `/update-config` or `/follow-monorepo`
 
 ## Execute
 
 ### 1. Declared Vs Actual
 
-> Goal: globs ที่ declare ตรงกับ dirs ที่มี
+> Goal: Declared globs match existing directories
 
-1. อ่าน workspace patterns จาก `package.json`/`pnpm-workspace.yaml`/`.moon/workspace.yml`
-2. expand globs เทียบ dirs จริง — flag dirs ที่ไม่ถูก pattern ครอบ (unmanaged packages)
-3. flag patterns ที่ไม่ match อะไรเลย (dead globs)
+1. Read workspace patterns from `package.json`/`pnpm-workspace.yaml`/`.moon/workspace.yml`
+2. Expand the globs against real directories — flag dirs not covered by any pattern (unmanaged packages)
+3. Flag patterns that match nothing (dead globs)
 
 ### 2. Manifest Coherence
 
-> Goal: package manifests สอดคล้องกัน
+> Goal: Package manifests are coherent with each other
 
-1. ตรวจ `name` fields ไม่ซ้ำข้าม packages
-2. ตรวจ internal deps ใช้ workspace protocol ถูก (`workspace:*`, `catalog:`) ไม่ pin version แข็ง
-3. ตรวจ `packageManager` field ตรงกันทุก package และตรง lockfile จริง
-4. flag root `package.json` ที่มี deps ที่ควรอยู่ใน package ย่อย (หรือกลับกัน)
+1. Check that `name` fields are unique across packages
+2. Check that internal deps use the proper workspace protocol (`workspace:*`, `catalog:`) instead of hard-pinned versions
+3. Check that the `packageManager` field agrees across all packages and matches the actual lockfile
+4. Flag a root `package.json` holding deps that belong in a sub-package (or vice versa)
 
 ### 3. Tool Config Consistency
 
-> Goal: monorepo tool configs ไม่ขัดกัน
+> Goal: Monorepo tool configs do not conflict
 
-1. ถ้ามีหลาย tool markers (`turbo.json` + `.moon/` + `nx.json`) → flag ambiguity ว่าตัวไหน canonical
-2. ตรวจ shared config inheritance: `tsconfig.base.json`, shared eslint/biome config ถูก extends ทุก package
-3. บันทึก findings พร้อม evidence
+1. If multiple tool markers exist (`turbo.json` + `.moon/` + `nx.json`) → flag the ambiguity over which one is canonical
+2. Check shared config inheritance: `tsconfig.base.json` and shared eslint/biome config are extended by every package
+3. Record findings with evidence
 
 ### 4. Report
 
-> Goal: สรุป config health
+> Goal: Summarize config health
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Config`, `Issue`, `Severity`, `Fix`
-2. แนะนำ: แก้ globs, รวม tool config, ใช้ workspace protocol
+1. Use `/report` with columns: `No.`, `Config`, `Issue`, `Severity`, `Fix`
+2. Recommend: fix globs, consolidate tool config, use the workspace protocol
 
 ## Rules
 
-- ทุก finding ต้องมี evidence (file path, glob, package name)
-- unmanaged package dir = High (build อาจไม่ครอบ); dead glob = Low; tool ambiguity = Medium
-- แยก "ตั้งใจ exclude" (มี `.npmrc`/ignore comment) ออกจาก "ลืมครอบ"
+- Every finding needs evidence (file path, glob, package name)
+- Unmanaged package dir = High (the build may not cover it); dead glob = Low; tool ambiguity = Medium
+- Distinguish "intentional excludes" (`.npmrc`/ignore comment present) from "accidentally uncovered"
 
 ## Expected Outcome
 
-- รายการ declared-vs-actual mismatches พร้อม severity
-- Manifest/tool config drift ที่ต้อง sync
+- List of declared-vs-actual mismatches with severity
+- Manifest/tool config drift that needs syncing

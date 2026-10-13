@@ -1,6 +1,6 @@
 ---
 name: update-devin-project-references
-description: gen website.md/api.md/cli.md เป็นตาราง markdown จาก source ด้วย ast-grep + crw map — deterministic
+description: gen website.md/api.md/cli.md as markdown tables from source via ast-grep + crw map — deterministic
 argument-hint: "[website|api|cli]"
 related:
   - follow-tool-crw
@@ -15,113 +15,113 @@ related:
 
 ## Goal
 
-สร้าง CLI (refs-cli) ที่เมื่อ run แล้ว generate reference files เป็นตาราง markdown:
+Build a CLI (refs-cli) that, when run, generates reference files as markdown tables:
 
-1. `website.md` — ทุก route ทุก segment จาก `crw map`
-2. `api.md` — dependencies, exported symbols, endpoints จาก source และ `.d.ts` ด้วย ast-grep programmatic
-3. `cli.md` — commands และ flags จาก commander/clap ด้วย ast-grep
+1. `website.md` — every route, every segment, from `crw map`
+2. `api.md` — dependencies, exported symbols, endpoints from source and `.d.ts` via programmatic ast-grep
+3. `cli.md` — commands and flags from commander/clap via ast-grep
 
-รองรับหลายภาษา (ts/tsx/rust, เพิ่มภาษาอื่นได้ที่ `langs.ts`) และ output เป็น deterministic table (sort + dedupe) — re-run แล้ว diff นิ่ง
+Supports multiple languages (ts/tsx/rust, add more in `langs.ts`) and emits deterministic tables (sort + dedupe) — re-run and the diff stays clean
 
 ## Scope
 
-- ใช้กับ project ใดก็ได้โดย `--root <dir>` — ไม่ได้จำกัดเฉพาะ skills repo นี้
-- สร้างไฟล์ลง `.devin/references/` (override ด้วย `--out`) — เป็น generated artifact ห้าม edit มือ
-- api/cli ทำงาน offline จาก source ล้วนๆ; website ต้องมี site ที่ serve อยู่จริง + `--url`
-- ไม่ครอบครอง content writing — ส่งต่อ `/update-docs` / `/follow-tool-vitepress` เมื่อเอา refs ไปเขียน docs ต่อ
+- Works with any project via `--root <dir>` — not limited to this skills repo
+- Writes files into `.devin/references/` (override with `--out`) — a generated artifact, never edit by hand
+- api/cli run fully offline from source; website needs a live served site + `--url`
+- Does not own content writing — hand off to `/update-docs` / `/follow-tool-vitepress` when using the refs to write docs
 
 ## Execute
 
 ### 1. Prerequisites
 
-> Goal: ตรวจ tool ที่ refs-cli ต้องการ
+> Goal: check the tools refs-cli needs
 
-1. ต้องการ `bun`, `ast-grep` และ (เฉพาะ website domain) `crw`
-2. ตรวจด้วย:
+1. Requires `bun`, `ast-grep`, and (website domain only) `crw`
+2. Check with:
 
 ```bash
 bun --version
 ast-grep --version
-crw --version   # เฉพาะ website; ถ้ายังไม่มี → /follow-tool-crw (`curl -fsSL https://fastcrw.com/install | sh`)
+crw --version   # website only; if missing → /follow-tool-crw (`curl -fsSL https://fastcrw.com/install | sh`)
 ```
 
 ### 2. Generate api + cli (offline)
 
-> Goal: สร้างตาราง symbols/endpoints/commands/flags จาก source
+> Goal: build the symbols/endpoints/commands/flags tables from source
 
 ```bash
 bun <skill-dir>/scripts/refs-cli/index.ts api cli --root <project-dir> --dry-run
 ```
 
-1. `--dry-run` พิมพ์ markdown ออกมาในแชทก่อน — review ว่าตารางไม่ว่าง/ไม่มี junk
-2. พอใจแล้วลบ `--dry-run` เพื่อเขียนไฟล์จริงลง `<root>/.devin/references/`
-3. ไม่ระบุ domain → default `api cli`
+1. `--dry-run` prints the markdown to the chat first — review that the tables aren't empty/junk-free
+2. Once satisfied, drop `--dry-run` to write the real files into `<root>/.devin/references/`
+3. No domain specified → defaults to `api cli`
 
 ### 3. Generate website.md (crw)
 
-> Goal: ผัง route ทั้งหมดของ site ด้วย `crw map`
+> Goal: map the site's full route tree with `crw map`
 
 ```bash
 bun <skill-dir>/scripts/refs-cli/index.ts website --url https://staging.example.com --root <project-dir>
 ```
 
-1. Site ต้องเข้าถึงได้ (dev server, preview, หรือ production)
-2. ถ้า `crw` ยังไม่ได้ setup → รัน `crw setup` ก่อน (ดู `/follow-tool-crw`)
-3. ตารางที่ได้: `URL | Path | Segments | Depth` ทุก URL ที่ map เจอ
+1. The site must be reachable (dev server, preview, or production)
+2. If `crw` isn't set up yet → run `crw setup` first (see `/follow-tool-crw`)
+3. Resulting table: `URL | Path | Segments | Depth` for every URL the map finds
 
 ### 4. Extend Languages
 
-> Goal: เพิ่มภาษาใหม่ (เช่น go, python, kotlin)
+> Goal: add a new language (e.g. go, python, kotlin)
 
-1. เพิ่ม entry ใน `scripts/refs-cli/langs.ts` (`id`, `glob`, `sg` = ast-grep language)
-2. เพิ่ม pattern table ใน `api.ts` (`*_SYMBOL_PATTERNS`) และ `cli.ts` ตามโครงเดิม
-3. probe pattern กับ fixture เล็กก่อนเสมอ (`ast-grep run -p <pattern> -l <lang> --json <files>`) — ดู `/use-astgrep`
-4. ถ้า pattern ไม่ match (syntax ต่างไป เช่น return-type arrow ใน rust) → เพิ่ม variant ของ pattern อย่าบังคับ pattern เดียวครอบทุก case
+1. Add an entry in `scripts/refs-cli/langs.ts` (`id`, `glob`, `sg` = ast-grep language)
+2. Add a pattern table in `api.ts` (`*_SYMBOL_PATTERNS`) and `cli.ts` following the existing structure
+3. Always probe a pattern against a small fixture first (`ast-grep run -p <pattern> -l <lang> --json <files>`) — see `/use-astgrep`
+4. If a pattern doesn't match (different syntax, e.g. the return-type arrow in rust) → add a pattern variant; don't force one pattern to cover every case
 
 ### 5. Verify Output
 
-> Goal: ยืนยัน table ถูกรวมทั้งครบ
+> Goal: confirm the tables are correct and complete
 
-1. รันคำสั่งเดิมซ้ำ → ไฟล์ต้องไม่ต่าง (deterministic check)
-2. เปิด `api.md`/`cli.md` เทียบกับ source จริง 1-2 rows (symbol name, file, line)
-3. ตรวจ coverage: section ว่าง (`_No entries._`) → project อาจไม่มี route/CLI จริง หรือ pattern ครบ → เพิ่ม pattern ตาม step 4
-4. ถ้าต้องตรวจ type/API surface ลึกกว่าตาราง → ส่งต่อ `/check-types-definition`
+1. Re-run the same command → the files must be identical (deterministic check)
+2. Open `api.md`/`cli.md` and compare 1-2 rows against the real source (symbol name, file, line)
+3. Check coverage: an empty section (`_No entries._`) → the project may genuinely have no route/CLI, or patterns are incomplete → add patterns per step 4
+4. If a deeper type/API surface check is needed than the table → hand off to `/check-types-definition`
 
 ## Rules
 
 ### 1. Generated Files Are Artifacts
 
-- ไฟล์ใน `.devin/references/` ห้ามแก้ไขด้วยมือ — แก้ที่ source แล้ว re-run
-- ห้าม commit generated refs ที่ stale — re-run ก่อน ship เสมอ (ตรวจด้วย `/check-should-update`)
-- เพิ่ม `.devin/references` ใน `.gitignore` หรือ commit ทั้งโฟลเดอร์แบบตั้งใจ เลือกเอาเชิงเดียวต่อ project
+- Files in `.devin/references/` must never be hand-edited — fix the source and re-run
+- Never commit stale generated refs — always re-run before ship (check with `/check-should-update`)
+- Either add `.devin/references` to `.gitignore` or deliberately commit the whole folder — pick one approach per project
 
 ### 2. Deterministic Output
 
-- ทุกตาราง sort + dedupe ใน `render.table` แล้ว — ห้ามใส่ row ที่ขึ้นกับ time/path สัมบูรณ์
-- ใช้ path เทียบ `--root` แบบ POSIX เท่านั้น
-- ดู principle: `/follow-deterministic`
+- Every table is already sorted + deduped in `render.table` — never add a row that depends on absolute time/path
+- Use paths relative to `--root` in POSIX form only
+- See the principle: `/follow-deterministic`
 
 ### 3. Pattern Discipline (ast-grep)
 
-- ทุก pattern ต้อง probe กับ fixture ก่อน commit เข้า `api.ts`/`cli.ts`
-- pattern ที่ error → `sgFind` ข้ามเงียบๆ; ถ้า table ว่างผิดปกติให้ suspect pattern ไม่ใช่ suspect project
-- endpoint ต้อง filter สองชั้น: method ∈ HTTP methods และ path ขึ้นต้น `/` — กัน false positive จาก `.get(key)` ของ Map/cache
+- Every pattern must be probed against a fixture before committing into `api.ts`/`cli.ts`
+- A pattern that errors → `sgFind` skips it silently; if a table is oddly empty, suspect the pattern, not the project
+- Endpoints must be filtered on two levels: method ∈ HTTP methods and path starting with `/` — guards against false positives from a Map/cache's `.get(key)`
 
 ### 4. Boundaries
 
-- website domain ใช้ `crw map` เท่านั้น — interactive browsing → `/use-agent-browser`
-- content/docs writing ต่อจาก refs → `/update-docs` ไม่เขียนทับลง `.devin/references`
-- review ความสอดคล้อง refs-vs-code → `/deep-review` domain `review-docs`
+- The website domain uses `crw map` only — interactive browsing → `/use-agent-browser`
+- content/docs writing from refs → `/update-docs`, never write back over `.devin/references`
+- review of refs-vs-code consistency → `/deep-review` domain `review-docs`
 
 ### 5. Output Format
 
-- ตารางทุกตารางมี header ชัด: `File` และ `Line` (1-based) ให้ click ไปถึง source ได้
-- column details ดู `references/output-format.md`
-- CLI flags ครบดู `references/cli.md`
+- Every table has clear headers: `File` and `Line` (1-based) so you can click through to source
+- Column details: see `references/output-format.md`
+- Full CLI flags: see `references/cli.md`
 
 ## Expected Outcome
 
-- `website.md`/`api.md`/`cli.md` เป็นตาราง markdown ครบถ้วน deterministic ใน `.devin/references/`
-- re-run ได้ผลเท่าเดิม diffสะอาด
-- เพิ่มภาษาใหม่ได้ด้วยการแก้ `langs.ts` + pattern table ที่เดียว
-- พร้อมส่งต่อ `/update-docs`, `/check-types-definition`, `/deep-review` สำหรับงานถัดไป
+- `website.md`/`api.md`/`cli.md` are complete, deterministic markdown tables in `.devin/references/`
+- Re-running gives the same result, clean diff
+- Adding a new language only requires editing `langs.ts` + a pattern table in one place
+- Ready to hand off to `/update-docs`, `/check-types-definition`, `/deep-review` for the next task

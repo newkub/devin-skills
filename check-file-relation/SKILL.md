@@ -1,6 +1,6 @@
 ---
 name: check-file-relation
-description: ตรวจ file relations (imports) + concat ทุกไฟล์หรือเฉพาะไฟล์ที่เกี่ยวข้องเป็น output เดียว — Rust CLI, multi-language + custom regex
+description: Check file import relations + concat all or related files into one output — Rust CLI, custom regex
 argument-hint: "<dir> [--all|--from <file>|--summary|--json] [--ext|--include|--order|--pattern|--max-lines]"
 related:
   - read-all-files
@@ -16,119 +16,119 @@ related:
 
 ## Goal
 
-Rust CLI ตรวจ dependency graph ระหว่างไฟล์จาก import statements (TS/JS, Rust, Go, Python, Java, Kotlin, C#, Vue, Svelte) + custom regex — และ concat ไฟล์เป็น output เดียว `===== <path> =====` + content (repomix-style) สำหรับ feed เข้า LLM/review — engine หลักของ `/read-all-files`
+Rust CLI that detects the dependency graph between files from import statements (TS/JS, Rust, Go, Python, Java, Kotlin, C#, Vue, Svelte) + custom regex — and concatenates files into a single output `===== <path> =====` + content (repomix-style) for feeding into an LLM/review — the core engine of `/read-all-files`
 
 ## Scope
 
-- Read-only analysis — ไม่แก้ไขไฟล์ที่ scan
+- Read-only analysis — never modifies the scanned files
 - Built-in extractors: `import`/`export from`/`require`/dynamic `import()` (JS/TS family), `use`/`mod`/`crate::`/`super::` (Rust), `import` (Go), `import`/`from x import` (Python), `import` (Java/Kotlin), `using` (C#)
-- Custom patterns ผ่าน `--pattern '<regex>'` (repeatable, capture group แรก = module specifier)
-- Resolve relative/`crate::`/`@/`/`~/` paths ไปยังไฟล์จริง (เติม extension, `index.*`, `mod.rs`, `__init__.py`)
-- Source เดียว: `src/main.rs` + `Cargo.toml` — deps: `ignore`, `regex`, `serde`/`serde_json`, `globset`
+- Custom patterns via `--pattern '<regex>'` (repeatable, first capture group = module specifier)
+- Resolve relative/`crate::`/`@/`/`~/` paths to real files (filling in extensions, `index.*`, `mod.rs`, `__init__.py`)
+- Single source: `src/main.rs` + `Cargo.toml` — deps: `ignore`, `regex`, `serde`/`serde_json`, `globset`
 
 ## Execute
 
 ### 0. Build
 
-> Goal: compile binary (ครั้งแรกหรือหลังแก้ source)
+> Goal: compile the binary (first time or after editing source)
 
 ```bash
 cd <skill-dir> && cargo build --release
 # binary: <skill-dir>/target/release/check-file-relation.exe
 ```
 
-ตัวอย่างข้างล่างใช้ `cfr` แทน path binary
+The examples below use `cfr` in place of the binary path
 
 ### 1. Relation Map
 
-> Goal: ได้ dependency graph ของ directory
+> Goal: get the directory's dependency graph
 
 ```bash
-cfr <dir>                  # file → imports (resolved path หรือ [external])
-cfr src --summary          # top imported internal files เท่านั้น
-cfr src --json             # machine-readable graph สำหรับ downstream tooling
+cfr <dir>                  # file → imports (resolved path or [external])
+cfr src --summary          # top imported internal files only
+cfr src --json             # machine-readable graph for downstream tooling
 ```
 
 ### 2. Concat Files
 
-> Goal: output เดียวที่มีไฟล์ต่อกัน `===== <path> =====` + content
+> Goal: a single output with files concatenated as `===== <path> =====` + content
 
 ```bash
-cfr src --all                          # ทุกไฟล์ที่ match
+cfr src --all                          # all matching files
 cfr src --all --order smart            # config → entry → deps topo → rest
-cfr src --from src/index.ts            # เฉพาะไฟล์ที่ reachable จาก entry (default order = deps)
-cfr src --all --max-lines 250          # จำกัดบรรทัดต่อไฟล์
-cfr src --all --out bundle.txt         # เขียนลงไฟล์แทน stdout
+cfr src --from src/index.ts            # only files reachable from the entry (default order = deps)
+cfr src --all --max-lines 250          # limit lines per file
+cfr src --all --out bundle.txt         # write to a file instead of stdout
 ```
 
 ### 3. Filters
 
-> Goal: scope เฉพาะภาษา/กลุ่มไฟล์ที่ต้องการ
+> Goal: scope to just the languages/file groups you want
 
 ```bash
 cfr . --ext ts,tsx                            # extension filter
-cfr . --include "src/**/*.ts"                 # glob vs root-rel path (repeatable, csv ได้)
-cfr . --include "*.json" --include "*.toml"   # รวม non-source ด้วย (override --ext)
-cfr . --ext rs --no-ignore                    # รวม target/ dist/ ด้วย
+cfr . --include "src/**/*.ts"                 # glob vs root-rel path (repeatable, accepts csv)
+cfr . --include "*.json" --include "*.toml"   # include non-source files too (override --ext)
+cfr . --ext rs --no-ignore                    # include target/ dist/ too
 ```
 
 ### 4. Custom Import Patterns
 
-> Goal: รองรับ framework/import style ที่ built-in ไม่ครอบ
+> Goal: support framework/import styles the built-ins don't cover
 
 ```bash
 cfr src --pattern '#include\s+"([^"]+)"'
 cfr src --pattern 'from\s+([\w./-]+)\s+import' --ext py
 ```
 
-- `--pattern` ซ้ำได้หลายอัน — merge กับ built-in extractor ของ extension นั้น
-- Capture group แรกต้องเป็น module specifier/path
+- `--pattern` can be repeated — merges with the built-in extractor for that extension
+- The first capture group must be the module specifier/path
 
 ### 5. Options Reference
 
-| Flag | Argument | ความหมาย |
+| Flag | Argument | Meaning |
 |------|----------|----------|
 | (default) | — | relation map `file → imports` |
-| `--all` | — | concat ทุกไฟล์ที่ match |
-| `--from` | `<file>` | concat เฉพาะ entry + transitive internal deps (default `--order deps`) |
+| `--all` | — | concat all matching files |
+| `--from` | `<file>` | concat only the entry + transitive internal deps (default `--order deps`) |
 | `--summary` | — | stats + top imported internal files |
 | `--json` | — | JSON `{root, files, edges, internal, graph}` |
-| `--ext` | `<csv>` | filter นามสกุล (default: `ts,tsx,js,jsx,mts,cts,rs,go,py,java,kt,kts,cs,vue,svelte`) |
-| `--include` | `<glob>` | match root-rel path — repeatable/csv; override `--ext` เพื่อ match non-source (`*.json`, `*.toml`) ได้ |
+| `--ext` | `<csv>` | filter extensions (default: `ts,tsx,js,jsx,mts,cts,rs,go,py,java,kt,kts,cs,vue,svelte`) |
+| `--include` | `<glob>` | match root-rel path — repeatable/csv; override `--ext` to match non-source files (`*.json`, `*.toml`) |
 | `--pattern` | `<regex>` | custom import matcher, capture group 1 = specifier (repeatable) |
-| `--order` | `alpha\|deps\|smart` | concat order — `alpha` ตามชื่อ, `deps` topo (deps ก่อน), `smart` = config → entry → deps → rest |
-| `--max-lines` | `<n>` | truncate แต่ละไฟล์ใน concat modes |
-| `--no-ignore` | — | รวม `node_modules`, `.git`, `target`, `dist`, `build`, ... |
-| `--out` | `<file>` | เขียน output ลงไฟล์แทน stdout |
+| `--order` | `alpha\|deps\|smart` | concat order — `alpha` by name, `deps` topological (deps first), `smart` = config → entry → deps → rest |
+| `--max-lines` | `<n>` | truncate each file in concat modes |
+| `--no-ignore` | — | include `node_modules`, `.git`, `target`, `dist`, `build`, ... |
+| `--out` | `<file>` | write output to a file instead of stdout |
 | `-h`, `--help` | — | usage |
 
 ### 6. Interpret Results
 
-> Goal: ใช้ผลลัพธ์ต่อ workflow หลัก
+> Goal: use the results in the main workflows
 
-1. `[external]` = bare specifier/npm package — ไม่ resolve เป็นไฟล์ใน tree
-2. Resolved path = internal edge — ใช้หา cycles, orphans, shared hubs
-3. `--json` graph ส่งต่อให้ `/deep-review` (domain `review-architecture`) หรือ script อื่นผ่าน `/use-scripts`
-4. Concat output ใช้โดย `/read-all-files` — `--order smart` สำหรับ mode `all`, `--from <entry>` สำหรับ related files
+1. `[external]` = bare specifier/npm package — not resolved to a file in the tree
+2. Resolved path = internal edge — used to find cycles, orphans, shared hubs
+3. Pass the `--json` graph on to `/deep-review` (domain `review-architecture`) or other scripts via `/use-scripts`
+4. The concat output is used by `/read-all-files` — `--order smart` for `all` mode, `--from <entry>` for related files
 
 ## Rules
 
 ### 1. Read-Only
 
-- ห้ามแก้ไขไฟล์ที่ scan — เขียนได้เฉพาะผ่าน `--out`/redirect
-- `--all`/`--from` output อาจมี credentials — ทำ `/check-secrets` ก่อน feed เข้า LLM
+- Never modify scanned files — writing only via `--out`/redirect
+- `--all`/`--from` output may contain credentials — run `/check-secrets` before feeding it to an LLM
 
 ### 2. Performance
 
-- ข้าม `node_modules`, `.git`, `target`, `dist`, `build`, `out`, `.next`, `.nuxt`, `.svelte-kit`, `coverage`, `.output`, `vendor`, `__pycache__` เป็น default (`--no-ignore` ถ้าต้องการ)
-- codebase ใหญ่มาก → scope ด้วย `--ext`, `--include`, path ย่อย หรือ `--max-lines`
+- Skips `node_modules`, `.git`, `target`, `dist`, `build`, `out`, `.next`, `.nuxt`, `.svelte-kit`, `coverage`, `.output`, `vendor`, `__pycache__` by default (use `--no-ignore` if needed)
+- Very large codebase → scope with `--ext`, `--include`, sub-paths, or `--max-lines`
 
 ### 3. Accuracy
 
-- Regex extraction ไม่ใช่ full parser — import ใน comments, re-export chains, conditional imports, macro-generated mods อาจหลุด/เกิน
-- ต้องการ precision สูง → `/use-astgrep`, `/check-code-structure` (`sg outline --items imports`) หรือ compiler API (`tsc --listFiles`, `cargo modules`) ตาม `/check-my-global-cli` tool map
+- Regex extraction is not a full parser — imports in comments, re-export chains, conditional imports, and macro-generated mods may be missed or over-matched
+- Need higher precision → `/use-astgrep`, `/check-code-structure` (`sg outline --items imports`) or compiler APIs (`tsc --listFiles`, `cargo modules`) per the `/check-my-global-cli` tool map
 
 ## Expected Outcome
 
-- Relation map: `file → imports` พร้อม resolved path หรือ `[external]`; `--summary` = internal files ที่ถูก import มากสุด; `--json` = graph สำหรับ downstream tooling
-- Concat: output เดียว `===== path =====` + content ในลำดับ `alpha`/`deps`/`smart` หรือเฉพาะกลุ่ม related ผ่าน `--from` — พร้อม pipe/redirect/feed เข้า LLM
+- Relation map: `file → imports` with resolved paths or `[external]`; `--summary` = the most-imported internal files; `--json` = a graph for downstream tooling
+- Concat: a single `===== path =====` + content output in `alpha`/`deps`/`smart` order, or only the related set via `--from` — ready to pipe/redirect/feed into an LLM

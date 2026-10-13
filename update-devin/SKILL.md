@@ -1,6 +1,6 @@
 ---
 name: update-devin
-description: อัปเดต Devin config — MCP, rules, subagents, hooks ผ่าน top-level skills
+description: Update Devin config — MCP, rules, subagents, hooks via top-level skills
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills
@@ -15,12 +15,12 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ปลายทาง ตาม Devin config domain — parent ทำ routing เท่านั้น
+Dispatch to the target skill by Devin config domain — the parent only does routing
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
-- `update-devin-global-skills` ยังเป็น skill แยก (skills catalog lifecycle)
+- The argument is the domain; if omitted → use `/ask-me` to pick a domain
+- `update-devin-global-skills` remains a separate skill (skills catalog lifecycle)
 
 ## Execute
 
@@ -36,21 +36,21 @@ Dispatch ไป skill ปลายทาง ตาม Devin config domain — pa
 | `project-mcp` | /update-devin-project-mcp — project-level MCP config |
 | `project-rules` | /update-astgrep-rules — project-level ast-grep rules (`rules/` at root) |
 
-1. ระบุ domain จาก argument (เช่น `/update-devin-harness`)
-2. ถ้า domain รองรับ → ทำตาม `/update-devin-<domain>` ทั้ง flow
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Determine the domain from the argument (e.g. `/update-devin-harness`)
+2. If the domain is supported → follow the full `/update-devin-<domain>` flow
+3. If the domain is missing or unknown → use `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
-- หลังแก้ devin config → `/update-references` + verify ไม่มี stale refs
+- The parent only dispatches — never duplicate the target skill's workflow
+- After changing devin config → `/update-references` + verify there are no stale refs
 
-- ใช้ /list-devin ถ้าจำเป็น
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
-- ใช้ /use-subagents ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /list-devin if needed
+- Use /update-devin-global-subagents if needed
+- Use /use-subagents if needed
+- Use /deep-validate if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ปลายทาง ที่ตรง domain แล้วอัปเดต config ตาม flow นั้น
+- The caller is dispatched to the target skill matching the domain and the config is updated via that flow

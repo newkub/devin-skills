@@ -1,6 +1,6 @@
 ---
 name: test-mutation
-description: รัน mutation tests — วัด assertion strength ด้วย mutants (kill rate) complement coverage
+description: Run mutation tests — measure assertion strength with mutants (kill rate), complementing coverage
 argument-hint: "[scope]"
 related:
   - run-test
@@ -18,42 +18,42 @@ related:
 
 ## Goal
 
-รัน mutation tests — วัด assertion strength ด้วย mutants (kill rate) complement coverage — signals: critical logic, `stryker.conf`, mutation config; tools: `stryker` (JS/TS — `/follow-tool-stryker-mutator`), `cargo-mutants` (Rust), `mutmut` (Python)
+Run mutation tests — measure assertion strength with mutants (kill rate), complementing coverage — signals: critical logic, `stryker.conf`, mutation config; tools: `stryker` (JS/TS — `/follow-tool-stryker-mutator`), `cargo-mutants` (Rust), `mutmut` (Python)
 
 ## Scope
 
-ใช้เมื่อต้องรัน mutation tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test mutation`)
+Use when running mutation tests — run-only, does not modify tests (deep analysis → `/deep-test mutation`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect
 
-`stryker.conf.*`, `mutmut` config, `cargo-mutants`; JS/TS → `bunx stryker run`, Rust → `cargo mutants`, Python → `mutmut run`; กำหนด scope — mutation ช้า เลือก critical/highest-risk modules (payment, auth, domain logic); baseline unit suite fail → แก้ก่อน
+`stryker.conf.*`, `mutmut` config, `cargo-mutants`; JS/TS → `bunx stryker run`, Rust → `cargo mutants`, Python → `mutmut run`; define the scope — mutation is slow, so pick the critical/highest-risk modules (payment, auth, domain logic); baseline unit suite failing → fix it first
 
 ### 2. Run
 
-capture score (killed/survived/timeout/no-coverage); run นาน → blocking+timeout สูง หรือ incremental; บันทึก survived mutants พร้อม file:line + type
+Capture the score (killed/survived/timeout/no-coverage); long runs → higher blocking+timeout or incremental mode; record survived mutants with file:line + type
 
 ### 3. Classify
 
-survived + behavior เปลี่ยนจริง → assertion ขาด → `/update-tests`; survived + equivalent mutant → noise ไม่เขียน test เพิ่ม; mutant เผย dead code/bug → report หรือ `/resolve-errors`; วน assertions → รันใหม่ → score ต้องขึ้นจริง
+Survived + behavior genuinely changed → missing assertions → `/update-tests`; survived + equivalent mutant → noise, don't write extra tests; a mutant reveals dead code/a bug → report or `/resolve-errors`; strengthen assertions → rerun → the score must actually rise
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/mutation-test-<time>.md` — score before→after, survived เหลือ+เหตุผล, noise count; ผ่านหมด → `/run-verify`
+persist → `.devin/temp/report/<workspace>/mutation-test-<time>.md` — score before→after, survived remaining + reasons, noise count; all pass → `/run-verify`
 
 ## Rules
 
-- run-only (analysis ลึก → `/deep-test mutation`)
-- ไม่นับ equivalent mutants เป็น failures
-- ห้ามปรับ thresholds ลง — score ต่ำ = ข้อมูลจริง report
-- complement `/test-coverage` ไม่แทน
-- จำกัด scope ต่อรอบ
+- run-only (deep analysis → `/deep-test mutation`)
+- Don't count equivalent mutants as failures
+- Never lower thresholds — a low score is real data to report
+- Complements `/test-coverage`, doesn't replace it
+- Limit the scope per run
 
 ## Expected Outcome
 
-- Mutation score วัดได้ พร้อม survived mutants + file:line
-- Score before→after หลังเสริม assertions
-- Report persist ใน `.devin/temp/report/`
+- Mutation score measured, with survived mutants + file:line
+- Score before→after strengthening assertions
+- Report persisted in `.devin/temp/report/`

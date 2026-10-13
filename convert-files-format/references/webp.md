@@ -1,65 +1,64 @@
 # WebP Conversion
 
-แปลงรูปภาพ PNG/JPG/GIF เป็น `.webp` ด้วย `bunx` CLI อย่างรวดเร็ว
+Convert PNG/JPG/GIF images to `.webp` quickly with a `bunx` CLI.
 
 ## Scope
 
-- รับ input เป็นไฟล์หรือ directory
-- รองรับ quality, output directory, recursive
-- รองรับหลาย CLI ตามสภาพแวดล้อม
+- Accept input as a file or a directory
+- Supports quality, output directory, and recursive mode
+- Supports several CLIs depending on the environment
 
 ## Identify Input
 
-1. รับ input path จาก user
-2. ตรวจสอบว่าเป็นไฟล์หรือ directory
-3. ถ้าไฟล์ → ระบุนามสกุล `.png`, `.jpg`, `.jpeg`, `.gif`, `.tiff`
-4. ถ้า directory → ระบุว่า recursive หรือไม่
+1. Take the input path from the user
+2. Check whether it is a file or a directory
+3. If a file → identify the extension `.png`, `.jpg`, `.jpeg`, `.gif`, `.tiff`
+4. If a directory → determine whether to recurse
 
 ## Choose CLI
 
 1. Primary: `bunx lazywebp <input>`
-   - ไฟล์: `bunx lazywebp -q 85 photo.png`
-   - หลายไฟล์: `bunx lazywebp a.png b.png`
-   - directory: `bunx lazywebp -r -q 85 -o output/ images/`
+   - Single file: `bunx lazywebp -q 85 photo.png`
+   - Multiple files: `bunx lazywebp a.png b.png`
+   - Directory: `bunx lazywebp -r -q 85 -o output/ images/`
 2. Fallback: `bunx @nathievzm/lumi -i <input> -f .webp`
 3. Fallback: `bunx 2webp <input> --format=webp --output=<dir>`
-4. ถ้าไม่มี CLI ใดเลย → เขียน Bun script ด้วย `sharp`
+4. If no CLI is available → write a Bun script with `sharp`
 
 ## Run Conversion
 
-1. รันคำสั่งพร้อม quality ทีระบุ (default 85)
-2. ตรวจสอบ output path
-3. ถ้า input เป็น directory ให้ preserve structure
-4. รอจนกระทั่ง process เสร็จ
+1. Run the command with the specified quality (default 85)
+2. Check the output path
+3. If the input is a directory, preserve its structure
+4. Wait until the process finishes
 
 ## Validate
 
-1. ตรวจสอบไฟล์ output มีขนาด > 0
-2. เปิดดูหรือใช้ `file` command ตรวจ type
-3. รายงาน input/output paths และขนาดไฟล์
+1. Check that the output file size is > 0
+2. Open it or use the `file` command to verify the type
+3. Report the input/output paths and file sizes
 
 ## Rules
 
 ### Quality
 
 - default quality = 85
-- ถ้า user ไม่ระบุ quality ให้ใช้ 85
+- If the user gives no quality, use 85
 - quality 0-100
 
 ### Backup
 
-- ไม่ลบไฟล์ต้นฉบับโดย default
-- ถ้า user ต้องการ replace → ขอ confirm
+- Never delete the source file by default
+- If the user wants to replace → ask for confirmation
 
 ### Fallback Chain
 
-- ลอง `lazywebp` ก่อน
-- ถ้า fail → `lumi` หรือ `2webp`
-- สุดท้าย → `sharp` script
+- Try `lazywebp` first
+- On failure → `lumi` or `2webp`
+- Last resort → a `sharp` script
 
 ## Expected Outcome
 
-- ไฟล์ `.webp` ถูกสร้างจาก input
-- ขนาดไฟล์น้อยลงกว่าต้นฉบับ
-- รายงาน paths, quality, และ tool ทีใช้
-
+- A `.webp` file is created from the input
+- The output is smaller than the source
+- Report the paths, quality, and tool used

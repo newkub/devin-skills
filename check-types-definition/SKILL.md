@@ -1,6 +1,6 @@
 ---
 name: check-types-definition
-description: Inspect type definitions ของ lib/config เป็น CLI table — name, type, options, default, comment — รองรับ .d.ts (TS), Rust และ type-def formats อื่น
+description: Inspect lib/config types as a CLI table — name, type, options, default, comment — TS/Rust/other
 argument-hint: "<package-or-path> [--json]"
 related:
   - learn
@@ -14,62 +14,62 @@ related:
 
 ## Goal
 
-ดู type surface จริงของ library หรือ config type เป็น table เดียว — ชื่อ field, type, options (union/enum), default, comment — เพื่อเช็คว่า config/API มีอะไรให้ใช้และ default คืออะไร โดยไม่ต้องพึ่ง docs
+View a library's or config type's real type surface as a single table — field name, type, options (union/enum), default, comment — to check what the config/API offers and what its defaults are, without relying on docs
 
 ## Scope
 
-ใช้เมื่อต้องการ authoritative type surface:
+Use when you need an authoritative type surface:
 
-- config file ก่อนเขียน → เช็คว่า option ไหนมี default แล้ว (ใช้คู่กับ `/follow-default-config`)
-- library API surface จาก `.d.ts` ใน `node_modules` — types คือ source of truth ของ compile-time
-- รองรับ TypeScript `.d.ts`, Rust (`pub struct`/`enum` + doc comments/`#[serde(default)]`), และ type-def formats อื่น (JSON Schema, `.proto`) ตามที่มีใน project
-- docs ล้าสมัยหรือไม่ครบ → type definitions คือสัญญาจริง
+- config file before writing → check which options already have a default (use with `/follow-default-config`)
+- library API surface from `.d.ts` in `node_modules` — types are the compile-time source of truth
+- Supports TypeScript `.d.ts`, Rust (`pub struct`/`enum` + doc comments/`#[serde(default)]`), and other type-def formats (JSON Schema, `.proto`) as present in the project
+- Docs stale or incomplete → type definitions are the real contract
 
-ไม่ใช่เรียนรู้จาก web docs (ใช้ `/learn-from-web`) หรือ CLI binary (ใช้ `/learn-from-cli`)
+Not for learning from web docs (use `/learn-from-web`) or a CLI binary (use `/learn-from-cli`)
 
 ## Execute
 
 ### 1. Locate Definitions
 
-> Goal: หา type-definition entry ของ target
+> Goal: Find the target's type-definition entry
 
-1. รับ package name หรือ path จาก user
-2. TS: อ่าน `node_modules/<pkg>/package.json` — ดู `types`, `typings`, `exports["."].types`; ถ้าไม่มี bundled types → เช็ค `@types/<pkg>`
-3. Rust: หา `pub struct`/`pub enum` ใน crate source หรือ `cargo doc` JSON ถ้ามี
-4. Config schema: หา type/interface ของ config object (เช่น `defineConfig` param type)
+1. Take a package name or path from the user
+2. TS: read `node_modules/<pkg>/package.json` — look at `types`, `typings`, `exports["."].types`; if there are no bundled types → check `@types/<pkg>`
+3. Rust: find `pub struct`/`pub enum` in the crate source or `cargo doc` JSON if present
+4. Config schema: find the config object's type/interface (e.g. the `defineConfig` param type)
 
 ### 2. Extract Members
 
-> Goal: ได้ field-level data ครบ
+> Goal: Get complete field-level data
 
-1. parse members ของ interfaces/types/structs: `name`, `type`, optional marker (`?`)
-2. union/literal types → `options` column (เช่น `mode: 'a' | 'b'`)
-3. comments/JSDoc/doc comments เหนือ member → `comment` column; `@default`/`Default` impl/`#[serde(default)]` → `default` column
-4. `@deprecated` → flag ใน comment — อย่าแนะนำ member ที่ deprecated
+1. Parse the members of interfaces/types/structs: `name`, `type`, optional marker (`?`)
+2. union/literal types → the `options` column (e.g. `mode: 'a' | 'b'`)
+3. comments/JSDoc/doc comments above a member → the `comment` column; `@default`/`Default` impl/`#[serde(default)]` → the `default` column
+4. `@deprecated` → flag it in the comment — don't recommend a deprecated member
 
 ### 3. Render Table
 
-> Goal: CLI table เดียวอ่านรู้เรื่อง
+> Goal: A single readable CLI table
 
-1. ใช้ CLI: `bun run scripts/types-def.ts <path-or-package> [--json]` — auto-detect language จาก extension/content
+1. Use the CLI: `bun run scripts/types-def.ts <path-or-package> [--json]` — auto-detect the language from extension/content
 2. columns: `Name` | `Type` | `Options` | `Default` | `Comment`
-3. `--json` → machine-readable array; nested types expand เป็น sub-tables
-4. ถ้า parse ไม่ได้ด้วย CLI → extract manual ตาม step 2 แล้ว render table เอง
+3. `--json` → machine-readable array; nested types expand into sub-tables
+4. If the CLI can't parse it → extract manually per step 2 and render the table yourself
 
 ### 4. Report
 
-> Goal: สรุป surface ที่ใช้งานได้จริง
+> Goal: Summarize the usable surface
 
-สรุปตาม `/report`: public fields/options พร้อม defaults ที่ต้อง override, deprecated members ที่ต้องเลี่ยง, และ gaps ที่ docs ไม่บอก
+Summarize per `/report`: public fields/options with the defaults that must be overridden, deprecated members to avoid, and gaps the docs don't mention
 
 ## Rules
 
-- Type definitions คือ source of truth — ห้ามเดา options/defaults ที่ไม่ได้ declare
-- ทุก row ต้องมี evidence จาก definition จริง — `-` ถ้าไม่มีข้อมูล
-- Report-only — ห้ามแก้ไฟล์ config หรือ types ใน skill นี้ (override decisions อยู่ที่ `/follow-default-config`)
+- Type definitions are the source of truth — don't guess options/defaults that aren't declared
+- Every row needs evidence from the real definition — `-` when there's no data
+- Report-only — don't modify config files or types in this skill (override decisions live in `/follow-default-config`)
 
 ## Expected Outcome
 
-- Table ครบทุก member ของ type ที่ inspect: name/type/options/default/comment
-- รู้ชัดว่า option ไหนมี default แล้วไม่ต้องเขียน และ option ไหนต้องตั้งเอง
-- พร้อมใช้เป็น input ให้ `/follow-default-config` และ config authoring
+- A table covering every member of the inspected type: name/type/options/default/comment
+- Clear knowledge of which options have defaults and need no writing, and which must be set manually
+- Ready to use as input for `/follow-default-config` and config authoring

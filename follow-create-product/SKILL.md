@@ -1,6 +1,6 @@
 ---
 name: follow-create-product
-description: สร้าง product ครบวงจรจาก idea ถึง website พร้อม auth, payments, dashboard และ ship
+description: Build a product end to end from idea to website with auth, payments, dashboard, and ship
 argument-hint: "[product-idea]"
 related:
   - follow-secret-manager
@@ -21,16 +21,16 @@ related:
 
 ## Goal
 
-แปลง idea หรือ requirements เป็น product ทีพร้อมใช้งาน ครอบคลุม product spec, UX/UI, landing page, `/features`, `/pricing`, `/user`, `/dashboard`, auth, payments, และ ship
+Turn an idea or requirements into a ready-to-use product, covering product spec, UX/UI, landing page, `/features`, `/pricing`, `/user`, `/dashboard`, auth, payments, and ship
 
 ## Scope
 
-- ใช้กับ product ทีมี website, user pages, billing, และ dashboard
-- สร้าง product spec, user stories, และ roadmap ก่อนลงมือ build
-- เรียก `/follow-create-web` เพื่อสร้าง website project
-- เรียก `/follow-service-workos` สำหรับ auth
-- เรียก `/follow-service-stripe` สำหรับ payments, pricing, billing
-- เรียก `/ship-to-dev-branch` เมื่องานเสร็จ
+- Use for products with a website, user pages, billing, and a dashboard
+- Create the product spec, user stories, and roadmap before starting the build
+- Invoke `/follow-create-web` to create the website project
+- Invoke `/follow-service-workos` for auth
+- Invoke `/follow-service-stripe` for payments, pricing, billing
+- Invoke `/ship-to-dev-branch` when the work is done
 
 - Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-12)
 
@@ -41,155 +41,155 @@ related:
 | Argument | Workflow |
 |----------|----------|
 | `scaffold`, `setup` | `workflows/setup-scaffold/SKILL.md` — scaffold product structure (monorepo, packages) |
-| `deploy` | `workflows/deploy-mvp/SKILL.md` — deploy product MVP ไป platform + verify live URL |
+| `deploy` | `workflows/deploy-mvp/SKILL.md` — deploy the product MVP to a platform + verify the live URL |
 
-1. ถ้า argument ตรงกับ workflow → อ่าน `workflows/<arg>/SKILL.md` แล้วทำตาม flow
-2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ
+1. If the argument matches a workflow → read `workflows/<arg>/SKILL.md` and follow its flow
+2. If not specified → follow the normal Steps
 
 ### 1. Review Tech Stack And Understand Input
 
-> Goal: ตรวจสอบ tech stack และวิเคราะห์ product idea ก่อนสร้าง
+> Goal: Review the tech stack and analyze the product idea before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create product)
-4. รับ `product-idea`, requirements, หรือ feedback จาก user
-5. ระบุ target users และ personas
-6. ระบุ problems ทีจะแก้
-7. ระบุ value proposition
-8. ถ้า input กำกวม → ใช้ `/enhance-prompt` หรือ `/ask-me` ก่อน
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the rationale for the chosen stack and libraries for later reference (create product)
+4. Take `product-idea`, requirements, or feedback from the user
+5. Identify target users and personas
+6. Identify the problems to solve
+7. Identify the value proposition
+8. If the input is ambiguous → use `/enhance-prompt` or `/ask-me` first
 
 ### 2. Define Product Scope
 
-> Goal: กำหนดขอบเขต product
+> Goal: Define the product scope
 
-1. ระบุ core features
-2. ระบุ MVP scope
-3. ระบุ out-of-scope
-4. ระบุ success metrics
-5. ใช้ `/report` สรุป scope, priority, effort
+1. Identify core features
+2. Identify the MVP scope
+3. Identify what is out of scope
+4. Identify success metrics
+5. Use `/report` to summarize scope, priority, effort
 
 ### 3. Build Product Spec
 
-> Goal: เขียน product specification
+> Goal: Write the product specification
 
-1. Overview และ goals
-2. User personas และ use cases
-3. Feature list พร้อม priority
-4. User stories รูปแบบ `As a [user] I want [feature] so that [benefit]`
-5. Acceptance criteria สำหรับแต่ละ feature
-6. Metrics และ KPIs
+1. Overview and goals
+2. User personas and use cases
+3. Feature list with priority
+4. User stories in the form `As a [user] I want [feature] so that [benefit]`
+5. Acceptance criteria for each feature
+6. Metrics and KPIs
 
 ### 4. Create Roadmap
 
-> Goal: วางแผนการพัฒนา
+> Goal: Plan the development
 
-1. แบ่ง phase: `now`, `next`, `later`
-2. ระบุ dependencies ระหว่าง features
-3. ประเมิน effort แบบ rough (S/M/L)
-4. ใช้ `/report` สรุป roadmap
+1. Split into phases: `now`, `next`, `later`
+2. Identify dependencies between features
+3. Estimate effort roughly (S/M/L)
+4. Use `/report` to summarize the roadmap
 
 ### 5. Design UX And Pages
 
-> Goal: ออกแบบ UX/UI และ page structure
+> Goal: Design the UX/UI and page structure
 
-1. ใช้ `/follow-design-system` เพื่อกำหนด design principles
-2. ใช้ `/follow-lib-unocss` เพื่อติดตั้ง UnoCSS และสร้าง HSL theme tokens
-3. วาง page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
-4. ใช้ `/deep-review` ตรวจ layout, navigation, responsive, CTA
-5. สร้าง wireframe/sketch ด้วย `/report-uxui` ถ้าจำเป็น
+1. Use `/follow-design-system` to define design principles
+2. Use `/follow-lib-unocss` to install UnoCSS and create HSL theme tokens
+3. Plan the page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
+4. Use `/deep-review` to check layout, navigation, responsive, CTA
+5. Create wireframes/sketches with `/report-uxui` if needed
 
 ### 6. Create Website
 
-> Goal: สร้าง website project
+> Goal: Create the website project
 
-1. เรียก `/follow-create-web` พร้อม product spec และ page list
-2. สร้าง routes สำหรับ `/`, `/features`, `/pricing`, `/user`, `/dashboard`
-3. ใช้ `/follow-single-responsibility` ตรวจแต่ละ page/component
-4. ทดสอบ dev server และ build
+1. Invoke `/follow-create-web` with the product spec and page list
+2. Create routes for `/`, `/features`, `/pricing`, `/user`, `/dashboard`
+3. Use `/follow-single-responsibility` to check each page/component
+4. Test the dev server and build
 
 ### 7. Add Authentication
 
-> Goal: เพิ่มระบบ user auth
+> Goal: Add user auth
 
-1. เรียก `/follow-service-workos` ถ้าต้องการ SSO/Directory Sync
-2. หรือเรียก `/follow-lib-better-auth` สำหรับ auth ใน app
-3. สร้าง `/user` page แสดง profile, settings
-4. ปกป้อง `/dashboard` ด้วย auth guard
+1. Invoke `/follow-service-workos` if you need SSO/Directory Sync
+2. Or invoke `/follow-lib-better-auth` for in-app auth
+3. Create the `/user` page showing profile and settings
+4. Protect `/dashboard` with an auth guard
 
 ### 8. Add Payments
 
-> Goal: เพิ่ม billing และ pricing
+> Goal: Add billing and pricing
 
-1. เรียก `/follow-service-stripe`
-2. สร้าง `/pricing` page แสดง plans พร้อม CTA
-3. สร้าง `/user/billing` page สำหรับ manage subscription
-4. เชื่อม Stripe webhooks เข้ากับ `/dashboard`
+1. Invoke `/follow-service-stripe`
+2. Create the `/pricing` page showing plans with CTAs
+3. Create the `/user/billing` page for managing subscriptions
+4. Connect Stripe webhooks to `/dashboard`
 
 ### 9. Build Product Pages
 
-> Goal: สร้างเนื้อหาและ features บนแต่ละ page
+> Goal: Build content and features on each page
 
 1. `/` landing page: hero, value prop, social proof, CTA
-2. `/features`: feature list พร้อม screenshots/illustrations
+2. `/features`: feature list with screenshots/illustrations
 3. `/pricing`: plans, comparison, FAQ
 4. `/user`: profile, settings, billing shortcut
 5. `/dashboard`: overview, metrics, upgrade prompts
-6. ใช้ `/implement-to-production` เพื่อตรวจว่าไม่มี TODO/MOCK/placeholder
+6. Use `/implement-to-production` to verify there are no TODO/MOCK/placeholders
 
 ### 10. Ship
 
-> Goal: ส่งมอบ product
+> Goal: Deliver the product
 
-1. เรียก `/deep-validate` สำหรับ type, quality, security, cross-reference
-2. เรียก `/run-test all` ถ้ามี tests
-3. เรียก `/ship-to-dev-branch` เพื่อ commit และ deploy
-4. รายงาน product URL, features, และ next actions
+1. Invoke `/deep-validate` for types, quality, security, cross-reference
+2. Invoke `/run-test all` if tests exist
+3. Invoke `/ship-to-dev-branch` to commit and deploy
+4. Report the product URL, features, and next actions
 
 ## Rules
 
 ### 1. MVP First
 
-- สร้าง product spec ก่อน build
-- ลงมือ build ทีละ phase
-- ไม่ over-engineer ก่อน validate
+- Create the product spec before building
+- Build one phase at a time
+- Do not over-engineer before validating
 
 ### 2. User Centric
 
-- เน้น user problem และ benefit ในแต่ละ page
-- ทุก feature ควรมี user story และ acceptance criteria
-- ระบุ personas ชัดเจน
+- Focus on the user problem and benefit on each page
+- Every feature should have a user story and acceptance criteria
+- Define personas clearly
 
 ### 3. Page Conventions
 
-- `/` เป็น landing page
-- `/features` แสดงคุณสมบัติ
-- `/pricing` แสดงแผนและ CTA
-- `/user` สำหรับ profile และ billing
-- `/dashboard` สำหรับ overview หลัง login
+- `/` is the landing page
+- `/features` showcases capabilities
+- `/pricing` shows plans and CTAs
+- `/user` is for profile and billing
+- `/dashboard` is for the post-login overview
 
 ### 4. No Leaks
 
-- ไม่ hardcode API keys, secrets, credentials
-- ใช้ `/follow-secret-manager` สำหรับจัดการ secrets และ environment variables ทั้งหมด
-- ตรวจสอบ webhook signatures
+- Never hardcode API keys, secrets, credentials
+- Use `/follow-secret-manager` for all secrets and environment variable management
+- Verify webhook signatures
 
 ### 5. UX Quality
 
-- ใช้ `/deep-review` ก่อน ship
-- ทำ responsive, dark mode, accessible
-- ใช้ design tokens สม่ำเสมอ
+- Use `/deep-review` before shipping
+- Make it responsive, dark-mode ready, accessible
+- Use design tokens consistently
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (create product)
-- ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare Workers/Pages
+- Use /open-web-for-config-secret when needed (create product)
+- Use /follow-service-cloudflare when deploying on Cloudflare Workers/Pages
 
 ## Expected Outcome
 
-- Product spec ครบถ้วน
-- User stories พร้อม acceptance criteria
-- Roadmap แบ่ง phase
-- Website รันได้ด้วย pages ครบ
-- Auth และ payments ทำงาน
-- `/pricing`, `/user`, `/dashboard`, `/features` พร้อมใช้งาน
-- Product ถูก ship พร้อม URL และ next actions
+- Complete product spec
+- User stories with acceptance criteria
+- Phased roadmap
+- Website runs with all pages in place
+- Auth and payments work
+- `/pricing`, `/user`, `/dashboard`, `/features` are ready to use
+- The product is shipped with a URL and next actions
 

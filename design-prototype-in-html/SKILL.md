@@ -1,6 +1,6 @@
 ---
 name: design-prototype-in-html
-description: สร้าง interactive HTML prototype/mockup จาก design brief — single-file, เปิดด้วย /open-web
+description: Create an interactive HTML prototype/mockup from a design brief — single-file, /open-web
 argument-hint: "[brief-or-feature]"
 related:
   - report-html
@@ -13,58 +13,58 @@ related:
 
 ## Goal
 
-สร้าง interactive design prototype เป็น single-file HTML — render ผ่าน `/report-html` conventions (Tailwind CDN + Vue 3, theme toggle, interactive components) — เปิดด้วย `/open-web` ใน temp dir
+Create an interactive design prototype as single-file HTML — rendered per `/report-html` conventions (Tailwind CDN + Vue 3, theme toggle, interactive components) — opened with `/open-web` from a temp dir
 
 ## Scope
 
-ใช้เมื่อต้องการ prototype UI/flow ก่อน implement จริง — screen mockup, user flow, component states, responsive layouts
+Use when you need a UI/flow prototype before real implementation — screen mockups, user flows, component states, responsive layouts
 
-- ต้องการ prompt สำหรับ AI image/design gen → `/report-prompt-uxui-web-design`
-- ต้องการ visual report จากข้อมูลเดิม → `/visualize-in-web` หรือ `/report-html` โดยตรง
-- Production UI → implement ใน project จริง ไม่ใช่ skill นี้
+- Need a prompt for AI image/design generation → `/report-prompt-uxui-web-design`
+- Need a visual report from existing data → `/visualize-in-web` or `/report-html` directly
+- Production UI → implement in the real project, not this skill
 
 ## Execute
 
 ### 1. Gather Brief
 
-> Goal: รู้ว่าต้อง prototype อะไร
+> Goal: Know what to prototype
 
-1. ถ้า argument เป็น feature/route → เก็บ requirements: screens, components, interactions, states
-2. ไม่ชัดเจน → ทำ `/ask-me` (scope: screens เดียว/หลาย screens, device targets, fidelity)
-3. ระบุ data mock ที่ต้องการ — realistic sample data ไม่ใช่ lorem ipsum
+1. If the argument is a feature/route → gather requirements: screens, components, interactions, states
+2. Unclear → run `/ask-me` (scope: one screen or several, device targets, fidelity)
+3. Specify the needed mock data — realistic sample data, not lorem ipsum
 
 ### 2. Build Prototype
 
-> Goal: single-file HTML ที่ใช้งานจริงได้
+> Goal: A single-file HTML that actually works
 
-1. ทำ `/create-files-in-os-temp` — สร้าง `<temp>/prototype/index.html`
-2. ทำตาม `/report-html` conventions: `<!DOCTYPE html>` + Tailwind CDN + Vue 3 (`vue.global.js`) + dark mode toggle
-3. ใช้ interactive elements ตามที่ prototype ต้องการ: tabs, modals, drawers, hover states, form inputs, transitions — Vue `v-if`/`v-for`/`v-model`/`@click`
-4. หลาย screens → sticky nav/tab bar สลับ screens ในไฟล์เดียว (ไม่แยกไฟล์)
-5. Mobile view → responsive + device frame (rounded border + width เช่น `max-w-[390px]`) ถ้า brief ระบุ
-6. ใส่ annotations ได้ — badge/note ระบุว่าเป็น prototype (เช่น "mock data", "not wired")
+1. Run `/create-files-in-os-temp` — create `<temp>/prototype/index.html`
+2. Follow `/report-html` conventions: `<!DOCTYPE html>` + Tailwind CDN + Vue 3 (`vue.global.js`) + dark mode toggle
+3. Use interactive elements as the prototype requires: tabs, modals, drawers, hover states, form inputs, transitions — Vue `v-if`/`v-for`/`v-model`/`@click`
+4. Multiple screens → a sticky nav/tab bar switching screens within the single file (no separate files)
+5. Mobile view → responsive + device frame (rounded border + width, e.g. `max-w-[390px]`) when the brief specifies it
+6. Annotations are allowed — a badge/note marking it as a prototype (e.g. "mock data", "not wired")
 
 ### 3. Open And Iterate
 
-> Goal: user เห็นและแก้ไขต่อได้
+> Goal: the user can view and keep editing it
 
-1. ทำ `/open-web` เปิดไฟล์ใน temp
-2. ทำ `/report` สรุป path + screens/states ที่ครอบคลุม
-3. ถ้า user ขอแก้ → แก้ไฟล์เดิมใน temp แล้ว refresh
+1. Run `/open-web` to open the file in temp
+2. Run `/report` summarizing the path + covered screens/states
+3. If the user asks for changes → edit the same file in temp, then refresh
 
 ## Rules
 
-- Prototype เขียนลง temp เท่านั้น — ห้ามเขียนลง project (ยกเว้น user สั่ง)
-- ต้อง interactive จริง — ไม่ใช่ static image/screenshot
-- Single file — assets ทั้งหมด CDN, mock data inline
-- fidelity ตาม brief — lo-fi wireframe (gray boxes, เร็ว) หรือ hi-fi (ตาม design system) — default hi-fi-lite: real components, สไตล์เรียบ
+- Write prototypes to temp only — never write into the project (unless the user orders it)
+- It must be genuinely interactive — not a static image/screenshot
+- Single file — all assets via CDN, mock data inline
+- Fidelity per brief — lo-fi wireframe (gray boxes, fast) or hi-fi (per the design system) — default hi-fi-lite: real components, restrained styling
 
-- ใช้ `/report-html` conventions เสมอสำหรับ HTML shell
-- ใช้ `/open-web`, `/create-files-in-os-temp` เสมอ
-- ใช้ `/ask-me` ถ้าจำเป็น
+- Always follow `/report-html` conventions for the HTML
+- Always use `/open-web`, `/create-files-in-os-temp`
+- Use `/ask-me` when needed
 
 ## Expected Outcome
 
-- Interactive prototype เปิดใน browser — user click/สลับ state ได้จริง
-- แชร์/iterate ได้ง่าย (ไฟล์เดียวใน temp)
-- ไม่มี prototype files ปนใน project source
+- Interactive prototype open in the browser — the user can really click and toggle states
+- Easy to share/iterate (one file in temp)
+- No prototype files mixed into the project source

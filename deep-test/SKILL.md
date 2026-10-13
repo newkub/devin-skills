@@ -24,27 +24,27 @@ related:
 
 ## Goal
 
-รัน deep/domain-specific testing — เกินกว่า unit tests ของ `/run-test` — ครอบคลุม API, CLI, contract, coverage, E2E, integration, mutation และ visual testing ใน skill เดียว (merged — ไม่มี `deep-test-*` skills แยกแล้ว)
+Run deep/domain-specific testing — beyond the unit tests of `/run-test` — covering API, CLI, contract, coverage, E2E, integration, mutation and visual testing in one skill (merged — there are no separate `deep-test-*` skills anymore)
 
 ## Scope
 
-ใช้เมื่อต้องการ test ลึกกว่า unit tests — multi-layer, external systems, browsers, contracts หรือ mutation analysis
+Use when tests must go deeper than unit tests — multi-layer, external systems, browsers, contracts, or mutation analysis
 
-- `/run-test [domain]` = run-only test runners ใน skill เดียว — unit default + domain args `all`, `api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual` (merged inline ใน `## Merged Details`; `all` = orchestrator รันทุก suite รวมกัน)
-- `/deep-test <domain>` = analysis/workflow ลึกของ domain — เลือก domain workflow จากตารางแล้วทำตาม reference นั้น
-- แก้ไข/อัปเดต test specs → `/update-tests` (skill นี้ run-only ไม่เขียน tests)
-- Out-of-scope pointers: load/perf → `/test-load`, run-only domains อื่น (`smoke`, `component`, `a11y`, `property`, `database`, `mobile`) → `/run-test <domain>` → `/test-<domain>`, interactive browser watch + roleplay → `/watch-browser-and-test`, test isolation/flaky audit → `/review-test`
+- `/run-test [domain]` = run-only test runners in one skill — unit default + domain args `all`, `api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual` (merged inline in `## Merged Details`; `all` = orchestrator runs every suite together)
+- `/deep-test <domain>` = deep domain analysis/workflow — pick the domain workflow from the table and follow that reference
+- Edit/update test specs → `/update-tests` (this skill is run-only and does not write tests)
+- Out-of-scope pointers: load/perf → `/test-load`, other run-only domains (`smoke`, `component`, `a11y`, `property`, `database`, `mobile`) → `/run-test <domain>` → `/test-<domain>`, interactive browser watch + roleplay → `/watch-browser-and-test`, test isolation/flaky audit → `/review-test`
 
 ## Execute
 
 ### Domain Workflows
 
-| Domain | Reference | ครอบคลุม |
+| Domain | Reference | Coverage |
 |--------|-----------|----------|
-| api | [references/api.md](references/api.md) | REST/GraphQL/tRPC/WebSocket endpoints, response contract checks, Bruno/Hurl/Schemathesis, all-routes check (`scripts/check-routes.*` + profile `route-checker` ใน `## Subagents`) |
+| api | [references/api.md](references/api.md) | REST/GraphQL/tRPC/WebSocket endpoints, response contract checks, Bruno/Hurl/Schemathesis, all-routes check (`scripts/check-routes.*` + profile `route-checker` in `## Subagents`) |
 | cli | [references/cli.md](references/cli.md) | CLI commands, exit codes, stdout/stderr, flags, error paths |
 | contract | [references/contract.md](references/contract.md) | consumer/provider contract verification, drift detection |
-| coverage | [references/coverage.md](references/coverage.md) | coverage analysis, thresholds, gap loop จน 100% |
+| coverage | [references/coverage.md](references/coverage.md) | coverage analysis, thresholds, gap loop until 100% |
 | e2e | [references/e2e.md](references/e2e.md) | Playwright browser tests, all routes, agent-browser exploratory, chrome-devtools-mcp debug |
 | integration | [references/integration.md](references/integration.md) | module interactions, data flow, test DB/services |
 | mutation | [references/mutation.md](references/mutation.md) | mutation testing, surviving mutants, weak assertions |
@@ -52,43 +52,43 @@ related:
 
 ### Flow
 
-1. ทำ `/deep-thinking` วิเคราะห์ scope, เป้าหมาย test และเกณฑ์ pass/fail ก่อนเริ่ม
-2. ระบุ domain จาก argument (เช่น `/deep-test api` → ทำตาม `references/api.md`)
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
-4. ถ้าต้องการรันทุก domain → `/run-test all`
-5. ทำตาม Execute + Rules ใน reference ของ domain นั้น
-6. failures แก้ผ่าน `/resolve-errors` — ห้าม suppress; ถ้า root cause ไม่ชัด → เก็บหลักฐานแบบ `/deep-analyze` (exit code, log, screenshot) ก่อนส่งต่อ
+1. Run `/deep-thinking` to analyze scope, test goals, and pass/fail criteria before starting
+2. Determine the domain from the argument (e.g. `/deep-test api` → follow `references/api.md`)
+3. If no domain is given or it is unknown → use `/ask-me` to pick a domain
+4. To run every domain → `/run-test all`
+5. Follow the Execute + Rules in that domain's reference
+6. Fix failures through `/resolve-errors` — never suppress; if the root cause is unclear → gather evidence like `/deep-analyze` (exit code, log, screenshot) before handing off
 
 ## Rules
 
-- เริ่มด้วย `/deep-thinking` เสมอ และสรุปผลจากหลักฐานรันจริงแบบ `/deep-analyze` ห้ามเดา
-- ทุก domain ต้อง pre-check ด้วย review skill ที่ตรง domain ก่อนรัน ตาม global rules (`/review-api` สำหรับ api, `/review-test` สำหรับที่เหลือ)
-- ทุก domain ใช้ test isolation, cleanup side effects, และ report ผลตาม reference นั้น
-- ใช้ /review-test ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /follow-tool-playwright ถ้าจำเป็น
-- ใช้ /follow-tool-hurl ถ้าจำเป็น
-- ใช้ /follow-tool-bruno ถ้าจำเป็น
-- ใช้ /follow-tool-stryker-mutator ถ้าจำเป็น
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-chrome-devtools ถ้าจำเป็น
-- ใช้ /capture ถ้าจำเป็น
+- Always start with `/deep-thinking` and summarize results from real run evidence like `/deep-analyze`; never guess
+- Every domain must be pre-checked with the review skill matching its domain before running, per the global rules (`/review-api` for api, `/review-test` for the rest)
+- Every domain uses test isolation, cleans up side effects, and reports results per its reference
+- Use /review-test if needed
+- Use /run-test all if needed
+- Use /suggest-next-action if needed
+- Use /deep-validate if needed
+- Use /follow-tool-playwright if needed
+- Use /follow-tool-hurl if needed
+- Use /follow-tool-bruno if needed
+- Use /follow-tool-stryker-mutator if needed
+- Use /use-agent-browser if needed
+- Use /use-chrome-devtools if needed
+- Use /capture if needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: independent work that can be spawned to run in parallel — the profile lives right in this section, no separate file needed
 
-### route-checker — ทดสอบ API route group เดียวแล้วคืน pass/fail ต่อ route พร้อม evidence
+### route-checker — test one API route group and return pass/fail per route with evidence
 
-- **Inputs**: `route-group` (list routes ที่รับผิดชอบ เช่น `GET /api/users`, `GET /api/users/{id}`), `base-url` (target เช่น `http://localhost:3000`), `method-policy` (safe methods only default หรือ `allow-write` เมื่อ user confirm แล้ว), `headers` (optional — auth headers เช่น `Authorization: Bearer <token>`; parent ต้อง mask ก่อน report), `timeout`/`slow-threshold` (optional — default timeout และ threshold ของ `slow`)
-- **Tools**: `exec` — รัน `bun <skill-dir>/scripts/check-routes.ts` หรือ `scripts/check-routes.ps1` fallback (อนุญาตเฉพาะ `bun *check-routes.ts *` และ `*check-routes.ps1 *`), `read` — อ่าน manifest/results file
-- **Execute**: 1) เขียน route list ของ group ลง temp routes file หรือส่งผ่าน `--routes` 2) รัน `bun scripts/check-routes.ts --base <base-url> --routes-file <file> --out <result-file>` 3) dynamic segments `{id}` ถูกแทนด้วย `1` โดย script 4) classify แต่ละ route: `ok` (2xx/expected), `redirect` (3xx), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx/timeout/DNS/TLS), `skipped` (non-safe method), `missing` (404) 5) ถ้าทุก route fail pattern เดียวกัน → flag เป็น group-level issue (เช่น base path ผิด) ไม่ใช่ per-route
-- **Output**: ตารางต่อ route `| No. | Method | Route | Status | Expected | Time (ms) | Severity | Evidence |` ปิดท้ายด้วย group summary (tested, skipped, ok, protected, critical, missing) และระบุ result file path ที่ persist ไว้
-- **Constraints**: ยิงเฉพาะ `GET`/`HEAD`/`OPTIONS` เว้นแต่ parent ส่ง `allow-write` ที่ user confirm แล้ว; ห้ามยิง production ถ้า parent ไม่ได้ระบุ confirmation; mask credentials/tokens ทุกครั้ง — ห้ามส่ง secrets จริงกลับ; ทุก route ต้องมีผล tested หรือ skipped พร้อมเหตุผล — ห้ามเดา status; รับผิดชอบเฉพาะ route group ที่ได้รับ ไม่ยิง routes นอก group; read-only — ห้าม `write`/`edit`
+- **Inputs**: `route-group` (the list of routes it owns, e.g. `GET /api/users`, `GET /api/users/{id}`), `base-url` (target, e.g. `http://localhost:3000`), `method-policy` (safe methods only by default, or `allow-write` once the user confirms), `headers` (optional — auth headers, e.g. `Authorization: Bearer <token>`; the parent must mask before reporting), `timeout`/`slow-threshold` (optional — default timeout and `slow` threshold)
+- **Tools**: `exec` — run `bun <skill-dir>/scripts/check-routes.ts` or the `scripts/check-routes.ps1` fallback (only `bun *check-routes.ts *` and `*check-routes.ps1 *` are allowed), `read` — read the manifest/results file
+- **Execute**: 1) write the group's route list to a temp routes file or pass it via `--routes` 2) run `bun scripts/check-routes.ts --base <base-url> --routes-file <file> --out <result-file>` 3) dynamic segments `{id}` are replaced with `1` by the script 4) classify each route: `ok` (2xx/expected), `redirect` (3xx), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx/timeout/DNS/TLS), `skipped` (non-safe method), `missing` (404) 5) if every route fails with the same pattern → flag it as a group-level issue (e.g. wrong base path), not per-route
+- **Output**: a per-route table `| No. | Method | Route | Status | Expected | Time (ms) | Severity | Evidence |` ending with a group summary (tested, skipped, ok, protected, critical, missing) plus the persisted result file path
+- **Constraints**: fire only `GET`/`HEAD`/`OPTIONS` unless the parent passes `allow-write` confirmed by the user; never fire at production if the parent did not state confirmation; always mask credentials/tokens — never return real secrets; every route must have a tested or skipped result with a reason — never guess a status; only handle the assigned route group, do not fire routes outside the group; read-only — no `write`/`edit`
 
 ## Expected Outcome
 
-- domain ที่เลือกถูกรันตาม workflow ใน reference จนเสร็จ
-- failures ถูก classify และ route ไป fix skill ที่เหมาะ
+- the selected domain is run through its reference workflow to completion
+- failures are classified and routed to the suitable fix skill

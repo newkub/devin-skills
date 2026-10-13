@@ -1,6 +1,6 @@
 ---
 name: run-watch
-description: รัน watch mode สำหรับ build, test หรือ typecheck เพื่อตรวจ errors อย่างต่อเนื่อง
+description: Run watch mode for build, test, or typecheck to continuously detect errors
 argument-hint: "<build|test|typecheck> [scope]"
 related:
   - deep-review
@@ -11,51 +11,51 @@ related:
 
 ## Goal
 
-รัน watch mode ของ task ที่ระบุ (build, test, typecheck) เพื่อตรวจ errors/regressions อย่างต่อเนื่องระหว่างพัฒนา
+Run watch mode for the specified task (build, test, typecheck) to continuously detect errors/regressions during development
 
 ## Scope
 
-- ใช้ระหว่าง active development เมื่อต้องการ feedback loop ต่อเนื่อง
-- เลือก command ตาม package manager และ monorepo tool ที่ตรวจพบ
+- Use during active development when a continuous feedback loop is needed
+- Pick the command based on the detected package manager and monorepo tool
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (watch)
+> Pre-Run: Always run `/deep-review` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (watch).
 
 ### 1. Detect Command
 
-> Goal: เลือก watch command ที่ถูกต้อง
+> Goal: Choose the correct watch command
 
-1. ตรวจ `package.json` scripts และ tool ที่ใช้ (bun, turbo, moon, vitest, tsc, cargo)
-2. เลือกตาม task:
-   - `build` → `bun run build --watch` หรือ tool equivalent (`tsc --watch`, `cargo watch`)
-   - `test` → `bun test --watch` / `vitest` (watch เป็น default) / `cargo watch -x test`
-   - `typecheck` → `tsc --noEmit --watch` หรือ equivalent
-3. Monorepo → ใช้ run command ของ monorepo ก่อน (`turbo run <task> --watch`)
+1. Check `package.json` scripts and the tools in use (bun, turbo, moon, vitest, tsc, cargo)
+2. Select by task:
+   - `build` → `bun run build --watch` or the tool equivalent (`tsc --watch`, `cargo watch`)
+   - `test` → `bun test --watch` / `vitest` (watch is the default) / `cargo watch -x test`
+   - `typecheck` → `tsc --noEmit --watch` or the equivalent
+3. Monorepo → use the monorepo run command first (`turbo run <task> --watch`)
 
 ### 2. Run Watch Mode
 
-> Goal: watch process ทำงานและ capture output
+> Goal: The watch process runs and captures output
 
-1. รัน command แบบ background process
-2. ตรวจ initial output — errors, warnings, baseline status
-3. รายงานว่า watch ทำงานอยู่และกำลัง monitor อะไร
+1. Run the command as a background process
+2. Check the initial output — errors, warnings, baseline status
+3. Report that watch is running and what it is monitoring
 
 ### 3. Monitor And Report
 
-> Goal: ติดตาม errors ที่เกิดระหว่าง watch
+> Goal: Track errors that occur while watching
 
-1. ตรวจ output เป็นระยะเมื่อมีการแก้ไขไฟล์
-2. ถ้าพบ errors → ทำ `/resolve-errors` หรือ `/deep-debug`
-3. หยุด watch เมื่อ task เสร็จหรือ user สั่ง
+1. Check the output periodically as files are edited
+2. If errors are found → run `/resolve-errors` or `/deep-debug`
+3. Stop watch when the task finishes or the user asks
 
 ## Rules
 
-- รันเป็น background process เสมอ ไม่ block session
-- รายงาน baseline status ทันทีหลังเริ่ม
-- อย่าลืมหยุด watch process เมื่อจบงาน
+- Always run as a background process; never block the session
+- Report the baseline status immediately after start
+- Don't forget to stop the watch process when done
 
 ## Expected Outcome
 
-- Watch mode ทำงานอยู่พร้อมรายงาน errors ต่อเนื่อง
-- สถานะเริ่มต้นชัดเจน (pass/fail baseline)
+- Watch mode is running with continuous error reporting
+- The initial state is clear (pass/fail baseline)

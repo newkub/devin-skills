@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare-worker
-description: สร้าง Cloudflare Workers project พร้อม Git connect และ Cloudflare Access setup
+description: Create a Cloudflare Workers project with Git connect and Cloudflare Access setup
 argument-hint: "[project-name]"
 related:
   - create-cloudflare
@@ -12,58 +12,58 @@ related:
 ---
 ## Goal
 
-สร้าง Cloudflare Workers project ใหม่ พร้อมเชื่อม Git repository อัตโนมัติ โดย user ไม่ต้องกรอกฟอร์มบน Cloudflare dashboard เอง และถามก่อนเสมอว่าต้องการเปิดใช้งาน Cloudflare Access หรือไม่
+Create a new Cloudflare Workers project and connect the Git repository automatically, so the user never has to fill in Cloudflare dashboard forms by hand, and always ask first whether Cloudflare Access should be enabled.
 
 ## Scope
 
-- ใช้ Wrangler CLI หรือ Cloudflare API v4 สร้าง Workers project
-- เชื่อม Git repository ผ่าน Cloudflare Workers Builds API หรือ dashboard
-- รองรับ frontend framework เช่น Vite, Solid, React, Svelte
-- ถาม user ก่อนว่าต้องการ Cloudflare Access หรือไม่
-- เก็บ `CLOUDFLARE_API_TOKEN` และ `CLOUDFLARE_ACCOUNT_ID` ใน secret manager หรือ `.env` (gitignored)
+- Create the Workers project with the Wrangler CLI or the Cloudflare API v4
+- Connect the Git repository through the Cloudflare Workers Builds API or the dashboard
+- Support frontend frameworks such as Vite, Solid, React, Svelte
+- Ask the user first whether they want Cloudflare Access
+- Keep `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in a secret manager or a gitignored `.env`
 
 ## Execute
 
 ### 1. Verify Tech Stack And Prerequisites
 
-> Goal: ตรวจสอบว่า project เป็น Workers ประเภทไหน และพร้อมสร้างและ deploy
+> Goal: Check which kind of Workers project this is and that it is ready to create and deploy
 
-1. ทำ `/deep-review` เพื่อสรุป stack
-2. ตรวจไฟล์ `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`
-3. ตรวจ `package.json` scripts และ build output
-4. ถ้าไม่มี `wrangler.toml` → สร้างใหม่ด้วย `name`, `main`, `compatibility_date`, และ `[assets]` หรือ `[site]`
-5. ตรวจ `wrangler --version` หรือ `bunx wrangler --version`
-6. ถ้า Wrangler ยังไม่ auth → รัน `bunx wrangler login` หรือใช้ `/create-cloudflare-token` แล้ว `wrangler config`
-7. ตรวจ `CLOUDFLARE_ACCOUNT_ID` จาก `wrangler whoami` หรือให้ user ใส่
-8. ตรวจ Git remote ของ repo ปัจจุบัน:
+1. Run `/deep-review` to summarize the stack
+2. Check for `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`
+3. Check the `package.json` scripts and the build output
+4. If there is no `wrangler.toml` → create one with `name`, `main`, `compatibility_date`, and `[assets]` or `[site]`
+5. Check `wrangler --version` or `bunx wrangler --version`
+6. If Wrangler isn't authenticated → run `bunx wrangler login`, or use `/create-cloudflare-token` then `wrangler config`
+7. Read `CLOUDFLARE_ACCOUNT_ID` from `wrangler whoami`, or have the user supply it
+8. Check the current repo's Git remote:
    ```bash
    git remote -v
    ```
 
 ### 2. Ask For Cloudflare Access
 
-> Goal: ถาม user ก่อนเปิดใช้ Cloudflare Access
+> Goal: Ask the user before enabling Cloudflare Access
 
-ถาม user ด้วยตัวเลือก:
+Ask the user with these options:
 
-| No. | ตัวเลือก |
+| No. | Option |
 |-----|----------|
-| 1 | ไม่ใช้ Cloudflare Access (default) |
-| 2 | ใช้ Cloudflare Access จำกัดการเข้าถึง Worker |
+| 1 | No Cloudflare Access (default) |
+| 2 | Use Cloudflare Access to restrict who can reach the Worker |
 
-ถ้าเลือก 2 → ขั้นตอนหลัง deploy ให้เปิด Cloudflare Access แล้วเพิ่ม policy ใน Zero Trust
+If 2 is chosen → after deploy, enable Cloudflare Access and add a policy in Zero Trust
 
 ### 3. Create Workers Project
 
-> Goal: สร้าง Worker บน Cloudflare
+> Goal: Create the Worker on Cloudflare
 
-วิธี A — ใช้ Wrangler (แนะนำ):
+Method A — use Wrangler (recommended):
 ```bash
 bunx wrangler deploy
 ```
-Wrangler จะสร้าง project ใหม่อัตโนมัติถ้ายังไม่มี
+Wrangler creates a new project automatically if one doesn't exist yet.
 
-วิธี B — ใช้ Cloudflare API ถ้าต้องการสร้างล่วงหน้า:
+Method B — use the Cloudflare API when you want to create it ahead of time:
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/services" \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -73,9 +73,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 ### 4. Connect Git Repository
 
-> Goal: ผูก GitHub repo กับ Workers Builds
+> Goal: Attach the GitHub repo to Workers Builds
 
-วิธี A — ใช้ Cloudflare API v4 (แนะนำสำหรับ automation):
+Method A — use the Cloudflare API v4 (recommended for automation):
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/projects" \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -104,9 +104,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 ### 5. Configure wrangler.toml
 
-> Goal: ตั้งค่า Workers ให้พร้อม deploy
+> Goal: Configure the Worker so it is ready to deploy
 
-1. สร้างหรือตรวจ `wrangler.toml`:
+1. Create or check `wrangler.toml`:
    ```toml
    name = "<project-name>"
    main = "src/worker.js"
@@ -115,8 +115,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
    [assets]
    directory = "./dist"
    ```
-2. ถ้ามี frontend ให้ใช้ `[assets]` แบบใหม่ ไม่ใช่ `[site]` หรือ Workers Sites
-3. `worker.js` สำหรับ static assets:
+2. If there is a frontend, use the newer `[assets]` form, not `[site]` or Workers Sites
+3. `worker.js` for static assets:
    ```javascript
    export default {
      async fetch(request, env) {
@@ -128,43 +128,43 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
      },
    };
    ```
-4. ถ้าไม่ต้องการ logic พิเศษ สามารถลบ `worker.js` ได้ถ้าใช้ `[assets]` อย่างเดียว
+4. If no special logic is needed, `worker.js` can be deleted when `[assets]` alone is used
 
 ### 6. Configure Build Settings
 
-> Goal: ตั้งค่า build ให้ถูกต้อง
+> Goal: Set the build configuration correctly
 
-ตั้งค่าผ่าน API หรือ dashboard:
+Set these through the API or the dashboard:
 
-| ฟิลด์ | ค่าที่ใช้ |
+| Field | Value to use |
 |--------|------------|
 | Project name | `<project-name>` |
 | Production branch | `main` |
 | Build command | `bun install && bun run build` |
-| Build output | `dist` หรือ `build` |
-| Root directory | ปกติ `.` หรือ `<subdirectory>` |
+| Build output | `dist` or `build` |
+| Root directory | Usually `.` or `<subdirectory>` |
 | Framework | Vite / Other |
 
-หรือเปิด dashboard:
+Or open the dashboard:
 ```
 https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
 ```
 
 ### 7. Enable Cloudflare Access (Optional)
 
-> Goal: เปิดใช้งาน Cloudflare Access ถ้า user เลือก
+> Goal: Enable Cloudflare Access if the user chose it
 
-1. เปิด Cloudflare Zero Trust dashboard:
+1. Open the Cloudflare Zero Trust dashboard:
    ```
    https://one.dash.cloudflare.com/
    ```
-2. ไปที่ Access → Applications → Add an application
-3. เลือก type Self-hosted
-4. ใส่ Application name และ Domain = `<project-name>.<account>.workers.dev`
-5. สร้าง policy เช่น Allow users with email domain `@example.com`
-6. บันทึก
+2. Go to Access → Applications → Add an application
+3. Choose the Self-hosted type
+4. Enter the Application name and Domain = `<project-name>.<account>.workers.dev`
+5. Create a policy, e.g. Allow users with email domain `@example.com`
+6. Save
 
-หรือใช้ API:
+Or use the API:
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/access/apps" \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -186,40 +186,40 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 ### 8. Deploy And Verify
 
-> Goal: deploy ครั้งแรกให้สำเร็จ และยืนยันว่า Worker live และใช้งานได้
+> Goal: Get the first deploy working and verify the Worker is live and usable
 
-1. ถ้าใช้ Workers Builds → push ไป `main` หรือรอ Cloudflare sync
-2. ถ้าใช้ Wrangler → รัน:
+1. If using Workers Builds → push to `main` or wait for Cloudflare to sync
+2. If using Wrangler → run:
    ```bash
    bunx wrangler deploy
    ```
-3. บันทึก deployment URL
-4. เปิด URL ที่ deploy แล้ว
-5. รัน `bunx wrangler tail` ดู logs
-6. รายงาน:
+3. Save the deployment URL
+4. Open the deployed URL
+5. Run `bunx wrangler tail` to view logs
+6. Report:
    - Worker name
    - Deployment URL
-   - Git repo ที่ connect
-   - Cloudflare Access เปิด/ปิด
-   - ขั้นตอนที่ต้องทำต่อ (ถ้ามี)
+   - Git repo connected
+   - Cloudflare Access enabled/disabled
+   - Follow-up steps required (if any)
 
 ## Rules
 
-- ถาม user ก่อนเสมอว่าเปิด Cloudflare Access หรือไม่
-- ไม่รับ token ในแชท ให้ user ใส่ผ่าน `wrangler login` หรือ secret manager
-- ใช้ Cloudflare Workers เป็นหลัก ไม่ใช้ Pages สำหรับ Workers ประเภทนี้
-- ถ้า API ไม่สำเร็จ ให้เปิด dashboard พร้อม guide ขั้นตอน
-- ไม่ commit `.env` หรือ token ลง repo
-- รองรับ Bun, npm, pnpm ตาม context ของ project
+- Always ask the user first whether to enable Cloudflare Access
+- Never accept tokens in chat; have the user enter them via `wrangler login` or a secret manager
+- Use Cloudflare Workers as the primary product, not Pages, for this kind of Worker
+- If the API call fails, open the dashboard and walk the user through the steps
+- Never commit `.env` or tokens into the repo
+- Support Bun, npm, and pnpm according to the project's context
 
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (cloudflare worker)
+- Use /deploy-to-cloudflare if needed
+- Use /follow-secret-manager if needed
+- Use /open-web-for-config-secret if needed (cloudflare worker)
 
 ## Expected Outcome
 
-- Workers project ถูกสร้างบน Cloudflare
-- Git repo เชื่อมต่อกับ Workers Builds หรือพร้อม deploy ด้วย Wrangler
-- URL ของ Worker ใช้งานได้
-- สถานะ Cloudflare Access ถูกตั้งค่าตามที่ user เลือก
-- ไม่มี secrets หลุดใน source code
+- The Workers project is created on Cloudflare
+- The Git repo is connected to Workers Builds or ready to deploy with Wrangler
+- The Worker URL works
+- Cloudflare Access status is set as the user chose
+- No secrets leaked into the source code

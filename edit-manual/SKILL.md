@@ -1,6 +1,6 @@
 ---
 name: edit-manual
-description: แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม rollback
+description: Safely hand-edit configuration files with precise change control and rollback
 argument-hint: "[file]"
 related:
   - deep-review
@@ -15,143 +15,143 @@ related:
 
 ## Goal
 
-แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม backup, rollback และ validation ครบทุกด้าน
+Safely hand-edit configuration files with precise change control, plus backup, rollback, and full validation
 
 ## Scope
 
-ใช้สำหรับการแก้ไข configuration files ด้วยมือ เช่น `vite.config.ts`, `turbo.json`, `package.json`, `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `uno.config.ts`, `drizzle.config.ts`, `.github/workflows/*.yml` และ config files อื่นๆ
+Use for hand-editing configuration files such as `vite.config.ts`, `turbo.json`, `package.json`, `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `uno.config.ts`, `drizzle.config.ts`, `.github/workflows/*.yml`, and other config files
 
-ไม่ใช้สำหรับการสร้าง configuration ใหม่ทั้งหมด (ใช้ `/deep-review` แทน)
+Not for creating entirely new configuration (use `/deep-review` instead)
 
 ## Execute
 
 ### 1. Pre-Edit Safety Check
 
-> Goal: ตรวจสอบสภาพแวดล้อมก่อนแก้ไขเพื่อให้สามารถ rollback ได้เสมอ
+> Goal: Check the environment before editing so rollback is always possible
 
-1. ตรวจสอบ git working tree สะอาด: รัน `git status --porcelain` ถ้ามี unstaged changes → ถามผู้ใช้ก่อนดำเนินการ (ใช้ `/ask-me`)
-2. บันทึก hash ของไฟล์ก่อนแก้: รัน `git rev-parse HEAD` เพื่อเก็บ commit hash ปัจจุบันสำหรับ rollback
-3. ถ้าไฟล์ยังไม่ถูก track โดย git → สร้างสำเนาสำรองไว้ใน `$env:TEMP` ก่อนแก้
-4. ถ้าเป็น monorepo ระบุ workspace ที่ได้รับผลกระทบ
+1. Verify the git working tree is clean: run `git status --porcelain`; if there are unstaged changes → ask the user before proceeding (use `/ask-me`)
+2. Record the file's hash before editing: run `git rev-parse HEAD` to keep the current commit hash for rollback
+3. If the file is not yet tracked by git → create a backup copy in `$env:TEMP` before editing
+4. If it is a monorepo, identify the affected workspaces
 
 ### 2. Read And Understand
 
-> Goal: อ่าน config file และ official docs ก่อนแก้เพื่อเข้าใจผลกระทบของการเปลี่ยนแปลง
+> Goal: Read the config file and official docs before editing to understand the change's impact
 
-1. อ่าน config file ที่ต้องการแก้ไขให้เข้าใจโครงสร้างและ settings ปัจจุบัน
-2. ทำ `/learn-from-web` หรือ `/follow-best-practice` สำหรับ tool ที่ config เกี่ยวข้อง
-3. ระบุว่าการเปลี่ยนแปลงนี้กระทบ workspace ใดบ้าง และต้อง sync ข้าม workspaces หรือไม่
-4. ตรวจสอบ version compatibility ของ dependencies ที่เกี่ยวข้องกับ config ที่จะแก้
+1. Read the config file to be edited until you understand its structure and current settings
+2. Run `/learn-from-web` or `/follow-best-practice` for the tool the config relates to
+3. Identify which workspaces this change affects and whether cross-workspace sync is needed
+4. Check version compatibility of dependencies related to the config being changed
 
 ### 3. Plan And Preview Changes
 
-> Goal: วางแผนการแก้ไขและ preview diff ก่อน apply เพื่อลดความเสี่ยง
+> Goal: Plan the edits and preview the diff before applying, to reduce risk
 
-1. ระบุจุดที่ต้องแก้ไขและค่าใหม่ที่ต้องการ
-2. ตรวจสอบ dependencies และ constraints (เช่น version compatibility, plugin requirements, CI/CD pipeline impact)
-3. ทำ `/dont-over-engineer` เพื่อวางแผน minimal changes ที่จำเป็น
-4. จดบันทึก impact analysis: ไฟล์ใดจะได้รับผลกระทบ, CI/CD pipeline ใดเปลี่ยน, workspace ใดต้อง sync
-5. ถ้าเป็น monorepo และมีหลาย workspaces ที่ต้องแก้ (> 5 ไฟล์) → ใช้ `/use-scripts` เพื่อสร้าง validation script
+1. Identify the exact points to change and the desired new values
+2. Check dependencies and constraints (e.g. version compatibility, plugin requirements, CI/CD pipeline impact)
+3. Run `/dont-over-engineer` to plan the minimal necessary changes
+4. Record an impact analysis: which files are affected, which CI/CD pipelines change, which workspaces need sync
+5. If it is a monorepo with many workspaces to change (> 5 files) → use `/use-scripts` to create a validation script
 
 ### 4. Apply Edits
 
-> Goal: แก้ไข config file อย่าง precise โดยเปลี่ยนเฉพาะจุดที่จำเป็น
+> Goal: Edit the config file precisely, changing only what is necessary
 
-1. ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไข config file
-2. แก้ไขเฉพาะจุดที่จำเป็น ไม่เปลี่ยน settings อื่นที่ไม่เกี่ยวข้อง
-3. รักษา indentation และ style เดิมของ config file
-4. ถ้าเกิน 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ automate การแก้และ validate
-5. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
+1. Use `edit` or `multi_edit` for the config file changes
+2. Change only the necessary points; leave unrelated settings untouched
+3. Preserve the config file's original indentation and style
+4. If it exceeds 10 files → use `/use-scripts` to automate the edits and validation
+5. Run `/update-references` to update the related references
 
 ### 5. Post-Edit Validation
 
-> Goal: ตรวจสอบความถูกต้องของ config หลังแก้ไขครบทุกด้าน
+> Goal: Verify the config's correctness across every dimension after editing
 
-1. ทำ `/check-reference` เพื่อตรวจสอบไม่มี broken references
-2. สแกน secrets: ตรวจสอบว่าการแก้ไขไม่ได้แนบ secrets, API keys, หรือ credentials เข้าไป — ถ้า config มี sensitive values ให้ใช้ environment variables แทน
-3. ทำ `/run-verify` เพื่อตรวจสอบ lint, typecheck, และ scan
-4. ทำ config-specific validation ตามตารางใน Rules section `Config-Specific Validation`
-5. ถ้ามี errors ให้ทำ `/resolve-errors` ก่อน — ถ้าแก้ไม่ได้ภายใน 3 ครั้ง → rollback และ report
-6. ถ้าเป็น `.github/workflows/*.yml` → ตรวจสอบว่า workflow syntax ถูกต้องและ secrets อ้างอิงถูกทุกตัว
+1. Run `/check-reference` to confirm there are no broken references
+2. Scan for secrets: verify the edit did not embed secrets, API keys, or credentials — if the config has sensitive values, use environment variables instead
+3. Run `/run-verify` to check lint, typecheck, and scans
+4. Run config-specific validation per the table in Rules section `Config-Specific Validation`
+5. If there are errors, run `/resolve-errors` first — if unfixable after 3 attempts → rollback and report
+6. If it is `.github/workflows/*.yml` → verify the workflow syntax is correct and every secret reference is valid
 
 ### 6. Verify And Finalize
 
-> Goal: ยืนยันว่าการเปลี่ยนแปลงทำงานได้จริงและไม่ทำลายอะไร
+> Goal: Confirm the change actually works and breaks nothing
 
-1. ถ้าเป็น build config → ทดสอบ `bun run build` ว่าผ่าน
-2. ถ้าเป็น CI/CD config → ตรวจสอบว่า pipeline จะไม่ fail จากการเปลี่ยนแปลง
-3. ลบไฟล์สำรองใน `$env:TEMP` หลังยืนยันว่าการแก้ไขผ่านทุก validation
-4. ถ้า validation ไม่ผ่านและแก้ไม่ได้ → rollback ด้วย `git restore --source=<hash> --staged --worktree -- <file>` และ report
-5. สรุปการเปลี่ยนแปลง: ไฟล์ที่แก้, ค่าที่เปลี่ยน, impact ที่ตรวจสอบแล้ว
+1. If it is a build config → test that `bun run build` passes
+2. If it is a CI/CD config → verify the pipeline will not fail from the change
+3. Delete the backup file in `$env:TEMP` after confirming the edit passes all validation
+4. If validation fails and cannot be fixed → rollback with `git restore --source=<hash> --staged --worktree -- <file>` and report
+5. Summarize the change: files edited, values changed, verified impact
 
 ## Rules
 
 ### 1. Safety And Rollback
 
-- ตรวจสอบ git working tree สะอาดก่อนแก้เสมอ — ถ้าไม่สะอาด → ถามผู้ใช้ก่อน
-- เก็บ commit hash ก่อนแก้เสมอเพื่อใช้ rollback ด้วย `git restore --source=<hash> --staged --worktree -- <file>`
-- ไฟล์ที่ไม่ถูก track โดย git → สร้างสำเนาใน `$env:TEMP` ก่อนแก้
-- ถ้า validation ไม่ผ่านภายใน 3 ครั้ง → rollback และ report (ไม่ฝืนแก้ต่อ)
-- ห้ามแก้ไข config หลายไฟล์พร้อมกันโดยไม่มี rollback plan
+- Always verify the git working tree is clean before editing — if not clean → ask the user first
+- Always record the commit hash before editing, for rollback via `git restore --source=<hash> --staged --worktree -- <file>`
+- Files not tracked by git → create a copy in `$env:TEMP` before editing
+- If validation fails within 3 attempts → rollback and report (do not force a fix)
+- Never edit multiple config files at once without a rollback plan
 
 ### 2. Understand Before Edit
 
-- อ่านและเข้าใจ config file ก่อนแก้ไขเสมอ
-- ทำ `/follow-best-practice` หรือ `/learn-from-web` สำหรับ tool ที่ไม่คุ้นเคย
-- ตรวจสอบ official documentation ของ tool นั้นๆ ก่อนเปลี่ยน settings
-- ไม่เดาค่า config โดยไม่เข้าใจผลกระทบ — ถ้าไม่แน่ใจ → ถามผู้ใช้
+- Always read and understand the config file before editing
+- Run `/follow-best-practice` or `/learn-from-web` for unfamiliar tools
+- Check that tool's official documentation before changing settings
+- Never guess config values without understanding the impact — if unsure → ask the user
 
 ### 3. Minimal And Precise
 
-- แก้ไขเฉพาะจุดที่จำเป็น ไม่เปลี่ยน settings อื่นที่ไม่เกี่ยวข้อง
-- ทำ `/dont-over-engineer` เสมอ
-- ห้าม auto-format หรือ restructure config file ทั้งหมดเพื่อแก้จุดเดียว
-- รักษา indentation และ style เดิมของ config file
+- Change only what is necessary; leave unrelated settings untouched
+- Always run `/dont-over-engineer`
+- Never auto-format or restructure an entire config file to fix one point
+- Preserve the config file's original indentation and style
 
 ### 4. Secrets And Security
 
-- ห้ามใส่ secrets, API keys, passwords, หรือ credentials ลงใน config file โดยตรง
-- ใช้ environment variables หรือ secrets manager (เช่น Infisical) สำหรับ sensitive values
-- หลังแก้ไข → ตรวจสอบว่าไม่มี secrets รั่วในไฟล์ที่แก้
-- ถ้า config มี `env` หรือ `secrets` field → ตรวจสอบว่าอ้างอิง environment variables ไม่ใช่ hardcoded values
-- ทำ `/run-audit` ถ้าการแก้ไขเกี่ยวข้องกับ dependencies หรือ security settings
+- Never put secrets, API keys, passwords, or credentials directly in a config file
+- Use environment variables or a secrets manager (e.g. Infisical) for sensitive values
+- After editing → verify no secrets leaked into the changed files
+- If the config has `env` or `secrets` fields → verify they reference environment variables, not hardcoded values
+- Run `/run-audit` if the edit involves dependencies or security settings
 
 ### 5. Consistency Across Workspaces
 
-- ถ้าเป็น monorepo ตรวจสอบว่าการเปลี่ยนแปลงต้อง sync ข้าม workspaces หรือไม่
-- Config ใน root ควรเป็น base สำหรับ workspaces
-- Workspace-specific config ควร override เฉพาะที่จำเป็น
-- ตรวจสอบความสม่ำเสมอของ terminology และ format ทั่วทั้ง configs
+- In a monorepo, check whether the change must be synced across workspaces
+- Root config should serve as the base for workspaces
+- Workspace-specific config should override only what is necessary
+- Keep terminology and format consistent across all configs
 
 ### 6. Config-Specific Validation
 
-หลังแก้ไข ต้อง validate ตามประเภทของ config file:
+After editing, validate according to the config file type:
 
 | Config File | Validation Command | Pass Condition |
 |-------------|-------------------|----------------|
-| `vite.config*.ts` | `bun --filter website build` | Build สำเร็จไม่มี error |
-| `turbo.json` | `bun run build` | Turbo รันได้ไม่มี config error |
-| `package.json` | `bun install --frozen-lockfile` | Install สำเร็จ lockfile ไม่ conflict |
-| `tsconfig.json` | `bun run typecheck` | Typecheck ผ่าน |
-| `biome.jsonc` | `bunx biome lint` | Lint รันได้ไม่มี config error |
-| `lefthook.yml` | `bunx lefthook validate` | Validate ผ่าน |
-| `uno.config.ts` | `bun --filter website build` | Build สำเร็จ CSS ไม่ broken |
-| `drizzle.config.ts` | `bun --filter website db:generate` | Migration generate สำเร็จ |
-| `.github/workflows/*.yml` | ตรวจสอบ syntax ด้วย YAML parser | YAML valid, secrets อ้างอิงถูก |
-| `playwright.config.ts` | `bun run test:e2e --list` | Test list ไม่มี error |
+| `vite.config*.ts` | `bun --filter website build` | Build succeeds with no errors |
+| `turbo.json` | `bun run build` | Turbo runs with no config errors |
+| `package.json` | `bun install --frozen-lockfile` | Install succeeds, no lockfile conflicts |
+| `tsconfig.json` | `bun run typecheck` | Typecheck passes |
+| `biome.jsonc` | `bunx biome lint` | Lint runs with no config errors |
+| `lefthook.yml` | `bunx lefthook validate` | Validation passes |
+| `uno.config.ts` | `bun --filter website build` | Build succeeds, CSS not broken |
+| `drizzle.config.ts` | `bun --filter website db:generate` | Migration generation succeeds |
+| `.github/workflows/*.yml` | Check syntax with a YAML parser | YAML valid, secret references correct |
+| `playwright.config.ts` | `bun run test:e2e --list` | Test listing runs with no errors |
 
 ### 7. Use Scripts For Complex Edits
 
-- ถ้าต้องแก้ config มากกว่า 5 ไฟล์ → ใช้ `/use-scripts` เพื่อ automate การแก้และ validate
-- Script ต้องมี dry run mode เพื่อ preview ก่อน execute จริง
-- Script ต้อง validate config structure หลังแก้ (เช่น JSON/YAML schema validation)
-- ลบ scripts จาก `$env:TEMP` หลังใช้งาน
+- If more than 5 config files need changes → use `/use-scripts` to automate the edits and validation
+- Scripts must have a dry run mode to preview before real execution
+- Scripts must validate the config structure after editing (e.g. JSON/YAML schema validation)
+- Delete scripts from `$env:TEMP` after use
 
 ## Expected Outcome
 
-- Configuration files ถูกแก้ไขอย่าง precise, minimal และปลอดภัย
-- มี rollback path ชัดเจนหากการแก้ไขไม่ผ่าน validation
-- การเปลี่ยนแปลงผ่าน validation ครบทุกประเภทตาม Config-Specific Validation table
-- ไม่มี broken references และไม่มี secrets รั่วหลังการแก้ไข
-- Config สอดคล้องกันทั่ว monorepo ถ้ามีการ sync ข้าม workspaces
-- ไฟล์สำรองใน `$env:TEMP` ถูกลบหลังยืนยันการแก้ไขสำเร็จ
+- Configuration files edited precisely, minimally, and safely
+- A clear rollback path if the edit fails validation
+- Changes pass every validation type in the Config-Specific Validation table
+- No broken references and no leaked secrets after the edit
+- Configs stay consistent across the monorepo when cross-workspace sync is involved
+- Backup files in `$env:TEMP` deleted after the edit is confirmed successful

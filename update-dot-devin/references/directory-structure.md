@@ -11,7 +11,7 @@
 ├── skills/ (optional)
 └── mcp_config.json (optional)
 
-rules/ (ast-grep — project root, ไม่ใช่ใน .devin)
+rules/ (ast-grep — project root, not inside .devin)
 ├── dependencies/
 ├── architecture/
 └── glob/
@@ -20,7 +20,7 @@ rules/ (ast-grep — project root, ไม่ใช่ใน .devin)
 ### Monorepo
 
 ```
-.devin/ (repo root เท่านั้น)
+.devin/ (repo root only)
 ├── hooks/
 │   ├── hooks.json
 │   ├── run-lint.ts
@@ -33,4 +33,4 @@ tools/<workspace>/
 ├── AGENTS.md
 ```
 
-ไม่สร้าง `.devin/` ใน sub-workspace — `.devin/` อยู่ที่ repo root เท่านั้น และ ast-grep rules อยู่ที่ `rules/` root (ไม่ใช่ `.devin/rules/`)
+Do not create `.devin/` in sub-workspaces — `.devin/` lives at the repo root only, and ast-grep rules live at the `rules/` root (not `.devin/rules/`)

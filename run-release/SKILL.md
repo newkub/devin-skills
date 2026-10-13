@@ -1,6 +1,6 @@
 ---
 name: run-release
-description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
+description: Auto-detect platforms, release to external platforms, gen CHANGELOG
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -19,210 +19,210 @@ related:
 
 ## Goal
 
-Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `CHANGELOG.md` จาก git tags ด้วย `gen-changelog-md`
+Auto-detect the platforms the project supports from configuration files, release to external platforms automatically, and gen `CHANGELOG.md` from git tags with `gen-changelog-md`
 
 ## Scope
 
-Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `CHANGELOG.md` จาก git tags
+Release to npm, crates.io, VSCode Marketplace, Chrome Web Store, and Docker Hub, and gen `CHANGELOG.md` from git tags
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (release)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (release)
 
 ### 1. Check Conditions And Detect Platforms
 
-> Goal: ยืนยันวา release ถูกต้องและปลอดภัยก่อน run และ detect platforms ที่ project รองรับ
+> Goal: Confirm the release is correct and safe before running, and detect the platforms the project supports
 
-1. ตรวจ `git branch --show-current` และ `git describe --tags --exact-match` หรือ `git tag --points-at HEAD`
-   - ถ้า HEAD ไม่อยู่บน tag `v*` และไม่อยู่บน `main` หรือ `master` → stop และ report
-2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship-to-dev-branch` ก่อน
-3. ตรวจ `git status --porcelain` ต้อง clean
-4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
-   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-cicd <run-id>`
-   - ถ้า CI ยังไม่ผ่าน → stop และ report
-5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
-6. ถ้าทุก condition ผ่าน → detect platforms:
-   - ตรวจสอบ `package.json` มี `private: false` → รองรับ `npm`
-   - ตรวจสอบ `package.json` มี `publisher` field → รองรับ `vscode`
-   - ตรวจสอบ `Cargo.toml` มีอยู่ → รองรับ `crates`
-   - ตรวจสอบ `manifest.json` มีอยู่ → รองรับ `webstore`
-   - ตรวจสอบ `Dockerfile` มีอยู่ → รองรับ `docker`
+1. Check `git branch --show-current` and `git describe --tags --exact-match` or `git tag --points-at HEAD`
+   - If HEAD is not on a `v*` tag and not on `main` or `master` → stop and report
+2. If on `main`/`master` but there is no tag yet → stop and recommend creating a tag or using `/ship-to-dev-branch` first
+3. Check that `git status --porcelain` is clean
+4. Check that CI passes for the current SHA:
+   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5`, then `/resolve-cicd <run-id>`
+   - If CI has not passed yet → stop and report
+5. Check that the required secrets are available (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
+6. If every condition passes → detect platforms:
+   - Check that `package.json` has `private: false` → supports `npm`
+   - Check that `package.json` has a `publisher` field → supports `vscode`
+   - Check that `Cargo.toml` exists → supports `crates`
+   - Check that `manifest.json` exists → supports `webstore`
+   - Check that `Dockerfile` exists → supports `docker`
 
 ### 2. Check Configuration
 
 > Goal: Check Configuration
 
-ตรวจสอบ configuration ครบถ้วนก่อน release ตาม platforms ที่ detect ได้
+Verify the configuration is complete before releasing, according to the detected platforms
 
-- `npm`: ตรวจสอบ `package.json` มี name, version, description, license, repository, homepage, files
-- `vscode`: ตรวจสอบ `package.json` มี publisher, engines.vscode, activationEvents, main, contributes
-- `crates`: ตรวจสอบ `Cargo.toml` มี name, version, description, license, repository, categories, keywords, edition, rust-version
-- `webstore`: ตรวจสอบ `manifest.json` มี name, version, manifest_version, permissions, icons, action
-- `docker`: ตรวจสอบ `Dockerfile` มี FROM, WORKDIR, COPY, RUN และ `.dockerignore` มีการ exclude files
-- ถ้า package manifest หรือ release config ไม่ครบ → ทำ `/update-project` `### setup-package` หรือตั้งค่า release tool/workflow ผ่าน `/setup-cicd` + `/follow-tool-*` ก่อน แล้วกลับมาทำ `/run-release` ใหม
+- `npm`: check that `package.json` has name, version, description, license, repository, homepage, files
+- `vscode`: check that `package.json` has publisher, engines.vscode, activationEvents, main, contributes
+- `crates`: check that `Cargo.toml` has name, version, description, license, repository, categories, keywords, edition, rust-version
+- `webstore`: check that `manifest.json` has name, version, manifest_version, permissions, icons, action
+- `docker`: check that `Dockerfile` has FROM, WORKDIR, COPY, RUN and that `.dockerignore` excludes files
+- If the package manifest or release config is incomplete → run `/update-project` `### setup-package`, or set up the release tool/workflow via `/setup-cicd` + `/follow-tool-*` first, then come back and rerun `/run-release`
 
 ### 3. Setup Authentication
 
 > Goal: Setup Authentication
 
-ตั้งค่า authentication สำหรับ platforms ที่ detect ได้
+Set up authentication for the detected platforms
 
-- `npm`: ใช้ `/follow-secret-manager` จัดการ `NPM_TOKEN` แล้ว sync ไป GitHub Secrets หรือใช้ `gh secret set NPM_TOKEN` แบบ manual
-- `vscode`: ตั้งค่า `VSCE_PAT` ใน GitHub Secrets ด้วย `gh secret set VSCE_PAT`
-- `crates`: ตั้งค่า `CARGO_REGISTRY_TOKEN` ใน GitHub Secrets ด้วย `gh secret set CARGO_REGISTRY_TOKEN`
-- `webstore`: ตั้งค่า `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN` ใน GitHub Secrets
-- `docker`: ตั้งค่า `DOCKER_USERNAME`, `DOCKER_PASSWORD` ใน GitHub Secrets
+- `npm`: use `/follow-secret-manager` to manage `NPM_TOKEN`, then sync it to GitHub Secrets, or set it manually with `gh secret set NPM_TOKEN`
+- `vscode`: set `VSCE_PAT` in GitHub Secrets with `gh secret set VSCE_PAT`
+- `crates`: set `CARGO_REGISTRY_TOKEN` in GitHub Secrets with `gh secret set CARGO_REGISTRY_TOKEN`
+- `webstore`: set `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN` in GitHub Secrets
+- `docker`: set `DOCKER_USERNAME`, `DOCKER_PASSWORD` in GitHub Secrets
 
 ### 4. Run Verify
 
 > Goal: Run Verify
 
-ตรวจสอบคุณภาพโค้ดก่อน release
+Check code quality before releasing
 
-1. ทำ `/run-verify` เพื่อตรวจสอบคุณภาพโค้ด
-2. ทำ `/deep-validate` ก่อน tag/release
-3. ถ้า verify ไม่ผ่าน ให้แก้ไขก่อนดำเนินการต่อ
+1. Run `/run-verify` to check code quality
+2. Run `/deep-validate` before tag/release
+3. If verify fails, fix the issues before continuing
 
 ### 5. Setup Release Tool
 
 > Goal: Setup Release Tool
 
-ตั้งค่า release tool ตาม platforms ที่ detect ได้
+Set up the release tool according to the detected platforms
 
-1. `npm`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
-2. `crates`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
-3. `vscode`: ทำ `/follow-create-plugins` (vscode) เพื่อตั้งค่า release tool
-4. `webstore`: ทำ `/follow-create-plugins` (browser-wxt) เพื่อตั้งค่า release tool
-5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
+1. `npm`: run `/publish-package-to-registry` to set up the release tool
+2. `crates`: run `/publish-package-to-registry` to set up the release tool
+3. `vscode`: run `/follow-create-plugins` (vscode) to set up the release tool
+4. `webstore`: run `/follow-create-plugins` (browser-wxt) to set up the release tool
+5. `docker`: run `/follow-release` to set up the release tool
 
 ### 6. Run Prerelease
 
-> Goal: รัน prerelease ก่อน publish จริง
+> Goal: Run the prerelease before the real publish
 
-1. `npm`: รัน `bun run build` หรือ `npm run build`
-2. `crates`: รัน `cargo build` หรือ `cargo build --release`
-3. `vscode`: รัน `vsce package` เพื่อสร้าง `.vsix`
-4. `webstore`: รัน `chrome-webstore-upload validate` เพื่อ validate ก่อน publish
-5. `docker`: รัน `docker build --no-cache` เพื่อ build image
-6. ถ้า prerelease ไม่ผ่าน → แก้ไขและรันใหม่
+1. `npm`: run `bun run build` or `npm run build`
+2. `crates`: run `cargo build` or `cargo build --release`
+3. `vscode`: run `vsce package` to create the `.vsix`
+4. `webstore`: run `chrome-webstore-upload validate` to validate before publishing
+5. `docker`: run `docker build --no-cache` to build the image
+6. If the prerelease fails → fix and rerun
 
 ### 7. Test Release Artifact
 
-> Goal: smoke test artifact ก่อน publish — ห้าม publish ในขั้นนี้
+> Goal: Smoke test the artifact before publishing — never publish in this step
 
-1. ถ้ามี artifact จาก step prerelease อยู่แล้วและ version ตรง → reuse ได้
-2. smoke test ตาม platform:
-   - `npm`: `npm pack` + `npm install <tarball>` ใน temp dir แล้ว `node -e "require('<pkg>')"`
+1. If an artifact from the prerelease step already exists and the version matches → reuse it
+2. Smoke test per platform:
+   - `npm`: `npm pack` + `npm install <tarball>` in a temp dir, then `node -e "require('<pkg>')"`
    - `crates`: `cargo test --release` + `cargo publish --dry-run`
-   - `vscode`: validate `.vsix` ด้วย `vsce ls` หรือ `code --install-extension` ใน temp profile
-   - `webstore`: `chrome-webstore-upload validate` หรือ upload แบบ draft
-   - `docker`: `docker run --rm <image>:test --help` หรือ health check
-3. ตรวจ version ใน artifact ตรง manifest + audit deps (`npm audit`, `cargo audit`)
-4. ถ้า test ไม่ผ่าน → stop และแก้ไขก่อน ห้ามข้ามไป publish; ล้าง temp files หลัง test
+   - `vscode`: validate the `.vsix` with `vsce ls`, or `code --install-extension` in a temp profile
+   - `webstore`: `chrome-webstore-upload validate`, or upload as a draft
+   - `docker`: `docker run --rm <image>:test --help`, or a health check
+3. Check that the version in the artifact matches the manifest + audit the deps (`npm audit`, `cargo audit`)
+4. If the test fails → stop and fix before proceeding, never skip ahead to publish; clean up temp files after the test
 
 ### 8. Run Release
 
 > Goal: Run Release
 
-รัน release ตาม platforms ที่ detect ได้
+Run the release according to the detected platforms
 
-1. `npm`: ทำ `/publish-package-to-registry`
-2. `crates`: ทำ `/publish-package-to-registry`
-3. `vscode`: รัน `vsce publish`
-4. `webstore`: รัน `chrome-webstore-upload`
-5. `docker`: รัน `docker build` และ `docker push`
-6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
+1. `npm`: run `/publish-package-to-registry`
+2. `crates`: run `/publish-package-to-registry`
+3. `vscode`: run `vsce publish`
+4. `webstore`: run `chrome-webstore-upload`
+5. `docker`: run `docker build` and `docker push`
+6. If the release fails, fix it and rerun until it passes
 
 ### 9. Write Release Notes
 
-> Goal: เขียน release notes สรุปสวยงาม อ่านง่าย ก่อน publish
+> Goal: Write release notes that are well-summarized and easy to read, before publishing
 
-1. ใช้ template จาก `templates/release-note.md`
-2. สรุป changes ตั้งแต่ tag ล่าสุด: ดึง commits ด้วย `git log <last-tag>..HEAD --oneline`
-3. จัดหมวดหมู่: `Breaking Changes`, `Features`, `Bug Fixes`, `Chores`, `Other`
-4. เขียนภาษาสุภาพ กระชับ ไม่ใช้ bullet ยาวเกิน 2 บรรทัด
-5. แนบลิงก์ `CHANGELOG.md`, เอกสาร release, และ migration guide ถ้ามี breaking changes
-6. บันทึกผลลัพธ์เป็น `RELEASE_NOTES.md` หรือใช้เป็น body ของ GitHub Release
+1. Use the template from `templates/release-note.md`
+2. Summarize the changes since the latest tag: pull commits with `git log <last-tag>..HEAD --oneline`
+3. Categorize: `Breaking Changes`, `Features`, `Bug Fixes`, `Chores`, `Other`
+4. Write in polite, concise language; no bullet longer than 2 lines
+5. Include links to `CHANGELOG.md`, the release docs, and a migration guide if there are breaking changes
+6. Save the result as `RELEASE_NOTES.md` or use it as the body of the GitHub Release
 
 ### 10. Generate CHANGELOG.md
 
-> Goal: Gen CHANGELOG.md จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
+> Goal: Gen `CHANGELOG.md` from git tags with `gen-changelog-md`; never edit it by hand
 
-1. ทำ `/gen-changelog-md` เพื่อ gen `CHANGELOG.md` จาก `git tag --sort=-version:refname`
-2. หรือรัน script โดยตรง:
+1. Run `/gen-changelog-md` to gen `CHANGELOG.md` from `git tag --sort=-version:refname`
+2. Or run the script directly:
 ```bash
 bun run skills/gen-changelog-md/scripts/gen-release-md
 ```
-3. อ่าน `CHANGELOG.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
-4. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ
+3. Read the generated `CHANGELOG.md` to verify the version numbers and dates are correct
+4. If an update is needed → rerun the script; never edit `CHANGELOG.md` by hand
 
 ## Rules
 
 ### 1. Conditions
 
-- ต้องอยู่บน tag `v*` หรือ `main`/`master` เท่านั้น
-- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship-to-dev-branch`
-- working tree ต้อง clean
-- CI ต้องผ่านก่อน release
-- secrets สำหรับ platforms ที detect ต้องพร้อม
-- ไม่ release โดยอัตโนมัติจากทุก merge
+- Must be on a tag `v*` or on `main`/`master` only
+- If on `main` without a tag → stop and recommend `/ship-to-dev-branch`
+- The working tree must be clean
+- CI must pass before release
+- Secrets for the detected platforms must be ready
+- Never release automatically on every merge
 
 ### 2. Auto-Detection
 
-- ตรวจสอบ `package.json` สำหรับ npm และ vscode
-- ตรวจสอบ `Cargo.toml` สำหรับ crates
-- ตรวจสอบ `manifest.json` สำหรับ webstore
-- ตรวจสอบ `Dockerfile` สำหรับ docker
-- รันเฉพาะ platforms ที่ detect ได้เท่านั้น
+- Check `package.json` for npm and vscode
+- Check `Cargo.toml` for crates
+- Check `manifest.json` for webstore
+- Check `Dockerfile` for docker
+- Run only the detected platforms
 
 ### 3. Configuration Requirements
 
-- ทุก platform ต้องมี name, version, description, license
-- `npm`: `private` ต้องเป็น `false`, ต้องมี `repository` และ `homepage`
-- `vscode`: ต้องมี `publisher`, `engines.vscode`, `contributes`
-- `crates`: ต้องมี `categories`, `keywords`, `edition`, `rust-version`
-- `webstore`: ต้องมี `manifest_version`, `permissions`, `icons`
-- `docker`: ต้องมี `.dockerignore` และ tag ที่ชัดเจน
+- Every platform must have name, version, description, license
+- `npm`: `private` must be `false`, and `repository` and `homepage` are required
+- `vscode`: `publisher`, `engines.vscode`, and `contributes` are required
+- `crates`: `categories`, `keywords`, `edition`, and `rust-version` are required
+- `webstore`: `manifest_version`, `permissions`, and `icons` are required
+- `docker`: a `.dockerignore` and a clear tag are required
 
 ### 4. Authentication
 
-- ใช้ API/Automation tokens ไม่ใช่ personal tokens
-- ตั้งค่า secrets ใน GitHub Secrets ก่อน release
-- ตรวจสอบว่า token มีสิทธิ์ publish ไปที่ package/extension ที่เกี่ยวข้อง
-- `npm` alternative: ใช้ npm Trusted Publishers (OIDC) แทน token
+- Use API/Automation tokens, not personal tokens
+- Set secrets in GitHub Secrets before release
+- Verify the token has publish rights for the relevant package/extension
+- `npm` alternative: use npm Trusted Publishers (OIDC) instead of a token
 
 ### 5. Release Tool Usage
 
-- ใช้ `release-*` workflows สำหรับตั้งค่า release tool แต่ละ platform
-- ใช้ `/publish-package-to-registry` สำหรับ npm และ crates
-- รัน verify ก่อน release เสมอ
-- รัน prerelease script ก่อน release สำหรับ npm
-- รัน `vsce package` ก่อน publish สำหรับ vscode
-- รัน `chrome-webstore-upload validate` ก่อน publish สำหรับ webstore
-- รัน `docker build --no-cache` สำหรับ build ใหม่ทั้งหมด
+- Use the `release-*` workflows to set up the release tool for each platform
+- Use `/publish-package-to-registry` for npm and crates
+- Always run verify before release
+- Run the prerelease script before release for npm
+- Run `vsce package` before publish for vscode
+- Run `chrome-webstore-upload validate` before publish for webstore
+- Run `docker build --no-cache` for a full rebuild
 
 ### 6. CHANGELOG.md Generation
 
-- `CHANGELOG.md` เกิดจากการ gen ด้วย `gen-changelog-md` skill จาก `git tag --sort=-version:refname` เท่านั้น
-- ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
-- ใช้ `scripts/gen-release-md` สำหรับ generation logic
-- ใช้ semantic versioning format: `vX.Y.Z` (เช่น `v1.0.0`, `v1.2.3`)
-- ใช้ annotated tags สำหรับ releases
-- สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน
+- `CHANGELOG.md` is only generated by the `gen-changelog-md` skill from `git tag --sort=-version:refname`
+- Never edit `CHANGELOG.md` by hand — if an update is needed, rerun the script
+- Use `scripts/gen-release-md` for the generation logic
+- Use the semantic versioning format: `vX.Y.Z` (e.g. `v1.0.0`, `v1.2.3`)
+- Use annotated tags for releases
+- For projects that want conventional commits grouping and changelog generation, use `/follow-tool-changelogen` instead
 
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น (release)
+- Use /setup-cicd if needed
+- Use /use-my-packages-on-registry if needed
+- Use /deep-review if needed
+- Use /update-devin-global-skills if needed (release)
 
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Platforms ถูก detect อัตโนมัติจาก project configuration
-- Packages ถูก release สำเร็จไปยัง platforms ที่ detect ได้
-- Version ถูก bump อัตโนมัติ
-- Changelog ถูกสร้างอัตโนมัติ
-- Git tags ถูกสร้างอัตโนมัติ
-- `CHANGELOG.md` ถูก gen จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
-- Release notes ถูกเขียนสรุปสวยงาม อ่านง่าย จาก template
+- Platforms are detected automatically from the project configuration
+- Packages are released successfully to the detected platforms
+- Versions are bumped automatically
+- The changelog is generated automatically
+- Git tags are created automatically
+- `CHANGELOG.md` is gen'd from git tags with `gen-changelog-md`, never edited by hand
+- Release notes are written as a clear, easy-to-read summary from the template

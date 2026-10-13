@@ -1,6 +1,6 @@
 ---
 name: watch-browser-and-test
-description: Watch browser confirm server แล้ว subagents แยก route roleplay user test actions/flows จริง
+description: Watch browser, confirm server, then per-route subagents roleplay user testing real actions/flows
 argument-hint: "[url|report]"
 related:
   - watch-browser
@@ -24,92 +24,92 @@ related:
 
 ## Goal
 
-Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confirm ว่า web server ทำงานได้ จากนั้น dispatch subagents แยกตาม route ให้ roleplay เป็น user ทดลองใช้งานจริง — กด buttons, links, forms ตาม flow — แล้วรวม report pass/fail พร้อมแก้สิ่งที่ไม่ผ่าน
+Watch a page via `agent-browser` to confirm the web server works, then dispatch subagents split by route to roleplay as real users exercising the app — clicking buttons, links, and forms along their flows — then aggregate a pass/fail report and fix whatever fails
 
 ## Scope
 
-ใช้เมื่อต้องการ exploratory/functional testing ผ่าน browser จริงโดยครอบคลุมทุก route — ต่างจาก `/run-test` (e2e) ที่รัน test suite เขียนไว้ล่วงหน้า (skill นี้คือ manual-style exploration ผ่าน subagents)
+Use when you need exploratory/functional testing through a real browser covering every route — unlike `/run-test` (e2e), which runs a pre-written test suite (this skill is manual-style exploration through subagents)
 
-- ถ้าต้องการ review/improve UX/UI ทุก route → `/deep-review` (domain `review-uxui`)
-- ถ้าต้องการแก้ console/page errors → `/watch-browser-and-fix`
-- ถ้า FAIL ส่วนใหญ่คือ dead UI / feature ที่ยังไม่ implement (button ไม่มี handler, mock/placeholder data, TODO) → ส่งต่อ `/implement-to-production` แทนแก้ทีละจุด
-- ถ้ามี Playwright suite อยู่แล้ว → `/run-test` (e2e)
-- browser tool เลือกตาม `/use-chrome-devtools` `## Tool Selection` — interact/debug ผ่าน `chrome-devtools-mcp` (ถ้า register) หรือ `agent-browser` CLI; multi-session ขนานข้าม subagents → `agent-browser --session <name>`
-- ถ้าไม่มี browser MCP server → fallback ไป `/use-agent-browser` (CLI)
+- If you want to review/improve UX/UI on every route → `/deep-review` (domain `review-uxui`)
+- If you want to fix console/page errors → `/watch-browser-and-fix`
+- If most FAILs are dead UI / unimplemented features (buttons without handlers, mock/placeholder data, TODO) → hand off to `/implement-to-production` instead of fixing point by point
+- If a Playwright suite already exists → `/run-test` (e2e)
+- Select the browser tool per `/use-chrome-devtools` `## Tool Selection` — interact/debug via `chrome-devtools-mcp` (if registered) or the `agent-browser` CLI; parallel multi-session across subagents → `agent-browser --session <name>`
+- If there is no browser MCP server → fall back to `/use-agent-browser` (CLI)
 
 ## Execute
 
 ### 1. Verify Web Server
 
-> Goal: confirm ว่า server ทำงานได้ก่อน test
+> Goal: Confirm the server works before testing
 
-1. ทำ `/watch-browser` — เปิด URL เป้าหมาย, capture screenshot, เช็ค console/errors
-2. ถ้า server ไม่ตอบสนอง → ทำ `/run-dev` หรือ `/resolve-errors` แล้วกลับมา step นี้
-3. ถ้า app ต้อง auth/seed data → เตรียม test credentials/fixtures ก่อน dispatch
+1. Run `/watch-browser` — open the target URL, capture a screenshot, check console/errors
+2. If the server is unresponsive → run `/run-dev` or `/resolve-errors`, then return to this step
+3. If the app needs auth/seed data → prepare test credentials/fixtures before dispatching
 
 ### 2. Discover Routes
 
-> Goal: รู้ routes ทั้งหมดที่ต้อง test — ห้ามข้าม route ใด
+> Goal: Know every route that must be tested — never skip any route
 
-1. `agent-browser snapshot -i` เพื่อหา nav links
-2. cross-check route definitions ใน codebase
-3. สร้าง checklist ทุก route — รวม dynamic routes (sample params ต่อ pattern), nested routes, error routes, และ auth-gated routes (login ก่อน test — ยังต้อง cover)
+1. `agent-browser snapshot -i` to find nav links
+2. cross-check route definitions in the codebase
+3. Build a checklist of every route — include dynamic routes (a sample param per pattern), nested routes, error routes, and auth-gated routes (log in before testing — they still must be covered)
 
 ### 3. Dispatch User-Roleplay Subagents
 
-> Goal: ทดสอบจริงแบบ parallel ครบทุก route — ทุก route ต้องมี agent ดูแล
+> Goal: Test for real in parallel across every route — every route needs an agent covering it
 
-ทำตาม `/use-subagents` — spawn subagent ครอบคลุมทุก route ใน checklist (แบ่ง batch 3-5 routes ต่อ agent เพื่อ parallelism แต่ห้ามตัด route ทิ้ง) โดยแต่ละ agent roleplay เป็น user และต้อง:
+Follow `/use-subagents` — spawn subagents covering every route in the checklist (batch 3-5 routes per agent for parallelism, but never drop a route), each roleplaying as a user and each required to:
 
-1. `agent-browser open <route>` แล้ว `snapshot -i` เพื่อหา interactive elements ทั้งหมด
-2. ทดลองทุก action ที่พบ: click buttons/links, submit forms (valid + invalid input), toggle controls, pagination, search, filters
-3. follow flows ที่สมเหตุสมผล — เช่น list → detail → edit → save → back
-4. เก็บ evidence ทุก step: screenshot ก่อน/หลัง action, console errors, network failures
-5. บันทึกผลเป็น PASS/FAIL ต่อ action พร้อม repro steps เมื่อ FAIL
+1. `agent-browser open <route>` then `snapshot -i` to find all interactive elements
+2. Try every action found: click buttons/links, submit forms (valid + invalid input), toggle controls, pagination, search, filters
+3. follow sensible flows — e.g. list → detail → edit → save → back
+4. capture evidence at every step: screenshot before/after each action, console errors, network failures
+5. record PASS/FAIL per action with repro steps when FAIL
 
 ### 4. Aggregate Results
 
-> Goal: รวมผล test จากทุก agent — ทุก route ใน checklist ต้องมีผล
+> Goal: Merge test results from every agent — every route in the checklist must have a result
 
-1. ตรวจ checklist — route ที่ไม่มี report ให้ dispatch เพิ่ม (ห้ามปล่อย route untested)
-2. รวม report: route → actions tested → PASS/FAIL + evidence
-3. dedupe failures ที่มี root cause เดียวกัน (เช่น shared component, API endpoint)
-4. จัด severity: Critical (flow หลักพัง), High (action ไม่ทำงาน), Medium (behavior ผิดเล็กน้อย), Low (cosmetic)
+1. Check the checklist — dispatch more agents for any route without a report (never leave a route untested)
+2. Aggregate the report: route → actions tested → PASS/FAIL + evidence
+3. dedupe failures that share the same root cause (e.g. a shared component, an API endpoint)
+4. Rank severity: Critical (main flow broken), High (action not working), Medium (minor wrong behavior), Low (cosmetic)
 
 ### 5. Fix Failures
 
-> Goal: แก้ทุก FAIL ที่ root cause
+> Goal: Fix every FAIL at its root cause
 
-1. แก้ตามลำดับ Critical → Low — ใช้ evidence จาก agent (screenshot, console, repro steps)
-2. failures จาก root cause เดียวกัน → แก้ครั้งเดียว ไม่ patch ทีละ route
-3. failures ที่เป็น dead UI / unimplemented feature (button ไม่มี handler, mock data, TODO placeholder) → ทำ `/implement-to-production` ให้ครอบคลุมทั้ง scope แทน fix ทีละ element — แล้วกลับมา retest
-4. ถ้า fix แตะหลายไฟล์ → `/resolve-errors` ตรวจ lint/typecheck หลังแก้
-5. failures ที่เป็น environment/config → แยก report ไม่แก้ใน code
+1. Fix in order Critical → Low — using evidence from the agents (screenshots, console, repro steps)
+2. failures from the same root cause → fix once, don't patch route by route
+3. failures that are dead UI / unimplemented features (buttons without handlers, mock data, TODO placeholders) → run `/implement-to-production` to cover the whole scope instead of fixing element by element — then return to retest
+4. If a fix touches multiple files → `/resolve-errors` to check lint/typecheck after the fix
+5. failures caused by environment/config → report separately, don't fix in code
 
 ### 6. Retest
 
-> Goal: ยืนยัน fixes ด้วยการ test ซ้ำ
+> Goal: Confirm the fixes by testing again
 
-1. `agent-browser reload` แล้ว replay เฉพาะ failed actions
-2. FAIL กลายเป็น PASS ทั้งหมด → ไป Step 7; ยัง FAIL → loop Step 5 (สูงสุด 3 รอบ)
+1. `agent-browser reload` then replay only the failed actions
+2. All FAILs become PASS → go to Step 7; still FAIL → loop back to Step 5 (max 3 rounds)
 
 ### 7. Codify Into Playwright
 
-> Goal: exploratory pass ที่ผ่าน ถูก promote เป็น e2e suite จริง — suite results คือ authoritative
+> Goal: The passing exploratory pass gets promoted into a real e2e suite — suite results are authoritative
 
-1. ถ้า PASS ครบ → ทำ `/update-tests` เขียน/อัปเดต Playwright specs จาก flows ที่เพิ่ง test
-2. ทำ `/run-test` (e2e) รัน suite จริง — Playwright report คือ test result ของจริงสำหรับ `/update-docs`
-3. ถ้า suite setup ไม่ได้ → skip แล้วระบุใน report ว่า results เป็น exploratory เท่านั้น
+1. If everything PASSES → run `/update-tests` to write/update Playwright specs from the flows just tested
+2. Run `/run-test` (e2e) against the real suite — the Playwright report is the real test result for `/update-docs`
+3. If the suite setup doesn't work → skip it and state in the report that results are exploratory only
 
 ### 8. Report
 
-> Goal: ส่งมอบผล test
+> Goal: Deliver the test results
 
-1. ทำตาม `## Merged Details → report-status` — scenarios pass/fail, failure evidence, flaky signals
-2. persist raw exploratory results → `.devin/temp/report/<workspace>/browser-test-<time>.md` ตาม format `/create-report-in-dot-devin` — ระบุชัดว่าเป็น exploratory (ไม่ใช่ suite result); authoritative e2e result = Playwright report จาก Step 7
-3. ระบุ coverage gaps — actions ที่ยังไม่ได้ test (เช่น auth-gated, payment)
-4. ปิด browser session ด้วย `agent-browser close`
-5. ทำ `/suggest-next-action`
+1. Follow `## Merged Details → report-status` — scenarios pass/fail, failure evidence, flaky signals
+2. persist raw exploratory results → `.devin/temp/report/<workspace>/browser-test-<time>.md` per the `/create-report-in-dot-devin` format — state clearly that it is exploratory (not a suite result); the authoritative e2e result = the Playwright report from Step 7
+3. List coverage gaps — actions not yet tested (e.g. auth-gated, payment)
+4. Close the browser session with `agent-browser close`
+5. Run `/suggest-next-action`
 
 ### Workflows
 
@@ -117,37 +117,37 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 |----------|----------|
 | `report`, `status` | `## Merged Details → report-status` — test watch report (pass/fail, flaky, verdict) |
 
-1. ถ้า argument เป็น `report`/`status` → ทำตาม `## Merged Details → report-status` — ใช้ session data ที่มีอยู่
-2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ โดย Step 8 อ่าน `## Merged Details → report-status` มา execute
+1. If the argument is `report`/`status` → follow `## Merged Details → report-status` — use the existing session data
+2. If not specified → do Steps 1-8 as usual, with Step 8 reading `## Merged Details → report-status` to execute
 
 ## Rules
 
 ### 1. Server Before Test
 
-- ต้อง confirm server ผ่าน `/watch-browser` ก่อน dispatch — ห้ามข้าม
-- route ที่ 404/error ตั้งแต่เปิด → FAIL ทันทีพร้อม screenshot evidence
+- must confirm the server via `/watch-browser` before dispatching — never skip
+- a route that 404s/errors on open → FAIL immediately with screenshot evidence
 
 ### 2. Real Interactions Only
 
-- agent ต้อง interact จริงผ่าน `agent-browser` (click, type, submit) — ห้าม "test" โดยอ่าน code
-- screenshots/evidence save ไป OS temp dir (`$env:TEMP`/`os.tmpdir()`) — ห้าม commit เข้า repo
-- ทุก FAIL ต้องมี repro steps + screenshot + console errors
+- agents must truly interact via `agent-browser` (click, type, submit) — never "test" by reading code
+- save screenshots/evidence to the OS temp dir (`$env:TEMP`/`os.tmpdir()`) — never commit them to the repo
+- every FAIL must have repro steps + screenshot + console errors
 
 ### 3. Coverage Discipline
 
-- test ทุก interactive element ที่พบใน snapshot — ไม่เลือกเฉพาะ happy path
-- รวม negative cases: invalid form input, empty states, permission denied
+- test every interactive element found in the snapshot — don't pick only the happy path
+- include negative cases: invalid form input, empty states, permission denied
 
 ### 4. Non-Destructive Testing
 
-- ห้าม trigger destructive actions จริง (delete data, payments, emails) — mock หรือข้ามพร้อมบันทึกเป็น untested
-- ใช้ test data/credentials เท่านั้น
+- never trigger truly destructive actions (delete data, payments, emails) — mock them or skip and record as untested
+- use test data/credentials only
 
 ### 5. Loop Limit
 
-- fix-retest loop สูงสุด `3` รอบ — ถ้ายัง FAIL stop และ report
-- `timeout` = `900` วินาทีต่อ batch, `maxRetries` = `3` ต่อ agent crash
-- `/watch-browser-test` — alias merged เข้า skill นี้แล้ว (stub ถูกลบ ใช้ `/watch-browser-and-test` โดยตรง)
+- the fix-retest loop runs at most `3` rounds — if still FAILing, stop and report
+- `timeout` = `900` seconds per batch, `maxRetries` = `3` per agent crash
+- `/watch-browser-test` — the alias is already merged into this skill (the stub was removed; use `/watch-browser-and-test` directly)
 
 
 ## Merged Details
@@ -156,56 +156,56 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ##### Goal
 
-แปลง session ของ `/watch-browser-and-test` เป็น report — test scenarios ที่ผ่าน/ไม่ผ่าน พร้อม failure evidence
+Turn the `/watch-browser-and-test` session into a report — test scenarios that passed/failed with failure evidence
 
 ##### Scope
 
-- ใช้เมื่อ `/watch-browser-and-test` dispatch มาที่ `report`/`status` หรือเรียกหลัง session จบ
-- Output: ตารางในแชท หรือ persistent artifact ผ่าน `/create-report-in-dot-devin`
+- Use when `/watch-browser-and-test` dispatches to `report`/`status` or when invoked after a session ends
+- Output: a table in the chat, or a persistent artifact via `/create-report-in-dot-devin`
 
 ##### Execute
 
 ###### 1. Collect Test Results
 
-> Goal: รวมผลต่อ scenario
+> Goal: Aggregate results per scenario
 
-1. รวมต่อ scenario: pass/fail, duration, failure point (step ที่พัง)
-2. รวม evidence ต่อ failure: screenshot, console error, network fail
-3. flag flaky signals: pass บ้าง fail บ้างข้าม runs
+1. Aggregate per scenario: pass/fail, duration, failure point (the step that broke)
+2. Aggregate evidence per failure: screenshot, console error, network fail
+3. flag flaky signals: sometimes passes, sometimes fails across runs
 
 ###### 2. Build Report
 
-> Goal: ตอบว่า flows สำคัญทำงานไหม
+> Goal: Answer whether the critical flows work
 
-1. ตาราง: `No.`, `Scenario`, `Result`, `Duration`, `Failure Point`, `Evidence`
+1. Table: `No.`, `Scenario`, `Result`, `Duration`, `Failure Point`, `Evidence`
 2. Summary: pass rate, slowest scenarios, failures by cause
-3. Flaky scenarios แยก section
+3. Flaky scenarios in a separate section
 
 ###### 3. Verdict
 
-> Goal: ตัดสิน test health
+> Goal: Judge test health
 
 1. Verdict: `all-pass` / `has-failures` / `flaky`
-2. failures → แนะนำ `/resolve-errors` หรือ `/deep-review` แล้ว fix ตาม `## Fix` (flaky)
-3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
+2. failures → recommend `/resolve-errors` or `/deep-review`, then fix per `## Fix` (flaky)
+3. If it must be archived → run `/create-report-in-dot-devin`
 
 ##### Rules
 
-- failure ต้องมี evidence (screenshot/console) — ไม่ใช่แค่ status
-- แยก product bug จาก test bug (selector หลุด, timing)
-- flaky ต้องมีอย่างน้อย 2 runs ที่ผลต่างกันก่อน flag
+- a failure must have evidence (screenshot/console) — not just a status
+- separate product bugs from test bugs (selector drift, timing)
+- a flaky scenario needs at least 2 runs with differing results before flagging
 
 ##### Expected Outcome
 
-- Test report พร้อม per-scenario results + flaky signals + verdict
-- ใช้ /test-website สำหรับ route sweep ต่อ iteration; authored suite → /test-e2e
+- Test report with per-scenario results + flaky signals + verdict
+- Use /test-website for the route sweep on the next iteration; an authored suite → /test-e2e
 
 ## Expected Outcome
 
-- ทุก route ถูก roleplay-test ครบ interactive elements พร้อม evidence
-- report สรุป PASS/FAIL ต่อ action + fixes ที่ทำ + retest results
-- raw exploratory results ถูก persist ใน `.devin/temp/report/<workspace>/` (ระบุ exploratory — ไม่ใช่ suite result)
-- flows ที่ผ่านถูก codify เป็น Playwright specs และรันจริง — Playwright report เป็น authoritative e2e result
-- failures ที่แก้แล้วถูก retest จนผ่าน หรือ report สิ่งที่ค้างชัดเจน
-- coverage gaps และ untested areas ถูกระบุไว้
+- Every route is roleplay-tested across its interactive elements with evidence
+- The report summarizes PASS/FAIL per action + fixes made + retest results
+- raw exploratory results are persisted in `.devin/temp/report/<workspace>/` (marked exploratory — not a suite result)
+- passing flows are codified into Playwright specs and run for real — the Playwright report is the authoritative e2e result
+- fixed failures are retested until they pass, or remaining issues are clearly reported
+- coverage gaps and untested areas are identified
 

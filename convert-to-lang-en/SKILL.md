@@ -1,6 +1,6 @@
 ---
 name: convert-to-lang-en
-description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
+description: Use English for communication and work
 argument-hint: "[target]"
 related:
   - convert-to-lang-th
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ใช้ภาษาอังกฤษเป็นภาษาหลักในการสื่อสารและทำงาน
+Use English as the primary language for communication and work
 
 ## Scope
 
-ใช้เมื่อต้องการสื่อสาร เขียน documentation หรือทำงานเป็นภาษาอังกฤษ
+Use when you need to communicate, write documentation, or work in English
 
 ## Execute
 
@@ -23,62 +23,62 @@ related:
 
 > Goal: Set Language Context
 
-ตั้งค่าใช้ภาษาอังกฤษเป็นหลัก:
+Set English as the primary language:
 
-1. ตอบเป็นภาษาอังกฤษทุกครั้ง
-2. ใช้ technical terminology ที่ถูกต้อง
-3. รักษาความชัดเจนและกระชับ
-4. ใช้ professional tone
+1. Always reply in English
+2. Use correct technical terminology
+3. Keep things clear and concise
+4. Use a professional tone
 
 ### 2. Communicate In English
 
 > Goal: Communicate In English
 
-สื่อสารเป็นภาษาอังกฤษ:
+Communicate in English:
 
-1. ตอบเป็นภาษาอังกฤษกระชับ ตรงประเด็น
-2. ใช้ professional tone
-3. อธิบายอย่างชัดเจนและกระชับ
-4. รักษา consistency
+1. Answer in English, concise and on point
+2. Use a professional tone
+3. Explain clearly and concisely
+4. Maintain consistency
 
 ### 3. Documentation
 
 > Goal: Documentation
 
-เขียน documentation เป็นภาษาอังกฤษ:
+Write documentation in English:
 
-1. เขียน README, comments, และ documentation เป็นภาษาอังกฤษ
-2. ใช้ code examples ที่เหมาะสม
-3. อธิบาย technical concepts ละเอียด
+1. Write READMEs, comments, and documentation in English
+2. Use appropriate code examples
+3. Explain technical concepts in detail
 4. Follow international standards
 
 ## Rules
 
 ### 1. Communication Style
 
-- ใช้ formal English
-- หลีกเลี่ยง slang และ colloquialisms
-- รักษา tone ที่ professional
+- Use formal English
+- Avoid slang and colloquialisms
+- Keep a professional tone
 - Be concise and clear
 
 ### 2. Technical Accuracy
 
-- ใช้ technical terminology ที่ถูกต้อง
+- Use correct technical terminology
 - Follow industry standards
 - Use proper code syntax
 
 ### 3. Clarity
 
-- เขียนให้เข้าใจง่าย
-- ใช้ short sentences
+- Write so it is easy to understand
+- Use short sentences
 - Avoid ambiguity
 
-- ใช้ /convert-to-lang-th ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Use /convert-to-lang-th if needed
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- การสื่อสารเป็นภาษาอังกฤษที่ professional
+- Professional English communication
 - Clear and concise documentation
 - Technical accuracy

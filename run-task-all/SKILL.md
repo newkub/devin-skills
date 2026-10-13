@@ -1,6 +1,6 @@
 ---
 name: run-task-all
-description: รันงานที่ค้างอยู่ทั้งหมดจากคิวตามลำดับ
+description: Run all pending tasks from the queue, in order
 argument-hint: "[target]"
 related:
   - deep-review
@@ -14,59 +14,59 @@ related:
 
 ## Goal
 
-รันงานที่ค้างอยู่ทั้งหมดจากคิวงานโดยไม่ต้องแทรกแซงด้วยมือ
+Run all pending tasks from the task queue without manual intervention
 
 ## Scope
 
-ใช้เมื่อมีงานในคิวหลายงานที่ต้องทำให้เสร็จในรอบเดียว
+Use when there are several tasks in the queue that must be completed in one pass
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (task all)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (task all)
 
 ### 1. Read queue
 
-> Goal: อ่านคิว
+> Goal: Read the queue
 
-1. อ่าน `QUEUE.md` หรือรายการงาน
-1. กรองสถานะ: pending
-1. เรียงตาม priority/created
+1. Read `QUEUE.md` or the task list
+1. Filter by status: pending
+1. Sort by priority/created
 
 ### 2. Execute tasks
 
-> Goal: รันงาน
+> Goal: Run the tasks
 
-1. รันแต่ละงานด้วย skill ที่เหมาะสม
-1. อัปเดตสถานะเป็น in-progress
-1. จัดการ error ด้วย `/resolve-errors`
+1. Run each task with the appropriate skill
+1. Update the status to in-progress
+1. Handle errors with `/resolve-errors`
 
 ### 3. Verify
 
-> Goal: ตรวจสอบ
+> Goal: Verify
 
-1. รัน `/run-verify` และ `/run-test` หลังทำงานเสร็จ
-1. เปรียบเทียบผลลัพธ์กับที่คาดหวัง
-1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
+1. Run `/run-verify` and `/run-test` after each task finishes
+1. Compare the results against what was expected
+1. Retry failed tasks up to 3 times
 
 ### 4. Update and report
 
-> Goal: อัปเดตและรายงาน
+> Goal: Update and report
 
-1. ทำเครื่องหมายงานที่เสร็จในคิว
-1. รายงานสรุปผล
-1. เรียก `/suggest-next-action`
+1. Mark completed tasks in the queue
+1. Report a summary of the results
+1. Invoke `/suggest-next-action`
 
 ## Rules
 
-- รันทีละงาน เว้นแต่งานเป็นอิสระต่อกัน
-- ถามผู้ใช้ก่อนทำ action ที่ทำลายล้าง
-- หยุดและรายงานหากงานล้มเหลวหลังจากลองใหม่ครบจำนวนสูงสุด
-- อัปเดตสถานะคิวหลังจบแต่ละงาน
+- Run one task at a time, unless the tasks are independent of each other
+- Ask the user before performing a destructive action
+- Stop and report if a task fails after the maximum number of retries
+- Update the queue status after each task finishes
 
-- ใช้ /report ถ้าจำเป็น
+- Use /report if needed
 
 ## Expected Outcome
 
-- งานที่ค้างอยู่ทั้งหมดถูกรันแล้ว
-- สถานะคิวสะท้อนผลลัพธ์
-- การตรวจสอบผ่าน
+- All pending tasks have been run
+- The queue status reflects the results
+- Verification passes

@@ -1,6 +1,6 @@
 ---
 name: deep-review-then-fix
-description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
+description: Review first, then fix in context, asking the user to confirm
 argument-hint: "[scope]"
 related:
   - deep-thinking
@@ -20,21 +20,21 @@ related:
 
 ## Goal
 
-Canonical fix skill — review แล้ว fix findings ทุก domain ตาม Domain Map ผ่าน `## Fix` section และ `workflows/` ของ `review-*` แต่ละตัว
+Canonical fix skill — review then fix findings in every domain per the Domain Map, through the `## Fix` section and `workflows/` of each `review-*` skill
 
 ## Scope
 
-ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
+Use when you want both review and fix without a specific target; supports code, docs, and skills
 
-- Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review` เป็น review pass
-- Fix findings หลัง review ตาม Domain Map ด้านล่าง
-- Fix mode: user confirm ตาม findings (default), ตาม suggestion เดิม (`/follow-your-suggestion`), หรือ `fix all` ตามที่ user ระบุ
+- Small/narrow scope → use the matching `/review` domain; whole-codebase scope → use `/deep-review` as the review pass
+- Fix findings after review per the Domain Map below
+- Fix mode: user confirms per finding (default), follows the original suggestion (`/follow-your-suggestion`), or `fix all` as the user specifies
 
-ดูเพิ่มเติม: /deep-review
+See also: /deep-review
 
 ## Domain Map
 
-fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `review-*` ตัวที่ตรง domain — อ่านก่อนแก้เสมอ
+Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill matching the domain — always read before editing
 
 | Domain | Review skill | Fix route |
 |--------|-------------|-----------|
@@ -55,7 +55,7 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 | cost | `/deep-review` | `/optimize-cost` |
 | ci/pipeline | `/deep-review` | `/optimize-ci` |
 | docker | `/deep-review` | `/optimize-docker` (guided workflow → `follow-create-docker/workflows/optimize-image`) |
-| tests | `/deep-review` | `/improve-tests` + `## Fix` (flaky) + `/update-tests` สำหรับเขียน test ใหม่ |
+| tests | `/deep-review` | `/improve-tests` + `## Fix` (flaky) + `/update-tests` for writing new tests |
 | uxui | `/deep-review` | `/improve-uxui` + `/watch-browser-and-fix` (browser pass) |
 | observability | `/deep-review` | `/improve-observability` |
 | accessibility | `/deep-review` | `/improve-a11y` |
@@ -67,112 +67,112 @@ fix ทำผ่าน `## Fix` section หรือ `workflows/` ของ `rev
 | release | `/deep-review` | `/improve-release` |
 | delivery | `/deep-review` | `/improve-delivery` |
 | stability | `/deep-review` | `/improve-stability` (error paths/UI → `/improve-error-handling`; messaging → `/improve-events`) |
-| error-handling | `/deep-review` | `/improve-error-handling` (เจ้าของเดียว: error paths, retries, recovery, error states, error UI, error boundaries) |
-| architecture | `/deep-review` | `/improve-architecture` (เลือก pattern → `/follow-architecture`; ย้ายไฟล์/แยก layer → `/refactor`) |
+| error-handling | `/deep-review` | `/improve-error-handling` (sole owner: error paths, retries, recovery, error states, error UI, error boundaries) |
+| architecture | `/deep-review` | `/improve-architecture` (choose pattern → `/follow-architecture`; move files/split layers → `/refactor`) |
 | migration | `/deep-review` | `/improve-migration` (backward compat, data integrity, rollback, cutover) |
 | quality/types | `/deep-review` | `## Fix` — complexity, imports |
-| อื่นๆ (cli, config, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | `## Fix` section ของ review skill นั้น — แก้ตาม findings ตรงๆ |
+| others (cli, config, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | the `## Fix` section of that review skill — fix per the findings directly |
 
 ## Execute
 
 ### 1. Identify Scope
 
-> Goal: รู้ว่าจะ review และ fix อะไร
+> Goal: Know what to review and fix
 
-1. ทำ `/deep-thinking` วิเคราะห์ context และเป้าหมายของ scope ก่อนเริ่ม
-2. ดูรายละเอียดใน [references/identify-scope.md](references/identify-scope.md)
-3. บันทึก findings พร้อม severity และ evidence
+1. Run `/deep-thinking` to analyze the context and the scope's goal before starting
+2. See [references/identify-scope.md](references/identify-scope.md)
+3. Record findings with severity and evidence
 
 ### 2. Plan Fixes
 
-> Goal: วางแผนการแก้ไข
+> Goal: Plan the fixes
 
-1. ดูรายละเอียดใน [references/plan-fixes.md](references/plan-fixes.md)
-2. บันทึก findings พร้อม severity และ evidence
+1. See [references/plan-fixes.md](references/plan-fixes.md)
+2. Record findings with severity and evidence
 
 ### 3. Confirm
 
-> Goal: ขอ approval ก่อน fix
+> Goal: Get approval before fixing
 
-1. ดูรายละเอียดใน [references/confirm.md](references/confirm.md)
-2. บันทึก findings พร้อม severity และ evidence
+1. See [references/confirm.md](references/confirm.md)
+2. Record findings with severity and evidence
 
 ### 4. Apply Fixes
 
-> Goal: แก้ไข issues ตามแผน
+> Goal: Fix the issues per the plan
 
-1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
-2. Dispatch approved fixes ตาม domain — จัดกลุ่ม findings แล้ว map ไป `## Fix` section หรือ workflows ของ `review-*` ตาม Domain Map ด้านบน; domain ที่ไม่มีในตาราง → `/ask-me` ก่อนแก้
-3. บันทึก findings พร้อม severity และ evidence
+1. See [references/apply-fixes.md](references/apply-fixes.md)
+2. Dispatch approved fixes by domain — group findings, then map them to the `## Fix` section or workflows of `review-*` per the Domain Map above; a domain not in the table → `/ask-me` before fixing
+3. Record findings with severity and evidence
 
 ### 5. Verify
 
-> Goal: ตรวจสอบผลหลัง fix
+> Goal: Check the results after fixing
 
-1. ดูรายละเอียดใน [references/verify.md](references/verify.md)
-2. บันทึก findings พร้อม severity และ evidence
+1. See [references/verify.md](references/verify.md)
+2. Record findings with severity and evidence
 
 ## Rules
 
 ### 1. Review Before Fix
-- ต้อง `/review` และ report ก่อนแก้ไข
-- ไม่แก้ไขโดยไม่ได้รับ confirmation
+- Must `/review` and report before editing
+- Never edit without confirmation
 
 ### 2. Incremental Fix
-- แก้ทีละไฟล์หรือ small batch
-- ตรวจ verify หลังแก้
+- Fix one file or a small batch at a time
+- Verify after each fix
 
 ### 3. Evidence
-- ทุก fix ต้องมีเหตุผลจาก review
-- ระบุ file path และ line number
+- Every fix must have a reason from the review
+- Cite file path and line number
 
-- ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
-- ใช้ /watch-browser-and-fix ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /fix if you want to fix per the suggestion or fix all
+- Use /watch-browser-and-fix if needed
+- Use /follow-best-practice if needed
+- Use /deep-review if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (then fix)
+- See the metrics for review in [references/scoring.md](references/scoring.md) (then fix)
 
 ## Fix
 
-> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
+> Follow `deep-review/SKILL.md` when the user confirms fixing the findings
 
-1. จัดลำดับ findings ตาม severity — canonical steps ที่ `deep-review/SKILL.md`
-2. เลือก fix route ที่ตรงกับ finding จาก Domain Map ด้านบน (then fix)
-3. preserve behavior + verify + report — canonical ที่ `deep-review/SKILL.md`
+1. Rank findings by severity — canonical steps in `deep-review/SKILL.md`
+2. Pick the fix route matching each finding from the Domain Map above (then fix)
+3. preserve behavior + verify + report — canonical in `deep-review/SKILL.md`
 
 ## References
 
 - [Full-dimension checklist](references/checklist.md)
-- ใช้ /run-review ถ้าจำเป็น
+- Use /run-review if needed
 
-- ใช้ /create-plan-in-dot-devin ถ้าจำเป็น
-- re-run ผ่าน /run-test <domain> หลัง fix เพื่อ verify tests เขียว
+- Use /create-plan-in-dot-devin if needed
+- Re-run via /run-test <domain> after fixing to verify tests are green
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: Independent work that can be spawned in parallel — profiles live in this section, no separate files needed
 
-### fix-worker — apply fixes ที่ user approve แล้วใน module/domain เดียว แล้ว verify คืน changed files + results (ใช้เมื่อ findings กระจายหลาย modules แก้ขนานกันได้โดยไม่ชนกัน)
+### fix-worker — apply the fixes the user approved within a single module/domain, then verify and return changed files + results (use when findings span several modules that can be fixed in parallel without collision)
 
-- **Inputs**: `findings` (findings list ที่ approved ของ module/domain นี้ — finding id, severity, `file:line`, recommendation), `scope` (module/domain เดียวที่รับผิดชอบ เช่น `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — paths ของ `## Fix` section หรือ workflow `SKILL.md` ที่ตรง domain), `verify-commands` (optional — commands สำหรับ verify เช่น `bun run typecheck`, `bun run test`)
-- **Tools**: `read`, `grep`, `find_file_by_name` (อ่าน fix guides และ source ที่จะแก้), `edit`/`write` (apply fixes ตาม findings ที่ approved เท่านั้น), `exec` (รัน lint, typecheck, tests หลังแต่ละ fix)
+- **Inputs**: `findings` (the approved findings list for this module/domain — finding id, severity, `file:line`, recommendation), `scope` (the single module/domain it owns, e.g. `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — paths of the matching domain's `## Fix` section or workflow `SKILL.md`), `verify-commands` (optional — commands for verifying, e.g. `bun run typecheck`, `bun run test`)
+- **Tools**: `read`, `grep`, `find_file_by_name` (read fix guides and the source to be fixed), `edit`/`write` (apply only the approved fixes), `exec` (run lint, typecheck, tests after each fix)
 - **Execute**:
-  1. อ่าน fix route ที่ตรง domain (workflow `fix-*`/`improve-*` หรือ `## Fix` ของ review skill ตาม Domain Map ด้านบน) — ถ้าไม่มีให้แก้ตาม finding recommendation ตรงๆ
-  2. จัดลำดับ findings ตาม severity — `critical` ก่อน แล้วแก้ทีละรายการ
-  3. แต่ละ fix ต้องรักษา behavior เดิม — minimal diff ไม่ refactor เกิน finding
-  4. Verify ทันทีหลังแต่ละ fix ด้วย `verify-commands` หรือ checks ที่ scope รองรับ
-  5. ถ้า fix ทำ check พัง → revert fix นั้นและ mark `failed` พร้อมสาเหตุ แล้วทำต่อ
-- **Output**: ตาราง `| No. | Finding | Status | Changed Files | Verify Result |` — `status`: `fixed`/`failed`/`skipped` (ไม่อยู่ใน scope หรือขาด approval); ปิดท้ายด้วยสรุป total fixed/failed/skipped, changed files ทั้งหมด, verify รวม (`pass`/`fail`); ถ้า verify รวม fail → ระบุ fixes ที่ revert แล้วและ residual risk
-- **Constraints**: แก้เฉพาะ findings ที่อยู่ใน `findings` list และ `scope` ที่ได้รับ — ห้ามแก้ finding ของ module อื่น; ห้าม fix ที่ยังไม่ได้ approved — ถ้าไม่ชัดให้ mark `skipped` พร้อมเหตุผล; ทุก fix ต้องผ่าน verify ของตัวเอง — fail ให้ revert ทันทีไม่ทิ้ง broken state; ห้ามแตะ files นอก `scope` เว้นแต่ finding บังคับ (เช่น shared import) — ต้องระบุใน output; ไม่ commit — parent เป็นผู้ commit หลังรวมผลทุก worker
+  1. Read the fix route for the matching domain (the `fix-*`/`improve-*` workflow or the review skill's `## Fix`, per the Domain Map above) — if none exists, fix directly per the finding's recommendation
+  2. Rank findings by severity — `critical` first, then fix one at a time
+  3. Each fix must preserve the original behavior — minimal diff, no refactoring beyond the finding
+  4. Verify immediately after each fix with `verify-commands` or checks the scope supports
+  5. If a fix breaks a check → revert that fix and mark it `failed` with the reason, then continue
+- **Output**: table `| No. | Finding | Status | Changed Files | Verify Result |` — `status`: `fixed`/`failed`/`skipped` (out of scope or missing approval); close with a summary of total fixed/failed/skipped, all changed files, and aggregate verify (`pass`/`fail`); if aggregate verify fails → list the reverted fixes and residual risk
+- **Constraints**: fix only the findings in the `findings` list within the assigned `scope` — never touch another module's findings; never apply unapproved fixes — if unclear, mark `skipped` with a reason; every fix must pass its own verify — on failure revert immediately, never leave a broken state; never touch files outside `scope` unless a finding requires it (e.g. a shared import) — must be noted in the output; no commits — the parent commits after merging all worker results
 
 ## Expected Outcome
 
-- รายงาน issues ก่อน fix
-- issues ถูกแก้ไขตามที่ user ตกลง
-- ผ่าน verify
-- สรุป next action พร้อม `/review` และ `/fix`
+- Issue report before fixing
+- Issues fixed as the user agreed
+- Verification passed
+- Next-action summary with `/review` and `/fix`

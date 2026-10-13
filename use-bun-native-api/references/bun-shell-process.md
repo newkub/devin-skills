@@ -1,8 +1,8 @@
 # Bun Shell & Process APIs
 
-ใช้ Bun shell และ process APIs สำหรับ system operations
+Use Bun shell and process APIs for system operations
 
-- `$` - Shell template literal สำหรับรัน shell commands แบบ cross-platform
-- `Bun.spawn()` - Spawn child process (async) คืน `Subprocess` object
-- `Bun.spawnSync()` - Spawn child process (sync) คืน `SpawnSyncResult`
-- รองรับ stdin/stdout/stderr redirection, environment variables
+- `$` - Shell template literal for running shell commands cross-platform
+- `Bun.spawn()` - Spawn a child process (async), returns a `Subprocess` object
+- `Bun.spawnSync()` - Spawn a child process (sync), returns a `SpawnSyncResult`
+- Supports stdin/stdout/stderr redirection and environment variables

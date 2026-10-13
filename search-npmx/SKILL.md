@@ -1,7 +1,7 @@
 ---
 
 name: search-npmx
-description: ค้นหา เปรียบเทียบ และประเมิน npm packages บน npmx.dev
+description: Search, compare, and evaluate npm packages on npmx.dev
 argument-hint: "[package-query]"
 related:
   - follow-best-practice
@@ -15,91 +15,91 @@ related:
 
 ## Goal
 
-ใช้ `npmx.dev` ค้นหา เปรียบเทียบ และเลือก `npm packages` ทีเหมาะสมกับ project โดยดูข้อมูลแบบ `package details`, `versions`, `dependencies`, `docs`, `changelog`, `stats`, `security` และ `source code`
+Use `npmx.dev` to search, compare, and pick the `npm packages` that best fit the project, using `package details`, `versions`, `dependencies`, `docs`, `changelog`, `stats`, `security` and `source code`
 
 ## Scope
 
-ใช้ `npmx.dev` เท่านั้น (ไม่ใช่ `npmjs.com` หรือ CLI search) สำหรับหา package ตาม requirement แล้วสรุปเป้นตารางเปรียบเทียบ ไม่รวมการติดตั้งหรือ implement ใน project
+Use `npmx.dev` only (not `npmjs.com` or CLI search) to find packages per requirement and summarize them in a comparison table. Excludes installing or implementing in the project
 
 ## Execute
 
 ### 1. Clarify Search
 
-> Goal: เข้าใจสิ่งที่ user ต้องการ
+> Goal: Understand what the user wants
 
-1. รับ `package-query` จาก argument หรือ context — เช่น ชื่อ package, keyword, หรือ feature
-2. ถ้าไม่ชัด → ทำ `/ask-me` ถามเพิ่ม:
-   - ใช้ทำอะไร? (state management, router, UI, etc.)
-   - ต้องเป็น TypeScript และ ESM ไหม?
-   - มีข้อจำกัดเรื่องขนาดหรือ license ไหม?
-   - ต้องเปรียบเทียบกับตัวเลือกอื่นไหม?
+1. Take `package-query` from the argument or context — e.g. package name, keyword, or feature
+2. If unclear → run `/ask-me` to ask follow-ups:
+   - What is it for? (state management, router, UI, etc.)
+   - Must it be TypeScript and ESM?
+   - Any size or license constraints?
+   - Does it need comparison against other options?
 
 ### 2. Build Search URL
 
-> Goal: ได้ URL ทีถูกต้องของ npmx.dev
+> Goal: Get the correct npmx.dev URL
 
-1. ถ้าค้นหาด้วย keyword → `https://npmx.dev/search?q=<query>`
-2. ถ้ารู้ชื่อ package ทันที → `https://npmx.dev/<package>` หรือ `https://npmx.dev/package/<package>`
-3. ถ้าเป้น scoped package → `https://npmx.dev/@scope/name`
-4. ถ้าต้องการ version ชัดเจน → `https://npmx.dev/<package>@<version>` หรือ `https://npmx.dev/package/<package>/v/<version>`
-5. ถ้าต้องการ compare → `https://npmx.dev/compare?packages=<pkg1>,<pkg2>`
-6. ใช้ `/` บน npmx.dev เพื่อ focus search bar
+1. If searching by keyword → `https://npmx.dev/search?q=<query>`
+2. If the package name is known upfront → `https://npmx.dev/<package>` or `https://npmx.dev/package/<package>`
+3. If it is a scoped package → `https://npmx.dev/@scope/name`
+4. If a specific version is needed → `https://npmx.dev/<package>@<version>` or `https://npmx.dev/package/<package>/v/<version>`
+5. If a compare is needed → `https://npmx.dev/compare?packages=<pkg1>,<pkg2>`
+6. Press `/` on npmx.dev to focus the search bar
 
 ### 3. Evaluate Candidates
 
-> Goal: รวบรวมข้อมูลเพียงพอเพื่อตัดสินใจ
+> Goal: Gather enough data to decide
 
-1. เปิดหน้า package ด้วย `crw_scrape` หรือ `follow-tool-crw`
-2. อ่าน `README` — สรุป purpose, quick start, caveats
-3. ดู `Versions` — latest, release cadence, deprecated versions
-4. ดู `Dependencies` — count, มี peer deps หรือ native deps หรือไม่
-5. ดู `Code` (กด `.`) — โครงสร้างไฟล์, entry points, source quality
-6. ดู `Docs` — มี generated API docs หรือไม่
-7. ดู `Changelog` — มี release notes หรือไม่
-8. ดู `Stats` — downloads, install size, repository stars/forks
-9. ดู `security` badges — vulnerabilities, provenance, license change warnings
-10. บันทึก URL ทีตรวจสอบไว้ทุกครั้ง
+1. Open the package page with `crw_scrape` or `follow-tool-crw`
+2. Read the `README` — summarize purpose, quick start, caveats
+3. Check `Versions` — latest, release cadence, deprecated versions
+4. Check `Dependencies` — count, any peer deps or native deps
+5. Check `Code` (press `.`) — file structure, entry points, source quality
+6. Check `Docs` — whether generated API docs exist
+7. Check `Changelog` — whether release notes exist
+8. Check `Stats` — downloads, install size, repository stars/forks
+9. Check `security` badges — vulnerabilities, provenance, license change warnings
+10. Always record every URL that was checked
 
 ### 4. Compare Packages
 
-> Goal: เลือกตัวทีดีทีสุดเมื่อมีหลายตัวเลือก
+> Goal: Pick the best one when there are multiple options
 
-1. ถ้ามี 2-3 ตัวเลือก → ใช้ `/compare?packages=<a>,<b>` บน npmx.dev
-2. สร้างตารางเปรียบเทียบด้วย column:
-   - ชื่อ + version
-   - ขนาด (publish/install size)
-   - จำนวน dependencies
-   - รองรับ TypeScript / ESM / CJS
+1. If there are 2-3 options → use `/compare?packages=<a>,<b>` on npmx.dev
+2. Build a comparison table with columns:
+   - Name + version
+   - Size (publish/install size)
+   - Dependency count
+   - TypeScript / ESM / CJS support
    - license
    - provenance
-   - สถานะ security (vulnerabilities)
-   - downloads ต่อสัปดาห์
+   - security status (vulnerabilities)
+   - weekly downloads
    - last published
-   - ข้อดี/ข้อเสีย
-3. หา native/smaller/safer alternatives จาก `Module replacement suggestions` ถ้า npmx แสดง
-4. ทำ `/follow-best-practice` ถ้า category นี้มี best practice เฉพาะ
+   - pros/cons
+3. Look for native/smaller/safer alternatives from `Module replacement suggestions` if npmx shows them
+4. Run `/follow-best-practice` if this category has its own best practice
 
 ### 5. Recommend
 
-> Goal: สรุปผลและชี้ไปยัง URL
+> Goal: Summarize and point to the URLs
 
-1. เลือก package ทีดีทีสุดตาม criteria
-2. ระบุ exact version ทีแนะนำให้ pin
-3. ให้ URL ที share ได้ เช่น `https://npmx.dev/<package>@<version>`
-4. ถ้าไม่แน่ใจ → ทำ `/ask-me` ก่อนตัดสินใจ
-5. ถ้าต้องใช้ package ใน project → ส่งต่อ `/use-my-packages-on-registry` หรือ `/deep-review`
+1. Pick the best package per the criteria
+2. State the exact version recommended for pinning
+3. Provide a shareable URL such as `https://npmx.dev/<package>@<version>`
+4. If unsure → run `/ask-me` before deciding
+5. If the package must be used in the project → hand off to `/use-my-packages-on-registry` or `/deep-review`
 
 ## Rules
 
 ### 1. URL Conventions
 
-- ใช้ `https://npmx.dev/<package>` สำหรับ package ทั่วไป
-- ใช้ `https://npmx.dev/package/<package>/v/<version>` สำหรับ version ชัดเจน
-- ใช้ `https://npmx.dev/search?q=<query>` สำหรับค้นหา
-- ใช้ `https://npmx.dev/compare?packages=<a>,<b>` สำหรับเปรียบเทียบ
-- ใช้ `https://npmx.dev/~<username>` สำหรับดู packages ของ user
-- ใช้ `https://npmx.dev/@<org>` สำหรับดู packages ของ org
-- npmx.dev URLs แทนที่ `npmjs.com` ได้โดยตรง (replace domain)
+- Use `https://npmx.dev/<package>` for regular packages
+- Use `https://npmx.dev/package/<package>/v/<version>` for a specific version
+- Use `https://npmx.dev/search?q=<query>` for searching
+- Use `https://npmx.dev/compare?packages=<a>,<b>` for comparing
+- Use `https://npmx.dev/~<username>` to view a user's packages
+- Use `https://npmx.dev/@<org>` to view an org's packages
+- npmx.dev URLs can directly replace `npmjs.com` (replace the domain)
 
 ### 2. Keyboard Shortcuts
 
@@ -114,28 +114,28 @@ related:
 
 ### 3. Selection Criteria
 
-- ลำดับความสำคัญ: TypeScript types > ESM support > ขนาดเล็ก > provenance > active maintenance
-- หลีกเลี่ยง packages ทีมี deprecation หรือ vulnerability
-- หลีกเลี่ยง `latest` ใน production — แนะนำ pin exact version
-- ตรวจสอบ license ก่อนใช้ใน project ที่มีข้อจำกัด
+- Priority order: TypeScript types > ESM support > small size > provenance > active maintenance
+- Avoid packages with deprecation or vulnerabilities
+- Avoid `latest` in production — recommend pinning the exact version
+- Check the license before use in projects with constraints
 
 ### 4. Tools
 
-- ใช้ `follow-tool-crw` หรือ `crw_scrape` เพื่อดึงข้อมูลจาก npmx.dev
-- ใช้ `follow-tool-crw` ถ้าต้องหา context เพิ่มเติม
-- ใช้ `learn` (web) ถ้าต้องอ่าน docs นอก npmx
-- ใช้ `deep-review` ถ้าต้อง audit ลึก
+- Use `follow-tool-crw` or `crw_scrape` to pull data from npmx.dev
+- Use `follow-tool-crw` if more context is needed
+- Use `learn` (web) if docs outside npmx must be read
+- Use `deep-review` if a deeper audit is needed
 
 ### 5. Safety
 
-- ไม่ install package ด้วยตัวเอง (skill นี้ทำเฉพาะ research)
-- ไม่ expose API key หรือ registry token
-- ไม่สร้าง file ใดๆ ใน project target นอกจาก report ใน chat
-- ใช้ /run-install ถ้าจำเป็น
+- Do not install packages yourself (this skill does research only)
+- Do not expose API keys or registry tokens
+- Do not create any files in the target project beyond the report in chat
+- Use /run-install if needed
 
 ## Expected Outcome
 
-- ได้ package ทีเหมาะสมพร้อมเหตุผล
-- มีตารางเปรียบเทียบ (ถ้ามีหลายตัวเลือก)
-- มี exact npmx.dev URL สำหรับ package และ version ทีแนะนำ
-- มีข้อมูลขนาด, dependencies, license, security, และ maintenance status
+- A suitable package chosen with reasons
+- A comparison table (when there are multiple options)
+- Exact npmx.dev URLs for the recommended package and version
+- Data on size, dependencies, license, security, and maintenance status

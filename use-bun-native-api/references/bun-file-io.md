@@ -1,7 +1,7 @@
 # Bun File I/O APIs
 
-ใช้ Bun file I/O APIs สำหรับ file operations
+Use Bun file I/O APIs for file operations
 
-- `Bun.file()` - สร้าง `BunFile` object สำหรับอ่านไฟล์ (lazy loading)
-- `Bun.write()` - เขียนไฟล์ รองรับ string, Blob, ArrayBuffer, Response
+- `Bun.file()` - Creates a `BunFile` object for reading files (lazy loading)
+- `Bun.write()` - Writes files; supports string, Blob, ArrayBuffer, Response
 - `Bun.stdin` / `Bun.stdout` / `Bun.stderr` - Standard streams

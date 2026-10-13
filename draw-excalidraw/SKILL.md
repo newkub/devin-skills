@@ -1,6 +1,6 @@
 ---
 name: draw-excalidraw
-description: สร้างไฟล์ .excalidraw จากคำอธิบาย shapes
+description: Create .excalidraw files from shape descriptions
 argument-hint: "[description]"
 related:
   - draw-svg-image
@@ -10,30 +10,30 @@ related:
 
 ## Goal
 
-สร้างไฟล์ `.excalidraw` จากคำอธิบาย diagram หรือ drawing
+Create a `.excalidraw` file from a diagram or drawing description
 
 ## Scope
 
-- สร้าง JSON ตาม Excalidraw schema
-- รองรับ shapes: rectangle, diamond, ellipse, arrow, line, text, freedraw
-- สร้างไฟล์ทีเปิดใน Excalidraw หรือ VS Code extension ได้
+- Generate JSON per the Excalidraw schema
+- Supports shapes: rectangle, diamond, ellipse, arrow, line, text, freedraw
+- Creates files openable in Excalidraw or the VS Code extension
 
 ## Execute
 
 ### 1. Parse Description
 
-> Goal: เข้าใจ diagram
+> Goal: Understand the diagram
 
-1. รับ description จาก user
-2. ระบุ elements ทีต้องสร้าง: shapes, text, arrows, positions
-3. กำหนด canvas size และ background color
-4. ถ้า complex → สร้าง layout ง่ายๆ ก่อน
+1. Take the description from the user
+2. Identify the elements to create: shapes, text, arrows, positions
+3. Set the canvas size and background color
+4. If complex → create a simple layout first
 
 ### 2. Generate Schema
 
-> Goal: สร้าง JSON ตาม Excalidraw
+> Goal: Build the JSON per Excalidraw
 
-1. ใช้ schema:
+1. Use the schema:
    ```json
    {
      "type": "excalidraw",
@@ -44,7 +44,7 @@ related:
      "files": {}
    }
    ```
-2. สร้าง element objects สำหรับแต่ละ shape:
+2. Create element objects for each shape:
    - `rectangle`: `type: "rectangle"`
    - `diamond`: `type: "diamond"`
    - `ellipse`: `type: "ellipse"`
@@ -52,40 +52,40 @@ related:
    - `line`: `type: "line"`
    - `text`: `type: "text"`
    - `freedraw`: `type: "freedraw"`
-3. ใส่ properties: `id`, `x`, `y`, `width`, `height`, `strokeColor`, `backgroundColor`, `fillStyle`, `strokeWidth`, `roughness`
+3. Set properties: `id`, `x`, `y`, `width`, `height`, `strokeColor`, `backgroundColor`, `fillStyle`, `strokeWidth`, `roughness`
 
 ### 3. Save File
 
-> Goal: บันทึกไฟล์
+> Goal: Save the file
 
-1. บันทึกเป็น `<name>.excalidraw`
-2. ตรวจสอบ JSON valid
-3. รายงาน path
+1. Save as `<name>.excalidraw`
+2. Validate the JSON
+3. Report the path
 
 ## Rules
 
 ### 1. Schema
 
-- ต้องมี `type`, `version`, `source`, `elements`, `appState`
-- ใช้ `version: 2`
-- `id` ต้องไม่ซ้ำกัน
+- Must have `type`, `version`, `source`, `elements`, `appState`
+- Use `version: 2`
+- `id` values must be unique
 
 ### 2. Layout
 
-- จัดวาง elements ให้มีระยะห่างพออ่าน
-- ใช้ grid หรือ coordinate ง่ายๆ
-- text ควรอยู่ใกล้ shape ทีเกี่ยวข้อง
+- Space elements far enough apart to read
+- Use a simple grid or coordinates
+- Text should sit near the related shape
 
 ### 3. Simple First
 
-- สร้าง diagram ง่ายๆ ก่อน ถ้า user ต้องการเพิ่มค่อยปรับ
-- ไม่ต้องสร้างทุก style option
+- Create a simple diagram first; refine if the user wants more
+- No need to generate every style option
 
-- ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /draw-tldraw ถ้าจำเป็น
+- Use /draw-svg-image if needed
+- Use /draw-tldraw if needed
 
 ## Expected Outcome
 
-- ไฟล์ `.excalidraw` ทีเปิดใน Excalidraw ได้
-- มี elements ตาม description
-- JSON valid และถูกต้องตาม schema
+- A `.excalidraw` file openable in Excalidraw
+- Contains the elements from the description
+- JSON valid and schema-correct

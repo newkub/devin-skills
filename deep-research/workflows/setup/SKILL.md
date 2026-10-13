@@ -1,6 +1,6 @@
 ---
 name: deep-research-setup
-description: ค้นหา setup, config, CI และ integration ของ tool/service จากหลายแหล่ง — synthesize เป็น setup plan
+description: Find tool/service setup, config, CI and integrations from many sources — synthesize a setup plan
 argument-hint: "[tool-or-service]"
 related:
   - deep-research
@@ -15,71 +15,71 @@ related:
 
 ## Goal
 
-ค้นหาและสรุป setup, config, CI/CD และ boilerplate ของ tool, framework หรือ service ที่ต้องติดตั้ง โดย cross-check จากหลายแหล่ง (merged `/research-setup`)
+Search and summarize the setup, config, CI/CD, and boilerplate of a tool, framework, or service you need to install, cross-checked from multiple sources (merged `/research-setup`)
 
 ## Scope
 
-ใช้สำหรับ research setup ใหม่, migration หรือ config ที่ซับซ้อน — ติดตั้ง tool, ตั้งค่า CI/CD, เชื่อมต่อ service, หา boilerplate ที่ถูกต้อง — เลือก plugins/extensions/providers เฉพาะ → `/research-setup-integrations`
+Use for researching a new setup, migration, or complex config — installing a tool, configuring CI/CD, connecting a service, finding the correct boilerplate — choosing plugins/extensions/providers specifically → `/research-setup-integrations`
 
 ## Execute
 
 ### 1. Clarify Setup Target
 
-> Goal: ระบุเป้าหมายและขอบเขตของ setup
+> Goal: Pin down the setup's target and boundaries
 
-1. ระบุ tool/framework/service/platform + version channel (stable, latest, LTS, preview)
-2. ระบุ platform/ecosystem (Bun, Node, Rust, Go, Python, Flutter, Cloudflare, Vercel, ฯลฯ)
-3. ระบุ scope: local setup, CI/CD, deployment, integration, monorepo, shared config
-4. ระบุ constraints เดิม: existing tools, OS, budget, security policy
+1. Identify tool/framework/service/platform + version channel (stable, latest, LTS, preview)
+2. Identify the platform/ecosystem (Bun, Node, Rust, Go, Python, Flutter, Cloudflare, Vercel, etc.)
+3. Define scope: local setup, CI/CD, deployment, integration, monorepo, shared config
+4. List existing constraints: current tools, OS, budget, security policy
 
 ### 2. Search Official Sources
 
-> Goal: เก็บข้อมูลหลักจาก official documentation
+> Goal: Gather the primary data from official documentation
 
-1. ใช้ `/learn-from-web` หรือ `crw_scrape` เพื่อหา official docs — เริ่มจาก getting started, quickstart, installation, setup guide
-2. เก็บลิงก์ official docs และคำสั่ง setup หลัก — CLI tool → บันทึกคำสั่ง install + version ที่แนะนำ
-3. ถ้าต้องเลือก integrations/plugins/extensions ของ tool → ส่งต่อ `/research-setup-integrations`
+1. Use `/learn-from-web` or `crw_scrape` to find official docs — start with getting started, quickstart, installation, setup guide
+2. Save official doc links and the main setup commands — CLI tool → record install command + recommended version
+3. If tool integrations/plugins/extensions must be chosen → hand off to `/research-setup-integrations`
 
 ### 3. Search Config And CI Examples
 
-> Goal: หา config files และ CI templates จริงจาก community
+> Goal: Find real config files and CI templates from the community
 
-1. ใช้ `web_search` หรือ `crw_scrape` หา config templates (`wrangler.toml`, `.github/workflows`, `biome.json`, `tsconfig.json`)
-2. ค้นหา GitHub repos ที่มี setup คล้ายกัน (`/search`, `/explore-github-trending`)
-3. เก็บตัวอย่าง CI/CD pipeline ที่ถูกต้องและ up-to-date — ระบุ env vars, secrets, permissions ที่ต้องใช้
+1. Use `web_search` or `crw_scrape` for config templates (`wrangler.toml`, `.github/workflows`, `biome.json`, `tsconfig.json`)
+2. Search GitHub repos with a similar setup (`/search`, `/explore-github-trending`)
+3. Collect correct, up-to-date CI/CD pipeline examples — note required env vars, secrets, permissions
 
 ### 4. Cross-check Multiple Sources
 
-> Goal: ตรวจสอบความถูกต้องก่อนสรุป
+> Goal: Verify correctness before concluding
 
-1. กลับไป `/deep-research` (general pipeline) เมื่อต้องเปรียบเทียบหลายแหล่งลึก
-2. ใช้ `context7` หรือ `deepwiki` สำหรับ libraries/frameworks
-3. ตรวจสอบวันที่ของบทความ/release notes — หา known issues, breaking changes, migration guides
+1. Return to `/deep-research` (general pipeline) when a deep multi-source comparison is needed
+2. Use `context7` or `deepwiki` for libraries/frameworks
+3. Check article/release-notes dates — look for known issues, breaking changes, migration guides
 
 ### 5. Synthesize Setup Plan
 
-> Goal: รวมข้อมูลเป็นแผน setup ที่ทำตามได้
+> Goal: Merge the data into an actionable setup plan
 
-1. สรุป prerequisites + ขั้นตอนติดตั้ง
-2. รายการ config files ที่ต้องสร้าง/แก้ไข พร้อมตัวอย่าง
-3. คำสั่ง/scripts ที่ต้องรัน + CI/CD steps ถ้ามี
-4. Common pitfalls + วิธีแก้ไข + alternatives ถ้ามีหลายทางเลือก
+1. Summarize prerequisites + installation steps
+2. List config files to create/modify with examples
+3. Commands/scripts to run + CI/CD steps if any
+4. Common pitfalls + fixes + alternatives when multiple options exist
 
 ### 6. Save And Report Findings
 
-> Goal: ส่งมอบข้อมูลให้ใช้ต่อได้
+> Goal: Deliver the information so it can be used downstream
 
-1. ถ้าพบข้อมูลยาว/ซับซ้อน → สร้าง `references/setup-<topic>.md`
-2. ทำ `/report-progress` หรือ `/report` สรุปผล + source links ทั้งหมด
-3. ถ้าข้อมูลไม่แน่นอน → ระบุเป็น assumption หรือข้อควรระวัง
+1. If long/complex data is found → create `references/setup-<topic>.md`
+2. Run `/report-progress` or `/report` to summarize results + all source links
+3. If data is uncertain → mark it as an assumption or caveat
 
 ## Rules
 
-- Official documentation เป็นแหล่งหลักเสมอ — cross-check ≥ 2-3 แหล่งก่อนสรุป
-- แยกแยะ stable steps กับ experimental/deprecated — ไม่ copy-paste config โดยไม่ระบุ source
-- ระบุ version, platform, constraints เสมอ — dependencies research → `/deep-research dependencies`
-- ใช้ `/setup-cicd`, `/follow-tool-usage`, `/follow-best-practice`, `/check-reference` ถ้าจำเป็น
+- Official documentation is always the primary source — cross-check ≥ 2-3 sources before concluding
+- Distinguish stable steps from experimental/deprecated — never copy-paste config without citing the source
+- Always state version, platform, constraints — dependencies research → `/deep-research dependencies`
+- Use `/setup-cicd`, `/follow-tool-usage`, `/follow-best-practice`, `/check-reference` if needed
 
 ## Expected Outcome
 
-- รายงาน setup ครบถ้วน: prerequisites, config files, commands, CI/CD samples, pitfalls, alternatives + แหล่งอ้างอิง
+- A complete setup report: prerequisites, config files, commands, CI/CD samples, pitfalls, alternatives + references

@@ -1,6 +1,6 @@
 ---
 name: check-code-structure
-description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
+description: Analyze and improve code structure with sg outline: symbols, exports, members, cohesion
 argument-hint: "[scope]"
 allowed-tools:
   - exec
@@ -19,13 +19,13 @@ related:
 
 ## Goal
 
-วิเคราะห์และปรับปรุง code structure ระดับ micro ด้วย `sg outline` เพื่อแก้ไข top-level symbols, exports, members, SRP violations, และ cohesion issues
+Analyze and improve micro-level code structure with `sg outline` to fix top-level symbols, exports, members, SRP violations, and cohesion issues
 
 ## Scope
 
-ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด เป็น sub-step ของ `/deep-analyze` Step 3
+Applies to source code that needs structural cleanup, such as `src/` or any single workspace. Covers top-level symbols, exports, imports, members, and code grouping patterns. It is a sub-step of `/deep-analyze` Step 3
 
-ดูเพิ่มเติม: /use-astgrep, /deep-review
+See more: /use-astgrep, /deep-review
 
 ## Execute
 
@@ -33,146 +33,146 @@ related:
 
 > Goal: Review And Inventory
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
-2. ทำ `/update-astgrep-rules` ถ้ามี `ast-grep` rules (`rules/`) ที่เกี่ยวข้อง
-3. อ่าน `## Sg Outline` ด้านล่างเพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
-4. เลือก `sg outline` flags ตาม scope (ดู `## Sg Outline`)
-5. ระบุ target paths ที่จะ improve
-6. ถ้า `sg outline` ไม่พร้อมใช้ → stop และ report
+1. Run `/scan-codebase` to understand the project structure
+2. Run `/update-astgrep-rules` if there are relevant `ast-grep` rules (`rules/`)
+3. Read `## Sg Outline` below to understand how to use `sg outline` and its available options
+4. Choose `sg outline` flags according to scope (see `## Sg Outline`)
+5. Identify the target paths to improve
+6. If `sg outline` is unavailable → stop and report
 
 ### 2. Analyze Code Structure
 
 > Goal: Analyze Code Structure
 
-1. อ่าน `## Sg Outline` เพื่อเลือก flags ที่เหมาะสมกับ scope
-2. รัน `sg outline` ด้วย flags ที่เลือก:
-   - `sg outline --view expanded --items structure <paths>` สำหรับ top-level symbols และ members
-   - `sg outline --view signatures --items exports <paths>` สำหรับ exported surface
-   - `sg outline --json compact --items all <paths>` สำหรับ structured aggregation
-3. ใช้ `sg outline --items imports` ตรวจสอบการ import/export ระหว่าง modules
-4. ถ้า scope ใหญ่ ใช้ `--type` หรือ `--match` ลด noise
-5. ถ้า analyze ไม่ผ่าน → re-run ถ้าไม่ผ่านหลัง 3 ครั้ง → stop และ report
+1. Read `## Sg Outline` to pick the flags that fit the scope
+2. Run `sg outline` with the chosen flags:
+   - `sg outline --view expanded --items structure <paths>` for top-level symbols and members
+   - `sg outline --view signatures --items exports <paths>` for the exported surface
+   - `sg outline --json compact --items all <paths>` for structured aggregation
+3. Use `sg outline --items imports` to inspect import/export relationships between modules
+4. For a large scope, use `--type` or `--match` to cut down noise
+5. If the analysis fails → re-run; if it still fails after 3 attempts → stop and report
 
 ### 3. Identify Structure Issues
 
 > Goal: Identify Structure Issues
 
-Goal: ระบุ structure issues จาก `sg outline` output ก่อนเริ่มปรับปรุง
+Goal: identify structure issues from `sg outline` output before starting any cleanup
 
-1. ตรวจสอบ top-level symbols ต่อไฟล์: เกิน 5 อาจมี mixed concerns
-2. ตรวจสอบ members ต่อ type/class: เกิน 10 อาจ violate SRP
-3. ตรวจสอบ exports ที่ไม่ควร public: internal utilities, helper types
-4. ตรวจสอบ imports ที่ข้าม boundary หรือชั้น layer
-5. ตรวจสอบ file ที่มี symbols จากหลาย domain หรือ layer ปนกัน
-6. ใช้ `/use-astgrep` สำหรับ patterns ที่ `sg outline` ไม่ครอบ เช่น God class
-7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/deep-review` แยก
-8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/deep-review` แยก
+1. Check top-level symbols per file: more than 5 may signal mixed concerns
+2. Check members per type/class: more than 10 may violate SRP
+3. Check exports that shouldn't be public: internal utilities, helper types
+4. Check imports that cross a boundary or layer
+5. Check files that mix symbols from several domains or layers
+6. Use `/use-astgrep` for patterns `sg outline` doesn't cover, such as God classes
+7. If a filesystem review is also needed, run `/deep-review` separately
+8. For a deeper review of refactor opportunities, run `/deep-review` separately
 
 ### 4. Validate Findings
 
 > Goal: Validate Findings
 
-1. ทำ `/deep-validate` สำหรับ validate findings
-2. จัดลำดับ severity: Critical → High → Medium → Low
-3. ระบุ false positives ที่พบ
-4. ถ้าไม่มี issues ที่ต้อง improve → stop และ report
+1. Run `/deep-validate` to validate the findings
+2. Rank severity: Critical → High → Medium → Low
+3. Note the false positives found
+4. If there are no issues to improve → stop and report
 
 ### 5. Improve Code Structure
 
 > Goal: Improve Code Structure
 
-Goal reminder: ปรับปรุง code structure ตาม findings จาก Step 3
+Goal reminder: improve code structure according to the findings from Step 3
 
-1. แยกไฟล์ที่มี top-level symbols เกิน 5 ออกเป็นไฟล์ย่อยตาม domain หรือ responsibility
-2. ลด public members ใน type/class ที่เกิน 10 โดย extract ออกเป็น sub-type หรือ helper
-3. ทำ `/deep-review` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
-4. แก้ไข imports ที่ข้าม boundary หรือ layer
-5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
-6. ทำ `/rename` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
-7. ถ้าต้องปรับ physical structure ให้ทำ `/refactor` structure scope
+1. Split files with more than 5 top-level symbols into smaller files by domain or responsibility
+2. Reduce public members in types/classes that exceed 10 by extracting them into a sub-type or helper
+3. Run `/deep-review` to handle barrel exports and import aliases — hide internal exports that needn't be public, replace convoluted relative paths
+4. Fix imports that cross a boundary or layer
+5. Separate files that hold symbols from multiple domains
+6. Use `/rename` to rename identifiers and `/update-references` after every split or rename
+7. If the physical structure needs adjusting, run `/refactor` structure scope
 
 ### 6. Verify
 
 > Goal: Verify
 
-1. อ่าน `## Sg Outline` เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
-2. รัน `sg outline --items structure <paths>` อีกครั้งเพื่อยืนยันว่า issues ถูกแก้ไข
-3. รัน `sg outline --items exports <paths>` ตรวจสอบว่า public API ไม่เปลี่ยนโดยไม่ตั้งใจ
-4. ทำ `/run-verify` lint และ typecheck
-5. ถ้า fail ให้ทำ `/resolve-errors`
-6. ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+1. Read `## Sg Outline` to confirm how to use `sg outline` for verification
+2. Re-run `sg outline --items structure <paths>` to confirm the issues were fixed
+3. Run `sg outline --items exports <paths>` to check that the public API didn't change unintentionally
+4. Run `/run-verify` lint and typecheck
+5. If it fails, run `/resolve-errors`
+6. If it still fails after 3 attempts → stop and report
 
 ### 7. Report
 
 > Goal: Report
 
-1. ทำ `/report`
-2. สร้างตาราง Structure Metrics: File, Top-Level Symbols, Exports, Public Members, Status
-3. สร้างตาราง Improvements: File, Issue Type, Action Taken, Severity, Result
-4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Workflow
-5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. Run `/report`
+2. Build the Structure Metrics table: File, Top-Level Symbols, Exports, Public Members, Status
+3. Build the Improvements table: File, Issue Type, Action Taken, Severity, Result
+4. Build the Recommended Actions table: Priority, Action, Impact, Workflow
+5. Run `/suggest-next-action` to recommend the next action
 
 ## Rules
 
 ### 1. Severity Classification
 
-- Critical: circular import, cross-layer import, ไฟล์ที่มีหลาย domain ใน critical path, exported internal API ที่ทำให้ boundary แตก
-- High: ไฟล์เกิน 5 top-level symbols ที่ไม่เกี่ยวข้องกัน, type/class เกิน 10 public members, ไฟล์ผิด layer
-- Medium: ไฟล์มี 4-5 top-level symbols, type มี 6-10 members, exports ไม่สม่ำเสมอ
-- Low: naming ไม่สะท้อน responsibility, รูปแบบ exports ไม่สม่ำเสมอ
+- Critical: circular import, cross-layer import, files with multiple domains on a critical path, exported internal API that breaks a boundary
+- High: files exceeding 5 unrelated top-level symbols, types/classes exceeding 10 public members, files in the wrong layer
+- Medium: files with 4-5 top-level symbols, types with 6-10 members, inconsistent exports
+- Low: naming that doesn't reflect responsibility, inconsistent export style
 
 ### 2. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path, line number, หรือ symbol name จาก `sg outline`
-- ใช้ `sg outline` เป็น primary evidence ไม่เดา
-- ระบุ false positives
+- Every finding must carry a file path, line number, or symbol name from `sg outline`
+- Use `sg outline` as the primary evidence; don't guess
+- Note the false positives
 
 ### 3. Review Before Improve
 
-- วิเคราะห์และ validate findings ให้ครบก่อนเริ่ม improve
-- ถ้าต้อง refactor ลึก ให้ทำ `/deep-review` แยกก่อน improve
-- แยก improvement process จาก review process อื่น เช่น `/deep-review`
+- Fully analyze and validate the findings before starting to improve
+- For a deep refactor, run `/deep-review` separately before improving
+- Keep the improvement process separate from other review processes such as `/deep-review`
 
 ### 4. Follow Write Standards
 
-- ทำ `/update-references` หลังทุกการ split, rename, หรือย้ายไฟล์
-- ใช้ `/rename` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
-- แต่ละไฟล์ไม่เกิน 250 บรรทัด
-- แต่ละ function/type/class ทำหน้าที่เดียว
-- ใช้ `sg outline` ยืนยัน structure หลัง improve
+- Run `/update-references` after every split, rename, or file move
+- Use `/rename` to rename code identifiers that don't reflect responsibility
+- Keep each file at or under 250 lines
+- Each function/type/class does one job
+- Use `sg outline` to confirm the structure after improving
 
 ### 5. sg outline Flags
 
-ดูรายละเอียด flags และ options ทั้งหมดใน `## Sg Outline` ด้านล่าง
+See all flags and options in `## Sg Outline` below
 
 ### 6. Scope Boundaries
 
-- ไม่ improve architecture ที่ `/deep-review` ทำ
-- ไม่ improve filesystem organization ที่ `/deep-review` ทำ
-- ไม่ refactor separation of concerns ลึกที่ `/refactor` ทำ
-- focus ที่ code-level structure: symbols, exports, members, cohesion
-- สำหรับ system-wide view ทำ `/deep-review`
+- Don't improve the architecture that `/deep-review` handles
+- Don't improve the filesystem organization that `/deep-review` handles
+- Don't do the deep separation-of-concerns refactoring that `/refactor` handles
+- Focus on code-level structure: symbols, exports, members, cohesion
+- For a system-wide view, run `/deep-review`
 
-- ใช้ /use-astgrep-programmatic ถ้าจำเป็น
+- Use /use-astgrep-programmatic if needed
 
 ## Sg Outline
 
-> Goal: ใช้ `sg outline` (`ast-grep outline`) explore code structure โดยไม่ต้อง build index
+> Goal: use `sg outline` (`ast-grep outline`) to explore code structure without building an index
 
 ### Basic Usage
 
 ```bash
 sg outline src/parser.ts          # file → items=structure, view=digest
 sg outline src                    # directory → items=exports, view=names
-sg outline src/a.ts src/b.ts      # หลาย files
+sg outline src/a.ts src/b.ts      # multiple files
 ```
 
 ### Items (`--items`)
 
 | Value | Meaning |
 |-------|---------|
-| `auto` | `structure` สำหรับ file/stdin, `exports` สำหรับ directory (default) |
-| `structure` | top-level items ใน file (ไม่รวม imports) |
+| `auto` | `structure` for file/stdin, `exports` for directory (default) |
+| `structure` | top-level items in a file (excluding imports) |
 | `exports` | exported top-level items |
 | `imports` | imported items/dependencies |
 | `all` | imports + exports |
@@ -189,34 +189,34 @@ sg outline src/a.ts src/b.ts      # หลาย files
 ### Filters
 
 ```bash
-sg outline src --type class,enum                 # filter ตาม symbol type (OR)
-sg outline src --match Parser                    # regex บน symbol names
-sg outline src --items imports --match lodash    # imports ที่ match dependency
-sg outline src --view expanded --pub-members     # เฉพาะ public members
-sg outline src/parser.ts --match Parser --type class --view expanded  # expand symbol เดียว
+sg outline src --type class,enum                 # filter by symbol type (OR)
+sg outline src --match Parser                    # regex on symbol names
+sg outline src --items imports --match lodash    # imports matching a dependency
+sg outline src --view expanded --pub-members     # public members only
+sg outline src/parser.ts --match Parser --type class --view expanded  # expand a single symbol
 sg outline src --json compact --items all        # machine-readable output
 ```
 
 ### Symbol Types (`--type`)
 
-LSP `DocumentSymbol.kind` — `class`, `function`, `interface`, `method`, `property`, `field`, `constructor`, `enum`, `enumMember`, `struct`, `module`, `namespace`, `variable`, `constant`, `typeParameter` ฯลฯ — lower camel case, comma = OR
+LSP `DocumentSymbol.kind` — `class`, `function`, `interface`, `method`, `property`, `field`, `constructor`, `enum`, `enumMember`, `struct`, `module`, `namespace`, `variable`, `constant`, `typeParameter`, etc. — lower camel case, comma = OR
 
-### Stdin และ Rules
+### Stdin And Rules
 
-- stdin input ต้องระบุ `--lang` เสมอ
-- extraction rules: bundled per language; custom ผ่าน `customLanguages.<name>.outlineRules` ใน `sgconfig.yml` หรือ `--outline-rules <file>`; `--no-default-outline-rules` แทนที่ bundled
-- exit codes: `0` = ok (รวม empty), `2` = fatal read/parse/config error
+- stdin input always requires `--lang`
+- extraction rules: bundled per language; custom via `customLanguages.<name>.outlineRules` in `sgconfig.yml` or `--outline-rules <file>`; `--no-default-outline-rules` replaces the bundled ones
+- exit codes: `0` = ok (including empty), `2` = fatal read/parse/config error
 
 ### When To Use
 
-- ใช้: ดู structure/exports/members ก่อนอ่าน file, ตรวจ dependencies, filter symbols
-- ไม่ใช้: pattern search (`ast-grep run`/`scan`), rewrite code, cross-file analysis (local-only), semantic relationships (ไม่ normalize extends/implements)
+- Use: view structure/exports/members before reading a file, check dependencies, filter symbols
+- Don't use: pattern search (`ast-grep run`/`scan`), rewriting code, cross-file analysis (local-only), semantic relationships (doesn't normalize extends/implements)
 
 ## Expected Outcome
 
-- Code structure ถูกปรับปรุง: symbols ต่อไฟล์, exports, members, cohesion อยู่ในเกณฑ์
-- รายงานตาราง Structure Metrics พร้อม status ก่อนและหลัง improve
-- รายงาน Improvements พร้อม file, issue, action, severity, result
-- รายงาน Recommended Actions พร้อม priority และ workflow
-- ระบุ false positives ที่พบ
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- Code structure improved: symbols per file, exports, members, and cohesion within thresholds
+- Report the Structure Metrics table with status before and after improving
+- Report Improvements with file, issue, action, severity, result
+- Report Recommended Actions with priority and workflow
+- Note the false positives found
+- Recommend the next action via `/suggest-next-action`

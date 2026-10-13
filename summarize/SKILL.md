@@ -1,6 +1,6 @@
 ---
 name: summarize
-description: สรุปเนื้อหาตาม context ทั่วไป
+description: Summarize content for any general context
 argument-hint: "<context>"
 related:
   - scan-codebase
@@ -11,79 +11,79 @@ related:
 ---
 ## Goal
 
-สรุปเนื้อหาตาม context ทั่วไป เช่น project, chat, code, files, หรือ topic ที่ระบุ
+Summarize content for any general context such as a project, chat, code, files, or a specified topic
 
 ## Scope
 
-ใช้เมื่อ user ต้องการสรุปเนื้อหาโดยไม่ระบุ skill ย่อย โดย `summarize` จะเลือกหรือ delegate ไปยัง skill ทีเหมาะสม
+Use when the user wants a summary without naming a specific sub-skill; `summarize` picks or delegates to the appropriate skill
 
 ## Execute
 
 ### 1. Identify Context
 
-> Goal: ระบุ context ทีต้องสรุป
+> Goal: Determine the context to summarize
 
-1. อ่าน argument `<context>` หรือ context จาก task
-2. ระบุประเภท: `project`, `chat`, `code`, `file`, `topic`, `conversation`, `changes`
-3. ถ้า context ไม่ชัด → ถาม user
-4. ระบุ output format: bullet, paragraph, table, flow
+1. Read the `<context>` argument or the context from the task
+2. Determine the type: `project`, `chat`, `code`, `file`, `topic`, `conversation`, `changes`
+3. If the context is unclear → ask the user
+4. Determine the output format: bullet, paragraph, table, flow
 
 ### 2. Select Summarizer
 
-> Goal: เลือก skill สรุปทีเหมาะสม
+> Goal: Pick the appropriate summarizer skill
 
-1. ถ้า `project` → สรุป scope project ตาม flow ของ skill นี้
-2. ถ้า `chat` หรือ `conversation` → สรุป scope chat/session ตาม flow ของ skill นี้
-3. ถ้าต้องการ bullet/numbered list → ทำ `/report`
-4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
-5. ถ้า `file` → อ่านไฟล์แล้วสรุป
-6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/report-git-diff`
-7. ถ้าไม่ตรงกับ skill ย่อย → สรุปตรงจุดด้วย `/report`
+1. If `project` → summarize the project scope following this skill's flow
+2. If `chat` or `conversation` → summarize the chat/session scope following this skill's flow
+3. If a bullet/numbered list is needed → run `/report`
+4. If `code` → run `/scan-codebase` then `/report`
+5. If `file` → read the file and summarize
+6. If `changes` → run `/list-git-commit` or `/report-git-diff`
+7. If nothing matches a sub-skill → summarize directly with `/report`
 
 ### 3. Summarize
 
-> Goal: สรุปเนื้อหา
+> Goal: Summarize the content
 
-1. ส่ง input ทั้งหมดให้ skill ย่อยทีเลือก
-2. ถ้าต้องการสรุปเอง:
-   - อ่านเนื้อหาต้นฉบับ
-   - ระบุ main points และ key takeaways
-   - ลบรายละเอียดทีไม่จำเป็น
-   - จัดลำดับตาม priority
-3. รักษา context และไม่ distort ความหมาย
+1. Pass all input to the selected sub-skill
+2. If summarizing yourself:
+   - Read the original content
+   - Identify main points and key takeaways
+   - Remove unnecessary details
+   - Order by priority
+3. Preserve context and do not distort meaning
 
 ### 4. Format And Report
 
-> Goal: นำเสนอสรุป
+> Goal: Present the summary
 
-1. ใช้รูปแบบตามที user ต้องการ (bullet, paragraph, table)
-2. ใช้ `/report` ถ้ามีหลายหมวด
-3. ระบุสิ่งทีขาดหรือต้องทำต่อ
-4. ทำ `/suggest-next-action`
+1. Use the format the user wants (bullet, paragraph, table)
+2. Use `/report` when there are multiple categories
+3. Note anything missing or left to do
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Context Aware
 
-- ไม่เดาเนื้อหานอก context
-- ถาม user ถ้าข้อมูลไม่พอ
-- เลือก skill ย่อยตาม context
+- Never guess content outside the context
+- Ask the user when information is insufficient
+- Pick the sub-skill based on context
 
 ### 2. Concise
 
-- หนึ่ง bullet = หนึ่ง idea
-- ใช้ภาษากระชับ
-- เก็บเฉพาะสาระสำคัญ
+- One bullet = one idea
+- Use tight, concise language
+- Keep only the essential substance
 
 ### 3. Accuracy
 
-- ไม่ตัดความหมายผิด
-- รักษา context
-- ระบุข้อจำกัดถ้ามี
+- Never distort meaning when trimming
+- Preserve context
+- State limitations if any
 
 ## Expected Outcome
 
-- สรุปตรงกับ context ทีระบุ
-- รูปแบบตรงตามทีขอ
-- เนื้อหาครบถ้วนและกระชับ
-- ระบุ next action ถ้ามี
+- Summary matching the specified context
+- Format as requested
+- Complete yet concise content
+- Next action identified if any

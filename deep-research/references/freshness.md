@@ -2,14 +2,14 @@
 
 ## Goal
 
-ค้นหาข้อมูลล่าสุดและตรวจ compatibility
+Find the most recent information and check compatibility
 
 ## Steps
 
-1. ค้นหาด้วย keywords ที่ระบุปี เช่น `<topic> 2025`, `<topic> 2026`, `<topic> latest`
-2. ใช้ `search_web` กับ query ที่มีปีปัจจุบัน
-3. ตรวจสอบ publish dates และ release dates จากทุก sources
-4. เปรียบเทียบปีจาก NPM registry, GitHub releases, และ official documentation
-5. ตรวจสอบ version compatibility กับปีล่าสุด
-6. เลือกข้อมูลที่มีปีล่าสุดเป็น primary source
-7. ตรวจ breaking changes และ migration guides
+1. Search with year-qualified keywords such as `<topic> 2025`, `<topic> 2026`, `<topic> latest`
+2. Use `search_web` with a query that includes the current year
+3. Check the publish dates and release dates from all sources
+4. Compare years across the NPM registry, GitHub releases, and official documentation
+5. Check version compatibility against the latest year
+6. Treat the most recent dated information as the primary source
+7. Check breaking changes and migration guides

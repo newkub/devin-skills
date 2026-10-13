@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-nuxt
-description: สร้างหรือปรับปรุง Nuxt 4 project ด้วย Universal Rendering และ Nitro
+description: Create or improve Nuxt 4 projects with Universal Rendering and Nitro
 argument-hint: "[scope]"
 related:
   - follow-create-web
@@ -14,91 +14,91 @@ related:
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Nuxt 4 applications ให้มีประสิทธิภาพสูงสุด
+Define guidelines for developing Nuxt 4 applications at peak performance
 
 ## Scope
 
-ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 4 projects (Nuxt 3 EOL July 2026)
+Covers setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, and verification for Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
-- Packages: `nuxt` 4.x (Node `^22.19.0 || ^24.11.0 || >=26.0.0`, Vue 3.5+, server engine Nitro สร้าง `.output` deploy ได้ทั้ง Node/serverless/edge), `nuxi` CLI, `@nuxt/ui` 4.x (Reka UI + Tailwind CSS + Tailwind Variants — `bun add @nuxt/ui tailwindcss` แล้ว `@import "tailwindcss"; @import "@nuxt/ui";` ใน `app/assets/css/main.css`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `nuxt` 4.x (Node `^22.19.0 || ^24.11.0 || >=26.0.0`, Vue 3.5+, the Nitro server engine builds `.output` deployable to Node/serverless/edge), `nuxi` CLI, `@nuxt/ui` 4.x (Reka UI + Tailwind CSS + Tailwind Variants — run `bun add @nuxt/ui tailwindcss`, then `@import "tailwindcss"; @import "@nuxt/ui";` in `app/assets/css/main.css`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Setup
 
-> Goal: วางแผน project architecture
+> Goal: Plan the project architecture
 
-1. ระบุ project location ใน monorepo เช่น `apps/web/`
-2. ใช้ Nuxt 4.x (Nuxt 3 EOL July 2026 — ใช้ Nuxt 4 เท่านั้นสำหรับ projects ใหม่; Nuxt 4 ใช้ `app/` dir, Nuxt 3 ใช้ root-level `pages/` `components/` `composables/`)
-   - Scaffold ด้วย `bunx nuxi@latest init <project-name>` — เพิ่ม module ด้วย `bunx nuxi@latest module add <name>`; nuxi รองรับ `dev`, `build`, `generate`, `preview`, `analyze`, `prepare`, `typecheck`, `add`, `upgrade`, `cleanup`, `info`, `devtools`
-3. กำหนด Rendering Mode: SSR (default), SSG (`nuxt generate`), CSR (`ssr: false`), หรือ Hybrid ผ่าน `routeRules`
-4. ตัดสินใจใช้ Database หรือไม่ (เช่น Drizzle ORM)
-5. เลือก UI Framework: UnoCSS, Tailwind, หรืออื่นๆ
-6. กำหนด Architecture: ใช้ Layers และ Modules หรือไม่
-7. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด (docs: https://nuxt.com/docs)
+1. Identify the project location in the monorepo, e.g. `apps/web/`
+2. Use Nuxt 4.x (Nuxt 3 EOL July 2026 — use Nuxt 4 only for new projects; Nuxt 4 uses the `app/` dir, Nuxt 3 uses root-level `pages/` `components/` `composables/`)
+   - Scaffold with `bunx nuxi@latest init <project-name>` — add modules with `bunx nuxi@latest module add <name>`; nuxi supports `dev`, `build`, `generate`, `preview`, `analyze`, `prepare`, `typecheck`, `add`, `upgrade`, `cleanup`, `info`, `devtools`
+3. Choose the Rendering Mode: SSR (default), SSG (`nuxt generate`), CSR (`ssr: false`), or Hybrid via `routeRules`
+4. Decide whether a Database is needed (e.g. Drizzle ORM)
+5. Pick the UI Framework: UnoCSS, Tailwind, or others
+6. Define the Architecture: whether to use Layers and Modules
+7. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns (docs: https://nuxt.com/docs)
 
 ### 2. Directory Structure
 
-> Goal: สร้างโครงสร้างโฟลเดอร์
+> Goal: Create the folder structure
 
-1. ใช้ `app/` directory สำหรับ Nuxt 4 (`app/pages/`, `app/components/`, `app/composables/`) + `public/`, `server/`, `shared/`, `layers/`
-2. สร้าง `layers/` สำหรับ feature-based architecture
-3. จัดกลุ่ม components, composables ตาม feature ในแต่ละ layer
-4. ใช้ auto-imports: `ref`, `computed`, `watch`, `useFetch`, `useAsyncData`, `useState`, `useHead`, `useStorage`, `navigateTo`, `useRoute`, `useRouter`, `useRuntimeConfig`, `useRequestFetch`, `defineNuxtPlugin`, `defineNuxtRouteMiddleware` — components ใน `app/components/` auto-import ด้วย path prefix
-5. แยก business logic เป็น services และ repositories ใน `server/` — Nitro conventions: `server/api/*`, `server/routes/*` (`defineEventHandler`, `[id].ts` dynamic params), `server/middleware/*`, `server/plugins/*` (`defineNitroPlugin`)
+1. Use the `app/` directory for Nuxt 4 (`app/pages/`, `app/components/`, `app/composables/`) plus `public/`, `server/`, `shared/`, `layers/`
+2. Create `layers/` for feature-based architecture
+3. Group components and composables by feature within each layer
+4. Use auto-imports: `ref`, `computed`, `watch`, `useFetch`, `useAsyncData`, `useState`, `useHead`, `useStorage`, `navigateTo`, `useRoute`, `useRouter`, `useRuntimeConfig`, `useRequestFetch`, `defineNuxtPlugin`, `defineNuxtRouteMiddleware` — components in `app/components/` are auto-imported with a path prefix
+5. Separate business logic into services and repositories under `server/` — Nitro conventions: `server/api/*`, `server/routes/*` (`defineEventHandler`, `[id].ts` dynamic params), `server/middleware/*`, `server/plugins/*` (`defineNitroPlugin`)
 
 ### 3. Configuration
 
-> Goal: ตั้งค่า config และ scripts
+> Goal: Set up config and scripts
 
-1. ตั้งค่า `nuxt.config.ts` (extends, modules, nitro, typescript)
-2. ตั้งค่า `package.json` scripts (build, dev, generate, lint, format, test)
-3. ตั้งค่า `tsconfig.json` ด้วย strict mode
-4. สร้าง barrel exports สำหรับทุก folder
-5. กำหนด data flow: Pages → Components → Composables → Stores → API → Services → Repositories → DB
+1. Set up `nuxt.config.ts` (extends, modules, nitro, typescript)
+2. Set up `package.json` scripts (build, dev, generate, lint, format, test)
+3. Set up `tsconfig.json` with strict mode
+4. Create barrel exports for every folder
+5. Define the data flow: Pages → Components → Composables → Stores → API → Services → Repositories → DB
 
 ### 4. Code Standards
 
-> Goal: กำหนด coding standards
+> Goal: Define coding standards
 
-1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template (ดู `/follow-lib-vue` สำหรับ Vue standards)
-2. Composables: ชื่อขึ้นต้นด้วย `use`, อยู่ใน `composables/` หรือ `layers/[feature]/composables/`
-3. Server API: ใช้ `defineEventHandler` หรือ `defineNitroPlugin`
-4. Types: ไม่ใช้ `any`, กำหนด types ชัดเจนใน `shared/types/`
-5. Import: auto-import สำหรับ Nuxt built-ins, barrel export สำหรับ shared
-6. Icons: ใช้ `@nuxt/icon` ด้วย preset `mdi` เท่านั้น ไม่ใช้ SVG โดยตรง
-7. Components: import จาก `components/ui/` เท่านั้น สำหรับ shared UI components
-8. Barrel Exports: ทุก `index.ts` แค่ re-export เท่านั้น ไม่มี logic
-9. Deprecated: ลบ `@deprecated` ทั้งหมด ไม่ให้เหลือใน codebase
-10. SEO: ใช้ `useHead` ในทุก page component สำหรับ meta tags
+1. Vue components: use `script setup lang="ts"`, script above the template (see `/follow-lib-vue` for Vue standards)
+2. Composables: names start with `use`, placed in `composables/` or `layers/[feature]/composables/`
+3. Server API: use `defineEventHandler` or `defineNitroPlugin`
+4. Types: no `any`, define clear types in `shared/types/`
+5. Import: auto-import for Nuxt built-ins, barrel exports for shared code
+6. Icons: use `@nuxt/icon` with the `mdi` preset only, never raw SVG
+7. Components: import shared UI components only from `components/ui/`
+8. Barrel Exports: every `index.ts` only re-exports, no logic
+9. Deprecated: remove all `@deprecated` code, keep none in the codebase
+10. SEO: use `useHead` in every page component for meta tags
 
 ### 5. Development
 
-> Goal: พัฒนา base project
+> Goal: Build the base project
 
-1. สร้าง directory structure ตามที่วางแปลง
-2. ติดตั้ง dependencies ด้วย `bun add`
-3. สร้าง base components, layouts, composables
-4. สร้าง server layer (API routes, services, repositories)
-5. สร้าง layers สำหรับแต่ละ feature (ถ้าใช้)
+1. Create the directory structure as planned
+2. Install dependencies with `bun add`
+3. Create base components, layouts, and composables
+4. Create the server layer (API routes, services, repositories)
+5. Create layers for each feature (if used)
 
 ### 6. Performance
 
-> Goal: ปรับแต่ง performance
+> Goal: Tune performance
 
-1. Lazy Loading Components — ใช้ `Lazy` prefix สำหรับ components ที่ไม่จำเป็นต้องโหลดทันที
+1. Lazy Loading Components — use the `Lazy` prefix for components that don't need to load immediately
    ```vue
-   <!-- Bad: โหลดทันที -->
+   <!-- Bad: loads immediately -->
    <Modal v-if="showModal" />
 
-   <!-- Good: โหลดเมื่อจำเป็น -->
+   <!-- Good: loads when needed -->
    <LazyModal v-if="showModal" />
    ```
-2. Lazy Hydration — ใช้ `hydrate-on-visible` สำหรับ components ที่ไม่ต้อง interactive ทันที
+2. Lazy Hydration — use `hydrate-on-visible` for components that don't need to be interactive immediately
    ```vue
    <LazyMyComponent hydrate-on-visible />
    ```
-3. Hybrid Rendering — ใช้ route rules สำหรับ rendering แบบผสม
+3. Hybrid Rendering — use route rules for mixed rendering
    ```typescript
    export default defineNuxtConfig({
      routeRules: {
@@ -109,15 +109,15 @@ related:
      },
    })
    ```
-4. NuxtLink Smart Prefetching — ใช้ `<NuxtLink>` แทน `<a>` tag ทั้งหมด
+4. NuxtLink Smart Prefetching — use `<NuxtLink>` instead of `<a>` tags everywhere
    ```vue
    <NuxtLink to="/about">About page</NuxtLink>
    ```
-5. Data Fetching Optimization — ใช้ `useFetch` และ `useAsyncData` พร้อม key parameter
+5. Data Fetching Optimization — use `useFetch` and `useAsyncData` with a key parameter
    ```typescript
    const { data } = useAsyncData('tracks', () => fetch(`/tracks/${id}`))
    ```
-6. Built-in Storage — ใช้ `useStorage` สำหรับ key-value storage
+6. Built-in Storage — use `useStorage` for key-value storage
    ```typescript
    const storage = useStorage()
    await storage.setItem('session:token', sessionToken)
@@ -125,11 +125,11 @@ related:
 
 ### 7. Plugins Best Practices
 
-> Goal: ตั้งค่า Nuxt plugins
+> Goal: Set up Nuxt plugins
 
-1. Avoid costly plugin setup - หลีกเลี่ยง plugins ที่มีการคำนวณหนักหรือใช้เวลา initialize นาน
-2. Use Composition whenever possible - ใช้ composables แทน plugins เมื่อเป็นไปได้
-3. Enable parallel for async plugins - ใช้ `true` สำหรับ async plugins
+1. Avoid costly plugin setup - avoid plugins with heavy computation or long initialization time
+2. Use Composition whenever possible - use composables instead of plugins when feasible
+3. Enable parallel for async plugins - use `true` for async plugins
    ```typescript
    export default defineNuxtPlugin({
      parallel: true,
@@ -141,23 +141,23 @@ related:
 
 ### 8. Assets Management
 
-> Goal: จัดการ assets
+> Goal: Manage assets
 
-1. ใช้ `~/assets` สำหรับไฟล์ที่ต้อง processing
+1. Use `~/assets` for files that need processing
    ```typescript
    import image from '~/assets/image.png'
    ```
-2. ใช้ `~/public` สำหรับไฟล์ที่ไม่ต้อง processing
+2. Use `~/public` for files that don't need processing
    ```vue
    <img src="/image.png" />
    ```
-3. `/assets` จะตรวจสอบ missing files ใน build time
+3. `/assets` checks for missing files at build time
 
 ### 9. Error Handling
 
-> Goal: ตั้งค่า error boundaries
+> Goal: Set up error boundaries
 
-1. ใช้ `NuxtErrorBoundary` สำหรับ handle errors ในส่วนต่างๆ ของ app
+1. Use `NuxtErrorBoundary` to handle errors in different parts of the app
    ```vue
    <NuxtErrorBoundary>
      <NuxtPage />
@@ -170,54 +170,54 @@ related:
 
 ### 10. Verification
 
-> Goal: ตรวจสอบ quality
+> Goal: Check quality
 
-1. รัน `nuxt typecheck` ตรวจสอบ TypeScript errors
-2. รัน Biome และ oxlint ตรวจสอบ code quality
-3. รัน `nuxt build` และ `nuxt generate` ยืนยัน build ผ่าน
-4. ทดสอบ dev server รันได้โดยไม่มี errors
-5. ตรวจสอบ HMR และ auto-imports ทำงานถูกต้อง
+1. Run `nuxt typecheck` to check TypeScript errors
+2. Run Biome and oxlint to check code quality
+3. Run `nuxt build` and `nuxt generate` to confirm the build passes
+4. Test that the dev server runs without errors
+5. Verify that HMR and auto-imports work correctly
 
 ## Rules
 
 ### 1. Directory Conventions
 
-- ใช้ `app/` directory สำหรับ Nuxt 4
-- สร้าง `layers/` สำหรับ feature-based architecture
+- Use the `app/` directory for Nuxt 4
+- Create `layers/` for feature-based architecture
 
 ### 2. Vue Components
 
-- Vue components ใช้ `script setup lang="ts"` เท่านั้น
-- Composables ต้องมี prefix `use`
-- ใช้ `<NuxtLink>` แทน `<a>` tag ทั้งหมด
+- Vue components must use `script setup lang="ts"` only
+- Composables must have the `use` prefix
+- Use `<NuxtLink>` instead of `<a>` tags everywhere
 
 ### 3. Types And Imports
 
-- ไม่ใช้ `any` โดยเด็ดขาด
-- ใช้ barrel exports สำหรับทุก folder
-- ใช้ auto-imports สำหรับ Nuxt built-ins
-- ไม่ใช้ relative path ใน cross-layer imports ใช้ default import alias (`~/`, `#server`, `#shared`)
-- ทุก `index.ts` แค่ re-export ไม่มี logic
+- Never use `any`
+- Use barrel exports for every folder
+- Use auto-imports for Nuxt built-ins
+- No relative paths in cross-layer imports; use default import aliases (`~/`, `#server`, `#shared`)
+- Every `index.ts` only re-exports, no logic
 
 ### 4. UI And Assets
 
-- ใช้ `@nuxt/icon` ด้วย preset `mdi` สำหรับ icons ทั้งหมด — เลือก modules จาก official catalog https://nuxt.com/modules, templates จาก https://ui.nuxt.com/templates
-- Components ที่ใช้ซ้ำต้อง import จาก `components/ui/`
-- ใช้ `~/assets` สำหรับ processed files
-- ใช้ `~/public` สำหรับ static files
+- Use `@nuxt/icon` with the `mdi` preset for all icons — pick modules from the official catalog https://nuxt.com/modules, templates from https://ui.nuxt.com/templates
+- Reusable components must be imported from `components/ui/`
+- Use `~/assets` for processed files
+- Use `~/public` for static files
 
 ### 5. Code Quality
 
-- ลบ `@deprecated` ทั้งหมดจาก codebase
-- ใช้ `useHead` ในทุก page component สำหรับ SEO meta tags
-- ใช้ `Lazy` prefix สำหรับ lazy loading
-- หลีกเลี่ยง costly plugins
+- Remove all `@deprecated` items from the codebase
+- Use `useHead` in every page component for SEO meta tags
+- Use the `Lazy` prefix for lazy loading
+- Avoid costly plugins
 
-- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create web nuxt)
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
+- Use /follow-create-mobile-cross-with-capacitor if needed (create web nuxt)
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /deep-review if needed
+- Use /run-dev if needed
 
 ## File Structure
 
@@ -225,10 +225,10 @@ Canonical file structure + layer table: [templates/file-structure-web-nuxt.md](t
 
 ## Expected Outcome
 
-- Nuxt 4 project ที่มีโครงสร้างถูกต้อง
-- Layers และ Modules ที่จัดระเบียบดี
-- Code ที่มี type safety ด้วย TypeScript
-- Performance ที่ดีขึ้น
-- Build และ test ที่ผ่านทั้งหมด
-- Error handling ที่ดี
-- Assets management ที่ถูกต้อง
+- A correctly structured Nuxt 4 project
+- Well-organized Layers and Modules
+- Type-safe code with TypeScript
+- Improved performance
+- All builds and tests passing
+- Solid error handling
+- Correct assets management

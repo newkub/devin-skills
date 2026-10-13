@@ -1,6 +1,6 @@
 ---
 name: review-issue
-description: review issue/concern area ที่ user ระบุ (เช่น uxui, rbac, routing, payment) — หา issues + gaps + inconsistencies แล้วแก้หลัง confirm
+description: Review issue areas the user names: find issues, gaps, inconsistencies — fix after confirm
 argument-hint: "[areas]"
 related:
   - deep-review
@@ -17,61 +17,61 @@ related:
 
 ## Goal
 
-Review เจาะจงตาม issue/concern areas ที่ user ระบุ (เช่น `uxui rbac navigation routing`, `auth session`, `payment refund`) — หา 3 อย่าง: **issues** (พฤติกรรมผิด/bug), **gaps** (ควรมีแต่ไม่มี), **inconsistencies** (พฤติกรรมเดียวกันทำคนละแบบในที่ต่างกัน) — รวมเป็น prioritized list พร้อม evidence แล้วแก้หลัง user confirm
+Focused review of the issue/concern areas the user names (e.g. `uxui rbac navigation routing`, `auth session`, `payment refund`) — find three things: **issues** (wrong behavior/bugs), **gaps** (what should exist but doesn't), **inconsistencies** (the same behavior done differently in different places) — combine into a prioritized list with evidence, then fix after user confirmation
 
 ## Scope
 
-- ใช้เมื่อ user ชี้ "issue area" ชัดเจน — ไม่ใช่ full codebase review (→ `/deep-review`) และไม่ใช่ feature gap analysis (→ `/improve-features`)
-- Area เป็น free-form — map ไป `/deep-review` domain ที่ใกล้ที่สุด ถ้า map ไม่ได้ให้ review ตรงจาก source
-- ถ้า user ใส่ `and fix` ท้ายคำสั่ง → ถือว่า confirm แล้ว แก้ทุก finding โดยไม่ต้องถามซ้ำ (ยังต้อง report ก่อนแก้)
+- Use when the user clearly points at an "issue area" — not a full codebase review (→ `/deep-review`) and not feature gap analysis (→ `/improve-features`)
+- Areas are free-form — map each to the nearest `/deep-review` domain; if it can't be mapped, review the source directly
+- If the user appends `and fix` to the command → treat it as confirmed; fix every finding without asking again (still report before fixing)
 
 ## Execute
 
 ### 1. Scope Areas
 
-> Goal: รู้ว่า review อะไรบ้าง
+> Goal: know what is being reviewed
 
-1. รับ `areas` จาก argument — ถ้าไม่มีหรือไม่ชัด → `/ask-me`
-2. Map แต่ละ area ไป domain ของ `/deep-review` (เช่น `uxui` → `review-uxui`, `rbac`/`auth` → `review-auth`, `routing`/`navigation` → `review-frontend` + manual route analysis); map ไม่ได้ → review source ตรง
-3. สำรวจ codebase หา surface ของแต่ละ area — routes, guards, components, stores ที่เกี่ยว — ก่อน review เพื่อไม่พลาดจุดที่ซ่อนอยู่
+1. Take `areas` from the argument — if missing or unclear → `/ask-me`
+2. Map each area to a `/deep-review` domain (e.g. `uxui` → `review-uxui`, `rbac`/`auth` → `review-auth`, `routing`/`navigation` → `review-frontend` + manual route analysis); if unmappable → review the source directly
+3. Survey the codebase for each area's surface — related routes, guards, components, stores — before reviewing, so hidden spots aren't missed
 
 ### 2. Review Each Area
 
-> Goal: findings พร้อม evidence จริงทุกข้อ
+> Goal: every finding backed by real evidence
 
-ทุก area ตรวจ 3 มิติ:
+Check every area across 3 dimensions:
 
-1. **Issues** — พฤติกรรมผิดที่พิสูจน์ได้จาก code (dead action, wrong guard, broken link, silent failure)
-2. **Gaps** — capability ที่ surface สัญญาไว้แต่ไม่มีจริง (ปุ่มที่ไม่ทำงาน, empty state ที่ไม่มีทางเติม, permission ที่ประกาศแต่ไม่เช็ค)
-3. **Inconsistencies** — flow เดียวกันคนละพฤติกรรม (ฝั่ง A validate ฝั่ง B ไม่, cancel ฝั่งหนึ่งคืนเงินอีกฝั่งไม่)
+1. **Issues** — wrong behavior provable from the code (dead action, wrong guard, broken link, silent failure)
+2. **Gaps** — capabilities the surface promises but don't exist (a button that does nothing, an empty state with no way to fill it, a permission that is declared but never checked)
+3. **Inconsistencies** — the same flow with different behavior (side A validates while side B doesn't; one side refunds on cancel while the other doesn't)
 
-ทุก finding ต้องมี `file:line` evidence — ห้ามเดา ห้ามนับ intentional mock/stub เป็น finding เว้นแต่ UI สัญญากับ user ไว้ว่าทำงานจริง
+Every finding must have `file:line` evidence — no guessing; never count an intentional mock/stub as a finding unless the UI promises the user it really works
 
 ### 3. Present And Confirm
 
-> Goal: prioritized report ก่อนแก้
+> Goal: prioritized report before any fix
 
-1. ทำ `/report` ตาราง: `No.`, `Area`, `Type` (issue|gap|inconsistency), `Finding`, `Severity`, `Evidence`, `Fix Skill`
-2. ถ้า user ไม่ได้ใส่ `and fix` → ถามว่าจะแก้ข้อไหน รอ confirm
+1. Produce a `/report` table: `No.`, `Area`, `Type` (issue|gap|inconsistency), `Finding`, `Severity`, `Evidence`, `Fix Skill`
+2. If the user didn't append `and fix` → ask which items to fix and wait for confirmation
 
 ### 4. Fix Confirmed Items
 
-> Goal: แก้เฉพาะที่ confirm
+> Goal: fix only what was confirmed
 
-1. ส่งแต่ละ finding ไป `/deep-review-then-fix` ตาม domain ที่ตรง — finding ที่ map ไม่ได้แก้ตรงตาม evidence; area ที่มี dedicated entry → ใช้ entry นั้น (rbac → `/improve-rbac`, form → `/improve-form`, validation → `/improve-data-validation`, tests → `/improve-tests`)
-2. Addition ใหญ่ → `/create-plan-in-dot-devin` ก่อน implement เสมอ
-3. หลังแก้ครบ → `/refactor-to-srp` กับไฟล์ที่แตะเสมอ (≤250 บรรทัด, 1 responsibility)
-4. Run build/lint ของ project ยืนยัน → `/suggest-next-action`
+1. Route each finding to `/deep-review-then-fix` by matching domain — findings that can't be mapped are fixed directly per the evidence; areas with a dedicated entry → use that entry (rbac → `/improve-rbac`, form → `/improve-form`, validation → `/improve-data-validation`, tests → `/improve-tests`)
+2. Large additions → always `/create-plan-in-dot-devin` before implementing
+3. After all fixes → always run `/refactor-to-srp` on the touched files (≤250 lines, 1 responsibility)
+4. Run the project build/lint to verify → `/suggest-next-action`
 
 ## Rules
 
-- Delegate ไป `/deep-review` domains เมื่อ map ได้ — review เองเฉพาะ area ที่ไม่มี domain รองรับ
-- ทุก finding ต้องมี evidence `file:line` — no evidence = no finding
-- ไม่แก้โดยไม่ได้ confirm — เว้นแต่ user ใส่ `and fix` ในคำสั่ง
-- Intentional demo/mock behavior ไม่นับเป็น finding เว้นแต่ UI หลอกว่าทำงานจริง
-- ทุก addition ที่ confirm → `/create-plan-in-dot-devin` ก่อน implement เสมอ ห้ามข้าม
+- Delegate to `/deep-review` domains when a mapping exists — review yourself only for areas with no matching domain
+- Every finding must have `file:line` evidence — no evidence = no finding
+- Don't fix without confirmation — unless the user puts `and fix` in the command
+- Intentional demo/mock behavior doesn't count as a finding unless the UI pretends it really works
+- Every confirmed addition → always `/create-plan-in-dot-devin` before implementing; never skip
 
 ## Expected Outcome
 
-- Prioritized findings ต่อ area พร้อม type, severity, evidence ครบ
-- Findings ที่ confirm ถูกแก้ + verify ผ่าน build/lint + SRP ครบ
+- Prioritized findings per area with complete type, severity, and evidence
+- Confirmed findings fixed + verified via build/lint + SRP complete

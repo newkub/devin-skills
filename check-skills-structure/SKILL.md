@@ -1,6 +1,6 @@
 ---
 name: check-skills-structure
-description: ตรวจโครงสร้าง skill packages (frontmatter, references, workflows, subagents, src, MCP, website) ด้วย CLI เดียว output เป็น bullet list
+description: Check skill package structure (frontmatter, references, workflows, subagents, src, MCP) with one CLI
 argument-hint: "[root] [--skill <name>] [--json] [--findings] [--detail]"
 allowed-tools:
   - exec
@@ -20,74 +20,74 @@ related:
 
 ## Goal
 
-ตรวจสอบโครงสร้างของ skill packages ใน `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — ด้วย CLI command เดียวที่ output เป็น bullet list + findings
+Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — with a single CLI command that outputs a bullet list + findings
 
 ## Scope
 
-ใช้สำหรับ inventory/audit โครงสร้าง skills ทั้ง repo หรือ skill เดียว — read-only check, reproducible ผ่าน `scripts/check-skills-structure.ts` (Bun, zero deps)
+Use to inventory/audit skill structure across the whole repo or a single skill — read-only check, reproducible via `scripts/check-skills-structure.ts` (Bun, zero deps)
 
-- Boundary: lint conventions ละเอียด (related contract, section order, naming) → `/review-devin-global-harness`; validate frontmatter ต่อ skill → `/deep-validate`; skill นี้ = structural inventory table แบบเร็ว
+- Boundary: detailed convention linting (related contract, section order, naming) → `/review-devin-global-harness`; per-skill frontmatter validation → `/deep-validate`; this skill = a fast structural inventory table
 
 ## Execute
 
 ### 1. Run Check
 
-> Goal: ได้ bullet list structure ของทุก skill
+> Goal: get a bullet-list structure of every skill
 
 ```bash
-bun "check-skills-structure/scripts/check-skills-structure.ts"                    # ทั้ง repo (default root = %APPDATA%/devin/skills)
-bun "check-skills-structure/scripts/check-skills-structure.ts" --skill refactor   # skill เดียว
-bun "check-skills-structure/scripts/check-skills-structure.ts" --findings          # เฉพาะ warnings
+bun "check-skills-structure/scripts/check-skills-structure.ts"                    # whole repo (default root = %APPDATA%/devin/skills)
+bun "check-skills-structure/scripts/check-skills-structure.ts" --skill refactor   # single skill
+bun "check-skills-structure/scripts/check-skills-structure.ts" --findings          # warnings only
 bun "check-skills-structure/scripts/check-skills-structure.ts" --json              # machine-readable
-bun "check-skills-structure/scripts/check-skills-structure.ts" --detail            # แสดงชื่อจริงทุก entry ต่อ skill
-bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>       # repo อื่น
+bun "check-skills-structure/scripts/check-skills-structure.ts" --detail            # show every entry name per skill
+bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>       # another repo
 ```
 
-นอกจาก bullet counts แล้ว ใช้ `--skill <name>` หรือ `--detail` เพื่อดู **รายชื่อจริง** ต่อ skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `scripts`, `frontmatter-missing`
+Besides the bullet counts, use `--skill <name>` or `--detail` to see the **actual names** per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `scripts`, `frontmatter-missing`
 
 ### 2. Interpret Output
 
-> Goal: อ่านผลแต่ละ field — 1 bullet ต่อ 1 skill (`- <skill> — Field: value, ...`)
+> Goal: read each field — 1 bullet per skill (`- <skill> — Field: value, ...`)
 
-| Field | ความหมาย |
+| Field | Meaning |
 |--------|----------|
-| `Skill` | ชื่อ directory ของ skill (ชื่อ bullet) |
-| `Frontmatter` | frontmatter keys ที่มี x/10 (`name`, `description`, `argument-hint`, `allowed-tools`, `related`, `model`, `triggers`, `permissions`, `subagent`, `agent`) |
-| `Name` | `ok` = frontmatter name ตรง dir, `!=` = mismatch, `missing` |
-| `Related` | จำนวน entries ใน `related:` |
-| `References`/`Workflows`/`Subagents`/`BestPractices` | จำนวน `references/*.md`, `workflows/*/SKILL.md`, `subagents`, `best-practices/*.md` |
-| `Source`/`Scripts` | มี `src/` dir หรือไม่, จำนวนไฟล์ใน `scripts/` |
-| `MCP` | SKILL.md อ้าง MCP/`mcp_config` หรือ `src/` เป็น MCP package |
-| `Website` | มี `references/website.md`, SKILL.md อ้าง website/viewer/vite หรือ `src/` เป็น web app |
-| `Lines` | จำนวนบรรทัด SKILL.md |
+| `Skill` | the skill's directory name (bullet name) |
+| `Frontmatter` | frontmatter keys present x/10 (`name`, `description`, `argument-hint`, `allowed-tools`, `related`, `model`, `triggers`, `permissions`, `subagent`, `agent`) |
+| `Name` | `ok` = frontmatter name matches the dir, `!=` = mismatch, `missing` |
+| `Related` | number of entries in `related:` |
+| `References`/`Workflows`/`Subagents`/`BestPractices` | counts of `references/*.md`, `workflows/*/SKILL.md`, `subagents`, `best-practices/*.md` |
+| `Source`/`Scripts` | whether a `src/` dir exists, number of files in `scripts/` |
+| `MCP` | SKILL.md mentions MCP/`mcp_config`, or `src/` is an MCP package |
+| `Website` | has `references/website.md`, SKILL.md mentions website/viewer/vite, or `src/` is a web app |
+| `Lines` | SKILL.md line count |
 
 ### 3. Triage Findings
 
-> Goal: จัดการ warnings ที่พบ
+> Goal: handle the warnings found
 
 1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`
 2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`
-3. findings ที่ต้องแก้ → `/update-devin-global-skills`; deep lint → `/review-devin-global-harness`; validate ต่อ skill → `/deep-validate`
+3. findings that need fixing → `/update-devin-global-skills`; deep lint → `/review-devin-global-harness`; per-skill validation → `/deep-validate`
 
 ## Rules
 
 ### 1. Read-Only
 
-- CLI ไม่แตะไฟล์ใดๆ — อ่าน structure เท่านั้น
+- The CLI touches no files — it only reads structure
 
 ### 2. Reproducible
 
-- ผลต้องมาจาก script ไม่ใช่ตาเปล่า — อ้าง row/WARN ใน report ได้เสมอ
+- Results must come from the script, not the naked eye — rows/WARNs can always be cited in the report
 
 ### 3. Single Command
 
-- หนึ่ง entry point เท่านั้น — options ผ่าน flags ไม่มี subcommands
+- One entry point only — options via flags, no subcommands
 
-- ใช้ /check-my-global-cli ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /check-my-global-cli if needed
+- Use /use-scripts if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- bullet list structure ของทุก skill (หรือ skill เดียว) ผ่าน command เดียว
-- findings พร้อม severity และ next-action skill ที่ถูกต้อง
+- bullet-list structure of every skill (or one skill) via a single command
+- findings with severity and the correct next-action skill

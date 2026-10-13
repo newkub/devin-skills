@@ -1,6 +1,6 @@
 ---
 name: review-github-pr-report-comments
-description: สร้าง PR review comment set — inline comments พร้อม file/line + summary comment
+description: Build a PR review comment set — inline comments with file/line + a summary comment
 argument-hint: "[pr-number]"
 related:
   - report
@@ -9,46 +9,46 @@ related:
 
 ## Goal
 
-แปลง findings ของ `/review-github-pr` เป็น review comments — inline comment format พร้อม file/line + suggestion ที่ paste หรือ submit ผ่าน GitHub ได้
+Turn the findings of `/review-github-pr` into review comments — inline comment format with file/line + suggestion, ready to paste or submit through GitHub
 
 ## Scope
 
-- ใช้เมื่อ `/review-github-pr` dispatch มาที่ `comments`/`report-comments` หรือเรียก standalone กับ findings ที่มีอยู่
-- Output: comment set ในแชท (draft) — ห้าม submit ไป GitHub โดยไม่มี user confirm
+- Use when `/review-github-pr` dispatches to `comments`/`report-comments`, or call standalone with existing findings
+- Output: a comment set in chat (draft) — never submit to GitHub without user confirmation
 
 ## Execute
 
 ### 1. Format Inline Comments
 
-> Goal: แต่ละ finding เป็น comment ที่ actionable
+> Goal: each finding becomes an actionable comment
 
-1. ต่อ finding: `file:line`, comment body — ปัญหา + เหตุผล + suggestion (code block เมื่อ fix สั้น)
-2. tone: reviewer มืออาชีพ — ระบุปัญหาและทางแก้ ไม่ nitpick ที่ไม่มีผล
-3. severity tag หัว comment: `[critical]`/`[suggestion]`/`[nit]` — nit แยกท้าย
+1. Per finding: `file:line`, comment body — the problem + rationale + suggestion (code block when the fix is short)
+2. tone: a professional reviewer — state the problem and the fix, don't nitpick what has no impact
+3. severity tag at the head of the comment: `[critical]`/`[suggestion]`/`[nit]` — nits separated at the end
 
 ### 2. Build Summary Comment
 
-> Goal: overview ที่ author อ่านก่อน
+> Goal: the overview the author reads first
 
-1. verdict: approve / request-changes / comment-only พร้อมเหตุผล
+1. verdict: approve / request-changes / comment-only with reasons
 2. findings summary table: `No.`, `File`, `Severity`, `Issue`
-3. สิ่งที่ทำดี — acknowledge งานที่ถูกต้อง ไม่ใช่แค่ complaints
+3. what was done well — acknowledge correct work, not just complaints
 
 ### 3. Order And Output
 
-> Goal: comments เรียงตามความสำคัญ
+> Goal: comments ordered by importance
 
-1. Critical/High inline comments ก่อน → suggestions → nits
-2. จำกัด nit comments — เกิน ~3 ให้รวมเป็น single style note
-3. รายงาน draft ในแชท — submit เฉพาะเมื่อ user confirm (`/open-web` หรือ gh CLI ตามที่ user เลือก)
+1. Critical/High inline comments first → suggestions → nits
+2. Limit nit comments — beyond ~3, consolidate them into a single style note
+3. Report the draft in chat — submit only when the user confirms (`/open-web` or gh CLI, per the user's choice)
 
 ## Rules
 
-- ทุก inline comment มี file path + line ที่ถูกต้องใน diff เท่านั้น — comment บน line ที่ไม่ได้แก้จะ attach ไม่ได้
-- ไม่สร้าง findings ใหม่ — report นี้ format จาก findings ที่มีเท่านั้น
-- ห้าม submit อัตโนมัติ — draft first, confirm ก่อน
+- Every inline comment must have a file path + line that exists in the diff only — a comment on an unchanged line cannot be attached
+- Do not create new findings — this report only formats existing findings
+- Never submit automatically — draft first, confirm before submitting
 
 ## Expected Outcome
 
-- Inline comment drafts พร้อม file/line + suggestion
-- Summary comment พร้อม verdict — พร้อม submit หลัง confirm
+- Inline comment drafts with file/line + suggestion
+- Summary comment with verdict — ready to submit after confirmation

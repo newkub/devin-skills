@@ -1,6 +1,6 @@
 ---
 name: capture
-description: Capture หลักฐานภาพ/วิดีโอ — web, component, terminal, app หรือ all-routes ผ่าน CLI เดียว
+description: Capture image/video evidence — web, component, terminal, app or all-routes via one CLI
 argument-hint: "<web|component|terminal|app|all> [options]"
 related:
   - use-agent-browser
@@ -12,56 +12,56 @@ related:
 
 ## Goal
 
-Capture ภาพหรือวิดีโอหลักฐานตาม target ผ่าน Bun CLI ตัวเดียว — หน้าเว็บ, component, terminal output, app window หรือทุก route x device — สำหรับ documentation, debugging และ testing (merged จาก `capture-web`, `capture-component`, `capture-terminal`, `capture-app`, `capture-all-components-all-routes`)
+Capture evidence images or video per target via a single Bun CLI — a web page, a component, terminal output, an app window, or every route x device size — for documentation, debugging, and testing (merged from `capture-web`, `capture-component`, `capture-terminal`, `capture-app`, `capture-all-components-all-routes`)
 
 ## Scope
 
-CLI อยู่ที่ `D:/newkub/agents-capture/src/` (Bun/TypeScript, entry `src/presentation/cli.ts` — merged into `agents-capture` project) — ใช้ได้กับทุก project โดยไม่ต้องติดตั้ง dependency ฝั่ง project:
+The CLI lives at `D:/newkub/agents-capture/src/` (Bun/TypeScript, entry `src/presentation/cli.ts` — merged into the `agents-capture` project) — usable from any project without installing project-side dependencies:
 
 ```bash
 bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 ```
 
-| Mode | ทำอะไร | Guide |
+| Mode | What it does | Guide |
 |------|--------|-------|
-| `web` | screenshot/PDF หน้าเว็บเดียว ผ่าน `agent-browser` (screenshot-only ใช้ `chrome-devtools-mcp` `take_screenshot` ได้ถ้า register อยู่ — ดู `/use-chrome-devtools`) | [Web](#capture-web) |
-| `component` | screenshot element เดียว (CSS selector) บน URL | [Component](#capture-component) |
-| `terminal` | render output ของ command เป็น PNG/SVG/HTML | [Terminal](#capture-terminal) |
-| `app` | screenshot หน้าต่าง/จอ OS-level (Windows PowerShell) + app sweep workflow | [App](#capture-app) |
-| `all` | ทุก route x ทุก device size ในรันเดียว + manifest | [All](#capture-all) |
+| `web` | Screenshot/PDF of one web page via `agent-browser` (for screenshot-only work, `chrome-devtools-mcp` `take_screenshot` also works if registered — see `/use-chrome-devtools`) | [Web](#capture-web) |
+| `component` | Screenshot a single element (CSS selector) on a URL | [Component](#capture-component) |
+| `terminal` | Render command output as PNG/SVG/HTML | [Terminal](#capture-terminal) |
+| `app` | Screenshot OS-level windows/screens (Windows PowerShell) + app sweep workflow | [App](#capture-app) |
+| `all` | Every route x every device size in one run + manifest | [All](#capture-all) |
 
 ## Execute
 
 ### 1. Select Mode
 
-> Goal: ระบุ capture mode และอ่าน guide ของ mode นั้น
+> Goal: Identify the capture mode and read that mode's guide
 
-1. อ่าน mode จาก argument — ถ้าไม่ระบุ → ถาม user
-2. อ่าน `## Mode Guides` ของ mode นั้นแล้วทำตาม Execute + Rules — ไม่ execute จากตารางนี้โดยตรง
-3. ถ้า tool ต้องการยังไม่ติดตั้ง (`agent-browser`, `terminal-shot`, …) → ติดตั้งตาม mode guide หรือ `/download-program`
+1. Read the mode from the argument — if not specified → ask the user
+2. Read the `## Mode Guides` entry for that mode and follow its Execute + Rules — don't execute directly from this table
+3. If a required tool isn't installed yet (`agent-browser`, `terminal-shot`, …) → install it per the mode guide or `/download-program`
 
 ### 2. Capture
 
-> Goal: ได้ภาพ/วิดีโอตาม mode
+> Goal: Get the image/video for the mode
 
-1. เตรียม target: เปิด URL/app/terminal ที่ต้องการ (`/run-dev` ถ้าต้อง start server)
-2. รัน CLI subcommand ตาม mode พร้อมตั้งชื่อไฟล์สื่อความหมาย
-3. บันทึกไปตำแหน่งตาม mode guide (`public/screenshots/`, `docs/screenshots/`, หรือ `.devin/temp/report/<workspace>/captures-<ts>/`)
+1. Prepare the target: open the needed URL/app/terminal (`/run-dev` if a server must be started)
+2. Run the CLI subcommand for the mode with meaningful file names
+3. Save to the location given by the mode guide (`public/screenshots/`, `docs/screenshots/`, or `.devin/temp/report/<workspace>/captures-<ts>/`)
 
 ### 3. Verify And Report
 
-> Goal: ภาพใช้ได้จริงและถูกอ้างถึง
+> Goal: The image is genuinely usable and referenced
 
-1. ตรวจว่าไฟล์สร้างสำเร็จและไม่ว่าง (เปิดดูด้วย `read` ถ้าเป็นภาพ)
-2. `all` mode → เช็ค `manifest.json` errors ก่อนเสมอ
-3. รายงาน path และขนาดไฟล์ — ถ้าใช้เป็น bug evidence ให้บันทึกใต้ `.devin/bugs/` พร้อม git state และ env context
+1. Check that the file was created and is non-empty (view it with `read` if it's an image)
+2. `all` mode → always check `manifest.json` errors first
+3. Report the path and file size — if used as bug evidence, save it under `.devin/bugs/` with git state and env context
 
 ## Rules
 
-- ตั้งชื่อไฟล์สื่อความหมาย มีวันที่ถ้าเป็น evidence
-- ไม่ capture หน้าจอที่มี secrets/credentials โดยไม่จำเป็น — ถ้า target ต้อง auth ให้ถาม user ก่อน
-- แจ้ง path ของไฟล์ที่ capture เสมอ
-- ใช้ /run-dev, /use-agent-browser, /resolve-errors, /deep-review ถ้าจำเป็น
+- Give files meaningful names; include the date when they are evidence
+- Don't capture screens containing secrets/credentials unless necessary — if the target requires auth, ask the user first
+- Always report the path of captured files
+- Use /run-dev, /use-agent-browser, /resolve-errors, /deep-review if needed
 
 ## Mode Guides
 
@@ -75,22 +75,22 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: Independent jobs that can be spawned in parallel — the profile lives right in this section, no separate file needed
 
-### route-capturer — capture route เดียวทุก device size แล้วคืน artifact paths (ใช้เมื่อ routes เยอะต้อง capture ขนาน)
+### route-capturer — capture one route across every device size and return artifact paths (use when many routes must be captured in parallel)
 
-- **Inputs**: `route` (path เดียวที่ต้อง capture เช่น `/request`, `/examples/form`), `base-url` (dev/prod URL เช่น `http://localhost:3000`), `devices` (เช่น `desktop,mobile` หรือ custom `wide=1920x1080`), `components` (optional — selector map เช่น `nav=header,form=form`), `out-dir` (เช่น `.devin/temp/report/<workspace>/captures-<ts>/`), `browser-session` (optional — `agent-browser` session info ถ้า parent เปิดไว้แล้ว)
-- **Tools**: `exec` (รัน `bun <skill-dir>/src/all.ts` หรือ `agent-browser` CLI), `read` (อ่าน `manifest.json` และตรวจ errors)
+- **Inputs**: `route` (a single path to capture, e.g. `/request`, `/examples/form`), `base-url` (dev/prod URL, e.g. `http://localhost:3000`), `devices` (e.g. `desktop,mobile` or custom `wide=1920x1080`), `components` (optional — selector map, e.g. `nav=header,form=form`), `out-dir` (e.g. `.devin/temp/report/<workspace>/captures-<ts>/`), `browser-session` (optional — `agent-browser` session info if the parent already opened one)
+- **Tools**: `exec` (run `bun <skill-dir>/src/all.ts` or the `agent-browser` CLI), `read` (read `manifest.json` and check for errors)
 - **Execute**:
-  1. ยืนยัน `base-url` ตอบกลับก่อน capture — ถ้าพังคืน `error` ทันที
-  2. รัน `bun src/all.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>` สำหรับ route เดียวครบทุก device
-  3. ถ้ามี `components` → เพิ่ม `--components "<name>=<selector>@<route>"`
-  4. อ่าน `manifest.json` เช็ค errors ของ route นี้
-  5. เก็บ artifact paths ทั้งหมดที่สร้างได้
-- **Output**: ตาราง artifacts `| No. | Artifact | Path | Device | Status |` — `status`: `ok`/`failed` พร้อม error message ถ้า fail; ปิดท้ายด้วยสรุป total artifacts, failed count, `manifest.json` path
-- **Constraints**: รับผิดชอบ route เดียวเท่านั้น ห้าม capture routes อื่น — read-only ต่อ target ไม่แก้ไข code ของ site ที่ capture (ห้าม write/edit); `--wait` ต้องพอให้ hydration + fonts โหลด — เพิ่มถ้า SPA ช้า; capture fail ต่อ device ให้เก็บใน output เป็น `failed` — ห้ามหยุดทั้งรัน; artifacts ต้องลง `out-dir` ที่ parent กำหนดเท่านั้น ไม่ commit เข้า repo
+  1. Confirm `base-url` responds before capturing — if it's down, return `error` immediately
+  2. Run `bun src/all.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>` for the single route across every device
+  3. If `components` are given → add `--components "<name>=<selector>@<route>"`
+  4. Read `manifest.json` and check this route's errors
+  5. Collect all artifact paths that were produced
+- **Output**: artifacts table `| No. | Artifact | Path | Device | Status |` — `status`: `ok`/`failed` with the error message on failure; close with a summary of total artifacts, failed count, and the `manifest.json` path
+- **Constraints**: Handle one route only, never capture other routes — read-only against the target, don't modify the captured site's code (no write/edit); `--wait` must be long enough for hydration + fonts to load — increase it for slow SPAs; a per-device capture failure is recorded in the output as `failed` — never abort the whole run; artifacts must land only in the parent-assigned `out-dir`, never committed to the repo
 
 ## Expected Outcome
 
-- ไฟล์ภาพ/วิดีโอ/PDF หลักฐานพร้อมใช้ ตาม mode ที่ระบุ
-- `all` mode ให้ `manifest.json` สรุปผล + errors พร้อมใช้ต่อใน `/deep-review` หรือ report
+- Ready-to-use image/video/PDF evidence files for the specified mode
+- `all` mode yields a `manifest.json` summarizing results + errors, ready for `/deep-review` or a report

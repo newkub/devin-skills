@@ -1,6 +1,6 @@
 ---
 name: run-examples
-description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+description: Write examples covering every API in the project
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -13,46 +13,46 @@ related:
 
 ## Goal
 
-เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+Write examples covering every API in the project
 
 ## Scope
 
-ใช้ `run-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (examples)
+Use `run-examples` for the specific tasks and workflows it covers (examples)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (examples)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (examples)
 
 ### 1. Prepare
 
 > Goal: Prepare
 
-1. ใช้ `/follow-tool-vitepress` เพื่อเก็บ reference
-2. รัน `/deep-analyze` เพื่อดูภาพรวม
+1. Use `/follow-tool-vitepress` to gather reference material
+2. Run `/deep-analyze` to get an overview
 
 ### 2. Analyze APIs
 
 > Goal: Analyze APIs
 
-1. อ่าน entry point และ index files ในแต่ละ module
-2. ระบุ API ทั้งหมดจาก source code
+1. Read the entry point and index files in each module
+2. Identify all APIs from the source code
 
 ### 3. Create Structure
 
 > Goal: Create Structure
 
-1. สร้าง `examples/` directory หรือใช้ `apps/examples` สำหรับ monorepo
-2. สร้าง subdirectories ตาม project organization
-3. สร้าง `README.md` อธิบายโครงสร้าง
+1. Create an `examples/` directory, or use `apps/examples` for a monorepo
+2. Create subdirectories matching the project organization
+3. Create a `README.md` describing the structure
 
 ### 4. Write Examples per Module
 
 > Goal: Write Examples per Module
 
-1. เขียน examples สำหรับทุก module ครอบคลุมทุก API
-2. เขียน basic usage สำหรับแต่ละ API
-3. เขียน advanced usage สำหรับ use cases ที่ซับซ้อน
-4. เขียน edge cases และ error handling
+1. Write examples for every module, covering every API
+2. Write basic usage for each API
+3. Write advanced usage for complex use cases
+4. Write edge cases and error handling
 
 ### 5. Write Integration Examples
 
@@ -66,47 +66,47 @@ related:
 
 > Goal: Validate
 
-1. รัน examples เพื่อตรวจสอบว่าทำงานได้จริง
-2. ตรวจสอบว่าครอบคลุมทุก API
-3. ตรวจสอบว่า code ถูกต้องและ runnable
+1. Run the examples to confirm they actually work
+2. Check that every API is covered
+3. Check that the code is correct and runnable
 
 ### 7. Update Documentation
 
 > Goal: Update Documentation
 
-1. ทำตาม `/update-readme-md` สำหรับการอัพเดท README.md
-2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-readme-md`
+1. Follow `/update-readme-md` for updating README.md
+2. Add the written examples into the Usage section of README.md
+3. Update the API Reference with complete tables in the format defined in `/update-readme-md`
 
 ### 8. Update Reference
 
 > Goal: Update Reference
 
-1. ใช้ `/update-references` เพื่ออัพเดท references
+1. Use `/update-references` to update the references
 
 ## Rules
 
 ### 1. Structure
 
-- แต่ละ example มีไฟล์แยก พร้อม comments และ output ที่คาดหวัง
-- Examples ต้อง runnable ได้จริง ใช้ best practices
-- ครอบคลุมทุก public API ทั้ง basic และ advanced usage
-- มี description สั้นๆ อธิบาย input/output
-- จัดเรียงตาม modules และ complexity
+- Each example has its own file, with comments and the expected output
+- Examples must be genuinely runnable and use best practices
+- Cover every public API, both basic and advanced usage
+- Include a short description explaining input/output
+- Order them by module and complexity
 
 ### 2. Monorepo
 
-- ใช้ `apps/examples` สำหรับ monorepo
-- ใช้ `examples` สำหรับ single package
+- Use `apps/examples` for a monorepo
+- Use `examples` for a single package
 
 ### 3. Dependencies
 
-- ใช้ `workspace:*` สำหรับ internal dependencies ใน monorepo
-- ใช้ /update-docs ถ้าจำเป็น
+- Use `workspace:*` for internal dependencies in a monorepo
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-มี examples ครอบคลุมทุก API
-ทุก example runnable ได้จริง
-ผู้ใช้ copy-paste และใช้งานได้ทันที
+There are examples covering every API
+Every example is genuinely runnable
+Users can copy-paste and use them immediately

@@ -1,0 +1,22 @@
+{
+  "runId": "wf_bb600baf-020",
+  "taskId": "wf-61466cbb-e56",
+  "workflowName": "translate-skills-to-english-sweep",
+  "status": "killed",
+  "result": null,
+  "logs": [
+    "88 batches: 175 -> 088 (desc)"
+  ],
+  "failures": [],
+  "agentCount": 88,
+  "totalToolCalls": 1277,
+  "durationMs": 6027352,
+  "usage": {
+    "agents": 88,
+    "toolCalls": 1277,
+    "durationMs": 6027352
+  },
+  "transcriptDir": "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\.qoder\\sessions\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\workflows\\runs\\wf_bb600baf-020",
+  "scriptPath": "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\.qoder\\sessions\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\workflows\\scripts\\translate-skills-to-english-sweep-wf_0d22ba6d-ad9.js",
+  "error": "Workflow aborted"
+}

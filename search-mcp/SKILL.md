@@ -1,7 +1,7 @@
 ---
 
 name: search-mcp
-description: ค้นหา MCP และ internet ที่เกี่ยวข้องและน่าสนใจ
+description: Search for relevant and interesting MCP and internet resources
 argument-hint: "[query]"
 related:
   - follow-create-mcp
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-ค้นหา MCP และ internet ที่เกี่ยวข้องและน่าสนใจ
+Search for relevant and interesting MCP and internet resources
 
 ## Scope
 
-ใช้ `search` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (mcp)
+Use `search` for the covered specific tasks and workflows (mcp)
 
 ## Execute
 
@@ -26,26 +26,26 @@ related:
 
 > Goal: Search MCP
 
-ค้นหา MCP ที่เกี่ยวข้อง
+Find relevant MCP servers
 
-1. ค้นหา MCP ที่เกี่ยวข้อง
-2. ค้นหา internet ที่เกี่ยวข้อง
-3. ระบุที่น่าสนใจ
+1. Search for relevant MCP servers
+2. Search for relevant internet resources
+3. Identify the interesting ones
 
 ## Rules
 
-- ค้นหา MCP ที่เกี่ยวข้อง
-- ค้นหา internet ที่เกี่ยวข้อง
-- ระบุที่น่าสนใจ
+- Search for relevant MCP servers
+- Search for relevant internet resources
+- Identify the interesting ones
 
-- ใช้ /follow-create-mcp ถ้าจำเป็น
-- ใช้ /list-devin-global-mcp ถ้าจำเป็น
-- ใช้ /update-devin-global-mcp ถ้าจำเป็น
-- ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- Use /follow-create-mcp if needed
+- Use /list-devin-global-mcp if needed
+- Use /update-devin-global-mcp if needed
+- Use /follow-tool-crw if needed
+- Use /learn-from-web if needed
 
 ## Expected Outcome
 
-- MCP ที่เกี่ยวข้องและน่าสนใจ
-- Internet resources ที่เกี่ยวข้อง
-- รายการที่น่าสนใจ
+- Relevant and interesting MCP servers
+- Related internet resources
+- A list of the interesting ones

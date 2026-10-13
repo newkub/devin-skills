@@ -1,6 +1,6 @@
 ---
 name: convert-svg
-description: แปลงรูปภาพ bitmap เป็น SVG ด้วย bunx CLI
+description: Convert bitmap images to SVG with a bunx CLI
 argument-hint: "[input]"
 related:
   - convert
@@ -11,76 +11,76 @@ related:
 
 ## Goal
 
-แปลงรูปภาพ bitmap (PNG/JPG) เป็น SVG vector ด้วย `bunx` CLI
+Convert bitmap images (PNG/JPG) to SVG vectors with a `bunx` CLI
 
 ## Scope
 
-- รับ input เป็นไฟล์รูปภาพ
-- ใช้ potrace-based CLI สำหรับ tracing
-- รองรับ output path และ optimization
+- Accept an image file as input
+- Use potrace-based CLIs for tracing
+- Support output paths and optimization
 
 ## Execute
 
 ### 1. Identify Input
 
-> Goal: ตรวจสอบ input
+> Goal: Validate the input
 
-1. รับ input path จาก user
-2. ตรวจสอบว่าไฟล์มีอยู่และเป็น image (png/jpg/jpeg/gif/bmp)
-3. ตรวจสอบขนาดไฟล์ ถ้าใหญ่เกินไป ให้ resize ก่อนหรือเตือน user
+1. Get the input path from the user
+2. Verify the file exists and is an image (png/jpg/jpeg/gif/bmp)
+3. Check the file size; if it is too large, resize first or warn the user
 
 ### 2. Choose CLI
 
-> Goal: เลือก tool ทีพร้อมใช้
+> Goal: Pick a tool that is ready to use
 
 1. Primary: `bunx images-to-svg convert <input>`
-   - รองรับทั้งไฟล์และ directory
-   - ใช้ sharp, potrace, svgo
+   - Handles both files and directories
+   - Uses sharp, potrace, svgo
 2. Fallback: `bunx potrace-cli <input> -o output.svg`
 3. Fallback: `bunx potrace <input> -s -o output.svg`
-4. สุดท้าย: ติดตั้ง `sharp` + `potrace` แล้วเขียน Node/Bun script
+4. Last resort: install `sharp` + `potrace` and write a Node/Bun script
 
 ### 3. Run Conversion
 
-> Goal: แปลง bitmap เป็น SVG
+> Goal: Convert bitmap to SVG
 
-1. รันคำสั่งพร้อม output path
-2. ถ้า input เป็น directory → แปลงทั้งหมด
-3. ตรวจสอบ output file
+1. Run the command with an output path
+2. If the input is a directory → convert everything in it
+3. Verify the output file
 
 ### 4. Optimize And Validate
 
-> Goal: ให้ SVG ถูกต้องและพร้อมใช้
+> Goal: Make the SVG correct and ready to use
 
-1. ใช้ `bunx svgo` optimize output ถ้าต้องการ
-2. ตรวจสอบ SVG เปิดได้ด้วย browser
-3. รายงาน input/output paths
+1. Optimize the output with `bunx svgo` if desired
+2. Check that the SVG opens in a browser
+3. Report the input/output paths
 
 ## Rules
 
 ### 1. Quality
 
-- Tracing ทำงานดีกับรูปทีมี contrast สูง
-- ถ้า input เป็น photo สีสัน → แจ้ง user ว่า SVG อาจไม่สมจริง
-- สำหรับ logo/line art → ผลดีทีสุด
+- Tracing works best on high-contrast images
+- If the input is a colorful photo → warn the user the SVG may not be faithful
+- For logos/line art → best results
 
 ### 2. Color
 
-- potrace default เป็น monochrome
-- ถ้าต้องการ color ให้ใช้ `images-to-svg` หรือขั้นตอนหลัง tracing
+- potrace defaults to monochrome
+- For color, use `images-to-svg` or post-tracing steps
 
 ### 3. Fallback
 
-- ถ้า tool แรก fail → ลอง `potrace-cli`
-- ถ้า fail อีก → ใช้ script ด้วย `sharp` + `potrace`
+- If the first tool fails → try `potrace-cli`
+- If that fails too → use a script with `sharp` + `potrace`
 
-- ใช้ /convert-git-submodules ถ้าจำเป็น
-- ใช้ /idea-convert-my-global-cli-to-skills ถ้าจำเป็น
-- ใช้ /convert-files-format ถ้าจำเป็น
-- ใช้ /draw-svg-image ถ้าจำเป็น
+- Use /convert-git-submodules if needed
+- Use /idea-convert-my-global-cli-to-skills if needed
+- Use /convert-files-format if needed
+- Use /draw-svg-image if needed
 
 ## Expected Outcome
 
-- ไฟล์ `.svg` ถูกสร้างจาก bitmap
-- SVG สามารถแก้ไขและ scale ได้
-- รายงาน tool ทีใช้และ output path
+- A `.svg` file is generated from the bitmap
+- The SVG is editable and scalable
+- Report the tool used and the output path

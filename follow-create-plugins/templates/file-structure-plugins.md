@@ -1,6 +1,6 @@
 # Plugins File Structure
 
-Canonical file structure สำหรับ plugin package (editor/build-tool/framework plugin) — manifest + lifecycle hooks + capabilities
+Canonical file structure for a plugin package (editor/build-tool/framework plugin) — manifest + lifecycle hooks + capabilities
 
 ## File Structure
 
@@ -8,16 +8,16 @@ Canonical file structure สำหรับ plugin package (editor/build-tool/fr
 project/
 │
 ├─ src/
-│  ├─ index.ts                            # public API — export plugin factory + types เท่านั้น
+│  ├─ index.ts                            # public API — export only the plugin factory + types
 │  │
 │  ├─ plugin.ts                           # plugin manifest — name, version, hooks registration
 │  │
-│  ├─ hooks/                              # lifecycle/transform hooks — 1 file ต่อ hook (presentation)
+│  ├─ hooks/                              # lifecycle/transform hooks — 1 file per hook (presentation)
 │  │  ├─ on-init.ts
 │  │  ├─ on-load.ts
 │  │  └─ transform.ts
 │  │
-│  ├─ usecases/                           # use cases ที่ hooks เรียก (domain)
+│  ├─ usecases/                           # use cases called by hooks (domain)
 │  │  ├─ resolve-asset.ts
 │  │  └─ analyze-config.ts
 │  │
@@ -25,17 +25,17 @@ project/
 │  │  └─ rule-engine.ts
 │  │
 │  ├─ infra/                              # host APIs, fs, external calls (data)
-│  │  ├─ host.ts                          # host-context adapter — ห่อ APIs ที่ host ให้
+│  │  ├─ host.ts                          # host-context adapter — wraps the APIs the host provides
 │  │  └─ fs.ts
 │  │
 │  ├─ utils/ types/ constants/ config/    # shared leaves (pure)
 │  │
-│  └─ contract.ts                         # host-facing types — ต้องตรง host plugin API (shared leaf)
+│  └─ contract.ts                         # host-facing types — must match the host plugin API (shared leaf)
 │
 ├─ tests/
 │  ├─ unit/                               # usecases/, services/ — mock host context
-│  └─ e2e/                                # run จริงใน host fixture project
-├─ package.json                           # exports/peerDeps ตาม host API
+│  └─ e2e/                                # real runs in a host fixture project
+├─ package.json                           # exports/peerDeps per the host API
 └─ tsconfig.json
 ```
 
@@ -43,15 +43,15 @@ project/
 
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
-| 1 | presentation | `plugin.ts`+`hooks/` | manifest + lifecycle hooks | → `usecases/` (+ leaves) — ห้ามเรียก `infra/` ตรง |
+| 1 | presentation | `plugin.ts`+`hooks/` | manifest + lifecycle hooks | → `usecases/` (+ leaves) — must not call `infra/` directly |
 | 2 | domain | `usecases/`+`services/` | plugin behavior + rules | → `infra/` (+ leaves) |
 | 3 | data | `infra/` | host API adapter, fs, external IO | leaf (+ leaves) |
 | 4 | shared leaf | `contract.ts`+`utils/`+`types/`+`constants/`+`config/` | host contract + pure helpers | leaf |
 
 ## Rules
 
-- `index.ts` export เฉพาะ plugin factory + public types — ห้าม export internal layers
-- Host API ทุก call ผ่าน `infra/host.ts` adapter — ห้ามเรียก host context ตรงใน domain
-- `contract.ts` = SSOT ของ host plugin API — types ต้องตรง host version ที่ peerDeps ระบุ
-- domain (`usecases/`+`services/`) pure — testable โดย mock host context เท่านั้น
-- Hooks ห้ามทำงานหนักตอน register — lazy/defer ไป `on-*` hook ที่เหมาะ
+- `index.ts` exports only the plugin factory + public types — never export internal layers
+- Every host API call goes through the `infra/host.ts` adapter — never call host context directly in the domain
+- `contract.ts` = SSOT of the host plugin API — types must match the host version declared in peerDeps
+- The domain (`usecases/`+`services/`) is pure — testable by mocking the host context only
+- Hooks must not do heavy work at register time — lazily/defer to the appropriate `on-*` hook

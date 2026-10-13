@@ -1,6 +1,6 @@
 ---
 name: follow-create-rust-cli
-description: สร้าง CLI applications ด้วย Rust ตาม context และ best practices
+description: Build Rust CLI applications following context and best practices
 argument-hint: "[scope]"
 related:
   - follow-create-cli
@@ -13,179 +13,179 @@ related:
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Rust ที่มีประสิทธิภาพสูง พร้อม type safety และ zero-cost abstractions
+Build high-performance CLI applications with Rust, with type safety and zero-cost abstractions
 
 ## Scope
 
-ใช้สำหรับสร้าง CLI applications ด้วย Rust runtime — ถ้ายังไม่ชัดว่า Rust หรือ Bun ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
+Use for building CLI applications with the Rust runtime — if Rust vs Bun is unclear, use `/follow-create-cli` to pick the stack first
 
-- Packages: Rust toolchain (`edition = "2024"`), `clap` (derive API — 4.x renamed builder `App` → `Command`), `color-eyre`, `cargo-dist`, `thiserror`/`anyhow`, `serde` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: Rust toolchain (`edition = "2024"`), `clap` (derive API — 4.x renamed the builder `App` → `Command`), `color-eyre`, `cargo-dist`, `thiserror`/`anyhow`, `serde` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Inspect the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create rust cli)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+3. Record the reasons for choosing the stack and libraries for later reference (create rust cli)
 
 ### 2. Decide Architecture
 
-> Goal: เลือก architecture ที่เหมาะสมกับ CLI
+> Goal: Choose the architecture that fits the CLI
 
-1. ถ้ายังไม่ชัด Rust หรือ Bun → ทำ `/follow-create-cli` ก่อน
-2. ทำ `/deep-review` หรือ `/deep-review` เพื่อประเมิน context
-3. เลือก architecture ตามลักษณะงาน:
-   - CLI ง่ายๆ มี subcommands ไม่กี่ตัว → Command/Handler split
-   - ต้อง support หลาย output modes (TTY/JSON/agent) → Functional Core / Imperative Shell
-   - มีหลาย backend/IO ซับซ้อน ต้อง test สูง → Hexagonal / Ports & Adapters
-4. บันทึกเหตุผลที่เลือก architecture นี้
+1. If Rust vs Bun is unclear → run `/follow-create-cli` first
+2. Run `/deep-review` or `/deep-review` to assess the context
+3. Choose the architecture based on the workload:
+   - Simple CLI with a few subcommands → Command/Handler split
+   - Needs to support multiple output modes (TTY/JSON/agent) → Functional Core / Imperative Shell
+   - Multiple backends/complex IO with heavy testing → Hexagonal / Ports & Adapters
+4. Record the reasons for choosing this architecture
 
 ### 3. Setup Project Structure
 
-> Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เลือก
+> Goal: Create the project structure per the chosen architecture
 
-1. สร้าง project ด้วย `cargo new --name <project> <path>`
-2. สร้าง directories ตาม architecture ที่เลือก:
+1. Create the project with `cargo new --name <project> <path>`
+2. Create directories per the chosen architecture:
    - Command/Handler split: `src/cli/`, `src/commands/`, `src/services/`, `src/output.rs`, `src/config.rs`
    - Functional Core: `src/core/`, `src/shell/`, `src/cli/`, `src/output.rs`
    - Hexagonal: `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/commands/`, `src/wiring.rs`
-3. แยก concerns: CLI parsing, business logic, output, external I/O
-4. สร้าง entry point: `src/main.rs` สำหรับ binary, `src/lib.rs` สำหรับ library
-5. ถ้า project มีหลาย binaries: สร้างใน `src/bin/`
-6. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
+3. Separate concerns: CLI parsing, business logic, output, external I/O
+4. Create entry points: `src/main.rs` for the binary, `src/lib.rs` for the library
+5. If the project has multiple binaries: create them in `src/bin/`
+6. If a directory nests deeper than 3 levels and it isn't necessary → run `/flatten-directory --mode code`
 
 ### 4. Configure Dependencies
 
-> Goal: เพิ่ม dependencies ที่จำเป็นสำหรับ CLI ใน `Cargo.toml`
+> Goal: Add the dependencies a CLI needs in `Cargo.toml`
 
-1. เพิ่ม CLI dependencies: `cargo add clap --features derive,env` (argument parsing), `serde` (serialization), `serde_json` (JSON)
-2. เพิ่ม logging: `tracing`, `tracing-subscriber`
-3. เพิ่ม error handling: `thiserror` (library), `anyhow` (application)
-4. เพิ่ม colored output: `colored` หรือ `nu-ansi-term`
-5. เพิ่ม progress indicators: `indicatif`
-6. เพิ่ม interactive prompts: `dialoguer` หรือ `inquire`
-7. เพิ่ม table output: `comfy-table` หรือ `prettytable-rs`
-8. ตั้งค่า `edition = "2024"` ใน `Cargo.toml`
+1. Add CLI dependencies: `cargo add clap --features derive,env` (argument parsing), `serde` (serialization), `serde_json` (JSON)
+2. Add logging: `tracing`, `tracing-subscriber`
+3. Add error handling: `thiserror` (library), `anyhow` (application)
+4. Add colored output: `colored` or `nu-ansi-term`
+5. Add progress indicators: `indicatif`
+6. Add interactive prompts: `dialoguer` or `inquire`
+7. Add table output: `comfy-table` or `prettytable-rs`
+8. Set `edition = "2024"` in `Cargo.toml`
 
 ### 5. Configure Build Profiles
 
-> Goal: ตั้งค่า build profiles สำหรับ development และ production
+> Goal: Configure build profiles for development and production
 
-1. ตั้งค่า `[profile.dev]` ด้วย `debug = "line-tables-only"` และ `incremental = true`
-2. ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
-3. ตั้งค่า `[profile.dev.package."*"]` ด้วย `debug = false` เพื่อ speed up deps compilation
+1. Set `[profile.dev]` with `debug = "line-tables-only"` and `incremental = true`
+2. Set `[profile.release]` with `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
+3. Set `[profile.dev.package."*"]` with `debug = false` to speed up deps compilation
 
 ### 6. Setup Scripts
 
-> Goal: สร้าง justfile สำหรับ development scripts ที่ใช้ซ้ำได้
+> Goal: Create a justfile for reusable development scripts
 
-1. เพิ่ม `dev` recipe: `cargo watch -x run`
-2. เพิ่ม `build` recipe: `cargo build --release`
-3. เพิ่ม `lint` recipe: `cargo clippy -- -D warnings && cargo fmt --check`
-4. เพิ่ม `test` recipe: `cargo nextest run && cargo test --doc`
-5. เพิ่ม `run` recipe: `cargo run --`
+1. Add a `dev` recipe: `cargo watch -x run`
+2. Add a `build` recipe: `cargo build --release`
+3. Add a `lint` recipe: `cargo clippy -- -D warnings && cargo fmt --check`
+4. Add a `test` recipe: `cargo nextest run && cargo test --doc`
+5. Add a `run` recipe: `cargo run --`
 
 ### 7. Development Workflow
 
-> Goal: ใช้ workflow ที่มี watch mode, lint และ format อัตโนมัติ
+> Goal: Use a workflow with watch mode, lint, and automatic formatting
 
-ใช้ development workflow ที่มีประสิทธิภาพ
+Use an efficient development workflow
 
-1. ใช้ `cargo watch -x run` สำหรับ development พร้อม watch mode
-2. ใช้ `cargo build --release` สำหรับ production build
-3. ใช้ `cargo clippy -- -D warnings` สำหรับ code quality checks
-4. ใช้ `cargo fmt` สำหรับ formatting
+1. Use `cargo watch -x run` for development with watch mode
+2. Use `cargo build --release` for production builds
+3. Use `cargo clippy -- -D warnings` for code quality checks
+4. Use `cargo fmt` for formatting
 
 ### 8. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Project Structure
 
-โครงสร้างต้องถูกต้อง
+The structure must be correct
 
-- แยก concerns: CLI parsing, business logic, output formatting, external I/O
-- เลือก architecture ตาม context โดยไม่บังคับ Clean หรือ Layered
-- ค่าเริ่มต้น CLI ทั่วไป: Command/Handler split ด้วย `src/cli/`, `src/commands/`, `src/services/`, `src/output.rs`, `src/config.rs`
-- ถ้ามีหลาย client (TTY/JSON/agent): Functional Core / Imperative Shell
-- ถ้ามีหลาย backend/IO ซับซ้อน: Hexagonal / Ports & Adapters
-- ใช้ flat modules (`foo.rs` + `foo/`) ตาม Rust 2018+ แทน `mod.rs` เมื่อเหมาะสม
-- ตั้งชื่อไฟล์ด้วย snake_case
-- ตั้งชื่อ types ด้วย PascalCase
+- Separate concerns: CLI parsing, business logic, output formatting, external I/O
+- Choose the architecture by context; don't force Clean or Layered
+- Default for a typical CLI: Command/Handler split with `src/cli/`, `src/commands/`, `src/services/`, `src/output.rs`, `src/config.rs`
+- With multiple clients (TTY/JSON/agent): Functional Core / Imperative Shell
+- With multiple backends/complex IO: Hexagonal / Ports & Adapters
+- Use flat modules (`foo.rs` + `foo/`) per Rust 2018+ instead of `mod.rs` when appropriate
+- Name files in snake_case
+- Name types in PascalCase
 
 ### 2. CLI Design
 
-ออกแบบ CLI ให้ใช้งานง่าย
+Design the CLI to be easy to use
 
-- ใช้ `clap` v4 สำหรับ argument parsing พร้อม derive macros
-- ใช้ subcommands สำหรับ complex CLIs
-- ใช้ `#[command(version, about)]` สำหรับ auto-generated help
-- ใช้ `clap::Parser` derive สำหรับ type-safe argument parsing
-- ใช้ `clap::Subcommand` สำหรับ subcommands
-- กำหนด `#[arg(short, long, value_name = "FILE")]` สำหรับ arguments
-- ใช้ `clap_complete` สำหรับ shell completions (bash, zsh, fish, powershell)
+- Use `clap` v4 for argument parsing with derive macros
+- Use subcommands for complex CLIs
+- Use `#[command(version, about)]` for auto-generated help
+- Use `clap::Parser` derive for type-safe argument parsing
+- Use `clap::Subcommand` for subcommands
+- Define `#[arg(short, long, value_name = "FILE")]` for arguments
+- Use `clap_complete` for shell completions (bash, zsh, fish, powershell)
 
 ### 3. Error Handling
 
-ใช้ error handling patterns ที่เหมาะสม
+Use the appropriate error handling patterns
 
-- ใช้ `thiserror` สำหรับ library errors
-- ใช้ `anyhow` สำหรับ application errors
-- กำหนด error types ชัดเจนด้วย `#[from]`
-- เพิ่ม context ด้วย `.context()`
-- ไม่ใช้ `unwrap()` ใน production code
-- ใช้ `?` แทน `unwrap()` หรือ `expect()`
+- Use `thiserror` for library errors
+- Use `anyhow` for application errors
+- Define error types clearly with `#[from]`
+- Add context with `.context()`
+- Never use `unwrap()` in production code
+- Use `?` instead of `unwrap()` or `expect()`
 
 ### 4. Output Formatting
 
-จัดรูปแบบ output ให้อ่านง่าย
+Format output to be readable
 
-- ใช้ `colored` หรือ `nu-ansi-term` สำหรับ terminal colors
-- ใช้ `indicatif` สำหรับ progress bars และ spinners
-- ใช้ `comfy-table` หรือ `prettytable-rs` สำหรับ table output
-- ใช้ `serde_json::to_string_pretty` สำหรับ JSON output
-- ใช้ `tracing` สำหรับ structured logging
-- ใช้ `dialoguer` หรือ `inquire` สำหรับ interactive prompts
+- Use `colored` or `nu-ansi-term` for terminal colors
+- Use `indicatif` for progress bars and spinners
+- Use `comfy-table` or `prettytable-rs` for table output
+- Use `serde_json::to_string_pretty` for JSON output
+- Use `tracing` for structured logging
+- Use `dialoguer` or `inquire` for interactive prompts
 
 ### 5. Build Configuration
 
-ตั้งค่า build tools อย่างเหมาะสม
+Configure build tools appropriately
 
-- ใช้ `edition = "2024"` ใน `Cargo.toml`
-- ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`
-- ตั้งค่า `rust-toolchain.toml` สำหรับ lock Rust version
-- ใช้ `cargo-watch` สำหรับ development watch mode
-- ใช้ `cargo-nextest` สำหรับ parallel test execution
+- Use `edition = "2024"` in `Cargo.toml`
+- Set `[profile.release]` with `lto = true`, `opt-level = "z"`, `strip = true`
+- Set `rust-toolchain.toml` to lock the Rust version
+- Use `cargo-watch` for development watch mode
+- Use `cargo-nextest` for parallel test execution
 
 ### 6. Development Workflow
 
-ใช้ scripts ที่มีประสิทธิภาพ
+Use efficient scripts
 
-- ใช้ `cargo watch` สำหรับ development watch mode
-- ใช้ `justfile` สำหรับ development scripts
-- รัน `cargo clippy` และ `cargo fmt` ก่อน commit
-- ใช้ `cargo nextest run` สำหรับ fast test execution
+- Use `cargo watch` for development watch mode
+- Use a `justfile` for development scripts
+- Run `cargo clippy` and `cargo fmt` before committing
+- Use `cargo nextest run` for fast test execution
 
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /follow-tool-cargo if needed
+- Use /rethink if needed
+- Use /deep-test cli if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- CLI project ที่มีโครงสร้างที่ดีและ maintainable
-- Architecture ที่เลือกเหมาะสมกับ context และบันทึกเหตุผล
-- Directory structure ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
-- Development workflow ที่มีประสิทธิภาพ
-- Type-safe CLI application พร้อมสำหรับ production
-- Zero-cost abstractions และ memory safety
-- Error handling ที่ robust
-- Output ที่อ่านง่ายพร้อม colors และ formatting
+- A CLI project with a good, maintainable structure
+- The chosen architecture fits the context and the reasons are recorded
+- Directory structure isn't nested too deeply (use `/flatten-directory` if needed)
+- An efficient development workflow
+- A type-safe CLI application ready for production
+- Zero-cost abstractions and memory safety
+- Robust error handling
+- Readable output with colors and formatting

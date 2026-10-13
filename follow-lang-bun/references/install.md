@@ -53,8 +53,8 @@ Canary builds upload crash reports automatically.
 
 ## PATH
 
-- macOS/Linux: add `export BUN_INSTALL="$HOME/.bun"` และ `export PATH="$BUN_INSTALL/bin:$PATH"` ไปยัง shell config
-- Windows: add `%USERPROFILE%\.bun\bin` ไปยัง `Path` environment variable
+- macOS/Linux: add `export BUN_INSTALL="$HOME/.bun"` and `export PATH="$BUN_INSTALL/bin:$PATH"` to your shell config
+- Windows: add `%USERPROFILE%\.bun\bin` to the `Path` environment variable
 
 ## Uninstall
 

@@ -1,6 +1,6 @@
 ---
 name: cleanup-worktree
-description: ลบ git worktree ที่ไม่ใช้ และ prune worktree tracking ที่ตกค้าง
+description: Remove unused git worktrees and prune stale worktree tracking metadata
 argument-hint: "[scope]"
 related:
   - suggest-next-action
@@ -11,86 +11,86 @@ related:
 
 ## Goal
 
-ลบ git worktree ที่ไม่ใช้งาน คืนพื้นที่ และลบ tracking ที่ตกค้างอย่างปลอดภัย
+Remove unused git worktrees, reclaim disk space, and safely prune leftover tracking metadata
 
 ## Scope
 
-ใช้สำหรับ git repository ที่มีหลาย worktrees ต้องการลบ worktree ทีไม่ต้องการ หรือ prune worktree ทีถูกลบไปแล้วแต่ยัง tracking อยู่
+Use for git repositories with multiple worktrees when you need to remove unwanted worktrees or prune worktrees that were deleted from disk but are still tracked
 
 ## Execute
 
 ### 1. List Worktrees
 
-> Goal: รู้ว่ามี worktree ใดบ้าง
+> Goal: Know which worktrees exist
 
-1. รัน `git worktree list`
-2. บันทึก path, branch, commit, และ status
-3. ระบุ worktree หลัก (main working directory)
-4. ระบุ worktree ทีอาจลบได้: ไม่มี uncommitted changes, ไม่ใช่ main
+1. Run `git worktree list`
+2. Record path, branch, commit, and status
+3. Identify the main worktree (main working directory)
+4. Identify removable worktrees: no uncommitted changes and not main
 
 ### 2. Check Worktree Status
 
-> Goal: ยืนยันว่า worktree ปลอดภัยที่จะลบ
+> Goal: Confirm the worktree is safe to remove
 
-1. cd เข้า worktree เป้าหมายแล้วรัน `git status --short`
-2. ถ้ามี uncommitted changes → report และหยุด ถ้า user ไม่ confirm
-3. ตรวจสอบว่า branch ของ worktree ไม่ได้ push สิ่งสำคัญ หรือถ้า push แล้ว branch ยังอยู่ใน remote
-4. ถ้ามีความเสี่ยง → ใช้ `/suggest-next-action`
+1. cd into the target worktree and run `git status --short`
+2. If there are uncommitted changes → report and stop unless the user confirms
+3. Check that the worktree's branch has no important unpushed work, or that if pushed, the branch still exists on the remote
+4. If there is any risk → use `/suggest-next-action`
 
 ### 3. Remove Worktree
 
-> Goal: ลบ worktree
+> Goal: Remove the worktree
 
-1. รัน `git worktree remove <path>`
-2. ถ้า worktree ถูกลบไปแล้วด้วยตรงจาก filesystem → ใช้ `git worktree remove <path>` หรือ `git worktree prune`
-3. ถ้ามี lock หรือ tracking ค้าง → ใช้ `git worktree unlock <path>` ก่อน
-4. ตรวจสอบ `git worktree list` อีกครั้ง
+1. Run `git worktree remove <path>`
+2. If the worktree was already deleted directly from the filesystem → use `git worktree remove <path>` or `git worktree prune`
+3. If it is locked or has leftover tracking → run `git worktree unlock <path>` first
+4. Verify `git worktree list` again
 
 ### 4. Prune Orphaned Tracking
 
-> Goal: ลบ tracking ที่ตกค้าง
+> Goal: Remove stale tracking metadata
 
-1. รัน `git worktree prune --dry-run` เพื่อดู worktree ทีจะถูก prune
-2. ถ้าเหมาะสม → รัน `git worktree prune`
-3. ตรวจสอบ `git worktree list` อีกครั้ง
+1. Run `git worktree prune --dry-run` to see which worktrees would be pruned
+2. If appropriate → run `git worktree prune`
+3. Verify `git worktree list` again
 
 ### 5. Verify And Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ใช้ `/report` แสดง: Path, Branch, Action, Status
-2. ยืนยันว่า main working directory ไม่ได้รับผลกระทบ
-3. ทำ `/suggest-next-action`
+1. Use `/report` showing: Path, Branch, Action, Status
+2. Confirm the main working directory is unaffected
+3. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่ลบ main working directory
-- ไม่ลบ worktree ที่มี uncommitted changes โดยไม่ได้ user confirmation
-- ไม่ลบ branch ใน remote โดยไม่ได้ instruction ชัดเจน
+- Never remove the main working directory
+- Never remove a worktree with uncommitted changes without user confirmation
+- Never remove a branch on the remote without a clear instruction
 
 ### 2. Force When Needed
 
-- ถ้า `git worktree remove <path>` ไม่ผ่าน → ใช้ `git worktree remove --force <path>` ด้วย confirmation
-- ใช้ `--force` สำหรับ worktree ที่มี uncommitted changes เท่านั้นเมื่อ user ยอมรับ
+- If `git worktree remove <path>` fails → use `git worktree remove --force <path>` with confirmation
+- Use `--force` only for worktrees with uncommitted changes when the user accepts
 
 ### 3. No Data Loss
 
-- ตรวจสอบ `git status` ใน worktree ก่อนลบ
-- ถ้ามี changes สำคัญ → แนะนำ commit, stash, หรือย้ายก่อน
-- ตรวจสอบว่า branch ยังมีอยู่ใน remote หรือ local หลังลบ
+- Check `git status` inside the worktree before removing
+- If there are important changes → recommend committing, stashing, or moving them first
+- Verify the branch still exists on the remote or locally after removal
 
 ### 4. Cleanup Scope
 
-- prune orphaned tracking ทั้งหมดที่ไม่มี worktree จริง
-- ไม่ prune worktree ที่ยังใช้งานอยู่
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Prune all orphaned tracking entries with no real worktree
+- Never prune worktrees that are still in use
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- worktree ที่ไม่ใช้ถูกลบ
-- tracking ที่ตกค้างถูก prune
-- main working directory ยังทำงานปกติ
-- รายงาน worktree ที่เหลืออยู่
+- Unused worktrees are removed
+- Stale tracking metadata is pruned
+- Main working directory keeps working normally
+- Report of the remaining worktrees

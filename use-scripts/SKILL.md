@@ -1,6 +1,6 @@
 ---
 name: use-scripts
-description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
+description: Create scripts to automate work with Bun, nushell, pwsh, or ast-grep
 argument-hint: "[target]"
 related:
   - use-bun-shell
@@ -19,92 +19,92 @@ related:
 
 ## Goal
 
-สร้าง scripts เพื่อ automate งานและประมวลผลไฟล์ ด้วย Bun native APIs, nushell, pwsh, หรือ ast-grep ตามความเหมาะสม
+Create scripts to automate work and process files with Bun native APIs, nushell, pwsh, or ast-grep as appropriate
 
 ## Scope
 
-ใช้สำหรับสร้าง scripts ใน workspace ด้วย Bun native APIs, nushell, pwsh, หรือ ast-grep — รวมการแก้ไขหลายไฟล์ผ่าน scripts (merged `/edit-with-use-scripts`, ดู `### 5. Edit Files Via Scripts`)
+Use for creating scripts in the workspace with Bun native APIs, nushell, pwsh, or ast-grep — including multi-file edits via scripts (merged `/edit-with-use-scripts`, see `### 5. Edit Files Via Scripts`)
 
 ## Execute
 
 ### 1. Choose Shell And Type
 
-> Goal: เลือก shell/script type ให้เหมาะสม
+> Goal: Choose the right shell/script type
 
-1. ค่าเริ่มต้น: ใช้ skill นี้ หรือ `/use-bun-shell` เมื่อ:
-   - ต้องการ Bun native APIs สำหรับ automate งาน
-   - ใช้ JS/TS scripts เป็นค่าเริ่มต้น
-   - ต้องการ JavaScript/TypeScript runtime
-   - ทำงานกับ JSON, HTTP, async/await, npm packages
-   - ต้องการ Bun native APIs เช่น `Bun.file`, `Bun.write`, `Bun.$`
-   - ต้องการ cross-platform scripts ด้วย JS/TS
-2. ใช้ `/use-nu-shell` เมื่อ:
-   - ต้องการ structured data pipelines
-   - อ่าน/ประมวลผล JSON, CSV, TOML, YAML ด้วย built-in commands
-   - ต้องการ cross-platform shell syntax ที่อ่านง่าย
-   - ไม่ต้องการ .NET หรือ Windows-only features
-3. ใช้ `/use-pwsh-shell` เมื่อ:
-   - ทำงานบน Windows โดยเฉพาะ system administration
-   - ต้องการ call .NET APIs, registry, WMI, COM
-   - ต้องการ verbose try-catch error handling
-4. ใช้ `ast-grep` เมื่อ:
-   - ต้องการ AST-based code search
-   - ต้องการ code transformation หรือ linting
-5. ถ้าไม่แน่ใจ → ใช้ Bun native APIs เป็นค่าเริ่มต้น แล้วระบุเหตุผลถ้าเปลี่ยนไป shell อื่น
+1. Default: use this skill or `/use-bun-shell` when:
+   - You need Bun native APIs to automate work
+   - JS/TS scripts are the default choice
+   - You need a JavaScript/TypeScript runtime
+   - Working with JSON, HTTP, async/await, npm packages
+   - You need Bun native APIs such as `Bun.file`, `Bun.write`, `Bun.$`
+   - You need cross-platform scripts in JS/TS
+2. Use `/use-nu-shell` when:
+   - You need structured data pipelines
+   - Reading/processing JSON, CSV, TOML, YAML with built-in commands
+   - You need readable cross-platform shell syntax
+   - You do not need .NET or Windows-only features
+3. Use `/use-pwsh-shell` when:
+   - Working on Windows, especially system administration
+   - You need to call .NET APIs, registry, WMI, COM
+   - You need verbose try-catch error handling
+4. Use `ast-grep` when:
+   - You need AST-based code search
+   - You need code transformation or linting
+5. If unsure → default to Bun native APIs, and state the reason if switching to another shell
 
 ### 2. Choose Script Location
 
-> Goal: เลือก location สำหรับ script
+> Goal: Choose the location for the script
 
-1. ทำ `/create-files-in-os-temp` เพื่อสร้างและจัดการ scripts ชั่วคราวใน OS temp directory (throwaway, ไม่สร้างใน project)
-2. `.devin/scripts/` — scripts ถาวร (committed, เก็บไว้ใช้ซ้ำ)
-3. ไม่สร้าง `temp/` หรือ `.devin/scripts/temp/` ใน project workspace
-4. ถ้าใช้ Bun native APIs โดยตรง → ใช้ `os.tmpdir()` หรือ `$env:TEMP` เฉพาะกรณีที skill ไม่เหมาะสม
+1. Run `/create-files-in-os-temp` to create and manage throwaway scripts in the OS temp directory (never created inside the project)
+2. `.devin/scripts/` — permanent scripts (committed, kept for reuse)
+3. Do not create `temp/` or `.devin/scripts/temp/` in the project workspace
+4. If using Bun native APIs directly → use `os.tmpdir()` or `$env:TEMP` only when the skill is not a fit
 
 ### 3. Create Script
 
-> Goal: เขียน script ตาม standards
+> Goal: Write the script to standards
 
-1. เขียนแบบ composable: `createScript()` return state + actions
-2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/use-bun-native-api`)
-3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
-4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
-5. ใช้ CDN imports สำหรับ external dependencies ที Bun native APIs ไม่ครอบคลุม: `https://esm.sh/<name>`
-6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (eta `4.6.0 (verified 2026-09-26)` — ดู `/follow-lib-esm-sh` สำหรับ CDN convention)
-7. ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ผ่าน `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser` (`0.149.0 (verified 2026-09-26)`)
-8. ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown` (`1.2.11 (verified 2026-09-26)`, ใช้ `oxc` parser เหมือนกัน)
-9. เพิ่ม `dryRun` option สำหรับ testing
+1. Write it composable: `createScript()` returns state + actions
+2. Use Bun native APIs for `.ts` scripts without Node.js libraries unless there is no alternative (see `/use-bun-shell`, `/use-bun-native-api`)
+3. Use `nu` for `.nu` scripts when processing structured data
+4. Use `pwsh` for `.ps1` scripts when Windows-specific
+5. Use CDN imports for external dependencies that Bun native APIs do not cover: `https://esm.sh/<name>`
+6. Use `eta` via `https://esm.sh/eta@4.6.0` for template/render in Bun scripts (eta `4.6.0 (verified 2026-09-26)` — see `/follow-lib-esm-sh` for the CDN convention)
+7. If you need fast JS/TS AST parsing → use `oxc-parser` via `https://esm.sh/oxc-parser` or `bun add oxc-parser` (`0.149.0 (verified 2026-09-26)`)
+8. If you need fast bundling → use `rolldown` per `/follow-tool-rolldown` (`1.2.11 (verified 2026-09-26)`, uses the same `oxc` parser)
+9. Add a `dryRun` option for testing
 
 ### 4. Test And Execute
 
-> Goal: ทดสอบและรัน script อย่างปลอดภัย
+> Goal: Test and run the script safely
 
-1. รัน script ใน dry run mode เพื่อดูผลลัพธ์
-2. แก้ไข errors ก่อนรันจริง
-3. รัน:
-   - `bun run <script>.ts` สำหรับ Bun scripts
-   - `nu <script>.nu` สำหรับ Nushell scripts
-   - `pwsh <script>.ps1` สำหรับ PowerShell scripts
-   - `ast-grep scan` สำหรับ AST operations
-4. ลบ scripts จาก OS temp หลังใช้งานเสร็จ หรือให้ `/create-files-in-os-temp` จัดการ cleanup
+1. Run the script in dry run mode to see the result
+2. Fix errors before the real run
+3. Run:
+   - `bun run <script>.ts` for Bun scripts
+   - `nu <script>.nu` for Nushell scripts
+   - `pwsh <script>.ps1` for PowerShell scripts
+   - `ast-grep scan` for AST operations
+4. Delete scripts from OS temp once done, or let `/create-files-in-os-temp` handle cleanup
 
 ### 5. Edit Files Via Scripts
 
-> Goal: แก้ไขหลายไฟล์ผ่าน script ที่ reproducible และ audit ได้ (merged `/edit-with-use-scripts`)
+> Goal: Edit multiple files through a reproducible, auditable script (merged `/edit-with-use-scripts`)
 
-ใช้เมื่อ task เป็นการแก้ไขไฟล์ที่ซับซ้อน ต้องแก้หลายไฟล์พร้อมกัน หรือต้องการ reproducibility และ audit trail — ไม่ใช่สำหรับไฟล์เดียวแบบ simple (`/edit-only`), config files (`/edit-manual`) หรือ AST-pattern edits (`/use-astgrep rewrite`)
+Use when the task is a complex file edit, several files must be changed at once, or you need reproducibility and an audit trail — not for simple single-file edits (`/edit-only`), config files (`/edit-manual`), or AST-pattern edits (`/use-astgrep rewrite`)
 
-1. Identify: รับรายการไฟล์ + changes จาก user — ทำ `/scan-codebase` หาไฟล์ที่เกี่ยวข้องและ patterns, วางแผน minimal changes ด้วย `/dont-over-engineer`
-2. Script requirements (บังคับทุกข้อ):
-   - dry run mode เป็น default — execute จริงเฉพาะหลัง preview + user confirm เท่านั้น
-   - backup mode: สำเนาไฟล์เดิมก่อนแก้
-   - validate โครงสร้างไฟล์หลังแก้ (JSON/YAML/TS syntax)
-   - report สรุป: ไฟล์ที่แก้, จำนวน changes, errors ถ้ามี
-   - เก็บใน OS temp เท่านั้น ห้าม commit เข้า repo
-3. AST edit logic ใน script → ใช้ ast-grep ผ่าน `Bun.$`/napi ตาม `/use-astgrep-programmatic` หรือ delegate ทั้ง flow ไป `/use-astgrep rewrite`
-4. Dry run → ตรวจ output → แก้ script → dry run ใหม่จนถูก → ขอ user confirmation → execute
-5. หลัง execute: ทำ `/run-verify` (lint/typecheck/scan) → fail แก้ด้วย `/resolve-errors` (max 3 ครั้ง → rollback จาก backup + report) → ทำ `/update-references`
-6. Cleanup: ลบ scripts จาก temp + ลบ backup หลัง validation ผ่านครบ — เก็บ script/output เป็น audit trail ถ้าจำเป็น
+1. Identify: take the file list + changes from the user — run `/scan-codebase` to find related files and patterns, plan minimal changes with `/dont-over-engineer`
+2. Script requirements (all mandatory):
+   - dry run mode by default — execute for real only after preview + user confirm
+   - backup mode: copy the original files before editing
+   - validate file structure after editing (JSON/YAML/TS syntax)
+   - summary report: files changed, number of changes, errors if any
+   - keep it in OS temp only, never commit into the repo
+3. AST edit logic in the script → use ast-grep via `Bun.$`/napi per `/use-astgrep-programmatic`, or delegate the whole flow to `/use-astgrep rewrite`
+4. Dry run → check output → fix the script → dry run again until correct → ask for user confirmation → execute
+5. After executing: run `/run-verify` (lint/typecheck/scan) → on failure fix with `/resolve-errors` (max 3 attempts → rollback from backup + report) → run `/update-references`
+6. Cleanup: delete scripts from temp + delete backups once all validation passes — keep the script/output as an audit trail if needed
 
 ## Rules
 
@@ -117,24 +117,24 @@ related:
 
 ### 2. File Locations
 
-- ทำ `/create-files-in-os-temp` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
+- Run `/create-files-in-os-temp` for throwaway scripts (OS temp directory, never inside the project)
 - `.devin/scripts/` — permanent scripts (committed)
-- ใช้ `.ts` สำหรับ Bun, `.nu` สำหรับ Nushell, `.ps1` สำหรับ PowerShell
+- Use `.ts` for Bun, `.nu` for Nushell, `.ps1` for PowerShell
 
 ### 3. Edit Scripts Safety
 
-- Script ที่แก้ไฟล์ต้องมี dry run mode เสมอก่อน execute จริง และต้องสร้าง backup ก่อนแก้
-- ถ้า validation ไม่ผ่าน → rollback จาก backup และ report
-- ห้าม execute จริงโดยไม่มี user confirmation หลัง dry run
-- Script ต้องให้ผลเหมือนเดิมเมื่อรันด้วย input เดิม — ไม่สร้าง side effects นอกจากการแก้ไฟล์ที่กำหนด
+- A file-editing script must always have a dry run mode before real execution and must create a backup before editing
+- If validation fails → roll back from the backup and report
+- Never execute for real without user confirmation after a dry run
+- The script must produce the same result when run with the same input — no side effects beyond the intended file edits
 
 ### 4. Bun Native API Preference
 
-- เมื่อใช้ Bun ให้ใช้ Bun native APIs เท่านั้นสำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก
-- `Bun.Glob` แทน `fast-glob`, `Bun.$` แทน `execa`, `Bun.file()` + `Bun.write()` แทน `fs-extra`
-- ไม่ import `node:fs` โดยตรงถ้า `Bun.file`/`Bun.write` ทำงานได้
-- ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ก่อน `acorn` หรือ `babel`
-- ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown`
+- When using Bun, use only Bun native APIs for `.ts` scripts without Node.js libraries unless there is no alternative
+- `Bun.Glob` instead of `fast-glob`, `Bun.$` instead of `execa`, `Bun.file()` + `Bun.write()` instead of `fs-extra`
+- Do not import `node:fs` directly if `Bun.file`/`Bun.write` can do the job
+- If you need fast JS/TS AST parsing → prefer `oxc-parser` over `acorn` or `babel`
+- If you need fast bundling → use `rolldown` per `/follow-tool-rolldown`
 
 ### 5. CDN Libraries
 
@@ -146,26 +146,26 @@ import { render } from "https://esm.sh/eta@4.6.0"
 
 - CLI: `zod`, `cac`, `consola`, `@clack/prompts`, `picocolors`
 - Parsing: `yaml`, `gray-matter`, `jsonc-parser`
-- JS/TS AST: `oxc-parser` สำหรับ parse/transform JS/TS ด้วยความเร็วสูง
-- Bundling: `rolldown` สำหรับ bundle ด้วย `oxc` parser (ดู `/follow-tool-rolldown`)
+- JS/TS AST: `oxc-parser` for fast JS/TS parsing/transformation
+- Bundling: `rolldown` for bundling with the `oxc` parser (see `/follow-tool-rolldown`)
 - File System: `pretty-bytes`, `env-paths`, `semver`
 - Async: `p-limit`, `p-queue`, `p-map`
-- Template: `eta` สำหรับ generate text/files จาก template
+- Template: `eta` for generating text/files from templates
 
 ### 6. Decision Records
 
-- ระบุเหตุผลทุกครั้งที่เลือก shell ใด shell หนึ่ง
-- บันทึกเหตุผลใน comment หรือ docstring ของ script
-- ถ้า fallback จาก shell หนึ่งไปอีก shell ต้องระบุเหตุผล
+- State the reason every time a particular shell is chosen
+- Record the reason in the script's comment or docstring
+- When falling back from one shell to another, state the reason
 
 ## Expected Outcome
 
-- Scripts ทำงานได้ด้วย Bun, nushell, pwsh, หรือ ast-grep
-- การเลือก shell มีเหตุผลชัดเจน
-- Dependencies ผ่าน CDN (ไม่ต้อง install)
-- สามารถใช้ `eta` สำหรับ template/render ใน Bun scripts
-- Scripts อยู่ใน location ถูกต้องตาม Rules
-- Temp scripts ใน `$env:TEMP` ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
-- Dry run mode สำหรับทดสอบก่อน execute จิง
-- สามารถใช้ /use-pwsh-shell /use-bun-shell /use-astgrep (programmatic workflow) ได้ ตามเหมาะสม
+- Scripts run successfully with Bun, nushell, pwsh, or ast-grep
+- Shell selection has clear reasons
+- Dependencies come via CDN (no install needed)
+- `eta` can be used for template/render in Bun scripts
+- Scripts are in the correct location per Rules
+- Temp scripts in `$env:TEMP` are deleted after use, permanent scripts are kept for reuse
+- Dry run mode for testing before real execution
+- /use-pwsh-shell /use-bun-shell /use-astgrep (programmatic workflow) can be used as appropriate
 

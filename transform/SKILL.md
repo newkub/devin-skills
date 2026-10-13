@@ -1,6 +1,6 @@
 ---
 name: transform
-description: Transformation dispatcher — เปลี่ยน code/data/config หลายจุดด้วย scripts, ast-grep หรือ converters ตามชนิดงาน
+description: Transformation dispatcher — apply scripted/AST conversions across code, data, config by job type
 argument-hint: "[target|pattern]"
 related:
   - use-scripts
@@ -17,60 +17,60 @@ related:
 
 ## Goal
 
-เลือก transformation path ที่ถูกต้องสำหรับงาน "เปลี่ยน X เป็น Y หลายจุด" — AST-based, script-based หรือ format conversion — ทุก path บังคับ dry-run/preview + confirm ก่อนเขียนจริง
+Pick the correct transformation path for "change X into Y at many places" jobs — AST-based, script-based, or format conversion — every path enforces dry-run/preview + confirm before real writes
 
 ## Scope
 
-- ครอบคลุมการ classify และ dispatch งาน transformation — mechanics อยู่ใน routed skills ไม่ duplicate
-- ไม่ครอบคลุม rename/move ไฟล์ (`/rename`, `/move-to`) หรือ refactor semantics (`/refactor`) — ใช้เป็น route เท่านั้น
+- Covers classifying and dispatching transformation work — mechanics live in the routed skills, no duplication
+- Does not cover file rename/move (`/rename`, `/move-to`) or refactor semantics (`/refactor`) — use them only as routes
 
 ## Execute
 
 ### 1. Classify Transformation
 
-> Goal: เลือก route ที่ตรงชนิดงาน
+> Goal: Pick the route that matches the job type
 
-| งาน | Route |
+| Job | Route |
 |-----|-------|
-| แก้ไขหลายไฟล์ผ่าน script — reproducible, audit trail | `/edit-with-use-scripts` → `/use-scripts` (`### Edit Files Via Scripts`) |
-| AST pattern rewrite หลายไฟล์ (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` |
+| Edit many files via a script — reproducible, audit trail | `/edit-with-use-scripts` → `/use-scripts` (`### Edit Files Via Scripts`) |
+| AST pattern rewrite across many files (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
-| migration ทั้ง codebase แบบ staged batches | `/use-astgrep migration` → `/migration-with-astgrep` |
-| format conversion (json↔yaml, cjs→esm, svg, scripts) | `/convert-files-format` หรือ `/convert` domain |
-| ไฟล์เดียว/จุดน้อยๆ ไม่ต้อง reproducible | `/edit-only` หรือ `/replace` |
-| config values ตาม defaults/overrides | `/edit-manual` + `/follow-default-config` |
+| whole-codebase migration in staged batches | `/use-astgrep migration` → `/migration-with-astgrep` |
+| format conversion (json↔yaml, cjs→esm, svg, scripts) | `/convert-files-format` or the `/convert` domain |
+| a single file / few spots, no need for reproducibility | `/edit-only` or `/replace` |
+| config values per defaults/overrides | `/edit-manual` + `/follow-default-config` |
 | semantic refactor (extract, rename symbols, architecture) | `/refactor` |
 
-1. ระบุ intent + target scope จาก argument
-2. ถ้าเข้าได้หลาย route → เลือก AST route เมื่อเป็น structural code change, script route เมื่อ logic ไม่ใช่ AST pattern, manual เมื่อจุดน้อย
-3. ถ้าไม่ชัด → ทำ `/ask-me`
+1. Determine intent + target scope from the argument
+2. If multiple routes fit → choose the AST route for structural code changes, the script route when the logic is not an AST pattern, and manual for a few spots
+3. If unclear → run `/ask-me`
 
 ### 2. Run Routed Skill
 
-> Goal: execute เต็ม workflow ของ route ที่เลือก
+> Goal: Execute the full workflow of the chosen route
 
-1. อ่าน SKILL.md ของ route แล้วทำตาม flow — ห้ามทำแบบย่อจากตารางนี้
-2. ทุก route ต้อง dry-run/preview + user confirm ก่อนเขียนจริง — ถ้า route ไม่ได้บังคับให้บังคับเอง
-3. เริ่ม scope แคบก่อนขยาย — fail fast ลด rework
+1. Read the route's SKILL.md and follow its flow — never do a shortened version from this table
+2. Every route must dry-run/preview + get user confirm before real writes — if the route does not enforce it, enforce it yourself
+3. Start with a narrow scope before widening — fail fast reduces rework
 
 ### 3. Verify And Update References
 
-> Goal: transformation ไม่พังและ references สอดคล้อง
+> Goal: The transformation does not break and references stay consistent
 
-1. Re-run pattern/check เดิม → 0 leftovers (ยกเว้น intentional)
-2. ทำ `/run-verify` — lint/typecheck/scan ผ่าน
-3. ถ้า rename/move ไฟล์หรือเปลี่ยน public API → ทำ `/edit-relative` + `/update-references`
-4. ทำ `/report` table: `No.`, `Target`, `Route`, `Changes`, `Status`
+1. Re-run the original pattern/check → 0 leftovers (except intentional)
+2. Run `/run-verify` — lint/typecheck/scan pass
+3. If files were renamed/moved or the public API changed → run `/edit-relative` + `/update-references`
+4. Run `/report` table: `No.`, `Target`, `Route`, `Changes`, `Status`
 
 ## Rules
 
-- ห้าม transform แบบเขียนทับทันที — dry-run/preview + confirm ก่อนเสมอทุก route
-- Transform = เปลี่ยนเนื้อหาในไฟล์ — ถ้างานคือย้าย/rename ไฟล์ → `/rename`, `/move-to`
-- ถ้า transformation ต้องรันซ้ำประจำ → promote เป็น rule (`/update-astgrep-rules`) หรือ permanent script (`.devin/scripts/`) ไม่ใช่ทำซ้ำมือ
-- ใช้ `/ask-me` ถ้าจำเป็น
+- Never transform with immediate overwrite — every route requires dry-run/preview + confirm first
+- Transform = changing content inside files — if the job is moving/renaming files → `/rename`, `/move-to`
+- If a transformation must run repeatedly → promote it to a rule (`/update-astgrep-rules`) or a permanent script (`.devin/scripts/`), not manual repetition
+- Use `/ask-me` if needed
 
 ## Expected Outcome
 
-- Transformation ถูก route ไป skill ที่ถูกต้องและ execute ครบ
-- ทุก write ผ่าน preview + confirm; verify ผ่าน; references อัปเดตครบ
-- Report ชัดเจน: route ที่ใช้, files changed, leftovers
+- The transformation is routed to the right skill and fully executed
+- Every write passes preview + confirm; verify passes; references fully updated
+- Clear report: route used, files changed, leftovers

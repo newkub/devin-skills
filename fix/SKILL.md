@@ -1,6 +1,6 @@
 ---
 name: fix
-description: แก้ไขปัญหาตาม context ทั่วไปด้วย root cause analysis และ validate
+description: Fix issues in any context via root cause analysis and validation
 argument-hint: "[scope]"
 related:
   - resolve-errors
@@ -16,91 +16,91 @@ related:
 
 ## Goal
 
-แก้ไขปัญหา, error หรือข้อบกพร่องตาม context ทั่วไป ด้วยการวิเคราะห์ root cause และแก้ไขอย่างปลอดภัย
+Fix problems, errors, or defects in any context through root cause analysis and safe correction
 
 ## Scope
 
-ใช้เมื่อพบ error หรือต้องการแก้ไขอะไรบางอย่าง โดยไม่จำกัด domain หรือ technology
+Use when an error is found or something needs fixing, regardless of domain or technology
 
 ## Execute
 
 ### 1. Understand Problem
 
-> Goal: เข้าใจปัญหาที่ต้องการแก้
+> Goal: understand the problem to be fixed
 
-1. รับ error, symptom, หรือ issue จาก user
-2. ถ้ามี stack trace หรือ logs → อ่านและสรุป
-3. ถ้าไม่ชัด → ทำ `/ask-me` ขอข้อมูลเพิ่ม
+1. Take the error, symptom, or issue from the user
+2. If there is a stack trace or logs → read and summarize them
+3. If unclear → run `/ask-me` to request more information
 
 ### 1.5 Choose Fix Mode
 
-> Goal: ตัดสินใจว่าจะ fix อย่างไร
+> Goal: decide how to fix
 
-1. ถ้า user พิมพ์ `fix` โดยไม่ระบุ scope หรือ `fix all` → แก้ทุก issue ทีพบใน context ปัจจุบัน
-2. ถ้ามีข้อเสนอจากการวิเคราะห์ก่อนหน้า → ทำ `/follow-your-suggestion`
-3. ถ้า user ระบุ scope เฉพาะ → แก้เฉพาะ scope นั้น
+1. If the user types `fix` without a scope or `fix all` → fix every issue found in the current context
+2. If earlier analysis produced suggestions → run `/follow-your-suggestion`
+3. If the user specifies a particular scope → fix only that scope
 
 ### 2. Analyze Context
 
-> Goal: หา root cause
+> Goal: find the root cause
 
-1. ทำ `/analyze-root-cause-analysis` ถ้าเป็นปัญหาซับซ้อน
-2. อ่านไฟล์และ config ทีเกี่ยวข้อง
-3. ใช้ `/scan-codebase` หา call sites และ consumers
-4. ระบุ root cause พร้อม evidence
+1. Run `/analyze-root-cause-analysis` for complex problems
+2. Read the related files and config
+3. Use `/scan-codebase` to find call sites and consumers
+4. Identify the root cause with evidence
 
 ### 3. Plan Fix
 
-> Goal: วางแผนการแก้ไข
+> Goal: plan the fix
 
-1. ระบุไฟล์ทีต้องแก้
-2. เลือก fix ที minimal และถูกต้อง
-3. ประเมิน impact
-4. ถ้าเสี่ยงสูง → ขอ user confirm ก่อน
+1. List the files that need changing
+2. Choose a minimal, correct fix
+3. Assess the impact
+4. If high-risk → ask the user to confirm first
 
 ### 4. Apply Fix
 
-> Goal: แก้ไขอย่างปลอดภัย
+> Goal: apply the fix safely
 
-1. สร้าง checkpoint ด้วย `git stash` หรือ branch
-2. แก้ไข code หรือ config ตาม plan
-3. ตรวจสอบว่าไม่แก้นอก scope
-4. ถ้าแก้หลายไฟล์ → ทำเป็นชุดเล็กๆ
+1. Create a checkpoint with `git stash` or a branch
+2. Change the code or config per the plan
+3. Check that nothing outside the scope was touched
+4. If many files change → work in small batches
 
 ### 5. Validate
 
-> Goal: ยืนยันว่า fix ถูกต้อง
+> Goal: confirm the fix is correct
 
-1. รัน `/run-check` (lint, typecheck, scan)
-2. รัน tests ถ้ามี
-3. ทำ `/deep-validate` สำหรับ project
-4. ถ้าไม่ผ่าน → ทำซ้ำขั้นตอน 2-4 (max 3 ครั้ง)
+1. Run `/run-check` (lint, typecheck, scan)
+2. Run tests if available
+3. Run `/deep-validate` for the project
+4. If it fails → repeat steps 2-4 (max 3 times)
 
 ### 6. Report
 
-> Goal: สรุปผล
+> Goal: summarize the result
 
-1. รายงานสิ่งทีแก้ไข
-2. ระบุ root cause และวิธี fix
-3. รายงาน validation result
-4. ถ้ายังไม่สำเร็จ → ระบุสิ่งค้าง
+1. Report what was fixed
+2. State the root cause and the fix approach
+3. Report the validation result
+4. If still unfinished → list what remains
 
 ## Rules
 
-- หา root cause ก่อนแก้ไข
-- ใช้ minimal fix
-- ไม่เดาสาเหตุถ้าไม่มี evidence
-- ทำ checkpoint ก่อนแก้
-- ไม่แก้ไขนอก scope ที่ตกลง
-- ถ้าค้างใช้ TODO → ระบุชัดเจนใน `TODO.md`
+- Find the root cause before fixing
+- Use a minimal fix
+- Never guess causes without evidence
+- Create a checkpoint before editing
+- Do not edit outside the agreed scope
+- If blocked with a TODO → state it clearly in `TODO.md`
 
-- ใช้ /follow-your-suggestion ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-until-pass ถ้าจำเป็น
+- Use /follow-your-suggestion if needed
+- Use /resolve-errors if needed
+- Use /run-test all if needed
+- Use /run-until-pass if needed
 
 ## Expected Outcome
 
-- ปัญหาถูกแก้ไข
-- Code ผ่าน validation
-- รายงาน root cause และวิธีแก้ไขชัดเจน
+- The problem is fixed
+- Code passes validation
+- Root cause and fix approach are clearly reported

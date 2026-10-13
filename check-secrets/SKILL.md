@@ -1,6 +1,6 @@
 ---
 name: check-secrets
-description: ตรวจ secrets hygiene — env vars, hardcoded values และ secrets leak ผ่าน workflows
+description: Check secrets hygiene — env vars, hardcoded values, and leaks via workflows
 argument-hint: "[domain]"
 related:
   - follow-secret-manager
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-Dispatch ไป workflow ตาม domain ของ secrets check — parent ทำ routing เท่านั้น
+Dispatch to a workflow by secrets-check domain — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if omitted → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -24,23 +24,23 @@ Dispatch ไป workflow ตาม domain ของ secrets check — parent ท
 
 | Domain | Workflow |
 |---|---|
-| `env-vars` | `workflows/env-vars/SKILL.md` — เทียบ `.env` vs `.env.example` vs code usage |
-| `hardcoded-values` | `workflows/hardcoded-values/SKILL.md` — ค่า hardcoded ที่ควรย้ายไป config/env |
-| `secrets-leak` | `workflows/secrets-leak/SKILL.md` — secrets หลุดใน code/config/history |
-| `report`, `inventory` | `workflows/report-inventory/SKILL.md` — secrets inventory report พร้อม redaction |
+| `env-vars` | `workflows/env-vars/SKILL.md` — compares `.env` vs `.env.example` vs code usage |
+| `hardcoded-values` | `workflows/hardcoded-values/SKILL.md` — hardcoded values that should move to config/env |
+| `secrets-leak` | `workflows/secrets-leak/SKILL.md` — secrets leaked in code/config/history |
+| `report`, `inventory` | `workflows/report-inventory/SKILL.md` — secrets inventory report with redaction |
 
-1. ระบุ domain จาก argument (เช่น `/check-secrets secrets-leak`)
-2. ถ้า domain รองรับ → ทำตาม `workflows/<domain>/SKILL.md` ทั้ง flow
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Resolve the domain from the argument (e.g. `/check-secrets secrets-leak`)
+2. If the domain is supported → follow `workflows/<domain>/SKILL.md` through the whole flow
+3. If the domain is missing or unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ workflow
-- secrets ที่พบห้าม echo ค่าจริง — report เฉพาะ location + type
+- The parent only dispatches — never duplicate a workflow's content
+- Never echo actual values of found secrets — report only location + type
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /follow-secret-manager if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป workflow ที่ตรง domain แล้วทำ secrets check ตาม flow นั้น
+- The caller is dispatched to the workflow matching the domain and runs the secrets check per that flow

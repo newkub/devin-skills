@@ -1,6 +1,6 @@
 # Bun Utilities APIs
 
-ใช้ Bun utility APIs สำหรับ common operations
+Use Bun utility APIs for common operations
 
 - `Bun.sleep()` / `Bun.sleepSync()` - Sleep for milliseconds
 - `Bun.nanoseconds()` - High-resolution timer (monotonic)

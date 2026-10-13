@@ -1,6 +1,6 @@
 ---
 name: test-integration
-description: รัน integration tests — module boundaries, DB, external service adapters, wiring ระหว่าง components
+description: Run integration tests — module boundaries, DB, external service adapters, wiring between components
 argument-hint: "[scope]"
 related:
   - run-test
@@ -16,41 +16,41 @@ related:
 
 ## Goal
 
-รัน integration tests — module boundaries, DB, external service adapters, wiring ระหว่าง components — signals: shared modules, DB clients, service adapters, `*.integration.test.*`, docker-compose test env
+Run integration tests — module boundaries, DB, external service adapters, wiring between components — signals: shared modules, DB clients, service adapters, `*.integration.test.*`, docker-compose test env
 
 ## Scope
 
-ใช้เมื่อต้องรัน integration tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test integration`)
+Use when running integration tests — run-only, does not modify tests (deep analysis → `/deep-test integration`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect
 
-`*.integration.test.*`, `tests/integration/`, testcontainers, compose files; dependencies ที่ต้องขึ้น (DB, cache, queue); runner scope (`bunx vitest run '*.integration.test.*'`, `pytest -m integration`, `go test -tags=integration ./...`); monorepo → scope workspace ที่มี shared/service modules
+`*.integration.test.*`, `tests/integration/`, testcontainers, compose files; the dependencies that must be up (DB, cache, queue); runner scope (`bunx vitest run '*.integration.test.*'`, `pytest -m integration`, `go test -tags=integration ./...`); monorepo → scope the workspaces that have shared/service modules
 
 ### 2. Run
 
-start dependencies (testcontainers auto-start หรือ compose up) → verify health ก่อนรัน; บันทึก per-test status, dependency logs ถ้า fail; teardown สะอาด ห้ามทิ้ง containers/ports ค้าง
+Start dependencies (testcontainers auto-start or compose up) → verify health before running; record per-test status, dependency logs if a test fails; clean teardown, never leave containers/ports dangling
 
 ### 3. Classify
 
-boundary/logic fail → source → `/resolve-errors`; fixture/seed ผิด, assertion outdated → test → `/update-tests`; dependency ไม่ขึ้น/port ชน/timeout → environment; shared-state interference → report + `/deep-review`; ซ้ำ ≥3 → stop+report
+Boundary/logic failure → source → `/resolve-errors`; wrong fixture/seed, outdated assertion → test → `/update-tests`; dependency won't start/port conflict/timeout → environment; shared-state interference → report + `/deep-review`; repeats ≥3 times → stop+report
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/integration-test-<time>.md`; ผ่านหมด → `/run-verify`
+persist → `.devin/temp/report/<workspace>/integration-test-<time>.md`; all pass → `/run-verify`
 
 ## Rules
 
-- run-only (analysis ลึก → `/deep-test integration`)
-- ห้าม mock ตัวที่เป็นจุดทดสอบ (เช่น DB ที่ตั้งใจใช้จริง)
-- tests isolate — seed ใหม่ต่อ test หรือ transaction rollback
-- ห้ามยิง external จริง — local/testcontainers เท่านั้น
+- run-only (deep analysis → `/deep-test integration`)
+- Never mock what is itself the point of the test (e.g. a DB intended to be used for real)
+- Tests isolated — fresh seed per test or transaction rollback
+- Never hit real externals — local/testcontainers only
 
 ## Expected Outcome
 
-- Integration tests รันครบพร้อม dependency lifecycle สะอาด
-- Failures ถูก classify เป็น source/test/environment
-- Report persist ใน `.devin/temp/report/`
+- Integration tests fully run with a clean dependency lifecycle
+- Failures classified as source/test/environment
+- Report persisted in `.devin/temp/report/`

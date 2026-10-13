@@ -1,6 +1,6 @@
 ---
 name: add-context-to-devin-global-skills
-description: รับ context จาก session หรือ user แล้วตัดสินใจเพิ่มลง global skill ทีมีอยู่ หรือสร้าง skill ใหม
+description: Capture context from a session or user, then add it to an existing global skill or create a new one
 argument-hint: "<context-or-prompt>"
 allowed-tools:
   - read
@@ -29,86 +29,86 @@ related:
 
 ## Goal
 
-รับ context จาก session, user prompt, หรือ learned information แล้วตัดสินใจว่าควรเพิ่มลง global skill ใด หรือสร้าง skill ใหม
+Take context from a session, a user prompt, or learned information, then decide which global skill to add it to or whether to create a new skill.
 
 ## Scope
 
-ใช้เมื่อ user ต้องการบันทึก context, ความรู้, pattern, workflow, หรือข้อมูลทีคุยกันล่าสุด ลงใน `%APPDATA%\devin\skills` โดยพยายามเพิ่มในทีมีอยู่ก่อน ถ้าไม่ได้ค่อยสร้างใหม
+Use when the user wants to save context, knowledge, patterns, workflows, or recently discussed information into `%APPDATA%\devin\skills`, preferring additions to existing skills and creating new ones only when nothing fits.
 
 ## Execute
 
 ### 1. Capture Context
 
-> Goal: รับและสรุป context ทีต้องการเพิ่ม
+> Goal: Capture and summarize the context to add
 
-1. ถ้ามี argument จาก user ให้ทำ `/list-devin-session` เพื่อดึง context จาก session แล้วทำ `/ask-me` ถาม user ว่าเหมายถึงอันไหน
-2. รับ input จาก user เช่น สรุป context, keyword, topic, prompt, หรือสรุปสิ่งทีคุยกัน
-3. ถ้า input เป้น link/URL ให้ fetch หรือ scrape เพื่อสรุป title และคำอธิบาย
-4. ถ้า input กว้างหรือไม่ชัด ให้ถาม user ว่าต้องการ save อะไร
-5. ถ้าไม่มี input ให้สรุป context ล่าสุดจาก session
+1. If the user passed an argument, run `/list-devin-session` to pull session context, then run `/ask-me` to ask which item they mean.
+2. Take input from the user, such as a context summary, keyword, topic, prompt, or a recap of what was discussed.
+3. If the input is a link/URL, fetch or scrape it to summarize the title and description.
+4. If the input is broad or unclear, ask the user what they want to save.
+5. If there is no input, summarize the latest context from the session.
 
 ### 2. List Existing Skills
 
-> Goal: หา skill ทีอาจเหมาะสม
+> Goal: Find skills that may be a good fit
 
-1. ทำ `/list-devin-global-skills` เพื่อดู skills ทีมี
-2. ทำ `/use-related-skills` เพื่อหา skills ทีเกี่ยวข้อง
-3. ใช้ `grep` ค้นหา skill ทีเกี่ยวข้องกับ context แบบ case-insensitive
-4. อ่าน skill ทีมีความเกี่ยวข้องสูง 2-4 ไฟล์
-5. ดู `description`, `scope`, `related` เพื่อประเมินความเหมาะสม
+1. Run `/list-devin-global-skills` to see the existing skills.
+2. Run `/use-related-skills` to find related skills.
+3. Use `grep` to search for skills related to the context, case-insensitively.
+4. Read the 2-4 most relevant skill files.
+5. Check `description`, `scope`, and `related` to judge the fit.
 
 ### 3. Decide Placement
 
-> Goal: ตัดสินใจวาง context ทีไหน
+> Goal: Decide where to place the context
 
-1. ถ้า context เป้น tool/library/framework → เน้น skill ทีชื่อตรง
-2. ถ้า context เป้นหัวข้อกว้าง/คู่มือ → อาจเพิ่ม `related` หรือ `references/`
-3. ถ้า context เป้น workflow/pattern → เพิ่มลง skill ทีมี domain ตรงกัน
-4. ถ้า context เป้น skill candidate ใหม → สร้าง skill ใหม
-5. ถ้า context ซ้ำกับ skill ทีมี → หยุดและบอก user
+1. If the context is about a tool/library/framework → target the skill with the matching name.
+2. If the context is a broad topic/guide → consider adding to `related` or `references/`.
+3. If the context is a workflow/pattern → add it to the skill with the matching domain.
+4. If the context is a new skill candidate → create a new skill.
+5. If the context duplicates an existing skill → stop and tell the user.
 
 ### 4. Add To Existing Skill
 
-> Goal: เพิ่ม context ลง skill ทีมีอยู่
+> Goal: Add the context to an existing skill
 
-1. เปิด `SKILL.md` ของ skill ทีเลือก
-2. เพิ่ม context ลงใน `related` ถ้าเป้นชื่อ skill อื่น
-3. เพิ่มลงใน `references/` หรือ `links` ถ้าเป้น URL/resource
-4. เพิ่ม bullet ใน `Execute` หรือ `Rules` ถ้าเป้นข้อกำหนด/ขั้นตอน
-5. ใช้ `edit` หรือ `write` อย่างระมัดระวัง ไม่ทำลาย frontmatter
-6. ตรวจ frontmatter ให้ถูกต้อง
+1. Open the chosen skill's `SKILL.md`.
+2. If the context is another skill's name, add it to `related`.
+3. If it is a URL/resource, add it to `references/` or `links`.
+4. If it is a requirement/step, add a bullet under `Execute` or `Rules`.
+5. Use `edit` or `write` carefully without breaking the frontmatter.
+6. Verify the frontmatter is correct.
 
 ### 5. Create New Skill
 
-> Goal: สร้าง skill ใหมถ้าไม่มีทีเหมาะ
+> Goal: Create a new skill when nothing fits
 
-1. ถ้า context ไม่เข้ากับ skill ใดเลย ให้ถาม user ว่าต้องการสร้างใหมหรือไม
-2. ถ้า context มาจาก session pattern ทำ `/idea-devin-global-skills-from-session`
-3. ถ้า user ตกลง ให้ใช้ `/new-skills` หรือ `/update-devin-global-skills`
-4. ตั้งชื่อ skill ให้ตรงกับ directory name และ `description` ≤ 100 ตัวอักษร
-5. ใส่ `related` ครบถ้วน
+1. If the context matches no skill at all, ask the user whether to create a new one.
+2. If the context comes from a session pattern, run `/idea-devin-global-skills-from-session`.
+3. If the user agrees, use `/new-skills` or `/update-devin-global-skills`.
+4. Name the skill to match its directory name and keep `description` ≤ 100 characters.
+5. Fill in `related` completely.
 
 ### 6. Verify
 
-> Goal: ตรวจสอบความถูกต้อง
+> Goal: Check correctness
 
-1. อ่าน skill ทีแก้ไขอีกครั้งเพื่อตรวจ reference
-2. ทำ `/review-devin-global-harness` เพื่อตรวจ `related` ซ้ำ/หาย
-3. ทำ `/review-devin-global-harness` ถ้าแก้หลาย skill
-4. ทำ `/update-references` ถ้ามีการสร้าง/ลบ/ย้าย skill
+1. Re-read the edited skill to check the references.
+2. Run `/review-devin-global-harness` to check for duplicate/missing `related` entries.
+3. Run `/review-devin-global-harness` if multiple skills were changed.
+4. Run `/update-references` if any skill was created/removed/moved.
 
 ## Rules
 
-- พยายามเพิ่ม context ใน skill ทีมีอยู่ก่อน ก่อนจะสร้างใหม
-- อย่าเพิ่ม reference ซ้ำ
-- อย่าแก้ `name` หรือ `description` ของ skill โดยไม่จำเป็น
-- ถ้า context เป้น secret/token ให้ปฏิเสธและบอกให้เก็บใน secret manager
-- ถ้า context เป้น URL ให้ fetch สรุปก่อนตัดสินใจ
-- ถ้าไม่แน่ใจให้ถาม user ก่อนแก้
-- ถ้าต้องสร้าง skill ใหม ให้ตรวจซ้ำก่อนสร้าง
+- Prefer adding context to existing skills before creating a new one.
+- Never add duplicate references.
+- Don't change a skill's `name` or `description` unless necessary.
+- If the context contains a secret/token, refuse and tell the user to store it in a secret manager.
+- If the context is a URL, fetch and summarize it before deciding.
+- When unsure, ask the user before making changes.
+- If a new skill must be created, double-check before creating it.
 
 ## Expected Outcome
 
-- Context ถูกเพิ่มลง skill ทีเหมาะสม
-- User ทราบว่า context อยู่ทีไหนและเหตุผล
-- ถ้าสร้าง skill ใหม ก็ต้องผ่าน conventions และ validation
+- The context is added to the appropriate skill.
+- The user knows where the context lives and why.
+- Any newly created skill passes conventions and validation.

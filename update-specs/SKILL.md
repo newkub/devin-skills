@@ -1,6 +1,6 @@
 ---
 name: update-specs
-description: สร้างหรืออัปเดต `<workspace>/specs/` สำหรับ test specs ตาม project type
+description: Create or update `<workspace>/specs/` test specs per project type
 argument-hint: "[scope]"
 related:
   - update-tests
@@ -15,110 +15,110 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `<workspace>/specs/` ให้เป็นที่เก็บ test specs ของ workspace ครอบคลุม test plan, overview, และ per-feature spec files
+Create or update `<workspace>/specs/` as the workspace's test spec store, covering the test plan, overview, and per-feature spec files
 
 ## Scope
 
-ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-tests`, `/update-project`, `/update-astgrep-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
+Use in any workspace, or invoke from `/update-tests`, `/update-project`, `/update-astgrep-rules` to sync test specs so they stay consistent with the code
 
 ## Execute
 
 ### 1. Detect Test Context
 
-> Goal: รวบรวม context ที่จำเป็นก่อนเขียน spec
+> Goal: Gather the necessary context before writing specs
 
-1. อ่าน package manifest (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) เพื่อหา test framework
-2. ตรวจ test config files (`vitest.config.*`, `jest.config.*`, `pytest.ini`, `nextest.toml`)
-3. สแกน `tests/` หรือ test directories ที่มีอยู่
-4. ระบุ coverage target, test types (unit, integration, e2e, etc.) จาก config หรือ context
+1. Read the package manifest (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) to find the test framework
+2. Check test config files (`vitest.config.*`, `jest.config.*`, `pytest.ini`, `nextest.toml`)
+3. Scan existing `tests/` or test directories
+4. Identify coverage target and test types (unit, integration, e2e, etc.) from config or context
 
 ### 2. Initialize Specs Directory
 
-> Goal: เตรียม `<workspace>/specs/`
+> Goal: Prepare `<workspace>/specs/`
 
-1. สร้าง `<workspace>/specs/` ถ้ายังไม่มี
-2. ตรวจสอบว่าไม่มี `spec/` directory ซ้ำ ถ้ามี → ย้ายหรือแจ้ง user ก่อนเปลี่ยน
-3. เตรียม structure: `specs/overview.md`, `specs/SPEC.md`, และ `specs/<feature>.md` ตาม modules
+1. Create `<workspace>/specs/` if it doesn't exist
+2. Ensure there's no duplicate `spec/` directory; if there is → move it or notify the user before changing
+3. Prepare the structure: `specs/overview.md`, `specs/SPEC.md`, and `specs/<feature>.md` per modules
 
 ### 3. Write Spec Files
 
-> Goal: เขียน spec files ใน `<workspace>/specs/`
+> Goal: Write spec files into `<workspace>/specs/`
 
-1. สร้าง/อัปเดต `specs/overview.md` ระบุ framework, coverage threshold, structure, และ test strategy
-2. แยก spec เป็นไฟล์ย่อยๆ ตาม modules/features ใน `specs/<module>.md`
-3. บันทึก test cases ทั้งหมดแบบกระชับ พร้อม status tracking (pending/written/covered)
-4. แต่ละ spec file ไม่เกิน 250 บรรทัด — ถ้าเกินให้ refactor แยกไฟล์
+1. Create/update `specs/overview.md` specifying framework, coverage threshold, structure, and test strategy
+2. Split specs into smaller files by modules/features in `specs/<module>.md`
+3. Record all test cases concisely with status tracking (pending/written/covered)
+4. Keep each spec file under 250 lines — if it exceeds that, refactor by splitting the file
 
 ### 4. Sync Specs With Tests
 
-> Goal: sync `specs/SPEC.md` กับ test cases ที่มีอยู่
+> Goal: Sync `specs/SPEC.md` with the existing test cases
 
-1. อ่าน test files ทั้งหมดใน `tests/`
-2. อัปเดต `specs/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่มี
-3. ระบุ gaps: test cases ที่มีใน spec แต่ยังไม่มี test, หรือ test ใหม่ที่ไม่อยู่ใน spec
-4. ถ้า fail → retry (max 3 → stop/report)
+1. Read all test files in `tests/`
+2. Update `specs/SPEC.md` or the test plan document with the existing test cases
+3. Identify gaps: test cases in the spec but with no test, or new tests not in the spec
+4. If it fails → retry (max 3 → stop/report)
 
 ### 5. Validate And Report
 
-> Goal: ตรวจสอบความสมบูรณ์ของ specs
+> Goal: Verify the completeness of the specs
 
-1. ทำ `/deep-validate` เพื่อตรวจ `specs/` ครบถ้วน
-2. ตรวจว่า `specs/overview.md` และ `specs/SPEC.md` มีอยู่
-3. ตรวจว่า spec files ไม่เกิน 250 บรรทัด
-4. ทำ `/report` สรุป spec files ที่สร้าง/อัปเดต, gaps, และ next actions
+1. Run `/deep-validate` to confirm `specs/` is complete
+2. Verify that `specs/overview.md` and `specs/SPEC.md` exist
+3. Verify that spec files stay under 250 lines
+4. Run `/report` to summarize the spec files created/updated, gaps, and next actions
 
 ## Rules
 
 ### 1. Location
 
-- specs ต้องอยู่ที่ `<workspace>/specs/` (root ของ workspace)
-- ไม่สร้าง `spec/` ซ้ำใน workspace ถ้ามี ให้เปลี่ยนเป็น `specs/` หรือถาม user ก่อนย้าย
-- ไม่สร้าง specs ภายใน `.devin/` หรือ `tests/`
+- Specs must live at `<workspace>/specs/` (workspace root)
+- Don't create a duplicate `spec/` in the workspace; if one exists, convert it to `specs/` or ask the user before moving
+- Don't create specs inside `.devin/` or `tests/`
 
 ### 2. Idempotency
 
-- รัน `/update-specs` ซ้ำได้โดยไม่ทำลาย spec ที่มีอยู่
-- อัปเดตเท่าที่จำเป็น ไม่ overwrite เนื้อหาทั้งหมด
+- `/update-specs` can be re-run without destroying existing specs
+- Update only what's necessary; don't overwrite all content
 
 ### 3. Single Responsibility
 
-- แต่ละ spec file ครอบคลุม module/feature เดียว
-- ไม่รวม implementation details หรือ test code ลงใน spec
+- Each spec file covers a single module/feature
+- Don't include implementation details or test code in the spec
 
 ### 4. Quality
 
-- ใช้ `/deep-review` เพื่อตรวจคุณภาพเนื้อหา
-- ใช้ backticks สำหรับ `commands`, `paths`, `skill names`
-- ภาษา: ไทย/อังกฤษ ตาม project convention
+- Use `/deep-review` to check content quality
+- Use backticks for `commands`, `paths`, `skill names`
+- Language: Thai/English per project convention
 
 ### 5. Conditionality
 
-- ถ้า workspace ไม่มี test framework → สร้าง `specs/overview.md` ระบุ recommended test strategy
-- ถ้างานเช็ค/verify → focus ที่ sync `specs/SPEC.md`
+- If the workspace has no test framework → create `specs/overview.md` specifying a recommended test strategy
+- For check/verify work → focus on syncing `specs/SPEC.md`
 
-- ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /deep-test coverage ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /update-tests if needed
+- Use /deep-test coverage if needed
+- Use /check-reference if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- `<workspace>/specs/` ถูกสร้าง/อัปเดต
-- `specs/overview.md` ครอบคลุม framework, coverage threshold, structure
-- `specs/SPEC.md` หรือ test plan sync กับ test files
-- spec files ตาม module/feature ไม่เกิน 250 บรรทัด
-- ผ่าน `/deep-validate`
-- รายงาน spec files ที่สร้าง/อัปเดต, gaps, next actions
+- `<workspace>/specs/` is created/updated
+- `specs/overview.md` covers framework, coverage threshold, structure
+- `specs/SPEC.md` or the test plan is synced with test files
+- Spec files per module/feature stay under 250 lines
+- Passes `/deep-validate`
+- Reports the spec files created/updated, gaps, and next actions
 
 ## Common Mistakes
 
-- สร้าง spec ใน `spec/` แทน `specs/`
-- รวมหลาย module ในไฟล์เดียวจนเกิน 250 บรรทัด
-- ลืม sync `specs/SPEC.md` กับ test files จริง
+- Creating specs in `spec/` instead of `specs/`
+- Combining several modules in one file until it exceeds 250 lines
+- Forgetting to sync `specs/SPEC.md` with the actual test files
 
 ## Anti-Patterns
 
-- สร้าง spec ไว้ใน `.devin/`
-- copy test code ลง spec
-- ไม่ตรวจสอบว่ามี `spec/` directory อยู่ก่อน
+- Creating specs inside `.devin/`
+- Copying test code into the spec
+- Not checking for an existing `spec/` directory first

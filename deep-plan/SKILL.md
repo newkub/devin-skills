@@ -8,25 +8,25 @@ related:
 
 ## Goal
 
-Alias ของ `/create-plan-in-dot-devin` — analyze + plan ที่ persist ลง `.devin/temp/plan/<workspace>/` (merged เข้า canonical แล้ว — `deep-plan` เป็น stub ไม่มี workflow ของตัวเอง)
+Alias of `/create-plan-in-dot-devin` — analyze + plan persisted to `.devin/temp/plan/<workspace>/` (already merged into the canonical — `deep-plan` is a stub with no workflow of its own)
 
 ## Scope
 
-ใช้เมื่อ user หรือ skill อื่นเรียก `/deep-plan` — workflow จริงอยู่ใน `create-plan-in-dot-devin`
+Use when the user or another skill invokes `/deep-plan` — the real workflow lives in `create-plan-in-dot-devin`
 
-- Default: forward เต็ม workflow (สร้าง plan file)
-- Caller ที่ต้องการ chat-only (เช่น `/bench-competitors`) → forward แบบระบุ `chat-only` เพื่อข้าม Steps 6-8
+- Default: forward the full workflow (create the plan file)
+- A caller that wants chat-only (e.g. `/bench-competitors`) → forward with an explicit `chat-only` to skip Steps 6-8
 
 ## Execute
 
-ทำ `/create-plan-in-dot-devin` เต็ม workflow — ส่งต่อ `<scope>` และ `chat-only` hint ตามที่ caller ระบุ
+Run the full `/create-plan-in-dot-devin` workflow — pass through `<scope>` and the `chat-only` hint as the caller specifies
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/create-plan-in-dot-devin` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `create-plan-in-dot-devin/SKILL.md` เสมอ
-- Chat-only caller ต้องส่ง hint ต่อเสมอ — ห้ามสร้างไฟล์ plan เองในไฟล์นี้
+- Never duplicate the `/create-plan-in-dot-devin` workflow in this file
+- If the alias is missing steps → always read `create-plan-in-dot-devin/SKILL.md`
+- A chat-only caller must always pass the hint through — never create the plan file itself in this file
 
 ## Expected Outcome
 
-- `/create-plan-in-dot-devin` ถูก execute ครบทุก step จนได้ implementation-ready plan
+- `/create-plan-in-dot-devin` is executed through every step until an implementation-ready plan is produced

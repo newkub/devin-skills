@@ -1,6 +1,6 @@
 ---
 name: run-program
-description: รันโปรแกรมหลักและทำให้ทำงานได้จริง
+description: Run the main program and make it actually work
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -10,91 +10,91 @@ related:
 
 ## Goal
 
-รันโปรแกรมหลักและทำให้ทำงานได้จริง
+Run the main program and make it actually work
 
 ## Scope
 
-รันโปรแกรมหลักของโปรเจกต์และทำให้ทำงานได้จริง พร้อมแก้ไขปัญหาที่พบ
+Run the project's main program and make it actually work, fixing any issues found
 
-ใช้สำหรับ:
+Use for:
 
-- รัน CLI programs
-- รัน web applications
-- รัน background services
-- ตรวจสอบโปรแกรมทำงานได้ถูกต้อง
+- Running CLI programs
+- Running web applications
+- Running background services
+- Verifying the program works correctly
 
-- ดูเพิ่มเติม: /deep-review
+- See also: /deep-review
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (program)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (program)
 
 ### 1. Prepare
 
-> Goal: เตรียม dependencies, build, และ environment ก่อนรัน
+> Goal: Prepare dependencies, build, and environment before running
 
-1. รัน `/run-install` เพื่อติดตั้ง dependencies
-2. รัน `/run-build` ถ้าต้อง build
-3. ตรวจสอบ entry file มีอยู่
-4. ตั้งค่า environment variables ทีจำเป็น
+1. Run `/run-install` to install dependencies
+2. Run `/run-build` if a build is needed
+3. Verify the entry file exists
+4. Set the required environment variables
 
 ### 2. Execute
 
-> Goal: รันโปรแกรมหลัก
+> Goal: Run the main program
 
-1. เลือก command ตาม project type:
-   - Node/Bun: `bun run start` หรือ `bun src/index.ts`
+1. Choose the command based on project type:
+   - Node/Bun: `bun run start` or `bun src/index.ts`
    - Rust: `cargo run`
-   - Binary: รัน executable โดยตรง
-2. ส่ง arguments ถ้ามี
-3. บันทึก PID ถ้าเป็น background
+   - Binary: run the executable directly
+2. Pass arguments if any
+3. Record the PID if it is a background process
 
 ### 3. Monitor
 
-> Goal: ติดตาม output และ verify ฟังก์ชัน
+> Goal: Watch the output and verify functionality
 
-1. ติดตาม stdout/stderr และ logs
-2. ระบุ errors/warnings
-3. ทดสอบว่าโปรแกรมทำงานถูกต้อง
-4. ตรวจสอบ side effects
+1. Watch stdout/stderr and logs
+2. Identify errors/warnings
+3. Test that the program works correctly
+4. Check side effects
 
 ### 4. Fix Issues
 
-> Goal: แก้ไขปัญหาที่พบ
+> Goal: Fix the issues found
 
-1. อ่าน error messages และระบุ root cause
-2. จัดลำดับความสำคัญ
-3. แก้ไข code ที่เป็นปัญหา
-4. รัน `/deep-review` ถ้าจำเป็น
-5. rebuild และรันใหม่
+1. Read the error messages and identify the root cause
+2. Prioritize
+3. Fix the problematic code
+4. Run `/deep-review` if needed
+5. Rebuild and rerun
 
 ## Rules
 
 ### 1. Program Types
 
-| Type | การรัน |
+| Type | How to run |
 |------|---------|
-| Node/Bun | `bun run start` หรือ `bun src/index.ts` |
+| Node/Bun | `bun run start` or `bun src/index.ts` |
 | Rust | `cargo run` |
-| Binary | รัน executable โดยตรง |
+| Binary | Run the executable directly |
 
 ### 2. Error Handling
 
-| กรณี | การจัดการ |
+| Case | Handling |
 |------|-----------|
-| Compile error | แก้ไข code และ rebuild |
-| Runtime error | debug และ fix |
-| Missing deps | ติดตั้ง dependencies |
-| Config error | แก้ไข configuration |
+| Compile error | Fix the code and rebuild |
+| Runtime error | Debug and fix |
+| Missing deps | Install dependencies |
+| Config error | Fix the configuration |
 
 ### 3. Safety
 
-- ไม่รันโปรแกรมที่ติดตั้ง dependencies ไม่ครบ
-- ไม่ฝัง secrets ใน command arguments
-- บันทึก logs ก่อนปิดโปรแกรม
+- Do not run a program with incomplete dependencies
+- Do not embed secrets in command arguments
+- Save logs before closing the program
 
 ## Expected Outcome
 
-- โปรแกรมรันสำเร็จ
-- ทำงานได้ตาม expected
-- ไม่มี errors ที่ block
+- The program runs successfully
+- It works as expected
+- There are no blocking errors

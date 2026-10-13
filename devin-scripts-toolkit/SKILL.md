@@ -1,6 +1,6 @@
 ---
 name: devin-scripts-toolkit
-description: รวม PowerShell scripts สำหรับ check, review, setup, build, deploy ใช้ได้ทั่ว skills และ projects
+description: PowerShell scripts for check, review, setup, build, and deploy, reusable across skills and projects
 argument-hint: "[scope]"
 related:
   - devin-templates-toolkit
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-รวม PowerShell scripts ทีใช้ซ้ำได้ทั่ว devin skills ecosystem และ projects
+Collect reusable PowerShell scripts across the devin skills ecosystem and projects
 
 ## Scope
 
@@ -20,62 +20,62 @@ related:
 - Project health check scripts
 - Build/test/run scripts
 - Setup/deployment helper scripts (e.g. `/setup-cicd`)
-- ใช้ร่วมกับ `/follow-create-web` เพื่อ setup project
+- Use together with `/follow-create-web` to set up a project
 
 ## Execute
 
 ### 1. Validate Skills
 
-> Goal: ตรวจ skills repo
+> Goal: check the skills repo
 
-1. รัน `scripts/devin-skills-audit.ps1`
-2. รัน `scripts/check-skills-mentions.ps1 -FilterSkill <skill>`
-3. รัน `scripts/check-skills-references.ps1`
+1. Run `scripts/devin-skills-audit.ps1`
+2. Run `scripts/check-skills-mentions.ps1 -FilterSkill <skill>`
+3. Run `scripts/check-skills-references.ps1`
 
 ### 2. Validate Project
 
-> Goal: ตรวจ project tech stack, config, quality
+> Goal: check the project tech stack, config, and quality
 
-1. รัน `scripts/check-techstack.ps1 -ProjectDir <path>`
-2. รัน `scripts/check-config-files.ps1 -ProjectDir <path>`
-3. รัน `scripts/check-broken-references.ps1 -ProjectDir <path>`
-4. รัน `scripts/check-naming-conventions.ps1 -ProjectDir <path>`
-5. รัน `scripts/check-quality.ps1 -ProjectDir <path>`
+1. Run `scripts/check-techstack.ps1 -ProjectDir <path>`
+2. Run `scripts/check-config-files.ps1 -ProjectDir <path>`
+3. Run `scripts/check-broken-references.ps1 -ProjectDir <path>`
+4. Run `scripts/check-naming-conventions.ps1 -ProjectDir <path>`
+5. Run `scripts/check-quality.ps1 -ProjectDir <path>`
 
 ### 3. Fix Skill Names
 
-> Goal: แก้ชื่อ skill ให้ตรง directory
+> Goal: fix skill names to match their directories
 
-1. รัน `scripts/fix-skill-names.ps1 -WhatIf`
-2. ถ้าถูกต้อง รัน `scripts/fix-skill-names.ps1`
+1. Run `scripts/fix-skill-names.ps1 -WhatIf`
+2. If correct, run `scripts/fix-skill-names.ps1`
 
 ## Scripts
 
-| Script | ใช้ทำอะไร |
+| Script | Purpose |
 |--------|-----------|
-| `devin-skills-audit.ps1` | รวม check frontmatter, references, mentions, line-count |
-| `check-skills-frontmatter.ps1` | ตรวจ frontmatter |
-| `check-skills-references.ps1` | ตรวจ related references |
-| `check-skills-mentions.ps1` | ตรวจ related ใน content |
-| `check-skills-line-count.ps1` | ตรวจ SKILL.md <= 250 บรรทัด |
-| `check-techstack.ps1` | ตรวจ package.json/Cargo.toml |
-| `check-config-files.ps1` | ตรวจ config files |
-| `check-broken-references.ps1` | ตรวจ broken skill references |
-| `check-naming-conventions.ps1` | ตรวจ naming |
-| `check-quality.ps1` | รัน lint, typecheck, build |
-| `fix-skill-names.ps1` | แก้ name ให้ตรง directory |
-| `list-skills.ps1` | list skills |
+| `devin-skills-audit.ps1` | Combined check of frontmatter, references, mentions, line-count |
+| `check-skills-frontmatter.ps1` | Check frontmatter |
+| `check-skills-references.ps1` | Check related references |
+| `check-skills-mentions.ps1` | Check related mentions in content |
+| `check-skills-line-count.ps1` | Check SKILL.md <= 250 lines |
+| `check-techstack.ps1` | Check package.json/Cargo.toml |
+| `check-config-files.ps1` | Check config files |
+| `check-broken-references.ps1` | Check broken skill references |
+| `check-naming-conventions.ps1` | Check naming |
+| `check-quality.ps1` | Run lint, typecheck, build |
+| `fix-skill-names.ps1` | Fix names to match directories |
+| `list-skills.ps1` | List skills |
 
 ## Rules
 
-- ใช้ scripts นี้ก่อน `/ship-to-dev-branch`
-- ใช้ `/devin-templates-toolkit` สำหรับ templates
-- ไม่ hardcode paths ใน scripts
-- ใช้ `Write-Host` สีเขียวสำหรับ OK, เหลืองสำหรับ warning, แดงสำหรับ error
+- Run these scripts before `/ship-to-dev-branch`
+- Use `/devin-templates-toolkit` for templates
+- Do not hardcode paths in scripts
+- Use `Write-Host` with green for OK, yellow for warning, red for error
 
 ## Expected Outcome
 
-- ตรวจ skills และ project ได้เร็ว
-- ลด manual review
-- มี scripts reusable ทั่ว ecosystem
+- Fast checks for skills and projects
+- Less manual review
+- Reusable scripts across the ecosystem
 

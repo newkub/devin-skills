@@ -1,10 +1,10 @@
 # Remotion Packages
 
-Dependencies ของ `/edit-video-with-remotion` — ข้อมูลจาก official docs (remotion.dev) และ repo `remotion-dev/remotion`, verified v4.0.520 (Sep 2026)
+Dependencies of `/edit-video-with-remotion` — from official docs (remotion.dev) and the `remotion-dev/remotion` repo, verified v4.0.520 (Sep 2026)
 
 ## Install
 
-ติดตั้งผ่าน Remotion CLI เพื่อ sync version กับ core อัตโนมัติ:
+Install via the Remotion CLI to auto-sync versions with core:
 
 ```bash
 bunx remotion add @remotion/media @remotion/transitions @remotion/captions @remotion/gif
@@ -27,11 +27,11 @@ bunx remotion add @remotion/media @remotion/transitions @remotion/captions @remo
 
 | No. | Tag | Engine | Frame-perfect | Render speed | Note |
 |-----|-----|--------|---------------|--------------|------|
-| 1 | `<Video>` `@remotion/media` | Mediabunny/WebCodecs | yes | fastest | default สำหรับ new code — partial asset download, client-side render ได้ |
-| 2 | `<OffthreadVideo>` `remotion` | Rust + FFmpeg | yes | fast | fallback เมื่อ codec/container ไม่รองรับ (AV1, H.265, ProRes, .avi, .flv) |
-| 3 | `<Html5Video>` `remotion` | HTML5 tag | no | medium | legacy — preview เท่านั้น, ไม่ frame-perfect |
+| 1 | `<Video>` `@remotion/media` | Mediabunny/WebCodecs | yes | fastest | default for new code — partial asset download, client-side render supported |
+| 2 | `<OffthreadVideo>` `remotion` | Rust + FFmpeg | yes | fast | fallback when a codec/container is unsupported (AV1, H.265, ProRes, .avi, .flv) |
+| 3 | `<Html5Video>` `remotion` | HTML5 tag | no | medium | legacy — preview only, not frame-perfect |
 
-Pattern preview/render แยก tag (ถ้าจำเป็น):
+Separate preview/render tags (when needed):
 
 ```tsx
 const env = useRemotionEnvironment();
@@ -41,7 +41,7 @@ return env.isRendering ? <Video {...props} /> : <OffthreadVideo {...props} />;
 ## Key API Signatures
 
 ```tsx
-// trim (หน่วย frames — ไม่ re-encode)
+// trim (in frames — no re-encode)
 <Video src={staticFile('in.mp4')} trimBefore={5 * fps} trimAfter={10 * fps} />
 
 // transitions
@@ -65,4 +65,4 @@ bunx remotion studio                          # preview
 bunx remotion render <CompId> out/video.mp4   # render (--codec, --concurrency, --props, --image-format, --every-nth-frame)
 ```
 
-Config defaults ใน `remotion.config.ts`: `Config.setConcurrency(8)`, `Config.setCodec('h265')`, `Config.setPixelFormat('yuv444p')`
+Config defaults in `remotion.config.ts`: `Config.setConcurrency(8)`, `Config.setCodec('h265')`, `Config.setPixelFormat('yuv444p')`

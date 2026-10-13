@@ -1,6 +1,6 @@
 ---
 name: check-my-global-cli
-description: รายงาน CLI tools ในเครื่องและ commands เพื่อประเมินแปลงเป้น devin skills
+description: Report installed CLI tools and commands to assess converting them into devin skills
 argument-hint: "[scope]"
 related:
   - learn
@@ -14,93 +14,93 @@ related:
 
 ## Goal
 
-รายงาน CLI tools ที่ติดตั้งในเครื่องและ commands ที่มี เพื่อประเมินความเหมาะสมในการแปลงเป็น devin skills
+Report the CLI tools installed on the machine and their commands to assess how suitable they are for conversion into devin skills.
 
 ## Scope
 
-ใช้สำหรับสำรวจ installed CLI tools จาก `mise`, `scoop`, `winget`, `bun` และรายงาน commands ที่มี ครอบคลุม:
+Use to survey installed CLI tools from `mise`, `scoop`, `winget`, and `bun` and report their commands, covering:
 
-- รายการ tools ที่ติดตั้ง
-- commands, subcommands, options ของแต่ละ tool
-- ความถี่ในการใช้งานและความซับซ้อน
-- ความเหมาะสมในการแปลงเป็น skills
+- List of installed tools
+- Commands, subcommands, and options of each tool
+- Usage frequency and complexity
+- Suitability for conversion into skills
 
 ## Execute
 
 ### 1. Discover Installed CLI Tools
 
-> Goal: หา CLI tools ที่ติดตั้งทั้งหมด
+> Goal: Find all installed CLI tools
 
-1. เช็ค tools ที่ติดตั้งด้วย `mise list`, `scoop list`, `winget list`, `bun --version`
-2. รวบรวมรายการ tools เป็นตาราง (tool, version, manager)
-3. เทียบกับ `references/tool-map.md` — ถ้าพบ tool ที่ติดตั้งแต่ไม่มีใน map ให้เพิ่มแถว action→tool→install→skill
+1. Check installed tools with `mise list`, `scoop list`, `winget list`, `bun --version`
+2. Compile the tool list into a table (tool, version, manager)
+3. Compare against `references/tool-map.md` — if an installed tool is missing from the map, add an action→tool→install→skill row
 
 ### 2. Learn Commands
 
-> Goal: สำรวจ commands และ options ของแต่ละ tool
+> Goal: Explore each tool's commands and options
 
-1. ทำ `/learn-from-cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
-2. บันทึก commands, flags, argument types และ exit codes
+1. Run `/learn-from-cli` for each tool to see its subcommands, options, and output
+2. Record commands, flags, argument types, and exit codes
 
 ### 3. Evaluate Conversion Candidates
 
-> Goal: ประเมินว่า command ไหนเหมาะแปลงเป็น skill
+> Goal: Assess which commands are worth converting into skills
 
-1. ระบุ criteria:
-   - ใช้บ่อยหรือมี pattern ซ้ำ
-   - มี options/flags มากพอที่ต้องมี guideline
-   - ใช้งานซับซ้อนจนควรมี skill คอยช่วย
-   - มี project หลาย workspace ที่ใช้ร่วมกัน
-2. จัดลำดับ commands ตาม priority: High, Medium, Low
-3. ทำ `/report` เพื่อสรุป candidates
+1. Define the criteria:
+   - Used often or has a repeating pattern
+   - Has enough options/flags to warrant a guideline
+   - Complex enough that a skill should assist
+   - Shared across multiple projects or workspaces
+2. Rank commands by priority: High, Medium, Low
+3. Run `/report` to summarize the candidates
 
 ### 4. Suggest Next Action
 
-> Goal: นำเสนอทิศทางถัดไป
+> Goal: Present the next direction
 
-1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
-2. ถ้าข้อมูลไม่พอ → ทำ `/learn-from-cli` เพิ่มเติม หรือ `/check-my-global-cli` อีกรอบ
-3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
+1. If there are High priority commands → run `/idea-convert-my-global-cli-to-skills` to start converting
+2. If information is insufficient → run `/learn-from-cli` further, or re-run `/check-my-global-cli`
+3. If there are no candidates → run `/suggest-next-action` to find another direction
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (my global cli)
+> Goal: Make the report easy to read, put key findings up top, and lead to action (my global cli)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (my global cli)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (my global cli)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (my global cli)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings above the details (my global cli)
+2. Use `/report` for multi-column comparison tables (my global cli)
+3. Use `/report` for status/progress/logs reports
+4. Use a "No." column first, ordered 1, 2, 3, ..., with clear headers, grouped/ordered by importance (my global cli)
+5. Use the ✅ ❌ ⚠️ symbols for status indicators
+6. Always run `/suggest-next-action` at the end of the report
 
 ### 1. Tool Coverage
 
-- ครอบคลุม tools ทั้งหมดจาก `mise`, `scoop`, `winget`, `bun`
-- ข้าม tools ที่ไม่มี CLI interface หรือไม่มี `--help`
-- ระบุ package manager ของแต่ละ tool
+- Cover all tools from `mise`, `scoop`, `winget`, `bun`
+- Skip tools with no CLI interface or no `--help`
+- Identify each tool's package manager
 
 ### 2. Command Analysis
 
-- บันทึก command, subcommand, options ทั้งหมด
-- ระบุ flags ที่สำคัญสำหรับ common workflows
-- ไม่ duplicate ข้อมูลจาก `/learn-from-cli`
+- Record all commands, subcommands, and options
+- Identify the flags that matter for common workflows
+- Do not duplicate data from `/learn-from-cli`
 
 ### 3. Conversion Criteria
 
-- High: ใช้บ่อย + มี flags หลายตัว + ใช้ใน project หลาย workspace
-- Medium: ใช้บ่อยบางครั้ง หรือ flags ไม่มาก
-- Low: ใช้นานๆ ครั้ง หรือ simple command
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- High: used often + many flags + used across multiple projects or workspaces
+- Medium: used occasionally or has few flags
+- Low: rarely used or a simple command
+- Use /deep-test cli if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- ตาราง CLI tools ที่ติดตั้งพร้อม version
-- สรุป commands, options และ flags
-- รายการ commands ที่เหมาะแปลงเป็น skills พร้อม priority
-- คำแนะนำถัดไป เช่น ทำ `/idea-convert-my-global-cli-to-skills`
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- Table of installed CLI tools with versions
+- Summary of commands, options, and flags
+- List of commands suitable for conversion into skills, with priority
+- Next-step suggestions, e.g. run `/idea-convert-my-global-cli-to-skills`
+- An easy-to-read report with key findings at the top
+- A clear next action

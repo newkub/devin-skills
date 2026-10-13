@@ -1,6 +1,6 @@
 ---
 name: update-contributing
-description: อัปเดต CONTRIBUTING.md ให้สอดคล้องกับ project workflows และ conventions
+description: Update CONTRIBUTING.md to match the project's workflows and conventions
 argument-hint: "[scope]"
 related:
   - update-docs
@@ -11,26 +11,26 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `CONTRIBUTING.md` ให้สะท้อนวิธีพัฒนา, conventions, และ validation workflows ของ project
+Create or update `CONTRIBUTING.md` so it reflects the project's development approach, conventions, and validation workflows
 
 ## Scope
 
-ใช้สำหรับ project ใดๆ ที่ต้องการ CONTRIBUTING guide
+Use for any project that needs a CONTRIBUTING guide
 
 ## Execute
 
 ### 1. Gather Project Context
 
-> Goal: รวบรวมข้อมูล project
+> Goal: Collect the project information
 
-1. อ่าน `package.json`, `README.md`, `AGENTS.md`
-2. อ่าน `rules/` (ast-grep) หรือ project rules
-3. อ่าน `docs/` ที่เกี่ยวกับ development
-4. ระบุ tech stack, package manager, และ scripts
+1. Read `package.json`, `README.md`, `AGENTS.md`
+2. Read `rules/` (ast-grep) or the project rules
+3. Read the `docs/` related to development
+4. Identify the tech stack, package manager, and scripts
 
 ### 2. Identify Contributing Sections
 
-> Goal: ระบุ sections
+> Goal: Identify the sections
 
 1. Prerequisites (tools, versions)
 2. Setup / installation
@@ -43,51 +43,51 @@ related:
 
 ### 3. Write Or Update
 
-> Goal: เขียนหรืออัปเดต `CONTRIBUTING.md`
+> Goal: Write or update `CONTRIBUTING.md`
 
-1. ใช้ข้อมูลจริงจาก project ไม่ใส่ placeholder
-2. ใช้ bullet points และตัวอย่าง commands
-3. อ้างอิงไปยัง `AGENTS.md` และ `README.md`
-4. ระบุ scripts จริง เช่น `bun run check`, `moon run :build`
+1. Use real project data, never placeholders
+2. Use bullet points and example commands
+3. Reference `AGENTS.md` and `README.md`
+4. Name the real scripts, e.g. `bun run check`, `moon run :build`
 
 ### 4. Coordinate With Other Files
 
-> Goal: ประสานงานกับเอกสารอื่น
+> Goal: Coordinate with the other docs
 
-1. ตรวจสอบว่า conventions สอดคล้องกับ `AGENTS.md`
-2. ตรวจสอบว่า scripts ตรงกับ `package.json`
-3. อัปเดต links ใน `README.md` ไปยัง `CONTRIBUTING.md`
+1. Check that the conventions match `AGENTS.md`
+2. Check that the scripts match `package.json`
+3. Update the links in `README.md` pointing to `CONTRIBUTING.md`
 
 ### 5. Validate
 
-> Goal: ตรวจสอบคุณภาพ
+> Goal: Check the quality
 
-1. ทำ `/deep-validate` เพื่อตรวจ Markdown quality
-2. ทำ `git diff --check` เพื่อหา whitespace errors
-3. ทำ `/check-reference` เพื่อตรวจ links
+1. Run `/deep-validate` to check Markdown quality
+2. Run `git diff --check` to find whitespace errors
+3. Run `/check-reference` to check the links
 
 ## Rules
 
 ### 1. No Placeholders
 
-- ใช้ real commands, paths, และ versions
-- ไม่ใส่ TODO หรือ MOCK โดยไม่ระบุเหตุผล
+- Use real commands, paths, and versions
+- Do not add TODO or MOCK without a stated reason
 
 ### 2. Conciseness
 
-- ไม่เกิน 250 บรรทัด
-- เน้น bullet points สั้นๆ
+- No more than 250 lines
+- Favour short bullet points
 
 ### 3. Cross-References
 
-- อ้างอิง `README.md`, `AGENTS.md`, `docs/`
-- ใช้ relative links
-- ใช้ /update-docs ถ้าจำเป็น
+- Reference `README.md`, `AGENTS.md`, `docs/`
+- Use relative links
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-- `CONTRIBUTING.md` ครบถ้วนและสอดคล้องกับ project
-- ผ่าน `/deep-validate` และ `/check-reference`
-- ไม่มี whitespace errors
+- `CONTRIBUTING.md` is complete and consistent with the project
+- Passes `/deep-validate` and `/check-reference`
+- No whitespace errors
 

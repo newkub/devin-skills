@@ -1,6 +1,6 @@
 ---
 name: test-all
-description: Orchestrate test suite ทั้งหมด — เลือก test-* domains จาก signals จริง รัน fail-fast ไม่รันทุก type โดยไม่มี signal
+description: Orchestrate the test suite — pick test-* domains from signals, run fail-fast
 argument-hint: "[scope] [target%]"
 related:
   - run-test
@@ -34,53 +34,53 @@ related:
 
 ## Goal
 
-Orchestrate test suite ทั้งหมด — เลือก `test-*` domains ที่เกี่ยวข้องจาก signals จริง (ตารางใน `## Scope` ของ `run-test`) แล้วรันตามลำดับ fail-fast — ไม่รัน test เอง ไม่รันทุก type โดยไม่มี signal
+Orchestrate the whole test suite — pick the relevant `test-*` domains from real signals (table in `## Scope` of `run-test`) then run them in fail-fast order — never runs tests itself, never runs every type without a signal
 
 ## Scope
 
-ใช้เมื่อต้องรันหลาย test domains พร้อมกัน (`/run-test all`) — delegate การรันจริงไป `test-*` skills ตาม signals
+Use when multiple test domains must run together (`/run-test all`) — delegates actual runs to `test-*` skills based on signals
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` skills must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix it or report it before running (the test)
 
-### 1. Lint+Typecheck ก่อน
+### 1. Lint+Typecheck First
 
-`/run-lint` + `/run-typecheck` ทุก case; แก้ errors ก่อน (ไม่ใช่ test failure)
+`/run-lint` + `/run-typecheck` in every case; fix errors first (they aren't test failures)
 
 ### 2. Detect Applicable Types
 
-scan `package.json`, configs, test dirs, routes เทียบ signals table (ใน `run-test/SKILL.md` `## Scope`); ถ้าไม่มี tests หรือ coverage ไม่ครบ → `/update-tests` ก่อน; บันทึกรายการ + เหตุผล
+Scan `package.json`, configs, test dirs, routes against the signals table (in `run-test/SKILL.md` `## Scope`); if there are no tests or coverage is incomplete → run `/update-tests` first; record the list + reasons
 
 ### 3. Run Fail-Fast Order
 
-`/test-unit` → `/test-property` → `/test-component` → `/test-database`/`/test-integration` → `/test-api`/`/test-cli`/`/test-contract` (ตาม signals) → `/test-e2e` → `/test-mobile` → `/test-visual` → `/test-a11y`; `/test-load` เมื่อมี perf signal; `/test-smoke` ใช้เป็น post-deploy gate ไม่ใช่ใน suite run; บันทึกผล/duration/failures ต่อ type
+`/test-unit` → `/test-property` → `/test-component` → `/test-database`/`/test-integration` → `/test-api`/`/test-cli`/`/test-contract` (per signals) → `/test-e2e` → `/test-mobile` → `/test-visual` → `/test-a11y`; `/test-load` when there is a perf signal; `/test-smoke` serves as a post-deploy gate, not part of a suite run; record result/duration/failures per type
 
 ### 4. Validate+Classify
 
-`/deep-validate` source + review tests; source ผิด → `/resolve-errors`, test ผิด → `/update-tests`, ไม่ชัด → report; ห้ามแก้โดยไม่มี evidence
+`/deep-validate` the source + review the tests; wrong source → `/resolve-errors`, wrong test → `/update-tests`, unclear → report; never fix without evidence
 
 ### 5. Fix+Rerun
 
-แก้ตาม classification แล้วรันซ้ำ; failure เดิมซ้ำ ≥3 → stop+report
+Fix per the classification, then rerun; if the same failure repeats ≥3 times → stop+report
 
 ### 6. Coverage
 
-ถ้ามี target → `/test-coverage` วัด+report; gap-closing loop ที่ `/deep-review coverage` (เขียน tests ผ่าน `/update-tests`) จนถึงเป้า (default 100%)
+If there is a target → measure+report via `/test-coverage`; run the gap-closing loop with `/deep-review coverage` (writing tests via `/update-tests`) until the target (default 100%) is met
 
 ### 7. Report
 
-persist → `.devin/temp/report/<workspace>/test-all-<time>.md`; ผ่านหมด → `/run-verify` (fail → `/resolve-errors` retry ≤3)
+persist → `.devin/temp/report/<workspace>/test-all-<time>.md`; all passing → `/run-verify` (fail → `/resolve-errors` retry ≤3)
 
 ## Rules
 
-- เลือก domain จาก signals จริงเท่านั้น; ไม่แน่ใจ → ถาม user
-- ห้าม `.skip`/`.only`; ห้ามแก้ assertion ให้อ่อนลง ห้ามแก้ source ให้เข้ากับ test ที่ผิด
-- coverage ไม่ถึงเป้า → เพิ่ม tests ไม่ลด target
-- report แยก source/test issue พร้อม priority
+- Pick domains only from real signals; unsure → ask the user
+- No `.skip`/`.only`; never weaken assertions, never change source code to fit a wrong test
+- Coverage below target → add tests, don't lower the target
+- Report separates source/test issues with priority
 
 ## Expected Outcome
 
-- Test suite รันครบทุก domain ที่มี signal — fail-fast order
-- Report รวม persist ใน `.devin/temp/report/`
-- ผ่านหมด → `/run-verify`; fail → `/resolve-errors`
+- Test suite fully run across every domain with a signal — fail-fast order
+- Combined report persisted in `.devin/temp/report/`
+- All passing → `/run-verify`; fail → `/resolve-errors`

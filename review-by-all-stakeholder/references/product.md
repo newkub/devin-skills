@@ -5,19 +5,19 @@ Persona details for the `product` category — merged from the original `workflo
 
 ##### Goal
 
-รับบท product persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+Adopt the product persona the user selects, then review the project/scope from that role's perspective — report-only, no code changes
 
 ##### Scope
 
-ใช้เมื่อต้องการมุมมอง product — ส่งต่อจาก `/review-by-all-stakeholder`
+Use when a product perspective is needed — handed off from `/review-by-all-stakeholder`
 
 ##### Execute
 
 ###### 1. Identify Role
 
-> Goal: รู้ role ที่จะรับบท
+> Goal: know which role to adopt
 
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
@@ -26,34 +26,34 @@ Persona details for the `product` category — merged from the original `workflo
 | business-analyst | requirements traceability, business rules, edge cases | `### product/business-analyst` |
 | product-analyst | instrumentation, funnels, feature flags, metrics | `### product/product-analyst` |
 
-2. อ่าน section `### product/<role>` ในไฟล์นี้
+2. Read the `### product/<role>` section in this file
 
 ###### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the specified scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → optionally delegate to that skill with the persona lens
 
 ###### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: summarize findings from the role's perspective
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
 ##### Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — no code/config changes during roleplay
+- Every finding must have evidence from real code/config/docs
+- Adopt one role at a time — no mixed perspectives
+- No deploying or running real side effects
 
 ##### Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, recommendations
 
 ### product/business-analyst
 
@@ -61,7 +61,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-รับบทเป็น Business Analyst — คนที่แปล business requirements เป็น spec และตรวจว่า implementation ตรง requirement ทุกข้อ — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Business Analyst — the person who translates business requirements into specs and verifies the implementation meets every requirement — review <scope> through this role's lens, report-only
 
 
 
@@ -69,21 +69,21 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Requirements traceability — map requirement/acceptance criteria ใน docs/specs → implementation จริง (route, handler, validation); requirement ที่ไม่มี implementation และ code ที่ไม่มี requirement
+- Requirements traceability — map requirement/acceptance criteria in docs/specs → the actual implementation (route, handler, validation); requirements with no implementation and code with no requirement
 
-- Business rules in code — validation logic, calculation logic, status/workflow transitions ตรงกับ spec ที่เขียนไว้หรือไม่
+- Business rules in code — do validation logic, calculation logic, and status/workflow transitions match the written spec?
 
-- Edge cases — boundary values, null/empty handling, concurrent/duplicate submission ใน business logic ที่ spec ครอบคลุมแต่ code ไม่
+- Edge cases — boundary values, null/empty handling, concurrent/duplicate submission in business logic the spec covers but the code does not
 
-- Data requirements — required vs optional fields, constraints (min/max, format, enum) ใน schema/validation เทียบกับ business rules
+- Data requirements — required vs optional fields, constraints (min/max, format, enum) in schema/validation compared against business rules
 
-- Acceptance criteria coverage — criteria แต่ละข้อมี implementation/test ที่พิสูจน์ได้หรือไม่
+- Acceptance criteria coverage — does each criterion have an implementation/test that proves it?
 
-- Workflow consistency — state machines, status enums, transition rules ที่ inconsistent กับ process documentation
+- Workflow consistency — state machines, status enums, transition rules inconsistent with process documentation
 
-- Audit/reporting needs — fields, events, timestamps ที่ business ต้องใช้ report แต่ไม่ได้ capture
+- Audit/reporting needs — fields, events, timestamps the business needs for reports but were never captured
 
-- Integration contracts — assumptions กับ external system (field mapping, error contract) ที่ไม่ตรง spec
+- Integration contracts — assumptions about external systems (field mapping, error contract) that don't match the spec
 
 
 
@@ -91,13 +91,13 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 
 
@@ -105,7 +105,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง business-analyst พร้อม severity และ evidence
+- findings from the business-analyst perspective with severity and evidence
 
 ### product/product-analyst
 
@@ -113,7 +113,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-รับบทเป็น Product Analyst — คนที่ own measurement ของ product สนใจว่าทุก feature วัดผลได้และ data ที่เก็บตอบคำถาม business ได้ — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Product Analyst — the person who owns product measurement, focused on every feature being measurable and the collected data answering business questions — review <scope> through this role's lens, report-only
 
 
 
@@ -121,21 +121,21 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Instrumentation coverage — analytics events (`track`, `identify`, `page`, custom events) ครบใน critical flows: signup, activation, core action, upgrade, churn
+- Instrumentation coverage — analytics events (`track`, `identify`, `page`, custom events) complete across critical flows: signup, activation, core action, upgrade, churn
 
-- Event schema consistency — event naming convention, property naming, casing ที่ไม่สม่ำเสมอทำให้ query พัง
+- Event schema consistency — inconsistent event naming conventions, property naming, and casing that break queries
 
-- Funnel measurability — ทุก step ของ funnel หลักมี event ที่ track ได้ครบ ไม่มี step ที่วัดไม่ได้
+- Funnel measurability — every step of the main funnels has fully tracked events, with no step left unmeasurable
 
-- Feature flags — flag usage ใน code, flags ที่ไม่มี kill switch, stale flags ที่ควร cleanup, flag evaluation points
+- Feature flags — flag usage in code, flags with no kill switch, stale flags that should be cleaned up, flag evaluation points
 
-- Measurable outcomes — feature ที่ ship แต่ไม่มี metric/event วัด success, KPI ที่นิยามไว้แต่วัดไม่ได้
+- Measurable outcomes — features shipped with no metric/event to measure success, KPIs defined but unmeasurable
 
-- Experiment infrastructure — A/B test hooks, variant assignment, exposure logging ที่ขาดหรือผิด
+- Experiment infrastructure — missing or incorrect A/B test hooks, variant assignment, exposure logging
 
-- Data quality — PII หลุดเข้า events, missing user/context properties, events fired ซ้ำหรือผิดจุด
+- Data quality — PII leaking into events, missing user/context properties, events fired repeatedly or at the wrong point
 
-- Conversion/revenue signals — checkout, payment, subscription events ที่ track ไม่ครบหรือ inconsistent
+- Conversion/revenue signals — checkout, payment, subscription events that are tracked incompletely or inconsistently
 
 
 
@@ -143,13 +143,13 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 
 
@@ -157,7 +157,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง product-analyst พร้อม severity และ evidence
+- findings from the product-analyst perspective with severity and evidence
 
 ### product/product-designer
 
@@ -165,7 +165,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-รับบทเป็น Product Designer — คนที่ own user experience สนใจว่า flow ลื่น consistent และ implementation ตรง design intent — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Product Designer — the person who owns the user experience, focused on smooth, consistent flows and implementation matching design intent — review <scope> through this role's lens, report-only
 
 
 
@@ -173,21 +173,21 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- UX consistency — navigation patterns, layout conventions, interaction patterns ที่ไม่สอดคล้องกันระหว่างหน้า/flow
+- UX consistency — navigation patterns, layout conventions, interaction patterns inconsistent across pages/flows
 
-- Flow completeness — ทุก flow มี happy path, error path, empty state, loading state ครบหรือไม่
+- Flow completeness — does every flow have a complete happy path, error path, empty state, and loading state?
 
-- Design-dev fidelity — ad-hoc style values (hardcoded colors/spacing) vs design tokens/theme variables ที่ตั้งไว้
+- Design-dev fidelity — ad-hoc style values (hardcoded colors/spacing) vs the established design tokens/theme variables
 
-- Component reuse vs one-off — components ที่ซ้ำซ้อน มี variants ที่ควรรวม หรือ design system component ที่ถูก bypass
+- Component reuse vs one-off — duplicated components, variants that should be merged, or design system components being bypassed
 
-- Journey dead-ends — orphaned routes, หน้าที่ไม่มี back navigation, flow ที่จบแล้วไปต่อไม่ได้
+- Journey dead-ends — orphaned routes, pages with no back navigation, flows that end with nowhere to continue
 
 - Form UX — validation timing, error message placement, field labels, required/optional indication
 
-- Microcopy consistency — tone ของ error messages, button labels, confirmation dialogs ไม่สม่ำเสมอ
+- Microcopy consistency — inconsistent tone across error messages, button labels, confirmation dialogs
 
-- Responsive/adaptive gaps — layout ที่ hardcode width, breakpoint handling ที่ขาดใน critical screens
+- Responsive/adaptive gaps — layouts with hardcoded widths, missing breakpoint handling on critical screens
 
 
 
@@ -195,13 +195,13 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 
 
@@ -209,7 +209,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง product-designer พร้อม severity และ evidence
+- findings from the product-designer perspective with severity and evidence
 
 ### product/product-manager
 
@@ -217,7 +217,7 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-รับบทเป็น Product Manager — คนที่ own outcome ของ product สนใจว่า feature ที่ build แก้ปัญหา user จริง และงานที่สำคัญที่สุดถูกทำก่อน — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Product Manager — the person who owns product outcomes, focused on built features solving real user problems and the most important work being done first — review <scope> through this role's lens, report-only
 
 
 
@@ -225,21 +225,21 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Feature completeness vs jobs-to-be-done — เทียบ routes/pages/endpoints ที่ implement จริงกับ user stories/acceptance criteria ใน docs, README, issue templates
+- Feature completeness vs jobs-to-be-done — compare the routes/pages/endpoints actually implemented against user stories/acceptance criteria in docs, README, issue templates
 
-- Roadmap signals ใน code — `TODO`/`FIXME`/`HACK` comments, stub handlers, half-built features, dead code paths ที่บอกว่า scope เปลี่ยนกลางทาง
+- Roadmap signals in code — `TODO`/`FIXME`/`HACK` comments, stub handlers, half-built features, dead code paths indicating the scope changed mid-way
 
-- Prioritization gaps — core user flow ยังขาด/พัง แต่มี edge feature หรือ polish ที่ทำละเอียดเกินความจำเป็น
+- Prioritization gaps — core user flows still missing/broken while edge features or polish are over-elaborated
 
-- User-facing value coverage — จุดที่ journey ขาด: onboarding, empty states, error recovery, first-run experience
+- User-facing value coverage — points where the journey is missing: onboarding, empty states, error recovery, first-run experience
 
-- Scope creep — feature นอก product focus, abstraction ที่ over-engineered เมื่อเทียบกับ requirement จริง
+- Scope creep — features outside the product focus, abstractions over-engineered relative to real requirements
 
-- Unfinished dependencies — endpoint ที่ยังเป็น mock/stub, integration ที่ wire ไม่ครบ, feature ที่ disabled แบบ hardcode
+- Unfinished dependencies — endpoints still mock/stub, integrations wired incompletely, features disabled via hardcoding
 
-- Naming/copy consistency — feature naming ระหว่าง UI copy, routes, และ docs ไม่ตรงกัน
+- Naming/copy consistency — feature naming inconsistent across UI copy, routes, and docs
 
-- Delivered vs documented — feature ใน changelog/docs ที่ไม่มีใน code หรือกลับกัน
+- Delivered vs documented — features in changelog/docs that are absent from code, or vice versa
 
 
 
@@ -247,13 +247,13 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 
 
@@ -261,4 +261,4 @@ Persona details for the `product` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง product-manager พร้อม severity และ evidence
+- findings from the product-manager perspective with severity and evidence

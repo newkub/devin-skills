@@ -10,44 +10,44 @@ related:
 
 ## Goal
 
-ตรวจ security dimension ของ `/deep-validate` — input validation, authn/authz, secrets, injection, rate limiting
+Check the security dimension of `/deep-validate` — input validation, authn/authz, secrets, injection, rate limiting
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `security` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings — แก้ไขผ่าน `/deep-review` fix workflows
+- Used when `/deep-validate` dispatches to the `security` dimension, or invoked standalone
+- Read-only: record findings — fix via `/deep-review` fix workflows
 
 ## Execute
 
 ### 1. Check Input Handling
 
-> Goal: input ทุกทางถูก validate/sanitize
+> Goal: every input path is validated/sanitized
 
-1. ตรวจสอบ input validation และ sanitization
-2. ตรวจสอบ parameterized queries ป้องกัน SQL injection
+1. Check input validation and sanitization
+2. Check parameterized queries prevent SQL injection
 
 ### 2. Check Auth And Exposure
 
-> Goal: auth ถูกต้อง ไม่มี secrets หลุด
+> Goal: auth is correct and no secrets leak
 
-1. ตรวจสอบ authentication และ authorization patterns
-2. ตรวจสอบไม่มี hardcoded secrets หรือ API keys — ทำ `/check-secrets` ถ้าต้องการ deep pass
-3. ตรวจสอบ API security และ rate limiting — ทำ `/deep-review` กับ endpoints ที่เปิดใหม่
-4. บันทึก findings พร้อม severity + evidence
+1. Check authentication and authorization patterns
+2. Check there are no hardcoded secrets or API keys — run `/check-secrets` for a deep pass
+3. Check API security and rate limiting — run `/deep-review` on newly exposed endpoints
+4. Record findings with severity + evidence
 
 ### 3. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
-2. security findings เรียง Critical ก่อนเสมอ
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+2. Security findings are always listed with Critical first
 
 ## Rules
 
-- hardcoded secret ที่ยืนยัน = Critical
-- ระบุ exploit path สั้นๆ ในแต่ละ finding — ไม่ flag แบบ generic
-- deep security review เต็มรูปแบบ → delegate `/deep-review`
+- Confirmed hardcoded secret = Critical
+- State a short exploit path in each finding — no generic flags
+- Full deep security review → delegate to `/deep-review`
 
 ## Expected Outcome
 
-- Findings ของ security dimension พร้อม severity และ evidence
+- Findings of the security dimension with severity and evidence

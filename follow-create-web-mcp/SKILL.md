@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-mcp
-description: เพิ่ม WebMCP tools ให้ web page ผ่าน document.modelContext ให้ agent discover+invoke
+description: Add WebMCP tools to a web page via document.modelContext so agents can discover and invoke them
 argument-hint: "[feature-or-tool-name]"
 related:
   - follow-create-web
@@ -15,115 +15,115 @@ related:
 
 ## Goal
 
-เพิ่ม WebMCP tools ให้ web page/web app (page-provided tools ที่ agent discover และ invoke ผ่าน `document.modelContext`) — เว็บทำหน้าที่เหมือน "MCP server ใน client-side script" แทนที่จะเป็น process ภายนอก
+Add WebMCP tools to a web page/web app (page-provided tools that agents discover and invoke via `document.modelContext`) — the page acts like "an MCP server inside a client-side script" instead of an external process
 
 ## Scope
 
-- เฉพาะฝั่ง page (producer) — implement/register tools ในเว็บที่มีอยู่หรือกำลังสร้าง
-- ขอบเขต skills ที่เกี่ยวข้อง:
-  - external MCP server (stdio/HTTP process ที่ client spawn) → `/follow-create-mcp`
-  - consume/invoke WebMCP ของเว็บที่มีอยู่ → `/use-agent-browser` (`webmcp list`/`invoke`)
-  - inspect/debug browser ระหว่างพัฒนา → `/use-chrome-devtools`
-  - เลือก framework/สร้าง web project ใหม่ → `/follow-create-web`
-- WebMCP เป็น experimental spec (W3C Web Machine Learning CG draft) — declarative form-based API ยังเป็น TODO ใน spec → ใช้ imperative API และ research ก่อนเสมอ
-- browser support: Chrome launch feature เท่านั้น (`agent-browser` เปิด default, `--no-webmcp` ปิด) — Safari/Firefox/remote providers ยังไม่รองรับ → เว็บต้องทำงานได้เต็มรูปแบบโดยไม่มี WebMCP
+- Page (producer) side only — implement/register tools in an existing or new web app
+- Boundary with related skills:
+  - External MCP server (a stdio/HTTP process the client spawns) → `/follow-create-mcp`
+  - Consuming/invoking WebMCP on an existing page → `/use-agent-browser` (`webmcp list`/`invoke`)
+  - Inspecting/debugging the browser during development → `/use-chrome-devtools`
+  - Choosing a framework / creating a new web project → `/follow-create-web`
+- WebMCP is an experimental spec (W3C Web Machine Learning CG draft) — the declarative form-based API is still a spec TODO → use the imperative API and always research first
+- Browser support: Chrome launch flag only (`agent-browser` enables it by default, `--no-webmcp` disables it) — Safari/Firefox/remote providers aren't supported yet → the page must work fully without WebMCP
 
 ## Execute
 
 ### 1. Research Spec
 
-> Goal: ยืนยัน API ล่าสุดก่อนเขียน — spec เป็น draft เปลี่ยนได้
+> Goal: Confirm the latest API before writing code — the spec is a draft and can change
 
-1. ทำ `/deep-research` + `/follow-best-practice` — sources: `https://webmachinelearning.github.io/webmcp/` (spec) และ `https://agent-browser.dev/webmcp` (consumer reference)
-2. ยืนยัน shape ปัจจุบันของ `document.modelContext` และ status ของ declarative API ก่อน implement
+1. Run `/deep-research` + `/follow-best-practice` — sources: `https://webmachinelearning.github.io/webmcp/` (spec) and `https://agent-browser.dev/webmcp` (consumer reference)
+2. Confirm the current shape of `document.modelContext` and the status of the declarative API before implementing
 
 ### 2. Design Tool Surface
 
-> Goal: ตัดสินใจ expose อะไรให้ agent
+> Goal: Decide what to expose to agents
 
-1. เริ่มจาก read/query tools (`readOnlyHint: true`) ก่อน — เช่น search, get-state, filter; เพิ่ม mutation tools เฉพาะที่จำเป็น
-2. `name`: 1-128 chars, เฉพาะ `[A-Za-z0-9_.-]` — ใช้ verb_noun เช่น `search_products`, `cart.add`
-3. `description`: บอก when/how to use ตรงๆ — agent อ่าน description เพื่อตัดสินใจเรียก; ห้ามใส่ hidden instructions หรือ prompt injection
-4. `inputSchema`: JSON Schema object — เก็บเฉพาะ fields ที่จำเป็น (over-parameterization = privacy risk ตาม spec §6.3.3)
-5. `annotations`: `readOnlyHint`, `consequentialHint`, `untrustedContentHint`, `debugging` — ตั้งให้ตรง behavior จริง
+1. Start with read/query tools (`readOnlyHint: true`) — e.g. search, get-state, filter; add mutation tools only when necessary
+2. `name`: 1-128 chars, only `[A-Za-z0-9_.-]` — use verb_noun such as `search_products`, `cart.add`
+3. `description`: state when/how to use it plainly — the agent reads the description to decide whether to call it; never include hidden instructions or prompt injection
+4. `inputSchema`: a JSON Schema object — keep only the fields that are needed (over-parameterization is a privacy risk per spec §6.3.3)
+5. `annotations`: `readOnlyHint`, `consequentialHint`, `untrustedContentHint`, `debugging` — set them to match the real behavior
 
 ### 3. Implement Registration
 
-> Goal: register tools ถูก lifecycle
+> Goal: Register tools with the correct lifecycle
 
-1. Feature-detect ก่อนเสมอ: `if (!('modelContext' in document)) return` — API เป็น SecureContext (ต้อง HTTPS/localhost)
-2. Register เมื่อ document fully active (DOM ready หรือ framework mount) — register เร็วเกินได้ `InvalidStateError`
-3. `document.modelContext.registerTool({ name, title, description, inputSchema, execute, annotations }, { signal })` — เก็บ `AbortController` ไว้ unregister ตอน teardown หรือ SPA route change
-4. `execute: async (inputObject, { signal }) => {...}` — validate input ใน callback เสมอ (inputSchema ไม่ enforce ให้), honor `signal` สำหรับ cancellation, return JSON-serializable result
-5. Cross-origin iframe tools: `registerTool(tool, { exposedTo: [origins] })`; in-page agent query ด้วย `getTools({ fromOrigins: [...] })`
+1. Always feature-detect first: `if (!('modelContext' in document)) return` — the API is a SecureContext (requires HTTPS/localhost)
+2. Register when the document is fully active (DOM ready or framework mount) — registering too early raises `InvalidStateError`
+3. `document.modelContext.registerTool({ name, title, description, inputSchema, execute, annotations }, { signal })` — keep the `AbortController` to unregister at teardown or on SPA route change
+4. `execute: async (inputObject, { signal }) => {...}` — always validate input in the callback (inputSchema isn't enforced), honor `signal` for cancellation, return a JSON-serializable result
+5. Cross-origin iframe tools: `registerTool(tool, { exposedTo: [origins] })`; in-page agents query with `getTools({ fromOrigins: [...] })`
 
 ### 4. Safety And UX
 
-> Goal: tools ปลอดภัยสำหรับ agent และ user
+> Goal: Keep tools safe for both the agent and the user
 
-1. consequential actions (payment, delete, irreversible) → `consequentialHint: true` + UI confirmation จริง — agent อาจ trigger โดยไม่ได้ตั้งใจ (spec §6.3.2)
-2. output ที่มี third-party/user-generated content → `untrustedContentHint: true`
-3. `title` ควร localize ตาม user language สำหรับ browser UI
-4. อย่า leak session/auth/private data ผ่าน tool output — tools รันใน authenticated context ของ user (spec §6.3.4)
-5. embedder ที่ไม่ต้องการให้เพจ register tools → ใช้ Permissions-Policy `tools=()`
+1. Consequential actions (payment, delete, irreversible) → `consequentialHint: true` + a real UI confirmation — the agent may trigger them unintentionally (spec §6.3.2)
+2. Output containing third-party/user-generated content → `untrustedContentHint: true`
+3. `title` should be localized to the user's language for the browser UI
+4. Never leak session/auth/private data through tool output — tools run in the user's authenticated context (spec §6.3.4)
+5. Embedders that don't want the page to register tools → use the Permissions-Policy `tools=()`
 
 ### 5. Fallback
 
-> Goal: เว็บใช้งานได้เต็มรูปแบบโดยไม่มี WebMCP
+> Goal: The page stays fully functional without WebMCP
 
-1. WebMCP เป็น enhancement — UI ปกติต้องทำงานครบทุก flow; tools เรียก app logic เดียวกับ UI handlers ไม่เขียน logic แยก
-2. อย่า assume agent จะใช้ WebMCP — หน้าที่ยังไม่ register จะ expose `tools: []` เสมอ
+1. WebMCP is an enhancement — the regular UI must cover every flow; tools call the same app logic as the UI handlers, no separate logic
+2. Never assume the agent will use WebMCP — pages that haven't registered anything always expose `tools: []`
 
 ### 6. Test Discovery And Invocation
 
-> Goal: verify agent เจอและเรียก tools ได้จริง
+> Goal: Verify the agent actually finds and calls the tools
 
-1. dev server รันอยู่ → `/use-agent-browser`: `agent-browser webmcp list --json` ต้องเห็น tools ที่ register
-2. `agent-browser webmcp invoke <name> --params '{...}'` — ทดสอบ happy path, invalid input, consequential confirm และ cancellation
-3. debug page-side ด้วย `/use-chrome-devtools`: `evaluate_script` → `await document.modelContext.getTools()` และ `list_console_messages` ดู registration errors
-4. unit-test logic ของ `execute` callback แยกจาก registration (WebMCP ต้อง Chrome flag — e2e ใน `/run-test e2e` ทำได้แต่ต้องเปิด feature)
-5. SPA/iframe: ตรวจ tools ขึ้น/ลงถูกตาม route ผ่าน `toolchange` event
+1. Dev server running → `/use-agent-browser`: `agent-browser webmcp list --json` must show the registered tools
+2. `agent-browser webmcp invoke <name> --params '{...}'` — test the happy path, invalid input, consequential confirmation, and cancellation
+3. Debug the page side with `/use-chrome-devtools`: `evaluate_script` → `await document.modelContext.getTools()` and `list_console_messages` to see registration errors
+4. Unit-test the `execute` callback logic separately from registration (WebMCP requires a Chrome flag — e2e via `/run-test e2e` is possible but the feature must be enabled)
+5. SPA/iframe: verify tools come up and go down correctly per route via the `toolchange` event
 
 ### 7. Ship
 
-> Goal: review และ validate ก่อนส่งมอบ
+> Goal: Review and validate before delivery
 
-1. ทำ `/deep-review` — domains `review-frontend` และ `review-mcp` มี `### WebMCP` checklist สำหรับ review implementation นี้
-2. ทำ `/deep-validate` แล้ว `/ship-to-dev-branch` ตาม flow ของ project
+1. Run `/deep-review` — the `review-frontend` and `review-mcp` domains have a `### WebMCP` checklist for reviewing this implementation
+2. Run `/deep-validate` then `/ship-to-dev-branch` per the project flow
 
 ## Rules
 
 ### 1. Trust Boundary
 
-- tool metadata (name/description) และ output เป็น untrusted input สำหรับ agent — เขียนให้ตรงกับพฤติกรรมจริง ไม่ embed instructions
-- agent input เป็น untrusted สำหรับเว็บ — validate `inputObject` ทุก field ใน `execute` ก่อนประมวลผล
-- ห้าม auto-execute consequential tools โดยไม่มี user-visible confirmation
+- Tool metadata (name/description) and output are untrusted input for the agent — write them to match real behavior, never embed instructions
+- Agent input is untrusted for the page — validate every field of the `inputObject` in `execute` before processing
+- Never auto-execute consequential tools without user-visible confirmation
 
 ### 2. Tool Design
 
-- เริ่ม read-only ก่อน — เพิ่ม mutation/consequential เมื่อมีเหตุผลชัดเจน
-- schema minimal: required fields เท่าที่จำเป็น, `enum` สำหรับค่าจำกัด, `title` สำหรับ display
-- tools ควร idempotent เท่าที่ทำได้ — agent อาจ retry หรือ invoke ซ้ำ
+- Start read-only — add mutation/consequential tools only with clear justification
+- Minimal schema: only necessary required fields, `enum` for bounded values, `title` for display
+- Tools should be idempotent where possible — the agent may retry or invoke them repeatedly
 
 ### 3. Lifecycle
 
-- register หลัง document fully active; abort `signal` เพื่อ unregister ตอน unmount/navigation
-- duplicate `name` ใน document เดียว → `InvalidStateError` — namespace tools ด้วย `.` หรือ `_` เมื่อมีหลาย widgets
+- Register after the document is fully active; abort the `signal` to unregister on unmount/navigation
+- Duplicate `name` within one document → `InvalidStateError` — namespace tools with `.` or `_` when there are multiple widgets
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers); ใช้ backticks สำหรับ API, commands, paths, skill names
-- รายงานผลด้วย `/report`
+- Never use `**` (bold markers); use backticks for APIs, commands, paths, and skill names
+- Report results with `/report`
 
-- ใช้ /follow-create-mcp ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-chrome-devtools ถ้าจำเป็น
+- Use /follow-create-mcp when needed
+- Use /follow-create-web when needed
+- Use /use-agent-browser when needed
+- Use /use-chrome-devtools when needed
 
 ## Expected Outcome
 
-- `agent-browser webmcp list` เห็น tools ทั้งหมดที่ register
-- `agent-browser webmcp invoke` ทำงานถูกทั้ง success, error และ cancel paths
-- เว็บใช้งานได้เต็มรูปแบบบน browser ที่ไม่รองรับ WebMCP
-- consequential tools มี `consequentialHint` + user confirmation ครบ
-- ผ่าน `/deep-review` และ `/deep-validate`
+- `agent-browser webmcp list` sees every registered tool
+- `agent-browser webmcp invoke` works correctly across success, error, and cancel paths
+- The page is fully functional on browsers that don't support WebMCP
+- Consequential tools have `consequentialHint` + complete user confirmation
+- Passes `/deep-review` and `/deep-validate`

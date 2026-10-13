@@ -1,6 +1,6 @@
 ---
 name: run-until-pass
-description: run command จนกว่าจะผ่าน และแก้ไข error ทั้งหมด
+description: run a command until it passes and fix all errors
 argument-hint: "[command]"
 related:
   - deep-review
@@ -15,52 +15,52 @@ related:
 
 ## Goal
 
-run command จนกว่าจะผ่าน ถ้าเจอ error ให้แก้ไขท้งหมดจนไม่มีเหลือ
+Run a command until it passes; if errors are found, fix them all until none remain.
 
 ## Scope
 
-ใช้ `run-until-pass` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (until pass)
+Use `run-until-pass` for tasks and workflows that are covered (until pass).
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (until pass)
+> Pre-Run: Always run `/deep-review` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (until pass).
 
 ### 1. Run Command
 
 > Goal: Run Command
 
-run command และตรวจสอบผล
+Run the command and check the result
 
-1. รัน command
-2. ตรวจสอบว่าผ่านหรือไม่
-3. ถ้าไม่ผ่าน ให้ดำเนินการต่อ
+1. Run the command
+2. Check whether it passes
+3. If it fails, continue to the next step
 
 ### 2. Fix Errors
 
 > Goal: Fix Errors
 
-แก้ไข errors ทั้งหมด
+Fix all errors
 
-1. ระบุ errors ทั้งหมด
-2. แก้ไข errors ทีละตัว
-3. รัน command อีกครั้ง
-4. ทำซ้ำจนกว่าจะผ่าน
+1. Identify all errors
+2. Fix the errors one by one
+3. Re-run the command
+4. Repeat until it passes
 
 ## Rules
 
-- แก้ไข errors ทั้งหมดจนไม่มีเหลือ
-- รัน command จนกว่าจะผ่าน
-- ตรวจสอบว่าไม่มี errors ที่เหลือ
+- Fix all errors until none remain
+- Run the command until it passes
+- Verify that no errors are left
 
-- ใช้ /loop-until-complete ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /loop-until-complete if needed
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /run-check if needed
+- Use /run-verify if needed
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Command ผ่านทั้งหมด
-- ไม่มี errors ที่เหลือ
-- Code ที่ถูกต้อง
+- The command passes completely
+- No errors left
+- Correct code

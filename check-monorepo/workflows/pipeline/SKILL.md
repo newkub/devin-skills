@@ -1,6 +1,6 @@
 ---
 name: check-monorepo-pipeline
-description: ตรวจ task pipeline consistency ใน monorepo — tasks ครบทุก project, ไม่มี orphans
+description: Check monorepo task pipeline consistency: every project has required tasks, no orphans
 argument-hint: "[workspace-or-package]"
 related:
   - follow-tool-moonrepo
@@ -11,54 +11,54 @@ related:
 
 ## Goal
 
-ตรวจ task pipeline ของ monorepo — ทุก project มี required tasks (`build`, `test`, `lint`, `typecheck`), task graph ไม่มี orphans/cycles, cache config สอดคล้อง
+Check the monorepo task pipeline — every project has the required tasks (`build`, `test`, `lint`, `typecheck`), the task graph has no orphans or cycles, and cache config is consistent.
 
 ## Scope
 
-- ใช้เมื่อ `/check-monorepo` dispatch มาที่ `pipeline`/`tasks` หรือเรียกเดี่ยวๆ
-- รองรับ Moonrepo (`.moon/tasks.yml`, `moon.yml`), Turborepo (`turbo.json`), Nx (`nx.json`), pnpm scripts
-- Read-only: รายงาน — ไม่แก้ task config
+- Use when `/check-monorepo` dispatches to `pipeline`/`tasks`, or call it standalone
+- Supports Moonrepo (`.moon/tasks.yml`, `moon.yml`), Turborepo (`turbo.json`), Nx (`nx.json`), and pnpm scripts
+- Read-only: report only — do not change task config
 
 ## Execute
 
 ### 1. Inventory Tasks Per Project
 
-> Goal: รู้ว่าแต่ละ project มี tasks อะไร
+> Goal: Know which tasks each project has
 
-1. ใช้ `/list-workspaces` หา projects ทั้งหมด
-2. รวม tasks ต่อ project: `moon.yml`/`package.json` scripts/`project.json`
-3. สร้างตาราง project × task coverage
+1. Use `/list-workspaces` to find all projects
+2. Collect tasks per project: `moon.yml`/`package.json` scripts/`project.json`
+3. Build a project × task coverage table
 
 ### 2. Check Coverage And Orphans
 
-> Goal: หา projects ที่ task graph ไม่ครอบ
+> Goal: Find projects the task graph does not cover
 
-1. flag projects ที่ขาด required tasks (`build`, `test`, `lint`, `typecheck`) โดยไม่มีเหตุผล
-2. flag orphan projects — ไม่มี tasks เลย หรือไม่ถูกอ้างใน workspace config
-3. flag task deps ที่ชี้ไป task/project ที่ไม่มี (`dependsOn` dangling)
+1. Flag projects missing required tasks (`build`, `test`, `lint`, `typecheck`) without reason
+2. Flag orphan projects — with no tasks at all, or not referenced in workspace config
+3. Flag task deps pointing at nonexistent tasks/projects (dangling `dependsOn`)
 
 ### 3. Check Pipeline Config
 
-> Goal: cache และ ordering สอดคล้อง
+> Goal: Cache and ordering are consistent
 
-1. ตรวจ `turbo.json` pipeline/`tasks` — outputs, cache, dependsOn (`^build`) ถูกต้อง
-2. ตรวจ `.moon/tasks.yml` shared tasks ไม่ conflict กับ project-level overrides
-3. flag tasks ที่ไม่ cacheable แต่ถูก cache (มี side effects เช่น deploy, publish)
+1. Check the `turbo.json` pipeline/`tasks` — outputs, cache, and dependsOn (`^build`) are correct
+2. Check that `.moon/tasks.yml` shared tasks do not conflict with project-level overrides
+3. Flag non-cacheable tasks that are being cached (side effects such as deploy or publish)
 
 ### 4. Report
 
-> Goal: สรุป pipeline health
+> Goal: Summarize pipeline health
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Project`, `Issue`, `Severity`, `Fix`
-2. แนะนำ: เพิ่ม missing tasks, fix dangling deps, correct cache flags
+1. Use `/report` with columns: `No.`, `Project`, `Issue`, `Severity`, `Fix`
+2. Recommend: add missing tasks, fix dangling deps, correct cache flags
 
 ## Rules
 
-- ทุก finding ต้องมี evidence (project path, task name, config file)
-- แยก "จงใจไม่มี task" (เช่น docs package ไม่มี test) ออกจาก "ขาดจริง"
-- dangling `dependsOn` = High; missing task = Medium; cache misconfig = Medium
+- Every finding needs evidence (project path, task name, config file)
+- Distinguish "intentionally task-free" (e.g. a docs package with no test) from genuinely missing tasks
+- Dangling `dependsOn` = High; missing task = Medium; cache misconfig = Medium
 
 ## Expected Outcome
 
-- Task coverage matrix ทุก project พร้อม gaps
-- รายการ orphan projects และ dangling task deps
+- Task coverage matrix for every project with gaps
+- List of orphan projects and dangling task deps

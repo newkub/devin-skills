@@ -3,10 +3,10 @@
 ## Required
 
 - `fd` — fast file finder
-  - Install: `mise use -g fd` หรือ `scoop install fd` หรือ `winget install sharkdp.fd`
+  - Install: `mise use -g fd` or `scoop install fd` or `winget install sharkdp.fd`
   - Official: https://github.com/sharkdp/fd
-  - Fallback: `Get-ChildItem` ใน PowerShell ถ้ายังไม่ติดตั้ง
+  - Fallback: `Get-ChildItem` in PowerShell if not yet installed
 
 ## Optional
 
-- `mise` หรือ `scoop` สำหรับจัดการ global tools บน Windows
+- `mise` or `scoop` to manage global tools on Windows

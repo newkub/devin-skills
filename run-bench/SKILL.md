@@ -1,6 +1,6 @@
 ---
 name: run-bench
-description: รัน benchmark tests เพื่อวัดประสิทธิภาพและเปรียบเทียบ performance
+description: Run benchmark tests to measure performance and compare implementations
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -12,61 +12,61 @@ related:
 
 ## Goal
 
-รัน benchmark tests เพื่อวัดประสิทธิภาพของ code และเปรียบเทียบ performance ระหว่าง implementations
+Run benchmark tests to measure code performance and compare performance between implementations
 
 ## Scope
 
-ใช้สำหรับวัด performance ของ functions, เปรียบเทียบ implementations ต่างๆ, ตรวจสอบ performance regressions, และ optimize code ตามผล benchmark
+Use for measuring function performance, comparing different implementations, detecting performance regressions, and optimizing code based on benchmark results
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (bench)
+> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (bench)
 
 ### 1. Setup Environment
 
 > Goal: Setup Environment
 
-1. ทำ `/run-install` เพื่อติดตั้ง dependencies และ benchmark libraries (เช่น `vitest bench`, `tinybench`)
-2. ตรวจสอบว่ามี benchmark files ใน project (เช่น `*.bench.ts`, `bench/` directory)
-3. ตรวจสอบ benchmark script ใน `package.json` (เช่น `bun run bench`)
-4. ถ้ามี baseline results ให้บันทึกไว้สำหรับการเปรียบเทียบ
+1. Run `/run-install` to install dependencies and benchmark libraries (e.g. `vitest bench`, `tinybench`)
+2. Check that benchmark files exist in the project (e.g. `*.bench.ts`, `bench/` directory)
+3. Check the benchmark script in `package.json` (e.g. `bun run bench`)
+4. If baseline results exist, record them for comparison
 
 ### 2. Run Benchmarks
 
 > Goal: Run Benchmarks
 
-1. รัน `bun run bench` หรือ script ที่กำหนดใน `package.json`
-2. ถ้าต้องการรันเฉพาะ benchmark ให้ระบุ pattern (เช่น `bun run bench -- --grep "pattern"`)
-3. รอ benchmarks เสร็จสิ้นและบันทึกผลลัพธ์ทั้งหมด
-4. ทำ `/report` เพื่อจัดรูปแบบผลลัพธ์
+1. Run `bun run bench` or the script defined in `package.json`
+2. To run only specific benchmarks, provide a pattern (e.g. `bun run bench -- --grep "pattern"`)
+3. Wait for the benchmarks to finish and record all results
+4. Run `/report` to format the results
 
 ### 3. Analyze Results
 
 > Goal: Analyze Results
 
-1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
-2. ทำ `/deep-review` อ้างอิง `deep-review/SKILL.md` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
-3. หา benchmarks ที่มี variance สูงหรือ outliers
-4. ระบุ potential optimizations สำหรับ slow benchmarks
-5. ถ้ามี variance สูง ให้รันซ้ำเพื่อยืนยันผลลัพธ์
+1. Review each benchmark's result and identify the slow and fast benchmarks
+2. Run `/deep-review` per `deep-review/SKILL.md` to analyze whether empirical growth matches theoretical complexity
+3. Find benchmarks with high variance or outliers
+4. Identify potential optimizations for slow benchmarks
+5. If variance is high, re-run to confirm the results
 
 ### 4. Compare With Baseline
 
 > Goal: Compare With Baseline
 
-1. เปรียบเทียบผลลัพธ์กับ baseline ถ้ามี
-2. ระบุ regressions (ช้าลง) และ improvements (เร็วขึ้น)
-3. บันทึกผลลัพธ์และ action items สำหรับ optimization
-4. ทำ `/report` เพื่อสรุปผลลัพธ์เป็นตาราง
+1. Compare the results with the baseline if one exists
+2. Identify regressions (slower) and improvements (faster)
+3. Record results and action items for optimization
+4. Run `/report` to summarize the results as a table
 
 ## Rules
 
 ### 1. Benchmark Best Practices
 
-- แต่ละ benchmark ต้องแยกจากกัน (isolated)
-- รันหลายๆ ครั้งเพื่อ consistency
-- ใช้ data ที่สมจริงและเป็นตัวแทนของ use case จริง
-- ลด overhead ของ test framework ให้น้อยที่สุด
+- Each benchmark must be isolated
+- Run many times for consistency
+- Use realistic data representative of real use cases
+- Minimize test framework overhead
 
 ### 2. Metrics To Collect
 
@@ -77,13 +77,13 @@ related:
 
 ### 3. Conditional Execution
 
-- ถ้า project ไม่มี benchmark files ให้ข้ามขั้นตอนการรัน
-- ถ้าไม่มี baseline results ให้ข้ามขั้นตอนการเปรียบเทียบ
-- ถ้ามีหลาย workspace ใน monorepo ให้รัน benchmark ทีละ workspace
+- If the project has no benchmark files, skip the running steps
+- If there are no baseline results, skip the comparison steps
+- If a monorepo has multiple workspaces, run benchmarks one workspace at a time
 
 ## Expected Outcome
 
-- Benchmarks รันสำเร็จ
-- Metrics ถูกบันทึกครบถ้วน (`ops/sec`, `avg time`, `min/max`, `samples`)
-- Regressions และ improvements ถูกระบุ
-- Action items สำหรับ optimization ถูกบันทึก
+- Benchmarks run successfully
+- Metrics fully recorded (`ops/sec`, `avg time`, `min/max`, `samples`)
+- Regressions and improvements identified
+- Action items for optimization recorded

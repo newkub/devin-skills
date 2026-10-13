@@ -1,6 +1,6 @@
 ---
 name: compare-competitors
-description: เปรียบเทียบ subject กับ competitors ด้วย deep-research → matrix + gap list
+description: Compare a subject against competitors with deep-research → matrix + gap list
 argument-hint: "<subject> [alternatives...]"
 related:
   - deep-research
@@ -17,103 +17,103 @@ related:
 
 ## Goal
 
-เปรียบเทียบ subject (project, tool, library, feature) กับ alternatives อย่างเป็นระบบด้วย `/deep-research` ผลลัพธ์เป็น comparison matrix และ gap list ที่มี evidence ทุก claim จากนั้น generate idea features จาก gaps
+Compare a subject (project, tool, library, feature) against alternatives systematically with `/deep-research`, producing a comparison matrix and a gap list where every claim has evidence, then generate idea features from the gaps
 
 ## Scope
 
-ใช้เมื่อต้องการเปรียบเทียบเชิง evidence ระหว่าง subject กับ alternatives — features, capabilities, performance, pricing, DX — พร้อมผลิต feature ideas ที่ implement ได้จาก gaps
+Use when you need an evidence-based comparison between a subject and alternatives — features, capabilities, performance, pricing, DX — plus implementable feature ideas derived from the gaps
 
-- ถ้าต้องหา alternatives ใหม่ที่ดีกว่า → ใช้ `/alternative` ก่อน
-- ถ้าต้องเลือกตัวที่ดีที่สุดจาก options → ใช้ `/choose-and-apply` (skill นี้ผลิต matrix ไม่ตัดสินใจ)
-- ถ้าเปรียบเทียบ project กับคู่แข่งเพื่อ implement ให้ดีกว่า → ใช้ `/bench-competitors` (เรียก skill นี้ข้างใน)
+- If you need to find better new alternatives → use `/alternative` first
+- If you need to pick the best option → use `/choose-and-apply` (this skill produces the matrix, it does not decide)
+- If comparing a project with competitors in order to implement something better → use `/bench-competitors` (which calls this skill internally)
 
 ## Execute
 
 ### 1. Define Subject And Alternatives
 
-> Goal: รู้ว่าเทียบอะไรกับอะไร
+> Goal: Know what is being compared with what
 
-1. รับ `<subject>` และ list ของ alternatives จาก argument หรือ context
-2. ถ้าไม่ระบุ alternatives → ทำ `/alternative` หรือ `/deep-research` เพื่อหา alternatives ที่ relevant 3-5 ราย
-3. ถ้า subject หรือ scope ไม่ชัด → ใช้ `/ask-me`
+1. Take `<subject>` and the list of alternatives from the argument or context
+2. If no alternatives are given → run `/alternative` or `/deep-research` to find 3-5 relevant alternatives
+3. If the subject or scope is unclear → use `/ask-me`
 
 ### 2. Define Comparison Criteria
 
-> Goal: รู้ว่าเทียบด้วยมิติอะไร
+> Goal: Know which dimensions to compare on
 
-1. ระบุ criteria/dimensions ที่จะเทียบ เช่น features, performance, DX, pricing, ecosystem
-2. ใช้ criteria ที่ measurable และ relevant กับ context
-3. ถ้า criteria ไม่ชัด → ใช้ `/ask-me` หรือ default ตาม domain ของ subject
+1. List the criteria/dimensions to compare, e.g. features, performance, DX, pricing, ecosystem
+2. Use criteria that are measurable and relevant to the context
+3. If the criteria are unclear → use `/ask-me` or defaults for the subject's domain
 
 ### 3. Deep Research Each Alternative
 
-> Goal: มี evidence ทุก claim
+> Goal: Evidence behind every claim
 
-1. ทำ `/deep-research` ต่อ alternative — official docs, changelogs, benchmarks, reviews และ user feedback
-2. ทำ `/deep-research` หรือ scan codebase เพื่อยืนยัน state ปัจจุบันของ subject ถ้าข้อมูลไม่พอ
-3. แยก `fact` (มีหลักฐานจาก source) ออกจาก `assumption` (คาดว่ามี)
-4. ถ้า `/deep-research` หาข้อมูลไม่ได้ → stop และ report
+1. Run `/deep-research` per alternative — official docs, changelogs, benchmarks, reviews, and user feedback
+2. Run `/deep-research` or scan the codebase to confirm the subject's current state if information is lacking
+3. Separate `fact` (backed by a source) from `assumption` (believed to exist)
+4. If `/deep-research` cannot find the data → stop and report
 
 ### 4. Build Comparison Matrix
 
-> Goal: matrix อ่านง่าย เทียบได้ทุก cell
+> Goal: A matrix that is easy to read, with every cell comparable
 
-1. ทำ `/report` สร้างตารางเปรียบเทียบ — คอลัมน์ `No.` เป็นคอลัมน์แรก
-2. แต่ละ criterion ระบุ status ของ subject เทียบ alternative ด้วย emoji + label: `✅ มี`, `❌ ไม่มี`, `🟢 ดีกว่า`, `🟡 ด้อยกว่า`, `⚪ เท่ากัน`
-3. ทุก cell ต้องมี source — ไม่มีหลักฐานให้ mark เป็น `assumption`
-4. แถวสรุปท้าย matrix ใช้ `🏆` สำหรับ unique strengths และ `🔺` สำหรับ gap ที่ต้องปิด
+1. Run `/report` to build the comparison table — the `No.` column comes first
+2. For each criterion, mark the subject's status versus the alternative with emoji + label: `✅ Has`, `❌ Missing`, `🟢 Better`, `🟡 Worse`, `⚪ Equal`
+3. Every cell needs a source — without evidence, mark it as `assumption`
+4. The summary row at the bottom of the matrix uses `🏆` for unique strengths and `🔺` for gaps to close
 
 ### 5. Extract Gaps And Uniques
 
-> Goal: ได้ gap list ที่ actionable และ unique ที่ต้องรักษา
+> Goal: An actionable gap list plus the uniques to protect
 
-1. รวม items ที่ subject `❌ ไม่มี` หรือ `🟡 ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: item, alternative ที่มี, impact, effort โดยประมาณ, source
-2. ระบุ unique strengths ของ subject ที่ alternatives ไม่มี — ต้องรักษาไว้ (mark `🏆`)
-3. จัด priority: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
-4. output พร้อมส่งต่อ `/create-plan-in-dot-devin`, `/choose-and-apply` หรือ `/idea-features`
+1. Collect items where the subject is `❌ Missing` or `🟡 Worse` into a gap list — each gap lists: item, the alternative that has it, impact, rough effort, source
+2. Identify the subject's unique strengths that alternatives lack — these must be preserved (mark `🏆`)
+3. Set priorities: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
+4. Output ready to hand off to `/create-plan-in-dot-devin`, `/choose-and-apply`, or `/idea-features`
 
 ### 6. Generate Feature Ideas From Gaps
 
-> Goal: ได้ feature ideas ที่ implement ได้จาก gap list
+> Goal: Implementable feature ideas from the gap list
 
-1. ทำ `/idea-features` โดย feed gap list + unique strengths — แต่ละ idea ระบุ name, what, why (จาก gap), effort โดยประมาณ, source gap
-2. ideas ต้อง own-brand — ไม่ลอก naming/terminology ของ alternative ตรงๆ
-3. รวม idea list ไว้ท้าย output พร้อม matrix + gap list
+1. Run `/idea-features` fed with the gap list + unique strengths — each idea lists name, what, why (from the gap), rough effort, and source gap
+2. Ideas must be own-brand — never copy an alternative's naming/terminology directly
+3. Keep the idea list at the end of the output together with the matrix + gap list
 
 ## Rules
 
 ### 1. Evidence First
 
-- ใช้ `/deep-research` ทุกครั้งที่ต้องการข้อมูล alternative — ห้ามเดาจาก memory
-- ทุก claim ใน matrix ต้องมี source (official docs เป็นแหล่งหลัก)
-- แยก `fact` ออกจาก `assumption` ชัดเจน — ไม่สรุปว่าด้อยกว่าถ้าไม่มีหลักฐาน
-- ทุก gap ต้อง map เป็น item ที่ implement ได้ — แตก gap กว้างเป็น items ย่อย
+- Always use `/deep-research` whenever alternative data is needed — never guess from memory
+- Every claim in the matrix must have a source (official docs are the primary source)
+- Clearly separate `fact` from `assumption` — never conclude "worse" without evidence
+- Every gap must map to an implementable item — split broad gaps into smaller ones
 
 ### 2. Comparison Not Decision
 
-- output คือ matrix + gap list + idea list เท่านั้น — ไม่เลือก "ตัวที่ดีที่สุด" และไม่ implement
-- skill นี้ตอบ comparison เท่านั้น — ถ้าต้องการ compare แล้ว implement ให้ดีกว่าคู่แข่งทันที → ใช้ `/bench-competitors`
-- การตัดสินใจเลือกส่งต่อ `/choose-and-apply`; การ implement ส่งต่อ plan/implement skills
+- Output is only the matrix + gap list + idea list — do not pick "the best one" and do not implement
+- This skill only answers the comparison — if you want to compare and immediately implement better than competitors → use `/bench-competitors`
+- Hand the picking decision to `/choose-and-apply`; hand implementation to plan/implement skills
 
 ### 3. Matrix Format
 
-- ทุก table มีคอลัมน์ `No.` แรก เรียง 1, 2, 3, ...
-- status ใช้ชุดเดียวพร้อม emoji นำหน้าเสมอ: `✅ มี`, `❌ ไม่มี`, `🟢 ดีกว่า`, `🟡 ด้อยกว่า`, `⚪ เท่ากัน`
-- priority ใน gap list ใช้ emoji: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
-- criteria เดียวกันต้องเทียบทุก alternative ไม่ข้าม cell
+- Every table has `No.` as its first column, numbered 1, 2, 3, ...
+- Status always uses one fixed set with a leading emoji: `✅ Has`, `❌ Missing`, `🟢 Better`, `🟡 Worse`, `⚪ Equal`
+- Priority in the gap list uses emoji: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
+- The same criteria must be compared across every alternative — never skip a cell
 
 ### 4. Lightweight
 
-- ไม่ research ลึกเกินความจำเป็น — พอสำหรับตัดสินว่ามี/ไม่มี/ดีกว่า/ด้อยกว่า
-- รายงานกระชับไม่เกิน 1 หน้า A4 ต่อ alternative
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Never research deeper than necessary — just enough to decide has/missing/better/worse
+- Keep the report concise, at most one A4 page per alternative
+- Use /check-reference if needed
+- Use /suggest-next-action if needed
 
 
 ## Expected Outcome
 
-- Comparison matrix: subject vs alternatives ครบทุก criteria พร้อม status และ source ต่อ cell
-- Gap list ที่ prioritized (Critical → Nice-to-have) พร้อม impact/effort
-- Unique strengths ที่ต้องรักษา
-- Idea features ที่ own-brand และ implement ได้
-- ผลลัพธ์พร้อมส่งต่อ `/choose-and-apply`, `/create-plan-in-dot-devin` หรือ `/idea-features`
+- Comparison matrix: subject vs alternatives across every criterion, with status and source per cell
+- Prioritized gap list (Critical → Nice-to-have) with impact/effort
+- Unique strengths to preserve
+- Own-brand, implementable idea features
+- Output ready to hand off to `/choose-and-apply`, `/create-plan-in-dot-devin`, or `/idea-features`

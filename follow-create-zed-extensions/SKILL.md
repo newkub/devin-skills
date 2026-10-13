@@ -1,6 +1,6 @@
 ---
 name: follow-create-zed-extensions
-description: สร้าง Zed extensions ด้วย Rust/WASM และ extension manifest
+description: Build Zed extensions with Rust/WASM and an extension manifest
 argument-hint: "[scope]"
 related:
   - follow-create-rust-crate
@@ -12,105 +12,105 @@ related:
 ---
 ## Goal
 
-สร้าง Zed extension project ทีมี `extension.toml` manifest, Rust/WASM code ถ้าจำเป็น, themes, languages, snippets, หรือ language server integration
+Create a Zed extension project with an `extension.toml` manifest, Rust/WASM code when needed, plus themes, languages, snippets, or language server integrations
 
 ## Scope
 
-ใช้สำหรับสร้าง Zed extension ที provide languages, themes, icon themes, snippets, debuggers, หรือ MCP servers รองรับทั้ง pure manifest และ Rust/WASM custom code
+Use to create Zed extensions that provide languages, themes, icon themes, snippets, debuggers, or MCP servers — supporting both pure-manifest extensions and Rust/WASM custom code
 
-- Package: `zed_extension_api` (crates.io, 0.x — check compat กับ Zed version เป้าหมาย) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); target `wasm32-wasip2` (wasip1 deprecated), `schema_version = 1`
+- Package: `zed_extension_api` (crates.io, 0.x — check compatibility with the target Zed version) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`); target `wasm32-wasip2` (wasip1 deprecated), `schema_version = 1`
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create zed extensions)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create zed extensions)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create zed extensions)
+3. Record the rationale for the chosen stack and libraries for future reference (create zed extensions)
 
 ### 2. Determine Extension Type
 
-> Goal: เลือกประเภท extension
+> Goal: choose the extension type
 
-1. ถ้าเพิ่ม language support: ใช้ `languages/` ด้วย `config.toml` และ highlights
-2. ถ้าเพิ่ม theme: ใช้ `themes/` ด้วย JSON
-3. ถ้าเพิ่ม snippets: ใช้ `snippets/`
-4. ถ้า language server/debugger/MCP: ใช้ Rust/WASM custom code
+1. Adding language support: use `languages/` with a `config.toml` and highlights
+2. Adding a theme: use `themes/` with JSON
+3. Adding snippets: use `snippets/`
+4. Language server/debugger/MCP: use Rust/WASM custom code
 
 ### 3. Setup Manifest
 
-> Goal: สร้าง `extension.toml`
+> Goal: create `extension.toml`
 
-1. สร้าง root `extension.toml` ด้วย `id`, `name`, `version`, `schema_version`, `authors`, `description`, `repository`
-2. ระบุ `themes`, `languages`, `snippets`, `lib` ตาม feature
+1. Create a root `extension.toml` with `id`, `name`, `version`, `schema_version`, `authors`, `description`, `repository`
+2. Declare `themes`, `languages`, `snippets`, `lib` per feature
 
 ### 4. Add Rust/WASM Code (If Needed)
 
-> Goal: implement custom code สำหรับ language server หรือ debugger
+> Goal: implement custom code for a language server or debugger
 
-1. ติดตั้ง Rust target `wasm32-wasip2` ด้วย `rustup target add wasm32-wasip2`
-2. สร้าง `Cargo.toml` ด้วย `crate-type = ["cdylib"]`
-3. ติดตั้ง `zed_extension_api = "0.7.0"` ใน `Cargo.toml` (latest บน crates.io — ตรวจ compatibility กับ Zed version ที่ต้องการ support)
-4. สร้าง `src/lib.rs` ด้วย `impl zed::Extension for MyExtension` และ `register_extension!`
-5. ระวังว่า `std::env::var` ไม่ทำงานใน WASM
+1. Install the Rust target `wasm32-wasip2` with `rustup target add wasm32-wasip2`
+2. Create a `Cargo.toml` with `crate-type = ["cdylib"]`
+3. Add `zed_extension_api = "0.7.0"` to `Cargo.toml` (latest on crates.io — verify compatibility with the Zed version you want to support)
+4. Create `src/lib.rs` with `impl zed::Extension for MyExtension` and `register_extension!`
+5. Be aware that `std::env::var` does not work in WASM
 
 ### 5. Add Languages
 
-> Goal: เพิ่ม language support
+> Goal: add language support
 
-1. สร้าง `languages/{language}/config.toml`
-2. สร้าง `languages/{language}/highlights.scm`
-3. ระบุ `path_suffixes`, `line_comments`, `tab_size`
+1. Create `languages/{language}/config.toml`
+2. Create `languages/{language}/highlights.scm`
+3. Declare `path_suffixes`, `line_comments`, `tab_size`
 
 ### 6. Add Themes
 
-> Goal: เพิ่ม theme หรือ icon theme
+> Goal: add a theme or icon theme
 
-1. สร้าง `themes/{theme}.json`
-2. ติดตั้ง theme format ตาม Zed docs
-3. ระบุ theme ใน `extension.toml`
+1. Create `themes/{theme}.json`
+2. Follow the theme format from the Zed docs
+3. Declare the theme in `extension.toml`
 
 ### 7. Test Locally
 
-> Goal: ทดสอบ extension ใน Zed
+> Goal: test the extension in Zed
 
-1. เปิด Zed → Extensions → Install Dev Extension
-2. เลือก directory ของ extension
-3. ตรวจสอบ logs ด้วย `zed: open log`
-4. ถ้า Rust extension เปิด Zed ด้วย `zed --foreground` เพื่อเห็น `println!`
+1. Open Zed → Extensions → Install Dev Extension
+2. Select the extension directory
+3. Check logs with `zed: open log`
+4. For a Rust extension, open Zed with `zed --foreground` to see `println!` output
 
 ### 8. Publish
 
-> Goal: publish สู่ Zed extension registry
+> Goal: publish to the Zed extension registry
 
-1. ตรวจสอบ `extension.toml` และ `Cargo.toml` ครบถ้วน
-2. build Rust extension ด้วย `cargo build --target wasm32-wasip2 --release`
-3. สร้าง GitHub repo สำหรับ extension (registry ใช้ git submodule ชี้มาที่ repo นี้)
-4. ส่ง PR ไปยัง `zed-industries/extensions`: เพิ่ม submodule ใน `extensions/<id>` และ entry ใน `extensions.toml` ที่ root พร้อม `version` ตรงกับ `extension.toml`
-5. เมื่อ PR merged → extension ถูก package และ publish สู่ Zed extension registry อัตโนมัติ
-6. ทำ `/ship-to-dev-branch`
+1. Verify `extension.toml` and `Cargo.toml` are complete
+2. Build the Rust extension with `cargo build --target wasm32-wasip2 --release`
+3. Create a GitHub repo for the extension (the registry uses a git submodule pointing to this repo)
+4. Submit a PR to `zed-industries/extensions`: add the submodule at `extensions/<id>` and an entry in the root `extensions.toml`, with `version` matching `extension.toml`
+5. Once the PR is merged → the extension is packaged and published to the Zed extension registry automatically
+6. Run `/ship-to-dev-branch`
 
 ## Rules
 
-- `extension.toml` ต้องมี `id`, `name`, `version`, `schema_version`
-- `id` ใช้ lowercase, hyphen, ไม่มี space
-- Rust code ต้อง target `wasm32-wasip2`
-- ใช้ `zed_extension_api::current_platform()` แทน `std::env::var`
-- หลีกเลี่ยง `std::fs` ใน WASM; ใช้ `Worktree` methods
+- `extension.toml` must include `id`, `name`, `version`, `schema_version`
+- `id` uses lowercase, hyphens, and no spaces
+- Rust code must target `wasm32-wasip2`
+- Use `zed_extension_api::current_platform()` instead of `std::env::var`
+- Avoid `std::fs` in WASM; use `Worktree` methods
 
-- ใช้ /follow-create-rust-crate ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /open-in-zed ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-rust-crate if needed
+- Use /follow-create-sdk if needed
+- Use /follow-lang-rust if needed
+- Use /open-in-zed if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- `extension.toml` ถูกต้อง
-- Extension ติดตั้งใน Zed เป้น dev extension ได้
-- Rust/WASM build ผ่าน (ถ้ามี)
-- Languages, themes, หรือ snippets ทำงาน
-- พร้อม publish ไป Zed registry
+- `extension.toml` is correct
+- The extension installs in Zed as a dev extension
+- The Rust/WASM build passes (if present)
+- Languages, themes, or snippets work
+- Ready to publish to the Zed registry
 

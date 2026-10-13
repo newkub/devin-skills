@@ -1,6 +1,6 @@
 # Bun Compression APIs
 
-ใช้ Bun compression APIs สำหรับ data compression
+Use Bun compression APIs for data compression
 
 - `Bun.gzipSync()` / `Bun.gunzipSync()` - Gzip compression/decompression
 - `Bun.deflateSync()` / `Bun.inflateSync()` - Deflate compression/decompression

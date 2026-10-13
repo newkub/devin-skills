@@ -1,6 +1,6 @@
 ---
 name: follow-create-elysia-plugin
-description: สร้าง Elysia plugin ด้วย TypeScript/Bun พร้อม type safety และ lifecycle hooks
+description: Create an Elysia plugin with TypeScript/Bun, type safe, with lifecycle hooks
 argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
@@ -13,103 +13,103 @@ related:
 ---
 ## Goal
 
-สร้าง Elysia plugin package ด้วย TypeScript/Bun ทีสามารถ `.use()` ใน Elysia app ได้ พร้อม decorators, state, hooks, routes, และ tests
+Create an Elysia plugin package with TypeScript/Bun that can be `.use()`-ed in an Elysia app, with decorators, state, hooks, routes, and tests
 
 ## Scope
 
-ใช้สำหรับสร้าง reusable Elysia plugin สำหรับ Bun/Node runtime รองรับ typed context, lifecycle hooks, prefix, scope, และ build package
+Use for creating a reusable Elysia plugin for the Bun/Node runtime, supporting typed context, lifecycle hooks, prefix, scope, and package build
 
-- ยืนยัน `elysia` เวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`) — peerDeps ต้องมี `typescript >=5` และ `@sinclair/typebox`
+- Always confirm the latest `elysia` version with `/deep-research` + `/follow-best-practice` (don't pin it in files — per `/update-devin-global-skills`) — peerDeps must include `typescript >=5` and `@sinclair/typebox`
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `elysia` plugin API ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create elysia plugin)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create elysia plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `elysia` plugin API, then run `/deep-review` to summarize the tech stack
+2. Record the rationale for the chosen stack and libraries for future reference (create elysia plugin)
+3. Record the rationale for the chosen stack and libraries for future reference (create elysia plugin)
 
 ### 2. Setup Project
 
-> Goal: สร้างโครงสร้าง plugin package
+> Goal: create the plugin package structure
 
-1. สร้าง directory `packages/{plugin-name}/`
-2. สร้าง `package.json` ด้วย `name: elysia-{plugin-name}`
-3. สร้าง `tsconfig.json` ด้วย `strict: true`
-4. รัน `bun init` หรือ `npm init`
+1. Create the `packages/{plugin-name}/` directory
+2. Create `package.json` with `name: elysia-{plugin-name}`
+3. Create `tsconfig.json` with `strict: true`
+4. Run `bun init` or `npm init`
 
 ### 3. Create Plugin
 
-> Goal: implement Elysia plugin
+> Goal: implement the Elysia plugin
 
-1. สร้าง `src/index.ts` ด้วย function ที return `new Elysia({ name, seed })`
-2. เพิ่ม `.state()`, `.decorate()`, `.derive()` สำหรับ shared context
-3. เพิ่ม routes ด้วย `.get()`, `.post()` ตาม need
-4. เพิ่ม lifecycle hooks ด้วย `.onBeforeHandle()`, `.onAfterHandle()`, `.onError()`
+1. Create `src/index.ts` with a function returning `new Elysia({ name, seed })`
+2. Add `.state()`, `.decorate()`, `.derive()` for shared context
+3. Add routes with `.get()`, `.post()` as needed
+4. Add lifecycle hooks with `.onBeforeHandle()`, `.onAfterHandle()`, `.onError()`
 
 ### 4. Configure Plugin Options
 
-> Goal: รองรับ options และ type safety
+> Goal: support options and type safety
 
-1. รับ options object เป็น parameter
-2. ใช้ `asconst` หรือ Zod สำหรับ validate options
-3. ส่ง generic types ผ่าน `Elysia<...>` ถ้าจำเป็น
-4. ใช้ `seed` สำหรับ deduplication
+1. Take an options object as a parameter
+2. Use `asconst` or Zod to validate options
+3. Pass generic types through `Elysia<...>` if needed
+4. Use `seed` for deduplication
 
 ### 5. Build Package
 
-> Goal: build สำหรับ npm
+> Goal: build for npm
 
-1. ติดตั้ง `tsup` หรือ `bun build`
-2. ตั้งค่า output `cjs` และ `esm`
-3. external `elysia` ใน `package.json`
-4. ระบุ `types`, `main`, `exports` ใน `package.json`
+1. Install `tsup` or `bun build`
+2. Set the output to `cjs` and `esm`
+3. Mark `elysia` as external in `package.json`
+4. Declare `types`, `main`, `exports` in `package.json`
 
 ### 6. Add Tests
 
-> Goal: ทดสอบ plugin
+> Goal: test the plugin
 
-1. สร้าง `test/plugin.test.ts`
-2. สร้าง Elysia app แล้ว `.use(plugin({ ... }))`
-3. เรียก `app.handle(new Request('http://localhost/...'))` เพื่อทดสอบ
-4. รัน `bun test`
+1. Create `test/plugin.test.ts`
+2. Create an Elysia app, then `.use(plugin({ ... }))`
+3. Call `app.handle(new Request('http://localhost/...'))` to test
+4. Run `bun test`
 
 ### 7. Add Examples
 
-> Goal: สร้างตัวอย่างการใช้งาน
+> Goal: create usage examples
 
-1. สร้าง `examples/basic.ts`
-2. สร้าง `examples/with-options.ts`
-3. รันตัวอย่างให้ผ่าน
+1. Create `examples/basic.ts`
+2. Create `examples/with-options.ts`
+3. Run the examples to make sure they pass
 
 ### 8. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
-- ใช้ function ที return `new Elysia()` เป็น pattern เริ่มต้น
-- `elysia` ต้องอยู่ใน `peerDependencies` ไม่ bundle เข้าไป
-- ตั้งชื่อ plugin ด้วย `elysia-{name}`
-- ใช้ lifecycle hooks สำหรับ cross-cutting concerns
-- ทดสอบด้วย `app.handle()` โดยไม่ต้อง listen port
+- Use a function returning `new Elysia()` as the starting pattern
+- `elysia` must be in `peerDependencies`, not bundled in
+- Name the plugin `elysia-{name}`
+- Use lifecycle hooks for cross-cutting concerns
+- Test with `app.handle()` without listening on a port
 
-- ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-bun-cli when needed
+- Use /follow-create-sdk when needed
+- Use /follow-lang-typescript when needed
+- Use /run-test when needed
+- Use /report when needed
 
 ## Expected Outcome
 
-- Elysia plugin package build ผ่าน
-- Plugin สามารถ `.use()` ใน Elysia app ได้
-- Type inference ของ context ทำงาน
-- Tests ผ่าน
-- Examples รันได้
+- The Elysia plugin package builds successfully
+- The plugin can be `.use()`-ed in an Elysia app
+- Context type inference works
+- Tests pass
+- Examples run
 

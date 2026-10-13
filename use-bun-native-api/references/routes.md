@@ -31,7 +31,7 @@
 
 ## Node.js Compat (/reference/node/*)
 
-- `/reference/node/fs`, `/reference/node/path`, `/reference/node/http`, `/reference/node/crypto` ฯลฯ — Node.js 26.3.0 compat layer
+- `/reference/node/fs`, `/reference/node/path`, `/reference/node/http`, `/reference/node/crypto`, etc. — Node.js 26.3.0 compat layer
 
 ## Docs Pages Per Category
 

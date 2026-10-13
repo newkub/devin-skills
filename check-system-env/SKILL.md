@@ -1,6 +1,6 @@
 ---
 name: check-system-env
-description: ตรวจสอบ OS, shell, environment variables และ global root paths
+description: Check OS, shell, environment variables, and global root paths
 argument-hint: "[scope]"
 related:
   - check-code-structure
@@ -12,19 +12,19 @@ related:
 
 ## Goal
 
-ตรวจสอบ system environment ของ Windsurf รวมถึง OS, shell, environment variables และ global root paths
+Inspect Windsurf's system environment including OS, shell, environment variables, and global root paths
 
 ## Scope
 
-ตรวจสอบ:
+Inspect:
 - Operating System (OS)
-- Shell type และ version
-- Environment variables ที่สำคัญ
+- Shell type and version
+- Important environment variables
 - Global root paths (workflows, skills, rules)
 - MCP configuration
 - CLI programs inventory
 - Browser history analysis
-- User behavior analysis และ development environment → ดู `references/extended-checks.md` (steps 11-13)
+- User behavior analysis and development environment → see `references/extended-checks.md` (steps 11-13)
 
 ## Execute
 
@@ -32,10 +32,10 @@ related:
 
 > Goal: Check Operating System
 
-ตรวจสอบ OS ที่ใช้:
+Check the OS in use:
 
-1. รัน `$PSVersionTable.OS` เพื่อแสดง OS version
-2. รัน `[System.Environment]::OSVersion.VersionString` เพื่อแสดง OS version string
+1. Run `$PSVersionTable.OS` to show the OS version
+2. Run `[System.Environment]::OSVersion.VersionString` to show the OS version string
 
 ```powershell
 # Check OS
@@ -45,10 +45,10 @@ $PSVersionTable.OS
 
 ### 2. Check Shell Information
 
-> Goal: ตรวจสอบ shell type และ version
+> Goal: Check shell type and version
 
-1. รัน `$PSVersionTable.PSVersion` เพื่อแสดง PowerShell version
-2. รัน `$PSVersionTable.PSEdition` เพื่อแสดง shell type
+1. Run `$PSVersionTable.PSVersion` to show the PowerShell version
+2. Run `$PSVersionTable.PSEdition` to show the shell type
 
 ```powershell
 # Check PowerShell version
@@ -60,13 +60,13 @@ $PSVersionTable.PSEdition
 
 ### 3. Check Environment Variables
 
-> Goal: ตรวจสอบ environment variables ที่สำคัญ
+> Goal: Check important environment variables
 
-1. รัน `$env:PATH -split ';'` เพื่อแสดง PATH
-2. รัน `$env:USERPROFILE` เพื่อแสดง user profile path
-3. รัน `$env:HOME` เพื่อแสดง home path
-4. รัน `$env:CODEIUM_HOME` เพื่อแสดง Codeium home
-5. รัน `$env:WINDSURF_HOME` เพื่อแสดง Windsurf home
+1. Run `$env:PATH -split ';'` to show PATH
+2. Run `$env:USERPROFILE` to show the user profile path
+3. Run `$env:HOME` to show the home path
+4. Run `$env:CODEIUM_HOME` to show the Codeium home
+5. Run `$env:WINDSURF_HOME` to show the Windsurf home
 
 ```powershell
 # Check PATH
@@ -85,12 +85,12 @@ $env:WINDSURF_HOME
 
 > Goal: Check Global Root Paths
 
-ตรวจสอบ global root paths ของ Windsurf:
+Check Windsurf's global root paths:
 
-1. ตรวจสอบ `$env:USERPROFILE\.codeium\windsurf\global_workflows`
-2. ตรวจสอบ `$env:USERPROFILE\.codeium\windsurf\skills`
-3. ตรวจสอบ `$env:USERPROFILE\.codeium\windsurf\global_rules`
-4. ตรวจสอบ `$env:USERPROFILE\.codeium\windsurf\mcp_config.json`
+1. Check `$env:USERPROFILE\.codeium\windsurf\global_workflows`
+2. Check `$env:USERPROFILE\.codeium\windsurf\skills`
+3. Check `$env:USERPROFILE\.codeium\windsurf\global_rules`
+4. Check `$env:USERPROFILE\.codeium\windsurf\mcp_config.json`
 
 ```powershell
 # Global workflows path
@@ -108,9 +108,9 @@ $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 
 ### 5. Check MCP Configuration
 
-> Goal: ตรวจสอบ MCP configuration
+> Goal: Check MCP configuration
 
-1. รัน `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` เพื่อแสดง MCP config
+1. Run `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` to show the MCP config
 
 ```powershell
 # Read MCP config
@@ -119,9 +119,9 @@ Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 
 ### 6. Check Global Workflows
 
-> Goal: ตรวจสอบ global workflows ที่มี
+> Goal: Check the existing global workflows
 
-1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"` เพื่อแสดงรายการ workflows
+1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"` to list the workflows
 
 ```powershell
 # List global workflows
@@ -132,9 +132,9 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"
 
 > Goal: Check Global Skills
 
-ตรวจสอบ global skills ที่มี:
+Check the existing global skills:
 
-1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"` เพื่อแสดงรายการ skills
+1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"` to list the skills
 
 ```powershell
 # List global skills
@@ -143,9 +143,9 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"
 
 ### 8. Check Global Rules
 
-> Goal: ตรวจสอบ global rules ที่มี
+> Goal: Check the existing global rules
 
-1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"` เพื่อแสดงรายการ rules
+1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"` to list the rules
 
 ```powershell
 # List global rules
@@ -154,13 +154,13 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"
 
 ### 9. Check CLI Programs Inventory
 
-> Goal: ตรวจสอบ CLI programs ที่มีในเครื่อง
+> Goal: Check the CLI programs installed on the machine
 
-1. รัน `Get-Command git, npm, bun, pnpm, yarn, docker, node, python, rust, go, cargo -ErrorAction SilentlyContinue` เพื่อแสดง CLI tools ที่สำคัญ
-2. รัน `where.exe git npm bun pnpm yarn docker node python 2>$null` เพื่อแสดง paths ของ CLI tools
-3. รัน `npm list -g --depth=0 2>$null` เพื่อแสดง global npm packages
-4. รัน `bun pm ls -g 2>$null` เพื่อแสดง global bun packages
-5. รัน `pip list 2>$null` เพื่อแสดง Python packages
+1. Run `Get-Command git, npm, bun, pnpm, yarn, docker, node, python, rust, go, cargo -ErrorAction SilentlyContinue` to show the important CLI tools
+2. Run `where.exe git npm bun pnpm yarn docker node python 2>$null` to show the CLI tool paths
+3. Run `npm list -g --depth=0 2>$null` to show the global npm packages
+4. Run `bun pm ls -g 2>$null` to show the global bun packages
+5. Run `pip list 2>$null` to show the Python packages
 
 ```powershell
 # Check CLI tools
@@ -183,12 +183,12 @@ pip list 2>$null
 
 > Goal: Check Browser History Analysis
 
-ตรวจสอบ browser history paths และสถานะ:
+Check browser history paths and their status:
 
-1. ตรวจสอบ `$env:LOCALAPPDATA\Google\Chrome\User Data\Default\History` (Chrome)
-2. ตรวจสอบ `$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\History` (Brave)
-3. ตรวจสอบ `$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\History` (Edge)
-4. ตรวจสอบ `$env:APPDATA\Mozilla\Firefox\Profiles` (Firefox)
+1. Check `$env:LOCALAPPDATA\Google\Chrome\User Data\Default\History` (Chrome)
+2. Check `$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\History` (Brave)
+3. Check `$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\History` (Edge)
+4. Check `$env:APPDATA\Mozilla\Firefox\Profiles` (Firefox)
 
 ```powershell
 # Check browser history paths
@@ -208,21 +208,21 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 
 ### 1. OS Detection
 
-ตรวจสอบ OS อย่างถูกต้อง:
-- Windows: ใช้ PowerShell commands
-- macOS/Linux: ใช้ bash commands
-- ระบุ OS version และ architecture
+Detect the OS correctly:
+- Windows: use PowerShell commands
+- macOS/Linux: use bash commands
+- Report the OS version and architecture
 
 ### 2. Shell Detection
 
-ตรวจสอบ shell type:
+Detect the shell type:
 - PowerShell (Core/Desktop)
 - Bash/Zsh (macOS/Linux)
-- Shell version และ edition
+- Shell version and edition
 
 ### 3. Path Validation
 
-ตรวจสอบ paths ว่ามีอยู่จริง:
+Verify that the paths exist:
 - Global workflows path
 - Global skills path
 - Global rules path
@@ -230,19 +230,19 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 
 ### 4. Report Format
 
-รายงานในรูปแบบตารางตาม `/report`:
-- ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
-- ใช้ headers และ alignment ที่เหมาะสม
-- ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
+Report in table format per `/report`:
+- Use a "No." column first, ordered 1, 2, 3, ...
+- Use appropriate headers and alignment
+- Use symbols (✅, ❌, ⚠️) for status
 
-- ใช้ /check-code-structure, /update-devin-global-skills, /alternative ถ้าจำเป็น
+- Use /check-code-structure, /update-devin-global-skills, /alternative if needed
 
 ## Expected Outcome
 
-- รายงาน OS, shell, environment variables ในตาราง
-- รายงาน global root paths ในตาราง
-- รายงาน MCP configuration ในตาราง
-- รายงาน global workflows/skills/rules ในตาราง
-- รายงาน CLI programs inventory ในตาราง
-- รายงาน browser history analysis ในตาราง
-- รายงาน development environment ในตาราง
+- Report OS, shell, and environment variables in a table
+- Report global root paths in a table
+- Report MCP configuration in a table
+- Report global workflows/skills/rules in a table
+- Report CLI programs inventory in a table
+- Report browser history analysis in a table
+- Report development environment in a table

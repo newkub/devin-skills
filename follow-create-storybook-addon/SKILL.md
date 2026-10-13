@@ -1,6 +1,6 @@
 ---
 name: follow-create-storybook-addon
-description: สร้าง Storybook addon — manager UI, preview decorators, preset และ publish
+description: Build a Storybook addon — manager UI, preview decorators, preset, and publish
 argument-hint: "[addon-name]"
 related:
   - follow-create-sdk
@@ -11,37 +11,37 @@ related:
 
 ## Goal
 
-สร้าง Storybook addon ตาม official architecture — manager API (panels/tools/tabs), preview decorators, preset และ packaging ที่ publish ได้
+Build Storybook addons following the official architecture — manager API (panels/tools/tabs), preview decorators, preset, and publishable packaging
 
 ## Scope
 
-ใช้สำหรับ project ที่ต้องการสร้าง Storybook addon ใหม่ หรือแปลง feature เดิมให้เป็น addon
+For projects that need a new Storybook addon, or to turn an existing feature into an addon
 
-- Package: `storybook` + addon APIs (`storybook/manager-api`, `preview-api`, `theming`) — ยืนยันเวอร์ชันและ migration guide ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
-- Storybook 9 ใช้ imports จาก `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — `ห้ามใช้` `@storybook/addons`, `@storybook/api` (deprecated)
-- `@storybook/addon-kit` ถูก archive แล้ว — scaffold ด้วยมือตาม structure ด้านล่าง
+- Package: `storybook` + addon APIs (`storybook/manager-api`, `preview-api`, `theming`) — always confirm the latest version and migration guide with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Storybook 9 uses imports from `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — do `not use` `@storybook/addons`, `@storybook/api` (deprecated)
+- `@storybook/addon-kit` has been archived — scaffold manually following the structure below
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Inspect the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review libraries ที่จะใช้ (react, storybook version, bundler)
-3. ตรวจว่า target Storybook version ตรงกับ API ที่ใช้ (9.x = `storybook/manager-api`)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the libraries to be used (react, storybook version, bundler)
+3. Check that the target Storybook version matches the APIs used (9.x = `storybook/manager-api`)
 
 ### 2. Prepare
 
-> Goal: ตรวจสอบ requirements ก่อนเริ่ม
+> Goal: Check requirements before starting
 
-1. Node >= 18, Bun/pnpm/npm พร้อมใช้
-2. มี Storybook project สำหรับ test local (หรือสร้าง sandbox `bunx storybook@latest init` ใน subfolder)
-3. ตั้งชื่อ package `storybook-addon-<name>` — prefix นี้จำเป็นสำหรับ addon catalog
+1. Node >= 18, Bun/pnpm/npm available
+2. Have a Storybook project to test the local addon (or create a sandbox with `bunx storybook@latest init` in a subfolder)
+3. Name the package `storybook-addon-<name>` — this prefix is required for the addon catalog
 
 ### 3. Addon Structure
 
-> Goal: สร้างโครง addon มาตรฐาน
+> Goal: Create the standard addon skeleton
 
 ```text
 src/
@@ -50,36 +50,36 @@ src/
   preview.ts       — decorators / globals (preview-side)
   preset.ts        — managerEntries, previewAnnotations (node-side)
   index.ts         — public API exports
-  components/      — React components สำหรับ panel/tool UI
+  components/      — React components for panel/tool UI
 ```
 
 ### 4. Manager Side
 
-> Goal: register addon ใน manager UI
+> Goal: Register the addon in the manager UI
 
-1. `src/manager.ts` ใช้ `addons.register(ADDON_ID, api => ...)` จาก `storybook/manager-api`
-2. เพิ่ม UI types ตามต้องการ:
-   - `types.PANEL` — panel ใน addons panel (ใช้ `AddonPanel` จาก `storybook/internal/components`)
-   - `types.TOOL` — toolbar button (ใช้ `ToggleButton`/`IconButton`)
-   - `types.TAB` — tab ระดับ story
+1. In `src/manager.ts`, use `addons.register(ADDON_ID, api => ...)` from `storybook/manager-api`
+2. Add UI types as needed:
+   - `types.PANEL` — a panel in the addons panel (use `AddonPanel` from `storybook/internal/components`)
+   - `types.TOOL` — a toolbar button (use `ToggleButton`/`IconButton`)
+   - `types.TAB` — a story-level tab
    - `types.SIDEBAR_BOTTOM`/`types.experimental_SIDEBAR_TOP` — sidebar
-3. ใช้ `useGlobals`, `useStorybookApi`, `useChannel` สำหรับ state + communication
-4. ตั้ง keyboard shortcut ผ่าน `api.setAddonShortcut()`
-5. icons ใช้ `@storybook/icons`, theming ใช้ `storybook/theming` (`styled`, `themes`)
+3. Use `useGlobals`, `useStorybookApi`, `useChannel` for state + communication
+4. Set keyboard shortcuts via `api.setAddonShortcut()`
+5. Use `@storybook/icons` for icons and `storybook/theming` for theming (`styled`, `themes`)
 
 ### 5. Preview Side
 
-> Goal: ส่ง decorators/globals เข้า preview iframe
+> Goal: Feed decorators/globals into the preview iframe
 
-1. `src/preview.ts` export `decorators`, `globals`, `initialGlobals` ตามต้องการ
-2. ใช้ `makeDecorator` จาก `storybook/preview-api` สำหรับ decorator ที่อ่าน parameters
-3. สื่อสาร manager↔preview ผ่าน `useChannel` + `addons.getChannel()` (events ใน constants)
+1. In `src/preview.ts`, export `decorators`, `globals`, `initialGlobals` as needed
+2. Use `makeDecorator` from `storybook/preview-api` for decorators that read parameters
+3. Communicate manager↔preview via `useChannel` + `addons.getChannel()` (events in constants)
 
 ### 6. Preset And Packaging
 
-> Goal: package addon ให้ Storybook resolve ได้
+> Goal: Package the addon so Storybook can resolve it
 
-1. `package.json` ต้องมี `bundler` field:
+1. `package.json` must have a `bundler` field:
 
 ```json
 {
@@ -102,66 +102,66 @@ src/
 }
 ```
 
-2. build ด้วย `tsup` (entries ตาม bundler field) — `tsup src/index.ts src/manager.ts src/preview.ts src/preset.ts --format esm,cjs --dts`
-3. `storybook` ต้องเป็น `devDependency`/`peerDependency` — ห้าม bundle storybook packages เข้า dist
+2. Build with `tsup` (entries per the bundler field) — `tsup src/index.ts src/manager.ts src/preview.ts src/preset.ts --format esm,cjs --dts`
+3. `storybook` must be a `devDependency`/`peerDependency` — never bundle storybook packages into dist
 
 ### 7. Test Locally
 
-> Goal: verify addon ทำงานจริงใน Storybook
+> Goal: Verify the addon actually works in Storybook
 
-1. ลิงก์ addon เข้า test project: เพิ่มใน `.storybook/main.ts` → `addons: ['<path-or-package>']`
-2. รัน `storybook dev` → เช็ค panel/tool/tab render ถูก, globals toggle ได้, channel events ส่งถึงกัน
-3. เช็ค production build: `storybook build` ต้องไม่พัง
-4. ใช้ `/capture all` capture panel UI เป็น evidence ถ้าต้องการ
+1. Link the addon into the test project: add to `.storybook/main.ts` → `addons: ['<path-or-package>']`
+2. Run `storybook dev` → check that the panel/tool/tab renders correctly, globals toggle, and channel events reach both sides
+3. Check the production build: `storybook build` must not break
+4. Use `/capture all` to capture the panel UI as evidence if needed
 
 ### 8. Publish
 
-> Goal: publish addon เข้า catalog
+> Goal: Publish the addon to the catalog
 
-1. ใช้ `/follow-tool-release-it` หรือ `/follow-tool-auto-it` สำหรับ release flow
-2. เพิ่ม `"keywords": ["storybook-addons"]` เพื่อให้ขึ้น addon catalog อัตโนมัติ
-3. มี `README.md` พร้อม usage + screenshot — catalog ดึงจาก npm
+1. Use `/follow-tool-release-it` or `/follow-tool-auto-it` for the release flow
+2. Add `"keywords": ["storybook-addons"]` so it appears in the addon catalog automatically
+3. Have a `README.md` with usage + screenshot — the catalog pulls from npm
 
 ### 9. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. API Correctness
 
-- Storybook 9: ใช้ `storybook/manager-api`, `storybook/preview-api`, `storybook/theming`, `storybook/internal/components` เท่านั้น
-- ห้าม import จาก `@storybook/addons`, `@storybook/api`, `@storybook/components` (ถูกย้าย/deprecated)
-- `@storybook/icons` ยังใช้ได้ปกติ
+- Storybook 9: use only `storybook/manager-api`, `storybook/preview-api`, `storybook/theming`, `storybook/internal/components`
+- Never import from `@storybook/addons`, `@storybook/api`, `@storybook/components` (moved/deprecated)
+- `@storybook/icons` is still fine to use
 
 ### 2. Architecture Separation
 
-- manager code ห้าม import preview-only code และกลับกัน — แชร์ผ่าน `constants.ts` เท่านั้น
-- `src/preset.ts` เป็น node-side — ห้าม import React/browser APIs
-- addon ต้องทำงานโดยไม่ต้อง config เพิ่มใน user project (convention over config)
+- Manager code must never import preview-only code and vice versa — share only through `constants.ts`
+- `src/preset.ts` is node-side — never import React/browser APIs
+- The addon must work without extra config in the user project (convention over config)
 
 ### 3. Packaging
 
-- `bundler` field ใน package.json เป็น required สำหรับ entry resolution
-- ห้าม bundle `storybook`, `react`, `react-dom` เข้า dist — ใช้ peer/dev deps
-- keyword `storybook-addons` จำเป็นสำหรับ catalog
+- The `bundler` field in package.json is required for entry resolution
+- Never bundle `storybook`, `react`, `react-dom` into dist — use peer/dev deps
+- The keyword `storybook-addons` is required for the catalog
 
 ## References
 
 - Writing addons: https://storybook.js.org/docs/addons/writing-addons
 - Addon API (manager): https://storybook.js.org/docs/addons/addons-api
 - Addon migration guide: https://storybook.js.org/docs/addons/addon-migration-guide
-- ใช้ Context7 `/storybookjs/storybook` ถ้าต้องการ docs เพิ่มเติม
+- Use Context7 `/storybookjs/storybook` for additional docs
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- Use /follow-create-sdk if needed
+- Use /use-my-packages-on-registry if needed
 
 ## Expected Outcome
 
-- Addon ที่ register panel/tool/tab ทำงานใน Storybook 9
-- Structure มาตรฐาน: `manager.ts`, `preview.ts`, `preset.ts`, `constants.ts`
-- `package.json` มี `bundler` + `exports` + `keywords` ครบ publish ได้
-- Tested ใน local Storybook project ทั้ง dev และ build
+- An addon whose registered panel/tool/tab works in Storybook 9
+- Standard structure: `manager.ts`, `preview.ts`, `preset.ts`, `constants.ts`
+- `package.json` has a complete `bundler` + `exports` + `keywords` and can be published
+- Tested in a local Storybook project in both dev and build

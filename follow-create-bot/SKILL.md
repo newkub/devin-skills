@@ -1,6 +1,6 @@
 ---
 name: follow-create-bot
-description: สร้าง bot สำหรับ Slack, Discord, Telegram, LINE หรือ GitHub App/bot ด้วย TypeScript/Bun
+description: Build a bot for Slack, Discord, Telegram, LINE, or a GitHub App/bot with TypeScript/Bun
 argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
   - deep-review
@@ -11,23 +11,23 @@ related:
 
 ## Goal
 
-สร้าง bot สำหรับแพลตฟอร์มที่ระบุ — Slack, Discord, Telegram, LINE หรือ GitHub (App/bot) — ด้วย project structure, commands/events และ deployment ที่ถูกต้อง
+Build a bot for the specified platform — Slack, Discord, Telegram, LINE, or GitHub (App/bot) — with the right project structure, commands/events, and deployment
 
 ## Scope
 
-- ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
-- ทำตาม `/deep-review` สำหรับ runtime และ dependencies
+- Use when creating a chat bot or a GitHub automation bot
+- Follow `/deep-review` for runtime and dependencies
 
-- SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
-- Breaking: `@line/bot-sdk` v11 ลบ legacy `Client`/`OAuth` — ใช้ `LineBotClient.fromChannelAccessToken()` หรือ `messagingApi.MessagingApiClient` แทน
-- Breaking: `@slack/bolt` v5 ต้อง Node.js ≥20, ลบ `agent`/`clientTls` options และ `WorkflowStep`/`app.step()` (ใช้ `app.function()`)
-- Breaking: `discord.js` v14 deprecate event `ready` → ใช้ `Events.ClientReady` (ถูกลบใน v15)
+- SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-devin-global-skills`)
+- Breaking: `@line/bot-sdk` v11 removed the legacy `Client`/`OAuth` — use `LineBotClient.fromChannelAccessToken()` or `messagingApi.MessagingApiClient` instead
+- Breaking: `@slack/bolt` v5 requires Node.js ≥20, removes the `agent`/`clientTls` options and `WorkflowStep`/`app.step()` (use `app.function()`)
+- Breaking: `discord.js` v14 deprecates the `ready` event → use `Events.ClientReady` (removed in v15)
 
 ## Execute
 
 ### 1. Select Platform
 
-> Goal: ระบุ platform และอ่านรายละเอียดเฉพาะ platform
+> Goal: Identify the platform and read its platform-specific details
 
 | Platform   | Skill |
 |------------|----------|
@@ -38,32 +38,32 @@ related:
 | GitHub     | `/follow-create-bot-github` — GitHub bot, probot, webhooks |
 | GitHub App | `/follow-create-bot-github-app` — app manifest, JWT auth, installation |
 
-1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
-2. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุดของ platform SDK จากนั้นทำ `/deep-review`
-3. เรียก skill ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+1. Read the platform from the argument — if unspecified → run `/ask-me`
+2. Run `/deep-research` + `/follow-best-practice` to confirm the platform SDK's latest versions and patterns, then run `/deep-review`
+3. Invoke the selected platform's skill and follow its flow — do not execute directly from this table
 
 ### 2. Setup Project
 
-> Goal: project structure พร้อมใช้งาน
+> Goal: Project structure ready to use
 
-1. สร้าง project ตาม skill ของ platform ที่เลือก
-2. ติดตั้ง SDK/dependencies ด้วย `bun add`
-3. เก็บ tokens/secrets ผ่าน `/follow-secret-manager` — ห้าม hardcode
+1. Create the project per the selected platform's skill
+2. Install the SDK/dependencies with `bun add`
+3. Keep tokens/secrets via `/follow-secret-manager` — never hardcode
 
 ### 3. Implement And Ship
 
-> Goal: bot ทำงานได้จริงพร้อม deploy
+> Goal: The bot really works and is ready to deploy
 
-1. Implement commands/events ตาม skill ของ platform
-2. ทดสอบ local (Socket Mode / polling / webhook tunnel)
-3. เตรียม deploy target และ document usage
+1. Implement commands/events per the platform's skill
+2. Test locally (Socket Mode / polling / webhook tunnel)
+3. Prepare the deploy target and document usage
 
 ## Rules
 
-- ห้าม commit tokens หรือ webhook secrets
-- ทำตาม skill ของ platform — ห้ามเดา API
-- ใช้ `/open-web-for-config-secret` เพื่อชี้ user ไปสร้าง bot token เอง
+- Never commit tokens or webhook secrets
+- Follow the platform's skill — never guess the API
+- Use `/open-web-for-config-secret` to point the user to create the bot token themselves
 
 ## Expected Outcome
 
-- Bot สำหรับ platform ที่เลือกทำงานได้ พร้อม structure และ secrets management ถูกต้อง
+- A working bot for the chosen platform with correct structure and secrets management

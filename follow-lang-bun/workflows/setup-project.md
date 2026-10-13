@@ -1,6 +1,6 @@
 # Setup Bun Project Workflow
 
-> Goal: สร้าง Bun project ใหม่พร้อมโครงสร้างมาตรฐาน
+> Goal: create a new Bun project with a standard structure
 
 ## 1. Scaffold
 
@@ -10,7 +10,7 @@ bun init -y         # defaults
 bun create <tpl>    # community templates (vite, elysia, next)
 ```
 
-`bun init` สร้าง `package.json`, `tsconfig.json`, `index.ts`, `.gitignore`, `bunfig.toml` (ตาม template)
+`bun init` creates `package.json`, `tsconfig.json`, `index.ts`, `.gitignore`, `bunfig.toml` (per the template)
 
 ## 2. Directory Structure
 
@@ -19,24 +19,24 @@ my-app/
   src/
     index.ts        # entry point
     lib/            # modules
-  tests/ หรือ src/**/*.test.ts
+  tests/ or src/**/*.test.ts
   package.json
   bunfig.toml
   tsconfig.json
-  bun.lock          # generated — commit เสมอ
+  bun.lock          # generated — always commit
   .env              # auto-loaded — gitignore
-  .env.example      # commit แทน .env
+  .env.example      # commit this instead of .env
 ```
 
-- Single package: `src/` flat พอ — อย่าสร้างโครงสร้างเกิน
-- Monorepo: `packages/<name>/` + root `package.json` มี `"workspaces": ["packages/*"]`
+- Single package: a flat `src/` is enough — don't over-engineer the structure
+- Monorepo: `packages/<name>/` + root `package.json` with `"workspaces": ["packages/*"]`
 
 ## 3. package.json Essentials
 
 ```jsonc
 {
   "name": "my-app",
-  "module": "src/index.ts",     // entry สำหรับ bundlers
+  "module": "src/index.ts",     // entry for bundlers
   "type": "module",
   "scripts": {
     "dev": "bun --watch src/index.ts",
@@ -52,8 +52,8 @@ my-app/
 }
 ```
 
-- `module`/`main` ชี้ `.ts` ได้ — Bun/bundlers เข้าใจ
-- อย่าใส่ `engines.bun` เว้นแต่จำเป็น — `packageManager` field ไม่จำเป็น (bun.lock พอ)
+- `module`/`main` may point at `.ts` — Bun/bundlers understand it
+- Don't add `engines.bun` unless needed — the `packageManager` field isn't necessary (`bun.lock` suffices)
 
 ## 4. bunfig.toml Skeleton
 
@@ -73,7 +73,7 @@ coverage = true
 
 ## 5. tsconfig
 
-ใช้ recommended tsconfig ใน [../references/typescript.md](../references/typescript.md)
+Use the recommended tsconfig in [../references/typescript.md](../references/typescript.md)
 
 ## 6. Verify
 
@@ -85,5 +85,5 @@ bunx tsc --noEmit        # typecheck
 
 ## 7. Git Hygiene
 
-`.gitignore` ขั้นต่ำ: `node_modules`, `dist`, `.env`, `*.log`, `coverage`
+Minimum `.gitignore`: `node_modules`, `dist`, `.env`, `*.log`, `coverage`
 Commit: `bun.lock`, `bunfig.toml`, `tsconfig.json`, `.env.example`

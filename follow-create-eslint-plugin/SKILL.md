@@ -1,6 +1,6 @@
 ---
 name: follow-create-eslint-plugin
-description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
+description: Create custom ESLint plugins with JavaScript/TypeScript
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -13,120 +13,120 @@ related:
 ---
 ## Goal
 
-สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์
+Create custom ESLint plugins with JavaScript/TypeScript to add project-specific rules
 
 ## Scope
 
-ใช้สำหรับสร้าง custom ESLint plugins ด้วย JavaScript/TypeScript ครอบคลุม plugin entry, custom rules, metadata, testing และ flat config
+Use for creating custom ESLint plugins with JavaScript/TypeScript, covering the plugin entry, custom rules, metadata, testing, and flat config
 
-- Packages: `eslint` (10.x — flat config only, Node >= 20.19, deprecated `context`/`SourceCode` members removed, fixer text ต้องเป็น string, RuleTester เข้มขึ้น), `typescript-eslint` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `eslint` (10.x — flat config only, Node >= 20.19, deprecated `context`/`SourceCode` members removed, fixer text must be a string, stricter RuleTester), `typescript-eslint` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (don't pin in files — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create eslint plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+3. Record the rationale for the chosen stack and libraries for future reference (create eslint plugins)
 
 ### 2. Setup
 
-> Goal: เตรียม project directory และ dependencies สำหรับ plugin
+> Goal: prepare the project directory and dependencies for the plugin
 
-1. สร้าง project directory สำหรับ plugin
-2. สร้าง `package.json` ด้วย npm package name เป็น `eslint-plugin-*`
-3. ติดตั้ง dependencies ที่จำเป็น
+1. Create the project directory for the plugin
+2. Create `package.json` with the npm package name as `eslint-plugin-*`
+3. Install the necessary dependencies
 
 ### 3. Create Plugin Entry
 
-> Goal: สร้าง entry file ที่ export plugin object พร้อม properties ครบถ้วน
+> Goal: create the entry file exporting a plugin object with complete properties
 
-1. สร้าง entry file ที่ export plugin object
-2. กำหนด properties: `meta` (`name`, `version`), `configs`, `rules`, `processors`
-3. Export ESM (`export default plugin`) หรือ CommonJS (`module.exports = plugin`) — ถ้าต้องรองรับทั้ง flat config และ eslintrc ใช้ dual export: `plugin.configs["flat/recommended"]` (array ที่มี `plugins: { ns: plugin }`) + `plugin.configs.recommended` (eslintrc object `plugins: ["ns"]`)
+1. Create the entry file that exports the plugin object
+2. Define the properties: `meta` (`name`, `version`), `configs`, `rules`, `processors`
+3. Export ESM (`export default plugin`) or CommonJS (`module.exports = plugin`) — to support both flat config and eslintrc, use a dual export: `plugin.configs["flat/recommended"]` (an array with `plugins: { ns: plugin }`) + `plugin.configs.recommended` (eslintrc object `plugins: ["ns"]`)
 
 ### 4. Create Custom Rules
 
-> Goal: สร้าง rule files และ implement rule logic ด้วย meta และ create function
+> Goal: create rule files and implement rule logic with meta and create function
 
-1. สร้าง rule files ใน rules directory — rule export object ที่มี `meta` + `create(context)`
-2. `create(context)` return visitor object — key เป็น node type/selector (เรียกตอน going down), `<type>:exit` (going up), หรือ code path events (`onCodePathStart`/`onCodePathEnd`)
-3. ใช้ `context.options` (array ไม่รวม severity), `context.settings` (shared config), `context.sourceCode` (`getText`, `getFirstToken`/`getLastToken`/`getTokenBefore`/`getTokenAfter`, `getAncestors`, `getScope`, `getDeclaredVariables`, `isSpaceBetween`, comments APIs) — report ผ่าน `context.report()` หรือ `messageId`
+1. Create rule files in the rules directory — each rule exports an object with `meta` + `create(context)`
+2. `create(context)` returns a visitor object — keys are node types/selectors (called going down), `<type>:exit` (going up), or code path events (`onCodePathStart`/`onCodePathEnd`)
+3. Use `context.options` (an array excluding severity), `context.settings` (shared config), `context.sourceCode` (`getText`, `getFirstToken`/`getLastToken`/`getTokenBefore`/`getTokenAfter`, `getAncestors`, `getScope`, `getDeclaredVariables`, `isSpaceBetween`, comments APIs) — report via `context.report()` or `messageId`
 
 ### 5. Configure Rule Metadata
 
-> Goal: กำหนด type, docs, fixable และ schema ของ rule ให้ครบถ้วน
+> Goal: fully define the rule's type, docs, fixable, and schema
 
-1. กำหนด type: problem, suggestion, หรือ layout
-2. เพิ่ม docs สำหรับ documentation
-3. กำหนด fixable ถ้า rule สามารถ auto-fix ได้
-4. กำหนด `schema` (JSON Schema array — validate `context.options` ตามตำแหน่ง) ถ้า rule มี options; `fixable`/`hasSuggestions` เป็น mandatory เมื่อ rule produce fix/suggestions — ถ้าไม่ระบุ ESLint throw error
+1. Define the type: problem, suggestion, or layout
+2. Add docs for documentation
+3. Define `fixable` if the rule can auto-fix
+4. Define `schema` (a JSON Schema array — validates `context.options` by position) if the rule has options; `fixable`/`hasSuggestions` are mandatory when a rule produces fix/suggestions — ESLint throws an error if undeclared
 
 ### 6. Test Plugin
 
-> Goal: ตรวจสอบว่า rules ทำงานถูกต้องผ่าน test files
+> Goal: verify the rules work correctly via test files
 
-1. สร้าง test files สำหรับ rules ด้วย `RuleTester` จาก `eslint` (`new RuleTester()` แล้ว `ruleTester.run('rule-name', rule, { valid, invalid })`)
-2. valid cases ห้ามมี `errors`/`output` (ESLint 10 stricter — test จะ fail); invalid cases ใช้ `messageId` และ assertion options `requireMessage`/`requireLocation`/`requireData` ตามต้องการ
-3. รัน tests ด้วย test runner (`vitest`, `bun:test` หรือ node test runner)
-4. ตรวจสอบว่า rules ทำงานถูกต้อง
+1. Create test files for rules using `RuleTester` from `eslint` (`new RuleTester()`, then `ruleTester.run('rule-name', rule, { valid, invalid })`)
+2. Valid cases must not have `errors`/`output` (ESLint 10 is stricter — the test will fail); invalid cases use `messageId` and assertion options `requireMessage`/`requireLocation`/`requireData` as needed
+3. Run tests with a test runner (`vitest`, `bun:test`, or the node test runner)
+4. Verify that the rules work correctly
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Package Name
 
-- ใช้ naming convention `eslint-plugin-*`
-- Namespace ใน config คือชื่อ package โดยตัด `eslint-plugin-` prefix ออก
-- ตัวอย่าง: `eslint-plugin-example` → namespace `example`
+- Use the `eslint-plugin-*` naming convention
+- The namespace in config is the package name with the `eslint-plugin-` prefix removed
+- Example: `eslint-plugin-example` → namespace `example`
 
 ### 2. Plugin Structure
 
-- Export object ที่มี properties: meta, configs, rules, processors
-- Meta: information เกี่ยวกับ plugin
+- Export an object with the properties: meta, configs, rules, processors
+- Meta: information about the plugin
 - Configs: named configurations
 - Rules: custom rule definitions
-- Processors: named processors สำหรับ preprocess code
+- Processors: named processors for preprocessing code
 
 ### 3. Rule Structure
 
-- meta object ที่มี type, docs (`description`, `dialects`, `url`), messages (อ้างด้วย `messageId`, รองรับ `{{ placeholder }}`), fixable, hasSuggestions, schema
-- type: problem (error/confusing behavior), suggestion (better way), layout (whitespace/formatting)
-- fixable: "code" หรือ "whitespace" ถ้า rule สามารถ auto-fix ได้
-- hasSuggestions: true ถ้า rule สามารถให้ suggestions ได้
-- schema: options schema ถ้า rule มี options
+- A meta object with type, docs (`description`, `dialects`, `url`), messages (referenced by `messageId`, supports `{{ placeholder }}`), fixable, hasSuggestions, schema
+- type: problem (error/confusing behavior), suggestion (a better way), layout (whitespace/formatting)
+- fixable: "code" or "whitespace" if the rule can auto-fix
+- hasSuggestions: true if the rule can provide suggestions
+- schema: the options schema if the rule has options
 
 ### 4. Rule Implementation
 
-- `create(context)` return visitor object — ใช้ `context.report()` เพื่อรายงาน violations
-- ใช้ `context.sourceCode` สำหรับ access source code (ESLint 10 ลบ deprecated `context.getSourceCode()` และ deprecated `context`/`SourceCode` members ออกแล้ว)
-- fixer: `insertTextBefore/After(node|range)`, `remove(Range)`, `replaceText(Range)` — `fix()` คืน fixing object, array หรือ generator; fixes เล็กที่สุด หนึ่ง fix ต่อ message ไม่เปลี่ยน runtime behavior (ESLint รัน rules ซ้ำสูงสุด 10 รอบ)
-- fixer methods ต้องส่ง `text` เป็น string เสมอ (ESLint 10)
-- ใช้ AST traversal สำหรับ analyze code
+- `create(context)` returns a visitor object — use `context.report()` to report violations
+- Use `context.sourceCode` to access source code (ESLint 10 removed the deprecated `context.getSourceCode()` and deprecated `context`/`SourceCode` members)
+- fixer: `insertTextBefore/After(node|range)`, `remove(Range)`, `replaceText(Range)` — `fix()` returns a fixing object, an array, or a generator; the smallest fix, one fix per message, doesn't change runtime behavior (ESLint re-runs rules up to 10 times)
+- Fixer methods must always pass `text` as a string (ESLint 10)
+- Use AST traversal to analyze code
 
 ### 5. Configuration
 
-- ESLint 10 รองรับ flat config เท่านั้น (legacy `.eslintrc` format ถูกลบออกแล้ว) และต้องการ Node.js >= 20.19 (ไม่รองรับ v21, v23)
-- `eslint.config.js`/`mjs`/`cjs` export array ผ่าน `defineConfig` จาก `eslint/config`; config object มี `name`, `files`, `ignores`, `plugins`, `rules`, `languageOptions`, `settings` (shared ให้ทุก rule), `extends`
-- ใน flat config `plugins` เป็น object ที่ map namespace → plugin object (ไม่ใช่ array เหมือน eslintrc) — define plugin inline ใน config ได้
-- Import plugin และ assign namespace; ใช้ `extends` กับ `"ns/recommended"` หรือ `plugin.configs.recommended` ได้ (ต้อง declare `plugins` ก่อน)
-- ใช้ rule format `namespace/rule-name` ใน rules object
+- ESLint 10 supports only flat config (the legacy `.eslintrc` format was removed) and requires Node.js >= 20.19 (v21, v23 unsupported)
+- `eslint.config.js`/`mjs`/`cjs` exports an array via `defineConfig` from `eslint/config`; a config object has `name`, `files`, `ignores`, `plugins`, `rules`, `languageOptions`, `settings` (shared with every rule), `extends`
+- In flat config, `plugins` is an object mapping namespace → plugin object (not an array like eslintrc) — a plugin can be defined inline in the config
+- Import the plugin and assign the namespace; use `extends` with `"ns/recommended"` or `plugin.configs.recommended` (the `plugins` must be declared first)
+- Use the `namespace/rule-name` rule format in the rules object
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-tool-eslint ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /follow-tool-eslint when needed
+- Use /run-lint when needed
+- Use /run-format when needed
 
 ## Expected Outcome
 
-- Plugin package สร้างขึ้นด้วย naming convention ถูกต้อง
-- Custom rules สร้างขึ้นด้วย structure ถูกต้อง
-- Plugin สามารถ configure ใน ESLint config
-- Rules ทำงานได้เมื่อรัน ESLint
+- The plugin package is created with the correct naming convention
+- Custom rules are created with the correct structure
+- The plugin can be configured in the ESLint config
+- Rules work when ESLint runs

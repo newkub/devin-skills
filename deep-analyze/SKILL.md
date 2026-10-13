@@ -1,6 +1,6 @@
 ---
 name: deep-analyze
-description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ ด้วย tools, scripts, CLI, และ external research
+description: Deep project analysis across every dimension via tools, scripts, CLI, and external research
 argument-hint: "[scope|report]"
 related:
   - deep-thinking
@@ -19,19 +19,19 @@ related:
 
 ## Goal
 
-วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ เพื่อเข้าใจ architecture, patterns, quality, และ opportunities สำหรับ improvements
+Analyze the project deeply across every dimension to understand its architecture, patterns, quality, and opportunities for improvements
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์หลายมิติ:
+Covers analysis across many dimensions:
 
-- Architecture และ design patterns
-- Code quality และ technical debt
-- Features และ business logic
-- Dependencies และ tech stack
-- Performance และ security
-- External research สำหรับ best practices
-- Recommendations สำหรับ improvements
+- Architecture and design patterns
+- Code quality and technical debt
+- Features and business logic
+- Dependencies and tech stack
+- Performance and security
+- External research for best practices
+- Recommendations for improvements
 
 ## Execute
 
@@ -39,123 +39,123 @@ related:
 
 | Argument | Workflow |
 |----------|----------|
-| `report`, `report-analysis` | `workflows/report-analysis/SKILL.md` — analysis report พร้อม evidence + root cause chains |
+| `report`, `report-analysis` | `workflows/report-analysis/SKILL.md` — analysis report with evidence + root cause chains |
 
-1. ถ้า argument เป็น `report` → อ่าน `workflows/report-analysis/SKILL.md` แล้วทำตาม flow — ใช้ผล analysis ที่มีอยู่ ไม่ analyze ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-10 ตามปกติ โดย Step 10 อ่าน workflow `report-analysis` มา execute
+1. If the argument is `report` → read `workflows/report-analysis/SKILL.md` and follow its flow — use existing analysis results, don't re-analyze
+2. If no argument is given → run Steps 1-10 as usual, where Step 10 reads and executes the `report-analysis` workflow
 
 ### 1. Deep Thinking And Quick Scan
 
-> Goal: วิเคราะห์ปัญหาและวางแผนก่อนเริ่ม
+> Goal: analyze the problem and plan before starting
 
-1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
-2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
-3. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
-4. ทำ `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
-5. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
-6. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
-   - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
-   - ใช้ `@ast-grep/napi` หรือ `oxc-parser` สำหรับ programmatic AST analysis
-   - รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`
-7. สร้าง structured data สำหรับ analysis
+1. Run `/deep-thinking` to define objectives, sub-problems, assumptions, and an action plan
+2. Define scope and thresholds per ## Rules item 4
+3. Run `/scan-codebase` to see structure, patterns, and quality within 2 minutes
+4. Run `eza --tree --level 2` to see the physical layout and file-level issues within 1 minute
+5. Use `/use-astgrep` to find initial patterns, and `/use-scripts` to collect metrics if needed
+6. If analysis with the review CLI, ast-grep NAPI, or Bun scripts is needed:
+   - Check `tools/review-codebase` and `tools/analyze`
+   - Use `@ast-grep/napi` or `oxc-parser` for programmatic AST analysis
+   - Collect metrics from knip, biome, vitest, madge, `ast-grep scan`
+7. Build structured data for the analysis
 
 ### 2. Structure Analysis
 
-> Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
+> Goal: analyze file structure and symbols
 
-1. ทำ `eza --tree --level 2` หรือ `tree` ดู directory structure
-2. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
-3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
-4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
+1. Run `eza --tree --level 2` or `tree` to view the directory structure
+2. Run `/check-code-structure` to use `ast-grep outline`
+3. Analyze top-level symbols, exports, members, SRP violations, and cohesion
+4. Check file patterns, naming conventions, and cross-layer imports
 
 ### 3. Architecture Analysis
 
-> Goal: วิเคราะห์ architecture และ design patterns
+> Goal: analyze architecture and design patterns
 
-1. ทำ `/use-astgrep` ระบุ architectural patterns
-2. วิเคราะห์ data flow ด้วย `Grep`
-3. ระบุ design patterns และ adherence ต่อ principles
-4. วิเคราะห์ coupling และ cohesion
+1. Use `/use-astgrep` to identify architectural patterns
+2. Analyze data flow with `Grep`
+3. Identify design patterns and adherence to principles
+4. Analyze coupling and cohesion
 
 ### 4. Features Analysis
 
-> Goal: วิเคราะห์ features และ business logic
+> Goal: analyze features and business logic
 
-1. Discovery และ inventory features ทั้งหมด
-2. Categorize และ group features
-3. Document features ในรูปแบบ systematic
-4. Validate และ review features
+1. Discover and inventory all features
+2. Categorize and group features
+3. Document features in a systematic format
+4. Validate and review features
 
 ### 5. Code Quality Analysis
 
-> Goal: วิเคราะห์ code quality อย่างละเอียด
+> Goal: analyze code quality in detail
 
-1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
-2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
-3. หา code smells ด้วย `Grep` multiline mode
-4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
-5. ทำ `/deep-review`, `/follow-tool-knip` แบบ parallel
-6. ตรวจหา hardcoded secrets ด้วย `Grep`
+1. Use `/use-astgrep` to find patterns, anti-patterns, and design patterns
+2. Use `/use-astgrep-programmatic` for AST-based metrics if needed
+3. Find code smells with `Grep` multiline mode
+4. Use `/use-scripts` to compute metrics (complexity, coupling, cohesion)
+5. Run `/deep-review` and `/follow-tool-knip` in parallel
+6. Scan for hardcoded secrets with `Grep`
 
 ### 6. Dependencies And Tech Stack
 
-> Goal: วิเคราะห์ dependencies และ tech stack
+> Goal: analyze dependencies and tech stack
 
-1. อ่าน manifest files แบบ parallel
-2. ระบุ tech stack และ versions
-3. วิเคราะห์ dependency graph
-4. ตรวจสอบ outdated dependencies
-5. วิเคราะห์ security vulnerabilities ด้วย `/run-audit`
+1. Read manifest files in parallel
+2. Identify the tech stack and versions
+3. Analyze the dependency graph
+4. Check for outdated dependencies
+5. Analyze security vulnerabilities with `/run-audit`
 
 ### 7. Performance And Security
 
-> Goal: วิเคราะห์ performance และ security
+> Goal: analyze performance and security
 
-1. วิเคราะห์ performance bottlenecks
-2. ตรวจสอบ security vulnerabilities
-3. วิเคราะห์ error handling และ resilience
-4. ตรวจสอบ caching strategies
-5. วิเคราะห์ database queries ถ้ามี
+1. Analyze performance bottlenecks
+2. Check for security vulnerabilities
+3. Analyze error handling and resilience
+4. Check caching strategies
+5. Analyze database queries if present
 
 ### 8. Domain Dispatch
 
-> Goal: ครอบคลุมทุก dimension — dispatch ไป `review-*` ตาม stack ที่ตรวจพบ
+> Goal: cover every dimension — dispatch to `review-*` per detected stack
 
-- Dispatch catalog ครบ 61 domains พร้อม priority order + pipeline phases → อ่าน `deep-review/SKILL.md` (single source of truth — ห้าม duplicate table ที่นี่)
-- dispatch เฉพาะ domains ที่ stack ตรวจพบ — ห้ามรันทุกตัวทุกครั้ง
-- parallel ผ่าน `/use-subagents` เมื่อหลาย domains
-- findings ทั้งหมดรวมเข้า report เดียวพร้อม domain tag
-- dedup: finding เดียวกันจากหลาย domains → merge เป็น item เดียว tag ทุก domain ที่เจอ
-- ถ้า `/deep-review` รันไปแล้วใน session → reuse findings ของมัน อย่า dispatch ซ้ำ domains เดิม
+- Full dispatch catalog of 61 domains with priority order + pipeline phases → read `deep-review/SKILL.md` (single source of truth — never duplicate the table here)
+- Dispatch only the domains the stack actually has — never run all of them every time
+- Parallelize via `/use-subagents` when many domains
+- Merge all findings into one report with domain tags
+- Dedup: the same finding from multiple domains → merge into one item tagged with every domain that found it
+- If `/deep-review` already ran in this session → reuse its findings, don't re-dispatch the same domains
 
 ### 9. External Research
 
-> Goal: ทำ `/deep-research` เพื่อค้นหา best practices
+> Goal: run `/deep-research` to find best practices
 
-1. ค้นหา best practices สำหรับ tech stack ที่ใช้
-2. ค้นหา alternatives ที่ดีกว่าสำหรับ dependencies
-3. ค้นหา official documentation
-4. เปรียบเทียบ findings กับ project ปัจจุบัน
-5. ระบุ gaps ระหว่าง current implementation และ best practices
+1. Find best practices for the tech stack in use
+2. Find better alternatives for dependencies
+3. Find official documentation
+4. Compare findings against the current project
+5. Identify gaps between the current implementation and best practices
 
 ### 10. Comprehensive Report
 
-> Goal: สร้างรายงานครบถ้วน
+> Goal: produce a complete report
 
-1. ทำตาม `workflows/report-analysis/SKILL.md` — จัด findings, root cause chains, evidence
-2. aggregate per-domain scores จาก dispatched `review-*` → overall score + grade — ตาราง `No. | Domain | Score | Grade | Top Finding`
-3. ทำ `/report-deep` หรือ `/create-report-in-dot-devin` สำหรับ persistent artifact
-4. ให้ recommendations ตาม priority และ impact พร้อม action items + roadmap
+1. Follow `workflows/report-analysis/SKILL.md` — organize findings, root cause chains, evidence
+2. Aggregate per-domain scores from the dispatched `review-*` → overall score + grade — table `No. | Domain | Score | Grade | Top Finding`
+3. Run `/report-deep` or `/create-report-in-dot-devin` for a persistent artifact
+4. Provide recommendations by priority and impact with action items + roadmap
 
 ## Rules
 
 ### 1. Analysis Depth
 
-- ใช้ `/deep-thinking` ก่อนเริ่มเสมอ
-- ใช้ `/scan-codebase` สำหรับ quick overview
-- ใช้ workflows เฉพาะทางสำหรับแต่ละมิติ
-- ใช้ `/deep-research` สำหรับ external validation
-- ไม่ข้ามขั้นตอน analysis ใดๆ
+- Always start with `/deep-thinking`
+- Use `/scan-codebase` for a quick overview
+- Use specialized workflows for each dimension
+- Use `/deep-research` for external validation
+- Don't skip any analysis step
 
 ### 2. Tool Selection
 
@@ -168,10 +168,10 @@ related:
 
 ### 3. Parallel Processing
 
-- อ่าน manifest files พร้อมกัน
-- รัน checks หลายอย่างพร้อมกัน
-- รัน `Grep` patterns พร้อมกัน
-- รัน ast-grep patterns พร้อมกัน
+- Read manifest files together
+- Run many checks concurrently
+- Run `Grep` patterns concurrently
+- Run ast-grep patterns concurrently
 
 ### 4. Metric Thresholds
 
@@ -184,29 +184,29 @@ related:
 
 ### 5. Research Validation
 
-- ใช้ multiple sources สำหรับ validation
-- ตรวจสอบ credibility ของ sources
-- เปรียบเทียบกับ project context
-- ระบุ assumptions ที่ใช้
+- Use multiple sources for validation
+- Check the credibility of sources
+- Compare against the project context
+- State the assumptions used
 
 ### 6. Report Quality
 
-- จัดกลุ่ม findings ตามหมวดหมู่
-- ให้ recommendations + roadmap + action items ตาม priority และ impact
-- ใช้ `/report-deep` สำหรับ detailed report หรือ `/report` สำหรับ chat table
-- alias stub: `/deep-analyze-by-use-scripts` — forward มาที่ skill นี้ (extract จาก `workflows/by-use-scripts` เดิม)
+- Group findings by category
+- Provide recommendations + roadmap + action items by priority and impact
+- Use `/report-deep` for a detailed report or `/report` for a chat table
+- Alias stub: `/deep-analyze-by-use-scripts` — forwards to this skill (extracted from the old `workflows/by-use-scripts`)
 
 ### 7. Deep Analysis Scripts
 
-- ตรวจสอบ `tools/review-codebase` และ `tools/analyze` ก่อนใช้
-- ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis
-- รวบรวม metrics จาก knip, biome, vitest, madge
-- รัน `bunx ast-grep outline` ดู structure และ `eza --tree --level 2` ดู physical layout
+- Check `tools/review-codebase` and `tools/analyze` before use
+- Use `@ast-grep/napi` for programmatic AST analysis
+- Collect metrics from knip, biome, vitest, madge
+- Run `bunx ast-grep outline` to view structure and `eza --tree --level 2` to view the physical layout
 
 ## Expected Outcome
 
-- เข้าใจ architecture และ design patterns ที่ใช้
-- ระบุ code quality, performance และ security issues พร้อม severity
-- ระบุ features, dependencies, tech stack และ outdated dependencies
-- ระบุ gaps ระหว่าง current implementation และ best practices
-- Recommendations + roadmap สำหรับ improvements ตาม priority และ impact
+- Understanding of the architecture and design patterns used
+- Code quality, performance, and security issues identified with severity
+- Features, dependencies, tech stack, and outdated dependencies identified
+- Gaps between the current implementation and best practices identified
+- Recommendations + roadmap for improvements by priority and impact

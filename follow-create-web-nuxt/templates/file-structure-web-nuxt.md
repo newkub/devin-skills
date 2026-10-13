@@ -1,6 +1,6 @@
 # Web Nuxt File Structure
 
-Canonical file structure สำหรับ Nuxt app — framework conventions + layered mapping (presentation → domain → data)
+Canonical file structure for a Nuxt app — framework conventions + layered mapping (presentation → domain → data)
 
 ## File Structure
 
@@ -36,7 +36,7 @@ project/
 │  ├─ plugins/                            # nitro plugins
 │  └─ utils/                              # auto-imported server utils
 │
-├─ shared/                                # isomorphic — types/schemas/utils ใช้ทั้งสองฝั่ง
+├─ shared/                                # isomorphic — types/schemas/utils used on both sides
 │  ├─ types/
 │  ├─ schemas/
 │  └─ utils/
@@ -58,15 +58,15 @@ project/
 | 1 | client presentation | `app/pages`+`layouts`+`middleware` | routes | → `components`, `composables` (+ `shared/`) |
 | 2 | client presentation | `app/components`+`composables` | UI + view logic | → `stores`, `$fetch` calls (+ `shared/`) |
 | 3 | client domain | `app/stores` | client state | leaf (+ `shared/`) |
-| 4 | server presentation | `server/api`+`routes`+`middleware` | HTTP entry | → `server/usecases` — ห้ามเรียก `repositories`/`database` ตรง |
+| 4 | server presentation | `server/api`+`routes`+`middleware` | HTTP entry | → `server/usecases` — never call `repositories`/`database` directly |
 | 5 | server domain | `server/usecases`+`services` | business rules | → `server/repositories` |
 | 6 | server data | `server/repositories`+`database` | persistence | leaf (+ `shared/`) |
-| 7 | contracts | `shared/` | types/schemas/utils | leaf — pure เท่านั้น |
+| 7 | contracts | `shared/` | types/schemas/utils | leaf — pure only |
 
 ## Rules
 
-- ใช้ Nuxt conventions จริง — `pages/`, `server/api/`, auto-imports; ห้ามสร้าง router/server เอง
-- `server/api/*` handlers = thin — เรียก `server/usecases/` เท่านั้น
-- `shared/` pure — ห้าม import server-only (`process.env`, db client)
-- Secrets อยู่ `server/` + `runtimeConfig` เท่านั้น — ห้ามเข้า `app/`/`shared/`
-- Business rules ห้ามอยู่ใน `.vue`/`composables` — ย้ายลง `server/services/` หรือ `app/stores` ตามฝั่ง
+- Use real Nuxt conventions — `pages/`, `server/api/`, auto-imports; never hand-build a router/server
+- `server/api/*` handlers are thin — call `server/usecases/` only
+- `shared/` is pure — never import server-only code (`process.env`, db client)
+- Secrets stay in `server/` + `runtimeConfig` only — never enter `app/`/`shared/`
+- Business rules must not live in `.vue` files/`composables` — move them down to `server/services/` or `app/stores` per side

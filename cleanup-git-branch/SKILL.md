@@ -1,6 +1,6 @@
 ---
 name: cleanup-git-branch
-description: ลบ git branches เก่าที merge แล้วหรือไม่ใช้แล้ว
+description: Delete old git branches that are merged or no longer used
 argument-hint: "[filter]"
 related:
   - cleanup-branches-merged
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ทำความสะอาด branches เก่าออกจาก repository
+Clean old branches out of the repository
 
 ## Scope
 
-ใช้เมื่อ local หรือ remote มี branches ที่ merge แล้วหรือ abandoned — เน้นลบ branch เฉพาะตัว/กลุ่มเล็กแบบ ad-hoc (รวม force-delete `-D` เมื่อจำเป็น); ถ้าต้องการ sweep branches ที่ merge เข้า `main` ทั้งหมดแบบมี dry-run + PR cross-check → ใช้ `/cleanup-branches-merged`
+Use when local or remote branches are merged or abandoned — focused on ad-hoc deletion of individual branches or small groups (including force-delete `-D` when needed); for a dry-run + PR cross-check sweep of all branches merged into `main` → use `/cleanup-branches-merged`
 
 ## Execute
 
@@ -23,41 +23,41 @@ related:
 
 > Goal: Identify Candidates
 
-1. `git branch --merged main` สำหรับ local
-2. `git branch -r --merged main` สำหรับ remote
-3. ตรวจสอบ branches ที่ไม่มี commit นาน
-4. ยกเว้น `main`, `master`, release branches และ long-lived branches ตาม project conventions
+1. `git branch --merged main` for local
+2. `git branch -r --merged main` for remote
+3. Check for branches with no recent commits
+4. Exclude `main`, `master`, release branches, and long-lived branches per project conventions
 
 ### 2. Confirm With Team
 
 > Goal: Confirm With Team
 
-1. ถ้า shared repo ให้ confirm ก่อนลบ
-2. ตรวจสอบว่า branch ไม่มี unmerged commits
-3. สำรอง ref ถ้ามีความเสี่ยง
+1. Confirm first in shared repos before deleting
+2. Verify the branch has no unmerged commits
+3. Back up the ref if there is any risk
 
 ### 3. Delete
 
 > Goal: Delete
 
-1. `git branch -d <branch>` สำหรับ local (merged)
-2. `git branch -D <branch>` ถ้าบังคับ
-3. `git push origin --delete <branch>` สำหรับ remote
-4. `git remote prune origin` เพื่อ clean tracking
+1. `git branch -d <branch>` for local (merged)
+2. `git branch -D <branch>` to force
+3. `git push origin --delete <branch>` for remote
+4. `git remote prune origin` to clean up tracking
 
 ## Rules
 
-- ไม่ลบ default branch
-- ตรวจสอบ merge status ก่อน
-- ขอ confirm ก่อนลบ shared branches
-- เก็บ release/hotfix branches ตาม policy
+- Never delete the default branch
+- Check merge status first
+- Get confirmation before deleting shared branches
+- Keep release/hotfix branches per policy
 
-- ใช้ /delete-git-branch ถ้าจำเป็น
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Use /delete-git-branch if needed
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- Branches เก่าถูกลบ
-- Repository สะอาด
-- ไม่มี data loss
+- Old branches removed
+- Repository clean
+- No data loss

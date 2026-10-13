@@ -1,6 +1,6 @@
 ---
 name: use-bun-shell
-description: ใช้ Bun shell สำหรับ execute commands ด้วย bun -e
+description: Use the Bun shell to execute commands with bun -e
 argument-hint: "[command]"
 related:
   - use-bun-native-api
@@ -9,11 +9,11 @@ related:
 
 ## Goal
 
-ใช้ Bun shell runtime สำหรับ execute commands และ shell operations ด้วย `bun -e` แทนการใช้ shell โดยตรง
+Use the Bun shell runtime to execute commands and shell operations via `bun -e` instead of using the shell directly
 
 ## Scope
 
-ใช้ `use-bun-shell` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (bun shell)
+Use `use-bun-shell` only for the tasks and workflows it covers (bun shell)
 
 ## Execute
 
@@ -21,49 +21,49 @@ related:
 
 > Goal: Prepare Bun Shell Environment
 
-1. ทำ `/use-bun-native-api` เพื่อ setup Bun environment (install, verify) และ Bun APIs ถ้าจำเป็น
-2. ตรวจสอบว่า Bun ติดตั้งและพร้อมใช้งาน
-3. ตั้งค่า environment variables ที่จำเป็นสำหรับ Bun
+1. Run `/use-bun-native-api` to set up the Bun environment (install, verify) and Bun APIs if needed
+2. Verify that Bun is installed and ready to use
+3. Set the environment variables Bun needs
 
 ### 2. Execute Commands With Bun
 
 > Goal: Execute Commands With Bun
 
-1. ใช้ `bun -e "console.log('command')"` สำหรับ simple commands (latest runtime `1.4.2 (verified 2026-09-12)`)
-2. ใช้ `bun -e "import { $ } from 'bun'; await $\`command\`"` สำหรับ shell commands ที่ซับซ้อน (`$` ต้อง import จาก `bun` — ไม่ใช่ global)
-3. ใช้ `bun run` สำหรับ execute scripts จาก package.json
-4. ใช้ `bun -e` สำหรับ JavaScript/TypeScript code execution (รองรับ top-level await)
+1. Use `bun -e "console.log('command')"` for simple commands (latest runtime `1.4.2 (verified 2026-09-12)`)
+2. Use `bun -e "import { $ } from 'bun'; await $\`command\`"` for complex shell commands (`$` must be imported from `bun` — it is not a global)
+3. Use `bun run` to execute scripts from package.json
+4. Use `bun -e` to execute JavaScript/TypeScript code (supports top-level await)
 
 ### 3. Handle File Operations
 
 > Goal: Handle File Operations
 
-1. ใช้ `Bun.file()` สำหรับ file reading/writing
-2. ใช้ `Bun.write()` สำหรับ file operations
-3. ใช้ `await $\`ls -la\`` สำหรับ directory operations (หลัง `import { $ } from 'bun'`)
-4. ใช้ `new Bun.Glob('**/*.ts')` สำหรับ file pattern matching (`Bun.Glob` เป็น class ไม่ใช่ `Bun.glob()`)
+1. Use `Bun.file()` for file reading/writing
+2. Use `Bun.write()` for file operations
+3. Use `await $\`ls -la\`` for directory operations (after `import { $ } from 'bun'`)
+4. Use `new Bun.Glob('**/*.ts')` for file pattern matching (`Bun.Glob` is a class, not `Bun.glob()`)
 
 ### 4. Process Management
 
 > Goal: Process Management
 
-1. ใช้ `Bun.spawn()` สำหรับ background processes
-2. ใช้ `Bun.$` สำหรับ shell command execution
-3. จัดการ stdout/stderr ด้วย Bun APIs
-4. ตรวจสอบ process exit codes และ errors
+1. Use `Bun.spawn()` for background processes
+2. Use `Bun.$` for shell command execution
+3. Handle stdout/stderr with Bun APIs
+4. Check process exit codes and errors
 
 ## Rules
 
 ### 1. Bun Command Execution
 
-ใช้ `bun -e` สำหรับ:
+Use `bun -e` for:
 
 - Simple JavaScript/TypeScript execution
-- Quick shell commands ที่ต้องการ TypeScript support
-- File operations ที่ต้องการ async/await
-- JSON processing และ data transformation
+- Quick shell commands that need TypeScript support
+- File operations that need async/await
+- JSON processing and data transformation
 
-ตัวอย่าง:
+Example:
 ```bash
 bun -e "console.log(JSON.stringify({test: true}, null, 2))"
 bun -e "await Bun.write('output.txt', 'Hello World')"
@@ -71,21 +71,21 @@ bun -e "await Bun.write('output.txt', 'Hello World')"
 
 ### 2. Shell Integration
 
-ใช้ `Bun.$` สำหรับ:
+Use `Bun.$` for:
 
 - Complex shell commands
 - Pipeline operations
 - Environment variable handling
 - Process chaining
 
-ตัวอย่าง:
+Example:
 ```bash
 bun -e "import { $ } from 'bun'; const result = await $\`ls -la\`; console.log(result.stdout.toString())"
 ```
 
 ### 3. File Operations
 
-ใช้ Bun file APIs สำหรับ:
+Use Bun file APIs for:
 
 - Reading files: `await Bun.file(path).text()`
 - Writing files: `await Bun.write(path, content)`
@@ -94,25 +94,25 @@ bun -e "import { $ } from 'bun'; const result = await $\`ls -la\`; console.log(r
 
 ### 4. Error Handling
 
-จัดการ errors ด้วย:
+Handle errors with:
 
-- Try-catch blocks สำหรับ async operations
+- Try-catch blocks for async operations
 - Process exit code checking
-- Stderr capture และ logging
+- Stderr capture and logging
 - Graceful error recovery
 
 ### 5. Avoid File Creation
 
-พยายามรันคำสั่งโดยไม่สร้างไฟล์ชั่วคราว:
+Run commands without creating temporary files whenever possible:
 
-- ใช้ `bun -e` หรือ `Bun.$` สำหรับคำสั่งทันที
-- ไม่สร้างไฟล์ `.ts` หรือ `.js` เพื่อรัน command ชั่วคราว
-- ถ้า command มี side effects ให้ dry run ด้วย `print` หรือทดสอบค่าก่อน
-- ถ้าจำเป็นต้องเขียนไฟล์ ให้ตรวจสอบ path ด้วย `Bun.file(path).exists()` ก่อน
+- Use `bun -e` or `Bun.$` for one-off commands
+- Do not create `.ts` or `.js` files just to run a temporary command
+- If a command has side effects, dry-run it with `print` or test the values first
+- If you must write a file, verify the path with `Bun.file(path).exists()` first
 
 ### 6. Performance Optimization
 
-ใช้ Bun features:
+Use Bun features:
 
 - Native TypeScript support
 - Fast startup time
@@ -121,7 +121,7 @@ bun -e "import { $ } from 'bun'; const result = await $\`ls -la\`; console.log(r
 
 ## Expected Outcome
 
-- Shell operations ทำงานผ่าน Bun runtime
-- Faster execution สำหรับ JavaScript/TypeScript tasks
-- Better TypeScript integration สำหรับ shell scripts
-- Consistent development environment ข้าม platforms
+- Shell operations run through the Bun runtime
+- Faster execution for JavaScript/TypeScript tasks
+- Better TypeScript integration for shell scripts
+- Consistent development environment across platforms

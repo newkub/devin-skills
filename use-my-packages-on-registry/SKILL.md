@@ -1,6 +1,6 @@
 ---
 name: use-my-packages-on-registry
-description: ดึงรายการ packages ที user เป็นเจ้าของจาก registry แล้วติดตั้งใช้ใน project
+description: List packages owned by the user on a registry and install them into the project
 argument-hint: "[scope]"
 related:
   - list-my-npm-packages
@@ -15,97 +15,97 @@ related:
 
 ## Goal
 
-ดู packages ที user publish ไว้บน registry แล้วเลือกติดตั้งมาใช้ใน project
+Review the packages the user published on the registry and pick which ones to install into the project
 
 ## Scope
 
-ใช้กับ project ทีมี package manager (npm/bun, cargo, python) เพื่อ list และ install packages ที user เป็นเจ้าของ
+Use with projects that have a package manager (npm/bun, cargo, python) to list and install packages the user owns
 
 ## Execute
 
 ### 1. Detect Registry And Package Manager
 
-> Goal: ระบุ registry และ package manager ของ project
+> Goal: Identify the project's registry and package manager
 
-1. อ่าน `package.json` → ใช้ npm/bun registry
-2. อ่าน `Cargo.toml` → ใช้ crates.io
-3. อ่าน `pyproject.toml` → ใช้ PyPI
-4. ถ้ามีทั้ง `package.json` และ `Cargo.toml` → ให้ user เลือก หรือทำตาม manifest หลัก
-5. ถ้าไม่มี manifest → ทำ `/ask-me` เพื่อระบุ registry
+1. Read `package.json` → use the npm/bun registry
+2. Read `Cargo.toml` → use crates.io
+3. Read `pyproject.toml` → use PyPI
+4. If both `package.json` and `Cargo.toml` exist → let the user choose, or follow the main manifest
+5. If there is no manifest → run `/ask-me` to identify the registry
 
 ### 2. List My Packages
 
-> Goal: ดึงรายการ packages ที user เป็นเจ้าของ
+> Goal: List the packages the user owns
 
-1. npm/bun → ทำ `/list-my-npm-packages` (หรือ `https://registry.npmjs.org/-/v1/search?text=maintainer:<user>`)
-2. cargo → ใช้ `https://crates.io/api/v1/crates?user_id=<id>` ถ้าหา user id ได้ (`cargo search` ค้นหาตามชื่อ ไม่ใช่ตาม owner)
-3. python → ใช้ `https://pypi.org/pypi/<pkg>/json` ตามทีทราบชื่อ (`pip index versions <pkg>` เป็น experimental สำหรับดู versions ของ package เดี่ยว)
-4. แสดงผลด้วย `/report` คอลัมน์ `No.`, `Package`, `Version`, `Registry`, `Description`
+1. npm/bun → run `/list-my-npm-packages` (or `https://registry.npmjs.org/-/v1/search?text=maintainer:<user>`)
+2. cargo → use `https://crates.io/api/v1/crates?user_id=<id>` if you can find the user id (`cargo search` looks up by name, not by owner)
+3. python → use `https://pypi.org/pypi/<pkg>/json` for package names you know (`pip index versions <pkg>` is experimental and only views a single package's versions)
+4. Present the results with `/report` using the columns `No.`, `Package`, `Version`, `Registry`, `Description`
 
 ### 3. Select Packages
 
-> Goal: เลือก packages ทีจะติดตั้ง
+> Goal: Select the packages to install
 
-1. ทำ `/ask-me` หรือเลือกจาก `/report` ว่าจะติดตั้ง package ใด
-2. ตรวจสอบ `/deep-review` ว่า package ทีเลือกสอดคล้องกับ tech stack หรือไม่
-3. ระบุว่าเป็น `dependencies`, `devDependencies` หรือ `peerDependencies`
-4. ถ้ามีหลาย package manager → ทำตามลำดับที user เลือก
+1. Run `/ask-me`, or pick from `/report`, to decide which packages to install
+2. Use `/deep-review` to check whether each selected package fits the tech stack
+3. Mark whether it belongs in `dependencies`, `devDependencies`, or `peerDependencies`
+4. If there are several package managers → follow the order the user picks
 
 ### 4. Install Packages
 
-> Goal: ติดตั้ง packages ทีเลือกลง project
+> Goal: Install the selected packages into the project
 
 1. Bun/Node:
-   - `bun add <pkg>` สำหรับ dependencies
-   - `bun add -d <pkg>` สำหรับ dev dependencies
-   - ถ้า project ใช้ npm เป็นหลัก: ใช้คำสั่ง install ของ npm ด้วย package name
+   - `bun add <pkg>` for dependencies
+   - `bun add -d <pkg>` for dev dependencies
+   - If the project primarily uses npm: use the npm install command with the package name
 2. cargo:
    - `cargo add <pkg>`
-   - `cargo add --dev <pkg>` สำหรับ dev dependencies
+   - `cargo add --dev <pkg>` for dev dependencies
 3. python:
    - `pip install <pkg>`
-   - บันทึกลง `requirements.txt` หรือ `pyproject.toml`
-4. อัปเดต lockfile ด้วย `bun install`, `cargo update`, `pip freeze`
+   - Save it into `requirements.txt` or `pyproject.toml`
+4. Update the lockfile with `bun install`, `cargo update`, `pip freeze`
 
 ### 5. Verify
 
-> Goal: ยืนยันว่าติดตั้งสำเร็จ
+> Goal: Confirm the installation succeeded
 
-1. ตรวจสอบ manifest ว่ามี package ทีติดตั้ง
-2. รัน test/build ของ project
-3. ตรวจสอบ imports ใช้ได้
-4. ทำ `/suggest-next-action`
+1. Check the manifest for the installed package
+2. Run the project's test/build
+3. Verify that the imports work
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Registry Detection
 
-- ใช้ manifest ของ project เป็นหลัก
-- ถ้าไม่ชัดเจน → ทำ `/ask-me`
-- ไม่ assume registry
+- Rely primarily on the project's manifest
+- If it's unclear → run `/ask-me`
+- Never assume the registry
 
 ### 2. Package Selection
 
-- ใช้ `/deep-review` เพื่อตรวจสอบ compatibility
-- ไม่ duplicate dependencies ทีมีอยู่
-- ถ้ามีหลาย package manager → ให้ user เลือก
+- Use `/deep-review` to check compatibility
+- Don't duplicate dependencies that already exist
+- If there are several package managers → let the user choose
 
 ### 3. Security
 
-- ไม่ expose tokens, credentials หรือ secrets
-- ใช้ `bun add` สำหรับ Bun/Node project ในระดับ project
-- ใช้ `cargo add` สำหรับ Rust
+- Don't expose tokens, credentials, or secrets
+- Use `bun add` for Bun/Node projects at the project level
+- Use `cargo add` for Rust
 
 ### 4. Scripts And Temp
 
-- ถ้าต้อง process ข้อมูลซับซ้อน → ทำ `/use-scripts`
-- ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ reports ชั่วคราว
+- If you need to process complex data → run `/use-scripts`
+- Use `/create-files-in-os-temp` for temp files or throwaway reports
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
+- Use /use-bun-native-api if needed
 
 ## Expected Outcome
 
-- รายการ packages จาก registry ที user เป็นเจ้าของ
-- packages ถูกติดตั้งใน project ตาม package manager ทีตรวจพบ
-- manifest และ lockfile อัปเดต
-- ไม่มี broken references
+- A list of registry packages owned by the user
+- Packages installed into the project via the detected package manager
+- The manifest and lockfile updated
+- No broken references

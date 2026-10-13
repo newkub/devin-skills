@@ -1,6 +1,6 @@
 ---
 name: follow-create-product-setup-scaffold
-description: Scaffold product structure — monorepo, packages, shared config และ conventions
+description: Scaffold product structure — monorepo, packages, shared config, conventions
 argument-hint: "[product-name]"
 related:
   - follow-create-product
@@ -12,43 +12,43 @@ related:
 
 ## Goal
 
-Scaffold product ใหม่ตาม conventions — structure, workspaces, shared config, tooling baseline
+Scaffold a new product per conventions — structure, workspaces, shared config, tooling baseline
 
 ## Scope
 
-- ครอบคลุม initial scaffold เท่านั้น — deploy → `workflows/deploy-mvp`
-- tech stack ตาม `/deep-review` catalog
+- Covers the initial scaffold only — deploy → `workflows/deploy-mvp`
+- Tech stack per the `/deep-review` catalog
 
 ## Execute
 
 ### 1. Confirm Requirements
 
-> Goal: stack และ scope ชัดก่อน scaffold
+> Goal: stack and scope clear before scaffolding
 
-1. ถาม/ยืนยัน product type, target users, และ tech stack (`/ask-me` ถ้าไม่ชัด)
-2. เลือก defaults จาก techstack catalog — ห้ามเดา stack เอง
+1. Ask/confirm product type, target users, and tech stack (`/ask-me` if unclear)
+2. Pick defaults from the techstack catalog — never guess the stack
 
 ### 2. Scaffold Structure
 
-> Goal: structure ตาม monorepo/project conventions
+> Goal: structure per monorepo/project conventions
 
-1. สร้าง directory structure ตาม product type
+1. Create the directory structure per product type
 2. workspaces/packages + shared config (tsconfig, lint, format)
 3. `AGENTS.md`, `README.md`, `.gitignore`, CI skeleton
-4. init git + initial structure เท่านั้น ไม่ implement features
+4. init git + initial structure only — do not implement features
 
 ### 3. Verify Scaffold
 
-> Goal: scaffold รันได้
+> Goal: the scaffold runs
 
-1. install deps + build/typecheck ผ่าน
-2. dev server หรือ entry point ทำงาน
+1. install deps + build/typecheck pass
+2. dev server or entry point works
 
 ## Rules
 
-- scaffold เท่านั้น — features ไปทำ `/implement-features-to-mvp` ต่อ
-- ทุก config ตาม `/follow-config` conventions
+- Scaffold only — continue features at `/implement-features-to-mvp`
+- Every config follows `/follow-config` conventions
 
 ## Expected Outcome
 
-- product scaffold พร้อม — structure, config, tooling baseline ครบและรันได้
+- Product scaffold ready — structure, config, and tooling baseline complete and running

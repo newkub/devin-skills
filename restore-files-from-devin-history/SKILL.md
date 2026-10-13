@@ -1,6 +1,6 @@
 ---
 name: restore-files-from-devin-history
-description: กู้คืนไฟล์ที่เสียหายรุนแรงโดยอ่านประวัติ Devin session แทน git restore เมื่อง git ใช้ไม่ได้แล้ว
+description: Recover badly damaged files from Devin session history when git restore no longer works
 argument-hint: "[file]"
 related:
   - deep-debug

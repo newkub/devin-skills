@@ -2,30 +2,30 @@
 
 ## 1. Metadata
 
-- [ ] title/description ตรง changes, linked issues
+- [ ] title/description matches changes, linked issues
 - [ ] PR size reviewable, scope focused
-- [ ] labels, reviewers, draft status เหมาะสม
+- [ ] labels, reviewers, draft status appropriate
 - [ ] CI checks status, required reviews met
 
 ## 2. Code Changes
 
 - [ ] diff review: logic, edge cases, regressions
 - [ ] no unrelated changes, no debug leftovers
-- [ ] tests added/updated สำหรับ changes
-- [ ] docs/changelog updated ถ้า user-facing
+- [ ] tests added/updated for changes
+- [ ] docs/changelog updated if user-facing
 
 ## 3. Risk And Compatibility
 
 - [ ] breaking changes flagged, migration path
 - [ ] security implications, secrets in diff
-- [ ] performance impact ของ changes
+- [ ] performance impact of changes
 - [ ] dependency changes reviewed
 
 ## 4. Process
 
 - [ ] review comments addressed, unresolved threads
-- [ ] commit history clean, messages ตรง convention
-- [ ] merge strategy เหมาะ (squash/rebase/merge)
+- [ ] commit history clean, messages match convention
+- [ ] merge strategy suitable (squash/rebase/merge)
 - [ ] branch up-to-date, conflicts resolved
 
 ## Scoring

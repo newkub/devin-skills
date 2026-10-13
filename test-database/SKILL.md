@@ -1,6 +1,6 @@
 ---
 name: test-database
-description: รัน database tests — migrations up/down, constraints, transactions, query correctness บน ephemeral test DB
+description: Run database tests on an ephemeral DB — migrations up/down, constraints, transactions, queries
 argument-hint: "[scope]"
 related:
   - run-test
@@ -22,43 +22,43 @@ related:
 
 ## Goal
 
-รัน database tests — migrations up/down roundtrip, constraints/triggers, transaction integrity, query correctness บน ephemeral test database — signals: `migrations/` dir, ORM config (Drizzle, Prisma), `testcontainers`, `*.test` ที่แตะ DB, `DATABASE_URL` test env
+Run database tests — migrations up/down roundtrip, constraints/triggers, transaction integrity, query correctness on an ephemeral test database — signals: `migrations/` dir, ORM config (Drizzle, Prisma), `testcontainers`, `*.test` that touch the DB, `DATABASE_URL` test env
 
 ## Scope
 
-ใช้เมื่อต้องรัน DB-bound tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test`; schema design fixes → `/improve-database`)
+Use when running DB-bound tests — run-only, does not modify tests (deep analysis → `/deep-test`; schema design fixes → `/improve-database`)
 
-- Module wiring โดยไม่เจาะ DB semantics → `/test-integration`; API contract → `/test-api`/`/test-contract`
+- Module wiring without drilling into DB semantics → `/test-integration`; API contracts → `/test-api`/`/test-contract`
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect
 
-`drizzle.config.*`/`prisma/schema.prisma`/`migrations/`/`sql` dirs, testcontainers config, test DB scripts (`db:test`, `test:db`), CI DB services; runner: suite runner ปกติ (`bunx vitest run`, `cargo test`, `pytest`) + migration checks ผ่าน ORM CLI (`drizzle-kit`, `prisma migrate`)
+`drizzle.config.*`/`prisma/schema.prisma`/`migrations/`/`sql` dirs, testcontainers config, test DB scripts (`db:test`, `test:db`), CI DB services; runner: the normal suite runner (`bunx vitest run`, `cargo test`, `pytest`) + migration checks via ORM CLI (`drizzle-kit`, `prisma migrate`)
 
 ### 2. Run
 
-provision ephemeral DB ก่อน — testcontainers/docker compose/test schema เท่านั้น ห้าม dev/prod DB; รัน migrations up→down→up roundtrip check ถ้า suite ไม่ครอบ; isolate per-test ด้วย transaction rollback หรือ fresh schema; บันทึก per-spec status + migration log
+Provision an ephemeral DB first — testcontainers/docker compose/test schema only, never a dev/prod DB; run migrations up→down→up as a roundtrip check if the suite doesn't cover it; isolate per test with transaction rollback or a fresh schema; record per-spec status + the migration log
 
 ### 3. Classify
 
-migration/constraint fail → schema issue → `/resolve-errors` (route `/improve-database` ถ้า design); assertion/query logic ผิด → source; stale fixtures/migration order → test → `/update-tests`; connection/container/env → environment; ซ้ำ ≥3 → stop+report
+Migration/constraint failure → schema issue → `/resolve-errors` (route `/improve-database` if it's a design problem); wrong assertion/query logic → source; stale fixtures/migration order → test → `/update-tests`; connection/container/env → environment; repeats ≥3 times → stop+report
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/db-test-<time>.md` — migrations verified, per-spec status; teardown container/DB หลังจบเสมอ; ผ่านหมด → `/run-verify`
+persist → `.devin/temp/report/<workspace>/db-test-<time>.md` — migrations verified, per-spec status; always tear down the container/DB when finished; all pass → `/run-verify`
 
 ## Rules
 
-- run-only (analysis ลึก → `/deep-test`)
-- ห้ามรัน tests ชน dev/staging/production DB เด็ดขาด — ephemeral instance เท่านั้น
-- Migration tests ต้องเช็ค down migration ด้วย ไม่ใช่แค่ up
-- Cleanup test containers/schemas เสมอ — ไม่ทิ้ง state ค้าง
+- run-only (deep analysis → `/deep-test`)
+- Never run tests against a dev/staging/production DB — ephemeral instances only
+- Migration tests must check down migrations too, not just up
+- Always clean up test containers/schemas — never leave state behind
 
 ## Expected Outcome
 
-- DB tests + migration roundtrip รันครบบน ephemeral instance
-- Failures ถูก classify เป็น source/test/environment
-- Report persist ใน `.devin/temp/report/` พร้อม migration log
+- DB tests + migration roundtrip fully run on an ephemeral instance
+- Failures classified as source/test/environment
+- Report persisted in `.devin/temp/report/` with the migration log

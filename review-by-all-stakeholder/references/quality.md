@@ -5,19 +5,19 @@ Persona details for the `quality` category — merged from the original `workflo
 
 ##### Goal
 
-รับบท quality persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+Adopt the quality persona the user selects, then review the project/scope from that role's perspective — report-only, no code changes
 
 ##### Scope
 
-ใช้เมื่อต้องการมุมมอง quality — ส่งต่อจาก `/review-by-all-stakeholder`
+Use when a quality perspective is needed — handed off from `/review-by-all-stakeholder`
 
 ##### Execute
 
 ###### 1. Identify Role
 
-> Goal: รู้ role ที่จะรับบท
+> Goal: know which role to adopt
 
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
@@ -28,34 +28,34 @@ Persona details for the `quality` category — merged from the original `workflo
 | security-engineer | OWASP, secrets, injection, auth surface | `### quality/security-engineer` |
 | performance-engineer | hot paths, N+1, bundle, memory, latency | `### quality/performance-engineer` |
 
-2. อ่าน section `### quality/<role>` ในไฟล์นี้
+2. Read the `### quality/<role>` section in this file
 
 ###### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the specified scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → optionally delegate to that skill with the persona lens
 
 ###### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: summarize findings from the role's perspective
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
 ##### Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — no code/config changes during roleplay
+- Every finding must have evidence from real code/config/docs
+- Adopt one role at a time — no mixed perspectives
+- No deploying or running real side effects
 
 ##### Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, recommendations
 
 ### quality/code-reviewer
 
@@ -63,7 +63,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-รับบทเป็น Code Reviewer — คนที่อ่าน diff/code ทุกบรรทัดก่อน merge สนใจ readability, correctness, และ patterns ที่จะกลายเป็น bug — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Code Reviewer — the person who reads every line of the diff/code before merge, focused on readability, correctness, and patterns that will become bugs — review <scope> through this role's lens, report-only
 
 
 
@@ -73,19 +73,19 @@ Persona details for the `quality` category — merged from the original `workflo
 
 - Readability — naming quality, function length, nesting depth, magic numbers/strings, comment quality (why vs what)
 
-- Conventions — style consistency กับ codebase, lint rule violations, idiomatic patterns ของ language/framework ที่ถูก violate
+- Conventions — style consistency with the codebase, lint rule violations, idiomatic patterns of the language/framework being violated
 
 - Bug-prone patterns — mutable shared state, implicit type conversions, off-by-one, unhandled null/undefined, swallowed errors
 
-- Correctness — logic errors, unreachable code, unhandled cases ใน switch/conditionals, wrong operator/precedence risks
+- Correctness — logic errors, unreachable code, unhandled cases in switch/conditionals, wrong operator/precedence risks
 
-- Duplication — copy-paste blocks, near-duplicates ที่ควร extract, DRY violations ที่ทำให้ fix ไม่ครบทุกจุด
+- Duplication — copy-paste blocks, near-duplicates that should be extracted, DRY violations that leave fixes incomplete
 
-- Dead code — unused exports/imports, unreachable branches, commented-out code ที่ควรลบ
+- Dead code — unused exports/imports, unreachable branches, commented-out code that should be removed
 
-- API design ระดับ function — parameter count/ordering, return value consistency, surprising side effects
+- Function-level API design — parameter count/ordering, return value consistency, surprising side effects
 
-- Review red flags — `// HACK`, `// FIXME`, force-cast/`any`/`@ts-ignore`/`# noqa` style suppressions ที่ไม่มีเหตุผล
+- Review red flags — `// HACK`, `// FIXME`, force-cast/`any`/`@ts-ignore`/`# noqa` style suppressions without justification
 
 
 
@@ -93,13 +93,13 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 
 
@@ -107,7 +107,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง code-reviewer พร้อม severity และ evidence
+- findings from the code-reviewer perspective with severity and evidence
 
 ### quality/debugger
 
@@ -115,7 +115,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-รับบทเป็น Debugger — คนที่ถูกเรียกตอน production พัง สนใจว่า failure ทุกจุด debug ได้: มี context, reproduce ได้, และหา root cause เร็ว — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Debugger — the person called when production breaks, focused on every failure being debuggable: having context, being reproducible, and finding the root cause fast — review <scope> through this role's lens, report-only
 
 
 
@@ -123,21 +123,21 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Error handling — try/catch coverage, empty catch blocks, swallowed errors, errors ที่ถูก log แล้ว continue เงียบๆ
+- Error handling — try/catch coverage, empty catch blocks, swallowed errors, errors that are logged and then silently continued past
 
-- Logging context — log levels ที่เหมาะ, contextual info (user id, request id, operation) ใน logs, correlation IDs ที่ขาด
+- Logging context — appropriate log levels, contextual info (user id, request id, operation) in logs, missing correlation IDs
 
 - Reproducibility — nondeterministic behavior (random, time, ordering), env-dependent behavior, timing/race conditions
 
-- Failure paths — behavior เมื่อ dependency fail (DB down, API timeout, disk full), partial failure handling, fallback logic
+- Failure paths — behavior when a dependency fails (DB down, API timeout, disk full), partial failure handling, fallback logic
 
-- Debuggability — stack traces ที่ถูก preserve, error wrapping ที่ทำ cause หาย, debug flags/verbose modes
+- Debuggability — preserved stack traces, error wrapping that loses the cause, debug flags/verbose modes
 
-- Silent failures — ignored return values, unchecked errors, fire-and-forget calls ที่ fail เงียบ
+- Silent failures — ignored return values, unchecked errors, fire-and-forget calls that fail quietly
 
-- Crash/panic paths — unhandled exceptions, panic points, process-killing errors ที่ควร handle
+- Crash/panic paths — unhandled exceptions, panic points, process-killing errors that should be handled
 
-- Diagnostic surface — health endpoints ที่บอกจุดพัง, admin/debug endpoints, ability to inspect state ตอน incident
+- Diagnostic surface — health endpoints that report the failing point, admin/debug endpoints, ability to inspect state during an incident
 
 
 
@@ -145,13 +145,13 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 
 
@@ -159,7 +159,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง debugger พร้อม severity และ evidence
+- findings from the debugger perspective with severity and evidence
 
 ### quality/performance-engineer
 
@@ -167,7 +167,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-รับบทเป็น Performance Engineer — คนที่ own speed และ resource efficiency สนใจ hot paths, resource waste, และ latency ที่ user รับรู้ — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a Performance Engineer — the person who owns speed and resource efficiency, focused on hot paths, resource waste, and user-perceived latency — review <scope> through this role's lens, report-only
 
 
 
@@ -175,21 +175,21 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Hot paths — heavy computation/loops ใน request path, synchronous I/O blocking, serialization ขนาดใหญ่ต่อ request
+- Hot paths — heavy computation/loops in the request path, synchronous I/O blocking, large per-request serialization
 
-- N+1 queries — ORM lazy loading ใน loops, missing eager loading/`include`/`join`, per-item queries ที่ควร batch
+- N+1 queries — ORM lazy loading in loops, missing eager loading/`include`/`join`, per-item queries that should be batched
 
 - Bundle size — heavy imports (moment, lodash full), missing code splitting/lazy loading, large client-side dependencies
 
-- Memory — unbounded caches/arrays, leaks จาก listeners/subscriptions ที่ไม่ cleanup, large object retention
+- Memory — unbounded caches/arrays, leaks from listeners/subscriptions that never clean up, large object retention
 
-- Latency budgets — sequential `await` ที่ parallel ได้, blocking calls ใน hot path, chatty API calls ที่ batch ได้
+- Latency budgets — sequential `await` that could be parallelized, blocking calls in the hot path, chatty API calls that could be batched
 
-- Caching — repeated expensive computation ที่ไม่ cache, missing HTTP cache headers, cache invalidation strategy ที่ขาด
+- Caching — repeated expensive computation that isn't cached, missing HTTP cache headers, missing cache invalidation strategy
 
-- Frontend rendering — unnecessary re-renders ใน hot components, large list ที่ไม่ virtualize, layout thrashing
+- Frontend rendering — unnecessary re-renders in hot components, large lists that aren't virtualized, layout thrashing
 
-- Resource limits — unbounded pagination, missing timeouts, payload size ที่ไม่จำกัด
+- Resource limits — unbounded pagination, missing timeouts, unlimited payload size
 
 
 
@@ -197,13 +197,13 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 
 
@@ -211,7 +211,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง performance-engineer พร้อม severity และ evidence
+- findings from the performance-engineer perspective with severity and evidence
 
 ### quality/qa-engineer
 
@@ -219,7 +219,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-รับบทเป็น QA Engineer — คนที่ own quality จากมุมมอง user สนใจว่า critical paths ถูกทดสอบและ defects ไม่หลุดถึง production — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as a QA Engineer — the person who owns quality from the user's perspective, focused on critical paths being tested and defects not leaking to production — review <scope> through this role's lens, report-only
 
 
 
@@ -227,21 +227,21 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Critical path coverage — main user flows (signup, login, checkout, core action) มี test coverage หรือไม่
+- Critical path coverage — do main user flows (signup, login, checkout, core action) have test coverage?
 
-- Edge case testing — boundary values, empty/null inputs, error cases, unusual sequences ที่ test ข้าม
+- Edge case testing — boundary values, empty/null inputs, error cases, unusual sequences that tests skip
 
-- Regression risk — areas ที่มี bug history/ความซับซ้อนสูงแต่ไม่มี tests, recent fix areas ที่ไม่มี regression test
+- Regression risk — areas with a bug history/high complexity but no tests, recent fix areas without regression tests
 
-- Test quality — assertions ที่จริงจัง vs trivial, test independence (order dependence, shared state), flaky patterns
+- Test quality — serious vs trivial assertions, test independence (order dependence, shared state), flaky patterns
 
-- Test data — fixtures/factories ที่ realistic, test data ที่ cover edge cases, hardcoded data ที่ brittle
+- Test data — realistic fixtures/factories, test data that covers edge cases, brittle hardcoded data
 
-- Untestable code signals — logic ที่ test ยาก (tight coupling, hidden dependencies) ที่ทำให้ coverage ต่ำ
+- Untestable code signals — logic that is hard to test (tight coupling, hidden dependencies) causing low coverage
 
-- Manual-testing-only areas — features ที่ไม่มี automated coverage เลยและต้องพึ่ง manual QA
+- Manual-testing-only areas — features with no automated coverage at all that rely on manual QA
 
-- Bug-prone areas — complex conditional logic, error-prone patterns (date/time, currency, concurrency) ที่ไม่มี test
+- Bug-prone areas — complex conditional logic, error-prone patterns (date/time, currency, concurrency) without tests
 
 
 
@@ -249,13 +249,13 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 
 
@@ -263,7 +263,7 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- findings จากมุมมอง qa-engineer พร้อม severity และ evidence
+- findings from the qa-engineer perspective with severity and evidence
 
 ### quality/security-engineer
 
@@ -301,13 +301,13 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 
 
@@ -353,11 +353,11 @@ Persona details for the `quality` category — merged from the original `workflo
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
 - ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป  และ `/deep-test` โดยเฉพาะ
 

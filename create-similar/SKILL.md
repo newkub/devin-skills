@@ -1,6 +1,6 @@
 ---
 name: create-similar
-description: สร้างไฟล์ skill หรือ project ใหม่โดยอ้างอิงโครงสร้างจากตัวอย่าง
+description: Create a new skill or project file based on an existing example's structure
 argument-hint: "[scope]"
 related:
   - update-devin-global-skills
@@ -13,94 +13,94 @@ related:
 
 ## Goal
 
-สร้างสิ่งใหม่ทีมีโครงสร้างคล้ายตัวอย่างทีมีอยู่ โดยปรับชื่อและ context ให้เหมาะสม
+Create something new with a structure similar to an existing example, adjusting names and context as appropriate.
 
 ## Scope
 
-ใช้เมื่อต้องการสร้าง skill, file, component, หรือ project structure ใหม่โดยอ้างอิงจากตัวอย่างเดิม เช่น สร้าง `edit-<repo>` จาก `edit-*` ตัวอย่างเดิม
+Use when creating a new skill, file, component, or project structure based on an existing example, e.g. creating `edit-<repo>` from an existing `edit-*` example.
 
 ## Execute
 
 ### 1. Identify Example
 
-> Goal: ระบุตัวอย่างทีจะคัดลอก
+> Goal: Identify the example to copy
 
-1. ถ้า user ระบุ path หรือ skill name → อ่านทันที
-2. ถ้าไม่ระบุ → หาไฟล์/ directory ทีใกล้เคียงกับ target ด้วย `/search-files-patterns`
-3. ยืนยันว่า example เป็นต้นฉบับทีถูกต้อง
+1. If the user gives a path or skill name → read it immediately
+2. If not specified → find the file or directory closest to the target with `/search-files-patterns`
+3. Confirm the example is the correct canonical source
 
 ### 2. Analyze Structure
 
-> Goal: เข้าใจโครงสร้างและส่วนทีต้องเปลี่ยน
+> Goal: Understand the structure and what must change
 
-1. อ่านไฟล์ทั้งหมดใน example
-2. แยกส่วนประกอบ: frontmatter, sections, commands, references, names
-3. ระบุ identifiers ทีผูกกับ example (directory name, skill name, URLs, paths)
-4. บันทึกรายการทีต้อง replace
+1. Read all files in the example
+2. Separate the components: frontmatter, sections, commands, references, names
+3. Identify the identifiers tied to the example (directory name, skill name, URLs, paths)
+4. Record the list of items to replace
 
 ### 3. Define Target
 
-> Goal: กำหนดสิ่งทีจะสร้าง
+> Goal: Define what will be created
 
-1. รับ target name จาก user
-2. ตรวจสอบความถูกต้องของชื่อ (kebab-case, ไม่ซ้ำ, ไม่มีอักขระพิเศษ)
-3. รับ context หรือ scope ทีแตกต่างจาก example
-4. ถ้าไม่ชัด → ทำ `/ask-me`
+1. Get the target name from the user
+2. Validate the name (kebab-case, not duplicated, no special characters)
+3. Get the context or scope that differs from the example
+4. If unclear → run `/ask-me`
 
 ### 4. Create Copy
 
-> Goal: สร้างไฟล์/ directory ใหม่
+> Goal: Create the new file/directory
 
-1. สร้าง target directory ถ้าจำเป็น
-2. คัดลอกไฟล์จาก example ไปยัง target
-3. ถ้ามีหลายไฟล์ → คัดลอกทั้งหมด
-4. ไม่ overwrite ไฟล์เดิม
+1. Create the target directory if needed
+2. Copy the files from the example to the target
+3. If there are multiple files → copy all of them
+4. Never overwrite existing files
 
 ### 5. Replace Identifiers
 
-> Goal: ปรับ example ให้ตรงกับ target
+> Goal: Adapt the example to match the target
 
-1. แทนทีชื่อ example ด้วย target name ในทุกไฟล์
-2. แทนที directory references
-3. แทนที URLs, paths, project-specific names
-4. ถ้าเป็น skill → อัปเดต `name` ใน frontmatter
-5. ถ้ามี `description` → ปรับให้สอดคล้อง
+1. Replace the example names with the target name in every file
+2. Replace directory references
+3. Replace URLs, paths, and project-specific names
+4. If it is a skill → update `name` in the frontmatter
+5. If there is a `description` → adjust it to match
 
 ### 6. Adapt Content
 
-> Goal: ปรับเนื้อหาให้เหมาะกับ target
+> Goal: Tailor the content to the target
 
-1. ปรับ `## Goal` และ `## Scope` ตาม context
-2. ปรับ commands, examples, และ paths
-3. ลบข้อมูลเฉพาะของ example ทีไม่เกี่ยวข้อง
-4. ถ้ามี `related` → อัปเดตให้ถูกต้อง
+1. Adjust `## Goal` and `## Scope` to fit the context
+2. Adjust commands, examples, and paths
+3. Remove example-specific details that are not relevant
+4. If there is `related` → update it correctly
 
 ### 7. Validate
 
-> Goal: ตรวจสอบความถูกต้อง
+> Goal: Check correctness
 
-1. ตรวจสอบว่า `name` ตรง directory name
-2. ตรวจสอบว่าไม่มี broken references
-3. ทำ `/deep-validate` สำหรับ skill
-4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+1. Verify `name` matches the directory name
+2. Verify there are no broken references
+3. Run `/deep-validate` for the skill
+4. If it fails → run `/resolve-errors` and retry (max 3)
 
 ## Rules
 
-- ไม่ overwrite ไฟล์เดิม ถ้ามีอยู่แล้วให้ stop หรือถาม user
-- เปลี่ยนทุก identifiers ทีขาดไม่ได้
-- ไม่คัดลอก secrets, API keys, credentials
-- ถ้าเป็น skill ให้ `name` ตรง directory name
-- ไม่เดา context ถ้าไม่ชัด → ใช้ `/ask-me`
-- ถ้าสร้าง skill ใหม่ → อัปเดต `AGENTS.md`
+- Never overwrite existing files; if one already exists, stop or ask the user
+- Change every identifier — none may be missed
+- Do not copy secrets, API keys, or credentials
+- For a skill, `name` must match the directory name
+- Do not guess context; if unclear → use `/ask-me`
+- If creating a new skill → update `AGENTS.md`
 
-- ใช้ /update-devin-global-skills ถ้าจำเป็น (similar)
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /use-related-skills ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+- Use /update-devin-global-skills if needed (similar)
+- Use /deep-review if needed
+- Use /use-related-skills if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- สร้างไฟล์/ directory ใหม่ทีคล้าย example แต่ปรับตาม target
-- ไม่มี broken references
-- `name` ตรง directory name
-- ผ่าน validation
+- New file/directory created that mirrors the example but is adapted to the target
+- No broken references
+- `name` matches the directory name
+- Passes validation

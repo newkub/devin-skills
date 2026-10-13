@@ -1,6 +1,6 @@
 ---
 name: cleanup-branches-merged
-description: ลบ local และ remote branches ที่ merge เข้า main แล้วทั้งหมดพร้อม dry-run
+description: Delete all local and remote branches merged into main, with a dry run first
 argument-hint: "[base-branch] [--remote]"
 related:
   - ask-me
@@ -12,80 +12,80 @@ related:
 
 ## Goal
 
-ลบ branches ที่ merge เข้า base branch (default `main`) เรียบร้อยแล้ว — ทั้ง local และ remote — โดยมี dry-run และ confirmation ก่อนลบจริง
+Delete branches already merged into the base branch (default `main`) — both local and remote — with a dry run and confirmation before any real deletion
 
 ## Scope
 
-- Local branches ที่ merged: `git branch --merged <base>`
-- Remote branches ที่ merged หรือ PR-closed ถ้าระบุ `--remote`
-- ข้าม: base branch, current branch, protected branches (`main`, `develop`, `release/*` ตาม convention)
-- Destructive: ต้อง dry-run + user confirmation เสมอ
-- ถ้าลบ branch เฉพาะตัว หรือ branch ที่ abandoned (ยังไม่ merge) → ใช้ `/cleanup-git-branch` แทน
+- Merged local branches: `git branch --merged <base>`
+- Merged remote branches, or PR-closed ones, when `--remote` is given
+- Skip: the base branch, the current branch, and protected branches (`main`, `develop`, `release/*` per convention)
+- Destructive: always requires a dry run + user confirmation
+- To delete just one specific branch, or an abandoned (unmerged) branch, use `/cleanup-git-branch` instead
 
 ## Execute
 
 ### 1. Survey Branches
 
-> Goal: รวบรวม branches ทั้งหมดและสถานะ
+> Goal: gather all branches and their status
 
-1. `git fetch --prune` เพื่อ sync remote refs ล่าสุด
-2. `git branch --merged <base>` หา local branches ที่ merged
-3. ถ้า `--remote`: `git branch -r --merged <base>` หา remote branches ที่ merged
-4. เทียบกับ GitHub: branches ที่ PR ถูก close/merge ผ่าน `gh pr list --state merged`
+1. `git fetch --prune` to sync the latest remote refs
+2. `git branch --merged <base>` to find merged local branches
+3. With `--remote`: `git branch -r --merged <base>` to find merged remote branches
+4. Cross-check GitHub: branches whose PRs were closed/merged, via `gh pr list --state merged`
 
 ### 2. Build Deletion List
 
-> Goal: สร้างรายการ branches ที่ปลอดภัยจะลบ
+> Goal: build the list of branches that are safe to delete
 
-1. ข้าม: base branch, current checkout, protected patterns (`main`, `master`, `develop`, `release/*`, `hotfix/*`)
-2. flag branches ที่ merged แต่มี unmerged commits บน remote counterpart
-3. flag branches ที่ merged แต่ยังมี open PR — อาจถูก reopen
-4. เหลือเฉพาะ: merged + no open PR + not protected
+1. Skip: the base branch, the current checkout, and protected patterns (`main`, `master`, `develop`, `release/*`, `hotfix/*`)
+2. Flag branches that are merged but have unmerged commits on their remote counterpart
+3. Flag branches that are merged but still have an open PR — it could be reopened
+4. Keep only: merged + no open PR + not protected
 
 ### 3. Dry-Run Report
 
-> Goal: แสดงสิ่งที่จะลบก่อนทำจริง
+> Goal: show what will be deleted before doing it
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
-2. ระบุจำนวนรวมและ branches ที่ข้ามพร้อมเหตุผล
-3. รอ user confirmation ผ่าน `/ask-me` ก่อนลบเสมอ
+1. Report via `/report` with columns: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
+2. State the total count and the skipped branches, each with its reason
+3. Always wait for user confirmation via `/ask-me` before deleting
 
 ### 4. Delete
 
-> Goal: ลบตามที่ confirm
+> Goal: delete as confirmed
 
-1. Local: `git branch -d <branch>` (safe delete — ปฏิเสธถ้า unmerged)
-2. Remote: `git push origin --delete <branch>` เฉพาะที่ user confirm
-3. ถ้า `-d` fail → อย่า force `-D` เอง — รายงานให้ user ตัดสินใจ
+1. Local: `git branch -d <branch>` (safe delete — refuses unmerged branches)
+2. Remote: `git push origin --delete <branch>` only for what the user confirms
+3. If `-d` fails → never force `-D` on your own — report it and let the user decide
 
 ### 5. Report Result
 
-> Goal: สรุปสิ่งที่ลบและที่เหลือ
+> Goal: summarize what was deleted and what remains
 
-1. ตารางผลลัพธ์: deleted, skipped, failed พร้อมเหตุผล
-2. `git branch` + `git remote prune origin` เพื่อยืนยันสะอาด
+1. Result table: deleted, skipped, failed, each with its reason
+2. `git branch` + `git remote prune origin` to confirm everything is clean
 
 ## Rules
 
 ### 1. Confirmation Required
 
-- ห้ามลบ branch ใดๆ โดยไม่มี dry-run report และ user confirmation
-- ใช้ `-d` (safe) ไม่ใช่ `-D` (force) เว้นแต่ user สั่งชัดเจน
+- Never delete any branch without a dry-run report and user confirmation
+- Use `-d` (safe), not `-D` (force), unless the user explicitly says so
 
 ### 2. Protect Critical Branches
 
-- base, current และ protected patterns ห้ามอยู่ใน deletion list
-- branches ที่มี open PR หรือ unmerged commits ต้อง flag ไม่ลบ
+- The base branch, the current branch, and protected patterns must never appear in the deletion list
+- Branches with an open PR or unmerged commits must be flagged, not deleted
 
 ### 3. Sync First
 
-- ต้อง `fetch --prune` ก่อนเสมอ — stale refs ทำให้ list ผิด
-- remote deletions ทำเฉพาะที่ user ระบุ `--remote` และ confirm
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Always `fetch --prune` first — stale refs make the list wrong
+- Perform remote deletions only when the user passes `--remote` and confirms
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- Branches ที่ merged ถูกลบอย่างปลอดภัยทั้ง local และ remote (ถ้าเลือก)
-- Protected/open-PR branches ไม่ถูกแตะ
-- รายงาน deleted/skipped พร้อมเหตุผลครบ
+- Merged branches deleted safely, both local and remote (when selected)
+- Protected and open-PR branches left untouched
+- A deleted/skipped report with complete reasons

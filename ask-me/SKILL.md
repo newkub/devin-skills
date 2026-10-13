@@ -1,6 +1,6 @@
 ---
 name: ask-me
-description: ถามผู้ใช้ด้วยตัวเลือกและคำแนะนำ รองรับ multi-select, multi-step, tech stack
+description: Ask the user with options and a recommendation; supports multi-select, multi-step, tech stack
 argument-hint: "[question]"
 allowed-tools:
   - ask_user_question
@@ -21,160 +21,160 @@ related:
 
 ## Goal
 
-ถามผู้ใช้คำถามพร้อมตัวเลือกที่กำหนดไว้และมีคำแนะนำ (recommended) เพื่อขอคำยืนยัน ตัดสินใจเลือกทางเลือก หรือขอข้อมูลเพิ่มเติม รองรับทั้ง single-select, multi-select, multi-step flow และ tech stack questions
+Ask the user a question with predefined options and a recommendation (recommended) to get confirmation, choose among alternatives, or request more information. Supports single-select, multi-select, multi-step flows, and tech stack questions
 
 ## Scope
 
-ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-project-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/follow-my-persona`)
+Use for general questions that need an option-based answer, not for gathering requirements (use `/ask-project-requirement`) and not for interviewing preferences (use `/follow-my-persona`)
 
-รองรับคำถามเกี่ยวกับ tech stack เช่น runtime, language, framework, library, database, test tool, deploy target, CI tool และ package manager
+Supports tech stack questions such as runtime, language, framework, library, database, test tool, deploy target, CI tool, and package manager
 
-ใช้ `ask_user_question` tool เท่านั้น ห้ามใช้วิธีอื่นในการถามผู้ใช้
+Use the `ask_user_question` tool only; no other way of asking the user is allowed
 
 ## Execute
 
 ### 1. Identify Question Type And Flow
 
-> Goal: ระบุประเภทคำถามและโครงสร้าง multi-step
+> Goal: Identify the question type and the multi-step structure
 
-1. วิเคราะห์ว่าต้องการคำตอบแบบใด: `single`, `multiselect`, `text`, `confirm`
-2. ถ้าต้องเก็บคำตอบหลายหัวข้อ → ออกแบบ `multi-step` flow แยกเป็น steps
-3. แต่ละ step ประกอบด้วย 1-4 คำถาม ใช้ `ask_user_question` ต่อหนึ่ง call
-4. ถ้าเป็น `confirm` ให้ตัวเลือกแบบ yes/no หรือ proceed/abort
-5. ถ้าเป็น `single` ให้ตัวเลือก 2-4 ตัวเลือก เลือกได้ตัวเดียว
-6. ถ้าเป็น `multiselect` ให้ตัวเลือก 2-4 ตัวเลือก เลือกได้หลายตัว ตั้ง `multi_select: true`
-7. ถ้าเป็น `text` ให้ผู้ใช้ตอบเอง ไม่บังคับตัวเลือก
+1. Analyze what kind of answer is needed: `single`, `multiselect`, `text`, `confirm`
+2. If answers are needed across several topics → design a `multi-step` flow split into steps
+3. Each step consists of 1-4 questions, with one `ask_user_question` call per step
+4. For `confirm`, offer yes/no or proceed/abort options
+5. For `single`, offer 2-4 options and the user picks one
+6. For `multiselect`, offer 2-4 options and the user can pick several; set `multi_select: true`
+7. For `text`, let the user answer freely without forcing options
 
 ### 2. Prepare Multi-Step Questions
 
-> Goal: เตรียมคำถาม ตัวเลือก และ recommendation สำหรับแต่ละ step
+> Goal: Prepare the questions, options, and recommendation for each step
 
-1. แบ่งคำถามออกเป็น steps ตามลำดับทีต้องถาม
-2. แต่ละ step มี 1-4 คำถาม แต่ละคำถามมี 2-4 ตัวเลือก
-3. แต่ละตัวเลือกต้องมี `label` สั้นกระชับ และ `description` อธิบายรายละเอียด
-4. ระบุตัวเลือกแนะนำโดยเพิ่ม visual marker นำหน้า `label` เช่น `✨ ทำ /plan ต่อ` หรือ `(recommended) ทำ /plan ต่อ` พร้อมอธิบายเหตุผลใน `description`
-5. ตั้ง `multi_select: true` สำหรับคำถามที่เลือกได้หลายตัว
-6. ไม่ใส่ตัวเลือก "other" เพราะผู้ใช้สามารถตอบเองได้เสมอ
-7. ตัวเลือกต้องครอบคลุมทุกกรณีที่เป็นไปได้
-8. เรียงลำดับตัวเลือกโดยวางตัวเลือกที่แนะนำไว้ลำดับแรก
-9. เพิ่มตัวเลือก `Skip` เพื่อให้ผู้ใช้ข้ามคำถามนี้ได้ — `description`: "ข้ามคำถามนี้ ใช้ default หรือดำเนินการต่อโดยไม่ตอบ"
-10. เพิ่มตัวเลือก `Suggest another` เพื่อให้ผู้ใช้ขอตัวเลือกอื่น — `description`: "ขอให้ AI เสนอตัวเลือกอื่นที่ไม่อยู่ในรายการ"
+1. Split the questions into steps in the order they must be asked
+2. Each step has 1-4 questions, and each question has 2-4 options
+3. Every option needs a concise `label` and a `description` with the details
+4. Mark the recommended option with a visual marker prefixed to the `label`, e.g. `✨ Continue with /plan` or `(recommended) Continue with /plan`, and explain the reason in `description`
+5. Set `multi_select: true` for questions that allow multiple choices
+6. Don't add an "other" option, since the user can always answer in their own words
+7. The options must cover every plausible case
+8. Order the options with the recommended one first
+9. Add a `Skip` option so the user can bypass this question — `description`: "Skip this question; use the default or continue without answering"
+10. Add a `Suggest another` option so the user can request different choices — `description`: "Ask the AI to suggest other options not on the list"
 
 ### 3. Ask With `ask_user_question`
 
-> Goal: ส่งคำถามให้ผู้ใช้
+> Goal: Send the questions to the user
 
-1. เขียน `question` ให้ชัดเจน กระชับ และมี context เพียงพอ
-2. ส่ง 1-4 คำถามพร้อมกันใน `ask_user_question` ต่อหนึ่ง step
-3. ส่ง `options` พร้อม `label`, `description` และ `multi_select: true/false`
-4. ถ้าเป็น multi-step ให้ถาม step ถัดไปหลังประมวลผลคำตอบ step ปัจจุบัน
+1. Write the `question` clearly and concisely with enough context
+2. Send 1-4 questions at once in `ask_user_question` for each step
+3. Send `options` with `label`, `description`, and `multi_select: true/false`
+4. For multi-step, ask the next step after processing the current step's answers
 
 ### 4. Process Multi-Step Response
 
-> Goal: ประมวลผลคำตอบจากผู้ใช้ใน multi-step flow
+> Goal: Process the user's answers in a multi-step flow
 
-1. คู่คำถามกับคำตอบจาก mapping ที่ `ask_user_question` return
-2. ถ้า `multi_select: true` → `selected` เป็น array สามารถมีหลาย labels
-3. ถ้า `multi_select: false` → `selected` มี label เดียว
-4. ถ้าผู้ใช้ให้คำตอบเอง (custom_text) ให้วิเคราะห์และปรับแผนตามคำตอบ
-5. ถ้าผู้ใช้เลือก `Skip` ให้ดำเนินการต่อโดยใช้ default หรือข้ามขั้นตอนนั้น
-6. ถ้าผู้ใช้เลือก `Suggest another` ให้เสนอตัวเลือกใหม่ 2-4 ตัวเลือกที่ไม่ซ้ำกับเดิม
-7. ถ้ายังมี step ถัดไป → ถาม step ถัดไป
-8. ถ้าเสร็จสิ้น multi-step → สรุปคำตอบทั้งหมดและดำเนินการ
-9. ไม่ถามซ้ำคำถามที่ผู้ใช้ตอบแล้ว
+1. Pair each question with its answer from the mapping `ask_user_question` returns
+2. If `multi_select: true` → `selected` is an array and may contain multiple labels
+3. If `multi_select: false` → `selected` contains a single label
+4. If the user answered in their own words (custom_text), analyze it and adjust the plan accordingly
+5. If the user picks `Skip`, continue using the default or skipping that step
+6. If the user picks `Suggest another`, offer 2-4 new options that don't repeat the old ones
+7. If there is a next step → ask it
+8. When the multi-step flow is done → summarize all answers and proceed
+9. Never re-ask a question the user has already answered
 
 ### 5. Tech Stack And Tool Questions
 
-> Goal: รองรับคำถามเกี่ยวกับ tech stack, runtime, framework, library และ tool
+> Goal: Support questions about tech stack, runtime, framework, library, and tools
 
-1. วิเคราะห์ว่าคำถามเกี่ยวกับ technology ประเภทใด: `runtime`, `language`, `framework`, `library`, `database`, `test-tool`, `deploy-target`, `ci-tool`, `package-manager`
-2. ใช้ `follow-lang-*`, `follow-framework-*`, `follow-tool-*`, `follow-lib-*`, `follow-service-*` เพื่อสร้างตัวเลือกและคำแนะนำ
-3. อ้างอิง project manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) และ conventions เพื่อระบุ default และ recommended
-4. ถ้า tech stack ซับซ้อน → แบ่งเป็น multi-step: `runtime` → `language` → `framework` → `library` → `deploy-target`
-5. ตัวเลือกแนะนำต้องระบุเหตุผลเชิงเทคนิค เช่น "Bun ใช้ native APIs ได้เร็วกว่า Node.js ในโปรเจกต์นี้"
-6. ถ้าต้องการแสดง map ของ skills ตาม tech stack หรือ task ให้ทำ `/search-skills`
+1. Analyze which kind of technology the question is about: `runtime`, `language`, `framework`, `library`, `database`, `test-tool`, `deploy-target`, `ci-tool`, `package-manager`
+2. Use `follow-lang-*`, `follow-framework-*`, `follow-tool-*`, `follow-lib-*`, `follow-service-*` to build the options and recommendations
+3. Reference project manifests (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) and conventions to determine the defaults and recommendations
+4. If the tech stack is complex → split into multi-step: `runtime` → `language` → `framework` → `library` → `deploy-target`
+5. The recommended option must state a technical reason, e.g. "Bun uses native APIs and is faster than Node.js in this project"
+6. If a map of skills by tech stack or task is needed, run `/search-skills`
 
 ## Rules
 
 ### 1. When To Ask
 
-ถามผู้ใช้เมื่อ:
+Ask the user when:
 
-- มีทางเลือกที่ต้องตัดสินใจและไม่ชัดเจนว่าผู้ใช้ต้องการอะไร
-- ต้องการยืนยันทิศทางก่อนดำเนินการ
-- ข้อมูลไม่เพียงพอที่จะดำเนินการได้ถูกต้อง
-- มีหลายวิธีที่ทำได้และผู้ใช้ควรเลือก
+- There is a decision to make and it is unclear what the user wants
+- Direction needs to be confirmed before proceeding
+- There is not enough information to proceed correctly
+- Several approaches are possible and the user should choose
 
 ### 2. When Not To Ask
 
-ไม่ถามผู้ใช้เมื่อ:
+Don't ask the user when:
 
-- คำตอบชัดเจนจาก context หรือจาก memory
-- เป็นการเก็บ requirements (ใช้ `/ask-project-requirement`)
-- เป็นการสัมภาษณ์ preferences (ใช้ `/follow-my-persona`)
-- เป็น low-risk action ที่ทำได้เลย
-- ผู้ใช้หรือ workflow ระบุ `/dont-ask-me`
+- The answer is obvious from context or memory
+- It is requirement gathering (use `/ask-project-requirement`)
+- It is a preferences interview (use `/follow-my-persona`)
+- The action is low-risk and can just be done
+- The user or workflow specifies `/dont-ask-me`
 
 ### 3. Question Design
 
-- คำถามสั้นกระชับ มี context เพียงพอ
-- ใช้ภาษาที่ผู้ใช้เข้าใจ หลีกเลี่ยง jargon
-- หลีกเลี่ยงคำถามที่ก่อให้เกิดความสับสนหรือคลุมเครือ
-- รายละเอียด options, multi_select, multi-step อยู่ใน Execute #2 แล้ว ไม่ขอซ้ำ
-- ถ้า multi-step ให้บอกผู้ใช้ว่าขั้นตอนนี้เป็น step ที่เท่าไร
+- Keep questions short with enough context
+- Use language the user understands; avoid jargon
+- Avoid questions that cause confusion or ambiguity
+- Details on options, multi_select, and multi-step are already in Execute #2; not repeated here
+- For multi-step, tell the user which step number this is
 
 ### 4. Recommendation
 
-- ทุกคำถามต้องมีตัวเลือกที่แนะนำอย่างน้อย 1 ตัวเลือก
-- ระบุตัวเลือกแนะนำด้วย visual marker นำหน้า `label` เช่น `✨`, `⭐`, `👍` หรือข้อความ `(recommended)`
-- ถ้าผู้ใช้หรือ context ไม่ต้องการ emoji ให้ใช้ `(recommended)` แทน
-- ไม่ต้องสร้างตัวเลือก `recommended` แยกต่างหาก
-- อธิบายเหตุผลใน `description` ว่าทำไมแนะนำตัวเลือกนี้
-- คำแนะนำต้องอ้างอิงจาก context, best practices หรือ project conventions
-- ถ้ามีหลายตัวเลือกที่ดีพอๆ กัน ให้เลือกตัวที่ง่ายที่สุดเป็น recommended
+- Every question must have at least one recommended option
+- Mark the recommended option with a visual marker prefixed to the `label`, e.g. `✨`, `⭐`, `👍`, or the text `(recommended)`
+- If the user or context doesn't want emoji, use `(recommended)` instead
+- Don't create a separate `recommended` option
+- Explain in `description` why this option is recommended
+- Recommendations must be grounded in context, best practices, or project conventions
+- If several options are roughly equally good, make the simplest one the recommended choice
 
 ### 5. Interaction Patterns
 
-- multi-step: ถาม step ละ 1-4 คำถาม รอคำตอบ แล้วถาม step ถัดไป
-- ถ้าผู้ใช้ตอบเอง ให้ปรับแผนตามคำตอบ
-- ไม่ถามซ้ำคำถามที่ตอบแล้ว
-- ถ้าคำตอบนำไปสู่คำถามใหม่ ให้ถามตามมา
-- หลังได้คำตอบ ให้ดำเนินการทันทีไม่ชะลอ
-- ถ้าผู้ใช้เลือก `Skip` หลายครั้งติดต่อกัน ให้พิจารณาใช้ default แทนการถามต่อ
-- ถ้าผู้ใช้เลือก `Suggest another` ครั้งที่ 2 ให้ใช้ `/ask-again` หรือถามแบบ open-ended
-- ถ้าผู้ใช้บอก "ไม่เข้าใจ", "ถามใหม่", "ask again" → ใช้ `/ask-again` เพื่อ rephrase
-- ถ้าผู้ใช้เลือก `Skip` ทุกคำถาม ให้หยุดถามและดำเนินการด้วย default ทั้งหมด
+- multi-step: ask 1-4 questions per step, wait for answers, then ask the next step
+- If the user answers in their own words, adjust the plan accordingly
+- Never re-ask a question that was already answered
+- If an answer leads to a new question, follow up with it
+- Once answers are in, proceed immediately without stalling
+- If the user picks `Skip` many times in a row, consider using defaults instead of asking further
+- If the user picks `Suggest another` a second time, use `/ask-again` or ask open-ended
+- If the user says "don't understand", "ask again" → use `/ask-again` to rephrase
+- If the user picks `Skip` on every question, stop asking and proceed with all defaults
 
 ### 6. Update References
 
-- ถ้าคำตอบของผู้ใช้นำไปสู่การแก้ไข ย้าย เปลี่ยนชื่อ หรือลบไฟล์/skill → ดำเนินการตามคำตอบแล้วทำ `/update-references` เสมอ
-- ไม่ต้องถามยืนยันก่อน update references เพราะเป็นขั้นตอนทีต้องทำเสมอหลังการเปลี่ยนแปลง
+- If the user's answer leads to editing, moving, renaming, or deleting files/skills → act on the answer, then always run `/update-references`
+- No need to ask for confirmation before updating references, since it is a mandatory step after changes
 
-- ใช้ /follow-your-suggestion ถ้าจำเป็น
+- Use /follow-your-suggestion if needed
 ## Examples
 
 ### Question Categories
 
-- `runtime`: "เลือก runtime สำหรับ backend" — `Bun`, `Node.js`, `Deno`, `Rust`, `Go`
-- `language`: "เลือกภาษาสำหรับ CLI" — `TypeScript/Bun`, `Rust`, `Zig`, `Python`
-- `framework`: "เลือก framework สำหรับ web app" — `Next.js`, `Nuxt`, `SolidStart`, `SvelteKit`, `Astro`
-- `library`: "เลือก validation library" — `Zod`, `ArkType`, `Valibot`
-- `database`: "เลือก database" — `PostgreSQL`, `SQLite`, `Turso`, `Supabase`
-- `test-tool`: "เลือก test runner" — `Vitest`, `Playwright`, `Cypress`
-- `deploy-target`: "เลือก deploy platform" — `Vercel`, `Cloudflare`, `Railway`
-- `ci-tool`: "เลือก CI tool" — `GitHub Actions`, `Renovate`, `Changesets`
+- `runtime`: "Choose a runtime for the backend" — `Bun`, `Node.js`, `Deno`, `Rust`, `Go`
+- `language`: "Choose a language for the CLI" — `TypeScript/Bun`, `Rust`, `Zig`, `Python`
+- `framework`: "Choose a framework for the web app" — `Next.js`, `Nuxt`, `SolidStart`, `SvelteKit`, `Astro`
+- `library`: "Choose a validation library" — `Zod`, `ArkType`, `Valibot`
+- `database`: "Choose a database" — `PostgreSQL`, `SQLite`, `Turso`, `Supabase`
+- `test-tool`: "Choose a test runner" — `Vitest`, `Playwright`, `Cypress`
+- `deploy-target`: "Choose a deploy platform" — `Vercel`, `Cloudflare`, `Railway`
+- `ci-tool`: "Choose a CI tool" — `GitHub Actions`, `Renovate`, `Changesets`
 
 ### Example: Single-Select Question
 
 ```json
 {
-  "question": "เลือก runtime สำหรับ backend",
+  "question": "Choose a runtime for the backend",
   "header": "Runtime",
   "multi_select": false,
   "options": [
-    { "label": "✨ Bun", "description": "แนะนำ — เร็ว ใช้ native APIs ได้" },
-    { "label": "Node.js", "description": "ecosystem ใหญ่ ใช้งานได้ทั่วไป" },
-    { "label": "Deno", "description": "secure by default สำหรับ TypeScript" }
+    { "label": "✨ Bun", "description": "Recommended — fast, supports native APIs" },
+    { "label": "Node.js", "description": "large ecosystem, works for general use" },
+    { "label": "Deno", "description": "secure by default for TypeScript" }
   ]
 }
 ```
@@ -183,7 +183,7 @@ related:
 
 ```json
 {
-  "question": "เลือก tools ทีต้องติดตั้งเพิ่ม",
+  "question": "Choose the tools to install",
   "header": "Extra tools",
   "multi_select": true,
   "options": [
@@ -196,9 +196,9 @@ related:
 
 ## Expected Outcome
 
-- ผู้ใช้ตัดสินใจได้ง่ายจากตัวเลือกที่ชัดเจนและมีคำแนะนำ
-- รองรับ single-select, multi-select และ multi-step flow
-- รองรับ tech stack questions ทั้ง runtime, language, framework, library, tool
-- ลดการคาดเดาของ AI
-- การทำงานสอดคล้องกับความต้องการของผู้ใช้
-- ผู้ใช้สามารถข้ามหรือขอตัวเลือกอื่นได้ตลอดการสนทนา
+- The user can decide easily from clear options with a recommendation
+- Supports single-select, multi-select, and multi-step flows
+- Supports tech stack questions across runtime, language, framework, library, and tools
+- Reduces AI guesswork
+- Work stays aligned with what the user wants
+- The user can skip or request other options at any point in the conversation

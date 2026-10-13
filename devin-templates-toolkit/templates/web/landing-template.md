@@ -17,4 +17,4 @@
 
 1. Copy to project
 2. Replace `<project-name>` and `<repo-name>`
-3. รัน `bun install && bun run build`
+3. Run `bun install && bun run build`

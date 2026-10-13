@@ -2,12 +2,12 @@
 
 ## Goal
 
-ใช้ AI tools สำหรับ documentation ที่มี MCP integration
+Use AI documentation tools that have MCP integration
 
 ## Steps
 
-1. ใช้ DeepWiki (`mcp3_ask_question`, `mcp3_read_wiki_contents`, `mcp3_read_wiki_structure`) สำหรับ GitHub repositories
-2. ใช้ Context7 (`context7_resolve-library-id`, `context7_get-library-docs`) สำหรับ library documentation
-3. ใช้ DeepWiki `ask_question` เพื่อถามคำถามเฉพาะเจาะจงเกี่ยวกับ repo
-4. ใช้ Context7 สำหรับดึง docs ของ library ที่ต้องการ
-5. บันทึก key findings จากแต่ละ tool
+1. Use DeepWiki (`mcp3_ask_question`, `mcp3_read_wiki_contents`, `mcp3_read_wiki_structure`) for GitHub repositories
+2. Use Context7 (`context7_resolve-library-id`, `context7_get-library-docs`) for library documentation
+3. Use DeepWiki `ask_question` to ask specific questions about a repo
+4. Use Context7 to pull the docs of the library you need
+5. Record the key findings from each tool

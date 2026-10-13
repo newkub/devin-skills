@@ -13,25 +13,25 @@ related:
 
 ## Goal
 
-Review test strategy และ quality (ก่อน run/write) + วิเคราะห์ test results หลัง run (pass/fail, coverage delta, flaky) — canonical domain `review-test` อยู่ที่ `deep-review/SKILL.md` `## Review Domains`
+Review test strategy and quality (before running/writing) + analyze test results after a run (pass/fail, coverage delta, flaky) — the canonical `review-test` domain lives in `deep-review/SKILL.md` `## Review Domains`
 
 ## Scope
 
-- ใช้ก่อน `/run-test all`, `/update-tests`, `/deep-test` — ตรวจ strategy: coverage, edge cases, isolation, pyramid balance, regression
-- ใช้หลัง test run — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action ถัดไป
-- หา improvements ที่ต้องแก้ → `/improve-tests`
+- Use before `/run-test all`, `/update-tests`, `/deep-test` — check the strategy: coverage, edge cases, isolation, pyramid balance, regression
+- Use after a test run — analyze results, coverage delta, flaky tests, and summarize the next actions
+- If improvements need fixing → `/improve-tests`
 
 ## Execute
 
-1. ทำ `/deep-review` domain `review-test` กับ scope — canonical steps (prepare → coverage → edge cases → isolation → pyramid → results) อยู่ที่ `deep-review/SKILL.md` `## Review Domains` + `## Domain Pipeline`
-2. ถ้า argument ตรง workflow (`flaky`, `coverage`/`improve-coverage`, `report-flaky`) → forward ไป workflow นั้นของ domain เดิม
-3. ทำ `/report` สรุป findings + `/suggest-next-action`
+1. Run `/deep-review` domain `review-test` on the scope — canonical steps (prepare → coverage → edge cases → isolation → pyramid → results) live in `deep-review/SKILL.md` `## Review Domains` + `## Domain Pipeline`
+2. If the argument matches a workflow (`flaky`, `coverage`/`improve-coverage`, `report-flaky`) → forward to that workflow of the original domain
+3. Run `/report` to summarize findings + `/suggest-next-action`
 
 ## Rules
 
-- ห้าม duplicate review steps ที่นี่ — canonical อยู่ที่ `deep-review/SKILL.md` domain `review-test` เท่านั้น
-- Review เท่านั้น — แก้ผ่าน `/deep-review-then-fix` หรือ `/update-tests` หลัง user confirm
+- Never duplicate review steps here — the canonical version is in `deep-review/SKILL.md` domain `review-test` only
+- Review only — fix via `/deep-review-then-fix` or `/update-tests` after user confirmation
 
 ## Expected Outcome
 
-- Test strategy/results ถูก review ผ่าน canonical domain พร้อม findings + next action
+- Test strategy/results reviewed through the canonical domain, with findings + next action

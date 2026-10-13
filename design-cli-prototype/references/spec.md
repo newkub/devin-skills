@@ -1,6 +1,6 @@
 # CLI Explorer Prototype Spec
 
-Canonical spec สำหรับ prototype ที่ `/design-cli-prototype` สร้าง — ทุกอย่าง derive จาก typed schema เดียว
+Canonical spec for the prototype built by `/design-cli-prototype` — everything derives from one typed schema
 
 ## Command Schema
 
@@ -25,8 +25,8 @@ type Argument = {
 }
 
 type Option = {
-  name: string          // long flag เช่น --port
-  alias?: string        // เช่น -p
+  name: string          // long flag, e.g. --port
+  alias?: string        // e.g. -p
   description: string
   type: 'boolean' | 'string' | 'number' | 'enum'
   default?: string | number | boolean
@@ -50,12 +50,12 @@ CLI Schema
 │   └── Examples    — copyable command recipes
 │
 └── Agent Mode
-    ├── Markdown    — generated docs จาก schema
+    ├── Markdown    — generated docs from the schema
     ├── Raw         — JSON schema dump
     └── Copy        — clipboard actions
 ```
 
-Markdown ต้อง generate programmatically จาก schema — ห้าม hand-write
+Markdown must be generated programmatically from the schema — never hand-write it
 
 ## Routing
 
@@ -74,7 +74,7 @@ Markdown ต้อง generate programmatically จาก schema — ห้า�
 Query params:
 
 - `?mode=human` / `?mode=agent` — display mode
-- `?preset=production&port=8080` — shareable command-builder state (serialize builder state เข้า query)
+- `?preset=production&port=8080` — shareable command-builder state (serialize builder state into the query)
 
 ## Responsive
 
@@ -84,19 +84,19 @@ Query params:
 | Tablet | `Sidebar | Documentation` |
 | Mobile | `Header` + `Command` + `Documentation` + `Bottom Navigation` |
 
-Hover interactions ทุกตัวต้องมี click/tap equivalent — ห้าม rely on hover เพียงอย่างเดียว
+Every hover interaction must have a click/tap equivalent — never rely on hover alone
 
 ## Accessibility
 
-- semantic HTML (`nav`, `main`, `aside`, `article`, headings ถูกลำดับ)
-- keyboard navigation ครบ (Tab order, Enter/Space activate, Esc ปิด dialog, arrow keys ใน sidebar/search)
-- focus states ชัดเจนผ่าน `focus-ring` shortcut
-- ARIA labels บน interactive elements, `aria-current` บน active nav
-- accessible tooltips (`aria-describedby`, เปิดด้วย focus ได้ไม่ใช่แค่ hover)
+- semantic HTML (`nav`, `main`, `aside`, `article`, ordered headings)
+- full keyboard navigation (Tab order, Enter/Space activate, Esc closes dialogs, arrow keys in sidebar/search)
+- clear focus states via the `focus-ring` shortcut
+- ARIA labels on interactive elements, `aria-current` on the active nav
+- accessible tooltips (`aria-describedby`, openable by focus, not only hover)
 - accessible dialogs (`role="dialog"`, `aria-modal`, focus trap, return focus on close)
-- `prefers-reduced-motion` — ปิด/ลด animations
+- `prefers-reduced-motion` — disable/reduce animations
 - screen-reader-friendly command structure (`<code>`, `<kbd>`, token labels)
-- contrast เพียงพอ (WCAG AA)
+- sufficient contrast (WCAG AA)
 
 ## Component Architecture
 
@@ -141,11 +141,11 @@ src/
 └── app.tsx
 ```
 
-SolidJS: `createSignal`, `createMemo`, `createEffect`, `createStore`; Context เฉพาะที่ justify จริง — หลีกเลี่ยง global state ที่ไม่จำเป็น
+SolidJS: `createSignal`, `createMemo`, `createEffect`, `createStore`; use Context only where genuinely justified — avoid unnecessary global state
 
 ## UnoCSS Styling
 
-Reusable shortcuts สำหรับ recurring patterns:
+Reusable shortcuts for recurring patterns:
 
 ```text
 surface          surface-hover    code-surface
@@ -155,7 +155,7 @@ interactive      focus-ring
 
 Variants: `hover:`, `focus:`, `active:`, `disabled:`, `group-hover:`, `dark:` + responsive `sm:` `md:` `lg:` `xl:`
 
-Arbitrary values เฉพาะที่เพิ่ม precision จริง — ห้าม scatter styles
+Arbitrary values only where they genuinely add precision — never scatter styles
 
 ## Microinteractions
 
@@ -170,11 +170,11 @@ Arbitrary values เฉพาะที่เพิ่ม precision จริง 
 - option toggling
 - Human ↔ Agent mode transition
 
-Animations: fast, subtle, purposeful — ห้ามเสีย performance เพื่อ effects
+Animations: fast, subtle, purposeful — never sacrifice performance for effects
 
 ## Error States
 
-Realistic states ที่ต้อง render ได้จริง:
+Realistic states that must actually render:
 
 ```text
 Invalid command:
@@ -196,7 +196,7 @@ Execution error:
 
 ## Default Dataset
 
-เมื่อ user ไม่ระบุ CLI — ใช้ commands `run`, `build`, `dev`, `deploy` พร้อม options สมจริง (`--port`, `--host`, `--preset`, `--watch`, `--plugin`), plugins (`cloudflare`), presets (`production`), config sections
+When the user does not specify a CLI — use the commands `run`, `build`, `dev`, `deploy` with realistic options (`--port`, `--host`, `--preset`, `--watch`, `--plugin`), plugins (`cloudflare`), presets (`production`), config sections
 
 ## Core UX Principle
 
@@ -210,4 +210,4 @@ Agents consume the CLI structurally.
 | Human | Discovery, Understanding, Interaction, Experimentation |
 | Agent | Structure, Precision, Determinism, Copyability, Machine consumption |
 
-ทั้งสอง experiences ต้อง originate จาก typed CLI schema เดียวกัน
+Both experiences must originate from the same typed CLI schema

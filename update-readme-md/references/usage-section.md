@@ -1,10 +1,10 @@
 # Usage Section
 
-> Goal: เขียน `## Usage` ครอบคลุมทุก access method พร้อม ANSI drawing
+> Goal: Write `## Usage` covering every access method with ANSI drawing
 
 ## Section Structure
 
-`## Usage` ต้องมี `### Usage via ...` สำหรับแต่ละ access method ที project รองรับ:
+`## Usage` must have a `### Usage via ...` for each access method the project supports:
 
 - Web
 - API
@@ -18,50 +18,50 @@
 
 ### Usage via Web
 
-- ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
-- summary ระบุ flow/screen สั้นๆ เช่น `Web app click flow & layout`
-- ภายใน: text instructions บอกว่ากดอะไรตรงไหน + ANSI drawing แสดง layout
+- Wrap the content in a `<details>` + `<summary>` accordion
+- The summary states a short flow/screen description, e.g. `Web app click flow & layout`
+- Inside: text instructions saying what to press where + ANSI drawing showing the layout
 
 ### Usage via API
 
-- code block พร้อม import และ function call
-- ตัวอย่างต้อง runnable ได้
-- ตามด้วย references table `| api | description | options | default |`
+- Code block with import and function call
+- Examples must be runnable
+- Followed by a references table `| api | description | options | default |`
 
 ### Usage via CLI
 
-- bash code block พร้อม `command --help`
-- ANSI drawing ต้องแสดง terminal output ของ `--help` โดยเฉพาะ
-- รวม Usage, Options, Commands/Subcommands ทีปรากฏใน help
+- Bash code block with `command --help`
+- The ANSI drawing must show the terminal output of `--help` specifically
+- Include Usage, Options, and Commands/Subcommands as shown in the help
 
 ### Usage via SDK
 
-- code block พร้อม install + import + usage
-- ตัวอย่างครบทั้ง 3 ส่วน
-- ตามด้วย references table ถ้ามี
+- Code block with install + import + usage
+- A complete example covering all 3 parts
+- Followed by a references table if present
 
 ### Usage via TUI
 
-- ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
-- summary ระบุ TUI flow เช่น `TUI keyboard shortcuts & layout`
-- ภายใน: text instructions บอก key shortcuts + ANSI drawing แสดง TUI layout
+- Wrap the content in a `<details>` + `<summary>` accordion
+- The summary states the TUI flow, e.g. `TUI keyboard shortcuts & layout`
+- Inside: text instructions for the key shortcuts + ANSI drawing showing the TUI layout
 
 ### Usage via Desktop / Browser Extension
 
-- text instructions บอกวิธีเปิด/ติดตั้งและใช้งาน
-- ตามด้วย ANSI drawing แสดง layout เมื่อเหมาะสม
+- Text instructions explaining how to open/install and use it
+- Followed by an ANSI drawing showing the layout when appropriate
 
 ## Accordion Rules
 
-- `Usage via Web` และ `Usage via TUI` ต้องห่มเนื้อหาด้วย `<details>` + `<summary>`
-- `<details>` block ต้องมี blank line ก่อนเปิดและก่อนปิด
-- ภายใน accordion ต้องประกอบด้วย text instructions + ANSI drawing
+- `Usage via Web` and `Usage via TUI` must wrap their content in `<details>` + `<summary>`
+- The `<details>` block must have a blank line before opening and before closing
+- Inside the accordion must contain text instructions + ANSI drawing
 
 ## ANSI Rules
 
-- ใช้ ` ```text ` codeblock (ไม่ใช้ ` ```ansi `)
-- ใช้ ANSI box-drawing characters วาด layout/output
-- ทุกบรรทัดต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
-- ความกว้างควรเท่ากันทุกบรรทัด — ใช้ fixed width เช่น 60 ตัวอักษร
-- ไม่ต้องใช้ `/capture web` หรือ `/capture terminal` สำหรับ README
+- Use the ` ```text ` codeblock (not ` ```ansi `)
+- Use ANSI box-drawing characters to draw the layout/output
+- Every line must be the same length — use space padding to align the right border
+- The width should be the same on every line — use a fixed width, e.g. 60 characters
+- No need to use `/capture web` or `/capture terminal` for the README
 

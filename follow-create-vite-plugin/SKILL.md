@@ -1,6 +1,6 @@
 ---
 name: follow-create-vite-plugin
-description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
+description: Build Vite plugins with the standard Plugin API
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -11,121 +11,121 @@ related:
 ---
 ## Goal
 
-สร้าง Vite plugins ด้วย Plugin API มาตรฐาน พร้อมรองรับ Rolldown compatibility
+Build Vite plugins with the standard Plugin API, with Rolldown compatibility support
 
 ## Scope
 
-ใช้ `follow-create-vite-plugins` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (create vite plugins)
+Use `follow-create-vite-plugins` for the specifically covered tasks and workflows (create vite plugins)
 
-- Packages: `vite` (8.x ใช้ Rolldown เป็น bundler default — universal hooks เป็น per-environment ผ่าน `this.environment`), `rolldown`, `typescript` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `vite` (8.x uses Rolldown as the default bundler — universal hooks are per-environment via `this.environment`), `rolldown`, `typescript` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Review the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create vite plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+3. Record the rationale for the chosen stack and libraries for future reference (create vite plugins)
 
 ### 2. Setup
 
-> Goal: เตรียมโครงสร้างโฟลเดอร์และ config เริ่มต้น
+> Goal: Prepare the initial folder structure and config
 
-1. สร้างโครงสร้างโฟลเดอร์ `packages/{plugin-name}/`
-2. สร้าง `package.json` ด้วย dependencies และ scripts
-3. สร้าง `tsconfig.json` สำหรับ TypeScript configuration
+1. Create the `packages/{plugin-name}/` folder structure
+2. Create `package.json` with dependencies and scripts
+3. Create `tsconfig.json` for TypeScript configuration
 
 ### 3. Create Plugin
 
-> Goal: สร้าง plugin implementation ด้วย hooks ตาม Vite Plugin API (Rolldown-compatible)
+> Goal: Create the plugin implementation with hooks per the Vite Plugin API (Rolldown-compatible)
 
-1. สร้าง `src/index.ts` พร้อม plugin implementation — plugin object ต้องมี `name` (required ใช้ใน error/debugging), optional `enforce`/`apply`
-2. กำหนด plugin function ที่ return object ด้วย hooks
-3. ใช้ TypeScript สำหรับ type safety
+1. Create `src/index.ts` with the plugin implementation — the plugin object must have `name` (required, used in error/debugging) and optional `enforce`/`apply`
+2. Define the plugin function returning an object with hooks
+3. Use TypeScript for type safety
 
 ### 4. Configure Build
 
-> Goal: ตั้งค่า library mode build ตาม Vite `build.lib`
+> Goal: Configure the library-mode build per Vite `build.lib`
 
-1. สร้าง `vite.config.ts` สำหรับ library mode build — `build.lib`: `entry` (`resolve(import.meta.dirname, 'lib/main.ts')` หรือ map หลาย entries), `name` (UMD global), `fileName`; default formats: single entry = `es`+`umd`, multi entries = `es`+`cjs`
-2. external deps ที่ไม่ต้องการ bundle ผ่าน `build.rolldownOptions.external` (+ `output.globals` สำหรับ UMD)
-3. external vite จาก bundle
+1. Create `vite.config.ts` for the library-mode build — `build.lib`: `entry` (`resolve(import.meta.dirname, 'lib/main.ts')` or a map of multiple entries), `name` (UMD global), `fileName`; default formats: single entry = `es`+`umd`, multiple entries = `es`+`cjs`
+2. Mark external deps that shouldn't be bundled via `build.rolldownOptions.external` (+ `output.globals` for UMD)
+3. Externalize vite from the bundle
 
 ### 5. Add Examples
 
-> Goal: สร้างตัวอย่างการใช้งานพื้นฐานและขั้นสูง
+> Goal: Create basic and advanced usage examples
 
-1. สร้าง `examples/basic/` พร้อมตัวอย่างพื้นฐาน
-2. สร้าง `examples/advanced/` พร้อมตัวอย่างขั้นสูง
-3. ทดสอบ examples ว่าทำงานได้จริง
+1. Create `examples/basic/` with a basic example
+2. Create `examples/advanced/` with an advanced example
+3. Test that the examples actually work
 
 ### 6. Add Tests
 
-> Goal: สร้าง unit และ integration tests สำหรับ plugin
+> Goal: Create unit and integration tests for the plugin
 
-1. สร้าง `test/` ด้วย unit และ integration tests
-2. รัน `build` เพื่อตรวจสอบ build process
-3. รัน `test` เพื่อตรวจสอบ functionality
+1. Create `test/` with unit and integration tests
+2. Run `build` to verify the build process
+3. Run `test` to verify functionality
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Plugin Naming
 
-- ใช้ `vite-plugin-{name}` สำหรับ Vite-specific plugins
-- ใช้ `rolldown-plugin-{name}` สำหรับ Rolldown compatible plugins
-- ใช้ `vite-plugin-{framework}-{name}` สำหรับ framework-specific plugins
+- Use `vite-plugin-{name}` for Vite-specific plugins
+- Use `rolldown-plugin-{name}` for Rolldown-compatible plugins
+- Use `vite-plugin-{framework}-{name}` for framework-specific plugins
 
 ### 2. Universal Hooks
 
-- ใช้ Rolldown compatible hooks สำหรับ dev และ build
+- Use Rolldown-compatible hooks for dev and build
 - Hooks: options, buildStart, resolveId, load, transform, buildEnd, closeBundle
-- หลีกเลี่ยง `moduleParsed` hook ใน dev mode (Vite ไม่ทำ full AST parse; output generation hooks ยกเว้น `closeBundle` ไม่ถูกเรียกใน dev)
-- ใช้ hook filters (Rolldown/Rollup 4.38+) ลด overhead ระหว่าง Rust↔JS runtime
-- ใช้ `normalizePath` จาก `vite` แปลง path เป็น POSIX separators
-- เช็ค runtime ด้วย `this.meta.viteVersion` และ `this.meta.rolldownVersion` (Rolldown-powered Vite 8+)
+- Avoid the `moduleParsed` hook in dev mode (Vite doesn't do a full AST parse; output-generation hooks except `closeBundle` aren't called in dev)
+- Use hook filters (Rolldown/Rollup 4.38+) to reduce overhead between the Rust↔JS runtime
+- Use `normalizePath` from `vite` to convert paths to POSIX separators
+- Check the runtime via `this.meta.viteVersion` and `this.meta.rolldownVersion` (Rolldown-powered Vite 8+)
 
 ### 3. Vite Specific Hooks
 
-- ใช้ Vite-specific hooks เฉพาะเมื่อจำเป็น
-- Hooks: config, configResolved, configureServer, configurePreviewServer, closeServer (`{ reason: 'restart' | 'close' }` — dispose resources จาก `configureServer`), transformIndexHtml, handleHotUpdate
-- ใช้ `hotUpdate` hook (per-environment, รับ `HotUpdateOptions` ที่มี `type: 'create' | 'update' | 'delete'`) สำหรับ HMR ใหม่ — `handleHotUpdate` มีแผน deprecate
-- Universal hooks เป็น per-environment — เข้าถึง environment ปัจจุบันผ่าน `this.environment` ใน hook
+- Use Vite-specific hooks only when necessary
+- Hooks: config, configResolved, configureServer, configurePreviewServer, closeServer (`{ reason: 'restart' | 'close' }` — dispose resources created in `configureServer`), transformIndexHtml, handleHotUpdate
+- Use the `hotUpdate` hook (per-environment, receives `HotUpdateOptions` with `type: 'create' | 'update' | 'delete'`) for the new HMR flow — `handleHotUpdate` is planned for deprecation
+- Universal hooks are per-environment — access the current environment via `this.environment` inside a hook
 
 ### 4. Plugin Ordering
 
-- ใช้ `enforce: 'pre'` สำหรับก่อน Vite core plugins
-- ใช้ `enforce: 'post'` สำหรับหลัง Vite build plugins
-- ไม่กำหนดสำหรับระหว่าง Vite core และ build plugins
+- Use `enforce: 'pre'` to run before Vite core plugins
+- Use `enforce: 'post'` to run after Vite build plugins
+- Don't set enforce for ordering between Vite core and build plugins
 
 ### 5. Conditional Application
 
-- ใช้ `apply: 'build'` สำหรับ build-only plugins
-- ใช้ `apply: 'serve'` สำหรับ dev-only plugins
-- ใช้ function `(config, { command }) => command === 'build'` สำหรับ logic ที่ซับซ้อน
+- Use `apply: 'build'` for build-only plugins
+- Use `apply: 'serve'` for dev-only plugins
+- Use the function form `(config, { command }) => command === 'build'` for complex logic
 
 ### 6. Library Mode
 
-- ใช้ Vite library mode สำหรับ building plugins (browser-oriented) — non-browser/advanced ใช้ `tsdown` หรือ Rolldown โดยตรง
-- ตั้งค่า build.lib ด้วย entry, name, fileName (+ `cssFileName` ถ้ามี CSS — export `"./style.css"` ใน package.json)
-- ใช้ formats: ['es', 'cjs'] — `.js` output กลายเป็น `.mjs` และ `.cjs` กลายเป็น `.js` ตาม `type: module`
-- `package.json`: `"files": ["dist"]`, subpath `exports` ต่อ entry (`import`/`require`); types build แยกด้วย `tsc --emitDeclarationOnly` (Vite ไม่ emit declarations)
-- `import.meta.env.*` ถูก static-replace ตอน build แต่ `process.env.*` ไม่ — ถ้าต้องการ ให้กำหนดใน `define` config
-- external vite จาก bundle
+- Use Vite library mode for building plugins (browser-oriented) — for non-browser/advanced cases use `tsdown` or Rolldown directly
+- Configure build.lib with entry, name, fileName (+ `cssFileName` if there is CSS — export `"./style.css"` in package.json)
+- Use formats: ['es', 'cjs'] — `.js` output becomes `.mjs` and `.cjs` becomes `.js` according to `type: module`
+- `package.json`: `"files": ["dist"]`, subpath `exports` per entry (`import`/`require`); build types separately with `tsc --emitDeclarationOnly` (Vite doesn't emit declarations)
+- `import.meta.env.*` is static-replaced at build time but `process.env.*` is not — if you need it, define it in the `define` config
+- Externalize vite from the bundle
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /follow-tool-vite when needed
 
 ## Expected Outcome
 
-- Plugin สร้างขึ้นด้วย naming convention ถูกต้อง
-- Plugin ใช้ universal hooks สำหรับ Rolldown compatibility
-- Plugin build ด้วย library mode สำเร็จ
-- Examples และ tests สร้างขึ้นครบถ้วน
+- Plugin created with the correct naming convention
+- Plugin uses universal hooks for Rolldown compatibility
+- Plugin builds successfully with library mode
+- Examples and tests are fully created

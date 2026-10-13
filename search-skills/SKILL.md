@@ -1,7 +1,7 @@
 ---
 
 name: search-skills
-description: ค้นหา skills ด้วย command `skills find <keyword>` อย่างมีประสิทธิภาพ
+description: Search skills efficiently with the `skills find <keyword>` command
 argument-hint: "[keyword]"
 related:
   - follow-best-practice
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-ค้นหา skills ที่เกี่ยวข้องกับ keyword ด้วย `skills find` command เพื่อหา skills ที่เหมาะสมสำหรับงาน
+Search for skills related to a keyword with the `skills find` command to find the right skills for the job
 
 ## Scope
 
-ใช้ `search` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (skills)
+Use `search` for the specific (skills) tasks and workflows it covers
 
 ## Execute
 
@@ -26,85 +26,85 @@ related:
 
 > Goal: Define Search Keyword
 
-ระบุ keyword สำหรับการค้นหา skills
+Specify the keyword for searching skills
 
-1. ระบุ keyword ที่ต้องการค้นหา (เช่น framework, library, task, domain)
-2. พิจารณาคำที่เกี่ยวข้องและ synonyms ถ้าจำเป็น
-3. กำหนด scope ของการค้นหา (specific หรือ general)
-4. ถ้า query เป็นอาการ/ปัญหา (symptom เช่น "disk เต็ม", "build fail") → เปิด [references/issue-map.md](references/issue-map.md) — symptom → skill table (merged จาก follow-skills-map)
+1. Specify the keyword to search for (e.g., framework, library, task, domain)
+2. Consider related words and synonyms if needed
+3. Define the scope of the search (specific or general)
+4. If the query is a symptom/problem (e.g., "disk full", "build fail") → open [references/issue-map.md](references/issue-map.md) — symptom → skill table (merged from follow-skills-map)
 
 ### 2. Execute Skills Find
 
 > Goal: Execute Skills Find
 
-ค้นหา skills ด้วย `skills find` command
+Search skills with the `skills find` command
 
-1. ใช้ `skills find <keyword>` เพื่อค้นหา skills ที่ตรงกับ keyword
-2. วิเคราะห์ผลลัพธ์ที่ได้จาก command
-3. บันทึก skills ที่พบพร้อมรายละเอียด
+1. Use `skills find <keyword>` to find skills matching the keyword
+2. Analyze the results returned by the command
+3. Record the skills found with details
 
 ### 3. Analyze Results
 
 > Goal: Analyze Results
 
-วิเคราะห์และจัดกลุ่ม skills ที่พบ
+Analyze and group the skills found
 
-1. จัดกลุ่ม skills ตามความเกี่ยวข้องกับ keyword
-2. ระบุความสำคัญของแต่ละ skill (high/medium/low)
-3. เปรียบเทียบ skills ที่คล้ายกัน
-4. ตรวจสอบว่า skills มีความเกี่ยวข้องกับงานปัจจุบันหรือไม่
+1. Group skills by relevance to the keyword
+2. Rate each skill's importance (high/medium/low)
+3. Compare similar skills
+4. Check whether the skills relate to the current task
 
 ### 4. Summarize Findings
 
 > Goal: Summarize Findings
 
-สรุปผลลัพธ์ในรูปแบบตาราง
+Summarize the results in table form
 
-1. สร้างตารางสรุป skills ที่พบ
-2. แยกประเภทเป็น Direct matches, Related skills, Recommended
-3. แนะนำ skills ที่ควรใช้งาน
+1. Build a summary table of the skills found
+2. Split into Direct matches, Related skills, Recommended
+3. Recommend the skills to use
 
 ## Rules
 
 ### 1. Search Strategy
 
-กลยุทธ์การค้นหา
+Search strategy
 
-- ใช้ keyword ที่เจาะจงและมีความหมายชัดเจน
-- ลองใช้ synonyms หรือคำที่เกี่ยวข้องถ้าไม่พบผลลัพธ์
-- ค้นหาทั้ง exact match และ partial match
-- ให้ความสำคัญกับ skills ที่มี official support
+- Use specific, clearly meaningful keywords
+- Try synonyms or related words if no results are found
+- Search both exact match and partial match
+- Prioritize skills with official support
 
 ### 2. Result Evaluation
 
-การประเมินผลลัพธ์
+Result evaluation
 
-- ตรวจสอบว่า skills ที่พบตรงกับความต้องการ
-- ดู description และ supporting files เพื่อประเมินความเหมาะสม
-- เลือก skills ที่มีประโยชน์สูงสุดสำหรับงาน
-- หลีกเลี่ยง skills ที่ซ้ำซ้อนหรือไม่เกี่ยวข้อง
+- Check that the skills found match the need
+- Look at description and supporting files to assess suitability
+- Pick the skills most useful for the task
+- Avoid redundant or unrelated skills
 
 ### 3. Result Format
 
-รูปแบบการนำเสนอผลลัพธ์
+Result presentation format
 
 | Column | Description |
 |--------|-------------|
-| No. | ลำดับที่ |
-| Skill Name | ชื่อ skill |
+| No. | Sequence number |
+| Skill Name | Skill name |
 | Match Type | Direct/Related/Recommended |
-| Priority | ระดับความสำคัญ |
-| Description | รายละเอียดสั้นๆ |
+| Priority | Importance level |
+| Description | Short description |
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
+- Use /follow-tool-crw if needed
+- Use /follow-tool-crw if needed
+- Use /learn-from-web if needed
 
 ## Expected Outcome
 
-- ตารางสรุป skills ที่พบทั้งหมดพร้อมหมายเลขลำดับ
-- รายการ skills ที่แนะนำให้ใช้งาน
-- คำแนะนำเกี่ยวกับการเลือก skills ที่เหมาะสม
+- Summary table of all skills found, with sequence numbers
+- List of recommended skills to use
+- Guidance on choosing the most suitable skills

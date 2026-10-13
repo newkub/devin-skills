@@ -1,6 +1,6 @@
 ---
 name: follow-config-config-env
-description: จัดการ .env patterns — env files, validation, secrets handling ตาม conventions
+description: Manage .env patterns — env files, validation, secrets handling per conventions
 argument-hint: "[env-file-or-scope]"
 related:
   - follow-config
@@ -11,60 +11,60 @@ related:
 
 ## Goal
 
-ตรวจและจัดการ env configuration ของ project ให้ถูก pattern — `.env` files ครบ, validation มี, secrets ไม่ leak, สอดคล้องกับ framework conventions
+Inspect and manage the project's env configuration per the right patterns — complete `.env` files, validation present, no secret leaks, aligned with framework conventions
 
 ## Scope
 
-- ใช้กับ env config ทั้งหมด: `.env`, `.env.local`, `.env.example`, `.env.<mode>`, env loading ใน code
-- ครอบคลุม: file patterns, required vars, validation, secrets handling, gitignore coverage
-- ไม่ครอบคลุมการอัปเดตค่า env จริง — ใช้ `update-config/workflows/config-env/SKILL.md`
+- Apply to all env config: `.env`, `.env.local`, `.env.example`, `.env.<mode>`, env loading in code
+- Covers: file patterns, required vars, validation, secrets handling, gitignore coverage
+- Does not cover updating actual env values — use `update-config/workflows/config-env/SKILL.md`
 
 ## Execute
 
 ### 1. Inventory Env Files
 
-> Goal: รู้ว่ามี env files และ vars อะไรบ้าง
+> Goal: Know which env files and vars exist
 
-1. หา `.env*` files ทั้งหมดใน repo — root และ per-workspace
-2. ทำ `/check-secrets env-vars` — vars ที่ code ใช้ vs vars ที่ define
-3. ระบุ framework env conventions — เช่น `NEXT_PUBLIC_*`, `VITE_*`, `PUBLIC_*` prefixes ตามที่ตรวจพบ
+1. Find all `.env*` files in the repo — root and per-workspace
+2. Run `/check-secrets env-vars` — vars used by code vs vars defined
+3. Identify framework env conventions — e.g. `NEXT_PUBLIC_*`, `VITE_*`, `PUBLIC_*` prefixes as detected
 
 ### 2. Check Patterns
 
-> Goal: env setup ตาม conventions
+> Goal: Env setup follows conventions
 
-1. `.env.example` มีครบทุก required var — ไม่มีค่าจริง มีเฉพาะ placeholder/comments
-2. `.env` และ `.env.local` ถูก gitignore — ตรวจ `.gitignore` coverage
-3. env validation ที่ startup — schema validation (เช่น zod/arktype ตาม stack) สำหรับ required vars, type coercion, fail-fast message ชัด
-4. ไม่มี hardcoded secrets ใน code — ทำ `/check-secrets secrets-leak`
+1. `.env.example` lists every required var — no real values, only placeholders/comments
+2. `.env` and `.env.local` are gitignored — verify `.gitignore` coverage
+3. Env validation at startup — schema validation (e.g. zod/arktype per stack) for required vars, type coercion, clear fail-fast messages
+4. No hardcoded secrets in code — run `/check-secrets secrets-leak`
 
 ### 3. Fix Gaps
 
-> Goal: ปิดช่องว่างที่พบ
+> Goal: Close the gaps found
 
-1. สร้าง/อัปเดต `.env.example` ให้ครบตาม vars ที่ code ใช้จริง
-2. เพิ่ม `.env*` patterns ใน `.gitignore` ถ้าขาด — เก็บ `.env.example` ไว้ commit
-3. เพิ่ม env validation ถ้ายังไม่มี — validate ตอน startup ไม่ใช่ตอน runtime access
-4. secrets จริง → ทำ `/follow-secret-manager` — ห้าม commit
+1. Create/update `.env.example` to cover all vars the code actually uses
+2. Add `.env*` patterns to `.gitignore` if missing — keep `.env.example` committed
+3. Add env validation if absent — validate at startup, not at runtime access
+4. Real secrets → run `/follow-secret-manager` — never commit
 
 ### 4. Verify
 
-> Goal: env setup ใช้งานได้และปลอดภัย
+> Goal: Env setup works and is safe
 
-1. รัน dev/build ด้วย env ที่มี — ผ่าน validation
-2. ทดสอบ missing var → error message ชัด ไม่ใช่ undefined crash
-3. `git status` / `git check-ignore` ยืนยัน `.env` ไม่ถูก track
+1. Run dev/build with the existing env — passes validation
+2. Test a missing var → clear error message, not an undefined crash
+3. `git status` / `git check-ignore` confirm `.env` is not tracked
 
 ## Rules
 
-- ห้าม commit secrets หรือค่าจริง — `.env.example` ใช้ placeholder เท่านั้น
-- validation ต้อง fail-fast ตอน startup พร้อมชื่อ var ที่ขาด
-- prefix conventions ของ framework ต้องถูก — public vars เท่านั้นที่ expose ให้ client
-- merge กับ env files เดิม — ห้ามลบ vars ที่ไม่รู้จักโดยไม่ถาม user
-- ถ้าพบ secret ที่ commit ไปแล้ว → แจ้ง user ทันที ต้อง rotate ไม่ใช่แค่ลบไฟล์
+- Never commit secrets or real values — `.env.example` uses placeholders only
+- Validation must fail-fast at startup naming the missing var
+- Framework prefix conventions must be correct — only public vars are exposed to the client
+- Merge with existing env files — never drop unknown vars without asking the user
+- If a committed secret is found → notify the user immediately; it must be rotated, not just deleted from a file
 
 ## Expected Outcome
 
-- `.env.example` ครบและ gitignore ป้องกัน secrets
-- env validation fail-fast พร้อมข้อความชัด
-- ไม่มี secrets ใน code หรือ git-tracked files
+- `.env.example` is complete and gitignore protects secrets
+- Env validation fails fast with clear messages
+- No secrets in code or git-tracked files

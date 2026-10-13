@@ -1,6 +1,6 @@
 ---
 name: use-bun-native-api
-description: ใช้ Bun native APIs (`Bun.*`) และ Web-standard APIs อย่างเต็มประสิทธิภาพ — API catalog + selection
+description: Use Bun native (`Bun.*`) and Web-standard APIs to their full potential — API catalog + selection
 argument-hint: "[scope]"
 related:
   - follow-lang-bun
@@ -13,29 +13,29 @@ related:
 
 ## Goal
 
-เลือกและใช้ Bun native APIs (`Bun.*`) และ Web-standard APIs ให้ถูกต้องตาม use case — skill นี้เป็น API catalog ไม่ครอบคลุม setup/CLI/package management (ดู `/follow-lang-bun`)
+Pick and use Bun native APIs (`Bun.*`) and Web-standard APIs correctly per use case — this skill is an API catalog and does not cover setup/CLI/package management (see `/follow-lang-bun`)
 
 ## Scope
 
-ใช้เมื่อเขียน code ที่รันบน Bun และต้องเลือกว่าจะใช้ `Bun.*` API, Web-standard API หรือ `node:*` module — runtime ปัจจุบัน `Bun 1.4.2 (verified 2026-09-18)` (Bun 1.4 เขียนใหม่ด้วย Rust, เพิ่ม `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal`, HTTP/2 ใน `Bun.serve`)
+Use when writing code that runs on Bun and you must choose between a `Bun.*` API, a Web-standard API, or a `node:*` module — current runtime `Bun 1.4.2 (verified 2026-09-18)` (Bun 1.4 rewritten in Rust, added `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal`, HTTP/2 in `Bun.serve`)
 
-ไม่ครอบคลุม: installation, `bun` CLI commands, package manager, `bunfig.toml`, `bun test`/`bun build` → ทำ `/follow-lang-bun` แทน
+Not covered: installation, `bun` CLI commands, package manager, `bunfig.toml`, `bun test`/`bun build` → do `/follow-lang-bun` instead
 
 ## Execute
 
 ### 1. Identify API Category
 
-> Goal: เลือก API category ที่ตรง use case
+> Goal: pick the API category that fits the use case
 
-1. ระบุว่างานเป็น category ไหน: HTTP server, file I/O, shell/process, networking, database, crypto, streams, data parsing, utilities
-2. ตัดสินใจ layer: `Bun.*` native (fast, Bun-only), Web-standard (portable), หรือ `node:*` (compat)
-3. ถ้า code ต้องรันบน Node.js ด้วย → เลือก Web-standard หรือ `node:*` (ห้ามใช้ `Bun.*`)
+1. Identify which category the work belongs to: HTTP server, file I/O, shell/process, networking, database, crypto, streams, data parsing, utilities
+2. Decide the layer: `Bun.*` native (fast, Bun-only), Web-standard (portable), or `node:*` (compat)
+3. If the code must also run on Node.js → choose Web-standard or `node:*` (never use `Bun.*`)
 
 ### 2. Read Category Reference
 
-> Goal: ใช้ API ถูกต้องตาม docs
+> Goal: use the API correctly per the docs
 
-อ่าน reference ของ category ที่เลือกจาก `references/`:
+Read the reference for the chosen category from `references/`:
 
 | Category | Reference |
 |----------|-----------|
@@ -57,53 +57,53 @@ related:
 
 ### 3. Implement With Best Practices
 
-> Goal: implement ตาม Bun best practices
+> Goal: implement following Bun best practices
 
-1. ใช้ `Bun.serve()` สำหรับ HTTP server แทน `node:http`
-2. ใช้ `$` shell template literal สำหรับ shell commands (ดู `/use-bun-shell`)
-3. ใช้ `Bun.file()`/`Bun.write()` สำหรับ file operations — streaming, ไม่ buffer ทั้งไฟล์
-4. ใช้ `Bun.spawn()`/`Bun.spawnSync()` สำหรับ child processes
-5. ใช้ Web-standard APIs (`fetch`, `ReadableStream`, `Blob`, `Response`) เมื่อเป็นไปได้ — portable กว่า
-6. ใช้ `node:*` modules เฉพาะเมื่อ Bun/Web API ไม่มี equivalent หรือต้อง compat
+1. Use `Bun.serve()` for the HTTP server instead of `node:http`
+2. Use the `$` shell template literal for shell commands (see `/use-bun-shell`)
+3. Use `Bun.file()`/`Bun.write()` for file operations — streaming, without buffering the whole file
+4. Use `Bun.spawn()`/`Bun.spawnSync()` for child processes
+5. Use Web-standard APIs (`fetch`, `ReadableStream`, `Blob`, `Response`) when possible — more portable
+6. Use `node:*` modules only when Bun/Web APIs have no equivalent or compat is required
 
 ### 4. Verify
 
-> Goal: verify API usage ถูกต้อง
+> Goal: verify the API usage is correct
 
-1. ตรวจสอบ signature/return type ตรง docs (อ่าน `references/bun-*.md` หรือ https://bun.com/reference)
-2. ตรวจ error handling — Bun APIs มัก return Promise หรือ throw typed errors
-3. เปรียบเทียบ performance claim กับ use case จริงถ้าเป็น hot path
+1. Check that signature/return type match the docs (read `references/bun-*.md` or https://bun.com/reference)
+2. Check error handling — Bun APIs usually return a Promise or throw typed errors
+3. Compare a performance claim against the real use case if it's a hot path
 
 ## Rules
 
 ### 1. API Selection
 
-- Prefer `Bun.*` เมื่อ performance สำคัญและ code รันเฉพาะ Bun
-- Prefer Web-standard APIs เมื่อต้องการ portability (edge workers, browser, Node)
-- ใช้ `node:*` เมื่อ `Bun.*`/Web API ไม่ครอบ use case — Bun รองรับ Node.js 26.3.0 compat
-- ห้าม mix `node:fs` + `Bun.file` ใน operation เดียวกัน — เลือก layer เดียวต่อ flow
+- Prefer `Bun.*` when performance matters and the code runs only on Bun
+- Prefer Web-standard APIs when you need portability (edge workers, browser, Node)
+- Use `node:*` when `Bun.*`/Web API doesn't cover the use case — Bun supports Node.js 26.3.0 compat
+- Never mix `node:fs` + `Bun.file` in the same operation — pick one layer per flow
 
 ### 2. Version Awareness
 
-- `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal` ต้อง `Bun >= 1.4` — check `Bun.version` ถ้า code อาจรันบน runtime เก่า
-- API ใหม่ verify จาก https://bun.com/reference ก่อนใช้ — ห้ามเดา signature
-- `Bun.WebView` เป็น experimental — backend: `webkit` (macOS) / `chrome` (CDP, ต้องมี Chrome)
+- `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal` require `Bun >= 1.4` — check `Bun.version` if the code might run on an older runtime
+- Verify new APIs from https://bun.com/reference before use — never guess a signature
+- `Bun.WebView` is experimental — backends: `webkit` (macOS) / `chrome` (CDP, requires Chrome)
 
 ### 3. Non-Goals
 
-- ห้ามเขียน install/CLI/package-manager instructions ใน skill นี้ — อยู่ใน `/follow-lang-bun`
-- ห้าม duplicate API docs ทั้งไฟล์ — `references/bun-*.md` เป็น canonical, SKILL.md แค่ dispatch
+- Never write install/CLI/package-manager instructions in this skill — they belong to `/follow-lang-bun`
+- Never duplicate full API docs — `references/bun-*.md` are canonical, SKILL.md only dispatches
 
 ### 4. Related Skills
 
-- `/follow-lang-bun` สำหรับ runtime setup, CLI, package manager, bunfig, test runner, bundler
-- `/use-bun-shell` สำหรับ `$` shell API เจาะลึก
-- `/follow-create-bun-cli` สำหรับสร้าง CLI app
-- `/follow-best-practice`, `/use-scripts` ถ้าจำเป็น
+- `/follow-lang-bun` for runtime setup, CLI, package manager, bunfig, test runner, bundler
+- `/use-bun-shell` for a deep dive on the `$` shell API
+- `/follow-create-bun-cli` for building a CLI app
+- `/follow-best-practice`, `/use-scripts` when needed
 
 ## Expected Outcome
 
-- เลือก API layer ถูก (`Bun.*` vs Web-standard vs `node:*`) ตาม portability/performance
-- ใช้ Bun native APIs ถูกต้องตาม official docs
-- Code รันบน Bun ได้เร็วกว่า Node.js equivalents
-- ไม่มี API guessing — ทุก usage อ้าง references หรือ official docs
+- The right API layer chosen (`Bun.*` vs Web-standard vs `node:*`) per portability/performance
+- Bun native APIs used correctly per the official docs
+- Code runs on Bun faster than Node.js equivalents
+- No API guessing — every usage cites the references or official docs

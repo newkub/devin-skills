@@ -1,6 +1,6 @@
 ---
 name: follow-deploy-deploy-vercel
-description: Deploy ไป Vercel โดย delegate ไปยัง /deploy-to-vercel skill
+description: Deploy to Vercel by delegating to the /deploy-to-vercel skill
 argument-hint: "[target]"
 related:
   - deploy-to-vercel
@@ -12,60 +12,60 @@ related:
 
 ## Goal
 
-Map generic deploy flow ของ `/follow-deploy` ไปยัง Vercel โดย delegate งาน platform-specific ทั้งหมดไปยัง `/deploy-to-vercel`
+Map the generic `/follow-deploy` flow to Vercel by delegating all platform-specific work to `/deploy-to-vercel`
 
 ## Scope
 
-- ใช้เมื่อ parent `/follow-deploy` เลือก Vercel เป็น target platform
-- workflow นี้เป็น dispatch layer เท่านั้น — workflow จริงอยู่ที่ `/deploy-to-vercel` และ `/follow-service-vercel`
-- เหมาะกับ Next.js, React applications และ frontend frameworks ที่ Vercel รองรับ
+- Use when the parent `/follow-deploy` selects Vercel as the target platform
+- This workflow is a dispatch layer only — the real workflow lives in `/deploy-to-vercel` and `/follow-service-vercel`
+- Suits Next.js, React applications, and frontend frameworks supported by Vercel
 
 ## Execute
 
 ### 1. Confirm Target
 
-> Goal: ยืนยันว่า target คือ Vercel และ project พร้อม
+> Goal: confirm the target is Vercel and the project is ready
 
-1. ตรวจ project type — Next.js/React หรือ framework ที่ Vercel รองรับ (`vercel.json`, framework detection)
-2. ถ้าไม่ชัด → `/ask-me`
-3. ตรวจ prerequisites: env vars/secrets ครบผ่าน `/follow-secret-manager` — ตั้งค่าใน Vercel dashboard หรือ CLI
+1. Check project type — Next.js/React or a framework Vercel supports (`vercel.json`, framework detection)
+2. If unclear → `/ask-me`
+3. Check prerequisites: env vars/secrets complete via `/follow-secret-manager` — set them in the Vercel dashboard or CLI
 
 ### 2. Map Generic Requirements
 
-> Goal: map concepts ของ parent flow ไปยัง Vercel equivalents
+> Goal: map the parent flow's concepts to Vercel equivalents
 
-1. env vars/secrets → Vercel environment variables (dashboard หรือ CLI) ผ่าน `/follow-secret-manager`
+1. env vars/secrets → Vercel environment variables (dashboard or CLI) via `/follow-secret-manager`
 2. staging environment → Vercel preview deployment
-3. deployment URL → `*.vercel.app` หรือ custom domain ที่ผูกไว้
-4. version id → Vercel deployment id จาก output ของ deploy command
+3. deployment URL → `*.vercel.app` or the attached custom domain
+4. version id → Vercel deployment id from the deploy command output
 
 ### 3. Delegate To Platform Skill
 
-> Goal: ใช้ skill เฉพาะ platform แทน generic flow
+> Goal: use the platform-specific skill instead of the generic flow
 
-1. ทำตาม `/deploy-to-vercel` ทั้ง flow — link project, deploy preview, deploy production, post-deploy verify
-2. ถ้าต้อง setup/config เพิ่ม → ทำตาม `/follow-service-vercel`
+1. Follow the whole `/deploy-to-vercel` flow — link project, deploy preview, deploy production, post-deploy verify
+2. If extra setup/config is needed → follow `/follow-service-vercel`
 
 ### 4. Report
 
-> Goal: รายงานผล deploy ตาม generic contract ของ parent
+> Goal: report deploy results per the parent's generic contract
 
-1. report deployment URL, deployment id และผล post-deploy verify
-2. ถ้า fail → `/resolve-errors` max 3 รอบแล้ว stop report
+1. report deployment URL, deployment id, and post-deploy verify results
+2. if fail → `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
 ### 1. Delegate Only
 
-- ห้าม duplicate platform logic ใน workflow นี้ — delegate ไป `/deploy-to-vercel` เสมอ
-- ถ้า `/deploy-to-vercel` ไม่ครอบคลุม case → ใช้ `/follow-service-vercel`
+- never duplicate platform logic in this workflow — always delegate to `/deploy-to-vercel`
+- if `/deploy-to-vercel` doesn't cover the case → use `/follow-service-vercel`
 
 ### 2. Safety
 
-- preview deployment ก่อน production ตาม rules ของ parent
-- secrets ผ่าน `/follow-secret-manager` เท่านั้น — ห้าม hardcode
+- preview deployment before production per the parent's rules
+- secrets only via `/follow-secret-manager` — never hardcode
 
 ## Expected Outcome
 
-- deploy ผ่าน `/deploy-to-vercel` สำเร็จพร้อม URL + deployment id
-- ผลรายงานกลับ parent flow ของ `/follow-deploy`
+- deploy via `/deploy-to-vercel` succeeds with URL + deployment id
+- results reported back to the parent flow of `/follow-deploy`

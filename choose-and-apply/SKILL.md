@@ -1,6 +1,6 @@
 ---
 name: choose-and-apply
-description: alias → /apply choose (เลือกจาก N ทางเลือกแล้ว apply สิ่งที่เหมาะสมที่สุด)
+description: alias → /apply choose (pick from N options, then apply the best fit)
 argument-hint: "[options...]"
 related:
   - apply
@@ -8,21 +8,21 @@ related:
 
 ## Goal
 
-Alias ของ `/apply` mode `choose` — รับทางเลือก N รายการแล้ววิเคราะห์ เลือก ทำตามสิ่งที่เหมาะสมที่สุด
+Alias of `/apply` mode `choose` — takes N options, then analyzes them, picks, and carries out the most suitable one
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/choose-and-apply` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `apply` (`### Mode: Choose`)
+Use when the user calls `/choose-and-apply` — this skill is only an alias stub; the real workflow lives in `apply` (`### Mode: Choose`)
 
 ## Execute
 
-ทำ `/apply` mode `choose` เต็ม workflow
+Run the full `/apply` mode `choose` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/apply` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `apply/SKILL.md` เสมอ
+- Never duplicate the `/apply` workflow in this file
+- If the alias lacks steps → always read `apply/SKILL.md`
 
 ## Expected Outcome
 
-- `/apply` mode `choose` ถูก execute ครบทุก step — ตารางเปรียบเทียบ options + option แนะนำ + apply สำเร็จ
+- `/apply` mode `choose` executed through every step — an options comparison table + a recommended option + a successful apply

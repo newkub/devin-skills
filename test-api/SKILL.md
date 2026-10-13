@@ -1,6 +1,6 @@
 ---
 name: test-api
-description: รัน API/HTTP tests — endpoints, request/response contracts, OpenAPI conformance
+description: Run API/HTTP tests — endpoints, request/response contracts, OpenAPI conformance
 argument-hint: "[scope]"
 related:
   - run-test
@@ -18,40 +18,40 @@ related:
 
 ## Goal
 
-รัน API/HTTP tests — endpoints, request/response contracts, OpenAPI conformance — signals: `routes/`, `controllers/`, `openapi.yaml`, `*.hurl`, `*.bru`, collection files
+Run API/HTTP tests — endpoints, request/response contracts, OpenAPI conformance — signals: `routes/`, `controllers/`, `openapi.yaml`, `*.hurl`, `*.bru`, collection files
 
 ## Scope
 
-ใช้เมื่อต้องรัน API/HTTP tests — run-only ไม่แก้ tests (เขียน/แก้ → `/update-tests`; analysis ลึก → `/deep-test api`)
+Use when API/HTTP tests must be run — run-only, does not fix tests (write/change → `/update-tests`; deep analysis → `/deep-test api`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` skills must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix it or report it before running (the test)
 
 ### 1. Detect
 
-`*.hurl`, `*.bru`/Bruno collections, `*.api.test.*`, `*.http.test.*`, Postman/Newman; spec → `schemathesis run` fuzzing; framework tests (Playwright APIRequestContext, supertest, fastify inject, httpx); monorepo → scope เฉพาะ workspace ที่มี API surface
+`*.hurl`, `*.bru`/Bruno collections, `*.api.test.*`, `*.http.test.*`, Postman/Newman; spec → `schemathesis run` fuzzing; framework tests (Playwright APIRequestContext, supertest, fastify inject, httpx); monorepo → scope only the workspace that has an API surface
 
 ### 2. Run
 
-Hurl → `hurl --test <files>`; Bruno → `bru run`; Schemathesis → `schemathesis run <spec>`; framework → runner scope (`bunx vitest run '*.api.test.*'`, `pytest tests/api/`); บันทึก per-endpoint status, status codes, mismatches
+Hurl → `hurl --test <files>`; Bruno → `bru run`; Schemathesis → `schemathesis run <spec>`; framework → runner scope (`bunx vitest run '*.api.test.*'`, `pytest tests/api/`); record per-endpoint status, status codes, mismatches
 
 ### 3. Classify
 
-`5xx`/unhandled → source → `/resolve-errors`; schema/assertion mismatch → contract เปลี่ยนจริง (source) หรือ test outdated → `/update-tests`; connection refused/missing env → environment; ซ้ำ ≥3 → stop+report
+`5xx`/unhandled → source → `/resolve-errors`; schema/assertion mismatch → did the contract really change (source) or is the test outdated → `/update-tests`; connection refused/missing env → environment; repeats ≥3 → stop+report
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/api-test-<time>.md`; ผ่านหมด → `/run-verify`
+persist → `.devin/temp/report/<workspace>/api-test-<time>.md`; all passing → `/run-verify`
 
 ## Rules
 
-- run-only (เขียน/แก้ → `/update-tests`; analysis ลึก → `/deep-test api`)
-- ห้าม `.skip`/`xit`; ห้ามแก้ assertion ให้อ่อนลง
-- ห้ามยิง external services จริง — local server/fixtures เท่านั้น
+- run-only (write/change → `/update-tests`; deep analysis → `/deep-test api`)
+- no `.skip`/`xit`; never weaken assertions
+- never hit real external services — local server/fixtures only
 
 ## Expected Outcome
 
-- API tests รันครบทุก endpoint พร้อม per-endpoint status และ mismatches
-- Failures ถูก classify เป็น source/test/environment
-- Report persist ใน `.devin/temp/report/`
+- API tests fully run across every endpoint with per-endpoint status and mismatches
+- Failures classified as source/test/environment
+- Report persisted under `.devin/temp/report/`

@@ -18,4 +18,4 @@
 
 ## Description
 
-ค้นหาข้อมูลลึกจากหลาย sources ด้วย Devin research tools เพื่อให้ได้คำตอบที่ครบถ้วนและถูกต้อง
+Deep research across multiple sources with Devin research tools to get complete, accurate answers

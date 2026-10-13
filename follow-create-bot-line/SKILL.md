@@ -1,119 +1,119 @@
 ---
 name: follow-create-bot-line
-description: สร้าง LINE bot ด้วย TypeScript/Bun — webhook, signature validation, rich menu
+description: Build a LINE bot with TypeScript/Bun — webhook, signature validation, rich menu
 argument-hint: "[features]"
 ---
 
 ## Goal
 
-สร้าง LINE bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม webhook signature validation, message event handling, reply/push messages, rich menu, และ deploy
+Create a runnable LINE bot project with TypeScript/Bun, complete with webhook signature validation, message event handling, reply/push messages, rich menu, and deployment
 
 ## Scope
 
-ใช้สำหรับสร้าง LINE bot จาก scratch บน Bun หรือ Node.js รองรับ command bots, notifications, rich menus, และ webhook deployments บน Cloudflare/Railway/Vercel
+Use for building a LINE bot from scratch on Bun or Node.js; supports command bots, notifications, rich menus, and webhook deployments on Cloudflare/Railway/Vercel
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด ตาม conventions ใน `/update-devin-global-skills`
-2. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+2. Run `/deep-review` to summarize the tech stack in use
+3. Record the stack and library choices with reasons for later reference
 
 ### 2. Gather Requirements
 
-> Goal: รวบรวมข้อมูลก่อนสร้าง bot
+> Goal: Collect information before building the bot
 
-1. ถาม user ถึง purpose, ชื่อ bot, ประเภท (notification, command, customer service)
-2. ขอ `LINE_CHANNEL_ACCESS_TOKEN` และ `LINE_CHANNEL_SECRET` หรือแนะนำสร้างผ่าน LINE Developers Console
-3. ระบุ runtime: `Bun` (default) หรือ `Node.js`
-4. ระบุ deployment target: `Cloudflare Workers`, `Railway`, `Vercel`, หรือ `VPS`
+1. Ask the user about purpose, bot name, and type (notification, command, customer service)
+2. Request `LINE_CHANNEL_ACCESS_TOKEN` and `LINE_CHANNEL_SECRET`, or guide the user to create them in the LINE Developers Console
+3. Identify the runtime: `Bun` (default) or `Node.js`
+4. Identify the deployment target: `Cloudflare Workers`, `Railway`, `Vercel`, or `VPS`
 
 ### 3. Setup Project
 
-> Goal: สร้างโครงสร้าง project
+> Goal: Create the project structure
 
-1. ทำ `/deep-review` หรือ `/deep-review` เพื่อสร้าง `src/`
-2. สร้าง `src/index.ts`, `src/bot.ts`, `src/config.ts`, `src/handlers/`, `src/messages/`, `src/webhook.ts`
-3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
-4. รัน `bun init` หรือ `npm init` ตาม runtime
+1. Use `/deep-review` or `/deep-review` to create `src/`
+2. Create `src/index.ts`, `src/bot.ts`, `src/config.ts`, `src/handlers/`, `src/messages/`, `src/webhook.ts`
+3. Create `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
+4. Run `bun init` or `npm init` per the runtime
 
 ### 4. Install Dependencies
 
-> Goal: ติดตั้ง SDK และ web server
+> Goal: Install the SDK and web server
 
-1. ติดตั้ง SDK: `bun add @line/bot-sdk`
-2. ติดตั้ง web server: `bun add hono` (default) หรือ `express`
-3. ติดตั้ง dev tools: `bun add -D @types/bun bun-types typescript`
+1. Install the SDK: `bun add @line/bot-sdk`
+2. Install the web server: `bun add hono` (default) or `express`
+3. Install dev tools: `bun add -D @types/bun bun-types typescript`
 
 ### 5. Configure Bot And Webhook
 
-> Goal: เชื่อมต่อ LINE Messaging API
+> Goal: Connect to the LINE Messaging API
 
-1. สร้าง `src/config.ts` อ่าน `LINE_CHANNEL_ACCESS_TOKEN`, `LINE_CHANNEL_SECRET` จาก environment
-2. สร้าง `src/bot.ts` ด้วย `LineBotClient.fromChannelAccessToken({ channelAccessToken })` จาก `@line/bot-sdk` (v11+ — legacy `Client`/`OAuth` ถูกลบแล้ว; ใช้ `messagingApi.MessagingApiClient` ถ้าต้องการ granular client)
-3. สร้าง `src/webhook.ts` ด้วย `Hono` `POST /webhook` ที validate `x-line-signature` ด้วย `validateSignature` บน raw body
-4. สร้าง `src/index.ts` เป็น entry point
+1. Create `src/config.ts` reading `LINE_CHANNEL_ACCESS_TOKEN` and `LINE_CHANNEL_SECRET` from the environment
+2. Create `src/bot.ts` with `LineBotClient.fromChannelAccessToken({ channelAccessToken })` from `@line/bot-sdk` (v11+ — the legacy `Client`/`OAuth` are removed; use `messagingApi.MessagingApiClient` if you need a granular client)
+3. Create `src/webhook.ts` with a `Hono` `POST /webhook` that validates `x-line-signature` with `validateSignature` over the raw body
+4. Create `src/index.ts` as the entry point
 
 ### 6. Implement Handlers
 
-> Goal: จัดการ message events
+> Goal: Handle message events
 
-1. สร้าง `src/handlers/message.ts` สำหรับ `message` events (text, image, sticker, location)
-2. สร้าง `src/handlers/follow.ts` สำหรับ `follow` / `unfollow` events
-3. สร้าง `src/handlers/postback.ts` สำหรับ `postback` events
-4. ใช้ `client.replyMessage({ replyToken, messages })` หรือ `client.pushMessage({ to, messages })` (request object ใน v11+) สำหรับส่งข้อความ
+1. Create `src/handlers/message.ts` for `message` events (text, image, sticker, location)
+2. Create `src/handlers/follow.ts` for `follow` / `unfollow` events
+3. Create `src/handlers/postback.ts` for `postback` events
+4. Use `client.replyMessage({ replyToken, messages })` or `client.pushMessage({ to, messages })` (request object in v11+) to send messages
 
 ### 7. Add Features
 
-> Goal: เพิ่ม features ตาม requirement
+> Goal: Add features per the requirements
 
-1. สร้าง rich menu หรือ quick replies ถ้าต้องการ
-2. ใช้ `Flex Message` สำหรับ cards ทีซับซ้อน
-3. ใช้ `LIFF` สำหรับ in-app web view (optional)
-4. เพิ่ม middleware สำหรับ logging, error handling, rate limiting
+1. Create a rich menu or quick replies when needed
+2. Use `Flex Message` for complex cards
+3. Use `LIFF` for an in-app web view (optional)
+4. Add middleware for logging, error handling, and rate limiting
 
 ### 8. Test Locally
 
-> Goal: ทดสอบ bot ก่อน deploy
+> Goal: Test the bot before deploying
 
-1. รัน `bun dev` หรือ `bun run src/index.ts`
-2. ใช้ `ngrok` หรือ `cloudflared` สร้าง public URL สำหรับ webhook
-3. ลงทะเบียน webhook URL ใน LINE Developers Console
-4. ทดสอบส่งข้อความและตรวจสอบ logs
-5. ทำ `/run-test` สำหรับ unit tests ของ handlers
+1. Run `bun dev` or `bun run src/index.ts`
+2. Use `ngrok` or `cloudflared` to create a public URL for the webhook
+3. Register the webhook URL in the LINE Developers Console
+4. Test sending messages and check the logs
+5. Run `/run-test` for unit tests of the handlers
 
 ### 9. Deploy
 
-> Goal: deploy bot ไป production
+> Goal: Deploy the bot to production
 
-1. ถ้า `Cloudflare Workers`: ใช้ `/deploy-to-cloudflare` พร้อม `Hono` adapter
-2. ถ้า `Railway/Vercel/VPS`: ใช้ `/deploy-to-railway` หรือ `/deploy-to-vercel` พร้อม environment variables
-3. อัปเดต webhook URL เป็น production endpoint
-4. ทำ `/ship-to-dev-branch`
+1. For `Cloudflare Workers`: use `/deploy-to-cloudflare` with a `Hono` adapter
+2. For `Railway/Vercel/VPS`: use `/deploy-to-railway` or `/deploy-to-vercel` with environment variables
+3. Update the webhook URL to the production endpoint
+4. Run `/ship-to-dev-branch`
 
 ## Rules
 
-- ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ `/follow-secret-manager` สำหรับจัดการ channel secrets
-- ใช้ `@line/bot-sdk` เป็น default SDK (v11+ — fetch-based, ไม่มี axios, ใช้ `LineBotClient` เท่านั้น)
-- ใช้ `Hono` เป็น default web server บน Bun
-- Validate `x-line-signature` ทุกครั้งก่อน parse events
-- ไม่ commit `.env`
-- ใช้ TypeScript first ตาม `/follow-lang-typescript`
+- Never hardcode `LINE_CHANNEL_ACCESS_TOKEN` or `LINE_CHANNEL_SECRET`; use `/follow-secret-manager` to manage channel secrets
+- Use `@line/bot-sdk` as the default SDK (v11+ — fetch-based, no axios, use `LineBotClient` only)
+- Use `Hono` as the default web server on Bun
+- Always validate `x-line-signature` before parsing events
+- Never commit `.env`
+- Be TypeScript-first per `/follow-lang-typescript`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /report table ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed
+- Use /follow-create-bun-cli if needed
+- Use /follow-create-sdk if needed
+- Use /follow-create-web if needed
+- Use /use-bun-native-api if needed
+- Use /report table if needed
 
 ## Expected Outcome
 
-- LINE bot project รันได้ด้วย `bun dev`
-- Webhook validate signature ถูกต้อง
-- Message/follow/postback handlers ทำงานได้
-- รองรับ reply/push messages และ rich menu
-- พร้อม deploy ด้วย environment variables
+- The LINE bot project runs with `bun dev`
+- The webhook validates signatures correctly
+- Message/follow/postback handlers work
+- Reply/push messages and the rich menu are supported
+- Ready to deploy with environment variables

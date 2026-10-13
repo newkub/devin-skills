@@ -1,6 +1,6 @@
 ---
 name: follow-git-workflows
-description: สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ
+description: Switch to the correct git branch for the named workflow
 argument-hint: "[scope]"
 related:
   - refactor
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ (restructure, feature, fix, review)
+Switch to the correct git branch for a named workflow (restructure, feature, fix, review)
 
 ## Scope
 
-ใช้ `follow-git-workflows` เมื่อ user ต้องการย้าย working tree ไปยัง workflow-specific branch ก่อนดำเนินการ workflow
+Use `follow-git-workflows` when the user wants to move the working tree to a workflow-specific branch before running a workflow
 
 ## Execute
 
@@ -23,44 +23,44 @@ related:
 
 > Goal: Determine which workflow branch to use
 
-1. ถามหรือวิเคราะห์ว่า user ต้องการ workflow ใด: `restructure`, `feature`, `fix`, `review`
-2. รัน `git status --short` เพื่อตรวจสถานะปัจจุบัน
-3. ถ้ามี uncommitted changes → stop และถามว่าต้องการ commit, stash หรือ reset ก่อน
+1. Ask or analyze which workflow the user wants: `restructure`, `feature`, `fix`, `review`
+2. Run `git status --short` to check the current status
+3. If there are uncommitted changes → stop and ask whether to commit, stash, or reset first
 
 ### 2. Switch Branch
 
 > Goal: Move to the workflow branch
 
-1. รัน `git branch --list` เพื่อตรวจว่า branch มีอยู่หรือไม่
-2. ถ้า branch ไม่มี → สร้างด้วย `git switch -c <workflow>`
-3. ถ้า branch มีอยู่ → เปลี่ยนไปด้วย `git switch <workflow>`
-4. ตรวจสอบด้วย `git branch --show-current`
+1. Run `git branch --list` to check whether the branch exists
+2. If the branch does not exist → create it with `git switch -c <workflow>`
+3. If the branch exists → switch to it with `git switch <workflow>`
+4. Verify with `git branch --show-current`
 
 ### 3. Confirm Context
 
 > Goal: Report the new branch and next action
 
-1. แสดง branch ปัจจุบัน
-2. ถ้า user ต้องการทำงานต่อ เช่น restructure, feature, fix, review ให้แนะนำ skill ถัดไป
+1. Show the current branch
+2. If the user wants to continue with a task such as restructure, feature, fix, or review, recommend the next skill
 
 ## Rules
 
 ### 1. Branch Names
 
-- `restructure` สำหรับ restructure/refactor tasks
-- `feature` สำหรับ development tasks
-- `fix` สำหรับ bug fixes
-- `review` สำหรับ review tasks
+- `restructure` for restructure/refactor tasks
+- `feature` for development tasks
+- `fix` for bug fixes
+- `review` for review tasks
 
 ### 2. Safety
 
-- ไม่เปลี่ยน branch ถ้ามี uncommitted changes ยกเว้นได้รับอนุญาต
-- ไม่ลบหรือ force-push branch
-- ใช้ `git switch -c` เฉพาะเมื่อ branch ยังไม่มี
-- ใช้ /run-deploy ถ้าจำเป็น
+- Do not switch branches with uncommitted changes unless permitted
+- Do not delete or force-push branches
+- Use `git switch -c` only when the branch does not yet exist
+- Use /run-deploy if needed
 
 ## Expected Outcome
 
-- Working tree อยู่บน workflow branch ทีถูกต้อง
-- ไม่มี uncommitted changes สูญหาย
-- รายงาน branch ปัจจุบันและ next action ชัดเจน
+- The working tree is on the correct workflow branch
+- No uncommitted changes are lost
+- The current branch and next action are reported clearly

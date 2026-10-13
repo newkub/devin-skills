@@ -1,6 +1,6 @@
 ---
 name: search
-description: ค้นหาข้าม sources — files, GitHub stars, npmx, Raindrop, MCP, skills, drive D ผ่าน search-* skills
+description: Cross-source search — files, GitHub stars, npmx, Raindrop, MCP, skills, drive D via search-* skills
 argument-hint: "[domain]"
 related:
   - follow-tool-crw
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ตาม search source — parent ทำ routing เท่านั้น
+Dispatch to the skill for the chosen search source — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if omitted → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -25,28 +25,28 @@ Dispatch ไป skill ตาม search source — parent ทำ routing เท�
 
 | Domain | Skill |
 |---|---|
-| `files-patterns` | `/search-files-patterns` — ค้นไฟล์ตาม pattern/glob |
-| `github-star` | `/search-github-star` — ค้นใน GitHub starred repos |
-| `mcp` | `/search-mcp` — ค้น MCP servers |
-| `npmx` | `/search-npmx` — ค้น/เปรียบเทียบ npm packages บน npmx.dev |
-| `project-in-drive-d` | `/search-project-in-drive-d` — ค้น project ใน drive D |
-| `raindrop` | `/search-raindrop` — ค้น bookmarks ผ่าน raindrop CLI |
-| `similar` | `/search-similar` — ค้น code/files ที่คล้ายกัน |
-| `skills` | `/search-skills` — ค้น skills ที่เกี่ยวข้อง |
+| `files-patterns` | `/search-files-patterns` — search files by pattern/glob |
+| `github-star` | `/search-github-star` — search within GitHub starred repos |
+| `mcp` | `/search-mcp` — search MCP servers |
+| `npmx` | `/search-npmx` — search/compare npm packages on npmx.dev |
+| `project-in-drive-d` | `/search-project-in-drive-d` — search projects on drive D |
+| `raindrop` | `/search-raindrop` — search bookmarks via the raindrop CLI |
+| `similar` | `/search-similar` — search for similar code/files |
+| `skills` | `/search-skills` — search for related skills |
 
-1. ระบุ domain จาก argument (เช่น `/search npmx`)
-2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Determine the domain from the argument (e.g. `/search npmx`)
+2. If the domain is supported → invoke the skill from the table and follow that skill's flow
+3. If no domain is given or it is unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- ถ้าต้อง research เชิงลึกหลังเจอ source → ต่อด้วย `/learn-from-web` หรือ `/deep-research`
+- The parent only dispatches — never duplicate the target skill's workflow
+- If deep research is needed after finding a source → continue with `/learn-from-web` or `/deep-research`
 
-- ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-tool-crw if needed
+- Use /use-astgrep if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ที่ตรง source แล้วค้นตาม flow นั้น
+- The caller is dispatched to the skill matching the source and searches per that flow

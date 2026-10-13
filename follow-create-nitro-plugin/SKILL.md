@@ -1,6 +1,6 @@
 ---
 name: follow-create-nitro-plugin
-description: สร้าง Nitro plugin สำหรับ Nuxt ด้วย defineNitroPlugin และ hooks
+description: Build Nitro plugins for Nuxt with defineNitroPlugin and hooks
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -13,116 +13,116 @@ related:
 ---
 ## Goal
 
-สร้าง Nitro plugin package สำหรับ Nuxt/Nitro ด้วย `definePlugin` (v3) / `defineNitroPlugin` (v2), hooks, middleware, storage, และ tests
+Build a Nitro plugin package for Nuxt/Nitro with `definePlugin` (v3) / `defineNitroPlugin` (v2), hooks, middleware, storage, and tests
 
 ## Scope
 
-ใช้สำหรับสร้าง plugin ที extend Nitro runtime ใน Nuxt 3/4 หรือ standalone Nitro project รองรับทั้ง project plugin (`server/plugins/`) และ npm package
+Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standalone Nitro project, supporting both project plugins (`server/plugins/`) and npm packages
 
-- Packages: `nitro` (v3 — เดิม `nitropack`), `h3` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); v3 breaking: `defineNitroPlugin` → `definePlugin`, ไม่มี auto-imports (explicit `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req`), Node ≥20
-- Nitro v3 breaking changes: package `nitropack` → `nitro`, `defineNitroPlugin` → `definePlugin`, auto-imports ถูกลบ (ต้อง explicit import จาก `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req` web APIs), Node.js >= 20
+- Packages: `nitro` (v3 — formerly `nitropack`), `h3` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); v3 breaking: `defineNitroPlugin` → `definePlugin`, no auto-imports (explicit `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req`), Node ≥20
+- Nitro v3 breaking changes: package `nitropack` → `nitro`, `defineNitroPlugin` → `definePlugin`, auto-imports removed (explicit imports from `nitro/*` required), H3 v2 (`defineHandler`, `HTTPError`, `event.req` web APIs), Node.js >= 20
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create nitro plugin)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create nitro plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create nitro plugin)
+3. Record the rationale for the chosen stack and libraries for future reference (create nitro plugin)
 
 ### 2. Choose Plugin Type
 
-> Goal: ระบุวิธีใช้ plugin
+> Goal: decide how the plugin will be used
 
-1. ถ้าใช้เฉพาะ project: สร้าง `server/plugins/{name}.ts` ใน Nuxt project
-2. ถ้าใช้เป็น package: สร้าง `packages/{plugin-name}/` แยกออกมา
-3. ระบุ hooks ทีต้องการ `render:html`, `request`, `close`, หรือ custom hooks
+1. For a single project: create `server/plugins/{name}.ts` in the Nuxt project
+2. For reuse as a package: create a separate `packages/{plugin-name}/`
+3. Define the hooks you need: `render:html`, `request`, `close`, or custom hooks
 
 ### 3. Setup Package
 
-> Goal: สร้างโครงสร้าง plugin package
+> Goal: scaffold the plugin package structure
 
-1. สร้าง `package.json` ด้วย `name: nitro-{name}`
-2. ใส่ `nitro` (v3) หรือ `nitropack` (v2) ใน `peerDependencies` ตาม major version ที่รองรับ
-3. สร้าง `tsconfig.json`, `src/index.ts`, `test/plugin.test.ts`
-4. ติดตั้ง `unbuild` หรือ `tsup` สำหรับ build
+1. Create `package.json` with `name: nitro-{name}`
+2. Put `nitro` (v3) or `nitropack` (v2) in `peerDependencies` per the supported major version
+3. Create `tsconfig.json`, `src/index.ts`, `test/plugin.test.ts`
+4. Install `unbuild` or `tsup` for the build
 
 ### 4. Implement Plugin
 
-> Goal: เขียน Nitro plugin
+> Goal: write the Nitro plugin
 
-1. สร้าง `src/index.ts`:
-   - v3: `import { definePlugin } from "nitro"` แล้ว `export default definePlugin((nitroApp) => { ... })`
+1. Create `src/index.ts`:
+   - v3: `import { definePlugin } from "nitro"` then `export default definePlugin((nitroApp) => { ... })`
    - v2: `export default defineNitroPlugin((nitroApp) => { ... })`
-2. ใช้ `nitroApp.hooks.hook('render:html', (html, { event }) => { ... })` สำหรับ modify HTML
-3. ใช้ `nitroApp.hooks.hook('close', async () => { ... })` สำหรับ cleanup
-4. ถ้าใช้ storage ให้ใช้ `useStorage()` ภายใน hook (v3: `import { useStorage } from "nitro/storage"` — auto-imports ถูกลบใน v3)
+2. Use `nitroApp.hooks.hook('render:html', (html, { event }) => { ... })` to modify HTML
+3. Use `nitroApp.hooks.hook('close', async () => { ... })` for cleanup
+4. For storage, call `useStorage()` inside a hook (v3: `import { useStorage } from "nitro/storage"` — auto-imports were removed in v3)
 
 ### 5. Register Middleware Or Handlers
 
-> Goal: เพิ่ม middleware หรือ route handlers
+> Goal: add middleware or route handlers
 
-1. ใช้ `nitroApp.h3App.use(...)` สำหรับ global middleware
-2. หรือสร้าง `server/middleware/` และ `server/routes/` แยกใน Nuxt project
-3. หลีกเลี่ยงทำ side effects นอก `defineNitroPlugin` callback
+1. Use `nitroApp.h3App.use(...)` for global middleware
+2. Or create separate `server/middleware/` and `server/routes/` in the Nuxt project
+3. Avoid side effects outside the `defineNitroPlugin` callback
 
 ### 6. Configure Types
 
-> Goal: รองรับ TypeScript types
+> Goal: support TypeScript types
 
-1. ใช้ types จาก `nitropack/types` (v2) หรือ `nitro` (v3)
-2. ถ้า module ต้องการ options ใช้ `ModuleOptions` type
-3. ส่ง generic ผ่าน `NitroApp` ถ้าจำเป็น
-4. ระบุ runtime types ด้วย `declare module 'nitropack'` (v2) หรือ `declare module 'nitro'` (v3) ถ้ามี custom hooks
+1. Use types from `nitropack/types` (v2) or `nitro` (v3)
+2. If the module needs options, use the `ModuleOptions` type
+3. Pass generics through `NitroApp` if needed
+4. Declare runtime types with `declare module 'nitropack'` (v2) or `declare module 'nitro'` (v3) when adding custom hooks
 
 ### 7. Build Package
 
-> Goal: build plugin สำหรับ npm
+> Goal: build the plugin for npm
 
-1. สร้าง `build.config.ts` หรือ `tsup.config.ts` สำหรับ ESM/CJS
-2. external `nitro`/`nitropack`
-3. รัน `bun run build`
-4. ตรวจสอบ `dist/index.mjs` และ `dist/index.d.ts`
+1. Create `build.config.ts` or `tsup.config.ts` for ESM/CJS
+2. Mark `nitro`/`nitropack` as external
+3. Run `bun run build`
+4. Verify `dist/index.mjs` and `dist/index.d.ts`
 
 ### 8. Test
 
-> Goal: ทดสอบ plugin
+> Goal: test the plugin
 
-1. สร้าง Nuxt fixture หรือ Nitro fixture
-2. ใช้ `await $fetch('/')` ผ่าน `setup` ของ `@nuxt/test-utils`
-3. ตรวจสอบ HTML, headers, หรือ storage
-4. รัน `bun test`
+1. Create a Nuxt fixture or Nitro fixture
+2. Use `await $fetch('/')` via the `setup` of `@nuxt/test-utils`
+3. Verify HTML, headers, or storage
+4. Run `bun test`
 
 ### 9. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
-- ใช้ `definePlugin` จาก `nitro` (v3) หรือ `defineNitroPlugin` จาก `nitropack/runtime` (v2)
-- Plugin function synchronous แต่ hooks สามารถ async ได้
-- ไม่ทำ side effects เป้น global นอก callback
-- ใช้ `useRuntimeConfig()` ภายใน hooks ไม่ใช้ใน plugin body (v3: `import { useRuntimeConfig } from "nitro/runtime-config"`)
-- ระบุ `nitro` หรือ `nitropack` เป็น peer dependency ตาม version
-- v3: import utilities แบบ explicit เสมอ เช่น `defineHandler`, `HTTPError` จาก `nitro`; `useDatabase` จาก `nitro/database`; `defineTask` จาก `nitro/task`
+- Use `definePlugin` from `nitro` (v3) or `defineNitroPlugin` from `nitropack/runtime` (v2)
+- The plugin function is synchronous, but hooks may be async
+- No global side effects outside the callback
+- Call `useRuntimeConfig()` inside hooks, not in the plugin body (v3: `import { useRuntimeConfig } from "nitro/runtime-config"`)
+- Declare `nitro` or `nitropack` as a peer dependency per version
+- v3: always import utilities explicitly, e.g. `defineHandler` and `HTTPError` from `nitro`; `useDatabase` from `nitro/database`; `defineTask` from `nitro/task`
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-create-web-nextjs ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-sdk if needed
+- Use /follow-create-web if needed
+- Use /follow-create-web-nextjs if needed
+- Use /follow-lang-typescript if needed
+- Use /run-test if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- Nitro plugin register hooks ได้
-- Middleware หรือ handlers ทำงาน
-- Package build ผ่าน
-- Tests ผ่าน
-- ใช้ใน Nuxt project ได้
+- The Nitro plugin registers hooks
+- Middleware or handlers work
+- The package builds successfully
+- Tests pass
+- It can be used in a Nuxt project
 

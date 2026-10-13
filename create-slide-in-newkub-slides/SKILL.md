@@ -1,6 +1,6 @@
 ---
 name: create-slide-in-newkub-slides
-description: สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ
+description: Create a Slidev project in D:/newkub/slides and open the browser automatically
 argument-hint: "[title]"
 related:
   - follow-create-slide-slidev
@@ -11,37 +11,37 @@ related:
 
 ## Goal
 
-สร้าง Slidev project ใน `D:/newkub/slides/{project-name}` และเปิด browser เพื่อดู slides ทันที
+Create a Slidev project in `D:/newkub/slides/{project-name}` and open the browser to view the slides immediately
 
 ## Scope
 
-สร้าง `slides.md` เอง พร้อม headmatter และ per-slide frontmatter มาตรฐาน ไม่ต้องสร้าง `package.json` — dependencies อยู่ที่ root `D:/newkub/slides/package.json` แล้ว
+Write `slides.md` yourself with standard headmatter and per-slide frontmatter. No need to create `package.json` — dependencies already live in the root `D:/newkub/slides/package.json`
 
 ## Execute
 
 ### 1. Create Project Directory
 
-> Goal: สร้างโครงสร้าง directory สำหรับ Slidev project
+> Goal: Create the directory structure for the Slidev project
 
-1. รับชื่อ project เป็น parameter (เช่น `rust`)
-2. สร้าง directory `D:/newkub/slides/{project-name}` ถ้ายังไม่มี
-3. สร้าง subdirectories: `components/`, `layouts/`, `public/`, `styles/`
+1. Take the project name as a parameter (e.g. `rust`)
+2. Create the directory `D:/newkub/slides/{project-name}` if it does not exist
+3. Create the subdirectories: `components/`, `layouts/`, `public/`, `styles/`
 
 ### 2. Verify Root Dependencies
 
-> Goal: ยืนยันว่า root dependencies พร้อมใช้งาน
+> Goal: Confirm the root dependencies are ready to use
 
-1. ตรวจสอบว่า `D:/newkub/slides/package.json` มีอยู่แล้ว
-2. ถ้าไม่มี ให้ทำ `/follow-create-slide-slidev` เพื่อสร้าง root setup
-3. ไม่ต้องสร้าง `package.json` ของ project — dependencies อยู่ที่ root
+1. Check that `D:/newkub/slides/package.json` already exists
+2. If it does not, run `/follow-create-slide-slidev` to create the root setup
+3. Do not create a project-level `package.json` — dependencies live at the root
 
 ### 3. Create Slides File
 
-> Goal: สร้าง `slides.md` ด้วย headmatter และ per-slide frontmatter มาตรฐาน
+> Goal: Create `slides.md` with standard headmatter and per-slide frontmatter
 
-1. เขียน headmatter (first `---` block) สำหรับ global config
-2. เขียน per-slide frontmatter สำหรับแต่ละ slide
-3. แยก slides ด้วย `---` separator
+1. Write the headmatter (first `---` block) for global config
+2. Write per-slide frontmatter for each slide
+3. Separate slides with the `---` separator
 
 #### Headmatter Fields
 
@@ -50,7 +50,7 @@ related:
 theme: seriph
 title: Presentation Title
 info: |
-  คำอธิบาย presentation แบบย่อ
+  Short presentation description
 class: text-center
 transition: slide-left
 mdc: true
@@ -72,109 +72,109 @@ transition: fade-out
 
 ### 4. Use Built-in Layouts
 
-> Goal: เลือก layout ตามเนื้อหา
+> Goal: Pick the layout to fit the content
 
-- `cover` — title slide หน้าแรก
-- `center` — content กึ่งกลาง
-- `default` — content ทั่วไป
-- `two-cols` — สองคอลัมน์ ใช้ `::right::` slot
-- `fact` — เน้น fact หรือ data
-- `full` — เต็มจอ
-- `end` — หน้าสุดท้าย
+- `cover` — first title slide
+- `center` — centered content
+- `default` — general content
+- `two-cols` — two columns using the `::right::` slot
+- `fact` — highlight a fact or data
+- `full` — full screen
+- `end` — last slide
 - `section` — section divider
-- `quote` — แสดง quote
+- `quote` — show a quote
 
 ### 5. Add Code Blocks
 
-> Goal: ใช้ Shiki syntax highlighting พร้อม features
+> Goal: Use Shiki syntax highlighting with features
 
-- ใช้ `{2|4-6|all}` สำหรับ line highlighting
-- ใช้ `[filename.rs]` สำหรับ filename label
-- ใช้ `{monaco}` สำหรับ editable Monaco editor
-- ใช้ `{monaco-run}` สำหรับ executable code
-- ใช้ `twoslash` สำหรับ TypeScript type info
-- ใช้ `<<< @/path/to/file.ts` สำหรับ import external snippet
-- ใช้ magic-move (4 backticks) สำหรับ animate code transitions
+- Use `{2|4-6|all}` for line highlighting
+- Use `[filename.rs]` for a filename label
+- Use `{monaco}` for an editable Monaco editor
+- Use `{monaco-run}` for executable code
+- Use `twoslash` for TypeScript type info
+- Use `<<< @/path/to/file.ts` to import an external snippet
+- Use magic-move (4 backticks) to animate code transitions
 
 ### 6. Add Diagrams And Animations
 
-> Goal: เพิ่ม diagrams และ animations ตามต้องการ
+> Goal: Add diagrams and animations as needed
 
-1. ใช้ Mermaid สำหรับ diagrams:
+1. Use Mermaid for diagrams:
 
 ```mermaid {scale: 0.8}
 graph LR
   A[Owner] -->|borrow| B(Reference)
 ```
 
-2. ใช้ `v-click` สำหรับ step-by-step reveals
-3. ใช้ `<v-clicks>` component สำหรับ lists
-4. ใช้ `v-motion` สำหรับ motion effects
-5. ใช้ `v-mark` สำหรับ annotations
+2. Use `v-click` for step-by-step reveals
+3. Use the `<v-clicks>` component for lists
+4. Use `v-motion` for motion effects
+5. Use `v-mark` for annotations
 
 ### 7. Run Dev Server
 
-> Goal: dev server ทำงานและแสดง slides ได้
+> Goal: The dev server runs and displays the slides
 
-1. ทำ `/run-dev` เพื่อรัน dev server ด้วย `bunx slidev`
-2. รอให้ dev server เริ่มทำงาน
+1. Run `/run-dev` to start the dev server with `bunx slidev`
+2. Wait for the dev server to come up
 
 ### 8. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Project Setup
 
-- สร้าง project ใน `D:/newkub/slides/{project-name}` เท่านั้น
-- ไม่สร้าง `package.json` ของ project — ใช้ root `package.json` อย่างเดียว
-- ใช้ Bun เป็น package manager ตาม global rules
-- สร้าง subdirectories เฉพาะที่จำเป็น: `components/`, `layouts/`, `public/`, `styles/`
+- Create the project only in `D:/newkub/slides/{project-name}`
+- Do not create a project-level `package.json` — use only the root `package.json`
+- Use Bun as the package manager per the global rules
+- Create only the necessary subdirectories: `components/`, `layouts/`, `public/`, `styles/`
 
 ### 2. Headmatter Standards
 
-- ตั้ง `theme: seriph` เป็น default
-- ตั้ง `transition: slide-left` เป็น default
-- เปิด `mdc: true` สำหรับ MDC syntax
-- ตั้ง `drawings.persist: false` ถ้าไม่ต้องการ persist drawings
+- Set `theme: seriph` as the default
+- Set `transition: slide-left` as the default
+- Enable `mdc: true` for MDC syntax
+- Set `drawings.persist: false` if you do not want drawings persisted
 
 ### 3. Layout Selection
 
-- หน้าแรกใช้ `cover` layout
-- หน้าสุดท้ายใช้ `end` layout
-- เนื้อหาทั่วไปใช้ `default` layout
-- เปรียบเทียบใช้ `two-cols` layout
-- เน้นข้อมูลใช้ `fact` layout
+- First slide uses the `cover` layout
+- Last slide uses the `end` layout
+- General content uses the `default` layout
+- Comparisons use the `two-cols` layout
+- Emphasized data uses the `fact` layout
 
 ### 4. Code Blocks
 
-- ใช้ line highlighting `{2|4-6|all}` สำหรับ step-by-step
-- ใช้ filename label `[main.rs]` สำหรับระบุไฟล์
-- ใช้ magic-move สำหรับ animate code changes
-- ไม่เกิน 15 บรรทัดต่อ code block
+- Use line highlighting `{2|4-6|all}` for step-by-step
+- Use the filename label `[main.rs]` to identify the file
+- Use magic-move to animate code changes
+- No more than 15 lines per code block
 
 ### 5. Animations
 
-- ใช้ `v-click` สำหรับ reveal ทีละจุด
-- ใช้ `<v-clicks>` สำหรับ lists ทั้งหมด
-- ใช้ `v-motion` สำหรับ motion effects
-- ไม่ใช้ animation มากเกินไป
+- Use `v-click` to reveal one point at a time
+- Use `<v-clicks>` for whole lists
+- Use `v-motion` for motion effects
+- Do not overuse animations
 
 ### 6. Dev Server
 
-- รัน `bunx slidev {project-name}/slides.md` ที่ root directory
-- ใช้ `http://localhost:3030` เป็น default URL
-- ถ้า dev server ไม่เริ่ม ให้แก้ไขก่อน
+- Run `bunx slidev {project-name}/slides.md` at the root directory
+- Use `http://localhost:3030` as the default URL
+- If the dev server does not start, fix that first
 
 ## Expected Outcome
 
-- Slidev project สร้างใน `D:/newkub/slides/{project-name}`
-- ไม่มี `package.json` ของ project — ใช้ root `package.json` อย่างเดียว
-- `slides.md` มี headmatter และ per-slide frontmatter ครบถ้วน
-- Dev server ทำงานได้ที่ port 3030
-- สามารถแก้ไข slides แบบ real-time
+- Slidev project created in `D:/newkub/slides/{project-name}`
+- No project-level `package.json` — only the root `package.json` is used
+- `slides.md` has complete headmatter and per-slide frontmatter
+- Dev server running on port 3030
+- Slides are editable in real time
 

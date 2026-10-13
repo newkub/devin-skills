@@ -1,6 +1,6 @@
 ---
 name: update-readme-md
-description: สร้าง README.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
+description: Generate a complete README.md from a standard template using real project data
 argument-hint: "[scope]"
 related:
   - update-docs
@@ -18,229 +18,229 @@ related:
 
 ## Goal
 
-สร้าง `README.md` และ `LICENSE.md` ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์ สำหรับ root และ workspaces ใน monorepo
+Generate a complete `README.md` and `LICENSE.md` using a standard template and real data from the project, for the root and the workspaces in a monorepo
 
 ## Scope
 
-ครอบคลุมการสร้าง `README.md` สำหรับ root และทุก workspace ใน monorepo และการตั้งค่า `LICENSE.md` พร้อม package manifest license field — idempotent: รันซ้ำได้โดยไม่เกิด side effects
+Covers generating `README.md` for the root and every workspace in a monorepo, and setting up `LICENSE.md` with the package manifest license field — idempotent: safe to re-run without side effects
 
-ดูเพิ่มเติม: /capture
+See also: /capture
 
 ## Execute
 
 ### 1. Learn The Codebase
 
-> Goal: เรียนรู้ codebase จริงก่อนเขียน — ห้ามเขียนจากการเดา
+> Goal: study the actual codebase before writing — never write from guesswork
 
-1. ทำ `/learn-from-codebase` ก่อนเสมอ — ภายในมี `/deep-analyze` (tech stack, structure, entry points, data flow)
-2. ใช้ข้อมูลที่เรียนมาเขียน README จริง — ทุก claim ต้องมี source จาก code/docs ที่ verify แล้ว ไม่ใช่ boilerplate
-3. จากนั้นทำ prepare ตาม `references/prepare.md` (detect project type, status, CONTRIBUTING/LICENSE/CHANGELOG)
+1. Always run `/learn-from-codebase` first — internally it runs `/deep-analyze` (tech stack, structure, entry points, data flow)
+2. Use what you learned to write a real README — every claim must have a source from verified code/docs, not boilerplate
+3. Then do the prepare step per `references/prepare.md` (detect project type, status, CONTRIBUTING/LICENSE/CHANGELOG)
 
 ### 2. Read Sample READMEs
 
-> Goal: อ่านตัวอย่าง README ตามมาตรฐาน
+> Goal: read example READMEs per the standard
 
-1. อ่าน `references/sample-readme-overview.md` เพื่อดูโครงสร้าง README ภาพรวม
-2. อ่าน `references/sample-readme-workflows.md` สำหรับส่วน workflows
-3. อ่าน `references/sample-readme-contribution.md` สำหรับส่วน contribution
-4. อ่าน `references/sample-readme-releases.md` สำหรับส่วน releases
-5. ระบุ sections ที่จำเป็นสำหรับ project ปัจจุบัน
+1. Read `references/sample-readme-overview.md` for the overall README structure
+2. Read `references/sample-readme-workflows.md` for the workflows part
+3. Read `references/sample-readme-contribution.md` for the contribution part
+4. Read `references/sample-readme-releases.md` for the releases part
+5. Identify the sections needed for the current project
 
 ### 3. Write Root README
 
-> Goal: เขียน README หลักของ monorepo
+> Goal: write the main README of the monorepo
 
-ดู `references/write-readme.md`
+See `references/write-readme.md`
 
 ### 4. Generate Flow Diagram
 
-> Goal: วาด ANSI flow diagram ของการทำงานสำหรับ README
+> Goal: draw an ANSI flow diagram of the operation for the README
 
-ดู `references/generate-sketch.md`
+See `references/generate-sketch.md`
 
 ### 5. Draw Usage ANSI
 
-> Goal: วาด ANSI ประกอบสำหรับ Usage section แทนการ capture image
+> Goal: draw supporting ANSI for the Usage section instead of capturing images
 
-ดู `references/capture-images.md`
+See `references/capture-images.md`
 
 ### 6. Update Workspaces READMEs
 
-> Goal: อัปเดต README ทุก workspace ใน monorepo
+> Goal: update the README of every workspace in the monorepo
 
-ดู `references/update-workspaces.md`
+See `references/update-workspaces.md`
 
 ### 7. Setup License
 
-> Goal: ตั้งค่า LICENSE.md และ package manifest license field สำหรับ root
+> Goal: set up LICENSE.md and the package manifest license field for the root
 
-ดู `references/setup-license.md`
+See `references/setup-license.md`
 
 ### 8. Validate
 
-> Goal: ตรวจสอบคุณภาพและอัปเดต references
+> Goal: check quality and update references
 
-ดู `references/validate.md`
+See `references/validate.md`
 
 ## Rules
 
 ### 1. Section Order And Format
 
-จัดเรียง sections ตามลำดับต่อไปนี้:
+Arrange sections in the following order:
 
-- `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น
-- `Hero Section`: `#` Title, Description, Badges (ชิดซ้าย, ไม่รวม License badge) — ไม่มี ANSI ใต้ badges
-- `Flow Diagram`: ```text codeblock แสดง ANSI flow diagram ของการทำงาน (input → process → output หรือ lifecycle หลัก) — วางด้านบน Get Started โดยไม่ต้องมี heading — ห้ามวาด file structure/tree
-- `## Get Started`: numbered steps ตรงๆ ไม่มี `###` subsection — แต่ละ step มี title + codeblock
-- `## Features`: Markdown table 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
-- `## Usage`: `### Usage via ...` สำหรับแต่ละ access method — ดู `references/usage-section.md`
-- `## Contributing`: มีเฉพาะถ้ามี `CONTRIBUTING.md` — สั้นๆ บอกให้อ่านที่ `CONTRIBUTING.md`
-- `## License`: มีเฉพาะถ้ามี `LICENSE.md` — Section แยกด้านล่างสุด ไม่มี badge (root เท่านั้น)
+- `Status Callout`: at the very top — use `>` for the project status only
+- `Hero Section`: `#` Title, Description, Badges (left-aligned, excluding the License badge) — no ANSI below the badges
+- `Flow Diagram`: ```text codeblock showing an ANSI flow diagram of the operation (input → process → output or the main lifecycle) — placed above Get Started without a heading — never draw a file structure/tree here
+- `## Get Started`: plain numbered steps with no `###` subsections — each step has a title + codeblock
+- `## Features`: Markdown table with 5 columns (Icon, Feature, Description, Benefit, Usage) — see `references/features-table.md`
+- `## Usage`: `### Usage via ...` for each access method — see `references/usage-section.md`
+- `## Contributing`: present only if `CONTRIBUTING.md` exists — keep it short, pointing readers to `CONTRIBUTING.md`
+- `## License`: present only if `LICENSE.md` exists — a separate section at the very bottom, no badge (root only)
 
 ### 2. Status Callout
 
-- ใช้ `>` เฉพาะ status project เท่านั้น — ไม่ใส่ description หรือ emoji อื่น
-- ค่าเริ่มต้น: `in development` (ถ้าไม่มี `CHANGELOG.md`)
-- ถ้ามี `CHANGELOG.md` → เปลี่ยนเป็น `active`
-- ใช้สี: `in development` = red, `active` = green
-- รูปแบบ: `> ![Status](https://img.shields.io/badge/status-in_development-red)` หรือ `> ![Status](https://img.shields.io/badge/status-active-brightgreen)`
+- Use `>` for the project status only — no description or other emoji
+- Default: `in development` (if there is no `CHANGELOG.md`)
+- If `CHANGELOG.md` exists → switch to `active`
+- Colors: `in development` = red, `active` = green
+- Format: `> ![Status](https://img.shields.io/badge/status-in_development-red)` or `> ![Status](https://img.shields.io/badge/status-active-brightgreen)`
 
 ### 3. Report ANSI
 
-- Flow Diagram (ด้านบน Get Started) = `flow diagram เท่านั้น` — แสดงการทำงาน/ลำดับขั้นตอน/data flow — ห้ามวาด file structure หรือ UI mockup ตรงนั้น
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Flow Diagram + Usage section เท่านั้น
-- ไม่มี ANSI codeblock ด้านล่างสุดของ README
+- Flow Diagram (above Get Started) = `flow diagram only` — show the operation/step sequence/data flow — never draw a file structure or UI mockup there
+- No ANSI below the logo/badges in the Hero section — ANSI lives in the Flow Diagram + Usage section only
+- No ANSI codeblock at the very bottom of the README
 
 ### 4. Get Started Format
 
-- ใช้ numbered list ตรงๆ ไม่มี `###` subsection
-- แต่ละ step: `N. Title — context` ตามด้วย codeblock
-- กระชับ ไม่มี description ยาว
+- Use a plain numbered list with no `###` subsections
+- Each step: `N. Title — context` followed by a codeblock
+- Be concise, no long descriptions
 
 ### 5. Table Column Specs
 
-- `Features`: 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
+- `Features`: 5 columns (Icon, Feature, Description, Benefit, Usage) — see `references/features-table.md`
 - `Development > Tech Stack`: 4 columns (Layer, Technology, Version, Description)
-- `Development > How It Work`: ภาพ diagram แบบ text codeblock
+- `Development > How It Work`: a diagram as a text codeblock
 - `Development > Architecture`/`Workflows`/`Skills`: file structure codeblock (tree format with `#` comments)
-- `Development > Scripts`: JSON codeblock พร้อม comment
+- `Development > Scripts`: JSON codeblock with comments
 
 ### 6. Content Standards
 
-- ทำ `/convert-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
-- ใช้ข้อมูลจริงจาก `/deep-analyze`, code รันได้จริง
-- ไม่ใช้ placeholder ยกเว้น banner image
-- ไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก
+- Run `/convert-to-lang-en` — the entire README.md is in English
+- Use real data from `/deep-analyze` and actually runnable code
+- No placeholders except the banner image
+- No `## Information`, `## Key Concepts`, `## Tech Stack` as separate sections
 
 ### 7. Features Writing Standards
 
-- Coverage: ครอบคลุมทุก features จาก source code ไม่มีการข้าม
-- Concise Rows: แต่ละ row กระชับ มี row ให้ครบ ไม่เขียน Description ยาว
-- Business-Focused: เขียน business value ไม่ใช่แค่ technical details
+- Coverage: cover every feature from the source code, with no omissions
+- Concise Rows: keep each row concise; include all rows, no long Descriptions
+- Business-Focused: write business value, not just technical details
 
 ### 8. Usage Content Types
 
 - Web: `<details>` accordion + text instructions + ANSI drawing
-- API: code block พร้อม import และ function call + references table
-- CLI: bash code block `command --help` + ANSI drawing ของ `--help` output
-- SDK: code block พร้อม install + import + usage + references table
+- API: code block with import and function call + references table
+- CLI: bash code block `command --help` + ANSI drawing of the `--help` output
+- SDK: code block with install + import + usage + references table
 - TUI: `<details>` accordion + text instructions + ANSI drawing
 - Desktop / Browser Extension: text instructions + ANSI drawing
 
-ดูรายละเอียด: `references/usage-section.md`
+See details: `references/usage-section.md`
 
 ### 9. Usage ANSI Drawing
 
-- ใช้ ANSI box-drawing characters วาด layout/output แทนการ capture image จริง
-- ทุกบรรทัดใน ANSI codeblock ต้องมีความยาวเท่ากัน
-- ใช้ ` ```text ` codeblock (ไม่ใช้ ` ```ansi `)
-- ความกว้าง fixed width เช่น 60 ตัวอักษร
+- Use ANSI box-drawing characters to draw the layout/output instead of capturing real images
+- Every line in the ANSI codeblock must have the same length
+- Use a ` ```text ` codeblock (not ` ```ansi `)
+- Fixed width, e.g. 60 characters
 
-ดูรายละเอียด: `references/capture-images.md`
+See details: `references/capture-images.md`
 
 ### 10. Usage Accordion
 
-- `Usage via Web` และ `Usage via TUI` ต้องห่มเนื้อหาด้วย `<details>` + `<summary>`
-- ภายใน accordion ต้องประกอบด้วย text instructions + ANSI drawing
-- `<details>` block ต้องมี blank line ก่อนเปิดและก่อนปิด
+- `Usage via Web` and `Usage via TUI` must wrap their content in `<details>` + `<summary>`
+- Inside the accordion: text instructions + ANSI drawing
+- Each `<details>` block needs a blank line before opening and before closing
 
-ดูรายละเอียดและตัวอย่าง: `references/usage-section.md`
+See details and examples: `references/usage-section.md`
 
 ### 11. API References (Inline)
 
-- ไม่มี `## API References` section แยก
-- ใส่ references table ใน `### Usage via ...` section ที่เกี่ยวข้อง
-- คอลัมน์: api, description, options, default
-- แสดงเฉพาะ public API เท่านั้น
+- No separate `## API References` section
+- Put the references table in the relevant `### Usage via ...` section
+- Columns: api, description, options, default
+- Show public API only
 
 ### 12. Contributing Section
 
-- เปลี่ยน `## Development` เป็น `## Contributing`
-- มีเฉพาะถ้ามี `CONTRIBUTING.md` ใน root
-- สั้นๆ 1-2 บรรทัด บอกให้อ่านที่ `CONTRIBUTING.md`
-- ถ้าไม่มี `CONTRIBUTING.md` → ไม่มี `## Contributing` section
-- ทำ `/update-contributing` ก่อนถ้าต้องการสร้าง
+- Rename `## Development` to `## Contributing`
+- Present only if `CONTRIBUTING.md` exists at the root
+- Keep it short, 1-2 lines, pointing readers to `CONTRIBUTING.md`
+- If there is no `CONTRIBUTING.md` → no `## Contributing` section
+- Run `/update-contributing` first if you need to create it
 
 ### 13. License Section
 
-- มีเฉพาะถ้ามี `LICENSE.md` ใน root
-- ถ้าไม่มี `LICENSE.md` → ไม่มี `## License` section
+- Present only if `LICENSE.md` exists at the root
+- If there is no `LICENSE.md` → no `## License` section
 
 ### 14. Icons
 
-- ใช้ iconify CDN: `![icon](https://api.iconify.design/<set>:<name>.svg?color=%23<hex>&width=16)` — ต้องมี `?color=%23<hex>` เสมอ
-- ห้ามใช้ emoji ในตาราง — ใช้ icon set: `mdi`, `lucide`, `material-symbols`, `tabler`, `ph`, `iconoir`
-- คอลัมน์ Icon จัดกึ่งกลางด้วย `:---:` — แต่ละ icon ต้องมี color ที่แตกต่างกัน
-- แนวทางสี: `1976d2` (ฟ้า/core), `388e3c` (เขียว/in scope), `d32f2f` (แดง/out scope), `f57c00` (ส้ม/warning), `7b1fa2` (ม่วง/UI), `c2185b` (ชมพู/features), `303f9f` (คราม/concepts), `0097a7` (ฟ้าขี้ม้า/CLI), `00796b` (เขียวเข้ม/build), `ffa000` (ทอง/content)
-- ห้ามใช้ ` ```ansi ` codeblock ใน README — ใช้ ` ```text ` สำหรับ ANSI/box-drawing drawings เท่านั้น
+- Use the iconify CDN: `![icon](https://api.iconify.design/<set>:<name>.svg?color=%23<hex>&width=16)` — must always include `?color=%23<hex>`
+- Never use emoji in tables — use icon sets: `mdi`, `lucide`, `material-symbols`, `tabler`, `ph`, `iconoir`
+- Center the Icon column with `:---:` — each icon must use a distinct color
+- Color guidance: `1976d2` (blue/core), `388e3c` (green/in scope), `d32f2f` (red/out scope), `f57c00` (orange/warning), `7b1fa2` (purple/UI), `c2185b` (pink/features), `303f9f` (indigo/concepts), `0097a7` (teal/CLI), `00796b` (dark green/build), `ffa000` (amber/content)
+- Never use a ` ```ansi ` codeblock in the README — use ` ```text ` for ANSI/box-drawing drawings only
 
 ### 15. License Selection
 
-เลือก license ตามประเภทโปรเจกต์:
+Choose a license by project type:
 
-- MIT: สำหรับ libraries และ templates
-- Apache-2.0: สำหรับ projects ที่ต้องการ patent protection
-- BSD-3-Clause: สำหรับ projects ที่ต้องการความยืดหยุ่น
-- Proprietary: สำหรับ commercial products ที่ไม่เปิด source
-- CC-BY-4.0: สำหรับ documentation
+- MIT: for libraries and templates
+- Apache-2.0: for projects that need patent protection
+- BSD-3-Clause: for projects that want flexibility
+- Proprietary: for closed-source commercial products
+- CC-BY-4.0: for documentation
 
-ดูรายละเอียด: `references/setup-license.md`
+See details: `references/setup-license.md`
 
 ### 16. Example Templates
 
-ดู templates:
+See templates:
 
-- `templates/readme-template.md` — full README ตัวอย่าง
+- `templates/readme-template.md` — a full README example
 - `templates/usage-via-cli.md` — CLI `--help` ANSI template
 - `templates/usage-via-web.md` — Web accordion template
 - `templates/usage-via-tui.md` — TUI accordion template
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /run-docs ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /report if needed
+- Use /deep-validate if needed
+- Use /run-docs if needed
+- Use /update-docs if needed
 
 ### 17. Plan Always
 
-- ทำ `/create-plan-in-dot-devin` เสมอ ก่อนเริ่มเขียน/อัปเดต README ทุกครั้ง — เพื่อกำหนด scope, sections และงานต่อ workspace ให้ชัดเจน
+- Always run `/create-plan-in-dot-devin` before starting any README writing/update — to clearly define scope, sections, and per-workspace work
 
 
 ## Expected Outcome
 
-- README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/deep-analyze` ไม่มี placeholder ยกเว้น banner image
+- A complete README.md using real data from `/deep-analyze`, with no placeholders except the banner image
 - Section order: Status > Hero (no ANSI) > Flow Diagram (ANSI) > Get Started > Features > Usage (with ANSI) > Contributing (if exists) > License (if exists)
-- Flow diagram แสดงการทำงานจริง (input → process → output) — ไม่ใช่ file structure
-- `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
-- `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)
-- `## Usage` ครอบคลุมทุก access methods พร้อม ANSI drawing
-  - CLI: แสดง `command --help` ANSI output
-  - Web/TUI: ห่มเนื้อหาด้วย `<details>` accordion
-- ไม่มี `## API References` แยก — references อยู่ใน Usage section
-- `## Contributing` มีเฉพาะถ้ามี `CONTRIBUTING.md`
-- `## License` มีเฉพาะถ้ามี `LICENSE.md`
-- ANSI box-drawing ทุกบรรทัดมีความยาวเท่ากัน (border ตรง)
-- ไม่มี ANSI ใต้ logo/badges และไม่มี ANSI ด้านล่างสุด
-- `LICENSE.md` ถูกต้องและครบถ้วน
-- License ใน package manifest ตรงกับ `LICENSE.md`
+- The flow diagram shows the real operation (input → process → output) — not a file structure
+- `## Get Started` uses a plain numbered list with no `###` subsections
+- `## Features` has 5 columns (Icon, Feature, Description, Benefit, Usage)
+- `## Usage` covers every access method with ANSI drawing
+  - CLI: shows the `command --help` ANSI output
+  - Web/TUI: content wrapped in a `<details>` accordion
+- No separate `## API References` — references live in the Usage section
+- `## Contributing` present only if `CONTRIBUTING.md` exists
+- `## License` present only if `LICENSE.md` exists
+- Every line of ANSI box-drawing has the same length (borders aligned)
+- No ANSI below the logo/badges and no ANSI at the very bottom
+- `LICENSE.md` is correct and complete
+- The license in the package manifest matches `LICENSE.md`
 

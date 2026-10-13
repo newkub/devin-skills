@@ -1,17 +1,17 @@
 ---
 name: confirm
-description: ขอ approval ก่อน fix
+description: Get approval before fixing
 ---
 
 # Confirm
 
 ## Goal
 
-ขอ approval ก่อน fix
+Get approval before fixing
 
 ## Checks
 
-1. ใช้ `ask_user_question` ถาม user ว่าตกลงแก้ไขหรือไม่
-2. ถ้า user ปฏิเสธ → stop และ report
-3. ถ้า user ตกลง → ทำต่อ
+1. Use `ask_user_question` to ask the user whether to approve the fixes
+2. If the user declines → stop and report
+3. If the user approves → continue
 

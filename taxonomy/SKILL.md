@@ -1,6 +1,6 @@
 ---
 name: taxonomy
-description: สร้าง taxonomy หรือจัดหมวดหมู่ items ตาม context ปัจจุบัน
+description: Build a taxonomy or categorize items for the current context
 argument-hint: "[items-or-domain]"
 related:
   - grouping
@@ -10,95 +10,95 @@ related:
 
 ## Goal
 
-สร้าง taxonomy ที่ชัดเจนและครอบคลุมสำหรับ items, concepts, หรือ domain ที่กำหนด
+Build a clear, comprehensive taxonomy for a given set of items, concepts, or domain
 
 ## Scope
 
-ใช้เมื่อต้องการจัดกลุ่ม, จัดลำดับ, หรือสร้างโครงสร้างหมวดหมู่จากรายการ items, concepts, หรือข้อมูลที่มีอยู่
+Use when you need to group, rank, or build a category structure from an existing list of items, concepts, or data
 
 ## Execute
 
 ### 1. Define Taxonomy Purpose
 
-> Goal: ระบุ purpose และ scope ของ taxonomy
+> Goal: Define the taxonomy's purpose and scope
 
-1. ระบุ domain หรือชุด items ทีต้องการจัดหมวดหมู่
-2. ระบุ audience และวัตถุประสงค์ของ taxonomy
-3. กำหนดระดับความลึก (flattened, 1-level, multi-level)
-4. เลือก criteria หลักสำหรับการแบ่งหมวดหมู่
+1. Identify the domain or item set to categorize
+2. Identify the audience and the taxonomy's objective
+3. Decide the depth level (flattened, 1-level, multi-level)
+4. Choose the primary criteria for categorization
 
 ### 2. Collect And Inspect Items
 
-> Goal: รวบรวมและตรวจสอบ items ที่จะจัด taxonomy
+> Goal: Gather and inspect the items to be taxonomized
 
-1. ลิสต์ items ที่มีอยู่ทั้งหมด
-2. ระบุ attributes สำคัญของแต่ละ item
-3. ตรวจหา items ทีอาจซ้ำซ้อนหรือขาดหาย
-4. บันทึก source ของข้อมูล
+1. List all existing items
+2. Identify the key attributes of each item
+3. Look for items that may be redundant or missing
+4. Record the data sources
 
 ### 3. Group Items
 
-> Goal: จัดกลุ่ม items ตาม criteria
+> Goal: Group items by the chosen criteria
 
-1. วิเคราะห์ attributes และ relationships
-2. สร้าง categories ตาม criteria ที่เลือก
-3. ตั้งชื่อ category ให้ชัดเจนและไม่ซ้อนทับ
-4. จัด items ให้อยู่ใน category ที่เหมาะสม (อนุญาต cross-category ถ้าจำเป็น)
+1. Analyze attributes and relationships
+2. Create categories per the selected criteria
+3. Name each category clearly and without overlap
+4. Place items into their fitting categories (allow cross-category placement when needed)
 
 ### 4. Build Hierarchy
 
-> Goal: สร้างโครงสร้างลำดับชั้น
+> Goal: Build the hierarchical structure
 
-1. ระบุ top-level categories
-2. แบ่ง sub-categories ถ้ามีความจำเป็น
-3. วาง items ใน leaf nodes
-4. ระบุ relationships ระหว่าง categories (parent-child, sibling, dependency)
+1. Identify top-level categories
+2. Split into sub-categories where necessary
+3. Place items in leaf nodes
+4. Define relationships between categories (parent-child, sibling, dependency)
 
 ### 5. Label And Document
 
-> Goal: ทำให้ taxonomy ใช้งานได้ง่าย
+> Goal: Make the taxonomy easy to use
 
-1. เขียน label และ description ให้แต่ละ category
-2. เลือกรูปแบบ output: tree, table, tags, หรือ markdown list
-3. ระบุ examples สำหรับ category ที่สำคัญ
-4. บันทึก conventions สำหรับการเพิ่ม item ใหม่
+1. Write a label and description for each category
+2. Choose the output format: tree, table, tags, or markdown list
+3. Provide examples for the key categories
+4. Record conventions for adding new items
 
 ### 6. Validate And Refine
 
-> Goal: ตรวจสอบความสมบูรณ์
+> Goal: Check completeness
 
-1. ตรวจว่าทุก item ถูกจัดอยู่ใน category
-2. ตรวจว่า categories ไม่ซ้อนทับกันมากเกินไป
-3. ตรวจความสอดคล้องกับ purpose
-4. ปรับ refine taxonomy จาก feedback หรือ gaps ทีพบ
+1. Verify every item is placed in a category
+2. Verify categories don't overlap too much
+3. Check consistency with the stated purpose
+4. Refine the taxonomy from feedback or gaps found
 
 ## Rules
 
 ### 1. Clarity And Non-Overlap
 
-- Taxonomy ต้องชัดเจน, ไม่ซ้ำซ้อน, ครอบคลุม
-- ใช้ criteria ทีวัดผลได้ในการแบ่งหมวดหมู่
-- หลีกเลี่ยง categories ทีกว้างเกินไปหรือ narrow เกินไป
+- The taxonomy must be clear, non-redundant, and comprehensive
+- Use measurable criteria for categorization
+- Avoid categories that are too broad or too narrow
 
 ### 2. Flexibility
 
-- รองรับ multi-parent หรือ cross-cutting ถ้าจำเป็น
-- เอกสาร label, description, และ examples ให้ครบ
-- ทำ version หรือ timestamp ถ้า taxonomy เปลี่ยนแปลงบ่อย
+- Support multi-parent or cross-cutting categories when needed
+- Document labels, descriptions, and examples fully
+- Version or timestamp the taxonomy if it changes often
 
 ### 3. Output Quality
 
-- Output ต้องอ่านง่ายและนำไปใช้ต่อได้
-- ระบุรูปแบบ output ตามความเหมาะสมของ audience
-- รายงาน gaps หรือ items ที่ยังจัดหมวดหมู่ไม่สมบูรณ์
+- Output must be readable and actionable
+- Match the output format to the audience
+- Report gaps or items not yet fully categorized
 
-- ใช้ /grouping ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /grouping if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- Taxonomy ทีสมบูรณ์และใช้งานได้
-- Items ทุกตัวถูกจัดอยู่ใน category ที่เหมาะสม
-- Categories มี labels และ descriptions ชัดเจน
-- Output อยู่ในรูปแบบที่เลือก (tree, table, tags, markdown)
-- มี guidance สำหรับเพิ่ม/แก้ไข item ในอนาคต
+- A complete, usable taxonomy
+- Every item placed in a fitting category
+- Categories with clear labels and descriptions
+- Output in the chosen format (tree, table, tags, markdown)
+- Guidance for adding/editing items in the future

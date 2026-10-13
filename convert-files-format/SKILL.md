@@ -1,6 +1,6 @@
 ---
 name: convert-files-format
-description: แปลงไฟล์ระหว่าง formats ต่างๆ ด้วย bunx CLI โดยรองรับ image และ document
+description: Convert files between formats with bunx CLIs, covering images and documents.
 argument-hint: "[input] [output-format]"
 related:
   - convert
@@ -12,75 +12,75 @@ related:
 
 ## Goal
 
-แปลงไฟล์จาก format หนึ่งไปอีก format ด้วย `bunx` CLI ตาม output format ที user ระบุ
+Convert a file from one format to another with the `bunx` CLI that matches the output format the user specifies.
 
 ## Scope
 
-- รองรับ image formats: `.webp`, `.svg` (vector)
-- ใช้ `bunx` CLI ตาม format
-- ส่งต่อไปยัง skill เฉพาะทางถ้า format มี skill ของตัวเอง
-- รองรับ single file และ directory
+- Supports image formats: `.webp`, `.svg` (vector)
+- Use the `bunx` CLI appropriate to the format
+- Hand off to a dedicated skill when the format has one of its own
+- Supports both a single file and a directory
 
 ## Execute
 
 ### 1. Identify Input
 
-> Goal: ตรวจสอบ input และ output format
+> Goal: Confirm the input and output format
 
-1. รับ input path จาก user
-2. ระบุ output format จาก argument หรือ extension ทีต้องการ
-3. ตรวจสอบ input file มีอยู่และเป็น format ทีรองรับ
-4. ถ้าไม่ระบุ output format → `/ask-me`
+1. Take the input path from the user
+2. Determine the output format from the argument or the desired extension
+3. Check that the input file exists and is in a supported format
+4. If no output format is given → `/ask-me`
 
 ### 2. Route By Format
 
-> Goal: เลือกวิธีแปลงตาม format
+> Goal: Pick the conversion method based on the format
 
-1. ถ้า output เป็น `.webp` → ใช้ [references/webp.md](references/webp.md)
-2. ถ้า output เป็น `.svg` → ทำ `/convert-svg`
-3. ถ้า output เป็น format อื่น → หา CLI หรือ library ทีรองรับ
-4. ถ้าไม่มี tool → `/ask-me` หรือเขียน Bun script
+1. If output is `.webp` → use [references/webp.md](references/webp.md)
+2. If output is `.svg` → run `/convert-svg`
+3. If output is another format → find a CLI or library that supports it
+4. If no tool exists → `/ask-me` or write a Bun script
 
 ### 3. Run Conversion
 
-> Goal: รัน command แปลง format
+> Goal: Run the format-conversion command
 
-1. รันคำสั่งตาม guide ของ format ทีเลือก
-2. ตรวจสอบ output path
-3. ถ้า input เป็น directory → ทำ batch/recursive
+1. Run the command per the guide for the chosen format
+2. Check the output path
+3. If the input is a directory → do a batch/recursive run
 
 ### 4. Validate
 
-> Goal: ยืนยัน output ถูกต้อง
+> Goal: Confirm the output is correct
 
-1. ตรวจสอบ output file มีขนาด > 0
-2. ตรวจ type ด้วย `file` command หรือเปิดดู
-3. รายงาน input/output paths, tool ทีใช้
+1. Check that the output file size is > 0
+2. Verify the type with the `file` command or by opening it
+3. Report the input/output paths and the tool used
 
 ## Rules
 
 ### 1. Format Selection
 
-- ถ้า output เป็น `.webp` ใช้ guide ใน `references/webp.md`
-- ถ้า output เป็น `.svg` ใช้ `/convert-svg`
-- ไม่ลบไฟล์ต้นฉบับโดย default
+- If output is `.webp`, use the guide in `references/webp.md`
+- If output is `.svg`, use `/convert-svg`
+- Never delete the source file by default
 
 ### 2. Fallback
 
-- ถ้า `bunx` CLI ไม่พร้อม → ใช้ `sharp` สำหรับ image หรือเขียน Bun script
-- ถ้า fail → ลอง tool ถัดไปใน chain ของ format
+- If the `bunx` CLI is unavailable → use `sharp` for images or write a Bun script
+- On failure → try the next tool in the format's chain
 
 ### 3. Quality
 
-- สำหรับ WebP: default quality = 85
-- สำหรับ SVG: ใช้กับ line art/logo ดีทีสุด
-- แจ้ง user ถ้า format ไม่เหมาะกับ input
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- For WebP: default quality = 85
+- For SVG: best suited to line art and logos
+- Tell the user if the format doesn't suit the input
+- Use /run-lint if needed
+- Use /run-format if needed
+- Use /run-drizzle-studio if needed
 
 ## Expected Outcome
 
-- Output file ถูกสร้างตาม format ทีระบุ
-- รายงาน tool, paths, options
-- ไม่มีไฟล์ต้นฉบับถูกลบ
+- The output file is created in the requested format
+- Report the tool, paths, and options
+- No source file is deleted

@@ -1,64 +1,64 @@
 ---
 title: Frontmatter Validation
-description: กฎตรวจสอบ frontmatter ของ subagent
+description: Validation rules for subagent frontmatter
 ---
 
 # Frontmatter Validation
 
 ## Required Fields
 
-ตรวจว่า frontmatter มี fields ครบทั้ง 4 ตัว:
+Check that the frontmatter contains all 4 fields:
 
-1. `name` — ชื่อ subagent ต้องตรงกับ directory name
-2. `description` — คำอธิบายสั้น ไม่เกิน 100 ตัวอักษร
-3. `model` — ระบุ model ที่ใช้
-4. `allowed-tools` — รายการ tools ที่อนุญาต
+1. `name` — the subagent name must match the directory name
+2. `description` — a short description, at most 100 characters
+3. `model` — specifies the model used
+4. `allowed-tools` — the list of permitted tools
 
 ## Validation Rules
 
 ### Name
 
-- ต้องตรงกับ directory name ของ subagent
-- ใช้ lowercase และ kebab-case
-- ห้ามมี space หรืออักขระพิเศษ
+- Must match the subagent's directory name
+- Use lowercase and kebab-case
+- No spaces or special characters
 
 ### Description
 
-- ความยาวไม่เกิน 100 ตัวอักษร
-- อธิบายหน้าที่ของ subagent ชัดเจน
-- ภาษาไทยหรืออังกฤษก็ได้
+- Length must not exceed 100 characters
+- Clearly describes the subagent's responsibility
+- Thai or English is acceptable
 
 ### Model
 
-- ต้องระบุ model ที่รองรับ
-- ห้ามเว้นว่าง
+- Must specify a supported model
+- Must not be left empty
 
 ### Allowed-Tools
 
-- ต้องระบุ tools ที่ subagent ใช้
-- ใช้ backticks สำหรับ tool names
-- ต้องเหมาะสมกับ scope ของ subagent
+- Must list the tools the subagent uses
+- Use backticks for tool names
+- Must fit the subagent's scope
 
 ### Permissions
 
-- ต้องมี `permissions` section
-- ต้องระบุ `deny` สำหรับ system paths ที่เสี่ยง
-- ดู `references/safety.md` สำหรับ risky paths เพิ่มเติม
+- Must have a `permissions` section
+- Must specify `deny` for risky system paths
+- See `references/safety.md` for additional risky paths
 
 ## Severity Mapping
 
 | Finding | Severity |
 |---|---|
-| ขาด `name`, `description`, `model`, `allowed-tools` | Critical |
-| `name` ไม่ตรง directory | Critical |
-| `description` เกิน 100 ตัวอักษร | Low |
-| ขาด `permissions` หรือ `deny` | High |
+| Missing `name`, `description`, `model`, `allowed-tools` | Critical |
+| `name` doesn't match the directory | Critical |
+| `description` exceeds 100 characters | Low |
+| Missing `permissions` or `deny` | High |
 
 ## Evidence Format
 
-บันทึก finding พร้อม:
+Record each finding with:
 
-- file path ของ `AGENT.md`
-- field ที่มีปัญหา
-- ค่าจริงที่พบ
-- action ที่แนะนำ
+- file path of `AGENT.md`
+- the problematic field
+- the actual value found
+- recommended action

@@ -1,6 +1,6 @@
 ---
 name: run-lint
-description: รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และห้ามแก้ไข config ไฟล์
+description: Run lint and fix code to pass, without ignore patterns and without editing config files
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -10,32 +10,32 @@ related:
 
 ## Goal
 
-รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และจัดการ unused variables ตามเหมาะสม โดยห้ามแก้ไข config ไฟล์
+Run lint and fix code so it passes, without using ignore patterns and handling unused variables appropriately, and never editing config files
 
 ## Scope
 
-รัน lint สำหรับทุก project types และจัดการ errors/warnings จาก linter
+Run lint for all project types and handle errors/warnings from the linter
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (lint)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (lint)
 
 ### 1. Run Lint
 
 > Goal: Run Lint
 
-1. ตรวจสอบ project type และ lint config ก่อนรัน
-2. รัน lint ตามที่กำหนดไว้ใน config:
-   - สำหรับ monorepo: รัน `bun run lint` หรือ `turbo lint`
-   - สำหรับโปรเจกต์ทั่วไป: รัน lint command ตาม config
-3. รอให้ lint เสร็จสิ้นก่อนดำเนินการต่อ
+1. Check the project type and lint config before running
+2. Run lint as defined in the config:
+   - For a monorepo: run `bun run lint` or `turbo lint`
+   - For a typical project: run the lint command per the config
+3. Wait for lint to finish before continuing
 
 ### 2. Analyze Errors
 
 > Goal: Analyze Errors
 
-1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก lint
-2. ตรวจสอบประเภทของ errors:
+1. Run `/deep-review` to analyze and prioritize the errors produced by lint
+2. Check the types of errors:
    - config-related errors
    - code-related errors
    - unused variables
@@ -46,62 +46,62 @@ related:
 
 > Goal: Fix Code Issues
 
-1. แก้ code-related errors ตามลำดับความสำคัญ
-2. สำหรับ unused variables:
-   - ตัดสินใจว่าควรลบ หรือ implement ให้ครบ
-   - ถ้าเป็น mock/placeholder ให้ implement ให้เสร็จ
-   - ถ้าไม่จำเป็นจริงๆ ให้ลบ
-3. สำหรับ type errors ให้แก้ types ให้ถูกต้อง
-4. สำหรับ style violations ให้แก้ตาม conventions
+1. Fix code-related errors in priority order
+2. For unused variables:
+   - Decide whether to delete them or implement them fully
+   - If they are a mock/placeholder, finish the implementation
+   - If truly unnecessary, delete them
+3. For type errors, fix the types to be correct
+4. For style violations, fix them per the conventions
 
 ### 4. Verify
 
 > Goal: Verify
 
-1. รัน lint อีกครั้งเพื่อยืนยัน
-2. ตรวจสอบว่าไม่มี errors/warnings เหลือ
-3. รัน tests ทั้งหมดเพื่อยืนยันว่า code ทำงานได้
+1. Run lint again to confirm
+2. Check that no errors/warnings remain
+3. Run all tests to confirm the code works
 
 ## Rules
 
 ### 1. No Config Changes
 
-ห้ามแก้ไข config ไฟล์ทุกประเภท
+Never edit any config file
 
-- ห้ามแก้ไข biome.jsonc, eslint.config.js, tsconfig.json หรือ config ไฟล์อื่นๆ
-- แก้ code ให้ผ่าน lint rules ที่มีอยู่
-- หาก config ไม่เหมาะสม ให้แจ้งผู้ใช้แทนการแก้เอง
+- Do not edit biome.jsonc, eslint.config.js, tsconfig.json, or any other config file
+- Fix the code to pass the existing lint rules
+- If the config is unsuitable, notify the user instead of editing it yourself
 
 ### 2. Unused Variables
 
-จัดการ unused variables ตามเหมาะสม
+Handle unused variables appropriately
 
-- ตรวจสอบว่าเป็น mock/placeholder หรือไม่
-- ถ้าเป็น mock/placeholder ให้ implement ให้เสร็จ
-- ถ้าไม่จำเป็นจริงๆ ให้ลบ
-- หลีกเลี่ยงการใช้ ignore comments
+- Check whether they are a mock/placeholder
+- If they are a mock/placeholder, finish the implementation
+- If truly unnecessary, delete them
+- Avoid using ignore comments
 
 ### 3. Error Resolution
 
-แก้ปัญหาที่ source แทนการ suppress
+Fix problems at the source rather than suppressing them
 
-- แก้ code ให้ผ่าน lint rules
-- หลีกเลี่ยงการใช้ ignore comments/attributes
-- ใช้ `/resolve-errors` เมื่อจำเป็น
+- Fix the code to pass the lint rules
+- Avoid using ignore comments/attributes
+- Use `/resolve-errors` when needed
 
 ### 4. Verification
 
-ตรวจสอบว่า code ทำงานได้ปกติ
+Check that the code still works normally
 
-- รัน lint อีกครั้งเพื่อยืนยัน
-- รัน tests ทั้งหมด
-- ตรวจสอบว่าไม่มี regressions
-- ทำ `/follow-tool-knip` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
-- ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
-- ใช้ /run-format ถ้าจำเป็น
+- Run lint again to confirm
+- Run all tests
+- Check that there are no regressions
+- Run `/follow-tool-knip` to check that every file is used
+- Never use unsafe / no-verify / bypass flags with linters, formatters, validators, and githooks (e.g. `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
+- Use /run-format if needed
 
 ## Expected Outcome
 
-- โค้ดที่ผ่าน lint โดยไม่มี errors/warnings
-- ทุกไฟล์ถูกใช้ ไม่มีไฟล์ที่ไม่ได้ใช้
-- รายงานผลลัพธ์การรัน lint
+- Code that passes lint with no errors/warnings
+- Every file is used, with no unused files
+- A report of the lint run

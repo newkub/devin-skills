@@ -1,6 +1,6 @@
 ---
 name: check-long-files
-description: ตรวจสอบและรายงานไฟล์ที่ยาวกว่า 250 บรรทัดด้วย Rust CLI
+description: Detect and report files longer than 250 lines with a Rust CLI
 argument-hint: "[threshold]"
 related:
   - refactor
@@ -11,71 +11,71 @@ related:
 
 ## Goal
 
-ตรวจสอบและรายงานไฟล์ source code ที่มีจำนวนบรรทัดเกิน threshold ที่กำหนด (default 250)
+Detect and report source-code files whose line count exceeds the given threshold (default 250)
 
 ## Scope
 
-ใช้สำหรับตรวจสอบไฟล์ `.ts`, `.tsx`, `.js`, `.jsx` ใน workspace โดยไม่แก้ไขไฟล์ต้นฉบับ
-Skill นี้ใช้ Rust CLI แทน Bun/TS CLI เพราะต้องการ performance สูงและ binary ไม่มี dependencies
+Use for scanning `.ts`, `.tsx`, `.js`, `.jsx` files in a workspace without modifying the originals.
+This skill uses a Rust CLI instead of a Bun/TS CLI because it needs high performance and a dependency-free binary
 
 ## Execute
 
 ### 1. Build CLI
 
-> Goal: build Rust CLI จาก source ใน skill directory
+> Goal: build the Rust CLI from the source in the skill directory
 
-1. ตรวจสอบว่ามี `Cargo.toml` และ `src/main.rs` ใน skill directory
-2. รันคำสั่ง `cargo build --release` ใน skill directory (build ครั้งแรกเท่านั้น)
-3. ตรวจสอบว่ามี binary ที่ `target/release/check-long-files` (หรือ `.exe` บน Windows)
+1. Check that `Cargo.toml` and `src/main.rs` exist in the skill directory
+2. Run `cargo build --release` in the skill directory (first build only)
+3. Check that the binary exists at `target/release/check-long-files` (or `.exe` on Windows)
 
 ### 2. Run CLI
 
-> Goal: รัน CLI ใน target workspace
+> Goal: run the CLI in the target workspace
 
-1. เปลี่ยน working directory ไปยัง root ของ target workspace
-2. รันคำสั่ง `<skill-dir>/target/release/check-long-files [threshold]`
-3. รับผลลัพธ์: รายการไฟล์ที่เกิน threshold เรียงจากมากไปน้อย
+1. Change the working directory to the target workspace root
+2. Run `<skill-dir>/target/release/check-long-files [threshold]`
+3. Get the result: the list of files exceeding the threshold, sorted most to least
 
 ### 3. Triage Results
 
-> Goal: แยกไฟล์ที่ต้อง refactor ออกจาก cohesive catalogs
+> Goal: separate files that need refactoring from cohesive catalogs
 
-1. ไฟล์ที่ flag ไม่ใช่ defect อัตโนมัติ — อ่าน implementation ก่อนตัดสิน
-2. Cohesive units ที่ยอมรับได้: single class fluent API (เช่น `FxImpl`), declarative catalog (เช่น schema combinators, op delegates), barrel/facade
-3. Targets ที่ควร refactor: mixed concerns (หลาย feature ในไฟล์เดียว), shared module state ที่แยกได้, กลุ่ม functions ที่ cohesive เป็นกลุ่มย่อยชัดเจน
-4. ส่งต่อไปยัง `/refactor` พร้อมรายการ targets ที่ triage แล้ว — ไฟล์ที่ยาวจาก verbosity/redundancy ล้วน (ไม่ใช่ mixed concerns) → `/simplify`
+1. A flagged file is not automatically a defect — read the implementation before judging
+2. Acceptable cohesive units: single-class fluent API (e.g. `FxImpl`), declarative catalogs (e.g. schema combinators, op delegates), barrel/facade
+3. Refactor targets: mixed concerns (several features in one file), separable shared module state, function groups that clearly cohere into subgroups
+4. Hand off to `/refactor` with the triaged target list — files long purely from verbosity/redundancy (not mixed concerns) → `/simplify`
 
 ## Rules
 
 ### 1. File Discovery
 
-- ใช้ `ignore` crate เพื่อ walk files และเคารพ `.gitignore` โดยอัตโนมัติ ทั้งใน git repo และ non-git repo
-- กรองเฉพาะไฟล์ที่มี extension `.ts`, `.tsx`, `.js`, `.jsx`
-- ไม่กำหนด skip directories แบบ hardcoded เอง
+- Use the `ignore` crate to walk files and respect `.gitignore` automatically, in both git and non-git repos
+- Filter to files with the `.ts`, `.tsx`, `.js`, `.jsx` extensions only
+- Do not hardcode skip directories
 
 ### 2. Line Counting
 
-- ใช้ `BufReader::lines()` สำหรับนับจำนวนบรรทัด
-- ข้ามไฟล์ที่หาไม่เจอหรืออ่านไม่ได้
-- ไม่ modify ไฟล์ต้นฉบับ
+- Use `BufReader::lines()` to count lines
+- Skip files that are missing or unreadable
+- Never modify the original files
 
 ### 3. Threshold And Output
 
-- รับ threshold จาก argument แรก ค่าเริ่มต้น 250
-- กรองเฉพาะไฟล์ที่มากกว่า threshold
-- เรียงลำดับตามจำนวนบรรทัดจากมากไปน้อย
-- แสดงชื่อไฟล์และจำนวนบรรทัด
-- แสดงจำนวนไฟล์ทั้งหมดที่เกิน threshold
+- Take the threshold from the first argument, default 250
+- Keep only files above the threshold
+- Sort by line count, most to least
+- Show each file name and line count
+- Show the total number of files exceeding the threshold
 
-- ใช้ /refactor ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-code-structure ถ้าจำเป็น
+- Use /refactor if needed
+- Use /deep-review if needed
+- Use /check-code-structure if needed
 
 ## Expected Outcome
 
-- CLI binary ถูก build สำเร็จ
-- รายงานไฟล์ที่ยาวกว่า threshold
-- แสดงชื่อไฟล์และจำนวนบรรทัด
-- เรียงลำดับจากมากไปน้อย
-- แสดงจำนวนไฟล์ทั้งหมดที่เกิน threshold
-- ไม่แก้ไขไฟล์ใด ๆ ใน target workspace
+- The CLI binary builds successfully
+- Reports files longer than the threshold
+- Shows file names and line counts
+- Sorted from most to least
+- Shows the total number of files exceeding the threshold
+- No files in the target workspace are modified

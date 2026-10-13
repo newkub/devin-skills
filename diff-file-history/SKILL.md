@@ -1,6 +1,6 @@
 ---
 name: diff-file-history
-description: เทียบไฟล์เดียวกันข้าม git history — evolution, regressions และ change patterns
+description: Compare one file across git history — evolution, regressions, and change patterns
 argument-hint: "<path> [range]"
 related:
   - git-file-history
@@ -10,69 +10,69 @@ related:
 
 ## Goal
 
-วิเคราะห์ evolution ของไฟล์ข้าม git history — เมื่อไหร่เปลี่ยน, เปลี่ยนอะไร, โดยใคร, เพิ่มหรือลด — เพื่อเข้าใจ context, หา regression point หรือ trace decision history
+Analyze a file's evolution across git history — when it changed, what changed, by whom, additions or removals — to understand context, locate regression points, or trace decision history
 
 ## Scope
 
-- ตรวจ file เดียวข้าม commits: change frequency, growth/shrink, major rewrites, regression points
-- ครอบคลุม: per-commit diffs, line counts over time, blame patterns, rename history
-- Read-only: วิเคราะห์จาก git — ไม่แก้ไฟล์หรือ history
-- Boundary: วิเคราะห์ evolution/patterns เท่านั้น — หา commit ที่ตรงเงื่อนไข → `/check-git-logs`; interactive viewer → `/git-file-history`
+- Inspect a single file across commits: change frequency, growth/shrink, major rewrites, regression points
+- Covers: per-commit diffs, line counts over time, blame patterns, rename history
+- Read-only: analysis from git — never modifies files or history
+- Boundary: evolution/pattern analysis only — find commits matching a condition → `/check-git-logs`; interactive viewer → `/git-file-history`
 
 ## Execute
 
 ### 1. Trace File History
 
-> Goal: map commit timeline ของไฟล์
+> Goal: map the file's commit timeline
 
-1. `git log --follow --oneline -- <path>` — รวม rename history ด้วย `--follow`
-2. ระบุ: created เมื่อไหร่, renamed จากไหน, last modified เมื่อไหร่
-3. flag: gaps ยาวใน history (ไฟล์ abandoned?) vs เปลี่ยนบ่อยมาก (hotspot?)
+1. `git log --follow --oneline -- <path>` — includes rename history via `--follow`
+2. Identify: when it was created, renamed from what, last modified when
+3. Flag: long gaps in history (abandoned file?) vs very frequent changes (hotspot?)
 
 ### 2. Measure Evolution
 
-> Goal: วัดว่าไฟล์เปลี่ยนยังไงข้ามเวลา
+> Goal: measure how the file changed over time
 
-1. Line count ต่อ commit: `git log -p` หรือ `git show <sha>:<path> | measure` — growth trend
-2. Commit authors ต่อไฟล์ — เจ้าของหลักคือใคร
-3. จัดประเภท commits: features, fixes, refactors — จาก messages + diff nature
+1. Line count per commit: `git log -p` or `git show <sha>:<path> | measure` — growth trend
+2. Commit authors per file — who are the primary owners
+3. Classify commits: features, fixes, refactors — from messages + diff nature
 
 ### 3. Find Key Changes
 
-> Goal: หา commits ที่เปลี่ยนแปลงสำคัญ
+> Goal: find the commits with significant changes
 
-1. Major rewrites: commits ที่ diff ใหญ่ผิดปกติ (>50% ของไฟล์)
-2. Regression candidates: ถ้า bug ปัจจุบัน → bisect-style หา commit ที่ introduce
-3. `git log -S"<pattern>"` — หาเมื่อไหร่ที่ string/symbol เข้าหรือออก (pickaxe)
-4. `/deep-review` หรือ `/git-file-history` สำหรับ diff ละเอียดต่อ commit ที่สนใจ
+1. Major rewrites: commits with unusually large diffs (>50% of the file)
+2. Regression candidates: if there is a current bug → bisect-style search for the introducing commit
+3. `git log -S"<pattern>"` — find when a string/symbol entered or left (pickaxe)
+4. `/deep-review` or `/git-file-history` for detailed diffs of commits of interest
 
 ### 4. Report Evolution
 
-> Goal: สรุป history เป็น insight
+> Goal: summarize the history as insight
 
-1. ใช้ `/report`: `No.`, `Commit`, `Date`, `Author`, `Lines Δ`, `Type`, `Significance`
+1. Use `/report`: `No.`, `Commit`, `Date`, `Author`, `Lines Δ`, `Type`, `Significance`
 2. Timeline summary: created → major changes → current state
-3. Insights: hotspot (เปลี่ยนบ่อย = ควร split/refactor?), stable (ไม่แตะนาน), regression point (ถ้าหาเจอ)
+3. Insights: hotspot (frequent changes = should split/refactor?), stable (untouched for a long time), regression point (if found)
 
 ## Rules
 
 ### 1. Follow Renames
 
-- ใช้ `--follow` เสมอ — rename แล้ว history ไม่ขาด
-- รวม pre-rename history ใน analysis
+- Always use `--follow` — history stays continuous across renames
+- Include pre-rename history in the analysis
 
 ### 2. Evidence-Based
 
-- ทุก claim อ้าง commit SHAs จริง — ไม่สรุปจาก messages อย่างเดียว
-- line counts และ diff sizes ต้องวัดจริง
+- Every claim cites real commit SHAs — never conclude from messages alone
+- Line counts and diff sizes must be actually measured
 
 ### 3. Purpose Driven
 
-- ตอบคำถามที่ user ต้องการ — regression hunt, context, ownership — ไม่ dump history ดิบ
-- ระบุข้อจำกัด: shallow clones, history rewrites ทำให้ history ไม่ครบ
+- Answer the question the user needs — regression hunt, context, ownership — do not dump raw history
+- State limitations: shallow clones and history rewrites make history incomplete
 
 ## Expected Outcome
 
-- Timeline ของไฟล์พร้อม key commits
+- The file's timeline with key commits
 - Change patterns: hotspot vs stable, growth trend, ownership
-- Regression point ถ้าหาเจอ พร้อม commit SHA ที่แน่ชัด
+- Regression point if found, with a precise commit SHA

@@ -1,6 +1,6 @@
 ---
 name: cleanup-files-in-computer
-description: ลบไฟล์/แคชทีไม่จำเป็นบนเครื่องด้วย mise cleanup task ใน global mise.toml
+description: Delete unnecessary files and caches on the machine via a mise cleanup task in the global mise.toml
 argument-hint: "[target]"
 related:
   - report-idea-cleanup-files-in-computer
@@ -14,44 +14,44 @@ related:
 
 ## Goal
 
-ทำความสะอาดไฟล์และ cache บนเครื่องด้วย `mise run cleanup` ทีกำหนดใน global `mise.toml`
+Clean up files and caches on the machine with `mise run cleanup` as defined in the global `mise.toml`
 
 ## Scope
 
-- ตรวจสอบและสร้าง `[tasks.cleanup]` ใน global `mise.toml` (`~/.config/mise/config.toml` หรือ `~/.config/mise.toml`)
-- ลบเฉพาะ cache, temp files, logs, old artifacts ที่ปลอดภัย
-- ไม่ลบ source code, config, secrets, หรือไฟล์ส่วนบุคคล
+- Inspect and create `[tasks.cleanup]` in the global `mise.toml` (`~/.config/mise/config.toml` or `~/.config/mise.toml`)
+- Delete only safe caches, temp files, logs, and old artifacts
+- Never delete source code, configs, secrets, or personal files
 
 ## Execute
 
 ### 1. Verify Environment
 
-> Goal: ตรวจสอบ mise และ global config
+> Goal: Check mise and the global config
 
-1. รัน `mise --version`
-2. รัน `mise config` เพื่อหา global config path
-3. ถ้ายังไม่มี global config → สร้าง `~/.config/mise/config.toml`
-4. รัน `mise doctor` เพื่อตรวจสุขภาพ
+1. Run `mise --version`
+2. Run `mise config` to find the global config path
+3. If there is no global config yet → create `~/.config/mise/config.toml`
+4. Run `mise doctor` to check health
 
 ### 2. Evaluate Cleanup Tools
 
-> Goal: เลือก cleanup tools ทีเหมาะสม
+> Goal: Pick the right cleanup tools
 
-1. ตรวจสอบ package managers/CLI ที่ติดตั้ง: `bun`, `pnpm`, `npm`, `pip`, `cargo`, `scoop`, `mise`, `uv`, `pnpm`
-2. ใช้ `/alternative` เพื่อประเมิน cleanup tools เช่น:
+1. Check installed package managers/CLIs: `bun`, `pnpm`, `npm`, `pip`, `cargo`, `scoop`, `mise`, `uv`, `pnpm`
+2. Use `/alternative` to evaluate cleanup tools such as:
    - `mise cache prune` vs `mise prune`
    - `bun pm cache clean` vs `npm cache clean`
    - `scoop cleanup *` vs `scoop cache rm *`
    - `cargo-sweep` vs `cargo clean`
    - `pip cache purge` vs `uv cache clean`
-3. เลือก tools ทีปลอดภัยและมีอยู่จริงบนเครื่อง
+3. Pick the safe tools that actually exist on the machine
 
 ### 3. Define cleanup Task
 
-> Goal: สร้าง `[tasks.cleanup]` ใน global `mise.toml`
+> Goal: Create `[tasks.cleanup]` in the global `mise.toml`
 
-1. เปิด global `mise.toml`
-2. เพิ่มหรืออัปเดต `[tasks.cleanup]`:
+1. Open the global `mise.toml`
+2. Add or update `[tasks.cleanup]`:
    ```toml
    [tasks.cleanup]
    description = "clean temp files and caches"
@@ -82,77 +82,77 @@ related:
    }
    '''
    ```
-3. ปรับ commands ตาม OS: Windows ใช้ PowerShell, macOS/Linux ใช้ bash/zsh
-4. บันทึก global config
+3. Adjust commands per OS: Windows uses PowerShell, macOS/Linux uses bash/zsh
+4. Save the global config
 
 ### 4. Dry Run
 
-> Goal: แสดงสิ่งทีจะลบก่อนจริง
+> Goal: Show what would be deleted before doing it for real
 
-1. รัน `mise run cleanup -- --dry-run`
-2. หรือ `mise run cleanup --dry-run`
-3. รวบรวม output: cache paths, sizes, commands
-4. ทำ `/report` หรือ `/report-idea-cleanup-files-in-computer` เพื่อสรุป
+1. Run `mise run cleanup -- --dry-run`
+2. Or `mise run cleanup --dry-run`
+3. Collect output: cache paths, sizes, commands
+4. Produce a summary with `/report` or `/report-idea-cleanup-files-in-computer`
 
 ### 5. Confirm
 
-> Goal: ได้รับ explicit confirmation
+> Goal: Get explicit confirmation
 
-1. ถาม user ว่าต้องการลบจริงหรือไม่
-2. ถ้า user ตกลง → ไปขั้นตอน 6
-3. ถ้า user ไม่ตกลง → stop และรายงาน
+1. Ask the user whether they really want to delete
+2. If the user agrees → go to step 6
+3. If the user declines → stop and report
 
 ### 6. Run Cleanup
 
-> Goal: รัน cleanup จริง
+> Goal: Run the real cleanup
 
-1. รัน `mise run cleanup`
-2. ตรวจสอบ exit code
-3. ถ้ามี command ล้มเหลว → บันทึกและ report
+1. Run `mise run cleanup`
+2. Check the exit codes
+3. If any command fails → record it and report
 
 ### 7. Validate
 
-> Goal: ยืนยันว่า cleanup เสร็จ
+> Goal: Confirm the cleanup finished
 
-1. รัน `mise list` เพื่อตรวจสอบ tools
-2. ตรวจสอบ disk space ก่อน/หลังด้วย `dua`, `duf` หรือ `Get-PSDrive`
-3. รายงานสิ่งทีลบ, ขนาดทีประหยัดได้, และ errors
+1. Run `mise list` to verify the tools
+2. Check disk space before/after with `dua`, `duf`, or `Get-PSDrive`
+3. Report what was deleted, space saved, and errors
 
 ## Rules
 
 ### 1. Dry Run First
 
-- ต้อง dry run เสมอ
-- ไม่รัน destructive โดยไม่ได้ user confirm
-- แสดง commands ทีจะรัน
+- Always dry run first
+- Never run destructive actions without user confirmation
+- Show the commands that will run
 
 ### 2. Safe Targets
 
-- ลบเฉพาะ cache, temp, logs, old artifacts
-- ไม่ลบ source code, `.env`, secrets, credentials
-- ไม่ลบ system directories เช่น `C:\Windows`, `C:\Program Files`
+- Delete only caches, temp files, logs, and old artifacts
+- Never delete source code, `.env`, secrets, or credentials
+- Never delete system directories such as `C:\Windows`, `C:\Program Files`
 
 ### 3. Tool-Specific Cleanup
 
-- ใช้คำสั่ง cleanup ของ tool เอง เช่น `bun pm cache clean` แทน `rm -rf`
-- ห้ามลบไฟล์ `.mise` หรือ `~/.local/share/mise` โดยตรง
-- ใช้ `mise cache prune` และ `mise prune` สำหรับ mise
+- Use each tool's own cleanup command, e.g. `bun pm cache clean` instead of `rm -rf`
+- Never delete `.mise` files or `~/.local/share/mise` directly
+- Use `mise cache prune` and `mise prune` for mise
 
 ### 4. Global Config
 
-- แก้ไขเฉพาะ global `mise.toml`
-- ไม่แก้ไข project `mise.toml` โดยไม่ได้รับอนุญาต
-- commit หรือ backup global config ก่อนแก้ถ้าจำเป็น
+- Edit only the global `mise.toml`
+- Do not edit a project `mise.toml` without permission
+- Commit or back up the global config before editing if needed
 
-- ใช้ /follow-tool-mise ถ้าจำเป็น
-- ใช้ /delete ถ้าจำเป็น
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Use /follow-tool-mise if needed
+- Use /delete if needed
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- `[tasks.cleanup]` อยู่ใน global `mise.toml`
-- `mise run cleanup --dry-run` แสดงรายการทีจะลบ
-- หลัง user confirm ลบ cache/temp/artifacts ทีเลือก
-- รายงาน disk space ประหยัดได้และ errors
+- `[tasks.cleanup]` exists in the global `mise.toml`
+- `mise run cleanup --dry-run` lists what would be deleted
+- After user confirmation, the selected cache/temp/artifacts are deleted
+- Report of disk space saved and errors
 

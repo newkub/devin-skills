@@ -1,25 +1,25 @@
 # Features Table
 
-> Goal: เขียนตาราง `## Features` ให้ครบ 5 คอลัมน์ ครอบคลุม business value และ usage
+> Goal: Write the `## Features` table with all 5 columns, covering business value and usage
 
 ## Columns
 
 | Icon | Feature | Description | Benefit | Usage |
 |:---:|:--------|:------------|:--------|:------|
 
-- `Icon` — จัดกึ่งกลางด้วย `:---:` ใช้ iconify CDN พร้อม `?color=%23<hex>&width=16`
-- `Feature` — ชื่อ feature สั้นๆ
-- `Description` — อธิบายว่าทำอะไร
-- `Benefit` — คุณค่าทางธุรกิจ เช่น Saves time, Reduces errors
-- `Usage` — ตัวอย่างการใช้งานสั้นๆ เช่น `generate()` หรือ `bunx my-app generate`
+- `Icon` — centered with `:---:`, using the iconify CDN with `?color=%23<hex>&width=16`
+- `Feature` — a short feature name
+- `Description` — explain what it does
+- `Benefit` — business value, e.g. Saves time, Reduces errors
+- `Usage` — a short usage example, e.g. `generate()` or `bunx my-app generate`
 
 ## Rules
 
-- Coverage: ครอบคลุมทุก features จาก source code ไม่มีการข้าม
-- Concise Rows: แต่ละ row กระชับ ไม่เขียน Description ยาว
-- Business-Focused: เขียน business value ไม่ใช่แค่ technical details
-- ห้ามใช้ emoji ในตาราง — ใช้ icon set: `mdi`, `lucide`, `material-symbols`, `tabler`, `ph`, `iconoir`
-- แต่ละ icon ต้องมี color parameter ทีแตกต่างกัน
+- Coverage: cover every feature from the source code, with no omissions
+- Concise Rows: keep each row concise, no long Descriptions
+- Business-Focused: write business value, not just technical details
+- Never use emoji in the table — use icon sets: `mdi`, `lucide`, `material-symbols`, `tabler`, `ph`, `iconoir`
+- Each icon must use a distinct color parameter
 
 ## Example Row
 

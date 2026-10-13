@@ -1,28 +1,28 @@
 # Global CLI Inventory
 
-Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 — เครื่อง Windows (PowerShell)
+Verified via `mise list` + `scoop list` — updated 2026-09-13 — Windows machine (PowerShell)
 
-> ใช้ไฟล์นี้เช็คว่า tool ติดตั้งแล้วก่อนเขียน how-to/script เอง — ถ้า tool มีอยู่ให้เรียก command จริง ไม่เขียน logic ซ้ำ
+> Use this file to check whether a tool is already installed before writing your own how-to/script — if the tool exists, call its real command instead of reimplementing the logic
 
 ## Search & Files
 
-| Tool | Command หลัก | ใช้แทน/ทำอะไร |
+| Tool | Primary Command | Use Instead/What It Does |
 |------|-------------|----------------|
 | `rg` (ripgrep 15.2) | `rg "pat" -g "*.ts" -C3` | grep — search content |
-| `ast-grep` (0.45) | `ast-grep -p '$F($$$A)' -l ts` | structural search/refactor แทน regex |
-| `fd` (10.5) | `fd -e md`, `fd --type f --exec` | find ไฟล์ |
+| `ast-grep` (0.45) | `ast-grep -p '$F($$$A)' -l ts` | structural search/refactor instead of regex |
+| `fd` (10.5) | `fd -e md`, `fd --type f --exec` | find files |
 | `fzf` (0.74) | `fd \| fzf --preview 'bat {}'` | fuzzy finder |
-| `sad` (0.4) | `sad 'old' 'new' file` | search & replace (preview ก่อนเขียน) |
-| `sd` | — (ไม่ได้ติดตั้ง — ใช้ `sad`) | — |
+| `sad` (0.4) | `sad 'old' 'new' file` | search & replace (preview before writing) |
+| `sd` | — (not installed — use `sad`) | — |
 | `eza` (0.23) | `eza -la --icons --git` | ls |
-| `bat` (0.26) | `bat file.md --style=numbers` | cat พร้อม highlight |
+| `bat` (0.26) | `bat file.md --style=numbers` | cat with highlighting |
 | `broot` (1.60) | `broot` | tree navigation |
 | `yazi` (26.9) | `yazi` | TUI file manager |
 | `superfile` (1.6) | `spf` | TUI file manager |
 | `dua` (2.44) / `duf` (0.9) | `dua i`, `duf` | disk usage |
-| `dust`-like | ใช้ `dua` | — |
-| `tokei`-like `scc` (4.0) | `scc`, `scc src/` | count LOC (เร็วกว่า tokei) |
-| `zoxide` (0.10) | `z <name>`, `zi` | cd อัจฉริยะ |
+| `dust`-like | use `dua` | — |
+| `tokei`-like `scc` (4.0) | `scc`, `scc src/` | count LOC (faster than tokei) |
+| `zoxide` (0.10) | `z <name>`, `zi` | smart cd |
 | `chezmoi` (2.72) | `chezmoi add/apply` | dotfiles |
 | `dotter` (0.13) | `dotter deploy` | dotfiles templating |
 | `gitleaks` (8.30) | `gitleaks git -v` | secret scanning |
@@ -31,7 +31,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## Data & Transform
 
-| Tool | Command หลัก | ใช้แทน/ทำอะไร |
+| Tool | Primary Command | Use Instead/What It Does |
 |------|-------------|----------------|
 | `jq` (1.8) | `jq '.a.b'` | JSON query/transform |
 | `yq` (4.53) | `yq '.a.b' file.yaml` | YAML/TOML/XML query |
@@ -45,9 +45,9 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## HTTP & API
 
-| Tool | Command หลัก | ใช้แทน/ทำอะไร |
+| Tool | Primary Command | Use Instead/What It Does |
 |------|-------------|----------------|
-| `xh` (0.26) | `xh GET url` | HTTP client (curl/httpie แบบเร็ว) |
+| `xh` (0.26) | `xh GET url` | HTTP client (fast curl/httpie) |
 | `wget` | `wget <url>` | download |
 | `slumber` (5.3) | `slumber` | TUI API client (collections) |
 | `bruno` (4.1) | `bru run <dir>` | API collections |
@@ -57,7 +57,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## Dev & Build
 
-| Tool | Command หลัก | ใช้แทน/ทำอะไร |
+| Tool | Primary Command | Use Instead/What It Does |
 |------|-------------|----------------|
 | `mise` (2026.8) | `mise use -g <t>`, `mise run <task>` | tool version manager + tasks |
 | `task` (3.53) | `task --list` | task runner |
@@ -71,7 +71,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `cargo-sweep`/`cargo-clean-all`/`clean-dev-dirs`/`node_module-nuke`/`npkill`/`gleanup` | — | cleanup dev artifacts |
 | `uv` (0.12) | `uvx <pkg>`, `uv venv` | Python pkg/runner |
 | `pnpm`/`ni`/`bun` | `bun add`, `ni` | package managers |
-| `nixpacks` | `nixpacks build .` | OCI image จาก source |
+| `nixpacks` | `nixpacks build .` | OCI image from source |
 | `act` (0.2) | `act -l` | run GitHub Actions local |
 | `hk` (1.58) / `lefthook` (2.1) | `hk run pre-commit` | git hooks |
 | `changelogen` (0.6) | `changelogen --release` | changelog gen |
@@ -90,13 +90,13 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 | `@mermaid-js/mermaid-cli` | `mmdc -i in.mmd -o out.svg` | diagrams |
 | `@shikijs/cli` | `shiki` | code highlighting |
 | `foam-cli` | `foam` | knowledge base |
-| `typescript` 7 (native tsc; `tsgo` folded back ตั้งแต่ 7.0 RC) | `tsc --noEmit` | fast typecheck |
+| `typescript` 7 (native tsc; `tsgo` folded back since 7.0 RC) | `tsc --noEmit` | fast typecheck |
 | `vue-tsc`, `oxlint`, `oxfmt`, `biome`, `selene` | — | lint/format |
 | `vsce`, `@native-sdk/cli`, `@tanstack/intent`, `dprint` | — | packaging/format |
 
 ## Git & GitHub
 
-| Tool | Command หลัก |
+| Tool | Primary Command |
 |------|-------------|
 | `git` (2.55) / `git-lfs` | — |
 | `gh` (2.100) | `gh pr create`, `gh repo clone`, `gh run watch` |
@@ -110,7 +110,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## System & Monitor
 
-| Tool | Command หลัก |
+| Tool | Primary Command |
 |------|-------------|
 | `bottom` (0.14) | `btm` — system monitor |
 | `procs` (0.14) | `procs node` — ps |
@@ -130,7 +130,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## Infra & K8s
 
-| Tool | Command หลัก |
+| Tool | Primary Command |
 |------|-------------|
 | `kubectl` / `k9s` / `helm` | k8s |
 | `podman` / `podman-tui` / `docker-compose` | containers |
@@ -139,7 +139,7 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## AI & Agents
 
-| Tool | Command หลัก |
+| Tool | Primary Command |
 |------|-------------|
 | `amp`, `@openai/codex`, `opencode`, `stakpak/agent` | coding agents |
 | `skills` (npm) | `npx skills add` — skill installer |
@@ -154,14 +154,14 @@ Verified จาก `mise list` + `scoop list` — อัปเดต 2026-09-13 
 
 ## Runtimes (mise)
 
-`node` 22/26, `bun` 1.4, `python` 3.14, `rust` 1.98, `zig` 0.16, `go` (ผ่าน scoop/other ถ้ามี), `pwsh` 7.6, `nu` 0.115
+`node` 22/26, `bun` 1.4, `python` 3.14, `rust` 1.98, `zig` 0.16, `go` (via scoop/other if available), `pwsh` 7.6, `nu` 0.115
 
-## วิธีเพิ่ม/อัปเดต inventory
+## How To Add/Update The Inventory
 
 ```bash
-mise list           # tools ทั้งหมดผ่าน mise
+mise list           # all tools via mise
 scoop list          # scoop apps
-winget list         # system packages (ช้า — ใช้เมื่อจำเป็น)
+winget list         # system packages (slow — use when needed)
 ```
 
-เมื่อพบ tool ใหม่ที่ติดตั้ง → เพิ่มแถวในตารางนี้ + เพิ่ม mapping ใน `check-my-global-cli/references/tool-map.md` ถ้ามี skill ที่เกี่ยว
+When a newly installed tool is found → add a row to this table + add a mapping in `check-my-global-cli/references/tool-map.md` if a related skill exists

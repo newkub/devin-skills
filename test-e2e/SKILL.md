@@ -1,6 +1,6 @@
 ---
 name: test-e2e
-description: รัน end-to-end tests ผ่าน browser — user flows จริงจาก entry ถึง outcome (Playwright/Cypress/agent-browser)
+description: Run E2E tests via browser — real user flows from entry to outcome (Playwright/Cypress/agent-browser)
 argument-hint: "[scope]"
 related:
   - run-test
@@ -20,40 +20,40 @@ related:
 
 ## Goal
 
-รัน end-to-end tests ผ่าน browser — user flows จริงจาก entry ถึง outcome — signals: `playwright.config`, `cypress.config`, `e2e/` dirs, web frontend; ไม่มี suite แต่ต้อง smoke/interact → `agent-browser` headless ตาม `/use-agent-browser`; smoke/debug ผ่าน MCP ที่ register อยู่ → `chrome-devtools-mcp` ตาม `/use-chrome-devtools`; flow ภาษาธรรมชาติ (vision/NL assertions ไม่ผูก selector ตายตัว) → Midscene agent บน Playwright ตาม `/use-midscenejs`
+Run end-to-end tests through a browser — real user flows from entry to outcome — signals: `playwright.config`, `cypress.config`, `e2e/` dirs, web frontend; no suite but need smoke/interact → `agent-browser` headless per `/use-agent-browser`; smoke/debug via already-registered MCP → `chrome-devtools-mcp` per `/use-chrome-devtools`; natural-language flows (vision/NL assertions not tied to fixed selectors) → Midscene agent on Playwright per `/use-midscenejs`
 
 ## Scope
 
-ใช้เมื่อต้องรัน e2e tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test e2e`)
+Use when running e2e tests — run-only, does not modify tests (deep analysis → `/deep-test e2e`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix or report it before running (test)
 
 ### 1. Detect
 
-`playwright.config.*`, `cypress.config.*`, `e2e/`/`tests/e2e/`; Playwright → `bunx playwright test`; Cypress → `bunx cypress run`; ตรวจ prerequisites — dev server/start command, baseURL, seed data
+`playwright.config.*`, `cypress.config.*`, `e2e/`/`tests/e2e/`; Playwright → `bunx playwright test`; Cypress → `bunx cypress run`; check prerequisites — dev server/start command, baseURL, seed data
 
 ### 2. Run
 
-start app ตาม suite ต้องการ (webServer config หรือ manual) แล้วรัน; `--reporter=line` + `--retries=0` ผลซื่อสัตย์ ห้าม retry mask flakiness; บันทึก per-spec status, screenshots/traces, duration
+Start the app as the suite requires (webServer config or manual), then run; `--reporter=line` + `--retries=0` for honest results — never let retries mask flakiness; record per-spec status, screenshots/traces, duration
 
 ### 3. Classify
 
-element missing/flow broken → source → `/resolve-errors`; selector outdated/timing → test → `/update-tests`; flaky → report + `/deep-review` ห้ามเพิ่ม retry; server ไม่ขึ้น/port ชน → environment; ซ้ำ ≥3 → stop+report
+Element missing/flow broken → source → `/resolve-errors`; outdated selector/timing → test → `/update-tests`; flaky → report + `/deep-review`, never add retries; server won't start/port conflict → environment; repeats ≥3 times → stop+report
 
 ### 4. Report
 
-persist → `.devin/temp/report/<workspace>/e2e-test-<time>.md` พร้อม trace paths; ผ่านหมด → `/run-verify`
+persist → `.devin/temp/report/<workspace>/e2e-test-<time>.md` with trace paths; all pass → `/run-verify`
 
 ## Rules
 
-- run-only (analysis ลึก → `/deep-test e2e`)
-- ห้าม `.skip`/`xit`/เพิ่ม retries
-- ห้ามพึ่ง external services จริง — staging/local only ห้ามยิง production
+- run-only (deep analysis → `/deep-test e2e`)
+- Never use `.skip`/`xit`/added retries
+- Never depend on real external services — staging/local only, never hit production
 
 ## Expected Outcome
 
-- E2E tests รันครบทุก spec พร้อม screenshots/traces
-- Failures ถูก classify เป็น source/test/environment (flaky แยก)
-- Report persist ใน `.devin/temp/report/` พร้อม trace paths
+- E2E tests fully run for every spec with screenshots/traces
+- Failures classified as source/test/environment (flaky reported separately)
+- Report persisted in `.devin/temp/report/` with trace paths

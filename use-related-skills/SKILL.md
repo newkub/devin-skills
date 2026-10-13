@@ -1,6 +1,6 @@
 ---
 name: use-related-skills
-description: หา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่
+description: Find related skills and propose new skill ideas
 argument-hint: "[skill-name]"
 related:
   - idea-use-skills-relations
@@ -15,100 +15,100 @@ related:
 
 ## Goal
 
-แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก skill ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+Recommend related devin global skills to use after the current skill, and propose new skills worth creating
 
 ## Scope
 
-ใช้หลังจากเขียนหรือแก้ไข `SKILL.md` เสร็จ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
+Use after writing or editing a `SKILL.md`, to analyze and recommend other skills that should be used together
 
 ## Execute
 
 ### 1. Analyze Current Skill
 
-> Goal: เข้าใจ skill ปัจจุบัน
+> Goal: Understand the current skill
 
-1. อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ skill ปัจจุบัน
-2. ระบุ `related` skills ที่มีอยู่แล้ว
-3. วิเคราะห์ `Execute` steps และ `Rules` เพื่อเข้าใจการใช้งาน
-4. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
+1. Read the current skill's frontmatter, `name`, `description`, `Goal`, `Scope`
+2. Identify the existing `related` skills
+3. Analyze the `Execute` steps and `Rules` to understand how it is used
+4. Determine the skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 
 ### 2. List Available Skills
 
-> Goal: รู้ skills ทั้งหมดที่มี
+> Goal: Know all available skills
 
-1. ทำ `/list-devin-global-skills` หรือ `/scan-codebase`
-2. ดู `name` และ `description` ของแต่ละ skill
-3. จัดกลุ่มตาม category
-4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว
+1. Run `/list-devin-global-skills` or `/scan-codebase`
+2. Review each skill's `name` and `description`
+3. Group them by category
+4. Ensure no skill already listed in `related` gets recommended
 
 ### 3. Match Related Skills
 
-> Goal: จับคู่ skills ที่เกี่ยวข้อง
+> Goal: Match related skills
 
-1. วิเคราะห์ความเกี่ยวข้องจาก `Goal`, `Scope`, และ `Execute`
-2. จัดลำดับความเกี่ยวข้อง: `direct dependency`, `complementary`, `follow-up`, `alternative`
-3. ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
-4. กรอง skills ที่ไม่เกี่ยวข้องออก
+1. Analyze relevance from `Goal`, `Scope`, and `Execute`
+2. Rank the relevance: `direct dependency`, `complementary`, `follow-up`, `alternative`
+3. Verify that the recommended skills actually exist
+4. Filter out unrelated skills
 
 ### 4. Suggest Skills And New Ideas
 
-> Goal: เสนอ skills ใหม่และ existing skills
+> Goal: Suggest new skills and existing skills
 
-1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลและประเภทความเกี่ยวข้อง
-2. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
-3. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-4. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea-convert-my-global-cli-to-skills`
-5. วิเคราะห์ reverse usage — skill นี้ควรถูกเรียกโดย skills ไหน — ตาม capability ที่ merge มา
-6. ใช้ `/report` สำหรับนำเสนอผล
+1. Recommend existing skills as a list with reasons and relation types
+2. State usage conditions such as "use when..." or "use after..."
+3. Analyze gaps and propose new skill ideas worth creating
+4. If the current skill relates to a CLI or tools → recommend `/idea-convert-my-global-cli-to-skills`
+5. Analyze reverse usage — which skills should invoke this one — per the merged capabilities
+6. Use `/report` to present the results
 
 ### 5. Update Related Skills
 
-> Goal: อัปเดต `related` ใน skill ปัจจุบัน
+> Goal: Update `related` in the current skill
 
-1. เพิ่ม skills ที่แนะนำเข้าไปใน `related`
-2. ตรวจสอบว่าไม่ซ้ำซ้อน
-3. ทำ `/update-references` เพื่อ sync
-4. ทำ `/check-reference` เพื่อยื่นยัน
+1. Add the recommended skills to `related`
+2. Check that nothing is duplicated
+3. Run `/update-references` to sync
+4. Run `/check-reference` to verify
 
 ## Rules
 
 ### 1. Relevance Analysis
 
-- วิเคราะห์จาก `Goal`, `Scope`, และ `Execute` ไม่ใช่แค่ `name` หรือ `description`
-- พิจารณาทั้ง input และ output ของ skill
-- ตรวจสอบว่า skills สามารถใช้ร่วมกันได้จริง
-- ไม่แนะนำ skill ที่ทำหน้าที่ซ้ำซ้อน
+- Analyze from `Goal`, `Scope`, and `Execute`, not just `name` or `description`
+- Consider both the skill's input and output
+- Verify that the skills can genuinely be used together
+- Do not recommend a skill that duplicates an existing role
 
 ### 2. Suggestion Format
 
-- ระบุชื่อ skill ด้วย backticks เช่น `skill-name`
-- ระบุเหตุผลสั้นกระชับ
-- ระบุประเภทความเกี่ยวข้องในวงเล็บ
-- สำหรับไอเดียใหม่ ระบุชื่อ proposed skill และ rationale
-- จัดลำดับจากมากไปน้อย
+- Give skill names in backticks such as `skill-name`
+- Give a brief, to-the-point reason
+- State the relation type in parentheses
+- For new ideas, give the proposed skill name and rationale
+- Rank from most to least relevant
 
 ### 3. Validation
 
-- ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
-- ตรวจสอบว่าไม่แนะนำ skill ตัวเอง
-- ตรวจสอบว่าไม่ซ้ำซ้อนกับ `related` ที่มีอยู่
-- ทำ `/check-reference` เพื่อยื่นยัน
+- Verify that the recommended skills actually exist
+- Verify that the skill itself is not recommended
+- Verify there is no duplication with the existing `related`
+- Run `/check-reference` to verify
 
 ### 4. Cross-Reference Update
 
-- อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
-- ใช้ `/update-references` สำหรับการอัปเดต
-- ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
+- Update `related` in both files (current and suggested)
+- Use `/update-references` for the updates
+- Verify that no reference is added to an unrelated file
 
-- ใช้ /deep-review ถ้าจำเป็น
-- เมื่อต้องเขียน invocation ของ skills อื่นใน `SKILL.md` → ดู `update-devin-global-skills` (`## Conventions → Invoke Skills`)
+- Use /deep-review if needed
+- When writing invocations of other skills in `SKILL.md` → see `update-devin-global-skills` (`## Conventions → Invoke Skills`)
 
 ## Expected Outcome
 
-- Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน
-- ไอเดีย skills ใหม่ที่ควรสร้างถูกระบุพร้อม rationale
-- `related` ใน frontmatter อัปเดตครบถ้วน
-- การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
-- มี `/report` ใช้ในการนำเสนอผลการวิเคราะห์
+- Related Devin global skills are recommended with clear reasons
+- New skill ideas worth creating are identified with rationale
+- `related` in the frontmatter is fully updated
+- The connections between skills are clearer
+- `/report` is used to present the analysis results
 
-- สำหรับเลือกและเรียก skill อื่นตาม task ดู `references/in-another-skills.md`
+- To pick and invoke another skill for a task, see `references/in-another-skills.md`

@@ -2,57 +2,57 @@
 
 ## Required Directories
 
-ตรวจว่า `tools/review-codebase/` มี directories ครบทั้ง 4 ชั้น:
+Verify that `tools/review-codebase/` has all 4 layers of directories:
 
 - `src/domain/` — business logic, analyzers, types
 - `src/application/` — use cases, orchestration
 - `src/adapters/` — shared utilities, external integrations
 - `src/presentation/` — CLI entry point, user-facing output
 
-ถ้าขาด directory ใด → flag เป็น `High` severity
+If any directory is missing → flag as `High` severity
 
 ## Entry Points
 
-ตรวจว่ามี entry points ครบ:
+Verify that all entry points are present:
 
-- `src/presentation/cli.ts` — CLI entry point หลัก
-- `src/index.ts` — barrel export สำหรับ workspace imports
+- `src/presentation/cli.ts` — the main CLI entry point
+- `src/index.ts` — barrel export for workspace imports
 
-ถ้าขาด entry point → flag เป็น `Critical` severity
+If an entry point is missing → flag as `Critical` severity
 
 ## File Naming
 
-ตรวจว่าทุกไฟล์ใช้ `kebab-case`:
+Verify that every file uses `kebab-case`:
 
-- ตัวอย่างที่ถูก: `user-facing.ts`, `code-arch.ts`, `deep-review.ts`
-- ตัวอย่างที่ผิด: `UserFacing.ts`, `userFacing.ts`, `user_facing.ts`
+- Correct examples: `user-facing.ts`, `code-arch.ts`, `deep-review.ts`
+- Wrong examples: `UserFacing.ts`, `userFacing.ts`, `user_facing.ts`
 
-ถ้าพบไฟล์ที่ไม่ใช้ `kebab-case` → flag เป็น `Low` severity
+If a file does not use `kebab-case` → flag as `Low` severity
 
 ## Bun Native APIs
 
-ตรวจว่าใช้ Bun native APIs แทน Node.js APIs:
+Verify that Bun native APIs are used instead of Node.js APIs:
 
-- `Bun.file` — อ่านไฟล์ แทน `fs.readFile`
-- `Bun.spawn` — รัน subprocess แทน `child_process`
-- `Bun.write` — เขียนไฟล์ แทน `fs.writeFile`
+- `Bun.file` — read a file, instead of `fs.readFile`
+- `Bun.spawn` — run a subprocess, instead of `child_process`
+- `Bun.write` — write a file, instead of `fs.writeFile`
 
-ถ้าพบการใช้ Node.js APIs แทน Bun → flag เป็น `Medium` severity
+If Node.js APIs are used instead of Bun → flag as `Medium` severity
 
 ## Dependency Direction
 
-ตรวจว่า dependency direction ถูกต้อง:
+Verify that the dependency direction is correct:
 
 - `presentation` → `application` → `domain`
 - `adapters` → `domain`
-- `domain` ห้าม import จากชั้นอื่น
+- `domain` must never import from any other layer
 
-ถ้าพบ dependency ผิดทิศทาง → flag เป็น `High` severity
+If a dependency points the wrong way → flag as `High` severity
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must include:
 
-- file path เช่น `tools/review-codebase/src/domain/analyzers/security.ts`
-- line number
-- code snippet ที่เป็นปัญหา
+- File path, e.g. `tools/review-codebase/src/domain/analyzers/security.ts`
+- Line number
+- The code snippet that is problematic

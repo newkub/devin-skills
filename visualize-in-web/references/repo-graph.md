@@ -23,110 +23,110 @@ related:
 
 ## Goal
 
-สร้าง web application แสดง repository เป็น interactive graph โดยใช้ Rust วิเคราะห์โครงสร้าง repo และ SolidJS render บน browser
+Build a web application that displays the repository as an interactive graph, using Rust to analyze the repo structure and SolidJS to render it in the browser
 
 ## Scope
 
-ใช้กับ repo ทั่วไป เช่น project ทีมี `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` หรือ `requirements.txt` รองรับการสแกน modules, files, dependencies และแสดงเป้น graph
+Works with general repos such as projects with a `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, or `requirements.txt`. Supports scanning modules, files, and dependencies and displaying them as a graph
 
 ## Execute
 
 ### 1. Setup Rust Scanner
 
-> Goal: สร้าง Rust crate สำหรับวิเคราะห์ repo
+> Goal: Build a Rust crate for analyzing the repo
 
-1. สร้าง directory `src/rust/repo-graph/` ภายใน skill workspace หรือ OS temp
-2. รัน `cargo init --name repo-graph` ใน `src/rust/repo-graph/`
-3. เพิ่ม dependencies `serde`, `serde_json`, `walkdir` ด้วย `cargo add`
-4. สร้าง `src/main.rs` รับ `<repo-path>` เป้น argument และสแกน tree
-5. สร้าง `src/graph.rs` สำหรับ build nodes และ edges
-6. ทดสอบด้วย `cargo run -- <repo-path>` ให้ได้ `repo-graph.json`
+1. Create the `src/rust/repo-graph/` directory inside the skill workspace or OS temp
+2. Run `cargo init --name repo-graph` in `src/rust/repo-graph/`
+3. Add the `serde`, `serde_json`, `walkdir` dependencies with `cargo add`
+4. Create `src/main.rs` that takes `<repo-path>` as an argument and scans the tree
+5. Create `src/graph.rs` for building nodes and edges
+6. Test with `cargo run -- <repo-path>` to produce `repo-graph.json`
 
 ### 2. Analyze Repo Structure
 
-> Goal: รวบรวม nodes และ edges จาก repo
+> Goal: Collect nodes and edges from the repo
 
-1. `glob` หา files ทีจำเป็น เช่น `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
-2. `read` manifests เพื่อหา dependencies และ workspace members
-3. `grep` imports / exports หรือ `mod` declarations เพื่อหา file relations
-4. สร้าง nodes: `directory`, `file`, `module`, `dependency`, `workspace`
-5. สร้าง edges จาก imports, parent-child, dependency links
-6. บันทึก `repo-graph.json` ใน `src/web/public/` หรือ `src/web/src/data/`
+1. Use `glob` to find key files such as `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
+2. `read` manifests to find dependencies and workspace members
+3. `grep` imports / exports or `mod` declarations to find file relations
+4. Create nodes: `directory`, `file`, `module`, `dependency`, `workspace`
+5. Create edges from imports, parent-child, dependency links
+6. Save `repo-graph.json` into `src/web/public/` or `src/web/src/data/`
 
 ### 3. Choose Graph Library
 
-> Goal: เลือก library สำหรับ render graph
+> Goal: Choose a library for rendering the graph
 
-1. ทำ `/alternative` ประเมิน `cytoscape`, `vis-network`, `force-graph`, `d3`
-2. สำหรับ SolidJS แนะนำ `cytoscape` หรือ `force-graph` ผ่าน npm
-3. ติดตั้งด้วย `bun add cytoscape` หรือ `bun add force-graph` ใน web project
-4. เลือก library ที่รองรับ zoom, pan, drag, tooltip โดยไม่เขียน engine เอง
+1. Run `/alternative` to evaluate `cytoscape`, `vis-network`, `force-graph`, `d3`
+2. For SolidJS, prefer `cytoscape` or `force-graph` via npm
+3. Install with `bun add cytoscape` or `bun add force-graph` in the web project
+4. Pick a library that supports zoom, pan, drag, and tooltip instead of writing your own engine
 
 ### 4. Generate Solid Frontend
 
-> Goal: สร้าง web app ด้วย SolidJS
+> Goal: Build the web app with SolidJS
 
-1. ทำ `/follow-tool-vite` สร้าง Vite project ด้วย `bun create vite@latest repo-graph-web --template solid-ts`
-2. ติดตั้ง `solid-js`, `vite`, `vite-plugin-solid`, `unocss`, `@unocss/preset-wind`
-3. สร้าง `src/App.tsx` ด้วย `createSignal`, `<For>`, `<Show>`
-4. สร้าง `src/components/GraphView.tsx` โหลด `repo-graph.json` และ render graph
-5. เพิ่ม controls: search, filter by type, zoom reset, dark mode toggle
+1. Follow `/follow-tool-vite` to create a Vite project with `bun create vite@latest repo-graph-web --template solid-ts`
+2. Install `solid-js`, `vite`, `vite-plugin-solid`, `unocss`, `@unocss/preset-wind`
+3. Create `src/App.tsx` using `createSignal`, `<For>`, `<Show>`
+4. Create `src/components/GraphView.tsx` that loads `repo-graph.json` and renders the graph
+5. Add controls: search, filter by type, zoom reset, dark mode toggle
 
 ### 5. Wire Rust Output To Solid
 
-> Goal: ให้ Solid app ใช้ data จาก Rust scanner
+> Goal: Let the Solid app consume data from the Rust scanner
 
-1. รัน Rust scanner ให้ได้ `repo-graph.json`
-2. คัดลอก `repo-graph.json` ไปยัง `src/web/public/repo-graph.json`
-3. ใน Solid ใช้ `fetch('/repo-graph.json')` หรือ `import data from '../data/repo-graph.json'`
-4. แสดง graph พร้อม node labels, tooltips, side panel
+1. Run the Rust scanner to produce `repo-graph.json`
+2. Copy `repo-graph.json` to `src/web/public/repo-graph.json`
+3. In Solid, use `fetch('/repo-graph.json')` or `import data from '../data/repo-graph.json'`
+4. Display the graph with node labels, tooltips, and a side panel
 
 ### 6. Build And Serve
 
-> Goal: รันและตรวจสอบ web app
+> Goal: Run and verify the web app
 
-1. ใน web project รัน `bun install` แล้ว `bun run dev`
-2. ตรวจว่า graph แสดงถูกต้อง
-3. ทำ `/open-web` เพื่อเปิด browser
-4. ถ้า error → ทำ `/resolve-errors`
+1. In the web project, run `bun install` then `bun run dev`
+2. Verify the graph renders correctly
+3. Run `/open-web` to open the browser
+4. If there are errors → run `/resolve-errors`
 
 ### 7. Ship
 
-> Goal: ส่งมอบ project
+> Goal: Deliver the project
 
-1. ถ้า user ต้องการ keep project → ทำ `/ship-to-dev-branch`
-2. รายงานจำนวน nodes, edges, ประเภททีพบ
-3. ทำ `/suggest-next-action`
+1. If the user wants to keep the project → run `/ship-to-dev-branch`
+2. Report the number of nodes, edges, and types found
+3. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Src Directory
 
-- skill มี `src/` directory เป้น scaffold สำหรับ Rust crate และ Solid web app
-- ไฟล์ scaffold ต้อง build ผ่าน `cargo build` และ `bun run build`
-- ไม่เกิน 250 บรรทัดต่อไฟล์
+- The skill has a `src/` directory as a scaffold for the Rust crate and the Solid web app
+- Scaffold files must build with `cargo build` and `bun run build`
+- No more than 250 lines per file
 
 ### 2. Graph UX
 
-- ใช้สีแยกตามประเภท node: directory, file, module, dependency, workspace
-- รองรับ zoom, pan, search, filter
-- แสดง tooltip ด้วย metadata
-- ไม่เขียน graph engine เอง
+- Use distinct colors per node type: directory, file, module, dependency, workspace
+- Support zoom, pan, search, and filter
+- Show tooltips with metadata
+- Do not write your own graph engine
 
 ### 3. Multi Ecosystem
 
-- รองรับหลาย package manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
-- ใช้ commands ตาม ecosystem เช่น `cargo run` สำหรับ Rust, `bun install` สำหรับ JS/TS
+- Support multiple package manifests: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
+- Use commands per ecosystem, e.g. `cargo run` for Rust, `bun install` for JS/TS
 
-- ใช้ /follow-lib-solidjs ถ้าจำเป็น
-- ใช้ /follow-create-rust-crate ถ้าจำเป็น
-- ใช้ /review-frontend ถ้าจำเป็น
+- Use /follow-lib-solidjs if needed
+- Use /follow-create-rust-crate if needed
+- Use /review-frontend if needed
 
 ## Expected Outcome
 
-- Rust scanner สร้าง `repo-graph.json` จาก repo ทีระบุ
-- SolidJS web app render graph บน browser พร้อม interaction
-- `src/` directory มี scaffold สำหรับ Rust crate และ Solid web app
-- รองรับหลาย ecosystems และ repo layouts
-- สามารถ ship หรือ run ใน browser ได้
+- The Rust scanner produces `repo-graph.json` from the specified repo
+- The SolidJS web app renders the graph in the browser with interactions
+- The `src/` directory contains scaffolds for the Rust crate and the Solid web app
+- Supports multiple ecosystems and repo layouts
+- Can be shipped or run in the browser
 

@@ -1,6 +1,6 @@
 ---
 name: delete-git-branch
-description: ลบ local หรือ remote git branch อย่างปลอดภัย
+description: Safely delete a local or remote git branch
 argument-hint: "[scope]"
 related:
   - list-git
@@ -11,76 +11,76 @@ related:
 
 ## Goal
 
-ลบ git branch ทีระบุออกจาก local หรือ remote โดยปลอดภัย
+Safely delete the specified git branch from local or remote
 
 ## Scope
 
-ใช้เมื่อต้องการทำความสะอาด branch ที่ไม่จำเป็น
+Use when cleaning up branches that are no longer needed
 
 ## Execute
 
 ### 1. Identify Branch
 
-> Goal: ระบุ branch ทีต้องการลบ
+> Goal: Identify the branch to delete
 
-1. รัน `git branch --all`
-2. ยื่นยันชื่อ branch
-3. ตรวจสอบว่าไม่ใช่ `main`, `master`, หรือ branch ทีถูก protect
+1. Run `git branch --all`
+2. Confirm the branch name
+3. Check that it is not `main`, `master`, or a protected branch
 
 ### 2. Check Merge Status
 
-> Goal: ลบอย่างปลอดภัย
+> Goal: Delete safely
 
-1. รัน `git branch --merged` เพื่อดู branch ที merge แล้ว
-2. ถ้า branch ยังไม่ merge → ถามก่อนลบ
-3. ถ้า merge แล้ว → ลบแบบ `-d` ได้
+1. Run `git branch --merged` to see which branches are already merged
+2. If the branch is not merged → ask before deleting
+3. If already merged → it can be deleted with `-d`
 
 ### 3. Delete Local Branch
 
-> Goal: ลบ local branch
+> Goal: Delete the local branch
 
-1. รัน `git branch -d <branch>` สำหรับ merged branch
-2. ถ้าไม่ merge และ user ยื่นยัน → รัน `git branch -D <branch>`
+1. Run `git branch -d <branch>` for a merged branch
+2. If not merged and the user confirms → run `git branch -D <branch>`
 
 ### 4. Delete Remote Branch
 
-> Goal: ลบ remote branch
+> Goal: Delete the remote branch
 
-1. รัน `git push origin --delete <branch>`
-2. หรือ `git push origin :<branch>`
-3. ตรวจสอบว่า remote branch ถูกลบ
+1. Run `git push origin --delete <branch>`
+2. Or `git push origin :<branch>`
+3. Verify that the remote branch was deleted
 
 ### 5. Cleanup
 
-> Goal: ทำความสะอาด local tracking
+> Goal: Clean up local tracking
 
-1. รัน `git fetch --prune`
-2. รัน `git branch -vv` ตรวจสอบ tracking
+1. Run `git fetch --prune`
+2. Run `git branch -vv` to check tracking
 
 ## Rules
 
 ### 1. Protect Main
 
-- ไม่ลบ `main`, `master`, หรือ default branch
-- ไม่ลบ branch ทีมี PR เปิดโดยไม่ถาม
+- Never delete `main`, `master`, or the default branch
+- Never delete a branch with an open PR without asking
 
 ### 2. Confirm Unmerged
 
-- ถ้า branch ยังไม่ merge → ถามก่อน `-D`
-- บอกว่าจะสูญเสีย commits หรือไม่
+- If the branch is not merged → ask before using `-D`
+- State whether commits will be lost
 
 ### 3. Preserve Tags
 
-- ลบ branch ไม่ลบ tags ทีชี้ไปยัง commits นั้น
-- ถ้าจำเป็นให้ตรวจ tags
+- Deleting a branch does not delete tags pointing to its commits
+- If needed, check the tags
 
-- ใช้ /list-git-commit ถ้าจำเป็น
-- ใช้ /refactor-commit ถ้าจำเป็น
-- ใช้ /resolve-github-pr ถ้าจำเป็น
+- Use /list-git-commit if needed
+- Use /refactor-commit if needed
+- Use /resolve-github-pr if needed
 
 ## Expected Outcome
 
-- Local branch ถูกลบ
-- Remote branch ถูกลบ (ถ้าขอ)
-- Main/master ไม่ได้รับผลกระทบ
-- ไม่มี commits สูญหายโดยไม่ได้ระบุ
+- The local branch is deleted
+- The remote branch is deleted (if requested)
+- Main/master is unaffected
+- No commits lost without explicit intent

@@ -1,16 +1,16 @@
 ---
 name: report
-description: สรุปผล review
+description: Summarize review results
 ---
 
 # Report
 
 ## Goal
 
-สรุปผล review
+Summarize the review results
 
 ## Checks
 
-1. สรุป findings พร้อม severity
-2. ระบุ skill ที่ใช้
-3. ทำ `/suggest-next-action`
+1. Summarize findings with severity
+2. Identify the skills used
+3. Run `/suggest-next-action`

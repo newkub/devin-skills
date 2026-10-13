@@ -1,6 +1,6 @@
 ---
 name: update-agents-md
-description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
+description: Create or update AGENTS.md so agents and subagents can read it and act on it
 argument-hint: "[scope]"
 related:
   - deep-review-then-fix
@@ -24,107 +24,107 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดท `AGENTS.md` ใน root และทุก workspace ให้ทำตามได้จริง โดย agents และ subagents สามารถอ่านแล้วดำเนินการตามลำดับขั้นตอน
+Create or update `AGENTS.md` in the root and in every workspace so it is genuinely followable, letting agents and subagents read it and act on the steps in order.
 
 ## Scope
 
-ใช้สำหรับเขียน/ปรับปรุง `AGENTS.md` ใน root และ workspace ของ project ตามข้อมูลจริง ไม่รวมการแก้ไข source code นอก scope ของ `AGENTS.md`
+Use for writing and improving `AGENTS.md` in a project's root and workspaces from real project data. Excludes editing source code outside the scope of `AGENTS.md`.
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: เตรียม Prepare
+> Goal: Prepare
 
-1. ทำ `/follow-agents-md` ถ้ามี `AGENTS.md` อยู่แล้ว
-2. ทำ `/check-monorepo` เพื่อตรวจ monorepo status
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์ tech stack และ structure
-4. ทำ `/all-workspace` ถ้าเป็น monorepo
-5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-6. ทำ `/ask-project-requirement` ถ้า context หรือ requirements ไม่ชัด
-7. ระบุ platform และ target user จาก context และ dependencies
-8. ถ้า project มี `tools/review-codebase` ทำ `/update-review-cli-then-run`
+1. Run `/follow-agents-md` if an `AGENTS.md` already exists
+2. Run `/check-monorepo` to check monorepo status
+3. Run `/deep-analyze` to analyze the tech stack and structure
+4. Run `/all-workspace` if it is a monorepo
+5. Read the global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+6. Run `/ask-project-requirement` if the context or requirements are unclear
+7. Identify the platform and target user from the context and dependencies
+8. If the project has `tools/review-codebase`, run `/update-review-cli-then-run`
 
 ### 2. Analyze Techstack
 
 > Goal: map dependencies → global skills
 
-1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
-2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
-3. map แต่ละ dep เป็น `dep: /follow-<skill>` ถ้ามี skill ตรง — ไม่มี → `/learn-from-web` หรือข้าม row นั้น
-4. ผลลัพธ์คือ Techstack Skills table สำหรับ template
+1. Read `package.json`, `Cargo.toml`, `pyproject.toml`, or the relevant manifest
+2. Identify the libraries, frameworks, runtimes, and build tools in use
+3. Map each dependency to `dep: /follow-<skill>` when a matching skill exists — no match → `/learn-from-web` or skip that row
+4. The result is the Techstack Skills table used by the template
 
 ### 3. Write AGENTS.md
 
-> Goal: เขียน AGENTS md จาก canonical templates
+> Goal: Write the AGENTS md from canonical templates
 
-1. ใช้ format ตาม `update-devin-global-skills` (`## Conventions → Frontmatter Spec`)
-2. Root `AGENTS.md` → เริ่มจาก `templates/agents-md-monorepo.md`
-3. Workspace `AGENTS.md` → เริ่มจาก `templates/agents-md-workspace.md` ต่อ workspace
-4. เขียน sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-5. `## Execute` ตาม template — workspace มี `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (เลือก pattern ผ่าน `/follow-architecture`) + `### Ship Verify`; monorepo มี follow-monorepo → subagents follow workspace AGENTS.md → `/refactor-workspace` workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship-verify`
-6. ทุก step ใน `## Execute` ต้องเป็น actionable command ที่ agent รันได้
-7. ถ้ามีหลาย workspace อิสระกัน ใช้ `/use-subagents` — 1 workspace = 1 subagent (workspace path, manifest, deliverable)
-8. ถ้า context ไม่ชัด → stop และ report
+1. Follow the format in `update-devin-global-skills` (`## Conventions → Frontmatter Spec`)
+2. Root `AGENTS.md` → start from `templates/agents-md-monorepo.md`
+3. Workspace `AGENTS.md` → start from `templates/agents-md-workspace.md` for each workspace
+4. Write the sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+5. `## Execute` follows the template — a workspace has `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (choose the pattern via `/follow-architecture`) + `### Ship Verify`; a monorepo has follow-monorepo → subagents follow workspace AGENTS.md → `/refactor-workspace` workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship-verify`
+6. Every step in `## Execute` must be an actionable command an agent can run
+7. If several workspaces are independent of each other, use `/use-subagents` — 1 workspace = 1 subagent (workspace path, manifest, deliverable)
+8. If the context is unclear → stop and report
 
 ### 4. Validate And Ship
 
-> Goal: verify ผ่าน canonical gate แล้วค่อย ship
+> Goal: Verify through the canonical gate, then ship
 
-1. ทำ `/ship-verify` — canonical gate ครอบ `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage` — ไม่ duplicate verify steps ที่นี่
-2. ผ่านครบแล้ว → `/ship-to-dev-branch` เพื่อ release
-3. ทำ `/report` สรุป
+1. Run `/ship-verify` — the canonical gate covering `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage` — do not duplicate verify steps here
+2. Once everything passes → `/ship-to-dev-branch` to release
+3. Run `/report` to summarize
 
 ## Rules
 
 ### 1. AGENTS.md Format
 
-- frontmatter `name`, `description` ≤100 ตัวอักษร, `related`
+- frontmatter `name`, `description` ≤100 characters, `related`
 - sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-- ไฟล์ไม่เกิน 250 บรรทัด
-- `AGENTS.md` เขียนเป็นภาษาอังกฤษทั้งหมด (project-local)
-- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
+- Keep the file at or under 250 lines
+- Write `AGENTS.md` entirely in English (project-local)
+- Use backticks for `tools`, `commands`, `paths`, `skill-name`
 
 ### 2. Followable Content
 
-- ทุก step ใน `## Execute` ต้องเป็น action ที่ agent รันได้
-- ระบุ skill ด้วย `/<skill-name>` และ command ด้วย backticks
-- ถ้าต้องใช้ subagents ระบุชัดเจนว่า subtask ใด independent
+- Every step in `## Execute` must be an action an agent can run
+- Name skills with `/<skill-name>` and commands with backticks
+- When subagents are needed, state clearly which subtasks are independent
 
 ### 3. Subagent Discipline
 
-- ใช้ `/use-subagents` เมื่อมีหลาย workspace หรือหลาย architecture ที่ตรวจสอบได้อิสระกัน
-- แต่ละ subagent ต้องได้รับ context: workspace path, manifest, และเป้าหมาย
-- รวมผลจาก subagents ก่อนเขียน root `AGENTS.md` — subagent ห้าม commit
+- Use `/use-subagents` when there are multiple workspaces or architectures that can be verified independently
+- Give each subagent its context: workspace path, manifest, and goal
+- Merge the results from subagents before writing the root `AGENTS.md` — a subagent must never commit
 
 ### 4. Techstack Mapping
 
-- workspace `AGENTS.md` มี Techstack Skills table 3 columns: `Dependency | Use For | Global Skill`
-- map ตาม dependencies ใน manifest เท่านั้น — ไม่มี skill ตรงให้ข้าม row (หรือ `/learn-from-web`)
+- The workspace `AGENTS.md` has a 3-column Techstack Skills table: `Dependency | Use For | Global Skill`
+- Map only from the dependencies listed in the manifest — with no matching skill, skip the row (or `/learn-from-web`)
 
 ### 5. Skills Mapping
 
-- `### Skills` ใน generated `AGENTS.md` เรียบง่าย — core: `/dont-ask-me`, `/ship-verify`, `/ship-to-dev-branch`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
-- Quality/improvement group (ตาม project): `/deep-review`, `/deep-validate`, `/deep-test`, `/review-test` + `/improve-*`/`/optimize-*` variants ที่ตรง
-- เพิ่มเฉพาะ project-specific skills ที่จำเป็นจริง
+- `### Skills` in the generated `AGENTS.md` stays simple — core: `/dont-ask-me`, `/ship-verify`, `/ship-to-dev-branch`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
+- Quality/improvement group (per project): `/deep-review`, `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
+- Add only the project-specific skills that are truly needed
 
 ### 6. Workspace Rules
 
-- root `AGENTS.md` ต้องมี `### Workspaces` ระบุทุก workspace + usage table (`Workspace | Use Workspace | Purpose` จาก `/refactor-workspace`)
-- workspace `AGENTS.md` ต้องระบุ `uses:` `<package> use <other-package>`
-- ก่อนเขียน workspace section ใน monorepo ต้องทำ `/report-workspace-graph`
-- ไม่ duplicate root conventions
+- The root `AGENTS.md` must have `### Workspaces` listing every workspace plus the usage table (`Workspace | Use Workspace | Purpose` from `/refactor-workspace`)
+- The workspace `AGENTS.md` must state `uses:` `<package> use <other-package>`
+- Before writing the workspace section of a monorepo, run `/report-workspace-graph`
+- Do not duplicate root conventions
 
 ### 7. Validation
 
-- verify ทั้งหมดอยู่ใน `/ship-verify` (canonical) — skill นี้เรียกใช้เท่านั้น ห้าม duplicate
-- ไม่ commit เองระหว่างเขียน `AGENTS.md` — หลัง `/ship-verify` ผ่าน ship ต่อด้วย `/ship-to-dev-branch`
+- All verification lives in `/ship-verify` (canonical) — this skill only invokes it and must not duplicate it
+- Do not commit on your own while writing `AGENTS.md` — after `/ship-verify` passes, ship with `/ship-to-dev-branch`
 
 ## Expected Outcome
 
-- root `AGENTS.md` สมบูรณ์ ติดตามได้ และอิงตาม project จริง
-- Techstack Skills table ครบทุก dependency ที่มี skill ตรง
-- `### Platform` และ `### Target User` ถูกต้อง
-- ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` + workspace usage table
-- ผ่าน `/ship-verify` — stakeholder review อยู่ใน `/ship-to-dev-branch` merge gate (`/review-by-all-stakeholder`)
-- subagents สามารถอ่าน `AGENTS.md` แล้วดำเนินการตามขั้นตอนได้
+- A complete, traceable root `AGENTS.md` grounded in the real project
+- A Techstack Skills table covering every dependency that has a matching skill
+- `### Platform` and `### Target User` are correct
+- For a monorepo: every workspace has an `AGENTS.md` plus a workspace usage table
+- Passes `/ship-verify` — stakeholder review happens in the `/ship-to-dev-branch` merge gate (`/review-by-all-stakeholder`)
+- Subagents can read `AGENTS.md` and carry out the steps

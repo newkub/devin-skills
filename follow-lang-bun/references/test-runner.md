@@ -1,6 +1,6 @@
 # Bun Test Runner
 
-`bun test` คือ Jest-compatible test runner ในตัว — TypeScript-first, fast, มี snapshots, DOM testing และ coverage ในตัว Docs: https://bun.com/docs/test
+`bun test` is a built-in Jest-compatible test runner — TypeScript-first, fast, with snapshots, DOM testing, and coverage built in. Docs: https://bun.com/docs/test
 
 ## Writing Tests
 
@@ -18,11 +18,11 @@ describe("math", () => {
 - Jest-compatible API: `describe`, `test`/`it`, `expect`, `beforeAll/BeforeEach/afterAll/afterEach`
 - `test.skip`, `test.todo`, `test.only`, `test.each`, `describe.each`, `test.concurrent`
 - `test("name", async () => {...}, timeout)` — per-test timeout
-- `expect` matchers ครบชุด Jest + `toMatchSnapshot`, `toThrowErrorMatchingSnapshot`
-- `mock()`/`jest.fn()` — `mock.module("pkg", () => fake)` สำหรับ module mocking, `spyOn(obj, "m")`
+- Full set of Jest `expect` matchers + `toMatchSnapshot`, `toThrowErrorMatchingSnapshot`
+- `mock()`/`jest.fn()` — `mock.module("pkg", () => fake)` for module mocking, `spyOn(obj, "m")`
 - `setSystemTime()` — fake timers
-- DOM testing: `bun:test` + `happy-dom` หรือ `jsdom` (register ผ่าน `[test] preload`)
-- `--rerun-each <n>` — re-run each test n times (flaky detection); `--randomize` + `--seed <n>` ใน bunfig
+- DOM testing: `bun:test` + `happy-dom` or `jsdom` (registered via `[test] preload`)
+- `--rerun-each <n>` — re-run each test n times (flaky detection); `--randomize` + `--seed <n>` in bunfig
 
 ## Running
 
@@ -43,10 +43,10 @@ describe("math", () => {
 
 ## Coverage
 
-- `--coverage` หรือ `[test] coverage = true` — uses Bun's own coverage (ไม่ใช่ v8/nyc)
+- `--coverage` or `[test] coverage = true` — uses Bun's own coverage (not v8/nyc)
 - `coverageReporter = ["text", "lcov", "json"]`, `coverageDir`, `coverageThreshold`
 - `coveragePathIgnorePatterns` — exclude files
-- Source-mapped: coverage รายงานตาม TS source ไม่ใช่ transpiled output
+- Source-mapped: coverage is reported against the TS source, not the transpiled output
 
 ## Config (bunfig.toml)
 
@@ -63,13 +63,13 @@ smol = true
 
 ## Snapshots
 
-- `expect(value).toMatchSnapshot()` — เขียนลง `__snapshots__/<file>.snap`
-- `--update-snapshots` หรือ `bun test -u`
-- `expect.addSnapshotSerializer()` สำหรับ custom serializers
+- `expect(value).toMatchSnapshot()` — writes to `__snapshots__/<file>.snap`
+- `--update-snapshots` or `bun test -u`
+- `expect.addSnapshotSerializer()` for custom serializers
 
 ## Notes
 
-- Tests รันบน Bun runtime — `Bun.*` APIs ใช้ได้ตรงๆ
-- `bun test` ไม่รัน doctests (ไม่มี concept นั้น — ต่างจาก Rust)
+- Tests run on the Bun runtime — `Bun.*` APIs are directly available
+- `bun test` doesn't run doctests (no such concept — unlike Rust)
 - CI: `bun test --coverage --reporter=junit --reporter-outfile=report.xml`
-- Concurrent tests (`test.concurrent`) รันขนานในไฟล์เดียว; `--parallel` รันข้ามไฟล์
+- Concurrent tests (`test.concurrent`) run in parallel within one file; `--parallel` runs across files

@@ -9,43 +9,43 @@ related:
 
 ## Goal
 
-ตรวจ correctness dimension ของ `/deep-validate` — ทำงานตาม requirement, logic ถูก, edge cases ครบ, error handling ไม่ขาด
+Check the correctness dimension of `/deep-validate` — meets requirements, correct logic, complete edge cases, no missing error handling
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `correctness` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings พร้อม severity — ไม่แก้ code
+- Used when `/deep-validate` dispatches to the `correctness` dimension, or invoked standalone
+- Read-only: record findings with severity — do not fix code
 
 ## Execute
 
 ### 1. Check Against Requirements
 
-> Goal: ยืนยัน code ทำตาม requirement
+> Goal: confirm the code meets the requirements
 
-1. ทำ `/deep-review` เพื่อตรวจสอบความถูกต้อง
-2. ตรวจสอบความถูกต้องตาม principle หรือ standard
-3. ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
+1. Run `/deep-review` to check correctness
+2. Check correctness against the principle or standard
+3. Verify it works per the requirements and has no errors
 
 ### 2. Check Logic And Edge Cases
 
-> Goal: logic ครอบคลุม edge cases
+> Goal: logic covers the edge cases
 
-1. ตรวจสอบ logic และ edge cases ได้รับการจัดการ
-2. ตรวจสอบ error handling ครบถ้วน
-3. บันทึก findings พร้อม severity (Critical/High/Medium/Low) + evidence (file, line)
+1. Check that logic and edge cases are handled
+2. Check that error handling is complete
+3. Record findings with severity (Critical/High/Medium/Low) + evidence (file, line)
 
 ### 3. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
-2. ระบุสิ่งที่ถูกต้องอยู่แล้วเสมอ
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+2. Always note what is already correct
 
 ## Rules
 
-- ทุก finding ต้องมี evidence (file path, line number)
-- แยก "ผิด requirement" ออกจาก "style issue" — style ไปที่ `check-quality`
+- Every finding must have evidence (file path, line number)
+- Separate "violates a requirement" from "style issue" — style goes to `check-quality`
 
 ## Expected Outcome
 
-- Findings ของ correctness dimension พร้อม severity และ evidence
+- Findings of the correctness dimension with severity and evidence

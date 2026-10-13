@@ -1,6 +1,6 @@
 ---
 name: follow-create-plugins
-description: สร้าง plugin/extension/addon สำหรับ tool ใดก็ได้ผ่าน follow-create-* skills แยกตาม target
+description: Create plugins/extensions/addons for any tool via target-specific follow-create-* skills
 argument-hint: "[target] [spec]"
 related:
   - follow-create-sdk
@@ -17,13 +17,13 @@ related:
 
 ## Goal
 
-สร้าง plugin/extension/addon สำหรับ target ที่ระบุ — parent skill นี้ทำหน้าที่ dispatch เท่านั้น ไม่ implement workflow เฉพาะ target
+Create a plugin/extension/addon for the specified target — this parent skill only dispatches; it does not implement target-specific workflows
 
 ## Scope
 
-- รวม capability ของทุก `follow-create-*plugin*`/`create-*-plugins` skill เดิม — skill ละ target
-- argument คือ target name (เช่น `vite`, `eslint`, `nvim`, `raycast`, `obsidian`, `bun`, `vscode`)
-- ถ้าไม่ระบุ target → `/ask-me` เลือก target จากตาราง
+- Consolidates the capabilities of the former `follow-create-*plugin*`/`create-*-plugins` skills — one skill per target
+- The argument is the target name (e.g. `vite`, `eslint`, `nvim`, `raycast`, `obsidian`, `bun`, `vscode`)
+- If no target is given → `/ask-me` to pick a target from the table
 
 ## Execute
 
@@ -32,7 +32,7 @@ related:
 | Target | Skill |
 |---|---|
 | `biome` | `/follow-create-biome-plugin` — Biome plugin (GritQL rules, diagnostics) |
-| `browser-wxt`, `wxt`, `browser` | `/follow-create-browser-extensions-wxt` — browser extension ด้วย WXT |
+| `browser-wxt`, `wxt`, `browser` | `/follow-create-browser-extensions-wxt` — browser extension with WXT |
 | `bun` | `/follow-create-bun-plugin` — Bun plugin (`Bun.plugin`, preload, bundler) |
 | `claude` | `/follow-create-claude-plugin` — Claude Code plugin (commands, hooks, agents) |
 | `codex` | `/follow-create-codex-plugin` — Codex CLI plugin |
@@ -54,27 +54,27 @@ related:
 | `vite` | `/follow-create-vite-plugin` — Vite plugin (hooks, transform, HMR) |
 | `vitest` | `/follow-create-vitest-plugin` — Vitest plugin (reporters, environment) |
 | `vscode`, `vs-code` | `/follow-create-vscode-extensions` — VS Code extension |
-| `webmcp`, `web-mcp` | `/follow-create-web-mcp` — WebMCP tools บน web page (page-provided agent tools) |
+| `webmcp`, `web-mcp` | `/follow-create-web-mcp` — WebMCP tools on a web page (page-provided agent tools) |
 | `zed` | `/follow-create-zed-extensions` — Zed extension |
 
-1. ทำ `/deep-research` + `/follow-best-practice` สำหรับ target ที่เลือก ตาม conventions ใน `/update-devin-global-skills` (ทำใน target skill ที่ dispatch ไป)
-2. ระบุ target จาก argument (เช่น `/follow-create-plugins vite`)
-3. ถ้า target รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-4. ถ้าไม่ระบุหรือไม่รู้จัก target → `/ask-me` เลือก target จากตาราง
+1. Run `/deep-research` + `/follow-best-practice` for the chosen target, following the conventions in `/update-devin-global-skills` (done inside the dispatched target skill)
+2. Determine the target from the argument (e.g. `/follow-create-plugins vite`)
+3. If the target is supported → invoke the skill from the table and follow that skill's flow
+4. If no target is given or it is unrecognized → `/ask-me` to pick a target from the table
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill ในไฟล์นี้
-- เลือก library/tooling ตาม `/deep-review` (techstack catalog) ก่อนเสมอ
-- scaffold เสร็จ → `/implement-features-to-mvp` ตาม convention
+- The parent only dispatches — never duplicate a target skill's workflow in this file
+- Always choose library/tooling first via `/deep-review` (techstack catalog)
+- After scaffolding → `/implement-features-to-mvp` per convention
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-mcp ถ้าจำเป็น
-- ใช้ /follow-create-web-mcp ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /follow-create-web when needed
+- Use /follow-create-cli when needed
+- Use /follow-create-mcp when needed
+- Use /follow-create-web-mcp when needed
+- Use /update-devin-global-skills when needed
+- Use /follow-best-practice when needed
 
 ## File Structure
 
@@ -82,4 +82,4 @@ Canonical file structure + layer table: [templates/file-structure-plugins.md](te
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป workflow ที่ตรง target แล้วสร้าง plugin ตาม flow นั้น
+- The caller is dispatched to the workflow matching the target, then the plugin is built through that flow

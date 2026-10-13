@@ -1,6 +1,6 @@
 ---
 name: follow-deep
-description: พิจารณาและเรียก deep-* workflows ที่เกี่ยวข้องตาม context ของ task
+description: Consider and invoke the relevant deep-* workflows based on the task context
 argument-hint: "[scope]"
 related:
   - review
@@ -15,88 +15,88 @@ related:
 
 ## Goal
 
-พิจารณาและเรียก `deep-*` workflows ที่เกี่ยวข้องตาม context ของ task เพื่อให้การทำงานมีความลึกซึ้งครบทุกมิติ
+Consider and invoke the relevant `deep-*` workflows based on the task context, so the work reaches depth across every dimension
 
 ## Scope
 
-ใช้เป็น sub-workflow สำหรับพิจารณาว่า task ปัจจุบันควรเรียก `deep-*` workflows ใดบ้าง — ไม่ใช่ workflow หลักที่รันแยกต่างหาก
+Use as a sub-workflow to decide which `deep-*` workflows the current task should call — it is not a standalone main workflow
 
-ดูเพิ่มเติม: /deep-review
+See also: /deep-review
 
 ## Execute
 
 ### 1. Identify Task Context
 
-> Goal: ระบุ context ของ task ปัจจุบันเพื่อพิจารณา deep- workflows ที่เกี่ยวข้อง
+> Goal: identify the current task context to decide which deep- workflows are relevant
 
-1. ระบุประเภทของ task: analyze, review, plan, refactor, test, validate, secure, optimize, research
-2. ระบุความซับซ้อน: low, medium, high
-3. ระบุ risk level: low, medium, high
-4. ถ้า task มีความซับซ้อนหรือ risk ต่ำ → ไม่ต้องเรียก deep- workflows
+1. Classify the task type: analyze, review, plan, refactor, test, validate, secure, optimize, research
+2. Classify the complexity: low, medium, high
+3. Classify the risk level: low, medium, high
+4. If the task is simple or low risk → no deep- workflows needed
 
 ### 2. Select Deep Workflows
 
-> Goal: เลือก deep- workflows ที่เกี่ยวข้องกับ task context
+> Goal: pick the deep- workflows relevant to the task context
 
-1. Analysis → `deep-analyze` (รวม scripts/review CLI)
-2. Review → `deep-review` (comprehensive) หรือ `/review-*` (specific dimension)
+1. Analysis → `deep-analyze` (includes scripts/review CLI)
+2. Review → `deep-review` (comprehensive) or `/review-*` (specific dimension)
 3. Planning → `plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`
 6. Validation → `deep-validate`
 7. Security → `deep-review`
-8. Performance → `/deep-review` (comprehensive) หรือ `deep-review` (specific)
-9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)
-10. Thinking → `deep-thinking` (systematic) หรือ `deep-thinking` (reflective)
+8. Performance → `/deep-review` (comprehensive) or `deep-review` (specific)
+9. Research → `deep-research` (multi-source) or `learn-from-web` (single-source)
+10. Thinking → `deep-thinking` (systematic) or `deep-thinking` (reflective)
 
 ### 3. Execute Selected Workflows
 
-> Goal: ทำตาม deep- workflows ที่เลือก ใช้ parallel execution เมื่อเป็นไปได้
+> Goal: follow the selected deep- workflows, using parallel execution when possible
 
-1. ถ้าเลือกหลาย workflows และเป็น independent → ใช้ `follow-parallel` สำหรับ parallel execution
-2. ถ้าเลือกหลาย workflows และมี dependency → ทำตามลำดับ
-3. ถ้าเลือก workflow เดียว → ทำโดยตรง
-4. บันทึกผลลัพธ์จากแต่ละ workflow
+1. If several workflows are selected and they are independent → use `follow-parallel` for parallel execution
+2. If several workflows are selected and they have dependencies → run them in order
+3. If a single workflow is selected → run it directly
+4. Record the results from each workflow
 
 ### 4. Apply Deep Follow If Needed
 
-> Goal: ถ้า task ต้องการการทำตามแบบ recursive ใช้ `follow-deep`
+> Goal: if the task needs recursive follow-through, use `follow-deep`
 
-1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `follow-deep`
-2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `follow-deep`
-3. บันทึกผลลัพธ์สรุป
+1. If the selected deep- workflows have complex sub-workflows → run `follow-deep`
+2. If the selected deep- workflows are straightforward → no need for `follow-deep`
+3. Record the summarized results
 
 ## Rules
 
 ### 1. When To Use Deep Workflows
 
-- ใช้ `deep-*` workflows เมื่อ task มีความซับซ้อนสูง หรือ risk สูง
-- ไม่ใช้ `deep-*` workflows สำหรับ task ง่ายๆ ที่ทำได้โดยตรง
-- ถ้าไม่แน่ใจ → ทำ `deep-thinking` เพื่อพิจารณาก่อนเลือก
+- Use `deep-*` workflows when the task is highly complex or high risk
+- Do not use `deep-*` workflows for simple tasks that can be done directly
+- If unsure → run `deep-thinking` to consider before choosing
 
 ### 2. Selection Criteria
 
-- เลือกเฉพาะ deep- workflows ที่เกี่ยวข้องกับ task จริง
-- ไม่เรียกทุก deep- workflows เสมอ — เลือกตาม context
-- ถ้า task เกี่ยวกับ review → ใช้ `deep-review` ไม่ใช่ `deep-analyze`
-- ถ้า task เกี่ยวกับ analysis ที่ต้อง scripts → ใช้ `deep-analyze` (รวม scripts/review CLI แล้ว)
+- Select only the deep- workflows genuinely relevant to the task
+- Do not always call every deep- workflow — choose based on context
+- If the task is about review → use `deep-review`, not `deep-analyze`
+- If the task is about analysis needing scripts → use `deep-analyze` (scripts/review CLI already merged into it)
 
 ### 3. Parallel Execution
 
-- ถ้าเลือกหลาย deep- workflows ที่ independent → ใช้ `follow-parallel`
-- จำกัด parallel operations ไม่เกิน 10 ต่อ batch
-- ถ้า deep- workflows มี dependency → ทำตามลำดับ
+- If several independent deep- workflows are selected → use `follow-parallel`
+- Limit parallel operations to at most 10 per batch
+- If deep- workflows have dependencies → run them in order
 
 ### 4. Deep Follow Integration
 
-- ใช้ `follow-deep` เมื่อ deep- workflows มี sub-workflows ซับซ้อน
-- ไม่ใช้ `follow-deep` สำหรับ deep- workflows ที่ตรงไปตรงมา
-- `follow-deep` รองรับทั้ง workflows และ skills แบบ recursive
+- Use `follow-deep` when deep- workflows have complex sub-workflows
+- Do not use `follow-deep` for straightforward deep- workflows
+- `follow-deep` supports recursive traversal of both workflows and skills
 
 ## Expected Outcome
 
-- deep- workflows ที่เกี่ยวข้องถูกเลือกและ execute อย่างมีประสิทธิภาพ
-- ไม่เรียก deep- workflows ที่ไม่จำเป็น
-- Independent deep- workflows รัน parallel ลด total execution time
-- ผลลัพธ์จาก deep- workflows ถูกบันทึกและสรุป
+- The relevant deep- workflows are selected and executed efficiently
+- Unnecessary deep- workflows are not invoked
+- Independent deep- workflows run in parallel, reducing total execution time
+- Results from the deep- workflows are recorded and summarized
 

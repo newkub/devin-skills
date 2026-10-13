@@ -1,6 +1,6 @@
 ---
 name: follow-create-web
-description: เลือกและสร้าง web project ตามประเภท landing, saas, paas หรือ framework ที่ระบุ
+description: Select and create a web project by type — landing, saas, paas, or a given framework
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
@@ -18,14 +18,14 @@ related:
 ---
 ## Goal
 
-เลือกประเภท web project ทีเหมาะสมและส่งต่อให้ skill ทีถูกต้อง
+Choose the right web project type and hand the work off to the correct skill
 
 ## Scope
 
-- รับ requirement และระบุประเภท web: landing, saas, paas
-- ส่งต่องานสร้าง project ไปยัง skill ที่เหมาะสม
-- ไม่ลงมือ implement เองโดยตรง
-- เพิ่ม WebMCP tools ให้เว็บที่มีอยู่ (page-provided agent tools) → `/follow-create-web-mcp`
+- Take the requirements and classify the web project: landing, saas, paas
+- Delegate project creation to the appropriate skill
+- Never implement the project directly yourself
+- Add WebMCP tools to an existing site (page-provided agent tools) → `/follow-create-web-mcp`
 
 ### Framework Skills
 
@@ -38,88 +38,88 @@ related:
 | TanStack Start (Solid) | `/follow-solid-framework` |
 | Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
 
-- Default toolchain: `vite` (Rolldown-powered ตั้งแต่ v8) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Default toolchain: `vite` (Rolldown-powered since v8) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Gather Requirements
 
-> Goal: เข้าใจ web project
+> Goal: understand the web project
 
-1. รับชื่อ project, target users, และ feature list
-2. ระบุ integrations ทีต้องการ: auth, payments, dashboard, CMS, analytics
-3. ระบุ SSR, SPA, หรือ full-stack
-4. ถ้า user ไม่รู้อยากได้ web แบบไหน → ถามก่อนดำเนินการ
-5. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน framework/toolchain versions ล่าสุดก่อนเลือก stack
+1. Collect the project name, target users, and feature list
+2. Identify the required integrations: auth, payments, dashboard, CMS, analytics
+3. Determine SSR, SPA, or full-stack
+4. If the user is unsure what kind of web project they want → ask before proceeding
+5. Run `/deep-research` + `/follow-best-practice` to confirm the latest framework/toolchain versions before choosing a stack
 
 ### 2. Choose Web Type
 
-> Goal: เลือกประเภท web
+> Goal: choose the web type
 
-1. ถ้าเป็น static info นำเสนอข้อมูล → สร้างแบบ landing page ตาม flow ของ skill นี้
-2. ถ้ามี services + pricing + auth + dashboard → สร้างแบบ SaaS ตาม flow ของ skill นี้
-3. ถ้าเป็น saas + advanced UI/UX → สร้างแบบ PaaS/advanced ตาม flow ของ skill นี้
-4. ถ้าต้องการ TUI Rust → ทำ `/follow-create-tui-ratatui`
-5. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-framework`
+1. Static informational content → build a landing page following this skill's flow
+2. Services + pricing + auth + dashboard → build a SaaS following this skill's flow
+3. SaaS plus advanced UI/UX → build a PaaS/advanced app following this skill's flow
+4. If a Rust TUI is required → run `/follow-create-tui-ratatui`
+5. If the stack is unclear → use the default `/follow-solid-framework`
 
 ### 3. Delegate And Validate
 
-> Goal: ส่งต่องานและตรวจสอบ
+> Goal: hand off the work and verify it
 
-1. เรียก skill ทีเลือกพร้อม requirements ทีบันทึกไว้
-2. ตรวจสอบว่า skill ทำงานครบถ้วนตาม expected outcome
-3. ทำ `/follow-robots-txt` ก่อน deploy เพื่อตั้งค่า `robots.txt` ตามสถานะ site
-4. ทำ `/deep-validate` ถ้ามี complex flows
+1. Invoke the chosen skill with the recorded requirements
+2. Verify the skill completed everything in its expected outcome
+3. Run `/follow-robots-txt` before deploy to set `robots.txt` according to site status
+4. Run `/deep-validate` if there are complex flows
 
 ## Rules
 
 ### 1. Stack Defaults
 
-- ถ้า user ไม่ระบุ stack → ใช้ SolidJS + TanStack + oRPC + Elysia + UnoCSS สำหรับ saas/paas และ SolidJS + TanStack + UnoCSS สำหรับ landing
-- ถ้า user ระบุ stack อื่น → ทำตาม stack นั้น
+- If the user specifies no stack → use SolidJS + TanStack + oRPC + Elysia + UnoCSS for saas/paas, and SolidJS + TanStack + UnoCSS for landing
+- If the user specifies another stack → follow that stack
 
 ### 2. Quality
 
-- ทำ `/follow-single-responsibility` หลังจากสร้าง major components
-- ทำ `/deep-review` และ `/deep-review` สำหรับ SEO/bundle
-- ทำ `/deep-review` ก่อน deploy
-- ทำ `/implement-to-production` หลัง website เสร็จ
+- Run `/follow-single-responsibility` after creating major components
+- Run `/deep-review` and `/deep-review` for SEO/bundle
+- Run `/deep-review` before deploy
+- Run `/implement-to-production` after the website is finished
 
 ### 3. Safety
 
-- ไม่ commit secrets ลง repository
-- ใช้ `/follow-secret-manager` สำหรับ API keys, DB URLs และ secrets
-- ใช้ `environment variables` สำหรับ non-sensitive config
-- ถ้ามี destructive changes → dry run ก่อน
+- Never commit secrets into the repository
+- Use `/follow-secret-manager` for API keys, DB URLs, and secrets
+- Use `environment variables` for non-sensitive config
+- If there are destructive changes → dry run first
 
 ### 4. Route Structure
 
-- โครง `src/routes/` mirror URL จริง — folder = path segment (`settings/` → `/settings/*`, `business/$id.tsx` → `/business/:id`)
-- ใช้ `(group)` เฉพาะเมื่อเป็น pathless layout/guard boundary ที่แบก `route.tsx` ร่วมของหลาย route (เช่น `(authed)` ครอบ route ที่ต้อง login) — 1 group = 1 layout boundary
-- ห้ามใช้ `(group)` เพื่อจัดไฟล์อย่างเดียวโดยไม่มี `route.tsx` — ถ้าไม่มี layout ร่วมให้ flatten ออกตาม URL
+- Structure `src/routes/` to mirror real URLs — a folder = a path segment (`settings/` → `/settings/*`, `business/$id.tsx` → `/business/:id`)
+- Use `(group)` only when it is a pathless layout/guard boundary carrying a `route.tsx` shared by several routes (e.g. `(authed)` wrapping login-required routes) — 1 group = 1 layout boundary
+- Never use `(group)` just to organize files without a `route.tsx` — if there is no shared layout, flatten the folders to match the URL
 
 ### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers)
-- ใช้ backticks สำหรับ paths, commands, skill names
-- รายงานด้วย `/report`
+- Do not use `**` (bold markers)
+- Use backticks for paths, commands, and skill names
+- Report with `/report`
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-lib-unocss ถ้าจำเป็น
-- ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
-- ใช้ /follow-create-web-mcp ถ้าจำเป็น
-- ใช้ /follow-tool-devframe ถ้าเว็บต้องการ devtools (inspector/analyzer)
-- ใช้ /test-component สำหรับ component tests และ /test-e2e สำหรับ user flows
+- Use /deep-review if needed
+- Use /deep-review if needed
+- Use /follow-lib-unocss if needed
+- Use /follow-design-system if needed
+- Use /deep-review if needed
+- Use /follow-service-cloudflare if deploying on Cloudflare
+- Use /run-dev if needed
+- Use /follow-create-plugins if needed
+- Use /follow-create-web-mcp if needed
+- Use /follow-tool-devframe if the site needs devtools (inspector/analyzer)
+- Use /test-component for component tests and /test-e2e for user flows
 
 ## Expected Outcome
 
-- ประเภท web ถูกเลือกตาม requirements
-- Project ถูกสร้างโดย skill ทีเหมาะสม
-- Type safety ระหว่าง client และ server
-- Tests ผ่านหรือมี plan ทีชัดเจน
-- พร้อม deploy หรือ deploy สำเร็จ
+- Web type chosen according to the requirements
+- Project created by the appropriate skill
+- Type safety between client and server
+- Tests passing, or a clear plan for them
+- Ready to deploy, or already deployed successfully

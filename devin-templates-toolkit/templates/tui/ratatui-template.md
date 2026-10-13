@@ -20,4 +20,4 @@ ratatui = "0.29"
 
 1. Copy to `apps/tui/<app-name>/`
 2. Replace `<app-name>`
-3. รัน `cargo run`
+3. Run `cargo run`

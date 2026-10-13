@@ -1,6 +1,6 @@
 ---
 name: deep-validate-report-findings
-description: รวม findings จากทุก dimension เป็น severity matrix เดียว — shared report สำหรับ check-* workflows
+description: Combine findings from all dimensions into one severity matrix — shared report for check-* workflows
 argument-hint: "[scope]"
 related:
   - report
@@ -10,46 +10,46 @@ related:
 
 ## Goal
 
-รวม findings จาก `check-*` workflows ทุก dimension เป็น report เดียว — severity matrix เรียงตามความรุนแรง พร้อม recommendations
+Aggregate findings from all `check-*` workflow dimensions into a single report — a severity matrix sorted by impact, with recommendations
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ `report` หรือ `check-*` workflow ต้องการ emit findings
-- ครอบคลุม: findings จากทุก dimension หรือ dimension เดียว (ถ้า dispatch เดี่ยว)
+- Used when `/deep-validate` dispatches to `report`, or when a `check-*` workflow needs to emit findings
+- Covers: findings from every dimension, or a single dimension (for a standalone dispatch)
 
 ## Execute
 
 ### 1. Aggregate Findings
 
-> Goal: รวม findings ทุก dimension เข้า pool เดียว
+> Goal: pool all dimension findings into one set
 
-1. รวม findings จากแต่ละ `check-*` workflow ที่รัน — พร้อม dimension tag
-2. dedupe findings ที่ root cause เดียวกันข้าม dimensions (เช่น type error ที่เป็น correctness+type-safety)
-3. normalize severity scale: Critical / High / Medium / Low
+1. Collect findings from each `check-*` workflow that ran — with its dimension tag
+2. Dedupe findings sharing the same root cause across dimensions (e.g. a type error that is also correctness+type-safety)
+3. Normalize the severity scale: Critical / High / Medium / Low
 
 ### 2. Build Severity Matrix
 
-> Goal: ตารางเดียวเรียงตาม impact
+> Goal: one table sorted by impact
 
-1. ตาราง: `No.`, `Dimension`, `Finding`, `Severity`, `Location`, `Recommendation`
-2. เรียง Critical → High → Medium → Low — dimension เป็น secondary sort
-3. สรุป counts ต่อ dimension + ต่อ severity ด้านบนตาราง
+1. Table: `No.`, `Dimension`, `Finding`, `Severity`, `Location`, `Recommendation`
+2. Sort Critical → High → Medium → Low — dimension is the secondary sort
+3. Summarize counts per dimension + per severity above the table
 
 ### 3. Summarize And Suggest
 
-> Goal: ปิดท้ายด้วยสิ่งที่ดี + next actions
+> Goal: close with what is good + next actions
 
-1. สรุปสิ่งที่ดีอยู่แล้วเสมอ (per dimension)
-2. recommendations ที่ actionable เรียงตาม priority
-3. ถ้าต้องเก็บถาวร → ทำ `/create-report-in-dot-devin`
-4. ทำ `/suggest-next-action` (เช่น `/resolve-errors` สำหรับ Critical findings)
+1. Always summarize what is already good (per dimension)
+2. Actionable recommendations sorted by priority
+3. To persist the report → run `/create-report-in-dot-devin`
+4. Run `/suggest-next-action` (e.g. `/resolve-errors` for Critical findings)
 
 ## Rules
 
-- ทุก finding มี evidence (file:line) — ตาม contract ของ check-* workflows
-- ไม่ปรับ severity ตอน aggregate — เก็บค่าที่ workflow ให้มา
-- single-dimension call ก็ใช้ matrix format เดียวกัน
+- Every finding has evidence (file:line) — per the check-* workflows' contract
+- Do not adjust severity during aggregation — keep the value the workflow assigned
+- A single-dimension call uses the same matrix format
 
 ## Expected Outcome
 
-- Severity matrix รวมทุก dimension พร้อม counts + recommendations
+- Combined severity matrix across all dimensions with counts + recommendations

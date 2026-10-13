@@ -1,6 +1,6 @@
 ---
 name: run-docs
-description: รัน documentation site และแก้ไขข้อผิดพลาด
+description: Run a documentation site and fix errors
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -14,86 +14,86 @@ related:
 
 ## Goal
 
-รัน documentation site และแก้ไขข้อผิดพลาดที่เกิดขึ้น
+Run the documentation site and fix any errors that occur
 
 ## Scope
 
-ใช้สำหรับ documentation site ที่สร้างด้วย VitePress, Docus, หรือ documentation frameworks อื่นๆ
+Use for documentation sites built with VitePress, Docus, or other documentation frameworks.
 
-ดูเพิ่มเติม: /deep-review
+See also: /deep-review
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (docs)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (docs)
 
 ### 1. Check Documentation Setup
 
 > Goal: Check Documentation Setup
 
-1. ตรวจสอบว่ามี documentation config หรือไม่ (VitePress, Docus, ฯลฯ)
-2. ถ้าเป็น VitePress ให้ทำ `/follow-tool-vitepress` เพื่อตรวจสอบ configuration
-3. ตรวจสอบ package manifest สำหรับ dev script
-4. ตรวจสอบว่า dependencies ที่จำเป็นถูกติดตั้งแล้ว
-5. ตรวจสอบว่า content structure ครบถ้วน
+1. Check whether a documentation config exists (VitePress, Docus, etc.)
+2. If it is VitePress, run `/follow-tool-vitepress` to verify the configuration
+3. Check the package manifest for a dev script
+4. Check that the required dependencies are installed
+5. Check that the content structure is complete
 
 ### 2. Update Documentation
 
 > Goal: Update Documentation
 
-1. ทำ `/update-vitepress-docs` เพื่อสร้างและอัพเดท docs site (content + config) — หรือ `/update-docs` ถ้าเป็น markdown ล้วน
-2. ทำ `/deep-review` เพื่อปรับปรุง SEO สำหรับ documentation site
-3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
+1. Run `/update-vitepress-docs` to create and update the docs site (content + config) — or `/update-docs` if it is pure markdown
+2. Run `/deep-review` to improve SEO for the documentation site
+3. Check that the documentation is built correctly
 
 ### 3. Run Dev Server
 
 > Goal: Run Dev Server
 
-1. ดำเนินการรัน dev server ด้วยคำสั่งที่เหมาะสมตาม documentation framework
-2. ถ้ามี errors ให้รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ
-3. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
-   - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
-   - ถ้าเป็น isolated errors → `/resolve-errors`
-4. ติดตามและแก้ไขข้อผิดพลาดที่เกิดขึ้นทันทีจนกว่าจะผ่าน
-5. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
+1. Run the dev server with the appropriate command for the documentation framework
+2. If there are errors, run `/deep-review` to analyze and prioritize them
+3. `/deep-review` decides which workflow to continue with:
+   - If they are cascade issues → `/deep-debug` → `/resolve-errors`
+   - If they are isolated errors → `/resolve-errors`
+4. Monitor and fix errors immediately until they pass
+5. Check that the dev server starts successfully
 
-### 4. Open Browser and Watch (ถ้าจำเป็น)
+### 4. Open Browser and Watch (if needed)
 
-> Goal: Open Browser and Watch (ถ้าจำเป็น)
+> Goal: Open Browser and Watch (if needed)
 
-1. ถ้าต้องเปิด URL ให้เลือก:
-   - ถ้าต้องการตรวจสอบผ่าน browser automation → รัน `/watch-browser-and-fix`
-   - ถ้าต้องการเปิดใน browser เท่านั้น → รัน `/open-web`
-   - ถ้าต้องการ watch terminal ทุก 5 วินาที → รัน `/watch-terminal`
-2. ตรวจสอบว่า documentation site โหลดได้จริง
-3. ทดสอบเข้าถึง documentation site และตรวจสอบว่า features หลักทำงานได้
+1. If a URL needs to be opened, choose:
+   - To verify via browser automation → run `/watch-browser-and-fix`
+   - To just open it in the browser → run `/open-web`
+   - To watch the terminal every 5 seconds → run `/watch-terminal`
+2. Check that the documentation site actually loads
+3. Access the documentation site and check that the main features work
 
 ### 5. Verify
 
 > Goal: Verify
 
-1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
-2. ตรวจสอบว่า navigation และ content แสดงผลถูกต้อง
-3. ยืนยันว่าไม่มี runtime errors ใน console
-4. ตรวจสอบว่า styling และ theme ทำงานได้
+1. Confirm there are no critical errors blocking functionality
+2. Check that navigation and content render correctly
+3. Confirm there are no runtime errors in the console
+4. Check that styling and the theme work
 
 ### 6. Report
 
 > Goal: Report
 
-1. รัน `/report` เพื่อวาด terminal output ด้วย ANSI codes
-2. รัน `/report` เพื่อจัดรูปแบบตาราง
-3. แสดงผลลัพธ์ที่จัดรูปแบบแล้ว
+1. Run `/report` to render terminal output with ANSI codes
+2. Run `/report` to format a table
+3. Show the formatted results
 
 ## Rules
 
-- ใช้คำสั่งที่เหมาะสมกับ documentation framework
-- ติดตามและแก้ไขข้อผิดพลาดทันทีจนกว่าจะผ่าน
-- ตรวจสอบว่า dev server เริ่มต้นสำเร็จก่อนเปิด browser
-- ต้องทำ `/follow-tool-vitepress` ก่อนเพื่อสร้างและอัพเดทเอกสาร
+- Use the command appropriate for the documentation framework
+- Monitor and fix errors immediately until they pass
+- Check that the dev server starts successfully before opening the browser
+- Run `/follow-tool-vitepress` first to create and update the docs
 
 ## Expected Outcome
 
-- Documentation site ทำงานได้
-- ไม่มี critical errors
-- Navigation และ content แสดงผลถูกต้อง
-- Styling และ theme ทำงานได้
+- The documentation site works
+- No critical errors
+- Navigation and content render correctly
+- Styling and the theme work

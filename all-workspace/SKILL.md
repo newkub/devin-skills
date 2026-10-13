@@ -1,6 +1,6 @@
 ---
 name: all-workspace
-description: รัน task เดียวกันกับทุก workspace ใน monorepo จนครบทุก package
+description: Run the same task across every workspace in a monorepo until all packages are done
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -16,11 +16,11 @@ related:
 
 ## Goal
 
-ทำงานกับทุก workspace ใน monorepo อย่างเป็นระบบ
+Work systematically across every workspace in a monorepo.
 
 ## Scope
 
-ใช้สำหรับทำงานกับทุก workspace ใน monorepo ตามลำดับที่เหมาะสม
+Used for working across every workspace in a monorepo in the appropriate order.
 
 ## Execute
 
@@ -28,65 +28,65 @@ related:
 
 > Goal: Discover Workspaces
 
-ค้นหาและระบุ workspaces ทั้งหมดใน monorepo
+Find and identify all workspaces in the monorepo.
 
-1. ทำ `/deep-analyze` เพื่อดู workspace configuration ทั้งหมด
-2. อ่าน package manifest เพื่อดูว่ามี workspace อะไรบ้าง
-3. จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน, applications ทีหลัง)
+1. Run `/deep-analyze` to review the full workspace configuration
+2. Read the package manifests to see what workspaces exist
+3. Order the workspaces by importance (foundation packages first, applications later)
 
 ### 2. Process Each Workspace
 
 > Goal: Process Each Workspace
 
-ทำงานกับแต่ละ workspace ตามลำดับ
+Work through each workspace in order.
 
-1. ทำงานกับ workspaces ที่เป็น foundation ก่อน (shared packages, utilities)
-2. ทำงานกับ workspaces ที่มี dependencies ซับซ้อนทีหลัง
-3. หลีกเลี่ยง circular dependencies ระหว่าง workspaces
-4. ถ้า task ต่อ workspace เป็นงานอิสระและจำนวน workspaces เยอะ → ทำ `/use-subagents` dispatch agent ละ workspace/batch เพื่อทำแบบ parallel
-5. ถ้า task คือการจัดโครงสร้างไฟล์/โฟลเดอร์ → ทำ `/refactor` structure scope ต่อ workspace ทีละตัว
+1. Handle the foundation workspaces first (shared packages, utilities)
+2. Handle workspaces with complex dependencies later
+3. Avoid circular dependencies between workspaces
+4. If the per-workspace task is independent and there are many workspaces → run `/use-subagents` to dispatch one agent per workspace/batch for parallel execution
+5. If the task is reorganizing files/folders → run `/refactor` structure scope on each workspace one at a time
 
 ### 3. Verify Completion
 
 > Goal: Verify Completion
 
-ตรวจสอบว่าทุก workspace ได้รับการประมวลผลครบถ้วน
+Check that every workspace was processed completely.
 
-1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-2. ตรวจสอบว่าไม่มี workspace ที่ถูกข้าม
-3. ตรวจสอบว่าไม่มี workspace ที่มีปัญหาค้างคา
+1. Run `/deep-validate` to verify correctness
+2. Check that no workspace was skipped
+3. Check that no workspace has an unresolved issue
 
 ## Rules
 
 ### 1. Workspace Processing Order
 
-จัดลำดับการประมวลผลตามความสำคัญ
+Order the processing by importance.
 
-- ทำ workspaces ที่เป็น foundation ก่อน (shared packages, utilities)
-- ทำ workspaces ที่มี dependencies ซับซ้อนทีหลัง
-- หลีกเลี่ยง circular dependencies ระหว่าง workspaces
+- Handle the foundation workspaces first (shared packages, utilities)
+- Handle workspaces with complex dependencies later
+- Avoid circular dependencies between workspaces
 
 ### 2. Error Handling
 
-จัดการข้อผิดพลาดอย่างเป็นระบบ
+Handle errors systematically.
 
-- บันทึก workspaces ที่มีปัญหาไว้ตรวจสอบ
-- ทำ `/resolve-errors` เพื่อแก้ไขปัญหาใน workspaces
-- ตรวจสอบว่าการประมวลผลไม่ทำให้เกิดปัญหาใหม่
+- Record workspaces with problems for review
+- Run `/resolve-errors` to fix issues in the workspaces
+- Check that processing does not introduce new problems
 
 ### 3. Batch Operations
 
-ใช้ batch processing เพื่อเพิ่มประสิทธิภาพ
+Use batch processing to improve efficiency.
 
-- อ่าน workspaces แบบ parallel เมื่อเป็นไปได้
-- ประมวลผล workspaces แบบ sequential เพื่อหลีกเลี่ยง conflicts
-- จัดกลุ่ม workspaces ที่มีลักษณะเดียวกันเพื่อประมวลผลร่วมกัน
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
+- Read workspaces in parallel when possible
+- Process workspaces sequentially to avoid conflicts
+- Group workspaces of similar shape to process them together
+- Use /run-build if needed
+- Use /run-test all if needed
 
 ## Expected Outcome
 
-- ทุก workspace ใน monorepo ได้รับการประมวลผลครบถ้วน
-- การประมวลผลเป็นไปตาม workflow ที่กำหนด
-- ไม่มี workspace ที่ถูกข้ามหรือมีปัญหาค้างคา
-- Monorepo อยู่ในสถานะที่ถูกต้องหลังการประมวลผล
+- Every workspace in the monorepo is processed completely
+- Processing follows the defined workflow
+- No workspace is skipped or left with an unresolved issue
+- The monorepo is in a correct state after processing

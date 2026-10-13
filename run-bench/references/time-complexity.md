@@ -2,11 +2,11 @@
 
 ## Goal
 
-วิเคราะห์ empirical growth ของ benchmarks ตรงกับ theoretical complexity หรือไม
+Analyze whether the empirical growth of benchmarks matches their theoretical complexity
 
 ## Execute
 
-1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
-2. เปรียบเทียบกับ Big-O complexity ที่คาดไว้
-3. หา benchmarks ที่มี variance สูงหรือ outliers
-4. ระบุ potential optimizations สำหรับ slow benchmarks
+1. Review each benchmark's result and identify the slow and fast benchmarks
+2. Compare against the expected Big-O complexity
+3. Find benchmarks with high variance or outliers
+4. Identify potential optimizations for slow benchmarks

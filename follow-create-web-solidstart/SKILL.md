@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-solidstart
-description: "สร้าง SolidStart app SSR ผ่าน nitro/vite — streaming HTML, assets, hydration"
+description: "Build SolidStart SSR apps via nitro/vite — streaming HTML, assets, hydration"
 argument-hint: "[project-name]"
 related:
   - follow-lib-solidjs
@@ -15,116 +15,116 @@ related:
 
 ## Goal
 
-สร้าง SolidStart application ที่ทำ SSR ผ่าน Vite plugin `nitro/vite` ตาม pattern จาก nitro.build example `vite-ssr-solidstart` ให้ได้ streaming HTML, asset management และ client hydration
+Build a SolidStart application that does SSR through the Vite plugin `nitro/vite`, following the nitro.build example `vite-ssr-solidstart`, to get streaming HTML, asset management, and client hydration
 
 ## Scope
 
-ใช้สำหรับสร้าง SolidStart (SolidJS meta-framework) project ที่ใช้ Vite เป็น build tool และ Nitro เป็น server engine ผ่าน `@solidjs/start` v2 + `nitro` v3 — อ้างอิง https://nitro.build/examples/vite-ssr-solidstart
+Use for creating SolidStart (SolidJS meta-framework) projects that use Vite as the build tool and Nitro as the server engine via `@solidjs/start` v2 + `nitro` v3 — see https://nitro.build/examples/vite-ssr-solidstart
 
-- Packages: `@solidjs/start`, `@solidjs/router`, `@solidjs/meta`, `solid-js`, `nitro` (v3 มี `nitro/vite` plugin), `vite` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `@solidjs/start`, `@solidjs/router`, `@solidjs/meta`, `solid-js`, `nitro` (v3 has the `nitro/vite` plugin), `vite` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ยืนยัน stack ก่อนสร้าง
+> Goal: Confirm the stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ยืนยันว่าใช้ SolidJS + SolidStart + Nitro + Vite
-3. ทำ `/follow-lib-solidjs` สำหรับ component patterns
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Confirm the use of SolidJS + SolidStart + Nitro + Vite
+3. Follow `/follow-lib-solidjs` for component patterns
 
 ### 2. Setup Project
 
-> Goal: สร้าง project structure และติดตั้ง dependencies
+> Goal: Create the project structure and install dependencies
 
-1. สร้าง `package.json` ด้วย `"type": "module"` และ scripts `dev: "vite dev"`, `build: "vite build"`
-2. ติดตั้ง dependencies ด้วย `bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite` (`@solidjs/start` 2.x stable แล้ว — ไม่ต้องใช้ `@alpha`; `nitro` v3 มี `nitro/vite` plugin — เช็คเวอร์ชันล่าสุดด้วย `/deep-research`)
-3. ตั้งค่า `engines.node >= 22`
+1. Create `package.json` with `"type": "module"` and the scripts `dev: "vite dev"`, `build: "vite build"`
+2. Install dependencies with `bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite` (`@solidjs/start` 2.x is stable — no need for `@alpha`; `nitro` v3 ships the `nitro/vite` plugin — check the latest version with `/deep-research`)
+3. Set `engines.node >= 22`
 
 ### 3. Configure Vite And TypeScript
 
-> Goal: ตั้งค่า `vite.config.ts` และ `tsconfig.json`
+> Goal: Configure `vite.config.ts` and `tsconfig.json`
 
-1. สร้าง `vite.config.ts` ด้วย plugins `solidStart()` จาก `@solidjs/start/config` และ `nitro()` จาก `nitro/vite`
-2. ตั้งค่า `tsconfig.json` ด้วย `jsx: "preserve"`, `jsxImportSource: "solid-js"`, `moduleResolution: "bundler"`, `strict: true`
-3. เพิ่ม `types: ["@solidjs/start/env"]` และ path alias `"~/*": ["./src/*"]`
+1. Create `vite.config.ts` with the `solidStart()` plugin from `@solidjs/start/config` and `nitro()` from `nitro/vite`
+2. Configure `tsconfig.json` with `jsx: "preserve"`, `jsxImportSource: "solid-js"`, `moduleResolution: "bundler"`, `strict: true`
+3. Add `types: ["@solidjs/start/env"]` and the path alias `"~/*": ["./src/*"]`
 
 ### 4. Create App Shell
 
-> Goal: สร้าง app component ที่รันทั้ง server และ client
+> Goal: Create the app component that runs on both server and client
 
-1. สร้าง `src/app.tsx` ด้วย `Router` จาก `@solidjs/router` และ `FileRoutes` จาก `@solidjs/start/router`
-2. Wrap root ด้วย `MetaProvider` + `Title` จาก `@solidjs/meta` และ `Suspense`
-3. สร้าง `src/app.css` สำหรับ global styles
+1. Create `src/app.tsx` with `Router` from `@solidjs/router` and `FileRoutes` from `@solidjs/start/router`
+2. Wrap the root with `MetaProvider` + `Title` from `@solidjs/meta` and `Suspense`
+3. Create `src/app.css` for global styles
 
 ### 5. Create Server And Client Entries
 
-> Goal: สร้าง entry points สำหรับ SSR และ hydration
+> Goal: Create entry points for SSR and hydration
 
-1. สร้าง `src/entry-server.tsx` ด้วย `createHandler` + `StartServer` จาก `@solidjs/start/server` — render document shell พร้อม `assets`, `children`, `scripts`
-2. สร้าง `src/entry-client.tsx` ด้วย `mount` + `StartClient` จาก `@solidjs/start/client` — hydrate ที่ `#app`
-3. ใส่ `// @refresh reload` ที่บรรทัดแรกของทั้งสอง entry
+1. Create `src/entry-server.tsx` with `createHandler` + `StartServer` from `@solidjs/start/server` — render the document shell with `assets`, `children`, and `scripts`
+2. Create `src/entry-client.tsx` with `mount` + `StartClient` from `@solidjs/start/client` — hydrate at `#app`
+3. Put `// @refresh reload` on the first line of both entries
 
 ### 6. Create Routes
 
-> Goal: สร้าง file-based routes
+> Goal: Create file-based routes
 
-1. สร้าง `src/routes/index.tsx` สำหรับ home page
-2. สร้าง `src/routes/[...404].tsx` สำหรับ catch-all พร้อม `HttpStatusCode` จาก `@solidjs/start`
-3. ใช้ `Title` จาก `@solidjs/meta` ในทุก route
+1. Create `src/routes/index.tsx` for the home page
+2. Create `src/routes/[...404].tsx` for the catch-all with `HttpStatusCode` from `@solidjs/start`
+3. Use `Title` from `@solidjs/meta` in every route
 
 ### 7. Run And Verify
 
-> Goal: dev server และ build ทำงาน
+> Goal: The dev server and build work
 
-1. รัน `bun run dev` (หรือ `vite dev`) แล้วเปิด browser ตรวจ SSR HTML
-2. รัน `bun run build` เพื่อสร้าง production output ผ่าน Nitro — output อยู่ที่ `.output/` รันด้วย `bun .output/server/index.mjs` ได้
-3. ตรวจว่า hydration ทำงาน (view-source มี HTML จาก server)
+1. Run `bun run dev` (or `vite dev`) and open the browser to check the SSR HTML
+2. Run `bun run build` to produce the production output via Nitro — the output lands in `.output/` and runs with `bun .output/server/index.mjs`
+3. Verify hydration works (view-source shows server-rendered HTML)
 
 ## Rules
 
 ### 1. Entry Points
 
-- `src/entry-server.tsx` ต้อง export `createHandler(() => <StartServer ... />)`
-- `src/entry-client.tsx` ต้องเรียก `mount(() => <StartClient />, document.getElementById("app")!)`
-- ใส่ `// @refresh reload` ที่บรรทัดแรกของทุก entry file
+- `src/entry-server.tsx` must export `createHandler(() => <StartServer ... />)`
+- `src/entry-client.tsx` must call `mount(() => <StartClient />, document.getElementById("app")!)`
+- Put `// @refresh reload` on the first line of every entry file
 
 ### 2. Plugins
 
-- ใช้ `nitro()` จาก `nitro/vite` ใน `vite.config.ts` เสมอ — Nitro ทำหน้าที่ server engine
-- ใช้ `solidStart()` จาก `@solidjs/start/config` คู่กับ `nitro()`
-- ห้ามเพิ่ม dev server middleware นอก Nitro hooks — ดู `/follow-create-nitro-plugin`
+- Always use `nitro()` from `nitro/vite` in `vite.config.ts` — Nitro serves as the server engine
+- Use `solidStart()` from `@solidjs/start/config` together with `nitro()`
+- Never add dev server middleware outside Nitro hooks — see `/follow-create-nitro-plugin`
 
 ### 3. SolidJS Patterns
 
-- ทำตาม `/follow-lib-solidjs` สำหรับ reactivity (`createSignal`, `createStore`, `createResource`)
-- ใช้ `FileRoutes` สำหรับ file-based routing ไม่สร้าง route config เอง
-- ใช้ `Suspense` ใน root layout เสมอ
+- Follow `/follow-lib-solidjs` for reactivity (`createSignal`, `createStore`, `createResource`)
+- Use `FileRoutes` for file-based routing; don't hand-build route config
+- Always use `Suspense` in the root layout
 
 ### 4. Bun Native APIs
 
-- ใช้ Bun เป็น package manager และ script runner เสมอ (`bun install`, `bun run dev`, `bun run build`)
-- ถ้าต้องเขียน server code เองนอก Nitro (เช่น scripts, tools) → ใช้ Bun native APIs ตาม `/use-bun-native-api` (`Bun.serve`, `Bun.file`, `Bun.spawn`, `$` shell)
-- Nitro production output รันด้วย Bun ได้โดยตรง (`bun .output/server/index.mjs`)
+- Always use Bun as the package manager and script runner (`bun install`, `bun run dev`, `bun run build`)
+- If you must write your own server code outside Nitro (e.g. scripts, tools) → use Bun native APIs per `/use-bun-native-api` (`Bun.serve`, `Bun.file`, `Bun.spawn`, `$` shell)
+- The Nitro production output runs directly with Bun (`bun .output/server/index.mjs`)
 
 ### 5. Safety
 
-- ไม่ commit secrets ลง repository — ใช้ environment variables
-- ถ้ามี destructive changes → dry run ก่อน
+- Never commit secrets to the repository — use environment variables
+- If there are destructive changes → dry run first
 
-- ใช้ /follow-lib-solidjs ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /use-bun-native-api ถ้าต้องเขียน Bun APIs เพิ่มเติม
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use /follow-lib-solidjs if needed
+- Use /follow-create-web if needed
+- Use /follow-tool-vite if needed
+- Use /follow-create-nitro-plugin if needed
+- Use /deep-review if needed
+- Use /use-bun-native-api if extra Bun APIs work are needed
+- Use /run-dev if needed
+- Use /follow-create-plugins if needed
 
 
 ## Expected Outcome
 
-- SolidStart + Nitro SSR project รัน dev server และ build ได้
-- SSR streaming HTML ทำงาน และ client hydration สำเร็จ
-- File-based routing พร้อม 404 catch-all route
-- TypeScript strict mode พร้อม `~/*` alias
+- A SolidStart + Nitro SSR project that runs a dev server and builds
+- SSR streaming HTML works and client hydration succeeds
+- File-based routing with a 404 catch-all route
+- TypeScript strict mode with the `~/*` alias

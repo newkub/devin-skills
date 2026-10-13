@@ -1,6 +1,6 @@
 ---
 name: follow-deep-review
-description: บังคับทำตาม deep-review — รัน/อ่าน findings ก่อนวางแผนหรือแก้ไขเสมอ
+description: Enforce following deep-review — run/read findings before planning or changing anything
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -11,60 +11,60 @@ related:
 
 ## Goal
 
-ให้แน่ใจว่างานต่อไปทำตาม `/deep-review` — มี findings ล่าสุดก่อนเสมอ และทุก action อ้างอิง findings จริง ไม่วางแผนหรือแก้ไขบนสมมติฐาน
+Ensure the next piece of work follows `/deep-review` — always have the latest findings first, and every action references real findings; never plan or change based on assumptions
 
 ## Scope
 
-ใช้ก่อน `/create-plan-in-dot-devin`, implementation, หรือ refactor ที่ต้องการ evidence จาก review — aggregate findings จาก `/deep-review` report หรือ dimensional reviews ที่เคยรัน
+Use before `/create-plan-in-dot-devin`, implementation, or refactoring that needs evidence from review — aggregate findings from a `/deep-review` report or dimensional reviews already run
 
-- ดูเพิ่มเติม: /deep-review, /deep-review
+- See also: /deep-review, /deep-review
 
 ## Execute
 
 ### 1. Check Existing Findings
 
-> Goal: หา review findings ล่าสุดที่มีอยู่
+> Goal: find the latest review findings that already exist
 
-1. ตรวจว่ามี deep-review findings ล่าสุดสำหรับ scope นี้หรือไม่ (report ใน session, report files, dimensional review results)
-2. ถ้า findings เก่าหรือครอบคลุมไม่พอ → ทำ `/deep-review` กับ scope นั้น
-3. ถ้ามี dimensional findings กระจายอยู่ → ทำ `/deep-review` รวมเป็น prioritized list
+1. Check whether recent deep-review findings exist for this scope (in-session report, report files, dimensional review results)
+2. If findings are stale or not broad enough → run `/deep-review` on that scope
+3. If dimensional findings are scattered → run `/deep-review` to consolidate them into a prioritized list
 
 ### 2. Extract Relevant Findings
 
-> Goal: เลือกเฉพาะ findings ที่เกี่ยวกับ scope งาน
+> Goal: select only findings relevant to the work scope
 
-1. กรอง findings ตาม scope: files, domains, severity ที่เกี่ยวข้อง
-2. จัดลำดับ: Critical/High ก่อน — findings เหล่านี้บังคับต้องมีในแผน
-3. ระบุ findings ที่ out of scope พร้อมเหตุผล — ห้ามทิ้งเงียบๆ
+1. Filter findings by scope: relevant files, domains, severity
+2. Prioritize: Critical/High first — these findings must be included in the plan
+3. Identify out-of-scope findings with a reason — never discard them silently
 
 ### 3. Follow Findings
 
-> Goal: map findings เข้ากับงานที่จะทำ
+> Goal: map findings to the work to be done
 
-1. ทุก Critical/High finding ใน scope ต้อง map เป็น task หรือ constraint ในแผน
-2. ระบุ findings ที่ block งานหลัก — ต้องแก้ก่อน หรือระบุ workaround
-3. ถ้า findings ขัดกับ requirements → หยุดและ `/ask-me`
+1. Every in-scope Critical/High finding must map to a task or constraint in the plan
+2. Identify findings that block the main work — fix them first, or state a workaround
+3. If findings conflict with the requirements → stop and `/ask-me`
 
 ### 4. Report
 
-> Goal: สรุปว่า findings ถูกนำไปใช้อย่างไร
+> Goal: summarize how the findings were used
 
-1. ทำ `/report` คอลัมน์: `No.`, `Finding`, `Severity`, `Action`, `Mapped To`
-2. ทำ `/suggest-next-action` — ปกติคือ `/create-plan-in-dot-devin` หรือ `/deep-review-then-fix`
+1. Run `/report` with columns: `No.`, `Finding`, `Severity`, `Action`, `Mapped To`
+2. Run `/suggest-next-action` — normally `/create-plan-in-dot-devin` or `/deep-review-then-fix`
 
 ## Rules
 
-- ห้ามเริ่ม planning/implementation โดยไม่มี findings ล่าสุด — ถ้าไม่มีให้รัน `/deep-review` ก่อน
-- ห้ามเลือกเฉพาะ findings ที่สะดวก — Critical/High ทั้งหมดต้องถูกจัดการหรือ escalate
-- Findings ต้อง traceable — ทุก action อ้างกลับถึง finding ต้นทางได้
-- Skill นี้ไม่แก้ไข findings — แค่รวบรวมและบังคับให้งานถัดไปทำตาม
+- Never start planning/implementation without the latest findings — if none exist, run `/deep-review` first
+- Never cherry-pick only convenient findings — all Critical/High findings must be addressed or escalated
+- Findings must be traceable — every action links back to its source finding
+- This skill does not fix findings — it only collects them and enforces that the next work follows them
 
-- ใช้ /deep-review-then-fix ถ้าจำเป็น
-- ใช้ /loop-until-complete ถ้าจำเป็น
+- Use /deep-review-then-fix if needed
+- Use /loop-until-complete if needed
 
 ## Expected Outcome
 
-- Findings ล่าสุดพร้อมใช้ก่อนงานหลักเสมอ
-- ทุก Critical/High finding ใน scope ถูก map เข้างาน
-- งานถัดไป (`/create-plan-in-dot-devin`, implementation) มี evidence base ชัดเจน
-- รายงาน mapping findings → actions ครบถ้วน
+- The latest findings are always ready before the main work starts
+- Every in-scope Critical/High finding is mapped to the work
+- The next task (`/create-plan-in-dot-devin`, implementation) has a clear evidence base
+- The findings → actions mapping report is complete

@@ -1,6 +1,6 @@
 # Bun Streams & Buffer APIs
 
-ใช้ Bun streams APIs สำหรับ stream operations
+Use Bun streams APIs for stream operations
 
 - `Bun.readableStreamTo*()` - Convert ReadableStream (toBlob, toArrayBuffer, toJSON, etc.)
 - `Bun.ArrayBufferSink` - Accumulate data into ArrayBuffer

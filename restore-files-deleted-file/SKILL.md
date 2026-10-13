@@ -1,6 +1,6 @@
 ---
 name: restore-files-deleted-file
-description: กู้ไฟล์ที่ถูกลบ — จาก recycle bin, git history หรือ editor backups
+description: Recover deleted files — from the recycle bin, git history, or editor backups
 argument-hint: "<path-or-name>"
 related:
   - restore-files
@@ -8,86 +8,86 @@ related:
 
 ## Goal
 
-กู้คืนไฟล์ที่ถูกลบโดยไม่ตั้งใจ — ลองหลายช่องทางตามลำดับ: recycle bin, git history, editor/IDE local history, backup — จนกว่าจะได้ไฟล์กลับหรือยืนยันว่าหายจริง
+Recover accidentally deleted files — try multiple channels in order: recycle bin, git history, editor/IDE local history, backups — until the file comes back or its loss is confirmed
 
 ## Scope
 
-- ใช้เมื่อไฟล์ถูกลบและต้องการกลับคืน — ทั้งที่เคย commit และที่ไม่เคย commit
-- ช่องทางตามลำดับความน่าจะเป็น: recycle bin → git history → editor local history → backups → undelete tools (last resort)
-- ไม่ครอบคลุม filesystem-level recovery (photorec ฯลฯ) — แนะนำแยกถ้าจำเป็น
+- Use when a file was deleted and needs to come back — whether it was committed or never committed
+- Channels in likelihood order: recycle bin → git history → editor local history → backups → undelete tools (last resort)
+- Does not cover filesystem-level recovery (photorec, etc.) — suggest it separately if needed
 
 ## Execute
 
 ### 1. Gather Facts
 
-> Goal: เข้าใจว่าไฟล์หายไปยังไง
+> Goal: Understand how the file went missing
 
-1. ระบุ path/name จาก argument หรือถาม user
-2. เช็ค: เคย commit เข้า git ไหม, ลบเมื่อไหร่, ลบผ่านอะไร (shell, IDE, git clean, script)
-3. หมายเหตุ: `Shift+Delete`/shell `rm` ข้าม recycle bin — git คือหวังหลักถ้าเคย track
+1. Determine the path/name from the argument or ask the user
+2. Check: was it ever committed to git, when was it deleted, and deleted via what (shell, IDE, git clean, script)
+3. Note: `Shift+Delete`/shell `rm` skip the recycle bin — git is the main hope if it was ever tracked
 
 ### 2. Try Recycle Bin
 
-> Goal: ช่องทางง่ายสุดก่อน
+> Goal: Easiest channel first
 
-1. ค้น recycle bin หาไฟล์: PowerShell `(New-Object -ComObject Shell.Application).NameSpace(0xA)` enumerate items
-2. ถ้าพบ → restore กลับ path เดิม
-3. ถ้าไม่พบ → ขั้นต่อไป
+1. Search the recycle bin for the file: PowerShell `(New-Object -ComObject Shell.Application).NameSpace(0xA)` enumerate items
+2. If found → restore to the original path
+3. If not found → next channel
 
 ### 3. Try Git History
 
-> Goal: กู้จาก git objects
+> Goal: Recover from git objects
 
-1. ทำ `/restore-files-from-git-log` — ค้น commit ที่ไฟล์ยังมี: `git log --all --diff-filter=D -- <path>` หรือ `-- "**/<name>"`
-2. `git show <commit>:<path>` restore content หรือ `git checkout <commit>~1 -- <path>`
-3. เช็ค stash และ reflog ด้วย — `git stash list`, `git fsck --unreachable` สำหรับ dangling objects
-4. ถ้าไฟล์ไม่เคย commit → ขั้นต่อไป
+1. Run `/restore-files-from-git-log` — find commits where the file still existed: `git log --all --diff-filter=D -- <path>` or `-- "**/<name>"`
+2. `git show <commit>:<path>` to restore the content, or `git checkout <commit>~1 -- <path>`
+3. Also check stash and reflog — `git stash list`, `git fsck --unreachable` for dangling objects
+4. If the file was never committed → next channel
 
 ### 4. Try Editor Local History
 
-> Goal: กู้จาก IDE/editor backups
+> Goal: Recover from IDE/editor backups
 
-1. VS Code local history: `%APPDATA%\Code\User\History` — ค้นหาชื่อไฟล์ใน entries
-2. JetBrains Local History: ใน IDE — Local History เก็บ per-file
-3. Auto-save/temp files: `*.tmp`, `~*`, `.bak`, swap files ใน dir เดิม
-4. Cloud sync: OneDrive/Dropbox version history ถ้า dir อยู่ใน sync folder
+1. VS Code local history: `%APPDATA%\Code\User\History` — search entry names for the filename
+2. JetBrains Local History: inside the IDE — Local History is kept per file
+3. Auto-save/temp files: `*.tmp`, `~*`, `.bak`, swap files in the original directory
+4. Cloud sync: OneDrive/Dropbox version history if the directory is in a sync folder
 
 ### 5. Try Backups / Last Resort
 
-> Goal: ช่องทางสุดท้าย
+> Goal: Final channels
 
-1. Windows: Previous Versions (shadow copies) — คลิกขวา properties หรือ `vssadmin list shadows`
-2. `.devin/` artifacts: bug captures, reports ที่อาจมี content ค้าง
-3. ถ้าทุกช่องทางไม่ได้ → รายงาน honesty: ไฟล์หายถาวร + แนะนำ filesystem recovery tools เป็นทางเลือกสุดท้าย พร้อม warning ว่าความสำเร็จต่ำหลังเวลาผ่านไป
+1. Windows: Previous Versions (shadow copies) — right-click properties or `vssadmin list shadows`
+2. `.devin/` artifacts: bug captures, reports that may still hold the content
+3. If every channel fails → report honestly: the file is permanently lost + suggest filesystem recovery tools as a last resort, with a warning that success rates are low once time has passed
 
 ### 6. Verify And Report
 
-> Goal: ยืนยันไฟล์ที่กู้ได้ใช้งานได้
+> Goal: Confirm the recovered file is usable
 
-1. เช็ค content สมบูรณ์ — ไม่ใช่เวอร์ชันเก่า/truncated
-2. รายงาน: source ที่กู้ได้, เวอร์ชันวันที่, path ที่ restore
-3. แนะนำป้องกัน: commit บ่อยขึ้น, backup policy, `git add` ไฟล์สำคัญแม้ยังไม่ commit
+1. Check the content is complete — not an older version/truncated
+2. Report: the channel it was recovered from, the version date, the restore path
+3. Suggest prevention: commit more often, a backup policy, `git add` important files even before committing
 
 ## Rules
 
 ### 1. Fastest Path First
 
-- ลองช่องทางตามลำดับ: recycle → git → editor → backup — หยุดเมื่อได้แล้ว
-- แต่ละช่องทางต้อง verify จริงก่อนบอกว่า "ไม่มี"
+- Try channels in order: recycle → git → editor → backup — stop as soon as one works
+- Each channel must be actually verified before declaring "not found"
 
 ### 2. No False Hope
 
-- ถ้ากู้ไม่ได้ให้บอกตรงๆ — ไม่แนะนำ undelete tools เป็นคำตอบหลัก (reliability ต่ำมาก)
-- ระบุเวอร์ชัน/วันที่ของไฟล์ที่กู้ได้ — อาจไม่ใช่ล่าสุด
+- If recovery isn't possible, say so plainly — don't recommend undelete tools as the main answer (very low reliability)
+- State the version/date of the recovered file — it may not be the latest
 
 ### 3. Verify Content
 
-- ไฟล์ที่กู้ได้ต้องเช็ค content — partial recovery ต้องบอก
-- restore ไป path เดิม เว้นแต่ user ระบุ
+- A recovered file must have its content checked — partial recovery must be reported
+- Restore to the original path unless the user specifies otherwise
 
 ## Expected Outcome
 
-- ไฟล์กลับมาจากช่องทางที่เหมาะสมที่สุด หรือยืนยันว่าหายถาวร
-- รายงานช่องทางที่ลองและผลลัพธ์
-- คำแนะนำป้องกันการสูญหายในอนาคต
+- The file comes back via the most appropriate channel, or its permanent loss is confirmed
+- A report of the channels tried and their results
+- Recommendations to prevent future data loss
 

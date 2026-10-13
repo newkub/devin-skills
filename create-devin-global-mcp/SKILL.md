@@ -1,6 +1,6 @@
 ---
 name: create-devin-global-mcp
-description: สร้าง MCP server ใหม่แล้ว register ลง devin global mcp_config.json
+description: Create a new MCP server and register it in the Devin global mcp_config.json
 argument-hint: "[scope]"
 allowed-tools:
   - exec
@@ -22,83 +22,83 @@ related:
 
 ## Goal
 
-สร้าง MCP server ใหม่ด้วย Rust หรือ TypeScript แล้ว register ลง `%APPDATA%\devin\mcp_config.json` เพื่อให้ Devin ใช้งานได้
+Create a new MCP server in Rust or TypeScript, then register it in `%APPDATA%\devin\mcp_config.json` so Devin can use it
 
 ## Scope
 
-ใช้เมื่อต้องการสร้าง MCP server ใหม่และให้ Devin มองเห็นใน global config ทันที
+Use when creating a new MCP server that should be visible to Devin through the global config right away
 
-- รัน `/follow-create-mcp` เพื่อสร้าง server
-- รัน `/update-devin-global-mcp` เพื่อ register ลง global config
-- ทดสอบ server ด้วย `mcp_list_servers` และ `mcp_call_tool`
-- ไม่ modify project `mcp_config.json` — ใช้ `/update-devin-project-mcp` สำหรับ project scope
+- Run `/follow-create-mcp` to create the server
+- Run `/update-devin-global-mcp` to register it in the global config
+- Test the server with `mcp_list_servers` and `mcp_call_tool`
+- Do not modify the project `mcp_config.json` — use `/update-devin-project-mcp` for project scope
 
 ## Execute
 
 ### 1. Review And Decide
 
-> Goal: ตรวจ tech stack และสรุป scope
+> Goal: Check the tech stack and settle the scope
 
-1. ทำ `/deep-review` เพื่อดู tech stack ปัจจุบัน
-2. ทำ `/deep-review` เพื่อ review dependencies
-3. บันทึกชื่อ server, transport, tools/resources ทีต้องการ
+1. Run `/deep-review` to inspect the current tech stack
+2. Run `/deep-review` to review dependencies
+3. Record the server name, transport, and the tools/resources you want
 
 ### 2. Create MCP Server
 
-> Goal: สร้าง server ตาม stack ทีเลือก
+> Goal: Create the server for the chosen stack
 
-1. ทำ `/follow-create-mcp` ด้วย scope ทีกำหนด
-2. บันทึก path, command, args ของ server หลังสร้าง
-3. ทำ `/deep-validate` เบื้องต้นกับ server project
+1. Run `/follow-create-mcp` with the defined scope
+2. After creating it, record the server's path, command, and args
+3. Run `/deep-validate` as a first pass on the server project
 
 ### 3. Register In Devin Global Config
 
-> Goal: register ลง `%APPDATA%\devin\mcp_config.json`
+> Goal: Register it in `%APPDATA%\devin\mcp_config.json`
 
-1. ทำ `/update-devin-global-mcp` ด้วย action `add`
-2. ระบุ `command`, `args`, และ `env` ให้ครบถ้วน
-3. ตรวจสอบว่าไฟล์มี root key `mcpServers` และ server entry ถูกต้อง
-4. สำรอง config ก่อนแก้ไข
+1. Run `/update-devin-global-mcp` with action `add`
+2. Specify `command`, `args`, and `env` completely
+3. Verify the file has the root key `mcpServers` and a correct server entry
+4. Back up the config before editing
 
 ### 4. Test And Verify
 
-> Goal: ยืนยันว่า server ทำงานกับ Devin
+> Goal: Confirm the server works with Devin
 
-1. รัน `mcp_list_servers` เพื่อตรวจว่า server ปรากฏ
-2. ใช้ `mcp_call_tool` กับ server เพื่อ list tools หรือ health check
-3. ถ้า tools ไม่โหลด → `/resolve-errors` แล้วแก้ไข
+1. Run `mcp_list_servers` to check that the server appears
+2. Use `mcp_call_tool` against the server to list tools or run a health check
+3. If the tools don't load → `/resolve-errors` and fix them
 
 ### 5. Ship
 
-> Goal: ส่งมอบ
+> Goal: Deliver
 
-1. ทำ `/deep-validate` กับทั้ง project และ skill repo
-2. ทำ `/ship-to-dev-branch` สำหรับ server project
-3. รายงานชื่อ server, command, และสถานะ register
+1. Run `/deep-validate` on both the project and the skill repo
+2. Run `/ship-to-dev-branch` for the server project
+3. Report the server name, command, and registration status
 
 ## Rules
 
 ### 1. Scope
 
-- ใช้สำหรับ Devin global MCP config เท่านั้น
-- ไม่แก้ไข project `mcp_config.json` โดยตรง
-- ถ้าต้องการ project-level ให้ส่งต่อ `/update-devin-project-mcp`
+- For the Devin global MCP config only
+- Do not edit the project `mcp_config.json` directly
+- For project-level registration, hand off to `/update-devin-project-mcp`
 
 ### 2. Safety
 
-- สำรอง `%APPDATA%\devin\mcp_config.json` ก่อนแก้ไข
-- ไม่ expose secrets ลง JSON
-- ใช้ `/follow-secret-manager` สำหรับ credentials
+- Back up `%APPDATA%\devin\mcp_config.json` before editing
+- Do not expose secrets in the JSON
+- Use `/follow-secret-manager` for credentials
 
 ### 3. Verification
 
-- ทดสอบ server ด้วย `mcp_list_servers` และ `mcp_call_tool` หลัง register
-- ถ้า test ไม่ผ่าน ห้าม report ว่าเสร็จสมบูรณ์
+- After registering, test the server with `mcp_list_servers` and `mcp_call_tool`
+- If the tests don't pass, do not report the work as complete
 
 ## Expected Outcome
 
-- MCP server ถูกสร้างด้วย Rust หรือ TypeScript
-- Server ถูก register ใน `%APPDATA%\devin\mcp_config.json`
-- `mcp_list_servers` แสดง server และ `mcp_call_tool` สามารถ list tools ได้
-- มี backup ของ global mcp config
-- ผ่าน `/deep-validate` และ `/ship-to-dev-branch`
+- The MCP server is created in Rust or TypeScript
+- The server is registered in `%APPDATA%\devin\mcp_config.json`
+- `mcp_list_servers` shows the server and `mcp_call_tool` can list its tools
+- A backup of the global mcp config exists
+- Passes `/deep-validate` and `/ship-to-dev-branch`

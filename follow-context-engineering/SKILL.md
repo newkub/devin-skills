@@ -1,6 +1,6 @@
 ---
 name: follow-context-engineering
-description: จัดการ context ของ AI agent อย่างมีประสิทธิภาพ ลด context rot เพิ่มคุณภาพการทำงาน
+description: Manage AI agent context effectively — reduce context rot, improve work quality
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
@@ -14,166 +14,166 @@ related:
 
 ## Goal
 
-จัดการ context ของ AI coding agent อย่างมีประสิทธิภาพ เพื่อรักษาคุณภาพการทำงานตลอด long-horizon tasks โดยใช้หลักการ context engineering จาก Anthropic
+Manage the context of an AI coding agent effectively to preserve work quality across long-horizon tasks, using context engineering principles from Anthropic
 
 ## Scope
 
-ใช้สำหรับ AI coding assistant ที่ทำงานหลายขั้นตอน มี tool calls หลายรอบ หรือทำงาน multi-session เพื่อจัดการ context window อย่างเป็นระบบ
+For AI coding assistants that run multi-step work, make many tool calls, or operate across sessions — to manage the context window systematically
 
 ## Execute
 
 ### 1. Curate System Context
 
-> Goal: คัดเลือก context เริ่มต้นให้มี high-signal tokens น้อยที่สุดเท่าที่จำเป็น
+> Goal: Curate the initial context with the fewest high-signal tokens necessary
 
-1. เขียน system instructions ที่ชัดเจน ใช้ภาษาตรงประเด็น ไม่กำกวม
-2. จัดระเบียบ instructions เป็น sections ชัดเจน (background, instructions, tool guidance, output description)
-3. ใช้ XML tags หรือ Markdown headers แบ่ง sections เพื่อให้ model แยกบริบทได้ชัดเจน
-4. ถ้ามี `AGENTS.md` ให้อ่านและทำตาม เพราะเป็น project-level context หลัก
-5. คัดเลือกเฉพาะข้อมูลที่จำเป็นต่อ task ปัจจุบัน ไม่ใส่ข้อมูลที่ไม่เกี่ยวข้อง
+1. Write clear system instructions — direct, unambiguous language
+2. Organize instructions into clear sections (background, instructions, tool guidance, output description)
+3. Use XML tags or Markdown headers to separate sections so the model distinguishes contexts clearly
+4. If an `AGENTS.md` exists, read and follow it — it is the primary project-level context
+5. Include only information essential to the current task — no irrelevant data
 
 ### 2. Optimize Tool Usage
 
-> Goal: ใช้ tools อย่างมีประสิทธิภาพเพื่อลด context consumption
+> Goal: Use tools efficiently to reduce context consumption
 
-1. ใช้ tools ที่ return ข้อมูลกระชับ ไม่ bloated output
-2. หลีกเลี่ยง tools ที่มี functionality ซ้ำซ้อนกัน
-3. ถ้ามี tool ที่ทำงานคล้ายกัน ให้เลือกใช้ tool ที่ token-efficient ที่สุด
-4. รวม independent tool calls เป็น parallel calls เพื่อลดจำนวนรอบและ context accumulation
-5. ใช้ `code_search` แทนการอ่านไฟล์ทีละไฟล์เพื่อค้นหา
-6. ใช้ `offset` และ `limit` เพื่ออ่านเฉพาะส่วนไฟล์ที่จำเป็น
+1. Use tools that return concise output, not bloated output
+2. Avoid tools with overlapping functionality
+3. When similar tools exist, pick the most token-efficient one
+4. Batch independent tool calls into parallel calls to cut rounds and context accumulation
+5. Use `code_search` instead of reading files one by one to search
+6. Use `offset` and `limit` to read only the needed parts of a file
 
 ### 3. Apply Compaction
 
-> Goal: ใช้ compaction เมื่อ context ใกล้เต็มเพื่อรักษา conversational flow
+> Goal: Use compaction when context nears full to preserve conversational flow
 
-1. สรุป message history โดย preserve: architectural decisions, unresolved bugs, implementation details
-2. ทิ้ง: redundant tool outputs, verbose error messages, ข้อมูลที่ไม่เกี่ยวข้อง
-3. ใช้ tool result clearing: ลบ raw tool results เก่าที่ไม่จำเป็นต้องดูซ้ำ
-4. หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + 5 files ล่าสุดที่เกี่ยวข้อง
-5. ทำ review และ score ตาม `### 7. Review And Score Context Rot` เมื่อตรวจพบสัญญาณ context degradation
+1. Summarize message history while preserving: architectural decisions, unresolved bugs, implementation details
+2. Drop: redundant tool outputs, verbose error messages, irrelevant information
+3. Use tool result clearing: remove old raw tool results that don't need re-inspection
+4. After compaction, start fresh context with the summary + the 5 most relevant recent files
+5. Review and score per `### 7. Review And Score Context Rot` when context degradation is detected
 
 ### 4. Use Structured Note-Taking
 
-> Goal: ใช้ agentic memory เพื่อ maintain progress นอก context window
+> Goal: Use agentic memory to maintain progress outside the context window
 
-1. สร้างและอัปเดต `progress.txt` หรือ `NOTES.md` สำหรับ track progress ข้าม session
-2. บันทึก: goal หลัก, sub-tasks ที่เสร็จ, decisions สำคัญ, dependencies, ปัญหาที่เจอ
-3. ใช้ `create_memory` tool สำหรับบันทึก context ที่ต้องใช้ข้าม project
-4. อ่าน notes ก่อนเริ่มทำงานต่อเพื่อ restore context อย่างรวดเร็ว
-5. อัปเดต notes ทุกครั้งหลังเสร็จ sub-task สำคัญ
+1. Create and update `progress.txt` or `NOTES.md` to track progress across sessions
+2. Record: main goal, completed sub-tasks, key decisions, dependencies, problems encountered
+3. Use the `create_memory` tool to save context needed across projects
+4. Read the notes before resuming work to restore context quickly
+5. Update notes after every significant sub-task is done
 
 ### 5. Decompose With Sub-Agent Pattern
 
-> Goal: แบ่งงานใหญ่เป็น sub-tasks เพื่อจำกัด context ของแต่ละส่วน
+> Goal: Break big work into sub-tasks to bound each part's context
 
-1. แบ่ง task ใหญ่เป็น sub-tasks ที่มี context แยกอิสระ
-2. แต่ละ sub-task ทำงานใน context สะอาด ไม่สะสม context จาก sub-task อื่น
-3. แต่ละ sub-task ส่งกลับเฉพาะ condensed summary (1,000-2,000 tokens) ไม่ใช่ raw context
-4. ใช้ `/plan` สำหรับวางแผน sub-tasks ก่อนเริ่ม
-5. ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
+1. Split a large task into sub-tasks with independent, separate contexts
+2. Each sub-task runs in a clean context, accumulating no context from other sub-tasks
+3. Each sub-task returns only a condensed summary (1,000-2,000 tokens), not raw context
+4. Use `/plan` to lay out the sub-tasks before starting
+5. Use `/loop-until-complete` for each sub-task
 
 ### 6. Manage Context Lifecycle
 
-> Goal: จัดการ context ตลอด conversation lifecycle
+> Goal: Manage context across the whole conversation lifecycle
 
-1. เริ่มต้น: คัดเลือก minimal context ที่จำเป็นต่อ task
-2. ระหว่างทำงาน: ย้ำ goal ทุก 5-10 tool calls เพื่อรักษา goal alignment
-3. ก่อน reset: สรุปและ preserve context สำคัญ
-4. หลัง reset: อ่าน notes และ restore context อย่างรวดเร็ว
-5. ตรวจสอบสัญญาณ context rot ทุก 10 tool calls
-6. ถ้าพบ context degradation ให้ทำ review และ score ตาม `### 7. Review And Score Context Rot`
+1. Start: curate the minimal context the task needs
+2. During work: restate the goal every 5-10 tool calls to keep goal alignment
+3. Before reset: summarize and preserve important context
+4. After reset: read the notes and restore context quickly
+5. Check for context rot signals every 10 tool calls
+6. If context degradation is found, review and score per `### 7. Review And Score Context Rot`
 
 ### 7. Review And Score Context Rot
 
-> Goal: ตรวจสอบ context rot เป็นระบบและให้คะแนน
+> Goal: Check context rot systematically and score it
 
-1. ตรวจสัญญาณ context rot: การตอบซ้ำ ลืม context เดิม หลุดจาก goal คุณภาพตอบลดลง
-2. ตรวจ context preservation: สรุป goal หลัก progress ปัจจุบัน และ tasks ที่เหลือ
-3. ตรวจ context reset practices: แนะนำ reset เมื่อ context ใหญ่เกินไป
-4. ตรวจ goal reminders: ย้ำ goal หลักทุก 5-10 tool calls
-5. ตรวจ task decomposition: sub-tasks ไม่เกิน 10 tool calls
-6. ตรวจ context window management: ใช้ `offset` `limit` `code_search` รวม parallel calls
-7. คำนวณ health score จาก 6 metrics ตาม `### 6. Context Rot Review`
-8. จัดลำดับ findings ตาม severity — ตาม `deep-review/SKILL.md` Severity Classification
-9. รายงานผลพร้อม review score, severity, และ action items
+1. Check context rot signals: repeated answers, forgetting earlier context, drifting from the goal, degraded answer quality
+2. Check context preservation: summarize the main goal, current progress, and remaining tasks
+3. Check context reset practices: recommend a reset when context gets too large
+4. Check goal reminders: restate the main goal every 5-10 tool calls
+5. Check task decomposition: sub-tasks stay within 10 tool calls
+6. Check context window management: use `offset` `limit` `code_search`, batch parallel calls
+7. Compute a health score from the 6 metrics per `### 6. Context Rot Review`
+8. Rank findings by severity — per `deep-review/SKILL.md` Severity Classification
+9. Report results with review score, severity, and action items
 
 ## Rules
 
 ### 1. Minimal High-Signal Context
 
-ใช้ context น้อยที่สุดเท่าที่จำเป็น
+Keep context as minimal as possible
 
-- คัดเลือกเฉพาะ high-signal tokens ที่ maximize โอกาสได้ผลลัพธ์ที่ดี
-- หลีกเลี่ยง bloated tool outputs และ verbose error messages
-- ใช้ `offset`, `limit` สำหรับอ่านไฟล์ใหญ่
-- รวม independent tool calls เป็น parallel calls
-- ไม่อ่านไฟล์เดิมซ้ำหลายครั้ง
+- Curate only the high-signal tokens that maximize the chance of good results
+- Avoid bloated tool outputs and verbose error messages
+- Use `offset`, `limit` when reading large files
+- Batch independent tool calls into parallel calls
+- Don't re-read the same file multiple times
 
 ### 2. Compaction Strategy
 
-ใช้ compaction เมื่อ context ใกล้เต็ม
+Use compaction when context nears full
 
-- สรุปโดย preserve: decisions, bugs, implementation details
-- ทิ้ง: redundant tool outputs, verbose messages
-- ใช้ tool result clearing สำหรับ lightest compaction
-- หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + recent files
-- ทำ review และ score ตาม `### 7. Review And Score Context Rot` เมื่อตรวจพบ context degradation
+- Summarize while preserving: decisions, bugs, implementation details
+- Drop: redundant tool outputs, verbose messages
+- Use tool result clearing for the lightest compaction
+- After compaction, start fresh context with the summary + recent files
+- Review and score per `### 7. Review And Score Context Rot` when context degradation is detected
 
 ### 3. Persistent Memory
 
-ใช้ structured note-taking สำหรับข้าม session
+Use structured note-taking across sessions
 
-- บันทึก progress ลง `progress.txt` หรือ `NOTES.md`
-- ใช้ `create_memory` สำหรับข้อมูลข้าม project
-- อ่าน notes ก่อนเริ่มทำงานต่อ
-- อัปเดต notes หลังเสร็จ sub-task สำคัญ
-- บันทึก: goal, progress, decisions, dependencies, ปัญหา
+- Record progress in `progress.txt` or `NOTES.md`
+- Use `create_memory` for cross-project information
+- Read notes before resuming work
+- Update notes after significant sub-tasks
+- Record: goal, progress, decisions, dependencies, problems
 
 ### 4. Task Decomposition
 
-แบ่งงานเพื่อจำกัด context ของแต่ละส่วน
+Split work to bound each part's context
 
-- แต่ละ sub-task มี context แยกอิสระ
-- ส่งกลับเฉพาะ condensed summary ไม่ใช่ raw context
-- ใช้ `/plan` สำหรับวางแผน sub-tasks
-- ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
+- Each sub-task has its own independent context
+- Return only a condensed summary, not raw context
+- Use `/plan` to lay out sub-tasks
+- Use `/loop-until-complete` for each sub-task
 
 ### 5. Goal Alignment
 
-รักษา goal alignment ตลอด conversation
+Keep goal alignment throughout the conversation
 
-- ย้ำ goal หลักทุก 5-10 tool calls
-- ตรวจสอบว่า output ยังสอดคล้องกับ goal
-- ปรับ goal ถ้า requirements เปลี่ยน
-- ใช้ `/suggest-next-action` เมื่อไม่แน่ใจทิศทาง
+- Restate the main goal every 5-10 tool calls
+- Verify output still matches the goal
+- Adjust the goal if requirements change
+- Use `/suggest-next-action` when the direction is unclear
 
 ### 6. Context Rot Review
 
-ตรวจสอบและให้คะแนน context rot เป็นระบบ
+Check and score context rot systematically
 
-- ตรวจสัญญาณ context rot ทุก 10 tool calls
-- 6 metrics หลัก: Context Rot Detection, Context Preservation, Context Reset Practices, Goal Reminder Usage, Task Decomposition, Context Window Management
-- คะแนนต่อ metric: ผ่าน = 1, มี warning = 0.5, ไม่ผ่าน = 0
+- Check context rot signals every 10 tool calls
+- 6 core metrics: Context Rot Detection, Context Preservation, Context Reset Practices, Goal Reminder Usage, Task Decomposition, Context Window Management
+- Score per metric: pass = 1, warning = 0.5, fail = 0
 - Review score = (total score / 6) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - Severity:
-  - Critical: สูญเสีย goal หลัก ลืม decisions สำคัญ ทำงานซ้ำโดยไม่จำเป็น หลุดจาก scope อย่างมาก ผลผิดพลาด
-  - High: คุณภาพตอบลดลงชัดเจน ไม่มีการ preserve context ไม่มี goal reminders
-  - Medium: อ่านไฟล์ซ้ำหรืออ่านเกินจำเป็น sub-task ไม่ชัดเจน ไม่มี progress summary
-  - Low: ข้อความ goal reminder ไม่สม่ำเสมอ จัดการ context window ได้ปานกลาง
-- ใช้ `/report` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
-- ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+  - Critical: lost the main goal, forgot key decisions, redundant rework, major scope drift, wrong results
+  - High: clearly degraded answer quality, no context preservation, no goal reminders
+  - Medium: redundant or excessive file reads, unclear sub-tasks, no progress summary
+  - Low: inconsistent goal-reminder wording, mediocre context window management
+- Use `/report` for a findings table: Category, Finding, Severity, Location, Recommendation
+- Run `/suggest-next-action` to recommend the next action
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /deep-validate if needed
 
 ## Expected Outcome
 
-- Context window ใช้อย่างมีประสิทธิภาพ ลด context rot
-- High-signal tokens ครบถ้วน ไม่มี bloated context
-- Progress ถูก preserve ข้าม session ผ่าน structured notes
-- Long-horizon tasks ถูกแบ่งเป็น sub-tasks ที่จัดการได้
-- Goal alignment รักษาไว้ตลอด conversation
-- Context rot ถูก detect, score, และ report เป็นระบบ
-- Findings มี severity, review score, และ action items
+- The context window is used efficiently with reduced context rot
+- High-signal tokens are complete, with no bloated context
+- Progress is preserved across sessions via structured notes
+- Long-horizon tasks are split into manageable sub-tasks
+- Goal alignment is maintained throughout the conversation
+- Context rot is detected, scored, and reported systematically
+- Findings carry severity, review score, and action items

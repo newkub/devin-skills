@@ -1,6 +1,6 @@
 ---
 name: follow-create-bun-cli
-description: สร้าง CLI applications ด้วย Bun runtime ตาม context และ best practices
+description: Build CLI applications with the Bun runtime per context and best practices
 argument-hint: "[scope]"
 related:
   - follow-create-cli
@@ -15,127 +15,127 @@ related:
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Bun runtime ที่มีประสิทธิภาพสูง โครงสร้างตาม context
+Build high-performance CLI applications with the Bun runtime, structured per context.
 
 ## Scope
 
-ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`) — ถ้ายังไม่ชัด Bun หรือ Rust ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
+For building CLI applications with the Bun runtime — does not cover library bundling (see `/follow-tool-bunup`) — if Bun vs Rust is not yet decided, use `/follow-create-cli` to pick the stack first
 
-- Packages: `bun`, `cac` (ESM-only — `cli.on` → `cli.addEventListener`), `picocolors`, `bunup` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); Bun native APIs ล่าสุดดูผ่าน `/learn-from-cli` (`bun --help`)
+- Packages: `bun`, `cac` (ESM-only — `cli.on` → `cli.addEventListener`), `picocolors`, `bunup` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`); check the latest Bun native APIs via `/learn-from-cli` (`bun --help`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create bun cli)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create bun cli)
+1. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create bun cli)
+3. Record the reasons for choosing the stack and libraries as a reference for the next step (create bun cli)
 
 ### 2. Setup Project Structure
 
-> Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
+> Goal: Create the project structure per a suitable architecture
 
-1. ทำ `/deep-review` หรือ `/deep-review` เพื่อเลือก architecture ตาม context — scaffold ด้วย `bun init` หรือ `bunx @bunup/cli@latest create` ถ้าต้องการ template
-2. เลือก structure ตามลักษณะงาน:
-   - CLI ง่ายๆ → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
-   - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
-   - มีหลาย adapter ซับซ้อน → `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/presentation/cli.ts`
-3. สร้าง entry points ตาม architecture ที่เลือก เช่น `src/cli.ts`, `src/index.ts`, หรือ `src/presentation/cli.ts`
-4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
+1. Run `/deep-review` or `/deep-review` to choose the architecture per context — scaffold with `bun init` or `bunx @bunup/cli@latest create` if you want a template
+2. Pick the structure by workload:
+   - Simple CLI → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
+   - Needs to support multiple outputs/consumers → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
+   - Multiple complex adapters → `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/presentation/cli.ts`
+3. Create entry points per the chosen architecture, e.g. `src/cli.ts`, `src/index.ts`, or `src/presentation/cli.ts`
+4. If a directory nests deeper than 3 levels without need → run `/flatten-directory --mode code`
 
 ### 3. Configure Build Tools
 
-> Goal: ตั้งค่า build tools สำหรับ production
+> Goal: Configure build tools for production
 
-1. ติดตั้ง `bunup` ด้วย `bun add -d bunup`
-2. สร้าง `bunup.config.ts` พร้อม `dts.splitting: true`
-3. ติดตั้ง `picocolors` แทน `chalk` สำหรับ terminal colors
-4. ติดตั้ง `cac` แทน `commander` สำหรับ argument parsing
-5. ตั้งค่า `tsconfig.json`: `declaration: true`, `isolatedDeclarations: true`
+1. Install `bunup` with `bun add -d bunup`
+2. Create `bunup.config.ts` with `dts.splitting: true`
+3. Install `picocolors` instead of `chalk` for terminal colors
+4. Install `cac` instead of `commander` for argument parsing
+5. Set in `tsconfig.json`: `declaration: true`, `isolatedDeclarations: true`
 
 ### 4. Setup Scripts
 
-> Goal: ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
+> Goal: Configure `package.json` scripts per `/follow-tasks`
 
-1. เพิ่ม `dev`: `bun run <cli-entry>` โดย `<cli-entry>` อาจเป็น `src/cli.ts` หรือ `src/presentation/cli.ts` ตาม architecture ที่เลือก
-2. เพิ่ม `build`: `bunx bunup`
-3. เพิ่ม `build:watch`: `bunx bunup --watch`
-4. เพิ่ม `lint`: `bunx tsc --noEmit && bunx biome lint --write`
-5. เพิ่ม `test`: `bun test`
+1. Add `dev`: `bun run <cli-entry>` where `<cli-entry>` may be `src/cli.ts` or `src/presentation/cli.ts` per the chosen architecture
+2. Add `build`: `bunx bunup`
+3. Add `build:watch`: `bunx bunup --watch`
+4. Add `lint`: `bunx tsc --noEmit && bunx biome lint --write`
+5. Add `test`: `bun test`
 
 ### 5. Choose CLI Libraries and APIs
 
-> Goal: ใช้ lightweight libraries และ Bun native APIs
+> Goal: Use lightweight libraries and Bun native APIs
 
-1. ทำตาม `/use-bun-native-api` โดยใช้ `Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob` แทน `node:*`
-2. ใช้ `picocolors` สำหรับสีใน terminal
-3. ใช้ `cac` สำหรับ argument parsing และ command structure
-4. หลีกเลี่ยง `chalk`, `commander` และ `node:fs`/`node:child_process` ถ้ามี Bun native equivalent
+1. Follow `/use-bun-native-api`, using `Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob` instead of `node:*`
+2. Use `picocolors` for terminal colors
+3. Use `cac` for argument parsing and command structure
+4. Avoid `chalk`, `commander`, and `node:fs`/`node:child_process` when a Bun native equivalent exists
 
 ### 6. Development Workflow
 
-> Goal: ใช้ development workflow ที่มีประสิทธิภาพ
+> Goal: Use an efficient development workflow
 
-1. ใช้ `bun run dev` สำหรับ run CLI โดยตรง
-2. ใช้ `bun run build:watch` สำหรับ watch build mode
-3. ใช้ `bun run build` สำหรับ production build
-4. รัน lint และ typecheck ก่อน commit
+1. Use `bun run dev` to run the CLI directly
+2. Use `bun run build:watch` for watch build mode
+3. Use `bun run build` for a production build
+4. Run lint and typecheck before commit
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Project Structure
 
-- เลือก architecture ตาม context โดยไม่บังคับ Clean หรือ Layered
-- CLI ง่ายๆ → แยก `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
-- มีหลาย output/consumer → แยก `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
-- มีหลาย adapter ซับซ้อน → ใช้ `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`
-- `presentation/cli.ts` หรือ `src/cli.ts` เป็น CLI entry point ตาม architecture ที่เลือก
+- Choose the architecture per context without forcing Clean or Layered
+- Simple CLI → split `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
+- Multiple outputs/consumers → split `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
+- Multiple complex adapters → use `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`
+- `presentation/cli.ts` or `src/cli.ts` is the CLI entry point per the chosen architecture
 - `src/index.ts` = library entry point
 
 ### 2. Build Configuration
 
-- ใช้ `bunup` สำหรับ building — ดู `/follow-tool-bunup` สำหรับ config options
-- ตั้งค่า `dts.splitting: true` สำหรับ type declarations
+- Use `bunup` for building — see `/follow-tool-bunup` for config options
+- Set `dts.splitting: true` for type declarations
 - TypeScript: `declaration: true`, `isolatedDeclarations: true`
-- ตั้งค่า `packages: "bundle"` ใน `bunup.config.ts` ถ้าต้องการ zero runtime dependencies
-- สำหรับ single-file executable distribution ใช้ `bun build --compile src/cli.ts --outfile mycli` หรือ bunup `compile` option
+- Set `packages: "bundle"` in `bunup.config.ts` if you want zero runtime dependencies
+- For single-file executable distribution, use `bun build --compile src/cli.ts --outfile mycli` or the bunup `compile` option
 
 ### 3. Scripts
 
-- `dev` = run CLI โดยตรง (`bun run src/presentation/cli.ts`)
+- `dev` = run the CLI directly (`bun run src/presentation/cli.ts`)
 - `build:watch` = `bunx bunup --watch`
-- ใช้ `bunx` แทน `npx`
-- รัน lint และ typecheck ก่อน commit
+- Use `bunx` instead of `npx`
+- Run lint and typecheck before commit
 
 ### 4. Dependencies
 
-- ใช้ `picocolors` แทน `chalk`
-- ใช้ `cac` แทน `commander`
-- ใช้ Bun native APIs (`Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob`) แทน `node:*` modules
-- bundle dependencies ด้วย `bunup` เพื่อลด runtime dependencies ถ้าเหมาะสม
+- Use `picocolors` instead of `chalk`
+- Use `cac` instead of `commander`
+- Use Bun native APIs (`Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob`) instead of `node:*` modules
+- Bundle dependencies with `bunup` to reduce runtime dependencies when appropriate
 
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /follow-create-web if needed
+- Use /rethink if needed
+- Use /deep-test cli if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- CLI project ที่มีโครงสร้างตาม architecture ที่เลือกและ maintainable
-- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
-- `bun run dev` รัน CLI ได้โดยตรง
-- `bun run build` สร้าง dist/ พร้อม type declarations
-- Scripts สอดคล้องกับ `/follow-tasks`
+- A CLI project structured per the chosen architecture and maintainable
+- Directories not nested too deeply (use `/flatten-directory` if needed)
+- `bun run dev` runs the CLI directly
+- `bun run build` produces dist/ with type declarations
+- Scripts consistent with `/follow-tasks`
 
 ## Examples
 
@@ -182,6 +182,6 @@ export default defineConfig({
 - `/use-bun-native-api` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards
-- `/use-bun-native-api` — Bun native APIs แทน Node.js
+- `/use-bun-native-api` — Bun native APIs instead of Node.js
 - [Bun Documentation](https://bun.sh/docs)
 

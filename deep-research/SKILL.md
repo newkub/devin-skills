@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: ค้นหาข้อมูลลึกจาก multiple sources — packages, repos, docs, benchmarks, security, compatibility — dispatcher เข้า workflows
+description: Deep multi-source research dispatcher: packages, repos, docs, benchmarks, security, compatibility
 argument-hint: "[general|dependencies|setup|api-references|improve|report|query]"
 related:
   - deep-thinking
@@ -17,76 +17,76 @@ related:
 
 ## Goal
 
-ค้นหาข้อมูลลึกจาก multiple sources เพื่อให้ได้คำตอบที่ครบถ้วน ถูกต้อง และ current — dispatcher เข้า focused workflows
+Research deeply across multiple sources to get a complete, correct, and current answer — dispatcher into focused workflows
 
 ## Scope
 
-ใช้สำหรับงานที่ต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ libraries, หา best practices, ตรวจสอบ compatibility, benchmarks, security, migration, licensing ไม่ใช่การค้นหาเร็วๆ (ใช้ `/learn-from-web`) และไม่ใช่การอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
+Use for work that needs deep information from many sources, e.g. comparing libraries, finding best practices, checking compatibility, benchmarks, security, migration, licensing. Not for quick lookups (use `/learn-from-web`) and not for reading a single library's docs (use `/follow-best-practice`)
 
 ## Execute
 
 ### 1. Choose Workflow
 
-> Goal: route ไป workflow ที่ตรงกับหัวข้อ
+> Goal: route to the workflow that matches the topic
 
-| หัวข้อ | Workflow |
+| Topic | Workflow |
 |--------|----------|
-| dependencies/libraries/packages (เลือก, เปรียบเทียบ, outdated) | `workflows/dependencies/SKILL.md` — `/deep-research dependencies` |
-| setup/config/CI/boilerplate ของ tool/service | `workflows/setup/SKILL.md` — `/deep-research setup` |
+| dependencies/libraries/packages (choose, compare, outdated) | `workflows/dependencies/SKILL.md` — `/deep-research dependencies` |
+| setup/config/CI/boilerplate of a tool/service | `workflows/setup/SKILL.md` — `/deep-research setup` |
 | integrations: plugins, extensions, providers, adapters, marketplace | `/research-setup-integrations` (top-level) |
-| API references ของ library/tool | `workflows/api-references/SKILL.md` — `/deep-research api-references` |
+| a library/tool's API references | `workflows/api-references/SKILL.md` — `/deep-research api-references` |
 | research-driven improvement opportunities | `workflows/improve/SKILL.md` — `/deep-research improve` |
-| สรุป report จาก findings ที่มีอยู่ | `workflows/report-findings/SKILL.md` — `/deep-research report` |
-| หัวข้อทั่วไป / ไม่ตรงข้างบน | `workflows/general/SKILL.md` — full pipeline steps 1-9 |
+| summarize a report from existing findings | `workflows/report-findings/SKILL.md` — `/deep-research report` |
+| general topic / none of the above | `workflows/general/SKILL.md` — full pipeline steps 1-9 |
 
-1. ทำ `/deep-thinking` กำหนดคำถาม, scope และเกณฑ์ "ตอบครบ" ก่อน search เสมอ
-2. ถ้า argument ตรง workflow → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น
-3. ถ้าไม่ระบุ/ไม่ตรง → ทำ `workflows/general/` (full pipeline) — Step สุดท้าย execute `workflows/report-findings` หลัง synthesize
+1. Run `/deep-thinking` first to fix the question, scope, and the criteria for a "complete" answer before searching
+2. If the argument matches a workflow → read `workflows/<name>/SKILL.md` and follow its flow
+3. If unspecified/no match → run `workflows/general/` (full pipeline) — the final step executes `workflows/report-findings` after synthesizing
 
 ## Rules
 
 ### 1. When To Use
 
-- ใช้เมื่อต้องเปรียบเทียบ tools, best practices หลายแหล่ง หรือตัดสินใจสำคัญ
-- ไม่ใช้สำหรับอ่าน docs ตัวเดียว (ใช้ `/follow-best-practice`) หรือ low-risk
-- ใช้ multiple sources: NPM, GitHub, DeepWiki, Context7, CRW, Windsurf WebSearch, security DB
-- ดูรายละเอียดใน `references/research-rules.md`
+- Use when comparing tools, best practices across many sources, or making an important decision
+- Do not use for reading a single tool's docs (use `/follow-best-practice`) or for low-risk cases
+- Use multiple sources: NPM, GitHub, DeepWiki, Context7, CRW, Windsurf WebSearch, security DB
+- See `references/research-rules.md` for details
 
 ### 2. Research Best Practices
 
-- เริ่มด้วย `/deep-thinking` เสมอ; ต้องเก็บหลักฐานเชิงประจักษ์แบบ `/deep-analyze` ก่อนสรุป (cross-validate หลายแหล่ง ไม่ใช่เดาจาก memory)
-- Official sources ก่อนเสมอ — docs > repo > registry > community; community เป็น fallback/corroboration เท่านั้น
-- Cross-validate ≥ 2-3 sources ก่อนสรุป — claim ที่เห็นแหล่งเดียวระบุเป็น low confidence
-- Freshness: ระบุ version + ปี ของทุก claim; เช็ค deprecation/breaking-change notices ก่อนเสนอแนะ
-- Cite ทุก finding: source URL + accessed date + confidence (high/medium/low)
-- Time-box ตามขนาดงาน (เล็ก ≤ 5 นาที, กลาง ≤ 15 นาที) — ลึกกว่านั้น fan-out ผ่าน profile `source-researcher` ใน `## Subagents` + `/use-subagents`
-- แยก facts กับ assumptions/กับ gaps ชัดเจน — gaps เป็น output ที่มีค่า ไม่ใช่ความล้มเหลว
-- Note conflicts ระหว่าง sources แทนที่จะเลือกเงียบๆ — แสดงทั้งสองฝั่งพร้อมเหตุผล
-- ห้ามเดา API/command/version — ถ้าไม่มี evidence ให้ระบุว่า unverified
+- Always start with `/deep-thinking`; gather empirical evidence like `/deep-analyze` before concluding (cross-validate across sources, never guess from memory)
+- Prefer official sources first — docs > repo > registry > community; community is a fallback/corroboration only
+- Cross-validate ≥ 2-3 sources before concluding — a claim seen in only one source is marked low confidence
+- Freshness: state the version + year of every claim; check deprecation/breaking-change notices before recommending
+- Cite every finding: source URL + accessed date + confidence (high/medium/low)
+- Time-box by task size (small ≤ 5 min, medium ≤ 15 min) — go deeper by fanning out via the `source-researcher` profile in `## Subagents` + `/use-subagents`
+- Clearly separate facts from assumptions and gaps — gaps are a valuable output, not a failure
+- Note conflicts between sources instead of silently picking one — show both sides with reasons
+- Never guess an API/command/version — without evidence, mark it as unverified
 
 ### 3. Routing Discipline
 
-- หัวข้อที่มี focused workflow ต้อง route — ห้ามรัน general pipeline ทับ
-- Workflow ที่เลือกเป็น canonical — ห้าม duplicate steps นอก workflow
+- A topic with a focused workflow must route there — never run the general pipeline on top of it
+- The chosen workflow is canonical — never duplicate steps outside it
 
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /follow-improve ถ้าจำเป็น
+- Use /rethink when needed
+- Use /check-reference when needed
+- Use /follow-improve when needed
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: independent work that can be spawned in parallel — the profiles live in this section, no separate files
 
-### source-researcher — ค้นคว้า source/topic เดียวเชิงลึกแล้วคืน findings พร้อม confidence
+### source-researcher — research a single source/topic in depth and return findings with confidence
 
-- **Inputs**: `topic` (หัวข้อที่ต้อง research เช่น `bun test coverage`, `hono middleware`), `source` (source เดียวที่รับผิดชอบ: `official-docs`/`github-repo`/`changelog`/`npm-registry`), `source-url` (optional — URL เฉพาะของ source เช่น repo URL หรือ docs root), `focus-questions` (optional — คำถามเฉพาะที่ต้องตอบจาก source นี้)
-- **Tools**: `web_search`, `webfetch` (ค้นหา/อ่าน source), `mcp_call_tool` (DeepWiki, Context7, GitHub MCP ถ้า source เป็น repo/docs), `read`, `grep` (local references/cached docs)
-- **Execute**: 1) ยืนยัน source ที่ได้รับและระบุ entry point ที่ authoritative ที่สุด (docs root, `CHANGELOG.md`, releases page) 2) ดึงข้อมูลหลักตาม source type: docs → guides/API reference, repo → README/issues/commits, registry → versions/metadata 3) ตอบ `focus-questions` ถ้ามี — แต่ละคำตอบต้องอ้าง URL ที่ตรวจย้อนได้ 4) ตรวจ freshness: version ล่าสุด, วันที่อัปเดต, breaking changes, maintenance status 5) จัด confidence ต่อ finding: `high` (official/primary), `medium` (secondary), `low` (inferred)
-- **Output**: ตาราง findings `| No. | Finding | Source URL | Freshness | Confidence |` ปิดท้ายด้วย source summary (coverage ของ topic, gaps ที่ source นี้ตอบไม่ได้, version/date ล่าสุดที่พบ); ถ้า source เข้าถึงไม่ได้ → คืน `error` พร้อมสาเหตุและ alternative sources ที่แนะนำ
-- **Constraints**: research เฉพาะ source เดียวที่ได้รับ — ห้ามข้าม source อื่น (parent แจกงานแล้ว); ทุก finding ต้องมี `source-url` ที่ตรวจย้อนได้ ห้ามตอบจาก memory; ระบุ version/date เสมอ — ข้อมูลเก่าต้อง flag `stale`; ถ้า source ขัดกับข้อมูลอื่น → ระบุ conflict ไม่ตัดสินเอง; คัดเฉพาะ findings ที่ตอบ `topic` จริง — ไม่เกิน ~10 findings ต่อ source; read-only — ห้ามใช้ `edit`/`write` (report only ไม่แก้ code)
+- **Inputs**: `topic` (what to research, e.g. `bun test coverage`, `hono middleware`), `source` (the single source it owns: `official-docs`/`github-repo`/`changelog`/`npm-registry`), `source-url` (optional — the source's specific URL, e.g. repo URL or docs root), `focus-questions` (optional — the specific questions to answer from this source)
+- **Tools**: `web_search`, `webfetch` (search/read a source), `mcp_call_tool` (DeepWiki, Context7, GitHub MCP when the source is a repo/docs), `read`, `grep` (local references/cached docs)
+- **Execute**: 1) Confirm the assigned source and identify its most authoritative entry point (docs root, `CHANGELOG.md`, releases page) 2) Pull the primary data by source type: docs → guides/API reference, repo → README/issues/commits, registry → versions/metadata 3) Answer the `focus-questions` if present — every answer must cite a verifiable URL 4) Check freshness: latest version, update date, breaking changes, maintenance status 5) Assign confidence per finding: `high` (official/primary), `medium` (secondary), `low` (inferred)
+- **Output**: findings table `| No. | Finding | Source URL | Freshness | Confidence |` ending with a source summary (topic coverage, the gaps this source cannot answer, the latest version/date found); if a source is unreachable → return an `error` with the reason and suggested alternative sources
+- **Constraints**: research only the one assigned source — never cross into other sources (the parent already divided the work); every finding needs a verifiable `source-url`, never answer from memory; always state version/date — flag old data as `stale`; if a source contradicts other data → note the conflict, don't adjudicate it; keep only findings that answer the `topic` — no more than ~10 findings per source; read-only — never use `edit`/`write` (report only, no code changes)
 
 ## Expected Outcome
 
-- ข้อมูลครบถ้วนจาก multiple sources ที่ cross-referenced
-- สรุป findings พร้อม source, version, ปี, confidence — gaps/risks/breaking changes ระบุชัด
-- คำตอบที่ credible และ actionable พร้อม report
+- Complete information from multiple cross-referenced sources
+- A findings summary with source, version, year, confidence — gaps/risks/breaking changes made clear
+- A credible, actionable answer with a report

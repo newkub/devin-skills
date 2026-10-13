@@ -1,6 +1,6 @@
 ---
 name: watch-terminal
-description: เปิดเบราว์เซอร์และ watch terminal ทุก 5 วินาที พร้อมจัดการ error อัตโนมัติ
+description: Open a browser and watch the terminal every 5 seconds, handling errors automatically
 argument-hint: "[scope|report]"
 related:
   - capture
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-Watch terminal ทุก 5 วินาที พร้อมจัดการ errors ที่เกิดขึ้นอัตโนมัติ
+Watch the terminal every 5 seconds and handle any errors that appear automatically.
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจสอบและจัดการปัญหาใน development server อย่างต่อเนื่อง
+Use when you need to continuously monitor and fix problems in a development server.
 
 ## Execute
 
@@ -23,45 +23,45 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 > Goal: Pre-Check
 
-ตรวจสอบสถานะ project:
+Check the project status:
 
-1. ตรวจสอบว่าอยู่ใน project directory ที่ถูกต้อง
-2. ตรวจสอบว่ามี development script ใน `package.json`
-3. ตรวจสอบว่า dependencies ถูกติดตั้งครบถ้วน
-4. ตรวจสอบว่า development server รันอยู่
+1. Verify you are in the correct project directory
+2. Verify a development script exists in `package.json`
+3. Verify all dependencies are installed
+4. Verify the development server is running
 
 ### 2. Start Watch
 
 > Goal: Start Watch
 
-เริ่ม watch terminal:
+Start watching the terminal:
 
-1. อ่าน terminal output ปัจจุบัน
-2. ตรวจสอบ errors และ warnings ใหม่ๆ
-3. ตรวจสอบ build status และ hot reload
-4. รอ 5 วินาทีแล้วอ่านซ้ำ
+1. Read the current terminal output
+2. Check for new errors and warnings
+3. Check build status and hot reload
+4. Wait 5 seconds and read again
 
 ### 3. Handle Errors
 
 > Goal: Handle Errors
 
-จัดการ errors ที่พบ:
+Handle the errors found:
 
-1. ถ้าพบ errors ให้ทำ `/resolve-errors` ทันที
-2. แก้ที่ root cause ไม่ใช่ symptoms
-3. ยืนยันว่า errors ถูกแก้ไขอย่างสมบูรณ์
-4. กลับไป watch terminal ต่อ
+1. If errors appear, run `/resolve-errors` immediately
+2. Fix the root cause, not the symptoms
+3. Confirm the errors are fully resolved
+4. Resume watching the terminal
 
 ### 4. Verify
 
 > Goal: Verify
 
-ตรวจสอบความถูกต้อง:
+Verify correctness:
 
-1. ตรวจสอบว่า terminal watch ทำงานทุก 5 วินาที
-2. ยืนยันว่าสามารถตรวจจับและแก้ไข errors ใหม่ๆ ได้
-3. ตรวจสอบว่า development server ทำงานปกติ
-4. สรุปผลตาม `workflows/report-status/SKILL.md` — command progress, errors, verdict
+1. Confirm the terminal watch runs every 5 seconds
+2. Confirm new errors can be detected and fixed
+3. Verify the development server works normally
+4. Summarize results per `workflows/report-status/SKILL.md` — command progress, errors, verdict
 
 ### Workflows
 
@@ -69,34 +69,34 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 |----------|----------|
 | `report`, `status` | `workflows/report-status/SKILL.md` — terminal watch report (progress, errors, verdict) |
 
-1. ถ้า argument เป็น `report`/`status` → อ่าน `workflows/report-status/SKILL.md` แล้วทำตาม flow — ใช้ session data ที่มีอยู่
-2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ โดย Step 4 อ่าน workflow `report-status` มา execute
+1. If the argument is `report`/`status` → read `workflows/report-status/SKILL.md` and follow its flow — reuse the existing session data
+2. If no argument is given → run Steps 1-4 normally, with Step 4 reading and executing the `report-status` workflow
 
 ## Rules
 
 ### 1. Pre-Check Requirements
 
-- ต้องรัน development server ก่อนเสมอ
-- ต้องแก้ไข errors ที่พบก่อนดำเนินการต่อ
-- ต้อง watch terminal ทุก 5 วินาทีต่อเนื่อง
+- Always run the development server first
+- Fix any errors found before continuing
+- Keep watching the terminal continuously every 5 seconds
 
 ### 2. Error Handling
 
-- ทำ `/resolve-errors` สำหรับแก้ไข errors อัตโนมัติ
-- ตรวจสอบ error logs จาก terminal
-- แก้ไข root cause ไม่ใช่เพียง symptoms
-- ยืนยันว่า errors ถูกแก้ไขอย่างสมบูรณ์
+- Use `/resolve-errors` to fix errors automatically
+- Check error logs from the terminal
+- Fix the root cause, not just the symptoms
+- Confirm the errors are fully resolved
 
 ### 3. Terminal Monitoring
 
-- Watch terminal ทุก 5 วินาที
-- ตรวจจับ errors และ warnings ใหม่ๆ
-- ตรวจสอบ build status
-- ตรวจสอบ hot reload ทำงานได้
+- Watch the terminal every 5 seconds
+- Detect new errors and warnings
+- Check build status
+- Verify hot reload works
 
-- ใช้ /capture ถ้าจำเป็น
-- ใช้ /record-video-terminal-with-asciinema ถ้าจำเป็น
-- ใช้ /run-watch ถ้าจำเป็น
+- Use /capture if needed
+- Use /record-video-terminal-with-asciinema if needed
+- Use /run-watch if needed
 
 ## Merged Details
 
@@ -106,7 +106,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-แปลง watch session ของ `/watch-terminal` เป็น status report — command progress, errors, output highlights
+Turn the `/watch-terminal` watch session into a status report — command progress, errors, output highlights
 
 
 
@@ -114,9 +114,9 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-- ใช้เมื่อ `/watch-terminal` dispatch มาที่ `report`/`status` หรือเรียกหลัง watch จบ
+- Use when `/watch-terminal` dispatches to `report`/`status` or when invoked after the watch ends
 
-- Chat-only report — ไม่สร้างไฟล์ถาวร
+- Chat-only report — creates no permanent files
 
 
 
@@ -128,15 +128,15 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-> Goal: รวม output จาก watch interval
+> Goal: Collect output from the watch interval
 
 
 
-1. รวม output snapshots ต่อ interval (default ทุก 5 วิ)
+1. Gather output snapshots per interval (default every 5s)
 
-2. ตรวจ state changes: progress %, new errors, completion signals
+2. Detect state changes: progress %, new errors, completion signals
 
-3. ตัด noise — spinner frames, repeated progress lines
+3. Cut noise — spinner frames, repeated progress lines
 
 
 
@@ -144,15 +144,15 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-> Goal: ตอบว่า command คืบหน้า/ติดขัดยังไง
+> Goal: Report how the command is progressing or stalling
 
 
 
-1. ตาราง: `No.`, `Time`, `Event`, `Detail`
+1. Table: `No.`, `Time`, `Event`, `Detail`
 
-2. สรุป: current state, elapsed, ETA ถ้าประเมินได้
+2. Summary: current state, elapsed time, ETA if estimable
 
-3. errors ใหม่ที่โผล่ระหว่าง watch — แยกเป็น section
+3. New errors that appear during the watch — split into a separate section
 
 
 
@@ -160,15 +160,15 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-> Goal: ตัดสินว่าต้อง intervene ไหม
+> Goal: Decide whether to intervene
 
 
 
 1. Verdict: `running-fine` / `stalled` / `erroring` / `done`
 
-2. ถ้า stalled/erroring → แนะนำ `/resolve-errors` หรือ kill command
+2. If stalled/erroring → suggest `/resolve-errors` or kill the command
 
-3. ทำ `/report-progress` ถ้าต้องการ progress bar format
+3. Use `/report-progress` if a progress bar format is wanted
 
 
 
@@ -176,11 +176,11 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-- รายงานจาก output จริง — ห้ามเดาจากความเงียบ
+- Report from actual output — never guess from silence
 
-- stalled = ไม่มี output ใหม่เกิน threshold — ระบุ threshold ที่ใช้
+- stalled = no new output beyond the threshold — state the threshold used
 
-- เก็บ output ดิบไว้ให้ drill-down ได้
+- Keep the raw output available for drill-down
 
 
 
@@ -188,10 +188,10 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 
 
 
-- Status report พร้อม verdict ว่า command ปกติ/ติดขัด/เสร็จ
+- Status report with a verdict: command normal / stalled / done
 
 ## Expected Outcome
 
-- Development server รันอยู่เสมอ
-- Errors ถูกตรวจจับและแก้ไขอัตโนมัติ
-- Terminal ถูก watch ทุก 5 วินาทีต่อเนื่อง
+- The development server is always running
+- Errors are detected and fixed automatically
+- The terminal is watched continuously every 5 seconds

@@ -1,6 +1,6 @@
 ---
 name: rewrite
-description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
+description: Rewrite one or more files completely from scratch without referencing prior context
 argument-hint: "[scope]"
 related:
   - reset-context
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมด โดยไม่อ้างอิง context ก่อนหน้า และส่งมอบเนื้อหาที่สมบูรณ์
+Rewrite one or more files completely from scratch, without referencing prior context, and deliver complete content
 
 ## Scope
 
-ใช้เมื่อ user ขอให้ rewrite ไฟล์ หรือหลายไฟล์ โดยต้องการให้เขียนเนื้อหาใหม่ทั้งหมดจากไฟล์เปล่า
+Use when the user asks to rewrite a file or several files, wanting all content written fresh from an empty slate
 
 ## Execute
 
@@ -26,102 +26,102 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 > Goal: Reset Context
 
-เริ่มต้นด้วย `/reset-context` เพื่อล้าง context ก่อนหน้า
+Start with `/reset-context` to clear prior context
 
-1. เรียก `/reset-context` ก่อนแก้ไขทุกครั้ง
-2. ไม่อ้างอิงข้อสรุป การวิเคราะห์ หรือ decisions จากการสนทนาก่อนหน้า
-3. ถือว่าไฟล์เป้าหมายเป็นไฟล์ใหม่ที่ต้องเขียนใหม่ทั้งหมด
+1. Invoke `/reset-context` before every edit
+2. Do not reference conclusions, analyses, or decisions from earlier conversations
+3. Treat the target files as new files that must be written from scratch
 
 ### 2. Identify Targets
 
 > Goal: Identify Targets
 
-ระบุไฟล์ที่ต้อง rewrite ให้ชัดเจน
+Clearly identify the files to rewrite
 
-1. ถามหรือตรวจสอบ target files จาก user request
-2. ใช้ `scan-codebase` เพื่อหาไฟล์ที่เกี่ยวข้อง
-3. ตรวจสอบ dependencies และ references ของ target files
+1. Ask or determine target files from the user request
+2. Use `scan-codebase` to find related files
+3. Check the dependencies and references of the target files
 
 ### 3. Read Targets Fresh
 
 > Goal: Read Targets Fresh
 
-อ่านไฟล์เป้าหมายและ references ทั้งหมดใหม่
+Read the target files and all references anew
 
-1. อ่าน target files ทั้งไฟล์
-2. อ่าน imports, exports, และ dependencies
-3. อ่าน reverse dependencies
-4. ทำ `review-devin-global-harness` สำหรับ workflows ที่เกี่ยวข้อง
+1. Read each target file in full
+2. Read imports, exports, and dependencies
+3. Read reverse dependencies
+4. Run `review-devin-global-harness` for related workflows
 
 ### 4. Analyze Requirements
 
 > Goal: Analyze Requirements
 
-วิเคราะห์ requirement ใหม่ทั้งหมด
+Analyze all requirements anew
 
-1. ระบุว่าไฟล์ทำหน้าที่อะไร
-2. ระบุ public API, interfaces, และ contracts
-3. ระบุ standards, conventions, และ best practices ที่ต้องรักษา
-4. ทำ `follow-best-practice` สำหรับ topic ที่เกี่ยวข้อง
+1. Identify what each file does
+2. Identify public APIs, interfaces, and contracts
+3. Identify standards, conventions, and best practices to preserve
+4. Run `follow-best-practice` for related topics
 
 ### 5. Rewrite From Scratch
 
 > Goal: Rewrite From Scratch
 
-เขียนไฟล์ใหม่ทั้งหมดจากไฟล์เปล่า
+Write each file completely from an empty slate
 
-1. ไม่ merge หรือ append กับเนื้อหาเดิม
-2. ไม่อ้างอิง context ก่อนหน้า
-3. ใช้ `write` เพื่อ overwrite ไฟล์เดิมด้วยเนื้อหาใหม่
-4. ถ้ามีหลายไฟล์ ใช้ `use-scripts` สำหรับ automation
-5. ทำ `update-references` หากชื่อไฟล์หรือ path เปลี่ยน
+1. Do not merge or append with the old content
+2. Do not reference prior context
+3. Use `write` to overwrite the original file with new content
+4. If there are many files, use `use-scripts` for automation
+5. Run `update-references` if file names or paths change
 
 ### 6. Validate
 
 > Goal: Validate
 
-ตรวจสอบผลลัพธ์
+Check the results
 
-1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `run-verify` เพื่อรัน lint, typecheck, scan
-3. อ่านไฟล์ใหม่อีกครั้งเพื่อ verify
+1. Run `/deep-validate` to verify correctness
+2. Run `run-verify` to execute lint, typecheck, and scan
+3. Read the new files again to verify
 
 ## Rules
 
 ### 1. Always Reset Context
 
-- ต้องเรียก `/reset-context` ก่อน rewrite ทุกครั้ง
-- ห้ามอ้างอิง conclusions หรือ analysis จากการสนทนาก่อนหน้า
-- ห้ามสมมติว่า code เดิมถูกต้อง
+- Always invoke `/reset-context` before every rewrite
+- Never reference conclusions or analysis from earlier conversations
+- Never assume the original code is correct
 
 ### 2. Full Rewrite
 
-- ไฟล์ถูกเขียนใหม่ทั้งหมด ไม่ merge กับเนื้อหาเดิม
-- ห้าม copy-paste จากเนื้อหาเดิมโดยไม่ตรวจสอบ
-- ห้ามทิ้งส่วนที่ไม่ได้ใช้งานจากเดิมไว้
+- Files are written completely from scratch, never merged with old content
+- Never copy-paste from the old content without review
+- Never leave unused old sections behind
 
 ### 3. Evidence-Based
 
-- ทุกการตัดสินใจต้องอ้างอิงจากไฟล์จริงที่อ่านใหม่
-- ทุก assumption ต้องมี evidence
-- ไม่เดาจาก context หรือ memory
+- Every decision must be based on the actual files read fresh
+- Every assumption must have evidence
+- Do not guess from context or memory
 
 ### 4. Preserve Contracts
 
-- รักษา public API และ interfaces ที่ผู้ใช้กำหนด
-- รักษา file paths และ naming conventions
-- ถ้าต้องเปลี่ยน contract ให้ทำ `update-references` อัปเดท references ทั้งหมด
+- Preserve the public APIs and interfaces the user specified
+- Preserve file paths and naming conventions
+- If a contract must change, run `update-references` to update all references
 
 ### 5. Complete Delivery
 
-- ไฟล์ทั้งหมดต้องสมบูรณ์ ไม่มี TODO, MOCK, STUB ที่ไม่จำเป็น
-- ตรวจสอบว่า references ทั้งหมดมีอยู่จริง
-- ทำ `run-verify` ก่อนส่งมอบ
+- All files must be complete, with no unnecessary TODO, MOCK, or STUB
+- Verify that all references actually exist
+- Run `run-verify` before delivery
 
 ## Expected Outcome
 
-- ไฟล์เป้าหมายถูก rewrite ใหม่ทั้งหมด
-- ไม่มี context เก่าหลงเหลือในการตัดสินใจ
-- เนื้อหาใหม่สอดคล้องกับ requirement ปัจจุบัน
-- ผ่าน validation และ run-verify
-- references ทั้งหมดอัปเดทถูกต้อง
+- Target files are fully rewritten from scratch
+- No stale context influenced the decisions
+- New content matches the current requirements
+- Passes validation and run-verify
+- All references updated correctly

@@ -1,6 +1,6 @@
 ---
 name: follow-create-oxlint-plugin
-description: ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript
+description: Configure and use Oxlint built-in and JavaScript plugins
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -12,114 +12,114 @@ related:
 ---
 ## Goal
 
-ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript plugins สำหรับ linting
+Configure and use Oxlint plugins, both built-in and JavaScript plugins, for linting
 
 ## Scope
 
-ใช้สำหรับตั้งค่า Oxlint plugins ทั้ง built-in (native) และ JavaScript plugins สำหรับ linting
+For setting up Oxlint plugins, both built-in (native) and JavaScript plugins, for linting
 
-- Packages: `oxlint`, `oxlint-tsgolint` (optional type-aware preview) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `oxlint`, `oxlint-tsgolint` (optional type-aware preview) — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Review the tech stack before creating
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create oxlint plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+3. Record the rationale for the chosen stack and libraries for later reference (create oxlint plugins)
 
 ### 2. Setup
 
-> Goal: ติดตั้ง oxlint และตรวจสอบ config file เดิม
+> Goal: Install oxlint and check the existing config file
 
-1. ติดตั้ง oxlint ด้วย `bun add -D oxlint`
-2. ตรวจสอบว่ามี config file อยู่แล้ว
+1. Install oxlint with `bun add -D oxlint`
+2. Check whether a config file already exists
 
 ### 3. Create Config File
 
-> Goal: สร้าง config file ที่ root ของโปรเจกต์
+> Goal: Create the config file at the project root
 
-1. สร้าง `.oxlintrc.json`/`.oxlintrc.jsonc` (standalone binary หรือ Node) หรือ `oxlint.config.ts` (Node-based package เท่านั้น) ที่ root — เพิ่ม `"$schema": "./node_modules/oxlint/configuration_schema.json"` สำหรับ autocomplete
-2. สร้าง starter config ได้ด้วย `oxlint --init`; ระบุ config เองด้วย `oxlint -c <path>` (ปิด nested lookup)
-3. เลือกใช้ format ที่ต้องการ — `oxlint.config.ts` ต้องมี Node v22.18+ หรือ v24+; ใช้ได้เพียงหนึ่ง config file ต่อ directory (JSON กับ TS อยู่ร่วมกันไม่ได้)
+1. Create `.oxlintrc.json`/`.oxlintrc.jsonc` (standalone binary or Node) or `oxlint.config.ts` (Node-based package only) at the root — add `"$schema": "./node_modules/oxlint/configuration_schema.json"` for autocomplete
+2. Generate a starter config with `oxlint --init`; point to a specific config with `oxlint -c <path>` (disables nested lookup)
+3. Pick the format you need — `oxlint.config.ts` requires Node v22.18+ or v24+; only one config file per directory is allowed (JSON and TS cannot coexist)
 
 ### 4. Configure Built-in Plugins
 
-> Goal: เปิดใช้งาน built-in plugins ผ่าน `plugins` field
+> Goal: Enable built-in plugins via the `plugins` field
 
-1. เลือก built-in plugins ที่ต้องการ (react, unicorn, typescript, oxc, import, jest, vitest, jsx-a11y, nextjs — native ใน Rust)
-2. กำหนดผ่าน `plugins` field ใน config
-3. ตั้งค่า categories สำหรับ severity
+1. Choose the built-in plugins you need (react, unicorn, typescript, oxc, import, jest, vitest, jsx-a11y, nextjs — native in Rust)
+2. Define them via the `plugins` field in the config
+3. Set categories for severity
 
 ### 5. Configure JS Plugins (Optional)
 
-> Goal: กำหนด JavaScript plugins ผ่าน `jsPlugins` field
+> Goal: Define JavaScript plugins via the `jsPlugins` field
 
-1. ติดตั้ง ESLint plugin ที่ต้องการ — Oxlint JS plugin API เข้ากันได้กับ ESLint v9+ ส่วนใหญ่ใช้ได้ทันที (alpha — ไม่อยู่ภายใต้ semver, พฤติกรรมต่างจาก ESLint ให้ report bug)
-2. กำหนดผ่าน `jsPlugins` field ใน config — path เป็น import specifier ใดก็ได้ (`./plugin.js`, `eslint-plugin-foo`, `@foo/eslint-plugin`) resolve relative กับ config file
-3. ใช้ custom name สำหรับ reserved plugin names
+1. Install the desired ESLint plugins — the Oxlint JS plugin API is compatible with ESLint v9+, so most work out of the box (alpha — not covered by semver; report bugs where behavior differs from ESLint)
+2. Define them via the `jsPlugins` field in the config — paths are any import specifier (`./plugin.js`, `eslint-plugin-foo`, `@foo/eslint-plugin`) resolved relative to the config file
+3. Use a custom name for reserved plugin names
 
 ### 6. Verify
 
-> Goal: ทดสอบ plugins กับ oxlint
+> Goal: Test the plugins with oxlint
 
-1. รัน `oxlint` เพื่อทดสอบ plugins
-2. ตรวจสอบว่า rules ทำงานได้ถูกต้อง
+1. Run `oxlint` to test the plugins
+2. Verify the rules work correctly
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Config File
 
-- ใช้ `.oxlintrc.json` หรือ `oxlint.config.ts`
-- วางไฟล์ที่ root ของโปรเจกต์
-- oxlint จะ detect config file อัตโนมัติ
+- Use `.oxlintrc.json` or `oxlint.config.ts`
+- Place the file at the project root
+- oxlint detects the config file automatically
 
 ### 2. Built-in Plugins
 
-- ใช้ `plugins` field สำหรับ native plugins
-- ตั้งค่า plugins จะ overwrite default plugin set
-- ระบุทุก plugin ที่ต้องการใน array
-- ใช้ CLI flag เช่น `--import-plugin` สำหรับ enable plugin
+- Use the `plugins` field for native plugins
+- Setting `plugins` overwrites the default plugin set
+- List every plugin you need in the array
+- Use CLI flags such as `--import-plugin` to enable a plugin
 
 ### 3. JS Plugins
 
-- ใช้ `jsPlugins` field สำหรับ JavaScript plugins — ผสม string (`"eslint-plugin-foo"` ใช้ชื่อ derive จาก specifier) กับ object (`{ "name": "alias", "specifier": "eslint-plugin-foo" }`) ใน array เดียวกันได้
-- JS plugins อยู่ใน alpha stage ไม่ subject to semver
-- ใช้ custom name (object form) สำหรับ reserved plugin names
+- Use the `jsPlugins` field for JavaScript plugins — the array can mix strings (`"eslint-plugin-foo"`, name derived from the specifier) and objects (`{ "name": "alias", "specifier": "eslint-plugin-foo" }`)
+- JS plugins are in alpha stage and not subject to semver
+- Use a custom name (object form) for reserved plugin names
 
 ### 4. Reserved Plugin Names
 
 - Default-on: `eslint`, `typescript`, `unicorn`, `oxc`; opt-in: `react`, `react-perf`, `nextjs`, `import`, `jsdoc`, `jsx-a11y`, `node`, `promise`, `jest`, `vitest`, `vue`
-- เหล่านี้ implemented natively ใน Rust — `plugins: []` ปิดทั้งหมด; enable ผ่าน CLI `--<name>-plugin`, disable `--disable-<name>-plugin`
-- ต้องใช้ custom name ถ้าต้องการ JavaScript version
+- These are implemented natively in Rust — `plugins: []` disables all of them; enable via CLI `--<name>-plugin`, disable via `--disable-<name>-plugin`
+- A custom name is required if you want the JavaScript version
 
 ### 5. Categories
 
-- Oxlint เปิด `correctness` เป็น default; severity values: `"off"`/`"allow"`, `"warn"`, `"error"`/`"deny"` — fields อื่นที่เกี่ยวข้อง: `rules`, `overrides` (ตาม file pattern), `settings` (แชร์ข้าม rules); CLI `-A`/`--allow` ปิด rule/category
-- correctness: Code ที่ผิดหรือไม่มีประโยชน์แน่นอน
-- suspicious: Code ที่น่าจะผิดหรือไม่มีประโยชน์
-- pedantic: Rules เข้มข้นที่อาจมี false positives
-- perf: Rules สำหรับปรับปรุง runtime performance
-- style: Rules สำหรับ style ที่เป็นไปในทิศทางเดียวกัน
-- restriction: Rules ที่ห้าม patterns หรือ features เฉพาะ
-- nursery: Rules ที่อยู่ระหว่างพัฒนาอาจเปลี่ยนแปลง
+- Oxlint enables `correctness` by default; severity values: `"off"`/`"allow"`, `"warn"`, `"error"`/`"deny"` — other related fields: `rules`, `overrides` (by file pattern), `settings` (shared across rules); CLI `-A`/`--allow` disables a rule/category
+- correctness: code that is definitely wrong or useless
+- suspicious: code that is likely wrong or useless
+- pedantic: strict rules that may produce false positives
+- perf: rules for improving runtime performance
+- style: rules for consistent style
+- restriction: rules that forbid specific patterns or features
+- nursery: rules under development that may change
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-tool-eslint ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
+- Use /follow-create-sdk when needed
+- Use /follow-tool-eslint when needed
+- Use /run-lint when needed
+- Use /run-format when needed
 
 ## Expected Outcome
 
-- Config file สร้างขึ้นที่ root
-- Built-in plugins กำหนดอย่างถูกต้อง
-- JS plugins กำหนดอย่างถูกต้อง (ถ้าใช้)
-- Rules ทำงานได้เมื่อรัน `oxlint`
+- Config file created at the root
+- Built-in plugins configured correctly
+- JS plugins configured correctly (if used)
+- Rules work when running `oxlint`

@@ -11,48 +11,48 @@ related:
 
 ## Goal
 
-ตรวจ cross-reference dimension ของ `/deep-validate` — config/env refs, module references, API contracts ตรง implementation, docs ตรง code
+Check the cross-reference dimension of `/deep-validate` — config/env refs, module references, API contracts matching implementation, docs matching code
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `cross-reference`/`refs` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings — แก้ไขผ่าน `/update-references`
+- Used when `/deep-validate` dispatches to the `cross-reference`/`refs` dimension, or invoked standalone
+- Read-only: record findings — fix via `/update-references`
 
 ## Execute
 
 ### 1. Check Config And Env References
 
-> Goal: config/env ที่ code อ้างถึงมีจริง
+> Goal: the config/env the code references actually exist
 
-1. ตรวจสอบ config files และ environment variables ที่ code ใช้มีอยู่จริง
-2. flag env vars ที่ code อ้างแต่ไม่มีใน `.env.example` หรือ config
+1. Verify the config files and environment variables the code uses actually exist
+2. Flag env vars the code references but that are missing from `.env.example` or config
 
 ### 2. Check Module And Contract References
 
-> Goal: references ภายในและ contract ตรงกัน
+> Goal: internal references and contracts match
 
-1. ตรวจสอบ references ระหว่าง modules ถูกต้อง — ทำ `/check-reference` ถ้าต้องการ deep pass
-2. ตรวจสอบ API contracts ตรงกับ implementation — ทำ `/deep-review` ถ้ามี API surface
-3. ตรวจสอบ dependencies ไม่ conflict กับ existing versions
+1. Verify references between modules are correct — run `/check-reference` for a deep pass
+2. Verify API contracts match the implementation — run `/deep-review` if there is an API surface
+3. Verify dependencies do not conflict with existing versions
 
 ### 3. Check Docs References
 
-> Goal: documentation ตรงกับ code จริง
+> Goal: documentation matches the real code
 
-1. ตรวจสอบ documentation ตรงกับ code จริง
-2. flag docs ที่อ้าง APIs/files ที่ไม่มีแล้ว
+1. Verify documentation matches the actual code
+2. Flag docs that reference APIs/files that no longer exist
 
 ### 4. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
 
 ## Rules
 
-- broken reference ที่ทำ runtime พัง = High; stale docs = Low
-- ทุก finding ระบุทั้งสองฝั่งของ reference (source → missing target)
+- A broken reference that breaks runtime = High; stale docs = Low
+- Every finding names both sides of the reference (source → missing target)
 
 ## Expected Outcome
 
-- Findings ของ cross-reference dimension พร้อม severity และ evidence
+- Findings of the cross-reference dimension with severity and evidence

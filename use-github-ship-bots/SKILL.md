@@ -1,6 +1,6 @@
 ---
 name: use-github-ship-bots
-description: สร้าง ship bot project จาก plan/issue จนถึง deploy ผ่าน PR
+description: Build a ship bot project from plan/issue to deploy, via a PR
 argument-hint: "<issue-or-plan>"
 allowed-tools:
   - read
@@ -31,126 +31,126 @@ related:
 
 ## Goal
 
-Ship bot project ตาม plan หรือ GitHub issue โดยสร้าง project, implement handlers, tests, CI/CD, deploy, และสร้าง PR
+Ship a bot project per a plan or GitHub issue: create the project, implement handlers, tests, CI/CD, deploy, and open a PR
 
 ## Reference Code
 
-- อ่าน reference จาก `D:\newkub\github-ship-bots`
-- ถ้าต้องการ deploy ใหม่ ให้ทำงานภายใน `D:\newkub\github-ship-bots`
-- อัปเดต repo หลัง ship bot เวอร์ชันใหม่
+- Read the reference from `D:\newkub\github-ship-bots`
+- For a new deploy, work inside `D:\newkub\github-ship-bots`
+- Update the repo after shipping a new bot version
 
 ## Scope
 
-- รับ plan จาก issue, file, หรือ argument
-- สร้าง bot project ตาม stack ทีเลือก
+- Accept a plan from an issue, file, or argument
+- Create the bot project per the chosen stack
 - Implement handlers, business logic, tests
-- รัน verify, CI/CD, deploy
-- สร้าง PR พร้อม evidence
-- อัปเดต issue status
+- Run verify, CI/CD, deploy
+- Create a PR with evidence
+- Update the issue status
 
-- ดูเพิ่มเติม: /setup-cicd, /open-github
+- See also: /setup-cicd, /open-github
 
 ## Execute
 
 ### 1. Read Plan
 
-> Goal: อ่าน Plan
-1. รับ `<issue-or-plan>` จาก argument
+> Goal: Read the plan
+1. Take `<issue-or-plan>` from the argument
    - issue: `/use-github-ship-bots 42`
    - plan file: `/use-github-ship-bots .devin/temp/plan/<workspace>/feed-bot.md`
-2. ถ้าเป็น issue → ใช้ `/resolve-github-issue-by-me` หรือ `gh issue view <number>` (gh CLI `2.101.0 (verified 2026-09-26)`)
-3. ถ้าเป็น file → อ่าน `.devin/temp/plan/<workspace>/<file>.md`
-4. ระบุ bot type, platform, features, acceptance criteria
-5. ถ้าไม่ชัด → ทำ `/ask-me`
+2. If it is an issue → use `/resolve-github-issue-by-me` or `gh issue view <number>` (gh CLI `2.101.0 (verified 2026-09-26)`)
+3. If it is a file → read `.devin/temp/plan/<workspace>/<file>.md`
+4. Identify the bot type, platform, features, acceptance criteria
+5. If unclear → run `/ask-me`
 
 ### 2. Choose Bot Stack
 
-> Goal: เลือก Bot Stack
+> Goal: Choose the bot stack
 1. GitHub bot (approve/reject buttons) → `/follow-create-bot`
 2. Web dashboard bot → `/follow-create-web`
 3. CLI bot → `/follow-create-bun-cli`
-4. บันทึก stack, เหตุผล, dependencies
+4. Record the stack, rationale, dependencies
 
 ### 3. Create Project
 
-> Goal: สร้าง Project
-1. สร้าง directory `{bot-name}/` หรือ repo ใหม่
-2. ใช้ `/follow-create-bot` สร้าง skeleton
-3. สร้าง branch `bot/<name>` ถ้าอยู่ใน existing repo
-4. ตั้งค่า `.env.example`, `tsconfig.json`, `package.json`
+> Goal: Create the project
+1. Create the `{bot-name}/` directory or a new repo
+2. Use `/follow-create-bot` to scaffold the skeleton
+3. Create a `bot/<name>` branch if working in an existing repo
+4. Set up `.env.example`, `tsconfig.json`, `package.json`
 
 ### 4. Implement Core Features
 
-> Goal: implement Core Features
-1. สร้าง `src/handlers/` สำหรับ events ที plan ระบุ
-2. สร้าง `src/domain/` สำหรับ business logic
-3. เพิ่ม approve/reject buttons หรือ slash commands ถ้ามี
-4. เชื่อมต่อกับ `D:\newkub\github-ship-bots` ถ้าเป็น GitHub ship bot (path มีอยู่จริง — verified 2026-09-26)
-5. รัน `/run-lint` และ `/run-typecheck` ระหว่าง implement
+> Goal: Implement the core features
+1. Create `src/handlers/` for the events the plan specifies
+2. Create `src/domain/` for business logic
+3. Add approve/reject buttons or slash commands if present
+4. Connect to `D:\newkub\github-ship-bots` if this is a GitHub ship bot (path exists — verified 2026-09-26)
+5. Run `/run-lint` and `/run-typecheck` while implementing
 
 ### 5. Add Tests
 
-> Goal: เพิ่ม Tests
-1. สร้าง `test/handlers/` ด้วย fixtures
+> Goal: Add tests
+1. Create `test/handlers/` with fixtures
 2. Mock Octokit API calls
-3. รัน `bun test` (Bun `1.4.2 (verified 2026-09-26)` — ใช้ `bun test --parallel` ได้ถ้า tests อิสระกัน)
-4. ตรวจ idempotency และ error handling
+3. Run `bun test` (Bun `1.4.2 (verified 2026-09-26)` — use `bun test --parallel` if the tests are independent)
+4. Check idempotency and error handling
 
 ### 6. Verify
 
-> Goal: ตรวจสอบ Verify
-1. ทำ `/run-verify`
-2. ตรวจ secrets และ env ตัวอย่าง
-3. ตรวจ `README.md` มีวิธี install, config, deploy
+> Goal: Verify
+1. Run `/run-verify`
+2. Check secrets and example env
+3. Check that `README.md` covers install, config, deploy
 
 ### 7. Commit And Push
 
-> Goal: Commit And Push
-1. ทำ `/git-commit`
-2. ทำ `/git-push`
-3. บันทึก commit hash
+> Goal: Commit and push
+1. Run `/git-commit`
+2. Run `/git-push`
+3. Record the commit hash
 
 ### 8. Create PR
 
-> Goal: สร้าง PR
-1. ใช้ `/create-github-pr`
-2. ใส่ `Closes #<issue>` ใน PR body
-3. แนบ screenshots, test results, staging preview
+> Goal: Create the PR
+1. Use `/create-github-pr`
+2. Include `Closes #<issue>` in the PR body
+3. Attach screenshots, test results, staging preview
 
 ### 9. Monitor And Deploy
 
-> Goal: ติดตาม And Deploy
-1. ใช้ `/resolve-cicd` ติดตาม CI/CD
-2. ถ้า pass → merge PR
-3. ถ้ามี deploy → ใช้ `/deploy-to-cloudflare` หรือ `/deploy-to-vercel`
-4. ตรวจสอบ bot ทำงานบน production
+> Goal: Monitor and deploy
+1. Use `/resolve-cicd` to watch CI/CD
+2. If passing → merge the PR
+3. If there is a deploy → use `/deploy-to-cloudflare` or `/deploy-to-vercel`
+4. Verify the bot works on production
 
 ### 10. Update Issue
 
-> Goal: อัปเดต Issue
-1. อัปเดต checkboxes ใน issue
-2. ระบุ deployed URL, version
-3. ทำ `/report-progress`
+> Goal: Update the issue
+1. Update the checkboxes in the issue
+2. Record the deployed URL and version
+3. Run `/report-progress`
 
 ## Rules
 
-- ไม่เริ่ม implement ถ้า plan ไม่ชัด
-- ใช้ `/create-plan-in-dot-devin` ถ้าต้องการ plan ใหม่
-- ใช้ `/resolve-github-issue-by-me` ถ้าเริ่ม implement จาก issue
-- แยก webhook wiring ออกจาก business logic
-- ใช้ `try/catch` รอบทุก handler
-- ไม่ hardcode secrets
-- ทุก feature ต้องมี test
-- แต่ละ PR ทีมี UI ต้องมี annotated screenshots
-- ไม่ใช้ mockup/placeholder ใน PR
-- ไม่ deploy ถ้า verify ไม่ผ่าน
+- Do not start implementing if the plan is unclear
+- Use `/create-plan-in-dot-devin` if a new plan is needed
+- Use `/resolve-github-issue-by-me` when starting implementation from an issue
+- Keep webhook wiring separate from business logic
+- Wrap every handler in `try/catch`
+- Never hardcode secrets
+- Every feature must have a test
+- Every PR with UI must have annotated screenshots
+- No mockups/placeholders in a PR
+- Do not deploy if verification fails
 
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Bot project ถูกสร้างตาม plan
-- Handlers, tests, CI/CD ครบถ้วน
-- PR ถูกสร้างพร้อม evidence
-- Bot deploy และทำงานบน production
-- Issue ถูกอัปเดต progress
+- The bot project is created per the plan
+- Handlers, tests, CI/CD are complete
+- The PR is created with evidence
+- The bot is deployed and working on production
+- The issue progress is updated

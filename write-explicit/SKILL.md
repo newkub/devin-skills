@@ -1,6 +1,6 @@
 ---
 name: write-explicit
-description: เขียนหรือแก้ instructions ให้ชัดเจน วัดผลได้ และมี single responsibility
+description: Write or revise instructions to be clear, measurable, and single-responsibility
 argument-hint: "[scope]"
 related:
   - write-how-to
@@ -13,86 +13,86 @@ related:
 
 ## Goal
 
-เขียนหรือแก้ไข instructions, prompts, rules, หรือ documentation ให้ชัดเจน อ่านแล้วลงมือได้ทันที โดยไม่ต้องเดา
+Write or revise instructions, prompts, rules, or documentation so they are clear and immediately actionable, with no guessing.
 
 ## Scope
 
-ใช้เมื่องานต้องการปรับปรุง clarity ของ skill, prompt, rule, หรือเอกสารใดๆ
+Use when work needs clarity improvements to a skill, prompt, rule, or any document.
 
 ## Execute
 
 ### 1. Identify Target
 
-> Goal: ระบุเนื้อหาที่ต้องแก้ให้ชัดเจน
+> Goal: Pin down the content that needs clarifying
 
-1. อ่าน target ทีต้องการปรับ (prompt, skill, rule, doc)
-2. ระบุจุดที ambiguous, implicit, หรือมีหลายความหมาย
-3. บันทึกลงรายการ ไฟล์/บรรทัด/คำที่ไม่ชัด
+1. Read the target to improve (prompt, skill, rule, doc)
+2. Spot the points that are ambiguous, implicit, or open to multiple meanings
+3. Record a list of the unclear files/lines/wording
 
 ### 2. Extract Core Intents
 
-> Goal: กำหนดสิ่งที่อ่านต้องรู้ก่อนอ่าน
+> Goal: Determine what the reader must know before acting
 
-1. ระบุ `action` ที reader ต้องทำ
-2. ระบุ `condition` หรือ `if` ก่อนการกระทำ
-3. ระบุ `expected result` ทีวัดผลได้
-4. ถ้าไม่มีครบ 3 อย่าง → ถือว่า ambiguous
+1. Identify the `action` the reader must take
+2. Identify the `condition` or `if` before the action
+3. Identify a measurable `expected result`
+4. If any of the three is missing → treat it as ambiguous
 
 ### 3. Rewrite Explicit Instructions
 
-> Goal: เปลี่ยนเป็นลำดับชัดเจน ไม่ต้องตีความ
+> Goal: Rewrite as a clear sequence that needs no interpretation
 
-1. แยก step ละหน่วยงานเดียว (single responsibility)
-2. ใช้กริยา active: `ทำ`, `รัน`, `ตรวจสอบ`, `หยุด` ไม่ใช่ `พิจารณา` อย่างเดียว
-3. ระบุ input/output หรือตัวอย่าง command เสมอ
-4. ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
-5. ลบคำ filler: "ถ้าเป็นไปได้", "อาจจะ", "ควร", "โดยทั่วไป" ถ้าไม่จำเป็นจริง
-6. ถ้ามีหลายทางเลือก → ระบุ criteria ตัดสินใจก่อนแต่ละ branch
+1. Split each step into one unit only (single responsibility)
+2. Use active verbs: `do`, `run`, `check`, `stop` — not just `consider`
+3. Always state the input/output or a command example
+4. Use backticks for `tools`, `commands`, `file paths`, `skill-name`
+5. Remove filler words: "if possible", "maybe", "should", "generally" unless truly needed
+6. If there are multiple options → state the decision criteria before each branch
 
 ### 4. Validate Clarity
 
-> Goal: ตรวจสอบว่าผู้ใช้งานสามารถทำตามได้
+> Goal: Verify that users can actually follow the instructions
 
-1. อ่านทั้งหมดแล้วตอบคำถาม: ทำอะไร? ทำเมื่อไหร่? ผลที่ต้องการคืออะไร?
-2. ถ้ามีข้อใดตอบไม่ได้ → กลับไปแก้ข้อนั้น
-3. ทำ `/deep-validate` เพื่อตรวจ structure และ references
+1. Read it all and answer: What is done? When is it done? What is the desired result?
+2. If any question can't be answered → go back and fix that point
+3. Run `/deep-validate` to check structure and references
 
 ## Rules
 
 ### 1. No Ambiguity
 
-- ทุก instruction ต้องระบุ action + condition + expected result
-- ห้ามใช้ "จัดการ", "ดูแล", "ประมาณนี้" โดยไม่ระบุรายละเอียด
+- Every instruction must state action + condition + expected result
+- Never use "handle", "take care of", or "something like this" without specifics
 
 ### 2. One Thought Per Step
 
-- 1 step = 1 หน่วยงาน ไม่ผสมหลายเรื่อง
-- ถ้าพบ "และ" หรือ "/" ในคำสั่ง → แยก step
+- 1 step = 1 unit, never mixing multiple concerns
+- If you find "and" or "/" in an instruction → split the step
 
 ### 3. Measurable Outcomes
 
-- ทุก expected outcome ต้องตรวจสอบได้
-- ใช้ "ผ่าน X", "สร้าง Y", "มี Z" ไม่ใช่ "ดีขึ้น" หรือ "เหมาะสม"
+- Every expected outcome must be verifiable
+- Use "passes X", "creates Y", "has Z", not "better" or "appropriate"
 
 ### 4. No Placeholder Filler
 
-- ห้ามมี "TODO", "...", "เช่น", หรือ generic examples ที่ไม่ระบุของจริง
-- ถ้าต้องมี placeholder → ใส่หมายเหตุชัดเจนว่าต้องแทนค่าอะไร
+- No "TODO", "...", "e.g.", or generic examples without real specifics
+- If a placeholder is required → add a clear note on what value it must be replaced with
 
 ### 5. Consistent Terminology
 
-- ใช้ชื่อ tool/skill เหมือนกันทั้งไฟล์
-- skill name อยู่ใน backticks เสมอ
+- Use the same tool/skill names throughout the file
+- Always keep skill names in backticks
 
-- ใช้ /write-how-to ถ้าจำเป็น
-- ใช้ /write-solutions ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /reframe ถ้าจำเป็น
+- Use /write-how-to if needed
+- Use /write-solutions if needed
+- Use /follow-best-practice if needed
+- Use /reframe if needed
 
 
 ## Expected Outcome
 
-- Target สามารถทำตามได้ทันทีโดยไม่ต้องถามเพิ่ม
-- ทุก step มี single responsibility ชัดเจน
-- ไม่มี ambiguous words, filler, หรือ placeholders ที่ไม่จำเป็น
-- ผ่าน `/deep-validate` และ check ด้วยตนเอง
+- The target is actionable immediately without further questions
+- Every step has a clear single responsibility
+- No ambiguous words, filler, or unnecessary placeholders
+- Passes `/deep-validate` and a manual check

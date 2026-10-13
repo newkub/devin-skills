@@ -1,6 +1,6 @@
 ---
 name: follow-config-config-vscode
-description: จัดการ .vscode config — settings, extensions, tasks, launch ให้ตรง project stack
+description: Manage .vscode config — settings, extensions, tasks, launch matching the project stack
 argument-hint: "[path]"
 related:
   - follow-config
@@ -10,58 +10,58 @@ related:
 
 ## Goal
 
-ตรวจและจัดการ `.vscode/` config ให้สอดคล้องกับ project stack — settings, recommended extensions, tasks, launch configs — merge กับของเดิมไม่ clobber
+Inspect and manage `.vscode/` config so it matches the project stack — settings, recommended extensions, tasks, launch configs — merging with existing content, never clobbering it
 
 ## Scope
 
-- ใช้กับ `.vscode/settings.json`, `.vscode/extensions.json`, `.vscode/tasks.json`, `.vscode/launch.json`
-- ครอบคลุม: formatter/linter settings, extension recommendations, shared tasks, debug configs
-- ไม่ครอบคลุม user-level VS Code settings — เฉพาะ workspace config ที่ commit ได้
+- Apply to `.vscode/settings.json`, `.vscode/extensions.json`, `.vscode/tasks.json`, `.vscode/launch.json`
+- Covers: formatter/linter settings, extension recommendations, shared tasks, debug configs
+- Does not cover user-level VS Code settings — workspace config that can be committed only
 
 ## Execute
 
 ### 1. Detect Stack And Current Config
 
-> Goal: รู้ว่า project ต้องการ vscode config แบบไหน
+> Goal: Know what vscode config the project needs
 
-1. อ่าน `package.json` / manifests — formatter, linter, test runner, framework ที่ใช้
-2. อ่าน `.vscode/*` ปัจจุบัน — settings, extensions, tasks, launch ที่มีอยู่
-3. ระบุ gaps — เช่น ใช้ biome แต่ไม่มี default formatter หรือ extension recommendation
+1. Read `package.json` / manifests — formatter, linter, test runner, framework in use
+2. Read the current `.vscode/*` — existing settings, extensions, tasks, launch
+3. Identify gaps — e.g. using biome but with no default formatter or extension recommendation
 
 ### 2. Sync Settings And Extensions
 
-> Goal: editor ทำงานตรง project tools
+> Goal: The editor matches the project tools
 
-1. `settings.json`: ตั้ง `editor.defaultFormatter` ตาม formatter ของ project, `editor.formatOnSave`, linter integration, file associations — merge กับ settings เดิม ห้าม overwrite keys ที่ไม่เกี่ยว
-2. `extensions.json`: `recommendations` สำหรับ extensions ของ tools ที่ project ใช้จริง — เช่น biome, eslint, tailwind, playwright ตาม stack
-3. ห้ามใส่ user-specific settings (theme, font) ลง workspace settings
+1. `settings.json`: set `editor.defaultFormatter` to the project's formatter, `editor.formatOnSave`, linter integration, file associations — merge with existing settings, never overwrite unrelated keys
+2. `extensions.json`: `recommendations` for the extensions of tools the project actually uses — e.g. biome, eslint, tailwind, playwright per stack
+3. Never put user-specific settings (theme, font) in workspace settings
 
 ### 3. Sync Tasks And Launch
 
-> Goal: tasks/debug configs ตรง scripts จริง
+> Goal: tasks/debug configs match the real scripts
 
-1. `tasks.json`: map จาก `package.json` scripts หรือ monorepo tasks — build, test, lint, dev
-2. `launch.json`: debug configs สำหรับ app/tests ตาม runtime ที่ใช้ — ดู official docs ของ framework ถ้าไม่แน่ใจ
-3. ใช้ variables ของ VS Code (`${workspaceFolder}`, `${file}`) แทน hardcode paths
+1. `tasks.json`: map from `package.json` scripts or monorepo tasks — build, test, lint, dev
+2. `launch.json`: debug configs for app/tests per runtime in use — check the framework's official docs when unsure
+3. Use VS Code variables (`${workspaceFolder}`, `${file}`) instead of hardcoded paths
 
 ### 4. Verify
 
-> Goal: config valid และใช้งานได้
+> Goal: Config is valid and usable
 
-1. validate JSON ทุกไฟล์ — ไม่มี syntax errors, comments ใช้ได้ใน jsonc
-2. ทดสอบ task หลักรันได้ — `Terminal → Run Task` equivalents
-3. ทำ `/update-dot-vscode` ถ้าต้อง sync กับ templates/standards ของ repo
+1. Validate every JSON file — no syntax errors; comments are allowed in jsonc
+2. Test that key tasks run — `Terminal → Run Task` equivalents
+3. Run `/update-dot-vscode` if syncing with repo templates/standards is needed
 
 ## Rules
 
-- merge กับ config เดิมเสมอ — ห้าม overwrite ทั้งไฟล์ถ้าไม่จำเป็น
-- ตั้งเฉพาะ settings ที่จำเป็นต่อ project tools — ห้ามใส่ personal preferences
-- extension recommendations เฉพาะ tools ที่ project ใช้จริง — ไม่ใช่ nice-to-have
-- ห้าม commit secrets, tokens หรือ machine-specific paths ใน `.vscode/`
-- paths ต้อง relative หรือใช้ VS Code variables — ห้าม absolute paths
+- Always merge with existing config — never overwrite a whole file unless necessary
+- Set only the settings the project tools require — no personal preferences
+- Extension recommendations only for tools the project actually uses — not nice-to-haves
+- Never commit secrets, tokens, or machine-specific paths in `.vscode/`
+- Paths must be relative or use VS Code variables — no absolute paths
 
 ## Expected Outcome
 
-- `.vscode/` สอดคล้องกับ project stack — formatter, linter, tasks ตรง
-- extensions recommendations ครบสำหรับ tools ที่ใช้
-- config valid, tasks/launch ใช้งานได้จริง
+- `.vscode/` matches the project stack — formatter, linter, tasks aligned
+- Extension recommendations complete for the tools in use
+- Config valid; tasks/launch actually work

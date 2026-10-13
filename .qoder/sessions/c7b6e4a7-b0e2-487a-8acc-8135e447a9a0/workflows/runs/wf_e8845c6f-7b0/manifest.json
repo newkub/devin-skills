@@ -1,0 +1,1317 @@
+{
+  "runId": "wf_e8845c6f-7b0",
+  "workflowName": "translate-skills-to-english-tail",
+  "scriptPath": "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\.qoder\\sessions\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\workflows\\scripts\\translate-skills-to-english-tail-wf_e8845c6f-7b0.js",
+  "source": "inline",
+  "args": {
+    "manifest": ".devin/temp/batches.tsv",
+    "startId": 314,
+    "endId": 200
+  },
+  "meta": {
+    "name": "translate-skills-to-english-tail",
+    "description": "Translate manifest batches 314 down to 200 from Thai to English, verified per batch (runs alongside the main sweep on a disjoint range)",
+    "phases": [
+      {
+        "title": "Translate",
+        "detail": "one agent per batch, descending batch ids"
+      },
+      {
+        "title": "Verify",
+        "detail": "re-grep batch for Thai + structural drift, fix in place"
+      }
+    ]
+  },
+  "createdAt": "2026-10-13T10:48:01.706Z",
+  "updatedAt": "2026-10-13T10:58:03.754Z",
+  "status": "killed",
+  "outputPath": "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\.qoder\\sessions\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\workflows\\runs\\wf_e8845c6f-7b0\\output.json",
+  "agents": [
+    {
+      "index": 1,
+      "label": "translate:314",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:f776bfc8c16248df8f203216a923f9a818802ff27c5f26c819f69422b5ade1a3",
+      "agentId": "aworkflow-subagent-c5f11988a779a326",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a206e4db12832e25b.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-c5f11988a779a326.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-c5f11988a779a326.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 2,
+      "label": "translate:313",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:8cfe90f49e7033a93146c30fa443efb78567f8e6842b8d10487ce7faa5c215c6",
+      "agentId": "aworkflow-subagent-60f02104405d5c93",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a16021d8616475de3.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-60f02104405d5c93.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-60f02104405d5c93.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 3,
+      "label": "translate:312",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d4cdb92f2d7e8fecc13531b3edacaf4e9a96ba4202a08272c3fab7aaea6bf43f",
+      "agentId": "aworkflow-subagent-102934f6ce2667ff",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\aaa865a45092a7cab.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-102934f6ce2667ff.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-102934f6ce2667ff.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 4,
+      "label": "translate:311",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:b89166cb313d70562ab05e31ea7b4e9e5dab59411a7f9801a3b4366d56536b1d",
+      "agentId": "aworkflow-subagent-b31188512103dec2",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a56b787f3ae0d7ffe.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-b31188512103dec2.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-b31188512103dec2.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 5,
+      "label": "translate:310",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:b552b5cd461865a79fd252af0556b0cd734a40e00e875cdff082eb5358d1a212",
+      "agentId": "aworkflow-subagent-047b46a0eaee935a",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a6bde4c1cc9d976ea.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-047b46a0eaee935a.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-047b46a0eaee935a.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 6,
+      "label": "translate:309",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:6f432caff75e8057e31c5368bc6a5b133f716c98d7bc1ef14c352123bd3557c6",
+      "agentId": "aworkflow-subagent-0d61a457234e3180",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a84093c7e38ffee11.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-0d61a457234e3180.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-0d61a457234e3180.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 7,
+      "label": "translate:308",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:3ea96adac5dea1d35475ef795bef7a2dc71d95593dbf0083046bbe1c22a6889f",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 8,
+      "label": "translate:307",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:cbcb8c1ff59126caee25b0edafcf34a303c5fe6e10a24b4b3044076a942026ca",
+      "agentId": "aworkflow-subagent-f1bef6d62c60f0d1",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\a38e7a85eea602187.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-f1bef6d62c60f0d1.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-f1bef6d62c60f0d1.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 9,
+      "label": "translate:306",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:cff1fc27d5bd28df29dc2b08ab0e26f1986d1cb0a14d5b8e260e7900c68043e3",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 10,
+      "label": "translate:305",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d112ee0eb2b5ac4fe8dec1a10b1526ef1cb11b9158cf0222b36cb85b92986e42",
+      "agentId": "aworkflow-subagent-1264bc9ec08584c6",
+      "agentType": "workflow-subagent",
+      "state": "done",
+      "attempts": 1,
+      "outputPath": "C:\\Users\\VEERAP~1\\AppData\\Local\\Temp\\qoder-cli\\C--Users-Veerapong-AppData-Roaming-devin-skills\\7d7f3869-f049-43a7-b0c1-4dae2b8645cf\\tasks\\af8864cbd3e226f31.output",
+      "transcriptPath": "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-1264bc9ec08584c6.jsonl",
+      "attemptTranscriptPaths": [
+        "C:\\Users\\Veerapong\\.qoder\\projects\\C--Users-Veerapong-AppData-Roaming-devin-skills\\c7b6e4a7-b0e2-487a-8acc-8135e447a9a0\\subagents\\agent-aworkflow-subagent-1264bc9ec08584c6.jsonl"
+      ],
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 11,
+      "label": "translate:304",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0e1df1b501eac489e0f76085ce2a1db4a4eb4c2f02cf5fcb1ad8956874d57a44",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 12,
+      "label": "translate:303",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0ae0a4e8e83b88bbd2e26573c63a0d78d136e1c841786a2ee161cf8682609459",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 13,
+      "label": "translate:302",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:91ed6756c97fa2aa15a98c0aba6cad1e2e3dad9ab980204f6f78cb8465f60ebf",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 14,
+      "label": "translate:301",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:10353575f7ddf9ef2ddeed1347bab7407c4b409d64859500bacd27e53f3ea62d",
+      "state": "progress",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 15,
+      "label": "translate:300",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0d73b3cb6da83adbcfe12cab89637463983ec632edfb4dfc456c7157f76d2830",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 16,
+      "label": "translate:299",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:51a4d35ae446fb76bc88134519f0b8e5023c14625bfe4957a98a7bde2f267c1a",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 17,
+      "label": "translate:298",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7966607e0a0b300cbe408ecedfcea970e17dd0687bb3ba221bb72c4d3eada635",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 18,
+      "label": "translate:297",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d6887d4cb8c80dd59011941c88d063108e512001f4430932e493ce968313010e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 19,
+      "label": "translate:296",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:058211e5a45400432864fcacb1fb7eb7face7716d9fc4b18220bb70f64e52c8c",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 20,
+      "label": "translate:295",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:924675fcf96873deeb805d9d249d935c2f62705ff29aaca0ae2270235807612b",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 21,
+      "label": "translate:294",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:b1470a9fb7803dfb0f4e10e146e17201c868c2de12867066d5976eaaf74aa2db",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 22,
+      "label": "translate:293",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9d3252d246eae7571b125f3d55bb861efd04b03d30e29a18d92f7a19cec7e743",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 23,
+      "label": "translate:292",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:5d6b6a17ee3fc006b699669048984761e116d05673c40c53f11f09ad5f199742",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 24,
+      "label": "translate:291",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:60675c587a93cb17f94e3f2c5e545cdac737273fd209c2393722a00d28ec7cfa",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 25,
+      "label": "translate:290",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:da4554bf9e4c8c25ee7db5edd201dc1f1086eb0955c43968132fe0eee8307f22",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 26,
+      "label": "translate:289",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0b8613a9888191b3ea6a6a219a9262cd0bb15205518bb3f011d7c163d5503c74",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 27,
+      "label": "translate:288",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:1de18b1e2314423085b000f485aefff233e2c558e76efbf8f1ab468db277f804",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 28,
+      "label": "translate:287",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:6f788cba27af6e671187486212043db5c70b1efde48b3ec2f71c3b34965cad1c",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 29,
+      "label": "translate:286",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:ea189748ed3f8ec35bf5d802e8c92a8a80233fc49337b423403a50425fd69180",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 30,
+      "label": "translate:285",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:a2b955124868d73afeee59edd0b00bc7b95c1e7e9d5ab75afb4f917c4cdbf097",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 31,
+      "label": "translate:284",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d1a715efee83279f22fbe0f2d252082a94e89d029da3cf187c47179ea3b824cd",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 32,
+      "label": "translate:283",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7b0ef45f85d1bdd8c6c75ce01d444cc92b4d3efabd531ca1f35e39a8b69357dc",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 33,
+      "label": "translate:282",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e97d650f7b535faa3731daf5158ccbc54dc1db28450e0c923dfeb80e03847d05",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 34,
+      "label": "translate:281",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:fbe5aba74b6a0797f9fe05621cd6fe7ac9c91f50eff53ad36a0040cb2b4d10f3",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 35,
+      "label": "translate:280",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:2b346d6d4161ae3b641f4e72e5983effa4110e2041f408a2fb461e19e5b4cb0b",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 36,
+      "label": "translate:279",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:74b9c19c15f27d949d0d880651598ffd25d8c8b7fce72bc989ece340503c2d85",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 37,
+      "label": "translate:278",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:255ce2b9c941658fecb39aa4bb7d6ede8ca1ab738edbab63554eedb665e33a5e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 38,
+      "label": "translate:277",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e77133cceee073229bd63898406264352a3091d23cf3b399c8ad9db081280c56",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 39,
+      "label": "translate:276",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:36f724e300d83032ca916c8c5c2c181b723ebd4c3446733fc3daf163fc8a3d27",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 40,
+      "label": "translate:275",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:c2de2aab38fdecad03643125c18bd524b670f20b01ad5f564a451e63d964ff8d",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 41,
+      "label": "translate:274",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7be3ebef5424937a8a3382c59a6bf06869d17d2097b98bda4de2d6b7279af844",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 42,
+      "label": "translate:273",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e1b295bcd1b0f120d78c9c5ff3380333f037358c21a8aafd37dc90ed2244c12a",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 43,
+      "label": "translate:272",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:122cb4405a1ca94e230a29e64af5cde103497ac7c5c6fbbf448e8a323717e39b",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 44,
+      "label": "translate:271",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:de2d686a63287ae10faef7f3a90e9c9d6a96faead4cb72b3f321bb8511bda9d1",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 45,
+      "label": "translate:270",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:fa707719d4d3c1114593cb00bca43275115f37d13eca907331d1761a1d0ca512",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 46,
+      "label": "translate:269",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7e3e3949021b743fd3829fad62b89f0bf7d4953625f3594de648148a7efd1f20",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 47,
+      "label": "translate:268",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:6228f800ff5591b92a33a8e2167cd39f47cf3eddf5bc224c83699384aa0044bb",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 48,
+      "label": "translate:267",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7d39396d906d29808eca3aee69099b899fbc59e70393d8f7e0ac808179ad8810",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 49,
+      "label": "translate:266",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:8293b3ef3a97c5ae67a421f93ad09bbaf09719489a79c6e2dc1d2dfb71dcf9f5",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 50,
+      "label": "translate:265",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:1c91512c4320db501871300b9c6d1666302afba095a73bc6998055ed28dfc9dc",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 51,
+      "label": "translate:264",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:db6a2351d544911997fd1093e05dcaef31a8efd678f436fb8c22e79f65c752dd",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 52,
+      "label": "translate:263",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:6590559ebbf694343432ed9298e2fc0de0fd51e5e677471daf6d5aec201ce272",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 53,
+      "label": "translate:262",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:f624a7b35865f9d7a994c344b600dab1e4c07c0a72365d8c30c10cf131d4bd82",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 54,
+      "label": "translate:261",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:dc1d77151e057afaa6e6a536db6d7b2ba2b15dd905d585ea7bf1391b932e79b6",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 55,
+      "label": "translate:260",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:3b5c7b92fb12cac6a035616f61ebb85a52084737e58e9f3f0e85b52e1f71993b",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 56,
+      "label": "translate:259",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:cbbcfc5cf8c1982171f28d666fa8d1c95f8ed4635697faccc9cab3995e1a1d7e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 57,
+      "label": "translate:258",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e6359e0cb4ddac8f857c171dfb8585ed68510610c70a5afc111725d3964ad6b2",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 58,
+      "label": "translate:257",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:333b69b5a73a6b741d0d14302fe1c83581639ae698f22f1d514709d419757a58",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 59,
+      "label": "translate:256",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:b8c7fefe6a72c1a6c0ebb57ba0210e350999314d71943d0702d92f15c4beac3e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 60,
+      "label": "translate:255",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:13da71c4cdcdf7be978d4a5424333ed4ffaba28cf3a048b821bb226bcbd4b52f",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 61,
+      "label": "translate:254",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:85023b9b9e16e0d544eb359f6ea368987e748b22fa0211ad356cb97e61d1cf83",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 62,
+      "label": "translate:253",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:099fc173fcf060ce85c94209b69944ff0a1d498373a329d9c780f273ccb750a4",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 63,
+      "label": "translate:252",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9235db97cd3db31a3b497f1d2947b358b6bae33cee260da18e156352e0ea7622",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 64,
+      "label": "translate:251",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:b11abe9754534650b47e2ad62eadabceebe6c403e62c0782a18c344a6c6733ff",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 65,
+      "label": "translate:250",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:ee4b155ace0bb6c213a1083fbeb40f052dddf15e1b9ee59582dd4664b1e29c3d",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 66,
+      "label": "translate:249",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:1c1006cdfa56dc8b14f00be60bbd7128d12bbe547f649d82f651180fb37c6815",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 67,
+      "label": "translate:248",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:f84fafecf9b8b023051c2bea017f64f415ee25c401f2d80930cad8b2d3bc823e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 68,
+      "label": "translate:247",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:68f47f72555f808807eca6433758ee36eebce91283e9ee309075f98ed671ae83",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 69,
+      "label": "translate:246",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:fe2022ff242695f70f00db3461c8fd9ae5c07caaa6be25f80147ae224449b306",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 70,
+      "label": "translate:245",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:f1f16282c9038ebfdd83e287aab8186b39e293863bd8a04bceb31d8ecb5c77ac",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 71,
+      "label": "translate:244",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:dc304599386f8f2645babbbe33ff2453075c232a63700376a88e9b78a699eecc",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 72,
+      "label": "translate:243",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:c24654c0fddc6b3743f2c7252bdce40c2b9712baf123da2e54a022ae549f8bc1",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 73,
+      "label": "translate:242",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:6df7d2c943942199465929e7120616342f04ee3eece8687300b4d86c09e1baea",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 74,
+      "label": "translate:241",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0d0b9c84efdf637df811430402ce5ab5a6a6ac7b8bade871dde5af20a18de066",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 75,
+      "label": "translate:240",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:2dfc91ddbd020d4d0b39c129ecd47ac5d70a4d5bc451e7fa9ffed49ce401b7da",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 76,
+      "label": "translate:239",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:0211bcbd245b185b67eda6d04e4f544bf98eacb7977d85fbdfd2505a50fa3f0d",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 77,
+      "label": "translate:238",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7b9a61d9ced43ab3115a7a8301719eb9716e8af59d98c0da0c89f23337d6c703",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 78,
+      "label": "translate:237",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:7a6942163adb45770c65206ced2597bc7717651f24af9ba7e332f93d663762e5",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 79,
+      "label": "translate:236",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:3cd2a175db8df41c6728f25c961c23cfc76a4cad45c55a7ff44604dc53d2ca18",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 80,
+      "label": "translate:235",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:4bcbdf591c75b09905ab3049ceaa09e441ec5e00a51b2b69f49b4f980df398e5",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 81,
+      "label": "translate:234",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:a3b459801be8217606557e59144c4ca65ea4a00c6de8621bc455c13169074919",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 82,
+      "label": "translate:233",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:1a00c84e936f3a4fef42d5a06ae8626547db7f0518bcf88de0abea22e2595bc9",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 83,
+      "label": "translate:232",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9c9a06b84c57d2d4ee05087713cb8b49c3774124895f182987627bc29c1e3dba",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 84,
+      "label": "translate:231",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:23ba266bfb22c838180281aa93b3203b2d2b0a581dc09248209a15630fea481a",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 85,
+      "label": "translate:230",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:13184c9c5014f243ff9c0306d8489bd2651c0bb28aa2735523e4a7d190c69c3f",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 86,
+      "label": "translate:229",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:f8ba48a82c9cc802194ddf98eaa91b1881f5109284d4ba6438cae605da7944ca",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 87,
+      "label": "translate:228",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:241013900798414e03f350727ebbf41b00d1800256200ce1ba79cd97833bf43a",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 88,
+      "label": "translate:227",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e776e5e7849d5401bfae340c4cb27c3c1e46c46daed1c01a421516b348f16e99",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 89,
+      "label": "translate:226",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:ee34e6ede0dca68b38e19b4e84c259db318aaf4265046a282f26adcbf1140a81",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 90,
+      "label": "translate:225",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:157b0a19921129652b97e370b9f7c4d572ea6855d5f026ce8b91c2d0ef2f8f66",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 91,
+      "label": "translate:224",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:256eb455224d2d9c1f1ae137db8341187e2200332b211eb42be523af10b83386",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 92,
+      "label": "translate:223",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:2f867577b177d33648d86cac4b184e7f5435de04f8a1bde3b06b9bff5cf5a3a0",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 93,
+      "label": "translate:222",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:51e9d32d06bac8854e4cdac7dbd40616d5ad505a8574b9a289717f17aa6e20eb",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 94,
+      "label": "translate:221",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9611393a08eade4b2ed446609be1ce161cc5d47729992f8f0272882c6d28760c",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 95,
+      "label": "translate:220",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:05c1e3e8eb5d0d6df682961091cd0d3721c8c3ffc06a22183d9d571881160d61",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 96,
+      "label": "translate:219",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:679eaacddffec95d03a2e1e4875592e64e455f55e8f7bbc5787600f19581aab6",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 97,
+      "label": "translate:218",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:c6995efd727b9293941d9365165d33a76fdf9ca3337570827a265262ed4bb964",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 98,
+      "label": "translate:217",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:33ca24244208bcd49b47e4d8a0adade6c8cf28e6354e7e9ebdf9780c2ebaf930",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 99,
+      "label": "translate:216",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:e00194bc431d29ebad60bc16218e92942ef5cbdcf7a5cebbdc35bc818ff5783f",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 100,
+      "label": "translate:215",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:c6fa2abd7b6901bbef42bdd8a808d0ac7f10107f74abd5f44f1c9ee881c7682f",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 101,
+      "label": "translate:214",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d8917350fd6199ed259ef8e9fc7674f117396d4291bc5b2635ab2a87190353b8",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 102,
+      "label": "translate:213",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9434ed720dda568fac17c26260dd00ab07a8e5f9c7612ac2efd99b8780971454",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 103,
+      "label": "translate:212",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:749c267b0687895a9b21bc8a5faa816747b45e04d304d8bf2254f3817e167881",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 104,
+      "label": "translate:211",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:5e0b4557494d06913e59534da151c69bac5b67add9f4d5adfd90724890a27c43",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 105,
+      "label": "translate:210",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:cbbf0a414a18d085162ce3af2a76b62f0451138dcf6a0f8e1d55f62997310a81",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 106,
+      "label": "translate:209",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9b84ab6ba3d1db4d1001b85cba8309fdda708fe4749e324f9fe5e39f0a1be66c",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 107,
+      "label": "translate:208",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:444da722bb22846bfd7dda9fa54c4afec068948372ddeb7c601fc74e4cd64975",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 108,
+      "label": "translate:207",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:ee6497563268a946f24251acdf1cea3be9c16448ffff2793fe60777c2cd67567",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 109,
+      "label": "translate:206",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:aaac15b8c5cfabd58be495796359137a79dc6db37ce3efa17d3be6909926049e",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 110,
+      "label": "translate:205",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:509c2c33428fad110e9bbf98e42e140122a64da048b7b7b5c3d926da3d110bfb",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 111,
+      "label": "translate:204",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:321454ac5a4c9e2f2d2100a23d8b80e97c33c8eac1b4ab0e7c69de00586c7cc6",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 112,
+      "label": "translate:203",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:d1f82905810b92c8aca279a47e39f13712f4fa1eaae53641a023098de23dd8a6",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 113,
+      "label": "translate:202",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:49d7c9fa9d75fdd2530ec88e06d406762eb910547018431279e9acc65ccb6e1d",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 114,
+      "label": "translate:201",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:3a56179501e75c4ea4cfec020ed1db71077bed0ac2ac55db65b7b7da20c440c6",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 115,
+      "label": "translate:200",
+      "phaseIndex": 1,
+      "phaseTitle": "Translate",
+      "journalKey": "v2:9338eb376c28483f7f73865351329b661efde979d11cbb054d1a93542d1e9a0d",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 116,
+      "label": "verify:314",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:946b14b9e3057d30574ad7dbe3abc138f08f2b1644db04757f09efc9bddfa1ab",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 117,
+      "label": "verify:313",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:bb81bb309b7c711dfc7c366af5d0c6ab1febcb0950cf9ac55fba1c2702fec9ea",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 118,
+      "label": "verify:312",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:9359bc67bb38e1e31a03ec44c7672a5b544cd9eef060ec90329952bc81d5b7c3",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 119,
+      "label": "verify:311",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:68f47d0cddbb5eb3e3462a8c44417b38525aff184fc0b044ea4e0576d50d0d31",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 120,
+      "label": "verify:310",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:ab4f4d39ba1c9fb2f95abe42feea60c10ca55d158693048349081a311dbbcad7",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 121,
+      "label": "verify:309",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:b0e8f6eaa2be53c7fa39a19ee8b39c705088b585199acba88ae0d84acc9ddb2a",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 122,
+      "label": "verify:307",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:edb7d27524cb7470609672410cc3111706d227caceb18b5ff1cddb97a60f9779",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    },
+    {
+      "index": 123,
+      "label": "verify:305",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "journalKey": "v2:2b9882a8f1593f661d3f739bfb27e2de46cf0097d94a41a6180db38d91f17c7f",
+      "state": "start",
+      "attempts": 1,
+      "updatedAt": "2026-10-13T10:58:03.645Z"
+    }
+  ]
+}

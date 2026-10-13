@@ -1,17 +1,17 @@
 ---
 name: identify-scope
-description: รู้ว่าจะ review และ fix อะไร
+description: Know what to review and fix
 ---
 
 # Identify Scope
 
 ## Goal
 
-รู้ว่าจะ review และ fix อะไร
+Know what to review and fix
 
 ## Checks
 
-1. ระบุ target files หรือ area
-2. ทำ `/review` เพื่อหา issues
-3. บันทึก findings พร้อม severity
+1. Identify the target files or area
+2. Run `/review` to find issues
+3. Record findings with severity
 

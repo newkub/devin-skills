@@ -1,19 +1,19 @@
 # Step: Generate Flow Diagram
 
-> Goal: วาด ANSI flow diagram ของการทำงานสำหรับ README
+> Goal: Draw an ANSI flow diagram of the operation for the README
 
 ## Execute
 
-1. จาก `/learn-from-codebase` (deep-analyze) ระบุ main flow ของ project — input → process → output หรือ lifecycle (เช่น `describe → compose → run → result`)
-2. วาดเป็น ANSI box-drawing flow diagram — ใช้ `─`, `│`, `▶`, `▼` แสดงทิศทาง — ทุกบรรทัดความยาวเท่ากัน (fixed width เช่น 60 chars)
-3. วาง diagram ด้านบน Get Started โดยไม่ต้องมี heading — ใช้ ` ```text ` codeblock
-4. ถ้า flow fail → retry (max 3 → stop/report)
+1. From `/learn-from-codebase` (deep-analyze), identify the project's main flow — input → process → output or a lifecycle (e.g. `describe → compose → run → result`)
+2. Draw it as an ANSI box-drawing flow diagram — use `─`, `│`, `▶`, `▼` to show direction — every line the same length (fixed width, e.g. 60 chars)
+3. Place the diagram above Get Started without a heading — use a ` ```text ` codeblock
+4. If the flow fails → retry (max 3 → stop/report)
 
 ## Rules
 
-- Flow diagram เท่านั้น — แสดงการทำงาน/ลำดับขั้นตอน/data flow หรือ command pipeline
-- ห้ามวาด file structure/tree หรือ UI mockup ในตำแหน่งนี้ (file structure อยู่ใน `Development > Architecture` เท่านั้น)
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section
+- Flow diagram only — show the operation/step sequence/data flow or command pipeline
+- Never draw a file structure/tree or UI mockup in this position (file structure belongs only in `Development > Architecture`)
+- No ANSI below the logo/badges in the Hero section
 
 ## Example
 

@@ -1,6 +1,6 @@
 ---
 name: follow-create-nushell-plugin
-description: สร้าง NuShell plugin ด้วย Rust ตาม official contributor guide
+description: Build NuShell plugins in Rust per the official contributor guide
 argument-hint: "[plugin-name]"
 related:
   - follow-create-plugins
@@ -10,114 +10,114 @@ related:
 
 ## Goal
 
-สร้าง NuShell plugin ด้วย Rust ที่ทำงานได้จริง ตามมาตรฐานของ official NuShell contributor guide
+Build a working NuShell plugin in Rust that follows the official NuShell contributor guide's standards
 
 ## Scope
 
-ใช้สำหรับสร้าง NuShell plugin ใหม่ด้วย Rust โดยใช้ `nu-plugin` และ `nu-protocol` crates
+Use for creating a new NuShell plugin in Rust with the `nu-plugin` and `nu-protocol` crates
 
 ## Execute
 
 ### 1. Setup Project
 
-> Goal: สร้างโครงสร้าง project สำหรับ NuShell plugin
+> Goal: scaffold the project structure for a NuShell plugin
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชัน NuShell/nu-plugin ล่าสุด ตาม conventions ใน `/update-devin-global-skills` — `nu-plugin`/`nu-protocol` ต้องตรงกับ NuShell version ที่ติดตั้ง
-2. สร้าง project ด้วย `cargo new nu_plugin_<name>`
-3. แก้ไข `Cargo.toml` เพื่อเพิ่ม dependencies: `nu-plugin` + `nu-protocol` (version เดียวกับ NuShell ที่ติดตั้ง — ไม่ pin ใน skill นี้)
-3. ตั้งค่า `edition = "2024"` และให้ version ตรงกับติดตั้ง NuShell
-4. สร้าง `src/main.rs` เป็น entry point ของ plugin
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest NuShell/nu-plugin versions, per the conventions in `/update-devin-global-skills` — `nu-plugin`/`nu-protocol` must match the installed NuShell version
+2. Create the project with `cargo new nu_plugin_<name>`
+3. Edit `Cargo.toml` to add the dependencies: `nu-plugin` + `nu-protocol` (same version as the installed NuShell — not pinned in this skill)
+3. Set `edition = "2024"` and match the version to the installed NuShell
+4. Create `src/main.rs` as the plugin entry point
 
 ### 2. Implement Plugin Trait
 
-> Goal: สร้าง struct ที่ implement `Plugin` trait
+> Goal: create a struct that implements the `Plugin` trait
 
-1. สร้าง unit struct สำหรับ plugin (เช่น `LenPlugin`)
-2. implement `Plugin` trait:
-   - `fn version(&self) -> String` ใช้ `env!("CARGO_PKG_VERSION").into()`
-   - `fn commands(&self) -> Vec<Box<dyn PluginCommand<Plugin = Self>>>` คืนค่า list ของ commands
-3. เก็บ state ของ plugin ใน struct นี้ได้ ถ้าจำเป็น
+1. Create a unit struct for the plugin (e.g. `LenPlugin`)
+2. Implement the `Plugin` trait:
+   - `fn version(&self) -> String` using `env!("CARGO_PKG_VERSION").into()`
+   - `fn commands(&self) -> Vec<Box<dyn PluginCommand<Plugin = Self>>>` returning the list of commands
+3. You may keep plugin state in this struct when needed
 
 ### 3. Implement Command
 
-> Goal: สร้าง command ด้วย `SimplePluginCommand` หรือ `PluginCommand`
+> Goal: create commands with `SimplePluginCommand` or `PluginCommand`
 
-1. สร้าง unit struct สำหรับแต่ละ command (เช่น `Len`)
-2. implement `SimplePluginCommand` (หรือ `PluginCommand` ถ้าต้อง handle streams):
+1. Create a unit struct for each command (e.g. `Len`)
+2. Implement `SimplePluginCommand` (or `PluginCommand` if you must handle streams):
    - `fn name(&self) -> &str`
    - `fn description(&self) -> &str`
-   - `fn signature(&self) -> Signature` ระบุ input/output types
-   - `fn run(...)` ประมวลผล input และคืนค่า `Value` หรือ `LabeledError`
-3. ใช้ `EvaluatedCall` สำหรับ arguments และ `call.head` สำหรับ span ของ error
-4. ใช้ `PluginCommand` แทน ถ้า command ต้องรับหรือส่ง stream
+   - `fn signature(&self) -> Signature` declaring input/output types
+   - `fn run(...)` processes the input and returns a `Value` or `LabeledError`
+3. Use `EvaluatedCall` for arguments and `call.head` for the error span
+4. Use `PluginCommand` instead when the command must accept or emit streams
 
 ### 4. Wire Main Entry Point
 
-> Goal: ต่อเข้ากับ NuShell plugin runtime
+> Goal: connect to the NuShell plugin runtime
 
-1. ใน `main()` เรียก `serve_plugin(&YourPlugin, JsonSerializer)` หรือ `MsgPackSerializer`
-2. ใช้ `MsgPackSerializer` สำหรับ production เพราะเร็วกว่า
-3. ใช้ `JsonSerializer` สำหรับ debug หรือทดสอบ protocol
+1. In `main()`, call `serve_plugin(&YourPlugin, JsonSerializer)` or `MsgPackSerializer`
+2. Use `MsgPackSerializer` in production because it is faster
+3. Use `JsonSerializer` for debugging or protocol testing
 
 ### 5. Build And Register Plugin
 
-> Goal: ติดตั้งและ register plugin กับ NuShell
+> Goal: install and register the plugin with NuShell
 
-1. สร้าง release build ด้วย `cargo install --path . --locked`
-2. ใน NuShell register plugin ด้วย `plugin add <path/to/nu_plugin_name>` (เติม `.exe` บน Windows)
-3. โหลด plugin ทันทีด้วย `plugin use <command_name>` หรือ restart NuShell
-4. ตรวจสอบด้วย `plugin list`
+1. Build a release with `cargo install --path . --locked`
+2. In NuShell, register the plugin with `plugin add <path/to/nu_plugin_name>` (append `.exe` on Windows)
+3. Load the plugin immediately with `plugin use <command_name>` or restart NuShell
+4. Verify with `plugin list`
 
 ### 6. Development Workflow
 
-> Goal: พัฒนาและทดสอบ plugin
+> Goal: develop and test the plugin
 
-1. ใช้ `cargo build` และ `cargo run` ใน development
-2. ใช้ `cargo clippy` และ `cargo fmt` สำหรับ code quality
-3. ทดสอบ command ใน NuShell หลัง `plugin use <command_name>`
-4. ปรับ `Signature` ให้ประกาศ input/output types ถูกต้องเพื่อ type checking
+1. Use `cargo build` and `cargo run` during development
+2. Use `cargo clippy` and `cargo fmt` for code quality
+3. Test the command in NuShell after `plugin use <command_name>`
+4. Make `Signature` declare the correct input/output types so type checking works
 
 ### 7. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` fails → report the status
 
 ## Rules
 
 ### 1. Naming And Version
 
-- ตั้งชื่อ project ด้วย `nu_plugin_<name>` เสมอ
-- `nu-plugin` และ `nu-protocol` version ต้องตรงกับ version ของ NuShell ที่ติดตั้ง
-- อย่า hardcode version แต่ให้ดึงจาก `env!("CARGO_PKG_VERSION")`
+- Always name the project `nu_plugin_<name>`
+- `nu-plugin` and `nu-protocol` versions must match the installed NuShell version
+- Don't hardcode versions; take them from `env!("CARGO_PKG_VERSION")`
 
 ### 2. Command Type
 
-- ใช้ `SimplePluginCommand` สำหรับ command ที่ไม่ต้องจัดการ stream
-- ใช้ `PluginCommand` สำหรับ command ที่ต้องจัดการ stream
+- Use `SimplePluginCommand` for commands that don't handle streams
+- Use `PluginCommand` for commands that must handle streams
 
 ### 3. Error Handling
 
-- คืนค่า error ด้วย `LabeledError` พร้อม `call.head` span เพื่อให้ NuShell underline command ที error
+- Return errors with `LabeledError` including the `call.head` span so NuShell underlines the failing command
 
 ### 4. Serialization
 
-- ใช้ `MsgPackSerializer` สำหรับ production
-- ใช้ `JsonSerializer` สำหรับ debug หรือทดสอบ protocol
+- Use `MsgPackSerializer` in production
+- Use `JsonSerializer` for debugging or protocol testing
 
-- ใช้ /follow-create-biome-plugin ถ้าจำเป็น
-- ใช้ /follow-create-bun-plugin ถ้าจำเป็น
-- ใช้ /follow-create-devin-plugin ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use /follow-create-biome-plugin if needed
+- Use /follow-create-bun-plugin if needed
+- Use /follow-create-devin-plugin if needed
+- Use /follow-create-plugins if needed
 
 
 ## Expected Outcome
 
-- NuShell plugin ที่ build และ register ได้สำเร็จ
-- Command แสดงใน NuShell พร้อม help และ type signature
-- Plugin ทำงานได้ตาม `Signature` ที่ประกาศ
-- Code ผ่าน `cargo clippy` และ `cargo fmt`
+- A NuShell plugin that builds and registers successfully
+- Commands appear in NuShell with help and type signatures
+- The plugin behaves per its declared `Signature`
+- Code passes `cargo clippy` and `cargo fmt`
 
 ## Examples
 

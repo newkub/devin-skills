@@ -1,6 +1,6 @@
 ---
 name: test-website
-description: ทดสอบ website จริงแบบ click-through ทุก route/interactive element — เลือก browser tool ตาม context (agent-browser default, playwriter เมื่อต้อง login state ของ user)
+description: Click-through every route/element in a real browser — pick tool by context (agent-browser default)
 argument-hint: "[url-or-routes...]"
 allowed-tools:
   - read
@@ -26,44 +26,44 @@ related:
 
 ## Goal
 
-ทดสอบ website แบบ real-browser click-through — ทุก route, nav, forms, dialogs, states พร้อม console/page error evidence ก่อน ship — เลือก browser tool ตาม context แล้ว promote invariants เป็น authored tests
+Test a website with a real-browser click-through — every route, nav, forms, dialogs, states, with console/page error evidence before ship — pick the browser tool by context, then promote invariants into authored tests
 
 ## Scope
 
-ใช้สำหรับ website verification แบบ exploratory/real-browser — dev server, staging, production URLs; เหมาะกับ smoke sweep ทุก route ก่อน release, post-implement verification และเว็บที่ต้องใช้ login state จริง
+For exploratory/real-browser website verification — dev server, staging, production URLs; suited to a smoke sweep of every route before release, post-implement verification, and sites that need real login state
 
-- Boundary: codified regression suite → `/test-e2e`; a11y เชิงลึก → `/test-a11y`; docs usage examples → `/test-usage`; unit/api → `/run-test <domain>`; งานนี้ = ad-hoc sweep จริง + promote findings
-- Skill นี้เลือก tool ให้ — ไม่ใช่ tool manual; tool-specific commands/ห้าม/กฎ อ่านจาก `/use-agent-browser` `/use-playwriter` `/use-chrome-devtools` ตามที่เลือก
+- Boundary: codified regression suite → `/test-e2e`; deep a11y → `/test-a11y`; docs usage examples → `/test-usage`; unit/api → `/run-test <domain>`; this job = a real ad-hoc sweep + promoting findings
+- This skill picks the tool — it is not a tool manual; tool-specific commands/don'ts/rules are read from `/use-agent-browser` `/use-playwriter` `/use-chrome-devtools` as chosen
 
 ## Execute
 
 ### 0. Select Tool
 
-> Goal: เลือก browser tool ให้ตรง context — capability ซ้ำกัน ต่างที่ context
+> Goal: Pick the browser tool that fits the context — capabilities overlap, the difference is context
 
 | Context | Tool |
 |---|---|
-| **Default** — dev/staging/public, reproducible, ไม่แตะ browser user | `/use-agent-browser` (`open`/`snapshot -i`/`click @e1`/`console`/`errors`) |
-| ต้อง login state / cookies / extensions ของ user | `/use-playwriter` (`session new` + `state.page` + `snapshot`) |
-| Target ควรเป็น authored suite ถาวรอยู่แล้ว | `/test-e2e` → `/follow-tool-e2e` หรือ `/follow-tool-playwright` (ไม่ใช่งาน skill นี้ — dispatch แล้วจบ) |
-| Sweep เจอ bug ต้อง inspect console/network/CSS/perf ลึก | `/use-chrome-devtools` (handoff investigation แล้วกลับมา) |
+| **Default** — dev/staging/public, reproducible, never touches the user's browser | `/use-agent-browser` (`open`/`snapshot -i`/`click @e1`/`console`/`errors`) |
+| Needs the user's login state / cookies / extensions | `/use-playwriter` (`session new` + `state.page` + `snapshot`) |
+| The target should already be a permanent authored suite | `/test-e2e` → `/follow-tool-e2e` or `/follow-tool-playwright` (not this skill's job — dispatch and stop) |
+| Sweep found a bug needing deep console/network/CSS/perf inspection | `/use-chrome-devtools` (hand off the investigation, then return) |
 
-1. ถ้า site ต้อง auth แต่ไม่มี login state ที่ใช้ได้ → แจ้ง user เลือก: login ใน Chrome แล้วใช้ playwriter หรือ setup `storageState` ผ่าน `/follow-tool-playwright`
-2. ห้าม default ไป playwriter เพราะ "คุ้นกว่า" — playwriter แตะ Chrome จริงของ user มี cost/risk เสมอ
+1. If the site needs auth but no usable login state exists → ask the user to choose: log in in Chrome and use playwriter, or set up `storageState` via `/follow-tool-playwright`
+2. Never default to playwriter just because it "feels familiar" — playwriter touches the user's real Chrome and always carries cost/risk
 
 ### 1. Discover Routes And Setup
 
-> Goal: รู้ route list และมี browser session พร้อม
+> Goal: Have the route list and a ready browser session
 
-1. รับ URLs จาก argument หรือ derive จาก sitemap/routes manifest/nav links — ไม่ชัด → `/ask-me`
-2. ถ้า test local dev → ทำ `/run-dev` ให้ server รันก่อน แล้วรอ port พร้อม
-3. Setup ตาม tool ที่เลือกจาก Step 0 — `agent-browser`: `agent-browser open <base-url> --session test` ; `playwriter`: ตาม `/use-playwriter` Step 1-2 (`session new --tab-group test` + `state.page = await context.newPage()`)
+1. Take URLs from the argument or derive them from the sitemap/routes manifest/nav links — unclear → `/ask-me`
+2. If testing local dev → run `/run-dev` to start the server first, then wait for the port to be ready
+3. Set up according to the tool chosen in Step 0 — `agent-browser`: `agent-browser open <base-url> --session test` ; `playwriter`: per `/use-playwriter` Step 1-2 (`session new --tab-group test` + `state.page = await context.newPage()`)
 
 ### 2. Route Sweep
 
-> Goal: visit ทุก route พร้อม evidence
+> Goal: Visit every route with evidence
 
-สำหรับแต่ละ route — observe → act → observe ตาม tool ที่เลือก:
+For each route — observe → act → observe with the chosen tool:
 
 ```bash
 # agent-browser (default)
@@ -71,7 +71,7 @@ agent-browser --session test open "<base>/<route>" && agent-browser --session te
 ```
 
 ```js
-// playwriter — 1 route ต่อ -e call
+// playwriter — 1 route per -e call
 await state.page.goto('https://<host>/<route>', { waitUntil: 'domcontentloaded' })
 await waitForPageLoad({ page: state.page, timeout: 8000 })
 console.log('URL:', state.page.url())
@@ -79,62 +79,62 @@ console.log('Logs:', await getLatestLogs({ page: state.page, sinceLastCall: true
 await snapshot({ page: state.page }).then(console.log)
 ```
 
-1. บันทึกต่อ route: HTTP status, final URL (redirects), console errors, `[PAGE ERROR]`, missing/empty content
-2. snapshot หา blockers (cookie modal, login wall, error page) ก่อน — dismiss แล้ว re-snapshot
-3. broken route (4xx/5xx/redirect ผิด) → บันทึก severity แล้วไปต่อ ไม่หยุดทั้ง sweep
+1. Record per route: HTTP status, final URL (redirects), console errors, `[PAGE ERROR]`, missing/empty content
+2. snapshot for blockers (cookie modal, login wall, error page) first — dismiss, then re-snapshot
+3. broken route (4xx/5xx/wrong redirect) → record severity and continue; never halt the whole sweep
 
 ### 3. Interact And States
 
-> Goal: ทุก interactive element ใช้งานได้จริง
+> Goal: Every interactive element really works
 
-1. ทุก route: click nav links, menus, tabs, dialogs ตาม snapshot locators — ห้ามเดา selector ใช้จาก snapshot output
-2. forms: submit ทั้ง valid + invalid — verify validation messages, loading/disabled states, success feedback
-3. ตรวจ dead UI: `onClick` ที่ไม่ทำอะไร, `href="#"`, 'coming soon' — บันทึกเป็น finding (wire หรือลบ ตาม `/implement-to-production` rules)
-4. ตรวจ states: loading, error (retry), empty, success — หลังทุก action อ่าน `getLatestLogs` + re-snapshot
-5. click timeout → snapshot หา overlay/modal blocker — ห้าม `{ force: true }`/`dispatchEvent`
+1. On every route: click nav links, menus, tabs, dialogs per snapshot locators — never guess selectors; take them from snapshot output
+2. forms: submit both valid + invalid — verify validation messages, loading/disabled states, success feedback
+3. Check for dead UI: `onClick` that does nothing, `href="#"`, 'coming soon' — record as a finding (wire it or remove it, per `/implement-to-production` rules)
+4. Check states: loading, error (retry), empty, success — after every action read `getLatestLogs` + re-snapshot
+5. click timeout → snapshot for an overlay/modal blocker — never `{ force: true }`/`dispatchEvent`
 
 ### 4. Collect Findings And Report
 
-> Goal: สรุปผลต่อ route พร้อม evidence
+> Goal: Summarize per route with evidence
 
-1. รวม findings: `[ ]` route table — Route/Status/Console Errors/Dead UI/State Issues/Severity
-2. severity: Critical (route broken, form submit ไม่ได้, console errors), High (dead interactive element, missing error state), Medium (missing empty/loading, minor UI), Info
-3. ทำ `/report` ตาราง + ข้อเสนอแนะ fixes; failures ที่ต้องแก้ → `/resolve-errors`
-4. **Promote invariants** — checks ที่เป็น expectation ถาวร (login works, checkout ไม่ 500, critical route render) → เขียนเป็น authored test จริงใน repo ผ่าน `/follow-tool-playwright` หรือ `/follow-tool-e2e` (มี test infra อยู่ → เขียนเลย; ยังไม่มี → เสนอ user); checks ที่เป็น exploratory ชั่วคราวทิ้งได้ ไม่บังคับเก็บ
-5. cleanup ตาม tool — `agent-browser`: `agent-browser close --session test` + ลบ temp profiles/files; `playwriter`: ปิดเฉพาะ pages ที่สร้างเอง, ลบ listeners ตัวเอง — ห้าม `browser.close()`/`context.close()` ตาม `/use-playwriter` rules
+1. Consolidate findings: `[ ]` route table — Route/Status/Console Errors/Dead UI/State Issues/Severity
+2. severity: Critical (route broken, form submit fails, console errors), High (dead interactive element, missing error state), Medium (missing empty/loading, minor UI), Info
+3. Run `/report` with a table + suggested fixes; failures that must be fixed → `/resolve-errors`
+4. **Promote invariants** — checks that are permanent expectations (login works, checkout never 500s, critical route renders) → write them as real authored tests in the repo via `/follow-tool-playwright` or `/follow-tool-e2e` (test infra exists → write now; not yet → propose to the user); purely exploratory one-off checks may be discarded, no obligation to keep them
+5. cleanup per tool — `agent-browser`: `agent-browser close --session test` + delete temp profiles/files; `playwriter`: close only the pages you created, remove your own listeners — never `browser.close()`/`context.close()` per the `/use-playwriter` rules
 
 ## Rules
 
 ### 1. Tool Rules Apply
 
-- ทำตาม `## Rules` ของ tool ที่เลือกเสมอ — `agent-browser`: prefer `@ref`, wait before interact, capture on failure; `playwriter`: snapshot before screenshot, observe→act→observe, ไม่ทำลาย browser ของ user, absolute artifact paths
+- Always follow the `## Rules` of the chosen tool — `agent-browser`: prefer `@ref`, wait before interact, capture on failure; `playwriter`: snapshot before screenshot, observe→act→observe, never damage the user's browser, absolute artifact paths
 
 ### 1.1 Explore Then Assert
 
-- sweep ad-hoc ก่อน (explore ทิ้งได้) → invariants ที่เจอ promote เป็น authored tests ผ่าน `/follow-tool-playwright`/`/follow-tool-e2e` — ห้ามปล่อย expectation สำคัญหายไปกับ session
+- Sweep ad-hoc first (exploration is disposable) → promote the invariants found into authored tests via `/follow-tool-playwright`/`/follow-tool-e2e` — never let important expectations vanish with the session
 
 ### 2. Evidence Required
 
-- ทุก finding ต้องมี evidence: URL + snapshot excerpt/console log + severity — ห้าม report ลอยๆ
+- Every finding needs evidence: URL + snapshot excerpt/console log + severity — never report vague claims
 
 ### 3. Non-Destructive
 
-- ห้าม submit ข้อมูลจริงที่มีผลข้างเคียง (payment, delete, publish) โดยไม่ confirm; ใช้ test data เสมอ
+- Never submit real data with side effects (payment, delete, publish) without confirm; always use test data
 
 ### 4. Full Coverage Over Depth
 
-- ครบทุก route ก่อนลงลึก — sweep-wide ก่อน แล้วค่อย interact-deep ใน routes สำคัญ
+- Cover every route before going deep — sweep wide first, then interact-deep on key routes
 
-- ใช้ /watch-browser-and-test ถ้าจำเป็น
-- ใช้ /test-e2e ถ้าจำเป็น
-- ใช้ /test-a11y ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /watch-browser-and-test if needed
+- Use /test-e2e if needed
+- Use /test-a11y if needed
+- Use /run-test if needed
 
 ## Expected Outcome
 
-- tool ถูกเลือกตาม context (agent-browser default, playwriter เมื่อต้อง login state)
-- ทุก route ถูก visit พร้อม URL/status/console evidence
-- interactive elements หลักถูก click/submit จริง พร้อม state verification
-- findings table ครบ severity + evidence ต่อ route
-- invariants ถูก promote เป็น authored tests (`/follow-tool-playwright`/`/follow-tool-e2e`) หรือเสนอ user ถ้ายังไม่มี infra
-- session/browser สะอาดหลังจบ ตาม tool ที่ใช้
+- The tool is chosen by context (agent-browser default, playwriter when login state is required)
+- Every route is visited with URL/status/console evidence
+- Key interactive elements are really clicked/submitted with state verification
+- Findings table complete with severity + evidence per route
+- Invariants promoted into authored tests (`/follow-tool-playwright`/`/follow-tool-e2e`) or proposed to the user if infra does not exist yet
+- Session/browser left clean at the end, per the tool used

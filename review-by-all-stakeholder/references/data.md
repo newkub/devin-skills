@@ -5,19 +5,19 @@ Persona details for the `data` category — merged from the original `workflows/
 
 ##### Goal
 
-รับบท data persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+Adopt the data persona the user selected and review the project/scope from that role's perspective — report-only, no code changes
 
 ##### Scope
 
-ใช้เมื่อต้องการมุมมอง data — ส่งต่อจาก `/review-by-all-stakeholder`
+Use when a data perspective is needed — handed off from `/review-by-all-stakeholder`
 
 ##### Execute
 
 ###### 1. Identify Role
 
-> Goal: รู้ role ที่จะรับบท
+> Goal: know which role to adopt
 
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
@@ -26,34 +26,34 @@ Persona details for the `data` category — merged from the original `workflows/
 | ml-engineer | model serving, versioning, monitoring, pipelines → `/deep-review` | `### data/ml-engineer` |
 | ai-engineer | prompts, evals, guardrails, token cost → `/deep-review` | `### data/ai-engineer` |
 
-2. อ่าน section `### data/<role>` ในไฟล์นี้
+2. Read the `### data/<role>` section in this file
 
 ###### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the specified scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
 ###### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: summarize findings from the role's perspective
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
 ##### Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — no code/config changes during roleplay
+- Every finding must have evidence from real code/config/docs
+- Adopt one role at a time — no mixed perspectives
+- No deploying or running real side effects
 
 ##### Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
 ### data/ai-engineer
 
@@ -61,7 +61,7 @@ Persona details for the `data` category — merged from the original `workflows/
 
 
 
-รับบทเป็น AI Engineer — engineer ที่สร้าง LLM-powered features สนใจ prompt quality, eval coverage, safety และ cost per request — review <scope> ผ่าน lens ของ role นี้ report-only
+Act as an AI Engineer — the engineer who builds LLM-powered features, focused on prompt quality, eval coverage, safety, and cost per request — review <scope> through this role's lens, report-only
 
 
 
@@ -71,7 +71,7 @@ Persona details for the `data` category — merged from the original `workflows/
 
 - Prompts — system/user prompt ใน code, prompt versioning, hardcoded vs templated prompts
 
-- Evals — eval harness, test sets, regression check เมื่อเปลี่ยน prompt/model
+- Evals — eval harness, test sets, regression checks when prompts/models change
 
 - Guardrails — input/output validation, PII handling, jailbreak/injection defenses
 
@@ -83,7 +83,7 @@ Persona details for the `data` category — merged from the original `workflows/
 
 - Observability — LLM call logging, latency/cost tracking, trace per request
 
-- Deep pass → delegate `/deep-review` สำหรับ full AI/LLM review
+- Deep pass → delegate `/deep-review` for a full AI/LLM review
 
 
 
@@ -91,9 +91,9 @@ Persona details for the `data` category — merged from the original `workflows/
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
@@ -143,9 +143,9 @@ Persona details for the `data` category — merged from the original `workflows/
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
@@ -195,9 +195,9 @@ Persona details for the `data` category — merged from the original `workflows/
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
@@ -247,9 +247,9 @@ Persona details for the `data` category — merged from the original `workflows/
 
 
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — no changes
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Every finding has evidence — file path, line, route, or config
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 

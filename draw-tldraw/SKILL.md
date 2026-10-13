@@ -1,6 +1,6 @@
 ---
 name: draw-tldraw
-description: สร้างไฟล์ .tldr จากคำอธิบาย shapes
+description: Create .tldr files from shape descriptions
 argument-hint: "[description]"
 related:
   - draw-excalidraw
@@ -8,30 +8,30 @@ related:
 ---
 ## Goal
 
-สร้างไฟล์ `.tldr` จากคำอธิบาย drawing หรือ diagram
+Create a `.tldr` file from a drawing or diagram description
 
 ## Scope
 
-- สร้าง JSON ตาม tldraw schema
-- รองรับ shapes: geo, text, draw, arrow, line, note
-- สร้างไฟล์ทีเปิดใน tldraw app หรือ VS Code extension ได้
+- Generate JSON per the tldraw schema
+- Supports shapes: geo, text, draw, arrow, line, note
+- Creates files openable in the tldraw app or VS Code extension
 
 ## Execute
 
 ### 1. Parse Description
 
-> Goal: เข้าใจ drawing
+> Goal: Understand the drawing
 
-1. รับ description จาก user
-2. ระบุ shapes และ text ทีต้องสร้าง
-3. กำหนด page size และตำแหน่ง
-4. ถ้า complex → สร้าง layout ง่ายๆ ก่อน
+1. Take the description from the user
+2. Identify the shapes and text to create
+3. Set the page size and positions
+4. If complex → create a simple layout first
 
 ### 2. Generate Schema
 
-> Goal: สร้าง JSON ตาม tldraw
+> Goal: Build the JSON per tldraw
 
-1. ใช้ schema:
+1. Use the schema:
    ```json
    {
      "tldrawFileFormatVersion": 1,
@@ -52,42 +52,42 @@ related:
      "records": []
    }
    ```
-2. สร้าง records สำหรับ `document`, `page`, และแต่ละ shape
-3. แต่ละ shape record ต้องมี `id`, `typeName: "shape"`, `parentId`, `pageId`, `index`, `type`, `x`, `y`, `props`
+2. Create records for `document`, `page`, and each shape
+3. Each shape record must have `id`, `typeName: "shape"`, `parentId`, `pageId`, `index`, `type`, `x`, `y`, `props`
 
 ### 3. Save File
 
-> Goal: บันทึกไฟล์
+> Goal: Save the file
 
-1. บันทึกเป็น `<name>.tldr`
-2. ตรวจสอบ JSON valid
-3. รายงาน path
+1. Save as `<name>.tldr`
+2. Validate the JSON
+3. Report the path
 
 ## Rules
 
 ### 1. Schema
 
-- ต้องมี `tldrawFileFormatVersion`, `schema`, `records`
-- `schemaVersion` ควรเป็น 2
-- `records` ต้องมี `document`, `page`, และ shapes
+- Must have `tldrawFileFormatVersion`, `schema`, `records`
+- `schemaVersion` should be 2
+- `records` must contain `document`, `page`, and shapes
 
 ### 2. Shape Types
 
-- `geo` สำหรับ rectangle, ellipse, triangle, diamond
-- `text` สำหรับ label
-- `arrow` สำหรับเชื่อมระหว่าง shapes
-- `draw` สำหรับ freehand
-- `note` สำหรับ sticky note
+- `geo` for rectangle, ellipse, triangle, diamond
+- `text` for labels
+- `arrow` for connecting shapes
+- `draw` for freehand
+- `note` for sticky notes
 
 ### 3. Simple First
 
-- สร้าง drawing ง่ายๆ ก่อน
-- ค่อยๆ เพิ่ม detail ถ้า user ต้องการ
+- Create a simple drawing first
+- Add detail gradually if the user wants it
 
-- ใช้ /draw-excalidraw ถ้าจำเป็น
+- Use /draw-excalidraw if needed
 
 ## Expected Outcome
 
-- ไฟล์ `.tldr` ทีเปิดใน tldraw ได้
-- มี records ครบถ้วน
-- JSON valid และถูกต้องตาม schema
+- A `.tldr` file openable in tldraw
+- Contains complete records
+- JSON valid and schema-correct

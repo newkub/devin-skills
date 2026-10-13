@@ -135,16 +135,16 @@ MIT License — see LICENSE.md
 ## Notes
 
 - Status badge: `red` for `in development`, `brightgreen` for `active`
-- ไม่มี ANSI ใต้ logo/badges ใน Hero section — ANSI อยู่ที่ Flow Diagram + Usage section เท่านั้น
-- Flow Diagram: text codeblock วาด flow การทำงาน (input → process → output) ด้านบน Get Started — ห้ามวาด file structure
-- Get Started: numbered list ตรงๆ ไม่มี `###`
+- No ANSI below the logo/badges in the Hero section — ANSI appears only in the Flow Diagram + Usage section
+- Flow Diagram: a text codeblock drawing the working flow (input → process → output) above Get Started — never draw the file structure
+- Get Started: a plain numbered list, no `###`
 - Features: 5 columns (Icon, Feature, Description, Benefit, Usage)
-- Usage: แต่ละ method มี `### Usage via ...` + text/code + ANSI drawing + references table (ถ้ามี API)
-- Web/TUI: ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
-- CLI: แสดง `command --help` ANSI output
-- ANSI drawing: ทุกบรรทัดต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
-- Contributing: มีเฉพาะถ้ามี `CONTRIBUTING.md`
-- License: มีเฉพาะถ้ามี `LICENSE.md`
-- ไม่มี `## API References` แยก
-- ไม่มี ANSI ด้านล่างสุด
+- Usage: each method has `### Usage via ...` + text/code + ANSI drawing + a references table (if there's an API)
+- Web/TUI: wrap the content in a `<details>` + `<summary>` accordion
+- CLI: show the `command --help` ANSI output
+- ANSI drawing: every line must be the same length — use space padding to align the right border
+- Contributing: only if `CONTRIBUTING.md` exists
+- License: only if `LICENSE.md` exists
+- No separate `## API References`
+- No ANSI at the very bottom
 

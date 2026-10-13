@@ -1,6 +1,6 @@
 ---
 name: follow-create-mobile-cross-with-capacitor
-description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
+description: Guide to building Capacitor 8 cross-platform mobile apps with web technologies
 argument-hint: "[scope]"
 related:
   - use-bun-native-api
@@ -13,143 +13,143 @@ related:
 ---
 ## Goal
 
-พัฒนา cross-platform mobile applications ด้วย Capacitor 8 โดยใช้ web technologies ที่ทำงานบน iOS, Android และ PWA จาก codebase เดียว
+Build cross-platform mobile applications with Capacitor 8 using web technologies that run on iOS, Android, and PWA from a single codebase
 
 ## Scope
 
-ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
+Use for developing and maintaining Capacitor 8 mobile apps in a monorepo, covering setup, configuration, plugins, build, deployment, and security
 
-- Packages: `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` (version เดียวกันเสมอ) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` (always the same version) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Environment Setup
 
-> Goal: ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
+> Goal: check and prepare the environment before starting development
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ requirements ล่าสุดของ Capacitor major ปัจจุบัน จากนั้นทำ `/review-dependencies` เพื่อสรุป tech stack
-2. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
-3. ตรวจสอบ Android Studio เวอร์ชันล่าสุดที่ Capacitor รองรับ (เช็คด้วย `/deep-research`)
-4. ตรวจสอบ Xcode >= 26.0 สำหรับ iOS development (Capacitor 8 requirement — toolchain bundle Swift เสมอ)
-5. ตรวจสอบ JDK 21 หรือสูงกว่า
-6. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
-7. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
-8. ทำ `/deep-review` สำหรับ configuration files
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and requirements of the current Capacitor major, then run `/review-dependencies` to summarize the tech stack
+2. Verify Node.js >= 22 (Capacitor 8 requirement)
+3. Verify the latest Android Studio version supported by Capacitor (check with `/deep-research`)
+4. Verify Xcode >= 26.0 for iOS development (Capacitor 8 requirement — the toolchain always bundles Swift)
+5. Verify JDK 21 or newer
+6. Set environment variables if needed: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
+7. Run `/use-bun-native-api` for the Bun runtime and package manager
+8. Run `/deep-review` for configuration files
 
 ### 2. Project Configuration
 
-> Goal: ตั้งค่า `capacitor.config.ts` อย่างถูกต้องตาม best practices
+> Goal: configure `capacitor.config.ts` correctly per best practices
 
-1. สร้าง `capacitor.config.ts` ด้วย `CapacitorConfig` type จาก `@capacitor/cli`
-2. กำหนด `appId` เป็น reverse domain name notation (เช่น `com.company.appname`)
-3. กำหนด `appName` เป็นชื่อ app ที่ user-friendly
-4. กำหนด `webDir` ให้ชี้ไปยัง compiled web assets ที่มี `index.html`
-5. ตั้งค่า `server.androidScheme` เป็น `https` (default)
-6. ตั้งค่า `server.iosScheme` เป็น `https` หรือ `capacitor` (default)
-7. ตั้งค่า `server.cleartext` เป็น `false` ใน production
-8. กำหนด `loggingBehavior` เป็น `debug` สำหรับ dev และ `none` สำหรับ production
-9. กำหนด plugin configurations ใน `plugins` object ตามชื่อ class ของ plugin
-10. ใช้ platform-specific overrides ใน `android` และ `ios` properties เมื่อจำเป็น
+1. Create `capacitor.config.ts` with the `CapacitorConfig` type from `@capacitor/cli`
+2. Set `appId` in reverse domain name notation (e.g. `com.company.appname`)
+3. Set `appName` to a user-friendly app name
+4. Point `webDir` at the compiled web assets containing `index.html`
+5. Set `server.androidScheme` to `https` (default)
+6. Set `server.iosScheme` to `https` or `capacitor` (default)
+7. Set `server.cleartext` to `false` in production
+8. Set `loggingBehavior` to `debug` for dev and `none` for production
+9. Define plugin configurations in the `plugins` object keyed by plugin class name
+10. Use platform-specific overrides in the `android` and `ios` properties when needed
 
 ### 3. SPA Integration
 
-> Goal: เชื่อมต่อ web app เข้ากับ Capacitor native container อย่างถูกต้อง
+> Goal: connect the web app to the Capacitor native container correctly
 
-1. ทำ `/follow-tool-vite` สำหรับ SPA build configuration
-2. สร้าง SPA build config แยก (เช่น `vite.config.spa.ts`) ที่ตั้งค่า `ssr: false`
-3. Build SPA ไปยัง directory ที่ `webDir` ชี้ (เช่น `dist-spa`)
-4. ตรวจสอบว่า `index.html` อยู่ใน root ของ `webDir`
-5. ใช้ `bun --filter website build:spa` สำหรับ build SPA
-6. ตั้งค่า `cap:sync` script เป็น `bun run build && cap sync`
-7. ตั้งค่า `cap:copy` script เป็น `bun run build && cap copy`
+1. Run `/follow-tool-vite` for SPA build configuration
+2. Create a separate SPA build config (e.g. `vite.config.spa.ts`) with `ssr: false`
+3. Build the SPA into the directory `webDir` points to (e.g. `dist-spa`)
+4. Verify `index.html` is at the root of `webDir`
+5. Use `bun --filter website build:spa` to build the SPA
+6. Set the `cap:sync` script to `bun run build && cap sync`
+7. Set the `cap:copy` script to `bun run build && cap copy`
 
 ### 4. Plugin Management
 
-> Goal: จัดการ Capacitor plugins อย่างเป็นระบบและเข้ากันกับเวอร์ชัน 8
+> Goal: manage Capacitor plugins systematically and compatible with version 8
 
-1. ติดตั้ง plugins ด้วย `bun add @capacitor/<plugin-name>`
-2. ติดตั้ง third-party plugins ด้วย `bun add @<vendor>/capacitor-<plugin-name>`
-3. รัน `cap sync` หลังติดตั้งหรืออัพเดท plugins ทุกครั้ง
-4. กำหนด plugin configuration ใน `capacitor.config.ts` ภายใต้ `plugins` object
-5. ใช้ `includePlugins` สำหรับ allowlist plugins ใน `cap sync`
-6. ตรวจสอบ plugin versions ให้เข้ากันกับ Capacitor major version
-7. ใช้ Capacitor 8 compatible plugins เท่านั้น
-8. เลือก official plugin จาก `## Official Plugins Catalog` ด้านล่าง — ครบทุกตัวที่ Capacitor team maintain
-9. ทำ `/learn-from-web` เมื่อต้องการ community/third-party plugins เพิ่มเติม
+1. Install plugins with `bun add @capacitor/<plugin-name>`
+2. Install third-party plugins with `bun add @<vendor>/capacitor-<plugin-name>`
+3. Run `cap sync` after every plugin install or update
+4. Define plugin configuration under the `plugins` object in `capacitor.config.ts`
+5. Use `includePlugins` to allowlist plugins in `cap sync`
+6. Keep plugin versions compatible with the Capacitor major version
+7. Use Capacitor 8 compatible plugins only
+8. Pick official plugins from the `## Official Plugins Catalog` below — it covers everything the Capacitor team maintains
+9. Run `/learn-from-web` when you need additional community/third-party plugins
 
 ### 5. Platform Development
 
-> Goal: พัฒนาและทดสอบบน native platforms อย่างถูกต้อง
-พัฒนาและทดสอบบน native platforms
+> Goal: develop and test on native platforms correctly
+Develop and test on native platforms
 
-1. เพิ่ม platform ด้วย `cap add ios` หรือ `cap add android`
-2. ใช้ `cap add ios` สำหรับ SPM template (default ใน Capacitor 8)
-3. ใช้ `cap add ios --packagemanager CocoaPods` ถ้าต้องการ CocoaPods template
-4. เปิด native IDE ด้วย `cap open ios` (Xcode) หรือ `cap open android` (Android Studio)
-5. รันบน device/emulator ด้วย `cap run ios` หรือ `cap run android`
-6. ใช้ `cap sync` ก่อนรันทุกครั้งเพื่อ copy web assets และ update dependencies
-7. ตั้งค่า live reload สำหรับ development ด้วย `server.url`
-8. ทดสอบบน real devices ก่อน production release
+1. Add a platform with `cap add ios` or `cap add android`
+2. `cap add ios` uses the SPM template (default in Capacitor 8)
+3. Use `cap add ios --packagemanager CocoaPods` if you want the CocoaPods template
+4. Open the native IDE with `cap open ios` (Xcode) or `cap open android` (Android Studio)
+5. Run on a device/emulator with `cap run ios` or `cap run android`
+6. Run `cap sync` before every run to copy web assets and update dependencies
+7. Set up live reload for development with `server.url`
+8. Test on real devices before a production release
 
 ### 6. Platform-Specific Code
 
-> Goal: จัดการ platform-specific code อย่างถูกต้องด้วย feature detection
+> Goal: handle platform-specific code correctly with feature detection
 
-1. ใช้ `Capacitor.platform` สำหรับตรวจจับ platform (`ios`, `android`, `web`)
-2. ใช้ `Capacitor.isNativePlatform()` สำหรับตรวจจับ native environment
-3. แยก platform-specific code ด้วย dynamic imports
-4. ใช้ `@capacitor/core` APIs สำหรับ cross-platform access
-5. หลีกเลี่ยง browser-specific APIs ที่ไม่รองรับใน WebView
-6. ใช้ feature detection แทน platform detection เมื่อเป็นไปได้
-7. จัดการ edge cases สำหรับแต่ละ platform (เช่น WKWebView process termination บน iOS)
+1. Use `Capacitor.platform` to detect the platform (`ios`, `android`, `web`)
+2. Use `Capacitor.isNativePlatform()` to detect a native environment
+3. Split platform-specific code with dynamic imports
+4. Use `@capacitor/core` APIs for cross-platform access
+5. Avoid browser-specific APIs that the WebView doesn't support
+6. Prefer feature detection over platform detection when possible
+7. Handle per-platform edge cases (e.g. WKWebView process termination on iOS)
 
 ### 7. Build And Deployment
 
-> Goal: Build และ deploy ไปยัง app stores อย่างปลอดภัย
+> Goal: build and deploy to the app stores securely
 
-1. ทำ `/follow-deploy` สำหรับ deployment strategy
-2. รัน `cap sync` ก่อน build ทุกครั้ง
-3. Build iOS ผ่าน Xcode หรือ `cap run ios --configuration Release`
-4. Build Android ผ่าน Android Studio หรือ Gradle
-5. ตั้งค่า iOS signing ใน `ios.buildOptions`: `signingStyle`, `exportMethod`, `signingCertificate`, `provisioningProfile`
-6. ตั้งค่า Android signing ใน `android.buildOptions`: `keystorePath`, `keystorePassword`, `keystoreAlias`, `keystoreAliasPassword`, `releaseType`, `signingType`
-7. ใช้ Fastlane สำหรับ automate deployment: `fastlane supply` (Android), `fastlane deliver` (iOS)
-8. ใช้ OTA updates ผ่าน `@capgo/capacitor-updater` สำหรับ hot fixes
-9. ถ้าต้องจัดการ system bar insets ให้ใช้ `@capacitor/system-bars` (core plugin ใหม่ใน Capacitor 8 แทน `adjustMarginsForEdgeToEdge` ที่ถูกลบออก)
+1. Run `/follow-deploy` for the deployment strategy
+2. Run `cap sync` before every build
+3. Build iOS through Xcode or `cap run ios --configuration Release`
+4. Build Android through Android Studio or Gradle
+5. Configure iOS signing in `ios.buildOptions`: `signingStyle`, `exportMethod`, `signingCertificate`, `provisioningProfile`
+6. Configure Android signing in `android.buildOptions`: `keystorePath`, `keystorePassword`, `keystoreAlias`, `keystoreAliasPassword`, `releaseType`, `signingType`
+7. Use Fastlane to automate deployment: `fastlane supply` (Android), `fastlane deliver` (iOS)
+8. Use OTA updates via `@capgo/capacitor-updater` for hot fixes
+9. If you need to manage system bar insets, use `@capacitor/system-bars` (the new core plugin in Capacitor 8, replacing the removed `adjustMarginsForEdgeToEdge`)
 
 ### 8. OTA Updates
 
-> Goal: จัดการ over-the-air updates สำหรับ web bundle อย่างปลอดภัย
+> Goal: manage over-the-air updates for the web bundle safely
 
-1. ติดตั้ง `@capgo/capacitor-updater` สำหรับ OTA update support
-2. กำหนด `CapacitorUpdater` config ใน `capacitor.config.ts`: `appId`, `autoUpdateUrl`, `notifyUpdate`, `resetWhenUpdate`
-3. ใช้ channels สำหรับ staged rollouts (`production`, `staging`, `dev`)
-4. ทดสอบ OTA updates บน real devices ก่อน production
-5. มี rollback strategy สำหรับกรณี update มีปัญหา
+1. Install `@capgo/capacitor-updater` for OTA update support
+2. Define the `CapacitorUpdater` config in `capacitor.config.ts`: `appId`, `autoUpdateUrl`, `notifyUpdate`, `resetWhenUpdate`
+3. Use channels for staged rollouts (`production`, `staging`, `dev`)
+4. Test OTA updates on real devices before production
+5. Have a rollback strategy in case an update goes wrong
 
 ### 9. Security
 
-> Goal: ทำตาม security best practices สำหรับ Capacitor apps
+> Goal: follow security best practices for Capacitor apps
 
-1. ไม่ embed secrets ใน app code ใช้ server-side สำหรับ sensitive operations
-2. ใช้ PKCE สำหรับ OAuth2 authentication flows
-3. ใช้ Universal Links แทน Custom URL Schemes สำหรับ deep links
-4. ไม่ส่ง sensitive data ผ่าน Custom URL scheme deep links
-5. ตั้งค่า Content Security Policy (CSP) ใน `<meta>` tag
-6. ใช้ SSL/TLS สำหรับ network requests
-7. ตั้งค่า `server.cleartext` เป็น `false` ใน production
-8. ใช้ iOS Keychain หรือ Android Keystore สำหรับ store sensitive values
-9. ใช้ `@capgo/capacitor-native-biometric` สำหรับ biometric authentication
-10. ตั้งค่า `webContentsDebuggingEnabled: false` ใน production
+1. Never embed secrets in app code; keep sensitive operations server-side
+2. Use PKCE for OAuth2 authentication flows
+3. Use Universal Links instead of Custom URL Schemes for deep links
+4. Never send sensitive data through Custom URL scheme deep links
+5. Set a Content Security Policy (CSP) in a `<meta>` tag
+6. Use SSL/TLS for network requests
+7. Set `server.cleartext` to `false` in production
+8. Use the iOS Keychain or Android Keystore to store sensitive values
+9. Use `@capgo/capacitor-native-biometric` for biometric authentication
+10. Set `webContentsDebuggingEnabled: false` in production
 
 ### 10. Migration And Testing
 
-> Goal: migrate ระหว่าง major versions และทดสอบอย่างครบถ้วน
+> Goal: migrate between major versions and test thoroughly
 
-1. Migrate major version: `bun add -D @capacitor/cli@latest` แล้วรัน `npx cap migrate` — ตรวจ breaking changes ของทุก plugin และอัพเดท SDK targets ตาม Rules §1
-2. อย่าใช้ `cap migrate` ใน monorepo — migrate ด้วยมือ (ดู Rules §6)
-3. เช็ค platform gotchas ของ major ใหม่ (เช่น Capacitor 8: `@capacitor/system-bars` แทน `adjustMarginsForEdgeToEdge`, iOS `appendUserAgent` whitespace fix)
-4. ทดสอบบน real devices + emulators หลายรุ่น — plugin functionality, offline/network transitions, push/local notifications, deep links, OTA flow + rollback, biometric, app lifecycle, WebView edge cases (process termination, memory pressure)
+1. Migrate a major version: `bun add -D @capacitor/cli@latest` then run `npx cap migrate` — review breaking changes of every plugin and update SDK targets per Rules §1
+2. Don't use `cap migrate` in a monorepo — migrate manually (see Rules §6)
+3. Check the new major's platform gotchas (e.g. Capacitor 8: `@capacitor/system-bars` replaces `adjustMarginsForEdgeToEdge`, iOS `appendUserAgent` whitespace fix)
+4. Test on many real devices + emulators — plugin functionality, offline/network transitions, push/local notifications, deep links, OTA flow + rollback, biometrics, app lifecycle, WebView edge cases (process termination, memory pressure)
 
 ## Rules
 
@@ -161,89 +161,89 @@ Capacitor 8 requirements:
 - Xcode >= 26.0, iOS deployment target >= 15
 - Android minSdkVersion >= 24, compileSdkVersion >= 36, targetSdkVersion >= 36
 - JDK >= 21
-- Android Studio >= Otter 2025.2.1 (เช็ค latest stable ด้วย `/deep-research`)
+- Android Studio >= Otter 2025.2.1 (check the latest stable with `/deep-research`)
 - Kotlin >= 2.2.20
-- Gradle plugin >= 8.13.0, wrapper >= 8.14.3 (ถ้าใช้ AGP 9.x ต้องใช้ Gradle 9.x + JDK 21)
+- Gradle plugin >= 8.13.0, wrapper >= 8.14.3 (AGP 9.x requires Gradle 9.x + JDK 21)
 
 ### 2. Configuration Rules
 
-กฎสำหรับ `capacitor.config.ts`:
+Rules for `capacitor.config.ts`:
 
-- ใช้ `capacitor.config.ts` (TypeScript) ไม่ใช้ `.json`
-- ใช้ `CapacitorConfig` type จาก `@capacitor/cli`
-- `appId` เป็น reverse domain name notation เสมอ
-- `webDir` ต้องชี้ไปยัง directory ที่มี `index.html`
-- `server.cleartext` เป็น `false` ใน production
-- `loggingBehavior` เป็น `none` ใน production
-- ใช้ platform-specific overrides ใน `android` และ `ios` properties
-- กำหนด plugin config ใน `plugins` object ตาม class name
+- Use `capacitor.config.ts` (TypeScript), not `.json`
+- Use the `CapacitorConfig` type from `@capacitor/cli`
+- `appId` is always reverse domain name notation
+- `webDir` must point to a directory containing `index.html`
+- `server.cleartext` is `false` in production
+- `loggingBehavior` is `none` in production
+- Use platform-specific overrides in the `android` and `ios` properties
+- Define plugin config in the `plugins` object keyed by class name
 
 ### 3. Plugin Rules
 
-กฎสำหรับ plugin management:
+Rules for plugin management:
 
-- ใช้ Capacitor 8 compatible plugins เท่านั้น
-- รัน `cap sync` หลังติดตั้ง/อัพเดท plugins ทุกครั้ง
-- ใช้ `includePlugins` สำหรับ allowlist ใน monorepo
-- ตรวจสอบ plugin breaking changes ก่อน upgrade
-- ใช้ SPM (default) สำหรับ iOS plugins ใน Capacitor 8
-- ใช้ CocoaPods ด้วย `--packagemanager CocoaPods` ถ้าจำเป็น
-- ไม่ใช้ Cordova plugins ถ้ามี Capacitor equivalent
+- Use Capacitor 8 compatible plugins only
+- Run `cap sync` after every plugin install/update
+- Use `includePlugins` for allowlisting in a monorepo
+- Check plugin breaking changes before upgrading
+- Use SPM (default) for iOS plugins in Capacitor 8
+- Use CocoaPods with `--packagemanager CocoaPods` when required
+- Don't use Cordova plugins when a Capacitor equivalent exists
 
 ### 4. SPA Build Rules
 
-กฎสำหรับ SPA integration:
+Rules for SPA integration:
 
-- ใช้ separate Vite config สำหรับ SPA build (`vite.config.spa.ts`)
-- ตั้งค่า `ssr: false` ใน SPA build config
-- Build ไปยัง `webDir` directory (เช่น `dist-spa`)
-- ตรวจสอบว่า `index.html` อยู่ใน root ของ `webDir`
-- ใช้ `cap:sync` script ที่ build ก่อนแล้ว sync
-- ไม่ใช้ server-side rendering ใน SPA build
+- Use a separate Vite config for the SPA build (`vite.config.spa.ts`)
+- Set `ssr: false` in the SPA build config
+- Build into the `webDir` directory (e.g. `dist-spa`)
+- Verify `index.html` is at the root of `webDir`
+- Use the `cap:sync` script that builds first, then syncs
+- Don't use server-side rendering in the SPA build
 
 ### 5. Security Rules
 
-กฎด้าน security:
+Security rules:
 
-- ไม่ embed secrets ใน app code
-- ใช้ PKCE สำหรับ OAuth2
-- ใช้ Universal Links แทน Custom URL Schemes
-- ตั้งค่า CSP ใน `<meta>` tag
-- ใช้ SSL/TLS สำหรับ network requests
-- `server.cleartext` เป็น `false` ใน production
-- ใช้ Keychain/Keystore สำหรับ sensitive values
-- `webContentsDebuggingEnabled: false` ใน production
+- Never embed secrets in app code
+- Use PKCE for OAuth2
+- Use Universal Links instead of Custom URL Schemes
+- Set a CSP in a `<meta>` tag
+- Use SSL/TLS for network requests
+- `server.cleartext` is `false` in production
+- Use Keychain/Keystore for sensitive values
+- `webContentsDebuggingEnabled: false` in production
 
 ### 6. Monorepo Rules
 
-กฎสำหรับ monorepo integration:
+Rules for monorepo integration:
 
-- ใช้ `bun --filter <workspace>` สำหรับรัน scripts ใน workspace เฉพาะ
-- `webDir` ใช้ relative path จาก mobile workspace (เช่น `../website/dist-spa`)
-- `cap:sync` script build SPA ก่อนแล้ว sync
-- ไม่ใช้ `cap migrate` ใน monorepo ให้ migrate ด้วยมือ
-- ใช้ `includePlugins` สำหรับ allowlist plugins ใน monorepo
-- แยก dependencies ระหว่าง website และ mobile workspace
+- Use `bun --filter <workspace>` to run scripts in a specific workspace
+- `webDir` uses a relative path from the mobile workspace (e.g. `../website/dist-spa`)
+- The `cap:sync` script builds the SPA first, then syncs
+- Don't use `cap migrate` in a monorepo; migrate manually
+- Use `includePlugins` for allowlisting plugins in the monorepo
+- Keep website and mobile workspace dependencies separate
 
 ### 7. CLI Commands
 
-คำสั่ง Capacitor CLI ที่ใช้บ่อย:
+Frequently used Capacitor CLI commands:
 
 - `cap init` - initialize Capacitor config
-- `cap add [platform]` - เพิ่ม native platform
-- `cap sync [platform]` - copy web assets และ update dependencies
-- `cap copy [platform]` - copy web assets เท่านั้น
-- `cap update [platform]` - update native dependencies เท่านั้น
-- `cap open [platform]` - เปิด native IDE
-- `cap run [platform]` - build และ deploy ไปยัง device/emulator
-- `cap migrate` - migrate ไปยัง major version ใหม่
+- `cap add [platform]` - add a native platform
+- `cap sync [platform]` - copy web assets and update dependencies
+- `cap copy [platform]` - copy web assets only
+- `cap update [platform]` - update native dependencies only
+- `cap open [platform]` - open the native IDE
+- `cap run [platform]` - build and deploy to a device/emulator
+- `cap migrate` - migrate to a new major version
 
 ## Expected Outcome
 
-- Capacitor 8 app ทำงานได้บน iOS, Android และ PWA
-- Configuration ถูกต้องตาม best practices
-- Plugins จัดการอย่างเป็นระบบ
-- SPA integration ราบรื่นกับ monorepo
-- Security best practices ถูกต้อง
-- Build และ deploy ได้สำเร็จ
-- เป็นไปตาม Capacitor 8 official documentation
+- The Capacitor 8 app runs on iOS, Android, and PWA
+- Configuration follows best practices
+- Plugins are managed systematically
+- SPA integration works smoothly with the monorepo
+- Security best practices are met
+- Build and deployment succeed
+- Conforms to the Capacitor 8 official documentation

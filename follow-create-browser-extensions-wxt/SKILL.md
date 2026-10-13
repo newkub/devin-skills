@@ -1,6 +1,6 @@
 ---
 name: follow-create-browser-extensions-wxt
-description: "สร้าง browser extensions ด้วย WXT + Manifest V3 บน Chrome, Firefox, Edge"
+description: "Build browser extensions with WXT + Manifest V3 on Chrome, Firefox, Edge"
 argument-hint: "[scope]"
 related:
   - follow-tasks
@@ -12,72 +12,72 @@ related:
 
 ## Goal
 
-ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices
+Set up and develop Web Extensions with the WXT framework per best practices
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และ release Web Extensions ด้วย WXT รองรับ TypeScript และ Bun
+Use for creating, improving, and releasing Web Extensions with WXT; supports TypeScript and Bun
 
-- สร้าง WXT project ด้วย template ทีเหมาะสม
-- ตั้งค่า manifest, permissions, และ build
-- แยก pure logic ออกจาก browser API integration
-- ตั้งค่า CI/CD สำหรับ release ไป Chrome Web Store
+- Create a WXT project with the appropriate template
+- Configure manifest, permissions, and build
+- Separate pure logic from browser API integration
+- Set up CI/CD for releasing to the Chrome Web Store
 
-- Package: `wxt` (0.x — minor releases อาจมี breaking) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Package: `wxt` (0.x — minor releases may break) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Initialize Project
 
-> Goal: เริ่มต้น WXT project ด้วย template ทีเหมาะสม
+> Goal: Start a WXT project with the appropriate template
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. รัน `bunx wxt@latest init` เพื่อเริ่มต้นโปรเจกต์
-3. เลือก template ที่ต้องการ (vanilla, react, vue, svelte, solid)
-4. ติดตั้ง dependencies ด้วย `bun install`
-5. ยืนยัน `bun run dev` ทำงานได้ (dev mode มี HMR และเปิด browser window อัตโนมัติ)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `bunx wxt@latest init` to start the project
+3. Choose the desired template (vanilla, react, vue, svelte, solid)
+4. Install dependencies with `bun install`
+5. Confirm `bun run dev` works (dev mode has HMR and opens a browser window automatically)
 
 ### 2. Configure WXT
 
-> Goal: กำหนดค่า `wxt.config.ts` และ manifest
+> Goal: Set `wxt.config.ts` and the manifest
 
-1. แก้ไข `wxt.config.ts` ตาม requirements ด้วย `defineConfig()`
-2. กำหนด manifest ผ่าน `manifest` option ใน `wxt.config.ts` (permissions และ host permissions)
-3. ตั้งค่า `srcDir` (default `.`) และ `outDir` (default `.output`) ถ้าต้องการ
-4. ถ้าต้องการ TypeScript configuration ให้ทำ `/follow-lang-typescript`
-5. ตรวจสอบ `wxt.config.ts` ไม่มี invalid paths
+1. Edit `wxt.config.ts` per the requirements with `defineConfig()`
+2. Define the manifest via the `manifest` option in `wxt.config.ts` (permissions and host permissions)
+3. Set `srcDir` (default `.`) and `outDir` (default `.output`) if needed
+4. For TypeScript configuration, run `/follow-lang-typescript`
+5. Check that `wxt.config.ts` has no invalid paths
 
 ### 3. Structure Extension
 
-> Goal: สร้างโครงสร้าง extension ตาม WXT file-based entrypoints ทีแยก concerns ชัดเจน
+> Goal: Create the extension structure with WXT file-based entrypoints that separate concerns clearly
 
-1. สร้าง `entrypoints/background.ts` สำหรับ background script (export default `defineBackground()`)
-2. สร้าง `entrypoints/content.ts` สำหรับ content script (export default `defineContentScript()`)
-3. สร้าง `entrypoints/popup/` สำหรับ popup UI (index.html + main script)
-4. แยก pure logic ไว้ใน `utils/` (auto-imported) หรือ `lib/`
-5. สร้าง browser API wrappers ใน `services/` หรือ `utils/`
-6. ให้ background/content/popup เรียกใช้ wrappers เท่านั้น
-7. ถ้าใช้ `srcDir: "src"` → entrypoints ย้ายไป `src/entrypoints/`
+1. Create `entrypoints/background.ts` for the background script (export default `defineBackground()`)
+2. Create `entrypoints/content.ts` for the content script (export default `defineContentScript()`)
+3. Create `entrypoints/popup/` for the popup UI (index.html + main script)
+4. Keep pure logic in `utils/` (auto-imported) or `lib/`
+5. Create browser API wrappers in `services/` or `utils/`
+6. Have background/content/popup call the wrappers only
+7. With `srcDir: "src"` → entrypoints move to `src/entrypoints/`
 
 ### 4. Setup CI/CD
 
-> Goal: ตั้งค่า GitHub Actions สำหรับ build และ release
+> Goal: Set up GitHub Actions for build and release
 
-1. ทำ `/follow-tool-github-actions` เพื่อตั้งค่า CI/CD
-2. ใช้ built-in `wxt submit` สำหรับ automated publishing (รัน `bunx wxt submit init` เพื่อสร้าง `.env.submit` — เพิ่ม `.env.submit` ใน `.gitignore`)
-3. สร้าง `.github/workflows/release.yml` ทีรัน `wxt zip` + `wxt submit` (ใช้ `chrome-webstore-upload-cli` เฉพาะเมื่อต้องการ upload เฉยๆ แยกจาก submit)
-4. ตั้งค่า GitHub Secrets สำหรับ stores ที target (ดู Rules §5)
-5. ยืนยัน workflow syntax ถูกต้อง
+1. Run `/follow-tool-github-actions` to set up CI/CD
+2. Use the built-in `wxt submit` for automated publishing (run `bunx wxt submit init` to create `.env.submit` — add `.env.submit` to `.gitignore`)
+3. Create `.github/workflows/release.yml` that runs `wxt zip` + `wxt submit` (use `chrome-webstore-upload-cli` only when a plain upload, separate from submit, is needed)
+4. Set GitHub Secrets for the targeted stores (see Rules §5)
+5. Confirm the workflow syntax is correct
 
 ### 5. Build And Release
 
-> Goal: Build production และ release
+> Goal: Build for production and release
 
-1. รัน `bun run build` เพื่อ build production ไป `.output/`
-2. รัน `bunx wxt zip` (และ `wxt zip -b firefox` สำหรับ Firefox — สร้าง `*-firefox.zip` + `*-sources.zip`)
-3. ทดสอบ submission ด้วย `bunx wxt submit --dry-run` ก่อน release จริง
-4. Trigger GitHub Actions workflow
-5. ตรวจสอบ store status (Chrome Web Store, Firefox AMO, Edge Add-ons)
+1. Run `bun run build` to build for production into `.output/`
+2. Run `bunx wxt zip` (and `wxt zip -b firefox` for Firefox — creates `*-firefox.zip` + `*-sources.zip`)
+3. Test submission with `bunx wxt submit --dry-run` before the real release
+4. Trigger the GitHub Actions workflow
+5. Check store status (Chrome Web Store, Firefox AMO, Edge Add-ons)
 
 ## Rules
 
@@ -97,50 +97,50 @@ project/
 └── package.json
 ```
 
-- Directories `utils/`, `composables/`, `components/`, `hooks/` ถูก auto-import โดย WXT
-- ใช้ `srcDir: "src"` ได้ — entrypoints จะอยู่ที่ `src/entrypoints/`
+- The `utils/`, `composables/`, `components/`, `hooks/` directories are auto-imported by WXT
+- `srcDir: "src"` works — entrypoints then live at `src/entrypoints/`
 
 ### 2. Separation Of Concerns
 
-- แยก pure logic จาก browser API integration
-- Pure logic อยู่ใน `utils/` หรือ `lib/`
-- Browser API wrappers อยู่ใน `services/`
-- Background/content/popup scripts เรียกใช้ wrappers เท่านั้น
+- Separate pure logic from browser API integration
+- Pure logic lives in `utils/` or `lib/`
+- Browser API wrappers live in `services/`
+- Background/content/popup scripts call the wrappers only
 
 ### 3. Manifest Configuration
 
-- กำหนด permissions ขั้นต่ำทีจำเป็น
-- ใช้ host permissions แทน `<all_urls>` หากเป็นไปได้
-- Version ต้อง follow semantic versioning
-- Name และ description ต้องชัดเจน
-- ใช้ Manifest V3 สำหรับ Chrome/Edge — WXT build Firefox เป็น MV2 โดย default (`wxt build -b firefox` → `.output/firefox-mv2`); manifest กำหนดผ่าน `manifest` option ใน `wxt.config.ts` ไม่ใช่ `manifest.json` ดิบ
+- Define only the minimum required permissions
+- Prefer host permissions over `<all_urls>` when possible
+- Version must follow semantic versioning
+- Name and description must be clear
+- Use Manifest V3 for Chrome/Edge — WXT builds Firefox as MV2 by default (`wxt build -b firefox` → `.output/firefox-mv2`); the manifest is defined via the `manifest` option in `wxt.config.ts`, not a raw `manifest.json`
 
 ### 4. Build Configuration
 
-- ใช้ Bun สำหรับ reproducible builds
-- `outDir` default คือ `.output/` — เปลี่ยนเฉพาะเมื่อจำเป็น
+- Use Bun for reproducible builds
+- `outDir` defaults to `.output/` — change it only when necessary
 - Enable TypeScript strict mode
-- Enable auto-imports สำหรับ composables/utils
+- Enable auto-imports for composables/utils
 
 ### 5. CI/CD Requirements
 
-- GitHub Actions workflow สำหรับ release
-- ใช้ `wxt submit` สำหรับ upload + submit review (Chrome, Firefox, Edge)
-- Secrets ต้องมี: `CHROME_EXTENSION_ID`, `CHROME_CLIENT_ID`, `CHROME_CLIENT_SECRET`, `CHROME_REFRESH_TOKEN` (+ `FIREFOX_EXTENSION_ID`, `FIREFOX_JWT_ISSUER`, `FIREFOX_JWT_SECRET` ถ้า target Firefox; `EDGE_PRODUCT_ID`, `EDGE_CLIENT_ID`, `EDGE_CLIENT_SECRET` สำหรับ Edge)
-- ใช้ `CHROME_SKIP_SUBMIT_REVIEW=true` ถ้าต้องการ upload โดยไม่ submit review
-- Workflow ต้อง trigger ด้วย `workflow_dispatch`
+- A GitHub Actions workflow for release
+- Use `wxt submit` for upload + submit review (Chrome, Firefox, Edge)
+- Required secrets: `CHROME_EXTENSION_ID`, `CHROME_CLIENT_ID`, `CHROME_CLIENT_SECRET`, `CHROME_REFRESH_TOKEN` (+ `FIREFOX_EXTENSION_ID`, `FIREFOX_JWT_ISSUER`, `FIREFOX_JWT_SECRET` when targeting Firefox; `EDGE_PRODUCT_ID`, `EDGE_CLIENT_ID`, `EDGE_CLIENT_SECRET` for Edge)
+- Use `CHROME_SKIP_SUBMIT_REVIEW=true` to upload without submitting for review
+- The workflow must trigger on `workflow_dispatch`
 
 ### 6. Development Best Practices
 
-- ใช้ `bun run dev` สำหรับ development mode
-- ใช้ TypeScript สำหรับ type safety
-- เขียน tests สำหรับ pure logic
-- ใช้ ESLint และ Prettier สำหรับ code quality
-- ใช้ /run-dev ถ้าจำเป็น
+- Use `bun run dev` for development mode
+- Use TypeScript for type safety
+- Write tests for pure logic
+- Use ESLint and Prettier for code quality
+- Use /run-dev if needed
 
 ## Expected Outcome
 
-- WXT project ติดตั้งและทำงานได้
-- Extension structure ถูกต้องตาม best practices
-- CI/CD workflow สามารถ release ไป Chrome Web Store ได้
-- Code มี type safety และ quality สูง
+- The WXT project is installed and working
+- The extension structure follows best practices
+- The CI/CD workflow can release to the Chrome Web Store
+- The code has high type safety and quality

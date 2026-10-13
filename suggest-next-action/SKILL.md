@@ -1,6 +1,6 @@
 ---
 name: suggest-next-action
-description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไป พร้อม /ask-me — intent ไม่ชัดให้ถามจนเข้าใจก่อน (merged /suggest-me)
+description: Analyze the situation and suggest the next action with /ask-me — ask until unclear intent is clear
 argument-hint: "[context]"
 related:
   - loop-until-complete
@@ -17,13 +17,13 @@ related:
 ---
 ## Goal
 
-วิเคราะห์สถานการณ์ปัจจุบันและแนะนำ action ถัดไปที่ควรทำ เพื่อให้การทำงานมีทิศทางชัดเจนและเป็นระบบ
+Analyze the current situation and suggest the next action to take, so the work has clear direction and stays systematic
 
 ## Scope
 
-ใช้สำหรับวิเคราะห์สถานการณ์หลังจากทำงานเสร็จ task ใด task หนึ่ง หรือเมื่อไม่แน่ใจว่าควรทำอะไรต่อ ครอบคลุมทั้ง context ของโปรเจกต์และสถานะปัจจุบัน พร้อมอธิบายสิ่งทีกำลังทำถ้า user ถาม
+Use to analyze the situation after finishing any task or when unsure what to do next. Covers both the project context and the current state, and explains what is in progress if the user asks.
 
-- ถ้า user intent ยังไม่ชัด (บอกแค่ "อยากทำ..." / "อยากได้ features...") → ทำ Step 4 (Clarify Vague Intent — merged จาก `/suggest-me`) ก่อนแนะนำ action
+- If the user's intent is still unclear (only says "I want to build..." / "I want features...") → run Step 4 (Clarify Vague Intent — merged from `/suggest-me`) before suggesting actions
 
 ## Execute
 
@@ -31,192 +31,192 @@ related:
 
 > Goal: Analyze Current State
 
-วิเคราะห์สถานการณ์ปัจจุบัน
+Analyze the current situation
 
-1. ตรวจสอบ task ล่าสุดที่ทำเสร็จ
-2. ดูสถานะของ project (errors, warnings, pending changes)
-3. ตรวจสอบ git status (uncommitted changes, branches)
-4. ดูสถานะของ dependencies (outdated, vulnerabilities)
-5. ตรวจสอบ test coverage และ test failures
-6. ดู documentation ที่อาจต้องอัปเดท
-7. ตรวจสอบ `AGENTS.md` ว่ามีอยู่และระบุ workflows อะไรบ้าง
-8. ตรวจสอบว่างานถัดไปสามารถแบ่งเป็น subtasks อิสระได้หรือไม่
+1. Check the most recently completed task
+2. Look at the project state (errors, warnings, pending changes)
+3. Check git status (uncommitted changes, branches)
+4. Look at dependency status (outdated, vulnerabilities)
+5. Check test coverage and test failures
+6. Look at documentation that may need updating
+7. Check whether `AGENTS.md` exists and which workflows it defines
+8. Check whether the next piece of work can be split into independent subtasks
 
 ### 2. Explain What You Do (If Asked)
 
-> Goal: รายงานสิ่งทีกำลังทำแบบ real-time
+> Goal: Report what you are doing in real time
 
-1. ถ้า user ถามว่า "กำลังทำอะไร" หรือ "ทำไมถึงทำแบบนี้" → บอก:
-   - `what` — กำลังทำอะไร
-   - `why` — เหตุผลสั้น ๆ
-   - `next` — ขั้นตอนถัดไป 1-2 ขั้น
-2. ใช้ symbols: 🔄 กำลังทำ, ⏳ รอ, ✅ เสร็จ, ⚠️ ติดปัญหา
-3. ไม่ over-share logs ยาว สรุปเป็นสาระ
+1. If the user asks "what are you doing" or "why are you doing this" → state:
+   - `what` — what is being done
+   - `why` — a short reason
+   - `next` — the next 1-2 steps
+2. Use symbols: 🔄 in progress, ⏳ waiting, ✅ done, ⚠️ blocked
+3. Don't over-share long logs; summarize the essentials
 
 ### 3. Identify Context
 
 > Goal: Identify Context
 
-ระบุ context ของสถานการณ์
+Identify the context of the situation
 
-- เป็นการเริ่ม project ใหม่หรือ maintenance
-- เป็นการ fix bug หรือ add feature
-- เป็นการ refactor หรือ optimization
-- เป็นการ prepare สำหรับ release
-- เป็นการ review หรือ audit
-- เป็นการ learning หรือ research
+- Starting a new project or maintenance
+- Fixing a bug or adding a feature
+- Refactoring or optimizing
+- Preparing for a release
+- Reviewing or auditing
+- Learning or researching
 
-### 4. Clarify Vague Intent (merged จาก `/suggest-me`)
+### 4. Clarify Vague Intent (merged from `/suggest-me`)
 
-> Goal: เข้าใจว่า user อยากทำอะไรก่อนแนะนำ — สำหรับ request ที่ยังไม่ชัดเจน
+> Goal: Understand what the user wants before suggesting — for requests that are still unclear
 
-ใช้เมื่อ user บอกแค่ว่า "อยากทำ.../อยากได้ features..." โดยยังไม่ระบุ scope — merged จาก `/suggest-me` เดิม:
+Use when the user only says "I want to build.../I want features..." without a defined scope — merged from the old `/suggest-me`:
 
-1. ถามด้วย `/ask-me` 1-4 ข้อต่อ step — เป้าหมาย, ผู้ใช้, scope, ลำดับความสำคัญ; user ไม่แน่ใจ → ให้ตัวเลือก + คำแนะนำ
-2. ถามต่อเนื่องจนเข้าใจครบ → สรุป bullet สั้นๆ ใน chat ให้ user confirm — ห้ามสร้าง report files
-3. confirm แล้ว → ต่อ Step 5 แนะนำ action, หรือ hand off `/idea-features`, `/implement-to-production`, `/create-plan-in-dot-devin` ตาม context
+1. Ask with `/ask-me` 1-4 questions per step — goal, users, scope, priorities; if the user is unsure → offer options + a recommendation
+2. Keep asking until fully understood → summarize as short bullets in chat for the user to confirm — never create report files
+3. After confirmation → continue to Step 5 to suggest actions, or hand off to `/idea-features`, `/implement-to-production`, `/create-plan-in-dot-devin` per context
 
 ### 5. Evaluate Priority
 
 > Goal: Evaluate Priority
 
-ประเมินความสำคัญของ actions ที่อาจทำ
+Assess the importance of the possible actions
 
-- Impact ต่อ users (high/medium/low)
-- Impact ต่อ stability (high/medium/low)
-- Effort ที่ต้องใช้ (high/medium/low)
-- Risk ของการทำ (high/medium/low)
-- Dependencies กับ tasks อื่น
+- Impact on users (high/medium/low)
+- Impact on stability (high/medium/low)
+- Effort required (high/medium/low)
+- Risk of doing it (high/medium/low)
+- Dependencies on other tasks
 - Time sensitivity
 
 ### 6. Suggest Actions
 
 > Goal: Suggest Actions
 
-แนะนำ actions ที่ควรทำถัดไป
+Suggest the actions to take next
 
-1. จัดลำดับ actions ตาม priority
-2. แนะนำ workflow ที่เหมาะสม (ถ้ามี)
-3. ระบุว่า action นั้น critical หรือ optional
-4. อธิบาย reason ที่แนะนำ action นั้น
-5. ระบุ dependencies ระหว่าง actions
-6. ให้ estimate effort ถ้าเป็นไปได้
-7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-references`
-8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report`
-9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
-10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
-11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/idea-features` ถ้าต้องการ plan/implementation
+1. Rank the actions by priority
+2. Recommend a suitable workflow (if one exists)
+3. Mark each action as critical or optional
+4. Explain the reason for recommending each action
+5. Identify dependencies between actions
+6. Give an effort estimate when possible
+7. If there are files or folders that should be deleted, recommend `git rm` with a stated reason, then `/update-references`
+8. If there are files whose content should be summarized, recommend `/report`
+9. If `AGENTS.md` exists → recommend `/follow-agents-md` as the primary action instead of doing things directly
+10. If the work has many independent subtask areas (frontend/backend/qa/devops/security) → recommend `/update-devin-global-subagents` or `/use-subagents` per context
+11. If in a brainstorming phase or the user wants feature ideas → recommend `/idea-features` for initial ideas, or `/idea-features` if a plan/implementation is wanted
 
 ### 7. Present Options
 
 > Goal: Present Options
 
-เตรียม options สำหรับนำเสนอ
+Prepare the options to present
 
-1. เตรียมข้อมูล actions สำหรับ `/report`: #, Action, Priority, Impact, Effort, Workflow, Reason
-2. จัดลำดับ actions ที่แนะนำพร้อม priority
-3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context แต่ไม่ตอบสินใจแทน user
-4. เตรียม trade-offs ระหว่าง options สำหรับ `/report`: Option, Pros, Cons, Risk
-5. ระบุว่า action ไหนสามารถทำ parallel ได้
-6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report`
+1. Prepare action data for `/report`: #, Action, Priority, Impact, Effort, Workflow, Reason
+2. Order the recommended actions with their priorities
+3. State the best action for each context, but do not decide for the user
+4. Prepare the trade-offs between options for `/report`: Option, Pros, Cons, Risk
+5. Mark which actions can run in parallel
+6. If user confirmation is needed before proceeding → save the questions for `/ask-me` after `/report`
 
 ### 8. Report
 
-> Goal: นำเสนอผลลัพธ์ให้ user เห็นภาพรวม
+> Goal: Present the results so the user sees the big picture
 
-1. ทำ `/report` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
-2. สรุปคำแนะนำหลัก 1-2 บรรทัดก่อนตาราง
-3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ แต่ไม่ตอบสินใจแทน user
-4. ทำ `/ask-me` เสมอเพื่อถามให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
+1. Always run `/report` to format actions, options, and trade-offs as tables
+2. Put a 1-2 line summary of the main recommendation before the tables
+3. State the best next action with a short reason, but do not decide for the user
+4. Always run `/ask-me` to have the user pick an action as the answer; do not decide for the user in chat
 
 ## Rules
 
 ### 1. Context Awareness
 
-ต้องเข้าใจ context ก่อนแนะนำ
+Understand the context before suggesting
 
-- อย่าแนะนำ action โดยไม่เข้าใจ context
-- ตรวจสอบสถานะปัจจุบันก่อน
-- พิจารณา impact ต่อ project โดยรวม
-- พิจารณา state ของ codebase
+- Never suggest actions without understanding the context
+- Check the current state first
+- Consider the impact on the overall project
+- Consider the state of the codebase
 
 ### 2. Priority Framework
 
-ใช้ framework ในการจัดลำดับ
+Use a framework for ordering
 
-- High impact, low effort → ทำก่อน
-- High impact, high effort → วางแผนให้ดี
-- Low impact, low effort → ทำเมื่อมีเวลา
-- Low impact, high effort → ทำเมื่อจำเป็น
-- Critical issues → ทำทันที
-- Blockers → ทำก่อนอื่นๆ
+- High impact, low effort → do first
+- High impact, high effort → plan carefully
+- Low impact, low effort → do when there's time
+- Low impact, high effort → do only when necessary
+- Critical issues → do immediately
+- Blockers → do before anything else
 
 ### 3. Action Categories
 
-แบ่ง actions เป็น categories:
+Split actions into categories:
 
-- Critical: ต้องทำทันที (security issues, blocking bugs)
-- High: ควรทำเร็วๆ (features, important fixes)
-- Medium: ทำเมื่อมีเวลา (refactor, improvements)
-- Low: ทำเมื่อว่าง (nice-to-have)
-- Optional: ทำหรือไม่ก็ได้ (experiments, learning)
+- Critical: must do immediately (security issues, blocking bugs)
+- High: should do soon (features, important fixes)
+- Medium: do when there's time (refactor, improvements)
+- Low: do when free (nice-to-have)
+- Optional: take it or leave it (experiments, learning)
 
 ### 4. Workflow Suggestions
 
-แนะนำ workflows ที่เหมาะสม
+Recommend the suitable workflows
 
-- ถ้ามี workflow ที่ครอบคลุม action นั้น ให้แนะนำใช้ workflow
-- อย่าแนะนำ workflow ที่ไม่มีอยู่จริง
-- ตรวจสอบ `related_workflows` ก่อนแนะนำ
-- อธิบายว่าทำไม workflow นั้นเหมาะสม
+- If a workflow already covers the action, recommend that workflow
+- Never recommend workflows that don't exist
+- Check `related_workflows` before recommending
+- Explain why the workflow is a good fit
 
 ### 5. Clarity And Specificity
 
-ให้คำแนะนำที่ชัดเจนและเฉพาะเจาะ
+Give clear, specific advice
 
-- อย่าแนะนำ "ทำอะไรดี" โดยไม่ระบุ
-- ให้คำแนะนำที่ specific และ actionable
-- ระบุ file paths หรือ components ที่เกี่ยวข้อง
-- ให้ examples ถ้าจำเป็น
+- Never vaguely suggest "what should we do" without specifics
+- Keep suggestions specific and actionable
+- Name the relevant file paths or components
+- Give examples when needed
 
 ### 6. Agent And Subagent Discipline
 
-ใช้ `/follow-agents-md` และ subagents อย่างถูกต้อง
+Use `/follow-agents-md` and subagents correctly
 
-- ถ้า `AGENTS.md` มีอยู่ → แนะนำ `/follow-agents-md` ก่อน ไม่แนะนำทำเองโดยตรง
-- ถ้างานต้องใช้หลาย roles/perspectives → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents`
-- ห้ามแนะนำ subagent หรือ skill ที่ไม่เกี่ยวข้องกับ task
-- ตรวจสอบ `related` และ `AGENTS.md` ก่อนอ้างอิง workflow หรือ subagent
-- ถ้าไม่แน่ใจว่าควรใช้ subagent ใด → ทำ `/ask-me` ก่อน
+- If `AGENTS.md` exists → recommend `/follow-agents-md` first; don't do things directly
+- If the work needs multiple roles/perspectives → recommend `/update-devin-global-subagents` or `/use-subagents`
+- Never recommend a subagent or skill unrelated to the task
+- Check `related` and `AGENTS.md` before referencing a workflow or subagent
+- If unsure which subagent to use → run `/ask-me` first
 
 ### 7. Trade-off Awareness
 
-อธิบาย trade-offs ระหว่าง options
+Explain the trade-offs between options
 
-- อธิบาย pros และ cons ของแต่ละ option
-- ระบุ risks ที่อาจเกิดขึ้น
-- ระบุ opportunity costs
-- ให้ผู้ใช้ตัดสินใจขั้นสุดท้าย
+- Explain the pros and cons of each option
+- State the risks that may arise
+- State the opportunity costs
+- Let the user make the final decision
 
-- ใช้ /loop-until-complete ถ้าจำเป็น
-- ใช้ /follow-enter-dot ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /ship-to-dev-branch ถ้าจำเป็น
-- ใช้ /continue ถ้าจำเป็น
-- ใช้ /idea-features หรือ /idea-features ถ้าจำเป็น
-- ใช้ /rethink ถ้าจำเป็น
+- Use /loop-until-complete when needed
+- Use /follow-enter-dot when needed
+- Use /report when needed
+- Use /ship-to-dev-branch when needed
+- Use /continue when needed
+- Use /idea-features or /idea-features when needed
+- Use /rethink when needed
 
 ## Expected Outcome
 
-- ผู้ใช้ได้รับคำแนะนำที่ชัดเจน
-- Actions ถูกจัดลำดับตาม priority
-- Context ของสถานการณ์ถูกเข้าใจ
-- Workflow ที่เหมาะสมถูกแนะนำ
-- Trade-offs ระหว่าง options ชัดเจน
-- การทำงานมีทิศทางชัดเจน
-- ผลลัพธ์ถูกนำเสนอด้วย `/report` ในรูปแบบตาราง
-- ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
-- ถ้างานซับซ้อน multi-role จะแนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
-- ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea-features` หรือ `/idea-features` ตาม context
-- สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
+- The user receives clear recommendations
+- Actions are ranked by priority
+- The context of the situation is understood
+- The suitable workflows are recommended
+- The trade-offs between options are clear
+- The work has clear direction
+- Results are presented via `/report` as tables
+- If `AGENTS.md` exists, `/follow-agents-md` is recommended first
+- If the work is complex and multi-role, `/update-devin-global-subagents` or `/use-subagents` is recommended per context
+- If the user wants feature ideas, `/idea-features` or `/idea-features` is recommended per context
+- Ends with `/ask-me` so the user picks an action as the answer; the assistant does not decide for the user in chat
 

@@ -1,6 +1,6 @@
 ---
 name: update-vitepress-docs
-description: สร้าง VitePress docs site — content จาก update-docs + setup จาก follow-tool-vitepress
+description: Build a VitePress docs site — content from update-docs + setup from follow-tool-vitepress
 argument-hint: "[scope]"
 related:
   - update-docs
@@ -16,111 +16,111 @@ related:
 
 ## Goal
 
-สร้าง/อัปเดต VitePress documentation site — เนื้อหา markdown จาก `/update-docs` (pages + templates + type detection) บวก VitePress setup จาก `/follow-tool-vitepress` (config, theme, plugins, scripts, deploy)
+Create/update a VitePress documentation site — markdown content from `/update-docs` (pages + templates + type detection) plus the VitePress setup from `/follow-tool-vitepress` (config, theme, plugins, scripts, deploy)
 
 ## Scope
 
-ใช้เมื่อ project ต้องการ docs site ที่ build/deploy ได้ — ถ้าต้องการแค่ `docs/` markdown ล้วน (อ่านบน GitHub) ให้ใช้ `/update-docs` แทน
+Use when a project needs a buildable/deployable docs site — if you only want plain `docs/` markdown (read on GitHub), use `/update-docs` instead
 
-- Composition: `/update-docs` = เนื้อหาและ page structure, `/follow-tool-vitepress` = tooling (`vitepress`, UnoCSS, Shiki Twoslash, Group Icons, theme, CI deploy)
-- Skill นี้เก็บเฉพาะ nav/sidebar/homepage templates และ orchestration — ห้ามซ้ำ content rules ของ `update-docs` หรือ setup steps ของ `follow-tool-vitepress`
+- Composition: `/update-docs` = content and page structure, `/follow-tool-vitepress` = tooling (`vitepress`, UnoCSS, Shiki Twoslash, Group Icons, theme, CI deploy)
+- This skill keeps only the nav/sidebar/homepage templates and orchestration — never duplicate the content rules of `update-docs` or the setup steps of `follow-tool-vitepress`
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: ระบุ docs type และสถานะ docs/ ปัจจุบัน
+> Goal: Determine the docs type and the current state of docs/
 
-1. ทำ `/check-should-update` ถ้ามี git changes
-2. ทำ `/check-monorepo` เพื่อระบุ monorepo
-3. ระบุ docs type (`product` / `saas-product` / `opensource-product` / `open-source` / `cli` / `library` / `sdk` / `tool` / `website` / `monorepo` / `development`) ตาม detection ใน `update-docs/references/<type>.md`
-4. ถ้ามี `docs/` อยู่แล้ว → ทำ `/deep-review` ก่อนเพื่อหา gaps
+1. Run `/check-should-update` if there are git changes
+2. Run `/check-monorepo` to identify a monorepo
+3. Determine the docs type (`product` / `saas-product` / `opensource-product` / `open-source` / `cli` / `library` / `sdk` / `tool` / `website` / `monorepo` / `development`) per the detection in `update-docs/references/<type>.md`
+4. If `docs/` already exists → run `/deep-review` first to find gaps
 
 ### 2. Ensure Content Pages
 
-> Goal: markdown pages ครบก่อนตั้งค่า site
+> Goal: Have complete markdown pages before configuring the site
 
-1. ทำ `/update-docs` เพื่อสร้าง/อัปเดต `docs/` structure และ content pages ทั้งหมด (index, project, getting-started, guides/examples/integrations/plugins/adapters/ecosystem เฉพาะ section ที่มีเนื้อหาจริง, development, references, roadmap, workspaces สำหรับ monorepo)
-2. `docs/index.md` จาก `/update-docs` จะถูกแทนด้วย `templates/homepage.md` (`layout: home`) ใน Step 5
+1. Run `/update-docs` to create/update the `docs/` structure and all content pages (index, project, getting-started, guides/examples/integrations/plugins/adapters/ecosystem for sections with real content only, development, references, roadmap, workspaces for a monorepo)
+2. `docs/index.md` from `/update-docs` will be replaced by `templates/homepage.md` (`layout: home`) in Step 5
 
 ### 3. VitePress Setup
 
-> Goal: ติดตั้ง vitepress และ scaffolding พื้นฐาน
+> Goal: Install vitepress and the basic scaffolding
 
-ทำตาม `/follow-tool-vitepress` (`follow-tool-vitepress/workflows/setup-vitepress/SKILL.md`):
+Follow `/follow-tool-vitepress` (`follow-tool-vitepress/workflows/setup-vitepress/SKILL.md`):
 
-1. สร้าง `docs/.vitepress/` config directory
-2. Monorepo: `docs/package.json` เป็น workspace เอง + เพิ่ม `docs` ใน root `workspaces`; single project: scripts ใน root `package.json`
-3. ทำ `/follow-gitignore` — `docs/.gitignore` ครอบคลุม `.vitepress/dist/`, `.vitepress/cache/`
-4. ทำ `/follow-lang-typescript` — `docs/tsconfig.json` สำหรับ `.vitepress/` config
-5. ติดตั้ง `bun add -d vitepress` (version ตาม `/follow-tool-vitepress` — stable 1.x, `next` สำหรับ preview)
+1. Create the `docs/.vitepress/` config directory
+2. Monorepo: `docs/package.json` is its own workspace + add `docs` to the root `workspaces`; single project: scripts in the root `package.json`
+3. Run `/follow-gitignore` — `docs/.gitignore` covers `.vitepress/dist/`, `.vitepress/cache/`
+4. Run `/follow-lang-typescript` — `docs/tsconfig.json` for the `.vitepress/` config
+5. Install with `bun add -d vitepress` (version per `/follow-tool-vitepress` — stable 1.x, `next` for preview)
 
 ### 4. Site Config
 
-> Goal: `docs/.vitepress/config.ts` มี nav และ sidebar ครบตาม type
+> Goal: `docs/.vitepress/config.ts` has complete nav and sidebar per type
 
-1. สร้าง `config.ts` ด้วย `defineConfig` — full structure จาก `references/vitepress-config.md`
-2. nav จาก `templates/nav-config.md` — ใช้ Base Nav + type variation ของ docs type นั้น (ไม่ใส่ `Project` / `Development` / `Auth` / `Review` ใน nav — section เหล่านั้นอยู่ใน sidebar เท่านั้น) และใส่เฉพาะ item ที่ directory มีจริงใน `docs/`
-3. sidebar จาก `templates/sidebar-<type>.md` — map มาจาก `## Page Groups` ใน `update-docs/references/<type>.md`; หมวด `/development/` ใช้ `templates/sidebar-development.md` ร่วมกันทุก type; extensibility sections (`/guides/` `/examples/` `/integrations/` `/plugins/` `/adapters/` `/ecosystem/`) copy จาก `templates/sidebar-extensibility.md` เฉพาะ section ที่ directory มีจริง
-4. ถ้า monorepo → เพิ่ม `templates/sidebar-monorepo.md` + dropdown nav (`items`) สำหรับ workspace pages
-5. ใช้ `collapsed: true` เมื่อหมวดมี >5 หน้า; ใช้ relative path เริ่มต้นด้วย `/`
-6. ถ้า multi-language → `references/i18n.md`
+1. Create `config.ts` with `defineConfig` — the full structure from `references/vitepress-config.md`
+2. nav from `templates/nav-config.md` — use the Base Nav + the type variation for that docs type (don't put `Project` / `Development` / `Auth` / `Review` in the nav — those sections live only in the sidebar) and include only items whose directories actually exist in `docs/`
+3. sidebar from `templates/sidebar-<type>.md` — mapped from `## Page Groups` in `update-docs/references/<type>.md`; the `/development/` category shares `templates/sidebar-development.md` across all types; extensibility sections (`/guides/` `/examples/` `/integrations/` `/plugins/` `/adapters/` `/ecosystem/`) copy from `templates/sidebar-extensibility.md` for sections whose directories actually exist
+4. If a monorepo → add `templates/sidebar-monorepo.md` + a dropdown nav (`items`) for workspace pages
+5. Use `collapsed: true` when a category has >5 pages; use relative paths starting with `/`
+6. If multi-language → `references/i18n.md`
 
 ### 5. Homepage
 
-> Goal: `docs/index.md` เป็น VitePress landing page
+> Goal: `docs/index.md` is a VitePress landing page
 
-1. ใช้ `templates/homepage.md` — `layout: home`, hero (name/tagline จาก `package.json`), features 3-6 รายการจริง, actions
-2. TOC แบบ markdown (จาก `/update-docs`) ให้ย้ายไป `docs/references/` index หรือ `project/overview.md` ถ้า site ใช้ `layout: home` แทน
+1. Use `templates/homepage.md` — `layout: home`, hero (name/tagline from `package.json`), 3-6 real features, actions
+2. A markdown TOC (from `/update-docs`) should move to the `docs/references/` index or `project/overview.md` if the site uses `layout: home` instead
 
 ### 6. Optional Enhancements
 
-> Goal: theme, plugins, และ deploy ตาม `/follow-tool-vitepress`
+> Goal: theme, plugins, and deploy per `/follow-tool-vitepress`
 
 1. Theme: `.vitepress/theme/index.ts` extends DefaultTheme + `style.css` CSS variables — `follow-tool-vitepress/workflows/config-theme/SKILL.md`
-2. UnoCSS: `docs/uno.config.ts` + `UnoCSS()` plugin + `virtual:uno.css` — ตาม `/follow-tool-vitepress` Step 3
-3. Shiki Twoslash (`@shikijs/vitepress-twoslash`) และ Group Icons (`vitepress-plugin-group-icons`) เมื่อต้องการ
-4. Vue components สำหรับ interactive content (FeaturesTable, TestResults, ReleaseTimeline) — เฉพาะเมื่อ project ต้องการจริง ไม่ใช่ default
-5. GitHub Actions deploy workflow ตาม `/follow-tool-vitepress` Step 8
+2. UnoCSS: `docs/uno.config.ts` + `UnoCSS()` plugin + `virtual:uno.css` — per `/follow-tool-vitepress` Step 3
+3. Shiki Twoslash (`@shikijs/vitepress-twoslash`) and Group Icons (`vitepress-plugin-group-icons`) when needed
+4. Vue components for interactive content (FeaturesTable, TestResults, ReleaseTimeline) — only when the project truly needs them, not by default
+5. GitHub Actions deploy workflow per `/follow-tool-vitepress` Step 8
 
 ### 7. Validate
 
-> Goal: site build และลิงก์ไม่เสีย
+> Goal: The site builds and links aren't broken
 
-1. ทำ `/run-docs` — `vitepress dev` เห็นหน้าแรก, `vitepress build` ผ่านไม่มี dead-links error
-2. ตรวจทุก sidebar/nav link มีไฟล์ `.md` จริง
-3. ทำ `/update-references` — internal links, README ลิงก์ไป docs site
+1. Run `/run-docs` — `vitepress dev` shows the homepage, `vitepress build` passes with no dead-links error
+2. Check that every sidebar/nav link has a real `.md` file
+3. Run `/update-references` — internal links, README linking to the docs site
 
 ## Rules
 
 ### 1. Composition Over Duplication
 
-- เนื้อหา/frontmatter/real-data rules อยู่ใน `/update-docs` — ห้ามคัดลอกมา
-- install/theme/plugin/deploy steps อยู่ใน `/follow-tool-vitepress` — ห้ามคัดลอกมา
-- skill นี้เก็บเฉพาะ nav/sidebar/homepage/config templates และ orchestration order
+- Content/frontmatter/real-data rules live in `/update-docs` — never copy them here
+- install/theme/plugin/deploy steps live in `/follow-tool-vitepress` — never copy them here
+- This skill keeps only the nav/sidebar/homepage/config templates and the orchestration order
 
 ### 2. Config Standards
 
-- `config.ts` ใช้ `defineConfig` เสมอ, `search.provider: 'local'`, `cleanUrls: true`, `lastUpdated: true`
-- nav กำหนดจาก `templates/nav-config.md` เท่านั้น ไม่ซ้ำกำหนดใน sidebar templates
-- ดู official resources ใน `references/website.md`
+- `config.ts` always uses `defineConfig`, `search.provider: 'local'`, `cleanUrls: true`, `lastUpdated: true`
+- nav is defined only by `templates/nav-config.md`; don't redefine it in the sidebar templates
+- See the official resources in `references/website.md`
 
 ### 3. Markdown First
 
-- default ใช้ markdown ธรรมดาตาม `/update-docs` rules — Vue components เฉพาะเมื่อจำเป็น (interactive features)
-- ใช้ `:::` containers ของ VitePress ได้เมื่อจำเป็น (site pages ไม่จำเป็นต้อง render บน GitHub)
+- By default use plain markdown per `/update-docs` rules — Vue components only when necessary (interactive features)
+- You may use VitePress `:::` containers when needed (site pages don't have to render on GitHub)
 
 ### 4. No Workspace Duplicates
 
-- monorepo มี `docs/` เดียวที่ root เป็น workspace — ห้ามสร้าง `docs/` ในแต่ละ workspace
-- workspace pages อยู่ `docs/workspaces/<name>.md` และลิงก์ผ่าน dropdown nav
+- A monorepo has a single `docs/` at the root as the workspace — never create `docs/` in each workspace
+- Workspace pages live at `docs/workspaces/<name>.md` and are linked via a dropdown nav
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
+- Use /deep-review if needed
+- Use /check-reference if needed
 
 ## Expected Outcome
 
-- `docs/` ที่ root มี VitePress config, nav (Base Nav + type variation — ไม่มี Project/Development/Auth/Review), sidebar ครบตาม type (+ Commands สำหรับ cli, Workspaces สำหรับ monorepo, extensibility sections ตาม directory ที่มีจริง)
-- เนื้อหาทุกหน้ามาจาก `/update-docs` — frontmatter ครบ, real data, ไม่มี placeholder
-- `vitepress dev`/`build`/`preview` ทำงาน, `vitepress build` ไม่มี dead-links error
-- README ลิงก์ไป docs site
+- A root `docs/` with VitePress config, nav (Base Nav + type variation — no Project/Development/Auth/Review), and a sidebar complete per type (+ Commands for cli, Workspaces for a monorepo, extensibility sections per the directories that exist)
+- All page content comes from `/update-docs` — complete frontmatter, real data, no placeholders
+- `vitepress dev`/`build`/`preview` work, `vitepress build` has no dead-links error
+- README links to the docs site

@@ -2,57 +2,57 @@
 
 ## Help Option
 
-ตรวจว่า `--help` และ `-h` option แสดง:
+Verify that the `--help` and `-h` options display:
 
-- usage: วิธีเรียก CLI
-- options: flags ทั้งหมดพร้อม description
+- usage: how to invoke the CLI
+- options: all flags with a description
 - exit codes: 0 = success, 1 = invalid arguments
-- examples: ตัวอย่างการใช้งาน
+- examples: usage examples
 
-ถ้าขาด `--help`/`-h` → flag เป็น `High` severity
+If `--help`/`-h` is missing → flag as `High` severity
 
 ## Exit Codes
 
-ตรวจว่า exit codes ถูกต้อง:
+Verify that exit codes are correct:
 
-- `0` — success, review สำเร็จ
-- `1` — invalid arguments หรือ error
+- `0` — success, the review completed
+- `1` — invalid arguments or an error
 
-ถ้า exit codes ผิด → flag เป็น `High` severity
+If exit codes are wrong → flag as `High` severity
 
 ## Output Format
 
-ตรวจว่า output รองรับ 2 formats ผ่าน `--format` flag:
+Verify that the output supports 2 formats via the `--format` flag:
 
-- `table` — default, แสดงผลเป็นตารางอ่านง่าย
-- `JSON` — สำหรับ programmatic consumption
+- `table` — default, rendered as a readable table
+- `JSON` — for programmatic consumption
 
-ถ้าขาด format option → flag เป็น `Medium` severity
+If a format option is missing → flag as `Medium` severity
 
 ## Error Messages
 
-ตรวจว่า error messages สำหรับ invalid arguments:
+Verify the error messages for invalid arguments:
 
-- ระบุ argument ที่ผิด
-- แนะนำ usage ที่ถูกต้อง
-- แสดง exit code 1
+- Identify the incorrect argument
+- Suggest the correct usage
+- Show exit code 1
 
-ถ้า error messages ไม่ชัดเจน → flag เป็น `Medium` severity
+If error messages are unclear → flag as `Medium` severity
 
 ## CLI Flags Checklist
 
-ตรวจ flags ครบ:
+Verify all flags are present:
 
-- `--help` / `-h` — แสดง help
-- `--format` — เลือก output format (`table` | `JSON`)
-- `--output` — path สำหรับเขียนผลลัพธ์ (optional)
+- `--help` / `-h` — show help
+- `--format` — choose the output format (`table` | `JSON`)
+- `--output` — path to write the result to (optional)
 
-ถ้าขาด flag ที่จำเป็น → flag ตาม severity ที่เหมาะสม
+If a required flag is missing → flag at the appropriate severity
 
 ## Evidence Format
 
-ทุก finding ต้องมี:
+Every finding must include:
 
-- file path เช่น `tools/review-codebase/src/presentation/cli.ts`
-- line number
-- code snippet ที่เป็นปัญหา
+- File path, e.g. `tools/review-codebase/src/presentation/cli.ts`
+- Line number
+- The code snippet that is problematic

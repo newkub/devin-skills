@@ -1,6 +1,6 @@
 ---
 name: follow-algorithms
-description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
+description: Choose and implement algorithms that fit the problem and complexity
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
@@ -11,84 +11,84 @@ related:
 
 ## Goal
 
-เลือกและ implement algorithm ทีเหมาะสมกับปัญหา ด้วยการวิเคราะห์ complexity อย่างถูกต้อง
+Choose and implement the algorithm that fits the problem, with correct complexity analysis
 
 ## Scope
 
-ใช้เมื่อต้องเลือกหรือ implement algorithm ใหม่ — ถ้าจะประเมินของเดิมใช้ `/deep-review` ถ้าจะปรับของเดิมใช้ `/deep-review`
+Use when selecting or implementing a new algorithm — to assess an existing one use `/deep-review`; to adjust an existing one use `/deep-review`
 
 ## Execute
 
 ### 1. Understand The Problem
 
-> Goal: วิเคราะห์ปัญหาก่อนเลือก algorithm
+> Goal: analyze the problem before choosing an algorithm
 
-1. ระบุ input/output ทีต้องการ
-2. ระบุ constraints (time, space, data size)
-3. ระบุ edge cases
-4. ถ้าไม่ชัดให้ `ask-me`
+1. Define the desired input/output
+2. Define the constraints (time, space, data size)
+3. Identify edge cases
+4. If unclear, use `ask-me`
 
 ### 2. Choose Algorithm
 
-> Goal: เลือก algorithm ตาม characteristics
+> Goal: choose the algorithm by characteristics
 
-1. ค้นหา algorithm ทั่วไปสำหรับปัญหาประเภทนี้ (sorting, searching, graph, DP, greedy)
-2. เปรียบเทียบ time/space complexity
-3. พิจารณาความง่ายใน implementation และ maintainability
-4. เลือก standard library ก่อน implement เอง
+1. Look up common algorithms for this problem class (sorting, searching, graph, DP, greedy)
+2. Compare time/space complexity
+3. Consider implementation simplicity and maintainability
+4. Prefer the standard library over implementing it yourself
 
 ### 3. Analyze Complexity
 
-> Goal: วิเคราะห์ก่อน implement
+> Goal: analyze before implementing
 
-1. คำนวณ best/average/worst time complexity
-2. คำนวณ space complexity
-3. ระบุ bottlenecks
-4. ทำ `/deep-review` อ้างอิง [`deep-review/SKILL.md`](`deep-review/SKILL.md`) ถ้าต้องการตรวจสอบละเอียด
+1. Compute best/average/worst time complexity
+2. Compute space complexity
+3. Identify bottlenecks
+4. Run `/deep-review` per [`deep-review/SKILL.md`](`deep-review/SKILL.md`) if a detailed check is needed
 
 ### 4. Implement
 
-> Goal: เขียน algorithm ให้ถูกต้องและอ่านง่าย
+> Goal: write the algorithm correctly and readably
 
-1. ใช้ชื่อตัวแปรและฟังก์ชันทีสื่อความหมาย
-2. แบ่งเป็น helper functions ถ้าซับซ้อน
-3. เพิ่ม comments สำหรับ tricky parts
-4. ใช้ unit tests ครอบคลุม edge cases
+1. Use meaningful variable and function names
+2. Split into helper functions if complex
+3. Add comments for tricky parts
+4. Cover edge cases with unit tests
 
 ### 5. Optimize If Needed
 
-> Goal: ปรับปรุงเมื่อจำเป็น
+> Goal: improve when necessary
 
-1. Profile ก่อน optimize
-2. พิจารณา trade-off ระหว่าง time/space
-3. หลีกเลี่ยง premature optimization
-4. เอกสารสาเหตุที optimize
+1. Profile before optimizing
+2. Weigh the trade-off between time and space
+3. Avoid premature optimization
+4. Document why the optimization was made
 
 ## Rules
 
 ### 1. Prefer Standard Libraries
 
-- ใช้ built-in sort, search, collections ก่อน implement เอง
-- ใช้ well-known libraries ถ้ามีใน ecosystem
-- Implement เองเฉพาะทีจำเป็นจริงๆ
+- Use built-in sort, search, and collections before implementing your own
+- Use well-known libraries when available in the ecosystem
+- Implement it yourself only when truly necessary
 
 ### 2. Document Complexity
 
-- ระบุ time/space complexity ใน comments หรือ docs
-- อธิบายทำไมถึงเลือก algorithm นี
-- บอก worst case
+- State time/space complexity in comments or docs
+- Explain why this algorithm was chosen
+- Note the worst case
 
 ### 3. Test Edge Cases
 
-- ทดสอบกับ input เปล่า, ขนาดใหญ่, ลำดับพิเศษ
-- ทดสอบ worst case ถ้าเป็นไปได้
-- ใช้ property-based tests ถ้าเหมาะสม
+- Test with empty input, large sizes, and special orderings
+- Test the worst case when feasible
+- Use property-based tests where appropriate
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- Algorithm ทีเลือกเหมาะสมกับปัญหา
-- Implementation ถูกต้องและ tested
-- Complexity ถูกวิเคราะห์และเอกสารไว้
-- ไม่ over-engineer
+- The chosen algorithm fits the problem
+- The implementation is correct and tested
+- Complexity is analyzed and documented
+- No over-engineering

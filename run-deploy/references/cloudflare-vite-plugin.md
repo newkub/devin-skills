@@ -1,12 +1,12 @@
 # Cloudflare Vite Plugin
 
-`@cloudflare/vite-plugin` เป็น official Cloudflare plugin สำหรับ Vite ที่ integrate Vite เข้ากับ Workers runtime ผ่าน Vite Environment API
+`@cloudflare/vite-plugin` is the official Cloudflare plugin for Vite that integrates Vite with the Workers runtime via the Vite Environment API
 
 ## When To Install
 
-- Project deploy ไป Cloudflare Workers หรือ Pages
-- Project ใช้ Vite เป็น build tool (มี `vite.config.ts` หรือ `vite` ใน `devDependencies`)
-- รองรับ TanStack Start, React Router v8, SPA, standalone Workers, multi-Worker
+- Projects deploying to Cloudflare Workers or Pages
+- Projects using Vite as the build tool (has `vite.config.ts` or `vite` in `devDependencies`)
+- Supports TanStack Start, React Router v8, SPA, standalone Workers, multi-Worker
 
 ## Install
 
@@ -16,7 +16,7 @@ bun add -D @cloudflare/vite-plugin wrangler
 
 ## Configure Vite
 
-เพิ่ม `cloudflare()` plugin ใน `vite.config.ts`:
+Add the `cloudflare()` plugin in `vite.config.ts`:
 
 ```ts
 import { defineConfig } from "vite";
@@ -27,7 +27,7 @@ export default defineConfig({
 });
 ```
 
-ถ้าใช้ framework plugin อื่น (เช่น React) ให้วาง `cloudflare()` หลัง framework plugin:
+If using another framework plugin (e.g. React), place `cloudflare()` after the framework plugin:
 
 ```ts
 import { defineConfig } from "vite";
@@ -39,9 +39,9 @@ export default defineConfig({
 });
 ```
 
-### TanStack Start (Solid หรือ React)
+### TanStack Start (Solid or React)
 
-สำหรับ TanStack Start ต้องวาง `cloudflare()` ก่อน `tanstackStart()` และตั้งค่า `viteEnvironment`:
+For TanStack Start, place `cloudflare()` before `tanstackStart()` and set `viteEnvironment`:
 
 ```ts
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -58,7 +58,7 @@ export default defineConfig({
 });
 ```
 
-`wrangler.jsonc` สำหรับ TanStack Start ใช้ server-entry export เป็น `main`:
+`wrangler.jsonc` for TanStack Start uses the server-entry export as `main`:
 
 ```jsonc
 {
@@ -71,13 +71,13 @@ export default defineConfig({
 }
 ```
 
-สำหรับ TanStack Start + React ใช้ `@tanstack/react-start/server-entry` แทน
+For TanStack Start + React, use `@tanstack/react-start/server-entry` instead
 
 ## Wrangler Config
 
-Plugin อ่าน `wrangler.jsonc`, `wrangler.json` หรือ `wrangler.toml` ใน root อัตโนมัติ ไม่ต้องกำหนดค่าเพิ่มเว้นแต่ต้องการ override
+The plugin automatically reads `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` in the root; no extra configuration is needed unless you want to override
 
-ตัวอย่าง `wrangler.jsonc` สำหรับ SPA:
+Example `wrangler.jsonc` for an SPA:
 
 ```jsonc
 {
@@ -93,30 +93,30 @@ Plugin อ่าน `wrangler.jsonc`, `wrangler.json` หรือ `wrangler.tom
 
 ## Build And Deploy
 
-หลังติดตั้ง plugin แล้ว build และ deploy ด้วย Vite + Wrangler:
+After installing the plugin, build and deploy with Vite + Wrangler:
 
 ```bash
-# Build ด้วย Vite (plugin สร้าง output สำหรับ Workers)
+# Build with Vite (the plugin creates the output for Workers)
 vite build
 
-# Deploy ด้วย wrangler
+# Deploy with wrangler
 wrangler deploy
 ```
 
-รองรับ `vite preview` เพื่อ preview build output ใน Workers runtime ก่อน deploy จริง
+`vite preview` is supported to preview the build output in the Workers runtime before a real deploy
 
 ## Verify Install
 
-1. ตรวจสอบ `vite.config.ts` มี `cloudflare()` ใน `plugins` array
-2. รัน `vite build` สำเร็จโดยไม่มี error
-3. ตรวจสอบว่ามี `wrangler.jsonc` หรือ `wrangler.toml` ใน root
-4. รัน `wrangler whoami` เพื่อยืนยัน authentication
+1. Check that `vite.config.ts` has `cloudflare()` in the `plugins` array
+2. `vite build` runs successfully without errors
+3. Check that `wrangler.jsonc` or `wrangler.toml` exists in the root
+4. Run `wrangler whoami` to confirm authentication
 
 ## CI Deploy Tips
 
 ### GitHub Actions
 
-ใช้ `cloudflare/wrangler-action@v4` สำหรับ auth ใน CI เพราะ `bunx wrangler deploy` โดยตรงมักไม่ detect `CLOUDFLARE_API_TOKEN` env var ใน non-interactive environment:
+Use `cloudflare/wrangler-action@v4` for auth in CI because running `bunx wrangler deploy` directly often does not detect the `CLOUDFLARE_API_TOKEN` env var in a non-interactive environment:
 
 ```yaml
 - uses: actions/checkout@v7
@@ -134,15 +134,15 @@ wrangler deploy
     packageManager: bun
 ```
 
-หมายเหตุ: `wrangler-action@v4` ติดตั้ง Wrangler v4 เป็น default — ถ้าต้อง pin Wrangler v3 ให้ใส่ `wranglerVersion: "3.90.0"` ใน `with:`
+Note: `wrangler-action@v4` installs Wrangler v4 by default — if you need to pin Wrangler v3, add `wranglerVersion: "3.90.0"` under `with:`
 
 ### Common Pitfalls
 
-- Frozen lockfile: CI ใช้ `bun install --frozen-lockfile` ถ้า `bun.lock` ไม่ sync กับ `package.json` จะ fail ต้องรัน `bun install` ในเครื่องแล้ว commit lockfile ใหม่
-- Missing secret: ต้องตั้ง `CLOUDFLARE_API_TOKEN` เป็น GitHub secret (`gh secret set CLOUDFLARE_API_TOKEN`)
-- `.wrangler` directory: เพิ่ม `.wrangler` ใน `.gitignore` และ linter ignores
-- Stale wrangler.toml: ถ้า migrate จาก Nitro/SolidStart เก่าที่ใช้ `.output/server/index.mjs` ต้องแปลงเป็น `wrangler.jsonc` และใช้ `main` ตาม framework ปัจจุบัน
-- Biome schema version: ถ้า Biome อัปเดต ให้รัน `bunx biome migrate --write` และอัปเดต `$schema` URL ใน `biome.jsonc`
+- Frozen lockfile: CI uses `bun install --frozen-lockfile`; if `bun.lock` is out of sync with `package.json` it fails — run `bun install` locally and commit the updated lockfile
+- Missing secret: set `CLOUDFLARE_API_TOKEN` as a GitHub secret (`gh secret set CLOUDFLARE_API_TOKEN`)
+- `.wrangler` directory: add `.wrangler` to `.gitignore` and linter ignores
+- Stale wrangler.toml: when migrating from an old Nitro/SolidStart setup that used `.output/server/index.mjs`, convert to `wrangler.jsonc` and set `main` per the current framework
+- Biome schema version: when Biome updates, run `bunx biome migrate --write` and update the `$schema` URL in `biome.jsonc`
 
 ## Source
 

@@ -1,6 +1,6 @@
 ---
 name: clean-empty-dirs
-description: ลบ empty directory trees พร้อม dry-run preview และ git-aware detection
+description: Remove empty directory trees with a dry-run preview and git-aware detection
 argument-hint: "[path] [--dry-run]"
 related:
   - delete
@@ -11,70 +11,70 @@ related:
 
 ## Goal
 
-หาและลบ directories ที่ว่างเปล่า — รวม nested empty trees — ด้วย dry-run ก่อนลบจริง เพื่อ repo/filesystem ที่สะอาด
+Find and remove empty directories — including nested empty trees — with a dry run before any real deletion, for a clean repo/filesystem
 
 ## Scope
 
-- สแกน directory trees หา empty dirs (ไม่มีไฟล์เลย รวม recursive)
-- Git-aware: ระวัง dirs ที่ git ไม่ track แต่จำเป็น (เช่น `logs/` ที่ app สร้างเอง) — flag แยกจาก empty ธรรมดา
-- Default: dry-run เสมอ — ลบจริงต้อง confirm
+- Scan directory trees for empty dirs (no files at all, counted recursively)
+- Git-aware: watch out for dirs git does not track but that are still needed (e.g. `logs/` created by the app itself) — flag them separately from plain empty dirs
+- Default: always dry-run — real deletion requires confirmation
 
 ## Execute
 
 ### 1. Scan For Empty Dirs
 
-> Goal: หา dirs ที่ว่างเปล่าทั้งหมด
+> Goal: find every empty dir
 
-1. สแกน recursive จาก path — dir ว่าง = ไม่มีไฟล์เลย (subdirs ที่ว่างก็นับ)
-2. รวม nested empty trees — ถ้าลบลูกแล้วแม่จะว่างด้วย
-3. ข้าม hidden/system dirs (`.git`, `node_modules`) เว้นแต่ระบุ
+1. Scan recursively from the given path — a dir is empty when it contains no files at all (empty subdirs still count)
+2. Include nested empty trees — deleting the children leaves the parent empty too
+3. Skip hidden/system dirs (`.git`, `node_modules`) unless explicitly specified
 
 ### 2. Classify Before Delete
 
-> Goal: แยก empty dirs ที่ปลอดภัยจากที่อาจจำเป็น
+> Goal: separate safe-to-delete empty dirs from ones that may be needed
 
-1. Safe to delete: dirs ว่างที่ไม่มี purpose marker
-2. Suspicious: dirs ที่ code อาจ expect (`logs/`, `tmp/`, `uploads/`, `data/`) — ค้น code ว่ามี reference ถึง path ไหม
-3. Git-ignored: dirs ใน `.gitignore` — อาจตั้งใจให้ว่าง (git ไม่ track empty dirs)
-4. Keep markers: dirs ที่มี `.gitkeep`/`.keep` = ตั้งใจเก็บ — ไม่ลบ
+1. Safe to delete: empty dirs with no purpose marker
+2. Suspicious: dirs that code might expect (`logs/`, `tmp/`, `uploads/`, `data/`) — search the code for references to the path
+3. Git-ignored: dirs listed in `.gitignore` — they may be intentionally empty (git does not track empty dirs)
+4. Keep markers: dirs with `.gitkeep`/`.keep` are meant to be kept — never delete
 
 ### 3. Preview
 
-> Goal: แสดงรายการก่อนลบ
+> Goal: show the list before deleting
 
-1. ใช้ `/report`: `No.`, `Path`, `Depth`, `Classification`, `Action`
-2. สรุป counts: safe to delete vs flagged vs kept
-3. ถาม user confirm — dry-run เป็น default
+1. Report via `/report`: `No.`, `Path`, `Depth`, `Classification`, `Action`
+2. Summarize counts: safe to delete vs flagged vs kept
+3. Ask the user to confirm — dry-run is the default
 
 ### 4. Delete (Confirmed Only)
 
-> Goal: ลบเฉพาะที่ confirm
+> Goal: delete only what was confirmed
 
-1. ลบลึกสุดก่อน (children ก่อน parents) — nested empty trees หายหมดในคราวเดียว
-2. ลบเฉพาะที่ classify `safe` — flagged ต้อง user เลือกเอง
-3. รายงานจำนวนที่ลบจริง
+1. Delete deepest first (children before parents) — nested empty trees clear away in one pass
+2. Delete only dirs classified `safe` — flagged ones are the user's choice
+3. Report how many were actually deleted
 
 ## Rules
 
 ### 1. Dry-Run Default
 
-- แสดง preview เสมอ — ลบเฉพาะเมื่อ user confirm
-- ไม่ลบ flagged dirs โดยไม่ได้เลือกชัดเจน
+- Always show a preview — delete only after the user confirms
+- Never delete flagged dirs without an explicit choice
 
 ### 2. Purpose Aware
 
-- dirs ที่ code reference (log dirs, upload targets) ต้อง flag — ลบแล้ว app อาจพัง
-- `.gitkeep`/`.keep` = สัญญาณตั้งใจ — เคารพเสมอ
+- Dirs referenced by code (log dirs, upload targets) must be flagged — deleting them can break the app
+- `.gitkeep`/`.keep` = a deliberate signal — always respect it
 
 ### 3. No Partial Deletes
 
-- ลบเป็น all-or-nothing ต่อ tree — ไม่ลบบางส่วนจน parent เหลือ half-empty แบบแปลก
-- Windows: ระวัง locked dirs — skip พร้อม note ไม่ fail ทั้ง batch
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Delete all-or-nothing per tree — never leave a parent weirdly half-empty from a partial delete
+- Windows: beware locked dirs — skip with a note instead of failing the whole batch
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- รายการ empty dirs พร้อม classification
-- ลบเฉพาะที่ปลอดภัยและ confirmed
-- Filesystem สะอาดโดยไม่ทำลาย dirs ที่จำเป็น
+- A list of empty dirs with their classification
+- Only safe, confirmed dirs get deleted
+- A cleaner filesystem without destroying the dirs that are needed

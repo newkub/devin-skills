@@ -1,13 +1,13 @@
 ---
 title: Scoring
-description: สูตรคำนวณ review score, grade และ metrics
+description: Formulas for review score, grade, and metrics
 ---
 
 # Scoring
 
 ## Severity Weights
 
-แต่ละ finding มี weight ตาม severity:
+Each finding has a weight based on its severity:
 
 | Severity | Weight |
 |---|---|
@@ -19,7 +19,7 @@ description: สูตรคำนวณ review score, grade และ metrics
 
 ## Score Calculation
 
-review score = weighted average ของ findings ทั้งหมด
+review score = weighted average of all findings
 
 ```
 score = sum(weight of each finding) / count of findings
@@ -33,50 +33,50 @@ score = sum(weight of each finding) / count of findings
 
 | Grade | Score Range |
 |---|---|
-| A | 90 ขึ้นไป |
-| B | 80 ถึง 89 |
-| C | 70 ถึง 79 |
-| D | 60 ถึง 69 |
-| F | ต่ำกว่า 60 |
+| A | 90 and above |
+| B | 80 to 89 |
+| C | 70 to 79 |
+| D | 60 to 69 |
+| F | below 60 |
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-devin-global-subagents` ก่อนดำเนินการ
-- Score >= 70 → ผ่าน review สามารถดำเนินการต่อได้
+- Score < 70 → recommend running `update-devin-global-subagents` before proceeding
+- Score >= 70 → passes review and can proceed
 
 ## Report Format
 
-รายงานผ่าน `/report table` พร้อม columns:
+Report via `/report table` with columns:
 
-- Category — หมวด review เช่น Frontmatter, Sections, Style, Safety
+- Category — review category, e.g. Frontmatter, Sections, Style, Safety
 - Severity — Critical, High, Medium, Low, Info
-- Finding — ปัญหาที่พบ
-- Evidence — file path และ line number
-- Action — สิ่งที่ต้องทำ
+- Finding — the problem found
+- Evidence — file path and line number
+- Action — what needs to be done
 
 ## Next Action
 
-หลัง report ให้ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไปตาม score และ grade
+After the report, run `/suggest-next-action` to recommend the next action based on score and grade
 
 ## Supplementary Metrics
 
 | Metric | Description | How To Calculate |
 |--------|-------------|------------------|
-| Review Coverage Ratio | % ของ subagent files, frontmatter fields, sections, style rules และ safety rules ใน scope ที่ review ครบ | reviewed / total × 100 |
-| False Positive Rate | % ของ findings ที่ไม่ใช่ปัญหาจริง | false positives / total findings × 100 |
-| Evidence Strength Score | % ของ findings ที่มี evidence (file path หรือ line number) | findings with evidence / total findings × 100 |
-| Actionability Score | % ของ findings ที่มีคำแนะนำชัดเจน | actionable findings / total findings × 100 |
-| Severity Distribution | จำนวน findings แยกตาม severity | count of Critical/High/Medium/Low/Info |
-| MTTR Estimate | ระยะเวลาโดยประมาณในการแก้ | Critical=1d, High=3d, Medium=7d, Low=14d average |
-| Before/After Trend | การปรับปรุงคะแนนระหว่างก่อนและหลัง | (after - before) / before × 100 |
-| Risk Exposure Index | จำนวน Critical/High findings ใน permissions, allowed-tools, secrets, safety และ hardcoded paths | count of Critical/High findings in critical scope |
-| Scope Boundary Adherence | % ของ findings อยู่ใน subagent scope ที่ประกาศ | in-scope findings / total findings × 100 |
-| Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+| Review Coverage Ratio | % of in-scope subagent files, frontmatter fields, sections, style rules and safety rules fully reviewed | reviewed / total × 100 |
+| False Positive Rate | % of findings that are not real problems | false positives / total findings × 100 |
+| Evidence Strength Score | % of findings backed by evidence (file path or line number) | findings with evidence / total findings × 100 |
+| Actionability Score | % of findings with clear recommendations | actionable findings / total findings × 100 |
+| Severity Distribution | Number of findings broken down by severity | count of Critical/High/Medium/Low/Info |
+| MTTR Estimate | Estimated time to resolve | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | Score improvement between before and after | (after - before) / before × 100 |
+| Risk Exposure Index | Count of Critical/High findings in permissions, allowed-tools, secrets, safety and hardcoded paths | count of Critical/High findings in critical scope |
+| Scope Boundary Adherence | % of findings within the declared subagent scope | in-scope findings / total findings × 100 |
+| Documentation/Report Quality | % of findings with complete file path/line/reference | documented findings / total findings × 100 |
 
 ## Domain-Specific Metrics
 
 | No. | Metric | Description | How To Calculate |
 |-----|--------|-------------|------------------|
-| 1 | Subagent Profile Fit | % ของ subagent ที่มี profile ตรงกับงาน | matching profiles / total subagents × 100 |
-| 2 | Context Accuracy | % ของ context ที่ส่งให้ subagent ถูกต้อง | accurate contexts / total contexts × 100 |
-| 3 | Subagent Coverage | % ของงานที่มี subagent เหมาะสม | tasks with subagent / total tasks × 100 |
+| 1 | Subagent Profile Fit | % of subagents whose profile matches the task | matching profiles / total subagents × 100 |
+| 2 | Context Accuracy | % of contexts passed to subagents that are correct | accurate contexts / total contexts × 100 |
+| 3 | Subagent Coverage | % of tasks with a suitable subagent | tasks with subagent / total tasks × 100 |

@@ -1,30 +1,30 @@
 # Capture All
 
 
-Capture screenshots ทุก route x ทุก device size ในรันเดียว — framework-agnostic ผ่าน `capture all` (engine: `agents-capture/src/all.ts`, merged จาก `capture-all-components-all-routes`)
+Capture screenshots of every route x every device size in one run — framework-agnostic via `capture all` (engine: `agents-capture/src/all.ts`, merged from `capture-all-components-all-routes`)
 
 #### All — Execute
 
 ##### 1. Confirm Server
 
-1. เช็คว่า base URL ตอบกลับ (`agent-browser open <base>` หรือ `Invoke-WebRequest`)
-2. ถ้า server พัง → `/run-dev` หรือ `/resolve-errors` ก่อน
+1. Check that the base URL responds (`agent-browser open <base>` or `Invoke-WebRequest`)
+2. If the server is down → run `/run-dev` or `/resolve-errors` first
 
-##### 2. Discover Routes — เลือกวิธี (เรียงตามความแม่น)
+##### 2. Discover Routes — pick a method (ordered by accuracy)
 
-| วิธี | เมื่อไหร่ |
+| Method | When |
 |------|-----------|
-| `crw_map` (MCP) | prod/public site หรือ site ที่มี sitemap — ได้ URL list ทั้ง site กรอง same-origin แล้วบันทึกเป็น routes file |
-| `--discover` | script crawl same-origin `<a href>` จาก base เอง (สูงสุด 50 routes) — ไม่ต้องมี sitemap |
-| `--routes` | ระบุเองเมื่อรู้ routes แล้ว เช่น `/,/request,/examples` |
-| `--routes-file` | ไฟล์ทีละบรรทัดหรือ JSON array — เหมาะกับ output จาก `crw_map` |
+| `crw_map` (MCP) | prod/public site or a site with a sitemap — get the site-wide URL list, filter to same-origin, save as a routes file |
+| `--discover` | the script crawls same-origin `<a href>` from the base itself (up to 50 routes) — no sitemap needed |
+| `--routes` | specify them yourself when the routes are known, e.g. `/,/request,/examples` |
+| `--routes-file` | one route per line or a JSON array — suits output from `crw_map` |
 
 ##### 3. Run Capture
 
 ```bash
 bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 --discover
 
-# routes ชัดเจน + เฉพาะ desktop/mobile
+# routes already known + desktop/mobile only
 bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --routes /,/request,/examples --devices desktop,mobile
 
@@ -32,7 +32,7 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost
 bun D:/newkub/agents-capture/src/presentation/cli.ts all --base http://localhost:3000 \
   --routes /,/request --components "nav=header@/,form=form@/request,card=.rounded-3xl@/request"
 
-# routes จาก crw_map → routes.txt
+# routes from crw_map → routes.txt
 bun D:/newkub/agents-capture/src/presentation/cli.ts all --base https://example.com --routes-file routes.txt --full
 
 # custom viewport
@@ -52,24 +52,23 @@ Output layout:
 
 ##### 4. Parallel Routes (subagent)
 
-ถ้า routes เยอะ → spawn profile `route-capturer` (`capture/SKILL.md ## Subagents`) ทีละ route ขนานกัน (อ่าน inputs/tools/output contract ใน section นั้น)
+If there are many routes → spawn the `route-capturer` profile (`capture/SKILL.md ## Subagents`) one route at a time in parallel (read the inputs/tools/output contract in that section)
 
 ##### 5. Review Output
 
-1. เช็ค `manifest.json` errors ก่อนเสมอ
-2. นำภาพไปต่อด้วย `/deep-review` (domain `review-uxui` สำหรับ UX/UI)
+1. Always check `manifest.json` errors first
+2. Hand the images on to `/deep-review` (domain `review-uxui` for UX/UI)
 
 #### All — Rules
 
-- ห้าม hardcode routes ของ framework ใด — discovery ต้องมาจาก `crw_map`, `--discover` หรือ input
-- ใช้ `agent-browser` CLI เท่านั้น — ไม่ต้อง install dependency ในโปรเจกต์
-- ไม่แก้ไข code ของ site ที่ capture
-- `--wait` ต้องพอให้ hydration + fonts โหลด — เพิ่มถ้า SPA ช้า
-- capture fail ต่อ target เก็บใน `manifest.errors` — ไม่หยุดทั้งรัน
-- default output: `.devin/temp/report/<workspace>/captures-<timestamp>/` (`.devin/` ควร gitignore — local evidence)
-- ใช้ /watch-browser ถ้าจำเป็น
+- Never hardcode any framework's routes — discovery must come from `crw_map`, `--discover`, or input
+- Use the `agent-browser` CLI only — no dependency installation in the project
+- Don't modify the code of the site being captured
+- `--wait` must be long enough for hydration + fonts to load — increase it for slow SPAs
+- A per-target capture failure is stored in `manifest.errors` — never abort the whole run
+- default output: `.devin/temp/report/<workspace>/captures-<timestamp>/` (`.devin/` should be gitignored — local evidence)
+- Use /watch-browser if needed
 
 #### All — Expected Outcome
 
-- ได้ screenshots ครบทุก route x ทุก device + `manifest.json` สรุปผล/errors พร้อมใช้ต่อ
-
+- Complete screenshots of every route x every device plus a `manifest.json` summarizing results/errors, ready for next steps

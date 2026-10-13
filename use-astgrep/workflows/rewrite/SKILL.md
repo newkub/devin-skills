@@ -1,6 +1,6 @@
 ---
 name: use-astgrep-rewrite
-description: Batch refactor หลายไฟล์ด้วย ast-grep AST patterns — dry-run + confirm ก่อนเขียนทับเสมอ
+description: Batch-refactor many files with ast-grep AST patterns — dry-run + confirm before overwriting
 argument-hint: "<pattern> <replacement> [path|glob]"
 related:
   - use-astgrep
@@ -14,84 +14,84 @@ related:
 
 ## Goal
 
-แก้ code หลายไฟล์ด้วย ast-grep AST patterns แบบปลอดภัย — preview matches + diff ก่อน, confirm แล้วค่อย `--rewrite`, verify หลัง apply — สำหรับ "เปลี่ยน X เป็น Y ทุกที่" ที่เร็วกว่า manual edit และปลอดภัยกว่า `sg -r` ดิบ
+Safely change code across many files with ast-grep AST patterns — preview matches + diff first, confirm, then `--rewrite`, verify after apply — for "change X to Y everywhere" cases: faster than manual edits and safer than raw `sg -r`
 
 ## Scope
 
 - One-shot pattern apply: rename API/deprecated call, syntax transform (`var`→`const`, callback→async), pattern removal (`console.log`), import reorganize — per language (ts/js, rust, python, go)
-- Search เท่านั้น → `/search-with-astgrep`; rule-YAML transforms (`transform`/`rewriters`) → `/use-astgrep transform`; migration ทั้ง codebase → `/use-astgrep migration`; script/CI integration → `/use-astgrep-programmatic`
-- Pattern library พร้อมใช้อยู่ใน `references/patterns.md` — ใช้เป็น starting point แทนเขียนเองจากศูนย์
+- Search only → `/search-with-astgrep`; rule-YAML transforms (`transform`/`rewriters`) → `/use-astgrep transform`; whole-codebase migrations → `/use-astgrep migration`; script/CI integration → `/use-astgrep-programmatic`
+- A ready pattern library lives in `references/patterns.md` — use it as a starting point instead of writing from scratch
 
 ## Execute
 
 ### 1. Define Pattern
 
-> Goal: ได้ pattern + replacement ที่ match เฉพาะสิ่งที่ต้องการ
+> Goal: get a pattern + replacement that matches only what you intend
 
-1. ระบุ refactor intent จาก argument — เช่น `console.log` removal, API rename, syntax upgrade
-2. เช็ค `references/patterns.md` ก่อน — มี pattern พร้อมใช้หรือใกล้เคียงให้ปรับ
-3. เขียน pattern (metavar `$VAR`, `$$$` สำหรับ variadic) — หรือ rule YAML ถ้าต้อง constraints (kind, regex, inside/has) หรือ rewrite ซับซ้อน (`transform`/`rewriters` → `/use-astgrep transform`)
-4. ระบุ scope: path หรือ glob (`--stdin` / `--globs`) — เริ่มแคบก่อนกว้าง
+1. Identify the refactor intent from the argument — e.g. `console.log` removal, API rename, syntax upgrade
+2. Check `references/patterns.md` first — there may be a ready-made or close pattern to adapt
+3. Write the pattern (metavar `$VAR`, `$$$` for variadic) — or a rule YAML if you need constraints (kind, regex, inside/has) or a complex rewrite (`transform`/`rewriters` → `/use-astgrep transform`)
+4. Define scope: path or glob (`--stdin` / `--globs`) — start narrow before going wide
 
 ### 2. Dry-Run Matches
 
-> Goal: เห็นจุดที่จะถูกแก้ก่อนเขียนทับ — บังคับ
+> Goal: see exactly what will change before any overwrite — mandatory
 
-1. รัน `ast-grep run -p '<pattern>' <path>` (ไม่มี `-r`) — list matches ทั้งหมด
-2. แสดงตาราง `No.`, `File`, `Line`, `Match` — count total
-3. ตรวจ false positives: match ที่ไม่ควรแก้ (comments, strings, tests ที่ตั้งใจ) — ปรับ pattern หรือยกเว้น scope
-4. ถ้า matches = 0 → report และจบ (อาจ pattern ผิดหรือไม่มี target จริง)
+1. Run `ast-grep run -p '<pattern>' <path>` (no `-r`) — list all matches
+2. Show a table of `No.`, `File`, `Line`, `Match` — count the total
+3. Check for false positives: matches that shouldn't change (comments, strings, intentional tests) — tune the pattern or exclude scope
+4. If matches = 0 → report and stop (the pattern may be wrong or there is genuinely no target)
 
 ### 3. Preview Diff
 
-> Goal: user เห็น before/after จริงก่อน apply
+> Goal: the user sees the real before/after before apply
 
-1. รัน `ast-grep run -p '<pattern>' -r '<replacement>' <path>` (ไม่ใส่ `-U`) — sg เข้า interactive mode แสดง diff ต่อ match เอง
-2. ถ้าใช้ rule file: `ast-grep scan --rule <file>` = list findings (dry run), `sg scan --rule <file> --fix` = interactive diff ทีละ change
-3. ตรวจ diff 3-5 match แรก — ถ้า rewrite ถูกต้องกด `a` accept all ผ่าน sg; ถ้าพังยกเลิกแล้วปรับ pattern
-4. ถ้า repo มี uncommitted changes → เตือน user ว่า revert จะยาก — แนะนำ commit/stash ก่อน
+1. Run `ast-grep run -p '<pattern>' -r '<replacement>' <path>` (without `-U`) — sg enters interactive mode and shows a diff per match itself
+2. With a rule file: `ast-grep scan --rule <file>` = list findings (dry run), `sg scan --rule <file> --fix` = interactive diff one change at a time
+3. Inspect the first 3-5 diffs — if the rewrite is correct press `a` to accept all via sg; if broken, cancel and tune the pattern
+4. If the repo has uncommitted changes → warn the user that reverting will be hard — recommend commit/stash first
 
 ### 4. Confirm And Apply
 
-> Goal: เขียนทับเฉพาะหลัง user เห็น diff และอนุมัติ
+> Goal: overwrite only after the user has seen the diff and approved
 
-1. เลือก mode: `interactive` (sg confirm ทีละ change — เหมาะกับ false-positive risk สูง) หรือ `bulk` (`-U` apply all — เมื่อ user confirm แล้วและ diff ตัวอย่างถูก)
-2. Bulk: `ast-grep run -p '<pattern>' -r '<replacement>' -U <path>` หรือ `sg scan --rule <file> --fix-all` ถ้าใช้ rule file
-3. ห้าม apply ถ้ายังไม่ได้ confirm — dry-run เป็น default เสมอ (รวม scripted path: `commitEdits`/`Bun.write` ต้อง preview diff ก่อนเช่นกัน)
+1. Choose mode: `interactive` (sg confirms each change — suits high false-positive risk) or `bulk` (`-U` applies all — once the user has confirmed and the sample diffs are correct)
+2. Bulk: `ast-grep run -p '<pattern>' -r '<replacement>' -U <path>` or `sg scan --rule <file> --fix-all` if using a rule file
+3. Never apply without confirmation — dry-run is always the default (scripted paths included: `commitEdits`/`Bun.write` must preview the diff too)
 
 ### 5. Verify
 
-> Goal: ยืนยันแก้ถูก ไม่พัง ไม่เหลือ
+> Goal: confirm the fix is correct, breaks nothing, and leaves nothing behind
 
-1. Re-scan: `ast-grep run -p '<pattern>' <path>` → ต้องเหลือ 0 matches (ยกเว้น intentional leftovers)
-2. ทำ `/run-check` — lint/typecheck ต้องผ่าน ไม่มี syntax break จาก rewrite
-3. ถ้า fail → แก้ด้วย `git checkout`/`git restore` บนไฟล์ที่พัง แล้วปรับ pattern (max 3 รอบ)
-4. ทำ `/report` สรุป: `No.`, `File`, `Changes`, `Status` + matches→applied→verified counts
+1. Re-scan: `ast-grep run -p '<pattern>' <path>` → must show 0 matches (except intentional leftovers)
+2. Do `/run-check` — lint/typecheck must pass, no syntax breakage from the rewrite
+3. If it fails → fix broken files with `git checkout`/`git restore`, then tune the pattern (max 3 rounds)
+4. Do `/report` with a summary: `No.`, `File`, `Changes`, `Status` + matches→applied→verified counts
 
 ## Rules
 
 ### 1. Dry-Run And Confirm
 
-- ห้ามรัน `-r`/`-U`/`--fix`/`--fix-all` ก่อนแสดง matches + diff และได้ user confirm — dry run ก่อนเสมอ ไม่มีข้อยกเว้น
-- เริ่ม scope แคบ (subdir หรือ glob เดียว) ก่อนขยายทั้ง repo — fail fast ลด rework
+- Never run `-r`/`-U`/`--fix`/`--fix-all` before showing matches + diff and getting user confirmation — always dry-run first, no exceptions
+- Start with a narrow scope (one subdir or glob) before expanding to the whole repo — fail fast reduces rework
 
 ### 2. Pattern Precision
 
-- AST match ไม่สนความหมาย — `console.log` pattern อาจ match `logger.console.log` ที่ตั้งใจไว้; ตรวจ matches เสมอ
-- replacement ต้องเท่า metavar structure — `$VAR` ใน replacement ต้อง capture จาก pattern ไม่ใช่คิดชื่อเอง
+- AST matching ignores semantics — a `console.log` pattern may match an intentional `logger.console.log`; always inspect matches
+- The replacement must match the metavar structure — `$VAR` in the replacement must be captured from the pattern, not invented
 
 ### 3. Reversible
 
-- git working tree ควร clean ก่อน apply — `sg` rewrite ไม่มี undo ของตัวเอง
-- ถ้า dirty → เตือนและเสนอ commit/stash ก่อน ไม่ apply เงียบๆ
+- The git working tree should be clean before applying — `sg` rewrites have no built-in undo
+- If dirty → warn and offer commit/stash first; never apply silently
 
-- ใช้ /search-with-astgrep ถ้าจำเป็น (pattern syntax/search)
-- ใช้ /migration-with-astgrep ถ้าจำเป็น (rule-file migrations)
-- ใช้ /use-astgrep-programmatic ถ้าจำเป็น (multi-file scan ผ่าน napi, transform ที่ YAML ทำไม่ได้)
-- ใช้ /ask-me ถ้าจำเป็น
+- Use /search-with-astgrep when needed (pattern syntax/search)
+- Use /migration-with-astgrep when needed (rule-file migrations)
+- Use /use-astgrep-programmatic when needed (multi-file scan via napi, transforms YAML can't do)
+- Use /ask-me when needed
 
 ## Expected Outcome
 
-- Matches + diff preview ก่อนเขียนทับเสมอ — user confirm แล้วค่อย apply
-- Pattern ไม่เหลือ match หลัง verify (`run-check` ผ่าน)
-- Report ชัด: files changed, lines rewritten, leftovers ที่ตั้งใจ
+- Matches + diff preview always shown before overwrite — apply only after user confirmation
+- No pattern matches remain after verification (`run-check` passes)
+- Clear report: files changed, lines rewritten, intentional leftovers

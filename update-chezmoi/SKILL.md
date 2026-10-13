@@ -1,6 +1,6 @@
 ---
 name: update-chezmoi
-description: อัปเดต dotfiles ด้วย chezmoi รวมถึง chezmoi readd
+description: Update dotfiles with chezmoi, including chezmoi readd
 argument-hint: "[scope]"
 related:
   - download-program
@@ -12,82 +12,82 @@ related:
 
 ## Goal
 
-อัปเดต dotfiles ใน chezmoi โดยเฉพาะการรัน `chezmoi readd` เมื่อมีการเปลี่ยนแปลงไฟล์ local และ sync กับ source state
+Update the dotfiles managed by chezmoi, in particular running `chezmoi readd` when local files change, and keep the source state in sync
 
 ## Scope
 
-ใช้เมื่อต้องการ update chezmoi-managed dotfiles จาก local changes หรือ pull การเปลี่ยนแปลงล่าสุด
+Use when you want to update chezmoi-managed dotfiles from local changes or pull the latest changes
 
 ## Execute
 
 ### 1. Verify Chezmoi Installation
 
-> Goal: ตรวจสอบ chezmoi
+> Goal: Check chezmoi
 
-1. รัน `chezmoi --version`
-2. ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
-3. รัน `chezmoi doctor` เพื่อตรวจสอบสถานะ
-4. ระบุ source directory และ destination directory
+1. Run `chezmoi --version`
+2. If missing → run `/download-program` to install it
+3. Run `chezmoi doctor` to check the health status
+4. Identify the source directory and the destination directory
 
 ### 2. Review Local Changes
 
-> Goal: รู้ว่า local files เปลี่ยนแปลงอะไร
+> Goal: Understand what changed in the local files
 
-1. รัน `chezmoi status` เพื่อดู changes
-2. รัน `chezmoi diff` เพื่อดูรายละเอียด
-3. ระบุไฟล์ทีต้อง readd หรือ apply
-4. ถ้ามี changes ทีไม่ต้องการ → ข้ามหรือ revert
+1. Run `chezmoi status` to see the changes
+2. Run `chezmoi diff` to see the details
+3. Identify the files that need readd or apply
+4. If there are unwanted changes → skip or revert them
 
 ### 3. Readd Changed Files
 
-> Goal: นำ local changes กลับเข้า source state
+> Goal: Bring local changes back into the source state
 
-1. รัน `chezmoi readd` สำหรับทุกไฟล์ทีมี local changes
-2. หรือรัน `chezmoi readd <file>` เฉพาะไฟล์
-3. ตรวจสอบ `chezmoi diff` หลัง readd
-4. ถ้ามี new files ทีต้อง add → ใช้ `chezmoi add <file>`
+1. Run `chezmoi readd` for every file with local changes
+2. Or run `chezmoi readd <file>` for a specific file
+3. Check `chezmoi diff` after the readd
+4. If there are new files to add → use `chezmoi add <file>`
 
 ### 4. Apply Updates
 
-> Goal: sync dotfiles
+> Goal: Sync the dotfiles
 
-1. รัน `chezmoi apply` เพื่อ apply source state ไปยัง destination
-2. ถ้าต้องการ pull latest จาก remote → รัน `chezmoi update`
-3. ตรวจสอบ `chezmoi status` อีกครั้ง
-4. ถ้ามี conflict → resolve ตาม chezmoi docs
+1. Run `chezmoi apply` to apply the source state to the destination
+2. To pull the latest from the remote → run `chezmoi update`
+3. Check `chezmoi status` once more
+4. If there is a conflict → resolve it per the chezmoi docs
 
 ### 5. Commit And Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. รัน `chezmoi git status` หรือ `chezmoi cd` แล้ว `git status`
-2. ทำ `/git-commit` ถ้ามี source dir repo
-3. ใช้ `/report` แสดง: File, Action, Status
-4. ทำ `/suggest-next-action`
+1. Run `chezmoi git status`, or `chezmoi cd` then `git status`
+2. Run `/git-commit` if the source dir is a repo
+3. Use `/report` showing: File, Action, Status
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Readd Before Apply
 
-- ถ้ามี local changes ทีต้องการเก็บ → `chezmoi readd` ก่อน
-- ไม่ apply ทับ local changes โดยไม่สำรอง
-- ถ้าไม่แน่ใจ → ให้ user confirm
+- When there are local changes worth keeping → run `chezmoi readd` first
+- Never apply over local changes without a backup
+- If unsure → let the user confirm
 
 ### 2. No Data Loss
 
-- สำรองไฟล์สำคัญก่อน readd/apply
-- ตรวจ `chezmoi diff` ก่อน apply
-- ไม่ลบ dotfiles โดยไม่ได้รับ approval
+- Back up important files before readd/apply
+- Check `chezmoi diff` before applying
+- Never delete dotfiles without approval
 
 ### 3. Deterministic
 
-- รันคำสั่งตามลำดับ: status → diff → readd → apply → status
-- ตรวจสอบทุกครั้งก่อนและหลัง
-- ไม่ skip diff
+- Run the commands in order: status → diff → readd → apply → status
+- Verify both before and after every step
+- Do not skip diff
 
 ## Expected Outcome
 
-- local dotfiles changes ถูก readd เข้า source state
-- source state sync กับ destination
-- ไม่มี data loss
-- รายงาน files ที่ readd/apply พร้อม status
+- Local dotfile changes are readded into the source state
+- The source state is synced with the destination
+- No data loss
+- A report of the files readded/applied with their status

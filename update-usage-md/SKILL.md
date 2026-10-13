@@ -1,6 +1,6 @@
 ---
 name: update-usage-md
-description: สร้างหรืออัปเดต USAGE.md usage documentation ให้สะท้อน public API และ CLI จริง
+description: Create/update USAGE.md docs to reflect the real public API and CLI
 argument-hint: "[scope]"
 related:
   - update-docs
@@ -15,97 +15,97 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `USAGE.md` ที่ root ของ workspace ให้สะท้อนการใช้งานจริง — public API, CLI commands, examples และ configuration โดยเขียนจาก code จริงเสมอ
+Create or update `USAGE.md` at the workspace root to reflect real usage — public API, CLI commands, examples, and configuration — always written from the actual code
 
 ## Scope
 
-- ใช้เมื่อ public API, CLI หรือ features เปลี่ยนแปลง หรือ `USAGE.md` ยังไม่มี/ล้าสมัย
-- `USAGE.md` เป็น manual usage documentation ที่เขียนจาก code จริง ไม่ generate จาก spec file
-- เรียกจาก `/update-project` หรือ `/update-docs` เมื่อ sync project docs
-- ถ้า project ใช้ `usage` CLI spec tool (มี `usage.kdl`) → ใช้ `/follow-tool-usage` แทน
+- Use when the public API, CLI, or features change, or when `USAGE.md` is missing/outdated
+- `USAGE.md` is the manual usage documentation written from the actual code, not generated from a spec file
+- Invoked from `/update-project` or `/update-docs` when syncing project docs
+- If the project uses the `usage` CLI spec tool (has `usage.kdl`) → use `/follow-tool-usage` instead
 
 ## Execute
 
 ### 1. Review Current State
 
-> Goal: เข้าใจสถานะปัจจุบันของ `USAGE.md`
+> Goal: Understand the current state of `USAGE.md`
 
-1. ตรวจว่า `<workspace>/USAGE.md` มีอยู่หรือไม่
-2. ถ้ามี → ทำ `/deep-review` เพื่อหา gaps และ stale content
-3. ถ้าไม่มี → บันทึก status `missing` เตรียมสร้างใหม่
-4. บันทึก findings จาก review
+1. Check whether `<workspace>/USAGE.md` exists
+2. If it does → run `/deep-review` to find gaps and stale content
+3. If it doesn't → record status `missing` and prepare to create it
+4. Record the findings from the review
 
 ### 2. Detect Usage Surface
 
-> Goal: ระบุ public API และ CLI จริงของ workspace
+> Goal: Identify the workspace's real public API and CLI
 
-1. อ่าน package manifest (`Cargo.toml`, `package.json`, `pyproject.toml`) — name, version, bin targets
-2. อ่าน `README.md` สำหรับ overview และ installation
-3. สแกน public API จาก code จริง:
-   - Rust: `pub` items ใน `src/lib.rs`, bin targets ใน `src/main.rs`/`src/bin/`
-   - TypeScript/JS: `exports` ใน `index.ts`, `bin` ใน `package.json`
-   - Python: `__all__` ใน `__init__.py`, entry points ใน `pyproject.toml`
-4. อ่าน `examples/` หรือ tests สำหรับ usage patterns จริง
-5. ระบุสิ่งที่เปลี่ยนแปลงกับ `USAGE.md` เดิม (ถ้ามี)
+1. Read the package manifest (`Cargo.toml`, `package.json`, `pyproject.toml`) — name, version, bin targets
+2. Read `README.md` for the overview and installation
+3. Scan the public API from the actual code:
+   - Rust: `pub` items in `src/lib.rs`, bin targets in `src/main.rs`/`src/bin/`
+   - TypeScript/JS: `exports` in `index.ts`, `bin` in `package.json`
+   - Python: `__all__` in `__init__.py`, entry points in `pyproject.toml`
+4. Read `examples/` or tests for real usage patterns
+5. Identify what changed relative to the previous `USAGE.md` (if any)
 
 ### 3. Write USAGE.md
 
-> Goal: `USAGE.md` ครอบคลุมการใช้งานจริง
+> Goal: `USAGE.md` covers real usage
 
-สร้างหรืออัปเดต `<workspace>/USAGE.md` ด้วย sections:
+Create or update `<workspace>/USAGE.md` with these sections:
 
-- `## Overview` — paragraph สั้น 1-3 บรรทัด
-- `## Installation` — command ติดตั้งหรือ dependency declaration ตาม ecosystem
-- `## Usage` — basic usage ตาม workspace type (library import / CLI commands / binary)
-- `## API Reference` (library) หรือ `## Commands` (CLI) — table ของ public items พร้อม signature สั้น
-- `## Examples` — code examples ที่มาจาก code จริง
-- `## Configuration` — config options (ถ้ามี)
+- `## Overview` — a short 1-3 line paragraph
+- `## Installation` — the install command or dependency declaration per ecosystem
+- `## Usage` — basic usage by workspace type (library import / CLI commands / binary)
+- `## API Reference` (library) or `## Commands` (CLI) — a table of public items with short signatures
+- `## Examples` — code examples taken from the actual code
+- `## Configuration` — config options (if any)
 
 ### 4. Validate
 
-> Goal: `USAGE.md` ถูกต้องและครบถ้วน
+> Goal: `USAGE.md` is correct and complete
 
-1. ทุก public API / CLI command ใน code ต้องมีใน `USAGE.md`
-2. code examples ต้องมี syntax ถูกต้องและมาจาก code จริง
-3. ตรวจว่า `USAGE.md` ไม่เกิน 250 บรรทัด
-4. ตรวจว่า version และ package name ตรงกับ manifest
+1. Every public API / CLI command in the code must appear in `USAGE.md`
+2. Code examples must have correct syntax and come from the actual code
+3. Check that `USAGE.md` stays under 250 lines
+4. Check that the version and package name match the manifest
 
 ### 5. Report
 
-> Goal: รายงานผลการอัปเดต
+> Goal: Report the update results
 
-1. ทำ `/report-usage` หรือ `/report` สรุป sections และสิ่งที่เปลี่ยนแปลง
-2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+1. Run `/report-usage` or `/report` to summarize the sections and what changed
+2. Run `/suggest-next-action` to recommend the next step
 
 ## Rules
 
 ### 1. Code Is Source Of Truth
 
-- `USAGE.md` เขียนจาก code จริงเสมอ ห้ามเขียน API หรือ commands ที่ไม่มีใน code
-- ถ้า project ใช้ `usage.kdl` spec → delegate ไป `/follow-tool-usage` แทนการเขียนเอง
+- Always write `USAGE.md` from the actual code; never document APIs or commands that don't exist in the code
+- If the project uses a `usage.kdl` spec → delegate to `/follow-tool-usage` instead of writing it yourself
 
 ### 2. Coverage
 
-- ทุก public API ต้องมีใน `USAGE.md` หรือระบุเหตุผลที่ยกเว้น
-- ทุก CLI command ต้องมี help หรือ description
-- ทุก feature หลักต้องมีอย่างน้อย 1 example
+- Every public API must appear in `USAGE.md` or state the reason for the exception
+- Every CLI command must have a help or description
+- Every major feature must have at least 1 example
 
 ### 3. Examples
 
-- examples ต้อง copy หรือ adapt จาก code จริง (`src/`, `examples/`, tests)
-- ห้ามเขียน mock examples ที่ run ไม่ได้
+- Examples must be copied or adapted from the actual code (`src/`, `examples/`, tests)
+- Never write mock examples that can't run
 
 ### 4. Idempotency
 
-- รันซ้ำด้วย code เดิมต้องได้ `USAGE.md` เหมือนเดิม
-- overwrite `USAGE.md` ได้เฉพาะเมื่อไฟล์ถูก maintain โดย skill นี้หรือ user confirm
+- Re-running against the same code must produce an identical `USAGE.md`
+- Overwrite `USAGE.md` only when the file is maintained by this skill or the user confirms
 
-- ใช้ /deep-validate ถ้าจำเป็น
+- Use /deep-validate if needed
 
 ## Expected Outcome
 
-- `<workspace>/USAGE.md` สะท้อน public API และ CLI จริง
-- ครบ Overview, Installation, Usage, API Reference/Commands, Examples
-- version และ package name ตรงกับ manifest
-- รายงานสรุปการเปลี่ยนแปลงครบถ้วน
+- `<workspace>/USAGE.md` reflects the real public API and CLI
+- Covers Overview, Installation, Usage, API Reference/Commands, Examples
+- Version and package name match the manifest
+- The change summary report is complete
 

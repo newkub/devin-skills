@@ -1,6 +1,6 @@
 ---
 name: search-with-astgrep
-description: ค้นหา code ด้วย ast-grep AST patterns — เลือก CLI ad-hoc หรือ programmatic ตามเหมาะสม
+description: Search code with ast-grep AST patterns — pick ad-hoc CLI or programmatic as appropriate
 argument-hint: "[pattern-or-target]"
 related:
   - use-astgrep
@@ -14,52 +14,52 @@ related:
 
 ## Goal
 
-ค้นหา symbols, call sites, patterns ใน code ด้วย AST-based matching ที่แม่นยำกว่า regex — เลือก interface ที่เหมาะ: CLI ad-hoc สำหรับ search ครั้งเดียว, programmatic สำหรับ batch/aggregate
+Search symbols, call sites, and patterns in code with AST-based matching that is more precise than regex — pick the right interface: ad-hoc CLI for a one-off search, programmatic for batch/aggregate
 
 ## Scope
 
-- ครอบคลุม ad-hoc structural search (`ast-grep run -p`), temporary rules (`--inline-rules`), pattern syntax และการเลือก interface
-- ไม่รวมการตั้งค่า project (`/use-astgrep`), การเขียน rules ถาวร (`/update-astgrep-rules`), rewrite/migration (`/replace`, `/migration-with-astgrep`)
+- Covers ad-hoc structural search (`ast-grep run -p`), temporary rules (`--inline-rules`), pattern syntax, and interface selection
+- Excludes project setup (`/use-astgrep`), permanent rule authoring (`/update-astgrep-rules`), rewrite/migration (`/replace`, `/migration-with-astgrep`)
 
-(restored จาก merge เข้า `use-astgrep` — แยกกลับเป็น standalone workflow สำหรับ search โดยเฉพาะ)
+(restored from its merge into `use-astgrep` — split back out as a standalone workflow dedicated to search)
 
 ## Execute
 
 ### 1. Choose Interface
 
-> Goal: เลือก ast-grep interface ที่เหมาะกับงาน
+> Goal: pick the ast-grep interface that fits the job
 
-1. Search ครั้งเดียว / verify pattern / ดู context รอบ match → CLI `ast-grep run` (default ของ workflow นี้)
-2. ต้อง aggregate ข้ามหลายไฟล์, post-process, หรือ feed เข้า scripts/CLI → `/use-astgrep-programmatic`
-3. Pattern เดิมต้องรันซ้ำบ่อย → promote เป็น rule ด้วย `/update-astgrep-rules`
-4. ต้อง rewrite หลังเจอ matches → `/replace` หรือ `/migration-with-astgrep`
-5. ต้องดู structure ก่อนค้น → `ast-grep outline <path>` หรือ `/check-code-structure`
+1. One-off search / verify a pattern / view context around a match → CLI `ast-grep run` (this workflow's default)
+2. Need to aggregate across many files, post-process, or feed scripts/CLI → `/use-astgrep-programmatic`
+3. A pattern will be run repeatedly → promote it to a rule with `/update-astgrep-rules`
+4. Need a rewrite after finding matches → `/replace` or `/migration-with-astgrep`
+5. Need to see structure before searching → `ast-grep outline <path>` or `/check-code-structure`
 
 ### 2. Prepare Search
 
-> Goal: เตรียม pattern และ scope ให้จำเพาะ
+> Goal: make the pattern and scope specific
 
-1. ทำ `/use-astgrep` ถ้ายังไม่เคย setup — ตรวจว่าเรียก CLI ได้ (`bunx ast-grep` ถ้ามี devDependency, ไม่งั้น `bunx -p @ast-grep/cli ast-grep`)
-2. ระบุภาษา: ปล่อย auto-detect จาก extension หรือระบุ `--lang ts|tsx|js|jsx|rust|py|...`
-3. เขียน pattern ด้วย metavariables: `$VAR` match node เดียว, `$$$` match 0+ nodes
-4. ทดสอบ syntax ด้วย `ast-grep run --pattern 'PATTERN' --debug` ถ้าไม่แน่ใจ
+1. Run `/use-astgrep` if setup has never been done — confirm the CLI is invocable (`bunx ast-grep` if it is a devDependency, otherwise `bunx -p @ast-grep/cli ast-grep`)
+2. Specify the language: let it auto-detect from the extension or pass `--lang ts|tsx|js|jsx|rust|py|...`
+3. Write the pattern with metavariables: `$VAR` matches a single node, `$$$` matches 0+ nodes
+4. Test the syntax with `ast-grep run --pattern 'PATTERN' --debug` if unsure
 
 ### 3. Run Search
 
-> Goal: ค้นหาและ iterate pattern จนได้ผลที่ต้องการ
+> Goal: search and iterate the pattern until you get the desired result
 
-1. `ast-grep run --pattern 'PATTERN' [paths]` — `ast-grep -p 'PATTERN'` เทียบเท่า (`run` เป็น default subcommand)
-2. ทดสอบบนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อน แล้วขยายเป็น directory/project
-3. ถ้า matches เยอะเกิน → เพิ่ม context ใน pattern (`inside`, `has`, `kind` ผ่าน `--inline-rules`) หรือจำกัด paths
-4. ถ้า matches น้อยกว่าที่คาด → ลด constraints ทีละจุดเพื่อหาจุดที่ pattern แคบเกิน
-5. ใช้ `--json pretty` เมื่อต้องการ file/line/structured output สำหรับ downstream processing
-6. ใช้ `-C <n>` (context lines) หรือ `-A/-B` สำหรับดู code รอบ match
+1. `ast-grep run --pattern 'PATTERN' [paths]` — `ast-grep -p 'PATTERN'` is equivalent (`run` is the default subcommand)
+2. Test on 1-2 sample files first, then expand to a directory/project
+3. Too many matches → add context to the pattern (`inside`, `has`, `kind` via `--inline-rules`) or restrict paths
+4. Fewer matches than expected → relax constraints one at a time to find where the pattern is too narrow
+5. Use `--json pretty` when you need file/line/structured output for downstream processing
+6. Use `-C <n>` (context lines) or `-A/-B` to view code around a match
 
 ### 4. Use Inline Rules For Complex Patterns
 
-> Goal: search ด้วย structural constraints ที่ pattern string เดียว express ไม่ได้
+> Goal: search with structural constraints a single pattern string cannot express
 
-1. ใช้ `ast-grep scan --inline-rules 'YAML' [paths]` สำหรับ rule ชั่วคราว:
+1. Use `ast-grep scan --inline-rules 'YAML' [paths]` for temporary rules:
 
 ```yaml
 id: find-await-in-loop
@@ -71,18 +71,18 @@ rule:
     kind: for_statement
 ```
 
-2. fields สำคัญ: `rule.pattern`, `rule.kind`, `rule.inside`, `rule.has`, `rule.follows`, `rule.precedes`, `constraints` บน metavariables (`regex`, `kind`, `not`)
-3. ถ้า inline rule เริ่มยาวหรือต้อง reuse → ย้ายไป `rules/` ผ่าน `/update-astgrep-rules`
+2. Key fields: `rule.pattern`, `rule.kind`, `rule.inside`, `rule.has`, `rule.follows`, `rule.precedes`, `constraints` on metavariables (`regex`, `kind`, `not`)
+3. If an inline rule grows long or must be reused → move it to `rules/` via `/update-astgrep-rules`
 
 ### 5. Common Recipes
 
-> Goal: patterns สำเร็จรูปสำหรับ search ที่เจอบ่อย
+> Goal: ready-made patterns for frequent searches
 
-| ต้องการหา | Pattern |
+| Looking for | Pattern |
 |-----------|---------|
 | function definition | `function $NAME($$$) { $$$ }` |
-| call site ของ fn | `$FN($$$)` แล้ว filter ด้วย `inside`/`kind` |
-| import จาก module | `import $$$ from "MODULE"` หรือ inline rule `kind: import_statement` + `has: { pattern: "MODULE" }` |
+| call site of fn | `$FN($$$)` then filter with `inside`/`kind` |
+| import from module | `import $$$ from "MODULE"` or inline rule `kind: import_statement` + `has: { pattern: "MODULE" }` |
 | JSX component usage | `<$COMP $$$ />` (lang tsx) |
 | console calls | `console.$METHOD($$$)` |
 | class method | inline rule `kind: method_definition` + `inside: { kind: class_body }` |
@@ -90,43 +90,43 @@ rule:
 
 ### 6. Consume Results
 
-> Goal: ใช้ผลลัพธ์ต่อให้ถูกทาง
+> Goal: put the results to the right use
 
-1. อ่าน code → เปิดไฟล์ที่ file:line จาก output
-2. นับ/aggregate → `--json` แล้ว process ด้วย `/use-scripts` หรือ `/use-astgrep-programmatic`
-3. แก้ไขจุดเดียว/few points → แก้มือ
-4. แก้หลายจุด mechanical → `/replace` (rewrite rules) หรือ `/migration-with-astgrep`
-5. ถ้า search นี้เป็น hygiene check ที่ควรรันประจำ → `/update-astgrep-rules` หรือ `check-*` skill
+1. Read code → open the file at the file:line from the output
+2. Count/aggregate → `--json` then process with `/use-scripts` or `/use-astgrep-programmatic`
+3. A single point / a few points to fix → edit by hand
+4. Many mechanical fixes → `/replace` (rewrite rules) or `/migration-with-astgrep`
+5. If this search is a hygiene check worth running regularly → `/update-astgrep-rules` or a `check-*` skill
 
 ## Rules
 
 ### 1. AST Over Regex
 
-- ใช้ AST patterns ก่อน text search เมื่อหา structural code (definitions, calls, imports, JSX) — match ได้ข้าม whitespace/comments ที่ regex พลาด
-- ใช้ regex/`Grep` เฉพาะเมื่อหา text จริงๆ (strings, comments, config values) ไม่ใช่ structure
+- Prefer AST patterns over text search when looking for structural code (definitions, calls, imports, JSX) — they match across whitespace/comments that regex misses
+- Use regex/`Grep` only for genuinely textual targets (strings, comments, config values), not structure
 
 ### 2. Pattern Discipline
 
-- ทดสอบ pattern บนไฟล์ตัวอย่างก่อนรันทั้ง project เสมอ
-- matches 0 → ตรวจ `--lang` และ pattern syntax ก่อนสรุปว่าไม่มี
-- matches เยอะเกิน → เพิ่ม `inside`/`has`/`kind` constraints ไม่ใช่ filter ด้วย regex ทีหลัง
-- ระบุ `--lang` เมื่อ extension ไม่มาตรฐานหรือผ่าน stdin
+- Always test a pattern on sample files before running it across the whole project
+- 0 matches → check `--lang` and pattern syntax before concluding nothing exists
+- Too many matches → add `inside`/`has`/`kind` constraints, do not post-filter with regex
+- Specify `--lang` when the extension is non-standard or input comes via stdin
 
 ### 3. Interface Selection
 
-- งานครั้งเดียว/iterate pattern → CLI shell
-- งาน batch, aggregation, multi-pass, integrate กับ tools → `/use-astgrep-programmatic`
-- ห้ามเขียน loop shell ซับซ้อนครอบ CLI หลายรอบ — ย้ายไป programmatic script แทน
+- One-off work / iterating a pattern → CLI shell
+- Batch work, aggregation, multi-pass, integration with tools → `/use-astgrep-programmatic`
+- Never wrap the CLI in a complex multi-pass shell loop — move to a programmatic script instead
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงาน matches เป็นตารางด้วย `/report` เมื่อผลเยอะ
-- ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ `/scan-codebase` ถ้าจำเป็น
+- Never use `**` (bold markers) — use backticks for emphasis
+- Report matches as a table with `/report` when there are many
+- Use /check-code-structure if needed
+- Use `/scan-codebase` if needed
 
 ## Expected Outcome
 
-- เจอ code ที่ต้องการด้วย AST pattern ที่ถูกต้องและจำเพาะ
-- เลือก interface (CLI/programmatic) ถูกต้องตามขนาดงาน
-- Pattern ที่ใช้ซ้ำถูก promote เป็น rule หรือ analyzer อย่างเหมาะสม
+- The desired code found with a correct, specific AST pattern
+- The right interface (CLI/programmatic) chosen for the job size
+- Repeatedly used patterns properly promoted to rules or analyzers

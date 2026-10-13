@@ -18,4 +18,4 @@
 
 ## Description
 
-รัน benchmark tests เพื่อวัดและเปรียบเทียบ performance โดยใช้ scripts ใน project (เช่น `vitest bench`, `tinybench`)
+Run benchmark tests to measure and compare performance using the project's scripts (e.g. `vitest bench`, `tinybench`)

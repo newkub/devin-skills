@@ -1,6 +1,6 @@
 ---
 name: follow-config
-description: จัดการและ validate config files ของ project ให้สอดคล้องกับ conventions
+description: Manage and validate project config files to match conventions
 argument-hint: "[config-type-or-file]"
 allowed-tools:
   - read
@@ -31,73 +31,73 @@ related:
 
 ## Goal
 
-ตรวจสอบ ซิงค์ และ validate config files ของ project ให้สอดคล้องกับ conventions ของ project และ tech stack
+Inspect, sync, and validate project config files so they stay consistent with project conventions and the tech stack
 
 ## Scope
 
-ใช้กับ config files ทั่วไปใน project เช่น `.devin/`, `.vscode/`, `.github/`, `package.json`, `turbo.json`, `moon.yml`, `wrangler.toml`, `playwright.config.*`, รวมถึง CI/CD config และ tooling configs
+Apply to common project config files such as `.devin/`, `.vscode/`, `.github/`, `package.json`, `turbo.json`, `moon.yml`, `wrangler.toml`, `playwright.config.*`, including CI/CD config and tooling configs
 
-ดูเพิ่มเติม: /update-config, /update-dot-devin, /setup-cicd, /deep-review, /follow-agents-md, /deep-validate
+See also: /update-config, /update-dot-devin, /setup-cicd, /deep-review, /follow-agents-md, /deep-validate
 
 ## Execute
 
 ### 1. Identify Configs
 
-> Goal: ระบุ config files ทีเกี่ยวข้อง
+> Goal: Identify the relevant config files
 
-1. หา config files ด้วย `/find_file_by_name` ในพื้นที:
-   - root project
+1. Find config files with `/find_file_by_name` in these areas:
+   - project root
    - `.devin/`
    - `.vscode/`
    - `.github/`
    - `packages/*/` (monorepo)
-2. อ่าน `package.json` และ `AGENTS.md` เพื่อเข้าใจ conventions
-3. ระบุ tech stack จาก dependencies
+2. Read `package.json` and `AGENTS.md` to understand the conventions
+3. Identify the tech stack from dependencies
 
 ### 2. Check Conventions
 
-> Goal: ตรวจสอบว่า config files ตรงกับ conventions
+> Goal: Check that config files match the conventions
 
-1. ตรวจชื่อไฟล์และ location ของ config ทีควรมี
-2. ตรวจ shared settings: root `package.json`, `tsconfig.json`, `biome.json`, `eslint.config.*`
-3. ตรวจ workspace overrides: `turbo.json`, `moon.yml`, `pnpm-workspace.yaml`
-4. ตรวจ CI/CD: `.github/workflows/`, `.gitlab-ci.yml`
-5. ตรวจ project rules: `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md`
+1. Verify the expected config file names and locations
+2. Check shared settings: root `package.json`, `tsconfig.json`, `biome.json`, `eslint.config.*`
+3. Check workspace overrides: `turbo.json`, `moon.yml`, `pnpm-workspace.yaml`
+4. Check CI/CD: `.github/workflows/`, `.gitlab-ci.yml`
+5. Check project rules: `rules/` (ast-grep), `sgconfig.yml`, `AGENTS.md`
 
 ### 3. Sync Configs
 
-> Goal: ทำให้ config ทั่งหมดสอดคล้องกัน
+> Goal: Make all configs consistent with each other
 
-1. ถ้า root เปลี่ยน → sync ลง workspaces
-2. ถ้า workspace เปลี่ยน → sync ขึ้น root ถ้าจำเป็น
-3. อัปเดต `AGENTS.md` ถ้า conventions เปลี่ยน
-4. ใช้ `/update-references` เมื่อ config references มีการเปลี่ยนแปลง
+1. If root changed → sync down to workspaces
+2. If a workspace changed → sync up to root when needed
+3. Update `AGENTS.md` if conventions changed
+4. Use `/update-references` when config references change
 
 ### 4. Validate Configs
 
-> Goal: ยืนยันว่า config ใช้งานได้
+> Goal: Confirm the configs work
 
-1. รัน `bun run lint`, `bun run typecheck` หรือ command ทีเกี่ยวข้อง
-2. รัน `bun run build` ถ้าจำเป็น
-3. ตรวจ schema ของ config files ถ้ามี เช่น `wrangler.toml`, `turbo.json`
-4. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)
+1. Run `bun run lint`, `bun run typecheck`, or the relevant command
+2. Run `bun run build` if needed
+3. Check config file schemas where they exist, e.g. `wrangler.toml`, `turbo.json`
+4. If it fails → run `/resolve-errors` then retry (max 3)
 
 ### 5. Report
 
-> Goal: สรุปผลลัพธ์
+> Goal: Summarize results
 
-1. ทำ `/report` แสดง config files ทีตรวจ, สถานะ, การเปลี่ยนแปลง
-2. ทำ `/report` สรุป findings และ next actions
-3. ทำ `/suggest-next-action`
+1. Run `/report` showing the config files checked, status, and changes
+2. Run `/report` summarizing findings and next actions
+3. Run `/suggest-next-action`
 
 ### Workflows
 
-> Goal: dispatch config domain เฉพาะทางไปยัง workflow ที่ละเอียดกว่า
+> Goal: dispatch specialized config domains to more detailed workflows
 
 | Topic | Workflow |
 |-------|----------|
 | `.env` patterns, validation, secrets handling | `workflows/config-env/SKILL.md` |
-| `.gitignore` patterns ตาม ecosystem | `workflows/config-gitignore/SKILL.md` |
+| `.gitignore` patterns per ecosystem | `workflows/config-gitignore/SKILL.md` |
 | `.vscode` settings, extensions, tasks | `workflows/config-vscode/SKILL.md` |
 
 ## Rules
@@ -113,20 +113,20 @@ related:
 
 ### 2. Sync Rules
 
-- root config เป้น source of truth ถ้าไม่ระบุอื่น
-- workspace สามารถ override ได้แต่ต้องมีเหตุผล
-- ไม่ copy secrets หรือ environment-specific values ลง config ที่ commit
-- ใช้ `/update-references` เมื่อเปลี่ยน path หรือชื่อ config
+- Root config is the source of truth unless stated otherwise
+- Workspaces may override, but only with a reason
+- Never copy secrets or environment-specific values into committed config
+- Use `/update-references` when a config path or name changes
 
 ### 3. Safety
 
-- ไม่ลบหรือ overwrite config เก่าโดยไม่มี backup หรือ dry run
-- ถ้า config มี sensitive data → หยุดและถาม user
-- ทำ git diff ก่อน commit config changes
+- Never delete or overwrite old config without a backup or dry run
+- If a config contains sensitive data → stop and ask the user
+- Run git diff before committing config changes
 
 ## Expected Outcome
 
-- Config files ทั่งหมดสอดคล้องกัน
-- ไม่มี config drift ระหว่าง root กับ workspaces
-- Project conventions ถูกบันทึกใน `AGENTS.md` หรือ `rules/` (ast-grep)
-- ผ่าน lint, typecheck, build โดยไม่มี errors จาก config
+- All config files are consistent with each other
+- No config drift between root and workspaces
+- Project conventions are recorded in `AGENTS.md` or `rules/` (ast-grep)
+- Lint, typecheck, and build pass with no config-related errors

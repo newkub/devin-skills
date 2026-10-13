@@ -1,6 +1,6 @@
 ---
 name: continue
-description: ทำงานต่อให้ครบถ้วนตามที่ได้รับมอบหมาย ตรวจสอบความสมบูรณ์ และหยุดเมื่องานเสร็จสิ้น
+description: Continue assigned work to completion, verify thoroughness, and stop when the work is done.
 argument-hint: "[session-id]"
 related:
   - report-progress
@@ -11,15 +11,15 @@ related:
 
 ## Goal
 
-เมื่อพิมพ์ `continue` หมายถึง "ทำต่อ" หรือ "ทำต่อที่แนะนำ" โดย:
-- ทำงานต่อจากจุดที่ค้างไว้ให้ครบถ้วนตามที่ได้รับมอบหมาย
-- ถ้ามีการแนะนำ action ถัดไป ให้ทำตามที่แนะนำ
-- ถ้ายังไม่ครบให้ทำต่อจนกว่าจะครบ
-- ถ้าครบแล้วให้หยุด
+Typing `continue` means "keep going" or "go ahead with the suggested action", specifically:
+- Resume from where the work left off and carry it through the full assignment
+- If a next action was suggested, do that
+- If anything is still incomplete, keep going until it is done
+- If everything is complete, stop
 
 ## Scope
 
-ใช้สำหรับงานที่ค้างอยู่หรือต้องทำต่อจากจุดที่หยุดไว้
+Use for work that is stalled or needs to pick up from where it was paused.
 
 ## Execute
 
@@ -27,74 +27,74 @@ related:
 
 > Goal: Assess Current State
 
-1. ตรวจสอบสถานะปัจจุบันของงานที่กำลังทำ
-2. ระบุว่ามีงานค้างอยู่หรือไม่ และค้างเรื่องใดบ้าง
-3. ตรวจสอบ TODO items หรือ tasks ที่ยังไม่เสร็จ
-4. ตรวจสอบว่ามีการแนะนำ action ถัดไปหรือไม่ (จาก `/suggest-next-action` หรือ suggestion อื่นๆ)
+1. Check the current state of the work in progress
+2. Identify whether any work is outstanding and exactly what is pending
+3. Review any TODO items or unfinished tasks
+4. Check whether a next action was suggested (from `/suggest-next-action` or other suggestions)
 
 ### 2. Continue Incomplete Tasks
 
 > Goal: Continue Incomplete Tasks
 
-1. ทำงานที่ค้างอยู่ให้เสร็จสมบูรณ์
-2. ตรวจสอบว่าทุก requirement ถูกติดตั้งอย่างถูกต้อง
-3. แก้ไข errors หรือ issues ที่พบระหว่างทำงาน
+1. Finish the outstanding work completely
+2. Verify that every requirement is implemented correctly
+3. Fix any errors or issues found along the way
 
 ### 3. Verify Completion
 
 > Goal: Verify Completion
 
-1. ตรวจสอบว่างานทั้งหมดเสร็จสมบูรณ์ตามที่ร้องขอ
-2. รัน verification commands ถ้ามี (test, build, lint)
-3. ตรวจสอบว่าไม่มีงานค้างหรือลืมทำ
+1. Confirm all requested work is fully complete
+2. Run verification commands if present (test, build, lint)
+3. Make sure nothing was left unfinished or forgotten
 
 ### 4. Finalize
 
 > Goal: Finalize
 
-1. สรุปงานที่ทำเสร็จแล้วเป็นตาราง
-2. ถ้างานครบถ้วนและ user เคยบอกให้ ship หรือ deploy ให้เสนอ next action ตาม context:
-   - ถ้าต้องการ deploy ไป staging → `/ship-to-dev-branch`
-   - ถ้าต้องการ release patch → `/ship-to-dev-branch`
-   - ถ้าไม่แน่ใจ → ใช้ `/suggest-next-action` เพื่อเลือก ship ทีเหมาะสม
-3. หยุดการทำงานเมื่อทุกอย่างครบถ้วน หรือเมื่อมี next action ทีชัดเจน
+1. Summarize the completed work in a table
+2. If the work is complete and the user asked to ship or deploy, suggest the next action based on context:
+   - Deploying to staging → `/ship-to-dev-branch`
+   - Releasing a patch → `/ship-to-dev-branch`
+   - Unsure → use `/suggest-next-action` to pick the right ship option
+3. Stop when everything is complete or when there is a clear next action
 
 ## Rules
 
 ### 1. Task Completion Rules
 
-กฎสำหรับการทำงานให้ครบถ้วน:
+Rules for completing work fully:
 
-1. ทำงานให้ครบทุกอย่างที่ได้รับมอบหมาย ไม่ทิ้งงานไว้ค้าง
-2. ตรวจสอบความสมบูรณ์ก่อนสรุปว่าเสร็จ
-3. ถ้าพบว่ามีงานย่อยที่ยังไม่เสร็จ ทำให้เสร็จก่อนหยุด
-4. ไม่หยุดทำงานจนกว่าจะแน่ใจว่าทุกอย่างครบถ้วน
+1. Do everything you were assigned; never leave work half-done
+2. Verify completeness before declaring it done
+3. If you find unfinished subtasks, complete them before stopping
+4. Don't stop until you are sure everything is complete
 
 ### 2. Verification Rules
 
-กฎสำหรับการตรวจสอบความถูกต้อง:
+Rules for verifying correctness:
 
-1. ตรวจสอบว่าไม่มี TODO items ค้างอยู่
-2. ตรวจสอบว่าไม่มี errors หรือ warnings ที่ยังไม่แก้ไข
-3. ตรวจสอบว่า code สามารถทำงานได้จริง
-4. รัน test หรือ verification ถ้าจำเป็น
+1. Confirm there are no leftover TODO items
+2. Confirm there are no unresolved errors or warnings
+3. Confirm the code actually runs
+4. Run tests or verification if needed
 
 ### 3. Reporting Rules
 
-กฎสำหรับการรายงานผล:
+Rules for reporting results:
 
-1. สรุปงานที่ทำเสร็จแล้วเป็นตารางเสมอ
-2. ระบุ files หรือ components ที่มีการเปลี่ยนแปลง
-3. บอกสถานะสุดท้ายของงานว่าครบถ้วนหรือไม่
-4. หยุดทำงานเมื่อรายงานเสร็จสมบูรณ์
+1. Always summarize completed work in a table
+2. List the files or components that changed
+3. State whether the work is ultimately complete
+4. Stop once the report is complete
 
-- ใช้ /report-progress ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
+- Use /report-progress if needed
+- Use /follow-best-practice if needed
 
 ## Expected Outcome
 
-- งานที่ค้างอยู่ทำเสร็จสมบูรณ์
-- ไม่มี TODO items ค้างอยู่
-- Code ทำงานได้จริงและผ่านการตรวจสอบ
-- มีการสรุปงานเป็นตาราง
-- หยุดทำงานเมื่อครบถ้วน
+- Outstanding work is fully completed
+- No TODO items remain
+- Code runs for real and passes verification
+- Work is summarized in a table
+- Stop once everything is complete

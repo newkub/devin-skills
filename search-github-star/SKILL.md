@@ -1,7 +1,7 @@
 ---
 
 name: search-github-star
-description: ค้นหา repositories จาก GitHub stars ด้วย gh CLI
+description: Search repositories from GitHub stars with the gh CLI
 argument-hint: "[query]"
 related:
   - list-github
@@ -13,13 +13,13 @@ related:
 
 ## Goal
 
-ค้นหา repositories จาก GitHub stars ด้วย `gh` CLI
+Search repositories from GitHub stars with the `gh` CLI
 
 ## Scope
 
-ใช้สำหรับค้นหา repositories จาก GitHub stars ผ่าน `gh search` command
+Use for searching repositories from GitHub stars via the `gh search` command
 
-ดูเพิ่มเติม: /all-github-repo, /list-github-star-latest
+See also: /all-github-repo, /list-github-star-latest
 
 ## Execute
 
@@ -27,96 +27,96 @@ related:
 
 > Goal: Search Repositories By Stars
 
-ค้นหา repositories ด้วย `gh search` command
+Search repositories with the `gh search` command
 
-1. ใช้ `gh search repos <query>` command
-2. ใช้ `stars:>N` syntax สำหรับ filter ตาม stars
-3. ใช้ flags: `--sort stars`, `--order desc`
-4. ใช้ `--limit N` สำหรับ pagination
-5. ใช้ qualifiers: `language:`, `topic:`, `user:`, `org:`
+1. Use the `gh search repos <query>` command
+2. Use the `stars:>N` syntax to filter by stars
+3. Use flags: `--sort stars`, `--order desc`
+4. Use `--limit N` for pagination
+5. Use qualifiers: `language:`, `topic:`, `user:`, `org:`
 
 ### 2. Filter Results
 
 > Goal: Filter Results
 
-กรองผลลัพธ์ตามเงื่อนไข
+Filter results by criteria
 
-1. กรองตาม language ด้วย `language:<lang>`
-2. กรองตาม topics ด้วย `topic:<topic>`
-3. กรองตาม stars count ด้วย `stars:>N`
-4. กรองตาม updated date ด้วย `pushed:>YYYY-MM-DD`
-5. กรองตาม license ด้วย `license:<license>`
+1. Filter by language with `language:<lang>`
+2. Filter by topics with `topic:<topic>`
+3. Filter by stars count with `stars:>N`
+4. Filter by updated date with `pushed:>YYYY-MM-DD`
+5. Filter by license with `license:<license>`
 
 ### 3. Parse Output
 
 > Goal: Parse Output
 
-แปลง output จาก `gh` CLI
+Transform output from the `gh` CLI
 
-1. ใช้ `--json` flag สำหรับ JSON output
-2. ดึง fields: `name`, `fullName`, `description`, `url`
-3. ดึง stats: `stargazersCount`, `forksCount`, `openIssuesCount`
-4. ดึง timestamps: `createdAt`, `updatedAt`, `pushedAt`
-5. ดึง owner: `owner.login`, `owner.avatarUrl`
+1. Use the `--json` flag for JSON output
+2. Extract fields: `name`, `fullName`, `description`, `url`
+3. Extract stats: `stargazersCount`, `forksCount`, `openIssuesCount`
+4. Extract timestamps: `createdAt`, `updatedAt`, `pushedAt`
+5. Extract owner: `owner.login`, `owner.avatarUrl`
 
 ## Rules
 
 ### 1. Gh CLI Authentication
 
-จัดการ authentication อย่างปลอดภัย
+Handle authentication securely
 
-- ใช้ `gh auth login` สำหรับ authentication
-- `gh` CLI จัดการ token อัตโนมัติ
-- ไม่ต้องจัดการ token ใน code
-- ตรวจสอบ authentication ด้วย `gh auth status`
+- Use `gh auth login` for authentication
+- The `gh` CLI handles tokens automatically
+- No need to manage tokens in code
+- Verify authentication with `gh auth status`
 
 ### 2. Search Query Construction
 
-สร้าง search query อย่างถูกต้อง
+Build search queries correctly
 
-- ใช้ specific qualifiers ลดขนาด result set
-- ใช้ `stars:>N` qualifiers แทน broad searches
-- ใช้ `--limit` สำหรับ pagination
-- ใช้ `--sort` และ `--order` parameters อย่างเหมาะสม
-- ใช้ `--json` flag สำหรับ programmatic output
+- Use specific qualifiers to shrink the result set
+- Use `stars:>N` qualifiers instead of broad searches
+- Use `--limit` for pagination
+- Use the `--sort` and `--order` parameters appropriately
+- Use the `--json` flag for programmatic output
 
 ### 3. Output Formatting
 
-จัดการ output จาก `gh` CLI
+Manage output from the `gh` CLI
 
-- ใช้ `--json` flag สำหรับ structured output
-- ระบุ fields ที่ต้องการด้วย `--json field1,field2`
-- ใช้ `--jq` สำหรับ additional filtering
-- ใช้ `--template` สำหรับ custom formatting
-- ใช้ `--limit` สำหรับ large result sets
+- Use the `--json` flag for structured output
+- Specify the desired fields with `--json field1,field2`
+- Use `--jq` for additional filtering
+- Use `--template` for custom formatting
+- Use `--limit` for large result sets
 
 ### 4. Error Handling
 
-จัดการ errors จาก `gh` CLI
+Handle errors from the `gh` CLI
 
-- ตรวจสอบ `gh` CLI ติดตั้งแล้ว
-- จัดการ authentication errors ด้วย `gh auth login`
-- จัดการ rate limit errors (GitHub API limits)
-- จัดการ network errors ด้วย retries
-- ตรวจสอบ exit codes จาก `gh` command
+- Verify the `gh` CLI is installed
+- Handle authentication errors with `gh auth login`
+- Handle rate limit errors (GitHub API limits)
+- Handle network errors with retries
+- Check exit codes from the `gh` command
 
 ### 5. Performance Optimization
 
-เพิ่มประสิทธิภาพการค้นหา
+Improve search performance
 
-- ใช้ specific qualifiers ลดขนาด result set
-- ใช้ `--limit` จำกัดจำนวน results
-- ใช้ `--json` แทน text output สำหรับ parsing
-- Cache frequent search queries ถ้าจำเป็น
-- ใช้ `gh search` โดยตรงแทน API calls
+- Use specific qualifiers to shrink the result set
+- Use `--limit` to cap the number of results
+- Use `--json` instead of text output for parsing
+- Cache frequent search queries if needed
+- Use `gh search` directly instead of API calls
 
-- ใช้ /list-github-star-latest ถ้าจำเป็น
-- ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- Use /list-github-star-latest if needed
+- Use /follow-tool-crw if needed
+- Use /learn-from-web if needed
 
 ## Expected Outcome
 
-- `gh` CLI command ที่ทำงานได้จริง
-- Search functionality ที่มีประสิทธิภาพ
-- JSON output ที่ง่ายต่อ parsing
-- Error handling ที่ครอบคลุม
+- Working `gh` CLI commands
+- Efficient search functionality
+- JSON output that is easy to parse
+- Comprehensive error handling

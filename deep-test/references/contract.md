@@ -1,66 +1,66 @@
 # Deep Test — Contract Domain
 
-ทดสอบว่า service contracts ตรงกันทั้งสองฝั่ง — consumer expectations vs provider implementation — โดยไม่ต้อง deploy ทั้งคู่พร้อมกัน (contract testing / Pact-style) — ใช้เมื่อมีหลาย services ที่คุยกัน: microservices, frontend-backend, provider-consumer APIs
+Verify that service contracts match on both sides — consumer expectations vs provider implementation — without deploying both at the same time (contract testing / Pact-style) — use when multiple services talk to each other: microservices, frontend-backend, provider-consumer APIs
 
 ## 1. Identify Contracts
 
-> Goal: map คู่ consumer-provider ที่ต้อง test
+> Goal: map the consumer-provider pairs to test
 
-1. หา service boundaries: API calls ข้าม service, event schemas, shared types
-2. ระบุ contract artifacts ที่มี: OpenAPI specs, shared types, Pact files
-3. ถ้าไม่มี contract → ทำ framework generator หรือ extract expectations จาก consumer code ก่อน
+1. Find service boundaries: cross-service API calls, event schemas, shared types
+2. Identify existing contract artifacts: OpenAPI specs, shared types, Pact files
+3. If there is no contract → run a framework generator or extract expectations from consumer code first
 
 ## 2. Capture Consumer Expectations
 
-> Goal: บันทึกว่า consumer คาดหวังอะไร
+> Goal: record what the consumer expects
 
-1. Extract request/response expectations จาก consumer code — fields ที่ใช้จริง, required fields
-2. หรือเขียน contract tests: กำหนด interaction (request → expected response shape)
-3. เก็บเป็น contract artifact (Pact JSON, schema file, test fixtures)
+1. Extract request/response expectations from consumer code — fields actually used, required fields
+2. Or write contract tests: define interactions (request → expected response shape)
+3. Store them as a contract artifact (Pact JSON, schema file, test fixtures)
 
 ## 3. Verify Provider
 
-> Goal: ทดสอบ provider ตอบตรง contract
+> Goal: test that the provider responds per contract
 
-1. Replay contract expectations กับ provider — mock state setup ตามที่ test ต้องการ
-2. ตรวจ: status codes, field presence, types, formats — provider ต้อง satisfy ทุก interaction
-3. flag: extra fields ที่ consumer ไม่ expect (tolerance ok), missing/wrong-typed fields (violation)
+1. Replay contract expectations against the provider — set up mock state as the test requires
+2. Check: status codes, field presence, types, formats — the provider must satisfy every interaction
+3. flag: extra fields the consumer does not expect (tolerance ok), missing/wrong-typed fields (violation)
 
 ## 4. Detect Drift
 
-> Goal: หา contract drift ระหว่างฝั่ง
+> Goal: find contract drift between the sides
 
-1. เทียบ consumer expectations vs provider actual — fields ที่ต่างกัน
-2. flag: consumer ใช้ fields ที่ provider ไม่ส่ง, provider ลบ fields ที่ consumer ใช้
-3. ทำ `/review-api` ร่วมสำหรับ spec-level drift
+1. Compare consumer expectations vs provider actuals — fields that differ
+2. flag: consumer uses fields the provider does not send, provider removed fields the consumer uses
+3. Run `/review-api` jointly for spec-level drift
 
 ## 5. Report
 
-> Goal: สรุป contract verification
+> Goal: summarize contract verification
 
-1. ใช้ `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
-2. Verdict ต่อ contract: `verified`, `drift`, `broken`
-3. แนะนำ: fix provider, update contract, หรือ version API (`/review-api`)
+1. Use `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
+2. Verdict per contract: `verified`, `drift`, `broken`
+3. Recommend: fix provider, update contract, or version the API (`/review-api`)
 
 ## Rules
 
 ### 1. Real Contracts
 
-- contract ต้องมาจาก code/spec จริง — ไม่เขียน expectations ที่ไม่มีใน consumer
-- verify กับ provider จริงหรือ provider stub ที่ generated จาก code จริง
+- contracts must come from real code/spec — never write expectations the consumer does not have
+- verify against the real provider or a provider stub generated from real code
 
 ### 2. Bidirectional
 
-- ตรวจทั้งสองทิศ: consumer ใช้ของที่ provider มี + provider ไม่ลบของที่ consumer ใช้
-- fields ที่ consumer ไม่ใช้สามารถเปลี่ยนได้ — flag info ไม่ใช่ violation
+- check both directions: consumer uses what the provider has + provider does not remove what the consumer uses
+- fields the consumer does not use may change — flag as info, not a violation
 
 ### 3. CI Friendly
 
-- contract tests ควรรันใน CI ได้ — ไม่พึ่ง live services
-- artifacts (Pact files, schemas) ต้อง versioned กับ code
+- contract tests should be runnable in CI — no dependency on live services
+- artifacts (Pact files, schemas) must be versioned with the code
 
 ## Expected Outcome
 
-- Contract verification results ต่อ consumer-provider pair
-- Drift/mismatch findings พร้อม field-level detail
-- Contract artifacts ที่ reuse ใน CI ได้
+- Contract verification results per consumer-provider pair
+- Drift/mismatch findings with field-level detail
+- Contract artifacts reusable in CI

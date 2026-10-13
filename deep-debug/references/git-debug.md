@@ -2,157 +2,157 @@
 
 ## Goal
 
-หา root cause ของปัญหาที่เกี่ยวกับ git โดยใช้ git debugging tools (bisect, blame, reflog, log, diff) อย่างเป็นระบบ
+Systematically find the root cause of git-related problems using git debugging tools (bisect, blame, reflog, log, diff)
 
 ## Scope
 
-ใช้สำหรับ debug ปัญหาที่เกี่ยวกับ git เช่น หา commit ที่ทำให้เกิด bug, หาว่าใครเปลี่ยนบรรทัดไหน, กู้คืน commit ที่หายไป, หาสาเหตุของ conflict
-ไม่ใช้สำหรับ debug runtime/code logic — ใช้ `/deep-debug` แทน
+Use for debugging git-related issues, e.g. finding the commit that introduced a bug, who changed which line, recovering lost commits, and diagnosing conflicts
+Not for debugging runtime/code logic — use `/deep-debug` instead
 
 ## Execute
 
 ### 1. Identify Git Problem
 
-> Goal: ระบุปัญหา git ที่ต้อง debug
+> Goal: pinpoint the git problem to debug
 
-1. ระบุอาการของปัญหา: bug ที่เกิดหลัง commit ใด, ไฟล์หาย, commit หาย, conflict ไม่คาดคิด
-2. จัดประเภทปัญหา:
-   - bug introduced: หา commit ที่ทำให้เกิด bug → ไป Step 2
-   - unexpected change: หาว่าใคร/เมื่อไหร่เปลี่ยน code → ไป Step 3
-   - lost commit: กู้คืน commit ที่หายไป → ไป Step 4
-   - lost file: กู้คืนไฟล์ที่หายไป → ไป Step 5
-   - unknown cause: ไม่ทราบสาเหตุ → ไป Step 6
+1. Identify the symptom: a bug introduced after some commit, a missing file, a lost commit, an unexpected conflict
+2. Classify the problem:
+   - bug introduced: find the commit that caused the bug → go to Step 2
+   - unexpected change: find who/when changed the code → go to Step 3
+   - lost commit: recover the missing commit → go to Step 4
+   - lost file: recover the missing file → go to Step 5
+   - unknown cause: cause unknown → go to Step 6
 
 ### 2. Find Bug Commit With Bisect
 
-> Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
+> Goal: use git bisect to find the commit that caused the bug via binary search
 
 #### 2.1 Prepare
 
-> Goal: ตรวจสอบ repo และสภาพ
+> Goal: check the repo and its state
 
-1. ถ้าเป็น remote repo → clone ไปยัง temp directory
-2. รัน `git status` เพื่อตรวจ working tree
-3. ถ้ามี uncommitted changes → ถาม user ว่าจะ stash หรือไม่
-4. สำรอง branch ปัจจุบันก่อนเริ่ม bisect
+1. If it is a remote repo → clone into a temp directory
+2. Run `git status` to check the working tree
+3. If there are uncommitted changes → ask the user whether to stash them
+4. Back up the current branch before starting bisect
 
 #### 2.2 Identify Range
 
-> Goal: กำหนด good commit และ bad commit
+> Goal: determine the good commit and the bad commit
 
-1. รับ bad commit จาก user (default `HEAD`)
-2. รับ good commit จาก user (default หรือ tag)
-3. รัน `git log --oneline <good>..<bad>` เพื่อดู commit ในช่วง
-4. ถ้าไม่ชัดเจน → ทำ `/ask-me` ก่อนเริ่ม
+1. Get the bad commit from the user (default `HEAD`)
+2. Get the good commit from the user (default or a tag)
+3. Run `git log --oneline <good>..<bad>` to view the commits in range
+4. If unclear → run `/ask-me` before starting
 
 #### 2.3 Start Bisect
 
-> Goal: เริ่ม bisect
+> Goal: begin the bisect
 
-1. รัน `git bisect start`
-2. รัน `git bisect bad <bad>`
-3. รัน `git bisect good <good>`
-4. รัน `git bisect run <test-command>` ถ้ามี script ทดสอบอัตโนมัติ
-5. ถ้าไม่มี script → ทำ manual bisect:
-   - รัน `git bisect next` หรือตอบ `git bisect good`/`bad` ตามผลทดสอบ
+1. Run `git bisect start`
+2. Run `git bisect bad <bad>`
+3. Run `git bisect good <good>`
+4. Run `git bisect run <test-command>` if there is an automated test script
+5. If not → do a manual bisect:
+   - Run `git bisect next` or answer `git bisect good`/`bad` based on test results
 
 #### 2.4 Find Bad Commit
 
-> Goal: ระบุ commit ทีทำให้เกิด bug
+> Goal: pinpoint the commit that caused the bug
 
-1. ถ้าใช้ `git bisect run` → รอผลและบันทึก commit hash
-2. ถ้า manual → ทดสอบแต่ละ checkout จนกระทั่ง bisect จบ
-3. รัน `git show <bad-commit>` เพื่อดู changes
-4. บันทึก commit hash, author, date, message
+1. With `git bisect run` → wait for results and record the commit hash
+2. If manual → test each checkout until the bisect completes
+3. Run `git show <bad-commit>` to view the changes
+4. Record the commit hash, author, date, and message
 
 #### 2.5 Reset Bisect
 
-> Goal: กลับสู่สภาพปกติ
+> Goal: return to the normal state
 
-1. รัน `git bisect reset`
-2. คืนค่า branch เดิมถ้า detached HEAD
-3. รัน `git status` ยืนยัน
+1. Run `git bisect reset`
+2. Restore the original branch if in detached HEAD
+3. Run `git status` to confirm
 
 #### 2.6 Report And Analyze
 
-> Goal: สรุปผลและวิเคราะห์
+> Goal: summarize and analyze the result
 
-1. ทำ `/report` แสดง: Good Commit, Bad Commit, First Bad Commit, Author, Date
-2. แสดง diff ของ first bad commit
-3. วิเคราะห์ว่า change ใดทีทำให้เกิด bug
-4. ทำ `/suggest-next-action` เช่น revert, fix, หรือ test
+1. Run `/report` showing: Good Commit, Bad Commit, First Bad Commit, Author, Date
+2. Show the diff of the first bad commit
+3. Analyze which change caused the bug
+4. Run `/suggest-next-action`, e.g. revert, fix, or test
 
 ### 3. Trace Change With Blame
 
-> Goal: ใช้ git blame และ log เพื่อดูประวัติการเปลี่ยนแปลง
+> Goal: use git blame and log to review change history
 
-1. ทำ `/follow-tool-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
-2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
-3. ทำ `/check-git-logs` เพื่อ trace ไฟล์ใน git log จนกว่าจะเจอเงื่อนไข หรือ `/git-file-history` ถ้าต้องการ UI viewer
-4. วิเคราะห์เหตุผลของการเปลี่ยนแปลงจาก commit message และ diff
+1. Run `/follow-tool-git` to view the blame of the suspect file or lines
+2. Run `git log -p --follow -S "<code-snippet>" -- <file-path>` to see commits that added/removed that code
+3. Run `/check-git-logs` to trace the file in git log until the condition is found, or `/git-file-history` for a UI viewer
+4. Analyze the reason for the change from the commit message and diff
 
 ### 4. Recover Lost Commit With Reflog
 
-> Goal: ใช้ git reflog เพื่อกู้คืน commit ที่หายไป
+> Goal: use git reflog to recover lost commits
 
-1. ทำ `/follow-tool-git` เพื่อดู reflog และหา commit ที่หาย
-2. ระบุ commit hash ที่ต้องการกู้คืนจาก reflog
-3. รัน `git cherry-pick <commit-hash>` เพื่อนำ commit กลับมา หรือ `git reset --hard <commit-hash>` ถ้าต้องการ reset HEAD
-4. ตรวจสอบด้วย `git log --oneline -5` ว่า commit กลับมาแล้ว
+1. Run `/follow-tool-git` to view the reflog and find the lost commit
+2. Identify the commit hash to recover from the reflog
+3. Run `git cherry-pick <commit-hash>` to bring the commit back, or `git reset --hard <commit-hash>` if HEAD should be reset
+4. Verify with `git log --oneline -5` that the commit is back
 
 ### 5. Restore Lost File
 
-> Goal: กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
+> Goal: recover the missing file from a commit in history
 
-1. ทำ `/restore-files-from-git-log` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
-2. ถ้าไม่พบ → รัน `git log --all --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
-3. รัน `git show <commit-hash>^:<file-path>` เพื่อดูเนื้อหาไฟล์ก่อนถูกลบ
-4. รัน `git restore --source=<commit-hash>^ <file-path>` เพื่อ restore ไฟล์
+1. Run `/restore-files-from-git-log` to restore the file from the latest commit that contained it
+2. If not found → run `git log --all --diff-filter=D -- <file-path>` to find the commit that deleted the file
+3. Run `git show <commit-hash>^:<file-path>` to view the file's content before deletion
+4. Run `git restore --source=<commit-hash>^ <file-path>` to restore the file
 
 ### 6. Investigate Unknown Cause
 
-> Goal: สำรวจปัญหาที่ไม่ทราบสาเหตุโดยใช้ git tools หลายตัว
+> Goal: explore an unexplained problem using several git tools
 
-1. รัน `git status` เพื่อดูสถานะ working directory
-2. รัน `git log --oneline -20` เพื่อดู commits ล่าสุด
-3. รัน `git diff HEAD~1` เพื่อดู changes ของ commit ล่าสุด
-4. รัน `git stash list` เพื่อตรวจสอบ stashed changes ที่อาจเกี่ยวข้อง
-5. ถ้ามี stash → รัน `git stash show -p stash@{n}` เพื่อดูเนื้อหา
-6. ถ้ายังไม่พบสาเหตุ → ทำ `/deep-debug` เพื่อ debug แบบ general
+1. Run `git status` to check the working directory state
+2. Run `git log --oneline -20` to see recent commits
+3. Run `git diff HEAD~1` to view the latest commit's changes
+4. Run `git stash list` to check for stashed changes that might be involved
+5. If a stash exists → run `git stash show -p stash@{n}` to view its content
+6. If the cause is still unclear → run `/deep-debug` for general debugging
 
 ### 7. Apply Fix
 
-> Goal: แก้ไขปัญหาที่พบ
+> Goal: fix the problem found
 
-1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-tool-git` เพื่อ revert commit นั้น
-2. ถ้าไฟล์ถูก restore → ทำ `/git-commit` เพื่อ commit ไฟล์ที่ restore
-3. ถ้า commit ถูกกู้คืน → ตรวจสอบว่า code ทำงานได้ก่อน push
-4. ทำ `/update-tests` เพื่อสร้าง regression test สำหรับปัญหาที่พบ
+1. If the bug-causing commit is found → run `/follow-tool-git` to revert that commit
+2. If the file was restored → run `/git-commit` to commit the restored file
+3. If a commit was recovered → verify the code works before pushing
+4. Run `/update-tests` to create a regression test for the problem found
 
 ## Rules
 
 ### Debug Strategy
 
-> Goal: debug อย่างเป็นระบบ ไม่เดา
+> Goal: debug systematically, don't guess
 
-- เริ่มจากการระบุปัญหาให้ชัดเจนก่อนใช้ git tools
-- ใช้ bisect เมื่อรู้ good commit และ bad commit ชัดเจน
-- ใช้ blame เมื่อต้องการ trace การเปลี่ยนแปลงของบรรทัดเฉพาะ
-- ใช้ reflog เมื่อ commit หายไปจาก branch ปัจจุบัน
-- ถ้าไม่ทราบสาเหตุ → ใช้ Step 6 Investigate Unknown Cause
+- Start by clearly identifying the problem before using git tools
+- Use bisect when the good and bad commits are clearly known
+- Use blame when tracing the change history of a specific line
+- Use reflog when a commit vanished from the current branch
+- If the cause is unknown → use Step 6 Investigate Unknown Cause
 
 ### Safety
 
-> Goal: debug โดยไม่ทำลาย working directory
+> Goal: debug without destroying the working directory
 
-- สำรอง working directory ด้วย `git stash` ก่อน debug ถ้ามี uncommitted changes
-- ไม่ใช้ `git reset --hard` โดยไม่จำเป็น — ใช้ `git restore` แทน
-- ถ้าต้องใช้ `git reset --hard` → ยืนยันกับผู้ใช้ก่อนด้วย `/ask-me`
-- หลัง debug → ตรวจสอบ `git status` ว่า working directory สะอาด
+- Back up the working directory with `git stash` before debugging if there are uncommitted changes
+- Don't use `git reset --hard` unless necessary — use `git restore` instead
+- If `git reset --hard` is required → confirm with the user first via `/ask-me`
+- After debugging → check `git status` that the working directory is clean
 
 ### Tool Selection
 
-> Goal: เลือก git tool ที่เหมาะสมกับปัญหา
+> Goal: pick the git tool that fits the problem
 
 - bug introduced by commit → `git bisect`
 - trace who changed what → `git blame` + `git log -S`
@@ -160,12 +160,12 @@
 - lost file → `git log --diff-filter=D` + `git restore`
 - unknown cause → `git status` + `git log` + `git diff` + `git stash list`
 
-- ใช้ /search-in-git ถ้าจำเป็น
+- Use /search-in-git if needed
 
 ## Expected Outcome
 
-1. พบ root cause ของปัญหา git อย่างเป็นระบบ
-2. commit ที่ทำให้เกิด bug ถูกระบุหรือ revert
-3. ไฟล์หรือ commit ที่หายไปถูกกู้คืน
-4. regression test สำหรับปัญหาที่พบ
-5. working directory สะอาดหลัง debug
+1. The git problem's root cause found systematically
+2. The bug-causing commit identified or reverted
+3. Lost files or commits recovered
+4. A regression test for the problem found
+5. A clean working directory after debugging

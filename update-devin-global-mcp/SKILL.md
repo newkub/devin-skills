@@ -14,92 +14,92 @@ related:
 
 ## Goal
 
-อัปเดต global MCP servers ใน `%APPDATA%\devin\mcp_config.json` โดยเช็ค dotfiles remote repo เพื่อ sync หรือ reference
+Update the global MCP servers in `%APPDATA%\devin\mcp_config.json`, checking the dotfiles remote repo for a config to sync or reference
 
 ## Scope
 
-- อ่าน `%APPDATA%\devin\mcp_config.json`
-- เช็ค remote dotfiles repo หา `mcp_config.json` ที่เกี่ยวข้อง
-- เพิ่ม อัปเดต หรือลบ server ใน `mcpServers`
-- สำรอง config ก่อนแก้ไข
-- Validate JSON syntax และ schema
-- ถ้าต้องการสร้าง server ใหม่และ register ทันที → ส่งต่อ `/create-devin-global-mcp`
+- Read `%APPDATA%\devin\mcp_config.json`
+- Check the remote dotfiles repo for a relevant `mcp_config.json`
+- Add, update, or remove a server in `mcpServers`
+- Back up the config before editing
+- Validate the JSON syntax and schema
+- To create a new server and register it right away → hand off to `/create-devin-global-mcp`
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: เข้าใจ config ปัจจุบัน
+> Goal: Understand the current config
 
-1. อ่าน `%APPDATA%\devin\mcp_config.json`
-2. ถ้าไฟล์ไม่มี → สร้างใหม่ด้วย `{ "mcpServers": {} }`
-3. สำรองไฟล์ไปยัง `mcp_config.json.bak`
-4. ใช้ `mcp_list_servers` เพื่อดู live servers ถ้ามี
+1. Read `%APPDATA%\devin\mcp_config.json`
+2. If the file is missing → create it with `{ "mcpServers": {} }`
+3. Back up the file to `mcp_config.json.bak`
+4. Use `mcp_list_servers` to see the live servers when available
 
 ### 2. Check Dotfiles Remote
 
-> Goal: เช็คว่า dotfiles repo มี mcp config ที่เกี่ยวข้องหรือไม่
+> Goal: Check whether the dotfiles repo has a relevant mcp config
 
-1. ระบุ dotfiles owner/repo จาก argument หรือ `gh api user -q '.login'`
-2. รัน `gh repo view <owner>/dotfiles` เพื่อยื่นยันว่า repo มีอยู่
-3. ค้นหา `mcp_config.json` ใน dotfiles ด้วย `gh api repos/<owner>/dotfiles/contents` หรือ tree API
-4. ถ้าพบไฟล์ที่เกี่ยวข้องกับ devin (เช่น `dot_devin/mcp_config.json` หรือ `AppData/Roaming/devin/mcp_config.json`) → fetch content แล้ว decode base64
-5. ถ้าพบเฉพาะ `dot_codeium/windsurf/mcp_config.json` → report ว่าเป็น config ของ Codeium/Windsurf แยกจาก devin ไม่ sync โดยอัตโนมัติ
-6. เปรียบเทียบ dotfiles config (ถ้ามี) กับ local config
-7. ถ้า dotfiles ไม่มี devin mcp config → local เป็น source of truth
+1. Identify the dotfiles owner/repo from the argument or `gh api user -q '.login'`
+2. Run `gh repo view <owner>/dotfiles` to confirm the repo exists
+3. Look for `mcp_config.json` in the dotfiles with `gh api repos/<owner>/dotfiles/contents` or the tree API
+4. If a devin-related file is found (e.g. `dot_devin/mcp_config.json` or `AppData/Roaming/devin/mcp_config.json`) → fetch the content and decode the base64
+5. If only `dot_codeium/windsurf/mcp_config.json` is found → report it as Codeium/Windsurf config, separate from devin, and do not auto-sync
+6. Compare the dotfiles config (if any) with the local config
+7. If the dotfiles have no devin mcp config → the local file is the source of truth
 
 ### 3. Determine Operation
 
-> Goal: ระบุสิ่งทีต้องทำ
+> Goal: Identify what to do
 
-1. รับชื่อ server และ action จาก user: `add`, `update`, `remove`, `sync`
-2. ถ้า `add` → รับ command, args, env
-3. ถ้า `update` → รับ field ทีจะเปลี่ยน
-4. ถ้า `remove` → ยืนยันว่าไม่มี skill อื่น depend บน server นั้น
-5. ถ้า `sync` → ถามทิศทาง: dotfiles → local หรือ local → dotfiles
+1. Take the server name and action from the user: `add`, `update`, `remove`, `sync`
+2. For `add` → take command, args, env
+3. For `update` → take the fields to change
+4. For `remove` → confirm that no other skill depends on that server
+5. For `sync` → ask for the direction: dotfiles → local or local → dotfiles
 
 ### 4. Edit Config
 
-> Goal: แก้ไขไฟล์ JSON
+> Goal: Edit the JSON file
 
-1. ใช้ `write` หรือ `edit` สำหรับแก้ไข JSON
-2. สำหรับ `add`: เพิ่ม key ใน `mcpServers` ด้วย `command`, `args`, `env`
-3. สำหรับ `update`: เปลี่ยน field ทีระบุ
-4. สำหรับ `remove`: ลบ key ออกจาก `mcpServers`
-5. สำหรับ `sync`: merge ตามทิศทางทีเลือก โดยไม่ overwrite โดยไม่ยืนยัน
-6. เก็บ JSON สวยงามด้วย 2 spaces indent
+1. Use `write` or `edit` to modify the JSON
+2. For `add`: add a key to `mcpServers` with `command`, `args`, `env`
+3. For `update`: change the specified fields
+4. For `remove`: delete the key from `mcpServers`
+5. For `sync`: merge in the chosen direction without overwriting unconfirmed values
+6. Save the JSON pretty-printed with a 2-space indent
 
 ### 5. Validate
 
-> Goal: ตรวจสอบความถูกต้อง
+> Goal: Check correctness
 
-1. ตรวจ JSON syntax ด้วย PowerShell `ConvertFrom-Json`
-2. ตรวจว่ามี root key `mcpServers`
-3. ตรวจแต่ละ server มี `command` เป็น string
-4. ตรวจ `args` เป็น array ของ string
-5. ตรวจ `env` เป็น object ถ้ามี
-6. ไม่ expose secrets ใน JSON ถ้าไม่จำเป็น
+1. Check the JSON syntax with PowerShell `ConvertFrom-Json`
+2. Check that the root key `mcpServers` exists
+3. Check that each server has `command` as a string
+4. Check that `args` is an array of strings
+5. Check that `env`, when present, is an object
+6. Do not expose secrets in the JSON unless required
 
 ### 6. Test And Report
 
-> Goal: ยืนยันการทำงาน
+> Goal: Confirm it works
 
-1. รัน `mcp_list_servers` หรือ `mcp_call_tool` หลังแก้ไข
-2. รัน `mcp_list_tools` สำหรับ server ทีแก้
-3. ทำ `/report` พร้อมสรุปการเปลี่ยนแปลง
-4. ถ้ามี dotfiles → ทำ `/update-chezmoi` หรือ report ว่าต้อง sync ต่อ
-5. ทำ `/suggest-next-action` ถ้าต้อง test tool
+1. Run `mcp_list_servers` or `mcp_call_tool` after the edit
+2. Run `mcp_list_tools` for the server that changed
+3. Run `/report` with a summary of the changes
+4. If dotfiles exist → run `/update-chezmoi` or report that a sync is still needed
+5. Run `/suggest-next-action` if a tool needs testing
 
 ## Rules
 
 ### 1. Backup
 
-- สำรอง `%APPDATA%\devin\mcp_config.json` ก่อนแก้ไขทุกครั้ง
-- เก็บ backup ที `mcp_config.json.bak`
+- Always back up `%APPDATA%\devin\mcp_config.json` before editing
+- Keep the backup at `mcp_config.json.bak`
 
 ### 2. Schema
 
-- รูปแบบ server ต้องเป็น:
+- The server shape must be:
   ```json
   {
     "mcpServers": {
@@ -111,34 +111,34 @@ related:
     }
   }
   ```
-- ห้ามเพิ่ม field นอกเหนือจาก `command`, `args`, `env`
+- Never add fields beyond `command`, `args`, `env`
 
 ### 3. Security
 
-- ไม่ commit secrets ลง `mcp_config.json`
-- ใช้ env vars สำหรับ tokens/keys
-- ถ้า config มี secret อยู่แล้ว → แจ้งเตือนและ redact
+- Never commit secrets into `mcp_config.json`
+- Use env vars for tokens/keys
+- If the config already contains a secret → warn the user and redact it
 
 ### 4. Dotfiles
 
-- เช็ค remote dotfiles ก่อนแก้ไขเพื่อ reference
-- ถ้า dotfiles มี devin mcp config ทีต่างจาก local → ถาม user ก่อน merge
-- ถ้าไม่มี dotfiles หรือไม่มี devin mcp config → local เป็น source of truth
+- Check the remote dotfiles before editing, as a reference
+- If the dotfiles have a devin mcp config that differs from local → ask the user before merging
+- If there are no dotfiles, or no devin mcp config there → the local file is the source of truth
 
 ### 5. Safety
 
-- ถ้าต้อง remove server → ตรวจ dependents ก่อน
-- ถ้า server ไม่ทำงานหลังแก้ → revert จาก backup
+- When removing a server → check the dependents first
+- If the server is broken after the change → revert from the backup
 
-- ใช้ /follow-create-mcp ถ้าจำเป็น
-- ใช้ /update-devin ถ้าจำเป็น
+- Use /follow-create-mcp if needed
+- Use /update-devin if needed
 
 
 ## Expected Outcome
 
-- `%APPDATA%\devin\mcp_config.json` ถูกต้องตาม schema
-- MCP servers ทำงานได้ตามคาด
-- มี backup ก่อนการแก้ไข
-- dotfiles remote ถูก check และ report
-- รายงานการเปลี่ยนแปลงพร้อม action ถัดไป
+- `%APPDATA%\devin\mcp_config.json` is schema-correct
+- The MCP servers work as expected
+- A backup exists before the edits
+- The remote dotfiles were checked and reported
+- A change report with the next action
 

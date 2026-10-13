@@ -1,6 +1,6 @@
 ---
 name: follow-deploy-deploy-railway
-description: Deploy ไป Railway โดย delegate ไปยัง /deploy-to-railway skill
+description: Deploy to Railway by delegating to the /deploy-to-railway skill
 argument-hint: "[target]"
 related:
   - deploy-to-railway
@@ -11,60 +11,60 @@ related:
 
 ## Goal
 
-Map generic deploy flow ของ `/follow-deploy` ไปยัง Railway โดย delegate งาน platform-specific ทั้งหมดไปยัง `/deploy-to-railway`
+Map the generic `/follow-deploy` flow to Railway by delegating all platform-specific work to `/deploy-to-railway`
 
 ## Scope
 
-- ใช้เมื่อ parent `/follow-deploy` เลือก Railway เป็น target platform
-- workflow นี้เป็น dispatch layer เท่านั้น — workflow จริงอยู่ที่ `/deploy-to-railway`
-- เหมาะกับ full-stack applications ที่ต้องการ database หรือ long-running services
+- Use when the parent `/follow-deploy` selects Railway as the target platform
+- This workflow is a dispatch layer only — the real workflow lives in `/deploy-to-railway`
+- Suits full-stack applications that need a database or long-running services
 
 ## Execute
 
 ### 1. Confirm Target
 
-> Goal: ยืนยันว่า target คือ Railway และ project พร้อม
+> Goal: confirm the target is Railway and the project is ready
 
-1. ตรวจ project type — full-stack app, Dockerfile หรือ service ที่ Railway รองรับ (`railway.json` ถ้ามี)
-2. ถ้าไม่ชัด → `/ask-me`
-3. ตรวจ prerequisites: env vars/secrets ครบผ่าน `/follow-secret-manager` — ตั้งค่าด้วย `railway variables set KEY=value` หรือ Railway dashboard
+1. Check project type — full-stack app, Dockerfile, or a service Railway supports (`railway.json` if present)
+2. If unclear → `/ask-me`
+3. Check prerequisites: env vars/secrets complete via `/follow-secret-manager` — set them with `railway variables set KEY=value` or the Railway dashboard
 
 ### 2. Map Generic Requirements
 
-> Goal: map concepts ของ parent flow ไปยัง Railway equivalents
+> Goal: map the parent flow's concepts to Railway equivalents
 
-1. env vars/secrets → `railway variables set KEY=value` หรือ Railway dashboard ผ่าน `/follow-secret-manager`
-2. staging environment → Railway environment แยกใน project เดียวกัน
-3. deployment URL → `*.up.railway.app` หรือ custom domain ที่ผูกไว้
-4. version id → Railway deployment id จาก output ของ deploy command
+1. env vars/secrets → `railway variables set KEY=value` or the Railway dashboard via `/follow-secret-manager`
+2. staging environment → a separate Railway environment in the same project
+3. deployment URL → `*.up.railway.app` or the attached custom domain
+4. version id → Railway deployment id from the deploy command output
 
 ### 3. Delegate To Platform Skill
 
-> Goal: ใช้ skill เฉพาะ platform แทน generic flow
+> Goal: use the platform-specific skill instead of the generic flow
 
-1. ทำตาม `/deploy-to-railway` ทั้ง flow — link project, deploy, post-deploy verify
-2. ถ้าไม่แน่ใจ command/flag ของ Railway CLI → ดู official docs แทนการเดา
+1. Follow the whole `/deploy-to-railway` flow — link project, deploy, post-deploy verify
+2. If unsure about Railway CLI commands/flags → check the official docs instead of guessing
 
 ### 4. Report
 
-> Goal: รายงานผล deploy ตาม generic contract ของ parent
+> Goal: report deploy results per the parent's generic contract
 
-1. report deployment URL, service/deployment id และผล post-deploy verify
-2. ถ้า fail → `/resolve-errors` max 3 รอบแล้ว stop report
+1. report deployment URL, service/deployment id, and post-deploy verify results
+2. if fail → `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
 ### 1. Delegate Only
 
-- ห้าม duplicate platform logic ใน workflow นี้ — delegate ไป `/deploy-to-railway` เสมอ
-- ถ้าไม่แน่ใจ Railway feature → ดู official docs แทนการเดา
+- never duplicate platform logic in this workflow — always delegate to `/deploy-to-railway`
+- if unsure about a Railway feature → check the official docs instead of guessing
 
 ### 2. Safety
 
-- staging environment ก่อน production ตาม rules ของ parent
-- secrets ผ่าน `/follow-secret-manager` เท่านั้น — ห้าม hardcode
+- staging environment before production per the parent's rules
+- secrets only via `/follow-secret-manager` — never hardcode
 
 ## Expected Outcome
 
-- deploy ผ่าน `/deploy-to-railway` สำเร็จพร้อม URL + deployment id
-- ผลรายงานกลับ parent flow ของ `/follow-deploy`
+- deploy via `/deploy-to-railway` succeeds with URL + deployment id
+- results reported back to the parent flow of `/follow-deploy`

@@ -1,6 +1,6 @@
 ---
 name: follow-create-vscode-extensions
-description: สร้าง VSCode extensions ด้วย TypeScript, official generator, หรือ reactive-vscode
+description: Build VSCode extensions with TypeScript, official generator, or reactive-vscode
 argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
@@ -15,102 +15,102 @@ related:
 ---
 ## Goal
 
-สร้าง VSCode extension project ด้วย TypeScript ทีมี `package.json` manifest, commands, activation events, contribution points, build, package, และ publish
+Create a VSCode extension project in TypeScript with a `package.json` manifest, commands, activation events, contribution points, build, package, and publish
 
 ## Scope
 
-ใช้สำหรับสร้าง VSCode extension ทั่วไป รองรับทั้ง official `yo generator-code`, `reactive-vscode`, และ manual setup
+For building general VSCode extensions, supporting the official `yo generator-code`, `reactive-vscode`, and manual setup
 
-- Packages: `generator-code`, `@vscode/vsce` (`vsce` deprecated/rename แล้ว — ต้อง Node 20+) — ยืนยันเวอร์ชัน VS Code/ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Packages: `generator-code`, `@vscode/vsce` (`vsce` is deprecated/renamed — requires Node 20+) — always confirm the VS Code/latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Review the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create vscode extensions)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create vscode extensions)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create vscode extensions)
+3. Record the rationale for the chosen stack and libraries for future reference (create vscode extensions)
 
 ### 2. Setup Project
 
-> Goal: สร้างโครงสร้าง extension
+> Goal: Create the extension structure
 
-1. ทางเลือก A (official): `bun add -g yo generator-code` แล้วรัน `yo code` หรือ one-off `bunx -p yo -p generator-code yo code`
-2. ทางเลือก B: `bun create reactive-vscode` หรือ `bun add -D reactive-vscode`
-3. ทางเลือก C: สร้าง `package.json`, `tsconfig.json`, `src/` เอง
-4. สร้าง `src/extension.ts`, `README.md`, `CHANGELOG.md`, `.vscodeignore`
+1. Option A (official): `bun add -g yo generator-code` then run `yo code`, or one-off `bunx -p yo -p generator-code yo code`
+2. Option B: `bun create reactive-vscode` or `bun add -D reactive-vscode`
+3. Option C: create `package.json`, `tsconfig.json`, `src/` yourself
+4. Create `src/extension.ts`, `README.md`, `CHANGELOG.md`, `.vscodeignore`
 
 ### 3. Configure Package And Manifest
 
-> Goal: กำหนด `package.json` ตาม VSCode schema
+> Goal: Define `package.json` per the VSCode schema
 
-1. ระบุ `name`, `displayName`, `description`, `version`, `publisher`
-2. ระบุ `engines.vscode` เช่น `^<major>.0.0` ตาม VS Code เวอร์ชันล่าสุดที่ research ได้
-3. ระบุ `categories`, `keywords`, `activationEvents`, `main`
-4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
-5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`
+1. Specify `name`, `displayName`, `description`, `version`, `publisher`
+2. Specify `engines.vscode` such as `^<major>.0.0` based on the latest VS Code version from your research
+3. Specify `categories`, `keywords`, `activationEvents`, `main`
+4. Specify `contributes.commands`, `menus`, `keybindings`, `configuration`
+5. Specify `scripts` for `compile`, `watch`, `package`, `publish`
 
 ### 4. Implement Extension
 
-> Goal: implement extension logic
+> Goal: Implement the extension logic
 
-1. สร้าง `src/extension.ts` ด้วย `activate(context: vscode.ExtensionContext)`
-2. register commands ด้วย `vscode.commands.registerCommand`
-3. push disposables เข้า `context.subscriptions`
-4. ใช้ `reactive-vscode` ถ้าเลือกทาง B
+1. Create `src/extension.ts` with `activate(context: vscode.ExtensionContext)`
+2. Register commands with `vscode.commands.registerCommand`
+3. Push disposables into `context.subscriptions`
+4. Use `reactive-vscode` if you chose option B
 
 ### 5. Build And Watch
 
-> Goal: compile TypeScript
+> Goal: Compile TypeScript
 
-1. ติดตั้ง `esbuild` หรือ `tsc`
-2. ตั้งค่า `tsconfig.json` ด้วย `strict: true`
-3. รัน `bun run watch` สำหรับ dev
-4. รัน `bun run compile` สำหรับ build
+1. Install `esbuild` or `tsc`
+2. Configure `tsconfig.json` with `strict: true`
+3. Run `bun run watch` for dev
+4. Run `bun run compile` for build
 
 ### 6. Test In Extension Host
 
-> Goal: ทดสอบใน VSCode
+> Goal: Test in VSCode
 
-1. เปิด project ใน VSCode
-2. กด `F5` เพื่อเปิด Extension Development Host
-3. ทดสอบ commands และ features
-4. ตรวจสอบ Debug Console
-5. สำหรับ automated tests ใช้ `@vscode/test-cli` + `@vscode/test-electron` รันด้วย `vscode-test` CLI
+1. Open the project in VSCode
+2. Press `F5` to launch the Extension Development Host
+3. Test the commands and features
+4. Check the Debug Console
+5. For automated tests use `@vscode/test-cli` + `@vscode/test-electron`, run via the `vscode-test` CLI
 
 ### 7. Package And Publish
 
-> Goal: สร้าง `.vsix` และ publish
+> Goal: Create the `.vsix` and publish
 
-1. ติดตั้ง `@vscode/vsce` (package `vsce` ถูก rename/deprecate แล้ว) หรือ `reactive-vscode` CLI
-2. รัน `bunx @vscode/vsce package` เพื่อสร้าง `.vsix` (ใช้ `--allow-missing-repository` เฉพาะกรณีไม่มี git repo)
-3. สร้าง publisher account ใน Marketplace
-4. รัน `bunx @vscode/vsce publish` หรือใช้ GitHub Actions
-5. ทำ `/ship-to-dev-branch`
+1. Install `@vscode/vsce` (the `vsce` package was renamed/deprecated) or the `reactive-vscode` CLI
+2. Run `bunx @vscode/vsce package` to create the `.vsix` (use `--allow-missing-repository` only when there is no git repo)
+3. Create a publisher account in the Marketplace
+4. Run `bunx @vscode/vsce publish` or use GitHub Actions
+5. Run `/ship-to-dev-branch`
 
 ## Rules
 
-- ใช้ TypeScript first
-- `engines.vscode` ต้องตรงกับ API ทีใช้
-- ใช้ `context.subscriptions.push` สำหรับทุก disposable
-- ไม่ hardcode secrets หรือ absolute paths
-- `activationEvents` ต้องตรงกับ command หรือ event จริง
-- ใช้ `@vscode/vsce` สำหรับ package และ publish (`vsce` เดิมถูก rename)
+- TypeScript first
+- `engines.vscode` must match the API you use
+- Use `context.subscriptions.push` for every disposable
+- Never hardcode secrets or absolute paths
+- `activationEvents` must match the actual command or event
+- Use `@vscode/vsce` for packaging and publishing (the old `vsce` was renamed)
 
-- ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /follow-release ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-bun-cli when needed
+- Use /follow-create-sdk when needed
+- Use /follow-lang-typescript when needed
+- Use /follow-release when needed
+- Use /follow-tool-vite when needed
+- Use /run-test when needed
+- Use /report when needed
 
 ## Expected Outcome
 
-- VSCode extension build ผ่าน
-- Extension ทำงานใน Extension Development Host
-- `.vsix` สร้างได้
-- พร้อม publish ไป VSCode Marketplace
+- VSCode extension builds successfully
+- Extension works in the Extension Development Host
+- `.vsix` can be created
+- Ready to publish to the VSCode Marketplace
 

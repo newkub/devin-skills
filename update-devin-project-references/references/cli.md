@@ -1,6 +1,6 @@
-# refs-cli — Flags และ Commands
+# refs-cli — Flags and Commands
 
-Entry point: `bun scripts/refs-cli/index.ts` (run จากโฟลเดอร์ skill หรือระบุ path เต็มก็ได้)
+Entry point: `bun scripts/refs-cli/index.ts` (run from the skill folder or give the full path)
 
 ## Usage
 
@@ -8,34 +8,34 @@ Entry point: `bun scripts/refs-cli/index.ts` (run จากโฟลเดอร
 bun scripts/refs-cli/index.ts [website|api|cli ...] [flags]
 ```
 
-- positional = domain ที่ต้องการ generate (ไม่ระบุ → `api cli`)
-- domain ซ้ำกันในคำสั่งเดียวไม่ผิด (dedupe โดยธรรมชาติของ table)
+- positional = the domain(s) to generate (unspecified → `api cli`)
+- repeating a domain within one command is fine (deduped naturally by the table)
 
 ## Flags
 
-| Flag | Default | ความหมาย |
+| Flag | Default | Meaning |
 |---|---|---|
-| `--root <dir>` | cwd | project root ที่สแกน source และอ่าน manifests |
-| `--out <dir>` | `<root>/.devin/references` | ที่เขียนไฟล์ output (สร้างอัตโนมัติ) |
-| `--url <url>` | — | base URL สำหรับ `website` domain (จำเป็นเมื่อเลือก domain นี้) |
-| `--dry-run` | off | พิมพ์ markdown ลง stdout ไม่เขียนไฟล์ |
-| `--help`, `-h` | — | แสดง usage |
+| `--root <dir>` | cwd | project root whose source is scanned and manifests are read |
+| `--out <dir>` | `<root>/.devin/references` | where to write the output files (created automatically) |
+| `--url <url>` | — | base URL for the `website` domain (required when this domain is selected) |
+| `--dry-run` | off | print markdown to stdout without writing files |
+| `--help`, `-h` | — | show usage |
 
 ## Examples
 
 ```bash
-# preview api + cli ของ project ปัจจุบันในแชท
+# preview api + cli of the current project in the chat
 bun scripts/refs-cli/index.ts --dry-run
 
-# generate ทุก domain ของ staging site
+# generate every domain of a staging site
 bun scripts/refs-cli/index.ts website api cli --url https://staging.example.com --root ~/code/my-app
 
-# เขียนเฉพาะ api.md ลง docs/references
+# write only api.md into docs/references
 bun scripts/refs-cli/index.ts api --root ~/code/my-app --out docs/references
 ```
 
 ## Exit Behavior
 
-- tool หายไป (เช่น `crw` สำหรับ website) → error พร้อม pointer ไป skill ที่ติดตั้ง tool (`/follow-tool-crw`) แล้ว exit 1
-- domain `website` โดยไม่มี `--url` → error ก่อนเริ่มงาน (fail fast, ไม่ scrape มั่ว)
-- ast-grep pattern error → ข้าม pattern นั้นเงียบๆ (table อาจว่าง — suspect pattern ก่อน suspect code)
+- a tool is missing (e.g. `crw` for website) → error with a pointer to the tool's install skill (`/follow-tool-crw`), then exit 1
+- domain `website` without `--url` → error before starting (fail fast, no blind scraping)
+- an ast-grep pattern errors → that pattern is skipped silently (the table may be empty — suspect the pattern before the code)

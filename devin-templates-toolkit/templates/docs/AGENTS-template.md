@@ -22,6 +22,6 @@ bun run typecheck
 
 ## Rules
 
-- ใช้ `/devin-scripts-toolkit` ก่อน ship
-- ใช้ `/devin-templates-toolkit` สำหรับสร้าง project ใหม่
-- ไม่ commit secrets
+- Use `/devin-scripts-toolkit` before shipping
+- Use `/devin-templates-toolkit` when creating a new project
+- Do not commit secrets

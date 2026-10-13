@@ -1,6 +1,6 @@
 ---
 name: deploy-to-vercel
-description: Deploy application ไปยัง Vercel จนกว่าจะ live สำเร็จ
+description: Deploy an application to Vercel until it is live
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -14,72 +14,72 @@ related:
 
 ## Goal
 
-Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่ build, deploy, commit/push จนถึง post-deploy validation
+Deploy the application to Vercel via the CLI, covering build, deploy, commit/push, and post-deploy validation
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel`
+- For related skills: `open-web-for-config-secret`, `follow-service-vercel`
 
-ครอบคลุม Vercel CLI, link project, build, deploy, watch, และ fix ถ้าไม่ผ่าน
+Covers the Vercel CLI, linking the project, build, deploy, watch, and fixing failures.
 
 ## Execute
 
 ### 1. Verify And Build
 
-> Goal: ตรวจสอบและ build
+> Goal: Verify and build
 
-1. ทำ `/run-verify`
-2. ทำ `/run-build`
-3. ตรวจสอบ build artifacts
+1. Run `/run-verify`
+2. Run `/run-build`
+3. Inspect the build artifacts
 
 ### 2. Authenticate And Link
 
-> Goal: เชื่อมต่อ Vercel project
+> Goal: Connect the Vercel project
 
-1. รัน `bunx vercel login` ถ้ายังไม่ auth
-2. รัน `bunx vercel link` ใน project directory
-3. ยืนยัน project ID ใน `.vercel/project.json`
+1. Run `bunx vercel login` if not authenticated
+2. Run `bunx vercel link` in the project directory
+3. Confirm the project ID in `.vercel/project.json`
 
 ### 3. Deploy
 
-> Goal: ส่ง deployment ไป Vercel
+> Goal: Push the deployment to Vercel
 
-1. รัน `bunx vercel --yes` หรือ `bunx vercel deploy --yes`
-2. บันทึก preview URL และ deployment ID
-3. สำหรับ production → `bunx vercel --prod --yes`
+1. Run `bunx vercel --yes` or `bunx vercel deploy --yes`
+2. Record the preview URL and deployment ID
+3. For production → `bunx vercel --prod --yes`
 
 ### 4. Watch And Validate
 
-> Goal: ยืนยันว่า deployment live
+> Goal: Confirm the deployment is live
 
-1. ทำ `/watch-deploy` ด้วย preview URL
-2. ทำ `/watch-browser-and-fix` ด้วย URL
-3. รอจนสถานะ `READY`
+1. Run `/watch-deploy` with the preview URL
+2. Run `/watch-browser-and-fix` with the URL
+3. Wait until the status is `READY`
 
 ### 5. Commit And Push
 
-> Goal: sync กับ git
+> Goal: Sync with git
 
-1. ทำ `/git-commit`
-2. ทำ `/git-push`
+1. Run `/git-commit`
+2. Run `/git-push`
 
 ### 6. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. รายงาน project, URL, status
-2. ระบุ environment (preview/production)
+1. Report the project, URL, and status
+2. State the environment (preview/production)
 
 ## Rules
 
-- ต้อง build สำเร็จก่อน deploy
-- ใช้ `/follow-secret-manager` สำหรับจัดการ `VERCEL_TOKEN` และ secrets ก่อน deploy
-- ใช้ `bunx vercel` หรือ `vercel` CLI
-- ไม่ commit ก่อนยืนยันว่า deployment live
-- หาก fail → ทำ `/resolve-errors` แล้ว redeploy
-- ใช้ /run-deploy ถ้าจำเป็น
+- The build must succeed before deploying
+- Use `/follow-secret-manager` to manage `VERCEL_TOKEN` and secrets before deploying
+- Use the `bunx vercel` or `vercel` CLI
+- Do not commit before confirming the deployment is live
+- If it fails → run `/resolve-errors`, then redeploy
+- Use /run-deploy if needed
 
 ## Expected Outcome
 
-- Deploy ไป Vercel สำเร็จ
-- URL ใช้งานได้
-- Git sync เรียบร้อย
+- Deployed to Vercel successfully
+- The URL works
+- Git is synced

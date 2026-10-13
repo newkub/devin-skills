@@ -1,7 +1,7 @@
 ---
 
 name: check-git-logs
-description: ดูประวัติไฟล์จาก git log ไล่เช็คทีละ commit จนกว่าจะเจอเงื่อนไข รองรับ local/remote
+description: Browse a file's git log per commit until a condition matches — supports local and remote repos
 argument-hint: "[scope]"
 related:
   - deep-debug
@@ -14,97 +14,97 @@ related:
 
 ## Goal
 
-หาประวัติการเปลี่ยนแปลงของไฟล์ทีระบุ โดยไล่ดู `git log` จากล่าสุดถอยหลังไปจนกว่าจะเจอเงื่อนไขที user ต้องการ (เช่น ไฟล์ไม่ว่าง, มีค่าบางอย่าง, ถูกแก้โดยคนใดคนหนึ่ง) รองรับทั้ง local repo และ remote repo บน GitHub
+Find the change history of a specified file by walking `git log` from newest backwards until the user's condition is met (e.g. file not empty, contains a certain value, modified by a particular person). Supports both local repos and remote GitHub repos
 
 ## Scope
 
-- ระบุไฟล์เป้าหมายและเงื่อนไขทีต้องการหา
-- รองรับ local git repo และ remote GitHub repo
-- แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/restore-files`
-- Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
+- Specify the target file and the condition to search for
+- Supports local git repos and remote GitHub repos
+- Show the commits matching the condition along with the file content in that commit
+- Used as a helper tool in `/deep-debug` and `/restore-files`
+- Boundary: finds condition-matching commits only — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
-- ดูเพิ่มเติม: /git-file-history, /restore-files-from-my-dotfiles
+- See also: /git-file-history, /restore-files-from-my-dotfiles
 
 ## Execute
 
 ### 1. Identify Target And Condition
 
-> Goal: รู้ว่าจะหาอะไร
+> Goal: know what you are looking for
 
-1. รับ file path จาก argument หรือ context
-2. รับ repo source: local path หรือ `owner/repo` บน GitHub
-3. รับ condition จาก user เช่น:
-   - "ไฟล์ไม่ว่าง" (`mcpServers` มี key)
-   - "มีบรรทัดที contains X"
-   - "ไฟล์ถูกลบ"
-   - "ไฟล์ถูกแก้โดย author Y"
-4. ถ้าไม่มี condition → แสดง history ทั้งหมด
+1. Take the file path from the argument or context
+2. Take the repo source: a local path or `owner/repo` on GitHub
+3. Take the condition from the user, e.g.:
+   - "file is not empty" (`mcpServers` has keys)
+   - "has a line containing X"
+   - "file was deleted"
+   - "file was modified by author Y"
+4. If there is no condition → show the full history
 
 ### 2. Local Repo
 
-> Goal: ใช้ git log กับ local repo
+> Goal: use git log on a local repo
 
-1. รัน `git log --all --pretty=format:"%H %ad %an %s" --date=iso <file>` เพื่อดู commits ทีเกี่ยวข้อง
-2. ถ้า file ถูก rename → เพิ่ม `--follow`
-3. สำหรับแต่ละ commit จากใหม่ไปเก่า:
-   - รัน `git show <sha>:<file>` เพื่อดู content
-   - ตรวจ condition
-   - ถ้าตรง → stop และ report
-4. ถ้าไม่เจอ → report ว่าไม่มี commit ไหนตรงเงื่อนไข
+1. Run `git log --all --pretty=format:"%H %ad %an %s" --date=iso <file>` to see the related commits
+2. If the file was renamed → add `--follow`
+3. For each commit from newest to oldest:
+   - Run `git show <sha>:<file>` to view the content
+   - Check the condition
+   - If it matches → stop and report
+4. If nothing is found → report that no commit matches the condition
 
 ### 3. Remote Repo
 
-> Goal: ใช้ GitHub API กับ remote repo
+> Goal: use the GitHub API on a remote repo
 
-1. ใช้ `gh repo view <owner/repo>` ยืนยัน repo
-2. ใช้ `gh api repos/<owner>/<repo>/commits?path=<file>&per_page=100` ดึง commits
-3. สำหรับแต่ละ commit จากใหม่ไปเก่า:
-   - ใช้ `gh api repos/<owner>/<repo>/contents/<file>?ref=<sha>` ดึง content (base64)
+1. Use `gh repo view <owner/repo>` to confirm the repo
+2. Use `gh api repos/<owner>/<repo>/commits?path=<file>&per_page=100` to fetch commits
+3. For each commit from newest to oldest:
+   - Use `gh api repos/<owner>/<repo>/contents/<file>?ref=<sha>` to fetch the content (base64)
    - decode base64
-   - ตรวจ condition
-   - ถ้าตรง → stop และ report
-4. ถ้าไม่เจอ → ทำ pagination ด้วย `page` parameter
+   - Check the condition
+   - If it matches → stop and report
+4. If nothing is found → paginate with the `page` parameter
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: summarize the results
 
-1. ทำ `/report` แสดง: No, Commit SHA, Date, Author, Message, Match
-2. ถ้าเจอ condition → แสดง content ของไฟล์ใน commit นั้น (ถ้าไม่ sensitive)
-3. ถ้าไม่เจอ → ระบุว่าไม่พบ
-4. ทำ `/suggest-next-action` เช่น กู้คืน, bisect, หรือดู commit ก่อนหน้า
+1. Produce a `/report` showing: No, Commit SHA, Date, Author, Message, Match
+2. If the condition is met → show the file's content in that commit (if not sensitive)
+3. If nothing is found → state that nothing was found
+4. Run `/suggest-next-action`, e.g. restore, bisect, or view the previous commit
 
 ## Rules
 
 ### 1. Local And Remote
 
-- local ใช้ `git log` + `git show`
-- remote ใช้ `gh api`
-- ถ้า repo ไม่ได้ระบุ → ใช้ local repo ปัจจุบัน
+- Local uses `git log` + `git show`
+- Remote uses `gh api`
+- If no repo is specified → use the current local repo
 
 ### 2. Condition Parsing
 
-- รองรับ condition เชิงเนื้อหา: `contains`, `not-empty`, `empty`, `equals`, `size-gt`
-- ถ้า condition เป็น string → ใช้ `contains` ใน content
-- ถ้า condition เป็น JSON path → ใช้ `jq` หรือ Python ตรวจสอบ
+- Supports content-based conditions: `contains`, `not-empty`, `empty`, `equals`, `size-gt`
+- If the condition is a string → use `contains` on the content
+- If the condition is a JSON path → verify with `jq` or Python
 
 ### 3. Safety
 
-- ไม่ทำการแก้ไขไฟล์หรือ repo
-- ไม่ expose secrets ใน report
-- ถ้า content มี sensitive data → redact ก่อนแสดง
+- Never modify files or the repo
+- Never expose secrets in the report
+- If the content has sensitive data → redact before displaying
 
 ### 4. Stop Condition
 
-- หยุดทันทีเมื่อเจอ commit แรกทีตรงเงื่อนไข (ล่าสุดทียังตรง)
-- ถ้า user ต้องการ list ทั้งหมด → ให้ระบุ explicitly
+- Stop immediately at the first commit matching the condition (the most recent match)
+- If the user wants the full list → they must state it explicitly
 
-- ใช้ /restore-files-from-git-log ถ้าจำเป็น
+- Use /restore-files-from-git-log if needed
 
 ## Expected Outcome
 
-- หา commit ทีตรงเงื่อนไขได้
-- รายงาน commit SHA, date, author, message และ content
-- รองรับทั้ง local และ remote repo
-- ใช้งานได้กับ `/deep-debug` และ `/restore-files`
+- The condition-matching commit is found
+- Reports commit SHA, date, author, message, and content
+- Supports both local and remote repos
+- Works with `/deep-debug` and `/restore-files`

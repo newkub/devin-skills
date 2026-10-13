@@ -1,6 +1,6 @@
 ---
 name: use-astgrep
-description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns — dispatcher เข้า workflows/{scan,rewrite,transform,migration}
+description: ast-grep setup and usage for AST-based code search, lint, and refactoring — dispatcher to workflows
 argument-hint: "[scan|rewrite|transform|migration|scope]"
 related:
   - update-astgrep-rules
@@ -14,47 +14,47 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns ที่แม่นยำกว่า regex — setup อยู่ที่นี่, execution อยู่ใน workflows
+Set up and use ast-grep for code search, lint, and refactoring with AST-based patterns that are more precise than regex — setup lives here, execution lives in the workflows
 
 ## Scope
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, project structure, scan script และ dispatch เข้า workflows — การเขียน rules ถาวรอยู่ใน `/update-astgrep-rules`, ad-hoc search อยู่ใน `/search-with-astgrep`, programmatic/scripting อยู่ใน `/use-astgrep-programmatic`
+Covers configuring `sgconfig.yml`, project structure, the scan script, and dispatching into the workflows — writing permanent rules lives in `/update-astgrep-rules`, ad-hoc search lives in `/search-with-astgrep`, programmatic/scripting lives in `/use-astgrep-programmatic`
 
 ## Execute
 
 ### 1. Install Or Use ast-grep
 
-> Goal: ติดตั้งหรือเรียกใช้ ast-grep ได้ถูกต้อง
+> Goal: install or invoke ast-grep correctly
 
-1. ถ้า project มี `@ast-grep/cli` ใน `devDependencies` ให้ใช้ `bunx ast-grep` (bin `ast-grep` หรือ `sg` จาก local install)
-2. ถ้าไม่มี local install ให้ใช้ `bunx -p @ast-grep/cli ast-grep` — ห้าม `bunx ast-grep` ลอยๆ เพราะจะดึง package `ast-grep` (คนละ package ที่ถูก abandon)
-3. ถ้าต้องการใช้งานประจำ แนะนำให้เพิ่ม `@ast-grep/cli` ใน `devDependencies` — latest `0.45.3 (verified 2026-09-12)`
+1. If the project has `@ast-grep/cli` in `devDependencies`, use `bunx ast-grep` (the `ast-grep` or `sg` bin from the local install)
+2. If there is no local install, use `bunx -p @ast-grep/cli ast-grep` — never run a bare `bunx ast-grep`, because it pulls the `ast-grep` package (a different, abandoned package)
+3. For regular use, add `@ast-grep/cli` to `devDependencies` — latest `0.45.3 (verified 2026-09-12)`
 
 ### 2. Configure sgconfig.yml
 
-> Goal: สร้าง `sgconfig.yml` พร้อม fields ที่จำเป็น
+> Goal: create `sgconfig.yml` with the required fields
 
-1. สร้างไฟล์ `sgconfig.yml` ที root directory ด้วย `ruleDirs` ชี้ `rules/{dependencies,architecture,glob}` ตาม canonical layout ใน `/update-astgrep-rules`
-2. ถ้า project มีหลาย workspace ให้เพิ่ม rule dir ของแต่ละ workspace ใน `ruleDirs` (ไม่มี `devPaths` field — fields ที่มีจริง: `ruleDirs`, `testConfigs`, `utilDirs`, `languageGlobs`, `customLanguages`, `languageInjections`)
-3. ถ้า project มี custom file extensions ให้เพิ่ม `languageGlobs`
-4. ถ้าต้องการ test rules ให้เพิ่ม `testConfigs`
-5. ถ้าต้องการ reusable patterns ให้เพิ่ม `utilDirs`
-6. ตรวจสอบว่า config ถูกต้องด้วย `ast-grep scan --inspect summary`
+1. Create the `sgconfig.yml` file at the root directory with `ruleDirs` pointing to `rules/{dependencies,architecture,glob}` per the canonical layout in `/update-astgrep-rules`
+2. If the project has multiple workspaces, add each workspace's rule dir to `ruleDirs` (there is no `devPaths` field — the actual fields are: `ruleDirs`, `testConfigs`, `utilDirs`, `languageGlobs`, `customLanguages`, `languageInjections`)
+3. If the project has custom file extensions, add `languageGlobs`
+4. If you want test rules, add `testConfigs`
+5. If you want reusable patterns, add `utilDirs`
+6. Verify the config with `ast-grep scan --inspect summary`
 
 ### 3. Setup Project Structure
 
-> Goal: สร้างโครงสร้าง directories สำหรับ rules และ tests
+> Goal: create the directory structure for rules and tests
 
-1. สร้าง ast-grep rules ใน `rules/` directory ที project root ตาม canonical layout ใน `/update-astgrep-rules` (`.devin/rules/` markdown rules deprecated — ถ้าพบให้ลบ)
-2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที project root
-3. ถ้ามี `utilDirs` ให้สร้าง directory `utils/` ที project root
-4. ใช้ `ast-grep new` สำหรับ scaffold project ใหม่ได้ (หรือ `bunx -p @ast-grep/cli ast-grep new` ถ้ายังไม่ได้ติดตั้ง)
+1. Create ast-grep rules in the `rules/` directory at the project root per the canonical layout in `/update-astgrep-rules` (`.devin/rules/` markdown rules are deprecated — delete them if found)
+2. If there is a `testConfigs`, create the `rule-tests/` directory at the project root
+3. If there is a `utilDirs`, create the `utils/` directory at the project root
+4. You can use `ast-grep new` to scaffold a new project (or `bunx -p @ast-grep/cli ast-grep new` if not yet installed)
 
 ### 4. Add Scan Script
 
-> Goal: เพิ่ม scan script ใน `package.json`
+> Goal: add a scan script to `package.json`
 
-1. เพิ่ม script ใน `package.json`:
+1. Add a script to `package.json`:
 
 ```json
 {
@@ -64,67 +64,67 @@ related:
 }
 ```
 
-2. ใช้ `ast-grep scan` หรือ `sg scan` เมื่อ `@ast-grep/cli` ติดตั้งเป็น devDependency แล้ว — ถ้ายังไม่ได้ติดตั้งใช้ `bunx -p @ast-grep/cli ast-grep scan`
+2. Use `ast-grep scan` or `sg scan` once `@ast-grep/cli` is installed as a devDependency — if not yet installed, use `bunx -p @ast-grep/cli ast-grep scan`
 
 ### 5. Choose Workflow
 
-> Goal: route ไป workflow ที่ตรงกับงาน
+> Goal: route to the workflow that matches the task
 
-| งาน | Workflow |
-|-----|----------|
-| scan project ด้วย rules, filter/format findings, CI | `/use-astgrep scan` |
-| batch rewrite หลายไฟล์ด้วย pattern (`-p`/`-r`, dry-run → confirm → apply) | `/use-astgrep rewrite` |
+| Task | Workflow |
+|------|----------|
+| scan the project with rules, filter/format findings, CI | `/use-astgrep scan` |
+| batch rewrite many files with a pattern (`-p`/`-r`, dry-run → confirm → apply) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
-| migration ทั้ง codebase แบบ staged batches | `/use-astgrep migration` |
-| ad-hoc search เท่านั้น (ไม่ rewrite) | `/search-with-astgrep` |
-| batch/programmatic ผ่าน Bun scripts, napi | `/use-astgrep-programmatic` |
-| เขียน/promote rules ถาวรใน `rules/` | `/update-astgrep-rules` |
+| whole-codebase migration in staged batches | `/use-astgrep migration` |
+| ad-hoc search only (no rewrite) | `/search-with-astgrep` |
+| batch/programmatic via Bun scripts, napi | `/use-astgrep-programmatic` |
+| write/promote permanent rules in `rules/` | `/update-astgrep-rules` |
 
-1. ถ้า argument ตรง workflow → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น
-2. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project เสมอ
+1. If the argument matches a workflow → read `workflows/<name>/SKILL.md` and follow the flow there
+2. Always test a pattern on 1-2 sample files before running it across the whole project
 
 ## Rules
 
 ### 1. CLI Reference
 
-- `ast-grep new` สำหรับ scaffold project ใหม่, `ast-grep new rule` สำหรับสร้าง rule ใหม่
-- `ast-grep scan` สำหรับ scan ทั้ง project ด้วย rules (options ละเอียด → `workflows/scan/SKILL.md`)
-- `ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search (`run` เป็น default subcommand)
-- `ast-grep run -p 'PATTERN' -r 'REWRITE'` สำหรับ rewrite (options ละเอียด → `workflows/rewrite/SKILL.md`)
-- `ast-grep test` สำหรับ test rules, `ast-grep outline` ดู structure, `ast-grep lsp` language server, `ast-grep completions <shell>` completions
-- ไม่มี `ast-grep rewrite` subcommand — rewrite ทำผ่าน `run -r`/`scan` กับ `--interactive` หรือ `-U`
+- `ast-grep new` to scaffold a new project, `ast-grep new rule` to create a new rule
+- `ast-grep scan` to scan the whole project with rules (detailed options → `workflows/scan/SKILL.md`)
+- `ast-grep run --pattern 'PATTERN'` for ad-hoc search (`run` is the default subcommand)
+- `ast-grep run -p 'PATTERN' -r 'REWRITE'` for rewriting (detailed options → `workflows/rewrite/SKILL.md`)
+- `ast-grep test` to test rules, `ast-grep outline` to view structure, `ast-grep lsp` for the language server, `ast-grep completions <shell>` for completions
+- There is no `ast-grep rewrite` subcommand — rewriting is done via `run -r`/`scan` with `--interactive` or `-U`
 
 ### 2. Separation From Devin Rules
 
-- `rules/` เก็บ `.yml` ast-grep rules ที project root (`rules/{dependencies,architecture,glob}`)
-- `.devin/rules/` (markdown rules) deprecated — ถ้าพบให้ลบและใช้ `rules/` + `sgconfig.yml` แทน
-- rule files ใช้ `kebab-case` filename
-- ไฟล์ที่ไม่ใช่ rule ใน `rules/` จะถูก ignore
+- `rules/` stores `.yml` ast-grep rules at the project root (`rules/{dependencies,architecture,glob}`)
+- `.devin/rules/` (markdown rules) is deprecated — if found, delete it and use `rules/` + `sgconfig.yml` instead
+- Rule files use `kebab-case` filenames
+- Non-rule files in `rules/` are ignored
 
 ### 3. Integration With Biome
 
-- ใช้ `ast-grep` สำหรับ structural patterns ที่ `Biome` ไม่สามารถ express ได้ — complements ไม่ใช่ replace
-- ใช้ `Biome` สำหรับ standard lint และ format
+- Use `ast-grep` for structural patterns that `Biome` cannot express — it complements rather than replaces
+- Use `Biome` for standard lint and format
 
 ### 4. Rule Writing
 
-- การเขียน rules ถาวรอยู่ใน `/update-astgrep-rules` ไม่ใช่ workflow นี้
+- Writing permanent rules lives in `/update-astgrep-rules`, not this workflow
 
 ### 5. Pattern Discipline
 
-- ใช้ AST-based patterns สำหรับ structural match ก่อน regex
-- ตรวจสอบ syntax ด้วย `ast-grep run --pattern 'PATTERN' --debug`
-- ทดสอบ pattern บนไฟล์ตัวอย่างก่อนรันทั้ง project
-- ปล่อยให้ ast-grep auto-detect ภาษา หรือระบุ `--lang` ถ้า extension ไม่มาตรฐาน
-- ทุก rewrite ต้อง dry-run + preview + confirm ก่อน apply — workflows บังคับอยู่แล้ว ห้ามข้าม
+- Use AST-based patterns for structural matching before regex
+- Verify syntax with `ast-grep run --pattern 'PATTERN' --debug`
+- Test a pattern on sample files before running it across the whole project
+- Let ast-grep auto-detect the language, or specify `--lang` if the extension is non-standard
+- Every rewrite must be dry-run + preview + confirmed before applying — the workflows already enforce this, never skip it
 
-- ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ `/deep-review` ถ้าจำเป็น
+- Use /check-code-structure if needed
+- Use `/deep-review` if needed
 
 ## Expected Outcome
 
-- `sgconfig.yml` ตั้งค่าเรียบร้อยครบทุก fields ที่จำเป็น
-- Project structure สร้างเรียบร้อย (`rules/`, `rule-tests/`, `utils/`)
-- Scan script เพิ่มใน `package.json` และทำงานได้
-- งานถูก route เข้า workflow ที่ถูกต้อง (`scan`/`rewrite`/`transform`/`migration`)
-- ใช้ร่วมกับ `Biome` ได้โดยไม่ขัดแย้ง
+- `sgconfig.yml` fully configured with all required fields
+- Project structure created (`rules/`, `rule-tests/`, `utils/`)
+- Scan script added to `package.json` and working
+- Tasks routed into the correct workflow (`scan`/`rewrite`/`transform`/`migration`)
+- Works alongside `Biome` without conflict

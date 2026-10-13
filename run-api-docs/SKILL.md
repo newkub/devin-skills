@@ -1,6 +1,6 @@
 ---
 name: run-api-docs
-description: Start Scalar API docs server จาก OpenAPI spec พร้อม preview ใน browser
+description: Start a Scalar API docs server from an OpenAPI spec with a browser preview
 argument-hint: "[scope]"
 related:
   - follow-tool-scalar
@@ -12,83 +12,83 @@ related:
 
 ## Goal
 
-Start Scalar API Reference server จาก OpenAPI spec (`scalar document serve`) พร้อม verify spec และเปิด browser preview
+Start a Scalar API Reference server from an OpenAPI spec (`scalar document serve`), with spec verification and a browser preview
 
 ## Scope
 
-ใช้สำหรับ project ที่มี OpenAPI spec หรือต้องการ preview API docs แบบ local — เน้นการ execute รัน docs server ไม่ใช่ guide ทั่วไป (guide → `/follow-tool-scalar`)
+Use for projects that have an OpenAPI spec or want a local API docs preview — focused on executing the docs server, not a general guide (guide → `/follow-tool-scalar`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (api docs)
+> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (api docs)
 
 ### 1. Locate OpenAPI Spec
 
-> Goal: หา spec file หรือ URL ที่จะ serve
+> Goal: find the spec file or URL to serve
 
-1. หา spec ใน repo: `openapi.json`, `openapi.yaml`, `docs/openapi.*`, `api/spec.*`
-2. ถ้า framework generate ได้ → หา route เช่น `/openapi.json`, `/docs/json` (Elysia/Hono/Fastify/oRPC `OpenAPIGenerator`)
-3. ถ้ายังไม่มี spec → ทำ framework generator สร้างจาก code ก่อน แล้วใช้ไฟล์ที่ได้
-4. Validate ก่อน serve: `bunx @scalar/cli document validate <spec>`
+1. Find the spec in the repo: `openapi.json`, `openapi.yaml`, `docs/openapi.*`, `api/spec.*`
+2. If the framework can generate one → find a route such as `/openapi.json`, `/docs/json` (Elysia/Hono/Fastify/oRPC `OpenAPIGenerator`)
+3. If no spec exists yet → run the framework generator to create one from code first, then use the resulting file
+4. Validate before serving: `bunx @scalar/cli document validate <spec>`
 
 ### 2. Install Scalar CLI
 
-> Goal: มี `scalar` binary พร้อมใช้
+> Goal: have a usable `scalar` binary
 
-1. ถ้า project มี `@scalar/cli` ใน devDependencies → ใช้ `bunx scalar`
-2. ถ้าไม่มี → `bun add -D @scalar/cli` หรือใช้ `bunx @scalar/cli` โดยตรง (requires Node >=24)
+1. If the project has `@scalar/cli` in devDependencies → use `bunx scalar`
+2. If not → `bun add -D @scalar/cli` or use `bunx @scalar/cli` directly (requires Node >=24)
 3. Latest: `@scalar/cli@2.5.2` (verified 2026-09-26)
-4. Verify ด้วย `scalar --version`
+4. Verify with `scalar --version`
 
 ### 3. Start Docs Server
 
-> Goal: serve API reference บน local port
+> Goal: serve the API reference on a local port
 
-1. รัน `bunx scalar document serve <spec> --watch --port 7970`
-2. ใช้ `--port` อื่นถ้า 7970 ถูกใช้; `-w/--watch` reload เมื่อ spec เปลี่ยน
-3. ใช้ `document serve <url>` ได้ถ้า spec อยู่บน remote/dev server ที่รันอยู่
-4. บันทึก URL ที่ server แจ้ง (default `http://localhost:7970`)
+1. Run `bunx scalar document serve <spec> --watch --port 7970`
+2. Use another `--port` if 7970 is taken; `-w/--watch` reloads when the spec changes
+3. `document serve <url>` also works if the spec lives on a running remote/dev server
+4. Record the URL the server prints (default `http://localhost:7970`)
 
 ### 4. Preview In Browser
 
-> Goal: เปิด docs ให้ user ดูได้
+> Goal: open the docs so the user can view them
 
-1. เปิด browser preview หรือ `/open-web` ไปยัง `http://localhost:<port>`
-2. ยืนยันว่า API reference render ครบ — endpoints, schemas, examples
-3. ถ้าหน้าว่าง → ตรวจ spec validity ด้วย `document lint` (spectral rules)
+1. Open a browser preview or `/open-web` to `http://localhost:<port>`
+2. Confirm the API reference renders fully — endpoints, schemas, examples
+3. If the page is blank → check spec validity with `document lint` (spectral rules)
 
 ### 5. Alternatives And Errors
 
-> Goal: ครอบคลุมกรณี serve ไม่ได้
+> Goal: cover cases where serving doesn't work
 
-1. ไม่มี live backend แต่ต้องการลอง requests → `bunx scalar document mock <spec> --watch --port <port>` (validate request ตาม contract)
-2. ต้องการ docs แบบ embed ใน app → `@scalar/api-reference` standalone script tag (ดู `/follow-tool-scalar`)
-3. ถ้า `scalar: command not found` → `bun add -D @scalar/cli`
-4. ถ้า Node <24 → upgrade Node หรือใช้ Docker/CI ที่มี Node 24
-5. ถ้าไม่ผ่าน → ทำ `/resolve-errors`
+1. No live backend but want to try requests → `bunx scalar document mock <spec> --watch --port <port>` (validates requests against the contract)
+2. Want docs embedded in the app → `@scalar/api-reference` standalone script tag (see `/follow-tool-scalar`)
+3. If `scalar: command not found` → `bun add -D @scalar/cli`
+4. If Node <24 → upgrade Node or use Docker/CI with Node 24
+5. If it still fails → run `/resolve-errors`
 
 ## Rules
 
 ### 1. Spec Source
 
-- prefer spec file ที่ generate จาก code (single source of truth) มากกว่าไฟล์ที่เขียนเองค้างเก่า
-- validate spec ก่อน serve เสมอ — serve spec ที่ invalid ทำให้หน้า render พังเงียบๆ
+- Prefer a spec file generated from code (single source of truth) over a stale hand-written file
+- Always validate the spec before serving — serving an invalid spec makes the page render silently broken
 
 ### 2. Port And Process
 
-- default port `7970` — ถ้าชนให้เลือก port อื่นและบอก user
-- รันเป็น background process; หยุดด้วย Ctrl+C / taskkill เมื่อเสร็จ ไม่ทิ้ง process ค้าง
+- Default port `7970` — on conflict, pick another port and tell the user
+- Run as a background process; stop with Ctrl+C / taskkill when done, never leave it running
 
 ### 3. Non-Redundancy
 
-- ไม่ซ้ำกับ `/follow-tool-scalar` ที่เน้น toolchain เต็มรูปแบบ — skill นี้ execute serve เท่านั้น
-- ถ้าต้องการ static docs แทน server → `scalar document markdown <spec>` หรือ `/update-docs`
-- ใช้ /run-dev ถ้าจำเป็น
+- Do not duplicate `/follow-tool-scalar`, which covers the full toolchain — this skill only executes the serve
+- If static docs are wanted instead of a server → `scalar document markdown <spec>` or `/update-docs`
+- Use /run-dev if needed
 
 
 ## Expected Outcome
 
-- Scalar API Reference รันบน `http://localhost:<port>` พร้อม `--watch`
-- Spec validate ผ่านก่อน serve
-- User เปิด docs ใน browser ได้
-- ไม่มี process ค้างหลังใช้งานเสร็จ
+- Scalar API Reference running on `http://localhost:<port>` with `--watch`
+- Spec validated before serving
+- User can open the docs in a browser
+- No leftover process after use

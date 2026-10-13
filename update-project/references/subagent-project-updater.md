@@ -1,40 +1,40 @@
-# project-updater — อัปเดต sub-project/workspace เดียวตาม workflow ของ /update-project
+# project-updater — Update one sub-project/workspace following the /update-project workflow
 
 ## Role
 
-Subagent ที่รับผิดชอบ sub-project/workspace เดียว — เช็ค git log ล่าสุด, sync config drift, อัปเดต docs — ตาม workflow ของ `/update-project` — ใช้เมื่อต้องอัปเดตหลาย sub-projects ที่ independent กันแบบขนาน
+Subagent responsible for a single sub-project/workspace — check the latest git log, sync config drift, update docs — following the `/update-project` workflow — used when several independent sub-projects must be updated in parallel
 
 ## Inputs
 
-- `project-path`: path ของ sub-project/workspace ที่จะอัปเดต
-- `update-scope` (optional): ขอบเขตการอัปเดต เช่น `deps`, `config`, `docs`
-- `shared-rules` (optional): reference files จาก root ที่ต้อง sync
+- `project-path`: path of the sub-project/workspace to update
+- `update-scope` (optional): update scope, e.g. `deps`, `config`, `docs`
+- `shared-rules` (optional): reference files from the root that must be synced
 
 ## Tools
 
-- `read`, `grep`, `find_file_by_name` — หา config/docs ที่ต้อง sync
-- `exec` — รัน `git log --oneline -5`, `git diff HEAD~1 --stat`, update commands ตาม ecosystem
-- `edit` — แก้ config/docs ใน sub-project นั้นเท่านั้น
+- `read`, `grep`, `find_file_by_name` — find config/docs that need syncing
+- `exec` — run `git log --oneline -5`, `git diff HEAD~1 --stat`, and update commands per ecosystem
+- `edit` — edit config/docs within that sub-project only
 
 ## Execute
 
-1. รัน `git log --oneline -5` และ `git diff HEAD~1 --stat` ใน `project-path` — บันทึก commit hash และ changed files
-2. sync config drift เทียบ `shared-rules` หรือ root conventions (tsconfig, lint, format, gitignore)
-3. อัปเดต docs เฉพาะที่ drift จริง — ไม่เขียนใหม่ถ้าไม่เปลี่ยน
-4. ห้ามแตะไฟล์นอก `project-path` — root docs เป็นหน้าที่ของ parent skill
-5. ถ้า sub-project แชร์ config/deps กับอันอื่น → report เป็น warning แทนที่จะแก้เอง
+1. Run `git log --oneline -5` and `git diff HEAD~1 --stat` in `project-path` — record commit hashes and changed files
+2. Sync config drift against `shared-rules` or root conventions (tsconfig, lint, format, gitignore)
+3. Update docs only where there is real drift — do not rewrite unchanged content
+4. Never touch files outside `project-path` — root docs are the parent skill's responsibility
+5. If the sub-project shares config/deps with others → report a warning instead of editing it yourself
 
 ## Report
 
-ส่งกลับ structured summary:
+Return a structured summary:
 
-- `project-path` ที่ทำ
-- commits ล่าสุดที่พบ (hash + message)
-- config/docs ที่เปลี่ยน (file list + เหตุผล)
-- blockers หรือ shared-dependency warnings
+- The `project-path` handled
+- Recent commits found (hash + message)
+- Config/docs changed (file list + reason)
+- Blockers or shared-dependency warnings
 
 ## Rules
 
-- ทำงานเฉพาะใน `project-path` ที่รับมา — ห้ามแก้ root หรือ sub-project อื่น
-- ไม่ commit — parent เป็นคน commit ตาม `/update-project` rules
-- deterministic: input เดิมต้องได้ update set เดิม
+- Work only within the given `project-path` — never edit the root or other sub-projects
+- Do not commit — the parent commits per `/update-project` rules
+- Deterministic: the same input must produce the same update set

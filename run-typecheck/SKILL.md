@@ -13,45 +13,45 @@ related:
 
 ## Goal
 
-รัน typecheck ตามที่กำหนดใน package manifest พร้อมตรวจสอบ config
+Run typecheck as defined in the package manifest, with a config check
 
 ## Scope
 
-รัน typecheck สำหรับทุก workspace ใน monorepo ตามที่กำหนดใน package manifest
+Run typecheck for every workspace in the monorepo as defined in the package manifest
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` domain `review-config` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (typecheck)
+> Pre-Run: Always run `/deep-review` domain `review-config` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (typecheck)
 
 ### 1. Check Config
 
 > Goal: Check Config
 
-1. ทำ `config` เพื่อตรวจสอบ config
-2. ห้ามแก้ไข config ใดๆ
+1. Run `config` to check the config
+2. Do not modify any config
 
 ### 2. Run Typecheck
 
 > Goal: Run Typecheck
 
-1. ห้ามใช้ ignore comments/attributes ทุกภาษา
-2. รัน typecheck ตามที่กำหนดใน package manifest
+1. Do not use ignore comments/attributes in any language
+2. Run typecheck as defined in the package manifest
 
 ### 3. Analyze Errors
 
 > Goal: Analyze Errors
 
-1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก typecheck
-2. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
-   - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
-   - ถ้าเป็น isolated errors → `/resolve-errors`
+1. Run `/deep-review` to analyze and prioritize the errors from typecheck
+2. `/deep-review` decides which workflow to follow next:
+   - If they are cascade issues → `/deep-debug` → `/resolve-errors`
+   - If they are isolated errors → `/resolve-errors`
 
 ## Rules
 
-- ทำ `config` เพื่อตรวจสอบ config แต่ห้ามแก้ไข
-- ห้ามใช้ ignore comments/attributes ทุกภาษา แก้ปัญหาที่ source
-- แก้ไขข้อผิดพลาดที่เกิดขึ้นจาก typecheck ก่อนดำเนินการต่อ
+- Run `config` to check the config, but do not modify it
+- Do not use ignore comments/attributes in any language; fix the problem at the source
+- Fix the errors produced by typecheck before continuing
 
 ## Expected Outcome
 
-โค้ดที่ผ่าน typecheck โดยไม่มีข้อผิดพลาด
+Code that passes typecheck with no errors

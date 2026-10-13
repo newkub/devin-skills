@@ -1,45 +1,45 @@
 # Deep PR Review
 
-ใช้เมื่อต้อง review PR แบบละเอียด — ตอบ comments, resolve conversations, และถาม user ก่อน merge
+Use when a PR needs a detailed review — reply to comments, resolve conversations, and ask the user before merge
 
 ## Execute
 
 ### 1. Reply To Comments
 
-> Goal: ตอบ comments ใน PR
+> Goal: reply to comments in the PR
 
-1. อ่านทุก comment ที่ยังไม่ resolve
-2. ตอบตาม context:
-   - ถ้า comment ถูก แก้ code แล้ว → comment สั้นๆ พร้อม commit SHA
-   - ถ้า comment ต้องการอธิบาย → ตอบด้วย evidence
-   - ถ้า comment เป็น false positive → ชี้แจง
-3. ใช้ `gh pr review <pr-number> --comment` ตอบ
-4. ใช้ `gh api repos/{owner}/{repo}/pulls/comments/{id}/replies` ถ้าจำเป็น
+1. Read every comment that is not yet resolved
+2. Answer according to context:
+   - If the comment is correct, fix the code → leave a short comment with the commit SHA
+   - If the comment needs an explanation → reply with evidence
+   - If the comment is a false positive → clarify
+3. Use `gh pr review <pr-number> --comment` to reply
+4. Use `gh api repos/{owner}/{repo}/pulls/comments/{id}/replies` if needed
 
 ### 2. Resolve Findings
 
-> Goal: แก้ issues ที่พบ
+> Goal: fix the issues found
 
-1. ถ้ามี changes ต้องทำ → implement ตาม severity
-2. ทำ `/run-check`, `/run-test` หลังแก้
-3. ทำ `/git-push` ไม่ force
-4. ถ้า commits บน PR branch รก → ทำ `/refactor-commit` ก่อน push หรือ merge
-5. เปิด web ให้ user ดู diff หรือ PR
+1. If changes are required → implement according to severity
+2. Run `/run-check`, `/run-test` after fixing
+3. Run `/git-push`, never force
+4. If the commits on the PR branch are messy → run `/refactor-commit` before push or merge
+5. Open the web for the user to see the diff or PR
 
 ### 3. Ask To Merge
 
-> Goal: ให้ user ตัดสินใจ merge
+> Goal: let the user decide whether to merge
 
-1. สรุป findings + resolved comments
-2. ทำ `/open-web` เปิด PR
-3. ถาม user ว่าจะ merge ไหม
-4. ถ้าใช่ → ทำ `/merge-github-pr` หรือ `gh pr merge`
-5. ถ้าไม่ → report next actions
+1. Summarize findings + resolved comments
+2. Run `/open-web` to open the PR
+3. Ask the user whether to merge
+4. If yes → run `/merge-github-pr` or `gh pr merge`
+5. If no → report next actions
 
 ## Rules
 
-- ไม่ merge เองถ้าไม่ได้ user บอก
-- ต้อง resolve ทุก conversation ก่อน merge
-- ต้องมี CI ผ่านก่อน merge
-- ถ้ามี change ต้อง push กลับ PR branch
-- ใช้ evidence ในการตอบ comment
+- Never merge on your own unless the user tells you to
+- Every conversation must be resolved before merge
+- CI must pass before merge
+- If there is a change, push it back to the PR branch
+- Use evidence when replying to comments

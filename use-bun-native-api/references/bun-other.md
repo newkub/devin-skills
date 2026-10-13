@@ -1,8 +1,8 @@
 # Other Bun APIs
 
-ใช้ Bun APIs อื่นๆ สำหรับ utilities
+Other Bun APIs for utilities
 
-- `bun:test` - Built-in test runner (Jest-compatible, `bun test --parallel` ตั้งแต่ 1.4)
+- `bun:test` - Built-in test runner (Jest-compatible, `bun test --parallel` since 1.4)
 - `Bun.env` - Environment variables (faster than `process.env`)
 - `Bun.version` / `Bun.revision` - Bun version information (latest `1.4.2 (verified 2026-09-12)`)
 - `Bun.main` - Main entry point file path

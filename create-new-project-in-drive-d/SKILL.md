@@ -1,6 +1,6 @@
 ---
 name: create-new-project-in-drive-d
-description: สร้าง project ใหม่บน drive D ด้วย follow-create-* skill ตามประเภท
+description: Create a new project on drive D using the follow-create-* skill for its type
 argument-hint: "<project-type> <project-name>"
 related:
   - follow-create-cli
@@ -15,11 +15,11 @@ related:
 
 ## Goal
 
-สร้าง project ใหม่บน drive D โดยเลือก `follow-create-*` skill ตามประเภท project
+Create a new project on drive D by selecting the `follow-create-*` skill that matches the project type
 
 ## Scope
 
-ใช้เมื่อ user ต้องการเริ่ม project ใหมบน drive D ไมว่าจะเป็น CLI, website, mobile, library, plugin, bot, หรือ extension
+Use when the user wants to start a new project on drive D, whether CLI, website, mobile, library, plugin, bot, or extension
 
 ## Execute
 
@@ -27,17 +27,17 @@ related:
 
 > Goal: Gather Requirements
 
-1. ระบุ `project-type` จาก argument หรือ context เช่น `cli`, `website`, `mobile`, `library`, `mcp`, `bot`, `extension`
-2. ระบุ `project-name` จาก argument หรือถาม user
-3. กำหนด target path เริ่มต้นที `D:\newkub\<project-name>` หรือใช้ path ที user ระบุ
-4. ถ้า `project-type` หรือ `project-name` ไม่ระบุ → ทำ `/follow-your-suggestion` เพื่อเลือกประเภทและชื่อ project ตาม context
+1. Determine `project-type` from the argument or context, e.g. `cli`, `website`, `mobile`, `library`, `mcp`, `bot`, `extension`
+2. Determine `project-name` from the argument or ask the user
+3. Default the target path to `D:\newkub\<project-name>`, or use a path the user specifies
+4. If `project-type` or `project-name` is missing → run `/follow-your-suggestion` to pick the type and project name from context
 
 ### 2. Select Create Skill
 
 > Goal: Select Create Skill
 
 1. `cli` → `/follow-create-cli`
-2. `website` หรือ `web` → `/follow-create-web`
+2. `website` or `web` → `/follow-create-web`
 3. `mobile` → `/follow-create-mobile-cross-with-capacitor`
 4. `telegram-bot` → `/follow-create-bot`
 5. `discord-bot` → `/follow-create-bot`
@@ -46,59 +46,59 @@ related:
 8. `obsidian-plugin` → `/follow-create-obsidian-plugin`
 9. `vscode-extension` → `/follow-create-vscode-extensions`
 10. `zed-extension` → `/follow-create-zed-extensions`
-11. `rust-crate` หรือ `rust-lib` → `/follow-create-rust-crate`
+11. `rust-crate` or `rust-lib` → `/follow-create-rust-crate`
 12. `mcp` → `/follow-create-mcp`
-13. ถ้าไม่ตรงข้อใดหรือไม่แน่ใจ → ใช้ `/follow-create-sdk` เพื่อถามและเลือก stack
+13. If nothing matches or you are unsure → use `/follow-create-sdk` to ask and pick a stack
 
 ### 3. Prepare Target Path
 
 > Goal: Prepare Target Path
 
-1. ตรวจสอบว่า target path ยังไม่มี directory อยู่
-2. ถ้ามีอยู่แล้ว → ถาม user ว่าจะ overwrite, rename หรือยกเลิก
-3. ใช้ `mkdir` สร้าง parent directory ถ้าจำเป็น หรือให้ `follow-create-*` จัดการ
+1. Check that no directory exists at the target path yet
+2. If one exists → ask the user whether to overwrite, rename, or cancel
+3. Use `mkdir` to create parent directories if needed, or let the `follow-create-*` skill handle it
 
 ### 4. Run Create Skill
 
 > Goal: Run Create Skill
 
-1. ส่ง `project-name` และ `target-path` ให้ skill ทีเลือก
-2. ถ้า skill ต้องการ stack ให้ใช้ `/deep-review` เพื่อยืนยัน
-3. ติดตามให้ skill ทีเลือกสร้าง project จนเสร็จ
+1. Pass `project-name` and `target-path` to the selected skill
+2. If the skill needs a stack, use `/deep-review` to confirm it
+3. Follow through until the selected skill finishes creating the project
 
 ### 5. Validate And Ship
 
 > Goal: Validate And Ship
 
-1. ตรวจสอบว่า project files ถูกสร้างจริงที target path
-2. รัน `/run-check` ตาม stack ถ้าจำเป็น
-3. ทำ `/ship-to-dev-branch` เมื่องานเสร็จสมบูรณ์
-4. รายงาน path และ next actions
+1. Verify the project files were actually created at the target path
+2. Run `/run-check` for the stack if needed
+3. Run `/ship-to-dev-branch` when the work is complete
+4. Report the path and next actions
 
 ## Rules
 
 ### 1. Target Path
 
-- project ต้องอยู่บน `D:\` หรือ drive ที user ระบุ
-- ไม่ overwrite existing directory โดยไม่ถาม
-- ใช้ path เป้น absolute เสมอ
+- Projects must live on `D:\` or the drive the user specifies
+- Never overwrite an existing directory without asking
+- Always use absolute paths
 
 ### 2. Skill Selection
 
-- เลือก `follow-create-*` ตาม `project-type` ทีตรงทีสุด
-- ถ้าไม่ตรง ให้ใช้ `/follow-create-sdk` เพื่อ route
-- ไม่สร้าง project โดยตรงเอง ให้ delegate ไปยัง skill เฉพาะ
+- Pick the `follow-create-*` skill whose `project-type` matches best
+- If nothing matches, use `/follow-create-sdk` to route
+- Do not create the project directly yourself; delegate to the specialized skill
 
 ### 3. Safety
 
-- ตรวจสอบ disk space ก่อนสร้าง
-- ไม่ใส่ secrets หรือ API keys ใน template
-- ถ้า target มี git repo อยู่แล้ว → ถามก่อน
+- Check disk space before creating
+- Never put secrets or API keys in templates
+- If the target already has a git repo → ask first
 
 ## Expected Outcome
 
-- Project ใหม่ถูกสร้างบน drive D ด้วยโครงสร้างทีถูกต้อง
-- ใช้ `follow-create-*` skill ตามประเภท project
-- ผ่าน validation และพร้อม ship
-- รายงาน target path, stack, และ next actions
+- The new project is created on drive D with the correct structure
+- A `follow-create-*` skill matching the project type was used
+- Validation passed and the project is ready to ship
+- Target path, stack, and next actions are reported
 

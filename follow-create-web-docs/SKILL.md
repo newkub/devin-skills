@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-docs
-description: สร้างเว็บ single-page แสดง README + docs ด้วย Comark Vue deploy Cloudflare Workers ผ่าน GitHub CI
+description: Single-page README + docs site with Comark Vue, deployed to Cloudflare Workers via GitHub CI
 argument-hint: "[repo-path]"
 related:
   - follow-create-web
@@ -17,86 +17,86 @@ related:
 
 ## Goal
 
-สร้างเว็บไซต์ single-page ที่ render `README.md` (และ `docs/` ถ้ามี) ของ repo ด้วย Comark Vue — nav แสดง repo name, GitHub link, registry badges, theme toggle — deploy ไป Cloudflare Workers ผ่าน GitHub Actions
+Build a single-page site that renders the repo's `README.md` (and `docs/` if present) with Comark Vue — nav shows the repo name, GitHub link, registry badges, theme toggle — deployed to Cloudflare Workers via GitHub Actions
 
 ## Scope
 
-ใช้เมื่อต้องการ docs site ขนาดเล็กสำหรับ repo — ไม่ใช่ docs framework ใหญ่ (ใช้ `/run-docs` สำหรับ VitePress)
+Use when you want a small docs site for a repo — not a heavyweight docs framework (use `/run-docs` for VitePress)
 
-- Output: Vue + Vite app (single page), Comark render markdown, deploy ด้วย `wrangler` + `cloudflare/wrangler-action`
-- Source of truth คือไฟล์ใน repo — `README.md` บังคับ, `docs/` optional (glob `docs/**/*.md`)
-- ไม่มี router — docs ทุกไฟล์ render ใน scroll เดียว หรือ sidebar switch ใน page เดียว
+- Output: Vue + Vite app (single page), Comark renders markdown, deployed with `wrangler` + `cloudflare/wrangler-action`
+- The source of truth is the files in the repo — `README.md` is required, `docs/` optional (glob `docs/**/*.md`)
+- No router — every docs file renders in a single scroll, or a sidebar switcher within one page
 
 ## Execute
 
 ### 1. Detect Metadata
 
-> Goal: รู้ว่า nav/docs ต้องแสดงอะไร
+> Goal: Determine what the nav/docs must show
 
-1. repo name: จาก git remote (`git remote get-url origin`) หรือ `package.json` name
-2. registries: `package.json` publishable → npm badge/link; `Cargo.toml` → crates.io; `pyproject.toml` → PyPI
-3. docs: ถ้ามี `docs/**/*.md` → enable docs pane + sidebar TOC; ถ้าไม่มี → single README pane เท่านั้น
-4. ทำตาม [references/detect-meta.md](references/detect-meta.md)
+1. Repo name: from the git remote (`git remote get-url origin`) or the `package.json` name
+2. Registries: publishable `package.json` → npm badge/link; `Cargo.toml` → crates.io; `pyproject.toml` → PyPI
+3. Docs: if `docs/**/*.md` exists → enable the docs pane + sidebar TOC; if not → single README pane only
+4. Follow [references/detect-meta.md](references/detect-meta.md)
 
 ### 2. Scaffold App
 
-> Goal: Vue + Vite app พร้อม Comark
+> Goal: Vue + Vite app ready for Comark
 
-1. ใช้ `create-docs` (canonical generator) ก่อนเสมอ — `bunx create-docs` (หรือ `npx create-docs`, repo: `wrikka/create-docs`) scaffold site ตาม spec นี้ทั้งหมด; ถ้า generator ใช้ไม่ได้ (ยังไม่ publish/network) → fallback เป็น manual steps ข้างล่าง
-2. Manual fallback: `bun create vite <name> --template vue-ts` (หรือ add เข้า repo เดิมที่ `site/` หรือ `docs-site/`)
-3. `bun add @comark/vue` และ plugins ตามต้องการ (shiki สำหรับ code highlight)
-4. ตาม [references/comark-vue.md](references/comark-vue.md) — `<Markdown>` ต้องอยู่ใน `<Suspense>`, ใช้ `:value` หรือ slot
-5. bundle markdown เป็น string ผ่าน `import readme from '../README.md?raw'` (Vite raw imports) — ไม่ต้อง fetch ตอน runtime
+1. Always prefer `create-docs` (the canonical generator) — `bunx create-docs` (or `npx create-docs`, repo: `wrikka/create-docs`) scaffolds the whole site per this spec; if the generator isn't usable (not published yet/network) → fall back to the manual steps below
+2. Manual fallback: `bun create vite <name> --template vue-ts` (or add it to the existing repo as `site/` or `docs-site/`)
+3. `bun add @comark/vue` plus plugins as needed (shiki for code highlight)
+4. Follow [references/comark-vue.md](references/comark-vue.md) — `<Markdown>` must be inside `<Suspense>`, use `:value` or a slot
+5. Bundle the markdown as strings via `import readme from '../README.md?raw'` (Vite raw imports) — no runtime fetching
 
 ### 3. Build Layout
 
-> Goal: layout ตรง spec — simple clean
+> Goal: layout per spec — simple and clean
 
-1. Nav: repo name ซ้าย, ขวา = registry badges (npm/crates ถ้ามี) + GitHub icon link + theme toggle icon (sun/moon)
-2. Desktop (≥1024px): 2 columns — ซ้าย README render `position: sticky`, ขวา docs พร้อม sidebar TOC (ถ้ามี docs)
-3. Mobile: README scroll ปกติก่อน — เมื่อเลื่อนสุดแล้ว docs pane เป็น `h-screen` scroll แยก
-4. ตาม [references/layout.md](references/layout.md) — CSS ให้น้อย, system font, max-width readable
+1. Nav: repo name on the left, right side = registry badges (npm/crates if present) + GitHub icon link + theme toggle icon (sun/moon)
+2. Desktop (≥1024px): 2 columns — left README render with `position: sticky`, right docs with a sidebar TOC (if docs exist)
+3. Mobile: README scrolls normally first — once scrolled to the end, the docs pane becomes an `h-screen` separate scroll
+4. Follow [references/layout.md](references/layout.md) — minimal CSS, system font, readable max-width
 
 ### 4. Deploy To Cloudflare Workers
 
-> Goal: CI deploy ทุก push บน main
+> Goal: CI deploys on every push to main
 
-1. `bun add -D wrangler` + `wrangler.toml` (assets ชี้ `dist/`, SPA fallback)
-2. GitHub Actions workflow ตาม [references/deploy-cloudflare.md](references/deploy-cloudflare.md) — `cloudflare/wrangler-action@v3` + secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-3. ทำ `/run-docs` หรือ `bun run build` + `wrangler deploy --dry-run` verify ก่อน push
+1. `bun add -D wrangler` + `wrangler.toml` (assets point to `dist/`, SPA fallback)
+2. GitHub Actions workflow per [references/deploy-cloudflare.md](references/deploy-cloudflare.md) — `cloudflare/wrangler-action@v3` + secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
+3. Run `/run-docs` or `bun run build` + `wrangler deploy --dry-run` to verify before pushing
 
 ## Rules
 
 ### 1. Simplicity
 
-- single page เท่านั้น — ไม่เพิ่ม router, ไม่เพิ่ม state management
-- สไตล์ minimal: system font stack, spacing เดียว, theme แค่ light/dark
-- ห้าม hard-code repo name/registry — detect จาก repo จริง
+- Single page only — don't add a router, don't add state management
+- Minimal style: system font stack, one spacing scale, light/dark themes only
+- Never hard-code the repo name/registry — detect from the actual repo
 
 ### 2. Content Integrity
 
-- render README/docs ตรงๆ — ไม่ rewrite เนื้อหา
-- internal links ใน docs ให้ทำงานใน sidebar TOC ได้
+- Render README/docs as-is — don't rewrite the content
+- Internal links within the docs should work with the sidebar TOC
 
 ### 3. Safety
 
-- ไม่ deploy จริงโดยไม่ได้รับอนุญาต — build + dry-run เท่านั้นจนกว่า user confirm
-- secrets ใช้ GitHub secrets เท่านั้น ห้าม commit
+- Don't deploy for real without permission — build + dry-run only until the user confirms
+- Use GitHub secrets for secrets only; never commit them
 
-- ใช้ /follow-lib-vue ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-create-web-nuxt ถ้าจำเป็น
-- ใช้ /update-docs ถ้าจำเป็น
-- ใช้ /ship-to-dev-branch ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-lib-vue when needed
+- Use /follow-service-cloudflare when needed
+- Use /follow-tool-github-actions when needed
+- Use /suggest-next-action when needed
+- Use /follow-create-web when needed
+- Use /follow-create-web-nuxt when needed
+- Use /update-docs when needed
+- Use /ship-to-dev-branch when needed
+- Use /report when needed
 
 
 ## Expected Outcome
 
-- single-page site render README (+docs) ด้วย Comark Vue ถูก layout spec
-- nav มี repo name, GitHub link, registry badges, theme toggle
-- GitHub Actions deploy ไป Cloudflare Workers พร้อมใช้งาน
-- ผ่าน local build และ `wrangler deploy --dry-run`
+- Single-page site renders README (+docs) with Comark Vue per the layout spec
+- Nav has the repo name, GitHub link, registry badges, and theme toggle
+- GitHub Actions deploys to Cloudflare Workers and is ready to use
+- Passes local build and `wrangler deploy --dry-run`

@@ -1,6 +1,6 @@
 ---
 name: update-github-metadata
-description: อัปเดต GitHub repo metadata (description, homepage, topics, default branch) ให้ตรงกับ project จริง
+description: Update GitHub repo metadata (description, homepage, topics, default branch) to match the project
 argument-hint: "[owner/repo]"
 related:
   - git-push
@@ -15,128 +15,128 @@ related:
 
 ## Goal
 
-อัปเดต GitHub repository metadata ให้สะท้อน project จริง ครบทั้ง description, homepage, topics, และ default branch
+Update GitHub repository metadata to reflect the real project, covering description, homepage, topics, and default branch
 
 ## Scope
 
-ใช้หลัง push หรือหลัง `update-project` เพื่อ sync GitHub repo metadata กับเนื้อหาใน `README.md`, `package.json` และ `AGENTS.md` รวมถึง Cloudflare project URL จาก `/list-cloudflare-projects` ครอบคลุม metadata ที่ตั้งผ่าน `gh repo edit` ไม่แก้ไข code, docs หรือ license
+Use after push or after `update-project` to sync GitHub repo metadata with the content in `README.md`, `package.json`, and `AGENTS.md`, including the Cloudflare project URL from `/list-cloudflare-projects`. Covers metadata set via `gh repo edit`; does not edit code, docs, or license
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: ตรวจสภาพแวดล้อมก่อนอ่านไฟล์
+> Goal: Check the environment before reading files
 
-1. ตรวจสอบว่า `gh` พร้อมใช้งาน โดยรัน `gh auth status`
-2. ถ้า `gh` ไม่ได้ login → stop และ report
-3. ระบุ `<owner/repo>` จาก argument, `package.json` field `repository.url` หรือ remote `origin` (`git remote get-url origin`)
+1. Verify `gh` is available by running `gh auth status`
+2. If `gh` is not logged in → stop and report
+3. Determine `<owner/repo>` from the argument, the `package.json` field `repository.url`, or the `origin` remote (`git remote get-url origin`)
 
 ### 2. Gather Project Info
 
-> Goal: รวมข้อมูลจาก project files เป้นค่าทีตั้งได้
+> Goal: Gather data from project files into settable values
 
-1. อ่าน `README.md` บรรทัดแรกที่ไม่ใช่ badge (`>`) หรือ heading เป็น `description` สั้น
-2. อ่าน `package.json` fields: `name`, `description`, `homepage`, `repository.url`, `license`
-3. อ่าน `AGENTS.md` ส่วน `### Architecture`, `### Platform` หรือ `### Skills` เพื่อระบุ `topics` จาก tech stack
-4. ถ้า `package.json` ไม่มี `homepage` → ค้นหา `VITE_APP_URL`, `APP_URL` หรือ production URL ใน `wrangler.toml`, `.env.example`, หรือ `AGENTS.md`
-5. ถ้า project ใช้ Cloudflare (มี `wrangler.toml`, `cloudflare` ใน `package.json` หรือ `AGENTS.md`) → ทำ `/list-cloudflare-projects` เพื่อหา production URL และ topic candidates เช่น `cloudflare-workers`, `cloudflare-pages`
-6. ถ้าไม่มี `README.md` หรือ `package.json` → stop และ report
+1. Read the first `README.md` line that is not a badge (`>`) or heading as the short `description`
+2. Read the `package.json` fields: `name`, `description`, `homepage`, `repository.url`, `license`
+3. Read the `AGENTS.md` `### Architecture`, `### Platform`, or `### Skills` sections to derive `topics` from the tech stack
+4. If `package.json` has no `homepage` → search for `VITE_APP_URL`, `APP_URL`, or a production URL in `wrangler.toml`, `.env.example`, or `AGENTS.md`
+5. If the project uses Cloudflare (has `wrangler.toml`, or `cloudflare` in `package.json` or `AGENTS.md`) → run `/list-cloudflare-projects` to find the production URL and topic candidates such as `cloudflare-workers`, `cloudflare-pages`
+6. If there is no `README.md` or `package.json` → stop and report
 
 ### 3. Determine Desired Metadata
 
-> Goal: สร้าง target metadata ทีจะตั้ง
+> Goal: Build the target metadata to set
 
-1. `description` = บรรทัดสั้นที่สุดจาก `README.md` หรือ `package.json.description` (ไม่เกิน 350 ตัวอักษร)
-2. `homepageUrl` = `package.json.homepage` → production URL จาก `wrangler.toml`/`.env.example`/`AGENTS.md` → URL จาก `/list-cloudflare-projects`
-3. `defaultBranchRef` = `main` (ถ้า project ใช้ branch อื่น ให้ใช้ค่านั้น)
-4. `topics` = ไม่เกิน 10 topics จาก tech stack เรียงลำดับ: framework > language > platform > tool > service > domain; ถ้าใช้ Cloudflare ให้เพิ่ม `cloudflare-workers` หรือ `cloudflare-pages` ตามประเภท
-5. ไม่เปลี่ยน `license` — ถ้า `licenseInfo` ไม่ตรงกับ `package.json.license` ให้ report ไว้แต่ไม่อัปเดต
+1. `description` = the shortest line from `README.md` or `package.json.description` (no more than 350 characters)
+2. `homepageUrl` = `package.json.homepage` → production URL from `wrangler.toml`/`.env.example`/`AGENTS.md` → URL from `/list-cloudflare-projects`
+3. `defaultBranchRef` = `main` (if the project uses another branch, use that value)
+4. `topics` = no more than 10 topics from the tech stack, ordered: framework > language > platform > tool > service > domain; if using Cloudflare, add `cloudflare-workers` or `cloudflare-pages` by type
+5. Do not change `license` — if `licenseInfo` differs from `package.json.license`, report it but do not update
 
 ### 4. Check Current Metadata
 
-> Goal: ทราบ metadata ปัจจุบันก่อนอัปเดต
+> Goal: Know the current metadata before updating
 
-1. รัน `gh repo view <owner/repo> --json defaultBranchRef,description,homepageUrl,licenseInfo,repositoryTopics,isPrivate`
-2. ถ้า `repositoryTopics` เป็น `null` ให้ถือว่า topic list ว่าง
-3. เปรียบเทียบ current กับ desired
-4. ระบุ fields และ topics ที่ต้องอัปเดต
+1. Run `gh repo view <owner/repo> --json defaultBranchRef,description,homepageUrl,licenseInfo,repositoryTopics,isPrivate`
+2. If `repositoryTopics` is `null`, treat the topic list as empty
+3. Compare current with desired
+4. Identify the fields and topics to update
 
 ### 5. Update Metadata
 
-> Goal: ตั้งค่า metadata ให้ตรงกับ project
+> Goal: Set the metadata to match the project
 
-1. ถ้า `description` เปลี่ยน → รัน `gh repo edit <owner/repo> --description "<description>"`
-2. ถ้า `homepageUrl` เปลี่ยน → รัน `gh repo edit <owner/repo> --homepage "<homepage-url>"`
-3. ถ้า `defaultBranchRef` ไม่ตรง → รัน `gh repo edit <owner/repo> --default-branch <default-branch>`
-4. คำนวณ topic diff:
+1. If `description` changed → run `gh repo edit <owner/repo> --description "<description>"`
+2. If `homepageUrl` changed → run `gh repo edit <owner/repo> --homepage "<homepage-url>"`
+3. If `defaultBranchRef` differs → run `gh repo edit <owner/repo> --default-branch <default-branch>`
+4. Compute the topic diff:
    - `topics_to_add` = desired topics - current topics
    - `topics_to_remove` = current topics - desired topics
-5. ถ้า `topics_to_add` ไม่ว่าง → รัน `gh repo edit <owner/repo> --add-topic <t1> --add-topic <t2> ...` สำหรับแต่ละ topic
-6. ถ้า `topics_to_remove` ไม่ว่าง → รัน `gh repo edit <owner/repo> --remove-topic <t1> --remove-topic <t2> ...`
-7. ถ้า repo เป็น public (`isPrivate: false`) → รัน `gh repo edit <owner/repo> --enable-issues=true --enable-wiki=false`
+5. If `topics_to_add` is not empty → run `gh repo edit <owner/repo> --add-topic <t1> --add-topic <t2> ...` for each topic
+6. If `topics_to_remove` is not empty → run `gh repo edit <owner/repo> --remove-topic <t1> --remove-topic <t2> ...`
+7. If the repo is public (`isPrivate: false`) → run `gh repo edit <owner/repo> --enable-issues=true --enable-wiki=false`
 
 ### 6. Verify
 
-> Goal: ยืนยัน metadata อัปเดตสำเร็จ
+> Goal: Confirm the metadata updated successfully
 
-1. รัน `gh repo view <owner/repo> --json defaultBranchRef,description,homepageUrl,licenseInfo,repositoryTopics`
-2. เปรียบเทียบผลกับ desired metadata
-3. ถ้าไม่ตรง → retry ครั้งเดียว ถ้ายังไม่ตรง → report
+1. Run `gh repo view <owner/repo> --json defaultBranchRef,description,homepageUrl,licenseInfo,repositoryTopics`
+2. Compare the result with the desired metadata
+3. If it does not match → retry once; if it still does not match → report
 
 ### 7. Report
 
-> Goal: รายงานผลกระชับ
+> Goal: Report the result concisely
 
-1. สร้างตาราง Before/After ของ fields ที่เปลี่ยน
-2. ระบุ topics ที่เพิ่ม/ลบ
-3. ระบุ fields ที่ไม่ต้องอัปเดต
-4. รายงานใน chat ไม่สร้างไฟล์
+1. Build a Before/After table of the changed fields
+2. List the topics added/removed
+3. List the fields that did not need updating
+4. Report in chat; do not create a file
 
 ## Rules
 
 ### 1. Source Of Truth
 
-- `README.md` บรรทัดแรกไม่ใช่ badge เป็น source หลักของ `description`
-- `package.json` เป็น source ของ `homepage` (fallback จาก config/deploy)
-- `AGENTS.md` `### Architecture`, `### Platform` และ `package.json` dependencies เป็น source ของ `topics`
-- ไม่เปลี่ยน `license` — ถ้าต่างจาก `package.json.license` ให้ report
+- The first non-badge line of `README.md` is the main source for `description`
+- `package.json` is the source of `homepage` (fall back to config/deploy)
+- `AGENTS.md` `### Architecture`, `### Platform`, and `package.json` dependencies are the source of `topics`
+- Do not change `license` — if it differs from `package.json.license`, report it
 
 ### 2. Topic Selection
 
-- ห้ามใส่ generic topics เช่น `awesome`, `cool`, `project`
-- เลือก topics ที่เกี่ยวข้องกับ tech stack จริง และพบได้บน GitHub
-- ถ้า project อยู่บน Cloudflare ให้เพิ่ม `cloudflare`, `cloudflare-workers` หรือ `cloudflare-pages` ตามประเภท
-- จำกัดไม่เกิน 10 topics
-- ลำดับความสำคัญ: framework > language > platform > tool > service > domain
+- Never add generic topics such as `awesome`, `cool`, `project`
+- Choose topics relevant to the real tech stack and discoverable on GitHub
+- If the project is on Cloudflare, add `cloudflare`, `cloudflare-workers`, or `cloudflare-pages` by type
+- Limit to no more than 10 topics
+- Priority order: framework > language > platform > tool > service > domain
 
 ### 3. Idempotent
 
-- ตรวจ current metadata ก่อนเสมอ
-- คำนวณ diff ก่อน `add`/`remove` topics
-- ไม่อัปเดต field ใดๆ ถ้าค่าเหมือนเดิม
-- ถ้าทุก field ถูกต้อง → report ว่าไม่ต้องอัปเดต ไม่ถือว่า error
+- Always check the current metadata first
+- Compute the diff before `add`/`remove` topics
+- Do not update any field whose value is unchanged
+- If every field is correct → report that no update is needed; this is not an error
 
 ### 4. Safety
 
-- ไม่ลบ license ที่ตั้งไว้
-- ไม่เปลี่ยน visibility ของ repo (public/private)
-- ไม่ rename repo
-- ถ้า `gh` ไม่พร้อม → หยุดและ report
+- Do not delete an existing license
+- Do not change the repo visibility (public/private)
+- Do not rename the repo
+- If `gh` is unavailable → stop and report
 
 ### 5. Related Actions
 
-- ใช้ `/git-push` ถ้าจำเป็นต้อง push ก่อน
-- ใช้ `/follow-dot-github` ถ้าจำเป็นต้องตรวจ GitHub settings
-- ใช้ `/list-github-repo` ถ้าจำเป็นต้อง list repos
-- ใช้ `/list-cloudflare-projects` ถ้าจำเป็นต้องหา Cloudflare URL
-- ใช้ `/create-github-repo` ถ้า repo ยังไม่มี
-- ใช้ `/ask-me` ถ้าไม่แน่ใจเรื่อง topics หรือ homepage
+- Use `/git-push` if you need to push first
+- Use `/follow-dot-github` if you need to check GitHub settings
+- Use `/list-github-repo` if you need to list repos
+- Use `/list-cloudflare-projects` if you need to find a Cloudflare URL
+- Use `/create-github-repo` if the repo does not exist yet
+- Use `/ask-me` if you are unsure about topics or homepage
 
 ## Expected Outcome
 
-- GitHub repo metadata ตรงกับ `README.md` และ `package.json`
-- description กระชับ สะท้อน project จริง
-- homepage ชี้ไปยัง production URL หรือ docs
-- topics ครบและเกี่ยวข้องกับ tech stack จริง
-- default branch เป็น `main` (หรือค่าที่ project กำหนด)
-- รายงาน Before/After ใน chat
+- GitHub repo metadata matches `README.md` and `package.json`
+- The description is concise and reflects the real project
+- The homepage points to the production URL or docs
+- The topics are complete and relevant to the real tech stack
+- The default branch is `main` (or the value the project defines)
+- A Before/After report is given in chat

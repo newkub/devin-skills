@@ -1,19 +1,19 @@
 # Step: Update Workspaces READMEs
 
-> Goal: อัปเดต README ทุก workspace ใน monorepo
+> Goal: Update the README of every workspace in the monorepo
 
 ## Execute
 
-1. ทำ `/all-workspace` เพื่อ update README ทุก workspaces
-2. ไม่ต้องมี `License` section (ใช้ของ root)
-3. ไม่ต้องมี `## Contributing` section (ใช้ของ root)
-4. ถ้า workspace ไม่มี `package.json` → skip และ report
-5. ถ้า update fail → retry (max 3 → stop/report)
+1. Run `/all-workspace` to update the README of all workspaces
+2. No `License` section (use the root one)
+3. No `## Contributing` section (use the root one)
+4. If a workspace has no `package.json` → skip and report
+5. If the update fails → retry (max 3 → stop/report)
 
 ## Rules
 
-- Workspace README ใช้ template เดียวกับ root แต่:
-  - ไม่มี `## License` (ใช้ของ root)
-  - ไม่มี `## Contributing` (ใช้ของ root)
-  - มี Status, Hero, Report ANSI, UI Sketch, Get Started, Features, Usage
+- The workspace README uses the same template as the root, but:
+  - no `## License` (use the root one)
+  - no `## Contributing` (use the root one)
+  - includes Status, Hero, Report ANSI, UI Sketch, Get Started, Features, Usage
 

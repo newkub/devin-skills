@@ -1,6 +1,6 @@
 ---
 name: follow-deploy-deploy-cloudflare
-description: Deploy ไป Cloudflare โดย delegate ไปยัง /deploy-to-cloudflare skill
+description: Deploy to Cloudflare by delegating to the /deploy-to-cloudflare skill
 argument-hint: "[target]"
 related:
   - deploy-to-cloudflare
@@ -12,62 +12,62 @@ related:
 
 ## Goal
 
-Map generic deploy flow ของ `/follow-deploy` ไปยัง Cloudflare โดย delegate งาน platform-specific ทั้งหมดไปยัง `/deploy-to-cloudflare`
+Map the generic `/follow-deploy` flow to Cloudflare by delegating all platform-specific work to `/deploy-to-cloudflare`
 
 ## Scope
 
-- ใช้เมื่อ parent `/follow-deploy` เลือก Cloudflare เป็น target platform
-- workflow นี้เป็น dispatch layer เท่านั้น — workflow จริงอยู่ที่ `/deploy-to-cloudflare` และ `/follow-service-cloudflare`
-- เหมาะกับ edge computing, serverless Workers, Pages sites และ framework ที่ deploy ไป Cloudflare
+- Use when the parent `/follow-deploy` selects Cloudflare as the target platform
+- This workflow is a dispatch layer only — the real workflow lives in `/deploy-to-cloudflare` and `/follow-service-cloudflare`
+- Suits edge computing, serverless Workers, Pages sites, and frameworks deployed to Cloudflare
 
 ## Execute
 
 ### 1. Confirm Target
 
-> Goal: ยืนยันว่า target คือ Cloudflare และ project พร้อม
+> Goal: confirm the target is Cloudflare and the project is ready
 
-1. ตรวจ project type — Workers/Pages (`wrangler.toml`/`wrangler.jsonc`) หรือ framework ที่ deploy ไป Cloudflare
-2. ถ้าไม่ชัดว่า Workers หรือ Pages → `/ask-me`
-3. ตรวจ prerequisites: env vars/secrets ครบผ่าน `/follow-secret-manager`
+1. Check project type — Workers/Pages (`wrangler.toml`/`wrangler.jsonc`) or a framework deployed to Cloudflare
+2. If unclear whether Workers or Pages → `/ask-me`
+3. Check prerequisites: env vars/secrets complete via `/follow-secret-manager`
 
 ### 2. Map Generic Requirements
 
-> Goal: map concepts ของ parent flow ไปยัง Cloudflare equivalents
+> Goal: map the parent flow's concepts to Cloudflare equivalents
 
-1. env vars/secrets → `wrangler secret put` หรือ `vars` ใน `wrangler.toml`/`wrangler.jsonc`
+1. env vars/secrets → `wrangler secret put` or `vars` in `wrangler.toml`/`wrangler.jsonc`
 2. staging environment → `wrangler deploy --env staging`
-3. deployment URL → `*.workers.dev` หรือ custom domain ที่ bind
-4. version id → output ของ `wrangler deploy` / `wrangler deployments list`
+3. deployment URL → `*.workers.dev` or the bound custom domain
+4. version id → output of `wrangler deploy` / `wrangler deployments list`
 
 ### 3. Delegate To Platform Skill
 
-> Goal: ใช้ skill เฉพาะ platform แทน generic flow
+> Goal: use the platform-specific skill instead of the generic flow
 
-1. ทำตาม `/deploy-to-cloudflare` ทั้ง flow — build, deploy, post-deploy verify
-2. ถ้าต้อง setup/auth wrangler ก่อน → ทำตาม `follow-service-cloudflare/workflows/setup-wrangler/SKILL.md`
-3. ถ้าต้องแก้ bindings/environments → ทำตาม `follow-service-cloudflare/workflows/config-bindings/SKILL.md`
-4. ถ้า deploy worker เฉพาะ → ทำตาม `follow-service-cloudflare/workflows/deploy-worker/SKILL.md`
+1. Follow the whole `/deploy-to-cloudflare` flow — build, deploy, post-deploy verify
+2. If wrangler setup/auth is needed first → follow `follow-service-cloudflare/workflows/setup-wrangler/SKILL.md`
+3. If bindings/environments need changes → follow `follow-service-cloudflare/workflows/config-bindings/SKILL.md`
+4. If deploying a worker only → follow `follow-service-cloudflare/workflows/deploy-worker/SKILL.md`
 
 ### 4. Report
 
-> Goal: รายงานผล deploy ตาม generic contract ของ parent
+> Goal: report deploy results per the parent's generic contract
 
-1. report deployment URL, version/revision id และผล post-deploy verify
-2. ถ้า fail → `/resolve-errors` max 3 รอบแล้ว stop report
+1. report deployment URL, version/revision id, and post-deploy verify results
+2. if fail → `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
 ### 1. Delegate Only
 
-- ห้าม duplicate platform logic ใน workflow นี้ — delegate ไป `/deploy-to-cloudflare` เสมอ
-- ถ้า `/deploy-to-cloudflare` ไม่ครอบคลุม case → ใช้ `/follow-service-cloudflare` workflow ที่ตรง
+- never duplicate platform logic in this workflow — always delegate to `/deploy-to-cloudflare`
+- if `/deploy-to-cloudflare` doesn't cover the case → use the matching `/follow-service-cloudflare` workflow
 
 ### 2. Safety
 
-- staging/preview ก่อน production ตาม rules ของ parent
-- secrets ผ่าน `/follow-secret-manager` เท่านั้น — ห้าม hardcode
+- staging/preview before production per the parent's rules
+- secrets only via `/follow-secret-manager` — never hardcode
 
 ## Expected Outcome
 
-- deploy ผ่าน `/deploy-to-cloudflare` สำเร็จพร้อม URL + version
-- ผลรายงานกลับ parent flow ของ `/follow-deploy`
+- deploy via `/deploy-to-cloudflare` succeeds with URL + version
+- results reported back to the parent flow of `/follow-deploy`

@@ -1,6 +1,6 @@
 ---
 name: create-report-in-dot-devin
-description: สร้าง report ละเอียดใน .devin/temp/report/<workspace>/ — tables, file structure, what-you-do
+description: Detailed report in .devin/temp/report/<workspace>/ — tables, file structure, what-you-do
 argument-hint: "[title]"
 related:
   - create-plan-in-dot-devin
@@ -16,123 +16,123 @@ related:
 
 ## Goal
 
-สร้าง report ละเอียดใน `.devin/temp/report/<workspace>/<title>-<time>.md` คล้ายกับ `/create-plan-in-dot-devin` แต่ focus ที่ features, file structure และ progress แบ่ง phase
+Create a detailed report at `.devin/temp/report/<workspace>/<title>-<time>.md`, similar to `/create-plan-in-dot-devin` but focused on features, file structure, and phase-split progress
 
 ## Scope
 
-- รับ request, title หรือ context จาก argument
-- สร้าง report ที่มี 3 tables:
+- Take a request, title, or context from the argument
+- Create a report with 3 tables:
   1. New features
   2. Extended features
-  3. What-you-do แบ่งเป็น phase
-- รวม `/report-file-structure` ของ project
-- บันทึกลง `.devin/temp/report/<workspace>/<title>-<time>.md`
-- ไม่ลบไฟล์หลังสร้าง (ลบตาม context หรืองานเสร็จ)
+  3. What-you-do split into phases
+- Include the project's `/report-file-structure`
+- Save to `.devin/temp/report/<workspace>/<title>-<time>.md`
+- Do not delete the file right after creating it (delete per context or when the work is done)
 
 ## Execute
 
 ### 1. Capture Context
 
-> Goal: เข้าใจ context ก่อนสร้าง report
+> Goal: Understand the context before creating the report
 
-1. รับ `<title>` และ context จาก argument
-2. ถ้า title ขาด → derived จาก context หรือถาม user
-3. แปลง title เป็น kebab-case
-4. ใช้ `YYYYMMDDHHMMSS` เป็น time
-5. ระบุ `<workspace>` = ชื่อ directory ของ target workspace เช่น `apps/cli/agent-browser` → `agent-browser` (ถ้าเป็น single project ใช้ชื่อ root folder)
-6. สร้าง path `.devin/temp/report/<workspace>/<title>-<time>.md`
+1. Take `<title>` and context from the argument
+2. If the title is missing → derive it from context or ask the user
+3. Convert the title to kebab-case
+4. Use `YYYYMMDDHHMMSS` as the time
+5. Determine `<workspace>` = the target workspace's directory name, e.g. `apps/cli/agent-browser` → `agent-browser` (for a single project use the root folder name)
+6. Build the path `.devin/temp/report/<workspace>/<title>-<time>.md`
 
 ### 2. Analyze And Gather Data
 
-> Goal: รวบรวมข้อมูลสำหรับ report
+> Goal: Gather the data for the report
 
-1. ทำ `/deep-analyze` เพื่อดู features ที่มี
-2. ทำ `/scan-codebase` เพื่อดู structure
-3. ถ้าเกี่ยวข้องกับ features → ทำ `/idea-features` แบบไม่เปิด web app เพื่อดู new/extended features
-4. ถ้ามี plan อยู่ → อ่าน `.devin/temp/plan/<workspace>/<title>-<time>.md`
+1. Run `/deep-analyze` to see the existing features
+2. Run `/scan-codebase` to see the structure
+3. If features are involved → run `/idea-features` without opening the web app to get new/extended features
+4. If a plan exists → read `.devin/temp/plan/<workspace>/<title>-<time>.md`
 
 ### 3. Report File Structure
 
-> Goal: รวมโครงสร้างไฟล์ใน report
+> Goal: Include the file structure in the report
 
-1. ทำ `/report-file-structure`
-2. สรุป tree view และสถิติสำคัญ
-3. ใส่ไว้ใน report ส่วน `## File Structure`
+1. Run `/report-file-structure`
+2. Summarize the tree view and key statistics
+3. Place it in the report under `## File Structure`
 
 ### 4. Build Feature Tables
 
-> Goal: สร้าง 2 tables สำหรับ features
+> Goal: Build the 2 tables for features
 
 1. Table 1: New features
    - columns: No., Feature, Description, Phase, Effort, MVP Score, Risk
 2. Table 2: Extended features
    - columns: No., Feature, Description, Phase, Effort, MVP Score, Risk
-3. จัดลำดับตาม MVP Score สูง → ต่ำ
-4. ระบุ Phase: MVP, v2, v3
-5. ระบุ Effort: S, M, L, XL
+3. Order by MVP Score high → low
+4. Set Phase: MVP, v2, v3
+5. Set Effort: S, M, L, XL
 
 ### 5. Build What-You-Do Table
 
-> Goal: สร้าง table แบ่ง phase สำหรับสิ่งที agent ทำหรือต้องทำ
+> Goal: Build a phase-split table of what the agent did or must do
 
-1. แบ่งเป็น phase: Prepare, Analyze, Write, Validate, Report
-2. แต่ละ phase ระบุสิ่งทีทำ, สถานะ, หมายเหตุ
+1. Split into phases: Prepare, Analyze, Write, Validate, Report
+2. For each phase list the action, status, and notes
 3. columns: No., Phase, Action, Status, Note
-4. ใช้ `/suggest-next-action` เพื่อช่วยสร้างเนื้อหา
+4. Use `/suggest-next-action` to help draft the content
 
 ### 6. Write Report File
 
-> Goal: บันทึก report ลงไฟล์
+> Goal: Save the report to a file
 
-1. สร้าง directory `.devin/temp/report/<workspace>/` ถ้ายังไม่มี
-2. เขียนไฟล์ `.devin/temp/report/<workspace>/<title>-<time>.md` ด้วย frontmatter:
+1. Create the directory `.devin/temp/report/<workspace>/` if missing
+2. Write the file `.devin/temp/report/<workspace>/<title>-<time>.md` with frontmatter:
    - `title`, `description`, `status: pending`, `created`
    - sections: `## Goal`, `## Scope`, `## New Features`, `## Extended Features`, `## What You Do`, `## File Structure`, `## Notes`
-3. ใช้ `/report` สำหรับทุก table
-4. ใช้ `write` tool สร้างไฟล์
-5. รายงาน path ให้ผู้ใช้
+3. Use `/report` for every table
+4. Use the `write` tool to create the file
+5. Report the path to the user
 
 ### 7. Update References
 
-> Goal: อัปเดต references ที่เกี่ยวข้อง
+> Goal: Update the related references
 
-1. ทำ `/update-references` กับทุก skill ที่อ้างอิง `create-report-in-dot-devin`
-2. ถ้ามี `AGENTS.md` → อัปเดต slash command
+1. Run `/update-references` on every skill that references `create-report-in-dot-devin`
+2. If there is an `AGENTS.md` → update the slash command
 
 ## Rules
 
 ### 1. File Location
 
-- ไฟล์ต้องอยู่ใน `.devin/temp/report/<workspace>/`
-- `<workspace>` ใช้ชื่อ directory ของ workspace เท่านั้น ห้ามเป็น relative path เช่น `apps/cli`
-- ชื่อไฟล์ format `<title>-<time>.md`
-- title เป็น kebab-case
-- time ใช้ `YYYYMMDDHHMMSS`
+- Files must live in `.devin/temp/report/<workspace>/`
+- `<workspace>` uses only the workspace directory name — never a relative path like `apps/cli`
+- File names use the `<title>-<time>.md` format
+- The title is kebab-case
+- The time uses `YYYYMMDDHHMMSS`
 
 ### 2. Report Tables
 
-- ต้องมี 3 tables: New Features, Extended Features, What You Do
-- ทุก table ต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก
-- เรียงลำดับ 1, 2, 3, ...
-- ใช้ `/report` เพื่อจัดรูปแบบ
+- Must include 3 tables: New Features, Extended Features, What You Do
+- Every table must have a "No." column first
+- Number in order 1, 2, 3, ...
+- Use `/report` for formatting
 
 ### 3. File Structure
 
-- รวม `/report-file-structure` ใน report
-- ไม่เกิน 3 levels สำหรับ project ใหญ่
-- กรอง `node_modules`, `.git`, `dist`, `build`
+- Include `/report-file-structure` in the report
+- At most 3 levels for large projects
+- Filter out `node_modules`, `.git`, `dist`, `build`
 
 ### 4. Cleanup
 
-- ลบ report ทันทีเมื่องานเสร็จถ้า context ระบุ
-- ไม่เก็บ report ค้างถ้าไม่จำเป็น
+- Delete the report immediately when the work is done if the context says so
+- Do not keep reports around unnecessarily
 
-- ใช้ /open-files-in-web ถ้าจำเป็น
+- Use /open-files-in-web if needed
 
 ## Expected Outcome
 
-- ไฟล์ report `.devin/temp/report/<workspace>/<title>-<time>.md` ถูกสร้าง
-- Report มี 3 tables ครบถ้วน
-- รวม `/report-file-structure`
-- ใช้ `/suggest-next-action` แบ่ง phase
-- References อัปเดตครบ
+- The report file `.devin/temp/report/<workspace>/<title>-<time>.md` is created
+- The report contains all 3 tables
+- `/report-file-structure` is included
+- `/suggest-next-action` was used to split phases
+- References are fully updated

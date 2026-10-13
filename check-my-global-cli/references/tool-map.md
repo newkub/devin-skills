@@ -1,7 +1,7 @@
 # Tool Map
 
 > Canonical map: action → preferred CLI tool → install command → related skill.
-> Maintain โดย `/check-my-global-cli` (อัปเดตตาม tools ที่ติดตั้งจริง — inventory เต็มอยู่ที่ `check-my-global-cli/references/global-cli-commands.md`) — verified 2026-09-13
+> Maintained by `/check-my-global-cli` (updated to match the tools actually installed — the full inventory lives at `check-my-global-cli/references/global-cli-commands.md`) — verified 2026-09-13
 
 ## API Testing And Docs
 
@@ -9,9 +9,9 @@
 |--------|------|---------|-------|
 | run plain-text API tests | `hurl` | `scoop install hurl` / `winget install hurl` / `bun add -D @orangeopensource/hurl` | `/deep-test api`, `/follow-tool-hurl` |
 | run API collections | `bru` | `scoop install bruno` / `bun add -D @usebruno/cli` | `/deep-test api`, `/follow-tool-bruno` |
-| import spec → collection | `bru import openapi` | เหมือนข้างบน | `/follow-tool-bruno` |
+| import spec → collection | `bru import openapi` | same as above | `/follow-tool-bruno` |
 | serve/mock/validate OpenAPI | `scalar` | `bun add -D @scalar/cli` (Node >=24) | `/run-api-docs`, `/follow-tool-scalar` |
-| generate spec from code | generator ของ framework | per framework | framework generator |
+| generate spec from code | the framework's generator | per framework | framework generator |
 | property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/deep-test api` |
 | quick request / ad-hoc HTTP | `xh` | installed (mise cargo:xh) | `/deep-test api` |
 | interactive API client | `slumber` | installed | `/deep-test api` |
@@ -55,7 +55,7 @@
 | GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*`, `/list-all-github-pr`, `/list-all-github-issue` |
 | git worktrees | `worktrunk` / `git worktree` | installed | `/use-git-worktrees` |
 | TUI git | `lazygit` / `gitui` / `gitu` | installed | interactive |
-| Linear | `linear` CLI | installed | ad-hoc (`gh` สำหรับ GitHub) |
+| Linear | `linear` CLI | installed | ad-hoc (`gh` for GitHub) |
 | update GH Actions versions | `actions-up` | installed | `/setup-cicd` |
 | AI commit message | `aicommits` | installed | `/git-commit` |
 | commits/branches | `git` | built-in | `/git-commit`, `/list-git` |
@@ -80,7 +80,7 @@
 | git hooks | `hk` / `lefthook` | installed | `/follow-tool-hk` |
 | clone template | `giget` | installed | `/create-*` |
 | compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
-| compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defer ให้ `RUSTC_WRAPPER` ที่ชี้ sccache) |
+| compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defers to the `RUSTC_WRAPPER` pointing at sccache) |
 | build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devframe` |
 | bundle analyze/visualize (source-map accurate) | `sonda` (bundler plugin) | `bun add -D sonda` | `/follow-tool-sonda`, `/report-bundle` |
 | inspect node_modules (tree, dupes, sizes) | `node-modules-inspector` | `bunx node-modules-inspector` | `/follow-tool-node-modules-inspector`, `/report-bundle` |
@@ -93,9 +93,9 @@
 |--------|------|---------|-------|
 | browser automation (flows, record, PDF, a11y, batch) | `agent-browser` | installed | `/use-agent-browser`, `/watch-browser-*` |
 | browser inspect/debug via MCP (console, network, CSS, perf, memory, Lighthouse) | `chrome-devtools-mcp` | installed (MCP server) | `/use-chrome-devtools` |
-| WebMCP consume (list/invoke page tools) | `agent-browser webmcp` | เหมือนข้างบน | `/use-agent-browser` |
-| WebMCP implement บนเว็บตัวเอง | `document.modelContext` (page-side API) | — | `/follow-create-web-mcp` |
-| screenshot web | `agent-browser` | เหมือนข้างบน | `/capture web` |
+| WebMCP consume (list/invoke page tools) | `agent-browser webmcp` | same as above | `/use-agent-browser` |
+| WebMCP implement on your own site | `document.modelContext` (page-side API) | — | `/follow-create-web-mcp` |
+| screenshot web | `agent-browser` | same as above | `/capture web` |
 | capture evidence (component/terminal/app/all-routes) | `capture` CLI (Bun, `capture/src/presentation/cli.ts`) | — | `/capture` |
 | E2E tests | `playwright` | installed (mise npm:playwright 1.63) | `/deep-test e2e`, `/follow-tool-playwright` |
 | scrape/crawl web | `crw` | installed (MCP server) | `/follow-tool-crw` |
@@ -128,7 +128,7 @@
 | k8s | `kubectl` / `k9s` / `helm` | installed | infra skills |
 | IaC | `terraform` | installed | infra skills |
 | database TUI | `rainfrog` | installed | `/review-database` |
-| releases | `gh release` | เหมือน gh | `/run-release` |
+| releases | `gh release` | same as gh | `/run-release` |
 
 ## AI And Agents
 
@@ -143,6 +143,6 @@
 
 ## Usage
 
-1. เมื่อเลือก action จาก map → เช็ค `Get-Command <tool>` หรือ `mise list` ว่าติดตั้ง
-2. ถ้าไม่ติดตั้ง → install ตามคอลัมน์ Install (prefer `mise use -g` สำหรับ global)
-3. ถ้าไม่มีใน map → ทำ `/check-my-global-cli` เพื่อ inventory เครื่อง แล้วเพิ่มแถวใหม่ใน map นี้
+1. Once you pick an action from the map → verify the tool is installed with `Get-Command <tool>` or `mise list`
+2. If not installed → install per the Install column (prefer `mise use -g` for global)
+3. If it isn't in the map → run `/check-my-global-cli` to inventory the machine, then add a new row to this map

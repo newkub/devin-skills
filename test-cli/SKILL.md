@@ -1,6 +1,6 @@
 ---
 name: test-cli
-description: รัน CLI tests — command parsing, flags/options, exit codes, stdout/stderr contracts
+description: Run CLI tests — command parsing, flags/options, exit codes, stdout/stderr contracts
 argument-hint: "[scope]"
 related:
   - run-test
@@ -16,23 +16,23 @@ related:
 
 ## Goal
 
-รัน CLI tests — command parsing, flags/options, exit codes, stdout/stderr contracts — signals: `bin` field, commander/clap/cobra defs, `*.cli.test.*`, `cli/` test dirs
+Run CLI tests — command parsing, flags/options, exit codes, stdout/stderr contracts — signals: `bin` field, commander/clap/cobra defs, `*.cli.test.*`, `cli/` test dirs
 
 ## Scope
 
-ใช้เมื่อต้องรัน CLI tests — run-only ไม่แก้ tests (analysis ลึก → `/deep-test cli`)
+Use when CLI tests must be run — run-only, does not fix tests (deep analysis → `/deep-test cli`)
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `test-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test)
+> Pre-Run: always run `/deep-review` first — `test-*` skills must be reviewed/assessed before the main work; never skip; if a finding is a blocker, fix it or report it before running (the test)
 
 ### 1. Detect
 
-`bin` field, command defs, `*.cli.test.*`, `bats` files, stdout snapshots; runner = project runner (spawn ผ่าน `child_process`/`assert_cmd`) หรือ `bats`; binary ต้อง build ก่อน → build ก่อนรัน
+`bin` field, command defs, `*.cli.test.*`, `bats` files, stdout snapshots; runner = project runner (spawn via `child_process`/`assert_cmd`) or `bats`; binary must be built first → build before running
 
 ### 2. Run
 
-scope CLI files (`bunx vitest run '*.cli.test.*'`); `bats tests/`; capture ทุก case = exit code + stdout + stderr; บันทึก per-command status, exit-code mismatches, output diffs
+scope CLI files (`bunx vitest run '*.cli.test.*'`); `bats tests/`; capture every case = exit code + stdout + stderr; record per-command status, exit-code mismatches, output diffs
 
 ### 3. Classify
 

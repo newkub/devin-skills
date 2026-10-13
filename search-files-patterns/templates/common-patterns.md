@@ -1,6 +1,6 @@
 # Common File And Content Patterns
 
-รายการ pattern ทั่วไปสำหรับ `search`
+Common patterns for `search`
 
 ## File Name Patterns
 
@@ -32,25 +32,25 @@
 
 ### Unused Exports
 
-- ast-grep: `export (const|let|var|function|class) $NAME` แล้วตรวจสอบว่าไม่มี `import` จากไฟล์อื่น
+- ast-grep: `export (const|let|var|function|class) $NAME` then verify no `import` from other files
 
 ### Barrel Files
 
-- ast-grep: `export * from "..."` หรือ `export { ... } from "..."`
+- ast-grep: `export * from "..."` or `export { ... } from "..."`
 
 ### Cyclic Or Bad Imports
 
-- regex: `import\s+.*\s+from\s+["\']\.\.?\/` เพื่อหา relative imports
-- ast-grep: `import $$$ from "../$PATH"` แล้ว check directory depth
+- regex: `import\s+.*\s+from\s+["\']\.\.?\/` to find relative imports
+- ast-grep: `import $$$ from "../$PATH"` then check directory depth
 
 ### Performance Hotspots
 
 - regex: `for\s*\(.*for.*\)` — nested loops
 - regex: `\.map\(.*\.map\(` — double map
-- regex: `JSON\.stringify\(.*\)` ใน loop
+- regex: `JSON\.stringify\(.*\)` inside a loop
 
 ## Usage
 
-- คัดลอก pattern ที่เหมาะสมไปใช้ใน `grep` หรือ `ast-grep`
-- ปรับ scope ตาม project language และ conventions
-- ใช้ `/report table` สำหรับสรุปผล
+- Copy the suitable pattern into `grep` or `ast-grep`
+- Adjust scope to the project language and conventions
+- Use `/report table` to summarize results

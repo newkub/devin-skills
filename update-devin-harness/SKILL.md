@@ -1,6 +1,6 @@
 ---
 name: update-devin-harness
-description: อัปเดต global rules, global skills และ global subagents ให้สอดคล้องกัน
+description: Keep global rules, global skills, and global subagents mutually aligned
 argument-hint: "[scope]"
 related:
   - update-devin
@@ -19,11 +19,11 @@ related:
 
 ## Goal
 
-ทำให้ `global_rules.md`, `devin global skills`, และ `devin global subagents` มี alignment ทีตรงกัน สอดคล้องกัน และไม่ขัดแย้งกัน
+Keep `global_rules.md`, `devin global skills`, and `devin global subagents` precisely aligned, mutually consistent, and free of conflicts.
 
 ## Scope
 
-ใช้เมื่อต้อง sync ทั้งสาม layer ของ devin ecosystem โดยเฉพาะหลังมีการ rename, merge, หรือสร้าง skills/subagents จำนวนมาก — merged จาก `/align-devin-layers` เดิม (alias stub ถูกลบ — ใช้ skill นี้โดยตรง)
+Use when syncing all three layers of the devin ecosystem, especially after renames, merges, or bulk creation of skills/subagents — merged from the old `/align-devin-layers` (alias stub removed — use this skill directly).
 
 ## Execute
 
@@ -31,92 +31,92 @@ related:
 
 | Domain | Workflow |
 |--------|----------|
-| `devin-knowledge`, `knowledge` — ตรวจ Devin knowledge notes/suggestions | `workflows/devin-knowledge/SKILL.md` |
+| `devin-knowledge`, `knowledge` — check Devin knowledge notes/suggestions | `workflows/devin-knowledge/SKILL.md` |
 
 ### 1. Inventory All Layers
 
-> Goal: รวบรวมข้อมูลจากทุก layer
+> Goal: gather information from every layer
 
-1. อ่าน `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-2. ทำ `/list-devin-global-skills`
-3. ทำ `/list-devin-global-subagents`
-4. บันทึก versions, last updated, และ critical rules
+1. Read `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+2. Run `/list-devin-global-skills`
+3. Run `/list-devin-global-subagents`
+4. Record versions, last updated, and critical rules
 
 ### 2. Run Update Workflows
 
-> Goal: อัปเดตแต่ละ layer
+> Goal: update each layer
 
-1. Sync `global_rules.md` โดยตรง — อ่านและแก้ไขไฟล์ให้สอดคล้องกับ skills/subagents
-2. ทำ `/update-devin-global-skills` เพื่อ audit และอัปเดต skills
-3. ทำ `/update-devin-global-subagents` เพื่ออัปเดต subagents
-4. บันทึก output ของแต่ละ step
+1. Sync `global_rules.md` directly — read and edit the file to match the skills/subagents
+2. Run `/update-devin-global-skills` to audit and update skills
+3. Run `/update-devin-global-subagents` to update subagents
+4. Record the output of each step
 
 ### 3. Detect Cross-Layer Misalignment
 
-> Goal: หาความไม่สอดคล้อง
+> Goal: find inconsistencies
 
-1. เปรียบเทียบ rules จาก global rules vs skills vs subagents
-2. ทำ `/scan-codebase` เพื่อค้นหา references ทั่ว repo
-3. ตรวจ references: ชื่อ skills/subagents ใน AGENTS.md, global rules, และ skill `related`
-4. ทำ `/review-devin-global-harness` หา broken references
-5. หา circular dependencies หรือ broken references
-6. ระบุ skills/subagents ทีล้าหลัง global rules
+1. Compare rules across global rules vs skills vs subagents
+2. Run `/scan-codebase` to search for references across the repo
+3. Check references: skill/subagent names in AGENTS.md, global rules, and skill `related`
+4. Run `/review-devin-global-harness` to find broken references
+5. Find circular dependencies or broken references
+6. Identify skills/subagents that lag behind global rules
 
 ### 4. Resolve Conflicts
 
-> Goal: แก้ไขความขัดแย้ง
+> Goal: resolve conflicts
 
-1. ถ้า global rules กับ skill ขัดแย้ง → ปรับ skill หรือ update global rules
-2. ถ้า subagent เรียก skill ทีไม่มี → อัปเดต subagent
-3. ถ้า skill อ้างอิง rules ทีไม่มี → เพิ่มหรือลบ reference
-4. ใช้ `/update-references` เพื่อ sync ทั่ว repo
-5. ใช้ `/use-related-skills` เพื่อหา overlaps
+1. If global rules and a skill conflict → adjust the skill or update global rules
+2. If a subagent calls a skill that doesn't exist → update the subagent
+3. If a skill references rules that don't exist → add or remove the reference
+4. Use `/update-references` to sync across the repo
+5. Use `/use-related-skills` to find overlaps
 
 ### 5. Validate Harness
 
-> Goal: ตรวจสอบความสมบูรณ์
+> Goal: check completeness
 
-1. ทำ `/deep-validate` กับ global rules
-2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-harness`
-3. ตรวจ `AGENT.md` ของ subagents ด้วย `/update-devin-global-subagents` ถ้าจำเป็น
-4. รัน `/check-reference`
-5. รัน `git diff --check`
+1. Run `/deep-validate` against global rules
+2. Check frontmatter of all skills with `/review-devin-global-harness`
+3. Check subagents' `AGENT.md` with `/update-devin-global-subagents` if needed
+4. Run `/check-reference`
+5. Run `git diff --check`
 
 ### 6. Report
 
-> Goal: สรุป alignment status
+> Goal: summarize alignment status
 
-1. ทำ `/report` คอลัมน์: `No.`, `Layer`, `Status`, `Changes`, `Issues`
-2. ระบุสิ่งที่ยังค้าง
-3. ทำ `/suggest-next-action`
+1. Run `/report` with columns: `No.`, `Layer`, `Status`, `Changes`, `Issues`
+2. Identify anything still outstanding
+3. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Run In Order
 
-- อัปเดต global rules ก่อน skills ก่อน subagents
-- ถ้ามี dependency loop → แก้ loop ก่อน
-- ไม่ข้าม layer
+- Update global rules before skills before subagents
+- If there's a dependency loop → resolve the loop first
+- Never skip a layer
 
 ### 2. Minimal Scope
 
-- แก้เฉพาะสิ่งที่ขัดแย้งหรือล้าหลัง
-- ไม่เปลี่ยนโครงสร้างใหญ่ถ้าไม่จำเป็น
-- เก็บ intent เดิมของแต่ละ layer
+- Change only what conflicts or lags behind
+- Don't change large structures unless necessary
+- Preserve each layer's original intent
 
 ### 3. Cross-Reference Integrity
 
-- `name` ใน frontmatter ต้องตรง directory
-- `related` ต้องมีอยู่จริง
-- `AGENTS.md` ต้อง sync
+- `name` in frontmatter must match the directory
+- `related` must actually exist
+- `AGENTS.md` must be in sync
 
 ### 4. Backup
 
-- สำรอง `global_rules.md` ก่อนแก้ไข
-- สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
-- ใช้ `git commit` ทีละ layer
+- Back up `global_rules.md` before editing
+- Back up `AGENTS.md` if there are large changes
+- Use `git commit` one layer at a time
 
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+- Use /update-devin-global-subagents if needed
 
 ## Merged Details
 
@@ -124,76 +124,76 @@ related:
 
 ##### Goal
 
-ตรวจ Devin knowledge notes ว่ายังถูกต้องและใช้งานอยู่ — หา notes ที่ stale, ขัดกัน, ไม่มีใครใช้ หรืออ้าง resources ที่ไม่มีแล้ว
+Check that Devin knowledge notes are still correct and in use — find stale notes, conflicting notes, unused notes, or notes referencing resources that no longer exist.
 
 ##### Scope
 
-- ใช้ `devin_knowledge_manage` MCP tools เมื่อมี — หรือ knowledge files ที่เก็บใน repo/workspace
-- ครอบคลุม: note freshness (age vs referenced reality), contradictions ระหว่าง notes, dead references, coverage gaps
-- Read-only: รายงาน — แก้/ลบผ่าน user confirmation
+- Use `devin_knowledge_manage` MCP tools when available — or knowledge files stored in the repo/workspace
+- Covers: note freshness (age vs referenced reality), contradictions between notes, dead references, coverage gaps
+- Read-only: report only — edit/delete via user confirmation
 
 ##### Execute
 
 ###### 1. Inventory Knowledge
 
-> Goal: รวบรวม notes ทั้งหมด
+> Goal: gather all notes
 
-1. ใช้ `devin_knowledge_manage` (list) หรือค้น knowledge files ที่มี
-2. เก็บ metadata: title, content summary, created/updated date, folder
-3. จัดกลุ่มตาม topic/folder
+1. Use `devin_knowledge_manage` (list) or search existing knowledge files
+2. Record metadata: title, content summary, created/updated date, folder
+3. Group by topic/folder
 
 ###### 2. Check Freshness
 
-> Goal: หา notes ที่อาจ stale
+> Goal: find possibly stale notes
 
-1. flag notes ที่เก่า (>90 วัน) โดยไม่ถูก update — โดยเฉพาะที่อ้าง tools/versions
-2. เทียบ notes ที่อ้าง code/config กับสถานะจริง — facts เปลี่ยนไปไหม
-3. flag notes ที่ reference skills/files ที่ถูกลบหรือ rename แล้ว (ทำ `/check-reference` ร่วม)
+1. flag notes that are old (>90 days) without an update — especially those citing tools/versions
+2. compare notes that cite code/config against current state — have the facts changed?
+3. flag notes that reference skills/files that were deleted or renamed (use `/check-reference` together)
 
 ###### 3. Detect Contradictions And Duplicates
 
-> Goal: หา notes ที่ขัดหรือซ้ำกัน
+> Goal: find conflicting or duplicate notes
 
-1. เทียบ notes ที่ topic เดียวกัน — คำแนะนำที่ขัดกัน (เช่น config คนละแบบ)
-2. หา near-duplicates — notes ที่พูดเรื่องเดียวกันควรรวม
-3. flag suggestions ที่ค้างนานไม่ถูก review
+1. compare notes on the same topic — conflicting advice (e.g. different configs)
+2. find near-duplicates — notes covering the same thing should be merged
+3. flag suggestions left unreviewed for a long time
 
 ###### 4. Report
 
-> Goal: สรุป knowledge health
+> Goal: summarize knowledge health
 
-1. ใช้ `/report`: `No.`, `Note`, `Issue`, `Age`, `Severity`, `Action`
+1. Use `/report`: `No.`, `Note`, `Issue`, `Age`, `Severity`, `Action`
 2. Actions: `update`, `merge`, `dismiss`, `delete`, `keep`
-3. สรุป coverage: topics ที่มี notes ครบ vs ที่ขาด
+3. Summarize coverage: topics with complete notes vs missing
 
 ##### Rules
 
 ###### 1. Evidence-Based
 
-- "stale" ต้องมีเหตุ — age alone ไม่พอ, ต้องเทียบกับ reality ปัจจุบัน
-- contradiction ต้องอ้างทั้งสอง notes พร้อมจุดที่ขัด
+- "stale" needs a reason — age alone isn't enough, compare against current reality
+- a contradiction must cite both notes with the exact point of conflict
 
 ###### 2. Read-Only
 
-- ไม่แก้หรือลบ notes — รายงานให้ user ตัดสินใจ
-- การแก้ไข knowledge ต้อง user confirm
+- Don't edit or delete notes — report so the user decides
+- Editing knowledge requires user confirmation
 
 ###### 3. Value Preserved
 
-- notes เก่าที่ยังถูกต้อง ≠ stale — flag เฉพาะที่ผิดหรือไม่ใช้แล้ว
-- ระมัดระวัง institutional knowledge — เสนอ archive มากกว่า delete
+- an old but still-correct note ≠ stale — flag only what is wrong or unused
+- be careful with institutional knowledge — suggest archive over delete
 
 ##### Expected Outcome
 
-- รายงาน notes ที่ stale/contradicting/duplicate พร้อม evidence
-- Action recommendations ต่อ note
-- ภาพรวม knowledge coverage
+- a report of stale/contradicting/duplicate notes with evidence
+- action recommendations per note
+- an overview of knowledge coverage
 
 ## Expected Outcome
 
-- global rules, global skills, global subagents สอดคล้องกัน
-- ไม่มี broken references
-- ไม่มี rules ซ้ำซ้อนหรือขัดแย้ง
-- มีรายงาน alignment status
-- ผ่าน validation
+- global rules, global skills, global subagents are aligned
+- no broken references
+- no duplicated or conflicting rules
+- an alignment status report exists
+- passes validation
 

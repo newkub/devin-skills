@@ -1,6 +1,6 @@
 ---
 name: create-git-branch
-description: สร้าง git branch ใหม่อย่างถูกต้อง
+description: Create a new git branch the right way
 argument-hint: "[branch-name]"
 related:
   - cleanup
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-สร้าง branch ใหม่จาก base ที่ถูกต้อง พร้อมตั้งชื่อที่เหมาะสม
+Create a new branch from the correct base, with a sensible name
 
 ## Scope
 
-ใช้ก่อนเริ่ม feature, bugfix, hotfix หรือ experiment
+Use before starting a feature, bugfix, hotfix, or experiment
 
 ## Execute
 
@@ -23,9 +23,9 @@ related:
 
 > Goal: Determine Base
 
-1. ระบุ default branch (main/master)
-2. ตรวจสอบว่า base branch เป็นเวอร์ชันล่าสุด
-3. ถ้าจำเป็นให้ pull ล่าสุดก่อน
+1. Identify the default branch (main/master)
+2. Check that the base branch is up to date
+3. Pull the latest first if needed
 
 ### 2. Choose Naming
 
@@ -35,35 +35,35 @@ related:
 2. `bugfix/<ticket>-description`
 3. `hotfix/description`
 4. `experiment/description`
-5. ใช้ lowercase คั่นด้วย `-`
+5. Use lowercase, separated by `-`
 
 ### 3. Create And Switch
 
 > Goal: Create And Switch
 
 1. `git switch -c <branch>`
-2. ตรวจสอบว่าอยู่บน commit ที่ถูกต้อง
-3. push upstream ด้วย `git push -u origin <branch>`
+2. Verify you are on the correct commit
+3. Push upstream with `git push -u origin <branch>`
 
 ### 4. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: Deliver the work
 
-1. ทำ `/ship-to-dev-branch`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship-to-dev-branch`
+2. If `ship` doesn't pass → report the status
 
 ## Rules
 
-- สร้างจาก latest default branch
-- ตั้งชื่อ branch สื่อความหมาย
-- 1 branch ต่อ 1 concern
-- ไม่สร้าง branch ซ้ำ
+- Create from the latest default branch
+- Give branches meaningful names
+- 1 branch per 1 concern
+- Do not create duplicate branches
 
-- ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /delete-git-branch ถ้าจำเป็น
+- Use /cleanup-git-branch if needed
+- Use /delete-git-branch if needed
 
 ## Expected Outcome
 
-- มี branch ใหม่บน base ล่าสุด
-- ชื่อ branch ตาม convention
-- อยู่ใน branch ใหม่แล้ว
+- A new branch exists on the latest base
+- The branch name follows convention
+- You are now on the new branch

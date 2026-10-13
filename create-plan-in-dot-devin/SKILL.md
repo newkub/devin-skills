@@ -1,6 +1,6 @@
 ---
 name: create-plan-in-dot-devin
-description: Canonical analyze+plan — วิเคราะห์ลึกแล้วเขียนแผน implementation-ready ลง .devin/temp/plan/
+description: Canonical analyze+plan — deep analysis, then an implementation-ready plan in .devin/temp/plan/
 argument-hint: "[topic|scope] [chat-only]"
 related:
   - idea-features
@@ -22,144 +22,144 @@ related:
 
 ## Goal
 
-วิเคราะห์ปัญหา/context อย่างลึกซึ้งแล้วสร้างแผน implementation-ready ที่อ่านง่าย มี scoring และติดตามผลได้ — canonical สำหรับทุก analyze+plan (merged `/deep-plan`; เริ่มด้วย `/deep-thinking` แล้ววิเคราะห์แบบ `/deep-analyze`) — เขียนลง `.devin/temp/plan/<workspace>/<title-date>.md` พร้อมเปิดไฟล์แผนใน editor
+Analyze the problem/context deeply and produce a readable, implementation-ready plan with scoring and progress tracking — canonical for all analyze+plan work (merged `/deep-plan`; starts with `/deep-thinking`, then analyzes like `/deep-analyze`) — written to `.devin/temp/plan/<workspace>/<title-date>.md` with the plan file opened in the editor
 
 ## Scope
 
-- รับ request หรือ topic — ใช้สำหรับ planning ทุกรูปแบบ: features ใหม่, refactor, migration, multi-item work
-- Default: persist ลงไฟล์ — caller ระบุ `chat-only` ชัดเจน → ตอบ plan ในแชทโดยข้าม Steps 6-8 (ไม่สร้างไฟล์)
-- ใช้ `/idea-features` เพื่อ generate features ที่เป็นระบบ + score ตาม `references/scoring.md`
-- ทุก task ระบุ File/What/How/Deps/Acceptance/Risk ครบ — plan ต้อง implement ได้โดยไม่ต้องถามเพิ่ม
+- Takes a request or topic — use for all kinds of planning: new features, refactors, migrations, multi-item work
+- Default: persist to a file — if the caller clearly specifies `chat-only` → answer with the plan in chat, skipping Steps 6-8 (no file created)
+- Use `/idea-features` to generate systematic features + score them per `references/scoring.md`
+- Every task specifies File/What/How/Deps/Acceptance/Risk in full — the plan must be implementable without further questions
 
 ## Execute
 
 ### 1. Capture And Prepare
 
-> Goal: รวบรวม context และเตรียม workspace path
+> Goal: Gather context and prepare the workspace path
 
-1. รับ `<topic>` จาก argument หรือ context ของ session ปัจจุบัน
-2. อ่าน context, design, report ที่เกี่ยวข้อง; ถ้า scope คลุมเครือ → ทำ `/ask-me`
-3. ยืนยัน target workspace กับ user ถ้าไม่ชัดเจน
-4. ระบุ `<workspace>` = ชื่อ directory ของ target workspace
-5. ตรวจว่า `.devin/temp/plan/<workspace>/` มีอยู่ — ถ้าไม่มีให้สร้าง
-6. ทำ `/update-gitignore` ถ้า `.devin/temp` ยังไม่ถูก ignore — plan artifacts เป็น temp files ไม่ควร commit
+1. Take `<topic>` from the argument or the current session's context
+2. Read the relevant context, design, and reports; if the scope is ambiguous → run `/ask-me`
+3. Confirm the target workspace with the user if it is not clear
+4. Determine `<workspace>` = the directory name of the target workspace
+5. Check that `.devin/temp/plan/<workspace>/` exists — create it if missing
+6. Run `/update-gitignore` if `.devin/temp` is not yet ignored — plan artifacts are temp files and should not be committed
 
 ### 2. Deep Analyze
 
-> Goal: มี findings จริงจาก code ก่อนเขียนแผน — ห้ามเดา
+> Goal: Have real findings from the code before writing the plan — no guessing
 
-1. ทำ `/deep-thinking` — objectives, sub-problems, assumptions, และ success criteria
-2. ทำ `/deep-analyze` — structure, patterns, conventions, symbols, call sites, duplications พร้อม file:line evidence
-3. อ่านไฟล์เป้าหมายจริงด้วย read tool — ห้ามเดา APIs หรือ file paths
+1. Run `/deep-thinking` — objectives, sub-problems, assumptions, and success criteria
+2. Run `/deep-analyze` — structure, patterns, conventions, symbols, call sites, duplications, with file:line evidence
+3. Read the target files for real with the read tool — never guess APIs or file paths
 
-### 3. Deep Research (ถ้าจำเป็น)
+### 3. Deep Research (If Needed)
 
-> Goal: ได้ dependency choice + pattern decision ที่ยืนยันได้
+> Goal: Get dependency choices + pattern decisions that are verified
 
-ทำ `/deep-research` เมื่อต้องเลือก deps ใหม่/pattern ใหม่:
+Run `/deep-research` when choosing new deps or new patterns:
 
-- Library choice: official docs ก่อน + ≥2 sources — alternatives ที่ปฏิเสธต้องมีเหตุผลชัดเจน
-- Dep ใหม่ต้องมีอายุ publish ≥7 วัน + version pin — ห้าม floating/`latest`
-- Pattern choice: official docs / framework docs / production patterns — ไม่ใช่ blog ทั่วไป
+- Library choice: official docs first + ≥2 sources — rejected alternatives need clear reasons
+- A new dep must be published ≥7 days + version-pinned — no floating/`latest`
+- Pattern choice: official docs / framework docs / production patterns — not random blog posts
 
 ### 4. Generate And Score Features
 
-> Goal: มี feature list ที่เป็นระบบพร้อม priority score
+> Goal: Have a systematic feature list with priority scores
 
-1. ทำ `/idea-features <topic>` — แยก `New`/`Extends` ตาม existing codebase
-2. คำนวณ Score ตาม `references/scoring.md` — `Score = (Impact + Effect) / (Risk × Phase)`
-3. เรียงลำดับ features ตาม Score สูง → ต่ำ
-4. ตรวจ dependency ระหว่าง features — feature ที่ถูกพึ่งพาต้องมาก่อน
-5. แต่ละ feature ทำ `/report-uxui` (icon + short description) ถ้าต้องการ visual
+1. Run `/idea-features <topic>` — split `New`/`Extends` based on the existing codebase
+2. Compute Score per `references/scoring.md` — `Score = (Impact + Effect) / (Risk × Phase)`
+3. Order features by Score high → low
+4. Check dependencies between features — a depended-on feature must come first
+5. For each feature run `/report-uxui` (icon + short description) if a visual is needed
 
 ### 5. Order And Refine
 
-> Goal: ได้ plan ที่เรียงลำดับถูกและผ่าน quality gate
+> Goal: Get a plan that is correctly ordered and passes the quality gate
 
-1. ทำ `/prioritize` — Foundation → Dependencies → High impact → Critical path → High risk; จัด phases Foundation → Core → Polish → Test + task graph
-2. ทำ `/deep-review-then-fix` กับเนื้อหาแผนที่ร่าง
-3. ทำ `/deep-review` เพื่อตรวจคุณภาพ plan — ถ้ามี findings ให้แก้และ review ซ้ำจนสะอาด (max 3 รอบ)
-4. ทำ `/deep-validate` เพื่อตรวจ placeholder, missing steps — ห้ามเหลือ TBD ใน tasks
-5. ถ้า requirement มีหลายทางเลือกเสี่ยงสูง → เขียน options/risks แล้ว `/ask-me`
+1. Run `/prioritize` — Foundation → Dependencies → High impact → Critical path → High risk; arrange phases Foundation → Core → Polish → Test + task graph
+2. Run `/deep-review-then-fix` on the drafted plan content
+3. Run `/deep-review` to check plan quality — if there are findings, fix and re-review until clean (max 3 rounds)
+4. Run `/deep-validate` to check for placeholders and missing steps — leave no TBD in tasks
+5. If a requirement has multiple high-risk options → write out options/risks then `/ask-me`
 
 ### 6. Check For Duplicate
 
-> Goal: หลีกเลี่ยงการเขียนแผนซ้ำ
+> Goal: Avoid writing duplicate plans
 
-1. ค้นหาไฟล์ใน `.devin/temp/plan/<workspace>/` ที่มีชื่อคล้ายกับ `<topic>` ปัจจุบัน
-2. ถ้ามีแผนเก่าที่ยังไม่เสร็จ → อัปเดตแผนเดิมหรือสร้าง revision ใหม่ตาม context
-3. บันทึก title ที่เลือก — ใช้รูปแบบ `<short-kebab-title>-<YYYY-MM-DD>.md`
+1. Search `.devin/temp/plan/<workspace>/` for files whose names resemble the current `<topic>`
+2. If an unfinished plan exists → update the original or create a new revision based on context
+3. Record the chosen title — use the form `<short-kebab-title>-<YYYY-MM-DD>.md`
 
 ### 7. Build Plan Body
 
-> Goal: ประกอบเนื้อหาแผนให้ครบ sections — ดู `references/plan-template.md`
+> Goal: Assemble the plan content with all sections — see `references/plan-template.md`
 
-1. เขียน `## Goal` — สรุปผลลัพธ์ที่ต้องการ 1-3 บรรทัด
-2. เขียน `## Architecture` — ANSI diagram หรือ reference สถาปัตยกรรมที่เกี่ยวข้อง; ใช้ `/report-architecture-diagram` ถ้าต้องวาดใหม่
-3. เขียน `## Idea Features` — ตาราง features + scoring ตาม `references/plan-template.md` ข้อ Features Table
-4. เขียน `## File Changes` — ตาราง `No. | File | Action | What | How | Acceptance | Risk` จาก Step 5
-5. เขียน `## TODO` — ตาราง tasks ที่ track ด้วย `Status` column
-6. เขียน `## Task Graph` — dependencies ระหว่าง tasks + critical path
-7. เขียน `## Risks` — ตาราง risk, impact, mitigation
-8. เขียน `## Test Strategy` — coverage, fixtures, regression ที่ต้องมี
-9. เขียน `## Assumptions And Unknowns` — สิ่งที่สมมติไว้และ open questions
-10. เขียน `## Acceptance Criteria` — checkbox list
-11. เขียน `## Execution Order` — numbered list เรียงตาม critical path
+1. Write `## Goal` — summarize the desired outcome in 1-3 lines
+2. Write `## Architecture` — an ANSI diagram or references to the relevant architecture; use `/report-architecture-diagram` if a new drawing is needed
+3. Write `## Idea Features` — features + scoring table per the Features Table section of `references/plan-template.md`
+4. Write `## File Changes` — the `No. | File | Action | What | How | Acceptance | Risk` table from Step 5
+5. Write `## TODO` — tasks table tracked with a `Status` column
+6. Write `## Task Graph` — dependencies between tasks + critical path
+7. Write `## Risks` — table of risk, impact, mitigation
+8. Write `## Test Strategy` — required coverage, fixtures, regression
+9. Write `## Assumptions And Unknowns` — what was assumed and the open questions
+10. Write `## Acceptance Criteria` — checkbox list
+11. Write `## Execution Order` — numbered list ordered by critical path
 
 ### 8. Create And Open Plan File
 
-> Goal: สร้างไฟล์แผนและเปิดให้ user
+> Goal: Create the plan file and open it for the user
 
-1. เขียนไฟล์ไปที่ `.devin/temp/plan/<workspace>/<title>-<YYYY-MM-DD>.md`
-2. เปิดไฟล์ใน IDE — ถ้าสภาพแวดล้อมรองรับให้ใช้คำสั่ง `code .devin/temp/plan/<workspace>/<file>` หรือ editor ที่มีอยู่
-3. แจ้ง user ตำแหน่งไฟล์และสรุป plan
-4. แนะนำ `/implement-to-production` เป็นขั้นตอนถัดไป
-5. ใช้ `/create-github-issue` ถ้าต้องการส่งแผนไป GitHub issue
-6. ใช้ `/suggest-next-action` ถ้าไม่ชัดว่าจะทำอะไรต่อ
+1. Write the file to `.devin/temp/plan/<workspace>/<title>-<YYYY-MM-DD>.md`
+2. Open the file in the IDE — if the environment supports it, use the `code .devin/temp/plan/<workspace>/<file>` command or an available editor
+3. Tell the user the file location and summarize the plan
+4. Recommend `/implement-to-production` as the next step
+5. Use `/create-github-issue` if the plan should go to a GitHub issue
+6. Use `/suggest-next-action` if the next action is unclear
 
 ## Rules
 
 ### 1. Plan Quality
 
-- ทุก task ต้องระบุครบ: `File` (path + action), `What` (API signature/types), `How` (pattern), `Deps` (existing/new + version + publish age), `Why` (+ alternatives ที่ปฏิเสธ), `Acceptance` (วัดได้), `Risk` (impact + rollback)
-- ห้ามใช้ placeholder, `TBD`, `TODO`, หรือ step ที่ implement ไม่ได้ — plan ต้องรันต่อได้โดยไม่ต้องถามเพิ่ม
-- ทุก claim ต้องมี evidence จาก Step 2 (file:line) — ห้ามเดา APIs หรือ paths
-- Reuse first: pattern ที่ซ้ำ ≥3 จุด → ใส่ extraction task; migration ที่มี shared code → เรียง shared → consumers → delete dead
-- Dependency ใหม่ต้อง pin version + publish ≥7 วัน + ระบุเหตุผลที่เลือก
+- Every task must fully specify: `File` (path + action), `What` (API signature/types), `How` (pattern), `Deps` (existing/new + version + publish age), `Why` (+ rejected alternatives), `Acceptance` (measurable), `Risk` (impact + rollback)
+- Never use placeholders, `TBD`, `TODO`, or steps that cannot be implemented — the plan must be executable without further questions
+- Every claim needs evidence from Step 2 (file:line) — never guess APIs or paths
+- Reuse first: a pattern repeated ≥3 places → add an extraction task; a migration with shared code → order shared → consumers → delete dead
+- A new dependency must be version-pinned + published ≥7 days + with the reason for choosing it
 
 ### 2. Plan File UX
 
-- ใช้ heading levels ชัดเจน + tables สำหรับเปรียบเทียบ
-- ไม่ใช้ bold markers `**` ใน body — ใช้ heading/bullet แทน
-- จัด ANSI diagram ให้อยู่ตรงกลางด้วย `<div align="center">`
-- ทุกบรรทัดใน ANSI codeblock ต้องยาวเท่ากัน
-- ใช้ ` ```text ` codeblock สำหรับ diagram
-- ไม่มี section `## Information`, `## Key Concepts` หรือ `## Tech Stack` แยก
+- Use clear heading levels + tables for comparison
+- Do not use bold markers `**` in the body — use headings/bullets instead
+- Center ANSI diagrams with `<div align="center">`
+- Every line in an ANSI codeblock must have equal length
+- Use ` ```text ` codeblocks for diagrams
+- No separate `## Information`, `## Key Concepts`, or `## Tech Stack` sections
 
 ### 3. Scoring
 
-- ใช้สูตร `Score = (Impact + Effect) / (Risk × Phase)` เท่านั้น — ดู `references/scoring.md`
-- ปัดเศษทศนิยม 1 ตำแหน่ง; score เท่ากัน → Risk ต่ำกว่าก่อน
-- ทุก feature ต้องมี `Icon` เป็นคอลัมน์แรก
+- Use only the formula `Score = (Impact + Effect) / (Risk × Phase)` — see `references/scoring.md`
+- Round to 1 decimal place; equal scores → lower Risk first
+- Every feature must have `Icon` as the first column
 
 ### 4. File Safety
 
-- เขียนเฉพาะใน `.devin/temp/plan/<workspace>/` — ห้ามแตะ source code
-- ต้องมี `.devin/temp` อยู่ใน `.gitignore` ก่อนสร้างไฟล์ — ถ้าไม่มีให้ทำ `/update-gitignore` (plan artifacts ไม่ควร commit)
-- Idempotent: รันซ้ำต้องไม่สร้าง duplicate plan โดยไม่ตั้งใจ (ดู Step 6)
-- `chat-only` mode: ถ้า caller ระบุชัดเจน → ข้าม Steps 6-8, ไม่สร้างไฟล์, ไม่แตะ `.devin/temp`
-- ไม่ลบ plan เก่าโดยไม่ confirm — เก็บเป็น history
+- Write only inside `.devin/temp/plan/<workspace>/` — never touch source code
+- `.devin/temp` must be in `.gitignore` before creating files — if not, run `/update-gitignore` (plan artifacts should not be committed)
+- Idempotent: re-running must not accidentally create a duplicate plan (see Step 6)
+- `chat-only` mode: if the caller specifies it clearly → skip Steps 6-8, create no file, touch no `.devin/temp`
+- Never delete old plans without confirmation — keep them as history
 
 ### 5. Merged Scope
 
-- merged จาก `/deep-plan` (และ `/deep-analyze-and-plan` เดิม — ถูกลบแล้ว) — canonical เดียวสำหรับ analyze+plan ทุกกรณี
-- `/deep-plan`, `/plan` เป็น alias stubs ที่ forward มาที่ skill นี้
-- งาน planning ที่ต้อง persist ต้องผ่าน skill นี้เท่านั้น — ห้ามสร้าง plan file นอก `.devin/temp/plan/`
+- Merged from `/deep-plan` (and the old `/deep-analyze-and-plan` — since removed) — the single canonical entry for all analyze+plan work
+- `/deep-plan` and `/plan` are alias stubs that forward to this skill
+- Planning work that must persist goes through this skill only — never create plan files outside `.devin/temp/plan/`
 
 ## Expected Outcome
 
-- แผน implementation-ready ที่มี features, scoring, File Changes, TODO, Task Graph, Risks, Test Strategy, Acceptance Criteria ครบ
-- ไฟล์แผนอยู่ที่ `.devin/temp/plan/<workspace>/<title>-<YYYY-MM-DD>.md` และเปิดใน editor แล้ว
-- `.devin/temp` ถูก ignore ใน `.gitignore`
-- ไม่มี placeholder — ทุก task มี evidence, dependency, และ acceptance ที่วัดได้
-- พร้อมส่งต่อ `/implement-to-production`
+- An implementation-ready plan complete with features, scoring, File Changes, TODO, Task Graph, Risks, Test Strategy, and Acceptance Criteria
+- The plan file is at `.devin/temp/plan/<workspace>/<title>-<YYYY-MM-DD>.md` and opened in the editor
+- `.devin/temp` is ignored in `.gitignore`
+- No placeholders — every task has evidence, dependencies, and measurable acceptance
+- Ready to hand off to `/implement-to-production`

@@ -1,6 +1,6 @@
 ---
 name: follow-git-flow
-description: ตั้งค่า git flow ใน repo ด้วย integration branch, hooks, worktree convention และอัปเดต AGENTS.md
+description: Set up git flow: integration branch, local hooks, worktree convention, and AGENTS.md update
 argument-hint: "[scope]"
 related:
   - follow-github
@@ -13,53 +13,53 @@ related:
 
 ## Goal
 
-ตั้งค่า git flow ใน repo ทีมีอยู่: สร้าง integration branch, ตั้ง local hooks, worktree convention, อัปเดต `AGENTS.md` และตั้ง GitHub protection
-`/follow-git-flow` ไม่ `git init`, ไม่ `git config --global`, ไม่ทำงานบน `main`
+Set up git flow in an existing repo: create the integration branch, configure local hooks, define the worktree convention, update `AGENTS.md`, and set GitHub protection
+`/follow-git-flow` never runs `git init`, never runs `git config --global`, and never works on `main`
 
 ## Scope
 
-ใช้ครั้งแรกเมื่อเริ่ม project หรือต้องการ reset git flow conventions
-รองรับ solo และ team โดย block direct push ไป `main` ทัง local hooks และ GitHub protection
+Use first when starting a project or when git flow conventions need a reset
+Supports solo and team use by blocking direct pushes to `main` with both local hooks and GitHub protection
 
-ถ้าต้องการแค่ remote GitHub setup → ใช้ `/follow-github`
-ถ้าต้องการแค่ create integration branch → ทำตามขั้นตอน Create Integration Branch ข้างล่าง
+If you only need remote GitHub setup → use `/follow-github`
+If you only need to create the integration branch → follow the Create Integration Branch steps below
 
 ## Execute
 
 ### 1. Pre-flight
 
-> Goal: ยืนยันว่าอยู่ใน git repo ทีมี `main`
+> Goal: confirm you are in a git repo that has `main`
 
-1. ทำ `git rev-parse --git-dir`
-2. ทำ `git branch --list main` หรือ `git branch --list master`
-3. ถ้าไม่มี `main` หรือ `master` → stop และ report
-4. ตรวจ `git status --porcelain` ต้องว่าง
-5. ถ้าไม่ว่าง → ให้ user `/ship-to-dev-branch` ก่อน
+1. Run `git rev-parse --git-dir`
+2. Run `git branch --list main` or `git branch --list master`
+3. If there is no `main` or `master` → stop and report
+4. Check that `git status --porcelain` is empty
+5. If not empty → have the user run `/ship-to-dev-branch` first
 
 ### 2. Determine Integration Branch
 
-> Goal: รู้ชื่อ integration branch ตาม project conventions
+> Goal: learn the integration branch name per project conventions
 
-1. อ่าน `AGENTS.md` ถ้ามี `### Ship` หรือ `### Ship Flow`
-2. ถ้าไม่มี → ถาม user ด้วย `/ask-me` หรือใช้ default ว่า `integration`
-3. บันทึกชื่อ integration branch เป็น `<integration-branch>`
+1. Read `AGENTS.md` if it has `### Ship` or `### Ship Flow`
+2. If not → ask the user with `/ask-me` or use the default `integration`
+3. Record the integration branch name as `<integration-branch>`
 
 ### 3. Create Integration Branch
 
-> Goal: ให้ integration branch พร้อมเป้น staging/integration branch
+> Goal: make the integration branch ready as the staging/integration branch
 
-1. ตรวจ `git branch --list <integration-branch>`
-2. ถ้ามีใน local → ใช้ `git switch <integration-branch>` แล้วไป Ensure Remote
-3. ถ้าไม่มีใน local แต่มีบน remote → ใช้ `git switch -c <integration-branch> origin/<integration-branch>`
-4. ถ้าไม่มีทั้งสอง → ใช้ `git switch -c <integration-branch> <base-branch>`
-5. ทำ `git push -u origin <integration-branch>` เพื่อ ensure มีบน remote
+1. Check `git branch --list <integration-branch>`
+2. If it exists locally → use `git switch <integration-branch>` then go to Ensure Remote
+3. If it is not local but exists on the remote → use `git switch -c <integration-branch> origin/<integration-branch>`
+4. If neither exists → use `git switch -c <integration-branch> <base-branch>`
+5. Run `git push -u origin <integration-branch>` to ensure it exists on the remote
 
 ### 4. Setup Local Hooks
 
-> Goal: ป้องกัน direct work/push บน `main` ทัง local
+> Goal: prevent direct work/push on `main` locally
 
-1. สร้าง `.githooks/` directory ที root
-2. สร้าง `.githooks/pre-commit`:
+1. Create the `.githooks/` directory at the root
+2. Create `.githooks/pre-commit`:
    ```sh
    #!/bin/sh
    branch=$(git rev-parse --abbrev-ref HEAD)
@@ -69,7 +69,7 @@ related:
    fi
    exit 0
    ```
-3. สร้าง `.githooks/pre-push`:
+3. Create `.githooks/pre-push`:
    ```sh
    #!/bin/sh
    while read local_ref local_sha remote_ref remote_sha; do
@@ -80,83 +80,83 @@ related:
    done
    exit 0
    ```
-4. ทำ `git config --local core.hooksPath .githooks`
-5. ทำ `git config --local core.filemode false` เพื่อไม่ให้ Windows ล็อก executable bit
-6. ทำ `git update-index --chmod=+x .githooks/pre-commit .githooks/pre-push` เพื่อบันทึก executable bit ใน git index
-7. บน Windows ถ้าไม่ใช้ Git Bash ให้ตรวจสอบว่า `sh.exe` จาก Git for Windows อยู่ใน PATH หรือใช้ `.githooks/pre-commit.ps1` / `pre-push.ps1` แทน
+4. Run `git config --local core.hooksPath .githooks`
+5. Run `git config --local core.filemode false` so Windows does not lock the executable bit
+6. Run `git update-index --chmod=+x .githooks/pre-commit .githooks/pre-push` to record the executable bit in the git index
+7. On Windows, if you do not use Git Bash, verify that `sh.exe` from Git for Windows is on the PATH, or use `.githooks/pre-commit.ps1` / `pre-push.ps1` instead
 
 ### 5. Setup Worktree Convention
 
-> Goal: กำหนดโครงสร้าง worktree สำหรับ issue branches
+> Goal: define the worktree layout for issue branches
 
-1. สร้าง `worktrees/` directory ที root ถ้ายังไม่มี
-2. บันทึก convention: issue branch ชื่ `<integration-branch>/<number>` worktree อยู่ที `worktrees/<integration-branch>-<number>/`
-3. ไม่สร้าง worktree ในขั้นตอนนี้
+1. Create the `worktrees/` directory at the root if it does not exist
+2. Record the convention: an issue branch named `<integration-branch>/<number>` has its worktree at `worktrees/<integration-branch>-<number>/`
+3. Do not create any worktree in this step
 
 ### 6. Setup GitHub
 
-> Goal: ตั้ง branch protection และ GitHub metadata
+> Goal: configure branch protection and GitHub metadata
 
-1. ทำ `/follow-github`
-2. ถ้า `follow-github` fail → report และ stop
-3. ยืนยันว่า `main` และ `<integration-branch>` ถูก protect
+1. Run `/follow-github`
+2. If `follow-github` fails → report and stop
+3. Confirm that `main` and `<integration-branch>` are protected
 
 ### 7. Update AGENTS.md
 
-> Goal: เขียน ship section ลง `AGENTS.md`
+> Goal: write the ship section into `AGENTS.md`
 
-1. ทำ `/update-agents-md` เพื่อให้ `AGENTS.md` อัปเดต
-2. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
+1. Run `/update-agents-md` so `AGENTS.md` is updated
+2. If `AGENTS.md` does not support Thai → write English per the convention
 
 ### 8. Report
 
-> Goal: สรุปผลการ setup
+> Goal: summarize the setup result
 
-1. ใช้ `/report` สรุป: integration branch, hooks, worktree, GitHub protection, AGENTS.md
-2. ทำ `/suggest-next-action`
+1. Use `/report` to summarize: integration branch, hooks, worktree, GitHub protection, AGENTS.md
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. No Global Git Config
 
-- ไม่ `git init`
-- ไม่ `git config --global`
-- `core.hooksPath` ต้องใช้ `--local`
+- No `git init`
+- No `git config --global`
+- `core.hooksPath` must use `--local`
 
 ### 2. No Direct main Work
 
-- ไม่ commit บน `main`
-- ไม่ push ไป `main` โดยตรง
-- local hooks ต้อง block ทัง `pre-commit` และ `pre-push`
+- No commits on `main`
+- No direct pushes to `main`
+- Local hooks must block both `pre-commit` and `pre-push`
 
 ### 3. Branch Naming
 
-- issue branch ใช้ `<integration-branch>/<number>`
-- ไม่ใช้ `issue/<number>` หรือ `feature/*`
-- `main` และ `<integration-branch>` เป้น long-lived branches
+- Issue branches use `<integration-branch>/<number>`
+- Do not use `issue/<number>` or `feature/*`
+- `main` and `<integration-branch>` are the long-lived branches
 
 ### 4. Safety
 
-- ตรวจ working tree clean ก่อน setup
-- ไม่ force push
-- ไม่ overwrite `.github` หรือ `.githooks` โดยไม่แจ้ง
-- ถ้า `gh` ไม่พร้อม → `/follow-github` จะ report
+- Check the working tree is clean before setup
+- No force push
+- Do not overwrite `.github` or `.githooks` without notice
+- If `gh` is not available → `/follow-github` will report it
 
 ### 5. Idempotent
 
-- รันได้ซ้ำโดยไม่เกิด side effects
-- ถ้า integration branch มีอยู่ → ไม่สร้างซ้ำ
-- ถ้า hooks มีอยู่ → อัปเดตเฉพาะส่วนที่ขาด
-- ใช้ /update-docs ถ้าจำเป็น
+- Can be re-run without side effects
+- If the integration branch already exists → do not recreate it
+- If hooks already exist → update only the missing parts
+- Use /update-docs if needed
 
 
 ## Expected Outcome
 
-- integration branch ถูกสร้างจาก `main` และ push ไป remote
-- `.githooks/pre-commit` และ `.githooks/pre-push` block `main`
-- `core.hooksPath` ตั้งเป้น `.githooks`
-- `worktrees/` directory พร้อม
-- GitHub `main` และ `<integration-branch>` ถูก protect
-- `AGENTS.md` มี `### Ship` หรือ `### Ship Flow` ครบถ้วน
-- ไม่เกิด git init หรือ global config
-- มีรายงานผลและ next action
+- The integration branch is created from `main` and pushed to the remote
+- `.githooks/pre-commit` and `.githooks/pre-push` block `main`
+- `core.hooksPath` is set to `.githooks`
+- The `worktrees/` directory is ready
+- GitHub `main` and `<integration-branch>` are protected
+- `AGENTS.md` has a complete `### Ship` or `### Ship Flow` section
+- No git init or global config is created
+- There is a result report and a next action

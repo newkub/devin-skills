@@ -1,6 +1,6 @@
 ---
 name: use-nu-shell
-description: ใช้ Nushell สำหรับ shell commands, structured data pipelines, และ scripting
+description: Use Nushell for shell commands, structured data pipelines, and scripting
 argument-hint: "[command]"
 related:
   - deep-research
@@ -13,123 +13,123 @@ related:
 
 ## Goal
 
-ใช้ `nushell` (`nu`) สำหรับ shell commands, structured data pipelines, และ cross-platform scripting
+Use `nushell` (`nu`) for shell commands, structured data pipelines, and cross-platform scripting
 
 ## Scope
 
-ใช้สำหรับ task ที่ต้องการอ่าน/ประมวลผล structured data, file operations, หรือ cross-platform shell commands ด้วย `nu` ถ้าต้องการ shell อื่น ให้อ้างอิง `/use-bun-shell` หรือ `/use-pwsh-shell`; สร้างสคริปต์ automation ด้วย `/use-scripts` และใช้ `/follow-best-practice` สำหรับ best practices เฉพาะ domain
+Use it for tasks that need to read/process structured data, file operations, or cross-platform shell commands with `nu`. For other shells, refer to `/use-bun-shell` or `/use-pwsh-shell`; create automation scripts with `/use-scripts`, and use `/follow-best-practice` for domain-specific best practices
 
 ## Execute
 
 ### 1. Deep Research Current Nu
 
-> Goal: ยืนยัน version/syntax ปัจจุบันจาก official docs ก่อนใช้ — syntax เปลี่ยนบ่อยข้าม minor releases
+> Goal: Confirm the current version/syntax from the official docs before using it — syntax changes often across minor releases
 
-1. ทำ `/deep-research` กับ `https://www.nushell.sh/book/` และ `https://github.com/nushell/nushell/releases` เมื่อเขียน pipeline/script ที่ซับซ้อนหรือเมื่อ `references/package-manifest.md` เก่ากว่า 30 วัน
-2. ตรวจคำสั่ง/flags ที่จะใช้ใน `help <command>` ของ version ที่ติดตั้งจริง — changelog บ่อย
-3. ถ้าพบ breaking change ใหม่ → อัปเดต `references/package-manifest.md` แล้วทำต่อ
+1. Run `/deep-research` against `https://www.nushell.sh/book/` and `https://github.com/nushell/nushell/releases` when writing a complex pipeline/script, or when `references/package-manifest.md` is older than 30 days
+2. Verify the commands/flags you plan to use via `help <command>` in the actually installed version — the changelog moves often
+3. If you find a new breaking change → update `references/package-manifest.md`, then carry on
 
 ### 2. Check Nushell Installation
 
-> Goal: ตรวจสอบและติดตั้ง `nu`
+> Goal: Check for and install `nu`
 
-1. รัน `nu --version` — latest `0.115.1 (verified 2026-09-12)` (0.115 มี YAML rework, `$ans` REPL variable, Helix-style editing)
-2. ถ้าไม่มา ให้ติดตั้ง:
-   - Windows: `winget install nushell` หรือ `winget install --id Nushell.Nushell`
+1. Run `nu --version` — latest `0.115.1 (verified 2026-09-12)` (0.115 reworks YAML, adds the `$ans` REPL variable, and Helix-style editing)
+2. If it's missing, install it:
+   - Windows: `winget install nushell` or `winget install --id Nushell.Nushell`
    - macOS/Linux: `brew install nushell`
    - Rust: `cargo install nu`
-3. ถ้าติดตั้งไม่ได้ → fallback ไป `pwsh` หรือ `powershell` แล้วรายงาน
-4. ไม่ fallback ไป `cmd` โดยอัตโนมัติ
+3. If you can't install it → fall back to `pwsh` or `powershell`, then report it
+4. Never fall back to `cmd` automatically
 
 ### 2. Run Commands With Nushell
 
-> Goal: รันคำสั่งด้วย `nu`
+> Goal: Run commands with `nu`
 
-1. คำสั่งเดี่ยว: `nu -c '<command>'`
-2. สคริปต์: `nu script.nu`
-3. ใช้ built-in file operations: `ls`, `cp`, `mv`, `rm`, `mkdir`, `touch`
-4. อ่าน/เขียน structured data: `open <file>`, `save <file>`
-5. ใช้ `^<command>` สำหรับ external binary เช่น `^git status`
-6. ดู help: `help <command>` หรือ `<command> --help`
+1. Single command: `nu -c '<command>'`
+2. Script: `nu script.nu`
+3. Use the built-in file operations: `ls`, `cp`, `mv`, `rm`, `mkdir`, `touch`
+4. Read/write structured data: `open <file>`, `save <file>`
+5. Use `^<command>` for external binaries, e.g. `^git status`
+6. View help: `help <command>` or `<command> --help`
 
 ### 3. Use Pipelines And Filters
 
-> Goal: ใช้ pipeline และ filters ของ `nu`
+> Goal: Use `nu` pipelines and filters
 
-1. pipeline: `<input> | <filter> | <output>` เช่น `ls | where size > 10kb | sort-by size`
-2. `$in` สำหรับ pipeline input
-3. `get`, `select`, `where`, `sort-by`, `reverse` สำหรับ table/record
-4. `each`, `par-each`, `for` สำหรับ iteration
-5. `describe` เพื่อดู type ของ output
+1. pipeline: `<input> | <filter> | <output>`, e.g. `ls | where size > 10kb | sort-by size`
+2. `$in` for the pipeline input
+3. `get`, `select`, `where`, `sort-by`, `reverse` for tables/records
+4. `each`, `par-each`, `for` for iteration
+5. `describe` to see the output's type
 
 ### 4. Write Nushell Scripts
 
-> Goal: เขียนสคริปต์สำหรับ automation
+> Goal: Write scripts for automation
 
-1. ใช้ `def` สำหรับ custom commands
-2. ใช้ `let` สำหรับ immutable variables และ `mut` สำหรับ mutable
-3. ใช้ `print` สำหรับ side-effect logging
-4. จัดการ data types: int, float, string, bool, list, record, table, filesize, duration
-5. ใช้ `into <type>` เพื่อ convert data เช่น `into int`, `into string`, `into datetime` — `into filesize`/`into duration` ถูก remove แล้ว ให้ใช้ literals เช่น `10kb`, `5min` หรือ `into value` แทน
-6. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `$env:TEMP` ถ้าชั่วคราวตาม `/use-scripts`
+1. Use `def` for custom commands
+2. Use `let` for immutable variables and `mut` for mutable ones
+3. Use `print` for side-effect logging
+4. Handle the data types: int, float, string, bool, list, record, table, filesize, duration
+5. Use `into <type>` to convert data, e.g. `into int`, `into string`, `into datetime` — `into filesize`/`into duration` were removed, so use literals such as `10kb`, `5min` or `into value` instead
+6. Keep scripts in `.devin/scripts/` when they're reusable, or in `$env:TEMP` when they're temporary, per `/use-scripts`
 
 ### 5. Integrate With Use Scripts
 
-> Goal: เชื่อมต่อกับ `/use-scripts`
+> Goal: Connect with `/use-scripts`
 
-1. ใช้ `nu` สำหรับ structured data pipelines
-2. ตั้ง `dryRun` option ในทุก script
-3. ระบุเหตุผลถ้าเลือก `nu` แทน shell อื่น
-4. อ้างอิง `/use-scripts` สำหรับการตัดสินใจเลือก shell
+1. Use `nu` for structured data pipelines
+2. Set a `dryRun` option in every script
+3. State your reason when you choose `nu` over another shell
+4. Refer to `/use-scripts` for shell-selection decisions
 
 ## Rules
 
 ### 1. When To Use Nushell
 
-- ประมวลผล structured data (JSON, CSV, TOML, YAML)
-- Cross-platform shell commands ที่อ่านง่าย
-- File operations ด้วย built-ins
-- ไม่ต้องการ .NET หรือ Windows-only features
+- Processing structured data (JSON, CSV, TOML, YAML)
+- Readable cross-platform shell commands
+- File operations with the built-ins
+- When you don't need .NET or Windows-only features
 
 ### 2. Data Types And Pipelines
 
-- รู้จัก types: int, float, string, bool, date, duration, filesize, list, record, table
-- ใช้ `open`/`save` สำหรับ structured files
-- ใช้ `get`, `select`, `where`, `sort-by` สำหรับ table operations
-- ใช้ `describe` เพื่อดู type
+- Know the types: int, float, string, bool, date, duration, filesize, list, record, table
+- Use `open`/`save` for structured files
+- Use `get`, `select`, `where`, `sort-by` for table operations
+- Use `describe` to see the type
 
 ### 3. External Commands
 
-- ใช้ `^<command>` เมื่อชนกับ `nu` internal
-- ใช้ `lines` เพื่อ split external output เป็น lines
-- ใช้ `spread operator` `...$list` สำหรับ external arguments เช่น `^git ...$args`
+- Use `^<command>` when it collides with a `nu` internal
+- Use `lines` to split external output into lines
+- Use the `spread operator` `...$list` for external arguments, e.g. `^git ...$args`
 
 ### 4. Fallback
 
-- fallback เป็น `pwsh` เมื่อ `nu` ไม่รองรับหรือไม่ติดตั้ง
-- ไม่ใช้ `cmd` เป็นค่าเริ่มต้น
-- ระบุเหตุผลทุกครั้งที่ fallback
+- Fall back to `pwsh` when `nu` isn't supported or isn't installed
+- Don't use `cmd` by default
+- State the reason every time you fall back
 
 ### 5. Avoid File Creation
 
-พยายามรันคำสั่งโดยไม่สร้างไฟล์ชั่วคราว:
+Try to run commands without creating temporary files:
 
-- ใช้ `nu -c` สำหรับคำสั่งทันที
-- ไม่สร้างไฟล์ `.nu` เพื่อรัน command ชั่วคราว
-- ถ้า command มี side effects ให้ dry run ด้วย `print` หรือ preview ด้วย `first`/`take` ก่อน
-- ถ้าจำเป็นต้องเขียนไฟล์ ให้ตรวจสอบ path ด้วย `path expand` ก่อน
+- Use `nu -c` for one-off commands
+- Don't create a `.nu` file just to run a temporary command
+- If a command has side effects, dry-run it with `print` or preview it with `first`/`take` first
+- If you must write a file, check the path with `path expand` first
 
 ### 6. Script Location
 
-- ใช้ `.devin/scripts/` สำหรับ permanent scripts
-- ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
-- ใช้ `.nu` สำหรับ Nushell scripts
-- alias stub: `/use-nushell` — forward มาที่ skill นี้
+- Use `.devin/scripts/` for permanent scripts
+- Use `$env:TEMP` for throwaway scripts (the OS temp directory; don't create them in the project)
+- Use `.nu` for Nushell scripts
+- alias stub: `/use-nushell` — forwards to this skill
 
 ## Expected Outcome
 
-- `nu` ติดตั้งและใช้งานได้
-- คำสั่งรันด้วย `nu` ถูกต้อง
-- Scripts อยู่ใน location ถูกต้อง
-- ใช้ประโยชน์จาก structured data pipelines ของ `nu`
-- Fallback มีเหตุผลชัดเจน
+- `nu` installed and working
+- Commands run correctly with `nu`
+- Scripts in the right location
+- Making use of `nu`'s structured data pipelines
+- Fallbacks with a clear reason

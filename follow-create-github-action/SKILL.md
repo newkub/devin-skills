@@ -1,6 +1,6 @@
 ---
 name: follow-create-github-action
-description: สร้าง GitHub Action ด้วย TypeScript/Composite/Docker
+description: Build GitHub Actions with TypeScript, composite, or Docker
 argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
@@ -16,110 +16,110 @@ related:
 ---
 ## Goal
 
-สร้าง GitHub Action ทีสามารถรันใน workflow ได้ รองรับ TypeScript, Composite, และ Docker actions พร้อม `action.yml`, build, tests, และ release
+Build a GitHub Action that runs inside workflows, supporting TypeScript, composite, and Docker actions with `action.yml`, build, tests, and release
 
 ## Scope
 
-ใช้สำหรับสร้าง action สำหรับ GitHub Marketplace หรือ private repos ครอบคลุม inputs, outputs, runs, branding, และ `dist/` สำหรับ TS actions
+Use when creating actions for GitHub Marketplace or private repos, covering inputs, outputs, runs, branding, and `dist/` for TS actions
 
-- Packages: `@actions/core`, `@actions/github` + bundler (`esbuild`/`@vercel/ncc`) — ยืนยันเวอร์ชันและ `runs.using` runtime ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
+- Packages: `@actions/core`, `@actions/github` + bundler (`esbuild`/`@vercel/ncc`) — always confirm the latest versions and `runs.using` runtime with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); pin `actions/*` with the latest major version tag from the marketplace (verify before use)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `@actions/*` และ `runs.using` runtime ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create github action)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `@actions/*` packages and `runs.using` runtime, then run `/deep-review` to summarize the tech stack
+2. Record the rationale for the chosen stack and libraries for future reference (create github action)
+3. Record the rationale for the chosen stack and libraries for future reference (create github action)
 
 ### 2. Choose Action Type
 
-> Goal: เลือกประเภท action
+> Goal: pick the action type
 
-1. ถ้าต้องการ logic ซับซ้อน: ใช้ `node24` + TypeScript (node20 deprecated — runners บังคับ node24 ตั้งแต่ 2026-06 และลบ node20 ออก 2026-09-23)
-2. ถ้าต้องการรวมหลาย commands: ใช้ `composite`
-3. ถ้าต้องการ environment ควบคุม: ใช้ `docker`
-4. ระบุ inputs และ outputs ทีต้องการ
+1. For complex logic: use `node24` + TypeScript (node20 deprecated — runners require node24 since 2026-06 and drop node20 on 2026-09-23)
+2. To chain multiple commands: use `composite`
+3. For a fully controlled environment: use `docker`
+4. Define the required inputs and outputs
 
 ### 3. Setup Project
 
-> Goal: สร้างโครงสร้าง action
+> Goal: scaffold the action structure
 
-1. สร้าง repo หรือ directory สำหรับ action
-2. สร้าง `action.yml` ที root
-3. สร้าง `README.md` บอกวิธีใช้
-4. สร้าง `.github/workflows/ci.yml` สำหรับ test action
+1. Create a repo or directory for the action
+2. Create `action.yml` at the root
+3. Create `README.md` documenting usage
+4. Create `.github/workflows/ci.yml` to test the action
 
 ### 4. Write action.yml
 
-> Goal: กำหนด manifest ของ action
+> Goal: define the action manifest
 
-1. ระบุ `name`, `description`, `author`, `branding`
-2. ระบุ `inputs` พร้อม `required`, `default`, `description`
-3. ระบุ `outputs` สำหรับผลลัพธ์
-4. ระบุ `runs.using` เป็น `node24`, `composite`, หรือ `docker` (สำหรับ `node24` ต้องระบุ `runs.main` ชี้ไป `dist/index.js`)
+1. Set `name`, `description`, `author`, `branding`
+2. Define `inputs` with `required`, `default`, `description`
+3. Define `outputs` for the results
+4. Set `runs.using` to `node24`, `composite`, or `docker` (for `node24`, point `runs.main` at `dist/index.js`)
 
 ### 5. Implement Logic
 
-> Goal: เขียน logic ของ action
+> Goal: write the action logic
 
-1. ถ้า TypeScript: สร้าง `src/index.ts` ใช้ `@actions/core`, `@actions/github`
-2. ถ้า Composite: สร้าง `steps` ด้วย `run` และ `shell`
-3. ถ้า Docker: สร้าง `Dockerfile` และ `entrypoint.sh`
-4. จัดการ secrets ด้วย `core.getInput()` ไม่ hardcode
+1. For TypeScript: create `src/index.ts` using `@actions/core`, `@actions/github`
+2. For composite: define `steps` with `run` and `shell`
+3. For Docker: create `Dockerfile` and `entrypoint.sh`
+4. Pass secrets in via `core.getInput()` — never hardcode them
 
 ### 6. Build TypeScript Action
 
-> Goal: build `dist/index.js` สำหรับ TypeScript
+> Goal: build `dist/index.js` for TypeScript
 
-1. ติดตั้ง `esbuild`, `@vercel/ncc`, หรือ `rollup`
-2. รัน `bun run build` เพื่อ bundle `src/index.ts` → `dist/index.js`
-3. รวม `licenses.txt` ถ้าใช้ `ncc`
-4. commit `dist/` เข้า repo
+1. Install `esbuild`, `@vercel/ncc`, or `rollup`
+2. Run `bun run build` to bundle `src/index.ts` → `dist/index.js`
+3. Include `licenses.txt` when using `ncc`
+4. Commit `dist/` to the repo
 
 ### 7. Add Tests
 
-> Goal: ทดสอบ action
+> Goal: test the action
 
-1. สร้าง `__tests__/index.test.ts` สำหรับ mock inputs
-2. ใช้ `vitest` หรือ `bun:test`
-3. สร้าง `.github/workflows/test.yml` เพื่อรัน action บน `workflow_call` หรือ `push`
-4. ตรวจสอบ outputs และ side effects
+1. Create `__tests__/index.test.ts` for mocked inputs
+2. Use `vitest` or `bun:test`
+3. Create `.github/workflows/test.yml` to run the action on `workflow_call` or `push`
+4. Verify outputs and side effects
 
 ### 8. Release
 
-> Goal: สร้าง release tags
+> Goal: create release tags
 
-1. สร้าง git tag `v1.0.0`
-2. ย้าย major tag `v1` ไป commit ล่าสุด
-3. สร้าง GitHub release พร้อม release notes
-4. ทำ `/ship-to-dev-branch`
+1. Create the git tag `v1.0.0`
+2. Point the major tag `v1` at the latest commit
+3. Create a GitHub release with release notes
+4. Run `/ship-to-dev-branch`
 
 ## Rules
 
-- ใช้ `@actions/core` สำหรับ inputs/outputs/exports
-- ไม่ log secrets หรือ credentials
-- TypeScript action ต้อง commit `dist/index.js`
-- ตั้ง `branding.icon` และ `branding.color` ใน `action.yml`
-- ใช้ major version tags (`v1`) สำหรับ consumers
-- ทดสอบ action บน GitHub runner ก่อน release
+- Use `@actions/core` for inputs/outputs/exports
+- Never log secrets or credentials
+- TypeScript actions must commit `dist/index.js`
+- Set `branding.icon` and `branding.color` in `action.yml`
+- Use major version tags (`v1`) for consumers
+- Test the action on a GitHub runner before releasing
 
-- ใช้ /follow-create-bun-cli ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-dot-github ถ้าจำเป็น
-- ใช้ /follow-release ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (create github action)
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-create-bun-cli if needed
+- Use /follow-create-sdk if needed
+- Use /follow-create-web if needed
+- Use /follow-dot-github if needed
+- Use /follow-release if needed
+- Use /follow-tool-github-actions if needed (create github action)
+- Use /run-test if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- `action.yml` valid และ `name` ไม่ซ้ำ
-- TypeScript action มี `dist/index.js` อัปเดต
-- Tests ผ่าน
-- Action รันได้ใน GitHub workflow
-- Release tags `v1` และ `v1.0.0` ถูกต้อง
+- `action.yml` is valid and `name` is unique
+- The TypeScript action has an up-to-date `dist/index.js`
+- Tests pass
+- The action runs in a GitHub workflow
+- Release tags `v1` and `v1.0.0` are correct
 

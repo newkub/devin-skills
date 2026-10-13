@@ -1,6 +1,6 @@
 ---
 name: follow-github-issue-templates
-description: สร้าง GitHub issue templates สำหรับ bug, feature, plan, test, questions และ agents-task
+description: Create GitHub issue templates for bug, feature, plan, test, questions, and agents-task
 argument-hint: "[scope]"
 related:
   - follow-dot-github
@@ -14,80 +14,80 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดต `.github/ISSUE_TEMPLATE/` ให้ครบถ้วนด้วย templates 6 ประเภท: `bug-report`, `feature-request`, `plan`, `test`, `questions` และ `agents-task` พร้อม `config.yml`
+Create or update `.github/ISSUE_TEMPLATE/` completely with 6 template types: `bug-report`, `feature-request`, `plan`, `test`, `questions`, and `agents-task`, plus `config.yml`
 
 ## Scope
 
-ใช้เมื่อ project ต้องการ standardize issue templates สำหรับ GitHub ไม่ duplicate กับ `/follow-dot-github` — skill นี้ focus เฉพาะ issue templates ส่วน `/follow-dot-github` จัดการ `.github` directory ทั้งหมด
+Use when a project needs standardized issue templates for GitHub. Does not duplicate `/follow-dot-github` — this skill focuses only on issue templates, while `/follow-dot-github` manages the whole `.github` directory
 
 ## Execute
 
 ### 1. Analyze Existing Templates
 
-> Goal: รู้จุดเริ่มต้นของ `.github/ISSUE_TEMPLATE/`
+> Goal: know the starting point of `.github/ISSUE_TEMPLATE/`
 
-1. ตรวจสอบ `.github/ISSUE_TEMPLATE/` ที่มีอยู่
-2. อ่าน `config.yml` ถ้ามี
-3. ระบุ templates ที่ขาดหรือต้องอัปเดต
+1. Inspect the existing `.github/ISSUE_TEMPLATE/`
+2. Read `config.yml` if present
+3. Identify templates that are missing or need updating
 
 ### 2. Select And Copy Templates
 
-> Goal: มี templates ครบ 6 ประเภท
+> Goal: have all 6 template types
 
-1. เลือก templates ตามประเภท project: `bug-report`, `feature-request`, `plan`, `test`, `questions`, `agents-task`
-2. คัดลอกเนื้อหา YAML จาก `templates/` ไปยัง `.github/ISSUE_TEMPLATE/`
-3. ตรวจสอบชื่อไฟล์:
+1. Select templates by project type: `bug-report`, `feature-request`, `plan`, `test`, `questions`, `agents-task`
+2. Copy the YAML content from `templates/` to `.github/ISSUE_TEMPLATE/`
+3. Verify the file names:
    - `bug_report.yml`
    - `feature_request.yml`
    - `plan.yml`
    - `test.yml`
    - `questions.yml`
    - `agents_task.yml`
-4. สร้าง `config.yml` ถ้ายังไม่มี
-5. แทนที่ `<owner>` และ `<repo>` ใน `config.yml` ด้วยค่าจริง
+4. Create `config.yml` if it does not exist
+5. Replace `<owner>` and `<repo>` in `config.yml` with the real values
 
 ### 3. Customize Project Labels
 
-> Goal: labels ตรงกับ project conventions
+> Goal: labels match project conventions
 
-1. อ่าน `package.json` หรือ project docs เพื่อดู labels ที่ใช้
-2. ปรับ labels ใน templates ให้ตรงกับ project conventions
-3. ตรวจสอบว่า labels ทั้งหมดมีอยู่ใน repo ถ้าไม่มีให้ระบุให้สร้างผ่าน `labels.yml`
+1. Read `package.json` or project docs to see which labels are used
+2. Adjust labels in the templates to match project conventions
+3. Verify that all labels exist in the repo; if not, specify that they should be created via `labels.yml`
 
 ### 4. Validate
 
-> Goal: templates ใช้งานได้จริง
+> Goal: templates actually work
 
-1. ตรวจสอบ YAML syntax ของทุกไฟล์
-2. ตรวจสอบ GitHub issue form syntax
-3. ตรวจสอบ `required` fields
-4. ทำ `/deep-validate` เพื่อ verify templates
+1. Check the YAML syntax of every file
+2. Check the GitHub issue form syntax
+3. Check the `required` fields
+4. Run `/deep-validate` to verify the templates
 
 ### 5. Report
 
-> Goal: user ทราบสถานะ
+> Goal: the user knows the status
 
-1. ทำ `/report` พร้อมรายชื่อ templates
-2. ทำ `/suggest-next-action`
+1. Run `/report` with the list of templates
+2. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Template Coverage
 
-- ต้องมี 6 templates หลัก: `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml`
-- ต้องมี `config.yml` พร้อม `blank_issues_enabled: false` และ `contact_links`
-- ไม่สร้าง markdown templates — ใช้ GitHub Forms YAML เท่านั้น
+- Must include the 6 core templates: `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml`
+- Must include `config.yml` with `blank_issues_enabled: false` and `contact_links`
+- Do not create markdown templates — use GitHub Forms YAML only
 
 ### 2. Naming
 
-- ใช้ `snake_case` สำหรับชื่อไฟล์
-- ชื่อ template ใน `name:` ใช้ภาษาอังกฤษ Title Case
-- ตัวอย่าง: `name: Bug Report`
+- Use `snake_case` for file names
+- Template names in `name:` use English Title Case
+- Example: `name: Bug Report`
 
 ### 3. Default Labels
 
 - `bug-report`: `bug`
-- `feature-request`: `feature` หรือ `enhancement`
+- `feature-request`: `feature` or `enhancement`
 - `plan`: `plan`
 - `test`: `test`
 - `questions`: `question`
@@ -95,13 +95,13 @@ related:
 
 ### 4. Integration
 
-- ถ้า `/follow-dot-github` ถูกเรียก → ทำ `/follow-github-issue-templates` ใน Step 4
-- ถ้า `/create-github-issue` ถูกเรียก → ใช้ templates เพื่อ guide issue ให้ตรงกับประเภท
+- If `/follow-dot-github` is invoked → run `/follow-github-issue-templates` in Step 4
+- If `/create-github-issue` is invoked → use the templates to guide the issue to the right type
 
 ## Expected Outcome
 
-- `.github/ISSUE_TEMPLATE/` มี templates ครบ 6 ประเภท
-- `config.yml` กำหนด blank issues และ contact links
-- ทุก template ผ่าน YAML syntax
-- labels ตรงกับ project conventions
-- project docs หรือ `AGENTS.md` อัปเดตถ้ามีการเพิ่ม labels ใหม่
+- `.github/ISSUE_TEMPLATE/` has all 6 template types
+- `config.yml` defines blank issues and contact links
+- Every template passes YAML syntax
+- Labels match project conventions
+- Project docs or `AGENTS.md` are updated if new labels were added

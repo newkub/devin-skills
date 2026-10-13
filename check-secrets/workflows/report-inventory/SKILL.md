@@ -1,6 +1,6 @@
 ---
 name: check-secrets-report-inventory
-description: สร้าง secrets inventory report — keys/vars ที่ใช้, ที่ขาด, ที่หลุด — พร้อม redaction rules
+description: Build a secrets inventory report — keys/vars in use, missing, leaked — with redaction rules
 argument-hint: "[scope]"
 related:
   - report
@@ -10,45 +10,45 @@ related:
 
 ## Goal
 
-สร้าง secrets inventory report จาก findings ของ `check-secrets` workflows — ครอบคลุม env vars, hardcoded values, leaks — ด้วย redaction ที่ปลอดภัย
+Build a secrets inventory report from the findings of the `check-secrets` workflows — covering env vars, hardcoded values, and leaks — with safe redaction
 
 ## Scope
 
-- ใช้เมื่อ `/check-secrets` dispatch มาที่ `report`/`inventory` หรือเรียก standalone
-- Output: inventory table ในแชท — ถ้าต้อง persistent artifact ใช้ `/create-report-in-dot-devin` (ระวัง: artifact ต้องไม่มี secret values)
+- Use when `/check-secrets` dispatches to `report`/`inventory`, or invoke standalone
+- Output: inventory table in chat — for a persistent artifact use `/create-report-in-dot-devin` (caution: the artifact must contain no secret values)
 
 ## Execute
 
 ### 1. Aggregate Findings
 
-> Goal: รวมผลจากทุก secrets check
+> Goal: combine the results of every secrets check
 
-1. รวม findings จาก `env-vars`, `hardcoded-values`, `secrets-leak` workflows (หรือเฉพาะที่รัน)
-2. จัดกลุ่ม: `required-but-missing`, `present-and-used`, `hardcoded`, `leaked`, `unused`
+1. Merge findings from the `env-vars`, `hardcoded-values`, `secrets-leak` workflows (or only the ones that ran)
+2. Group by: `required-but-missing`, `present-and-used`, `hardcoded`, `leaked`, `unused`
 
 ### 2. Build Inventory
 
-> Goal: inventory ที่ชี้จุดกรอก/แก้ได้โดยไม่เปิดเผยค่า
+> Goal: an inventory that points to where to fill/edit values without exposing them
 
-1. ตาราง: `No.`, `Key`, `Location`, `Status`, `Used By`, `Action`
-2. Redaction rules: แสดงแค่ key name + type (`sk_...`, `whsec_...`) — ห้าม print value แม้แต่ส่วนหนึ่ง
-3. สำหรับ missing env vars → สร้าง inventory table ชี้ key/URL/จุดกรอกแล้วแนะนำ `/open-web-for-config-secret`
+1. Table: `No.`, `Key`, `Location`, `Status`, `Used By`, `Action`
+2. Redaction rules: show only the key name + type (`sk_...`, `whsec_...`) — never print a value, not even part of one
+3. For missing env vars → build an inventory table pointing to the key/URL/entry point, then recommend `/open-web-for-config-secret`
 
 ### 3. Report
 
-> Goal: สรุป secrets posture
+> Goal: summarize the secrets posture
 
-1. Counts ต่อ status + verdict (`clean` / `gaps` / `leaks-found`)
-2. leaks = Critical เสมอ — แนะนำ rotate + ย้ายไป `/follow-secret-manager`
-3. ทำ `/suggest-next-action`
+1. Counts per status + verdict (`clean` / `gaps` / `leaks-found`)
+2. Leaks are always Critical — recommend rotating and moving to `/follow-secret-manager`
+3. Run `/suggest-next-action`
 
 ## Rules
 
-- ห้าม print secret values ใน report ทุกกรณี — mask ทุกอย่างยกเว้น key name
-- leaked secrets → ระบุว่า commit ไหน/ไฟล์ไหนเพื่อ track rotation
-- ถ้า persist artifact → double-check ว่าไม่มีค่าจริงในไฟล์ report
+- Never print secret values in the report under any circumstance — mask everything except the key name
+- Leaked secrets → note which commit/file so rotation can be tracked
+- If persisting an artifact → double-check that the report file holds no real values
 
 ## Expected Outcome
 
-- Inventory table พร้อม status ต่อ key + actions
-- Verdict secrets posture โดยไม่เปิดเผยค่าใดๆ
+- Inventory table with status and actions per key
+- Secrets posture verdict without exposing any values

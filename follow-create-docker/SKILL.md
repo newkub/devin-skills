@@ -1,6 +1,6 @@
 ---
 name: follow-create-docker
-description: สร้าง Dockerfile, .dockerignore และ docker-compose ตาม best practices ตาม stack
+description: Create Dockerfile, .dockerignore and docker-compose per stack, following best practices
 argument-hint: "[path]"
 related:
   - deep-review
@@ -16,16 +16,16 @@ related:
 
 ## Goal
 
-สร้าง Docker artifacts ที่ production-ready สำหรับ project: `Dockerfile`, `.dockerignore`, และ `docker-compose.yml` (ถ้าจำเป็น) ด้วย multi-stage builds, minimal base images และ security best practices
+Create production-ready Docker artifacts for a project: `Dockerfile`, `.dockerignore`, and `docker-compose.yml` (if needed) with multi-stage builds, minimal base images, and security best practices
 
 ## Scope
 
-- ใช้เมื่อต้องการ containerize application หรือเพิ่ม Docker support ให้ project ที่มีอยู่
-- รองรับ Bun/Node, Rust, Go, Python และ static sites
-- ครอบคลุม `Dockerfile`, `.dockerignore`, `compose.yaml`/`docker-compose.yml` และ health checks
-- ไม่ครอบคลุม Kubernetes manifests หรือ orchestration ระดับ production cluster
+- Use when containerizing an application or adding Docker support to an existing project
+- Supports Bun/Node, Rust, Go, Python, and static sites
+- Covers `Dockerfile`, `.dockerignore`, `compose.yaml`/`docker-compose.yml`, and health checks
+- Does not cover Kubernetes manifests or production-cluster-level orchestration
 
-- ตรวจ `docker --version` ในเครื่อง; ยืนยัน engine/compose ล่าสุดและ release notes ด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`) — Compose spec ไม่ใช้ top-level `version:` แล้ว
+- Check the local `docker --version`; always confirm the latest engine/compose versions and release notes with `/deep-research` + `/follow-best-practice` (don't pin them in files — per `/update-devin-global-skills`) — the Compose spec no longer uses a top-level `version:`
 
 ## Execute
 
@@ -33,105 +33,105 @@ related:
 
 | Argument | Workflow |
 |----------|----------|
-| `dockerfile`, `setup` | `workflows/setup-dockerfile/SKILL.md` — Dockerfile production-ready |
+| `dockerfile`, `setup` | `workflows/setup-dockerfile/SKILL.md` — production-ready Dockerfile |
 | `compose` | `workflows/config-compose/SKILL.md` — docker-compose multi-service |
 | `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image (findings-driven pass → `/optimize-docker`) |
 
-1. ถ้า argument ตรงกับ workflow → อ่าน `workflows/<arg>/SKILL.md` แล้วทำตาม flow
-2. ถ้าไม่ระบุ → ทำ Steps ตามปกติ (default = `setup-dockerfile`)
+1. If the argument matches a workflow → read `workflows/<arg>/SKILL.md` and follow its flow
+2. If not specified → follow the normal Steps (default = `setup-dockerfile`)
 
 ### 1. Review Tech Stack
 
-> Goal: รู้ stack และ requirements ก่อนเขียน Dockerfile
+> Goal: know the stack and requirements before writing the Dockerfile
 
-1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/deep-review` เพื่อ review dependencies และ library design
-3. ตรวจ manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
-4. ระบุ runtime, build command, start command, port และ required env vars
+1. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review` to review dependencies and library design
+3. Check the manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
+4. Identify runtime, build command, start command, port, and required env vars
 
 ### 2. Choose Base Image
 
-> Goal: เลือก base image ที่เล็กและปลอดภัย
+> Goal: pick a small and secure base image
 
-1. Bun/Node → `oven/bun:<version>-alpine` หรือ `node:<version>-alpine`
-2. Rust → `rust:<version>-alpine` build แล้ว copy binary ไป `alpine` หรือ `scratch`/`distroless`
-3. Go → `golang:<version>-alpine` build แล้ว copy binary ไป `scratch` หรือ `distroless`
-4. Python → `python:<version>-slim` หรือ `alpine`
-5. Static site → build stage แล้ว serve ด้วย `nginx:alpine` หรือ `oven/bun` ด้วย static server
-6. Pin version เสมอ ห้ามใช้ `latest`
+1. Bun/Node → `oven/bun:<version>-alpine` or `node:<version>-alpine`
+2. Rust → build with `rust:<version>-alpine`, then copy the binary to `alpine` or `scratch`/`distroless`
+3. Go → build with `golang:<version>-alpine`, then copy the binary to `scratch` or `distroless`
+4. Python → `python:<version>-slim` or `alpine`
+5. Static site → build stage, then serve with `nginx:alpine` or `oven/bun` with a static server
+6. Always pin the version, never use `latest`
 
 ### 3. Write Dockerfile
 
-> Goal: Dockerfile แบบ multi-stage ที่ build เร็วและ image เล็ก
+> Goal: a multi-stage Dockerfile that builds fast with a small image
 
-1. แยก build stage และ runtime stage
-2. Copy dependency manifests ก่อน (`package.json` + lockfile) เพื่อใช้ layer cache
-3. Install dependencies ตาม ecosystem: `bun install --frozen-lockfile`, `cargo build --release`, `pip install -r requirements.txt`
-4. Copy source code แล้ว build
-5. Runtime stage: copy เฉพาะ artifacts ที่จำเป็น
-6. สร้าง non-root user (`USER` directive) ก่อน `CMD`
-7. ใส่ `HEALTHCHECK` ถ้า app มี health endpoint
-8. ใช้ `CMD` exec form `["binary", "arg"]` ไม่ใช่ shell form
+1. Separate the build stage and the runtime stage
+2. Copy dependency manifests first (`package.json` + lockfile) to use layer caching
+3. Install dependencies per ecosystem: `bun install --frozen-lockfile`, `cargo build --release`, `pip install -r requirements.txt`
+4. Copy the source code, then build
+5. Runtime stage: copy only the necessary artifacts
+6. Create a non-root user (`USER` directive) before `CMD`
+7. Add `HEALTHCHECK` if the app has a health endpoint
+8. Use the `CMD` exec form `["binary", "arg"]`, not the shell form
 
 ### 4. Write .dockerignore
 
-> Goal: build context เล็กและไม่หลุด secrets
+> Goal: a small build context with no secret leakage
 
-1. เพิ่ม `node_modules`, `target`, `dist`, `build`, `.git`, `.env*`, `*.log`
-2. เพิ่ม test files, docs, CI configs ที่ไม่จำเป็นใน image
-3. ทำ `/check-secrets secrets-leak` เพื่อยืนยันว่าไม่มี secrets ใน context
+1. Add `node_modules`, `target`, `dist`, `build`, `.git`, `.env*`, `*.log`
+2. Add test files, docs, and CI configs not needed in the image
+3. Run `/check-secrets secrets-leak` to confirm there are no secrets in the context
 
 ### 5. Write docker-compose.yml
 
-> Goal: local orchestration สำหรับ dev ถ้าจำเป็น
+> Goal: local orchestration for dev when needed
 
-1. สร้างเฉพาะเมื่อ app ต้องการ services อื่น (database, cache, queue)
-2. ชื่อไฟล์ `compose.yaml` เป็น convention ปัจจุบัน (`docker-compose.yml` ยังรองรับ) — ห้ามใส่ top-level `version:` เพราะ obsolete ใน Compose spec
-3. ใช้ `services`, `ports`, `environment`, `volumes`, `depends_on` กับ `condition: service_healthy`
-4. อ่าน env จาก `.env` ไม่ hardcode secrets — ใช้ `/follow-secret-manager`
-5. เพิ่ม `healthcheck` ให้ stateful services
-6. รันด้วย `docker compose` (v2 plugin, ไม่มี hyphen)
+1. Create only when the app needs other services (database, cache, queue)
+2. The file name `compose.yaml` is the current convention (`docker-compose.yml` is still supported) — never add a top-level `version:`, which is obsolete in the Compose spec
+3. Use `services`, `ports`, `environment`, `volumes`, `depends_on` with `condition: service_healthy`
+4. Read env from `.env`, don't hardcode secrets — use `/follow-secret-manager`
+5. Add `healthcheck` for stateful services
+6. Run with `docker compose` (v2 plugin, no hyphen)
 
 ### 6. Build And Verify
 
-> Goal: image build ได้และรันได้จริง
+> Goal: the image builds and actually runs
 
-1. รัน `docker build -t <name>:local .` และตรวจ image size
-2. รัน `docker run --rm -p <port>:<port> <name>:local` แล้ว smoke test
-3. ทำ `/run-check` กับ project ก่อน ship
-4. รายงานผลด้วย `/report`: image size, layers, warnings
+1. Run `docker build -t <name>:local .` and check the image size
+2. Run `docker run --rm -p <port>:<port> <name>:local`, then smoke test
+3. Run `/run-check` on the project before shipping
+4. Report results with `/report`: image size, layers, warnings
 
 ## Rules
 
 ### 1. Image Quality
 
-- Multi-stage build เสมอเมื่อมี compilation step
-- Runtime image ต้องไม่มี build tools, source code หรือ lockfiles ที่ไม่จำเป็น
-- ใช้ non-root user ใน final image เสมอ
-- Pin base image version และ digest สำหรับ reproducibility
+- Always use a multi-stage build when there is a compilation step
+- The runtime image must have no build tools, source code, or unneeded lockfiles
+- Always use a non-root user in the final image
+- Pin the base image version and digest for reproducibility
 
 ### 2. Security
 
-- ไม่ copy `.env` หรือ secrets เข้า image — inject ตอน runtime
-- ไม่ `EXPOSE` port ที่ไม่ใช้
-- ห้ามรัน container ด้วย `--privileged` หรือ mount docker socket โดยไม่จำเป็น
+- Never copy `.env` or secrets into the image — inject at runtime
+- Don't `EXPOSE` unused ports
+- Never run the container with `--privileged` or mount the docker socket without need
 
 ### 3. Deterministic Builds
 
-- ใช้ lockfile ทุก ecosystem (`--frozen-lockfile`, `--locked`)
-- Build ซ้ำด้วย input เดิมต้องได้ image digest เดิม (ถ้า base image pin digest)
+- Use lockfiles in every ecosystem (`--frozen-lockfile`, `--locked`)
+- Rebuilding with the same inputs must produce the same image digest (if the base image is digest-pinned)
 
 ### 4. Minimal Changes
 
-- ถ้า project มี Dockerfile อยู่ → ปรับปรุงเดิม ไม่ rewrite ทั้งไฟล์
-- ไม่เพิ่ม docker-compose ถ้า app รันได้ด้วย container เดียว
+- If the project already has a Dockerfile → improve the existing one, don't rewrite the whole file
+- Don't add docker-compose if the app runs in a single container
 
-- ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- Use /follow-deploy when needed
+- Use /setup-cicd when needed
 
 ## Expected Outcome
 
-- `Dockerfile` multi-stage build ผ่านและ image มีขนาดเหมาะสม
-- `.dockerignore` ครบและไม่มี secrets ใน build context
-- `docker-compose.yml` (ถ้าสร้าง) รัน services ครบพร้อม healthcheck
-- Container รันได้ด้วย non-root user และผ่าน smoke test
+- The `Dockerfile` multi-stage build passes and the image has an appropriate size
+- `.dockerignore` is complete with no secrets in the build context
+- `docker-compose.yml` (if created) runs all services with healthchecks
+- The container runs as a non-root user and passes the smoke test

@@ -1,61 +1,61 @@
 # Rollback And Recovery
 
-เตรียม rollback procedure และตรวจสอบ backup strategy ก่อน deploy เพื่อให้กู้คืนได้เร็วเมื่อ deploy ล้มเหลว
+Prepare the rollback procedure and check the backup strategy before deploy so recovery is fast when a deploy fails
 
 ## When To Use
 
-- ก่อน deploy ทุกครั้ง (เตรียม rollback procedure)
-- ถ้า deploy ล้มเหลวหรือพบ critical errors หลัง deploy
-- ถ้า application ไม่ตอบสนองหลัง deploy
+- Before every deploy (prepare the rollback procedure)
+- When the deploy fails or critical errors are found after deploy
+- When the application is unresponsive after deploy
 
 ## Pre-Deploy Preparation
 
 ### 1. Backup Strategy Review
 
-ทำ `/deep-review` เพื่อตรวจสอบ backup strategy ก่อน deploy:
+Run `/deep-review` to check the backup strategy before deploy:
 
-- ตรวจ database backup ล่าสุด
-- ตรวจ config backup (env vars, secrets)
-- ตรวจ previous deployment version ที่ stable
-- บันทึก commit SHA ปัจจุบันก่อน deploy
+- Check the latest database backup
+- Check config backups (env vars, secrets)
+- Check the previous stable deployment version
+- Record the current commit SHA before deploy
 
 ### 2. Rollback Procedure
 
-เตรียม rollback procedure ชัดเจนก่อน deploy ตาม platform:
+Prepare a clear rollback procedure before deploy per platform:
 
 | Platform | Rollback Method |
 |----------|----------------|
-| Cloudflare Workers | `wrangler deployments rollback` หรือ redeploy commit เก่า |
-| Vercel | `vercel rollback <deployment-url>` หรือ promote ผ่าน dashboard |
-| Railway | `railway redeploy` จาก commit เก่า หรือ rollback ผ่าน dashboard |
-| Docker/K8s | `kubectl rollout undo` หรือ redeploy image tag เก่า |
+| Cloudflare Workers | `wrangler deployments rollback` or redeploy an old commit |
+| Vercel | `vercel rollback <deployment-url>` or promote via the dashboard |
+| Railway | `railway redeploy` from an old commit, or rollback via the dashboard |
+| Docker/K8s | `kubectl rollout undo` or redeploy an old image tag |
 
 ### 3. Zero-Downtime Check
 
-ตรวจสอบว่า deploy เป็น zero-downtime (ถ้าต้องการ):
+Confirm the deploy is zero-downtime (when required):
 
-- ใช้ rolling deployment (K8s, Docker Swarm)
-- ใช้ platform atomic deploy (Cloudflare, Vercel)
-- ตรวจ health check ก่อน route traffic ไปยัง version ใหม่
-- ถ้าไม่รองรับ zero-downtime → แจ้งผู้ใช้ก่อน deploy
+- Use rolling deployment (K8s, Docker Swarm)
+- Use platform atomic deploy (Cloudflare, Vercel)
+- Check health before routing traffic to the new version
+- If zero-downtime is not supported → notify users before deploy
 
 ## Rollback Execution
 
-ถ้า deploy ล้มเหลวหรือพบ critical errors:
+If the deploy fails or critical errors are found:
 
-1. ทำ rollback ทันทีตาม procedure ที่เตรียมไว้
-2. ทำ `/resolve-errors` เพื่อหา root cause
-3. แก้ไข root cause ไม่ใช่แค่ symptoms
-4. ทดสอบ fix ใน staging หรือ local ก่อน redeploy
-5. Redeploy และทำ post-deploy validation ซ้ำ (กลับไป Step 7 ของ `SKILL.md`)
+1. Roll back immediately per the prepared procedure
+2. Run `/resolve-errors` to find the root cause
+3. Fix the root cause, not just the symptoms
+4. Test the fix in staging or locally before redeploying
+5. Redeploy and repeat post-deploy validation (return to Step 7 of `SKILL.md`)
 
 ## Recovery Checklist
 
 | Step | Action | Verify |
 |------|--------|--------|
-| 1 | Rollback ไปยัง version เก่า | Application ตอบสนองปกติ |
-| 2 | แจ้งผู้ใช้หรือทีม (ถ้ามี impact) | Communication ส่งแล้ว |
-| 3 | หา root cause ด้วย `/resolve-errors` | Root cause ระบุได้ |
-| 4 | แก้ไข root cause | Fix ผ่าน verify |
-| 5 | Redeploy | Deploy สำเร็จ |
-| 6 | Post-deploy validation | Validation ผ่าน |
+| 1 | Roll back to the old version | Application responds normally |
+| 2 | Notify users or the team (if impacted) | Communication sent |
+| 3 | Find the root cause with `/resolve-errors` | Root cause identified |
+| 4 | Fix the root cause | Fix passes verify |
+| 5 | Redeploy | Deploy succeeds |
+| 6 | Post-deploy validation | Validation passes |

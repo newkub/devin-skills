@@ -1,6 +1,6 @@
 ---
 name: run-build
-description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
+description: Run the build process systematically to produce production-ready artifacts
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -13,100 +13,100 @@ related:
 
 ## Goal
 
-รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
+Run the build process systematically to produce production-ready artifacts
 
 ## Scope
 
-ใช้กับ project ที่มี build script ใน package manifest โดย optimize build configuration ก่อน build
+Use with projects that have a build script in the package manifest, optimizing build configuration before building
 
 ## Execute
 
 ### 1. Optimize Build
 
-> Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
+> Goal: Improve build configuration and reduce output size before building
 
-1. ทำ `/deep-review` เพื่อวิเคราะห์ bundle size, build config, manual chunks, และ externalization
-2. ทำ `/deep-review` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-3. ถ้า `/deep-review` หรือ `/deep-review` ล้มเหลว → stop และ report
+1. Run `/deep-review` to analyze bundle size, build config, manual chunks, and externalization
+2. Run `/deep-review` to improve build configuration, dependencies, imports, and assets
+3. If `/deep-review` or `/deep-review` fails → stop and report
 
 ### 2. Typecheck
 
-> Goal: ตรวจสอบ TypeScript types ก่อน build
+> Goal: Check TypeScript types before building
 
-1. ทำ `/run-typecheck` เพื่อตรวจสอบ TypeScript types
-2. ถ้ามี type errors → ทำ `/resolve-errors` แล้ว retry ตั้งแต่ `/run-typecheck` (max 3 → stop)
+1. Run `/run-typecheck` to check TypeScript types
+2. If there are type errors → run `/resolve-errors`, then retry from `/run-typecheck` (max 3 → stop)
 
 ### 3. Install Dependencies
 
-> Goal: ติดตั้ง dependencies ที่จำเป็น
+> Goal: Install the required dependencies
 
-1. รัน `bun install`
-2. ตรวจสอบว่า dependencies ติดตั้งครบถ้วน
+1. Run `bun install`
+2. Verify that all dependencies are installed
 
 ### 4. Clean Build Artifacts
 
-> Goal: ลบ artifacts เก่าเพื่อ build ใหม่
+> Goal: Remove old artifacts for a fresh build
 
-1. ทำ `/run-clean` เพื่อลบ build artifacts และ cache เก่า
+1. Run `/run-clean` to remove old build artifacts and cache
 
 ### 5. Execute Build
 
-> Goal: รัน build command ตาม package manifest
+> Goal: Run the build command per the package manifest
 
-1. รัน `bun run build` หรือ build script ที่กำหนด
-2. บันทึกเวลาที่ใช้
-3. จับ output และ error แยกกัน
+1. Run `bun run build` or the designated build script
+2. Record the elapsed time
+3. Capture stdout and errors separately
 
 ### 6. Verify Output
 
-> Goal: ตรวจสอบ build artifacts
+> Goal: Check the build artifacts
 
-1. ตรวจสอบว่า build artifacts ถูกสร้าง
-2. ตรวจสอบ file size และจำนวน output files ที่เหมาะสม
+1. Verify that the build artifacts were created
+2. Verify that file sizes and output file counts are appropriate
 
 ### 7. Report
 
-> Goal: สรุปผล build
+> Goal: Summarize the build result
 
-1. รัน `/report` เพื่อแสดง build metrics (time, size, files)
-2. รัน `/report` เพื่อแสดงสรุปผลลัพธ์
+1. Run `/report` to show build metrics (time, size, files)
+2. Run `/report` to show the result summary
 
 ## Rules
 
 ### 1. Build Order
 
-- Optimize: ทำ `/deep-review` ก่อน แล้วทำ `/deep-review`
-- Typecheck: ทำ `/run-typecheck` ก่อน build
-- Install: ติดตั้ง dependencies
-- Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า
-- Build: รัน build command
-- Verify: ตรวจสอบ output
+- Optimize: run `/deep-review` first, then run `/deep-review`
+- Typecheck: run `/run-typecheck` before building
+- Install: install dependencies
+- Clean: run `/run-clean` to remove old artifacts
+- Build: run the build command
+- Verify: check the output
 
 ### 2. Error Handling
 
-- Typecheck ล้มเหลว: ทำ `/resolve-errors` ก่อน build
-- Build ล้มเหลว: ทำ `/resolve-errors` เพื่อแก้ไข
-- Warning: บันทึกและพิจารณาแก้ไข
+- Typecheck fails: run `/resolve-errors` before building
+- Build fails: run `/resolve-errors` to fix
+- Warnings: record and consider fixing
 
 ### 3. Reporting
 
-- ใช้ `/report` สำหรับ metrics
-- ใช้ `/report` สำหรับสรุปข้อความ
-- ไม่รายงานซ้ำซ้อน
+- Use `/report` for metrics
+- Use `/report` for text summaries
+- Do not report redundantly
 
 ## Expected Outcome
 
-- Build สำเร็จไม่มี errors
-- Typecheck ผ่านทั้งหมด
-- Build artifacts ถูกต้อง
-- Output size และ build time ถูกปรับปรุง
+- Build succeeds with no errors
+- Typecheck fully passes
+- Build artifacts are correct
+- Output size and build time are improved
 
 ## Example Template
 
 ```markdown
 ---
 title: Run Build
-description: รัน build process สำหรับ production-ready artifacts
+description: Run the build process for production-ready artifacts
 auto_execution_mode: 3
 related:
   - /deep-review
@@ -117,48 +117,48 @@ related:
 
 ### Goal
 
-รัน build process สำหรับ production-ready artifacts
+Run the build process for production-ready artifacts
 
 ### Scope
 
-ใช้กับ project ที่มี build script
+Use with projects that have a build script
 
 ### Execute
 
 #### 1. Optimize Build
 
-> Goal: build config พร้อม
+> Goal: build config ready
 
-1. ทำ `/deep-review`
+1. Run `/deep-review`
 
 #### 2. Typecheck
 
-> Goal: ไม่มี type errors
+> Goal: no type errors
 
-1. ทำ `/run-typecheck`
-2. ถ้ามี errors → ทำ `/resolve-errors`
+1. Run `/run-typecheck`
+2. If there are errors → run `/resolve-errors`
 
 #### 3. Build
 
-> Goal: build สำเร็จ
+> Goal: build succeeds
 
-1. ทำ `/run-clean`
-2. รัน build command
+1. Run `/run-clean`
+2. Run the build command
 
 #### 4. Report
 
-> Goal: สรุปผล
+> Goal: summarize results
 
-1. ทำ `/report`
-2. ทำ `/report`
+1. Run `/report`
+2. Run `/report`
 
 ### Rules
 
 #### 1. Order
 
-- Optimize ก่อน build
+- Optimize before building
 
 ### Expected Outcome
 
-- Build สำเร็จ
+- Build succeeds
 ```

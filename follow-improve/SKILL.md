@@ -1,6 +1,6 @@
 ---
 name: follow-improve
-description: Convention improvement — route ผ่าน improve-* → deep-review findings → deep-review-then-fix
+description: Improvement convention — route via improve-* → deep-review findings → deep-review-then-fix
 argument-hint: "[scope]"
 related:
   - improve
@@ -14,48 +14,48 @@ related:
 
 ## Goal
 
-กำหนดวิธีทำ improvement มาตรฐาน — ห้ามแก้แบบ ad-hoc; ทุก improvement เริ่มจาก review findings ที่มี evidence แล้วแก้ผ่าน fix path เดียวกัน
+Define the standard way to do improvements — no ad-hoc fixes; every improvement starts from evidence-backed review findings, then goes through the single shared fix path
 
 ## Scope
 
-ใช้เมื่อต้องการ improve scope ใดๆ — feature, quality, security, performance, docs — route ไป `improve-*` domain skill ที่ตรงกัน ตาม mapping ใน `references/scope-map.md` (SSOT เดียวของ skill → review domain + ownership boundary) หรือ `/improve` thin entry ถ้าไม่ชัด — metric-driven scope เป็นหน้าที่ `optimize-*` (`/follow-optimize`)
+Use when improving any scope — feature, quality, security, performance, docs — by routing to the matching `improve-*` domain skill per the mapping in `references/scope-map.md` (the single SSOT for skill → review domain + ownership boundary), or the `/improve` thin entry when unclear — metric-driven scope belongs to `optimize-*` (`/follow-optimize`)
 
 ## References
 
-- `references/scope-map.md` — ตาราง SSOT: ทุก `improve-*` → review domain(s) + ownership/boundary notes — ห้าม copy ตารางนี้ไป skill อื่น (`/follow-single-of-source`)
+- `references/scope-map.md` — the SSOT table: every `improve-*` → review domain(s) + ownership/boundary notes — never copy this table into another skill (`/follow-single-of-source`)
 
 ## Execute
 
 ### 1. Route To Domain
 
-> Goal: เลือก improve-* skill ที่ตรง scope
+> Goal: Pick the improve-* skill matching the scope
 
-1. scope ตรง domain → lookup `references/scope-map.md` แล้วใช้ `improve-{domain}` ตามแถวที่ตรง (รวมถึง boundary/ownership note ของ cluster ที่ซ้ำกัน เช่น events, stability, data)
-   - metric-driven scope → `optimize-*` แทน (ครบ 18 domains ดู `follow-optimize/references/scope-map.md`) — convention อยู่ที่ `/follow-optimize`
-2. scope ไม่ชัด → ใช้ `/improve` thin entry ให้ dispatch เอง
-3. ทุก `improve-*` เป็น thin entry → `/deep-review` domain ตามชื่อ — ห้ามเขียน review logic ซ้ำเอง
+1. Scope matches a domain → look up `references/scope-map.md` and use `improve-{domain}` per the matching row (including the boundary/ownership note of overlapping clusters such as events, stability, data)
+   - metric-driven scope → use `optimize-*` instead (for all 18 domains see `follow-optimize/references/scope-map.md`) — the convention lives at `/follow-optimize`
+2. Scope unclear → use the `/improve` thin entry and let it dispatch
+3. Every `improve-*` is a thin entry → the `/deep-review` domain of the same name — never reimplement review logic yourself
 
 ### 2. Review And Confirm
 
-> Goal: ได้ prioritized findings ที่ user confirm แล้ว
+> Goal: Get prioritized findings the user has confirmed
 
-1. `/deep-review` domain นั้นรวม findings + severity + evidence
-2. `/report` เป็น prioritized list — ให้ user เลือกก่อนลงมือ ห้ามแก้ทันที
+1. Run `/deep-review` on that domain to collect findings + severity + evidence
+2. Use `/report` as a prioritized list — let the user choose before starting; never fix immediately
 
 ### 3. Fix Via Canonical Path
 
-> Goal: แก้ด้วย fixer เดียวกันเสมอ
+> Goal: Always fix with the same fixer
 
-1. ทำ `/deep-review-then-fix` กับ findings ที่ confirm — แก้ root cause ไม่ใช่ symptom
-2. fix loop สูงสุด 3 รอบต่อ finding — ไม่ผ่าน → stop + report
+1. Run `/deep-review-then-fix` on the confirmed findings — fix the root cause, not the symptom
+2. Max 3 fix-loop rounds per finding — if it still fails → stop + report
 
 ## Rules
 
-- ทุก improvement ต้องมี review finding + evidence ก่อน — ห้าม guess-fix
-- thin entries ห้ามมี logic เอง — delegate `/deep-review` domain เท่านั้น
-- ยืนยันกับ user ก่อนแก้ทุกครั้ง ยกเว้น user สั่ง auto-fix ชัดเจน
+- Every improvement needs a review finding + evidence first — no guess-fixes
+- Thin entries must not hold logic of their own — delegate only to the `/deep-review` domain
+- Always confirm with the user before fixing, unless the user explicitly asked for auto-fix
 
 ## Expected Outcome
 
-- improvements ทุกข้อผ่าน path เดียว: domain review → prioritized report → confirm → canonical fix
-- ไม่มี ad-hoc fix ที่ไม่มี finding รองรับ
+- Every improvement goes through one path: domain review → prioritized report → confirm → canonical fix
+- No ad-hoc fixes without a supporting finding

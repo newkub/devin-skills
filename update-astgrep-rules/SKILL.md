@@ -1,6 +1,6 @@
 ---
 name: update-astgrep-rules
-description: Reset และ regenerate ast-grep rules เป็น `rules/{dependencies,architecture,glob}/` + `sgconfig.yml` จาก re-analysis ของ project
+description: Reset and regenerate ast-grep rules as `rules/{dependencies,architecture,glob}/` + `sgconfig.yml`
 argument-hint: "[rule-or-pattern | --reset]"
 related:
   - use-astgrep
@@ -15,32 +15,32 @@ related:
 
 ## Goal
 
-สร้าง/อัปเดต ast-grep rules ของ project ตาม canonical layout 3 folders — `rules/dependencies/` (rule ต่อ dependency), `rules/architecture/` (rules ของ architecture ที่เลือกใน `AGENTS.md`), `rules/glob/` (rules ผูก file patterns) — พร้อม `sgconfig.yml` ที่ชี้ทั้ง 3 dirs
+Create/update the project's ast-grep rules following the canonical 3-folder layout — `rules/dependencies/` (one rule per dependency), `rules/architecture/` (rules for the architecture chosen in `AGENTS.md`), `rules/glob/` (rules bound to file patterns) — plus an `sgconfig.yml` pointing at all 3 dirs
 
 ## Scope
 
-- ใช้เมื่อต้องการ AST-based lint rules ที่ enforce conventions เฉพาะ project
+- Use when you want AST-based lint rules that enforce project-specific conventions
 - Canonical layout: `rules/dependencies/<dep>.yml`, `rules/architecture/<arch>.yml`, `rules/glob/<pattern>.yml`
-- `--reset` = ลบ rules เดิมทั้งหมดแล้ว re-analyze + rewrite ใหม่ (canonical refresh)
-- ไม่รวม `.devin/rules` (markdown rules — ลบออกจาก projects, knowledge rules ไป `.devin/rules` ไม่ใช่ที่นี่)
-- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/new-skills` แทน
+- `--reset` = delete all existing rules, then re-analyze and rewrite them (canonical refresh)
+- Excludes `.devin/rules` (markdown rules — removed from projects; knowledge rules go to `.devin/rules`, not here)
+- Excludes generating skills from a manifest — use `/new-skills` instead
 
 ## Execute
 
 ### 1. Reset And Analyze
 
-> Goal: เริ่มจาก clean state เข้าใจ project จริง
+> Goal: Start from a clean state and understand the real project
 
-1. `--reset` → ลบ `rules/` เดิมทั้ง folder + `.devin/rules/` (markdown rules — deprecated, ใช้ ast-grep แทน) ก่อนเสมอ
-2. ทำ `/scan-codebase` — เก็บ manifest (`package.json`/`Cargo.toml`/etc.), `AGENTS.md` (architecture ที่เลือก), directory layout, file extensions ที่ใช้
-3. สร้าง canonical structure:
+1. `--reset` → always delete the whole existing `rules/` folder plus `.devin/rules/` (markdown rules — deprecated, replaced by ast-grep) first
+2. Run `/scan-codebase` — collect the manifest (`package.json`/`Cargo.toml`/etc.), `AGENTS.md` (the chosen architecture), the directory layout, and the file extensions in use
+3. Create the canonical structure:
    ```text
    rules/
-   ├─ dependencies/     # <dep>.yml — 1 file ต่อ dependency ที่ต้อง enforce usage/ban
+   ├─ dependencies/     # <dep>.yml — one file per dependency that needs usage/ban enforcement
    ├─ architecture/     # <arch>.yml — layer boundaries, import direction, banned patterns
-   └─ glob/             # <pattern>.yml — rules ผูก file glob (*.test.ts, routes/*, server/*)
+   └─ glob/             # <pattern>.yml — rules bound to file globs (*.test.ts, routes/*, server/*)
    ```
-4. สร้าง/แก้ `sgconfig.yml`:
+4. Create/fix `sgconfig.yml`:
    ```yaml
    ruleDirs:
      - rules/dependencies
@@ -50,65 +50,65 @@ related:
 
 ### 2. Write Dependencies Rules
 
-> Goal: rule ต่อ dependency ที่ต้อง enforce
+> Goal: One rule per dependency that needs enforcement
 
-1. อ่าน dependencies จาก manifest — เลือกเฉพาะ deps ที่มี convention ชัดเจน (เช่น ต้องใช้ `drizzle` ไม่ใช่ raw SQL, ห้าม `moment` ใช้ `dayjs`, effect-atom patterns)
-2. ต่อ dep เขียน `rules/dependencies/<dep>.yml`: enforce import source, ban deprecated APIs, required config — YAML: `id`, `language`, `rule.pattern`/`rule.any`, `message`, `severity`, `fix` (optional)
-3. ใช้ meta-variables `$VAR`, `$$$ARGS`; `constraints`/`utils` ถ้าซับซ้อน
-4. ห้ามเขียน rule ที่ไม่มี dep นั้นจริง — ทุก rule ต้องอ้าง package ที่อยู่ใน manifest
+1. Read the dependencies from the manifest — pick only deps with a clear convention (e.g. must use `drizzle` instead of raw SQL, `moment` banned in favour of `dayjs`, effect-atom patterns)
+2. Per dep, write `rules/dependencies/<dep>.yml`: enforce the import source, ban deprecated APIs, require config — YAML: `id`, `language`, `rule.pattern`/`rule.any`, `message`, `severity`, `fix` (optional)
+3. Use meta-variables `$VAR`, `$$$ARGS`; add `constraints`/`utils` when the rule is complex
+4. Never write a rule for a dep that is not really there — every rule must name a package present in the manifest
 
 ### 3. Write Architecture Rules
 
-> Goal: enforce architecture ที่ `AGENTS.md` เลือก
+> Goal: Enforce the architecture chosen in `AGENTS.md`
 
-1. อ่าน `AGENTS.md` → ระบุ architecture (clean / layered / modular / framework-specific)
-2. เขียน `rules/architecture/<name>.yml` สำหรับ boundaries ที่ enforce ได้ด้วย AST/regex เช่น:
-   - layer import direction (`domain/` ห้าม import `infra/`)
-   - ห้าม deep imports ข้าม module barrel
-   - banned patterns ใน layer เฉพาะ (IO calls ใน `domain/`)
-3. Rules ที่ enforce ด้วย AST ไม่ได้ (เช่น naming conventions ที่ไม่มี pattern ชัด) → เขียนใน `AGENTS.md` rules section แทน ห้ามเดา YAML
+1. Read `AGENTS.md` → identify the architecture (clean / layered / modular / framework-specific)
+2. Write `rules/architecture/<name>.yml` for boundaries that AST/regex can enforce, e.g.:
+   - layer import direction (`domain/` must not import `infra/`)
+   - no deep imports across a module barrel
+   - banned patterns inside a specific layer (IO calls in `domain/`)
+3. Rules AST cannot enforce (e.g. naming conventions with no clear pattern) → write them in the `AGENTS.md` rules section instead; never guess YAML
 
 ### 4. Write Glob Rules
 
-> Goal: rules ผูก file patterns
+> Goal: Rules bound to file patterns
 
-1. ระบุ file patterns ที่ต้อง rule เฉพาะ: `*.test.*`, `*.stories.*`, `routes/*`, `server/*`, `*.config.*`, migration files
-2. เขียน `rules/glob/<pattern>.yml` — ast-grep rule + `files:` glob filter เช่น `files: ["**/*.test.ts"]` (no `expect` ที่ไม่มี assertion, `console.log` ใน server code, env access นอก config)
-3. เลือก glob จาก layout จริงของ project — ห้ามเขียน rule สำหรับ pattern ที่ project ไม่มี
+1. Identify the file patterns that need a dedicated rule: `*.test.*`, `*.stories.*`, `routes/*`, `server/*`, `*.config.*`, migration files
+2. Write `rules/glob/<pattern>.yml` — an ast-grep rule plus a `files:` glob filter, e.g. `files: ["**/*.test.ts"]` (`expect` without an assertion, `console.log` in server code, env access outside config)
+3. Choose globs from the project's real layout — never write a rule for a pattern the project does not have
 
 ### 5. Test And Wire
 
-> Goal: rules ทำงานจริง
+> Goal: Make sure the rules actually work
 
-1. ทดสอบ rule ด้วย `ast-grep scan --rule rules/<dir>/<name>.yml <path>` ก่อน commit
-2. rules หลายไฟล์/ต้อง JSON findings ต่อ rule → ทำ `/use-astgrep-programmatic` เขียน batch script (`ast-grep scan --json` ผ่าน `Bun.$` หรือ `findInFiles` ต่อ rule set) — dry run ก่อนเสมอ
-3. รัน `ast-grep scan` ทั้ง project — เก็บ findings, แก้ rules ที่ match ผิด/เกิน
-4. เพิ่ม `"scan": "ast-grep scan"` ใน `package.json` + CI step ถ้ามี
-5. ทำ `/run-scan` ยืนยันไม่มี false positives มากเกิน
+1. Test a rule with `ast-grep scan --rule rules/<dir>/<name>.yml <path>` before committing
+2. For many rules / JSON findings needed per rule → run `/use-astgrep-programmatic` and write a batch script (`ast-grep scan --json` through `Bun.$` or `findInFiles` per rule set) — always dry run first
+3. Run `ast-grep scan` over the whole project — collect findings, fix rules that match wrongly or too broadly
+4. Add `"scan": "ast-grep scan"` to `package.json` plus a CI step when available
+5. Run `/run-scan` to confirm there are not too many false positives
 
 ### 6. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
 1. `/report` table: `No.`, `Dir`, `Rule`, `Pattern`, `Severity`, `Status`
-2. ระบุ rules ที่เพิ่ม/แก้/ลบ + `.devin/rules` deletion status
-3. ทำ `/suggest-next-action`
+2. List the rules added/changed/deleted + the `.devin/rules` deletion status
+3. Run `/suggest-next-action`
 
 ## Rules
 
-- ทดสอบ rule ก่อน commit เสมอ — rule ที่ match ผิดทำให้ scan พัง
-- ใช้ `severity: warning` สำหรับ rules ใหม่ก่อนเลื่อน `error`
-- ห้ามแก้ `sgconfig.yml` โดยไม่ตรวจ `ruleDirs` ที่มีอยู่ — merge กับ canonical layout
-- หลาย projects พร้อมกัน (เช่น ทุก project ใน drive) → ทำ `/use-subagents` spawn ทีละ project — agent ห้ามแตะ `AGENTS.md`/manifest นอกเหนือ rules
-- `--reset` = delete-then-rewrite เท่านั้น — ห้าม merge rules เก่ากลับมาถ้า re-analysis ไม่พบเหตุผล
+- Always test a rule before committing — a rule that matches wrongly breaks the scan
+- Use `severity: warning` for new rules before promoting them to `error`
+- Never edit `sgconfig.yml` without checking the existing `ruleDirs` — merge with the canonical layout
+- Several projects at once (e.g. every project on a drive) → use `/use-subagents` to spawn one agent per project — the agent must not touch `AGENTS.md`/manifest beyond the rules
+- `--reset` = delete-then-rewrite only — never bring old rules back by merging unless the re-analysis justifies it
 
-- ใช้ `/use-astgrep` สำหรับ rule syntax (pattern, constraints, transform/rewriters)
-- ใช้ `/use-astgrep-programmatic` เมื่อทดสอบ rules แบบ batch หรือต้อง JSON findings ที่ merge/parse ได้
-- ใช้ `/use-subagents` เมื่อทำหลาย projects
-- ใช้ `/scan-codebase`, `/run-scan`, `/report`, `/suggest-next-action` ตาม steps
+- Use `/use-astgrep` for rule syntax (pattern, constraints, transform/rewriters)
+- Use `/use-astgrep-programmatic` when testing rules in batch or needing mergeable/parseable JSON findings
+- Use `/use-subagents` when handling several projects
+- Use `/scan-codebase`, `/run-scan`, `/report`, `/suggest-next-action` per the steps
 
 ## Expected Outcome
 
-- `rules/{dependencies,architecture,glob}/` + `sgconfig.yml` สะท้อน project จริง
-- `.devin/rules` ถูกลบ; rules ทดสอบผ่าน `ast-grep scan`
-- Report ครบทุก project ที่ทำ
+- `rules/{dependencies,architecture,glob}/` + `sgconfig.yml` reflect the real project
+- `.devin/rules` removed; rules pass testing with `ast-grep scan`
+- A complete report for every project handled

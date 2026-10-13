@@ -9,42 +9,42 @@ related:
 
 ## Goal
 
-ตรวจ compliance dimension ของ `/deep-validate` — ความเหมาะสมกับ requirements/context, project conventions (`AGENTS.md`) และ regulatory requirements
+Check the compliance dimension of `/deep-validate` — fit with requirements/context, project conventions (`AGENTS.md`), and regulatory requirements
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `compliance` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings — ไม่แก้ไข
+- Used when `/deep-validate` dispatches to the `compliance` dimension, or invoked standalone
+- Read-only: record findings — do not fix
 
 ## Execute
 
 ### 1. Check Requirements Fit
 
-> Goal: solution เหมาะกับ requirements และ context
+> Goal: the solution fits the requirements and context
 
-1. ตรวจสอบความเหมาะสมกับ requirements หรือ context
-2. ตรวจสอบความเหมาะสมกับ capabilities หรือ constraints
-3. ตรวจสอบความเหมาะสมกับ scalability หรือ maintainability
+1. Check the fit with requirements or context
+2. Check the fit with capabilities or constraints
+3. Check the fit with scalability or maintainability
 
 ### 2. Check Conventions And Regulatory
 
-> Goal: สอดคล้องกับ standards ที่บังคับใช้
+> Goal: aligned with the applicable standards
 
-1. ตรวจสอบ compliance กับ project conventions (`AGENTS.md`)
-2. ตรวจสอบ compliance กับ regulatory requirements ถ้ามี — ทำ `/deep-review` ถ้าต้องการ deep pass
-3. บันทึก findings พร้อม severity + evidence
+1. Check compliance with project conventions (`AGENTS.md`)
+2. Check compliance with regulatory requirements if any — run `/deep-review` for a deep pass
+3. Record findings with severity + evidence
 
 ### 3. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
 
 ## Rules
 
 - regulatory violation = Critical/High; convention drift = Medium/Low
-- ระบุ standard/rule ที่ใช้เป็นเกณฑ์ในแต่ละ finding
+- State the standard/rule used as the criterion in each finding
 
 ## Expected Outcome
 
-- Findings ของ compliance dimension พร้อม severity และ evidence
+- Findings of the compliance dimension with severity and evidence

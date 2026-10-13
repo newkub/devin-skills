@@ -1,6 +1,6 @@
 ---
 name: update-github-issue
-description: แก้ไข title, body, comments, labels, assignees, metadata ของ GitHub issue ด้วย `gh issue edit`
+description: Edit GitHub issue title, body, comments, labels, assignees, metadata with `gh issue edit`
 argument-hint: "[issue-number] [repo]"
 related:
   - create-github
@@ -10,88 +10,88 @@ related:
 
 ## Goal
 
-แก้ไข GitHub issue ที่มีอยู่ด้วย `gh issue edit`, `gh issue comment --edit-last`, และ `gh api` สำหรับ comment เก่า
+Edit an existing GitHub issue with `gh issue edit`, `gh issue comment --edit-last`, and `gh api` for old comments
 
 ## Scope
 
-- แก้ไข issue title, body, labels, assignees, milestone, project, type, parent
-- เพิ่มหรือแก้ไข comments
-- ใช้ `create-github-issue/templates/<type>.md` ถ้าต้อง reformat body หรือ comment
-- รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
+- Edit issue title, body, labels, assignees, milestone, project, type, parent
+- Add or edit comments
+- Use `create-github-issue/templates/<type>.md` if you need to reformat a body or comment
+- Supports the current repo, or `--repo owner/repo`
 
 ## Execute
 
 ### 1. Verify Target
 
-> Goal: ยืนยัน issue ที่จะแก้ไข
+> Goal: Confirm the issue to edit
 
-1. รัน `gh auth status`
-2. รัน `gh issue view <number> --repo <owner/repo> --json number,title,body,comments`
-3. ตรวจสอบสิทธิ์ write บน issue
-4. ถ้าไม่ระบุ repo ใช้ git remote ของ directory ปัจจุบัน
+1. Run `gh auth status`
+2. Run `gh issue view <number> --repo <owner/repo> --json number,title,body,comments`
+3. Verify write permission on the issue
+4. If no repo is specified, use the current directory's git remote
 
 ### 2. Update Issue Body
 
-> Goal: แก้ไขเนื้อหาหลักของ issue
+> Goal: Edit the issue's main content
 
-1. เลือก template จาก `create-github-issue/templates/<type>.md`
-2. แทนที่ placeholders ด้วยข้อมูลใหม
-3. บันทึกลง temp file
-4. รัน `gh issue edit <number> --body-file <body.md>`
-5. ถ้าต้องเปลี่ยน title รัน `gh issue edit <number> --title "<title>"`
+1. Select a template from `create-github-issue/templates/<type>.md`
+2. Replace the placeholders with new data
+3. Save to a temp file
+4. Run `gh issue edit <number> --body-file <body.md>`
+5. If you need to change the title, run `gh issue edit <number> --title "<title>"`
 
 ### 3. Update Comments
 
-> Goal: แก้ไขหรือเพิ่ม comments
+> Goal: Edit or add comments
 
-1. ดึง comment IDs ด้วย `gh issue view <number> --comments --json comments`
-2. แก้ไข comment ล่าสุด: `gh issue comment <number> --edit-last --body-file <comment.md>`
-3. แก้ไข comment เก่า: `gh api -X PATCH /repos/<owner>/<repo>/issues/comments/<comment-id> -f body=@<comment.md>`
-4. เพิ่ม comment ใหม: `gh issue comment <number> --body-file <comment.md>`
-5. ลบ comment: `gh api -X DELETE /repos/<owner>/<repo>/issues/comments/<comment-id>` (ถาม user ก่อน)
+1. Fetch comment IDs with `gh issue view <number> --comments --json comments`
+2. Edit the latest comment: `gh issue comment <number> --edit-last --body-file <comment.md>`
+3. Edit an old comment: `gh api -X PATCH /repos/<owner>/<repo>/issues/comments/<comment-id> -f body=@<comment.md>`
+4. Add a new comment: `gh issue comment <number> --body-file <comment.md>`
+5. Delete a comment: `gh api -X DELETE /repos/<owner>/<repo>/issues/comments/<comment-id>` (ask the user first)
 
 ### 4. Update Metadata
 
-> Goal: แก้ไข labels, assignees, milestones
+> Goal: Edit labels, assignees, milestones
 
-1. เพิ่ม/ลบ labels: `gh issue edit <number> --add-label <label> --remove-label <label>`
-2. เพิ่ม/ลบ assignees: `gh issue edit <number> --add-assignee <user> --remove-assignee <user>`
-3. เปลี่ยน milestone: `gh issue edit <number> --milestone "<milestone>"` หรือ `--remove-milestone`
-4. เพิ่ม/ลบ project: `gh issue edit <number> --add-project "<project>" --remove-project <id>`
-5. เปลี่ยน type หรือ parent: `gh issue edit <number> --type <type> --parent <number>`
+1. Add/remove labels: `gh issue edit <number> --add-label <label> --remove-label <label>`
+2. Add/remove assignees: `gh issue edit <number> --add-assignee <user> --remove-assignee <user>`
+3. Change milestone: `gh issue edit <number> --milestone "<milestone>"` or `--remove-milestone`
+4. Add/remove project: `gh issue edit <number> --add-project "<project>" --remove-project <id>`
+5. Change type or parent: `gh issue edit <number> --type <type> --parent <number>`
 
 ### 5. Verify And Report
 
-> Goal: ยืนยันว่าการแก้ไขสำเร็จ
+> Goal: Confirm the edit succeeded
 
-1. รัน `gh issue view <number> --comments --json number,title,body,labels,assignees`
-2. ตรวจสอบ body และ comments ให้ตรงกับ template
-3. รายงาน issue URL กลับ
+1. Run `gh issue view <number> --comments --json number,title,body,labels,assignees`
+2. Verify the body and comments match the template
+3. Report the issue URL back
 
 ## Rules
 
 ### 1. Safety
 
-- ถ้า issue มี comments จากคนอื่น อย่า overwrite body โดยไม่ขอ user confirmation
-- ลบ ลบ labels หรือ close ต้องถาม user ก่อน
-- ปิด issue ใช้ `gh issue close` ไม่ใช่ delete
+- If the issue has comments from others, do not overwrite the body without user confirmation
+- Removing labels or closing the issue requires asking the user first
+- To close an issue, use `gh issue close`, not delete
 
 ### 2. Templates
 
-- ถ้าแก้ไข body หรือ comment ของ `idea` issue ใช้ `create-github-issue/templates/idea.md`
-- ตารางต้องเป็น `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
-- Todo ต้องเป็นตาราง `Action | Files | Dependencies | Workspace`
-- UX/UI Sketch ต้องเป็น ANSI art จาก project analysis จริง หัวข้อต้องไม่มี `(ANSI)`
+- When editing the body or comment of an `idea` issue, use `create-github-issue/templates/idea.md`
+- The table must be `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
+- Todo must be a table `Action | Files | Dependencies | Workspace`
+- UX/UI Sketch must be ANSI art from the real project analysis; headings must not contain `(ANSI)`
 
 ### 3. Reformat Existing Issues
 
-- ถ้า user ขอแก้ไข issue ที่สร้างโดย skill เก่า อ่าน issue ปัจจุบันแล้ว reformat ด้วย template ใหม
-- ถ้ามีหลาย comments ใช้ script อัปเดตทีละอัน
-- ถ้า type ไม่ชัด ใช้ `/ask-me`
+- If the user asks to edit an issue created by an old skill, read the current issue and reformat it with the new template
+- If there are multiple comments, use a script to update them one at a time
+- If the type is unclear, use `/ask-me`
 
 ## Expected Outcome
 
-- Issue body และ comments ถูกอัปเดตตาม template ใหม
-- Metadata (labels, assignees, milestone, project) ถูกต้อง
-- รายงาน issue URL กลับ
-- ไม่สูญเสียข้อมูลสำคัญระหว่าง update
+- The issue body and comments are updated per the new template
+- Metadata (labels, assignees, milestone, project) is correct
+- The issue URL is reported back
+- No important data is lost during the update

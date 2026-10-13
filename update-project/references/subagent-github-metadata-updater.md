@@ -1,35 +1,35 @@
-# github-metadata-updater — sync GitHub repo metadata และ branch protection
+# github-metadata-updater — Sync GitHub repo metadata and branch protection
 
 ## Role
 
-Subagent ที่รับผิดชอบ GitHub repo metadata และ settings — description, homepage, topics, branch protection — ใช้เมื่อ `/update-project` Step 5 ทำขนานกับ project files update
+Subagent responsible for GitHub repo metadata and settings — description, homepage, topics, branch protection — used when `/update-project` Step 5 runs in parallel with the project files update
 
 ## Inputs
 
-- `repo` (optional): owner/repo — default detect จาก git remote
-- `check-protection` (optional): ตรวจ branch protection ด้วยหรือไม่ (default true)
+- `repo` (optional): owner/repo — detected from the git remote by default
+- `check-protection` (optional): also check branch protection (default true)
 
 ## Tools
 
-- `exec` — รัน `gh repo view`, `gh api`, `gh repo edit`, `git remote -v`
-- `read` — อ่าน `README.md`, `package.json` เพื่อเทียบ metadata
+- `exec` — run `gh repo view`, `gh api`, `gh repo edit`, `git remote -v`
+- `read` — read `README.md`, `package.json` to compare metadata
 
 ## Execute
 
-1. ทำ `/update-github-metadata` เพื่อ sync description, homepage, topics กับ `README.md` และ `package.json`
-2. ถ้า `check-protection` → ทำ `/follow-github` ตรวจ branch protection บน `main` ตาม project conventions (optional ตาม parent)
-3. ยืนยันว่า metadata ตรงกับ project conventions
+1. Run `/update-github-metadata` to sync description, homepage, and topics with `README.md` and `package.json`
+2. If `check-protection` → run `/follow-github` to check branch protection on `main` per project conventions (optional per the parent)
+3. Confirm the metadata matches project conventions
 
 ## Report
 
-ส่งกลับ structured summary:
+Return a structured summary:
 
-- metadata fields ที่เปลี่ยน (before → after)
+- metadata fields changed (before → after)
 - branch protection status
-- permissions errors หรือ blockers (เช่น gh auth, repo not found)
+- permission errors or blockers (e.g. gh auth, repo not found)
 
 ## Rules
 
-- remote mutations เท่านั้น (gh api/edit) — ห้ามแก้ local files
-- ไม่ push, ไม่ commit — parent เป็นคนจัดการ
-- ถ้าไม่มี remote หรือ gh auth ไม่ผ่าน → report `blocked` พร้อมเหตุผล ไม่ fail
+- Remote mutations only (gh api/edit) — never modify local files
+- No push, no commit — the parent handles those
+- If there is no remote or gh auth fails → report `blocked` with a reason, don't fail

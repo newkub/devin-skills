@@ -1,6 +1,6 @@
 ---
 name: update-references
-description: อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์
+description: Update all related references when a file is edited, moved, or deleted
 argument-hint: "[scope]"
 related:
   - use-related-skills
@@ -12,135 +12,135 @@ related:
 ---
 ## Goal
 
-อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่งที่เก็บ references
+Update all related references when a file is edited, moved, or deleted, covering every location that stores references
 
 ## Scope
 
-ใช้เมื่อ:
-- แก้ไขไฟล์ที่ถูกอ้างอิงจากไฟล์อื่น
-- ย้ายไฟล์ไปยังตำแหน่งใหม่
-- เปลี่ยนชื่อไฟล์
-- ลบไฟล์ที่ถูกอ้างอิง
-- เปลี่ยนชื่อ workflow หรือ skill
+Use when:
+- Editing a file that is referenced by other files
+- Moving a file to a new location
+- Renaming a file
+- Deleting a referenced file
+- Renaming a workflow or skill
 
-ครอบคลุม:
+Covers:
 - Global workflows (`~/.codeium/windsurf/global_workflows/`)
-- Global skills (`%APPDATA%\devin\skills\` หรือ `~/.codeium/windsurf/skills/`)
+- Global skills (`%APPDATA%\devin\skills\` or `~/.codeium/windsurf/skills/`)
 - Project codebase (source code, configs, docs)
-- `rules/` (ast-grep) ที่ repo root
-- `AGENTS.md` ในแต่ละ workspace
+- `rules/` (ast-grep) at the repo root
+- `AGENTS.md` in each workspace
 - Workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
 
 ## Execute
 
 ### 1. Identify Changed Files
 
-> Goal: ระบุไฟล์ที่มีการเปลี่ยนแปลง
+> Goal: Identify the changed files
 
-1. ระบุไฟล์ที่ถูกแก้ไข ย้าย เปลี่ยนชื่อ หรือลบจาก task ปัจจุบัน
-2. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการเปลี่ยนแปลงทั้งหมด
-3. ระบุประเภทการเปลี่ยนแปลง: ย้าย เปลี่ยนชื่อ ลบ หรือแก้ไขเนื้อหา
+1. Identify files edited, moved, renamed, or deleted in the current task
+2. Run `git status --porcelain` to see all changed files
+3. Identify the change type: move, rename, delete, or content edit
 
 ### 1.5 Check File Relations
 
-> Goal: เข้าใจความสัมพันธ์ของไฟล์ที่เปลี่ยนแปลงก่อน search
+> Goal: Understand the relationships of the changed files before searching
 
-1. ทำ `/deep-review` กับไฟล์ที่เปลี่ยนแปลง เพื่อหา imports, consumers, และ references
-2. บันทึก relation map: target → consumers → severity
-3. ใช้ผลลัพธ์นี้เป็นพื้นฐานสำหรับ search strategy ใน Step 2
+1. Run `/deep-review` on the changed files to find imports, consumers, and references
+2. Record the relation map: target → consumers → severity
+3. Use this result as the basis for the search strategy in Step 2
 
 ### 2. Search For References
 
-> Goal: ค้นหา references ทั้งหมดที่เกี่ยวข้อง
+> Goal: Find all related references
 
-1. ค้นหาใน global workflows ด้วย `findstr` หรือ `Grep`
-2. ค้นหาใน global skills ด้วย `findstr` หรือ `Grep`
-3. ค้นหาใน project codebase ด้วย `Grep` หรือ `ast-grep`
-4. ค้นหาใน `rules/` ที่ repo root
-5. ค้นหาใน `AGENTS.md` ของทุก workspace
-6. ค้นหาใน workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
-7. ค้นหาชื่อไฟล์เก่า เส้นทางเก่า import statements และ workflow references
+1. Search global workflows with `findstr` or `Grep`
+2. Search global skills with `findstr` or `Grep`
+3. Search the project codebase with `Grep` or `ast-grep`
+4. Search `rules/` at the repo root
+5. Search `AGENTS.md` of every workspace
+6. Search workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
+7. Search old file names, old paths, import statements, and workflow references
 
 ### 3. Update References
 
-> Goal: อัปเดท references ทั้งหมดตามประเภทการเปลี่ยนแปลง
+> Goal: Update all references according to the change type
 
 #### 3.1 Move File
 
-1. อัปเดท import paths ทั้งหมดใน codebase
-2. อัปเดท file path references ทั้งหมดใน global workflows และ skills
-3. อัปเดท workflow references ทั้งหมด
+1. Update all import paths in the codebase
+2. Update all file path references in global workflows and skills
+3. Update all workflow references
 
 #### 3.2 Rename File
 
-1. อัปเดท import statements ทั้งหมดใน codebase
-2. อัปเดท file name references ทั้งหมดใน global workflows และ skills
-3. อัปเดท workflow references ทั้งหมด
+1. Update all import statements in the codebase
+2. Update all file name references in global workflows and skills
+3. Update all workflow references
 
 #### 3.3 Delete File
 
-1. ลบ import statements ที่อ้างถึงไฟล์ที่ถูกลบ
-2. ลบ references ทั้งหมดใน global workflows และ skills
-3. แก้ไข code ที่ใช้ไฟล์ที่ถูกลบ
+1. Remove import statements that reference the deleted file
+2. Remove all references in global workflows and skills
+3. Fix code that used the deleted file
 
 #### 3.4 Rename Workflow Or Skill
 
-1. อัปเดท references ใน global workflows (`old-name` → `new-name`)
-2. อัปเดท references ใน global skills
-3. อัปเดท references ใน `AGENTS.md` ของทุก workspace
-4. อัปเดท references ใน `rules/` ที่ repo root
-5. อัปเดท references ใน workspace workflows
-6. อัปเดท references ใน project codebase
+1. Update references in global workflows (`old-name` → `new-name`)
+2. Update references in global skills
+3. Update references in `AGENTS.md` of every workspace
+4. Update references in `rules/` at the repo root
+5. Update references in workspace workflows
+6. Update references in the project codebase
 
 ### 4. Verify Updates
 
-> Goal: ตรวจสอบความถูกต้องของ updates
+> Goal: Verify the correctness of the updates
 
-1. ค้นหา references เก่าอีกครั้งในทุกตำแหน่งเพื่อยืนยันว่าไม่มีเหลือ
-2. รัน linting ถ้ามี
-3. รัน typecheck ถ้ามี
-4. รัน test ถ้ามี
+1. Search for old references again in every location to confirm none remain
+2. Run linting if present
+3. Run typecheck if present
+4. Run tests if present
 
 ## Rules
 
 ### 1. Search Strategy
 
-ค้นหา references อย่างครอบคลุม:
+Search references comprehensively:
 
-- ค้นหาทั้ง absolute paths และ relative paths
-- ค้นหาทั้งชื่อไฟล์และ extension
-- ค้นหาทั้ง import statements และ string references
-- ค้นหาในทุก file types (.ts, .js, .md, .json, .yml, .jsonc)
-- ค้นหาใน global workflows, global skills, codebase, `rules/`, `AGENTS.md`, workspace workflows
+- Search both absolute and relative paths
+- Search both file names and extensions
+- Search both import statements and string references
+- Search in all file types (.ts, .js, .md, .json, .yml, .jsonc)
+- Search in global workflows, global skills, codebase, `rules/`, `AGENTS.md`, workspace workflows
 
 ### 2. Update Strategy
 
-อัปเดท references อย่างถูกต้อง:
+Update references correctly:
 
-- อัปเดททุก references ที่พบ ไม่เว้นแม้แต่ reference เดียว
-- รักษาความสม่ำเสมอของ import style
-- รักษาความสม่ำเสมอของ path format
-- ตรวจสอบว่า updates ไม่ทำให้เกิด syntax errors
-- ถ้าเปลี่ยนชื่อ workflow ให้อัปเดททั้ง `title` และ `related_workflows` ในไฟล์ที่อ้างถึง
+- Update every reference found, not leaving a single one
+- Keep import style consistent
+- Keep path format consistent
+- Verify that the updates don't introduce syntax errors
+- When renaming a workflow, update both `title` and `related_workflows` in referencing files
 
 ### 3. Verification
 
-ตรวจสอบความถูกต้อง:
+Verify correctness:
 
-- ตรวจสอบว่า references เก่าไม่มีเหลือในทุกตำแหน่ง
-- ตรวจสอบว่า references ใหม่ถูกต้อง
-- ตรวจสอบว่า code ยังทำงานได้
-- ตรวจสอบว่าไม่มี broken imports
+- Verify that no old references remain in any location
+- Verify that the new references are correct
+- Verify that the code still works
+- Verify that there are no broken imports
 
-- ใช้ /use-related-skills ถ้าจำเป็น
-- ใช้ /update-references ถ้าจำเป็น
-- ใช้ /search-files-patterns ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
+- Use /use-related-skills if needed
+- Use /update-references if needed
+- Use /search-files-patterns if needed
+- Use /report if needed
+- Use /deep-validate if needed
 
 ## Expected Outcome
 
-- References ทั้งหมดถูกอัปเดทครบถ้วนในทุกตำแหน่ง
-- ไม่มี references เก่าเหลืออยู่
-- Code ยังทำงานได้หลังจาก updates
-- ไม่มี linting หรือ type errors
+- All references are fully updated in every location
+- No old references remain
+- The code still works after the updates
+- No linting or type errors

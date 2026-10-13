@@ -1,6 +1,6 @@
 ---
 name: follow-default-config
-description: Convention การเขียน config — config files เก็บเฉพาะ overrides เท่านั้น ค่าที่เท่า default ห้ามเขียน (เช็ค defaults ด้วย /check-types-definition)
+description: Config convention — keep only overrides; never restate defaults (check via /check-types-definition)
 argument-hint: "[config-path]"
 related:
   - check-types-definition
@@ -11,47 +11,47 @@ related:
 
 ## Goal
 
-Config files ต้องสั้นและอ่านง่าย — เก็บเฉพาะค่าที่ override default ของ tool เท่านั้น; ค่าที่เท่ากับ default อยู่แล้วให้ลบออก ไม่เขียน config ซ้ำกับสิ่งที่ tool ทำเองอยู่แล้ว
+Config files must stay short and easy to read — keep only values that override a tool's defaults; delete any value already equal to the default, so the config never restates what the tool does on its own
 
 ## Scope
 
-ใช้ทุกครั้งที่เขียน/แก้/audit config file (`uno.config.ts`, `vite.config.ts`, `biome.jsonc`, `tsconfig.json`, `Cargo.toml` profiles, `.eslintrc`, etc.) — ก่อนเขียน key ใหม่ต้องรู้ว่าค่านั้นต่างจาก default หรือไม่
+Apply whenever writing/editing/auditing a config file (`uno.config.ts`, `vite.config.ts`, `biome.jsonc`, `tsconfig.json`, `Cargo.toml` profiles, `.eslintrc`, etc.) — before writing a new key, know whether its value differs from the default
 
 ## Execute
 
 ### 1. Enumerate Defaults
 
-> Goal: รู้ defaults จริงของทุก option
+> Goal: know the real defaults of every option
 
-1. ใช้ `/check-types-definition` — inspect config type ของ tool (`defineConfig` param type, `.d.ts`, schema) ได้ table `Name | Type | Options | Default | Comment`
-2. ถ้า type ไม่มี default ใน definition → อ่าน official docs/default source ของ tool (`/learn-from-web`) — ห้ามเดา default
-3. สร้าง map `option → default` ไว้เทียบ
+1. Use `/check-types-definition` — inspect the tool's config type (`defineConfig` param type, `.d.ts`, schema) to get a `Name | Type | Options | Default | Comment` table
+2. If the type definition has no default → read the tool's official docs/default source (`/learn-from-web`) — never guess a default
+3. Build an `option → default` map for comparison
 
 ### 2. Strip Redundant Keys
 
-> Goal: เหลือเฉพาะ overrides
+> Goal: leave only overrides
 
-1. เทียบทุก key ใน config กับ default map — key ที่ `value === default` → ลบออก
-2. key ที่ต่างจาก default → เก็บไว้ (นี่คือ intent จริงของ config)
-3. comments ที่แค่ restate default → ลบด้วย; comments ที่อธิบาย override เหตุผล → เก็บ
-4. ระวัง: บาง tool defaults เปลี่ยนตาม env/preset — เช็ค `mode`/`env`/`preset` ที่ทำให้ default ต่างออกไปก่อนลบ
+1. Compare every key in the config against the default map — any key where `value === default` → remove it
+2. Keys that differ from the default → keep (these are the config's real intent)
+3. Comments that merely restate a default → remove too; comments explaining why an override exists → keep
+4. Caution: some tools' defaults vary by env/preset — check `mode`/`env`/`preset` that shift the effective default before removing
 
 ### 3. Verify
 
-> Goal: config ที่เหลือทำงานเหมือนเดิม
+> Goal: the remaining config behaves exactly as before
 
-1. รัน validate/build command ของ tool หลัง strip
-2. behavior ต้องเหมือนเดิม — ถ้าเปลี่ยน แปลว่าลบ key ที่ต่างจาก effective default จริง → revert key นั้น
+1. Run the tool's validate/build command after stripping
+2. Behavior must be unchanged — if it changed, you removed a key that differed from the real effective default → revert that key
 
 ## Rules
 
-- Default source ต้อง authoritative — ใช้ `/check-types-definition` หรือ official docs เท่านั้น ห้ามเดา
-- ห้ามลบ key ที่ต่างจาก default หรือ key ที่ docs ระบุ "recommended explicit" ถึงจะเท่า default
-- ห้าม strip config ที่เป็น shared/base config ถ้า downstream merge logic ต้องการ key นั้น
-- Report keys ที่ลบทั้งหมด + เหตุผล ก่อน commit
+- The default source must be authoritative — use `/check-types-definition` or official docs only; never guess
+- Never remove a key that differs from the default, or a key the docs mark "recommended explicit" even when it equals the default
+- Never strip a shared/base config if downstream merge logic requires that key
+- Report all removed keys + reasons before committing
 
 ## Expected Outcome
 
-- Config file เหลือเฉพาะ overrides + intent comments — สั้น อ่านรู้ว่า project customize อะไรจริง
-- ไม่มี cargo-culted boilerplate ที่ซ้ำกับ defaults
-- Verify ผ่าน — behavior ไม่เปลี่ยน
+- Config file keeps only overrides + intent comments — short, and clearly showing what the project actually customizes
+- No cargo-culted boilerplate duplicating defaults
+- Verification passes — behavior unchanged

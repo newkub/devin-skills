@@ -61,8 +61,8 @@ bun run build       # typecheck + build
 
 ## Rules
 
-- Latest Results = real runner output only: Vitest JSON reporter, Playwright report, coverage — **ห้าม**ใส่ exploratory results จาก agent-browser (`browser-test-*`, `e2e-exploratory-*`) ลงในตารางนี้
-- Exploratory/UX findings ใส่ได้เฉพาะใน Known Gaps หรือส่วน notes — ระบุว่าเป็น exploratory
+- Latest Results = real runner output only: Vitest JSON reporter, Playwright report, coverage — **never** put exploratory results from agent-browser (`browser-test-*`, `e2e-exploratory-*`) in this table
+- Exploratory/UX findings may go only in Known Gaps or the notes section — state that they are exploratory
 - Always summarize — link the raw artifact, never paste it whole
 - If `.devin/temp/report/` is gitignored, keep the table but omit file links
 - If no artifacts exist yet, write the page without `## Latest Results` — do not fabricate results

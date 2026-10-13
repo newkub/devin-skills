@@ -1,6 +1,6 @@
 ---
 name: write-solutions
-description: เขียน solution documents และ problem-solving workflows
+description: Write solution documents and systematic problem-solving workflows
 argument-hint: "[scope]"
 related:
   - analyze-root-cause-analysis
@@ -16,11 +16,11 @@ related:
 
 ## Goal
 
-สร้าง solution documents และ workflows สำหรับแก้ปัญหาอย่างเป็นระบบ
+Create solution documents and workflows for systematic problem solving
 
 ## Scope
 
-เขียน solutions สำหรับปัญหาที่พบใน development, operations, และ business
+Write solutions for problems found in development, operations, and business
 
 ## Execute
 
@@ -28,114 +28,114 @@ related:
 
 > Goal: Analyze Problem
 
-วิเคราะห์ปัญหาอย่างละเอียด
+Analyze the problem in detail
 
-1. ทำ `/analyze-root-cause-analysis` เพื่อหาสาเหตุหลัก
-2. ระบุ scope และ impact ของปัญหา
-3. รวบรวม context และ constraints
+1. Run `/analyze-root-cause-analysis` to find the root cause
+2. Identify the scope and impact of the problem
+3. Gather context and constraints
 
 ### 2. Research Solutions
 
 > Goal: Research Solutions
 
-ค้นหาแนวทางแก้ไขที่เหมาะสม
+Find the most suitable fixes
 
-1. ทำ `/deep-research` สำหรับ solutions ที่เกี่ยวข้อง
-2. อ่าน official docs และ best practices
-3. ศึกษา solutions ที่ใช้ใน projects อื่น
+1. Run `/deep-research` for relevant solutions
+2. Read official docs and best practices
+3. Study solutions used in other projects
 
 ### 3. Design Solution
 
 > Goal: Design Solution
 
-ออกแบบ solution ที่เหมาะสมกับ context
+Design a solution that fits the context
 
-1. ทำ `/deep-review` เพื่อออกแบบโครงสร้าง
-2. พิจารณา trade-offs และ alternatives
-3. ตั้งค่า success criteria ชัดเจน
+1. Run `/deep-review` to design the structure
+2. Consider trade-offs and alternatives
+3. Set clear success criteria
 
 ### 4. Write Solution Document
 
 > Goal: Write Solution Document
 
-เขียน solution document ตามมาตรฐาน
+Write the solution document to standard
 
-1. ทำ `/update-devin-global-skills` สำหรับ structure
-2. เขียน problem statement, solution approach, และ implementation plan
-3. เพิ่ม examples และ edge cases
+1. Run `/update-devin-global-skills` for structure
+2. Write the problem statement, solution approach, and implementation plan
+3. Add examples and edge cases
 
 ### 5. Validate And Refine
 
 > Goal: Validate And Refine
 
-ตรวจสอบและปรับปรุง solution
+Review and refine the solution
 
-1. ทำ `/resolve-errors` เพื่อ validate solution
-2. ทดสอบ solution กับ real scenarios
-3. ปรับปรุงตาม feedback
+1. Run `/resolve-errors` to validate the solution
+2. Test the solution against real scenarios
+3. Improve based on feedback
 
 ## Rules
 
 ### 1. Problem Analysis
 
-วิเคราะห์ปัญหาอย่างลึกซึ้ง
+Analyze the problem deeply
 
-- ระบุ root cause ด้วย systematic approach
-- วัด impact และ priority ของปัญหา
-- รวบรวม context: logs, metrics, user feedback
-- ตรวจสอบ assumptions และ validate hypotheses
+- Identify the root cause with a systematic approach
+- Measure the impact and priority of the problem
+- Gather context: logs, metrics, user feedback
+- Check assumptions and validate hypotheses
 
 ### 2. Solution Design
 
-ออกแบบ solution ที่เหมาะสม
+Design an appropriate solution
 
-- เลือก approach ที่ balance ระหว่าง complexity และ effectiveness
-- พิจารณา alternatives และ trade-offs
-- ตั้งค่า measurable success criteria
-- ออกแบบ สำหรับ maintainability และ scalability
+- Choose an approach that balances complexity and effectiveness
+- Consider alternatives and trade-offs
+- Set measurable success criteria
+- Design for maintainability and scalability
 
 ### 3. Documentation Standards
 
-เขียน solution document ตามมาตรฐาน
+Write the solution document to standard
 
-- ใช้ structure: Problem, Analysis, Solution, Implementation, Validation
-- เพิ่ม code examples และ diagrams ที่จำเป็น
-- ระบุ dependencies และ risks
-- เขียนให้เข้าใจง่าย สำหรับทั้ง technical และ non-technical
+- Use the structure: Problem, Analysis, Solution, Implementation, Validation
+- Add code examples and diagrams as needed
+- State dependencies and risks
+- Write clearly for both technical and non-technical readers
 
 ### 4. Implementation Guidelines
 
-จัดการ implementation อย่างเป็นระบบ
+Manage the implementation systematically
 
-- ทำ `/resolve-errors` สำหรับ minimal changes
-- ทำ `/dont-over-engineer` เพื่อลดความซับซ้อน
-- เพิ่ม regression tests สำหรับ critical fixes
-- Document changes และ update references
+- Run `/resolve-errors` for minimal changes
+- Run `/dont-over-engineer` to reduce complexity
+- Add regression tests for critical fixes
+- Document changes and update references
 
 ### 5. Validation And Monitoring
 
-ตรวจสอบและ monitor solution
+Verify and monitor the solution
 
-- ทำ `/run-test` เพื่อ validate ใน production-like environment
-- ตั้งค่า monitoring และ alerts สำหรับ metrics ที่เกี่ยวข้อง
-- รวบรวม feedback จาก users และ stakeholders
-- ปรับปรุง solution ตาม data และ feedback
-- ใช้ /reframe ถ้าจำเป็น
+- Run `/run-test` to validate in a production-like environment
+- Set up monitoring and alerts for relevant metrics
+- Collect feedback from users and stakeholders
+- Improve the solution based on data and feedback
+- Use /reframe when needed
 
 
 ## Expected Outcome
 
-- Solution documents มีโครงสร้างชัดเจน อ่านง่าย
-- Solutions ถูก validate ก่อน implementation
-- มี monitoring และ feedback loops สำหรับ continuous improvement
-- Solutions ครอบคลุม edge cases และ long-term considerations
+- Solution documents are well structured and easy to read
+- Solutions are validated before implementation
+- Monitoring and feedback loops exist for continuous improvement
+- Solutions cover edge cases and long-term considerations
 
 ## Common Mistakes (optional)
 
-ข้อผิดพลาดที่พบบ่อย:
+Common mistakes:
 
-- ไม่วิเคราะห์ root cause แต่แก้ไข symptoms
-- Over-engineer solutions โดยไม่พิจารณา trade-offs
-- ไม่มี success criteria ที่ measurable
-- ไม่ test solutions ก่อน deploy
-- ไม่ document หรือ update references หลัง implementation
+- Fixing symptoms without analyzing the root cause
+- Over-engineering solutions without considering trade-offs
+- Lacking measurable success criteria
+- Not testing solutions before deploy
+- Not documenting or updating references after implementation

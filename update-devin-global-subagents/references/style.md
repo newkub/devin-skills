@@ -1,56 +1,56 @@
 ---
 title: Style Conventions
-description: กฎตรวจสอบ style conventions ของ AGENT.md
+description: Rules for validating AGENT.md style conventions
 ---
 
 # Style Conventions
 
 ## Backticks
 
-ใช้ backticks สำหรับ:
+Use backticks for:
 
-- `tools` — tool names เช่น `grep`, `edit`
-- `commands` — command names เช่น `/list-devin-global-subagents`
-- `file paths` — paths เช่น `AGENT.md`
-- `skill names` — skill names เช่น `update-devin-global-subagents`
+- `tools` — tool names such as `grep`, `edit`
+- `commands` — command names such as `/list-devin-global-subagents`
+- `file paths` — paths such as `AGENT.md`
+- `skill names` — skill names such as `update-devin-global-subagents`
 
 ### Rules
 
-- ห้ามใช้ backticks กับ prose ทั่วไป
-- ใช้ backticks เฉพาะ identifiers เท่านั้น
+- never use backticks for general prose
+- use backticks only for identifiers
 
 ## Bold Markers
 
-- ห้ามใช้ `` bold markers ทั้งหมด
-- ใช้ backticks สำหรับ emphasis แทน bold
-- ถ้าพบ `` → flag เป็น Medium
+- never use `` bold markers at all
+- use backticks for emphasis instead of bold
+- if `` found → flag as Medium
 
 ## Heading Format
 
 ### English Headings
 
-- ใช้ Title Case เช่น `## Check Frontmatter`
-- ห้ามใช้ ALL CAPS หรือ all lowercase
-- ถ้าพบ heading ไม่ Title Case → flag เป็น Low
+- use Title Case such as `## Check Frontmatter`
+- never use ALL CAPS or all lowercase
+- if a heading is not Title Case → flag as Low
 
 ### Thai Content
 
-- เนื้อหาภาษาไทยใช้ปกติ
-- heading ที่เป็นภาษาอังกฤษต้อง Title Case เท่านั้น
+- Thai-language content is acceptable
+- English headings must be Title Case only
 
 ## Severity Mapping
 
 | Finding | Severity |
 |---|---|
-| ไม่ใช้ backticks สำหรับ `tools`/`commands`/`paths` | Medium |
-| ใช้ `**` bold markers | Medium |
-| heading ไม่ Title Case | Low |
+| Not using backticks for `tools`/`commands`/`paths` | Medium |
+| Using `**` bold markers | Medium |
+| Heading not in Title Case | Low |
 
 ## Evidence Format
 
-บันทึก finding พร้อม:
+Record each finding with:
 
-- file path ของ `AGENT.md`
-- line number ที่พบ
-- เนื้อหาที่ผิด
-- สิ่งที่ควรแก้เป็นอย่างไร
+- the `AGENT.md` file path
+- the line number where found
+- the offending content
+- what it should be corrected to

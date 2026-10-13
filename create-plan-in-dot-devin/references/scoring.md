@@ -2,7 +2,7 @@
 
 ## Goal
 
-คำนวณ priority score ให้แต่ละ feature ด้วยสูตรเดียวกันเพื่อเรียงลำดับ
+Compute a priority score for each feature using the same formula so they can be ranked
 
 ## Scale
 
@@ -25,12 +25,12 @@
 Score = (Impact + Effect) / (Risk × Phase)
 ```
 
-- ปัดเศษทศนิยม 1 ตำแหน่ง
-- ใช้ score เรียงลำดับ priority สูง → ต่ำ
-- ถ้า score เท่ากัน → เรียงตาม Risk ต่ำกว่าก่อน
+- Round to 1 decimal place
+- Use the score to rank priority from high to low
+- If scores are equal, rank by lower Risk first
 
 ## Report Format
 
-- แสดง scale ก่อนตาราง
-- แสดงสูตรใน plan body
-- ทุก row ในตาราง features ต้องมี score จริง
+- Show the scale before the table
+- Show the formula in the plan body
+- Every row in the features table must have a real score

@@ -1,6 +1,6 @@
 ---
 name: run-scan
-description: รัน ast-grep scan เพื่อตรวจสอบ codebase ด้วย AST-based patterns
+description: Run ast-grep scan to check the codebase with AST-based patterns
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -15,57 +15,57 @@ related:
 
 ## Goal
 
-รัน `ast-grep scan` เพื่อตรวจสอบ codebase ด้วย AST-based patterns และแก้ไขปัญหาที่พบ
+Run `ast-grep scan` to check the codebase with AST-based patterns and fix the issues found
 
 ## Scope
 
-ใช้สำหรับ scan codebase ด้วย `ast-grep` ใน project ที่มี `sgconfig.yml` และ rules ใน `rules/` directory
+Use for scanning the codebase with `ast-grep` in a project that has `sgconfig.yml` and rules in a `rules/` directory
 
 ## Execute
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (scan)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (scan)
 
 ### 1. Setup And Write Rules
 
 > Goal: Setup And Write Rules
 
-1. ทำ `/use-astgrep` เพื่อติดตั้งและตั้งค่า `ast-grep`
-2. ตรวจสอบ `sgconfig.yml` มี `ruleDirs: rules` และมี `scan` script ใน `package.json`
-3. ถ้ายังไม่มี rules ให้ทำ `/update-astgrep-rules` เพื่อสร้าง rules ใน `rules/` directory
-4. ทำ `/update-astgrep-rules` เพื่ออัปเดตและตรวจสอบ rules `ก่อน`รัน scan เสมอ — rules stale ทำให้ findings คลาดเคลื่อน
+1. Run `/use-astgrep` to install and set up `ast-grep`
+2. Check that `sgconfig.yml` has `ruleDirs: rules` and that `package.json` has a `scan` script
+3. If there are no rules yet, run `/update-astgrep-rules` to create rules in the `rules/` directory
+4. Run `/update-astgrep-rules` to update and check the rules `before` running scan, always — stale rules make the findings inaccurate
 
 ### 2. Run Scan
 
 > Goal: Run Scan
 
-1. รัน `bun run scan` หรือ `ast-grep scan`
-2. ทำ `/report` เพื่อจัดรูปแบบ output และระบุ issues
-3. พิจารณา rules ที่ไม่เหมาะสม ว่าถูกต้องและเหมาะสมหรือไม่
-4. แก้ไข code ตาม suggestions ที่เหมาะสม หรือใช้ `--interactive` mode สำหรับ selective apply
+1. Run `bun run scan` or `ast-grep scan`
+2. Run `/report` to format the output and identify issues
+3. Consider whether any rules are inappropriate, correct, and fitting
+4. Fix the code according to the suitable suggestions, or use `--interactive` mode for selective apply
 
 ### 3. Verify
 
 > Goal: Verify
 
-1. ทำ `/loop-until-complete` เพื่อรัน scan ซ้ำจนกว่าจะไม่มี issues
-2. ตรวจสอบว่า fixes ไม่ทำให้ code เสีย
-3. ใช้ `ast-grep test` เพื่อ verify rules
-4. ถ้ามี errors หลังแก้ไข ให้ทำ `/resolve-errors`
+1. Run `/loop-until-complete` to rerun scan until there are no issues
+2. Check that the fixes do not break the code
+3. Use `ast-grep test` to verify the rules
+4. If there are errors after fixing, run `/resolve-errors`
 
 ## Rules
 
-- ต้องมี `sgconfig.yml` ที่ root directory และ `scan` script ใน `package.json`
-- rules ต้องอยู่ใน `rules/` directory และใช้ severity ตามความสำคัญ (`error`, `warning`, `info`)
-- ตรวจสอบ output ทุกครั้งก่อน apply fixes และใช้ `--interactive` mode สำหรับ selective apply
-- รัน scan ซ้ำหลัง apply fixes และตรวจสอบว่า code ยังทำงานได้
-- ถ้า project มี CI/CD ให้เพิ่ม scan ใน pipeline และรัน scan ก่อน commit
-- อัปเดต rules เมื่อมี patterns ใหม่ และตรวจสอบ false positives เพื่อ tune rules
-- structure scan (symbols, exports, members) ที่ไม่ต้องการ rules → ใช้ `/check-code-structure` (`sg outline`)
+- There must be an `sgconfig.yml` at the root directory and a `scan` script in `package.json`
+- Rules must live in the `rules/` directory and use severity according to importance (`error`, `warning`, `info`)
+- Review the output every time before applying fixes, and use `--interactive` mode for selective apply
+- Rerun scan after applying fixes and check that the code still works
+- If the project has CI/CD, add scan to the pipeline and run it before commit
+- Update the rules when new patterns appear, and review false positives to tune the rules
+- For a structure scan (symbols, exports, members) that needs no rules → use `/check-code-structure` (`sg outline`)
 
 ## Expected Outcome
 
-- `ast-grep` CLI ติดตั้งและตั้งค่าเรียบร้อย
-- Rules สร้างใน `rules/` directory
-- Scan รันได้และระบุ issues ที่ถูกต้อง
-- Issues แก้ไขและ verify เรียบร้อย
-- Codebase ผ่าน `ast-grep scan` โดยไม่มี errors
+- The `ast-grep` CLI is installed and configured
+- Rules are created in the `rules/` directory
+- Scan runs and identifies the correct issues
+- Issues are fixed and verified
+- The codebase passes `ast-grep scan` with no errors

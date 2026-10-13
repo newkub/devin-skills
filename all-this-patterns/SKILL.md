@@ -1,6 +1,6 @@
 ---
 name: all-this-patterns
-description: ค้นหา patterns ทั่งหมดใน scope แล้ว apply การเปลี่ยนแปลงตาม patterns ให้ครบ
+description: Find all patterns in scope and apply the changes for every pattern completely
 argument-hint: "[patterns...]"
 related:
   - search
@@ -15,82 +15,82 @@ related:
 
 ## Goal
 
-ค้นหา patterns หลายรายการใน scope แล้ว apply การเปลี่ยนแปลง การแก้ไข หรือการอัปเดตตามแต่ละ pattern ให้ครบถ้วน
+Search for multiple patterns in scope, then apply the changes, edits, or updates for each pattern completely.
 
 ## Scope
 
-ใช้เมื่อ user ต้องการให้แก้ไขทุกจุดที match หลาย patterns เช่น เปลี่ยนชื่อ function ทุกไฟล์ แก้ wording ทุก skill หรืออัปเดต format ทุก repo
+Use when the user wants to fix every match of several patterns, such as renaming a function across all files, rewording across every skill, or updating a format across every repo.
 
 ## Execute
 
 ### 1. Define Patterns
 
-> Goal: รู้ว่าจะค้นหาและแก้อะไรทั้งหมด
+> Goal: Know everything to search for and fix
 
-1. รับ list ของ patterns และ actions จาก argument
-2. ถ้าไม่ชัด → ทำ `/ask-me`
-3. ระบุ scope: files, skills, directories หรือ repo
+1. Take the list of patterns and actions from the argument
+2. If unclear → run `/ask-me`
+3. Determine scope: files, skills, directories, or repo
 
 ### 2. Find All Matches
 
-> Goal: หาทุกตำแหน่งที match
+> Goal: Find every matching location
 
-1. ใช้ `/search-files-patterns` หาทุก match
-2. ใช้ `grep` หรือ `ast-grep` ถ้าต้องการ precision
-3. บันทึก list พร้อม file path, line number, context
+1. Use `/search-files-patterns` to find every match
+2. Use `grep` or `ast-grep` when you need precision
+3. Record the list with file path, line number, and context
 
 ### 3. Plan Changes
 
-> Goal: วางแผนการเปลี่ยนแปลงทั้งหมด
+> Goal: Plan all the changes
 
-1. จัดกลุ่ม matches ตาม pattern
-2. เลือก strategy: bulk edit, script, หรือ manual
-3. ถ้ามีหลาย file ให้ใช้ `/use-scripts`
-4. ถ้า rename ให้ใช้ `/rename` (รองรับ batch file rename ตาม pattern)
-5. ถ้าต้องสลับ skill ต่อเนื่อง ใช้ `/follow-your-suggestion`
+1. Group matches by pattern
+2. Choose a strategy: bulk edit, script, or manual
+3. If there are multiple files, use `/use-scripts`
+4. For renames, use `/rename` (supports batch file rename by pattern)
+5. To switch skills in sequence, use `/follow-your-suggestion`
 
 ### 4. Apply Patterns
 
-> Goal: แก้ไขทุก match ตาม patterns
+> Goal: Fix every match according to the patterns
 
-1. ทำ dry run ก่อนถ้าเป้น destructive
-2. แก้ไขทีละ batch หรือทั่งหมดพร้อมกันด้วย `/follow-parallel`
-3. ตรวจสอบว่าไม่ทำลายไฟล์อื่นนอก scope
-4. ถ้า high-risk → ขอ user confirm ก่อน
+1. Do a dry run first if it is destructive
+2. Edit batch by batch, or all at once with `/follow-parallel`
+3. Verify that no files outside the scope are damaged
+4. If high-risk → ask the user to confirm first
 
 ### 5. Update References
 
-> Goal: อัปเดต cross-references
+> Goal: Update cross-references
 
-1. ทำ `/update-references` ถ้ามี rename หรือ move
-2. ตรวจ broken references
+1. Run `/update-references` if there are renames or moves
+2. Check for broken references
 
 ### 6. Validate
 
-> Goal: ยืนยันว่า apply ครบและถูกต้อง
+> Goal: Confirm everything was applied completely and correctly
 
-1. รัน `grep` หรือ `review` เพื่อตรวจว่าไม่มี match เก่าเหลือ
-2. รัน `/run-check` ถ้าเป็น code
-3. ทำ `/deep-validate` ถ้าจำเป็น
+1. Run `grep` or `review` to check that no old matches remain
+2. Run `/run-check` if it is code
+3. Run `/deep-validate` if needed
 
 ### 7. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ทำ `/report table` คอลัมน์: `No.`, `Pattern`, `File`, `Match`, `Action`, `Status`
-2. ทำ `/suggest-next-action`
+1. Run `/report table` with columns: `No.`, `Pattern`, `File`, `Match`, `Action`, `Status`
+2. Run `/suggest-next-action`
 
 ## Rules
 
-- ทำ dry run ก่อนการเปลี่ยนแปลงครั้งใหญ่
-- ไม่ apply โดยไม่มี user confirm ถ้าเป้น high-risk
-- ทุกการแก้ไขต้องมี pattern ชัดเจน
-- ถ้ามี rename ให้ update references ทันที
-- ไม่ทำลายไฟล์นอก scope
+- Do a dry run before large changes
+- Do not apply without user confirm if high-risk
+- Every edit must have a clear pattern
+- If there are renames, update references immediately
+- Do not damage files outside the scope
 
 ## Expected Outcome
 
-- รายการทุก match แยกตาม pattern พร้อม action ที apply
-- ไม่มี match เก่าเหลือ
-- references อัปเดตครบ
-- รายงาน status ชัดเจน
+- A list of every match grouped by pattern, along with the action applied
+- No old matches left
+- References fully updated
+- A clear status report

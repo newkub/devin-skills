@@ -1,6 +1,6 @@
 ---
 name: deep-impact
-description: วิเคราะห์ผลกระทบลึกของ change ก่อน refactor, delete, rename, หรือ upgrade
+description: Analyze the deep impact of a change before refactor, delete, rename, or upgrade
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -15,126 +15,126 @@ related:
 
 ## Goal
 
-วิเคราะห์ผลกระทบลึกของการเปลี่ยนแปลง code, dependency, API, infrastructure, หรือ architecture ก่อนลงมือ เพื่อลด regression และ surprise
+Analyze the deep impact of a code, dependency, API, infrastructure, or architecture change before acting, to reduce regressions and surprises
 
 ## Scope
 
-ใช้ก่อน refactor, delete, rename, move, upgrade dependency, change public API, หรือ major architectural change
-ไม่ใช้สำหรับแก้ error เฉพาะหน้า — ใช้ `/resolve-errors`
-ไม่ใช้สำหรับหาสาเหตุของ bug — ใช้ `/deep-debug`
+Use before refactor, delete, rename, move, upgrade dependency, change public API, or major architectural change
+Not for fixing immediate errors — use `/resolve-errors`
+Not for finding the cause of a bug — use `/deep-debug`
 
 ## Execute
 
 ### 1. Define Change Scope
 
-> Goal: ระบุสิ่งทีจะเปลี่ยนอย่างชัดเจน
+> Goal: clearly identify what will change
 
-1. ระบุ target: ไฟล์, function, class, API endpoint, dependency, config
-2. ระบุ nature ของ change: refactor, delete, rename, upgrade, behavior change, signature change
-3. ระบุ motivation: ทำไมต้องเปลี่ยน
-4. ทำ `/scan-codebase` เพื่อเข้าใจ context
+1. Define the target: file, function, class, API endpoint, dependency, config
+2. Define the nature of the change: refactor, delete, rename, upgrade, behavior change, signature change
+3. Define the motivation: why the change is needed
+4. Run `/scan-codebase` to understand the context
 
 ### 2. Map Direct Dependencies
 
-> Goal: หา consumers ทีใช้งาน target โดยตรง
+> Goal: find consumers that use the target directly
 
-1. ทำ `/deep-review` เพื่อหา imports, consumers, references
-2. ทำ `/search-files-patterns` เพื่อค้นหา call sites, imports, string references
-3. ใช้ ast-grep หา pattern ทีอาจหายไปถ้า target เปลี่ยน
-4. ตรวจสอบ public API: `/report-public-api` ถ้าเป็น library/project
-5. บันทึก direct consumers เป็นลิสต์พร้อมตำแหน่ง
+1. Run `/deep-review` to find imports, consumers, references
+2. Run `/search-files-patterns` to find call sites, imports, string references
+3. Use ast-grep to find patterns that could break if the target changes
+4. Check the public API: `/report-public-api` if it is a library/project
+5. Record direct consumers as a list with locations
 
 ### 3. Map Indirect Dependencies
 
-> Goal: หา chain effect ของ change
+> Goal: find the chain effects of the change
 
-1. ตรวจสอบ workspace graph: `/report-workspace-graph` ถ้าเป็น monorepo
-2. หา downstream consumers ของ consumers (2-3 levels)
-3. ตรวจสอบ transitive dependencies ถ้าเป็น package upgrade
-4. ระบุ shared config, types, schemas ทีอาจได้รับผลกระทบ
-5. ทำ `/deep-thinking` ถ้า chain ซับซ้อน
+1. Check the workspace graph: `/report-workspace-graph` if it is a monorepo
+2. Find downstream consumers of consumers (2-3 levels)
+3. Check transitive dependencies for a package upgrade
+4. Identify shared config, types, schemas that could be affected
+5. Run `/deep-thinking` if the chain is complex
 
 ### 4. Estimate Blast Radius
 
-> Goal: ประเมินขนาดและความรุนแรงของผลกระทบ
+> Goal: assess the size and severity of the impact
 
-1. จำนวนไฟล์/ไฟล์ทีต้องอัปเดต
-2. จำนวน consumers ทั้ง internal และ external
-3. จำนวน tests ทีอาจ fail
-4. ระบบหรือ features ทีอาจหยุดทำงาน
-5. data migration หรือ schema change ทีจำเป็นหรือไม
+1. Number of files to update
+2. Number of consumers, both internal and external
+3. Number of tests that may fail
+4. Systems or features that may go down
+5. Whether data migration or schema changes are required
 
 ### 5. Assess Risk
 
-> Goal: ประเมินความเสี่ยงและ mitigation
+> Goal: assess risks and mitigation
 
-1. ทำ `/deep-review` เพื่อประเมิน probability และ impact
-2. ระบุ risks ตามมิติ: correctness, performance, security, compatibility, DX
-3. จัดลำดับ risk ตาม severity
-4. ออกแบบ mitigation สำหรับแต่ละ risk สูง
-5. ระบุ rollback plan ถ้าจำเป็น
+1. Run `/deep-review` to estimate probability and impact
+2. Identify risks across dimensions: correctness, performance, security, compatibility, DX
+3. Rank risks by severity
+4. Design mitigation for each high risk
+5. Define a rollback plan if needed
 
 ### 6. Plan Migration
 
-> Goal: สร้างแผนการเปลี่ยนแปลงทีปลอดภัย
+> Goal: create a safe change plan
 
-1. เลือก strategy: in-place, backward-compatible, feature flag, staged rollout, blue-green
-2. ระบุ breaking changes และทางเลือกทีช่วยลดผลกระทบ
-3. วางแผนการ update references: `/update-references` หรือ `/rename`
-4. วางแผนการ test: รัน `/run-test` หรือ `/run-verify`
-5. ระบุระยะเวลาและ checkpoints
+1. Choose a strategy: in-place, backward-compatible, feature flag, staged rollout, blue-green
+2. Identify breaking changes and options to reduce their impact
+3. Plan reference updates: `/update-references` or `/rename`
+4. Plan testing: run `/run-test` or `/run-verify`
+5. Define the timeline and checkpoints
 
 ### 7. Execute Change Safely
 
-> Goal: ทำการเปลี่ยนแปลงตามแผน
+> Goal: carry out the change per the plan
 
-1. ทำ dry run สำหรับ changes ทีมีผลกระทบมาก
-2. เปลี่ยนทีละ step ตาม migration plan
-3. รัน tests หลังแต่ละ stage
-4. ทำ `/deep-validate` เพื่อตรวจ reference, type, lint
-5. ถ้า test fail → กลับไปใช้ `/deep-debug` หา root cause
+1. Do a dry run for high-impact changes
+2. Change one step at a time per the migration plan
+3. Run tests after each stage
+4. Run `/deep-validate` to check references, types, lint
+5. If tests fail → go back to `/deep-debug` to find the root cause
 
 ### 8. Verify And Communicate
 
-> Goal: ยืนยันว่า change ปลอดภัยและสื่อสารให้ทีมรู้
+> Goal: confirm the change is safe and inform the team
 
-1. รัน test suite ทั้งหมด
-2. รัน lint, typecheck, build
-3. ทำ `/report` สรุป impact, risk, mitigation, test results
-4. บันทึก migration notes สำหรับ consumer
-5. แจ้งทีมหรือ stakeholder ถ้ามี breaking change
+1. Run the full test suite
+2. Run lint, typecheck, build
+3. Run `/report` summarizing impact, risk, mitigation, test results
+4. Record migration notes for consumers
+5. Notify the team or stakeholders if there is a breaking change
 
 ## Rules
 
 ### 1. No Guessing
 
-- ใช้ tool หา references จริง ไม่เดาจำนวน consumer
-- ไม่สร้าง breaking change ถ้าไม่จำเป็น
-- ตรวจสอบ consumers ทั้ง internal และ external
+- Use tools to find real references; never guess the consumer count
+- Don't create a breaking change unless necessary
+- Check consumers both internal and external
 
 ### 2. Backward Compatibility
 
-- พยายามรักษา backward compatibility เสมอ
-- ถ้าต้อง break ให้มี migration path และ deprecation period
-- ไม่ลบ public API โดยไม่มีแผน
+- Always try to preserve backward compatibility
+- If you must break, provide a migration path and a deprecation period
+- Don't remove a public API without a plan
 
 ### 3. Tool-First
 
-- ใช้ `/deep-review`, `/search-files-patterns`, ast-grep, report workspace graph
-- ไม่ทำการเปลี่ยนแปลงกว่างขวางโดยไม่มี evidence
-- บันทึกผลการ analysis ก่อนลงมือ
+- Use `/deep-review`, `/search-files-patterns`, ast-grep, report workspace graph
+- Don't make broad changes without evidence
+- Record the analysis results before acting
 
 ### 4. Risk-Driven
 
-- ไม่ merge หรือ deploy ถ้ามี high-risk ยังไม่มี mitigation
-- ตรวจสอบ rollback plan ก่อน change ใหญ
-- แบ่ง change เป็น small batch ถ้า blast radius กว้าง
+- Don't merge or deploy with high risks that lack mitigation
+- Verify the rollback plan before a major change
+- Split the change into small batches if the blast radius is wide
 
 ## Expected Outcome
 
-1. รายการ consumers และ references ทีชัดเจน
-2. Blast radius assessment ทีวัดผลได้
-3. Risk matrix พร้อม mitigation
-4. Migration plan ทีปลอดภัย
-5. Test results ยืนยันว่าไม่มี regression
-6. Communication / migration notes สำหรับทีม
+1. A clear list of consumers and references
+2. A measurable blast radius assessment
+3. A risk matrix with mitigation
+4. A safe migration plan
+5. Test results confirming no regressions
+6. Communication / migration notes for the team

@@ -1,6 +1,6 @@
 ---
 name: cleanup
-description: ล้าง resources ที่ไม่ใช้ — branches, worktrees, docker, github issues ผ่าน top-level skills
+description: Clean unused resources — branches, worktrees, docker, github issues via top-level skills
 argument-hint: "[domain]"
 related:
   - cleanup-files-in-project
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ปลายทาง ตาม domain ของ cleanup — parent ทำ routing เท่านั้น
+Dispatch to the target skill based on the cleanup domain — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if not provided → `/ask-me` picks the domain
 
 ## Execute
 
@@ -24,26 +24,26 @@ Dispatch ไป skill ปลายทาง ตาม domain ของ cleanup �
 
 | Domain | Skill |
 |---|---|
-| `artifact` | /cleanup-artifact — build artifacts + dependency caches (Rust CLI, dry-run ก่อน) |
-| `branches-merged` | /cleanup-branches-merged — local branches ที่ merge แล้ว |
-| `docker` | /cleanup-docker — images, containers, volumes ที่ไม่ใช้ |
+| `artifact` | /cleanup-artifact — build artifacts + dependency caches (Rust CLI, dry-run first) |
+| `branches-merged` | /cleanup-branches-merged — local branches already merged |
+| `docker` | /cleanup-docker — unused images, containers, volumes |
 | `git-branch` | /cleanup-git-branch — stale/orphan branches |
-| `github-issue` | /cleanup-github-issue — issues ที่เก่าหรือ resolve แล้ว |
-| `worktree` | /cleanup-worktree — git worktrees ที่ไม่ใช้ |
+| `github-issue` | /cleanup-github-issue — old or resolved issues |
+| `worktree` | /cleanup-worktree — unused git worktrees |
 
-1. ระบุ domain จาก argument (เช่น `/cleanup-worktree`)
-2. ถ้า domain รองรับ → ทำตาม `/cleanup-<domain>` ทั้ง flow
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/cleanup-worktree`)
+2. If the domain is supported → follow the `/cleanup-<domain>` flow end to end
+3. If no domain is given or it is unknown → `/ask-me` picks the domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
-- ทุก cleanup ต้อง dry run + user confirm ก่อนลบจริง (ตาม rule ของ skill ปลายทาง)
+- The parent only dispatches — never duplicate the target skill's workflow
+- Every cleanup must dry run + user confirm before actually deleting (per the target skill's rule)
 
-- ใช้ /cleanup-files-in-project ถ้าจำเป็น
-- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Use /cleanup-files-in-project if needed
+- Use /cleanup-files-in-computer if needed
+- Use /run-cleanup if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ปลายทาง ที่ตรง domain แล้ว cleanup ตาม flow นั้น
+- The caller is dispatched to the target skill matching the domain, then cleans up following that flow

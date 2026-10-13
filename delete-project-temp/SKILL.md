@@ -1,6 +1,6 @@
 ---
 name: delete-project-temp
-description: ลบ .devin/temp/ ทั้งหมดใน project (report, plan) อย่างปลอดภัย พร้อม dry-run + confirm
+description: Safely delete a project's .devin/temp/ (reports, plans) with dry-run + confirm
 argument-hint: ""
 related:
   - delete
@@ -17,70 +17,70 @@ related:
 
 ## Goal
 
-ลบ `.devin/temp/` ทั้ง directory ใน project อย่างปลอดภัย — ครอบคลุม `report/` และ `plan/` artifacts ที่สร้างโดย `/create-report-in-dot-devin` และ `/create-plan-in-dot-devin` — ด้วย dry-run และ user confirmation ก่อนลบ
+Safely delete the entire `.devin/temp/` directory in the project — covering `report/` and `plan/` artifacts created by `/create-report-in-dot-devin` and `/create-plan-in-dot-devin` — with dry-run and user confirmation before deletion
 
 ## Scope
 
-- target เดียว: `.devin/temp/` ที่ project root เท่านั้น
-- ใช้เมื่อต้องการล้าง temp artifacts (reports, plans) ทั้งหมดใน project
-- ไม่ครอบ `.devin/` ส่วนอื่น (`rules/`, `hooks/`, `skills/`, `mcp_config.json`)
-- ไม่ใช้ลบไฟล์เดี่ยวหรือ subdir เดียว — ถ้าต้องการลบเฉพาะบางไฟล์ให้ใช้ `/delete`
+- single target: `.devin/temp/` at the project root only
+- use when you want to clear all temp artifacts (reports, plans) in the project
+- does not cover other parts of `.devin/` (`rules/`, `hooks/`, `skills/`, `mcp_config.json`)
+- not for deleting a single file or a single subdir — for selective deletion use `/delete`
 
 ## Execute
 
 ### 1. Locate And Inspect
 
-> Goal: ยืนยันว่ามี `.devin/temp/` และรู้ว่าข้างในมีอะไร
+> Goal: Confirm `.devin/temp/` exists and see what is inside
 
-1. ตรวจว่า `.devin/temp/` มีอยู่ที่ project root
-2. ถ้าไม่มี → รายงานว่าไม่มีอะไรให้ลบและจบ
-3. list contents ทั้งหมด (`report/`, `plan/` และไฟล์อื่น) พร้อมจำนวนไฟล์
-4. วัดขนาดรวมด้วย `/deep-review` scope `size` หรือ `du -sh .devin/temp`
+1. Check that `.devin/temp/` exists at the project root
+2. If missing → report that there is nothing to delete and finish
+3. List all contents (`report/`, `plan/`, and other files) with file counts
+4. Measure the total size via `/deep-review` scope `size` or `du -sh .devin/temp`
 
 ### 2. Dry Run And Confirm
 
-> Goal: แสดงสิ่งที่จะถูกลบและขอ confirm
+> Goal: Show what will be deleted and ask for confirmation
 
-1. แสดง tree/รายการทั้งหมดที่จะถูกลบ พร้อมขนาดรวม
-2. เตือนว่า plan files ใน `.devin/temp/plan/` ที่ยังไม่ implement จะหายถาวร
-3. ทำ `/ask-me` เพื่อ confirm — `proceed` หรือ `cancel`
-4. ถ้าอยู่ใน `/dont-ask-me` mode → ข้าม confirm แต่ยังแสดง dry-run เสมอ
-5. ถ้า user cancel → จบโดยไม่ลบ
+1. Show the full tree/list of items to be deleted with the total size
+2. Warn that plan files in `.devin/temp/plan/` not yet implemented will be permanently lost
+3. Do `/ask-me` to confirm — `proceed` or `cancel`
+4. If in `/dont-ask-me` mode → skip the confirmation but still show the dry-run
+5. If the user cancels → finish without deleting anything
 
 ### 3. Delete
 
-> Goal: ลบ `.devin/temp/` ทั้งหมด
+> Goal: Delete all of `.devin/temp/`
 
-1. ลบ recursive ตาม platform:
+1. Recursive delete per platform:
    - bash: `rm -rf .devin/temp`
    - PowerShell: `Remove-Item -Recurse -Force .devin/temp`
-2. ถ้าลบไม่ได้ (file locked, permission denied) → report error และ stop
-3. ถ้าเหลือ `.devin/temp` เปล่าหรือ residue → ลบให้หมด
+2. If deletion fails (file locked, permission denied) → report the error and stop
+3. If an empty `.devin/temp` or residue remains → delete it all
 
 ### 4. Validate And Report
 
-> Goal: ยืนยันว่าลบสำเร็จและสรุปผล
+> Goal: Confirm the deletion succeeded and summarize
 
-1. ตรวจว่า `.devin/temp/` ไม่มีอยู่แล้ว
-2. ทำ `/report` สรุปจำนวนไฟล์และขนาดที่ลบ
-3. ทำ `/suggest-next-action`
+1. Check that `.devin/temp/` no longer exists
+2. Do `/report` summarizing the number of files and size deleted
+3. Do `/suggest-next-action`
 
 ## Rules
 
 ### 1. Safety
 
-- dry-run + confirm เสมอก่อนลบ — ห้ามลบโดยไม่แสดงรายการก่อน
-- scope เฉพาะ `.devin/temp/` เท่านั้น — ห้ามขยายไป `.devin/` หรือ project files อื่น
-- ห้ามลบ `.git`, config, secrets หรือไฟล์นอก `.devin/temp/`
-- ถ้า `.devin/temp/` เป็น symlink/junction → ลบ link อย่างเดียว ห้ามตามไปลบ target
+- Always dry-run + confirm before deleting — never delete without showing the list first
+- Scope is `.devin/temp/` only — never expand to `.devin/` or other project files
+- Never delete `.git`, config, secrets, or files outside `.devin/temp/`
+- If `.devin/temp/` is a symlink/junction → remove the link only, never follow it into the target
 
 ### 2. No Backup Needed
 
-- temp artifacts เป็น disposable โดย design — ไม่ต้อง backup
-- ถ้า plan/report ใดยังจำเป็น user ต้อง cancel ตอน confirm หรือย้ายออกก่อน
+- temp artifacts are disposable by design — no backup needed
+- if a plan/report is still needed, the user must cancel at the confirmation or move it out first
 
 ## Expected Outcome
 
-- `.devin/temp/` ถูกลบทั้งหมด หรือไม่มีการเปลี่ยนแปลงถ้า user cancel
-- มีรายงานจำนวนและขนาดของ items ที่ลบ
-- ไม่มี residue หรือ partial delete ค้าง
+- `.devin/temp/` is fully deleted, or nothing changed if the user cancels
+- A report of the count and size of deleted items
+- No residue or partial delete left behind

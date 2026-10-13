@@ -1,17 +1,17 @@
 ---
 name: apply-fixes
-description: แก้ไข issues ตามแผน
+description: Fix the issues per the plan
 ---
 
 # Apply Fixes
 
 ## Goal
 
-แก้ไข issues ตามแผน
+Fix the issues per the plan
 
 ## Checks
 
-1. ใช้ `edit` หรือ `write` แก้ไฟล์ทีละ step
-2. ถ้า issue ซับซ้อน → ทำ `/resolve-errors`
-3. ถ้าเกิด error → ทำ `/resolve-errors`
+1. Use `edit` or `write` to fix files one step at a time
+2. If the issue is complex → run `/resolve-errors`
+3. If an error occurs → run `/resolve-errors`
 

@@ -1,6 +1,6 @@
 ---
 name: write-how-to
-description: เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ
+description: Write effective how-to guides and tutorials
 argument-hint: "[topic]"
 related:
   - explain
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ ด้วยโครงสร้างที่ชัดเจนและเนื้อหาที่เข้าใจง่าย
+Write effective how-to guides and tutorials with a clear structure and easy-to-understand content.
 
 ## Scope
 
-ใช้สำหรับเขียน how-to guides และ tutorials ทั้งใน global_workflows และ workspace
+Use for writing how-to guides and tutorials in both global_workflows and the workspace.
 
 ## Execute
 
@@ -25,126 +25,126 @@ related:
 
 > Goal: Define Purpose
 
-ทำ `write-content-explicit` เพื่อกำหนดวัตถุประสงค์และ audience ของ how-to guide
+Apply `write-content-explicit` to set the purpose and audience of the how-to guide
 
-1. ระบุ audience และ skill level ของผู้อ่าน
-2. กำหนด objective ที่ชัดเจนสำหรับ guide
-3. ระบุ prerequisites ที่จำเป็นก่อนเริ่ม
-4. ตั้งความคาดหวังสำหรับผลลัพธ์
+1. Identify the audience and their skill level
+2. Set a clear objective for the guide
+3. List the prerequisites needed before starting
+4. Set expectations for the outcome
 
 ### 2. Structure Content
 
 > Goal: Structure Content
 
-จัดโครงสร้าง content ตาม logical flow ที่เข้าใจง่าย
+Structure the content in an easy-to-follow logical flow
 
-1. เริ่มด้วย introduction ที่อธิบาย context
-2. แบ่ง content เป็น sections ตาม logical flow
-3. ใช้ headings และ subheadings ที่ชัดเจน
-4. เพิ่ม table of contents สำหรับ long guides
+1. Start with an introduction that explains the context
+2. Split the content into sections by logical flow
+3. Use clear headings and subheadings
+4. Add a table of contents for long guides
 
 ### 3. Write Steps
 
 > Goal: Write Steps
 
-เขียน steps ด้วยคำสั่งที่ชัดเจนและเข้าใจง่าย
+Write steps with clear, easy-to-understand instructions
 
-1. เขียนแต่ละขั้นตอนด้วยคำสั่งที่ชัดเจน
-2. ใช้ numbered list สำหรับ sequential steps
-3. เพิ่ม code examples และ snippets ที่จำเป็น
-4. อธิบาย reasoning หลังจากแต่ละขั้นตอน
+1. Write each step as a clear instruction
+2. Use numbered lists for sequential steps
+3. Add the necessary code examples and snippets
+4. Explain the reasoning after each step
 
 ### 4. Add Examples
 
 > Goal: Add Examples
 
-เพิ่ม examples และ visual aids เพื่อช่วยให้เข้าใจ content ได้ดีขึ้น
+Add examples and visual aids to improve understanding of the content
 
-1. ให้ use cases จริงและ practical examples
-2. เพิ่ม screenshots หรือ diagrams สำหรับ visual aids
-3. แสดง before/after comparisons เมื่อเป็นไปได้
-4. ให้ multiple approaches สำหรับ problems ที่ซับซ้อน
+1. Provide real use cases and practical examples
+2. Add screenshots or diagrams as visual aids
+3. Show before/after comparisons when possible
+4. Offer multiple approaches for complex problems
 
 ### 5. Include Troubleshooting
 
 > Goal: Include Troubleshooting
 
-เพิ่ม troubleshooting และ resources สำหรับการแก้ปัญหา
+Add troubleshooting and resources for problem solving
 
-1. ระบุ common errors และ solutions
-2. เพิ่ม FAQ section สำหรับ questions ที่พบบ่อย
-3. ให้ resources สำหรับการเรียนรู้เพิ่มเติม
-4. เพิ่ม links ไปยัง related documentation
+1. List common errors and their solutions
+2. Add an FAQ section for frequently asked questions
+3. Provide resources for further learning
+4. Add links to related documentation
 
 ### 6. Review And Refine
 
 > Goal: Review And Refine
 
-ทดสอบและปรับปรุง content จนกว่าจะเสร็จสมบูรณ์
+Test and refine the content until it is complete
 
-1. ทดสอบ steps ด้วยตนเอง
-2. ขอ feedback จาก peers หรือ target audience
-3. ตรวจสอบ clarity และ completeness
-4. อัพเดท content ตาม feedback ที่ได้รับ
-5. รัน `/update-references` สำหรับไฟล์ที่เพิ่ม
+1. Test the steps yourself
+2. Get feedback from peers or the target audience
+3. Check clarity and completeness
+4. Update the content based on the feedback received
+5. Run `/update-references` for added files
 
 ## Rules
 
 ### 1. Content Structure
 
-จัดโครงสร้าง content ให้มี logical flow และเข้าใจง่าย
+Structure the content with a logical flow that is easy to follow
 
-- เริ่มด้วย overview ที่อธิบาย what, why, how
-- ใช้ logical flow จาก simple ไปยัง complex
-- แต่ละ section ต้องมี single purpose
-- ใช้ consistent terminology ทั้ง guide
+- Start with an overview explaining what, why, and how
+- Follow a logical flow from simple to complex
+- Each section must have a single purpose
+- Use consistent terminology throughout the guide
 
 ### 2. Writing Style
 
-เขียนด้วย style ที่กระชับ และเข้าใจง่าย
+Write in a concise, easy-to-understand style
 
-- ใช้ active voice และ imperative mood
-- เขียนกระชับ ตรงประเด็น หลีกเลี่ยง fluff
-- ใช้ simple language ที่เข้าใจง่าย
-- หลีกเลี่ยง jargon ที่ไม่จำเป็น
+- Use active voice and imperative mood
+- Write concisely and to the point, avoiding fluff
+- Use simple, easy-to-understand language
+- Avoid unnecessary jargon
 
 ### 3. Code Examples
 
-ให้ code examples ที่ complete และเข้าใจง่าย
+Provide complete, easy-to-understand code examples
 
-- Code ต้อง complete และ runnable
-- เพิ่ม comments สำหรับ complex logic
-- ใช้ consistent formatting และ style
-- อัพเดท examples ตาม API changes
+- Code must be complete and runnable
+- Add comments for complex logic
+- Use consistent formatting and style
+- Update examples as APIs change
 
 ### 4. Visual Aids
 
-ใช้ visual aids เพื่อช่วยให้เข้าใจ content ได้ดีขึ้น
+Use visual aids to help readers understand the content better
 
-- ใช้ diagrams สำหรับ abstract concepts
-- เพิ่ม screenshots สำหรับ UI workflows
-- ใช้ tables สำหรับ comparisons
-- Highlight important information ด้วย callouts
+- Use diagrams for abstract concepts
+- Add screenshots for UI workflows
+- Use tables for comparisons
+- Highlight important information with callouts
 
 ### 5. Accessibility
 
-รักษา accessibility standards สำหรับทุกผู้ใช้
+Maintain accessibility standards for all users
 
-- ใช้ descriptive alt text สำหรับ images
-- ใช้ sufficient contrast สำหรับ text
-- ใช้ semantic headings สำหรับ screen readers
-- ให้ keyboard navigation สำหรับ interactive elements
+- Use descriptive alt text for images
+- Use sufficient contrast for text
+- Use semantic headings for screen readers
+- Support keyboard navigation for interactive elements
 
-- ใช้ /explain ถ้าจำเป็น
-- ใช้ /write-explicit ถ้าจำเป็น
-- ใช้ /write-solutions ถ้าจำเป็น
-- ใช้ /reframe ถ้าจำเป็น
+- Use /explain if needed
+- Use /write-explicit if needed
+- Use /write-solutions if needed
+- Use /reframe if needed
 
 
 ## Expected Outcome
 
-- How-to guide ที่มีโครงสร้างชัดเจน
-- Content เข้าใจง่ายและ actionable
-- Examples ที่ relevant และ practical
-- Troubleshooting ที่ครอบคลุม common issues
-- Guide ที่ testable และ maintainable
+- A how-to guide with a clear structure
+- Content that is easy to understand and actionable
+- Relevant and practical examples
+- Troubleshooting that covers common issues
+- A guide that is testable and maintainable

@@ -1,6 +1,6 @@
 ---
 name: deep-research-general
-description: Core research pipeline — topic → sources → gather → validate → synthesize สำหรับหัวข้อที่ไม่มี focused workflow
+description: Core research pipeline — topic → sources → gather → validate → synthesize for general topics
 argument-hint: "[topic]"
 related:
   - deep-research
@@ -13,78 +13,78 @@ related:
 
 ## Goal
 
-Pipeline หลักของ `/deep-research` — ค้นหาข้อมูลลึกจาก multiple sources สำหรับหัวข้อทั่วไปที่ไม่ตรง workflow เฉพาะทาง (dependencies, setup, integrations, api-references, improve)
+The main pipeline of `/deep-research` — deep multi-source research for general topics that don't match a specialized workflow (dependencies, setup, integrations, api-references, improve)
 
 ## Scope
 
-ใช้เมื่อต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ approaches, หา best practices, ตรวจสอบ compatibility, benchmarks, security, migration, licensing — ไม่ใช่การค้นหาเร็วๆ (`/learn-from-web`) และไม่ใช่ docs ของ library เดียว (`/follow-best-practice`)
+Use when you need in-depth information from many sources, e.g. comparing approaches, finding best practices, checking compatibility, benchmarks, security, migration, licensing — not a quick lookup (`/learn-from-web`) and not the docs of a single library (`/follow-best-practice`)
 
 ## Execute
 
 ### 1. Identify Topic And Scope
 
-> Goal: ระบุหัวข้อและ scope
+> Goal: Identify the topic and scope
 
-ทำตาม `references/topic-and-scope.md`
+Follow `references/topic-and-scope.md`
 
 ### 2. Select Sources
 
-> Goal: เลือก sources ตามประเภทข้อมูล
+> Goal: Pick sources by data type
 
-ทำตาม `references/sources.md`
+Follow `references/sources.md`
 
 ### 3. Research Packages And Code
 
-> Goal: ค้นหาจาก package registries และ code repositories
+> Goal: Search package registries and code repositories
 
-ทำตาม `references/package-code-research.md`
+Follow `references/package-code-research.md`
 
 ### 4. Use AI Documentation Tools
 
-> Goal: ใช้ DeepWiki, Context7, GitHub MCP
+> Goal: Use DeepWiki, Context7, GitHub MCP
 
-ทำตาม `references/ai-docs.md`
+Follow `references/ai-docs.md`
 
 ### 5. Crawl Official Documentation
 
-> Goal: ใช้ CRW สำหรับ official docs
+> Goal: Use CRW for official docs
 
-ทำตาม `references/crw.md`
+Follow `references/crw.md`
 
 ### 6. Use Web Search
 
-> Goal: ใช้ Windsurf WebSearch สำหรับ sources ทั่วไป
+> Goal: Use Windsurf WebSearch for general sources
 
-ทำตาม `references/websearch.md`
+Follow `references/websearch.md`
 
 ### 7. Check Freshness And Compatibility
 
-> Goal: ตรวจปี, version, breaking changes, migration
+> Goal: Check year, version, breaking changes, migration
 
-ทำตาม `references/freshness.md`
+Follow `references/freshness.md`
 
 ### 8. Cross-Reference And Validate
 
-> Goal: ตรวจ credibility, security, license
+> Goal: Check credibility, security, license
 
-ทำตาม `references/cross-validate.md`
+Follow `references/cross-validate.md`
 
 ### 9. Synthesize Findings
 
-> Goal: รวบรวมและสรุปผล
+> Goal: Collect and summarize the results
 
-ทำตาม `references/synthesize.md` — แล้ว output ผ่าน `/deep-research report` (`workflows/report-findings/SKILL.md`)
+Follow `references/synthesize.md` — then output via `/deep-research report` (`workflows/report-findings/SKILL.md`)
 
 ## Rules
 
-- Multiple sources เสมอ: NPM, GitHub, DeepWiki, Context7, CRW, WebSearch, security DB — รายละเอียด `references/research-rules.md`
-- ตรวจ credibility: reputation, maintenance, GitHub activity, เปรียบเทียบหลายแหล่ง
-- ตรวจ security: advisories, CVE, open issues
-- เน้นข้อมูลปีล่าสุดและระบุ gaps
-- Fan-out subtasks อิสระผ่าน profile `source-researcher` (`deep-research/SKILL.md ## Subagents`) เมื่อหลาย dimensions
-- ใช้ `/rethink` ถ้าจำเป็น
-- ใช้ `/check-reference` ถ้าจำเป็น
+- Always use multiple sources: NPM, GitHub, DeepWiki, Context7, CRW, WebSearch, security DB — details in `references/research-rules.md`
+- Check credibility: reputation, maintenance, GitHub activity, compare across multiple sources
+- Check security: advisories, CVE, open issues
+- Prioritize the most recent year's data and call out gaps
+- Fan out independent subtasks via the `source-researcher` profile (`deep-research/SKILL.md ## Subagents`) when there are multiple dimensions
+- Use `/rethink` if needed
+- Use `/check-reference` if needed
 
 ## Expected Outcome
 
-- ข้อมูลครบถ้วนจาก multiple sources ที่ cross-referenced พร้อม source, version, ปี และ gaps
+- Complete information from cross-referenced multiple sources, with source, version, year, and gaps noted

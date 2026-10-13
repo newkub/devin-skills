@@ -1,6 +1,6 @@
 ---
 name: update-tests
-description: เขียน/อัปเดต tests ครบทุก layer — unit, integration, e2e, contract, visual ฯลฯ แล้วรันจนผ่าน
+description: Write/update tests across all layers — unit, integration, e2e, contract, visual, etc. — run until green
 argument-hint: "[scope-or-files]"
 related:
   - deep-review
@@ -19,131 +19,131 @@ related:
 
 ## Goal
 
-เขียนและอัปเดต tests ให้ครอบคลุมทุก test type และทุก layer — unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual — ตาม conventions ของ project แล้วรันจนผ่านทั้ง suite
+Write and update tests to cover every test type and every layer — unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual — following the project's conventions, then run until the whole suite passes
 
 ## Scope
 
-ใช้เมื่อต้องการเขียน/อัปเดต tests ครอบคลุม — เลือก layers ตาม scope: ถ้าระบุ files ให้ตรวจว่าเกี่ยวกับ layer ไหนแล้วเขียนครบทุก type ที่เหมาะ ไม่จำกัดแค่ unit
+Use when you want tests written/updated comprehensively — pick layers by scope: if files are given, check which layer they belong to and write every suitable type, not just unit
 
-- ถ้ายังไม่ได้ review suite → ทำ `/deep-review` ก่อน
-- ถ้าต้องการรัน tests เฉยๆ → `/run-test <domain>` ที่ตรง layer หรือ `/run-test all`
-- ถ้าต้องการ improve test suite quality → `/deep-review-then-fix`
-- ถ้า scope ใหญ่หลาย modules → dispatch ผ่าน `/use-subagents`
+- If the suite hasn't been reviewed → run `/deep-review` first
+- If you only want to run tests → `/run-test <domain>` matching the layer, or `/run-test all`
+- If you want to improve test suite quality → `/deep-review-then-fix`
+- If the scope spans many modules → dispatch via `/use-subagents`
 
 ## Execute
 
 ### 1. Detect Framework And Strategy
 
-> Goal: ใช้ setup เดิมของ project และวาง test pyramid
+> Goal: Reuse the project's existing setup and lay out the test pyramid
 
-1. ตรวจ manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) หา test deps (`vitest`, `jest`, `bun test`, `pytest`, `go test`)
-2. ตรวจ config + test files เดิม — naming, structure, assertion style, mock patterns
-3. กำหนด test pyramid และ types ที่จำเป็นตาม scope — ตาม [references/layers.md](references/layers.md)
-4. กำหนด data strategy: `factories` (dynamic), `fixtures` (static), `builders` (complex)
-5. กำหนด mock strategy: mock external deps เท่านั้น — internal pure functions ใช้ real
+1. Check manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) for test deps (`vitest`, `jest`, `bun test`, `pytest`, `go test`)
+2. Check existing config + test files — naming, structure, assertion style, mock patterns
+3. Define the test pyramid and the types required by the scope — per [references/layers.md](references/layers.md)
+4. Define the data strategy: `factories` (dynamic), `fixtures` (static), `builders` (complex)
+5. Define the mock strategy: mock only external deps — use real internal pure functions
 
 ### 2. Analyze Source
 
-> Goal: map code paths ก่อนเขียน
+> Goal: Map code paths before writing
 
-1. อ่าน source ทั้งหมดใน scope — handlers, services, utils, types
-2. ระบุ branches/code paths, external deps ที่ต้อง mock, input validation rules, output/error shapes
-3. ระบุ security-critical logic (auth checks, IDOR, sanitization, userId injection)
-4. สร้าง code-path map → minimum test cases ที่ต้องมี
+1. Read all source in scope — handlers, services, utils, types
+2. Identify branches/code paths, external deps to mock, input validation rules, output/error shapes
+3. Identify security-critical logic (auth checks, IDOR, sanitization, userId injection)
+4. Build a code-path map → the minimum set of test cases required
 
 ### 3. Sync Specs
 
-> Goal: spec ครอบคลุม tests
+> Goal: Specs cover the tests
 
-1. ทำ `/update-specs` สร้าง/อัปเดต `specs/overview.md` + `specs/<feature>.md`
-2. ตรวจว่า spec ครอบคลุม test files ที่จะเขียน
+1. Run `/update-specs` to create/update `specs/overview.md` + `specs/<feature>.md`
+2. Verify the spec covers the test files about to be written
 
 ### 4. Write Tests Per Layer
 
-> Goal: เขียนครบทุก layer ที่ scope ต้องการ
+> Goal: Write every layer the scope requires
 
-ทำตาม [references/layers.md](references/layers.md) — unit, integration, e2e (Playwright ตาม `/follow-tool-playwright`, Vitest ตาม `/follow-tool-vitest`), contract, property-based, mutation, performance, security, accessibility, visual
+Follow [references/layers.md](references/layers.md) — unit, integration, e2e (Playwright per `/follow-tool-playwright`, Vitest per `/follow-tool-vitest`), contract, property-based, mutation, performance, security, accessibility, visual
 
-ทุก handler/function ต้องมี: happy path, error path, edge cases, unauthorized, input validation + conditional categories ตามที่ logic เกี่ยวข้อง
+Every handler/function must have: happy path, error path, edge cases, unauthorized, input validation + conditional categories as the logic warrants
 
 ### 5. Run Per-Layer Runners
 
-> Goal: ทุก layer ผ่านก่อนรวม
+> Goal: Every layer passes before combining
 
 1. unit → `/run-test`; integration → `/run-test integration`; e2e → `/run-test e2e`; api → `/run-test api`
-2. FAIL → แยก test bug vs app bug: test bug แก้ test, app bug → `/resolve-errors` หรือ report
-3. retry สูงสุด 3 รอบต่อ failure
+2. FAIL → separate test bug vs app bug: fix the test for a test bug, for an app bug → `/resolve-errors` or report
+3. Retry up to 3 rounds per failure
 
 ### 6. Run All Tests
 
-> Goal: suite ทั้งหมดเขียวรวมกัน
+> Goal: The whole suite goes green together
 
-1. ทำ `/run-test all` — orchestrator เลือก runners ที่ project มีจริงและรายงานผลรวม
-2. ถ้ามี failures ข้าม layer → กลับ Step 5 แก้เฉพาะ layer นั้น
+1. Run `/run-test all` — the orchestrator picks the runners the project actually has and reports combined results
+2. If there are cross-layer failures → return to Step 5 and fix only that layer
 
 ### 7. Verify Coverage And Quality
 
-> Goal: ครอบคลุมและมีคุณภาพ
+> Goal: Comprehensive and high quality
 
-1. ทำ `/run-test coverage` — verify lines/statements/functions/branches จนถึง target (default 100%); ถ้ายังไม่ถึง skill จะวนกลับมาเขียน tests เพิ่มผ่าน skill นี้เอง
-2. รันซ้ำ 2-3 ครั้ง — deterministic, ไม่มี flaky/order dependence
-3. ทำ `/run-check` lint/typecheck ผ่าน
+1. Run `/run-test coverage` — verify lines/statements/functions/branches up to the target (default 100%); if not yet reached, the skill loops back to write more tests through this skill itself
+2. Re-run 2-3 times — deterministic, no flaky/order dependence
+3. Run `/run-check` so lint/typecheck pass
 
 ### 8. Report
 
-> Goal: ส่งมอบ
+> Goal: Deliver
 
-1. ทำ `/report` — tests added/updated/removed ต่อ layer, coverage delta, pass rate, items ค้าง
-2. persist raw results → `.devin/temp/report/<workspace>/update-tests-<time>.md` ตาม format `/create-report-in-dot-devin` เพื่อให้ `/update-docs` reuse
-3. ทำ `/suggest-next-action`
+1. Run `/report` — tests added/updated/removed per layer, coverage delta, pass rate, pending items
+2. Persist raw results → `.devin/temp/report/<workspace>/update-tests-<time>.md` per the `/create-report-in-dot-devin` format so `/update-docs` can reuse them
+3. Run `/suggest-next-action`
 
 ### Subagents
 
-> Goal: parallelize suite updates เมื่อ changes กระทบหลาย suites
+> Goal: Parallelize suite updates when changes affect many suites
 
-- ใช้ profile `suite-updater` (`## Merged Details → suite-updater`) เมื่อต้อง update หลาย test suites ที่ independent กัน (unit/integration/e2e/snapshot) — spawn ทีละ suite ผ่าน `/use-subagents` โดยแต่ละ agent แก้คนละชุด test files แล้วรวมผลก่อน `/run-test all`
+- Use the `suite-updater` profile (`## Merged Details → suite-updater`) when you must update many independent test suites (unit/integration/e2e/snapshot) — spawn one suite at a time via `/use-subagents`, with each agent editing a different set of test files, then combine results before `/run-test all`
 
 ### Workflows
 
-> Goal: dispatch งาน update ไปยัง workflow ตาม test layer
+> Goal: Dispatch update work to the workflow matching the test layer
 
 | Topic | Workflow |
 |-------|----------|
-| อัปเดต e2e specs หลัง UI/route เปลี่ยน | `workflows/update-e2e/SKILL.md` |
-| อัปเดต unit tests หลัง refactor | `workflows/update-unit/SKILL.md` |
-| Regenerate/review snapshots อย่างปลอดภัย | `workflows/update-snapshot/SKILL.md` |
+| Update e2e specs after UI/route changes | `workflows/update-e2e/SKILL.md` |
+| Update unit tests after a refactor | `workflows/update-unit/SKILL.md` |
+| Safely regenerate/review snapshots | `workflows/update-snapshot/SKILL.md` |
 
 ## Rules
 
 ### 1. All Layers Covered
 
-- ห้ามเขียนแค่ unit เมื่อ scope ต้องการ integration/e2e — เลือกทุก layer ที่เหมาะกับ code ที่เปลี่ยน
-- flows ที่เพิ่งผ่าน exploratory testing (เช่น `/watch-browser-and-test`) ต้อง codify เป็น Playwright specs
+- Never write only unit tests when the scope needs integration/e2e — pick every layer suited to the changed code
+- Flows that just passed exploratory testing (e.g. `/watch-browser-and-test`) must be codified into Playwright specs
 
 ### 2. Behavior Over Implementation
 
-- assert behavior/output + error shape + side effects — ห้าม assert internals
-- test names บอก behavior: `should [expected] when [condition]` + AAA pattern
+- Assert behavior/output + error shape + side effects — never assert internals
+- Test names state the behavior: `should [expected] when [condition]` + AAA pattern
 
 ### 3. Deterministic And Isolated
 
-- ไม่มี shared state, order dependence, real time/random — fake timers, seeded RNG, cleanup ทุก test
-- ห้าม `waitForTimeout`/sleep เป็น workaround — ใช้ proper waits/mocks ที่ boundary
+- No shared state, order dependence, real time/random — fake timers, seeded RNG, cleanup every test
+- Never use `waitForTimeout`/sleep as a workaround — use proper waits/mocks at the boundary
 
 ### 4. No Code Changes To Pass
 
-- ห้ามแก้ source เพื่อให้ test เขียว — test เผย bug → fix bug แยกหรือ report
-- intended behavior change เท่านั้นที่อัปเดต expectations
+- Never change source just to make tests green — if a test reveals a bug → fix the bug separately or report
+- Update expectations only for an intended behavior change
 
 ### 5. File Organization
 
-- ตาม project pattern: colocated หรือ `tests/unit|integration|e2e/` — ไม่ผสม conventions
-- test data ใน `tests/fixtures/`, helpers ใน `tests/utils/`, e2e artifacts ไม่ commit
+- Follow the project pattern: colocated or `tests/unit|integration|e2e/` — don't mix conventions
+- Test data in `tests/fixtures/`, helpers in `tests/utils/`, don't commit e2e artifacts
 
 ### 6. Security In Tests
 
-- ไม่ hardcode credentials — env vars/test fixtures
-- security tests (auth bypass, IDOR, injection) ต้องมีบน handlers ที่เกี่ยวข้อง
+- Never hardcode credentials — use env vars/test fixtures
+- Security tests (auth bypass, IDOR, injection) must exist on the relevant handlers
 
 ## Merged Details
 
@@ -151,300 +151,300 @@ related:
 
 ##### Goal
 
-อัปเดต e2e specs ให้ตรงกับ UI/route changes ล่าสุด — selectors, navigation, assertions, waits — แล้วรันจนผ่านแบบ deterministic
+Update e2e specs to match the latest UI/route changes — selectors, navigation, assertions, waits — then run until they pass deterministically
 
 ##### Scope
 
-- ใช้เมื่อ UI, routes หรือ user flows เปลี่ยนแล้ว e2e specs fail/ล้าสมัย
-- ครอบคลุม: Playwright specs, selectors, page objects, fixtures, visual/interaction flows
+- Use when UI, routes, or user flows changed and the e2e specs fail/are outdated
+- Covers: Playwright specs, selectors, page objects, fixtures, visual/interaction flows
 - unit/integration → `workflows/update-unit/SKILL.md`; snapshots → `workflows/update-snapshot/SKILL.md`
 
 ##### Execute
 
 ###### 1. Diff UI Changes To Specs
 
-> Goal: รู้ว่า spec ไหนกระทบจากการเปลี่ยนแปลงไหน
+> Goal: Know which specs are affected by which change
 
-1. รัน `/run-test e2e` — เก็บ failing specs พร้อม error และ trace
-2. map failures กลับไปหา UI/route changes ล่าสุด (git diff) — selector เปลี่ยน, route ย้าย, flow เปลี่ยน, copy เปลี่ยน
-3. แยก spec bug (test ล้าสมัย) vs app bug (app เสียจริง) — app bug → `/resolve-errors` แยก
+1. Run `/run-test e2e` — collect failing specs with errors and traces
+2. Map failures back to the latest UI/route changes (git diff) — selector changed, route moved, flow changed, copy changed
+3. Separate spec bug (outdated test) vs app bug (genuinely broken app) — split app bugs out via `/resolve-errors`
 
 ###### 2. Update Selectors And Flows
 
-> Goal: specs อ้าง UI จริงตาม conventions
+> Goal: Specs reference the real UI per conventions
 
-1. เปลี่ยน selectors เปราะเป็น user-facing locators (`getByRole`, `getByLabel`, `getByText`) ตาม `/follow-tool-playwright`
-2. อัปเดต paths/routes ที่เปลี่ยน — ใช้ route constants ถ้า project มี
-3. อัปเดต flows ที่เปลี่ยน (steps เพิ่ม/ลด) ให้ตรง behavior ใหม่ — assert outcome เดิมหรือ outcome ใหม่ที่ตั้งใจ
+1. Change brittle selectors to user-facing locators (`getByRole`, `getByLabel`, `getByText`) per `/follow-tool-playwright`
+2. Update the paths/routes that changed — use route constants if the project has them
+3. Update the flows that changed (steps added/removed) to match the new behavior — assert the original outcome or the newly intended outcome
 
 ###### 3. Fix Waits And Stability
 
-> Goal: specs deterministic ไม่ flaky
+> Goal: Specs are deterministic, not flaky
 
-1. แทน `waitForTimeout`/sleep ด้วย auto-waiting locators หรือ `expect(...).toBeVisible()` patterns
-2. ตรวจ network waits (`waitForResponse`) บน flows ที่ async
-3. รันซ้ำ 2-3 ครั้ง — ต้องผ่านทุกครั้ง ไม่มี order dependence
+1. Replace `waitForTimeout`/sleep with auto-waiting locators or `expect(...).toBeVisible()` patterns
+2. Add network waits (`waitForResponse`) on async flows
+3. Re-run 2-3 times — must pass every time with no order dependence
 
 ###### 4. Run And Verify
 
-> Goal: suite เขียวและครอบคลุม flows ใหม่
+> Goal: The suite is green and covers the new flows
 
-1. `/run-test e2e` ผ่านทั้ง suite — แก้ทีละ spec ตาม failures
-2. ถ้า UI ใหม่ยังไม่มี coverage → เพิ่ม spec ตาม conventions ของ project
+1. `/run-test e2e` passes the whole suite — fix one spec at a time per the failures
+2. If the new UI has no coverage yet → add specs per the project's conventions
 3. `/report-before-after` — specs updated/added/removed, pass rate
 
 ##### Rules
 
-- assert user-visible behavior — ห้าม assert implementation details หรือ CSS internals
-- ห้ามแก้ app เพื่อให้ spec ผ่าน — spec เผย bug → fix bug แยกหรือ report
-- ห้ามลบ spec ที่ fail โดยไม่ระบุเหตุผล — ถ้า flow ถูกตัดจริงให้ระบุใน report
-- fix-verify loop สูงสุด 3 รอบต่อ spec → ถ้าไม่ผ่าน stop และ report
+- Assert user-visible behavior — never assert implementation details or CSS internals
+- Never change the app to make a spec pass — if a spec reveals a bug → fix the bug separately or report
+- Never delete a failing spec without stating a reason — if a flow was genuinely cut, note it in the report
+- Fix-verify loop up to 3 rounds per spec → if it still fails, stop and report
 
 ##### Expected Outcome
 
-- e2e suite ผ่าน deterministic — ไม่มี flaky waits
-- specs ตรงกับ UI/routes ปัจจุบันและครอบคลุม flows ที่เปลี่ยน
-- report สรุป specs ที่แก้/เพิ่ม/ลบพร้อมเหตุผล
+- The e2e suite passes deterministically — no flaky waits
+- Specs match the current UI/routes and cover the changed flows
+- The report summarizes specs changed/added/removed with reasons
 
 ### update-snapshot
 
 ##### Goal
 
-อัปเดต test snapshots (inline, file, visual) หลัง output เปลี่ยนอย่างตั้งใจ — review diff ทุก snapshot ก่อน accept ไม่ blind-update
+Update test snapshots (inline, file, visual) after output changes intentionally — review every snapshot diff before accepting, never blind-update
 
 ##### Scope
 
-- ใช้เมื่อ output/markup/serialization เปลี่ยนทำให้ snapshot tests fail
-- ครอบคลุม: serializer snapshots (Vitest/Jest), component snapshots, visual snapshots
-- unit tests ทั่วไป → `workflows/update-unit/SKILL.md`; e2e → `workflows/update-e2e/SKILL.md`
+- Use when output/markup/serialization changes cause snapshot tests to fail
+- Covers: serializer snapshots (Vitest/Jest), component snapshots, visual snapshots
+- General unit tests → `workflows/update-unit/SKILL.md`; e2e → `workflows/update-e2e/SKILL.md`
 
 ##### Execute
 
 ###### 1. Collect Snapshot Failures
 
-> Goal: รู้ว่า snapshot ไหน fail และทำไม
+> Goal: Know which snapshots fail and why
 
-1. รัน `/run-test` — เก็บ snapshot mismatches ทั้งหมด
-2. map แต่ละ mismatch กับ code change — intended change vs unintended regression
-3. แยกชัด: snapshot ล้าสมัย (accept ได้) vs output เสียจริง (fix code แยก)
+1. Run `/run-test` — collect all snapshot mismatches
+2. Map each mismatch to a code change — intended change vs unintended regression
+3. Distinguish clearly: outdated snapshot (can accept) vs genuinely broken output (fix code separately)
 
 ###### 2. Review Diffs Before Accept
 
-> Goal: accept เฉพาะ changes ที่ตั้งใจ
+> Goal: Accept only the intended changes
 
-1. อ่าน diff ของทุก snapshot ที่จะ update — ทีละไฟล์ ไม่ mass-accept
-2. ตรวจว่า diff ตรงกับ intended change เท่านั้น — keys เพิ่ม/หาย, ordering, whitespace, ids/timestamps ที่ไม่ deterministic
-3. ถ้า diff มีค่าที่ไม่ deterministic → แก้ test ให้ serialize เสถียร (mock time/ids) ก่อน snapshot ใหม่
+1. Read the diff of every snapshot about to be updated — file by file, never mass-accept
+2. Verify the diff matches only the intended change — keys added/missing, ordering, whitespace, non-deterministic ids/timestamps
+3. If the diff has non-deterministic values → fix the test to serialize stably (mock time/ids) before re-snapshotting
 
 ###### 3. Regenerate
 
-> Goal: snapshots ใหม่สะอาดและ deterministic
+> Goal: New snapshots are clean and deterministic
 
-1. regenerate ด้วย update flag ของ runner ที่ project ใช้ (เช่น `vitest -u`, `jest -u`) — เฉพาะ scope ที่ review แล้ว
-2. visual snapshots → อัปเดตผ่าน `/run-test visual` แล้ว review ภาพ diff ทีละภาพ
-3. ลบ snapshot files ที่ orphan (test ถูกลบแต่ snapshot เหลือ)
+1. Regenerate with the update flag of the runner the project uses (e.g. `vitest -u`, `jest -u`) — only for the reviewed scope
+2. Visual snapshots → update via `/run-test visual`, then review the image diffs one by one
+3. Delete orphan snapshot files (test deleted but snapshot left behind)
 
 ###### 4. Verify
 
-> Goal: suite เขียวและ snapshots มีเสถียรภาพ
+> Goal: The suite is green and snapshots are stable
 
-1. `/run-test` ผ่าน แล้วรันซ้ำ 2-3 ครั้ง — snapshots ต้อง match เดิมทุกครั้ง
-2. git diff snapshot files — ครบเท่าที่ review ไว้ ไม่มีการเปลี่ยนแปลงเกิน
-3. `/report-before-after` — snapshots updated/removed, intended changes ที่ยืนยัน
+1. `/run-test` passes, then re-run 2-3 times — snapshots must match the original every time
+2. git diff the snapshot files — exactly what was reviewed, no extra changes
+3. `/report-before-after` — snapshots updated/removed, intended changes confirmed
 
 ##### Rules
 
-- ห้าม blind `-u` ทั้ง suite — review diff ทุก snapshot ก่อน accept
-- snapshots ต้อง deterministic — ไม่มี timestamps, random ids, env-dependent values
-- ห้าม accept diff ที่ไม่ตรง intended change — flag เป็น regression แยก
-- snapshot ใหญ่เกินจน review ไม่ได้ → แนะนำแยก assertions แทนใน report
-- fix-verify loop สูงสุด 3 รอบ → ถ้าไม่ผ่าน stop และ report
+- Never blind `-u` the whole suite — review every snapshot diff before accepting
+- Snapshots must be deterministic — no timestamps, random ids, env-dependent values
+- Never accept a diff that doesn't match the intended change — flag it as a regression separately
+- A snapshot too large to review → recommend splitting into assertions instead, in the report
+- Fix-verify loop up to 3 rounds → if it still fails, stop and report
 
 ##### Expected Outcome
 
-- snapshots ตรงกับ intended output ใหม่ — ไม่มี unintended diffs หลุดเข้าไป
-- suite ผ่าน deterministic, ไม่มี orphan snapshot files
-- report สรุป snapshots ที่ accept/ลบ พร้อม regressions ที่ flag
+- Snapshots match the new intended output — no unintended diffs slipped in
+- The suite passes deterministically, with no orphan snapshot files
+- The report summarizes the snapshots accepted/deleted along with regressions flagged
 
 ### update-unit
 
 ##### Goal
 
-อัปเดต unit tests ให้ตรงกับ code ที่ refactor/เปลี่ยน signature — mocks, assertions, test structure — โดย assert behavior ไม่ใช่ internals
+Update unit tests to match refactored/signature-changed code — mocks, assertions, test structure — while asserting behavior, not internals
 
 ##### Scope
 
-- ใช้เมื่อ refactor, rename, signature change หรือ restructure ทำ unit tests fail/ล้าสมัย
-- ครอบคลุม: Vitest/Jest/bun test/pytest ตามที่ project ใช้ — mocks, fixtures, parameterized tests
+- Use when a refactor, rename, signature change, or restructure causes unit tests to fail/become outdated
+- Covers: Vitest/Jest/bun test/pytest as the project uses — mocks, fixtures, parameterized tests
 - e2e → `workflows/update-e2e/SKILL.md`; snapshots → `workflows/update-snapshot/SKILL.md`
 
 ##### Execute
 
 ###### 1. Map Breakage To Changes
 
-> Goal: รู้ว่า test ไหน fail เพราะ change ไหน
+> Goal: Know which test fails because of which change
 
-1. รัน `/run-test` — เก็บ failing tests พร้อม errors
-2. map failures กับ code diff — signature เปลี่ยน, module ย้าย, behavior เปลี่ยนตั้งใจ, หรือ behavior หาย
-3. แยก: test ล้าสมัย (อัปเดต test) vs regression จริง (app bug → `/resolve-errors` หรือ report)
+1. Run `/run-test` — collect failing tests with errors
+2. Map failures to the code diff — signature changed, module moved, behavior changed intentionally, or behavior lost
+3. Separate: outdated test (update the test) vs genuine regression (app bug → `/resolve-errors` or report)
 
 ###### 2. Update Tests To New Contracts
 
-> Goal: tests ตรงกับ public contract ใหม่
+> Goal: Tests match the new public contract
 
-1. อัปเดต imports/paths ตาม structure ใหม่ — ตาม conventions เดิมของ project
-2. อัปเดต calls ตาม signature ใหม่ — params, return shape, error types
-3. อัปเดต mocks ให้ตรง boundary ใหม่ — mock external deps เท่านั้น ห้าม mock internal pure functions
-4. ถ้า behavior เปลี่ยนตั้งใจ → อัปเดต expectations; ถ้า test เผย logic หาย → flag ก่อนลบ
+1. Update imports/paths to the new structure — following the project's original conventions
+2. Update calls to the new signature — params, return shape, error types
+3. Update mocks to match the new boundary — mock only external deps, never mock internal pure functions
+4. If behavior changed intentionally → update expectations; if a test reveals lost logic → flag before deleting
 
 ###### 3. Cover New Paths
 
-> Goal: code paths ใหม่มี test ครบ
+> Goal: New code paths have complete tests
 
-1. refactor ที่เพิ่ม branches/functions ใหม่ → เพิ่ม test cases ตาม code-path map ของ `/update-tests`
-2. รักษา AAA pattern และ test names `should [expected] when [condition]` ตาม project
-3. ทำ `/deep-review` — ไม่มี shared state, cleanup ครบ
+1. A refactor that adds new branches/functions → add test cases per `/update-tests`' code-path map
+2. Preserve the AAA pattern and `should [expected] when [condition]` test names per the project
+3. Run `/deep-review` — no shared state, complete cleanup
 
 ###### 4. Run And Verify
 
-> Goal: suite เขียวและ deterministic
+> Goal: The suite is green and deterministic
 
-1. `/run-test` ผ่านทั้ง scope ที่แก้ แล้วรันซ้ำ 2-3 ครั้ง — ไม่มี flaky
-2. `/run-check` lint/typecheck ผ่านบน test files ที่แก้
-3. `/report-before-after` — tests updated/added/removed ต่อ module
+1. `/run-test` passes the scope you changed, then re-run 2-3 times — no flaky
+2. `/run-check` lint/typecheck passes on the test files you changed
+3. `/report-before-after` — tests updated/added/removed per module
 
 ##### Rules
 
-- assert behavior/output + error shape — ห้าม assert internals หรือ private state
-- ห้ามแก้ source เพื่อให้ test ผ่าน — test เผย regression → fix bug แยก
-- ห้ามลบ tests ที่ครอบ behavior ที่ยังมีอยู่ — ลบเฉพาะ behavior ที่ตัดออกจริง
-- fix-verify loop สูงสุด 3 รอบต่อ test → ถ้าไม่ผ่าน stop และ report
+- Assert behavior/output + error shape — never assert internals or private state
+- Never change source to make a test pass — if a test reveals a regression → fix the bug separately
+- Never delete tests covering existing behavior — delete only genuinely cut behavior
+- Fix-verify loop up to 3 rounds per test → if it still fails, stop and report
 
 ##### Expected Outcome
 
-- unit tests ตรงกับ implementation ใหม่และผ่าน deterministic
-- coverage ไม่ลดจากก่อน refactor — paths ใหม่มี tests
-- report สรุป tests ที่แก้/เพิ่ม/ลบพร้อมเหตุผล
+- Unit tests match the new implementation and pass deterministically
+- Coverage doesn't drop below pre-refactor — new paths have tests
+- The report summarizes tests changed/added/removed with reasons
 
 ### references/layers
 
 #### Test Layers Reference
 
-เลือก layers ตาม scope — ทุก handler/function มี required categories ก่อน แล้วเติม conditional categories ตาม logic
+Pick layers by scope — every handler/function has required categories first, then add conditional categories per the logic
 
-##### Required Categories (ทุก test)
+##### Required Categories (every test)
 
-1. Happy path — input ถูกต้อง → expected output
-2. Error path — dependency throw → error response ถูกต้อง
+1. Happy path — correct input → expected output
+2. Error path — dependency throws → correct error response
 3. Edge cases — empty/null/undefined, boundary values (min, max, min-1, max+1)
 4. Unauthorized — auth missing/invalid → reject
 5. Input validation — invalid input → validation error
 
 ##### Conditional Categories
 
-- Permission/RBAC — user ไม่มี permission → deny
-- IDOR/Ownership — เข้าถึง resource ของ user อื่น → deny
+- Permission/RBAC — user without permission → deny
+- IDOR/Ownership — accessing another user's resource → deny
 - Sanitization — malicious input → sanitized
-- userId injection — userId ต้องมาจาก auth ไม่ใช่ input
+- userId injection — userId must come from auth, not input
 - Empty results, optional fields, concurrency, regression, contract, property-based, a11y, performance
 
-ใช้ `it.each`/table-driven สำหรับ boundary values หลายค่า, validation matrix, permission matrix (role × action)
+Use `it.each`/table-driven for multiple boundary values, a validation matrix, a permission matrix (role × action)
 
 ##### Unit (70%)
 
 - Scope: pure functions, handlers, utils — isolated
-- Framework: `vitest`/`jest`/`bun test` (JS/TS), `pytest`, `go test`, `cargo test`, `xUnit`, `rspec`, `PHPUnit` ตามภาษา
-- Mock external deps เท่านั้น; `< 10ms` ต่อ test
-- Location: colocated `__tests__/` หรือ `tests/unit/` ตาม project pattern
+- Framework: `vitest`/`jest`/`bun test` (JS/TS), `pytest`, `go test`, `cargo test`, `xUnit`, `rspec`, `PHPUnit` by language
+- Mock only external deps; `< 10ms` per test
+- Location: colocated `__tests__/` or `tests/unit/` per project pattern
 - Vitest setup/conventions → `/follow-tool-vitest`
 
 ##### Integration (20%)
 
 - Scope: API endpoints, DB queries, service interactions — real/test DB, testcontainers
-- Real implementations ที่ boundary; mock เฉพาะ third-party ที่ควบคุมไม่ได้
-- seed/cleanup ต่อ test — ไม่ leak data; `< 100ms` ต่อ test
+- Real implementations at the boundary; mock only uncontrollable third parties
+- seed/cleanup per test — no data leaks; `< 100ms` per test
 - Location: `tests/integration/`
 - Runner: `/deep-test integration`; API-specific → `/deep-test api`
 
 ##### E2E (10%)
 
-- Scope: user flows, critical paths, all routes — Playwright เท่านั้น (ไม่ใช้ Cypress)
-- Selectors: `data-testid` หรือ role-based (`getByRole`, `getByLabel`) — ห้าม fragile CSS selectors
-- Reuse auth via `storageState`; fixtures/page objects ตาม suite conventions
-- Auto-waiting locators + `expect` polling — ห้าม `waitForTimeout` มั่ว
-- traces/videos/screenshots ไป test-results dir — ไม่ commit artifacts
+- Scope: user flows, critical paths, all routes — Playwright only (don't use Cypress)
+- Selectors: `data-testid` or role-based (`getByRole`, `getByLabel`) — never fragile CSS selectors
+- Reuse auth via `storageState`; fixtures/page objects per suite conventions
+- Auto-waiting locators + `expect` polling — never blind `waitForTimeout`
+- Send traces/videos/screenshots to the test-results dir — never commit artifacts
 - Conventions → `/follow-tool-playwright`; runner → `/deep-test e2e`
 
 ##### Contract
 
-- API schema compatibility ระหว่าง services — `pact` หรือ schema validation
-- Breaking changes → versioning/deprecation ไม่ลบทิ้งทันที
+- API schema compatibility between services — `pact` or schema validation
+- Breaking changes → versioning/deprecation, don't remove immediately
 
 ##### Property-Based
 
-- Invariants ที่ต้องจริงทุก input — `fast-check` (JS/TS), `hypothesis` (Python), `proptest` (Rust)
+- Invariants that must hold for every input — `fast-check` (JS/TS), `hypothesis` (Python), `proptest` (Rust)
 
 ##### Mutation
 
-- ตรวจ test quality — `stryker` หรือ `cargo-mutants` — รันใน CI
+- Check test quality — `stryker` or `cargo-mutants` — run in CI
 
 ##### Performance / Security / Accessibility / Visual
 
-- Performance: critical paths ≤ threshold — รันใน CI
-- Security: auth bypass, IDOR, injection, rate limiting — รันใน CI
-- Accessibility: WCAG/ARIA/keyboard nav บน UI components
-- Visual: screenshot regression ผ่าน Playwright/component snapshots — `/deep-test visual`
+- Performance: critical paths ≤ threshold — run in CI
+- Security: auth bypass, IDOR, injection, rate limiting — run in CI
+- Accessibility: WCAG/ARIA/keyboard nav on UI components
+- Visual: screenshot regression via Playwright/component snapshots — `/deep-test visual`
 
 ### suite-updater
 
 ##### Role
 
-Subagent สำหรับ update test suite เดียว — เช่น `unit`, `integration`, `e2e`, `contract`, `snapshot`, `visual` — หลัง source เปลี่ยน โดยเขียน/แก้ tests ตาม conventions ของ project แล้วรัน suite นั้นจนผ่าน — ใช้เมื่อ changes กระทบหลาย suites และต้องทำขนานกัน
+A subagent for updating a single test suite — e.g. `unit`, `integration`, `e2e`, `contract`, `snapshot`, `visual` — after source changes, writing/fixing tests per the project's conventions and running that suite until it passes — use when changes affect many suites that must run in parallel
 
 ##### Inputs
 
-- `suite`: test suite เดียวที่รับผิดชอบ เช่น `unit`, `e2e`, `snapshot`
-- `changed-files`: list ของ source files ที่เปลี่ยนและเกี่ยวกับ suite นี้
-- `conventions`: test patterns ของ project — naming, structure, assertion style, mock strategy, data strategy (`factories`/`fixtures`/`builders`)
-- `runner-command`: command สำหรับรัน suite เช่น `bun run test`, `pnpm test:e2e`
+- `suite`: the single test suite you own, e.g. `unit`, `e2e`, `snapshot`
+- `changed-files`: list of source files that changed and relate to this suite
+- `conventions`: the project's test patterns — naming, structure, assertion style, mock strategy, data strategy (`factories`/`fixtures`/`builders`)
+- `runner-command`: command to run the suite, e.g. `bun run test`, `pnpm test:e2e`
 
 ##### Tools
 
-- `read`, `grep`, `find_file_by_name` — อ่าน source และ tests เดิม
-- `edit`, `write` — เขียน/แก้ test files
-- `exec` — รัน suite runner, lint, typecheck
+- `read`, `grep`, `find_file_by_name` — read the original source and tests
+- `edit`, `write` — write/fix test files
+- `exec` — run the suite runner, lint, typecheck
 
 ##### Execute
 
-1. อ่าน source ใน `changed-files` — ระบุ branches, code paths, error shapes ที่ suite นี้ต้อง cover
-2. อ่าน test files เดิมของ suite — หา tests ที่ stale, missing หรือพังจาก changes
-3. เขียน/แก้ tests ตาม conventions: AAA pattern, test names แบบ `should [expected] when [condition]`, assert behavior ไม่ใช่ internals
-4. รัน `runner-command` ของ suite — ถ้า FAIL แยก test bug vs app bug: test bug แก้ test, app bug → report ไม่แก้ source
-5. retry สูงสุด 3 รอบต่อ failure — ถ้ายังไม่ผ่านคืน `blocked` พร้อมสาเหตุ
+1. Read the source in `changed-files` — identify the branches, code paths, and error shapes this suite must cover
+2. Read the suite's existing test files — find tests that are stale, missing, or broken by the changes
+3. Write/fix tests per conventions: AAA pattern, `should [expected] when [condition]` test names, assert behavior not internals
+4. Run the suite's `runner-command` — if FAIL, separate test bug vs app bug: fix the test for a test bug, report an app bug without changing source
+5. Retry up to 3 rounds per failure — if it still fails, return `blocked` with the reason
 
 ##### Output Contract
 
-คืนผลลัพธ์เป็นสรุป suite update:
+Return the result as a suite update summary:
 
 | No. | File | Action | Tests | Result |
 |-----|------|--------|-------|--------|
 | 1 | `tests/unit/user.test.ts` | `updated` | 12 | `pass` |
 
 - `action`: `added` / `updated` / `removed` / `unchanged`
-- ปิดท้ายด้วย suite status: `pass` / `fail` / `blocked`, pass/fail counts, coverage delta (ถ้าวัดได้), files changed list
+- End with the suite status: `pass` / `fail` / `blocked`, pass/fail counts, coverage delta (if measurable), files changed list
 
 ##### Constraints
 
-- รับผิดชอบ suite เดียวเท่านั้น — ห้ามแตะ suites หรือ test files ของ agent อื่น
-- ห้ามแก้ source เพื่อให้ test เขียว — test เผย bug ให้ report แยก
-- deterministic เท่านั้น — ไม่มี shared state, real time/random, `waitForTimeout` workaround
-- ไม่ hardcode credentials — ใช้ env vars/fixtures
-- อัปเดต expectations เฉพาะเมื่อเป็น intended behavior change
-- canonical runners ต่อ layer → /test-<domain> (unit, api, cli, component, contract, database, e2e, integration, load, mobile, mutation, property, smoke, a11y, visual, website) — orchestrate ผ่าน /test-all
+- Own a single suite only — never touch other agents' suites or test files
+- Never change source to make tests green — if a test reveals a bug, report it separately
+- Deterministic only — no shared state, real time/random, `waitForTimeout` workarounds
+- Don't hardcode credentials — use env vars/fixtures
+- Update expectations only for an intended behavior change
+- Canonical runners per layer → /test-<domain> (unit, api, cli, component, contract, database, e2e, integration, load, mobile, mutation, property, smoke, a11y, visual, website) — orchestrate via /test-all
 
 ## Expected Outcome
 
-- tests ครอบคลุมทุก layer ที่ scope ต้องการพร้อม conventions ของ project
-- `/run-test all` ผ่าน — deterministic, ไม่มี flaky
-- coverage ตรง target, specs sync กับ test cases
-- report สรุป per-layer พร้อม raw results persisted ใน `.devin/temp/report/`
+- Tests cover every layer the scope requires, with the project's conventions
+- `/run-test all` passes — deterministic, no flaky
+- Coverage meets the target, specs are synced with the test cases
+- The report summarizes per layer, with raw results persisted in `.devin/temp/report/`

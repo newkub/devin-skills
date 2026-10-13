@@ -9,43 +9,43 @@ related:
 
 ## Goal
 
-ตรวจ quality dimension ของ `/deep-validate` — readability, completeness, consistency, documentation, best practices, naming
+Check the quality dimension of `/deep-validate` — readability, completeness, consistency, documentation, best practices, naming
 
 ## Scope
 
-- ใช้เมื่อ `/deep-validate` dispatch มาที่ dimension `quality` หรือเรียกเดี่ยวๆ
-- Read-only: บันทึก findings — ไม่ refactor
+- Used when `/deep-validate` dispatches to the `quality` dimension, or invoked standalone
+- Read-only: record findings — do not refactor
 
 ## Execute
 
 ### 1. Check Code Quality
 
-> Goal: คุณภาพโดยรวมตาม standards
+> Goal: overall quality per standards
 
-1. ทำ `/deep-review` เพื่อตรวจสอบ code quality
-2. ตรวจสอบ readability, completeness, consistency
-3. ตรวจสอบมี documentation เพียงพอหรือ clear
+1. Run `/deep-review` to check code quality
+2. Check readability, completeness, consistency
+3. Check that documentation is sufficient or clear
 
 ### 2. Check Conventions
 
-> Goal: สอดคล้องกับ project conventions
+> Goal: aligned with project conventions
 
-1. ตรวจสอบใช้ best practices และไม่มี redundancy
-2. ตรวจสอบ naming conventions สม่ำเสมอ
-3. บันทึก findings พร้อม severity + evidence
+1. Check that best practices are used and there is no redundancy
+2. Check that naming conventions are consistent
+3. Record findings with severity + evidence
 
 ### 3. Report
 
-> Goal: ส่ง findings กลับ parent
+> Goal: return findings to the parent
 
-1. ตาราง: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
-2. ระบุสิ่งที่ดีอยู่แล้วเสมอ
+1. Table: `No.`, `Finding`, `Severity`, `Location`, `Recommendation`
+2. Always note what is already good
 
 ## Rules
 
-- quality findings default severity Medium/Low — ยกเป็น High เมื่อกระทบ maintainability จริง
-- ไม่ flag style ที่ formatter/linter จัดการได้แล้ว
+- Quality findings default to Medium/Low severity — raise to High only when maintainability is truly affected
+- Do not flag style already handled by the formatter/linter
 
 ## Expected Outcome
 
-- Findings ของ quality dimension พร้อม severity และ evidence
+- Findings of the quality dimension with severity and evidence

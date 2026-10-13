@@ -2,19 +2,19 @@
 
 ## Goal
 
-สร้างรายงานและแนะนำ action สำหรับ pull request
+Build the report and recommend actions for the pull request
 
 ## Checks
 
-1. ทำ `/report` พร้อม `/report table`
-2. สร้างตาราง PR Checklist: Title, Description, Size, Conflicts, Conventional Commits, Tests, CI
-3. สร้างตาราง Findings: Category, Severity, Location, Recommendation
-4. ระบุ merge readiness: ready, needs changes, needs discussion
-5. ทำ `/suggest-next-action`
+1. Run `/report` with `/report table`
+2. Build the PR Checklist table: Title, Description, Size, Conflicts, Conventional Commits, Tests, CI
+3. Build the Findings table: Category, Severity, Location, Recommendation
+4. State merge readiness: ready, needs changes, needs discussion
+5. Run `/suggest-next-action`
 
 ## Severity
 
-- Critical: merge blocked เนื่องจาก CI fail หรือ security risk
-- High: changes required ก่อน merge
+- Critical: merge blocked because of CI fail or security risk
+- High: changes required before merge
 - Medium: needs discussion
 - Low: cosmetic, nit

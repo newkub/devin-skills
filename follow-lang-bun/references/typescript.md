@@ -1,13 +1,13 @@
 # TypeScript On Bun
 
-Bun รัน `.ts` และ `.tsx` โดยตรง — transpile ภายในไม่ต้อง `tsc`, `ts-node`, `tsx` หรือ build step Docs: https://bun.com/docs/typescript
+Bun runs `.ts` and `.tsx` directly — internal transpilation, no need for `tsc`, `ts-node`, `tsx`, or a build step. Docs: https://bun.com/docs/typescript
 
 ## Key Facts
 
-- **Runtime ไม่ typecheck** — Bun strip types แล้วรัน; typecheck แยกด้วย `bunx tsc --noEmit`
-- Type-aware rules ไม่รองรับที่ runtime (เช่น `const enum`, `import =`) — ใช้ plain `enum` + ESM imports แทน
-- JSX/TSX รองรับโดยตรง — config ผ่าน `tsconfig.json` (`jsx`, `jsxFactory`, `jsxImportSource`) หรือ `bunfig.toml`
-- Decorators, `emitDecoratorMetadata` — ตาม `tsconfig.json` (experimental support)
+- **The runtime does not typecheck** — Bun strips types and runs; typecheck separately with `bunx tsc --noEmit`
+- Type-aware rules are not supported at runtime (e.g. `const enum`, `import =`) — use plain `enum` + ESM imports instead
+- JSX/TSX supported directly — configured via `tsconfig.json` (`jsx`, `jsxFactory`, `jsxImportSource`) or `bunfig.toml`
+- Decorators, `emitDecoratorMetadata` — per `tsconfig.json` (experimental support)
 
 ## bun-types
 
@@ -15,13 +15,13 @@ Bun รัน `.ts` และ `.tsx` โดยตรง — transpile ภาย�
 bun add -d bun-types
 ```
 
-ให้ type definitions ของ `Bun.*` globals, `bun:test`, `bun:jsc`, `bun:sqlite`, `bun:ffi` ฯลฯ
+Provides type definitions for the `Bun.*` globals, `bun:test`, `bun:jsc`, `bun:sqlite`, `bun:ffi`, etc.
 
 ```jsonc
 // tsconfig.json
 {
   "compilerOptions": {
-    "types": ["bun-types"],   // หรือ "bun" ใน tsconfig versions ใหม่
+    "types": ["bun-types"],   // or "bun" in newer tsconfig versions
     "module": "esnext",
     "moduleResolution": "bundler",
     "target": "esnext",
@@ -33,8 +33,8 @@ bun add -d bun-types
 }
 ```
 
-- `bun-types` ลง `node_modules/@types/bun` — `@types/node` ยังใช้ร่วมได้ถ้าต้องการ node compat types
-- `/// <reference types="bun" />` เป็น alternative ไม่ต้องแก้ tsconfig
+- `bun-types` installs into `node_modules/@types/bun` — `@types/node` can still be used alongside it if you need node compat types
+- `/// <reference types="bun" />` is an alternative that requires no tsconfig changes
 
 ## Recommended tsconfig (official)
 
@@ -61,9 +61,9 @@ bun add -d bun-types
 }
 ```
 
-- `allowImportingTsExtensions` — Bun อนุญาต `import "./x.ts"` ตรงๆ
-- `moduleResolution: "bundler"` — ตรง Bun's resolution algorithm
-- `noEmit` — typecheck only (Bun ทำ execution)
+- `allowImportingTsExtensions` — Bun allows `import "./x.ts"` directly
+- `moduleResolution: "bundler"` — matches Bun's resolution algorithm
+- `noEmit` — typecheck only (Bun handles execution)
 
 ## Typecheck In Workflow
 
@@ -77,13 +77,13 @@ bunx tsc --noEmit --watch    # watch mode
 
 ## TypeScript Versions
 
-- ใช้ `typescript` จาก devDependencies สำหรับ typecheck (`bun add -d typescript`)
-- Docs เฉพาะ: https://bun.com/docs/typescript-6 สำหรับ TypeScript 6/7 (tsgo native compiler) — runtime ไม่ขึ้นกับ TS version เพราะ transpiler เป็นของ Bun เอง
+- Use `typescript` from devDependencies for typechecking (`bun add -d typescript`)
+- Dedicated docs: https://bun.com/docs/typescript-6 for TypeScript 6/7 (tsgo native compiler) — the runtime doesn't depend on the TS version because the transpiler is Bun's own
 
 ## Common Gotchas
 
-- `import type` / `export type` ปลอดภัยเสมอ; `verbatimModuleSyntax` ช่วยกัน type imports หลุม
-- `enum` (plain) ใช้ได้; `const enum` ถูก inline เฉพาะกรณี — หลีกเลี่ยงใน libraries
-- `paths` aliases ใน tsconfig — Bun เคารพ `tsconfig.json` paths ตอน runtime
-- `.d.ts` files ไม่รัน — Bun ข้าม type declarations
-- `tsc --noEmit` ยังจำเป็นสำหรับ CI — Bun จะไม่เตือน type errors ตอนรัน
+- `import type` / `export type` are always safe; `verbatimModuleSyntax` helps keep type imports from slipping through
+- `enum` (plain) works; `const enum` is inlined only in some cases — avoid it in libraries
+- `paths` aliases in tsconfig — Bun honors `tsconfig.json` paths at runtime
+- `.d.ts` files never run — Bun skips type declarations
+- `tsc --noEmit` is still required for CI — Bun won't warn about type errors at runtime

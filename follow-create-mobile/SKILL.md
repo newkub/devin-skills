@@ -1,6 +1,6 @@
 ---
 name: follow-create-mobile
-description: สร้าง mobile app — native (Kotlin Multiplatform) หรือ cross-platform (Capacitor)
+description: Create a mobile app — native (Kotlin Multiplatform) or cross-platform (Capacitor)
 argument-hint: "[domain]"
 related:
   - follow-create-web
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ตาม mobile target — parent ทำ routing เท่านั้น
+Dispatch to the skill matching the mobile target — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if omitted → use `/ask-me` to pick a domain
 
 ## Execute
 
@@ -25,24 +25,24 @@ Dispatch ไป skill ตาม mobile target — parent ทำ routing เท�
 
 | Domain | Skill |
 |---|---|
-| `native`, `ios`, `android`, `kmp` | `/follow-create-ios-android-native-by-kotlin-multiplatform` — native iOS+Android ด้วย Kotlin Multiplatform |
+| `native`, `ios`, `android`, `kmp` | `/follow-create-ios-android-native-by-kotlin-multiplatform` — native iOS+Android with Kotlin Multiplatform |
 | `cross-capacitor`, `capacitor` | `/follow-create-mobile-cross-with-capacitor` — web stack + Capacitor |
 
-1. ทำ `/deep-research` + `/follow-best-practice` สำหรับ platform ที่เลือก ตาม conventions ใน `/update-devin-global-skills` (ทำใน target skill ที่ dispatch ไป)
-2. ระบุ domain จาก argument (เช่น `/follow-create-mobile ios`)
-3. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Run `/deep-research` + `/follow-best-practice` for the chosen platform, per the conventions in `/update-devin-global-skills` (done inside the dispatched target skill)
+2. Determine the domain from the argument (e.g. `/follow-create-mobile ios`)
+3. If the domain is supported → invoke the skill from the table and follow that skill's flow
+4. If the domain is missing or unrecognized → use `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- เลือก native vs cross ตาม requirement — ถ้าไม่ชัดให้ถาม user ก่อน
+- The parent only dispatches — never duplicate the target skill's workflow
+- Choose native vs cross per the requirements — if unclear, ask the user first
 
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /implement-features-to-mvp ถ้าจำเป็น
-- ใช้ /test-mobile verify device/emulator flows หลัง scaffold
+- Use /follow-create-web if needed
+- Use /follow-best-practice if needed
+- Use /implement-features-to-mvp if needed
+- Use /test-mobile to verify device/emulator flows after scaffolding
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ที่ตรง platform แล้ว scaffold ตาม flow นั้น
+- The caller is dispatched to the skill matching the platform and scaffolded via that flow

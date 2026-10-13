@@ -1,6 +1,6 @@
 ---
 name: check-monorepo
-description: ตรวจสอบว่า project เป็น monorepo หรือไม่
+description: Check whether a project is a monorepo
 argument-hint: "[scope|boundaries|pipeline|config]"
 related:
   - follow-monorepo
@@ -12,17 +12,17 @@ related:
 ---
 ## Goal
 
-ตรวจสอบว่า project เป็น monorepo หรือไม่ เพื่อกำหนด structure ที่เหมาะสม
+Determine whether the project is a monorepo so the appropriate structure can be chosen.
 
 ## Scope
 
-ใช้สำหรับตรวจสอบประเภท project ก่อนเริ่มทำงานที่ต้องรู้ว่าเป็น monorepo หรือไม่
+Use to check the project type before starting work that requires knowing whether it is a monorepo.
 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง domain workflow ตาม argument — detection flow (Steps 1-4) ทำก่อนเสมอ
+> Goal: dispatch to the domain workflow based on the argument — always run the detection flow (Steps 1-4) first
 
 | Domain/Argument | Workflow |
 |-----------------|----------|
@@ -30,77 +30,77 @@ related:
 | `pipeline`, `tasks` | `workflows/pipeline/SKILL.md` — task coverage, orphan projects, cache config |
 | `config` | `workflows/config/SKILL.md` — declared vs actual workspaces, manifest coherence, tool drift |
 
-1. ถ้า argument ระบุ domain → ทำ detection (Steps 1-3) ก่อนเพื่อยืนยันว่าเป็น monorepo แล้วอ่าน `workflows/<domain>/SKILL.md` มา execute
-2. ถ้าไม่ระบุ → ทำ detection flow (Steps 1-4) เท่านั้น แล้วแนะนำ domains ที่ตรวจต่อได้
+1. If the argument specifies a domain → run detection first (Steps 1-3) to confirm it is a monorepo, then read and execute `workflows/<domain>/SKILL.md`
+2. If no domain is given → run only the detection flow (Steps 1-4), then suggest domains worth checking next
 
 ### 1. Check Package Manifests
 
 > Goal: Check Package Manifests
 
-ตรวจสอบ root `package.json` และ package manager workspace files เพื่อดู workspaces configuration
+Inspect the root `package.json` and the package manager workspace files for the workspaces configuration.
 
-1. อ่าน `package.json` ที่ root ของ project
-2. ตรวจสอบว่ามี `workspaces` field หรือไม่
-3. ตรวจสอบ `pnpm-workspace.yaml` หรือ `bunfig.toml` สำหรับ package manager workspaces
-4. ถ้ามี `workspaces` field หรือ package manager workspace file ให้ทำตามขั้นตอนถัดไป
-5. ถ้าไม่มี ให้ไป Step 3 ตรวจ monorepo tools อื่นๆ เช่น Moonrepo ก่อนรายงานผล
+1. Read `package.json` at the project root
+2. Check whether a `workspaces` field exists
+3. Check `pnpm-workspace.yaml` or `bunfig.toml` for package manager workspaces
+4. If a `workspaces` field or a package manager workspace file is present, continue to the next steps
+5. If neither exists, go to Step 3 and check for other monorepo tools such as Moonrepo before reporting
 
 ### 2. Check Workspace Directories
 
 > Goal: Check Workspace Directories
 
-ตรวจสอบว่า workspace directories มีอยู่จริง ทั้ง package workspaces และ Moonrepo projects
+Verify that workspace directories actually exist, covering both package workspaces and Moonrepo projects.
 
-1. ถ้ามี `workspaces` field ใน `package.json` หรือ `pnpm-workspace.yaml` ให้อ่าน patterns (เช่น `apps/*`, `integrations/*`, `server/*`, `shared/*`)
-2. ตรวจสอบว่า directories ที่ match กับ glob patterns มีอยู่จริง
-3. ถ้าเป็น Moonrepo ให้อ่าน `.moon/workspace.yml` หรือ `.moon/projects.yml` เพื่อดู `projects` mapping
-4. ระบุ workspaces ทั้งหมดที่พบ
+1. If `package.json` or `pnpm-workspace.yaml` has a `workspaces` field, read the patterns (e.g. `apps/*`, `integrations/*`, `server/*`, `shared/*`)
+2. Verify that the directories matching the glob patterns exist
+3. For Moonrepo, read `.moon/workspace.yml` or `.moon/projects.yml` to see the `projects` mapping
+4. List all workspaces found
 
 ### 3. Check Monorepo Tools
 
 > Goal: Check Monorepo Tools
 
-ตรวจสอบ monorepo management tools ทั้ง package-workspace based และ tool-based
+Check for monorepo management tools, both package-workspace based and tool-based.
 
-1. ตรวจสอบว่ามี `turbo.json` (Turborepo) หรือไม่
-2. ตรวจสอบว่ามี `pnpm-workspace.yaml` (pnpm workspaces) หรือไม่
-3. ตรวจสอบว่ามี `lerna.json` (Lerna) หรือไม่
-4. ตรวจสอบว่ามี `nx.json` (Nx) หรือไม่
-5. ตรวจสอบ `.moon/` directory และ `.moon/workspace.yml` หรือ `.moon/projects.yml` (Moonrepo) หรือไม่
-6. ถ้าไม่มี `workspaces` field ใน `package.json` แต่มี `.moon/` ให้ถือว่าเป็น monorepo
+1. Check whether `turbo.json` (Turborepo) exists
+2. Check whether `pnpm-workspace.yaml` (pnpm workspaces) exists
+3. Check whether `lerna.json` (Lerna) exists
+4. Check whether `nx.json` (Nx) exists
+5. Check whether a `.moon/` directory with `.moon/workspace.yml` or `.moon/projects.yml` exists (Moonrepo)
+6. If there is no `workspaces` field in `package.json` but `.moon/` exists, treat the project as a monorepo
 
 ### 4. Report Result
 
 > Goal: Report Result
 
-รายงาบผลการตรวจสอบพร้อม run command ที่เหมาะสม
+Report the check result along with the appropriate run command.
 
-1. รายงาบว่า project เป็น monorepo หรือไม่
-2. ถ้าเป็น monorepo ให้ระบุ workspaces ทั้งหมด
-3. ถ้าเป็น monorepo ให้ระบุ monorepo tool ที่ใช้
-4. ระบุ run command pattern ทั่วไป เช่น `moon run <project>:<task>` สำหรับ Moonrepo หรือ `<tool> run <task>` สำหรับ Turborepo/pnpm
-5. ใช้ `/report` สำหรับ output
+1. Report whether the project is a monorepo
+2. If it is a monorepo, list all workspaces
+3. If it is a monorepo, name the monorepo tool in use
+4. Give the common run command pattern, e.g. `moon run <project>:<task>` for Moonrepo or `<tool> run <task>` for Turborepo/pnpm
+5. Use `/report` for the output
 
 ## Rules
 
 ### 1. Detection Criteria
 
-- มี `workspaces` field ใน `package.json` หรือ package manager workspace file = monorepo
-- มี `turbo.json`, `pnpm-workspace.yaml`, `lerna.json`, `nx.json`, หรือ `.moon/` directory = monorepo
-- ถ้าไม่ตรงเงื่อนไขข้างต้น = single project
+- A `workspaces` field in `package.json` or a package manager workspace file = monorepo
+- `turbo.json`, `pnpm-workspace.yaml`, `lerna.json`, `nx.json`, or a `.moon/` directory = monorepo
+- If none of the above conditions match = single project
 
 ### 2. Output Format
 
-- ระบุผลเป็น `monorepo` หรือ `single-project`
-- ถ้าเป็น monorepo ให้ระบุ workspaces ทั้งหมดและ monorepo tool
+- State the result as `monorepo` or `single-project`
+- If it is a monorepo, list all workspaces and the monorepo tool
 
-- ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-tool-moonrepo ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
+- Use /follow-monorepo if needed
+- Use /follow-tasks if needed
+- Use /follow-tool-moonrepo if needed
+- Use /run-build if needed
+- Use /run-test all if needed
 
 ## Expected Outcome
 
-- ทราบว่า project เป็น monorepo หรือไม่ โดยไม่จำกัดที่ `package.json` workspaces เพียงอย่างเดียว
-- ถ้าเป็น monorepo ทราบ workspaces ทั้งหมด tool ที่ใช้ และ run command pattern
+- Know whether the project is a monorepo, not limited to `package.json` workspaces alone
+- If it is a monorepo, know all workspaces, the tool in use, and the run command pattern

@@ -1,18 +1,18 @@
 # Step: Setup License
 
-> Goal: ตั้งค่า LICENSE.md และ package manifest license field สำหรับ root
+> Goal: Configure LICENSE.md and the package manifest license field for the root
 
 ## Execute
 
-1. ตรวจสอบไฟล์ `LICENSE.md` ที่มีอยู่และระบุประเภท license ปัจจุบัน
-2. เลือก license ตามประเภทโปรเจกต์ตาม Rule `License Selection` — ตรวจความเหมาะสมกับ business model และ dependencies
-3. ใช้ template มาตรฐานตามประเภท license ตาม Rule `License Templates And Manifest` — อัปเดตชื่อผู้ถือลิขสิทธิ์ ตรวจความถูกต้อง บันทึก `LICENSE.md`
-4. อัปเดต `license` field ใน `package.json` หรือ `Cargo.toml` ให้ตรงกับ `LICENSE.md` โดยใช้ SPDX identifier ที่ถูกต้อง
-5. ถ้า workspace ไม่มี `LICENSE.md` → ใช้ของ root (อย่าสร้างซ้ำใน workspace)
+1. Check the existing `LICENSE.md` file and identify the current license type
+2. Choose the license by project type per Rule `License Selection` — verify suitability with the business model and dependencies
+3. Apply the standard template for the license type per Rule `License Templates And Manifest` — update the copyright holder name, verify correctness, and save `LICENSE.md`
+4. Update the `license` field in `package.json` or `Cargo.toml` to match `LICENSE.md` using the correct SPDX identifier
+5. If a workspace has no `LICENSE.md` → use the root one (don't duplicate it in the workspace)
 
 ## Rules
 
-- ถ้าไม่ต้องการสร้าง `LICENSE.md` → ไม่มี `## License` section ใน README
-- ใช้ SPDX identifier ที่ถูกต้องเสมอ
-- ไม่ระบุปีใน copyright
+- If you don't want to create `LICENSE.md` → no `## License` section in the README
+- Always use the correct SPDX identifier
+- Don't include a year in the copyright
 

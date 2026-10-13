@@ -2,21 +2,21 @@
 
 ## Goal
 
-สร้างไฟล์แผนใน `.devin/temp/plan/<workspace>/` ที่อ่านง่าย สแกนได้ และ track ผลได้ด้วย `/implement-to-production`
+Create a plan file in `.devin/temp/plan/<workspace>/` that is easy to read, easy to scan, and whose results can be tracked with `/implement-to-production`
 
 ## Section Layout
 
-1. `## Goal` — paragraph สั้น 1-3 บรรทัด
-2. `## Architecture` — ANSI diagram หรือ reference ถ้ามี
+1. `## Goal` — a short 1-3 line paragraph
+2. `## Architecture` — ANSI diagram or reference if available
 3. `## Idea Features` — scoring formula + features table
-4. `## File Changes` — ตาราง `No. | File | Action | What | How | Acceptance | Risk`
-5. `## TODO` — task table พร้อม `Status` (`pending` เริ่มต้น)
-6. `## Task Graph` — dependencies ระหว่าง tasks + critical path
-7. `## Risks` — ตาราง risk, impact, mitigation
+4. `## File Changes` — `No. | File | Action | What | How | Acceptance | Risk` table
+5. `## TODO` — task table with `Status` (starts as `pending`)
+6. `## Task Graph` — dependencies between tasks + critical path
+7. `## Risks` — risk, impact, mitigation table
 8. `## Test Strategy` — coverage, fixtures, regression
-9. `## Assumptions And Unknowns` — สิ่งที่สมมติไว้ + open questions
+9. `## Assumptions And Unknowns` — assumptions made + open questions
 10. `## Acceptance Criteria` — checkboxes
-11. `## Execution Order` — ลำดับ task ที่ `/implement-to-production` ใช้จัด critical path
+11. `## Execution Order` — task order that `/implement-to-production` uses to arrange the critical path
 
 ## Features Table
 
@@ -24,21 +24,21 @@
 |------|-----|---------|-------------|--------------|--------|------|--------|-------|-------|
 | [icon] | 1 | ... | ... | ... | High | Low | High | 6.7 | MVP |
 
-- `Icon` อยู่ตำแหน่งแรกเสมอ
-- ใช้ Iconify CDN icon URL ด้วย color query ถ้าต้องการเน้น
-- `Score` คำนวณจากสูตร
-- เพิ่มคอลัมน์ `Dependencies` ถ้ามี dependency ระหว่าง features
+- `Icon` is always the first column
+- Use an Iconify CDN icon URL with a color query when you want emphasis
+- `Score` is computed from the formula
+- Add a `Dependencies` column if there are dependencies between features
 
 ## File Changes Table
 
 | No. | File | Action | What | How | Acceptance | Risk |
 |-----|------|--------|------|-----|------------|------|
-| 1 | `path/to/file.ts` | create / update / delete | API signature/types | pattern ที่ใช้ | observable result | Low |
+| 1 | `path/to/file.ts` | create / update / delete | API signature/types | pattern used | observable result | Low |
 
-- `Action` ใช้ `create`, `update`, `delete`, `rename` ให้ตรงกับงานจริง
-- `What` ระบุ API signatures/types ที่จะเพิ่มหรือแก้
-- `How` อ้าง pattern/abstraction ที่ reuse จาก codebase
-- ทุก row ต้องมี evidence จาก deep-analyze — ห้ามเดา path
+- `Action` uses `create`, `update`, `delete`, `rename` to match the actual work
+- `What` lists the API signatures/types to add or change
+- `How` references the pattern/abstraction reused from the codebase
+- Every row must have evidence from deep-analyze — never guess paths
 
 ## TODO Table
 
@@ -46,15 +46,15 @@
 |-----|------|--------|------------|------------------|
 | 1 | ... | pending | - | ... |
 
-- `Status` ใช้ `pending`, `in-progress`, `completed` ให้ตรงกับที่ `/implement-to-production` อ่าน
-- `Expected Outcome` วัดผลได้
+- `Status` uses `pending`, `in-progress`, `completed` to match what `/implement-to-production` reads
+- `Expected Outcome` is measurable
 
 ## Task Graph
 
-- ระบุ dependencies ระหว่าง tasks ด้วยหมายเลข `No.` (เช่น `1 → 2, 3 → 4`)
-- ระบุ critical path ที่ยาวที่สุด
-- ระบุ tasks ที่รัน parallel ได้
-- Task ที่ถูกพึ่งพาต้องมาก่อนเสมอ
+- Specify dependencies between tasks by `No.` (e.g. `1 → 2, 3 → 4`)
+- Identify the longest critical path
+- Identify tasks that can run in parallel
+- A depended-on task must always come first
 
 ## Risks Table
 
@@ -62,37 +62,37 @@
 |------|--------|------------|------------|----------|
 | ... | High | Medium | ... | ... |
 
-- `Mitigation` ต้องเป็น action จริง ไม่ใช่คำอธิบายกว้าง
-- `Rollback` ระบุวิธีถอยกลับถ้า risk เกิดจริง
+- `Mitigation` must be a concrete action, not a broad description
+- `Rollback` states how to revert if the risk actually occurs
 
 ## Test Strategy
 
-- Coverage target ที่ต้องมีหลัง implement
-- Fixtures / test data ที่ต้องเตรียม
-- Regression test ที่ต้องเพิ่มหรืออัปเดต
-- ระบุ test file paths จริงจาก codebase
+- Coverage target required after implementation
+- Fixtures / test data to prepare
+- Regression tests to add or update
+- List the actual test file paths from the codebase
 
 ## Assumptions And Unknowns
 
-- `Assumptions` — สิ่งที่สมมติไว้พร้อมเหตุผล
-- `Unknowns` — open questions ที่ต้อง `/ask-me` ก่อน implement
-- ห้ามปล่อย unknowns เป็นค่าว่างถ้ามีความเสี่ยง — ต้องถามก่อนเขียน plan
+- `Assumptions` — what is assumed, with reasons
+- `Unknowns` — open questions that require `/ask-me` before implementing
+- Never leave unknowns empty when there is risk — ask before writing the plan
 
 ## Acceptance Criteria
 
-- ใช้ checkbox list `- [ ]`
-- เน้น observable result
-- 1 checkbox ต่อ 1 criterion
+- Use a checkbox list `- [ ]`
+- Focus on observable results
+- One checkbox per criterion
 
 ## Execution Order
 
-- เขียนเป็น numbered list ของ task `No.` เรียงตาม critical path
-- ระบุ task ที่ทำ parallel ได้ถ้ามี
+- Write a numbered list of task `No.` ordered along the critical path
+- Note tasks that can run in parallel if any
 
 ## UX/UI Tips
 
-- ใช้ heading level ชัดเจน
-- ใช้ table เพื่อเปรียบเทียบ
-- จัด diagram ให้อยู่ตรงกลางด้วย `<div align="center">`
-- ไม่ใช้ bold markers `**` ใน body
-- ใช้ bullet หรือ checklist สำหรับ actions
+- Use clear heading levels
+- Use tables to compare
+- Center diagrams with `<div align="center">`
+- Do not use bold markers `**` in the body
+- Use bullets or checklists for actions

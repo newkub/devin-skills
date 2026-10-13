@@ -2,91 +2,91 @@
 
 ## Goal
 
-ติดตามและ execute `deep-*` workflows ที่มี sub-workflows หรือ skills ซ้อนลึก แบบ recursive ให้ครบถ้วนและได้รับการ verify
+Track down and execute `deep-*` workflows that have deeply nested sub-workflows or skills, recursively, until they are complete and verified
 
 ## Scope
 
-ใช้เมื่องานหลักเลือก `deep-*` workflow แล้วพบว่าภายใน workflow นั้นยังมี sub-workflows/skills ซ้อนลึก ต้องการทำให้ครบถ้วน — ไม่ใช่ workflow หลักที่รันแยกต่างหาก
+Use when the main work has selected a `deep-*` workflow and that workflow turns out to contain deeply nested sub-workflows/skills that must be completed in full — it is not a standalone main workflow
 
 ## Execute
 
-Step dependencies: ทำตามลำดับ แต่แต่ละ group สามารถ parallel ได้
+Step dependencies: follow the order, but each group can run in parallel
 
 ### 1. Identify Parent Workflow
 
-> Goal: ระบุ parent workflow/skill ที่จะติดตาม
+> Goal: identify the parent workflow/skill to follow
 
-1. ระบุ parent workflow/skill จาก context หรือ user argument
-2. ถ้าไม่ชัด → ทำ `/ask-me`
+1. Identify the parent workflow/skill from the context or user argument
+2. If unclear → run `/ask-me`
 
 ### 2. Load Parent Skill
 
-> Goal: โหลด instructions เพื่อหา sub-workflows
+> Goal: load the instructions to find sub-workflows
 
-1. ใช้ `skill` หรือ `read` parent `SKILL.md`
-2. บันทึก `## Execute`, `## Rules`, และ `related`
+1. Use `skill` or `read` on the parent `SKILL.md`
+2. Record `## Execute`, `## Rules`, and `related`
 
 ### 3. Discover Sub-Workflows
 
-> Goal: หา sub-workflows/skills ทั้งหมดภายใน parent
+> Goal: find all sub-workflows/skills inside the parent
 
-1. ใช้ `grep` หา references รูปแบบ `/deep-*`, `/follow-*`, `/deep-validate`, `/follow-parallel`
-2. ลบ duplicates และ filter เฉพาะที่ปรากฏใน `## Execute`
-3. ระบุ dependencies จาก `Step dependencies:` หรือลำดับ numbered list
+1. Use `grep` to find references matching `/deep-*`, `/follow-*`, `/deep-validate`, `/follow-parallel`
+2. Remove duplicates and keep only those appearing in `## Execute`
+3. Determine dependencies from `Step dependencies:` or the numbered-list order
 
 ### 4. Plan Execution
 
-> Goal: เรียงลำดับและ parallel อย่างปลอดภัย
+> Goal: order the work and parallelize safely
 
-1. จัดลำดับตาม dependencies: prerequisites ก่อน
-2. หา groups ที่ independent สำหรับ parallel execution
-3. ถ้ามี independent groups ให้ใช้ `/update-devin-global-subagents` หรือ `/follow-parallel` ตามความเหมาะสม
-4. กำหนด max recursion depth เพื่อป้องกัน infinite loop
+1. Sequence by dependencies: prerequisites first
+2. Find independent groups for parallel execution
+3. If there are independent groups, use `/update-devin-global-subagents` or `/follow-parallel` as appropriate
+4. Set a max recursion depth to prevent infinite loops
 
 ### 5. Execute Sub-Workflows
 
-> Goal: ทำงานตามแผน
+> Goal: carry out the plan
 
-1. เรียก `skill` สำหรับแต่ละ sub-workflow ตามลำดับหรือ parallel
-2. ถ้า sub-workflow มี sub-workflows ซ้อน → เรียก `/follow-deep` แบบ recursive
-3. บันทึกผลลัพธ์และ error ของแต่ละ step
+1. Invoke `skill` for each sub-workflow in order or in parallel
+2. If a sub-workflow has nested sub-workflows → call `/follow-deep` recursively
+3. Record the results and errors of each step
 
 ### 6. Verify And Report
 
-> Goal: ตรวจสอบว่าทำครบถ้วน
+> Goal: confirm everything was completed
 
-1. ทำ `/deep-validate` เพื่อตรวจสอบผลลัพธ์
-2. ตรวจสอบว่าไม่มี sub-workflow ที่ข้าม
-3. ทำ `/report` สรุปผล พร้อมรายการ step ที่ทำและ next actions
+1. Run `/deep-validate` to verify the results
+2. Check that no sub-workflow was skipped
+3. Run `/report` with a summary, listing the steps done and next actions
 
 ## Rules
 
 ### 1. Recursion Safety
 
-- เก็บ `visited` stack ของ parent skills เพื่อป้องกัน loop
-- max recursion depth = 5 (ปรับตาม context ได้)
-- ถ้า parent ซ้ำใน `visited` stack → stop และ report
+- Keep a `visited` stack of parent skills to prevent loops
+- Max recursion depth = 5 (adjustable to context)
+- If a parent repeats in the `visited` stack → stop and report
 
 ### 2. Reference Filtering
 
-- ติดตามเฉพาะ references ที่อยู่ใน `## Execute` ของ parent
-- ไม่ติดตาม skill ที่ mention ใน `## Rules` หรือ `## Expected Outcome` โดยไม่ได้เรียก
-- ถ้า reference ไม่มีจริง → stop และ `/report`
+- Follow only the references that appear in the parent's `## Execute`
+- Do not follow skills merely mentioned in `## Rules` or `## Expected Outcome` without being invoked
+- If a reference does not exist → stop and `/report`
 
 ### 3. Parallelism
 
-- ใช้ `/follow-parallel` สำหรับ independent sub-workflows
-- จำกัด batch ไม่เกิน 10 ต่อ parallel group
-- ถ้า sub-workflows มี dependency ต้องทำตามลำดับ
+- Use `/follow-parallel` for independent sub-workflows
+- Limit each parallel group to at most 10 per batch
+- Sub-workflows with dependencies must run in order
 
 ### 4. Deep-Only
 
-- ใช้ `/follow-deep` เฉพาะเมื่องานมี sub-workflows ซับซ้อน
-- สำหรับ leaf workflow ที่ไม่มี sub-workflows → ทำตรงโดยไม่ต้อง recursive
+- Use `/follow-deep` only when the work has complex sub-workflows
+- For a leaf workflow with no sub-workflows → run it directly without recursion
 
 ## Expected Outcome
 
-- Sub-workflows ถูก execute ครบถ้วนตาม dependencies
-- ไม่เกิด infinite recursion
-- Parallel execution ทำได้อย่างปลอดภัย
-- มี report สรุปผลลัพธ์และ next actions
+- Sub-workflows are executed in full according to their dependencies
+- No infinite recursion occurs
+- Parallel execution is done safely
+- A summary report of results and next actions exists

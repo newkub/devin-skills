@@ -1,6 +1,6 @@
 ---
 name: follow-agents-md
-description: ทำตาม AGENTS.md ใน workspace พร้อมใช้ subagents
+description: Execute the workspace AGENTS.md fully, with subagents for independent work
 argument-hint: "[target]"
 related:
   - update-docs
@@ -13,79 +13,79 @@ related:
 
 ## Goal
 
-ทำตาม `AGENTS.md` ใน workspace ให้ครบถ้วน พร้อมใช้ subagents สำหรับงานที่มีหลายด้าน
+Follow the workspace `AGENTS.md` completely, using subagents for multi-faceted work
 
 ## Scope
 
-ค้นหาและทำตาม `AGENTS.md` ในทุก workspace โดยสามารถใช้ subagents เมื่องานมีหลาย workflows/skills ที่ independent
+Find and follow `AGENTS.md` in every workspace, using subagents when the work involves multiple independent workflows/skills
 
 ## Execute
 
 ### 1. Update AGENTS.md
 
-> Goal: อัปเดต `AGENTS.md` ให้เป็นปัจจุบันก่อนทำงานอื่น
+> Goal: bring `AGENTS.md` up to date before any other work
 
-1. ทำ `/update-agents-md` เพื่อเขียน/อัพเดต `AGENTS.md` ก่อนเสมอ ก่อนทำอย่างอื่นใด
-2. ตรวจสอบว่า `AGENTS.md` เขียนถูกต้องและเป็นปัจจุบัน
-3. ห้ามข้ามขั้นตอนนี้ไม่ว่ากรณีใดๆ
+1. Always run `/update-agents-md` to write/update `AGENTS.md` first, before anything else
+2. Check that `AGENTS.md` is written correctly and is up to date
+3. Never skip this step under any circumstance
 
 ### 2. Read And Summarize Related
 
-> Goal: รู้ว่าจะทำอะไรบ้าง
+> Goal: know what needs to be done
 
-1. ทำ `/review-devin-global-harness` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
-2. สรุปรายการสิ่งที่จะทำ: workflows, skills, ลำดับ, dependencies
-3. ถ้ามีหลาย workflows ที่ independent → บันทึกไว้สำหรับ `/use-subagents`
+1. Run `/review-devin-global-harness` to read the relevant workflows/skills
+2. Summarize the to-do list: workflows, skills, order, dependencies
+3. If several workflows are independent → note them for `/use-subagents`
 
 ### 3. Execute AGENTS.md
 
-> Goal: ดำเนินการตาม `AGENTS.md` ครบทุกขั้นตอน
+> Goal: carry out every step in `AGENTS.md`
 
-1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
-2. วิเคราะห์ workflows และ skills ที่ระบุ
-3. ถ้ามี workflow เดียว ทำตามโดยตรง
-4. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
-5. ถ้า `AGENTS.md` ระบุงานใหม่หลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ แล้วค่อย execute ตาม plan
+1. Read `AGENTS.md` in the workspace root and every sub-workspace if it is a monorepo
+2. Analyze the specified workflows and skills
+3. If there is a single workflow, follow it directly
+4. If it is a monorepo: repeat for each workspace
+5. If `AGENTS.md` lists many new tasks at once → always run `/create-plan-in-dot-devin` first, then execute per the plan
 
 ### 4. Use Subagents
 
-> Goal: workflows ที่ independent ทำขนานด้วย subagents เสมอ
+> Goal: run independent workflows in parallel with subagents, always
 
-1. ถ้ามีหลาย workflows/skills ที่ independent (จาก Step 2) → ทำ `/use-subagents` เพื่อ spawn subagents ทำขนานกัน — 1 workflow = 1 subagent
-2. ให้แต่ละ subagent: workspace path, workflow ที่รับผิดชอบ, deliverable, acceptance criteria
-3. รวม structured reports จากทุก subagent ก่อน verify — subagent ห้าม commit
-4. ถ้าต้อง custom subagent profiles → ทำ `/update-devin-global-subagents` ก่อน `/use-subagents`
+1. If there are multiple independent workflows/skills (from Step 2) → run `/use-subagents` to spawn subagents working in parallel — 1 workflow = 1 subagent
+2. Give each subagent: workspace path, assigned workflow, deliverable, acceptance criteria
+3. Merge structured reports from all subagents before verify — subagents must not commit
+4. If custom subagent profiles are needed → run `/update-devin-global-subagents` before `/use-subagents`
 
 ### 5. Verify Execution
 
-> Goal: ตรวจสอบว่า workflows และ skills ถูก execute ครบถ้วน
+> Goal: confirm all workflows and skills were executed completely
 
-1. ตรวจสอบว่าทุก workflow ใน `AGENTS.md` ถูกเรียกแล้ว
-2. ตรวจสอบว่าทุก skill ถูกโหลดแล้ว
-3. ถ้ามี workflow หรือ skill ที่ไม่มีอยู่ ให้ข้ามและบันทึกไว้
+1. Check that every workflow in `AGENTS.md` was invoked
+2. Check that every skill was loaded
+3. Skip any workflow or skill that does not exist and record it
 
 ## Rules
 
 ### 1. File Location
 
-- `AGENTS.md` ต้องอยู่ใน workspace root และ sub-workspaces ถ้าเป็น monorepo
-- ถ้าเป็น monorepo: ทำตาม `AGENTS.md` ของทุก workspace
+- `AGENTS.md` must be in the workspace root and sub-workspaces if it is a monorepo
+- If it is a monorepo: follow the `AGENTS.md` of every workspace
 
 ### 2. Execution Order
 
-- ทำตามลำดับที่ระบุใน `AGENTS.md`
-- ตรวจสอบว่า workflows และ skills มีอยู่จริง
-- ข้าม workflows หรือ skills ที่ไม่มีอยู่
-- ใช้ /update-docs ถ้าจำเป็น
+- Follow the order specified in `AGENTS.md`
+- Confirm the workflows and skills actually exist
+- Skip workflows or skills that do not exist
+- Use /update-docs if needed
 
 ### 3. Plan Always
 
-- งานใหม่จำนวนเยอะในคราวเดียว (หลาย features/files/tasks) → ทำ `/create-plan-in-dot-devin` เสมอ ก่อน execute ตาม `AGENTS.md`
+- A large batch of new work at once (multiple features/files/tasks) → always run `/create-plan-in-dot-devin` before executing per `AGENTS.md`
 
 
 ## Expected Outcome
 
-- Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบถ้วน
-- Skills ที่ระบุใน `AGENTS.md` ถูกโหลด
-- ทุก workspace ใน monorepo ถูกประมวลผลครบ
-- subagents ถูกใช้เมื่องานมีหลาย workflows/skills ที่ independent
+- All workflows listed in `AGENTS.md` are executed completely
+- The skills listed in `AGENTS.md` are loaded
+- Every workspace in the monorepo is processed completely
+- subagents are used when the work spans multiple independent workflows/skills

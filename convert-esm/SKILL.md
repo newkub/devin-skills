@@ -1,6 +1,6 @@
 ---
 name: convert-esm
-description: Migrate CommonJS เป็น ESM ทีละขั้น แก้ require/module.exports, imports และ config
+description: Migrate CommonJS to ESM step by step, fixing require/module.exports, imports, and config.
 argument-hint: "[package-or-path]"
 related:
   - use-astgrep
@@ -14,81 +14,81 @@ related:
 
 ## Goal
 
-Migrate JavaScript/TypeScript project จาก CommonJS (`require`/`module.exports`) เป็น ESM (`import`/`export`) อย่างเป็นระบบ โดยไม่ทำ runtime พัง
+Migrate a JavaScript/TypeScript project from CommonJS (`require`/`module.exports`) to ESM (`import`/`export`) systematically without breaking the runtime.
 
 ## Scope
 
-- ครอบคลุม: `require` → `import`, `module.exports` → `export`, `"type": "module"` config, file extensions (`.js` vs `.cjs` vs `.mjs`), dynamic requires, `__dirname`/`__filename` equivalents, JSON imports
-- ทำทีละ package/module — monorepo ทีละ workspace
-- Action-oriented: แก้ code จริง — verify ด้วย typecheck/build/test ทุกขั้น
+- Covers: `require` → `import`, `module.exports` → `export`, `"type": "module"` config, file extensions (`.js` vs `.cjs` vs `.mjs`), dynamic requires, `__dirname`/`__filename` equivalents, JSON imports
+- Migrate one package/module at a time — in a monorepo, one workspace at a time
+- Action-oriented: change real code — verify with typecheck/build/test at every step
 
 ## Execute
 
 ### 1. Assess Current State
 
-> Goal: วัดขนาดงานและ blockers
+> Goal: Size the work and find blockers
 
-1. นับ `require`/`module.exports` sites ด้วย `use-astgrep` หรือ `search-files-patterns`
-2. ตรวจ `package.json` `"type"` field และ runtime/tooling support (Node version, bundler, test runner)
-3. หา blockers: dynamic `require()` ที่ static ไม่ได้, conditional requires, CJS-only deps
-4. ตรวจ dependencies ที่ import project นี้ — ทำ `/deep-review`
+1. Count `require`/`module.exports` sites with `use-astgrep` or `search-files-patterns`
+2. Check the `package.json` `"type"` field and runtime/tooling support (Node version, bundler, test runner)
+3. Find blockers: `require()` calls that can't be made static, conditional requires, CJS-only deps
+4. Check the dependencies that import this project — run `/deep-review`
 
 ### 2. Plan Migration Order
 
-> Goal: เรียงลำดับเพื่อลด breakage
+> Goal: Order the work to minimize breakage
 
-1. leaf modules ก่อน (ไม่มี internal dependents) → core modules ทีหลัง
-2. ระบุ files ที่ต้อง rename (`.js` → `.mjs` ถ้า mixed mode) หรือ config changes
-3. วางแผน `package.json`: `"type": "module"`, `exports` map, `engines`
+1. Do leaf modules first (no internal dependents) → core modules last
+2. Identify files that need renaming (`.js` → `.mjs` in mixed mode) or config changes
+3. Plan `package.json`: `"type": "module"`, `exports` map, `engines`
 
 ### 3. Convert
 
-> Goal: แปลงทีละชุดพร้อม verify
+> Goal: Convert in batches with verification
 
-1. แปลง `require` → `import` และ `module.exports` → `export` ทีละ module
-2. แทน `__dirname`/`__filename` ด้วย `import.meta.url` + `fileURLToPath`
-3. แปลง dynamic `require()` → `await import()` หรือ static import ถ้าทำได้
-4. JSON requires → `import ... with { type: 'json' }` หรือ `fs.readFile`
-5. เพิ่ม `.js` extensions ใน relative imports ตาม ESM spec
-6. ทำ `/update-references` ทุกครั้งที่เปลี่ยน export/import paths
+1. Convert `require` → `import` and `module.exports` → `export` one module at a time
+2. Replace `__dirname`/`__filename` with `import.meta.url` + `fileURLToPath`
+3. Convert dynamic `require()` → `await import()`, or a static import where possible
+4. JSON requires → `import ... with { type: 'json' }` or `fs.readFile`
+5. Add `.js` extensions to relative imports per the ESM spec
+6. Run `/update-references` whenever export/import paths change
 
 ### 4. Update Config
 
-> Goal: ปรับ tooling ให้รองรับ ESM
+> Goal: Adapt tooling to support ESM
 
-1. `"type": "module"` ใน `package.json` + `exports` map
-2. tsconfig: `module: "NodeNext"`/`"ESNext"`, `moduleResolution` ที่ตรง
-3. Test runner, bundler, scripts — ตรวจทุก tool ที่อ่าน code
-4. แก้ `.cjs` สำหรับ files ที่ต้องคง CJS (config files ที่ tools บังคับ)
+1. Set `"type": "module"` in `package.json` + an `exports` map
+2. tsconfig: `module: "NodeNext"`/`"ESNext"` and the matching `moduleResolution`
+3. Test runner, bundler, scripts — check every tool that reads the code
+4. Use `.cjs` for files that must stay CommonJS (config files a tool requires)
 
 ### 5. Verify
 
-> Goal: ยืนยันทุกอย่างทำงานบน ESM
+> Goal: Confirm everything runs on ESM
 
-1. `/run-typecheck` + `/run-lint` ผ่าน
-2. `/run-build` ผ่าน — bundle/output correct
-3. `/run-test` ผ่าน — ระวัง test mocks ที่พึ่ง CJS semantics (`jest.mock` vs `vi.mock`)
-4. smoke test runtime entry points จริง
+1. `/run-typecheck` + `/run-lint` pass
+2. `/run-build` passes — bundle/output correct
+3. `/run-test` passes — watch for test mocks that rely on CJS semantics (`jest.mock` vs `vi.mock`)
+4. Smoke-test the real runtime entry points
 
 ## Rules
 
 ### 1. Incremental
 
-- แปลงทีละ module/package — ไม่ big-bang ทั้ง repo พร้อมกัน
-- verify หลังแต่ละ batch — ถ้าพังให้รู้ว่าพังที่ไหน
+- Convert one module/package at a time — never big-bang the whole repo at once
+- Verify after each batch — if something breaks, know exactly where
 
 ### 2. Compatibility Aware
 
-- ถ้า package เป็น published library → ตัดสินใจ dual-publish (ESM+CJS) หรือ ESM-only กับ user ก่อน
-- ระวัง tools ที่ยัง CJS-only — ใช้ `.cjs` files หรือ interop แทนบังคับ migrate
+- If the package is a published library → decide with the user upfront whether to dual-publish (ESM+CJS) or go ESM-only
+- Watch for tools that are still CJS-only — use `.cjs` files or interop instead of forcing a migration
 
 ### 3. No Semantic Changes
 
-- แปลง syntax/module system เท่านั้น — ห้าม refactor logic ไปด้วย
-- circular imports ที่ CJS ทนได้อาจพังใน ESM — flag ให้ `/follow-tool-madge`
+- Convert syntax/module system only — never refactor logic along the way
+- Circular imports that CJS tolerates may break in ESM — flag them to `/follow-tool-madge`
 
 ## Expected Outcome
 
-- Codebase เป็น ESM ครบ — ไม่มี `require`/`module.exports` เหลือ (ยกเว้น `.cjs` ที่จำเป็น)
-- typecheck/build/test ผ่านทั้งหมด
-- `package.json` exports map ถูกต้องสำหรับ consumers
+- Codebase fully ESM — no leftover `require`/`module.exports` (except necessary `.cjs`)
+- typecheck/build/test all pass
+- `package.json` exports map correct for consumers

@@ -1,6 +1,6 @@
 ---
 name: follow-create-claude-plugin
-description: สร้าง Claude Code plugin ด้วย manifest, skills, agents, hooks, และ MCP servers
+description: Build a Claude Code plugin with manifest, skills, agents, hooks, and MCP servers
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -15,106 +15,106 @@ related:
 
 ## Goal
 
-สร้าง Claude Code plugin ทีสามารถติดตั้งและใช้งานกับ Claude Code ได้ โดยมี manifest, skills, agents, hooks, MCP servers และ slash commands ตามมาตรฐานของ Claude
+Build a Claude Code plugin that can be installed and used with Claude Code, with a manifest, skills, agents, hooks, MCP servers, and slash commands following Claude's conventions
 
 ## Scope
 
-ใช้สำหรับสร้าง Claude Code plugin จาก scratch เพื่อขยายความสามารถของ Claude ด้วย custom skills, agents, hooks, MCP servers หรือ slash commands
+For building a Claude Code plugin from scratch to extend Claude with custom skills, agents, hooks, MCP servers, or slash commands
 
-- Components ที่รองรับ: skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — ยืนยัน schema/docs ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Supported components: skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — always confirm the latest schema/docs with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: Verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน plugin schema ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack/components สำหรับ reference ต่อไป (create claude plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest plugin schema, then run `/deep-review` to summarize the tech stack
+2. Record the reasons for choosing the stack/components as a reference for the next step (create claude plugin)
 
 ### 2. Gather Requirements
 
-> Goal: เข้าใจ purpose และ components ของ plugin
+> Goal: Understand the plugin's purpose and components
 
-1. ถาม user ถึงชื่อ plugin, เป้าหมาย, target users, และ use case
-2. ระบุ components ทีต้องการ:
-   - `skills/` สำหรับ knowledge หรือ user-initiated actions (preferred — invoke เป็น `/plugin-name:skill-name`)
-   - `agents/` สำหรับ autonomous tasks
-   - `hooks/` สำหรับ event-driven automation (`hooks/hooks.json` + handler scripts)
-   - `commands/` สำหรับ slash commands (legacy — ใช้ `skills/` สำหรับ plugin ใหม่)
-   - `mcpServers` ใน `.mcp.json` สำหรับ external service integration
-   - `.lsp.json` สำหรับ LSP servers (code intelligence)
-   - `monitors/monitors.json` สำหรับ background monitors (watch logs/files แล้ว notify Claude)
-   - `bin/` สำหรับ executables ทีเข้า PATH ของ Bash tool
-   - `settings.json` สำหรับ default settings (`agent`, `subagentStatusLine`)
-3. ถ้ายังไม่ชัด → ใช้ `/ask-me` เพื่อเลือก components
+1. Ask the user for the plugin name, goals, target users, and use case
+2. Identify the needed components:
+   - `skills/` for knowledge or user-initiated actions (preferred — invoked as `/plugin-name:skill-name`)
+   - `agents/` for autonomous tasks
+   - `hooks/` for event-driven automation (`hooks/hooks.json` + handler scripts)
+   - `commands/` for slash commands (legacy — use `skills/` for new plugins)
+   - `mcpServers` in `.mcp.json` for external service integration
+   - `.lsp.json` for LSP servers (code intelligence)
+   - `monitors/monitors.json` for background monitors (watch logs/files, then notify Claude)
+   - `bin/` for executables added to the Bash tool's PATH
+   - `settings.json` for default settings (`agent`, `subagentStatusLine`)
+3. If unclear → use `/ask-me` to pick components
 
 ### 3. Create Plugin Structure
 
-> Goal: สร้าง directory structure ตาม Claude plugin convention
+> Goal: Create the directory structure per Claude plugin conventions
 
-1. สร้าง root directory ชื่อ plugin — หรือรัน `claude plugin init <name>` เพื่อ scaffold ลง `~/.claude/skills/<name>` (auto-load เป็น `<name>@skills-dir`)
-2. สร้าง `.claude-plugin/plugin.json` manifest ด้วย `name` (kebab-case, เป็น namespace), `description`; `version`/`author` เป็น optional แต่แนะนำ
-3. สร้าง directories ตาม components ทีเลือก: `skills/`, `agents/`, `commands/`, `hooks/`, `monitors/`, `bin/`, `scripts/` — ทุก component อยู่ที่ plugin root ห้ามอยู่ใน `.claude-plugin/` (มีแค่ `plugin.json`)
-4. สร้าง `.mcp.json`, `.lsp.json`, หรือ `settings.json` ที่ root ถ้ามี components เหล่านั้น
-5. ใช้ `${CLAUDE_PLUGIN_ROOT}` สำหรับ portable paths ใน manifest
-6. ถ้า plugin มี skill เดียว → วาง `SKILL.md` ที่ root ได้เลย (ใช้ frontmatter `name` เป็น invocation name)
+1. Create a root directory named after the plugin — or run `claude plugin init <name>` to scaffold into `~/.claude/skills/<name>` (auto-loaded as `<name>@skills-dir`)
+2. Create the `.claude-plugin/plugin.json` manifest with `name` (kebab-case, serves as the namespace) and `description`; `version`/`author` are optional but recommended
+3. Create directories per the chosen components: `skills/`, `agents/`, `commands/`, `hooks/`, `monitors/`, `bin/`, `scripts/` — every component lives at the plugin root and must not be inside `.claude-plugin/` (which holds only `plugin.json`)
+4. Create `.mcp.json`, `.lsp.json`, or `settings.json` at the root if those components exist
+5. Use `${CLAUDE_PLUGIN_ROOT}` for portable paths in the manifest
+6. If the plugin has a single skill → `SKILL.md` may sit at the root (its frontmatter `name` becomes the invocation name)
 
 ### 4. Implement Components
 
-> Goal: สร้างแต่ละ component ตาม convention
+> Goal: Build each component per convention
 
-1. สำหรับ `skills/`: สร้าง `skills/<name>/SKILL.md` เป็นหน่วยงานย่อยตาม `/update-devin-global-skills` (ใช้ `$ARGUMENTS` สำหรับรับ input)
-2. สำหรับ `agents/`: สร้าง `.md` agent definitions ตามมาตรฐาน `/update-devin-global-subagents`
-3. สำหรับ `hooks/`: สร้าง `hooks.json` และ handler scripts ตาม hook types (pre/post tool use, stop, etc.)
-4. สำหรับ `commands/`: สร้าง `.md` file ด้วย frontmatter และ instructions
-5. สำหรับ `mcpServers`: ระบุ server name, transport, command, args, env ใน `.mcp.json`
-6. สำหรับ `.lsp.json`: ระบุ `command`, `args`, `extensionToLanguage` ต่อ language key
-7. สำหรับ `monitors/`: สร้าง `monitors.json` array ด้วย `name`, `command`, `description` — แต่ละ stdout line ถูกส่งเป็น notification
+1. For `skills/`: create `skills/<name>/SKILL.md` as a sub-unit per `/update-devin-global-skills` (use `$ARGUMENTS` to receive input)
+2. For `agents/`: create `.md` agent definitions per the `/update-devin-global-subagents` standard
+3. For `hooks/`: create `hooks.json` and handler scripts per hook types (pre/post tool use, stop, etc.)
+4. For `commands/`: create `.md` files with frontmatter and instructions
+5. For `mcpServers`: specify server name, transport, command, args, and env in `.mcp.json`
+6. For `.lsp.json`: specify `command`, `args`, and `extensionToLanguage` per language key
+7. For `monitors/`: create a `monitors.json` array with `name`, `command`, and `description` — each stdout line is delivered as a notification
 
 ### 5. Validate And Test
 
-> Goal: ตรวจสอบ plugin ก่อนใช้
+> Goal: Verify the plugin before use
 
-1. รัน `claude --plugin-dir <plugin-path>` เพื่อโหลด plugin ใน Claude Code (รองรับ directory, `.zip` archive, หรือ folder-of-plugins; ใช้ `--plugin-url` สำหรับ hosted zip)
-2. รัน `/reload-plugins` ใน session เพื่อรับ changes โดยไม่ต้อง restart
-3. ทดสอบ skills ผ่าน `/plugin-name:skill-name` และตรวจ `/plugin` manager Errors tab
-4. รัน `claude plugin validate <plugin-path>` ก่อน submit/distribute (`--strict` ถ้าต้องการ fail เมื่อมี warnings)
-5. ตรวจ `plugin.json` มี `name` (kebab-case — เป็น namespace `/plugin-name:skill-name`), `description` ครบ; `version` ถ้าตั้ง users จะได้ update เมื่อ bump เท่านั้น
-6. ถ้ามี agents/hooks → ทำ `/deep-validate` สำหรับแต่ละ agent `.md`/`hooks.json`
+1. Run `claude --plugin-dir <plugin-path>` to load the plugin in Claude Code (supports a directory, `.zip` archive, or folder-of-plugins; use `--plugin-url` for a hosted zip)
+2. Run `/reload-plugins` in the session to pick up changes without restarting
+3. Test skills via `/plugin-name:skill-name` and check the `/plugin` manager Errors tab
+4. Run `claude plugin validate <plugin-path>` before submitting/distributing (`--strict` to fail on warnings)
+5. Verify `plugin.json` has `name` (kebab-case — serves as the `/plugin-name:skill-name` namespace) and `description`; if `version` is set, users only receive updates when it is bumped
+6. If there are agents/hooks → run `/deep-validate` on each agent `.md`/`hooks.json`
 
 ### 6. Document And Distribute
 
-> Goal: plugin พร้อมแชร์
+> Goal: Make the plugin ready to share
 
-1. สร้าง `README.md` อธิบาย purpose, components, setup, usage
-2. อัปเดต `AGENTS.md` ถ้า plugin เป็นส่วนหนึ่งของ project skills
-3. สร้าง `.gitignore` สำหรับ sensitive files
-4. ถ้าต้องการ publish → marketplace ใช้ `.claude-plugin/marketplace.json` catalog; public submission ผ่าน claude.ai admin-settings directory form หรือ platform.claude.com/plugins/submit (approved plugins pin commit SHA)
+1. Create `README.md` describing purpose, components, setup, and usage
+2. Update `AGENTS.md` if the plugin is part of the project's skills
+3. Create `.gitignore` for sensitive files
+4. To publish → for a marketplace use a `.claude-plugin/marketplace.json` catalog; public submissions go through the claude.ai admin-settings directory form or platform.claude.com/plugins/submit (approved plugins pin the commit SHA)
 
 ## Rules
 
-- ใช้ directory layout ตาม `### 3` — ทุก component อยู่ plugin root, `.claude-plugin/` มีแค่ `plugin.json`
-- manifest `plugin.json` ต้องมี `name`, `description`, `version`
-- ไม่ hardcode secrets หรือ credentials ใน plugin files
-- ใช้ environment variables สำหรับ API keys และ sensitive paths
-- สร้างเฉพาะ directories ทีใช้จริง
-- ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
+- Follow the directory layout in `### 3` — every component at the plugin root, `.claude-plugin/` holds only `plugin.json`
+- The `plugin.json` manifest must have `name`, `description`, and `version`
+- Never hardcode secrets or credentials in plugin files
+- Use environment variables for API keys and sensitive paths
+- Create only the directories actually used
+- Follow the `SKILL.md` format in `/update-devin-global-skills`
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /search-skills ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /follow-create-sdk if needed
+- Use /search-skills if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 
-- Claude Code plugin มี `plugin.json` และ components ครบตามทีเลือก
-- Plugin โหลดได้ใน Claude Code ด้วย `--plugin-dir`
-- Skills/agents/hooks/commands ทำงานตามทีออกแบบ
-- มี `README.md` และพร้อม distribute
+- A Claude Code plugin with `plugin.json` and all chosen components in place
+- The plugin loads in Claude Code via `--plugin-dir`
+- Skills/agents/hooks/commands work as designed
+- A `README.md` exists and the plugin is ready to distribute
 
 ## Guide
 
-- `/deep-research` + `/follow-best-practice` — official docs/schema ล่าสุด (ไม่ pin ในไฟล์)
+- `/deep-research` + `/follow-best-practice` — latest official docs/schema (never pinned in this file)
 - `/update-devin-global-skills` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

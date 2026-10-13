@@ -1,6 +1,6 @@
 ---
 name: check-reference
-description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
+description: Read references from various sources to verify correctness
 argument-hint: "[scope]"
 related:
   - review-devin-global-harness
@@ -12,11 +12,11 @@ related:
 ---
 ## Goal
 
-อ่านและตรวจสอบ reference จาก sources ต่างๆ เพื่อยืนยันความถูกต้องของข้อมูล
+Read and verify references from various sources to confirm the accuracy of the information
 
 ## Scope
 
-ตรวจสอบ reference จาก files, web, CLI help, GitHub README, issues, package registry
+Verify references from files, web, CLI help, GitHub README, issues, package registry
 
 ## Execute
 
@@ -24,77 +24,77 @@ related:
 
 > Goal: Read File References
 
-1. อ่าน reference จากไฟล์ใน project
-2. ตรวจสอบว่าข้อมูลถูกต้องและเป็นปัจจุบัน
-3. เปรียบเทียบกับ implementation จริง
-4. เช็ค claims เรื่อง type surface (options, defaults, types, signatures) ของ lib/config ด้วย `/check-types-definition` — CLI table เทียบกับ `.d.ts`/Rust source จริง
+1. Read references from files in the project
+2. Verify that the information is accurate and up to date
+3. Compare against the actual implementation
+4. Check type-surface claims (options, defaults, types, signatures) for libs/config with `/check-types-definition` — the CLI table versus the real `.d.ts`/Rust source
 
 ### 2. Read Web References
 
 > Goal: Read Web References
 
-1. ค้นหาข้อมูลจาก official documentation
-2. ตรวจสอบความถูกต้องของข้อมูล
-3. ตรวจสอบว่าเป็น version ล่าสุด
-4. ถ้าต้อง verify เชิงลึกหลาย sources (deprecation, breaking changes, claims ที่ขัดกัน) → ทำ `/deep-research`
+1. Look up information in the official documentation
+2. Verify the accuracy of the information
+3. Confirm it is the latest version
+4. If several sources need deep verification (deprecations, breaking changes, conflicting claims) → run `/deep-research`
 
 ### 3. Read CLI Help
 
 > Goal: Read CLI Help
 
-1. รัน `--help` หรือ `-h` สำหรับ CLI tools
-2. ตรวจสอบ options และ parameters
-3. ตรวจสอบ examples ใน help
+1. Run `--help` or `-h` for CLI tools
+2. Verify options and parameters
+3. Verify the examples in the help output
 
 ### 4. Read GitHub References
 
 > Goal: Read GitHub References
 
-1. อ่าน README.md จาก GitHub repositories
-2. อ่าน issues และ discussions
-3. ตรวจสอบ changelog และ releases
+1. Read README.md from GitHub repositories
+2. Read issues and discussions
+3. Check the changelog and releases
 
 ### 5. Read Package Registry
 
 > Goal: Read Package Registry
 
-1. ตรวจสอบ package information จาก npm, crates.io, PyPI
-2. ตรวจสอบ version และ dependencies
-3. ตรวจสอบ documentation links
+1. Check package information from npm, crates.io, PyPI
+2. Verify versions and dependencies
+3. Verify documentation links
 
 ## Rules
 
 ### 1. Source Priority
 
-ใช้ sources ตามลำดับความน่าเชื่อถือ:
-- Official documentation (สูงสุด)
-- GitHub README และ issues
+Use sources in order of reliability:
+- Official documentation (highest)
+- GitHub README and issues
 - CLI help
 - Package registry
 - Community resources
 
 ### 2. Verification
 
-ตรวจสอบความถูกต้อง:
-- เปรียบเทียบกับหลาย sources
-- ตรวจสอบ version compatibility
-- ทดสอบ examples จริง
+Verify correctness:
+- Cross-check against multiple sources
+- Check version compatibility
+- Test the examples for real
 
 ### 3. Currency
 
-ตรวจสอบว่าข้อมูลเป็นปัจจุบัน:
-- ตรวจสอบ last updated
-- ตรวจสอบ version ล่าสุด
-- ตรวจสอบ deprecation notices
+Check that the information is current:
+- Check the last-updated date
+- Check the latest version
+- Check deprecation notices
 
-- ใช้ /check-types-definition ถ้าจำเป็น (type/API surface vs source จริง)
-- ใช้ /deep-research ถ้าจำเป็น (verify เชิงลึกหลาย sources)
-- ใช้ /review-devin-global-harness ถ้าจำเป็น
-- ใช้ /check-secrets secrets-leak ถ้าจำเป็น
-- ใช้ /update-references ถ้าจำเป็น
+- Use /check-types-definition if needed (type/API surface vs the real source)
+- Use /deep-research if needed (deep verification across multiple sources)
+- Use /review-devin-global-harness if needed
+- Use /check-secrets secrets-leak if needed
+- Use /update-references if needed
 
 ## Expected Outcome
 
-- Reference จาก sources ต่างๆ ถูกตรวจสอบครบถ้วน
-- ข้อมูลถูกต้องและเป็นปัจจุบัน
-- มีความมั่นใจในความถูกต้องของข้อมูล
+- References from all sources are fully verified
+- The information is accurate and up to date
+- There is confidence in the correctness of the data

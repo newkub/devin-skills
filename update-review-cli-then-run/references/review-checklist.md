@@ -1,6 +1,6 @@
 # Review Checklist For tools/review-codebase
 
-ตรวจสอบ `tools/review-codebase` CLI ก่อนเรียก `/deep-review` เพื่อยืนยันว่า Clean Architecture, analyzer structure, category coverage, CLI interface, และ workspace integration ครบถ้วนและถูกต้อง
+Review the `tools/review-codebase` CLI before calling `/deep-review` to confirm that Clean Architecture, analyzer structure, category coverage, CLI interface, and workspace integration are complete and correct
 
 ## Reference Mapping
 
@@ -15,123 +15,123 @@
 
 ## 1. Prepare Context
 
-> Goal: เข้าใจ `tools/review-codebase` structure
+> Goal: Understand the `tools/review-codebase` structure
 
-1. ทำ `/scan-codebase` ใน `tools/review-codebase/`
-2. ตรวจว่า `tools/review-codebase/` มีอยู่ ถ้าไม่ → flag เป็น critical
-3. อ่าน `package.json` ของ `tools/review-codebase`
-4. อ่าน `/run-review` เพื่อทราบ 60+ categories และ 5 domains
+1. Run `/scan-codebase` in `tools/review-codebase/`
+2. Verify that `tools/review-codebase/` exists; if not → flag as critical
+3. Read the `package.json` of `tools/review-codebase`
+4. Read `/run-review` to learn the 60+ categories and 5 domains
 
 ## 2. Check Clean Architecture
 
-> Goal: ตรวจ Clean Architecture structure
+> Goal: Check the Clean Architecture structure
 
-> ดู `clean-architecture.md` สำหรับ architecture validation rules
+> See `clean-architecture.md` for architecture validation rules
 
-1. ตรวจ directories: `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
-2. ตรวจ entry point: `src/presentation/cli.ts` และ `src/index.ts`
-3. ตรวจ file names ใช้ `kebab-case`
-4. ตรวจว่าใช้ Bun native APIs: `Bun.file`, `Bun.spawn`, `Bun.write`
-5. บันทึก findings พร้อม evidence
+1. Check directories: `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
+2. Check entry points: `src/presentation/cli.ts` and `src/index.ts`
+3. Check that file names use `kebab-case`
+4. Check that Bun native APIs are used: `Bun.file`, `Bun.spawn`, `Bun.write`
+5. Record findings with evidence
 
 ## 3. Check Analyzers
 
-> Goal: ตรวจ analyzer structure และ coverage
+> Goal: Check analyzer structure and coverage
 
-> ดู `analyzers.md` สำหรับ analyzer structure และ coverage rules
+> See `analyzers.md` for analyzer structure and coverage rules
 
-1. ตรวจ analyzer files ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
-2. ตรวจว่าทุก analyzer return `CategoryResult` พร้อม `status`, `score`, `findings`
-3. ตรวจว่าทุก analyzer มี `reviewWorkflow` map ไปยัง `/deep-review` หรือ references
-4. ตรวจว่าใช้ shared utilities จาก `src/adapters/` ไม่ duplicate code
-5. ตรวจ category coverage: 60+ categories จาก `/run-review`, 5 domains
-6. บันทึก findings พร้อม evidence
+1. Check analyzer files in `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
+2. Check that every analyzer returns `CategoryResult` with `status`, `score`, `findings`
+3. Check that every analyzer has a `reviewWorkflow` map to `/deep-review` or references
+4. Check that shared utilities from `src/adapters/` are used, with no duplicated code
+5. Check category coverage: 60+ categories from `/run-review`, 5 domains
+6. Record findings with evidence
 
 ## 4. Check CLI Interface
 
-> Goal: ตรวจ CLI interface และ output format
+> Goal: Check CLI interface and output format
 
-> ดู `cli-interface.md` สำหรับ CLI interface และ output format rules
+> See `cli-interface.md` for CLI interface and output format rules
 
-1. ตรวจ `--help`/`-h` option แสดง usage, options, exit codes, examples
-2. ตรวจ exit codes: 0 = success, 1 = invalid arguments
-3. ตรวจ output รองรับ table และ JSON ผ่าน `--format` flag
-4. ตรวจ error messages สำหรับ invalid arguments
-5. บันทึก findings พร้อม evidence
+1. Check that the `--help`/`-h` option shows usage, options, exit codes, examples
+2. Check exit codes: 0 = success, 1 = invalid arguments
+3. Check that output supports table and JSON via the `--format` flag
+4. Check error messages for invalid arguments
+5. Record findings with evidence
 
 ## 5. Check Analyze Integration
 
-> Goal: ตรวจ integration กับ tools-analyze
+> Goal: Check integration with tools-analyze
 
-> ดู `analyze-integration.md` สำหรับ integration validation rules
+> See `analyze-integration.md` for integration validation rules
 
-1. ตรวจว่า `tools/review-codebase` imports analyzers จาก `tools-analyze` ผ่าน workspace
-2. ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review-codebase/src/health`
-3. ตรวจ `tools-analyze` เป็น dependency ของ `tools/review-codebase`
-4. บันทึก findings พร้อม evidence
+1. Check that `tools/review-codebase` imports analyzers from `tools-analyze` via workspace
+2. Check that there is no duplicated analyzer logic in `tools/review-codebase/src/health`
+3. Check that `tools-analyze` is a dependency of `tools/review-codebase`
+4. Record findings with evidence
 
 ## 6. Check Package Scripts
 
-> Goal: ตรวจ scripts ใน package.json
+> Goal: Check scripts in package.json
 
-> ดู `package-scripts.md` สำหรับ package scripts validation rules
+> See `package-scripts.md` for package scripts validation rules
 
-1. ตรวจ `tools/review-codebase/package.json` มี `review-codebase`, `review-codebase:json` scripts
-2. ตรวจ root `package.json` มี `review: bun --filter tools-review-codebase review-codebase`
-3. ตรวจ root `package.json` มี `review-codebase:json: bun --filter tools-review-codebase review-codebase:json`
-4. บันทึก findings พร้อม evidence
+1. Check that `tools/review-codebase/package.json` has `review-codebase`, `review-codebase:json` scripts
+2. Check that the root `package.json` has `review: bun --filter tools-review-codebase review-codebase`
+3. Check that the root `package.json` has `review-codebase:json: bun --filter tools-review-codebase review-codebase:json`
+4. Record findings with evidence
 
 ## 7. Check Line Count And Evidence
 
-> Goal: ตรวจ line count และ evidence quality
+> Goal: Check line count and evidence quality
 
-1. ตรวจว่าทุกไฟล์ไม่เกิน 250 บรรทัด
-2. ตรวจว่า findings มี evidence: file path, line number, code snippet
-3. บันทึก findings พร้อม evidence
+1. Check that every file is no more than 250 lines
+2. Check that findings have evidence: file path, line number, code snippet
+3. Record findings with evidence
 
 ## 8. Score And Report
 
-> Goal: สรุป review score และ findings
+> Goal: Summarize the review score and findings
 
-> ดู `scoring.md` สำหรับ scoring formula และ grade thresholds
+> See `scoring.md` for the scoring formula and grade thresholds
 
-1. คำนวณ review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
-2. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-3. ทำ `/report table` พร้อม findings: Category, Severity, Finding, Evidence, Action
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. Compute review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
+2. Assign grade: A (90+), B (80+), C (70+), D (60+), F (<60)
+3. Produce `/report table` with findings: Category, Severity, Finding, Evidence, Action
+4. Run `/suggest-next-action` to recommend the next action
 
 ## Rules
 
 ### 1. Review Only
 
-- ทำ review เท่านั้น ไม่แก้ไข CLI code ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `/deep-review` หลัง review
-- ทุก finding ต้องมี file path และ evidence
+- Perform review only; do not modify CLI code during review
+- If a fix is needed, call `/deep-review` after the review
+- Every finding must have a file path and evidence
 
 ### 2. Severity Ratings
 
-- `Critical`: ไม่มี `tools/review-codebase`, ขาด entry point, analyzers ไม่ทำงาน
-- `High`: ขาด Clean Architecture, analyzer ไม่ return `CategoryResult`, ไม่มี `--help`
-- `Medium`: category coverage ไม่ครบ, scripts ขาด, duplicated code
-- `Low`: file names ไม่ `kebab-case`, line count เกิน
-- `Info`: ข้อเสนอแนะ ไม่กระทบการทำงาน
+- `Critical`: no `tools/review-codebase`, a missing entry point, analyzers not working
+- `High`: missing Clean Architecture, an analyzer not returning `CategoryResult`, no `--help`
+- `Medium`: incomplete category coverage, missing scripts, duplicated code
+- `Low`: file names not `kebab-case`, line count exceeded
+- `Info`: a suggestion; does not affect operation
 
 ### 3. Scoring
 
-- review score = weighted average ของ findings ทั้งหมด
+- review score = weighted average of all findings
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `/deep-review` ก่อนดำเนินการ
+- Score < 70 → recommend calling `/deep-review` before proceeding
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report table`
+- Never use `**` (bold markers) — use backticks for emphasis
+- Use heading levels for structure
+- Report as a table with `/report table`
 
 ## Expected Outcome
 
-- รายงาน `tools/review-codebase` CLI Review พร้อม score และ grade
-- รายงาน findings พร้อม severity, evidence และ action required
-- ยืนยัน Clean Architecture, analyzer coverage, CLI interface ครบถ้วน
-- ยืนยัน integration กับ `tools-analyze` ไม่มี duplicated logic
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- A `tools/review-codebase` CLI review report with score and grade
+- Findings reported with severity, evidence, and required action
+- Confirm Clean Architecture, analyzer coverage, and CLI interface are complete
+- Confirm integration with `tools-analyze` has no duplicated logic
+- Recommend the next action via `/suggest-next-action`

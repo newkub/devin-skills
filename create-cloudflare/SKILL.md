@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare
-description: สร้าง Cloudflare resources — worker, deploy button, API token ผ่าน create-cloudflare-* skills
+description: Create Cloudflare resources — worker, deploy button, API token via create-cloudflare-* skills
 argument-hint: "[domain]"
 related:
   - follow-service-cloudflare
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ตาม Cloudflare resource ที่ต้องสร้าง — parent ทำ routing เท่านั้น
+Dispatch to the skill for the Cloudflare resource that needs to be created — the parent only routes.
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if omitted → `/ask-me` to pick a domain.
 
 ## Execute
 
@@ -25,23 +25,23 @@ Dispatch ไป skill ตาม Cloudflare resource ที่ต้องสร�
 
 | Domain | Skill |
 |---|---|
-| `worker` | `/create-cloudflare-worker` — scaffold Worker ใหม่ |
-| `deploy-button` | `/create-cloudflare-deploy-button` — สร้าง deploy-to-Cloudflare button |
-| `token` | `/create-cloudflare-token` — สร้าง API token ด้วย scope ที่เหมาะ |
+| `worker` | `/create-cloudflare-worker` — scaffold a new Worker |
+| `deploy-button` | `/create-cloudflare-deploy-button` — create a deploy-to-Cloudflare button |
+| `token` | `/create-cloudflare-token` — create an API token with the right scope |
 
-1. ระบุ domain จาก argument (เช่น `/create-cloudflare worker`)
-2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Determine the domain from the argument (e.g. `/create-cloudflare worker`)
+2. If the domain is supported → invoke the matching skill from the table and follow its flow
+3. If no domain is given or it is unrecognized → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- credentials/token ใหม่ต้องผ่าน `/follow-secret-manager` — ห้าม commit
+- The parent only dispatches — never duplicate the target skill's workflow
+- New credentials/tokens must go through `/follow-secret-manager` — never commit them
 
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /use-wrangler ถ้าจำเป็น
+- Use /follow-service-cloudflare when needed
+- Use /deploy-to-cloudflare when needed
+- Use /use-wrangler when needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ที่ตรง domain แล้วสร้าง resource ตาม flow นั้น
+- The caller is dispatched to the skill matching the domain and creates the resource via its flow

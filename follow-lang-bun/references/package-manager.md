@@ -1,23 +1,23 @@
 # Bun Package Manager
 
-`bun install` คือ Node.js-compatible package manager ที่เร็วกว่า npm ถึง ~25x — ทำงานกับ `package.json` เดิมได้เลย Docs: https://bun.com/docs/pm/cli/install
+`bun install` is a Node.js-compatible package manager up to ~25x faster than npm — works with your existing `package.json` as-is. Docs: https://bun.com/docs/pm/cli/install
 
 ## Lockfile
 
-- `bun.lock` — text-based lockfile (JSONC-like) diff-friendly, commit เข้า git เสมอ
-- `bun install --frozen-lockfile` — install ตาม lockfile เป๊ะ, error ถ้า `package.json` ไม่ตรง
-- `bun ci` — alias สำหรับ CI (`--frozen-lockfile` + clean install)
-- `bun install --dry-run` — validate โดยไม่ install; `bun pm migrate` แปลง `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml` → `bun.lock`
+- `bun.lock` — text-based lockfile (JSONC-like), diff-friendly, always commit to git
+- `bun install --frozen-lockfile` — install exactly per the lockfile; error if `package.json` doesn't match
+- `bun ci` — alias for CI (`--frozen-lockfile` + clean install)
+- `bun install --dry-run` — validate without installing; `bun pm migrate` converts `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml` → `bun.lock`
 
 ## Installation Strategies
 
-| strategy | behavior | default เมื่อ |
+| strategy | behavior | default when |
 |----------|----------|---------------|
-| `hoisted` | flatten เข้า `node_modules` เดียว (npm-style) | single package project, existing projects |
-| `isolated` | central store `node_modules/.bun/` + symlinks (pnpm-style), กัน phantom deps | workspaces/monorepo ใหม่ |
+| `hoisted` | flatten into a single `node_modules` (npm-style) | single package project, existing projects |
+| `isolated` | central store `node_modules/.bun/` + symlinks (pnpm-style), blocks phantom deps | new workspaces/monorepo |
 
-- เลือกเองด้วย `bun install --linker hoisted|isolated` หรือ `[install] linker` ใน `bunfig.toml`
-- `configVersion` ใน lockfile คุม default — migration ไม่เปลี่ยน behavior ของ project เก่า
+- Choose explicitly with `bun install --linker hoisted|isolated` or `[install] linker` in `bunfig.toml`
+- `configVersion` in the lockfile controls the default — migration never changes an old project's behavior
 
 ## Workspaces & Filtering
 
@@ -25,52 +25,52 @@
 { "workspaces": ["packages/*"] }
 ```
 
-- `bun install --filter <pat>` — install เฉพาะ workspace ที่ match (`--filter './packages/a'`, `--filter '!pkg-c'`)
-- `bun run --filter <pat> <script>` — รัน script เฉพาะ workspace
-- `bun run --workspaces <script>` — รันทุก workspace; `--parallel`/`--sequential` คุม concurrency
-- catalogs (`catalog:` protocol) ใน `package.json` สำหรับ share version เดียวข้าม workspaces
+- `bun install --filter <pat>` — install only matching workspaces (`--filter './packages/a'`, `--filter '!pkg-c'`)
+- `bun run --filter <pat> <script>` — run a script in specific workspaces only
+- `bun run --workspaces <script>` — run in every workspace; `--parallel`/`--sequential` controls concurrency
+- catalogs (`catalog:` protocol) in `package.json` for sharing one version across workspaces
 
 ## Dependency Sources
 
-- npm registry (default), scoped registries (`[install.scopes]` หรือ `.npmrc`)
+- npm registry (default), scoped registries (`[install.scopes]` or `.npmrc`)
 - git/git+ssh, `github:user/repo`, tarball URL, `file:`, `link:`, `workspace:`
 - `bun add` flags: `-d` dev, `-g` global, `-E` exact, `--peer`, `--optional`
 
 ## Lifecycle Scripts
 
-- `postinstall` ของ **dependencies ไม่ถูกรัน** (security) เว้นแต่ declare ใน `trustedDependencies` ของ `package.json`
-- `bun pm untrusted` — list packages ที่มี scripts แต่ไม่ trusted; `bun pm trust <pkg>` — add แล้ว run
-- `--concurrent-scripts <n>` — คุม parallelism (default 2× CPU)
+- **dependency** `postinstall` scripts do not run (security) unless declared in `trustedDependencies` in `package.json`
+- `bun pm untrusted` — list packages with scripts that aren't trusted; `bun pm trust <pkg>` — add and run
+- `--concurrent-scripts <n>` — controls parallelism (default 2× CPU)
 
 ## Overrides & Patches
 
 - `overrides` (npm) / `resolutions` (yarn) ใน `package.json` — pin transitive versions
-- `bun patch <pkg>` → แก้ package ใน `node_modules` → `bun patch --commit` → เขียน `patches/<pkg>.patch` + apply อัตโนมัติทุก install
+- `bun patch <pkg>` → edit the package in `node_modules` → `bun patch --commit` → writes `patches/<pkg>.patch` + auto-applies on every install
 
 ## Maintenance
 
-- `bun outdated` — list outdated; `bun update` / `bun update <pkg>` — apply; `--latest` ข้าม semver range
+- `bun outdated` — list outdated; `bun update` / `bun update <pkg>` — apply; `--latest` ignores semver ranges
 - `bun audit` — vuln report; `bun audit fix` — auto-fix (v1.4+)
-- `bun dedupe` — รวม duplicate versions ใน lockfile (v1.4+)
-- `bun prune` — ลบ packages ที่ไม่อยู่ใน lockfile ออกจาก `node_modules` (v1.4+); `bun prune --production` ลบ devDeps
-- `bun why <pkg>` — อธิบาย dependency chain; `bun info <pkg>` — registry metadata
+- `bun dedupe` — merge duplicate versions in the lockfile (v1.4+)
+- `bun prune` — remove packages not in the lockfile from `node_modules` (v1.4+); `bun prune --production` removes devDeps
+- `bun why <pkg>` — explain the dependency chain; `bun info <pkg>` — registry metadata
 - `bun pm ls` — dependency tree; `bun pm bin` — binaries dir; `bun pm cache rm` — clear global cache
 
 ## Supply-Chain Security
 
-- `bun add <pkg> --minimum-release-age <seconds>` — ปฏิเสธ versions ที่ publish ใหม่กว่า threshold
-- `[install] minimumReleaseAge = 259200` ใน `bunfig.toml` (3 วัน)
-- Security Scanner API — custom scanner hook ตอน install (`@scanner` ใน bunfig)
-- `.npmrc` รองรับ registry auth/config เดิม
+- `bun add <pkg> --minimum-release-age <seconds>` — reject versions published more recently than the threshold
+- `[install] minimumReleaseAge = 259200` in `bunfig.toml` (3 days)
+- Security Scanner API — custom scanner hook at install time (`@scanner` in bunfig)
+- `.npmrc` supports the existing registry auth/config format
 
 ## Global Packages
 
 - `bun add -g <pkg>` / `bun install -g <pkg>` — global install (`~/.bun/install/global`)
-- `bun pm -g ls` — list globals; global cache ที่ `~/.bun/install/cache`
-- Global virtual store (opt-in v1.4) — shared store ข้าม projects ลด disk/network
+- `bun pm -g ls` — list globals; global cache at `~/.bun/install/cache`
+- Global virtual store (opt-in v1.4) — shared store across projects, reducing disk/network use
 
 ## Offline & Cache
 
-- `bun install --prefer-offline` — ใช้ cache ก่อน fetch เฉพาะที่ขาด
-- `bun install --offline` — ไม่แตะ network เลย (error ถ้า cache ไม่ครบ)
+- `bun install --prefer-offline` — use the cache first, fetching only what's missing
+- `bun install --offline` — never touch the network (error if the cache is incomplete)
 - `--offline --frozen-lockfile` + warm cache = fully deterministic CI install

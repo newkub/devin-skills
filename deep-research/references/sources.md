@@ -2,11 +2,11 @@
 
 ## Goal
 
-เลือก sources ตามประเภทข้อมูล
+Pick sources by data type
 
 ## Source Map
 
-| ข้อมูลที่ต้องการ | Primary Source | Secondary Source |
+| Data needed | Primary Source | Secondary Source |
 |---|---|---|
 | Package info | NPM Registry | JSR, PyPI, crates.io, pkg.go.dev |
 | Library docs | Context7 | CRW crawl official docs |
@@ -20,6 +20,6 @@
 
 ## Rules
 
-- เลือกอย่างน้อย 2-3 sources เพื่อ cross-reference
-- ให้ official docs เป็นแหล่งหลักเสมอ
-- ระบุ version/year ของแต่ละ source
+- Pick at least 2-3 sources to cross-reference
+- Always treat official docs as the primary source
+- Record the version/year of each source

@@ -1,6 +1,6 @@
 ---
 name: create-video-story
-description: สร้างวิดีโอจากโครงเรื่อง ฉาก ภาพ เสียง และ subtitle อย่างครบวงจร
+description: Build a video from a story outline — scenes, images, voice, and subtitles end to end
 argument-hint: "[topic]"
 related:
   - gen-media
@@ -14,157 +14,157 @@ related:
 
 ## Goal
 
-สร้างวิดีโอสั้นจากโครงเรื่อง โดยครอบคลุม story structure, scene details, images, video, voice, และ subtitle
+Create a short video from a story outline, covering story structure, scene details, images, video, voice, and subtitles
 
 ## Scope
 
-- ใช้กับโครงเรื่องสั้น เช่น social media video, story reel, promotional clip
-- ถาม user เรื่อง style, orientation, และความยาว
-- สร้าง story structure, บุคลิกตัวละคร, และ hooks
-- สร้างรายละเอียดฉาก ได้แก่ เสียง ท่าทาง ฉากหลัง สีหน้า อารมณ์ และอื่นๆ
-- สร้างภาพแต่ละฉาก โดยเรียก `/gen-media-image-character` เพื่อความคงเส้นคงวาของตัวละคร
-- สร้างวิดีโอจากภาพ/ prompt และสร้าง subtitle
+- For short story outlines such as social media videos, story reels, promotional clips
+- Ask the user about style, orientation, and length
+- Build the story structure, character personalities, and hooks
+- Detail each scene: sound, gestures, background, facial expression, mood, and more
+- Generate an image per scene, calling `/gen-media-image-character` for character consistency
+- Generate video from images/prompts and create subtitles
 
 ## Execute
 
 ### 1. Interview
 
-> Goal: รวบรวม requirement ของวิดีโอ
+> Goal: Collect the video requirements
 
-1. รับ `topic` จาก user
-2. ถาม `style` เช่น `anime`, `realistic`, `cinematic`, `motion-graphics`
-3. ถาม `orientation` เช่น `portrait (9:16)`, `landscape (16:9)`, `square (1:1)`
-4. ถาม `duration` หรือจำนวนฉาก (default 5 ฉาก)
-5. ถาม `tone` เช่น `funny`, `dramatic`, `educational`, `emotional`
-6. ถาม target audience ถ้าจำเป็น
+1. Take `topic` from the user
+2. Ask for `style`, e.g. `anime`, `realistic`, `cinematic`, `motion-graphics`
+3. Ask for `orientation`, e.g. `portrait (9:16)`, `landscape (16:9)`, `square (1:1)`
+4. Ask for `duration` or the number of scenes (default 5 scenes)
+5. Ask for `tone`, e.g. `funny`, `dramatic`, `educational`, `emotional`
+6. Ask for the target audience if needed
 
 ### 2. Build Story
 
-> Goal: สร้างโครงเรื่องและตัวละคร
+> Goal: Create the story outline and characters
 
-1. สร้าง hook สั้นๆ ที่ดึงดูดใน 3 วินาทีแรก
-2. กำหนด protagonist และ supporting characters
-3. กำหนด personality, visual traits, color palette ของตัวละคร
-4. สร้าง story beats: setup, conflict, climax, resolution
-5. แบ่งโครงเรื่องให้พอดีกับจำนวนฉาก
+1. Write a short hook that grabs attention in the first 3 seconds
+2. Define the protagonist and supporting characters
+3. Define each character's personality, visual traits, and color palette
+4. Build the story beats: setup, conflict, climax, resolution
+5. Fit the outline to the number of scenes
 
 ### 3. Design Scenes
 
-> Goal: วางรายละเอียดแต่ละฉาก
+> Goal: Plan the details of each scene
 
-1. สำหรับแต่ละฉาก ระบุ:
-   - หมายเลขฉากและ duration
-   - สถานที่/ฉากหลัง
-   - มุมกล้องและ camera movement
-   - ท่าทางและ pose ของตัวละคร
-   - สีหน้าและ facial expression
-   - อารมณ์/บรรยากาศ
-   - เสียงประกอบหรือ voiceover
-   - ข้อความ subtitle
-   - transition ไปฉากถัดไป
-2. เก็บ scene brief ไว้ในรูปแบบ list/table
-3. ใช้ `/report` เพื่อแสดงผล
+1. For each scene specify:
+   - scene number and duration
+   - location/background
+   - camera angle and camera movement
+   - character gestures and pose
+   - facial expression
+   - mood/atmosphere
+   - sound effects or voiceover
+   - subtitle text
+   - transition to the next scene
+2. Keep the scene brief as a list/table
+3. Use `/report` to present it
 
 ### 4. Generate Characters
 
-> Goal: สร้าง reference ภาพตัวละครหลัก
+> Goal: Create reference images of the main characters
 
-1. สำหรับตัวละครหลักแต่ละตัว เรียก `/gen-media-image-character`
-2. ส่ง character brief, style, aspect-ratio, output path
-3. เก็บ character anchor image และ prompt anchor
-4. ตรวจสอบว่าภาพตัวละครคงเส้นคงวากัน
+1. For each main character call `/gen-media-image-character`
+2. Pass the character brief, style, aspect-ratio, output path
+3. Keep the character anchor image and prompt anchor
+4. Verify the character images stay consistent with each other
 
 ### 5. Generate Scene Images
 
-> Goal: สร้างภาพสำหรับแต่ละฉาก
+> Goal: Create an image for each scene
 
-1. สำหรับแต่ละฉาก ประกอบ prompt จาก:
-   - character anchor และ reference image
+1. For each scene compose the prompt from:
+   - the character anchor and reference image
    - scene setting, pose, expression, camera angle
    - lighting, mood, style
-2. เรียก `/gen-media-ai-images` หรือ `/gen-media-image-character` ตามลักษณะฉาก
-3. บันทึกภาพแต่ละฉากด้วยชื่อเรียงลำดับ เช่น `scene-01.png`
-4. ตรวจสอบไฟล์มีขนาด > 0
+2. Call `/gen-media-ai-images` or `/gen-media-image-character` depending on the scene
+3. Save each scene image with a sequential name, e.g. `scene-01.png`
+4. Verify each file is larger than 0 bytes
 
 ### 6. Generate Voice
 
-> Goal: สร้างเสียงพูด/เล่าเรื่อง
+> Goal: Create the speech/narration audio
 
-1. รวบรวม script หรือ narration จากแต่ละฉาก
-2. ถาม user ภาษา/เสียง ถ้าไม่ระบุให้ auto-detect
-3. เรียก `/gen-voice` พร้อม text, voice, output path
-4. เก็บเสียงแต่ละฉาก หรือรวมเป็นไฟล์เดียวด้วย `ffmpeg`
+1. Collect the script or narration from each scene
+2. Ask the user for language/voice; auto-detect if unspecified
+3. Call `/gen-voice` with text, voice, output path
+4. Keep per-scene audio or merge into one file with `ffmpeg`
 
 ### 7. Generate Video
 
-> Goal: สร้างวิดีโอจากภาพและเสียง
+> Goal: Produce the video from images and audio
 
-1. เลือกวิธีสร้างวิดีโอ:
-   - เรียก `/gen-media-ai-videos` จาก prompt หรือ image sequence
-   - ใช้ `/follow-lib-remotion` ถ้าต้องการ render แบบโปรแกรมมิ่ง
-2. ระบุ duration, aspect-ratio, และ fps
-3. ตรวจสอบ video file มีขนาด > 0
-4. ถ้าใช้ paid provider แจ้ง user ก่อน
+1. Choose the video method:
+   - call `/gen-media-ai-videos` from a prompt or image sequence
+   - use `/follow-lib-remotion` for programmatic rendering
+2. Specify duration, aspect-ratio, and fps
+3. Verify the video file is larger than 0 bytes
+4. If a paid provider is used, tell the user first
 
 ### 8. Generate Subtitle
 
-> Goal: สร้าง subtitle สำหรับวิดีโอ
+> Goal: Create subtitles for the video
 
-1. ถ้ามี video แล้ว เรียก `/gen-subtitle-video` เพื่อ transcribe
-2. ถ้ามี script ก่อน สร้าง `.srt` ด้วย timestamps จาก scene durations
-3. ตรวจสอบจำนวน cues และ syntax
-4. บันทึกไฟล์ `<video>.srt`
+1. If the video exists, call `/gen-subtitle-video` to transcribe
+2. If a script comes first, build a `.srt` with timestamps from scene durations
+3. Check the cue count and syntax
+4. Save the `<video>.srt` file
 
 ### 9. Validate
 
-> Goal: ตรวจสอบความสมบูรณ์ของวิดีโอ
+> Goal: Check the video is complete
 
-1. ตรวจสอบ duration วิดีโอตรงกับ plan
-2. ตรวจสอบจำนวน scene images ตรงกับ scene list
-3. ตรวจสอบ subtitle cues ตรงกับเสียง
-4. รายงาน outputs, scene summary, tools used
+1. Verify the video duration matches the plan
+2. Verify the scene image count matches the scene list
+3. Verify subtitle cues match the audio
+4. Report outputs, scene summary, tools used
 
 ### 10. Report
 
-> Goal: สรุปผลลัพธ์
+> Goal: Summarize the results
 
-1. ใช้ `/report` แสดง scenes, durations, output paths
-2. ระบุ video path, subtitle path, voice path
-3. ระบุ provider/model ทีใช้
-4. ถ้า fail แสดง error และแนะนำ fallback
+1. Use `/report` to show scenes, durations, output paths
+2. State the video path, subtitle path, voice path
+3. State the provider/model used
+4. On failure, show the error and suggest a fallback
 
 ## Rules
 
 ### 1. Ask Before Paid Generation
 
-- ถ้าต้องใช้ paid provider ให้ถาม user ก่อน
-- ไม่ hardcode API key
-- ใช้ environment variable หรือถาม user
+- If a paid provider is needed, ask the user first
+- Never hardcode API keys
+- Use environment variables or ask the user
 
 ### 2. Consistency
 
-- ใช้ `/gen-media-image-character` เพื่อสร้าง reference ตัวละครก่อน
-- เก็บ prompt anchor และ seed ของตัวละครใน context
-- เปลี่ยนเฉพาะ pose/expression/background ระหว่างฉาก
+- Use `/gen-media-image-character` to create character references first
+- Keep the prompt anchors and seeds of characters in context
+- Change only pose/expression/background between scenes
 
 ### 3. No Overwrite
 
-- ไม่ทับไฟล์เดิมโดยไม่ถาม
-- ใช้ชื่อไฟล์ index เช่น `scene-01.png`, `scene-02.png`
-- สร้าง output directory ถ้าจำเป็น
+- Never overwrite existing files without asking
+- Use indexed file names such as `scene-01.png`, `scene-02.png`
+- Create the output directory if needed
 
 ### 4. Reasonable Defaults
 
-- default duration = 5 ฉาก
+- default duration = 5 scenes
 - default orientation = `portrait (9:16)`
-- default style = `realistic` หรือ `anime` ตาม target platform
+- default style = `realistic` or `anime` depending on the target platform
 - default output format = `.mp4`
 
-- ใช้ /enhance-prompt ถ้าจำเป็น
+- Use /enhance-prompt if needed
 
 ## Expected Outcome
 
-- วิดีโอสั้นที่สมบูรณ์พร้อมภาพ เสียง และ subtitle
-- ตารางสรุป scene ทั้งหมด
-- รายงาน output paths, provider, model, duration
-- ถ้า fail มีแนวทาง fallback
+- A complete short video with images, audio, and subtitles
+- A summary table of all scenes
+- A report of output paths, provider, model, duration
+- On failure, a fallback plan

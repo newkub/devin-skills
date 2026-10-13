@@ -1,77 +1,77 @@
 # Deep Test — Integration Domain
 
-รัน integration tests สำหรับทดสอบการทำงานร่วมกันของ modules, data flow, และ integration points — ไม่รวม unit tests หรือ E2E tests
+Run integration tests to verify how modules, data flow, and integration points work together — excludes unit tests and E2E tests
 
-- ถ้าต้องการ update/เขียน integration tests → `/update-tests` (run-only ไม่แก้ tests)
+- If integration tests need updating/writing → `/update-tests` (run-only, does not fix tests)
 
-> Pre-Run: ทำ `/deep-review` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: always run `/deep-review` first — `run-*` skills must review/assess before the main action; never skip; if findings are blockers, fix or report before running
 
 ## 1. Detect Test Framework
 
-> Goal: ตรวจสอบ integration test framework ที่ project ใช้
+> Goal: Detect the integration test framework the project uses
 
-1. ตรวจสอบ `package.json` สำหรับ test dependencies
-2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`)
-3. ตรวจสอบ integration test file patterns (`*.integration.test.ts`, `test/integration/`)
-4. ตรวจสอบ test setup files สำหรับ integration environment
+1. Check `package.json` for test dependencies
+2. Check config files (`vitest.config.ts`, `jest.config.js`)
+3. Check integration test file patterns (`*.integration.test.ts`, `test/integration/`)
+4. Check test setup files for the integration environment
 
 ## 2. Setup Integration Environment
 
-> Goal: เตรียม environment สำหรับ integration tests
+> Goal: Prepare the environment for integration tests
 
-1. ตรวจสอบ test database setup (SQLite, PostgreSQL test instance)
-2. ตรวจสอบ mock servers หรือ test containers
-3. ตรวจสอบ environment variables สำหรับ test environment
-4. ตรวจสอบ test fixtures และ seed data
+1. Check the test database setup (SQLite, PostgreSQL test instance)
+2. Check mock servers or test containers
+3. Check environment variables for the test environment
+4. Check test fixtures and seed data
 
 ## 3. Run Integration Tests
 
-> Goal: รัน integration tests ตาม framework
+> Goal: Run integration tests per framework
 
-1. รัน `bun run test:integration` ถ้ามี script
-2. ถ้าไม่มี script รัน `bunx vitest run --config vitest.config.ts test/integration/`
-3. รัน `pytest tests/integration/` สำหรับ Python
-4. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
+1. Run `bun run test:integration` if the script exists
+2. If there is no script, run `bunx vitest run --config vitest.config.ts test/integration/`
+3. Run `pytest tests/integration/` for Python
+4. Record results, duration, and the list of failing tests
 
 ## 4. Review Test Results
 
-> Goal: ตรวจสอบผลลัพธ์
+> Goal: Inspect the results
 
-1. ดู test report จาก framework
-2. ตรวจสอบ failed tests และ error messages
-3. ระบุ integration points ที่ fail
-4. ตรวจสอบ database state หลัง tests
+1. View the test report from the framework
+2. Inspect failed tests and error messages
+3. Identify the failing integration points
+4. Check the database state after the tests
 
 ## Rules
 
 ### 1. Test Scope
 
-- Integration tests ทดสอบ interactions ระหว่าง modules
-- ใช้ real database หรือ test database (ไม่ใช่ mocks)
-- ทดสอบ data flow จาก input ถึง output
-- ทดสอบ error handling ที่ integration points
+- Integration tests test interactions between modules
+- Use a real database or a test database (not mocks)
+- Test data flow from input to output
+- Test error handling at integration points
 
 ### 2. Environment Isolation
 
-- ใช้ separate test database ไม่ใช่ production
-- Cleanup data หลังแต่ละ test suite
-- ใช้ transactions และ rollback ถ้าเป็นไปได้
-- ไม่ share state ระหว่าง tests
+- Use a separate test database, never production
+- Clean up data after each test suite
+- Use transactions and rollback where possible
+- Do not share state between tests
 
 ### 3. Performance
 
-- Integration tests อาจช้ากว่า unit tests (< 100ms per test)
-- ใช้ parallel execution ด้วยความระมัดระวัง
-- ถ้า tests แชร์ database ให้รันแบบ sequential
+- Integration tests may be slower than unit tests (< 100ms per test)
+- Use parallel execution with caution
+- If tests share a database, run them sequentially
 
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- Use /run-test if needed
+- Use /run-check if needed
+- Use /run-verify if needed
+- Use /suggest-next-action if needed
 
 ## Expected Outcome
 
-- Integration tests รันผ่านทั้งหมด
-- Test report แสดงผลลัพธ์ชัดเจน
-- Integration points ที่ fail ถูกระบุ
-- Database state ถูกต้องหลัง tests
+- All integration tests pass
+- The test report clearly shows the results
+- Failing integration points are identified
+- The database state is correct after the tests
