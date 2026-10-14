@@ -7,6 +7,6 @@
 [submodule "create-github-pr"]
 	path = create-github-pr
 	url = ../create-github-pr.git
-[submodule "use-devfra"]
-	path = use-devfra
-	url = ../use-devfra.git
+[submodule "wrikka-vite-devtools"]
+	path = wrikka-vite-devtools
+	url = git@github.com:wrikka/wrikka-vite-devtools.git
