@@ -10,6 +10,7 @@ related:
   - search-github-star
   - search-raindrop
   - report
+  - follow-tool-vite-devtools
 ---
 
 ## Goal

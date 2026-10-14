@@ -9,6 +9,7 @@ related:
   - follow-tool-vite
   - update-tests
   - run-test
+  - follow-tool-vite-devtools
 
 ---
 

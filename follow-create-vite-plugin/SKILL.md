@@ -7,6 +7,7 @@ related:
   - deep-review
   - follow-tool-vite
   - ship
+  - follow-tool-vite-devtools
 
 ---
 ## Goal

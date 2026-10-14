@@ -8,6 +8,7 @@ related:
   - follow-tool-tsdown
   - follow-tool-turborepo
   - follow-lang-typescript
+  - follow-tool-vite-devtools
 ---
 
 ## Goal

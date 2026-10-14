@@ -7,6 +7,7 @@ related:
   - use-mcp
   - run-check
   - resolve-errors
+  - follow-tool-vite-devtools
 ---
 
 ## Goal
