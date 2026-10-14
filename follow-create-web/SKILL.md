@@ -10,7 +10,7 @@ related:
   - follow-robots-txt
   - follow-design-system
   - follow-service-cloudflare
-  - follow-tool-devframe
+  - follow-tool-devfra
   - run-dev
   - test-component
   - test-e2e
@@ -113,7 +113,7 @@ Choose the right web project type and hand the work off to the correct skill
 - Use /run-dev if needed
 - Use /follow-create-plugins if needed
 - Use /follow-create-web-mcp if needed
-- Use /follow-tool-devframe if the site needs devtools (inspector/analyzer)
+- Use /follow-tool-devfra if the site needs devtools (inspector/analyzer)
 - Use /test-component for component tests and /test-e2e for user flows
 
 ## Expected Outcome

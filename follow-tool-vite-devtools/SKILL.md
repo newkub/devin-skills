@@ -6,7 +6,7 @@ related:
   - wrikka-vite-devtools
   - follow-tool-vite
   - follow-tool-vite-plugins
-  - follow-tool-devframe
+  - follow-tool-devfra
   - follow-tool-vitest
   - follow-tool-rolldown
   - follow-my-techstack
@@ -98,7 +98,7 @@ related:
 
 - เขียน Vite plugin ปกติ → ใช้ `Plugin.devtools.setup` ตรง ๆ (docks, terminals, palette, custom renderers อยู่ที่นี่)
 - มี Devframe definition อยู่แล้ว → ใช้ `createPluginFromDevframe(def, { setup })` จาก `@vitejs/devtools-kit/node` แล้วได้ dock iframe จาก `id`/`name`/`icon`/`basePath` อัตโนมัติ — ไม่ต้องเขียน plugin เอง
-- ต้องการ tool ที่ไม่พึ่ง Vite เลย (CLI/MCP/static dashboard) → ไป `follow-tool-devframe` ซึ่งเป็นฐานของ Kit อีกชั้น
+- ต้องการ tool ที่ไม่พึ่ง Vite เลย (CLI/MCP/static dashboard) → ไป `follow-tool-devfra` ซึ่งเป็นฐานของ Kit อีกชั้น
 - เรียงชั้น: Vite DevTools → `@vitejs/devtools-kit` (hub: dock, palette, terminals, `devtools.setup`) → Devframe (framework-neutral)
 
 ### 2. Config Discipline

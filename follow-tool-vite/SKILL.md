@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้ Vite 8 (Rolldown bundler) �
 argument-hint: "[scope]"
 related:
   - follow-tool-vitest
-  - follow-tool-devframe
+  - follow-tool-devfra
   - follow-tool-rolldown
   - follow-tool-tsdown
   - follow-tool-vitepress
@@ -26,7 +26,7 @@ related:
 
 - gzip/brotli pre-compression ดู `references/apis.md`
 
-- Boundary: ใช้ Vite สำหรับ app dev server/build — library bundling ใช้ `/follow-tool-tsdown`; raw bundler internals ใช้ `/follow-tool-rolldown`; static docs site ใช้ `/follow-tool-vitepress`; devtools (inspector/analyzer mounted ใน app หรือ standalone) ใช้ `/follow-tool-devframe`; testing setup ใช้ `/follow-tool-vitest`
+- Boundary: ใช้ Vite สำหรับ app dev server/build — library bundling ใช้ `/follow-tool-tsdown`; raw bundler internals ใช้ `/follow-tool-rolldown`; static docs site ใช้ `/follow-tool-vitepress`; devtools (inspector/analyzer mounted ใน app หรือ standalone) ใช้ `/follow-tool-devfra`; testing setup ใช้ `/follow-tool-vitest`
 
 ## Execute
 
@@ -137,7 +137,7 @@ related:
 - ใช้ absolute paths สำหรับ `resolve.alias`
 
 - ใช้ /follow-tool-vitest สำหรับ test setup (ดู `### 6. Testing and Deployment`)
-- ใช้ /follow-tool-devframe ถ้าจำเป็น (devtool/inspector สำหรับ app)
+- ใช้ /follow-tool-devfra ถ้าจำเป็น (devtool/inspector สำหรับ app)
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
 - ใช้ /follow-tool-vite-plugins สำหรับ plugin selection/setup
 - ใช้ /follow-tool-tsdown ถ้าจำเป็น
