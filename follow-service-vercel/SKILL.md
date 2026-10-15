@@ -1,6 +1,6 @@
 ---
 name: follow-service-vercel
-description: Deploy applications บน Vercel พร้อม serverless และ edge functions
+description: Deploy applications on Vercel with serverless and edge functions
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -14,12 +14,12 @@ related:
 
 ## Goal
 
-Deploy applications บน Vercel platform พร้อม auto-build, preview deployments, serverless functions และ edge functions
+Deploy applications on the Vercel platform with auto-build, preview deployments, serverless functions, and edge functions
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel`, `deploy-to-vercel`
+- For related skills: `open-web-for-config-secret`, `follow-service-vercel`, `deploy-to-vercel`
 
-ครอบคลุมการติดตั้ง Vercel CLI, link project, configure, build, deploy, environment variables, serverless/edge functions และ CI/CD
+Covers installing the Vercel CLI, linking a project, configuring, building, deploying, environment variables, serverless/edge functions, and CI/CD
 
 ## Execute
 
@@ -29,31 +29,31 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 |--------|----------|
 | Setup  | `## Merged Details → setup-vercel` — Vercel CLI, login, link project |
 | Config | `## Merged Details → config-vercel` — env vars, `vercel.json` config |
-| Verify | `## Merged Details → verify-connection` — CLI auth, project linked, env vars ครบ |
+| Verify | `## Merged Details → verify-connection` — CLI auth, project linked, env vars complete |
 
-อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+Read `workflows/<name>/SKILL.md` per topic and follow the flow there — do not execute from this table directly
 
 ### 1. Install Vercel CLI
 
-> Goal: ติดตั้งและ authenticate Vercel CLI
+> Goal: Install and authenticate the Vercel CLI
 
 Latest: `vercel@60.1.3` CLI, `@vercel/node` builder (verified 2026-09-26)
 
-1. รัน `bun add -D vercel`
-2. หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง
-3. รัน `bunx vercel login` เพื่อ authenticate
+1. Run `bun add -D vercel`
+2. Or use `bunx vercel` without installing
+3. Run `bunx vercel login` to authenticate
 
 ### 2. Link Project
 
-> Goal: เชื่อมต่อ project กับ Vercel
+> Goal: Connect the project with Vercel
 
-1. รัน `bunx vercel link` ใน project directory
-2. ยืนยัน project settings
-3. หรือใช้ `VERCEL_ORG_ID` และ `VERCEL_PROJECT_ID` สำหรับ CI/CD
+1. Run `bunx vercel link` in the project directory
+2. Confirm the project settings
+3. Or use `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` for CI/CD
 
 ### 3. Configure vercel.json
 
-> Goal: กำหนด configuration สำหรับ deployment
+> Goal: Define the deployment configuration
 
 `vercel.json`:
 ```json
@@ -76,37 +76,37 @@ Latest: `vercel@60.1.3` CLI, `@vercel/node` builder (verified 2026-09-26)
 
 ### 4. Framework Presets
 
-> Goal: Vercel รองรับ auto-detection สำหรับ frameworks
+> Goal: Vercel supports auto-detection for frameworks
 
-- Next.js: ใช้ `next` preset อัตโนมัติ
-- Nuxt: ใช้ `nuxt` preset พร้อม SSR
-- SvelteKit: ใช้ `sveltekit` preset
-- Remix: ใช้ `remix` preset
-- Astro: ใช้ `astro` preset
-- Vite: ใช้ `vite` preset สำหรับ static build
+- Next.js: uses the `next` preset automatically
+- Nuxt: uses the `nuxt` preset with SSR
+- SvelteKit: uses the `sveltekit` preset
+- Remix: uses the `remix` preset
+- Astro: uses the `astro` preset
+- Vite: uses the `vite` preset for a static build
 
 ### 5. Build And Deploy
 
-> Goal: Build และ deploy application
+> Goal: Build and deploy the application
 
-1. รัน `bun run build` หรือ `nitro build` สำหรับ Nitro projects
-2. ตรวจสอบว่า build สำเร็จและ output พร้อม
-3. รัน `bunx vercel deploy` สำหรับ preview deployment
-4. รัน `bunx vercel deploy --prod` สำหรับ production
-5. สำหรับ Nitro: ตั้ง preset `vercel` ใน nitro config แล้วรัน `nitro build` จากนั้น `bunx vercel deploy --prebuilt`
+1. Run `bun run build` or `nitro build` for Nitro projects
+2. Verify the build succeeds and the output is ready
+3. Run `bunx vercel deploy` for a preview deployment
+4. Run `bunx vercel deploy --prod` for production
+5. For Nitro: set the `vercel` preset in the nitro config, then run `nitro build` and `bunx vercel deploy --prebuilt`
 
 ### 6. Environment Variables
 
-> Goal: ตั้งค่า environment variables
+> Goal: Set environment variables
 
-1. รัน `bunx vercel env add KEY_NAME`
-2. หรือใช้ dashboard สำหรับ manage variables
-3. ใช้ `vercel env pull .env.local` เพื่อ sync ไปยัง local
-4. กำหนด `NODE_ENV`, `API_URL` และ secrets
+1. Run `bunx vercel env add KEY_NAME`
+2. Or use the dashboard to manage variables
+3. Use `vercel env pull .env.local` to sync to local
+4. Define `NODE_ENV`, `API_URL`, and secrets
 
 ### 7. Serverless Functions
 
-> Goal: สร้าง serverless functions ใน `api/` directory
+> Goal: Create serverless functions in the `api/` directory
 
 `api/hello.ts`:
 ```typescript
@@ -119,7 +119,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
 ### 8. Edge Functions
 
-> Goal: สร้าง edge functions สำหรับ edge deployment
+> Goal: Create edge functions for edge deployment
 
 `api/edge.ts`:
 ```typescript
@@ -134,17 +134,17 @@ export default async function handler(req: Request) {
 
 ### 9. Watch Deployment
 
-> Goal: ตรวจสอบ deployment ด้วย browser preview
+> Goal: Check the deployment with a browser preview
 
-1. ทำ `/watch-browser fix` ด้วย deployment URL
-2. ตรวจสอบว่า page load สำเร็จ
-3. ตรวจสอบ console errors และ network errors
-4. ทำ `/resolve-errors` เมื่อพบปัญหา
-5. ทำ `/loop-until-complete` จนกว่า deployment live สำเร็จ
+1. Do `/watch-browser fix` with the deployment URL
+2. Verify the page loads successfully
+3. Check console errors and network errors
+4. Do `/resolve-errors` when a problem is found
+5. Do `/loop-until-complete` until the deployment is live
 
 ### 10. CI/CD Deployment
 
-> Goal: ตั้งค่า automated deployment
+> Goal: Set up automated deployment
 
 `.github/workflows/deploy.yml`:
 ```yaml
@@ -166,45 +166,45 @@ jobs:
 
 ### 1. Framework Detection
 
-- Vercel จะ auto-detect framework จาก `package.json`
-- กำหนด `buildCommand` ใน `package.json` scripts หรือ `vercel.json`
-- ระบุ `outputDirectory`: `dist`, `build`, หรือ `.next` ตาม framework
-- ใช้ `bun install` สำหรับ Bun projects
+- Vercel auto-detects the framework from `package.json`
+- Define `buildCommand` in `package.json` scripts or `vercel.json`
+- Specify `outputDirectory`: `dist`, `build`, or `.next` per framework
+- Use `bun install` for Bun projects
 
 ### 2. Build Process
 
-- ใช้ `nitro build` ก่อน deploy เสมอ สำหรับ Nitro projects
-- ตรวจสอบ build output ว่าสำเร็จ
-- ตรวจสอบ bundle size
+- Always run `nitro build` before deploying Nitro projects
+- Verify the build output succeeds
+- Check the bundle size
 
 ### 3. Environment Variables
 
-- ใช้ `vercel env` CLI หรือ dashboard
-- ใช้ `/follow-secret-manager` สำหรับจัดการ `VERCEL_TOKEN` และ secrets ก่อน sync ไป Vercel หรือ CI/CD
-- ใช้ `vercel env pull` สำหรับ sync ไป local
-- ไม่ hardcode secrets
+- Use the `vercel env` CLI or the dashboard
+- Use `/follow-secret-manager` to manage `VERCEL_TOKEN` and secrets before syncing to Vercel or CI/CD
+- Use `vercel env pull` to sync to local
+- Never hardcode secrets
 
 ### 4. Functions
 
-- Serverless functions สร้างใน `api/` directory
-- Edge functions ใช้ `runtime: 'edge'`
-- กำหนด `regions` ใน `vercel.json` ถ้าต้องการ
+- Serverless functions live in the `api/` directory
+- Edge functions use `runtime: 'edge'`
+- Define `regions` in `vercel.json` when needed
 
 ### 5. Deployment
 
-- ทุก PR จะสร้าง preview deployment อัตโนมัติ
-- ใช้ `bunx vercel deploy` สำหรับ preview
-- ใช้ `bunx vercel deploy --prod` สำหรับ production
-- ตั้งค่า protection rules สำหรับ production deployments
-- ใช้ `/watch-browser fix` สำหรับ monitoring
-- ทำ `/loop-until-complete` จนกว่า deployment live
+- Every PR creates a preview deployment automatically
+- Use `bunx vercel deploy` for preview
+- Use `bunx vercel deploy --prod` for production
+- Set protection rules for production deployments
+- Use `/watch-browser fix` for monitoring
+- Do `/loop-until-complete` until the deployment is live
 
 ### 6. Advanced Configuration
 
-- กำหนด `rewrites` ใน `vercel.json` สำหรับ URL routing
-- กำหนด `headers` สำหรับ security และ caching
-- ใช้ `crons` สำหรับ scheduled functions
-- ใช้ `ignoreCommand` สำหรับ skip builds
+- Define `rewrites` in `vercel.json` for URL routing
+- Define `headers` for security and caching
+- Use `crons` for scheduled functions
+- Use `ignoreCommand` to skip builds
 
 ## Merged Details
 
@@ -212,171 +212,171 @@ jobs:
 
 ##### Goal
 
-ตั้งค่า/แก้ไข Vercel configuration — environment variables และ `vercel.json` (rewrites, headers, functions, crons) — โดยไม่ clobber settings เดิม
+Set/edit Vercel configuration — environment variables and `vercel.json` (rewrites, headers, functions, crons) — without clobbering existing settings
 
 ##### Scope
 
-- ครอบคลุม `vercel.json`, `vercel env` และ project settings
-- ถ้ายังไม่ได้ link project → ทำ `## Merged Details → setup-vercel` ก่อน
-- deploy จริง → `/deploy-to-vercel`
+- Covers `vercel.json`, `vercel env`, and project settings
+- If the project is not linked yet → do `## Merged Details → setup-vercel` first
+- Real deploy → `/deploy-to-vercel`
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ config ปัจจุบันก่อนแก้
+> Goal: Know the current config before editing
 
-1. อ่าน `vercel.json`, `.vercel/project.json` และ env files ที่มีอยู่
-2. รัน `bunx vercel pull` เพื่อ sync project settings ล่าสุดจาก dashboard
-3. ทำ `/deep-review` domain `review-config` หรือ `/report-config-files` ถ้าต้องรู้ drift
+1. Read `vercel.json`, `.vercel/project.json`, and existing env files
+2. Run `bunx vercel pull` to sync the latest project settings from the dashboard
+3. Do `/deep-review` domain `review-config` or `/report-config-files` if drift must be known
 
 ###### 2. Configure Environment Variables
 
-> Goal: env vars ถูกต้องต่อ environment
+> Goal: env vars correct per environment
 
-1. เพิ่ม key ด้วย `bunx vercel env add KEY_NAME` — เลือก environment (production/preview/development)
-2. sync ลง local ด้วย `bunx vercel env pull .env.local`
-3. secrets → `/follow-secret-manager` ก่อน แล้วค่อย push ขึ้น Vercel — ห้ามใส่ใน `vercel.json`
+1. Add a key with `bunx vercel env add KEY_NAME` — pick the environment (production/preview/development)
+2. Sync to local with `bunx vercel env pull .env.local`
+3. secrets → `/follow-secret-manager` first, then push up to Vercel — never put them in `vercel.json`
 
 ###### 3. Configure vercel.json
 
-> Goal: config file ถูกต้องตาม schema
+> Goal: config file correct per schema
 
-1. แก้เฉพาะ keys ที่จำเป็นใน `vercel.json` — merge กับของเดิม ห้าม overwrite ทั้งไฟล์
-2. keys ที่ใช้บ่อย: `rewrites`, `redirects`, `headers`, `functions`, `crons`, `regions`, `ignoreCommand`
-3. ระบุ `buildCommand`/`outputDirectory` เฉพาะเมื่อ framework detection ไม่ตรง — ดู official docs https://vercel.com/docs/projects/project-configuration
+1. Edit only the necessary keys in `vercel.json` — merge with the existing one, never overwrite the whole file
+2. Commonly used keys: `rewrites`, `redirects`, `headers`, `functions`, `crons`, `regions`, `ignoreCommand`
+3. Set `buildCommand`/`outputDirectory` only when framework detection is wrong — see official docs https://vercel.com/docs/projects/project-configuration
 
 ###### 4. Verify
 
-> Goal: config ใช้ได้จริงก่อน deploy
+> Goal: config works for real before deploy
 
-1. รัน `bunx vercel build` เพื่อตรวจว่า config build ได้ local
-2. ทำ `/run-verify` สำหรับ lint, typecheck
-3. ถ้าพัง → revert key ที่เพิ่งแก้แล้ว report diff ด้วย `/report-before-after`
+1. Run `bunx vercel build` to check the config builds locally
+2. Do `/run-verify` for lint, typecheck
+3. If broken → revert the key just changed, then report the diff with `/report-before-after`
 
 ##### Rules
 
-- ห้ามใส่ secrets ใน `vercel.json` หรือ commit `.env.local`
-- แก้ config แบบ incremental — เปลี่ยนทีละ key แล้ว verify
-- ทุก env var ที่เพิ่มต้องระบุ target environment ชัดเจน
+- Never put secrets in `vercel.json` or commit `.env.local`
+- Edit config incrementally — change one key then verify
+- Every added env var must clearly state its target environment
 
 ##### Expected Outcome
 
-- env vars sync ระหว่าง local กับ Vercel ถูกต้อง
-- `vercel.json` ผ่าน schema และ `vercel build` สำเร็จ
-- พร้อม deploy ด้วย `/deploy-to-vercel`
+- env vars synced correctly between local and Vercel
+- `vercel.json` passes schema and `vercel build` succeeds
+- ready to deploy with `/deploy-to-vercel`
 
 ### setup-vercel
 
 ##### Goal
 
-ติดตั้ง Vercel CLI, authenticate และ link project กับ Vercel — first-time setup ก่อน deploy
+Install the Vercel CLI, authenticate, and link the project with Vercel — first-time setup before deploy
 
 ##### Scope
 
-- ติดตั้ง `vercel` CLI, `vercel login`, `vercel link`
-- สร้าง `.vercel/project.json` ที่มี `orgId`/`projectId`
-- ถ้า link แล้ว → verify เท่านั้น; config env/vercel.json → `## Merged Details → config-vercel`; deploy → `/deploy-to-vercel`
+- Install the `vercel` CLI, `vercel login`, `vercel link`
+- Create `.vercel/project.json` containing `orgId`/`projectId`
+- If already linked → verify only; config env/vercel.json → `## Merged Details → config-vercel`; deploy → `/deploy-to-vercel`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยัน project พร้อมและยังไม่ได้ link
+> Goal: Confirm the project is ready and not yet linked
 
-1. ตรวจ `package.json` ว่ามี `vercel` แล้วหรือยัง และดู `.vercel/project.json` ว่ามีอยู่หรือไม่
-2. ถ้ามี `.vercel/project.json` แล้ว → skip ไปขั้น verify
-3. เพิ่ม `.vercel` ใน `.gitignore` ถ้ายังไม่มี
+1. Check `package.json` for `vercel` already present, and see whether `.vercel/project.json` exists
+2. If `.vercel/project.json` already exists → skip to the verify step
+3. Add `.vercel` to `.gitignore` if it is not there
 
 ###### 2. Install CLI
 
-> Goal: มี Vercel CLI พร้อมใช้
+> Goal: Have the Vercel CLI ready to use
 
-1. รัน `bun add -D vercel` หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง
-2. ตรวจว่า CLI ทำงานด้วย `bunx vercel --version`
+1. Run `bun add -D vercel` or use `bunx vercel` without installing
+2. Verify the CLI works with `bunx vercel --version`
 
 ###### 3. Authenticate
 
-> Goal: CLI login กับ Vercel account
+> Goal: CLI logs in to the Vercel account
 
-1. รัน `bunx vercel login` แล้วให้ user ยืนยันผ่าน email/provider
-2. ตรวจ auth ด้วย `bunx vercel whoami`
-3. สำหรับ CI/CD → เก็บ `VERCEL_TOKEN` ผ่าน `/follow-secret-manager`
+1. Run `bunx vercel login` and let the user confirm via email/provider
+2. Verify auth with `bunx vercel whoami`
+3. For CI/CD → store `VERCEL_TOKEN` via `/follow-secret-manager`
 
 ###### 4. Link Project
 
-> Goal: project เชื่อมกับ Vercel project
+> Goal: Connect the project with a Vercel project
 
-1. รัน `bunx vercel link` ใน project root แล้วเลือก scope และ project (สร้างใหม่หรือ existing)
-2. ตรวจ `.vercel/project.json` มี `orgId` และ `projectId`
-3. สำหรับ CI → เก็บ `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` ผ่าน `/follow-secret-manager`
+1. Run `bunx vercel link` in the project root, then pick the scope and project (new or existing)
+2. Verify `.vercel/project.json` contains `orgId` and `projectId`
+3. For CI → store `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` via `/follow-secret-manager`
 
 ###### 5. Verify
 
-> Goal: setup พร้อม deploy
+> Goal: Setup is ready to deploy
 
-1. รัน `bunx vercel pull` เพื่อ sync project settings/env ลง local
-2. ทำ `/run-verify` สำหรับ lint, typecheck
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
-4. สำเร็จ → ทำ `/suggest-next-action`
+1. Run `bunx vercel pull` to sync project settings/env to local
+2. Do `/run-verify` for lint, typecheck
+3. If verify fails → do `/resolve-errors` max 3 rounds, then stop and report
+4. Success → do `/suggest-next-action`
 
 ##### Rules
 
-- ห้าม commit `.vercel/` หรือ `VERCEL_TOKEN`
-- ใช้ `bunx vercel` หรือ dev dependency — ห้ามพึ่ง global install ที่ไม่ pin
-- ใช้ official docs เป็นแหล่งหลัก ถ้าไม่แน่ใจ → ดู https://vercel.com/docs
+- Never commit `.vercel/` or `VERCEL_TOKEN`
+- Use `bunx vercel` or a dev dependency — never rely on an unpinned global install
+- Use official docs as the primary source — if unsure → see https://vercel.com/docs
 
 ##### Expected Outcome
 
-- Vercel CLI ติดตั้งและ authenticated
-- project link แล้วพร้อม `.vercel/project.json`
-- พร้อมไป `## Merged Details → config-vercel` หรือ `/deploy-to-vercel`
+- Vercel CLI installed and authenticated
+- Project linked with `.vercel/project.json`
+- Ready for `## Merged Details → config-vercel` or `/deploy-to-vercel`
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า Vercel เชื่อมต่อได้จริง — CLI authenticated, project linked, env vars sync ครบ
+Confirm after setup/config that Vercel really connects — CLI authenticated, project linked, env vars fully synced
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-vercel` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่ deploy หรือแก้ env
+- Used when `/follow-service-vercel` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not deploy or change env
 
 ##### Execute
 
 ###### 1. Check CLI Auth
 
-> Goal: vercel login และ scope ถูก
+> Goal: vercel login and the correct scope
 
-1. `vercel whoami` — ต้องคืน user/team
-2. ตรวจ scope ตรงกับ project owner (personal vs team) — `vercel teams ls` ถ้าจำเป็น
-3. auth fail → แนะนำ `## Merged Details → setup-vercel` — ไม่ login เอง
+1. `vercel whoami` — must return the user/team
+2. Check the scope matches the project owner (personal vs team) — `vercel teams ls` if needed
+3. Auth fail → recommend `## Merged Details → setup-vercel` — do not log in yourself
 
 ###### 2. Check Project Link
 
-> Goal: local project link กับ Vercel project ถูกต้อง
+> Goal: The local project is linked to the correct Vercel project
 
-1. ตรวจ `.vercel/project.json` — `projectId`/`orgId` มีและตรง project ที่คาด
-2. `vercel project ls` หา project — flag ถ้า link ชี้ project ผิด
-3. `vercel env ls` — env vars ที่ code ต้องการมีบน Vercel ครบ (เทียบ `.env.example`)
+1. Check `.vercel/project.json` — `projectId`/`orgId` exist and match the expected project
+2. `vercel project ls` to find the project — flag if the link points to the wrong project
+3. `vercel env ls` — the env vars the code needs exist on Vercel (compare with `.env.example`)
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `not-linked` / `env-missing`
 
 ##### Rules
 
-- ใช้ ls/inspect commands เท่านั้น — ห้าม deploy/env add
-- ไม่ print env var values — แสดงแค่ names ที่ขาด
-- not-linked → รายงานให้รัน `vercel link` ผ่าน setup workflow
+- Use ls/inspect commands only — never deploy or env add
+- Do not print env var values — show only the missing names
+- not-linked → report to run `vercel link` via the setup workflow
 
 ##### Expected Outcome
 
-- Verdict พร้อม project/org + env coverage evidence
+- Verdict with project/org + env coverage evidence
 
 ### workflows/deploy-to-vercel
 
@@ -1094,11 +1094,11 @@ bun add -D vercel
 
 ##### Goal
 
-ใช้งาน Vercel CLI สำหรับ deploy, manage และ monitor projects บน Vercel platform
+Use the Vercel CLI to deploy, manage, and monitor projects on the Vercel platform
 
 ##### Scope
 
-ใช้สำหรับโปรเจกต์ที่ deploy ไปยัง Vercel รวมถึง Next.js, Nuxt, React, และ frameworks อื่นๆ
+Used for projects deployed to Vercel, including Next.js, Nuxt, React, and other frameworks
 
 ##### Execute
 
@@ -1106,266 +1106,266 @@ bun add -D vercel
 
 > Goal: Install And Authenticate
 
-ติดตั้งและตั้งค่า Vercel CLI
+Install and set up the Vercel CLI
 
-1. ติดตั้ง Vercel CLI ด้วย `bun add -g vercel` หรือ `bun add -g vercel`
-2. ตรวจสอบ version ด้วย `vercel --version`
-3. Login ด้วย `vercel login` เพื่อเชื่อมต่อกับ Vercel account
-4. เลือก team และ scope ที่ต้องการ
-5. ตรวจสอบ authentication ด้วย `vercel whoami`
+1. Install the Vercel CLI with `bun add -g vercel` or `bun add -g vercel`
+2. Check the version with `vercel --version`
+3. Log in with `vercel login` to connect to the Vercel account
+4. Pick the team and scope you want
+5. Verify authentication with `vercel whoami`
 
 ###### 2. Initialize Project
 
 > Goal: Initialize Project
 
-สร้างและ link โปรเจกต์กับ Vercel
+Create and link the project with Vercel
 
-1. Link โปรเจกต์ที่มีอยู่ด้วย `vercel link`
-2. สร้างโปรเจกต์ใหม่ด้วย `vercel`
-3. ตั้งค่า project name และ settings
-4. เลือก framework preset หรือ custom build settings
-5. สร้าง `vercel.json` config file หากจำเป็น
+1. Link an existing project with `vercel link`
+2. Create a new project with `vercel`
+3. Set the project name and settings
+4. Pick a framework preset or custom build settings
+5. Create a `vercel.json` config file when needed
 
 ###### 3. Local Development
 
 > Goal: Local Development
 
-พัฒนาและทดสอบใน local environment
+Develop and test in the local environment
 
-1. รัน local dev server ด้วย `vercel dev`
-2. ตรวจสอบ logs และ errors ใน terminal
-3. ใช้ `--listen` flag สำหรับ custom port
-4. Test environment variables และ build settings
-5. Simulate production environment ใน local
+1. Run the local dev server with `vercel dev`
+2. Check logs and errors in the terminal
+3. Use the `--listen` flag for a custom port
+4. Test environment variables and build settings
+5. Simulate the production environment locally
 
 ###### 4. Deploy To Preview
 
 > Goal: Deploy To Preview
 
-Deploy ไปยัง preview environments
+Deploy to preview environments
 
-1. Deploy ด้วย `vercel` เพื่อสร้าง preview deployment
-2. ตรวจสอบ deployment URL และ status
-3. View logs ด้วย `vercel logs`
-4. Test preview deployment ก่อน merge
-5. Share preview URL สำหรับ code review
+1. Deploy with `vercel` to create a preview deployment
+2. Check the deployment URL and status
+3. View logs with `vercel logs`
+4. Test the preview deployment before merge
+5. Share the preview URL for code review
 
 ###### 5. Deploy To Production
 
 > Goal: Deploy To Production
 
-Deploy ไปยัง production environment
+Deploy to the production environment
 
-1. Deploy ไป production ด้วย `vercel --prod`
-2. ใช้ `--prebuilt` flag สำหรับ prebuilt deployments
-3. ตรวจสอบ production deployment status
-4. Monitor production logs ด้วย `vercel logs --prod`
-5. Rollback หากจำเป็นด้วย `vercel rollback`
+1. Deploy to production with `vercel --prod`
+2. Use the `--prebuilt` flag for prebuilt deployments
+3. Check the production deployment status
+4. Monitor production logs with `vercel logs --prod`
+5. Roll back when needed with `vercel rollback`
 
 ###### 6. Manage Environment Variables
 
 > Goal: Manage Environment Variables
 
-จัดการ environment variables และ secrets
+Manage environment variables and secrets
 
-1. Set environment variable ด้วย `vercel env add`
-2. List environment variables ด้วย `vercel env ls`
-3. Pull environment variables ด้วย `vercel env pull`
-4. ใช้ environment-specific variables ด้วย `--environment`
-5. ไม่ commit secrets ไปยัง git
+1. Set an environment variable with `vercel env add`
+2. List environment variables with `vercel env ls`
+3. Pull environment variables with `vercel env pull`
+4. Use environment-specific variables with `--environment`
+5. Never commit secrets to git
 
 ###### 7. Monitor And Debug
 
 > Goal: Monitor And Debug
 
-Monitor และ debug deployments
+Monitor and debug deployments
 
-1. View logs ด้วย `vercel logs`
-2. Filter logs ด้วย `--level` flag
-3. Monitor specific deployment ด้วย `--deployment`
-4. Inspect build output ด้วย `vercel inspect`
-5. View deployment metrics ด้วย `vercel metrics`
+1. View logs with `vercel logs`
+2. Filter logs with the `--level` flag
+3. Monitor a specific deployment with `--deployment`
+4. Inspect build output with `vercel inspect`
+5. View deployment metrics with `vercel metrics`
 
 ###### 8. Manage Domains
 
 > Goal: Manage Domains
 
-จัดการ custom domains
+Manage custom domains
 
-1. Add custom domain ด้วย `vercel domains add`
-2. List domains ด้วย `vercel domains ls`
-3. Remove domain ด้วย `vercel domains rm`
+1. Add a custom domain with `vercel domains add`
+2. List domains with `vercel domains ls`
+3. Remove a domain with `vercel domains rm`
 4. Verify DNS configuration
-5. Configure SSL certificates อัตโนมัติ
+5. SSL certificates are configured automatically
 
 ###### 9. Team And Project Management
 
 > Goal: Team And Project Management
 
-จัดการ teams และ projects
+Manage teams and projects
 
-1. List projects ด้วย `vercel list`
-2. Switch teams ด้วย `vercel switch`
-3. Manage team members ผ่าน dashboard
+1. List projects with `vercel list`
+2. Switch teams with `vercel switch`
+3. Manage team members via the dashboard
 4. Configure project settings
-5. Manage billing และ usage
+5. Manage billing and usage
 
 ##### Rules
 
 ###### 1. Configuration Management
 
-จัดการ configuration files อย่างเป็นระบบ
+Manage configuration files systematically
 
-- ใช้ `vercel.json` สำหรับ custom build settings
-- ตั้งค่า `buildCommand` และ `outputDirectory` อย่างถูกต้อง
-- ใช้ environment-specific configs ด้วย `--environment`
-- ไม่ hardcode secrets ใน config files
-- ใช้ `.env` files สำหรับ local development
-- ใช้ Vercel dashboard สำหรับ sensitive configs
+- Use `vercel.json` for custom build settings
+- Set `buildCommand` and `outputDirectory` correctly
+- Use environment-specific configs with `--environment`
+- Never hardcode secrets in config files
+- Use `.env` files for local development
+- Use the Vercel dashboard for sensitive configs
 
 ###### 2. Deployment Best Practices
 
-ทำตาม best practices สำหรับ deployment
+Follow deployment best practices
 
-- Deploy ไป preview ก่อน production เสมอ
-- ใช้ Git integration สำหรับ automatic deployments
-- Test preview deployments ก่อน merge PR
-- ใช้ `--prebuilt` สำหรับ faster deployments
-- Monitor logs หลัง deploy ทุกครั้ง
-- ตั้งค่า deployment protection สำหรับ production
+- Always deploy to preview before production
+- Use Git integration for automatic deployments
+- Test preview deployments before merging a PR
+- Use `--prebuilt` for faster deployments
+- Monitor logs after every deploy
+- Set deployment protection for production
 
 ###### 3. Environment Variable Security
 
-รักษาความปลอดภัยของ environment variables
+Keep environment variables secure
 
-- ไม่ commit secrets ไปยัง version control
-- ใช้ `/follow-secret-manager` สำหรับจัดการ `VERCEL_TOKEN` และ secrets แทนการเก็บใน plain `.env`
-- ใช้ `vercel env add` แทนการแก้ config files
-- ใช้ environment-specific variables สำหรับ isolation
-- Rotate secrets อย่างสม่ำเสมอ
-- ตรวจสอบ variable access logs
-- ใช้ different environments สำหรับ dev/staging/prod
+- Never commit secrets to version control
+- Use `/follow-secret-manager` to manage `VERCEL_TOKEN` and secrets instead of plain `.env`
+- Use `vercel env add` instead of editing config files
+- Use environment-specific variables for isolation
+- Rotate secrets regularly
+- Check variable access logs
+- Use different environments for dev/staging/prod
 
 ###### 4. Development Workflow
 
-ใช้งาน development workflow ที่มีประสิทธิภาพ
+Use an efficient development workflow
 
-- ใช้ `vercel dev` สำหรับ local development
-- Simulate production environment ใน local
-- Test environment variables ใน local
-- Monitor logs และ errors ใน real-time
-- ใช้ Git integration สำหรับ automatic preview deployments
-- ใช้ branch-based deployments สำหรับ feature branches
+- Use `vercel dev` for local development
+- Simulate the production environment locally
+- Test environment variables locally
+- Monitor logs and errors in real time
+- Use Git integration for automatic preview deployments
+- Use branch-based deployments for feature branches
 
 ###### 5. Performance Optimization
 
-ปรับปรุง performance ของ deployments
+Improve deployment performance
 
-- ใช้ `--prebuilt` flag สำหรับ faster builds
-- Optimize build process ด้วย caching
-- ใช้ edge functions สำหรับ dynamic content
-- Monitor build times และ deployment duration
-- ใช้ image optimization สำหรับ assets
-- ตรวจสอบ bundle size และ loading performance
+- Use the `--prebuilt` flag for faster builds
+- Optimize the build process with caching
+- Use edge functions for dynamic content
+- Monitor build times and deployment duration
+- Use image optimization for assets
+- Check bundle size and loading performance
 
 ###### 6. CI/CD Integration
 
-ผสาน Vercel CLI เข้ากับ CI/CD pipelines
+Integrate the Vercel CLI with CI/CD pipelines
 
-- ใช้ `VERCEL_TOKEN` สำหรับ authentication
-- ใช้ `vercel --prod --token` ใน CI
-- ตั้งค่า environment variables ใน CI/CD
-- ใช้ `vercel env pull` สำหรับ local development
-- Test ก่อน deploy ด้วย `vercel dev`
-- ใช้ GitHub Actions หรือ GitLab CI สำหรับ automation
+- Use `VERCEL_TOKEN` for authentication
+- Use `vercel --prod --token` in CI
+- Set environment variables in CI/CD
+- Use `vercel env pull` for local development
+- Test before deploy with `vercel dev`
+- Use GitHub Actions or GitLab CI for automation
 
 ###### 7. Monitoring And Debugging
 
-Monitor และ debug deployments อย่างมีประสิทธิภาพ
+Monitor and debug deployments effectively
 
-- ใช้ `vercel logs` สำหรับ real-time monitoring
-- Filter logs ด้วย `--level error` สำหรับ errors
-- Monitor specific deployment ด้วย `--deployment`
-- ใช้ `vercel inspect` สำหรับ build debugging
-- ตรวจสอบ deployment metrics แล告 analytics
-- ใช้ Vercel dashboard สำหรับ detailed insights
+- Use `vercel logs` for real-time monitoring
+- Filter logs with `--level error` for errors
+- Monitor a specific deployment with `--deployment`
+- Use `vercel inspect` for build debugging
+- Check deployment metrics and analytics
+- Use the Vercel dashboard for detailed insights
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-service-vercel ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed
+- Use /follow-service-vercel if needed
 
 ##### Expected Outcome
 
-- Vercel CLI ติดตั้งและตั้งค่าอย่างถูกต้อง
-- Projects deploy ได้อย่างราบรื่น
-- Environment variables จัดการอย่างปลอดภัย
-- Development workflow มีประสิทธิภาพ
-- CI/CD integration ทำงานได้อัตโนมัติ
-- Monitoring และ debugging ทำได้อย่างมีประสิทธิภาพ
+- Vercel CLI installed and configured correctly
+- Projects deploy smoothly
+- Environment variables managed securely
+- Development workflow is efficient
+- CI/CD integration works automatically
+- Monitoring and debugging are effective
 
 ### references/vercel-overview
 
 ##### Goal
 
-ใช้ Vercel platform สำหรับ deploy และ host web applications ด้วย CI/CD, edge functions และ serverless APIs
+Use the Vercel platform to deploy and host web applications with CI/CD, edge functions, and serverless APIs
 
 ##### Scope
 
-ใช้สำหรับการ deploy Next.js, React, Vue, Svelte apps ด้วย preview deployments และ global edge network
+Used for deploying Next.js, React, Vue, Svelte apps with preview deployments and a global edge network
 
 ##### Execute
 
 ###### 1. Installation
 
-Install Vercel CLI ด้วย `bun add -D vercel`
+Install the Vercel CLI with `bun add -D vercel`
 
 ###### 2. Login
 
-Login ด้วย `bun vercel login`
+Log in with `bun vercel login`
 
 ###### 3. Deploy
 
-Deploy ด้วย `bun vercel`
+Deploy with `bun vercel`
 
 ###### 4. Git Integration
 
-ใช้ Git integration สำหรับ automatic deployments
+Use Git integration for automatic deployments
 
 ###### 5. Preview Deployments
 
-ใช้ preview deployments สำหรับ testing
+Use preview deployments for testing
 
 ###### 6. Environment Variables
 
-Configure environment variables ใน dashboard
+Configure environment variables in the dashboard
 
 ###### 7. Edge Functions
 
-ใช้ edge functions สำหรับ low latency
+Use edge functions for low latency
 
 ###### 8. Image Optimization
 
-ใช้ image optimization สำหรับ performance
+Use image optimization for performance
 
 ###### 9. Monitor
 
-Monitor deployments ใน dashboard
+Monitor deployments in the dashboard
 
 ##### Rules
 
-- ใช้ `bun add -D vercel` สำหรับ development
-- ใช้ Vercel CLI สำหรับ local development
-- ใช้ Git integration สำหรับ automatic deployments
-- ใช้ preview deployments สำหรับ testing
-- Configure environment variables ใน dashboard
-- ใช้ edge functions สำหรับ low latency
-- ใช้ image optimization สำหรับ performance
-- Monitor deployments ใน dashboard
+- Use `bun add -D vercel` for development
+- Use the Vercel CLI for local development
+- Use Git integration for automatic deployments
+- Use preview deployments for testing
+- Configure environment variables in the dashboard
+- Use edge functions for low latency
+- Use image optimization for performance
+- Monitor deployments in the dashboard
 
 ##### Expected Outcome
 
-- Instant deployments ด้วย Git integration
-- Preview deployments สำหรับ collaboration
-- Global edge network สำหรับ performance
+- Instant deployments with Git integration
+- Preview deployments for collaboration
+- Global edge network for performance
 
 ### references/vercel-website
 
@@ -1431,17 +1431,17 @@ Official website and documentation resources for Vercel.
 
 ## Expected Outcome
 
-- Application ที่ deploy บน Vercel ได้สำเร็จ
-- Auto-build configuration ที่รองรับ multiple frameworks
-- Serverless และ Edge functions ที่ทำงานได้ถูกต้อง
-- CI/CD pipeline ที่ deploy อัตโนมัติทั้ง preview และ production
-- Environment variables ที่จัดการอย่างปลอดภัย
-- Deployment live และใช้งานได้ ไม่มี console หรือ network errors
+- Application successfully deployed on Vercel
+- Auto-build configuration supporting multiple frameworks
+- Serverless and Edge functions working correctly
+- CI/CD pipeline deploying automatically to both preview and production
+- Environment variables managed securely
+- Deployment live with no console or network errors
 
 ## Guide
 
-อ้างอิงเพิ่มเติม:
+Additional references:
 
-- [## Merged Details → `### references/vercel-overview`](## Merged Details → `### references/vercel-overview`) — overview ของ Vercel platform
-- [## Merged Details → `### references/vercel-website`](## Merged Details → `### references/vercel-website`) — links หลักของ Vercel
+- [## Merged Details → `### references/vercel-overview`](## Merged Details → `### references/vercel-overview`) — overview of the Vercel platform
+- [## Merged Details → `### references/vercel-website`](## Merged Details → `### references/vercel-website`) — main Vercel links
 
