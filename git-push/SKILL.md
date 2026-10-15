@@ -1,22 +1,24 @@
 ---
 name: git-push
-description: Push commits จาก local repository และ git submodules ไปยัง remote repository อย่างปลอดภัย
+description: Safely push commits from the local repository and git submodules to the remote repository
 argument-hint: "[scope]"
 related:
   - git-commit
   - refactor-commit
   - update-github-metadata
   - resolve-errors
+  - scan-codebase
+  - scan-security
 
 ---
 
 ## Goal
 
-Push commits จาก local repository และ git submodules ไปยัง remote repository อย่างปลอดภัย
+Safely push commits from the local repository and git submodules to the remote repository
 
 ## Scope
 
-ใช้สำหรับ push commits ไปยัง remote repository ทั้ง root และ git submodules
+Use to push commits to the remote repository for both the root repo and git submodules
 
 ## Execute
 
@@ -24,95 +26,99 @@ Push commits จาก local repository และ git submodules ไปยัง
 
 > Goal: Check Status And Commits
 
-- ทำ `git branch --show-current`, `git status`, และ `git submodule status` เพื่อดูสถานะปัจจุบัน
-- ทำ `git log --oneline origin/<branch>..HEAD` เพื่อดู commits ที่จะ push
-- พิจารณา `/refactor-commit` ก่อน push เสมอ — ตรวจสอบว่า commits มีขนาดเหมาะสม message ชัดเจน และ logical order — ถ้า commits ใหญ่เกินไป หรือ message ไม่ชัด ให้ทำ `/refactor-commit` ก่อน push
+- run `git branch --show-current`, `git status`, and `git submodule status` to see the current state
+- run `git log --oneline origin/<branch>..HEAD` to see the commits to push
+- run `/scan-codebase` on the scope to be pushed to snapshot the structure/patterns/quality of what changed
+- if the diff touches manifest/lockfile or auth/payment/secrets code → also run `/scan-security` and resolve Critical/High before pushing
+- always consider `/refactor-commit` before push — check that commits are appropriately sized, with clear messages and logical order — if commits are too large or messages unclear, run `/refactor-commit` before pushing
 
 ### 2. Push
 
 > Goal: Push
 
-- ทำ `git push origin <branch>` และ `git submodule foreach --recursive git push origin <branch>` — ห้ามใช้ `--no-verify` หรือ flag ที่ข้าม git hooks ทุกประเภท
-- ถ้า git hook แจ้ง error ให้แก้ที่ root cause ไม่ข้าม hook — ทำ `/resolve-errors` ถ้าจำเป็น
-- ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
+- run `git push origin <branch>` and `git submodule foreach --recursive git push origin <branch>` — never use `--no-verify` or flags that skip any kind of git hook
+- if a git hook reports an error, fix the root cause instead of skipping the hook — run `/resolve-errors` if needed
+- if the push is rejected, stop and inform the user; do not force push
 
 ### 3. Validate
 
 > Goal: Validate
 
-- ทำ `git log --oneline origin/<branch> -5` เพื่อยืนยันว่า commits ปรากฏบน remote แล้ว
-- ทำ `git status` เพื่อยืนยันว่า local และ remote sync กัน
+- run `git log --oneline origin/<branch> -5` to confirm the commits appear on the remote
+- run `git status` to confirm local and remote are in sync
 
 ### 4. Check GitHub Actions
 
 > Goal: Check GitHub Actions
 
-- ทำ `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repo ไหม
-- ถ้ามี ให้ทำ `/resolve-github-actions-fails` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
+- run `gh workflow list` to check whether the repo has GitHub Actions
+- if yes, run `/resolve-github-actions-fails` to check and re-run until they pass
 
 ### 5. Update GitHub Repo Metadata
 
 > Goal: Update GitHub Repo Metadata
 
-อัปเดต repository metadata ให้สะท้อน project จริง ใช้ `/update-github-metadata` เป็น canonical workflow
+Update repository metadata to reflect the real project — use `/update-github-metadata` as the canonical workflow
 
-1. ทำ `/update-github-metadata` เพื่ออัปเดต description, homepage, topics, default branch
-2. ตรวจสอบว่า `package.json` มี `repository`, `homepage`, `bugs`, `license` fields ครบ
-3. ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false` (ใช้ docs แทน)
+1. run `/update-github-metadata` to update description, homepage, topics, default branch
+2. check that `package.json` has the `repository`, `homepage`, `bugs`, `license` fields complete
+3. for a public repo, set `--enable-issues=true` and `--enable-wiki=false` (use docs instead)
 
 ### 6. Open Repo
 
 > Goal: Open Repo
 
-- ทำ `git remote get-url origin` เพื่อดู remote URL
-- แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open-web` เพื่อเปิด repo ใน browser
+- run `git remote get-url origin` to see the remote URL
+- convert the SSH URL to an HTTPS URL, then run `/open-web` to open the repo in the browser
 
 ### 7. Ensure Repository Ready (Optional)
 
 > Goal: Ensure Repository Ready (Optional)
 
-ทำเฉพาะเมื่อ `git` แจ้ง error ว่าไม่มี repository หรือไม่มี remote
+Do this only when `git` reports an error that there is no repository or no remote
 
-- ถ้าไม่มี `.git` ให้ทำ `git init`, `git add -A`, `git commit -m "Initial commit"`, และทำ `/update-gitignore`
-- ถ้าไม่มี remote ให้ทำ `gh repo create <repo-name> --private --source=. --remote=origin --push` โดยใช้ชื่อโฟลเดอร์เป็น repo name
+- if there is no `.git`, run `git init`, `git add -A`, `git commit -m "Initial commit"`, and run `/update-gitignore`
+- if there is no remote, run `gh repo create <repo-name> --private --source=. --remote=origin --push` using the folder name as the repo name
 
 ## Rules
 
 ### 1. Repository Initialization
 
-- เป็น optional step ทำเฉพาะเมื่อ `git` แจ้ง error
-- ถ้าไม่มี remote ให้สร้างด้วย `gh repo create` และเป็น `--private` เบื้องต้น
-- ใช้ชื่อโฟลเดอร์ปัจจุบันเป็น repo name อัตโนมัติ
-- ทำ `/update-gitignore` หลัง `git init` เพื่อให้แน่ใจว่า `.gitignore` ครบถ้วน
+- this is an optional step, done only when `git` reports an error
+- if there is no remote, create one with `gh repo create` as `--private` initially
+- use the current folder name as the repo name automatically
+- run `/update-gitignore` after `git init` to ensure `.gitignore` is complete
 
 ### 2. Safety
 
-- ห้ามใช้ `--no-verify` หรือ flag อื่นใดที่ข้าม git hooks (เช่น `--no-verify`, `HOOK_SKIP=true`) — git hooks ต้องทำงานทุกครั้ง
-- ถ้า git hook แจ้ง error ให้แก้ที่ root cause ไม่ข้าม hook — ทำ `/resolve-errors` ถ้าจำเป็น
-- พิจารณา `/refactor-commit` ก่อน push เสมอ เพื่อให้ commits สะอาดและเหมาะสม
-- ไม่ force push โดยไม่จำเป็น
-- ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
+- never use `--no-verify` or any other flag that skips git hooks (e.g. `--no-verify`, `HOOK_SKIP=true`) — git hooks must always run
+- always pass the scan gate (`/scan-codebase` + `/scan-security` when applicable) before pushing — never push with unresolved Critical/High
+- if a git hook reports an error, fix the root cause instead of skipping the hook — run `/resolve-errors` if needed
+- always consider `/refactor-commit` before push to keep commits clean and appropriate
+- do not force push unless truly necessary
+- if the push is rejected, stop and inform the user; do not force push
 
 ### 3. Submodules
 
-- ต้อง push ทั้ง root และ submodules เสมอ
-- ใช้ `git submodule foreach --recursive` สำหรับ operations ทั้งหมด
+- always push both the root repo and the submodules
+- use `git submodule foreach --recursive` for all operations
 
 ### 4. GitHub Repo Metadata
 
-- ใช้ `/update-github-metadata` เป็น canonical workflow สำหรับ metadata
-- ตั้งค่า metadata ทุกครั้งหลังสร้าง repo ใหม่หรือ push ครั้งแรก
-- ตรวจสอบ `package.json` มี `repository`, `homepage`, `bugs`, `license` ครบ
-- ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false`
+- use `/update-github-metadata` as the canonical workflow for metadata
+- set the metadata every time after creating a new repo or the first push
+- check that `package.json` has `repository`, `homepage`, `bugs`, `license` complete
+- for a public repo, set `--enable-issues=true` and `--enable-wiki=false`
 
-- ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /git-commit-and-push ถ้าจำเป็น
+- Use /git-commit if needed
+- Use /git-commit-and-push if needed
 
 ## Expected Outcome
 
-- Repository พร้อม push แม้ยังไม่มี `.git` หรือ remote
-- Commits ถูก push ไปยัง remote สำเร็จ (ทั้ง root และ submodules)
-- Local และ remote sync กัน
-- GitHub Actions ผ่านทั้งหมด
-- Repo เปิดใน browser อัตโนมัติหลัง push สำเร็จ
-- แสดง URL commit บน remote ที่กดแล้วเปิดได้
+- the repository is ready to push even without an existing `.git` or remote
+- the push scope passes the scan gate (`/scan-codebase`, `/scan-security` when applicable) before pushing
+- commits pushed to the remote successfully (both root and submodules)
+- local and remote are in sync
+- all GitHub Actions pass
+- the repo opens in the browser automatically after a successful push
+- show a clickable URL of the commit on the remote

@@ -1,6 +1,6 @@
 ---
 name: git-commit-and-push
-description: Commit ไฟล์ push ไปยัง remote repository และ resolve CI/CD จนกว่าจะผ่าน
+description: Commit files, push to the remote repository, and resolve CI/CD until they pass
 argument-hint: "[scope]"
 related:
   - git-commit
@@ -9,68 +9,70 @@ related:
   - refactor-commit
   - update-references
   - follow-monorepo
+  - scan-codebase
+  - scan-security
 ---
 
 ## Goal
 
-Commit ไฟล์ push ไปยัง remote repository และ resolve CI/CD จนกว่าจะผ่าน live หรือ healthy
+Commit files, push to the remote repository, and resolve CI/CD until it passes live or healthy
 
 ## Scope
 
-ใช้สำหรับ commit push และ track/resolve CI/CD ในทีเดียว โดยเป็น orchestrator ที่เรียก `/git-commit`, `/git-push` และ `/resolve-cicd`
+Use to commit, push, and track/resolve CI/CD in one go — an orchestrator that calls `/git-commit`, `/git-push` and `/resolve-cicd`
 
 ## Execute
 
 ### 1. Commit Changes
 
-> Goal: สร้าง commit สำหรับไฟล์ที่มีการเปลี่ยนแปลง
+> Goal: create a commit for the changed files
 
-1. ทำตาม `/git-commit`
-2. ตรวจสอบด้วย `git log --oneline -3` ว่า commit ถูกสร้างถูกต้อง
+1. Follow `/git-commit`
+2. Verify with `git log --oneline -3` that the commit was created correctly
 
 ### 2. Refactor Commits (Optional)
 
-> Goal: ปรับปรุง commit history ก่อน push
+> Goal: improve the commit history before pushing
 
-1. ถ้า commit history ต้องการ refactor (break down, squash, fixup) → ทำ `/refactor-commit` ก่อน push
-2. ถ้า branch ถูก share กับทีมแล้ว → หยุดและขอ user ยืนยันก่อน force push
-3. ถ้าไม่ต้องการ refactor → ข้ามไป step ถัดไป
+1. if the commit history needs refactoring (break down, squash, fixup) → run `/refactor-commit` before push
+2. if the branch is already shared with the team → stop and ask the user to confirm before force pushing
+3. if no refactor is needed → skip to the next step
 
 ### 3. Push Changes
 
-> Goal: Push commits ไปยัง remote repository
+> Goal: Push commits to the remote repository
 
-1. ทำตาม `/git-push`
-2. ตรวจสอบด้วย `git status` ว่า local และ remote sync กัน
+1. Follow `/git-push` (including the scan gates `/scan-codebase` and `/scan-security` when applicable, per `/git-push`)
+2. Verify with `git status` that local and remote are in sync
 
 ### 4. Resolve CI/CD
 
-> Goal: ติดตามและ resolve CI/CD ที่ถูก trigger จาก push จนกว่าจะผ่าน
+> Goal: track and resolve the CI/CD triggered by the push until it passes
 
-1. ทำตาม `/resolve-cicd` เพื่อ track CI/CD pipeline ที่ถูก trigger จาก push
-2. ถ้า CI/CD ผ่าน → ไป step ถัดไป
-3. ถ้า CI/CD ล้มเหลว → `/resolve-cicd` จะ resolve, re-run, re-deploy จนกว่าจะผ่าน (สูงสุด 5 รอบ)
-4. ถ้าเกิน 5 รอบ → stop และ report พร้อม rollback recommendation
+1. Follow `/resolve-cicd` to track the CI/CD pipelines triggered by the push
+2. if CI/CD passes → go to the next step
+3. if CI/CD fails → `/resolve-cicd` will resolve, re-run, re-deploy until it passes (max 5 rounds)
+4. if it exceeds 5 rounds → stop and report with a rollback recommendation
 
 ### 5. Update References
 
-> Goal: อัปเดท references ทั้งหมดที่เกี่ยวข้อง
+> Goal: update all related references
 
-1. ทำตาม `/update-references`
+1. Follow `/update-references`
 
 ## Rules
-> Goal: ใช้เป็น orchestrator ปลอดภัยไม่ทำลาย history และ resolve CI/CD จนผ่าน
+> Goal: act as a safe orchestrator that does not break history and resolves CI/CD until green
 
-- ใช้เป็น orchestrator เท่านั้น รายละเอียดอยู่ใน `/git-commit`, `/git-push` และ `/resolve-cicd`
-- ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
-- ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน commit
-- ห้าม force-push หรือ rewrite history ระหว่าง resolve CI/CD
-- ถ้า resolve CI/CD ต้องแก้ code → stage เฉพาะไฟล์ที่เกี่ยวข้องกับ root cause
+- act as an orchestrator only — the details live in `/git-commit`, `/git-push` and `/resolve-cicd`
+- if the push is rejected, stop and inform the user; do not force push
+- if this is a monorepo, run `/follow-monorepo` before committing
+- never force-push or rewrite history while resolving CI/CD
+- if resolving CI/CD requires code changes → stage only the files related to the root cause
 
 ## Expected Outcome
 
-1. Changes ถูก commit ตาม conventional commits
-2. Changes ถูก push ไปยัง remote repository
-3. CI/CD pipeline ผ่าน หรือ CD live/healthy หรือ release สำเร็จ
-4. Git history สะอาดและติดตามง่าย
-5. ถ้าไม่ผ่าน มี last green SHA และ rollback recommendation ชัดเจน
+1. Changes committed per conventional commits
+2. Changes pushed to the remote repository
+3. CI/CD pipeline passes, or CD is live/healthy, or the release succeeds
+4. Git history is clean and easy to follow
+5. If it does not pass, there is a last green SHA and a clear rollback recommendation

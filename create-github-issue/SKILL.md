@@ -9,6 +9,7 @@ related:
   - update-github-issue
   - ask-me
   - list-github
+  - deep-validate
 
 ---
 
@@ -70,6 +71,14 @@ See also: `/resolve-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-web`
 6. The title must be English Title Case, at most 80 characters
 7. Write the description in English, except technical terms, project/skill names, paths, and commands
 
+### 4.5 Deep Validate Draft
+
+> Goal: Confirm the drafted issue is correct and complete before it is created
+
+1. Run `/deep-validate` on the draft (title + body) against the real project state
+2. Verify: every placeholder is replaced, repro steps/commands actually exist, referenced `file:line` evidence and linked issues/PRs are real, no duplicated or contradictory claims, acceptance criteria are measurable
+3. Critical/High findings → fix the draft and re-validate, never create an issue that fails validation; Minor/Info → fix inline if quick, otherwise note them in the body
+
 ### 5. Create Issue
 
 > Goal: Create the issue on GitHub
@@ -128,8 +137,8 @@ For the full update workflow, also use `/update-github-issue`
 
 1. Verify the issue was created/edited successfully
 2. `gh issue view <number>` for a final check
-3. After creating, open it in the browser with `/open-web` or `gh issue view <number> --web`
-4. Report the issue URL back
+3. The draft passed `/deep-validate` before creation — if the body was edited after validation, re-run `/deep-validate` on the live issue
+4. After creating, open it in the browser with `/open-web` or `gh issue view <number> --web` and report the issue URL back
 
 ## Rules
 
@@ -193,6 +202,7 @@ For the full update workflow, also use `/update-github-issue`
 - `delete`, `close`, `lock`, `transfer` are destructive and must be confirmed with the user first
 - Verify the issue number/repo before changing state
 - To close an issue, `gh issue close` is better than `delete`
+- Never create an issue without the `/deep-validate` draft gate (step 4.5)
 
 ### 10. Interactive And Script Mode
 

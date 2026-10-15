@@ -9,6 +9,8 @@ related:
   - git-push
   - deep-validate
   - review-github-pr
+  - scan-codebase
+  - scan-security
 ---
 
 ## Goal
@@ -55,9 +57,11 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 
 > Goal: ตรวจสอบครั้งสุดท้าย
 
-1. ทำ `/run-check` (lint, typecheck, tests)
-2. ทำ `/run-test` สำหรับ critical paths
-3. ตรวจสอบว่า branch ที merge เป็ต สมบูรณ์
+1. ทำ `/scan-codebase` บน diff ของ PR — snapshot โครงสร้าง/patterns/quality ก่อน merge
+2. ถ้า PR แตะ manifest/lockfile หรือ code ด้าน auth/payment/secrets → ทำ `/scan-security` และแก้ Critical/High ให้จบก่อน merge
+3. ทำ `/run-check` (lint, typecheck, tests)
+4. ทำ `/run-test` สำหรับ critical paths
+5. ตรวจสอบว่า branch ที merge เป็ต สมบูรณ์
 
 ### 5. Merge
 
@@ -98,6 +102,7 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 ## Rules
 
 - ไม่ merge ถ้า CI ไม่ผ่าน
+- ไม่ merge ถ้า scan gate ไม่ผ่าน — `/scan-codebase` ต้องไม่มี finding ระดับ Critical/High ใน diff; ถ้ามีต้องแก้ก่อน merge
 - ไม่ merge ถ้ามี unresolved conflicts
 - ไม่ merge โดยไม่มี approval (ยกเว้น user สั่ง)
 - ใช้ strategy ตาม project conventions
