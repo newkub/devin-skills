@@ -12,76 +12,76 @@ related:
 
 ## Goal
 
-ย้าย ESLint (+ Prettier) ไป Biome อย่าง incremental — `biome migrate` แปลง rules อัตโนมัติ, verify ว่า coverage เทียบเท่า, rollback ได้
+Move ESLint (+ Prettier) to Biome incrementally — `biome migrate` converts rules automatically, verify equivalent coverage, with rollback available
 
 ## Scope
 
-- ใช้กับ projects ที่มี `.eslintrc*`/`eslint.config.*` และ/หรือ `.prettierrc*`
-- ครอบคลุม `biome migrate eslint`, `biome migrate prettier`, rules mapping, incremental adoption
-- ถ้าต้องรัน ESLint คู่ Biome ชั่วคราว → วางแผน overlap ใน step 4
+- For projects with `.eslintrc*`/`eslint.config.*` and/or `.prettierrc*`
+- Covers `biome migrate eslint`, `biome migrate prettier`, rules mapping, incremental adoption
+- If ESLint must run alongside Biome temporarily → plan the overlap in step 4
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: รู้ coverage เดิมก่อนย้าย
+> Goal: know the original coverage before migrating
 
-1. รัน `eslint .` เก็บ error/warning counts ต่อ rule (ใช้ `--format json` ถ้าต้องการ diff ละเอียด)
-2. รัน `prettier --check .` เก็บสถานะ format เดิม
-3. list ESLint configs + plugins ทั้งหมด — ทำ `/deep-impact` ถ้า monorepo
-4. commit state ก่อนเริ่ม — rollback path ต้องพร้อม
+1. Run `eslint .` recording error/warning counts per rule (use `--format json` for a detailed diff)
+2. Run `prettier --check .` recording the original formatting state
+3. List all ESLint configs + plugins — do `/deep-impact` for a monorepo
+4. Commit the state before starting — the rollback path must be ready
 
 ### 2. Install Biome And Migrate
 
-> Goal: ใช้ official migrate commands
+> Goal: use the official migrate commands
 
-1. `bun add -D @biomejs/biome` แล้ว `bunx biome init` ถ้ายังไม่มี config
-2. รัน `bunx biome migrate eslint --write` — แปลง ESLint config → Biome rules
-3. รัน `bunx biome migrate prettier --write` — แปลง Prettier config → formatter options
-4. review diff ที่ tool สร้าง — tool แปลงเฉพาะ rules ที่มี equivalent ที่เหลือต้องตัดสินใจเอง
+1. `bun add -D @biomejs/biome` then `bunx biome init` if no config exists
+2. Run `bunx biome migrate eslint --write` — converts the ESLint config → Biome rules
+3. Run `bunx biome migrate prettier --write` — converts the Prettier config → formatter options
+4. Review the generated diff — the tool converts only rules with equivalents; the rest need a manual decision
 
 ### 3. Map Remaining Rules
 
-> Goal: จัดการ rules ที่ไม่มี equivalent
+> Goal: handle rules without an equivalent
 
-1. list ESLint rules ที่ migrate ไม่ได้ — เช็ค Biome rules docs ว่ามี equivalent หรือไม่
-2. plugin rules (react, import, ฯลฯ) → เช็ค Biome linter rules/domains ที่ครอบ
-3. rules ที่ไม่มีใน Biome → ตัดสินใจ: ยอมรับ coverage ต่ำลง, เก็บ ESLint เฉพาะ rules นั้น, หรือใช้ Biome plugin — ดู official docs
-4. เขียน mapping table ไว้ใน report
+1. List ESLint rules that couldn't migrate — check the Biome rules docs for an equivalent
+2. Plugin rules (react, import, etc.) → check which Biome linter rules/domains cover them
+3. Rules missing in Biome → decide: accept lower coverage, keep ESLint for just those rules, or use a Biome plugin — see official docs
+4. Write the mapping table into the report
 
 ### 4. Incremental Adoption
 
-> Goal: สลับทีละขั้น ไม่ big-bang
+> Goal: switch step by step, no big-bang
 
-1. เปิด `biome check` บนไฟล์/โฟลเดอร์ทีละส่วนผ่าน `files.includes`/`overrides` ใน `biome.jsonc`
-2. ระยะ transition: ESLint รันคู่ใน CI ได้ — ปิด rules ที่ Biome ครอบแล้วใน ESLint config เพื่อกัน double-report
-3. formatter: สลับ Prettier → Biome format ทีเดียว (format diff ใหญ่ — เตรียม format commit แยก)
-4. อัปเดต editor settings: disable ESLint/Prettier extensions บน scope ที่ Biome ครอบแล้ว
+1. Enable `biome check` on file/folder subsets via `files.includes`/`overrides` in `biome.jsonc`
+2. Transition period: ESLint can still run alongside in CI — disable rules Biome already covers in the ESLint config to prevent double-reporting
+3. Formatter: switch Prettier → Biome format in one go (the format diff is large — prepare a separate format commit)
+4. Update editor settings: disable ESLint/Prettier extensions for scopes Biome already owns
 
 ### 5. Verify And Clean Up
 
-> Goal: Biome ครอบเทียบเท่า แล้วลบของเก่า
+> Goal: Biome covers equivalently, then remove the old tools
 
-1. รัน `bunx biome check .` → diagnostics สมเหตุสมผลเทียบ ESLint baseline
-2. รัน test suite — auto-fix อาจเปลี่ยน code ต้อง test
-3. ผ่านครบ → ลบ `eslint`/`prettier` deps + configs, อัปเดต CI ไป `biome ci` — แยก commit
-4. ไม่ผ่าน → เก็บ ESLint ไว้บน rules ที่ยังต้องการ, report สิ่งที่ค้าง
+1. Run `bunx biome check .` → diagnostics sensible versus the ESLint baseline
+2. Run the test suite — auto-fix may change code, so tests are required
+3. All passing → remove `eslint`/`prettier` deps + configs, switch CI to `biome ci` — in a separate commit
+4. Not passing → keep ESLint for the still-needed rules, report what remains
 
 ## Rules
 
 ### 1. Safety
 
-- ใช้ `biome migrate` commands ก่อน manual edit เสมอ
-- format commit แยกจาก logic changes
-- ห้ามลบ ESLint จนกว่า verify coverage ผ่าน
+- Always use `biome migrate` commands before manual edits
+- Keep the format commit separate from logic changes
+- Never delete ESLint until the coverage verification passes
 
 ### 2. Coverage
 
-- report ต้องระบุ rules ที่หายไปชัดเจน — อย่าอ้าง "migrate สมบูรณ์" ถ้ามี rules ที่ไม่ได้ map
-- auto-fix ของ Biome อาจต่างจาก ESLint — review fix diff ก่อน commit
+- The report must clearly list dropped rules — never claim a "complete migration" while unmapped rules remain
+- Biome auto-fix may differ from ESLint — review fix diffs before committing
 
 ## Expected Outcome
 
-- `biome.jsonc` ครอบ lint+format เทียบเท่า ESLint/Prettier เดิม
-- rules mapping ชัดเจน — รู้ว่าอะไรหายไปและทำไม
-- CI รัน `biome ci`, deps เก่าถูกลบ (หรือเก็บไว้พร้อมเหตุผล)
+- `biome.jsonc` covers lint+format equivalent to the old ESLint/Prettier setup
+- Clear rules mapping — knowing what was lost and why
+- CI runs `biome ci`; old deps removed (or kept with a stated reason)

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-biome
-description: ตั้งค่าและใช้งาน Biome สำหรับ linting และ formatting แทน ESLint/Prettier
+description: Set up and use Biome for linting and formatting instead of ESLint/Prettier
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
@@ -18,13 +18,13 @@ related:
 
 ## Goal
 
-ติดตั้งและกำหนดค่า Biome สำหรับ linting และ formatting ด้วย Bun
+Install and configure Biome for linting and formatting with Bun
 
 ## Scope
 
-ใช้ `follow-tool-biome` สำหรับ tasks และ workflows เฉพาะที่กำหนด
+Use `follow-tool-biome` for the specified tasks and workflows only
 
-- Boundary: Biome รวม linter + formatter + assist สำหรับ JS/TS/JSON/CSS ใน tool เดียว — ใช้แทน ESLint+Prettier; ถ้า project ต้อง format หลายภาษา (markdown, toml, yaml, python, php) ให้ใช้ `/follow-tool-dprint` ร่วมหรือแทน; ถ้าต้องอยู่บน ESLint ดู `/follow-tool-eslint`; Ultracite preset บน Biome ดู official docs ผ่าน `/learn-from-web`
+- Boundary: Biome combines linter + formatter + assist for JS/TS/JSON/CSS in one tool — a replacement for ESLint+Prettier; if the project must format many languages (markdown, toml, yaml, python, php) use `/follow-tool-dprint` alongside or instead; if ESLint is required see `/follow-tool-eslint`; the Ultracite preset on Biome — see official docs via `/learn-from-web`
 
 - Latest: `@biomejs/biome@2.5.14` (verified 2026-09-26)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -32,16 +32,16 @@ related:
 
 ### 1. Setup
 
-> Goal: ติดตั้ง Biome CLI ใน project
+> Goal: install the Biome CLI in the project
 
-1. ติดตั้ง Biome CLI ด้วย `bun add -D @biomejs/biome`
-2. ตรวจสอบว่ามี `package.json` อยู่แล้ว
+1. Install the Biome CLI with `bun add -D @biomejs/biome`
+2. Confirm a `package.json` already exists
 
 ### 2. Configure
 
-> Goal: สร้าง `biome.jsonc` พร้อม scripts ใน `package.json`
+> Goal: create `biome.jsonc` with scripts in `package.json`
 
-1. สร้าง `biome.jsonc` ที่ root พร้อม VCS integration และ recommended rules
+1. Create `biome.jsonc` at the root with VCS integration and recommended rules
 
 ```json [biome.jsonc]
 {
@@ -71,7 +71,7 @@ related:
 }
 ```
 
-2. เพิ่ม scripts `lint`, `lint:fix` และ `format` ใน `package.json`
+2. Add `lint`, `lint:fix`, and `format` scripts to `package.json`
 
 ```json [package.json]
 {
@@ -85,8 +85,8 @@ related:
 
 ### 3. Monorepo
 
-> Goal: ตั้งค่า Biome สำหรับ monorepo workspaces
-1. ในแต่ละ workspace สร้าง `biome.jsonc` ด้วย `root: false` และ `extends: ["../../biome.jsonc"]`
+> Goal: set up Biome for monorepo workspaces
+1. In each workspace create `biome.jsonc` with `root: false` and `extends: ["../../biome.jsonc"]`
 
 ```json [biome.jsonc]
 {
@@ -97,10 +97,10 @@ related:
 
 ### 4. Optional Domains
 
-> Goal: เพิ่ม linter domains ตาม tech stack
-1. เลือก domains ที่เกี่ยวข้องกับโปรเจกต์ — ดูรายการและ dependency ที่ trigger แต่ละ domain ได้ที่ https://biomejs.dev/linter/domains/ (domain จะ activate อัตโนมัติเมื่อ dep ที่เกี่ยวข้องถูก declare ใน `package.json` เช่น `solid` เมื่อมี `solid-js`)
-2. เพิ่ม domains ใน `biome.jsonc` ผ่าน `linter.domains`
-3. Validate config ด้วย `bunx biome lint` — key/rule ที่วางผิด group จะขึ้น `deserialize` error พร้อม list ของ known keys
+> Goal: add linter domains per tech stack
+1. Pick the domains relevant to the project — see the list and each domain's triggering dependency at https://biomejs.dev/linter/domains/ (a domain activates automatically when its related dep is declared in `package.json`, e.g. `solid` when `solid-js` is present)
+2. Add the domains in `biome.jsonc` under `linter.domains`
+3. Validate the config with `bunx biome lint` — a key/rule placed in the wrong group raises a `deserialize` error listing known keys
 
 ```json [biome.jsonc]
 {
@@ -119,14 +119,14 @@ related:
 
 ### 5. Verify
 
-> Goal: ตรวจสอบว่า lint และ format ทำงานได้
-1. รัน `bun run lint`
-2. รัน `bun run format`
+> Goal: confirm lint and format work
+1. Run `bun run lint`
+2. Run `bun run format`
 
 ### 6. GitHub Actions CI
 
-> Goal: สร้าง GitHub Actions workflow สำหรับ Biome CI
-1. สร้าง `.github/workflows/biome.yml` สำหรับ CI/CD
+> Goal: create a GitHub Actions workflow for Biome CI
+1. Create `.github/workflows/biome.yml` for CI/CD
 
 ```yaml [.github/workflows/biome.yml]
 name: Code quality
@@ -155,68 +155,68 @@ jobs:
 
 ### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, biome.json, editor, CLI) | `workflows/setup-biome/SKILL.md` | migrate จาก ESLint/Prettier | `workflows/migrate-from-eslint-prettier/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, biome.json, editor, CLI) | `workflows/setup-biome/SKILL.md` | migrate from ESLint/Prettier | `workflows/migrate-from-eslint-prettier/SKILL.md` 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add -D @biomejs/biome` เท่านั้น
-- ต้องมี `package.json` อยู่แล้ว
+- Use `bun add -D @biomejs/biome` only
+- A `package.json` must already exist
 
 ### 2. Configuration
 
-- ใช้ `biome.jsonc` (with comments) ไม่ใช่ `.json`
-- Enable VCS integration ด้วย git
-- Root config ใช้ `root: true`
-- Workspace configs ใช้ `root: false` + `extends: "//"`
+- Use `biome.jsonc` (with comments), not `.json`
+- Enable VCS integration with git
+- Root config uses `root: true`
+- Workspace configs use `root: false` + `extends: "//"`
 
 ### 3. Scripts
 
-- ต้องมี `lint` script: `biome lint` (check only)
-- ต้องมี `lint:fix` script: `biome lint --write` (fix issues)
-- ต้องมี `format` script: `biome format --write`
+- Must have a `lint` script: `biome lint` (check only)
+- Must have a `lint:fix` script: `biome lint --write` (fix issues)
+- Must have a `format` script: `biome format --write`
 
 ### 4. Optional Domains
 
-- Domain ใช้ `recommended` เท่านั้น ไม่ใช้ `all`
-- Astro: สำหรับ Astro projects
-- Drizzle: สำหรับโปรเจกต์ที่ใช้ Drizzle ORM
-- Next: สำหรับ Next.js projects
-- Playwright: สำหรับ Playwright test projects
-- Project: สำหรับ project-level analysis (มีผลต่อ performance)
-- Qwik: สำหรับ Qwik projects
-- React: สำหรับ React projects (conflict กับ Solid)
-- ReactNative: สำหรับ React Native projects
-- Solid: สำหรับ Solid projects (conflict กับ React)
-- Svelte: สำหรับ Svelte projects
-- Tailwind: สำหรับ Tailwind CSS projects
-- Test: สำหรับ test files
-- Turborepo: สำหรับ Turborepo projects
-- Types: สำหรับ type analysis (มีผลต่อ performance — scan ทั้ง project + inference engine)
-- Vue: สำหรับ Vue projects
-- Tailwind ห้ามใช้กับ project ที่ใช้ UnoCSS/Tailwind-free stack
-- Stack ตัวอย่าง: Solid SPA/Start → `solid` + `project` + `types`
-- Rule ต้องอยู่ใต้ group ที่ตรงกับ diagnostic category ของมัน (เช่น `useOptionalChain` → `complexity`, `noDescendingSpecificity` → `style`) — nursery rules วางใต้ group `nursery`; เช็ค group ด้วย `bunx biome explain <rule>`
+- Domains use `recommended` only, never `all`
+- Astro: for Astro projects
+- Drizzle: for projects using Drizzle ORM
+- Next: for Next.js projects
+- Playwright: for Playwright test projects
+- Project: for project-level analysis (affects performance)
+- Qwik: for Qwik projects
+- React: for React projects (conflicts with Solid)
+- ReactNative: for React Native projects
+- Solid: for Solid projects (conflicts with React)
+- Svelte: for Svelte projects
+- Tailwind: for Tailwind CSS projects
+- Test: for test files
+- Turborepo: for Turborepo projects
+- Types: for type analysis (affects performance — scans the whole project + inference engine)
+- Vue: for Vue projects
+- Never use Tailwind with a project on a UnoCSS/Tailwind-free stack
+- Example stack: Solid SPA/Start → `solid` + `project` + `types`
+- A rule must sit under the group matching its diagnostic category (e.g. `useOptionalChain` → `complexity`, `noDescendingSpecificity` → `style`) — nursery rules go under the `nursery` group; check the group with `bunx biome explain <rule>`
 
-- ใช้ /follow-create-plugins (biome) ถ้าจำเป็น
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-dprint ถ้าจำเป็น
-- ใช้ /follow-tool-eslint ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
+- Use /follow-create-plugins (biome) if needed
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /follow-tool-dprint if needed
+- Use /follow-tool-eslint if needed
+- Use /run-lint if needed
+- Use /run-format if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Biome ติดตั้งและทำงานได้
-- มี scripts `lint`, `lint:fix` และ `format` พร้อมใช้
-- Config รองรับ git ignore
-- Monorepo workspaces extends จาก root config ถูกต้อง
+- Biome installed and working
+- `lint`, `lint:fix`, and `format` scripts ready to use
+- Config supports git ignore
+- Monorepo workspaces extend the root config correctly
 

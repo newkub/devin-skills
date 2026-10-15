@@ -1,65 +1,65 @@
 # act Best Practices
 
-แนวทางใช้ `act` (nektos/act) รัน GitHub Actions บน local อย่างมีประสิทธิภาพ ลดเวลา debug และหลีกเลี่ยง pitfalls ที่เจอบ่อย
+Guidance for using `act` (nektos/act) to run GitHub Actions locally efficiently — cutting debug time and avoiding common pitfalls
 
 ## Recommended Patterns
 
-### วินัยในการรัน
+### Run Discipline
 
-- รัน `act -n` (dry run) ก่อนเสมอเพื่อดู execution plan — ถ้า plan ผิดจะเสียเวลา pull image และรัน container ฟรี
-- รันเฉพาะ job ที่แก้ด้วย `act <event> -j <job>` ไม่ใช่รันทั้ง workflow ทุกครั้ง
-- ใช้ `--matrix` เพื่อรัน matrix combination เดียว เช่น `act -j test --matrix node:20` แทนการรันทั้ง matrix
-- ใช้ `-W <path>` เลือก workflow file เฉพาะเมื่อ repo มีหลาย workflows
-- สร้าง event payload จริงด้วย `-e event.json` เมื่อ workflow อ่าน `github.event` fields เช่น `pull_request.number` หรือ `workflow_dispatch.inputs`
+- Always run `act -n` (dry run) first to see the execution plan — a wrong plan wastes image pulls and container runs for nothing
+- Run only the job you changed with `act <event> -j <job>`, not the whole workflow every time
+- Use `--matrix` to run a single matrix combination, e.g. `act -j test --matrix node:20` instead of the full matrix
+- Use `-W <path>` to select a workflow file only when the repo has multiple workflows
+- Provide a real event payload with `-e event.json` when the workflow reads `github.event` fields such as `pull_request.number` or `workflow_dispatch.inputs`
 
 ### Image Selection
 
-- Default micro image (`node:16-buster-slim` based) เบาแต่ขาด tools หลายตัว — ถ้า job ใช้ `python`, `gcc`, หรือ common system tools ให้เปลี่ยนเป็น medium หรือ large image
-- Medium image `ghcr.io/catthehacker/ubuntu:act-latest` คุ้มสุดสำหรับงานทั่วไป — มี tools ครบพอแต่ยังเล็กกว่า full image (large อาจเกิน 20GB)
-- Map platform เฉพาะที่ใช้: `-P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest` แทนการ override ทุก platform
-- บนเครื่อง ARM (Apple Silicon) ใส่ `--container-architecture linux/amd64` เสมอเพื่อเลียนแบบ GitHub-hosted runners
+- The default micro image (`node:16-buster-slim` based) is light but missing many tools — if the job uses `python`, `gcc`, or common system tools, switch to a medium or large image
+- The medium image `ghcr.io/catthehacker/ubuntu:act-latest` is the best value for general work — enough tools yet still smaller than the full image (large can exceed 20GB)
+- Map only the platforms you use: `-P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest` instead of overriding every platform
+- On ARM machines (Apple Silicon) always add `--container-architecture linux/amd64` to mimic GitHub-hosted runners
 
 ### Secrets And Env
 
-- แยก secrets ออกจาก env: secrets ใช้ `-s KEY=value` หรือ `--secret-file`, env ปกติใช้ `--env-file`
-- ใช้ `.env` หรือ `.secrets` file ที่ gitignore ไว้แทนการส่ง `-s` ยาวๆ ทุกครั้ง
-- `act` สร้าง `GITHUB_TOKEN` ปลอมให้เอง — ถ้า step เรียก GitHub API จริงต้องส่ง token จริงผ่าน `-s GITHUB_TOKEN=$(gh auth token)` แต่ระวังอย่า log ค่าออกมา
-- ตั้ง `.actrc` ที่ repo root สำหรับ default flags เช่น platform map, container architecture — ทีมจะได้ config เดียวกัน (commit ได้ แต่ห้ามใส่ secrets)
+- Separate secrets from env: secrets via `-s KEY=value` or `--secret-file`; regular env via `--env-file`
+- Use a gitignored `.env` or `.secrets` file instead of passing long `-s` flags every time
+- `act` creates a fake `GITHUB_TOKEN` automatically — if a step calls real GitHub APIs, pass a real token via `-s GITHUB_TOKEN=$(gh auth token)`, but be careful not to log it
+- Set `.actrc` at the repo root for default flags such as platform maps and container architecture — the team gets one shared config (committable, but never with secrets)
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | How to avoid |
 |---|---|---|
-| Docker daemon ไม่ได้รัน | `Cannot connect to the Docker daemon` | เช็ค `docker info` ก่อนเสมอ |
-| `runs-on: windows/macos` | job ไม่รันหรือ map ผิด | act รันเฉพาะ Linux containers — skip jobs เหล่านี้ ไป test บน remote |
-| OIDC / `id-token: write` | token request fail | act ไม่รองรับ OIDC — mock หรือ skip step นั้น |
-| Reusable workflows บางรูปแบบ | parse/resolve error | inline workflow หรือ test บน remote แทน |
-| `github.event` ว่าง | inputs/paths เป็น null | ส่ง `-e event.json` ที่มี fields ครบ |
-| first pull ช้ามาก | ดูเหมือนค้าง | large image หลาย GB — ใช้ medium image หรือ pull ล่วงหน้า |
-| Artifact/cache ข้าม job | job ถัดไปหาไฟล์ไม่เจอ | ใช้ `--artifact-server-path` สำหรับ artifacts; actions/cache ต้องมี cache server เสริม |
-| Host path ใน container | volume mount พลาด | ใช้ `--bind` ให้ workspace mount แทนการ copy |
+| Docker daemon not running | `Cannot connect to the Docker daemon` | always check `docker info` first |
+| `runs-on: windows/macos` | job doesn't run or maps wrongly | act runs Linux containers only — skip these jobs, test them on the remote |
+| OIDC / `id-token: write` | token request fails | act doesn't support OIDC — mock or skip that step |
+| Some reusable workflow shapes | parse/resolve error | inline the workflow or test on the remote instead |
+| Empty `github.event` | inputs/paths are null | pass `-e event.json` with complete fields |
+| Very slow first pull | looks hung | large images are several GB — use the medium image or pull in advance |
+| Artifacts/cache across jobs | next job can't find files | use `--artifact-server-path` for artifacts; actions/cache needs an extra cache server |
+| Host paths in the container | volume mount missed | use `--bind` so the workspace is mounted instead of copied |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| dry run (`-n`) ก่อนรันจริง | รันทุก workflow ทุกครั้งที่แก้ YAML |
-| ใส่ `.secrets` ใน `.gitignore` | commit secrets file หรือส่ง `-s` ใน script ที่ commit |
-| เทียบผลกับ runner จริงเมื่อ log ต่าง | สมมติว่าผ่าน act แล้วผ่าน GitHub เสมอ |
-| แยก workflow bug กับ act limitation | แก้ workflow ให้ผ่าน act จนเสีย remote behavior |
-| ใช้ `-v` เมื่อ log ไม่พอ | เปิด verbose ตลอดจนอ่าน log ไม่รอด |
+| dry run (`-n`) before running for real | run every workflow on every YAML edit |
+| keep `.secrets` in `.gitignore` | commit a secrets file or pass `-s` inside a committed script |
+| compare with the real runner when logs differ | assume passing act means passing GitHub |
+| separate workflow bugs from act limitations | reshape the workflow to satisfy act until remote behavior breaks |
+| use `-v` when logs aren't enough | leave verbose on until logs become unreadable |
 
 ## Performance And CI Notes
 
-- First run ช้าเพราะ pull image — run ถัดไปเร็วเพราะ Docker cache; `--reuse` ใช้ container เดิมซ้ำได้ (state ค้าง ระวัง stale artifacts)
-- `--rm` default จะลบ container หลังจบ — ดีสำหรับ CI-clean behavior แต่ debug ยาก; ถ้าต้องเข้าไป inspect ให้รัน job เดียวแล้ว exec เข้า container ก่อนปิด
-- matrix jobs รัน sequential ใน act — ถ้า matrix ใหญ่ให้ filter ด้วย `--matrix` เสมอ
-- ใช้ act เป็น pre-push gate ใน local workflow; ไม่ควรเอา act ไปรันใน CI จริง (ซ้ำซ้อนกับ runner จริง)
-- Output ยาว → pipe ผ่าน `tee` เก็บ log ไว้เทียบกับ remote run ภายหลัง
+- The first run is slow due to image pulls — later runs are fast thanks to Docker cache; `--reuse` reuses the same container (leftover state — beware stale artifacts)
+- The `--rm` default removes the container after the run — good for CI-clean behavior but hard to debug; to inspect inside, run a single job then exec into the container before it closes
+- Matrix jobs run sequentially in act — for a large matrix, always filter with `--matrix`
+- Use act as a pre-push gate in your local workflow; don't run act in real CI (it duplicates the real runner)
+- Long output → pipe through `tee` to keep the log for later comparison with the remote run
 
 ## Config Guidance
 
-`.actrc` (per-repo, commit ได้):
+`.actrc` (per-repo, committable):
 
 ```text
 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest
@@ -67,6 +67,6 @@
 --env-file .env
 ```
 
-- หนึ่ง flag ต่อบรรทัด; comment ด้วย `#`
-- เพิ่ม `.env`, `.secrets`, `event.json` (ถ้ามี credentials) ใน `.gitignore`
-- เก็บ `event.json` template ใน repo เช่น `.github/act/pull_request.json` เพื่อให้ทีมใช้ payload เดียวกัน
+- One flag per line; comment with `#`
+- Add `.env`, `.secrets`, `event.json` (if it carries credentials) to `.gitignore`
+- Keep an `event.json` template in the repo, e.g. `.github/act/pull_request.json`, so the team uses the same payload

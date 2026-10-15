@@ -1,70 +1,70 @@
 # Biome Best Practices
 
-แนวทางใช้ Biome เป็น linter + formatter + assist เดียวแทน ESLint/Prettier — config, rules, suppression และ CI
+Guidance for using Biome as the single linter + formatter + assist replacing ESLint/Prettier — config, rules, suppression, and CI
 
 ## Recommended Patterns
 
 ### Check vs Fix Discipline
 
-- ใช้ `biome ci` ใน CI เท่านั้น — mode นี้ read-only, reporter-friendly, exit non-zero เมื่อมีปัญหา ห้ามใช้ `--write` ใน CI
-- Local dev ใช้ `biome check --write` (รวม lint+format+assist ครั้งเดียว) แทนการรัน `lint` และ `format` แยก
-- ใช้ `--error-on-warnings` ใน CI เมื่อต้องการให้ warnings เป็น gate จริง ไม่ใช่แค่ noise
-- ใช้ `--since=<ref>` หรือ `--changed` กับ VCS integration เพื่อ check เฉพาะไฟล์ที่แก้ใน PR — เร็วมากใน repo ใหญ่
+- Use `biome ci` in CI only — this mode is read-only, reporter-friendly, and exits non-zero on problems; never use `--write` in CI
+- In local dev use `biome check --write` (lint+format+assist in one pass) instead of running `lint` and `format` separately
+- Use `--error-on-warnings` in CI when warnings should be a real gate, not noise
+- Use `--since=<ref>` or `--changed` with VCS integration to check only files changed in the PR — very fast in large repos
 
 ### Config Structure
 
-- ใช้ `biome.jsonc` (รองรับ comments) ไม่ใช่ `biome.json` สำหรับอธิบาย rule overrides
-- เปิด `vcs.enabled` + `useIgnoreFile: true` เสมอ — Biome จะ respect `.gitignore` อัตโนมัติ ไม่ต้อง maintain excludes ซ้ำ
-- Monorepo: root config มี `root: true` (default), package configs ใช้ `extends: ["//"]` (shorthand หา root) หรือ path ตรง
-- ใช้ `overrides` block สำหรับ per-path rules เช่นปิด `noExplicitAny` ใน `**/generated/**` หรือผ่อน test files — อย่าปิด rule ทั้ง project เพราะไฟล์เดียว
+- Use `biome.jsonc` (comments supported), not `biome.json`, to explain rule overrides
+- Always enable `vcs.enabled` + `useIgnoreFile: true` — Biome respects `.gitignore` automatically, no duplicated excludes to maintain
+- Monorepo: the root config has `root: true` (default); package configs use `extends: ["//"]` (shorthand that finds the root) or a direct path
+- Use `overrides` blocks for per-path rules, e.g. turn off `noExplicitAny` in `**/generated/**` or relax test files — don't disable a rule project-wide for one file
 
 ### Rules And Domains
 
-- เริ่มจาก `recommended` แล้วเพิ่มเฉพาะ domains ที่ใช้จริง (React, Vitest, Drizzle) — `domains` แต่ละตัวมีค่า analysis โดยเฉพาะ `project` และ `types`
-- เลือก React หรือ Solid อย่างใดอย่างหนึ่ง — เปิดพร้อมกัน rules จะชนกัน
-- ปิด rule ที่ไม่ตรง codebase ใน config ไม่ใช่ suppression เยอะๆ — เช่น `noBarrelFile` ถ้า architecture ตั้งใจใช้ barrel
+- Start from `recommended`, then add only the domains actually used (React, Vitest, Drizzle) — each domain has its own analysis cost, notably `project` and `types`
+- Pick either React or Solid, not both — enabled together their rules clash
+- Disable rules that don't fit the codebase in the config rather than mass-suppressing — e.g. `noBarrelFile` if the architecture intentionally uses barrels
 
 ### Suppression
 
-- ใช้ `// biome-ignore lint/<group>/<rule>: <เหตุผล>` เมื่อจำเป็น — ใส่ reason เสมอเพื่อ reviewer
-- Suppress เฉพาะบรรทัด/scope ที่ต้องการ — ห้าม `biome-ignore` ทั้งไฟล์เพราะ rule เดียว
-- `biome-ignore-start`/`biome-ignore-end` สำหรับ generated blocks; ถ้าทั้งไฟล์ generated ให้ exclude ใน config แทน
+- Use `// biome-ignore lint/<group>/<rule>: <reason>` when necessary — always include a reason for reviewers
+- Suppress only the needed line/scope — never `biome-ignore` a whole file for one rule
+- `biome-ignore-start`/`biome-ignore-end` for generated blocks; if the whole file is generated, exclude it in the config instead
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | How to avoid |
 |---|---|---|
-| รัน Prettier + Biome พร้อมกัน | format แก้กลับไปมา ไม่จบ | เลือกตัวเดียวต่อ file type; Biome จัดการ JS/TS/JSON/CSS |
-| เปิด domain `types`/`project` ทั้ง monorepo | lint ช้าลงมาก | เปิดเฉพาะที่ต้องการ หรือเฉพาะ CI job แยก |
-| ใช้ `biome format --write` ใน CI | CI pass แต่ code ยัง dirty | ใช้ `biome ci` (read-only) ให้ fail เมื่อ unformatted |
-| `extends` path ผิดใน workspace | rules ไม่ inherit | ใช้ `extends: ["//"]` ชี้ root config |
-| Suppress ไม่ใส่เหตุผล | ไม่มีใครรู้ว่าทำไม | `: <reason>` บังคับทุก suppression |
-| Schema path ชี้ node_modules ตาย | IDE autocomplete เสียเมื่อ version เปลี่ยน | ใช้ published schema URL หรือยอมรับว่า path ผูก version |
-| ESLint legacy rules ยังเปิด | double-report diagnostics | ปิด ESLint บนไฟล์ที่ Biome ดูแล (workflow migrate) |
+| Running Prettier + Biome together | formatting flip-flops forever | one tool per file type; Biome handles JS/TS/JSON/CSS |
+| Enabling `types`/`project` domains across the whole monorepo | lint slows down heavily | enable only where needed, or in a separate CI job |
+| `biome format --write` in CI | CI passes but the code stays dirty | use `biome ci` (read-only) so it fails when unformatted |
+| Wrong `extends` path in a workspace | rules aren't inherited | use `extends: ["//"]` pointing at the root config |
+| Suppressing without a reason | nobody knows why | `: <reason>` is mandatory for every suppression |
+| Schema path into a dead node_modules | IDE autocomplete breaks on version change | use the published schema URL, or accept the path is version-bound |
+| Legacy ESLint rules still on | double-reported diagnostics | turn ESLint off for files Biome owns (see the migrate workflow) |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `biome check --write` ก่อน commit | commit แล้วค่อยให้ CI format แทน |
-| เปิด VCS integration + useIgnoreFile | maintain excludes list ซ้ำกับ `.gitignore` |
-| pin version ใน CI ด้วย `biomejs/setup-biome` | `version: latest` ใน production CI (rules เพิ่มในแต่ละ release ทำให้ CI fail เงียบๆ) |
-| รวม lint+format+assist ใน script เดียว | แยก 3 commands ต่อกันใน pre-commit (ช้า 3 เท่า) |
-| ใช้ `--diagnostic-level=error` เมื่อ warnings เยอะเกิน | ปิด linter เพราะ output รก |
-| editor extension + format-on-save | rely on CI คนเดียวจับ format |
+| `biome check --write` before committing | commit first and let CI do the formatting |
+| enable VCS integration + useIgnoreFile | maintain an excludes list duplicating `.gitignore` |
+| pin the version in CI with `biomejs/setup-biome` | `version: latest` in production CI (each release adds rules, silently failing CI) |
+| combine lint+format+assist in one script | chaining 3 commands in pre-commit (3x slower) |
+| use `--diagnostic-level=error` when warnings overwhelm | disable the linter because output is noisy |
+| editor extension + format-on-save | relying on CI alone to catch formatting |
 
 ## Performance And CI Notes
 
-- Biome เร็วมาก (Rust) — full check บน repo ใหญ่มัก < นาที ไม่จำเป็นต้อง incremental ใน CI เว้น repo ใหญ่จริงๆ
-- Domains `project` และ `types` เพิ่ม analysis cost อย่างมีนัยสำคัญ — วัดก่อนเปิดทั้ง monorepo
-- GitHub Actions: `biomejs/setup-biome` + `biome ci .` คือ pattern มาตรฐาน; เพิ่ม `--reporter=github` ได้ annotations บน PR
-- `--max-diagnostics` จำกัด output เมื่อ migrate repo ใหญ่ — ค่อยๆ ลดตามที่แก้
-- Cache ไม่จำเป็นเท่า ESLint (ไม่มี slow JS plugin loading) — แต่ cache `node_modules` ยังช่วย install step
-- สำหรับ pre-commit: run ผ่าน lefthook/husky ด้วย `biome check --write --staged` หรือ `--changed` เท่านั้น
+- Biome is very fast (Rust) — a full check on a large repo is usually < a minute; incremental CI isn't needed unless the repo is truly huge
+- The `project` and `types` domains add significant analysis cost — measure before enabling them across a monorepo
+- GitHub Actions: `biomejs/setup-biome` + `biome ci .` is the standard pattern; add `--reporter=github` for PR annotations
+- `--max-diagnostics` limits output when migrating a large repo — lower it gradually as issues get fixed
+- Caching matters less than with ESLint (no slow JS plugin loading) — caching `node_modules` still speeds the install step
+- For pre-commit: run through lefthook/husky with `biome check --write --staged` or `--changed` only
 
 ## Config Guidance
 
-- จัด group config: `vcs` → `files` → `formatter` → `linter` → `assist` → `overrides` อ่านง่าย
-- `files.includes` ใช้ negated patterns (`!**/generated`) แทน excludes field เก่า
-- formatter defaults ควรตั้งครั้งเดียวที่ root: `indentStyle`, `lineWidth`, `quoteStyle` — อย่า override ต่อ package เว้นมีเหตุผล
-- ตรวจ `biome explain <rule>` เมื่อไม่แน่ใจว่า rule ทำอะไร ก่อนเพิ่ม/ปิดใน config
+- Order the config groups `vcs` → `files` → `formatter` → `linter` → `assist` → `overrides` for readability
+- `files.includes` uses negated patterns (`!**/generated`) instead of legacy excludes fields
+- Set formatter defaults once at the root: `indentStyle`, `lineWidth`, `quoteStyle` — don't override per package without a reason
+- Check `biome explain <rule>` when unsure what a rule does, before adding/removing it in the config
