@@ -4,7 +4,8 @@ description: Show a template shell script listing git projects on drive D
 argument-hint: "[filter]"
 related:
   - create-new-project-in-drive-d
-  - list-uncommit-unpush-in-drive-d
+  - check-uncommit
+  - check-unpush
 ---
 
 ## Goal
@@ -70,7 +71,7 @@ Show output in a readable form:
 - Support a table format or list format
 
 - Use `/create-new-project-in-drive-d` if needed
-- Use `/list-uncommit-unpush-in-drive-d` if needed
+- Use `/check-uncommit` + `/check-unpush` if needed
 
 ## Expected Outcome
 

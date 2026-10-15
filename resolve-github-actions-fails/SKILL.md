@@ -204,7 +204,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - repo-scoped (default ถ้าอยู่ใน git repo): ตรวจ repo ปัจจุบันหรือ `--repo <owner/repo>`
 - account-wide: ระบุ `--all` เพื่อตรวจทุก personal และ org repositories ที user เป็นสมาชิก
 
-ดูเพิ่มเติม: /list-github-repo, /list-deployment-fails
+ดูเพิ่มเติม: /list-github-repo, /check-deployment-fails
 
 ##### Execute
 

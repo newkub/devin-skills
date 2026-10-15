@@ -12,7 +12,7 @@ Table mapping common symptoms to the skill or workflow that should be used
 | typecheck fail | `/run-typecheck`, `/resolve-errors` |
 | test fail / flaky | `/run-test`, `/run-test all`, `/resolve-errors` |
 | CI/CD pipeline fail | `/resolve-cicd`, `/resolve-github-actions-fails`, `/setup-cicd` |
-| deploy fail | `/resolve-cicd`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
+| deploy fail | `/resolve-cicd`, `/watch-deploy`, `/check-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
 | secrets leak / suspected hardcoded secret | `/check-secrets secrets-leak`, `/follow-secret-manager`, `/open-github secrets` |
 | unused dependencies | `/follow-tool-knip`, `/follow-tool-knip` |
 | dead code / unused files | `/follow-tool-knip` |

@@ -15,7 +15,7 @@ Scan the machine for projects using Cloudflare (Workers, Pages, Wrangler) with l
 
 ## Scope
 
-- For related skills: `list-chezmoi-files`, `open-cloudflare-workers`, `list-cloudflare-projects`, `list-cloudflare-projects`
+- For related skills: `list-projects-git-in-drive-d`, `list-chezmoi-files`, `open-cloudflare-workers`, `resolve-cloudflare-worker-fails`
 
 Use to find all Cloudflare projects on the machine, detecting from `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, or `wrangler.config.ts`
 

@@ -655,7 +655,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 3. ใช้ `/report table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
 
-4. ทำ `/list-deployment-fails` เพื่อดู failures ทีค้างใน repo
+4. ทำ `/check-deployment-fails` เพื่อดู failures ทีค้างใน repo
 
 5. ถ้า user ต้องการ cleanup → ทำ `/delete-cicd-fails` ก่อน next step
 

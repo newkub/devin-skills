@@ -19,6 +19,7 @@ Scan git repositories across the whole machine (or a given path) for commits not
 
 - Use when you want to audit every repo for commits that have not reached a remote
 - Default scope: every repo found on the machine via `/list-projects-git-in-drive-d`, or the given path
+- Combined scan: run `/check-uncommit` + `/check-unpush` with the same `path` (e.g. `D:\`) and merge into one per-repo table with columns `No.`, `Project`, `Path`, `Uncommit`, `Unpush`, `Status` to see which repo needs commit, push, or sync
 - Read-only: reports status only — never pushes or changes remote config
 
 ## Execute

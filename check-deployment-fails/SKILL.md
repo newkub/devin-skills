@@ -1,7 +1,7 @@
 ---
 
-name: list-deployment-fails
-description: Summarize deployment failures from CI/CD and cloud (GitHub Actions, Cloudflare Workers)
+name: check-deployment-fails
+description: Check deployment failures from CI/CD and cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
   - resolve-errors
@@ -17,7 +17,7 @@ related:
 
 ## Goal
 
-Summarize deployment and CI/CD failures from GitHub Actions and Cloudflare Workers
+Check deployment and CI/CD failures from GitHub Actions and Cloudflare Workers, then summarize them
 
 ## Scope
 
