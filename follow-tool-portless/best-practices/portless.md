@@ -1,32 +1,32 @@
 # Portless Best Practices
 
-แนวทางใช้ `portless` ให้ named `.localhost` URLs เสถียร ไม่ชนกัน และ debug ได้เร็ว
+Guidance for using `portless` so named `.localhost` URLs stay stable, never collide, and debug fast
 
 ## Recommended Patterns
 
 ### Naming And URLs
 
-- ปล่อยให้ชื่อ infer จาก `package.json`/directory — ตั้งเองด้วย `portless <name> <cmd>` เฉพาะเมื่อชื่อ infer ไม่สื่อ (เช่น monorepo root)
-- ใช้ subdomain สำหรับบทบาทชัดเจน: `api.myapp` → `https://api.myapp.localhost` แยกจาก app หลัก
-- อ้าง URL ใน scripts/env ด้วย `portless get <name>` — ไม่ hardcode `localhost:<port>` และไม่ hardcode `.localhost` URL ลง config ที่ commit (portless อาจเลือก TLD/พอร์ตต่างกันต่อเครื่อง)
-- Docs/status pages ของ app ควร derive host จาก request (`getRequestHost`) ไม่ใช่ hardcode origin — ทำให้ docs เดียวกันทำงานได้ทุก alias
+- Let the name infer from `package.json`/the directory — set it explicitly with `portless <name> <cmd>` only when the inferred name is unclear (e.g. a monorepo root)
+- Use subdomains for clear roles: `api.myapp` → `https://api.myapp.localhost`, separate from the main app
+- Reference URLs in scripts/env via `portless get <name>` — never hardcode `localhost:<port>`, and don't hardcode `.localhost` URLs into committed config (portless may pick a different TLD/port per machine)
+- App docs/status pages should derive the host from the request (`getRequestHost`) instead of hardcoding the origin — one docs page then works for every alias
 
 ### Lifecycle
 
-- เริ่ม session ด้วย `portless doctor` ทีละครั้ง — รู้ทันทีว่า proxy/CA/hosts มีปัญหาก่อนรัน app
-- หลัง crash หรือเครื่อง restart → `portless prune` ก่อนเสมอ เก็บ route ที่ชี้ process ตายแล้วออก
-- ใช้ `portless service install` เมื่อต้องการ proxy ตั้งแต่ boot — ลด friction ตอน dev ทุกวัน
-- เมื่อ debug เจอ route เก่าค้าง → `portless list` เช็คก่อนรันใหม่ อย่าง `--force` ทับโดยไม่ดูว่าของใคร
+- Start a session with one `portless doctor` run — know immediately whether proxy/CA/hosts have problems before running apps
+- After a crash or machine restart → always `portless prune` first to drop routes pointing at dead processes
+- Use `portless service install` when you want the proxy from boot — less friction in daily dev
+- When debugging a lingering stale route → check `portless list` before rerunning; don't `--force` over someone else's route
 
 ### Security And Sharing
 
-- `--tailscale`/`--funnel`/`--ngrok` เป็นการ expose dev server ออกเน็ต — ใช้เฉพาะตอนจำเป็น และ stop เมื่อเลิกใช้; อย่า share URL ที่มี admin/debug routes ไม่มี auth
-- เก็บ `portless trust` เป็น one-time setup — อย่าเรียกซ้ำทุก script; เครื่องที่ trust ไม่ได้ (CI, เครื่องคนอื่น) ใช้ `--no-tls` + HTTP
+- `--tailscale`/`--funnel`/`--ngrok` expose the dev server to the internet — use only when necessary and stop when done; never share a URL whose admin/debug routes lack auth
+- Keep `portless trust` as one-time setup — don't call it in every script; on machines that can't trust the CA (CI, someone else's computer) use `--no-tls` + HTTP
 
 ## Common Pitfalls
 
-- **Compound commands ทำ injection หลุด**: `portless myapp sh -c "a && b"` หรือ env prefix (`PORT=x cmd`) ทำให้ portless inject `--port` ไม่ได้ — ถ้า command ซับซ้อนให้ wrap เป็น script ใน `package.json` แล้วรัน script นั้น
-- **framework ที่ไม่อ่าน `PORT`**: Vite/Astro/Angular portless inject `--port` ให้อัตโนมัติ แต่ถ้าใส่ `--port` เองใน script จะชน — อย่าใส่ซ้ำ
-- **`.local` vs `.localhost`**: custom TLD `.local` ชน mDNS (Bonjour) — ใช้ `.test` หรือ default `.localhost` เท่านั้น; `.dev` เจอ HSTS preload
-- **Windows**: LAN mode ไม่รองรับ; `hosts sync` ต้อง Admin (แต่ `.localhost` resolve เองใน Chrome/curl อยู่แล้ว — ไม่ต้อง sync); `portless trust` มี dialog ที่ต้องกด "Yes" เองใน Windows cert prompt
-- **Route ชี้ port เก่า**: alias ไม่ follow process — ถ้า app เปลี่ยน port ให้ `alias --remove` แล้วสร้างใหม่
+- **Compound commands break injection**: `portless myapp sh -c "a && b"` or an env prefix (`PORT=x cmd`) means portless can't inject `--port` — if the command is complex, wrap it as a script in `package.json` and run that script
+- **Frameworks that don't read `PORT`**: for Vite/Astro/Angular, portless injects `--port` automatically, but putting `--port` in your own script collides — don't duplicate it
+- **`.local` vs `.localhost`**: the custom TLD `.local` conflicts with mDNS (Bonjour) — use `.test` or the default `.localhost` only; `.dev` hits HSTS preload
+- **Windows**: LAN mode is not supported; `hosts sync` needs Admin (but `.localhost` already resolves in Chrome/curl — no sync needed); `portless trust` shows a dialog you must click "Yes" on in the Windows cert prompt
+- **Route points at an old port**: an alias doesn't follow the process — if the app changes port, `alias --remove` and re-create it

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-pitchfork
-description: ตั้งค่าและใช้งาน pitchfork สำหรับจัดการ daemons/processes ใน project
+description: Set up and use pitchfork to manage project daemons/processes
 argument-hint: "[daemon-or-scope]"
 related:
   - follow-tool-mise
@@ -11,115 +11,115 @@ related:
 
 ## Goal
 
-จัดการ background daemons ด้วย pitchfork สำหรับ development workflows
+Manage background daemons with pitchfork for development workflows
 
 ## Scope
 
-ครอบคลุม `pitchfork.toml`, daemon lifecycle, ready/health checks, shell hooks, file watching, cron, port management/reverse proxy, TUI, Web UI, MCP server, boot start และ container mode
+Covers `pitchfork.toml`, daemon lifecycle, ready/health checks, shell hooks, file watching, cron, port management/reverse proxy, TUI, Web UI, MCP server, boot start, and container mode
 
-- ใช้ skill นี้สำหรับ long-running background daemons — ถ้าเป็น one-off scripts หรือ task runner ให้ใช้ `/use-scripts` หรือ `mise` tasks ผ่าน `/follow-tool-mise` แทน
+- Use this skill for long-running background daemons — for one-off scripts or a task runner use `/use-scripts` or `mise` tasks via `/follow-tool-mise` instead
 
 - Latest: `pitchfork@2.27.0` (crate `pitchfork-cli`) (verified 2026-09-26)
-- Architecture: CLI/TUI/Web UI → supervisor → daemon processes (supervisor auto-start เมื่อ client ต้องการ)
+- Architecture: CLI/TUI/Web UI → supervisor → daemon processes (the supervisor auto-starts when a client needs it)
 
 ## Execute
 
 ### 1. Install
 
-> Goal: มี pitchfork CLI พร้อมใช้
+> Goal: have the pitchfork CLI ready
 
-1. แนะนำติดตั้งผ่าน `mise`: `mise use -g pitchfork` (global) หรือ `mise use pitchfork@<version>` (pin ต่อ project)
-2. ทางเลือก: `cargo install pitchfork-cli --locked` หรือ binary จาก GitHub releases (มี builds สำหรับ macOS, Linux, Windows)
-3. ถ้า project ไม่มี mise ให้ทำ `/follow-tool-mise` ก่อน
-4. ยืนยันด้วย `pitchfork --version`
-5. ติดตั้ง shell completion ด้วย `pitchfork completion <bash|zsh|fish>` (แยกจาก shell hook)
-6. บน Windows: default daemon shell คือ `cmd /C` — ถ้าต้องการ POSIX behavior ให้วาง `sh.exe` บน PATH และตั้ง `general.shell = "sh -c"`
-7. ดูรายละเอียดใน 
+1. Recommended via `mise`: `mise use -g pitchfork` (global) or `mise use pitchfork@<version>` (pinned per project)
+2. Alternatives: `cargo install pitchfork-cli --locked` or binaries from GitHub releases (builds exist for macOS, Linux, Windows)
+3. If the project has no mise, do `/follow-tool-mise` first
+4. Confirm with `pitchfork --version`
+5. Install shell completion with `pitchfork completion <bash|zsh|fish>` (separate from the shell hook)
+6. On Windows: the default daemon shell is `cmd /C` — for POSIX behavior put `sh.exe` on PATH and set `general.shell = "sh -c"`
+7. See details in 
 
 ### 2. Create Configuration
 
-> Goal: กำหนด daemons สำหรับ project
+> Goal: define the project's daemons
 
-1. สร้าง `pitchfork.toml` ใน root หรือ `.config/pitchfork.toml` พร้อม schema: `#:schema https://pitchfork.jdx.dev/schema.json`
-2. กำหนด `[daemons.<name>]` ด้วย `run = "..."` — ใช้ foreground command ห้ามใช้ `&` หรือ daemonize flags
-3. ใช้ `ready_http`, `ready_output`, `ready_port`, `ready_cmd`, `ready_delay` สำหรับ ready checks (รับ object form `{ ..., timeout = "30s" }` ได้)
-4. ใช้ `health_http`, `health_cmd`, `health_port` สำหรับ health probes ตลอดอายุ daemon
-5. ใช้ `port` เพื่อ assign port (`port = 3000`, `port = [8080, 8443]`, หรือ `port = { expect = [3000], bump = 10 }`) — resolved port อยู่ใน `$PORT`, `$PORT0..N`
-6. ใช้ `depends` สำหรับ dependency ordering และ `retry` (`0|N|true`) สำหรับ auto-restart
-7. ใช้ `auto = ["start", "stop"]` สำหรับ shell hook, `watch` + `watch_mode` สำหรับ restart on change, `cron` สำหรับ schedule, `boot_start` สำหรับ start at login
-8. ใช้ `[env]` top-level สำหรับ shared env และ `env` ต่อ daemon — ใช้ Tera template `{{ daemons.<name>.port }}` เพื่อเชื่อม services
-9. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit) และ `[groups.<name>]` สำหรับ batch operations
-10. ดูรายละเอียดใน 
+1. Create `pitchfork.toml` in the root or `.config/pitchfork.toml` with the schema line: `#:schema https://pitchfork.jdx.dev/schema.json`
+2. Define `[daemons.<name>]` with `run = "..."` — use a foreground command; never `&` or daemonize flags
+3. Use `ready_http`, `ready_output`, `ready_port`, `ready_cmd`, `ready_delay` for ready checks (object form accepted: `{ ..., timeout = "30s" }`)
+4. Use `health_http`, `health_cmd`, `health_port` for health probes over the daemon's lifetime
+5. Use `port` to assign ports (`port = 3000`, `port = [8080, 8443]`, or `port = { expect = [3000], bump = 10 }`) — the resolved port is in `$PORT`, `$PORT0..N`
+6. Use `depends` for dependency ordering and `retry` (`0|N|true`) for auto-restart
+7. Use `auto = ["start", "stop"]` for shell hooks, `watch` + `watch_mode` for restart on change, `cron` for scheduling, `boot_start` for start at login
+8. Use the top-level `[env]` for shared env and per-daemon `env` — use the Tera template `{{ daemons.<name>.port }}` to wire services together
+9. Use `pitchfork.local.toml` for local overrides (not committed) and `[groups.<name>]` for batch operations
+10. See details in 
 
 ### 3. Manage Daemons
 
 > Goal: start/stop/monitor daemons
 
-1. `pitchfork start --all` (`-a`), `--local` (`-l`), `--global` (`-g`), `--group <name>` หรือ `pitchfork start <id>…`
-2. `pitchfork list` (`--project`, `--namespace`, `--status`, `--json`) เพื่อดู daemons ทั้ง running และ available
-3. `pitchfork status <id> --json` เพื่อดูรายละเอียด daemon เดียว
-4. `pitchfork logs <id> --tail` follow logs; filter ด้วย `--grep`, `--regex`, `--level`, `--field`, `--jq`, `--since/--until`, `-n`
-5. `pitchfork stop <id>` หรือ `--all`/`--local`/`--group` — graceful stop (SIGTERM → SIGKILL, reverse dependency order)
-6. `pitchfork restart <id>` เพื่อ apply config changes แล้ว restart (= `start --force`)
-7. `pitchfork run <id> -- <cmd>` สำหรับ ad-hoc daemon โดยไม่ต้องมี config file; `pitchfork wait <id>` รอจน daemon หยุด
-8. `pitchfork enable|disable <id>` ควบคุมว่า daemon start ได้หรือไม่; `pitchfork clean [--prune]` ลบ stopped entries
-9. `pitchfork daemons add <id> --run '...'` เพื่อเพิ่ม daemon ลง config จาก CLI (`--local`, `--global`, `--watch`, `--cron-schedule` ฯลฯ)
-10. ใช้ qualified ID `namespace/name` เมื่อทำงานนอก project directory
-11. ดูรายละเอียดใน [references/cli.md](references/cli.md)
+1. `pitchfork start --all` (`-a`), `--local` (`-l`), `--global` (`-g`), `--group <name>`, or `pitchfork start <id>…`
+2. `pitchfork list` (`--project`, `--namespace`, `--status`, `--json`) to see both running and available daemons
+3. `pitchfork status <id> --json` for one daemon's details
+4. `pitchfork logs <id> --tail` follows logs; filter with `--grep`, `--regex`, `--level`, `--field`, `--jq`, `--since/--until`, `-n`
+5. `pitchfork stop <id>` or `--all`/`--local`/`--group` — graceful stop (SIGTERM → SIGKILL, reverse dependency order)
+6. `pitchfork restart <id>` to apply config changes then restart (= `start --force`)
+7. `pitchfork run <id> -- <cmd>` for an ad-hoc daemon without a config file; `pitchfork wait <id>` blocks until the daemon stops
+8. `pitchfork enable|disable <id>` controls whether a daemon may start; `pitchfork clean [--prune]` removes stopped entries
+9. `pitchfork daemons add <id> --run '...'` adds a daemon to the config from the CLI (`--local`, `--global`, `--watch`, `--cron-schedule`, etc.)
+10. Use the qualified ID `namespace/name` when working outside the project directory
+11. See details in [references/cli.md](references/cli.md)
 
 ### 4. Shell Hook & Project Sessions
 
-> Goal: auto-start/stop เมื่อ enter/leave directory
+> Goal: auto-start/stop when entering/leaving a directory
 
-1. เพิ่ม `eval "$(pitchfork activate bash)"` ใน `.bashrc` (zsh: `activate zsh`, fish: `pitchfork activate fish | source`)
-2. ใช้ `auto = ["start"]` start on enter, `auto = ["stop"]` stop on exit, `auto = ["start", "stop"]` ทั้งสอง
-3. Autostop รอ `general.autostop_delay` (default `1m`) หลัง session สุดท้ายออก — ตั้งใน `[settings.general]`
-4. IDE/tools ใช้ `pitchfork project enter --pid <PID> [--directory <DIR>]` / `leave` / `list --json` แทน shell hook
-5. PID ต่อ shell: `$$` (bash/zsh), `$fish_pid` (fish), `$SHELL_PID` (nushell)
-6. บน Windows session ที่ crash ไม่ถูก cleanup อัตโนมัติ — ต้อง `project leave` เอง
-7. ดูรายละเอียดใน 
+1. Add `eval "$(pitchfork activate bash)"` to `.bashrc` (zsh: `activate zsh`, fish: `pitchfork activate fish | source`)
+2. Use `auto = ["start"]` to start on enter, `auto = ["stop"]` to stop on exit, `auto = ["start", "stop"]` for both
+3. Autostop waits `general.autostop_delay` (default `1m`) after the last session leaves — set it in `[settings.general]`
+4. IDEs/tools use `pitchfork project enter --pid <PID> [--directory <DIR>]` / `leave` / `list --json` instead of the shell hook
+5. PID per shell: `$$` (bash/zsh), `$fish_pid` (fish), `$SHELL_PID` (nushell)
+6. On Windows, crashed sessions aren't cleaned up automatically — run `project leave` yourself
+7. See details in 
 
 ### 5. Lifecycle Hooks
 
-> Goal: react ต่อ events ของ daemon
+> Goal: react to daemon events
 
-1. กำหนด `[daemons.<name>.hooks]` ด้วย `on_ready`, `on_fail`, `on_retry`, `on_stop`, `on_exit`, `on_output`
-2. `on_output` รับ shorthand string หรือ `{ run, filter?, regex?, debounce? }` (filter/regex ห้ามใช้คู่กัน)
-3. Hooks เป็น fire-and-forget ทำงาน background ไม่ block daemon — อย่าใช้ `on_ready` ทำ setup ที่ต้องเสร็จก่อน serve
-4. ใช้ environment variables: `PITCHFORK_DAEMON_ID`, `PITCHFORK_DAEMON_NAMESPACE`, `PITCHFORK_RETRY_COUNT`, `PITCHFORK_EXIT_CODE`, `PITCHFORK_EXIT_REASON`, `PITCHFORK_MATCHED_LINE`, `PITCHFORK_PORT0..N`
-5. ดูรายละเอียดใน 
+1. Define `[daemons.<name>.hooks]` with `on_ready`, `on_fail`, `on_retry`, `on_stop`, `on_exit`, `on_output`
+2. `on_output` takes a shorthand string or `{ run, filter?, regex?, debounce? }` (filter/regex are mutually exclusive)
+3. Hooks are fire-and-forget and run in the background — they never block the daemon — don't use `on_ready` for setup that must finish before serving
+4. Available environment variables: `PITCHFORK_DAEMON_ID`, `PITCHFORK_DAEMON_NAMESPACE`, `PITCHFORK_RETRY_COUNT`, `PITCHFORK_EXIT_CODE`, `PITCHFORK_EXIT_REASON`, `PITCHFORK_MATCHED_LINE`, `PITCHFORK_PORT0..N`
+5. See details in 
 
 ### 6. Ports, Proxy & Dashboards
 
-> Goal: stable URLs และ monitoring UIs
+> Goal: stable URLs and monitoring UIs
 
-1. เปิด reverse proxy ใน `~/.config/pitchfork/config.toml`: `[settings.proxy] enable = true` — slug URL `https://<slug>.localhost` คงที่แม้ port เปลี่ยน
-2. จัดการ slug ด้วย `pitchfork proxy add <slug> [--dir --daemon]`, `proxy status`, `proxy remove`, `proxy trust`/`untrust` (HTTPS cert)
-3. `pitchfork tui [--namespace|--project]` สำหรับ terminal dashboard (vim keys, `?` ดู help)
-4. Web UI: `PITCHFORK_WEB_PORT=3120 pitchfork supervisor start --force` หรือ `[settings.web] auto_start = true`
+1. Enable the reverse proxy in `~/.config/pitchfork/config.toml`: `[settings.proxy] enable = true` — the slug URL `https://<slug>.localhost` stays stable even when the port changes
+2. Manage slugs with `pitchfork proxy add <slug> [--dir --daemon]`, `proxy status`, `proxy remove`, `proxy trust`/`untrust` (HTTPS cert)
+3. `pitchfork tui [--namespace|--project]` for the terminal dashboard (vim keys, `?` for help)
+4. Web UI: `PITCHFORK_WEB_PORT=3120 pitchfork supervisor start --force` or `[settings.web] auto_start = true`
 5. MCP server: client config `{ "command": "pitchfork", "args": ["mcp"] }` — tools: status, start, stop, restart, logs
-6. ใช้ `mise = true` ต่อ daemon (หรือ `[settings.general] mise = true`) เมื่อ daemon ต้องการ mise tools/env นอก interactive shell
-7. `pitchfork boot enable` ลงทะเบียน supervisor ที่ login (macOS launchd / Linux systemd) + `boot_start = true` ต่อ daemon
-8. ดูรายละเอียดใน  และ [references/apis.md](references/apis.md)
+6. Use `mise = true` per daemon (or `[settings.general] mise = true`) when a daemon needs mise tools/env outside an interactive shell
+7. `pitchfork boot enable` registers the supervisor at login (macOS launchd / Linux systemd) + `boot_start = true` per daemon
+8. See details in  and [references/apis.md](references/apis.md)
 
 ## Rules
 
 ### 1. Naming & Namespaces
 
-- daemon names ใช้ ASCII alphanumeric, `_`, `-`, `.` เท่านั้น — ห้าม double dashes, slashes, spaces, leading/trailing dashes, parent references
-- ID มี 2 รูปแบบ: short `api` กับ qualified `frontend/api` (`--` ถูก reserve สำหรับ internal encoding)
-- namespace ใช้ชื่อ directory ถ้าไม่ได้กำหนด `namespace = "..."` — global config ใช้ namespace `global`
-- ถ้าชื่อ directory ไม่ valid ต้องกำหนด top-level `namespace` ใน config ไม่งั้น parse fail
-- Git worktrees ได้ namespace ตาม directory name อัตโนมัติ (ปิดด้วย `general.worktree = false`)
+- Daemon names allow ASCII alphanumeric, `_`, `-`, `.` only — no double dashes, slashes, spaces, leading/trailing dashes, or parent references
+- IDs come in two forms: short `api` and qualified `frontend/api` (`--` is reserved for internal encoding)
+- The namespace defaults to the directory name unless `namespace = "..."` is set — the global config uses the namespace `global`
+- If the directory name isn't valid, a top-level `namespace` must be set in the config, otherwise parsing fails
+- Git worktrees automatically get a namespace from the directory name (disable with `general.worktree = false`)
 
 ### 2. Configuration
 
-- Precedence ภายใน directory: `.config/pitchfork.toml` → `.config/pitchfork.local.toml` → `pitchfork.toml` → `pitchfork.local.toml` (สูงสุด, ไม่ commit)
-- ใช้ `exec` นำหน้า command สุดท้ายเพื่อให้ PID ตรงกับ daemon binary: `run = "cd /app && exec node server.js"`
-- Ready checks หลายตัวเป็น "any" ไม่ใช่ "all" — ถ้าทุก check หมดเวลา startup fail ด้วย exit code `124`
-- `ready_delay` เป็น fallback เท่านั้นเมื่อไม่มี check อื่น (default 3s)
-- Health check `retries` = failed probes; daemon `retry` = restart attempts — คนละตัวกัน
-- Deprecated: `expected_port`, `auto_bump_port`, `port_bump_attempts` — ใช้ `port = { expect = [...], bump = N }` แทน
+- Precedence within a directory: `.config/pitchfork.toml` → `.config/pitchfork.local.toml` → `pitchfork.toml` → `pitchfork.local.toml` (highest, not committed)
+- Prefix the final command with `exec` so the PID matches the daemon binary: `run = "cd /app && exec node server.js"`
+- Multiple ready checks are "any", not "all" — if every check times out, startup fails with exit code `124`
+- `ready_delay` is only a fallback when no other check exists (default 3s)
+- Health-check `retries` = failed probes; daemon `retry` = restart attempts — different things
+- Deprecated: `expected_port`, `auto_bump_port`, `port_bump_attempts` — use `port = { expect = [...], bump = N }` instead
 
 ### 3. Example pitchfork.toml
 
@@ -169,19 +169,19 @@ daemons = ["redis", "api"]
 - `pitchfork project enter --pid $$` / `pitchfork project leave --pid $$`
 - `pitchfork proxy add api` / `pitchfork boot enable` / `pitchfork mcp`
 
-- ใช้ /follow-tool-mise ถ้าจำเป็น (mise integration)
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool pitchfork)
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- Use /follow-tool-mise if needed (mise integration)
+- Use /follow-tool-github-actions if needed (tool pitchfork)
+- Use /follow-tool-cargo if needed
 
 ## References
 - [CLI reference](references/cli.md)
 - [HTTP API & MCP](references/apis.md)
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- pitchfork ติดตั้งและทำงานผ่าน mise
-- `pitchfork.toml` กำหนด daemons ครบ พร้อม ready/health checks, dependencies, retry
-- daemon auto-start/stop ผ่าน shell hook หรือ IDE project sessions
-- file watching, cron, port bumping, reverse proxy, lifecycle hooks ใช้งานตามต้องการ
-- monitor ผ่าน `pitchfork list`, `logs`, `tui`, Web UI หรือ MCP server ได้
+- pitchfork installed and working through mise
+- `pitchfork.toml` defines the full daemon set with ready/health checks, dependencies, retry
+- Daemons auto-start/stop via the shell hook or IDE project sessions
+- File watching, cron, port bumping, reverse proxy, lifecycle hooks used as needed
+- Monitoring via `pitchfork list`, `logs`, `tui`, the Web UI, or the MCP server

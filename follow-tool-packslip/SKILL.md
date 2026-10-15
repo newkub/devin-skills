@@ -1,6 +1,6 @@
 ---
 name: follow-tool-packslip
-description: publish signed release manifests (packslip) สำหรับ artifacts — digests, platforms, bin paths ให้ installers verify ได้
+description: publish signed release manifests (packslip) for artifacts — digests, platforms, bin paths installers can verify
 argument-hint: "[scope]"
 related:
   - follow-tool-mise
@@ -13,21 +13,21 @@ related:
 
 ## Goal
 
-Publish `packslip.sigstore.json` ข้าง release artifacts — signed manifest (in-toto statement ใน sigstore bundle) ที่บอก digests, platform metadata, executable paths และ resource links ให้ installer (เช่น mise) เลือก/verify ไฟล์ได้โดยไม่ต้องเดา filename
+Publish `packslip.sigstore.json` beside release artifacts — a signed manifest (an in-toto statement in a sigstore bundle) that states digests, platform metadata, executable paths, and resource links so installers (e.g. mise) can pick/verify files without guessing filenames
 
 ## Scope
 
-- ใช้เมื่อ publish release artifacts ที่ต้องการให้ installers (mise/others) เลือกและ verify ได้ — GitHub Actions มี `jdx/packslip@v1`, publisher นอก CI ใช้ Ed25519 key
-- spec stable ที่ `release/v1` — predicateType `https://packslip.dev/release/v1`
+- Use when publishing release artifacts that installers (mise/others) should pick and verify — GitHub Actions has `jdx/packslip@v1`; publishers outside CI use an Ed25519 key
+- Spec stable at `release/v1` — predicateType `https://packslip.dev/release/v1`
 - Docs: https://packslip.dev/ · Spec: https://packslip.dev/release/v1/ · CLI: https://packslip.dev/cli/
 
 ## Execute
 
 ### 1. Publish From GitHub
 
-> Goal: workflow release ผลิต signed manifest
+> Goal: the release workflow produces a signed manifest
 
-1. หลัง build artifacts + สร้าง release เพิ่ม step:
+1. After building artifacts + creating the release, add a step:
 
 ```yaml
 - uses: jdx/packslip@v1
@@ -38,34 +38,34 @@ Publish `packslip.sigstore.json` ข้าง release artifacts — signed manif
       man=archive:share/man/man1/mytool.1
 ```
 
-2. ให้สิทธิ์ workflow ที่ต้องการ (id-token สำหรับ sigstore signing ด้วย workflow identity)
-3. Manifest `packslip.sigstore.json` ถูก publish ข้าง artifacts อัตโนมัติ
+2. Grant the workflow the needed permissions (id-token for sigstore signing with the workflow identity)
+3. The `packslip.sigstore.json` manifest is published beside the artifacts automatically
 
 ### 2. Describe Artifacts
 
-> Goal: metadata ครบสำหรับ installer
+> Goal: complete metadata for installers
 
-1. `subject` — digest (sha256) ของแต่ละไฟล์
+1. `subject` — the digest (sha256) of each file
 2. `predicate.artifacts[]` — `name`, `url`, `format` (tar.gz/zip), `bin` (executable paths), platform fields (`os`/`arch`/`libc`)
 3. `resources` — man pages, completions, CLI specs (usage), agent skills, SBOMs, desktop files
-4. `host requirements` — libraries/commands ที่ runtime ต้องมี
+4. `host requirements` — libraries/commands the runtime needs
 
 ### 3. Verify / Consume
 
-> Goal: consumer verify ก่อน install
+> Goal: the consumer verifies before installing
 
-1. Verify manifest กับ trusted identity/key แล้วเช็ค digest ของไฟล์ที่ download
+1. Verify the manifest against a trusted identity/key, then check the digest of the downloaded file
 2. Signed release lists (`/docs/release-lists/`) — expiry, sequence, withdrawals, recommended version
-3. ตัวอย่าง consumer: mise อ่าน packslip เพื่อเลือก platform artifact — ดู https://packslip.dev/docs/mise/
+3. Example consumer: mise reads packslip to pick the platform artifact — see https://packslip.dev/docs/mise/
 
 ## Rules
 
-- Build provenance เป็น evidence แยก — verify แยกจาก manifest เสมอ
-- Manifest เดียวไม่ตรวจ withdrawn/rollback releases — ใช้ signed release lists
-- Checksum ธรรมดาข้าง binary ไม่เทียบเท่า — ต้อง signer verification
-- เวอร์ชัน spec คงที่ที่ v1 — pin `jdx/packslip@v1`
+- Build provenance is separate evidence — always verify it separately from the manifest
+- A single manifest can't detect withdrawn/rollback releases — use signed release lists
+- A plain checksum beside the binary is not equivalent — signer verification is required
+- The spec version stays at v1 — pin `jdx/packslip@v1`
 
 ## Expected Outcome
 
-- Release workflow ผลิต `packslip.sigstore.json` ข้างทุก artifact
-- Installer/consumer (เช่น mise) เลือกและ verify ไฟล์จาก manifest ได้
+- The release workflow produces `packslip.sigstore.json` beside every artifact
+- Installers/consumers (e.g. mise) can pick and verify files from the manifest

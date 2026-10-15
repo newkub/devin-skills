@@ -1,34 +1,34 @@
 # pkg.pr.new — Best Practices
 
-Continuous preview releases — install PR builds โดยไม่ publish registry จริง
+Continuous preview releases — install PR builds without publishing to the real registry
 
 ## Recommended Patterns
 
-- GitHub Action: `pkg.pr.new` workflow publish ทุก commit/PR เป็น installable preview URL — `npm i https://pkg.pr.new/...`
-- ใช้สำหรับ PR review testing — reviewer install preview build โดยไม่ต้อง checkout+build เอง
-- Template comments บน PR ด้วย install URLs — action ทำอัตโนมัติถ้า configure
-- `--compact`/`--binary` flags ตาม repo needs; monorepo ใช้ `--pnpm`/workspace support
-- Pair กับ conventional commits/changesets — preview versions meaningful
+- GitHub Action: the `pkg.pr.new` workflow publishes every commit/PR as an installable preview URL — `npm i https://pkg.pr.new/...`
+- Use for PR review testing — reviewers install the preview build without checking out and building themselves
+- Template comments on the PR with install URLs — the action does this automatically when configured
+- `--compact`/`--binary` flags per repo needs; monorepos use `--pnpm`/workspace support
+- Pair with conventional commits/changesets — preview versions stay meaningful
 
 ## Common Pitfalls
 
-- Preview URLs = ephemeral — ห้ามใช้เป็น dep จริงใน package.json; ทดลองแล้ว revert
-- Private repos: pkg.pr.new ต้อง org/subscription access — verify access model ก่อน rely
-- Build must be deterministic: preview publish ผล build จริง — reproducible builds ก่อน enable
-- Secrets: workflow ต้องการ token — ใช้ GITHUB_TOKEN/permissions minimal
-- อย่า publish preview ของทุก commit ใน monorepo ใหญ่ — scope ด้วย paths filter
+- Preview URLs are ephemeral — never use them as real deps in package.json; revert after experimenting
+- Private repos: pkg.pr.new needs org/subscription access — verify the access model before relying on it
+- Builds must be deterministic: a preview publishes the real build — make builds reproducible before enabling
+- Secrets: the workflow needs a token — use GITHUB_TOKEN/minimal permissions
+- Don't publish previews for every commit in a big monorepo — scope with paths filters
 
 ## Workflow
 
-- Reviewer flow: open PR → comment มี install URL → `bun add <url>` → test → feedback
-- CI: pkg.pr.new job หลัง build pass — fail build = ไม่มี preview
-- Cleanup: previews หมดอายุเอง — ไม่ต้องจัดการ
+- Reviewer flow: open PR → comment carries the install URL → `bun add <url>` → test → feedback
+- CI: the pkg.pr.new job runs after the build passes — a failed build means no preview
+- Cleanup: previews expire on their own — nothing to manage
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| preview builds สำหรับ PR testing | pin preview URLs ใน package.json |
-| auto-comment install links | manual "checkout to test" instructions |
-| scope publish ด้วย paths | publish ทุก commit ทุก workspace |
-| verify build determinism | publish broken builds เป็น previews |
+| Preview builds for PR testing | Pinning preview URLs in package.json |
+| Auto-comment install links | Manual "checkout to test" instructions |
+| Scope publishing with paths | Publishing every commit in every workspace |
+| Verify build determinism | Publishing broken builds as previews |

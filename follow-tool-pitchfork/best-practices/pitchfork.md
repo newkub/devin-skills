@@ -1,34 +1,34 @@
 # pitchfork — Best Practices
 
-Daemon/process manager สำหรับ dev workflows — start, stop, supervise
+Daemon/process manager for dev workflows — start, stop, supervise
 
 ## Recommended Patterns
 
-- Declare daemons ใน pitchfork config ต่อ project — name, command, cwd, env, auto-restart policy
-- ใช้สำหรับ dev-time services: watchers, local servers, db proxies — ไม่ใช่ production supervisor
-- `pitchfork start/stop/list/logs` — consistent CLI แทน ad-hoc `&` background jobs
-- Auto-restart เฉพาะ services ที่ crash-recoverable — restart loops บน broken config = noise
-- Log capture ต่อ daemon — `pitchfork logs <name>` แทน redirect ไฟล์เอง
+- Declare daemons in the pitchfork config per project — name, command, cwd, env, auto-restart policy
+- Use for dev-time services: watchers, local servers, db proxies — not as a production supervisor
+- `pitchfork start/stop/list/logs` — a consistent CLI instead of ad-hoc `&` background jobs
+- Auto-restart only crash-recoverable services — restart loops on a broken config = noise
+- Log capture per daemon — `pitchfork logs <name>` instead of hand-rolled redirect files
 
 ## Common Pitfalls
 
-- Daemon drift: process ที่ช้างนอก pitchfork ไม่ tracked — start/stop ผ่าน pitchfork เท่านั้น
-- Env ตอน spawn = snapshot — env changes ต้อง restart daemon ไม่ใช่ expect reload
-- Port conflicts เมื่อ daemon เก่าค้าง — `pitchfork list` เช็คก่อน assume clean state
-- Auto-restart ซ้อน retry storms — backoff/max-restart limits
-- Cleanup ตอน done — daemons ค้างกิน ports/resources; `pitchfork stop --all` เมื่อจบงาน
+- Daemon drift: processes left outside pitchfork are untracked — start/stop only through pitchfork
+- Env at spawn time is a snapshot — env changes require restarting the daemon, don't expect a reload
+- Port conflicts when an old daemon lingers — check `pitchfork list` before assuming a clean state
+- Auto-restart stacking into retry storms — use backoff/max-restart limits
+- Cleanup when done — lingering daemons hold ports/resources; `pitchfork stop --all` at the end of work
 
 ## Workflow
 
-- Project boot: script ที่ `pitchfork start` services ที่ต้องการ — reproducible dev environment
-- Debugging: `logs` + status check ก่อน assume service รันอยู่
-- Integration: ใช้กับ `/run-dev` orchestration เมื่อหลาย services ต้องพร้อมกัน
+- Project boot: a script that runs `pitchfork start` for the needed services — reproducible dev environment
+- Debugging: check `logs` + status before assuming a service is running
+- Integration: pair with `/run-dev` orchestration when several services must be ready at once
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| track ทุก daemon ผ่าน pitchfork | `nohup`/`&` ข้างนอก |
-| restart policies + backoff | infinite restart loops |
-| stop daemons เมื่อจบ | leave orphans กิน ports |
-| config ต่อ project | global ad-hoc starts |
+| Track every daemon through pitchfork | `nohup`/`&` outside it |
+| Restart policies + backoff | Infinite restart loops |
+| Stop daemons when finished | Leave orphans holding ports |
+| Config per project | Global ad-hoc starts |

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-pkg-new
-description: ตั้งค่า pkg.pr.new สำหรับ continuous preview releases
+description: Set up pkg.pr.new for continuous preview releases
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
@@ -12,14 +12,14 @@ related:
 
 ## Goal
 
-ตั้งค่า pkg.pr.new สำหรับ continuous (preview) releases สำหรับ libraries ด้วยการ publish อัตโนมัติทุก commit และ pull request
+Set up pkg.pr.new for continuous (preview) releases of libraries by auto-publishing every commit and pull request
 
 ## Scope
 
-ใช้สำหรับ libraries บน GitHub ที่ต้องการ preview packages สำหรับทุก commit และ pull request
+For GitHub libraries that want preview packages for every commit and pull request
 
-- ใช้ skill นี้สำหรับ ephemeral preview releases เท่านั้น — สำหรับ real releases ใช้ `/follow-tool-release-it` หรือ `/follow-tool-semantic-release`
-- ต้องใช้ GitHub Actions — ถ้ายังไม่มี workflow ให้ทำ `/follow-tool-github-actions` ก่อน
+- Use this skill for ephemeral preview releases only — for real releases use `/follow-tool-release-it` or `/follow-tool-semantic-release`
+- Requires GitHub Actions — if there's no workflow yet, do `/follow-tool-github-actions` first
 
 - Latest: `pkg-pr-new@0.0.88` (verified 2026-09-13)
 
@@ -27,101 +27,101 @@ related:
 
 ### 1. Install GitHub Application
 
-> Goal: ติดตั้ง GitHub Application บน repository
+> Goal: install the GitHub Application on the repository
 
-1. ไปที่ `https://github.com/apps/pkg-pr-new`
-2. Install application บน repository
-3. ตรวจสอบ permissions ที่จำเป็น
-4. ดูรายละเอียดใน 
+1. Go to `https://github.com/apps/pkg-pr-new`
+2. Install the application on the repository
+3. Verify the required permissions
+4. See details in 
 
 ### 2. Install Package
 
-> Goal: ติดตั้ง pkg-pr-new package ใน project
+> Goal: install the pkg-pr-new package in the project
 
-1. รัน `bun add -D pkg-pr-new`
-2. ใน CI ให้รันจาก lockfile (`bun run pkg-pr-new publish` หรือ `pnpm exec pkg-pr-new publish`) แทน `bunx`/`npx`
-3. ดูรายละเอียดใน 
+1. Run `bun add -D pkg-pr-new`
+2. In CI, run from the lockfile (`bun run pkg-pr-new publish` or `pnpm exec pkg-pr-new publish`) instead of `bunx`/`npx`
+3. See details in 
 
 ### 3. Configure Workflow
 
-> Goal: สร้าง GitHub Actions workflow สำหรับ publish
+> Goal: create the GitHub Actions workflow for publishing
 
-1. สร้างไฟล์ `.github/workflows/publish.yml`
-2. trigger บน `push` และ `pull_request`
-3. รัน `bun install`, `bun run build` แล้ว `bunx pkg-pr-new publish`
-4. สำหรับ monorepos ระบุ packages paths เช่น `'./packages/*'`
-5. ดูรายละเอียดใน 
+1. Create `.github/workflows/publish.yml`
+2. Trigger on `push` and `pull_request`
+3. Run `bun install`, `bun run build`, then `bunx pkg-pr-new publish`
+4. For monorepos, specify package paths such as `'./packages/*'`
+5. See details in 
 
 ### 4. Configure Options
 
-> Goal: กำหนด options สำหรับ templates, CLI และ comments
+> Goal: set options for templates, CLI, and comments
 
-1. ใช้ `--template './examples/*'` สำหรับ StackBlitz templates
-2. ใช้ `--bin` สำหรับ CLI applications
-3. ใช้ `--comment=update` สำหรับ custom comments
-4. ใช้ `--packageManager=bun` สำหรับ package manager ใน comments
-5. ใช้ `--commentWithSha` เมื่อต้องการ commit SHA URLs ใน comments แทน PR number URLs
-6. ดูรายละเอียดใน 
+1. Use `--template './examples/*'` for StackBlitz templates
+2. Use `--bin` for CLI applications
+3. Use `--comment=update` for custom comments
+4. Use `--packageManager=bun` for the package manager in comments
+5. Use `--commentWithSha` when commit SHA URLs are wanted in comments instead of PR number URLs
+6. See details in 
 
 ### 5. Verify Preview Publish
 
-> Goal: ยืนยันว่า preview packages publish สำเร็จ
+> Goal: confirm preview packages publish successfully
 
-1. เปิด pull request และตรวจว่า bot comment ปรากฏพร้อม install commands
-2. ทดสอบ install ด้วย npm-compatible URL: `bun add https://pkg.pr.new/<owner>/<repo>/<package>@<commit>`
-3. ใช้ step outputs `sha`, `urls`, `packages` จาก `pkg-pr-new publish` เพื่อ chain E2E job (`needs.<job>.outputs.urls`)
-4. ถ้า publish ไม่เกิด → ตรวจว่า GitHub Application install บน repo แล้ว และ workflow มี permissions ถูกต้อง
-5. ดูรายละเอียดใน 
+1. Open a pull request and check the bot comment appears with install commands
+2. Test the install with an npm-compatible URL: `bun add https://pkg.pr.new/<owner>/<repo>/<package>@<commit>`
+3. Use the `sha`, `urls`, `packages` step outputs from `pkg-pr-new publish` to chain E2E jobs (`needs.<job>.outputs.urls`)
+4. If no publish happens → check the GitHub Application is installed on the repo and the workflow has correct permissions
+5. See details in 
 
 ## Rules
 
 ### 1. Installation
 
-- ต้อง install GitHub Application ก่อนใช้งาน
-- ใช้ `bun` แทน `npm` เสมอ
-- รัน command เพียงครั้งเดียวต่อ workflow
+- The GitHub Application must be installed before use
+- Always use `bun` instead of `npm`
+- Run the command only once per workflow
 
 ### 2. Configuration
 
-- ระบุ packages paths สำหรับ monorepos
-- ใช้ patterns เช่น `./packages/*` แทนการรันหลายครั้ง
-- ตั้งค่า permissions ใน workflow
+- Specify package paths for monorepos
+- Use patterns like `./packages/*` instead of running multiple times
+- Set permissions in the workflow
 
 ### 3. Options
 
-- `--template`: สร้าง Stackblitz instances สำหรับ examples
-- `--bin`: แสดง `bunx` แทน `npm i` ใน comments
-- `--comment`: `update`, `create` หรือ `off`
-- `--packageManager`: `npm`, `pnpm`, `yarn` หรือ `bun`
-- `--only-templates`: แสดงเฉพาะ templates ใน comments
-- `--previewVersion`: rewrite version เป็น `0.0.0-preview-<sha>` ก่อน pack เพื่อเลี่ยง lockfile collision
-- `--pnpm` / `--yarn` / `--bun`: ใช้ `pnpm pack`/`yarn pack`/`bun pm pack` แทน `npm pack` (จำเป็นเมื่อใช้ pnpm catalogs)
-- `--json <file>`: เขียน publish metadata ลง JSON สำหรับ custom comments
+- `--template`: creates Stackblitz instances for examples
+- `--bin`: shows `bunx` instead of `npm i` in comments
+- `--comment`: `update`, `create`, or `off`
+- `--packageManager`: `npm`, `pnpm`, `yarn`, or `bun`
+- `--only-templates`: shows only templates in comments
+- `--previewVersion`: rewrites the version to `0.0.0-preview-<sha>` before packing, avoiding lockfile collisions
+- `--pnpm` / `--yarn` / `--bun`: use `pnpm pack`/`yarn pack`/`bun pm pack` instead of `npm pack` (required with pnpm catalogs)
+- `--json <file>`: writes publish metadata to JSON for custom comments
 
 ### 4. Best Practices
 
-- Publish approved pull requests เท่านั้นสำหรับความปลอดภัย
-- ใช้ outputs สำหรับ E2E tests
-- หลีกเลี่ยง publishing บน tags
+- Publish approved pull requests only, for security
+- Use the outputs for E2E tests
+- Avoid publishing on tags
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool pkg new)
-- ใช้ /follow-tool-release-it ถ้าจำเป็น
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool pkg new)
-- ใช้ /follow-tool-renovate ถ้าจำเป็น
-- ใช้ /follow-tool-node-modules-inspector ถ้าจำเป็น
+- Use /follow-tool-github-actions if needed (tool pkg new)
+- Use /follow-tool-release-it if needed
+- Use /follow-tool-semantic-release if needed (tool pkg new)
+- Use /follow-tool-renovate if needed
+- Use /follow-tool-node-modules-inspector if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- pkg.pr.new ติดตั้งและทำงานได้
-- GitHub Application install สำเร็จ
-- Workflow ตั้งค่าถูกต้อง
-- Preview packages publish อัตโนมัติ
-- Comments ปรากฏบน pull requests
+- pkg.pr.new installed and working
+- GitHub Application installed successfully
+- Workflow configured correctly
+- Preview packages published automatically
+- Comments appear on pull requests
 
