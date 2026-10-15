@@ -1,6 +1,6 @@
 ---
 name: follow-software-engineering
-description: ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย
+description: Design and write software that is easy to test, easy to scale, easy to debug, and easy to use
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
@@ -9,11 +9,11 @@ related:
 
 ## Goal
 
-ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย
+Design and write software that is easy to test, easy to scale, easy to debug, and easy to use
 
 ## Scope
 
-ใช้สำหรับออกแบบ architecture, เขียน code, และออกแบบ UX/UI ของโปรเจกต์ทุกประเภท
+Use for designing architecture, writing code, and designing UX/UI of any kind of project
 
 ## Execute
 
@@ -21,157 +21,157 @@ related:
 
 > Goal: Design Testable & Scalable Architecture
 
-ออกแบบ architecture ที่ test ง่ายและ scale ง่าย
+Design an architecture that is easy to test and easy to scale
 
-1. ทำ `/deep-review` สำหรับโครงสร้างพื้นฐาน
-2. แยก business logic จาก infrastructure
-3. ใช้ dependency injection สำหรับ external dependencies
-4. สร้าง interfaces สำหรับ external services
-5. ออกแบบ modules ที่ independent และ loosely coupled
-6. ใช้ stateless design สำหรับ scalability
-7. ออกแบบ cache strategy
-8. ใช้ async patterns สำหรับ I/O operations
+1. Run `/deep-review-codebase` for the foundational structure
+2. Separate business logic from infrastructure
+3. Use dependency injection for external dependencies
+4. Create interfaces for external services
+5. Design modules that are independent and loosely coupled
+6. Use stateless design for scalability
+7. Design the cache strategy
+8. Use async patterns for I/O operations
 
 ### 2. Write Debuggable & Testable Code
 
 > Goal: Write Debuggable & Testable Code
 
-เขียน code ที่ debug ง่ายและ test ง่าย
+Write code that is easy to debug and easy to test
 
-1. ทำ `/deep-review` เพื่อแยก pure logic จาก side effects
-2. เขียน business logic เป็น pure functions
-3. ใช้ naming ที่ชัดเจนและ meaningful
-4. เขียน functions ที่ small และ focused (max 20-30 lines)
-5. เพิ่ม logging ที่ meaningful และ structured
-6. จัดการ errors อย่าง explicit ด้วย typed errors
-7. เขียน code แบบ defensive ด้วย input validation
-8. เพิ่ม observability (metrics, traces, health checks)
+1. Run `/deep-review-codebase` to separate pure logic from side effects
+2. Write business logic as pure functions
+3. Use clear, meaningful naming
+4. Write small, focused functions (max 20-30 lines)
+5. Add meaningful, structured logging
+6. Handle errors explicitly with typed errors
+7. Write defensive code with input validation
+8. Add observability (metrics, traces, health checks)
 
 ### 3. Design for Usability
 
 > Goal: Design for Usability
 
-ออกแบบให้ใช้งานง่าย
+Design for ease of use
 
-1. ทำ `/deep-review` สำหรับ design system principles
-2. ออกแบบ API ที่ intuitive และ consistent
-3. ใช้ sensible defaults
-4. เพิ่ม auto-completion และ discoverability
-5. ออกแบบ error messages ที่ helpful
-6. ให้ examples และ documentation ที่ชัดเจน
-7. ออกแบบ onboarding ที่ smooth
-8. เพิ่ม feedback ที่ immediate และ clear
+1. Run `/deep-review-codebase` for design system principles
+2. Design APIs that are intuitive and consistent
+3. Use sensible defaults
+4. Add auto-completion and discoverability
+5. Design helpful error messages
+6. Provide clear examples and documentation
+7. Design smooth onboarding
+8. Add immediate, clear feedback
 
 ### 4. Create Clear Boundaries
 
 > Goal: Create Clear Boundaries
 
-สร้าง boundaries ที่ชัดเจนระหว่าง layers
+Create clear boundaries between layers
 
-1. ทำ `/deep-review` สำหรับแยก layers
-2. กำหนด interfaces ระหว่าง layers
-3. ใช้ ports และ adapters pattern
-4. แยก domain logic จาก application logic
-5. แยก presentation logic จาก business logic
+1. Run `/deep-review-codebase` for layer separation
+2. Define interfaces between layers
+3. Use the ports and adapters pattern
+4. Separate domain logic from application logic
+5. Separate presentation logic from business logic
 
 ### 5. Implement Testing Strategy
 
 > Goal: Implement Testing Strategy
 
-จัดการ testing อย่าง systematic
+Manage testing systematically
 
-1. ทำ `/update-tests` สำหรับ testing strategy
-2. เขียน unit tests สำหรับ pure functions
-3. เขียน integration tests สำหรับ adapters
-4. เขียน E2E tests สำหรับ critical flows
-5. สร้าง test fixtures ที่ reusable
-6. ใช้ test doubles สำหรับ external dependencies
-7. ตั้งเป้าหมาย coverage ที่สูง
+1. Run `/update-tests` for the testing strategy
+2. Write unit tests for pure functions
+3. Write integration tests for adapters
+4. Write E2E tests for critical flows
+5. Create reusable test fixtures
+6. Use test doubles for external dependencies
+7. Set high coverage targets
 
 ### 6. Add Documentation
 
 > Goal: Add Documentation
 
-เพิ่ม documentation อย่างสมบูรณ์
+Add complete documentation
 
-1. เขียน JSDoc สำหรับ public functions
-2. อธิบาย parameters และ return values
-3. ระบุ side effects
-4. ให้ examples ที่ชัดเจน
-5. เขียน README ที่ครบถ้วน
-6. อัปเดต documentation อย่างต่อเนื่อง
+1. Write JSDoc for public functions
+2. Describe parameters and return values
+3. State the side effects
+4. Provide clear examples
+5. Write a complete README
+6. Keep documentation updated continuously
 
 ## Rules
 
 ### 1. Architecture Rules
 
-กฎสำหรับ architecture
+Rules for architecture
 
-- Separation of Concerns: แยก business logic, infrastructure, presentation
-- Dependency Injection: Inject dependencies ผ่าน constructors
-- Pure Functions: Business logic เป็น pure functions
-- Clear Boundaries: กำหนด interfaces ระหว่าง layers
-- Scalability: Stateless design, cache strategy, async patterns
-- Testability: Dependency injection, test doubles, pure functions
+- Separation of Concerns: separate business logic, infrastructure, presentation
+- Dependency Injection: inject dependencies through constructors
+- Pure Functions: business logic as pure functions
+- Clear Boundaries: define interfaces between layers
+- Scalability: stateless design, cache strategy, async patterns
+- Testability: dependency injection, test doubles, pure functions
 
 ### 2. Code Quality Rules
 
-กฎสำหรับ code quality
+Rules for code quality
 
-- Clear Naming: ชื่อบอก purpose, verbs สำหรับ functions, nouns สำหรับ variables
-- Small Functions: Single responsibility, max 20-30 lines, composition over nesting
-- Meaningful Logging: Log critical points, structured logging, contextual information
-- Explicit Error Handling: Typed errors, propagate clearly, meaningful messages
-- Self-Documenting: Clear naming, no magic numbers, use constants
-- Defensive Programming: Input validation, edge case handling, type guards
-- Observability: Key metrics, distributed tracing, health checks
+- Clear Naming: names state purpose, verbs for functions, nouns for variables
+- Small Functions: single responsibility, max 20-30 lines, composition over nesting
+- Meaningful Logging: log critical points, structured logging, contextual information
+- Explicit Error Handling: typed errors, propagate clearly, meaningful messages
+- Self-Documenting: clear naming, no magic numbers, use constants
+- Defensive Programming: input validation, edge case handling, type guards
+- Observability: key metrics, distributed tracing, health checks
 
 ### 3. Usability Rules
 
-กฎสำหรับ usability
+Rules for usability
 
-- Intuitive API: Consistent naming, predictable behavior
-- Sensible Defaults: Values ที่ work สำหรับ most cases
+- Intuitive API: consistent naming, predictable behavior
+- Sensible Defaults: values that work for most cases
 - Auto-Completion: DX first, discoverable APIs
-- Helpful Errors: Error messages ที่บอกวิธีแก้
-- Clear Documentation: Examples, tutorials, guides
-- Smooth Onboarding: Quick start, progressive disclosure
-- Immediate Feedback: Fast response, clear status
+- Helpful Errors: error messages that tell how to fix
+- Clear Documentation: examples, tutorials, guides
+- Smooth Onboarding: quick start, progressive disclosure
+- Immediate Feedback: fast response, clear status
 
 ### 4. Testing Rules
 
-กฎสำหรับ testing
+Rules for testing
 
-- Unit Tests: Test pure functions ด้วย AAA pattern
-- Integration Tests: Test adapters ด้วย mock ports
-- E2E Tests: Test critical flows บน real environment
-- Test Fixtures: Shared test data ที่ reusable
-- Test Helpers: Test utilities สำหรับ setup/teardown
-- High Coverage: ตั้งเป้าหมาย coverage สูง
-- Fast Execution: Tests ควร run ได้เร็ว
+- Unit Tests: test pure functions with the AAA pattern
+- Integration Tests: test adapters with mock ports
+- E2E Tests: test critical flows on real environment
+- Test Fixtures: reusable shared test data
+- Test Helpers: test utilities for setup/teardown
+- High Coverage: set high coverage targets
+- Fast Execution: tests should run quickly
 
 ### 5. Documentation Rules
 
-กฎสำหรับ documentation
+Rules for documentation
 
-- JSDoc: สำหรับ public functions
-- Purpose/Parameters/Return: อธิบายชัดเจน
-- @throws: ระบุ errors ที่อาจ throw
-- @example: ให้ examples ที่ใช้งานได้
-- README: ครบถ้วนสำหรับ project
-- Up-to-date: อัปเดตอย่างต่อเนื่อง
+- JSDoc: for public functions
+- Purpose/Parameters/Return: described clearly
+- @throws: list the errors that may be thrown
+- @example: provide working examples
+- README: complete coverage
+- Up-to-date: continuously updated
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- Architecture ที่ test ง่ายและ scale ง่าย
-- Code ที่ debug ง่ายและ test ง่าย
-- Design ที่ใช้งานง่ายและ intuitive
-- Business logic ที่ pure และ testable
-- Clear boundaries ระหว่าง layers
-- Dependency injection ที่ดี
-- High observability และ debuggability
+- Architecture that is easy to test and easy to scale
+- Code that is easy to debug and easy to test
+- Design that is easy to use and intuitive
+- Business logic that is pure and testable
+- Clear boundaries between layers
+- Good dependency injection
+- High observability and debuggability
 - High test coverage
 - Complete documentation
 - Excellent developer experience
