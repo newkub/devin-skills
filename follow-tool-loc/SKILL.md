@@ -1,6 +1,6 @@
 ---
 name: follow-tool-loc
-description: ใช้งาน loc tool สำหรับนับ lines of code แบบเร็ว กรองไฟล์ และวิเคราะห์ขนาดไฟล์
+description: Use the loc tool to count lines of code fast, filter files, and analyze file sizes
 argument-hint: "[path] [options]"
 related:
   - check-long-files
@@ -11,114 +11,115 @@ related:
 
 ## Goal
 
-ใช้งาน `loc` tool สำหรับนับ lines of code แยกตามภาษาและไฟล์ พร้อมกรองไฟล์ตามเงื่อนไข
+Use the `loc` tool to count lines of code by language and file, with conditional file filtering
 
 ## Scope
 
-ใช้สำหรับ project ที่ติดตั้ง `loc` แล้ว ครอบคลุมการนับ lines, กรองไฟล์, และวิเคราะห์ขนาดไฟล์
+For projects that already have `loc` installed — covers counting lines, filtering files, and analyzing file sizes
 
-- Latest: `loc@0.5.0` (crates.io, verified 2026-09-26; npm `loc@0.6.1` เป็นคนละ project) — release ล่าสุดปี 2018 (tool นิ่งแล้ว; author แนะนำ `scc` เองใน README); ถ้าต้องการ maintained alternative พิจารณา `tokei` หรือ `scc`
+- Latest: `loc@0.5.0` (crates.io, verified 2026-09-26; npm `loc@0.6.1` is a different project) — latest release 2018 (the tool is dormant; the author himself suggests `scc` in the README); for a maintained alternative consider `tokei` or `scc`
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ยืนยันว่า `loc` ติดตั้งพร้อมใช้งาน
+> Goal: confirm `loc` is installed and ready
 
-1. ตรวจสอบว่ามี `loc` ติดตั้งหรือไม่: `loc --version`
-2. ถ้าไม่มี → ติดตั้งด้วย `cargo install loc` หรือดาวน์โหลด binary จาก https://github.com/cgag/loc/releases
-3. ถ้าไม่มี Rust/Cargo → ติดตั้งจาก https://www.rustup.rs/
+1. Check whether `loc` is installed: `loc --version`
+2. If absent → install with `cargo install loc` or download a binary from https://github.com/cgag/loc/releases
+3. If Rust/Cargo is missing → install from https://www.rustup.rs/
 
 ### 2. Count Lines Of Code
 
-> Goal: นับ lines of code แยกตามภาษาและ path
+> Goal: count lines of code by language and path
 
-1. รัน `loc` เพื่อนับ lines of code ทั้ง project: `loc`
-2. ระบุ path เฉพาะ: `loc src/` หรือ `loc ci benches`
-3. ผลลัพธ์แสดงตารางแยกตามภาษา: Files, Lines, Blank, Comment, Code
+1. Run `loc` to count lines of code for the whole project: `loc`
+2. Specify a path: `loc src/` or `loc ci benches`
+3. The result is a table per language: Files, Lines, Blank, Comment, Code
 
 ### 3. Show Per-File Statistics
 
-> Goal: แสดงสถิติระดับไฟล์และเรียงลำดับได้
+> Goal: show file-level statistics with sortable ordering
 
-1. รัน `loc --files` เพื่อแสดงสถิติระดับไฟล์
-2. ใช้ `--sort` สำหรับเรียงลำดับ:
-   - `--sort Code` (default) — เรียงตามจำนวน code lines
-   - `--sort Lines` — เรียงตามจำนวนบรรทัดทั้งหมด
-   - `--sort Comment` — เรียงตามจำนวน comment
-   - `--sort Blank` — เรียงตามจำนวน blank lines
-3. ค่า `Language` และ `Files` ใช้ได้เฉพาะเมื่อไม่มี `--files`
+1. Run `loc --files` for file-level statistics
+2. Use `--sort` for ordering:
+   - `--sort Code` (default) — by code lines
+   - `--sort Lines` — by total lines
+   - `--sort Comment` — by comment count
+   - `--sort Blank` — by blank lines
+3. `Language` and `Files` are valid only without `--files`
 
 ### 4. Filter Files
 
 > Goal: Filter Files
 
-1. ใช้ `--include <REGEX>` กรองเฉพาะไฟล์ที่ตรงเงื่อนไข:
-   - `loc --include '\.ts$'` — เฉพาะ TypeScript files
-   - `loc --include 'src/'` — เฉพาะไฟล์ใน src/
-2. ใช้ `--exclude <REGEX>` ยกเว้นไฟล์ที่ตรงเงื่อนไข:
-   - `loc --exclude 'sh$'` — ยกเว้น shell scripts
-   - `loc --exclude 'node_modules/'` — ยกเว้น node_modules
-3. ใช้หลาย `--include` หรือ `--exclude` พร้อมกันได้ (OR logic)
-4. ใช้ `-u` เพื่อข้าม `.gitignore` และ `-uu` เพื่อรวม hidden files
+1. Use `--include <REGEX>` to keep only matching files:
+   - `loc --include '\.ts$'` — TypeScript files only
+   - `loc --include 'src/'` — files under src/ only
+2. Use `--exclude <REGEX>` to skip matching files:
+   - `loc --exclude 'sh$'` — exclude shell scripts
+   - `loc --exclude 'node_modules/'` — exclude node_modules
+3. Several `--include` or `--exclude` flags can be combined (OR logic)
+4. Use `-u` to bypass `.gitignore` and `-uu` to include hidden files
 
 ### 5. Filter Long Files
 
 > Goal: Filter Long Files
 
-1. รัน `loc --files --sort Lines` แล้ว pipe ไปกรองเฉพาะไฟล์ที่ > threshold:
+1. Run `loc --files --sort Lines` then pipe to filter files over the threshold:
    ```bash
    pwsh -NoProfile -Command "loc --files --sort Lines | Select-String -Pattern '^\|' | ForEach-Object { $line = $_.Line; if ($line -match '\|\s*(\S+)\s+(\d+)\s+') { if ([int]$Matches[2] -gt 250) { $line } } }"
    ```
-2. เปลี่ยนตัวเลข `250` เป็น threshold ที่ต้องการ
-3. ดู `/check-long-files` สำหรับ workflow เฉพาะ
+2. Change `250` to the wanted threshold
+3. See `/check-long-files` for the dedicated workflow
 
 ## Rules
 
 ### 1. Installation
 
-- ติดตั้งผ่าน `cargo install loc` หรือดาวน์โหลด binary จาก releases page
-- ต้องมี Rust/Cargo ก่อนติดตั้งผ่าน cargo
-- รองรับ Windows, macOS, และ Linux
+- Install via `cargo install loc` or download a binary from the releases page
+- Rust/Cargo is required before installing via cargo
+- Supports Windows, macOS, and Linux
 
 ### 2. CLI Flags
 
-- `--files` — แสดงสถิติระดับไฟล์ (default: แสดงเฉพาะ summary ตามภาษา)
-- `--sort <COLUMN>` — เรียงลำดับตามคอลัมน์: `Code`, `Comment`, `Blank`, `Lines`, `Language`, `Files` (default: `Code`)
-- `--include <REGEX>` — กรองเฉพาะไฟล์ที่ตรง regex (รองรับหลาย flag, OR logic)
-- `--exclude <REGEX>` — ยกเว้นไฟล์ที่ตรง regex (รองรับหลาย flag, OR logic)
-- `-u` / `--unrestricted` — ข้าม `.gitignore` (ใช้ `-uu` เพื่อรวม hidden files)
-- `[target]...` — ระบุ path หรือไฟล์ (default: current directory)
+- `--files` — show file-level statistics (default: per-language summary only)
+- `--sort <COLUMN>` — order by column: `Code`, `Comment`, `Blank`, `Lines`, `Language`, `Files` (default: `Code`)
+- `--include <REGEX>` — keep only files matching the regex (multiple flags supported, OR logic)
+- `--exclude <REGEX>` — skip files matching the regex (multiple flags supported, OR logic)
+- `-u` / `--unrestricted` — bypass `.gitignore` (use `-uu` to include hidden files)
+- `[target]...` — paths or files (default: current directory)
 
 ### 3. Output Format
 
-- ตารางแสดง columns: Language, Files, Lines, Blank, Comment, Code
-- ใช้ `--files` เพื่อแสดง per-file breakdown (ขึ้นต้นด้วย `|`)
-- ผลลัพธ์เรียงจากมากไปน้อยตามคอลัมน์ที่เลือกใน `--sort`
+- The table shows columns: Language, Files, Lines, Blank, Comment, Code
+- Use `--files` for the per-file breakdown (lines start with `|`)
+- Results are sorted high→low by the chosen `--sort` column
 
 ### 4. Regex Syntax
 
-- `--include` และ `--exclude` ใช้ Rust regex syntax
-- ใช้ `\.ts$` สำหรับไฟล์ .ts (จำเป็นต้อง escape dot)
-- ใช้ `src/` สำหรับไฟล์ใน directory ใดๆ ที่มี `src/` ใน path
-- หลาย flag ใช้ OR logic: `--include '\.ts$' --include '\.tsx$'` ได้ทั้ง .ts และ .tsx
+- `--include` and `--exclude` use Rust regex syntax
+- Use `\.ts$` for .ts files (the dot must be escaped)
+- Use `src/` for files whose path contains `src/` in any directory
+- Multiple flags use OR logic: `--include '\.ts$' --include '\.tsx$'` matches both .ts and .tsx
 
 ### 5. Performance
 
-- `loc` เร็วกว่า `cloc` 100x และเร็วกว่า `tokei` 2-10x
-- ใช้ parallel processing ผ่าน worker pool ทุก CPU cores
-- ใช้ byte-level iteration สำหรับความเร็วสูง
-- กรองไฟล์ด้วย `--include`/`--exclude` ก่อนนับเพื่อลดเวลา
+- `loc` is 100x faster than `cloc` and 2-10x faster than `tokei`
+- Uses parallel processing with a worker pool across all CPU cores
+- Uses byte-level iteration for high speed
+- Filter with `--include`/`--exclude` before counting to cut run time
 
-- ใช้ `/report-file-structure` เพื่อรายงานโครงสร้างไฟล์
-- ใช้ `/scan-codebase` เพื่อ scan codebase เพิ่มเติม
-- ใช้ `/use-scripts` เพื่อ post-process output
+- Use `/report-file-structure` to report the file structure
+- Use `/scan-codebase` for further codebase scanning
+- Use `/use-scripts` to post-process the output
+- Use /check-long-files if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ทราบจำนวน lines of code แยกตามภาษาและไฟล์
-- กรองไฟล์ตามประเภทหรือ path ได้
-- ระบุไฟล์ที่ยาวเกิน threshold ได้
-- ผลลัพธ์เป็นตารางชัดเจน เรียงลำดับตามที่ต้องการ
+- Line counts by language and file are known
+- Files can be filtered by type or path
+- Files longer than the threshold can be identified
+- Clear tabular output, ordered as wanted
