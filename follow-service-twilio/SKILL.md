@@ -1,6 +1,6 @@
 ---
 name: follow-service-twilio
-description: ใช้ Twilio ส่ง SMS/OTP/verify — Messaging, Verify API, webhooks
+description: Use Twilio to send SMS/OTP/verify — Messaging, Verify API, webhooks
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้ Twilio ส่ง SMS/OTP/verify — Messaging, Verify API, webhooks
+Use Twilio to send SMS/OTP/verify — Messaging, Verify API, webhooks
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (service twilio)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (service twilio)
 
 ## Execute
 
@@ -24,35 +24,35 @@ related:
 |--------|----------|
 | Setup  | `## Merged Details → setup-twilio` — SDK install, Account SID/Auth Token |
 | Config | `## Merged Details → config-twilio` — phone numbers, messaging service, webhook config |
-| Verify | `## Merged Details → verify-connection` — account fetch ตอบกลับ, numbers พร้อม |
+| Verify | `## Merged Details → verify-connection` — account fetch responds, numbers ready |
 
-อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+Read `workflows/<name>/SKILL.md` per topic and follow the flow there — do not execute from this table directly
 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: Use it correctly per the official docs
 
-Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add twilio`
+Latest: `twilio@6.1.1` (verified 2026-09-12) — install with `bun add twilio`
 
-1. สร้าง client ด้วย accountSid/authToken จาก env — ไม่ expose ฝั่ง client
-1. ใช้ Verify API (`verify.v2.services().verifications`) สำหรับ OTP — ไม่ต้องจัดการ code เอง
-1. ใช้ Messaging (`messages.create`) สำหรับ SMS ทั่วไป — ตั้ง messagingServiceSid
-1. รับ status callbacks ผ่าน webhook — verify signature ด้วย Twilio signature
+1. Create the client with accountSid/authToken from env — never expose on the client side
+1. Use the Verify API (`verify.v2.services().verifications`) for OTP — no need to manage codes yourself
+1. Use Messaging (`messages.create`) for regular SMS — set messagingServiceSid
+1. Receive status callbacks via webhook — verify the signature with the Twilio signature
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: Confirm correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (service twilio)
+1. Do `/run-verify` for lint, typecheck
+2. Do `/run-test` if relevant tests exist
+3. Check the latest official docs before using an uncertain API (service twilio)
 
 ## Rules
 
-- ใช้ Verify API แทน self-managed OTP เมื่อเป็นไปได้
-- verify webhook signatures เสมอ
-- ระวัง regional compliance (sender IDs, opt-out)
-- ไม่ log message bodies ที่มี PII/OTP
+- Prefer the Verify API over self-managed OTP when possible
+- Always verify webhook signatures
+- Watch regional compliance (sender IDs, opt-out)
+- Do not log message bodies containing PII/OTP
 
 ## Merged Details
 
@@ -60,177 +60,177 @@ Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add t
 
 ##### Goal
 
-ตั้งค่า/แก้ไข Twilio configuration — phone numbers, Messaging Service, Verify Service และ webhook callbacks — โดย merge กับ config เดิม
+Set/edit Twilio configuration — phone numbers, Messaging Service, Verify Service, and webhook callbacks — merging with the existing config
 
 ##### Scope
 
-- ครอบคลุม env keys, messaging/verify service SIDs และ webhook endpoints
-- ถ้ายังไม่ได้ install SDK หรือไม่มี credentials → ทำ `## Merged Details → setup-twilio` ก่อน
-- ไม่รวมการซื้อ number จริง — user ทำใน Twilio Console
+- Covers env keys, messaging/verify service SIDs, and webhook endpoints
+- If the SDK is not installed or credentials are missing → do `## Merged Details → setup-twilio` first
+- Does not include buying real numbers — the user does that in the Twilio Console
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ config ปัจจุบันก่อนแก้
+> Goal: Know the current config before editing
 
-1. อ่าน env keys ที่มีอยู่: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`, `TWILIO_MESSAGING_SERVICE_SID`, `TWILIO_VERIFY_SERVICE_SID`
-2. อ่าน code ที่สร้าง client และ webhook handlers ปัจจุบัน
-3. ทำ `/deep-review` domain `review-config` ถ้าต้องรู้ drift ระหว่าง env กับ code
+1. Read the existing env keys: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`, `TWILIO_MESSAGING_SERVICE_SID`, `TWILIO_VERIFY_SERVICE_SID`
+2. Read the code that creates the client and the current webhook handlers
+3. Do `/deep-review` domain `review-config` if env drift vs code must be known
 
 ###### 2. Configure Phone Numbers And Services
 
-> Goal: ระบุ sender identities ถูกต้อง
+> Goal: Identify sender identities correctly
 
-1. ระบุ `TWILIO_PHONE_NUMBER` (E.164 format) หรือ `TWILIO_MESSAGING_SERVICE_SID` สำหรับ SMS
-2. ระบุ `TWILIO_VERIFY_SERVICE_SID` สำหรับ OTP ผ่าน Verify API
-3. เก็บ SIDs ทั้งหมดผ่าน `/follow-secret-manager` — merge กับ env เดิม ห้าม overwrite
+1. Set `TWILIO_PHONE_NUMBER` (E.164 format) or `TWILIO_MESSAGING_SERVICE_SID` for SMS
+2. Set `TWILIO_VERIFY_SERVICE_SID` for OTP via the Verify API
+3. Store all SIDs via `/follow-secret-manager` — merge with the existing env, never overwrite
 
 ###### 3. Configure Webhooks
 
-> Goal: รับ callbacks อย่างปลอดภัย
+> Goal: Receive callbacks securely
 
-1. ตั้ง status callback / inbound webhook URL ใน Twilio Console (phone number หรือ messaging service settings)
-2. สร้าง route รับ webhook เช่น `/api/webhooks/twilio`
-3. verify signature ด้วย `twilio.validateRequest` กับ `TWILIO_AUTH_TOKEN` ทุก request
-4. ตอบ `200` ทันทีและ process async — Twilio retry ถ้า timeout
+1. Set the status callback / inbound webhook URL in the Twilio Console (phone number or messaging service settings)
+2. Create a webhook receiver route such as `/api/webhooks/twilio`
+3. Verify the signature with `twilio.validateRequest` against `TWILIO_AUTH_TOKEN` on every request
+4. Respond `200` immediately and process async — Twilio retries on timeout
 
 ###### 4. Verify
 
-> Goal: config ทำงานได้จริง
+> Goal: config works for real
 
-1. ส่ง test SMS หรือ test OTP แล้วดู status callback เข้า webhook
-2. ทำ `/run-verify` และ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ถ้าพัง → revert key ที่เพิ่งแก้แล้ว report diff
+1. Send a test SMS or test OTP and watch the status callback hit the webhook
+2. Do `/run-verify` and `/run-test` if relevant tests exist
+3. If broken → revert the key just changed, then report the diff
 
 ##### Rules
 
-- แก้เฉพาะ keys ที่จำเป็น — ห้าม overwrite env/config ทั้งชุด
-- verify webhook signatures เสมอ — ห้าม trust request โดยไม่ตรวจ
-- ไม่ log message bodies ที่มี PII/OTP
-- ระวัง regional compliance (sender IDs, opt-out) — ดู official docs ถ้าไม่แน่ใจ
+- Edit only the necessary keys — never overwrite the whole env/config set
+- Always verify webhook signatures — never trust a request unchecked
+- Do not log message bodies containing PII/OTP
+- Watch regional compliance (sender IDs, opt-out) — see official docs if unsure
 
 ##### Expected Outcome
 
-- phone number/service SIDs ถูกต้องและอยู่ใน secret manager
-- webhook route verify signature และรับ callbacks ได้
-- test message/OTP ส่งสำเร็จ
+- phone number/service SIDs correct and stored in the secret manager
+- webhook route verifies signatures and receives callbacks
+- test message/OTP sends successfully
 
 ### setup-twilio
 
 ##### Goal
 
-ติดตั้ง Twilio SDK และเตรียม credentials (Account SID, Auth Token) ให้ server เรียก Twilio API ได้ — first-time setup ไม่ใช่ ongoing config
+Install the Twilio SDK and prepare credentials (Account SID, Auth Token) so the server can call the Twilio API — first-time setup, not ongoing config
 
 ##### Scope
 
-- ติดตั้ง `twilio` package และสร้าง client ฝั่ง server
-- ตั้งค่า `TWILIO_ACCOUNT_SID` และ `TWILIO_AUTH_TOKEN` ผ่าน secret manager
-- ถ้า setup ไปแล้ว → verify เท่านั้น; config phone numbers/webhooks → `## Merged Details → config-twilio`
+- Install the `twilio` package and create the client server-side
+- Set `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` via the secret manager
+- If already set up → verify only; phone numbers/webhooks config → `## Merged Details → config-twilio`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยัน project พร้อมและยังไม่ได้ setup
+> Goal: Confirm the project is ready and not yet set up
 
-1. ตรวจ `package.json` ว่ามี `twilio` แล้วหรือยัง — ถ้ามี → skip ไปขั้น verify
-2. ตรวจ env/secrets ว่ามี `TWILIO_ACCOUNT_SID` และ `TWILIO_AUTH_TOKEN` หรือยัง
-3. ถ้าขาด credentials → ทำ `/open-web-for-config-secret` ชี้ user ไป Twilio Console
+1. Check `package.json` for `twilio` already present — if present → skip to the verify step
+2. Check env/secrets for `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`
+3. If credentials are missing → do `/open-web-for-config-secret` pointing the user to the Twilio Console
 
 ###### 2. Install SDK
 
-> Goal: ติดตั้ง Twilio SDK ฝั่ง server
+> Goal: Install the Twilio SDK server-side
 
-1. รัน `bun add twilio` (หรือ package manager ของ project)
-2. ยืนยันว่า import ได้ด้วย `import twilio from 'twilio'`
+1. Run `bun add twilio` (or the project's package manager)
+2. Confirm the import works with `import twilio from 'twilio'`
 
 ###### 3. Configure Credentials
 
-> Goal: เก็บ credentials อย่างปลอดภัย
+> Goal: Store credentials securely
 
-1. สร้าง/หา Account SID และ Auth Token จาก Twilio Console
-2. เก็บ `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` ผ่าน `/follow-secret-manager` — ห้าม commit หรือ expose ฝั่ง client
+1. Create/find the Account SID and Auth Token in the Twilio Console
+2. Store `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` via `/follow-secret-manager` — never commit or expose on the client side
 
 ###### 4. Create Client
 
-> Goal: client singleton พร้อมใช้
+> Goal: client singleton ready to use
 
-1. สร้าง client ด้วย `twilio(accountSid, authToken)` อ่านจาก env ฝั่ง server เท่านั้น
-2. รัน smoke check เช่น `client.messages.list({ limit: 1 })` เพื่อยืนยัน auth ใช้ได้
+1. Create the client with `twilio(accountSid, authToken)` reading from env server-side only
+2. Run a smoke check such as `client.messages.list({ limit: 1 })` to confirm the auth works
 
 ###### 5. Verify
 
-> Goal: SDK ทำงานได้จริง
+> Goal: the SDK actually works
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
-3. สำเร็จ → ทำ `/suggest-next-action`
+1. Do `/run-verify` for lint, typecheck
+2. If verify fails → do `/resolve-errors` max 3 rounds, then stop and report
+3. Success → do `/suggest-next-action`
 
 ##### Rules
 
-- ห้าม hardcode หรือ commit Account SID/Auth Token
-- client ต้องอยู่ฝั่ง server เท่านั้น — ห้าม bundle เข้า client
-- ใช้ official docs เป็นแหล่งหลัก ถ้าไม่แน่ใจ → ดู https://www.twilio.com/docs
+- Never hardcode or commit the Account SID/Auth Token
+- The client must live server-side only — never bundle it into a client
+- Use official docs as the primary source; if unsure → see https://www.twilio.com/docs
 
 ##### Expected Outcome
 
-- `twilio` ติดตั้งและ client ทำงานได้ฝั่ง server
-- credentials อยู่ใน secret manager ไม่มีใน code
-- smoke check ผ่าน — พร้อมไป `## Merged Details → config-twilio`
+- `twilio` installed and the client works server-side
+- credentials live in the secret manager, none in code
+- smoke check passes — ready for `## Merged Details → config-twilio`
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า Twilio เชื่อมต่อได้จริง — Account SID/Auth Token valid, messaging service/numbers พร้อม
+Confirm after setup/config that Twilio really connects — Account SID/Auth Token valid, messaging service/numbers ready
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-twilio` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่ส่ง SMS/calls
+- Used when `/follow-service-twilio` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not send SMS/calls
 
 ##### Execute
 
 ###### 1. Check Credentials
 
-> Goal: SID และ token มีครบ
+> Goal: SID and token all present
 
-1. ตรวจ `TWILIO_ACCOUNT_SID` (`AC...` format) และ `TWILIO_AUTH_TOKEN` มี (ไม่ print ค่า)
-2. ถ้าใช้ messaging service → `TWILIO_MESSAGING_SERVICE_SID` (`MG...`) มี
+1. Check `TWILIO_ACCOUNT_SID` (`AC...` format) and `TWILIO_AUTH_TOKEN` exist (do not print values)
+2. If a messaging service is used → `TWILIO_MESSAGING_SERVICE_SID` (`MG...`) exists
 
 ###### 2. Smoke Test API Call
 
-> Goal: account fetch ตอบกลับ
+> Goal: account fetch responds
 
-1. `twilio api:core:v2010:accounts:fetch` หรือ `client.api.accounts(sid).fetch()`
+1. `twilio api:core:v2010:accounts:fetch` or `client.api.accounts(sid).fetch()`
 2. 200 = credentials valid; 401 = invalid token, 404 = wrong SID
-3. บันทึก account status (`active`/`suspended`)
+3. Record the account status (`active`/`suspended`)
 
 ###### 3. Check Numbers And Webhooks
 
-> Goal: sending capability พร้อม
+> Goal: sending capability ready
 
-1. `client.incomingPhoneNumbers.list({limit: 5})` — มี numbers ที่ส่งได้
-2. ตรวจ webhook URLs ที่ config ไว้ตรงกับ app endpoints
-3. flag: ไม่มี number, number ไม่มี SMS capability
+1. `client.incomingPhoneNumbers.list({limit: 5})` — numbers available to send from
+2. Check the configured webhook URLs match the app endpoints
+3. flag: no number, number without SMS capability
 
 ###### 4. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `no-numbers` / `webhook-mismatch`
 
 ##### Rules
 
-- ใช้ fetch/list calls เท่านั้น — ห้ามส่ง message/call
-- ไม่ print auth token
-- suspended account = flag ทันที
+- Use fetch/list calls only — never send a message/call
+- Do not print the auth token
+- suspended account = flag immediately
 
 ##### Expected Outcome
 
-- Verdict พร้อม account status + numbers evidence
+- Verdict with account status + numbers evidence
 
 ### references/package-manifest
 
@@ -273,6 +273,6 @@ bun add twilio
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (service twilio)
-- ไม่มี security/performance pitfalls ที่รู้จัก (service twilio)
-- Lint, typecheck, tests ผ่าน
+- Library used correctly per best practices (service twilio)
+- No known security/performance pitfalls (service twilio)
+- Lint, typecheck, tests pass

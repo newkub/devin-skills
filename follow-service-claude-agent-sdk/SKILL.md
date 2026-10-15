@@ -1,6 +1,6 @@
 ---
 name: follow-service-claude-agent-sdk
-description: ใช้ @anthropic-ai/claude-agent-sdk สร้าง AI agents — query, tools, MCP, sessions
+description: Use @anthropic-ai/claude-agent-sdk to build AI agents — query, tools, MCP, sessions
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้ @anthropic-ai/claude-agent-sdk สร้าง AI agents — query, tools, MCP, sessions
+Use @anthropic-ai/claude-agent-sdk to build AI agents — query, tools, MCP, sessions
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (service claude agent sdk)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (service claude agent sdk)
 
 ## Execute
 
@@ -24,35 +24,35 @@ related:
 |--------|----------|
 | Setup  | `## Merged Details → setup-claude-agent-sdk` — SDK install, `ANTHROPIC_API_KEY` |
 | Config | `## Merged Details → config-claude-agent-sdk` — model, tools, permissions, sessions config |
-| Verify | `## Merged Details → verify-connection` — API key valid, minimal query ตอบกลับ |
+| Verify | `## Merged Details → verify-connection` — API key valid, minimal query responds |
 
-อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+Read `workflows/<name>/SKILL.md` per topic and follow the flow there — do not execute from this table directly
 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: Use it correctly per the official docs
 
-Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renamed จาก `claude-code` SDK, entry point คือ `query()`
+Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renamed from the `claude-code` SDK; the entry point is `query()`
 
-1. ใช้ `query()` function เป็น entry point — streaming async iterator
-1. กำหนด `options`: model, allowedTools, mcpServers, systemPrompt
-1. ใช้ `tool()` + `createSdkMcpServer` สำหรับ in-process custom tools
-1. จัดการ sessions ด้วย `sessionId`/`resume` สำหรับ multi-turn
+1. Use the `query()` function as the entry point — a streaming async iterator
+1. Set `options`: model, allowedTools, mcpServers, systemPrompt
+1. Use `tool()` + `createSdkMcpServer` for in-process custom tools
+1. Manage sessions with `sessionId`/`resume` for multi-turn
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: Confirm correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (service claude agent sdk)
+1. Do `/run-verify` for lint, typecheck
+2. Do `/run-test` if relevant tests exist
+3. Check the latest official docs before using an uncertain API (service claude agent sdk)
 
 ## Rules
 
-- ต้องการ ANTHROPIC_API_KEY ใน env — ห้าม hardcode
-- control tools ด้วย `allowedTools`/`disallowedTools` explicitly
-- ทำงานฝั่ง server เท่านั้น — ห้าม bundle เข้า client
-- set `maxTurns`/`permissionMode` เหมาะสมกับ use case
+- ANTHROPIC_API_KEY required in env — never hardcode
+- Control tools explicitly with `allowedTools`/`disallowedTools`
+- Server-side only — never bundle into a client
+- Set `maxTurns`/`permissionMode` appropriate to the use case
 
 ## Merged Details
 
@@ -60,181 +60,181 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 
 ##### Goal
 
-ตั้งค่า/แก้ไข `query()` options ของ `@anthropic-ai/claude-agent-sdk` — model, tools, permissions, MCP servers และ sessions — โดย merge กับ config เดิม
+Set/edit `query()` options of `@anthropic-ai/claude-agent-sdk` — model, tools, permissions, MCP servers, and sessions — merging with the existing config
 
 ##### Scope
 
-- ครอบคลุม `options` object, custom tools (`tool()` + `createSdkMcpServer`) และ session resume
-- ถ้ายังไม่ได้ install/API key → ทำ `## Merged Details → setup-claude-agent-sdk` ก่อน
+- Covers the `options` object, custom tools (`tool()` + `createSdkMcpServer`), and session resume
+- If not installed/API key missing → do `## Merged Details → setup-claude-agent-sdk` first
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ options ปัจจุบันก่อนแก้
+> Goal: Know the current options before editing
 
-1. อ่าน call sites ของ `query()` และ options ที่ส่งอยู่
-2. ทำ `/deep-review` domain `review-config` ถ้ามี config แยกในไฟล์อื่น
-3. ถ้าไม่พบ `query()` → ทำ `## Merged Details → setup-claude-agent-sdk` ก่อน
+1. Read the `query()` call sites and the options passed
+2. Do `/deep-review` domain `review-config` if config lives separately in other files
+3. If no `query()` is found → do `## Merged Details → setup-claude-agent-sdk` first
 
 ###### 2. Configure Model And Prompt
 
-> Goal: model/system prompt ตรง use case
+> Goal: model/system prompt match the use case
 
-1. ระบุ `options.model` ตาม use case — ตรวจชื่อ model ล่าสุดจาก official docs ก่อนใช้
-2. ตั้ง `options.systemPrompt` สำหรับ behavior ของ agent
-3. ตั้ง `options.maxTurns` และ `options.cwd` ให้เหมาะกับงาน
+1. Set `options.model` per the use case — verify the latest model names from the official docs before use
+2. Set `options.systemPrompt` for the agent's behavior
+3. Set `options.maxTurns` and `options.cwd` suitably for the task
 
 ###### 3. Configure Tools And Permissions
 
-> Goal: agent เข้าถึงเฉพาะ tools ที่ต้องการ
+> Goal: the agent accesses only the tools it needs
 
-1. กำหนด `allowedTools`/`disallowedTools` explicitly — ห้ามเปิดทุก tool โดยไม่จำเป็น
-2. ตั้ง `permissionMode` ให้ตรง use case (`default`, `acceptEdits`, `bypassPermissions` ฯลฯ — ดู official docs)
-3. custom tools → ใช้ `tool()` + `createSdkMcpServer` แล้วส่งผ่าน `options.mcpServers`
-4. external MCP servers → ระบุใน `options.mcpServers` ตาม schema ของ SDK
+1. Define `allowedTools`/`disallowedTools` explicitly — never enable every tool without need
+2. Set `permissionMode` to match the use case (`default`, `acceptEdits`, `bypassPermissions`, etc. — see official docs)
+3. Custom tools → use `tool()` + `createSdkMcpServer`, then pass via `options.mcpServers`
+4. External MCP servers → declare in `options.mcpServers` per the SDK schema
 
 ###### 4. Configure Sessions
 
-> Goal: multi-turn conversation ทำงานถูกต้อง
+> Goal: multi-turn conversations work correctly
 
-1. ใช้ `sessionId`/`resume` ใน options สำหรับ resume session เดิม
-2. จัดการ session lifecycle — เก็บ session id ต่อ user/conversation
+1. Use `sessionId`/`resume` in options to resume an existing session
+2. Manage session lifecycle — store the session id per user/conversation
 
 ###### 5. Verify
 
-> Goal: config ทำงานกับ agent จริง
+> Goal: config works with the real agent
 
-1. รัน `query()` ทดสอบกับ options ใหม่ — ตรวจ tools ถูก allow/deny ตามที่ตั้ง
-2. ทำ `/run-verify` และ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ถ้าพัง → revert key ที่เพิ่งแก้แล้ว report diff
+1. Run a test `query()` with the new options — confirm tools are allowed/denied as set
+2. Do `/run-verify` and `/run-test` if relevant tests exist
+3. If broken → revert the key just changed, then report the diff
 
 ##### Rules
 
-- control tools ด้วย `allowedTools`/`disallowedTools` explicitly — least privilege
-- set `maxTurns`/`permissionMode` เหมาะสมกับ use case — ห้าม `bypassPermissions` ถ้าไม่จำเป็น
-- secrets ใน `mcpServers` config ผ่าน `/follow-secret-manager`
-- ใช้ official docs https://docs.claude.com/en/api/agent-sdk สำหรับ options ที่ไม่แน่ใจ
+- Control tools explicitly with `allowedTools`/`disallowedTools` — least privilege
+- Set `maxTurns`/`permissionMode` appropriate to the use case — never `bypassPermissions` unless required
+- Secrets in `mcpServers` config go through `/follow-secret-manager`
+- Use official docs https://docs.claude.com/en/api/agent-sdk for uncertain options
 
 ##### Expected Outcome
 
-- model, tools, permissions ถูกต้องตาม least privilege
-- custom tools/MCP servers ทำงานได้
-- session resume ใช้ได้ — lint, typecheck, tests ผ่าน
+- Model, tools, permissions correct per least privilege
+- Custom tools/MCP servers work
+- Session resume works — lint, typecheck, tests pass
 
 ### setup-claude-agent-sdk
 
 ##### Goal
 
-ติดตั้ง `@anthropic-ai/claude-agent-sdk` และเตรียม `ANTHROPIC_API_KEY` ให้ `query()` เรียก agent ได้ — first-time setup
+Install `@anthropic-ai/claude-agent-sdk` and prepare `ANTHROPIC_API_KEY` so `query()` can call the agent — first-time setup
 
 ##### Scope
 
-- ติดตั้ง package และทำ minimal `query()` call ฝั่ง server
-- ตั้งค่า API key ผ่าน secret manager
-- ถ้า setup แล้ว → verify เท่านั้น; model/tools/permissions config → `## Merged Details → config-claude-agent-sdk`
+- Install the package and make a minimal `query()` call server-side
+- Configure the API key via a secret manager
+- If already set up → verify only; model/tools/permissions config → `## Merged Details → config-claude-agent-sdk`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยัน project พร้อมและยังไม่ได้ setup
+> Goal: Confirm the project is ready and not yet set up
 
-1. ตรวจ `package.json` ว่ามี `@anthropic-ai/claude-agent-sdk` แล้วหรือยัง — ถ้ามี → skip ไป verify
-2. ตรวจ env/secrets ว่ามี `ANTHROPIC_API_KEY` หรือยัง
-3. ถ้าขาด key → ทำ `/open-web-for-config-secret` ชี้ user ไป Anthropic Console
+1. Check `package.json` for `@anthropic-ai/claude-agent-sdk` — if present → skip to verify
+2. Check env/secrets for `ANTHROPIC_API_KEY`
+3. If the key is missing → do `/open-web-for-config-secret` pointing the user to the Anthropic Console
 
 ###### 2. Install SDK
 
-> Goal: ติดตั้ง SDK ฝั่ง server
+> Goal: Install the SDK server-side
 
-1. รัน `bun add @anthropic-ai/claude-agent-sdk` (หรือ package manager ของ project)
-2. ยืนยัน import ได้ด้วย `import { query } from '@anthropic-ai/claude-agent-sdk'`
-3. ยืนยันรันเฉพาะ server-side — ห้าม bundle เข้า client
+1. Run `bun add @anthropic-ai/claude-agent-sdk` (or the project's package manager)
+2. Confirm the import works with `import { query } from '@anthropic-ai/claude-agent-sdk'`
+3. Confirm it runs server-side only — never bundle into a client
 
 ###### 3. Configure API Key
 
-> Goal: key ปลอดภัย ไม่ commit
+> Goal: key safe, not committed
 
-1. เก็บ `ANTHROPIC_API_KEY` ผ่าน `/follow-secret-manager` — ห้าม hardcode หรือ commit
-2. SDK อ่าน env อัตโนมัติ — ไม่ต้องส่ง key ใน code
+1. Store `ANTHROPIC_API_KEY` via `/follow-secret-manager` — never hardcode or commit
+2. The SDK reads the env automatically — no need to pass the key in code
 
 ###### 4. Smoke Test
 
-> Goal: `query()` ทำงานได้จริง
+> Goal: `query()` actually works
 
-1. รัน minimal call:
+1. Run a minimal call:
    ```typescript
    for await (const msg of query({ prompt: 'Say hi', options: { maxTurns: 1 } })) {
      console.log(msg)
    }
    ```
-2. ตรวจว่าได้ assistant message กลับมาโดยไม่ error auth
+2. Confirm an assistant message comes back without an auth error
 
 ###### 5. Verify
 
-> Goal: SDK พร้อมใช้
+> Goal: the SDK is ready to use
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
-3. สำเร็จ → ทำ `/suggest-next-action`
+1. Do `/run-verify` for lint, typecheck
+2. If verify fails → do `/resolve-errors` max 3 rounds, then stop and report
+3. Success → do `/suggest-next-action`
 
 ##### Rules
 
-- ต้องการ `ANTHROPIC_API_KEY` ใน env — ห้าม hardcode
-- ทำงานฝั่ง server เท่านั้น — ห้าม bundle เข้า client
-- ใช้ official docs https://docs.claude.com/en/api/agent-sdk ถ้าไม่แน่ใจ API
+- `ANTHROPIC_API_KEY` required in env — never hardcode
+- Server-side only — never bundle into a client
+- Use official docs https://docs.claude.com/en/api/agent-sdk when unsure about the API
 
 ##### Expected Outcome
 
-- SDK ติดตั้งและ `query()` ทำงานได้ฝั่ง server
-- API key อยู่ใน secret manager
-- พร้อมไป `## Merged Details → config-claude-agent-sdk`
+- SDK installed and `query()` works server-side
+- API key stored in the secret manager
+- Ready for `## Merged Details → config-claude-agent-sdk`
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า Claude Agent SDK เชื่อมต่อ Anthropic API ได้จริง — key valid, model พร้อม, query ตอบกลับ
+Confirm after setup/config that the Claude Agent SDK really connects to the Anthropic API — key valid, model available, query responds
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-claude-agent-sdk` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ config
+- Used when `/follow-service-claude-agent-sdk` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change config
 
 ##### Execute
 
 ###### 1. Check API Key
 
-> Goal: `ANTHROPIC_API_KEY` มีและ format ถูก
+> Goal: `ANTHROPIC_API_KEY` exists and has the right format
 
-1. ตรวจ env var มีค่า (ไม่ print ค่า)
-2. ตรวจ key ไม่ใช่ placeholder (`sk-ant-...` format)
+1. Check the env var has a value (do not print it)
+2. Check the key is not a placeholder (`sk-ant-...` format)
 
 ###### 2. Smoke Test Query
 
-> Goal: API ตอบกลับจริง
+> Goal: the API really responds
 
-1. รัน minimal SDK call — เช่น query สั้นๆ หรือ model list ถ้า SDK รองรับ
-2. ตรวจ response ไม่ใช่ 401/403 (auth) หรือ 429 (rate limit)
-3. บันทึก latency คร่าวๆ เป็น baseline
+1. Run a minimal SDK call — e.g. a short query or a model list if the SDK supports it
+2. Confirm the response is not 401/403 (auth) or 429 (rate limit)
+3. Record rough latency as a baseline
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `rate-limited` / `unreachable`
 
 ##### Rules
 
-- ใช้ minimal query เท่านั้น — ควบคุม token cost
-- ไม่ print API key
-- auth failure → แนะนำ `/follow-secret-manager` — ไม่แก้เอง
+- Use minimal queries only — control token cost
+- Do not print the API key
+- Auth failure → recommend `/follow-secret-manager` — do not fix it yourself
 
 ##### Expected Outcome
 
-- Verdict connection พร้อม model/latency evidence
+- Connection verdict with model/latency evidence
 
 ### references/package-manifest
 
@@ -277,6 +277,6 @@ bun add @anthropic-ai/claude-agent-sdk
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (service claude agent sdk)
-- ไม่มี security/performance pitfalls ที่รู้จัก (service claude agent sdk)
-- Lint, typecheck, tests ผ่าน
+- Library used correctly per best practices (service claude agent sdk)
+- No known security/performance pitfalls (service claude agent sdk)
+- Lint, typecheck, tests pass
