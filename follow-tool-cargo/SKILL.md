@@ -1,6 +1,6 @@
 ---
 name: follow-tool-cargo
-description: ตั้งค่า Cargo lint rules และ workspace lint configuration
+description: Configure Cargo lint rules and workspace lint configuration
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -12,33 +12,33 @@ related:
 
 ## Goal
 
-ตั้งค่า Cargo lint rules และ workspace lint configuration ใน `Cargo.toml`
+Configure Cargo lint rules and workspace lint configuration in `Cargo.toml`
 
 ## Scope
 
-ใช้สำหรับตั้งค่า Cargo lint rules ใน Rust projects ทั้ง single crate และ workspace (Rust 1.98+)
+For configuring Cargo lint rules in Rust projects, both single crate and workspace (Rust 1.98+)
 
-- Boundary: skill นี้ครอบคลุมเฉพาะ lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — สำหรับ Rust language/idioms ดู `/follow-lang-rust`; สำหรับ verify หลัง config ใช้ `/run-verify`; สำหรับ Cargo build cache (mbx) ดู `/follow-tool-mr-boxington`
+- Boundary: this skill covers only lint/toolchain config (`[lints]`, `[workspace.lints]`, clippy, fmt, hooks) — for Rust language/idioms see `/follow-lang-rust`; to verify after config use `/run-verify`; for Cargo build cache (mbx) see `/follow-tool-mr-boxington`
 - Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
-- สำหรับ Clippy lint rules และ error handling ดู `references/cli.md`
+- For Clippy lint rules and error handling see `references/cli.md`
 
 ## Execute
 
 ### 1. Analyze Project
 
-> Goal: ตรวจสอบโครงสร้าง project เพื่อระบุ single crate หรือ workspace
+> Goal: inspect the project structure to identify single crate or workspace
 
-1. รัน `/deep-analyze` เพื่อดูโครงสร้างโปรเจกต์
-2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
-3. ตรวจสอบ workspace configuration
-4. ระบุว่าเป็น single crate หรือ workspace
+1. Run `/deep-analyze` to see the project structure
+2. Inspect the existing `Cargo.toml`
+3. Check the workspace configuration
+4. Determine whether it is a single crate or a workspace
 
 ### 2. Configure Cargo.toml Lint Rules
 
-> Goal: เพิ่ม lint attributes ใน `[lints]` section สำหรับ Rust และ Clippy
+> Goal: add lint attributes in the `[lints]` section for Rust and Clippy
 
-1. เพิ่ม lint attributes ใน `[lints]` section:
+1. Add lint attributes in the `[lints]` section:
    ```toml
    [lints.rust]
    unused_extern_crates = "warn"
@@ -48,7 +48,7 @@ related:
    missing_docs = "warn"
    ```
 
-2. เพิ่ม clippy lint rules:
+2. Add clippy lint rules:
    ```toml
    [lints.clippy]
    all = "warn"
@@ -56,7 +56,7 @@ related:
    nursery = "warn"
    ```
 
-3. สำหรับ workspace ให้ใช้ `[workspace.lints]`:
+3. For a workspace use `[workspace.lints]`:
    ```toml
    [workspace.lints.rust]
    unused_extern_crates = "warn"
@@ -68,31 +68,31 @@ related:
    pedantic = "warn"
    ```
 
-4. ดูรายละเอียดใน 
+4. See details in 
 
 ### 3. Configure Workspace Lints
 
-> Goal: ตั้งค่า workspace-level lint rules และ inheritance สำหรับ member crates
+> Goal: set workspace-level lint rules and inheritance for member crates
 
-1. ตั้งค่า workspace-level lint rules ใน `Cargo.toml` หลัก
-2. ใช้ `[workspace.lints]` สำหรับ shared lint rules
-3. แต่ละ crate สามารถ inherit ด้วย:
+1. Set workspace-level lint rules in the root `Cargo.toml`
+2. Use `[workspace.lints]` for shared lint rules
+3. Each crate can inherit with:
    ```toml
    [lints]
    workspace = true
    ```
-4. ดูรายละเอียดใน 
+4. See details in 
 
 ### 4. Setup Pre-commit Hooks
 
-> Goal: ติดตั้ง pre-commit hooks สำหรับตรวจสอบ lint rules อัตโนมัติ
+> Goal: install pre-commit hooks to enforce lint rules automatically
 
-1. ติดตั้ง `lefthook` หรือ `pre-commit`
-2. เพิ่ม hooks สำหรับ:
+1. Install `lefthook` or `pre-commit`
+2. Add hooks for:
    - `cargo check --all-targets`
    - `cargo clippy --all-targets -- -D warnings`
    - `cargo fmt --check`
-3. ตั้งค่าใน `lefthook.yml`:
+3. Configure in `lefthook.yml`:
    ```yaml
    pre-commit:
      true
@@ -107,12 +107,12 @@ related:
 
 ### 5. Verify Configuration
 
-> Goal: รัน verification commands เพื่อยืนยัน lint rules ทำงานถูกต้อง
+> Goal: run verification commands to confirm the lint rules work
 
-1. รัน `cargo check --all-targets`
-2. รัน `cargo clippy --all-targets -- -D warnings`
-3. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
-4. รัน `/run-verify` เพื่อยืนยันว่าทุกอย่างทำงานได้
+1. Run `cargo check --all-targets`
+2. Run `cargo clippy --all-targets -- -D warnings`
+3. Confirm the lint rules behave correctly
+4. Run `/run-verify` to confirm everything works
 
 ## Rules
 
@@ -123,33 +123,32 @@ related:
 - `unused_qualifications`: warn (unused type qualifications)
 - `variant_size_differences`: warn (enum variant size differences)
 - `missing_docs`: warn (missing documentation)
-- ดู 
+- See 
 
 ### 2. Clippy Lint Categories
 
 - `all`: warn (all clippy lints)
 - `pedantic`: warn (pedantic lints)
 - `nursery`: warn (experimental lints)
-- ดู 
+- See 
 
 ### 3. Workspace Configuration
 
-- ตั้งค่า lint rules ที่ workspace level ใน `Cargo.toml` หลัก
-- ใช้ `[workspace.lints]` สำหรับ shared lint rules
-- แต่ละ crate สามารถ inherit ด้วย `workspace = true`
-- แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
-- ดู 
+- Set lint rules at the workspace level in the root `Cargo.toml`
+- Use `[workspace.lints]` for shared lint rules
+- Each crate can inherit with `workspace = true`
+- Each crate can override rules when necessary
+- See 
 
-- ใช้ /deep-analyze ถ้าจำเป็น
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- Use /deep-analyze if needed
+- Use /follow-lang-rust if needed
+- Use /run-verify if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Cargo lint rules ตั้งค่าอัตโนมัติ
-- Workspace lint configuration ถูกนำไปใช้
-- Pre-commit hooks ตรวจสอบ lint rules
-- Code quality สม่ำเสมอทั่วทั้งโปรเจกต์
-
+- Cargo lint rules configured automatically
+- Workspace lint configuration applied
+- Pre-commit hooks enforce lint rules
+- Consistent code quality across the project

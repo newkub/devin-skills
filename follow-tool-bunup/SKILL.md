@@ -1,6 +1,6 @@
 ---
 name: follow-tool-bunup
-description: ตั้งค่า Bunup สำหรับ bundle TypeScript libraries ด้วย ESM, CJS, และ dts
+description: Set up Bunup to bundle TypeScript libraries with ESM, CJS, and dts
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -17,68 +17,68 @@ related:
 
 ## Goal
 
-ตั้งค่า Bunup เป็น library bundler สำหรับ TypeScript libraries ด้วย Bun's native bundler
+Set up Bunup as the library bundler for TypeScript libraries using Bun's native bundler
 
 ## Scope
 
-ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/use-bun-native-api` สำหรับ setup Bun runtime
+For TypeScript library projects that want bundling with Bun's native bundler — see `/use-bun-native-api` for Bun runtime setup
 
-- Boundary: Bunup เหมาะกับ library bundling (ESM/CJS + dts) บน Bun — ถ้า project ไม่ผูกกับ Bun หรือต้องการ Rolldown-based bundler ดู `/follow-tool-tsdown`; สำหรับ bundler ระดับล่างดู `/follow-tool-rolldown`; สำหรับ app dev server/build ดู `/follow-tool-vite`
+- Boundary: Bunup suits library bundling (ESM/CJS + dts) on Bun — if the project is not tied to Bun or wants a Rolldown-based bundler see `/follow-tool-tsdown`; for a low-level bundler see `/follow-tool-rolldown`; for app dev server/build see `/follow-tool-vite`
 - Latest: `bunup@0.16.32` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Analyze Project
 
-> Goal: ตรวจสอบ project, entry points, output formats, และ prerequisites ก่อนใช้ Bunup
+> Goal: check the project, entry points, output formats, and prerequisites before using Bunup
 
-1. ตรวจสอบว่าเป็น TypeScript library project
-2. ยืนยันว่ามี Bun ติดตั้งแล้ว
-3. ตรวจสอบว่ามี `package.json` อยู่แล้ว
-4. ระบุ output formats ที่ต้องการ (ESM, CJS)
+1. Confirm it is a TypeScript library project
+2. Confirm Bun is installed
+3. Confirm a `package.json` already exists
+4. Identify the desired output formats (ESM, CJS)
 
 ### 2. Setup Bunup
 
-> Goal: ติดตั้ง Bunup, ตั้งค่า config, build scripts, และ build ลอง
+> Goal: install Bunup, set up config, build scripts, and try a build
 
-1. ติดตั้ง Bunup ด้วยคำสั่ง `bun add --dev bunup`
-2. สร้างไฟล์ `bunup.config.ts` พร้อมกำหนด `entry`, `format`, `dts`
-3. เพิ่ม build scripts ใน `package.json` (`build`, `dev`, `build:watch`)
-4. รัน build เพื่อตรวจสอบว่าทำงานได้ถูกต้อง
+1. Install Bunup with `bun add --dev bunup`
+2. Create `bunup.config.ts` defining `entry`, `format`, `dts`
+3. Add build scripts to `package.json` (`build`, `dev`, `build:watch`)
+4. Run the build to verify it works correctly
 
 ### 3. Verify Setup
 
-> Goal: ตรวจสอบ build output, type declarations, และ build scripts
+> Goal: check build output, type declarations, and build scripts
 
-1. ตรวจสอบ output ใน `dist/` ว่าสร้างถูกต้อง
-2. ยืนยันว่า type declarations (`.d.ts`) สร้างครบถ้วน
-3. ทดสอบ build scripts ว่าทำงานได้
+1. Verify `dist/` output is generated correctly
+2. Confirm type declarations (`.d.ts`) are complete
+3. Test that the build scripts work
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้คำสั่ง `bun add --dev bunup` เท่านั้น
-- ตรวจสอบ installation สำเร็จก่อนดำเนินการต่อ
+- Use `bun add --dev bunup` only
+- Verify the installation succeeded before continuing
 
 ### 2. Configuration
 
-- สร้างไฟล์ `bunup.config.ts` ใช้ TypeScript format
-- Bunup auto-detect entry points: `index.ts`, `index.tsx`, `src/index.ts`, `src/index.tsx`, `cli.ts`, `src/cli.ts`, `src/cli/index.ts`
-- กำหนด output formats ด้วย `--format` flag ใน CLI หรือ config
-- Enable dts generation ด้วย default (auto-generate)
+- Create `bunup.config.ts` in TypeScript format
+- Bunup auto-detects entry points: `index.ts`, `index.tsx`, `src/index.ts`, `src/index.tsx`, `cli.ts`, `src/cli.ts`, `src/cli/index.ts`
+- Set output formats with the `--format` flag in CLI or config
+- dts generation is enabled by default (auto-generate)
 
 ### 3. Build Scripts
 
-- เพิ่ม script `"build": "bunup"` ใน `package.json`
-- เพิ่ม script `"dev": "bun run src/index.ts"` สำหรับ development
-- เพิ่ม script `"build:watch": "bunup --watch"` สำหรับ watch build
+- Add `"build": "bunup"` script to `package.json`
+- Add `"dev": "bun run src/index.ts"` script for development
+- Add `"build:watch": "bunup --watch"` script for watch builds
 
 ### 4. Output Configuration
 
-- ใช้ `--format esm,cjs` สำหรับ multiple formats
-- ใช้ `--exports` สำหรับ generate และ sync package exports อัตโนมัติ
-- ใช้ `--watch` สำหรับ development mode
+- Use `--format esm,cjs` for multiple formats
+- Use `--exports` to generate and sync package exports automatically
+- Use `--watch` for development mode
 
 ### 5. Project Structure
 
@@ -92,25 +92,24 @@ project/
 └── dist/                 # Output
 ```
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-aube ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-tsdown ถ้าจำเป็น
-- ใช้ /follow-tool-rolldown ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-aube if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /follow-tool-tsdown if needed
+- Use /follow-tool-rolldown if needed
+- Use /follow-tool-vite if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Bunup ติดตั้งและกำหนดค่าใน project
-- `bunup.config.ts` พร้อม entry points และ output formats
-- `package.json` มี build scripts สำหรับ bunup
-- รองรับ ESM และ CJS formats
-- สร้าง type declarations (dts) อัตโนมัติ
+- Bunup installed and configured in the project
+- `bunup.config.ts` with entry points and output formats
+- `package.json` with build scripts for bunup
+- ESM and CJS formats supported
+- Type declarations (dts) generated automatically
 
-สำหรับ CLI options ทั้งหมด, default entry points, config file format และ scaffolding (`bunx @bunup/cli@latest create`) ดู `references/apis.md` และ `references/cli.md`
-
+For all CLI options, default entry points, config file format, and scaffolding (`bunx @bunup/cli@latest create`) see `references/apis.md` and `references/cli.md`

@@ -1,82 +1,82 @@
 # Capgo OTA Best Practices
 
-แนวทางใช้ `@capgo/capacitor-updater` สำหรับ OTA updates ของ Capacitor apps — update flow, channels, rollback และ CI upload
+Guidelines for using `@capgo/capacitor-updater` for OTA updates of Capacitor apps — update flow, channels, rollback, and CI upload
 
 ## Recommended Patterns
 
 ### Update Flow
 
-- เรียก `CapacitorUpdater.notifyAppReady()` หลัง app boot สำเร็จเสมอ — ถ้าไม่เรียกภายใน timeout plugin จะ rollback bundle อัตโนมัติ (นี่คือ safety mechanism ไม่ใช่ optional)
-- เรียก `notifyAppReady()` หลังจาก critical render เสร็จ ไม่ใช่ตอน process start — ถ้าเรียกเร็วเกิน bundle ที่ render พังจะถือว่า "ready" ผิดพลาด
-- เลือก mode ให้ตรง use case:
-  - `autoUpdate: true` — เหมาะกับ content apps ที่ต้องการ update เร็ว
-  - Manual `download()` → `set()` → `reload()` — เหมาะกับ app ที่ต้องเช็คเงื่อนไขเอง (เช่น รอ user idle)
-- Listen `updateAvailable`/`downloadComplete` events เพื่อ telemetry — รู้ว่า update ถึง device จริงหรือไม่
-- ทำ staged rollout ผ่าน channels: `internal` → `staging` → `production` — อย่า push production ตรงจาก local build
+- Always call `CapacitorUpdater.notifyAppReady()` after the app boots successfully — without it within the timeout, the plugin rolls the bundle back automatically (this is a safety mechanism, not optional)
+- Call `notifyAppReady()` after the critical render completes, not at process start — calling too early marks a broken-render bundle as "ready" by mistake
+- Pick the mode that matches the use case:
+  - `autoUpdate: true` — suits content apps that need fast updates
+  - Manual `download()` → `set()` → `reload()` — suits apps that need their own conditions (e.g. wait for user idle)
+- Listen to `updateAvailable`/`downloadComplete` events for telemetry — know whether the update actually reached the device
+- Do staged rollouts via channels: `internal` → `staging` → `production` — never push production straight from a local build
 
 ### Channel Strategy
 
-- อย่างน้อย 2 channels: `production` (public) และ `staging` (QA/internal testers)
-- Assign channel ด้วย `capgo channel set --channel <name> --latest` หลัง upload — ทำขั้นนี้เป็น step แยกจาก upload เพื่อ review bundle ก่อน promote
-- ใช้ versioned channels (`v2-hotfix`) เมื่อต้อง pin bundle ให้ app version เฉพาะ
+- At least 2 channels: `production` (public) and `staging` (QA/internal testers)
+- Assign the channel with `capgo channel set --channel <name> --latest` after upload — keep this a separate step from upload so the bundle can be reviewed before promote
+- Use versioned channels (`v2-hotfix`) when a bundle must be pinned to a specific app version
 
 ### Rollback Readiness
 
-- ทดสอบ rollback path จริง: upload bundle ที่พัง (เช่น throw ตอน boot) ไป staging → verify app revert กลับ bundle ก่อนหน้าเอง
-- เก็บ previous bundle บน device — updater ทำให้อัตโนมัติ แต่อย่าลบ cache มือ
-- ถ้า bundle ใหม่พังหลัง `notifyAppReady` แล้ว (crash ช้า) — ใช้ `CapacitorUpdater.reset()` หรือ channel revert จาก Capgo dashboard/CLI
-- Monitor crash-free rate หลัง deploy — rollback mechanism จับ boot failure ได้แต่จับ runtime crash ช้าไม่ได้
+- Really test the rollback path: upload a broken bundle (e.g. one that throws at boot) to staging → verify the app reverts to the previous bundle by itself
+- The previous bundle stays on the device — the updater does this automatically, but do not clear the cache by hand
+- If a new bundle breaks after `notifyAppReady` (slow crash) — use `CapacitorUpdater.reset()` or revert the channel from the Capgo dashboard/CLI
+- Monitor the crash-free rate after deploy — the rollback mechanism catches boot failures but not delayed runtime crashes
 
 ### Signing And Security
 
-- เปิด signed updates (`capgo key save` + config) สำหรับ production — device verify signature ก่อน apply bundle ป้องกัน MITM/tampered bundles
-- `CAPGO_TOKEN` เป็น CI secret เท่านั้น — ห้าม embed ใน app code หรือ commit
-- App-side config (`capacitor.config` updater section) เก็บ appId/channel ได้ แต่ห้ามเก็บ private keys
+- Enable signed updates (`capgo key save` + config) for production — the device verifies the signature before applying the bundle, preventing MITM/tampered bundles
+- `CAPGO_TOKEN` is a CI secret only — never embed it in app code or commit it
+- App-side config (the updater section of `capacitor.config`) may hold appId/channel, but never private keys
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | Avoidance |
 |---|---|---|
-| ลืม `notifyAppReady()` | app rollback ทุกครั้งหลัง update | เรียกหลัง boot สำเร็จ + integration test path นี้ |
-| OTA ทับ native change | plugin ใหม่หา native code ไม่เจอ crash | OTA เฉพาะ web assets — native deps เปลี่ยนต้อง store release |
-| nativeVersion mismatch | bundle ไม่ apply | ตั้ง compatibility ให้ bundle ผูกกับ native version ที่รองรับ |
-| Update กลาง session | user เสีย state | manual flow + update ตอน app restart/idle |
-| First launch ช้า | download ทั้ง bundle ตอนเปิด app แรก | delay update check หลัง critical path หรือ background download |
-| `cap sync` ลืมหลัง add plugin | native side ไม่มี updater | `cap sync` ทุกครั้งหลังเปลี่ยน plugin/version |
-| Token ใน repo | CI secret leak | `CAPGO_TOKEN` ผ่าน secrets manager เท่านั้น |
+| Forgetting `notifyAppReady()` | the app rolls back after every update | call it after a successful boot + integration-test this path |
+| OTA covering a native change | new plugin cannot find native code and crashes | OTA covers web assets only — when native deps change, ship a store release |
+| nativeVersion mismatch | the bundle does not apply | set compatibility so the bundle binds to a supported native version |
+| Updating mid-session | the user loses state | manual flow + apply updates at app restart/idle |
+| Slow first launch | the whole bundle downloads on first open | delay the update check after the critical path, or download in the background |
+| Forgetting `cap sync` after adding a plugin | no updater on the native side | run `cap sync` whenever a plugin/version changes |
+| Token in the repo | CI secret leak | `CAPGO_TOKEN` only via a secrets manager |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| test broken-bundle rollback ใน staging | assume auto-rollback ทำงานโดยไม่เคยทดสอบ |
-| separate `staging`/`production` channels | push ตรง production จาก dev machine |
-| signed bundles สำหรับ production | skip signing เพราะ "แค่ web assets" |
-| telemetry บน update events | push update แล้วไม่รู้ว่า reach devices ไหม |
-| bump store release เมื่อ native deps เปลี่ยน | force OTA ทับ app ที่ native ไม่รองรับ |
-| document channel map ใน repo | ให้ deployer จำชื่อ channel เอง |
+| test broken-bundle rollback in staging | assume auto-rollback works without testing it |
+| separate `staging`/`production` channels | push straight to production from a dev machine |
+| signed bundles for production | skip signing because "it is just web assets" |
+| telemetry on update events | push an update without knowing whether it reached devices |
+| bump the store release when native deps change | force an OTA over an app whose native side does not support it |
+| document the channel map in the repo | make the deployer remember channel names by heart |
 
 ## Performance And CI Notes
 
-- Bundle ที่ upload คือ web build output (`dist/` หรือ `www/`) — minify + tree-shake ก่อน upload; bundle เล็ก = update เร็วบนเครือข่ายช้า
-- CI pipeline: `build web` → `capgo bundle upload --channel staging` → promote `--latest` หลัง QA pass
-- แยก upload job จาก promote job — promote ควรเป็น manual/approved step สำหรับ production
-- Updater เช็ค update ตอน app resume/start — ไม่ต้อง polling เอง; ถ้าต้องการ control ใช้ manual flow
-- `bunx capgo app add` ทำครั้งเดียวต่อ app — เก็บ appId ใน config file ที่ commit ได้ (ไม่ใช่ secret)
-- ถ้า self-hosting backend ให้ระบุ `autoUpdateURL` ใน config — default ชี้ Capgo cloud
+- What gets uploaded is the web build output (`dist/` or `www/`) — minify + tree-shake before upload; a smaller bundle = faster updates on slow networks
+- CI pipeline: `build web` → `capgo bundle upload --channel staging` → promote `--latest` after QA passes
+- Separate the upload job from the promote job — promote should be a manual/approved step for production
+- The updater checks for updates on app resume/start — no need to poll yourself; use the manual flow when more control is wanted
+- `bunx capgo app add` runs once per app — keep the appId in a committable config file (it is not a secret)
+- When self-hosting the backend, set `autoUpdateURL` in the config — the default points at the Capgo cloud
 
 ## Config Guidance
 
-`capacitor.config.ts` (ตัวอย่าง concept — ตรวจ key names กับ plugin version ที่ใช้):
+`capacitor.config.ts` (conceptual example — verify key names against the plugin version in use):
 
 ```ts
 plugins: {
   CapacitorUpdater: {
-    autoUpdate: false,        // manual flow ถ้าต้อง control
-    // appId, channel, statsUrl ฯลฯ
+    autoUpdate: false,        // manual flow if control is needed
+    // appId, channel, statsUrl, etc.
   }
 }
 ```
 
-- เก็บ updater config ใน version control — behavior ของ update flow คือ product decision
-- Document rollout checklist: staging verify → rollback test → production promote → monitor
+- Keep the updater config in version control — update-flow behavior is a product decision
+- Document the rollout checklist: staging verify → rollback test → production promote → monitor

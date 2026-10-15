@@ -1,60 +1,60 @@
 # Cargo Lints Best Practices
 
-แนวทางตั้งค่า `[lints]`/`[workspace.lints]` ใน `Cargo.toml` ให้ทีมใช้ rule set เดียวกัน และรันใน CI ได้เสถียร
+Guidelines for configuring `[lints]`/`[workspace.lints]` in `Cargo.toml` so the team shares one rule set and runs stably in CI
 
 ## Recommended Patterns
 
 ### Lint Levels And Ratcheting
 
-- เริ่มด้วย `warn` แล้วค่อย ratchet เป็น `deny` ทีละ rule เมื่อ codebase สะอาด — เปิด `deny` พร้อมกันทั้งหมดจะทำให้ build พังและทีมปิด lint ทิ้ง
-- จัดกลุ่มตามความเสี่ยง: `unused_*`/`missing_docs` (safe, เพิ่มได้เร็ว) → `clippy::all`/`pedantic` (ต้อง triage) → `nursery` (experimental, คาดว่าจะ churn)
-- ใช้ `priority = -1` บน lint ที่ต้องการให้ `#[allow]` ใน code ชนะ — default priority ของ lint groups ทำให้ per-item allow ไม่ทำงานบางกรณี
-- เมื่อต้อง `#[allow]` ให้ใส่ที่ scope เล็กสุด (item/function) พร้อม comment เหตุผล — `#![allow]` ระดับ crate ซ่อนปัญหาจริงในอนาคต
+- Start with `warn`, then ratchet to `deny` one rule at a time as the codebase cleans up — flipping everything to `deny` at once breaks the build and teams end up disabling lints entirely
+- Group by risk: `unused_*`/`missing_docs` (safe, add quickly) → `clippy::all`/`pedantic` (needs triage) → `nursery` (experimental, expect churn)
+- Use `priority = -1` on lints where you want in-code `#[allow]` to win — default lint-group priority makes per-item allow ineffective in some cases
+- When an `#[allow]` is required, place it at the smallest scope (item/function) with a reason comment — crate-level `#![allow]` hides real problems for the future
 
 ### Workspace Inheritance
 
-- ตั้ง `[workspace.lints]` ที่ root `Cargo.toml` เท่านั้น — source of truth เดียว
-- ทุก member crate ใส่ `[lints] workspace = true` — อย่า copy rules ซ้ำในแต่ละ crate เพราะจะ drift
-- Member crate override เฉพาะที่จำเป็น (เช่น `unsafe_code = "allow"` ใน FFI crate) — document เหตุผลใน comment
-- New crate template ควรมี `[lints] workspace = true` ตั้งแต่ scaffold — ลืมแล้ว crate นั้นไม่ถูก lint เงียบๆ
+- Set `[workspace.lints]` only in the root `Cargo.toml` — single source of truth
+- Every member crate adds `[lints] workspace = true` — do not copy rule tables per crate, they will drift
+- Member crates override only when necessary (e.g. `unsafe_code = "allow"` in an FFI crate) — document the reason in a comment
+- New-crate templates should include `[lints] workspace = true` from the scaffold — forgetting it means that crate silently goes unlinted
 
 ### Pedantic Strategy
 
-- `clippy::pedantic` มี false positives ตาม design (`cast_precision_loss`, `must_use_candidate`, `missing_errors_doc`) — ไม่ต้องแก้ทุกตัว
-- Pattern ที่ดี: เปิด `pedantic = "warn"` แล้ว allow เฉพาะ lints ที่ทีมตกลงว่าไม่จำเป็นใน `[workspace.lints.clippy]` — ทำ allowlist/noiselist ที่ config ไม่ใช่กระจายใน code
-- `clippy::nursery` เปลี่ยนแปลงระหว่าง toolchain versions — เปิดเมื่อทีมยอมรับ lint churn ตอน `rustup update`
+- `clippy::pedantic` has false positives by design (`cast_precision_loss`, `must_use_candidate`, `missing_errors_doc`) — you do not have to fix every one
+- Good pattern: enable `pedantic = "warn"` then allow only the lints the team agrees are unnecessary in `[workspace.lints.clippy]` — keep the allowlist/noise-list in config, not scattered in code
+- `clippy::nursery` changes across toolchain versions — enable it only when the team accepts lint churn on `rustup update`
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | Avoidance |
 |---|---|---|
-| `cargo clippy` โดยไม่มี `--all-targets` | test/example code ไม่ถูก lint | ใช้ `--all-targets` เสมอ |
-| `--all-features` บน workspace ใหญ่ | feature unification ทำให้ compile path แปลก | รัน `--all-targets` default ก่อน; all-features เฉพาะเมื่อตั้งใจ |
-| `[lints]` ใช้ใน virtual manifest ผิดที่ | lint ไม่ apply | virtual manifest ใช้ `[workspace.lints]` เท่านั้น |
-| `nursery` + `-D warnings` ใน CI | CI แดงหลัง `rustup update` | แยก nursery เป็น warn หรือ pin toolchain ใน `rust-toolchain.toml` |
-| `missing_docs` บน binary crate | warn เต็ม main.rs | scope doc lints เฉพาะ lib crates |
-| fmt ผิดแต่ lint ผ่าน | style drift | `cargo fmt --check` เป็น hook/job แยก |
-| lints ใน `Cargo.toml` แต่ dev ใช้ `cargo build` เฉย | warnings ไม่มีใครเห็น | CI gate `clippy -- -D warnings` + pre-commit hooks |
+| `cargo clippy` without `--all-targets` | test/example code never linted | always use `--all-targets` |
+| `--all-features` on a big workspace | feature unification creates odd compile paths | run default `--all-targets` first; all-features only on purpose |
+| `[lints]` in a virtual manifest at the wrong level | lints not applied | virtual manifests use `[workspace.lints]` only |
+| `nursery` + `-D warnings` in CI | CI turns red after `rustup update` | keep nursery as warn, or pin the toolchain in `rust-toolchain.toml` |
+| `missing_docs` on a binary crate | main.rs full of warnings | scope doc lints to lib crates only |
+| bad fmt but lint passes | style drift | make `cargo fmt --check` a separate hook/job |
+| lints in `Cargo.toml` but devs just run `cargo build` | nobody sees the warnings | CI gate `clippy -- -D warnings` + pre-commit hooks |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `[workspace.lints]` ที่ root + `workspace = true` ทุก member | copy lint table ซ้ำทุก crate |
-| ratchet `warn` → `deny` เมื่อ clean | เปิด `deny` ทุกกลุ่มตั้งแต่วันแรก |
-| `cargo clippy --all-targets -- -D warnings` ใน CI | run clippy โดยไม่ gate (warnings = noise) |
-| `#[allow]` พร้อม comment เหตุผล | `#![allow(clippy::all)]` ทั้ง crate |
-| pin toolchain ผ่าน `rust-toolchain.toml` | ปล่อย stable ลอยแล้ว CI แดงจาก lint ใหม่ |
-| แยก `cargo fmt --check` เป็น step ชัด | รวม fmt ใน clippy step จน log ปนกัน |
+| `[workspace.lints]` at root + `workspace = true` in every member | copy the lint table into every crate |
+| ratchet `warn` → `deny` as it gets clean | turn on `deny` for all groups on day one |
+| `cargo clippy --all-targets -- -D warnings` in CI | run clippy without a gate (warnings = noise) |
+| `#[allow]` with a reason comment | `#![allow(clippy::all)]` for the whole crate |
+| pin the toolchain via `rust-toolchain.toml` | float on stable and let new lints redden CI |
+| keep `cargo fmt --check` as a distinct step | fold fmt into the clippy step until logs mix |
 
 ## Performance And CI Notes
 
-- `cargo check --all-targets` ก่อน `clippy` — clippy ครอบ check แต่แยกกันทำให้ error อ่านง่าย; ใน CI รัน `clippy` อย่างเดียวก็พอเพราะรวม check
-- Cache `target/` ใน CI (Swatinem/rust-cache หรือ sccache) — clippy เปลี่ยน rustc flags ทำให้ cache key ต่างจาก build ปกติ อย่าแชร์ cache ผสมโดยไม่ตั้งใจ
-- Pin toolchain: `rust-toolchain.toml` ระบุ channel+components (`clippy`, `rustfmt`) — lint sets เปลี่ยนตาม release ทำให้ CI reproducible
-- `cargo deny` (licenses/advisories/bans) และ `cargo audit` เป็น job แยกจาก lints — ต่าง domain กัน
-- Pre-commit hooks (lefthook): `fmt --check` เร็วสุดควรรันก่อน; `clippy -D warnings` อาจช้า — เลือกว่าจะ gate ที่ pre-commit หรือ pre-push ตามเวลาที่ยอมรับได้
-- `cargo doc` build แยก job ถ้าใช้ `missing_docs` — doc lints เจอเต็มเมื่อ build docs จริง
+- `cargo check --all-targets` before `clippy` — clippy subsumes check, but separating them makes errors easier to read; in CI running `clippy` alone suffices since it includes check
+- Cache `target/` in CI (Swatinem/rust-cache or sccache) — clippy changes rustc flags so its cache key differs from normal builds; do not accidentally share mixed caches
+- Pin the toolchain: `rust-toolchain.toml` with channel+components (`clippy`, `rustfmt`) — lint sets change per release, pinning keeps CI reproducible
+- `cargo deny` (licenses/advisories/bans) and `cargo audit` are separate jobs from lints — different domains
+- Pre-commit hooks (lefthook): `fmt --check` is fastest and should run first; `clippy -D warnings` can be slow — choose pre-commit vs pre-push gating based on acceptable wait time
+- Build `cargo doc` as a separate job when using `missing_docs` — doc lints surface fully only in a real docs build
 
 ## Config Guidance
 
@@ -69,7 +69,7 @@ missing_docs = "warn"
 [workspace.lints.clippy]
 all = "warn"
 pedantic = "warn"
-# allowlist เฉพาะที่ทีมตกลง
+# allowlist only what the team agreed
 cast_precision_loss = "allow"
 missing_errors_doc = "allow"
 ```
@@ -81,6 +81,6 @@ Member crate:
 workspace = true
 ```
 
-- เก็บ lint rationale ใน comment ข้าง rule ที่ปิด — reviewer จะได้ไม่ต้องเดา
-- ใส่ `[lints] workspace = true` ใน cargo-new template/generator ของ repo
-- Review lint table ทุก toolchain bump — lint ใหม่ใน `all`/`pedantic` อาจต้อง triage
+- Keep the lint rationale in a comment beside any disabled rule — reviewers should not have to guess
+- Put `[lints] workspace = true` into the repo's cargo-new template/generator
+- Review the lint table on every toolchain bump — new lints in `all`/`pedantic` may need triage

@@ -1,64 +1,64 @@
 # Capgo Biometric Best Practices
 
-แนวทางใช้ `@capgo/capacitor-native-biometric` สำหรับ biometric authentication (FaceID/TouchID/fingerprint) — credential storage, fallback และ error handling
+Guidelines for using `@capgo/capacitor-native-biometric` for biometric authentication (FaceID/TouchID/fingerprint) — credential storage, fallback, and error handling
 
 ## Recommended Patterns
 
 ### Availability-First Flow
 
-- เรียก `NativeBiometric.isAvailable()` ก่อนเสมอ — check ทั้ง hardware support และ biometry enrollment แล้วค่อยเสนอ biometric login
-- ใช้ `biometryType` จาก result เพื่อปรับ UI copy ("Sign in with Face ID" vs "fingerprint") — generic "biometric" copy ดูไม่ native
-- Design fallback path ทุกครั้ง: PIN, passcode, หรือ password เมื่อ biometric ไม่พร้อม/ล้มเหลว — biometric คือ convenience ไม่ใช่ auth หลักเดียว
-- เช็ค availability ใหม่ทุกครั้งที่จะใช้ ไม่ใช่ cache ตอน app start — user อาจเพิ่ม/ลบ biometric enrollment ระหว่าง session
+- Always call `NativeBiometric.isAvailable()` first — check both hardware support and biometry enrollment before offering biometric login
+- Use `biometryType` from the result to adapt UI copy ("Sign in with Face ID" vs "fingerprint") — generic "biometric" copy feels non-native
+- Design the fallback path every time: PIN, passcode, or password when biometrics are unavailable/fail — biometrics are a convenience, not the sole primary auth
+- Re-check availability at each use, do not cache it at app start — the user may add/remove biometric enrollment mid-session
 
 ### Credential Storage
 
-- เก็บ credentials ผ่าน `setCredentials()` เท่านั้น — plugin ใช้ iOS Keychain / Android Keystore (hardware-backed)
-- ห้าม fallback ไป `localStorage`/Capacitor Preferences สำหรับ credentials — นั่นคือ plaintext-equivalent storage
-- เก็บ server token/refresh token ใน secure enclave — ไม่ใช่เก็บ password ดิบ (เก็บ password ทำให้ token rotation ยาก)
-- `deleteCredentials()` เมื่อ logout หรือ revoke — เครื่องที่เปลี่ยนมือต้องไม่เหลือ credentials ค้าง
+- Store credentials only via `setCredentials()` — the plugin uses the iOS Keychain / Android Keystore (hardware-backed)
+- Never fall back to `localStorage`/Capacitor Preferences for credentials — that is plaintext-equivalent storage
+- Keep server tokens/refresh tokens in the secure enclave — do not store raw passwords (storing passwords makes token rotation hard)
+- Call `deleteCredentials()` on logout or revoke — a handed-over device must not retain credentials
 
 ### Verify Flow
 
-- `verifyIdentity()` พร้อม `reason` ที่สื่อความหมาย — OS แสดง string นี้ใน system dialog
-- Handle result แยก per outcome: success → retrieve credentials → login; cancel → กลับหน้า login ปกติ; lockout → เสนอ PIN fallback
-- Wrap ใน try/catch — plugin throw error codes ที่ต่างกันระหว่าง iOS/Android (user cancel, biometric lockout, no enrollment)
+- `verifyIdentity()` with a meaningful `reason` — the OS shows this string in the system dialog
+- Handle the result per outcome: success → retrieve credentials → login; cancel → return to the normal login screen; lockout → offer the PIN fallback
+- Wrap in try/catch — the plugin throws different error codes across iOS/Android (user cancel, biometric lockout, no enrollment)
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | Avoidance |
 |---|---|---|
-| Assume hardware มีเสมอ | crash/silent fail บน emulator/เครื่องเก่า | `isAvailable()` ก่อนทุกครั้ง + fallback UI |
-| เก็บ credentials ใน storage ธรรมดา | token readable โดยไม่ต้อง biometric | `setCredentials()` เท่านั้น |
-| ไม่ handle user cancel | app ค้างหรือ error dialog แปลกๆ | catch + treat cancel เป็น normal flow ไม่ใช่ error |
-| Biometric lockout (หลายครั้งผิด) | verify fail ตลอด | เสนอ device passcode/PIN fallback |
-| Keystore invalidated หลังเพิ่มลายนิ้วมือ | credentials หาย/verify fail | re-enroll flow: clear → login → setCredentials ใหม่ |
-| ทดสอบเฉพาะ emulator | biometric edge cases ไม่เจอ | test บน real devices ทั้ง enrolled/not-enrolled/lockout |
-| เก็บ password ดิบใน enclave | rotation/reset flow ยุ่งยาก | เก็บ server-issued token แทน |
+| Assuming the hardware always exists | crash/silent fail on emulators/old devices | `isAvailable()` first every time + fallback UI |
+| Storing credentials in plain storage | tokens readable without biometrics | `setCredentials()` only |
+| Not handling user cancel | app hangs or odd error dialogs | catch + treat cancel as a normal flow, not an error |
+| Biometric lockout (many wrong attempts) | verify fails continuously | offer the device passcode/PIN fallback |
+| Keystore invalidated after adding a fingerprint | credentials lost / verify fails | re-enroll flow: clear → login → setCredentials again |
+| Testing only on an emulator | biometric edge cases missed | test on real devices: enrolled/not-enrolled/lockout |
+| Storing raw passwords in the enclave | messy rotation/reset flows | store server-issued tokens instead |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `isAvailable()` → `verifyIdentity()` → `getCredentials()` เป็นขั้น | เรียก `getCredentials()` โดยไม่ verify ก่อน |
-| reason string ที่ user เข้าใจ ("Unlock your account") | reason generic เช่น "Authentication required" |
-| fallback PIN เสมอเมื่อ biometric unavailable | block login สำหรับ user ที่ไม่มี biometric |
-| `deleteCredentials()` ตอน logout | ค้าง credentials หลัง sign out |
-| test enrollment-change scenario | assume keystore valid ตลอดไป |
-| treat biometric เป็น unlock UX layer | treat biometric เป็น authentication จริง (server ยังต้อง verify token) |
+| `isAvailable()` → `verifyIdentity()` → `getCredentials()` as steps | call `getCredentials()` without verifying first |
+| a reason string the user understands ("Unlock your account") | generic reasons like "Authentication required" |
+| always a PIN fallback when biometrics are unavailable | block login for users without biometrics |
+| `deleteCredentials()` on logout | leaving credentials behind after sign out |
+| test the enrollment-change scenario | assume the keystore stays valid forever |
+| treat biometrics as an unlock UX layer | treat biometrics as real authentication (the server must still verify the token) |
 
 ## Performance And CI Notes
 
-- Biometric APIs ต้องทดสอบบน real devices — emulator/simulator จำลองได้จำกัด (iOS simulator มี FaceID toggle, Android emulator มี fingerprint simulation แต่ไม่ครอบ lockout/keystore cases)
-- Manual test checklist สำหรับ release: enrolled → verify ok, not enrolled → fallback, cancel → กลับ flow ปกติ, wrong biometric × N → lockout handling
-- `cap sync` หลังติดตั้ง plugin เสมอ — native code injection จำเป็น
-- iOS ต้องมี `NSFaceIDUsageDescription` ใน `Info.plist` — ขาดแล้ว app reject ตอน review
-- Android ต้องมี biometric permission และ target API ที่ plugin รองรับ — เช็ค plugin README ตอน upgrade
-- Biometric verify เป็น local operation — ไม่มี network cost; latency ต่ำ อย่าเพิ่ม artificial loading states
+- Biometric APIs must be tested on real devices — emulators/simulators simulate only partly (iOS simulator has a FaceID toggle, Android emulator has fingerprint simulation, but neither covers lockout/keystore cases)
+- Manual test checklist for release: enrolled → verify ok; not enrolled → fallback; cancel → normal flow returns; wrong biometric × N → lockout handling
+- Always `cap sync` after installing the plugin — native code injection is required
+- iOS needs `NSFaceIDUsageDescription` in `Info.plist` — without it the app is rejected at review
+- Android needs the biometric permission and a target API the plugin supports — check the plugin README when upgrading
+- Biometric verify is a local operation — no network cost, low latency; do not add artificial loading states
 
 ## Config Guidance
 
-- `server`/`username` keys ใน `setCredentials()`/`getCredentials()`: ใช้ stable identifier ต่อ user+app (เช่น `com.app.auth`) — เปลี่ยน key คือทำ credentials เก่าหาไม่เจอ
-- เก็บ biometric preference flag (`user opted-in`) ใน Preferences/secure storage แยกจาก credentials — opt-in state เป็น UX decision ไม่ใช่ security boundary
-- Document enrollment-change recovery flow ใน code comments — เป็น edge case ที่ QA มัก miss
-- Pair กับ OTA channel discipline (`ota-updates.md`): biometric flow changes ที่แตะ JS only → OTA ได้; plugin version upgrade → store release
+- The `server`/`username` keys in `setCredentials()`/`getCredentials()`: use a stable identifier per user+app (e.g. `com.app.auth`) — changing the key makes old credentials unretrievable
+- Keep the biometric preference flag (`user opted-in`) in Preferences/secure storage, separate from credentials — opt-in state is a UX decision, not a security boundary
+- Document the enrollment-change recovery flow in code comments — it is an edge case QA often misses
+- Pair with OTA channel discipline (`ota-updates.md`): biometric flow changes touching JS only → OTA is fine; plugin version upgrades → store release

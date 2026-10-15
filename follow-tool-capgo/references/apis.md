@@ -6,9 +6,9 @@
 
 | commands | description | default | options |
 |---|---|---|---|
-| `bunx capgo init` | Setup Capgo ใน project | - | --apikey |
-| `bunx capgo login` | Auth | - | --apikey |
-| `bunx capgo bundle upload` | Upload bundle | - | --channel, --path |
-| `bunx capgo channel set` | Set channel for device/version | - | --channel, --latest |
-| `bunx capgo app add` | Register app | - | --name, --icon |
-| `bunx capgo key save` | Store encryption/signing key | - | --key, --force |
+| `bunx capgo init` | Set up Capgo in the project | - | --apikey |
+| `bunx capgo login` | Authenticate | - | --apikey |
+| `bunx capgo bundle upload` | Upload a bundle | - | --channel, --path |
+| `bunx capgo channel set` | Set the channel for a device/version | - | --channel, --latest |
+| `bunx capgo app add` | Register an app | - | --name, --icon |
+| `bunx capgo key save` | Store the encryption/signing key | - | --key, --force |
