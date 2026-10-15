@@ -1,6 +1,6 @@
 ---
 name: follow-tool-gitleaks
-description: ตั้งค่าและใช้ gitleaks สแกน secrets ใน git history, staged changes และ working tree
+description: Set up and use gitleaks to scan secrets in git history, staged changes, and working tree
 argument-hint: "[scope]"
 related:
   - check-secrets
@@ -12,13 +12,13 @@ related:
 
 ## Goal
 
-ใช้ `gitleaks` ป้องกัน secrets (API keys, tokens, private keys) หลุดเข้า git — scan staged/history + wire เข้า hooks และ CI
+Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering git — scan staged/history + wire into hooks and CI
 
 ## Scope
 
-- ติดตั้ง/ใช้ `gitleaks` CLI, config `.gitleaks.toml`, baseline report
-- wire เข้า git hooks (`pre-commit`/`pre-push`) และ CI job
-- ไม่ใช่สำหรับจัดเก็บ/โหลด secrets (ใช้ `/check-secrets` ตรวจ env + `fnox`/vault สำหรับ secret management)
+- Install/use the `gitleaks` CLI, config `.gitleaks.toml`, baseline report
+- Wire into git hooks (`pre-commit`/`pre-push`) and CI jobs
+- Not for storing/loading secrets (use `/check-secrets` to inspect env + `fnox`/vault for secret management)
 
 - Latest: `gitleaks@v8` line (Gitleaks by Zachary Rice, OSS)
 - Docs: https://github.com/gitleaks/gitleaks
@@ -27,45 +27,45 @@ related:
 
 ### 1. Install
 
-> Goal: มี gitleaks binary พร้อมใช้
+> Goal: have the gitleaks binary ready to use
 
-1. `mise use -g gitleaks` (แนะนำ — ตาม `/follow-tool-mise`) หรือ `winget install Gitleaks.Gitleaks` / `scoop install gitleaks`
-2. ตรวจด้วย `gitleaks version`
-3. ใน monorepo ใช้ตัวเดียวกันทุก workspace — pin version ใน `mise.toml` หรือ toolchain config
+1. `mise use -g gitleaks` (recommended — per `/follow-tool-mise`) or `winget install Gitleaks.Gitleaks` / `scoop install gitleaks`
+2. Verify with `gitleaks version`
+3. In a monorepo, use the same build across every workspace — pin the version in `mise.toml` or toolchain config
 
 ### 2. Scan
 
-> Goal: scan ปัจจุบันและ history
+> Goal: scan current state and history
 
 1. Working tree: `gitleaks dir . -v`
-2. Staged (ก่อน commit): `gitleaks git --staged --redact`
-3. History เต็ม: `gitleaks git . --redact -r gitleaks-report.json`
-4. ถ้าเจอ findings เก่าที่ rotate แล้ว → สร้าง baseline: `gitleaks git . -b .gitleaks-baseline.json` แล้ว scan ต่อด้วย `-b .gitleaks-baseline.json`
+2. Staged (before commit): `gitleaks git --staged --redact`
+3. Full history: `gitleaks git . --redact -r gitleaks-report.json`
+4. If old findings are already rotated → create a baseline: `gitleaks git . -b .gitleaks-baseline.json` then keep scanning with `-b .gitleaks-baseline.json`
 
 ### 3. Configure `.gitleaks.toml`
 
-> Goal: กฎตรงกับ project
+> Goal: rules match the project
 
-1. เริ่มจาก default config แล้วเพิ่ม `[allowlist]` สำหรับ test fixtures, docs examples, placeholder tokens (`paths`, `regexes`, `commits`)
-2. เพิ่ม `[[rules]]` เฉพาะเมื่อมี secret format ของตัวเองที่ default rules ไม่ครอบ
-3. commit `.gitleaks.toml` ที่ repo root
+1. Start from the default config and add an `[allowlist]` for test fixtures, docs examples, placeholder tokens (`paths`, `regexes`, `commits`)
+2. Add `[[rules]]` only when the project has its own secret format the default rules don't cover
+3. Commit `.gitleaks.toml` at the repo root
 
 ### 4. Wire Hooks And CI
 
-> Goal: block secrets ก่อนเข้า remote
+> Goal: block secrets before they reach the remote
 
-1. Git hooks: ใส่ `gitleaks protect --staged --no-banner --redact` ใน pre-commit/pre-push (monorepo นี้ผ่าน `.moon/workspace.yml` `vcs.hooks`)
-2. CI: เพิ่ม step `gitleaks git . --redact` หรือ `gitleaks/gitleaks-action@v2`
-3. ถ้ามี findings → rotate secret ก่อน แล้วค่อยเพิ่มใน baseline
+1. Git hooks: put `gitleaks protect --staged --no-banner --redact` in pre-commit/pre-push (this monorepo does it via `.moon/workspace.yml` `vcs.hooks`)
+2. CI: add a `gitleaks git . --redact` step or `gitleaks/gitleaks-action@v2`
+3. If there are findings → rotate the secret first, then add it to the baseline
 
 ## Rules
 
-- ห้าม commit secrets เพื่อ "แก้ให้ scan ผ่าน" — rotate ก่อนเสมอ
-- `--redact` เสมอใน CI/hooks output เพื่อไม่ให้ secret โผล่ใน logs
-- baseline ใช้กับ findings เดิมที่ rotate แล้วเท่านั้น — ห้ามใช้ปิดปัญหาใหม่
-- allowlist ต้องแคบที่สุด (path + regex เฉพาะจุด)
+- Never commit secrets just "to make the scan pass" — always rotate first
+- Always use `--redact` in CI/hooks output so secrets don't surface in logs
+- Use a baseline only for pre-existing findings that have been rotated — never use it to suppress new problems
+- Keep the allowlist as narrow as possible (specific path + regex)
 
 ## Expected Outcome
 
-- `gitleaks` ติดตั้งและ scan ผ่าน/มี baseline ที่ชัดเจน
-- `.gitleaks.toml` committed และ hooks/CI enforce อยู่
+- `gitleaks` installed and scanning clean, or with a clear baseline
+- `.gitleaks.toml` committed and hooks/CI enforcing it

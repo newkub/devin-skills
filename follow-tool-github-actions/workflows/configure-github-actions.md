@@ -1,17 +1,17 @@
 ---
 title: Configure GitHub Actions
-description: ตั้งค่า GitHub Actions ขั้นสูง
+description: Configure advanced GitHub Actions
 ---
 
 ## Goal
 
-ตั้งค่า GitHub Actions ขั้นสูงสำหรับ production
+Configure advanced GitHub Actions for production
 
 ## Execute
 
-### 1. ตั้งค่า Permissions
+### 1. Configure Permissions
 
-จำกัด permissions:
+Restrict permissions:
 
 ```yaml
 permissions:
@@ -19,9 +19,9 @@ permissions:
   pull-requests: write
 ```
 
-### 2. ตั้งค่า Environments
+### 2. Configure Environments
 
-สร้าง environments สำหรับ deployment:
+Create environments for deployment:
 
 ```yaml
 jobs:
@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-### 3. ตั้งค่า Timeouts
+### 3. Configure Timeouts
 
-กำหนด timeouts:
+Set timeouts:
 
 ```yaml
 jobs:
@@ -40,9 +40,9 @@ jobs:
     timeout-minutes: 30
 ```
 
-### 4. ตั้งค่า Reusable Workflows
+### 4. Configure Reusable Workflows
 
-สร้าง reusable workflow:
+Create a reusable workflow:
 
 ```yaml
 # .github/workflows/build.yml
@@ -62,7 +62,7 @@ jobs:
           node-version: ${{ inputs.node-version }}
 ```
 
-ใช้ reusable workflow:
+Use the reusable workflow:
 
 ```yaml
 jobs:
@@ -74,7 +74,7 @@ jobs:
 
 ## Expected Outcome
 
-- Permissions ที่จำกัด
-- Environments สำหรับ deployment
-- Timeouts ที่เหมาะสม
+- Restricted permissions
+- Environments for deployment
+- Appropriate timeouts
 - Reusable workflows

@@ -1,21 +1,21 @@
 ---
 title: Setup GitHub Actions
-description: ตั้งค่า GitHub Actions สำหรับ CI/CD
+description: Configure GitHub Actions for CI/CD
 ---
 
 ## Goal
 
-ตั้งค่า GitHub Actions สำหรับ CI/CD ในโปรเจกต์
+Configure GitHub Actions for CI/CD in the project
 
 ## Execute
 
-### 1. สร้าง Workflow Folder
+### 1. Create Workflow Folder
 
-สร้าง folder `.github/workflows/` ใน root ของ repository
+Create the `.github/workflows/` folder in the repository root
 
-### 2. สร้าง Workflow File
+### 2. Create Workflow File
 
-สร้างไฟล์ `ci.yml`:
+Create the `ci.yml` file:
 
 ```yaml
 name: CI
@@ -38,15 +38,15 @@ jobs:
       - run: bun test
 ```
 
-### 3. Push ไปยัง GitHub
+### 3. Push to GitHub
 
-Push workflow file ไปยัง repository
+Push the workflow file to the repository
 
-### 4. ตรวจสอบ
+### 4. Verify
 
-ไปที่ Actions tab เพื่อดู workflow ทำงาน
+Go to the Actions tab to watch the workflow run
 
 ## Expected Outcome
 
-- GitHub Actions workflow ที่ทำงานได้
-- CI pipeline สำหรับ test
+- A working GitHub Actions workflow
+- CI pipeline for tests

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-github-actions
-description: ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน
+description: Set up GitHub Actions for complete CI/CD
 argument-hint: "[scope]"
 related:
   - follow-tool-lighthouse
@@ -15,86 +15,85 @@ related:
 
 ## Goal
 
-ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน พร้อม security, testing, deployment, monitoring
+Set up GitHub Actions for complete CI/CD with security, testing, deployment, monitoring
 
 ## Scope
 
-ตั้งค่า GitHub Actions สำหรับ projects และ repositories
+Configure GitHub Actions for projects and repositories
 
-- Boundary: GitHub Actions คือ hosted platform (ไม่ใช่ package ที่ install) — companion tools คือ `gh` CLI (`gh workflow`/`gh run`) และ `actionlint` สำหรับ local validation; secrets ใช้ `/follow-secret-manager`
+- Boundary: GitHub Actions is a hosted platform (not an installable package) — companion tools are the `gh` CLI (`gh workflow`/`gh run`) and `actionlint` for local validation; secrets go through `/follow-secret-manager`
 - Latest: `gh@2.101.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Pick Workflow
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: dispatch specialized work to the appropriate workflow
 
-| Topic | Workflow |-------|----------| Workflow file structure, triggers, jobs, permissions | `workflows/setup-workflows/SKILL.md` | Caching, matrix, concurrency groups, artifact reuse | `workflows/optimize-ci/SKILL.md` 
+| Topic | Workflow |-------|----------| workflow file structure, triggers, jobs, permissions | `workflows/setup-workflows/SKILL.md` | caching, matrix, concurrency groups, artifact reuse | `workflows/optimize-ci/SKILL.md` 
 ### 2. Select Workflows
 
-> Goal: เลือก Workflows ที่เหมาะสม
+> Goal: pick the fitting workflows
 
-เลือก workflows ตามความต้องการของ project:
+Select workflows by the project's needs:
 
-- Base CI/CD: `ci.yml` (lint, typecheck, test) - ทุก project ต้องมี
-- Security: `codeql.yml`, `dependabot.yml`, `license-check.yml` - Production project ที่ต้องการ security
-- Testing: `coverage.yml`, `e2e.yml`, `mutation.yml`, `sonarqube.yml` - Project ที่ต้องการ quality assurance
-- Performance: `lighthouse.yml`, `bundle-size.yml`, `performance-budget.yml` - Web application ที่ต้องการ performance
-- Deployment: `deploy-staging.yml`, `deploy-production.yml`, `docker.yml`, `cloudflare-workers.yml`, `cloudflare-pages.yml` - Project ที่ต้องการ automated deployment
-- Monitoring: `slack-notify.yml`, `discord-notify.yml`, `artifacts.yml` - Project ที่ต้องการ notifications
-- Advanced: `matrix.yml`, `parallel.yml`, `cache.yml` - Project ที่ต้องการ optimization
-- Documentation: `deploy-docs.yml`, `changelog.yml`, `docusaurus.yml` - Project ที่มี documentation
-- Git Ops: `commitlint.yml`, `dependency-review.yml`, `auto-merge.yml` - Team project ที่ต้องการ governance
+- Base CI/CD: `ci.yml` (lint, typecheck, test) - every project must have
+- Security: `codeql.yml`, `dependabot.yml`, `license-check.yml` - production projects needing security
+- Testing: `coverage.yml`, `e2e.yml`, `mutation.yml`, `sonarqube.yml` - projects needing quality assurance
+- Performance: `lighthouse.yml`, `bundle-size.yml`, `performance-budget.yml` - web applications needing performance
+- Deployment: `deploy-staging.yml`, `deploy-production.yml`, `docker.yml`, `cloudflare-workers.yml`, `cloudflare-pages.yml` - projects needing automated deployment
+- Monitoring: `slack-notify.yml`, `discord-notify.yml`, `artifacts.yml` - projects needing notifications
+- Advanced: `matrix.yml`, `parallel.yml`, `cache.yml` - projects needing optimization
+- Documentation: `deploy-docs.yml`, `changelog.yml`, `docusaurus.yml` - projects with documentation
+- Git Ops: `commitlint.yml`, `dependency-review.yml`, `auto-merge.yml` - team projects needing governance
 
 ### 3. Basic Setup
 
-> Goal: ตั้งค่า secrets, dependency updates และ base CI workflow
+> Goal: set up secrets, dependency updates, and the base CI workflow
 
-1. ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets สำหรับ CI/CD ด้วย OIDC หรือ machine identity
-2. ทำ `/follow-tool-renovate` เพื่อตั้งค่า dependency updates
-3. ทำ `/follow-tool-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
-4. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
+1. Run `/follow-secret-manager` to set up CI/CD secrets with OIDC or machine identity
+2. Run `/follow-tool-renovate` to set up dependency updates
+3. Run `/follow-tool-release-it` to set up automated releases (if a monorepo)
+4. Create `.github/workflows/ci.yml` for lint, typecheck, test
 
 ### 4. Add Workflows As Needed
 
-> Goal: เลือกเพิ่ม Workflows ตามความต้องการ
+> Goal: add workflows by need
 
-- Security: เพิ่ม `codeql.yml`, `dependabot.yml` สำหรับ production
-- Testing: เพิ่ม `coverage.yml`, `e2e.yml` สำหรับ quality assurance
-- Performance: เพิ่ม `lighthouse.yml` สำหรับ web application
-- Deployment: เพิ่ม workflows ตาม platform ที่ใช้ (Docker, Cloudflare, Vercel)
-- Monitoring: เพิ่ม `slack-notify.yml` สำหรับ team notifications
-- Git Ops: เพิ่ม `commitlint.yml`, `dependency-review.yml` สำหรับ team collaboration
+- Security: add `codeql.yml`, `dependabot.yml` for production
+- Testing: add `coverage.yml`, `e2e.yml` for quality assurance
+- Performance: add `lighthouse.yml` for web applications
+- Deployment: add workflows per platform in use (Docker, Cloudflare, Vercel)
+- Monitoring: add `slack-notify.yml` for team notifications
+- Git Ops: add `commitlint.yml`, `dependency-review.yml` for team collaboration
 
 ### 5. Write Workflows
 
-> Goal: เขียน workflow YAML ตาม best practices
+> Goal: write workflow YAML per best practices
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์โครงสร้างและ dependencies
-2. อ่าน `.github/workflows/` directory แล้ววิเคราะห์ workflows ที่มีอยู่
-3. ระบุ workflows ที่ขาดหายหรือซ้ำซ้อน
-4. เขียน workflow YAML โดยใช้ `actions/checkout@v7`, caching, และ permissions อย่างปลอดภัย
-5. แยก CI และ CD workflows
-6. ใช้ matrix strategy สำหรับ multiple configurations
-7. ตั้งค่า monitoring และ notifications สำหรับ failures
-8. ทดสอบ syntax ด้วย `actionlint` (`mise use -g actionlint` แล้วรัน `actionlint`) และตรวจ permissions
+1. Run `/deep-analyze` to analyze structure and dependencies
+2. Read the `.github/workflows/` directory and analyze existing workflows
+3. Identify missing or duplicated workflows
+4. Write workflow YAML using `actions/checkout@v7`, caching, and safe permissions
+5. Separate CI and CD workflows
+6. Use matrix strategy for multiple configurations
+7. Set up monitoring and notifications for failures
+8. Test syntax with `actionlint` (`mise use -g actionlint` then run `actionlint`) and verify permissions
 
 ## Rules
 
 - Follow the project conventions and global rules (tool github actions)
 - Use the allowed tools only when needed
 
-- ใช้ `/open-web-for-config-secret` เมื่อต้องตั้งค่า secrets ผ่าน web
-- ใช้ `/follow-dot-github` สำหรับ `.github/` repo config อื่นๆ
-- ใช้ `/follow-deploy` เมื่อต้องการ deployment guidance
-- ใช้ `/run-deploy` เพื่อ trigger deployment
+- Use `/open-web-for-config-secret` when secrets must be created via the web
+- Use `/follow-dot-github` for other `.github/` repo config
+- Use `/follow-deploy` when deployment guidance is needed
+- Use `/run-deploy` to trigger deployment
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- เลือก workflows ที่เหมาะสมกับ project
-- GitHub Actions ตั้งค่าครบถ้วนตามความต้องการ
-- CI/CD ทำงานอัตโนมัติ
-
+- Workflows fitted to the project are selected
+- GitHub Actions fully configured per the requirements
+- CI/CD runs automatically

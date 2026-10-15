@@ -1,6 +1,6 @@
 ---
 name: follow-tool-hk
-description: ตั้งค่าและใช้งาน hk สำหรับ Git hooks แทน Lefthook/pre-commit
+description: Set up and use hk for Git hooks instead of Lefthook/pre-commit
 argument-hint: "[scope]"
 related:
   - follow-tool-mise
@@ -11,133 +11,133 @@ related:
 
 ## Goal
 
-ตั้งค่า hk เป็น Git hook manager แทน Lefthook ด้วย Pkl config ที type-safe และเร็ว
+Set up hk as the Git hook manager replacing Lefthook, with a type-safe and fast Pkl config
 
 ## Scope
 
-ใช้ hk สำหรับ pre-commit, pre-push, pre-merge-commit และคำสั่ง `check`/`fix`
+Use hk for pre-commit, pre-push, pre-merge-commit and the `check`/`fix` commands
 
-- Boundary: ถ้า repo ใช้ moonrepo อยู่แล้ว → `vcs.hooks` ของ moon (v1.9+) พอสำหรับ hooks ทั่วไป (`moon run :lint --affected --status=staged`) — ใช้ hk เมื่อต้องการ parallel staged-file linting, non-moon hook steps, หรือ hook config เดียวข้าม repos
+- Boundary: if the repo already uses moonrepo → moon's `vcs.hooks` (v1.9+) is enough for general hooks (`moon run :lint --affected --status=staged`) — use hk when you want parallel staged-file linting, non-moon hook steps, or one hook config across repos
 
-- git hooks patterns ทั่วไป ดู `references/apis.md`
-- Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config เป็น Pkl-only (ลบ `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) ถูกแทนด้วย typed options เช่น `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage อัตโนมัติ — migration guide: `https://hk.jdx.dev/migration-v2`
+- General git hooks patterns: see `references/apis.md`
+- Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config is Pkl-only (removed `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) replaced by typed options such as `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage automatic — migration guide: `https://hk.jdx.dev/migration-v2`
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install hk
 
-> Goal: มี hk CLI พร้อมใช้
+> Goal: have the hk CLI ready
 
-1. แนะนำติดตั้งผ่าน mise: `mise use -g hk` หรือ `mise use hk` ใน project
-2. ทางเลือก: `cargo install hk`, `brew install hk`, `mise use hk`
-3. ถ้า project ไม่มี mise ให้ทำ `/follow-tool-mise` ก่อน
-4. ยืนยันด้วย `hk --version`
+1. Recommended: install via mise — `mise use -g hk` or `mise use hk` in the project
+2. Alternatives: `cargo install hk`, `brew install hk`, `mise use hk`
+3. If the project has no mise, run `/follow-tool-mise` first
+4. Confirm with `hk --version`
 
 ### 2. Install Git Hooks
 
-> Goal: git เรียก hk อัตโนมัติ
+> Goal: git calls hk automatically
 
-1. แนะนำ per-repo install: `hk install` หรือ `mise x -- hk install`
-2. ทางเลือก global install: `hk install --global` (ต้อง Git 2.54+)
-3. ยืนยันด้วย `git config --get hook.hk-pre-commit.command`
-4. ถ้าใช้ mise ตั้ง `HK_MISE=1` ใน `mise.toml` หรือ `mise = true` ใน `hk.pkl`
+1. Recommended per-repo install: `hk install` or `mise x -- hk install`
+2. Global install alternative: `hk install --global` (requires Git 2.54+)
+3. Confirm with `git config --get hook.hk-pre-commit.command`
+4. If using mise, set `HK_MISE=1` in `mise.toml` or `mise = true` in `hk.pkl`
 
 ### 3. Create mise.toml
 
-> Goal: จัดการ tools ที hk ใช้
+> Goal: manage the tools hk uses
 
-1. รัน `mise use bun gitleaks hk` เพื่อเพิ่ม tools ใน project
-2. กำหนด `HK_MISE = "1"` ใน `[env]`
-3. ใช้ version ที match `packageManager` เช่น `bun = "1.4.2"`
-4. ไม่ commit secrets หรือ user-specific paths
+1. Run `mise use bun gitleaks hk` to add the tools to the project
+2. Define `HK_MISE = "1"` in `[env]`
+3. Use versions that match `packageManager`, e.g. `bun = "1.4.2"`
+4. Don't commit secrets or user-specific paths
 
 ### 4. Create hk.pkl
 
-> Goal: ตั้งค่า hooks สำหรับ project
+> Goal: configure hooks for the project
 
-1. รัน `hk init` เพื่อสร้าง `hk.pkl` ต้นแบบ (v2: `hk generate` ถูก rename เป็น `hk init`)
-2. แก้ไข `hk.pkl` โดยใช้ `amends` และ `import Builtins.pkl` ตาม version ล่าสุด — v2 pin เป็น `v2.2.0`/`hk@2.2.0`
-3. กำหนด `mise = true` ถ้าใช้ mise tools
-4. กำหนด hooks หลัก: `pre-commit`, `pre-push`, `pre-merge-commit`, `check`, `fix` — หรือใช้ top-level `steps` map (v2) เพื่อสร้าง implicit `check`/`fix`/`pre-commit` พร้อมกัน
-5. ใช้ `hk.local.pkl` สำหรับ local overrides โดยไม่ commit
-6. v2: config เป็น Pkl เท่านั้น — `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl` ถูกลบแล้ว
+1. Run `hk init` to create a template `hk.pkl` (v2: `hk generate` was renamed to `hk init`)
+2. Edit `hk.pkl` using `amends` and `import Builtins.pkl` per the latest version — v2 pins to `v2.2.0`/`hk@2.2.0`
+3. Set `mise = true` if using mise tools
+4. Define the main hooks: `pre-commit`, `pre-push`, `pre-merge-commit`, `check`, `fix` — or use the top-level `steps` map (v2) to create implicit `check`/`fix`/`pre-commit` at once
+5. Use `hk.local.pkl` for local overrides without committing
+6. v2: config is Pkl only — `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl` are removed
 
 ### 5. Configure Steps
 
-> Goal: กำหนด linters/tests ให้ hk รัน
+> Goal: define the linters/tests hk runs
 
-1. ใช้ `Builtins.<name>` สำหรับเครื่องมือที่รองรับ เช่น `Builtins.gitleaks` — v2: ไม่มี variant names (`gitleaks_staged`, `knip_strict`, `pinact_v3`) ให้ใช้ typed options เช่น `(Builtins.gitleaks) { scan = "staged" }`, `(Builtins.knip) { strict = true }`, `(Builtins.pinact) { version = "3" }`
-2. สร้าง custom step ด้วย `glob`, `exclude`, `check`, `fix`
-3. ใช้ `fix = true` ใน `pre-commit` เพื่อแก้ไขไฟล์อัตโนมัติ
-4. ใช้ `stash = "git"` ใน `pre-commit` เพื่อ stash unstaged changes
-5. ถ้า working tree ใหญ่หรือ Windows long path ให้ใช้ `stash = "patch-file"` หรือ `stash = "none"`
-6. ใช้ `stomp = true` สำหรับ typecheck/test/scan ที่ไม่ต้องการ file lock
-7. ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ batch
-8. ใช้ `effect = "destructive"` สำหรับ step ที่ลบ/เขียนทับไฟล์ — hk จะบังคับ confirm ใน agent/MCP contexts (v1.55+)
-9. ถ้า monorepo ให้ใช้ `subprojects` ใน `hk.pkl` สำหรับ nested configs + per-directory mise env (v1.52+)
-10. ใช้ `dir` กับ Tera template เช่น `dir = "{{workspace}}"` สำหรับ workspace-aware steps แทน `cd {{workspace}} && ...` (v1.57+)
-11. ใช้ `check_diff` + `check_after_diff = true` สำหรับ partial fixers (เช่น ShellCheck) — apply diff ที่แก้ได้แล้วรัน check ซ้ำให้ findings ที่แก้ไม่ได้ยังแสดง (v1.57+)
+1. Use `Builtins.<name>` for supported tools, e.g. `Builtins.gitleaks` — v2: no variant names (`gitleaks_staged`, `knip_strict`, `pinact_v3`); use typed options such as `(Builtins.gitleaks) { scan = "staged" }`, `(Builtins.knip) { strict = true }`, `(Builtins.pinact) { version = "3" }`
+2. Create custom steps with `glob`, `exclude`, `check`, `fix`
+3. Use `fix = true` in `pre-commit` to edit files automatically
+4. Use `stash = "git"` in `pre-commit` to stash unstaged changes
+5. For large working trees or Windows long paths, use `stash = "patch-file"` or `stash = "none"`
+6. Use `stomp = true` for typecheck/test/scan steps that don't need a file lock
+7. Use `batch = true` for tools that support batching
+8. Use `effect = "destructive"` for steps that delete/overwrite files — hk forces confirm in agent/MCP contexts (v1.55+)
+9. For monorepos, use `subprojects` in `hk.pkl` for nested configs + per-directory mise env (v1.52+)
+10. Use `dir` with Tera templates, e.g. `dir = "{{workspace}}"` for workspace-aware steps instead of `cd {{workspace}} && ...` (v1.57+)
+11. Use `check_diff` + `check_after_diff = true` for partial fixers (e.g. ShellCheck) — apply the fixed diff then re-run checks so unfixed findings still show (v1.57+)
 
 ### 6. Run and Validate
 
-> Goal: ตรวจสอบว่า hooks ทำงาน
+> Goal: verify the hooks work
 
-1. รัน `hk run pre-commit` เพื่อทดสอบ
-2. รัน `hk run pre-push`
-3. รัน `hk run pre-merge-commit`
-4. รัน `hk check --all` สำหรับ CI
-5. รัน `hk fix` เพื่อแก้ไขไฟล์
-6. ถ้าใช้กับ agent ให้รัน `hk agent` เพื่อดู integration snippets (instructions, hooks, MCP) — read-only, ไม่แตะ config
-7. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
+1. Run `hk run pre-commit` to test
+2. Run `hk run pre-push`
+3. Run `hk run pre-merge-commit`
+4. Run `hk check --all` for CI
+5. Run `hk fix` to edit files
+6. For agent use, run `hk agent` to print integration snippets (instructions, hooks, MCP) — read-only, touches no config
+7. Run `/run-verify` to check lint/typecheck/scan after setup
 
 ### 7. Migrate from Lefthook
 
-> Goal: ย้ายจาก lefthook มา hk
+> Goal: move from lefthook to hk
 
-ถ้าย้ายจาก `pre-commit` framework → ใช้ `hk migrate pre-commit --output hk.migrated.pkl` แล้ว `HK_FILE=./hk.migrated.pkl hk validate` (lefthook ยังไม่มี auto-migrate)
+Migrating from the `pre-commit` framework → use `hk migrate pre-commit --output hk.migrated.pkl` then `HK_FILE=./hk.migrated.pkl hk validate` (lefthook has no auto-migrate yet)
 
-1. ลบ `lefthook.yml` และ `lefthook-local.yml` ออกจาก repo
-2. เอา `bunx lefthook install` ออกจาก `package.json` `prepare`
-3. เปลี่ยน `prepare` เป็น `mise x -- hk install`
-4. อัปเดต references ของ lefthook ใน `AGENTS.md` เป็น `hk`
-5. ลบ ast-grep rule `follow-lefthook.yml` ใน `rules/` ถ้ามี
+1. Remove `lefthook.yml` and `lefthook-local.yml` from the repo
+2. Take `bunx lefthook install` out of `package.json` `prepare`
+3. Change `prepare` to `mise x -- hk install`
+4. Update lefthook references in `AGENTS.md` to `hk`
+5. Delete the ast-grep rule `follow-lefthook.yml` in `rules/` if present
 
 ## Rules
 
 ### 1. Configuration Structure
 
-- ใช้ `hk.pkl` ใน root หรือ `.config/hk.pkl`
-- ใช้ `hk.local.pkl` สำหรับ local overrides (ไม่ commit)
-- ใช้ `amends` กับ release package URL เสมอ
-- ใช้ `import Builtins.pkl` เพื่อใช้ builtin linters
-- ใช้ version tag ล่าสุด เช่น `v2.2.0` — v2 ไม่รองรับ `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl` แล้ว
+- Use `hk.pkl` at the root or `.config/hk.pkl`
+- Use `hk.local.pkl` for local overrides (not committed)
+- Always use `amends` with the release package URL
+- Use `import Builtins.pkl` to access builtin linters
+- Use the latest version tag, e.g. `v2.2.0` — v2 no longer supports `hk.toml`/`hk.yaml`/`hk.json`/`.hkrc.pkl`
 
 ### 2. mise Integration
 
-- ตั้ง `mise = true` ใน `hk.pkl` เมื่อ tools มาจาก mise
-- ตั้ง `HK_MISE = "1"` ใน `mise.toml` `[env]`
-- ใช้ `mise x -- hk install` ใน `package.json` `prepare`
-- ระบุ tools ใน `mise.toml` เช่น `bun`, `gitleaks`, `hk`
+- Set `mise = true` in `hk.pkl` when tools come from mise
+- Set `HK_MISE = "1"` in `mise.toml` `[env]`
+- Use `mise x -- hk install` in `package.json` `prepare`
+- List the tools in `mise.toml`, e.g. `bun`, `gitleaks`, `hk`
 
 ### 3. Hook Behavior
 
-- `pre-commit` ควร `fix = true`
-- `pre-push` รัน check-only (no fix)
-- `pre-merge-commit` รัน typecheck อย่างเดียว
-- ใช้ hook names ที่ถูกต้อง: `pre-commit`, `pre-push`, `pre-merge-commit`
-- ห้ามใช้ `pre-merge` (ไม่ใช่ valid Git hook name)
-- ไม่ bypass hooks ด้วย `HK=0 git commit` โดยไม่จำเป็น
+- `pre-commit` should set `fix = true`
+- `pre-push` runs check-only (no fix)
+- `pre-merge-commit` runs typecheck alone
+- Use the correct hook names: `pre-commit`, `pre-push`, `pre-merge-commit`
+- Never use `pre-merge` (not a valid Git hook name)
+- Don't bypass hooks with `HK=0 git commit` without good reason
 
 ### 4. Step Standards
 
-- ระบุ `glob` สำหรับ linters ที่ทำงานกับไฟล์
-- ใช้ `exclude` เป็น `List(...)`
-- ใช้ `check` สำหรับ read-only, `fix` สำหรับ modify
-- ใช้ `stomp = true` สำหรับ workspace-wide checks
-- ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ
-- ใช้ `depends` สำหรับลำดับการทำงานระหว่าง steps
-- ใช้ `exclusive = true` สำหรับ steps ที่ต้องรันคนเดียว
-- hk v1.57+ embed Pkl package ของ version ตัวเอง — config ที่ pin version เดียวกัน validate ได้ offline บน cold cache; ปิดด้วย `HK_PKL_EMBEDDED=0`
+- Specify `glob` for linters that operate on files
+- Use `exclude` as a `List(...)`
+- Use `check` for read-only, `fix` for modify
+- Use `stomp = true` for workspace-wide checks
+- Use `batch = true` for tools that support it
+- Use `depends` for ordering between steps
+- Use `exclusive = true` for steps that must run alone
+- hk v1.57+ embeds its own version's Pkl package — config pinned to the same version validates offline on a cold cache; disable with `HK_PKL_EMBEDDED=0`
 
 ### 5. Example mise.toml
 
@@ -224,27 +224,27 @@ hooks {
 
 ### 7. Common Commands
 
-- `hk run pre-commit` - ทดสอบ pre-commit
-- `hk run pre-push` - ทดสอบ pre-push
-- `hk check --all` - ตรวจทั้ง repo
-- `hk check --unstaged` - ตรวจเฉพาะ unstaged/untracked files (v1.52+, เหมาะกับ agent stop hooks)
-- `hk fix` - แก้ไขไฟล์
-- `hk agent` - พิมพ์ agent integration snippets (Codex, Claude Code, VS Code) — read-only (v1.55+)
-- `hk mcp` - รัน MCP server พร้อม interactive dashboard (v1.55+)
-- `hk migrate pre-commit` - แปลง `.pre-commit-config.yaml` เป็น `hk.pkl`
-- `hk config dump` - ดู effective config
-- `hk builtins` - ดูรายการ builtin linters
+- `hk run pre-commit` - test pre-commit
+- `hk run pre-push` - test pre-push
+- `hk check --all` - check the whole repo
+- `hk check --unstaged` - check only unstaged/untracked files (v1.52+, suits agent stop hooks)
+- `hk fix` - fix files
+- `hk agent` - print agent integration snippets (Codex, Claude Code, VS Code) — read-only (v1.55+)
+- `hk mcp` - run the MCP server with an interactive dashboard (v1.55+)
+- `hk migrate pre-commit` - convert `.pre-commit-config.yaml` to `hk.pkl`
+- `hk config dump` - show the effective config
+- `hk builtins` - list builtin linters
 
-- ใช้ `/follow-tool-mise` สำหรับติดตั้งและจัดการ tools
-- ใช้ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
-- ใช้ `/fix` เมื่อ hooks พบ issues ที่ต้องแก้
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use /follow-tool-mise to install and manage tools
+- Use /run-verify to check lint/typecheck/scan after setup
+- Use /fix when hooks find issues that need fixing
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- hk ติดตั้งและทำงานผ่าน mise
-- `mise.toml` กำหนด tools และ `HK_MISE=1`
-- `hk.pkl` กำหนด pre-commit, pre-push, pre-merge-commit
-- `hk run` ผ่านทุก hook
-- `hk check --all` พร้อมใช้ใน CI
-- Lefthook config ถูกลบหรือแทนที่
+- hk installed and working through mise
+- `mise.toml` defines the tools and `HK_MISE=1`
+- `hk.pkl` defines pre-commit, pre-push, pre-merge-commit
+- `hk run` passes every hook
+- `hk check --all` ready for CI
+- Lefthook config removed or replaced

@@ -1,28 +1,28 @@
 # GitHub Actions — Best Practices
 
-CI/CD workflow discipline — security, caching และ maintainability
+CI/CD workflow discipline — security, caching, and maintainability
 
 ## Recommended Patterns
 
-- Pin actions ด้วย commit SHA หรือ tag เวอร์ชันเต็ม (`actions/checkout@v4`) — ห้าม `@main`/branch refs ใน supply-chain-sensitive repos
-- Minimal permissions: `permissions:` block ต่อ job — `contents: read` default, เพิ่มเฉพาะที่ต้อง
-- Cache deps: `actions/setup-*` มี `cache:` built-in (bun/pnpm/npm/cargo) — ใช้แทน actions/cache มือ
-- Matrix builds สำหรับ OS/version coverage — `fail-fast: false` เมื่อต้องการเห็นทุก failure
-- `concurrency` group + `cancel-in-progress` สำหรับ PR workflows — ไม่เผา runner บน stale pushes
+- Pin actions by commit SHA or full version tag (`actions/checkout@v4`) — never `@main`/branch refs in supply-chain-sensitive repos
+- Minimal permissions: a `permissions:` block per job — `contents: read` default, add only what's needed
+- Cache deps: `actions/setup-*` have built-in `cache:` (bun/pnpm/npm/cargo) — use them instead of manual actions/cache
+- Matrix builds for OS/version coverage — `fail-fast: false` when every failure should be visible
+- `concurrency` group + `cancel-in-progress` for PR workflows — don't burn runners on stale pushes
 
 ## Common Pitfalls
 
-- Secrets ใน logs: `mask` อัตโนมัติแต่ multiline/transformed secrets leak ได้ — อย่า echo secrets หรือทำ string ops บนมัน
-- `pull_request_target` อันตราย — run บน base repo context พร้อม secrets; ห้าม checkout PR code + run ใน trigger นี้
-- Job outputs/`GITHUB_OUTPUT` แทน `::set-output` (deprecated)
-- Reusable workflows vs composite actions — reusable = job-level isolation, composite = step bundling; เลือกตาม scope
-- `if: always()` + status checks — cleanup jobs ต้อง `if: always()` ไม่งั้นไม่รันเมื่อ fail
+- Secrets in logs: auto-`mask`ed, but multiline/transformed secrets can leak — never echo secrets or run string operations on them
+- `pull_request_target` is dangerous — it runs in the base repo context with secrets; never checkout PR code + run it under this trigger
+- Use job outputs/`GITHUB_OUTPUT` instead of `::set-output` (deprecated)
+- Reusable workflows vs composite actions — reusable = job-level isolation, composite = step bundling; choose by scope
+- `if: always()` + status checks — cleanup jobs need `if: always()` or they won't run on failure
 
 ## Perf Notes
 
-- Dependent jobs serialize — parallelize independent jobs; needs chain เฉพาะที่จำเป็น
-- `paths:`/`paths-ignore:` filters ข้าม docs-only changes
-- Self-hosted runners สำหรับ heavy builds — cache ค้างเครื่อง
+- Dependent jobs serialize — parallelize independent jobs; keep `needs` chains only where required
+- `paths:`/`paths-ignore:` filters skip docs-only changes
+- Self-hosted runners for heavy builds — cache persists on the machine
 
 ## Do / Don't
 
@@ -30,5 +30,5 @@ CI/CD workflow discipline — security, caching และ maintainability
 |----|-------|
 | pin action versions | `@main`/`@master` refs |
 | least-privilege `permissions:` | default write-all token |
-| `pull_request` trigger สำหรับ PR code | `pull_request_target` + checkout PR |
-| concurrency cancel-in-progress | queue builds ซ้อนบน stale commits |
+| `pull_request` trigger for PR code | `pull_request_target` + checkout PR |
+| concurrency cancel-in-progress | queue stacked builds on stale commits |

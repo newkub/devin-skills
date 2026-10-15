@@ -1,6 +1,6 @@
 ---
 name: follow-tool-github-actions-setup-workflows
-description: สร้าง workflow files ใน `.github/workflows/` — structure, triggers, jobs, permissions
+description: Create workflow files in `.github/workflows/` — structure, triggers, jobs, permissions
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -10,81 +10,81 @@ related:
 
 ## Goal
 
-สร้าง workflow YAML files ใน `.github/workflows/` ให้ถูกต้อง — file structure, triggers, jobs, steps, permissions ตาม best practices
+Create correct workflow YAML files in `.github/workflows/` — file structure, triggers, jobs, steps, permissions per best practices
 
 ## Scope
 
-ใช้เมื่อต้องเพิ่ม workflows ใหม่หรือแก้โครงสร้าง workflow — caching/matrix/performance tuning อยู่ใน `workflows/optimize-ci/SKILL.md`
+Use when adding new workflows or changing workflow structure — caching/matrix/performance tuning lives in `workflows/optimize-ci/SKILL.md`
 
 ## Execute
 
 ### 1. Inventory Existing Workflows
 
-> Goal: รู้ว่ามี workflows อะไรอยู่แล้ว
+> Goal: know which workflows already exist
 
-1. อ่าน `.github/workflows/` ทั้งหมด — ระบุ workflows ที่มี, triggers, และ gaps
-2. ระบุว่า CI base (`ci.yml` — lint, typecheck, test) มีหรือยัง — ทุก project ต้องมี
-3. ทำ `/follow-dot-github` ถ้าต้องตรวจ `.github/` ทั้งหมด
+1. Read everything in `.github/workflows/` — identify existing workflows, triggers, and gaps
+2. Check whether the CI base (`ci.yml` — lint, typecheck, test) exists yet — every project needs it
+3. Run `/follow-dot-github` if the whole `.github/` directory needs auditing
 
 ### 2. Choose Workflows
 
-> Goal: เลือก workflows ตามความต้องการ
+> Goal: pick workflows based on needs
 
-- Base CI/CD: `ci.yml` (lint, typecheck, test) — ทุก project
+- Base CI/CD: `ci.yml` (lint, typecheck, test) — every project
 - Security: `codeql.yml`, `dependabot.yml` — production
 - Testing: `coverage.yml`, `e2e.yml` — quality assurance
-- Deployment: workflows ตาม platform ที่ใช้จริง
+- Deployment: workflows per the platform actually used
 - Monitoring: notify workflows — team notifications
 
 ### 3. Write Workflow Files
 
-> Goal: เขียน workflow YAML ตาม best practices
+> Goal: write workflow YAML per best practices
 
-1. กำหนด `name`, `on` triggers ให้ชัด — `push`/`pull_request` บน branches ที่ถูกต้อง, `workflow_dispatch` สำหรับ manual
-2. ตั้ง `permissions` แบบ least-privilege — `contents: read` เป็น default, เพิ่มเฉพาะที่จำเป็น
-3. ใช้ `actions/checkout` และ setup actions ที่ parent skill pin ไว้ — ดู version ล่าสุดที่ระบุใน parent `SKILL.md` หรือ official docs ห้ามเดา
-4. ใช้ `concurrency` group เพื่อ cancel in-progress runs บน ref เดียวกัน
-5. แยก CI และ CD workflows — ไม่รัน deploy บน pull request
-6. จัด jobs: ตั้ง `runs-on`, `steps`, `needs` สำหรับ job dependencies, `if` conditions ที่ชัดเจน
+1. Define clear `name` and `on` triggers — `push`/`pull_request` on the right branches, `workflow_dispatch` for manual runs
+2. Set least-privilege `permissions` — `contents: read` as default, add only what's needed
+3. Use `actions/checkout` and setup actions pinned by the parent skill — check the latest version stated in the parent `SKILL.md` or official docs, never guess
+4. Use a `concurrency` group to cancel in-progress runs on the same ref
+5. Separate CI and CD workflows — never run deploy on a pull request
+6. Organize jobs: set `runs-on`, `steps`, `needs` for job dependencies, and clear `if` conditions
 
 ### 4. Secrets And Tokens
 
-> Goal: ตั้งค่า secrets อย่างปลอดภัย
+> Goal: configure secrets safely
 
-1. ทำ `/follow-secret-manager` สำหรับ secrets ที่ workflows ต้องใช้ (`NPM_TOKEN`, deploy keys)
-2. อ้างอิงผ่าน `${{ secrets.* }}` เท่านั้น — ห้าม hard-code
-3. prefer OIDC/trusted publishing แทน long-lived tokens เมื่อ provider รองรับ
+1. Run `/follow-secret-manager` for secrets the workflows need (`NPM_TOKEN`, deploy keys)
+2. Reference secrets only through `${{ secrets.* }}` — never hard-code
+3. Prefer OIDC/trusted publishing over long-lived tokens when the provider supports it
 
 ### 5. Validate
 
-> Goal: ตรวจ syntax และ permissions ก่อน commit
+> Goal: check syntax and permissions before committing
 
-1. รัน `actionlint` ตรวจทุก workflow file (`mise use -g actionlint` ถ้ายังไม่มี)
-2. ตรวจ triggers — push ไป branch ที่ไม่ตั้งใจไม่ควร trigger
-3. ถ้า syntax ผิด → แก้แล้ว lint ซ้ำจนผ่าน
+1. Run `actionlint` against every workflow file (`mise use -g actionlint` if missing)
+2. Verify triggers — a push to an unintended branch should not trigger
+3. If syntax fails → fix, then re-lint until it passes
 
 ## Rules
 
 ### 1. Structure
 
-- หนึ่ง workflow ต่อไฟล์ ชื่อไฟล์สื่อหน้าที่ (`ci.yml`, `release.yml`)
-- `permissions` แบบ least-privilege เสมอ
-- pin action versions ตามที่ parent skill ระบุหรือ official docs — ไม่ใช้ `master`/`latest` floating refs
+- One workflow per file with a descriptive name (`ci.yml`, `release.yml`)
+- Always least-privilege `permissions`
+- Pin action versions per the parent skill or official docs — no `master`/`latest` floating refs
 
 ### 2. Triggers
 
-- CI trigger บน `push`/`pull_request` ต่อ main branches
-- deploy/release trigger เฉพาะ `push` ไป release branch หรือ tags — ห้ามรันบน PR
+- CI triggers on `push`/`pull_request` for main branches
+- deploy/release triggers only on `push` to the release branch or tags — never run on PRs
 
 ### 3. Secrets
 
-- secrets ผ่าน `${{ secrets.* }}` และ `/follow-secret-manager` เท่านั้น
+- Secrets go through `${{ secrets.* }}` and `/follow-secret-manager` only
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /follow-dot-github ถ้าจำเป็น
+- Use /follow-secret-manager if needed
+- Use /follow-dot-github if needed
 
 ## Expected Outcome
 
-- Workflow files ถูกสร้างใน `.github/workflows/` ผ่าน `actionlint`
-- Triggers และ permissions ถูกต้องตาม least-privilege
-- CI base ครอบคลุม lint, typecheck, test
+- Workflow files in `.github/workflows/` pass `actionlint`
+- Triggers and permissions follow least-privilege
+- CI base covers lint, typecheck, test

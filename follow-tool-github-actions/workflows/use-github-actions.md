@@ -1,17 +1,17 @@
 ---
 title: Use GitHub Actions
-description: ใช้งาน GitHub Actions สำหรับ automation
+description: Use GitHub Actions for automation
 ---
 
 ## Goal
 
-ใช้งาน GitHub Actions สำหรับ automation ต่างๆ
+Use GitHub Actions for various automation tasks
 
 ## Execute
 
-### 1. ใช้ Caching
+### 1. Use Caching
 
-เพิ่ม caching สำหรับ dependencies:
+Add caching for dependencies:
 
 ```yaml
 - name: Cache Dependencies
@@ -21,9 +21,9 @@ description: ใช้งาน GitHub Actions สำหรับ automation
     key: ${{ runner.os }}-node-${{ hashFiles('**/bun.lockb') }}
 ```
 
-### 2. ใช้ Matrix Strategy
+### 2. Use Matrix Strategy
 
-Test บนหลาย platforms:
+Test on multiple platforms:
 
 ```yaml
 strategy:
@@ -32,9 +32,9 @@ strategy:
     os: [ubuntu-latest, windows-latest]
 ```
 
-### 3. ใช้ Secrets
+### 3. Use Secrets
 
-ใช้ secrets ใน workflow:
+Use secrets in the workflow:
 
 ```yaml
 - name: Deploy
@@ -43,7 +43,7 @@ strategy:
     API_KEY: ${{ secrets.API_KEY }}
 ```
 
-### 4. ใช้ Artifacts
+### 4. Use Artifacts
 
 Upload build artifacts:
 
@@ -57,7 +57,7 @@ Upload build artifacts:
 
 ## Expected Outcome
 
-- Workflow ที่มี caching
-- Test บนหลาย platforms
-- Secrets ที่ปลอดภัย
-- Artifacts ที่ถูกเก็บ
+- Workflow with caching
+- Tests on multiple platforms
+- Secrets handled safely
+- Artifacts stored

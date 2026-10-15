@@ -1,6 +1,6 @@
 | key | value |
 |---|---|
-| install | `mise use -g gh # or https://cli.github.com — npm package `gh` ไม่ใช่ตัวจริง` |
+| install | `mise use -g gh # or https://cli.github.com — the npm package `gh` is not the real one` |
 | repository | https://github.com/cli/cli |
 | docs | https://cli.github.com/manual/gh_project |
 

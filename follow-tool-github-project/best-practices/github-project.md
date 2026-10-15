@@ -4,30 +4,30 @@ CLI-driven project management — scripted + interactive discipline
 
 ## Recommended Patterns
 
-- `gh project` commands ทุกอย่าง scriptable — combine `list`, `view`, `item-list`, `field-list` เพื่อ discover IDs ก่อน mutate
-- Field/item IDs ไม่ใช่ names — resolve `field-list`/`item-list` → IDs แล้วค่อย `item-edit`; IDs per-project
-- JSON output (`--format json`) + `jq` สำหรับ pipelines — table output สำหรับอ่านอย่างเดียว
-- Automations: ใช้ built-in workflows ของ Projects (auto-add, status transitions) ก่อน scripted solutions
-- `gh project item-add` เชื่อม issues/PRs เข้า project — bulk add ผ่าน loop + repo list
+- Every `gh project` command is scriptable — combine `list`, `view`, `item-list`, `field-list` to discover IDs before mutating
+- Field/item IDs are not names — resolve `field-list`/`item-list` → IDs, then `item-edit`; IDs are per-project
+- JSON output (`--format json`) + `jq` for pipelines — table output for reading only
+- Automations: use Projects' built-in workflows (auto-add, status transitions) before scripted solutions
+- `gh project item-add` links issues/PRs into the project — bulk add via a loop + repo list
 
 ## Common Pitfalls
 
-- Projects v2 (graphQL-backed) ≠ classic projects — `gh project` = v2 เท่านั้น; classic ใช้ `gh api`
-- Permissions: project visibility ตาม org — token ต้อง `project` scope; fine-grained PATs ต้อง grant explicit
-- `item-edit` ต้องการ `--project-id`, `--id` (item id), `--field-id` ทั้งหมด — ห้ามเดา; fetch list ก่อน
-- Single-select/status fields = option IDs ไม่ใช่ label text — resolve ผ่าน `field-list` output
+- Projects v2 (graphQL-backed) ≠ classic projects — `gh project` = v2 only; classic needs `gh api`
+- Permissions: project visibility follows the org — the token must have the `project` scope; fine-grained PATs must be granted explicitly
+- `item-edit` requires all of `--project-id`, `--id` (item id), `--field-id` — never guess; fetch the lists first
+- Single-select/status fields = option IDs, not label text — resolve via `field-list` output
 
 ## Scripting Tips
 
-- Idempotent scripts: เช็ค item มีอยู่แล้วก่อน `item-add` — add ซ้ำได้ duplicates
-- Rate limits: bulk ops ใส่ sleep ระหว่าง calls
-- Export: `gh project item-list --format json` > snapshot เป็น audit trail
+- Idempotent scripts: check the item doesn't already exist before `item-add` — repeated adds create duplicates
+- Rate limits: insert sleep between calls in bulk ops
+- Export: `gh project item-list --format json` > snapshot as an audit trail
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| resolve IDs ผ่าน list commands | hardcode field/item IDs |
-| `--format json` + jq ใน scripts | parse table output |
-| built-in automations ก่อน | scripted status sync ทั้งหมด |
-| verify token scopes ก่อน | debug permission errors ทีหลัง |
+| resolve IDs via list commands | hardcode field/item IDs |
+| `--format json` + jq in scripts | parse table output |
+| built-in automations first | scripted status sync for everything |
+| verify token scopes first | debug permission errors afterwards |
