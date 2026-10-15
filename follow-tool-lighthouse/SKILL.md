@@ -1,100 +1,100 @@
 ---
 name: follow-tool-lighthouse
-description: ใช้ Lighthouse CLI audit หน้าเว็บเดียว — performance, accessibility, SEO, best-practices
+description: Audit a single web page with Lighthouse CLI — performance, accessibility, SEO, best-practices
 argument-hint: "<url> [options]"
 related:
   - follow-tool-unlighthouse
   - use-chrome-devtools
-  - deep-review
+  - deep-review-codebase
   - run-dev
   - report
 ---
 
 ## Goal
 
-ใช้ Lighthouse CLI audit web page เดียวอย่าง reproducible — performance, accessibility, SEO, best-practices — พร้อม structured output สำหรับ review/report
+Audit one web page reproducibly with the Lighthouse CLI — performance, accessibility, SEO, best-practices — with structured output for review/report
 
 ## Scope
 
-ใช้สำหรับ audit หน้าเดียว/route เฉพาะเจาะจงด้วย `lighthouse` CLI โดยตรง
+Use for auditing a single page/specific route directly with the `lighthouse` CLI
 
-- Boundary: site-wide crawl ทุก route → `/follow-tool-unlighthouse`; E2E user-flow assertions → `/follow-tool-playwright`; Lighthouse ใน CI workflow → `/follow-tool-github-actions`; audit ใน browser ที่เปิดอยู่โดยไม่ต้อง CLI (a11y/SEO/best-practices/agentic — ไม่รวม perf) → `lighthouse_audit` ใน `chrome-devtools-mcp` ตาม `/use-chrome-devtools`
-- Latest: `lighthouse@13.5.0` (verified 2026-09-28) — categories เพิ่ม `agentic-browsing` ใน v13
-- ต้องมี Chrome/Chromium ≥ v66 ในเครื่อง — หรือระบุด้วย env `CHROME_PATH`
+- Boundary: site-wide crawl of every route → `/follow-tool-unlighthouse`; E2E user-flow assertions → `/follow-tool-playwright`; Lighthouse in a CI workflow → `/follow-tool-github-actions`; auditing in an open browser without the CLI (a11y/SEO/best-practices/agentic — not perf) → `lighthouse_audit` in `chrome-devtools-mcp` per `/use-chrome-devtools`
+- Latest: `lighthouse@13.5.0` (verified 2026-09-28) — categories added `agentic-browsing` in v13
+- Requires Chrome/Chromium ≥ v66 on the machine — or specify it via the `CHROME_PATH` env var
 
 ## Execute
 
 ### 1. Verify Environment
 
-> Goal: lighthouse และ Chrome พร้อมใช้
+> Goal: lighthouse and Chrome ready to use
 
-1. `lighthouse --version` — ถ้าไม่มี → `bunx lighthouse@latest` หรือ `bun add -g lighthouse`
-2. ตรวจ Chrome: auto-detect Chrome Stable/Canary — หรือตั้ง `CHROME_PATH=<path-to-chrome>` env
-3. ถ้าเป็น dev URL → start server ก่อนด้วย `/run-dev`
+1. `lighthouse --version` — if missing → `bunx lighthouse@latest` or `bun add -g lighthouse`
+2. Check Chrome: auto-detects Chrome Stable/Canary — or set the `CHROME_PATH=<path-to-chrome>` env var
+3. For a dev URL → start the server first with `/run-dev`
 
 ### 2. Run Audit
 
-> Goal: ได้ report ตาม categories ที่ต้องการ
+> Goal: get a report for the desired categories
 
 ```bash
-# audit เต็มทุก category — HTML report
+# full audit of every category — HTML report
 bunx lighthouse <url> --output html --output-path ./reports/lh.html --view
 
-# เฉพาะ performance — JSON stdout สำหรับ parse ต่อ
+# performance only — JSON stdout for further parsing
 bunx lighthouse <url> --only-categories performance --output json --output-path stdout
 
-# desktop profile (ไม่ใช่ --form-factor=desktop อย่างเดียว — ใช้ preset)
+# desktop profile (not just --form-factor=desktop — use the preset)
 bunx lighthouse <url> --preset desktop
 
-# mobile emulation เจาะจง
+# specific mobile emulation
 bunx lighthouse <url> --form-factor mobile --screenEmulation.width=360 --screenEmulation.height=640
 ```
 
-Categories ที่มี: `accessibility`, `best-practices`, `performance`, `seo`, `agentic-browsing` (ใหม่ใน v13)
+Available categories: `accessibility`, `best-practices`, `performance`, `seo`, `agentic-browsing` (new in v13)
 Presets: `perf`, `experimental`, `desktop`
 
 ### 3. Control Measurement
 
-> Goal: ผลลัพธ์เสถียรและตรง production-like conditions
+> Goal: stable results matching production-like conditions
 
-1. `--throttling-method simulate` (default) สำหรับ repeatable numbers; `devtools` เมื่อต้องการ real-network throttling
-2. ปรับ `--throttling.rttMs`, `throughputKbps` เมื่อต้องจำลอง network เฉพาะ
-3. `--max-wait-for-load <ms>` สำหรับ SPA ที่โหลดช้า
-4. `--blocked-url-patterns` ตัด third-party noise (analytics, ads) ออกจากผล
-5. `--disable-storage-reset` เมื่อต้อง audit state ที่ cache/login แล้ว
-6. reproducibility สูง → รัน 3-5 ครั้งดู median (Lighthouse variance สูง)
+1. `--throttling-method simulate` (default) for repeatable numbers; `devtools` when you need real-network throttling
+2. Tune `--throttling.rttMs`, `throughputKbps` when simulating a specific network
+3. `--max-wait-for-load <ms>` for slow-loading SPAs
+4. `--blocked-url-patterns` cuts third-party noise (analytics, ads) out of the result
+5. `--disable-storage-reset` when auditing a cached/logged-in state
+6. For high reproducibility → run 3-5 times and take the median (Lighthouse variance is high)
 
 ### 4. Two-Phase Runs
 
-> Goal: debug หรือ re-audit โดยไม่ต้องเก็บ trace ใหม่
+> Goal: debug or re-audit without re-collecting the trace
 
 ```bash
 bunx lighthouse <url> -G            # gather artifacts → ./latest-run/
-bunx lighthouse <url> -A            # audit จาก artifacts ที่เก็บไว้
+bunx lighthouse <url> -A            # audit from stored artifacts
 bunx lighthouse <url> -GA           # gather + audit
 ```
 
 ### 5. Parse And Report
 
-> Goal: scores + opportunities เป็น actionable findings
+> Goal: scores + opportunities as actionable findings
 
-1. `--output json` แล้วอ่าน `categories.*.score` (0-1 → x100) และ `audits` ที่ `score < 0.9`
-2. โฟกัส `audits` ที่มี `details.overallSavingsMs`/`overallSavingsBytes` — estimated impact ชัดเจน
-3. `--list-all-audits` ดู audit IDs ทั้งหมดเมื่อต้อง `--only-audits`/`--skip-audits` เจาะจง
-4. รายงานด้วย `/report` table: No., Category, Score, Top findings (with savings), Recommendation
+1. Use `--output json`, then read `categories.*.score` (0-1 → x100) and `audits` with `score < 0.9`
+2. Focus on `audits` carrying `details.overallSavingsMs`/`overallSavingsBytes` — clear estimated impact
+3. `--list-all-audits` shows all audit IDs when you need targeted `--only-audits`/`--skip-audits`
+4. Report via the `/report` table: No., Category, Score, Top findings (with savings), Recommendation
 
 ## Rules
 
-- JSON output สำหรับ automation/parse; HTML สำหรับ human review — `--output` รับหลายค่า
-- `--preset desktop` ไม่ใช่แค่ `--form-factor desktop` — preset ปรับ throttling/emulation ครบกว่า
-- Lighthouse score เปลี่ยนได้ระหว่างรัน (variance) — อย่าสรุปจากรันเดียว ใช้ median ของหลายรัน
-- authenticated pages → launch Chrome ด้วย profile ที่ login แล้วผ่าน `--chrome-flags`/`--port` หรือใช้ `--disable-storage-reset`
-- ไม่ audit production third-party sites ที่ไม่มีสิทธิ์
-- ใช้ /follow-tool-unlighthouse เมื่อต้อง site-wide; /deep-review เมื่อจะวิเคราะห์ลึกกว่า scores
+- JSON output for automation/parsing; HTML for human review — `--output` accepts multiple values
+- `--preset desktop` isn't just `--form-factor desktop` — the preset adjusts throttling/emulation more completely
+- Lighthouse scores vary between runs (variance) — don't conclude from a single run, use the median of several
+- Authenticated pages → launch Chrome with a logged-in profile via `--chrome-flags`/`--port`, or use `--disable-storage-reset`
+- Don't audit production third-party sites you have no rights to
+- Use /follow-tool-unlighthouse when site-wide is needed; /deep-review-codebase when going deeper than scores
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Lighthouse report (html/json/csv) ต่อ URL ที่ระบุ พร้อม scores ทุก category ที่เลือก
-- Findings พร้อม estimated savings สำหรับ follow-up fixes
+- A Lighthouse report (html/json/csv) per specified URL with scores for every selected category
+- Findings with estimated savings for follow-up fixes

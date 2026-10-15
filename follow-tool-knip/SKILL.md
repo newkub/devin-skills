@@ -10,132 +10,132 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน Knip สำหรับตรวจจับ unused files, dependencies และ exports อย่างถูกต้องตาม official best practices
+Set up and use Knip to detect unused files, dependencies, and exports correctly per official best practices
 
 ## Scope
 
-ใช้กับทุกโปรเจกต์ที่ต้องการวิเคราะห์ unused code — รองรับทั้ง single project และ monorepo ที่มี workspaces; ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
+Use with any project that needs unused-code analysis — supports both single projects and monorepos with workspaces; for a monorepo, run `/follow-monorepo` first
 
-- Latest: `knip@6.38.0` (verified 2026-09-24) — v6 ใช้ `oxc-parser`/`oxc-resolver` (2-4x faster) และต้อง Node `^20.19.0 | >=22.12.0` หรือ Bun
+- Latest: `knip@6.38.0` (verified 2026-09-24) — v6 uses `oxc-parser`/`oxc-resolver` (2-4x faster) and requires Node `^20.19.0 | >=22.12.0` or Bun
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install And Create Config
 
-> Goal: ติดตั้ง Knip และสร้าง config file ใน root directory
+> Goal: install Knip and create the config file in the root directory
 
-1. ติดตั้ง `knip` ด้วย package manager ของ project:
+1. Install `knip` with the project's package manager:
    - Bun project: `bun add -D knip`
-   - ถ้า project ไม่ใช้ Bun: ใช้ package manager ของ project (npm, pnpm, yarn)
-2. สร้าง `knip.json` ใน root directory สำหรับ monorepo หรือ single project
-3. ตั้งค่า `$schema` เป็น `https://unpkg.com/knip@latest/schema.json`
-4. ถ้าเป็น monorepo → ใช้ `workspaces` object แทน root-level `entry`/`project`
+   - If the project doesn't use Bun: use its package manager (npm, pnpm, yarn)
+2. Create `knip.json` in the root directory for a monorepo or single project
+3. Set `$schema` to `https://unpkg.com/knip@latest/schema.json`
+4. For a monorepo → use the `workspaces` object instead of root-level `entry`/`project`
 
 ### 2. Configure Workspaces
 
-> Goal: กำหนด entry points และ project patterns สำหรับแต่ละ workspace
+> Goal: define entry points and project patterns per workspace
 
-1. Knip อ่าน workspaces จาก `package.json#workspaces`, `pnpm-workspace.yaml`, หรือ `knip.json#workspaces` อัตโนมัติ
-2. แต่ละ workspace ต้องมี `package.json` ที่ถูกต้อง — ถ้า package manifest ไม่ถูกต้องให้ทำ `/follow-tasks` ก่อน; ถ้าไม่มี `package.json` → เพิ่ม path ลงใน `workspaces` object ของ `knip.json`
-3. ระบุ `entry` เฉพาะไฟล์ที่ Knip ไม่ detect อัตโนมัติ — Knip มี plugins ที่ auto-detect entry files จาก common patterns เช่น `src/index.ts`, `package.json#exports`
-4. ระบุ `project` เป็น glob patterns ของ source files ใน workspace นั้น
-5. ถ้า workspace ไม่มี custom entry/project → ใช้ empty object `{}`
-6. รัน `bunx knip --debug` เพื่อตรวจสอบว่า patterns ถูกต้องและไม่มี redundant
+1. Knip reads workspaces automatically from `package.json#workspaces`, `pnpm-workspace.yaml`, or `knip.json#workspaces`
+2. Each workspace needs a valid `package.json` — if the package manifest isn't valid, run `/follow-tasks` first; if there's no `package.json` → add the path to the `workspaces` object in `knip.json`
+3. Specify `entry` only for files Knip doesn't detect automatically — Knip has plugins that auto-detect entry files from common patterns such as `src/index.ts`, `package.json#exports`
+4. Set `project` as glob patterns of the workspace's source files
+5. If a workspace has no custom entry/project → use an empty object `{}`
+6. Run `bunx knip --debug` to verify the patterns are correct and nothing is redundant
 
 ### 3. Configure Advanced Options
 
-> Goal: เพิ่ม options ที่เพิ่มความแม่นยำในการตรวจจับ
+> Goal: add options that improve detection accuracy
 
-1. เพิ่ม `ignoreExportsUsedInFile` เพื่อ ignore exports ที่ใช้เฉพาะภายในไฟล์ — แนะนำ `{ "interface": true, "type": true }`
-2. เพิ่ม `includeEntryExports: true` ในแต่ละ workspace ที่เป็น private package เพื่อตรวจสอบ unused exports ใน entry files
-3. เพิ่ม `treatConfigHintsAsErrors: true` เพื่อบังคับว่า config ต้องถูกต้อง — exit code 1 ถ้ามี config hints
-4. ใช้ `ignoreDependencies` เฉพาะเมื่อจำเป็น — เช่น type packages ที่ไม่ปรากฏใน imports โดยตรง
-5. ใช้ `ignoreBinaries` สำหรับ binaries ที่ใช้แต่ไม่ได้มาจาก dependency เช่น `["docker-compose", "bunx"]`
+1. Add `ignoreExportsUsedInFile` to ignore exports used only within their own file — `{ "interface": true, "type": true }` is recommended
+2. Add `includeEntryExports: true` in each workspace that is a private package to check unused exports in entry files
+3. Add `treatConfigHintsAsErrors: true` to enforce a correct config — exit code 1 when config hints exist
+4. Use `ignoreDependencies` only when necessary — e.g. type packages that never appear directly in imports
+5. Use `ignoreBinaries` for binaries that are used but don't come from a dependency, e.g. `["docker-compose", "bunx"]`
 
 ### 4. Configure Package.json Scripts
 
-> Goal: เพิ่ม scripts สำหรับรัน Knip ใน `package.json`
+> Goal: add scripts to run Knip in `package.json`
 
-1. เพิ่ม `"knip": "knip"` สำหรับ default analysis
-2. เพิ่ม `"knip:prod": "knip --production"` สำหรับ production-only analysis (exclude tests, devDependencies)
-3. เพิ่ม `"knip:strict": "knip --strict"` สำหรับ strict production mode (includes peerDependencies, type-only imports)
-4. ห้ามเพิ่ม `"knip:fix"` จนกว่า config จะ settled และไม่มี config hints — `knip --fix` เป็นอันตรายถ้า config ไม่สมบูรณ์
+1. Add `"knip": "knip"` for the default analysis
+2. Add `"knip:prod": "knip --production"` for production-only analysis (excludes tests, devDependencies)
+3. Add `"knip:strict": "knip --strict"` for strict production mode (includes peerDependencies, type-only imports)
+4. Never add `"knip:fix"` until the config is settled with no config hints — `knip --fix` is dangerous with an incomplete config
 
 ### 5. Run And Fix Issues
 
-> Goal: รัน Knip และแก้ไข issues ตามลำดับความสำคัญ
+> Goal: run Knip and fix issues by priority
 
-1. รัน `bunx knip` ครั้งแรกเพื่อดู config hints — แก้ config hints ก่อนเสมอ
-2. หลัง config hints หมด → รัน `bunx knip` อีกครั้งเพื่อดู actual issues
-3. ตรวจสอบ issues ที่รายงาน — แยก false positives จากจริง
-4. แก้ unused code โดยลบหรือใช้งาน — ห้าม ignore โดยไม่จำเป็น
-5. ถ้าจำเป็นต้อง ignore → ใช้ targeted options (`ignoreFiles`, `ignoreBinaries`, `ignoreDependencies`, `ignoreMembers`, `ignoreUnresolved`) แทน `ignore` ที่กว้างเกินไป
-6. รัน `bunx knip --production` เพื่อตรวจสอบ production code แยกต่างหาก
+1. Run `bunx knip` first to see config hints — always fix config hints before anything else
+2. Once config hints are gone → run `bunx knip` again to see actual issues
+3. Review the reported issues — separate false positives from real ones
+4. Fix unused code by deleting it or using it — don't ignore without reason
+5. If ignoring is truly needed → use targeted options (`ignoreFiles`, `ignoreBinaries`, `ignoreDependencies`, `ignoreMembers`, `ignoreUnresolved`) instead of overly broad `ignore`
+6. Run `bunx knip --production` to check production code separately
 
 ## Rules
 
 ### 1. Avoid Ignore Patterns
 
-- ห้ามใช้ `ignore` แบบกว้างๆ เช่น `/*.config.*`, `/*.d.ts` — Knip ไม่ใช่ file-based linter แบบ ESLint
-- `ignore` เป็นเพียงการ suppress reporting ไม่ใช่การ exclude จาก analysis — ทำให้เกิด blind spots
-- ใช้ `entry` และ `project` patterns ที่ถูกต้องแทนการ ignore
-- ถ้าจำเป็นจริงๆ ใช้ targeted options: `ignoreFiles`, `ignoreBinaries`, `ignoreDependencies`, `ignoreMembers`, `ignoreUnresolved`
+- Never use broad `ignore` like `/*.config.*`, `/*.d.ts` — Knip is not an ESLint-style file-based linter
+- `ignore` only suppresses reporting, it doesn't exclude files from analysis — creating blind spots
+- Use correct `entry` and `project` patterns instead of ignoring
+- If truly needed, use targeted options: `ignoreFiles`, `ignoreBinaries`, `ignoreDependencies`, `ignoreMembers`, `ignoreUnresolved`
 
 ### 2. Monorepo Workspaces
 
-- ใน monorepo ใช้ `workspaces` object — root-level `entry`/`project` ถูก ignore
-- root workspace ใช้ชื่อ `"."` ภายใต้ `workspaces`
-- แต่ละ workspace รองรับ: `entry`, `project`, `ignore`, `ignoreBinaries`, `ignoreDependencies`, `ignoreIssues`, `ignoreMembers`, `ignoreUnresolved`, `includeEntryExports`, `paths`, plugins
-- ห้าม nest workspaces ใน Knip config — แต่ folder structure สามารถ nest ได้
-- ใช้ `--workspace` หรือ `-W` flag เพื่อ filter workspace เช่น `knip -W apps/website`
-- v6: workspace isolation และ libs inclusion เป็น default เสมอ — flags `--include-libs` และ `--isolate-workspaces` ถูกลบออกแล้ว; issue type `classMembers` ถูกลบ และมี `namespaceMembers` เพิ่มเข้ามา
+- In a monorepo, use the `workspaces` object — root-level `entry`/`project` are ignored
+- The root workspace is named `"."` under `workspaces`
+- Each workspace supports: `entry`, `project`, `ignore`, `ignoreBinaries`, `ignoreDependencies`, `ignoreIssues`, `ignoreMembers`, `ignoreUnresolved`, `includeEntryExports`, `paths`, plugins
+- Never nest workspaces in the Knip config — but the folder structure may nest
+- Use the `--workspace` or `-W` flag to filter a workspace, e.g. `knip -W apps/website`
+- v6: workspace isolation and libs inclusion are always the default — the `--include-libs` and `--isolate-workspaces` flags were removed; the `classMembers` issue type was removed and `namespaceMembers` was added
 
 ### 3. Production Mode
 
-- ใช้ `--production` เพื่อวิเคราะห์เฉพาะ production code — exclude tests, stories, devDependencies อัตโนมัติ
-- ใช้ `!` suffix ใน entry/project patterns เพื่อ mark production files เช่น `"src/index.ts!"`
-- `--strict` implies `--production` และเพิ่ม: verify workspace isolation, include peerDependencies, report type-only imports
-- รันทั้ง default และ production mode แยกกัน — ไม่ใช่ทดแทนกัน
+- Use `--production` to analyze production code only — automatically excludes tests, stories, devDependencies
+- Use the `!` suffix in entry/project patterns to mark production files, e.g. `"src/index.ts!"`
+- `--strict` implies `--production` and adds: verify workspace isolation, include peerDependencies, report type-only imports
+- Run both default and production mode separately — they complement, not replace each other
 
 ### 4. Configuration Hints
 
-- แก้ config hints ก่อนเสมอ — config hints บอกว่า Knip ไม่เข้าใจ project ทำให้เกิด false positives
-- เปิด `treatConfigHintsAsErrors: true` เพื่อบังคับว่า config ต้องถูกต้อง
-- ห้าม ignore หรือ disable config hints — แก้ที่ root cause
-- ใช้ `--debug` เพื่อดู verbose output ของ workspaces, plugins, และ resolved files
+- Always fix config hints first — they mean Knip doesn't understand the project, causing false positives
+- Enable `treatConfigHintsAsErrors: true` to enforce a correct config
+- Never ignore or disable config hints — fix the root cause
+- Use `--debug` for verbose output of workspaces, plugins, and resolved files
 
 ### 5. Exports Configuration
 
-- ใช้ `ignoreExportsUsedInFile` สำหรับ types/interfaces ที่ใช้เฉพาะในไฟล์ — ลด noise โดยไม่ hide issues
-- ใช้ `includeEntryExports: true` สำหรับ private/self-contained packages เพื่อตรวจสอบ unused exports ใน entry files
-- ใช้ JSDoc tags เช่น `@internal` หรือ `@lintignore` เพื่อ tag exports ที่ต้องการ exclude
-- กำหนด `tags` ใน config เพื่อ filter tagged exports เช่น `{ "tags": ["-lintignore"] }`
+- Use `ignoreExportsUsedInFile` for types/interfaces used only in their own file — reduces noise without hiding issues
+- Use `includeEntryExports: true` for private/self-contained packages to check unused exports in entry files
+- Use JSDoc tags like `@internal` or `@lintignore` to tag exports you want to exclude
+- Define `tags` in the config to filter tagged exports, e.g. `{ "tags": ["-lintignore"] }`
 
 ### 6. Plugins
 
-- Knip มี plugins สำหรับ Vite, Vitest, Playwright, Next.js, Remix, Astro, Svelte และอื่นๆ
-- Plugins auto-detect entry files และ config — ห้าม duplicate ใน `entry` ของ workspace
-- ปิด plugin ด้วย `false` เช่น `{ "webpack": false }`
-- เปิด plugin ด้วย `true` เช่น `{ "playwright": true }`
-- Override plugin config/entry เช่น `{ "mocha": { "config": "config/mocha.config.js", "entry": ["/*.spec.js"] } }`
+- Knip has plugins for Vite, Vitest, Playwright, Next.js, Remix, Astro, Svelte and more
+- Plugins auto-detect entry files and config — never duplicate them in the workspace `entry`
+- Disable a plugin with `false`, e.g. `{ "webpack": false }`
+- Enable a plugin with `true`, e.g. `{ "playwright": true }`
+- Override plugin config/entry, e.g. `{ "mocha": { "config": "config/mocha.config.js", "entry": ["/*.spec.js"] } }`
 
 ### 7. Safe Usage
 
-- ห้ามรัน `knip --fix` จนกว่า config จะ settled และไม่มี config hints — อาจลบ code ที่ใช้งานจริง
-- ตรวจสอบ issues ที่รายงานด้วยตาก่อนแก้ไขเสมอ
-- ใช้ `--include` หรือ `--exclude` เพื่อ filter issue types เช่น `knip --include files,dependencies`
-- ใช้ `rules` ใน config เพื่อกำหนด severity: `"error"`, `"warn"`, `"off"` เช่น `{ "rules": { "files": "warn", "duplicates": "off" } }`
+- Never run `knip --fix` until the config is settled with no config hints — it can delete code actually in use
+- Always review reported issues by eye before fixing
+- Use `--include` or `--exclude` to filter issue types, e.g. `knip --include files,dependencies`
+- Use `rules` in the config to set severity: `"error"`, `"warn"`, `"off"`, e.g. `{ "rules": { "files": "warn", "duplicates": "off" } }`
 
-- ใช้ `/follow-monorepo` เมื่อ project เป็น monorepo
-- ใช้ `/follow-tasks` เพื่อ wire knip เข้า task runner scripts
-- ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
+- Use /follow-monorepo when the project is a monorepo
+- Use /follow-tasks to wire knip into task runner scripts
+- Use /run-scan for additional auditing
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `knip.json` ตั้งค่าครบถ้วนตาม official best practices
-- ไม่มี config hints
-- Scripts สำหรับ default, production, และ strict mode พร้อมใช้งาน
-- ไม่มี unused files, dependencies, หรือ exports (หรือมี targeted ignore ที่จำเป็น)
-- Monorepo ทุก workspace ถูกวิเคราะห์ครบถ้วน
+- `knip.json` fully configured per official best practices
+- No config hints
+- Scripts for default, production, and strict modes ready to use
+- No unused files, dependencies, or exports (or only necessary targeted ignores)
+- Every workspace in the monorepo analyzed completely

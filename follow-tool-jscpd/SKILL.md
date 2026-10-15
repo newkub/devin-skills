@@ -1,6 +1,6 @@
 ---
 name: follow-tool-jscpd
-description: ตั้งค่าและใช้งาน jscpd สำหรับตรวจจับ code duplication ใน codebase
+description: Set up and use jscpd to detect code duplication in a codebase
 argument-hint: "[scope]"
 related:
   - refactor
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ตั้งค่าและรัน jscpd เพื่อตรวจจับ code duplication และจัดลำดับการ refactor
+Set up and run jscpd to detect code duplication and prioritize refactoring
 
 ## Scope
 
-ใช้สำหรับตรวจจับและวิเคราะห์ code duplication — ไม่ครอบคลุมการ refactor เอง (ดู `/refactor`)
+Used for detecting and analyzing code duplication — it does not cover the refactor itself (see `/refactor`)
 
 - Latest: `jscpd@5.3.2` (verified 2026-09-24)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
@@ -23,100 +23,100 @@ related:
 
 ### 1. Setup Configuration
 
-> Goal: สร้าง `.jscpd.json` สำหรับ config ระดับ project
+> Goal: create `.jscpd.json` for project-level config
 
-1. สร้าง `.jscpd.json` ที่ project root พร้อม `ignore` patterns สำหรับ `node_modules`, `dist`, `.turbo`, `coverage`
-2. ตั้งค่า `minLines: 5`, `minTokens: 50`, `threshold: 0` (report ทั้งหมด ไม่ exit error)
-3. ตั้งค่า `reporters: ["console", "json"]` และ `output: "report"`
-4. ถ้าเป็น monorepo → เพิ่ม `ignore` สำหรับ `/*.lock`, `/bun.lock`, `/.output/`
+1. Create `.jscpd.json` at the project root with `ignore` patterns for `node_modules`, `dist`, `.turbo`, `coverage`
+2. Set `minLines: 5`, `minTokens: 50`, `threshold: 0` (report everything, no exit error)
+3. Set `reporters: ["console", "json"]` and `output: "report"`
+4. For a monorepo → add `ignore` entries for `/*.lock`, `/bun.lock`, `/.output/`
 
 ### 2. Run Duplication Detection
 
-> Goal: รัน jscpd เพื่อตรวจจับ duplication
+> Goal: run jscpd to detect duplication
 
-1. รัน `bunx jscpd . --reporters console,json --output report`
-2. ถ้า project ใหญ่ → ระบุ paths: `bunx jscpd ./src ./integrations --reporters console,json`
-3. ถ้าต้องการ CI gate → เพิ่ม `--threshold 10` (exit error ถ้า duplication >= 10%)
-4. ถ้าต้องการ HTML report → เพิ่ม `html` ใน reporters
+1. Run `bunx jscpd . --reporters console,json --output report`
+2. For a large project → specify paths: `bunx jscpd ./src ./integrations --reporters console,json`
+3. For a CI gate → add `--threshold 10` (exit error when duplication >= 10%)
+4. For an HTML report → add `html` to the reporters
 
 ### 3. Analyze Results
 
-> Goal: วิเคราะห์ผลจาก `report/jscpd-report.json`
+> Goal: analyze `report/jscpd-report.json`
 
-1. อ่าน `report/jscpd-report.json` เพื่อดู `duplicates` array
-2. จัดกลุ่ม duplicates ตาม file และ pattern
-3. จัดลำดับตามขนาด (lines, tokens) และความถี่ (จำนวน clones)
-4. แยก core logic duplication จาก boilerplate และ config patterns
-5. ทำ `/report` เพื่อสรุปผลเป็นตาราง
+1. Read `report/jscpd-report.json` to see the `duplicates` array
+2. Group duplicates by file and pattern
+3. Rank by size (lines, tokens) and frequency (clone count)
+4. Separate core-logic duplication from boilerplate and config patterns
+5. Run `/report` to summarize as a table
 
 ### 4. Plan Refactor
 
-> Goal: วางแผน refactor ตามผล duplication
+> Goal: plan refactoring based on duplication results
 
-1. ลำดับที่ 1: core logic ที่ซ้ำและมีผลกระทบสูง
-2. ลำดับที่ 2: shared utilities ที่ใช้ในหลาย workspace
-3. ลำดับที่ 3: boilerplate ที่สามารถ extract เป็น template หรือ helper
-4. ส่งต่อไป `/refactor` สำหรับแต่ละ item
+1. Priority 1: duplicated core logic with high impact
+2. Priority 2: shared utilities used across workspaces
+3. Priority 3: boilerplate that can be extracted into a template or helper
+4. Hand off each item to `/refactor`
 
 ## Rules
 
 ### 1. Configuration
 
-- ใช้ `.jscpd.json` สำหรับ config ระดับ project — ไม่ใช่ CLI flags กระจัดกระจาย
-- `minLines: 5`, `minTokens: 50` — ค่า default เหมาะสำหรับส่วนใหญ่
-- `threshold: 0` สำหรับ report mode, `threshold: 10` สำหรับ CI mode
-- `ignore` ต้องครอบคลุม: `/node_modules/`, `/dist/`, `/.turbo/`, `/coverage/`, `/*.lock`, `/bun.lock`
-- `gitignore: true` เพื่อ respect `.gitignore` patterns
+- Use `.jscpd.json` for project-level config — not scattered CLI flags
+- `minLines: 5`, `minTokens: 50` — the defaults suit most projects
+- `threshold: 0` for report mode, `threshold: 10` for CI mode
+- `ignore` must cover: `/node_modules/`, `/dist/`, `/.turbo/`, `/coverage/`, `/*.lock`, `/bun.lock`
+- `gitignore: true` to respect `.gitignore` patterns
 
 ### 2. Reporters
 
-- `console` — สรุปผลใน terminal สำหรับการอ่านด่วน
-- `json` — structured output สำหรับ parse ด้วย scripts
-- `html` — interactive report สำหรับ share กับทีม
-- `markdown` — สำหรับ include ใน PR หรือ docs
-- `sarif` — สำหรับ integrate กับ GitHub Code Scanning
+- `console` — summary in the terminal for quick reading
+- `json` — structured output for script parsing
+- `html` — interactive report for sharing with the team
+- `markdown` — for including in a PR or docs
+- `sarif` — for integrating with GitHub Code Scanning
 
 ### 3. Detection Modes
 
-- `mild` (default) — skip ignored blocks, new lines, empty symbols — เหมาะสำหรับส่วนใหญ่
-- `strict` — use all token types — สำหรับตรวจแบบละเอียด
-- `weak` — skip comments ด้วย — สำหรับลด noise จาก comment duplication
+- `mild` (default) — skip ignored blocks, new lines, empty symbols — suits most cases
+- `strict` — use all token types — for detailed inspection
+- `weak` — also skip comments — to reduce noise from comment duplication
 
 ### 4. Advanced Clone Detection (v5.2+)
 
-- Type-2 clones: `--ignore-identifiers`, `--ignore-literals`, `--ignore-annotations` — normalize tokens เพื่อจับ blocks ที่ต่างกันเฉพาะชื่อ/ค่า literal/annotation; clone จะมี `kind: "exact" | "renamed"` ใน JSON report
-- Near-miss merge: `--max-gap-lines N` — รวม clone ที่ห่างกันไม่เกิน N unmatched lines เป็น clone เดียว (`kind: "similar"` พร้อม `similarity` score; merge ที่ similarity < 0.5 จะถูกปฏิเสธ)
-- Function-level similarity (JS/TS เท่านั้น): `--similarity 0.9` — เปรียบเทียบทุก function/method ด้วย 4-gram similarity (default `1` = exact match เท่านั้น)
+- Type-2 clones: `--ignore-identifiers`, `--ignore-literals`, `--ignore-annotations` — normalize tokens to catch blocks differing only in names/literal values/annotations; clones carry `kind: "exact" | "renamed"` in the JSON report
+- Near-miss merge: `--max-gap-lines N` — merge clones separated by at most N unmatched lines into one clone (`kind: "similar"` with a `similarity` score; merges below 0.5 similarity are rejected)
+- Function-level similarity (JS/TS only): `--similarity 0.9` — compare every function/method by 4-gram similarity (default `1` = exact match only)
 
 ### 5. Monorepo
 
-- รันที่ root และใช้ `ignore` patterns เพื่อ exclude workspaces ที่ไม่ต้องการ
-- หรือรันเฉพาะ workspace: `bunx jscpd ./apps/website/src --reporters console,json`
-- ใช้ `--skip-local` เพื่อตรวจเฉพาะ cross-workspace duplication
-- เพิ่ม script `report:duplication` ใน root `package.json`: `bunx jscpd . --reporters console,json --output report`
+- Run at the root and use `ignore` patterns to exclude unwanted workspaces
+- Or run per workspace: `bunx jscpd ./apps/website/src --reporters console,json`
+- Use `--skip-local` to check only cross-workspace duplication
+- Add a `report:duplication` script in the root `package.json`: `bunx jscpd . --reporters console,json --output report`
 
 ### 6. CI Integration
 
-- ใช้ `--threshold` เพื่อ fail CI เมื่อ duplication เกินกำหนด (exit 1)
-- ใช้ `--reporters sarif` สำหรับ GitHub Code Scanning — หรือ GitHub Action `kucherenko/jscpd@v5` (upload SARIF อัตโนมัติ)
-- ใช้ `--baseline .jscpd-baseline.json` + `--fail-on-new-clones` เพื่อ gate เฉพาะ duplication ใหม่ — ทนทาน legacy clones (`--baseline-from-ref origin/main` ไม่ต้อง commit baseline file; `--update-baseline` refresh)
-- ใช้ `--fail-on-empty` เมื่อ empty scan ใน CI หมายถึง misconfig (default: warn + exit 0)
-- ใช้ `--no-tips` เพื่อ suppress ข้อความที่ไม่จำเป็นใน CI output
-- ใช้ `--exit-code N` เพื่อกำหนด exit code เมื่อพบ duplication (default 1)
-- `--cross-formats "javascript,typescript"` (preset `js-ts`) เพื่อจับ clone ข้าม JS/TS
-- `--skip-isolated "packages/a|packages/b"` ข้าม clone ข้าม folders ที่ทีมต่างกันเป็นเจ้าของ
-- `--summary` = codebase summary (top files/folders by tokens/complexity); `--history v5.0.0..HEAD` = duplication trend ผ่าน git history; `--mcp` = built-in MCP server
+- Use `--threshold` to fail CI when duplication exceeds the limit (exit 1)
+- Use `--reporters sarif` for GitHub Code Scanning — or the GitHub Action `kucherenko/jscpd@v5` (uploads SARIF automatically)
+- Use `--baseline .jscpd-baseline.json` + `--fail-on-new-clones` to gate only new duplication — tolerant of legacy clones (`--baseline-from-ref origin/main` needs no committed baseline file; `--update-baseline` refreshes it)
+- Use `--fail-on-empty` when an empty scan in CI means misconfiguration (default: warn + exit 0)
+- Use `--no-tips` to suppress non-essential messages in CI output
+- Use `--exit-code N` to set the exit code when duplication is found (default 1)
+- `--cross-formats "javascript,typescript"` (preset `js-ts`) to catch clones across JS/TS
+- `--skip-isolated "packages/a|packages/b"` skips cross-folder clones owned by different teams
+- `--summary` = codebase summary (top files/folders by tokens/complexity); `--history v5.0.0..HEAD` = duplication trend through git history; `--mcp` = built-in MCP server
 
-- ใช้ `/refactor` เพื่อ refactor duplicates ที่พบ
-- ใช้ `/report` เพื่อสรุปผลเป็นตาราง
-- ใช้ `/use-scripts` เพื่อ parse `report/jscpd-report.json`
-- ใช้ `/run-scan` เพื่อ audit เพิ่มเติม
+- Use /refactor to refactor the duplicates found
+- Use /report to summarize results as a table
+- Use /use-scripts to parse `report/jscpd-report.json`
+- Use /run-scan for additional auditing
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `.jscpd.json` config ที่ project root
-- `report/jscpd-report.json` พร้อมผล duplication
-- ตารางสรุป duplicates พร้อม priority สำหรับ refactor
-- ส่งต่อไป `/refactor` สำหรับแต่ละ high-priority item
+- `.jscpd.json` config at the project root
+- `report/jscpd-report.json` with duplication results
+- A duplicate summary table with refactor priorities
+- Handoff to `/refactor` for each high-priority item

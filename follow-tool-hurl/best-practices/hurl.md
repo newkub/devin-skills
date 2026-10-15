@@ -1,34 +1,34 @@
 # Hurl — Best Practices
 
-Plain-text HTTP testing — requests, assertions และ chaining
+Plain-text HTTP testing — requests, assertions, and chaining
 
 ## Recommended Patterns
 
-- `.hurl` files = request + assertions ในไฟล์เดียว — `[QueryStringParams]`, `[FormParams]`, `[Captures]`, `[Asserts]` sections
-- Chain requests ด้วย captures: `token: jsonpath "$.token"` แล้วใช้ `{{token}}` ใน request ถัดไป — auth flows สำหรับ test suites
-- `hurl --variables-file vars.env` หรือ `--variable` สำหรับ env switching — ห้าม hardcode hosts/credentials
-- Assert ทั้ง status + body + headers + duration — `jsonpath`/`xpath`/`regex` predicates ตาม content type
-- Test suites = directories ของ `.hurl` files — `hurl --test dir/` รันทั้งหมด
+- `.hurl` files = request + assertions in one file — `[QueryStringParams]`, `[FormParams]`, `[Captures]`, `[Asserts]` sections
+- Chain requests with captures: `token: jsonpath "$.token"` then use `{{token}}` in the next request — auth flows for test suites
+- `hurl --variables-file vars.env` or `--variable` for env switching — never hardcode hosts/credentials
+- Assert status + body + headers + duration together — `jsonpath`/`xpath`/`regex` predicates per content type
+- Test suites = directories of `.hurl` files — `hurl --test dir/` runs them all
 
 ## Common Pitfalls
 
-- Secrets ใน .hurl files = commit leaks — variables-file + `.gitignore` เสมอ
-- Retry/flaky endpoints: `--retry` + `--retry-interval` — ห้าม retry assertions ที่ mutate state (POST ไม่ idempotent)
-- `body` asserts brittle บน dynamic fields — assert structure (jsonpath exists/type) มากกว่า exact values
-- Cookies/session: `[Options]` `cookie` handling — Hurl ไม่ share cookie jar ข้าม files โดย default
-- `--error-format long` ตอน debug — default output terse
+- Secrets in .hurl files = committed leaks — always variables-file + `.gitignore`
+- Retry/flaky endpoints: `--retry` + `--retry-interval` — never retry assertions that mutate state (POST isn't idempotent)
+- `body` asserts are brittle on dynamic fields — assert structure (jsonpath exists/type) rather than exact values
+- Cookies/session: `[Options]` `cookie` handling — Hurl doesn't share a cookie jar across files by default
+- Use `--error-format long` when debugging — default output is terse
 
 ## CI Integration
 
-- `hurl --test --report-junit out.xml` สำหรับ CI reporting
-- `--jobs 1` เมื่อ tests sequential-dependent (chains ใน file เดียว sequential อยู่แล้ว; files ขนานกัน)
-- Rate-limited APIs: `--repeat` + delays ระวัง quota
+- `hurl --test --report-junit out.xml` for CI reporting
+- `--jobs 1` when tests are sequential-dependent (chains within one file are already sequential; files run in parallel)
+- Rate-limited APIs: beware `--repeat` + delays vs quota
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| captures → chained requests | copy tokens มือ |
+| captures → chained requests | hand-copied tokens |
 | variables-file per env | hardcode hosts/secrets |
-| assert structure + status | exact-body asserts บน dynamic data |
-| `--test` + junit report ใน CI | ad-hoc curl ใน pipelines |
+| assert structure + status | exact-body asserts on dynamic data |
+| `--test` + junit report in CI | ad-hoc curl in pipelines |

@@ -1,33 +1,33 @@
 # jscpd — Best Practices
 
-Copy-paste detection — thresholds, ignores และ CI discipline
+Copy-paste detection — thresholds, ignores, and CI discipline
 
 ## Recommended Patterns
 
-- Config ใน `.jscpd.json` หรือ `package.json` key — `threshold` (default 5%), `minTokens` (50-70 sweet spot), `reporters`
-- Excludes: generated code, lockfiles, `*.min.*`, snapshots, fixtures — ผ่าน `ignore` patterns
-- `minLines`/`minTokens` สูงขึ้นสำหรับ strict mode — default ต่ำ = false positives จาก boilerplate
-- CI: `jscpd --exitCode 1` fail เมื่อ threshold เกิน — baseline current % ก่อนแล้วค่อย ratchet ลง
-- Reporters: `console` dev + `html`/`badge` สำหรับ reports
+- Config in `.jscpd.json` or the `package.json` key — `threshold` (default 5%), `minTokens` (50-70 sweet spot), `reporters`
+- Excludes: generated code, lockfiles, `*.min.*`, snapshots, fixtures — via `ignore` patterns
+- Raise `minLines`/`minTokens` for strict mode — low defaults = false positives from boilerplate
+- CI: `jscpd --exitCode 1` fails when the threshold is exceeded — baseline the current % first, then ratchet down
+- Reporters: `console` for dev + `html`/`badge` for reports
 
 ## Common Pitfalls
 
-- Test files = legit duplication (setup patterns) — ignore `**/*.test.*` หรือยอมรับ threshold สูงกว่าสำหรับ tests
-- jscpd detect cross-language clones — `.tsx` vs `.ts` near-identical files จะ flag; มองเป็น signal ไม่ใช่ noise เสมอ
-- Generated code (proto, gql codegen) ต้อง ignore — duplication ตรงนั้นแก้ไม่ได้
-- Threshold 0 = noisy เกินใช้ — เริ่ม 5-10% แล้วลดทีละนิด
-- Ignore blocks (`/* jscpd:ignore-start */`) — ใช้เฉพาะ justified cases (protocol-mandated boilerplate)
+- Test files = legit duplication (setup patterns) — ignore `**/*.test.*` or accept a higher threshold for tests
+- jscpd detects cross-language clones — near-identical `.tsx` vs `.ts` files get flagged; treat as a signal, not always noise
+- Generated code (proto, gql codegen) must be ignored — that duplication isn't fixable
+- Threshold 0 = too noisy to use — start at 5-10% then reduce gradually
+- Ignore blocks (`/* jscpd:ignore-start */`) — use only for justified cases (protocol-mandated boilerplate)
 
 ## Workflow
 
-- Baseline → ratchet: วัด current dup % → set threshold = current → ticket เพื่อลด → ลด threshold
-- Findings = refactor targets: extract shared module/hook — แต่ไม่ใช่ทุก clone ต้องแก้ (similar ≠ same abstraction)
+- Baseline → ratchet: measure current dup % → set threshold = current → ticket to reduce → lower the threshold
+- Findings = refactor targets: extract a shared module/hook — but not every clone must be fixed (similar ≠ same abstraction)
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| threshold + ignores ใน config file | CLI flags scattered ต่อ invocation |
-| ignore generated/test boilerplate | tune minTokens จน silent |
-| ratchet threshold ลงเรื่อยๆ | ตั้ง 0% แล้วทีม mute |
-| review clones เป็น refactor signals | auto-extract ทุก match |
+| threshold + ignores in a config file | CLI flags scattered per invocation |
+| ignore generated/test boilerplate | tune minTokens until silent |
+| ratchet the threshold down gradually | set 0% and let the team mute it |
+| review clones as refactor signals | auto-extract every match |

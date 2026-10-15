@@ -1,34 +1,34 @@
 # Madge — Best Practices
 
-Dependency graph + circular import detection สำหรับ JS/TS
+Dependency graph + circular import detection for JS/TS
 
 ## Recommended Patterns
 
-- `madge --circular src/` — circular deps = primary use case; fail CI เมื่อเจอ
-- `--extensions ts,tsx` + `--ts-config tsconfig.json` — ให้ resolve path aliases/TS ถูก
-- `--image graph.svg` สำหรับ visual dep graph — useful เมื่อ review architecture ไม่ใช่ทุก run
-- `--depends`/`--orphans` queries — หา modules ที่ไม่มีใครใช้ หรือ who-depends-on-X
-- Engine สำหรับ related check: ใช้ร่วมกับ `/check-file-relation` และ refactor workflows
+- `madge --circular src/` — circular deps = the primary use case; fail CI when found
+- `--extensions ts,tsx` + `--ts-config tsconfig.json` — so path aliases/TS resolve correctly
+- `--image graph.svg` for a visual dep graph — useful when reviewing architecture, not every run
+- `--depends`/`--orphans` queries — find modules nobody uses, or who-depends-on-X
+- Engine for related checks: use alongside `/check-file-relation` and refactor workflows
 
 ## Common Pitfalls
 
-- Circular imports ไม่ใช่ error เสมอ (ES modules allow) แต่เป็น smell — initialization order issues, tree-shake blockers; fix โดย extract shared module
-- Path aliases ต้อง tsconfig — มิฉะนั้น unresolved = orphan false positives
-- Dynamic imports (`import()`) — madge trace ได้แต่ expression-based (`import(variable)`) miss; code แบบนั้น graph incomplete
-- Barrel files amplify cycles: `index.ts` re-export ทั้ง folder ทำ cycle ผ่าน barrel ง่าย — เจอ cycle เช็ค barrels ก่อน
-- Large repos: madge ช้าบน whole-graph — scope ด้วย dir หรือ `--include-npm false`
+- Circular imports aren't always errors (ES modules allow them) but are a smell — initialization-order issues, tree-shaking blockers; fix by extracting a shared module
+- Path aliases need the tsconfig — otherwise unresolved imports = orphan false positives
+- Dynamic imports (`import()`) — madge traces static ones but expression-based (`import(variable)`) are missed; such code yields an incomplete graph
+- Barrel files amplify cycles: an `index.ts` re-exporting a whole folder makes cycles easy through the barrel — when hitting a cycle, check barrels first
+- Large repos: madge is slow on the whole graph — scope by directory or use `--include-npm false`
 
-## Fix Patterns สำหรับ Cycles
+## Fix Patterns for Cycles
 
-1. Extract shared types/utils ลง layer ต่ำกว่า
-2. Dependency inversion: callback/interface injection แทน import ตรง
-3. Barrel-less imports: import ตรงจาก file ไม่ผ่าน index ที่รวมทุกอย่าง
+1. Extract shared types/utils into a lower layer
+2. Dependency inversion: callback/interface injection instead of direct imports
+3. Barrel-less imports: import directly from the file, not through an all-inclusive index
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `--circular` ใน CI gate | tolerate cycles "เพราะมันทำงาน" |
-| ts-config เพื่อ resolve aliases | report บน unresolved paths |
-| extract shared module แก้ cycles | lazy-import hacks ทุก cycle |
-| scope dir เมื่อ graph ใหญ่ | whole-repo graph ทุก run |
+| Gate CI with `--circular` | tolerate cycles "because they work" |
+| use ts-config to resolve aliases | report on unresolved paths |
+| extract a shared module to fix cycles | lazy-import hacks for every cycle |
+| scope a dir when the graph is big | whole-repo graph every run |
