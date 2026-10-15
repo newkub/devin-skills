@@ -1,6 +1,6 @@
 ---
 name: follow-lib-nitro
-description: ใช้ Nitro เป็น server engine — vite plugin, presets (bun/node/cloudflare/deno), portable .output, deploy providers
+description: Use Nitro as a server engine — vite plugin, presets (bun/node/cloudflare/deno), portable .output, deploy providers
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
@@ -12,21 +12,21 @@ related:
 
 ## Goal
 
-ใช้ Nitro (https://nitro.build) เป็น production server layer ของ web app — build เป็น portable `.output/` ที่รันได้ทุก runtime (Bun, Node, Cloudflare Workers, Deno, edge providers)
+Use Nitro (https://nitro.build) as the production server layer of a web app — build into a portable `.output/` that runs on any runtime (Bun, Node, Cloudflare Workers, Deno, edge providers)
 
 ## Scope
 
-ใช้เมื่อ project ต้องการ:
+When a project needs:
 
-- Portable production server — `bun .output/server/index.mjs` / `node .output/server/index.mjs`
-- Deploy ไปยัง provider ผ่าน preset — https://nitro.build/deploy
-- Server engine ให้ meta-framework (TanStack Start, Analog, Nuxt ใช้ Nitro อยู่แล้ว)
+- A portable production server — `bun .output/server/index.mjs` / `node .output/server/index.mjs`
+- Deploying to a provider via a preset — https://nitro.build/deploy
+- A server engine for a meta-framework (TanStack Start, Analog, Nuxt already use Nitro)
 
 ## Execute
 
 ### 1. Install
 
-> Goal: เพิ่ม nitro เข้า Vite pipeline
+> Goal: add nitro to the Vite pipeline
 
 ```bash
 bun i -D nitro
@@ -34,7 +34,7 @@ bun i -D nitro
 
 ### 2. Configure Vite Plugin
 
-> Goal: `nitro()` อยู่ในลำดับ plugins ที่ถูกต้อง
+> Goal: put `nitro()` in the correct plugins order
 
 ```ts
 import { nitro } from 'nitro/vite'
@@ -44,15 +44,15 @@ export default defineConfig({
 })
 ```
 
-- nitro v3 `nitro()` **ไม่รับ `preset` option** — ตั้ง preset ผ่าน env `NITRO_PRESET` หรือ `nitro.config.ts`:
+- Nitro v3 `nitro()` **does not accept a `preset` option** — set the preset via the `NITRO_PRESET` env var or `nitro.config.ts`:
   ```ts
-  process.env.NITRO_PRESET ??= 'bun'   // ใน vite.config.ts ก่อน defineConfig
+  process.env.NITRO_PRESET ??= 'bun'   // in vite.config.ts before defineConfig
   ```
-- เลือกวิธีเดียว (env หรือ config file) — ห้ามตั้งขัดกัน
+- Pick one method (env or config file) — never set conflicting values
 
 ### 3. Pick Preset
 
-> Goal: เลือก preset ตาม deploy target
+> Goal: choose the preset by deploy target
 
 | Preset | Output | Run/Deploy |
 |---|---|---|
@@ -62,20 +62,20 @@ export default defineConfig({
 | `deno-server` | `.output/server/index.ts` | `deno run` |
 | `vercel` / `netlify` / etc. | provider bundle | provider CLI |
 
-- Statics ใน `.output/public/` serve อัตโนมัติ
-- Full preset list: https://nitro.build/deploy — ทำ `/deep-research` ยืนยันชื่อ preset ล่าสุดก่อนใช้
+- Statics in `.output/public/` are served automatically
+- Full preset list: https://nitro.build/deploy — do `/deep-research` to confirm the latest preset names before use
 
-### 4. Cloudflare Bindings (ถ้า preset cloudflare-*)
+### 4. Cloudflare Bindings (if preset cloudflare-*)
 
-> Goal: env bindings เข้าถึงได้ใน handler
+> Goal: env bindings accessible in handlers
 
-1. declare `d1_databases`/`kv_namespaces`/`r2_buckets` ใน `wrangler.jsonc`
-2. code อ่านผ่าน `env.*` — gen types ด้วย `wrangler types` → `worker-configuration.d.ts`
-3. ทำตาม `/follow-service-cloudflare` สำหรับ deploy/secrets/rollback
+1. Declare `d1_databases`/`kv_namespaces`/`r2_buckets` in `wrangler.jsonc`
+2. Code reads them via `env.*` — generate types with `wrangler types` → `worker-configuration.d.ts`
+3. Follow `/follow-service-cloudflare` for deploy/secrets/rollback
 
 ### 5. Custom Server Entry (optional)
 
-> Goal: wrap fetch handler เมื่อต้อง middleware/custom logic
+> Goal: wrap the fetch handler when middleware/custom logic is needed
 
 ```ts
 export default {
@@ -97,13 +97,13 @@ export default {
 
 ## Rules
 
-- `nitro()` v3 ไม่รับ `preset` ใน options — ใช้ `NITRO_PRESET` env หรือ `nitro.config.ts`
-- `.output/` เป็น generated artifact — ห้าม commit
-- secrets ผ่าน env/`wrangler secret` เสมอ ห้าม hardcode ใน config
-- เช็ค https://nitro.build หรือ `/deep-research` สำหรับ preset ชื่อและ provider docs ล่าสุด
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- `nitro()` v3 does not accept `preset` in options — use the `NITRO_PRESET` env var or `nitro.config.ts`
+- `.output/` is a generated artifact — never commit it
+- Secrets always via env/`wrangler secret` — never hardcode in config
+- Check https://nitro.build or `/deep-research` for the latest preset names and provider docs
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `bun run build` → `.output/` พร้อม run ตาม preset ที่เลือก
-- Server ทำงานบน target runtime โดยไม่แก้ code
+- `bun run build` → `.output/` ready to run per the chosen preset
+- The server works on the target runtime without code changes

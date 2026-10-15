@@ -1,6 +1,6 @@
 ---
 name: follow-your-suggestion
-description: ทำตามคำแนะนำจากการวิเคราะห์ปัญหาและแก้ไข code ตามที่คุยกันก่อนหน้า
+description: Follow suggestions from problem analysis and fix code as discussed beforehand
 argument-hint: "[suggestion]"
 related:
   - review-devin-global-harness
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-ทำตามคำแนะนำจากการวิเคราะห์ปัญหาและแก้ไข code ตามที่คุยกันก่อนหน้าอย่างเป็นระบบ
+Systematically follow suggestions from problem analysis and fix code as discussed beforehand
 
 ## Scope
 
-ใช้สำหรับการ apply suggestions จากการวิเคราะห์ปัญหาที่คุยกันก่อนหน้า ครอบคลุมการจัดลำดับ การแก้ไข และการตรวจสอบ
+Used for applying suggestions from problem analysis discussed beforehand — covers prioritization, fixing, and verification
 
 ## Execute
 
@@ -24,53 +24,53 @@ related:
 
 > Goal: Review And Prioritize
 
-จัดลำดับ suggestions ตาม impact และ effort
+Order suggestions by impact and effort
 
-1. ทำ `/review-devin-global-harness` เพื่ออ่าน workflows ที่เกี่ยวข้อง
-2. ทำ `/prioritize` เพื่อจัดลำดับตาม priority: `security` > `type errors` > `performance` > `code quality`
-3. ตรวจสอบ context และ relevance ของแต่ละ suggestion ก่อน apply
+1. Do `/review-devin-global-harness` to read the related workflows
+2. Do `/prioritize` to order by priority: `security` > `type errors` > `performance` > `code quality`
+3. Check the context and relevance of each suggestion before applying
 
 ### 2. Apply Critical Fixes
 
 > Goal: Apply Critical Fixes
 
-แก้ไข issues ตามลำดับ priority
+Fix issues in priority order
 
-1. แก้ไข `security vulnerabilities` และ `type errors` ก่อน
-2. แก้ไข `performance` และ `code quality` issues ที่เหลือ
+1. Fix `security vulnerabilities` and `type errors` first
+2. Fix the remaining `performance` and `code quality` issues
 
 ### 3. Resolve Errors
 
 > Goal: Resolve Errors
 
-หมายเหตุ: ทำเฉพาะเมื่อได้รับ errors จากการแก้ไขเท่านั้น
+Note: run only when errors are received from the fixes
 
-1. ทำ `/resolve-errors` เพื่อแก้ไข errors ที่เกิดขึ้น
+1. Do `/resolve-errors` to fix the errors that occurred
 
 ### 4. Productionize Implementation
 
 > Goal: Productionize Implementation
 
-1. ทำ `/implement-to-production` เพื่อแปลงเป็น production code ครบถ้วน
+1. Do `/implement-to-production` to convert into complete production code
 
 ## Rules
 
 ### 1. Prioritization
 
-- จัดลำดับ: `security` > `type errors` > `performance` > `code quality`
-- ข้าม suggestions ที่ไม่เกี่ยวข้องกับปัญหาปัจจุบัน
+- Order: `security` > `type errors` > `performance` > `code quality`
+- Skip suggestions unrelated to the current problem
 
 ### 2. Minimal Changes
 
-- ทำ `/dont-over-engineer` เพื่อหลีกเลี่ยง over-engineering
-- ไม่แก้ไข code ที่ไม่เกี่ยวข้องกับ suggestions
-- รักษา consistency กับ code style ที่มีอยู่
+- Do `/dont-over-engineer` to avoid over-engineering
+- Do not change code unrelated to the suggestions
+- Keep consistency with the existing code style
 
 ### 3. No Ignore Patterns
 
-- ไม่ใช้ ignore patterns แทนการแก้ไขจริง แก้ที่ source แทน
+- Do not use ignore patterns instead of real fixes — fix the source instead
 
 ## Expected Outcome
 
-- Suggestions ถูกจัดลำดับและ apply อย่างเป็นระบบตาม priority
-- Code quality ดีขึ้นโดยไม่มี side effects หรือ over-engineering
+- Suggestions are ordered and applied systematically by priority
+- Code quality improves without side effects or over-engineering

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-nitro-setup-nitro
-description: ติดตั้ง Nitro — vite plugin, dev/build, portable .output, preset basics
+description: Install Nitro — vite plugin, dev/build, portable .output, preset basics
 argument-hint: "[preset]"
 related:
   - follow-lib-nitro
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-ติดตั้ง Nitro เข้า Vite pipeline — build เป็น portable `.output/` รันได้ทุก runtime
+Install Nitro into the Vite pipeline — build to a portable `.output/` that runs on any runtime
 
 ## Scope
 
-first-time Nitro setup ใน Vite-based app — routes/handlers → `define-routes`; deploy per provider → `deploy-preset`
+first-time Nitro setup in a Vite-based app — routes/handlers → `define-routes`; deploy per provider → `deploy-preset`
 
 ## Execute
 
@@ -36,36 +36,36 @@ export default defineConfig({
 })
 ```
 
-- nitro v3 `nitro()` **ไม่รับ `preset` option** — ตั้งผ่าน `NITRO_PRESET` env หรือ `nitro.config.ts`
-- เลือกวิธีเดียว (env หรือ config file) — ห้ามตั้งขัดกัน
+- nitro v3 `nitro()` **does not accept a `preset` option** — set it via the `NITRO_PRESET` env or `nitro.config.ts`
+- pick one method (env or config file) — never set conflicting values
 
 ```ts
-process.env.NITRO_PRESET ??= 'bun'   // ใน vite.config.ts ก่อน defineConfig
+process.env.NITRO_PRESET ??= 'bun'   // in vite.config.ts before defineConfig
 ```
 
 ### 3. Nitro Config (optional)
 
-`nitro.config.ts` สำหรับ server options (`routeRules`, `storage`, `prerender`, `srcDir`) — detail ใน docs; app-level wiring ผ่าน `defineNitroConfig`
+`nitro.config.ts` for server options (`routeRules`, `storage`, `prerender`, `srcDir`) — details in the docs; app-level wiring via `defineNitroConfig`
 
 ### 4. Dev And Build
 
-1. `bun run dev` — nitro dev server ผ่าน vite pipeline (HMR + server auto-reload)
+1. `bun run dev` — nitro dev server via the vite pipeline (HMR + server auto-reload)
 2. `bun run build` → `.output/server/index.mjs` + `.output/public/`
-3. Run output: `bun .output/server/index.mjs` (preset `bun`) — ไม่ต้องพึ่ง dev toolchain
+3. Run output: `bun .output/server/index.mjs` (preset `bun`) — no dependency on the dev toolchain
 
 ### 5. Verify
 
 1. `/run-dev` — API routes respond
-2. `/run-build` → `.output/` generated, `bun .output/server/index.mjs` serve จริง
-3. fail → `/resolve-errors` max 3 รอบ
+2. `/run-build` → `.output/` generated, `bun .output/server/index.mjs` really serves
+3. fail → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `.output/` generated — ห้าม commit, เพิ่มใน `.gitignore`
-- `nitro()` v3 ไม่รับ `preset` ใน options
-- ใช้ `/follow-lib-nitro` สำหรับ overview; preset ล่าสุด → `deploy-preset` workflow
+- `.output/` is generated — never commit, add to `.gitignore`
+- `nitro()` v3 does not accept `preset` in options
+- use `/follow-lib-nitro` for the overview; latest presets → `deploy-preset` workflow
 
 ## Expected Outcome
 
-- `bun run build` → `.output/` พร้อม run
-- Dev server HMR ทำงานครบทั้ง client+server
+- `bun run build` → `.output/` ready to run
+- Dev server HMR works fully for client+server

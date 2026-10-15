@@ -1,45 +1,45 @@
 # Best Practices: qrcode (QR Code Generation)
 
-แนวทางสร้าง QR ที่ scan ได้จริง output ตรง consumer และขนาดเหมาะสม
+Guidance for generating QR codes that really scan — output matching the consumer and appropriate sizing
 
 ## Recommended Patterns
 
-- เลือก output ตาม consumer: `toDataURL` สำหรับ `<img>` inline, `toBuffer` สำหรับ download/API binary, `toString({type:'svg'})` สำหรับ vector/scalable
-- ตั้ง `errorCorrectionLevel` ตามใช้งาน — `M` default ดี, `Q`/`H` เมื่อจะ overlay logo หรือ print เสี่ยงเสียหาย
-- `margin` อย่างน้อย 2 (quiet zone) — scanner หลายตัว reject ถ้า QR ชิดขอบ
-- `width` ให้พอ scan — screen แนะนำ ~200px+, print ขึ้นกับขนาดจริงและระยะ scan
-- ใช้ `QRCode.create` + segments เมื่อต้อง control ละเอียด (mixed alphanumeric/binary, optimal encoding)
-- ทดสอบ scan จริงด้วยกล้อง/แอป — generator output ถูกแต่ contrast/size/quiet zone ผิด scan ไม่ได้
+- Pick the output per consumer: `toDataURL` for inline `<img>`, `toBuffer` for download/API binary, `toString({type:'svg'})` for vector/scalable
+- Set `errorCorrectionLevel` per use case — `M` default is fine, `Q`/`H` when overlaying a logo or printing at risk of damage
+- `margin` of at least 2 (quiet zone) — many scanners reject a QR flush to the edge
+- Make `width` big enough to scan — ~200px+ recommended on screen; print depends on real size and scan distance
+- Use `QRCode.create` + segments when fine control is needed (mixed alphanumeric/binary, optimal encoding)
+- Test real scanning with a camera/app — the generator output can be correct yet contrast/size/quiet zone wrong, and it won't scan
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `toBuffer` + `Content-Type: image/png` ใน API | ส่ง base64 dataURL เมื่อ client ต้องการ binary |
-| เพิ่ม `errorCorrectionLevel` เมื่อ overlay logo | วาง logo ใหญ่บน QR level L — module ถูกบัง scan พัง |
-| เก็บ payload สั้น — QR capacity ~4KB binary จริงๆ น้อยกว่ามากสำหรับ scan ง่าย | embed JSON ใหญ่ — QR หนาแน่น scan ยาก |
-| ใช้ SVG สำหรับ print/high-res | ส่ง PNG ความละเอียดต่ำไป print |
-| ตั้ง margin ≥2 modules | crop QR ชิดขอบเพื่อความสวย |
+| `toBuffer` + `Content-Type: image/png` in APIs | send a base64 dataURL when the client needs binary |
+| Increase `errorCorrectionLevel` when overlaying a logo | place a big logo on a level L QR — modules get covered, scan breaks |
+| Keep payloads short — QR capacity is ~4KB binary, but much less in practice for easy scanning | embed large JSON — a dense QR is hard to scan |
+| Use SVG for print/high-res | send a low-resolution PNG off to print |
+| Set margin ≥2 modules | crop the QR flush to the edge for looks |
 
 ## Common Pitfalls
 
-- Data ใหญ่เกิน — QR version สูงสุด ~40; payload 4KB binary เต็มแล้ว dense มาก scan ยาก; ส่ง URL แทน embed data
-- `errorCorrectionLevel` ต่ำ + logo overlay = scan fail — module redundancy ชดเชยพื้นที่ที่ถูกบัง
-- Margin/quiet zone หายเมื่อ CSS crop หรือ background ติดขอบ — scanner reject
-- Contrast ต่ำ — `color.dark`/`color.light` ต้องต่างชัด; QR สีอ่อนบนพื้นขาวล้มเหลว
-- SVG ไม่มี `width` attribute → responsive พัง; ใส่ width/height หรือ CSS ควบคุม
-- Terminal output `toString({type:'terminal'})` เหมาะ debug ไม่ใช่ production
+- Data too large — max QR version is ~40; a 4KB binary payload is fully maxed and very dense, hard to scan; serve a URL instead of embedding data
+- Low `errorCorrectionLevel` + logo overlay = scan failure — module redundancy compensates for the covered area
+- Margin/quiet zone lost when CSS crops or the background touches the edge — scanners reject
+- Low contrast — `color.dark`/`color.light` must differ clearly; a light QR on a white background fails
+- SVG without a `width` attribute → broken responsiveness; add width/height or control it with CSS
+- Terminal output `toString({type:'terminal'})` suits debugging, not production
 
 ## Performance Notes
 
-- Generation เร็ว — ไม่ใช่ bottleneck; async API (`toDataURL`) ไม่ block event loop สำหรับเคสปกติ
-- `toBuffer` สำหรับ server-side binary — เบากว่า base64 dataURL ~33% ขนาด
-- Cache generated QR เมื่อ payload ซ้ำบ่อย — deterministic output สำหรับ input เดียวกัน
-- `QRCode.create` แยก encode/render — reuse segments เมื่อ batch generate
+- Generation is fast — not a bottleneck; the async API (`toDataURL`) does not block the event loop for normal cases
+- `toBuffer` for server-side binary — ~33% smaller than a base64 dataURL
+- Cache generated QRs when payloads repeat — deterministic output for the same input
+- `QRCode.create` separates encode/render — reuse segments when batch generating
 
 ## Ecosystem / Integration
 
-- TOTP enrollment QR → สร้าง `otpauth://` ด้วย `/follow-lib-otplib` `generateURI` แล้ว render ที่นี่
-- CLI `qrcode` สำหรับ quick terminal/file output — ดู `references/cli.md`
-- สำหรับ URL/short-link QR — ตรวจ URL reachable ก่อน generate
-- Printable labels/tickets — SVG + error correction Q/H เหมาะสุด
+- TOTP enrollment QR → build the `otpauth://` with `/follow-lib-otplib` `generateURI`, then render it here
+- The `qrcode` CLI for quick terminal/file output — see `references/cli.md`
+- For URL/short-link QRs — check the URL is reachable before generating
+- Printable labels/tickets — SVG + error correction Q/H works best

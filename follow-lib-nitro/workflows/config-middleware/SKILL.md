@@ -1,6 +1,6 @@
 ---
 name: follow-lib-nitro-config-middleware
-description: ตั้งค่า Nitro middleware/plugins/hooks — request pipeline, auth guards, event hooks
+description: Configure Nitro middleware/plugins/hooks — request pipeline, auth guards, event hooks
 argument-hint: "[middleware|plugin|hook]"
 related:
   - follow-lib-nitro
@@ -10,17 +10,17 @@ related:
 
 ## Goal
 
-ตั้งค่า Nitro request pipeline — middleware, plugins, nitroApp hooks สำหรับ auth/logging/CORS/request lifecycle
+Configure the Nitro request pipeline — middleware, plugins, nitroApp hooks for auth/logging/CORS/request lifecycle
 
 ## Scope
 
-cross-cutting concerns ฝั่ง server — middleware (`middleware/`), plugins (`plugins/`), runtime hooks (`nitroApp.hooks()`)
+cross-cutting concerns on the server side — middleware (`middleware/`), plugins (`plugins/`), runtime hooks (`nitroApp.hooks()`)
 
 ## Execute
 
 ### 1. Middleware
 
-> Goal: run ก่อนทุก request — auth, logging, headers
+> Goal: run before every request — auth, logging, headers
 
 ```ts
 // middleware/auth.ts — global middleware (auto-registered)
@@ -31,12 +31,12 @@ export default defineEventHandler((event) => {
   if (!token && event.path.startsWith('/api/private')) {
     throw createError({ statusCode: 401 })
   }
-  event.context.user = decodeToken(token)   // attach context ให้ handlers
+  event.context.user = decodeToken(token)   // attach context for handlers
 })
 ```
 
-- Order = filename/`middleware/` registration — เช็ค execution order เมื่อมีหลายตัว
-- Scoped middleware: `middleware/` ใน subdirs หรือ check `event.path` ใน handler
+- Order = filename/`middleware/` registration — check execution order when there are several
+- Scoped middleware: `middleware/` in subdirs or check `event.path` in the handler
 
 ### 2. Plugins
 

@@ -10,4 +10,4 @@
 | `parseSync(filename, code)` | Parse → `{program, errors, comments}` | - | `sourceType`, `lang`, `astType: 'ts'` |
 | `parseSync(code, {astType:'ts'})` | TypeScript-aware AST (TS nodes preserved) | - | - |
 | `parseSync` options | `lang: 'ts'\|'tsx'\|'js'\|'jsx'` | infer | `preserveParens`, `showSemanticErrors` |
-| AST walk | ต้อง walk เอง หรือใช้ `oxc-walker` (`bun add -d oxc-walker`) | - | - |
+| AST walk | must walk yourself or use `oxc-walker` (`bun add -d oxc-walker`) | - | - |

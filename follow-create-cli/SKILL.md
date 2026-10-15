@@ -1,6 +1,6 @@
 ---
 name: follow-create-cli
-description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อมเลือก stack และ architecture ที่เหมาะสม
+description: Build CLI applications with Rust or Bun, picking the right stack and architecture
 argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
@@ -14,114 +14,113 @@ related:
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/deep-review`
+Build CLI applications with Rust or Bun according to context and requirements, with quality review via `/deep-review`
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — skill นี้เป็น dispatcher เท่านั้น: เลือก stack แล้วส่งต่อ implementation ไปยัง `/follow-create-rust-cli` หรือ `/follow-create-bun-cli` ตามความเหมาะสมเสมอ ไม่ implement CLI เองใน skill นี้
+Use when creating a new CLI or CLI tools (e.g. `tools/review-codebase`, `tools/analyze`) — this skill is a dispatcher only: pick the stack, then always delegate implementation to `/follow-create-rust-cli` or `/follow-create-bun-cli`; never implement the CLI inside this skill
 
-- Frameworks: Bun → `cac`/`clipanion`/`commander` + `picocolors`; Rust → `clap` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`)
+- Frameworks: Bun → `cac`/`clipanion`/`commander` + `picocolors`; Rust → `clap` — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (no version pins in this file — per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ framework pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create cli)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and framework patterns, then run `/deep-review` to summarize the tech stack
+2. Record the rationale for the chosen stack and libraries for future reference (create cli)
 
 ### 2. Decide CLI Stack
 
-> Goal: พิจารณาเลือก stack ที่เหมาะสม
+> Goal: evaluate and pick the right stack
 
-1. วิเคราะห์ requirements: performance, distribution, ecosystem, team skill
-2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency
-3. เลือก Bun ถ้า: ทีมใช้ TypeScript, ต้องการ rapid development, มี Bun runtime ติดตั้ง
-4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/choose-and-apply` ก่อน
+1. Analyze requirements: performance, distribution, ecosystem, team skill
+2. Choose Rust when: a single binary is required, high performance, zero runtime dependency
+3. Choose Bun when: the team uses TypeScript, rapid development is needed, and the Bun runtime is installed
+4. If unclear → use `/ask-me` or `/apply choose` first
 
 ### 3. Create CLI Project
 
-> Goal: สร้างโครงสร้างตาม stack ที่เลือก
+> Goal: scaffold the structure for the chosen stack
 
-1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
-2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/deep-review` หรือ `/deep-review` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
-4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
-5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/deep-review` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
-6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
+1. If Rust → run `/follow-create-rust-cli`
+2. If Bun → run `/follow-create-bun-cli`
+3. Run `/deep-review` or `/deep-review` to pick the architecture per context — Clean is not mandatory
+4. If directories nest deeper than 3 levels without need → run `/flatten-directory --mode code`
+5. If the CLI needs tables, commands, prompts, or a TUI → run `/deep-review` to select libraries per the defined tech stack
+6. Create `tools/<tool-name>/` when it is a tooling CLI in a monorepo
 
 ### 4. Review CLI
 
-> Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
+> Goal: check CLI quality after creation
 
-1. ทำ `/deep-review-then-fix` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/deep-review-then-fix` ระบุ
-3. รัน lint และ test ตาม stack ที่เลือก
+1. Run `/deep-review-then-fix` to inspect design, structure, UX, and error handling
+2. Fix according to the findings from `/deep-review-then-fix`
+3. Run lint and tests per the chosen stack
 
 ### 5. Integrate Into Workspace
 
-> Goal: ผสาน CLI เข้ากับ workspace
+> Goal: wire the CLI into the workspace
 
-1. เพิ่ม scripts ใน package manifest หรือ task runner ตาม `/follow-tasks`
-2. ถ้าเป็น monorepo → ทำ `/follow-monorepo` เพื่อกำหนด workspace และ dependencies
-3. อัปเดต references ใน `README.md` และ `AGENTS.md` ถ้าจำเป็น
+1. Add scripts to the package manifest or task runner per `/follow-tasks`
+2. If monorepo → run `/follow-monorepo` to define workspace and dependencies
+3. Update references in `README.md` and `AGENTS.md` if needed
 
 ### 6. Ship
 
-> Goal: ส่งมอบงาน
+> Goal: deliver the work
 
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. Run `/ship`
+2. If `/ship` fails → report the status
 
 ## Rules
 
 ### 1. Stack Selection
 
-- Rust: เหมาะกับ binary distribution, performance critical, ไม่ต้อง runtime → ส่งต่อ `/follow-create-rust-cli`
-- Bun: เหมาะกับทีม TypeScript, rapid iteration, ใช้ Bun runtime → ส่งต่อ `/follow-create-bun-cli`
-- ไม่ force ใช้ stack ที่ไม่เหมาะกับ context
-- เมื่อเลือก stack แล้วต้อง delegate ไปยัง `/follow-create-bun-cli` หรือ `/follow-create-rust-cli` เสมอ ห้าม implement เองใน skill นี้
-- บันทึกเหตุผลที่เลือก stack ใน `README.md` หรือ plan
+- Rust: suited for binary distribution, performance-critical, no runtime → delegate to `/follow-create-rust-cli`
+- Bun: suited for TypeScript teams, rapid iteration, Bun runtime available → delegate to `/follow-create-bun-cli`
+- Never force a stack that does not fit the context
+- Once the stack is chosen, always delegate to `/follow-create-bun-cli` or `/follow-create-rust-cli`; never implement in this skill
+- Record the stack rationale in `README.md` or the plan
 
 ### 2. Architecture Selection
 
-- ทุก CLI ต้องแยก concerns ชัดเจน
-- ใช้ `/deep-review` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
-- Domain layer ต้อง pure ไม่มี side effects เมื่อเหมาะสม
-- Adapters จัดการ I/O และ external dependencies
-- Presentation เป็น entry points
+- Every CLI must separate concerns clearly
+- Use `/deep-review` to pick the architecture per context — Clean or Layered is not mandatory
+- The domain layer must be pure with no side effects where appropriate
+- Adapters handle I/O and external dependencies
+- Presentation holds the entry points
 
 ### 3. Library Selection
 
-- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/deep-review` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
-- ถ้า CLI ต้องรับ command/subcommand → ใช้ `clap` (Rust) หรือ `cac` (Bun/TS)
-- ถ้า CLI ต้อง interactive prompt → ใช้ `dialoguer`/`inquire` (Rust) หรือ `@clack/prompts`/`inquirer` (Bun/TS)
-- ถ้า CLI ต้อง TUI → ใช้ `ratatui` (Rust) หรือ `blessed`/`ink` (Bun/TS)
-- ทำ `/deep-review` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
+- CLI needs to render tables → use libraries from `/deep-review`, e.g. `comfy-table` (Rust) or `TanStack Table` (Bun/TS)
+- CLI needs commands/subcommands → use `clap` (Rust) or `cac` (Bun/TS)
+- CLI needs interactive prompts → use `dialoguer`/`inquire` (Rust) or `@clack/prompts`/`inquirer` (Bun/TS)
+- CLI needs a TUI → use `ratatui` (Rust) or `blessed`/`ink` (Bun/TS)
+- Run `/deep-review` before choosing new libraries so they do not conflict with the current tech stack
 
 ### 4. Review Before Ship
 
-- ทำ `/deep-review` ก่อน commit
-- รองรับ `--help`, `--version`, error messages ที่ชัดเจน
-- มี tests ครอบคลุม critical paths
-- มี logging หรือ tracing ตาม stack
+- Run `/deep-review` before committing
+- Support `--help`, `--version`, and clear error messages
+- Have tests covering critical paths
+- Have logging or tracing per stack
 
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /rethink if needed
+- Use /deep-test cli if needed
+- Use /run-test if needed
 
 
 ## File Structure
 
 Canonical file structure + layer table: [templates/file-structure-cli.md](templates/file-structure-cli.md)
-- ใช้ /deep-test cli verify CLI contract (flags, exit codes, stdout/stderr) หลัง scaffold
+- Use /deep-test cli to verify the CLI contract (flags, exit codes, stdout/stderr) after scaffolding
 
 ## Expected Outcome
 
-- CLI project ที่เลือก stack เหมาะสม
-- โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
-- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
-- ผ่าน `/deep-review`
-- ผสานเข้ากับ workspace ได้
-
+- CLI project with a properly chosen stack
+- Structure follows the selected architecture — Clean not mandatory
+- Directories not nested too deep (use `/flatten-directory` if needed)
+- Passes `/deep-review`
+- Integrated into the workspace

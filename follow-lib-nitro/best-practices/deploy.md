@@ -1,31 +1,31 @@
-# Nitro — Presets, Deploy และ Runtime Portability
+# Nitro — Presets, Deploy and Runtime Portability
 
 ## Recommended Patterns
 
 ### Preset Selection
 
-- เลือก preset ตาม deploy target: `bun`, `node-server`, `cloudflare-module`, `deno-server`, `vercel`, `netlify`, edge providers อื่นๆ
-- v3: `nitro()` vite plugin ไม่รับ `preset` option — ตั้งผ่าน `NITRO_PRESET` env หรือ `nitro.config.ts` เท่านั้น
-- เลือกวิธีเดียว — `process.env.NITRO_PRESET ??= 'bun'` ใน vite.config ก่อน defineConfig หรือ `nitro.config.ts` — ห้ามตั้งขัดกัน
-- preset ผิด = output รันไม่ได้บน target — เช็ค https://nitro.build/deploy สำหรับชื่อ preset ล่าสุด
+- Choose the preset by deploy target: `bun`, `node-server`, `cloudflare-module`, `deno-server`, `vercel`, `netlify`, other edge providers
+- v3: the `nitro()` vite plugin does not accept a `preset` option — set it only via the `NITRO_PRESET` env or `nitro.config.ts`
+- Pick one method — `process.env.NITRO_PRESET ??= 'bun'` in vite.config before defineConfig or `nitro.config.ts` — never set conflicting values
+- Wrong preset = output that can't run on the target — check https://nitro.build/deploy for the latest preset names
 
 ### Build Output
 
-- `bun run build` → `.output/` เป็น portable artifact — `bun .output/server/index.mjs` / `node .output/server/index.mjs` ตาม preset
-- `.output/public/` serve static assets อัตโนมัติ — public dir ของ app map เข้าไป
-- `.output/` เป็น generated — ห้าม commit, gitignore เสมอ
-- portable = code เดียวกันรันได้ทุก runtime — conditional logic ผ่าน env vars ไม่ใช่ compile-time branches
+- `bun run build` → `.output/` is a portable artifact — `bun .output/server/index.mjs` / `node .output/server/index.mjs` per preset
+- `.output/public/` serves static assets automatically — the app's public dir is mapped into it
+- `.output/` is generated — never commit, always gitignore
+- portable = the same code runs on every runtime — conditional logic via env vars, not compile-time branches
 
 ### Cloudflare Bindings
 
-- preset `cloudflare-module` → output เป็น Worker module — deploy ด้วย `wrangler deploy`
-- declare bindings ใน `wrangler.jsonc`: `d1_databases`, `kv_namespaces`, `r2_buckets`, `vars`
-- access ผ่าน `env.*` ใน handler — gen types ด้วย `wrangler types` → `worker-configuration.d.ts`
-- secrets ผ่าน `wrangler secret put` เท่านั้น — ห้าม `vars` หรือ hardcode
+- preset `cloudflare-module` → output is a Worker module — deploy with `wrangler deploy`
+- declare bindings in `wrangler.jsonc`: `d1_databases`, `kv_namespaces`, `r2_buckets`, `vars`
+- access via `env.*` in handlers — gen types with `wrangler types` → `worker-configuration.d.ts`
+- secrets via `wrangler secret put` only — never `vars` or hardcode
 
 ### Custom Server Entry
 
-- wrap `fetch` handler เมื่อต้อง middleware/custom logic:
+- wrap the `fetch` handler when middleware/custom logic is needed:
 
 ```ts
 export default {
@@ -35,39 +35,39 @@ export default {
 }
 ```
 
-- ใช้สำหรับ auth, logging, request transformation ก่อนถึง framework handler
+- use it for auth, logging, request transformation before reaching the framework handler
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ตั้ง `NITRO_PRESET` env หรือ `nitro.config.ts` | ส่ง `preset` เข้า `nitro()` plugin options (v3 ไม่รับ) |
-| เลือกวิธีตั้ง preset วิธีเดียว | env + config ขัดกัน |
-| `.output/` ใน `.gitignore` | commit build artifacts |
-| secrets ผ่าน `wrangler secret` / env | `vars` หรือ hardcode ใน config |
-| conditional ผ่าน runtime env | compile-time branches ต่อ preset |
-| gen `worker-configuration.d.ts` ด้วย `wrangler types` | เดา bindings types เอง |
+| Set `NITRO_PRESET` env or `nitro.config.ts` | Pass `preset` into `nitro()` plugin options (v3 doesn't accept it) |
+| Pick one preset-setting method | env + config conflicting |
+| `.output/` in `.gitignore` | commit build artifacts |
+| secrets via `wrangler secret` / env | `vars` or hardcode in config |
+| conditional via runtime env | compile-time branches per preset |
+| gen `worker-configuration.d.ts` with `wrangler types` | guess bindings types yourself |
 
 ## Common Pitfalls
 
-- `nitro({preset: 'bun'})` → v3 ไม่รับ — ใช้ env หรือ config file
-- `NITRO_PRESET` + `nitro.config.ts` ตั้งคนละค่า → behavior ไม่แน่นอน
-- deploy Cloudflare โดยไม่ declare bindings → `env.X` undefined runtime
-- assume Node APIs บน edge preset → `fs`, `path` ไม่มีบน Cloudflare — ใช้ portable APIs
-- commit `.output/` → repo bloat + stale artifacts
-- server entry `fetch` ไม่ delegate framework → app routes ไม่ทำงาน
+- `nitro({preset: 'bun'})` → v3 doesn't accept it — use env or config file
+- `NITRO_PRESET` + `nitro.config.ts` set to different values → undefined behavior
+- deploying to Cloudflare without declaring bindings → `env.X` undefined at runtime
+- assuming Node APIs on an edge preset → `fs`, `path` don't exist on Cloudflare — use portable APIs
+- committing `.output/` → repo bloat + stale artifacts
+- server entry `fetch` not delegating to the framework → app routes don't work
 
 ## Performance Notes
 
-- `.output` bundle เร็ว + cold start ต่ำบน edge presets — Nitro tree-shake ดี
-- static assets ใน `.output/public/` serve จาก CDN/edge อัตโนมัติ — ไม่ต้อง CDN แยก
-- code splitting: Nitro split routes/handlers — lazy load ตาม request path
-- cache headers ตั้งผ่าน route rules หรือ custom entry — static assets มี defaults
+- the `.output` bundle is fast + low cold start on edge presets — Nitro tree-shakes well
+- static assets in `.output/public/` are served from CDN/edge automatically — no separate CDN needed
+- code splitting: Nitro splits routes/handlers — lazy load per request path
+- cache headers set via route rules or custom entry — static assets have defaults
 
 ## Ecosystem / Integration
 
-- TanStack Start, Analog, Nuxt ใช้ Nitro อยู่แล้ว — skill นี้สำหรับ Nitro เมื่อต้อง config เองหรือเข้าใจ layer
+- TanStack Start, Analog, Nuxt already use Nitro — this skill is for Nitro when you must configure it yourself or understand the layer
 - deploy docs: https://nitro.build/deploy — preset list + provider guides
-- `/follow-service-cloudflare` สำหรับ deploy/secrets/rollback เชิงลึก
-- `/follow-tool-vite` สำหรับ Vite config integration
-- `/deep-research` ยืนยัน preset names ล่าสุด — Nitro เพิ่ม providers บ่อย
+- `/follow-service-cloudflare` for in-depth deploy/secrets/rollback
+- `/follow-tool-vite` for Vite config integration
+- `/deep-research` to confirm the latest preset names — Nitro adds providers often

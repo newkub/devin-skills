@@ -1,6 +1,6 @@
 # CLI File Structure
 
-Canonical file structure สำหรับ CLI tool — thin command layer + domain services + IO adapters
+Canonical file structure for a CLI tool — thin command layer + domain services + IO adapters
 
 ## File Structure
 
@@ -19,7 +19,7 @@ project/
 │  │  ├─ prompt.ts
 │  │  └─ table.ts
 │  │
-│  ├─ usecases/                           # application use cases — 1 file ต่อ command group (domain)
+│  ├─ usecases/                           # application use cases — 1 file per command group (domain)
 │  │  ├─ create-user.ts
 │  │  └─ run-migration.ts
 │  │
@@ -48,15 +48,15 @@ project/
 
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
-| 1 | presentation | `bin.ts`+`commands/`+`ui/` | argv parsing, handlers, terminal output | → `usecases/` (+ leaves) — ห้ามเรียก `infra/` ตรง |
+| 1 | presentation | `bin.ts`+`commands/`+`ui/` | argv parsing, handlers, terminal output | → `usecases/` (+ leaves) — never call `infra/` directly |
 | 2 | domain | `usecases/`+`services/` | orchestration + rules | → `infra/` (+ leaves) |
 | 3 | data | `infra/`+`lib/` | fs/http/process IO | leaf (+ leaves) |
-| 4 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — ทุก layer ใช้ได้ |
+| 4 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — usable by every layer |
 
 ## Rules
 
-- `commands/*` thin — parse args + call usecase + render via `ui/`; business rules ห้ามอยู่ใน handler
-- Exit codes centralized ที่ `errors.ts` — commands return result, `bin.ts` ตัดสิน exit code
-- stdout ผ่าน `ui/` เท่านั้น — ห้าม `console.log` ใน domain/data layers (ใช้ stderr logger ใน `lib/`)
-- `utils/`/`services/` pure — testable โดยไม่ mock process
-- ถ้า CLI เป็น entry point หนึ่งของหลาย (api+worker+cron) → ใช้ Clean (`follow-architecture/references/follow-clean-arch.md`) — `app/cli/` เป็น thin shell เหนือ `modules/`
+- `commands/*` thin — parse args + call usecase + render via `ui/`; business rules must not live in the handler
+- Exit codes centralized in `errors.ts` — commands return result, `bin.ts` decides the exit code
+- stdout only through `ui/` — never `console.log` in domain/data layers (use a stderr logger in `lib/`)
+- `utils/`/`services/` pure — testable without mocking the process
+- If the CLI is one entry point among several (api+worker+cron) → use Clean (`follow-architecture/SKILL.md` `## Clean Pattern`) — `app/cli/` as a thin shell over `modules/`

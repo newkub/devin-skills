@@ -1,6 +1,6 @@
 ---
 name: follow-lib-qrcode
-description: ใช้ qrcode สร้าง QR codes — PNG/SVG/dataURL ฝั่ง server หรือ client
+description: Use qrcode to create QR codes — PNG/SVG/dataURL server-side or client-side
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -11,49 +11,49 @@ related:
 
 ## Goal
 
-ใช้ qrcode สร้าง QR codes — PNG/SVG/dataURL ฝั่ง server หรือ client
+Use qrcode to create QR codes — PNG/SVG/dataURL server-side or client-side
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib qrcode)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (lib qrcode)
 
-- ครอบคลุม: QR code generation — PNG/SVG/dataURL/terminal output ฝั่ง server, browser หรือ CLI (`qrcode` command — ดู [cli](references/cli.md))
-- ไม่ครอบคลุม: TOTP/2FA logic — ใช้ `/follow-lib-otplib` สำหรับสร้าง `otpauth://` URI แล้ว render QR ด้วย skill นี้
+- Covers: QR code generation — PNG/SVG/dataURL/terminal output server-side, in the browser, or via CLI (`qrcode` command — see [cli](references/cli.md))
+- Not covered: TOTP/2FA logic — use `/follow-lib-otplib` to create the `otpauth://` URI, then render the QR with this skill
 - Latest: `qrcode@1.5.4` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. ใช้ `QRCode.toDataURL()`, `toBuffer()`, `toString(type: svg)` ตาม output
-1. ตั้ง `errorCorrectionLevel` (M/Q/H สำหรับ logo overlay)
-1. สำหรับ API response ใช้ `toBuffer` + `new Response(new Uint8Array(buf))`
-1. อย่า embed data ขนาดใหญ่ — QR มี capacity จำกัด (~4KB binary)
+1. Use `QRCode.toDataURL()`, `toBuffer()`, `toString(type: svg)` per output
+1. Set `errorCorrectionLevel` (M/Q/H for a logo overlay)
+1. For API responses use `toBuffer` + `new Response(new Uint8Array(buf))`
+1. Don't embed large data — QR has a limited capacity (~4KB binary)
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib qrcode)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib qrcode)
 
 ## Rules
 
-- เลือก output ตาม consumer: dataURL สำหรับ `<img>`, buffer สำหรับ download
-- ตั้ง margin/width ให้ scan ได้จริง (อย่างน้อย margin=2)
-- ทดสอบ scan จริงก่อน ship
+- Pick the output by consumer: dataURL for `<img>`, buffer for download
+- Set margin/width so it actually scans (at least margin=2)
+- Test a real scan before shipping
 
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ใช้ `/follow-lib-otplib` ถ้า QR คือ `otpauth://` TOTP enrollment
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- Use `/follow-lib-otplib` if the QR is an `otpauth://` TOTP enrollment
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib qrcode)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib qrcode)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib qrcode)
+- No known security/performance pitfalls (lib qrcode)
+- Lint, typecheck, tests pass
