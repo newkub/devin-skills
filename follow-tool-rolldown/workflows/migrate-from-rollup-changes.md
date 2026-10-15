@@ -1,12 +1,12 @@
 ---
 title: Migrate from Rollup - Common Changes
-description: การเปลี่ยนแปลงทั่วไปและ migration checklist จาก Rollup ไปยัง Rolldown
+description: Common changes and migration checklist from Rollup to Rolldown
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-ระบุการเปลี่ยนแปลงทั่วไปใน migration และตรวจสอบความครบถ้วน
+Identify the common changes in the migration and verify completeness
 
 ## Scope
 
@@ -17,7 +17,7 @@ auto_execution_mode: 3
 
 ### 1. Config File Extension
 
-เปลี่ยนจาก `.js` เป็น `.ts`:
+Change `.js` to `.ts`:
 
 ```bash
 mv rollup.config.js rolldown.config.ts
@@ -25,7 +25,7 @@ mv rollup.config.js rolldown.config.ts
 
 ### 2. Import Statement
 
-เปลี่ยน import:
+Change the import:
 
 Before:
 ```javascript
@@ -45,7 +45,7 @@ export default defineConfig({
 
 ### 3. TypeScript Support
 
-Rolldown มี built-in TypeScript support:
+Rolldown has built-in TypeScript support:
 
 Before (Rollup):
 ```javascript
@@ -65,7 +65,7 @@ export default defineConfig({
 
 ### 4. Minification
 
-Rolldown ใช้ built-in minifier:
+Rolldown uses a built-in minifier:
 
 Before (Rollup):
 ```javascript
@@ -100,11 +100,11 @@ export default defineConfig({
 
 ## Rules
 
-- เปลี่ยน config file extension เป็น `.ts`
-- ใช้ `defineConfig` สำหรับ type safety
-- ลบ plugins ที่ Rolldown มี built-in แล้ว (TypeScript, Terser)
+- Change the config file extension to `.ts`
+- Use `defineConfig` for type safety
+- Remove plugins Rolldown already has built-in (TypeScript, Terser)
 
 ## Expected Outcome
 
-- Config และ plugins อัปเดตครบถ้วนตาม checklist
-- ไม่มี plugin ซ้ำซ้อนกับ built-in features
+- Config and plugins fully updated per the checklist
+- No plugins duplicating built-in features

@@ -1,34 +1,34 @@
 # RMUX — Best Practices
 
-Terminal multiplexer สำหรับ automation และ scripting
+Terminal multiplexer for automation and scripting
 
 ## Recommended Patterns
 
-- Sessions มีชื่อบรรยายงาน — `rmux new -s <name>`; list ด้วย `rmux ls` ก่อน attach
-- Scripting: send-keys/new-window/split commands ผ่าน CLI — layout reproducible สำหรับ dev envs
-- Detached sessions สำหรับ long-running tasks — survive SSH disconnects
-- Windows/panes per concern — logs หนึ่ง pane, server หนึ่ง, editor หนึ่ง
-- Capture output: `capture-pane` สำหรับ programmatic reads — automation reads panes ไม่ใช่ logs เท่านั้น
+- Give sessions descriptive names — `rmux new -s <name>`; list with `rmux ls` before attaching
+- Scripting: send-keys/new-window/split commands via the CLI — reproducible layouts for dev envs
+- Detached sessions for long-running tasks — survive SSH disconnects
+- Windows/panes per concern — one pane for logs, one for the server, one for the editor
+- Capture output: `capture-pane` for programmatic reads — automation reads panes, not just logs
 
 ## Common Pitfalls
 
-- Orphaned sessions กิน RAM/processes — `rmux kill-session` cleanup เป็นส่วนหนึ่งของ workflow
-- send-keys เร็วเกิน shell รับ = dropped input — เพิ่ม sleeps หรือ wait-for patterns ใน scripts
-- Env vars ใน session = snapshot ตอน create — respawn session เมื่อ env เปลี่ยน
-- Scripting timing: pane ready ≠ command done — poll output/capture-pane แทน fixed sleeps เมื่อทำได้
-- Shared session collisions: scripts ตั้งชื่อ unique ต่อ run หรือ check exists ก่อน
+- Orphaned sessions eat RAM/processes — `rmux kill-session` cleanup as part of the workflow
+- send-keys faster than the shell consumes = dropped input — add sleeps or wait-for patterns in scripts
+- Env vars in a session = a snapshot at create time — respawn the session when env changes
+- Scripting timing: pane ready ≠ command done — poll output/capture-pane instead of fixed sleeps where possible
+- Shared session collisions: scripts use names unique per run, or check existence first
 
 ## Automation
 
-- Dev env bootstrap: script = rmux commands สร้าง layout + เริ่ม services — one-command environment
-- CI/testing: rmux เหมาะ local automation; CI ใช้ proper job orchestration ไม่ใช่ tmux-style hacks
-- Logging: pane output transient — persistent logs redirect ไปไฟล์แยก
+- Dev env bootstrap: a script of rmux commands creates the layout + starts services — one-command environment
+- CI/testing: rmux fits local automation; CI should use proper job orchestration, not tmux-style hacks
+- Logging: pane output is transient — persistent logs redirect to separate files
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| named sessions + scripted layouts | ad-hoc unnamed sessions กระจาย |
-| capture-pane สำหรับ automation reads | fixed sleeps ทุกจุด |
-| cleanup sessions เมื่อจบ | accumulate orphans |
-| env-aware session respawn | assume env refresh อัตโนมัติ |
+| Named sessions + scripted layouts | Scattered ad-hoc unnamed sessions |
+| capture-pane for automation reads | Fixed sleeps everywhere |
+| Cleanup sessions when done | Accumulating orphans |
+| Env-aware session respawn | Assuming the env refreshes automatically |

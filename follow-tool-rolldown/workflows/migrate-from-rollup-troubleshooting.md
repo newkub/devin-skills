@@ -1,12 +1,12 @@
 ---
 title: Migrate from Rollup - Troubleshooting
-description: การแก้ปัญหาและประโยชน์ของการ migrate จาก Rollup ไปยัง Rolldown
+description: Troubleshooting and benefits of migrating from Rollup to Rolldown
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-แก้ปัญหาที่พบหลัง migration และสรุปประโยชน์
+Fix problems found after migration and summarize the benefits
 
 ## Scope
 
@@ -17,30 +17,30 @@ auto_execution_mode: 3
 
 ### Plugin Not Compatible
 
-Problem: Plugin ไม่ทำงานกับ Rolldown
+Problem: A plugin does not work with Rolldown
 
 Solution:
-- ตรวจสอบว่ามี Rolldown version หรือไม่
-- ใช้ plugin ที่ compatible กับทั้งสอง
-- ปรับ plugin ให้ compatible
+- Check whether a Rolldown version exists
+- Use a plugin that is compatible with both
+- Adjust the plugin to be compatible
 
 ### Build Error
 
-Problem: Build error หลัง migration
+Problem: Build error after migration
 
 Solution:
-- ตรวจสอบ config options
-- ตรวจสอบ plugin compatibility
-- ตรวจสอบ TypeScript config
+- Check the config options
+- Check plugin compatibility
+- Check the TypeScript config
 
 ### Output Different
 
-Problem: Output ต่างจาก Rollup
+Problem: Output differs from Rollup
 
 Solution:
-- ตรวจสอบ tree-shaking options
-- ตรวจสอบ minification settings
-- ตรวจสอบ output format
+- Check the tree-shaking options
+- Check the minification settings
+- Check the output format
 
 ## Benefits of Migration
 
@@ -51,11 +51,11 @@ Solution:
 
 ## Rules
 
-- ตรวจสอบ plugin compatibility เมื่อพบปัญหา
-- ตรวจสอบ config และ output อย่างละเอียด
-- ใช้ประโยชน์จาก built-in features ของ Rolldown
+- Check plugin compatibility when problems appear
+- Check the config and output thoroughly
+- Take advantage of Rolldown's built-in features
 
 ## Expected Outcome
 
-- ปัญหาหลัง migration ได้รับการแก้ไข
-- ได้รับประโยชน์จาก performance และ built-in features
+- Problems after migration are resolved
+- Gains from performance and built-in features

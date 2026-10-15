@@ -1,6 +1,6 @@
 ---
 name: follow-tool-rmux
-description: ตั้งค่าและใช้งาน RMUX terminal multiplexer สำหรับ automation และ scripting
+description: Set up and use the RMUX terminal multiplexer for automation and scripting
 argument-hint: "[scope]"
 related:
   - follow-lang-rust
@@ -11,113 +11,113 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน RMUX สำหรับ terminal multiplexer, automation และ programmatic control
+Set up and use RMUX for terminal multiplexing, automation, and programmatic control
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการ tmux-compatible CLI หรือ drive terminal sessions ผ่าน Rust/Python/TypeScript SDK
+Use for projects that want a tmux-compatible CLI or want to drive terminal sessions via the Rust/Python/TypeScript SDK
 
-- Latest: `rmux@0.10.0` (crates.io; ดู rmux.io) (verified 2026-09-16)
+- Latest: `rmux@0.10.0` (crates.io; see rmux.io) (verified 2026-09-16)
 
 ## Execute
 
 ### 1. Install RMUX
 
-> Goal: ติดตั้ง RMUX CLI บน environment
+> Goal: install the RMUX CLI on the environment
 
-1. ใช้ `mise use -g rmux` หรือ `cargo install rmux --locked`
-2. บน Windows ใช้ `winget install rmux`, `choco install rmux` หรือ `scoop bucket add rmux https://github.com/Helvesec/scoop-rmux` แล้ว `scoop install rmux`
-3. บน macOS ใช้ `brew install rmux`
-4. ยืนยันด้วย `rmux -V` หรือ `rmux --version`
-5. ดูรายละเอียดใน 
+1. Use `mise use -g rmux` or `cargo install rmux --locked`
+2. On Windows use `winget install rmux`, `choco install rmux`, or `scoop bucket add rmux https://github.com/Helvesec/scoop-rmux` then `scoop install rmux`
+3. On macOS use `brew install rmux`
+4. Verify with `rmux -V` or `rmux --version`
+5. See details in 
 
 ### 2. Create and Attach Sessions
 
-> Goal: สร้างและ attach sessions
+> Goal: create and attach sessions
 
-1. สร้าง session ด้วย `rmux new-session -s mysession` หรือ `rmux new -s mysession`
-2. Attach ด้วย `rmux attach -t mysession`
-3. Detach ด้วย `rmux detach`
-4. แสดง sessions ทั้งหมดด้วย `rmux ls`
-5. ดูรายละเอียดใน 
+1. Create a session with `rmux new-session -s mysession` or `rmux new -s mysession`
+2. Attach with `rmux attach -t mysession`
+3. Detach with `rmux detach`
+4. List all sessions with `rmux ls`
+5. See details in 
 
 ### 3. Manage Panes and Windows
 
-> Goal: จัดการ panes, windows และ layouts
+> Goal: manage panes, windows, and layouts
 
-1. สร้าง window ด้วย `rmux new-window -n name`
-2. Split pane ด้วย `rmux split-window -h` หรือ `rmux split-window -v`
-3. เลือก pane/window ด้วย `rmux select-pane -t 0.1` หรือ `rmux select-window -t 1`
-4. ส่งคำสั่งไปยัง pane ด้วย `rmux send-keys -t 0.0 "ls" Enter`
-5. ดูรายละเอียดใน 
+1. Create a window with `rmux new-window -n name`
+2. Split a pane with `rmux split-window -h` or `rmux split-window -v`
+3. Select a pane/window with `rmux select-pane -t 0.1` or `rmux select-window -t 1`
+4. Send a command to a pane with `rmux send-keys -t 0.0 "ls" Enter`
+5. See details in 
 
 ### 4. Configure RMUX
 
-> Goal: ตั้งค่า RMUX สำหรับ shell และ key bindings
+> Goal: configure RMUX for shell and key bindings
 
-1. สร้างไฟล์ config ที่ `~/.rmux.conf` (Linux/macOS) หรือ `%USERPROFILE%\.rmux.conf` (Windows)
-2. ตั้งค่า prefix key, mouse support, history limit และ status line
-3. รีโหลด config ด้วย `rmux source-file ~/.rmux.conf`
-4. ดูรายละเอียดใน 
+1. Create the config file at `~/.rmux.conf` (Linux/macOS) or `%USERPROFILE%\.rmux.conf` (Windows)
+2. Set the prefix key, mouse support, history limit, and status line
+3. Reload the config with `rmux source-file ~/.rmux.conf`
+4. See details in 
 
 ### 5. Automate with SDK
 
-> Goal: ควบคุม RMUX ผ่าน SDK สำหรับ automation
+> Goal: drive RMUX via the SDK for automation
 
-1. ใช้ Rust crate `rmux-sdk` สำหรับ typed async API
-2. ใช้ Python package `librmux` หรือ npm `@rmux/sdk` สำหรับ TypeScript
-3. สร้าง session, spawn pane, send text, capture output และ wait for text
-4. ดูรายละเอียดใน 
+1. Use the Rust crate `rmux-sdk` for a typed async API
+2. Use the Python package `librmux` or npm `@rmux/sdk` for TypeScript
+3. Create sessions, spawn panes, send text, capture output, and wait for text
+4. See details in 
 
 ### 6. CI Integration
 
-> Goal: รัน RMUX sessions ใน CI pipelines
+> Goal: run RMUX sessions in CI pipelines
 
-1. ติดตั้ง RMUX ใน CI ด้วย binary จาก release หรือ package manager
-2. ใช้ `rmux new-session -d -s ci` เพื่อสร้าง detached session
-3. ส่งคำสั่งและ capture output ด้วย CLI หรือ SDK
-4. ใช้ `rmux diagnose --human` เมื่อต้อง troubleshoot runtime/CLI issues (ตั้ง `RMUX_DISABLE_TINY_CLI=1` เพื่อบังคับใช้ full CLI helper)
-5. ดูรายละเอียดใน 
+1. Install RMUX in CI with the release binary or a package manager
+2. Use `rmux new-session -d -s ci` to create a detached session
+3. Send commands and capture output via the CLI or SDK
+4. Use `rmux diagnose --human` when troubleshooting runtime/CLI issues (set `RMUX_DISABLE_TINY_CLI=1` to force the full CLI helper)
+5. See details in 
 
 ## Rules
 
 ### 1. CLI Compatibility
 
-- RMUX รองรับ tmux-compatible command surface มากกว่า 90 คำสั่ง
-- ใช้ `rmux` แทน `tmux` เมื่อต้องการ cross-platform runtime ที native
-- ใช้ `mise use -g rmux` สำหรับ global install ตาม `global_rules`
+- RMUX supports a tmux-compatible command surface of more than 90 commands
+- Use `rmux` instead of `tmux` when you want a native cross-platform runtime
+- Use `mise use -g rmux` for the global install per `global_rules`
 
 ### 2. Configuration
 
-- เก็บ config ไว้ที่ `~/.rmux.conf` หรือ `%USERPROFILE%\.rmux.conf`
-- ใช้ `rmux source-file <path>` เพื่อ reload โดยไม่ต้อง restart daemon
-- ไม่ hard-code secrets หรือ paths ที่ sensitive
+- Keep the config at `~/.rmux.conf` or `%USERPROFILE%\.rmux.conf`
+- Use `rmux source-file <path>` to reload without restarting the daemon
+- Don't hard-code secrets or sensitive paths
 
 ### 3. Automation
 
-- ใช้ SDK สำหรับ programmatic control แทน parse text output ถ้าไปได้
-- ใช้ `wait-for` หรือ SDK equivalent เพื่อ synchronize ระหว่าง panes
-- ใช้ `rmux web-share` เมื่อต้องการ share session ผ่าน browser (E2E encrypted)
-- ใช้ `rmux claude [args]` สำหรับรัน Claude Code ใน RMUX workspace ด้วย tmux teammate mode
-- ปิด sessions ที่ไม่ใช้งานด้วย `rmux kill-session -t <name>`
+- Use the SDK for programmatic control instead of parsing text output where possible
+- Use `wait-for` or the SDK equivalent to synchronize between panes
+- Use `rmux web-share` when you want to share a session through the browser (E2E encrypted)
+- Use `rmux claude [args]` to run Claude Code in an RMUX workspace with tmux teammate mode
+- Close unused sessions with `rmux kill-session -t <name>`
 
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /follow-create-plugins (tui-ratatui) ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
+- Use /follow-lang-rust if needed
+- Use /follow-tool-cargo if needed
+- Use /follow-create-plugins (tui-ratatui) if needed
+- Use /follow-tool-usage if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- RMUX CLI ติดตั้งและทำงานได้บน target platform
-- Sessions, windows, panes ถูกสร้างและจัดการได้
-- Config โหลดได้และ key bindings ทำงานตามตั้งค่า
-- SDK หรือ CLI ใช้ automation ได้
-- ไม่มี detached sessions ค้างหลังจากจบ workflow
+- RMUX CLI installed and working on the target platform
+- Sessions, windows, panes can be created and managed
+- Config loads and key bindings work as set
+- The SDK or CLI drives automation
+- No detached sessions left behind after a workflow ends
 

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-rolldown
-description: ตั้งค่าและใช้ Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง
+description: Set up and use Rolldown for high-speed JavaScript/TypeScript bundling
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
@@ -13,127 +13,127 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้ Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง รองรับ migration จาก Rollup และเลือกใช้ plugins ใน ecosystem ได้อย่างเหมาะสม
+Set up and use Rolldown for high-speed JavaScript/TypeScript bundling, supporting migration from Rollup and picking the right plugins in the ecosystem
 
 ## Scope
 
-ใช้สำหรับ JavaScript/TypeScript projects ที่ต้องการ bundler รวดเร็ว ต้องการ code splitting/tree-shaking หรือ migration จาก Rollup/Vite
+Use for JavaScript/TypeScript projects that want a fast bundler, code splitting/tree-shaking, or migration from Rollup/Vite
 
-- ใช้ standalone `rolldown` เมื่อ bundle นอก Vite (เช่น libraries, custom toolchain); ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ไปที่ `follow-tool-vite`
-- ใช้ `follow-tool-tsdown` สำหรับ library builds ทีต้องการ zero-config บน Rolldown (dts, dual format) แทนเขียน config เอง
+- Use standalone `rolldown` when bundling outside Vite (e.g. libraries, custom toolchain); if the project already uses Vite 8, Rolldown is its built-in bundler — go to `follow-tool-vite`
+- Use `follow-tool-tsdown` for library builds that want zero-config on Rolldown (dts, dual format) instead of hand-written config
 
-- Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable ตั้งแต่ May 2026 และเป็น default bundler ของ Vite 8; ต้องใช้ Node.js `^20.19.0 | >=22.12.0`
+- Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable since May 2026 and the default bundler of Vite 8; requires Node.js `^20.19.0 | >=22.12.0`
 
 ## Execute
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Rolldown บน environment
+> Goal: install Rolldown on the environment
 
-1. ตรวจสอบ `package.json` และ package manager ที่ project ใช้
-2. ติดตั้ง `rolldown` ด้วย `bun add -D rolldown`
-3. ตรวจสอบ version ด้วย `bunx rolldown --version`
-4. ดูรายละเอียดเพิ่มเติมใน 
+1. Check `package.json` and the package manager the project uses
+2. Install `rolldown` with `bun add -D rolldown`
+3. Verify the version with `bunx rolldown --version`
+4. See more details in 
 
 ### 2. Project Analysis
 
-> Goal: ประเมิน project และเลือก migration path หรือ setup strategy
+> Goal: assess the project and pick a migration path or setup strategy
 
-1. ตรวจสอบ existing bundler จาก `package.json` scripts และ config files
-2. ถ้ามี `rollup.config.*` → วิเคราะห์ plugins, input, output ปัจจุบัน
-3. ระบุ entry points, output formats (esm/cjs/iife/umd), และ target environment
-4. ดูรายละเอียด ecosystem และ official resources ใน 
+1. Check the existing bundler from `package.json` scripts and config files
+2. If `rollup.config.*` exists → analyze current plugins, input, output
+3. Identify entry points, output formats (esm/cjs/iife/umd), and the target environment
+4. See ecosystem and official resources in 
 
 ### 3. Configuration
 
-> Goal: สร้าง `rolldown.config.ts` ที่ถูกต้อง
+> Goal: create a correct `rolldown.config.ts`
 
-1. สร้าง `rolldown.config.ts` ที root project
-2. ใช้ `defineConfig` จาก `rolldown` เพื่อ type safety
-3. กำหนด `input`, `output.dir`, `output.format`, `treeshake`, `plugins`
-4. เปิดใช้ `clear: true` สำหรับ production build ถ้าจำเป็น
-5. อ่านตัวเลือก top-level ใน 
+1. Create `rolldown.config.ts` at the project root
+2. Use `defineConfig` from `rolldown` for type safety
+3. Define `input`, `output.dir`, `output.format`, `treeshake`, `plugins`
+4. Enable `clear: true` for production builds if needed
+5. Read the top-level options in 
 
 ### 4. Build and Watch
 
-> Goal: รัน build และ watch mode แล้วตรวจสอบ output
+> Goal: run build and watch mode, then check the output
 
-1. รัน build ด้วย `bunx rolldown`
-2. ใช้ `bunx rolldown --watch` สำหรับ development
-3. ตรวจสอบ output ใน `dist/` หรือ `output.dir` ที่กำหนด
-4. รัน `bun run build` ผ่าน package script ถ้ามี
-5. ดูรายละเอียด output options ใน 
+1. Run the build with `bunx rolldown`
+2. Use `bunx rolldown --watch` for development
+3. Check the output in `dist/` or the configured `output.dir`
+4. Run `bun run build` via the package script if present
+5. See output option details in 
 
 ### 5. Migration from Rollup
 
-> Goal: ย้ายจาก Rollup ไปยัง Rolldown โดยไม่ทำลาย behavior
+> Goal: move from Rollup to Rolldown without breaking behavior
 
-1. เปรียบเทียบ `rollup.config.*` กับ `rolldown.config.ts`
-2. แทนที่ Rollup plugins ด้วย Rolldown-compatible plugins (`@rolldown/*` หรือ verified Rollup plugins)
-3. ปรับ `output` options, `manualChunks`, `external`, `globals`
-4. รัน build และ test suite เพื่อ verify output
-5. ดูคำแนะนำ migration ใน `workflows/migrate-from-rollup-*.md`
+1. Compare `rollup.config.*` with `rolldown.config.ts`
+2. Replace Rollup plugins with Rolldown-compatible plugins (`@rolldown/*` or verified Rollup plugins)
+3. Adjust `output` options, `manualChunks`, `external`, `globals`
+4. Run the build and test suite to verify the output
+5. See migration guidance in `workflows/migrate-from-rollup-*.md`
 
 ### 6. Plugin and Ecosystem Selection
 
-> Goal: เลือก plugins และ libraries ใน Rolldown ecosystem ที่เหมาะสม
+> Goal: pick suitable plugins and libraries from the Rolldown ecosystem
 
-1. ตรวจสอบ official plugins: `@rolldown/plugin-commonjs`, `@rolldown/plugin-node-resolve`, `@rolldown/plugin-terser`
-2. ตรวจสอบ community plugins ว่า active และ compatible กับ Rolldown version
-3. ใช้ `rolldown-plugin-dts` ถ้าต้องการ generate type definitions
-4. อัปเดต plugin list เป็นระยะ โดยอ้างอิง official docs
-5. ดู plugin list ใน 
+1. Check the official plugins: `@rolldown/plugin-commonjs`, `@rolldown/plugin-node-resolve`, `@rolldown/plugin-terser`
+2. Check community plugins are active and compatible with the Rolldown version
+3. Use `rolldown-plugin-dts` if type definitions must be generated
+4. Refresh the plugin list periodically against the official docs
+5. See the plugin list in 
 
 ### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, config, entry/output) | `workflows/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `workflows/optimize-bundle/SKILL.md` | migrate จาก Rollup | `workflows/migrate-from-rollup/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, config, entry/output) | `workflows/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `workflows/optimize-bundle/SKILL.md` | migrate from Rollup | `workflows/migrate-from-rollup/SKILL.md` 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add -D rolldown` สำหรับ local install
-- ใช้ `bunx rolldown` สำหรับ one-off build
-- ตรวจสอบ version และ Node.js compatibility ก่อนใช้ (Rolldown 1.x ต้องใช้ Node `^20.19.0 | >=22.12.0`)
-- ถ้า project ใช้ Vite 8 อยู่แล้ว Rolldown เป็น bundler ในตัว — ใช้ standalone `rolldown` เฉพาะเมื่อต้องการ bundle นอก Vite (เช่น libraries)
+- Use `bun add -D rolldown` for the local install
+- Use `bunx rolldown` for a one-off build
+- Check the version and Node.js compatibility before use (Rolldown 1.x needs Node `^20.19.0 | >=22.12.0`)
+- If the project already uses Vite 8, Rolldown is its built-in bundler — use standalone `rolldown` only when bundling outside Vite (e.g. libraries)
 
 ### 2. Configuration
 
-- ใช้ `rolldown.config.ts` กับ `defineConfig` เสมอ
-- กำหนด `input`, `output.dir`, `output.format` ให้ชัดเจน
-- เปิดใช้ `treeshake` ตามค่าเริ่มต้น เว้นแต่มีเหตุผลเฉพาะ
+- Always use `rolldown.config.ts` with `defineConfig`
+- Define `input`, `output.dir`, `output.format` explicitly
+- Keep `treeshake` enabled by default unless there's a specific reason
 
 ### 3. Migration
 
-- ไม่ rewrite source code เพื่อ migration
-- เปรียบเทียบ output กับ Rollup build เดิมก่อน deploy
-- ตรวจสอบ sourcemap และ chunking behavior
+- Don't rewrite source code for the migration
+- Compare output against the previous Rollup build before deploy
+- Verify sourcemap and chunking behavior
 
 ### 4. Plugins
 
-- ใช้ official plugins ก่อน community plugins
-- ตรวจสอบ maintenance status และ compatibility
-- ไม่ hard-code paths หรือ secrets ใน config
+- Prefer official plugins over community plugins
+- Check maintenance status and compatibility
+- Don't hard-code paths or secrets in config
 
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool rolldown)
-- ใช้ /follow-tool-tsdown ถ้าจำเป็น
-- ใช้ /follow-tool-turborepo ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- Use /follow-tool-vite if needed
+- Use /follow-create-plugins (vite) if needed (tool rolldown)
+- Use /follow-tool-tsdown if needed
+- Use /follow-tool-turborepo if needed
+- Use /follow-lang-typescript if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Rolldown ติดตั้งและ build ได้
-- `rolldown.config.ts` ถูกต้องและ maintainable
-- Migration จาก Rollup smooth
-- Output bundle มี performance ทีดีขึ้น
-- Plugins เลือกใช้อย่างเหมาะสม
+- Rolldown installed and building
+- `rolldown.config.ts` is correct and maintainable
+- Migration from Rollup goes smoothly
+- The output bundle performs better
+- Plugins are chosen appropriately
 

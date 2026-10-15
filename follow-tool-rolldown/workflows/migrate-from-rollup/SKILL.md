@@ -12,76 +12,76 @@ related:
 
 ## Goal
 
-ย้าย `rollup.config.*` ไปเป็น `rolldown.config.ts` โดย output เทียบเท่าเดิม — plugins map ถูก, config แปลงครบ, rollback ได้
+Move `rollup.config.*` to `rolldown.config.ts` with equivalent output — correct plugin map, complete config translation, rollback-ready
 
 ## Scope
 
-- ใช้กับ projects ที่มี `rollup.config.js/ts/mjs` และต้องการย้ายไป Rolldown standalone
-- ครอบคลุม config translation, plugin mapping (`@rollup/plugin-*` → Rolldown equivalents), output verification
-- ถ้า Rollup ถูกใช้ผ่าน Vite → ใช้ `follow-tool-vite` workflow `migrate-to-vite8` แทน (Vite 8 ใช้ Rolldown เป็น default)
+- For projects with `rollup.config.js/ts/mjs` that want to move to standalone Rolldown
+- Covers config translation, plugin mapping (`@rollup/plugin-*` → Rolldown equivalents), output verification
+- If Rollup is used through Vite → use the `follow-tool-vite` workflow `migrate-to-vite8` instead (Vite 8 uses Rolldown by default)
 
 ## Execute
 
 ### 1. Inventory Current Setup
 
-> Goal: map ทุกจุดที่กระทบก่อนย้าย
+> Goal: map every affected point before moving
 
-1. อ่าน `rollup.config.*` — list `input`, `output` (dir/file/format/plugins), `external`, `plugins`, `treeshake`, `watch`
-2. list plugins ทั้งหมดพร้อม version — แยก `@rollup/plugin-*` official vs community
-3. เก็บ baseline: รัน rollup build เก็บ output file list + sizes
-4. อ่าน official migration guide ที่ `rolldown.rs` — ทำ `/learn` (web) ถ้าไม่แน่ใจ
-5. commit state ก่อนเริ่ม — rollback path ต้องพร้อม
+1. Read `rollup.config.*` — list `input`, `output` (dir/file/format/plugins), `external`, `plugins`, `treeshake`, `watch`
+2. List all plugins with versions — separate official `@rollup/plugin-*` from community
+3. Capture a baseline: run the rollup build and record the output file list + sizes
+4. Read the official migration guide at `rolldown.rs` — run `/learn` (web) if unsure
+5. Commit the current state before starting — the rollback path must be ready
 
 ### 2. Install And Create Config
 
-> Goal: สร้าง `rolldown.config.ts` คู่กับของเดิม
+> Goal: create `rolldown.config.ts` alongside the original
 
-1. `bun add -D rolldown` — เก็บ `rollup` ไว้ก่อนจนกว่า verify ผ่าน
-2. สร้าง `rolldown.config.ts` ใหม่ด้วย `defineConfig` จาก `rolldown` — อย่าลบ rollup config เดิม
-3. แปลง options ทีละก้อน: `input` → `input`, `output.*` → `output.*` (ส่วนใหญ่ชื่อเดิม), `plugins` → `plugins`
+1. `bun add -D rolldown` — keep `rollup` until verification passes
+2. Create the new `rolldown.config.ts` with `defineConfig` from `rolldown` — don't delete the original rollup config
+3. Translate options block by block: `input` → `input`, `output.*` → `output.*` (mostly the same names), `plugins` → `plugins`
 
 ### 3. Map Plugins
 
-> Goal: ทุก plugin มี equivalent
+> Goal: every plugin has an equivalent
 
-1. เช็ค official plugin list ของ Rolldown — หลาย `@rollup/plugin-*` ใช้ต่อได้ หรือมี builtin/native replacement
-2. priority: builtin feature > official Rolldown plugin (`@rolldown/*` หรือที่ docs ระบุ) > compatible Rollup plugin
-3. plugin ที่ไม่มี equivalent → หน่วง migration หรือหา alternative — ดู official docs
-4. ทดสอบ plugin ทีละตัว — comment ที่เหลือไว้ เปิดเพิ่มเมื่อ build ผ่าน
+1. Check Rolldown's official plugin list — many `@rollup/plugin-*` keep working or have a builtin/native replacement
+2. Priority: builtin feature > official Rolldown plugin (`@rolldown/*` or as the docs state) > compatible Rollup plugin
+3. A plugin with no equivalent → defer the migration or find an alternative — see official docs
+4. Test plugins one at a time — comment the rest out, re-enable as the build passes
 
 ### 4. Translate Remaining Options
 
-> Goal: options ทุกตัวมีปลายทาง
+> Goal: every option has a destination
 
-1. `external`, `globals`, `paths` → map ตรงใน `external`/`output.*`
-2. `manualChunks` → `output.advancedChunks` (หรือ field ที่ official docs ระบุ)
-3. `watch`, `onwarn`, `treeshake` → เช็ค equivalents ใน docs
-4. options ที่ไม่มี counterpart → ตัดสินใจ: drop (ถ้า Rolldown ทำในตัว) หรือหา plugin
+1. `external`, `globals`, `paths` → direct maps in `external`/`output.*`
+2. `manualChunks` → `output.advancedChunks` (or the field named in official docs)
+3. `watch`, `onwarn`, `treeshake` → check the docs for equivalents
+4. Options with no counterpart → decide: drop (if Rolldown does it builtin) or find a plugin
 
 ### 5. Verify Output
 
-> Goal: output เทียบเท่า Rollup build
+> Goal: output equivalent to the Rollup build
 
-1. รัน `bunx rolldown -c` → build ผ่าน
-2. compare file list, sizes, formats กับ baseline — diff ไฟล์สำคัญได้ถ้าจำเป็น
-3. import/require ทุก entry ใน consumer → ทำงานเหมือนเดิม รัน test suite
-4. ผ่านครบ → ลบ `rollup` deps + config เดิม แยก commit
-5. ไม่ผ่านและแก้ไม่ได้ใน 3 รอบ → rollback แล้ว report สิ่งที่ค้าง
+1. Run `bunx rolldown -c` → the build passes
+2. Compare file list, sizes, formats with the baseline — diff important files if needed
+3. import/require every entry in a consumer → works as before; run the test suite
+4. All pass → remove the `rollup` deps + the original config, in a separate commit
+5. Fails and can't be fixed within 3 rounds → rollback and report what remains
 
 ## Rules
 
 ### 1. Safety
 
-- migration แยก commit ต่อ step — ห้ามผสมกับ feature work
-- เก็บ rollup config จนกว่า verify ผ่านครบ — rollback path ต้องพร้อมเสมอ
+- One commit per migration step — never mix with feature work
+- Keep the rollup config until verification fully passes — the rollback path must always be ready
 
 ### 2. Fidelity
 
-- output ต้องเทียบเท่า: formats, externals, globals, sourcemap — ห้าม output ต่างโดยไม่ตั้งใจ
-- plugin ที่เปลี่ยน behavior ต้อง flag ใน report
+- Output must be equivalent: formats, externals, globals, sourcemap — never let output differ unintentionally
+- Any plugin that changes behavior must be flagged in the report
 
 ## Expected Outcome
 
-- `rolldown.config.ts` แทน rollup config สมบูรณ์
-- build ผ่าน output เทียบเท่าเดิม tests ผ่าน
-- build เร็วขึ้นหรือเท่าเดิม
+- `rolldown.config.ts` fully replaces the rollup config
+- The build passes with equivalent output and tests green
+- The build is faster or the same speed

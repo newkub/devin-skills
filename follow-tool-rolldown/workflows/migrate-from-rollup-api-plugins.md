@@ -1,12 +1,12 @@
 ---
 title: Migrate from Rollup - API and Plugin Compatibility
-description: ความเข้ากันได้ของ API และ plugin migration จาก Rollup ไปยัง Rolldown
+description: API and plugin compatibility for migration from Rollup to Rolldown
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-ตรวจสอบความเข้ากันได้ของ APIs และ plugins ระหว่าง Rollup และ Rolldown
+Check API and plugin compatibility between Rollup and Rolldown
 
 ## Scope
 
@@ -17,7 +17,7 @@ auto_execution_mode: 3
 
 ### Compatible APIs
 
-Rolldown เข้ากันได้กับ Rollup APIs ส่วนใหญ่:
+Rolldown is compatible with most Rollup APIs:
 
 - `input` - Entry points
 - `output` - Output options
@@ -28,12 +28,12 @@ Rolldown เข้ากันได้กับ Rollup APIs ส่วนให�
 ### Minor Differences
 
 Output Options:
-- Rolldown รองรับ options ส่วนใหญ่ของ Rollup
-- บาง advanced options อาจยังไม่รองรับ
+- Rolldown supports most Rollup options
+- Some advanced options may not be supported yet
 
 Plugin Hooks:
-- Rolldown รองรับ plugin hooks หลักของ Rollup
-- บาง advanced hooks อาจยังไม่รองรับ
+- Rolldown supports the main Rollup plugin hooks
+- Some advanced hooks may not be supported yet
 
 ## Plugin Migration
 
@@ -48,7 +48,7 @@ Plugin Hooks:
 
 ### Custom Plugins
 
-Custom plugins ที่ใช้ Rollup API สามารถใช้กับ Rolldown ได้:
+Custom plugins that use the Rollup API can be used with Rolldown:
 
 ```typescript
 // Custom plugin compatible with both
@@ -62,11 +62,11 @@ const myPlugin = () => ({
 
 ## Rules
 
-- ตรวจสอบ plugin compatibility ก่อน migration
-- ใช้ Rolldown plugin versions เมื่อมี
-- Custom plugins ที่ใช้ hooks พื้นฐานสามารถใช้ได้ทันที
+- Check plugin compatibility before migration
+- Use Rolldown plugin versions when available
+- Custom plugins that use basic hooks can be used immediately
 
 ## Expected Outcome
 
-- APIs และ plugins เข้ากันได้กับ Rolldown
-- Custom plugins ทำงานได้ปกติ
+- APIs and plugins are compatible with Rolldown
+- Custom plugins work normally

@@ -1,12 +1,12 @@
 ---
 title: Build Project
-description: Build project ด้วย Rolldown
+description: Build a project with Rolldown
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-Build project ด้วย Rolldown อย่างมีประสิทธิภาพ
+Build a project efficiently with Rolldown
 
 ## Scope
 
@@ -19,13 +19,13 @@ Build project ด้วย Rolldown อย่างมีประสิทธ�
 
 ### 1. Development Build
 
-Build สำหรับ development:
+Build for development:
 
 ```bash
 bun run build
 ```
 
-หรือ:
+Or:
 
 ```bash
 bunx rolldown
@@ -33,7 +33,7 @@ bunx rolldown
 
 ### 2. Production Build
 
-Build สำหรับ production ด้วย minification:
+Build for production with minification:
 
 rolldown.config.ts:
 ```typescript
@@ -60,13 +60,13 @@ NODE_ENV=production bun run build
 
 ### 3. Watch Mode
 
-Watch mode สำหรับ development:
+Watch mode for development:
 
 ```bash
 bun run dev
 ```
 
-หรือ:
+Or:
 
 ```bash
 bunx rolldown --watch
@@ -74,7 +74,7 @@ bunx rolldown --watch
 
 ### 4. Build with Config
 
-Build ด้วย config file เฉพาะ:
+Build with a specific config file:
 
 ```bash
 bunx rolldown --config rolldown.config.ts
@@ -82,7 +82,7 @@ bunx rolldown --config rolldown.config.ts
 
 ### 5. Build with Custom Entry
 
-Build ด้วย custom entry:
+Build with a custom entry:
 
 ```bash
 bunx rolldown --input src/main.ts
@@ -92,7 +92,7 @@ bunx rolldown --input src/main.ts
 
 ### Sourcemap
 
-สร้าง sourcemap:
+Generate a sourcemap:
 
 ```typescript
 export default defineConfig({
@@ -118,7 +118,7 @@ export default defineConfig({
 
 ### Clear Output
 
-ลบ output directory ก่อน build:
+Delete the output directory before build:
 
 ```typescript
 export default defineConfig({
@@ -128,7 +128,7 @@ export default defineConfig({
 
 ### Tree Shaking
 
-ตั้งค่า tree-shaking:
+Configure tree-shaking:
 
 ```typescript
 export default defineConfig({
@@ -217,14 +217,14 @@ export default defineConfig({
 
 ## Rules
 
-- ใช้ `bun run build` สำหรับ standard build
-- ใช้ `--watch` สำหรับ development
-- ใช้ `NODE_ENV=production` สำหรับ production build
-- ตั้งค่า `minify: true` สำหรับ production
+- Use `bun run build` for the standard build
+- Use `--watch` for development
+- Use `NODE_ENV=production` for a production build
+- Set `minify: true` for production
 
 ## Expected Outcome
 
-- Build output ใน `dist/` directory
-- Optimized bundle สำหรับ target environment
-- Sourcemap สำหรับ debugging (ถ้าเปิด)
-- Minified code สำหรับ production (ถ้าเปิด)
+- Build output in the `dist/` directory
+- An optimized bundle for the target environment
+- Sourcemaps for debugging (when enabled)
+- Minified code for production (when enabled)

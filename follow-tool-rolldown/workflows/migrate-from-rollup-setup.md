@@ -1,12 +1,12 @@
 ---
 title: Migrate from Rollup - Setup
-description: ขั้นตอนติดตั้งและตั้งค่าเบื้องต้นสำหรับ migration จาก Rollup ไปยัง Rolldown
+description: Install and initial setup steps for migrating from Rollup to Rolldown
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-Migration จาก Rollup ไปยัง Rolldown อย่าง smooth
+Migrate smoothly from Rollup to Rolldown
 
 ## Scope
 
@@ -19,7 +19,7 @@ Migration จาก Rollup ไปยัง Rolldown อย่าง smooth
 
 ### 1. Install Rolldown
 
-ติดตั้ง Rolldown:
+Install Rolldown:
 
 ```bash
 bun add -D rolldown
@@ -27,7 +27,7 @@ bun add -D rolldown
 
 ### 2. Update Config File
 
-เปลี่ยนจาก `rollup.config.js` เป็น `rolldown.config.ts`:
+Change `rollup.config.js` to `rolldown.config.ts`:
 
 Before (rollup.config.js):
 ```javascript
@@ -55,7 +55,7 @@ export default defineConfig({
 
 ### 3. Update Plugins
 
-เปลี่ยน plugins จาก Rollup เป็น Rolldown:
+Switch the plugins from Rollup to Rolldown:
 
 Before:
 ```javascript
@@ -85,7 +85,7 @@ export default defineConfig({
 
 ### 4. Update Build Script
 
-เปลี่ยน build script ใน package.json:
+Change the build script in package.json:
 
 Before:
 ```json
@@ -107,7 +107,7 @@ After:
 
 ### 5. Test Build
 
-ทดสอบ build:
+Test the build:
 
 ```bash
 bun run build
@@ -115,7 +115,7 @@ bun run build
 
 ### 6. Verify Output
 
-ตรวจสอบ output:
+Check the output:
 
 ```bash
 ls dist/
@@ -123,14 +123,14 @@ ls dist/
 
 ## Rules
 
-- ใช้ `defineConfig` สำหรับ type safety
-- เปลี่ยน plugins เป็น Rolldown versions
-- ทดสอบ build หลัง migration
-- ตรวจสอบ output อย่างละเอียด
+- Use `defineConfig` for type safety
+- Switch plugins to Rolldown versions
+- Test the build after migration
+- Verify the output thoroughly
 
 ## Expected Outcome
 
-- Project ที่ migrate ไปยัง Rolldown สำเร็จ
-- Build time ลดลงอย่างมีนัยสำคัญ
-- Output ที่เทียบเคียงได้กับ Rollup
-- Performance ที่ดีขึ้น
+- A project successfully migrated to Rolldown
+- A significantly reduced build time
+- Output comparable with Rollup
+- Better performance

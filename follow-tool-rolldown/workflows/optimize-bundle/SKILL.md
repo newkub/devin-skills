@@ -1,6 +1,6 @@
 ---
 name: follow-tool-rolldown-optimize bundle
-description: ปรับ Rolldown bundle — code splitting, treeshaking, advancedChunks
+description: Tune the Rolldown bundle — code splitting, treeshaking, advancedChunks
 argument-hint: "[target-area]"
 related:
   - follow-tool-rolldown
@@ -11,70 +11,70 @@ related:
 
 ## Goal
 
-ลดขนาดและปรับ layout ของ Rolldown output — code splitting, tree-shaking และ `output.advancedChunks` — โดยวัดผลก่อนและหลังเสมอ
+Reduce size and tune the layout of Rolldown output — code splitting, tree-shaking, and `output.advancedChunks` — always measuring before and after
 
 ## Scope
 
-- ใช้กับ Rolldown standalone (`rolldown.config.ts`) — ถ้าอยู่ใน Vite ให้ใช้ `follow-tool-vite` workflows แทน
-- ครอบคลุม `output.advancedChunks`, `treeshake`, `external`, minify และ sourcemap options
-- optimization นี้เน้น output quality — ไม่ครอบคลุม dev-server speed
+- For standalone Rolldown (`rolldown.config.ts`) — inside Vite, use the `follow-tool-vite` workflows instead
+- Covers `output.advancedChunks`, `treeshake`, `external`, minify, and sourcemap options
+- These optimizations focus on output quality — not dev-server speed
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: วัดก่อนแก้ ห้ามเดา bottleneck
+> Goal: measure before editing; never guess the bottleneck
 
-1. รัน `bunx rolldown -c` เก็บ build time และขนาดไฟล์ต่อ chunk
-2. ระบุ chunk ที่ใหญ่ผิดปกติหรือ module ที่ไม่ควร bundle — ทำ `/deep-optimize`
-3. บันทึก baseline ไว้ compare (ใช้ `/report-before-after` ตอนจบ)
+1. Run `bunx rolldown -c` and record build time and file size per chunk
+2. Identify abnormally large chunks or modules that shouldn't be bundled — run `/deep-optimize`
+3. Save the baseline for comparison (use `/report-before-after` at the end)
 
 ### 2. Tree-shaking
 
-> Goal: dead code ถูกตัดออกจริง
+> Goal: dead code is actually removed
 
-1. `treeshake` เปิดอยู่เป็น default — ตรวจว่าไม่มีใครปิดไว้
-2. ตั้ง `sideEffects` ใน `package.json` หรือ `treeshake.moduleSideEffects` ให้ถูก — flag เฉพาะไฟล์ที่มี side effects จริง
-3. library ที่ tree-shake ไม่ได้ → mark `external` หรือ import เจาะจง path
+1. `treeshake` is on by default — check nobody disabled it
+2. Set `sideEffects` in `package.json` or `treeshake.moduleSideEffects` correctly — flag only files with real side effects
+3. A library that won't tree-shake → mark it `external` or import specific paths
 
 ### 3. Code Splitting
 
-> Goal: แยก chunks อย่างมีเหตุผล
+> Goal: split chunks for a reason
 
-1. dynamic `import()` ใน source สร้าง chunk boundary — ใช้สำหรับ lazy features
-2. multi-entry `input` object แชร์ common modules ผ่าน `output.advancedChunks`
-3. ใช้ `advancedChunks` groups เช่น `vendor` group ตาม `test`/`minSize`/`priority` — ดู official docs สำหรับ fields ทั้งหมด
-4. หลีกเลี่ยง chunks เล็กเกินหรือ circular imports ระหว่าง chunks
+1. Dynamic `import()` in the source creates chunk boundaries — use for lazy features
+2. A multi-entry `input` object shares common modules via `output.advancedChunks`
+3. Use `advancedChunks` groups, e.g. a `vendor` group by `test`/`minSize`/`priority` — see official docs for all fields
+4. Avoid overly small chunks or circular imports between chunks
 
 ### 4. Output Tuning
 
-> Goal: minify และ output options เหมาะสม
+> Goal: minify and output options fit the target
 
-1. `output.minify` — เปิดสำหรับ production, ปรับ `compress`/`mangle` ตาม official docs
-2. `output.sourcemap` — เลือก strategy ตาม deployment (external map, hidden)
-3. `external` สำหรับ deps ที่ consumer ติดตั้งเอง — library ห้าม bundle `peerDependencies`
-4. ปรับ `entryFileNames`/`chunkFileNames` ให้มี content hash ถ้า output เป็น app bundle ที่ต้อง cache
+1. `output.minify` — on for production, tune `compress`/`mangle` per official docs
+2. `output.sourcemap` — pick a strategy per deployment (external map, hidden)
+3. `external` for deps the consumer installs itself — libraries must never bundle `peerDependencies`
+4. Set `entryFileNames`/`chunkFileNames` with a content hash when the output is a cacheable app bundle
 
 ### 5. Verify
 
-> Goal: compare และไม่ regression
+> Goal: compare, no regressions
 
-1. รัน build ซ้ำ → compare size/chunk count/build time กับ baseline
-2. import/require output ทุก entry → ไม่มี missing modules หรือ side-effects loss
-3. ถ้า regression → revert จุดนั้นแล้ว report diff
+1. Rebuild → compare size/chunk count/build time against the baseline
+2. import/require the output at every entry → no missing modules or lost side effects
+3. If a regression → revert that point and report the diff
 
 ## Rules
 
 ### 1. Correctness First
 
-- tree-shake/แยก chunk ผิดพลาด = runtime แตก — verify output ทุกครั้งหลังเปลี่ยน
-- ห้ามใส่ไฟล์ที่มี side effects จริงภายใต้ `sideEffects: false`
+- A wrong tree-shake/chunk split = broken runtime — verify the output after every change
+- Never put files with real side effects under `sideEffects: false`
 
 ### 2. Options
 
-- ใช้เฉพาะ options จาก official docs (`rolldown.rs`) — Rolldown API เปลี่ยนเร็ว ห้ามเดา
+- Use only options from the official docs (`rolldown.rs`) — the Rolldown API changes fast, never guess
 
 ## Expected Outcome
 
-- bundle เล็กลงหรือ layout ดีขึ้นเทียบ baseline
-- output importable ครบทุก entry ไม่มี behavior เปลี่ยน
+- A smaller bundle or better layout compared to the baseline
+- Output importable at every entry with no behavior changes

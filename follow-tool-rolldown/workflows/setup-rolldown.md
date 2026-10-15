@@ -1,12 +1,12 @@
 ---
 title: Setup Rolldown
-description: Setup Rolldown สำหรับ project ใหม่
+description: Set up Rolldown for a new project
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-Setup Rolldown สำหรับ project ใหม่ด้วยความเร็วและถูกต้อง
+Set up Rolldown for a new project with speed and correctness
 
 ## Scope
 
@@ -19,7 +19,7 @@ Setup Rolldown สำหรับ project ใหม่ด้วยความ�
 
 ### 1. Initialize Project
 
-สร้าง project ใหม่:
+Create a new project:
 
 ```bash
 mkdir my-rolldown-project
@@ -29,7 +29,7 @@ bun init -y
 
 ### 2. Install Rolldown
 
-ติดตั้ง Rolldown:
+Install Rolldown:
 
 ```bash
 bun add -D rolldown
@@ -37,7 +37,7 @@ bun add -D rolldown
 
 ### 3. Create Source Structure
 
-สร้าง source structure:
+Create the source structure:
 
 ```bash
 mkdir src
@@ -45,7 +45,7 @@ mkdir src
 
 ### 4. Create Entry File
 
-สร้าง entry file:
+Create the entry file:
 
 src/index.ts:
 ```typescript
@@ -58,7 +58,7 @@ export const version = '1.0.0'
 
 ### 5. Create Config File
 
-สร้าง config file:
+Create the config file:
 
 rolldown.config.ts:
 ```typescript
@@ -75,7 +75,7 @@ export default defineConfig({
 
 ### 6. Add Build Script
 
-เพิ่ม build script ใน package.json:
+Add the build script in package.json:
 
 ```json
 {
@@ -88,7 +88,7 @@ export default defineConfig({
 
 ### 7. Test Build
 
-ทดสอบ build:
+Test the build:
 
 ```bash
 bun run build
@@ -96,7 +96,7 @@ bun run build
 
 ### 8. Verify Output
 
-ตรวจสอบ output:
+Check the output:
 
 ```bash
 ls dist/
@@ -173,14 +173,14 @@ export default defineConfig({
 
 ## Rules
 
-- ใช้ `bun add -D rolldown` สำหรับติดตั้ง
-- ใช้ TypeScript สำหรับ config file
-- ตั้งชื่อ config file เป็น `rolldown.config.ts`
-- ใช้ `defineConfig` สำหรับ type safety
+- Use `bun add -D rolldown` to install
+- Use TypeScript for the config file
+- Name the config file `rolldown.config.ts`
+- Use `defineConfig` for type safety
 
 ## Expected Outcome
 
-- Project ที่มี Rolldown ติดตั้งแล้ว
-- Config file ที่ถูกต้อง
-- Build script ที่พร้อมใช้งาน
-- Output directory ที่สร้างขึ้น
+- A project with Rolldown installed
+- A correct config file
+- A ready-to-use build script
+- A created output directory

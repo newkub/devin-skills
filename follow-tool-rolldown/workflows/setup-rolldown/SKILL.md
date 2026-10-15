@@ -1,6 +1,6 @@
 ---
 name: follow-tool-rolldown-setup-rolldown
-description: ติดตั้ง Rolldown และสร้าง rolldown.config.ts — entry/output basics
+description: Install Rolldown and create rolldown.config.ts — entry/output basics
 argument-hint: "[project-path]"
 related:
   - follow-tool-rolldown
@@ -10,69 +10,69 @@ related:
 
 ## Goal
 
-ติดตั้ง Rolldown และตั้งค่า `rolldown.config.ts` พื้นฐานให้ bundle JavaScript/TypeScript ได้ — entry, output formats, build scripts
+Install Rolldown and set up a basic `rolldown.config.ts` so it can bundle JavaScript/TypeScript — entry, output formats, build scripts
 
 ## Scope
 
-- first-time setup ของ Rolldown standalone (ไม่ใช่ผ่าน Vite)
-- ครอบคลุม install, config file, `input`/`output` basics, package scripts
-- bundle optimization → `workflows/optimize-bundle/SKILL.md`; migration จาก Rollup → `workflows/migrate-from-rollup/SKILL.md`
+- First-time setup of standalone Rolldown (not through Vite)
+- Covers install, config file, `input`/`output` basics, package scripts
+- Bundle optimization → `workflows/optimize-bundle/SKILL.md`; migration from Rollup → `workflows/migrate-from-rollup/SKILL.md`
 
 ## Execute
 
 ### 1. Prerequisites
 
-> Goal: environment พร้อมก่อนติดตั้ง
+> Goal: environment ready before install
 
-1. ตรวจ Node.js version `^20.19.0 || >=22.12.0`
-2. ตรวจ `package.json` และ package manager ที่ project ใช้
-3. ถ้า setup ไปแล้ว (มี `rolldown` ใน deps + config อยู่) → verify เท่านั้น ข้ามไป step 5
+1. Check the Node.js version `^20.19.0 || >=22.12.0`
+2. Check `package.json` and the package manager the project uses
+3. If already set up (`rolldown` in deps + config exists) → verify only, skip to step 5
 
 ### 2. Install
 
-> Goal: ติดตั้ง rolldown
+> Goal: install rolldown
 
-1. `bun add -D rolldown` หรือ package manager ที่ project ใช้
-2. verify ด้วย `bunx rolldown --version`
+1. `bun add -D rolldown` or the project's package manager
+2. Verify with `bunx rolldown --version`
 
 ### 3. Create Config
 
-> Goal: `rolldown.config.ts` ขั้นต่ำที่จำเป็น
+> Goal: the minimal necessary `rolldown.config.ts`
 
-1. สร้าง `rolldown.config.ts` ที่ root ใช้ `defineConfig` จาก `rolldown`
-2. กำหนด `input` — string หรือ object ของ entry points
-3. กำหนด `output.dir`, `output.format` (`'esm'`/`'cjs'`/`'iife'`) และ `output.sourcemap` ถ้าต้องการ
-4. เขียน config ขั้นต่ำก่อนแล้วค่อยเพิ่ม options — ดู official docs (`rolldown.rs`) สำหรับ options ทั้งหมด
+1. Create `rolldown.config.ts` at the root using `defineConfig` from `rolldown`
+2. Define `input` — a string or object of entry points
+3. Define `output.dir`, `output.format` (`'esm'`/`'cjs'`/`'iife'`), and `output.sourcemap` if wanted
+4. Write a minimal config first, then add options — see the official docs (`rolldown.rs`) for all options
 
 ### 4. Package Scripts
 
-> Goal: รัน build ผ่าน scripts
+> Goal: run builds through scripts
 
-1. เพิ่ม `"build": "rolldown -c"` ใน `package.json` (CLI flags ดู `bunx rolldown --help` หรือ official docs)
-2. เพิ่ม `"build:watch": "rolldown -c --watch"` ถ้าต้องการ watch mode
+1. Add `"build": "rolldown -c"` to `package.json` (for CLI flags see `bunx rolldown --help` or the official docs)
+2. Add `"build:watch": "rolldown -c --watch"` if watch mode is wanted
 
 ### 5. Verify
 
-> Goal: build ผ่านและ output ถูก
+> Goal: build passes and output is correct
 
-1. รัน `bun run build` → ไม่มี error
-2. ตรวจ `dist/` (หรือ `output.dir` ที่กำหนด): ไฟล์ครบ, format ถูก, sourcemap ตามที่ตั้ง
-3. smoke test import output ใน consumer หรือ `node dist/<file>`
-4. ถ้า verify ไม่ผ่าน → `/resolve-errors` max 3 รอบ แล้ว report
+1. Run `bun run build` → no errors
+2. Check `dist/` (or the configured `output.dir`): files complete, format correct, sourcemap as set
+3. Smoke test importing the output in a consumer or `node dist/<file>`
+4. If verify fails → `/resolve-errors` max 3 rounds, then report
 
 ## Rules
 
 ### 1. Setup
 
-- ใช้ `defineConfig` เสมอ
-- config ขั้นต่ำก่อน — ห้าม copy config ตัวอย่างทั้งก้อนโดยไม่เข้าใจ
-- ใช้เฉพาะ options จาก official docs — ห้ามเดา option names
+- Always use `defineConfig`
+- Minimal config first — never copy a full example config without understanding it
+- Use only options from the official docs — never guess option names
 
 ### 2. Idempotent
 
-- ถ้ามี setup อยู่แล้ว → verify อย่างเดียว ห้าม reinstall หรือเขียนทับ config
+- If a setup already exists → verify only; don't reinstall or overwrite the config
 
 ## Expected Outcome
 
-- `rolldown` ติดตั้งและ `rolldown.config.ts` ถูกต้อง
-- `bun run build` สร้าง output ใน `dist/` ครบถ้วน
+- `rolldown` installed and `rolldown.config.ts` correct
+- `bun run build` produces complete output in `dist/`
