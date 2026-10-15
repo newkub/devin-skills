@@ -2,7 +2,7 @@
 
 ## Description
 
-Merge branch หนึ่งเข้ากับอีก branch
+Merge one branch into another
 
 ## Steps
 
@@ -136,12 +136,12 @@ git merge --abort
 
 ## Best Practices
 
-1. Update Before Merge: Pull latest changes ก่อน merge
-2. Review Changes: Review changes ก่อน merge
-3. Test After Merge: Test หลัง merge
-4. Resolve Conflicts Carefully: Resolve conflicts อย่างระมัดระวัง
-5. Delete Merged Branches: Delete branches หลัง merge
-6. Use Pull Requests: ใช้ PR สำหรับ review
+1. Update Before Merge: pull the latest changes before merging
+2. Review Changes: review changes before merging
+3. Test After Merge: test after merging
+4. Resolve Conflicts Carefully: resolve conflicts carefully
+5. Delete Merged Branches: delete branches after merge
+6. Use Pull Requests: use PRs for review
 
 ## Common Issues
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Clone existing Git repository จาก remote
+Clone an existing Git repository from a remote
 
 ## Steps
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-แก้ไข merge conflicts เมื่อ branches มีการเปลี่ยนแปลงที่ขัดแย้งกัน
+Fix merge conflicts when branches have conflicting changes
 
 ## Steps
 
@@ -163,12 +163,12 @@ git rebase --abort
 
 ## Best Practices
 
-1. Communicate: คุยกับ team members เกี่ยวกับ conflicts
-2. Understand Context: เข้าใจทั้งสอง sides ก่อน resolve
-3. Test: Test หลัง resolve conflicts
-4. Ask for Help: ถ้าไม่แน่ใจ ขอความช่วยเหลือ
-5. Document: Document การตัดสินใจสำคัญ
-6. Prevent: Pull บ่อยๆ เพื่อลด conflicts
+1. Communicate: talk with team members about conflicts
+2. Understand Context: understand both sides before resolving
+3. Test: test after resolving conflicts
+4. Ask for Help: if unsure, ask for help
+5. Document: document important decisions
+6. Prevent: pull often to reduce conflicts
 
 ## Common Issues
 

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-git
-description: ใช้งาน git commands ตามสถานการณ์
+description: Use git commands per situation
 argument-hint: "[scope]"
 related:
   - follow-git-flow
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-ใช้งาน git ใน project ให้ถูกต้องและเหมาะสมกับสถานการณ์
+Use git in the project correctly and appropriately for the situation
 
 ## Scope
 
-ใช้กับทุก project ทีใช้ git ไมว่าจะเป็น local workflow, collaboration, หรือ history investigation
+Use with every git project, whether local workflow, collaboration, or history investigation
 
 - Latest: `git@2.55.0` (git-for-windows), `simple-git@4.0.1` / `isomorphic-git@1.42.2` / gh CLI `2.101.0` (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
@@ -26,87 +26,86 @@ related:
 
 ### 1. Setup Repository
 
-> Goal: เตรียม repo ให้พร้อมใช้งาน
+> Goal: prepare the repo for use
 
-1. ใช้ `git clone` สำหรับ repo ทีมีอยู่
-2. ใช้ `git init` สำหรับ project ใหม่
-3. ทำ `git config` ตั้งค่า user, editor, aliases
-4. ตรวจสอบ `git remote` และ `git status`
+1. Use `git clone` for an existing repo
+2. Use `git init` for a new project
+3. Run `git config` to set user, editor, aliases
+4. Check `git remote` and `git status`
 
 ### 2. Daily Workflow
 
-> Goal: ทำงานประจำวันกับ branch และ commit
+> Goal: day-to-day work with branches and commits
 
-1. ใช้ `git branch` หรือ `git switch -c` สร้าง feature branch
-2. ตรวจสอบ `git status` และ `git diff` ก่อน commit
-3. ใช้ `git add` และ `git commit` ด้วยข้อความชัดเจน
-4. ใช้ `git stash` เก็บ changes ชั่วคราว
-5. ใช้ `git push` หรือ `git pull` กับ remote
+1. Create a feature branch with `git branch` or `git switch -c`
+2. Check `git status` and `git diff` before committing
+3. Use `git add` and `git commit` with a clear message
+4. Use `git stash` for temporary changes
+5. Use `git push` or `git pull` with the remote
 
 ### 3. History And Inspection
 
-> Goal: สำรวจประวัติและหาต้นตอของปัญหา
+> Goal: explore history and find the source of problems
 
-1. ใช้ `git log` ดูประวัติ commit
-2. ใช้ `git blame` หาว่าใครแก้บรรทัดไหน
-3. ใช้ `git bisect` หา commit ทีทำให้เกิด bug
-4. ใช้ `git reflog` กู้คืน reference ทีหายไป
+1. Use `git log` to view commit history
+2. Use `git blame` to find who changed which line
+3. Use `git bisect` to find the commit that introduced a bug
+4. Use `git reflog` to recover lost references
 
 ### 4. Collaboration And Integration
 
-> Goal: ทำงานร่วมกับทีมและรวมงาน
+> Goal: work with the team and integrate work
 
-1. ใช้ `git rebase` ปรับ history ให้เป็นเส้นตรง
-2. ใช้ `git merge` รวม branch
-3. ใช้ `git cherry-pick` เอา commit เฉพาะอันมาใช้
-4. ใช้ `git revert` ยกเลิก commit ทีผิด
-5. แก้ไข `git conflict` ด้วยความระมัดระวัง
+1. Use `git rebase` to keep history linear
+2. Use `git merge` to combine branches
+3. Use `git cherry-pick` to take a specific commit
+4. Use `git revert` to undo a wrong commit
+5. Resolve `git conflict` carefully
 
 ### 5. Advanced Operations
 
-> Goal: ใช้งาน git ขั้นสูงตามจำเป็น
+> Goal: advanced git usage as needed
 
-1. ใช้ `git submodule` สำหรับ external dependencies
-2. ใช้ `git lfs` สำหรับไฟล์ใหญ่
-3. ใช้ `git tag` มาร์ก release
-4. ตั้ง git hooks ตรวจคุณภาพก่อน commit — repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (ดู `/follow-tool-moonrepo`); repo อื่นหรือต้องการ staged-file linting ขั้นสูง → `/follow-tool-hk`
-5. ใช้ `git worktree` ทำงานหลาย branch พร้อมกัน
-6. cleanup: `git clean -fd` ลบ untracked files, `git branch -d` ลบ merged branches, `git remote prune`/`git fetch --prune` ลบ stale remote refs
+1. Use `git submodule` for external dependencies
+2. Use `git lfs` for large files
+3. Use `git tag` to mark releases
+4. Set git hooks to check quality before commit — repos with `.moon/workspace.yml` → moon's `vcs.hooks` (see `/follow-tool-moonrepo`); other repos or advanced staged-file linting → `/follow-tool-hk`
+5. Use `git worktree` to work on several branches at once
+6. cleanup: `git clean -fd` removes untracked files, `git branch -d` deletes merged branches, `git remote prune`/`git fetch --prune` removes stale remote refs
 
 ## Rules
 
 ### 1. Safety First
 
-- ทำ dry run ก่อน rebase, reset, revert ทีอาจสูญเสียข้อมูล
-- ไม่ใช้ `--force` กับ shared branches
-- แก้ conflicts ด้วยสติ ตรวจสอบก่อน commit
+- dry-run before rebase, reset, revert that could lose data
+- never `--force` on shared branches
+- resolve conflicts deliberately — verify before committing
 
 ### 2. Clean History
 
-- commit หนึ่งอันควรทำหนึ่งอย่าง
-- ใช้ commit message บอก `what` และ `why`
-- rebase ก่อน merge ถ้าทีมตกลงกัน
+- one commit should do one thing
+- write commit messages covering `what` and `why`
+- rebase before merge if the team agrees
 
 ### 3. Verification
 
-- รัน test หลัง rebase/merge/cherry-pick
-- ตรวจสอบ `git status` ให้สะอาดก่อน push
-- ใช้ `git diff` ตรวจงานก่อน commit
+- run tests after rebase/merge/cherry-pick
+- keep `git status` clean before pushing
+- use `git diff` to review work before committing
 
-- ใช้ `/follow-git-flow` สำหรับ branching model
-- ใช้ `/follow-git-workflows` สำหรับ team workflows
-- ใช้ `/follow-tool-hk` สำหรับ git hooks ใน repo ที่ไม่ใช้ moon
-- ใช้ `/follow-tool-moonrepo` สำหรับ `vcs.hooks` ใน moon repo
-- ใช้ `/follow-tool-usage` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use `/follow-git-flow` for the branching model
+- Use `/follow-git-workflows` for team workflows
+- Use `/follow-tool-hk` for git hooks in non-moon repos
+- Use `/follow-tool-moonrepo` for `vcs.hooks` in moon repos
+- Use `/follow-tool-usage` if needed
+- Use `/follow-best-practice` if needed
+- Use `/setup-cicd` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- สามารถใช้งาน git ได้ตามสถานการณ์ตั้งแต่ daily workflow ถึง advanced operations
-- ไม่ทำลาย history ของทีม
-- สามารถ trace ปัญหาได้ด้วย history tools
-- repo สะอาด อ่านง่าย
-
+- git used correctly from daily workflow through advanced operations
+- team history never damaged
+- problems traceable with the history tools
+- repo clean and easy to read

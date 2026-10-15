@@ -2,7 +2,7 @@
 
 ## Description
 
-สร้าง Git repository ใหม่สำหรับ project
+Create a new Git repository for a project
 
 ## Steps
 

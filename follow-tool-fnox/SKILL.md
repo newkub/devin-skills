@@ -1,6 +1,6 @@
 ---
 name: follow-tool-fnox
-description: โหลด secrets จาก encrypted files / vaults / cloud เข้า env ของ app ผ่าน fnox.toml + fnox exec
+description: Load secrets from encrypted files / vaults / cloud into app env via fnox.toml + fnox exec
 argument-hint: "[scope]"
 related:
   - follow-tool-mise
@@ -13,26 +13,26 @@ related:
 
 ## Goal
 
-ใช้ `fnox` (jdx, Rust, MIT) จัดการ secrets ตอน dev/CI — กำหนด source ของแต่ละค่าใน `fnox.toml` (commit ได้ เพราะเก็บ reference/ciphertext ไม่ใช่ plaintext) แล้ว inject เข้า env ตอนรัน
+Use `fnox` (jdx, Rust, MIT) to manage secrets in dev/CI — define each value's source in `fnox.toml` (committable, because it stores references/ciphertext, not plaintext) and inject them into the environment at run time
 
 ## Scope
 
 - `fnox.toml` providers + secrets, `fnox exec`, `fnox set`, profiles, shell integration, daemon cache, temporary credentials (leases), agent proxy
-- ไม่ใช่การตั้งกฎ scan — สแกนหลุดใช้ `/follow-tool-gitleaks` + `/check-secrets`
+- Not leak scanning — for leaked secrets use `/follow-tool-gitleaks` + `/check-secrets`
 - Latest: v1.36.x — https://fnox.jdx.dev/
 
 ## Execute
 
 ### 1. Install
 
-> Goal: fnox พร้อมใช้
+> Goal: fnox ready to use
 
-1. `mise use -g fnox` (ตาม `/follow-tool-mise`)
-2. ตรวจ `fnox --version`
+1. `mise use -g fnox` (per `/follow-tool-mise`)
+2. Verify `fnox --version`
 
 ### 2. Configure Providers + Secrets
 
-> Goal: `fnox.toml` ชี้แต่ละ secret ไปยัง source
+> Goal: `fnox.toml` points each secret to its source
 
 1. Encrypted-in-git (age):
 
@@ -43,10 +43,10 @@ recipients = ["age1..."]
 
 [secrets.DATABASE_URL]
 provider = "age"
-value = "<ciphertext>"   # เขียนโดย fnox set
+value = "<ciphertext>"   # written by fnox set
 ```
 
-2. Vault ที่มีอยู่ (1Password example):
+2. An existing vault (1Password example):
 
 ```toml
 [providers.op]
@@ -58,27 +58,27 @@ provider = "op"
 value = "Database/url"
 ```
 
-3. Providers อื่น: aws-sm, azure-sm, gcp-sm, bitwarden, vault — ผสมได้ทีละ secret
-4. `fnox set DATABASE_URL` เขียน ciphertext/reference ให้
+3. Other providers: aws-sm, azure-sm, gcp-sm, bitwarden, vault — mixable per secret
+4. `fnox set DATABASE_URL` writes the ciphertext/reference for you
 
 ### 3. Run With Secrets
 
-> Goal: app เห็น env จริงโดยไม่ commit secret
+> Goal: the app sees real env values without committing secrets
 
-1. `fnox exec -- npm start` → env ถูก inject เฉพาะ process
-2. Profiles: dev/staging/prod — เปลี่ยน source โดยไม่เปลี่ยนคำสั่งรัน
-3. Shell integration: auto load/unload ตาม directory (`guide/shell-integration`)
-4. Daemon (opt-in): cache resolved values ใน memory ระหว่าง session
+1. `fnox exec -- npm start` → env injected into that process only
+2. Profiles: dev/staging/prod — switch sources without changing the run command
+3. Shell integration: auto load/unload per directory (`guide/shell-integration`)
+4. Daemon (opt-in): caches resolved values in memory across sessions
 5. Leases: temporary credentials (AWS STS, GitHub Apps, Vault)
-6. Agent proxy: ส่ง placeholder ให้ agent แล้ว inject ค่าจริงเฉพาะ HTTPS request ที่ match
+6. Agent proxy: hand placeholders to the agent, inject real values only into matching HTTPS requests
 
 ## Rules
 
-- commit `fnox.toml` ได้ — แต่ห้าม commit plaintext `value`; ใช้ provider reference หรือ ciphertext เท่านั้น
-- เลือก provider ตามทีม: vault เดิมมีอยู่ → reference, ไม่มี → age encrypt
-- local cache ผ่าน `fnox sync` (age) เท่านั้น — ไม่ใช่ plaintext fallback
+- `fnox.toml` is committable — but never commit a plaintext `value`; use provider references or ciphertext only
+- Pick the provider per team: existing vault → reference, none → age encryption
+- local cache only via `fnox sync` (age) — never a plaintext fallback
 
 ## Expected Outcome
 
-- `fnox.toml` commit อยู่ใน repo, secrets resolve จาก provider/ciphertext
-- `fnox exec -- <cmd>` ใช้งานจริงใน dev และ CI
+- `fnox.toml` committed in the repo, secrets resolved from provider/ciphertext
+- `fnox exec -- <cmd>` in real use in dev and CI

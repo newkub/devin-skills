@@ -2,7 +2,7 @@
 
 ## Description
 
-Commit การเปลี่ยนแปลงไปยัง repository
+Commit changes to the repository
 
 ## Steps
 
@@ -115,11 +115,11 @@ git config --global commit.gpgsign true
 
 ## Best Practices
 
-1. Atomic Commits: Commit ทำสิ่งเดียวต่อ commit
-2. Meaningful Messages: ใช้ conventional commit format
-3. Review Before Commit: Check changes ก่อน commit
-4. Test Before Commit: ตรวจสอบว่า pass tests
-5. Stage Selectively: Stage เฉพาะที่จำเป็น
+1. Atomic Commits: each commit does one thing
+2. Meaningful Messages: use conventional commit format
+3. Review Before Commit: check changes before committing
+4. Test Before Commit: verify tests pass
+5. Stage Selectively: stage only what's needed
 
 ## Common Issues
 
