@@ -1,34 +1,34 @@
 # Taze — Best Practices
 
-Dependency updater CLI — interactive + CI modes สำหรับ version bumps
+Dependency updater CLI — interactive + CI modes for version bumps
 
 ## Recommended Patterns
 
-- `taze` interactive — grouped view (major/minor/patch), เลือก bump ต่อ dep
-- `taze -w` write ลง package.json — ตรวจ diff ก่อน commit; `taze` ดิบ = dry-run
-- `taze major` เฉพาะเมื่อตั้งใจ upgrade majors — default respects semver ranges
-- Monorepo: `-r` recursive ทุก workspace — consistent bumps ข้าม packages
-- `taze --include locked` หรือ filters ต่อ dep patterns — scope updates เช่น types-only
+- `taze` interactive — grouped view (major/minor/patch), pick the bump per dep
+- `taze -w` writes into package.json — review the diff before committing; a bare `taze` = dry run
+- `taze major` only when upgrading majors is intended — the default respects semver ranges
+- Monorepo: `-r` recurses every workspace — consistent bumps across packages
+- `taze --include locked` or filters per dep patterns — scope updates, e.g. types-only
 
 ## Common Pitfalls
 
-- Bump แล้วต้อง install + test — version เปลี่ยน ≠ deps ติดตั้ง; `bun install` + `run-check` เสมอ
-- Lockfile sync: package.json bump ต้อง regen lockfile — commit ทั้งคู่
-- Peer dep warnings หลัง bump — majors ที่ peer conflicts = ต้อง upgrade chain ทั้ง cluster
-- New versions อายุ <7 วัน = supply-chain risk — เช็ค publish date, prefer stable
-- Beta/alpha tags: taze อาจเสนอ prereleases — verify tag ก่อน accept
+- After bumping you must install + test — a version change ≠ installed deps; always `bun install` + `run-check`
+- Lockfile sync: a package.json bump must regen the lockfile — commit both
+- Peer dep warnings after a bump — majors with peer conflicts = upgrade the whole cluster's chain
+- New versions younger than 7 days = supply-chain risk — check publish dates, prefer stable
+- Beta/alpha tags: taze may offer prereleases — verify the tag before accepting
 
 ## Workflow
 
 - Periodic: `taze` → review grouped list → bump safe set → install → typecheck+test → commit
-- Pair กับ `/run-bench-deps` — bench report ชี้ outdated, taze executes bump
-- Renovate ใน CI กับ taze local = complementary — อย่า run ทั้งคู่ conflict
+- Pair with `/run-bench-deps` — the bench report flags outdated deps, taze executes the bump
+- Renovate in CI with taze locally = complementary — don't run both in conflict
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| dry-run review ก่อน `-w` | blind `taze major -w` |
-| bump → install → test → commit | bump แล้วลืม lockfile |
-| grouped minor/patch first | major bumps ทีเดียวหมด |
+| dry-run and review before `-w` | blind `taze major -w` |
+| bump → install → test → commit | bump and forget the lockfile |
+| grouped minor/patch first | major bumps at once |
 | check publish dates | accept day-old versions |

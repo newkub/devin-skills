@@ -1,35 +1,35 @@
 # template-starter (degit) — Best Practices
 
-Scaffold projects จาก template repos ด้วย degit — clean copies ไม่มี git history
+Scaffold projects from template repos with degit — clean copies without git history
 
 ## Recommended Patterns
 
-- `degit <user>/<repo>[/<subdir>] <target>` — คัดลอกไฟล์ไม่มี `.git`; subdir syntax สำหรับ monorepo templates
-- `#branch`/`#tag` suffix pin template version — default main = moving target; pin สำหรับ reproducible scaffolds
-- `--force` เฉพาะเมื่อตั้งใจ overwrite — degit refuse non-empty dirs by default (ดี)
-- Post-scaffold checklist: rename package name, install deps, เปลี่ยน README/LICENSE, init git ใหม่
-- Template repos ของตัวเอง: keep minimal + documented placeholders — scaffold ออกมาพร้อมใช้
+- `degit <user>/<repo>[/<subdir>] <target>` — copies files without `.git`; the subdir syntax is for monorepo templates
+- `#branch`/`#tag` suffix pins the template version — default main = a moving target; pin for reproducible scaffolds
+- `--force` only when overwriting is intended — degit refuses non-empty dirs by default (good)
+- Post-scaffold checklist: rename the package, install deps, replace README/LICENSE, init git fresh
+- Your own template repos: keep minimal + documented placeholders — the scaffold comes out ready to use
 
 ## Common Pitfalls
 
-- degit ไม่ resolve git submodules — templates ที่มี submodules ต้อง manual init
-- Placeholder tokens ใน templates (ชื่อ project, author) — script rename หรือ sed หลัง scaffold
-- Cache: degit cache GitHub tarballs — stale template ใช้ `--force` หรือ clear cache
-- Private repos: degit รองรับผ่าน auth (`--mode git` fallback) — https download ต้อง public
-- อย่า scaffold บน existing project root — target dir ใหม่เสมอ, merge เองถ้าจำเป็น
+- degit does not resolve git submodules — templates with submodules need a manual init
+- Placeholder tokens in templates (project name, author) — script the rename or sed after scaffolding
+- Cache: degit caches GitHub tarballs — for a stale template use `--force` or clear the cache
+- Private repos: degit supports them via auth (`--mode git` fallback) — the https download path needs public repos
+- Never scaffold on an existing project root — always a new target dir, merge manually if needed
 
 ## Workflow
 
-1. เลือก template (official/community/mine) + pin tag
+1. Pick the template (official/community/mine) + pin a tag
 2. `degit user/repo target`
 3. `cd target` → install → rename placeholders → `git init` → first commit
-4. Verify dev/build/test pass ก่อนเขียนโค้ดจริง
+4. Verify dev/build/test pass before writing real code
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| pin template `#tag` | scaffold จาก moving main |
-| target dir ใหม่เสมอ | degit ลง existing project |
-| rename placeholders ทันที | commit template branding |
-| verify scaffold รันได้ก่อน | assume template works |
+| pin the template `#tag` | scaffold from a moving main |
+| always a new target dir | degit into an existing project |
+| rename placeholders immediately | commit template branding |
+| verify the scaffold runs first | assume the template works |

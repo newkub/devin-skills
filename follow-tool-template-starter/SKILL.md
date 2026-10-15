@@ -1,6 +1,6 @@
 ---
 name: follow-tool-template-starter
-description: ใช้ templates จาก template-starter repository ด้วย degit
+description: Use templates from the template-starter repository with degit
 argument-hint: "[scope]"
 related:
   - follow-tool-git
@@ -11,105 +11,105 @@ related:
 
 ## Goal
 
-ใช้ templates จาก `newkub/template-starter` repository ด้วย `degit` หรือ `git clone` เพื่อเริ่ม project
+Use templates from the `newkub/template-starter` repository via `degit` or `git clone` to start a project
 
 ## Scope
 
-ใช้สำหรับ clone templates จาก `https://github.com/newkub/template-starter/tree/main/templates` มายัง project ปัจจุบัน
+Use for cloning templates from `https://github.com/newkub/template-starter/tree/main/templates` into the current project
 
-- Boundary: ใช้ skill นี้เฉพาะ clone template จาก `newkub/template-starter`; สำหรับ scaffold project ใหม่จาก zero ใช้ `/follow-create-web` หรือ `/follow-create-cli` ตาม project type; ถ้าต้องการ git history เต็มใช้ `git clone` แทน `degit`
+- Boundary: use this skill only to clone templates from `newkub/template-starter`; to scaffold a new project from zero use `/follow-create-web` or `/follow-create-cli` per project type; if you need the full git history use `git clone` instead of `degit`
 - Latest: `degit@3.10.0` (verified 2026-09-13) — requires Node.js >= 20
 
 ## Execute
 
 ### 1. Discover Templates
 
-> Goal: ค้นหาและเลือก template ทีเหมาะสม
+> Goal: Find and pick the right template
 
-1. รัน `gh repo view newkub/template-starter` เพื่อดู repository
-2. ดู templates ที่มีใน `templates/` directory
-3. ตรวจสอบ README ของแต่ละ template
-4. เลือก template ตาม stack ทีต้องการ
+1. Run `gh repo view newkub/template-starter` to see the repository
+2. Browse the available templates in the `templates/` directory
+3. Check each template's README
+4. Pick the template matching the wanted stack
 
 ### 2. Clone Template
 
-> Goal: clone template ด้วย degit โดยไม่รวม git history
+> Goal: Clone the template with degit without git history
 
-1. ใช้ `bunx degit newkub/template-starter/templates/<template-name> <target-dir>`
-2. ถ้าต้องการ preserve git history ให้ใช้ `git clone` แทน — degit เป็น tar snapshot เสมอ และ `--mode=git` deprecated ใน v3
-3. ใช้ `--files` เพื่อ clone เฉพาะไฟล์ทีต้องการ
-4. ใช้ `--force` ด้วยความระมัดระวังถ้า target directory ไม่ว่าง
-5. ดูรายละเอียด degit ใน 
+1. Use `bunx degit newkub/template-starter/templates/<template-name> <target-dir>`
+2. If you want to preserve git history use `git clone` instead — degit is always a tar snapshot, and `--mode=git` is deprecated in v3
+3. Use `--files` to clone only the wanted files
+4. Use `--force` carefully when the target directory is not empty
+5. See degit details in 
 
 ### 3. Setup Cloned Template
 
-> Goal: ตั้งค่า template หลัง clone
+> Goal: Configure the template after cloning
 
-1. อ่าน `README.md` ของ template
-2. รัน `bun install` เพื่อ install dependencies
-3. ตั้งค่า environment variables ตาม template
-4. รัน setup scripts ถ้ามี เช่น `bun run setup`
-5. ตรวจสอบ `package.json` scripts
+1. Read the template's `README.md`
+2. Run `bun install` to install dependencies
+3. Configure environment variables per the template
+4. Run setup scripts if present, e.g. `bun run setup`
+5. Check the `package.json` scripts
 
 ### 4. Verify Template
 
-> Goal: ตรวจสอบว่า template ทำงานได้
+> Goal: Confirm the template works
 
-1. รัน `bun run dev` เพื่อ start development server
-2. รัน `bun run build` เพื่อตรวจสอบ build
-3. รัน `bun run test` ถ้ามี
-4. รัน `bun run lint` ถ้ามี
+1. Run `bun run dev` to start the development server
+2. Run `bun run build` to verify the build
+3. Run `bun run test` if present
+4. Run `bun run lint` if present
 
 ### 5. Initialize Git and Customize
 
-> Goal: แปลง template ไปยัง project ของตัวเอง
+> Goal: Turn the template into your own project
 
-1. ลบ `.git` ของ template ถ้าใช้ degit จะไม่มี
-2. ทำ `/follow-tool-git` เพื่อ init repository
-3. แก้ไขชื่อ project, package name, README
-4. อัปเดต dependencies ถ้าจำเป็น
+1. Delete the template's `.git` — with degit there is none
+2. Do `/follow-tool-git` to init the repository
+3. Edit the project name, package name, and README
+4. Update dependencies if needed
 
 ## Rules
 
 ### 1. Tool Selection
 
-- ใช้ `bunx degit` เป็นหลักสำหรับ lightweight clone
-- ใช้ `git clone` ถ้าต้องการ full history
-- ใช้ `gh repo clone` ถ้าใช้ GitHub CLI
+- Use `bunx degit` as the default for a lightweight clone
+- Use `git clone` when you need the full history
+- Use `gh repo clone` when working with the GitHub CLI
 
 ### 2. Safety
 
-- ตรวจสอบ template name ก่อน clone
-- backup ไฟล์สำคัญก่อน clone ถ้า target ไม่ว่าง
-- ใช้ `--force` เฉพาะเมื่อแน่ใจว่าจะ overwrite
+- Verify the template name before cloning
+- Back up important files before cloning into a non-empty target
+- Use `--force` only when you are sure you want to overwrite
 
 ### 3. Validation
 
-- ตรวจสอบ `package.json` และ dependencies
-- รัน `bun run dev`, `bun run build`, `bun run test`
-- อ่าน README ของ template ก่อน setup
+- Check `package.json` and the dependencies
+- Run `bun run dev`, `bun run build`, `bun run test`
+- Read the template's README before setup
 
 ### 4. Customization
 
-- แก้ไข project metadata หลัง clone
-- ลบไฟล์ที่ไม่จำเป็น
-- commit หลัง setup เสร็จ
+- Edit the project metadata after cloning
+- Remove unnecessary files
+- Commit once setup is done
 
-- ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
+- Use /follow-tasks if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-tool-vite if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Template ถูก clone มาใช้งาน
-- Dependencies ติดตั้งครบถ้วน
-- Template รัน dev, build, test ผ่าน
-- Project ถูก init และพร้อมพัฒนาต่อ
+- The template is cloned and in use
+- Dependencies are fully installed
+- The template passes dev, build, and test
+- The project is initialized and ready to develop
 
