@@ -1,6 +1,6 @@
 ---
 name: follow-tool-renovate-config-renovate
-description: ตั้งค่า `renovate.json` — extends presets, packageRules, automerge, schedule
+description: Configure `renovate.json` — extends presets, packageRules, automerge, schedule
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
@@ -10,80 +10,80 @@ related:
 
 ## Goal
 
-ตั้งค่า `renovate.json` ให้ตรง update policy — `extends` presets, `packageRules`, `automerge`, `schedule` — โดย merge กับ config เดิม
+Configure `renovate.json` to match the update policy — `extends` presets, `packageRules`, `automerge`, `schedule` — merging with the existing config
 
 ## Scope
 
-ใช้เมื่อต้องแก้ Renovate config ที่มีอยู่ — install/token/workflow อยู่ใน `workflows/setup-renovate/SKILL.md`
+Use when editing an existing Renovate config — install/token/workflow are in `workflows/setup-renovate/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. หา config: `renovate.json`, `.github/renovate.json`, `renovate.json5`, หรือ `"renovate"` field ใน `package.json`
-2. บันทึก keys ปัจจุบัน — ทำ `/deep-review` domain `review-config` ถ้าสงสัย config ค้าง
-3. ถ้าไม่มี config → ทำ `workflows/setup-renovate/SKILL.md` ก่อน
+1. Find the config: `renovate.json`, `.github/renovate.json`, `renovate.json5`, or the `"renovate"` field in `package.json`
+2. Record the current keys — run `/deep-review-codebase` domain `review-config` if the config looks suspicious
+3. If no config exists → run `workflows/setup-renovate/SKILL.md` first
 
 ### 2. Base Config And Presets
 
-> Goal: ตั้งค่า base และ `extends`
+> Goal: set the base and `extends`
 
-1. ใช้ `"$schema": "https://docs.renovatebot.com/renovate-schema.json"`
-2. `extends` — `["config:base"]` เป็นจุดเริ่มต้น; presets อื่นดู official docs (`config:recommended` อาจเพิ่ม checks ที่ไม่ต้องการ)
-3. `schedule` — เช่น `["every day"]` หรือช่วงเวลาที่ชัดเจน
-4. `"platform": "github"` สำหรับ self-hosted; `repositories: ["owner/repo"]` ถ้ารันหลาย repo
-5. `docker: false` ถ้าไม่ต้องการ Docker updates
+1. Use `"$schema": "https://docs.renovatebot.com/renovate-schema.json"`
+2. `extends` — `["config:base"]` as the starting point; see official docs for other presets (`config:recommended` may add unwanted checks)
+3. `schedule` — e.g. `["every day"]` or an explicit time window
+4. `"platform": "github"` for self-hosted; `repositories: ["owner/repo"]` when running multiple repos
+5. `docker: false` if Docker updates aren't wanted
 
 ### 3. Package Rules
 
-> Goal: กำหนด per-package/group policies ด้วย `packageRules`
+> Goal: define per-package/group policies with `packageRules`
 
-1. Group related packages — `matchPackagePatterns`/`matchPackageNames` เพื่อรวม PR เดียว (เช่น eslint ecosystem, framework + plugins)
-2. ใช้ `matchUpdateTypes` (`patch`, `minor`, `major`) แยก policy ตาม bump severity
-3. `enabled: false` สำหรับ packages ที่ freeze ไว้
-4. matchers ต้องถูกต้อง — ผิดจะทำ rule ไม่ match เงียบๆ
+1. Group related packages — `matchPackagePatterns`/`matchPackageNames` to combine into one PR (e.g. the eslint ecosystem, framework + plugins)
+2. Use `matchUpdateTypes` (`patch`, `minor`, `major`) to split policy by bump severity
+3. `enabled: false` for packages you keep frozen
+4. Matchers must be exact — a wrong one silently stops the rule from matching
 
 ### 4. Automerge
 
-> Goal: ตั้งค่า automerge policy
+> Goal: set the automerge policy
 
-1. `automerge: true` ใน `packageRules` สำหรับ low-risk updates (เช่น devDependencies patch/minor)
-2. ใช้ `automergeType`/`platformAutomerge` ตาม repo settings — ดู official docs สำหรับ option names ที่ไม่แน่ใจ
-3. ไม่ automerge major bumps หรือ production-critical dependencies โดยไม่ review
-4. ตรวจ branch protection — automerge ต้องผ่าน required checks
+1. `automerge: true` in `packageRules` for low-risk updates (e.g. devDependencies patch/minor)
+2. Use `automergeType`/`platformAutomerge` per repo settings — check official docs for uncertain option names
+3. Never automerge major bumps or production-critical dependencies without review
+4. Check branch protection — automerge must pass the required checks
 
 ### 5. Validate And Monitor
 
-> Goal: ตรวจ config และติดตามผล
+> Goal: validate the config and follow up
 
-1. รัน `bunx -- renovate-config-validator <config-path>` — ต้องผ่าน
-2. หลัง merge → monitor PRs ที่ Renovate สร้าง: automerge ผ่านไหม, rules match ถูกไหม
-3. ปรับ `packageRules` เมื่อพบ deps ที่ไม่ต้องการ auto update
-4. report before/after ด้วย `/report-before-after`
+1. Run `bunx -- renovate-config-validator <config-path>` — it must pass
+2. After merge → monitor the PRs Renovate creates: does automerge pass, do the rules match correctly
+3. Adjust `packageRules` when you find deps you don't want auto-updated
+4. Report before/after with `/report-before-after`
 
 ## Rules
 
 ### 1. Config Discipline
 
-- ใช้ `config:base` เป็น base; merge เฉพาะ keys ที่จำเป็น ห้าม overwrite ทั้งไฟล์
-- validate ด้วย `renovate-config-validator` ทุกครั้งหลังแก้
+- Use `config:base` as the base; merge only the necessary keys, never overwrite the whole file
+- Validate with `renovate-config-validator` after every change
 
 ### 2. Automerge Safety
 
-- automerge เฉพาะ low-risk updates — major/critical deps ต้อง review
-- branch protection required checks ต้อง set ก่อนเปิด automerge
+- Automerge only low-risk updates — major/critical deps need review
+- Branch protection required checks must be set before enabling automerge
 
 ### 3. Common Mistakes
 
-- `config:recommended` อาจเพิ่ม checks ที่ไม่ต้องการ — รู้ว่า preset ทำอะไรก่อน extends
-- matchers ผิด = rule ไม่ทำงานเงียบๆ — ตรวจ PRs จริงหลังแก้
+- `config:recommended` may add unwanted checks — know what a preset does before extending it
+- Wrong matchers = the rule silently doesn't fire — verify against real PRs after editing
 
-- ใช้ /deep-review review-config ถ้าจำเป็น
+- Use /deep-review-codebase review-config if needed
 
 ## Expected Outcome
 
-- `renovate.json` ผ่าน validator
-- `packageRules`/automerge ตรง update policy
-- PRs สร้างและ automerge ตามที่ตั้งใจ
+- `renovate.json` passes the validator
+- `packageRules`/automerge match the update policy
+- PRs are created and automerged as intended

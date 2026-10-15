@@ -1,6 +1,6 @@
 ---
 name: follow-tool-release-it
-description: ตั้งค่า release-it สำหรับ automated version bump, tag และ npm publish
+description: Set up release-it for automated version bump, tag, and npm publish
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -16,18 +16,18 @@ related:
 
 ## Goal
 
-ตั้งค่า `release-it` สำหรับ automated releases ไปยัง npm และ GitHub
+Set up `release-it` for automated releases to npm and GitHub
 
 ## Scope
 
-ใช้สำหรับ Node.js projects ที่ต้องการ version bump, git tag, changelog, npm publish และ GitHub release แบบ automated
+Use for Node.js projects that want automated version bump, git tag, changelog, npm publish, and GitHub release
 
-- เลือก tool ตาม workflow: `release-it` เหมาะกับ interactive/manual release ทีเลือก version และ hooks ได้ยืดหยุ่น
-- ใช้ `follow-tool-semantic-release` เมื่อต้องการ fully automated release จาก conventional commits โดยไม่ต้องเลือก version เอง
-- ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
-- ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
+- Pick the tool by workflow: `release-it` fits interactive/manual releases where you choose the version and flex the hooks
+- Use `follow-tool-semantic-release` when you want fully automated releases from conventional commits without picking versions yourself
+- Use `follow-tool-changesets` for monorepo/workspaces that need several packages versioned at once
+- Use `follow-tool-changelogen` when you only need changelog generation, no publishing
 
-- Latest: `release-it@21.1.0` (verified 2026-09-24) — v21 ต้องใช้ Node.js `^22.21.0 | >=24.0.0`
+- Latest: `release-it@21.1.0` (verified 2026-09-24) — v21 requires Node.js `^22.21.0 | >=24.0.0`
 
 ## Execute
 
@@ -36,99 +36,99 @@ related:
 | Topic | Workflow |-------|----------| Install, release script, hooks/plugins basics | `workflows/setup-release-it/SKILL.md` | `.release-it.json` — git, github, npm, changelog options | `workflows/config-release-it/SKILL.md` 
 ### 1. Install
 
-> Goal: ติดตั้ง release-it ใน project
+> Goal: install release-it in the project
 
-1. รัน `bun add -D release-it`
-2. เพิ่ม script ใน `package.json`: `"release": "release-it"`
-3. ยืนยันด้วย `bunx release-it --version`
-4. ดูรายละเอียดใน 
+1. Run `bun add -D release-it`
+2. Add a script in `package.json`: `"release": "release-it"`
+3. Verify with `bunx release-it --version`
+4. See details in 
 
 ### 2. Configure
 
-> Goal: สร้าง config สำหรับ release-it
+> Goal: create a config for release-it
 
-1. สร้าง `.release-it.json` ที่ project root
-2. ตั้งค่า `git`, `npm`, `github` และ `hooks` ตาม project policy
-3. ใช้ `requireCleanWorkingDir: false` เฉพาะเมื่อ CI รันโดยไม่ต้อง clean working dir
-4. ดูรายละเอียดใน 
+1. Create `.release-it.json` at the project root
+2. Set `git`, `npm`, `github`, and `hooks` per the project policy
+3. Use `requireCleanWorkingDir: false` only when CI runs without a clean working dir
+4. See details in 
 
 ### 3. Manual Release
 
-> Goal: รัน release ใน local หรือ CI
+> Goal: run a release locally or in CI
 
-1. รัน `bun run release` สำหรับ interactive mode
-2. รัน `bun run release --ci` สำหรับ non-interactive mode
-3. ใช้ `major`, `minor`, `patch` หรือ `--release-version` เพื่อควบคุม version
-4. ดูรายละเอียดใน 
+1. Run `bun run release` for interactive mode
+2. Run `bun run release --ci` for non-interactive mode
+3. Use `major`, `minor`, `patch`, or `--release-version` to control the version
+4. See details in 
 
 ### 4. GitHub Actions Workflow
 
-> Goal: รัน release อัตโนมัติเมื่อ push ไป main
+> Goal: release automatically on push to main
 
-1. สร้าง `.github/workflows/release.yml`
-2. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN` secrets หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง tokens
-3. ใช้ `actions/checkout@v7` และ `oven-sh/setup-bun@v2`
-4. รัน `bun install` แล้ว `bun run release --ci`
-5. ดูรายละเอียดใน 
+1. Create `.github/workflows/release.yml`
+2. Use `/follow-secret-manager` to manage the `NPM_TOKEN` and `GITHUB_TOKEN` secrets, or `/open-web-for-config-secret` to open the token-creation URLs
+3. Use `actions/checkout@v7` and `oven-sh/setup-bun@v2`
+4. Run `bun install` then `bun run release --ci`
+5. See details in 
 
 ### 5. Plugins
 
-> Goal: ขยาย release-it ด้วย plugins
+> Goal: extend release-it with plugins
 
-1. ใช้ `@release-it/conventional-changelog` สำหรับ auto changelog
-2. ใช้ `@release-it/bumper` สำหรับ custom manifest files
-3. ใช้ `@release-it/keep-a-changelog` สำหรับ maintain `CHANGELOG.md`
-4. ดูรายละเอียดใน 
+1. Use `@release-it/conventional-changelog` for an auto changelog
+2. Use `@release-it/bumper` for custom manifest files
+3. Use `@release-it/keep-a-changelog` to maintain `CHANGELOG.md`
+4. See details in 
 
 ## Rules
 
 ### 1. Safety
 
-- ตรวจสอบสิทธิ์ publish ไปยัง npm ก่อนรัน release
-- ใช้ `requireCleanWorkingDir: true` สำหรับ local release
-- ตั้งค่า `NPM_TOKEN` และ `GITHUB_TOKEN` เป็น repository secrets
+- Verify publish rights to npm before running a release
+- Use `requireCleanWorkingDir: true` for local releases
+- Set `NPM_TOKEN` and `GITHUB_TOKEN` as repository secrets
 
 ### 2. CI
 
-- ใช้ `--ci` ใน GitHub Actions เพื่อปิด interactive prompts
-- ใช้ `fetch-depth: 0` ใน `actions/checkout` เพื่อให้มีประวัติทั้งหมด
-- ไม่รัน release บน pull request
+- Use `--ci` in GitHub Actions to disable interactive prompts
+- Use `fetch-depth: 0` in `actions/checkout` to have the full history
+- Never run release on a pull request
 
 ### 3. Versioning
 
-- ใช้ conventional commits หรือ bump type ที่ถูกต้อง
-- ตรวจสอบ `package.json` version ก่อน release
-- ใช้ `--no-npm.publish` สำหรับ test run ถ้าจำเป็น
-- v21: CLI parsing เป็น strict — unknown options, invalid booleans และ positional args เกินจะถูก reject
-- v21: GitLab server certificates ถูก verify โดย default — ใช้ private CA หรือ `gitlab.secure: false` ถ้าจำเป็น
+- Use conventional commits or the correct bump type
+- Check the `package.json` version before releasing
+- Use `--no-npm.publish` for a test run if needed
+- v21: CLI parsing is strict — unknown options, invalid booleans, and extra positional args are rejected
+- v21: GitLab server certificates are verified by default — use a private CA or `gitlab.secure: false` if needed
 
 ### 4. Secrets
 
-- ไม่ hard-code tokens ใน config หรือ workflow
-- ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN`
-- ใช้ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง API keys
-- ใช้ `secrets.NPM_TOKEN` และ `secrets.GITHUB_TOKEN` ผ่าน GitHub Actions
-- ถ้าจำเป็น ใช้ `gh secret set` สำหรับตั้งค่าผ่าน CLI
+- Never hard-code tokens in config or workflow
+- Use `/follow-secret-manager` to manage `NPM_TOKEN` and `GITHUB_TOKEN`
+- Use `/open-web-for-config-secret` to open the API-key creation URLs
+- Use `secrets.NPM_TOKEN` and `secrets.GITHUB_TOKEN` via GitHub Actions
+- If needed, use `gh secret set` to configure via CLI
 
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool release it)
-- ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool release it)
-- ใช้ /follow-tool-pkg-new ถ้าจำเป็น
-- ใช้ /follow-lang-nodejs ถ้าจำเป็น
+- Use /follow-tool-semantic-release if needed (tool release it)
+- Use /follow-tool-changesets if needed
+- Use /follow-tool-github-actions if needed (tool release it)
+- Use /follow-tool-pkg-new if needed
+- Use /follow-lang-nodejs if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-release ถ้าจำเป็น
+- Use /run-release if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `release-it` ติดตั้งและตั้งค่าใน project
-- `bun run release` ทำงานได้ทั้ง local และ CI
-- Version, tag, npm publish และ GitHub release เกิดขึ้นอัตโนมัติ
-- Secrets และ permissions ตั้งค่าถูกต้อง
-- Plugins ทีต้องการทำงานตาม config
+- `release-it` installed and configured in the project
+- `bun run release` works both locally and in CI
+- Version, tag, npm publish, and GitHub release happen automatically
+- Secrets and permissions configured correctly
+- The plugins you need work per config
 

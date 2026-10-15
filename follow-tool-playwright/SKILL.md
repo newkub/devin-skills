@@ -1,6 +1,6 @@
 ---
 name: follow-tool-playwright
-description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
+description: Install and set up Playwright for E2E testing
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -16,14 +16,14 @@ related:
 
 ## Goal
 
-ตั้งค่า Playwright เป็น E2E testing framework หลักสำหรับโปรเจกต์ web
+Set up Playwright as the main E2E testing framework for a web project
 
 ## Scope
 
-ติดตั้งและตั้งค่า Playwright สำหรับ end-to-end testing ในโปรเจกต์เดี่ยวและ monorepo
+Install and configure Playwright for end-to-end testing in single projects and monorepos
 
-- ใช้ skill นี้สำหรับ browser E2E suite จริง — ถ้าต้องการ check/smoke ด่วนโดยไม่สร้าง suite ใช้ `/use-agent-browser` (CLI/record) หรือ `/use-chrome-devtools` (inspect/debug ผ่าน MCP ที่ register อยู่) เป็น stopgap — เลือกตาม `/use-chrome-devtools` `## Tool Selection`
-- สำหรับ API mocking ใน unit/integration tests → ใช้ `/follow-lib-mswjs` แทน
+- Use this skill for a real browser E2E suite — for a quick check/smoke without building a suite, use `/use-agent-browser` (CLI/record) or `/use-chrome-devtools` (inspect/debug via the registered MCP) as a stopgap — choose per `/use-chrome-devtools` `## Tool Selection`
+- For API mocking in unit/integration tests → use `/follow-lib-mswjs` instead
 
 - Latest: `@playwright/test@1.63.0` (verified 2026-09-13)
 
@@ -31,213 +31,213 @@ related:
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรง topic
+> Goal: dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| setup | `workflows/setup-playwright/SKILL.md` — install, browsers install, config พื้นฐาน | config | `workflows/config-projects/SKILL.md` — projects, devices, baseURL, retries, reporters | migrate | `workflows/migrate-from-cypress/SKILL.md` — cypress→playwright API mapping, page objects, verify 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+| Topic | Workflow |-------|----------| setup | `workflows/setup-playwright/SKILL.md` — install, browsers install, basic config | config | `workflows/config-projects/SKILL.md` — projects, devices, baseURL, retries, reporters | migrate | `workflows/migrate-from-cypress/SKILL.md` — cypress→playwright API mapping, page objects, verify 
+1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
+2. Otherwise → follow the steps below as normal
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Playwright และ browsers
+> Goal: install Playwright and browsers
 
-1. ติดตั้ง Playwright ด้วย `bun add -D @playwright/test`
-2. รัน `bunx playwright install` เพื่อติดตั้ง browsers
-3. ติดตั้ง VS Code extension สำหรับ IDE integration
-4. เพิ่ม test script ใน `package.json`
-5. ตรวจสอบ Node.js version (>= v20.0.0 — Node 18 ไม่รองรับแล้ว)
-6. อัพเดท Playwright เป็น latest version เสมอด้วย `bun add -D @playwright/test@latest`
+1. Install Playwright with `bun add -D @playwright/test`
+2. Run `bunx playwright install` to install browsers
+3. Install the VS Code extension for IDE integration
+4. Add a test script in `package.json`
+5. Check the Node.js version (>= v20.0.0 — Node 18 is no longer supported)
+6. Always update Playwright to the latest version with `bun add -D @playwright/test@latest`
 
 ### 2. Configuration
 
-> Goal: สร้าง playwright.config.ts พร้อม browsers และ options
+> Goal: create playwright.config.ts with browsers and options
 
-1. สร้าง `playwright.config.ts` ที่ root
-2. ตั้งค่า browsers (chromium, firefox, webkit) ผ่าน `projects`
-3. ตั้งค่า `testDir` สำหรับ test files location
-4. ตั้งค่า `timeout` สำหรับ test execution (default 30,000ms)
-5. ตั้งค่า `retries: process.env.CI ? 2 : 0` สำหรับ flaky tests
-6. ตั้งค่า `workers: process.env.CI ? 4 : undefined` สำหรับ parallel execution
-7. ตั้งค่า `fullyParallel` สำหรับ parallel tests within files
-8. ตั้งค่า `trace: 'on-first-retry'` สำหรับ debugging
-9. ตั้งค่า `screenshot: 'only-on-failure'` สำหรับ failure artifacts
-10. ตั้งค่า `reporter` เป็น `html` สำหรับ local และ `blob` สำหรับ CI sharding
-11. ตั้งค่า `forbidOnly: !!process.env.CI` สำหรับป้องกัน `test.only` ใน CI
-12. ตั้งค่า `webServer: { command, url, reuseExistingServer: !process.env.CI }` ให้ Playwright start dev server เอง
+1. Create `playwright.config.ts` at the root
+2. Configure browsers (chromium, firefox, webkit) via `projects`
+3. Set `testDir` for the test files location
+4. Set `timeout` for test execution (default 30,000ms)
+5. Set `retries: process.env.CI ? 2 : 0` for flaky tests
+6. Set `workers: process.env.CI ? 4 : undefined` for parallel execution
+7. Set `fullyParallel` for parallel tests within files
+8. Set `trace: 'on-first-retry'` for debugging
+9. Set `screenshot: 'only-on-failure'` for failure artifacts
+10. Set `reporter` to `html` for local and `blob` for CI sharding
+11. Set `forbidOnly: !!process.env.CI` to prevent `test.only` in CI
+12. Set `webServer: { command, url, reuseExistingServer: !process.env.CI }` so Playwright starts the dev server itself
 
 ### 3. Monorepo Setup
 
-> Goal: ตั้งค่า Playwright สำหรับ monorepo workspaces
+> Goal: configure Playwright for monorepo workspaces
 
-1. ตั้งค่า `testDir` สำหรับแต่ละ workspace
-2. ใช้ workspace protocol สำหรับ internal dependencies
-3. ตั้งค่า `--project` เพื่อรัน tests บน workspace เฉพาะ
-4. ใช้ shared fixtures ข้าม workspaces
-5. ตั้งค่า config extends จาก root config
+1. Set `testDir` per workspace
+2. Use the workspace protocol for internal dependencies
+3. Set `--project` to run tests on a specific workspace
+4. Use shared fixtures across workspaces
+5. Set config extends from the root config
 
 ### 4. Writing Tests
 
-> Goal: เขียน E2E tests ตาม best practices
+> Goal: write E2E tests following best practices
 
-1. ใช้ `test` จาก `@playwright/test`
-2. ใช้ `page` fixture สำหรับ browser automation
-3. ใช้ `expect` สำหรับ web-first assertions ที่ auto-wait
-4. จัดระเบียน test files ตาม features หรือ pages
-5. ใช้ `test.describe` สำหรับ grouping related tests
-6. ใช้ `test.beforeEach`, `test.afterEach` สำหรับ setup/teardown
-7. ใช้ `test.describe.configure({ mode: 'parallel' })` สำหรับ parallel tests ใน file
-8. ใช้ `test('name', { lock: 'shared-resource' }, ...)` (v1.63+) เมื่อ tests แชร์ resource เดียวกัน — tests ที่ lock ชื่อเดียวกันจะไม่รันพร้อมกัน
+1. Use `test` from `@playwright/test`
+2. Use the `page` fixture for browser automation
+3. Use `expect` for auto-waiting web-first assertions
+4. Organize test files by features or pages
+5. Use `test.describe` for grouping related tests
+6. Use `test.beforeEach`, `test.afterEach` for setup/teardown
+7. Use `test.describe.configure({ mode: 'parallel' })` for parallel tests in a file
+8. Use `test('name', { lock: 'shared-resource' }, ...)` (v1.63+) when tests share one resource — tests with the same lock name never run concurrently
 
 ### 5. Page Object Model
 
-> Goal: ใช้ Page Object Model สำหรับ reusable code
+> Goal: use the Page Object Model for reusable code
 
-1. สร้าง Page Object classes สำหรับแต่ละ page
-2. แยก selectors และ actions ออกจาก test files
-3. ใช้ locators แทน selectors เดิม
-4. ใช้ `page.locator()` สำหรับ element selection
-5. ใช้ `waitFor()` สำหรับ waiting strategies
+1. Create Page Object classes for each page
+2. Separate selectors and actions from test files
+3. Use locators instead of legacy selectors
+4. Use `page.locator()` for element selection
+5. Use `waitFor()` for waiting strategies
 
 ### 6. Locators Strategy
 
-> Goal: เลือก locators ที่ resilient และ maintainable
+> Goal: pick resilient and maintainable locators
 
-1. ใช้ `getByRole()` สำหรับ role-based selectors (preferred)
-2. ใช้ `getByText()` สำหรับ text-based selectors
-3. ใช้ `getByLabel()` สำหรับ form elements
-4. ใช้ `getByTestId()` สำหรับ test IDs (เฉพาะเมื่อ role/text ไม่ได้)
-5. หลีกเลี่ยง CSS selectors ที่ fragile
-6. ใช้ `codegen` สำหรับ generate resilient locators
-7. ใช้ locator chaining และ filtering สำหรับ narrow down
-8. ใช้ `locator.visible()` (v1.63+) แทน `:visible` CSS pseudo-class
-9. ใช้ `page.frameLocator()` โดยไม่ต้องระบุ selector เพื่อค้นหา element ข้ามทุก frame (v1.63+)
+1. Use `getByRole()` for role-based selectors (preferred)
+2. Use `getByText()` for text-based selectors
+3. Use `getByLabel()` for form elements
+4. Use `getByTestId()` for test IDs (only when role/text won't work)
+5. Avoid fragile CSS selectors
+6. Use `codegen` to generate resilient locators
+7. Use locator chaining and filtering to narrow down
+8. Use `locator.visible()` (v1.63+) instead of the `:visible` CSS pseudo-class
+9. Use `page.frameLocator()` without a selector to search elements across all frames (v1.63+)
 
 ### 7. Assertions And Matchers
 
-> Goal: ใช้ web-first assertions ที่ auto-wait
+> Goal: use auto-waiting web-first assertions
 
-1. ใช้ `expect(page).toHaveURL()` สำหรับ URL assertions
-2. ใช้ `expect(locator).toBeVisible()` สำหรับ visibility
-3. ใช้ `expect(locator).toHaveText()` สำหรับ text content
-4. ใช้ `expect(locator).toHaveCount()` สำหรับ element count
-5. ใช้ `expect(apiResponse).toBeOK()` สำหรับ API assertions
-6. ใช้ `expect(locator).toMatchAriaSnapshot()` สำหรับ accessibility tree verification
+1. Use `expect(page).toHaveURL()` for URL assertions
+2. Use `expect(locator).toBeVisible()` for visibility
+3. Use `expect(locator).toHaveText()` for text content
+4. Use `expect(locator).toHaveCount()` for element count
+5. Use `expect(apiResponse).toBeOK()` for API assertions
+6. Use `expect(locator).toMatchAriaSnapshot()` for accessibility tree verification
 
 ### 8. Authentication Setup
 
-> Goal: ตั้งค่า authentication reuse ผ่าน storageState
+> Goal: set up authentication reuse via storageState
 
-1. สร้าง setup project สำหรับ login ครั้งเดียว
-2. บันทึก `storageState` ลง disk
-3. ใช้ `storageState` ใน main project สำหรับเริ่มทุก test แบบ authenticated
-4. ใช้ project `dependencies` สำหรับรัน setup ก่อน main tests
-5. ใช้ `BrowserContext.setStorageState()` สำหรับ clear และ set state ใหม่
+1. Create a setup project that logs in once
+2. Save the `storageState` to disk
+3. Use the `storageState` in the main project so every test starts authenticated
+4. Use project `dependencies` to run setup before main tests
+5. Use `BrowserContext.setStorageState()` to clear and set new state
 
 ### 9. Running Tests And All-Routes Coverage
 
-> Goal: รัน tests ด้วย CLI options และครอบคลุมทุก route
+> Goal: run tests with CLI options and cover every route
 
-1. รัน tests ด้วย `bunx playwright test`
-2. รัน tests ใน headed mode ด้วย `--headed`
-3. รัน tests ใน debug mode ด้วย `--debug`
-4. รัน tests บน browser เฉพาะด้วย `--project`
-5. รัน tests ใน UI mode ด้วย `--ui` สำหรับ authoring และ debugging
-6. ใช้ `--last-failed` สำหรับ re-run เฉพาะ tests ที่ fail
-7. List routes จาก `/report-uxui-all-routes` หรือ route config/filesystem routes
-8. สร้าง smoke spec ที่ visit ทุก route แล้ว assert: page load 200, ไม่มี console errors, ไม่มี uncaught page errors
-9. สำหรับ critical routes → เขียน spec เฉพาะพร้อม interaction tests (click, form submit, navigation)
-10. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) หรือ `chrome-devtools-mcp` (`new_page` + `take_snapshot` + `list_console_messages`) เป็น stopgap แทน Playwright suite ชั่วคราว
-11. Track route gaps — route ที่ยังไม่มี test ต้องถูกบันทึก
+1. Run tests with `bunx playwright test`
+2. Run tests in headed mode with `--headed`
+3. Run tests in debug mode with `--debug`
+4. Run tests on a specific browser with `--project`
+5. Run tests in UI mode with `--ui` for authoring and debugging
+6. Use `--last-failed` to re-run only failed tests
+7. List routes from `/report-uxui-all-routes` or route config/filesystem routes
+8. Create a smoke spec that visits every route and asserts: page load 200, no console errors, no uncaught page errors
+9. For critical routes → write a dedicated spec with interaction tests (click, form submit, navigation)
+10. If there's no suite yet and you just need a quick check → use `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) or `chrome-devtools-mcp` (`new_page` + `take_snapshot` + `list_console_messages`) as a stopgap instead of a temporary Playwright suite
+11. Track route gaps — a route without a test must be recorded
 
 ### 10. CI/CD Integration
 
-> Goal: ตั้งค่า Playwright ใน CI/CD pipeline
+> Goal: configure Playwright in the CI/CD pipeline
 
-1. ติดตั้ง browsers ใน CI pipeline ด้วย `bunx playwright install`
-2. ใช้ `--shard=x/y` สำหรับ parallel execution ข้าม machines
-3. ตั้งค่า `retries` สำหรับ CI environment
-4. ใช้ `blob` reporter สำหรับ sharding และ `bunx playwright merge-reports` สำหรับรวม
-5. อัพโหลด test reports สำหรับ CI artifacts
-6. ใช้ GitHub Actions พร้อม `reuseExistingServer: true`
-7. ใช้ `await using` syntax สำหรับ async disposables และ auto cleanup
+1. Install browsers in the CI pipeline with `bunx playwright install`
+2. Use `--shard=x/y` for parallel execution across machines
+3. Set `retries` for the CI environment
+4. Use the `blob` reporter for sharding and `bunx playwright merge-reports` to combine
+5. Upload test reports as CI artifacts
+6. Use GitHub Actions with `reuseExistingServer: true`
+7. Use `await using` syntax for async disposables and auto cleanup
 
 ## Rules
 
 ### 1. Configuration Requirements
 
-ต้องมี config file ที่ root:
+A config file at the root is required:
 
-- ต้องมี `playwright.config.ts` ที่ root
-- ใช้ `bun add -D @playwright/test` สำหรับ installation
-- รัน `bunx playwright install` เพื่อติดตั้ง browsers
-- ตั้งค่า `testDir` ให้ชัดเจน
-- ตั้งค่า `fullyParallel` สำหรับ parallel execution
-- ตั้งค่า `trace: 'on-first-retry'` สำหรับ debugging
-- ตั้งค่า `screenshot: 'only-on-failure'` สำหรับ failure artifacts
-- ใช้ `reporter` ที่เหมาะสมกับ environment (`html` local, `blob` CI)
+- `playwright.config.ts` must exist at the root
+- Use `bun add -D @playwright/test` for installation
+- Run `bunx playwright install` to install browsers
+- Set `testDir` explicitly
+- Set `fullyParallel` for parallel execution
+- Set `trace: 'on-first-retry'` for debugging
+- Set `screenshot: 'only-on-failure'` for failure artifacts
+- Use the `reporter` appropriate for the environment (`html` local, `blob` CI)
 
 ### 2. Test Organization
 
-จัดระเบียน test files:
+Organize test files:
 
-- จัด test files ตาม features หรือ pages
-- ใช้ `test.describe` สำหรับ grouping related tests
-- ใช้ test names ที่ชัดเจนและ descriptive
-- ใช้ `test.beforeEach`, `test.afterEach` สำหรับ isolated tests
-- ใช้ Page Object Model สำหรับ reusable code
+- Arrange test files by features or pages
+- Use `test.describe` for grouping related tests
+- Use clear, descriptive test names
+- Use `test.beforeEach`, `test.afterEach` for isolated tests
+- Use the Page Object Model for reusable code
 
 ### 3. Selectors Strategy
 
-ใช้ selectors อย่างเหมาะสม:
+Use selectors properly:
 
-- ใช้ `getByRole()` เป็น preferred locator
-- ใช้ `getByText()`, `getByLabel()` สำหรับ user-facing attributes
-- ใช้ `getByTestId()` เฉพาะเมื่อ role/text ไม่เพียงพอ
-- หลีกเลี่ยง CSS selectors ที่ fragile
-- ใช้ `codegen` สำหรับ generate locators
+- Use `getByRole()` as the preferred locator
+- Use `getByText()`, `getByLabel()` for user-facing attributes
+- Use `getByTestId()` only when role/text is not enough
+- Avoid fragile CSS selectors
+- Use `codegen` to generate locators
 
 ### 4. Best Practices
 
-ทำตาม best practices:
+Follow best practices:
 
-- ใช้ auto-waiting ของ Playwright (ไม่ใช้ `page.waitForTimeout()`)
-- ใช้ web-first assertions ที่ auto-wait
-- ใช้ Page Object Model สำหรับ maintainability
-- ใช้ fixtures สำหรับ shared setup
-- ใช้ `fullyParallel` สำหรับ performance
-- ใช้ `request` fixture สำหรับ seed data ผ่าน API ไม่ใช่ UI
-- ใช้ `storageState` สำหรับ authentication reuse
-- หลีกเลี่ยง conditional logic (`if`, `try/catch`) ใน tests
-- อัพเดท Playwright version เป็น latest เสมอ
+- Use Playwright's auto-waiting (don't use `page.waitForTimeout()`)
+- Use auto-waiting web-first assertions
+- Use the Page Object Model for maintainability
+- Use fixtures for shared setup
+- Use `fullyParallel` for performance
+- Use the `request` fixture to seed data via API, not UI
+- Use `storageState` for authentication reuse
+- Avoid conditional logic (`if`, `try/catch`) in tests
+- Always keep the Playwright version up to date
 
 ### 5. CI/CD
 
-- ใช้ `--shard=x/y` สำหรับแบ่ง tests ข้าม CI machines
-- ใช้ `blob` reporter สำหรับ sharding และ `merge-reports` สำหรับรวม
-- ตั้งค่า `forbidOnly: !!process.env.CI` สำหรับป้องกัน `test.only`
-- ใช้ `reuseExistingServer: true` สำหรับ local iteration speed
-- ติดตั้งเฉพาะ browsers ที่จำเป็นใน CI
+- Use `--shard=x/y` to split tests across CI machines
+- Use the `blob` reporter for sharding and `merge-reports` to combine
+- Set `forbidOnly: !!process.env.CI` to prevent `test.only`
+- Use `reuseExistingServer: true` for local iteration speed
+- Install only the necessary browsers in CI
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-chrome-devtools ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-aube ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /deep-test e2e ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-chrome-devtools if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-aube if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /deep-test e2e if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
-- ใช้ /run-test ถ้าจำเป็น
+- Use /run-test if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Playwright ติดตั้งและทำงานได้
-- Config รองรับ browsers, parallelism, และ monorepo
-- E2E tests รันได้ทั้งหมด
-- เป็นไปตาม best practices จาก Playwright 2026 official documentation
+- Playwright installed and working
+- Config supports browsers, parallelism, and monorepo
+- All E2E tests run
+- Compliant with best practices from the Playwright 2026 official documentation
 

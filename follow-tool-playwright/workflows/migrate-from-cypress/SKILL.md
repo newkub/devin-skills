@@ -1,6 +1,6 @@
 ---
 name: follow-tool-playwright-migrate-from-cypress
-description: ย้าย E2E suite จาก Cypress ไป Playwright — API mapping, page objects, verify
+description: Migrate an E2E suite from Cypress to Playwright — API mapping, page objects, verify
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
@@ -12,70 +12,70 @@ related:
 
 ## Goal
 
-Migrate E2E test suite จาก Cypress ไป Playwright อย่างปลอดภัย — suite เขียวบน Playwright ก่อนลบ Cypress
+Migrate the E2E test suite from Cypress to Playwright safely — the suite must be green on Playwright before removing Cypress
 
 ## Scope
 
-- ย้าย `cypress` → `@playwright/test` ครอบคลุม specs, commands, fixtures, intercepts, config
-- ไม่ครอบคลุม: setup ครั้งแรก (`workflows/setup-playwright`), component testing ที่ยังไม่มี equivalent ชัดเจน
+- Migrate `cypress` → `@playwright/test` covering specs, commands, fixtures, intercepts, config
+- Not covered: first-time setup (`workflows/setup-playwright`), component testing with no clear equivalent yet
 
 ## Execute
 
 ### 1. Plan And Inventory
 
-> Goal: map จุดที่กระทบก่อนแก้
+> Goal: map the affected points before editing
 
-1. ทำ `/plan` — เขียน rollback path (Cypress suite ต้องเขียวก่อนเริ่ม)
-2. ทำ `scan-codebase` หา Cypress usage: `cypress.config.*`, `cypress/e2e/**`, `cy.*` calls, custom commands ใน `cypress/support/`, `cy.intercept`, fixtures
-3. จัดกลุ่ม specs: simple assertions, auth flows, API intercepts, file upload/download — แต่ละกลุ่ม map ต่างกัน
-4. อ่าน official migration docs — ดู Playwright docs ถ้าไม่แน่ใจ API equivalent
+1. Run `/plan` — write the rollback path (the Cypress suite must be green before starting)
+2. Run `scan-codebase` to find Cypress usage: `cypress.config.*`, `cypress/e2e/**`, `cy.*` calls, custom commands in `cypress/support/`, `cy.intercept`, fixtures
+3. Group specs: simple assertions, auth flows, API intercepts, file upload/download — each group maps differently
+4. Read the official migration docs — check Playwright docs when unsure about an API equivalent
 
 ### 2. Setup Playwright Alongside
 
-> Goal: ติดตั้ง Playwright โดย Cypress ยังอยู่
+> Goal: install Playwright while Cypress stays in place
 
-1. ทำตาม `workflows/setup-playwright` — install, browsers, config
-2. ตั้ง `testDir` แยกจาก `cypress/` (เช่น `e2e/`) — สอง frameworks run คู่กันได้ระหว่าง migrate
+1. Follow `workflows/setup-playwright` — install, browsers, config
+2. Set `testDir` separate from `cypress/` (e.g. `e2e/`) — both frameworks can run side by side during migration
 3. Map config: `baseUrl` → `use.baseURL`, `viewportWidth/Height` → `use.viewport`, `defaultCommandTimeout` → `timeout`/`expect.timeout`, `video`/`screenshotOnRunFailure` → `video`/`screenshot` options
 
 ### 3. Map APIs
 
-> Goal: แปลง `cy.*` เป็น Playwright APIs ทีละกลุ่ม
+> Goal: convert `cy.*` to Playwright APIs group by group
 
-1. Navigation/actions: `cy.visit(url)` → `await page.goto(url)`, `cy.get(sel).click()` → `await page.locator(sel).click()` หรือ `getByRole`, `cy.get().type()` → `locator.fill()`
-2. Assertions: `cy.get().should('be.visible')` → `await expect(locator).toBeVisible()`, `.should('have.text')` → `toHaveText()`, `.should('have.attr')` → `toHaveAttribute()` — ใช้ web-first assertions ที่ auto-wait
-3. Network: `cy.intercept()` → `page.route()` หรือ `context.route()`
-4. State: `cy.clearCookies()`/`localStorage` → context methods หรือ `storageState` config
-5. Custom commands → Playwright fixtures (`test.extend()`) หรือ page object methods — ห้ามทำ global commands
-6. ใช้ `/use-astgrep`/`/migration-with-astgrep` สำหรับ rename patterns จำนวนมาก — แยก commit ต่อ pattern
+1. Navigation/actions: `cy.visit(url)` → `await page.goto(url)`, `cy.get(sel).click()` → `await page.locator(sel).click()` or `getByRole`, `cy.get().type()` → `locator.fill()`
+2. Assertions: `cy.get().should('be.visible')` → `await expect(locator).toBeVisible()`, `.should('have.text')` → `toHaveText()`, `.should('have.attr')` → `toHaveAttribute()` — use auto-waiting web-first assertions
+3. Network: `cy.intercept()` → `page.route()` or `context.route()`
+4. State: `cy.clearCookies()`/`localStorage` → context methods or `storageState` config
+5. Custom commands → Playwright fixtures (`test.extend()`) or page object methods — never create global commands
+6. Use `/use-astgrep`/`/migration-with-astgrep` for bulk rename patterns — one commit per pattern
 
 ### 4. Extract Page Objects
 
-> Goal: จัดโครงสร้าง locators/actions ให้ maintainable
+> Goal: structure locators/actions for maintainability
 
-1. แปลง Cypress custom commands และ repeated selectors เป็น Page Object classes
-2. แปลง selectors เป็น locators: `getByRole` > `getByText`/`getByLabel` > `getByTestId` > CSS
-3. อย่า copy `.should('exist')` chains ตรงๆ — Playwright locators lazy และ auto-wait
+1. Convert Cypress custom commands and repeated selectors into Page Object classes
+2. Convert selectors to locators: `getByRole` > `getByText`/`getByLabel` > `getByTestId` > CSS
+3. Don't copy `.should('exist')` chains verbatim — Playwright locators are lazy and auto-wait
 
 ### 5. Verify And Cleanup
 
-> Goal: suite เขียวบน Playwright แล้วลบ Cypress
+> Goal: suite green on Playwright, then remove Cypress
 
-1. รัน `bunx playwright test` — specs ที่ migrate ต้องเขียวทั้งหมด; เปรียบเทียบ coverage กับ Cypress suite เดิม
-2. ใช้ `--last-failed` re-run เฉพาะที่ fail; ทำ `/run-test` (e2e) ยืนยันรอบสุดท้าย
-3. เมื่อเขียว: ลบ `cypress`, `cypress.config.*`, `cypress/` dir, eslint plugins — แยก commit
-4. ทำ `/deep-review` เช็ค `cy.` เหลือ → เสร็จแล้ว `/report-before-after` แล้ว `/ship`
+1. Run `bunx playwright test` — migrated specs must all be green; compare coverage against the original Cypress suite
+2. Use `--last-failed` to re-run only failures; run `/run-test` (e2e) for the final confirmation
+3. Once green: delete `cypress`, `cypress.config.*`, the `cypress/` dir, eslint plugins — in a separate commit
+4. Run `/deep-review-codebase` to check for leftover `cy.` → then `/report-before-after` and `/ship`
 
 ## Rules
 
-- ห้ามผสม migration กับ feature work — แยก commit ต่อ step
-- Cypress suite ต้องเขียวก่อน migrate — ใช้เป็น reference behavior
-- ห้ามใช้ `page.waitForTimeout()` แทน Cypress auto-retry — ใช้ web-first assertions
-- ทุก spec ที่ migrate ต้อง assert เทียบเท่าเดิม — ห้ามลด assertions เพื่อให้ผ่าน
-- specs ที่พึ่ง Cypress-only features (เช่น component testing) → TODO list ชัดเจน อย่าบังคับ
+- Never mix migration with feature work — one commit per step
+- The Cypress suite must be green before migrating — it is the reference behavior
+- Never use `page.waitForTimeout()` in place of Cypress auto-retry — use web-first assertions
+- Every migrated spec must assert the equivalent of before — never weaken assertions to pass
+- Specs relying on Cypress-only features (e.g. component testing) → a clear TODO list, don't force them
 
 ## Expected Outcome
 
-- E2E suite รันบน Playwright เขียวทั้งหมด เทียบเท่า coverage เดิม
-- Cypress dependencies/config ถูกลบใน commit แยก
-- Locators/page objects ตาม Playwright best practices
+- The E2E suite runs green on Playwright with coverage equivalent to before
+- Cypress dependencies/config removed in a separate commit
+- Locators/page objects follow Playwright best practices

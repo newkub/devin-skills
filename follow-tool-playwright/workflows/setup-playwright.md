@@ -2,7 +2,7 @@
 
 ## Description
 
-Setup Playwright ใน project
+Setup Playwright in the project
 
 ## Steps
 
@@ -52,7 +52,7 @@ bunx playwright test
 
 ## Best Practices
 
-1. Use create-playwright: ใช้ create-playwright สำหรับ setup ง่าย
-2. Configure Projects: Configure projects สำหรับ multiple browsers
-3. Use Base URL: ใช้ base URL สำหรับ convenience
+1. Use create-playwright: use create-playwright for easy setup
+2. Configure Projects: Configure projects for multiple browsers
+3. Use Base URL: Use a base URL for convenience
 4. Version Control: Commit config file

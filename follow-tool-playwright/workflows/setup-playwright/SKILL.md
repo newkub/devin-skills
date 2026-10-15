@@ -1,6 +1,6 @@
 ---
 name: follow-tool-playwright-setup-playwright
-description: ติดตั้ง Playwright พร้อม browsers และ playwright.config.ts พื้นฐาน
+description: Install Playwright with browsers and a basic playwright.config.ts
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
@@ -11,71 +11,71 @@ related:
 
 ## Goal
 
-ติดตั้งและตั้งค่า Playwright ครั้งแรกให้พร้อมรัน E2E tests — packages, browser binaries, config พื้นฐาน, smoke test
+Install and configure Playwright for the first time, ready to run E2E tests — packages, browser binaries, basic config, smoke test
 
 ## Scope
 
-- First-time setup ของ Playwright ใน web project
-- ครอบคลุม: install, `playwright install`, `playwright.config.ts` พื้นฐาน, test ตัวอย่าง, verify
-- ไม่ครอบคลุม: projects/devices/reporters ขั้นสูง (`workflows/config-projects`), migration (`workflows/migrate-from-cypress`)
+- First-time Playwright setup in a web project
+- Covers: install, `playwright install`, basic `playwright.config.ts`, sample test, verify
+- Not covered: advanced projects/devices/reporters (`workflows/config-projects`), migration (`workflows/migrate-from-cypress`)
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ prerequisites และ current state
+> Goal: check prerequisites and current state
 
-1. ตรวจ Node.js version ให้ตรง requirement — Playwright ต้องการ Node >= 20 (ดู official docs สำหรับ version ล่าสุด)
-2. ระบุ package manager จาก lockfile แล้วใช้ตัวนั้นตลอด
-3. ตรวจ `package.json` — ถ้ามี `@playwright/test` อยู่แล้ว (idempotent check) → skip install ไป verify
-4. ระบุ dev server command และ port ของ app (`bun dev`, `vite`, `next dev`)
+1. Verify the Node.js version meets the requirement — Playwright needs Node >= 20 (check official docs for the latest requirement)
+2. Identify the package manager from the lockfile and use it consistently
+3. Check `package.json` — if `@playwright/test` is already present (idempotent check) → skip install, go to verify
+4. Identify the app's dev server command and port (`bun dev`, `vite`, `next dev`)
 
 ### 2. Install Packages And Browsers
 
-> Goal: ติดตั้ง `@playwright/test` และ browser binaries
+> Goal: install `@playwright/test` and the browser binaries
 
-1. ติดตั้ง `bun add -D @playwright/test` (หรือ equivalent ของ package manager)
-2. รัน `bunx playwright install` — ติดตั้ง chromium, firefox, webkit
-3. ถ้า CI/minimal → ติดตั้งเฉพาะ browser ที่ใช้ เช่น `bunx playwright install chromium`
-4. ติดตั้ง VS Code extension สำหรับ IDE integration (optional)
+1. Install with `bun add -D @playwright/test` (or the package manager equivalent)
+2. Run `bunx playwright install` — installs chromium, firefox, webkit
+3. For CI/minimal → install only the browsers used, e.g. `bunx playwright install chromium`
+4. Install the VS Code extension for IDE integration (optional)
 
 ### 3. Create Config
 
-> Goal: สร้าง `playwright.config.ts` ขั้นต่ำ
+> Goal: create a minimal `playwright.config.ts`
 
-1. สร้าง `playwright.config.ts` ที่ root ด้วย `defineConfig` จาก `@playwright/test`
-2. ตั้ง `testDir` (เช่น `./e2e` หรือ `./tests`) — แยกจาก unit tests
-3. ตั้ง `use.baseURL` ชี้ dev server (เช่น `http://localhost:5173`)
-4. ตั้ง `retries: process.env.CI ? 2 : 0`, `workers: process.env.CI ? 4 : undefined`, `forbidOnly: !!process.env.CI`
-5. ตั้ง `trace: 'on-first-retry'` และ `screenshot: 'only-on-failure'` สำหรับ debugging artifacts
-6. ตั้ง `webServer: { command, url, reuseExistingServer: !process.env.CI }` ให้ Playwright start dev server เอง
+1. Create `playwright.config.ts` at the root with `defineConfig` from `@playwright/test`
+2. Set `testDir` (e.g. `./e2e` or `./tests`) — separate from unit tests
+3. Set `use.baseURL` to the dev server (e.g. `http://localhost:5173`)
+4. Set `retries: process.env.CI ? 2 : 0`, `workers: process.env.CI ? 4 : undefined`, `forbidOnly: !!process.env.CI`
+5. Set `trace: 'on-first-retry'` and `screenshot: 'only-on-failure'` for debugging artifacts
+6. Set `webServer: { command, url, reuseExistingServer: !process.env.CI }` so Playwright starts the dev server itself
 
 ### 4. Add Scripts And Smoke Test
 
-> Goal: เพิ่ม scripts และเขียน smoke test
+> Goal: add scripts and write a smoke test
 
-1. เพิ่ม `"test:e2e": "playwright test"` ใน `package.json`
-2. เขียน spec ตัวอย่าง: `page.goto('/')` แล้ว `expect(page).toHaveTitle(...)` หรือ assert locator ที่มั่นคง
-3. เพิ่ม `test-results/` และ `playwright-report/` ใน `.gitignore`
+1. Add `"test:e2e": "playwright test"` to `package.json`
+2. Write a sample spec: `page.goto('/')` then `expect(page).toHaveTitle(...)` or assert a stable locator
+3. Add `test-results/` and `playwright-report/` to `.gitignore`
 
 ### 5. Verify
 
-> Goal: smoke check ว่า setup ทำงาน
+> Goal: smoke check that the setup works
 
-1. รัน `bun run test:e2e` — spec ตัวอย่างต้องผ่าน โดย webServer auto-start ถูกต้อง
-2. รัน `bunx playwright test --ui` ถ้าต้องการดูใน UI mode
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `bun run test:e2e` — the sample spec must pass with the webServer auto-starting correctly
+2. Run `bunx playwright test --ui` if you want to see it in UI mode
+3. If verify fails → run `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ official docs เป็นแหล่งหลัก — ถ้า option ไม่แน่ใจให้ดู docs ก่อน
-- ติดตั้งเฉพาะ browsers ที่ใช้จริงใน CI — ประหยัดเวลาและ disk
-- `testDir` ต้องแยกจาก unit tests — ห้ามให้ Vitest pickup e2e specs
-- secrets/env สำหรับ E2E → `/follow-secret-manager` ห้าม commit
-- อย่าใส่ `page.waitForTimeout()` ใน smoke test — ใช้ web-first assertions
+- Use official docs as the primary source — check the docs before using an uncertain option
+- Install only the browsers actually used in CI — saves time and disk
+- `testDir` must be separate from unit tests — never let Vitest pick up e2e specs
+- secrets/env for E2E → `/follow-secret-manager`, never commit
+- Never put `page.waitForTimeout()` in a smoke test — use web-first assertions
 
 ## Expected Outcome
 
-- `@playwright/test` ติดตั้งพร้อม browsers และ `playwright.config.ts` ที่ verify แล้ว
-- Smoke test รันผ่านโดย webServer auto-start
-- Artifacts dirs ถูก gitignore
+- `@playwright/test` installed with browsers and a verified `playwright.config.ts`
+- Smoke test passes with webServer auto-start
+- Artifact dirs are gitignored

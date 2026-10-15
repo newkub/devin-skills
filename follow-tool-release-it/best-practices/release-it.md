@@ -1,34 +1,34 @@
 # release-it — Best Practices
 
-Automated releases — version bump, changelog, tag, publish ในคำสั่งเดียว
+Automated releases — version bump, changelog, tag, publish in one command
 
 ## Recommended Patterns
 
-- `.release-it.json` ที่ root — `git` (tag/commit), `npm` (publish), `github` (release notes), `hooks` sections
-- Conventional commits + `@release-it/conventional-changelog` — auto changelog จาก commit history
-- `git.tagName`/`git.commitMessage` templates consistent — `v${version}` convention
-- `--dry-run` ก่อนจริงเสมอ — ตรวจ version bump + files ที่จะเปลี่ยน
-- Hooks: `before:bump` (tests), `after:release` (post-release tasks) — fail fast ก่อน tag
+- `.release-it.json` at the root — `git` (tag/commit), `npm` (publish), `github` (release notes), `hooks` sections
+- Conventional commits + `@release-it/conventional-changelog` — auto changelog from commit history
+- Consistent `git.tagName`/`git.commitMessage` templates — `v${version}` convention
+- Always `--dry-run` before real runs — check the version bump + files that will change
+- Hooks: `before:bump` (tests), `after:release` (post-release tasks) — fail fast before tagging
 
 ## Common Pitfalls
 
-- release-it รันจาก clean working tree — dirty tree = abort; commit ทุกอย่างก่อน
-- npm publish needs auth — `npm whoami` ก่อน; CI ใช้ `NPM_TOKEN` env
-- `--ci` mode ใน pipelines (no prompts); interactive ที่ local
-- Changelog quality = commit quality — ขยะใน commits = ขยะใน changelog; squash merge discipline
-- Major bumps: `release-it major` explicit — อย่า let auto-increment ตัดสิน breaking releases
+- release-it runs from a clean working tree — dirty tree = abort; commit everything first
+- npm publish needs auth — `npm whoami` first; CI uses the `NPM_TOKEN` env
+- `--ci` mode in pipelines (no prompts); interactive locally
+- Changelog quality = commit quality — garbage in commits = garbage in changelog; squash merge discipline
+- Major bumps: explicit `release-it major` — don't let auto-increment decide breaking releases
 
 ## CI / Automation
 
 - Workflow: version → changelog → commit → tag → GitHub release → npm publish — atomic sequence
-- Pair กับ `/follow-tool-changesets` ใน monorepos — release-it เหมาะ single-package มากกว่า
-- `github.release: true` + `releaseNotes` generated — attach artifacts ผ่าน hooks ถ้าต้องการ
+- Pair with `/follow-tool-changesets` in monorepos — release-it suits a single package more
+- `github.release: true` + generated `releaseNotes` — attach artifacts via hooks if wanted
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `--dry-run` ก่อนทุก release | blind releases |
-| conventional commits → auto changelog | hand-edit CHANGELOG แล้ว generate ทับ |
-| clean tree + tests pass ก่อน bump | release จาก dirty state |
-| `--ci` non-interactive ใน pipelines | prompts ใน automation |
+| `--dry-run` before every release | Blind releases |
+| Conventional commits → auto changelog | Hand-editing CHANGELOG then generating over it |
+| Clean tree + tests pass before bump | Releasing from a dirty state |
+| `--ci` non-interactive in pipelines | Prompts in automation |

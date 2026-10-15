@@ -1,6 +1,6 @@
 ---
 name: follow-tool-playwright-config-projects
-description: ตั้งค่า Playwright projects, devices, baseURL, retries และ reporters
+description: Configure Playwright projects, devices, baseURL, retries, and reporters
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
@@ -11,70 +11,70 @@ related:
 
 ## Goal
 
-ตั้งค่า `playwright.config.ts` ขั้นสูง — multi-browser projects, device emulation, `baseURL`, retries, reporters — โดย merge กับ config เดิมไม่ clobber
+Configure advanced `playwright.config.ts` options — multi-browser projects, device emulation, `baseURL`, retries, reporters — merging with the existing config without clobbering
 
 ## Scope
 
-- แก้ไข `playwright.config.ts` ที่มีอยู่แล้ว (setup ครั้งแรก → `workflows/setup-playwright`)
-- ครอบคลุม: `projects`, `devices`, `use.baseURL`, `retries`, `reporter`, project dependencies
-- ไม่ครอบคลุม: เขียน test specs, page objects
+- Editing an existing `playwright.config.ts` (first-time setup → `workflows/setup-playwright`)
+- Covers: `projects`, `devices`, `use.baseURL`, `retries`, `reporter`, project dependencies
+- Not covered: writing test specs, page objects
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: เข้าใจ config เดิมก่อนแก้
+> Goal: understand the existing config before editing
 
-1. อ่าน `playwright.config.ts` ปัจจุบัน — ทำ `/deep-review` domain `review-config` ถ้าสงสัย config ค้าง
-2. ระบุ keys ที่มีอยู่แล้ว — merge กับเดิม ห้าม overwrite ทั้งไฟล์
-3. ถ้าไม่พบ config → ทำ `workflows/setup-playwright` แทน
+1. Read the current `playwright.config.ts` — run `/deep-review-codebase` domain `review-config` if the config looks suspicious
+2. Identify the keys already present — merge with them, never overwrite the whole file
+3. If no config is found → run `workflows/setup-playwright` instead
 
 ### 2. Configure Projects And Devices
 
-> Goal: ตั้ง multi-browser/device projects
+> Goal: set up multi-browser/device projects
 
-1. ใช้ `projects` array — แต่ละ project มี `name` ไม่ซ้ำและ `use` options
-2. ใช้ `devices` จาก `@playwright/test` เช่น `...devices['Desktop Chrome']`, `...devices['iPhone 14']` สำหรับ device emulation
-3. สร้าง project แยกตาม concerns: browsers (chromium/firefox/webkit), viewports (mobile/desktop), หรือ auth state
-4. ใช้ project `dependencies` สำหรับ setup project (เช่น login → save `storageState`)
-5. รันเฉพาะ project ด้วย `bunx playwright test --project=chromium`
+1. Use the `projects` array — each project has a unique `name` and `use` options
+2. Use `devices` from `@playwright/test`, e.g. `...devices['Desktop Chrome']`, `...devices['iPhone 14']` for device emulation
+3. Create separate projects per concern: browsers (chromium/firefox/webkit), viewports (mobile/desktop), or auth state
+4. Use project `dependencies` for setup projects (e.g. login → save `storageState`)
+5. Run a single project with `bunx playwright test --project=chromium`
 
 ### 3. Configure baseURL And Context
 
-> Goal: ตั้ง `use` options ที่ share ข้าม tests
+> Goal: set `use` options shared across tests
 
-1. ตั้ง `use.baseURL` — tests ใช้ relative paths `page.goto('/login')` ได้
-2. รองรับ env override: `baseURL: process.env.BASE_URL ?? 'http://localhost:5173'` สำหรับ staging/prod targets
-3. ตั้ง `use` เพิ่มตามต้องการ: `locale`, `timezoneId`, `viewport`, `storageState`, `extraHTTPHeaders`
-4. Project-level `use` override global `use` — ตั้งเฉพาะที่ต่างจริง
+1. Set `use.baseURL` — tests can then use relative paths `page.goto('/login')`
+2. Support env override: `baseURL: process.env.BASE_URL ?? 'http://localhost:5173'` for staging/prod targets
+3. Add `use` options as needed: `locale`, `timezoneId`, `viewport`, `storageState`, `extraHTTPHeaders`
+4. Project-level `use` overrides the global `use` — set only what actually differs
 
 ### 4. Configure Retries And Reporters
 
-> Goal: ตั้ง retries และ reporters ตาม environment
+> Goal: set retries and reporters per environment
 
-1. `retries: process.env.CI ? 2 : 0` — retry เฉพาะ CI; อย่าใช้ retries ปิดบัง flaky tests
-2. `reporter`: local ใช้ `[['list'], ['html']]` — CI ใช้ `blob` สำหรับ sharding แล้วรวมด้วย `bunx playwright merge-reports`
-3. เพิ่ม `['github']` reporter ใน CI สำหรับ annotations บน PR
-4. ตั้ง `fullyParallel: true` สำหรับ parallel tests ใน file เดียวกัน (ถ้า tests independent)
+1. `retries: process.env.CI ? 2 : 0` — retry in CI only; never use retries to hide flaky tests
+2. `reporter`: local uses `[['list'], ['html']]` — CI uses `blob` for sharding, combined with `bunx playwright merge-reports`
+3. Add the `['github']` reporter in CI for PR annotations
+4. Set `fullyParallel: true` for parallel tests within one file (when tests are independent)
 
 ### 5. Verify
 
-> Goal: validate config และ smoke test
+> Goal: validate the config and smoke test
 
-1. รัน `bunx playwright test --list` — ตรวจว่า tests ถูก discover ตาม projects
-2. รัน `bunx playwright test --project=<name>` smoke 1 spec ต่อ project
-3. ถ้าพัง → revert key ที่เพิ่งแก้แล้ว report diff — ทำ `/report-before-after`
+1. Run `bunx playwright test --list` — verify tests are discovered per project
+2. Run `bunx playwright test --project=<name>` to smoke 1 spec per project
+3. If it breaks → revert the key just changed and report the diff — run `/report-before-after`
 
 ## Rules
 
-- Merge กับ config เดิม — ห้าม rewrite ทั้งไฟล์ถ้าไม่จำเป็น
-- `retries` เฉพาะ CI — local ต้องเห็น failure ทันที
-- `baseURL` ต้อง override ผ่าน env ได้ — ห้าม hardcode environment เดียว
-- ทุก project ต้องมี `name` ไม่ซ้ำ — shards/CI filters อ้างด้วย name
-- ถ้า config option ไม่แน่ใจ → ดู official docs หรือ `references/apis.md`
+- Merge with the existing config — never rewrite the whole file unless necessary
+- `retries` in CI only — local must see failures immediately
+- `baseURL` must be overridable via env — never hardcode a single environment
+- Every project needs a unique `name` — shards/CI filters reference names
+- If unsure about a config option → check the official docs or `references/apis.md`
 
 ## Expected Outcome
 
-- Config รองรับ multi-browser/device projects พร้อม names ที่ชัดเจน
-- `baseURL`, retries, reporters ตั้งถูกตาม environment
-- `playwright test --list` แสดง tests ถูกต้องทุก project
+- Config supports multi-browser/device projects with clear names
+- `baseURL`, retries, reporters set correctly per environment
+- `playwright test --list` shows the right tests for every project

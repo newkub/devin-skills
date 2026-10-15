@@ -1,6 +1,6 @@
 ---
 name: follow-tool-release-it-config-release-it
-description: ตั้งค่า `.release-it.json` — git, github, npm, hooks, changelog options
+description: Configure `.release-it.json` — git, github, npm, hooks, changelog options
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -10,81 +10,81 @@ related:
 
 ## Goal
 
-ตั้งค่า `.release-it.json` ให้ตรง release policy — `git`, `github`, `npm`, `hooks`, plugins — โดย merge กับ config เดิมไม่ overwrite
+Configure `.release-it.json` to match the release policy — `git`, `github`, `npm`, `hooks`, plugins — merging with the existing config without overwriting
 
 ## Scope
 
-ใช้เมื่อต้องแก้ release-it config ที่มีอยู่ — install/scripts อยู่ใน `workflows/setup-release-it/SKILL.md`
+Use when editing an existing release-it config — install/scripts are in `workflows/setup-release-it/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. อ่าน `.release-it.json` (หรือ `release` field ใน `package.json`) — บันทึก keys ปัจจุบัน
-2. ตรวจ plugins ที่ติดตั้งใน devDependencies
-3. ถ้าไม่มี config → สร้าง `.release-it.json` ที่ root (หรือทำ `workflows/setup-release-it/SKILL.md` ก่อน)
+1. Read `.release-it.json` (or the `release` field in `package.json`) — record the current keys
+2. Check the plugins installed in devDependencies
+3. If no config exists → create `.release-it.json` at the root (or run `workflows/setup-release-it/SKILL.md` first)
 
 ### 2. Git Options
 
-> Goal: ตั้งค่า `git` section
+> Goal: configure the `git` section
 
-1. `git.commitMessage` — format ข้อความ commit เช่น `"chore: release v${version}"`
-2. `git.tagName` — format tag เช่น `"v${version}"`
-3. `git.requireCleanWorkingDir` — `true` สำหรับ local; `false` เฉพาะเมื่อ CI ต้องรันโดยไม่ clean
-4. `git.push` — `true` เพื่อ push commit+tag อัตโนมัติ
-5. `git.requireBranch` — จำกัด release เฉพาะ branch เช่น `"main"`
+1. `git.commitMessage` — commit message format, e.g. `"chore: release v${version}"`
+2. `git.tagName` — tag format, e.g. `"v${version}"`
+3. `git.requireCleanWorkingDir` — `true` for local; `false` only when CI must run without clean
+4. `git.push` — `true` to push the commit+tag automatically
+5. `git.requireBranch` — restrict releases to a branch, e.g. `"main"`
 
 ### 3. GitHub Options
 
-> Goal: ตั้งค่า `github` section สำหรับ GitHub releases
+> Goal: configure the `github` section for GitHub releases
 
-1. `github.release: true` — สร้าง GitHub release อัตโนมัติ
-2. `github.releaseName` — format ชื่อ release เช่น `"v${version}"`
-3. `github.autoGenerate` — ใช้ GitHub auto-generated release notes หรือปิดถ้าใช้ changelog plugin
-4. `github.draft`/`github.prerelease` — ตาม release policy
-5. auth ผ่าน `GITHUB_TOKEN` env — ห้ามใส่ token ใน config
+1. `github.release: true` — create GitHub releases automatically
+2. `github.releaseName` — release name format, e.g. `"v${version}"`
+3. `github.autoGenerate` — use GitHub auto-generated release notes, or disable when using a changelog plugin
+4. `github.draft`/`github.prerelease` — per release policy
+5. auth via the `GITHUB_TOKEN` env — never put a token in config
 
 ### 4. npm And Changelog Options
 
-> Goal: ตั้งค่า `npm` section และ changelog
+> Goal: configure the `npm` section and changelog
 
-1. `npm.publish` — `true` ถ้า publish ไป registry; `false` สำหรับ private repos
-2. `npm.publishPath`/`npm.tag` — dist-tag เช่น `"latest"`, `"beta"` ตาม channel
-3. ใช้ `@release-it/conventional-changelog` — ตั้ง `plugins."@release-it/conventional-changelog".preset` เช่น `"conventionalcommits"` (ดู official docs สำหรับ preset names)
-4. `hooks` — `"before:init"`, `"after:bump"`, `"after:release"` สำหรับ build/test/notify steps
+1. `npm.publish` — `true` to publish to the registry; `false` for private repos
+2. `npm.publishPath`/`npm.tag` — dist-tags such as `"latest"`, `"beta"` per channel
+3. Use `@release-it/conventional-changelog` — set `plugins."@release-it/conventional-changelog".preset`, e.g. `"conventionalcommits"` (check official docs for preset names)
+4. `hooks` — `"before:init"`, `"after:bump"`, `"after:release"` for build/test/notify steps
 
 ### 5. Verify
 
-> Goal: ตรวจ config ด้วย dry run
+> Goal: check the config with a dry run
 
-1. รัน `bunx release-it --dry-run` — config ต้อง parse ผ่านและแสดง plan ถูกต้อง
-2. ตรวจ tag format, release notes, publish target ใน dry run output
-3. ถ้าพัง → revert keys ที่แก้แล้ว report diff ด้วย `/report-before-after`
+1. Run `bunx release-it --dry-run` — the config must parse and show the right plan
+2. Check tag format, release notes, and publish target in the dry-run output
+3. If it breaks → revert the changed keys and report the diff with `/report-before-after`
 
 ## Rules
 
 ### 1. Merge Discipline
 
-- แก้เฉพาะ keys ที่จำเป็น — ห้าม overwrite ทั้งไฟล์
-- strict CLI parsing: unknown options ถูก reject — ใช้เฉพาะ keys ที่มีจริง (ดู official docs)
+- Edit only the necessary keys — never overwrite the whole file
+- Strict CLI parsing: unknown options are rejected — use only keys that actually exist (check official docs)
 
 ### 2. Safety
 
-- `--dry-run` ก่อน release จริงเสมอ
-- ใช้ `--no-npm.publish` สำหรับ test run ถ้าจำเป็น
-- ไม่เปลี่ยน `tagName` format บน repo ที่มี tags เดิมโดยไม่ตรวจ convention
+- Always `--dry-run` before a real release
+- Use `--no-npm.publish` for a test run if needed
+- Don't change the `tagName` format on a repo with existing tags without checking the convention
 
 ### 3. Secrets
 
-- tokens ผ่าน env vars (`GITHUB_TOKEN`, `NPM_TOKEN`) เท่านั้น — ห้ามใส่ใน config
-- ใช้ `/follow-secret-manager` จัดการ tokens
+- Tokens via env vars (`GITHUB_TOKEN`, `NPM_TOKEN`) only — never in config
+- Use `/follow-secret-manager` to manage tokens
 
-- ใช้ /run-release ถ้าจำเป็น
+- Use /run-release if needed
 
 ## Expected Outcome
 
-- `.release-it.json` มี git/github/npm options ตรง release policy
-- `--dry-run` แสดง release plan ถูกต้อง
-- Changelog/plugins ทำงานตาม config
+- `.release-it.json` has git/github/npm options matching the release policy
+- `--dry-run` shows a correct release plan
+- Changelog/plugins work per config

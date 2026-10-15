@@ -1,6 +1,6 @@
 ---
 name: follow-tool-renovate
-description: ตั้งค่า Renovate สำหรับ auto update dependencies ผ่าน GitHub Actions
+description: Set up Renovate for auto dependency updates via GitHub Actions
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -15,16 +15,16 @@ related:
 
 ## Goal
 
-ตั้งค่า Renovate เพื่ออัปเดต dependencies อัตโนมัติผ่าน GitHub Actions
+Set up Renovate to update dependencies automatically via GitHub Actions
 
 ## Scope
 
-ใช้สำหรับ repositories บน GitHub ที่ต้องการ dependency updates, schedule, automerge และ PR management
+Use for GitHub repositories that want dependency updates, schedule, automerge, and PR management
 
-- Renovate ทำ dependency update PRs เท่านั้น — ไม่ทำ version bump หรือ publish; สำหรับ release ใช้ `follow-tool-release-it` หรือ `follow-tool-semantic-release`
-- ถ้าใช้ Mend-hosted Renovate GitHub App อยู่แล้ว ไม่ต้อง self-hosted workflow — skill นี้ครอบคลุม self-hosted ผ่าน `renovatebot/github-action`
+- Renovate only creates dependency update PRs — no version bump or publish; for releases use `follow-tool-release-it` or `follow-tool-semantic-release`
+- If you already use the Mend-hosted Renovate GitHub App, no self-hosted workflow is needed — this skill covers self-hosted via `renovatebot/github-action`
 
-- Latest: `renovate@44.115.10` (npm; ต้องใช้ Node.js `^24.11.0`) / `renovatebot/github-action@v46.3.4` (verified 2026-09-26)
+- Latest: `renovate@44.115.10` (npm; requires Node.js `^24.11.0`) / `renovatebot/github-action@v46.3.4` (verified 2026-09-26)
 
 ## Execute
 
@@ -33,102 +33,102 @@ related:
 | Topic | Workflow |-------|----------| GitHub App / self-hosted install, `RENOVATE_TOKEN`, workflow | `workflows/setup-renovate/SKILL.md` | `renovate.json` presets, `packageRules`, automerge | `workflows/config-renovate/SKILL.md` 
 ### 1. Configure Renovate
 
-> Goal: สร้าง renovate config ที project
+> Goal: create the renovate config in the project
 
-1. สร้าง `.github/renovate.json`
-2. ใช้ `"$schema": "https://docs.renovatebot.com/renovate-schema.json"`
-3. ตั้ง `extends` เป็น `["config:base"]`
-4. ตั้ง `schedule` เช่น `["every day"]`
-5. ตั้ง `automerge: true` สำหรับ `dependencies` และ `devDependencies` ผ่าน `packageRules`
-6. ตั้ง `docker: false` และ `"platform": "github"` ถ้าใช้ self-hosted
-7. ดูรายละเอียดใน 
+1. Create `.github/renovate.json`
+2. Use `"$schema": "https://docs.renovatebot.com/renovate-schema.json"`
+3. Set `extends` to `["config:base"]`
+4. Set `schedule`, e.g. `["every day"]`
+5. Set `automerge: true` for `dependencies` and `devDependencies` via `packageRules`
+6. Set `docker: false` and `"platform": "github"` when self-hosted
+7. See details in 
 
 ### 2. Create Workflow
 
-> Goal: สร้าง GitHub Actions workflow สำหรับรัน Renovate
+> Goal: create the GitHub Actions workflow to run Renovate
 
-1. สร้าง `.github/workflows/renovate.yml`
-2. ตั้งค่า `cron` รันเวลา `0 2 * * *`
-3. เพิ่ม `workflow_dispatch` สำหรับ manual trigger
-4. กำหนด permissions `contents: write`, `pull-requests: write`, `issues: write`
-5. ใช้ `renovatebot/github-action@v46` (ล่าสุด `v46.3.4`) หรือ pin version เต็ม
-6. ดูรายละเอียดใน 
+1. Create `.github/workflows/renovate.yml`
+2. Set the `cron` to run at `0 2 * * *`
+3. Add `workflow_dispatch` for a manual trigger
+4. Grant permissions `contents: write`, `pull-requests: write`, `issues: write`
+5. Use `renovatebot/github-action@v46` (latest `v46.3.4`) or pin the full version
+6. See details in 
 
 ### 3. Setup Token
 
-> Goal: ตั้งค่า `RENOVATE_TOKEN` สำหรับ authentication
+> Goal: configure `RENOVATE_TOKEN` for authentication
 
-1. ใช้ `/follow-secret-manager` เพื่อจัดการ `RENOVATE_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง GitHub PAT ด้วย `repo` scope
-2. ตั้งค่า secret ใน repository โดย user เอง หรือใช้ `gh secret set RENOVATE_TOKEN -b "token"`
-3. ตรวจสอบ secret ด้วย `gh secret list` หรือ secret manager dashboard
-4. ดูรายละเอียดใน 
+1. Use `/follow-secret-manager` to manage `RENOVATE_TOKEN`, or `/open-web-for-config-secret` to open the GitHub PAT creation page with `repo` scope
+2. Set the secret in the repository yourself, or use `gh secret set RENOVATE_TOKEN -b "token"`
+3. Verify the secret with `gh secret list` or the secret manager dashboard
+4. See details in 
 
 ### 4. Validate Config
 
-> Goal: ตรวจสอบว่า renovate config ถูกต้อง
+> Goal: verify the renovate config is correct
 
-1. รัน `bunx -- renovate-config-validator .github/renovate.json`
-2. ตรวจ `extends` ว่า preset มีอยู่จริง
-3. ตรวจ `packageRules` matchers ว่าถูกต้อง
-4. ดูรายละเอียดใน 
+1. Run `bunx -- renovate-config-validator .github/renovate.json`
+2. Check `extends` — the presets must actually exist
+3. Check the `packageRules` matchers are correct
+4. See details in 
 
 ### 5. Monitor Pull Requests
 
-> Goal: ติดตาม PRs ที Renovate สร้าง
+> Goal: follow the PRs Renovate creates
 
-1. ตรวจ PRs ทีถูกสร้างตาม schedule
-2. ตรวจสอบ `automerge` ว่า merge ผ่านหรือต้อง review
-3. ปรับ `packageRules` เมื่อมี deps ทีไม่ต้องการ auto update
-4. ดูรายละเอียดใน 
+1. Check the PRs created per the schedule
+2. Verify `automerge` — whether it merges or needs review
+3. Adjust `packageRules` for deps you don't want auto-updated
+4. See details in 
 
 ## Rules
 
 ### 1. Config
 
-- ใช้ `config:base` เป็น base config
-- ตั้ง `docker: false` เพื่อปิด Docker updates
-- ใช้ `"platform": "github"` สำหรับ GitHub repositories
-- ระบุ `repositories: ["owner/repo"]` ถ้าใช้ self-hosted
-- ใช้ `schedule` ทีชัดเจน
+- Use `config:base` as the base config
+- Set `docker: false` to disable Docker updates
+- Use `"platform": "github"` for GitHub repositories
+- Specify `repositories: ["owner/repo"]` when self-hosted
+- Use an explicit `schedule`
 
 ### 2. Workflow
 
-- ใช้ `cron: "0 2 * * *"` สำหรับรันทุกวัน
-- ตั้งค่า permissions `contents`, `pull-requests`, `issues` เป็น `write`
-- ใช้ `bun install --ignore-scripts` หรือ package manager ของ project
-- ไม่ตั้งค่า `RENOVATE_AUTODISCOVER` หรือ `RENOVATE_AUTODISCOVER_FILTER` เมื่อระบุ `repositories`
+- Use `cron: "0 2 * * *"` to run daily
+- Set permissions `contents`, `pull-requests`, `issues` to `write`
+- Use `bun install --ignore-scripts` or the project's package manager
+- Don't set `RENOVATE_AUTODISCOVER` or `RENOVATE_AUTODISCOVER_FILTER` when `repositories` is specified
 
 ### 3. Token
 
-- ใช้ PAT ด้วย `repo` scope สำหรับ private repos
-- ตั้งค่า `RENOVATE_TOKEN` เป็น repository secret
-- ใช้ `/follow-secret-manager` เพื่อจัดการ `RENOVATE_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง token
-- ใช้ `gh secret set` หรือ GitHub UI สำหรับตั้งค่า
+- Use a PAT with `repo` scope for private repos
+- Set `RENOVATE_TOKEN` as a repository secret
+- Use `/follow-secret-manager` to manage `RENOVATE_TOKEN`, or `/open-web-for-config-secret` to open the token-creation page
+- Use `gh secret set` or the GitHub UI to configure
 
 ### 4. Common Mistakes
 
-- ไม่ตั้งค่า `RENOVATE_TOKEN` ทำให้ workflow fail
-- ใช้ `config:recommended` อาจทำให้เกิด Node.js version check ทีไม่ต้องการ
-- ลืมตั้งค่า permissions ใน workflow
-- ใช้ `--frozen-lockfile` ทำให้ Renovate ไม่สามารถ update lockfile ได้
+- Missing `RENOVATE_TOKEN` makes the workflow fail
+- Using `config:recommended` can trigger unwanted Node.js version checks
+- Forgetting permissions in the workflow
+- Using `--frozen-lockfile` prevents Renovate from updating the lockfile
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool renovate)
-- ใช้ /follow-tool-pkg-new ถ้าจำเป็น
-- ใช้ /follow-tool-release-it ถ้าจำเป็น
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool renovate)
+- Use /follow-tool-github-actions if needed (tool renovate)
+- Use /follow-tool-pkg-new if needed
+- Use /follow-tool-release-it if needed
+- Use /follow-tool-semantic-release if needed (tool renovate)
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-install ถ้าจำเป็น
+- Use /run-install if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Renovate รันทุกวันหรือ manual trigger
-- Dependencies อัปเดตอัตโนมัติและ automerge ตาม rules
-- PRs สร้างขึ้นสำหรับ dependency updates
-- Lock files อัปเดตอัตโนมัติ
-- Workflow ไม่ fail จาก token หรือ permissions
+- Renovate runs daily or on manual trigger
+- Dependencies update automatically and automerge per rules
+- PRs are created for dependency updates
+- Lock files are updated automatically
+- The workflow doesn't fail from token or permissions issues

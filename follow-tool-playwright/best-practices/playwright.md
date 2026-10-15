@@ -1,35 +1,35 @@
 # Playwright — Best Practices
 
-E2E testing — locators, isolation และ flake elimination
+E2E testing — locators, isolation, and flake elimination
 
 ## Recommended Patterns
 
-- Locators หลัก: `getByRole` > `getByLabel`/`getByText` > `getByTestId` — resilient ต่อ DOM changes; CSS/XPath selectors เป็นทางเลือกสุดท้าย
-- Web-first assertions: `await expect(locator).toBeVisible()` — auto-retry built-in; ห้าม `waitForTimeout` แบบตายตัว
-- Test isolation: แต่ละ test สร้าง state เอง (storage state, API seeding) — ไม่พึ่ง test ก่อนหน้า
-- `test.beforeEach` สำหรับ shared setup; `page.goto` ใน test เพื่อ explicitness เมื่อ flows ต่างกัน
-- Playwright Test fixtures (`test.extend`) สำหรับ authenticated contexts — login once per worker
+- Primary locators: `getByRole` > `getByLabel`/`getByText` > `getByTestId` — resilient to DOM changes; CSS/XPath selectors are a last resort
+- Web-first assertions: `await expect(locator).toBeVisible()` — auto-retry built in; never fixed `waitForTimeout`
+- Test isolation: each test creates its own state (storage state, API seeding) — never depend on a previous test
+- `test.beforeEach` for shared setup; `page.goto` inside the test for explicitness when flows differ
+- Playwright Test fixtures (`test.extend`) for authenticated contexts — login once per worker
 
 ## Common Pitfalls
 
-- Flakiness ต้นตอ: hard sleeps, race conditions, animations — `toBeVisible`/`waitFor` auto-retry แทน
-- Parallel tests ชนกันบน shared backend state — isolate data per test (unique users/records)
-- `page.waitForSelector` แล้ว interact ทันที — element visible ≠ actionable; auto-waiting locators จัดการแล้ว
-- Trace/video/screenshot on-failure config — debug artifacts จำเป็นใน CI
-- `test.describe.serial` = smell — แก้ isolation แทน serialize
+- Flakiness origins: hard sleeps, race conditions, animations — use `toBeVisible`/`waitFor` auto-retry instead
+- Parallel tests collide on shared backend state — isolate data per test (unique users/records)
+- `page.waitForSelector` then interact immediately — a visible element ≠ actionable; auto-waiting locators already handle it
+- Trace/video/screenshot on-failure config — debug artifacts are essential in CI
+- `test.describe.serial` = smell — fix isolation instead of serializing
 
 ## CI Discipline
 
-- `workers` + `fullyParallel` — sharding (`--shard`) ข้าม runners สำหรับ suites ใหญ่
-- `retries` ใน CI เท่านั้น (1-2), local = 0 — flakes ต้อง visible
-- Browser projects: chromium ก่อน เพิ่ม webkit/firefox ตาม risk matrix ไม่ใช่ทุก PR
-- `playwright install --with-deps` cache ใน CI — browsers เสถียรต่อ version
+- `workers` + `fullyParallel` — sharding (`--shard`) across runners for big suites
+- `retries` in CI only (1-2), local = 0 — flakes must stay visible
+- Browser projects: chromium first, add webkit/firefox per the risk matrix, not every PR
+- `playwright install --with-deps` cached in CI — browsers stay pinned per version
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| role/label locators | brittle CSS/XPath selectors |
-| web-first auto-retry assertions | `waitForTimeout` |
-| isolated test state | inter-test dependencies |
-| trace on-first-retry ใน CI | debug flakes ด้วย re-runs |
+| Role/label locators | Brittle CSS/XPath selectors |
+| Web-first auto-retry assertions | `waitForTimeout` |
+| Isolated test state | Inter-test dependencies |
+| Trace on-first-retry in CI | Debugging flakes with re-runs |

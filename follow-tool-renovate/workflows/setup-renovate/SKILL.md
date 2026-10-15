@@ -1,6 +1,6 @@
 ---
 name: follow-tool-renovate-setup-renovate
-description: ติดตั้ง Renovate — GitHub App หรือ self-hosted workflow พร้อม token
+description: Install Renovate — GitHub App or self-hosted workflow — with a token
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -10,81 +10,81 @@ related:
 
 ## Goal
 
-ติดตั้งและเปิดใช้ Renovate บน repository — เลือก hosted GitHub App หรือ self-hosted runner — พร้อม authentication ที่ถูกต้อง
+Install and enable Renovate on a repository — choose the hosted GitHub App or a self-hosted runner — with correct authentication
 
 ## Scope
 
-ใช้สำหรับ repo ที่ยังไม่มี Renovate — install method, token, workflow trigger. รายละเอียด `renovate.json` อยู่ใน `workflows/config-renovate/SKILL.md`
+Use for a repo without Renovate yet — install method, token, workflow trigger. `renovate.json` details are in `workflows/config-renovate/SKILL.md`
 
-- ถ้า Renovate รันอยู่แล้ว (มี config + PRs จาก renovate bot) → verify เท่านั้น
+- If Renovate already runs (config + PRs from the renovate bot) → verify only
 
 ## Execute
 
 ### 1. Choose Install Method
 
-> Goal: เลือกวิธี deploy Renovate
+> Goal: pick how to deploy Renovate
 
-1. **Mend Renovate GitHub App** — ติดตั้ง app จาก GitHub Marketplace บน repo/org — ไม่ต้อง self-host, config ผ่าน `renovate.json` เท่านั้น
-2. **Self-hosted via GitHub Actions** — สร้าง `.github/workflows/renovate.yml` รัน `renovatebot/github-action` — เหมาะเมื่อต้องควบคุม schedule/runner เอง (version ดู parent skill หรือ official docs)
-3. Self-hosted แบบอื่น (docker, npm cli) — ดู official docs
+1. **Mend Renovate GitHub App** — install the app from GitHub Marketplace on the repo/org — no self-hosting, config via `renovate.json` only
+2. **Self-hosted via GitHub Actions** — create `.github/workflows/renovate.yml` running `renovatebot/github-action` — fits when you need control of the schedule/runner (check the parent skill or official docs for versions)
+3. Other self-hosted modes (docker, npm cli) — see official docs
 
 ### 2. Setup Token (Self-hosted)
 
-> Goal: ตั้งค่า `RENOVATE_TOKEN`
+> Goal: configure `RENOVATE_TOKEN`
 
-1. ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret` สร้าง GitHub PAT ด้วย `repo` scope (สำหรับ private repos)
-2. ตั้งเป็น repository secret: `gh secret set RENOVATE_TOKEN` หรือผ่าน GitHub UI
-3. ตรวจด้วย `gh secret list`
-4. GitHub App method ข้าม step นี้ — app auth เอง
+1. Use `/follow-secret-manager` or `/open-web-for-config-secret` to create a GitHub PAT with `repo` scope (for private repos)
+2. Set it as a repository secret: `gh secret set RENOVATE_TOKEN` or via the GitHub UI
+3. Verify with `gh secret list`
+4. Skip this step for the GitHub App method — the app authenticates itself
 
 ### 3. Create Workflow (Self-hosted)
 
-> Goal: สร้าง workflow รัน Renovate
+> Goal: create the workflow that runs Renovate
 
-1. สร้าง `.github/workflows/renovate.yml` ด้วย triggers `schedule` (cron เช่น `0 2 * * *`) + `workflow_dispatch`
-2. ตั้ง permissions `contents: write`, `pull-requests: write`, `issues: write`
-3. ใช้ `renovatebot/github-action` พร้อม `RENOVATE_TOKEN` — ถ้ารันหลาย repo ระบุ `repositories` ใน config หรือ env
-4. ไม่ตั้ง `RENOVATE_AUTODISCOVER`/`RENOVATE_AUTODISCOVER_FILTER` เมื่อระบุ `repositories` แล้ว
+1. Create `.github/workflows/renovate.yml` with `schedule` triggers (cron, e.g. `0 2 * * *`) + `workflow_dispatch`
+2. Set permissions `contents: write`, `pull-requests: write`, `issues: write`
+3. Use `renovatebot/github-action` with `RENOVATE_TOKEN` — when running multiple repos, specify `repositories` in config or env
+4. Don't set `RENOVATE_AUTODISCOVER`/`RENOVATE_AUTODISCOVER_FILTER` once `repositories` is specified
 
 ### 4. Minimal Config
 
-> Goal: สร้าง config ขั้นต่ำให้ Renovate ทำงาน
+> Goal: create a minimal config so Renovate works
 
-1. สร้าง `.github/renovate.json` (หรือ `renovate.json` ที่ root) พร้อม `$schema` และ `extends: ["config:base"]`
-2. รายละเอียด presets/packageRules/automerge ทำต่อใน `workflows/config-renovate/SKILL.md`
+1. Create `.github/renovate.json` (or `renovate.json` at the root) with `$schema` and `extends: ["config:base"]`
+2. Presets/packageRules/automerge details continue in `workflows/config-renovate/SKILL.md`
 
 ### 5. Verify
 
-> Goal: ยืนยัน Renovate ทำงาน
+> Goal: confirm Renovate works
 
-1. Validate config: `bunx -- renovate-config-validator .github/renovate.json`
-2. Self-hosted: trigger `workflow_dispatch` แล้วดู run logs — ต้อง scan repo สำเร็จ
-3. GitHub App: รอ onboarding PR (`Configure Renovate`) — merge เพื่อ activate
-4. ถ้า fail จาก token/permissions → แก้แล้ว rerun (max 3 รอบ) แล้ว report
+1. Validate the config: `bunx -- renovate-config-validator .github/renovate.json`
+2. Self-hosted: trigger `workflow_dispatch` and watch the run logs — the repo scan must succeed
+3. GitHub App: wait for the onboarding PR (`Configure Renovate`) — merge it to activate
+4. If it fails from token/permissions → fix and rerun (max 3 rounds), then report
 
 ## Rules
 
 ### 1. Method Choice
 
-- prefer GitHub App ถ้าไม่มีเหตุผล self-host — ลด maintenance
-- self-hosted ต้องมี schedule + `workflow_dispatch` เสมอ
+- Prefer the GitHub App unless there's a reason to self-host — less maintenance
+- Self-hosted must always have a schedule + `workflow_dispatch`
 
 ### 2. Token
 
-- `RENOVATE_TOKEN` เป็น repository secret เท่านั้น ห้าม commit
-- PAT `repo` scope สำหรับ private repos
+- `RENOVATE_TOKEN` as a repository secret only, never committed
+- PAT with `repo` scope for private repos
 
 ### 3. Common Pitfalls
 
-- ลืม `RENOVATE_TOKEN` → workflow fail
-- ลืม permissions `contents/pull-requests/issues: write`
-- ห้ามใช้ `--frozen-lockfile` ใน install step — Renovate ต้อง update lockfile ได้
+- Forgetting `RENOVATE_TOKEN` → the workflow fails
+- Forgetting permissions `contents/pull-requests/issues: write`
+- Never use `--frozen-lockfile` in the install step — Renovate must be able to update the lockfile
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
-- ใช้ /follow-secret-manager ถ้าจำเป็น
+- Use /follow-tool-github-actions if needed
+- Use /follow-secret-manager if needed
 
 ## Expected Outcome
 
-- Renovate active บน repo (app หรือ self-hosted workflow)
-- Token/permissions ถูกต้อง — run ไม่ fail
-- Config ผ่าน `renovate-config-validator`
+- Renovate active on the repo (app or self-hosted workflow)
+- Token/permissions correct — the run doesn't fail
+- Config passes `renovate-config-validator`
