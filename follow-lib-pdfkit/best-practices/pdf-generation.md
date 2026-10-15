@@ -1,47 +1,47 @@
 # Best Practices: pdfkit (Server PDF Generation)
 
-แนวทางสร้าง PDF ด้วย pdfkit ให้ layout ถูกต้อง stream ไม่ค้าง และไฟล์ไม่บวม
+Guidance for building PDFs with pdfkit so the layout is correct, streams don't hang, and files don't bloat
 
 ## Recommended Patterns
 
-- สร้าง `new PDFDocument({size, margins, info})` แล้ว `doc.pipe(stream)` ทันที — output เป็น stream ไม่ใช่ buffer ใหญ่
-- Manual positioning: `doc.text()` flow ต่อเนื่อง, `doc.rect`/`circle`/`lineTo` สำหรับ vector — เก็บ cursor `doc.x`/`doc.y` เช็คก่อนเขียน
-- Register font ครั้งเดียวด้วย `doc.registerFont(name, path)` แล้วอ้างด้วย `doc.font(name)` — font licensing ต้องอนุญาต embedding
-- Multi-page headers/footers: ใช้ `doc.bufferedPageRange()` แล้ว `switchToPage(i)` วาดย้อนหลัง
-- จบด้วย `doc.end()` เสมอ — ลืม = stream ค้าง, response ไม่ส่ง, memory leak
-- ทดสอบด้วยเปิด PDF จริง — layout overflow, font missing, page break ผิดเห็นได้แค่ตอน render
+- Create `new PDFDocument({size, margins, info})` then `doc.pipe(stream)` right away — output is a stream, not one big buffer
+- Manual positioning: `doc.text()` flows continuously, `doc.rect`/`circle`/`lineTo` for vector — check the cursor `doc.x`/`doc.y` before writing
+- Register a font once with `doc.registerFont(name, path)` then reference it with `doc.font(name)` — font licensing must allow embedding
+- Multi-page headers/footers: use `doc.bufferedPageRange()` then `switchToPage(i)` to draw retroactively
+- Always finish with `doc.end()` — forgetting it = hung stream, unsent response, memory leak
+- Test by opening the real PDF — layout overflow, missing fonts, and wrong page breaks only show up when rendered
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `doc.pipe(res)` + `Content-Type: application/pdf` สำหรับ HTTP | buffer ทั้งไฟล์ใน memory แล้วส่งทีเดียว |
-| ใช้ `bufferedPageRange` สำหรับ page numbers | วาด footer ตอน addPage (ยังไม่รู้จำนวนหน้า) |
-| Compress images ก่อน embed | embed PNG ขนาดเต็มใน PDF |
-| Handle `doc` error event + stream error | assume pipe สำเร็จเสมอ |
-| ใช้ `doc.end()` ใน finally/เสมอ | ลืม end → file corrupt/response hang |
-| เลือก pdfkit เมื่อต้อง programmatic layout | ใช้ pdfkit เมื่อ content คือ HTML — ใช้ Playwright `page.pdf()` |
+| `doc.pipe(res)` + `Content-Type: application/pdf` for HTTP | buffer the whole file in memory then send at once |
+| Use `bufferedPageRange` for page numbers | draw footers at addPage time (page count not known yet) |
+| Compress images before embedding | embed full-size PNGs in the PDF |
+| Handle the `doc` error event + stream error | assume the pipe always succeeds |
+| Use `doc.end()` in finally/always | forget end → corrupt file/hung response |
+| Choose pdfkit when layout must be programmatic | use pdfkit when the content is HTML — use Playwright `page.pdf()` |
 
 ## Common Pitfalls
 
-- pdfkit ต้อง Node runtime — edge/workerd ไม่ได้; ใช้ service แยกหรือ pre-render
-- Font path ผิด/หายใน production — register ด้วย absolute path จาก project root
-- Text overflow — `doc.text` ไม่ auto-wrap ถ้าไม่กำหนด `width`; ใช้ `doc.widthOfString` เช็ค
-- Page break ผิด — `doc.addPage` เมื่อ `doc.y` เกิน printable area; คำนวณ margin ก่อนเขียน
-- Image ใหญ่ทำ PDF บวม — compress/resize ก่อน `doc.image()`; `fit`/`width` จำกัดขนาดแสดง
-- `doc.end()` ใน async handler ลืม await stream finish — response อาจตัดกลาง
+- pdfkit needs a Node runtime — not edge/workerd; use a separate service or pre-render
+- Wrong/missing font path in production — register with an absolute path from the project root
+- Text overflow — `doc.text` does not auto-wrap unless `width` is set; check with `doc.widthOfString`
+- Wrong page breaks — call `doc.addPage` when `doc.y` exceeds the printable area; compute margins before writing
+- Large images bloat the PDF — compress/resize before `doc.image()`; `fit`/`width` limit the display size
+- Forgetting to await stream finish after `doc.end()` in an async handler — the response may cut off mid-stream
 
 ## Performance Notes
 
-- Stream output — ไม่ต้อง buffer ทั้ง PDF; pipe ตรงไป file/response
-- Font subsetting: pdfkit embed เฉพาะ glyphs ที่ใช้ — font ขนาดใหญ่ยังโอเคถ้าใช้น้อย
-- Reuse font objects — `registerFont` ครั้งเดียว; อย่า re-register ต่อหน้า
-- Complex vector หลายพัน path ช้า — พิจารณา rasterize หรือ simplify
-- Generation เป็น CPU-bound sync — ใน request handler ควร queue/background job สำหรับ PDF ใหญ่
+- Stream output — no need to buffer the whole PDF; pipe directly to file/response
+- Font subsetting: pdfkit embeds only the glyphs used — large fonts stay acceptable when few glyphs are needed
+- Reuse font objects — `registerFont` once; don't re-register per page
+- Complex vector work with thousands of paths is slow — consider rasterizing or simplifying
+- Generation is CPU-bound sync — in request handlers, use a queue/background job for large PDFs
 
 ## Ecosystem / Integration
 
-- HTML → PDF → Playwright `page.pdf()` (ไม่ใช่ pdfkit)
-- Storage: pipe เข้า `fs.createWriteStream` หรือ object storage stream
-- Fonts: bundle ใน repo (เช็ค license) หรือ mount path — ห้ามดึง font runtime จาก network
-- Testing: generate → assert file size/header หรือ snapshot compare บนตัวอย่าง
+- HTML → PDF → Playwright `page.pdf()` (not pdfkit)
+- Storage: pipe into `fs.createWriteStream` or an object-storage stream
+- Fonts: bundle in the repo (check the license) or a mounted path — never fetch fonts at runtime from the network
+- Testing: generate → assert file size/header, or snapshot-compare samples

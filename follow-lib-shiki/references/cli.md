@@ -10,4 +10,4 @@
 |---|---|---|
 | `shiki <file>` | highlight file → HTML output | `--theme`, `--lang` |
 | `shiki --lang <lang>` | highlight stdin input | `--theme` |
-| `skat` | alias binary ของ `s
+| `skat` | alias binary of `s

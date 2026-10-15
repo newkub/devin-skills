@@ -1,36 +1,36 @@
 # Shiki — Best Practices
 
-TextMate-grammar syntax highlighter — highlight ล่วงหน้า ship zero runtime JS
+TextMate-grammar syntax highlighter — highlight ahead of time, ship zero runtime JS
 
 ## Recommended Patterns
 
-- Highlight ที่ build/SSR time — ship HTML + inline styles ไม่ ship highlighter ไป browser
-- Shorthand (`codeToHtml`) สำหรับ Node/scripts — auto-cache + on-demand loading
-- `createHighlighter` singleton สำหรับ repeated renders — ระบุ `themes`/`langs` explicit
-- Dual themes `{ light, dark }` → CSS vars — dark mode toggle ไม่ต้อง re-highlight
-- `@shikijs/transformers` สำหรับ `// [!code highlight]`, `// [!code ++]`, focus, error levels — notation comments เป็น DX มาตรฐาน
-- Fine-grained bundles (`shiki/core` + `@shikijs/langs/*` + `@shikijs/themes/*`) เมื่อ bundle size สำคัญ
+- Highlight at build/SSR time — ship HTML + inline styles, don't ship the highlighter to the browser
+- Shorthand (`codeToHtml`) for Node/scripts — auto-cache + on-demand loading
+- `createHighlighter` singleton for repeated renders — specify `themes`/`langs` explicitly
+- Dual themes `{ light, dark }` → CSS vars — dark mode toggle needs no re-highlight
+- `@shikijs/transformers` for `// [!code highlight]`, `// [!code ++]`, focus, error levels — notation comments are the standard DX
+- Fine-grained bundles (`shiki/core` + `@shikijs/langs/*` + `@shikijs/themes/*`) when bundle size matters
 
 ## Common Pitfalls
 
-- `createHighlighter` ใน request handler/loop = memory + WASM init ทุกครั้ง — hoist เป็น module singleton
-- โหลด `Object.keys(bundledLanguages)` ทั้งหมด = bundle บวม — explicit lists เสมอ
-- v1+ themes/langs ไม่ auto-load — เรียก `codeToHtml` ด้วย lang ที่ยังไม่ load → throw
-- Cloudflare Workers: WASM binary init ไม่ได้ → `loadWasm(import('shiki/onig.wasm'))` หรือ `shiki/engine/javascript`
-- Dual themes + transformers ต้อง CSS ประกอบ (`.line`, `.highlighted` classes) — ไม่ใช่ inline-style-only เหมือน single theme
+- `createHighlighter` in a request handler/loop = memory + WASM init every time — hoist it to a module singleton
+- Loading all of `Object.keys(bundledLanguages)` = bloated bundle — always use explicit lists
+- v1+ themes/langs don't auto-load — calling `codeToHtml` with a lang that isn't loaded → throw
+- Cloudflare Workers: can't init the WASM binary → use `loadWasm(import('shiki/onig.wasm'))` or `shiki/engine/javascript`
+- Dual themes + transformers need supporting CSS (`.line`, `.highlighted` classes) — not inline-style-only like a single theme
 
 ## UX/UI Integration
 
-- ใช้ใน `/improve uxui` เมื่อ code blocks ขาด highlight, theme ไม่ตรง dark/light, หรือไม่มี line highlights/focus
-- Pair กับ `/follow-lib-comark` — plugin `comark/plugins/shiki` highlight code fences ใน markdown pipeline
-- Code blocks ใน docs site → prefer VitePress/Nuxt/Next/Astro integrations มากกว่า manual wiring
+- Use in `/improve uxui` when code blocks lack highlighting, the theme doesn't match dark/light, or there are no line highlights/focus
+- Pair with `/follow-lib-comark` — the `comark/plugins/shiki` plugin highlights code fences in the markdown pipeline
+- Code blocks in a docs site → prefer VitePress/Nuxt/Next/Astro integrations over manual wiring
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| highlight ล่วงหน้า build/SSR | ship highlighter ไป client โดยไม่จำเป็น |
-| singleton `createHighlighter` | สร้าง highlighter ใหม่ทุก render |
-| explicit `themes`/`langs` lists | load bundled catalogs ทั้งหมด |
-| dual themes CSS vars สำหรับ dark mode | render ซ้ำเมื่อ toggle theme |
-| JS engine บน runtimes ที่ WASM จำกัด | assume WASM ใช้ได้ทุกที่ |
+| highlight ahead of time at build/SSR | ship the highlighter to the client unnecessarily |
+| singleton `createHighlighter` | create a new highlighter every render |
+| explicit `themes`/`langs` lists | load the entire bundled catalogs |
+| dual themes CSS vars for dark mode | re-render when toggling the theme |
+| JS engine on runtimes where WASM is restricted | assume WASM works everywhere |
