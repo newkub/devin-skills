@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vitepress-setup-vitepress
-description: ติดตั้ง VitePress, สร้าง docs structure และ `.vitepress/config.ts` พื้นฐาน
+description: Install VitePress, create the docs structure and a basic `.vitepress/config.ts`
 argument-hint: "[scope]"
 related:
   - follow-gitignore
@@ -11,72 +11,72 @@ related:
 
 ## Goal
 
-ติดตั้ง VitePress และสร้าง docs site ให้ dev/build/preview ทำงาน — directory structure, `config.ts` พื้นฐาน, package scripts — first-time setup
+Install VitePress and create the docs site so dev/build/preview work — directory structure, basic `config.ts`, package scripts — first-time setup
 
 ## Scope
 
-ใช้สำหรับ project ที่ยังไม่มี VitePress — init, `docs/` layout, nav/sidebar พื้นฐาน. Theme customization อยู่ใน `workflows/config-theme/SKILL.md`; migration อยู่ใน `workflows/migrate-from-docusaurus/SKILL.md`
+Use for a project that doesn't have VitePress yet — init, `docs/` layout, basic nav/sidebar. Theme customization is in `workflows/config-theme/SKILL.md`; migration is in `workflows/migrate-from-docusaurus/SKILL.md`
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ state ก่อน setup
+> Goal: check the state before setup
 
-1. ตรวจว่ามี `docs/` + `.vitepress/` หรือ `vitepress` dependency อยู่แล้ว — ถ้ามี → skip ไป verify
-2. ระบุว่า single project หรือ monorepo — monorepo ให้ `docs/` เป็น workspace ของตัวเอง
-3. ระบุ package manager จาก lockfile
+1. Check for an existing `docs/` + `.vitepress/` or `vitepress` dependency — if present → skip to verify
+2. Determine single project or monorepo — for a monorepo, `docs/` is its own workspace
+3. Determine the package manager from the lockfile
 
 ### 2. Create Docs Structure
 
-> Goal: สร้าง directory structure
+> Goal: create the directory structure
 
-1. สร้าง `docs/` ที่ root พร้อม `.vitepress/` config directory ภายใน
-2. Monorepo: สร้าง `docs/package.json` (`vitepress` dependency + scripts `dev`/`build`/`preview`) และเพิ่ม `docs` ใน `workspaces` ของ root
-3. Single project: ใส่ scripts ใน root `package.json` เป็น `dev:docs`/`build:docs`/`preview:docs`
-4. ทำ `/follow-gitignore` — `docs/.gitignore` ครอบคลุม `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
-5. ทำ `/follow-lang-typescript` — `docs/tsconfig.json` สำหรับ type checking ของ `.vitepress/` (`noEmit: true`, `types: ["vitepress"]`)
+1. Create `docs/` at the root with the `.vitepress/` config directory inside
+2. Monorepo: create `docs/package.json` (`vitepress` dependency + `dev`/`build`/`preview` scripts) and add `docs` to `workspaces` in the root
+3. Single project: put scripts in the root `package.json` as `dev:docs`/`build:docs`/`preview:docs`
+4. Do `/follow-gitignore` — `docs/.gitignore` covering `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
+5. Do `/follow-lang-typescript` — `docs/tsconfig.json` for type checking the `.vitepress/` (`noEmit: true`, `types: ["vitepress"]`)
 
 ### 3. Install And Config
 
-> Goal: ติดตั้งและสร้าง config พื้นฐาน
+> Goal: install and create the basic config
 
-1. ติดตั้ง `bun add -d vitepress` ใน docs workspace/root (version ดู parent skill หรือ official docs — stable 1.x, `next` สำหรับ preview)
-2. สร้าง `.vitepress/config.ts` ด้วย `defineConfig` จาก `vitepress`: `title`, `description`, `lang`, `themeConfig.nav`, `themeConfig.sidebar`, `markdown.deadLinks: 'ignore'`
-3. สร้าง `docs/index.md` ด้วย frontmatter `layout: home` + hero/features หรือ `layout: doc` ตามต้องการ
+1. Install `bun add -d vitepress` in the docs workspace/root (version: see the parent skill or official docs — stable 1.x, `next` for preview)
+2. Create `.vitepress/config.ts` with `defineConfig` from `vitepress`: `title`, `description`, `lang`, `themeConfig.nav`, `themeConfig.sidebar`, `markdown.deadLinks: 'ignore'`
+3. Create `docs/index.md` with frontmatter `layout: home` + hero/features, or `layout: doc` as needed
 
 ### 4. Verify
 
-> Goal: ยืนยัน dev/build ทำงาน
+> Goal: confirm dev/build work
 
-1. รัน `vitepress dev` (ใน `docs/`) — เปิด localhost URL ต้องเห็นหน้าแรก
-2. รัน `vitepress build` — output ใน `.vitepress/dist/` ไม่มี dead-links error ที่ไม่ตั้งใจ
-3. ถ้า fail → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `vitepress dev` (in `docs/`) — opening the localhost URL must show the home page
+2. Run `vitepress build` — output in `.vitepress/dist/` with no unintended dead-links error
+3. If it fails → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
 ### 1. Structure
 
-- `.vitepress/config.ts` ใช้ `defineConfig` เสมอ — type safety
-- monorepo: `docs/` เป็น workspace มี `package.json` ของตัวเอง
-- nav/sidebar อยู่ใน `themeConfig`
+- `.vitepress/config.ts` always uses `defineConfig` — type safety
+- monorepo: `docs/` is a workspace with its own `package.json`
+- nav/sidebar live in `themeConfig`
 
 ### 2. Content
 
-- frontmatter สำหรับ metadata; `layout: home` สำหรับ landing page
-- `deadLinks: 'ignore'` ระหว่าง setup — เปลี่ยนเป็น strict เมื่อ content นิ่ง
+- frontmatter for metadata; `layout: home` for the landing page
+- `deadLinks: 'ignore'` during setup — switch to strict once content is stable
 
 ### 3. Idempotent
 
-- ถ้า `.vitepress/` มีอยู่แล้ว → verify เท่านั้น ห้าม init ซ้ำ
+- If `.vitepress/` already exists → verify only, never re-init
 
-- ใช้ /follow-gitignore ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /run-docs ถ้าจำเป็น
+- Use /follow-gitignore if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-tool-vite if needed
+- Use /run-docs if needed
 
 ## Expected Outcome
 
-- `docs/` + `.vitepress/config.ts` ถูกสร้าง
-- `vitepress dev`/`build`/`preview` ทำงาน
-- Monorepo workspace setup ถูกต้อง (ถ้าใช้)
+- `docs/` + `.vitepress/config.ts` created
+- `vitepress dev`/`build`/`preview` work
+- Monorepo workspace setup correct (if used)

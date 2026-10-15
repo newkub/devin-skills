@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vitepress-config-theme
-description: ตั้งค่า VitePress theme — `.vitepress/theme/`, CSS vars, i18n, nav/sidebar
+description: Configure the VitePress theme — `.vitepress/theme/`, CSS vars, i18n, nav/sidebar
 argument-hint: "[scope]"
 related:
   - follow-lang-typescript
@@ -10,79 +10,79 @@ related:
 
 ## Goal
 
-ตั้งค่าและแก้ไข VitePress theme — `.vitepress/theme/index.ts`, CSS variables, custom components, i18n/locales, nav/sidebar — โดย merge กับ config เดิม
+Configure and edit the VitePress theme — `.vitepress/theme/index.ts`, CSS variables, custom components, i18n/locales, nav/sidebar — merging with the existing config
 
 ## Scope
 
-ใช้เมื่อต้อง customize theme หรือเพิ่ม i18n — init/structure อยู่ใน `workflows/setup-vitepress/SKILL.md`
+Use when customizing the theme or adding i18n — init/structure is in `workflows/setup-vitepress/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. อ่าน `.vitepress/config.ts` และ `.vitepress/theme/index.ts` (ถ้ามี)
-2. ถ้าไม่มี `.vitepress/` → ทำ `workflows/setup-vitepress/SKILL.md` ก่อน
+1. Read `.vitepress/config.ts` and `.vitepress/theme/index.ts` (if present)
+2. If there's no `.vitepress/` → do `workflows/setup-vitepress/SKILL.md` first
 
 ### 2. Theme Entry
 
-> Goal: สร้าง/แก้ `.vitepress/theme/index.ts`
+> Goal: create/edit `.vitepress/theme/index.ts`
 
-1. `import DefaultTheme from 'vitepress/theme'` แล้ว `export default { extends: DefaultTheme, enhanceApp({ app }) {} }`
-2. ใช้ `enhanceApp` register global Vue components
-3. สร้าง `.vitepress/theme/style.css` — ตั้ง CSS variables ใน `:root` เช่น `--vp-c-brand`
-4. custom layout ใช้ `Layout` slot หรือสร้าง `.vitepress/theme/Layout.vue` ถ้าต้องการ (ดู official docs)
+1. `import DefaultTheme from 'vitepress/theme'` then `export default { extends: DefaultTheme, enhanceApp({ app }) {} }`
+2. Use `enhanceApp` to register global Vue components
+3. Create `.vitepress/theme/style.css` — set CSS variables in `:root` such as `--vp-c-brand`
+4. For a custom layout use the `Layout` slot, or create `.vitepress/theme/Layout.vue` if needed (see official docs)
 
 ### 3. Nav And Sidebar
 
-> Goal: ปรับ navigation structure ใน `themeConfig`
+> Goal: adjust the navigation structure in `themeConfig`
 
-1. `nav` — top-level links; ใช้ `items` สำหรับ dropdown groups (เช่น จัดกลุ่ม workspaces ตาม category ใน monorepo)
-2. `sidebar` — object form `{ '/path/': [sections] }` สำหรับ per-section sidebars
-3. ตั้ง `logo`, `siteTitle`, `socialLinks`, `editLink`, `lastUpdated` ตามต้องการ
-4. `search` — `local` provider (built-in) หรือ algolia options ถ้ามี
+1. `nav` — top-level links; use `items` for dropdown groups (e.g. grouping workspaces by category in a monorepo)
+2. `sidebar` — object form `{ '/path/': [sections] }` for per-section sidebars
+3. Set `logo`, `siteTitle`, `socialLinks`, `editLink`, `lastUpdated` as needed
+4. `search` — the `local` provider (built-in) or algolia options if available
 
 ### 4. i18n / Locales
 
-> Goal: ตั้งค่า multi-language ถ้าต้องการ
+> Goal: set up multi-language if needed
 
-1. เพิ่ม `locales` ใน `config.ts` — key เป็น path prefix เช่น `'/th/'` พร้อม `lang`, `label`, `link`, themeConfig overrides ต่อ locale
-2. สร้าง content mirror: `docs/th/index.md` ฯลฯ ตาม locale paths
-3. ตั้ง `themeConfig` ต่อ locale (nav, sidebar, labels) — ดู official docs สำหรับ keys ทั้งหมดที่ override ได้
+1. Add `locales` in `config.ts` — keys are path prefixes such as `'/th/'` with `lang`, `label`, `link`, and per-locale themeConfig overrides
+2. Create the content mirror: `docs/th/index.md` etc. per locale paths
+3. Set `themeConfig` per locale (nav, sidebar, labels) — see official docs for all overridable keys
 
 ### 5. Verify
 
-> Goal: ตรวจ theme ทำงาน
+> Goal: check the theme works
 
-1. รัน `vitepress dev` — ตรวจ nav/sidebar/theme แสดงถูกต้องทุก locale
-2. รัน `vitepress build` — ผ่านไม่มี dead links ที่ไม่ตั้งใจ
-3. ถ้าพัง → revert keys ที่แก้แล้ว report diff ด้วย `/report-before-after`
+1. Run `vitepress dev` — verify nav/sidebar/theme render correctly for every locale
+2. Run `vitepress build` — passes with no unintended dead links
+3. If it breaks → revert the changed keys and report the diff with `/report-before-after`
 
 ## Rules
 
 ### 1. Theme
 
-- extend `DefaultTheme` เสมอ — ห้ามเขียน theme จาก scratch ถ้าไม่จำเป็น
-- `enhanceApp` สำหรับ register components; CSS vars ใน `:root`
-- Vue components (`.vue`) สำหรับ interactive content; `.md` pages ใช้ frontmatter + import components
+- Always extend `DefaultTheme` — never write a theme from scratch unless necessary
+- `enhanceApp` for registering components; CSS vars in `:root`
+- Vue components (`.vue`) for interactive content; `.md` pages use frontmatter + component imports
 
 ### 2. i18n
 
-- locale keys เป็น path prefixes ที่ตรงกับ directory structure จริง
-- ทุก locale ต้องมี content mirror ที่ path นั้น — missing = 404
+- locale keys are path prefixes matching the real directory structure
+- every locale needs its content mirror at that path — missing = 404
 
 ### 3. Merge Discipline
 
-- แก้เฉพาะ keys ที่จำเป็นใน `config.ts` — ห้าม overwrite ทั้งไฟล์
+- edit only the necessary keys in `config.ts` — never overwrite the whole file
 
-- ใช้ /follow-lib-unocss ถ้าจำเป็น (ถ้าใช้ UnoCSS กับ theme)
-- ใช้ /run-docs ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- Use /follow-lib-unocss if needed (if using UnoCSS with the theme)
+- Use /run-docs if needed
+- Use /follow-lang-typescript if needed
 
 ## Expected Outcome
 
-- `.vitepress/theme/` พร้อม custom theme + CSS vars
-- Nav/sidebar ถูกต้องตาม content structure
-- i18n locales ทำงานครบทุกภาษาที่เปิด
-- `vitepress build` ผ่าน
+- `.vitepress/theme/` ready with the custom theme + CSS vars
+- Nav/sidebar correct per the content structure
+- i18n locales working for every enabled language
+- `vitepress build` passes
