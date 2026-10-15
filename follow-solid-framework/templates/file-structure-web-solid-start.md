@@ -1,6 +1,6 @@
 # Web Solid + TanStack Start (Nitro) + Bun File Structure
 
-Canonical file structure สำหรับ TanStack Start (Nitro-powered) Solid app บน Bun — isomorphic routes + server functions + nitro API
+Canonical file structure for a TanStack Start (Nitro-powered) Solid app on Bun — isomorphic routes + server functions + nitro API
 
 ## File Structure
 
@@ -12,7 +12,7 @@ project/
 │
 ├─ src/
 │  ├─ router.tsx                          # createRouter + routeTree
-│  ├─ routeTree.gen.ts                    # generated — ห้ามแก้
+│  ├─ routeTree.gen.ts                    # generated — never edit
 │  │
 │  ├─ routes/                             # file-based routes (presentation — isomorphic)
 │  │  ├─ __root.tsx
@@ -31,7 +31,7 @@ project/
 │  │  ├─ middleware/                      # auth.ts, logging.ts
 │  │  └─ utils/                           # server-only helpers
 │  │
-│  ├─ usecases/                           # application use cases — called จาก server fns (domain)
+│  ├─ usecases/                           # application use cases — called from server fns (domain)
 │  │  ├─ login.ts
 │  │  └─ create-order.ts
 │  │
@@ -63,18 +63,18 @@ project/
 
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
-| 1 | presentation | `routes/` (+`routes/api/`) | pages + nitro endpoints | → `components`, `server/fns` — ห้ามเรียก `infra/` ตรง |
+| 1 | presentation | `routes/` (+`routes/api/`) | pages + nitro endpoints | → `components`, `server/fns` — never call `infra/` directly |
 | 2 | presentation | `components/`+`hooks/` | UI + view logic | → `server/fns`, `stores` |
-| 3 | domain boundary | `server/fns`+`middleware` | createServerFn RPC calls — isomorphic wire | → `usecases` — ห้ามเรียก `infra` ตรง |
+| 3 | domain boundary | `server/fns`+`middleware` | createServerFn RPC calls — isomorphic wire | → `usecases` — never call `infra` directly |
 | 4 | domain | `usecases/`+`services/` | business rules | → `infra/` |
 | 5 | domain | `stores/` | client state | leaf |
 | 6 | data | `infra/`+`lib/` | db, external APIs | leaf — server-only |
-| 7 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — ต้อง isomorphic-safe |
+| 7 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — must be isomorphic-safe |
 
 ## Rules
 
-- Server execution ผ่าน `createServerFn` ใน `server/fns/` หรือ `routes/api/` เท่านั้น — ห้าม inline server code ใน components
-- `infra/`+`server/` server-only — ห้าม import จาก client components (ใช้ `serverOnly`/split guards)
-- shared leaves ต้อง isomorphic-safe — ห้ามใช้ `node:*`/`bun:*` ใน `utils/`/`types/` (ย้ายไป `server/utils/`)
-- Secrets ผ่าน runtime env เท่านั้น — Bun: `Bun.env`/process.env ฝั่ง server เท่านั้น
-- `routeTree.gen.ts` generated — ห้าม edit
+- Server execution only via `createServerFn` in `server/fns/` or `routes/api/` — never inline server code in components
+- `infra/`+`server/` are server-only — never import from client components (use `serverOnly`/split guards)
+- Shared leaves must be isomorphic-safe — no `node:*`/`bun:*` in `utils/`/`types/` (move to `server/utils/`)
+- Secrets via runtime env only — Bun: `Bun.env`/process.env on the server side only
+- `routeTree.gen.ts` is generated — never edit

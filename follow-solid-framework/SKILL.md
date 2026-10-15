@@ -14,60 +14,61 @@ related:
   - follow-tool-vite
   - follow-lang-typescript
   - follow-single-responsibility
+  - follow-web-standard
   - run-dev
 ---
 
 ## Goal
 
-สร้าง SolidJS application — เลือก variant ตาม deploy target แล้ว execute ตาม section ของ variant นั้น
+Build a SolidJS application — pick the variant by deploy target, then execute that variant's sections
 
 ## Scope
 
-ครอบทุก Solid app archetype:
+Covers every Solid app archetype:
 
-| Variant | Stack | Deploy | เมื่อไหร่ |
+| Variant | Stack | Deploy | When |
 |---|---|---|---|
 | `spa` | Solid + TanStack Router + UnoCSS | static bundle | client-only (dashboard, Tauri/Capacitor embed) |
-| `start` | TanStack Start (SSR + server fns/routes) + Drizzle/D1 | Cloudflare Workers | full-stack บน CF (canonical) |
+| `start` | TanStack Start (SSR + server fns/routes) + Drizzle/D1 | Cloudflare Workers | full-stack on CF (canonical) |
 | `nitro-bun` | TanStack Start + Nitro preset `bun` | `.output/server/index.mjs` self-host/Docker | own server, local `bun:sqlite` |
-| `nitro-cf` | TanStack Start + Nitro preset `cloudflare-module` | wrangler deploy จาก `.output/` | nitro-native CF path (แทน `@cloudflare/vite-plugin`) |
+| `nitro-cf` | TanStack Start + Nitro preset `cloudflare-module` | wrangler deploy from `.output/` | nitro-native CF path (instead of `@cloudflare/vite-plugin`) |
 
-Frameworks อื่น → `/follow-create-web`; lib only → `/follow-lib-solidjs`
+Other frameworks → `/follow-create-web`; lib only → `/follow-lib-solidjs`
 
 ## Execute
 
 ### 0. Choose Variant
 
-เลือกจากตาราง Scope — ถ้าไม่ชัด default = `start` (full-stack) หรือถาม user
+Choose from the Scope table — if unclear, default = `start` (full-stack) or ask the user
 
-### 1. Setup Project (ทุก variant)
+### 1. Setup Project (all variants)
 
-1. ทำ `/deep-research` + `/follow-best-practice` ยืนยันเวอร์ชันล่าสุด ตาม `/update-devin-global-skills` แล้ว `/deep-review` สรุป stack
-2. Scaffold: `bun create vite@latest my-app -- --template solid` (spa) หรือ `npx @tanstack/cli@latest create --framework solid` / gitpick `TanStack/router` example `solid/start-basic` (start variants)
-3. Modules: `src/modules/<feature>/` (components + hooks + schemas + types + `index.ts` barrel), shared UI `src/components/`, infra `src/lib/` — file structure canonical ใน `templates/`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions per `/update-devin-global-skills`, then `/deep-review` to summarize the stack
+2. Scaffold: `bun create vite@latest my-app -- --template solid` (spa) or `npx @tanstack/cli@latest create --framework solid` / gitpick `TanStack/router` example `solid/start-basic` (start variants)
+3. Modules: `src/modules/<feature>/` (components + hooks + schemas + types + `index.ts` barrel), shared UI `src/components/`, infra `src/lib/` — canonical file structure in `templates/`
 
 ### 2. Dependencies
 
 ```bash
-# spa (pure Router) — หรือใช้ @tanstack/solid-start ด้วย spa.enabled mode (ดู §3)
+# spa (pure Router) — or use @tanstack/solid-start with spa.enabled mode (see §3)
 bun i @tanstack/solid-router solid-js
 bun i -D vite vite-plugin-solid typescript @tanstack/router-plugin unocss @iconify-json/mdi
 
 # start variants (+ server)
 bun i @tanstack/solid-start @tanstack/solid-router solid-js drizzle-orm
 bun i -D vite vite-plugin-solid typescript nitro unocss @iconify-json/mdi drizzle-kit wrangler
-bun i -D vite-tsconfig-paths         # ~/ alias จาก tsconfig paths
-# CF deploy ผ่าน vite-plugin path → bun i -D @cloudflare/vite-plugin
+bun i -D vite-tsconfig-paths         # ~/ alias from tsconfig paths
+# CF deploy via the vite-plugin path → bun i -D @cloudflare/vite-plugin
 ```
 
 Optional: `zod` (validator), `effect` (`/follow-lib-effect-ts`), `@orpc/*` (`/follow-lib-orpc`)
 
 ### 3. Vite Config — Per Variant
 
-**spa — มี 2 patterns** (เลือกอย่างใดอย่างหนึ่ง):
+**spa — 2 patterns** (pick one or the other):
 
 ```ts
-// (a) pure Router — SPA ล้วน ไม่เกี่ยว Start
+// (a) pure Router — a true SPA, unrelated to Start
 plugins: [
   tsConfigPaths(),
   tanstackRouter({ target: 'solid', autoCodeSplitting: true }),
@@ -75,96 +76,97 @@ plugins: [
   viteSolid(),
 ]
 
-// (b) Start spa mode — codebase เดียวกับ fullstack / prerender shell (Capacitor)
+// (b) Start spa mode — same codebase as fullstack / prerender shell (Capacitor)
 plugins: [
   tsConfigPaths(),
   tanstackStart({ spa: { enabled: true, prerender: { outputPath: '/index' } } }),
   UnoCSS(),
-  viteSolid({ ssr: true }),   // จำเป็น — prerender ยังสร้าง ssr bundle
+  viteSolid({ ssr: true }),   // required — prerender still builds an ssr bundle
 ]
 ```
 
-**start — Cloudflare canonical (dept-saw path)** ใช้ `@cloudflare/vite-plugin` ไม่ใช่ nitro:
+**start — Cloudflare canonical (dept-saw path)** uses `@cloudflare/vite-plugin`, not nitro:
 ```ts
 plugins: [
   tsConfigPaths(),
-  cloudflare({ viteEnvironment: { name: 'ssr' } }),   // D1 binding ผ่าน env
+  cloudflare({ viteEnvironment: { name: 'ssr' } }),   // D1 binding via env
   tanstackStart(),
   UnoCSS(),
   viteSolid({ ssr: true }),
 ]
 ```
 
-**nitro variants** — `viteSolid({ ssr: true })` หลัง `tanstackStart()` เสมอ:
+**nitro variants** — always `viteSolid({ ssr: true })` after `tanstackStart()`:
 ```ts
 import { nitro } from 'nitro/vite'
 
-// preset ผ่าน option หรือ env — env ปลอดภัยกว่า (nitro บาง version type ไม่รับ option)
+// preset via option or env — env is safer (some nitro versions' types don't accept the option)
 process.env.NITRO_PRESET ??= '<preset>'   // 'bun' | 'cloudflare-module'
 
 plugins: [tsConfigPaths(), tanstackStart(), nitro(), UnoCSS(), viteSolid({ ssr: true })]
 ```
 
-| Variant | engine | preset | config หลัก |
+| Variant | engine | preset | main config |
 |---|---|---|---|
 | start | `@cloudflare/vite-plugin` | — | `vite.config.ts` |
 | nitro-bun | `nitro()` | `bun` | `vite.config.bun.ts` |
 | nitro-cf | `nitro()` | `cloudflare-module` | `vite.config.ts` |
 
-หลาย target ใน repo เดียว → แยก `vite.config.*.ts` (pattern ใน dept-saw: `build` CF + `build:bun` nitro + `build:spa` capacitor)
+Multiple targets in one repo → split `vite.config.*.ts` (pattern in dept-saw: `build` CF + `build:bun` nitro + `build:spa` capacitor)
 
 ### 4. TypeScript
 
-`jsx: "preserve"` + `jsxImportSource: "solid-js"`, `moduleResolution: "Bundler"`, `target: "ES2022"`, `skipLibCheck: true`; `paths: {"~/*": ["./src/*"]}` + `vite-tsconfig-paths` สำหรับ `~/` alias; full-stack หลีกเลี่ยง `verbatimModuleSyntax` (server รั่ว client); CF → `wrangler types` → `worker-configuration.d.ts`
+`jsx: "preserve"` + `jsxImportSource: "solid-js"`, `moduleResolution: "Bundler"`, `target: "ES2022"`, `skipLibCheck: true`; `paths: {"~/*": ["./src/*"]}` + `vite-tsconfig-paths` for the `~/` alias; full-stack avoids `verbatimModuleSyntax` (server leaks into client); CF → `wrangler types` → `worker-configuration.d.ts`
 
 ### 4.5 Quality Scripts
 
-ตั้ง `check`/`verify`/`ci` + `scan` (ast-grep rules) ตาม `/follow-tasks` Minimal — lint/format ผ่าน biome (`biome.json` config overrides เท่านั้น ตาม `/follow-default-config`), test ผ่าน `bun test` (bun-native) หรือ `vitest`
+Set up `check`/`verify`/`ci` + `scan` (ast-grep rules) per `/follow-tasks` Minimal — lint/format via biome (`biome.json` config overrides only, per `/follow-default-config`), test via `bun test` (bun-native) or `vitest`
 
-### 5. Router (ทุก variant)
+### 5. Router (all variants)
 
-1. `createFileRoute`/`createRootRoute` file-based — `routeTree.gen.ts` generated ห้ามแก้
+1. `createFileRoute`/`createRootRoute` file-based — `routeTree.gen.ts` is generated, never edit
 2. `defaultPreload: 'intent'` + `scrollRestoration: true` + `validateSearch`
-3. `import 'virtual:uno.css'` ใน `__root.tsx`/entry — **ห้าม `@import` ใน css** (postcss resolve เป็นไฟล์ → ENOENT)
+3. `import 'virtual:uno.css'` in `__root.tsx`/entry — **never `@import` in css** (postcss resolves it as a file → ENOENT)
 
 ### 6. Full-Stack Only (start/nitro-*)
 
-1. **Server fns**: `createServerFn({ method })` + `.validator()` + `.handler()` — internal RPC; client เรียกเหมือน local แล้ว `router.invalidate()`
-2. **Server routes**: `src/routes/api/*.ts` `server.handlers` — เฉพาะ webhooks/external; wildcard `api.$.ts`
-3. **Server-only**: `.server.ts` / `serverOnly()` guard — ห้าม import DB/secrets เข้า client bundle
-4. **Drizzle**: `src/lib/schema.ts` = source of truth; `drizzle.config.ts` + `migrations/` ตาม `/follow-lib-drizzle`
+1. **Server fns**: `createServerFn({ method })` + `.validator()` + `.handler()` — internal RPC; the client calls it like a local fn then `router.invalidate()`
+2. **Server routes**: `src/routes/api/*.ts` `server.handlers` — for webhooks/external only; wildcard `api.$.ts`
+3. **Server-only**: `.server.ts` / `serverOnly()` guard — never import DB/secrets into the client bundle
+4. **Drizzle**: `src/lib/schema.ts` = source of truth; `drizzle.config.ts` + `migrations/` per `/follow-lib-drizzle`
 5. **DB adapter** per target:
-   - CF → `drizzle(env.DB)` ด้วย `drizzle-orm/d1`; binding ใน `wrangler.jsonc` → `d1_databases`
-   - nitro-bun → `bun:sqlite` ผ่าน `sqlite-proxy`; auto-migrate/seed ตอน start ถ้า DB ว่าง
-   - runtime-detect adapter → ดู `dept-saw/src/lib/db.server.ts`
+   - CF → `drizzle(env.DB)` with `drizzle-orm/d1`; bindings in `wrangler.jsonc` → `d1_databases`
+   - nitro-bun → `bun:sqlite` via `sqlite-proxy`; auto-migrate/seed at startup if the DB is empty
+   - runtime-detect adapter → see `dept-saw/src/lib/db.server.ts`
 
 ### 7. Build And Deploy — Per Variant
 
-**spa**: `bun run build` → static `dist/` (embed ใน Tauri/Capacitor ได้ — `vite.config.spa.ts` + `spa.prerender` ตาม dept-saw)
+**spa**: `bun run build` → static `dist/` (embeddable in Tauri/Capacitor — `vite.config.spa.ts` + `spa.prerender` per dept-saw)
 
-**start (CF canonical)**: `bun run build` → `wrangler deploy`; bindings ใน `wrangler.jsonc` เท่านั้น; secrets `wrangler secret put`; rollback `wrangler rollback`
+**start (CF canonical)**: `bun run build` → `wrangler deploy`; bindings declared in `wrangler.jsonc` only; secrets via `wrangler secret put`; rollback via `wrangler rollback`
 
-**nitro-bun**: `bun run build` → `.output/`; run `bun .output/server/index.mjs` (port จาก `PORT`/`NITRO_PORT`); Docker `FROM oven/bun` + `COPY .output`; sqlite file = runtime artifact อย่า commit
+**nitro-bun**: `bun run build` → `.output/`; run `bun .output/server/index.mjs` (port from `PORT`/`NITRO_PORT`); Docker `FROM oven/bun` + `COPY .output`; the sqlite file is a runtime artifact, don't commit it
 
-**nitro-cf**: `bun run build` → `wrangler.jsonc` ชี้ `"main": ".output/server/index.mjs"` + `"assets": {"directory": ".output/public"}` + `compatibility_flags: ["nodejs_compat"]` → `wrangler deploy` — ref https://nitro.build/deploy/providers/cloudflare
+**nitro-cf**: `bun run build` → `wrangler.jsonc` pointing `"main": ".output/server/index.mjs"` + `"assets": {"directory": ".output/public"}` + `compatibility_flags: ["nodejs_compat"]` → `wrangler deploy` — ref https://nitro.build/deploy/providers/cloudflare
 
 ## Rules
 
-- **spa**: client-only เท่านั้น — ห้าม `createServerFn`/`.server.ts`/server imports
-- **start variants**: `.validator()` ทุก server fn ที่รับ input; server routes เฉพาะ external HTTP; ห้าม inline server code ใน components
-- Nitro preset ผ่าน `NITRO_PRESET` env หรือ `nitro({ preset })` — env ปลอดภัยกว่า (nitro บาง version type ไม่รับ option); presets ทั้งหมดดู `/follow-lib-nitro`
-- CF bindings declare ใน `wrangler.jsonc` เท่านั้น — code อ่านผ่าน typed `env.*`
-- ห้ามใช้ `@cloudflare/vite-plugin` ร่วม nitro-cf path ใน config เดียว — เลือกทางเดียว (`start` = vite-plugin, `nitro-cf` = nitro)
-- `routeTree.gen.ts` ห้าม edit; `virtual:uno.css` import ผ่าน JS entry เท่านั้น
-- shared leaves (`utils/`/`types/`) ต้อง isomorphic-safe บน start — ห้าม `node:*`/`bun:*` (ย้าย `server/utils/`)
+- **spa**: client-only — no `createServerFn`/`.server.ts`/server imports
+- **start variants**: `.validator()` on every server fn that takes input; server routes for external HTTP only; never inline server code in components
+- Nitro preset via the `NITRO_PRESET` env or `nitro({ preset })` — env is safer (some nitro versions' types don't accept the option); see all presets in `/follow-lib-nitro`
+- CF bindings declared in `wrangler.jsonc` only — code reads them via typed `env.*`
+- Never combine `@cloudflare/vite-plugin` with the nitro-cf path in one config — pick one route (`start` = vite-plugin, `nitro-cf` = nitro)
+- Never edit `routeTree.gen.ts`; import `virtual:uno.css` from the JS entry only
+- Shared leaves (`utils/`/`types/`) must be isomorphic-safe on start — no `node:*`/`bun:*` (move to `server/utils/`)
 - Performance: `defaultPreload: 'intent'`, lazy routes + `Suspense`, `manualChunks` vendor split
-- ใช้ /deep-test component verify component render/states
+- Use /deep-test component to verify component render/states
+- UI markup: semantic HTML, native widgets (`<dialog>`, popover, native form validation), standard Web APIs over libraries — per `/follow-web-standard`
 
 ## Expected Outcome
 
-- Variant ที่เลือกรัน `bun run dev` + build ผ่าน target ของตัวเอง
-- Type-safe routes + (full-stack) server fns/routes + Drizzle ทำงานครบ
-- Deploy สำเร็จตาม target — static / Worker / portable bun server
+- The chosen variant runs `bun run dev` and builds through its own target
+- Type-safe routes + (full-stack) server fns/routes + Drizzle all working
+- Deploy succeeds per target — static / Worker / portable bun server
 
 ## Templates
 

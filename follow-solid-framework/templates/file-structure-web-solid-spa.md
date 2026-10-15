@@ -1,13 +1,13 @@
 # Web Solid + TanStack File Structure
 
-Canonical file structure สำหรับ Solid app + TanStack Router/Query — flat layered + feature grouping ภายใน layer
+Canonical file structure for a Solid app + TanStack Router/Query — flat layered + feature grouping within layers
 
 ## File Structure
 
 ```text
 project/
 │
-├─ index.html (หรือ app.config.ts ถ้า SolidStart)
+├─ index.html (or app.config.ts for SolidStart)
 ├─ vite.config.ts
 │
 ├─ src/
@@ -61,16 +61,16 @@ project/
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
 | 1 | presentation | `routes/` | route tree + loaders | → `components`, `queries`, `usecases` |
-| 2 | presentation | `components/`+`hooks/` | UI + view logic | → `queries`, `usecases`, `stores` — ห้ามเรียก `infra/` ตรง |
-| 3 | domain boundary | `queries/` | query keys/options/fetchers | → `infra/` — channel เดียวสำหรับ server reads |
+| 2 | presentation | `components/`+`hooks/` | UI + view logic | → `queries`, `usecases`, `stores` — never call `infra/` directly |
+| 3 | domain boundary | `queries/` | query keys/options/fetchers | → `infra/` — the single channel for server reads |
 | 4 | domain | `usecases/`+`services/`+`stores/` | mutations + rules + state | → `queries`, `infra` |
 | 5 | data | `infra/`+`lib/` | http, api clients, third-party | leaf |
-| 6 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — ทุก layer ใช้ได้ |
+| 6 | shared leaf | `utils/`+`types/`+`constants/`+`config/` | pure/shared | leaf — usable by every layer |
 
 ## Rules
 
-- Server reads ผ่าน `queries/` (TanStack Query options) เท่านั้น — ห้าม fetch ใน components
-- Server writes/mutations ผ่าน `usecases/` — components เรียก usecase ไม่เรียก `infra/` ตรง
-- `utils/`+`types/` pure — ไม่มี IO/signals side effects
-- Solid conventions: fine-grained reactivity — ห้าม destructure props
-- ใช้ `@/` path alias — ห้าม relative imports ข้าม folder
+- Server reads only via `queries/` (TanStack Query options) — no fetching in components
+- Server writes/mutations via `usecases/` — components call usecases, never `infra/` directly
+- `utils/`+`types/` are pure — no IO/signals side effects
+- Solid conventions: fine-grained reactivity — never destructure props
+- Use the `@/` path alias — no relative imports across folders
