@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vitest-setup-vitest
-description: ติดตั้งและตั้งค่า Vitest พร้อม config, environment และ coverage provider
+description: Install and set up Vitest with config, environment, and coverage provider
 argument-hint: "[scope]"
 related:
   - follow-tool-vitest
@@ -11,71 +11,71 @@ related:
 
 ## Goal
 
-ติดตั้งและตั้งค่า Vitest ให้พร้อมใช้งาน — packages, `vitest.config.ts`, environment และ coverage — ครั้งแรกหรือ verify setup เดิม
+Install and set up Vitest until ready — packages, `vitest.config.ts`, environment, and coverage — first-time or verify the existing setup
 
 ## Scope
 
-- First-time setup ของ Vitest ในโปรเจกต์เดี่ยว (monorepo projects ดู parent skill)
-- ครอบคลุม: install, config file, test environment (`node`/`happy-dom`/`jsdom`), coverage provider, scripts
-- ไม่ครอบคลุม: migration จาก Jest (`workflows/migrate-from-jest`), performance tuning (`workflows/optimize tests`)
+- First-time Vitest setup in a single project (for monorepo projects see the parent skill)
+- Covers: install, config file, test environment (`node`/`happy-dom`/`jsdom`), coverage provider, scripts
+- Does not cover: migration from Jest (`workflows/migrate-from-jest`), performance tuning (`workflows/optimize tests`)
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ prerequisites และ current state ก่อน install
+> Goal: check prerequisites and the current state before installing
 
-1. ทำ `/follow-tool-vite` เพื่อตรวจสอบว่า project มี Vite setup แล้ว
-2. ตรวจ Node version ให้ตรง requirement ของ Vitest version ที่จะติดตั้ง — ดู official docs ถ้าไม่แน่ใจ
-3. ตรวจ `package.json` — ถ้ามี `vitest` อยู่แล้ว (idempotent check) → skip install ไป verify อย่างเดียว
-4. ระบุ package manager จาก lockfile (`bun.lock`, `pnpm-lock.yaml`, `package-lock.json`) แล้วใช้ตัวนั้นตลอด
+1. Do `/follow-tool-vite` to confirm the project has a Vite setup
+2. Check the Node version against the requirement of the Vitest version being installed — see official docs if unsure
+3. Check `package.json` — if `vitest` is already present (idempotent check) → skip install, verify only
+4. Determine the package manager from the lockfile (`bun.lock`, `pnpm-lock.yaml`, `package-lock.json`) and use it consistently
 
 ### 2. Install Packages
 
-> Goal: ติดตั้ง Vitest และ dependencies ที่จำเป็น
+> Goal: install Vitest and the needed dependencies
 
-1. ติดตั้ง `bun add -D vitest` (หรือ `pnpm add -D` / `npm install -D` ตาม package manager)
-2. ติดตั้ง coverage provider `bun add -D @vitest/coverage-v8` (v8 เป็น default provider)
-3. ถ้า test ต้องการ DOM → ติดตั้ง `happy-dom` (แนะนำ เบากว่า) หรือ `jsdom`
-4. ถ้า project ใช้ `@effect/vitest` → pin `vitest` ตาม peer dep (ดู `/follow-lib-effect-ts`)
+1. Install `bun add -D vitest` (or `pnpm add -D` / `npm install -D` per the package manager)
+2. Install the coverage provider `bun add -D @vitest/coverage-v8` (v8 is the default provider)
+3. If tests need a DOM → install `happy-dom` (recommended, lighter) or `jsdom`
+4. If the project uses `@effect/vitest` → pin `vitest` per its peer dep (see `/follow-lib-effect-ts`)
 
 ### 3. Create Config
 
-> Goal: สร้าง `vitest.config.ts` ขั้นต่ำที่จำเป็น
+> Goal: create the minimal necessary `vitest.config.ts`
 
-1. สร้าง `vitest.config.ts` ที่ root (หรือเพิ่ม `test` key ใน `vite.config.ts` ที่มีอยู่)
-2. ตั้ง `test.globals: true` ถ้าต้องการลด import และเพิ่ม `"types": ["vitest/globals"]` ใน `tsconfig.json`
-3. ตั้ง `test.environment` เป็น `node` (default) หรือ `happy-dom`/`jsdom` ตาม tests
-4. ตั้ง `test.include`/`test.exclude` สำหรับ test file patterns (`*.test.ts`, `*.spec.ts`)
-5. ตั้ง `coverage` block: `provider: 'v8'`, `reporter`, `include` แบบ explicit — Vitest 4+ รายงานเฉพาะ files ที่ loaded
+1. Create `vitest.config.ts` at the root (or add a `test` key to the existing `vite.config.ts`)
+2. Set `test.globals: true` to reduce imports, and add `"types": ["vitest/globals"]` to `tsconfig.json`
+3. Set `test.environment` to `node` (default) or `happy-dom`/`jsdom` per the tests
+4. Set `test.include`/`test.exclude` for test file patterns (`*.test.ts`, `*.spec.ts`)
+5. Set the `coverage` block: `provider: 'v8'`, `reporter`, and an explicit `include` — Vitest 4+ reports only loaded files
 
 ### 4. Wire Scripts
 
-> Goal: เพิ่ม scripts ใน `package.json`
+> Goal: add scripts to `package.json`
 
-1. เพิ่ม `"test": "vitest run"` และ `"test:watch": "vitest"` — ใช้ `vitest` binary ไม่ใช่ `bun test`
-2. เพิ่ม `"test:coverage": "vitest run --coverage"` สำหรับ coverage run
+1. Add `"test": "vitest run"` and `"test:watch": "vitest"` — use the `vitest` binary, not `bun test`
+2. Add `"test:coverage": "vitest run --coverage"` for coverage runs
 
 ### 5. Verify
 
-> Goal: smoke check ว่า setup ทำงาน
+> Goal: smoke check that the setup works
 
-1. เขียน test ตัวอย่าง 1 ไฟล์แล้วรัน `bun run test` — ต้องผ่าน
-2. รัน `bun run test:coverage` — ต้องออก coverage report
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Write one example test file and run `bun run test` — it must pass
+2. Run `bun run test:coverage` — a coverage report must be produced
+3. If verification fails → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ official docs เป็นแหล่งหลัก — ถ้า option ไม่แน่ใจ ให้ดู docs ก่อนเขียนลง config
-- ห้ามใส่ version numbers ใน docs/comments ที่ยังไม่ verified
-- environment เลือกให้ตรง tests จริง — อย่าใส่ `happy-dom` ถ้า tests ไม่แตะ DOM
-- `coverage.include` ต้อง explicit — ห้ามพึ่ง default เพราะ Vitest 4+ report เฉพาะ loaded files
+- Use official docs as the primary source — for an uncertain option, read the docs before writing it into the config
+- Never put unverified version numbers in docs/comments
+- Pick the environment to match the real tests — don't add `happy-dom` if tests don't touch the DOM
+- `coverage.include` must be explicit — never rely on defaults because Vitest 4+ reports only loaded files
 
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /follow-tool-vitest if needed
+- Use /update-tests if needed
+- Use /run-test if needed
 
 ## Expected Outcome
 
-- Vitest ติดตั้งพร้อม `vitest.config.ts`, scripts และ coverage ที่ verify แล้ว
-- Test ตัวอย่างรันผ่านทั้ง normal และ coverage mode
+- Vitest installed with `vitest.config.ts`, scripts, and coverage verified
+- The example test passes in both normal and coverage mode

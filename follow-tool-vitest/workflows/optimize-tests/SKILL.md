@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vitest-optimize tests
-description: ปรับ Vitest test performance — isolation, pool options, sharding, watch excludes
+description: Tune Vitest test performance — isolation, pool options, sharding, watch excludes
 argument-hint: "[scope]"
 related:
   - follow-tool-vitest
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ลดเวลารัน test suite ของ Vitest — วัด baseline ก่อน แก้ทีละจุดตาม impact แล้ววัดซ้ำ
+Reduce Vitest test-suite run time — measure the baseline first, fix one point at a time by impact, then re-measure
 
 ## Scope
 
 - Optimize test execution time: isolation, worker pool, sharding, watch mode, coverage cost
-- Preserve behavior — optimize ≠ เปลี่ยน test results
-- ไม่ครอบคลุม: setup ครั้งแรก (`workflows/setup-vitest`)
+- Preserve behavior — optimize ≠ change test results
+- Does not cover: first-time setup (`workflows/setup-vitest`)
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขเดิมและระบุ bottleneck จริง
+> Goal: capture the original numbers and identify the real bottleneck
 
-1. รัน `vitest run` พร้อมจับเวลา — เก็บ total duration, per-file duration
-2. ทำ `/deep-optimize` — ระบุว่าช้าจาก isolation, coverage, heavy setup หรือ test จริง
-3. เช็ค `--reporter` ที่ให้ per-file timing แล้วหาไฟล์ที่ช้าสุดก่อน — ห้ามเดา
+1. Run `vitest run` with timing — record total duration and per-file duration
+2. Do `/deep-optimize` — determine whether the slowness comes from isolation, coverage, heavy setup, or the tests themselves
+3. Use a `--reporter` that gives per-file timings and find the slowest files first — never guess
 
 ### 2. Tune Isolation And Pool
 
-> Goal: ลด overhead จาก isolation และ worker pool
+> Goal: reduce isolation and worker-pool overhead
 
-1. ตั้ง `test.isolate: false` ถ้า tests ไม่แชร์ state ข้ามกัน — เร็วขึ้นมากแต่ต้องมั่นใจว่า tests independent
-2. ตั้ง `test.pool` — `forks` (default, เสถียร) หรือ `threads`; ลอง `vmForks`/`vmThreads` เฉพาะเมื่อต้องการ
-3. ตั้ง `maxWorkers`/`minWorkers` ให้สอดคล้อง CPU cores — Vitest 4+ ใช้ top-level options ไม่ใช่ `poolOptions`
-4. เช็ค test ที่ rely บน shared module state — ถ้า isolate ปิดแล้วพัง ให้แก้ test ไม่ใช่เปิด isolate กลับทันที
+1. Set `test.isolate: false` if tests don't share state across files — much faster but tests must be truly independent
+2. Set `test.pool` — `forks` (default, stable) or `threads`; try `vmForks`/`vmThreads` only when needed
+3. Set `maxWorkers`/`minWorkers` to match the CPU cores — Vitest 4+ uses top-level options, not `poolOptions`
+4. Check tests relying on shared module state — if they break with isolation off, fix the test instead of immediately re-enabling isolate
 
 ### 3. Shard And Scope Runs
 
-> Goal: แบ่งงานข้าม machines และจำกัด scope ที่รัน
+> Goal: split work across machines and limit the run scope
 
-1. CI หลาย machines → `vitest run --shard=<index>/<total>` แบ่ง tests ออกเป็น shards
-2. PR checks → `vitest related` หรือ `--changed` รันเฉพาะ tests ที่กระทบจาก changed files
-3. ตั้ง `retry` เฉพาะใน CI config — ไม่ใช้แก้ flaky tests ถาวร
+1. CI across multiple machines → `vitest run --shard=<index>/<total>` splits tests into shards
+2. PR checks → `vitest related` or `--changed` runs only tests affected by changed files
+3. Set `retry` in the CI config only — never as a permanent fix for flaky tests
 
 ### 4. Reduce Watch And Coverage Overhead
 
-> Goal: ลดงานที่ไม่จำเป็นใน watch mode และ coverage
+> Goal: cut unnecessary work in watch mode and coverage
 
-1. ตั้ง `test.watchExclude` (default ครอบ `node_modules`/`dist` อยู่แล้ว) ให้ข้าม generated/build dirs เพิ่ม — ดู official docs สำหรับ option ล่าสุด
-2. ปิด coverage ใน watch/dev — รัน `--coverage` เฉพาะ CI หรือเมื่อต้องการ
-3. ตั้ง `coverage.include` แคบลงเฉพาะ source dirs — ลดเวลา instrument
-4. ปิด `typecheck.enabled` ใน dev run ถ้าไม่จำเป็น — รันแยก script
+1. Set `test.watchExclude` (the default already covers `node_modules`/`dist`) to skip more generated/build dirs — see official docs for the latest option
+2. Disable coverage in watch/dev — run `--coverage` only in CI or when needed
+3. Narrow `coverage.include` to source dirs only — less instrumentation time
+4. Turn off `typecheck.enabled` in dev runs when unnecessary — run it as a separate script
 
 ### 5. Measure And Compare
 
-> Goal: วัดซ้ำและ compare กับ baseline
+> Goal: re-measure and compare with the baseline
 
-1. รัน `vitest run` ซ้ำหลังแก้แต่ละจุด — compare duration กับ baseline
-2. ทำ `/report-before-after` รายงานตัวเลขก่อน/หลังต่อ optimization
-3. ถ้าไม่ดีขึ้นหรือ tests เริ่ม flaky → revert จุดนั้นแล้ว report
+1. Re-run `vitest run` after each change — compare durations with the baseline
+2. Do `/report-before-after` reporting numbers before/after per optimization
+3. If there's no improvement or tests start flaking → revert that point and report
 
 ## Rules
 
-- Baseline ก่อนเสมอ — ห้าม optimize โดยไม่มีตัวเลขเดิม
-- แก้ทีละจุดและวัดแยก — ห้ามแก้หลายจุดพร้อมกันถ้าแยกผลไม่ได้
-- `isolate: false` เสี่ยง — ต้อง verify ว่า tests ไม่แชร์ state ก่อน
-- Shards ทุกตัวต้องรันด้วย args เดียวกัน — ผลรวมถึงจะถูก
-- Optimize ต้องไม่เปลี่ยน test outcomes — suite ต้องเขียวเหมือนเดิม
+- Baseline always first — never optimize without the original numbers
+- Change one point and measure separately — never change several points if results can't be separated
+- `isolate: false` is risky — verify tests don't share state first
+- All shards must run with the same args — only then is the aggregate result correct
+- Optimization must not change test outcomes — the suite must stay fully green
 
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /run-bench ถ้าจำเป็น
+- Use /follow-tool-vitest if needed
+- Use /run-test if needed
+- Use /run-bench if needed
 
 ## Expected Outcome
 
-- Test suite เร็วขึ้นโดยวัดได้จาก baseline
-- Config tuned: isolation, pool, sharding, watch excludes ตามความเหมาะสม
-- Tests ยัง deterministic และเขียวทั้งหมด
+- The test suite is measurably faster than the baseline
+- Config tuned: isolation, pool, sharding, watch excludes as appropriate
+- Tests remain deterministic and all green

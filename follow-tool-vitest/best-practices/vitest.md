@@ -1,36 +1,36 @@
 # Vitest — Best Practices
 
-Unit testing บน Vite — fast runs, coverage และ test discipline
+Unit testing on Vite — fast runs, coverage, and test discipline
 
 ## Recommended Patterns
 
-- `vitest` (watch) dev, `vitest run` CI — watch default จึงต้อง `run` ใน pipelines
-- `describe`/`it` + `expect` — Jest-compatible API; `vi.mock`/`vi.fn`/`vi.spyOn` สำหรับ mocks
-- `vitest.config.ts` หรือ config ใน `vite.config.ts` `test` field — environment (`node`/`jsdom`/`happy-dom`), globals, coverage
-- Coverage: `vitest run --coverage` + v8 provider — thresholds ใน config ไม่ใช่ CI grep
-- Test files co-located `*.test.ts` หรือ `tests/` dir — pattern consistent per repo
+- `vitest` (watch) in dev, `vitest run` in CI — watch is the default, so pipelines must use `run`
+- `describe`/`it` + `expect` — Jest-compatible API; `vi.mock`/`vi.fn`/`vi.spyOn` for mocks
+- `vitest.config.ts` or a `test` field in `vite.config.ts` — environment (`node`/`jsdom`/`happy-dom`), globals, coverage
+- Coverage: `vitest run --coverage` + the v8 provider — thresholds in the config, not CI grep
+- Test files co-located as `*.test.ts` or in a `tests/` dir — keep one pattern per repo
 
 ## Common Pitfalls
 
-- Globals (`describe`/`it` no import) — enable `globals: true` เมื่อต้องการ; explicit imports ดีกว่าสำหรับ types
-- `vi.mock` hoisting — mocks hoist เหนือ imports; factory functions สำหรับ dynamic mocks
-- Environment mismatch: DOM APIs ต้อง `jsdom`/`happy-dom` — `node` env = document undefined
+- Globals (`describe`/`it` without imports) — enable `globals: true` only when wanted; explicit imports are better for types
+- `vi.mock` hoisting — mocks hoist above imports; use factory functions for dynamic mocks
+- Environment mismatch: DOM APIs need `jsdom`/`happy-dom` — in the `node` env, document is undefined
 - Async: `await` expect/async utilities — floating promises = tests pass but never assert
-- Snapshot tests: review diffs อย่างมีสติ — `-u` blindly = snapshots useless
-- Mock leaks: `vi.restoreAllMocks`/`clearMocks` ใน config — cross-test mock pollution
+- Snapshot tests: review diffs deliberately — blind `-u` makes snapshots useless
+- Mock leaks: use `vi.restoreAllMocks`/`clearMocks` in the config — avoids cross-test mock pollution
 
 ## Perf / Scale
 
-- `vitest --changed`/`--related` — run เฉพาะ tests ที่เกี่ยวกับ changed files ตอน dev
-- Parallelism defaults ดี; `--pool` options (forks vs threads) ตาม needs — forks สำหรับ isolation
-- `--bail` fail-fast ตอน dev; full runs ใน CI
-- Typecheck tests: `vitest --typecheck` แยก pass — test types เป็น gate เสริม
+- `vitest --changed`/`--related` — run only tests related to changed files during dev
+- Default parallelism is good; pick `--pool` options (forks vs threads) by need — forks for isolation
+- `--bail` for fail-fast in dev; full runs in CI
+- Typecheck tests: `vitest --typecheck` as a separate pass — treat types as an extra gate
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `vitest run` ใน CI | watch mode ใน pipelines |
-| explicit imports หรือ globals:true ชัดเจน | mixed globals + imports |
-| coverage thresholds ใน config | coverage check ด้วย grep |
-| `vi.mock` factory สำหรับ dynamic | hoisting surprises |
+| `vitest run` in CI | watch mode in pipelines |
+| explicit imports or a clear globals:true | mixing imports with globals |
+| coverage thresholds in the config | checking coverage via grep |
+| `vi.mock` factories for dynamic mocks | getting surprised by hoisting |
