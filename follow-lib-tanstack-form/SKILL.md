@@ -22,11 +22,15 @@ For forms of any size — headless = state/validation only, the UI is yours; ada
 
 ### 1. Install
 
+> Goal: install the form package and the framework adapter
+
 ```bash
 bun add @tanstack/react-form zod   # adapter per framework + the schema lib used
 ```
 
 ### 2. Form Instance
+
+> Goal: create a typed form instance with schema validation
 
 ```tsx
 const form = useForm({
@@ -79,6 +83,8 @@ const form = useForm({
 6. **Reset/persist**: `formApi.reset()`, draft autosave via subscribe + storage
 
 ### 5. Verify
+
+> Goal: prove submit, validation, and field state work before finishing
 
 1. `/run-typecheck` — field names are typed from defaultValues (a typo trips a compile error)
 2. Test validation triggers, async debounce, array ops, submit/reset flow

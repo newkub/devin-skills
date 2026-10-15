@@ -6,6 +6,8 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-create-web
+  - follow-my-techstack
+  - clone-product-with-my-techstack
   - follow-service-workos
   - follow-service-stripe
   - follow-service-cloudflare
@@ -21,7 +23,7 @@ related:
 
 ## Goal
 
-Turn an idea or requirements into a ready-to-use product, covering product spec, UX/UI, landing page, `/features`, `/pricing`, `/user`, `/dashboard`, auth, payments, and ship
+Turn an idea or requirements into a ready-to-use product, covering product spec, UX/UI, landing page, and the standard pages — `features`, `pricing`, `user`, `dashboard` — with auth, payments, and ship
 
 ## Scope
 
@@ -31,6 +33,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 - Invoke `/follow-service-workos` for auth
 - Invoke `/follow-service-stripe` for payments, pricing, billing
 - Invoke `/ship` when the work is done
+- Building from an existing product instead of an idea — cloning a live product or a GitHub repo to rebuild it — use `/clone-product-with-my-techstack` (it covers this skill's flow plus research, captures, and parity verification)
 
 - Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-12)
 
@@ -50,8 +53,8 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 
 > Goal: Review the tech stack and analyze the product idea before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
-2. Run `/deep-review-codebase` to summarize the tech stack in use
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns
+2. Run `/follow-my-techstack` to pick the stack from the canonical catalog; run `/deep-review-codebase` to summarize any tech stack already in use
 3. Record the rationale for the chosen stack and libraries for later reference (create product)
 4. Take `product-idea`, requirements, or feedback from the user
 5. Identify target users and personas

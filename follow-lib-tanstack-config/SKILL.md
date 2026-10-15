@@ -22,6 +22,8 @@ Use when maintaining/publishing library packages — **not app config**; app pro
 
 ### 1. Install
 
+> Goal: install the config toolchain into the package
+
 ```bash
 bun add -D @tanstack/config
 ```

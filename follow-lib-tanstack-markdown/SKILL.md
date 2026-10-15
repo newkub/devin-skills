@@ -23,6 +23,8 @@ Use when rendering markdown, especially **streaming AI output** (append-safe inc
 
 ### 1. Install
 
+> Goal: install the markdown package
+
 ```bash
 bun add @tanstack/markdown
 ```
@@ -53,6 +55,8 @@ bun add @tanstack/markdown
 3. Link handling: intercept `link` nodes → `follow-router` `<Link>` (SPA nav without a reload)
 
 ### 5. Verify
+
+> Goal: prove markdown renders correctly, including streaming input, before finishing
 
 1. `/run-typecheck` + `/run-test`
 2. Edge cases: an unclosed fence mid-stream, nested lists, tables, inline code in a heading

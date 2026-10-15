@@ -23,6 +23,8 @@ Use instead of ad-hoc `setTimeout` utilities — search inputs, scroll/resize, A
 
 ### 1. Install
 
+> Goal: install the pacer package
+
 ```bash
 bun add @tanstack/react-pacer   # React hooks; core @tanstack/pacer for non-React/vanilla
 ```
@@ -65,6 +67,8 @@ Core (non-hook): `new Debouncer(fn, { wait })`, `debounce(fn, opts)` from `@tans
 3. Queue/batch → assert call counts after flush
 
 ### 5. Verify
+
+> Goal: prove debounce/throttle/queue/batch behave as configured before finishing
 
 1. `/run-test` with fake timers + `/run-typecheck`
 2. Edge behavior (leading/trailing) matches options

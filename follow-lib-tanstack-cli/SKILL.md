@@ -22,6 +22,8 @@ Use when starting a new project that wants a complete default TanStack stack —
 
 ### 1. Scaffold
 
+> Goal: scaffold a project with the add-ons the feature list needs
+
 ```bash
 bunx @tanstack/cli create my-app
 ```
@@ -45,6 +47,8 @@ bunx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
 4. Check the generated structure — route tree, config files
 
 ### 3. Verify
+
+> Goal: prove the scaffold builds and runs before finishing
 
 1. Do `/run-typecheck` + a smoke test of the first page
 2. On failure → `/resolve-errors` max 3 rounds

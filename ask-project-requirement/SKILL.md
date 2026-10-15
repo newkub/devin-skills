@@ -94,3 +94,9 @@ Use when starting a new project, or when the context is unclear, before making a
 - Questions that allow multiple answers must set `multi_select: true`
 - Ask only questions that do not have answers yet
 - If unsure → run `/ask-me` again
+
+## Expected Outcome
+
+- Every requirement is explicit: answered, assumed (stated), or deferred with reason
+- The user confirmed the gathered requirement list before any work starts
+- A follow-up `/create-plan-in-dot-devin` or implement pass can run without re-asking

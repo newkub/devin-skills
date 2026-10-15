@@ -39,6 +39,8 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 
 ### 1. Domain Workflows And Signals
 
+> Goal: pick the domain reference that matches the test target
+
 | Domain | Reference | Signals | Coverage |
 |--------|-----------|---------|----------|
 | unit (default) | [references/unit.md](references/unit.md) | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test/cargo test | pure functions, edge cases, parameterized tests |
@@ -62,6 +64,8 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 | usage | [references/usage.md](references/usage.md) | README/USAGE code blocks, package scripts | every documented example really runs (pre-ship gate) |
 
 ### 2. Flow
+
+> Goal: run the shared deep flow — think, gather evidence, execute, report
 
 1. Run `/deep-thinking` to analyze scope, test goals, and pass/fail criteria before starting
 2. Pick the domain: from the argument (`/deep-test api` → `references/api.md`) or from the signals table above; no/unknown domain → `/ask-me`

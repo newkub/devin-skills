@@ -23,11 +23,15 @@ Use when rendering many items (100+) — lists, table rows, grids, chat feeds; s
 
 ### 1. Install
 
+> Goal: install the virtual package
+
 ```bash
 bun add @tanstack/react-virtual   # solid/vue/svelte variants available
 ```
 
 ### 2. List Virtualizer
+
+> Goal: virtualize a list with correct scroll behavior
 
 ```tsx
 const parentRef = useRef<HTMLDivElement>(null)
@@ -80,6 +84,8 @@ return (
 4. **Padding/gap**: `paddingStart`/`gap` options — don't put margin on the items
 
 ### 5. Verify
+
+> Goal: prove windowing handles dynamic sizes correctly before finishing
 
 1. `/run-typecheck` + `/run-test`
 2. DevTools: DOM nodes equal viewport+overscan, scroll recycling is correct

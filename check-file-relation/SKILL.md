@@ -86,6 +86,8 @@ cfr src --pattern 'from\s+([\w./-]+)\s+import' --ext py
 
 ### 5. Options Reference
 
+> Goal: document every CLI flag with its default so callers don't guess
+
 | Flag | Argument | Meaning |
 |------|----------|----------|
 | (default) | — | relation map `file → imports` |

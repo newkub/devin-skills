@@ -22,6 +22,8 @@ For keyboard shortcuts — command palette, navigation, editor actions — **0.x
 
 ### 1. Install
 
+> Goal: install the hotkeys package
+
 ```bash
 bun add @tanstack/react-hotkeys   # framework adapters per project
 ```
@@ -61,6 +63,8 @@ useHotkey('Shift+?', () => setHelpOpen(true), { preventDefault: true })
 4. **Accessibility** — shortcuts supplement, never replace, pointer paths; document them in help
 
 ### 5. Verify
+
+> Goal: prove shortcuts fire only in the right scope before finishing
 
 1. `/run-test` — dispatch keydown events, assert handlers
 2. Input contexts: no trigger while typing (unless intended)

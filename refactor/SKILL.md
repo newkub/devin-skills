@@ -1,7 +1,7 @@
 ---
 name: refactor
 description: Refactor files, workspaces, or a codebase — verify before, plan, restructure, verify after
-argument-hint: "[@files... | srp | concerns | structure | workspace | monorepo | codebase | shared | orm | architecture | skills]"
+argument-hint: "[@files... | srp | concerns | structure | workspace | monorepo | codebase | shared | orm | architecture | clean | layered | skills]"
 related:
   - run-verify
   - create-plan-in-dot-devin
@@ -17,6 +17,9 @@ related:
   - follow-agents-md
   - follow-architecture
   - deep-validate
+  - refactor-skills
+  - simplify
+  - use-astgrep
 ---
 
 ## Goal
@@ -25,20 +28,20 @@ Restructure without changing observable behavior — green before, green after, 
 
 ## Scope
 
-> One scope at a time; several match → priority `architecture` > `concerns`/`srp` > `structure` (fix the boundary before the layout)
+> One scope at a time; several match → priority `skills` > `architecture` > `concerns`/`srp` > `structure` (fix the boundary before the layout)
 
 | Argument | Seen When | Run |
 |----------|-----------|-----|
 | (none), `@files...`, `srp` | file >250 lines or one unit holds several reasons to change | `### 3` file/SRP |
 | `concerns` | one file mixes UI + logic + IO + config | `### 3` concerns |
 | `structure` | naming, wrong folder, deep relative imports, barrel gaps | `### 3` structure |
-| `workspace`, `monorepo`, `codebase` | many files, member boundaries, whole-repo pass | `### 2` plan → `### 3` batches |
+| `workspace`, `monorepo` (batch work), `codebase` | many files, member boundaries, whole-repo pass | `### 2` plan → `### 3` batches |
 | `shared` | duplication across packages | `### 3` shared |
 | `orm` | raw SQL, scattered queries, N+1 | `### 3` orm |
-| `architecture`, `clean`, `layered`, `monorepo` | wrong layers, boundaries, dependency direction, repo-level layout | `### 3` architecture → `/follow-architecture` |
+| `architecture`, `clean`, `layered`, `monorepo` (layout) | wrong layers, boundaries, dependency direction, repo-level layout | `### 3` architecture → `/follow-architecture` |
 | `skills` | the target is a skill package | `/refactor-skills` |
 
-Handed off elsewhere: config drift → `/update-config` · hardcoded values → `/no-hard-code` · ignore comments → `/no-use-ignore` · shorter/clearer file without touching boundaries → `/simplify` · test suite → `/update-tests` · file move only → `/relocation` · batch rename/pattern → `/use-astgrep rewrite` · performance → `/deep-optimize` (never in a refactor pass)
+Handed off elsewhere: config drift → `/update-config` · hardcoded values → `/no-hard-code` · ignore comments → `/no-use-ignore` · shorter/clearer file without touching boundaries → `/simplify` · event-driven semantics → `/improve events` (messaging/ordering/idempotency; queue ops → `/improve queues`, transport → `/improve realtime`) · test suite → `/update-tests` · file move only → `/relocation` · batch rename/pattern → `/use-astgrep rewrite` · performance → `/deep-optimize` (never in a refactor pass)
 
 ## Execute
 
@@ -72,10 +75,14 @@ Handed off elsewhere: config drift → `/update-config` · hardcoded values → 
 
 ### 4. Update References
 
+> Goal: no broken path or name remains after the restructure
+
 1. Run `/update-references` for paths/imports and global references; grep again to prove no old path/name remains
 2. Layout changed → `/update-agents-md`; broken references → `/resolve-errors`
 
 ### 5. Verify After
+
+> Goal: prove behavior is unchanged vs the `### 1` baseline
 
 1. `/run-verify` + `/deep-validate` vs baseline; fail → back to `### 3`, max 3 rounds → stop + report
 2. Persist what was learned: a structural rule to keep → `/update-astgrep-rules`; a project convention → `/update-devin-project-rules` (skip with reason when nothing is reusable)

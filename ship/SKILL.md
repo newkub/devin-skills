@@ -39,8 +39,8 @@ The single ship command — run every verification gate first, then commit/push,
 ## Scope
 
 - Use as the final ship path for any work — verify, push, PR gate, and merge into `main` in one skill
-- `verify-only` argument → run steps 1–5 and report readiness only — no push, no merge
-- `run` argument → after verify, keep the dev server running for real use (merged `/ship-run`) — no push, no merge
+- `verify-only` argument → run steps 1–6 and report readiness only — no push, no merge
+- `run` argument → after verify, run step 6 (sync project), then keep the dev server running for real use (merged `/ship-run`) — no push, no merge
 - The canonical home of every verify step — other skills (e.g. `/update-agents-md`, `/new-skills`) reference here; never duplicate the verify workflow
 - Releasing a new version → `/release-new-version`
 - `dont-ask-me` argument or a session with `/dont-ask-me` active → confirmation gates are replaced by `/follow-your-suggestion` + safe defaults
@@ -82,16 +82,23 @@ The single ship command — run every verification gate first, then commit/push,
 
 1. Run `/run-dev` — the dev server must be healthy with no errors
 2. Run `/deep-test usage` — usage examples from README/docs/`AGENTS.md` must actually work
-3. `run` argument → leave the `/run-dev` server up, not just the health check: web project → open the browser at the dev URL and continue `/watch-browser fix` per the `/run-dev` workflow; errors found while watching → `/resolve-errors` immediately — then stop after step 5 with the report (steps 6–8 never run)
+3. `run` argument → leave the `/run-dev` server up, not just the health check: web project → open the browser at the dev URL and continue `/watch-browser fix` per the `/run-dev` workflow; errors found while watching → `/resolve-errors` immediately — then run step 6 (sync project), stop with the report (steps 7–10 never run)
 
-### 6. Commit And Push
+### 6. Update Project
 
-> Goal: validated work is on the remote with green CI
+> Goal: sync docs, config, rules, and tooling with the verified changes before push
+
+1. Run `/update-project` — reads git log, restores changed info into root `AGENTS.md`, `README.md`, syncs config, `.devin/`, rules, GitHub metadata, and all project files to match the current codebase
+2. The sync must reflect reality: no stale docs, no missing config entries, no orphan references
+
+### 7. Commit And Push
+
+> Goal: validated + synced work is on the remote with green CI
 
 1. If verification failed at any gate → fix the blockers and verify again — never skip ahead to push
-2. Run `/git-commit-and-push` — commit changes + push the working branch + resolve CI/CD until green (`verify-only`/`run` → stop after step 5 with the report — steps 6–8 never run)
+2. Run `/git-commit-and-push` — commit changes + push the working branch + resolve CI/CD until green (`verify-only`/`run` → stop after step 6 with the report — steps 7–9 never run)
 
-### 7. PR Review Gate
+### 8. PR Review Gate
 
 > Goal: the → `main` PR passes review + all checks before merge
 
@@ -99,7 +106,7 @@ The single ship command — run every verification gate first, then commit/push,
 2. Run `/review-github-pr` — full gate: all CI checks pass + `/deep-validate` + `/deep-review-codebase` + PR metadata/diff clean
 3. If the gate fails → fix the findings on the branch, re-run `/git-commit-and-push` — never merge
 
-### 8. Merge To Main
+### 9. Merge To Main
 
 > Goal: merge into main + cleanup branches
 
@@ -108,7 +115,7 @@ The single ship command — run every verification gate first, then commit/push,
 3. If conflicts → `/resolve-merge-conflicts`; if complex → `/ask-me`
 4. `git switch main` + `git pull` — verify the merge succeeded and remote main has the new commits
 
-### 9. Report
+### 10. Report
 
 > Goal: summarize the ship result — merged or blocked
 

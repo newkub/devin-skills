@@ -39,15 +39,21 @@ Other frameworks → `/follow-create-web`; lib only → `/follow-lib-solidjs`
 
 ### 0. Choose Variant
 
+> Goal: pick the right Solid variant (SPA vs full-stack) before scaffolding
+
 Choose from the Scope table — if unclear, default = `start` (full-stack) or ask the user
 
 ### 1. Setup Project (all variants)
+
+> Goal: scaffold the project and get the dev server running
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions per `/update-devin-global-skills`, then `/deep-review-codebase` to summarize the stack
 2. Scaffold: `bun create vite@latest my-app -- --template solid` (spa) or `npx @tanstack/cli@latest create --framework solid` / gitpick `TanStack/router` example `solid/start-basic` (start variants)
 3. Modules: `src/modules/<feature>/` (components + hooks + schemas + types + `index.ts` barrel), shared UI `src/components/`, infra `src/lib/` — canonical file structure in `templates/`
 
 ### 2. Dependencies
+
+> Goal: install exactly the deps the chosen variant needs
 
 ```bash
 # spa (pure Router) — or use @tanstack/solid-start with spa.enabled mode (see §3)
@@ -64,6 +70,8 @@ bun i -D vite-tsconfig-paths         # ~/ alias from tsconfig paths
 Optional: `zod` (validator), `effect` (`/follow-lib-effect-ts`), `@orpc/*` (`/follow-lib-orpc`)
 
 ### 3. Vite Config — Per Variant
+
+> Goal: configure Vite correctly for the chosen variant
 
 **spa — 2 patterns** (pick one or the other):
 
@@ -116,6 +124,8 @@ Multiple targets in one repo → split `vite.config.*.ts` (pattern in dept-saw: 
 
 ### 4. TypeScript
 
+> Goal: set strict TS config that matches the variant
+
 `jsx: "preserve"` + `jsxImportSource: "solid-js"`, `moduleResolution: "Bundler"`, `target: "ES2022"`, `skipLibCheck: true`; `paths: {"~/*": ["./src/*"]}` + `vite-tsconfig-paths` for the `~/` alias; full-stack avoids `verbatimModuleSyntax` (server leaks into client); CF → `wrangler types` → `worker-configuration.d.ts`
 
 ### 4.5 Quality Scripts
@@ -124,11 +134,15 @@ Set up `check`/`verify`/`ci` + `scan` (ast-grep rules) per `/follow-tasks` Minim
 
 ### 5. Router (all variants)
 
+> Goal: wire file-based routing with typed routes
+
 1. `createFileRoute`/`createRootRoute` file-based — `routeTree.gen.ts` is generated, never edit
 2. `defaultPreload: 'intent'` + `scrollRestoration: true` + `validateSearch`
 3. `import 'virtual:uno.css'` in `__root.tsx`/entry — **never `@import` in css** (postcss resolves it as a file → ENOENT)
 
 ### 6. Full-Stack Only (start/nitro-*)
+
+> Goal: add server functions and SSR wiring when the variant is full-stack
 
 1. **Server fns**: `createServerFn({ method })` + `.validator()` + `.handler()` — internal RPC; the client calls it like a local fn then `router.invalidate()`
 2. **Server routes**: `src/routes/api/*.ts` `server.handlers` — for webhooks/external only; wildcard `api.$.ts`
@@ -140,6 +154,8 @@ Set up `check`/`verify`/`ci` + `scan` (ast-grep rules) per `/follow-tasks` Minim
    - runtime-detect adapter → see `dept-saw/src/lib/db.server.ts`
 
 ### 7. Build And Deploy — Per Variant
+
+> Goal: produce a passing production build and deploy to the variant's target
 
 **spa**: `bun run build` → static `dist/` (embeddable in Tauri/Capacitor — `vite.config.spa.ts` + `spa.prerender` per dept-saw)
 

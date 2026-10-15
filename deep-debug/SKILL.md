@@ -77,26 +77,18 @@ Use for every debugging session — runtime errors, test failures, build errors,
 4. Check the environment: runtime version, dependencies, config
 5. If monitoring exists, also collect metrics and traces
 
-### 5. Form Hypotheses
+### 5. Form And Test Hypotheses
 
-> Goal: generate and rank hypotheses by evidence, not gut feeling
+> Goal: generate, rank, then test hypotheses one variable at a time, ruling others out
 
-1. Generate 3-5 plausible hypotheses
-2. Rank them by probability and ease of testing
-3. Run `/deep-thinking` to apply a Bayesian approach to the ranking
-4. Pick the top 1-2 hypotheses that are easy to test and most probable
+1. Generate 3-5 plausible hypotheses; rank them by probability and ease of testing
+2. Run `/deep-thinking` to apply a Bayesian approach to the ranking
+3. Pick the top 1-2 hypotheses that are easy to test and most probable
+4. Test one hypothesis at a time — change only one variable, using `/use-bun-shell` to execute each test
+5. Record every result: pass, fail, or inconclusive; rule out hypotheses that don't fit and move to the next
+6. If all tests miss, go back and generate new hypotheses
 
-### 6. Test And Eliminate
-
-> Goal: test one hypothesis at a time, changing one variable to rule others out
-
-1. Test one hypothesis at a time — change only one variable
-2. Use `/use-bun-shell` to execute each hypothesis test
-3. Record every result: pass, fail, or inconclusive
-4. Rule out hypotheses that don't fit and move to the next
-5. If all tests miss, go back and generate new hypotheses
-
-### 7. Isolate Root Cause
+### 6. Isolate Root Cause
 
 > Goal: confirm a root cause that reproduces, disappears when fixed, and returns when reverted
 
@@ -105,9 +97,9 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Confirm the root cause with 3 conditions: it reproduces, the fix resolves it, and it returns if the fix is reverted
 4. Check that it isn't a symptom of a deeper problem
 
-### 8. Debug Git Issues (Conditional)
+### 7. Debug Git Issues (Conditional)
 
-> Goal: find the root cause of git-related problems systematically — run instead of `### 6`–`### 7` when the symptom is a bad commit, unexpected change, lost commit/file, or unknown git state
+> Goal: find the root cause of git-related problems systematically — run instead of `### 5`–`### 6` when the symptom is a bad commit, unexpected change, lost commit/file, or unknown git state
 
 1. Classify the symptom and pick the tool:
 
@@ -123,7 +115,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Safety: never `git reset --hard` without user confirm; use `git restore` instead; verify `git status` is clean after debugging
 4. Apply the fix: revert the bug-causing commit (`/follow-tool-git`) and add a regression test (`/update-tests`)
 
-### 9. Validate And Fix
+### 8. Validate And Fix
 
 > Goal: fix minimally at the root cause, then verify nothing else breaks
 
@@ -134,7 +126,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 5. Verify the fix doesn't break other functionality
 6. Run `/run-lint` and `/run-typecheck` to check code quality
 
-### 10. Prevent Recurrence
+### 9. Prevent Recurrence
 
 > Goal: add test cases and improve debuggability to prevent the problem from recurring
 
@@ -143,7 +135,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Update documentation if the problem was about config or setup
 4. Record the root cause and solution in `docs/` or the commit message
 
-### 11. Report
+### 10. Report
 
 > Goal: summarize the debug result and next action
 
@@ -186,7 +178,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
 - Performance → `/run-profiler` + `/deep-review-codebase`
-- Git issues → `### 8` + `/follow-tool-git` + `/check-git-logs`
+- Git issues → `### 7` + `/follow-tool-git` + `/check-git-logs`
 
 ### 5. Time Budget And Escalation
 

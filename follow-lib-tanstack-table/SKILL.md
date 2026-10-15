@@ -23,6 +23,8 @@ Works with data tables of any size — headless = the library manages state/logi
 
 ### 1. Install
 
+> Goal: install the table package
+
 ```bash
 bun add @tanstack/react-table   # solid/vue/svelte/angular variants available
 ```
@@ -83,6 +85,8 @@ const table = useReactTable({
 7. **Server-side**: `manualPagination`/`manualSorting`/`manualFiltering` + `pageCount` — the table doesn't process, fetch via `follow-query`
 
 ### 5. Render And Verify
+
+> Goal: render real data and prove the headless logic works before finishing
 
 ```tsx
 {table.getHeaderGroups().map((hg) => hg.headers.map((h) =>

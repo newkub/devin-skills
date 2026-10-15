@@ -13,6 +13,7 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
+  - run-all-tasks
   - ship
   - resolve-errors
   - report
@@ -32,6 +33,7 @@ Use as the single consolidation point for all verify work
 - If an end-to-end readiness gate is needed (before ship/deploy or after a big task) → also do the `Deep Verify` section below
 - Never merge, release, or deploy automatically
 - Use after `/implement-to-production` to verify before ship
+- This runs the `verify` subset only — to run the project's FULL task manifest (all scripts incl. custom `db:*`, `security`, `docs:build`) → use `/run-all-tasks`
 
 ## Execute
 

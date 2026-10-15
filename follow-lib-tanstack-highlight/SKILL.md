@@ -23,6 +23,8 @@ Use when you need syntax highlighting — code blocks, docs, diff viewers, markd
 
 ### 1. Install
 
+> Goal: install the highlighter and its theme/language deps
+
 ```bash
 bun add @tanstack/highlight
 ```
@@ -53,6 +55,8 @@ bun add @tanstack/highlight
 4. **Language scope**: register/lazy-load only the languages actually used — bundle size
 
 ### 5. Verify
+
+> Goal: prove highlighted output renders before finishing
 
 1. `/run-typecheck` + `/run-test`
 2. The languages the project really uses — token coverage + theme colors in both light/dark

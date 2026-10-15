@@ -22,6 +22,8 @@ For AI features not bound to a single provider (chat, tools, agents, streaming U
 
 ### 1. Install
 
+> Goal: install the AI package and the provider adapters you need
+
 ```bash
 bun add @tanstack/ai @tanstack/ai-client @tanstack/ai-react
 bun add @tanstack/ai-openai        # or ai-anthropic / ai-ollama / another adapter
@@ -78,6 +80,8 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 5. **Headless**: `@tanstack/ai-client` used outside framework UI — custom chat state management
 
 ### 5. Verify
+
+> Goal: prove chat streaming and tool calls work before finishing
 
 1. `/run-typecheck` — message/tool types pass
 2. Real streaming: all tokens arrive, `stop()` cancels, the tool round-trip succeeds

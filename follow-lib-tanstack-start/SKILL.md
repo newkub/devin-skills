@@ -82,6 +82,8 @@ export const addTodo = createServerFn({ method: 'POST' })
 
 ### 6. Verify
 
+> Goal: prove SSR, server functions, and the production build pass before finishing
+
 1. `/run-dev` — view-source shows SSR HTML, hydration doesn't mismatch
 2. Actually test the server fn + API route (`curl` the API route, click the UI for the server fn)
 3. `/run-typecheck` + production build + run the real output

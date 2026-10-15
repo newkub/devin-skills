@@ -86,6 +86,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 - SSL error: stop immediately, report "SSL certificate error" — do not retry
 - redirect loop (≥ 5 redirects): stop, report "redirect loop detected"
 - network error: retry up to `maxRetries` = `5`
+- after healthy: run `/deep-test smoke` to pass the real health gate, not just the status code
 
 ### 3. URL Sources
 
@@ -240,13 +241,6 @@ Common deploy targets and how to obtain a preview/production URL.
 
 - Use the custom domain only after DNS propagation
 - Prefer checking the platform-provided URL first to avoid false negatives
-
-### references/website
-
-#### Watch Deploy Official Resources
-
-- This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
-- Use /deep-test smoke after deploy to pass the health gate
 
 ## Expected Outcome
 

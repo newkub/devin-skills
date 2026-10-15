@@ -23,6 +23,8 @@ Use for **client state** (UI state, drafts, prefs, ephemeral) — for server sta
 
 ### 1. Install
 
+> Goal: install the store package and the framework adapter
+
 ```bash
 bun add @tanstack/react-store   # adapter wraps the @tanstack/store core — solid/vue/svelte/angular available
 ```
@@ -77,6 +79,8 @@ batch(() => {                          // collapse into one notification
 5. **Testing**: create a fresh store instance per test, or reset via `setState` in `beforeEach`
 
 ### 5. Verify
+
+> Goal: prove selector-driven granular re-render works before finishing
 
 1. `/run-typecheck` + `/run-test`
 2. Selector granularity — other components don't re-render when an unrelated slice changes

@@ -176,8 +176,8 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 | Topic | Workflow |
 |-------|----------|
-| Update env config — diff current vs needed, apply, verify | `## Merged Details → config-env` |
-| Consolidate duplicate config/dependencies into shared config or a catalog | `## Merged Details → update-shared-config` |
+| Update env config — diff current vs needed, apply, verify | `workflows/config-env/SKILL.md` |
+| Consolidate duplicate config/dependencies into shared config or a catalog | `workflows/update-shared-config/SKILL.md` |
 
 ## Rules
 
@@ -219,120 +219,6 @@ Update the project configuration so it is complete and consistent, reduce duplic
 - Use /update-project if needed
 - Use /report-idea-cleanup-files-in-computer if needed
 
-## Merged Details
-
-### config-env
-
-##### Goal
-
-Update the project's env configuration — diff the vars that exist against the ones the code needs, apply only the required keys, verify the app still runs — without clobbering the original values
-
-##### Scope
-
-- Use when adding/changing/removing env vars or syncing `.env.example` with the code
-- Covers: `.env`, `.env.local`, `.env.<mode>`, `.env.example`, env validation schemas
-
-##### Execute
-
-###### 1. Diff Current Vs Needed
-
-> Goal: See which keys are missing, extra, or changed
-
-1. Run `/check-secrets env-vars` — the vars the code reads (`process.env.*`, `import.meta.env.*` per stack) compared with those defined
-2. Read the current env files and `.env.example` — list all keys
-3. Build the diff: missing keys (used by code but absent), stale keys (present but unused by code), keys whose value/format must change
-4. Run the `/deep-review-codebase` domain `review-config` report-drift workflow if you need to see drift across environments/workspaces
-
-###### 2. Apply Changes
-
-> Goal: Change only the keys that are required
-
-1. Add the missing keys to `.env.example` with a placeholder plus a comment on what each is for
-2. Update the validation schema (if any) to cover the new keys — required/optional, types, defaults
-3. Ask the user before deleting stale keys — they may be used by another environment or an external runtime
-4. Secrets/real values → `/follow-secret-manager` — never put them in committed files; a local `.env` may be edited but must never be committed
-
-###### 3. Verify
-
-> Goal: The app runs with the new env
-
-1. Run dev/build — startup validation passes with no missing-var crash
-2. Exercise the paths that use the new vars — smoke test only what changed
-3. Run `/check-secrets secrets-leak` — confirm no secrets in git-tracked files
-4. `git status` confirms `.env` is not staged — commit only `.env.example`/schema
-
-##### Rules
-
-- Merge only the keys that changed — never rewrite the whole env file unless required
-- Never commit `.env`/`.env.local` or real values — commit only example/schema/code
-- Never delete keys without confirming — stale in this repo may be required in another environment
-- Prefix conventions must be right — framework public vars (`NEXT_PUBLIC_*`, `VITE_*`)
-- If you find a secret that was already committed → tell the user it must be rotated, not just edited out of the file
-
-##### Expected Outcome
-
-- Env files match the vars the code uses — no unintended missing/stale keys
-- `.env.example` and the validation schema are in sync
-- Verification passes — the app runs and no secrets leak
-
-### update-shared-config
-
-##### Goal
-
-Consolidate tool config and dependency versions duplicated across workspaces into a single shared config or catalog — one fact, one source — then have each workspace reference it back through `extends`/`catalog:`
-
-##### Scope
-
-- Use when the same config (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) is duplicated in 2+ workspaces
-- Use when the same dependency version is spread across several package manifests
-- For duplicated shared code (utils, types, components) across packages → use `/refactor shared` scope instead
-- For env vars → use `## Merged Details → config-env` instead
-
-##### Execute
-
-###### 1. Find Duplicate Config
-
-> Goal: See which config is genuinely duplicated and worth consolidating
-
-1. Run `/deep-review-codebase` domain `review-config` — find configs duplicated or drifting across workspaces
-2. Compare config per domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
-3. Compare dependency versions across package manifests — find version drift and duplicates
-4. Keep only candidates genuinely duplicated in 2+ workspaces — never consolidate speculatively
-
-###### 2. Extract To Shared
-
-> Goal: One canonical config that workspaces reference back
-
-1. Create/update the root shared config per ecosystem:
-   - `tsconfig.base.json` → workspaces `extends`
-   - A root flat `eslint.config.js` → workspaces import/extend
-   - A root `prettier.config.*` → referenced through `package.json#prettier`
-   - test/build config → `defineConfig` from the shared one
-2. Move duplicated dependency versions into a catalog per package manager (`pnpm-workspace.yaml` catalogs, `bun.catalogs`, or root `overrides`)
-3. Replace versions in package manifests with a `catalog:` reference
-4. If this work also involves shared code duplication → dispatch `/refactor shared` scope for the code part
-
-###### 3. Rewire And Verify
-
-> Goal: Every workspace really uses the shared config and nothing breaks
-
-1. Run `/update-references` — delete the duplicated child configs, keeping only workspace-specific overrides
-2. Run the ecosystem validators: `tsc -b`, `eslint .`, `prettier --check .`, then reinstall to resolve the catalog
-3. Run `/deep-review-codebase` domain `review-config` again — confirm only one canonical config remains per domain
-4. If it fails → revert that batch and fix; up to 3 rounds → stop/report
-
-##### Rules
-
-- Consolidate only genuinely duplicated config — workspace-specific options stay in the workspace
-- Shared config must not depend on any workspace — it is only the foundation
-- Behavior stays the same — the resolved config after extends must be equivalent (except drift you intentionally unified)
-- The lockfile must be regenerated after moving deps into a catalog — commit the lockfile too
-
-##### Expected Outcome
-
-- Each config domain has one canonical version at the root — workspaces merely extend/override
-- Dependency versions live in the catalog — manifests use `catalog:` instead of repeated pins
-- Validation passes for every workspace — no config drift left
 
 ## Expected Outcome
 

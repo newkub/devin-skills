@@ -30,17 +30,23 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 
 ### 1. Detect
 
+> Goal: prove which tests are flaky with rerun or CI-history evidence
+
 1. Take `scope` from the argument — if absent, use the current project; if unclear → `/ask-me`
 2. Re-run the suspected tests (e.g. 10–20 iterations via `/run-test` or `--repeat`) and record inverted results (pass↔fail)
 3. Check CI history via `/check-git-logs` / `gh run list` — failures not tied to a diff = flaky candidates
 
 ### 2. Report + Quarantine
 
+> Goal: list flaky tests with evidence and quarantine them so CI stays green
+
 1. Produce a `/report` table: Test, Fail rate, Correlation (parallel/time/deps), Quarantine decision
 2. Quarantine only tests proven non-deterministic — add tag/skip with reason + issue + expiry date
 3. Never quarantine just to unblock CI without re-run evidence
 
 ### 3. Route Fixes
+
+> Goal: send each flaky test to its owner fix skill
 
 1. Flakiness from test design (shared state, sleep) → `/improve tests`
 2. Flakiness from infra/parallelism across the whole suite → `/optimize test-suite`

@@ -23,6 +23,8 @@ For data visualization — **0.x (beta)**: the API may change, check `https://ta
 
 ### 1. Install
 
+> Goal: install the charts package
+
 ```bash
 bun add @tanstack/react-charts
 ```
@@ -58,6 +60,8 @@ import { Chart } from '@tanstack/react-charts'
 5. **Loading/empty**: handle `data: []` and loading states yourself (headless-ish)
 
 ### 4. Verify
+
+> Goal: prove the chart renders with correct data before finishing
 
 1. `/run-typecheck` + `/run-test`
 2. Real render: axis labels, series shapes, tooltip

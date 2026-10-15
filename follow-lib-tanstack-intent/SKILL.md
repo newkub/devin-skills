@@ -21,6 +21,8 @@ Use when maintaining an npm package and you want to ship skills (e.g. Devin/Clau
 
 ### 1. Install And Layout
 
+> Goal: install the package and lay out the skill files in the npm package
+
 ```bash
 bun add -D @tanstack/intent
 ```
@@ -37,6 +39,8 @@ bun add -D @tanstack/intent
 3. Sync skill versions with the package version — skill content must match that release's API
 
 ### 3. Verify
+
+> Goal: prove the skill resolves from the published package before finishing
 
 1. `npm pack --dry-run` — confirm `skills/` is in the tarball
 2. Install in a test project, then discover the skill through intent tooling
