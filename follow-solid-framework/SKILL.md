@@ -1,6 +1,6 @@
 ---
 name: follow-solid-framework
-description: SolidJS app dispatcher — SPA (TanStack Router) / full-stack TanStack Start (server fns + Drizzle/D1) — deploy targets CF Workers, Nitro bun, Nitro CF — merged จาก follow-create-solid-* เดิม
+description: SolidJS app dispatcher — SPA (TanStack Router) / full-stack TanStack Start, deploy CF Workers or Nitro
 argument-hint: "[spa|start|nitro-bun|nitro-cf]"
 related:
   - follow-lib-solidjs
@@ -15,7 +15,6 @@ related:
   - follow-lang-typescript
   - follow-single-responsibility
   - run-dev
-  - test-component
 ---
 
 ## Goal
@@ -159,7 +158,7 @@ plugins: [tsConfigPaths(), tanstackStart(), nitro(), UnoCSS(), viteSolid({ ssr: 
 - `routeTree.gen.ts` ห้าม edit; `virtual:uno.css` import ผ่าน JS entry เท่านั้น
 - shared leaves (`utils/`/`types/`) ต้อง isomorphic-safe บน start — ห้าม `node:*`/`bun:*` (ย้าย `server/utils/`)
 - Performance: `defaultPreload: 'intent'`, lazy routes + `Suspense`, `manualChunks` vendor split
-- ใช้ /test-component verify component render/states
+- ใช้ /deep-test component verify component render/states
 
 ## Expected Outcome
 

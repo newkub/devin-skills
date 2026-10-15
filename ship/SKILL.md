@@ -1,6 +1,6 @@
 ---
 name: ship
-description: Canonical ship — /deep-review + /deep-validate + tests + dev run + usage gate, then commit/push, PR review gate, merge into main
+description: Canonical ship — verify gate (review, validate, tests, dev, usage), push, PR gate, merge main
 argument-hint: "[scope] [verify-only|run|@issue-number-or-title|dont-ask-me]"
 triggers:
   - user
@@ -14,23 +14,21 @@ related:
   - update-tests
   - run-test
   - run-dev
-  - test-usage
   - git-commit-and-push
   - create-github-pr
   - review-github-pr
   - merge-all-branch-by-me-to-main
   - resolve-merge-conflicts
   - release-new-version
-  - watch-browser-and-fix
+  - watch-browser
   - resolve-errors
   - resolve-cicd
   - suggest-next-action
   - report
   - refactor
   - update-project
-  - follow-improve
-  - follow-optimize
-  - test-smoke
+  - improve
+  - optimize
   - dont-ask-me
 ---
 
@@ -83,8 +81,8 @@ The single ship command — run every verification gate first, then commit/push,
 > Goal: the app really runs and the docs match reality
 
 1. Run `/run-dev` — the dev server must be healthy with no errors
-2. Run `/test-usage` — usage examples from README/docs/`AGENTS.md` must actually work
-3. `run` argument → leave the `/run-dev` server up, not just the health check: web project → open the browser at the dev URL and continue `/watch-browser-and-fix` per the `/run-dev` workflow; errors found while watching → `/resolve-errors` immediately — then stop after step 5 with the report (steps 6–8 never run)
+2. Run `/deep-test usage` — usage examples from README/docs/`AGENTS.md` must actually work
+3. `run` argument → leave the `/run-dev` server up, not just the health check: web project → open the browser at the dev URL and continue `/watch-browser fix` per the `/run-dev` workflow; errors found while watching → `/resolve-errors` immediately — then stop after step 5 with the report (steps 6–8 never run)
 
 ### 6. Commit And Push
 
@@ -123,7 +121,7 @@ The single ship command — run every verification gate first, then commit/push,
 - Every gate must genuinely pass — never skip a failing gate; fix loop up to 3 rounds, then stop + report
 - Skip a non-applicable gate only when the project truly lacks that artifact (e.g. no dev server → skip `/run-dev`) — state the reason in the report
 - Never duplicate verify steps in other skills — reference `/ship` only
-- Use `/test-smoke` as a post-build sanity gate on critical paths
+- Use `/deep-test smoke` as a post-build sanity gate on critical paths
 - Never push work that failed verification; never merge while CI is failing/pending or the PR review has blockers
 - Merging into `main` → always user-confirmed (except `dont-ask-me` mode)
 - Never force-push `main` — roll back with `git revert` only

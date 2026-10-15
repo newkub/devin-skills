@@ -16,8 +16,6 @@ related:
   - follow-create-web
   - follow-create-cli
   - follow-create-rust-cli
-  - test-api
-  - test-contract
 
 ---
 ## Goal
@@ -153,7 +151,7 @@ Use when the goal is an `sdk`/`library` that works across frameworks (React, Vue
 ## File Structure
 
 Canonical file structure + layer table: [templates/file-structure-sdk.md](templates/file-structure-sdk.md)
-- Use /test-api and /test-contract to verify the SDK surface against the API contract
+- Use /deep-test api and /deep-test contract to verify the SDK surface against the API contract
 
 ## Expected Outcome
 

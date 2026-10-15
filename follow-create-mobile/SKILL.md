@@ -5,9 +5,8 @@ argument-hint: "[domain]"
 related:
   - follow-create-web
   - follow-best-practice
-  - implement-features-to-mvp
+  - implement-to-production
   - ask-me
-  - test-mobile
 
 ---
 
@@ -40,8 +39,8 @@ Dispatch to the skill matching the mobile target — the parent only routes
 
 - Use /follow-create-web if needed
 - Use /follow-best-practice if needed
-- Use /implement-features-to-mvp if needed
-- Use /test-mobile to verify device/emulator flows after scaffolding
+- Use /implement-to-production if needed
+- Use /deep-test mobile to verify device/emulator flows after scaffolding
 
 ## Expected Outcome
 

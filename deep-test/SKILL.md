@@ -1,80 +1,102 @@
 ---
 name: deep-test
-description: Deep testing — API, CLI, contract, coverage, e2e, integration, mutation, visual domains
-argument-hint: "[domain] [scope]"
+description: Deep test ทุก domain — quick run path หรือ deep workflow ต่อ domain พร้อม orchestrator all
+argument-hint: "[domain|all] [scope] [target%]"
 related:
+  - run-test
   - deep-thinking
   - deep-analyze
-  - run-test
+  - deep-review
   - deep-validate
-  - review-test
   - update-tests
   - resolve-errors
-  - follow-tool-playwright
-  - follow-tool-hurl
-  - follow-tool-bruno
-  - follow-tool-stryker-mutator
+  - review-test
+  - check-flaky-tests
   - use-agent-browser
   - use-chrome-devtools
-  - capture
-  - report
-  - suggest-next-action
+  - follow-tool-playwright
+  - report-review
+  - use-subagents
+  - watch-browser
+  - ask-me
 
 ---
 
 ## Goal
 
-Run deep/domain-specific testing — beyond the unit tests of `/run-test` — covering API, CLI, contract, coverage, E2E, integration, mutation and visual testing in one skill (merged — there are no separate `deep-test-*` skills anymore)
+Run testing for any domain in one place — each domain has a `## Run Quick Path` (run the existing suite) and numbered steps (deep workflow: detect → run → classify → report); `all` orchestrates every domain from real signals in fail-fast order (merged all `test-*` skills — there are no separate `test-*` skills anymore)
 
 ## Scope
 
-Use when tests must go deeper than unit tests — multi-layer, external systems, browsers, contracts, or mutation analysis
+Use when tests must run or a test domain must be analyzed deeply — unit, integration, e2e, api, cli, contract, component, visual, a11y, property, database, mobile, smoke, load, coverage, mutation, usage, website
 
-- `/run-test [domain]` = run-only test runners in one skill — unit default + domain args `all`, `api`, `cli`, `contract`, `coverage`, `e2e`, `integration`, `mutation`, `visual` (merged inline in `## Merged Details`; `all` = orchestrator runs every suite together)
-- `/deep-test <domain>` = deep domain analysis/workflow — pick the domain workflow from the table and follow that reference
-- Edit/update test specs → `/update-tests` (this skill is run-only and does not write tests)
-- Out-of-scope pointers: load/perf → `/test-load`, other run-only domains (`smoke`, `component`, `a11y`, `property`, `database`, `mobile`) → `/run-test <domain>` → `/test-<domain>`, interactive browser watch + roleplay → `/watch-browser-and-test`, test isolation/flaky audit → `/review-test`
+- `/run-test [domain]` = thin dispatcher that routes here; the workflows live only in this skill (`references/<domain>.md`)
+- Writing or restructuring test specs → `/update-tests`; improving the strategy (flaky, coverage gaps, suite speed) → `/improve tests` + `/deep-review` (domain `review-test`)
+- Interactive browser watch + roleplay → this skill's `references/website.md ## 6 Roleplay Mode` (merged from `/watch-browser-and-test`); continuous watch + console-error fixes → `/watch-browser fix`; the fast post-deploy gate → `references/smoke.md`
 
 ## Execute
 
-### Domain Workflows
+### 1. Domain Workflows And Signals
 
-| Domain | Reference | Coverage |
-|--------|-----------|----------|
-| api | [references/api.md](references/api.md) | REST/GraphQL/tRPC/WebSocket endpoints, response contract checks, Bruno/Hurl/Schemathesis, all-routes check (`scripts/check-routes.*` + profile `route-checker` in `## Subagents`) |
-| cli | [references/cli.md](references/cli.md) | CLI commands, exit codes, stdout/stderr, flags, error paths |
-| contract | [references/contract.md](references/contract.md) | consumer/provider contract verification, drift detection |
-| coverage | [references/coverage.md](references/coverage.md) | coverage analysis, thresholds, gap loop until 100% |
-| e2e | [references/e2e.md](references/e2e.md) | Playwright browser tests, all routes, agent-browser exploratory, chrome-devtools-mcp debug |
-| integration | [references/integration.md](references/integration.md) | module interactions, data flow, test DB/services |
-| mutation | [references/mutation.md](references/mutation.md) | mutation testing, surviving mutants, weak assertions |
-| visual | [references/visual.md](references/visual.md) | visual regression, screenshot diff vs baseline |
+| Domain | Reference | Signals | Coverage |
+|--------|-----------|---------|----------|
+| unit (default) | [references/unit.md](references/unit.md) | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test/cargo test | pure functions, edge cases, parameterized tests |
+| component | [references/component.md](references/component.md) | `@testing-library/*`, Vitest browser, Playwright CT, Storybook | isolated render, props, events |
+| integration | [references/integration.md](references/integration.md) | `*.integration.test.*`, testcontainers, compose | module boundaries, data flow, real deps |
+| e2e | [references/e2e.md](references/e2e.md) | `playwright.config.*`, `e2e/` dirs | full user flows in a browser |
+| website | [references/website.md](references/website.md) | routes/sitemap, dev/staging URL | real-browser click-through of every route + promote invariants + roleplay mode (user-roleplay subagents per route) |
+| api | [references/api.md](references/api.md) | HTTP endpoints, OpenAPI, `*.hurl`, `*.bru` | REST/GraphQL/tRPC/WebSocket, all-routes check (`scripts/check-routes.*` + profile `route-checker` in `## Subagents`) |
+| cli | [references/cli.md](references/cli.md) | `bin` field, command defs, `*.cli.test.*`, bats | exit codes, stdout/stderr, flags, error paths |
+| contract | [references/contract.md](references/contract.md) | Pact files, shared schemas, `.proto` | consumer/provider both directions, drift |
+| visual | [references/visual.md](references/visual.md) | `*-snapshots/`, `toHaveScreenshot`, Percy/Argos | screenshot diff vs baseline |
+| a11y | [references/a11y.md](references/a11y.md) | axe/pa11y config, WCAG specs | violations, keyboard, contrast, screen reader |
+| property | [references/property.md](references/property.md) | fast-check/proptest/hypothesis, fuzz targets | invariants on generated inputs, shrinking |
+| database | [references/database.md](references/database.md) | `migrations/`, ORM config, test DB scripts | ephemeral DB, migration roundtrip, constraints |
+| mobile | [references/mobile.md](references/mobile.md) | `.maestro/`, detox, `androidTest/`, `*UITests/` | device/emulator flows, gestures, permissions |
+| smoke | [references/smoke.md](references/smoke.md) | `smoke` scripts/tags, health endpoints | fast post-build/deploy gate |
+| load | [references/load.md](references/load.md) | k6/autocannon, load scripts, perf concern | throughput, latency percentiles, breaking point |
+| coverage | [references/coverage.md](references/coverage.md) | coverage config or defined target | thresholds + gap-closing loop until target (default 100%) |
+| mutation | [references/mutation.md](references/mutation.md) | `stryker.conf.*`, cargo-mutants, mutmut | assertion strength (kill rate), survivors |
+| usage | [references/usage.md](references/usage.md) | README/USAGE code blocks, package scripts | every documented example really runs (pre-ship gate) |
 
-### Flow
+### 2. Flow
 
 1. Run `/deep-thinking` to analyze scope, test goals, and pass/fail criteria before starting
-2. Determine the domain from the argument (e.g. `/deep-test api` → follow `references/api.md`)
-3. If no domain is given or it is unknown → use `/ask-me` to pick a domain
-4. To run every domain → `/run-test all`
-5. Follow the Execute + Rules in that domain's reference
-6. Fix failures through `/resolve-errors` — never suppress; if the root cause is unclear → gather evidence like `/deep-analyze` (exit code, log, screenshot) before handing off
+2. Pick the domain: from the argument (`/deep-test api` → `references/api.md`) or from the signals table above; no/unknown domain → `/ask-me`
+3. Choose the depth: quick run → follow that reference's `## Run Quick Path`; deep → follow its numbered steps
+4. Every domain run is pre-checked with the matching review domain (`/deep-review` — `review-api`, `review-cli`, `review-test`, `review-coverage`, per the global rules)
+5. Fix failures through `/resolve-errors` — never suppress; unclear cause → gather evidence like `/deep-analyze` (exit code, log, screenshot) first; flaky → `/check-flaky-tests`
+6. Write/change test specs → `/update-tests`; report per domain → the reference's report path + `/report-review` in chat
+7. `all` → `### 3` orchestrator
+
+### 3. Run All Domains (orchestrator, merged from `/test-all`)
+
+> Goal: run only the domains a real signal justifies, cheapest failures first — never runs tests itself, never runs every type without a signal
+
+1. `/run-lint` + `/run-typecheck` first; fix those errors — they are not test failures
+2. Detect applicable domains from the signals table; no tests or incomplete coverage → `/update-tests` first; record the chosen list + reasons
+3. Fail-fast order: unit → property → component → database/integration → api/cli/contract (per signals) → e2e → mobile → visual → a11y; load only with a perf signal; smoke as a post-deploy gate, not part of a suite run — record result/duration/failures per domain
+4. Validate + classify: `/deep-validate` the source and `/deep-review` the tests — wrong source → `/resolve-errors`, wrong test → `/update-tests`, unclear → report; never fix without evidence
+5. Fix per the classification and rerun; the same failure repeating ≥3 times → stop + report
+6. Coverage: if a target exists → measure and run the gap-closing loop (`/deep-review coverage` + `/update-tests`) until the target (default 100%)
+7. Report → persist `.devin/temp/report/<workspace>/test-all-<time>.md`; all passing → `/run-verify` (fail → `/resolve-errors`, retry ≤3)
 
 ## Rules
 
-- Always start with `/deep-thinking` and summarize results from real run evidence like `/deep-analyze`; never guess
-- Every domain must be pre-checked with the review skill matching its domain before running, per the global rules (`/review-api` for api, `/review-test` for the rest)
-- Every domain uses test isolation, cleans up side effects, and reports results per its reference
-- Use /review-test if needed
-- Use /run-test all if needed
-- Use /suggest-next-action if needed
-- Use /deep-validate if needed
-- Use /follow-tool-playwright if needed
-- Use /follow-tool-hurl if needed
-- Use /follow-tool-bruno if needed
-- Use /follow-tool-stryker-mutator if needed
-- Use /use-agent-browser if needed
-- Use /use-chrome-devtools if needed
-- Use /capture if needed
+### 1. Discipline
+
+- Always start with `/deep-thinking` and summarize from real run evidence like `/deep-analyze`; never guess
+- Every domain isolates tests, cleans up side effects, and reports per its reference; each domain persists its own report under `.devin/temp/report/<workspace>/`
+- Never `.skip`/`.only`/`xit`, never weaken assertions, never change source code to fit a wrong test
+- Pick domains only from real signals; unsure → `/ask-me`
+- Independent domains may run in parallel via `/use-subagents`; the API route groups use the `route-checker` profile in `## Subagents`
+
+### 2. Boundaries
+
+- This skill runs and analyzes tests; it does not author specs (`/update-tests`), not manage strategy/coverage gaps (`/improve tests`), and not review correctness (`/deep-review`)
+- Dispatcher only: `/run-test` forwards here — never duplicate domain workflows there
+- One workflow per domain: the reference file is the SSOT; other skills link to `/deep-test <domain>` instead of restating it
+- Browser tooling for website/e2e/visual/mobile: `/use-agent-browser` (default), `/use-chrome-devtools` to inspect a failure; authored suites → `/follow-tool-playwright`
 
 ## Subagents
 
@@ -90,5 +112,6 @@ Use when tests must go deeper than unit tests — multi-layer, external systems,
 
 ## Expected Outcome
 
-- the selected domain is run through its reference workflow to completion
-- failures are classified and routed to the suitable fix skill
+- the selected domain runs through its reference (quick path or deep steps) to completion with a persisted report
+- failures are classified as source/test/environment and routed to the suitable fix skill
+- `all` runs every domain that has a signal in fail-fast order and ends at `/run-verify` or a blocker report

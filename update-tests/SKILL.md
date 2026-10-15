@@ -1,6 +1,6 @@
 ---
 name: update-tests
-description: Write/update tests across all layers — unit, integration, e2e, contract, visual, etc. — run until green
+description: Write/update tests across all layers — unit, integration, e2e, contract, visual — until green
 argument-hint: "[scope-or-files]"
 related:
   - deep-review
@@ -13,7 +13,6 @@ related:
   - run-check
   - report
   - suggest-next-action
-  - test-all
 
 ---
 
@@ -38,7 +37,7 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 
 1. Check manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) for test deps (`vitest`, `jest`, `bun test`, `pytest`, `go test`)
 2. Check existing config + test files — naming, structure, assertion style, mock patterns
-3. Define the test pyramid and the types required by the scope — per [references/layers.md](references/layers.md)
+3. Define the test pyramid and the types required by the scope — per [## Merged Details → `### references/layers`](## Merged Details → `### references/layers`)
 4. Define the data strategy: `factories` (dynamic), `fixtures` (static), `builders` (complex)
 5. Define the mock strategy: mock only external deps — use real internal pure functions
 
@@ -62,7 +61,7 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 
 > Goal: Write every layer the scope requires
 
-Follow [references/layers.md](references/layers.md) — unit, integration, e2e (Playwright per `/follow-tool-playwright`, Vitest per `/follow-tool-vitest`), contract, property-based, mutation, performance, security, accessibility, visual
+Follow [## Merged Details → `### references/layers`](## Merged Details → `### references/layers`) — unit, integration, e2e (Playwright per `/follow-tool-playwright`, Vitest per `/follow-tool-vitest`), contract, property-based, mutation, performance, security, accessibility, visual
 
 Every handler/function must have: happy path, error path, edge cases, unauthorized, input validation + conditional categories as the logic warrants
 
@@ -109,16 +108,16 @@ Every handler/function must have: happy path, error path, edge cases, unauthoriz
 
 | Topic | Workflow |
 |-------|----------|
-| Update e2e specs after UI/route changes | `workflows/update-e2e/SKILL.md` |
-| Update unit tests after a refactor | `workflows/update-unit/SKILL.md` |
-| Safely regenerate/review snapshots | `workflows/update-snapshot/SKILL.md` |
+| Update e2e specs after UI/route changes | `## Merged Details → update-e2e` |
+| Update unit tests after a refactor | `## Merged Details → update-unit` |
+| Safely regenerate/review snapshots | `## Merged Details → update-snapshot` |
 
 ## Rules
 
 ### 1. All Layers Covered
 
 - Never write only unit tests when the scope needs integration/e2e — pick every layer suited to the changed code
-- Flows that just passed exploratory testing (e.g. `/watch-browser-and-test`) must be codified into Playwright specs
+- Flows that just passed exploratory testing (e.g. `/deep-test website` Roleplay Mode) must be codified into Playwright specs
 
 ### 2. Behavior Over Implementation
 
@@ -157,7 +156,7 @@ Update e2e specs to match the latest UI/route changes — selectors, navigation,
 
 - Use when UI, routes, or user flows changed and the e2e specs fail/are outdated
 - Covers: Playwright specs, selectors, page objects, fixtures, visual/interaction flows
-- unit/integration → `workflows/update-unit/SKILL.md`; snapshots → `workflows/update-snapshot/SKILL.md`
+- unit/integration → `## Merged Details → update-unit`; snapshots → `## Merged Details → update-snapshot`
 
 ##### Execute
 
@@ -216,7 +215,7 @@ Update test snapshots (inline, file, visual) after output changes intentionally 
 
 - Use when output/markup/serialization changes cause snapshot tests to fail
 - Covers: serializer snapshots (Vitest/Jest), component snapshots, visual snapshots
-- General unit tests → `workflows/update-unit/SKILL.md`; e2e → `workflows/update-e2e/SKILL.md`
+- General unit tests → `## Merged Details → update-unit`; e2e → `## Merged Details → update-e2e`
 
 ##### Execute
 
@@ -276,7 +275,7 @@ Update unit tests to match refactored/signature-changed code — mocks, assertio
 
 - Use when a refactor, rename, signature change, or restructure causes unit tests to fail/become outdated
 - Covers: Vitest/Jest/bun test/pytest as the project uses — mocks, fixtures, parameterized tests
-- e2e → `workflows/update-e2e/SKILL.md`; snapshots → `workflows/update-snapshot/SKILL.md`
+- e2e → `## Merged Details → update-e2e`; snapshots → `## Merged Details → update-snapshot`
 
 ##### Execute
 
@@ -440,7 +439,7 @@ Return the result as a suite update summary:
 - Deterministic only — no shared state, real time/random, `waitForTimeout` workarounds
 - Don't hardcode credentials — use env vars/fixtures
 - Update expectations only for an intended behavior change
-- Canonical runners per layer → /test-<domain> (unit, api, cli, component, contract, database, e2e, integration, load, mobile, mutation, property, smoke, a11y, visual, website) — orchestrate via /test-all
+- Canonical runners per layer → /test-<domain> (unit, api, cli, component, contract, database, e2e, integration, load, mobile, mutation, property, smoke, a11y, visual, website) — orchestrate via /deep-test all
 
 ## Expected Outcome
 

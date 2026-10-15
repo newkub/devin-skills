@@ -6,7 +6,7 @@ related:
   - follow-lib-solidjs
   - run-test
   - resolve-errors
-  - improve-coverage
+  - improve
 ---
 
 ## Goal

@@ -3,7 +3,6 @@ name: follow-tool-portless
 description: ใช้ portless แทน port numbers ด้วย named .localhost URLs สำหรับ dev servers
 argument-hint: "[app-name-or-command]"
 related:
-  - test-load
   - check-my-global-cli
 ---
 
@@ -97,7 +96,7 @@ PORTLESS=0 pnpm dev                          # bypass proxy
 
 - LAN mode ไม่รองรับ Windows; `.localhost` resolve ได้ใน browsers สมัยใหม่โดยไม่ต้องแก้ hosts
 - `service install` ใช้ Task Scheduler (SYSTEM) บน Windows
-- ใช้ `/test-load` ถ้าจำเป็น
+- ใช้ `/deep-test load` ถ้าจำเป็น
 - ใช้ `/check-my-global-cli` ถ้าจำเป็น
 
 

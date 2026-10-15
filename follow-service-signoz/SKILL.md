@@ -29,9 +29,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: SigNoz endpoint, OTel SDK install, instrumentation → `workflows/setup-signoz/SKILL.md`
-- Config: `OTEL_*` env vars, service name, traces/metrics/logs exporters → `workflows/config-signoz/SKILL.md`
-- Verify: endpoint reachable, telemetry ไหลเข้า, service ปรากฏ → `workflows/verify-connection/SKILL.md`
+- Setup: SigNoz endpoint, OTel SDK install, instrumentation → `## Merged Details → setup-signoz`
+- Config: `OTEL_*` env vars, service name, traces/metrics/logs exporters → `## Merged Details → config-signoz`
+- Verify: endpoint reachable, telemetry ไหลเข้า, service ปรากฏ → `## Merged Details → verify-connection`
 
 ### 1. Assess Project And Prepare SigNoz
 
@@ -145,7 +145,7 @@ Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 - แก้ `OTEL_*` env vars สำหรับ Bun/Node/TypeScript
 - แยก config ตาม environment (dev/staging/prod)
 - ตั้ง headers (`signoz-ingestion-key`), protocol และ resource attributes
-- ไม่ครอบคลุม first-time install → ใช้ `workflows/setup-signoz/SKILL.md`
+- ไม่ครอบคลุม first-time install → ใช้ `## Merged Details → setup-signoz`
 
 ##### Execute
 
@@ -156,7 +156,7 @@ Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 1. อ่าน `.env*`, start scripts และ instrumentation entry ที่มีอยู่
 2. ทำ `/check-secrets env-vars` เพื่อระบุ `OTEL_*` vars ที่ขาดหรือซ้ำ
 3. ทำ `/deep-review` domain `review-config` ระหว่าง environments ถ้าจำเป็น
-4. ถ้ายังไม่มี OTel packages → ทำ `workflows/setup-signoz/SKILL.md` แทน
+4. ถ้ายังไม่มี OTel packages → ทำ `## Merged Details → setup-signoz` แทน
 
 ###### 2. Configure Service Identity
 
@@ -210,7 +210,7 @@ Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 - เลือกและเตรียม SigNoz Cloud หรือ self-hosted ผ่าน Docker/Foundry
 - ติดตั้ง `@opentelemetry/api`, `@opentelemetry/auto-instrumentations-node`
 - ตั้ง endpoint และ ingestion key ขั้นต่ำให้ telemetry ส่งได้
-- ไม่ครอบคลุม service name, exporters, dashboards ละเอียด → ใช้ `workflows/config-signoz/SKILL.md`
+- ไม่ครอบคลุม service name, exporters, dashboards ละเอียด → ใช้ `## Merged Details → config-signoz`
 
 ##### Execute
 

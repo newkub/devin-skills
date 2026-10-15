@@ -1,5 +1,5 @@
 ---
-name: follow-tool-moonrepo-optimize-cache
+name: follow-tool-moonrepo-optimize cache
 description: ปรับ moonrepo cache และ affected targets ให้ build/test เร็วขึ้น
 argument-hint: "[scope]"
 related:

@@ -1,10 +1,10 @@
 ---
 name: review-test
-description: Review test strategy, test cases, test results, coverage, flaky — thin entry → /deep-review domain review-test
+description: Review test strategy, cases, results, coverage, flaky — thin entry → /deep-review test domain
 argument-hint: "[scope] [flaky|coverage|report-flaky]"
 related:
   - deep-review
-  - improve-tests
+  - improve
   - run-test
   - deep-test
   - update-tests
@@ -19,13 +19,13 @@ Review test strategy and quality (before running/writing) + analyze test results
 
 - Use before `/run-test all`, `/update-tests`, `/deep-test` — check the strategy: coverage, edge cases, isolation, pyramid balance, regression
 - Use after a test run — analyze results, coverage delta, flaky tests, and summarize the next actions
-- If improvements need fixing → `/improve-tests`
+- If improvements need fixing → `/improve tests`
 
 ## Execute
 
 1. Run `/deep-review` domain `review-test` on the scope — canonical steps (prepare → coverage → edge cases → isolation → pyramid → results) live in `deep-review/SKILL.md` `## Review Domains` + `## Domain Pipeline`
-2. If the argument matches a workflow (`flaky`, `coverage`/`improve-coverage`, `report-flaky`) → forward to that workflow of the original domain
-3. Run `/report` to summarize findings + `/suggest-next-action`
+2. If the argument matches a workflow (`flaky`, `coverage`/`improve coverage`, `report-flaky`) → forward to that workflow of the original domain
+3. Run `/report-review` to summarize findings (chat table, no files) + `/suggest-next-action`
 
 ## Rules
 

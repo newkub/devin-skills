@@ -1,5 +1,5 @@
 ---
-name: follow-tool-vite-optimize-build
+name: follow-tool-vite-optimize build
 description: ปรับ Vite build — chunk splitting, minify options, sourcemap strategy
 argument-hint: "[target-area]"
 related:

@@ -7,6 +7,14 @@ related:
   - open-files-in-web
   - report-readme-html
   - run-test
+  - follow-lib-solidjs
+  - follow-create-rust-crate
+  - follow-tool-vite
+  - alternative
+  - deep-review
+  - resolve-errors
+  - ship
+  - suggest-next-action
 
 ---
 
@@ -20,6 +28,7 @@ Create a Web (HTML) visual in the browser to make data, structure, or concepts e
 - Generate a single no-build file in the OS temp directory
 - Pick the runtime based on context: `Vue 3`, `solid-js/html`, `Alpine.js`, or `Vanilla JS`
 - No-build only — `TSX` components or a build step are not supported
+- Scope `repo-graph`: display a whole repository as an interactive graph (Rust scanner + SolidJS viewer) — this scope allows a build step and a `src/` scaffold
 
 ## Execute
 
@@ -76,6 +85,20 @@ Create a Web (HTML) visual in the browser to make data, structure, or concepts e
 4. Add tabs to group data
 5. Add dark mode with `<html class="dark">`
 
+### 6. Repo Graph Visual (scope: `repo-graph`)
+
+> Goal: Build a web app that displays the repository as an interactive graph, using Rust to analyze the repo and SolidJS to render it
+
+Works with general repos having a `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, or `requirements.txt`.
+
+1. Setup Rust scanner: create `src/rust/repo-graph/` (in the skill workspace or OS temp), `cargo init --name repo-graph`, add `serde`, `serde_json`, `walkdir` (`/follow-create-rust-crate`)
+2. Analyze structure: scan manifests and `grep` imports/exports/`mod` declarations; build nodes (`directory`, `file`, `module`, `dependency`, `workspace`) and edges (imports, parent-child, dependency links); emit `repo-graph.json` via `cargo run -- <repo-path>`
+3. Choose graph library: run `/alternative` to evaluate `cytoscape`, `vis-network`, `force-graph`, `d3` — prefer one with zoom, pan, drag, tooltip (never write your own engine); install with `bun add`
+4. Generate Solid frontend: create a Vite project per `/follow-tool-vite` (`bun create vite@latest repo-graph-web --template solid-ts`), install `solid-js`, `vite-plugin-solid`, `unocss`, `@unocss/preset-wind` (`/follow-lib-solidjs`); render `repo-graph.json` with node labels, tooltips, and a side panel
+5. Add controls: search, filter by type, zoom reset, dark mode toggle
+6. Build and serve: copy `repo-graph.json` to `src/web/public/`, fetch it in Solid, run `bun install` then `bun run dev`; open via `/open-web`; errors → `/resolve-errors`
+7. Ship: report node/edge/type counts; keep the project → `/ship`; then `/suggest-next-action`
+
 ## Rules
 
 ### 1. Output Location
@@ -99,8 +122,17 @@ Create a Web (HTML) visual in the browser to make data, structure, or concepts e
 - A single file with no build step
 - JS/CSS/Runtime loaded from a CDN
 - `TSX` or build is not supported — if needed, tell the user about the limitation
+- Exception: scope `repo-graph` uses a scaffolded Rust crate + Solid/Vite app
 
-### 4. Content Clarity
+### 4. Repo Graph Scaffold
+
+- The `src/` directory holds scaffolds for the Rust crate and the Solid web app; must build with `cargo build` and `bun run build`
+- No more than 250 lines per scaffold file
+- Use distinct colors per node type (`directory`, `file`, `module`, `dependency`, `workspace`)
+- Use ecosystem-appropriate commands (`cargo run` for Rust, `bun install` for JS/TS)
+- Review the frontend with `/deep-review` (frontend scope) when done
+
+### 5. Content Clarity
 
 - Prioritize clarity over aesthetics
 - Use clear labels and annotations
@@ -118,3 +150,4 @@ Create a Web (HTML) visual in the browser to make data, structure, or concepts e
 - Opened in the browser with interaction
 - Complex data turned into an easy-to-understand visual
 - The runtime chosen based on the user context
+- Scope `repo-graph`: a Rust scanner producing `repo-graph.json` and a SolidJS app rendering the repo graph interactively in the browser

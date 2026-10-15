@@ -1,5 +1,5 @@
 ---
-name: follow-tool-stryker-mutator-optimize-mutation
+name: follow-tool-stryker-mutator-optimize mutation
 description: ปรับ Stryker mutation testing ให้เร็ว — incremental, mutator filtering, concurrency, thresholds
 argument-hint: "[scope]"
 related:

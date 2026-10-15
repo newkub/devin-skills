@@ -32,9 +32,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: SDK/CLI install, API keys, webhook signing → `workflows/setup-stripe/SKILL.md`
-- Config: products, prices, webhook endpoints, customer portal, test→live → `workflows/config-stripe/SKILL.md`
-- Verify: keys valid, mode ถูก (test/live), webhook secret พร้อม → `workflows/verify-connection/SKILL.md`
+- Setup: SDK/CLI install, API keys, webhook signing → `## Merged Details → setup-stripe`
+- Config: products, prices, webhook endpoints, customer portal, test→live → `## Merged Details → config-stripe`
+- Verify: keys valid, mode ถูก (test/live), webhook secret พร้อม → `## Merged Details → verify-connection`
 
 ### 1. Setup Credentials
 
@@ -180,7 +180,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 - สร้าง/แก้ products และ prices แล้วบันทึก `price_id` ลง config
 - ตั้งค่า webhook endpoint และ events ที่ subscribe
 - ตั้งค่า customer portal และสลับ test → live mode
-- ไม่ครอบคลุม SDK install/keys → ใช้ `workflows/setup-stripe/SKILL.md`
+- ไม่ครอบคลุม SDK install/keys → ใช้ `## Merged Details → setup-stripe`
 
 ##### Execute
 
@@ -191,7 +191,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 1. อ่าน pricing config, `.env*` และ routes ที่เกี่ยวกับ Stripe ใน project
 2. ทำ `/check-secrets env-vars` เพื่อระบุ keys ที่ขาด
 3. ตรวจ products/prices/webhooks ที่มีอยู่ใน dashboard — ใช้ `/open-web-for-config-secret` (service stripe)
-4. ถ้ายังไม่มี SDK/keys → ทำ `workflows/setup-stripe/SKILL.md` แทน
+4. ถ้ายังไม่มี SDK/keys → ทำ `## Merged Details → setup-stripe` แทน
 
 ###### 2. Configure Products And Prices
 
@@ -254,7 +254,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 - ติดตั้ง `stripe`, `@stripe/stripe-js` และ Stripe CLI
 - สร้างและเก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`
 - Init server client และ webhook forwarding
-- ไม่ครอบคลุม products/prices/webhook endpoints config → ใช้ `workflows/config-stripe/SKILL.md`
+- ไม่ครอบคลุม products/prices/webhook endpoints config → ใช้ `## Merged Details → config-stripe`
 
 ##### Execute
 

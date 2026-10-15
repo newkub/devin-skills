@@ -59,7 +59,7 @@ Run the preview server per the framework
 Test the preview in the browser
 
 1. Open the preview URL in the browser
-2. Run `/watch-browser-and-fix` to continuously check the page
+2. Run `/watch-browser fix` to continuously check the page
 3. Test the key features that changed recently
 4. Check the console errors and warnings
 5. Run `/run-test` for detailed testing
@@ -107,7 +107,7 @@ Share the preview with the team and collect feedback
 - Test the most recently changed features first
 - Always test the critical user flows
 - Test the responsive design across multiple screen sizes
-- Use `/watch-browser-and-fix` for continuous checking
+- Use `/watch-browser fix` for continuous checking
 - Use `/run-test` for detailed testing
 - Use `/report` to report issues
 - Stop the preview server when not in use

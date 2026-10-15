@@ -22,9 +22,9 @@ related:
 
 | Topic  | Workflow |
 |--------|----------|
-| Setup  | `workflows/setup-claude-agent-sdk/SKILL.md` — SDK install, `ANTHROPIC_API_KEY` |
-| Config | `workflows/config-claude-agent-sdk/SKILL.md` — model, tools, permissions, sessions config |
-| Verify | `workflows/verify-connection/SKILL.md` — API key valid, minimal query ตอบกลับ |
+| Setup  | `## Merged Details → setup-claude-agent-sdk` — SDK install, `ANTHROPIC_API_KEY` |
+| Config | `## Merged Details → config-claude-agent-sdk` — model, tools, permissions, sessions config |
+| Verify | `## Merged Details → verify-connection` — API key valid, minimal query ตอบกลับ |
 
 อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -65,7 +65,7 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 ##### Scope
 
 - ครอบคลุม `options` object, custom tools (`tool()` + `createSdkMcpServer`) และ session resume
-- ถ้ายังไม่ได้ install/API key → ทำ `workflows/setup-claude-agent-sdk/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ install/API key → ทำ `## Merged Details → setup-claude-agent-sdk` ก่อน
 
 ##### Execute
 
@@ -75,7 +75,7 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 
 1. อ่าน call sites ของ `query()` และ options ที่ส่งอยู่
 2. ทำ `/deep-review` domain `review-config` ถ้ามี config แยกในไฟล์อื่น
-3. ถ้าไม่พบ `query()` → ทำ `workflows/setup-claude-agent-sdk/SKILL.md` ก่อน
+3. ถ้าไม่พบ `query()` → ทำ `## Merged Details → setup-claude-agent-sdk` ก่อน
 
 ###### 2. Configure Model And Prompt
 
@@ -132,7 +132,7 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 
 - ติดตั้ง package และทำ minimal `query()` call ฝั่ง server
 - ตั้งค่า API key ผ่าน secret manager
-- ถ้า setup แล้ว → verify เท่านั้น; model/tools/permissions config → `workflows/config-claude-agent-sdk/SKILL.md`
+- ถ้า setup แล้ว → verify เท่านั้น; model/tools/permissions config → `## Merged Details → config-claude-agent-sdk`
 
 ##### Execute
 
@@ -189,7 +189,7 @@ Latest: `@anthropic-ai/claude-agent-sdk@0.3.283` (verified 2026-09-26) — renam
 
 - SDK ติดตั้งและ `query()` ทำงานได้ฝั่ง server
 - API key อยู่ใน secret manager
-- พร้อมไป `workflows/config-claude-agent-sdk/SKILL.md`
+- พร้อมไป `## Merged Details → config-claude-agent-sdk`
 
 ### verify-connection
 

@@ -71,7 +71,6 @@
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /follow-algorithms ถ้าจำเป็น
 
 ## Expected Outcome
 

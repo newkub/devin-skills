@@ -35,9 +35,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: CLI install/login, `supabase init`, `link`, local stack, client init → `workflows/setup-supabase/SKILL.md`
-- Config: env vars, `config.toml`, RLS policies, client options → `workflows/config-supabase/SKILL.md`
-- Verify: URL/keys valid, auth health, query ตอบกลับ → `workflows/verify-connection/SKILL.md`
+- Setup: CLI install/login, `supabase init`, `link`, local stack, client init → `## Merged Details → setup-supabase`
+- Config: env vars, `config.toml`, RLS policies, client options → `## Merged Details → config-supabase`
+- Verify: URL/keys valid, auth health, query ตอบกลับ → `## Merged Details → verify-connection`
 
 ### 1. Install And Authenticate
 
@@ -135,10 +135,10 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 
 > Goal: อ่าน configuration และ API reference
 
-1. อ่าน [references/supabase-cli.md](references/supabase-cli.md) สำหรับ CLI commands
-2. อ่าน [references/supabase-config.md](references/supabase-config.md) สำหรับ configuration reference
-3. อ่าน [references/supabase-client-api.md](references/supabase-client-api.md) สำหรับ Client SDK API reference
-4. อ่าน [references/official-resources.md](references/official-resources.md) สำหรับ official links และ resources
+1. อ่าน [## Merged Details → `### references/supabase-cli`](## Merged Details → `### references/supabase-cli`) สำหรับ CLI commands
+2. อ่าน [## Merged Details → `### references/supabase-config`](## Merged Details → `### references/supabase-config`) สำหรับ configuration reference
+3. อ่าน [## Merged Details → `### references/supabase-client-api`](## Merged Details → `### references/supabase-client-api`) สำหรับ Client SDK API reference
+4. อ่าน [## Merged Details → `### references/official-resources`](## Merged Details → `### references/official-resources`) สำหรับ official links และ resources
 
 ## Rules
 
@@ -200,7 +200,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 - จัดการ env vars (`SUPABASE_URL`, keys) ผ่าน secret manager
 - แก้ `supabase/config.toml` (auth, storage, edge runtime)
 - เปิด/แก้ RLS policies บน tables
-- ไม่ครอบคลุม first-time install → ใช้ `workflows/setup-supabase/SKILL.md`
+- ไม่ครอบคลุม first-time install → ใช้ `## Merged Details → setup-supabase`
 
 ##### Execute
 
@@ -211,7 +211,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 1. อ่าน `supabase/config.toml` และ `.env*` ที่มีอยู่
 2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาดหรือซ้ำ
 3. ทำ `/deep-review` domain `review-config` ถ้าสงสัยว่า local config ต่างจาก remote
-4. ถ้าไม่มี `supabase/config.toml` เลย → ทำ `workflows/setup-supabase/SKILL.md` แทน
+4. ถ้าไม่มี `supabase/config.toml` เลย → ทำ `## Merged Details → setup-supabase` แทน
 
 ###### 2. Configure Env Vars
 
@@ -228,7 +228,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 
 1. แก้ `[auth]` section — `site_url`, `additional_redirect_urls`, providers ตามที่ใช้
 2. แก้ `[storage]`, `[edge_runtime]` หรือ section อื่นเฉพาะ keys ที่จำเป็น
-3. อ้างอิง `references/supabase-config.md` ของ parent หรือ official docs สำหรับ key names
+3. อ้างอิง `## Merged Details → references/supabase-config` ของ parent หรือ official docs สำหรับ key names
 
 ###### 4. Configure RLS And Client Options
 
@@ -273,7 +273,7 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 - ติดตั้งและ authenticate Supabase CLI
 - `supabase init`, `supabase link`, `supabase start` สำหรับ local development
 - สร้าง client จาก env vars
-- ไม่ครอบคลุม env/RLS/config ขั้นสูง → ใช้ `workflows/config-supabase/SKILL.md`
+- ไม่ครอบคลุม env/RLS/config ขั้นสูง → ใช้ `## Merged Details → config-supabase`
 
 ##### Execute
 

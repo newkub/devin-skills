@@ -7,7 +7,6 @@ related:
   - implement-to-production
   - follow-agents-md
   - report
-  - test-usage
   - resolve-errors
   - suggest-next-action
 
@@ -40,7 +39,7 @@ Boundary: ถ้าเป็นไฟล์แผนใน `.devin/temp/plan/<wo
 
 1. แปลงแต่ละ step เป็นหนึ่งใน:
    - workflow: ชื่อ workflow เช่น `report`
-   - skill: ชื่อ skill เช่น `test-usage`
+   - skill: ชื่อ skill เช่น `/deep-test usage`
    - command: คำสั่ง shell
    - decision: เงื่อนไขที่ต้องถาม user
 2. ระบุลำดับความสำคัญและ dependencies

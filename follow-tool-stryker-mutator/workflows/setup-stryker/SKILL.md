@@ -17,7 +17,7 @@ related:
 
 - First-time setup ของ Stryker ใน JavaScript/TypeScript project
 - ครอบคลุม: install, `stryker init`, config keys, test runner integration, verify run
-- ไม่ครอบคลุม: performance tuning/incremental (`workflows/optimize-mutation`)
+- ไม่ครอบคลุม: performance tuning/incremental (`workflows/optimize mutation`)
 
 ## Execute
 
@@ -37,7 +37,7 @@ related:
 1. ติดตั้ง `bun add -D @stryker-mutator/core`
 2. ติดตั้ง runner plugin ตาม test runner เช่น `bun add -D @stryker-mutator/vitest-runner`
 3. ถ้าใช้ TypeScript → ติดตั้ง `bun add -D @stryker-mutator/typescript-checker`
-4. ดู plugin options ใน `references/stryker-mutator.md` หรือ official docs
+4. ดู plugin options ใน `references/cli.md` หรือ official docs
 
 ### 3. Initialize Config
 

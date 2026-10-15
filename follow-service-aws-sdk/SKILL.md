@@ -26,9 +26,9 @@ related:
 
 | Topic  | Workflow |
 |--------|----------|
-| Setup  | `workflows/setup-aws-sdk/SKILL.md` — SDK v3 modular install, credentials |
-| Config | `workflows/config-aws-sdk/SKILL.md` — region, credentials chain, endpoint config |
-| Verify | `workflows/verify-connection/SKILL.md` — smoke test credentials/connectivity |
+| Setup  | `## Merged Details → setup-aws-sdk` — SDK v3 modular install, credentials |
+| Config | `## Merged Details → config-aws-sdk` — region, credentials chain, endpoint config |
+| Verify | `## Merged Details → verify-connection` — smoke test credentials/connectivity |
 
 อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -95,7 +95,7 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 ##### Scope
 
 - ครอบคลุม env keys, client options และ local endpoints (เช่น LocalStack)
-- ถ้ายังไม่ได้ install/credentials → ทำ `workflows/setup-aws-sdk/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ install/credentials → ทำ `## Merged Details → setup-aws-sdk` ก่อน
 
 ##### Execute
 
@@ -105,7 +105,7 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 
 1. อ่าน client construction ปัจจุบัน, env keys (`AWS_REGION`, `AWS_PROFILE`, `AWS_ENDPOINT_URL*`) และ `~/.aws/config` ถ้าเกี่ยวข้อง
 2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ env กับ code
-3. ถ้าไม่พบ client → ทำ `workflows/setup-aws-sdk/SKILL.md` ก่อน
+3. ถ้าไม่พบ client → ทำ `## Merged Details → setup-aws-sdk` ก่อน
 
 ###### 2. Configure Region
 
@@ -161,7 +161,7 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 
 - ติดตั้ง `@aws-sdk/client-<service>` เฉพาะ service ที่ใช้ — `aws-sdk` v2 ถูก deprecated
 - ตั้งค่า credentials ผ่าน env/IAM role
-- ถ้า setup แล้ว → verify เท่านั้น; region/endpoint config → `workflows/config-aws-sdk/SKILL.md`
+- ถ้า setup แล้ว → verify เท่านั้น; region/endpoint config → `## Merged Details → config-aws-sdk`
 
 ##### Execute
 
@@ -215,7 +215,7 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 
 - `@aws-sdk/client-*` ติดตั้งเฉพาะ service ที่ใช้
 - credentials อยู่ใน env/IAM role ไม่มีใน code
-- smoke check ผ่าน — พร้อมไป `workflows/config-aws-sdk/SKILL.md`
+- smoke check ผ่าน — พร้อมไป `## Merged Details → config-aws-sdk`
 
 ### verify-connection
 

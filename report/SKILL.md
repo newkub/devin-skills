@@ -26,10 +26,10 @@ related:
 
 | Domain      | Workflow |
 |-------------|----------|
-| `table`     | `workflows/table/SKILL.md` — ตอบเป็นตารางพร้อมคอลัมน์ `No.` เรียงลำดับ |
-| `html`      | `workflows/html/SKILL.md` — ไฟล์ HTML ไฟล์เดียวโต้ตอบได้บน browser |
-| `numbered`  | `workflows/numbered/SKILL.md` — numbered list เรียงลำดับความสำคัญ |
-| `codeblock` | `workflows/codeblock/SKILL.md` — code blocks สำหรับ commands, snippets, config, logs, diff |
+| `table`     | `## Merged Details → table` — ตอบเป็นตารางพร้อมคอลัมน์ `No.` เรียงลำดับ |
+| `html`      | `## Merged Details → html` — ไฟล์ HTML ไฟล์เดียวโต้ตอบได้บน browser |
+| `numbered`  | `## Merged Details → numbered` — numbered list เรียงลำดับความสำคัญ |
+| `codeblock` | `## Merged Details → codeblock` — code blocks สำหรับ commands, snippets, config, logs, diff |
 
 ### 1. Select Format
 
@@ -54,7 +54,7 @@ related:
 
 > Goal: ทำให้ report อ่านง่าย
 
-1. ทำตาม `[references/uxui.md](references/uxui.md)`
+1. ทำตาม `[## Merged Details → `### references/uxui`](## Merged Details → `### references/uxui`)`
 2. ใช้ emoji ตาม legend ทีกำหนด
 3. เรียงลำดับตาม status ให้ `completed` อยู่บนสุด
 4. ไม่ใช้ bold markers
@@ -74,8 +74,10 @@ related:
 - ใช้ `/report-todo` เมื่องานยังไม่ลงมือ ต้องการ action plan
 - ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 - ทุก report ต้องสรุป key findings ด้านบน
-- ใช้ emoji ตาม legend ใน `references/uxui.md`
+- ใช้ emoji ตาม legend ใน `## Merged Details → references/uxui`
 - ไม่ใช้ bold markers
+
+- ทุก report ของ review findings ส่งออกผ่าน `/report-review` — ตารางเดียวในแชท (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status) ไม่สร้างไฟล์รายงาน
 
 ## Merged Details
 

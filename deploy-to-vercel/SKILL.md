@@ -52,7 +52,7 @@ Covers the Vercel CLI, linking the project, build, deploy, watch, and fixing fai
 > Goal: Confirm the deployment is live
 
 1. Run `/watch-deploy` with the preview URL
-2. Run `/watch-browser-and-fix` with the URL
+2. Run `/watch-browser fix` with the URL
 3. Wait until the status is `READY`
 
 ### 5. Commit And Push

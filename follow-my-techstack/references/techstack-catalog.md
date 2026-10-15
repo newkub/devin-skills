@@ -93,7 +93,7 @@ Canonical tech stack + default picks ต่อ category จัดกลุ่ม
 | Native Speed | `lightningcss` (CSS) | `oxfmt` (format) |
 | Bundle Analysis | `sonda` | `bundlewatch` |
 | Inspect / Debug | `vite-plugin-inspect` | `node-modules-inspector` |
-| DevTools Framework | `@vitejs/devtools` (→`/follow-tool-vite-devtools`) | `@vitejs/devtools-kit` (→author integrations), `devframe` (→framework-neutral, `/follow-tool-devframe`), `use-wrikka-vite-devtools` (→project-specific dock) |
+| DevTools Framework | `@vitejs/devtools` (→`/follow-tool-vite-devtools`) | `@vitejs/devtools-kit` (→author integrations), `devframe` (→framework-neutral, `/follow-tool-devfra`), `wrikka-vite-devtools` (→project-specific dock, `/use-wrikka-vite-devtools`) |
 
 ## Vue / Nuxt Ecosystem
 

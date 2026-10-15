@@ -1,5 +1,5 @@
 ---
-name: follow-lib-remotion-optimize-render
+name: follow-lib-remotion-optimize render
 description: Optimize Remotion render — performance, codecs, lambda notes
 argument-hint: "[scope]"
 related:

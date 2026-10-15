@@ -51,6 +51,8 @@ related:
 - ระบุ stability อย่างชัดเจน
 - ไม่ต้องสร้างไฟล์แยกถ้า user ไม่ต้องการ
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ตาราง public API ครบถ้วน

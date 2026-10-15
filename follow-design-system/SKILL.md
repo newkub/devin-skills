@@ -6,7 +6,7 @@ related:
   - follow-lib-unocss
   - follow-unocss-theme
   - deep-review
-  - capture
+  - use-agents-capture
 ---
 
 ## Goal
@@ -38,7 +38,7 @@ See also: /deep-review
 2. Use design tokens for every component
 3. Document every component and pattern
 4. Define component variants (sizes, states, colors)
-5. Run `/capture` to record a screenshot of each component for documentation
+5. Run `/use-agents-capture` to record a screenshot of each component for documentation
 
 ### 3. Apply To Platforms
 

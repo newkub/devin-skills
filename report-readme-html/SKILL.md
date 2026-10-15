@@ -71,6 +71,8 @@ related:
 - ใช้ `/create-files-in-os-temp`, `/open-web` เสมอ
 - ใช้ `/update-docs` ถ้าต้องการ permanent docs แทน
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status); the generated `README.html` in temp is this skill's artifact, not a review report file
+
 ## Expected Outcome
 
 - `README.html` ใน temp เปิดใน browser ผ่าน `/open-web`

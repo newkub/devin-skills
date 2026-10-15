@@ -53,7 +53,7 @@ related:
 > Goal: commands พื้นฐานทำงาน
 
 1. `get`/`set`/`del`/`expire` ฯลฯ เป็น promise-based — `await redis.set("k", "v")`
-2. `pipeline()`/`multi()` สำหรับ batch (รายละเอียดใน `optimize-pool`)
+2. `pipeline()`/`multi()` สำหรับ batch (รายละเอียดใน `optimize pool`)
 3. ตั้ง `maxRetriesPerRequest` ให้เหมาะสม — `null` ถ้าใช้กับ BullMQ
 4. v6 + `enableOfflineQueue: false` → ส่ง commands จาก `ready` listener ไม่ใช่ `connect`
 

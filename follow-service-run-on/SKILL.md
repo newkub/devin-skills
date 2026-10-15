@@ -27,9 +27,9 @@ related:
 
 | Topic  | Workflow |
 |--------|----------|
-| Setup  | `workflows/setup-run-on/SKILL.md` — AWS stack, GitHub App registration |
-| Config | `workflows/config-run-on/SKILL.md` — `runs-on.yml` runner definitions, workflow labels |
-| Verify | `workflows/verify-connection/SKILL.md` — stack healthy, runners register, labels ตรง |
+| Setup  | `## Merged Details → setup-run-on` — AWS stack, GitHub App registration |
+| Config | `## Merged Details → config-run-on` — `runs-on.yml` runner definitions, workflow labels |
+| Verify | `## Merged Details → verify-connection` — stack healthy, runners register, labels ตรง |
 
 อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -137,7 +137,7 @@ related:
 ##### Scope
 
 - ครอบคลุม `.github/runs-on.yml`, `.github-private/.github/runs-on.yml` และ `.github/workflows/*.yml`
-- ถ้ายังไม่ได้ deploy stack → ทำ `workflows/setup-run-on/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ deploy stack → ทำ `## Merged Details → setup-run-on` ก่อน
 - ไม่รวม commit/push อัตโนมัติ
 
 ##### Execute
@@ -148,7 +148,7 @@ related:
 
 1. อ่าน `.github/runs-on.yml` และ workflows ที่ใช้ `runs-on:` อยู่แล้ว
 2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ config กับ stack ที่ deploy จริง
-3. ถ้าไม่พบ config → ทำ `workflows/setup-run-on/SKILL.md` ก่อน
+3. ถ้าไม่พบ config → ทำ `## Merged Details → setup-run-on` ก่อน
 
 ###### 2. Define Runners
 
@@ -205,7 +205,7 @@ related:
 
 - ครอบคลุม AWS stack, GitHub App registration และ org settings
 - ไม่รวมการสร้าง AWS account, การซื้อ license หรือ commit/push อัตโนมัติ
-- config runner labels/workflows → `workflows/config-run-on/SKILL.md`
+- config runner labels/workflows → `## Merged Details → config-run-on`
 
 ##### Execute
 
@@ -255,7 +255,7 @@ related:
 
 - RunsOn stack `CREATE_COMPLETE` และ GitHub App register แล้ว
 - workflow ทดสอบรันบน self-hosted runner สำเร็จ
-- พร้อมไป `workflows/config-run-on/SKILL.md`
+- พร้อมไป `## Merged Details → config-run-on`
 
 ### verify-connection
 

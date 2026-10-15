@@ -19,7 +19,7 @@ related:
   - update-gitignore
   - update-dot-vscode
   - update-dot-devin
-  - improve-config
+  - improve
   - setup-cicd
   - deep-review
   - report
@@ -74,7 +74,7 @@ related:
    - `/setup-cicd` ถ้ายังไม่มี pipeline หรือ config drift
    - `/update-license-md`, `/update-contributing`, `/update-astgrep-rules`, `/update-gitignore` สำหรับ repo hygiene files
    - `/update-dot-vscode`, `/update-dot-devin` สำหรับ `.vscode`/`.devin` config ของ workspace
-   - `/improve-config` เมื่อ config ใช้งานได้แล้วแต่ยังปรับปรุงได้
+   - `/improve config` เมื่อ config ใช้งานได้แล้วแต่ยังปรับปรุงได้
 
 ### 4. Run Workspace Command
 

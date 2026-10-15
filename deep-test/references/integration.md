@@ -4,7 +4,16 @@ Run integration tests to verify how modules, data flow, and integration points w
 
 - If integration tests need updating/writing → `/update-tests` (run-only, does not fix tests)
 
-> Pre-Run: always run `/deep-review` first — `run-*` skills must review/assess before the main action; never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+
+## Run Quick Path
+
+> Goal: run the existing integration suite only (merged from `/test-integration`) — use steps 1-4 below for the deep pass
+
+1. Detect — `*.integration.test.*`, `tests/integration/`, testcontainers, compose files; the dependencies that must be up (DB, cache, queue); runner scope (`bunx vitest run '*.integration.test.*'`, `pytest -m integration`, `go test -tags=integration ./...`); monorepo → the workspaces with shared/service modules
+2. Run — start dependencies (testcontainers auto-start or `compose up`) → verify health before running; record per-test status and dependency logs on failure; clean teardown, never leave containers/ports dangling
+3. Classify — boundary/logic failure → source → `/resolve-errors`; wrong fixture/seed or outdated assertion → test → `/update-tests`; dependency won't start / port conflict / timeout → environment; shared-state interference → report + `/deep-review`; repeats ≥3 → stop+report
+4. Report — persist → `.devin/temp/report/<workspace>/integration-test-<time>.md`; all pass → `/run-verify`
 
 ## 1. Detect Test Framework
 
@@ -64,7 +73,6 @@ Run integration tests to verify how modules, data flow, and integration points w
 - Use parallel execution with caution
 - If tests share a database, run them sequentially
 
-- Use /run-test if needed
 - Use /run-check if needed
 - Use /run-verify if needed
 - Use /suggest-next-action if needed

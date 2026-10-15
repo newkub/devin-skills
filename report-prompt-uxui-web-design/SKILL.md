@@ -75,6 +75,8 @@ related:
 - ใช้ backticks สำหรับ `route-path`, `page-name`, `app-name` ในเนื้อหา prompt
 - ไม่ใช้ bold markers; report summary ตาม `/report` conventions
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the generated prompt stays in chat
+
 ## Expected Outcome
 
 - Prompt พร้อมใช้ที่ขอ UX/UI web design ครบ desktop/tablet/mobile เป็น 4-col card grid

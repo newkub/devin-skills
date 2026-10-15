@@ -6,7 +6,7 @@ related:
   - follow-lib-zaidan-ui
   - follow-lib-shadcn-solid
   - follow-design-system
-  - improve-config
+  - improve
   - resolve-errors
 ---
 

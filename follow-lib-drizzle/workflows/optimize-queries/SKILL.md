@@ -1,5 +1,5 @@
 ---
-name: follow-lib-drizzle-optimize-queries
+name: follow-lib-drizzle-optimize queries
 description: optimize Drizzle queries — indexes, relations, select/where performance
 argument-hint: "[table-or-query]"
 related:

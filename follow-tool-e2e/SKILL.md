@@ -1,6 +1,6 @@
 ---
 name: follow-tool-e2e
-description: ใช้ e2e (tester.army) ครบวงจร — agentic E2E testing สำหรับ web/mobile — agent.act goals, agent.assert, screen locators, replay cache, multi-target
+description: Agentic E2E testing (tester.army) web/mobile — act/assert, screen locators, replay cache
 argument-hint: "[test-file-or-goal]"
 allowed-tools:
   - exec
@@ -10,8 +10,6 @@ allowed-tools:
   - grep
   - find_file_by_name
 related:
-  - test-e2e
-  - test-mobile
   - run-test
   - follow-my-techstack
   - check-secrets
@@ -24,7 +22,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ project ติดตั้ง `e2e` package หรือต้องการ agentic testing — ตัวเลือก E2E strategy ทั่วไป → `/test-e2e`; mobile-specific → `/test-mobile`; catalog default → `/follow-my-techstack`
+ใช้เมื่อ project ติดตั้ง `e2e` package หรือต้องการ agentic testing — ตัวเลือก E2E strategy ทั่วไป → `/deep-test e2e`; mobile-specific → `/deep-test mobile`; catalog default → `/follow-my-techstack`
 
 - Deterministic test suites ที่ไม่ต้องการ model → `screen`/`expect` steps เท่านั้น (ไม่เสีย token)
 - API checks ผสมใน test file เดียวกันได้ด้วย `fetch` + value matchers
@@ -102,8 +100,8 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 - ใช้ `agent.*` เฉพาะจุดที่ selector เขียนไม่ได้/เปลี่ยนบ่อย — จุดที่รู้ exact action ใช้ `screen` locator (ฟรี, deterministic)
 - `expect` locator check หลัง `agent.act` เสมอ — cache record เฉพาะ goal ที่มี later check ผ่าน
 
-- ใช้ /test-e2e ถ้าต้องเลือก framework/กลยุทธ์
-- ใช้ /test-mobile สำหรับ device specifics
+- ใช้ /deep-test e2e ถ้าต้องเลือก framework/กลยุทธ์
+- ใช้ /deep-test mobile สำหรับ device specifics
 - ใช้ /deep-review domain `review-test` สำหรับ review suite
 
 ## Expected Outcome

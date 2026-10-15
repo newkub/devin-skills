@@ -2,6 +2,15 @@
 
 Verify that service contracts match on both sides — consumer expectations vs provider implementation — without deploying both at the same time (contract testing / Pact-style) — use when multiple services talk to each other: microservices, frontend-backend, provider-consumer APIs
 
+## Run Quick Path
+
+> Goal: run the existing contract suite only (merged from `/test-contract`) — use steps 1-5 below for the deep pass
+
+1. Detect — `pacts/*.json`, pact-broker config, `*.contract.test.*`, `.proto`/JSON Schema; runner = Pact verifier, the project runner for schema conformance, or `schemathesis` for OpenAPI; identify consumer vs provider — must run in both directions
+2. Run — consumer tests → generate/publish pact → provider verification against the pact; schema-only → validate responses against the schema; record per-interaction status, violations, breaking changes
+3. Classify — provider violates the pact → breaking change in source → `/resolve-errors` or report a versioning decision; stale consumer expectation → `/update-tests`; broker/env not ready → environment; repeats ≥3 → stop+report
+4. Report — persist → `.devin/temp/report/<workspace>/contract-test-<time>.md`; all pass → `/run-verify`
+
 ## 1. Identify Contracts
 
 > Goal: map the consumer-provider pairs to test
@@ -32,7 +41,7 @@ Verify that service contracts match on both sides — consumer expectations vs p
 
 1. Compare consumer expectations vs provider actuals — fields that differ
 2. flag: consumer uses fields the provider does not send, provider removed fields the consumer uses
-3. Run `/review-api` jointly for spec-level drift
+3. Run `/deep-review` (domain `review-api`) jointly for spec-level drift
 
 ## 5. Report
 
@@ -40,7 +49,7 @@ Verify that service contracts match on both sides — consumer expectations vs p
 
 1. Use `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
 2. Verdict per contract: `verified`, `drift`, `broken`
-3. Recommend: fix provider, update contract, or version the API (`/review-api`)
+3. Recommend: fix provider, update contract, or version the API (`/deep-review` domain `review-api`)
 
 ## Rules
 

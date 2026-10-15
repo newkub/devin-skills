@@ -16,7 +16,6 @@ related:
   - deploy-to-cloudflare
   - deploy-to-railway
   - create-cloudflare
-  - test-smoke
 
 ---
 
@@ -85,7 +84,7 @@ Confirm the deployment works
 1. Open the deployment URL
 2. Confirm the application works
 3. Check the logs for errors
-4. Run `/watch-browser-and-fix` if there is a URL
+4. Run `/watch-browser fix` if there is a URL
 
 ### 6. Watch Until Live
 
@@ -93,7 +92,7 @@ Confirm the deployment works
 
 Watch the deployment with a browser until it is live
 
-1. Run `/watch-browser-and-fix` with the deployment URL
+1. Run `/watch-browser fix` with the deployment URL
 2. Confirm the page loads successfully
 3. Check console errors and network errors
 4. Run `/resolve-errors` if problems are found
@@ -150,7 +149,7 @@ Prepare the rollback procedure and check the backup (see `references/rollback-re
 
 ### 5. Watch Until Live
 
-- Use `/watch-browser-and-fix` for monitoring
+- Use `/watch-browser fix` for monitoring
 - Use `/resolve-errors` when problems are found
 - Check console and network errors
 - Run `/loop-until-complete` until the deployment is live
@@ -171,7 +170,7 @@ Prepare the rollback procedure and check the backup (see `references/rollback-re
 
 - Use /follow-tool-vite if needed
 - Use /follow-create-plugins (vite) if needed (deploy)
-- Use /test-smoke in Post-Deploy Validation — sanity check critical paths on the live URL
+- Use /deep-test smoke in Post-Deploy Validation — sanity check critical paths on the live URL
 
 ## Expected Outcome
 

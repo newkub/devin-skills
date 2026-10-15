@@ -44,7 +44,7 @@ related:
 > Goal: client เดียวที่ export ใช้ร่วมทั้ง app
 
 1. สร้าง `src/db/index.ts` (หรือตาม structure เดิม): `import postgres from "postgres"` แล้ว `const sql = postgres(process.env.DATABASE_URL)`
-2. Default options เพียงพอตอน setup — pool sizing/`prepare` tuning ทำใน `optimize-pool`
+2. Default options เพียงพอตอน setup — pool sizing/`prepare` tuning ทำใน `optimize pool`
 3. Export `sql` instance เดียว — ห้ามสร้าง client ใหม่ต่อ request/module
 4. บน serverless: ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
 

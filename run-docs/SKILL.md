@@ -61,7 +61,7 @@ See also: /deep-review
 > Goal: Open Browser and Watch (if needed)
 
 1. If a URL needs to be opened, choose:
-   - To verify via browser automation → run `/watch-browser-and-fix`
+   - To verify via browser automation → run `/watch-browser fix`
    - To just open it in the browser → run `/open-web`
    - To watch the terminal every 5 seconds → run `/watch-terminal`
 2. Check that the documentation site actually loads

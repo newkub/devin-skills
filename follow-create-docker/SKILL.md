@@ -4,7 +4,7 @@ description: Create Dockerfile, .dockerignore and docker-compose per stack, foll
 argument-hint: "[path]"
 related:
   - deep-review
-  - optimize-docker
+  - optimize
   - follow-deploy
   - setup-cicd
   - follow-secret-manager
@@ -35,7 +35,7 @@ Create production-ready Docker artifacts for a project: `Dockerfile`, `.dockerig
 |----------|----------|
 | `dockerfile`, `setup` | `workflows/setup-dockerfile/SKILL.md` — production-ready Dockerfile |
 | `compose` | `workflows/config-compose/SKILL.md` — docker-compose multi-service |
-| `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image (findings-driven pass → `/optimize-docker`) |
+| `optimize` | `workflows/optimize-image/SKILL.md` — harden/optimize docker image (findings-driven pass → `/optimize docker`) |
 
 1. If the argument matches a workflow → read `workflows/<arg>/SKILL.md` and follow its flow
 2. If not specified → follow the normal Steps (default = `setup-dockerfile`)

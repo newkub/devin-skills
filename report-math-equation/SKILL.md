@@ -115,6 +115,8 @@ related:
 - ใช้ /plan ถ้าจำเป็น
 - ใช้ /deep-analyze ถ้าจำเป็น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status) when findings are reported; equation answers stay in chat
+
 ## Expected Outcome
 
 - มี 3-5 สมการทีสะท้อนปัญหา/ตัวเลือก/ผลลัพธ์

@@ -6,6 +6,17 @@ Measure test suite quality with mutation testing — make small code changes (mu
 - Covers: mutation score (killed/survived/timeout), surviving mutants analysis, weak assertions
 - Inherently slow — keep the scope narrow (module/PR diff), never run the whole repo
 
+> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+
+## Run Quick Path
+
+> Goal: get a kill-rate number for one scoped module (merged from `/test-mutation`) — steps 1-4 below are the deep pass
+
+1. Detect — `stryker.conf.*` → `bunx stryker run`, Rust → `cargo mutants`, Python → `mutmut run`; scope = critical/highest-risk modules (payment, auth, domain logic) because mutation is slow; a failing baseline unit suite → fix it first
+2. Run — capture the score (killed/survived/timeout/no-coverage); long runs → raise blocking+timeout or use incremental mode; record survived mutants with file:line + type
+3. Classify — survived + behavior genuinely changed → missing assertions → `/update-tests`; survived + equivalent mutant → noise, do not write extra tests; a mutant reveals dead code or a bug → report or `/resolve-errors`; after strengthening assertions → rerun, the score must actually rise
+4. Report — persist → `.devin/temp/report/<workspace>/mutation-test-<time>.md` — score before→after, survived remaining + reasons, noise count; all pass → `/run-verify`
+
 ## 1. Select Tool And Scope
 
 > Goal: Pick the mutation tool matching the ecosystem

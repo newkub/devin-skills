@@ -142,6 +142,8 @@ related:
 - การ optimize build อยู่ใน `/deep-review` แล้ว
 - การ build อยู่ใน `/run-build` แล้ว
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - สรุปขนาด bundle รวมและต่อ chunk ในตารางที่อ่านง่าย

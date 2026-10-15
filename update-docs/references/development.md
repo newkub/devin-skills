@@ -5,7 +5,7 @@ description: Reference for the shared development page group
 
 # Development Pages Reference
 
-The development page group is shared by all docs types — used for `docs/index.md` TOC and VitePress sidebar (`update-vitepress-docs/templates/sidebar-development.md`).
+The development page group is shared by all docs types — used for `docs/index.md` TOC and the VitePress sidebar (`update-vitepress-docs/SKILL.md` → `### Template: Sidebar Sections`, **Development**).
 
 ## Pages
 

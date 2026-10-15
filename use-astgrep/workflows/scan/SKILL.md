@@ -6,7 +6,7 @@ related:
   - use-astgrep
   - search-with-astgrep
   - update-astgrep-rules
-  - improve-astgrep-rules
+  - improve
   - check-code-structure
   - deep-review
   - report
@@ -64,7 +64,7 @@ Run `ast-grep scan` against project rules and interpret the results correctly �
 
 1. Report a `No. | Rule | File:Line | Severity | Message` table via `/report` when there are many findings
 2. A few small one-off fixes → edit manually or `/edit-only`; one pattern across many files → `/use-astgrep rewrite`
-3. High-noise findings / dead rules / coverage gaps → `/improve-astgrep-rules`
+3. High-noise findings / dead rules / coverage gaps → `/improve astgrep-rules`
 4. New rules that should be permanent → `/update-astgrep-rules`
 
 ## Rules

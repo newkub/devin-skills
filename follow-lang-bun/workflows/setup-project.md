@@ -73,7 +73,7 @@ coverage = true
 
 ## 5. tsconfig
 
-Use the recommended tsconfig in [../references/typescript.md](../references/typescript.md)
+Use the recommended tsconfig from the Configure step in [../SKILL.md](../SKILL.md)
 
 ## 6. Verify
 

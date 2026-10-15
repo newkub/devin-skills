@@ -7,7 +7,6 @@ related:
   - resolve-errors
   - watch-terminal
   - watch-browser
-  - test-usage
   - run-verify
   - report
 
@@ -62,7 +61,7 @@ Used to run any project's development server with error checking and fixing
 
 > Goal: Watch Browser (if it is a web project)
 
-1. For a web project, run `/watch-browser-and-fix` to inspect the browser
+1. For a web project, run `/watch-browser fix` to inspect the browser
 2. Verify the dev server really works through the browser
 3. Test that the main features work
 
@@ -70,8 +69,8 @@ Used to run any project's development server with error checking and fixing
 
 > Goal: Test the key usage flows
 
-1. Run `/test-usage` to test the main features
-2. If problems are found → run `/watch-browser-and-fix` or `/resolve-errors`
+1. Run `/deep-test usage` to test the main features
+2. If problems are found → run `/watch-browser fix` or `/resolve-errors`
 3. Confirm the key user flows work
 
 ### 7. Verify
@@ -107,7 +106,7 @@ Used to run any project's development server with error checking and fixing
 
 - Run `/open-web` only for web projects to open the browser at the dev server URL
 - Run `/watch-terminal` for every project
-- Run `/watch-browser-and-fix` only for web projects
+- Run `/watch-browser fix` only for web projects
 - If errors are found while watching, run `/resolve-errors` immediately
 
 ## Expected Outcome

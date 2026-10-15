@@ -39,9 +39,9 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 
 | Argument | Workflow |
 |----------|----------|
-| `report`, `report-comparison` | `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
+| `report`, `report-comparison` | `## Merged Details → report-comparison` — matrix + gap list + re-bench delta → `.devin/temp/report/` |
 
-1. If the argument is `report` → read `workflows/report-comparison/SKILL.md` and follow its flow — reuse the data already gathered, no new research
+1. If the argument is `report` → read `## Merged Details → report-comparison` and follow its flow — reuse the data already gathered, no new research
 2. If not specified → run Steps 1-8 as usual, with Step 7 reading and executing the `report-comparison` workflow
 
 ### 1. Research Competitors
@@ -107,7 +107,7 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 
 > Goal: Record the benchmark results and implementation outcomes as a report in .devin
 
-1. Follow `workflows/report-comparison/SKILL.md` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
+1. Follow `## Merged Details → report-comparison` — matrix + gap list + re-bench delta → `.devin/temp/report/<workspace>/`
 2. Run `/update-docs` to update `docs/project.md`
 3. Report `REPORT_PATH` to the user
 

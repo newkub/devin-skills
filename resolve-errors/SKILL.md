@@ -45,9 +45,9 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — re-run command เดิม, ไม่มี error ใหม่, ไม่มี suppression |
+| `verify`, `verify-resolved` | `## Merged Details → verify-resolved` — re-run command เดิม, ไม่มี error ใหม่, ไม่มี suppression |
 
-1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่แก้ไขใหม่
+1. ถ้า argument เป็น `verify` → อ่าน `## Merged Details → verify-resolved` แล้วทำตาม flow — ไม่แก้ไขใหม่
 2. ถ้าไม่ระบุ → ทำ Steps 1-6 ตามปกติ โดย Step 5 อ่าน workflow `verify-resolved` มา execute
 
 ### 1. Prepare Context
@@ -100,7 +100,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
 
-1. ทำตาม `workflows/verify-resolved/SKILL.md` — re-run command เดิม, ตรวจ side effects และ suppression
+1. ทำตาม `## Merged Details → verify-resolved` — re-run command เดิม, ตรวจ side effects และ suppression
 2. ถ้า verdict ไม่ใช่ `resolved` → กลับไป Step 4 (loop) — ถ้าเกิน 3 รอบ → ทำ `/deep-debug`
 
 ### 6. Document And Prevent
@@ -169,7 +169,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/deep-debug` — error ซับซ้อน ต้องวางแผนแก้และป้องกันซ้ำ
 - `/run-verify` — รัน lint + typecheck + scan รวม
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน
-- `/watch-browser-and-fix` — error มาจาก browser console
+- `/watch-browser fix` — error มาจาก browser console
 - `/update-references` — fix กระทบ references ในหลายไฟล์
 - `/rename` — rename code identifiers ที่เป็น root cause ของ error
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน

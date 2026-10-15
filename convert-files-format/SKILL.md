@@ -36,7 +36,7 @@ Convert a file from one format to another with the `bunx` CLI that matches the o
 
 > Goal: Pick the conversion method based on the format
 
-1. If output is `.webp` → use [references/webp.md](references/webp.md)
+1. If output is `.webp` → use the tool chain in `## WebP`
 2. If output is `.svg` → run `/convert-svg`
 3. If output is another format → find a CLI or library that supports it
 4. If no tool exists → `/ask-me` or write a Bun script
@@ -57,11 +57,23 @@ Convert a file from one format to another with the `bunx` CLI that matches the o
 2. Verify the type with the `file` command or by opening it
 3. Report the input/output paths and the tool used
 
+## WebP
+
+Convert `.png`, `.jpg`, `.jpeg`, `.gif`, `.tiff` to `.webp` — file or directory (recurse for a directory, preserve its structure); tool chain in order, on failure try the next:
+
+1. Primary: `bunx lazywebp <input>` — single: `bunx lazywebp -q 85 photo.png` · multiple: `bunx lazywebp a.png b.png` · directory: `bunx lazywebp -r -q 85 -o output/ images/`
+2. Fallback: `bunx @nathievzm/lumi -i <input> -f .webp`
+3. Fallback: `bunx 2webp <input> --format=webp --output=<dir>`
+4. Last resort: write a Bun script with `sharp`
+
+- Quality 0-100, default 85 when the user gives none; wait until the process finishes
+- Replacing the source requires user confirmation — the expected result is a `.webp` smaller than the source
+
 ## Rules
 
 ### 1. Format Selection
 
-- If output is `.webp`, use the guide in `references/webp.md`
+- If output is `.webp`, use the tool chain in `## WebP`
 - If output is `.svg`, use `/convert-svg`
 - Never delete the source file by default
 

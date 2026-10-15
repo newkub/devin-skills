@@ -1,6 +1,6 @@
 ---
 name: follow-lang-bun
-description: พัฒนา JS/TS ด้วย Bun toolkit — runtime, package manager, test runner, bundler
+description: Develop JS/TS with the Bun toolkit — runtime, package manager, test runner, bundler
 argument-hint: "[scope]"
 related:
   - use-bun-native-api
@@ -12,161 +12,132 @@ related:
   - follow-best-practice
   - setup-cicd
   - use-scripts
+  - deep-research
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา JavaScript/TypeScript projects ด้วย Bun ให้รวดเร็วและถูกต้องตาม official best practices
+Develop JavaScript/TypeScript projects on Bun, fast and per official best practices
 
 ## Scope
 
-ใช้สำหรับสร้างหรือปรับปรุง projects ที่รันบน Bun runtime ทั้ง single package และ monorepo
-
-Bun คือ all-in-one toolkit binary เดียว: runtime (drop-in replacement ของ Node.js), package manager, test runner และ bundler — runtime ปัจจุบัน `Bun 1.4.2 (verified 2026-09-18)` (Bun 1.4 เขียนใหม่ด้วย Rust, เพิ่ม `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal`, HTTP/2 ใน `Bun.serve`, `bun run --parallel`, `bun test --parallel`, `bun audit fix`, `bun dedupe`, `bun prune`, isolated installs default สำหรับ monorepo ใหม่)
-
-ดู [references/install.md](references/install.md) สำหรับการติดตั้ง, [references/bun-cli.md](references/bun-cli.md) สำหรับ commands หลัก และ [references/website.md](references/website.md), [references/routes.md](references/routes.md) สำหรับ official docs
+For creating or improving projects that run on the Bun runtime, single package and monorepo. Bun is one all-in-one binary: runtime (drop-in Node.js replacement), package manager, test runner, and bundler; single `SKILL.md` package — no `references/`, verify the current Bun version and features via `/deep-research` at use time (official docs: https://bun.com/docs)
 
 ## Execute
 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง Bun และ verify version
+> Goal: install Bun and verify the version
 
-1. ติดตั้ง Bun ตาม [references/install.md](references/install.md) — ใช้ `mise use -g bun` ก่อน แล้วจึง install script หรือ package manager
-2. รัน `bun --version` และ `bun --revision` เพื่อ verify
-3. อัปเกรดด้วย `bun upgrade` (หรือ `bun upgrade <version>` สำหรับ pin)
+1. Install with `mise use -g bun` first; fall back to the install script or a package manager only if mise is unavailable
+2. Verify with `bun --version` and `bun --revision`
+3. Upgrade with `bun upgrade` (or `bun upgrade <version>` to pin); `bun upgrade --canary`/`--stable` for channels
+4. Run `/deep-research` to note current major-version features before using new APIs (`Bun.Image`, `Bun.WebView`, HTTP/2 in `Bun.serve`, parallel test/run, supply-chain flags)
 
 ### 2. Create Project
 
-> Goal: สร้าง project ด้วย template ที่ถูกต้อง
+> Goal: scaffold with the correct template
 
-1. รัน `bun init` สำหรับ empty project (เลือก template: blank, react, library)
-2. รัน `bun create <template>` สำหรับ scaffold จาก template (vite, next, elysia ฯลฯ)
-3. ทำตาม `workflows/setup-project.md` สำหรับโครงสร้าง project มาตรฐาน
-4. ถ้าย้ายจาก Node.js project → ทำตาม `workflows/migrate-from-nodejs.md`
+1. `bun init` for an empty project (blank, react, library templates; `-y` for defaults)
+2. `bun create <template>` (`bun c`) to scaffold from a template (vite, next, elysia, etc.)
+3. Follow `workflows/setup-project.md` for the standard project layout
+4. Moving from a Node.js project → follow `workflows/migrate-from-nodejs.md`
 
 ### 3. Manage Packages
 
-> Goal: จัดการ dependencies ด้วย Bun package manager
+> Goal: manage dependencies with the Bun package manager
 
-1. ติดตั้งด้วย `bun install` / `bun add <pkg>` / `bun add -d <pkg>` (dev) / `bun add -g <pkg>` (global)
-2. ลบด้วย `bun remove <pkg>`, อัปเดตด้วย `bun update` / `bun update <pkg>`
-3. ตรวจสุขภาพ deps ด้วย `bun outdated`, `bun why <pkg>`, `bun audit` (แก้ด้วย `bun audit fix`)
-4. บำรุงรักษา lockfile ด้วย `bun dedupe` (ลบ duplicate versions) และ `bun prune` (ลบ node_modules เกิน)
-5. monorepo: ใช้ `workspaces` ใน `package.json`, `bun install --filter <pkg>`, `bun run --filter <pkg> <script>`, catalogs สำหรับ shared versions
-6. ดูรายละเอียดใน [references/package-manager.md](references/package-manager.md)
+1. `bun install` (`--frozen-lockfile`/`bun ci` in CI, `--linker hoisted|isolated`, `--filter <pat>`), `bun add <pkg>` (`-d`, `-g`, `-E`, `--optional`, `--peer`, `--minimum-release-age <s>`), `bun remove`, `bun update [--latest|-i]`
+2. Health: `bun outdated`, `bun why <pkg>`, `bun info <pkg>`, `bun audit` (`bun audit fix`); maintenance: `bun dedupe`, `bun prune`
+3. Extras: `bun link`/`unlink`, `bun publish` (`--tag`, `--access`, `--provenance`, `--dry-run`), `bun patch <pkg>` + `bun patch --commit`, `bun pm ls|cache|trust|untrusted|migrate`
+4. Monorepo: `workspaces` in `package.json`, `bun install --filter`, `bun run --filter <pkg> <script>`, `catalog:` for shared versions
 
 ### 4. Run And Develop
 
-> Goal: รันและพัฒนาด้วย Bun runtime
+> Goal: run and develop on the Bun runtime
 
-1. รันไฟล์ด้วย `bun run <file>` หรือ `bun <file>` — `.ts`, `.tsx`, `.jsx` รันได้ทันทีไม่ต้อง transpile ล่วง
-2. รัน package.json script ด้วย `bun run <script>` หรือ `bun <script>`
-3. ใช้ `bun --watch <file>` สำหรับ restart on change และ `bun --hot <file>` สำหรับ hot reload
-4. ใช้ `bunx <pkg>` สำหรับ execute package binary แบบ one-off
-5. monorepo: `bun run --workspaces <script>` หรือ `bun --parallel <script>` / `bun --sequential <script>`
-6. `.env` ถูก load อัตโนมัติ (ไม่ต้องใช้ dotenv); ปิดด้วย `env = false` ใน `bunfig.toml`
+1. `bun run <file>` or `bun <file>` — `.ts`/`.tsx`/`.jsx` run directly, no transpile step; flags `--watch`, `--hot`, `--smol`, `-r/--preload`
+2. `bun run <script>` for package.json scripts; `bunx <pkg>` for one-off binaries (`-b` forces Bun runtime)
+3. Monorepo: `bun run --workspaces <script>`, `bun --parallel|--sequential <script>`
+4. `.env` is auto-loaded (never add `dotenv`); disable via `env = false` in `bunfig.toml`
+5. `bun exec <cmd>` for one-line shell, `bun repl` for a REPL session
 
 ### 5. Test
 
-> Goal: เขียนและรัน tests ด้วย built-in test runner
+> Goal: write and run tests with the built-in runner
 
-1. เขียน tests ด้วย `import { describe, test, expect } from "bun:test"` (Jest-compatible)
-2. รันด้วย `bun test` — auto-discover `*.test.{ts,tsx,js,jsx}` และ `*_test.*`, `*.spec.*`
-3. ใช้ `bun test --watch`, `bun test --coverage`, `bun test --parallel` (v1.4+), `bun test --bail`
-4. ใช้ `[test]` section ใน `bunfig.toml` สำหรับ preload, coverage threshold, root
-5. ดูรายละเอียดใน [references/test-runner.md](references/test-runner.md)
+1. `import { describe, test, expect } from "bun:test"` — Jest-compatible (`mock`, `mock.module`, `spyOn`, snapshots, `test.each`, `test.concurrent`, `setSystemTime`)
+2. `bun test` auto-discovers `*.test.*`, `*_test.*`, `*.spec.*`; use `--watch`, `--coverage`, `--parallel` (files across threads), `--bail [n]`, `--timeout <ms>`, `-t <pattern>`, `--rerun-each <n>` (flaky detection), `--update-snapshots`, `--reporter=junit --reporter-outfile` for CI
+3. Configure `[test]` in `bunfig.toml`: `root`, `preload`, `coverage`, `coverageThreshold`, `coverageReporter`, `randomize`
+4. DOM tests: pair with `happy-dom`/`jsdom` via `[test] preload`
 
 ### 6. Bundle And Build
 
-> Goal: bundle code สำหรับ browser/server หรือ compile เป็น binary
+> Goal: bundle for browser/server or compile to a binary
 
-1. bundle ด้วย `bun build <entry>` — รองรับ TS/JSX/CSS/HTML imports, splitting, minify, sourcemap
-2. compile เป็น standalone executable ด้วย `bun build --compile <file>`
-3. ตั้งค่า defaults ใน `[build]` section ของ `bunfig.toml`
-4. ถ้า build library สำหรับ publish → ใช้ `/follow-tool-bunup`
-5. ดูรายละเอียดใน [references/bundler.md](references/bundler.md)
+1. `bun build <entry>` — `--target browser|bun|node`, `--format esm|cjs|iife`, `--outdir`, `--splitting`, `--minify`, `--sourcemap`, `--define`, `--external`, `--packages external|bundle`
+2. `bun build --compile <file>` for a standalone executable
+3. Set defaults in the `[build]` section of `bunfig.toml`
+4. Publishing a library → use `/follow-tool-bunup`, not raw `bun build`
 
 ### 7. Configure
 
-> Goal: ตั้งค่า project ผ่าน config files
+> Goal: keep configuration in the right files
 
-1. ตั้งค่า `bunfig.toml` สำหรับ runtime, install, test, serve, build — ดู [references/bunfig.md](references/bunfig.md)
-2. ตั้งค่า `package.json` (scripts, workspaces, trustedDependencies, overrides) — ดู [references/package-manifest.md](references/package-manifest.md)
-3. ตั้งค่า `tsconfig.json` + `bun add -d bun-types` สำหรับ TypeScript — ดู [references/typescript.md](references/typescript.md)
+1. `bunfig.toml` sections: `[install]` (`minimumReleaseAge`, `exact`), `[test]`, `[build]`, runtime/env options — the single config for the Bun toolchain
+2. `package.json` stays the source of truth for scripts, dependencies, workspaces, `trustedDependencies`, `overrides`/`resolutions`
+3. TypeScript: `bun add -d bun-types typescript` and a bundler-style `tsconfig.json` — `"moduleResolution": "bundler"`, `"target"/"lib": "ESNext"`, `"module": "Preserve"`, `"noEmit": true`, `"verbatimModuleSyntax": true`, `"allowImportingTsExtensions": true`, `strict`, `"types": ["bun-types"]`
 
 ### 8. Use Bun APIs
 
-> Goal: ใช้ Bun native APIs ใน code
+> Goal: use Bun native APIs in code
 
-1. ทำ `/use-bun-native-api` สำหรับ API catalog ครบทุก category (`Bun.serve`, `Bun.file`, `$` shell, `Bun.spawn`, `Bun.sql`, `Bun.Image`, `Bun.WebView` ฯลฯ)
-2. ใช้ `/use-bun-shell` สำหรับ `$` shell template literal โดยเฉพาะ
-3. ถ้าสร้าง CLI → ทำ `/follow-create-bun-cli`
+1. Run `/use-bun-native-api` for the full API catalog (`Bun.serve`, `Bun.file`, `Bun.sql`, `Bun.spawn`, `$` shell, etc.)
+2. Use `/use-bun-shell` for the `$` shell template literal
+3. Building a CLI → run `/follow-create-bun-cli`
 
 ### 9. Verify
 
-> Goal: ยืนยันว่า project ทำงานครบ
+> Goal: confirm the project fully works
 
-1. รัน `bun run <entry>` ยืนยัน app start ได้
-2. รัน `bun test` ยืนยัน tests ผ่าน
-3. รัน `bun build <entry>` ยืนยัน bundle สำเร็จ
-4. รัน `bun install --frozen-lockfile` ยืนยัน lockfile ตรงกับ `package.json`
-5. ถ้ามี error → ทำ `/resolve-errors`
+1. `bun run <entry>` starts; `bun test` passes; `bun build <entry>` succeeds
+2. `bun install --frozen-lockfile` confirms the lockfile matches `package.json`
+3. Typecheck with `bunx tsc --noEmit` (Bun strips types at runtime, it does not check them)
+4. On errors → run `/resolve-errors`
 
 ## Rules
 
 ### 1. Runtime
 
-- Bun เป็น drop-in replacement ของ Node.js — รองรับ `node:*` modules, globals (`process`, `Buffer`, `__dirname`) และ Node.js 26.3.0 compatibility
-- TypeScript/JSX รันได้โดยตรง ไม่ต้อง ts-node/tsx — Bun transpile ให้เอง
-- `.env` auto-load ตั้งแต่ v1 — ห้ามเพิ่ม `dotenv` dependency
-- ใช้ ES modules เป็น default; CommonJS (`require`) ยังใช้ได้แต่ไม่แนะนำ
-- ใช้ Web-standard APIs (`fetch`, `WebSocket`, `ReadableStream`) เมื่อเป็นไปได้ ก่อนเลือก Node-style APIs
+- Bun is a drop-in Node.js replacement — supports `node:*` modules and Node globals (`process`, `Buffer`); prefer Web-standard APIs (`fetch`, `WebSocket`, `ReadableStream`) and `Bun.*` where they win
+- TS/JSX run directly (transpile-only, no typecheck at runtime); avoid `const enum`/`import =` (not type-aware)
+- Never add `dotenv` (`.env` auto-loads); ESM by default
 
 ### 2. Package Management
 
-- ใช้ `bun install`/`bun add` เป็น default — ห้ามสลับไป npm/pnpm/yarn ใน project ที่มี `bun.lock`
-- lockfile คือ `bun.lock` (text format, diff-friendly) — commit เข้า git เสมอ
-- lifecycle scripts (`postinstall` ฯลฯ) ของ dependencies ไม่ถูกรันเว้นแต่ระบุใน `trustedDependencies`
-- install strategy: `isolated` เป็น default สำหรับ monorepo ใหม่ (กัน phantom dependencies), `hoisted` สำหรับ single package
-- ใช้ `--minimum-release-age <seconds>` หรือ `[install] minimumReleaseAge` สำหรับ supply-chain protection
-- ใช้ `bun install --frozen-lockfile` หรือ `bun ci` ใน CI — ห้ามแก้ `bun.lock` ด้วยมือ
+- Never switch to npm/pnpm/yarn inside a project with a `bun.lock`; commit `bun.lock` (text format, diff-friendly); never edit it by hand
+- Dependency lifecycle scripts don't run unless listed in `trustedDependencies`
+- Install strategy: `isolated` for new monorepos (blocks phantom dependencies), `hoisted` for single packages
+- Supply-chain protection: `--minimum-release-age` / `[install] minimumReleaseAge`; CI uses `bun ci`
 
 ### 3. Project Configuration
 
-- `bunfig.toml` คือ config เดียวสำหรับ runtime + package manager + test + build — อย่าสร้าง config ซ้ำในไฟล์อื่น
-- `package.json` ยังเป็น source of truth สำหรับ scripts, dependencies, workspaces
-- ใช้ `catalog:` protocol ใน workspaces สำหรับ share dependency versions
-- ใช้ `overrides`/`resolutions` สำหรับแก้ transitive dependency versions
+- `bunfig.toml` is the only toolchain config — don't duplicate settings elsewhere; `package.json` remains the dependency/script truth
+- Use `catalog:` in workspaces for shared versions; `overrides`/`resolutions` for transitive fixes
 
-### 4. Bun APIs
+### 4. Quality
 
-- ใช้ Bun native APIs (`Bun.*`) แทน Node.js equivalents เมื่อ performance สำคัญ — ดู catalog ใน `/use-bun-native-api`
-- ใช้ `Bun.serve()` แทน `node:http`, `Bun.file()`/`Bun.write()` แทน `fs`, `$` แทน `execa`/`child_process` สำหรับ shell
-- ถ้า library ต้องรันบน Node.js ด้วย → ใช้ Web-standard APIs หรือ `node:*` modules แทน `Bun.*` (ไม่ portable)
+- Tests via `bun:test`; CI runs `bun install && bunx tsc --noEmit && bun test --coverage` with a `coverageThreshold` in `bunfig.toml`
+- Use `bun run --bun` when a script's shebang points at node but must run on Bun
 
-### 5. Quality
+### 5. Related Skills
 
-- เขียน tests ด้วย `bun:test` — Jest-compatible (`describe`, `test`, `expect`, `mock`, `spyOn`)
-- ใช้ `bun test --coverage` ใน CI พร้อม `coverageThreshold` ใน `bunfig.toml`
-- รัน `bun run --bun <script>` หรือ `-b` เมื่อต้องบังคับ Bun runtime แทน Node (script ที่ shebang เป็น node)
-- ถ้า typecheck → ใช้ `bunx tsc --noEmit` (Bun ไม่ typecheck ตอนรัน)
-
-### 6. Related Skills
-
-- `/use-bun-native-api` สำหรับ Bun `Bun.*` + Web-standard API catalog
-- `/use-bun-shell` สำหรับ `$` shell API
-- `/follow-create-bun-cli` สำหรับสร้าง CLI app
-- `/follow-tool-bunup` สำหรับ bundle library
-- `/follow-lang-javascript` หรือ `/follow-lang-typescript` สำหรับภาษา
-- `/follow-best-practice`, `/setup-cicd`, `/use-scripts` ถ้าจำเป็น
+- `/use-bun-native-api` for `Bun.*` + Web-standard catalog; `/use-bun-shell` for `$`; `/follow-create-bun-cli` for CLIs; `/follow-tool-bunup` for library bundling; `/follow-lang-typescript` for the language
 
 ## Expected Outcome
 
-- Bun project ที่ setup ถูกต้องตาม official conventions
-- Dependencies จัดการด้วย `bun.lock` และ workspace patterns ที่ถูกต้อง
-- Code รันโดยตรงด้วย TypeScript/JSX โดยไม่ต้อง build step
-- Tests ผ่าน `bun test` พร้อม coverage
-- Bundle/build สำเร็จด้วย `bun build`
-- `bunfig.toml` ครอบคลุม runtime, install, test, build config
-- ใช้ Bun native APIs อย่างเหมาะสมผ่าน `/use-bun-native-api`
+- Bun project set up per official conventions with a committed `bun.lock`
+- TS/JSX run with no build step; tests pass via `bun test` with coverage
+- Builds/compiles succeed via `bun build`; typecheck passes via `tsc --noEmit`
+- `bunfig.toml` covers runtime, install, test, and build configuration
+- Bun native APIs used appropriately through `/use-bun-native-api`

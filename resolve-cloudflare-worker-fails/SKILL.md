@@ -20,9 +20,9 @@ related:
 
 ใช้กับ worker หรือ pages project เดียว ถ้าไม่ระบุจะหาจาก current project หรือ repo name
 
-- สำหรับ list fails ดู `references/list-fails.md`
+- สำหรับ list fails ดู `## Merged Details → references/list-fails`
 
-ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `references/list-fails.md`
+ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `## Merged Details → references/list-fails`
 
 ## Execute
 

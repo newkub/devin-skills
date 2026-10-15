@@ -140,6 +140,8 @@ related:
 - ใช้ /update-docs ถ้าจำเป็น
 
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ตาราง deep report 7 columns พร้อม evidence ที่ตรวจสอบได้

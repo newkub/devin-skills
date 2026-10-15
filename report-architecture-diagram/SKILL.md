@@ -133,6 +133,8 @@ related:
 - เพิ่ม legend ถ้าใช้ symbols พิเศษ
 - ไม่สร้างไฟล์ .md, .html หรือ .json
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the diagram itself remains the skill's artifact
+
 ## Expected Outcome
 
 - ANSI architecture diagram ในแชทที่อ่านง่ายและเข้าใจ system structure

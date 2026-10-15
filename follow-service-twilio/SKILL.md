@@ -22,9 +22,9 @@ related:
 
 | Topic  | Workflow |
 |--------|----------|
-| Setup  | `workflows/setup-twilio/SKILL.md` — SDK install, Account SID/Auth Token |
-| Config | `workflows/config-twilio/SKILL.md` — phone numbers, messaging service, webhook config |
-| Verify | `workflows/verify-connection/SKILL.md` — account fetch ตอบกลับ, numbers พร้อม |
+| Setup  | `## Merged Details → setup-twilio` — SDK install, Account SID/Auth Token |
+| Config | `## Merged Details → config-twilio` — phone numbers, messaging service, webhook config |
+| Verify | `## Merged Details → verify-connection` — account fetch ตอบกลับ, numbers พร้อม |
 
 อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -65,7 +65,7 @@ Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add t
 ##### Scope
 
 - ครอบคลุม env keys, messaging/verify service SIDs และ webhook endpoints
-- ถ้ายังไม่ได้ install SDK หรือไม่มี credentials → ทำ `workflows/setup-twilio/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ install SDK หรือไม่มี credentials → ทำ `## Merged Details → setup-twilio` ก่อน
 - ไม่รวมการซื้อ number จริง — user ทำใน Twilio Console
 
 ##### Execute
@@ -126,7 +126,7 @@ Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add t
 
 - ติดตั้ง `twilio` package และสร้าง client ฝั่ง server
 - ตั้งค่า `TWILIO_ACCOUNT_SID` และ `TWILIO_AUTH_TOKEN` ผ่าน secret manager
-- ถ้า setup ไปแล้ว → verify เท่านั้น; config phone numbers/webhooks → `workflows/config-twilio/SKILL.md`
+- ถ้า setup ไปแล้ว → verify เท่านั้น; config phone numbers/webhooks → `## Merged Details → config-twilio`
 
 ##### Execute
 
@@ -177,7 +177,7 @@ Latest: `twilio@6.1.1` (verified 2026-09-12) — install ด้วย `bun add t
 
 - `twilio` ติดตั้งและ client ทำงานได้ฝั่ง server
 - credentials อยู่ใน secret manager ไม่มีใน code
-- smoke check ผ่าน — พร้อมไป `workflows/config-twilio/SKILL.md`
+- smoke check ผ่าน — พร้อมไป `## Merged Details → config-twilio`
 
 ### verify-connection
 

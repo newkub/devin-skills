@@ -201,6 +201,8 @@ related:
 - ทำความสะอาดเนื้อหาที่ผู้ใช้ให้มาก่อนฉีดเข้า HTML
 - ใช้ `DOMPurify` หากเรนเดอร์ HTML จากแหล่งที่ไม่น่าเชื่อถือ
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status); the single-file HTML is this skill's artifact, produced only when the user asks for HTML explicitly
+
 ## Expected Outcome
 
 - ไฟล์ `.html` ไฟล์เดียวที่บันทึกในโปรเจกต์

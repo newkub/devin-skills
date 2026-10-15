@@ -31,11 +31,11 @@ Dispatch ไป skill ปลายทาง ตาม restore source — parent 
 | `from-devin-history` | /restore-files-from-devin-history — กู้จาก Devin session history |
 | `from-git-log` | /restore-files-from-git-log — กู้จาก git log ถอยหลังจนเจอ |
 | `from-my-dotfiles` | /restore-files-from-my-dotfiles — กู้ config จาก dotfiles repo |
-| `verify` | `workflows/verify-restore/SKILL.md` — ยืนยัน restored files ตรง source (hash/fidelity) |
+| `verify` | `## Merged Details → verify-restore` — ยืนยัน restored files ตรง source (hash/fidelity) |
 
 1. ระบุ domain จาก argument (เช่น `/restore-files-from-git-log`)
-2. ถ้า domain รองรับ → ทำตาม `/restore-files-<domain>` ทั้ง flow แล้วทำตาม `workflows/verify-restore/SKILL.md` เพื่อยืนยัน fidelity
-3. ถ้า argument เป็น `verify` → ทำตาม `workflows/verify-restore/SKILL.md` อย่างเดียว (standalone re-verify)
+2. ถ้า domain รองรับ → ทำตาม `/restore-files-<domain>` ทั้ง flow แล้วทำตาม `## Merged Details → verify-restore` เพื่อยืนยัน fidelity
+3. ถ้า argument เป็น `verify` → ทำตาม `## Merged Details → verify-restore` อย่างเดียว (standalone re-verify)
 4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
 
 ## Rules

@@ -1,13 +1,13 @@
 ---
 name: learn-from-references-and-improve-skills
-description: เรียนรู้จาก reference sources (docs, URLs, files, codebase) แล้วอัปเดต skills ให้ตรง — ใช้ /improve-coverage เติม gaps
+description: เรียนรู้จาก references แล้วอัปเดต skills ให้ตรง — ใช้ /improve coverage เติม gaps
 argument-hint: "[refs-source] [target-skill(s)]"
 related:
   - learn-from-web
   - learn-from-codebase
   - learn-from-cli
   - check-types-definition
-  - improve-coverage
+  - improve
   - update-devin-global-skills
   - check-reference
   - deep-validate
@@ -21,7 +21,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อมี reference material ใหม่/ใหม่กว่า (เช่น docs ที่เพิ่งอัปเดต, release notes, API reference, codebase ที่เปลี่ยน) และต้องการให้ skills ที่เกี่ยวข้องตามทัน — **ต่างจาก `learn-from-*` ตัวอื่นตรงที่นี่ "เขียนกลับเข้า skills"** ไม่ใช่แค่สกัดความรู้; ไม่ใช่ coverage check ล้วน (ใช้ `/improve-coverage`) และไม่ใช่ review (ใช้ `/deep-review`)
+ใช้เมื่อมี reference material ใหม่/ใหม่กว่า (เช่น docs ที่เพิ่งอัปเดต, release notes, API reference, codebase ที่เปลี่ยน) และต้องการให้ skills ที่เกี่ยวข้องตามทัน — **ต่างจาก `learn-from-*` ตัวอื่นตรงที่นี่ "เขียนกลับเข้า skills"** ไม่ใช่แค่สกัดความรู้; ไม่ใช่ coverage check ล้วน (ใช้ `/improve coverage`) และไม่ใช่ review (ใช้ `/deep-review`)
 
 ## Execute
 
@@ -74,7 +74,7 @@ related:
 
 > Goal: skill ที่อัปเดตครอบคลุมครบ ไม่เหลือ gaps
 
-1. ทำ `/improve-coverage` กับ target skills ทุกตัวที่เพิ่งแก้ — เติม `references/`/`examples`/edge-cases ที่ยังขาดจาก claims ที่ยังไม่ได้ใช้
+1. ทำ `/improve coverage` กับ target skills ทุกตัวที่เพิ่งแก้ — เติม `references/`/`examples`/edge-cases ที่ยังขาดจาก claims ที่ยังไม่ได้ใช้
 2. ตรวจทุก file ที่สร้าง/แก้ผ่าน `/check-reference` — claims ตรง source, ไม่มี dangling links
 
 ### 6. Validate
@@ -116,6 +116,6 @@ related:
 ## Expected Outcome
 
 - Target skills sync กับ reference sources ครบ — ไม่มี stale/wrong claims เหลือ
-- Gaps เติมครบผ่าน `/improve-coverage`, references ไม่ dangling
+- Gaps เติมครบผ่าน `/improve coverage`, references ไม่ dangling
 - ทุก change traceable กลับ source, version/date ระบุชัด
 - Report แสดง before/after drift ชัดเจน

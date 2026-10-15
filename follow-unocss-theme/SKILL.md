@@ -1,10 +1,10 @@
 ---
 name: follow-unocss-theme
-description: UnoCSS theme — theme.css tokens → uno.config.ts map → UI uses theme utilities only → biome plugin + lint
+description: UnoCSS theme — theme.css tokens → uno.config.ts map → theme utilities only → biome lint
 related:
   - follow-lib-unocss
   - follow-design-system
-  - improve-uxui
+  - improve
   - follow-create-biome-plugin
   - run-lint
 ---

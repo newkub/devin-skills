@@ -111,6 +111,8 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - Markdown table ของ routes ทั้งหมด จัดกลุ่มตาม Tab Group

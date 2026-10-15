@@ -13,14 +13,16 @@ allowed-tools:
   - exec
 related:
   - follow-agents-md
-  - update-devin
   - follow-deep
   - deep-analyze
-  - deep-analyze-by-use-scripts
   - use-scripts
-  - transform
+  - use-astgrep
   - follow-math-concepts
+  - follow-parallel
+  - resolve-errors
+  - run-check
   - deep-validate
+  - update-devin-global-subagents
   - ship
   - report
   - ask-me
@@ -42,7 +44,7 @@ See more: /follow-agents-md
 
 > Goal: Gather deep context before spawning subagents
 
-1. Run `/follow-deep` + `/deep-analyze` to analyze root cause, impact, consumers, and dependencies (`/deep-analyze-by-use-scripts` forward → `/deep-analyze`)
+1. Run `/follow-deep` + `/deep-analyze` to analyze root cause, impact, consumers, and dependencies
 2. Broad scope → use `/use-scripts` to gather context async/in parallel (file lists, import graph, grep counts, git log) instead of sequential reads
 3. Record the key context: paths, conventions, relevant files, constraints
 4. If unsure about scope → run `/ask-me` first
@@ -78,7 +80,7 @@ See more: /follow-agents-md
 2. Never send duplicate or overlapping subtasks — file sets must always be disjoint
 3. Wait for results with `read_subagent` (non-blocking) or continue other work — check async, do not poll in a loop
 4. A subtask that changes many files by pattern → instruct it in the prompt to use `/use-scripts` (edit workflow) or `/use-astgrep rewrite` — always dry-run first for an audit trail
-5. If a subagent hits an error → run `resolve-errors` before spawning a new one
+5. If a subagent hits an error → run `/resolve-errors` before spawning a new one
 
 ### 5. Merge And Fix
 
@@ -93,7 +95,7 @@ See more: /follow-agents-md
 
 > Goal: Deliver work that passes the checks
 
-1. Run `run-check` for the ecosystem(s) detected
+1. Run `/run-check` for the ecosystem(s) detected
 2. If it passes → run `/ship`
 3. If it fails → report the status and next steps
 4. Run `/report` summarizing what each subagent did
@@ -134,25 +136,25 @@ These skills have subagent profiles for parallel independent work — the profil
 | No. | Parent Skill | Profile | Use For |
 |-----|--------------|---------|---------|
 | 1 | `review-github-pr` | `SKILL.md ## Subagents` → `pr-reviewer`, `pr-checklist-reviewer` (+ full detail in `references/`) | review PR slice per-domain/file-group |
-| 2 | `capture` | `SKILL.md ## Subagents` → `route-capturer` | capture one route on all devices |
+| 2 | `use-agents-capture` | `SKILL.md ## Subagents` → `route-capturer` | capture one route on all devices |
 | 3 | `deep-test` | `SKILL.md ## Subagents` → `route-checker` | test one API route group |
 | 4 | `deep-review` | `SKILL.md` (inline dispatch contract, no profile file) | review workspace area / docs routes per section |
 | 5 | `update-tests` | `SKILL.md ## Subagents` → `suite-updater` | update one test suite (unit/e2e/snapshot) |
 | 6 | `update-project-all-drive-d` | `SKILL.md ## Subagents` → `project-updater` | update one project dir in drive D |
 | 7 | `update-all-program-in-computer` | `SKILL.md ## Subagents` → `program-updater` | update one program via package manager |
-| 8 | `implement-features-to-mvp` | `SKILL.md ## Subagents` → `feature-implementer` | implement one feature end-to-end |
-| 9 | `resolve-github-issue-by-me` | `SKILL.md ## Subagents` → `issue-implementer` | implement one issue until PR-ready |
-| 10 | `deep-research` | `SKILL.md ## Subagents` → `source-researcher` | deeply research one source/topic |
-| 11 | `deep-validate` | `SKILL.md ## Subagents` → `dimension-validator` | validate one dimension pass/fail + evidence |
-| 12 | `deep-review-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
-| 13 | `sync-drive-d-submodules` | `SKILL.md ## Subagents` → `submodule-syncer` | sync one submodule on drive D |
-| 14 | `merge-all-branch-by-me-to-main` | `SKILL.md ## Subagents` → `branch-merger` | merge one branch into main |
-| 15 | `update-project` | `SKILL.md ## Subagents` → `project-updater`, `git-log-collector`, `project-files-updater`, `project-skills-updater`, `github-metadata-updater` | update a sub-project and collect inputs per domain |
-| 16 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` for one project |
-| 17 | `refactor` | `SKILL.md ## Subagents` → `hotspot-scout`, `file-worker` | collect baseline evidence (read-only) and refactor file by file in parallel |
-| 18 | `implement-to-production` | `SKILL.md ## Subagents` → `gap-scanner`, `feature-implementer`, `review-sweeper` | inventory gaps, implement per item, review per domain |
-| 19 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
-| 20 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
+| 8 | `resolve-github-issue-by-me` | `SKILL.md ## Subagents` → `issue-implementer` | implement one issue until PR-ready |
+| 9 | `deep-research` | `SKILL.md ## Subagents` → `source-researcher` | deeply research one source/topic |
+| 10 | `deep-validate` | `SKILL.md ## Subagents` → `dimension-validator` | validate one dimension pass/fail + evidence |
+| 11 | `deep-review-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
+| 12 | `sync-drive-d-submodules` | `SKILL.md ## Subagents` → `submodule-syncer` | sync one submodule on drive D |
+| 13 | `merge-all-branch-by-me-to-main` | `SKILL.md ## Subagents` → `branch-merger` | merge one branch into main |
+| 14 | `update-project` | `SKILL.md ## Subagents` → `project-updater`, `git-log-collector`, `project-files-updater`, `project-skills-updater`, `github-metadata-updater` | update a sub-project and collect inputs per domain |
+| 15 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` for one project |
+| 16 | `refactor` | `SKILL.md ## Subagents` → `hotspot-scout`, `file-worker` | collect baseline evidence (read-only) and refactor file by file in parallel |
+| 17 | `implement-to-production` | `SKILL.md ## Subagents` → `feature-implementer`, `review-sweeper` | implement per item, review per domain (gap inventory → row 20) |
+| 18 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
+| 19 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
+| 20 | `report-not-implement` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
 
 ## CLI — `subagents` (mission control)
 
@@ -186,6 +188,6 @@ bun src/presentation/cli.ts mark <id> done --note "<result>"   # when read_subag
 
 - Work is split and done in parallel by subagents
 - Deep context gathered before starting edits
-- Results merged with no conflicts and passing `run-check`
+- Results merged with no conflicts and passing `/run-check`
 - A short, clear summary report
 

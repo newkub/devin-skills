@@ -34,7 +34,7 @@ related:
 
 ### 3. Refactor Workspace
 
-1. Run `/refactor-workspace` — document which workspace uses which, as a table:
+1. Run `/refactor` (workspace scope) — document which workspace uses which, as a table:
 
 | No. | Workspace | Use Workspace | Purpose |
 |-----|-----------|---------------|---------|
@@ -44,7 +44,7 @@ related:
 
 ### 4. Ship
 
-1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`), then commit/push, PR review gate, and merge into `main`.
+1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
 2. Run `/report` to summarize.
 
 ## Rules
@@ -85,8 +85,8 @@ Quality (include as relevant to the project):
 - `review-test: /review-test`
 
 Improvements (pick variants matching the project):
-- `improve-*: /improve-features (core business + platform) /improve-security /improve-data /improve-data-validation /improve-database /improve-cli /improve-web /improve-seo /improve-dx /improve-uxui /improve-a11y /improve-code-quality /improve-error-handling /improve-api /improve-backend /improve-rbac /improve-form /improve-techstack /improve-deps /improve-config /improve-tests /improve-observability /improve-i18n /improve-iac /improve-events /improve-compliance /improve-business /improve-release /improve-stability /improve-delivery`
-- `optimize-*: /optimize-perf /optimize-bundle /optimize-cost /optimize-memory /optimize-docker /optimize-ci /optimize-queries /optimize-network /optimize-startup`
+- `improve-*: /improve features (core business + platform) /improve security /improve data /improve data /improve database /improve cli /improve web /improve seo /improve dx /improve uxui /improve a11y /improve code-quality /improve error-handling /improve api /improve backend /improve auth /improve form /improve techstack /improve deps /improve config /improve tests /improve platform /improve i18n /improve platform /improve events /improve compliance /improve business /improve release /improve stability /improve delivery`
+- `optimize-*: /optimize perf /optimize bundle /optimize cost /optimize memory /optimize docker /optimize ci /optimize queries /optimize network /optimize startup`
 
 ### 5. Workspaces
 

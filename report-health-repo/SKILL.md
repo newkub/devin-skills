@@ -91,6 +91,8 @@ related:
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - Scorecard ต่อ repo พร้อม grades ที่เทียบกันได้

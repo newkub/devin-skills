@@ -3,7 +3,7 @@ name: follow-tool-takumi
 description: ใช้ Takumi render OG images, social cards และ PDFs จาก JSX/CSS โดยไม่ต้อง browser
 argument-hint: "[scope]"
 related:
-  - improve-seo
+  - improve
   - follow-create-web-nextjs
   - follow-create-web-nuxt
   - follow-tool-vite
@@ -18,9 +18,9 @@ related:
 
 ใช้สำหรับ JS/TS projects ที่ต้อง generate images แบบ programmatic — OG images, social cards, banners, charts, PDFs — บน Node.js, Bun, Cloudflare Workers, Vercel Edge, Deno หรือ browser
 
-- Boundary: render JSX/HTML → image bytes (PNG, JPEG, WebP, SVG) หรือ PDF; ไม่ใช่ browser screenshot tool — ถ้าต้อง capture หน้าเว็บจริง → `/use-agent-browser` หรือ `/capture`
+- Boundary: render JSX/HTML → image bytes (PNG, JPEG, WebP, SVG) หรือ PDF; ไม่ใช่ browser screenshot tool — ถ้าต้อง capture หน้าเว็บจริง → `/use-agent-browser` หรือ `/use-agents-capture`
 - `takumi-js` bundle ทั้ง native (`@takumi-rs/core` บน Node.js) และ WASM (`@takumi-rs/wasm` บน Workers/Edge/browser) — runtime เลือกเอง
-- ใช้ใน `/improve-seo` เมื่อ finding เกี่ยวกับ `og:image`, `twitter:image`, social cards
+- ใช้ใน `/improve seo` เมื่อ finding เกี่ยวกับ `og:image`, `twitter:image`, social cards
 - Latest: `takumi-js@2.14.0` (verified 2026-10-03)
 
 ## Execute
@@ -86,7 +86,7 @@ related:
 - ทำให้ OG generation เป็น route handler ที่ deterministic — cache output ตาม content hash
 - Migrating จาก Satori → คง Flexbox styles ไว้; bare `<div>` ของ Takumi default เป็น block layout
 
-- ใช้ /improve-seo ถ้าจำเป็น
+- ใช้ /improve seo ถ้าจำเป็น
 - ใช้ /follow-create-web-nextjs ถ้าจำเป็น
 - ใช้ /follow-create-web-nuxt ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
@@ -102,4 +102,4 @@ related:
 - `takumi-js` ติดตั้งและ render ภาพแรกได้
 - `ImageResponse` serve OG images ผ่าน route handler
 - Fonts/assets โหลดถูกสำหรับทุกภาษาที่ใช้
-- พร้อมใช้ใน `/improve-seo` fixes สำหรับ `og:image`/`twitter:image`
+- พร้อมใช้ใน `/improve seo` fixes สำหรับ `og:image`/`twitter:image`

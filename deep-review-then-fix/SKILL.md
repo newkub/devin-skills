@@ -20,7 +20,7 @@ related:
 
 ## Goal
 
-Canonical fix skill — review then fix findings in every domain per the Domain Map, through the `## Fix` section and `workflows/` of each `review-*` skill
+Canonical fix skill — review then fix findings in every domain per the Domain Map, through this skill's `## Execute` fix steps; `deep-review/SKILL.md` holds only the review principles, fixes live here
 
 ## Scope
 
@@ -34,44 +34,42 @@ See also: /deep-review
 
 ## Domain Map
 
-Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill matching the domain — always read before editing
+Fixes run through this skill's fix steps (`## Execute` 4-5) per the domain of the finding — the review side is always `/deep-review` with that dimension; metric domains route to `/optimize <scope>`
 
-| Domain | Review skill | Fix route |
+| Domain | Review dimension | Fix route |
 |--------|-------------|-----------|
-| seo | `/deep-review` | `/improve-seo` |
-| security | `/deep-review` | `/improve-security` (`## Fix` — secrets rotation, headers, vuln deps) |
-| auth | `/deep-review` | `/improve-auth` (RBAC surface → `/improve-rbac`; `## Fix` — sessions, tokens) |
-| rbac | `/deep-review` | `/improve-rbac` |
-| api | `/deep-review` | `/improve-api` (`## Fix` — contract drift, versioning) |
-| backend | `/deep-review` | `/improve-backend` |
-| frontend | `/deep-review` | `## Fix` (hydration) + scoped: `/improve-form`, `/improve-i18n`, `/improve-a11y` |
-| forms | `/deep-review` | `/improve-form` |
-| data-validation | `/deep-review` | `/improve-data-validation` |
-| database | `/deep-review` | `/improve-database` (migrations) + query perf → `/optimize-queries` |
-| dependencies | `/deep-review` | `/improve-deps` |
-| bundle+assets+build speed | `/deep-review` | `/optimize-bundle` |
-| performance | `/deep-review` | `/optimize-perf` (network → `/optimize-network`; startup → `/optimize-startup`) |
-| memory | `/deep-review` | `/optimize-memory` |
-| cost | `/deep-review` | `/optimize-cost` |
-| ci/pipeline | `/deep-review` | `/optimize-ci` |
-| docker | `/deep-review` | `/optimize-docker` (guided workflow → `follow-create-docker/workflows/optimize-image`) |
-| tests | `/deep-review` | `/improve-tests` + `## Fix` (flaky) + `/update-tests` for writing new tests |
-| uxui | `/deep-review` | `/improve-uxui` + `/watch-browser-and-fix` (browser pass) |
-| observability | `/deep-review` | `/improve-observability` |
-| accessibility | `/deep-review` | `/improve-a11y` |
-| i18n | `/deep-review` | `/improve-i18n` |
-| iac | `/deep-review` | `/improve-iac` |
-| events | `/deep-review` | `/improve-events` |
-| compliance | `/deep-review` | `/improve-compliance` |
-| business | `/deep-review` | `/improve-business` |
-| release | `/deep-review` | `/improve-release` |
-| delivery | `/deep-review` | `/improve-delivery` |
-| stability | `/deep-review` | `/improve-stability` (error paths/UI → `/improve-error-handling`; messaging → `/improve-events`) |
-| error-handling | `/deep-review` | `/improve-error-handling` (sole owner: error paths, retries, recovery, error states, error UI, error boundaries) |
-| architecture | `/deep-review` | `/improve-architecture` (choose pattern → `/follow-architecture`; move files/split layers → `/refactor`) |
-| migration | `/deep-review` | `/improve-migration` (backward compat, data integrity, rollback, cutover) |
+| seo | `/deep-review` | `## Fix` — meta, structured data, sitemap, CWV |
+| security | `/deep-review` | `## Fix` — secrets rotation, headers, vuln deps (`/run-audit`) |
+| auth | `/deep-review` | `## Fix` — sessions, tokens, OAuth, MFA; authz/RBAC UI → review-auth + review-frontend slices |
+| api | `/deep-review` | `## Fix` — contract drift, versioning, errors |
+| backend | `/deep-review` | `## Fix` — services, handlers, data flow |
+| frontend | `/deep-review` | `## Fix` — components, state, rendering, hydration; scoped slices: forms, i18n, a11y |
+| data-validation | `/deep-review` | `## Fix` — schemas, boundary validation |
+| database | `/deep-review` | `## Fix` — migrations, schema + query perf → `/optimize queries` |
+| dependencies | `/deep-review` | `## Fix` — updates (`/update-version-to-latest`, `/run-audit`) |
+| bundle+assets+build speed | `/deep-review` | `/optimize bundle` |
+| performance | `/deep-review` | `/optimize perf` (network → `/optimize network`; startup → `/optimize startup`) |
+| memory | `/deep-review` | `/optimize memory` |
+| cost | `/deep-review` | `/optimize cost` |
+| ci/pipeline | `/deep-review` | `/optimize ci` |
+| docker | `/deep-review` | `/optimize docker` (guided workflow → `follow-create-docker/workflows/optimize-image`) |
+| tests | `/deep-review` | `## Fix` (flaky → `/check-flaky-tests`) + `/update-tests` for writing new tests |
+| uxui | `/deep-review` | `## Fix` — design system/interaction/motion/UX copy + `/watch-browser fix` (browser pass) |
+| observability / iac / platform | `/deep-review` | `## Fix` — metrics, tracing, alerting, infra code |
+| accessibility | `/deep-review` | `## Fix` — WCAG, keyboard, contrast |
+| i18n | `/deep-review` | `## Fix` — catalogs, RTL, formats |
+| events | `/deep-review` | `## Fix` — schemas, ordering, idempotency, DLQ (queue ops same route, per scope-map boundaries) |
+| compliance | `/deep-review` | `## Fix` — consent, retention, PII handling |
+| business | `/deep-review` | `## Fix` — domain logic vs requirements |
+| release | `/deep-review` | `## Fix` — versioning, changelog, publish |
+| delivery | `/deep-review` | `## Fix` — CI/CD, release pipeline |
+| stability | `/deep-review` | `## Fix` — crash/recovery (error paths/UI → error-handling slice; messaging → events slice) |
+| error-handling | `/deep-review` | `## Fix` (sole owner: error paths, retries, recovery, error states, error UI, error boundaries) |
+| architecture | `/deep-review` | `/refactor` (choose pattern → `/refactor architecture`; move files/split layers → `/refactor`) |
+| migration | `/deep-review` | `## Fix` — backward compat, data integrity, rollback, cutover |
 | quality/types | `/deep-review` | `## Fix` — complexity, imports |
-| others (cli, config, docs, mobile, desktop, browser-ext, dx, sdk, usage, ai, mcp) | `/review-<domain>` | the `## Fix` section of that review skill — fix per the findings directly |
+| usage | `improve-usage-md` | `/update-usage-md` + verify via `/deep-test usage` |
+| others (cli, config, docs, mobile, desktop, browser-ext, dx, sdk, ai, mcp, workflow, writing) | `/deep-review` | `## Fix` section of that dimension — fix per the findings directly |
 
 ## Execute
 
@@ -80,37 +78,44 @@ Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill ma
 > Goal: Know what to review and fix
 
 1. Run `/deep-thinking` to analyze the context and the scope's goal before starting
-2. See [references/identify-scope.md](references/identify-scope.md)
+2. Identify the target files or area; run `/review` to find issues — scope findings precisely, separate root cause from symptom, estimate blast radius per finding, search related code paths
 3. Record findings with severity and evidence
 
 ### 2. Plan Fixes
 
 > Goal: Plan the fixes
 
-1. See [references/plan-fixes.md](references/plan-fixes.md)
-2. Record findings with severity and evidence
+1. Run `/create-plan-in-dot-devin` to plan the fixes in detail before starting
+2. Prioritize by severity then effort; order fixes critical → high → medium → low; map dependencies between fixes
+3. Identify the files to change — minimal fix strategy, no scope creep
+4. Run `/report-before-after` to summarize the plan before starting
+5. Record findings with severity and evidence
 
 ### 3. Confirm
 
 > Goal: Get approval before fixing
 
-1. See [references/confirm.md](references/confirm.md)
-2. Record findings with severity and evidence
+1. Use `ask_user_question` to ask the user whether to approve the fixes
+2. Surface the risks of each fix and note alternatives
+3. If the user declines → stop and report; if the user approves → continue
 
 ### 4. Apply Fixes
 
 > Goal: Fix the issues per the plan
 
-1. See [references/apply-fixes.md](references/apply-fixes.md)
-2. Dispatch approved fixes by domain — group findings, then map them to the `## Fix` section or workflows of `review-*` per the Domain Map above; a domain not in the table → `/ask-me` before fixing
-3. Record findings with severity and evidence
+1. Use `edit` or `write` to fix files one step at a time — minimal, surgical, atomic, reviewable diffs with consistent style; preserve behavior except the intended change
+2. If the issue is complex or an error occurs → run `/resolve-errors`
+3. Dispatch approved fixes by domain — group findings, then map them to the fix route per the Domain Map above; a domain not in the table → `/ask-me` before fixing
+4. Record findings with severity and evidence
 
 ### 5. Verify
 
 > Goal: Check the results after fixing
 
-1. See [references/verify.md](references/verify.md)
-2. Record findings with severity and evidence
+1. Run tests/build/typecheck according to the ecosystem — each fix verified immediately (test/build/run), regression check, `/run-check` pass
+2. Run `/deep-validate`
+3. Capture before/after evidence via `/report-before-after`
+4. Run `/suggest-next-action`
 
 ## Rules
 
@@ -126,8 +131,16 @@ Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill ma
 - Every fix must have a reason from the review
 - Cite file path and line number
 
+### 4. Phase Checklist
+
+- Scope — findings scoped precisely (root cause vs symptom), blast radius estimated, related code paths searched
+- Planning — minimal fix strategy, no scope creep; fix order critical → high → medium → low; dependencies between fixes mapped
+- Confirmation — user confirm before changes (per global rules); fix risks surfaced, alternatives noted
+- Application — fixes minimal + surgical, style consistent; behavior preserved except intended change; atomic, reviewable changes
+- Verification — each fix verified immediately (test/build/run); regression check, `/run-check` pass; before/after evidence (`/report-before-after`)
+
 - Use /fix if you want to fix per the suggestion or fix all
-- Use /watch-browser-and-fix if needed
+- Use /watch-browser fix if needed
 - Use /follow-best-practice if needed
 - Use /deep-review if needed
 - Use /suggest-next-action if needed
@@ -135,21 +148,42 @@ Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill ma
 
 ## Metrics
 
-- See the metrics for review in [references/scoring.md](references/scoring.md) (then fix)
+- Fix score: fixes verified / fixes attempted × 100 — grade A (90+), B (80+), C (70+), D (60+), F (<60)
+
+Supplementary metrics:
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Review Coverage Ratio | % reviewed items in scope that were fixed and verified | fixed / total × 100 |
+| 2 | False Positive Rate | % fixes reverted or not accepted | reverted fixes / total fixes × 100 |
+| 3 | Evidence Strength Score | % findings with evidence (file/line) | findings with evidence / total findings × 100 |
+| 4 | Actionability Score | % findings with clear recommendation | actionable findings / total findings × 100 |
+| 5 | Severity Distribution | count of findings per severity | count of Critical/High/Medium/Low/Info |
+| 6 | MTTR Estimate | estimated time to fix and verify | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| 7 | Before/After Trend | score improvement over time | (after - before) / before × 100 |
+| 8 | Risk Exposure Index | high-severity unfixed issues in critical areas | count of Critical/High findings in critical scope |
+| 9 | Scope Boundary Adherence | % fixed issues inside declared scope | in-scope findings / total findings × 100 |
+| 10 | Documentation/Report Quality | % fixes with file/line and reason | documented findings / total × 100 |
+
+Domain-specific metrics:
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Fix Success Rate | % fixes that pass verification | fixed verified / total fixes × 100 |
+| 2 | Regression Rate After Fix | % fixed issues that reintroduce problems | regressions / total fixed × 100 |
+| 3 | Verification Coverage | % findings covered by a verification step | verified findings / total findings × 100 |
 
 ## Fix
 
-> Follow `deep-review/SKILL.md` when the user confirms fixing the findings
+> This section is the canonical fix boilerplate — `deep-review` is report-only by contract
 
-1. Rank findings by severity — canonical steps in `deep-review/SKILL.md`
+1. Rank findings by severity — critical first, then fix one at a time with verification immediately after each fix
 2. Pick the fix route matching each finding from the Domain Map above (then fix)
-3. preserve behavior + verify + report — canonical in `deep-review/SKILL.md`
+3. Every fix preserves existing behavior, passes `/run-check` and `/run-test` if present, then summarizes with `/report-before-after`
 
 ## References
 
-- [Full-dimension checklist](references/checklist.md)
 - Use /run-review if needed
-
 - Use /create-plan-in-dot-devin if needed
 - Re-run via /run-test <domain> after fixing to verify tests are green
 
@@ -162,7 +196,7 @@ Fixes go through the `## Fix` section or `workflows/` of the `review-*` skill ma
 - **Inputs**: `findings` (the approved findings list for this module/domain — finding id, severity, `file:line`, recommendation), `scope` (the single module/domain it owns, e.g. `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — paths of the matching domain's `## Fix` section or workflow `SKILL.md`), `verify-commands` (optional — commands for verifying, e.g. `bun run typecheck`, `bun run test`)
 - **Tools**: `read`, `grep`, `find_file_by_name` (read fix guides and the source to be fixed), `edit`/`write` (apply only the approved fixes), `exec` (run lint, typecheck, tests after each fix)
 - **Execute**:
-  1. Read the fix route for the matching domain (the `fix-*`/`improve-*` workflow or the review skill's `## Fix`, per the Domain Map above) — if none exists, fix directly per the finding's recommendation
+  1. Read the fix route for the matching domain (per the Domain Map above) — if none exists, fix directly per the finding's recommendation
   2. Rank findings by severity — `critical` first, then fix one at a time
   3. Each fix must preserve the original behavior — minimal diff, no refactoring beyond the finding
   4. Verify immediately after each fix with `verify-commands` or checks the scope supports

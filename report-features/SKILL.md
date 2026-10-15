@@ -107,6 +107,8 @@ related:
 - ใช้ /update-docs ถ้าจำเป็น
 
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ตาราง features ทั้งหมดในแชท จัดกลุ่มตาม workspace และ module

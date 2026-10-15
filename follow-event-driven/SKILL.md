@@ -4,9 +4,7 @@ description: Implement Event-Driven Architecture for async workflows and loose c
 argument-hint: "[scope]"
 related:
   - deep-review
-  - improve-events
-  - improve-stability
-
+  - improve
 ---
 
 ## Goal
@@ -222,6 +220,6 @@ Design Issues
 ## Guide
 
 - Run `/deep-review` for the base architecture
-- Existing event system findings (schemas, ordering, idempotency, DLQ) → `/improve-events`
+- Existing event system findings (schemas, ordering, idempotency, DLQ) → `/improve events`
 - Run `/deep-review` for distributed event-driven systems
 - Run `/deep-review` for event handler structure

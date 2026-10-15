@@ -1,175 +1,130 @@
 ---
 name: follow-lang-rust
-description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
+description: Create or improve Rust projects with Clean Architecture and workspaces
 argument-hint: "[scope]"
 related:
   - deep-review
   - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
+  - follow-tool-nextest
   - follow-create-rust-cli
   - follow-create-rust-crate
   - follow-create-web-wasm
+  - deep-research
 
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Rust applications ให้มีประสิทธิภาพสูงสุด
+Guide Rust application development for maximum safety, quality, and performance
 
 ## Scope
 
-ใช้สำหรับสร้างหรือปรับปรุง Rust projects ทั้ง single crate และ workspace
-
-ดู [references/rust-install.md](references/rust-install.md) สำหรับการติดตั้ง, [references/rust-cli.md](references/rust-cli.md) สำหรับ commands หลัก และ [references/website.md](references/website.md), [references/routes.md](references/routes.md) สำหรับ official docs
+For creating or improving Rust projects, single crate and workspace; single `SKILL.md` package — no `references/`, verify the current stable toolchain and Cargo behavior via `/deep-research` at use time (official docs: https://www.rust-lang.org/learn, Cargo: https://doc.rust-lang.org/cargo/)
 
 ## Execute
 
 ### 1. Project Planning
 
-> Goal: วางแผน architecture และเลือก dependencies ตาม project type
+> Goal: plan architecture and choose dependencies per project type
 
-1. ระบุ Project Location ใน monorepo
-2. ตัดสินใจใช้ Workspace หรือ Single Crate
-3. กำหนด Architecture: Clean Architecture หรือ Standard
-4. เลือก Async Runtime: Tokio (default), async-std, หรือ smol
-5. ถ้า project มี Database: เลือก SQLx (default), Diesel, หรือ SeaORM
-6. ถ้า project มี API: เลือก Axum (default), Actix-web, หรือ Rocket
-7. ถ้า project มี TUI: เลือก Ratatui
-8. ถ้า project ต้องการ WASM: เลือก wasm-bindgen และ wasm-pack
+1. Identify the project location in the monorepo; decide workspace vs single crate
+2. Define architecture: Clean Architecture or standard (run `/refactor architecture`)
+3. Pick the async runtime: tokio (default), async-std, or smol
+4. Database: SQLx (default), Diesel, or SeaORM; API: Axum (default), Actix-web, or Rocket; TUI: Ratatui; WASM: wasm-bindgen + wasm-pack
+5. Run `/deep-research` to confirm current versions/editions of chosen crates before adding them
 
-### 2. Directory Structure
+### 2. Install And Scaffold
 
-> Goal: สร้างโครงสร้าง directory สำหรับ source, tests, benches, และ examples
+> Goal: set up the toolchain and project skeleton
 
-1. ใช้ `src/` directory สำหรับ source code
-2. สร้าง `crates/` สำหรับ workspace members
-3. สร้าง `tests/` สำหรับ integration tests
-4. สร้าง `benches/` สำหรับ benchmarks
-5. สร้าง `examples/` สำหรับ usage examples
-6. ถ้า project มี Clean Architecture: ทำ `/deep-review`
-7. ดูรายละเอียดใน [references/rust-project-structure.md](references/rust-project-structure.md)
+1. Install via `mise use -g rust` (or rustup: `rustup-init.exe` on Windows — MSVC build tools required); verify `rustc --version` and `cargo --version`
+2. Scaffold with `cargo new my_project` (binary) or `cargo new my_lib --lib`
+3. Layout: `src/` source, `crates/` workspace members, `tests/` integration tests, `benches/` criterion benchmarks, `examples/` usage examples
+4. Naming: files `snake_case`, types `PascalCase`; `mod.rs` as barrel exports only
+5. For Clean Architecture, separate layers: domain, application, infrastructure — then run `/deep-review`
 
 ### 3. Configuration
 
-> Goal: ตั้งค่า Cargo, toolchain, และ build configurations
+> Goal: configure Cargo, toolchain, and build profiles
 
-1. ตั้งค่า `Cargo.toml` (workspace หรือ single crate)
-2. ตั้งค่า `.cargo/config.toml` สำหรับ build configurations
-3. ตั้งค่า `rust-toolchain.toml` สำหรับ Rust version
-4. สร้าง `justfile` สำหรับ development scripts
-5. ตั้งค่า sccache สำหรับ shared compilation cache
-6. ดูรายละเอียดใน [references/rust-cargo-workspace.md](references/rust-cargo-workspace.md) และ [references/rust-cargo-profiles.md](references/rust-cargo-profiles.md)
+1. `Cargo.toml` — workspace (`members`, `exclude`, `default-members`, glob support) or single crate; pin the channel and components in `rust-toolchain.toml`
+2. Workspace inheritance: shared metadata in `[workspace.package]` with `version.workspace = true` etc. in members; shared versions in `[workspace.dependencies]` with `{ workspace = true }`; shared lints in `[workspace.lints.*]` with `[lints] workspace = true`
+3. `.cargo/config.toml` for build config (e.g. `[build] jobs`); set sccache for shared compilation cache
+4. Profiles (root `Cargo.toml` only): dev with `debug = "line-tables-only"`, `incremental = true`, deps `debug = false`; release with `lto = true`, `codegen-units = 1`, `strip = true` (add `opt-level`/`panic = "abort"` per target)
+5. Create a `justfile` for dev scripts (`mise use -g just`)
 
 ### 4. Quality Enforcement
 
-> Goal: ตั้งค่า lints, security checks, และ test infrastructure
+> Goal: configure lints, security checks, and test infrastructure
 
-1. รัน `/follow-tool-cargo` เพื่อตั้งค่า Cargo lint rules, Clippy lints และ workspace lint inheritance
-2. ตั้งค่า `forbid unsafe_code` ใน workspace
-3. ตั้งค่า `cargo-deny` สำหรับ security advisories
-4. ตั้งค่า rustdoc warnings เป็น errors
-5. ใช้ `cargo-nextest` สำหรับ parallel test execution ใน CI
-6. ใช้ `cargo-llvm-cov` สำหรับ coverage reporting ใน CI
-7. ใช้ Miri สำหรับตรวจสอบ undefined behavior ใน CI
-8. ดูรายละเอียดใน [references/rust-code-standards.md](references/rust-code-standards.md) และ [references/rust-security.md](references/rust-security.md)
+1. Run `/follow-tool-cargo` for Cargo lint rules, Clippy config, and workspace lint inheritance
+2. Set `unsafe_code = "forbid"` in workspace lints; Clippy `correctness`/`perf` deny, `style`/`suspicious` warn; `dbg_macro`/`todo`/`print_stdout`/`print_stderr` warn
+3. `cargo-deny` for license/advisory checks (RUSTSEC advisory DB); `cargo-audit` for vulnerability scans
+4. rustdoc: `#![warn(missing_docs)]`, `RUSTDOCFLAGS="-D rustdoc::all"` in CI
+5. `cargo-nextest` for parallel tests, `cargo-llvm-cov` for coverage, Miri for UB detection in CI
 
 ### 5. Verification
 
-> Goal: ตรวจสอบ compilation, linting, formatting, และ tests ผ่านทั้งหมด
+> Goal: confirm compile, lint, format, and tests all pass
 
-1. รัน `cargo check` ตรวจสอบ compilation errors
-2. รัน `cargo clippy` ตรวจสอบ linting
-3. รัน `cargo fmt` ตรวจสอบ formatting
-4. รัน `cargo nextest run` ยืนยัน tests ผ่าน
-5. รัน `cargo test --doc` ยืนยัน doctests ผ่าน
-6. ทดสอบ `cargo build --release` สำเร็จ
-7. ถ้า project มี WASM target: ทดสอบ `cargo build --target wasm32-unknown-unknown`
+1. `cargo check --workspace` → `cargo clippy` → `cargo fmt --check`
+2. `cargo nextest run` and `cargo test --doc` (nextest doesn't run doctests)
+3. `cargo build --release` succeeds; WASM projects also build `--target wasm32-unknown-unknown`
+4. On failure → run `/resolve-errors`
 
 ### 6. Testing Strategy
 
-> Goal: กำหนด testing strategy ตาม project type
+> Goal: define the testing strategy per project type
 
-1. ทำ `/follow-test` สำหรับ testing strategy ทั่วไป
-2. ใช้ `cargo-nextest` สำหรับ parallel test execution
-3. ถ้า project มี business logic: ใช้ `proptest` สำหรับ property-based testing
-4. ถ้า project มี API: เขียน integration tests ใน `tests/`
-5. ใช้ `#[cfg(test)]` สำหรับ unit tests inline กับ source code
-6. ถ้า project มี complex logic: ทำ `/follow-tool-mutants-rs` สำหรับ mutation testing
-7. รัน `cargo test --doc` แยกจาก `cargo nextest run` (nextest ไม่รองรับ doctests)
-8. ดูรายละเอียดใน [references/rust-testing.md](references/rust-testing.md)
+1. Run `/follow-test` for general strategy; `/follow-tool-nextest` for the runner
+2. `#[cfg(test)]` unit tests inline; `tests/` for integration; `assert!`/`assert_eq!`/`#[should_panic]`
+3. Business logic → `proptest` property-based tests; complex logic → `/follow-tool-mutants-rs` mutation testing
+4. Every public API gets a doc example that uses `?`, never `unwrap()`
 
 ## Rules
 
-### 1. Project Structure And Configuration
+### 1. Code Standards
 
-- ใช้ Clean Architecture, workspace patterns, `Cargo.toml`, `.cargo/config.toml`, profiles
-- ใช้ `rust-toolchain.toml`, `justfile`, sccache
-- ดู [references/rust-project-structure.md](references/rust-project-structure.md)
+- Follow Rust API Guidelines and naming conventions (RFC 430); implement common traits (`Debug`, `Clone`, `Default`, `Display`, eq/ord/`Hash`) where meaningful
+- Imports ordered: `std` → external → internal (`crate::`)
+- No `unwrap()` in production; use `?` and typed errors; prefer traits for abstraction
+- Builder pattern for complex constructors; newtype pattern for domain types
 
-### 2. Code Standards
+### 2. Error Handling
 
-- ทำตาม Rust API Guidelines, naming conventions, common traits, imports
-- ใช้ builder/newtype patterns, clippy lints
-- ดู [references/rust-code-standards.md](references/rust-code-standards.md)
+- `thiserror` for library error enums, `anyhow` for applications; `#[from]` conversions; `.context()` at boundaries; error types implement `std::error::Error`
 
-### 3. Error Handling
+### 3. Documentation
 
-- ใช้ `thiserror` สำหรับ library, `anyhow` สำหรับ application
-- ใช้ `#[from]`, `.context()`
-- ดู [references/rust-error-handling.md](references/rust-error-handling.md)
+- `//!` crate-level docs; document every public item with `# Errors`, `# Panics`, `# Safety` sections as applicable
 
-### 4. Documentation
+### 4. Async Patterns
 
-- ใช้ `//!`, `#![warn(missing_docs)]`, `# Errors`/`# Panics`/`# Safety` sections
-- ใช้ `/follow-create-rust-cli` ถ้าจำเป็น
-- ใช้ `/follow-create-rust-crate` ถ้าจำเป็น
-- ใช้ `/follow-create-web-wasm` ถ้าจำเป็น
-- ใช้ `RUSTDOCFLAGS`
-- ดู [references/rust-documentation.md](references/rust-documentation.md)
+- tokio default; structured concurrency with `JoinSet`; cancellation via `CancellationToken`; `Send + Sync` bounds for shared state; `tokio::select!` for concurrent races; `Arc<T>` across tasks; never `block_on` inside async context
 
-### 5. CI/CD
+### 5. Performance
 
-- ใช้ GitHub Actions, ทดสอบ stable/beta/nightly/MSRV
-- ใช้ `cargo-deny`, `cargo-nextest`, `cargo-llvm-cov`, Miri
-- ดู [references/rust-ci-cd.md](references/rust-ci-cd.md)
+- Avoid allocations in hot paths: `&str` over `String`, `Cow<T>`, `SmallVec`; benchmark with `criterion` in `benches/` and profile with `cargo flamegraph`; tune `[profile.release]` (`lto`, `codegen-units = 1`)
 
-### 6. Testing
+### 6. Dependency Management
 
-- ใช้ `#[cfg(test)]`, `tests/`, `proptest`, doctests, assert macros, `#[should_panic]`
-- ดู [references/rust-testing.md](references/rust-testing.md)
+- Declare `rust-version` (MSRV); feature flags for optional functionality; keep the dependency tree minimal; `[workspace.dependencies]` for shared versions; check with `cargo sort` + `cargo outdated`; avoid floating ranges
 
-### 7. Performance
+### 7. CI/CD
 
-- ใช้ `criterion`, `cargo flamegraph`, `&str` vs `String`, `Cow<T>`, `SmallVec`, release profile
-- ดู [references/rust-performance.md](references/rust-performance.md)
+- GitHub Actions: parallel fmt/clippy/check/test; matrix stable/beta/nightly/MSRV and cross-platform (incl. WASM/ARM); `cargo-deny`, `nextest`, `llvm-cov`, Miri; install CI tools with `taiki-e/install-action`
 
-### 8. Security
-
-- ใช้ `cargo-audit`, `cargo-deny`, `forbid unsafe_code`, `RUSTSEC` advisory database
-- ดู [references/rust-security.md](references/rust-security.md)
-
-### 9. Dependency Management
-
-- กำหนด `rust-version`/MSRV, feature flags, `[workspace.dependencies]`, `cargo sort`, `cargo outdated`
-- ดู [references/rust-dependency-management.md](references/rust-dependency-management.md)
-
-### 10. Async Patterns
-
-- ใช้ `tokio`, `JoinSet`, `CancellationToken`, `Send + Sync` bounds, `block_on`, `tokio::select!`, `Arc<T>`
-- ดู [references/rust-async.md](references/rust-async.md)
+- Use /follow-create-rust-cli if needed
+- Use /follow-create-rust-crate if needed
+- Use /follow-create-web-wasm if needed
 
 ## Expected Outcome
 
-- Rust project ที่มีโครงสร้างถูกต้อง
-- Clean Architecture ที่จัดระเบียบดี
-- Code ที่มี memory safety และ performance
-- Error handling ที่ robust
-- Testing ที่ครอบคลุมด้วย unit, integration, และ property-based tests
-- Performance ที่ optimized ด้วย profiling และ benchmarking
-- Security ที่ผ่าน audit และ deny checks
-- Dependencies ที่จัดการอย่างเป็นระบบ
-- Async patterns ที่ safe และ efficient
-- Build และ lint ที่ผ่านทั้งหมด
-- Documentation ที่ครบถ้วน
-- CI/CD pipeline ที่เข้มงวด
+- Correctly structured Rust project (crate or workspace) with Clean Architecture where applied
+- Memory-safe, performant code with robust error handling
+- Comprehensive tests: unit, integration, doctests, property-based, mutation
+- Security passing `cargo-deny`/`cargo-audit` with `unsafe_code` forbidden
+- Documentation complete under `missing_docs` enforcement
+- Strict CI/CD pipeline green: fmt, clippy, check, nextest, coverage, Miri

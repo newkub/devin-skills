@@ -1,250 +1,207 @@
 ---
 name: refactor
-description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
-argument-hint: "[@files... | scope | clean | layered | orm | structure]"
+description: Refactor ไฟล์, workspace, หรือ codebase ตาม scope — SRP, boundaries, architecture, consistency
+argument-hint: "[@files... | srp | workspace | monorepo | codebase | architecture | clean | layered | concerns | structure | shared | orm | skills]"
 related:
-  - refactor-skills
-  - refactor-to-srp
-  - restructure
   - simplify
-  - idea-naming
+  - relocation
   - create-plan-in-dot-devin
-  - refactor-workspace
-  - no-hard-code
-  - no-use-ignore
   - update-references
   - update-agents-md
-  - update-config
-  - update-tests
-  - improve-tests
+  - deep-review
+  - deep-validate
   - run-verify
   - check-code-structure
-  - deep-review
   - check-long-files
-  - resolve-errors
-  - dont-over-engineer
-  - follow-devin-global-skills
-  - follow-single-of-source
-  - follow-reusable
-  - follow-my-techstack
-  - use-lib-effective
-  - follow-architecture
-  - follow-tool-data-validation
-  - deep-validate
-  - relocation
-  - scan-codebase
-  - follow-review
-  - run-check
-  - use-astgrep
-  - migration-with-astgrep
   - use-subagents
-
+  - use-astgrep
+  - follow-review
+  - follow-single-of-source
+  - follow-code-quality
+  - follow-architecture
 ---
 
 ## Goal
 
-Refactor ตาม context โดยเลือก scope ที่เหมาะสม: ไฟล์, workspace, codebase หรือ SRP แล้วดำเนินการจนผ่าน verify
+Refactor by scope without changing observable behavior — pick one row from `## Scope`, run its steps, finish green
 
 ## Scope
 
-- ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
-- ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`; refactor ทุกไฟล์ใน workspace เดียวจนครบ / ทุก workspace ใน monorepoจนครบ → `## Merged Details`
-- ถ้า context คือจัด architecture ตาม directory หรือเลือก clean/layered → ทำ architecture refactor — selection + dispatch ผ่าน `/follow-architecture` (หลาย apps unified → clean, app เดียว → layered)
-- ถ้า context คือไฟล์/โมดูลที่รวมหลาย concerns ปนกัน (UI + logic + IO + config ในที่เดียว) → ทำ `### /separate-of-concerns` (merged)
-- ถ้า context คือ extract shared code ไป `packages/shared` (duplication ข้าม packages) → ทำ `### /refactor-to-packages-shared (merged)`
-- ถ้า context คือ restructure data access เป็น ORM (raw SQL, scattered queries, N+1) → ทำ data access refactor ตาม `references/orm.md` + `references/repository-pattern.md`
-- ถ้า context คือ physical structure (naming, file split, content separation, relocation, barrel exports) → ใช้ `/restructure`
-- ถ้า context คือรวม/ซิงค์ tool configs และ dependency catalogs ข้าม workspaces → ใช้ `/update-config`
-- ถ้า context คือลบ hardcoded values (secrets, URLs, magic strings/numbers) → ใช้ `/no-hard-code`
-- ถ้า context คือลบ ignore/suppression comments (`@ts-ignore`, `eslint-disable`, `biome-ignore`, `# noqa`, `//nolint` และ ecosystem อื่น) → ใช้ `/no-use-ignore`
-- ถ้า context คือทำไฟล์สั้น/อ่านง่ายขึ้นโดยไม่เปลี่ยน boundaries (verbosity, redundancy, nesting) → ใช้ `/simplify`
-- ถ้า context คือ refactor tests (test/spec files เอง — flaky, duplication, shared setup, naming, assertions) → refactor test suite: หา improvements ผ่าน `/improve-tests` แล้ว rewrite specs ผ่าน `/update-tests` — rules เดียวกัน (assertion semantics เหมือนเดิม, green before/after)
-- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ใช้ `/refactor-to-srp`
-- ถ้าต้องการ refactor ทั้ง codebase → ทำ codebase refactor ตาม `references/scope-codebase.md` (deep procedure: baseline → impact → batches → validation)
-- ถ้า context คือเตรียมเพิ่ม feature → preparatory refactor ("make the change easy, then make the easy change") — refactor แยก commit ก่อน feature เสมอ
-- ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
-- mechanical refactor หลายไฟล์ (rename/pattern/batch transform) → ใช้ `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ); migration ทั้ง codebase ด้วย rule file → `/migration-with-astgrep`
-- ถ้า context คือ refactor skill packages (`SKILL.md`, `workflows/`, `references/` ของ skills) → ใช้ `/refactor-skills`
+> One scope at a time — never dispatch several scopes in parallel
+
+| Argument | Seen When | Run |
+|----------|-----------|-----|
+| (none) | scope not given | `### 1` hotspot path |
+| `@files...`, `srp` | file >250 lines or one unit holds several reasons to change | `### 2` |
+| `workspace` | every file of one workspace | `### 3` → `references/workspace-codebase.md` `## 1` |
+| `monorepo` | several workspaces, member boundaries, member adoption | `### 3` → `## 2`–`## 4` |
+| `codebase` | whole repo pass | `### 3` → `## 5` |
+| `architecture`, `clean`, `layered` | wrong layers, boundaries, dependency direction | `### 4` → `/follow-architecture` |
+| `concerns` | one file mixes UI + logic + IO + config | `### 5` |
+| `structure` | naming, wrong folder, relative imports, barrel gaps | `### 6` |
+| `shared` | duplication across packages | `### 7` → `references/extract-shared.md` |
+| `orm` | raw SQL, scattered queries, N+1 | `### 8` → `references/data-access.md` |
+| `skills` | the target is a skill package | `/refactor-skills` |
+
+Handed off elsewhere: config drift → `/update-config` · hardcoded values → `/no-hard-code` · ignore/suppression comments → `/no-use-ignore` · shorter/clearer file without touching boundaries → `/simplify` · test suite → `/improve tests` + `/update-tests` · file move only → `/relocation` · batch rename/pattern → `/use-astgrep rewrite` · codebase migration with a rule file → `/migration-with-astgrep`
 
 ## Execute
 
-> Bulk scope: ถ้า scope ครอบคลุมหลายไฟล์/workspace/codebase หรือ user ขอ refactor หลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ แล้วค่อย refactor ตาม plan
+> Bulk scope (many files/workspaces/codebase or several asks at once) → run `/create-plan-in-dot-devin` first, then follow the plan; preparatory refactor before adding a feature goes in its own commit
 
 ### 1. Detect Scope
 
-> Goal: ระบุ scope ของ refactoring
+> Goal: know the scope and have a baseline before touching anything
 
-1. ทำ `/follow-review` ก่อน refactor เสมอ — เลือกและรัน `review-*` ที่ตรง context ก่อนลงมือ
-2. ถ้ามี `@files...` → file refactor
-3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
-4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → `/refactor-to-srp`
-5. ถ้าไม่มี scope ชัดเจน → หา hotspots ด้วย evidence ก่อนเลือก target: `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` (churn สูง × complexity สูง = คุ้มสุด)
-6. เก็บ evidence ด้วย check skills ก่อนเลือก target — `/scan-codebase` (quick overview), `/check-long-files` (ไฟล์เกิน 250 บรรทัด), `/check-code-structure` (file-level symbols/exports), `/deep-review` (SRP counts, function metrics) — ใช้ findings เป็น baseline และเลือก target ที่ severity สูงสุด
-7. ถ้า scope กว้างหรือต้อง evidence เยอะ → spawn `hotspot-scout` (read-only — profile อยู่ใน `## Subagents`) เก็บ baseline แทนการสแกนเอง แล้วใช้ prioritized target table ที่คืนมาเลือก target
-8. ถ้าต้องการ refactor ทั้ง codebase หรือไม่มี files/workspace context → codebase refactor
-9. ถ้า argument/context เป็น `clean`, `layered` หรือ architecture restructure ของ package/app → architecture refactor (dispatch `/follow-architecture`)
-10. ถ้า argument/context คือ concerns ปนกันในไฟล์/โมดูล → `### /separate-of-concerns` (merged)
-11. ถ้า argument/context เป็น `orm` หรือ data access restructure → data access refactor
-12. ถ้า argument/context เป็น `structure` หรือ physical file/folder restructure → `/restructure`
-13. ถ้า argument/context เป็น `tests` หรือ refactor test suite → test refactor scope — `/improve-tests` (findings) + `/update-tests` (rewrite specs)
-14. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+1. Run `/follow-agents-md` + `/follow-review` + read `/follow-code-quality` — apply the code quality convention, run the `review-*` domain that matches the context; if a plan file exists, follow it
+2. Map the argument → a `## Scope` row; no argument → hotspots: churn `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` × complexity (churn high + complexity high = best return)
+3. Collect evidence before choosing the target — `/scan-codebase`, `/check-long-files`, `/check-code-structure`, `/deep-review`; wide scope → spawn `hotspot-scout` (`## Subagents`) for the baseline
+4. Quick path (no argument): baseline → take the top-priority target → `### 2` (or the row the target matches) → `### 9` → `### 10` → report; stop when the target is clean, do not expand the scope
 
-### 2. File Refactor
+### 2. File And SRP Refactor
 
-> Goal: แก้ไขไฟล์ที่ระบุ
+> Goal: 1 unit (file, module, class, function) = 1 reason to change, file ≤250 lines (canonical SRP splitter — merged from `/refactor-to-srp`)
 
-ทำตาม [references/scope-file.md](references/scope-file.md)
+1. Read the file(s) → `/deep-review` scoped to them (convention: `/follow-code-quality`) → baseline responsibilities, imports, exports, public API + smells (`references/smells.md`); group responsibilities by reason to change — no real violation → stop + report (`/dont-over-engineer`)
+2. Pick the action: several responsibilities → Extract Method → Extract Class/Module → Move Method/Field, one content kind per file (`types.ts`/`constants.ts`/`config.ts`/`schema.ts` or the domain name), keep the public API through a barrel re-export so consumers do not change; wrong place → `/relocation`; complex imports/exports → `/deep-review`; naming → `/rename`; dead exports → remove after `/follow-tool-knip`
+3. Independent files → spawn `file-worker` in parallel (`## Subagents`); one split = one concern, no behavior mixed in (Two Hats); highly cohesive code that always changes together → keep it together (minimal split)
+4. `/update-references` after every split → `/run-verify` + `/check-long-files` vs baseline (every file ≤250) → `/report-before-after` with the responsibility map
 
-### 3. Workspace Refactor
+### 3. Workspace And Codebase Refactor
 
-> Goal: จัดระเบียบ workspace หรือ monorepo
+> Goal: order and batch a workspace or the whole codebase without breaking dependents
 
-ทำตาม [references/scope-workspace.md](references/scope-workspace.md)
+1. Read `references/workspace-codebase.md` — `## 1` one workspace, `## 2` every workspace in a monorepo, `## 3` split/merge/relocate members, `## 4` recommend members, `## 5` whole codebase
+2. Always: baseline → foundation before dependents → refactor files with `### 2` → `/update-references` → `/run-verify` → `/git-commit` checkpoint per batch; >3 failing rounds → stop + report
 
-### 4. Codebase And SRP Refactor
+### 4. Architecture Refactor
 
-> Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ง codebase ด้วย baseline, impact analysis, incremental batches
+> Goal: apply the pattern that fits the target — selection convention is `/follow-architecture` (re-split from the old merged entry)
 
-ทำตาม [references/scope-codebase.md](references/scope-codebase.md)
+1. Read `/follow-architecture` + `follow-architecture/references/architecture.md`: detect target → select pattern (`packages/`/`crates/` or several unified `apps/*` → Clean; a single app → Layered; argument `clean`/`layered` → that pattern) → prepare → restructure → verify
+2. Pattern decided → read its pattern guide here: Clean → `follow-architecture/references/follow-clean-arch.md`, Layered → `follow-architecture/references/follow-layered-arch.md` (canonical file structures + layer tables live in each guide's `## Guide`); stack-specific structures belong to the owner skill (table in `follow-architecture/references/architecture.md`)
+3. Mixed concerns found during a move → `### 5` first; one pattern per target; after each move batch → `/update-references` + `/run-check`
 
-### 5. Architecture Refactor
+### 5. Separate Of Concerns
 
-> Goal: apply architecture pattern ให้ target — selection + execution dispatch ผ่าน `/follow-architecture`
+> Goal: split a mixed file by concern type — `presentation` (UI/routes/handlers), `domain` (pure rules), `data` (persistence/queries), `io` (http/queue/external), `config` (env/settings), `orchestration` (wiring)
 
-1. ทำ `/follow-architecture` กับ target — เลือก pattern ตาม context (หลาย `apps/*` unified → clean; app เดียว/`apps/*` → layered; `packages/`/`crates/` → clean); argument `clean`/`layered` → pattern นั้นโดยตรง
-2. Detail procedure ตาม [references/architecture-clean.md](references/architecture-clean.md) / [references/architecture-layered.md](references/architecture-layered.md) เมื่อต้องการรายละเอียดใน refactor context
-3. ถ้าเจอ mixed concerns ระหว่าง restructure → ทำ `### /separate-of-concerns` (merged) แยก concern ก่อนจัด layer
-4. ทำทีละ target — ห้าม mix pattern ใน target เดียว; หลังแต่ละ target → `/update-references` + `/run-check` ก่อน target ถัดไป
-5. Canonical pattern detail อยู่ที่ `/deep-review` `## Pattern Guides` (SSOT); microservices ไม่ครอบคลุม — อ่าน `### Pattern: Microservices Architecture` ที่นั่นโดยตรง
+1. Identify: classify each block → concern type with `file:line` evidence → concern map (block → type → target location)
+2. Plan: map each concern to its layer (`### 4` decides when the layer is unclear); extract leaf-first — pure domain → data/io → orchestration last; list consumers for `/update-references`
+3. Extract one concern at a time: move → target file/module → export through the barrel → `/update-references` + verify green before the next concern; callers keep only orchestration
+4. Verify: every unit left with a single concern + `/run-check` + tests → `/report-before-after` (old vs new concern map) — one extraction = one concern, no behavior change, public API preserved
 
-### 6. Data Access Refactor
+### 6. Structure Refactor
 
-> Goal: restructure data access ให้ใช้ ORM type-safe — หนึ่ง ORM ต่อ project
+> Goal: physical file/folder layout matches the architecture — naming, split, relocate, barrel imports (merged from `/restructure`)
 
-1. ทำตาม [references/orm.md](references/orm.md) — select ORM → models/relations → queries → migrations → tests
-2. repository pattern (interfaces, mappers, UnitOfWork, QuerySpec) → ทำตาม [references/repository-pattern.md](references/repository-pattern.md)
-3. schema review/migration drift → `/deep-review`; boundary validation → `/follow-tool-data-validation`
+1. Baseline: evidence ด้วย `/check-code-structure` + `/check-long-files` + `/deep-review` → problem table (No./File/Problem/Target/severity); scope กว้าง → `/create-plan-in-dot-devin`; ไม่พบปัญหา → stop + report
+2. Naming: `/rename` ทีละไฟล์ตาม convention ของ project + `/update-references` ทันที; ชื่อ generic (`utils.ts`, `helpers.ts`, `misc.ts`) → แยกตาม concern หรือเปลี่ยนเป็นชื่อ domain
+3. Split and align: >250 lines/หลาย responsibility → `### 2`; content ประเภทเดียวรวมกัน (`types.ts`/`constants.ts`/`config.ts`/`schema.ts`); folder มีไฟล์เยอะ (>10-15 flat) → group เป็น subfolder ตาม domain/feature (files that change together stay together); map ไฟล์ → layer/domain ก่อนย้าย — ห้าม mix pattern
+4. Relocate: `/relocation` dry-run + confirm ก่อนย้ายจริง; ย้ายทีละชุด + `/update-references` + `/run-check`; แดง → rollback
+5. Imports: public API ผ่าน barrel `index` เท่านั้น; alias แทน relative ซับซ้อน; imports ตาม convention (external → alias → relative)
+6. Validate: `/run-check` + tests + `/deep-validate` (fail → retry max 3 → stop); layout เปลี่ยน → `/update-agents-md`; `/report-before-after` structure + move table
 
-### 7. Structure Refactor
+Layer/placement decisions inside the move → `### 4`; SRP inside one unit → `### 2`; `/update-references` after every rename/move
 
-> Goal: physical file/folder structure ทุกไฟล์มี single responsibility — naming, split, content separation, relocation, imports
+### 7. Extract To Packages Shared
 
-ทำตาม `/restructure` — procedure ละเอียด [references/structure.md](references/structure.md)
+> Goal: one fact one source — code reused across workspace members moves to `packages/shared`
 
-### 8. Update References
+1. Read `references/extract-shared.md`: inventory duplication (≥2 real consumers) → plan by Clean layers, leaf-first → extract the canonical version → rewire consumers → verify the package is a leaf
+2. `/use-lib-effective` before creating anything new; never extract for a hypothetical future consumer
 
-> Goal: ไม่มี broken references
+### 8. Data Access Refactor
 
-1. ทำ `/update-references` สำหรับ relative paths/imports
-2. ทำ `/update-references` สำหรับ global references/skills
-3. ถ้า structure/paths เปลี่ยน (ย้าย/rename/สร้าง dir ใหม่) → ทำ `/update-agents-md` ให้ AGENTS.md ตรงกับ structure ใหม่
-4. ถ้ามี broken references → ทำ `/resolve-errors`
+> Goal: data access on one type-safe ORM with a repository boundary, behavior preserved
 
-### 9. Verify
+1. Read `references/data-access.md`: `## ORM Workflow` (select → models/relations → queries → migrations → tests) and `## Repository Pattern` (interfaces, adapters, mappers, `QuerySpec`, `UnitOfWork`)
+2. drizzle specifics → `/follow-lib-drizzle`; schema/migration review → `/deep-review` (domain `review-database`); boundary validation → `/follow-tool-data-validation`
 
-> Goal: ตรวจสอบว่า refactor ผ่าน
+### 9. Update References
 
-ทำตาม [references/verify.md](references/verify.md)
+> Goal: no broken references left
 
-### 10. Report
+1. Run `/update-references` for relative paths/imports and global references/skills; grep again to prove no old path/name remains
+2. Structure/paths changed → `/update-agents-md`; broken references → `/resolve-errors`; docs/config/rules now stale → `/update-project`
 
-> Goal: สรุปผล
+### 10. Verify And Report
 
-1. ทำ `/report` สรุป sub-skill/scope, การเปลี่ยนแปลง, status
-2. ทำ `/report-before-after` ถ้ามี baseline
-3. ทำ `/suggest-next-action`
+> Goal: prove the refactor is safe, then summarize
 
-## Rules
-
-Checklist สั้น — detail ฉบับเต็มของแต่ละ rule อยู่ที่ `references/principles.md`
-
-### 1. Preserve Behavior
-
-- ห้าม mix feature/bug fix กับ refactor ใน commit เดียว (Two Hats) — public API/behavior เหมือนเดิมเสมอ
-
-### 2. Safety Net First
-
-- ไม่มี tests → เขียน characterization tests ก่อน (`/update-tests`); tests เขียวก่อนและหลัง
-
-### 3. Small Steps
-
-- ทีละ transformation เดียว → verify green → `/git-commit` checkpoint ทุก batch
-- mechanical batch หลายไฟล์ → `/use-astgrep rewrite` (dry-run+confirm); rule-file migration → `/migration-with-astgrep`
-
-### 4. Context Aware
-
-- ไม่เดา scope — ไม่ชัดให้ `/ask-me`; ทำทีละ sub-skill ตาม priority
-
-### 5. Minimal Change
-
-- `/dont-over-engineer` + `/follow-reusable` (reuse > extend > extract > create); แก้ root cause ตาม `references/code-smells.md`; ห้าม perf tuning ใน refactor pass
-- ก่อนเลือก/เพิ่ม dependency หรือหา skill/stack มาช่วย → `/follow-devin-global-skills` (catalog ของ skills ที่ใช้ได้ในระบบ), `/follow-my-techstack` (เทียบ tech catalog ก่อนเลือก stack/tool) + `/use-lib-effective` (ใช้ dep ที่มีแทน reinvent)
-
-### 6. SRP And Consistency
-
-- ไฟล์ ≤250 บรรทัด (`/check-long-files`); หนึ่ง fact หนึ่ง source (`/follow-single-of-source`); naming/patterns สอดคล้อง
-- import paths ใช้ path alias ของ project (เช่น `~/*`) แทน relative paths ที่ซับซ้อน — ห้าม relative import 3+ levels (`../../../`)
-
-### 7. Safety And Verification
-
-- ย้าย/ลบ/rename → `/update-references`; destructive → dry run + confirm; ไม่ force push
-- ผ่าน `/run-verify`; ไม่มี broken references
-
-### 8. Plan Before Bulk Refactor
-
-- scope ใหญ่ (หลายไฟล์/workspace/codebase) หรือ user ขอหลายอย่างในคราวเดียว → ทำ `/create-plan-in-dot-devin` ก่อนเสมอ — ห้ามเริ่ม refactor ใหญ่โดยไม่มี plan
+1. Run `/run-verify` (lint, typecheck, test, build) + `/check-code-structure` vs baseline → `/deep-validate` across dimensions; fail → back to the scope step, max 3 rounds
+2. Report scope, sub-skills run, changes and status via `/report` → `/report-before-after` when a baseline exists → `/suggest-next-action`
 
 ## Subagents
 
-> Goal: งาน refactor อิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก; spawn ผ่าน `/use-subagents` โดยส่ง inputs ตามที่แต่ละ profile กำหนด และ parent เป็นคน rewire consumers, checkpoint commit และ verify รวมเสมอ
+> Goal: independent refactor work that can run in parallel — spawn via `/use-subagents` with the profile inputs; the parent always rewires consumers, checkpoints commits and runs the combined verify
 
-### hotspot-scout — เก็บ baseline evidence (churn, long files, SRP issues) หา refactor targets แล้วคืน prioritized list; ใช้เมื่อ parent ต้องการ baseline ก่อนเลือก target โดยไม่แก้ไฟล์ใดๆ
+### hotspot-scout — read-only baseline collector (use when the parent wants evidence before choosing targets)
 
-- **Inputs**: `root` = directory เป้าหมายที่ต้องสแกน; `focus` (optional) = domain เช่น `long-files`, `srp`, `naming`, `all` (default `all`); `threshold` (optional) = ความยาวไฟล์ที่นับเป็น long file (default 250)
-- **Tools**: `exec` — รัน `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` สำหรับ churn และ CLI checks ที่มี; `read`, `grep`, `find_file_by_name` — นับบรรทัด, หา symbols/exports, ตรวจ patterns
-- **Execute**: 1) เก็บ churn evidence: ไฟล์ที่แก้บ่อยสุดจาก git log → 2) เก็บ size evidence: ไฟล์ที่ยาวเกิน `threshold` บรรทัด → 3) เก็บ structure evidence: symbols/exports ต่อไฟล์, mixed concerns, relative imports 3+ levels → 4) รวมเป็น target list — score = churn × severity ของ structural issues
-- **Output**: คืน prioritized target table `| No. | File | Churn | Lines | Issues | Priority |` (ตัวอย่าง `1 | src/foo.ts | 45 | 380 | SRP, deep imports | high`); `Priority` = `high`/`medium`/`low` พร้อมเหตุผลสั้น; ปิดท้ายด้วยสรุป total files scanned, targets found, recommended first target
-- **Constraints**: model `sonnet`; allowed tools จำกัดที่ `read`/`exec`/`grep`/`find_file_by_name` และ deny `write`/`edit` — read-only ห้ามแก้ไขไฟล์ใดๆ สแกนอย่างเดียว; รายงานเฉพาะไฟล์ที่มี evidence จริง — ห้ามเดา; scope อยู่ใน `root` ที่ parent กำหนดเท่านั้น
+- Inputs: `root` (directory), `focus` (`long-files`/`srp`/`naming`/`all`, default `all`), `threshold` (line count for a long file, default 250)
+- Tools: `exec` — git churn + available CLI checks; `read`/`grep`/`find_file_by_name` — line counts, symbols/exports, patterns
+- Execute: churn from `git log --format=format: --name-only | sort | uniq -c | sort -rn | head -20` → files over `threshold` → symbols/exports, mixed concerns, relative imports 3+ levels → target list scored churn × severity
+- Output: `| No. | File | Churn | Lines | Issues | Priority |` with reasons; totals scanned, targets found, recommended first target
+- Constraints: model `sonnet`; only `read`/`exec`/`grep`/`find_file_by_name` — deny `write`/`edit`; report real evidence only; stay inside `root`
 
-### file-worker — refactor ไฟล์/scope เดียวตาม instructions ที่ parent กำหนด แล้วคืน diff summary + verify status; spawn ทีละไฟล์ขนานกันเมื่อมีหลายไฟล์อิสระกัน
+### file-worker — refactors one file/scope per instructions and returns a diff summary (spawn in parallel for independent files)
 
-- **Inputs**: `files` = ไฟล์หรือ glob scope ที่รับผิดชอบ; `instructions` = transformation ที่ต้องทำ เช่น SRP split, naming, import alias, extract function; `conventions` = style/patterns ของ project ที่ต้องรักษา; `verify-cmd` (optional) = command เร็วๆ ที่รันเช็ค scope นี้ เช่น `tsc --noEmit <file>`
-- **Tools**: `read`, `write`, `edit` — แก้ไฟล์ใน scope; `exec` — รัน `verify-cmd` และ formatter/linter ต่อไฟล์ (allow `Exec(tsc *)`, `Exec(eslint *)`, `Exec(sg *)`); `grep` — เช็ค consumers/importers ก่อนเปลี่ยน exports
-- **Execute**: 1) อ่านไฟล์ใน `files` และเช็ค importers ของ exports ที่จะเปลี่ยน → 2) apply `instructions` ทีละ transformation — หนึ่งไฟล์ต่อรอบ verify → 3) รัน `verify-cmd` ถ้ามี — fail ให้ revert scope นั้นแล้วรายงาน
-- **Output**: คืน per-file result table `| No. | File | Change | Verified | Notes |` (ตัวอย่าง `1 | src/foo.ts | split into 2 modules | ok | —`); `Verified` = `ok`/`failed`/`skipped` พร้อม error ถ้า fail; ปิดท้ายด้วยสรุป files changed, exports changed (ที่ parent ต้อง follow-up `/update-references`), blockers
-- **Constraints**: model `sonnet`; preserve behavior เสมอ — ห้าม mix feature/fix; รับผิดชอบเฉพาะ `files` ที่ได้รับ — ห้ามแตะไฟล์นอก `files` หรือข้าม scope ถ้าจำเป็นให้รายงานกลับให้ parent ทำ; exports/API ที่เปลี่ยนต้องรายงานกลับ — parent เป็นคน rewire consumers; ไม่ commit — parent เป็นคน checkpoint
+- Inputs: `files` (file/glob), `instructions` (SRP split, naming, import alias, extract function), `conventions` (style/patterns to keep), `verify-cmd` (e.g. `tsc --noEmit <file>`)
+- Tools: `read`/`write`/`edit` in scope; `exec` for `verify-cmd`, formatter/linter; `grep` to check importers before changing exports
+- Execute: read the file + list its importers → apply the transformations one at a time (one file per verify round) → run `verify-cmd`; fail → revert that scope and report
+- Output: `| No. | File | Change | Verified | Notes |` (`ok`/`failed`/`skipped` + error), files changed, exports changed (parent runs `/update-references`), blockers
+- Constraints: model `sonnet`; preserve behavior — never mix feature/fix; touch only the given `files`; never commit — the parent checkpoints
 
-## Merged Details
+## Rules
 
-### /separate-of-concerns (merged)
+### 1. Preserve Behavior
 
-แยก concerns ที่ปนกันในไฟล์/โมดูลออกตามประเภท — concern types: `presentation` (UI/routes/handlers), `domain` (pure rules), `data` (persistence/queries), `io` (http/queue/external calls), `config` (env/settings), `orchestration` (composition/wiring)
+- Refactor changes structure only — never observable behavior; a bug found mid-refactor gets its own fix commit first (Two Hats)
+- The public API and what consumers see must stay identical — check with `/deep-review` when touching an exported surface
 
-1. Identify: classify แต่ละ block → concern type พร้อม `file:line` evidence; สรุป concern map (block → type → target location)
-2. Plan: map concern → location ตาม architecture ของ project — ไม่ชัด layer → `/follow-architecture` ตัดสินก่อน; เรียง extract leaf ก่อน (pure domain → data/io → orchestration ทีหลัง); ระบุ consumers เตรียม `/update-references`
-3. Extract ทีละ concern เดียว: move → file/module เป้าหมาย → export ผ่าน barrel → `/update-references` + verify green ก่อน concern ถัดไป — caller เหลือแค่ orchestration
-4. Verify: ทุก unit เหลือ concern เดียว + `/run-check` + tests + `/report-before-after` (concern map เดิม vs ใหม่)
+### 2. Safety Net First
 
-Rules: 1 extraction = 1 concern ไม่ mix behavior change; pure logic extractable ก่อนเสมอ; placement ตาม dependency direction; preserve public API
+- Never refactor uncovered code — no tests → `/update-tests` writes characterization tests locking current behavior, green before and after
+- Suspect a weak suite → measure it with `/deep-test mutation` before trusting it
 
-### /refactor-to-srp → `/refactor-to-srp`
+### 3. Small Steps
 
-Canonical SRP splitter — promoted เป็น top-level skill (`refactor-to-srp/SKILL.md`); smells catalog อยู่ที่ `references/code-smells.md`, parallel file workers อยู่ที่ `## Subagents` (`### file-worker`)
+- One technique at a time (extract, rename, move) → verify green → next; never bundle several transformations into one step
+- Keep the build green between steps; `/git-commit` checkpoint every green batch so any step can be reverted
 
-### /restructure → `/restructure`
+### 4. Minimal Change
 
-Canonical structure refactor — promoted เป็น top-level skill (`restructure/SKILL.md`); procedure ละเอียด [references/structure.md](references/structure.md)
+- `/dont-over-engineer`; code that may reinvent an existing dep → `/use-lib-effective`, new dep choice → `/follow-my-techstack`; writing new code or seeing duplicates → `/follow-reusable` (reuse > extend > extract > create, rule of three)
+- No abstraction without a real consumer; dead code removed only after `/follow-tool-knip`; fix the cause not the symptom (`references/smells.md`) — shotgun surgery → one canonical source (`/follow-single-of-source`)
+- Never tune performance in a refactor pass — optimization changes timing; note it for a separate commit
 
-### /refactor-all-files-in-workspace, /refactor-all-workspace, /refactor-to-packages-shared (merged)
+### 5. SRP And Consistency
 
-Coverage scopes ที่ merge เข้า dispatcher นี้: ทุกไฟล์ใน workspace เดียวจนครบ → [references/scope-all-files.md](references/scope-all-files.md) · ทุก workspace ใน monorepo ตาม dependency order → [references/scope-all-workspace.md](references/scope-all-workspace.md) · extract shared code ข้าม packages ไป `packages/shared` → [references/packages-shared.md](references/packages-shared.md)
+- 1 unit = 1 reason to change; 1 file = 1 concern ≤250 lines (barrel/index excepted — `/check-long-files`); 1 folder = 1 domain
+- A workspace member's public API is its barrel `index`; internal code stays private, no deep imports across members
+- Naming, patterns and structure consistent across the whole scope; imports use the project path alias (e.g. `~/*`) — never `../../../`
+
+### 6. Simple Design Order
+
+- Judge the result in this order: it works (tests green) → it communicates intent (naming, no misleading comments) → no duplication → minimal elements; never optimize the later criteria at the cost of an earlier one
+- Write for the next reader: a test name states the behavior, a comment only explains what the code cannot say
+
+### 7. Context Aware
+
+- Never guess the scope — unclear → `/ask-me`; one sub-skill at a time in priority order
+- Read this `## Rules` block before writing new code too — new code should already be refactor-clean (enforced by global rules)
+
+### 8. Safety And Verification
+
+- Move/delete/rename → `/update-references`; destructive actions → dry run + user confirmation; never force push
+- Every refactor ends at `/run-verify` green with no broken references
+
+### 9. Smell → Technique
+
+- Detect smells with evidence (`file:line`), then apply the matching technique from `references/smells.md`; architecture-level smells → `/deep-review` instead of a file refactor
 
 ## Expected Outcome
 
-- Scope ที่เหมาะสมถูกเลือกและดำเนินการ
-- ไฟล์/packages มีขนาดเหมาะสม
-- imports/exports สะอาด ใช้ alias แทน relative paths ที่ซับซ้อน
-- SRP ชัดเจน
-- naming, patterns, structure สอดคล้อง
-- ผ่าน lint/typecheck/test/build
-- รายงาน before/after ครบ
+- The chosen scope is finished and provable: files/members sized right, one responsibility each, naming/patterns/structure consistent
+- imports/exports clean (alias instead of deep relative paths, barrels as the public API), architecture pattern applied when requested
+- No broken references; lint/typecheck/test/build green; before/after report delivered

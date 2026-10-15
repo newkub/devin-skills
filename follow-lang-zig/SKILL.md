@@ -1,138 +1,96 @@
 ---
 name: follow-lang-zig
-description: เขียน Zig ตาม best practices และ language conventions
+description: Write Zig per best practices and language conventions
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
-  - follow-lang-javascript
-  - follow-lang-kotlin
+  - follow-lang-rust
   - follow-best-practice
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-เขียน Zig ตาม best practices และ language conventions
+Write Zig applications and libraries per best practices and language conventions
 
 ## Scope
 
-ใช้สำหรับเขียน Zig applications และ libraries
+For Zig applications, libraries, and build scripts; single `SKILL.md` package — no `references/` — Zig is pre-1.0: verify the current language/toolchain breaking changes via `/deep-research` at use time before writing build scripts or C interop (official docs: https://ziglang.org/documentation/)
 
 ## Execute
 
-### 1. Setup Project
+### 1. Check Version And Setup Project
 
-> Goal: ตั้งค่า Zig project และ build configuration
+> Goal: set up the Zig project and build configuration for the installed toolchain
 
-ตั้งค่า Zig project
-
-1. สร้าง project ด้วย `zig init`
-2. ตั้งค่า `build.zig.zon` สำหรับ build configuration
-3. ตั้งค่า dependencies ใน `build.zig.zon`
-4. ตั้งค่า target สำหรับ cross-compilation
+1. Run `/deep-research` to confirm the installed `zig version` and the current `build.zig.zon`/module API — the build-system API changes between minors; read the official Zig Guide section for that version before coding `build.zig`
+2. Create the project with `zig init` (generates `build.zig`, `build.zig.zon`, `src/main.zig`)
+3. The build system is a DAG of steps: `b.addExecutable` with `root_module`/`root_source_file`, `b.installArtifact`, plus `run` and `test` steps wired to `-Doptimize`
+4. Declare dependencies in `build.zig.zon` (`.dependencies` with URL + `hash`); fetch with `zig fetch`; cross-compile by passing `-Dtarget`
+5. Build/run/test/fmt: `zig build`, `zig build run`, `zig build test`, `zig fmt`, `zig build --help`/`-l`
 
 ### 2. Write Zig Code
 
-> Goal: เขียน Zig code ตาม language conventions
+> Goal: write idiomatic Zig
 
-เขียน Zig code ตาม conventions
-
-1. ใช้ `const` สำหรับ immutable values
-2. ใช้ `var` สำหรับ mutable values
-3. ใช้ `error unions` สำหรับ error handling
-4. ใช้ `defer` สำหรับ cleanup
-5. ใช้ `try` สำหรับ error handling
+1. `const` for immutable (including comptime-known) values, `var` only when mutation is needed
+2. Errors as `error{ ... }` sets + error unions (`!T`), propagate with `try`/`catch`; optionals `?T` unwrapped with `orelse`
+3. Cleanups with `defer` (always) and `errdefer` (only on error return) — RAII-style resource management
+4. `@import("std")` for the standard library; a function returning `!void` for a fallible main
 
 ### 3. Memory Management
 
-> Goal: จัดการ memory อย่างเหมาะสมและปลอดภัย
+> Goal: manage memory explicitly and safely
 
-จัดการ memory อย่างเหมาะสม
-
-1. ใช้ allocators สำหรับ memory allocation
-2. ใช้ `defer` สำหรับ automatic cleanup
-3. ตรวจสอบ memory leaks
-4. ใช้ stack allocation เมื่อเป็นไปได้
-5. ใช้ RAII patterns สำหรับ resource management
+1. Every heap allocation takes an allocator; prefer `GeneralPurposeAllocator` (debug leak detection via `deinit` result) and `ArenaAllocator` for batch lifetimes
+2. Free with `defer allocator.free(...)`; with an arena, drop the batch instead of individual frees
+3. Prefer stack values and slices over heap where possible; check leaks in tests (`std.testing` with a GPA)
 
 ### 4. Optimize Performance
 
-> Goal: ปรับปรุง performance ด้วย compile-time และ SIMD
+> Goal: use compile-time features and SIMD
 
-ปรับปรุง performance
+1. `comptime` for compile-time computation and generic code (types are values)
+2. `inline` for small hot functions; `@Vector` for SIMD operations
+3. Release builds with the appropriate optimize mode (`ReleaseFast`/`ReleaseSafe`/`ReleaseSmall`); inspect generated assembly when tuning
+4. Profile before optimizing; measure with `/run-bench`
 
-1. ใช้ `comptime` สำหรับ compile-time computation
-2. ใช้ `inline` สำหรับ small functions
-3. ใช้ SIMD สำหรับ vectorized operations
-4. ตรวจสอบ assembly output
-5. ใช้ profiling tools สำหรับ optimization
+### 5. C Interop
+
+> Goal: bind C correctly for the current toolchain
+
+1. C headers are translated in the build system (e.g. `b.addTranslateC`) and imported as modules — the inline `@cImport` form was deprecated in recent 0.16-era releases; live-check which form the installed version supports and migrate if stale
+2. `extern` functions/`extern fn` for linking C symbols; verify ABI compatibility for the target
 
 ## Rules
 
-### 1. Zig Conventions
+### 1. Conventions
 
-ทำตาม Zig language conventions
-
-- ใช้ `camelCase` สำหรับ variable names
-- ใช้ `PascalCase` สำหรับ type names
-- ใช้ `snake_case` สำหรับ file names
-- ใช้ 4 spaces indentation
-- ใช้ 100 characters line length
+- `camelCase` variables/functions, `PascalCase` types, `snake_case` files, `SCREAMING_SNAKE_CASE` constants; 4-space indent; 100-column style (`zig fmt` is the formatter — never fight it)
 
 ### 2. Error Handling
 
-จัดการ errors อย่างเหมาะสม
-
-- ใช้ `error unions` (`!T`, `?T`, `try`)
-- ใช้ `errdefer` สำหรับ cleanup on error
-- ใช้ `orelse` สำหรับ early returns
-- ใช้ `orelse` สำหรับ optional unwrapping อย่างระมัดระวัง
-- ใช้ meaningful error messages
+- Meaningful named errors, no silent `catch {}`; `errdefer` for cleanup on failure; `!T` in signatures, `try` inside
 
 ### 3. Memory Safety
 
-รักษา memory safety
+- Explicit allocator passed down call chains; `defer` guaranteed cleanup; bounds checked by default; `@ptrCast`/`@alignCast` only with documented safety reasoning
 
-- ใช้ allocators สำหรับ safe memory management
-- ใช้ `defer` สำหรับ guaranteed cleanup
-- ตรวจสอบ bounds สำหรับ arrays
-- ใช้ `@ptrCast` อย่างระมัดระวัง
-- ใช้ `@setRuntimeSafety` สำหรับ safety checks
+### 4. Pre-1.0 Volatility
 
-### 4. Performance
+- Never hardcode Zig version numbers or removed-syntax workarounds in project code; check breaking changes via `/deep-research` at use time
 
-ปรับปรุง performance
-
-- ใช้ `comptime` สำหรับ compile-time evaluation
-- ใช้ `inline` สำหรับ hot paths
-- ใช้ `@Vector` สำหรับ SIMD vector types
-- ใช้ `@call` กับ `.auto`/`.no_async` options สำหรับ call optimization
-- ใช้ build mode `--release=fast` สำหรับ release optimization
-- ตรวจสอบ assembly output
-
-### 5. Interop
-
-ใช้ Zig interop features
-
-- ใช้ `@cInclude` สำหรับ C interop (ใช้ `@cImport` (deprecated ใน 0.16.0, ย้ายไป `b.addTranslateC` ใน build system))
-- ใช้ `@cDefine` สำหรับ C macros
-- ใช้ `extern` สำหรับ C functions
-- ใช้ `@import` สำหรับ library imports
-- ตรวจสอบ ABI compatibility
-
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-kotlin ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+- Use /follow-lang-rust if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- Zig code ที่เขียนตาม conventions
-- Memory safety ที่ดีขึ้น
-- Performance ที่ดีขึ้น
-- Error handling ที่ robust
-- Clean และ maintainable code
+- Idiomatic Zig code following official conventions and formatting
+- Explicit, leak-checked memory management with allocators and defer/errdefer
+- Robust error handling with error unions
+- Performance tuned with comptime, SIMD, and optimize modes
+- Clean, maintainable, and build-system-correct projects

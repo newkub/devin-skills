@@ -83,6 +83,8 @@ related:
 - checks ที่ไม่ apply (ไม่มี DB → ข้าม migrations) ให้ข้ามพร้อมเหตุผล
 - ใช้ release process ที่ project กำหนด (`.github`, `AGENTS.md`) ถ้ามี
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - Readiness checklist ครบทุกมิติพร้อมผลจริง

@@ -2,7 +2,16 @@
 
 Test CLI commands by running them through a real shell — checking exit codes, stdout, stderr, help text, flags, subcommands, and error paths — works with CLI tools built with Bun/Node/Rust/Go/Python, run from a built binary or package script
 
-> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action; never skip; if a finding is a blocker, fix it or report before running
+> Pre-Run: always run `/deep-review` (domain `review-cli`) first — never skip; if a finding is a blocker, fix it or report before running
+
+## Run Quick Path
+
+> Goal: run the existing CLI suite only (merged from `/test-cli`) — use steps 1-10 below for the deep pass
+
+1. Detect — `bin` field, commander/clap/cobra defs, `*.cli.test.*`, `bats` files, stdout snapshots; runner = the project runner (spawn via `child_process`/`assert_cmd`) or `bats`; the binary must be built first
+2. Run — scope the CLI specs (`bunx vitest run '*.cli.test.*'`, `bats tests/`); capture every case as exit code + stdout + stderr; record per-command status, exit-code mismatches, output diffs
+3. Classify — crash / wrong exit code / unexpected stderr → source → `/resolve-errors`; outdated snapshot or expected-output change → test → `/update-tests`; build/env failure → environment; repeats ≥3 → stop+report
+4. Report — persist → `.devin/temp/report/<workspace>/cli-test-<time>.md`; all passing → `/run-verify`
 
 ## 1. Detect CLI
 

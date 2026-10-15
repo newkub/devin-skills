@@ -27,9 +27,9 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 | Topic  | Workflow |
 |--------|----------|
-| Setup  | `workflows/setup-vercel/SKILL.md` — Vercel CLI, login, link project |
-| Config | `workflows/config-vercel/SKILL.md` — env vars, `vercel.json` config |
-| Verify | `workflows/verify-connection/SKILL.md` — CLI auth, project linked, env vars ครบ |
+| Setup  | `## Merged Details → setup-vercel` — Vercel CLI, login, link project |
+| Config | `## Merged Details → config-vercel` — env vars, `vercel.json` config |
+| Verify | `## Merged Details → verify-connection` — CLI auth, project linked, env vars ครบ |
 
 อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
@@ -136,7 +136,7 @@ export default async function handler(req: Request) {
 
 > Goal: ตรวจสอบ deployment ด้วย browser preview
 
-1. ทำ `/watch-browser-and-fix` ด้วย deployment URL
+1. ทำ `/watch-browser fix` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
 4. ทำ `/resolve-errors` เมื่อพบปัญหา
@@ -196,7 +196,7 @@ jobs:
 - ใช้ `bunx vercel deploy` สำหรับ preview
 - ใช้ `bunx vercel deploy --prod` สำหรับ production
 - ตั้งค่า protection rules สำหรับ production deployments
-- ใช้ `/watch-browser-and-fix` สำหรับ monitoring
+- ใช้ `/watch-browser fix` สำหรับ monitoring
 - ทำ `/loop-until-complete` จนกว่า deployment live
 
 ### 6. Advanced Configuration
@@ -217,7 +217,7 @@ jobs:
 ##### Scope
 
 - ครอบคลุม `vercel.json`, `vercel env` และ project settings
-- ถ้ายังไม่ได้ link project → ทำ `workflows/setup-vercel/SKILL.md` ก่อน
+- ถ้ายังไม่ได้ link project → ทำ `## Merged Details → setup-vercel` ก่อน
 - deploy จริง → `/deploy-to-vercel`
 
 ##### Execute
@@ -276,7 +276,7 @@ jobs:
 
 - ติดตั้ง `vercel` CLI, `vercel login`, `vercel link`
 - สร้าง `.vercel/project.json` ที่มี `orgId`/`projectId`
-- ถ้า link แล้ว → verify เท่านั้น; config env/vercel.json → `workflows/config-vercel/SKILL.md`; deploy → `/deploy-to-vercel`
+- ถ้า link แล้ว → verify เท่านั้น; config env/vercel.json → `## Merged Details → config-vercel`; deploy → `/deploy-to-vercel`
 
 ##### Execute
 
@@ -330,7 +330,7 @@ jobs:
 
 - Vercel CLI ติดตั้งและ authenticated
 - project link แล้วพร้อม `.vercel/project.json`
-- พร้อมไป `workflows/config-vercel/SKILL.md` หรือ `/deploy-to-vercel`
+- พร้อมไป `## Merged Details → config-vercel` หรือ `/deploy-to-vercel`
 
 ### verify-connection
 
@@ -351,7 +351,7 @@ jobs:
 
 1. `vercel whoami` — ต้องคืน user/team
 2. ตรวจ scope ตรงกับ project owner (personal vs team) — `vercel teams ls` ถ้าจำเป็น
-3. auth fail → แนะนำ `workflows/setup-vercel/SKILL.md` — ไม่ login เอง
+3. auth fail → แนะนำ `## Merged Details → setup-vercel` — ไม่ login เอง
 
 ###### 2. Check Project Link
 
@@ -1442,6 +1442,6 @@ Official website and documentation resources for Vercel.
 
 อ้างอิงเพิ่มเติม:
 
-- [references/vercel-overview.md](references/vercel-overview.md) — overview ของ Vercel platform
-- [references/vercel-website.md](references/vercel-website.md) — links หลักของ Vercel
+- [## Merged Details → `### references/vercel-overview`](## Merged Details → `### references/vercel-overview`) — overview ของ Vercel platform
+- [## Merged Details → `### references/vercel-website`](## Merged Details → `### references/vercel-website`) — links หลักของ Vercel
 

@@ -6,9 +6,8 @@ related:
   - use-agent-browser
   - follow-tool-playwright
   - use-chrome-devtools
-  - watch-browser-and-test
-  - capture
-  - test-e2e
+  - deep-test
+  - use-agents-capture
   - resolve-errors
   - run-dev
 
@@ -22,7 +21,7 @@ Use the `playwriter` CLI (or the registered `playwriter` MCP server) to control 
 
 Use when you need browser automation on the user's real Chrome — already-logged-in sites, JS-heavy SPAs (Instagram, X, dashboards), cookie consent/login walls, sites that need existing extensions/cookies, flows that require collaborating with the user (captcha, consent) — the CLI sends Playwright code through a local WebSocket relay (`localhost:19988`) to the Chrome extension
 
-- Boundary: pick the tool per `/use-chrome-devtools` `## Tool Selection` (canonical) — live inspect/debug (console, network detail, CSS cascade, perf, Lighthouse) → `chrome-devtools-mcp`; fresh-browser automation, record, PDF, a11y audit, batch/CI that don't need login state → `/use-agent-browser`; E2E test suite → `/test-e2e`/`/follow-tool-playwright`; automation on the user's real Chrome → `playwriter` (this skill)
+- Boundary: pick the tool per `/use-chrome-devtools` `## Tool Selection` (canonical) — live inspect/debug (console, network detail, CSS cascade, perf, Lighthouse) → `chrome-devtools-mcp`; fresh-browser automation, record, PDF, a11y audit, batch/CI that don't need login state → `/use-agent-browser`; E2E test suite → `/deep-test e2e`/`/follow-tool-playwright`; automation on the user's real Chrome → `playwriter` (this skill)
 - MCP mode: the `playwriter` server registered in `mcp_config.json` (`bunx -y playwriter@latest`) — it exposes a single `execute` tool for Playwright code; CLI mode uses `playwriter -s <id> -e '<code>'`
 - If a site renders with JS (fetch/curl only gets an empty shell) → use playwriter right away; don't waste time on `webfetch`/`curl`
 
@@ -173,8 +172,8 @@ playwriter session new --remote <id>                      # control another user
 
 - Extension will not connect and cannot be fixed → `/use-agent-browser` (fresh browser) or `chrome-devtools-mcp` (inspect only) or `/follow-tool-playwright`; no fallback available → notify the user
 
-- Use /watch-browser-and-test if needed
-- Use /capture if needed
+- Use /deep-test website if needed
+- Use /use-agents-capture if needed
 - Use /use-chrome-devtools if needed
 - Use /run-dev if needed
 

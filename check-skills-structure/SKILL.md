@@ -58,7 +58,7 @@ Besides the bullet counts, use `--skill <name>` or `--detail` to see the **actua
 | `References`/`Workflows`/`Subagents`/`BestPractices` | counts of `references/*.md`, `workflows/*/SKILL.md`, `subagents`, `best-practices/*.md` |
 | `Source`/`Scripts` | whether a `src/` dir exists, number of files in `scripts/` |
 | `MCP` | SKILL.md mentions MCP/`mcp_config`, or `src/` is an MCP package |
-| `Website` | has `references/website.md`, SKILL.md mentions website/viewer/vite, or `src/` is a web app |
+| `Website` | SKILL.md mentions website/viewer/vite, or `src/` is a web app |
 | `Lines` | SKILL.md line count |
 
 ### 3. Triage Findings

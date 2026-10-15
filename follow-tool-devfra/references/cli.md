@@ -1,31 +1,23 @@
-| key | value |
-|---|---|
-| adapter | `createCac(def)` จาก `devframe/adapters/cac` — wrap `createDevServer`/`createBuild`/`createMcpServer` เป็น CLI เดียว (peer: `bun add cac`) |
-| source | https://devfra.me/raw/guide/standalone-cli.md, https://devfra.me/raw/adapters/cac.md (verified 2026-09-18) |
-
 | command | description | options |
 |---|---|---|
-| `my-tool` | dev server (default command) at http://localhost:7777/ | `--port`, `--host`, `--open`/`--no-open` |
+| `my-tool` | dev server (default command) at `http://localhost:9999/` — or `cli.port` เมื่อตั้งไว้ | `--port`, `--host`, `--open`/`--no-open` |
 | `my-tool --config ./my.config.mjs` | custom flags ผ่าน `cli.configure()` | `--config` |
 | `my-tool build --out-dir dist-static` | self-contained static deploy | `--out-dir`, `--base` |
 | `my-tool mcp` | stdio MCP server | — |
 
-| `cli` option | description | default |
+| `cli` field (definition) | description | default |
 |---|---|---|
 | `command` | binary name | `id` |
-| `port` | preferred port | `9999` |
+| `port` | preferred dev port | `9999` |
 | `portRange` | forwarded to get-port-please | — |
 | `random` | prefer random open port | `false` |
 | `host` | host (`--host` overrides) | `localhost` |
-| `open` | auto-open browser (embeds OTP); `boolean | string` — string = path to open | `true` |
+| `open` | auto-open browser (embeds OTP); `boolean` หรือ string = path to open | `true` |
 | `flags` | typed flags via `defineCliFlags` | — |
-| `configure(cli)` | contribute cac options/commands | — |
+| `configure(cli)` | contribute cac options/commands — runs *before* `createCac`'s `configureCli` | — |
 
-| api | description | signature |
+| `createCac(def, options)` | description | default |
 |---|---|---|
-| `defineCliFlags` | typed CLI flags (Standard Schema — booleans → `--verbose`/`--no-verbose`, camelCase → kebab-case) | `defineCliFlags({ depth: v.pipe(v.number()) })` |
-| `InferCliFlags` | inferred flags type at call site | `setup(ctx, { flags })` |
-| `parseCliFlags` | validate raw bag สำหรับ custom framework (commander/yargs/oclif) | `parseCliFlags(schema, rawBag)` |
-| `createDevServer` | dev server factory → `StartedServer` | `createDevServer(def, { port, flags, onReady })` |
-| `createBuild` | build factory | `createBuild(def, { outDir })` |
-| `createMcpServer` | MCP server factory | `createMcpServer(def, { transport: 'stdio' })` |
+| `defaultPort` | dev port เมื่อ `--port` ไม่ระบุ | `9999` หรือ `def.cli?.port` |
+| `configureCli` | `(cli: CAC) => void` เพิ่ม commands/flags | none |
+| `onReady` | `(info: { origin, port, app }) => void \| Promise<void>` เรียกเมื่อ listen สำเร็จ | none |

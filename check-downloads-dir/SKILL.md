@@ -5,7 +5,7 @@ argument-hint: "[time-range-or-count]"
 related:
   - check-screenshots-dir
   - read-from-downloads
-  - capture
+  - use-agents-capture
   - analyze-codebase-quality
   - report
   - suggest-next-action
@@ -95,7 +95,7 @@ Pull the latest file group from `C:\Users\Veerapong\Downloads` by time range or 
 - Use /check-screenshots-dir if needed
 - Use /read-from-downloads if needed
 - Use /report if needed
-- Use `/capture` if needed
+- Use `/use-agents-capture` if needed
 - Use `/analyze-codebase-quality` if needed
 
 ## Expected Outcome

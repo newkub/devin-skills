@@ -20,8 +20,8 @@ Watch CI/CD ของ repo ปัจจุบันอย่างต่อเ�
 
 ใช้เมื่อต้องการเฝ้า pipeline หลัง push/merge หรือเมื่อรู้ว่า CI/CD fail อยู่ — ครอบคลุม CI (GitHub Actions) และ CD (Cloudflare Workers, Pages, deploy workflows, หรือ target อื่นที่ตรวจพบใน repo) แก้ไข errors ทำผ่าน `resolve-*` skills เสมอ — skill นี้ทำหน้าที่ watch + dispatch + verify เท่านั้น ไม่แก้ code เองโดยตรง
 
-- โหมด repo-scoped (default ถ้าอยู่ใน git repo หรือมี `--repo`): resolve ทุก pipeline ที่ตรงกับ repo — ดู `references/repo-resolve.md`
-- โหมด single-run (`--run-id` หรือ `--url`): ติดตาม run เดียวจนผ่าน — ดู `references/single-run.md` หรือ helper `scripts/resolve-cicd.ts`
+- โหมด repo-scoped (default ถ้าอยู่ใน git repo หรือมี `--repo`): resolve ทุก pipeline ที่ตรงกับ repo — ดู `## Merged Details → references/repo-resolve`
+- โหมด single-run (`--run-id` หรือ `--url`): ติดตาม run เดียวจนผ่าน — ดู `## Merged Details → references/single-run` หรือ helper `scripts/resolve-cicd.ts`
 - ไม่ trigger run ครั้งแรกเอง
 
 ## Execute
@@ -32,9 +32,9 @@ Step dependencies: Step 1 → 2 → 3 วนซ้ำจน clean หรือ b
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — re-run/watch workflow บน remote จนยืนยัน green |
+| `verify`, `verify-resolved` | `## Merged Details → verify-resolved` — re-run/watch workflow บน remote จนยืนยัน green |
 
-1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+1. ถ้า argument เป็น `verify` → อ่าน `## Merged Details → verify-resolved` แล้วทำตาม flow — ไม่ resolve ใหม่
 2. ถ้าไม่ระบุ → ทำ Steps 1-4 ตามปกติ
 
 ### 1. Detect Targets
@@ -489,9 +489,9 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
    - CI/CD log ล่าสุดทีมี run ID หรือ URL
 
-   - `watch-deploy/references/targets.md` ใน `watch-deploy`
+   - section `references/targets` ใน `watch-deploy/SKILL.md`
 
-   - `references/runs.md` ใน `/resolve-cicd`
+   - `## Merged Details → references/runs` ใน `/resolve-cicd`
 
 4. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
@@ -567,7 +567,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 1. ใช้ `url-or-target` จาก argument ถ้ามี
 
-2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, `watch-deploy/watch-deploy/references/targets.md`
+2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, section `references/targets` ใน `watch-deploy/SKILL.md`
 
 3. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
@@ -725,7 +725,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 - ไม่ rollback อัตโนมัติ รอ user ตัดสินใจ
 
-- ระบุ platform-specific rollback จาก `watch-deploy/watch-deploy/references/targets.md`
+- ระบุ platform-specific rollback จาก section `references/targets` ใน `watch-deploy/SKILL.md`
 
 
 

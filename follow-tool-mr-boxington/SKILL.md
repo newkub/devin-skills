@@ -8,7 +8,7 @@ related:
   - follow-lang-rust
   - follow-tool-github-actions
   - resolve-errors
-  - optimize-bundle
+  - optimize
   - use-git-worktrees
   - setup-cicd
   - cleanup-artifact

@@ -21,7 +21,7 @@ JSX/HTML → images/PDFs โดยไม่ต้อง browser — OG images, s
 
 ## SEO Integration
 
-- ใช้ใน `/improve-seo` สำหรับ findings `og:image`/`twitter:image` ที่ขาดหรือ static — generate per-page OG แบบ dynamic
+- ใช้ใน `/improve seo` สำหรับ findings `og:image`/`twitter:image` ที่ขาดหรือ static — generate per-page OG แบบ dynamic
 - Route handler deterministic: input = title/slug → output = image; cache ตาม slug hash
 - ทดสอบด้วย social debuggers (Facebook/Twitter card validators) หลัง deploy
 

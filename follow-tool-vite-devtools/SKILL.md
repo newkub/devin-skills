@@ -1,139 +1,143 @@
 ---
 name: follow-tool-vite-devtools
-description: ตั้งค่าและสร้าง integration บน Vite DevTools (`@vitejs/devtools` + DevTools Kit) ตาม official docs
+description: Set up and build integrations on Vite DevTools (`@vitejs/devtools` + DevTools Kit) per official docs
 argument-hint: "[setup-or-kit-scope]"
 related:
-  - wrikka-vite-devtools
+  - use-wrikka-vite-devtools
   - follow-tool-vite
   - follow-tool-vite-plugins
   - follow-tool-devfra
   - follow-tool-vitest
   - follow-tool-rolldown
   - follow-my-techstack
+  - run-dev
+  - resolve-errors
+  - check-types-definition
 ---
 
 ## Goal
 
-เปิดใช้ Vite DevTools ในโปรเจกต์ Vite และสร้าง/พอร์ต integration เข้า dock ผ่าน DevTools Kit (`Plugin.devtools.setup`) ตาม official docs <https://devtools.vite.dev/>
+Enable Vite DevTools in a Vite project and create/port integrations into the dock via DevTools Kit (`Plugin.devtools.setup`) per official docs <https://devtools.vite.dev/>
 
 ## Scope
 
-ใช้สำหรับงานที่เกี่ยวกับ devtools framework ของระบบนิเวศ Vite
+Use for work involving the Vite ecosystem devtools framework
 
-- ติดตั้ง/คอนฟิก `@vitejs/devtools` ใน `vite.config.ts` (`apply`, `embeddedVisibility`, `dockPreferences`)
-- กรณีไม่มี HTML entry → ใช้ client injector จาก browser entry
-- Build DevTools พร้อมแอป (`build.withApp`, `build.injection`, `/__devtools/`)
-- ใช้ built-in integrations — Rolldown, Vite, Vitest, Oxc
-- เขียน Vite plugin ที่ mount UI เข้า dock ด้วย `devtools.setup`
-- พอร์ต Devframe app เข้า hub ด้วย `createPluginFromDevframe`
-- รายละเอียด option/API matrix → `references/apis.md`
+- Install/configure `@vitejs/devtools` in `vite.config.ts` (`apply`, `embeddedVisibility`, `dockPreferences`)
+- When there is no HTML entry → use the client injector from the browser entry
+- Ship DevTools with the app build (`build.withApp`, `build.injection`, `/__devtools/`)
+- Use built-in integrations — Rolldown, Vite, Vitest, Oxc
+- Write Vite plugins that mount UI into the dock via `devtools.setup`
+- Port a Devframe app into the hub with `createPluginFromDevframe`
+- Option details/API matrix → `references/apis.md`
 
 ## Execute
 
 ### 1. Install
 
-> Goal: ได้เวอร์ชันที่ Vite DevTools รองรับจริง
+> Goal: land on versions Vite DevTools actually supports
 
-1. อัป Vite เป็น 8.3+ — `"vite": "^8.3.0"` ใน `package.json` (ทำ `/follow-tool-vite`)
-2. ติดตั้งแพ็กหลัก `bun add -D @vitejs/devtools` (docs ใช้ `pnpm add -D`; สลับ pm ตามโปรเจกต์)
-3. ถ้าจะเขียน integration เอง → `bun add -D @vitejs/devtools-kit`
-4. ตรวจ version จริงหลังก่อนใช้ API ใหม่ — ทั้งหมด release พร้อมกัน (ดู `### 7. Version Notes`)
+1. Upgrade Vite to 8.3+ — `"vite": "^8.3.0"` in `package.json` (do `/follow-tool-vite`; pin versions per the `/follow-my-techstack` catalog)
+2. Install the main package `bun add -D @vitejs/devtools` (docs use `pnpm add -D`; swap pm per project)
+3. To author your own integration → `bun add -D @vitejs/devtools-kit`
+4. Verify actual installed versions before using new APIs — all packages release together (see `### 7. Version Notes`)
 
 ### 2. Enable In Config
 
-> Goal: เปิด dock ทั้ง dev และ build
+> Goal: open the dock in both dev and build
 
-1. ใส่ `devtools: true` ใน `defineConfig` — โหมด shorthand นี้เปิดทั้ง `vite dev` และ `vite build`
-2. ถ้าเอาเฉพาะบางคำสั่ง → ใช้ form object แล้วตั้ง `apply` (`'all'` ค่า default, `'serve'`, `'build'`)
-3. รัน dev server แล้วตรวจว่า dock โผล่; ถ้าไม่โผล่ → ดู `### 6. Troubleshooting`
+1. Add `devtools: true` in `defineConfig` — this shorthand mode enables both `vite dev` and `vite build`
+2. To limit it to specific commands → use the object form with `apply` (`'all'` default, `'serve'`, `'build'`)
+3. Run the dev server and confirm the dock appears; if it does not → see `### 6. Troubleshooting`
 
 ### 3. Tune The Dock UI
 
-> Goal: ให้ dock รบกวนหน้าน้อยที่สุดตาม teams ต้องการ
+> Goal: keep the dock as unobtrusive as the team wants
 
-1. ตั้ง `embeddedVisibility` — `'normal'` โชว์ทันที (default), `'passive'` ซ่อนจนกด `Shift + Alt + D` แล้วจำไว้, `'hidden'` ใช้ shortcut เดียวแต่ไม่จำ
-2. ตั้ง `dockPreferences.defaultMode` / `defaultPosition` สำหรับ layout เริ่มต้น (เช่น `'edge'` + `'bottom'`)
-3. ค่าที่ user แก้ใน DevTools เองจะ override `dockPreferences` — อย่าตั้งค่าที่ขัดกับพฤติกรรม default
+1. Set `embeddedVisibility` — `'normal'` shows immediately (default), `'passive'` stays hidden until `Shift + Alt + D` and remembers, `'hidden'` uses the same shortcut but does not remember
+2. Set `dockPreferences.defaultMode` / `defaultPosition` for the initial layout (e.g. `'edge'` + `'bottom'`)
+3. Values the user changes inside DevTools itself override `dockPreferences` — do not set values that fight the default behaviour
 
 ### 4. Projects Without An HTML Entry
 
-> Goal: ได้ dock แม้ Vite ไม่ได้เสิร์ฟ HTML
+> Goal: get the dock even when Vite does not serve HTML
 
-1. ถ้าแอปเป็น JS-only entry / backend integration / middleware mode → import injector จาก browser entry แทน config
-2. เลือก entry ตาม visibility mode เพียงตัวเดียว: `@vitejs/devtools/client/inject` (normal), `client/inject-passive` (passive), `client/inject-hidden` (hidden)
-3. type declarations ของ subpath เหล่านี้ยังไม่เสร็จ — ใส่ `// @ts-expect-error` ที่ import ชั่วคราว แล้วเอาออกเมื่อ upstream มี types
+1. If the app is a JS-only entry / backend integration / middleware mode → import the injector from the browser entry instead of config
+2. Pick exactly one entry per visibility mode: `@vitejs/devtools/client/inject` (normal), `client/inject-passive` (passive), `client/inject-hidden` (hidden)
+3. Type declarations for these subpaths are not finished — add `// @ts-expect-error` on the import temporarily and remove it once upstream ships types
 
 ### 5. Ship DevTools With The Build
 
-> Goal: ได้ static DevTools พร้อม output ของแอป
+> Goal: get static DevTools next to the app output
 
-1. ตั้ง `devtools: { apply: 'build', build: { withApp: true } }` เพื่อเขียนไฟล์ DevTools ข้าง build ของแอป (`build.outDir` override ได้ default ตาม Vite)
-2. full-page UI อยู่ที่ `/__devtools/`; embed dock ในแอปที่ build แล้วด้วยการโหลด `/__devtools/embedded.js`
-3. ถ้าอยากให้เห็น dock ในแอปที่ build → `build.injection: true` (default `false` และบังคับว่าต้องคู่กับ `build.withApp: true`)
-4. deploy แล้วต้องเสิร์ฟ assets ใต้ Vite `base` ด้วย ไม่งั้น dock 404
-5. ยืนยันด้วย `/test-website` หรือ `/use-agent-browser` ว่า route `/__devtools/` เปิดได้จริงใน build ที่ deploy
+1. Set `devtools: { apply: 'build', build: { withApp: true } }` to write DevTools files beside the app build (`build.outDir` overridable, Vite default otherwise)
+2. The full-page UI lives at `/__devtools/`; embed the dock in the built app by loading `/__devtools/embedded.js`
+3. To show the dock inside the built app → `build.injection: true` (default `false` and it requires `build.withApp: true`)
+4. After deploy you must also serve the assets under the Vite `base`, otherwise the dock 404s
+5. Confirm with `/deep-test website` or `/use-agent-browser` that the `/__devtools/` route really opens in the deployed build
 
 ### 6. Use Built-in Integrations
 
-> Goal: ใช้ tool ที่ ship มาแล้วแทนเขียนใหม่
+> Goal: use the tools already shipped instead of writing your own
 
-1. Rolldown (`@vitejs/devtools-rolldown`) — module graph/chunk/asset/treemap/flamegraph, plugin hook cost, package duplication, session compare (ทำ `/follow-tool-rolldown`)
-2. Vite (`@vitejs/devtools-vite`) — plugin inspector + module transforms ตาม pipeline order (ทำ `/follow-tool-vite`)
-3. Vitest (`@vitejs/devtools-vitest`) — test UI ใน dock; เปิด dock เฉพาะเมื่อโปรเจกต์มี `vitest`, launch แล้วติดตั้ง `@vitest/ui` + รัน `vitest --ui` เป็น iframe (ทำ `/follow-tool-vitest`)
-4. Oxc (`@vitejs/devtools-oxc`) — oxlint/oxfmt inspector + ESLint/Prettier/Biome migration; รัน standalone ได้ด้วย `npx @vitejs/devtools-oxc`; ถ้าตรวจเจอ Vite Plus จะรันผ่าน `vp`
-5. แยก integration ที่ยังไม่มีในโปรเจกต์เป็น launcher ใน dock — กดแล้วติดตั้ง on demand แล้ว restart dev server; ตัวที่มีอยู่แล้วจะ mount อัตโนมัติ
+1. Rolldown (`@vitejs/devtools-rolldown`) — module graph/chunk/asset/treemap/flamegraph, plugin hook cost, package duplication, session compare (do `/follow-tool-rolldown`)
+2. Vite (`@vitejs/devtools-vite`) — plugin inspector + module transforms in pipeline order (do `/follow-tool-vite`)
+3. Vitest (`@vitejs/devtools-vitest`) — test UI in the dock; the dock appears only when the project has `vitest`; launching installs `@vitest/ui` and runs `vitest --ui` as an iframe (do `/follow-tool-vitest`)
+4. Oxc (`@vitejs/devtools-oxc`) — oxlint/oxfmt inspector + ESLint/Prettier/Biome migration; runs standalone via `npx @vitejs/devtools-oxc`; if Vite Plus is detected it runs through `vp`
+5. Integrations not yet in the project appear as a launcher in the dock — pressing it installs on demand, then restart the dev server; ones already present mount automatically
 
 ### 7. Version Notes
 
-> Goal: อ้างอิงข้อมูลที่ตรวจแล้ว ไม่ใช่ความจำ
+> Goal: cite verified data, not memory
 
-- `@vitejs/devtools`, `-kit`, `-vite`, `-rolldown`, `-vitest`, `-oxc` = `0.7.6` (MIT, VoidZero Inc. & Vite Contributors; verified 2026-10-14)
-- `devtools-vite` upstream ยังขึ้นว่า "work in progress" — อย่าสร้างของสำคัญพิงมัน
-- reference error code เมื่อ kit/rolldown พัง: DTK00xx (Kit) และ RDDT00xx (Rolldown) ในหน้า Error Reference ของ docs
+- `@vitejs/devtools`, `-kit`, `-vite`, `-rolldown`, `-vitest`, `-oxc` release in lockstep: stable `0.7.6` (published 2026-09-25, ≥7 days) / latest `0.8.0` (2026-10-14) — MIT, VoidZero Inc. & Vite Contributors (verified 2026-10-15)
+- `0.8.0` breaking change: json-render moved from `@vitejs/devtools-kit` into `@vitejs/devtools` (vitejs/devtools#604) — on `0.8.x` import the renderer from the core package
+- The `devtools-vite` upstream is still marked "work in progress" — do not hang anything critical on it
+- Reference error codes when kit/rolldown breaks: DTK00xx (Kit) and RDDT00xx (Rolldown) on the docs Error Reference page
 - Docs: `https://devtools.vite.dev/guide/` (Getting Started, Chrome Extension), `/kit/` (Kit), `/rolldown/`, `/vite/`, `/vitest/`, `/oxc/`, `/errors/`
 
 ## Rules
 
 ### 1. Choose The Right Layer
 
-- เขียน Vite plugin ปกติ → ใช้ `Plugin.devtools.setup` ตรง ๆ (docks, terminals, palette, custom renderers อยู่ที่นี่)
-- มี Devframe definition อยู่แล้ว → ใช้ `createPluginFromDevframe(def, { setup })` จาก `@vitejs/devtools-kit/node` แล้วได้ dock iframe จาก `id`/`name`/`icon`/`basePath` อัตโนมัติ — ไม่ต้องเขียน plugin เอง
-- ต้องการ tool ที่ไม่พึ่ง Vite เลย (CLI/MCP/static dashboard) → ไป `follow-tool-devfra` ซึ่งเป็นฐานของ Kit อีกชั้น
-- เรียงชั้น: Vite DevTools → `@vitejs/devtools-kit` (hub: dock, palette, terminals, `devtools.setup`) → Devframe (framework-neutral)
+- Writing a plain Vite plugin → use `Plugin.devtools.setup` directly (docks, terminals, palette, custom renderers all live here)
+- Already have a Devframe definition → use `createPluginFromDevframe(def, { setup })` from `@vitejs/devtools-kit/node`; the dock iframe comes automatically from `id`/`name`/`icon`/`basePath` — no plugin to write yourself
+- Need a tool with zero Vite dependency (CLI/MCP/static dashboard) → go to `follow-tool-devfra`, which is the layer beneath the Kit
+- Layer order: Vite DevTools → `@vitejs/devtools-kit` (hub: dock, palette, terminals, `devtools.setup`) → Devframe (framework-neutral)
 
 ### 2. Config Discipline
 
-- ตั้ง `devtools: true` แล้วทดสอบทั้ง `dev` และ `build` ก่อน merge — shorthand นี้เปิดสองทาง
-- ใช้ `apply: 'serve'` สำหรับโปรเจกต์ที่ไม่ต้องการ devtools ติดไปพร้อมกับ build
-- `build.injection` ใช้ได้เมื่อ `build.withApp: true` เท่านั้น; เขียน config ตามลำดับนี้ทุกครั้ง
-- อย่า hardcode path `/__devtools/` ในโค้ดแอป — อ่าน `base` ของ Vite ก่อนประกอบ URL
+- With `devtools: true` set, test both `dev` and `build` before merge — this shorthand enables both
+- Use `apply: 'serve'` for projects that must not ship devtools with the build
+- `build.injection` only works when `build.withApp: true`; always write the config in this order
+- Never hardcode the `/__devtools/` path in app code — read Vite's `base` and compose the URL
 
 ### 3. Integration Authoring
 
-- เพิ่ม `/// <reference types="@vitejs/devtools-kit" />` ที่ไฟล์ plugin เพื่อให้ `devtools` hook มี type
-- register dock ด้วย `ctx.docks.register({ id, title, icon, type, url })` — `id` ต้อง stable เพราะ user bookmark ไว้
-- เลือก dock `type` ตามงาน: `iframe` (UI ของตัวเอง), `action` (ปุ่ม trigger), `custom` (renderer), `launcher` (ติดตั้ง on demand), `json-render` (spec from data)
-- ใช้ `ctx.commands.register({ id, title, handler })` สำหรับ command palette; gate ด้วย when-clause เมื่อไม่เสมอไป
-- RPC ของ Kit ใช้ birpc + valibot; state ข้าม server↔client เป็น patch-synced shared state (ดู `references/apis.md`)
-- ถ้า ship ขึ้น GitHub → ติด tag `vite-devtools` ตามที่ docs ขอ เพื่อให้เห็นของ ecosystem
+- Add `/// <reference types="@vitejs/devtools-kit" />` to the plugin file so the `devtools` hook is typed
+- Register a dock with `ctx.docks.register({ id, title, icon, type, url })` — `id` must be stable because users bookmark it
+- Pick the dock `type` by job: `iframe` (own UI), `action` (trigger button), `custom` (renderer), `launcher` (install on demand), `json-render` (spec from data; on `0.8.0`+ ships from `@vitejs/devtools`, not the Kit)
+- Use `ctx.commands.register({ id, title, handler })` for the command palette; gate with when-clauses when not always available
+- Kit RPC uses birpc + valibot; state across server↔client is patch-synced shared state (see `references/apis.md`)
+- If you publish to GitHub → add the `vite-devtools` tag as the docs ask, so the ecosystem listing sees it
 
 ### 4. Boundaries With Other Skills
 
-- เรื่อง dev server/build config ทั่วไป → `/follow-tool-vite`; เรื่องเขียน plugin → `/follow-tool-vite-plugins` / `/follow-create-vite-plugin`; skill นี้ครอบเฉพาะชั้น devtools
-- โปรเจกต์ที่ใช้ `wrikka-vite-devtools` (`/use-wrikka-vite-devtools`) มี devtools hub ของตัวเองบน Devframe — อย่าเปิด `@vitejs/devtools` ซ้อนจนได้ dock สองชั้นโดยไม่ตั้งใจ; ถ้าจะรวมให้ mount ผ่าน `createPluginFromDevframe` ตัวเดียว
+- General dev server/build config → `/follow-tool-vite`; plugin authoring → `/follow-tool-vite-plugins` / `/follow-create-vite-plugin`; this skill covers only the devtools layer
+- Projects using the `wrikka-vite-devtools` plugin (`/use-wrikka-vite-devtools`) already have their own devtools hub on Devframe — do not stack `@vitejs/devtools` on top and end up with two docks by accident; to consolidate, mount through a single `createPluginFromDevframe`
 
 ### 5. Quality Gates
 
-- ตรวจ schema จริงก่อนใช้ option ใด — `/check-types-definition` บน `devtools` type จาก Vite/Kit, หรือ `/follow-tool-vite` ถ้าไม่แน่
-- หลังเปลี่ยน config → รัน `/run-dev` แล้ว verify dock ด้วย browser จริง ไม่ใช่ดูแค่ log
-- ถ้า build/CI พังจาก devtools → `/resolve-errors`; ใช้ error code (DTK/RDDT) ค้นใน docs ก่อนเดา
+- Verify the real schema before using any option — `/check-types-definition` on the `devtools` type from Vite/Kit, or `/follow-tool-vite` when unsure
+- After a config change → run `/run-dev` and verify the dock in a real browser, not just logs
+- If build/CI breaks because of devtools → `/resolve-errors`; look up the error code (DTK/RDDT) in the docs before guessing
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-1. `vite.config.ts` เปิด Vite DevTools อย่างจงใจ (`apply`, visibility, dock layout) ไม่ใช่ leftover shorthand
-2. โปรเจกต์ไม่มี HTML entry ยังได้ dock ผ่าน client injector ที่ถูกต้องตาม mode
-3. ใช้ built-in integrations (Rolldown/Vite/Vitest/Oxc) เป็น และเลือก layer ที่ถูกเมื่อเขียน integration ใหม่
-4. integration ที่เขียน/พอร์ต mount เข้า dock เดียวกับระบบ ไม่ชนกันเอง
-5. ทุก claim อ้างอิง docs/npm version `0.7.6` ที่ตรวจแล้ว ไม่ใช่ memory
+1. `vite.config.ts` enables Vite DevTools deliberately (`apply`, visibility, dock layout), not a leftover shorthand
+2. Projects without an HTML entry still get the dock via the client injector matching the mode
+3. Built-in integrations (Rolldown/Vite/Vitest/Oxc) are used correctly and the right layer is chosen when authoring a new integration
+4. Authored/ported integrations mount into the one system dock without colliding with each other
+5. Every claim cites verified docs/npm versions (stable `0.7.6`, latest `0.8.0`), not memory

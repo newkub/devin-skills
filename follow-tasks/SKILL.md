@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - run-test
-  - run-task-all
   - run-check
   - run-verify
   - run-scan
@@ -87,9 +86,8 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 1. ตรวจสอบ scripts syntax ใน `package.json` หรือ task runner file — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
 2. ยืนยัน `check` script = `format && lint && typecheck && scan` (format ก่อน lint) และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test` — `ci` ต้อง read-only ผ่าน `format:check` ไม่ใช่ `format`
 3. ทำ `/run-test all` เพื่อรัน unit, integration, e2e, coverage
-4. ทำ `/run-task-all` เพื่อรันทุก task/script ที่ตั้งค่าไว้ครบถ้วน
-5. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
-6. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/deep-review` เพื่อสร้าง/อัปเดต CLI แล้ว retry
+4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
+5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/deep-review` เพื่อสร้าง/อัปเดต CLI แล้ว retry
 
 ## Rules
 

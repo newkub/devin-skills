@@ -57,7 +57,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 
 > Goal: Summarize the result from the persona's point of view
 
-1. Run `/report` with findings and recommendations
+1. Run `/report-review` with findings and recommendations (chat table, no files)
 2. Highlight the top 3-5 most important issues
 3. Run `/suggest-next-action`
 

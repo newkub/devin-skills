@@ -66,6 +66,8 @@ related:
 - ใช้ /check-secrets ถ้าจำเป็น
 
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - รายการ config files ทั้งหมด

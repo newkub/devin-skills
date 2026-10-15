@@ -126,6 +126,8 @@ related:
 - ใช้ /open-files-in-web ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ANSI UX/UI report ครอบคลุมทุก screen/tab ทุก box ขนาดเท่ากันไม่เพี้ยน

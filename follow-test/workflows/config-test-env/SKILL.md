@@ -4,7 +4,7 @@ description: ตั้งค่า test environment — env vars, fixtures, test
 argument-hint: "[scope]"
 related:
   - follow-test
-  - follow-config
+  - update-config
   - check-secrets
   - deep-review
   - follow-secret-manager
@@ -23,7 +23,7 @@ related:
 
 - ใช้เมื่อต้อง config environment สำหรับ testing — หลังเลือก strategy level ใน `/follow-test`
 - ครอบคลุม: test env vars, fixtures/helpers directories, test database/services, CI test environment
-- ไม่ครอบคลุมการเขียน tests (ใช้ `/update-tests`) หรือ coverage tooling (ใช้ `follow-tdd/workflows/setup-coverage`)
+- ไม่ครอบคลุมการเขียน tests (ใช้ `/update-tests`) หรือ coverage tooling (ใช้ `implement-to-production/workflows/setup-coverage`)
 
 ## Execute
 

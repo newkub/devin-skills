@@ -5,7 +5,7 @@ argument-hint: "[ruleset-or-path]"
 related:
   - follow-tool-semgrep
   - use-astgrep
-  - follow-config
+  - update-config
   - run-scan
   - setup-cicd
 ---

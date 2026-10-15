@@ -9,12 +9,14 @@ related:
   - use-nu-shell
   - use-pwsh-shell
   - use-astgrep
+  - use-astgrep-programmatic
   - follow-tool-rolldown
   - follow-lib-esm-sh
-  - transform
+  - scan-codebase
+  - dont-over-engineer
+  - resolve-errors
   - run-verify
   - update-references
-
 ---
 
 ## Goal
@@ -70,9 +72,9 @@ Use for creating scripts in the workspace with Bun native APIs, nushell, pwsh, o
 3. Use `nu` for `.nu` scripts when processing structured data
 4. Use `pwsh` for `.ps1` scripts when Windows-specific
 5. Use CDN imports for external dependencies that Bun native APIs do not cover: `https://esm.sh/<name>`
-6. Use `eta` via `https://esm.sh/eta@4.6.0` for template/render in Bun scripts (eta `4.6.0 (verified 2026-09-26)` — see `/follow-lib-esm-sh` for the CDN convention)
-7. If you need fast JS/TS AST parsing → use `oxc-parser` via `https://esm.sh/oxc-parser` or `bun add oxc-parser` (`0.149.0 (verified 2026-09-26)`)
-8. If you need fast bundling → use `rolldown` per `/follow-tool-rolldown` (`1.2.11 (verified 2026-09-26)`, uses the same `oxc` parser)
+6. Use `eta` via `https://esm.sh/eta@4.6.0` for template/render in Bun scripts (eta `4.6.0 (verified 2026-10-15)` — see `/follow-lib-esm-sh` for the CDN convention)
+7. If you need fast JS/TS AST parsing → use `oxc-parser` via `https://esm.sh/oxc-parser` or `bun add oxc-parser` (`0.154.0 (verified 2026-10-15)`)
+8. If you need fast bundling → use `rolldown` per `/follow-tool-rolldown` (`1.2.14 (verified 2026-10-15)`, uses the same `oxc` parser)
 9. Add a `dryRun` option for testing
 
 ### 4. Test And Execute

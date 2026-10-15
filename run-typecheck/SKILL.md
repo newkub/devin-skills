@@ -3,12 +3,11 @@ name: run-typecheck
 description: Run typecheck with config check
 argument-hint: "[scope]"
 related:
-  - improve-config
+  - improve
   - deep-review
   - deep-debug
   - resolve-errors
-
-  - improve-typesafe
+  - improve
 ---
 
 ## Goal

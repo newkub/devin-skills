@@ -84,6 +84,8 @@ related:
 - ใช้ /gen-media-ai-images ถ้าจำเป็น
 - ใช้ /gen-media-image-character ถ้าจำเป็น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the generated prompt stays in chat
+
 ## Expected Outcome
 
 - image generation prompt ที่ copy ไปใช้ได้ทันที

@@ -15,7 +15,7 @@
 | property-based API fuzzing | `schemathesis` | `uvx schemathesis` / `pip install schemathesis` | `/deep-test api` |
 | quick request / ad-hoc HTTP | `xh` | installed (mise cargo:xh) | `/deep-test api` |
 | interactive API client | `slumber` | installed | `/deep-test api` |
-| webhook testing | `stripe listen` | installed | `/review-api` |
+| webhook testing | `stripe listen` | installed | `/deep-test api` |
 | expose local server | `cloudflared tunnel` | installed | `/run-dev` |
 
 ## Search, Files And Code Analysis
@@ -81,7 +81,7 @@
 | clone template | `giget` | installed | `/create-*` |
 | compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
 | compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defers to the `RUSTC_WRAPPER` pointing at sccache) |
-| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devframe` |
+| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devfra` |
 | bundle analyze/visualize (source-map accurate) | `sonda` (bundler plugin) | `bun add -D sonda` | `/follow-tool-sonda`, `/report-bundle` |
 | inspect node_modules (tree, dupes, sizes) | `node-modules-inspector` | `bunx node-modules-inspector` | `/follow-tool-node-modules-inspector`, `/report-bundle` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
@@ -95,11 +95,11 @@
 | browser inspect/debug via MCP (console, network, CSS, perf, memory, Lighthouse) | `chrome-devtools-mcp` | installed (MCP server) | `/use-chrome-devtools` |
 | WebMCP consume (list/invoke page tools) | `agent-browser webmcp` | same as above | `/use-agent-browser` |
 | WebMCP implement on your own site | `document.modelContext` (page-side API) | — | `/follow-create-web-mcp` |
-| screenshot web | `agent-browser` | same as above | `/capture web` |
-| capture evidence (component/terminal/app/all-routes) | `capture` CLI (Bun, `capture/src/presentation/cli.ts`) | — | `/capture` |
+| screenshot web | `agent-browser` | same as above | `/use-agents-capture web` |
+| capture evidence (component/terminal/app/all-routes) | `agents-capture` CLI (Bun, `D:/newkub/agents-capture/src/presentation/cli.ts`) | — | `/use-agents-capture` |
 | E2E tests | `playwright` | installed (mise npm:playwright 1.63) | `/deep-test e2e`, `/follow-tool-playwright` |
 | scrape/crawl web | `crw` | installed (MCP server) | `/follow-tool-crw` |
-| site-wide Lighthouse audit (perf/a11y/SEO) | `unlighthouse` | `bunx unlighthouse --site <url>` | `/follow-tool-unlighthouse`, `/improve-seo`, `/improve-uxui`, `/optimize-perf` |
+| site-wide Lighthouse audit (perf/a11y/SEO) | `unlighthouse` | `bunx unlighthouse --site <url>` | `/follow-tool-unlighthouse`, `/improve seo`, `/improve uxui`, `/optimize perf` |
 | web → desktop | `pake` | installed | `/follow-create-*` |
 
 ## Media And Docs Gen
@@ -112,8 +112,8 @@
 | images/PDF | `imagemagick` / `resvg` / `poppler` / `ghostscript` | installed (scoop) | `/convert-*` |
 | diagrams | `mmdc` (mermaid-cli) | installed | `/report-architecture-diagram` |
 | code highlight | `shiki` CLI | installed | `/follow-lib-shiki` |
-| OG images/social cards/PDFs from JSX | `takumi-js` | `bun add takumi-js` | `/follow-tool-takumi`, `/improve-seo` |
-| markdown parse/render multi-target (html/ansi/vue/react/svelte/angular) | `comark` + `@comark/*` | `bun add comark @comark/<target>` | `/follow-lib-comark`, `/improve-uxui` |
+| OG images/social cards/PDFs from JSX | `takumi-js` | `bun add takumi-js` | `/follow-tool-takumi`, `/improve seo` |
+| markdown parse/render multi-target (html/ansi/vue/react/svelte/angular) | `comark` + `@comark/*` | `bun add comark @comark/<target>` | `/follow-lib-comark`, `/improve uxui` |
 | markdown render | `glow` | installed | preview docs |
 | LaTeX → PDF | `tectonic` | installed | docs |
 

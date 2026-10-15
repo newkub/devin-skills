@@ -1,6 +1,6 @@
 ---
 name: follow-lib-native-sdk
-description: ใช้ Native SDK (@native-sdk/cli) สร้าง desktop app ด้วย TypeScript + .native markup — compile เป็น native code ไม่มี JS/WebView runtime, automation server, packaging, platforms
+description: Native SDK (@native-sdk/cli) desktop apps — TS + .native markup, compiled native, no JS runtime
 argument-hint: "[feature-or-component]"
 related:
   - follow-create-desktop-tauri
@@ -9,7 +9,7 @@ related:
   - follow-lang-zig
   - follow-create-mobile
   - follow-my-techstack
-  - improve-desktop-app
+  - improve
   - deep-research
   - follow-devin-global-skills
 

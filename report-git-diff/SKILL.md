@@ -135,6 +135,8 @@ related:
 - การจัดรูปแบบ code blocks อยู่ใน `/report` แล้ว
 - การจัดรูปแบบตารางอยู่ใน `/report` แล้ว
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - สรุปการเปลี่ยนแปลงเป็นตารางที่อ่านง่าย

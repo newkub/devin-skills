@@ -26,7 +26,7 @@ Create or update the `tools/review-codebase` CLI to cover current features, then
 
 ## Scope
 
-Use with a monorepo that has or is building a `tools/review-codebase` CLI at the project root covering 60+ categories across 5 domains — covers both the update path (Steps 1-6) and the run path (Steps 7-10); `/run-review` is an alias of this skill
+Use with a monorepo that has or is building a `tools/review-codebase` CLI at the project root covering 60+ categories across 5 domains — covers both the update path (Steps 1-6) and the run path (Steps 7-10); `/run-review` is an alias of this skill; all review criteria are inlined here — the only external file is the living-data `references/known-issues.md` (single source of truth for analyzer/CLI issues, shared with `/deep-review`)
 
 ## Execute
 
@@ -43,7 +43,7 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 5. If the result is `skip` → go to Step 7
 6. If the result is `update` or `create` → proceed with the next steps
 7. Read `AGENTS.md`, `rules/`, `tools/review-codebase/README.md` if present
-8. If `tools/review-codebase` exists → do a pre-review per `references/review-checklist.md`, checking Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, and evidence
+8. If `tools/review-codebase` exists → do a pre-review per `## Pre-Review Criteria`, checking Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, and evidence
 9. If pre-review score < 70 → do Steps 2-6 before Step 7
 
 ### 2. Scan Codebase Features
@@ -138,13 +138,34 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 > Goal: Summarize the review results and recommend next actions per findings
 
 1. Show the table output from Step 8 (re-run only when a refresh is needed — a full scan is expensive)
-2. Use `/report` to show a summary: domain scores, findings (Category, Finding, Severity, Location, Recommendation), recommended workflows
+2. Use `/report-review` to show a summary in chat (no files): domain scores, findings (Category, Finding, Severity, Location, Recommendation), recommended workflows
 3. Recommend `/review-*` workflows for each finding per the `reviewWorkflow` field — dispatch catalog: `deep-review/SKILL.md`
 4. Run `/suggest-next-action`
 
 ## CLI Output
 
-The table output spec is in [references/cli-output.md](references/cli-output.md) — findings table, domain summary, output requirements, exit codes, filter flags
+`review-codebase` table output must show every detail per category — never a lone score or one line per category
+
+- Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` (feeds the 3 rounds of Step 8) | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review` domain `review-<domain>`; `/deep-review-then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
+- Domain summary table (at the end): `No.`, `Domain`, `Score`, `Grade`, `Categories`, `Findings`, `Errors`, `FP%`, `Trend` (up/down/flat vs the previous run); footer row: overall score + grade, `categories N/60`, total analyzer errors, duration
+- non-TTY/CI → auto plain table, or use `--json`; narrow screen → drop `Top Finding` first, never `Evidence`/`Fix Skill`
+- Exit code: `exit 1` when any Metric Trigger fires (`categories < 60`, `score < 70`/`grade D/F`, `domain < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`) — CI gate + pass/fail auto-detect in Step 8
+- Filter flags: `--domain <name>` and `--severity <min>` to rerun only the failing parts in rounds 2-3 of Step 8 — no full scan every round
+
+## Pre-Review Criteria
+
+> Step 1.8 pre-review of `tools/review-codebase` before `/deep-review` — review-only (no CLI edits during the review; fixes go through `/deep-review` after); every finding needs evidence: file path + line number + code snippet
+
+| Dimension | Checks | Severity flags |
+|-----------|--------|----------------|
+| Clean Architecture | 4 layers: `src/domain/` (logic, analyzers, types), `src/application/` (use cases, orchestration), `src/adapters/` (shared utilities, external integrations), `src/presentation/` (CLI entry, user-facing output); entry points `src/presentation/cli.ts` + `src/index.ts` (barrel export for workspace imports); `kebab-case` file names (`user-facing.ts` not `UserFacing.ts`/`user_facing.ts`); Bun native APIs (`Bun.file`, `Bun.spawn`, `Bun.write`) instead of Node `fs.readFile`/`child_process`/`fs.writeFile`; dependency direction `presentation → application → domain`, `adapters → domain` — `domain` imports no other layer | missing entry point = Critical; missing layer / wrong dependency direction = High; Node APIs instead of Bun = Medium; not kebab-case = Low |
+| Analyzers | 5 files in `src/domain/analyzers/`: `user-facing.ts` (UX, a11y, UI), `security.ts` (vulnerabilities, auth, input validation), `backend-data.ts` (data layer, API, database), `infrastructure.ts` (deployment, CI/CD, config), `code-arch.ts` (code quality, architecture, patterns); each returns `CategoryResult` (`status` pass/fail/warn, `score` 0-100, `findings[]`); every analyzer has a `reviewWorkflow` map (category → `/deep-review`/references + action on finding); shared utilities from `src/adapters/` — no duplicated helper code between analyzers; coverage: 60+ categories (full list via `/run-review`) across the 5 domains | missing analyzer file / domain / `CategoryResult` contract = High; missing `reviewWorkflow`, duplicated utilities, incomplete category coverage = Medium |
+| CLI Interface | `--help`/`-h` shows usage, all flags with descriptions, exit codes, examples; exit codes: `0` success/review completed, `1` invalid arguments or error; `--format table|JSON` (table default, JSON for programmatic consumption); `--output <path>` optional; invalid-argument errors name the bad flag, suggest correct usage, exit 1 | missing `--help` / wrong exit codes = High; missing format option, unclear errors = Medium |
+| Analyze Integration | `tools-analyze` in `tools/review-codebase/package.json` `dependencies` with the `workspace:*` protocol; analyzers imported from `tools-analyze` (barrel export or direct path), never copied code; no duplicated analyzer logic in `src/domain/analyzers/`, `src/adapters/`, `src/health/`; imports resolve cleanly via `bun run`/typecheck — no broken modules | no workspace import / broken imports = High; duplicated logic = Medium |
+| Package Scripts | `tools/review-codebase/package.json` has `review-codebase` (table, e.g. `bun run src/index.ts`) + `review-codebase:json` (e.g. `bun run src/index.ts --format JSON`); root `package.json` has the same names as `bun --filter tools-review-codebase review-codebase[:json]`; names consistent across both, filter uses the correct workspace name, no script points to a wrong path; both scripts actually execute — verify exit code and output format | script doesn't run = High; missing script = Medium; naming inconsistency = Low |
+| Line Count | every file ≤250 lines; findings carry evidence (file path, line, snippet) | line count exceeded = Low |
+| Scoring | review score = weighted average of all findings (severity weights Critical 0, High 25, Medium 50, Low 75, Info 100; 0 = every finding Critical, 100 = no findings); grade A ≥90, B ≥80, C ≥70, D ≥60, F <60; report overall + per-domain score and a health indicator (score + grade + severity distribution) via `/report table` (Category, Severity, Finding, Evidence, Action); before/after: record the before score → improve per findings → re-run `bun run review-codebase` → compare the delta; score < 70 → recommend `/deep-review` + `/suggest-next-action` before proceeding | pre-review score < 70 → Steps 2-6 before Step 7 |
+| Round Metrics | record after each review round to compare before/after and decide CLI improvements: Review Coverage Ratio (scanned/total files), False Positive Rate, Evidence Strength Score, Actionability Score, Category Coverage (executed/total), Sub-Review Completion, Analyzer Pass Rate, Critical Path Coverage, Deduplication Rate, Before/After Trend | — |
 
 ## Rules
 
@@ -202,7 +223,7 @@ The table output spec is in [references/cli-output.md](references/cli-output.md)
 
 - Never use `**` (bold markers)
 - Use heading levels for structure
-- Report as tables with `/report`
+- Report as tables via `/report-review` (chat, no files)
 - Use `/deep-test` cli if needed, `/run-test` if needed
 
 ## Expected Outcome

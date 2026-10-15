@@ -6,7 +6,7 @@ related:
   - follow-create-product
   - follow-monorepo
   - create-new-project-in-drive-d
-  - implement-features-to-mvp
+  - implement-to-production
   - ask-me
 ---
 
@@ -46,8 +46,8 @@ Scaffold a new product per conventions — structure, workspaces, shared config,
 
 ## Rules
 
-- Scaffold only — continue features at `/implement-features-to-mvp`
-- Every config follows `/follow-config` conventions
+- Scaffold only — continue features at `/implement-to-production`
+- Every config follows `/update-config` conventions
 
 ## Expected Outcome
 

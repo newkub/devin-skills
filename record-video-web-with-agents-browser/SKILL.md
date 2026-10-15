@@ -5,7 +5,7 @@ argument-hint: "[url]"
 related:
   - use-agent-browser
   - record-video-terminal-with-asciinema
-  - capture
+  - use-agents-capture
   - resolve-errors
 ---
 

@@ -12,8 +12,6 @@ related:
   - follow-service-cloudflare
   - follow-tool-devfra
   - run-dev
-  - test-component
-  - test-e2e
 
 ---
 ## Goal
@@ -114,7 +112,7 @@ Choose the right web project type and hand the work off to the correct skill
 - Use /follow-create-plugins if needed
 - Use /follow-create-web-mcp if needed
 - Use /follow-tool-devfra if the site needs devtools (inspector/analyzer)
-- Use /test-component for component tests and /test-e2e for user flows
+- Use /deep-test component for component tests and /deep-test e2e for user flows
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 ---
 name: learn-from-references
-description: เรียนรู้จาก references ที่ user ให้มา — files, repos, docs, skills — สกัด patterns/conventions แล้วนำไปใช้กับงานปัจจุบัน
+description: Learn from user-given references — files, repos, docs, skills — extract patterns and apply them
 argument-hint: "<@files|urls|repo|skill-name...>"
 related:
   - learn-from-web

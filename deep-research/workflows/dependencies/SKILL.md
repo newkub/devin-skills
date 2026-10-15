@@ -48,7 +48,7 @@ Research dependencies or libraries suitable for the project — analyze the mani
 
 1. Run `/search-github-star` to find popular/quality libraries
 2. Run `/search-raindrop` to find saved bookmarks or comparisons
-3. Run `/search-npmx` for JS/TS packages
+3. Run `/search-npm-libraries` for JS/TS packages
 4. Use package registries: `npm`, `crates.io`, `pkg.go.dev`, `pypi`
 5. Search with keywords matching the capability + `fast`, `modern`, `lightweight`, `zero-dependency`
 

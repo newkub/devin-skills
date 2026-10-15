@@ -59,4 +59,4 @@ project/
 - Exit codes centralized ที่ `errors.ts` — commands return result, `bin.ts` ตัดสิน exit code
 - stdout ผ่าน `ui/` เท่านั้น — ห้าม `console.log` ใน domain/data layers (ใช้ stderr logger ใน `lib/`)
 - `utils/`/`services/` pure — testable โดยไม่ mock process
-- ถ้า CLI เป็น entry point หนึ่งของหลาย (api+worker+cron) → ใช้ Clean (`follow-architecture/templates/file-structure-clean.md`) — `app/cli/` เป็น thin shell เหนือ `modules/`
+- ถ้า CLI เป็น entry point หนึ่งของหลาย (api+worker+cron) → ใช้ Clean (`follow-architecture/references/follow-clean-arch.md`) — `app/cli/` เป็น thin shell เหนือ `modules/`

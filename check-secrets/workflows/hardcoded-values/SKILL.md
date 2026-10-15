@@ -3,7 +3,7 @@ name: check-secrets-hardcoded-values
 description: Scan for hardcoded URLs, IPs, credentials, and magic strings that belong in config
 argument-hint: "[path]"
 related:
-  - follow-config
+  - update-config
   - check-secrets
   - search
   - use-astgrep
@@ -65,11 +65,11 @@ Find hardcoded values in source code that should move to config/env — URLs, IP
 
 ### 3. Read-Only
 
-- Do not change code or create config — report with a `/follow-config` recommendation
+- Do not change code or create config — report with an `/update-config` recommendation
 
 - Use /check-secrets secrets-leak for real credentials
 - Use /check-secrets env-vars to audit env keys after refactoring
-- Use /follow-config when the config structure needs changes
+- Use /update-config when the config structure needs changes
 
 ## Expected Outcome
 

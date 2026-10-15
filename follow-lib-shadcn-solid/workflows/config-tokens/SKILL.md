@@ -6,7 +6,7 @@ related:
   - follow-lib-shadcn-solid
   - follow-lib-unocss
   - follow-design-system
-  - improve-config
+  - improve
   - resolve-errors
 ---
 

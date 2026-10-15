@@ -138,7 +138,7 @@ function inspect(dir: string): Row {
     return r;
   }
   const text = readFileSync(skillMd, "utf8");
-  r.lines = text.split("\n").length;
+  r.lines = text.replace(/\r?\n?$/, "").split("\n").length;
   const fm = parseFm(text);
   r.fm = `${fm.keys.length}/${FM_KEYS.length}`;
   r.related = fm.related.length;
@@ -180,9 +180,7 @@ function inspect(dir: string): Row {
     existsSync(srcPkg) && /mcp/i.test(readFileSync(srcPkg, "utf8"));
   r.mcp = hasMcpRef || srcIsMcp ? "yes" : "-";
 
-  const hasWebRef =
-    existsSync(join(dir, "references", "website.md")) ||
-    /website|viewer|vitepress|\bvite\b/.test(lc);
+  const hasWebRef = /website|viewer|vitepress|\bvite\b/.test(lc);
   const srcIsWeb =
     existsSync(srcPkg) && /vite|react|solid|vue|svelte|next/i.test(readFileSync(srcPkg, "utf8"));
   r.web = hasWebRef || srcIsWeb ? "yes" : "-";
@@ -190,10 +188,18 @@ function inspect(dir: string): Row {
   return r;
 }
 
+const NON_SKILL_DIRS = new Set(["scripts", "templates", "references", "guide", "examples"]);
+// a submodule checkout has a `.git` FILE (not a dir) — it ships its own package, not a skill
+const isSubmodule = (name: string) => {
+  const g = join(root, name, ".git");
+  return existsSync(g) && statSync(g).isFile();
+};
+
 const dirs = readdirSync(root, { withFileTypes: true })
   .filter((e) => e.isDirectory() && !e.name.startsWith("."))
   .map((e) => e.name)
   .filter((n) => !only || n === only)
+  .filter((n) => only || (!NON_SKILL_DIRS.has(n) && !isSubmodule(n)))
   .sort();
 
 const rows = dirs.map((d) => inspect(join(root, d)));

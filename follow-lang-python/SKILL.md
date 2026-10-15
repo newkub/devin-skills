@@ -1,99 +1,97 @@
 ---
 name: follow-lang-python
-description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
+description: Python project guidelines with best practices, ruff, pyright, and Clean Architecture
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
+  - refactor
+  - follow-tool-madge
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-พัฒนา Python project ด้วย best practices และ Clean Architecture
+Develop Python projects with best practices and Clean Architecture
 
 ## Scope
 
-ใช้สำหรับ project ที่พัฒนาด้วย Python 3.11+
+For projects developed with a modern Python 3 runtime; single `SKILL.md` package — no `references/`, verify current Python/tool versions via `/deep-research` at use time (official docs: https://docs.python.org/3/)
 
 ## Execute
 
-### 1. Installation
+### 1. Check Version And Install
 
-> Goal: ติดตั้ง Python และ dependencies
+> Goal: install Python and dependencies with live-checked versions
 
-1. ติดตั้ง Python 3.11+ จาก `https://python.org`
-2. ใช้ `pyproject.toml` เป็น single source of truth
-3. ติดตั้ง `ruff` สำหรับ lint/format และ `pyright` สำหรับ type checking
+1. Run `/deep-research` to confirm the latest stable Python and the project's `requires-python` before installing
+2. Install with `mise use -g python` (or the official installer from https://www.python.org/downloads/); verify with `py -3 --version` (Windows) / `python3 --version`
+3. Create a virtual env: `python -m venv .venv`, activate (Windows `.venv\Scripts\activate`, Unix `source .venv/bin/activate`)
+4. Install packages with `python -m pip install <pkg>`; export with `python -m pip freeze > requirements.txt` — always `python -m pip`, never bare `pip`
+5. Install `ruff` (lint/format) and `pyright` (type check) as dev dependencies
 
 ### 2. Configuration
 
-> Goal: ตั้งค่า `pyproject.toml`
+> Goal: keep `pyproject.toml` as the single source of truth
 
-1. กำหนด dependencies ใน `[project.dependencies]`
-2. กำหนด dev dependencies ใน `[project.optional-dependencies]`
-3. กำหนด ruff config ใน `[tool.ruff]`
-4. กำหนด pyright config ใน `[tool.pyright]`
-5. ดูรายละเอียดใน `references/python.md`
+1. Dependencies in `[project.dependencies]`, dev tools in `[project.optional-dependencies] dev`
+2. `[tool.ruff]` with `target-version` matching the runtime; `[tool.ruff.lint] select = ["E", "F", "I", "N", "UP"]`
+3. `[tool.pyright]` with `typeCheckingMode = "strict"` and `include` scoped to source
+4. Avoid floating/unbounded version ranges; pin to stable releases
 
 ### 3. Project Structure
 
-> Goal: จัดโครงสร้างตาม Clean Architecture
+> Goal: organize code per Clean Architecture
 
-1. แบ่งเป็น `domain/`, `application/`, `adapters/`, `presentation/`
-2. `domain/` มี pure business logic ไม่มี side effects
-3. `application/` มี orchestration layer
-4. `adapters/` มี I/O layer
-5. `presentation/` มี entry points
+1. Split into `domain/`, `application/`, `adapters/`, `presentation/`
+2. `domain/` holds pure business logic without side effects; `application/` orchestrates use cases
+3. `adapters/` owns I/O (DB, HTTP, filesystem); `presentation/` owns entry points (CLI/API/UI)
+4. Every package has `__init__.py`; tests live in `tests/`; run `/refactor architecture` for the pattern choice
 
 ### 4. Core Principles
 
-> Goal: เขียน Python ตาม best practices
+> Goal: write Python per best practices
 
-1. ใช้ type hints ทุก function
-2. ใช้ `ruff` สำหรับ lint และ format
-3. ใช้ `pyright` สำหรับ type checking
-4. ใช้ `dataclass` หรือ `pydantic` สำหรับ data models
-5. ดู best practices และ examples ใน `references/python.md`
+1. Type-hint every function; use `from __future__ import annotations` for forward references
+2. Use `@dataclass(frozen=True)` or `pydantic` models for immutable data
+3. Use `ruff check .` + `ruff format .` and `pyright` in CI before merge
+4. Prefer `pathlib`, context managers, and async (`async def`) for I/O-bound work
 
-### 5. Folder Rules
+### 5. Import Rules
 
-> Goal: จัดโครงสร้าง folders อย่างเป็นระบบ
+> Goal: keep imports deterministic and sorted
 
-1. แยก modules ตาม domain
-2. ใช้ `__init__.py` สำหรับทุก package
-3. ใช้ `tests/` สำหรับ unit tests
-
-### 6. Import Rules
-
-> Goal: จัดลำดับ imports อย่างเป็นระบบ
-
-1. เรียง: stdlib → third-party → local
-2. แบ่ง groups ด้วยบรรทัดว่าง
-3. ใช้ `from __future__ import annotations` สำหรับ forward references
+1. Order: stdlib → third-party → local, separated by blank lines (enforced by `ruff` `I` rules)
+2. No unused imports (`F401`); no circular imports — check with `/follow-tool-madge` if suspected
 
 ## Rules
 
-- ใช้ Python 3.11+ พร้อม type hints
-- ใช้ `ruff` สำหรับ lint/format, `pyright` สำหรับ type checking
-- ใช้ `pyproject.toml` เป็น single source of truth
-- จัดโครงสร้างตาม Clean Architecture
-- ใช้ `dataclass` หรือ `pydantic` สำหรับ data models
+### 1. Toolchain
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-kotlin ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+- Use the project's `requires-python` (never a stale hardcoded version); `ruff` for lint/format, `pyright` strict for types
+- Use `pyproject.toml` as the single source of truth; no secrets in config
+
+### 2. Code Standard
+
+- Type hints on every public function; `dataclass`/`pydantic` for data models
+- Clean Architecture layering; side effects only in `adapters/`
+
+### 3. Live Checks
+
+- Verify current Python/ruff/pyright behavior and new stdlib features via `/deep-research` at use time, not from memory
+
+- Use /follow-lang-javascript if needed
+- Use /follow-lang-kotlin if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- Python project ใช้ Clean Architecture
-- มี `pyproject.toml` พร้อม ruff และ pyright config
-- ทุก function มี type hints
-- โค้ดผ่าน ruff lint และ pyright type check
+- Python project following Clean Architecture
+- `pyproject.toml` with ruff and pyright config
+- Every function typed; code passes `ruff check` and `pyright` strict

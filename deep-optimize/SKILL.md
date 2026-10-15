@@ -11,7 +11,6 @@ related:
   - implement-to-production
   - report
   - suggest-next-action
-  - test-load
 
 ---
 
@@ -53,7 +52,7 @@ Use when you want to optimize across many dimensions at once — report-only by 
 
 > Goal: review every dimension at once
 
-1. Use `/use-subagents` to spawn one optimize-review subagent per relevant lane — ≤10 per batch per `/follow-parallel`
+1. Use `/use-subagents` to spawn one optimize review subagent per relevant lane — ≤10 per batch per `/follow-parallel`
 2. Each subagent receives: `workspace-path`, `lane`, `file-ownership` — output contract: findings table (`No.`, `Finding`, `Impact`, `Effort`, `Evidence`, `Fix`) + lane score
 3. A subagent reads only the files in its ownership — never sweep the whole codebase, never edit code (report-only)
 4. A lane with ≤ 2 findings → the parent analyzes it itself
@@ -87,7 +86,7 @@ Use when you want to optimize across many dimensions at once — report-only by 
 - Use /deep-optimize when needed (deep-dive a single lane)
 - Use /deep-analyze when needed (root cause unclear)
 - Use /deep-review when needed (all review-*, not just optimization)
-- Use /test-load to gather perf evidence for throughput/latency lanes
+- Use /deep-test load to gather perf evidence for throughput/latency lanes
 
 ## Expected Outcome
 

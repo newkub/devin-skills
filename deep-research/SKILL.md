@@ -11,7 +11,7 @@ related:
   - learn
   - check-reference
   - deep-review
-  - follow-improve
+  - improve
   - use-subagents
 ---
 
@@ -71,7 +71,7 @@ Use for work that needs deep information from many sources, e.g. comparing libra
 
 - Use /rethink when needed
 - Use /check-reference when needed
-- Use /follow-improve when needed
+- Use /improve when needed
 
 ## Subagents
 

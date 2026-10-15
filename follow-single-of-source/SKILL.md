@@ -11,7 +11,7 @@ related:
   - follow-reusable
   - review-devin-global-harness
   - update-references
-  - follow-config
+  - update-config
 ---
 
 ## Goal
@@ -74,7 +74,7 @@ related:
 - ใช้ `/idea-merge` ถ้าจำเป็น
 - ใช้ `/refactor` ถ้าจำเป็น
 - ใช้ `/review-devin-global-harness` ถ้าจำเป็น
-- ใช้ `/follow-config` ถ้าจำเป็น
+- ใช้ `/update-config` ถ้าจำเป็น
 
 
 ## Expected Outcome

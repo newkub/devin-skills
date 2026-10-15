@@ -15,6 +15,7 @@ triggers:
   - user
   - model
 related:
+  - read-all-files
   - update-references
   - edit-relative
   - deep-validate
@@ -55,8 +56,8 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 
 > Goal: เข้าใจเนื้อหาก่อน merge
 
-1. ทำ `/deep-analyze` กับแต่ละ source
-2. ถ้า source เป็นโฟลเดอร์ → อ่านทุก `SKILL.md` หรือไฟล์หลักในโฟลเดอร์
+1. ทำ `/read-all-files` กับแต่ละ source ก่อน — อ่าน content ทั้งหมดเข้า context (concat ไฟล์ที่เกี่ยวข้อง, engine: `/check-file-relation`) แล้วค่อยทำ `/deep-analyze` — ห้ามวิเคราะห์จากชื่อไฟล์อย่างเดียว
+2. ถ้า source เป็นโฟลเดอร์ → `/read-all-files` ครอบคลุมทุก `SKILL.md` หรือไฟล์หลักในโฟลเดอร์
 3. บันทึกโครงสร้าง ความสัมพันธ์ และสิ่งทีซ้ำซ้อน
 
 ### 3. Plan Merge

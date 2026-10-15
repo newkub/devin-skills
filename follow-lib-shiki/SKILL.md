@@ -3,7 +3,7 @@ name: follow-lib-shiki
 description: ใช้ Shiki syntax highlighter — TextMate grammars, zero runtime, integrations และ transformers
 argument-hint: "[scope]"
 related:
-  - improve-uxui
+  - improve
   - follow-lib-comark
   - follow-lib-markdown-it
   - follow-tool-vitepress
@@ -18,7 +18,7 @@ related:
 ใช้สำหรับ JS/TS projects ที่ต้อง highlight code blocks ใน UI, docs, markdown หรือ editor — ทุก runtime (Node, Bun, browser, Cloudflare Workers)
 
 - Boundary: Shiki ทำ syntax highlighting เท่านั้น; markdown rendering ทั้ง pipeline → `/follow-lib-comark` หรือ `/follow-lib-markdown-it`; live editor → `@shikijs/monaco`
-- ใช้ใน `/improve-uxui` เมื่อ finding เกี่ยวกับ code blocks/readability ของ code ใน UI
+- ใช้ใน `/improve uxui` เมื่อ finding เกี่ยวกับ code blocks/readability ของ code ใน UI
 - Latest: `shiki@4.5.0` (verified 2026-10-03)
 
 ## Execute
@@ -90,7 +90,7 @@ related:
 - Default oniguruma (WASM) = accurate; JS engine เมื่อ WASM ใช้ไม่ได้ (บาง edge runtimes)
 - Workers/Edge → เช็ค WASM constraints ก่อนเลือก engine
 
-- ใช้ /improve-uxui ถ้าจำเป็น
+- ใช้ /improve uxui ถ้าจำเป็น
 - ใช้ /follow-lib-comark ถ้าจำเป็น
 - ใช้ /follow-lib-markdown-it ถ้าจำเป็น
 - ใช้ /follow-tool-vitepress ถ้าจำเป็น
@@ -107,4 +107,4 @@ related:
 - `shiki` ติดตั้งและ highlight ได้ทั้ง async shorthand และ singleton highlighter
 - Themes/langs โหลด explicit, bundle คุมขนาดได้ด้วย fine-grained imports
 - เลือก integration ถูกตาม stack (markdown-it, rehype, VitePress, Nuxt, Next, Astro, Comark)
-- พร้อมใช้ใน `/improve-uxui` fixes สำหรับ code highlighting
+- พร้อมใช้ใน `/improve uxui` fixes สำหรับ code highlighting

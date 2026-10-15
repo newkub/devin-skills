@@ -117,6 +117,8 @@ related:
 - ใช้ `/report` สำหรับ executive summary
 - สรุป top 5 highlights ของสัปดาห์
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - รายงานอัปเดต tech stack ประจำสัปดาห์

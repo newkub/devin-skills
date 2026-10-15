@@ -68,6 +68,8 @@ related:
 - ถ้ามี status หลายรายการให้ใช้ `/report table` สำหรับรายการเดียวกัน
 - ตอบในแชทเท่านั้น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ตารางครบ 8 คอลัมน์: No., Action, Before, After, Why, File Change, Risk, Status

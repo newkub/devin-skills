@@ -6,8 +6,8 @@ related:
   - run-bench
   - update-version-to-latest
   - check-should-update
-  - follow-improve
-  - follow-optimize
+  - improve
+  - optimize
   - report
 ---
 
@@ -17,7 +17,7 @@ Report all of the project's dependencies as a comparison table — see installed
 
 ## Scope
 
-Use when benching/auditing a project's dependencies — report-only, never edits `package.json`; real upgrades go through `/update-version-to-latest`, swaps through `/follow-improve`/`/follow-optimize`
+Use when benching/auditing a project's dependencies — report-only, never edits `package.json`; real upgrades go through `/update-version-to-latest`, swaps through `/improve deps`/`/optimize`
 
 ## Execute
 
@@ -65,7 +65,7 @@ Use when benching/auditing a project's dependencies — report-only, never edits
 > Goal: findings lead to action
 
 1. Run `/report` — table + highlights: deprecated/unmaintained deps, outdated majors, bundle hogs (top 5 largest)
-2. Suggest the next action: `/update-version-to-latest` for outdated, `/follow-improve` for swap alternatives
+2. Suggest the next action: `/update-version-to-latest` for outdated, `/improve deps` for swap alternatives
 
 ## Rules
 
@@ -79,4 +79,4 @@ Use when benching/auditing a project's dependencies — report-only, never edits
 
 - Comparison table covering every dep with installed/latest/status/bundle/downloads
 - Clear highlights: deprecated, unmaintained, outdated majors, bundle hogs
-- Ready to decide upgrade/swap via `/update-version-to-latest` or `/follow-improve`
+- Ready to decide upgrade/swap via `/update-version-to-latest` or `/improve deps`

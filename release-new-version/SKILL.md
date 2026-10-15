@@ -65,8 +65,7 @@ Use when you want to ship and immediately follow with a release — projects pub
 > Goal: summarize ship+release status
 
 1. Run `/report` — table of `No.`, `Artifact`, `Expected`, `Actual`, `Status` + verdict `released`/`partial`/`not-released`
-2. If the project uses a task queue (`QUEUE.md`) → suggest `/run-task-all` to monitor/run pending work after the release
-3. Run `/suggest-next-action`
+2. Run `/suggest-next-action`
 
 ## Rules
 

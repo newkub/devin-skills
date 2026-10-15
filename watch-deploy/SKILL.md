@@ -6,7 +6,6 @@ related:
   - run-watch
   - ask-me
   - run-deploy
-  - test-smoke
 ---
 
 ## Goal
@@ -25,7 +24,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 1. Get the URL from the user, deploy output, or CI log
 2. If the deploy hasn't finished, wait until a URL is available
-3. See `references/targets.md` for each platform's URL patterns
+3. See `## Merged Details → references/targets` for each platform's URL patterns
 4. If the URL is unclear → run `/ask-me`
 
 ### 2. Configure Polling
@@ -35,7 +34,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 1. Set `interval` (seconds between polls), default `10`
 2. Set `timeout` (total seconds), default `300`
 3. Set `expectedStatus`, default `[200]`
-4. See `references/health-check.md` for redirect, 4xx, 5xx handling
+4. See `## Merged Details → references/health-check` for redirect, 4xx, 5xx handling
 
 ### 3. Poll URL
 
@@ -51,7 +50,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 > Goal: summarize the outcome for the user
 
-1. Follow `workflows/report-status/SKILL.md` — poll timeline, health transitions, time-to-live
+1. Follow `## Merged Details → report-status` — poll timeline, health transitions, time-to-live
 2. On success, report URL, status, response time, elapsed time
 3. On timeout, report last status, total polls, error summary
 4. On redirect, report the final URL and status
@@ -60,9 +59,9 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 
 | Argument | Workflow |
 |----------|----------|
-| `report`, `status` | `workflows/report-status/SKILL.md` — deploy watch report (poll timeline, verdict) |
+| `report`, `status` | `## Merged Details → report-status` — deploy watch report (poll timeline, verdict) |
 
-1. If the argument is `report`/`status` → read `workflows/report-status/SKILL.md` and follow its flow — use the existing poll data, do not poll anew
+1. If the argument is `report`/`status` → read `## Merged Details → report-status` and follow its flow — use the existing poll data, do not poll anew
 2. If omitted → run Steps 1-4 as usual, with Step 4 reading the `report-status` workflow to execute
 
 ## Rules
@@ -104,7 +103,7 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 ### 5. Rollback Recommendation
 
 - If the timeout elapses and the deployment is still unhealthy → report a rollback recommendation
-- Give the platform-specific rollback command (see `references/targets.md`)
+- Give the platform-specific rollback command (see `## Merged Details → references/targets`)
 - Never roll back automatically — let the user decide
 
 ### 6. Safety
@@ -247,7 +246,7 @@ Common deploy targets and how to obtain a preview/production URL.
 #### Watch Deploy Official Resources
 
 - This skill is a workflow; see [SKILL.md](../SKILL.md) for tooling.
-- Use /test-smoke after deploy to pass the health gate
+- Use /deep-test smoke after deploy to pass the health gate
 
 ## Expected Outcome
 

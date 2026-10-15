@@ -91,6 +91,8 @@ related:
 - ไม่รัน checks ที่หนักเกินไป
 - ใช้ cache ถ้ามี
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - Health scorecard ของ devin skills repo

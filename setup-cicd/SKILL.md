@@ -4,7 +4,7 @@ description: Detect the CI/CD platform and set up config files, secrets, and wor
 argument-hint: "[scope]"
 related:
   - update-project
-  - optimize-ci
+  - optimize
   - follow-tool-github-actions
   - follow-secret-manager
   - follow-tasks
@@ -238,7 +238,7 @@ Check `vercel.json` and add a GitHub Actions workflow, or use Vercel Git Integra
 - If there is no root package.json, run verify from tool directories instead of creating a fake root package
 - Use /research-setup-integrations when needed (pick CI actions/plugins from official sources before writing workflows)
 - Use /run-deploy when needed
-- If the pipeline is slow after setup → `/optimize-ci`
+- If the pipeline is slow after setup → `/optimize ci`
 
 ## Expected Outcome
 

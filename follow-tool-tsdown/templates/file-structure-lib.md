@@ -51,5 +51,5 @@ project/
 - Modules ข้ามกันผ่าน `<module>/index.ts` barrel เท่านั้น — ห้าม deep import internals
 - `index.ts` export เท่าที่ public API contract ต้องการ — internals ห้าม leak (ใช้ `exports` map + api-extractor/attw check)
 - ทุก module pure ตาม default — side effects ต้อง explicit (init function, opt-in)
-- ถ้า lib โตเกิน threshold (modules ต้องการ ports/adapters, external IO หลายแหล่ง) → พิจารณา Clean (`follow-architecture/templates/file-structure-clean.md`)
+- ถ้า lib โตเกิน threshold (modules ต้องการ ports/adapters, external IO หลายแหล่ง) → พิจารณา Clean (`follow-architecture/references/follow-clean-arch.md`)
 - `sideEffects: false` + tree-shakable exports — ห้าม top-level side effects ใน `src/`

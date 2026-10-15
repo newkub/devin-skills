@@ -4,7 +4,7 @@ description: ตั้งค่า Playwright projects, devices, baseURL, retrie
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
-  - follow-config
+  - update-config
   - run-test
   - setup-cicd
 ---
@@ -71,7 +71,7 @@ related:
 - `retries` เฉพาะ CI — local ต้องเห็น failure ทันที
 - `baseURL` ต้อง override ผ่าน env ได้ — ห้าม hardcode environment เดียว
 - ทุก project ต้องมี `name` ไม่ซ้ำ — shards/CI filters อ้างด้วย name
-- ถ้า config option ไม่แน่ใจ → ดู official docs หรือ `references/playwright-config-options.md`
+- ถ้า config option ไม่แน่ใจ → ดู official docs หรือ `references/apis.md`
 
 ## Expected Outcome
 

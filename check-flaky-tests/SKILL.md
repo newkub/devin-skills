@@ -3,8 +3,7 @@ name: check-flaky-tests
 description: Detect flaky tests — re-run analysis, CI history, quarantine — then route to fixes
 argument-hint: "[scope]"
 related:
-  - improve-tests
-  - optimize-test-suite
+  - improve
   - run-test
   - follow-test
   - check-test-correctness
@@ -16,7 +15,7 @@ related:
 
 ## Goal
 
-Answer the question "which tests are flaky, and how do we handle them" — scan re-run/CI history for non-deterministic tests, quarantine them with evidence, then route findings to fixes via `/improve-tests` / `/optimize-test-suite`
+Answer the question "which tests are flaky, and how do we handle them" — scan re-run/CI history for non-deterministic tests, quarantine them with evidence, then route findings to fixes via `/improve tests` / `/optimize test-suite`
 
 ## Scope
 
@@ -25,7 +24,7 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 - Detection: re-run N times and compare results, CI-history failure rate per test, time-of-day/parallelism correlation
 - Quarantine policy: mark + issue + owner + expiry — never quarantine permanently
 - Common root causes: shared state, timing/race, wall-clock dependence, external services — aligned with `/follow-test`
-- Tests that genuinely assert wrong (not flaky) → `/check-test-correctness`; slow suite → `/optimize-test-suite`
+- Tests that genuinely assert wrong (not flaky) → `/check-test-correctness`; slow suite → `/optimize test-suite`
 
 ## Execute
 
@@ -43,9 +42,9 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 
 ### 3. Route Fixes
 
-1. Flakiness from test design (shared state, sleep) → `/improve-tests`
-2. Flakiness from infra/parallelism across the whole suite → `/optimize-test-suite`
-3. Flakiness from a product-code race → `/improve-correctness`; close with `/suggest-next-action`
+1. Flakiness from test design (shared state, sleep) → `/improve tests`
+2. Flakiness from infra/parallelism across the whole suite → `/optimize test-suite`
+3. Flakiness from a product-code race → `/improve correctness`; close with `/suggest-next-action`
 
 ## Rules
 

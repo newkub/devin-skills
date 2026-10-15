@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - check-monorepo
   - list-workspaces
-  - refactor-workspace
+  - refactor
   - all-workspace
 
   - report
@@ -148,12 +148,14 @@ related:
 - ไม่เรียก `/open-web`, `/visualize-in-web`, `/open-devin-in-web`, `/report html`
 - ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
 
-- ใช้ /refactor-workspace ถ้าจำเป็น
+- ใช้ /refactor (workspace scope — split/merge/relocate members) ถ้าจำเป็น
 - ใช้ /all-workspace ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test all ถ้าจำเป็น
+
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 

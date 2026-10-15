@@ -38,12 +38,12 @@ Map every dependency in the workspace manifest to its global skill — use `/use
 
 ### 3. Follow Architecture
 
-1. Apply the pattern selected by `/follow-architecture` (`layered` for a single app, `clean` for multi-app/shared packages).
+1. Apply the pattern selected by `/refactor architecture` (`layered` for a single app, `clean` for multi-app/shared packages).
 2. Keep file placement, naming, and layer boundaries consistent with that pattern.
 
 ### 4. Ship
 
-1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/test-usage`), then commit/push, PR review gate, and merge into `main`.
+1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
 2. Run `/report` to summarize.
 
 ## Rules

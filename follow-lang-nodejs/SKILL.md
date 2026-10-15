@@ -1,74 +1,93 @@
 ---
 name: follow-lang-nodejs
-description: ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem
+description: Use the Node.js runtime to develop and run JavaScript/TypeScript projects across its ecosystem
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
   - follow-lang-javascript
-  - follow-lang-kotlin
+  - follow-lang-typescript
   - follow-best-practice
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem ที่ใหญ่ที่สุด
+Use the Node.js runtime to develop and run JavaScript/TypeScript projects with the largest, most mature ecosystem
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ที่ต้องการ ecosystem ที่ใหญ่และ mature หรือต้องการ compatibility สูง
+For projects needing maximal ecosystem compatibility or a mature runtime; single `SKILL.md` package — no `references/`, verify current Node LTS/release behavior via `/deep-research` at use time (official docs: https://nodejs.org/api/)
 
 ## Execute
 
-### 1. Setup Project
+### 1. Check Version And Setup Project
 
-> Goal: ตั้งค่าโปรเจกต์ Node.js
+> Goal: set up the Node.js project with live-checked versions
 
-1. ทำตาม `workflows/setup-project.md` สำหรับตั้งค่าโปรเจกต์
-2. ใช้ `npm`, `pnpm`, หรือ `yarn` สำหรับ package management (เลือกตาม project)
-3. ใช้ TypeScript หรือ JavaScript ตาม project requirements (แนะนำ TypeScript สำหรับ large projects)
+1. Run `/deep-research` to confirm the current LTS and active releases; pin the project to a supported line via `mise use -g node` (or `.nvmrc`/Volta) — never an EOL version
+2. Follow `workflows/setup-project.md` for scaffolding
+3. Choose the package manager per project (`npm`/`pnpm`/`yarn`); prefer TypeScript for large projects, JavaScript for scripts/prototyping
+4. Declare `engines.node` in `package.json` and use `"type": "module"` (ESM) unless CJS is required by dependencies
 
-### 2. Understand Core Concepts
+### 2. Use The Module System Correctly
 
-> Goal: เข้าใจพื้นฐาน Node.js
+> Goal: pick and apply one module system consistently
 
-1. อ่าน `references/nodejs-globals.md` สำหรับ global APIs
-2. อ่าน `references/nodejs-modules.md` สำหรับ module system
+1. Prefer ESM (`import`/`export`); use CommonJS (`require`/`module.exports`) only when interop demands it
+2. For interop, use dynamic `import()` from CJS; never dual-maintain two module systems in one package
+3. Built-in modules: import with the `node:` prefix (`import fs from "node:fs/promises"`)
+4. Key modules by task: `node:fs/promises`, `node:path`, `node:http`/`node:https`, `node:events`, `node:stream`, `node:crypto`, `node:test` (built-in runner), `node:child_process`, `node:worker_threads` (CPU-heavy work), `node:v8`/`node:vm` (specialized)
 
-### 3. Use CLI And Resources
+### 3. Use Globals And Modern Runtime APIs
 
-> Goal: ใช้ CLI และเอกสารอย่างมีประสิทธิภาพ
+> Goal: rely on stable runtime globals instead of shims
 
-1. ดู `references/nodejs-cli.md` สำหรับคำสั่ง CLI
-2. ดู `references/nodejs-resources.md` สำหรับเอกสารอย่างเป็นทางการ
+1. Use `process` (env, argv, exit codes), `console`, `Buffer`, `URL`, `URLSearchParams`, `TextEncoder`
+2. Use the global `fetch`, `structuredClone()`, `AbortController`, Web Streams — check support for the pinned version before use
+3. Handle errors properly: `process.on("unhandledRejection")`, typed error propagation, graceful shutdown on `SIGTERM`
 
-### 4. Migrate Versions
+### 4. Use CLI Efficiently
 
-> Goal: migrate ระหว่าง Node.js versions
+> Goal: run, watch, and debug with the right command
 
-1. ทำตาม `workflows/migrate-version.md` สำหรับ migrate ระหว่าง versions
+1. `node --watch file.ts` for dev (type-stripping per pinned version support; otherwise `/follow-lang-bun` or a loader), `node --inspect` for debugging
+2. `npm init -y`, `npm install`, `npm run <script>`, `npm test`; `pnpm add -D <pkg>`; `npx <pkg>` for one-off execution
+3. Scaffolding via the framework's official creator, not deprecated generators — live-check with `/deep-research`
+
+### 5. Migrate Versions
+
+> Goal: move between Node.js major versions safely
+
+1. Follow `workflows/migrate-version.md`; read the official release notes/changelog first
+2. Run `/run-test` and `/run-typecheck` after each bump; `/deep-review` for breaking deprecations
 
 ## Rules
 
-- ใช้ `npm`, `pnpm`, หรือ `yarn` สำหรับ package management
-- ใช้ `npx` หรือ `pnpm dlx` สำหรับ run packages แบบ one-off
-- ใช้ CommonJS หรือ ES Modules ตามความเหมาะสม
-- แนะนำ TypeScript สำหรับ large projects, JavaScript สำหรับ scripts/prototyping
-- ใช้ proper error handling
-- ใช้ async/await สำหรับ async operations
+### 1. Runtime Hygiene
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-kotlin ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+- Pin to a supported (LTS-preferred) major; check the release schedule before upgrades — live-verify, never restate version numbers from memory
+- `node:` prefix for built-ins; one module system per package
+- async/await over callbacks; proper error handling and graceful shutdown
+
+### 2. Ecosystem
+
+- `npm`/`pnpm`/`yarn` per project choice; `npx`/`pnpm dlx` for one-offs
+- Audit dependencies (`npm audit`) and keep them updated via `/improve deps`
+
+### 3. Resources
+
+- Official API docs (https://nodejs.org/api/), ESM guide, security and profiling guides are the primary sources — fetch them with `/learn-from-web` when unsure
+
+- Use /follow-lang-javascript if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- Projects ที่ compatible กับ ecosystem ที่ใหญ่
-- Development ที่ stable ด้วย mature runtime
-- Integration ที่ smooth กับ Node.js ecosystem
-
+- Projects compatible with the largest JS/TS ecosystem
+- Stable development on a supported Node.js release line
+- Consistent module system, proper error handling, and clean version migrations

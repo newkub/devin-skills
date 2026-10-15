@@ -17,7 +17,7 @@ related:
 
 - First-time setup ของ Vitest ในโปรเจกต์เดี่ยว (monorepo projects ดู parent skill)
 - ครอบคลุม: install, config file, test environment (`node`/`happy-dom`/`jsdom`), coverage provider, scripts
-- ไม่ครอบคลุม: migration จาก Jest (`workflows/migrate-from-jest`), performance tuning (`workflows/optimize-tests`)
+- ไม่ครอบคลุม: migration จาก Jest (`workflows/migrate-from-jest`), performance tuning (`workflows/optimize tests`)
 
 ## Execute
 

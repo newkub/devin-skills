@@ -10,7 +10,6 @@ related:
   - ship
   - rethink
   - run-test
-  - test-cli
 
 ---
 ## Goal
@@ -116,7 +115,7 @@ related:
 ## File Structure
 
 Canonical file structure + layer table: [templates/file-structure-cli.md](templates/file-structure-cli.md)
-- ใช้ /test-cli verify CLI contract (flags, exit codes, stdout/stderr) หลัง scaffold
+- ใช้ /deep-test cli verify CLI contract (flags, exit codes, stdout/stderr) หลัง scaffold
 
 ## Expected Outcome
 

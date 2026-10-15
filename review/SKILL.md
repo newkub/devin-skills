@@ -118,7 +118,7 @@ Use the table below to map the context to a primary review skill and, where appl
 
 > Goal: summarize the review results and recommend what to do next
 
-1. Run `/report`
+1. Run `/report-review` (chat table, no files)
 2. Build the Review Skills Used, Findings Count, Severity Breakdown, Review Score table
 3. Identify the next skill to run, e.g. `/deep-review-then-fix`, `/resolve-errors`, `/deep-validate`, or `/ship`
 4. Run `/suggest-next-action`
@@ -152,14 +152,23 @@ Use the table below to map the context to a primary review skill and, where appl
 ### 6. Formatting
 - Never use `**` (bold markers) — use backticks for emphasis (review)
 - Use heading levels for structure
-- Report as tables via `/report`
+- Report final findings as tables via `/report-review` (chat, no files)
 - Every report table must have `No.` as its first column
 
-- Use /deep-review if needed
-- Use /deep-review if needed
-- Use /deep-review if needed
+### 7. Dispatcher Checklist (per dimension)
+
+- Intent mapping — user intent → correct primary review skill(s); secondary skills for cross-domain findings; multi-context prompts → all relevant skills selected
+- Domain coverage — every in-scope dimension routed per the Step 2 table (code/docs domains → `/deep-review` domains; persona → `/deep-review` via `/review-by-all-stakeholder`; devin repos → `/review-devin-global-harness`/`/update-devin-global-subagents`; GitHub PR → `/review-github-pr`; aggregate → `/deep-review`, `/deep-review-then-fix`)
+- Execution discipline — independent skills → parallel via `/follow-parallel`; dependency order respected (plan → implement); deep scans via `/deep-analyze`/`/deep-review` when needed
+- Aggregation — findings dedup'd, prioritized, routed to `## Fix` owners; report table with `No.` column first
+
 - Use /deep-review if needed
 - Use /follow-deep if needed
+- Use /run-review if needed
+
+## References
+
+- `review-*` full dispatch catalog (per-workspace phases): `deep-review/SKILL.md`
 
 ## Subagents
 
@@ -169,20 +178,36 @@ Use the table below to map the context to a primary review skill and, where appl
 
 - **Inputs**: `scope` (target path/directory to review), `context-hints` (optional — stack/domain already detected by the parent), `findings-file` (optional — baseline analyzer output for cross-checking)
 - **Tools**: `read`, `exec`, `grep`, `glob`, `find_file_by_name` (no `write`/`edit`)
-- **Execute**: read `references/detect-context.md` to identify the `scope`'s stack/entry points → read `references/checklist.md` and check real code across all dimensions, every finding with `file:line` + evidence → classify severity + compute the score per `references/scoring.md` → drop false positives, map deeper domains to `/review-*` per `references/route-to-review-skill.md` as recommendations → summarize per `references/report.md`
+- **Execute**: detect the `scope`'s stack/entry points per the parent's `### 1. Detect Review Context` → check real code across all dimensions of `## Rules → 7. Dispatcher Checklist`, every finding with `file:line` + evidence → classify severity + compute the score per `## Metrics` → drop false positives, map deeper domains to `/review-*` per the `### 2` dispatch table as recommendations → summarize per `### 5. Report And Suggest Next Action`
 - **Output**: table `| No. | Dimension | Severity | File | Finding | Suggestion |` ordered Critical → Info, ending with the score + follow-up `/review-*` recommendations
 - **Constraints**: Read-only — `write`/`edit` forbidden, no modifying any file; no evidence, no finding; state uncertainty instead of guessing; the cross-skill dispatch catalog → `deep-review/SKILL.md` (read only, never modify)
-- **Full detail**: `references/checklist.md`, `references/detect-context.md`, `references/report.md`, `references/route-to-review-skill.md`, `references/scoring.md`, `references/website.md`
+- **Criteria**: the parent's `## Execute` Steps 1-5, `## Rules → 7. Dispatcher Checklist`, and `## Metrics`
 
 ## Metrics
 
-- See review metrics in [references/scoring.md](references/scoring.md) (review)
+Supplementary metrics — record after each review to compare before/after and judge dispatcher quality:
 
-## References
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Review Coverage Ratio | % review contexts or routes in scope that were evaluated | evaluated / total × 100 |
+| 2 | False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| 3 | Evidence Strength Score | % findings with evidence (file/line) | findings with evidence / total findings × 100 |
+| 4 | Actionability Score | % findings with clear recommendation | actionable findings / total findings × 100 |
+| 5 | Severity Distribution | count of findings per severity | count of Critical/High/Medium/Low/Info |
+| 6 | MTTR Estimate | estimated time to route or address review | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| 7 | Before/After Trend | score improvement over time | (after - before) / before × 100 |
+| 8 | Risk Exposure Index | high-severity misrouted review contexts | count of Critical/High findings in critical scope |
+| 9 | Scope Boundary Adherence | % routing findings inside declared scope | in-scope findings / total findings × 100 |
+| 10 | Documentation/Report Quality | % findings with target and recommended skill | documented findings / total × 100 |
 
-- [Full-dimension checklist](references/checklist.md) — see `## Subagents` for the codebase-reviewer profile
-- `review-*` full dispatch catalog (per-workspace phases): `deep-review/SKILL.md`
-- Use /run-review if needed
+Domain-specific metrics:
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Routing Accuracy | % reviews routed to the correct skill or target | correct routes / total routed × 100 |
+| 2 | Ambiguity Rate | % inputs with unclear routing intent | ambiguous inputs / total inputs × 100 |
+| 3 | Fallback Rate | % reviews that fall back to a default handler | fallback count / total reviews × 100 |
+| 4 | Context Detection Coverage | % contexts where domain/intent is correctly detected | detected contexts / total contexts × 100 |
 
 ## Expected Outcome
 

@@ -129,6 +129,8 @@ related:
 - ใช้ /run-clean ถ้าจำเป็น
 - ใช้ /run-cleanup ถ้าจำเป็น
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ตารางรายงาน candidates สำหรับ cleanup บนเครื่อง

@@ -4,7 +4,7 @@
 
 ## 1. Prerequisites
 
-- `bun --version` >= 1.4 installed (see [../references/install.md](../references/install.md))
+- `bun --version` shows a current supported release installed (see the Install And Setup step in [../SKILL.md](../SKILL.md))
 - clean `git status` — commit before migrating
 
 ## 2. Replace Package Manager

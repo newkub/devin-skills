@@ -11,7 +11,7 @@ related:
   - deep-review
   - update-devin-global-skills
   - follow-best-practice
-  - implement-features-to-mvp
+  - implement-to-production
   - ask-me
 ---
 
@@ -66,7 +66,7 @@ Create a plugin/extension/addon for the specified target — this parent skill o
 
 - The parent only dispatches — never duplicate a target skill's workflow in this file
 - Always choose library/tooling first via `/deep-review` (techstack catalog)
-- After scaffolding → `/implement-features-to-mvp` per convention
+- After scaffolding → `/implement-to-production` per convention
 
 - Use /follow-create-sdk when needed
 - Use /follow-create-web when needed

@@ -34,7 +34,7 @@ Edit an existing GitHub pull request with `gh pr edit`, `gh pr comment`, and `gh
 
 > Goal: Edit the PR's main content
 
-1. Read the PR template from `.github/PULL_REQUEST_TEMPLATE.md` or `create-github-pr/templates/pr.md` if present
+1. Read the PR template from `.github/PULL_REQUEST_TEMPLATE.md` or a type template in `create-github-pr/templates/` (feature, bugfix, docs, hotfix, refactor) if present
 2. Replace the placeholders with new data
 3. Save to a temp file
 4. Run `gh pr edit <number> --body-file <body.md>`
@@ -79,7 +79,7 @@ Edit an existing GitHub pull request with `gh pr edit`, `gh pr comment`, and `gh
 ### 2. Templates
 
 - When editing the PR body, use the repo PR template first
-- If there is no template, use `create-github-pr/templates/pr.md` or create a new one
+- If there is no template, use a type template from `create-github-pr/templates/` or create a new one
 - If the PR is about `idea` features, use `create-github-issue/templates/idea.md` for feature comments if needed
 
 ### 3. Review Workflow

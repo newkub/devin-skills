@@ -5,7 +5,6 @@ argument-hint: "[scope|verify]"
 related:
   - resolve-errors
   - report
-  - test-usage
   - run-verify
   - ask-me
   - run-release
@@ -21,7 +20,7 @@ Update dependencies, runtime, tools, CI versions, and versioned config in every 
 - Update every versioned surface found in the repo: dependencies, devDependencies, peerDependencies, catalog versions, mise tools, GitHub Actions versions, Docker base images, packageManager field, runtime config
 - Use the right tool per ecosystem: `bun`/`bunx taze` for Node/Bun, `cargo update` for Rust, `go get -u ./...` for Go, `pip install -U` or `uv` for Python
 - Supports monorepos: Moon, Turbo, pnpm workspace, Cargo workspace
-- One-shot run: dry-run → update → install → build → test → test-usage → report
+- One-shot run: dry-run → update → install → build → test → `/deep-test usage` → report
 - Fast path: the `update-versions` section in Merged Details — a one-shot flow that updates every ecosystem (detect → dry-run → snapshot → update → install → diff report → verify) with no changelog analysis or separate batch commits; use the full Steps 1-8 flow when you need changelog analysis, a major migration, or separate batch commits
 
 ## Execute
@@ -91,7 +90,7 @@ Run `/update-version-to-latest [scope]` once; the system carries out this sequen
 
 > Goal: Confirm usage examples still work
 
-1. Run `/test-usage [scope]` to test the examples in `README.md`, `USAGE.md`, and `package.json` scripts
+1. Run `/deep-test usage [scope]` to test the examples in `README.md`, `USAGE.md`, and `package.json` scripts
 2. Record the examples that broke or need adjusting
 
 ### 8. Commit And Report
@@ -149,7 +148,7 @@ Run `/update-version-to-latest [scope]` once; the system carries out this sequen
 
 ### 5. Usage Verification
 
-- Always run `/test-usage` after each update completes
+- Always run `/deep-test usage` after each update completes
 - If a usage example breaks → fix it or update the docs before committing
 - Use /run-release if needed
 
@@ -241,7 +240,7 @@ Safely upgrade a dependency/runtime across a major version — scan all breaking
 
 
 
-1. Per package/batch: typecheck → lint → unit tests → `/run-verify` → `/test-usage`
+1. Per package/batch: typecheck → lint → unit tests → `/run-verify` → `/deep-test usage`
 
 2. monorepo → verify one dependent workspace at a time, leaf packages before consumers
 
@@ -359,7 +358,7 @@ Confirm after `/update-version-to-latest` that versions were actually bumped, th
 
 1. Run `/run-verify` — build, typecheck, lint, test
 
-2. Run `/test-usage` — usage examples still work
+2. Run `/deep-test usage` — usage examples still work
 
 3. If it fails → report the suspicious packages (latest diff) as rollback candidates — don't roll back yourself
 
@@ -485,7 +484,7 @@ Fast path — update dependencies, runtime, tools, and CI versions across every 
 
 2. If it fails → run `/resolve-errors` then recheck (max 3)
 
-3. Run `/test-usage` per convention — usage examples must still work
+3. Run `/deep-test usage` per convention — usage examples must still work
 
 4. Run `/report` to summarize: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
 
@@ -518,5 +517,5 @@ Fast path — update dependencies, runtime, tools, and CI versions across every 
 - All dependencies, runtime, tools, and CI versions updated to the latest stable
 - Lock files updated with no conflicts
 - Build, typecheck, test, and lint pass
-- `/test-usage` passes
+- `/deep-test usage` passes
 - Reports the versions changed, breaking changes, and next actions

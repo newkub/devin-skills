@@ -36,7 +36,7 @@ related:
 
 1. `bun add -D oxlint` หรือ package manager ที่ project ใช้
 2. สร้าง `.oxlintrc.json` — map plugins/categories/rules จาก ESLint config (ดู official docs สำหรับ config fields และ migration aids)
-3. ใช้ `eslint-plugin-oxlint` ใน ESLint config เพื่อปิด rules ที่ oxlint ครอบแล้ว — กัน double-report ระหว่าง transition (ดู parent skill `references/oxlint.md`)
+3. ใช้ `eslint-plugin-oxlint` ใน ESLint config เพื่อปิด rules ที่ oxlint ครอบแล้ว — กัน double-report ระหว่าง transition (ดู official docs ของ oxlint หรือ `/follow-create-oxlint-plugin`)
 
 ### 3. Run Side-By-Side
 

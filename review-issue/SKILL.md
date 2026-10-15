@@ -5,9 +5,7 @@ argument-hint: "[areas]"
 related:
   - deep-review
   - deep-review-then-fix
-  - improve-features
-  - improve-rbac
-  - improve-form
+  - improve
   - refactor
   - create-plan-in-dot-devin
   - report
@@ -24,7 +22,7 @@ Focused review of the issue/concern areas the user names (e.g. `uxui rbac naviga
 
 ## Scope
 
-- Use when the user clearly points at an "issue area" — not a full codebase review (→ `/deep-review`) and not feature gap analysis (→ `/improve-features`)
+- Use when the user clearly points at an "issue area" — not a full codebase review (→ `/deep-review`) and not feature gap analysis (→ `/improve features`)
 - Areas are free-form — map each to the nearest `/deep-review` domain; if it can't be mapped, review the source directly
 - If the user appends `and fix` to the command → treat it as confirmed; fix every finding without asking again (still report before fixing)
 
@@ -54,16 +52,16 @@ Every finding must have `file:line` evidence — no guessing; never count an int
 
 > Goal: prioritized report before any fix
 
-1. Produce a `/report` table: `No.`, `Area`, `Type` (issue|gap|inconsistency), `Finding`, `Severity`, `Evidence`, `Fix Skill`
+1. Produce a `/report-review` table (chat, no files): `No.`, `Area`, `Type` (issue|gap|inconsistency), `Finding`, `Severity`, `Evidence`, `Fix Skill`
 2. If the user didn't append `and fix` → ask which items to fix and wait for confirmation
 
 ### 4. Fix Confirmed Items
 
 > Goal: fix only what was confirmed
 
-1. Route each finding to `/deep-review-then-fix` by matching domain — findings that can't be mapped are fixed directly per the evidence; areas with a dedicated entry → use that entry (rbac → `/improve-rbac`, form → `/improve-form`, validation → `/improve-data-validation`, tests → `/improve-tests`)
+1. Route each finding to `/deep-review-then-fix` by matching domain — findings that can't be mapped are fixed directly per the evidence; areas with a dedicated entry → use that entry (rbac → `/improve auth`, form → `/improve form`, validation → `/improve data`, tests → `/improve tests`)
 2. Large additions → always `/create-plan-in-dot-devin` before implementing
-3. After all fixes → always run `/refactor-to-srp` on the touched files (≤250 lines, 1 responsibility)
+3. After all fixes → always run `/refactor` (step 2, SRP split) on the touched files (≤250 lines, 1 responsibility)
 4. Run the project build/lint to verify → `/suggest-next-action`
 
 ## Rules

@@ -3,7 +3,7 @@ name: watch-terminal
 description: Open a browser and watch the terminal every 5 seconds, handling errors automatically
 argument-hint: "[scope|report]"
 related:
-  - capture
+  - use-agents-capture
   - record-video-terminal-with-asciinema
   - resolve-errors
   - run-watch
@@ -61,15 +61,15 @@ Verify correctness:
 1. Confirm the terminal watch runs every 5 seconds
 2. Confirm new errors can be detected and fixed
 3. Verify the development server works normally
-4. Summarize results per `workflows/report-status/SKILL.md` — command progress, errors, verdict
+4. Summarize results per `## Merged Details → report-status` — command progress, errors, verdict
 
 ### Workflows
 
 | Argument | Workflow |
 |----------|----------|
-| `report`, `status` | `workflows/report-status/SKILL.md` — terminal watch report (progress, errors, verdict) |
+| `report`, `status` | `## Merged Details → report-status` — terminal watch report (progress, errors, verdict) |
 
-1. If the argument is `report`/`status` → read `workflows/report-status/SKILL.md` and follow its flow — reuse the existing session data
+1. If the argument is `report`/`status` → read `## Merged Details → report-status` and follow its flow — reuse the existing session data
 2. If no argument is given → run Steps 1-4 normally, with Step 4 reading and executing the `report-status` workflow
 
 ## Rules
@@ -94,7 +94,7 @@ Verify correctness:
 - Check build status
 - Verify hot reload works
 
-- Use /capture if needed
+- Use /use-agents-capture if needed
 - Use /record-video-terminal-with-asciinema if needed
 - Use /run-watch if needed
 

@@ -3,7 +3,7 @@ name: follow-lib-comark
 description: ใช้ Comark parse และ render Markdown ได้ทุกที่ — HTML, ANSI, Vue, React, Svelte, Angular
 argument-hint: "[scope]"
 related:
-  - improve-uxui
+  - improve
   - follow-lib-shiki
   - follow-lib-vue
   - follow-lib-react
@@ -21,7 +21,7 @@ related:
 
 - Boundary: Comark คือ markdown parse+render pipeline; syntax highlighting ของ code blocks ผ่าน plugin `comark/plugins/shiki` (ดู `/follow-lib-shiki`) หรือ `comark/plugins/rangi` (lightweight, ไม่ใช้ shiki); full docs site generation → `/follow-create-web-docs`
 - Parse/render แยกกัน — parse ฝั่ง server/build แล้ว serialize ข้ามไป render ที่ framework ใดก็ได้
-- ใช้ใน `/improve-uxui` เมื่อ finding เกี่ยวกับ markdown content rendering, docs UX, streaming chat output
+- ใช้ใน `/improve uxui` เมื่อ finding เกี่ยวกับ markdown content rendering, docs UX, streaming chat output
 - Latest: `comark@0.7.0` (verified 2026-10-03)
 
 ## Execute
@@ -92,7 +92,7 @@ related:
 
 - Renderer ใช้เฉพาะ components ที่ register — content เป็น data ไม่ใช่ code; ยังคง sanitize HTML output ถ้ารับ untrusted content (ดู `/follow-lib-dompurify`)
 
-- ใช้ /improve-uxui ถ้าจำเป็น
+- ใช้ /improve uxui ถ้าจำเป็น
 - ใช้ /follow-lib-shiki ถ้าจำเป็น
 - ใช้ /follow-lib-vue ถ้าจำเป็น
 - ใช้ /follow-lib-react ถ้าจำเป็น
@@ -110,4 +110,4 @@ related:
 - Components/attributes/frontmatter ใช้เป็น opt-in เมื่อต้องการ
 - Plugins (shiki/rangi, mermaid, toc) ต่อได้ถูกต้อง
 - Streaming output render สมบูรณ์ทุก frame
-- พร้อมใช้ใน `/improve-uxui` fixes สำหรับ markdown/content UX
+- พร้อมใช้ใน `/improve uxui` fixes สำหรับ markdown/content UX

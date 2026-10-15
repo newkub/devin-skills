@@ -1,171 +1,112 @@
 ---
 name: follow-lang-php
-description: พัฒนา PHP projects ด้วย PSR standards และ modern best practices
+description: Develop PHP projects with PSR standards and modern best practices
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
   - follow-lang-javascript
-  - follow-lang-kotlin
   - follow-best-practice
+  - refactor
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา PHP applications ตาม PSR standards และ modern best practices
+Develop PHP applications following PSR standards and modern best practices
 
 ## Scope
 
-ใช้สำหรับพัฒนา PHP projects ทั้ง vanilla และ frameworks (PHP 8.5+)
+For PHP projects, vanilla and framework (Laravel/Symfony/Slim); single `SKILL.md` package — no `references/`, verify the current PHP major version and feature set via `/deep-research` at use time (official docs: https://www.php.net/, PSRs: https://www.php-fig.org/psr/)
 
 ## Execute
 
-### 1. Setup
+### 1. Check Version And Setup
 
-> Goal: ติดตั้ง PHP, Composer และ development tools สำหรับเริ่ม project
+> Goal: install PHP, Composer, and dev tools with live-checked versions
 
-1. ติดตั้ง PHP 8.5+ หรือ latest stable
-2. ติดตั้ง Composer สำหรับ dependency management
-3. ติดตั้ง development tools:
-   ```bash
-   composer global require phpstan/phpstan
-   composer global require friendsofphp/php-cs-fixer
-   composer global require phpunit/phpunit
-   ```
-4. เลือก Framework: Laravel, Symfony, หรือ Slim
-5. ดูรายละเอียดใน [references/php-language.md](references/php-language.md) และ [references/php-composer.md](references/php-composer.md)
+1. Run `/deep-research` to confirm the latest stable PHP and which language features are safe to use for the project's platform version
+2. Install PHP (latest stable) and Composer (`https://getcomposer.org/download/`; Windows: Composer-Setup.exe)
+3. Add dev tools per project: `composer require --dev phpstan/phpstan friendsofphp/php-cs-fixer phpunit/phpunit`
+4. Pick the framework (Laravel, Symfony, Slim) only when the project needs one — confirm with `/follow-my-techstack`
 
 ### 2. Configuration
 
-> Goal: ตั้งค่า composer.json, autoload, static analysis และ code style
+> Goal: configure composer.json, autoload, static analysis, and code style
 
-1. สร้าง `composer.json` ใน root ของ project
-2. ตั้งค่า PHP version และ project metadata
-3. ตั้งค่า autoload (PSR-4)
-4. สร้าง `phpstan.neon` สำหรับ static analysis
-5. สร้าง `.php-cs-fixer.php` สำหรับ code style (PSR-12)
-6. ตั้งค่า `php.ini` สำหรับ environment:
-   - Development: `display_errors = On`, `error_reporting = E_ALL`
-   - Production: `display_errors = Off`, `error_reporting = E_ALL & ~E_DEPRECATED`
-7. ดูรายละเอียดใน [references/php-composer.md](references/php-composer.md)
+1. Create `composer.json` with `require.php`, PSR-4 `autoload` (`"Vendor\\Package\\": "src/"`) and `autoload-dev` for tests
+2. Create `phpstan.neon` with `level: 8` and `paths: [src]`
+3. Create `.php-cs-fixer.php` with `@PSR12` rules over `src` and `tests`
+4. Set `php.ini` per environment: dev `display_errors = On`, `error_reporting = E_ALL`; prod `display_errors = Off`
 
 ### 3. Project Structure
 
-> Goal: สร้างโครงสร้าง directory ตาม PSR-4 autoloading standard
+> Goal: organize directories per PSR-4 autoloading
 
-1. ใช้ PSR-4 autoloading standard
-2. สร้าง `src/` สำหรับ source code
-3. สร้าง `tests/` สำหรับ unit tests
-4. สร้าง `config/` สำหรับ configuration files
-5. ใช้ Clean Architecture หรือ MVC pattern
+1. `src/` for source, `tests/` for tests, `config/` for configuration
+2. Namespace layout mirrors `src/` exactly (PSR-4)
+3. Use Clean Architecture or MVC per `/refactor architecture`
 
 ### 4. Code Standards
 
-> Goal: ใช้ PSR-12 coding style และ type safety ตาม PSR standards
+> Goal: write PSR-12-compliant, fully typed PHP
 
-1. ทำตาม PSR-12 coding style
-2. ใช้ type hints ทุก function (PHP 7.4+)
-3. ใช้ strict types: `declare(strict_types=1);`
-4. ใช้ namespaces ตาม PSR-4
-5. ตั้งชื่อ classes ด้วย PascalCase
-6. ตั้งชื่อ methods ด้วย studlyCaps
-7. ตั้งชื่อ functions ด้วย snake_case
-8. ดูรายละเอียดใน [references/php-psr-standards.md](references/php-psr-standards.md)
+1. `declare(strict_types=1);` in every file; type hints and return types on every function; typed properties
+2. PSR-12: LF endings, file ends with single LF, omit closing `?>`, 4-space indent (no tabs), soft limit 120 chars, lowercase reserved keywords, short type keywords (`bool`, `int`)
+3. Namespaces per PSR-4; classes `PascalCase`, methods `camelCase`/`studlyCaps` per PSR-1, functions `snake_case` where not class-bound
+4. Use modern features available on the platform version (enums, readonly, `#[\Override]`, property hooks, pipe operator, `#[\NoDiscard]`) — live-check availability, never target features above `require.php`
 
 ### 5. Dependency Management
 
-> Goal: ใช้ Composer และ Dependency Injection สำหรับจัดการ dependencies
+> Goal: manage dependencies and wiring cleanly
 
-1. ใช้ Composer สำหรับ dependency management
-2. ใช้ Dependency Injection Container
-3. ใช้ interfaces สำหรับ abstraction
-4. ใช้ Service Provider pattern (Laravel/Symfony)
-5. หลีกเลี่ยง global state
+1. Composer for dependencies; commit `composer.lock`, never float ranges in `require`
+2. Use a DI container (PSR-11) and constructor injection; interfaces for abstraction; service providers on Laravel/Symfony
+3. Avoid global state
 
-### 6. Testing
+### 6. Testing And Quality
 
-> Goal: เขียน tests ครอบคลุม business logic ด้วย PHPUnit หรือ Pest
+> Goal: keep the codebase analyzed, styled, and tested
 
-1. ใช้ PHPUnit สำหรับ unit testing
-2. เขียน tests สำหรับ business logic
-3. ใช้ mocks สำหรับ external dependencies
-4. รัน tests อย่างสม่ำเสมอ: `vendor/bin/phpunit`
-5. ใช้ Pest PHP สำหรับ modern testing syntax
-
-### 7. Quality Assurance
-
-> Goal: รัน static analysis, code style และ tests สำหรับ quality checks
-
-1. รัน PHPStan: `vendor/bin/phpstan analyse src`
-2. รัน PHP-CS-Fixer: `vendor/bin/php-cs-fixer fix`
-3. รัน PHPUnit: `vendor/bin/phpunit`
-4. ใช้ Psalm สำหรับ additional static analysis
-5. ตั้งค่า CI/CD สำหรับ automated checks
-6. ดูรายละเอียดใน [references/php-quality-tools.md](references/php-quality-tools.md)
+1. PHPUnit (or Pest for modern syntax) — `vendor/bin/phpunit`; mock external dependencies
+2. `vendor/bin/phpstan analyse src` and `vendor/bin/php-cs-fixer fix` in CI before merge
+3. Add Psalm for deeper analysis if the codebase warrants it; run `/setup-cicd` for automated checks
 
 ## Rules
 
 ### 1. PSR Standards
 
-- ใช้ PSR-4 สำหรับ autoloading
-- ใช้ PSR-12 สำหรับ coding style
-- ใช้ PSR-7 สำหรับ HTTP message interfaces
-- ใช้ PSR-11 สำหรับ Dependency Injection Container
-- ใช้ PSR-3 สำหรับ logging interface
-- ดู [references/php-psr-standards.md](references/php-psr-standards.md)
+- PSR-4 autoloading, PSR-12 coding style, PSR-3 logging interface, PSR-7 HTTP messages, PSR-11 container — adopt the interface, not a bespoke one
 
 ### 2. Type Safety
 
-- ใช้ `declare(strict_types=1);` ทุกไฟล์
-- Type hints ทุก function และ method
-- ใช้ return type declarations
-- ใช้ typed properties (PHP 7.4+)
-- ใช้ union types (PHP 8.0+), enums (8.1+), `#[\Override]` (8.3+), property hooks (8.4+)
-- ใช้ pipe operator `|>`, `#[\NoDiscard]`, clone with (PHP 8.5+)
+- `declare(strict_types=1);` everywhere; full parameter/return/property types; union types and enums where they clarify
 
 ### 3. Security
 
-- Validate input ทุกครั้ง
-- ใช้ prepared statements สำหรับ database queries
-- ใช้ `password_hash()` สำหรับ passwords
-- Escape output ทุกครั้ง
-- ใช้ HTTPS ใน production
-- ตั้งค่า proper file permissions
-- ใช้ environment variables สำหรับ secrets
+- Validate input, escape output, prepared statements, `password_hash()`, HTTPS, proper file permissions, secrets via env (`/follow-secret-manager`)
 
 ### 4. Performance
 
-- ใช้ OPcache ใน production
-- หลีกเลี่ยง N+1 query problems
-- ใช้ lazy loading เมื่อเหมาะสม
-- Cache results ของ operations ที่หนักๆ
-- ใช้ asynchronous processing สำหรับ tasks ที่ใช้เวลานาน
-- ใช้ HTTP/2 และ compression
+- OPcache in production; avoid N+1 queries; cache expensive results; async processing for long tasks; HTTP/2 + compression
 
 ### 5. Documentation
 
-- ใช้ PHPDoc comments สำหรับ classes, methods, properties
-- Document parameters และ return types
-- Document exceptions ที่อาจ throw
-- ใช้ `@throws`, `@param`, `@return` tags
-- เขียน README.md สำหรับ project
-- เขียน CHANGELOG.md สำหรับ version history
+- PHPDoc on classes/methods/properties with `@param`, `@return`, `@throws`; README.md and CHANGELOG.md maintained
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-kotlin ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+### 6. No Stale Pins
+
+- Never restate PHP version numbers or feature timelines from memory; live-check via `/deep-research` at use time
+
+- Use /follow-lang-javascript if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- PHP project ที่ทำตาม PSR standards
-- Code ที่มี type safety สูง
-- Automated testing ที่ครอบคลุม
-- Static analysis ที่ผ่าน
-- Code style ที่ consistent
-- Security ที่เหมาะสม
-- Performance ที่ดี
+- PHP project compliant with PSR standards
+- High type safety with strict types everywhere
+- Passing static analysis (PHPStan level 8), consistent code style, and covering tests
+- Secure and performant production setup

@@ -84,7 +84,7 @@ Monitor the deployment until it is live
 2. Wait until the status is `SUCCESS` (never report success before reaching this point)
 3. If the status is `FAILED` or `CRASHED`, run `/resolve-errors`
 4. Check the logs with `railway logs --lines 200`
-5. Run `/watch-browser-and-fix` with the deployment URL if a domain exists
+5. Run `/watch-browser fix` with the deployment URL if a domain exists
 
 ### 6. Fix Errors
 

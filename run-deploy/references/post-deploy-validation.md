@@ -32,7 +32,7 @@ Check the health endpoint and readiness probes:
 Check error logs for 5-10 minutes after deploy:
 
 - Check platform logs (Cloudflare dashboard, Vercel logs, Railway logs)
-- Check browser console errors via `/watch-browser-and-fix`
+- Check browser console errors via `/watch-browser fix`
 - Check network errors in browser DevTools
 - If critical errors are found → roll back immediately and run `/resolve-errors`
 

@@ -120,6 +120,8 @@ related:
 - ทำ `/deep-analyze` เพื่อวิเคราะห์
 - ทำ `/update-devin-global-skills` เพื่อสร้าง workflow
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - ผู้ใช้เข้าใจแผนการทำงาน

@@ -1,5 +1,5 @@
 ---
-name: follow-tool-devframe
+name: follow-tool-devfra
 description: สร้าง devtool ครั้งเดียวด้วย Devframe แล้ว mount ได้ทุกที่ — SPA, CLI, static, MCP, hub
 argument-hint: "[adapter-or-scope]"
 related:
@@ -8,6 +8,8 @@ related:
   - run-check
   - resolve-errors
   - follow-tool-vite-devtools
+  - deep-validate
+  - deep-review
 ---
 
 ## Goal
@@ -29,7 +31,10 @@ related:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Scaffold devtool | `workflows/create-devframe/SKILL.md` — install, defineDevframe, RPC, SPA, run dev/build/mcp 
+| Topic | Workflow |
+|-------|----------|
+| Scaffold devtool | `workflows/create-devframe/SKILL.md` — install, defineDevframe, RPC, SPA, run dev/build/mcp |
+
 ### 1. Install Packages
 
 > Goal: ติดตั้ง `devframe` และ dependencies ที่จำเป็น
@@ -37,7 +42,7 @@ related:
 1. ติดตั้ง `bun add devframe` (ESM-only, ไม่มี Vite dependency — ดู `references/apis.md`)
 2. ถ้า ship standalone CLI → ติดตั้ง optional peer `bun add cac`
 3. ติดตั้ง Standard Schema validator ตามที่ใช้: `bun add valibot` หรือ `bun add zod` (ทำ `/follow-lib-zod`)
-4. ถ้า mount เข้า Vite DevTools → `bun add -D @vitejs/devtools-kit`
+4. ถ้า mount เข้า Vite DevTools → `bun add -D @vitejs/devtools-kit` — ทำ `/follow-tool-vite-devtools` สำหรับ layer rules ของ Kit
 5. ถ้า compose hub → `bun add @devframes/hub @devframes/hub-ui`
 6. บันทึก version ที่ติดตั้งจริงใน `references/apis.md` metadata table
 
@@ -94,7 +99,7 @@ related:
 3. Dev server only: `createDevServer(def, { port, flags, onReady })` จาก `devframe/adapters/dev` → `StartedServer` handle
 4. Static snapshot: `createBuild(def, { outDir })` จาก `devframe/adapters/build` — self-contained deploy
 5. MCP server: `createMcpServer(def, { transport: 'stdio' })` จาก `devframe/adapters/mcp`
-6. Vite DevTools: `createPluginFromDevframe(def)` จาก `@vitejs/devtools-kit/node`
+6. Vite DevTools: `createPluginFromDevframe(def)` จาก `@vitejs/devtools-kit/node` — ดู `/follow-tool-vite-devtools` ก่อน mount
 7. Runtime registration: `createEmbedded(def, { ctx })` จาก `devframe/adapters/embedded`
 8. Framework kits: `@devframes/vite|nuxt` subpaths `/single` (author) และ `/hub` (mount hub); bare import throws
 
@@ -114,7 +119,7 @@ related:
 
 1. เพิ่ม `agent: { description, title }` ใน `defineRpcFunction` — opt-in ต่อ function (safety infer จาก `type`)
 2. `agent` field เปิด `jsonSerializable` อัตโนมัติ — MCP consume JSON-shaped data
-3. รัน MCP server ด้วย `my-tool mcp` หรือ `createMcpServer(def, { transport: 'stdio' })` — ทำ `/use-mcp` เพื่อ wire เข้า client
+3. รัน MCP server ด้วย `my-tool mcp` หรือ `createMcpServer(def, { transport: 'stdio' })` — ทำ `/use-mcp` เพื่อ wire เข้า client; `1.2.4`+ เปิด shared state ให้ agent ผ่าน `exposeSharedState`
 4. ทำ `/run-check` + `/deep-validate` ก่อน ship; ถ้า error → `/resolve-errors` max 3 รอบ
 
 ## Rules
@@ -142,8 +147,8 @@ related:
 
 ### 4. Version Notes
 
-- Latest stable: `devframe@1.2.1` (verified 2026-10-06)
-- `@devframes/*` kits ตาม version เดียวกัน (`1.2.x`); `@vitejs/devtools-kit@0.7.x` เป็น adapter แยก
+- Latest: `devframe@1.2.5` (verified 2026-10-15); stable pin (published ≥7 days): `1.2.3` — `1.2.4` เพิ่ม `exposeSharedState` ใน MCP route options
+- `@devframes/*` kits ตาม version เดียวกัน (`1.2.x`); `@vitejs/devtools-kit` เป็น adapter แยก (`0.7.6` stable / `0.8.0` latest — json-render ย้ายจาก Kit เข้า `@vitejs/devtools` ใน 0.8.0, ดู `/follow-tool-vite-devtools`)
 - Docs fetch raw markdown ได้ทุกหน้า: `https://devfra.me/raw/<path>.md`, full docs `https://devfra.me/llms-full.txt` (ดู `references/apis.md`)
 - ตรวจ `package.json` + `/deep-review` ก่อนเลือก API — spec อาจ drift หลัง 1.0
 

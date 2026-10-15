@@ -8,8 +8,6 @@ related:
   - report
   - suggest-next-action
   - implement-to-production
-  - idea-grouping
-
 ---
 ## Goal
 
@@ -26,11 +24,7 @@ related:
 | Topic | Skill |
 |-------|-------|
 | ไอเดีย features (extends + net-new + platform) | `/idea-features` |
-| ไอเดีย improve scope ใดๆ (quick wins, strategic, Extends/New/Remove) | `/idea-improve` |
-| ตั้งชื่อไฟล์/directory สำหรับ idea | `/idea-naming` |
 | ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |
-| ไอเดียจัดกลุ่ม items ตาม criteria/themes | `/idea-grouping` |
-| ไอเดียจาก review findings/reports ที่มีอยู่ | `/idea-review` |
 | ไอเดีย UX/UI improvements และ features | `/idea-uxui` |
 | ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
 | skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
@@ -54,7 +48,7 @@ related:
 
 1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
 2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/deep-review` สร้างไอเดีย UX/UI improvements
-3. สร้างไอเดียปรับปรุงจากเดิม (Extends)
+3. สร้างไอเดียปรับปรุงจากเดิม (Extends) — wants review-driven improvements แทน → `/improve <scope>`
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
 5. ระบุ problem ที่แต่ละไอเดียจะ solve
 6. จัดกลุ่มตาม topics

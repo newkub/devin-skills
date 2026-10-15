@@ -18,7 +18,7 @@ related:
 
 - First-time setup ของ cargo-mutants ใน Cargo workspace/project
 - ครอบคลุม: install, config file, baseline run, verify output
-- ไม่ครอบคลุม: sharding/CI optimization (`workflows/optimize-mutation`)
+- ไม่ครอบคลุม: sharding/CI optimization (`workflows/optimize mutation`)
 
 ## Execute
 
@@ -47,7 +47,7 @@ related:
 2. กำหนด top-level keys (ไม่มี `[mutants]` table): `timeout_multiplier`, `examine_globs`, `exclude_globs`, `test_package`
 3. ถ้าใช้ nextest → `test_tool = "nextest"` (เร็วกว่าเพราะ fail-fast) — ทำ `/follow-tool-nextest` ถ้ายังไม่มี
 4. ตั้ง `exclude_globs` สำหรับ generated/vendored/test-only code
-5. ดู config keys เพิ่มเติมใน `references/cargo-mutants.md` หรือ official docs
+5. ดู config keys เพิ่มเติมใน `references/cli.md` หรือ official docs
 
 ### 4. Baseline Run
 

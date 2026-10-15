@@ -1,104 +1,112 @@
 ---
 name: follow-lang-kotlin
-description: พัฒนา Kotlin applications ด้วย Clean Architecture และ Compose
+description: Develop Kotlin applications with Clean Architecture and Compose
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
   - follow-lang-javascript
-  - follow-lang-lua
   - follow-best-practice
+  - refactor
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-พัฒนา Kotlin project ด้วย Clean Architecture, Compose, Coroutines, Koin และ Arrow
+Develop Kotlin projects with Clean Architecture, Compose, Coroutines, Koin, and Arrow
 
 ## Scope
 
-ใช้สำหรับ project ที่พัฒนาด้วย Kotlin (Compose Desktop/Multiplatform)
+For projects developed in Kotlin (Compose Multiplatform/Desktop, KMP); single `SKILL.md` package — no `references/`, verify current versions/practices via `/deep-research` at use time
 
 ## Execute
 
-### 1. Setup
+### 1. Check Version And Setup
 
-> Goal: ติดตั้ง dependencies และตั้งค่า project
+> Goal: install dependencies and configure the project with live-checked versions
 
-1. ติดตั้ง: Compose Multiplatform, Coroutines, Koin, Ktor, Arrow
-2. ตั้งค่า `build.gradle.kts` พร้อม Kotlin plugin
-3. ใช้ Kotlin 2.0+
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest stable Kotlin, Compose Multiplatform, Coroutines, Koin, Ktor, and Arrow versions before pinning anything
+2. Configure `build.gradle.kts` with the Kotlin plugin and the latest stable toolchain (never hardcode a stale version in code or docs)
+3. Optional deps (Ktor, Arrow, Koin) → confirm with the user before adding
 
 ### 2. Project Structure
 
-> Goal: จัดโครงสร้างตาม Clean Architecture
+> Goal: organize code per Clean Architecture
 
-1. แบ่งเป็น `data/`, `domain/`, `presentation/`
-2. `domain/` มี pure business logic ไม่มี side effects
-3. `data/` มี I/O layer (API, database)
-4. `presentation/` มี UI layer (Compose)
-5. ดูรายละเอียดใน `references/project-structure.md`
+1. Split into `core/`, `data/`, `domain/`, `presentation/` — domain never depends on framework/UI
+2. `data/` owns I/O (remote/local datasources, DTOs, repository implementations, DTO → domain mapping); `domain/` owns entities, repository interfaces, use cases; `presentation/` owns Compose screens, ViewModels, Koin DI modules
+3. Recommended layout:
+
+```text
+src/main/kotlin/com/mycompany/app/
+├── core/error/            # Failure sealed class, exceptions
+├── data/datasource/       # Remote/Local data sources
+├── data/model/            # DTOs
+├── data/repository/       # Domain repository implementations
+├── domain/model/          # Business entities
+├── domain/repository/     # Repository interfaces (contracts)
+├── domain/usecase/        # Single-responsibility use cases
+├── presentation/di/       # Koin modules
+├── presentation/screen/   # Composable screens
+├── presentation/viewmodel/# StateFlow ViewModels
+└── Main.kt
+```
+
+4. Run `/refactor architecture` to pick the pattern for the app shape
 
 ### 3. Core Principles
 
-> Goal: เขียน Kotlin ตาม best practices
+> Goal: write Kotlin per best practices
 
-1. ใช้ Coroutines สำหรับ async operations
-2. ใช้ Koin สำหรับ dependency injection
-3. ใช้ Ktor สำหรับ HTTP client
-4. ใช้ Arrow สำหรับ functional error handling (Either)
-5. ใช้ `data class` สำหรับ immutable data models
+1. Use Coroutines (+ Flow/StateFlow) for async operations, never blocking threads
+2. Use Koin for dependency injection; one `module { }` per layer boundary
+3. Use Ktor for the HTTP client
+4. Use Arrow `Either<Failure, Success>` for functional error handling; `data class` for immutable models
+5. Side effects live in the data layer; use cases have a single clear responsibility (`suspend operator fun invoke`)
 
 ### 4. Error Handling
 
-> Goal: จัดการ error ด้วย Arrow Either pattern
+> Goal: handle errors with the Arrow Either pattern
 
-1. ใช้ `Either<Error, Success>` สำหรับ operations ที่อาจ fail
-2. ใช้ `Either.catch` สำหรับ exception handling
-3. หลีกเลี่ยง throwing exceptions โดยตรง
-4. ดูรายละเอียดใน `references/error-handling.md`
+1. Define a `sealed class Failure` (`ServerFailure`, `CacheFailure`, ...) in `core/error/`
+2. Repository interfaces return `Either<Failure, T>`; wrap exceptions with `Either.catch { }.mapLeft { ServerFailure(it.message ?: "...") }`
+3. ViewModels render state by `fold(ifLeft = ..., ifRight = ...)` into a `StateFlow<UiState>`; avoid throwing exceptions across layers
 
 ### 5. Testing
 
-> Goal: เขียน tests สำหรับทุก layer
+> Goal: write tests for every layer
 
-1. ใช้ `kotlin.test` หรือ `JUnit 5`
-2. เขียน tests สำหรับ domain layer (pure functions)
-3. เขียน tests สำหรับ data layer (mock API)
-4. ดูรายละเอียดใน `references/testing.md`
+1. Use `kotlin.test`/JUnit 5 with `runTest` for coroutines; MockK (`mockk`, `coEvery`) for repository mocks
+2. Unit test domain use cases (pure functions), data layer (mock API), presentation (ViewModel state transitions)
+3. Run `/run-test` until green
 
 ## Rules
 
 ### 1. Architecture
 
-- ใช้ Clean Architecture แบ่งเป็น `data/`, `domain/`, `presentation/` layers
-- ใช้ Compose Multiplatform สำหรับ UI
+- Clean Architecture layers `data/`/`domain/`/`presentation/`; domain is framework-free; data maps DTO → domain as the single source of truth
+- Use Compose Multiplatform for UI
 
 ### 2. Async And DI
 
-- ใช้ Coroutines สำหรับ async operations
-- ใช้ Koin สำหรับ dependency injection
-- ใช้ Ktor สำหรับ HTTP client
+- Coroutines for async; Koin for DI; Ktor for HTTP
 
 ### 3. Error Handling
 
-- ใช้ Arrow สำหรับ functional error handling (Either pattern)
-- ใช้ `data class` สำหรับ immutable data models
-- ดูรายละเอียดใน `references/error-handling.md`
+- Arrow `Either<Failure, Success>` everywhere a call can fail; `data class` for immutable models
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-lua ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+### 4. No Stale Pins
+
+- Never pin Kotlin/library versions in this skill or in code comments; live-check at use time via `/deep-research`
+
+- Use /follow-lang-javascript if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- Kotlin project ใช้ Clean Architecture แบ่ง layers ชัดเจน
-- UI ด้วย Compose Multiplatform
-- Async operations ด้วย Coroutines
-- DI ด้วย Koin
-- Error handling ด้วย Arrow Either pattern
-- มี unit tests ครอบคลุม
+- Kotlin project with Clean Architecture and clear layer boundaries
+- Compose Multiplatform UI, Coroutines async, Koin DI, Arrow Either error handling
+- Unit tests covering domain, data, and presentation

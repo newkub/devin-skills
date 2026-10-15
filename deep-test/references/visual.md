@@ -6,6 +6,17 @@ Check visual regression by capturing screenshots of routes/components and compar
 - Covers page-level screenshots via `agent-browser` or Playwright and component-level via Storybook/Playwright component tests
 - Report only: reports diffs, never auto-approves or reverts
 
+> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+
+## Run Quick Path
+
+> Goal: run the existing snapshot set and diff it (merged from `/test-visual`) — steps 1-5 below are the deep pass
+
+1. Detect — `*-snapshots/`, `toHaveScreenshot`, Storybook visual addon/Chromatic, Percy/Argos → `percy exec -- <cmd>`; no baseline → the first round creates the baseline, it is not a verify
+2. Run — same environment as the baseline (browser, viewport, OS, fonts); record per-snapshot status, diff %, diff image paths; platform-tagged snapshots → run only the baseline's platform
+3. Classify — intentional UI change → test outdated → `/update-tests` regenerate (only after confirming the change is correct); layout break / missing style → source regression → `/resolve-errors`; font/render/timing noise → environment stabilize (fixed fonts, wait conditions); never loosen thresholds; same failure ≥3 → stop+report
+4. Report — persist → `.devin/temp/report/<workspace>/visual-test-<time>.md` with diff images; all passed → `/run-verify`
+
 ## 1. Establish Baseline
 
 > Goal: Have baseline screenshots to compare against
@@ -19,7 +30,7 @@ Check visual regression by capturing screenshots of routes/components and compar
 > Goal: Get the current set of screenshots
 
 1. Run `/run-dev` to start the app, or use a preview build
-2. Use `/capture` or `agent-browser` to capture every route/component in scope
+2. Use `/use-agents-capture` or `agent-browser` to capture every route/component in scope
 3. Fix the viewport (e.g. `1280x720`) and disable animations if needed to reduce noise
 4. Store them in `tests/visual/current/`
 
@@ -68,7 +79,7 @@ Check visual regression by capturing screenshots of routes/components and compar
 - Cover every route in scope and at least the critical flows
 - List the skipped routes with reasons (auth-required, external deps)
 
-- Use /capture if needed
+- Use /use-agents-capture if needed
 - Use /use-agent-browser if needed
 
 ## Expected Outcome

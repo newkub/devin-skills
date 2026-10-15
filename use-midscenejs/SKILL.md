@@ -3,7 +3,6 @@ name: use-midscenejs
 description: Use Midscene.js — AI vision GUI agent + natural-language E2E testing (Playwright/Puppeteer/YAML/CLI)
 argument-hint: "[scope]"
 related:
-  - test-e2e
   - follow-tool-playwright
   - follow-tool-vitest
   - use-agent-browser
@@ -105,7 +104,7 @@ await agent.aiAssert('Every product in the search results has a price below $100
 
 1. smoke script: `npx tsx demo.ts` (the demo uses the §3 snippet) → see the actions actually happen + a new HTML report in `./midscene_run/report/`
 2. suite: `bunx playwright test` (or `midscene ./flow.yaml`) → green + merged reporter output
-3. failing because of the model → run `npx midscene model verify` before debugging the test; failing because of the UI → `/update-tests`; a genuinely broken flow → `/resolve-errors` (same pipeline as `/test-e2e`)
+3. failing because of the model → run `npx midscene model verify` before debugging the test; failing because of the UI → `/update-tests`; a genuinely broken flow → `/resolve-errors` (same pipeline as `/deep-test e2e`)
 
 ## Rules
 

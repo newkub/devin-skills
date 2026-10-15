@@ -1,132 +1,99 @@
 ---
 name: follow-lang-swift
-description: แนวทางการพัฒนา Swift applications ตาม Clean Architecture และ SwiftUI
+description: Swift application guidelines with Clean Architecture and SwiftUI
 argument-hint: "[scope]"
 related:
-  - use-bun-native-api
-  - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
+  - refactor
   - setup-cicd
   - use-scripts
+  - deep-research
 
 ---
 
 ## Goal
 
-พัฒนา Swift applications ด้วย Clean Architecture และ SwiftUI ตาม best practices
+Develop Swift applications with Clean Architecture and SwiftUI per best practices
 
 ## Scope
 
-ใช้ `follow-lang-swift` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (lang swift)
+For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages); single `SKILL.md` package — no `references/`, verify the current Swift/Xcode toolchain and API changes via `/deep-research` at use time (official docs: https://developer.apple.com/documentation/swift, https://www.swift.org/documentation/)
 
 ## Execute
 
-### 1. Setup Configuration
+### 1. Check Version And Setup
 
-> Goal: ตั้งค่า Swift Package Manager และ dependencies
+> Goal: set up Swift Package Manager and dependencies with live-checked versions
 
-ตั้งค่า Swift Package Manager และ dependencies
-
-1. สร้าง `Package.swift` พร้อม platforms, products, dependencies
-2. เลือก libraries: SPM, Swift Concurrency, DI (Factory)
-3. ตั้งค่า targets สำหรับ main และ test
+1. Run `/deep-research` to confirm the current Swift language mode and Observation-framework availability for the deployment targets before choosing APIs
+2. Create `Package.swift` with `platforms`, `products`, `dependencies`, and targets for main + tests
+3. Core stack: SPM, Swift Concurrency (`async/await`), DI via Factory (or protocol-based manual DI)
+4. Xcode projects: keep the `.xcodeproj`/`.xcworkspace` scheme building the same targets as the package layout
 
 ### 2. Project Structure
 
-> Goal: จัดโครงสร้างโปรเจกต์ตาม Clean Architecture
+> Goal: organize the project per Clean Architecture
 
-จัดโครงสร้างโปรเจกต์ตาม Clean Architecture
+1. `Application/` — entry point (`@main struct MyApp: App`), app/scene delegates when required
+2. `Core/` — DI registry, extensions, shared utils
+3. `Data/` — data sources, DTO models, repository implementations
+4. `Domain/` — entities (immutable `struct`, `Identifiable, Hashable`), repository protocols, use cases
+5. `Presentation/` — reusable components, screens, view models
+6. `Resources/` — assets, color sets
+7. Run `/refactor architecture` for the pattern decision; detail: structures + layer tables in `follow-architecture/references/follow-*-arch.md`
 
-1. `Application/` - Entry point, App Delegate, Scene Delegate
-2. `Core/` - DI, Extensions, Utils
-3. `Data/` - DataSources, Models (DTOs), Repositories
-4. `Domain/` - Models (entities), Repositories (protocols), UseCases
-5. `Presentation/` - Components, Screens, ViewModels
-6. `Resources/` - Assets, Color sets
-- ดูรายละเอียดใน [references/swift-architecture.md](references/swift-architecture.md)
+### 3. Layer Dependencies (Import Rules)
 
-### 3. Core Principles
+> Goal: enforce the dependency direction
 
-> Goal: ใช้หลักการสำคัญในการพัฒนา
+1. `Presentation -> Domain`, `Data -> Domain`, `Domain -> (nothing)`, `Core -> shared only`, `Application -> Presentation/Domain/Data`
+2. Repository protocol lives in Domain, implementation in Data; DTOs are converted to domain entities at the data boundary
 
-ใช้หลักการสำคัญในการพัฒนา
+### 4. Core Principles
 
-1. SwiftUI และ Data Flow - ใช้ Property Wrappers (`@State`, `@StateObject`, `@ObservedObject`, `@EnvironmentObject`)
-2. Swift Concurrency - ใช้ async/await สำหรับ asynchronous operations
-3. MVVM Architecture - ViewModel เป็นตัวกลางระหว่าง View และ Model
-4. Dependency Injection - ใช้ Factory สำหรับ decoupling
-- ดู best practices ใน [references/swift.md](references/swift.md)
+> Goal: apply key SwiftUI and concurrency practices
 
-### 4. Folder Rules
+1. SwiftUI data flow: `@State` (local), `@StateObject` (owned), `@ObservedObject` (passed in), `@EnvironmentObject` (hierarchy-shared) — prefer the `@Observable` macro when the deployment target supports it (live-check)
+2. `ObservableObject` view models with `@Published` properties; derived values as computed properties
+3. Swift Concurrency: `async/await` and `async throws` APIs for I/O; avoid completion-handler mixes across layers
+4. MVVM: the view model mediates view and use cases; views are `struct`s conforming to `View`, small, single-responsibility, with `private` internal state
+5. DI via Factory registrations to keep layers decoupled and testable
 
-> Goal: จัดระเบียบโครงสร้างตาม Layer
+### 5. Testing
 
-จัดระเบียบโครงสร้างตาม Layer
+> Goal: test the project effectively
 
-1. `Domain/Models/` - Business entities (struct, immutable)
-2. `Data/Repositories/` และ `Domain/Repositories/` - Protocol ใน Domain, implementation ใน Data
-3. `Presentation/ViewModels/` - `ObservableObject` พร้อม `@Published` properties
-4. `Presentation/Components/` - Reusable Views ที่รับ State และส่ง Events
-5. `Presentation/Screens/` - ประกอบ Components และ ViewModels
-
-### 5. Import Rules
-
-> Goal: กำหนด dependencies ระหว่าง Layers
-
-กำหนด dependencies ระหว่าง Layers
-
-1. Presentation <-- Domain
-2. Domain <-- (no dependencies on Presentation/Data)
-3. Data <-- Domain
-4. Core <-- (shared only)
-5. Application <-- Presentation, Domain, Data
-
-### 6. Testing
-
-> Goal: ทดสอบโปรเจกต์อย่างมีประสิทธิภาพ
-
-ทดสอบโปรเจกต์อย่างมีประสิทธิภาพ
-
-1. แยก Unit tests ของ Domain/UseCases ออกจาก UI tests
-2. ทำให้ UseCase/Repository ทดสอบได้ด้วย dependency injection
-3. แยก UI/Network tests เป็น unit/integration
+1. Domain use cases and view models are unit-tested through injected protocol mocks (`swift test` / Xcode test targets)
+2. Separate UI/network integration tests from pure unit tests; no live network in unit tests
+3. Run `/run-test` until green; `/deep-test coverage` for gaps
 
 ## Rules
 
 ### 1. Component Structure
 
-- ใช้ Single-File Components (SFC) สำหรับ SwiftUI Views
-- ใช้ struct สำหรับ Views
-- จัดเรียง code ตามลำดับที่ถูกต้อง
-- ใช้ private สำหรับ internal state
-- ทำให้ View มีขนาดเล็กและรับผิดชอบหน้าที่เดียว
+- SwiftUI views are `struct`s, one file per component, small and single-responsibility; `private` for internal state; order members: state → derived → body → helpers
 
 ### 2. Data Flow
 
-- ใช้ Property Wrappers อย่างถูกต้อง (`@State`, `@StateObject`, `@ObservedObject`, `@EnvironmentObject`)
-- ViewModel ใช้ `@Published` สำหรับ properties ที่ต้อง notify
-- ใช้ async/await สำหรับ asynchronous operations
-- หลีกเลี่ยง direct dependencies ระหว่าง Layers
+- Correct property-wrapper choice per ownership; `@Published`/`@Observable` for view-model notification; async/await for I/O; never reach across layer boundaries directly
 
 ### 3. Code Quality
 
-- ใช้ struct สำหรับ data models (immutable เมื่อเป็นไปได้)
-- ใช้ protocol สำหรับ interfaces
-- ทำให้ code decoupled และ testable
-- ใช้ naming conventions อย่างสม่ำเสมอ
+- `struct` for data models (immutable by default); protocols for interfaces; consistent naming; value semantics preferred over reference types except view models/DI
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
-- ใช้ /follow-lang-kotlin ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /use-scripts ถ้าจำเป็น
+### 4. Build Commands
+
+- `swift build`, `swift run`, `swift test`, `swift package update|resolve`; on Xcode projects use `xcodebuild` with the project scheme
+
+- Use /follow-lang-kotlin if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-scripts if needed
 
 ## Expected Outcome
 
-- Swift applications ที่มีโครงสร้าง Clean Architecture
-- UI ที่ใช้ SwiftUI อย่างถูกต้อง
-- Code ที่ decoupled และ testable
-- Data flow ที่ชัดเจนและ maintainable
-- Project structure ที่เป็นระเบียบ
+- Swift application structured with Clean Architecture and enforced dependency direction
+- Correct SwiftUI usage and clear, maintainable data flow
+- Decoupled, testable code with DI and protocol boundaries
+- Tests covering domain and view models, passing locally and in CI

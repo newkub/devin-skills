@@ -1,11 +1,13 @@
 ---
 name: improve
-description: หาสิ่งที่ improve ใน scope รวม findings แล้วแก้ผ่าน review-* ทันที
+description: หาสิ่งที่ improve ใน scope — ส่งไป /deep-review แล้วแก้ทุก finding ผ่าน /deep-review-then-fix ทันที
 argument-hint: "[scope]"
 related:
-  - simplify
   - deep-review
-  - review
+  - deep-review-then-fix
+  - optimize
+  - improve-usage-md
+  - follow-code-quality
   - report
   - suggest-next-action
   - ask-me
@@ -13,47 +15,48 @@ related:
 
 ## Goal
 
-ตอบคำถาม "improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — รวม findings จาก reviews เป็น prioritized list แล้วส่งต่อไปแก้ที่ section `## Fix` ของ `review-*` ที่ตรง domain ทันที
+ตอบคำถาม "improve อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — เป็น thin entry ที่ส่งต่อให้ `/deep-review` เก็บ findings ทั้งหมด แล้ว route ไปแก้ที่ `/deep-review-then-fix` ต่อ domain ทันที ไม่ทำ review เอง ไม่แก้เองใน skill นี้
 
 ## Scope
 
-ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไร" — เป็น thin entry point ที่ delegate การ review ไป `/deep-review` ไม่ทำ review เองและไม่แก้ไขโดยตรง
+ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไร" โดยไม่เจาะ domain — หรือเมื่อ domain `improve-*` เดิมถูกยุบมาที่นี่ (scope คำใดก็ใช้เป็น domain ได้ เช่น `/improve a11y`, `/improve security`)
+
+- `/deep-review` เป็นผู้ review เดียว — ทุกมิติที่เข้ากับ scope ดูจาก `references/scope-map.md` (SSOT: scope → review domain + boundary) ไม่ copy ตารางไปไว้ที่อื่น
+- scope เป็น metric-driven (bundle, latency, cost, cache hit...) → ใช้ `/optimize` แทน ไม่แก้ perf แบบ ad-hoc ใน improve path
+- ต้องการแก้พร้อม confirm ทีละข้อ → `/deep-review-then-fix` ตรงๆ
+
+## References
+
+- `references/scope-map.md` — ตาราง SSOT: ทุก scope → review domain(s) + ownership/boundary (รวมจาก `/follow-improve` เดียวที่ถูกยุบเข้า skill นี้)
 
 ## Execute
 
-### 1. Review Gaps
+### 1. Review
 
-> Goal: ได้ prioritized improvement list
+> Goal: ได้ prioritized findings จาก deep-review
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ถ้า scope ตรง domain ใน `follow-improve/references/scope-map.md` → ส่งต่อไป `improve-{domain}` ที่ตรงแทนการทำกว้างเอง
-3. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/deep-review` เพื่อรวบรวม findings ของ issue
-4. ทำ `/deep-review` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `deep-review/SKILL.md` ของ `/deep-review` สแกนกว้างก่อน
-5. รวบรวม prioritized list พร้อม severity และ evidence
-6. ถ้าพบ metric-driven finding/bottleneck (bundle size, build/CI speed, queries, network, startup, memory, cost) → ส่งต่อไป `/optimize` domain ที่ตรงตาม `follow-optimize/references/scope-map.md` (convention: `/follow-optimize`) — ไม่แก้ perf แบบ ad-hoc ใน improve path
+2. Lookup scope ใน `references/scope-map.md` เพื่อระบุ review domain ที่ตรง (boundary cluster events/stability/data ตามตาราง)
+3. ทำ `/deep-review` กับ scope นั้น — report ผ่าน `/report-review` ห้าม scan เองซ้ำ
 
-### 2. Present Findings
+### 2. Present And Fix
 
-> Goal: แสดงผล findings ก่อนแก้
+> Goal: แก้ทุก finding ทันทีโดยไม่รอ confirm
 
-1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
-
-### 3. Fix All Findings
-
-> Goal: แก้ทุก finding ที่พบ
-
-1. ส่งแต่ละ finding ไปยัง section `## Fix` ของ `review-*` skill ที่ตรง domain
-2. ทำ `/suggest-next-action` หลังแก้ครบ
+1. แสดง improvements เป็นตารางผ่าน `/report`: No., Finding, Severity, Fix domain
+2. ส่งแต่ละ finding ไป `/deep-review-then-fix` per domain —แก้ root cause, loop สูงสุด 3 รอบ/finding
+3. ถ้าพบ metric-driven finding → ส่งต่อไป `/optimize` ตาม `optimize/references/scope-map.md`
+4. ทำ `/suggest-next-action` หลังแก้ครบ
 
 ## Rules
 
-- ไม่ทำ review เอง — delegate ไป `/deep-review` หรือ `/deep-review` ถ้าเป้น issue
-- แก้ทุก finding ทันทีโดยไม่รอ confirm
-- ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
+- ไม่ทำ review เอง — delegate ไป `/deep-review` เท่านั้น — thin entry ไม่ hold domain logic
+- ทุก improvement ต้องเริ่มจาก review finding + evidence ก่อนเสมอ — no guess-fixes
+- แก้ทุก finding ทันทีโดยไม่รอ confirm (unless user สั่ง confirm ก่อน → ใช้ `/deep-review-then-fix`)
+- ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง — ไม่มี owner = report เป็น residual
 
 ## Expected Outcome
 
-- Prioritized improvement list จาก `/deep-review` หรือ `/deep-review` ถ้าเป้น issue
-- ไม่มี confirm gate — แก้ทุก finding ทันที
-- Findings ทั้งหมดถูกส่งไปแก้ที่ `## Fix` ของ `review-*` ที่ถูกต้อง
+- Prioritized improvement list จาก `/deep-review` พร้อม coverage matrix
+- Findings ทั้งหมดถูก route ไป `/deep-review-then-fix` per domain และแก้ครบหรือระบุเหตุที่ไม่แก้
+- Metric-driven findings ถูกส่งต่อ `/optimize` — ไม่นำมาแก้ปนใน improve path

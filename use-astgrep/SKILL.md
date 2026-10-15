@@ -45,7 +45,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 
 > Goal: create the directory structure for rules and tests
 
-1. Create ast-grep rules in the `rules/` directory at the project root per the canonical layout in `/update-astgrep-rules` (`.devin/rules/` markdown rules are deprecated — delete them if found)
+1. Create ast-grep rules in the `rules/` directory at the project root per the canonical layout in `/update-astgrep-rules` (leave `.devin/rules/*.md` alone — those are natural-language guidance rules owned by `/update-devin-project-rules`, a separate concern)
 2. If there is a `testConfigs`, create the `rule-tests/` directory at the project root
 3. If there is a `utilDirs`, create the `utils/` directory at the project root
 4. You can use `ast-grep new` to scaffold a new project (or `bunx -p @ast-grep/cli ast-grep new` if not yet installed)
@@ -97,7 +97,8 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 ### 2. Separation From Devin Rules
 
 - `rules/` stores `.yml` ast-grep rules at the project root (`rules/{dependencies,architecture,glob}`)
-- `.devin/rules/` (markdown rules) is deprecated — if found, delete it and use `rules/` + `sgconfig.yml` instead
+- `.devin/rules/*.md` are natural-language agent-guidance rules (architecture, dependencies, business) owned by `/update-devin-project-rules` — leave them, never delete them here
+- ast-grep `rules/*.yml` + `sgconfig.yml` provide machine enforcement; the two coexist as separate concerns
 - Rule files use `kebab-case` filenames
 - Non-rule files in `rules/` are ignored
 

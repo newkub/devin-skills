@@ -1,13 +1,14 @@
 ---
-name: follow-tool-devframe-create-devframe
+name: follow-tool-devfra-create-devframe
 description: Scaffold devtool ใหม่ด้วย Devframe — install, defineDevframe, RPC, SPA, run dev/build/mcp
 argument-hint: "[tool-id]"
 related:
-  - follow-tool-devframe
+  - follow-tool-devfra
   - follow-lib-zod
   - follow-create-cli
   - run-check
   - resolve-errors
+  - suggest-next-action
 ---
 
 ## Goal
@@ -70,7 +71,7 @@ Scaffold devtool ใหม่ด้วย Devframe จนรันได้จ�
 
 > Goal: ผ่าน checks ก่อนจบ
 
-1. รัน `bunx tsc --noEmit` + lint — ถ้าไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. รัน `/run-check` (lint + typecheck) — ถ้าไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
 2. เช็ค `static`/`snapshot` functions bake ถูกใน `dist-static/` (เปิด SPA จาก static serve แล้ว call)
 3. ผ่าน → `/suggest-next-action`
 

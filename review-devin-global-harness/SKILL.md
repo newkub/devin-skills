@@ -107,7 +107,7 @@ Review devin harness ทั้งหมด — `skills`, `subagents` (`%APPDATA%
 > Goal: สรุป score ต่อ layer + findings + refactor plan
 
 1. score ตาม `### Scoring` — severity weights, grade, report format
-2. ทำ `/report` แยก section ตาม layer: `skills`, `subagents`, `hooks`, `mcp`, `global rules`, `cross-layer` — แต่ละมี Skill/Layer, Category, Severity, Finding, Evidence, Action
+2. ทำ `/report-review` (ตารางในแชท ไม่สร้างไฟล์) แยก section ตาม layer: `skills`, `subagents`, `hooks`, `mcp`, `global rules`, `cross-layer` — แต่ละมี Skill/Layer, Category, Severity, Finding, Evidence, Action
 3. สรุป "improve อะไรอีกบ้าง" + "SKILL.md ที่ควร refactor" เป็น prioritized action list → `/suggest-next-action`
 
 ### Workflows
@@ -232,7 +232,7 @@ Categories: split (>250/หลาย resp), merge (scope ซ้อน/ซ้ำ 
 
 - คำนวณ review score ตาม `### Scoring` แยกต่อ layer
 - ห้ามใช้ markdown bold markers — ใช้ backticks
-- รายงานเป็นตารางด้วย `/report`
+- รายงานเป็นตารางด้วย `/report-review` (chat, no files)
 
 - ใช้ /idea-new-devin-global-skills, /follow-deep, /deep-review, /run-review, /follow-single-of-source ถ้าจำเป็น
 - ใช้ /update-devin-harness เมื่อ findings เป็นเรื่อง layer misalignment; ใช้ /check-reference, /update-devin-global-skills สำหรับเจาะลึก layer เดียว

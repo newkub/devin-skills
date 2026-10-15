@@ -31,7 +31,7 @@ Use when syncing all three layers of the devin ecosystem, especially after renam
 
 | Domain | Workflow |
 |--------|----------|
-| `devin-knowledge`, `knowledge` — check Devin knowledge notes/suggestions | `workflows/devin-knowledge/SKILL.md` |
+| `devin-knowledge`, `knowledge` — check Devin knowledge notes/suggestions | `## Merged Details → devin-knowledge` |
 
 ### 1. Inventory All Layers
 

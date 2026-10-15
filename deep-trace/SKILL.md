@@ -6,7 +6,7 @@ related:
   - deep-debug
   - analyze-root-cause-analysis
   - run-profiler
-  - watch-browser-and-fix
+  - watch-browser
   - use-astgrep
   - search
   - report
@@ -133,7 +133,7 @@ Not for pure performance analysis — use `/run-profiler`
 - Check network, database, serialization, concurrency
 - Don't overlook async or event-driven flows
 
-- Use /watch-browser-and-fix if needed
+- Use /watch-browser fix if needed
 - Use /report if needed
 - Use /follow-tool-git if needed
 

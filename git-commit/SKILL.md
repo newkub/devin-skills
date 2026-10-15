@@ -30,11 +30,11 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 | Domain                   | Workflow |
 |--------------------------|----------|
-| `no-verify`              | `workflows/no-verify/SKILL.md` — commit ข้าม pre-commit hooks ด้วย `--no-verify` |
-| `selected-files`         | `workflows/selected-files/SKILL.md` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
+| `no-verify`              | `## Merged Details → no-verify` — commit ข้าม pre-commit hooks ด้วย `--no-verify` |
+| `selected-files`         | `## Merged Details → selected-files` — commit เฉพาะไฟล์ที่เลือก ไม่ใช้ `git add .` |
 | `and-push`               | `/git-commit-and-push` — top-level skill จริง (commit + push + resolve CI/CD) |
-| `at-devin-global-skills` | `workflows/at-devin-global-skills/SKILL.md` — pre-commit validation สำหรับ devin global skills (alias: `/git-commit-at-devin-global-skills`) |
-| `commit-quality`          | `workflows/commit-quality/SKILL.md` — lint commit messages ตาม conventional commits |
+| `at-devin-global-skills` | `## Merged Details → at-devin-global-skills` — pre-commit validation สำหรับ devin global skills (alias: `/git-commit-at-devin-global-skills`) |
+| `commit-quality`          | `## Merged Details → commit-quality` — lint commit messages ตาม conventional commits |
 
 ### 1. Navigate To Global Devin Skills
 

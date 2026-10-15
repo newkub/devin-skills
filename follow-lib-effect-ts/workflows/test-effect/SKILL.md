@@ -6,7 +6,7 @@ related:
   - follow-lib-effect-ts
   - run-test
   - resolve-errors
-  - improve-coverage
+  - improve
 ---
 
 ## Goal

@@ -5,7 +5,7 @@ argument-hint: "[provider-or-plugin]"
 related:
   - follow-lib-better-auth
   - follow-secret-manager
-  - improve-config
+  - improve
   - report-before-after
   - learn
 ---

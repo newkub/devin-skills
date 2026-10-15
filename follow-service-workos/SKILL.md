@@ -24,9 +24,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: SDK install, `WORKOS_API_KEY`/`WORKOS_CLIENT_ID`, client init → `workflows/setup-workos/SKILL.md`
-- Config: AuthKit/SSO, redirect URIs, organizations/connections, Directory Sync webhooks → `workflows/config-workos/SKILL.md`
-- Verify: API key/client id valid, organizations reachable → `workflows/verify-connection/SKILL.md`
+- Setup: SDK install, `WORKOS_API_KEY`/`WORKOS_CLIENT_ID`, client init → `## Merged Details → setup-workos`
+- Config: AuthKit/SSO, redirect URIs, organizations/connections, Directory Sync webhooks → `## Merged Details → config-workos`
+- Verify: API key/client id valid, organizations reachable → `## Merged Details → verify-connection`
 
 ### 1. Install SDK
 
@@ -98,7 +98,7 @@ Latest: `@workos-inc/node@10.14.0` (verified 2026-09-24) — AuthKit/User Manage
 - กำหนด env vars และ redirect URIs
 - ตั้งค่า AuthKit/User Management หรือ legacy `sso.*` flow
 - สร้าง organization, connection (SAML/OIDC) และ Directory Sync webhook
-- ไม่ครอบคลุม first-time SDK install → ใช้ `workflows/setup-workos/SKILL.md`
+- ไม่ครอบคลุม first-time SDK install → ใช้ `## Merged Details → setup-workos`
 
 ##### Execute
 
@@ -109,7 +109,7 @@ Latest: `@workos-inc/node@10.14.0` (verified 2026-09-24) — AuthKit/User Manage
 1. อ่าน `.env*` และ auth module ที่มีอยู่เพื่อระบุ flow ที่ใช้ (AuthKit vs `sso.*`)
 2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาด
 3. ตรวจ redirect URIs และ connections ที่ตั้งไว้แล้วใน dashboard — ใช้ `/open-web-for-config-secret` (service workos)
-4. ถ้ายังไม่มี SDK/credentials → ทำ `workflows/setup-workos/SKILL.md` แทน
+4. ถ้ายังไม่มี SDK/credentials → ทำ `## Merged Details → setup-workos` แทน
 
 ###### 2. Configure Env And Redirects
 
@@ -172,7 +172,7 @@ Latest: `@workos-inc/node@10.14.0` (verified 2026-09-24) — AuthKit/User Manage
 - ติดตั้ง SDK ตาม runtime (`@workos-inc/node`, `workos-python`, ฯลฯ)
 - สร้างและเก็บ `WORKOS_API_KEY`, `WORKOS_CLIENT_ID` อย่างปลอดภัย
 - Init client และ smoke check
-- ไม่ครอบคลุม AuthKit/SSO/Directory config → ใช้ `workflows/config-workos/SKILL.md`
+- ไม่ครอบคลุม AuthKit/SSO/Directory config → ใช้ `## Merged Details → config-workos`
 
 ##### Execute
 

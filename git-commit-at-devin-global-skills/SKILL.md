@@ -17,12 +17,12 @@ Alias ของ `/git-commit at-devin-global-skills` — commit ทุกไฟ�
 
 ## Execute
 
-ทำ `/git-commit at-devin-global-skills` เต็ม workflow (อ่าน `git-commit/workflows/at-devin-global-skills/SKILL.md`)
+ทำ `/git-commit at-devin-global-skills` เต็ม workflow (อ่าน ``git-commit/SKILL.md → at-devin-global-skills``)
 
 ## Rules
 
 - ห้าม duplicate workflow ของ `git-commit/workflows/at-devin-global-skills` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `git-commit/workflows/at-devin-global-skills/SKILL.md` เสมอ
+- ถ้า alias ขาด steps → อ่าน ``git-commit/SKILL.md → at-devin-global-skills`` เสมอ
 - ถ้าต้องการ push ต่อ → ใช้ `/git-commit-and-push` หลังจากนี้
 
 ## Expected Outcome

@@ -12,7 +12,7 @@ related:
   - use-astgrep
   - report-before-after
   - dont-over-engineer
-  - improve-typesafe
+  - improve
 ---
 
 ## Goal
@@ -72,7 +72,7 @@ related:
 | Suppressed อะไร | Fix จริง |
 |-----------------|----------|
 | type error (`@ts-ignore`, `# type: ignore`) | แก้ types — proper types, narrowing, guards; cast เมื่อจำเป็นจริง (`as` + comment); generated/external code → `.d.ts` หรือ `skipLibCheck` scope |
-| lint rule violation | แก้ code ตาม rule — restructure logic, rename, split function; ถ้า rule ผิดพลาดทั้ง codebase → ปรับ config ที่ root (`follow-config`) ไม่ใช่ suppress ทีละไฟล์ |
+| lint rule violation | แก้ code ตาม rule — restructure logic, rename, split function; ถ้า rule ผิดพลาดทั้ง codebase → ปรับ config ที่ root (`update-config`) ไม่ใช่ suppress ทีละไฟล์ |
 | format suppression (`prettier-ignore`, `fmt: off`) | ลบ suppression แล้ว format — ถ้า code จงใจ layout เอง (ASCII art, aligned tables) → justified พร้อม reason |
 | security suppression (`# nosec`, `checkov:skip`) | แก้ root cause เสมอ — ไม่มี justified case โดยไม่มี written exception + expiry; escalate `/check-secrets` ถ้า suppress เพื่อซ่อน secret |
 | coverage suppression (`no cover`, `istanbul ignore`) | เขียน test แทน (`/update-tests`); เก็บได้เฉพาะ defensive branches ที่ unreachable จริง (`assert_never`, platform guards) พร้อม comment |

@@ -65,7 +65,7 @@ Use when you need an interactive web prototype — dashboard, explorer, playgrou
 3. Responsive: 3 breakpoints — desktop full layout, tablet collapse, mobile stacked + bottom nav
 4. Accessibility: semantic HTML, keyboard nav, focus states, ARIA, reduced motion, WCAG AA contrast
 5. Microinteractions: fast + subtle + purposeful — copy feedback, transitions, active indicators
-6. Theme toggle (if any): smooth transition — no hard swap, per the `/follow-design-system`/`/improve-uxui` convention
+6. Theme toggle (if any): smooth transition — no hard swap, per the `/follow-design-system`/`/improve uxui` convention
 7. Thai text in the UI → font stack per `/follow-lib-unocss` (`@fontsource-variable/noto-sans-thai` + per-glyph fallback)
 
 ### 5. Run And Open

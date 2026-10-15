@@ -36,7 +36,6 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 1. Repo name: from the git remote (`git remote get-url origin`) or the `package.json` name
 2. Registries: publishable `package.json` → npm badge/link; `Cargo.toml` → crates.io; `pyproject.toml` → PyPI
 3. Docs: if `docs/**/*.md` exists → enable the docs pane + sidebar TOC; if not → single README pane only
-4. Follow [references/detect-meta.md](references/detect-meta.md)
 
 ### 2. Scaffold App
 
@@ -45,7 +44,7 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 1. Always prefer `create-docs` (the canonical generator) — `bunx create-docs` (or `npx create-docs`, repo: `wrikka/create-docs`) scaffolds the whole site per this spec; if the generator isn't usable (not published yet/network) → fall back to the manual steps below
 2. Manual fallback: `bun create vite <name> --template vue-ts` (or add it to the existing repo as `site/` or `docs-site/`)
 3. `bun add @comark/vue` plus plugins as needed (shiki for code highlight)
-4. Follow [references/comark-vue.md](references/comark-vue.md) — `<Markdown>` must be inside `<Suspense>`, use `:value` or a slot
+4. Comark Vue usage: `<Markdown>` must be inside `<Suspense>`, use `:value` or a slot
 5. Bundle the markdown as strings via `import readme from '../README.md?raw'` (Vite raw imports) — no runtime fetching
 
 ### 3. Build Layout
@@ -55,14 +54,14 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 1. Nav: repo name on the left, right side = registry badges (npm/crates if present) + GitHub icon link + theme toggle icon (sun/moon)
 2. Desktop (≥1024px): 2 columns — left README render with `position: sticky`, right docs with a sidebar TOC (if docs exist)
 3. Mobile: README scrolls normally first — once scrolled to the end, the docs pane becomes an `h-screen` separate scroll
-4. Follow [references/layout.md](references/layout.md) — minimal CSS, system font, readable max-width
+4. Keep the layout minimal — small CSS, system font, readable max-width
 
 ### 4. Deploy To Cloudflare Workers
 
 > Goal: CI deploys on every push to main
 
 1. `bun add -D wrangler` + `wrangler.toml` (assets point to `dist/`, SPA fallback)
-2. GitHub Actions workflow per [references/deploy-cloudflare.md](references/deploy-cloudflare.md) — `cloudflare/wrangler-action@v3` + secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
+2. GitHub Actions workflow: build then deploy assets with `cloudflare/wrangler-action@v3` + secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 3. Run `/run-docs` or `bun run build` + `wrangler deploy --dry-run` to verify before pushing
 
 ## Rules

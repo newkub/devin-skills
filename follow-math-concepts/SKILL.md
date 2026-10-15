@@ -6,7 +6,6 @@ related:
   - follow-context-engineering
   - deep-research
   - follow-best-practice
-  - follow-algorithms
   - report-math-equation
   - explain
   - learn
@@ -33,7 +32,7 @@ related:
 1. รับ `topic` จาก argument หรือ context
 2. ถ้าไม่ระบุ ให้ดูตาราง topics ด้านล่างและถามผู้ใช้ด้วย `/ask-me`
 3. เลือกอ่าน `references/{topic}.md` ที่ตรงกับ topic
-4. สำหรับ sources และ references ภาพรวม ดู [references/math-resources.md](references/math-resources.md) และ [references/website.md](references/website.md)
+4. สำหรับ sources และ references ภาพรวม ดู [references/math-resources.md](references/math-resources.md)
 
 | No. | Topic | Reference |
 |-----|-------|-----------|
@@ -78,7 +77,7 @@ related:
 
 ### 5. Cross Skills
 
-- ใช้ `/follow-algorithms`, `/report-math-equation`, `/explain`, `/learn-from-web`, `/follow-lib-fast-check`, `/deep-review`, `/report-slides` ตาม context ของปัญหา
+- ใช้ `/report-math-equation`, `/explain`, `/learn-from-web`, `/follow-lib-fast-check`, `/deep-review`, `/report-slides` ตาม context ของปัญหา
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - report-bundle
   - run-build
   - follow-tool-vite
-  - optimize-bundle
+  - optimize
 ---
 
 ## Goal
@@ -88,7 +88,7 @@ related:
 - ใช้ /report-bundle ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /optimize-bundle ถ้าจำเป็น
+- ใช้ /optimize bundle ถ้าจำเป็น
 
 ## References
 

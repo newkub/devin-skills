@@ -6,6 +6,7 @@ related:
   - deep-research
   - follow-best-practice
   - update-examples
+  - learn-from-references
 
 ---
 
@@ -28,7 +29,8 @@ related:
 | Library API | `/check-types-definition` — API surface จาก `.d.ts` declarations ใน `node_modules` |
 | Codebase | `/learn-from-codebase` — `/deep-analyze` + learning path และ concept map ของ codebase |
 | Pattern | `/learn-pattern` — สกัด reusable patterns จาก real-world code |
-| Update skills | `/learn-from-references-and-improve-skills` — เรียนจาก refs แล้ว sync ความรู้เข้า skills (stale/wrong/missing) + `/improve-coverage` เติม gaps |
+| User refs | `/learn-from-references` — สกัด patterns/conventions จาก refs ที่ user ชี้มาโดยตรง (files, repos, docs, skills) แล้วใช้กับ task ปัจจุบัน |
+| Update skills | `/learn-from-references-and-improve-skills` — เรียนจาก refs แล้ว sync ความรู้เข้า skills (stale/wrong/missing) + `/improve coverage` เติม gaps |
 | Slides | `/report-slides` — สร้าง Slidev presentation สรุปความรู้ใน `.devin/temp/` |
 
 เรียก skill ตามตารางตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง

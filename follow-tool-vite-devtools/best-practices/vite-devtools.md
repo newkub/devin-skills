@@ -1,40 +1,40 @@
 # Vite DevTools — Best Practices
 
-Devtools framework ของระบบนิเวศ Vite — dock เดียว, RPC type-safe, shared state, plugin `devtools.setup`
+The Vite ecosystem devtools framework — one dock, type-safe RPC, shared state, plugin `devtools.setup`
 
 ## Recommended Patterns
 
-- เปิดใช้แบบจงใจ — เลือก `apply` ตามความต้องการจริง (`'serve'` ระหว่าง dev เท่านั้น ถ้าไม่ต้องการ devtools ใน build) อย่าปล่อย `devtools: true` ไว้เพราะลองเล่น
-- ใช้ launcher ใน dock เป็นช่องทางติดตั้ง integration on demand — ตัวที่โปรเจกต์มีอยู่แล้วจะ mount อัตโนมัติ ไม่ต้อง add dependency เอง
-- สร้าง UI ของ tool ตัวเองใน `Plugin.devtools.setup` เท่านั้น — dock/palette/terminal/renderer อยู่ใน ctx นี้หมด
-- ถ้ามี Devframe definition อยู่แล้ว → `createPluginFromDevframe` ตัวเดียวจบ อย่าเขียน plugin ซ้ำซ้อนทับ
-- ตั้ง `embeddedVisibility: 'passive'` ให้ทีมที่รำคาญ dock ถาวร — shortcut `Shift + Alt + D` แล้วระบบจำไว้ให้
-- อ่าน error code จาก docs (DTK00xx ของ Kit, RDDT00xx ของ Rolldown) ก่อน debug เอง
+- Enable deliberately — pick `apply` per real need (`'serve'` only during dev if you do not want devtools in the build); never leave `devtools: true` as a play-around leftover
+- Use the dock launcher as the on-demand integration install path — integrations already in the project mount automatically, no manual dependency adds
+- Build your tool's UI inside `Plugin.devtools.setup` only — dock/palette/terminal/renderer all live on this ctx
+- If you already have a Devframe definition → one `createPluginFromDevframe` is enough; do not write a duplicate plugin on top
+- Set `embeddedVisibility: 'passive'` for teams annoyed by a permanent dock — `Shift + Alt + D` opens it and the state is remembered
+- Read the error codes from the docs (Kit DTK00xx, Rolldown RDDT00xx) before debugging blind
 
 ## Common Pitfalls
 
-- `devtools: true` เปิดทั้ง `vite dev` และ `vite build` — ตั้งแบบ shorthand แล้วเจอ devtools ติดไปใน output ที่ build แล้วโดยไม่ตั้งใจ
-- `build.injection: true` โดยไม่มี `build.withApp: true` → ไม่ได้ผล (injection ต้องคู่กับ with app เสมอ)
-- ลืมว่า deployed assets ต้องอยู่ใต้ Vite `base` → dock เปิดได้ตอน local แต่ 404 บน staging
-- โปรเจกต์ที่ Vite ไม่ได้เสิร์ฟ HTML (JS-only entry, middleware mode, backend integration) ตั้ง `embeddedVisibility` แล้วไม่มีผล — ต้องใช้ client injector จาก browser entry
-- import injector หลาย mode พร้อมกัน (`inject` + `inject-passive`) → dock ซ้ำ/พฤติกรรมชนกัน เลือก entry เดียว
-- hardcode `/__devtools/` ในโค้ดแอป — path นี้ต้องประกอบจาก `base`
-- พึ่ง `@vitejs/devtools-vite` ที่ upstream ยังระบุ "work in progress" เป็นส่วนสำคัญของ workflow
+- `devtools: true` enables both `vite dev` and `vite build` — the shorthand silently ships devtools into built output
+- `build.injection: true` without `build.withApp: true` → no effect (injection always requires with-app)
+- Forgetting that deployed assets must live under the Vite `base` → the dock works locally but 404s on staging
+- Projects where Vite does not serve HTML (JS-only entry, middleware mode, backend integration): setting `embeddedVisibility` has no effect — you must use the client injector from the browser entry
+- Importing injector entries for multiple modes at once (`inject` + `inject-passive`) → duplicate docks/conflicting behaviour; pick one entry
+- Hardcoding `/__devtools/` in app code — this path must be composed from `base`
+- Depending on `@vitejs/devtools-vite`, which upstream still marks "work in progress", as a critical part of a workflow
 
 ## Perf / DX Notes
 
-- เปิด devtools เฉพาะ `serve` ในโปรเจกต์ที่ build time สำคัญ — ไม่ต้องจ่ายค่า build analysis ทุก CI build
-- ใช้ Rolldown DevTools (module graph, chunk treemap, plugin hook cost, session compare) เป็นชั้นวัดก่อน `/optimize-bundle` ไม่ใช่หลัง
-- Vitest dock รัน `vitest --ui` เป็น iframe — ถ้า CI ไม่มี browser ให้เปิดเฉพาะ local
-- ถ้าโปรเจกต์มี devtools hub ของตัวเองอยู่แล้ว (เช่น `/use-wrikka-vite-devtools`) ให้รวมเข้า dock เดียวผ่าน `createPluginFromDevframe` แทนการเปิดสองระบบขนาน
+- Keep devtools on `serve` only in projects where build time matters — no need to pay build-analysis cost on every CI build
+- Use Rolldown DevTools (module graph, chunk treemap, plugin hook cost, session compare) as the measurement layer before `/optimize bundle`, not after
+- The Vitest dock runs `vitest --ui` as an iframe — on CI without a browser, keep it local-only
+- If the project already has its own devtools hub (e.g. the `wrikka-vite-devtools` plugin, `/use-wrikka-vite-devtools`), consolidate into one dock via `createPluginFromDevframe` instead of running two systems in parallel
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| เลือก `apply` ให้ตรงคำสั่งที่ต้องการ | ปล่อย shorthand แล้ว Surprise ใน build |
-| `build.withApp: true` ก่อน `build.injection: true` | ตั้ง injection เดี่ยว ๆ |
-| client injector 1 entry ต่อ visibility mode | import หลาย entry พร้อมกัน |
-| dock `id` คงที่เพราะ user bookmark | เปลี่ยน id ทุก release |
-| reuse Devframe definition ผ่าน Kit adapter | เขียน integration ใหม่ต่อ host |
-| ประกอบ path จาก Vite `base` | hardcode `/__devtools/` |
+| Choose `apply` to match the intended commands | Leave the shorthand in and get build surprises |
+| `build.withApp: true` before `build.injection: true` | Set injection on its own |
+| One client injector entry per visibility mode | Import several entries at once |
+| Keep dock `id` stable because users bookmark it | Change ids every release |
+| Reuse a Devframe definition through the Kit adapter | Write a new integration per host |
+| Compose paths from the Vite `base` | Hardcode `/__devtools/` |

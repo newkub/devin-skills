@@ -21,7 +21,7 @@ TextMate-grammar syntax highlighter — highlight ล่วงหน้า ship 
 
 ## UX/UI Integration
 
-- ใช้ใน `/improve-uxui` เมื่อ code blocks ขาด highlight, theme ไม่ตรง dark/light, หรือไม่มี line highlights/focus
+- ใช้ใน `/improve uxui` เมื่อ code blocks ขาด highlight, theme ไม่ตรง dark/light, หรือไม่มี line highlights/focus
 - Pair กับ `/follow-lib-comark` — plugin `comark/plugins/shiki` highlight code fences ใน markdown pipeline
 - Code blocks ใน docs site → prefer VitePress/Nuxt/Next/Astro integrations มากกว่า manual wiring
 

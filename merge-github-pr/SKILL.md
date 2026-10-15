@@ -74,16 +74,16 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-merge` | `workflows/verify-merge/SKILL.md` — PR merged บน remote, base updated, cleanup ครบ |
+| `verify`, `verify-merge` | `## Merged Details → verify-merge` — PR merged บน remote, base updated, cleanup ครบ |
 
-1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-merge/SKILL.md` แล้วทำตาม flow — ไม่ merge ใหม่
+1. ถ้า argument เป็น `verify` → อ่าน `## Merged Details → verify-merge` แล้วทำตาม flow — ไม่ merge ใหม่
 2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 6 อ่าน workflow `verify-merge` มา execute ก่อน cleanup
 
 ### 6. Verify And Cleanup
 
 > Goal: ยืนยันและ cleanup
 
-1. ทำตาม `workflows/verify-merge/SKILL.md` — ยืนยัน PR merged บน remote ก่อน
+1. ทำตาม `## Merged Details → verify-merge` — ยืนยัน PR merged บน remote ก่อน
 2. รัน `git fetch` และ `git pull` บน base branch
 3. ลบ local branch ถ้าไม่ต้องการ `git branch -d <branch>`
 4. รัน `gh pr delete-branch <pr>` ถ้าต้องการ

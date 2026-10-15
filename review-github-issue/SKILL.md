@@ -73,7 +73,7 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 
 > Goal: รายงานผลพร้อม next actions
 
-1. ทำ `/report` — ตาราง `No.`, `Dimension`, `Severity`, `Finding`, `Evidence`, `Fix` + score/readiness verdict
+1. ทำ `/report-review` (ตารางในแชท ไม่สร้างไฟล์) — ตาราง `No.`, `Action`, `Dimension`, `Severity`, `Evidence`, `Owner skill` + score/readiness verdict
 2. ระบุ recommended actions: update issue (`/update-github-issue`), implement (`/resolve-github-issue-by-me` → `/implement-to-production`), หรือ cleanup (`/cleanup-github-issue`)
 3. ทำ `/suggest-next-action`
 

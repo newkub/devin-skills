@@ -21,7 +21,7 @@ Parse once, render anywhere — `MarkdownDocument` แยก parse ออกจ�
 
 ## UX/UI Integration
 
-- ใช้ใน `/improve-uxui` เมื่อ: markdown content render ผิด, docs ขาด callouts/components, chat streaming แสดง raw markdown, code blocks ไม่มี highlight (pair shiki)
+- ใช้ใน `/improve uxui` เมื่อ: markdown content render ผิด, docs ขาด callouts/components, chat streaming แสดง raw markdown, code blocks ไม่มี highlight (pair shiki)
 - Attributes syntax `{.class}` → ผูก design-system classes (เช่น UnoCSS utilities) บน content โดยไม่เขียน HTML
 - Component syntax → callouts, cards, alerts, embeds ที่ consistent กับ design system
 

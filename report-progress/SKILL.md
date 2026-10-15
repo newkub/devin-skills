@@ -123,6 +123,8 @@ related:
 - ไม่อ้างอิงหรือเปิดเผย secrets, API keys, credentials
 - ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - รู้สถานะปัจจุบันของ session ทั้งหมด

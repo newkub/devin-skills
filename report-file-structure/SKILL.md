@@ -145,6 +145,8 @@ related:
 - แยก source files จาก generated files
 - ระบุ percentage ของแต่ละ file type
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - Tree view ที่ชัดเจนและอ่านง่าย

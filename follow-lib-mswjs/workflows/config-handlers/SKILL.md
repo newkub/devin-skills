@@ -4,7 +4,7 @@ description: จัดระเบียน MSW handlers — error simulation, p
 argument-hint: "[scope]"
 related:
   - follow-lib-mswjs
-  - follow-config
+  - update-config
   - run-test
   - report
 ---

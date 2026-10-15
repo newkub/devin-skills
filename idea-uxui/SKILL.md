@@ -8,7 +8,6 @@ related:
   - follow-design-system
   - report-uxui
   - watch-browser
-  - watch-browser-and-fix
   - deep-analyze
   - report
   - enhance-prompt
@@ -28,7 +27,7 @@ related:
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์ ไม่ implement
 - ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/deep-review` (domain `review-uxui`)
-- ถ้าต้องการ implement → ส่งต่อ `/implement-features-to-mvp`
+- ถ้าต้องการ implement → ส่งต่อ `/implement-to-production`
 
 ## Execute
 
@@ -67,7 +66,7 @@ related:
 1. แสดง summary 1-2 บรรทัด
 2. แสดง tables ในแชท
 3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ implement → แนะนำ `/implement-features-to-mvp`
+4. ถ้าต้องการ implement → แนะนำ `/implement-to-production`
 5. ถ้าต้องการถามต่อ → ใช้ `/suggest-next-action`
 
 ## Rules
@@ -88,9 +87,9 @@ related:
 
 ### 4. Suggest Deep Workflow
 
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
+- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-to-production`
 - ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
-- เมื่อ idea ใดถูก implement → ต้องทำ `/run-test all` เสมอ
+- เมื่อ idea ใดถูก implement → ต้องทำ `/deep-test all` เสมอ
 
 ### 5. Format
 

@@ -8,9 +8,9 @@
 |-------|-------|
 | Package | `wrangler` |
 | Registry | `npm` |
-| Latest Version | `4.131.1` |
-| Release Date | `2026-09-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Latest Version | `4.151.0` |
+| Release Date | `n/a` (GitHub API unreachable at last check) |
+| Verified | `2026-10-15` (date this file was last checked — `registry.npmjs.org` dist-tags) |
 | Author / Publisher | `cloudflare` |
 | License | `MIT OR Apache-2.0` |
 | Repository | `https://github.com/cloudflare/workers-sdk` |
@@ -36,4 +36,4 @@ Or run ad-hoc: `bunx wrangler` / `npx wrangler` (requires Node >= 22).
 ## Notes
 
 - Breaking changes in latest major: `v4 removed legacy colon syntax (kv:namespace → kv namespace, etc.) and requires Node >= 22`
-- Version pinned in SKILL.md: `4.131.1 (verified 2026-09-12)` — matches latest
+- Version pinned in SKILL.md: `4.151.0 (verified 2026-10-15)` — matches `latest` dist-tag on the npm registry

@@ -13,7 +13,6 @@ related:
   - update-vitepress-docs
   - create-report-in-dot-devin
   - watch-browser
-  - watch-browser-and-fix
 
 ---
 
@@ -27,7 +26,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 - Create/update markdown with real content from the source code
 - `docs/index.md` is the table of contents linking to every section — no nav/sidebar config
 - Supports `update-features-md` (workflow `features-md`) with a separate `project/features` page
-- Reuse raw findings that skills persist under `.devin/temp/report/<workspace>/` via `/create-report-in-dot-devin` — e.g. `/watch-browser-and-test`, `/watch-browser-and-fix` — as input for updating docs
+- Reuse raw findings that skills persist under `.devin/temp/report/<workspace>/` via `/create-report-in-dot-devin` — e.g. `/deep-test website`, `/watch-browser fix` — as input for updating docs
 
 ## Execute
 
@@ -42,7 +41,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
    - `sdk`: client library for a service/API (has a client entry, `*_URL`/`*_KEY` env) — `references/sdk.md`
    - `tool`: dev/internal tool, toolkit, generator, runner (serves developers/CI, not end users) — `references/tool.md`
    - `cli`: has `bin` or a CLI framework in `package.json` — `references/cli.md`
-   - `website`: deployable web app (framework + `dev`/`build` output) — `references/website.md`
+   - `website`: deployable web app (framework + `dev`/`build` output) — `references/website-guide.md`
    - `open-source`: no auth, open license — `references/open-source.md`
    - `opensource-product`: OSS that is an end-user product (app/framework/platform with releases + community) — `references/opensource-product.md`
    - `product`: has auth, `private: true`, commercial license — `references/product.md`

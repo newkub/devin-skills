@@ -22,9 +22,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: SDK install, `RESEND_API_KEY`, test send → `workflows/setup-resend/SKILL.md`
-- Config: domain verification, `EMAIL_FROM`, templates, webhooks → `workflows/config-resend/SKILL.md`
-- Verify: API key valid, domain verified → `workflows/verify-connection/SKILL.md`
+- Setup: SDK install, `RESEND_API_KEY`, test send → `## Merged Details → setup-resend`
+- Config: domain verification, `EMAIL_FROM`, templates, webhooks → `## Merged Details → config-resend`
+- Verify: API key valid, domain verified → `## Merged Details → verify-connection`
 
 ### 1. Setup And Usage
 
@@ -65,7 +65,7 @@ Latest: `resend@6.30.0` (verified 2026-09-26) — install ด้วย `bun add 
 - Verify sending domain ด้วย DNS records (SPF/DKIM)
 - กำหนด from address และ reply-to ตาม environment
 - ตั้งค่า React/HTML templates และ webhooks สำหรับ delivery events
-- ไม่ครอบคลุม SDK install/API key → ใช้ `workflows/setup-resend/SKILL.md`
+- ไม่ครอบคลุม SDK install/API key → ใช้ `## Merged Details → setup-resend`
 
 ##### Execute
 
@@ -76,7 +76,7 @@ Latest: `resend@6.30.0` (verified 2026-09-26) — install ด้วย `bun add 
 1. อ่าน mail module, `.env*` และ templates ที่มีอยู่ใน project
 2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาด เช่น `RESEND_API_KEY`, `EMAIL_FROM`
 3. ตรวจ domains ที่ verify แล้วใน dashboard — ใช้ `/open-web-for-config-secret` (service resend)
-4. ถ้ายังไม่มี SDK/API key → ทำ `workflows/setup-resend/SKILL.md` แทน
+4. ถ้ายังไม่มี SDK/API key → ทำ `## Merged Details → setup-resend` แทน
 
 ###### 2. Verify Sending Domain
 
@@ -137,7 +137,7 @@ Latest: `resend@6.30.0` (verified 2026-09-26) — install ด้วย `bun add 
 - ติดตั้ง `resend` package และ init `new Resend(apiKey)`
 - สร้างและเก็บ `RESEND_API_KEY` อย่างปลอดภัย
 - ส่ง test email ใน sandbox mode
-- ไม่ครอบคลุม domain verification, from-address, webhooks → ใช้ `workflows/config-resend/SKILL.md`
+- ไม่ครอบคลุม domain verification, from-address, webhooks → ใช้ `## Merged Details → config-resend`
 
 ##### Execute
 

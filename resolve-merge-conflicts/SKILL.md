@@ -49,16 +49,16 @@ Use when a pull/rebase/merge produces conflicts in code, config, or docs
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — no markers, both sides' intent preserved, build/test passing |
+| `verify`, `verify-resolved` | `## Merged Details → verify-resolved` — no markers, both sides' intent preserved, build/test passing |
 
-1. If the argument is `verify` → read `workflows/verify-resolved/SKILL.md` and follow its flow — do not re-resolve
+1. If the argument is `verify` → read `## Merged Details → verify-resolved` and follow its flow — do not re-resolve
 2. If no argument is given → run Steps 1-5 normally, with Step 4 reading and executing the `verify-resolved` workflow
 
 ### 4. Validate
 
 > Goal: Verify the conflict resolution didn't break anything
 
-1. Follow `workflows/verify-resolved/SKILL.md` — check markers, intent preservation, and build/test
+1. Follow `## Merged Details → verify-resolved` — check markers, intent preservation, and build/test
 2. If the verdict isn't `clean` → go back and resolve again
 
 ### 5. Stage And Commit

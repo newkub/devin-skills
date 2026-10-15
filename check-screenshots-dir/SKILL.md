@@ -5,7 +5,7 @@ argument-hint: "[time-range-or-count]"
 related:
   - check-downloads-dir
   - read-from-downloads
-  - capture
+  - use-agents-capture
   - analyze-codebase-quality
   - report
 
@@ -91,7 +91,7 @@ Fetch the latest capture groups from `C:\Users\Veerapong\Pictures\Screenshots` b
 - Never delete, move, or modify the original files
 - If there are more than 20 files, confirm first
 
-- Use /capture if needed
+- Use /use-agents-capture if needed
 - Use /analyze-codebase-quality if needed
 - Use /report if needed
 - Use /run-dev if needed

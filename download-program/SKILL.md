@@ -46,7 +46,7 @@ Help find and install programs on the machine, choosing the suitable package man
 
 > Goal: Get the suitable package-manager order
 
-1. Follow `workflows/package-manager/SKILL.md` with `<program-name> install`
+1. Follow `## Merged Details → package-manager` with `<program-name> install`
 2. Record the package-manager order received, e.g. `[mise, scoop, winget]`
 3. Record the install command template for each package manager
 4. If the workflow finds no package manager with the program → jump to the fallback

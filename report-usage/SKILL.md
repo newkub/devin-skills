@@ -94,6 +94,8 @@ related:
 - ระบุ automation candidates จาก Devin usage
 - แนะนำ next action ชัดเจน
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - usage table พร้อม frequency และ consumers

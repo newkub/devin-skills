@@ -19,7 +19,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 ใช้กับ repo ปัจจุบันหรือ repo ที user ระบุ ครอบคลุม public/private ตามสิทธิ์ `gh` token
 
-- สำหรับ list fails ดู `references/list-fails.md`
+- สำหรับ list fails ดู `## Merged Details → references/list-fails`
 
 ## Execute
 
@@ -27,9 +27,9 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — watch run ใหม่จนจบ ยืนยัน success บน remote |
+| `verify`, `verify-resolved` | `## Merged Details → verify-resolved` — watch run ใหม่จนจบ ยืนยัน success บน remote |
 
-1. ถ้า argument เป็น `verify` → อ่าน `workflows/verify-resolved/SKILL.md` แล้วทำตาม flow — ไม่ resolve ใหม่
+1. ถ้า argument เป็น `verify` → อ่าน `## Merged Details → verify-resolved` แล้วทำตาม flow — ไม่ resolve ใหม่
 2. ถ้าไม่ระบุ → ทำ Steps 1-8 ตามปกติ
 
 ### 1. Verify gh CLI

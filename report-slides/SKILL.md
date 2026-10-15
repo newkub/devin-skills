@@ -97,6 +97,8 @@ related:
 - ทำ `/convert-to-lang-th` — เนื้อหาและคำอธิบายเป็นภาษาไทย
 - ใช้ technical terms ภาษาอังกฤษเมื่อจำเป็น เช่น `ownership`, `borrowing`, `async`
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status); the Slidev deck in `.devin/temp/` is this skill's artifact, produced only when the user asks for slides explicitly
+
 ## Expected Outcome
 
 - Slidev `slides.md` สร้างใน `.devin/temp/slides/{topic}/`

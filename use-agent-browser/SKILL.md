@@ -5,7 +5,7 @@ argument-hint: "[url]"
 related:
   - watch-browser
   - run-test
-  - capture
+  - use-agents-capture
   - follow-tool-playwright
   - use-chrome-devtools
   - follow-create-web-mcp
@@ -181,7 +181,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - Use `--json` for machine-readable output
 - Tune stream quality with `AGENT_BROWSER_STREAM_QUALITY`, `AGENT_BROWSER_STREAM_MAX_WIDTH`, `AGENT_BROWSER_STREAM_MAX_HEIGHT`
 
-- Use /watch-browser-and-fix when needed
+- Use /watch-browser fix when needed
 - Use /use-chrome-devtools when needed
 - Use /deep-test e2e when needed
 - Use /follow-tool-playwright when needed
@@ -191,8 +191,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - [CLI reference](references/cli.md)
 - [WebMCP and MCP reference](references/webmcp.md)
 - [APIs](references/apis.md)
-- [Routes](references/routes.md)
-- [Website](references/website.md)
+- Official: https://agent-browser.dev · https://github.com/vercel-labs/agent-browser · https://www.npmjs.com/package/agent-browser
 - Use /run-dev when needed
 - Use /run-test when needed
 

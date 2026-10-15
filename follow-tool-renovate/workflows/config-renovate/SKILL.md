@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
   - run-install
-  - improve-config
+  - improve
 ---
 
 ## Goal

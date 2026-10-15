@@ -6,7 +6,7 @@ related:
   - refactor
   - check-secrets
   - follow-secret-manager
-  - follow-config
+  - update-config
   - deep-review
   - follow-single-of-source
   - use-astgrep
@@ -58,7 +58,7 @@ related:
 1. ย้ายค่าไป destination ตามตาราง — ใช้ existing config/env pattern ของ project ก่อนสร้างใหม่
 2. แทนที่ literal ด้วย reference (env lookup, config import, constant) — mechanical batch → `/use-astgrep rewrite`
 3. ถ้าค่าเดียวกันปรากฏหลายที่ → extract ครั้งเดียวแล้ว share — ห้ามคง duplicate
-4. เพิ่ม validation/fail-fast ที่ boundary ถ้าค่าขาดแล้วพังเงียบๆ (`/follow-config`)
+4. เพิ่ม validation/fail-fast ที่ boundary ถ้าค่าขาดแล้วพังเงียบๆ (`/update-config`)
 
 ### 4. Update References And Docs
 
@@ -100,7 +100,7 @@ related:
 
 - ใช้ /refactor ถ้าจำเป็น
 - ใช้ /check-secrets ถ้าจำเป็น
-- ใช้ /follow-config ถ้าจำเป็น
+- ใช้ /update-config ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 
 ## Expected Outcome

@@ -81,6 +81,8 @@ related:
 - ใช้ /run-drizzle-studio ถ้าจำเป็น
 - alias stub: `/report-schema` — forward มาที่ skill นี้
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the schema/ER output remains this skill's artifact
+
 ## Expected Outcome
 
 - Report แสดง tables, columns, indexes, relations ครบ

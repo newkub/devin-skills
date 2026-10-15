@@ -13,8 +13,6 @@ related:
   - run-audit
   - use-scripts
   - deep-review
-  - deep-analyze-by-use-scripts
-
 ---
 
 ## Goal
@@ -194,7 +192,6 @@ Covers analysis across many dimensions:
 - Group findings by category
 - Provide recommendations + roadmap + action items by priority and impact
 - Use `/report-deep` for a detailed report or `/report` for a chat table
-- Alias stub: `/deep-analyze-by-use-scripts` — forwards to this skill (extracted from the old `workflows/by-use-scripts`)
 
 ### 7. Deep Analysis Scripts
 

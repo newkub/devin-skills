@@ -112,7 +112,7 @@ src/
 1. Link the addon into the test project: add to `.storybook/main.ts` → `addons: ['<path-or-package>']`
 2. Run `storybook dev` → check that the panel/tool/tab renders correctly, globals toggle, and channel events reach both sides
 3. Check the production build: `storybook build` must not break
-4. Use `/capture all` to capture the panel UI as evidence if needed
+4. Use `/use-agents-capture all` to capture the panel UI as evidence if needed
 
 ### 8. Publish
 

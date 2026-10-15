@@ -35,9 +35,9 @@ related:
 
 > Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
 
-- Setup: SDK install ตาม framework, `instant-cli init`, db client → `workflows/setup-instantdb/SKILL.md`
-- Config: `instant.schema.ts`, `instant.perms.ts`, env vars, push/pull → `workflows/config-instantdb/SKILL.md`
-- Verify: app id valid, query ตอบกลับ, schema sync → `workflows/verify-connection/SKILL.md`
+- Setup: SDK install ตาม framework, `instant-cli init`, db client → `## Merged Details → setup-instantdb`
+- Config: `instant.schema.ts`, `instant.perms.ts`, env vars, push/pull → `## Merged Details → config-instantdb`
+- Verify: app id valid, query ตอบกลับ, schema sync → `## Merged Details → verify-connection`
 
 ### 1. Detect Project
 
@@ -78,7 +78,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 
 > Goal: สร้าง data model ทีถูกต้องและ type-safe
 
-1. อ่าน [references/instantdb-api.md](references/instantdb-api.md) และ [references/instantdb-configuration.md](references/instantdb-configuration.md)
+1. อ่าน [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`) และ [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
 2. แก้ไข `instant.schema.ts` เพื่อเพิ่ม entities, fields, links, rooms
 3. ใช้ `i.entity({ ... })`, `i.string()`, `i.boolean()`, `i.date()` ตาม docs
 4. ระบุ `unique`, `indexed`, `optional` ตามที่จำเป็น
@@ -109,13 +109,13 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 2. ใช้ `db.transact(db.tx.todos[id()].update({ ... }))` เพื่อ write
 3. ใช้ `db.tx.<entity>[id()].delete()` สำหรับ delete
 4. จัดการ `isLoading`, `error`, `data` จาก `useQuery`
-5. ดู patterns เพิ่มเติมใน [references/instantdb-api.md](references/instantdb-api.md)
+5. ดู patterns เพิ่มเติมใน [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`)
 
 ### 7. Setup Auth And Permissions
 
 > Goal: ป้องกันข้อมูลด้วย auth และ rules
 
-1. ถ้าใช้ built-in auth: อ่าน [references/instantdb-configuration.md](references/instantdb-configuration.md) เรื่อง magic codes, OAuth
+1. ถ้าใช้ built-in auth: อ่าน [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`) เรื่อง magic codes, OAuth
 2. ตั้งค่า `instant.perms.ts` ด้วย `allow`/`bind` rules
 3. ใช้ `auth.id`, `auth.email` ใน permission rules
 4. รัน `npx instant-cli@latest push perms` เมื่อแก้ permissions
@@ -144,7 +144,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 
 > Goal: อัปเดต references และสรุป next action
 
-1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [references/instantdb-configuration.md](references/instantdb-configuration.md)
+1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
 2. ทำ `update-references` สำหรับ skills ทีเกี่ยวข้อง
 3. ทำ `suggest-next-action` เพื่อแนะนำ step ถัดไป
 
@@ -184,7 +184,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 - แก้ entities, fields, links, rooms ใน `instant.schema.ts`
 - กำหนด `allow`/`bind` rules ใน `instant.perms.ts`
 - จัดการ env app id และ `instant-cli push/pull`
-- ไม่ครอบคลุม SDK install/init → ใช้ `workflows/setup-instantdb/SKILL.md`
+- ไม่ครอบคลุม SDK install/init → ใช้ `## Merged Details → setup-instantdb`
 
 ##### Execute
 
@@ -195,7 +195,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 1. อ่าน `instant.schema.ts` และ `instant.perms.ts` ที่มีอยู่
 2. ทำ `/check-secrets env-vars` เพื่อระบุ app id var ที่ขาดหรือผิด prefix
 3. รัน `npx instant-cli@latest pull` ถ้าต้อง sync config ล่าสุดจาก server ก่อนแก้
-4. ถ้าไม่มี config files เลย → ทำ `workflows/setup-instantdb/SKILL.md` แทน
+4. ถ้าไม่มี config files เลย → ทำ `## Merged Details → setup-instantdb` แทน
 
 ###### 2. Update Schema
 
@@ -250,7 +250,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 - ติดตั้ง `@instantdb/<framework>` และ `instant-cli`
 - สร้าง `instant.schema.ts`, `instant.perms.ts`, env app id
 - Init typed `db` client จาก env
-- ไม่ครอบคลุม schema/permissions config ละเอียด → ใช้ `workflows/config-instantdb/SKILL.md`
+- ไม่ครอบคลุม schema/permissions config ละเอียด → ใช้ `## Merged Details → config-instantdb`
 
 ##### Execute
 
@@ -355,7 +355,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 
 - ใช้ read queries เท่านั้น — ห้าม transact
 - ไม่ print admin token
-- schema drift → รายงานให้ `workflows/config-instantdb/SKILL.md` จัดการ
+- schema drift → รายงานให้ `## Merged Details → config-instantdb` จัดการ
 
 ##### Expected Outcome
 

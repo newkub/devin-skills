@@ -74,7 +74,6 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
    - `/update-version-to-latest` (if all workspaces' dependencies need updating to latest)
    - `/update-version-to-latest` (if runtime, deps, tools, and all versioned config need updating to latest)
-   - `/follow-config` to validate and sync config files per conventions
    - `/update-config` to sync project config, shared config, and the dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (if needed)

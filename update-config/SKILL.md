@@ -176,8 +176,8 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 | Topic | Workflow |
 |-------|----------|
-| Update env config — diff current vs needed, apply, verify | `workflows/config-env/SKILL.md` |
-| Consolidate duplicate config/dependencies into shared config or a catalog | `workflows/update-shared-config/SKILL.md` |
+| Update env config — diff current vs needed, apply, verify | `## Merged Details → config-env` |
+| Consolidate duplicate config/dependencies into shared config or a catalog | `## Merged Details → update-shared-config` |
 
 ## Rules
 
@@ -231,7 +231,6 @@ Update the project's env configuration — diff the vars that exist against the 
 
 - Use when adding/changing/removing env vars or syncing `.env.example` with the code
 - Covers: `.env`, `.env.local`, `.env.<mode>`, `.env.example`, env validation schemas
-- For auditing patterns/conventions → `follow-config/workflows/config-env/SKILL.md`
 
 ##### Execute
 
@@ -287,7 +286,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 - Use when the same config (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) is duplicated in 2+ workspaces
 - Use when the same dependency version is spread across several package manifests
 - For duplicated shared code (utils, types, components) across packages → use `/refactor` packages-shared scope instead
-- For env vars → use `workflows/config-env/SKILL.md` instead
+- For env vars → use `## Merged Details → config-env` instead
 
 ##### Execute
 

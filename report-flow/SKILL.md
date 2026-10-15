@@ -83,6 +83,8 @@ related:
 - ระบุ inputs/outputs ทีชัดเจนเพื่อนำไปใช้ซ้ำ
 - เก็บ flow ในไฟล์ `docs/flows/` ถ้าต้องการใช้ซ้ำ
 
+- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+
 ## Expected Outcome
 
 - กระบวนการถูกสรุปเป็น steps ต่อเนื่อง
