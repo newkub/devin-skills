@@ -7,7 +7,7 @@ related:
   - follow-single-of-source
   - update-devin-global-skills
   - refactor-skills
-  - deep-review
+  - deep-review-codebase
   - scan-codebase
   - review-devin-global-harness
   - update-devin
@@ -99,7 +99,7 @@ related:
 | 2 | `review-*` | Assessor — ประเมิน 1 มิติ | findings + severity + evidence | ไม่ |
 | 3 | `deep-*` | Orchestrator หลายขั้น/หลายมิติ | dispatch ไป skill ย่อย | ตามย่อย |
 
-- ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm)
+- ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm) — ข้อยกเว้นเดียวที่ user อนุมัติ: `improve-writing` (writing-quality criteria SSOT, precedent เดียวกับ `improve-usage-md` ที่คงอยู่ top-level); จะสร้าง exception ใหม่ต้องแก้ contract นี้ + `AGENTS.md` พร้อมเหตุผลoverride จาก user เท่านั้น
 - ทิศทางเดียว: `check` → `review` → `## Fix` — ห้ามย้อนกลับ
 - fix ใดๆ ให้เขียนเป็น steps ใน section `## Fix` ของ review skill — ห้ามสร้าง `workflows/fix-*/` และ `references/fix-*.md`
 - ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge`)
@@ -110,8 +110,8 @@ related:
 - ตรวจ markdown links ไม่ให้ broken
 - อัปเดต `AGENTS.md` ถ้า skill นี้เป้น workflow หลัก
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ `/follow-single-of-source` ถ้าจำเป็น
 
 ## Expected Outcome

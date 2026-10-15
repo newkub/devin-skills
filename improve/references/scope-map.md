@@ -1,16 +1,16 @@
 # Improve Scope Map (SSOT)
 
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
-Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review <domain>` | fix → `/deep-review-then-fix`
+Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review-codebase <domain>` | fix → `/deep-review-codebase-then-fix`
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|
 | (generic) | (broad scan) | `/improve` dispatches on its own; metric-driven findings → `/optimize` |
-| `a11y` | review-accessibility | WCAG, screen reader, keyboard nav |
+| `a11y` | review-accessibility | WCAG, screen reader, keyboard nav; native-element semantics + ARIA ordering → `/follow-web-standard` |
 | `ai` | review-ai | prompts, evals, token/cost, hallucination guards; safety → `/improve ai-safety`, LLM spend → `/optimize llm` |
 | `algorithm` | review-algorithm | complexity, algorithm correctness |
 | `api` | review-api, review-backend | contract, versioning, endpoints |
-| `architecture` | review-architecture | pattern/coupling/boundary findings — pick a pattern → `/refactor architecture`, apply restructure → `/refactor` |
+| `architecture` | review-architecture | pattern/coupling/boundary findings — pick a pattern + apply restructure + monorepo layout → `/follow-architecture`, file-level passes → `/refactor` |
 | `astgrep-rules` | review-config, review-code-quality | ruleset review → fix via `/update-astgrep-rules` |
 | `auth` | review-auth | authn/authz flows, sessions, tokens; RBAC UI → scope `auth` + review-frontend |
 | `backend` | review-backend | handlers, service boundaries |
@@ -31,7 +31,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `delivery` | review-delivery | release pipeline end-to-end |
 | `deps` | review-dependencies | versions, lockfile, supply chain |
 | `desktop-app` | review-desktop-app | windowing, IPC, packaging |
-| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review-then-fix`, standards via `/update-devin-global-skills` |
+| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review-codebase-then-fix`, standards via `/update-devin-global-skills` |
 | `docs` | review-docs | README/guides/structure; writing findings → `/improve writing` |
 | `dot-devin` | review-dot-devin | project devin config/assets |
 | `dx` | review-dx, review-bundle | tooling, onboarding; devtools dock/integrations → `/follow-tool-vite-devtools`, standalone devtool → `/follow-tool-devfra`; size → `/optimize bundle` |
@@ -40,7 +40,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `error-handling` | review-stability, review-code-quality, review-frontend, review-uxui, review-api, review-cli | **sole owner** of error paths, retries, recovery, error states/error UI/error boundaries |
 | `events` | review-events | **messaging semantics**: schema, versioning, ordering, idempotency, DLQ, retry/backoff |
 | `features` | review-gaps, review-uxui, review-business | type-driven: inventory every type option via `/check-types-definition` → dead declared options → `/implement-to-production`, weak-UX → `/improve uxui`, new features → extend type options via `/create-plan-in-dot-devin`; net-new + platform → `/idea-features`; flags → `/update-config` |
-| `form` | review-frontend, review-data-validation, review-accessibility | form UX + validation |
+| `form` | review-frontend, review-data-validation, review-accessibility | form UX + validation; native controls + Constraint Validation API first → `/follow-web-standard` |
 | `i18n` | review-i18n | locales, message format |
 | `mcp` | review-mcp | tools, resources, server hygiene |
 | `migration` | review-migration | backward compat, data integrity, rollback, cutover |
@@ -66,11 +66,11 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `service-integrations` | review-api, review-stability, review-security | external APIs/webhooks/credentials |
 | `stability` | review-stability | **broad crash/recovery**; error paths + error UI → `/improve error-handling`; messaging → `/improve events` |
 | `techstack` | review-techstack, review-dependencies | framework/runtime upgrades |
-| `tests` | review-test, review-coverage | test suite quality incl. test data (factories, seeds, fixtures isolation); flaky → `/check-flaky-tests`, assertion quality → `/check-test-correctness`, seed table schema → `/improve database` |
+| `tests` | review-test, review-coverage | test suite quality incl. test data (factories, seeds, fixtures isolation); flaky → `/check-flaky-tests`, assertion quality → `/deep-test test-correctness`, seed table schema → `/improve database` |
 | `typesafe` | review-code-quality, review-data-validation, review-sdk, review-frontend | type safety surfaces |
 | `uploads` | review-frontend, review-backend, review-security | size/type limits, direct-to-storage, resumable; storage → `/optimize storage`; images → `/optimize images` |
 | `usage-md` | usage | top-level skill `improve-usage-md` — USAGE.md/examples actually work |
-| `uxui` | review-uxui, review-accessibility, review-mobile, review-frontend, review-writing | design system/theme + interaction/navigation (RBAC UI, UX routing), motion (reduced-motion fallback + lib via `/follow-lib-animejs`), UX copy clarity/tone/consistency; error UI/copy → `/improve error-handling`, docs prose → `/improve writing`, onboarding copy → `/improve onboarding` |
+| `uxui` | review-uxui, review-accessibility, review-mobile, review-frontend, review-writing | design system/theme + interaction/navigation (RBAC UI, UX routing), motion (reduced-motion fallback + lib via `/follow-lib-animejs`), UX copy clarity/tone/consistency; native semantics/widgets → `/follow-web-standard`; error UI/copy → `/improve error-handling`, docs prose → `/improve writing`, onboarding copy → `/improve onboarding` |
 | `web` | review-seo, review-frontend | routing/SEO/metadata; error UI → `/improve error-handling`; SEO findings → `/improve seo` |
 | `workflows` | review-workflow | CI/CD workflow files |
-| `writing` | review-writing | prose quality |
+| `writing` | review-writing | prose quality — top-level skill `improve-writing` owns the criteria (clear, concise, explicit, bounded, terminology, ordered, followable) |
