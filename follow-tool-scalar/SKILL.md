@@ -1,6 +1,6 @@
 ---
 name: follow-tool-scalar
-description: ใช้ Scalar สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร API แบบครบวงจร
+description: Use Scalar to design, test, and document APIs end to end
 argument-hint: "[scope]"
 related:
   - run-api-docs
@@ -15,11 +15,11 @@ related:
 
 ## Goal
 
-ใช้ Scalar สำหรับออกแบบ API, ทดสอบ endpoints, สร้าง documentation และ mock server แบบครบวงจร
+Use Scalar to design APIs, test endpoints, and create documentation and a mock server end to end
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการ API documentation, API playground, mock server และ schema validation โดยใช้ Scalar toolchain
+For projects that need API documentation, an API playground, a mock server, and schema validation using the Scalar toolchain
 
 - Latest: `@scalar/api-reference@1.72.1` / `@scalar/cli@2.5.2` (verified 2026-09-26)
 
@@ -27,100 +27,100 @@ related:
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Scalar CLI หรือ package ที่เหมาะสม
+> Goal: Install the Scalar CLI or the right package
 
-1. ตรวจสอบ project stack ว่าใช้ OpenAPI, AsyncAPI หรือ GraphQL
-2. ติดตั้ง `@scalar/cli` ด้วย `bun add -D @scalar/cli` (binary ชื่อ `scalar`, ต้องใช้ Node `>=24`)
-3. ตรวจสอบ version ด้วย `bunx @scalar/cli --version` และรัน `bunx @scalar/cli init` เพื่อสร้าง config เริ่มต้น
-4. ใช้ `@scalar/api-reference` เมื่อต้องการ embed API reference ใน app (React/Vue/standalone)
-5. ดูคำสั่ง CLI ใน 
+1. Check the project stack for OpenAPI, AsyncAPI, or GraphQL
+2. Install `@scalar/cli` with `bun add -D @scalar/cli` (the binary is named `scalar`, requires Node `>=24`)
+3. Check the version with `bunx @scalar/cli --version` and run `bunx @scalar/cli init` to create a starting config
+4. Use `@scalar/api-reference` when you want to embed the API reference in an app (React/Vue/standalone)
+5. See the CLI commands in 
 
 ### 2. Configuration
 
-> Goal: สร้าง Scalar config สำหรับ project
+> Goal: Create the Scalar config for the project
 
-1. สร้าง `scalar.config.json`, `scalar.config.yaml` หรือ `scalar.config.ts`
-2. กำหนด `title`, `description`, `proxyUrl`, `theme`, `layout`
-3. ตั้งค่า environment variables เช่น `SCALAR_PORT`, `SCALAR_API_URL`
-4. ดูตัวเลือก config ใน 
+1. Create `scalar.config.json`, `scalar.config.yaml`, or `scalar.config.ts`
+2. Set `title`, `description`, `proxyUrl`, `theme`, `layout`
+3. Set environment variables such as `SCALAR_PORT`, `SCALAR_API_URL`
+4. See the config options in 
 
 ### 3. Schema Design
 
-> Goal: ออกแบบ API schema ที่ถูกต้องและเอกสารครบถ้วน
+> Goal: Design a correct API schema with complete documentation
 
-1. ใช้ type system ทีเหมาะสม (OpenAPI/AsyncAPI/GraphQL)
-2. ตั้งชื่อ types, fields, operations ทีชัดเจน
-3. เพิ่ม descriptions, examples, deprecation notes
-4. ใช้ enums สำหรับ fixed values และ input types สำหรับ mutations
-5. ดู API patterns ใน 
+1. Use the appropriate type system (OpenAPI/AsyncAPI/GraphQL)
+2. Name types, fields, and operations clearly
+3. Add descriptions, examples, and deprecation notes
+4. Use enums for fixed values and input types for mutations
+5. See the API patterns in 
 
 ### 4. Mock and Test
 
-> Goal: ทดสอบ APIs ด้วย mock server และ validation
+> Goal: Test APIs with a mock server and validation
 
-1. รัน mock server ด้วย `bunx @scalar/cli document mock openapi.yaml --watch --port 8080`
-2. ทดสอบ queries, mutations, และ error scenarios (mock server validate request ตาม OpenAPI contract โดย default)
-3. ใช้ `bunx @scalar/cli document validate openapi.yaml` เพื่อตรวจสอบ schema validity และ `document lint` สำหรับ spectral rules
-4. ใช้ `bunx @scalar/cli document serve openapi.yaml` เพื่อ preview API reference แบบ local — หรือทำ `/run-api-docs` ให้ start docs server + browser preview ครบ
-5. ถ้าต้องการ test API จริงจาก spec → export/import เข้า Bruno (`bru import openapi`) หรือเขียน `.hurl` files — ดู `/deep-test api`
-6. ทำ `/follow-test` เพื่อขยาย test coverage
+1. Run a mock server with `bunx @scalar/cli document mock openapi.yaml --watch --port 8080`
+2. Test queries, mutations, and error scenarios (the mock server validates requests against the OpenAPI contract by default)
+3. Use `bunx @scalar/cli document validate openapi.yaml` to check schema validity and `document lint` for spectral rules
+4. Use `bunx @scalar/cli document serve openapi.yaml` to preview the API reference locally — or run `/run-api-docs` to start the docs server with a browser preview
+5. To test a real API from the spec → export/import into Bruno (`bru import openapi`) or write `.hurl` files — see `/deep-test api`
+6. Run `/follow-test` to expand test coverage
 
 ### 5. Documentation and Deploy
 
-> Goal: publish documentation และ integrate กับ CI
+> Goal: Publish documentation and integrate with CI
 
-1. สร้าง Markdown docs ด้วย `bunx @scalar/cli document markdown openapi.yaml` หรือ bundle refs ด้วย `document bundle`
-2. ใช้ `@scalar/api-reference` (standalone script tag หรือ framework integration) สำหรับ HTML docs หรือ publish ผ่าน `scalar registry`/`scalar project`
-3. ตั้งค่า GitHub Actions หรือ CI/CD pipeline สำหรับ `document validate` และ deploy docs
-4. deploy ไปยัง static host เช่น GitHub Pages, Cloudflare Pages
-5. ดู official resources ใน 
+1. Create Markdown docs with `bunx @scalar/cli document markdown openapi.yaml` or bundle refs with `document bundle`
+2. Use `@scalar/api-reference` (standalone script tag or framework integration) for HTML docs, or publish via the `scalar registry`/`scalar project`
+3. Set up GitHub Actions or a CI/CD pipeline for `document validate` and deploying docs
+4. Deploy to a static host such as GitHub Pages or Cloudflare Pages
+5. See the official resources in 
 
 ## Rules
 
 ### 1. Schema Design
 
-- ใช้ descriptive names สำหรับ types และ fields
-- เพิ่ม descriptions สำหรับทุก public types และ fields
-- ใช้ examples สำหรับ complex queries และ mutations
-- mark deprecated fields อย่างชัดเจน
+- Use descriptive names for types and fields
+- Add descriptions for every public type and field
+- Use examples for complex queries and mutations
+- Mark deprecated fields clearly
 
 ### 2. Mock and Test
 
-- ใช้ mock server สำหรับ development และ manual testing
-- ทดสอบ error scenarios และ performance
-- ใช้ version control สำหรับ schema changes
+- Use a mock server for development and manual testing
+- Test error scenarios and performance
+- Use version control for schema changes
 
 ### 3. Documentation
 
-- สร้าง docs อัตโนมัติจาก schema
-- deploy docs บน static host
-- อัปเดต docs เมื่อ schema เปลี่ยน
+- Generate docs automatically from the schema
+- Deploy docs on a static host
+- Update docs when the schema changes
 
 ### 4. Integration
 
-- ใช้ CI/CD สำหรับ validate และ build docs
-- ไม่ hard-code secrets หรือ API keys
-- ใช้ environment variables สำหรับ config ที environment-specific
+- Use CI/CD to validate and build docs
+- Never hard-code secrets or API keys
+- Use environment variables for environment-specific config
 
-- ใช้ /follow-release ถ้าจำเป็น
-- ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool scalar)
+- Use /follow-release if needed
+- Use /follow-deploy if needed
+- Use /follow-tool-github-actions if needed (tool scalar)
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /follow-tool-bruno ถ้าจำเป็น
-- ใช้ /follow-tool-hurl ถ้าจำเป็น
+- Use /follow-tool-bruno if needed
+- Use /follow-tool-hurl if needed
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Scalar ติดตั้งและตั้งค่าเสร็จ
-- API schema ถูกต้องและมีเอกสารครบถ้วน
-- Mock server ทำงานได้
-- Documentation publish ได้
-- Tests และ validation ผ่าน
+- Scalar installed and configured
+- An API schema that is correct and fully documented
+- A working mock server
+- Documentation published
+- Tests and validation passing
 
