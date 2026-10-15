@@ -1,6 +1,6 @@
 ---
 name: git-worktree
-description: จัดการ git worktrees — ทำงานหลาย branch พร้อมกันโดยไม่ต้อง stash/switch
+description: Manage git worktrees — work on multiple branches at once without stash/switch
 argument-hint: "[add|list|remove] [path] [branch]"
 related:
   - git-branch
@@ -12,63 +12,63 @@ related:
 
 ## Goal
 
-ใช้ `git worktree` checkout หลาย branches พร้อมกันใน directories แยก — parallel work โดยไม่ต้อง stash/switch
+Use `git worktree` to check out multiple branches at once in separate directories — parallel work without stash/switch
 
 ## Scope
 
 - `git worktree add/list/remove/move/lock`
-- ใช้เมื่อต้องทำงาน >1 branch พร้อมกัน (review PR ขณะทำ feature, hotfix ระหว่างงานค้าง)
-- cleanup worktrees เก่า → `/cleanup-worktree`; ลบ → `/delete-git-worktree`
+- use when working on >1 branch at a time (reviewing a PR while a feature is in progress, hotfixing amid pending work)
+- cleaning up old worktrees → `/cleanup-worktree`; delete → `/delete-git-worktree`
 
 ## Execute
 
 ### 1. Decide Need
 
-> Goal: worktree เหมาะกับงานนี้จริง
+> Goal: a worktree genuinely fits this task
 
-1. ต้องการ run/test branch อื่นขณะ working tree ปัจจุบันมีงานค้าง → worktree
-2. แค่ดูไฟล์ชั่วคราว → `git show <branch>:<path>` พอ ไม่ต้อง worktree
-3. แต่ละ worktree = directory จริง + disk space เต็ม copy — พิจารณาขนาด repo
+1. need to run/test another branch while the current working tree has pending work → worktree
+2. just viewing a file temporarily → `git show <branch>:<path>` is enough, no worktree
+3. each worktree = a real directory + full-copy disk space — consider the repo size
 
 ### 2. Add Worktree
 
-> Goal: worktree ใหม่ถูกสร้างที่ path และ branch ถูกต้อง
+> Goal: the new worktree is created at the right path and branch
 
 ```bash
-git worktree add ../<repo>-<branch-name> <branch>      # branch มีอยู่
-git worktree add -b <new-branch> ../<repo>-<name> <base>  # สร้าง branch ใหม่พร้อมกัน
-git worktree add --detach ../<repo>-review <sha>        # detached สำหรับ review
+git worktree add ../<repo>-<branch-name> <branch>      # existing branch
+git worktree add -b <new-branch> ../<repo>-<name> <base>  # create a new branch at the same time
+git worktree add --detach ../<repo>-review <sha>        # detached for review
 ```
 
-1. naming: `<repo>-<purpose>` ที่ sibling dir — ห้าม nest worktree ใน worktree
-2. branch ที่ checkout อยู่ที่อื่น checkout ซ้ำไม่ได้ — detached หรือสร้าง branch ใหม่
-3. worktree ใหม่ไม่มี ignored files (`.env`, `node_modules`) — copy/install ตามต้องการ
+1. naming: `<repo>-<purpose>` as a sibling dir — never nest a worktree inside a worktree
+2. a branch checked out elsewhere cannot be checked out again — use detached or create a new branch
+3. a new worktree has no ignored files (`.env`, `node_modules`) — copy/install as needed
 
 ### 3. Work In Worktree
 
-> Goal: ทำงานใน worktree เหมือน repo ปกติ
+> Goal: working in a worktree is like a normal repo
 
-1. `cd <worktree>` แล้วทำงานปกติ — git commands ทั้งหมดทำงานใน context ของ branch นั้น
-2. commits ใน worktree เข้า branch ตรงๆ — ไม่มี sync step
-3. `.env`/deps ต้องตั้งเอง — worktree ไม่ copy ignored files
+1. `cd <worktree>` then work normally — all git commands run in that branch's context
+2. commits in the worktree go straight to its branch — no sync step
+3. `.env`/deps must be set up yourself — the worktree does not copy ignored files
 
 ### 4. Remove
 
-> Goal: worktree ถูกลบอย่างถูกต้องเมื่อจบ
+> Goal: the worktree is removed properly when done
 
-1. `git worktree remove <path>` — ลบได้เมื่อ clean (ไม่มี changes ค้าง)
-2. changes ค้าง → commit หรือ `/git-stash` ใน worktree นั้นก่อน — หรือ `--force` (destructive, confirm)
-3. `git worktree list` + `git worktree prune` — เคลียร์ metadata ของ worktrees ที่ถูกลบมือเอง
+1. `git worktree remove <path>` — removable when clean (no pending changes)
+2. pending changes → commit or `/git-stash` inside that worktree first — or `--force` (destructive, confirm)
+3. `git worktree list` + `git worktree prune` — clear the metadata of worktrees deleted by hand
 
 ## Rules
 
-- worktree = working directory จริง — changes ในนั้นเป็น uncommitted work จริง ไม่ใช่ sandbox
-- ห้าม checkout branch เดียวกันใน 2 worktrees — git block อยู่แล้ว ใช้ detached แทน
-- ลบ worktree dir ด้วยมือ → ต้อง `git worktree prune` เคลียร์ metadata
-- worktree ค้าง → `/cleanup-worktree` เป็นระยะ
-- ใช้ /ask-me ถ้าจำเป็น
+- a worktree = a real working directory — changes there are real uncommitted work, not a sandbox
+- never check out the same branch in 2 worktrees — git already blocks it; use detached instead
+- deleting the worktree directory by hand → must run `git worktree prune` to clear metadata
+- lingering worktrees → run `/cleanup-worktree` periodically
+- Use /ask-me if needed
 
 ## Expected Outcome
 
-- ทำงานหลาย branches พร้อมกันโดยไม่ต้อง stash/switch
-- worktrees ถูก track ใน `git worktree list` และ cleanup เมื่อจบ
+- multiple branches worked in parallel without stash/switch
+- worktrees are tracked in `git worktree list` and cleaned up when done

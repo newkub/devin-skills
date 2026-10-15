@@ -1,6 +1,6 @@
 ---
 name: report-todo
-description: ตอบ action plan ในแชทเป็นตาราง No., Action, Before, After, Why, File Change, Risk พร้อมสรุป numbered
+description: Action plan in chat as a No./Action/Before/After/Why/File Change/Risk table plus numbered summary
 argument-hint: "[actions-or-context]"
 related:
   - report
@@ -9,69 +9,69 @@ related:
 
 ## Goal
 
-ตอบ action plan ในแชทเป็นตารางทีมีคอลัมน์ `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` และสรุปด้านล่างด้วย `/report numbered`
+Answer an action plan in chat as a table with columns `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk`, plus a `/report numbered` summary below
 
 ## Scope
 
-ใช้เมื่อต้องตอบคำถาม/แนะนำ actions โดยยังไม่ลงมือทำ หรือต้องสรุปสถานะปัจจุบันก่อนดำเนินการ
+Use when answering a question or recommending actions without acting yet, or when summarizing the current state before proceeding
 
 ## Execute
 
 ### 1. Collect Actions
 
-> Goal: รวบรวม actions ทีต้องรายงาน
+> Goal: Gather the actions to report
 
-1. รับ context หรือ actions จาก user/skill
-2. ทำ `/suggest-next-action` ถ้ายังไม่มี actions
-3. แยกแต่ละ action ให้มี single responsibility
-4. กำหนด priority ตาม impact/risk
+1. Take the context or actions from the user/skill
+2. Run `/suggest-next-action` if there are no actions yet
+3. Split each action to have single responsibility
+4. Assign priority by impact/risk
 
 ### 2. Build Table
 
-> Goal: สร้างตาราง action plan
+> Goal: Build the action plan table
 
-1. คอลัมน์:
-   - `No.` เรียง 1, 2, 3, ...
-   - `Action` สั้น ชัดเจน
-   - `Before` สถานะก่อนทำ
-   - `After` สถานะหลังทำ
-   - `Why` เหตุผลทีควรทำ
-   - `File Change` ไฟล์ทีคาดว่าจะเปลี่ยน
-   - `Risk` ความเสี่ยงหรือข้อควรระวัง
-   - `Status` ใช้ emoji `✅` `⏳` `❌` `⚠️`
-2. เรียงลำดับตาม priority และ sort ตาม `Status` ให้ `✅` อยู่บนสุด
-3. ใช้ backticks สำหรับ paths, skill names, commands
-4. ไม่ใช้ bold markers
+1. Columns:
+   - `No.` ordered 1, 2, 3, ...
+   - `Action` short and clear
+   - `Before` the state before doing it
+   - `After` the state after doing it
+   - `Why` the reason it should be done
+   - `File Change` the files expected to change
+   - `Risk` the risk or cautions
+   - `Status` using emoji `✅` `⏳` `❌` `⚠️`
+2. Order by priority and sort by `Status` with `✅` on top
+3. Use backticks for paths, skill names, commands
+4. Do not use bold markers
 
 ### 3. Add Numbered Summary
 
-> Goal: สรุปด้านล่างตาราง
+> Goal: Summarize below the table
 
-1. ใช้ `/report numbered` สรุปลำดับ actions ทั้งหมด
-2. เน้น next action แรก
-3. ระบุ dependencies ระหว่าง actions ถ้ามี
+1. Use `/report numbered` to summarize all actions in order
+2. Emphasize the first next action
+3. State dependencies between actions if any
 
 ### 4. Validate
 
-> Goal: ตรวจความครบถ้วน
+> Goal: Check completeness
 
-1. ตรวจทุกคอลัมน์มีข้อมูล
-2. ตรวจ `No.` เรียงถูกต้อง
-3. ตรวจสรุป numbered อยู่ด้านล่างตาราง
+1. Verify every column has data
+2. Verify `No.` is ordered correctly
+3. Verify the numbered summary is below the table
 
 ## Rules
 
-- ใช้เมื่อ user ถามหรือต้องการ plan โดยยังไม่ลงมือ
-- ทุก action ต้องมี single responsibility
-- ไฟล์ทีระบุต้องพอจะเดาได้ ถ้าไม่แน่ใจให้ระบุ `TBD`
-- ด้านล่างต้องมี `/report numbered` เสมอ
-- ถ้ามี status หลายรายการให้ใช้ `/report table` สำหรับรายการเดียวกัน
-- ตอบในแชทเท่านั้น
+- Use when the user asks or needs a plan without acting yet
+- Every action must have single responsibility
+- Listed files must be reasonably guessable; if unsure write `TBD`
+- A `/report numbered` is always required below
+- If there are multiple statuses, use `/report table` for the same list
+- Answer in chat only
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ตารางครบ 8 คอลัมน์: No., Action, Before, After, Why, File Change, Risk, Status
-- สรุป numbered list ด้านล่าง
-- ระบุ next action และ dependencies
+- A table with all 8 columns: No., Action, Before, After, Why, File Change, Risk, Status
+- A numbered list summary below
+- Next action and dependencies identified

@@ -1,6 +1,6 @@
 ---
 name: report-uxui
-description: สร้างรายงาน UX/UI ด้วย ANSI box-drawing สำหรับ app/website จาก context ที่ให้มา
+description: Build a UX/UI report with ANSI box-drawing for an app/website from the given context
 argument-hint: "[scope]"
 related:
   - report-uxui-all-routes
@@ -17,121 +17,121 @@ related:
 
 ## Goal
 
-สร้างรายงาน UX/UI สำหรับ app หรือ website จาก context ที่ผู้ใช้ให้ โดยแสดง layout, tabs, components, และ user flow เป็น ANSI box-drawing wireframe (uniform width, ขอบขวาตรงกัน) ใน ` ```text ` codeblock
+Build a UX/UI report for an app or website from the context the user gives, presenting layout, tabs, components, and user flow as ANSI box-drawing wireframes (uniform width, right borders aligned) in a ` ```text ` codeblock
 
 ## Scope
 
-- ใช้สำหรับ UX/UI sketch ก่อน implement หรือสรุป UI ของ project ที่มีอยู่
-- รองรับ mobile app, web app, desktop app
-- แสดง tab/session/screen layout, navigation, list items, buttons
-- ไม่สร้างรูปภาพ ใช้ ANSI/Unicode box-drawing ใน ` ```text ` block เท่านั้น
+- For UX/UI sketches before implementing, or summarizing the UI of an existing project
+- Supports mobile apps, web apps, desktop apps
+- Shows tab/session/screen layouts, navigation, list items, buttons
+- No images — ANSI/Unicode box-drawing in a ` ```text ` block only
 
 ## Execute
 
 ### 1. Gather Context
 
-> Goal: เข้าใจ app/website ที่จะ sketch
+> Goal: Understand the app/website to sketch
 
-1. อ่าน prompt, context, `AGENTS.md`, หรือ references ที่เกี่ยวข้อง
-2. ระบุ platform (iOS, Android, Web, Desktop), framework, และ screen size
-3. ระบุ tabs, screens, main features, และ target users
-4. ถ้ามี source code → scan routes/pages/components จริงก่อน sketch
-5. ถ้า context ไม่พอ → ใช้ `/ask-me`
+1. Read the prompt, context, `AGENTS.md`, or related references
+2. Identify the platform (iOS, Android, Web, Desktop), framework, and screen size
+3. Identify the tabs, screens, main features, and target users
+4. If source code exists → scan the real routes/pages/components before sketching
+5. If context is insufficient → use `/ask-me`
 
 ### 2. Define Screens And Flow
 
-> Goal: แบ่ง app เป็น screens/tabs ที่ชัดเจน
+> Goal: Split the app into clear screens/tabs
 
-1. ระบุชื่อ tab/screen ทั้งหมด
-2. ระบุ flow หลัก: เปิด app → ไป tab ไหน → กดอะไร
-3. ระบุ transitions ระหว่าง screen
-4. จัดกลุ่ม screens ตาม bottom/tab navigation
+1. List all tab/screen names
+2. Define the main flow: open app → which tab → what is pressed
+3. Define the transitions between screens
+4. Group screens by bottom/tab navigation
 
 ### 3. Sketch Each Screen As ANSI
 
-> Goal: วาด wireframe แต่ละ screen เป็น ANSI box
+> Goal: Draw each screen's wireframe as an ANSI box
 
-1. ใช้ box-drawing characters (`┌─┐│└─┘├┤`) ภายใน ` ```text ` codeblock
-2. ทุก screen ต้องมี outer box กว้างเท่ากันทุกบรรทัด ขอบขวา `│` ตรงกัน
-3. แสดง status bar, navigation bar, tab bar ถ้าเป็น mobile
-4. ใส่ labels, placeholders, list items, buttons
-5. ระบุการ "กด" หรือ tap ที่ทำงานได้: `[Tap]`, `[Press]`
-6. ความกว้างไม่เกิน 80 characters ต่อบรรทัด
-7. ถ้ากล่องเพี้ยนหรือต้องการ wrap เนื้อหา → ใช้ `/draw-ansi` script (`--fix`, `--width`, `--title`) ปรับให้ขนาดเท่ากัน
+1. Use box-drawing characters (`┌─┐│└─┘├┤`) inside a ` ```text ` codeblock
+2. Every screen must have an outer box of equal width on every line, with the right border `│` aligned
+3. Show the status bar, navigation bar, and tab bar for mobile
+4. Include labels, placeholders, list items, and buttons
+5. Mark working "presses" or taps: `[Tap]`, `[Press]`
+6. No line wider than 80 characters
+7. If a box is distorted or content needs wrapping → use the `/draw-ansi` script (`--fix`, `--width`, `--title`) to even out sizes
 
 ### 4. Add UX Annotations
 
-> Goal: อธิบาย behavior ของแต่ละ element
+> Goal: Explain each element's behavior
 
-1. ใช้ bullet/numbered list อธิบาย interaction
-2. ระบุ loading, empty, error states
-3. ระบุ gestures (swipe, pull-to-refresh) ถ้ามี
-4. ระบุ accessibility labels
+1. Use bullets/numbered lists to describe interactions
+2. State loading, empty, and error states
+3. State gestures (swipe, pull-to-refresh) if any
+4. State accessibility labels
 
 ### 5. Format As ANSI Report
 
-> Goal: สรุป report ให้อ่านง่าย
+> Goal: Summarize the report for easy reading
 
-1. สรุป key findings ด้านบน
-2. ใช้ `/report` สำหรับ screen/tab summary table
-3. ใช้ `/report-architecture-diagram` สำหรับ user flow
-4. ใช้ symbols `✅` `⚠️` สำหรับสถานะ
-5. ทำ `/suggest-next-action` ท้าย report
+1. Summarize key findings at the top
+2. Use `/report` for the screen/tab summary table
+3. Use `/report-architecture-diagram` for the user flow
+4. Use symbols `✅` `⚠️` for status
+5. Run `/suggest-next-action` at the end of the report
 
 ## Rules
 
 ### ANSI-Only Sketch
 
-- ไม่สร้างรูปภาพหรือ binary files
-- ใช้ ANSI/Unicode box-drawing ใน ` ```text ` codeblock เท่านั้น (ห้าม ` ```ansi ` block)
-- ทุก box ต้อง uniform width — ขอบขวาตรงกัน ไม่เพี้ยน ตาม `/draw-ansi` rules
-- หนึ่ง screen ต่อหนึ่ง sketch section
-- ถ้าต้องการ route table ก่อนสร้าง sketch ให้ใช้ `/report-uxui-all-routes`
+- Do not create images or binary files
+- Use ANSI/Unicode box-drawing in a ` ```text ` codeblock only (no ` ```ansi ` blocks)
+- Every box must be uniform width — right borders aligned, undistorted, per `/draw-ansi` rules
+- One screen per sketch section
+- If a route table is needed before sketching, use `/report-uxui-all-routes`
 
 ### Mobile Layout
 
-- แสดง top status bar, middle content, bottom tab bar ถ้าเป็น mobile
-- ใช้ `Tab 1 | Tab 2 | Tab 3` สำหรับ tab bar
-- ระบุ safe area, navigation header ถ้าจำเป็น
+- Show the top status bar, middle content, and bottom tab bar for mobile
+- Use `Tab 1 | Tab 2 | Tab 3` for the tab bar
+- State safe areas and the navigation header when needed
 
 ### Web/Desktop Layout
 
-- แสดง sidebar/top nav, main content area
-- ระบุ breakpoints ถ้ามี responsive design
-- ระบุ global nav กับ local nav แยกกัน
+- Show the sidebar/top nav and main content area
+- State breakpoints if there is responsive design
+- Separate global nav from local nav
 
 ### Interactions
 
-- ระบุ tap/click targets ชัดเจน เช่น `[Tap]`, `[Press]`, `[Toggle]`
-- ระบุ disabled states ด้วย `[Disabled]`
-- ระบุ transitions เช่น `→ Screen B`
+- Mark tap/click targets clearly, e.g. `[Tap]`, `[Press]`, `[Toggle]`
+- Mark disabled states with `[Disabled]`
+- Mark transitions, e.g. `→ Screen B`
 
 ### Formatting
 
-- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `screen-name`
-- ห้ามใช้ `**` bold markers
-- บรรทัดไม่เกิน 80 characters
-- ใช้ headings แยกแต่ละ screen
+- Use backticks for `tools`, `commands`, `paths`, `screen-name`
+- Never use `**` bold markers
+- Lines no longer than 80 characters
+- Use headings to separate each screen
 
 ### Consistency
 
-- ใช้คำศัพท์เดียวกันทั้ง report
-- เรียง tabs/screens ตามลำดับ navigation
-- ทุก screen ต้องมีชื่อและ purpose กำกับ
+- Use the same terminology throughout the report
+- Order tabs/screens by navigation sequence
+- Every screen must carry its name and purpose
 
-- ใช้ /report-uxui-all-routes ถ้าจำเป็น
-- ใช้ /draw-ansi ถ้าจำเป็น
-- ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /review-by-all-stakeholder ถ้าจำเป็น
-- ใช้ /open-files-in-web ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
+- Use /report-uxui-all-routes if needed
+- Use /draw-ansi if needed
+- Use /follow-design-system if needed
+- Use /review-by-all-stakeholder if needed
+- Use /open-files-in-web if needed
+- Use /run-dev if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ANSI UX/UI report ครอบคลุมทุก screen/tab ทุก box ขนาดเท่ากันไม่เพี้ยน
-- Screen summary table ด้วย `/report`
-- User flow หรือ navigation diagram ด้วย `/report-architecture-diagram`
-- Clear interactions, loading/empty/error states, และ accessibility notes
-- Next action ชัดเจนท้าย report
+- An ANSI UX/UI report covering every screen/tab with all boxes equal-sized and undistorted
+- A screen summary table via `/report`
+- A user flow or navigation diagram via `/report-architecture-diagram`
+- Clear interactions, loading/empty/error states, and accessibility notes
+- A clear next action at the end of the report

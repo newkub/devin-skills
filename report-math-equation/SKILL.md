@@ -1,6 +1,6 @@
 ---
 name: report-math-equation
-description: ตอบคำถามหรือเปรียบเทียบทางเลือกในรูปแบบสมการ + - = ให้เข้าใจง่าย
+description: Answer questions or compare options as + - = equations for easy understanding
 argument-hint: "[scope]"
 related:
   - report
@@ -12,114 +12,114 @@ related:
 
 ## Goal
 
-ตอบคำถามหรือเปรียบเทียบทางเลือกด้วยสมการ `+`, `-`, `=` ทีเข้าใจง่าย ไม่ซับซ้อนเกินไป
+Answer questions or compare options with `+`, `-`, `=` equations that are easy to understand and not overly complex
 
 ## Scope
 
-ใช้เมื่องานเกี่ยวกับ:
-- เปรียบเทียบ trade-off ระหว่างตัวเลือก
-- อธิบาย root cause หรือผลลัพธ์
-- สรุปสิ่งบวก สิ่งลบ และผลสุดท้าย
-- ช่วยตัดสินใจระหว่าง 2+ ทางเลือก
-- แปลง code/algorithm/description/problem เป้นสูตรคณิตศาสตร์ (LaTeX)
+Use when the work involves:
+- Comparing trade-offs between options
+- Explaining a root cause or outcome
+- Summarizing pluses, minuses, and the final result
+- Helping decide between 2+ options
+- Converting code/algorithm/description/problem into a math formula (LaTeX)
 
-ไม่ใช่สำหรับ:
-- คำถาม factual ทีต้องการคำตอบสั้น (เช่น "file นี้อยู่ทีไหน")
-- คำถามทีไม่มี variables ให้เปรียบเทียบ
+Not for:
+- Factual questions needing a short answer (e.g. "where is this file")
+- Questions with no variables to compare
 
 ## Execute
 
 ### 1. Identify Variables
 
-> Goal: ระบุส่วนประกอบของสมการ
+> Goal: Identify the components of the equation
 
-1. อ่าน prompt หรือ context
-2. ระบุ:
-   - `+` สิ่งทีเป็นบวก/ประโยชน์/ต้นทุน/องค์ประกอบ
-   - `-` สิ่งทีเป็นลบ/ความเสี่ยง/ข้อเสีย/สิ่งทีต้องลด
-   - `=` ผลลัพธ์/คำตอบ/สรุป
-3. ถ้าตัวเลือกไม่ชัด → ทำ `/ask-me` ก่อน
+1. Read the prompt or context
+2. Identify:
+   - `+` the positives/benefits/costs/components
+   - `-` the negatives/risks/drawbacks/things to reduce
+   - `=` the result/answer/conclusion
+3. If the options are unclear → run `/ask-me` first
 
 ### 2. Build Equations
 
-> Goal: เขียนสมการทีตีความได้ทางเดียว
+> Goal: Write equations with only one interpretation
 
-1. เริ่มจากสถานะปัจจุบัน:
+1. Start from the current state:
    ```
    problem = current_state + missing_parts
    ```
-2. เขียนสมการตัวเลือก:
+2. Write the option equations:
    ```
    option_a = benefit_a + cost_a - risk_a
    option_b = benefit_b + cost_b - risk_b
    ```
-3. เขียนสมการผลลัพธ์:
+3. Write the outcome equation:
    ```
-   best_choice = option_a - option_b (ถ้า a ดีกวา)
+   best_choice = option_a - option_b (if a is better)
    ```
 
 ### 3. Evaluate
 
-> Goal: ตัดสินว่าสมการไปในทิศทางใด
+> Goal: Decide which direction the equations point
 
-1. เปรียบเทียบผลรวมของแต่ละ option
-2. ระบุเงื่องายทีทำให้เลือกฝ่ายใดฝ่ายหนึ่ง
-3. ถ้าไม่มีข้อมูลพอ → บอก assumption
+1. Compare the totals of each option
+2. State the conditions that favor one side
+3. If data is insufficient → state the assumptions
 
 ### 4. Output
 
-> Goal: สรุปในรูปแบบทีอ่านง่าย
+> Goal: Summarize in an easy-to-read form
 
-1. แสดงสมการหลัก 3-5 ข้อ
-2. ตามด้วย `/report` สรุป:
-   - ตัวเลือก
-   - สิ่งบวก (+)
-   - สิ่งลบ (-)
-   - ผล (=)
-3. จบด้วยคำตอบสั้นๆ
+1. Show the 3-5 main equations
+2. Follow with a `/report` summary:
+   - Options
+   - Positives (+)
+   - Negatives (-)
+   - Result (=)
+3. End with a short answer
 
 ### 5. LaTeX Formula (Optional)
 
-> Goal: สร้างสูตรคณิตศาสตรทีถูกต้อง
+> Goal: Produce a correct math formula
 
-1. ถ้า input เป้น code/algorithm/description/problem ที่ต้องสูตรจริง → ใช้ LaTeX: `$...$` inline, `$$...$$` block
-2. สรุปตัวแปร, ความสัมพันธ์, เงื่อนไข
-3. ระบุสัญลักษณ์มาตรฐาน: `\sum`, `\prod`, `\int`, `\frac`, `\sqrt`, `\begin{cases}`
-4. ทดสอบกับค่าตัวอย่าง 1 ตัวอย่าง
-5. ระบุเงื่อนไขและข้อจำกัด
+1. If the input is code/algorithm/description/problem that needs a real formula → use LaTeX: `$...$` inline, `$$...$$` block
+2. Summarize the variables, relations, and conditions
+3. Use standard notation: `\sum`, `\prod`, `\int`, `\frac`, `\sqrt`, `\begin{cases}`
+4. Test with 1 sample value
+5. State the conditions and constraints
 
 ## Rules
 
 ### 1. Simplicity
 
-- ไม่เกิน 3-5 สมการ
-- แต่ละสมการมีความหมายชัดเจน
-- ไม่ใช่ math จริง แต่ใช้เครื่องหมาย + - = เป้น analogy
+- No more than 3-5 equations
+- Each equation has a clear meaning
+- Not real math — the + - = signs serve as an analogy
 
 ### 2. One-Way Interpretation
 
-- ต้องอ่านแล้วเข้าใจทิศทางเดียวกัน
-- ไม่เขียนสมการกำกวม เช่น `A + B = ?`
+- Reading it must yield the same direction of understanding
+- Do not write ambiguous equations like `A + B = ?`
 
 ### 3. Always Include Table
 
-- ต้องมี `/report` ประกอบทุกครั้ง
-- ตารางช่วยให้ user scan ได้เร็ว
+- A `/report` must accompany every answer
+- The table helps the user scan quickly
 
 ### 4. Honest About Uncertainty
 
-- ถ้าข้อมูลไม่พอ ให้บอก assumption
-- ไม่ตัดสินแทน user ถ้าไม่มีข้อมูลพอ
+- If data is insufficient, state the assumptions
+- Do not decide for the user without enough data
 
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /plan ถ้าจำเป็น
-- ใช้ /deep-analyze ถ้าจำเป็น
+- Use /report if needed
+- Use /plan if needed
+- Use /deep-analyze if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status) when findings are reported; equation answers stay in chat
 
 ## Expected Outcome
 
-- มี 3-5 สมการทีสะท้อนปัญหา/ตัวเลือก/ผลลัพธ์
-- มีตารางสรุป + - =
-- คำตอบที user เข้าใจได้ทันที
-- ไม่ยืดยาว ไม่ over-engineer
+- 3-5 equations reflecting the problem/options/outcome
+- A + - = summary table
+- An answer the user understands immediately
+- Not lengthy, no over-engineering

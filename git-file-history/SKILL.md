@@ -1,6 +1,6 @@
 ---
 name: git-file-history
-description: ดู git file history ของไฟล์ที่ระบุผ่าน @wrikka/git-cli package ที่ release แล้ว โดยใช้คำสั่ง
+description: View a file's git history via the released @wrikka/git-cli package with the file-history command
 argument-hint: "[file]"
 related:
   - check-git-logs
@@ -13,13 +13,13 @@ related:
 
 ## Goal
 
-ดู git file history ของไฟล์ที่ระบุผ่าน `@wrikka/git-cli` package ที่ release แล้ว โดยใช้คำสั่ง `git-ai file-history <file>` ซึ่งจะ generate HTML viewer พร้อม split-screen timeline, commit type badges, diff view, และ keyboard navigation อัตโนมัติ
+View the git file history of a given file via the already-released `@wrikka/git-cli` package using the `git-ai file-history <file>` command, which automatically generates an HTML viewer with a split-screen timeline, commit type badges, diff view, and keyboard navigation
 
 ## Scope
 
-ใช้สำหรับดู git file history ของไฟล์ใดๆ ใน workspace ที่มี git repository และติดตั้ง `@wrikka/git-cli` แล้ว
+Use to view the git file history of any file in a workspace that has a git repository and has `@wrikka/git-cli` installed
 
-Boundary: interactive HTML viewer เท่านั้น — หา commit ที่ตรงเงื่อนไข → `/check-git-logs`; วิเคราะห์ evolution/patterns → `/diff-file-history`
+Boundary: interactive HTML viewer only — find the commit matching a condition → `/check-git-logs`; analyze evolution/patterns → `/diff-file-history`
 
 ## Execute
 
@@ -27,43 +27,43 @@ Boundary: interactive HTML viewer เท่านั้น — หา commit ท
 
 > Goal: Install @wrikka/git-cli
 
-1. ตรวจสอบว่าติดตั้ง `@wrikka/git-cli` แล้ว:
-   - รัน `git-ai --help` เพื่อตรวจสอบ
-   - ถ้ายังไม่ติดตั้ง ให้ติดตั้งจาก `@wrikka/bun-packages` monorepo:
-     `bun --filter @wrikka/git-cli build` แล้ว `bun link`
-2. ตรวจสอบว่ามี `OPENAI_API_KEY` environment variable ถ้าต้องการ AI features
+1. Check that `@wrikka/git-cli` is installed:
+   - run `git-ai --help` to verify
+   - if not yet installed, install it from the `@wrikka/bun-packages` monorepo:
+     `bun --filter @wrikka/git-cli build` then `bun link`
+2. Check that the `OPENAI_API_KEY` environment variable exists if AI features are needed
 
 ### 2. Run file-history Command
 
 > Goal: Run file-history Command
 
-1. ระบุไฟล์ที่ต้องการดู history (จาก active document หรือที่ผู้ใช้ระบุ)
-2. รัน `git-ai file-history <file_path>` ใน git root directory
-3. CLI จะ:
-   - ดึง commit history ด้วย `git log --follow`
-   - ดึง file content แต่ละ commit ด้วย `git show <hash>:<file>`
-   - Generate HTML พร้อม Vue 3 + Tailwind CSS
-   - เขียน HTML ไปยัง OS temp directory
-   - เปิดใน browser อัตโนมัติ
-4. ถ้าไม่ต้องการเปิด browser อัตโนมัติ ใช้ `--no-open` flag
+1. Specify the file whose history to view (from the active document or given by the user)
+2. Run `git-ai file-history <file_path>` in the git root directory
+3. The CLI will:
+   - pull the commit history with `git log --follow`
+   - pull the file content of each commit with `git show <hash>:<file>`
+   - generate HTML with Vue 3 + Tailwind CSS
+   - write the HTML to the OS temp directory
+   - open it in the browser automatically
+4. If you do not want the browser to open automatically, use the `--no-open` flag
 
 ### 3. UI Components
 
 > Goal: UI Components
 
-1. Header - glassmorphism bar แสดง file path, commit count, view toggle, keyboard hints
-2. Timeline Sidebar - split-screen vertical timeline ด้านซ้าย:
-   - แต่ละ commit แสดงเป็น dot บน timeline line
-   - Commit type badge (feat, fix, refactor, chore, docs, other)
-   - Active commit มี glow effect
-   - Hover ที่ dot จะ scale up
-3. Commit Info Bar - แสดง type badge, hash, message, author, date, email
-4. Code Viewer - แสดง file content แบบ line-numbered พร้อม sticky line numbers
-5. Diff View - สลับได้ระหว่าง content และ diff vs previous commit:
-   - Added lines: green background
-   - Removed lines: red background
-   - Dual line numbers (old + new)
-   - Diff stats: +added / -removed
+1. Header - glassmorphism bar showing file path, commit count, view toggle, keyboard hints
+2. Timeline Sidebar - split-screen vertical timeline on the left:
+   - each commit shown as a dot on the timeline line
+   - commit type badge (feat, fix, refactor, chore, docs, other)
+   - the active commit has a glow effect
+   - hovering a dot scales it up
+3. Commit Info Bar - shows type badge, hash, message, author, date, email
+4. Code Viewer - shows file content line-numbered with sticky line numbers
+5. Diff View - switchable between content and diff vs the previous commit:
+   - added lines: green background
+   - removed lines: red background
+   - dual line numbers (old + new)
+   - diff stats: +added / -removed
 6. Navigation Footer - prev/next buttons + progress dots
 7. Copy Button - copy file content to clipboard
 
@@ -71,60 +71,60 @@ Boundary: interactive HTML viewer เท่านั้น — หา commit ท
 
 > Goal: Keyboard Navigation
 
-1. `ArrowLeft` - ไป commit ก่อนหน้า (older)
-2. `ArrowRight` - ไป commit ถัดไป (newer)
-3. `D` - สลับระหว่าง content และ diff view
-4. แสดง keyboard hint ที่ header
+1. `ArrowLeft` - go to the previous commit (older)
+2. `ArrowRight` - go to the next commit (newer)
+3. `D` - toggle between content and diff view
+4. Show the keyboard hint in the header
 
 ### 5. Transition Animations
 
 > Goal: Transition Animations
 
-1. ใช้ Vue `<transition>` component กับ `mode="out-in"`
-2. Slide right (ไป commit ใหม่กว่า): `translateX(30px) scale(0.98)` → `translateX(0)`
-3. Slide left (ไป commit เก่ากว่า): `translateX(-30px) scale(0.98)` → `translateX(0)`
-4. ใช้ `cubic-bezier(0.22, 1, 0.36, 1)` easing
+1. Use the Vue `<transition>` component with `mode="out-in"`
+2. Slide right (to a newer commit): `translateX(30px) scale(0.98)` → `translateX(0)`
+3. Slide left (to an older commit): `translateX(-30px) scale(0.98)` → `translateX(0)`
+4. Use `cubic-bezier(0.22, 1, 0.36, 1)` easing
 5. Duration: `0.4s`
-6. Timeline scroll into view แบบ smooth
-7. `fade-in-up` animation สำหรับ content area
+6. Timeline scroll into view, smooth
+7. `fade-in-up` animation for the content area
 
 ## Rules
 
 ### 1. Package Usage
 
-- ใช้ `git-ai file-history <file>` จาก `@wrikka/git-cli` package เท่านั้น
-- ไม่ต้องเขียน Bun shell script เอง — package จัดการให้ทั้งหมด
-- ถ้า package ยังไม่ release ให้ build จาก monorepo ก่อน
-- ใช้ `--no-open` flag ถ้าไม่ต้องการเปิด browser อัตโนมัติ
+- use `git-ai file-history <file>` from the `@wrikka/git-cli` package only
+- no need to write your own Bun shell script — the package handles everything
+- if the package is not released yet, build from the monorepo first
+- use the `--no-open` flag if you do not want the browser to open automatically
 
 ### 2. Git Data Extraction
 
-- Package ใช้ `git log --follow` สำหรับติดตาม file renames
-- ใช้ `--pretty=format` สำหรับ structured output
-- ใช้ `git show <hash>:<file_path>` สำหรับดึง content แต่ละ commit
-- ถ้าไฟล์ไม่มี git history จะแสดง error message
+- the package uses `git log --follow` to track file renames
+- uses `--pretty=format` for structured output
+- uses `git show <hash>:<file_path>` to pull each commit's content
+- if the file has no git history, an error message is shown
 
 ### 3. HTML Generation
 
-- ใช้ Vue 3 ผ่าน unpkg CDN
-- ใช้ Tailwind CSS ผ่าน cdn.tailwindcss.com
-- ใช้ dark mode theme (`<html class="dark">`)
-- Split-screen layout: timeline sidebar (left) + content area (right)
-- ทุก commit ต้องมี entry ใน timeline
-- ไฟล์ต้องทำงานได้ทันทีเมื่อเปิดใน browser
+- use Vue 3 via the unpkg CDN
+- use Tailwind CSS via cdn.tailwindcss.com
+- use the dark mode theme (`<html class="dark">`)
+- split-screen layout: timeline sidebar (left) + content area (right)
+- every commit must have an entry in the timeline
+- the file must work immediately when opened in the browser
 
-- ใช้ /check-git-logs ถ้าจำเป็น
-- ใช้ /list-brave-browser-history ถ้าจำเป็น
-- ใช้ /restore-files-from-devin-history ถ้าจำเป็น
-- ใช้ /follow-git-flow ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
+- Use /check-git-logs if needed
+- Use /list-brave-browser-history if needed
+- Use /restore-files-from-devin-history if needed
+- Use /follow-git-flow if needed
+- Use /resolve-errors if needed
+- Use /follow-best-practice if needed
 
 ## Expected Outcome
 
-- HTML ไฟล์เดียวใน OS temp directory พร้อม real git data
-- Split-screen UI: timeline sidebar + content area
-- Commit type badges สำหรับ conventional commits
-- Keyboard navigation (left/right) พร้อม transition animations
-- Content และ Diff view สลับได้
-- เปิดใน browser อัตโนมัติหลัง generate
+- a single HTML file in the OS temp directory with real git data
+- split-screen UI: timeline sidebar + content area
+- commit type badges for conventional commits
+- keyboard navigation (left/right) with transition animations
+- content and diff views are switchable
+- the browser opens automatically after generating

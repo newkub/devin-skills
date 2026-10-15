@@ -1,6 +1,6 @@
 ---
 name: git-cherry-pick
-description: Cherry-pick commits ข้าม branch อย่างถูกต้อง — single, range, merge-safe
+description: Cherry-pick commits across branches correctly — single, range, merge-safe
 argument-hint: "[sha|range]"
 related:
   - git-revert
@@ -12,62 +12,62 @@ related:
 
 ## Goal
 
-นำ commit(s) จาก branch หนึ่งไปยังอีก branch ด้วย `git cherry-pick` — โดยไม่ merge ทั้ง branch
+Bring commit(s) from one branch to another with `git cherry-pick` — without merging the whole branch
 
 ## Scope
 
-- pick commit เดียว, หลาย commits, range
+- pick a single commit, multiple commits, or a range
 - `-x` record source, `-n`/`--no-commit` batch, merge commit picks (`-m`)
-- คู่กับ `/git-revert` — revert = inverse apply, cherry-pick = re-apply
+- pairs with `/git-revert` — revert = inverse apply, cherry-pick = re-apply
 
 ## Execute
 
 ### 1. Identify Source
 
-> Goal: หา commits ที่จะ pick ชัดเจน
+> Goal: clearly identify the commits to pick
 
-1. `git log --oneline <source-branch>` หรือ `/check-git-logs` หา sha
-2. `git show <sha>` — ยืนยันเนื้อหาและ dependencies (commit อาจพึ่ง commits ก่อนหน้า)
-3. ตรวจว่า change นั้นมีอยู่ใน target แล้วหรือยัง (`git cherry <target> <source>` หรือ `git log --grep`)
+1. `git log --oneline <source-branch>` or `/check-git-logs` to find the sha
+2. `git show <sha>` — confirm content and dependencies (a commit may rely on earlier commits)
+3. check whether that change already exists in the target (`git cherry <target> <source>` or `git log --grep`)
 
 ### 2. Pick
 
-> Goal: apply commits ข้ามมาอย่างถูกลำดับ
+> Goal: apply the commits across in the right order
 
 ```bash
-git cherry-pick <sha>                  # เดียว
-git cherry-pick -x <sha>               # เดียว + บันทึก "(cherry picked from ...)"
-git cherry-pick <oldest>^..<newest>    # range — เก่าไปใหม่เสมอ
-git cherry-pick -n <sha1> <sha2>       # batch เป็น commit เดียว (--no-commit)
-git cherry-pick -m 1 <merge-sha>       # merge commit — ระบุ mainline
+git cherry-pick <sha>                  # single
+git cherry-pick -x <sha>               # single + record "(cherry picked from ...)"
+git cherry-pick <oldest>^..<newest>    # range — always old to new
+git cherry-pick -n <sha1> <sha2>       # batch into one commit (--no-commit)
+git cherry-pick -m 1 <merge-sha>       # merge commit — specify mainline
 ```
 
-1. range ต้องเรียงเก่า→ใหม่ — dependencies ของ commits มัก forward-only
-2. commits ที่ต้องติดกันให้ batch ด้วย `-n` แล้ว commit เดียว
+1. a range must be ordered old→new — commit dependencies are usually forward-only
+2. commits that must stay together: batch with `-n` then make one commit
 
 ### 3. Handle Conflicts
 
-> Goal: conflict resolve ถูก context ของ target branch
+> Goal: conflicts resolved correctly in the target branch context
 
-1. conflict → แก้ไฟล์, `git add`, `git cherry-pick --continue`
-2. ล้มเลิก → `git cherry-pick --abort`
-3. conflict แปลว่า branches diverge มาก — พิจารณา port ด้วยมือแทน
+1. conflict → fix the files, `git add`, `git cherry-pick --continue`
+2. give up → `git cherry-pick --abort`
+3. a conflict means the branches diverge a lot — consider a manual port instead
 
 ### 4. Verify
 
-> Goal: change ทำงานบน target branch
+> Goal: the change works on the target branch
 
-1. `git show HEAD` ตรวจ diff; ทำ `/run-check` — context ต่าง branch อาจทำให้แตก
-2. รายงาน: sha เดิม → sha ใหม่ (pick สร้าง commit ใหม่ sha ต่างกันเสมอ)
+1. `git show HEAD` to check the diff; run `/run-check` — a different branch context can break it
+2. report: original sha → new sha (a pick always creates a new commit with a different sha)
 
 ## Rules
 
-- cherry-pick สร้าง duplicate commits — merge กลับภายหลังอาจ conflict, รับรู้ก่อนใช้
-- ใช้ `-x` เมื่อ pick ระหว่าง public branches — traceability สำคัญ
-- อย่า pick partial ของ logical change — pick ครบชุดหรือไม่ pick เลย
-- ใช้ /resolve-errors ถ้าจำเป็น
+- cherry-pick creates duplicate commits — a later merge-back may conflict, be aware before using
+- use `-x` when picking between public branches — traceability matters
+- do not pick part of a logical change — pick the complete set or none
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Changes เป้าหมายอยู่บน target branch เป็น commits ใหม่ พร้อม traceability (`-x`)
-- ผ่าน `/run-check` บน context ของ branch ปลายทาง
+- the target changes are on the target branch as new commits with traceability (`-x`)
+- passes `/run-check` in the destination branch context

@@ -1,6 +1,6 @@
 ---
 name: report-my-tech-stack-update
-description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
+description: Report the weekly update of the tech stack used in development
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
@@ -12,120 +12,120 @@ related:
 
 ## Goal
 
-รวบรวมและสรุปข่าวสารและอัปเดตของ tech stack ที่ใช้ในการพัฒนา ประจำสัปดาห์ เพื่อให้ผู้ใช้ติดตามการเปลี่ยนแปลงและเทรนด์ที่สำคัญ
+Collect and summarize weekly news and updates of the tech stack used in development, so the user can follow important changes and trends
 
 ## Scope
 
-ครอบคลุมการตรวจสอบและรวบรวมอัปเดตจาก:
-- Runtime และ package managers (Bun, Cargo)
-- Frameworks และ libraries (TanStack, Vue, SolidJS, Vite, etc.)
-- Tools และ services (Biome, Drizzle, Supabase, Stripe, etc.)
-- Infrastructure และ deployment (Cloudflare, Vercel, etc.)
+Covers checking and collecting updates from:
+- Runtimes and package managers (Bun, Cargo)
+- Frameworks and libraries (TanStack, Vue, SolidJS, Vite, etc.)
+- Tools and services (Biome, Drizzle, Supabase, Stripe, etc.)
+- Infrastructure and deployment (Cloudflare, Vercel, etc.)
 
 ## Execute
 
 ### 1. Identify Current Tech Stack
 
-> Goal: ระบุ tech stack ปัจจุบัน
+> Goal: Identify the current tech stack
 
-1. ทำ `/deep-review-codebase` เพื่อระบุ tech stack ทั้งหมด
-2. อ่าน `package.json`, `Cargo.toml`, `go.mod` เพื่อดู dependencies ปัจจุบัน
-3. ระบุเวอร์ชันปัจจุบันของแต่ละ dependency
-4. จัดกลุ่มตาม category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
+1. Run `/deep-review-codebase` to identify the whole tech stack
+2. Read `package.json`, `Cargo.toml`, `go.mod` for the current dependencies
+3. State the current version of each dependency
+4. Group by category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
 
 ### 2. Check For Updates
 
-> Goal: ตรวจสอบอัปเดตที่มีอยู่
+> Goal: Check the available updates
 
-1. รัน `bun outdated` เพื่อเช็ค npm packages ที่มีอัปเดต
-2. รัน `cargo outdated` เพื่อเช็ค Rust crates ที่มีอัปเดต (ถ้ามี Rust project)
-3. ใช้ `mcp7_list_releases` สำหรับ repositories ที่ติดตาม
-4. ค้นหาด้วย `search_web` ใช้ query `<library-name> latest release <month> <year>`
-5. รวบรวมรายการ dependencies ที่มีอัปเดตพร้อมเวอร์ชันใหม่
+1. Run `bun outdated` to check npm packages with updates
+2. Run `cargo outdated` to check Rust crates with updates (if there is a Rust project)
+3. Use `mcp7_list_releases` for tracked repositories
+4. Search with `search_web` using the query `<library-name> latest release <month> <year>`
+5. Collect the list of dependencies with updates and their new versions
 
 ### 3. Research Release Notes
 
-> Goal: ค้นหา release notes และ changelogs
+> Goal: Find release notes and changelogs
 
-1. ทำ `/deep-research` สำหรับ libraries ที่มีอัปเดตสำคัญ
-2. ใช้ `mcp7_list_releases` สำหรับ GitHub release tracking
-3. ใช้ `read_url_content` สำหรับอ่าน changelogs ที่น่าสนใจ
-4. ระบุ breaking changes และ features ใหม่ที่สำคัญ
-5. ตรวจสอบ migration guides สำหรับ major version bumps
+1. Run `/deep-research` for libraries with significant updates
+2. Use `mcp7_list_releases` for GitHub release tracking
+3. Use `read_url_content` to read interesting changelogs
+4. Identify breaking changes and important new features
+5. Check migration guides for major version bumps
 
 ### 4. Categorize Updates
 
-> Goal: จัดกลุ่มอัปเดตตามประเภท
+> Goal: Group updates by type
 
-1. จัดกลุ่มตาม category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
-2. จัดลำดับตาม impact: Breaking Changes, New Features, Bug Fixes, Security
-3. ระบุ libraries ที่ต้องอัปเดตด่วน (security patches, breaking changes)
-4. ระบุ libraries ที่มี major version bump และต้อง migration
+1. Group by category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
+2. Order by impact: Breaking Changes, New Features, Bug Fixes, Security
+3. Identify libraries needing urgent updates (security patches, breaking changes)
+4. Identify libraries with major version bumps that require migration
 
 ### 5. Compile Report
 
-> Goal: สร้างรายงานอัปเดตรายสัปดาห์
+> Goal: Build the weekly update report
 
-1. ทำ `/report` สร้างตารางอัปเดต
-2. กำหนด columns: No., Library, Category, Current Version, Latest Version, Impact, Summary
-3. จัดกลุ่มตาม category และจัดลำดับตาม impact
-4. เพิ่ม summary สั้นๆ สำหรับแต่ละอัปเดต
-5. ทำ `/report` สร้าง executive summary พร้อม top highlights
+1. Run `/report` to build the update table
+2. Define columns: No., Library, Category, Current Version, Latest Version, Impact, Summary
+3. Group by category and order by impact
+4. Add a short summary for each update
+5. Run `/report` to build the executive summary with top highlights
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (my tech stack update)
+> Goal: report easy to read, key findings summarized at the top, leading to action (my tech stack update)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (my tech stack update)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (my tech stack update)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (my tech stack update)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings at the top before details (my tech stack update)
+2. Use `/report` for comparison tables with multiple columns (my tech stack update)
+3. Use `/report` for status/progress/logs reports
+4. Use the "No." column as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (my tech stack update)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always run `/suggest-next-action` at the end of the report
 
 ### 1. Update Categories
 
-- Breaking Changes: อัปเดตที่อาจกระทบการใช้งานปัจจุบัน ต้อง migration
-- New Features: ฟีเจอร์ใหม่ที่น่าสนใจ
-- Bug Fixes: แก้ไขบั๊กที่สำคัญ
-- Security: แก้ไขช่องโหว่ด้านความปลอดภัย
-- จัดลำดับความสำคัญ: Security > Breaking Changes > New Features > Bug Fixes
+- Breaking Changes: updates that may impact current usage and require migration
+- New Features: interesting new features
+- Bug Fixes: important bug fixes
+- Security: security vulnerability fixes
+- Priority order: Security > Breaking Changes > New Features > Bug Fixes
 
 ### 2. Source Selection
 
-- ใช้ `bun outdated` สำหรับ npm packages
-- ใช้ `cargo outdated` สำหรับ Rust crates
-- ใช้ `mcp7_list_releases` สำหรับ GitHub release tracking
-- ใช้ `search_web` สำหรับค้นหา release notes
-- ใช้ `read_url_content` สำหรับอ่าน full changelogs
-- ทำตาม `/deep-review-codebase` สำหรับ tech stack categories
+- Use `bun outdated` for npm packages
+- Use `cargo outdated` for Rust crates
+- Use `mcp7_list_releases` for GitHub release tracking
+- Use `search_web` to find release notes
+- Use `read_url_content` to read full changelogs
+- Follow `/deep-review-codebase` for tech stack categories
 
 ### 3. Freshness Requirements
 
-- ตรวจสอบเฉพาะอัปเดตที่เกิดขึ้นในสัปดาห์นี้หรือสัปดาห์ที่แล้ว
-- ใช้ query ที่ระบุปีและสัปดาห์ เช่น `<library-name> release July 2026`
-- ตรวจสอบ release dates ของทุก item
-- ทำตาม `/deep-research` Rules ข้อ 6 Information Freshness
+- Check only updates that happened this week or last week
+- Use queries that state the year and week, e.g. `<library-name> release July 2026`
+- Verify the release dates of every item
+- Follow `/deep-research` Rules item 6 Information Freshness
 
 ### 4. Report Format
 
-- ใช้ `/report` สำหรับ structured output
-- ตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ทุกแถว
-- จัดกลุ่มตาม category และจัดลำดับตาม impact
-- ใช้ `/report` สำหรับ executive summary
-- สรุป top 5 highlights ของสัปดาห์
+- Use `/report` for structured output
+- The table must have the "No." column first, ordered 1, 2, 3, ... on every row
+- Group by category and order by impact
+- Use `/report` for the executive summary
+- Summarize the top 5 highlights of the week
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- รายงานอัปเดต tech stack ประจำสัปดาห์
-- ข่าวจัดกลุ่มตาม category และจัดลำดับตาม impact
-- Breaking changes และ security updates ถูกระบุชัดเจน
-- Migration guides สำหรับ major version bumps
-- Executive summary พร้อม top highlights
-- สามารถใช้เป็น weekly briefing สำหรับผู้ใช้
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- Weekly tech stack update report
+- News grouped by category and ordered by impact
+- Breaking changes and security updates clearly identified
+- Migration guides for major version bumps
+- Executive summary with top highlights
+- Usable as a weekly briefing for the user
+- Report easy to read with key findings at the top
+- Clear next action

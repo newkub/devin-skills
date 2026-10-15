@@ -1,6 +1,6 @@
 ---
 name: report-public-api
-description: รายงาน public API ของ project หรือ library ในรูปแบบ markdown table
+description: Report the public API of a project or library as a markdown table
 argument-hint: "[scope]"
 related:
   - scan-codebase
@@ -10,52 +10,52 @@ related:
 
 ## Goal
 
-วิเคราะห์และรายงาน public API (exports, functions, types, classes) ของ project หรือ library ให้ชัดเจน
+Analyze and report clearly the public API (exports, functions, types, classes) of a project or library
 
 ## Scope
 
-ใช้สำหรับ library, package, หรือ module ที่ต้องการสรุป public surface
+For libraries, packages, or modules that need a public surface summary
 
 ## Execute
 
 ### 1. Collect Public API
 
-> Goal: หา exports ทั้งหมดที่ public
+> Goal: Find all public exports
 
-1. ทำ `/scan-codebase` หรือ `/check-code-structure` เพื่อหา exports
-2. อ่าน barrel files (`index.ts`, `index.js`, `mod.rs`, `lib.rs`)
-3. แยกประเภท: function, class, type, interface, constant, enum, macro
-4. ระบุ module/file ที่ export แต่ละตัว
+1. Run `/scan-codebase` or `/check-code-structure` to find exports
+2. Read barrel files (`index.ts`, `index.js`, `mod.rs`, `lib.rs`)
+3. Classify: function, class, type, interface, constant, enum, macro
+4. State the module/file exporting each one
 
 ### 2. Classify API
 
-> Goal: จัดกลุ่ม public API
+> Goal: Group the public API
 
-1. จัดกลุ่มตาม domain/module
-2. ระบุ stability: stable, experimental, deprecated
-3. ระบุ required parameters และ return type ถ้ามี
+1. Group by domain/module
+2. State stability: stable, experimental, deprecated
+3. State required parameters and return type when present
 
 ### 3. Report With Markdown Table
 
-> Goal: สร้างรายงาน public API
+> Goal: Build the public API report
 
-1. ใช้ `/report` แสดง:
+1. Use `/report` to show:
    - `| API | Type | Module | Description | Stability |`
-2. กลุ่มตาม domain ด้วย heading `## <domain>`
-3. สรุปจำนวน public API, breaking changes, deprecations
+2. Group by domain with a `## <domain>` heading
+3. Summarize the public API count, breaking changes, and deprecations
 
 ## Rules
 
-- แสดงเฉพาะ public exports ไม่รวม internal
-- ใช้ backticks ครอบชื่อ API
-- ระบุ stability อย่างชัดเจน
-- ไม่ต้องสร้างไฟล์แยกถ้า user ไม่ต้องการ
+- Show only public exports, never internals
+- Wrap API names in backticks
+- State stability explicitly
+- Do not create separate files unless the user wants them
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ตาราง public API ครบถ้วน
-- จัดกลุ่มตาม domain
-- ระบุ stability และ description
-- ใช้ `/report` เป็นหลัก
+- A complete public API table
+- Grouped by domain
+- Stability and description stated
+- `/report` as the primary tool

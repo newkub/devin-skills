@@ -1,6 +1,6 @@
 ---
 name: report-health-repo
-description: สร้าง health scorecard ต่อ repo — hygiene, deps, CI, activity และ risks รวมตารางเดียว
+description: Build a per-repo health scorecard — hygiene, deps, CI, activity, and risks in one table
 argument-hint: "[repo-or-all]"
 related:
   - resolve-errors
@@ -17,21 +17,21 @@ related:
 
 ## Goal
 
-สร้าง health scorecard ของ repository — รวม signals จากหลาย checks (hygiene, dependencies, CI, activity, security) เป็นคะแนน/grade เดียวที่เทียบข้าม repos ได้
+Build a health scorecard of a repository — combining signals from multiple checks (hygiene, dependencies, CI, activity, security) into a single score/grade comparable across repos
 
 ## Scope
 
-- Composite read-only: เรียก check/list skills ที่มีแล้ว aggregate เป็น scorecard
-- ครอบคลุม: repo essentials, dependency health, CI status, commit activity, security signals, open issues/PRs
-- ใช้ต่อ repo เดียวหรือ sweep ทุก repos (เช่น ใน drive D)
+- Composite read-only: call existing check/list skills and aggregate them into a scorecard
+- Covers: repo essentials, dependency health, CI status, commit activity, security signals, open issues/PRs
+- Use on a single repo or sweep all repos (e.g. in drive D)
 
 ## Execute
 
 ### 1. Collect Signals
 
-> Goal: เก็บ health signals ต่อ repo
+> Goal: Collect the health signals per repo
 
-1. Hygiene: ตรวจ repo essentials — LICENSE, README, SECURITY.md, CODEOWNERS, `.github/` templates
+1. Hygiene: check repo essentials — LICENSE, README, SECURITY.md, CODEOWNERS, `.github/` templates
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
 3. CI: `/resolve-github-actions-fails` — latest run status, failure rate
 4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
@@ -39,62 +39,62 @@ related:
 
 ### 2. Score Dimensions
 
-> Goal: ให้คะแนนแต่ละมิติ
+> Goal: Score each dimension
 
 | Dimension | Weight | Signal |
 |---|---|---|
-| Hygiene | 20% | essential files ครบ |
+| Hygiene | 20% | essential files complete |
 | Dependencies | 20% | vulns + outdated % |
 | CI Health | 20% | latest status + fail rate |
 | Activity | 15% | recency + consistency |
 | Security | 15% | secrets leak, audit, branch protection |
 | Cleanliness | 10% | uncommitted work, stale branches |
 
-3. คะแนน 0-100 ต่อ dimension → overall grade A-F
+3. Score 0-100 per dimension → overall grade A-F
 
 ### 3. Report Scorecard
 
-> Goal: ตารางเทียบข้าม repos
+> Goal: Table comparable across repos
 
-1. ทำ `/report table` คอลัมน์: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
-2. ใช้ status symbols: `✅ pass`, `⚠️ warning`, `❌ fail`, `ℹ️ n/a`
-3. Per-repo detail: top issues ที่กดคะแนน
-4. สรุป: repos ที่ต้อง attention เรียงตาม grade
-5. ถ้ามีหลาย repo/round ให้ทำ `/report-progress`
+1. Run `/report table` with columns: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
+2. Use status symbols: `✅ pass`, `⚠️ warning`, `❌ fail`, `ℹ️ n/a`
+3. Per-repo detail: top issues dragging the score down
+4. Summary: repos needing attention, ordered by grade
+5. If there are multiple repos/rounds, run `/report-progress`
 
 ### 4. Recommend
 
-> Goal: actions ต่อ repo
+> Goal: Actions per repo
 
-1. ระบุ quick wins ต่อ repo (เช่น เพิ่ม LICENSE, enable CI, ลบ stale branches)
-2. flag repos ที่ควร archive หรือ revive
-3. เชื่อมไป skills ที่เกี่ยว: `/deep-review-codebase`
-4. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/apply` mode `validate`
-5. ทำ `/suggest-next-action`
+1. Identify quick wins per repo (e.g. add LICENSE, enable CI, delete stale branches)
+2. Flag repos that should be archived or revived
+3. Link to related skills: `/deep-review-codebase`
+4. If multiple fixes must be applied safely → recommend `/apply` mode `validate`
+5. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Evidence-Based
 
-- ทุกคะแนนมี signal จริงรองรับ — ไม่ให้คะแนนจากความรู้สึก
-- ถ้า signal ไม่มี (ไม่มี CI) → `n/a` ไม่ใช่ 0
+- Every score backed by a real signal — no scoring on feeling
+- If a signal is absent (no CI) → `n/a`, not 0
 
 ### 2. Comparable
 
-- scoring rubric เดียวกันทุก repo — เทียบข้ามได้
-- weights ระบุชัดเจนและปรับได้
+- Same scoring rubric for every repo — comparable across repos
+- Weights stated clearly and adjustable
 
 ### 3. Read-Only
 
-- ไม่แก้อะไร — รายงาน+แนะนำเท่านั้น
-- ไม่รัน checks ที่หนัก (audit ใหญ่) ถ้าไม่จำเป็นต่อ scorecard
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Change nothing — report + recommend only
+- Do not run heavy checks (big audit) unless needed for the scorecard
+- Use /resolve-errors if needed
 
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- Scorecard ต่อ repo พร้อม grades ที่เทียบกันได้
-- Top issues และ quick wins ต่อ repo
-- ภาพรวมว่า repos ไหนต้อง attention
+- Per-repo scorecard with comparable grades
+- Top issues and quick wins per repo
+- Overall picture of which repos need attention

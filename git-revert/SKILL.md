@@ -1,6 +1,6 @@
 ---
 name: git-revert
-description: Revert commits อย่างปลอดภัยด้วย inverse commit ใหม่ — ไม่ rewrite history
+description: Safely revert commits with a new inverse commit — no history rewrite
 argument-hint: "[sha|range|merge-sha]"
 related:
   - git-commit
@@ -14,59 +14,59 @@ related:
 
 ## Goal
 
-ย้อนผลของ commit(s) ด้วย `git revert` — สร้าง inverse commit ใหม่แทนการ rewrite history ปลอดภัยสำหรับ commits ที่ push แล้ว
+Undo the effect of commit(s) with `git revert` — create a new inverse commit instead of rewriting history, safe for commits already pushed
 
 ## Scope
 
-- revert commit เดียว, range ของ commits หรือ merge commit
-- ใช้เมื่อต้องย้อน change ที่ push ไปแล้ว — ถ้ายังไม่ push และต้องการลบ commit จริง → พิจารณา `/restore-files` หรือ reset (ต้อง confirm)
-- ไม่ครอบคลุมการย้อน uncommitted changes — ใช้ `/git-restore` แทน
+- revert a single commit, a range of commits, or a merge commit
+- use when a pushed change must be undone — if not yet pushed and the commit should really be removed → consider `/restore-files` or reset (requires confirmation)
+- does not cover undoing uncommitted changes — use `/git-restore` instead
 
 ## Execute
 
 ### 1. Identify Target
 
-> Goal: หา commit(s) ที่จะ revert ชัดเจน
+> Goal: clearly identify the commit(s) to revert
 
-1. ถ้า user ให้ sha/range → ใช้ตรงๆ; ถ้าไม่ → ทำ `/check-git-logs` หา commit เป้าหมาย
-2. ดูเนื้อหาด้วย `git show <sha>` — ยืนยันว่าเป็น change ที่ต้องย้อนจริง
-3. ตรวจว่า commit เป็น merge commit หรือไม่ (`git show` ดู `Merge:` header) และว่า commits ถัดมาแตะไฟล์เดียวกันหรือไม่ (conflict risk)
+1. if the user gives a sha/range → use it directly; otherwise → run `/check-git-logs` to find the target commit
+2. review the content with `git show <sha>` — confirm it is really the change to undo
+3. check whether the commit is a merge commit (look at the `Merge:` header in `git show`) and whether later commits touched the same files (conflict risk)
 
 ### 2. Dry-Run Preview
 
-> Goal: รู้ผลลัพธ์ก่อนเขียน commit ใหม่
+> Goal: know the outcome before writing the new commit
 
-1. `git revert --no-commit <sha>` แล้ว `git diff --cached` ดู inverse change
-2. ถ้า conflict → `git revert --abort` แล้ววางแผนใหม่ หรือ resolve ตาม step 3
-3. `git reset` เพื่อล้าง staged state หลัง preview (ถ้ายังไม่พร้อม commit)
+1. `git revert --no-commit <sha>` then `git diff --cached` to see the inverse change
+2. if it conflicts → `git revert --abort`, then re-plan or resolve per step 3
+3. `git reset` to clear the staged state after previewing (if not ready to commit)
 
 ### 3. Revert
 
-> Goal: สร้าง inverse commit ที่ถูกต้อง
+> Goal: create a correct inverse commit
 
-1. commit เดียว: `git revert <sha>` — message auto-generated, แก้ได้ตาม conventional commits ของ project
-2. range: `git revert <oldest>^..<newest>` หรือ `--no-commit` ทีละตัวแล้ว squash message เดียวถ้าเป็น change ชุดเดียว
-3. merge commit: `git revert -m 1 <merge-sha>` (parent 1 = mainline) — ระบุ mainline ให้ถูก ไม่เดา
-4. ถ้า conflict: แก้ไฟล์, `git add`, `git revert --continue` — ยกเลิกด้วย `git revert --abort` เสมอได้
+1. single commit: `git revert <sha>` — auto-generated message, editable to match the project's conventional commits
+2. range: `git revert <oldest>^..<newest>` or `--no-commit` one by one then a single squashed message if it is one change set
+3. merge commit: `git revert -m 1 <merge-sha>` (parent 1 = mainline) — specify the mainline correctly, never guess
+4. if it conflicts: fix the files, `git add`, `git revert --continue` — `git revert --abort` always works to cancel
 
 ### 4. Verify And Report
 
-> Goal: working tree กลับสู่ state ก่อน commit นั้น และ build ผ่าน
+> Goal: the working tree is back to the state before that commit and the build passes
 
-1. `git show HEAD` ตรวจ inverse diff; เทียบ tree กับ `git diff <sha>^ HEAD` ถ้า revert ล่าสุดพอดี
-2. ทำ `/run-check` — revert ทำให้ build/test แตกได้ (commits ถัดมาอาจพึ่ง code ที่ถูกย้อน)
-3. รายงานด้วย `/report`: commits ที่ revert, conflicts, ไฟล์ที่แตะ
+1. `git show HEAD` to check the inverse diff; compare the tree with `git diff <sha>^ HEAD` if this was the latest revert
+2. run `/run-check` — a revert can break build/tests (later commits may depend on the reverted code)
+3. report via `/report`: reverted commits, conflicts, files touched
 
 ## Rules
 
-- ห้าม `git reset`/`rebase` เพื่อย้อน commits ที่ push ไปแล้ว — ใช้ revert เสมอ (history เป็น public)
-- merge commit ต้อง `-m 1` (หรือ parent ที่ถูกต้อง) — ห้าม revert merge โดยไม่ระบุ parent
-- revert commits ถัดกันหลายตัว → revert จากใหม่ไปเก่าเพื่อลด conflicts
-- ถ้า revert แตก test/build → ทำ `/resolve-errors` — ห้าม commit revert ที่ทำให้ main พังเงียบๆ
-- revert ของ revert = re-apply — ถ้าจะนำ change กลับมา ให้ revert ตัว revert commit ไม่ cherry-pick เดิมซ้ำ
-- ใช้ /resolve-errors ถ้าจำเป็น
+- never `git reset`/`rebase` to undo commits already pushed — always use revert (history is public)
+- merge commits need `-m 1` (or the correct parent) — never revert a merge without specifying the parent
+- reverting several consecutive commits → revert newest to oldest to reduce conflicts
+- if the revert breaks tests/build → run `/resolve-errors` — never commit a revert that silently breaks main
+- revert of a revert = re-apply — if the change should come back, revert the revert commit, do not re-cherry-pick the original
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Inverse commit(s) ถูกสร้าง — history เส้นตรงไม่ถูก rewrite
-- Working tree กลับไป state ก่อน change เป้าหมาย และผ่าน `/run-check`
+- inverse commit(s) created — the linear history is not rewritten
+- working tree back to the state before the target change, passing `/run-check`

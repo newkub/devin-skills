@@ -1,6 +1,6 @@
 ---
 name: report
-description: "เลือก format รายงานทีเหมาะสม: table หรือ numbered list"
+description: "Pick the fitting report format: table or numbered list"
 argument-hint: "[scope]"
 related:
   - report-todo
@@ -12,13 +12,13 @@ related:
 
 ## Goal
 
-เลือกและ execute format รายงานทีเหมาะสมกับ context
+Select and execute the report format that fits the context
 
 ## Scope
 
-ใช้สำหรับรายงานผลในแชท โดย `/report` จะ dispatch ไปยัง `report-table` หรือ `report-numbered` ตามประเภทข้อมูล
+Used for reporting results in chat; `/report` dispatches to `report-table` or `report-numbered` based on the data type
 
-- รวม capability จาก skills เดิมที่ถูกย้ายเข้า workflows
+- Merged capability from the original skills that were moved into workflows
 
 ## Execute
 
@@ -26,58 +26,58 @@ related:
 
 | Domain      | Workflow |
 |-------------|----------|
-| `table`     | `## Merged Details → table` — ตอบเป็นตารางพร้อมคอลัมน์ `No.` เรียงลำดับ |
-| `html`      | `## Merged Details → html` — ไฟล์ HTML ไฟล์เดียวโต้ตอบได้บน browser |
-| `numbered`  | `## Merged Details → numbered` — numbered list เรียงลำดับความสำคัญ |
-| `codeblock` | `## Merged Details → codeblock` — code blocks สำหรับ commands, snippets, config, logs, diff |
+| `table`     | `## Merged Details → table` — reply as a table with a `No.` column, ordered |
+| `html`      | `## Merged Details → html` — single interactive HTML file in the browser |
+| `numbered`  | `## Merged Details → numbered` — numbered list sorted by priority |
+| `codeblock` | `## Merged Details → codeblock` — code blocks for commands, snippets, config, logs, diff |
 
 ### 1. Select Format
 
-> Goal: เลือกรูปแบบรายงาน
+> Goal: Pick the report format
 
-1. ถ้าข้อมูลเหมาะกับตารางหลาย columns → ใช้ `/report table`
-2. ถ้าข้อมูลเหมาะกับลำดับ steps/priority → ใช้ `/report numbered`
-3. ถ้าเป็น action plan จาก chat โดยยังไม่ลงมือ → ใช้ `/report-todo`
-4. ถ้าเป็น commands, code snippets, config, logs, diff → ใช้ `/report codeblock`
-5. ถ้าเป็น progress/status → ใช้ `/report-progress`
-6. ถ้าเป็น TODO markers → อ่าน `TODO.md` + ใช้ `/scan-codebase` หา `TODO`/`FIXME`/`HACK` markers แล้ว report table
+1. If the data suits a multi-column table → use `/report table`
+2. If the data suits steps/priority ordering → use `/report numbered`
+3. If it is an action plan from chat not yet executed → use `/report-todo`
+4. If it is commands, code snippets, config, logs, diff → use `/report codeblock`
+5. If it is progress/status → use `/report-progress`
+6. If it is TODO markers → read `TODO.md` + use `/scan-codebase` to find `TODO`/`FIXME`/`HACK` markers, then report table
 
 ### 2. Execute Selected Skill
 
-> Goal: รายงานตาม format
+> Goal: Report in the chosen format
 
-1. ส่งข้อมูลให้ skill ทีเลือก
-2. ตรวจ output ว่าตรง format
-3. ถ้าจำเป็น ใช้ `/deep-review-codebase`
+1. Pass the data to the selected skill
+2. Check that the output matches the format
+3. If needed, use `/deep-review-codebase`
 
 ### 3. Apply UX/UI Format
 
-> Goal: ทำให้ report อ่านง่าย
+> Goal: Make the report easy to read
 
-1. ทำตาม `[## Merged Details → `### references/uxui`](## Merged Details → `### references/uxui`)`
-2. ใช้ emoji ตาม legend ทีกำหนด
-3. เรียงลำดับตาม status ให้ `completed` อยู่บนสุด
-4. ไม่ใช้ bold markers
+1. Follow `[## Merged Details → `### references/uxui`](## Merged Details → `### references/uxui`)`
+2. Use emoji per the defined legend
+3. Sort by status with `completed` on top
+4. Do not use bold markers
 
 ### 4. Finalize
 
-> Goal: สรุปและชี้ next action
+> Goal: Summarize and point to the next action
 
-1. ทำ `/suggest-next-action` ถ้ามี next steps
-2. ถ้า output มาจาก `/report-todo` ต้องมีตาราง + สรุป numbered list
+1. Run `/suggest-next-action` if there are next steps
+2. If the output came from `/report-todo`, it must include a table + numbered summary
 
 ## Rules
 
-- `/report` ไม่ใช่รายงานเอง แต่ dispatch ไปยัง format ย่อย
-- ใช้ `/report table` เมื่องานมี comparison/status หลาย columns
-- ใช้ `/report numbered` เมื่องานเน้นลำดับ steps
-- ใช้ `/report-todo` เมื่องานยังไม่ลงมือ ต้องการ action plan
-- ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
-- ทุก report ต้องสรุป key findings ด้านบน
-- ใช้ emoji ตาม legend ใน `## Merged Details → references/uxui`
-- ไม่ใช้ bold markers
+- `/report` does not write the report itself — it dispatches to a sub-format
+- Use `/report table` when the work has comparison/status across multiple columns
+- Use `/report numbered` when the work emphasizes step order
+- Use `/report-todo` when the work has not started and needs an action plan
+- Every table must have the `No.` column first
+- Every report must summarize key findings at the top
+- Use emoji per the legend in `## Merged Details → references/uxui`
+- Do not use bold markers
 
-- ทุก report ของ review findings ส่งออกผ่าน `/report-review` — ตารางเดียวในแชท (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status) ไม่สร้างไฟล์รายงาน
+- Every report of review findings goes out via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Merged Details
 
@@ -85,12 +85,12 @@ related:
 
 ##### Goal
 
-ตอบในแชทเป็น code block เพื่อเน้น commands, code snippets, config, logs หรือ output ทีต้อง copy-paste ได้
+Reply in chat as a code block to highlight commands, code snippets, config, logs, or output that must be copy-pasteable
 
 ##### Scope
 
-ใช้เมื่อข้อมูลเหมาะกับ code block มากกวาตารางหรือ numbered list เช่น:
-- commands หรือ scripts
+Use when the data suits a code block better than a table or numbered list, e.g.:
+- commands or scripts
 - code snippets
 - config files
 - error logs
@@ -100,404 +100,404 @@ related:
 
 ###### 1. Select Code Block Type
 
-> Goal: เลือก language/annotation ทีเหมาะสม
+> Goal: Pick the fitting language/annotation
 
-1. ถ้าเป็น shell command → ใช้ `bash` หรือ `powershell`
-2. ถ้าเป็น code snippet → ใช้ language ทีตรง เช่น `typescript`, `rust`, `python`
-3. ถ้าเป็น config → ใช้ `json`, `toml`, `yaml`, `kdl`
-4. ถ้าเป็น log → ใช้ `text`
-5. ถ้าเป็น diff → ใช้ `diff`
+1. Shell command → use `bash` or `powershell`
+2. Code snippet → use the matching language, e.g. `typescript`, `rust`, `python`
+3. Config → use `json`, `toml`, `yaml`, `kdl`
+4. Log → use `text`
+5. Diff → use `diff`
 
 ###### 2. Add Context Header
 
-> Goal: บอกว่า code block นี้คืออะไร
+> Goal: Say what this code block is
 
-1. ก่อน code block ใส่ heading หรือสั้น ๆ บอกว่าเป็นส่วนไหน
-2. ถ้ามีหลาย block ให้แยกเป็นส่วน ๆ พร้อม `###` หรือ short description
+1. Before the code block, add a heading or a short note on which part it belongs to
+2. For multiple blocks, separate them with `###` or a short description
 
 ###### 3. Format Content
 
-> Goal: ทำให้ code block อ่านและ copy ได้ง่าย
+> Goal: Make the code block easy to read and copy
 
-1. ไม่ใส่ line numbers ภายใน code block
-2. ใช้เครื่องหมาย ``` เปิดและปิด
-3. ระบุ language หลัง ```
-4. ถ้ามีหลาย block ให้แยกเป็นส่วน ๆ พร้อมสั้น ๆ ข้างบน
-5. ถ้ามีคำอธิบายเพิ่มเติม ใส่นอก code block
+1. Do not put line numbers inside the code block
+2. Use ``` to open and close
+3. State the language after ```
+4. For multiple blocks, separate them with a short label above each
+5. Put any extra explanation outside the code block
 
 ###### 4. Validate
 
-> Goal: ตรวจคุณภาพก่อนส่ง
+> Goal: Check quality before sending
 
-1. ตรวจ syntax ถูกต้องตาม language ทีระบุ
-2. ตรวจว่า code block อ่านง่ายบนทุก device
-3. ถ้ามี commands ให้ระบุ dry run ก่อน execute
+1. Check syntax correctness for the stated language
+2. Check that the code block reads well on every device
+3. If there are commands, state a dry run before execute
 
 ##### Rules
 
-- ใช้ code block เมื่องานเหมาะกับ copy-paste หรือ syntax highlighting
-- ถ้าต้องการรายงานหลาย columns ให้ใช้ `/report` หรือ `/report table`
-- ถ้าต้องการรายงานหลาย code blocks คู่กับ table ให้ใช้ `/report table`
-- ระบุ language หลังเครื่องหมาย ```
-- ไม่ใช้ bold markers ภายใน code block
-- ถ้ามีหลาย block ให้ใช้ `###` หรือสั้น ๆ แยก
-- ตอบในแชทเท่านั้น
+- Use a code block when the work suits copy-paste or syntax highlighting
+- If a multi-column report is needed, use `/report` or `/report table`
+- If multiple code blocks paired with a table are needed, use `/report table`
+- State the language after the ``` marker
+- Do not use bold markers inside a code block
+- For multiple blocks, separate with `###` or a short label
+- Reply in chat only
 
 ##### Expected Outcome
 
-- Code block ทีระบุ language ถูกต้อง
-- เนื้อหาอ่านง่ายและ copy ได้
-- สั้น ๆ ชัดเจน ไม่ยาวเกินจำเป็น
+- Code blocks with the language correctly declared
+- Content readable and copyable
+- Short and clear, never longer than necessary
 
 ### html
 
 ##### Goal
 
-สร้างไฟล์ HTML ไฟล์เดียวที่นำเสนอผลการวิเคราะห์โปรเจกต์, การวิเคราะห์ หรือแผนฟีเจอร์บนเบราว์เซอร์ รายงานรองรับตารางแบบโต้ตอบได้ พร้อม sort, filter, group, search และ dropdown รายแถว รวมถึงการสลับธีมและเมนูนำทางแบบ sticky
+Create a single HTML file that presents project analysis, analysis results, or a feature plan in the browser. The report supports interactive tables with sort, filter, group, search, and per-row dropdowns, plus theme switching and a sticky navigation menu
 
 ##### Scope
 
-- สร้างไฟล์ `.html` ไฟล์เดียวที่พึ่งพาตัวเองได้ โดยไม่ต้อง build
-- ใช้ Tailwind CSS ผ่าน CDN และอาจใช้ Vue 3 สำหรับการโต้ตอบ
-- รวมตารางที่สามารถ sort, filter, group และ search ได้
-- แต่ละแถวของตารางสามารถขยายเป็น dropdown พร้อมคอลัมน์เพิ่มเติมได้
-- เนื้อหาเนื้อหารายงานเป็นภาษาอังกฤษ; เนื้อหาในเซลล์ตารางอาจใช้ภาษาของโปรเจกต์
+- Create a single self-contained `.html` file that needs no build
+- Use Tailwind CSS via CDN and optionally Vue 3 for interactivity
+- Include tables that can sort, filter, group, and search
+- Each table row can expand into a dropdown with additional columns
+- Report body content is in English; table cell content may use the project's language
 
 ##### Execute
 
 ###### 1. Prepare Data
 
-> Goal: มีข้อมูลที่สะอาดและมีโครงสร้างก่อนเรนเดอร์
+> Goal: Have clean structured data before rendering
 
-1. รัน `/deep-analyze` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea-features`)
-2. แปลงผลลัพธ์เป็น JavaScript array ของ objects หรือ 2D arrays
-3. ตรวจสอบให้แต่ละแถวมี `id` ที่ไม่ซ้ำและครบทุกฟิลด์ที่จำเป็น
-4. เพิ่มฟิลด์คำนวณสำหรับ `group` และ `searchText` หากจำเป็น
+1. Run `/deep-analyze` or the primary skill that produces the data (e.g. `/idea-features`)
+2. Convert the result into a JavaScript array of objects or 2D arrays
+3. Ensure each row has a unique `id` and all required fields
+4. Add computed `group` and `searchText` fields if needed
 
 ###### 2. Build HTML Shell
 
-> Goal: ไฟล์เดียวที่โหลด assets ทั้งหมดจาก CDN
+> Goal: One file that loads all assets from CDN
 
-1. ใช้ `<!DOCTYPE html>`, `<html lang="en">`, `<meta charset="UTF-8">`
-2. โหลด Tailwind CSS: `https://cdn.tailwindcss.com`
-3. สำหรับโหมดโต้ตอบ โหลด Vue 3: `https://unpkg.com/vue@3/dist/vue.global.js`
-4. ตั้งค่า `tailwind.config = { darkMode: 'class' }`
-5. สร้าง `<div id="app">` และบล็อก `<script>` โดยใช้ `Vue.createApp`
+1. Use `<!DOCTYPE html>`, `<html lang="en">`, `<meta charset="UTF-8">`
+2. Load Tailwind CSS: `https://cdn.tailwindcss.com`
+3. For interactive mode load Vue 3: `https://unpkg.com/vue@3/dist/vue.global.js`
+4. Set `tailwind.config = { darkMode: 'class' }`
+5. Create `<div id="app">` and a `<script>` block using `Vue.createApp`
 
 ###### 3. Add Header And Theme Toggle
 
-> Goal: ส่วนหัวชัดเจนพร้อมโหมดมืด/สว่าง
+> Goal: Clear header with dark/light mode
 
-1. แสดงชื่อรายงานและคำบรรยายสั้นๆ
-2. เพิ่มปุ่มสลับธีมที่สลับคลาส `dark` บน `<html>`
-3. บันทึกการตั้งค่าใน `localStorage`
-4. อ่าน `prefers-color-scheme` เมื่อโหลด
-5. ใช้ตัวบ่งชี้สถานะที่ชัดเจน (เช่น badge หรือ icon) สำหรับประเภทรายงาน
+1. Show the report title and a short description
+2. Add a theme toggle button that switches the `dark` class on `<html>`
+3. Persist the preference in `localStorage`
+4. Read `prefers-color-scheme` on load
+5. Use clear status indicators (e.g. badge or icon) for the report type
 
 ###### 4. Add Sticky Tabs And Key Findings
 
-> Goal: เมนูนำทางระดับบนและสรุป
+> Goal: Top-level navigation and summary
 
-1. สร้างแถบแท็บแบบ sticky ด้วย `position: sticky; top: 0`
-2. ใช้ `backdrop-blur` และพื้นหลังที่ตัดกัน
-3. แท็บแรกแสดงการ์ด `Key Findings` ในกริดแบบ responsive
-4. แต่ละแท็บมี badge แสดงจำนวนรายการ
-5. ใช้ลำดับชั้นภาพที่ชัดเจน: title > subtitle > key findings > tabs
+1. Create a sticky tab bar with `position: sticky; top: 0`
+2. Use `backdrop-blur` and a contrasting background
+3. The first tab shows `Key Findings` cards in a responsive grid
+4. Each tab has a badge showing its item count
+5. Use a clear visual hierarchy: title > subtitle > key findings > tabs
 
 ###### 5. Build Interactive Table
 
-> Goal: ตารางรองรับการโต้ตอบที่หลากหลาย
+> Goal: The table supports varied interaction
 
-1. เรนเดอร์ตารางจาก data array โดยใช้ `v-for`
-2. เพิ่มช่อง search ผูกด้วย `v-model`
-3. เพิ่ม filter chips สำหรับ `Priority`, `Impact`, `Phase`, `Effort`
-4. เพิ่มตัวควบคุม sort บนส่วนหัวคอลัมน์ (คลิกเพื่อสลับ asc/desc)
-5. เพิ่มตัวเลือก group by (เช่น group by `Phase` หรือ `Priority`)
-6. เพิ่มปุ่ม `Clear` เมื่อมี filter ที่ใช้งานอยู่
-7. แสดงสถานะว่าง `No results` เมื่อ filter ส่งกลับศูนย์แถว
-8. ใช้ computed `filteredRows` สำหรับ sort/filter/group/search
+1. Render the table from the data array using `v-for`
+2. Add a search box bound with `v-model`
+3. Add filter chips for `Priority`, `Impact`, `Phase`, `Effort`
+4. Add sort controls on column headers (click to toggle asc/desc)
+5. Add a group-by option (e.g. group by `Phase` or `Priority`)
+6. Add a `Clear` button when filters are active
+7. Show a `No results` empty state when filters return zero rows
+8. Use a computed `filteredRows` for sort/filter/group/search
 
 ###### 6. Add Per-Row Dropdown
 
-> Goal: แต่ละแถวสามารถขยายเพื่อแสดงรายละเอียดเพิ่มเติมได้
+> Goal: Each row can expand to show more detail
 
-1. เพิ่มลูกศรขยาย/ยุบบนแต่ละแถว
-2. เมื่อขยาย ให้แสดงพาเนล dropdown ด้านล่างแถว
-3. Dropdown มีอย่างน้อยสองคอลัมน์ (เช่น `UX/UI Sketch` และ `Plan`)
-4. เนื้อหากระชับ; ใช้ `pre` หรือ `ul` สำหรับ sketches และ plans
-5. ขยายได้ครั้งละหนึ่งแถวหากช่วยให้ UX ดีขึ้น
+1. Add an expand/collapse arrow on each row
+2. When expanded, show a dropdown panel below the row
+3. The dropdown has at least two columns (e.g. `UX/UI Sketch` and `Plan`)
+4. Keep content concise; use `pre` or `ul` for sketches and plans
+5. Expand only one row at a time if it improves UX
 
 ###### 7. Add Summary And Diagrams
 
-> Goal: ผลการวิเคราะห์ที่ไม่ใช่ตารางก็มองเห็นได้
+> Goal: Non-table analysis results are also visible
 
-1. เพิ่มส่วนสรุปสำหรับ DB/Files, API/Functions, Components
-2. เพิ่ม UX/UI sketch และ architecture diagram แบบข้อความ
-3. เก็บ diagrams ในบล็อก `<pre>` พร้อมฟอนต์ monospace
-4. ใช้การ์ดและกริดสำหรับสรุป ไม่ใช่แค่ลิสต์ธรรมดา
+1. Add a summary section for DB/Files, API/Functions, Components
+2. Add text-based UX/UI sketches and an architecture diagram
+3. Keep diagrams in `<pre>` blocks with a monospace font
+4. Use cards and grids for summaries, not plain lists
 
 ###### 8. Add Next Action
 
-> Goal: รายงานจบด้วยข้อแนะนำที่ชัดเจน
+> Goal: The report ends with a clear recommendation
 
-1. เพิ่มส่วน `Next Action` ที่ด้านล่าง
-2. ใช้ลิสต์แบบลำดับเลขหรือ bullet
-3. อ้างอิงรายการที่มีความสำคัญสูงสุดด้วย `#`
-4. ตกแต่ง next action ด้วยพื้นหลังหรือขอบที่โดดเด่น
+1. Add a `Next Action` section at the bottom
+2. Use a numbered or bulleted list
+3. Reference the highest-importance items with `#`
+4. Style the next action with a standout background or border
 
 ###### 9. Open In Browser
 
-> Goal: ตรวจสอบว่ารายงานเรนเดอร์ถูกต้อง
+> Goal: Verify the report renders correctly
 
-1. บันทึกไฟล์ใน `reports/<report-name>.html` หรือ `.devin/temp/report/<workspace>/<report-name>.html`
-2. รัน `/open-web` หรือ `Start-Process <path>` เพื่อเปิดในเบราว์เซอร์
-3. ยืนยันว่าแท็บ, ธีม, sort, filter, dropdown ทำงานได้
+1. Save the file under `reports/<report-name>.html` or `.devin/temp/report/<workspace>/<report-name>.html`
+2. Run `/open-web` or `Start-Process <path>` to open it in the browser
+3. Confirm tabs, theme, sort, filter, and dropdowns work
 
 ##### Rules
 
 ###### 1. Single Self-Contained File
 
-- ไม่มี build step ไม่มีการติดตั้ง package ภายนอก
-- JS/CSS ทั้งหมดโหลดจาก CDN
-- ข้อมูลฝังอยู่ใน `<script>`
-- ขนาดไฟล์ต่ำกว่า 500 KB หากเป็นไปได้
+- No build step and no external package installation
+- All JS/CSS loaded from CDN
+- Data embedded in `<script>`
+- File size under 500 KB where possible
 
 ###### 2. Report Body Language
 
-- ส่วนหัว, ผลการวิเคราะห์, สรุป, diagrams และ next action เป็นภาษาอังกฤษ
-- เนื้อหาในเซลล์ตารางอาจเป็นภาษาของโปรเจกต์ (เช่น ไทย)
-- ห้ามผสมภาษาในย่อหน้าเดียวกัน
+- Headers, analysis results, summaries, diagrams, and next actions are in English
+- Table cell content may stay in the project's language (e.g. Thai)
+- Never mix languages within one paragraph
 
 ###### 3. Table Interactivity
 
-- ค้นหาด้วยข้อความในทุกคอลัมน์ที่มองเห็น
-- Filter ตาม `Priority`, `Impact`, `Phase`, `Effort`, `Difficult`
-- Sort ตามคอลัมน์ใดก็ได้ (สลับ asc/desc)
-- จัดกลุ่มแถวตามคอลัมน์ที่เลือก
-- ปุ่มล้าง filters
-- ไฮไลต์สถานะ filter/sort ที่ใช้งานอยู่
-- แสดงสถานะว่างเมื่อไม่มีแถวที่ตรง
+- Text search across all visible columns
+- Filter by `Priority`, `Impact`, `Phase`, `Effort`, `Difficult`
+- Sort by any column (toggle asc/desc)
+- Group rows by a chosen column
+- A button to clear filters
+- Highlight active filter/sort state
+- Show an empty state when no rows match
 
 ###### 4. Per-Row Dropdown
 
-- แต่ละแถวมีปุ่มขยายหรือแถวที่คลิกได้
-- พาเนลที่ขยายมีอย่างน้อยสองคอลัมน์ที่มีป้ายกำกับ
-- สำหรับผลลัพธ์ของ `/idea-features` คอลัมน์ควรเป็น `UX/UI Sketch` และ `Plan`
-- เนื้อหา dropdown ใช้ข้อความกระชับหรือ code blocks
+- Each row has an expand button or is a clickable row
+- The expanded panel has at least two labeled columns
+- For `/idea-features` output the columns should be `UX/UI Sketch` and `Plan`
+- Dropdown content uses concise text or code blocks
 
 ###### 5. Design Tokens And Visual Hierarchy
 
-- กำหนดชุด design token เล็กๆ ด้วย CSS variables สำหรับสี brand, success, warning, danger และ neutral
-- ใช้สเกลระยะห่างที่สม่ำเสมอ: `4`, `8`, `12`, `16`, `24`, `32`, `48`
-- รักษา font stack: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
-- ใช้ `text-sm` สำหรับตาราง, `text-base` สำหรับเนื้อหา, `text-2xl` สำหรับชื่อหน้า
-- หลีกเลี่ยงใช้สี accent เกิน 6 สี
+- Define a small design-token set with CSS variables for brand, success, warning, danger, and neutral colors
+- Use a consistent spacing scale: `4`, `8`, `12`, `16`, `24`, `32`, `48`
+- Keep the font stack: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+- Use `text-sm` for tables, `text-base` for content, `text-2xl` for page titles
+- Avoid more than 6 accent colors
 
 ###### 6. UX/UI Improvements
 
-- มุมโค้งมน (`rounded-lg` สำหรับการ์ด, `rounded` สำหรับปุ่ม/badges)
-- เงาเล็กน้อย (`shadow-sm` สำหรับการ์ด, `shadow` สำหรับส่วนหัว sticky)
-- แถบแท็บ sticky พร้อม `backdrop-blur`
-- ส่วนหัวตาราง sticky (`sticky top-0 z-10`) บนตารางกว้าง
-- สถานะ hover ของแถวด้วย `hover:bg-gray-50 dark:hover:bg-gray-700/50`
-- สีแถวสลับเป็นทางเลือก แต่ต้องรักษาความตัดกัน
-- สีสถานะ: แดงสำหรับ high/danger, เหลืองสำหรับ medium/warning, เขียวสำหรับ low/success, น้ำเงินสำหรับ info
-- ใช้ badges/pills สำหรับ `Priority`, `Phase`, `Impact`, `Effort`
-- ส่วนหัวกลุ่มแตกต่างจากแถว (พื้นหลัง + ตัวหนา)
-- การ์ดสรุปในกริดแบบ responsive (`grid-cols-1 md:grid-cols-3`)
+- Rounded corners (`rounded-lg` for cards, `rounded` for buttons/badges)
+- Subtle shadows (`shadow-sm` for cards, `shadow` for the sticky header)
+- Sticky tab bar with `backdrop-blur`
+- Sticky table header (`sticky top-0 z-10`) on wide tables
+- Row hover state with `hover:bg-gray-50 dark:hover:bg-gray-700/50`
+- Alternating row colors are optional but must keep contrast
+- Status colors: red for high/danger, yellow for medium/warning, green for low/success, blue for info
+- Use badges/pills for `Priority`, `Phase`, `Impact`, `Effort`
+- Group headers differ from rows (background + bold)
+- Summary cards in a responsive grid (`grid-cols-1 md:grid-cols-3`)
 
 ###### 7. Responsive And Accessible
 
-- เลื่อนแนวนอนสำหรับตารางกว้าง (`overflow-x-auto`)
-- บนหน้าจอเล็ก ให้เรียง filters และแท็บในแนวตั้ง
-- ใช้ `focus:outline-none focus:ring-2 focus:ring-blue-500` สำหรับองค์ประกอบที่โฟกัสได้
-- ห้ามใช้สีเพียงอย่างเดียวเพื่อสื่อความหมาย; เพิ่มข้อความหรือ icon
-- ใช้ `aria-label` สำหรับปุ่มที่มีเฉพาะ icon
-- เคารพ `prefers-reduced-motion`
-- รับประกันความตัดกันของสีที่เพียงพอทั้งในโหมดสว่างและโหมดมืด
+- Horizontal scroll for wide tables (`overflow-x-auto`)
+- On small screens stack filters and tabs vertically
+- Use `focus:outline-none focus:ring-2 focus:ring-blue-500` for focusable elements
+- Never rely on color alone to convey meaning; add text or an icon
+- Use `aria-label` for icon-only buttons
+- Respect `prefers-reduced-motion`
+- Guarantee sufficient color contrast in both light and dark mode
 
 ###### 8. Empty, Loading, And Error States
 
-- แสดงข้อความ `No results` ที่เป็นมิตรเมื่อ filter ไม่ตรงเลย
-- แสดง fallback `Loading...` ขณะ Vue เริ่มต้น (ใช้ `v-cloak`)
-- จัดปุ่ม `Reset filters` ในสถานะว่าง
-- หากข้อมูลหาย ให้แสดงข้อความชัดเจนแทนตารางที่เสีย
+- Show a friendly `No results` message when filters match nothing
+- Show a `Loading...` fallback while Vue initializes (use `v-cloak`)
+- Include a `Reset filters` action in the empty state
+- If data is missing, show a clear message instead of a broken table
 
 ###### 9. Micro-Interactions
 
-- ไฮไลต์คอลัมน์ sort ที่ใช้งานอยู่
-- แสดง count badge บนแท็บที่ใช้งานอยู่
-- เคลื่อนไหวการขยายแถวด้วย transition `max-height` แบบง่าย (เคารพ `prefers-reduced-motion`)
-- ใช้ hover transitions เล็กน้อยสำหรับปุ่มและแถว
-- แสดง feedback `Copied` หรือ `Saved` สำหรับการ copy/export ใดๆ
+- Highlight the active sort column
+- Show a count badge on the active tab
+- Animate row expansion with a simple `max-height` transition (respect `prefers-reduced-motion`)
+- Use subtle hover transitions for buttons and rows
+- Show `Copied` or `Saved` feedback for any copy/export
 
 ###### 10. Print And Share
 
-- เพิ่มบล็อก CSS ที่เหมาะสำหรับการพิมพ์:
-  - ซ่อนแถบแท็บ sticky, สลับธีม และ filters
-  - ขยายแถว dropdown ทั้งหมดอัตโนมัติ
-  - ใช้ข้อความสีดำบนพื้นหลังสีขาว
-- รักษา URL และ code blocks ให้อ่านได้เมื่อพิมพ์
+- Add a print-friendly CSS block:
+  - Hide the sticky tab bar, theme toggle, and filters
+  - Auto-expand all dropdown rows
+  - Use black text on a white background
+- Keep URLs and code blocks readable when printed
 
 ###### 11. Always Open After Create
 
-- ทุกครั้งทีสร้างรายงาน HTML เสร็จ ต้องเปิดด้วย `/open-web` เสมอ
-- ไม่ถือวารูปงานเสร็จจนกว่าจะเปิดใน browser ได้
-- ถ้าไม่สามารถเปิดได้ → รายงานปัญหาและหาทางเปิดด้วย `Start-Process` หรือ OS command
+- Every completed HTML report must always be opened via `/open-web`
+- Do not consider the work done until it opens in the browser
+- If it cannot open → report the problem and find a way via `Start-Process` or an OS command
 
 ###### 12. Safety
 
-- ห้ามมี secrets, credentials หรือ paths ที่ละเอียดอ่อนที่ hardcode ไว้
-- ใช้ relative paths สำหรับไฟล์โปรเจกต์
-- ทำความสะอาดเนื้อหาที่ผู้ใช้ให้มาก่อนฉีดเข้า HTML
-- ใช้ `DOMPurify` หากเรนเดอร์ HTML จากแหล่งที่ไม่น่าเชื่อถือ
+- Never hardcode secrets, credentials, or sensitive paths
+- Use relative paths for project files
+- Sanitize user-provided content before injecting it into HTML
+- Use `DOMPurify` when rendering HTML from an untrusted source
 
-- ใช้ /visualize-in-web ถ้าจำเป็น
-- ใช้ /open-files-in-web ถ้าจำเป็น
+- Use /visualize-in-web if needed
+- Use /open-files-in-web if needed
 
 ##### Expected Outcome
 
-- ไฟล์ `.html` ไฟล์เดียวที่บันทึกในโปรเจกต์
-- เนื้อหารายงานเป็นภาษาอังกฤษ, เซลล์ตารางเป็นภาษาของโปรเจกต์หากจำเป็น
-- ตารางโต้ตอบได้พร้อม sort, filter, group, search และส่วนหัว sticky
-- Dropdown รายแถวพร้อมสองคอลัมน์
-- สลับธีม, แท็บ sticky, key findings, สรุป, diagrams, next action
-- Responsive, accessible และเหมาะสำหรับการพิมพ์
-- สถานะว่าง/loading/error ที่ชัดเจน
-- ไฟล์เปิดในเบราว์เซอร์และเรนเดอร์ถูกต้อง
+- A single `.html` file saved in the project
+- Report body in English, table cells in the project language when needed
+- Interactive table with sort, filter, group, search, and sticky headers
+- Per-row dropdowns with two columns
+- Theme toggle, sticky tabs, key findings, summaries, diagrams, next action
+- Responsive, accessible, and print-friendly
+- Clear empty/loading/error states
+- The file opens in the browser and renders correctly
 
 ### numbered
 
 ##### Goal
 
-ตอบในแชทเป็น numbered list เพื่อเน้นลำดับความสำคัญหรือ steps
+Reply in chat as a numbered list to emphasize priority or steps
 
 ##### Scope
 
-ใช้สำหรับข้อมูลที่ต้องการเน้นลำดับ ขั้นตอน หรือ priority มากกวา comparison
+Use for data that needs ordering, steps, or priority emphasized rather than comparison
 
 ##### Execute
 
 ###### 1. Prepare Items
 
-> Goal: รวบรวม items ทีจะรายงาน
+> Goal: Gather the items to report
 
-1. รวบรวมข้อมูล
-2. แยกแต่ละ item ให้มี single responsibility
-3. กำหนด priority
+1. Collect the data
+2. Split each item to a single responsibility
+3. Assign priority
 
 ###### 2. Number And Group
 
-> Goal: จัดลำดับและกลุ่ม
+> Goal: Order and group
 
-1. ใช้เลข 1, 2, 3, ... ตาม priority
-2. ถ้ามีหลายหมวด ใช้ `##` headers แยกกลุ่ม
-3. ภายในกลุ่มเรียงตาม priority
+1. Use 1, 2, 3, ... by priority
+2. With multiple categories, separate groups with `##` headers
+3. Within a group, sort by priority
 
 ###### 3. Format
 
-> Goal: ทำให้อ่านง่าย
+> Goal: Make it readable
 
-1. เริ่มด้วย summary 2-3 ข้อก่อน numbered list
-2. ใช้ emoji ตาม status: `✅` `⏳` `❌` `⚠️`
-3. ใช้ bullet ย่อยภายใต้แต่ละหมายเลขถ้าจำเป็น
-4. ใช้ backticks สำหรับ code, paths, skill names
-5. ใช้ `/report table` ถ้าข้อมูลเหมาะกับตารางมากกวา
-6. ใช้ `/report codeblock` ถ้ามี commands หรือ code snippets
+1. Start with a 2-3 point summary before the numbered list
+2. Use emoji per status: `✅` `⏳` `❌` `⚠️`
+3. Use sub-bullets under each number if needed
+4. Use backticks for code, paths, skill names
+5. Use `/report table` if the data suits a table better
+6. Use `/report codeblock` if there are commands or code snippets
 
 ###### 4. Validate
 
-> Goal: ตรวจคุณภาพ
+> Goal: Check quality
 
-1. ตรวจลำดับเลขถูกต้อง
-2. ตรวจแต่ละข้อมี single responsibility
-3. ทำ `/suggest-next-action` ถ้ามี next steps
+1. Check numbering order
+2. Check each item holds a single responsibility
+3. Run `/suggest-next-action` if there are next steps
 
 ##### Rules
 
-- หนึ่งเลข = หนึ่ง idea/step
-- เรียงตาม priority หรือ status ให้ `completed` อยู่ก่อน
-- ใช้ backticks สำหรับ paths, commands, skill names
-- ใช้ emoji ตาม legend ของ `/report`
-- ไม่ใช้ bold markers
-- ตอบในแชทเท่านั้น
+- One number = one idea/step
+- Sort by priority or status with `completed` first
+- Use backticks for paths, commands, skill names
+- Use emoji per the `/report` legend
+- Do not use bold markers
+- Reply in chat only
 
 ##### Expected Outcome
 
-- Numbered list เรียงลำดับถูกต้อง
-- แต่ละข้อกระชับ ชัดเจน
-- ระบุ next action ถ้ามี
+- Numbered list in correct order
+- Each item concise and clear
+- Next action stated if any
 
 ### table
 
 ##### Goal
 
-ตอบในแชทเป็นตารางที่มีคอลัมน์ `No.` เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
+Reply in chat as a table with the `No.` column first, numbered 1, 2, 3, ...
 
 ##### Scope
 
-ใช้สำหรับข้อมูลที่ต้องเปรียบเทียบหลาย columns หรือต้องการดูสถานะครบในตารางเดียว
+Use for data that needs multi-column comparison or a complete status view in one table
 
 ##### Execute
 
 ###### 1. Prepare Data
 
-> Goal: รวบรวมและจัดเตรียมข้อมูล
+> Goal: Gather and prepare the data
 
-1. รวบรวมข้อมูลทีต้องรายงาน
-2. จัดกลุ่มตาม category
-3. กำหนดลำดับความสำคัญ
-4. ตัดสินใจคอลัมน์ทีเหมาะสม
+1. Collect the data to report
+2. Group by category
+3. Assign priority
+4. Decide the fitting columns
 
 ###### 2. Build Table
 
-> Goal: สร้างตารางทีอ่านง่าย
+> Goal: Build a readable table
 
-1. คอลัมน์แรกต้องเป็น `No.` เรียง 1, 2, 3, ...
-2. ใช้ headers ชัดเจน
-3. จัดเรียง columns ตามความสำคัญ
-4. ใช้ alignment เหมาะสมกับ data types
+1. The first column must be `No.` numbered 1, 2, 3, ...
+2. Use clear headers
+3. Order columns by importance
+4. Use alignment appropriate to the data types
 
 ###### 3. Group And Sort
 
-> Goal: จัดกลุ่มและเรียงลำดับ
+> Goal: Group and order
 
-1. จัดกลุ่มข้อมูลตาม category
-2. ใช้ headers สำหรับแยกกลุ่ม
-3. เรียงลำดับภายในกลุ่มตาม priority
-4. ถ้ามี status ให้ sort ตาม: `✅ completed` → `⏳ in_progress` → `⚠️ pending` → `❌ blocker`
+1. Group data by category
+2. Use headers to separate groups
+3. Sort within a group by priority
+4. When status exists, sort: `✅ completed` → `⏳ in_progress` → `⚠️ pending` → `❌ blocker`
 
 ###### 4. Add Summary
 
-> Goal: สรุปให้เข้าใจเร็ว
+> Goal: Summarize for fast understanding
 
-1. เริ่มด้วย key findings 2-3 ข้อ
-2. ระบุ overall status ด้วย emoji
-3. ทำ `/suggest-next-action` ถ้ามี next steps
+1. Start with 2-3 key findings
+2. State the overall status with emoji
+3. Run `/suggest-next-action` if there are next steps
 
 ###### 5. Validate
 
-> Goal: ตรวจคุณภาพก่อนส่ง
+> Goal: Check quality before sending
 
-1. ตรวจ `No.` เรียงถูกต้อง
-2. ตรวจ grouping และ sorting
-3. ตรวจ emoji ใช้ตาม legend
-4. ทำ `/deep-review-codebase` ถ้าจำเป็น
+1. Check `No.` ordering
+2. Check grouping and sorting
+3. Check emoji follow the legend
+4. Run `/deep-review-codebase` if needed
 
 ##### Rules
 
-- ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
-- ถ้าไม่แน่ใจ format ให้ใช้ `/report` dispatch ตาม context
-- ใช้ backticks สำหรับ code, paths, skill names
-- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
-- ไม่ใช้ bold markers
-- ตอบในแชทเท่านั้น
+- Every table must have the `No.` column first
+- If unsure of the format, use `/report` to dispatch per context
+- Use backticks for code, paths, skill names
+- Use symbols ✅ ❌ ⚠️ for status
+- Do not use bold markers
+- Reply in chat only
 
 ##### Expected Outcome
 
-- ตารางทีมีคอลัมน์ `No.` เรียงลำดับถูกต้อง
-- Grouping และ sorting ชัดเจน
-- ข้อมูลอ่านง่าย
+- Table with the `No.` column numbered correctly
+- Clear grouping and sorting
+- Data easy to read
 
 ### references/format-ansi
 
@@ -505,93 +505,93 @@ related:
 
 ##### Goal
 
-สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols, box-drawing characters, และ summary สำหรับ logs, status, progress, UX/UI sketches และ architecture diagrams
+Create terminal reports with ANSI colors, progress bars, status symbols, box-drawing characters, and a summary — for logs, status, progress, UX/UI sketches, and architecture diagrams
 
 ##### Scope
 
-ใช้สำหรับรายงานความคืบหน้า, สถานะ, error summary, UX/UI sketches, และ architecture diagrams ใน terminal ทีอ่านง่าย
+Use for progress reports, status, error summaries, UX/UI sketches, and architecture diagrams in the terminal that stay readable
 
 ##### Execute
 
 ###### 1. Collect Status
 
-> Goal: รวบรวมข้อมูลทีต้องรายงาน
+> Goal: Gather the data to report
 
-1. อ่าน logs หรือ status จาก file/stdout
-2. ระบุ categories ของข้อมูล
-3. นับจำนวน pass/fail/warning
+1. Read logs or status from file/stdout
+2. Identify the data categories
+3. Count pass/fail/warning
 
 ###### 2. Format With ANSI
 
-> Goal: จัดรูปแบบด้วย ANSI escape codes
+> Goal: Format with ANSI escape codes
 
-1. ใช้สี green สำหรับ success, red สำหรับ error, yellow สำหรับ warning, blue สำหรับ info
-2. ใช้ bold สำหรับ headers
-3. ใช้ progress bars สำหรับ percentage (ถ้ามี)
-4. ใช้ symbols ✅ ❌ ⚠️ ℹ️ สำหรับ status
+1. Use green for success, red for error, yellow for warning, blue for info
+2. Use bold for headers
+3. Use progress bars for percentages (if any)
+4. Use symbols ✅ ❌ ⚠️ ℹ️ for status
 
 ###### 3. Render Summary
 
-> Goal: แสดงสรุปด้านบน
+> Goal: Show the summary on top
 
-1. สรุปจำนวนรายการตาม status
-2. แสดง key findings สั้นๆ
-3. แสดง progress ถ้ามี
-4. แยกรายละเอียดด้านล่าง
+1. Summarize item counts by status
+2. Show short key findings
+3. Show progress if available
+4. Put details below
 
 ###### 4. Draw Box Diagrams And Sketches
 
-> Goal: วาด diagram/sketch ด้วย ANSI box-drawing characters
+> Goal: Draw diagrams/sketches with ANSI box-drawing characters
 
-1. ทำ `/scan-codebase` เพื่อหา components, routes, modules ที่เกี่ยวข้อง
-2. เลือก view type: full page, dialog/modal, component, flow, system overview, module dependency
-3. กำหนด target device: desktop, mobile, หรือ both และความกว้างสูงสุดไม่เกิน 80 characters
-4. วาด frame ด้วย `┌─┐│└─┘` (single-line) หรือ `╔═╗║╚═╝` (double-line) สำหรับ outer container
-5. วาด sections หลัก: header, content area, sidebar, footer, layers, modules
-6. ใช้ `├─┤`, `┬─┴`, `├─`, `└─`, `│` สำหรับ dividers/branching
-7. ใช้ `[Button]`, `[Input]`, `[____]`, `[✓]`, `[ ]`, `[Select ▼]`, `[×]` สำหรับ interactive elements
-8. ใช้ arrows `→ ↓ ↑ ⇄ ↔ ⇢` แสดง flow/dependency
-9. ใช้ `◇` สำหรับ decision, `○` start, `●` end, หรือ numbered steps `① ② ③`
-10. แสดง mobile view ด้วย single column, bottom navigation, touch targets `[  Button  ]`
-11. ใช้ `//` สำหรับ inline annotations, `⚠` สำหรับ concerns, `✨` สำหรับ new components
-12. ตรวจสอบว่า layout ไม่กว้างเกิน 80 characters, alignment สมมาตร, และอ้างอิง codebase จริง
+1. Run `/scan-codebase` to find the relevant components, routes, modules
+2. Pick the view type: full page, dialog/modal, component, flow, system overview, module dependency
+3. Set the target device: desktop, mobile, or both — max width 80 characters
+4. Draw the frame with `┌─┐│└─┘` (single-line) or `╔═╗║╚═╝` (double-line) for the outer container
+5. Draw the main sections: header, content area, sidebar, footer, layers, modules
+6. Use `├─┤`, `┬─┴`, `├─`, `└─`, `│` for dividers/branching
+7. Use `[Button]`, `[Input]`, `[____]`, `[✓]`, `[ ]`, `[Select ▼]`, `[×]` for interactive elements
+8. Use arrows `→ ↓ ↑ ⇄ ↔ ⇢` to show flow/dependency
+9. Use `◇` for decision, `○` start, `●` end, or numbered steps `① ② ③`
+10. Show mobile view with a single column, bottom navigation, touch targets `[  Button  ]`
+11. Use `//` for inline annotations, `⚠` for concerns, `✨` for new components
+12. Verify the layout is no wider than 80 characters, alignment is symmetric, and it references the real codebase
 
 ##### Rules
 
 ###### 1. ANSI Safety
 
-- ใช้ ANSI codes ที support common terminals
-- ถ้า output ถูก redirect ให้รองรับ NO_COLOR
-- ไม่ใช้ 256 colors ถ้าไม่จำเป็น
+- Use ANSI codes supported by common terminals
+- If output is redirected, honor NO_COLOR
+- Do not use 256 colors unless necessary
 
 ###### 2. Readability
 
-- summary อยู่ด้านบน
-- จัดกลุ่มตาม category
-- ใช้ symbols คู่กับสี
-- ความกว้างสูงสุด 80 characters สำหรับ chat readability
-- ใช้ 2 spaces สำหรับ indentation
-- แยก sections ด้วย blank lines
+- Summary on top
+- Group by category
+- Pair symbols with colors
+- Max width 80 characters for chat readability
+- Use 2 spaces for indentation
+- Separate sections with blank lines
 
 ###### 3. Consistency
 
-- ใช้ชุดสีเดียวกันกับ `report-table`
-- ไม่ผสมหลาย color scheme
-- ใช้ box-drawing characters อย่างสม่ำเสมอ
+- Use the same color set as `report-table`
+- Do not mix multiple color schemes
+- Use box-drawing characters consistently
 
 ###### 4. Sketch/Diagram Accuracy
 
-- อ้างอิง components, routes, modules ที่มีอยู่จริงใน codebase เท่านั้น
-- ห้ามประดิษฐ์ UI elements หรือ services ที่ไม่มี
-- ใช้ labels สั้นๆ ไม่เกิน 1 บรรทัดต่อ box/section
-- ระบุ route path/technology names ใน boxes ถ้ามี
+- Reference only components, routes, modules that actually exist in the codebase
+- Never invent UI elements or services that do not exist
+- Keep labels short — at most 1 line per box/section
+- Include route path/technology names in boxes when present
 
 ##### Expected Outcome
 
-- terminal report พร้อม ANSI colors และ status summary
-- box-drawing sketches/diagrams ที่อ่านง่ายบน chat
-- component structure และ user flow ที่อ้างอิง codebase จริง
-- รองรับ common terminals และ NO_COLOR
+- Terminal report with ANSI colors and a status summary
+- Box-drawing sketches/diagrams readable in chat
+- Component structure and user flow referencing the real codebase
+- Works on common terminals and honors NO_COLOR
 
 ### references/format-codeblock
 
@@ -599,15 +599,15 @@ related:
 
 ##### Goal
 
-จัดรูปแบบ code/text output (codeblocks, diffs, JSON, markdown) ให้สวยงามและอ่านง่าย
+Format code/text output (codeblocks, diffs, JSON, markdown) cleanly and readably
 
 ##### Scope
 
-ใช้สำหรับการจัดรูปแบบ:
-- Code snippets พร้อม syntax highlighting
-- Code diffs และ changes
-- JSON output สำหรับ API responses และ structured data
-- Markdown documents สำหรับ documentation และ README
+Used for formatting:
+- Code snippets with syntax highlighting
+- Code diffs and changes
+- JSON output for API responses and structured data
+- Markdown documents for documentation and README
 
 ##### Execute
 
@@ -615,105 +615,105 @@ related:
 
 > Goal: Format Code Blocks
 
-1. ระบุ programming language สำหรับ syntax highlighting
-2. ใช้ language tags ที่ถูกต้อง (`typescript`, `python`, `rust`, ฯลฯ)
-3. ใช้ proper indentation (2 หรือ 4 spaces)
-4. เพิ่ม comments สำหรับ code ที่ซับซ้อน
+1. Declare the programming language for syntax highlighting
+2. Use correct language tags (`typescript`, `python`, `rust`, etc.)
+3. Use proper indentation (2 or 4 spaces)
+4. Add comments for complex code
 
 ###### 2. Format Diffs
 
 > Goal: Format Diffs
 
-1. ใช้ standard unified diff format (`+`, `-`, context)
-2. จัดกลุ่ม changes ตาม files
-3. เพิ่ม file paths และ change statistics (additions, deletions)
-4. ใช้ context lines สำหรับ readability
+1. Use the standard unified diff format (`+`, `-`, context)
+2. Group changes by file
+3. Add file paths and change statistics (additions, deletions)
+4. Use context lines for readability
 
 ###### 3. Format JSON
 
 > Goal: Format JSON
 
-1. ใช้ pretty print ด้วย indentation 2 spaces
-2. ใช้ consistent naming conventions (`camelCase` หรือ `snake_case`)
-3. ใช้ `null` แทน undefined หรือ empty strings
-4. เพิ่ม metadata: `timestamp`, `version`, `status`
+1. Use pretty print with 2-space indentation
+2. Use consistent naming conventions (`camelCase` or `snake_case`)
+3. Use `null` instead of undefined or empty strings
+4. Add metadata: `timestamp`, `version`, `status`
 
 ###### 4. Format Markdown
 
 > Goal: Format Markdown
 
-1. ใช้ hierarchy ของ headings (H1-H6) อย่างเหมาะสม
-2. ใช้ H1 สำหรับ document title (เพียง 1 ครั้ง)
-3. ใช้ H2-H3 สำหรับ main sections, H4-H6 สำหรับ subsections
-4. ไม่ข้าม heading levels
+1. Use the heading hierarchy (H1-H6) appropriately
+2. Use H1 for the document title (only once)
+3. Use H2-H3 for main sections, H4-H6 for subsections
+4. Do not skip heading levels
 
 ###### 5. Add Metadata
 
 > Goal: Add Metadata
 
-1. เพิ่ม filename หรือ path ด้านบน code block
-2. เพิ่ม line numbers ถ้าจำเป็น
-3. เพิ่ม commit hash สำหรับ diffs
-4. เพิ่ม timestamp สำหรับ JSON output
+1. Add the filename or path above the code block
+2. Add line numbers if needed
+3. Add the commit hash for diffs
+4. Add a timestamp for JSON output
 
 ###### 6. Highlight Key Parts
 
 > Goal: Highlight Key Parts
 
-1. ใช้ bold สำหรับ keywords สำคัญ
-2. ใช้ comments สำหรับ explanations ใน code
-3. ใช้ markers สำหรับ function/class changes ใน diffs
-4. ใช้ inline annotations ถ้าจำเป็น
+1. Use bold for important keywords
+2. Use comments for explanations in code
+3. Use markers for function/class changes in diffs
+4. Use inline annotations when needed
 
 ##### Rules
 
 ###### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+> Goal: Reports read easily, summarize key findings on top, and lead to action
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-progress` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings on top before details
+2. Use `/report table` for multi-column comparison tables
+3. Use `/report-progress` for status/progress/logs reports
+4. Use the "No." column first, numbered 1, 2, 3, ... with clear headers, grouped/ordered by importance
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always end with `/suggest-next-action`
 
 ###### Code Formatting
 
-- ใช้ language tags ที่ถูกต้องและ standard
-- ใช้ consistent indentation ทั้ง code block
-- ใช้ consistent code style
-- ใช้ plain text ถ้าไม่มี language ที่เหมาะสม
+- Use correct standard language tags
+- Use consistent indentation through the code block
+- Use consistent code style
+- Use plain text when no suitable language exists
 
 ###### Diff Format
 
-- ใช้ standard unified diff format
-- ใช้ consistent markers สำหรับ additions/deletions
-- ใช้ sufficient context สำหรับ readability
-- ระบุ change type (added, modified, deleted)
+- Use the standard unified diff format
+- Use consistent markers for additions/deletions
+- Use sufficient context for readability
+- State the change type (added, modified, deleted)
 
 ###### JSON Format
 
-- ใช้ consistent naming conventions ทั้ง JSON
-- จัดลำดับ fields ตามความสำคัญ
-- ใช้ nested objects สำหรับ data ที่เกี่ยวข้องกัน
-- ตรวจสอบไม่มี circular references
+- Use consistent naming conventions throughout the JSON
+- Order fields by importance
+- Use nested objects for related data
+- Check there are no circular references
 
 ###### Markdown Format
 
-- ใช้ bold สำหรับ keywords, italic สำหรับ emphasis
-- ใช้ code blocks พร้อม language tags
-- ใช้ backticks สำหรับ inline code
-- ใช้ descriptive link text และ alt text
+- Use bold for keywords, italic for emphasis
+- Use code blocks with language tags
+- Use backticks for inline code
+- Use descriptive link text and alt text
 
 ##### Expected Outcome
 
-- Code blocks ที่มี syntax highlighting ถูกต้อง
-- Diffs ที่ชัดเจนและอ่านง่าย
-- JSON output ที่ valid และ consistent
-- Markdown documents ที่อ่านง่ายและ well-structured
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- Code blocks with correct syntax highlighting
+- Clear readable diffs
+- Valid consistent JSON output
+- Readable well-structured markdown documents
+- Report readable with key findings on top
+- Clear next action
 
 ### references/format-numbered-bullet
 
@@ -721,83 +721,83 @@ related:
 
 ##### Goal
 
-จัดรูปแบบ output ให้เป็น numbered list, bullet list, หรือผสมระหว่าง numbered กับ bullet ตาม context
+Format output as a numbered list, bullet list, or a numbered/bullet mix according to context
 
 ##### Scope
 
-ใช้สำหรับ report ทั่วไปที่ไม่จำเป็นต้องเป็นตาราง โดยเลือก format ตามลำดับ ความสัมพันธ์ของข้อ และความต้องการ action
+Use for general reports that do not need a table, choosing the format by order, item relationships, and action requirements
 
 ##### Execute
 
 ###### 1. Choose Format
 
-> Goal: เลือกรูปแบบรายงานทีเหมาะสม
+> Goal: Pick the fitting report format
 
-1. ถ้าต้องการลำดับก่อนหลังหรือ priority → ใช้ numbered list
-2. ถ้าต้องการรายการทีไม่มีลำดับ → ใช้ bullet list
-3. ถ้ามีหัวข้อหลักหลายข้อ และแต่ละหัวข้อมีรายละเอียดย่อย → ใช้ numbered + bullet
-4. ถ้าต้องการผสมกับตาราง → ทำ `/report table` คู่กัน
+1. Needs sequence or priority → numbered list
+2. Unordered items → bullet list
+3. Multiple main topics each with sub-details → numbered + bullet
+4. Needs a table mixed in → also run `/report table`
 
 ###### 2. Numbered List
 
-> Goal: แสดงลำดับทีชัดเจน
+> Goal: Show clear ordering
 
-1. ใช้รูปแบบ `N. <ข้อความสั้น>`
-2. เรียงลำดับตาม priority, dependency, หรือลำดับเวลา
-3. ไม่ให้ข้อเดียวมีหลายงาน — ถ้ามี → ทำ `/follow-single-responsibility` ก่อน
-4. ใช้เมื่อ reader ต้องทำตาม step
+1. Use the form `N. <short text>`
+2. Order by priority, dependency, or time
+3. Never pack multiple tasks into one item — if found, run `/follow-single-responsibility` first
+4. Use when the reader must follow steps
 
 ###### 3. Bullet List
 
-> Goal: แสดงรายการทีไม่ต้องเรียงลำดับ
+> Goal: Show an unordered list
 
-- ใช้ `-` หรือ `*` สำหรับแต่ละรายการ
-- แต่ละ bullet ควรย่อยากระชับ
-- ใช้เมื่อข้อมูลมีความสำคัญเท่ากัน
-- สามารถจัดกลุ่มด้วย sub-heading ถ้ามีหลายหมวด
+- Use `-` or `*` per item
+- Each bullet should be concise
+- Use when items carry equal weight
+- Group with sub-headings when there are several categories
 
 ###### 4. Numbered + Bullet
 
-> Goal: แสดงหัวข้อหลักพร้อมรายละเอียดย่อย
+> Goal: Show main topics with sub-details
 
-1. ใช้ numbered list สำหรับหัวข้อหลัก
-2. ใช้ bullet list สำหรับรายละเอียดภายใต้แต่ละหัวข้อ
-3. ทำให้ single responsibility: หัวข้อหลัก 1 ข้อ = 1 หน่วยงาน
-4. ใช้เมื่อมี plan, รายงาน findings, หรือ action items
+1. Use a numbered list for main topics
+2. Use bullets for details under each topic
+3. Keep single responsibility: 1 main item = 1 unit of work
+4. Use for plans, findings reports, or action items
 
 ##### Rules
 
 ###### 1. Single Responsibility
 
-- หัวข้อหลักหนึ่งข้อต้องมี single responsibility
-- ถ้าพบคำว่า "และ" หรือ "," หลายตัวในข้อเดียว → ทำ `/follow-single-responsibility` ก่อน
+- Each main item must hold a single responsibility
+- If one item contains multiple "and"s or ","s → run `/follow-single-responsibility` first
 
 ###### 2. Reference Support
 
-- ถ้ามี URL → ใส่เป็น `<url>` หรือ markdown link
-- ถ้ามี skill → ใช้ `/<skill-name>`
-- ถ้ามี file path → ใช้ backticks
-- ถ้ามี code/command → ใช้ code block
+- URL present → include as `<url>` or a markdown link
+- Skill present → use `/<skill-name>`
+- File path present → use backticks
+- Code/command present → use a code block
 
 ###### 3. Consistency
 
-- ใช้ภาษาเดียวกันในรายการเดียวกัน
-- ตัวหนังสือเริ่มต้นสัมผัสกัน (sentence case หรือ title case ตลอด)
-- ไม่ผสม `1.` กับ `1)` หรือ `-` กับ `*` ในหมวดเดียวกัน
+- Use one language within one list
+- Line starting style stays consistent (sentence case or title case throughout)
+- Do not mix `1.` with `1)` or `-` with `*` within the same category
 
 ###### 4. Output Length
 
-- ไม่เกิน 250 บรรทัดต่อ report ถ้าเกิน → แยกหัวข้อไป `references/` หรือ `/report html`
-- แต่ละ bullet/number ไม่ยาวเกิน 2 บรรทัดถ้าไม่จำเป็น
+- No more than 250 lines per report; if longer → split topics into `references/` or `/report html`
+- Each bullet/number stays within 2 lines unless necessary
 
-- ใช้ /report-todo ถ้าจำเป็น
+- Use /report-todo if needed
 
 ##### Expected Outcome
 
-- Output ในรูปแบบ numbered, bullet หรือ numbered + bullet ตาม context
-- แต่ละข้อมี single responsibility
-- มี references ครบ: URL, skills, paths
-- อ่านง่าย กระชับ และพร้อม action
+- Output in numbered, bullet, or numbered + bullet form per context
+- Each item holds a single responsibility
+- Complete references: URL, skills, paths
+- Readable, concise, and action-ready
 
 ### references/uxui
 
@@ -805,62 +805,62 @@ related:
 
 ##### Goal
 
-ทำให้รายงานทุกรูปแบบอ่านง่าย เข้าใจเร็ว และ action ชัดเจน
+Make every report format easy to read, quick to understand, and clear about the action
 
 ##### Principles
 
 ###### 1. Summary First
 
-- ทุก report ต้องเริ่มด้วย key findings หรือสรุปผล 2-3 ข้อ
-- ใช้ bullet สั้น ก่อนรายละเอียด
+- Every report must start with key findings or a 2-3 point summary
+- Use short bullets before the details
 
 ###### 2. Sort By Status
 
-- ถ้ามี status: เรียง `completed` หรือ `done` ขึ้นก่อน
-- ลำดับถัดไป: `in_progress` → `pending` → `blocker` → `failed`
+- When status exists: sort `completed` or `done` first
+- Then: `in_progress` → `pending` → `blocker` → `failed`
 
 ###### 3. Emoji Legend
 
 | Status | Emoji |
 |---|---|
-| ผ่าน/เสร็จ | `✅` |
-| ค้าง/กำลังทำ | `⏳` |
-| ติดปัญหา | `❌` |
+| pass/done | `✅` |
+| open/in progress | `⏳` |
+| blocked | `❌` |
 | warning | `⚠️` |
 | info | `ℹ️` |
-| รอ user | `❓` |
+| waiting on user | `❓` |
 
 ###### 4. Table Format
 
-- คอลัมน์แรกต้องเป็น `No.`
-- ไม่ใช้ bold markers `**`
-- ใช้ backticks สำหรับ code, paths, skill names
-- หัวตารางชัดเจน ไม่อักษรพิเศษเกิน
+- The first column must be `No.`
+- Do not use bold markers `**`
+- Use backticks for code, paths, skill names
+- Headers clear, without excessive special characters
 
 ###### 5. Numbered List
 
-- หนึ่งเลข = หนึ่งข้อ single responsibility
-- เรียงตาม priority
-- ใช้ sub-bullet ถ้าจำเป็น
+- One number = one single-responsibility item
+- Order by priority
+- Use sub-bullets when needed
 
 ###### 6. Code Blocks
 
-- ระบุ language
-- ไม่ใส่ line numbers
-- แยกหลาย block ด้วย heading สั้น ๆ
+- State the language
+- No line numbers
+- Separate multiple blocks with short headings
 
 ###### 7. Progress
 
-- ใช้ progress bar เช่น `████████████░░ 80%`
-- ระบุเปอร์เซ็นต์และ trend (↑ ↓ →)
+- Use a progress bar such as `████████████░░ 80%`
+- State the percentage and the trend (↑ ↓ →)
 
 ###### 8. Next Action
 
-- จบด้วย next action ที่ actionable
-- ไม่ทิ้ง report โดยไม่มีทิศทาง
+- End with an actionable next step
+- Never leave a report without direction
 
 ## Expected Outcome
 
-- รายงานออกมาตาม format ทีเหมาะสม
-- `/report-todo` สำหรับ action plan จาก chat
-- สรุป key findings และ next action ชัดเจน
+- The report comes out in the fitting format
+- `/report-todo` for action plans from chat
+- Key findings and next action clearly summarized

@@ -1,6 +1,6 @@
 ---
 name: git-stash
-description: จัดการ git stash — push/pop/apply/list อย่างปลอดภัย รองรับ untracked และ named stashes
+description: Manage git stash — safe push/pop/apply/list, with untracked and named stash support
 argument-hint: "[push|pop|apply|list|drop] [name|index]"
 related:
   - git-restore
@@ -11,60 +11,60 @@ related:
 
 ## Goal
 
-จัดการ uncommitted work ด้วย `git stash` — เก็บ changes ชั่วคราว, กู้คืน, เคลียร์ working tree โดยไม่ทำของหาย
+Manage uncommitted work with `git stash` — temporarily store changes, restore them, and clear the working tree without losing anything
 
 ## Scope
 
 - stash/push, pop, apply, list, show, drop, clear
-- untracked files (`-u`) และ ignored files (`-a`)
+- untracked files (`-u`) and ignored files (`-a`)
 - named stashes (`git stash push -m`)
-- ไม่ครอบคลุม discard ถาวร → `/git-restore`; committed changes → `/git-revert`
+- does not cover permanent discard → `/git-restore`; committed changes → `/git-revert`
 
 ## Execute
 
 ### 1. Assess State
 
-> Goal: รู้ว่ามีอะไรจะ stash และมี stash ค้างอยู่ไหม
+> Goal: know what will be stashed and whether stashes are lingering
 
-1. `git status --short` — แยก staged/unstaged/untracked
-2. `git stash list` — เช็ค stash เก่าที่ยังไม่ได้ pop (stash ค้าง = debt)
-3. ตัดสินใจ: งานสั้นที่จะกลับมาเร็ว → stash; งานที่ควรเก็บถาวร → commit ลง branch แทน
+1. `git status --short` — separate staged/unstaged/untracked
+2. `git stash list` — check for old stashes not yet popped (a lingering stash = debt)
+3. decide: short work you'll return to soon → stash; work that should be stored permanently → commit to a branch instead
 
 ### 2. Stash
 
-> Goal: เก็บ changes อย่างครบและหาได้
+> Goal: store the changes completely and findably
 
-1. `git stash push -m "<meaningful message>"` — ตั้งชื่อเสมอ
-2. untracked files ต้อง `-u`; ignored files ต้อง `-a` (ระวัง — รวม build output)
-3. เฉพาะ staged: `git stash push --staged`; เฉพาะบางไฟล์: `-- <paths>`
-4. `git status` verify working tree สะอาดตามที่ตั้งใจ
+1. `git stash push -m "<meaningful message>"` — always name it
+2. untracked files need `-u`; ignored files need `-a` (careful — includes build output)
+3. staged only: `git stash push --staged`; specific files only: `-- <paths>`
+4. verify with `git status` that the working tree is clean as intended
 
 ### 3. Restore
 
-> Goal: เอา changes กลับมาถูก stash ถูกเวลา
+> Goal: bring changes back from the right stash at the right time
 
-1. `git stash list` + `git stash show -p stash@{n}` — ดูเนื้อหาก่อน apply
-2. `git stash apply stash@{n}` — ปลอดภัยกว่า pop (stash ยังอยู่ถ้า conflict)
-3. `git stash pop` เฉพาะเมื่อมั่นใจว่าไม่ conflict — pop ลบ stash ทันทีหลัง apply สำเร็จ
-4. conflict → resolve แล้ว `git stash drop stash@{n}` เองหลัง merge เสร็จ
-5. ต้องการ index state เดิม (staged vs unstaged) → `--index`
+1. `git stash list` + `git stash show -p stash@{n}` — review content before applying
+2. `git stash apply stash@{n}` — safer than pop (the stash survives a conflict)
+3. `git stash pop` only when confident there is no conflict — pop deletes the stash immediately after a successful apply
+4. conflict → resolve, then `git stash drop stash@{n}` yourself once the merge is done
+5. to keep the original index state (staged vs unstaged) → `--index`
 
 ### 4. Cleanup
 
-> Goal: ไม่สะสม stale stashes
+> Goal: do not accumulate stale stashes
 
-1. `git stash drop stash@{n}` ทีละตัวหลัง apply สำเร็จ
-2. `git stash clear` ลบทั้งหมด — ต้อง confirm และ list ก่อนเสมอ
+1. `git stash drop stash@{n}` one by one after a successful apply
+2. `git stash clear` deletes everything — must confirm and list first, always
 
 ## Rules
 
-- `git stash push -m` เสมอ — ห้าม anonymous stash (หาไม่เจอตอนกลับมา)
-- prefer `apply` over `pop` — pop ลบ stash ทันที กู้ยากถ้า conflict แย่
-- stash ไม่ใช่ storage ถาวร — งานที่ค้าง >1 วันให้ commit ลง branch
-- untracked files ไม่ถูก stash ถ้าไม่ใส่ `-u` — ง่ายต่อการหลงลืม
-- ใช้ /resolve-errors ถ้าจำเป็น
+- always `git stash push -m` — no anonymous stashes (unfindable when you come back)
+- prefer `apply` over `pop` — pop deletes the stash immediately, hard to recover if the conflict goes badly
+- stash is not permanent storage — work pending >1 day should be committed to a branch
+- untracked files are not stashed without `-u` — an easy thing to forget
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Working tree สะอาดตาม intent โดยไม่เสีย uncommitted work
-- Stash มีชื่อ หาได้ และไม่สะสม stale entries
+- working tree clean per intent with no uncommitted work lost
+- stashes are named, findable, and no stale entries accumulate

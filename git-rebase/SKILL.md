@@ -1,6 +1,6 @@
 ---
 name: git-rebase
-description: Rebase branch อย่างปลอดภัย — onto main, autosquash fixups, conflict flow ครบ
+description: Safely rebase a branch — onto main, autosquash fixups, complete conflict flow
 argument-hint: "[onto-branch|abort|continue]"
 related:
   - git-commit
@@ -13,65 +13,65 @@ related:
 
 ## Goal
 
-Rebase commits ไปบน base ใหม่หรือจัดเรียง history ให้สะอาด โดยไม่ทำ shared history พัง
+Replay commits onto a new base or tidy history with a rebase, without breaking shared history
 
 ## Scope
 
-- `git rebase <base>` (linearize), `git rebase --onto`, autosquash (`--autosquash` กับ `fixup!`/`squash!` commits)
+- `git rebase <base>` (linearize), `git rebase --onto`, autosquash (`--autosquash` with `fixup!`/`squash!` commits)
 - conflict resolution flow: continue/abort/skip
-- ไม่ครอบคลุม interactive rebase (`-i`) — ใช้ non-interactive equivalents: autosquash, `--onto`, `git reset` + recommit
+- does not cover interactive rebase (`-i`) — use non-interactive equivalents: autosquash, `--onto`, `git reset` + recommit
 
 ## Execute
 
 ### 1. Safety Check
 
-> Goal: ยืนยันว่า rebase ปลอดภัยก่อนเริ่ม
+> Goal: confirm the rebase is safe before starting
 
-1. `git status` — working tree ต้องสะอาด (หรือ `/git-stash` ก่อน)
-2. ตรวจว่า branch ถูก push/shared หรือยัง — rebase pushed branch = rewrite public history → ต้อง confirm + force-push เท่านั้น และแจ้ง collaborators
-3. บันทึก backup ref: `git branch backup/<name>-<date>` ก่อน rebase เสมอ
-4. ทำ `/check-merge-conflicts` ประเมิน conflict risk ถ้ามี
+1. `git status` — the working tree must be clean (or `/git-stash` first)
+2. check whether the branch has been pushed/shared — rebasing a pushed branch = rewriting public history → requires confirmation + force-push only, and notify collaborators
+3. record a backup ref: `git branch backup/<name>-<date>` always before rebasing
+4. run `/check-merge-conflicts` to assess conflict risk if any
 
 ### 2. Rebase
 
-> Goal: commits ถูก replay บน base ใหม่
+> Goal: commits are replayed onto the new base
 
 ```bash
 git fetch origin
-git rebase origin/main                    # linearize บน main ล่าสุด
-git rebase --onto main <old-base> <branch> # ย้าย commits ข้าม base
-git rebase --autosquash origin/main       # รวม fixup!/squash! commits (ต้องตั้ง rebase.autoSquash)
+git rebase origin/main                    # linearize onto the latest main
+git rebase --onto main <old-base> <branch> # move commits across bases
+git rebase --autosquash origin/main       # fold fixup!/squash! commits (requires rebase.autoSquash)
 ```
 
-1. fetch base ล่าสุดก่อนเสมอ — rebase บน stale base = ทำซ้ำ
-2. ไม่แน่ใจ → `--onto` ทีละช่วงเล็กกว่า rebase ทั้ง branch
+1. always fetch the latest base first — rebasing onto a stale base = redoing work
+2. if unsure → use `--onto` in smaller segments rather than rebasing the whole branch
 
 ### 3. Handle Conflicts
 
-> Goal: conflict ถูก resolve ต่อ commit อย่างถูกต้อง
+> Goal: conflicts resolved correctly, commit by commit
 
-1. conflict → แก้ไฟล์, `git add`, `git rebase --continue`
-2. commit นั้นไม่จำเป็นแล้ว → `git rebase --skip`
-3. ทุกอย่างพัง → `git rebase --abort` กลับไป pre-rebase state เสมอได้
-4. rebase นาน/conflict เยอะ → พิจารณา merge แทน (conflict resolve ครั้งเดียว)
+1. conflict → fix the files, `git add`, `git rebase --continue`
+2. that commit is no longer needed → `git rebase --skip`
+3. everything goes wrong → `git rebase --abort` always returns to the pre-rebase state
+4. a long rebase/many conflicts → consider merge instead (conflicts resolved once)
 
 ### 4. Verify
 
-> Goal: history สะอาดและ code ไม่แตก
+> Goal: history is clean and code is not broken
 
-1. `git log --oneline origin/main..HEAD` — commits เรียงตรง ไม่มี merge commit ปน
-2. ทำ `/run-check` — semantic conflicts ไม่โผ่ใน `git status`
-3. ถ้า branch push แล้ว → `git push --force-with-lease` เท่านั้น (ห้าม `--force`)
+1. `git log --oneline origin/main..HEAD` — commits are in order with no merge commits mixed in
+2. run `/run-check` — semantic conflicts do not show up in `git status`
+3. if the branch was pushed → `git push --force-with-lease` only (never `--force`)
 
 ## Rules
 
-- ห้าม rebase commits ที่คนอื่น base งานอยู่ (public history) — golden rule of rebasing
-- backup branch ก่อน rebase เสมอ — reflog มีแต่ backup ชัดกว่า
-- `--force-with-lease` เท่านั้นเมื่อ push หลัง rebase — ป้องกัน overwrite งานคนอื่น
-- rebase = rewrite — ถ้า PR กำลัง review อยู่และ reviewers ดู history → แจ้งก่อน
-- ใช้ /resolve-errors ถ้าจำเป็น
+- never rebase commits others may have based work on (public history) — the golden rule of rebasing
+- always create a backup branch before rebasing — reflog exists but an explicit backup is clearer
+- `--force-with-lease` only when pushing after a rebase — prevents overwriting others' work
+- rebase = rewrite — if a PR is under review and reviewers look at history → notify them first
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Branch linear บน base ล่าสุด history สะอาด
-- ไม่มี lost commits (backup ref + reflog) และผ่าน `/run-check`
+- branch is linear onto the latest base with clean history
+- no lost commits (backup ref + reflog) and it passes `/run-check`

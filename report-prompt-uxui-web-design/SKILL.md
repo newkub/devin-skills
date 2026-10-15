@@ -1,6 +1,6 @@
 ---
 name: report-prompt-uxui-web-design
-description: สร้าง prompt ออกแบบ UX/UI web — grid card 4 col ครบทุก routes แสดง mobile view ต่อ card
+description: Generate a web UX/UI design prompt — 4-col card grid, all routes, mobile view per card
 argument-hint: "[scope-or-routes-file]"
 related:
   - report-uxui
@@ -13,72 +13,72 @@ related:
 
 ## Goal
 
-สร้าง prompt สำหรับออกแบบ UX/UI web ครบวงจร (desktop, tablet, mobile) ที่ระบุ layout เป็น grid card 4 columns — จำนวน card เท่ากับจำนวน routes ของ app, แต่ละ card แสดง UX/UI ในมุมมอง mobile พร้อม route, page name และ description ครบทุก routes และมีชื่อ app อยู่บรรทัดบนสุดของ prompt
+Generate a full-scope web UX/UI design prompt (desktop, tablet, mobile) that specifies the layout as a 4-column card grid — the number of cards equals the number of app routes, each card shows the UX/UI in mobile view with route, page name, and description covering every route, and the app name sits on the first line of the prompt
 
 ## Scope
 
-- ใช้เมื่อต้องการ prompt พร้อมใช้สำหรับ generate/design web UX/UI overview ของ app ทั้งระบบ — prompt ต้องครอบทั้ง desktop, tablet และ mobile
-- Output คือ prompt text (ใน ```text block) ที่ embed รายการ routes จริงจาก codebase — ไม่ใช่การวาด UI เอง (วาด sketch ใช้ `/report-uxui`, route table ใช้ `/report-uxui-all-routes`)
-- ถ้า user ต้องการ render จริง → ส่ง prompt ไป `/visualize-in-web` หรือ capture ผ่าน `/record-video-web-with-agents-browser`
+- Use when a ready-to-use prompt is needed to generate/design the whole-app web UX/UI overview — the prompt must cover desktop, tablet, and mobile
+- The output is prompt text (in a ```text block) embedding the real route list from the codebase — not drawing the UI itself (sketch drawing uses `/report-uxui`, route tables use `/report-uxui-all-routes`)
+- If the user wants a real render → send the prompt to `/visualize-in-web` or capture via `/record-video-web-with-agents-browser`
 
 ## Execute
 
 ### 1. Collect App Info And Routes
 
-> Goal: ได้ชื่อ app และ routes ครบทุกตัว
+> Goal: Get the app name and every route
 
-1. ทำ `/scan-codebase` เพื่อหา app name (`package.json` `name`, `index.html` `<title>`, หรือ brand ใน layout) และ framework/router ที่ใช้
-2. ทำ `/report-uxui-all-routes` เพื่อรวบรวม routes ทั้งหมด — page routes, dynamic patterns, auth-required
-3. ถ้า argument ชี้ไฟล์ routes/routes.md → ใช้ตัวนั้นแทน scan
-4. ทุก route ต้องมี: `path`, `page/component name`, `description` (1 บรรทัด — สรุปจาก page content จริง ห้ามเดา)
+1. Run `/scan-codebase` to find the app name (`package.json` `name`, `index.html` `<title>`, or the brand in the layout) and the framework/router used
+2. Run `/report-uxui-all-routes` to collect all routes — page routes, dynamic patterns, auth-required
+3. If the argument points to a routes/routes.md file → use it instead of scanning
+4. Every route needs: `path`, `page/component name`, `description` (one line — summarized from the real page content, never guessed)
 
 ### 2. Compose Prompt
 
-> Goal: เขียน prompt ครบตาม spec — โครงบังคับ
+> Goal: Write the prompt fully per spec — mandatory structure
 
-1. บรรทัดบนสุดเขียนชื่อ app เป็นบรรทัดแรกของ prompt
-2. Body ของ prompt ระบุ spec ดังนี้ (ห้ามขาด):
-   - ออกแบบ UX/UI web ครบทั้ง desktop, tablet และ mobile
-   - แสดงผลเป็น grid card 4 columns (`grid-template-columns: repeat(4, 1fr)`) — card ต่อแถวย่อตาม viewport (desktop 4, tablet 2, mobile 1)
-   - จำนวน card เท่ากับจำนวน routes ทั้งหมด — 1 card = 1 route
-   - แต่ละ card แสดง UX/UI เป็น mobile view (mobile viewport preview ของ route นั้น)
-   - แต่ละ card มี: route path, page name, description — ครบทุก routes
-3. Embed รายการ routes จริงทั้งหมดลงใน prompt เป็น table หรือ list — ห้าม placeholder เช่น "route1, route2, ..."
+1. Write the app name as the very first line of the prompt
+2. The prompt body must state these specs (none may be missing):
+   - Design the web UX/UI fully for desktop, tablet, and mobile
+   - Present as a 4-column card grid (`grid-template-columns: repeat(4, 1fr)`) — cards per row shrink with viewport (desktop 4, tablet 2, mobile 1)
+   - Number of cards equals the total number of routes — 1 card = 1 route
+   - Each card shows the UX/UI as a mobile view (mobile viewport preview of that route)
+   - Each card has: route path, page name, description — covering every route
+3. Embed the entire real route list into the prompt as a table or list — no placeholders like "route1, route2, ..."
 
 ### 3. Emit Prompt
 
-> Goal: ส่ง prompt พร้อมใช้ใน chat
+> Goal: Deliver the ready-to-use prompt in chat
 
-1. ใส่ prompt ทั้งหมดใน ```text block เดียว — copy ไปใช้ได้ทันที
-2. ทำ `/report` สรุป: `No.`, `Route`, `Page`, `Description` สำหรับทุก routes ที่ embed
-3. บอกจำนวน routes/cards และชื่อ app ที่ใช้
-4. ถ้า user ต้องการเห็นผล → เสนอ `/visualize-in-web` render grid ตาม prompt นี้
+1. Put the whole prompt in a single ```text block — copy-paste ready
+2. Run `/report` to summarize: `No.`, `Route`, `Page`, `Description` for every embedded route
+3. State the routes/cards count and the app name used
+4. If the user wants to see the result → offer `/visualize-in-web` to render the grid per this prompt
 
 ## Rules
 
 ### 1. Prompt Structure Contract
 
-- บรรทัดแรกของ prompt = ชื่อ app เท่านั้น (ไม่มี heading อื่นก่อนหน้า)
-- ต้องระบุทั้ง 3 viewports: desktop, tablet, mobile
-- Card count = route count เสมอ — ห้ามรวมหลาย routes ใน card เดียวหรือข้าม route ใด
-- แต่ละ card ต้องมี mobile UXUI preview + route + page + description ครบ
+- The first line of the prompt = the app name only (no other heading before it)
+- All 3 viewports must be stated: desktop, tablet, mobile
+- Card count = route count always — never merge several routes into one card or skip any route
+- Each card must have a mobile UXUI preview + route + page + description, complete
 
 ### 2. Routes Completeness
 
-- Routes ต้องมาจาก codebase จริง (`/scan-codebase` + `/report-uxui-all-routes`) — ห้ามเดาหรือ sample
-- Dynamic routes (`[id]`, `:id`, `$slug`) ใส่ pattern เดิมใน route path
-- ถ้า routes > 24 → ยังแสดงครบทุก routes แต่เตือนว่า grid ยาว
+- Routes must come from the real codebase (`/scan-codebase` + `/report-uxui-all-routes`) — never guess or sample
+- Dynamic routes (`[id]`, `:id`, `$slug`) keep their original pattern in the route path
+- If routes > 24 → still show every route, but warn the grid will be long
 
 ### 3. Formatting
 
-- Prompt อยู่ใน ```text block เดียว — ไม่แตกเป็นหลาย block
-- ใช้ backticks สำหรับ `route-path`, `page-name`, `app-name` ในเนื้อหา prompt
-- ไม่ใช้ bold markers; report summary ตาม `/report` conventions
+- The prompt lives in a single ```text block — do not split into multiple blocks
+- Use backticks for `route-path`, `page-name`, `app-name` in the prompt content
+- No bold markers; the report summary follows `/report` conventions
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the generated prompt stays in chat
 
 ## Expected Outcome
 
-- Prompt พร้อมใช้ที่ขอ UX/UI web design ครบ desktop/tablet/mobile เป็น 4-col card grid
-- ชื่อ app อยู่บนสุด; cards ครบเท่าจำนวน routes; แต่ละ card มี mobile UXUI + route + page + description
-- รายการ routes ทั้งหมด embed ใน prompt — ไม่มี placeholder
+- A ready-to-use prompt requesting a full desktop/tablet/mobile web UX/UI design as a 4-col card grid
+- App name on top; cards exactly matching the route count; each card with mobile UXUI + route + page + description
+- The complete route list embedded in the prompt — no placeholders

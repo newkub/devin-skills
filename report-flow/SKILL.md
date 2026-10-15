@@ -1,6 +1,6 @@
 ---
 name: report-flow
-description: สรุปขั้นตอน workflow หรือกระบวนการเป็นลำดับ step ทีอ่านง่าย
+description: Summarize a workflow or process as an easy-to-read sequence of steps
 argument-hint: "[scope]"
 related:
   - report
@@ -9,85 +9,85 @@ related:
 
 ## Goal
 
-สรุปกระบวนการ, workflow หรือขั้นตอนการทำงานเป็นรายการ step-by-step ทีอ่านง่าย ติดตามได้ และนำไปใช้ซ้ำได้
+Summarize a process, workflow, or set of working steps as an easy-to-read step-by-step list that is trackable and reusable
 
 ## Scope
 
-ใช้เมื่อต้องการอธิบาย flow ของ process, algorithm, user journey, หรือ task ให้ผู้อื่นเข้าใจตามลำดับ
+Use when explaining the flow of a process, algorithm, user journey, or task to others in sequence
 
 ## Execute
 
 ### 1. Identify Flow
 
-> Goal: ระบุกระบวนการทีต้องสรุป
+> Goal: Identify the process to summarize
 
-1. รับ topic หรือ process จาก user หรือ context
-2. ระบุ trigger หรือจุดเริ่มต้น
-3. ระบุ output หรือจุดจบ
-4. ระบุ stakeholders หรือ systems ที่เกี่ยวข้อง
+1. Take the topic or process from the user or context
+2. Identify the trigger or starting point
+3. Identify the output or ending point
+4. Identify the stakeholders or systems involved
 
 ### 2. Extract Steps
 
-> Goal: แยกกระบวนการออกเป็น steps
+> Goal: Break the process into steps
 
-1. รวบรวมขั้นตอนทั้งหมดจาก source (code, docs, conversation, observation)
-2. จัดลำดับตามเวลา/dependency
-3. กรอง steps ที่ซ้ำซ้อนหรือไม่จำเป็น
-4. ถ้ามี branches หรือ conditions → ระบุ decision points
+1. Collect all steps from the source (code, docs, conversation, observation)
+2. Order them by time/dependency
+3. Filter out duplicated or unnecessary steps
+4. If there are branches or conditions → identify decision points
 
 ### 3. Structure Steps
 
-> Goal: เขียน steps ในรูปแบบทีอ่านง่าย
+> Goal: Write steps in an easy-to-read form
 
-1. ใช้ continuous numbering `1.`, `2.`, `3.`
-2. ถ้ามี sub-step ใช้ `1.1`, `1.2`
-3. แต่ละ step ระบุ action, responsible party, input, output
-4. ใช้ `>` สำหรับ decision/condition เช่น `> ถ้า X → ทำ A, ถ้าไม่ → ทำ B`
-5. ถ้ามี loop → ระบุ condition ทีกลับไปทำซ้ำ
+1. Use continuous numbering `1.`, `2.`, `3.`
+2. If there are sub-steps, use `1.1`, `1.2`
+3. Each step states the action, responsible party, input, and output
+4. Use `>` for decisions/conditions, e.g. `> if X → do A, if not → do B`
+5. If there is a loop → state the condition that repeats
 
 ### 4. Add Context
 
-> Goal: เพิ่มข้อมูลทีช่วยเข้าใจ flow
+> Goal: Add information that helps understand the flow
 
-1. ระบุเครื่องมือ/ระบบที่ใช้ในแต่ละ step
-2. ระบุข้อมูล input/output ที่สำคัญ
-3. ระบุเงื่อนไขหรือข้อจำกัด
-4. ระบุ failure path ถ้ามี
+1. State the tools/systems used in each step
+2. State the important input/output data
+3. State any conditions or constraints
+4. State the failure path if any
 
 ### 5. Format And Report
 
-> Goal: นำเสนอ flow ให้สวยงามและใช้งานได้
+> Goal: Present the flow nicely and usefully
 
-1. ใช้ `/report` สรุป overview: Step, Action, Input, Output, Tool
-2. แสดงลำดับ steps แบบ numbered list
-3. ถ้ามี branches → ใช้ nested list หรือ flow chart ASCII
-4. ทำ `/suggest-next-action`
+1. Use `/report` to summarize the overview: Step, Action, Input, Output, Tool
+2. Show the step sequence as a numbered list
+3. If there are branches → use a nested list or ASCII flow chart
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. One Action Per Step
 
-- แต่ละ step ควรมี action เดียวทีชัดเจน
-- ถ้ามีหลาย action → แยกย่อย
-- ไม่รวมหลายระบบเข้าด้วยกันโดยไม่ระบุชัด
+- Each step should have one clear action
+- If there are multiple actions → split them
+- Do not merge multiple systems together without stating it clearly
 
 ### 2. Deterministic Flow
 
-- ระบุเงื่อนไขทุกครั้งทีมี decision
-- ไม่เดา flow ถ้า input ไม่ชัด
-- ถ้ามีหลายทางเลือก → ระบุ default path
+- State the condition whenever there is a decision
+- Do not guess the flow if the input is unclear
+- If there are multiple options → state the default path
 
 ### 3. Reusability
 
-- ใช้ภาษาที general ไม่เจาะจงเครื่องมือมากเกินไป
-- ระบุ inputs/outputs ทีชัดเจนเพื่อนำไปใช้ซ้ำ
-- เก็บ flow ในไฟล์ `docs/flows/` ถ้าต้องการใช้ซ้ำ
+- Use general language, not too tied to specific tools
+- State inputs/outputs clearly for reuse
+- Keep the flow in `docs/flows/` files if it should be reused
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- กระบวนการถูกสรุปเป็น steps ต่อเนื่อง
-- แต่ละ step มี action, input, output ชัดเจน
-- ระบุ branches, loops, decision points
-- report สวยงาม อ่านง่าย พร้อม next action
+- The process is summarized into continuous steps
+- Each step has a clear action, input, and output
+- Branches, loops, and decision points are identified
+- Beautiful, easy-to-read report with a next action

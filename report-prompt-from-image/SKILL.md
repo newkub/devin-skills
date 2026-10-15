@@ -1,6 +1,6 @@
 ---
 name: report-prompt-from-image
-description: สร้าง image generation prompt จากรูปภาพด้วย AI vision ผ่าน bunx CLI
+description: Build an image generation prompt from a picture with AI vision via bunx CLI
 argument-hint: "[image-path] [style]"
 related:
   - gen-media
@@ -9,85 +9,85 @@ related:
 
 ## Goal
 
-สร้าง prompt สำหรับ AI image generation จากรูปภาพที่ user ให้มา
+Build a prompt for AI image generation from an image the user provides
 
 ## Scope
 
-- รองรับ local image file และ URL
-- รองรับ output สำหรับ Midjourney, Stable Diffusion, DALL-E, Pollinations
-- ใช้ bunx CLI หรือ vision API โดยไม่ต้องเขียน code
+- Supports local image files and URLs
+- Supports output for Midjourney, Stable Diffusion, DALL-E, Pollinations
+- Use a bunx CLI or a vision API without writing code
 
 ## Execute
 
 ### 1. Prepare Image
 
-> Goal: ตรวจสอบ input
+> Goal: Validate the input
 
-1. รับ image path หรือ URL
-2. ถ้า local file → ตรวจสอบว่ามีอยู่จริง
-3. ถ้า URL → ตรวจสอบว่าเข้าถึงได้
-4. ถ้าไฟล์ใหญ่เกินไป → resize ก่อนหรือแจ้ง user
+1. Take the image path or URL
+2. If a local file → verify it exists
+3. If a URL → verify it is reachable
+4. If the file is too large → resize first or tell the user
 
 ### 2. Choose Vision Tool
 
-> Goal: เลือก tool สำหรับวิเคราะห์รูปภาพ
+> Goal: Pick the tool to analyze the image
 
 1. Primary: `bunx @pollinations/cli gen text "<question>" --image <path>`
-   - ไม่ต้อง API key
-   - ใช้คำถามเฉพาะเพื่อขอ prompt
-2. Fallback: `bunx ollama run llava "<question>" --image <path>` ถ้ามี Ollama รันอยู่
-3. Fallback: ใช้ OpenAI/Anthropic vision API ผ่าน `bunx openai` หรือ `curl` ถ้ามี key
+   - No API key needed
+   - Use a specific question to request the prompt
+2. Fallback: `bunx ollama run llava "<question>" --image <path>` if Ollama is running
+3. Fallback: use an OpenAI/Anthropic vision API via `bunx openai` or `curl` if a key is available
 
 ### 3. Generate Prompt
 
-> Goal: ได้ prompt จากรูปภาพ
+> Goal: Get the prompt from the image
 
-1. สร้างคำถามเฉพาะตาม style:
-   - สำหรับ Midjourney/SD: `Generate a detailed Midjourney-style prompt that describes this image, including subject, style, lighting, composition, color palette, and mood.`
-   - สำหรับ DALL-E: `Generate a concise DALL-E prompt that describes this image in English.`
-   - ถ้า user ไม่ระบุ style → ใช้คำถาม generic: `Generate a detailed image generation prompt that describes this image.`
-2. รันคำสั่งกับ image path
-3. รอผล
-4. บันทึก prompt ลงไฟล์ถ้า user ต้องการ
+1. Craft a specific question per style:
+   - For Midjourney/SD: `Generate a detailed Midjourney-style prompt that describes this image, including subject, style, lighting, composition, color palette, and mood.`
+   - For DALL-E: `Generate a concise DALL-E prompt that describes this image in English.`
+   - If the user does not specify a style → use the generic question: `Generate a detailed image generation prompt that describes this image.`
+2. Run the command with the image path
+3. Wait for the result
+4. Save the prompt to a file if the user wants
 
 ### 4. Refine And Report
 
-> Goal: ปรับ prompt ให้พร้อมใช้
+> Goal: Polish the prompt to be ready to use
 
-1. ตัดส่วนที่ไม่จำเป็น เช่น "Sure, here is..."
-2. ถ้า prompt ยาวเกินไป → ย่อให้เหลือประมาณ 100 คำ
-3. ถ้า user ต้องการ style เฉพาะ → เติม parameters เช่น `--ar 16:9` หรือ `--v 6`
-4. แสดงผลด้วย `/report`
+1. Cut the unnecessary parts, e.g. "Sure, here is..."
+2. If the prompt is too long → condense it to about 100 words
+3. If the user wants a specific style → add parameters such as `--ar 16:9` or `--v 6`
+4. Present with `/report`
 
 ## Rules
 
 ### 1. No API Key Leak
 
-- ไม่ hardcode API key
-- ใช้ environment variable หรือถาม user
+- Never hardcode an API key
+- Use an environment variable or ask the user
 
 ### 2. Image Size
 
-- รองรับ `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`
-- ถ้า image ใหญ่เกินไปให้ resize ก่อน
+- Support `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`
+- Resize first if the image is too large
 
 ### 3. Prompt Output
 
-- default ใช้ภาษาอังกฤษเพื่อ compatibility กับ image generators
-- ถ้า user ขอภาษาอื่น ให้ระบุ
+- Default to English for compatibility with image generators
+- If the user asks for another language, state it
 
 ### 4. Output Only Prompt
 
-- ไม่ใช้ small talk ในผลลัพธ์
-- ถ้าต้องการคำอธิบายเพิ่ม ให้สรุปสั้นๆ
+- No small talk in the output
+- If extra explanation is needed, keep it brief
 
-- ใช้ /gen-media-ai-images ถ้าจำเป็น
-- ใช้ /gen-media-image-character ถ้าจำเป็น
+- Use /gen-media-ai-images if needed
+- Use /gen-media-image-character if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the generated prompt stays in chat
 
 ## Expected Outcome
 
-- image generation prompt ที่ copy ไปใช้ได้ทันที
-- ระบุ tool ที่ใช้
-- ถ้า fail มีแนวทาง fallback
+- An image generation prompt ready to copy and use
+- The tool used is stated
+- If it fails, a fallback approach exists

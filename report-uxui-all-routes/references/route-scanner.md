@@ -1,97 +1,97 @@
 ---
 name: route-scanner
-description: ขั้นตอน scan routes ทั้งหมดของ website (page + API routes) —
+description: Steps to scan all routes of a website (page + API routes) —
 ---
 
 ## Goal
 
-รวบรวม routes ทั้งหมดใน website project ทั้ง page routes และ API routes พร้อมระบุ parameters และ dynamic segments
+Collect all routes in a website project — both page routes and API routes — with parameters and dynamic segments identified
 
 ## Scope
 
-ใช้สำหรับ website project ที่ใช้ file-based routing, config-based routing หรือ route table เช่น Next.js, Nuxt, SvelteKit, SolidStart, TanStack Start, Remix, Astro
+For website projects using file-based routing, config-based routing, or a route table, e.g. Next.js, Nuxt, SvelteKit, SolidStart, TanStack Start, Remix, Astro
 
 ## Execute
 
 ### 1. Detect Routing Framework
 
-> Goal: ระบุ framework และ routing convention ที่ project ใช้
+> Goal: Identify the framework and routing convention the project uses
 
-1. อ่าน `package.json` เพื่อดู dependencies เช่น `next`, `nuxt`, `svelte-kit`, `solid-start`, `@tanstack/start`, `react-router`, `astro`
-2. ตรวจสอบ directory structure: `app/`, `src/app/`, `pages/`, `src/pages/`, `src/routes/`, `routes/`
-3. ดู `references/frameworks.md` สำหรับ convention ของแต่ละ framework
-4. ถ้า project มีหลาย routing pattern ให้ระบุทุก pattern
+1. Read `package.json` for dependencies such as `next`, `nuxt`, `svelte-kit`, `solid-start`, `@tanstack/start`, `react-router`, `astro`
+2. Check the directory structure: `app/`, `src/app/`, `pages/`, `src/pages/`, `src/routes/`, `routes/`
+3. See `references/frameworks.md` for each framework's convention
+4. If the project has multiple routing patterns, identify every pattern
 
 ### 2. Scan Page Routes
 
-> Goal: รายการ page routes ทั้งหมด
+> Goal: The list of all page routes
 
-1. สแกน directory ที่เก็บ page files ตาม framework ที่ตรวจพบ
-2. แปลง file path เป็น URL path โดยลบ extensions และตัวลงท้าย `index`, `page`, `layout`
-3. ระบุ dynamic segments เช่น `[id]`, `[...slug]`, `($lang)`, `[[optional]]`
-4. เก็บข้อมูล: method (GET), path, file, parameters, group/folder
+1. Scan the directory holding page files per the detected framework
+2. Convert file paths to URL paths by stripping extensions and the `index`, `page`, `layout` suffixes
+3. Identify dynamic segments such as `[id]`, `[...slug]`, `($lang)`, `[[optional]]`
+4. Record: method (GET), path, file, parameters, group/folder
 
 ### 3. Scan API Routes
 
-> Goal: รายการ API routes ทั้งหมด
+> Goal: The list of all API routes
 
-1. สแกน `app/api/`, `src/server/`, `src/routes/api/`, `pages/api/`, `src/pages/api/` ตาม framework
-2. ระบุ HTTP method จากชื่อ file เช่น `+server.ts` ใน SvelteKit, `route.ts` ใน Next.js, `+page.server.ts`
-3. เก็บข้อมูล: method, path, file, parameters, description ถ้ามี
+1. Scan `app/api/`, `src/server/`, `src/routes/api/`, `pages/api/`, `src/pages/api/` per the framework
+2. Identify the HTTP method from the file name, e.g. `+server.ts` in SvelteKit, `route.ts` in Next.js, `+page.server.ts`
+3. Record: method, path, file, parameters, description if present
 
 ### 4. Extract Route Metadata
 
-> Goal: รวบรวม metadata สำหรับแต่ละ route
+> Goal: Collect metadata for each route
 
-1. อ่านไฟล์ route เพื่อดู exports เช่น `meta`, `loader`, `action`, `handler`
-2. ระบุ middleware หรือ guards ที่ใช้
-3. ระบุ redirects, rewrites, หรือ catch-all routes
-4. แยก public routes กับ routes ที่ต้อง authentication
+1. Read the route file for exports such as `meta`, `loader`, `action`, `handler`
+2. Identify the middleware or guards used
+3. Identify redirects, rewrites, or catch-all routes
+4. Separate public routes from routes requiring authentication
 
 ### 5. Format Output
 
-> Goal: แสดงผล routes ในรูปแบบทีอ่านง่าย
+> Goal: Present the routes in an easy-to-read form
 
-1. ใช้ `/report` เพื่อจัดรูปแบบตาราง
-2. คอลัมน์: No, Type, Method, Path, File, Parameters, Notes
-3. เรียงตาม path ตามตัวอักษร
-4. แยก group: Page Routes, API Routes, Redirects, Catch-all
+1. Use `/report` to format the table
+2. Columns: No, Type, Method, Path, File, Parameters, Notes
+3. Order alphabetically by path
+4. Split groups: Page Routes, API Routes, Redirects, Catch-all
 
 ## Rules
 
 ### 1. Framework Detection
 
-- ตรวจ dependencies ก่อนเดา convention
-- รองรับหลาย routing pattern ใน project เดียว
-- ถ้าไม่มั่นใจให้ report ความไม่แน่ใจ
+- Check dependencies before guessing conventions
+- Support multiple routing patterns in one project
+- If unsure, report the uncertainty
 
 ### 2. Route Extraction
 
-- แปลง file path เป็น URL path ตาม convention ของ framework
-- ไม่รวม `layout`, `error`, `loading`, `template` files เป็น routes
-- รวม dynamic segments ตามสัญลักษณ์จริง (`[]`, `()`, `[...]`)
+- Convert file paths to URL paths per the framework's convention
+- Do not count `layout`, `error`, `loading`, `template` files as routes
+- Keep dynamic segments with their real notation (`[]`, `()`, `[...]`)
 
 ### 3. API Route Handling
 
-- ระบุ HTTP method ให้ถูกต้องตาม convention
-- ถ้า file ไม่ระบุ method ให้ใช้ GET เป็นค่าเริ่มต้น
-- แยก API routes ออกจาก page routes ชัดเจน
+- State the HTTP method correctly per convention
+- If a file states no method, default to GET
+- Keep API routes clearly separated from page routes
 
 ### 4. Reporting
 
-- ใช้ `/report` สำหรับรายงาน
-- ใช้ backticks สำหรับ paths และ method
-- ระบุ routes ทีอาจ conflict หรือซ้ำซ้อน
+- Use `/report` for the report
+- Use backticks for paths and methods
+- Identify routes that may conflict or duplicate
 
-- ใช้ /analyze-attack-surface ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
-- ใช้ /deep-test api (all-routes check) ถ้าจำเป็น
+- Use /analyze-attack-surface if needed
+- Use /deep-review-codebase if needed
+- Use /deep-test api (all-routes check) if needed
 
 ## Expected Outcome
 
-- รายการ page routes ทั้งหมดใน project
-- รายการ API routes ทั้งหมดใน project
-- Dynamic segments และ parameters ถูกระบุ
-- Routes ถูกจัดกลุ่มและเรียงลำดับชัดเจน
-- ไม่มี routes ทีหลงหายจาก file-based convention
+- The list of all page routes in the project
+- The list of all API routes in the project
+- Dynamic segments and parameters identified
+- Routes grouped and ordered clearly
+- No routes lost from the file-based convention
 

@@ -1,6 +1,6 @@
 ---
 name: report-review
-description: รายงาน review findings เป็นตารางในแชท (No./Action/Evidence/Severity/Priority/Status) ไม่สร้างไฟล์
+description: Report review findings as a chat table (No./Action/Evidence/Severity/Priority/Status), no files
 argument-hint: "[scope-or-findings-source]"
 related:
   - deep-review-codebase
@@ -13,41 +13,41 @@ related:
 
 ## Goal
 
-รายงานผล review เป็นตารางเดียวในแชท — ทุก row มี action ทำได้จริงและหลักฐานจริง; ไม่มีไฟล์รายงาน
+Report review results as one chat table — every row has an actionable step and real evidence; no report files
 
 ## Scope
 
-- เป็น final report ของทุก `review-*`/`deep-review-codebase`/`report-*` — canonical format ตาม `update-devin-global-skills` `## Conventions → Templates` แถว `review-*`/`report-*`
-- เรียกเดี่ยวโดยไม่มีข้อมูล findings → รวบรวมก่อนด้วย `/deep-review-codebase`
-- ไฟล์สร้างเฉพาะเมื่อ user ขอร้องตรงๆ → `/create-report-in-dot-devin`; artifact ตาม nature ของ skill (HTML/slides/diagram/schema file) ยังสร้างได้ผ่าน owner skill
+- The final report of every `review-*`/`deep-review-codebase`/`report-*` — canonical format per `update-devin-global-skills` `## Conventions → Templates` rows `review-*`/`report-*`
+- Called standalone with no findings data → collect first with `/deep-review-codebase`
+- Files are created only when the user explicitly asks → `/create-report-in-dot-devin`; artifacts per the skill's nature (HTML/slides/diagram/schema file) can still be created via the owner skill
 
 ## Execute
 
-1. เก็บ findings จากแหล่งข้อมูล — `review-report.json` (ตาราง findings), ผลจาก domain `review-*`, หรือ scope ที่ user ระบุ; ไม่มี → รัน `/deep-review-codebase` ก่อน
-2. Dedup key = `file + rule/message-normalized + domain` (merge เป็น highest severity + fixSkill ที่เฉพาะกว่า) แล้วเรียงด้วย severity → priority (P0→P4 ตาม `deep-review-codebase` `## Domain Pipeline`)
-3. สรุปบนหัวรายงาน: score/grade (ถ้ามี), จำนวน findings ต่อ severity, mode (full/diff) + scope ที่ run, confidence
-4. รายงานเป็นตารางเดียวในแชท คอลัมน์คงที่:
+1. Collect findings from the source — `review-report.json` (findings table), domain `review-*` results, or the scope the user specified; none → run `/deep-review-codebase` first
+2. Dedup key = `file + rule/message-normalized + domain` (merge into the highest severity + the more specific fixSkill), then order by severity → priority (P0→P4 per `deep-review-codebase` `## Domain Pipeline`)
+3. Summarize at the report header: score/grade (if any), finding counts per severity, mode (full/diff) + the scope run, confidence
+4. Report as one chat table with fixed columns:
 
    | No. | Action | Evidence | Reason | Severity | Risk | Priority | Owner skill | Status |
    |-----|--------|----------|--------|----------|------|----------|-------------|--------|
-   | 1 | เลื่อน secret ไป env var | `src/api/x.ts:12` | hardcode secret ใน code | 🔴 High | breach | P0 | `/improve security` | ❌ open |
+   | 1 | Move the secret to an env var | `src/api/x.ts:12` | hardcoded secret in code | 🔴 High | breach | P0 | `/improve security` | ❌ open |
 
-   - `Action` = สิ่งที่ต้องทำ (imperative, 1 action ต่อ row) — `Evidence` = file:line หรือหลักฐานจริง (บังคับทุก row, ห้ามมโน)
-   - `Reason` = กติกา/rule ที่ fail — `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low
-   - `Owner skill` = field `fixSkill` — `Priority` รวม status new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
-5. ปิดท้ายด้วยลำดับ execute: Foundation → Dependencies → High impact → Critical path (effort โดยประมาณต่อ item — ไม่ใช่ flat TODO) และ coverage ของ domain/workspace ที่ run (done/skipped(reason)/failed จาก ledger)
-6. Run `/suggest-next-action` — findings ต้องแก้ → `/deep-review-codebase-then-fix`
+   - `Action` = what must be done (imperative, 1 action per row) — `Evidence` = file:line or real evidence (mandatory on every row, never invented)
+   - `Reason` = the rule that failed — `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low
+   - `Owner skill` = the `fixSkill` field — `Priority` includes status new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
+5. Close with the execution order: Foundation → Dependencies → High impact → Critical path (approximate effort per item — not a flat TODO) and the coverage of domains/workspaces run (done/skipped(reason)/failed from the ledger)
+6. Run `/suggest-next-action` — findings that must be fixed → `/deep-review-codebase-then-fix`
 
 ## Rules
 
-- Chat เท่านั้น — ไม่สร้างไฟล์ `.devin/temp/report/` เด็ดขาด นอกจาก user ขอร้อง explicitly
-- ทุก row ต้องมีหลักฐานจริง (spot-check อ่าน file ที่อ้างถึง file:line อย่างน้อย 1 item ต่อ domain) — ห้าม guessing, ห้าม vacuous row
-- ตารางเดียวรวมทุก domain — ไม่แยกราย many tables ซ้ำซ้อน; กลุ่ม row ด้วย severity→priority
-- findings มากเกินไป → report รายการ priority สูงสุดก่อน แล้วระบุ "remaining skipped (n)" ชัดเจน ไม่เงียบตัด
-- ไม่แก้ code ในขั้น report — report only; ผูก fixSkill กับทุก action
+- Chat only — never create `.devin/temp/report/` files unless the user explicitly asks
+- Every row must have real evidence (spot-check by reading the referenced file:line for at least 1 item per domain) — no guessing, no vacuous rows
+- One table covering every domain — do not split into many redundant tables; group rows by severity→priority
+- Too many findings → report the highest-priority list first, then clearly state "remaining skipped (n)"; never silently truncate
+- Do not change code in the report step — report only; bind a fixSkill to every action
 
 ## Expected Outcome
 
-- ตารางครบถ้วนในแชท — ทุก row มี `Action` + `Evidence` จริง + สรุป + ลำดับ execute
-- coverage ระบุชัด ทุก domain done/skipped/failed
-- ไม่มีไฟล์รายงานถูกสร้าง (เว้น user ขอ → `/create-report-in-dot-devin`)
+- A complete table in chat — every row with a real `Action` + `Evidence` + summary + execution order
+- Coverage clearly stated — every domain done/skipped/failed
+- No report files created (unless the user asks → `/create-report-in-dot-devin`)

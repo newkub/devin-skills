@@ -1,6 +1,6 @@
 ---
 name: report-release-readiness
-description: รายงานความพร้อมก่อน release — tests, changelog, version, migrations และ deploy readiness
+description: Report readiness before release — tests, changelog, version, migrations, and deploy readiness
 argument-hint: "[version-or-tag]"
 related:
   - follow-release
@@ -14,79 +14,79 @@ related:
 
 ## Goal
 
-รายงานสถานะความพร้อมของ release แบบครบถ้วน — tests ผ่านไหม, version/changelog ตรง, migrations พร้อม, git state สะอาด — เป็น go/no-go checklist เดียว
+Report the release readiness state completely — tests passing, version/changelog aligned, migrations ready, git state clean — as a single go/no-go checklist
 
 ## Scope
 
-- ใช้ก่อน `tag`/`release`/`deploy` — checklist อัตโนมัติแทนเช็คมือ
-- ครอบคลุม: git state, version consistency, tests, build, changelog, migrations, security checks, deploy prerequisites
-- Read-only: รายงาน readiness — ไม่แก้หรือ release เอง
+- Use before `tag`/`release`/`deploy` — an automatic checklist instead of manual checks
+- Covers: git state, version consistency, tests, build, changelog, migrations, security checks, deploy prerequisites
+- Read-only: report readiness — do not fix or release yourself
 
 ## Execute
 
 ### 1. Git State
 
-> Goal: repo พร้อม release
+> Goal: the repo is ready to release
 
-1. ทำ `/check-uncommit` — ไม่มี uncommitted changes
-2. ทำ `/check-unpush` — local commits push ครบ
-3. ตรวจ branch ถูกต้อง (release จาก main/release branch ตาม convention) และ up-to-date กับ remote
+1. Run `/check-uncommit` — no uncommitted changes
+2. Run `/check-unpush` — all local commits pushed
+3. Verify the correct branch (release from the main/release branch per convention) and that it is up-to-date with the remote
 
 ### 2. Version Consistency
 
-> Goal: version ตรงทุกที่
+> Goal: the version matches everywhere
 
-1. ทำ `/deep-review-codebase` — manifest version vs latest tag vs changelog
-2. ตรวจ version bump เหมาะสม (semver ตาม changes ที่มี)
-3. flag pre-release versions ถ้าตั้งใจ stable release
+1. Run `/deep-review-codebase` — manifest version vs latest tag vs changelog
+2. Verify the version bump is appropriate (semver per the actual changes)
+3. Flag pre-release versions if a stable release is intended
 
 ### 3. Quality Gates
 
-> Goal: verification ครบก่อน release
+> Goal: full verification before release
 
-1. `/run-test all` — ผ่านทั้งหมด ไม่มี skipped/failed ที่ค้าง
-2. `/run-build` — production build สำเร็จ
+1. `/run-test all` — everything passes, no lingering skipped/failed tests
+2. `/run-build` — the production build succeeds
 3. `/run-lint` + `/run-typecheck` — clean
-4. `/run-audit` — ไม่มี critical vulnerabilities
+4. `/run-audit` — no critical vulnerabilities
 
 ### 4. Release Artifacts
 
-> Goal: เอกสารและ data พร้อม
+> Goal: documents and data are ready
 
-1. Changelog มี entry สำหรับ version นี้ — `/report` ดูว่าครบ
-2. ทำ `/deep-review-codebase` — pending migrations ระบุ deploy order ชัด
-3. Docs/readme ตรงกับ release ถ้ามี user-facing changes
-4. Breaking changes ถูก documented
+1. The changelog has an entry for this version — use `/report` to check completeness
+2. Run `/deep-review-codebase` — pending migrations with a clear deploy order
+3. Docs/readme match the release if there are user-facing changes
+4. Breaking changes are documented
 
 ### 5. Report Verdict
 
-> Goal: go/no-go พร้อม blockers
+> Goal: go/no-go with blockers
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Status`, `Detail`, `Blocker`
-2. Verdict: `ready` / `ready-with-warnings` / `blocked` พร้อมรายการที่ต้องแก้
-3. แนะนำ next steps: `/follow-release`, `/run-release` เมื่อ ready
+1. Use `/report` with columns: `No.`, `Check`, `Status`, `Detail`, `Blocker`
+2. Verdict: `ready` / `ready-with-warnings` / `blocked` with the list of things to fix
+3. Recommend next steps: `/follow-release`, `/run-release` when ready
 
 ## Rules
 
 ### 1. Evidence-Based
 
-- ทุก check มีผลจริงจากการรัน/อ่านไฟล์ — ไม่ checkmark ลอยๆ
-- ถ้าตรวจอะไรไม่ได้ → ระบุ `unknown` ไม่ใช่ assume pass
+- Every check has a real result from running/reading files — no floating checkmarks
+- If something cannot be verified → state `unknown`, never assume pass
 
 ### 2. Read-Only
 
-- ไม่แก้ findings และไม่ release — รายงานเท่านั้น
-- blockers ต้องระบุ fix path ชัดเจน
+- Do not fix findings and do not release — report only
+- Blockers must state a clear fix path
 
 ### 3. Project Aware
 
-- checks ที่ไม่ apply (ไม่มี DB → ข้าม migrations) ให้ข้ามพร้อมเหตุผล
-- ใช้ release process ที่ project กำหนด (`.github`, `AGENTS.md`) ถ้ามี
+- Non-applicable checks (no DB → skip migrations) are skipped with a reason
+- Use the release process the project defines (`.github`, `AGENTS.md`) if present
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- Readiness checklist ครบทุกมิติพร้อมผลจริง
-- Verdict ชัดเจน + blockers ที่ actionable
-- มั่นใจได้ว่า release ไม่ลืมขั้นตอน
+- A readiness checklist covering every dimension with real results
+- A clear verdict + actionable blockers
+- Confidence the release misses no step

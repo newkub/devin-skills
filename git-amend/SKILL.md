@@ -1,6 +1,6 @@
 ---
 name: git-amend
-description: Amend commit ล่าสุดอย่างปลอดภัย — เช็ค pushed ก่อน, staged changes และ message edit
+description: Safely amend the latest commit — check pushed first, staged changes, and message edit
 argument-hint: "[--no-edit|message]"
 related:
   - git-commit
@@ -12,54 +12,54 @@ related:
 
 ## Goal
 
-แก้ commit ล่าสุดด้วย `git commit --amend` — เพิ่ม changes หรือแก้ message — โดยไม่ rewrite pushed history
+Fix the latest commit with `git commit --amend` — add changes or edit the message — without rewriting pushed history
 
 ## Scope
 
-- amend staged changes เข้า commit ล่าสุด, แก้ commit message, `--no-edit`
-- ครอบคลุมเฉพาะ HEAD commit — แก้ commit เก่ากว่านั้น → `/git-rebase` (autosquash)
+- amend staged changes into the latest commit, edit the commit message, `--no-edit`
+- covers only the HEAD commit — to fix older commits → `/git-rebase` (autosquash)
 
 ## Execute
 
 ### 1. Safety Check
 
-> Goal: ยืนยันว่า amend ไม่ rewrite public history
+> Goal: Confirm the amend does not rewrite public history
 
-1. `git status` — commit ล่าสุด push ไปแล้วหรือยัง (`git status` บอก ahead/behind, หรือ `git log origin/<branch>..HEAD`)
-2. pushed แล้ว → ห้าม amend — สร้าง commit ใหม่ หรือ `/git-revert` ถ้าต้องย้อน
-3. ถ้ามีคนอื่นอาจ pull branch นี้แล้ว → ห้าม amend เช่นกัน
+1. `git status` — has the latest commit been pushed already (`git status` shows ahead/behind, or `git log origin/<branch>..HEAD`)
+2. already pushed → never amend — create a new commit, or `/git-revert` if it must be undone
+3. if others may have pulled this branch already → do not amend either
 
 ### 2. Stage And Amend
 
-> Goal: change/message ที่แก้รวมเข้า commit เดิม
+> Goal: the changed content/message is merged into the original commit
 
 ```bash
 git add <files>
-git commit --amend --no-edit      # เพิ่ม changes ไม่แก้ message
-git commit --amend -m "new msg"   # แก้ message
-git commit --amend                # แก้ทั้งคู่ (เปิด editor)
+git commit --amend --no-edit      # add changes without editing the message
+git commit --amend -m "new msg"   # edit the message
+git commit --amend                # edit both (opens editor)
 ```
 
-1. stage เฉพาะ changes ที่เป็นของ commit นั้น — amend รวม staged ทั้งหมด
-2. amend เปลี่ยน sha — commits ที่ depend on sha เดิม (cherry-picks, notes) อ้างอิงเก่า
+1. stage only the changes that belong to that commit — amend includes all staged content
+2. amend changes the sha — commits that depend on the old sha (cherry-picks, notes) keep stale references
 
 ### 3. Verify
 
-> Goal: commit ถูกต้องและ history สะอาด
+> Goal: the commit is correct and history stays clean
 
-1. `git show HEAD` — เนื้อหา + message ตรง intent
-2. `git log --oneline -3` — ไม่มี duplicate/broken commits
-3. ถ้า branch push อยู่แล้วและจำเป็นต้อง amend (เช่น local-only branch ที่ push preview) → `git push --force-with-lease` เท่านั้น
+1. `git show HEAD` — content + message match the intent
+2. `git log --oneline -3` — no duplicate/broken commits
+3. if the branch is already pushed and amend is required (e.g. a local-only branch pushed as preview) → `git push --force-with-lease` only
 
 ## Rules
 
-- amend เฉพาะ commit ที่ยังไม่ push เท่านั้น — pushed = rewrite public history
-- `--force-with-lease` เท่านั้นถ้าต้อง push หลัง amend — ห้าม `--force`
-- อย่า amend เพื่อแก้ change ที่ควรเป็น commit ใหม่ — amend คือแก้ commit เดิม ไม่ใช่หลบ history ใหม่
-- amend ขณะ rebase/merge กำลังค้าง → resolve state นั้นก่อน
-- ใช้ /ask-me ถ้าจำเป็น
+- amend only commits that have not been pushed — pushed = rewriting public history
+- `--force-with-lease` only if pushing is required after amend — never `--force`
+- do not amend to fix a change that should be a new commit — amend corrects the existing commit, it is not a way to avoid new history
+- amending while a rebase/merge is in progress → resolve that state first
+- Use /ask-me if needed
 
 ## Expected Outcome
 
-- HEAD commit มี changes/message ที่ถูกต้อง sha ใหม่
-- ไม่มี shared history ถูก rewrite
+- the HEAD commit has the correct changes/message with a new sha
+- no shared history was rewritten

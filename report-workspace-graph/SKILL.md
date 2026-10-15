@@ -1,6 +1,6 @@
 ---
 name: report-workspace-graph
-description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
+description: Report the relations between workspaces in a monorepo with a dependency graph
 argument-hint: "[scope]"
 related:
   - check-monorepo
@@ -18,152 +18,152 @@ related:
 
 ## Goal
 
-รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo เพื่อให้เห็นการพึ่งพาอาศัยกัน imports และ shared dependencies
+Report the relations between workspaces in a monorepo, to reveal their mutual dependencies, imports, and shared dependencies
 
 ## Scope
 
-ใช้สำหรับ monorepo ที่มี workspaces หลาย packages — ไม่ซ้ำกับ `/list-workspaces` ที่เน้นรายการ workspaces แต่เน้นความสัมพันธ์ระหว่าง workspaces
+For monorepos with many workspace packages — not duplicating `/list-workspaces` which lists workspaces; this focuses on relations between workspaces
 
 ## Execute
 
 ### 1. Detect Workspace Structure
 
-> Goal: ตรวจพบโครงสร้าง workspaces ใน project
+> Goal: Detect the workspace structure in the project
 
-1. ทำ `/check-monorepo` เพื่อตรวจสอบว่าเป็น monorepo หรือไม่
-2. อ่าน `package.json` ที่ root ดู `workspaces` หรือ `pnpm-workspace.yaml` หรือ `turbo.json`
-3. ระบุ workspace `name` และ `path` ของแต่ละ workspace
-4. ถ้าไม่ใช่ monorepo ให้ report สถานะและ stop
+1. Run `/check-monorepo` to verify whether it is a monorepo
+2. Read the root `package.json` for `workspaces`, or `pnpm-workspace.yaml`, or `turbo.json`
+3. Identify each workspace's `name` and `path`
+4. If not a monorepo, report the status and stop
 
 ### 2. Collect Workspace Metadata
 
-> Goal: รวบรวมข้อมูลพื้นฐานของแต่ละ workspace
+> Goal: Collect each workspace's basic data
 
-1. อ่าน `package.json` ของแต่ละ workspace
-2. บันทึก `name`, `version`, `dependencies`, `devDependencies`, `peerDependencies`
-3. บันทึก `exports`, `main`, `types` ถ้ามี
-4. ระบุ workspace type: `app`, `package`, `tool`, `config`
+1. Read each workspace's `package.json`
+2. Record `name`, `version`, `dependencies`, `devDependencies`, `peerDependencies`
+3. Record `exports`, `main`, `types` if present
+4. Identify the workspace type: `app`, `package`, `tool`, `config`
 
 ### 3. Analyze Internal Dependencies
 
-> Goal: วิเคราะห์ dependencies ภายใน monorepo
+> Goal: Analyze dependencies inside the monorepo
 
-1. ค้นหา `workspace:*` หรือชื่อ workspace อื่นใน `dependencies` และ `devDependencies`
-2. สร้าง directed graph ของ internal dependencies
-3. ระบุ parent-child relations
-4. ระบุ workspaces ที่เป็น leaf หรือ root
+1. Find `workspace:*` or other workspace names in `dependencies` and `devDependencies`
+2. Build a directed graph of internal dependencies
+3. Identify parent-child relations
+4. Identify workspaces that are leaves or roots
 
 ### 4. Analyze External References
 
-> Goal: วิเคราะห์การ import หรืออ้างอิงระหว่าง workspaces ผ่าน source code
+> Goal: Analyze imports or references between workspaces through source code
 
-1. ใช้ `grep` ค้นหา `from '<workspace-name>'` หรือ `from '<workspace-path>'`
-2. นับจำนวน imports ระหว่าง workspaces
-3. ระบุไฟล์และ path ที่มีการอ้างอิง
-4. แยกแยะ direct imports กับ re-exports
+1. Use `grep` to find `from '<workspace-name>'` or `from '<workspace-path>'`
+2. Count imports between workspaces
+3. Identify the files and paths holding the references
+4. Distinguish direct imports from re-exports
 
 ### 5. Identify Shared Dependencies
 
-> Goal: หา dependencies ที่หลาย workspace ใช้ร่วมกัน
+> Goal: Find dependencies shared across multiple workspaces
 
-1. เปรียบเทียบ dependencies ระหว่าง workspaces
-2. ระบุ dependencies ที่มี version ต่างกัน
-3. ระบุ dependencies ที่ใช้ร่วมกันทั้งหมด
-4. แนะนำให้ hoist ถ้าจำเป็น
+1. Compare dependencies between workspaces
+2. Identify dependencies with differing versions
+3. Identify dependencies fully shared across workspaces
+4. Recommend hoisting when necessary
 
 ### 6. Detect Circular Dependencies
 
-> Goal: ตรวจหา circular dependencies ระหว่าง workspaces
+> Goal: Detect circular dependencies between workspaces
 
-1. ทำ `/follow-tool-madge` ระหว่าง workspaces
-2. ระบุวงจรทั้งหมดถ้ามี
-3. ระบุ severity ของแต่ละวงจร
-4. แนะนำวิธีแก้ไข
+1. Run `/follow-tool-madge` across workspaces
+2. Identify every cycle if any
+3. State the severity of each cycle
+4. Recommend fixes
 
 ### 7. Categorize Relations
 
-> Goal: จัดประเภทความสัมพันธ์ระหว่าง workspaces
+> Goal: Classify the relations between workspaces
 
-1. จัดกลุ่มตาม relation type: `depends-on`, `imports-from`, `shared-dep`, `peer`, `circular`
-2. จัดกลุ่มตามทิศทาง: `inbound`, `outbound`, `bidirectional`
-3. ระบุ coupling strength ตามจำนวน references
-4. ระบุ workspaces ที่ loosely coupled หรือ tightly coupled
+1. Group by relation type: `depends-on`, `imports-from`, `shared-dep`, `peer`, `circular`
+2. Group by direction: `inbound`, `outbound`, `bidirectional`
+3. State coupling strength by reference count
+4. Identify loosely coupled and tightly coupled workspaces
 
 ### 8. Format Report
 
-> Goal: จัดรูปแบบรายงาน
+> Goal: Format the report
 
-1. ทำ `/report` เพื่อจัดรูปแบบตาราง
-2. กำหนด columns: `No.`, `Source`, `Target`, `Relation`, `Strength`, `Files`, `Notes`
-3. แสดง dependency graph ด้วย text หรือ mermaid
-4. แยก section: Internal Relations, Shared Dependencies, Circular, Recommendations
+1. Run `/report` to format the table
+2. Define columns: `No.`, `Source`, `Target`, `Relation`, `Strength`, `Files`, `Notes`
+3. Show the dependency graph with text or mermaid
+4. Split into sections: Internal Relations, Shared Dependencies, Circular, Recommendations
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (workspace graph)
+> Goal: report easy to read, key findings summarized at the top, leading to action (workspace graph)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (workspace graph)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (workspace graph)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (workspace graph)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings at the top before details (workspace graph)
+2. Use `/report` for comparison tables with multiple columns (workspace graph)
+3. Use `/report` for status/progress/logs reports
+4. Use the "No." column as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (workspace graph)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always run `/suggest-next-action` at the end of the report
 
 ### 1. Workspace Detection
 
-- ตรวจสอบ monorepo ก่อนเสมอ
-- รองรับ `npm/yarn/pnpm workspaces` และ `turbo`
-- ไม่ทำงานถ้าไม่ใช่ monorepo
+- Always verify monorepo status first
+- Support `npm/yarn/pnpm workspaces` and `turbo`
+- Do not run if it is not a monorepo
 
 ### 2. Relation Analysis
 
-- ใช้ `workspace:*` และ source imports ประกอบกัน
-- นับ coupling strength ตามจำนวน references
-- แยก `devDependencies` ออกจาก `dependencies`
+- Combine `workspace:*` data with source imports
+- Count coupling strength by reference number
+- Separate `devDependencies` from `dependencies`
 
 ### 3. Circular Dependencies
 
-- ใช้ `/follow-tool-madge`
-- ระบุ severity ของ circular
-- แนะนำ next step ให้ชัดเจน
+- Use `/follow-tool-madge`
+- State the severity of each circular dependency
+- Recommend the next step clearly
 
 ### 4. Output Format
 
-- ใช้ `/report` สำหรับตาราง
-- ใช้ mermaid หรือ text graph สำหรับ relations
-- ใช้ symbols: `➡️` depends, `↔️` circular, `🔗` shared
+- Use `/report` for tables
+- Use mermaid or a text graph for relations
+- Use symbols: `➡️` depends, `↔️` circular, `🔗` shared
 
 ### 5. Non-Redundancy
 
-- ไม่ซ้ำกับ `/list-workspaces`
-- ไม่ซ้ำกับ `/follow-tool-madge`
-- ใช้ results จาก skills เหล่านั้นแล้วเพิ่ม relation analysis
+- Do not duplicate `/list-workspaces`
+- Do not duplicate `/follow-tool-madge`
+- Take those skills' results, then add relation analysis
 
 ### 6. Chat-Only Output
 
-- รายงานทั้งหมดต้องอยู่ใน chat เท่านั้น
-- ห้ามเปิด browser, web preview, หรือ HTML report
-- ไม่เรียก `/open-web`, `/visualize-in-web`, `/open-devin-in-web`, `/report html`
-- ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
+- The whole report must stay in chat only
+- Never open a browser, web preview, or HTML report
+- Never call `/open-web`, `/visualize-in-web`, `/open-devin-in-web`, `/report html`
+- If the graph is truly complex, use mermaid or a text graph in markdown instead
 
-- ใช้ /refactor (workspace scope — split/merge/relocate members) ถ้าจำเป็น
-- ใช้ /all-workspace ถ้าจำเป็น
-- ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
+- Use /refactor (workspace scope — split/merge/relocate members) if needed
+- Use /all-workspace if needed
+- Use /follow-tasks if needed
+- Use /follow-monorepo if needed
+- Use /run-build if needed
+- Use /run-test all if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- รายงานความสัมพันธ์ระหว่าง workspaces ทั้งหมด
-- Dependency graph ระหว่าง workspaces
-- Shared dependencies ที่หลาย workspace ใช้ร่วมกัน
-- Circular dependencies ถ้ามี พร้อม severity
-- คำแนะนำสำหรับการลด coupling หรือ refactoring
-- Report อ่านง่าย มี key findings ด้านบน
-- รายงานทั้งหมดอยู่ใน chat ไม่เปิด browser หรือ web preview
-- มี next action ชัดเจน
+- A report of all relations between workspaces
+- A dependency graph between workspaces
+- Shared dependencies used by multiple workspaces
+- Circular dependencies if any, with severity
+- Recommendations for reducing coupling or refactoring
+- Report easy to read with key findings at the top
+- The whole report stays in chat — no browser or web preview opened
+- Clear next action

@@ -1,6 +1,6 @@
 ---
 name: report-schema
-description: alias → /report-database-schema (รายงาน database schema + ER diagram)
+description: alias → /report-database-schema (database schema report + ER diagram)
 argument-hint: "[path]"
 related:
   - report-database-schema
@@ -8,21 +8,21 @@ related:
 
 ## Goal
 
-Alias ของ `/report-database-schema` — รายงาน database schema, tables, columns, indexes, relations และ ER diagram
+Alias of `/report-database-schema` — report database schema, tables, columns, indexes, relations and ER diagram
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/report-schema` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `report-database-schema`
+Use when the user calls `/report-schema` — this skill is an alias stub only; the real workflow lives in `report-database-schema`
 
 ## Execute
 
-ทำ `/report-database-schema` เต็ม workflow
+Run `/report-database-schema` full workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/report-database-schema` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `report-database-schema/SKILL.md` เสมอ
+- Never duplicate the workflow of `/report-database-schema` in this file
+- If the alias lacks steps → always read `report-database-schema/SKILL.md`
 
 ## Expected Outcome
 
-- `/report-database-schema` ถูก execute ครบทุก step
+- `/report-database-schema` is executed through every step

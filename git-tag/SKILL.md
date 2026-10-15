@@ -1,6 +1,6 @@
 ---
 name: git-tag
-description: จัดการ git tags — annotated release tags, semver, sync กับ manifest และ remote
+description: Manage git tags — annotated release tags, semver, sync with manifest and remote
 argument-hint: "[create|list|push|delete] [version]"
 related:
   - deep-review-codebase
@@ -12,61 +12,61 @@ related:
 
 ## Goal
 
-สร้างและจัดการ git tags ถูก convention — annotated tags สำหรับ releases, semver ชัดเจน, sync กับ manifest version และ remote
+Create and manage git tags per convention — annotated tags for releases, clear semver, synced with the manifest version and the remote
 
 ## Scope
 
 - create annotated/lightweight tags, list, push, delete (local + remote)
-- เชื่อมกับ `/deep-review-codebase` — tag ต้องตรง `package.json`/manifest version
-- ไม่ครอบคลุม full release process → `/run-release` (skill นี้จัดการ tag อย่างเดียว)
+- connects with `/deep-review-codebase` — the tag must match the `package.json`/manifest version
+- does not cover the full release process → `/run-release` (this skill handles tags only)
 
 ## Execute
 
 ### 1. Verify Version Target
 
-> Goal: tag version ตรงกับ release จริง
+> Goal: the tagged version matches the real release
 
-1. ตรวจ version ใน manifest (`package.json`, `Cargo.toml`, `pyproject.toml`)
-2. `git tag -l` + `git ls-remote --tags origin` — tag ยังไม่ซ้ำ, ไม่มี drift (`/deep-review-codebase`)
-3. tag ต้องชี้ commit ที่ release จริง — ปกติ merge commit ของ release บน main
+1. check the version in the manifest (`package.json`, `Cargo.toml`, `pyproject.toml`)
+2. `git tag -l` + `git ls-remote --tags origin` — the tag is not a duplicate, no drift (`/deep-review-codebase`)
+3. the tag must point at the actual release commit — usually the release's merge commit on main
 
 ### 2. Create Tag
 
-> Goal: tag มีข้อมูลครบและตาม convention
+> Goal: the tag has full information and follows convention
 
 ```bash
-git tag -a v1.2.3 -m "Release v1.2.3"     # annotated — เลือกอันนี้สำหรับ releases เสมอ
-git tag v1.2.3                             # lightweight — ใช้เฉพาะ temp/internal marker
-git tag -a v1.2.3 <sha> -m "..."           # tag commit ย้อนหลัง
+git tag -a v1.2.3 -m "Release v1.2.3"     # annotated — always choose this for releases
+git tag v1.2.3                             # lightweight — temp/internal markers only
+git tag -a v1.2.3 <sha> -m "..."           # tag an older commit
 ```
 
-1. release tags ใช้ annotated (`-a`) เสมอ — มี tagger, date, message
-2. ชื่อ tag ตรง version: `v<semver>` ตาม convention ของ project (เช็ค `git tag -l` ว่า prefix `v` หรือไม่)
+1. release tags always use annotated (`-a`) — includes tagger, date, message
+2. the tag name matches the version: `v<semver>` per the project's convention (check `git tag -l` whether the `v` prefix is used)
 
 ### 3. Push And Sync
 
-> Goal: tag ไปถึง remote และถูก CI release pipeline หยิบ
+> Goal: the tag reaches the remote and is picked up by the CI release pipeline
 
-1. `git push origin <tag>` — push เฉพาะ tag ไม่ใช่ `--tags` ทั้งหมด (กัน tag local หลุด)
-2. ตรวจ CI/release workflow trigger ถ้า project tag-driven (GitHub release, publish)
-3. รายงาน: tag, commit, version, remote status
+1. `git push origin <tag>` — push only that tag, not all `--tags` (prevents leaking local tags)
+2. check the CI/release workflow trigger if the project is tag-driven (GitHub release, publish)
+3. report: tag, commit, version, remote status
 
 ### 4. Fix Mistakes
 
-> Goal: tag ผิดถูกแก้อย่างปลอดภัย
+> Goal: a wrong tag is corrected safely
 
-1. local เท่านั้น: `git tag -d <tag>` แล้วสร้างใหม่
-2. pushed แล้ว: ห้าม move tag เงียบๆ — `git push origin :refs/tags/<tag>` ลบ remote, สร้างใหม่, push — แจ้งทีมเพราะ consumers อาจ pin tag อยู่
+1. local only: `git tag -d <tag>` then recreate
+2. already pushed: never move a tag silently — `git push origin :refs/tags/<tag>` to delete the remote one, recreate, push — notify the team because consumers may pin the tag
 
 ## Rules
 
-- release tag = annotated เสมอ; lightweight เฉพาะ marker ชั่วคราว
-- tag pushed แล้วถือเป็น immutable — move = breaking change สำหรับ consumers
-- ชื่อ tag ต้องตรง manifest version — drift = `/deep-review-codebase` finding
-- ไม่ push `--tags` ทั้งหมด — push เฉพาะ tag ที่ตั้งใจ
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- release tag = annotated always; lightweight only for temporary markers
+- a pushed tag is immutable — moving it = a breaking change for consumers
+- the tag name must match the manifest version — drift = a `/deep-review-codebase` finding
+- do not push all `--tags` — push only the intended tag
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 
-- Tag ถูกสร้าง ตรง version และ commit ที่ release
-- Remote sync แล้ว ไม่มี tag drift
+- the tag is created, matching the version and the released commit
+- remote is synced, no tag drift

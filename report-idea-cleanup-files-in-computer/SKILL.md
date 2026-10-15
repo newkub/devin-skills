@@ -1,6 +1,6 @@
 ---
 name: report-idea-cleanup-files-in-computer
-description: รายงานไอเดียไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้
+description: Report ideas of files and folders on the machine that can be deleted or cleaned
 argument-hint: "[scope]"
 related:
   - check-system-env
@@ -16,125 +16,125 @@ related:
 
 ## Goal
 
-วิเคราะห์และรายงานไฟล์/โฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้ เพื่อช่วยตัดสินใจก่อน cleanup จริง
+Analyze and report files/folders on the machine that can be deleted or cleaned, to support decision-making before actual cleanup
 
 ## Scope
 
-ใช้กับ computer ของผู้ใช้ทั่วไป (ไม่จำกัด workspace) ครอบคลุม package caches, temp files, logs, editor caches, browser caches, และ artifacts เก่า
-- เป็น `report` ไม่ลบอัตโนมัติ
-- ไม่รวมการลบไฟล์ส่วนบุคคล, source code, หรือ secrets
+Use on any user computer (not limited to a workspace), covering package caches, temp files, logs, editor caches, browser caches, and old artifacts
+- It is a `report`, no automatic deletion
+- Excludes deleting personal files, source code, or secrets
 
 ## Execute
 
 ### 1. Plan And Confirm Scope
 
-> Goal: เตรียมขอบเขตและความปลอดภัยก่อนเริ่ม
+> Goal: Prepare the scope and safety before starting
 
-1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report`
-2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
-3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
-4. ทำ `/check-system-env` เพื่อดู paths หลัก
-   - ทำ `/check-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
+1. Confirm with the user that this workflow `report`s
+2. Define the scope: home directory, temp, package caches, editor/browser caches, or all
+3. Pick OS commands per shell (PowerShell, bash, zsh)
+4. Run `/check-system-env` to see the main paths
+   - Run `/check-my-global-cli` to see installed CLI tools
 
 ### 2. Scan System Caches And Temp Files
 
-> Goal: รวบรวม candidates ตามระบบและเครื่องมือที่ติดตั้ง
+> Goal: Collect candidates per system and installed tools
 
-1. ค้นหา directories ใหญ่ใน home:
+1. Find large directories in home:
    - `~/.cache`, `~/.cargo`, `~/.bun/install/cache`, `~/.pnpm-store`, `~/.npm`
    - `%TEMP%`, `%LOCALAPPDATA%`, `%APPDATA%`
    - `scoop/cache`, `mise cache`, `uv tool dir`, `pip cache`
-2. ค้นหา editor/IDE caches:
+2. Find editor/IDE caches:
    - `.nvim-swap`, `nvim-data/swap`, `.codeium`, `.windsurf`
-   - `sccache`, `ccache`, `cargo target` ใน home
-3. ค้นหา browser caches:
+   - `sccache`, `ccache`, `cargo target` in home
+3. Find browser caches:
    - Chrome/Edge/Brave/Firefox profile caches
-4. ค้นหา logs และ old artifacts:
+4. Find logs and old artifacts:
    - `*.log`, `*.old`, `Downloads/*.exe`, `Downloads/*.zip`
-5. ถ้าข้อมูลมาก ∥ ต้อง aggregate ให้ทำ `/use-scripts` เพื่อประมวลผล
+5. If there is a lot of data ∥ that must be aggregated, run `/use-scripts` to process it
 
 ### 3. Analyze And Classify
 
-> Goal: จัดกลุ่มและประเมินความปลอดภัยของแต่ละ candidate
+> Goal: Group candidates and assess each one's safety
 
-1. จัดกลุ่มตาม category: package cache, temp, logs, editor cache, browser cache, old artifacts
-2. คำนวณขนาดโดยประมาณของแต่ละ group
-3. กำหนดระดับความปลอดภัย:
-   - `safe` = temp/cache ที่ปิดโปรแกรมแล้วลบได้
-   - `review` = เก่าแต่ต้องเช็คก่อน
-   - `risky` = เกี่ยวข้องกับ config หรืออาจมีข้อมูล
-4. ตรวจสอบว่ามี process ทำงานอยู่หรือไม่ (ใช้ `Get-Process` หรือ `ps`) สำหรับ cache ที่ active
-5. สร้าง suggested cleanup command สำหรับแต่ละ item
+1. Group by category: package cache, temp, logs, editor cache, browser cache, old artifacts
+2. Compute the approximate size of each group
+3. Assign the safety level:
+   - `safe` = temp/cache that can be deleted after closing the programs
+   - `review` = old but needs checking first
+   - `risky` = related to config or may contain data
+4. Check whether a process is still running (use `Get-Process` or `ps`) for active caches
+5. Create a suggested cleanup command for each item
 
 ### 4. Format Report
 
-> Goal: จัดรูปแบบ report ให้เห็นภาพรวมและรายละเอียด
+> Goal: Format the report to show both the overview and the details
 
-1. ทำ `/report` ด้วย columns:
+1. Run `/report` with columns:
    - `No.`, `Category`, `Path/Pattern`, `Estimated Size`, `Safety`, `Suggested Command`, `Notes`
-2. ทำ `/report-file-structure` สำหรับ top 10 directories ที่ใหญ่ที่สุด
-3. สรุป:
-   - จำนวน candidates
-   - ขนาดรวมที่ประหยัดได้
-   - รายการ `safe` ที่ลบได้ทันที
-   - รายการที่ต้อง review
+2. Run `/report-file-structure` for the top 10 largest directories
+3. Summary:
+   - Number of candidates
+   - Total size that can be reclaimed
+   - `safe` items deletable immediately
+   - Items needing review
 
 ### 5. Suggest Next Actions
 
-> Goal: นำเสนอทางเลือกถัดไป
+> Goal: Present the next options
 
-1. ทำ `/suggest-next-action` จากรายงาน
-2. แนะนำ workflows ที่เหมาะสม:
-   - `/cleanup-files-in-project` สำหรับลบ source files ที่ไม่จำเป็น
-   - `scoop cleanup *`, `mise prune`, `bun pm cache clean`, `pip cache purge`, `sccache --stop-server` + ลบ cache
-3. ถ้าผู้ใช้ตอบตกลงจึงค่อยรัน cleanup จริง (ใช้ dry-run ก่อน)
+1. Run `/suggest-next-action` from the report
+2. Recommend suitable workflows:
+   - `/cleanup-files-in-project` for deleting unnecessary source files
+   - `scoop cleanup *`, `mise prune`, `bun pm cache clean`, `pip cache purge`, `sccache --stop-server` + delete cache
+3. Only run the real cleanup after the user agrees (use dry-run first)
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (idea cleanup files in computer)
+> Goal: report easy to read, key findings summarized at the top, leading to action (idea cleanup files in computer)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (idea cleanup files in computer)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (idea cleanup files in computer)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (idea cleanup files in computer)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings at the top before details (idea cleanup files in computer)
+2. Use `/report` for comparison tables with multiple columns (idea cleanup files in computer)
+3. Use `/report` for status/progress/logs reports
+4. Use the "No." column as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (idea cleanup files in computer)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always run `/suggest-next-action` at the end of the report
 
 ### 1. Report-Only
 
-- ห้ามลบ ย้าย หรือแก้ไขไฟล์อัตโนมัติ
-- ทุก suggested command ต้องแสดงให้ผู้ใช้เห็นก่อน
-- ถ้าจะลบจริง ต้องได้รับ explicit confirmation จากผู้ใช้
+- Never delete, move, or auto-edit files
+- Every suggested command must be shown to the user first
+- Actual deletion requires explicit confirmation from the user
 
 ### 2. Safety First
 
-- ไม่แนะนำลบ source code, config files, `.env`, secrets, credentials
-- ไม่ลบ cache ที่มี process กำลังใช้งานอยู่
-- ใช้ tool-specific cleanup commands เมื่อมี เช่น `scoop cleanup *` แทน `rm -rf scoop/cache`
+- Never recommend deleting source code, config files, `.env`, secrets, credentials
+- Do not delete a cache that a running process is using
+- Use tool-specific cleanup commands when available, e.g. `scoop cleanup *` instead of `rm -rf scoop/cache`
 
 ### 3. Accuracy
 
-- ระบุขนาดโดยประมาณและวิธีคำนวณ
-- ระบุสาเหตุว่าทำไมถึงเป็น candidate
-- ถ้าไม่แน่ใจ ให้ระบุ `manual review required` ใน `Notes`
+- State the approximate size and how it was computed
+- State why each item is a candidate
+- If unsure, note `manual review required` in `Notes`
 
 ### 4. Cross-Platform
 
-- ใช้ commands ตาม OS ที่ตรวจพบ
-- Windows: ใช้ PowerShell commands
-- macOS/Linux: ใช้ bash/zsh commands
-- ใช้ `dua`, `duf`, `ncdu`, `gt5` ถ้าติดตั้ง
-- ใช้ /run-clean ถ้าจำเป็น
-- ใช้ /run-cleanup ถ้าจำเป็น
+- Use commands per detected OS
+- Windows: use PowerShell commands
+- macOS/Linux: use bash/zsh commands
+- Use `dua`, `duf`, `ncdu`, `gt5` if installed
+- Use /run-clean if needed
+- Use /run-cleanup if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ตารางรายงาน candidates สำหรับ cleanup บนเครื่อง
-- ขนาดรวมโดยประมาณที่ประหยัดได้
-- ระดับความปลอดภัยของแต่ละรายการ
-- คำสั่ง cleanup ที่แนะนำ
-- next actions ชัดเจน
+- Candidate report table for cleanup on the machine
+- Approximate total size that can be reclaimed
+- Safety level per item
+- Recommended cleanup commands
+- Clear next actions

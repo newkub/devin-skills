@@ -1,6 +1,6 @@
 ---
 name: report-usage
-description: รายงาน usage ของ APIs/functions/skills/dependencies, USAGE.md, หรือ Devin session/cost
+description: Report usage of APIs/functions/skills/dependencies, USAGE.md, or Devin session/cost
 argument-hint: "[scope]"
 related:
   - report-file-structure
@@ -12,94 +12,94 @@ related:
 
 ## Goal
 
-สร้างรายงาน usage ตาม scope ทีระบุ: APIs/functions/skills/dependencies, `USAGE.md` coverage, หรือ Devin session/cost
+Build a usage report per the specified scope: APIs/functions/skills/dependencies, `USAGE.md` coverage, or Devin session/cost
 
 ## Scope
 
-ใช้สำหรับหนึ่งในสามกรณี:
-- วิเคราะห์ frequency, consumers, top callers ของ code APIs/functions/skills/dependencies
-- ตรวจ `USAGE.md` ว่ามี sections ครบ เปรียบเทียบกับ `README.md`/`package.json`
-- สรุป Devin session usage/cost ตาม period หรือ billing tags
+Use for one of three cases:
+- Analyze frequency, consumers, and top callers of code APIs/functions/skills/dependencies
+- Check `USAGE.md` for complete sections and compare against `README.md`/`package.json`
+- Summarize Devin session usage/cost by period or billing tags
 
 ## Execute
 
 ### 1. Choose Scope
 
-> Goal: ระบุประเภท usage ทีต้อง report
+> Goal: Identify the usage type to report
 
-1. ถาม user หรือ detect จาก request
-2. เลือก scope:
+1. Ask the user or detect from the request
+2. Pick the scope:
    - `code` — APIs, functions, classes, skills, dependencies
-   - `usage-md` — ไฟล์ `USAGE.md` ใน project
-   - `devin` — Devin sessions และ cost
-3. ถ้าไม่ชัด → ทำ `/ask-me`
+   - `usage-md` — the `USAGE.md` file in the project
+   - `devin` — Devin sessions and cost
+3. If unclear → run `/ask-me`
 
 ### 2. Code Usage
 
-> Goal: วิเคราะห์การใช้งาน code
+> Goal: Analyze code usage
 
-1. ระบุ targets: endpoints, functions, classes, skills หรือ dependencies
-2. ค้นหา call sites/imports ด้วย `grep` หรือ `glob`
-3. ระบุ files/workspaces ทีใช้, version, signature
-4. ทำ `/report` สรุป top consumers, frequency, versions
-5. ทำ `/report-file-structure` สำหรับ caller tree ถ้ามีประโยชน์
-6. ระบุ unused, overused, deprecated usages
+1. Identify targets: endpoints, functions, classes, skills, or dependencies
+2. Find call sites/imports with `grep` or `glob`
+3. Identify the files/workspaces using them, versions, signatures
+4. Run `/report` summarizing top consumers, frequency, versions
+5. Run `/report-file-structure` for the caller tree if useful
+6. Identify unused, overused, and deprecated usages
 
 ### 3. USAGE.md Coverage
 
-> Goal: ตรวจสอบและสรุป `USAGE.md`
+> Goal: Inspect and summarize `USAGE.md`
 
-1. หาไฟล์ `USAGE.md`, `docs/USAGE.md`, `.github/USAGE.md`, หรือ `docs/`
-2. ถ้าไม่มี → บันทึก `missing` พร้อม path
-3. ถ้ามี → อ่านและระบุ sections: Installation, Quick Start, Usage, Examples, Configuration, CLI, API, Troubleshooting
-4. เปรียบเทียบกับ `README.md` และ `package.json` scripts/bin
-5. ทำ `/report` สรุป Section, Status, Evidence
+1. Find `USAGE.md`, `docs/USAGE.md`, `.github/USAGE.md`, or `docs/`
+2. If absent → record `missing` with the path
+3. If present → read and identify sections: Installation, Quick Start, Usage, Examples, Configuration, CLI, API, Troubleshooting
+4. Compare against `README.md` and `package.json` scripts/bin
+5. Run `/report` summarizing Section, Status, Evidence
 
 ### 4. Devin Session Usage
 
-> Goal: สรุป session usage และ cost
+> Goal: Summarize session usage and cost
 
-1. ใช้ `devin_session_search` หรือ `/list-devin-session` ดึง sessions ตาม period/tag
-2. ใช้ `devin_billing_tag_manage` ดึง billing tags ถ้ามี
-3. คำนวณ sessions per day/week, success/failure/stopped distribution
-4. ระบุ tag breakdown, recurring task patterns, long-running sessions
-5. ทำ `/report` สรุป Period/Tag, Sessions, Success %, Top Task Type, Note
-6. ระบุ automation candidates และ waste signals
+1. Use `devin_session_search` or `/list-devin-session` to pull sessions by period/tag
+2. Use `devin_billing_tag_manage` to pull billing tags if present
+3. Compute sessions per day/week, and the success/failure/stopped distribution
+4. Identify tag breakdowns, recurring task patterns, long-running sessions
+5. Run `/report` summarizing Period/Tag, Sessions, Success %, Top Task Type, Note
+6. Identify automation candidates and waste signals
 
 ### 5. Report And Next Action
 
-> Goal: สรุปผลลัพธ์
+> Goal: Summarize the result
 
-1. ทำ `/report` ตาม scope ทีเลือก
-2. สรุป key findings, unused/deprecated items, gaps
-3. แนะนำ next action ที่เหมาะสม
-4. ทำ `/suggest-next-action`
+1. Run `/report` per the chosen scope
+2. Summarize key findings, unused/deprecated items, gaps
+3. Recommend the suitable next action
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Read Only
 
-- ไม่แก้ไข code, sessions, หรือ billing config
-- ไม่ expose sensitive data
+- Do not modify code, sessions, or billing config
+- Do not expose sensitive data
 
 ### 2. Evidence Based
 
-- ทุก metric ต้องมี source: file path, line number, หรือ API response
-- ระบุวิธีนับอย่างชัดเจน
+- Every metric must have a source: file path, line number, or API response
+- State the counting method clearly
 
 ### 3. Actionable
 
-- ระบุ unused, deprecated, overused usages
-- ระบุ gaps ใน `USAGE.md`
-- ระบุ automation candidates จาก Devin usage
-- แนะนำ next action ชัดเจน
+- Identify unused, deprecated, and overused usages
+- Identify gaps in `USAGE.md`
+- Identify automation candidates from Devin usage
+- Recommend clear next actions
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- usage table พร้อม frequency และ consumers
-- `USAGE.md` status: exists/missing, sections มี/ขาด
-- Devin usage report ตาม period/tags
-- unused/deprecated usages หรือ automation candidates
-- summary และ next actions
+- Usage table with frequency and consumers
+- `USAGE.md` status: exists/missing, sections present/absent
+- Devin usage report by period/tags
+- unused/deprecated usages or automation candidates
+- Summary and next actions

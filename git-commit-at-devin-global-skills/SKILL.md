@@ -1,6 +1,6 @@
 ---
 name: git-commit-at-devin-global-skills
-description: alias → /git-commit at-devin-global-skills (commit devin skills หลัง validation ผ่าน)
+description: alias → /git-commit at-devin-global-skills (commit devin skills after validation passes)
 argument-hint: "[message]"
 related:
   - git-commit
@@ -9,22 +9,22 @@ related:
 
 ## Goal
 
-Alias ของ `/git-commit at-devin-global-skills` — commit ทุกไฟล์ที่เปลี่ยนแปลงใน devin global skills repo หลัง `/review-devin-global-harness`, `/deep-validate` และ reference checks ผ่านเกณฑ์
+Alias of `/git-commit at-devin-global-skills` — commit every changed file in the devin global skills repo after `/review-devin-global-harness`, `/deep-validate` and reference checks pass the criteria
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/git-commit-at-devin-global-skills` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `git-commit/workflows/at-devin-global-skills`
+Use when the user calls `/git-commit-at-devin-global-skills` — this skill is only an alias stub; the real workflow lives in `git-commit/workflows/at-devin-global-skills`
 
 ## Execute
 
-ทำ `/git-commit at-devin-global-skills` เต็ม workflow (อ่าน ``git-commit/SKILL.md → at-devin-global-skills``)
+Run the full `/git-commit at-devin-global-skills` workflow (read ``git-commit/SKILL.md → at-devin-global-skills``)
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `git-commit/workflows/at-devin-global-skills` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน ``git-commit/SKILL.md → at-devin-global-skills`` เสมอ
-- ถ้าต้องการ push ต่อ → ใช้ `/git-commit-and-push` หลังจากนี้
+- never duplicate the `git-commit/workflows/at-devin-global-skills` workflow in this file
+- if the alias lacks steps → always read ``git-commit/SKILL.md → at-devin-global-skills``
+- if you want to push next → use `/git-commit-and-push` afterwards
 
 ## Expected Outcome
 
-- `/git-commit at-devin-global-skills` ถูก execute ครบทุก step จน commit สำเร็จและ working directory สะอาด
+- `/git-commit at-devin-global-skills` is executed through every step until the commit succeeds and the working directory is clean

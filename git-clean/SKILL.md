@@ -1,6 +1,6 @@
 ---
 name: git-clean
-description: git clean อย่างปลอดภัย — dry-run ก่อนเสมอ, ลบ untracked/ignored files ตาม scope
+description: Safely git clean — always dry-run first, remove untracked/ignored files by scope
 argument-hint: "[-fd|-fdx|paths...]"
 related:
   - git-restore
@@ -12,61 +12,61 @@ related:
 
 ## Goal
 
-ลบ untracked files ด้วย `git clean` — dry-run ก่อนเสมอ เพราะ untracked files ไม่มีใน git history กู้ไม่ได้
+Remove untracked files with `git clean` — always dry-run first, because untracked files are not in git history and cannot be recovered
 
 ## Scope
 
-- `git clean -fd` (untracked files+dirs), `-fdx` (รวม ignored — build output), `-n` dry-run
-- เติม gap ของ `/git-restore` ที่ไม่แตะ untracked files
-- cleanup build artifacts/dependency caches ทั่วไป → `/cleanup-files-in-project`
+- `git clean -fd` (untracked files+dirs), `-fdx` (including ignored — build output), `-n` dry-run
+- fills the gap of `/git-restore`, which does not touch untracked files
+- general build artifact/dependency cache cleanup → `/cleanup-files-in-project`
 
 ## Execute
 
-### 1. Preview (Dry-Run เสมอ)
+### 1. Preview (Always Dry-Run)
 
-> Goal: เห็นทุกไฟล์ที่จะหายก่อนลบจริง
+> Goal: see every file that will be gone before actually deleting
 
 ```bash
 git clean -nd        # preview untracked files+dirs
-git clean -ndx       # preview รวม ignored files (node_modules, dist, ...)
-git clean -nd <path> # preview เฉพาะ path
+git clean -ndx       # preview including ignored files (node_modules, dist, ...)
+git clean -nd <path> # preview a specific path only
 ```
 
-1. `-n` (dry-run) ก่อนทุกครั้ง ไม่มีข้อยกเว้น
-2. review list — untracked files อาจเป็นงานที่ยังไม่ได้ add (`.env.local`, scratch files, งานใหม่)
-3. ไฟล์ที่อาจต้องการ → `git add -N` (intent-to-add ป้องกัน clean) หรือ `/git-stash -u`
+1. `-n` (dry-run) every time, no exceptions
+2. review the list — untracked files may be work not yet added (`.env.local`, scratch files, new work)
+3. files you might want → `git add -N` (intent-to-add protects from clean) or `/git-stash -u`
 
 ### 2. Choose Scope
 
-> Goal: ลบเฉพาะที่ตั้งใจ
+> Goal: delete only what is intended
 
-| Flag | ลบอะไร |
+| Flag | Removes what |
 |------|--------|
 | `-fd` | untracked files + dirs |
-| `-fdx` | + ignored files (build output, `.env*` ที่ถูก ignore — ระวัง) |
-| `-fdX` | เฉพาะ ignored files (เคลียร์ build artifacts โดยเก็บ untracked sources) |
-| `<path>` | จำกัดเฉพาะ path |
+| `-fdx` | + ignored files (build output, ignored `.env*` — careful) |
+| `-fdX` | only ignored files (clear build artifacts while keeping untracked sources) |
+| `<path>` | restricted to a path |
 
-1. เริ่มจาก scope แคบสุด (`<path>` หรือ `-fdX`) ก่อนขยาย
-2. `-fdx` เสี่ยงสุด — ignored files รวม `.env`, local config, IDE files ที่ setup ยาก
+1. start from the narrowest scope (`<path>` or `-fdX`) before widening
+2. `-fdx` is the riskiest — ignored files include `.env`, local config, and hard-to-recreate IDE files
 
 ### 3. Execute And Verify
 
-> Goal: ลบตรง preview และ repo ยังทำงาน
+> Goal: deletion matches the preview and the repo still works
 
-1. รัน clean ตาม scope ที่เลือก
-2. `git status` verify — tracked files ไม่ถูกแตะเสมอ (clean แตะเฉพาะ untracked/ignored)
-3. ถ้าลบ ignored deps → reinstall/build ใหม่ (`bun install` ฯลฯ)
+1. run clean at the chosen scope
+2. `git status` verify — tracked files are never touched (clean only touches untracked/ignored)
+3. if ignored deps were deleted → reinstall/rebuild (`bun install` etc.)
 
 ## Rules
 
-- `git clean` ไม่มี undo — untracked files ไม่อยู่ใน object store หายถาวร
-- `-n` dry-run ก่อนเสมอ + แจ้ง user list ไฟล์ที่จะลบเมื่อ scope กว้าง
-- `-x` flag คิดซ้ำสองครั้ง — มันกิน ignored files รวม secrets/config local
-- tracked changes ไม่เกี่ยวกับ clean — ใช้ `/git-restore` discard หรือ `/git-stash`
-- ใช้ /ask-me ถ้าจำเป็น
+- `git clean` has no undo — untracked files are not in the object store, they are gone permanently
+- always `-n` dry-run first + show the user the file list to delete when the scope is wide
+- second-thought the `-x` flag — it swallows ignored files including local secrets/config
+- tracked changes are unrelated to clean — use `/git-restore` to discard or `/git-stash`
+- Use /ask-me if needed
 
 ## Expected Outcome
 
-- Untracked/ignored files ถูกลบตาม scope ที่ preview แล้ว
-- ไม่มีไฟล์สำคัญหายโดยไม่ตั้งใจ
+- untracked/ignored files removed per the previewed scope
+- no important files lost by accident

@@ -1,6 +1,6 @@
 ---
 name: git-restore
-description: กู้ไฟล์/discard uncommitted changes ด้วย git restore — working tree, staged, หรือจาก commit เดิม
+description: Recover files/discard uncommitted changes with git restore — working tree, staged, or an old commit
 argument-hint: "[files...|--staged|--source <ref>]"
 related:
   - restore-files
@@ -14,63 +14,63 @@ related:
 
 ## Goal
 
-ใช้ `git restore` จัดการ uncommitted state — discard working-tree changes, unstage files หรือกู้ไฟล์จาก commit เดิม — โดยไม่แตะ committed history
+Use `git restore` to manage uncommitted state — discard working-tree changes, unstage files, or recover a file from an older commit — without touching committed history
 
 ## Scope
 
 - discard local modifications (`git restore <path>`)
 - unstage files (`git restore --staged`)
-- กู้ไฟล์/เวอร์ชันจาก commit เดิม (`git restore --source=<ref>`)
-- ไม่ครอบคลุมการย้อน committed changes ที่ push แล้ว → `/git-revert`; กู้ deleted files จาก history ลึก → `/restore-files`
+- recover files/versions from an older commit (`git restore --source=<ref>`)
+- does not cover undoing committed changes that were pushed → `/git-revert`; recovering deleted files from deeper history → `/restore-files`
 
 ## Execute
 
 ### 1. Assess State
 
-> Goal: รู้ว่าอะไรจะเปลี่ยนก่อน discard
+> Goal: know what will change before discarding
 
-1. `git status --short` — แยก staged, unstaged, untracked ออกจากกัน
-2. `git diff` (unstaged) / `git diff --cached` (staged) — preview สิ่งที่จะหายไป
-3. ถ้าไฟล์ modified มี change ที่อาจต้องการภายหลัง → เสนอ `git stash` แทนการ discard
+1. `git status --short` — separate staged, unstaged, untracked
+2. `git diff` (unstaged) / `git diff --cached` (staged) — preview what will be lost
+3. if a modified file has a change that might be needed later → offer `git stash` instead of discarding
 
 ### 2. Choose Mode
 
-> Goal: เลือก restore mode ที่ตรง intent
+> Goal: pick the restore mode matching the intent
 
 | Intent | Command |
 |--------|---------|
-| discard changes ใน working tree | `git restore <path>` |
-| unstage (เก็บ changes ใน working tree) | `git restore --staged <path>` |
-| กู้ไฟล์จาก commit อื่น | `git restore --source=<ref> <path>` |
-| กู้ไฟล์ที่ถูกลบ (ยังไม่ commit) | `git restore <path>` (กลับจาก HEAD/index) |
-| discard ทุกอย่างใน repo | `git restore .` — ต้อง confirm |
+| discard changes in the working tree | `git restore <path>` |
+| unstage (keep changes in the working tree) | `git restore --staged <path>` |
+| recover a file from another commit | `git restore --source=<ref> <path>` |
+| recover a deleted file (not yet committed) | `git restore <path>` (returns from HEAD/index) |
+| discard everything in the repo | `git restore .` — must confirm |
 
 ### 3. Confirm And Execute
 
-> Goal: destructive action ได้รับ confirm ชัดเจน
+> Goal: destructive actions get an explicit confirmation
 
-1. discard modes (`restore <path>`, `restore .`) = ลบ uncommitted work — แจ้งรายการไฟล์ที่จะหายแล้ว confirm ก่อน
-2. unstage mode ปลอดภัย — ทำได้เลยไม่ต้อง confirm
-3. `--source` mode overwrite working tree — preview `git diff <ref> -- <path>` ก่อน
-4. รัน command แล้ว `git status` verify ผล
+1. discard modes (`restore <path>`, `restore .`) = remove uncommitted work — list the files that will be lost, then confirm first
+2. unstage mode is safe — do it directly without confirmation
+3. `--source` mode overwrites the working tree — preview `git diff <ref> -- <path>` first
+4. run the command, then verify the result with `git status`
 
 ### 4. Verify
 
-> Goal: state ตรง intent ไม่มีของหายโดยไม่ตั้งใจ
+> Goal: state matches the intent, nothing lost by accident
 
-1. `git status --short` ยืนยันไฟล์กลับสู่ HEAD/index state
-2. ถ้า discard ผิดไฟล์ → กู้ผ่าน editor local history หรือ `/restore-files` (git ไม่เก็บ uncommitted changes — ไม่มีทางกู้จาก git)
+1. `git status --short` to confirm the files are back to the HEAD/index state
+2. if the wrong file was discarded → recover via editor local history or `/restore-files` (git does not store uncommitted changes — no way to recover from git)
 
 ## Rules
 
-- `git restore <path>` เป็น destructive บน uncommitted changes — preview + confirm เสมอ ไม่มี undo ใน git
-- untracked files ไม่ได้รับผลกระทบจาก `git restore` — ลบต้อง `git clean` (skill อื่น, destructive กว่า)
-- `--staged` เพียงอย่างเดียว = ปลอดภัย ไม่ต้อง confirm
-- อย่าใช้ `git restore` แทน `git revert` — restore ไม่แตะ history, revert สร้าง inverse commit
-- สงสัยว่า change สำคัญไหม → `git stash` แทน discard เสมอ
-- ใช้ /check-uncommit ถ้าจำเป็น
+- `git restore <path>` is destructive on uncommitted changes — always preview + confirm; there is no undo in git
+- untracked files are unaffected by `git restore` — deleting them needs `git clean` (another skill, more destructive)
+- `--staged` alone = safe, no confirmation needed
+- do not use `git restore` in place of `git revert` — restore does not touch history, revert creates an inverse commit
+- unsure whether a change matters → `git stash` instead of discarding, always
+- Use /check-uncommit if needed
 
 ## Expected Outcome
 
-- Working tree/staging กลับสู่ state ที่ต้องการโดยไม่กระทบ committed history
-- ไม่มี uncommitted work หายโดยไม่ได้ confirm
+- working tree/staging back to the desired state without affecting committed history
+- no uncommitted work lost without confirmation
