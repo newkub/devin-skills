@@ -14,7 +14,7 @@ related:
   - use-scripts
   - follow-monorepo
   - follow-tool-moonrepo
-  - deep-review-codebase
+  - deep-review
   - update-version-to-latest
 
 ---
@@ -24,7 +24,7 @@ Set up scripts in `package.json` or `Cargo.toml` per the Minimal, Standard, Comp
 
 ## Scope
 
-Setting up scripts for packages and workspaces in a monorepo; excludes hand-writing config files (use `/deep-review-codebase`); coordinates with `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) to execute the configured scripts
+Setting up scripts for packages and workspaces in a monorepo; excludes hand-writing config files (use `/deep-review`); coordinates with `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) to execute the configured scripts
 
 ## Execute
 
@@ -73,7 +73,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 > Goal: configure config files and secrets management together
 
-1. `/deep-review-codebase` per the detected tech stack; check whether `.infisical.json` exists
+1. `/deep-review` per the detected tech stack; check whether `.infisical.json` exists
 2. If `.infisical.json` exists or a secret manager is in use → run `/follow-secret-manager` to set up secrets scripts
 3. Ensure scripts that need secrets (`dev`, `build`, `deploy`) are wrapped with `infisical run -- <command>` — add root scripts `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run` (table in the reference)
 4. Confirm `INFISICAL_TOKEN` is set in CI/CD — if missing → report and request it be set
@@ -87,7 +87,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 2. Confirm `check` script = `format && lint && typecheck && scan` (format before lint) and `verify` = `check && test && build` for small projects; large projects' `verify` at least `check && test` — `ci` must be read-only via `format:check`, not `format`
 3. Run `/run-test all` to execute unit, integration, e2e, coverage
 4. Test-run `bun run verify` — if it fails → fix and retry (max 3 → stop/report)
-5. If the project has a `tools/review-codebase` workspace → run `bun run review-codebase` for a first codebase review — if it fails → use `/deep-review-codebase` to create/update the CLI, then retry
+5. If the project has a `tools/review-codebase` workspace → run `bun run review-codebase` for a first codebase review — if it fails → use `/deep-review` to create/update the CLI, then retry
 
 ## Rules
 
@@ -117,7 +117,7 @@ Key rules tied to the tables:
 - `ci` = `format:check && lint && typecheck && scan && test && build` (read-only — no file mutation in the pipeline)
 - `verify` = `check && test && build` (small projects); large projects at least `check && test`
 - `release` does not belong in the package manifest — release via CI/CD workflows on a tag or `/run-release`
-- If a `tools/review-codebase` workspace exists → add the `review-codebase` scripts (table in the reference) and run `bun run review-codebase` once — if it fails, use `/deep-review-codebase`
+- If a `tools/review-codebase` workspace exists → add the `review-codebase` scripts (table in the reference) and run `bun run review-codebase` once — if it fails, use `/deep-review`
 
 ### 3. Moonrepo Mode
 
