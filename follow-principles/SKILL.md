@@ -1,6 +1,6 @@
 ---
 name: follow-principles
-description: ระบุและใช้ principles ของ context นั้นๆ ในการทำงาน
+description: Identify and apply the principles of the given context in the work
 argument-hint: "[scope]"
 allowed-tools:
   - read
@@ -18,109 +18,131 @@ related:
   - deep-analyze
   - ask-me
   - check-reference
+  - deep-review-codebase
+  - refactor
 
 ---
 
 ## Goal
 
-ระบุ principles, conventions และข้อกำหนดที่มีอยู่จริงของ context แล้วนำมาประยุกต์ใช้ใน task ปัจจุบันอย่างชัดเจน
+Identify the real principles, conventions, and requirements of the context, then explicitly apply them to the current task
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจสอบหรือปฏิบัติตาม principles ของ project, framework, team, หรือ skill เฉพาะ โดยไม่คิดเองหรือเพิ่มเติมนอกเหนือจากทีมีอยู่
+Use when checking or following the principles of a specific project, framework, team, or skill — without inventing or adding anything beyond what exists — including checking files that match a principle conveyed through their file name (`### 7`, merged from `/follow-principles-engineering`)
 
 ## Execute
 
 ### 1. Identify Context
 
-> Goal: ระบุ context ทีต้องการ principles
+> Goal: determine which context's principles are needed
 
-1. รับ context จาก user, task, หรือ workspace ปัจจุบัน
-2. ระบุประเภท: `project`, `framework`, `language`, `team`, `skill`, `domain`
-3. ถ้า context ไม่ชัด → ถาม user ก่อนด้วย `/ask-me`
-4. บันทึกชื่อ context และ scope
+1. Take the context from the user, the task, or the current workspace
+2. Classify it: `project`, `framework`, `language`, `team`, `skill`, `domain`
+3. If the context is unclear → ask the user first via `/ask-me`
+4. Record the context name and scope
 
 ### 2. Discover Principle Sources
 
-> Goal: หาแหล่ง principles ทีมีอยู่
+> Goal: find where the principles live
 
-1. ใช้ `/scan-codebase` และ `/search-files-patterns` ค้นหาไฟล์มาตรฐาน:
+1. Use `/scan-codebase` and `/search-files-patterns` to find standard files:
    - `PRINCIPLES.md`, `ARCHITECTURE.md`, `DESIGN.md`
    - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
    - `global_rules.md`, `AGENTS.md`
-   - `README.md` ส่วน principles/conventions
+   - the principles/conventions sections of `README.md`
    - `docs/principles/`, `.github/`, `.devin/`
-2. ค้นหาใน `SKILL.md` ของ skill ที่เกี่ยวข้อง โดยเฉพาะ section `Rules` และ `Expected Outcome`
-3. ทำ `/deep-analyze` หรือ `/check-reference` เพื่อตรวจสอบความสมบูรณ์ของแหล่งอ้างอิง
-4. ตรวจ `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` เพื่อดู ecosystem
-5. บันทึกแหล่งทีพบพร้อม path
+2. Search the `SKILL.md` of related skills, especially the `Rules` and `Expected Outcome` sections
+3. Run `/deep-analyze` or `/check-reference` to verify the sources are complete
+4. Check `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` to see the ecosystem
+5. Record every source found, with paths
 
 ### 3. Extract Principles
 
-> Goal: สกัด principles ทีใช้ได้จริง
+> Goal: distill the usable principles
 
-1. อ่านไฟล์แหล่ง principles ทั้งหมด
-2. แยก principles ออกเป็นกลุ่ม:
+1. Read all principle source files
+2. Group the principles:
    - `design` — architecture, patterns, coupling/cohesion
    - `coding` — style, conventions, safety
    - `process` — workflow, review, commit, release
    - `communication` — naming, docs, reports
-3. ระบุ principles ที conflict กัน
-4. สรุปเป็น bullet points ทีกระทำได้
+3. Identify principles that conflict with each other
+4. Summarize them as actionable bullet points
 
 ### 4. Prioritize For Current Task
 
-> Goal: เลือก principles ทีเกี่ยวข้องกับ task
+> Goal: pick the principles relevant to the task
 
-1. เปรียบเทียบ principles กับ goal และ scope ของ task
-2. จัดลำดับตาม impact: `must`, `should`, `may`
-3. ถ้า conflict → ระบุลำดับความสำคัญและเหตุผล
-4. ถาม user ถ้า priority ไม่ชัด
+1. Compare the principles against the task's goal and scope
+2. Order by impact: `must`, `should`, `may`
+3. If there's a conflict → state the priority and the reason
+4. Ask the user if the priority is unclear
 
 ### 5. Apply Principles
 
-> Goal: ใช้ principles ในการทำงาน
+> Goal: use the principles in the work
 
-1. อ้างอิง principle ก่อนตัดสินใจ เช่น "ตาม principle X จึงทำ Y"
-2. ปรับ code, structure, หรือ content ให้สอดคล้อง
-3. ใช้ principles ในการ review หรือ validate ผล
-4. ถ้า principle ไม่สามารถทำตามได้ 100% → ระบุเหตุผลและ trade-off
+1. Cite the principle before deciding, e.g. "per principle X, do Y"
+2. Adjust code, structure, or content accordingly
+3. Use the principles when reviewing or validating the result
+4. If a principle can't be followed 100% → state the reason and trade-off
 
 ### 6. Report
 
-> Goal: สรุป principles ทีใช้
+> Goal: summarize the principles used
 
-1. ใช้ `/report` แสดง: Principle, Source, Priority, Applied
-2. สรุป principles หลักทีมีผลต่อผลงาน
-3. ทำ `/suggest-next-action`
+1. Use `/report` showing: Principle, Source, Priority, Applied
+2. Summarize the key principles that shaped the work
+3. Run `/suggest-next-action`
+
+### 7. Check File Against Filename Principle (Conditional — merged from `/follow-principles-engineering`)
+
+> Goal: check that a file matches the software engineering principle indicated by its file name
+
+1. Derive the principle from the file name: `single-responsibility.ts` → SRP, `open-closed.ts` → OCP, `dry-utils.ts` → DRY, `simple-component.ts` → KISS, `clean-architecture.ts` → Clean Architecture (principle names use kebab-case); doesn't match any principle → stop and report
+2. Read the target file; check structure, logic, and naming against the principle; gather objective evidence with `/deep-review-codebase` (function/SRP metrics, naming)
+3. List violations ordered by severity: Critical (completely breaks the principle) / High (significant but still works) / Medium (should fix) / Low (minor)
+4. Report a table: No., Principle, Match Status, Violations (severity), Recommendations — recommend better patterns/examples present in the codebase; fixes needed → route to `/refactor`
 
 ## Rules
 
 ### 1. Evidence Based
 
-- ไม่สร้าง principles เองถ้าไม่มีแหล่งอ้างอิง
-- ระบุ source ของทุก principle ทีใช้
-- ถ้าไม่มี principle ทีชัดเจน → report แทนทีจะตีความเอง
+- Never invent principles without a source
+- State the source of every principle used
+- If there's no clear principle → report instead of interpreting on your own
 
 ### 2. Context Specific
 
-- principles ต้องตรงกับ context ทีระบุ ไม่นำ principles ของ context อื่นมาใช้โดยไม่มีเหตุผล
-- ถ้ามีหลาย context → ระบุลำดับและ interaction
+- Principles must fit the stated context — don't use another context's principles without reason
+- If several contexts apply → state their order and interaction
 
 ### 3. Minimal And Traceable
 
-- ใช้เฉพาะ principles ทีมีผลตับ task ปัจจุบัน
-- บันทึก decision ทีอ้างอิง principle
-- ไม่ใช้ principles เป็น excuses เพื่อ over-engineer
+- Use only the principles that affect the current task
+- Record each decision that cites a principle
+- Don't use principles as excuses to over-engineer
 
 ### 4. Safety
 
-- ถ้า principle ขัดกับ safety หรือ correctness → ถาม user หรือ stop
-- ไม่ยึด principle จนทำลายความถูกต้องของงาน
+- If a principle conflicts with safety or correctness → ask the user or stop
+- Don't cling to a principle at the cost of the work's correctness
+
+### 5. Software Engineering Principles Catalog
+
+- SOLID: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+- DRY (Don't Repeat Yourself), KISS (Keep It Simple), YAGNI (You Aren't Gonna Need It)
+- Separation of Concerns — split concerns by responsibilities, in both logic and naming
+- Clean Architecture — clear layer separation, correct dependencies
+- Functional Programming — pure functions, immutability
+- TDD — test before implement
+- Check criteria per principle: SRP = 1 unit = 1 responsibility, DRY = no duplicated code/logic, KISS = simple, not over-engineered, Clean Arch = clear layers, SoC = cleanly separated concerns
 
 ## Expected Outcome
 
-- รายการ principles ทีพบ พร้อมแหล่งอ้างอิง
-- principles ทีถูกนำมาใช้กับ task ปัจจุบัน
-- รายงานกระทำและ next action
-- ไม่มีการตีความหรือเพิ่ม principles นอกแหล่ง
+- The list of principles found, with sources
+- The principles applied to the current task
+- A report of the actions taken and the next action
+- No interpretation or invention of principles beyond the sources
+- Files checked per `### 7` have a match/violations/severity summary with a recommendation

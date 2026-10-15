@@ -1,6 +1,6 @@
 ---
 name: follow-lib-otplib
-description: ใช้ otplib สำหรับ TOTP/HOTP 2FA — generate secret, verify token, QR provisioning
+description: Use otplib for TOTP/HOTP 2FA — generate secret, verify token, QR provisioning
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -11,16 +11,16 @@ related:
 
 ## Goal
 
-ใช้ otplib สำหรับ TOTP/HOTP 2FA — generate secret, verify token, QR provisioning
+Use otplib for TOTP/HOTP 2FA — generate secret, verify token, QR provisioning
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib otplib)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (lib otplib)
 
-- ครอบคลุม: TOTP/HOTP secret generation, token generate/verify, `otpauth://` URI provisioning, crypto plugins, secret storage
-- ไม่ครอบคลุม: render QR image จาก otpauth URI — ใช้ `/follow-lib-qrcode`; general auth/session design — ดู sibling skills ตาม stack
-- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี)
-- Latest: `otplib@13.5.0` (verified 2026-09-13) — v13 เป็น rewrite ใหม่ทั้งหมด (breaking changes)
+- Covers: TOTP/HOTP secret generation, token generate/verify, `otpauth://` URI provisioning, crypto plugins, secret storage
+- Not covered: rendering the QR image from an otpauth URI — use `/follow-lib-qrcode`; general auth/session design — see sibling skills per stack
+- No CLI — used via programmatic API only (thus none)
+- Latest: `otplib@13.5.0` (verified 2026-09-13) — v13 is a complete rewrite (breaking changes)
 - References: [apis](references/apis.md) 
 ## Execute
 
@@ -29,38 +29,38 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-otplib/SKILL.md` — install, TOTP generate/verify, secret storage 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. ใช้ functional API `import { generateSecret, generate, verify, generateURI } from 'otplib'` — หรือ class API `new OTP()` (v13 ไม่มี `preset-default`/`authenticator` แล้ว)
-1. generate secret ด้วย `generateSecret()` แล้วสร้าง otpauth:// URI ด้วย `generateURI({issuer, label, secret})` สำหรับ QR
-1. verify ด้วย `await verify({secret, token})` — คืน `VerifyResult` ให้เช็ค `.valid` (ไม่ใช่ boolean) — ตั้ง `epochTolerance` เผื่อ clock drift
-1. API เป็น async-first — `generateSync`/`verifySync` ใช้ได้เฉพาะกับ sync crypto plugin (`@otplib/plugin-crypto-node`/`@otplib/plugin-crypto-noble`)
-1. เก็บ secret encrypted — ไม่ใส่ใน JWT หรือ response
+1. Use the functional API `import { generateSecret, generate, verify, generateURI } from 'otplib'` — or the class API `new OTP()` (v13 has no `preset-default`/`authenticator` anymore)
+1. Generate a secret with `generateSecret()`, then create the otpauth:// URI with `generateURI({issuer, label, secret})` for the QR
+1. Verify with `await verify({secret, token})` — returns a `VerifyResult`, check `.valid` (not a boolean) — set `epochTolerance` for clock drift
+1. The API is async-first — `generateSync`/`verifySync` work only with a sync crypto plugin (`@otplib/plugin-crypto-node`/`@otplib/plugin-crypto-noble`)
+1. Store the secret encrypted — never put it in a JWT or response
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib otplib)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib otplib)
 
 ## Rules
 
-- ใช้ TOTP (time-based) เป็นหลัก — HOTP เฉพาะ use case เฉพาะ
-- verify ฝั่ง server เสมอ ห้าม verify ฝั่ง client
-- rate-limit verify attempts กัน brute-force
-- `verify`/`verifySync` คืน object `{valid}` ไม่ใช่ boolean — เช็ค `result.valid` เสมอ
-- migrate จาก v12 ด้วย `@otplib/v12-adapter` เป็น temporary bridge เท่านั้น แล้วย้ายไป v13 API
+- Prefer TOTP (time-based) — HOTP only for specific use cases
+- Always verify server-side, never verify on the client
+- Rate-limit verify attempts to prevent brute-force
+- `verify`/`verifySync` return an object `{valid}`, not a boolean — always check `result.valid`
+- Migrate from v12 with `@otplib/v12-adapter` as a temporary bridge only, then move to the v13 API
 
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ใช้ `/follow-lib-qrcode` ถ้าต้อง render QR จาก `otpauth://` URI
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- Use `/follow-lib-qrcode` if rendering a QR from an `otpauth://` URI is needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib otplib)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib otplib)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib otplib)
+- No known security/performance pitfalls (lib otplib)
+- Lint, typecheck, tests pass

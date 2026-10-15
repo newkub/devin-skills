@@ -1,48 +1,48 @@
 # Best Practices: Pinia (Vue 3 State Management)
 
-แนวทางออกแบบ stores, state, actions, persistence และ testing ให้ predictable และ type-safe
+Guidance for designing stores, state, actions, persistence, and testing to be predictable and type-safe
 
 ## Recommended Patterns
 
-- ใช้ setup function pattern เป็นหลัก `defineStore('id', () => {...})` — Composition API style เขียนง่ายกว่า options store
-- แยก store ตาม domain/feature (`useUserStore`, `useCartStore`) — ไม่ใช่ global dump รวมทุกอย่าง
-- State ด้วย `ref`/`reactive`, derived ด้วย `computed`, side effects ด้วย actions
-- Actions เป็น async function ธรรมดา — handle errors ภายใน, return value เมื่อต้องการ
-- Component destructure state ด้วย `storeToRefs(store)` — ห้าม destructure ตรงๆ จะเสีย reactivity
-- Batch update ด้วย `store.$patch({...})` หรือ `store.$patch(fn)` — ลด re-trigger subscriptions
-- Persist เฉพาะ field จำเป็นด้วย `pinia-plugin-persistedstate` `pick`/`paths` — อย่า persist ทั้ง store โดยไม่คิด
+- Prefer the setup function pattern `defineStore('id', () => {...})` — Composition API style, easier to write than an options store
+- Split stores by domain/feature (`useUserStore`, `useCartStore`) — not one global dump holding everything
+- State with `ref`/`reactive`, derived values with `computed`, side effects in actions
+- Actions are plain async functions — handle errors inside, return a value when needed
+- Destructure state in components with `storeToRefs(store)` — never destructure directly or reactivity is lost
+- Batch updates with `store.$patch({...})` or `store.$patch(fn)` — reduces re-triggered subscriptions
+- Persist only necessary fields via `pinia-plugin-persistedstate` `pick`/`paths` — don't persist the whole store without thinking
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ใช้ `storeToRefs` เมื่อ destructure reactive state | `const {count} = store` — reactive หาย |
-| Mutate state ใน actions เท่านั้น | แก้ state จาก component โดยตรง (ยาก debug) |
-| Return เฉพาะ state/methods ที่ใช้จริง | expose internal refs ทั้งหมด |
-| ใช้ `setActivePinia(createPinia())` ใน test setup | reuse pinia instance ข้าม tests |
-| Persist ด้วย `pick` ระบุ fields | persist sensitive data (tokens, PII) ลง localStorage |
-| ใช้ `store.$dispose()` cleanup เมื่อ store ไม่ใช้แล้ว | ปล่อย subscriptions ค้างใน memory |
+| use `storeToRefs` when destructuring reactive state | `const {count} = store` — reactivity is gone |
+| mutate state only in actions | edit state directly from a component (hard to debug) |
+| expose only the state/methods actually used | expose all internal refs |
+| use `setActivePinia(createPinia())` in test setup | reuse one pinia instance across tests |
+| persist with `pick` naming explicit fields | persist sensitive data (tokens, PII) into localStorage |
+| clean up with `store.$dispose()` when a store is no longer used | leave subscriptions dangling in memory |
 
 ## Common Pitfalls
 
-- Setup store ไม่มี `$reset()` built-in — implement reset action เอง (หรือ Options store ถ้าต้องการ)
-- `storeToRefs` เฉพาะ state/getters — actions destructure ได้ปกติเพราะเป็น function
-- SSR/Nuxt: state ต้อง serializable — function/class instance ใน state เสีย hydration
-- Persist + async hydration mismatch — ตั้ง `persist` strategies ให้รอ client-side
-- Plugin ลืม `pinia.use(plugin)` ก่อน `app.use(pinia)` — persist ไม่ทำงานเงียบๆ
-- Watch store state ใน component ด้วย `watch(store.field)` — ใช้ getter ref จาก `storeToRefs` หรือ `store.$subscribe` แทน
+- Setup stores have no built-in `$reset()` — implement a reset action yourself (or use an Options store if you need it)
+- `storeToRefs` is for state/getters only — actions destructure fine directly since they're functions
+- SSR/Nuxt: state must be serializable — functions/class instances in state break hydration
+- Persist + async hydration mismatch — configure `persist` strategies to wait for the client side
+- Plugin: forgot `pinia.use(plugin)` before `app.use(pinia)` — persistence silently does nothing
+- Watching store state in a component via `watch(store.field)` — use the getter ref from `storeToRefs` or `store.$subscribe` instead
 
 ## Performance Notes
 
-- Store ขนาดใหญ่ = re-render มาก — แยก store ตาม feature ลด cross-dependencies
-- Getters เป็น `computed` — cache อัตโนมัติ; อย่าคำนวณซ้ำใน component
-- `$subscribe` รับทุก mutation — ใช้ `{detached: true}` หรือ filter ใน callback ถ้า hot path
-- Persistence write ทุก state change — throttle/serialize เฉพาะ field จำเป็น
-- Lazy-load store: `defineStore` ไม่ instantiate จนกว่าจะถูกเรียก — ปลอดภัยที่จะ define เยอะ
+- A huge store = lots of re-renders — split stores by feature to cut cross-dependencies
+- Getters are `computed` — cached automatically; don't recompute the same thing in components
+- `$subscribe` receives every mutation — use `{detached: true}` or filter in the callback on hot paths
+- Persistence writes on every state change — throttle/serialize only the fields you need
+- Lazy store loading: `defineStore` doesn't instantiate until called — defining many stores is safe
 
 ## Ecosystem / Integration
 
-- Nuxt: `@pinia/nuxt` auto-import `defineStore`, `storeToRefs` — ตั้ง `pinia.storesDirs` ถ้า path ต่างจาก default
-- Testing: Vitest + `setActivePinia` — mock external services ใน actions
-- Persistence: `pinia-plugin-persistedstate` รองรับ `storage`, `serializer`, `pick`
-- Devtools: Pinia tab ใน Vue DevTools — debug state timeline ได้
+- Nuxt: `@pinia/nuxt` auto-imports `defineStore`, `storeToRefs` — set `pinia.storesDirs` if your paths differ from the default
+- Testing: Vitest + `setActivePinia` — mock external services inside actions
+- Persistence: `pinia-plugin-persistedstate` supports `storage`, `serializer`, `pick`
+- Devtools: the Pinia tab in Vue DevTools — debug the state timeline

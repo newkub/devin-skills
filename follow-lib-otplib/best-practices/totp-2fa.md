@@ -1,45 +1,45 @@
 # Best Practices: otplib (TOTP/HOTP 2FA)
 
-แนวทาง implement 2FA ด้วย TOTP ให้ปลอดภัยและใช้งานจริงได้ราบรื่น
+Guidance for implementing 2FA with TOTP securely and smoothly in production
 
 ## Recommended Patterns
 
-- ใช้ TOTP เป็นหลัก — HOTP เฉพาะ use case ที่ counter-based sync จำเป็นจริงๆ (เช่น hardware token)
-- Enroll flow: `generateSecret()` → เก็บ secret encrypted → `generateURI({issuer, label, secret})` → render QR → verify token แรกก่อนเปิดใช้ 2FA
-- Verify ด้วย `await verify({secret, token})` แล้วเช็ค `result.valid` — API คืน object ไม่ใช่ boolean
-- ตั้ง `epochTolerance` (เช่น 1 window = ±30s) เผื่อ clock drift ระหว่าง server กับ authenticator app
-- Secret เก็บ encrypted at rest (AES/KMS) — ห้าม plaintext ใน database หรือ log
-- Recovery codes แบบ single-use เป็นช่องทางสำรองเมื่อ user เสีย device — hash ก่อนเก็บเหมือน password
+- Prefer TOTP — use HOTP only when counter-based sync is genuinely required (e.g. hardware tokens)
+- Enroll flow: `generateSecret()` → store the secret encrypted → `generateURI({issuer, label, secret})` → render QR → verify the first token before enabling 2FA
+- Verify with `await verify({secret, token})` then check `result.valid` — the API returns an object, not a boolean
+- Set `epochTolerance` (e.g. 1 window = ±30s) for clock drift between the server and the authenticator app
+- Store secrets encrypted at rest (AES/KMS) — never plaintext in the database or logs
+- Single-use recovery codes as a fallback when the user loses their device — hash them before storing, like passwords
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| verify ฝั่ง server เท่านั้น | generate/verify TOTP ฝั่ง client (secret หลุด) |
-| rate-limit verify endpoint (เช่น 5 ครั้ง/นาที) | ปล่อย brute-force 6-digit token ได้ไม่จำกัด |
-| เช็ค `result.valid` จาก `verify()` | assume `verify` คืน boolean |
-| เก็บ secret encrypted + masked ใน UI | แสดง secret เต็มหลัง enroll แล้ว |
-| ใช้ `generateURI` สร้าง otpauth:// แล้ว render QR | concatenate URI string เอง (issuer/label encoding พลาด) |
-| มี recovery path (backup codes, admin reset) | lock user ถาวรเมื่อเสีย device |
+| verify on the server only | generate/verify TOTP on the client (secret leaks) |
+| rate-limit the verify endpoint (e.g. 5/min) | let 6-digit tokens be brute-forced unlimited |
+| check `result.valid` from `verify()` | assume `verify` returns a boolean |
+| store the secret encrypted + masked in the UI | show the full secret after enrollment |
+| use `generateURI` to build otpauth:// then render the QR | concatenate the URI string yourself (issuer/label encoding goes wrong) |
+| provide a recovery path (backup codes, admin reset) | permanently lock out a user who loses a device |
 
 ## Common Pitfalls
 
-- `verify`/`verifySync` คืน `{valid}` ไม่ใช่ boolean — check ผิดทำให้ทุก token ผ่านหรือไม่ผ่านหมด
-- `generateSync`/`verifySync` ใช้ได้เฉพาะ sync crypto plugin (`@otplib/plugin-crypto-node`/`noble`) — เรียกบน async plugin throw error
-- Clock drift ทำ valid token fail — อย่าตั้ง `epochTolerance` เป็น 0 โดยไม่จำเป็น (แต่อย่ากว้างเกิน 1-2 windows เพราะลด security)
-- secret reuse ข้าม user — `generateSecret()` ต่อ enrollment เสมอ อย่า derive จาก user id
-- otpauth URI ผิด format — authenticator app scan ไม่ได้; ใช้ `generateURI` เสมอ
-- migrate จาก v12: `@otplib/v12-adapter` เป็น bridge ชั่วคราว — plan ย้ายไป functional/class API ใหม่
+- `verify`/`verifySync` return `{valid}`, not a boolean — checking wrong makes every token pass or every token fail
+- `generateSync`/`verifySync` work only with sync crypto plugins (`@otplib/plugin-crypto-node`/`noble`) — calling them on an async plugin throws
+- Clock drift makes valid tokens fail — don't set `epochTolerance` to 0 without reason (but don't go wider than 1-2 windows, it weakens security)
+- Secret reuse across users — always `generateSecret()` per enrollment, never derive from a user id
+- Malformed otpauth URI — the authenticator app can't scan it; always use `generateURI`
+- Migrating from v12: `@otplib/v12-adapter` is a temporary bridge — plan the move to the new functional/class API
 
 ## Performance Notes
 
-- TOTP verify เป็น crypto เบา (HMAC) — bottleneck จริงคือ DB lookup + rate limiter ไม่ใช่ token math
-- Async API ใช้ WebCrypto/Node crypto async — throughput ดีกว่า sync บน high concurrency
-- อย่า re-generate secret ทุก verify — generate ครั้งเดียวตอน enroll
-- Cache user record + secret ใน session หลัง login เพื่อลด DB hit ตอน challenge
+- TOTP verification is light crypto (HMAC) — the real bottleneck is the DB lookup + rate limiter, not the token math
+- The async API uses WebCrypto/Node async crypto — better throughput than sync under high concurrency
+- Don't re-generate the secret on every verify — generate once at enrollment
+- Cache the user record + secret in the session after login to cut DB hits during the challenge
 
 ## Ecosystem / Integration
 
-- QR rendering จาก `otpauth://` URI → `/follow-lib-qrcode` (`toDataURL`/`toString`)
-- Issuer/label ใน URI ควรตรง app name — authenticator app แสดงชื่อนี้ให้ user
-- Combine กับ session flow: verify TOTP ผ่าน → mark session เป็น `2fa-verified` อย่าเช็คซ้ำทุก request
+- QR rendering from the `otpauth://` URI → `/follow-lib-qrcode` (`toDataURL`/`toString`)
+- The issuer/label in the URI should match the app name — the authenticator app shows this name to the user
+- Combine with the session flow: TOTP verify passes → mark the session `2fa-verified`; don't re-check on every request
