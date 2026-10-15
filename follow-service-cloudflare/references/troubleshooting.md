@@ -1,33 +1,33 @@
 
 # Wrangler Troubleshooting
 
-ปัญหาที่พบบ่อยและวิธีแก้
+Common problems and their fixes
 
 ## Authentication Errors
 
-### `wrangler login` ไม่ผ่าน
+### `wrangler login` does not complete
 
-Error: `localhost refused to connect` หรือ `ERR_CONNECTION_REFUSED`
+Error: `localhost refused to connect` or `ERR_CONNECTION_REFUSED`
 
-สาเหตุ: IPv6 disabled, VPN, WSL networking, port 8976 ไม่เปิด
+Cause: IPv6 disabled, VPN, WSL networking, port 8976 not open
 
-แก้:
+Fix:
 ```bash
-# ใช้ device flow (Wrangler 4.119.0+)
+# Use device flow (Wrangler 4.119.0+)
 wrangler login --device
 
-# หรือเปิด URL เอง
+# Or open the URL yourself
 wrangler login --browser=false
 ```
 
-### API Token ไม่ทำงาน
+### API Token does not work
 
 Error: `Failed to fetch auth token: 400 Bad Request`
 
-แก้:
-- ตรวจ token ยัง active ใน dashboard
-- ตรวจ permissions: Workers Scripts Edit, KV Edit, D1 Edit, Tail Read
-- ถ้าเปลี่ยนเป็น OAuth: `unset CLOUDFLARE_API_TOKEN && wrangler logout && wrangler login`
+Fix:
+- Check the token is still active in the dashboard
+- Check permissions: Workers Scripts Edit, KV Edit, D1 Edit, Tail Read
+- To switch to OAuth: `unset CLOUDFLARE_API_TOKEN && wrangler logout && wrangler login`
 
 ### Error 9106 (Bad Credentials)
 
@@ -39,25 +39,25 @@ wrangler logout && wrangler login
 
 ### Worker Name Mismatch
 
-Error: name ใน config ไม่ตรงกับ dashboard
+Error: the name in the config does not match the dashboard
 
-แก้: อัปเดต `name` ใน `wrangler.jsonc` ให้ตรง
+Fix: update `name` in `wrangler.jsonc` to match
 
 ### Missing Configuration File
 
 Error: `Missing entry-point`
 
-แก้: เพิ่ม `wrangler.jsonc` หรือ `wrangler.toml` ใน root พร้อม `main` field
+Fix: add `wrangler.jsonc` or `wrangler.toml` in the root with a `main` field
 
 ### Incorrect Account ID
 
 Error: `Could not route to /client/v4/accounts/... [code: 7003]`
 
-แก้: ลบ `account_id` ใน config หรือใส่ให้ถูกต้อง
+Fix: remove `account_id` from the config or set it correctly
 
 ### Error 10004 (Malformed Parameter)
 
-แก้: ลบและสร้าง Worker ใหม่ หรือ retry
+Fix: delete and recreate the Worker, or retry
 
 ## Configuration Errors
 
@@ -65,25 +65,25 @@ Error: `Could not route to /client/v4/accounts/... [code: 7003]`
 
 Error: `Expected "route" to be either a string, or an object...`
 
-แก้:
+Fix:
 ```toml
 route = "https://example.com/*"
-# หรือ
+# or
 [route]
 pattern = "example.com/*"
 zone_id = "your-zone-id"
 ```
 
-### Bindings ไม่ inherit
+### Bindings are not inherited
 
-Bindings (`vars`, `kv_namespaces`, etc.) ไม่ inherit ระหว่าง environments ต้องประกาศใหม่ในแต่ละ env
+Bindings (`vars`, `kv_namespaces`, etc.) are not inherited between environments — re-declare them in each env
 
 ## Version Conflicts
 
 ### Node.js Version
 
-- ต้องการ >= 22.0.0 (Wrangler 4.87.0+)
-- ใช้ nvm/mise/Volta สำหรับจัดการ version
+- Requires >= 22.0.0 (Wrangler 4.87.0+)
+- Use nvm/mise/Volta to manage versions
 
 ```bash
 nvm install --lts
@@ -92,13 +92,13 @@ nvm use --lts
 
 ### Compatibility Date Warning
 
-Warning: requested date ใหม่กว่าที่ workerd รองรับ
+Warning: the requested date is newer than what workerd supports
 
-แก้: `npm update wrangler` (ห้าม ignore warning)
+Fix: `npm update wrangler` (never ignore the warning)
 
 ### nodejs_compat
 
-ใช้ `nodejs_compat` flag แทน `--node-compat` ที่ deprecated:
+Use the `nodejs_compat` flag instead of the deprecated `--node-compat`:
 
 ```jsonc
 {
@@ -120,9 +120,9 @@ npx wrangler dev --log-level debug
 
 ### Proxy Errors
 
-Error: `UND_ERR_SOCKET` หรือ `TypeError: fetch failed`
+Error: `UND_ERR_SOCKET` or `TypeError: fetch failed`
 
-แก้:
+Fix:
 ```bash
 unset http_proxy
 unset HTTPS_PROXY
@@ -133,7 +133,7 @@ wrangler dev
 
 Error: `Could not proxy request: TypeError: fetch failed`
 
-แก้: ปิด IPv6 ชั่วคราว หรือตั้งให้ OS prefer IPv4
+Fix: disable IPv6 temporarily, or configure the OS to prefer IPv4
 
 ### WSL
 
@@ -146,19 +146,19 @@ export https_proxy=""
 
 ### API Token Permissions
 
-ต้องมี:
+Required permissions:
 - Account > Workers Scripts > Edit
 - Account > Workers KV Storage > Edit
 - Account > D1 > Edit
 - Account > Workers Tail > Read
-- Zone > DNS > Edit (ถ้าใช้ routes)
-- Zone > Zone > Read (ถ้าใช้ routes)
+- Zone > DNS > Edit (when using routes)
+- Zone > Zone > Read (when using routes)
 
 ### Multiple Accounts
 
 Error: `More than one account available...`
 
-แก้: ตั้ง `CLOUDFLARE_ACCOUNT_ID` env var หรือใส่ `account_id` ใน config
+Fix: set the `CLOUDFLARE_ACCOUNT_ID` env var or add `account_id` to the config
 
 ## Durable Objects Errors
 
@@ -166,35 +166,35 @@ Error: `More than one account available...`
 
 Error: `No event handlers were registered`
 
-แก้: ตรวจ `dir` และ `main` ใน config, ใช้ `.mjs` ถ้า ES modules
+Fix: check `dir` and `main` in the config; use `.mjs` for ES modules
 
 ### Durable Object Overloaded
 
 Error: `Durable Object is overloaded`
 
-แก้:
-- Horizontal scaling (หลาย instances)
-- ห้าม retry ถ้า `.overloaded === true`
+Fix:
+- Horizontal scaling (multiple instances)
+- Never retry when `.overloaded === true`
 
 ## Common Error Codes
 
 | Code | Meaning | Solution |
 |---|---|---|
 | 10002 | Internal server error | Retry, check debug logs |
-| 10004 | Malformed parameter | ลบและสร้าง Worker ใหม่ |
-| 10006 | Could not parse code | ตรวจ syntax |
-| 10021 | Validation error | ตรวจ config |
-| 10027 | Worker exceeded size | ลด bundle size |
-| 10037 | Exceeded Workers limit | ลบ Workers ที่ไม่ใช้ |
-| 7003 | Invalid account_id | ตรวจ account_id |
-| 9106 | Auth failed | ตรวจ token/credentials |
+| 10004 | Malformed parameter | Delete and recreate the Worker |
+| 10006 | Could not parse code | Check syntax |
+| 10021 | Validation error | Check the config |
+| 10027 | Worker exceeded size | Reduce the bundle size |
+| 10037 | Exceeded Workers limit | Delete unused Workers |
+| 7003 | Invalid account_id | Check account_id |
+| 9106 | Auth failed | Check token/credentials |
 
 ## Getting Help
 
 - Community: https://community.cloudflare.com/
 - Discord: Cloudflare Developers Discord
 - GitHub Issues: https://github.com/cloudflare/workers-sdk/issues
-- เวลาแจ้ง issue แนบ: `wrangler --version`, `node --version`, OS, debug logs
+- When filing an issue, attach: `wrangler --version`, `node --version`, OS, debug logs
 
 ## Source
 

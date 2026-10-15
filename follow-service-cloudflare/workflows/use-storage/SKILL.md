@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-use-storage
-description: ใช้ Cloudflare KV และ R2 — namespaces, caching patterns, object storage, presigned uploads
+description: Use Cloudflare KV and R2 — namespaces, caching patterns, object storage, presigned uploads
 argument-hint: "[binding]"
 related:
   - follow-service-cloudflare
@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้ KV และ R2 ถูก use case — KV = key-value เล็ก+อ่านบ่อย (global cache), R2 = object storage (files/media/large payloads)
+Use KV and R2 for the right case — KV = small, read-heavy key-value (global cache); R2 = object storage (files/media/large payloads)
 
 ## Scope
 
-storage layer ของ Workers — เลือกให้ถูก: KV (~64KB-25MB values, eventual consistency ~60s), R2 (objects, S3-compatible), Cache API (per-colo HTTP cache); bindings → `config-bindings`, detail ใน `references/bindings.md`
+The storage layer of Workers — pick correctly: KV (~64KB-25MB values, eventual consistency ~60s), R2 (objects, S3-compatible), Cache API (per-colo HTTP cache); bindings → `config-bindings`, details in `references/bindings.md`
 
 ## Execute
 
@@ -29,7 +29,7 @@ wrangler r2 bucket create my-bucket
 
 ### 2. KV Patterns
 
-> Goal: ใช้ KV ตามจุดแข็ง/จุดอ่อน
+> Goal: Use KV per its strengths/weaknesses
 
 ```ts
 await env.CACHE.put('key', value, { expirationTtl: 3600 })
@@ -38,8 +38,8 @@ await env.CACHE.delete('key')
 await env.CACHE.list({ prefix: 'user:' })
 ```
 
-- เหมาะ: config, sessions, feature flags, cache — **ไม่เหมาะ**: ข้อมูลที่ต้อง consistent ทันที (eventual ~60s), high-write data
-- metadata: `put(key, val, { metadata })` + `getWithMetadata` — เช่น content-type/tags
+- Good for: config, sessions, feature flags, cache — not good for: data needing immediate consistency (eventual ~60s), high-write data
+- metadata: `put(key, val, { metadata })` + `getWithMetadata` — e.g. content-type/tags
 
 ### 3. R2 Patterns
 
@@ -53,27 +53,27 @@ await env.BUCKET.delete(key)
 await env.BUCKET.list({ prefix, limit, cursor })
 ```
 
-- Multipart upload สำหรับไฟล์ใหญ่ (`createMultipartUpload`)
+- Multipart upload for large files (`createMultipartUpload`)
 - Range reads: `get(key, { range })` — partial content
-- Serve files: return `new Response(obj.body, { headers })` + `writeHttpMetadata`
+- Serving files: return `new Response(obj.body, { headers })` + `writeHttpMetadata`
 
 ### 4. Cache API (optional)
 
-- `caches.default` — per-colo HTTP cache สำหรับ Response objects; เหมาะ hot paths ที่ไม่ต้อง global consistency
+- `caches.default` — per-colo HTTP cache for Response objects; good for hot paths that don't need global consistency
 
 ### 5. Verify
 
-1. `wrangler dev` round-trip put/get/delete จริง (local = miniflare-backed)
+1. `wrangler dev` with a real put/get/delete round trip (local = miniflare-backed)
 2. `/run-test`; fail → `/resolve-errors`
 
 ## Rules
 
-- KV ไม่ใช้เป็น source of truth — ใช้ cache/derived data เท่านั้น
-- R2 keys ออกแบบเป็น path (`users/{id}/avatar.png`) ให้ `list` prefix ใช้ได้
-- เลือก binding แยกต่อ env (staging/production)
-- ETag/conditional requests บน R2 GET สำหรับ bandwidth
+- Never use KV as the source of truth — cache/derived data only
+- Design R2 keys as paths (`users/{id}/avatar.png`) so `list` by prefix works
+- Use separate bindings per env (staging/production)
+- Use ETag/conditional requests on R2 GET to save bandwidth
 
 ## Expected Outcome
 
-- KV/R2 bound และ round-trip ทำงานทั้ง local/remote
-- Storage choice ตรง use case + consistency requirements
+- KV/R2 bound and round-trips working both locally and remotely
+- Storage choice matches the use case + consistency requirements

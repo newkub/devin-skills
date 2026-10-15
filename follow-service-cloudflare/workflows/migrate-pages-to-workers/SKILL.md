@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-migrate-pages-to-workers
-description: ย้าย Pages → Workers (Static Assets + Worker script) พร้อม cutover/rollback
+description: Migrate Pages → Workers (Static Assets + Worker script) with cutover/rollback
 argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
@@ -11,79 +11,79 @@ related:
 
 ## Goal
 
-ย้ายโปรเจกต์จาก Cloudflare Pages ไป Workers (Static Assets + Worker script) อย่างปลอดภัย — เว็บทำงานเหมือนเดิมและ rollback ได้
+Migrate the project from Cloudflare Pages to Workers (Static Assets + Worker script) safely — the site behaves the same and rollback is possible
 
 ## Scope
 
-- ครอบคลุม: Pages static site → Workers Static Assets, Pages Functions (`functions/`) → Worker routes, `_redirects`/`_headers`, cutover และ rollback
-- ไม่ทำพร้อม feature work — migration แยก commit ต่อ step ให้ bisect ได้
+- Covers: Pages static site → Workers Static Assets, Pages Functions (`functions/`) → Worker routes, `_redirects`/`_headers`, cutover and rollback
+- Never mix with feature work — one commit per migration step so it can be bisected
 
 ## Execute
 
 ### 1. Plan Migration
 
-> Goal: map from→to ชัดเจนก่อนเริ่ม
+> Goal: Map from→to clearly before starting
 
-1. ทำ `/plan`: ระบุสิ่งที่ Pages ใช้อยู่ — static output dir, `functions/` routes, `_redirects`, `_headers`, env vars/secrets, custom domains
-2. อ่าน official migration guide (Workers Static Assets docs) — ถ้าไม่แน่ใจทำ `/learn` (web)
-3. เขียน rollback path: Pages project เดิมยังอยู่จนกว่า cutover สำเร็จ — กลับได้ด้วยการชี้ domain กลับ
-4. ถ้า scope ไม่ชัดหรือกระทบ production domain → `/ask-me`
+1. Do `/plan`: list what Pages currently uses — static output dir, `functions/` routes, `_redirects`, `_headers`, env vars/secrets, custom domains
+2. Read the official migration guide (Workers Static Assets docs) — if unsure, do `/learn` (web)
+3. Write the rollback path: the original Pages project stays until cutover succeeds — revert by pointing the domain back
+4. If the scope is unclear or it affects a production domain → `/ask-me`
 
 ### 2. Create Worker Config
 
-> Goal: `wrangler.jsonc`/`wrangler.toml` สำหรับ Workers + assets
+> Goal: `wrangler.jsonc`/`wrangler.toml` for Workers + assets
 
-1. กำหนด `name`, `main` (worker entry), `compatibility_date` เป็นวันปัจจุบัน
-2. ตั้ง `assets` ชี้ไป static output dir เดิมของ Pages (ดู official docs สำหรับ assets config fields ล่าสุด)
-3. ย้าย vars จาก Pages settings → `vars` และ secrets → `wrangler secret put`
-4. รัน `wrangler types` หลังตั้ง config
+1. Set `name`, `main` (worker entry), and `compatibility_date` to the current date
+2. Point `assets` at the original Pages static output dir (check official docs for the latest assets config fields)
+3. Move vars from Pages settings → `vars` and secrets → `wrangler secret put`
+4. Run `wrangler types` after setting the config
 
 ### 3. Migrate Functions To Worker
 
-> Goal: `functions/` handlers ทำงานใน Worker
+> Goal: `functions/` handlers work inside the Worker
 
-1. map แต่ละ `functions/<route>.ts` → route ใน Worker `fetch` handler
-2. ย้าย `context.env` bindings → `env` ของ Worker — bindings ต้องตรง (ดู `workflows/config-bindings`)
-3. แปลง `_redirects`/`_headers` → logic ใน Worker หรือ assets config ตาม official docs
-4. test local ด้วย `wrangler dev` ทุก route ที่ migrate
-5. ถ้า routes fail → `/resolve-errors`
+1. Map each `functions/<route>.ts` → a route in the Worker `fetch` handler
+2. Move `context.env` bindings → the Worker's `env` — bindings must match (see `workflows/config-bindings`)
+3. Convert `_redirects`/`_headers` → logic in the Worker or assets config per official docs
+4. Test locally with `wrangler dev` for every migrated route
+5. If routes fail → `/resolve-errors`
 
 ### 4. Deploy And Verify
 
-> Goal: Workers ใหม่ live และเทียบผลกับ Pages เดิม
+> Goal: The new Worker is live and compared against the original Pages
 
-1. deploy ไป staging env ก่อนด้วย `wrangler deploy --env staging` (ดู `workflows/deploy-worker`)
-2. smoke test เทียบทุก route กับ Pages URL เดิม — status, headers, content ต้องเท่ากัน
-3. deploy production ด้วย `wrangler deploy` แล้วชี้ custom domain/routes ไป Worker
-4. verify domain จริง แล้วเก็บ Pages project เดิมไว้เป็น rollback จนกว่า stable
+1. Deploy to a staging env first with `wrangler deploy --env staging` (see `workflows/deploy-worker`)
+2. Smoke test every route against the original Pages URL — status, headers, and content must match
+3. Deploy production with `wrangler deploy`, then point custom domains/routes at the Worker
+4. Verify the real domain, and keep the original Pages project as rollback until stable
 
 ### 5. Cleanup
 
-> Goal: ปิดของเก่าหลัง stable
+> Goal: Shut down the old setup after stable
 
-1. หลัง production stable (user confirm window) → disable/delete Pages project
-2. ลบ config ที่ไม่ใช้แล้ว และทำ `/update-references` ถ้ามีไฟล์ย้าย
-3. ทำ `/report-before-after` สรุป URLs, routes และ bindings ที่เปลี่ยน
+1. After production is stable (user-confirm window) → disable/delete the Pages project
+2. Remove unused config and do `/update-references` if files moved
+3. Do `/report-before-after` summarizing the URLs, routes, and bindings that changed
 
 ## Rules
 
 ### 1. Rollback First
 
-- Pages project เดิมต้องพร้อม rollback จนกว่า Workers ใหม่ stable — ห้ามลบก่อน confirm
-- แยก commit ต่อ migration step ให้ bisect/revert ได้
+- The original Pages project must stay rollback-ready until the new Worker is stable — never delete before confirm
+- One commit per migration step so it can be bisected/reverted
 
 ### 2. Parity Check
 
-- ทุก route/redirect/header ต้องเทียบกับ Pages เดิม — ห้ามสันนิษฐาน
-- bindings และ env vars ต้องครบก่อน deploy
+- Every route/redirect/header must be compared against the original Pages — never assume
+- Bindings and env vars must be complete before deploy
 
 ### 3. Docs First
 
-- fields ของ assets config และ limits เปลี่ยนได้ — อ้าง official docs ผ่าน `/use-wrangler` แทนการเดา
+- assets config fields and limits can change — rely on official docs via `/use-wrangler` instead of guessing
 
 ## Expected Outcome
 
-- site ทำงานบน Workers ครบทุก route/redirect เท่า Pages เดิม
-- custom domain ชี้ไป Worker แล้ว และ rollback path (Pages เดิม) พร้อม
-- รายงาน before/after ชัดเจน
+- The site runs fully on Workers with every route/redirect matching the original Pages
+- The custom domain points to the Worker and the rollback path (original Pages) is ready
+- A clear before/after report is produced
 

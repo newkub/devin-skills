@@ -1,7 +1,7 @@
 
 # Wrangler Commands
 
-คำสั่งหลักและ advanced platform commands
+Main commands and advanced platform commands
 
 ## Core Commands
 
@@ -18,9 +18,9 @@
 | `wrangler deploy --dry-run` | Preview without deploying |
 | `wrangler setup` | Configure without deploying |
 | `wrangler types` | Generate TypeScript types |
-| `wrangler tail` | Stream live logs (ดู `tail-and-logs.md`) |
+| `wrangler tail` | Stream live logs (see `tail-and-logs.md`) |
 | `wrangler delete` | Delete a Worker |
-| `wrangler versions` | Manage Worker versions (ดู `versions-and-rollback.md`) |
+| `wrangler versions` | Manage Worker versions (see `versions-and-rollback.md`) |
 | `wrangler rollback` | Rollback to previous version |
 | `wrangler deployments list` | List recent deployments |
 | `wrangler deployments status` | View current deployment status |
@@ -29,7 +29,7 @@
 
 | Command | Description |
 |---|---|
-| `wrangler pages deploy [dir]` | Deploy Cloudflare Pages (ดู `pages.md`) |
+| `wrangler pages deploy [dir]` | Deploy Cloudflare Pages (see `pages.md`) |
 | `wrangler pages dev [dir]` | Pages local dev server |
 | `wrangler queues create my-queue` | Create a Queue |
 | `wrangler queues list` | List Queues |
@@ -41,7 +41,7 @@
 | `wrangler hyperdrive list` | List Hyperdrive configs |
 | `wrangler vectorize create my-index` | Create Vectorize index |
 | `wrangler vectorize list` | List Vectorize indexes |
-| `wrangler triggers deploy` | Apply trigger changes (ดู `triggers-and-cron.md`) |
+| `wrangler triggers deploy` | Apply trigger changes (see `triggers-and-cron.md`) |
 
 ## Global Flags
 

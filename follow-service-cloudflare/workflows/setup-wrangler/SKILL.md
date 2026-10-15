@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-setup-wrangler
-description: ติดตั้ง Wrangler CLI + authenticate + verify whoami (idempotent first-time setup)
+description: Install Wrangler CLI + authenticate + verify whoami (idempotent first-time setup)
 argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
@@ -11,67 +11,67 @@ related:
 
 ## Goal
 
-ติดตั้ง Wrangler CLI และเชื่อมต่อกับ Cloudflare account ให้พร้อมสำหรับ develop และ deploy — first-time setup ที่ verify ได้และ idempotent
+Install the Wrangler CLI and connect to the Cloudflare account, ready for develop and deploy — a verifiable, idempotent first-time setup
 
 ## Scope
 
-ใช้สำหรับติดตั้ง `wrangler`, ตั้งค่า authentication (`wrangler login` หรือ `CLOUDFLARE_API_TOKEN`) และ verify ด้วย `wrangler whoami` — ไม่ครอบคลุม bindings (ใช้ `workflows/config-bindings`) หรือ deploy (ใช้ `workflows/deploy-worker`)
+Used to install `wrangler`, set up authentication (`wrangler login` or `CLOUDFLARE_API_TOKEN`), and verify with `wrangler whoami` — does not cover bindings (use `workflows/config-bindings`) or deploy (use `workflows/deploy-worker`)
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ current state ก่อนติดตั้ง (idempotent)
+> Goal: Check the current state before installing (idempotent)
 
-1. ตรวจว่ามี Wrangler แล้วหรือยังด้วย `wrangler --version`
-2. ถ้ามีแล้ว → ข้ามไป Step 3 เพื่อ verify auth ทันที
-3. ตรวจ package manager ของ project จาก `package.json` (`bun`, `pnpm`, `npm`)
+1. Check whether Wrangler already exists with `wrangler --version`
+2. If present → skip to Step 3 to verify auth immediately
+3. Detect the project's package manager from `package.json` (`bun`, `pnpm`, `npm`)
 
 ### 2. Install Wrangler
 
-> Goal: ติดตั้ง Wrangler ตาม ecosystem ของ project
+> Goal: Install Wrangler per the project's ecosystem
 
-1. ติดตั้งเป็น devDependency ด้วย `bun add -D wrangler` (หรือ package manager ที่ project ใช้)
-2. ถ้าต้องการ global → ทำ `/follow-tool-mise` หรือ `mise use -g wrangler` ก่อน แล้วค่อยพิจารณา package manager ของระบบ
-3. ถ้าใช้ TypeScript → ติดตั้ง `@cloudflare/workers-types` ด้วย `bun add -D @cloudflare/workers-types`
-4. verify version ด้วย `wrangler --version`
+1. Install as a devDependency with `bun add -D wrangler` (or the package manager the project uses)
+2. For global → do `/follow-tool-mise` or `mise use -g wrangler` first, then consider the system package manager
+3. For TypeScript → install `@cloudflare/workers-types` with `bun add -D @cloudflare/workers-types`
+4. Verify the version with `wrangler --version`
 
 ### 3. Authenticate
 
-> Goal: เชื่อมต่อ Wrangler กับ Cloudflare account
+> Goal: Connect Wrangler to the Cloudflare account
 
-1. Interactive: รัน `wrangler login` — เปิด browser ให้ user authorize
-2. CI/headless: ใช้ `CLOUDFLARE_API_TOKEN` environment variable — สร้าง token ตาม `/create-cloudflare-token` แล้วเก็บผ่าน `/follow-secret-manager`
-3. ห้าม commit token หรือใส่ใน config files
+1. Interactive: run `wrangler login` — it opens the browser for the user to authorize
+2. CI/headless: use the `CLOUDFLARE_API_TOKEN` environment variable — create the token per `/create-cloudflare-token`, then store it via `/follow-secret-manager`
+3. Never commit the token or put it in config files
 
 ### 4. Verify
 
-> Goal: ยืนยัน auth ทำงานและ account ถูกต้อง
+> Goal: Confirm auth works and the account is correct
 
-1. รัน `wrangler whoami` — ต้องแสดง account name และ account ID
-2. ถ้ามีหลาย accounts → เลือก account ที่ถูกต้องให้ user confirm
-3. ถ้า verify fail → ทำ `/resolve-errors` max 3 รอบ (re-login, ตรวจ token scope) แล้ว stop report
-4. สำเร็จ → report account ที่ใช้แล้ว `/suggest-next-action`
+1. Run `wrangler whoami` — it must show the account name and account ID
+2. With multiple accounts → pick the correct account and have the user confirm
+3. If verify fails → do `/resolve-errors` max 3 rounds (re-login, check token scope), then stop and report
+4. Success → report the account in use, then `/suggest-next-action`
 
 ## Rules
 
 ### 1. Idempotent Setup
 
-- ตรวจ version และ auth state ก่อนเสมอ — ถ้า setup ไปแล้ว verify เท่านั้น
-- ติดตั้งตาม package manager ของ project ห้ามผสม
+- Always check version and auth state first — if already set up, verify only
+- Install per the project's package manager — never mix
 
 ### 2. Credential Safety
 
-- ใช้ `/follow-secret-manager` จัดการ `CLOUDFLARE_API_TOKEN` — ห้าม hardcode หรือ commit
-- CI ใช้ API token แทน `wrangler login` เสมอ
+- Use `/follow-secret-manager` to manage `CLOUDFLARE_API_TOKEN` — never hardcode or commit
+- CI always uses an API token instead of `wrangler login`
 
 ### 3. Docs First
 
-- ถ้าไม่แน่ใจ command/flag → ดู official docs ผ่าน `/learn` (web) หรือ `/use-wrangler` แทนการเดา
+- If unsure about a command/flag → check official docs via `/learn` (web) or `/use-wrangler` instead of guessing
 
 ## Expected Outcome
 
-- `wrangler --version` แสดง version ที่ติดตั้ง
-- `wrangler whoami` ยืนยัน account ถูกต้อง
-- credentials เก็บอย่างปลอดภัย พร้อมใช้ทั้ง local และ CI
+- `wrangler --version` shows the installed version
+- `wrangler whoami` confirms the correct account
+- Credentials stored securely, ready for both local and CI
 

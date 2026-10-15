@@ -1,20 +1,20 @@
 
 # Wrangler Versions And Rollback
 
-`wrangler versions` สำหรับ separate upload จาก deploy รองรับ gradual rollouts
+`wrangler versions` separates upload from deploy and supports gradual rollouts
 
 ## Key Concepts
 
-- Version: snapshot ของ Worker ณ เวลาหนึ่ง (code, assets, bindings, compat settings)
-- Deployment: version ที่กำลัง serve traffic (100% หรือ split)
-- `wrangler deploy` = upload + deploy 100% ในขั้นเดียว
-- `wrangler versions` = แยก upload และ deploy เพื่อควบคุมมากขึ้น
+- Version: a snapshot of the Worker at a point in time (code, assets, bindings, compat settings)
+- Deployment: the version currently serving traffic (100% or split)
+- `wrangler deploy` = upload + deploy 100% in one step
+- `wrangler versions` = split upload and deploy for more control
 
 ## Commands
 
 ### `wrangler versions upload`
 
-Upload version ใหม่โดยไม่ deploy ทันที
+Upload a new version without deploying it immediately
 
 ```bash
 npx wrangler versions upload [PATH]
@@ -24,15 +24,15 @@ npx wrangler versions upload --dry-run
 
 | Flag | Description |
 |---|---|
-| `--tag` | Tag สำหรับ version |
-| `--message` | คำอธิบาย version |
-| `--dry-run` | Validate โดยไม่ upload |
+| `--tag` | Tag for the version |
+| `--message` | Description of the version |
+| `--dry-run` | Validate without uploading |
 | `--minify` | Minify Worker |
 | `--upload-source-maps` | Upload source maps |
 
 ### `wrangler versions deploy`
 
-Deploy version ที่ upload แล้ว รองรับ traffic splitting
+Deploy a version that was already uploaded; supports traffic splitting
 
 ```bash
 # Interactive
@@ -55,10 +55,10 @@ npx wrangler versions deploy <ID>@100 -y
 |---|---|
 | `--version-id` | Version ID(s) to deploy |
 | `--percentage` | Traffic percentage (0-100) |
-| `--version-tag` | Tag(s) รองรับ `TAG@PERCENTAGE` |
-| `--message` | Description ของ deployment |
-| `--yes` / `-y` | ไม่ถาม confirm |
-| `--dry-run` | ไม่ deploy จริง |
+| `--version-tag` | Tag(s) — supports `TAG@PERCENTAGE` |
+| `--message` | Description of the deployment |
+| `--yes` / `-y` | Do not ask for confirm |
+| `--dry-run` | Do not really deploy |
 
 ### `wrangler versions list`
 
@@ -78,14 +78,14 @@ npx wrangler versions view <VERSION-ID> --json
 
 | Command | Description |
 |---|---|
-| `wrangler versions secret put KEY` | Add secret (สร้าง version ใหม่ ไม่ deploy) |
+| `wrangler versions secret put KEY` | Add a secret (creates a new version, no deploy) |
 | `wrangler versions secret bulk [FILE]` | Bulk add secrets |
-| `wrangler versions secret list` | List secrets ของ deployed versions |
-| `wrangler versions secret delete KEY` | Delete secret (สร้าง version ใหม่) |
+| `wrangler versions secret list` | List secrets of deployed versions |
+| `wrangler versions secret delete KEY` | Delete a secret (creates a new version) |
 
 ### `wrangler rollback`
 
-Rollback ไป version ก่อนหน้า ทันที 100% traffic
+Roll back to the previous version immediately with 100% of traffic
 
 ```bash
 # Auto rollback to latest stable
@@ -134,19 +134,19 @@ npx wrangler rollback --message "Revert breaking change"
 
 | Aspect | `wrangler deploy` | `wrangler versions deploy` |
 |---|---|---|
-| Version creation | สร้างอัตโนมัติ | ต้อง upload ก่อน |
-| Traffic | 100% ทันที | รองรับ split |
-| First deployment | ใช้ได้ | ใช้ไม่ได้ (ต้องใช้ deploy ครั้งแรก) |
-| Durable Objects | รองรับ lifecycle changes | ไม่รองรับ |
-| Secrets | Deploy ทันที | ใช้ `versions secret` แยก |
+| Version creation | Created automatically | Must upload first |
+| Traffic | 100% immediately | Supports split |
+| First deployment | Works | Does not work (use `deploy` for the first one) |
+| Durable Objects | Supports lifecycle changes | Does not support |
+| Secrets | Deployed immediately | Use separate `versions secret` |
 
 ## Limitations
 
-- Deploy ได้แค่ 100 versions ล่าสุด
-- Traffic split สูงสุด 2 versions
-- ต้องใช้ `wrangler deploy` ครั้งแรก
-- ต้องใช้ ES modules format
-- Durable Object lifecycle changes ต้องใช้ `wrangler deploy`
+- Only the latest 100 versions can be deployed
+- Traffic split supports at most 2 versions
+- The first run must use `wrangler deploy`
+- ES modules format is required
+- Durable Object lifecycle changes must use `wrangler deploy`
 
 ## Source
 

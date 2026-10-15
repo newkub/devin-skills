@@ -1,7 +1,7 @@
 
 # Wrangler Tail And Logs
 
-`wrangler tail` สำหรับ stream live logs จาก deployed Workers
+`wrangler tail` streams live logs from deployed Workers
 
 ## Basic Usage
 
@@ -9,7 +9,7 @@
 npx wrangler tail [WORKER]
 ```
 
-ถ้า run จาก project directory ที่มี `wrangler.jsonc` จะ infer worker name อัตโนมัติ
+When run from a project directory with `wrangler.jsonc`, the worker name is inferred automatically
 
 ## Options
 
@@ -17,31 +17,31 @@ npx wrangler tail [WORKER]
 
 | Flag | Values | Description |
 |---|---|---|
-| `--format` | `json` \| `pretty` | Default: `pretty` ใน TTY, `json` นอก TTY |
+| `--format` | `json` \| `pretty` | Default: `pretty` in a TTY, `json` outside a TTY |
 
 ### Filtering
 
 | Flag | Type | Description |
 |---|---|---|
-| `--status` | array | `ok`, `error`, `canceled` (ระบุได้หลายครั้ง) |
+| `--status` | array | `ok`, `error`, `canceled` (can be repeated) |
 | `--method` | array | HTTP method (GET, POST, etc.) |
-| `--header` | string | `Header-Key` หรือ `Header-Key:value` |
-| `--ip` | array | Client IP (ใช้ `"self"` สำหรับ IP ตัวเอง) |
-| `--search` | string | ค้น text ใน console.log messages |
-| `--sampling-rate` | number | 0-1 (เช่น 0.1 = 10%) |
+| `--header` | string | `Header-Key` or `Header-Key:value` |
+| `--ip` | array | Client IP (use `"self"` for your own IP) |
+| `--search` | string | Search text in console.log messages |
+| `--sampling-rate` | number | 0-1 (e.g. 0.1 = 10%) |
 | `--version-id` | string | Filter by Worker version ID |
 
 ## Output Structure
 
-แต่ละ log event มี fields:
+Each log event has these fields:
 
 | Field | Description |
 |---|---|
 | `outcome` | `ok`, `exception`, `exceededCpu`, `canceled` |
-| `scriptName` | ชื่อ Worker |
+| `scriptName` | Worker name |
 | `eventTimestamp` | Unix timestamp (ms) |
-| `logs` | Array ของ console entries (`message`, `level`, `timestamp`) |
-| `exceptions` | Array ของ exceptions (`name`, `message`, `stack`) |
+| `logs` | Array of console entries (`message`, `level`, `timestamp`) |
+| `exceptions` | Array of exceptions (`name`, `message`, `stack`) |
 | `event` | Triggering event (request, scheduled, alarm, etc.) |
 
 ## Common Examples
@@ -80,7 +80,7 @@ npx wrangler tail --status error --format json | jq -c '{
 
 ## Observability (Persistent Logs)
 
-เปิดใน `wrangler.jsonc` เพื่อเก็บ logs ถาวร:
+Enable in `wrangler.jsonc` to retain logs persistently:
 
 ```jsonc
 {
@@ -96,19 +96,19 @@ npx wrangler tail --status error --format json | jq -c '{
 
 ## Limitations
 
-- High-traffic Workers เข้าสู่ sampling mode อาจ drop messages
-- สูงสุด 10 clients ดู logs พร้อมกัน
-- Real-time logs ไม่ persist ถ้าไม่เปิด observability
-- WebSocket handlers: logs แสดงหลัง connection close เท่านั้น
-- ใช้เวลาถึง 60 วินาที หลังเพิ่ม filter เพื่อออกจาก sampling mode
+- High-traffic Workers enter sampling mode and may drop messages
+- At most 10 clients can view logs concurrently
+- Real-time logs are not persisted unless observability is enabled
+- WebSocket handlers: logs appear only after the connection closes
+- It can take up to 60 seconds after adding a filter to leave sampling mode
 
 ## Debug Environment Variables
 
 | Variable | Description |
 |---|---|
-| `WRANGLER_LOG=debug` | เปิด debug logging |
-| `WRANGLER_LOG_PATH=./logs/` | เขียน logs ไปยัง file/directory |
-| `WRANGLER_LOG_SANITIZE=false` | แสดง data ที่ถูก sanitize |
+| `WRANGLER_LOG=debug` | Enable debug logging |
+| `WRANGLER_LOG_PATH=./logs/` | Write logs to a file/directory |
+| `WRANGLER_LOG_SANITIZE=false` | Show sanitized data |
 
 ## Source
 

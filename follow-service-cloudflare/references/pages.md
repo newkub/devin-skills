@@ -1,13 +1,13 @@
 
 # Wrangler Pages
 
-`wrangler pages` สำหรับ Cloudflare Pages (static sites + Functions)
+`wrangler pages` covers Cloudflare Pages (static sites + Functions)
 
 ## Subcommands
 
 ### `wrangler pages dev`
 
-Local dev server สำหรับ Pages
+Local dev server for Pages
 
 ```bash
 npx wrangler pages dev [DIRECTORY]
@@ -28,7 +28,7 @@ npx wrangler pages dev --local-protocol=https ./dist
 | `--r2` | R2 bucket binding |
 | `--do` / `-o` | Durable Object binding |
 | `--live-reload` | Auto reload HTML |
-| `--local-protocol` | `http` หรือ `https` |
+| `--local-protocol` | `http` or `https` |
 | `--persist-to` | Persistence directory |
 
 ### `wrangler pages deploy`
@@ -45,12 +45,12 @@ npx wrangler pages deploy ./dist --commit-hash=abc123 --commit-message="Add feat
 
 | Flag | Description |
 |---|---|
-| `--project-name` | ชื่อ Pages project |
-| `--branch` | Branch (infer จาก git ได้) |
-| `--commit-hash` | SHA สำหรับ deployment |
+| `--project-name` | Pages project name |
+| `--branch` | Branch (can be inferred from git) |
+| `--commit-hash` | SHA for the deployment |
 | `--commit-message` | Commit message |
 | `--skip-caching` | Skip asset caching |
-| `--no-bundle` | ไม่ bundle `_worker.js` |
+| `--no-bundle` | Do not bundle `_worker.js` |
 
 ### `wrangler pages project`
 
@@ -86,7 +86,7 @@ npx wrangler pages deployment delete <ID> --force
 | Command | Description |
 |---|---|
 | `wrangler pages secret put KEY` | Set secret |
-| `wrangler pages secret bulk [FILE]` | Bulk upload (JSON หรือ .env) |
+| `wrangler pages secret bulk [FILE]` | Bulk upload (JSON or .env) |
 | `wrangler pages secret list` | List secrets |
 | `wrangler pages secret delete KEY` | Delete secret |
 
@@ -97,7 +97,7 @@ npx wrangler pages secret bulk ./secrets.json --env=preview
 
 ### `wrangler pages functions build`
 
-Compile Pages Functions เป็น single Worker
+Compile Pages Functions into a single Worker
 
 ```bash
 npx wrangler pages functions build [DIRECTORY]
@@ -107,7 +107,7 @@ npx wrangler pages functions build --watch
 
 ### `wrangler pages download config`
 
-Download dashboard config เป็น wrangler file
+Download the dashboard config as a wrangler file
 
 ```bash
 npx wrangler pages download config my-site
@@ -116,7 +116,7 @@ npx wrangler pages download config my-site --force
 
 ## Configuration
 
-Required fields สำหรับ Pages:
+Required fields for Pages:
 
 ```jsonc
 {
@@ -128,14 +128,14 @@ Required fields สำหรับ Pages:
 
 | Key | Required | Description |
 |---|---|---|
-| `name` | Yes | ชื่อ project |
+| `name` | Yes | Project name |
 | `pages_build_output_dir` | Yes | Build output directory |
 | `compatibility_date` | Recommended | Workers runtime version |
 | `compatibility_flags` | Optional | Feature flags |
 
 ### Environments
 
-Pages รองรับแค่ `production` และ `preview`:
+Pages supports only `production` and `preview`:
 
 ```jsonc
 {
@@ -147,7 +147,7 @@ Pages รองรับแค่ `production` และ `preview`:
 }
 ```
 
-Bindings ไม่ inherit ต้องประกาศใหม่ในแต่ละ env
+Bindings are not inherited — re-declare them in each env
 
 ## Pages vs Workers
 

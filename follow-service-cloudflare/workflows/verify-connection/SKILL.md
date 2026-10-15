@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-verify-connection
-description: ยืนยัน Cloudflare เชื่อมต่อจริง — auth, account access, bindings ตอบกลับ
+description: Confirm Cloudflare really connects — auth, account access, bindings respond
 argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
@@ -11,45 +11,45 @@ related:
 
 ## Goal
 
-ยืนยันหลัง setup/config ว่า Cloudflare เชื่อมต่อได้จริง — wrangler authenticated, account เข้าถึงได้, bindings ตอบกลับ
+Confirm after setup/config that Cloudflare really connects — wrangler authenticated, account accessible, bindings responding
 
 ## Scope
 
-- ใช้เมื่อ `/follow-service-cloudflare` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ config/bindings
+- Used when `/follow-service-cloudflare` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change config/bindings
 
 ## Execute
 
 ### 1. Check Wrangler Auth
 
-> Goal: wrangler login และ account พร้อม
+> Goal: wrangler login and the account are ready
 
-1. `wrangler whoami` — ต้องแสดง account name/id
-2. ถ้าใช้ `CLOUDFLARE_API_TOKEN` → ตรวจ token มีและ permissions ครบ
-3. ถ้า auth fail → แนะนำ `workflows/setup-wrangler/SKILL.md` — ไม่ login เอง
+1. `wrangler whoami` — must show the account name/id
+2. When using `CLOUDFLARE_API_TOKEN` → check the token exists and has complete permissions
+3. Auth fail → recommend `workflows/setup-wrangler/SKILL.md` — do not log in yourself
 
 ### 2. Check Resource Access
 
-> Goal: bindings/resources ที่ config อ้างเข้าถึงได้
+> Goal: The bindings/resources referenced by the config are accessible
 
-1. `wrangler kv namespace list`, `wrangler r2 bucket list`, `wrangler d1 list` ตามที่ `wrangler.toml`/`wrangler.jsonc` ใช้
-2. flag bindings ที่ config อ้างแต่ resource ไม่มีใน account
-3. ถ้ามี Worker → `wrangler deployments list` ดู deployment ล่าสุด
+1. `wrangler kv namespace list`, `wrangler r2 bucket list`, `wrangler d1 list` as used by `wrangler.toml`/`wrangler.jsonc`
+2. Flag bindings the config references whose resource does not exist in the account
+3. If a Worker exists → `wrangler deployments list` to see the latest deployment
 
 ### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `missing-resources` / `partial`
 
 ## Rules
 
-- ใช้ list/read commands เท่านั้น — ห้าม deploy/put/delete
-- ไม่ print token values
-- missing resource → รายงาน binding name + resource ที่ขาด
+- Use list/read commands only — never deploy/put/delete
+- Do not print token values
+- Missing resource → report the binding name + the missing resource
 
 ## Expected Outcome
 
-- Verdict connection พร้อม account + resources evidence
+- Connection verdict with account + resources evidence
 

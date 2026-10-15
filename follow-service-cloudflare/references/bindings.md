@@ -1,11 +1,11 @@
 
 # Wrangler Bindings
 
-Bindings เชื่อม Worker กับ Cloudflare resources (Secrets, D1, KV, R2)
+Bindings connect a Worker with Cloudflare resources (Secrets, D1, KV, R2)
 
 ## Secrets
 
-Secrets เป็น encrypted environment variables สำหรับ sensitive data
+Secrets are encrypted environment variables for sensitive data
 
 | Command | Description |
 |---|---|
@@ -17,7 +17,7 @@ Secrets เป็น encrypted environment variables สำหรับ sensitiv
 
 ### Local Development Secrets
 
-ใช้ `.dev.vars` หรือ `.env` (เลือกอย่างเดียว) ใน project root:
+Use `.dev.vars` or `.env` (pick only one) in the project root:
 
 ```bash
 # .dev.vars
@@ -37,7 +37,7 @@ DB_CONNECTION_STRING=your_connection_string
 
 ## D1 Databases
 
-D1 เป็น serverless SQLite database
+D1 is a serverless SQLite database
 
 | Command | Description |
 |---|---|
@@ -53,11 +53,11 @@ D1 เป็น serverless SQLite database
 | `wrangler d1 time-travel info my-db` | View time travel info |
 | `wrangler d1 time-travel restore my-db --bookmark=<ID>` | Restore to bookmark |
 
-ดู `d1-migrations.md` สำหรับ migration workflow
+See `d1-migrations.md` for the migration workflow
 
 ## KV Namespaces
 
-KV เป็น globally distributed key-value store
+KV is a globally distributed key-value store
 
 | Command | Description |
 |---|---|
@@ -71,7 +71,7 @@ KV เป็น globally distributed key-value store
 
 ## R2 Buckets
 
-R2 เป็น object storage เหมือน S3 แต่ไม่มี egress fees
+R2 is object storage like S3 but with no egress fees
 
 | Command | Description |
 |---|---|
@@ -86,7 +86,7 @@ R2 เป็น object storage เหมือน S3 แต่ไม่มี eg
 
 ## Configuration
 
-Bindings ประกาศใน `wrangler.jsonc` หรือ `wrangler.toml`:
+Bindings are declared in `wrangler.jsonc` or `wrangler.toml`:
 
 ```jsonc
 {
@@ -105,5 +105,5 @@ Bindings ประกาศใน `wrangler.jsonc` หรือ `wrangler.toml`:
 }
 ```
 
-Bindings ไม่ inherit ระหว่าง environments ต้องประกาศใหม่ในแต่ละ env
+Bindings are not inherited between environments — re-declare them in each env
 

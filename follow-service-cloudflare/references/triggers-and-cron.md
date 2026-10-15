@@ -1,18 +1,18 @@
 
 # Wrangler Triggers And Cron
 
-Cron Triggers สำหรับ run Worker ตาม schedule
+Cron Triggers run a Worker on a schedule
 
 ## Overview
 
-- Cron Triggers run ตาม UTC time
-- ใช้ underutilized machines เพื่อ efficiency
-- Changes ใช้เวลาถึง 15 นาที propagate
-- ถ้าใช้ Wrangler ควรจัดการ triggers ผ่าน config เท่านั้น
+- Cron Triggers run on UTC time
+- They use underutilized machines for efficiency
+- Changes can take up to 15 minutes to propagate
+- When using Wrangler, manage triggers through config only
 
 ## `wrangler triggers deploy`
 
-Apply trigger changes (สำหรับ versions workflow)
+Apply trigger changes (for the versions workflow)
 
 ```bash
 npx wrangler triggers deploy --name my-worker --triggers "*/5 * * * *"
@@ -25,7 +25,7 @@ npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 | `--name` | - | Worker name (required) |
 | `--triggers` | `--schedule`, `--schedules` | Cron schedules |
 | `--routes` | `--route` | Routes to upload |
-| `--dry-run` | - | ไม่ deploy จริง |
+| `--dry-run` | - | Do not really deploy |
 
 ## Configuration
 
@@ -59,10 +59,10 @@ npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 
 ### Behavior
 
-- Deploy แล้ว crons ใหม่ replace ของเดิมทั้งหมด
-- `crons: []` = ลบ triggers ทั้งหมด
-- `crons` undefined = ไม่เปลี่ยน triggers ปัจจุบัน
-- Comment out ไม่ได้หมายถึง disable ต้องใช้ empty array
+- After deploy, the new crons replace all existing ones
+- `crons: []` = delete all triggers
+- `crons` undefined = leave the current triggers unchanged
+- Commenting out is not the same as disabling — use an empty array
 
 ## Cron Syntax
 
@@ -73,32 +73,32 @@ npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 | Minute | 0-59 | `*` `,` `-` `/` |
 | Hours | 0-23 | `*` `,` `-` `/` |
 | Day of Month | 1-31 | `*` `,` `-` `/` `L` `W` |
-| Month | 1-12 หรือ JAN-DEC | `*` `,` `-` `/` |
-| Weekday | 1-7 หรือ SUN-SAT | `*` `,` `-` `/` `L` `#` |
+| Month | 1-12 or JAN-DEC | `*` `,` `-` `/` |
+| Weekday | 1-7 or SUN-SAT | `*` `,` `-` `/` `L` `#` |
 
-สำคัญ: weekday 1=Sunday ถึง 7=Saturday (ต่างจาก cron อื่นที่ 0=Sunday)
+Important: weekday 1=Sunday through 7=Saturday (unlike other crons where 0=Sunday)
 
 | Special | Description |
 |---|---|
-| `L` | Last (เช่น last day of month) |
+| `L` | Last (e.g. last day of month) |
 | `W` | Nearest weekday |
-| `#` | Nth weekday (เช่น 3#2 = second Tuesday) |
+| `#` | Nth weekday (e.g. 3#2 = second Tuesday) |
 
 ## Common Expressions
 
 | Expression | Description |
 |---|---|
-| `* * * * *` | ทุกนาที |
-| `*/5 * * * *` | ทุก 5 นาที |
-| `*/30 * * * *` | ทุก 30 นาที |
-| `0 * * * *` | ทุกชั่วโมงตรง |
-| `0 2 * * *` | ทุกวัน 02:00 UTC |
-| `0 0 * * 1` | ทุกจันทร์ 00:00 UTC |
-| `0 17 * * sun` | ทุกอาทิตย์ 17:00 UTC |
-| `10 7 * * mon-fri` | 07:10 UTC วันธรรมดา |
-| `0 15 1 * *` | วันแรกของเดือน 15:00 UTC |
-| `0 18 * * 6L` | ศุกร์สุดท้ายของเดือน 18:00 UTC |
-| `59 23 LW * *` | วันธรรมดาสุดท้ายของเดือน 23:59 UTC |
+| `* * * * *` | Every minute |
+| `*/5 * * * *` | Every 5 minutes |
+| `*/30 * * * *` | Every 30 minutes |
+| `0 * * * *` | Every hour on the hour |
+| `0 2 * * *` | Daily at 02:00 UTC |
+| `0 0 * * 1` | Every Monday at 00:00 UTC |
+| `0 17 * * sun` | Every Sunday at 17:00 UTC |
+| `10 7 * * mon-fri` | 07:10 UTC on weekdays |
+| `0 15 1 * *` | First day of the month at 15:00 UTC |
+| `0 18 * * 6L` | Last Friday of the month at 18:00 UTC |
+| `59 23 LW * *` | Last weekday of the month at 23:59 UTC |
 
 ## Scheduled Handler
 
@@ -131,9 +131,9 @@ export default {
 
 | Property | Description |
 |---|---|
-| `controller.cron` | Cron expression ที่ trigger |
-| `controller.type` | คืนค่า `"scheduled"` |
-| `controller.scheduledTime` | เวลาที่ schedule (ms since epoch) |
+| `controller.cron` | The cron expression that triggered it |
+| `controller.type` | Returns `"scheduled"` |
+| `controller.scheduledTime` | The scheduled time (ms since epoch) |
 
 ## Testing Locally
 
@@ -141,7 +141,7 @@ export default {
 npx wrangler dev --test-scheduled
 ```
 
-เปิด test endpoint:
+Test endpoints:
 - JS/TS: `http://localhost:8787/__scheduled`
 - Python: `http://localhost:8787/cdn-cgi/handler/scheduled`
 

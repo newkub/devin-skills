@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare
-description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ Nitro ผ่าน Wrangler CLI สำหรับ develop และ deploy
+description: Use Cloudflare Workers, Pages, D1, KV, R2, Nitro via Wrangler CLI for develop and deploy
 argument-hint: "[setup-wrangler|config-bindings|deploy-worker|migrate-pages-to-workers|verify] [scope]"
 related:
   - follow-secret-manager
@@ -15,208 +15,209 @@ related:
 
 ## Goal
 
-ใช้งาน Cloudflare platform สำหรับ develop, build, deploy และ manage Workers, Pages, D1, KV, R2, Queues, Workflows และ Nitro preset ผ่าน Wrangler CLI
+Use the Cloudflare platform to develop, build, deploy, and manage Workers, Pages, D1, KV, R2, Queues, Workflows, and the Nitro preset via the Wrangler CLI
 
 ## Scope
 
-ใช้สำหรับ:
-- Cloudflare Workers — serverless edge deployment ด้วย Wrangler CLI
-- Cloudflare Pages — static site hosting และ preview deployments
+Used for:
+- Cloudflare Workers — serverless edge deployment with the Wrangler CLI
+- Cloudflare Pages — static site hosting and preview deployments
 - D1 databases — migrations, queries, bindings
 - KV namespaces, R2 buckets, Queues, Workflows, Hyperdrive, Vectorize
-- Nitro preset สำหรับ Nuxt และ framework อื่นๆ ที่ deploy ไป Cloudflare
-- Secrets, environment variables, bindings และ CI/CD integration
-- Local development, staging/production deploy, version management และ rollback
+- Nitro preset for Nuxt and other frameworks deploying to Cloudflare
+- Secrets, environment variables, bindings, and CI/CD integration
+- Local development, staging/production deploy, version management, and rollback
 
 ## Execute
 
 ### 1. Install And Authenticate
 
-> Goal: ติดตั้ง Wrangler CLI และเชื่อมต่อกับ Cloudflare account
+> Goal: Install the Wrangler CLI and connect to the Cloudflare account
 
 Latest: `wrangler@4.141.0`, `@cloudflare/workers-types@5.20260926.1` (verified 2026-09-26)
 
-1. ติดตั้ง Wrangler ด้วย `bun add -D wrangler`
-2. ตรวจสอบ version ด้วย `wrangler --version` (ต้อง >= 4.0)
-3. Login ด้วย `wrangler login` หรือใช้ `CLOUDFLARE_API_TOKEN` สำหรับ CI
-4. ตรวจสอบ authentication ด้วย `wrangler whoami`
-5. ติดตั้ง `@cloudflare/workers-types` สำหรับ TypeScript support
+1. Install Wrangler with `bun add -D wrangler`
+2. Check the version with `wrangler --version` (must be >= 4.0)
+3. Log in with `wrangler login` or use `CLOUDFLARE_API_TOKEN` for CI
+4. Verify authentication with `wrangler whoami`
+5. Install `@cloudflare/workers-types` for TypeScript support
 
 ### 2. Initialize Project
 
-> Goal: สร้างและกำหนดค่าโปรเจกต์
+> Goal: Create and configure the project
 
-1. สร้างโปรเจกต์ใหม่ด้วย `wrangler init project-name` หรือ `npm create cloudflare@latest`
-2. ใช้ `wrangler deploy` โดยไม่ต้องมี config file — Wrangler 4.68+ auto-detect framework และสร้าง `wrangler.jsonc`
-3. กำหนดค่า `name`, `main`, `compatibility_date`, `compatibility_flags` ใน config
-4. เปิดใช้งาน `nodejs_compat` flag สำหรับ Node.js modules
-5. ดูรายละเอียดใน [references/init-and-config.md](references/init-and-config.md)
+1. Create a new project with `wrangler init project-name` or `npm create cloudflare@latest`
+2. Use `wrangler deploy` without a config file — Wrangler 4.68+ auto-detects the framework and creates `wrangler.jsonc`
+3. Configure `name`, `main`, `compatibility_date`, `compatibility_flags` in the config
+4. Enable the `nodejs_compat` flag for Node.js modules
+5. See details in [references/init-and-config.md](references/init-and-config.md)
 
 ### 3. Local Development
 
-> Goal: พัฒนาและทดสอบใน local environment
+> Goal: Develop and test in the local environment
 
-1. รัน local dev server ด้วย `wrangler dev`
-2. ใช้ `--port 8787` สำหรับ custom port
-3. ใช้ `--local` สำหรับ local-only mode
-4. ใช้ `--remote` สำหรับ access remote resources
-5. ตรวจสอบ logs และ test bindings ใน local
-6. ถ้า project มี `package.json` ให้ตั้งค่า `dev` script เป็น `wrangler dev` แทน default dev server (ดู Rules Package Scripts)
+1. Run the local dev server with `wrangler dev`
+2. Use `--port 8787` for a custom port
+3. Use `--local` for local-only mode
+4. Use `--remote` for accessing remote resources
+5. Check logs and test bindings locally
+6. If the project has a `package.json`, set the `dev` script to `wrangler dev` instead of the default dev server (see Rules Package Scripts)
 
 ### 4. Configure Bindings
 
-> Goal: ตั้งค่า D1, KV, R2, Queues และ bindings
+> Goal: Configure D1, KV, R2, Queues, and bindings
 
-1. สร้าง D1 database ด้วย `wrangler d1 create my-db`
-2. สร้าง KV namespace ด้วย `wrangler kv namespace create CACHE`
-3. สร้าง R2 bucket ด้วย `wrangler r2 bucket create my-bucket`
-4. เพิ่ม bindings ใน `wrangler.jsonc` หรือใช้ automatic provisioning (beta)
-5. รัน `wrangler types` เพื่อ generate `worker-configuration.d.ts`
-6. ดูรายละเอียดใน [references/bindings.md](references/bindings.md) และ [references/d1-migrations.md](references/d1-migrations.md)
+1. Create a D1 database with `wrangler d1 create my-db`
+2. Create a KV namespace with `wrangler kv namespace create CACHE`
+3. Create an R2 bucket with `wrangler r2 bucket create my-bucket`
+4. Add bindings in `wrangler.jsonc` or use automatic provisioning (beta)
+5. Run `wrangler types` to generate `worker-configuration.d.ts`
+6. See details in [references/bindings.md](references/bindings.md) and [references/d1-migrations.md](references/d1-migrations.md)
 
 ### 5. Manage Secrets
 
-> Goal: จัดการ secrets และ environment variables
+> Goal: Manage secrets and environment variables
 
-1. Set secrets ด้วย `wrangler secret put SECRET_NAME`
-2. List secrets ด้วย `wrangler secret list`
-3. Delete secrets ด้วย `wrangler secret delete`
-4. ใช้ `vars` สำหรับ non-secret variables
-5. ห้าม commit secrets ไปยัง git
+1. Set secrets with `wrangler secret put SECRET_NAME`
+2. List secrets with `wrangler secret list`
+3. Delete secrets with `wrangler secret delete`
+4. Use `vars` for non-secret variables
+5. Never commit secrets to git
 
 ### 6. Typecheck And Build
 
-> Goal: ตรวจสอบ types และ build
+> Goal: Check types and build
 
-1. รัน `wrangler types` เพื่อ generate `Env` interface
-2. รัน `bun run typecheck` และแก้ไข errors จนผ่าน
-3. รัน `bun run build` หรือ `wrangler deploy --dry-run`
-4. ตรวจสอบ bundle size (limit 1 MB สำหรับ Workers)
-5. Optimize bundle ถ้าเกิน limit
-6. ถ้า deploy target เป็น Cloudflare Workers/Pages ให้ตั้ง `build` script ใน `package.json` เป็น `wrangler build` แทน default build (ดู Rules Package Scripts); จากนั้นรัน build ด้วย `bun run build`
+1. Run `wrangler types` to generate the `Env` interface
+2. Run `bun run typecheck` and fix errors until it passes
+3. Run `bun run build` or `wrangler deploy --dry-run`
+4. Check the bundle size (limit 1 MB for Workers)
+5. Optimize the bundle if it exceeds the limit
+6. If the deploy target is Cloudflare Workers/Pages, set the `build` script in `package.json` to `wrangler build` instead of the default build (see Rules Package Scripts); then run the build with `bun run build`
 
 ### 7. Deploy Staging And Production
 
-> Goal: Deploy ไป staging ก่อน production
+> Goal: Deploy to staging before production
 
-1. เพิ่ม staging environment ใน `wrangler.jsonc` ภายใต้ `env.staging`
-2. รัน `wrangler deploy --env staging --dry-run` เพื่อตรวจสอบ
+1. Add a staging environment in `wrangler.jsonc` under `env.staging`
+2. Run `wrangler deploy --env staging --dry-run` to inspect
 3. Deploy staging: `wrangler deploy --env staging`
-4. Test staging environment ด้วย curl หรือ browser
+4. Test the staging environment with curl or a browser
 5. Deploy production: `wrangler deploy`
-6. ดูรายละเอียดใน [references/versions-and-rollback.md](references/versions-and-rollback.md)
+6. See details in [references/versions-and-rollback.md](references/versions-and-rollback.md)
 
 ### 8. Nitro Preset
 
-> Goal: Nitro-based apps (Nuxt, TanStack Start) deploy ไป Cloudflare
+> Goal: Deploy Nitro-based apps (Nuxt, TanStack Start) to Cloudflare
 
-1. ตั้ง `NITRO_PRESET=cloudflare_module` (หรือ `nitro.config.ts` `preset`) — canonical config อยู่ที่ `/follow-lib-nitro` `deploy-preset` workflow
-2. `bun run build` → `wrangler deploy` — bindings/secrets ตาม workflow `deploy-worker` ด้านล่าง
+1. Set `NITRO_PRESET=cloudflare_module` (or the `nitro.config.ts` `preset`) — the canonical config lives in the `/follow-lib-nitro` `deploy-preset` workflow
+2. `bun run build` → `wrangler deploy` — bindings/secrets follow the `deploy-worker` workflow below
 
 ### 9. Advanced Features
 
-> Goal: ใช้งาน features ขั้นสูง
+> Goal: Use advanced features
 
-1. ใช้ `wrangler pages deploy` สำหรับ Pages projects (ดู [references/pages.md](references/pages.md))
-2. ใช้ `wrangler queues` สำหรับ message queues
-3. ใช้ `wrangler workflows` สำหรับ workflows
-4. ใช้ `wrangler hyperdrive` สำหรับ database connections
-5. ใช้ `wrangler vectorize` สำหรับ vector embeddings
-6. ใช้ `wrangler triggers deploy` สำหรับ cron schedules (ดู [references/triggers-and-cron.md](references/triggers-and-cron.md))
+1. Use `wrangler pages deploy` for Pages projects (see [references/pages.md](references/pages.md))
+2. Use `wrangler queues` for message queues
+3. Use `wrangler workflows` for workflows
+4. Use `wrangler hyperdrive` for database connections
+5. Use `wrangler vectorize` for vector embeddings
+6. Use `wrangler triggers deploy` for cron schedules (see [references/triggers-and-cron.md](references/triggers-and-cron.md))
+7. Use Rust instead of TypeScript on Workers with `workers-rs` (see [references/workers-rs.md](references/workers-rs.md))
 
 ### 10. CI/CD, Logs And Troubleshoot
 
-> Goal: ตั้งค่า CI/CD, monitor logs และ debug
+> Goal: Set up CI/CD, monitor logs, and debug
 
-1. ตั้งค่า CI/CD ด้วย `CLOUDFLARE_API_TOKEN` (ดู [references/ci-cd.md](references/ci-cd.md))
-2. ใช้ `wrangler tail` สำหรับ live logs (ดู [references/tail-and-logs.md](references/tail-and-logs.md))
-3. เปิดใช้งาน `observability.enabled` ใน config
-4. ใช้ `WRANGLER_LOG=debug` สำหรับ verbose logging
-5. ดู error codes ใน [references/troubleshooting.md](references/troubleshooting.md)
+1. Set up CI/CD with `CLOUDFLARE_API_TOKEN` (see [references/ci-cd.md](references/ci-cd.md))
+2. Use `wrangler tail` for live logs (see [references/tail-and-logs.md](references/tail-and-logs.md))
+3. Enable `observability.enabled` in the config
+4. Use `WRANGLER_LOG=debug` for verbose logging
+5. See error codes in [references/troubleshooting.md](references/troubleshooting.md)
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ตาม topic/argument
+> Goal: dispatch to the workflow matching the topic/argument
 
 | Topic/Argument | Workflow |
 |----------------|----------|
 | `setup`, `install`, `login`, `auth` | `workflows/setup-wrangler/SKILL.md` — wrangler install, auth, `whoami` |
-| `config`, `bindings`, `kv`, `r2`, `d1`, `vars`, `env` | `workflows/config-bindings/SKILL.md` — bindings และ environments |
+| `config`, `bindings`, `kv`, `r2`, `d1`, `vars`, `env` | `workflows/config-bindings/SKILL.md` — bindings and environments |
 | `deploy`, `worker` | `workflows/deploy-worker/SKILL.md` — `wrangler deploy`, staging/production, verify |
 | `migrate`, `pages-to-workers` | `workflows/migrate-pages-to-workers/SKILL.md` — Pages → Workers migration |
-| `verify`, `verify-connection` | `workflows/verify-connection/SKILL.md` — `wrangler whoami`, resource access, bindings พร้อม |
+| `verify`, `verify-connection` | `workflows/verify-connection/SKILL.md` — `wrangler whoami`, resource access, bindings ready |
 | `d1`, `migrations`, `sql` | `workflows/use-d1/SKILL.md` — D1 create/migrate/query/batch |
 | `storage`, `cache` | `workflows/use-storage/SKILL.md` — KV + R2 + Cache API patterns |
 | `queue`, `cron`, `workflow`, `durable`, `jobs` | `workflows/use-jobs/SKILL.md` — Queues, Cron, Workflows, Durable Objects |
 
-1. ถ้า argument ตรง topic → อ่าน `workflows/<name>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
-2. ถ้าไม่ระบุ → ทำตาม steps 1-10 ตามลำดับ
+1. If the argument matches a topic → read `workflows/<name>/SKILL.md` and follow the flow there — do not execute from this table directly
+2. If no argument → follow steps 1-10 in order
 
 ## Rules
 
 ### 1. Configuration Management
 
-- ใช้ `wrangler.jsonc` เป็น single source of truth (แนะนำสำหรับโปรเจกต์ใหม่)
-- กำหนดค่า `compatibility_date` เป็นวันปัจจุบันเสมอ
-- เปิดใช้งาน `nodejs_compat` flag สำหรับ Node.js modules
-- ใช้ environment-specific configs ด้วย `env.staging`, `env.production`
-- ห้าม hardcode secrets ใน config files
+- Use `wrangler.jsonc` as the single source of truth (recommended for new projects)
+- Always set `compatibility_date` to the current date
+- Enable the `nodejs_compat` flag for Node.js modules
+- Use environment-specific configs with `env.staging`, `env.production`
+- Never hardcode secrets in config files
 
 ### 2. Binding Management
 
-- สร้าง resources ผ่าน CLI ก่อน bind ใน config
-- ใช้ descriptive names สำหรับ namespaces และ buckets
-- รัน `wrangler types` เมื่อ add หรือ rename bindings
-- ใช้ environment-specific bindings สำหรับ isolation
+- Create resources via the CLI before binding them in config
+- Use descriptive names for namespaces and buckets
+- Run `wrangler types` when adding or renaming bindings
+- Use environment-specific bindings for isolation
 - Clean up unused resources
 
 ### 3. Secret Security
 
-- ห้าม commit secrets ไปยัง version control
-- ใช้ `/follow-secret-manager` สำหรับจัดการ `CLOUDFLARE_API_TOKEN` และ secrets ก่อน inject เข้า Wrangler
-- ใช้ `wrangler secret put` แทนการแก้ config files
-- Rotate secrets เป็นระยะ
-- ใช้ environment-specific secrets
+- Never commit secrets to version control
+- Use `/follow-secret-manager` to manage `CLOUDFLARE_API_TOKEN` and secrets before injecting them into Wrangler
+- Use `wrangler secret put` instead of editing config files
+- Rotate secrets regularly
+- Use environment-specific secrets
 
 ### 4. Deployment
 
-- Deploy staging ก่อน production เสมอ
-- ใช้ `--dry-run` เพื่อตรวจสอบก่อน deploy จริง
-- ใช้ versioning สำหรับ rollback capability
-- ใช้ `CLOUDFLARE_API_TOKEN` สำหรับ automated deploy
+- Always deploy staging before production
+- Use `--dry-run` to inspect before a real deploy
+- Use versioning for rollback capability
+- Use `CLOUDFLARE_API_TOKEN` for automated deploys
 
 ### 5. Build Process
 
-- Typecheck ล้มเหลว: แก้ไขก่อน build
-- Build ล้มเหลว: วิเคราะห์และแก้ไข
-- Optimize bundle ถ้าเกิน 1 MB limit
-- ใช้ `wrangler types` generate types ไม่ hand-write
+- Typecheck fails: fix before building
+- Build fails: analyze and fix
+- Optimize the bundle if it exceeds the 1 MB limit
+- Generate types with `wrangler types`, never hand-write them
 
 ### 6. Package Scripts
 
-ถ้า task หรือ project ใช้ Cloudflare (Workers/Pages) ให้ตั้งค่า `package.json` scripts ดังนี้:
+When a task or project uses Cloudflare (Workers/Pages), set the `package.json` scripts as follows:
 
-- `dev`: `wrangler dev` — แทน default dev server (`bun run src/index.ts`, `vite dev`, `next dev` ฯลฯ)
-- `build`: `wrangler build` — แทน `bun build`/`vite build`/`next build` เมื่อ deploy ไป Cloudflare
+- `dev`: `wrangler dev` — replaces the default dev server (`bun run src/index.ts`, `vite dev`, `next dev`, etc.)
+- `build`: `wrangler build` — replaces `bun build`/`vite build`/`next build` when deploying to Cloudflare
 - `deploy`: `wrangler deploy`
-- `deploy:staging`: `wrangler deploy --env staging` (ถ้ามี staging environment)
+- `deploy:staging`: `wrangler deploy --env staging` (when a staging environment exists)
 
-หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
+Note: if the installed Wrangler version does not support the `build` subcommand, use `wrangler deploy --dry-run` or `wrangler deploy` before the real deploy
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (service cloudflare)
-- ใช้ /create-cloudflare-token ถ้าจำเป็น
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /resolve-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-mise ถ้าจำเป็น
-- ใช้ /follow-tasks ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed (service cloudflare)
+- Use /create-cloudflare-token if needed
+- Use /deploy-to-cloudflare if needed
+- Use /resolve-cicd if needed
+- Use /follow-tool-mise if needed
+- Use /follow-tasks if needed
 
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /resolve-errors if needed
 ## Merged Details → Extracted
 
-Domain details ทั้งหมด extract ไปเป็นไฟล์จริงแล้ว:
+All domain details have been extracted into real files:
 
-- **workflows/**: `setup-wrangler`, `config-bindings`, `deploy-worker`, `migrate-pages-to-workers`, `verify-connection`, `use-d1`, `use-storage`, `use-jobs` — dispatch ตามตาราง `### Workflows` ด้านบน
-- **references/**: `apis`, `bindings`, `ci-cd`, `commands`, `d1-migrations`, `init-and-config`, `install-and-auth`, `overview`, `package-manifest`, `pages`, `routes`, `tail-and-logs`, `triggers-and-cron`, `troubleshooting`, `versions-and-rollback`, `website`, `workers-overview`
+- **workflows/**: `setup-wrangler`, `config-bindings`, `deploy-worker`, `migrate-pages-to-workers`, `verify-connection`, `use-d1`, `use-storage`, `use-jobs` — dispatched per the `### Workflows` table above
+- **references/**: `apis`, `bindings`, `ci-cd`, `commands`, `d1-migrations`, `init-and-config`, `install-and-auth`, `overview`, `package-manifest`, `pages`, `routes`, `tail-and-logs`, `triggers-and-cron`, `troubleshooting`, `versions-and-rollback`, `website`, `workers-overview`, `workers-rs`
 
 
 ##### Source
@@ -229,11 +230,11 @@ Domain details ทั้งหมด extract ไปเป็นไฟล์จ�
 
 ## Expected Outcome
 
-- Wrangler CLI ติดตั้งและกำหนดค่าอย่างถูกต้อง
-- Workers หรือ Pages deploy ได้อย่างราบรื่น พร้อม gradual rollouts และ rollback
-- Bindings และ secrets จัดการอย่างปลอดภัย
-- D1 migrations ทำงานได้ทั้ง local และ remote
-- Nitro preset กำหนดค่าสำหรับ Nuxt ได้
-- CI/CD integration ทำงานได้อัตโนมัติ
-- Observability เปิดใช้งาน พร้อม tail debugging
-- แก้ปัญหาได้จาก troubleshooting guide
+- Wrangler CLI installed and configured correctly
+- Workers or Pages deployed smoothly with gradual rollouts and rollback
+- Bindings and secrets managed securely
+- D1 migrations working both locally and remotely
+- Nitro preset configured for Nuxt
+- CI/CD integration running automatically
+- Observability enabled with tail debugging
+- Problems resolvable from the troubleshooting guide

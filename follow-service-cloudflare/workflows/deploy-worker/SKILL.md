@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-deploy-worker
-description: Deploy Worker ไป staging→production พร้อม verify และ rollback path
+description: Deploy a Worker to staging→production with verify and rollback path
 argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
@@ -11,72 +11,72 @@ related:
 
 ## Goal
 
-Deploy Worker ไปยัง Cloudflare จน live และ verify ได้ — deploy staging ก่อน production พร้อม rollback path
+Deploy the Worker to Cloudflare until it is live and verified — deploy staging before production with a rollback path
 
 ## Scope
 
-- ครอบคลุม: `wrangler deploy`, `--env <name>`, `wrangler deployments list`, post-deploy smoke test
-- ถ้า deploy target ไม่ใช่ Workers เดี่ยวๆ (Pages, framework, CI pipeline) → ใช้ `/deploy-to-cloudflare` แทน
-- prerequisites: auth พร้อม (`workflows/setup-wrangler`), config/bindings ครบ (`workflows/config-bindings`)
+- Covers: `wrangler deploy`, `--env <name>`, `wrangler deployments list`, post-deploy smoke test
+- If the deploy target is not a single Worker (Pages, framework, CI pipeline) → use `/deploy-to-cloudflare` instead
+- Prerequisites: auth ready (`workflows/setup-wrangler`), config/bindings complete (`workflows/config-bindings`)
 
 ## Execute
 
 ### 1. Pre-Deploy Checks
 
-> Goal: พร้อม deploy จริงก่อนลงมือ
+> Goal: Ready for a real deploy before acting
 
-1. รัน `wrangler whoami` ยืนยัน account — CI ใช้ `CLOUDFLARE_API_TOKEN` ผ่าน `/follow-secret-manager`
-2. ทำ `/run-check` — lint/typecheck/tests ต้องผ่าน
-3. รัน `wrangler deploy --dry-run` เพื่อ validate config และ bundle
-4. ตรวจ secrets ครบด้วย `wrangler secret list`
+1. Run `wrangler whoami` to confirm the account — CI uses `CLOUDFLARE_API_TOKEN` via `/follow-secret-manager`
+2. Do `/run-check` — lint/typecheck/tests must pass
+3. Run `wrangler deploy --dry-run` to validate config and bundle
+4. Confirm secrets are complete with `wrangler secret list`
 
 ### 2. Deploy Staging
 
-> Goal: verify บน staging ก่อน production
+> Goal: Verify on staging before production
 
-1. รัน `wrangler deploy --env staging`
-2. เก็บ deployment URL และ version id จาก output
-3. smoke test endpoint จริงด้วย `curl` หรือ browser — ต้องตอบ expected response
-4. ถ้า fail → `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `wrangler deploy --env staging`
+2. Capture the deployment URL and version id from the output
+3. Smoke test the real endpoint with `curl` or a browser — it must return the expected response
+4. If it fails → `/resolve-errors` max 3 rounds, then stop and report
 
 ### 3. Deploy Production
 
-> Goal: production live อย่างปลอดภัย
+> Goal: Production live safely
 
-1. confirm กับ user ก่อน deploy production
-2. รัน `wrangler deploy` (หรือ `wrangler deploy --env production` ถ้าใช้ named env)
-3. เก็บ deployment URL และ version id
+1. Confirm with the user before deploying to production
+2. Run `wrangler deploy` (or `wrangler deploy --env production` when using a named env)
+3. Capture the deployment URL and version id
 
 ### 4. Post-Deploy Verify
 
-> Goal: production ทำงานจริง
+> Goal: Production really works
 
-1. รัน `wrangler deployments list` เพื่อดู active deployment และ version history
-2. smoke test production URL — health endpoint และ critical routes
-3. ตรวจ logs ด้วย `wrangler tail` ช่วงสั้นๆ ว่าไม่มี error
-4. ถ้า fail → rollback ไป version เดิม (`wrangler rollback` หรือ redeploy version เดิม — ดู official docs) แล้ว report
-5. สำเร็จ → report URL + version แล้ว `/suggest-next-action`
+1. Run `wrangler deployments list` to see the active deployment and version history
+2. Smoke test the production URL — health endpoint and critical routes
+3. Check logs briefly with `wrangler tail` to confirm no errors
+4. If it fails → roll back to the previous version (`wrangler rollback` or redeploy the previous version — see official docs), then report
+5. Success → report the URL + version, then `/suggest-next-action`
 
 ## Rules
 
 ### 1. Staging First
 
-- deploy staging และ verify ก่อน production เสมอ
-- production deploy ต้อง user confirm
+- Always deploy staging and verify before production
+- Production deploy requires user confirm
 
 ### 2. Keep Evidence
 
-- เก็บ URL + version id ทุก deployment
-- ใช้ `wrangler deployments list` เป็น source of truth ของสถานะ deploy
+- Capture URL + version id for every deployment
+- Use `wrangler deployments list` as the source of truth for deploy status
 
 ### 3. Rollback Ready
 
-- ระบุ version เดิมที่จะ rollback ก่อน deploy production
-- ถ้าไม่แน่ใจ rollback command → ดู official docs
+- Identify the previous version to roll back to before a production deploy
+- If unsure about the rollback command → check official docs
 
 ## Expected Outcome
 
-- Worker live บน production พร้อม URL + version id
-- smoke tests ผ่านและ logs สะอาด
-- rollback path พร้อมใช้ถ้าจำเป็น
+- Worker live on production with URL + version id
+- Smoke tests pass and logs are clean
+- Rollback path ready if needed
 
