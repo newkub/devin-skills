@@ -1,6 +1,6 @@
 ---
 name: follow-tool-moonrepo-optimize cache
-description: ปรับ moonrepo cache และ affected targets ให้ build/test เร็วขึ้น
+description: Tune moonrepo cache and affected targets to make build/test faster
 argument-hint: "[scope]"
 related:
   - follow-monorepo
@@ -9,77 +9,77 @@ related:
 
 ## Goal
 
-เพิ่ม cache hit rate และลดเวลา `moon run` — local/remote cache tuning และ affected-target filtering โดยวัดผลก่อนและหลัง
+Raise the cache hit rate and cut `moon run` time — local/remote cache tuning and affected-target filtering, measured before and after
 
 ## Scope
 
-ใช้เมื่อ monorepo ที่ใช้ moonrepo ช้าหรือ cache miss บ่อย — ไม่ครอบคลุม setup/tasks definition (ดู `workflows/setup-moonrepo/SKILL.md` และ `workflows/config-pipeline/SKILL.md`)
+Use when a moonrepo monorepo is slow or cache misses often — it doesn't cover setup/tasks definition (see `workflows/setup-moonrepo/SKILL.md` and `workflows/config-pipeline/SKILL.md`)
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขเดิมก่อน optimize
+> Goal: capture the old numbers before optimizing
 
-1. รัน `moon run :build` แบบ cold และจับเวลา
-2. รัน warm run ซ้ำ — บันทึกว่า tasks ใด cache hit/miss จาก output
-3. ใช้ `moon query` ดู project/task graph เพื่อหา bottlenecks — ทำ `/deep-optimize` ถ้าต้องวิเคราะห์ลึก
+1. Run `moon run :build` cold and time it
+2. Re-run warm — record which tasks cache hit/miss from the output
+3. Use `moon query` to see the project/task graph and find bottlenecks — do `/deep-optimize` if deeper analysis is needed
 
 ### 2. Fix Cache Misses
 
-> Goal: ลด cache miss จาก config ที่ไม่แม่น
+> Goal: cut cache misses from imprecise config
 
-1. ตรวจ `inputs` ของแต่ละ task — ถ้ากว้างเกินหรือรวมไฟล์ที่เปลี่ยนบ่อย (generated files, timestamps) → จำกัดเฉพาะ source globs ที่ affect output
-2. ตรวจ `outputs` ครบถ้วน — miss outputs = artifacts หายเมื่อ cache restore
-3. ตรวจ env vars ที่เข้า hash — ย้ายตัวที่เปลี่ยนบ่อยออกจาก inputs/env ที่ hash
-4. ทีละจุด — แก้ทีละ key แล้ววัดซ้ำ ห้ามแก้หลายจุดพร้อมกัน
+1. Check each task's `inputs` — if too broad or including frequently changing files (generated files, timestamps) → limit to the source globs that actually affect the output
+2. Check `outputs` completeness — missing outputs = artifacts lost on cache restore
+3. Check env vars entering the hash — move frequently changing ones out of hashed inputs/env
+4. One at a time — fix one key then re-measure; never change several keys at once
 
 ### 3. Remote Cache
 
-> Goal: ตั้งค่า remote cache สำหรับ team/CI
+> Goal: set up remote cache for team/CI
 
-1. moonrepo รองรับ remote caching — ตั้งค่าตาม official docs สำหรับ backend ที่ใช้ (ไม่ invent config keys)
-2. เก็บ credentials/tokens ผ่าน `/follow-secret-manager` ห้าม commit
-3. ใน CI ให้ pass env vars ที่จำเป็น — verify ด้วย cache hit ข้าม CI runs
+1. moonrepo supports remote caching — configure per official docs for the backend used (don't invent config keys)
+2. Store credentials/tokens via `/follow-secret-manager`, never commit
+3. In CI pass the required env vars — verify with cache hits across CI runs
 
 ### 4. Affected Targets
 
-> Goal: รันเฉพาะสิ่งที่เปลี่ยน
+> Goal: run only what changed
 
-1. ใช้ `moon run :<task> --affected` เพื่อรันเฉพาะ projects ที่เปลี่ยนเทียบ base
-2. ใช้ `--base`/`--head` flags เพื่อกำหนด comparison range ใน CI (ดู `moon run --help` สำหรับ flags ล่าสุด)
-3. ใช้ `moon query affected` หรือ query ที่เกี่ยวข้องเพื่อ inspect ก่อนรันจริง
-4. ใช้ project/task selectors (`moon run <project>:<task>`) สำหรับ scoped runs
+1. Use `moon run :<task> --affected` to run only projects changed vs the base
+2. Use `--base`/`--head` flags to set the comparison range in CI (check `moon run --help` for current flags)
+3. Use `moon query affected` or related queries to inspect before a real run
+4. Use project/task selectors (`moon run <project>:<task>`) for scoped runs
 
 ### 5. Compare And Report
 
-> Goal: วัดผลหลังแก้เทียบ baseline
+> Goal: measure after fixes vs the baseline
 
-1. รัน cold + warm runs ซ้ำ — compare เวลาและ hit rate กับ step 1
-2. ถ้าไม่ดีขึ้นหรือ regression → revert จุดนั้นแล้ว report
-3. ผ่าน → `/report-before-after` ด้วยตัวเลขจริง
+1. Re-run cold + warm runs — compare time and hit rate with step 1
+2. No improvement or regression → revert that point and report
+3. Passing → `/report-before-after` with real numbers
 
 ## Rules
 
 ### 1. Evidence-Based
 
-- baseline ก่อนเสมอ — ห้าม optimize โดยไม่มีตัวเลขเดิม
-- แก้ทีละจุดเรียง impact มาก → น้อย
+- Baseline always first — never optimize without the old numbers
+- Fix one point at a time, high impact → low
 
 ### 2. Cache Correctness
 
-- preserve behavior — optimize ≠ เปลี่ยน build output
-- ไม่ตัด `inputs` ที่ affect output จริงเพื่อเพิ่ม hit rate (stale cache = bug)
+- Preserve behavior — optimize ≠ change build output
+- Don't trim `inputs` that really affect the output just to raise the hit rate (stale cache = bug)
 
 ### 3. Safety
 
-- credentials ของ remote cache ผ่าน secrets manager เท่านั้น
-- ถ้าไม่แน่ใจ option/flag ให้ดู `moon <cmd> --help` หรือ official docs
+- Remote cache credentials only via the secrets manager
+- If unsure about an option/flag → check `moon <cmd> --help` or official docs
 
-- ใช้ /deep-optimize ถ้าจำเป็น
+- Use /deep-optimize if needed
 
 ## Expected Outcome
 
-- Cache hit rate ดีขึ้นวัดได้จากก่อน/หลัง
-- Affected-target runs ใช้ใน CI ลดงานที่ไม่จำเป็น
-- Remote cache ทำงานข้าม local และ CI (ถ้าตั้งค่า)
+- Cache hit rate improved, measurable before/after
+- Affected-target runs used in CI to cut unnecessary work
+- Remote cache works across local and CI (when configured)

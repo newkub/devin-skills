@@ -1,6 +1,6 @@
 ---
 name: follow-tool-moonrepo-run-ci
-description: ใช้ moon ci บน CI providers — affected targets, runInCI, sharding, reports
+description: Use moon ci on CI providers — affected targets, runInCI, sharding, reports
 argument-hint: "[provider]"
 related:
   - follow-monorepo
@@ -11,65 +11,65 @@ related:
 
 ## Goal
 
-ตั้งค่า `moon ci` ให้ CI pipeline รันเฉพาะ affected tasks อย่างถูกต้อง — ครอบคลุม `runInCI`, base/head detection, job sharding, reports และ remote caching
+Configure `moon ci` so the CI pipeline correctly runs only affected tasks — covering `runInCI`, base/head detection, job sharding, reports, and remote caching
 
 ## Scope
 
-ใช้เมื่อ monorepo ใช้ moonrepo แล้วและต้องการ CI integration (GitHub Actions, Buildkite, CircleCI, TravisCI) — ไม่ครอบคลุม setup `.moon/` (ดู `workflows/setup-moonrepo/SKILL.md`) หรือ task definitions (ดู `workflows/config-pipeline/SKILL.md`)
+Use when the monorepo already uses moonrepo and needs CI integration (GitHub Actions, Buildkite, CircleCI, TravisCI) — it doesn't cover `.moon/` setup (see `workflows/setup-moonrepo/SKILL.md`) or task definitions (see `workflows/config-pipeline/SKILL.md`)
 
-- ถ้ายังไม่มี `.moon/workspace.yml` → ทำ `workflows/setup-moonrepo/SKILL.md` ก่อน
+- If there is no `.moon/workspace.yml` yet → do `workflows/setup-moonrepo/SKILL.md` first
 
 ## Execute
 
 ### 1. Understand moon ci Behavior
 
-> Goal: เข้าใจว่า `moon ci` ทำอะไรต่างจาก `moon run`
+> Goal: understand how `moon ci` differs from `moon run`
 
-1. `moon ci` = `moon exec` พร้อม prefills: `--affected`, `--ci`, `--on-failure=continue`, `--summary=detailed`, `--upstream=deep`, `--downstream=direct`
-2. รันเฉพาะ tasks ที่ affected โดย changed files และมี `options.runInCI: true` (default true)
-3. tasks ชื่อ `dev`, `start`, `serve` ถูก `runInCI: false` โดย default — long-running processes ต้อง opt-out เสมอ
-4. base/head revisions detect อัตโนมัติจาก CI provider — fallback ไป `vcs.defaultBranch` และ `HEAD`
-5. report เขียนที่ `.moon/cache/ciReport.json` — copy ออกถ้าต้อง persist (upload เป็น CI artifact)
+1. `moon ci` = `moon exec` with prefilled flags: `--affected`, `--ci`, `--on-failure=continue`, `--summary=detailed`, `--upstream=deep`, `--downstream=direct`
+2. Runs only tasks affected by changed files and having `options.runInCI: true` (default true)
+3. Tasks named `dev`, `start`, `serve` default to `runInCI: false` — long-running processes must always opt out
+4. Base/head revisions are detected automatically from the CI provider — falling back to `vcs.defaultBranch` and `HEAD`
+5. The report is written to `.moon/cache/ciReport.json` — copy it out if it must persist (upload as a CI artifact)
 
 ### 2. Configure runInCI Per Task
 
-> Goal: ให้เฉพาะ tasks ที่เหมาะรันบน CI
+> Goal: only suitable tasks run on CI
 
-1. ปิด tasks ที่เป็น long-running/interactive:
+1. Disable long-running/interactive tasks:
    ```yaml
    tasks:
      dev:
        options:
          runInCI: false
    ```
-2. ปิด tasks ที่ต้อง secrets หรือ external side-effects ที่ไม่ควรรันบน PR (เช่น deploy previews)
-3. ตรวจว่า `build`, `lint`, `typecheck`, `test`, `check` ยัง `runInCI: true` (default)
+2. Disable tasks that need secrets or external side-effects that shouldn't run on PRs (e.g. deploy previews)
+3. Verify `build`, `lint`, `typecheck`, `test`, `check` are still `runInCI: true` (default)
 
 ### 3. Choose Targets Explicitly (Optional)
 
-> Goal: ควบคุม task set ที่รันบน CI
+> Goal: control the task set that runs on CI
 
-1. default `moon ci` รันทุก task ที่ affected — ถ้าต้องการแยก job ให้ระบุ targets:
-   - `moon ci :build` — job เดียว build อย่างเดียว
-   - `moon ci :test :lint` — job อื่น test + lint
-2. explicit targets ยัง filter ด้วย `runInCI` และ affected detection เหมือนเดิม
+1. By default `moon ci` runs every affected task — to split jobs, specify targets:
+   - `moon ci :build` — one job, build only
+   - `moon ci :test :lint` — another job, test + lint
+2. Explicit targets are still filtered by `runInCI` and affected detection as before
 
 ### 4. Configure Revision Detection
 
-> Goal: affected detection ถูกต้องบน CI
+> Goal: correct affected detection on CI
 
-1. moon ต้องการ full commit history — ห้าม shallow clone (`fetch-depth: 1`)
-2. GitHub Actions: ใช้ `actions/checkout` พร้อม `fetch-depth: 0` และ `filter: 'blob:none'` (blobless clone — เร็วแต่ history ครบ)
-3. override ด้วย `--base`/`--head` หรือ `MOON_BASE`/`MOON_HEAD` env เมื่อ provider detect ผิด
+1. moon needs full commit history — never shallow clone (`fetch-depth: 1`)
+2. GitHub Actions: use `actions/checkout` with `fetch-depth: 0` and `filter: 'blob:none'` (blobless clone — fast but complete history)
+3. Override with `--base`/`--head` or the `MOON_BASE`/`MOON_HEAD` env when the provider detects wrong revisions
    ```sh
    moon ci --base <BRANCH> --head <SHA>
    ```
 
 ### 5. Integrate With Provider
 
-> Goal: pipeline file ถูกต้องตาม provider
+> Goal: correct pipeline file per provider
 
-1. GitHub Actions (แนะนำ — ใช้ official action):
+1. GitHub Actions (recommended — use the official action):
    ```yaml
    steps:
      - uses: 'actions/checkout@v4'
@@ -79,55 +79,55 @@ related:
      - uses: 'moonrepo/setup-toolchain@v0'
      - run: 'moon ci'
    ```
-2. provider อื่น: ติดตั้ง moon ผ่าน package manager (`bun add -D @moonrepo/cli`) แล้วรัน `bunx moon ci`
-3. PR report comment: ใช้ `moonrepo/run-report-action@v1` หลัง `moon ci` พร้อม `if: success() || failure()`
-4. ดู provider matrix ทั้งหมดใน [references/ci.md](../../references/ci.md)
+2. Other providers: install moon via the package manager (`bun add -D @moonrepo/cli`) then run `bunx moon ci`
+3. PR report comment: use `moonrepo/run-report-action@v1` after `moon ci` with `if: success() || failure()`
+4. See the full provider matrix in [references/ci.md](../../references/ci.md)
 
 ### 6. Shard Across Jobs (Optional)
 
-> Goal: parallelize affected tasks ข้าม CI jobs
+> Goal: parallelize affected tasks across CI jobs
 
-1. ใช้ `--job` (0-based index) + `--job-total`:
+1. Use `--job` (0-based index) + `--job-total`:
    ```sh
    moon ci --job ${{ matrix.index }} --job-total 2
    ```
-2. GitHub: emulate parallelism ด้วย `strategy.matrix.index`; Buildkite/CircleCI ใช้ native parallelism keys — ตัวอย่างใน [references/ci.md](../../references/ci.md)
+2. GitHub: emulate parallelism with `strategy.matrix.index`; Buildkite/CircleCI use native parallelism keys — examples in [references/ci.md](../../references/ci.md)
 
 ### 7. Cache Artifacts
 
-> Goal: artifacts/cache พร้อมใช้ระหว่าง CI runs
+> Goal: artifacts/cache ready across CI runs
 
-1. prefer remote caching ตาม `workflows/optimize-cache/SKILL.md`
-2. manual persistence: persist เฉพาะ `.moon/cache/{hashes,outputs}` — ห้าม persist ไฟล์อื่นใน `.moon/cache` (ไม่ portable)
-3. อย่า cache แบบไม่มี invalidation — hash เปลี่ยนทุก run ทำให้ cache ขยะ (เหตุผลที่ remote caching service มีอยู่)
+1. Prefer remote caching per `workflows/optimize-cache/SKILL.md`
+2. Manual persistence: persist only `.moon/cache/{hashes,outputs}` — never persist other files in `.moon/cache` (not portable)
+3. Don't cache without invalidation — hashes changing every run create garbage cache (the reason remote caching services exist)
 
 ### 8. Verify
 
-> Goal: CI run จริงผ่านเกณฑ์
+> Goal: a real CI run meets the bar
 
-1. รัน `moon ci` บน branch ทดสอบ — ตรวจ affected detection ถูกต้อง
-2. ตรวจ `ciReport.json` มี actions ที่คาดหวัง
-3. ถ้า affected detection ว่างเปล่า → ตรวจ fetch-depth และ `vcs.defaultBranch`
+1. Run `moon ci` on a test branch — verify affected detection is correct
+2. Check `ciReport.json` contains the expected actions
+3. If affected detection comes back empty → check fetch-depth and `vcs.defaultBranch`
 
 ## Rules
 
 ### 1. Never Shallow Clone
 
-- `moon ci` ต้องการ merge base — shallow clone ทำ affected detection พัง
-- ใช้ `filter: 'blob:none'` แทน `fetch-depth: 1` เมื่อกังวลความเร็ว
+- `moon ci` needs the merge base — a shallow clone breaks affected detection
+- Use `filter: 'blob:none'` instead of `fetch-depth: 1` when speed is a concern
 
 ### 2. runInCI Discipline
 
-- task ที่ spawn server หรือ watch process ต้อง `runInCI: false` เสมอ
-- tasks `dev`/`start`/`serve` ปิด default — อย่าเปิดกลับ
+- Tasks that spawn servers or watch processes must always be `runInCI: false`
+- `dev`/`start`/`serve` tasks are off by default — don't re-enable them
 
 ### 3. Report Artifacts
 
-- `.moon/cache/ciReport.json` ไม่ persist ระหว่าง runs — copy/upload ทันทีถ้าต้องใช้
-- ใช้ `run-report-action` สำหรับ PR visibility บน GitHub
+- `.moon/cache/ciReport.json` does not persist between runs — copy/upload it immediately when needed
+- Use `run-report-action` for PR visibility on GitHub
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
-- ใช้ /follow-monorepo ถ้าจำเป็น
+- Use /follow-tool-github-actions if needed
+- Use /follow-monorepo if needed
 
 ## References
 
@@ -135,7 +135,7 @@ related:
 
 ## Expected Outcome
 
-- `moon ci` รัน affected tasks เท่านั้นบน CI provider
-- `runInCI` ตั้งถูกต้อง — ไม่มี server tasks ค้างใน CI
-- full git history พร้อม — affected detection แม่นยำ
-- `ciReport.json` + PR report (GitHub) พร้อมใช้
+- `moon ci` runs only affected tasks on the CI provider
+- `runInCI` set correctly — no server tasks hanging in CI
+- Full git history available — affected detection is accurate
+- `ciReport.json` + PR report (GitHub) ready to use

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-mise-setup-mise
-description: ติดตั้ง mise CLI และ activate shell integration ให้พร้อมใช้งานครั้งแรก
+description: Install the mise CLI and activate shell integration for first-time use
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ติดตั้ง mise CLI บนเครื่องและ activate shell integration ให้ tools/env load อัตโนมัติเมื่อเข้า project directory — first-time setup
+Install the mise CLI on the machine and activate shell integration so tools/env load automatically when entering a project directory — first-time setup
 
 ## Scope
 
-ใช้สำหรับเครื่อง/project ที่ยังไม่มี mise — install, shell activation, `mise doctor` verify. การเขียน `mise.toml` (tools/tasks/env) อยู่ใน `workflows/config-tools/SKILL.md`
+For a machine/project without mise yet — install, shell activation, `mise doctor` verification. Writing `mise.toml` (tools/tasks/env) lives in `workflows/config-tools/SKILL.md`
 
 ## Execute
 
 ### 1. Check Current State
 
-> Goal: ตรวจว่า mise ติดตั้งอยู่แล้วหรือไม่
+> Goal: check whether mise is already installed
 
-1. รัน `mise --version` — ถ้าทำงาน → skip ไป step 3 (verify)
-2. ตรวจว่ามี `mise.toml` หรือ `.tool-versions` ใน project อยู่แล้วหรือไม่
+1. Run `mise --version` — if it works → skip to step 3 (verify)
+2. Check whether the project already has a `mise.toml` or `.tool-versions`
 
 ### 2. Install Mise
 
-> Goal: ติดตั้ง mise ตาม OS
+> Goal: install mise per OS
 
-1. เลือกวิธีตาม environment:
+1. Pick the method for the environment:
    - Unix (macOS/Linux): `curl https://mise.run | sh`
-   - Windows: `winget install jdx.mise` หรือ `scoop install mise`
+   - Windows: `winget install jdx.mise` or `scoop install mise`
    - Cargo: `cargo install mise`
-   - ดู official docs สำหรับวิธีอื่นถ้าไม่แน่ใจ
-2. รัน `mise --version` ยืนยัน installation
+   - See official docs for other methods if unsure
+2. Run `mise --version` to confirm the installation
 
 ### 3. Activate Shell Integration
 
-> Goal: ให้ mise load อัตโนมัติใน shell
+> Goal: make mise load automatically in the shell
 
-1. เพิ่ม activation ใน shell profile ตาม shell ที่ใช้:
-   - Bash: `eval "$(mise activate bash)"` ใน `~/.bashrc`
-   - Zsh: `eval "$(mise activate zsh)"` ใน `~/.zshrc`
-   - Fish: `mise activate fish | source` ใน fish config
-   - PowerShell: `mise activate pwsh` output ใน `$PROFILE` (ดู official docs สำหรับ exact syntax)
-2. Restart shell หรือ source profile ใหม่
-3. ทางเลือก: ถ้าไม่ต้องการ activate → ใช้ `mise exec -- <command>` หรือ `mise x` shim mode แทน
+1. Add activation to the shell profile per the shell in use:
+   - Bash: `eval "$(mise activate bash)"` in `~/.bashrc`
+   - Zsh: `eval "$(mise activate zsh)"` in `~/.zshrc`
+   - Fish: `mise activate fish | source` in fish config
+   - PowerShell: `mise activate pwsh` output in `$PROFILE` (see official docs for the exact syntax)
+2. Restart the shell or re-source the profile
+3. Alternative: without activation → use `mise exec -- <command>` or the `mise x` shim mode
 
 ### 4. Verify
 
-> Goal: ยืนยัน mise พร้อมใช้งาน
+> Goal: confirm mise is ready to use
 
-1. รัน `mise doctor` — ตรวจสุขภาพ installation และ activation
-2. `cd` เข้า project ที่มี `mise.toml` แล้วรัน `mise env` — env vars ต้อง load
-3. ถ้า doctor report ปัญหา → แก้ตามที่ doctor แนะนำ แล้ว verify ซ้ำ (max 3 รอบ)
+1. Run `mise doctor` — checks installation and activation health
+2. `cd` into a project with a `mise.toml` and run `mise env` — env vars must load
+3. If doctor reports problems → fix per its recommendations, then re-verify (max 3 rounds)
 
 ## Rules
 
 ### 1. Idempotent
 
-- ถ้า `mise --version` ทำงานและ `mise doctor` ผ่าน → verify เท่านั้น ห้าม reinstall
+- If `mise --version` works and `mise doctor` passes → verify only, never reinstall
 
 ### 2. Shell Activation
 
-- เลือก activation method ตาม shell จริงของ user — ห้ามเดา
-- commit เฉพาะ project config — shell profile เป็น user-level ไม่แก้โดยไม่จำเป็น
+- Pick the activation method matching the user's real shell — never guess
+- Commit only project config — the shell profile is user-level, don't edit it without need
 
 ### 3. Safety
 
-- รัน `mise doctor` ก่อนแก้ปัญหาซับซ้อนเสมอ
-- ไม่ลบ mise cache/state โดยไม่รู้ผล
+- Always run `mise doctor` before fixing complex problems
+- Don't delete mise cache/state without knowing the effect
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
+- Use /follow-secret-manager if needed
 
 ## Expected Outcome
 
-- mise ติดตั้งและ `mise --version` ทำงาน
-- Shell activation ทำให้ tools/env auto-load เมื่อเข้า project
-- `mise doctor` ผ่านไม่มีปัญหาค้าง
+- mise installed and `mise --version` works
+- Shell activation makes tools/env auto-load when entering a project
+- `mise doctor` passes with no lingering issues

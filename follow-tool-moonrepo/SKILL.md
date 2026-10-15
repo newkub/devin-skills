@@ -1,6 +1,6 @@
 ---
 name: follow-tool-moonrepo
-description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project boundaries สำหรับหลาย stacks
+description: Use moonrepo for monorepo builds, tasks, and project boundaries across stacks
 argument-hint: "[scope]"
 related:
   - follow-monorepo
@@ -17,14 +17,14 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน moonrepo สำหรับ monorepo ด้วย `.moon/` configuration, task graph, และ project boundaries
+Set up and use moonrepo for a monorepo with `.moon/` configuration, task graph, and project boundaries
 
 ## Scope
 
-ใช้สำหรับ project ที่เลือกใช้ moonrepo เป็น monorepo orchestrator แทน turborepo รองรับ Bun, Node, Rust
+For projects that choose moonrepo as the monorepo orchestrator instead of turborepo; supports Bun, Node, Rust
 
-- ถ้า repo ยังใช้ turborepo → ใช้ `/follow-tool-turborepo` (หรือ migrate ตาม Step 5)
-- ถ้างานคือ tool version/env management ไม่ใช่ task orchestration → ใช้ `/follow-tool-mise`
+- If the repo still uses turborepo → use `/follow-tool-turborepo` (or migrate per Step 5)
+- If the job is tool version/env management rather than task orchestration → use `/follow-tool-mise`
 
 ## Execute
 
@@ -33,79 +33,79 @@ related:
 | Topic | Workflow |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `workflows/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `workflows/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `workflows/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `workflows/run-ci/SKILL.md` 
 ### Subagents
 
-- ใช้ profile `project-configurator` (inline อยู่ด้านล่างใน `## Subagents` section) เมื่อต้อง configure/verify `moon.yml` หลาย projects พร้อมกัน — spawn ต่อ `project-path` ผ่าน `/use-subagents` พร้อม `mode` = `configure` หรือ `verify`
+- Use the `project-configurator` profile (inline below in the `## Subagents` section) when configuring/verifying `moon.yml` across many projects at once — spawn per `project-path` via `/use-subagents` with `mode` = `configure` or `verify`
 
 ### 1. Install moon
 
-> Goal: ติดตั้ง moon CLI บน environment
+> Goal: install the moon CLI on the environment
 
-1. ติดตั้งด้วย package manager ที่เหมาะสม:
+1. Install with the appropriate package manager:
    - Bun project: `bun add -D @moonrepo/cli`
-   - ถ้า project ไม่ใช้ Bun: ใช้ package manager ของ project (npm, pnpm, yarn)
+   - If the project doesn't use Bun: use its package manager (npm, pnpm, yarn)
    - PowerShell: `irm https://moonrepo.dev/install/moon.ps1 | iex`
    - macOS/Linux/WSL: `bash <(curl -fsSL https://moonrepo.dev/install/moon.sh)`
    - proto: `proto install moon`
-   - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
-2. ตรวจสอบ version ด้วย `moon --version` (latest `2.5.5`, verified 2026-09-16)
-3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (default ใช้ `bun add -D @moonrepo/cli`)
-4. ดูรายละเอียดเพิ่มเติมใน 
+   - mise: `mise use -g moon` (if `mise` is in `.tool-versions` or `mise.toml`)
+2. Check the version with `moon --version` (latest `2.5.5`, verified 2026-09-16)
+3. To let other projects in this repo use moon → use the workspace package manager (default: `bun add -D @moonrepo/cli`)
+4. See more details in 
 
 ### 2. Identify Workspace
 
-> Goal: ระบุว่า project ใช้ moonrepo
+> Goal: confirm the project uses moonrepo
 
-1. ตรวจสอบ `.moon/workspace.yml` หรือ `moon.yml`
-2. อ่าน root manifest: `package.json` scripts สำหรับ JS/Bun, `Cargo.toml` workspace สำหรับ Rust
-3. ระบุ projects ใน monorepo จาก `.moon/workspace.yml` globs
-4. บันทึก project list (package = JS/Bun, crate = Rust)
+1. Check for `.moon/workspace.yml` or `moon.yml`
+2. Read the root manifests: `package.json` scripts for JS/Bun, `Cargo.toml` workspace for Rust
+3. Identify the monorepo's projects from the `.moon/workspace.yml` globs
+4. Record the project list (package = JS/Bun, crate = Rust)
 
 ### 3. Configure Workspace
 
-> Goal: ตั้งค่า moonrepo workspace
+> Goal: set up the moonrepo workspace
 
-1. สร้าง/อัปเดต `.moon/workspace.yml` ด้วย project globs
-   - JS/Bun: `packages/*` หรือ `apps/*`
+1. Create/update `.moon/workspace.yml` with project globs
+   - JS/Bun: `packages/*` or `apps/*`
    - Rust: `crates/*`
-2. สร้าง/อัปเดต `.moon/toolchains.yml` ตาม stack (Bun, Node, Rust)
-3. สร้าง `.moon/tasks/all.yml` สำหรับ shared task config
-4. ตรวจสอบ `moon.yml` ในแต่ละ project
+2. Create/update `.moon/toolchains.yml` per stack (Bun, Node, Rust)
+3. Create `.moon/tasks/all.yml` for shared task config
+4. Check the `moon.yml` of every project
 
 ### 4. Define Tasks
 
-> Goal: กำหนด tasks ใน moonrepo
+> Goal: define tasks in moonrepo
 
-1. ใช้ชื่อ task เดียวกันระหว่าง workspaces
-2. JS/Bun: ใช้ `package.json` scripts (`build`, `dev`, `test`, `lint`, `typecheck`, `scan`)
-3. Rust: ใช้ `cargo build`, `cargo test`, `cargo clippy`
-4. กำหนด `deps` (`^build`) ให้ถูกต้อง
-5. กำหนด `outputs` สำหรับ build tasks
-6. กำหนด `inputs` และ `options` ตามจำเป็น
+1. Use the same task names across workspaces
+2. JS/Bun: use `package.json` scripts (`build`, `dev`, `test`, `lint`, `typecheck`, `scan`)
+3. Rust: use `cargo build`, `cargo test`, `cargo clippy`
+4. Set `deps` (`^build`) correctly
+5. Set `outputs` for build tasks
+6. Set `inputs` and `options` as needed
 
 ### 5. Migrate From Turborepo
 
-> Goal: ย้ายจาก turborepo ไป moonrepo
+> Goal: move from turborepo to moonrepo
 
-1. ลอง `moon ext migrate-turborepo` (หรือ `moon ext migrate-nx` สำหรับ Nx) ก่อน — built-in migration
-2. ลบ `turbo.json`
-3. ลบ `turbo` ออกจาก `package.json` devDependencies
-4. แก้ไข scripts ใน `package.json` จาก `turbo run` ไป `moon run`
-5. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
-6. อัปเดต `rules/` (ast-grep) และ skills ที่อ้างอิงถึง turborepo
+1. Try the built-in migration first: `moon ext migrate-turborepo` (or `moon ext migrate-nx` for Nx)
+2. Delete `turbo.json`
+3. Remove `turbo` from `package.json` devDependencies
+4. Change `package.json` scripts from `turbo run` to `moon run`
+5. Update README, AGENTS, and docs to state moonrepo
+6. Update `rules/` (ast-grep) and skills that reference turborepo
 
 ### 6. Integrate CI
 
-> Goal: CI pipeline ใช้ `moon ci` อย่างถูกต้อง
+> Goal: the CI pipeline uses `moon ci` correctly
 
-1. ใช้ `moon ci` แทน `moon run` บน CI — รันเฉพาะ affected tasks ที่มี `runInCI`
-2. ตั้ง `runInCI: false` สำหรับ long-running tasks (`dev`, `start`, `serve` ปิด default)
-3. ต้อง full git history — ห้าม shallow clone (ใช้ `filter: 'blob:none'`)
-4. ทำตาม `workflows/run-ci/SKILL.md` สำหรับ provider config, sharding และ reports
+1. Use `moon ci` instead of `moon run` in CI — it runs only affected tasks with `runInCI`
+2. Set `runInCI: false` for long-running tasks (`dev`, `start`, `serve` default to off)
+3. Full git history is required — never shallow clone (use `filter: 'blob:none'`)
+4. Follow `workflows/run-ci/SKILL.md` for provider config, sharding, and reports
 
 ### 7. Configure VCS Hooks (Optional)
 
-> Goal: git hooks ด้วย built-in `vcs.hooks` — ไม่ต้องใช้ hook manager ภายนอก
+> Goal: git hooks via the built-in `vcs.hooks` — no external hook manager needed
 
-1. เพิ่ม `vcs.hooks` ใน `.moon/workspace.yml` (ต้อง moon v1.9+):
+1. Add `vcs.hooks` to `.moon/workspace.yml` (requires moon v1.9+):
    ```yaml
    vcs:
      hooks:
@@ -115,90 +115,89 @@ related:
          - 'moon run :typecheck :test --affected'
      sync: true
    ```
-2. `sync: true` = auto-generate + link hooks ทุกครั้งที่ task รัน; ถ้าไม่ใช้ → contributor opt-in ด้วย `moon sync hooks` เอง
-3. Generated scripts อยู่ที่ `.moon/hooks` (หรือ `.config/moon/hooks`) — commit หรือ ignore ก็ได้, audit/test ง่าย เพราะ moon ตั้ง `core.hooksPath` ชี้ไปที่นั่น
-4. ใช้ `--affected` + `--status=staged` ให้ hook เร็ว — moon รู้ task graph + cache อยู่แล้ว
-5. ไม่จำเป็นต้องใช้ `/follow-tool-hk` — hk เพิ่มมูลค่าเฉพาะเมื่อต้องการ parallel staged-file linting, hook steps ที่ไม่ใช่ moon tasks, หรือ hook config เดียวกันข้าม repos ที่ไม่ใช้ moon
+2. `sync: true` = auto-generate + link hooks on every task run; otherwise contributors opt in with `moon sync hooks` themselves
+3. Generated scripts live in `.moon/hooks` (or `.config/moon/hooks`) — commit or ignore, either is fine; easy to audit/test since moon sets `core.hooksPath` there
+4. Use `--affected` + `--status=staged` to keep hooks fast — moon already knows the task graph + cache
+5. `/follow-tool-hk` isn't needed — hk adds value only for parallel staged-file linting, non-moon hook steps, or one hook config across non-moon repos
 
 ### 8. Verify
 
-> Goal: ตรวจสอบว่า moonrepo ทำงานได้
+> Goal: confirm moonrepo works
 
-1. รัน `moon check` หรือ `moon run :check`
-2. รัน `moon run :build` เพื่อตรวจ project graph
-3. รัน `moon ci` บน test branch เพื่อยืนยัน affected detection
-4. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
-5. inspect graph/tasks ด้วย `moon project <id>`, `moon task <id>:<task>`, `moon query projects`, `moon query tasks` เมื่อต้อง debug structure
-6. ถ้ามี generated hook scripts → verify `git config core.hooksPath` ชี้ `.moon/hooks`
-7. ทำ `/deep-validate` เพื่อ verify setup
+1. Run `moon check` or `moon run :check`
+2. Run `moon run :build` to verify the project graph
+3. Run `moon ci` on a test branch to confirm affected detection
+4. Check that no `turbo.json` or `turbo` dependencies remain
+5. Inspect graph/tasks with `moon project <id>`, `moon task <id>:<task>`, `moon query projects`, `moon query tasks` when debugging structure
+6. If generated hook scripts exist → verify `git config core.hooksPath` points at `.moon/hooks`
+7. Run `/deep-validate` to verify the setup
 
 ## Rules
 
 ### 1. Prefer moonrepo For This Codebase
 
-- ใช้ `moon` สำหรับ task orchestration
-- ไม่เพิ่ม `turbo` dependencies กลับเข้ามา
-- ใช้ `moon run :<task>` ใน root scripts
+- Use `moon` for task orchestration
+- Don't add `turbo` dependencies back
+- Use `moon run :<task>` in root scripts
 
 ### 2. Task Naming
 
-- ใช้ชื่อ task เดียวกันระหว่าง workspaces
-- ใช้ kebab-case สำหรับ task labels
-- หลีกเลี่ยง task ทีไม่มี `deps` ทีชัดเจน
+- Use the same task names across workspaces
+- Use kebab-case for task labels
+- Avoid tasks without clear `deps`
 
 ### 3. Project Boundaries
 
-- กำหนด project globs ใน `.moon/workspace.yml`
-- ใช้ moonrepo implicit project detection
-- ไม่ซ้อน project boundaries ซ้ำซ้อน
+- Define project globs in `.moon/workspace.yml`
+- Use moonrepo's implicit project detection
+- Don't overlap project boundaries
 - JS/Bun project = package, Rust project = crate (Cargo package)
-- ใช้ `tags` ใน `moon.yml` + `dependsOn` สำหรับ boundaries ที่ชัด — ดู `references/apis.md`
+- Use `tags` in `moon.yml` + `dependsOn` for explicit boundaries — see `references/apis.md`
 
 ### 4. Git Hooks
 
-- repo ที่ใช้ moon → `vcs.hooks` เป็น default เสมอ ไม่ใช้ `/follow-tool-hk` — ดู Step 7
-- ใช้ `hk` เฉพาะเมื่อ: parallel staged-file linting ที่ moon commands ทำไม่ได้, hook steps ที่ไม่ใช่ moon tasks, หรือ hook config เดียวข้าม repos ที่ไม่ใช้ moon
+- In a moon repo → `vcs.hooks` is always the default, not `/follow-tool-hk` — see Step 7
+- Use `hk` only when: parallel staged-file linting moon commands can't do, hook steps that aren't moon tasks, or one hook config across non-moon repos
 
-- ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-tool-mise ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
-- ใช้ /use-subagents ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /deep-validate ถ้าจำเป็น
+- Use /follow-monorepo if needed
+- Use /follow-tool-mise if needed
+- Use /follow-tool-github-actions if needed
+- Use /use-subagents if needed
+- Use /run-build if needed
+- Use /run-lint if needed
+- Use /run-test if needed
+- Use /run-test all if needed
+- Use /run-verify if needed
+- Use /deep-validate if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: independent work that can spawn in parallel — the profile lives in this section, no separate file
 
-### project-configurator — configure หรือ verify `moon.yml` + task definitions ของ project เดียวใน monorepo
+### project-configurator — configure or verify one project's `moon.yml` + task definitions in the monorepo
 
-- **Inputs**: `project-path` (เช่น `apps/web`, `packages/ui`, `crates/cli`), `stack` (`bun`/`node`/`rust` — detect จาก manifest ถ้าไม่ระบุ), `shared-config` (path ไป `.moon/tasks/all.yml` ถ้ามี), `mode` (`configure` เขียน/แก้ moon.yml, `verify` ตรวจรายงานอย่างเดียว)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` — ทุก mode; `edit`/`write` เฉพาะ mode `configure`
+- **Inputs**: `project-path` (e.g. `apps/web`, `packages/ui`, `crates/cli`), `stack` (`bun`/`node`/`rust` — detect from the manifest if not given), `shared-config` (path to `.moon/tasks/all.yml` if present), `mode` (`configure` writes/edits moon.yml, `verify` only inspects and reports)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` — every mode; `edit`/`write` only in mode `configure`
 - **Execute**:
-  1. อ่าน `package.json` scripts (JS/Bun) หรือ `Cargo.toml` (Rust) ของ project
-  2. อ่าน `.moon/tasks/all.yml` และ shared config ที่มีผลกับ project
-  3. ตรวจ `moon.yml` ปัจจุบันของ project (ถ้ามี)
-  4. mode `configure`: เขียน `moon.yml` ด้วย task names มาตรฐาน (`build`, `dev`, `test`, `lint`, `typecheck`, `check`), `deps` ที่ถูก (`^build` สำหรับ build), `outputs` สำหรับ build tasks, `inputs` ครอบคลุม sources+configs, `runInCI: false` สำหรับ dev/serve tasks
-  5. mode `verify`: ตรวจ task coverage, missing `deps`, missing `outputs`, `runInCI` violations แล้วรายงาน
-  6. รัน `moon project <name>` เพื่อยืนยัน project ถูก detect ถูกต้อง
-- **Output**: updated `moon.yml` (mode configure) หรือ verification report (mode verify) + list ของ task issues: missing deps, missing outputs, runInCI ผิด, naming drift
-- **Constraints**: แก้เฉพาะ `moon.yml` ของ project ที่ได้รับมอบหมาย — ห้ามแตะ `.moon/` workspace config หรือ project อื่น; ใช้ชื่อ task ตาม shared config เดิม ไม่สร้าง convention ใหม่; ไม่เปลี่ยน `package.json`/`Cargo.toml` scripts — report เป็น finding แทน; mode `verify` ห้ามเขียนไฟล์
+  1. Read the project's `package.json` scripts (JS/Bun) or `Cargo.toml` (Rust)
+  2. Read `.moon/tasks/all.yml` and any shared config affecting the project
+  3. Check the project's current `moon.yml` (if any)
+  4. mode `configure`: write `moon.yml` with standard task names (`build`, `dev`, `test`, `lint`, `typecheck`, `check`), correct `deps` (`^build` for build), `outputs` for build tasks, `inputs` covering sources+configs, `runInCI: false` for dev/serve tasks
+  5. mode `verify`: check task coverage, missing `deps`, missing `outputs`, `runInCI` violations, then report
+  6. Run `moon project <name>` to confirm the project is detected correctly
+- **Output**: an updated `moon.yml` (mode configure) or a verification report (mode verify) + a list of task issues: missing deps, missing outputs, wrong runInCI, naming drift
+- **Constraints**: edit only the assigned project's `moon.yml` — never touch `.moon/` workspace config or other projects; follow the shared config's existing task names, don't invent new conventions; don't change `package.json`/`Cargo.toml` scripts — report them as findings instead; mode `verify` writes no files
 
 ## Expected Outcome
 
-- `.moon/` config ถูกต้องและสมบูรณ์
-- ไม่มี `turbo.json` หรือ `turbo` dependency
-- root scripts ใช้ `moon run`
-- project graph สามารถ build ได้
-- `moon ci` พร้อมบน CI provider — affected detection + `runInCI` ถูกต้อง
-- รองรับ JS/Bun packages และ Rust crates
-
+- Correct, complete `.moon/` configuration
+- No `turbo.json` or `turbo` dependency
+- Root scripts use `moon run`
+- The project graph can build
+- `moon ci` ready on the CI provider — affected detection + `runInCI` correct
+- Supports JS/Bun packages and Rust crates

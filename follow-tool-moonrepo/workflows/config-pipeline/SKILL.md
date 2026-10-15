@@ -1,6 +1,6 @@
 ---
 name: follow-tool-moonrepo-config-pipeline
-description: ตั้งค่า moon tasks, deps, inputs/outputs และ shared task config ใน `.moon/`
+description: Configure moon tasks, deps, inputs/outputs and shared task config in `.moon/`
 argument-hint: "[scope]"
 related:
   - follow-monorepo
@@ -10,79 +10,79 @@ related:
 
 ## Goal
 
-ตั้งค่า task pipeline ของ moonrepo — `tasks`, `deps`, `inputs`/`outputs`, shared config ใน `.moon/tasks/` และ per-project `moon.yml` โดยไม่ clobber config เดิม
+Configure moonrepo's task pipeline — `tasks`, `deps`, `inputs`/`outputs`, shared config in `.moon/tasks/` and per-project `moon.yml` — without clobbering existing config
 
 ## Scope
 
-ใช้เมื่อต้อง define/แก้ tasks ใน moonrepo — ไม่ครอบคลุม install/workspace init (ดู `workflows/setup-moonrepo/SKILL.md`) และ cache tuning (ดู `workflows/optimize-cache/SKILL.md`)
+Use when defining/changing tasks in moonrepo — it doesn't cover install/workspace init (see `workflows/setup-moonrepo/SKILL.md`) or cache tuning (see `workflows/optimize-cache/SKILL.md`)
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. อ่าน `.moon/workspace.yml`, `.moon/toolchains.yml`, `.moon/tasks/*.yml` และ `moon.yml` ทุก project
-2. ตรวจ `package.json` scripts (JS/Bun) และ `Cargo.toml` (Rust) — task names ต้อง map กับ scripts จริง
-3. ถ้าไม่พบ `.moon/` → ทำ `workflows/setup-moonrepo/SKILL.md` ก่อน
+1. Read `.moon/workspace.yml`, `.moon/toolchains.yml`, `.moon/tasks/*.yml`, and every project's `moon.yml`
+2. Check `package.json` scripts (JS/Bun) and `Cargo.toml` (Rust) — task names must map to real scripts
+3. If `.moon/` is not found → do `workflows/setup-moonrepo/SKILL.md` first
 
 ### 2. Define Shared Tasks
 
-> Goal: กำหนด shared tasks ใน `.moon/tasks/all.yml`
+> Goal: define shared tasks in `.moon/tasks/all.yml`
 
-1. ใช้ชื่อ task เดียวกันระหว่าง workspaces: `build`, `dev`, `test`, `lint`, `typecheck`, `check`
-2. JS/Bun: map tasks ไปยัง `package.json` scripts
-3. Rust: map tasks ไปยัง `cargo build`, `cargo test`, `cargo clippy`
-4. กำหนด `deps` ให้ถูกต้อง — `^build` สำหรับ upstream dependencies
-5. กำหนด `inputs` และ `outputs` สำหรับ build tasks เพื่อให้ cache hash ถูกต้อง
+1. Use the same task names across workspaces: `build`, `dev`, `test`, `lint`, `typecheck`, `check`
+2. JS/Bun: map tasks to `package.json` scripts
+3. Rust: map tasks to `cargo build`, `cargo test`, `cargo clippy`
+4. Set `deps` correctly — `^build` for upstream dependencies
+5. Set `inputs` and `outputs` for build tasks so cache hashes are correct
 
 ### 3. Per-Project Tasks
 
-> Goal: override/extend ด้วย `moon.yml` ต่อ project
+> Goal: override/extend per project with `moon.yml`
 
-1. สร้าง `moon.yml` ใน project ที่ต้องการ tasks เฉพาะตัว
-2. define tasks เพิ่มหรือ override shared config เฉพาะ keys ที่ต่างจริง — ห้าม duplicate shared config โดยไม่จำเป็น
-3. ระบุ `outputs` ของ build tasks ตาม tool ที่ใช้ (`dist/**`, `target/**` ฯลฯ)
+1. Create `moon.yml` in projects that need custom tasks
+2. Define extra tasks or override shared config only for genuinely different keys — never duplicate shared config without need
+3. Specify `outputs` of build tasks per tool used (`dist/**`, `target/**`, etc.)
 
 ### 4. Options And Boundaries
 
-> Goal: ตั้งค่า task options และ project boundaries
+> Goal: set task options and project boundaries
 
-1. กำหนด `options` ตามจำเป็น — เช่น caching behavior, run mode สำหรับ long-running tasks (ดู official docs สำหรับ option names ที่ไม่แน่ใจ)
-2. ใช้ kebab-case สำหรับ task labels
-3. ตรวจ project globs ใน `.moon/workspace.yml` ครอบคลุมทุก project — JS/Bun = package, Rust = crate
+1. Set `options` as needed — e.g. caching behavior, run mode for long-running tasks (check official docs for uncertain option names)
+2. Use kebab-case for task labels
+3. Verify the project globs in `.moon/workspace.yml` cover every project — JS/Bun = package, Rust = crate
 
 ### 5. Verify
 
-> Goal: ตรวจว่า task graph ถูกต้อง
+> Goal: check the task graph is correct
 
-1. รัน `moon run :build` — ตรวจ dependency order ถูกต้อง
-2. รัน `moon check` หรือ `moon run :check` ตรวจ config
-3. รันซ้ำเพื่อยืนยัน cache hit — ถ้าพัง → revert keys ที่แก้แล้ว report diff
+1. Run `moon run :build` — verify the dependency order is correct
+2. Run `moon check` or `moon run :check` to validate the config
+3. Re-run to confirm a cache hit — if it breaks → revert the changed keys and report the diff
 
 ## Rules
 
 ### 1. Config Discipline
 
-- merge กับ config เดิม — ห้าม overwrite ทั้งไฟล์ถ้าไม่จำเป็น
-- shared behavior อยู่ใน `.moon/tasks/all.yml`; per-project overrides อยู่ใน `moon.yml` เท่านั้น
+- Merge with the existing config — never overwrite a whole file unless necessary
+- Shared behavior lives in `.moon/tasks/all.yml`; per-project overrides live only in `moon.yml`
 
 ### 2. Task Naming
 
-- ใช้ชื่อ task เดียวกันระหว่าง workspaces
-- ใช้ kebab-case สำหรับ task labels
-- หลีกเลี่ยง task ที่ไม่มี `deps` ที่ชัดเจน
+- Use the same task names across workspaces
+- Use kebab-case for task labels
+- Avoid tasks without clear `deps`
 
 ### 3. Task Graph
 
-- ใช้ `^task` สำหรับ upstream dependencies
-- ไม่สร้าง circular `deps`
-- ไม่ซ้อน project boundaries ซ้ำซ้อน
+- Use `^task` for upstream dependencies
+- Don't create circular `deps`
+- Don't overlap project boundaries
 
-- ใช้ /follow-monorepo ถ้าจำเป็น
+- Use /follow-monorepo if needed
 
 ## Expected Outcome
 
-- `.moon/tasks/` และ `moon.yml` มี task graph ถูกต้อง
-- `moon run :<task>` รัน tasks ตาม dependency order
-- Cache ทำงานจาก `inputs`/`outputs` ที่กำหนด
+- `.moon/tasks/` and `moon.yml` have a correct task graph
+- `moon run` executes the correct tasks in the correct dependency order
+- Builds/tests get cache hits on unchanged inputs

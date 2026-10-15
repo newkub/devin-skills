@@ -1,6 +1,6 @@
 ---
 name: follow-tool-mise-config-tools
-description: ตั้งค่า `mise.toml` — tools versions, tasks, env vars โดยไม่ clobber config เดิม
+description: Configure `mise.toml` — tools versions, tasks, env vars without clobbering existing config
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -10,79 +10,79 @@ related:
 
 ## Goal
 
-ตั้งค่าและแก้ไข `mise.toml` ของ project — pin tool versions, define tasks, configure env vars — โดย merge กับ config เดิมไม่ overwrite
+Configure and edit the project's `mise.toml` — pin tool versions, define tasks, configure env vars — merging with the existing config, not overwriting
 
 ## Scope
 
-ใช้เมื่อต้องเพิ่ม/แก้ tools, tasks หรือ env ใน mise config — install/activation อยู่ใน `workflows/setup-mise/SKILL.md`
+Use when adding/changing tools, tasks, or env in the mise config — install/activation lives in `workflows/setup-mise/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. อ่าน `mise.toml` (project), `mise.local.toml` (local overrides, ไม่ commit), และ `~/.config/mise/config.toml` (global)
-2. รัน `mise list` ดู installed tools — compare กับ config
-3. ถ้าไม่มี `mise.toml` → สร้างที่ project root (commit เข้า repo)
+1. Read `mise.toml` (project), `mise.local.toml` (local overrides, not committed), and `~/.config/mise/config.toml` (global)
+2. Run `mise list` to see installed tools — compare with the config
+3. If no `mise.toml` exists → create it at the project root (commit to the repo)
 
 ### 2. Configure Tools
 
-> Goal: pin tool versions ใน `[tools]`
+> Goal: pin tool versions in `[tools]`
 
-1. ใช้ `mise use <tool>@<version>` เพื่อเพิ่ม tool ลง config อัตโนมัติ — prefer วิธีนี้กว่าแก้ไฟล์ด้วยมือ
-2. หรือกำหนดใน `[tools]` โดยตรง เช่น `node = "24"`, `python = "3.13"`, `bun = "latest"`
-3. รัน `mise install` เพื่อติดตั้งทุก tools ใน config
-4. ใช้ `mise up` เพื่ออัปเดต tools ตาม version constraints; `mise prune` ลบ versions ที่ไม่ใช้
+1. Use `mise use <tool>@<version>` to add a tool to the config automatically — preferred over hand-editing the file
+2. Or define entries in `[tools]` directly, e.g. `node = "24"`, `python = "3.13"`, `bun = "latest"`
+3. Run `mise install` to install every tool in the config
+4. Use `mise up` to update tools per version constraints; `mise prune` removes unused versions
 
 ### 3. Configure Environment
 
-> Goal: ตั้งค่า env vars ใน `[env]`
+> Goal: set env vars in `[env]`
 
-1. เพิ่ม `[env]` section — ใช้ `_ = { VAR = "value" }` ตั้งค่าโดยตรง
-2. ใช้ `_.file = ".env.local"` เพื่อ load จาก env file (non-sensitive เท่านั้น)
-3. ห้าม commit secrets ลง `mise.toml` — ใช้ `/follow-secret-manager` สำหรับ secrets
-4. รัน `mise env` ตรวจ env vars ที่จะ export; ใช้ `mise exec -- <command>` รันใน mise env
+1. Add an `[env]` section — use `_ = { VAR = "value" }` to set values directly
+2. Use `_.file = ".env.local"` to load from an env file (non-sensitive only)
+3. Never commit secrets into `mise.toml` — use `/follow-secret-manager` for secrets
+4. Run `mise env` to check the env vars that will be exported; use `mise exec -- <command>` to run in the mise env
 
 ### 4. Define Tasks
 
-> Goal: สร้าง tasks ใน `[tasks.<name>]`
+> Goal: create tasks in `[tasks.<name>]`
 
-1. เพิ่ม `[tasks.<name>]` พร้อม `run = "<command>"` — ชื่อชัดเจน: `build`, `test`, `lint`, `dev`
-2. ใช้ `depends = ["build"]` สำหรับ task dependencies
-3. ใช้ `sources` และ `outputs` เมื่อต้องการ caching
-4. ไม่กำหนด task ที่ซ้ำกับ package manager scripts โดยไม่จำเป็น
-5. รัน `mise run <task>` หรือ `mise <task>`; ดูรายการด้วย `mise tasks`
+1. Add `[tasks.<name>]` with `run = "<command>"` — clear names: `build`, `test`, `lint`, `dev`
+2. Use `depends = ["build"]` for task dependencies
+3. Use `sources` and `outputs` when caching is wanted
+4. Don't define tasks that duplicate package-manager scripts without reason
+5. Run `mise run <task>` or `mise <task>`; list them with `mise tasks`
 
 ### 5. Verify
 
-> Goal: ตรวจว่า config ทำงาน
+> Goal: confirm the config works
 
-1. รัน `mise doctor` และ `mise list` — tools ติดตั้งตาม config
-2. `cd` เข้า project → รัน `mise env` — env vars load ถูกต้อง
-3. รัน `mise run <task>` smoke test — ถ้าพัง → revert keys ที่แก้แล้ว report diff
-4. ผ่าน → report before/after สั้นๆ ด้วย `/report-before-after`
+1. Run `mise doctor` and `mise list` — tools installed per the config
+2. `cd` into the project → run `mise env` — env vars load correctly
+3. Smoke-test `mise run <task>` — if it breaks → revert the changed keys and report the diff
+4. Passing → a short before/after report via `/report-before-after`
 
 ## Rules
 
 ### 1. Config Files
 
-- `mise.toml` ที่ project root — commit เข้า repo
-- `mise.local.toml` สำหรับ local overrides — ไม่ commit
-- ใช้ `mise use` แทน manual edit เมื่อเป็นไปได้; merge ไม่ clobber
+- `mise.toml` at the project root — committed to the repo
+- `mise.local.toml` for local overrides — not committed
+- Use `mise use` instead of manual edits when possible; merge, don't clobber
 
 ### 2. Versions
 
-- pin versions เพื่อ consistency; `latest` เฉพาะเมื่อต้องการ auto-update
-- ใช้ `mise use -g <tool>` สำหรับ global tools ตาม `global_rules` — ระวังชนกับ project version
+- Pin versions for consistency; `latest` only when auto-update is wanted
+- Use `mise use -g <tool>` for global tools per `global_rules` — watch for collisions with project versions
 
 ### 3. Secrets
 
-- ห้ามใส่ secrets ใน `mise.toml` — ใช้ `_.file` ชี้ไป untracked env file หรือ `/follow-secret-manager`
-- ตรวจ `mise env` ก่อนรัน commands สำคัญ
+- Never put secrets in `mise.toml` — point `_.file` at an untracked env file or use `/follow-secret-manager`
+- Check `mise env` before running important commands
 
 ## Expected Outcome
 
-- `mise.toml` มี `[tools]`, `[env]`, `[tasks]` ตามที่ project ต้องการ
-- Tools ติดตั้งตาม pinned versions; env load อัตโนมัติ
-- `mise run <task>` ทำงาน; setup repeatable บนเครื่องอื่น
+- `mise.toml` holds the `[tools]`, `[env]`, `[tasks]` the project needs
+- Tools installed at pinned versions; env loads automatically
+- `mise run <task>` works; setup is repeatable on another machine
