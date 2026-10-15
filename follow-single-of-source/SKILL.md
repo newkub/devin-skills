@@ -1,6 +1,6 @@
 ---
 name: follow-single-of-source
-description: Single source of truth — canonical definition ที่เดียว ที่อื่น reference ไม่ duplicate
+description: Single source of truth — one canonical definition, everything else references it, no duplication
 argument-hint: "[topic-or-file]"
 related:
   - follow-best-practice
@@ -16,69 +16,69 @@ related:
 
 ## Goal
 
-บังคับ single source of truth — ข้อมูล/definition/config/catalog แต่ละอย่างมี canonical location เดียว ที่อื่นทั้งหมด reference หรือ derive จากมัน ไม่ copy เนื้อหาซ้ำ
+Enforce single source of truth — every piece of data/definition/config/catalog has exactly one canonical location; everywhere else references or derives from it, never copies the content
 
 ## Scope
 
-ใช้เมื่อสร้าง/แก้ skills, docs, config, หรือ data ที่มีโอกาสซ้ำซ้อน:
+Use when creating/editing skills, docs, config, or data that could become duplicated:
 
-- skill content — canonical catalog/dispatch table อยู่ที่เดียว (เช่น `deep-review/SKILL.md`)
-- config values — define ที่เดียวแล้ว inject/import (env, tokens, versions)
-- docs — facts ที่เปลี่ยนบ่อย (counts, versions, commands) มี source เดียว
-- data/schema — model definition เดียว derive types/forms/validation
-- reuse internal code ที่มีอยู่ก่อนเขียนใหม่ (DRY) → `/follow-reusable`
+- skill content — the canonical catalog/dispatch table lives in one place (e.g. `deep-review-codebase/SKILL.md`)
+- config values — defined once then injected/imported (env, tokens, versions)
+- docs — frequently changing facts (counts, versions, commands) have a single source
+- data/schema — one model definition derives types/forms/validation
+- reuse existing internal code before writing new (DRY) → `/follow-reusable`
 
 ## Execute
 
 ### 1. Identify Candidate
 
-> Goal: หาจุดที่ข้อมูลเดียวกันปรากฏหลายที่
+> Goal: find where the same data appears in multiple places
 
-1. หา content ที่ซ้ำ: ตัวเลข (counts, versions), ตาราง dispatch, lists, rules
-2. ถ้าข้อมูลเดียวกันอยู่ ≥2 ที่ → candidate สำหรับ SSOT
-3. ตัดสินว่าอันไหนคือ canonical — ปกติคือที่ที่ authoritative ที่สุดหรือละเอียดที่สุด
+1. Look for duplicated content: numbers (counts, versions), dispatch tables, lists, rules
+2. If the same data lives in ≥2 places → it's an SSOT candidate
+3. Decide which one is canonical — usually the most authoritative or most detailed location
 
 ### 2. Establish Canonical Source
 
-> Goal: กำหนด source เดียวที่ authoritative
+> Goal: designate one authoritative source
 
-1. เลือก canonical location — ไฟล์/section/variable เดียว
-2. ย้ายเนื้อหาเต็มไปที่ canonical
-3. ที่อื่นเหลือแค่ reference — `> Canonical X อยู่ที่ <path>` หรือ derive ผ่าน script/import
+1. Pick the canonical location — a single file/section/variable
+2. Move the full content to the canonical place
+3. Everywhere else keeps only a reference — `> Canonical X lives at <path>` — or derives via script/import
 
 ### 3. Wire References
 
-> Goal: consumers ชี้กลับ canonical ไม่ copy
+> Goal: consumers point back to the canonical, no copying
 
-1. แทนที่ duplicate content ด้วย pointer + บริบทสั้นที่จำเป็น
-2. ถ้า count/list ต้องปรากฏหลายที่ → derive จาก command (`git ls-files`, script) แทน hardcode
-3. ทำ `/update-references` ถ้ามีการย้ายไฟล์
+1. Replace duplicate content with a pointer + the short context needed
+2. If a count/list must appear in multiple places → derive it from a command (`git ls-files`, script) instead of hardcoding
+3. Run `/update-references` if files moved
 
 ### 4. Guard Drift
 
-> Goal: กัน drift หลังจากนี้
+> Goal: prevent drift from now on
 
-1. ใส่ sync note ที่ canonical — "ถ้าแก้ตัวนี้ให้อัปเดต X" เมื่อ derived copies จำเป็น
-2. ถ้า derive ได้ → เขียน check script (`check-*`) ตรวจ consistency
-3. ระบุ canonical ใน `AGENTS.md` หรือ conventions ถ้าเป็น repo-wide
+1. Add a sync note at the canonical — "if you change this, also update X" — when derived copies are necessary
+2. If it can be derived → write a check script (`check-*`) to verify consistency
+3. Record the canonical in `AGENTS.md` or conventions if it's repo-wide
 
 ## Rules
 
-- canonical เดียวต่อ fact — ห้ามสองที่ authoritative พร้อมกัน
-- reference ≠ copy — derived location เก็บแค่ pointer หรือ generated content
-- ถ้าต้อง duplicate จริง (เช่น performance/embedding) → ต้องมี drift check หรือ sync note
-- แก้ที่ canonical เสมอ ห้ามแก้ที่ derived copy โดยตรง
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/update-devin-global-skills` ถ้าจำเป็น
-- ใช้ `/new-skills` ถ้าจำเป็น
-- ใช้ `/idea-merge` ถ้าจำเป็น
-- ใช้ `/refactor` ถ้าจำเป็น
-- ใช้ `/review-devin-global-harness` ถ้าจำเป็น
-- ใช้ `/update-config` ถ้าจำเป็น
+- One canonical per fact — never two authoritative places at once
+- reference ≠ copy — derived locations store only a pointer or generated content
+- If duplication is truly required (e.g. performance/embedding) → add a drift check or sync note
+- Always edit the canonical; never edit a derived copy directly
+- Use `/follow-best-practice` if needed
+- Use `/update-devin-global-skills` if needed
+- Use `/new-skills` if needed
+- Use `/idea-merge` if needed
+- Use `/refactor` if needed
+- Use `/review-devin-global-harness` if needed
+- Use `/update-config` if needed
 
 
 ## Expected Outcome
 
-- ทุก fact มี source เดียว — แก้ที่เดียวแล้ว propagate ถูก
-- ไม่มี drift ระหว่าง copies
-- canonical path ระบุชัดใน docs/conventions
+- Every fact has a single source — one edit propagates correctly
+- No drift between copies
+- The canonical path is clearly stated in docs/conventions
