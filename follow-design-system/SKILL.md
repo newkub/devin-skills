@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lib-unocss
   - follow-unocss-theme
-  - deep-review
+  - deep-review-codebase
   - use-agents-capture
 ---
 
@@ -17,7 +17,7 @@ Apply universal design system principles across every platform for consistency a
 
 Covers design tokens, component guidelines, and platform-specific adaptations for TUI, Web, Desktop, and Mobile
 
-See also: /deep-review
+See also: /deep-review-codebase
 
 ## Execute
 
@@ -45,9 +45,9 @@ See also: /deep-review
 > Goal: adapt tokens and guidelines per platform
 
 1. Adapt tokens to platform constraints (see the table below)
-2. If the project is web, do `/deep-review` for web-specific guidelines
-3. If the project has mobile, do `/deep-review`
-4. If the project has TUI, do `/deep-review`
+2. If the project is web, do `/deep-review-codebase` for web-specific guidelines
+3. If the project has mobile, do `/deep-review-codebase`
+4. If the project has TUI, do `/deep-review-codebase`
 
 ### 4. Ensure Accessibility
 
@@ -104,7 +104,7 @@ See also: /deep-review
 - kebab-case for CSS classes
 - UPPER_SNAKE_CASE for constants
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 

@@ -1,13 +1,21 @@
-# Bun Utilities APIs
+# Bun Web-Standard APIs
 
-Use Bun utility APIs for common operations
+Bun implements these Web standards natively — prefer them over `Bun.*` when portability (Node, browsers, edge runtimes) matters; all are drop-in, no polyfills.
 
-- `Bun.sleep()` / `Bun.sleepSync()` - Sleep for milliseconds
-- `Bun.nanoseconds()` - High-resolution timer (monotonic)
-- `Bun.randomUUIDv7()` - Generate UUID v7 (time-ordered)
-- `Bun.which()` - Find executable path (cross-platform `which`)
-- `Bun.peek()` - Peek value from Promise (non-blocking)
-- `Bun.deepEquals()` - Deep equality comparison
-- `Bun.inspect()` - Object inspection (Node.js util.inspect compatible)
-- `Bun.escapeHTML()` - HTML escape special characters
-- `Bun.stringWidth()` - Calculate display width (handles Unicode, ANSI)
+| API | Description |
+|-----|-------------|
+| `fetch()` | Web-standard HTTP client (`Request`/`Response`/`Headers`) |
+| `WebSocket` | Client WebSocket constructor |
+| `ReadableStream` / `WritableStream` / `TransformStream` | Streams API |
+| `Blob` / `File` | Blob and File constructors |
+| `FormData` / `URLSearchParams` | Form and query-string encoding |
+| `URL` / `URLPattern` | URL parsing and route matching |
+| `TextEncoder` / `TextDecoder` | UTF-8 and other encoding conversion |
+| `AbortController` / `AbortSignal` | Cancellation semantics (timeout via `AbortSignal.timeout()`) |
+| `structuredClone()` | Deep clone of structured data |
+| `EventTarget` / `CustomEvent` | Event dispatch model |
+| `crypto.getRandomValues()` / `crypto.subtle` | WebCrypto — random values, sign/verify, digest |
+| `CompressionStream` / `DecompressionStream` | gzip/deflate streaming compression |
+| `Worker` | Web Workers |
+| `performance.now()` / `PerformanceObserver` | Performance measurement |
+| `navigator` | User-agent/platform info (subset) |

@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-เขียน Drizzle schema ครบ — table/column definitions per dialect, relations, indexes, enums, custom types
+Write a complete Drizzle schema — table/column definitions per dialect, relations, indexes, enums, custom types
 
 ## Scope
 
-schema authoring — `pgTable`/`mysqlTable`/`sqliteTable`, column builders, `relations()`, indexes/constraints; migrations ของ schema → `migrate-schema`/`use-drizzle-kit`
+schema authoring — `pgTable`/`mysqlTable`/`sqliteTable`, column builders, `relations()`, indexes/constraints; schema migrations → `migrate-schema`/`use-drizzle-kit`
 
 ## Execute
 
@@ -37,8 +37,8 @@ export const users = pgTable('users', {
 
 - `.primaryKey()`, `.notNull()`, `.unique()`, `.default()`, `.defaultNow()`, `.defaultRandom()`
 - `.references(() => users.id, { onDelete: 'cascade' })` — FK
-- `.array()` (pg), `jsonb`/`json`, `customType` สำหรับ unsupported types
-- Composite: `primaryKey({ columns: [a, b] })`, `unique().on(a, b)`, `check()` constraints ใน callback arg
+- `.array()` (pg), `jsonb`/`json`, `customType` for unsupported types
+- Composite: `primaryKey({ columns: [a, b] })`, `unique().on(a, b)`, `check()` constraints in the callback arg
 
 ### 3. Indexes And Config Callback
 
@@ -49,7 +49,7 @@ export const posts = pgTable('posts', { ... }, (t) => [
 ])
 ```
 
-- v0.36+: callback returns array (object syntax deprecated)
+- v0.36+: callback returns an array (object syntax deprecated)
 - `pgEnum('status', ['a','b'])`, sequences, views (`pgView`), materialized views
 
 ### 4. Relations
@@ -61,22 +61,22 @@ export const postsRelations = relations(posts, ({ one }) => ({
 }))
 ```
 
-- `relations()` = สำหรับ relational queries (`db.query.*.findMany({ with: ... })`) — ไม่ใช่ DB-level constraint
-- `one`/`many` + `relationName` เมื่อ ambiguous (self/multiple FKs ไป table เดียวกัน)
+- `relations()` = for relational queries (`db.query.*.findMany({ with: ... })`) — not a DB-level constraint
+- `one`/`many` + `relationName` when ambiguous (self/multiple FKs to the same table)
 
 ### 5. Schema Organization
 
-- `src/db/schema/*.ts` per domain → `src/db/schema/index.ts` barrel — drizzle-kit `schema` points ที่ barrel
-- Infer types: `typeof users.$inferSelect`, `$inferInsert` — ไม่เขียน interface ซ้ำ
+- `src/db/schema/*.ts` per domain → `src/db/schema/index.ts` barrel — drizzle-kit `schema` points at the barrel
+- Infer types: `typeof users.$inferSelect`, `$inferInsert` — don't write duplicate interfaces
 
 ## Rules
 
-- Column builders ต้องตรง dialect (`pg-core` vs `mysql-core` vs `sqlite-core`) — ห้ามผสม
-- `relations()` ≠ FK — FK ต้อง `.references()`; relations ใช้กับ query API
-- Indexes/unique/checks ใน callback arg เป็น array syntax (v0.36+)
-- ใช้ `$inferSelect`/`$inferInsert` — schema เป็น single source of truth ของ types
+- Column builders must match the dialect (`pg-core` vs `mysql-core` vs `sqlite-core`) — never mix
+- `relations()` ≠ FK — FK needs `.references()`; relations are used with the query API
+- Indexes/unique/checks in the callback arg as an array syntax (v0.36+)
+- Use `$inferSelect`/`$inferInsert` — the schema is the single source of truth for types
 
 ## Expected Outcome
 
-- Schema typed per dialect ครบ tables/relations/indexes
-- `$infer*` types ใช้ใน codebase — ไม่มี manual interfaces
+- Schema typed per dialect with complete tables/relations/indexes
+- `$infer*` types used in the codebase — no manual interfaces

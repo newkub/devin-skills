@@ -1,13 +1,17 @@
 # Bun Utilities APIs
 
-Use Bun utility APIs for common operations
-
-- `Bun.sleep()` / `Bun.sleepSync()` - Sleep for milliseconds
-- `Bun.nanoseconds()` - High-resolution timer (monotonic)
-- `Bun.randomUUIDv7()` - Generate UUID v7 (time-ordered)
-- `Bun.which()` - Find executable path (cross-platform `which`)
-- `Bun.peek()` - Peek value from Promise (non-blocking)
-- `Bun.deepEquals()` - Deep equality comparison
-- `Bun.inspect()` - Object inspection (Node.js util.inspect compatible)
-- `Bun.escapeHTML()` - HTML escape special characters
-- `Bun.stringWidth()` - Calculate display width (handles Unicode, ANSI)
+| API | Description |
+|-----|-------------|
+| `Bun.sleep()` / `Bun.sleepSync()` | Await/sync delay in milliseconds |
+| `Bun.nanoseconds()` | Monotonic high-resolution timer |
+| `Bun.randomUUIDv7()` | Time-ordered UUID v7 |
+| `Bun.which()` | Locate an executable on `PATH` (cross-platform `which`) |
+| `Bun.peek()` | Peek a settled Promise value without blocking |
+| `Bun.deepEquals()` | Deep equality comparison |
+| `Bun.inspect()` | Object inspection (Node `util.inspect`-compatible) |
+| `Bun.escapeHTML()` | Escape HTML special characters |
+| `Bun.stringWidth()` | Display width of a string (Unicode, ANSI-aware) |
+| `Bun.gc()` | Force garbage collection |
+| `Bun.env` | Environment variables (faster than `process.env`) |
+| `Bun.semver` | Semantic version parsing and comparison |
+| `Bun.Glob` | Glob pattern matching (fast file matching) |

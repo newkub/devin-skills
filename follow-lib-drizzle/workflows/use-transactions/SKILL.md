@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-เขียน mutations + transactions ใน Drizzle ครบ — CRUD, `returning`, upsert, batch, nested transactions, concurrency control
+Write mutations + transactions in Drizzle completely — CRUD, `returning`, upsert, batch, nested transactions, concurrency control
 
 ## Scope
 
@@ -27,7 +27,7 @@ await db.update(users).set({ name }).where(eq(users.id, id)).returning()
 await db.delete(users).where(eq(users.id, id)).returning()
 ```
 
-- `.returning()` — pg/sqlite รองรับ (mysql ไม่มี → re-select)
+- `.returning()` — supported on pg/sqlite (mysql doesn't → re-select)
 - `.onConflictDoUpdate({ target, set })` / `.onConflictDoNothing()` — upsert
 - `$dynamic()` — build queries conditionally (`let q = db.select().$dynamic()`)
 
@@ -37,11 +37,11 @@ await db.delete(users).where(eq(users.id, id)).returning()
 await db.transaction(async (tx) => {
   const [user] = await tx.insert(users).values(u).returning()
   await tx.insert(profiles).values({ userId: user.id })
-  // throw → rollback อัตโนมัติ
+  // throw → automatic rollback
 })
 ```
 
-- Nested `tx.transaction()` = savepoint — inner rollback ไม่ล้ม outer
+- Nested `tx.transaction()` = savepoint — an inner rollback doesn't fail the outer
 - `tx.rollback()` — manual rollback; return value = tx result
 - Isolation levels (driver support): `.transaction(fn, { isolationLevel: 'serializable' })`
 
@@ -53,23 +53,23 @@ const prepared = db.select().from(users).where(eq(users.id, sql.placeholder('id'
 await prepared.execute({ id: 1 })
 ```
 
-- `db.batch` = atomic multi-statement (sqlite/libsql/D1) — ใช้แทน tx เมื่อ driver รองรับ
-- `sql.placeholder` + `.prepare()` — reuse statement plans บน hot paths
+- `db.batch` = atomic multi-statement (sqlite/libsql/D1) — use instead of a tx when the driver supports it
+- `sql.placeholder` + `.prepare()` — reuse statement plans on hot paths
 
 ### 4. Concurrency Patterns
 
 - Optimistic: version column + `where(and(eq(id), eq(version, v)))` → 0 rows = conflict
-- Pessimistic: `select().for('update')` (pg) row lock ใน tx
+- Pessimistic: `select().for('update')` (pg) row lock inside the tx
 - Idempotent writes: natural key + `onConflictDoNothing` + check `.returning()` empty
 
 ## Rules
 
-- Multi-write operations ต้องใน `db.transaction` — ห้าม fire sequential inserts ที่ต้อง atomic
-- `.returning()` เช็ค driver support (mysql ไม่มี)
-- Nested tx = savepoints — อย่า assume independent
-- `batch` สำหรับ libsql/d1 ดีกว่า tx ใน serverless (single round trip)
+- Multi-write operations must be in `db.transaction` — never fire sequential inserts that must be atomic
+- Check driver support for `.returning()` (mysql has none)
+- Nested tx = savepoints — don't assume independent
+- `batch` for libsql/d1 beats tx in serverless (single round trip)
 
 ## Expected Outcome
 
-- Mutations type-safe ครบ insert/update/delete/upsert
-- Transactions nested ถูกต้อง, concurrency strategy ชัด
+- Type-safe mutations across insert/update/delete/upsert
+- Nested transactions correct, concurrency strategy clear

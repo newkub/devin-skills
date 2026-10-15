@@ -7,10 +7,10 @@ related:
   - follow-tool-vitepress
   - check-should-update
   - check-monorepo
-  - deep-review
+  - deep-review-codebase
   - run-docs
   - update-references
-  - follow-gitignore
+  - update-gitignore
   - follow-lang-typescript
 ---
 
@@ -34,7 +34,7 @@ Use when a project needs a buildable/deployable docs site — for plain `docs/` 
 
 1. Run `/check-should-update` if there are git changes; run `/check-monorepo` to detect a monorepo
 2. Determine the docs type (`product` / `saas-product` / `opensource-product` / `open-source` / `cli` / `library` / `sdk` / `tool` / `website` / `monorepo` / `development`) per the detection in `update-docs/references/<type>.md`
-3. If `docs/` already exists → run `/deep-review` first to find gaps
+3. If `docs/` already exists → run `/deep-review-codebase` first to find gaps
 
 ### 2. Ensure Content Pages
 
@@ -49,7 +49,7 @@ Use when a project needs a buildable/deployable docs site — for plain `docs/` 
 
 1. Follow `/follow-tool-vitepress` (`workflows/setup-vitepress/SKILL.md`): create `docs/.vitepress/`, then `bun add -d vitepress` (version per that skill — stable 1.x, `next` for preview)
 2. Monorepo: `docs/package.json` is its own workspace + add `docs` to the root `workspaces`; single project: scripts in the root `package.json`
-3. Run `/follow-gitignore` — `docs/.gitignore` covers `.vitepress/dist/`, `.vitepress/cache/`
+3. Run `/update-gitignore` — `docs/.gitignore` covers `.vitepress/dist/`, `.vitepress/cache/`
 4. Run `/follow-lang-typescript` — `docs/tsconfig.json` for the `.vitepress/` config
 
 ### 4. Site Config
@@ -121,7 +121,7 @@ Use when a project needs a buildable/deployable docs site — for plain `docs/` 
 - Default locale at `docs/` root, other languages in `docs/<lang>/` mirroring the same page tree — no divergent trees, no mixed language on one page (`/update-docs` rule), locales only when the project really ships multi-language content
 - One nav source of truth (`### Template: Nav`): per locale translate `text` only and prefix links with `/<lang>/`
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /check-reference if needed
 
 ## Templates

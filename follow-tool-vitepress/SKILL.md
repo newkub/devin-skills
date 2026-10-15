@@ -3,7 +3,7 @@ name: follow-tool-vitepress
 description: Set up VitePress with UnoCSS, Shiki Twoslash, Group Icons, and Vue components for project docs
 argument-hint: "[scope]"
 related:
-  - follow-gitignore
+  - update-gitignore
   - follow-lang-typescript
   - follow-lib-unocss
   - follow-tool-vite
@@ -35,7 +35,7 @@ Use for every project that wants a VitePress documentation site — boundary: fo
 2. For a monorepo, make `docs/` a workspace by creating `docs/package.json` with `vitepress` as a dependency and its own scripts
 3. Add `docs` to `workspaces` in the root `package.json`
 4. Create the `.vitepress/` config directory inside `docs/`
-5. Do `/follow-gitignore` to create `docs/.gitignore` for VitePress build output and cache
+5. Do `/update-gitignore` to create `docs/.gitignore` for VitePress build output and cache
 6. Do `/follow-lang-typescript` to create `docs/tsconfig.json` for type checking the `.vitepress/` config
 
 ### 2. VitePress Configuration

@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อเขียนหรือออกแบบ content ใหม่ (skill, doc, plan, prompt, idea) และต้องการ challenge framing ก่อนส่งมอบ — ไม่ใช่ correctness check (ใช้ `/check-reference`) หรือ freshness check (ใช้ `/deep-review`)
+ใช้เมื่อเขียนหรือออกแบบ content ใหม่ (skill, doc, plan, prompt, idea) และต้องการ challenge framing ก่อนส่งมอบ — ไม่ใช่ correctness check (ใช้ `/check-reference`) หรือ freshness check (ใช้ `/deep-review-codebase`)
 
 ## Execute
 

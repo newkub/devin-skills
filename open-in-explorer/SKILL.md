@@ -1,6 +1,6 @@
 ---
 name: open-in-explorer
-description: เปิดไฟล์หรือ directory ใน Windows Explorer ด้วย explorer <path>
+description: Open a file or directory in Windows Explorer with explorer <path>
 argument-hint: "[path]"
 related:
   - open-in-devin
@@ -8,64 +8,63 @@ related:
 
 ## Goal
 
-เปิดไฟล์หรือ directory ใน Windows Explorer ด้วย `explorer <path>`
+Open a file or directory in Windows Explorer with `explorer <path>`
 
 ## Scope
 
-ใช้บน Windows เพื่อเปิด target path ใน File Explorer รองรับทั้งไฟล์และโฟลเดอร
+Use on Windows to open a target path in File Explorer; supports both files and folders
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: ระบุ target path และตรวจสอบ environment
+> Goal: Identify the target path and check the environment
 
-1. ระบุ target paths จาก user input, ไฟล์ที่เปิดอยู่, หรือ current working directory
-2. ตรวจสอบว่าเป็น Windows OS
-3. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
-4. ไม่รองรับ macOS/Linux สำหรับ `explorer`
+1.  Identify target paths from user input, the open file, or the current working directory
+2.  Confirm the OS is Windows
+3.  If the target path does not exist, inform the user and stop
+4.  `explorer` is not supported on macOS/Linux
 
 ### 2. Open In Explorer
 
-> Goal: เปิด target ใน Windows Explorer อย่างปลอดภัย
+> Goal: Open the target in Windows Explorer safely
 
-1. ใช้คำสั่ง `explorer "<path>"`
-2. ถ้าเป็น directory จะเปิด File Explorer ใน directory นั้น
-3. ถ้าเป็น file: `explorer "<file>"` จะเปิด file ตาม file association; ถ้าต้องการเลือกไฟล์ใน Explorer แทน ให้ใช้ `explorer /select,"<file>"`
-4. ถ้ามีหลาย path ให้รันคำสั่งแยกครั้งละ path เพื่อความชัดเจน
+1. Use the command `explorer "<path>"`
+2. For a directory, File Explorer opens at that directory
+3. For a file: `explorer "<file>"` opens it via the file association; to select the file in Explorer instead, use `explorer /select,"<file>"`
+4. For multiple paths, run the command once per path for clarity
 
 ### 3. Verify And Report
 
-> Goal: ยืนยันว่าเปิดสำเร็จ
+> Goal: Confirm the open succeeded
 
-1. ตรวจสอบ exit code ของ process ที่ spawn
-2. ถ้า fail ให้แสดง stderr และแนะนำให้ตรวจสอบ path
-3. รายงาน paths ที่สั่งเปิดพร้อม command ที่ใช้
+1. Check the exit code of the spawned process
+2. On failure, show stderr and recommend verifying the path
+3. Report the opened paths with the commands used
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่สร้างไฟล์หรือ directory ใหม่อัตโนมัติถ้า target ไม่มีอยู่
-- ไม่รันคำสั่งถ้าไม่อยู่บน Windows
-- ถ้า user ไม่ระบุ path ให้ถามก่อน
+- Do not auto-create files or directories when the target is missing
+- Do not run the command on non-Windows systems
+- If the user gives no path, ask first
 
 ### 2. Path Handling
 
-- ใช้ absolute path ถ้าไม่แน่ใจเรื่อง working directory
-- ใส่ quotes รอบ path เสมอเพื่อจัดการ spaces
-- ถ้า path ไม่อยู่ใน local drive ให้ระบุ full UNC/absolute path
+- Use absolute paths when the working directory is uncertain
+- Always quote paths to handle spaces
+- For paths outside local drives, give the full UNC/absolute path
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `explorer` command ที่ใช้ (in explorer)
-- ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
+- Report the result as a path list with the `explorer` commands used (in explorer)
+- On failure, state the cause and next steps
 
-- ใช้ /open-in-devin ถ้าจำเป็น
-- ใช้ /open-wezterm ถ้าจำเป็น
+- Use /open-in-devin if needed
+- Use /open-wezterm if needed
 
 ## Expected Outcome
 
-- ไฟล์หรือ directory ถูกเปิดหรือเลือกใน Windows Explorer
-- Output เป็นรายการ paths ที่สั่งเปิดพร้อม command ที่ใช้
-
+- The file or directory is opened or selected in Windows Explorer
+- Output is a list of opened paths with the commands used

@@ -3,7 +3,7 @@ name: follow-create-bot
 description: Build a bot for Slack, Discord, Telegram, LINE, or a GitHub App/bot with TypeScript/Bun
 argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-secret-manager
   - open-web-for-config-secret
 
@@ -16,7 +16,7 @@ Build a bot for the specified platform — Slack, Discord, Telegram, LINE, or Gi
 ## Scope
 
 - Use when creating a chat bot or a GitHub automation bot
-- Follow `/deep-review` for runtime and dependencies
+- Follow `/deep-review-codebase` for runtime and dependencies
 
 - SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-devin-global-skills`)
 - Breaking: `@line/bot-sdk` v11 removed the legacy `Client`/`OAuth` — use `LineBotClient.fromChannelAccessToken()` or `messagingApi.MessagingApiClient` instead
@@ -39,7 +39,7 @@ Build a bot for the specified platform — Slack, Discord, Telegram, LINE, or Gi
 | GitHub App | `/follow-create-bot-github-app` — app manifest, JWT auth, installation |
 
 1. Read the platform from the argument — if unspecified → run `/ask-me`
-2. Run `/deep-research` + `/follow-best-practice` to confirm the platform SDK's latest versions and patterns, then run `/deep-review`
+2. Run `/deep-research` + `/follow-best-practice` to confirm the platform SDK's latest versions and patterns, then run `/deep-review-codebase`
 3. Invoke the selected platform's skill and follow its flow — do not execute directly from this table
 
 ### 2. Setup Project

@@ -5,7 +5,7 @@ argument-hint: "[target-area]"
 related:
   - follow-tool-vite
   - run-bench
-  - deep-review
+  - deep-review-codebase
   - report-before-after
 ---
 
@@ -77,7 +77,7 @@ Reduce the production bundle size and build time of a Vite project with appropri
 
 - Use /follow-tool-vite if needed
 - Use /run-bench if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 

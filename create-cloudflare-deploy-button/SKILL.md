@@ -7,7 +7,7 @@ related:
   - follow-service-cloudflare
   - deploy-to-cloudflare
   - update-docs
-  - deep-review
+  - deep-review-codebase
   - report
   - ask-me
   - run-deploy
@@ -109,7 +109,7 @@ Make the repo ready for the Deploy to Cloudflare button — when someone clicks 
 - Use /create-cloudflare-worker if needed
 - Use /update-readme-md if needed
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /run-deploy if needed
 - Use /ask-me if needed
 - Use /update-docs if needed

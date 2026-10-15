@@ -1,10 +1,10 @@
 ---
 name: report-features
-description: รายงาน features ทั้งหมดใน project เป็นตารางจาก generated TypeScript files
+description: Report all features in the project as a table from generated TypeScript files
 argument-hint: "[scope]"
 related:
   - update-docs
-  - deep-review
+  - deep-review-codebase
   - all-workspace
 
   - report
@@ -13,13 +13,13 @@ related:
 
 ## Goal
 
-รายงาน features ทั้งหมดใน project เป็นตารางในแชท โดยอ่านจาก `.devin/features/` TypeScript files
+Report all features in the project as a chat table, reading from `.devin/features/` TypeScript files
 
 ## Scope
 
-อ่านและแสดงผล features จาก generated TypeScript files ใน `.devin/features/<workspace>/` เป็นตารางในแชทเท่านั้น
+Read and display features from generated TypeScript files in `.devin/features/<workspace>/` as a chat table only
 
-ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features-md`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
+Does not include: scanning and creating feature files (use `/update-features-md`), analyzing and reviewing features (use `/deep-review-codebase`), checking coverage (use `/deep-review-codebase`)
 
 ## Execute
 
@@ -27,92 +27,92 @@ related:
 
 > Goal: Ensure Features Generated
 
-ตรวจสอบว่า features files มีอยู่และเป็นปัจจุบัน
+Verify feature files exist and are current
 
-1. ตรวจสอบ `.devin/features/<workspace>/index.ts` มีอยู่หรือไม่
-2. ถ้าไม่มีหรือ outdated ให้ทำ `/update-features-md` เพื่อสแกนและสร้าง feature files
-3. ถ้ามีแล้ว ให้ข้ามไป Step 2
+1. Check whether `.devin/features/<workspace>/index.ts` exists
+2. Missing or outdated → use `/update-features-md` to scan and create feature files
+3. Present → skip to Step 2
 
 ### 2. Read Feature Files
 
 > Goal: Read Feature Files
 
-อ่าน feature files จากทุก workspace
+Read feature files from every workspace
 
-1. ทำ `/all-workspace` เพื่อระบุ workspaces ทั้งหมด
-2. อ่าน `.devin/features/<workspace>/index.ts` เพื่อรับ manifest และ `allFeatures`
-3. อ่าน `.devin/features/<workspace>/types.ts` เพื่อรับ Feature interface
-4. รวบรวม features จากทุก workspace ไว้ใน list เดียว
+1. Use `/all-workspace` to identify all workspaces
+2. Read `.devin/features/<workspace>/index.ts` for the manifest and `allFeatures`
+3. Read `.devin/features/<workspace>/types.ts` for the Feature interface
+4. Collect features from all workspaces into a single list
 
 ### 3. Format Report Table
 
 > Goal: Format Report Table
 
-จัดรูปแบบ features เป็นตารางในแชท
+Format features as a chat table
 
-1. ทำ `/report` เพื่อจัดรูปแบบตาราง
-2. คอลัมน์: No. | Workspace | Feature | Description | Why | Solutions | Module | Route | API | DB | Topics | Status
-3. จัดกลุ่มตาม workspace แล้วตาม module
-4. เรียงลำดับ features ตาม module และ status (`active` ก่อน, `partial` ทีหลัง, `deprecated` สุดท้าย)
+1. Use `/report` to format the table
+2. Columns: No. | Workspace | Feature | Description | Why | Solutions | Module | Route | API | DB | Topics | Status
+3. Group by workspace then by module
+4. Sort features by module and status (`active` first, `partial` next, `deprecated` last)
 
 ### 4. Report Summary
 
 > Goal: Report Summary
 
-สรุปสถานะ features ทั้งหมด
+Summarize the status of all features
 
-1. ทำ `/report` เพื่อรายงานในแชท
-2. สรุปจำนวน features ต่อ workspace และต่อ status
-3. ระบุ features ที่ `partial` หรือ `deprecated` แยกกลุ่ม
-4. แนะนำให้ทำ `/deep-review` สำหรับ features ที่ `partial`
+1. Use `/report` to output in chat
+2. Summarize feature count per workspace and per status
+3. Identify `partial` or `deprecated` features in a separate group
+4. Recommend `/deep-review-codebase` for `partial` features
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (features)
+> Goal: readable report — key findings on top, leading to action (features)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (features)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (features)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (features)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings above the details (features)
+2. Use `/report` for multi-column comparison tables (features)
+3. Use `/report` for status/progress/logs reports
+4. Use "No." as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (features)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always use `/suggest-next-action` at the end of the report
 
 ### 1. Read-Only Action
 
-- อ่าน feature files เท่านั้น ไม่แก้ไข code หรือ feature files
-- ถ้า feature files ไม่มีอยู่ ให้ทำ `/update-features-md` แทนการสร้างเอง
-- ถ้า feature files outdated ให้ทำ `/update-features-md` เพื่อ refresh
+- Read feature files only — never edit code or feature files
+- Feature files missing → use `/update-features-md` rather than creating them manually
+- Feature files outdated → use `/update-features-md` to refresh
 
 ### 2. Table Format
 
-- ใช้คอลัมน์ตาม `types.ts` Feature interface ของแต่ละ workspace
-- ฟิลด์บังคับ: `id`, `name`, `description`, `why`, `solutions`, `module`, `status`
-- ฟิลด์ optional: `route`, `api`, `db`, `topics` — แสดงถ้ามีค่า
-- ใช้ symbols (✅, ⚠️, ❌) สำหรับ `status`: `active`, `partial`, `deprecated`
-- จัดกลุ่มตาม workspace ก่อน แล้วตาม module
+- Use columns per the `types.ts` Feature interface of each workspace
+- Required fields: `id`, `name`, `description`, `why`, `solutions`, `module`, `status`
+- Optional fields: `route`, `api`, `db`, `topics` — show when present
+- Use symbols (✅, ⚠️, ❌) for `status`: `active`, `partial`, `deprecated`
+- Group by workspace first, then by module
 
 ### 3. Data Source
 
-- อ่านจาก `.devin/features/<workspace>/index.ts` เท่านั้น
-- ไม่สแกน codebase โดยตรง — ใช้ `/update-features-md` สำหรับการสแกน
-- ถ้า workspace ไม่มี feature files ให้ข้ามและ report ใน summary
+- Read from `.devin/features/<workspace>/index.ts` only
+- Never scan the codebase directly — use `/update-features-md` for scanning
+- Workspace has no feature files → skip it and note in the summary
 
 ### 4. Completeness
 
-- รายงาน features จากทุก workspace ที่มี feature files
-- ระบุ workspace ที่ไม่มี feature files ใน summary
-- ถ้าไม่มี feature files เลย ให้ทำ `/update-features-md` ก่อน
-- ใช้ /update-docs ถ้าจำเป็น
+- Report features from every workspace that has feature files
+- Note workspaces without feature files in the summary
+- No feature files at all → run `/update-features-md` first
+- Use /update-docs if needed
 
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ตาราง features ทั้งหมดในแชท จัดกลุ่มตาม workspace และ module
-- Summary สถานะ features ต่อ workspace
-- แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review`)
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- A features table in chat, grouped by workspace and module
+- Summary of feature status per workspace
+- Recommended follow-up workflows (`/deep-review-codebase`)
+- Report is readable with key findings on top
+- Next action is clear

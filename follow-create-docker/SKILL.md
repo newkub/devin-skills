@@ -3,7 +3,7 @@ name: follow-create-docker
 description: Create Dockerfile, .dockerignore and docker-compose per stack, following best practices
 argument-hint: "[path]"
 related:
-  - deep-review
+  - deep-review-codebase
   - optimize
   - follow-deploy
   - setup-cicd
@@ -44,8 +44,8 @@ Create production-ready Docker artifacts for a project: `Dockerfile`, `.dockerig
 
 > Goal: know the stack and requirements before writing the Dockerfile
 
-1. Run `/deep-review` to summarize the tech stack in use
-2. Run `/deep-review` to review dependencies and library design
+1. Run `/deep-review-codebase` to summarize the tech stack in use
+2. Run `/deep-review-codebase` to review dependencies and library design
 3. Check the manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
 4. Identify runtime, build command, start command, port, and required env vars
 

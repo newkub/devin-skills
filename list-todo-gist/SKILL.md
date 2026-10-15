@@ -1,6 +1,6 @@
 ---
 name: list-todo-gist
-description: แสดง todo items จาก GitHub Gist `devin-todo.md` ผ่าน `gh` — grouped by priority/status
+description: Show todo items from GitHub Gist `devin-todo.md` via `gh` — grouped by priority/status
 argument-hint: "[--status|--project|--all]"
 related:
   - save-to-todo-gist
@@ -11,55 +11,55 @@ related:
 
 ## Goal
 
-ดึงและแสดง todo items ที่เก็บไว้ใน GitHub Gist `devin-todo.md` (สร้างโดย `/save-to-todo-gist`) เป็นตารางที่อ่านง่าย — ใช้ resume งานค้างข้ามเครื่อง/ข้าม project
+Fetch and display todo items stored in the GitHub Gist `devin-todo.md` (created by `/save-to-todo-gist`) as a readable table — used to resume pending work across machines/projects
 
 ## Scope
 
-- read-only — ไม่แก้ items; เพิ่ม/อัปเดตใช้ `/save-to-todo-gist` หรือ `/update-todo-md`
-- ต้องมี `gh` authenticated (`gh auth status`) — ถ้าไม่มี → stop แล้วแนะนำ `gh auth login`
-- รองรับ filter: `--status pending`, `--project <name>`, `--all` (รวม completed)
+- Read-only — never edits items; add/update via `/save-to-todo-gist` or `/update-todo-md`
+- Requires `gh` authenticated (`gh auth status`) — absent → stop and recommend `gh auth login`
+- Supports filters: `--status pending`, `--project <name>`, `--all` (include completed)
 
 ## Execute
 
 ### 1. Locate Gist
 
-> Goal: หา gist `devin-todo`
+> Goal: find the `devin-todo` gist
 
-1. `gh gist list --limit 100` แล้วหา description `devin-todo` หรือไฟล์ `devin-todo.md`
-2. ถ้าไม่พบ → รายงานว่าไม่มี todo gist และแนะนำ `/save-to-todo-gist` — stop
+1. `gh gist list --limit 100` then look for description `devin-todo` or file `devin-todo.md`
+2. Not found → report no todo gist exists and recommend `/save-to-todo-gist` — stop
 
 ### 2. Fetch And Parse
 
-> Goal: ดึงเนื้อหาและ parse เป็น items
+> Goal: fetch content and parse into items
 
 1. `gh gist view <id-or-url> --filename devin-todo.md`
-2. Parse ตาราง markdown: `Title`, `Description`, `Status`, `Priority`, `Created`, `Project`
-3. Apply filter จาก argument: status, project; default แสดงเฉพาะ `pending` + `in-progress` (ใช้ `--all` ถ้าต้องการ completed)
+2. Parse the markdown table: `Title`, `Description`, `Status`, `Priority`, `Created`, `Project`
+3. Apply filter from the argument: status, project; default shows only `pending` + `in-progress` (use `--all` for completed)
 
 ### 3. Report
 
-> Goal: แสดงผลเป็นตาราง
+> Goal: show a table
 
-1. ทำ `/report` table columns: `No.`, `Title`, `Status`, `Priority`, `Project`, `Created`, `Why Pending`
-2. จัดกลุ่มตาม `Project` แล้วเรียง `Priority`: high → medium → low
-3. สรุป counts ด้านบน: pending/in-progress/completed
-4. แนะนำ next action: `/implement-to-production` สำหรับ implement หรือ `/save-to-todo-gist` สำหรับเพิ่ม items
+1. Use `/report` table columns: `No.`, `Title`, `Status`, `Priority`, `Project`, `Created`, `Why Pending`
+2. Group by `Project` then sort by `Priority`: high → medium → low
+3. Show summary counts at top: pending/in-progress/completed
+4. Suggest next action: `/implement-to-production` to implement or `/save-to-todo-gist` to add items
 
 ## Rules
 
 ### Read-Only
 
-- ห้ามแก้ gist — report เท่านั้น
-- items stale หรือเสร็จแล้ว → เสนอให้ `/save-to-todo-gist` merge อัปเดต status
+- Never edit the gist — report only
+- Items stale or done → offer to use `/save-to-todo-gist` to merge updated status
 
 ### Output
 
-- ตารางมี `No.` เป็นคอลัมน์แรก เสมอ ตาม `/report` conventions
-- ถ้า items > 50 → แสดงเฉพาะ `high` + `medium` และสรุปจำนวนที่เหลือ
-- บอก gist URL เสมอ
+- Table always has `No.` as the first column, per `/report` conventions
+- Items > 50 → show only `high` + `medium` and summarize the rest
+- Always show the gist URL
 
 ## Expected Outcome
 
-- ตาราง todo items จาก gist ครบตาม filter พร้อม summary counts
-- เห็นงานค้างข้าม project ในที่เดียว
-- next action ชัดเจนท้าย report
+- A todo-items table from the gist matching the filter, with summary counts
+- Cross-project pending work visible in one place
+- Next action clearly stated at the end of the report

@@ -5,7 +5,7 @@ argument-hint: "<subject> [alternatives...]"
 related:
   - deep-research
   - alternative
-  - choose-and-apply
+  - apply
   - bench-competitors
   - idea-features
   - report
@@ -24,7 +24,7 @@ Compare a subject (project, tool, library, feature) against alternatives systema
 Use when you need an evidence-based comparison between a subject and alternatives — features, capabilities, performance, pricing, DX — plus implementable feature ideas derived from the gaps
 
 - If you need to find better new alternatives → use `/alternative` first
-- If you need to pick the best option → use `/choose-and-apply` (this skill produces the matrix, it does not decide)
+- If you need to pick the best option → use `/apply choose` (this skill produces the matrix, it does not decide)
 - If comparing a project with competitors in order to implement something better → use `/bench-competitors` (which calls this skill internally)
 
 ## Execute
@@ -70,7 +70,7 @@ Use when you need an evidence-based comparison between a subject and alternative
 1. Collect items where the subject is `❌ Missing` or `🟡 Worse` into a gap list — each gap lists: item, the alternative that has it, impact, rough effort, source
 2. Identify the subject's unique strengths that alternatives lack — these must be preserved (mark `🏆`)
 3. Set priorities: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
-4. Output ready to hand off to `/create-plan-in-dot-devin`, `/choose-and-apply`, or `/idea-features`
+4. Output ready to hand off to `/create-plan-in-dot-devin`, `/apply choose`, or `/idea-features`
 
 ### 6. Generate Feature Ideas From Gaps
 
@@ -93,7 +93,7 @@ Use when you need an evidence-based comparison between a subject and alternative
 
 - Output is only the matrix + gap list + idea list — do not pick "the best one" and do not implement
 - This skill only answers the comparison — if you want to compare and immediately implement better than competitors → use `/bench-competitors`
-- Hand the picking decision to `/choose-and-apply`; hand implementation to plan/implement skills
+- Hand the picking decision to `/apply choose`; hand implementation to plan/implement skills
 
 ### 3. Matrix Format
 
@@ -116,4 +116,4 @@ Use when you need an evidence-based comparison between a subject and alternative
 - Prioritized gap list (Critical → Nice-to-have) with impact/effort
 - Unique strengths to preserve
 - Own-brand, implementable idea features
-- Output ready to hand off to `/choose-and-apply`, `/create-plan-in-dot-devin`, or `/idea-features`
+- Output ready to hand off to `/apply choose`, `/create-plan-in-dot-devin`, or `/idea-features`

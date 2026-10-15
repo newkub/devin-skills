@@ -1,6 +1,6 @@
 ---
 name: follow-lib-simplewebauthn
-description: ใช้ simplewebauthn ทำ passkeys/WebAuthn — registration + authentication ceremonies
+description: Use simplewebauthn for passkeys/WebAuthn — registration + authentication ceremonies
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -11,14 +11,14 @@ related:
 
 ## Goal
 
-ใช้ simplewebauthn ทำ passkeys/WebAuthn — registration + authentication ceremonies
+Use simplewebauthn for passkeys/WebAuthn — registration + authentication ceremonies
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ passkeys/WebAuthn แบบ manual — setup, ceremonies, credential storage, debugging, หรือ best practices
+Use when the task involves manual passkeys/WebAuthn — setup, ceremonies, credential storage, debugging, or best practices
 
-- ใช้ skill นี้เมื่อ implement WebAuthn เองด้วย `@simplewebauthn/server` + `@simplewebauthn/browser`
-- ถ้า project ใช้ Better Auth อยู่แล้ว ให้ใช้ `passkey()` plugin ผ่าน `/follow-lib-better-auth` แทน manual setup
+- Use this skill when implementing WebAuthn yourself with `@simplewebauthn/server` + `@simplewebauthn/browser`
+- If the project already uses Better Auth, use the `passkey()` plugin via `/follow-lib-better-auth` instead of manual setup
 
 - Latest: `@simplewebauthn/server@14.0.2` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) 
@@ -29,55 +29,55 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
 1. server: `generateRegistrationOptions` → client `startRegistration({ optionsJSON })` → `verifyRegistrationResponse`
 1. server: `generateAuthenticationOptions` → client `startAuthentication({ optionsJSON })` → `verifyAuthenticationResponse`
-1. ตั้งแต่ v11 browser methods รับ single object เท่านั้น — ห้ามส่ง options เป็น positional arg ตรงๆ; `useBrowserAutofill: true` สำหรับ conditional UI (passkey autofill)
-1. เก็บ credential: id, publicKey, counter, transports — per user
-1. ตั้ง `rpID`, `rpName`, `origin` ให้ตรง domain — mismatch = ceremony fail
+1. Since v11 browser methods accept a single object only — never pass options as a positional arg directly; `useBrowserAutofill: true` for conditional UI (passkey autofill)
+1. Store the credential: id, publicKey, counter, transports — per user
+1. Set `rpID`, `rpName`, `origin` to match the domain — a mismatch = ceremony fail
 
 ### 2. Store Credentials
 
-> Goal: persist credentials ให้ ceremonies ทำงานซ้ำได้
+> Goal: persist credentials so ceremonies can repeat
 
-1. เก็บ per-user credential: `id`, `publicKey`, `counter`, `transports` — ผูกกับ user record
-2. อัปเดต `counter` จาก `verifyAuthenticationResponse` ทุกครั้ง — counter ไม่เพิ่ม = possible cloned authenticator
-3. รองรับ multiple credentials per user (หลายอุปกรณ์)
+1. Store the per-user credential: `id`, `publicKey`, `counter`, `transports` — tied to the user record
+2. Update `counter` from `verifyAuthenticationResponse` every time — a non-increasing counter = possible cloned authenticator
+3. Support multiple credentials per user (multiple devices)
 
 ### 3. Common Pitfalls
 
-> Goal: หลีกเลี่ยง ceremony failures ที่พบบ่อย
+> Goal: avoid the most common ceremony failures
 
-1. `rpID` เป็น domain เท่านั้น (ไม่มี protocol/port); `expectedOrigin` เป็น full origin เช่น `https://app.com` — dev ใช้ `http://localhost:5173`
-2. challenge ต้อง random + one-time + short-lived — verify ฝั่ง server เท่านั้น
-3. production ต้อง HTTPS — WebAuthn ทำงานเฉพาะ secure context (localhost ยกเว้น)
+1. `rpID` is the domain only (no protocol/port); `expectedOrigin` is the full origin like `https://app.com` — dev uses `http://localhost:5173`
+2. The challenge must be random + one-time + short-lived — verify server-side only
+3. Production requires HTTPS — WebAuthn works only in a secure context (localhost excepted)
 4. Passkey autofill: `startAuthentication({ optionsJSON, useBrowserAutofill: true })` + `<input autocomplete="username webauthn">`
 
 ### 4. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib simplewebauthn)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib simplewebauthn)
 
 ## Rules
 
-- challenge ต้อง random + one-time + short-lived — verify ฝั่ง server
-- เก็บ `counter` ไว้ตรวจ cloned authenticators
-- require `userVerification` ตาม security level
-- รองรับ multiple credentials per user
-- `@simplewebauthn/types` ถูก retire ตั้งแต่ v13 — import types จาก `@simplewebauthn/server`/`browser` โดยตรง
-- ใช้ `preferredAuthenticatorType` ใน `generateRegistrationOptions` (`'securityKey'`, `'localDevice'`, `'remoteDevice'`) เมื่อต้องการกำหนด hints
+- The challenge must be random + one-time + short-lived — verify server-side
+- Store the `counter` to detect cloned authenticators
+- Require `userVerification` per the security level
+- Support multiple credentials per user
+- `@simplewebauthn/types` was retired since v13 — import types directly from `@simplewebauthn/server`/`browser`
+- Use `preferredAuthenticatorType` in `generateRegistrationOptions` (`'securityKey'`, `'localDevice'`, `'remoteDevice'`) when you want to set hints
 
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- Use `/follow-lib-better-auth` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib simplewebauthn)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib simplewebauthn)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib simplewebauthn)
+- No known security/performance pitfalls (lib simplewebauthn)
+- Lint, typecheck, tests pass

@@ -3,13 +3,13 @@ name: review-github-issue
 description: Review GitHub issue — metadata, clarity, completeness, readiness ก่อน implementation
 argument-hint: "[issue-number-or-url]"
 related:
-  - deep-review
+  - deep-review-codebase
   - list-github-issue
   - create-github-issue
   - update-github-issue
   - cleanup-github-issue
   - resolve-github-issue-by-me
-  - follow-github-issue-templates
+  - create-github-issue
   - implement-to-production
   - use-subagents
   - report
@@ -26,9 +26,9 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 
 ## Scope
 
-ใช้สำหรับ review GitHub issue รายการเดียวหรือหลายรายการ — issue อยู่บน GitHub repo (ใช้ `gh` CLI หรือ github-mcp tools) — ถ้าเป็น issue ทั่วไป (ไฟล์, chat, tracker อื่น) → ใช้ `/deep-review`
+ใช้สำหรับ review GitHub issue รายการเดียวหรือหลายรายการ — issue อยู่บน GitHub repo (ใช้ `gh` CLI หรือ github-mcp tools) — ถ้าเป็น issue ทั่วไป (ไฟล์, chat, tracker อื่น) → ใช้ `/deep-review-codebase`
 
-- quality dimensions (completeness, quality, rating) reuse checklists ของ `/deep-review` → `deep-review` — ห้าม duplicate checklists ใน skill นี้
+- quality dimensions (completeness, quality, rating) reuse checklists ของ `/deep-review-codebase` → `deep-review-codebase` — ห้าม duplicate checklists ใน skill นี้
 
 ## Execute
 
@@ -41,7 +41,7 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 1. รับ issue number หรือ URL จาก argument — ไม่ระบุ → `/list-github-issue` ให้ user เลือก
 2. ดึง issue ด้วย `gh issue view <n> --json title,body,state,labels,assignees,milestone,comments,projectItems` หรือ github-mcp `get_issue`
 3. ดึง linked PRs/branches: `gh issue view <n> --json closedByPullRequestsReferences` (หรือ `gh issue develop --list`)
-4. ถ้า repo มี issue templates → ทำ `/follow-github-issue-templates` เทียบ required fields
+4. ถ้า repo มี issue templates → เทียบ required fields กับ Forms YAML ใน `create-github-issue/templates/forms/`
 
 ### 2. Review Issue Metadata
 
@@ -55,9 +55,9 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 
 ### 3. Review Content Quality
 
-> Goal: issue ชัดพอให้ implement ได้ — ทำตาม checklists ของ `/deep-review`
+> Goal: issue ชัดพอให้ implement ได้ — ทำตาม checklists ของ `/deep-review-codebase`
 
-1. dispatch `deep-review` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content จาก Step 1
+1. dispatch `deep-review-codebase` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content จาก Step 1
 2. ตรวจเพิ่มเติมเฉพาะ GitHub: reproduction steps/expected vs actual (bug), acceptance criteria checklist, linked context (discussions/PRs), screenshots/logs ที่ referenced ยังเข้าถึงได้
 3. findings ≤ 2 → parent วิเคราะห์เอง ไม่ต้อง spawn
 
@@ -66,7 +66,7 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 > Goal: readiness verdict ที่ actionable
 
 1. classify: `ready` (implement ได้ทันที), `needs-clarification` (ระบุ missing fields), `blocked` (dependency/conflict), `not-ready` (scope ไม่ชัด)
-2. scoring — ทำตาม `deep-review`
+2. scoring — ทำตาม `deep-review-codebase`
 3. ระบุ missing info ที่ต้องถาม (ผ่าน comment บน issue เมื่อ user confirm)
 
 ### 5. Score And Report
@@ -84,8 +84,8 @@ Review GitHub issue ก่อน implement — ตรวจ metadata (title, lab
 - ทุก finding ต้องมี evidence: quote จาก body/comments หรือ field ที่ขาด
 - issue ที่ already closed → review เฉพาะ closure quality (close reason, resolution reference)
 - ใช้ /list-github-issue ถ้าจำเป็น
-- ใช้ /follow-github-issue-templates ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น (generic issue นอก GitHub)
+- ใช้ /create-github-issue (issue forms) ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น (generic issue นอก GitHub)
 
 ## Fix
 

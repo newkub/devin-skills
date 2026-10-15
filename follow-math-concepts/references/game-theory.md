@@ -2,88 +2,88 @@
 
 ## Goal
 
-เข้าใจ game theory: minimax, Nash equilibrium, zero-sum games, dominant strategies, prisoner's dilemma และประยุกต์ใช้ใน AI opponents, scheduling, auctions, decision systems
+Understand game theory: minimax, Nash equilibrium, zero-sum games, dominant strategies, prisoner's dilemma, and their use in AI opponents, scheduling, auctions, and decision systems
 
 ## Scope
 
-- ใช้สำหรับ multi-agent systems, AI opponents, resource contention
-- ครอบคลุม normal form games, extensive form, mixed strategies
-- แนะนำ minimax, alpha-beta pruning, Nash equilibrium
+- Use for multi-agent systems, AI opponents, resource contention
+- Covers normal form games, extensive form, mixed strategies
+- Introduces minimax, alpha-beta pruning, Nash equilibrium
 
 ## Execute
 
 ### 1. Model The Game
 
-> Goal: ระบุ players, strategies, payoffs
+> Goal: identify players, strategies, and payoffs
 
-1. ระบุ players ทั้งหมด
-2. ระบุ strategies ของแต่ละ player
-3. ระบุ payoff matrix
-4. ระบุ zero-sum หรือ non-zero-sum
-5. ระบุ perfect information หรือไม่
+1. Identify all players
+2. Identify each player's strategies
+3. Identify the payoff matrix
+4. State whether it's zero-sum or non-zero-sum
+5. State whether there is perfect information
 
 ### 2. Find Dominant Strategies
 
-> Goal: หา strategy ทีดีทีสุด
+> Goal: find the best strategy
 
-1. ตรวจ dominant strategy: ดีกว่า whatever opponent ทำ
-2. ตรวจ dominated strategies และลบ
-3. หา pure strategy Nash equilibrium
-4. ถ้าไม่มี pure → หา mixed strategy
+1. Check for a dominant strategy: better no matter what the opponent does
+2. Check for dominated strategies and remove them
+3. Find a pure-strategy Nash equilibrium
+4. If no pure one exists → find a mixed strategy
 
 ### 3. Minimax For Zero-Sum Games
 
-> Goal: หา optimal strategy ใน zero-sum
+> Goal: find the optimal strategy in zero-sum
 
-1. Player A ต้องการ maximize minimum payoff
-2. Player B ต้องการ minimize maximum payoff
-3. หา saddle point ถ้ามี
-4. ใช้ alpha-beta pruning ลด search space
+1. Player A wants to maximize the minimum payoff
+2. Player B wants to minimize the maximum payoff
+3. Find the saddle point if one exists
+4. Use alpha-beta pruning to cut the search space
 
 ### 4. Nash Equilibrium
 
-> Goal: หาจุดทีทุก player ไม่อยากเปลี่ยน
+> Goal: find the point where no player wants to deviate
 
-1. ใน Nash equilibrium แต่ละ player เลือก best response
-2. อาจมีหลาย equilibrium
-3. ใช้ใน auctions, negotiations, routing
+1. In a Nash equilibrium each player picks a best response
+2. There may be multiple equilibria
+3. Used in auctions, negotiations, routing
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply it in software
 
-1. AI opponent ใช้ minimax ในเกม 2 คน
-2. Scheduling ใช้ Nash equilibrium สำหรับ resource contention
-3. Load balancing ใช้ mixed strategy
-4. ใช้ game theory ใน auction/bidding systems
+1. AI opponents use minimax in two-player games
+2. Scheduling uses Nash equilibrium for resource contention
+3. Load balancing uses mixed strategies
+4. Use game theory in auction/bidding systems
 
 ## Rules
 
 ### 1. Game Type
 
-- ระบุ zero-sum vs non-zero-sum
-- ระบุ cooperative vs non-cooperative
-- ระบุ perfect vs imperfect information
+- State zero-sum vs non-zero-sum
+- State cooperative vs non-cooperative
+- State perfect vs imperfect information
 
 ### 2. Assumptions
 
-- rational players
-- common knowledge of payoffs
-- ถ้าไม่เชื่อ assumptions → ใช้ behavioral game theory
+- Rational players
+- Common knowledge of payoffs
+- If the assumptions don't hold → use behavioral game theory
 
 ### 3. Code Mapping
 
-- ใช้ recursion สำหรับ minimax
-- ใช้ memoization สำหรับ repeated subgames
-- ใช้ simulation ถ้า payoff ไม่ชัดเจน
+- Use recursion for minimax
+- Use memoization for repeated subgames
+- Use simulation when payoffs are unclear
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-goal ถ้าจำเป็น
-- ใช้ /follow-parallel ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /follow-goal if needed
+- Use /follow-parallel if needed
 
 ## Expected Outcome
 
-- สามารถ model game ด้วย players/strategies/payoffs
-- สามารถหา dominant/Nash equilibrium
-- สามารถใช้ minimax/alpha-beta
-- สามารถประยุกต์ใน AI และ multi-agent systems
+- Able to model a game with players/strategies/payoffs
+- Able to find dominant strategies and Nash equilibria
+- Able to use minimax/alpha-beta
+- Able to apply it in AI and multi-agent systems

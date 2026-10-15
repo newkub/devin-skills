@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-highlight
-description: ใช้ TanStack Highlight ครบวงจร — syntax highlighting, themes, languages, SSR กับ markdown integration
+description: Use TanStack Highlight end to end — syntax highlighting, themes, languages, SSR with markdown integration
 argument-hint: "[language-scope]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,13 +11,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack Highlight ครบ — syntax highlighter ที่ produce compact themeable HTML tokens: languages, theming ผ่าน CSS, SSR/precompute, integration กับ markdown/doc tools
+Use TanStack Highlight fully — a syntax highlighter that produces compact themeable HTML tokens: languages, theming via CSS, SSR/precompute, integration with markdown/doc tools
 
 ## Scope
 
-ใช้เมื่อต้อง syntax highlighting — code blocks, docs, diff viewers, markdown fences (`follow-markdown`) — v1 ใหม่: ตรวจ `https://tanstack.com/highlight/latest` ก่อน implement
+Use when you need syntax highlighting — code blocks, docs, diff viewers, markdown fences (`follow-markdown`) — v1 is new: check `https://tanstack.com/highlight/latest` before implementing
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -31,43 +31,43 @@ bun add @tanstack/highlight
 
 > Goal: source → themed HTML/token output
 
-1. Highlight source string ด้วย language param → output เป็น token stream/HTML พร้อม semantic classes
-2. Output structure compact — tokens แยกตาม type (keyword, string, comment, number, fn ฯลฯ)
-3. ตรวจ export/API names ล่าสุดใน docs — package v1 ใหม่ API อาจ refine
+1. Highlight a source string with a language param → the output is a token stream/HTML with semantic classes
+2. The output structure is compact — tokens split by type (keyword, string, comment, number, fn, etc.)
+3. Check the latest export/API names in the docs — the new v1 package API may refine
 
 ### 3. Theme And Render
 
-> Goal: สีตรง design system + render ปลอดภัย
+> Goal: colors matching the design system + safe rendering
 
-1. Theme ผ่าน CSS classes/custom properties — map token classes → design tokens (เช่น UnoCSS semantic colors)
-2. Render: highlighter output เป็น escaped HTML — `dangerouslySetInnerHTML` ใช้ได้แต่ verify escape ก่อนเสมอ (XSS boundary)
-3. Dark mode: theme classes ควรสลับตาม `.dark` — ผูกกับ theme system ของ app
+1. Theme via CSS classes/custom properties — map token classes → design tokens (e.g. UnoCSS semantic colors)
+2. Render: the highlighter output is escaped HTML — `dangerouslySetInnerHTML` works but always verify escaping first (XSS boundary)
+3. Dark mode: theme classes should switch with `.dark` — bind to the app's theme system
 
 ### 4. Patterns
 
-> Goal: ใช้งานจริง
+> Goal: real usage
 
-1. **SSR/precompute**: static content → highlight ตอน build/server ลด client work + bundle
-2. **Markdown fences**: ต่อ `code` nodes จาก `follow-markdown` doc model
-3. **Line features**: line numbers/diff highlights ผ่าน wrapper markup บน token output
-4. **Language scope**: register/lazy-load เฉพาะ languages ที่ใช้จริง — bundle size
+1. **SSR/precompute**: static content → highlight at build/server time to cut client work + bundle
+2. **Markdown fences**: hook `code` nodes from the `follow-markdown` doc model
+3. **Line features**: line numbers/diff highlights via wrapper markup over the token output
+4. **Language scope**: register/lazy-load only the languages actually used — bundle size
 
 ### 5. Verify
 
 1. `/run-typecheck` + `/run-test`
-2. Languages ที่ project ใช้จริง — token coverage + theme colors ทั้ง light/dark
-3. ถ้า fail → `/resolve-errors` max 3 รอบ
+2. The languages the project really uses — token coverage + theme colors in both light/dark
+3. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- Theme ผ่าน CSS — ห้าม inline color config ใน highlighter options
-- SSR/precompute static content — client highlight เฉพาะ dynamic
-- Verify escaped output ก่อน `dangerouslySetInnerHTML`
-- Lazy-load grammars เฉพาะที่ใช้ — อย่า bundle ทุก language
-- ใช้ `/follow-lib-tanstack-ecosystem` สำหรับ library selection
+- Theme via CSS — no inline color config in highlighter options
+- SSR/precompute static content — client highlighting only for dynamic
+- Verify escaped output before `dangerouslySetInnerHTML`
+- Lazy-load grammars for what's used — don't bundle every language
+- Use `/follow-lib-tanstack-ecosystem` for library selection
 
 ## Expected Outcome
 
-- Code blocks highlighted themeable ทั้ง light/dark
-- Integration กับ markdown/docs ทำงาน
-- Bundle เบา — เฉพาะ languages ที่ใช้
+- Code blocks highlighted, themeable in both light/dark
+- Integration with markdown/docs works
+- Light bundle — only the languages used

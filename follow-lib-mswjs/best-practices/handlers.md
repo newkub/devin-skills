@@ -4,56 +4,56 @@
 
 ### Handler Structure
 
-- แยก handlers ตาม domain: `src/mocks/handlers/users.ts`, `orders.ts` — export array แล้วรวมใน `handlers.ts` ด้วย spread
-- ใช้ `http.get`/`http.post`/etc. กับ path ตรงกับ API จริง — relative path (`/api/users`) สำหรับ same-origin, absolute URL เมื่อ third-party
-- GraphQL: ใช้ `graphql.query('OperationName', resolver)` ผูกกับ operation name ไม่ใช่ path — client libs ยิง endpoint เดียวกัน
-- response ใช้ `HttpResponse.json(data, { status })` — อย่า return plain object หรือ `Response` manual ถ้าไม่จำเป็น
+- split handlers by domain: `src/mocks/handlers/users.ts`, `orders.ts` — export arrays, then combine them in `handlers.ts` with spread
+- use `http.get`/`http.post`/etc. with paths matching the real API — relative paths (`/api/users`) for same-origin, absolute URLs for third-party
+- GraphQL: use `graphql.query('OperationName', resolver)` bound to the operation name, not the path — client libs hit a single endpoint
+- responses use `HttpResponse.json(data, { status })` — don't return a plain object or a manual `Response` unless needed
 
 ### Response Realism
 
-- handlers ต้องตรง API contract จริง — field names, types, error shape เหมือน backend; ถ้า backend เปลี่ยนให้อัปเดต handler พร้อมกัน
-- cover cases ต่อ endpoint: happy path, 4xx (validation/auth), 5xx (server error), network error (`HttpResponse.error()`), empty state
-- ใช้ `await delay(150)` หรือ `delay('infinite')` เพื่อทดสอบ loading/timeout UI — อย่า delay ทุก request โดยไม่จำเป็น (test ช้า)
-- parametrize handler ด้วย `params`/`request.json()` แทนสร้าง handler แยกต่อ ID — `http.get('/api/users/:id', ({ params }) => ...)`
+- handlers must match the real API contract — field names, types, and error shape like the backend; when the backend changes, update the handler together
+- cover cases per endpoint: happy path, 4xx (validation/auth), 5xx (server error), network error (`HttpResponse.error()`), empty state
+- use `await delay(150)` or `delay('infinite')` to test loading/timeout UI — don't delay every request needlessly (tests get slow)
+- parametrize handlers with `params`/`request.json()` instead of one handler per ID — `http.get('/api/users/:id', ({ params }) => ...)`
 
 ### Test Overrides
 
-- base handlers = default happy path; per-test override ด้วย `server.use(http.get(...))` ใน test นั้น
-- `server.resetHandlers()` ใน `afterEach` คืน base — override ห้ามรั่วข้าม test
-- อย่าแก้ base handler เพื่อ test เดียว — ทุก test อื่นจะเปลี่ยนพฤติกรรมตาม
-- runtime handler สำหรับ dev ใช้ `worker.use()` — มีประโยชน์กับ debug panel ที่ toggle error states
+- base handlers = the default happy path; override per test with `server.use(http.get(...))` inside that test
+- `server.resetHandlers()` in `afterEach` restores the base — overrides must never leak across tests
+- don't edit a base handler for one test — every other test will change behavior along with it
+- runtime handlers for dev use `worker.use()` — handy with a debug panel that toggles error states
 
 ### Data Factories
 
-- แยก mock data เป็น factories (`buildUser({...overrides})`) ไม่ใช่ literal ยาวใน handler — ปรับ shape เดียวกระจายทุก test
-- เก็บ factories ใน `src/mocks/factories/` — ไม่ใช่ production code ที่ handler import กลับเข้า app
-- deterministic data: seed หรือ fixed IDs ใน tests — random data ทำ snapshot/assertion flaky
+- split mock data into factories (`buildUser({...overrides})`), not long literals in the handler — one shape tweak propagates to every test
+- keep factories in `src/mocks/factories/` — not in production code that handlers import back into the app
+- deterministic data: seeded or fixed IDs in tests — random data makes snapshots/assertions flaky
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| intercept ที่ network layer ด้วย MSW | patch `fetch`/`axios`/`vi.mock` http client — bypass ทั้ง response pipeline |
-| mirror backend error shape (`{ error: { code, message } }`) | return `HttpResponse.json({})` ว่างสำหรับ error |
-| override ต่อ test ด้วย `server.use()` | แก้ shared base handler ให้ test เคสเดียวผ่าน |
-| ใช้ `onUnhandledRequest: 'warn'` หา gaps | ปล่อย unhandled requests เงียบ — test ผ่านแบบไม่รู้ตัว |
-| co-locate handlers ใกล้ domain | ไฟล์ `handlers.ts` เดียวพันบรรทัด |
+| intercept at the network layer with MSW | patch `fetch`/`axios`/`vi.mock` http clients — bypasses the whole response pipeline |
+| mirror the backend error shape (`{ error: { code, message } }`) | return an empty `HttpResponse.json({})` for errors |
+| override per test with `server.use()` | edit the shared base handler to make one case pass |
+| use `onUnhandledRequest: 'warn'` to find gaps | leave unhandled requests silent — tests pass without you knowing |
+| co-locate handlers near the domain | a single thousand-line `handlers.ts` |
 
 ## Common Pitfalls
 
-- `HttpResponse.json` กับ `ReadableStream`/file uploads ต้องใช้ `HttpResponse` + body เอง — json() ไม่รับ stream
-- ลืม `server.resetHandlers()` → test ก่อนหน้า override ค้าง test ถัดไป fail แบบไม่เกี่ยวกัน
-- interceptor order สำคัญ: specific path ต้องมาก่อน wildcard — MSW match ตามลำดับที่ register
-- cookie/credentials: `request.credentials`/`withCredentials` ต้องตั้งใน handler ถ้า API ใช้ cookies จริง
-- binary/download endpoints — return `HttpResponse.arrayBuffer()` หรือ blob; `HttpResponse.json` จะ stringify ผิด
+- `HttpResponse.json` with `ReadableStream`/file uploads needs `HttpResponse` + a body you build yourself — json() doesn't take streams
+- forgetting `server.resetHandlers()` → a previous test's override lingers and the next test fails for an unrelated reason
+- interceptor order matters: specific paths must come before wildcards — MSW matches in registration order
+- cookies/credentials: `request.credentials`/`withCredentials` must be set in the handler if the API really uses cookies
+- binary/download endpoints — return `HttpResponse.arrayBuffer()` or a blob; `HttpResponse.json` would stringify it wrongly
 
 ## Performance Notes
 
-- หลีกเลี่ยง `delay()` ค่าเริ่มต้นใน test suite ทั้งหมด — ใช้เฉพาะ test ที่ assert loading state
-- handlers จำนวนมากไม่ช้า (match ~O(n) แต่ n เล็ก) — จุดช้าคือ response payload ขนาดใหญ่ที่ build ทุก request; cache factory output ถ้าหนัก
-- Node tests: `server.listen()` ครั้งเดียวใน setup file ไม่ใช่ต่อ test file — setupFiles ใน vitest config ทำให้แล้ว
+- avoid a default `delay()` across the whole test suite — use it only in tests asserting loading state
+- many handlers aren't slow (matching is ~O(n) with small n) — the slow point is large response payloads rebuilt per request; cache factory output if heavy
+- Node tests: call `server.listen()` once in a setup file, not per test file — vitest config's setupFiles already does this
 
 ## CI Notes
 
-- test ต้องไม่พึ่ง external network เลย — MSW intercept ทำให้ deterministic บน CI ที่ egress จำกัด
-- ถ้า CI test ผ่าน local แต่ fail CI → เกือบทุกครั้งคือ unhandled request ที่ local bypass ไป backend จริง; เปิด `onUnhandledRequest: 'error'` ใน CI ชั่วคราวเพื่อหา
+- tests must never depend on the external network — MSW interception keeps them deterministic on CI with limited egress
+- if CI tests pass locally but fail on CI → almost always an unhandled request that bypassed to the real backend locally; enable `onUnhandledRequest: 'error'` in CI temporarily to find it

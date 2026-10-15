@@ -1,6 +1,6 @@
 ---
 name: list-devin-global-skills
-description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
+description: List all Devin global skills with descriptions
 argument-hint: "[scope] [--relation]"
 related:
   - report
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-แสดงรายการ skills ทั้งหมดใน `skills` directory
+List all skills in the `skills` directory
 
 ## Scope
 
-ใช้สำหรับดู skills ที่มีอยู่ก่อนเลือกใช้ใน `AGENTS.md`
+Use to see the available skills before choosing ones for `AGENTS.md`
 
 ## Execute
 
@@ -23,43 +23,42 @@ related:
 
 > Goal: List Skill Directories
 
-อ่านไดเรกทอรีทั้งหมดใน `skills` directory
+Read every directory in the `skills` directory
 
-1. อ่านไดเรกทอรีทั้งหมดใน `%APPDATA%\devin\skills\`
-2. กรองเฉพาะที่มีไฟล์ `SKILL.md` อยู่
-3. อ่าน frontmatter ของแต่ละ `SKILL.md` เพื่อดู `title` และ `description`
+1. Read all directories in `%APPDATA%\devin\skills\`
+2. Keep only those containing a `SKILL.md` file
+3. Read each `SKILL.md` frontmatter for `title` and `description`
 
 ### 2. Categorize Skills
 
 > Goal: Categorize Skills
 
-จัดกลุ่ม skills ตามประเภท
+Group skills by type
 
-1. จัดกลุ่มตามประเภท: `Frontend`, `Build Tools`, `Testing`, `Database`, `Code Quality`, `Frameworks`, `Runtime`, `Tooling`, `Other`
-2. แสดงจำนวน skills ในแต่ละกลุ่ม
+1. Group by type: `Frontend`, `Build Tools`, `Testing`, `Database`, `Code Quality`, `Frameworks`, `Runtime`, `Tooling`, `Other`
+2. Show the skill count per group
 
 ### 3. Report Skills
 
 > Goal: Report Skills
 
-แสดงรายการ skills ทั้งหมด
+Show the full skill list
 
-1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
-2. ทำ `/report` สำหรับจัดรูปแบบ
-3. ทำ `/search-skills` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
-4. ถ้าต้องการดูความสัมพันธ์/flow ของ skills → ใช้ `--relation` mode ของ skill นี้ (ดู [references/relation-view.md](references/relation-view.md))
+1. Present a table: skill name, description, group
+2. Do `/report` for formatting
+3. Do `/search-skills` to show a map by task or ecosystem when the user wants it
+4. To inspect skill relations/flow → use this skill's `--relation` mode (see [references/relation-view.md](references/relation-view.md))
 
 ## Rules
 
-- อ่านเฉพาะไดเรกทอรีที่มี `SKILL.md` ใน `skills` directory
-- แสดงทุก skill ไม่กรองออก
-- จัดกลุ่มตามประเภทของ skill
-- ใช้ `/report` สำหรับ output
-- ถ้าต้องการค้นหา skills จาก external registry ให้ใช้ `/search-skills`
+- Read only directories containing `SKILL.md` in the `skills` directory
+- Show every skill, filter none out
+- Group by skill type
+- Use `/report` for the output
+- To search skills from an external registry use `/search-skills`
 
 ## Expected Outcome
 
-- รายการ skills ทั้งหมดพร้อม description
-- จัดกลุ่มตามประเภท
-- ข้อมูลสำหรับใช้ใน `AGENTS.md` `## Skills` section
-
+- The full skill list with descriptions
+- Grouped by type
+- Data for the `AGENTS.md` `## Skills` section

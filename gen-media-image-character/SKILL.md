@@ -1,6 +1,6 @@
 ---
 name: gen-media-image-character
-description: สร้างภาพตัวละครแบบ consistency จากคำอธิบาย สไตล์ ท่าทาง และสีหน้า
+description: Generate consistent character images from description, style, pose, and expression
 argument-hint: "[character-description] [output]"
 related:
   - gen-media
@@ -11,95 +11,95 @@ related:
 
 ## Goal
 
-สร้างภาพตัวละครทีมีความคงเส้นคงวาระหว่างภาพ โดยใช้ prompt anchor, seed, และ negative prompt
+Generate character images that stay consistent across pictures using a prompt anchor, seed, and negative prompt
 
 ## Scope
 
-- รับคำอธิบายตัวละคร สไตล์ ท่าทาง สีหน้า และ aspect ratio
-- สร้างภาพผ่าน `bunx` CLI โดย default ใช้ Pollinations (ไม่ต้อง API key)
-- รองรับ paid providers เช่น Replicate/FAL ถ้ามี API key
-- บันทึก output เป็น `.png`, `.jpg`, หรือ `.webp`
-- ส่งต่อให้ `/create-video-story` เพื่อสร้างตัวละครประจำฉาก
+- Accept a character description, style, pose, facial expression, and aspect ratio
+- Generate images via `bunx` CLIs, defaulting to Pollinations (no API key)
+- Support paid providers such as Replicate/FAL when an API key is available
+- Save output as `.png`, `.jpg`, or `.webp`
+- Hand off to `/create-video-story` to create per-scene characters
 
 ## Execute
 
 ### 1. Prepare Character Brief
 
-> Goal: รวบรวมข้อมูลตัวละครให้ชัดเจน
+> Goal: Collect clear character information
 
-1. รับ `character-description` จาก user
-2. ถาม `style` เช่น `anime`, `realistic`, `cartoon`, `3d-render`
-3. ถาม `aspect-ratio` เช่น `portrait (9:16)`, `landscape (16:9)`, `square (1:1)`
-4. ถามประเภทภาพ เช่น `full-body`, `half-body`, `close-up`
-5. ระบุ `output` path/filename
-6. ถ้าข้อมูลไม่ชัดเจน ให้ขยายด้วย age, clothing, hair, color palette
+1. Receive the `character-description` from the user
+2. Ask for `style` such as `anime`, `realistic`, `cartoon`, `3d-render`
+3. Ask for `aspect-ratio` such as `portrait (9:16)`, `landscape (16:9)`, `square (1:1)`
+4. Ask for the shot type such as `full-body`, `half-body`, `close-up`
+5. Specify the `output` path/filename
+6. If details are unclear, expand with age, clothing, hair, and color palette
 
 ### 2. Build Consistency Prompt
 
-> Goal: สร้าง prompt anchor เพื่อคงรูปแบบตัวละคร
+> Goal: Create a prompt anchor that keeps the character on-model
 
-1. สร้าง character anchor ที่ประกอบด้วยชุด ทรงผม สีผม/ตา และลักษณะเด่น
-2. ระบุ pose, gesture, facial expression, camera angle ตาม user
-3. เติม background ที่เหมาะสม
-4. ใส่ negative prompt เพื่อลด deform, extra limbs, blurry face ถ้า CLI รองรับ
-5. ถาม user สำหรับ seed หรือใช้ seed คงที เช่น `42`
+1. Build a character anchor containing the outfit, hairstyle, hair/eye color, and distinctive features
+2. Specify pose, gesture, facial expression, and camera angle per the user
+3. Add a suitable background
+4. Add a negative prompt to reduce deform, extra limbs, and blurry faces if the CLI supports it
+5. Ask the user for a seed or use a fixed seed such as `42`
 
 ### 3. Choose Provider
 
-> Goal: เลือก CLI ทีใช้งานได้
+> Goal: Pick a usable CLI
 
 1. Default: `bunx @pollinations/cli gen image "<prompt>" --output <file>`
-   - ไม่ต้อง API key
-   - รองรับ `--model` เช่น `flux`, `turbo`, `gptimage`
-   - รองรับ `--seed` ถ้ามี
-2. ถ้า user มี Replicate API key: `bunx flux-replicate-mcp --api-key <key> --model ...`
-3. ถ้า user มี FAL API key: `bunx @fal-ai/cli`
-4. ถ้าไม่มั่นใจ ให้ลอง Pollinations ก่อน
+   - No API key required
+   - Supports `--model` such as `flux`, `turbo`, `gptimage`
+   - Supports `--seed` when available
+2. If the user has a Replicate API key: `bunx flux-replicate-mcp --api-key <key> --model ...`
+3. If the user has a FAL API key: `bunx @fal-ai/cli`
+4. If unsure, try Pollinations first
 
 ### 4. Generate Image
 
-> Goal: รัน CLI ให้ได้ภาพ
+> Goal: Run the CLI to get the image
 
-1. ตรวจสอบ network และ CLI ใน PATH
-2. รันคำสั่งพร้อม prompt, output, seed, aspect-ratio
-3. รอจนกระทั่งภาพถูกดาวน์โหลด
-4. ตรวจสอบไฟล์ output มีขนาด > 0
+1. Check network and CLI availability in PATH
+2. Run the command with prompt, output, seed, and aspect-ratio
+3. Wait until the image is downloaded
+4. Verify the output file size > 0
 
 ### 5. Validate
 
-> Goal: ยืนยันว่าไฟล์ใช้งานได้
+> Goal: Confirm the file is usable
 
-1. ใช้ `file` หรือ `ffprobe` ตรวจรูปแบบ
-2. ถ้าต้องการ quality check ให้ระบุให้ user ตรวจสอบ output
-3. รายงาน output path, provider, model, seed
-4. ถ้า fail แสดง stderr และแนะนำ provider อื่น
+1. Use `file` or `ffprobe` to check the format
+2. For a quality check, ask the user to inspect the output
+3. Report the output path, provider, model, and seed
+4. On failure, show stderr and recommend another provider
 
 ## Rules
 
 ### 1. No API Key Leak
 
-- ไม่ hardcode API key ใน skill
-- อ่านจาก environment variable หรือถาม user
-- ใช้ `--api-key` ผ่าน variable ไม่ใช่ literal
+- Never hardcode API keys in the skill
+- Read from an environment variable or ask the user
+- Pass `--api-key` via a variable, not a literal
 
 ### 2. Consistency
 
-- เก็บ character anchor และ seed ไว้ใน context สำหรับภาพถัดไป
-- เปลี่ยนเฉพาะ pose/expression/background ระหว่างฉาก ไม่เปลี่ยน core traits
-- ใช้ seed คงทีเมื่อเป็นไปได้
+- Keep the character anchor and seed in context for subsequent images
+- Between scenes, change only pose/expression/background, never core traits
+- Use a fixed seed whenever possible
 
 ### 3. Output
 
-- default output คือ `.png`
-- รองรับ `.jpg` และ `.webp` ด้วย `--format`
-- เก็บ output ใน project หรือ temp directory
+- Default output is `.png`
+- Supports `.jpg` and `.webp` via `--format`
+- Store output in the project or a temp directory
 
-- ใช้ /gen-media-ai-images ถ้าจำเป็น
-- ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /convert-svg ถ้าจำเป็น
+- Use /gen-media-ai-images if needed
+- Use /draw-svg-image if needed
+- Use /convert if needed
 
 ## Expected Outcome
 
-- ภาพตัวละครทีมีความคงเส้นคงวา
-- รายงาน output path, prompt anchor, provider, model, seed
-- ถ้า fail มีแนวทาง fallback
+- Character images that stay consistent
+- The report includes output path, prompt anchor, provider, model, and seed
+- On failure, a fallback approach is given

@@ -21,7 +21,7 @@ Use when benching/auditing a project's dependencies — report-only, never edits
 
 ## Execute
 
-> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (bench-deps)
+> Pre-Run: always run `/deep-review-codebase` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (bench-deps)
 
 ### 1. Collect Dependencies
 

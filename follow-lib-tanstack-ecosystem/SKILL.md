@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-ecosystem
-description: เลือกและใช้งาน TanStack libraries ใน project ตาม use case และ maturity
+description: Choose and use TanStack libraries in a project per use case and maturity
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -12,13 +12,13 @@ related:
 
 ## Goal
 
-เลือกและ integrate TanStack libraries ได้ถูกต้องตาม use case และ maturity ของแต่ละ library
+Choose and integrate TanStack libraries correctly per use case and each library's maturity
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการใช้ TanStack ecosystem ปัจจุบัน (ดูรายการล่าสุดที่ `https://tanstack.com/libraries`):
+For projects wanting the current TanStack ecosystem (see the latest list at `https://tanstack.com/libraries`):
 
-- Framework: `Start` (full-stack SSR/streaming บน Router + Vite, v1 stable), `Router` (type-safe routing สำหรับ React/Solid, v1)
+- Framework: `Start` (full-stack SSR/streaming on Router + Vite, v1 stable), `Router` (type-safe routing for React/Solid, v1)
 - Data & State: `Query` (server state, v5), `DB` (reactive client store, 0.x), `Store` (client state, 0.x), `AI` (framework-agnostic AI SDK, 0.x)
 - UI & UX: `Table` (headless datagrid, v9), `Form` (form state, v1; v2 alpha), `Charts`, `Hotkeys`, `Markdown`, `Highlight`
 - Performance: `Virtual` (virtualized lists, v3), `Pacer` (debounce/throttle/batch, 0.x)
@@ -30,10 +30,10 @@ related:
 
 ### 1. Identify Needs
 
-> Goal: ระบุว่าต้องการ library ตัวไหนของ TanStack
+> Goal: determine which TanStack library is needed
 
-1. ทำ `/deep-analyze` เพื่อเข้าใจ state, data flow, routing, form needs
-2. ดูว่า project ต้องการ:
+1. Do `/deep-analyze` to understand state, data flow, routing, and form needs
+2. Check what the project wants:
    - async server state / data fetching → `Query`
    - client state → `Store`
    - type-safe routing → `Router`
@@ -44,44 +44,44 @@ related:
    - local-first reactive data / sync → `DB`
    - AI providers, chat, MCP integration → `AI`
    - debounce/throttle/rate-limit → `Pacer`
-3. ตรวจ maturity ก่อนใช้: ตัวที่เป็น `0.x` หรือ alpha/RC (เช่น `DB`, `AI`, `Pacer`, `Store`) API อาจเปลี่ยน — ใช้เฉพาะเมื่อยอมรับความเสี่ยงได้
-4. ถ้าไม่ชัด → stop และ `/ask-me`
+3. Check maturity before use: `0.x` or alpha/RC ones (e.g. `DB`, `AI`, `Pacer`, `Store`) may change their API — use only when the risk is acceptable
+4. If unclear → stop and `/ask-me`
 
 ### 2. Install And Configure
 
-> Goal: ติดตั้ง library ที่เลือก
+> Goal: install the chosen library
 
-1. ใช้ package manager ที่ project ใช้ (`npm`, `pnpm`, `bun`, `yarn`) ผ่าน `/run-install`
-2. ติดตั้ง package ตาม naming convention `@tanstack/{framework}-{lib}` เช่น `@tanstack/react-query`, `@tanstack/vue-query`, `@tanstack/solid-router`, `@tanstack/svelte-query` (Angular บางตัวยังใช้ชื่อ `*-experimental` เช่น `@tanstack/angular-query-experimental`)
-3. ตั้งค่า provider/client ใน entry point เช่น `QueryClientProvider` สำหรับ Query
-4. ติดตั้ง `Devtools` เป็น dev dependency เพื่อ inspect state ระหว่าง develop
-5. ตรวจสอบ version compatibility กับ framework version ใน `package.json`
+1. Use the project's package manager (`npm`, `pnpm`, `bun`, `yarn`) via `/run-install`
+2. Install packages per the `@tanstack/{framework}-{lib}` naming convention, e.g. `@tanstack/react-query`, `@tanstack/vue-query`, `@tanstack/solid-router`, `@tanstack/svelte-query` (some Angular ones still use `*-experimental`, e.g. `@tanstack/angular-query-experimental`)
+3. Configure the provider/client in the entry point, e.g. `QueryClientProvider` for Query
+4. Install `Devtools` as a dev dependency to inspect state while developing
+5. Verify version compatibility with the framework version in `package.json`
 
 ### 3. Implement Feature
 
-> Goal: ใช้งาน library ในฟีเจอร์จริง
+> Goal: use the library in a real feature
 
-1. `Query`: สร้าง query keys, query functions, ตั้ง `staleTime`/`gcTime`, ใช้ `select`, mutations + invalidation
-2. `Form`: สร้าง schema (รองรับ Standard Schema เช่น Zod/Valibot/ArkType), fields, validation, submission
-3. `Router`: สร้าง route tree (file-based หรือ code-based), loaders, search param validation, navigation
-4. `Start`: สร้าง server functions, SSR routes, middleware
-5. `Store`: สร้าง store สำหรับ client state ที่ไม่ใช่ server state
-6. `Table`: ตั้งค่า columns, sorting, filtering, pagination (headless — render UI เอง)
-7. `Virtual`: ตั้งค่า virtualizer กับ list/table ที่ยาว
-8. `DB`/`AI`: ตั้งค่า collections/sync engine หรือ AI provider adapters ตาม docs ล่าสุด
-9. `Charts`: declarative chart จาก data + axes + series (grammar-of-graphics)
-10. `Markdown`/`Highlight`: doc model render หรือ syntax highlighting (streaming-friendly)
+1. `Query`: create query keys and query functions, set `staleTime`/`gcTime`, use `select`, mutations + invalidation
+2. `Form`: create the schema (supports Standard Schema such as Zod/Valibot/ArkType), fields, validation, submission
+3. `Router`: build the route tree (file-based or code-based), loaders, search param validation, navigation
+4. `Start`: create server functions, SSR routes, middleware
+5. `Store`: create a store for client state that isn't server state
+6. `Table`: configure columns, sorting, filtering, pagination (headless — render the UI yourself)
+7. `Virtual`: attach the virtualizer to long lists/tables
+8. `DB`/`AI`: configure collections/sync engine or AI provider adapters per the latest docs
+9. `Charts`: declarative charts from data + axes + series (grammar-of-graphics)
+10. `Markdown`/`Highlight`: doc model rendering or syntax highlighting (streaming-friendly)
 11. `Hotkeys`: keyboard shortcuts + sequences + scopes
 12. `Pacer`: debounce/throttle/rate-limit/queue/batch hooks
 
 ### 4. Test And Optimize
 
-> Goal: ตรวจสอบว่า integration ทำงานได้ดี
+> Goal: confirm the integration works well
 
-1. รัน `/run-test` และ `/run-typecheck`
-2. ตรวจสอบ caching behavior ของ `Query`/`DB` ผ่าน Devtools
-3. วัด re-render ของ components
-4. ตรวจสอบ error boundaries, pending และ loading states
+1. Run `/run-test` and `/run-typecheck`
+2. Inspect `Query`/`DB` caching behavior via Devtools
+3. Measure component re-renders
+4. Check error boundaries, pending, and loading states
 
 ### Workflows
 
@@ -110,31 +110,30 @@ related:
 
 ### 1. Library Selection
 
-- เลือก library ตาม use case จริง ไม่ติดตั้งทุกตัว
-- `Query` กับ `Store` ไม่ทดแทนกัน — ใช้ `Query` สำหรับ server state, `Store` สำหรับ client state
-- `Router`/`Start` รองรับเฉพาะ React และ Solid — ถ้าใช้ Vue/Svelte ให้ใช้ router ของ framework นั้น
-- อ้างอิง official docs `https://tanstack.com` เป็นแหล่งหลักเสมอ
-- รายละเอียดต่อ library อยู่ที่ skill เฉพาะทาง `/follow-lib-tanstack-*` (ครบทุก 18 libs — ดูตาราง Workflows; `references/apis.md` ต่อ skill มี package versions + API tables)
+- Pick the library by real use case — don't install all of them
+- `Query` and `Store` don't replace each other — use `Query` for server state, `Store` for client state
+- `Router`/`Start` support React and Solid only — if using Vue/Svelte, use that framework's router
+- Always cite the official docs `https://tanstack.com` as the primary source
+- Per-library detail lives in the specialized `/follow-lib-tanstack-*` skills (all 18 libs — see the Workflows table; each skill's `references/apis.md` has package versions + API tables)
 
 ### 2. Type Safety
 
-- ใช้ TypeScript types ที่ library provide
-- กำหนด query keys, route params และ form schemas ให้ type-safe
-- หลีกเลี่ยง `any` ใน callbacks
+- Use the TypeScript types the library provides
+- Make query keys, route params, and form schemas type-safe
+- Avoid `any` in callbacks
 
 ### 3. Performance
 
-- ใช้ `select` และ `staleTime` ใน `Query` เพื่อลด refetch
-- ใช้ `Virtual` เฉพาะ list ที่ใหญ่
-- ใช้ `Pacer` สำหรับ debounce/throttle แทนเขียนเอง
-- แยก reactivity scope ใน `Store`/`DB` ให้เหมาะสม
+- Use `select` and `staleTime` in `Query` to reduce refetching
+- Use `Virtual` only for large lists
+- Use `Pacer` for debounce/throttle instead of hand-rolling it
+- Separate reactivity scopes properly in `Store`/`DB`
 
-- ดู `best-practices/` ของแต่ละ `/follow-lib-tanstack-*` skill สำหรับ recommended patterns และ pitfalls
+- See each `/follow-lib-tanstack-*` skill's `best-practices/` for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- TanStack library ที่เลือกถูกต้องตาม use case และ maturity
-- Integration ทำงานได้และผ่าน typecheck/test
-- Performance ที่เหมาะสม ไม่ over-fetching หรือ over-rendering
-- Code อ่านง่ายและ maintain ได้
-
+- The chosen TanStack library fits the use case and maturity
+- The integration works and passes typecheck/tests
+- Appropriate performance, no over-fetching or over-rendering
+- Readable, maintainable code

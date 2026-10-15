@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/config` | 0.22.x | Config |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Config | `@tanstack/config` | build/publish checks, exports map |

@@ -1,6 +1,6 @@
 ---
 name: list-git-commit
-description: รายงาน git log สรุป commits, สถิติ, และ insights ในรูปแบบที่อ่านง่าย
+description: Report git log — commits, stats, and insights in a readable form
 argument-hint: "[ref]"
 related:
   - git-commit
@@ -9,74 +9,73 @@ related:
 
 ## Goal
 
-รายงาน git log ในรูปแบบสรุปทีอ่านง่าย ครอบคลุม commits ล่าสุด สถิติ เเละ insights จาก history
+Report the git log as an easy-to-read summary covering recent commits, statistics, and insights from history
 
 ## Scope
 
-ใช้หลัง `/git-commit` เพื่อตรวจสอบประวัติทีเพิ่มขึ้น หรือเมื่อผู้ใช้ต้องการสรุป git log ช่วงใดช่วงหนึ่ง โดยไม่แก้ไข history
+Use after `/git-commit` to review the growing history, or when the user wants a git-log summary of a period, without modifying history
 
 ## Execute
 
 ### 1. Resolve Log Range
 
-> Goal: ระบุช่วง commit ทีต้องรายงาน
+> Goal: determine the commit range to report
 
-1. ถ้าผู้ใช้ระบุ range (เช่น `v1.0.0..v2.0.0`, `HEAD~10`) → ใช้ค่านั้น
-2. ถ้าไม่ระบุ → ใช้ `HEAD~10..HEAD` หรือค่า default `git log --oneline -10`
-3. ตรวจสอบว่า range ถูกต้องด้วย `git rev-parse` หรือ `git log --quiet`
+1. If the user gives a range (e.g. `v1.0.0..v2.0.0`, `HEAD~10`) → use it
+2. Otherwise → use `HEAD~10..HEAD` or the default `git log --oneline -10`
+3. Validate the range with `git rev-parse` or `git log --quiet`
 
 ### 2. Fetch Log Data
 
-> Goal: รวบรวมข้อมูล commits ด้วย `git log`
+> Goal: collect commit data with `git log`
 
-1. รัน `git log --oneline --decorate --graph <range>` เพื่อดูภาพรวม
-2. รัน `git log --pretty=format:"%h|%an|%ad|%s" --date=short <range>` เพื่อดึงข้อมูลราย commit
-3. ถ้าต้องการรายละเอียดเพิ่ม → รัน `git log --stat <range>`
-4. บันทึกข้อมูล commits สำหรับสรุป
+1. Run `git log --oneline --decorate --graph <range>` for the overview
+2. Run `git log --pretty=format:"%h|%an|%ad|%s" --date=short <range>` for per-commit data
+3. For more detail → run `git log --stat <range>`
+4. Store the commit data for the summary
 
 ### 3. Categorize Commits
 
-> Goal: จัดกลุ่ม commits ตาม conventional commits type
+> Goal: group commits by conventional-commits type
 
-1. แยก commit message ตาม prefix: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `chore:`
-2. นับจำนวน commit แต่ละประเภท
-3. ระบุ scope ทีพบบ่อย (เช่น `api`, `ui`, `config`, `test`)
-4. สรุป top contributors จาก author
+1. Split commit messages by prefix: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `chore:`
+2. Count commits per type
+3. Identify frequent scopes (e.g. `api`, `ui`, `config`, `test`)
+4. Summarize the top contributors by author
 
 ### 4. Report Summary
 
-> Goal: นำเสนอ git log ในรูปแบบเข้าใจง่าย
+> Goal: present the git log in an understandable form
 
-1. ใช้ `/report` สร้างตาราง commits (# | Hash | Author | Date | Type | Subject)
-2. แสดงสถิติรวม: จำนวน commits, จำนวน files เปลี่ยนแปลง (ถ้ามี `--stat`), ประเภททีมากทีสุด
-3. สรุป insights: breaking changes, recurring scopes, แนวโน้มของช่วง commit
+1. Use `/report` to build the commits table (# | Hash | Author | Date | Type | Subject)
+2. Show overall stats: commit count, files changed (with `--stat`), dominant type
+3. Summarize insights: breaking changes, recurring scopes, trends of the commit range
 
 ## Rules
 
 ### 1. Read Only
 
-- ใช้ `git log` เท่านั้น ไม่รัน `git reset`, `git rebase`, หรือคำสั่งเปลี่ยนแปลง history
-- ไม่แก้ไขไฟล์หรือ tags ระหว่างรายงาน
+- Use `git log` only; never run `git reset`, `git rebase`, or history-changing commands
+- Do not modify files or tags while reporting
 
 ### 2. Deterministic Output
 
-- รันซ้ำด้วย range เดียวกันได้ผลเหมือนกัน
-- ใช้ `--date=short` หรือ `--date=iso` เพื่อให้ format คงที
+- Re-running with the same range must produce the same result
+- Use `--date=short` or `--date=iso` for a stable format
 
 ### 3. Conventional Commits Awareness
 
-- ถ้า commit messages ไม่ตรง conventional commits → ระบุว่าไม่มี type ชัดเจน
-- แยก `scope` จาก `(<scope>):` ถ้ามี
+- When commit messages don't follow conventional commits → state that
+- Extract `scope` from `(<scope>):` when present
 
 ### 4. Range Safety
 
-- ตรวจสอบว่า range มีอยู่จริงก่อนรัน `git log`
-- ถ้า range ไม่ถูกต้อง → stop และ report โดยไม่รัน
+- Verify the range actually exists before running `git log`
+- If the range is invalid → stop and report without running
 
 ## Expected Outcome
 
-- รายงาน git log เป็นตาราง commits ชัดเจน
-- สถิติประเภท commits เเละ top contributors
-- Insights สั้นๆ จากช่วง commit
-- ไม่มีการเปลี่ยนแปลง git history
-
+- A git-log report as a readable commits table
+- Commit-type statistics and top contributors
+- Short insights for the commit range
+- No git history modified

@@ -4,7 +4,7 @@ description: Build custom Tauri plugins with Rust and a JavaScript API
 argument-hint: "[scope]"
 related:
   - follow-create-web
-  - deep-review
+  - deep-review-codebase
   - follow-tool-cargo
   - ship
 
@@ -25,7 +25,7 @@ Covers building plugins for desktop and mobile platforms with commands, state ma
 
 > Goal: Review the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
 3. Record the rationale for the chosen stack and libraries for future reference (create tauri plugins)
 
 ### 2. Initialize Plugin Project

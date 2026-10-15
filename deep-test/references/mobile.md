@@ -4,7 +4,7 @@ Run mobile app tests on an emulator/simulator/physical device — user flows, ge
 
 Signals: `.maestro/` flows, `detox.config.*`, `appium`, `androidTest/`, `*UITests/`, React Native/Capacitor/KMP test configs
 
-- Web E2E in a browser → `/deep-test e2e`; component-level needing no device → `/deep-test component`; platform/design fixes → `/improve mobile-app`; app creation/setup → `/follow-create-mobile`
+- Web E2E in a browser → `/deep-test e2e`; component-level needing no device → `/deep-test component`; platform/design fixes → `/improve mobile-app`; app creation/setup → `/follow-create-mobile`; writing Maestro flows / `maestro mcp` agentic testing → `/follow-tool-maestro`
 
 ## 1. Detect
 

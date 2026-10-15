@@ -99,7 +99,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review-codebase` โดยเฉพาะ
 
 
 
@@ -151,7 +151,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review-codebase` โดยเฉพาะ
 
 
 
@@ -203,7 +203,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review-codebase` โดยเฉพาะ
 
 
 
@@ -255,7 +255,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review-codebase` โดยเฉพาะ
 
 
 
@@ -307,7 +307,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ใช้ `/deep-review` + `/deep-review` ร่วมกัน
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ใช้ `/deep-review-codebase` + `/deep-review-codebase` ร่วมกัน
 
 
 
@@ -359,7 +359,7 @@ Persona details for the `engineering` category — merged from the original `wor
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป `/deep-review-codebase` โดยเฉพาะ
 
 
 

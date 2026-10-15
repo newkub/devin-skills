@@ -2,52 +2,52 @@
 
 ## Recommended Patterns
 
-### Snippet Patterns และ Variables
+### Snippet Patterns And Variables
 
-- code snippet ใน backticks คือ pattern พื้นฐาน: `` `console.log($message)` `` — parse เป็น AST แล้ว match structurally ไม่ใช่ text
-- metavariable `$name` match node ใดก็ได้; ใช้ variable เดิมซ้ำ = บังคับ equality เช่น `` `$x === $x` `` match เฉพาะ compare ตัวเดียวกัน
-- spread metavariable `$$$args` match argument list ยาวเท่าไหร่ก็ได้ — `` `foo($$$args)` ``
-- ใช้ `as $name` capture node span ทั้งก้อนเมื่อต้องชี้ตำแหน่งใน diagnostic หรือ rewrite
+- a code snippet in backticks is the base pattern: `` `console.log($message)` `` — parsed into an AST then matched structurally, not as text
+- metavariable `$name` matches any node; reusing the same variable = enforced equality, e.g. `` `$x === $x` `` matches only same-variable compares
+- spread metavariable `$$$args` matches an argument list of any length — `` `foo($$$args)` ``
+- use `as $name` to capture the whole node span when you need to point at a location in a diagnostic or rewrite
 
-### Conditions ด้วย where
+### Conditions With Where
 
-- `where` clause กรอง match เพิ่มเติม: `where { $x <: `literal` }` หรือ combine ด้วย `or`/`and`/`not`
-- operator `<:` = pattern subsumption — `$x <: pattern` หมายถึง node ใน `$x` match pattern นั้น
-- ใช้ `contains`, `within`, `includes` สำหรับ structural relations (เช่น ต้องอยู่ใน class ที่ชื่อ X)
-- pattern ที่ซับซ้อนแยกเป็น named pattern แล้ว compose — อ่านง่ายกว่า where ยาวๆ เส้นเดียว
+- `where` clauses filter matches further: `where { $x <: `literal` }` or combine with `or`/`and`/`not`
+- operator `<:` = pattern subsumption — `$x <: pattern` means the node in `$x` matches that pattern
+- use `contains`, `within`, `includes` for structural relations (e.g. must be inside a class named X)
+- split complex patterns into named patterns then compose — easier to read than one long where clause
 
-### Language และ Engine Selection
+### Language And Engine Selection
 
-- ประกาศ target เสมอ: `language js(typescript,jsx)` / `language css` / `language json` — ไม่ประกาศ = default ตาม context
-- `engine biome(1.0)` ให้ match Biome AST node โดยตรง เช่น `JsIfStatement` — ใช้เมื่อ snippet syntax match ไม่พอ
-- เช็ค integration status ของ language ก่อน — บางภาษาอยู่ระหว่าง experimental
+- always declare the target: `language js(typescript,jsx)` / `language css` / `language json` — undeclared = default per context
+- `engine biome(1.0)` matches Biome AST nodes directly, e.g. `JsIfStatement` — use when snippet syntax matching isn't enough
+- check the language's integration status first — some languages are still experimental
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ประกาศ `language ...` ชัดเจนทุก pattern | assume default language ถูกเสมอ |
-| ใช้ same `$var` ซ้ำเมื่อต้องการ equality | ใช้ regex ใน where เมื่อ structural match ทำได้ |
-| แยก named pattern สำหรับ logic ซับซ้อน | เขียน where clause ยาวอ่านไม่รู้เรื่อง |
-| test pattern บน `biome search` กับ code จริงก่อน | assume pattern ทำงานจาก spec เพียงอย่างเดียว |
-| match specific node type เมื่อรู้ target | ใช้ `$x` เดี่ยวๆ แล้ว filter ทีหลัง (ช้า) |
+| declare `language ...` explicitly on every pattern | assume the default language is always right |
+| reuse the same `$var` when you want equality | use regex in where when structural match can do it |
+| split named patterns for complex logic | write a where clause too long to read |
+| test the pattern with `biome search` on real code first | assume the pattern works from the spec alone |
+| match a specific node type when you know the target | use a lone `$x` then filter afterwards (slow) |
 
 ## Common Pitfalls
 
-- backtick ใน pattern ต้อง escape เมื่อยิงผ่าน shell — ห่อทั้ง pattern ด้วย single quotes
-- metavariable `$x` ไม่ match ข้าม statement boundary — statement-level vs expression-level ต่างกัน
-- pattern ที่ match whitespace/formatting ต่างกันได้ — GritQL match AST ไม่ใช่ text ดังนั้น formatting ไม่สำคัญ แต่ semicolon/structure สำคัญ
-- `$$$args` อยู่ได้เฉพาะตำแหน่ง spread (argument list, elements) — ใส่ผิดที่ match ไม่ติด
+- backticks in a pattern must be escaped when firing through a shell — wrap the whole pattern in single quotes
+- metavariable `$x` doesn't match across statement boundaries — statement-level vs expression-level differ
+- patterns matching whitespace/formatting may differ — GritQL matches the AST, not text, so formatting doesn't matter but semicolon/structure does
+- `$$$args` is only valid in spread positions (argument list, elements) — wrong place = no match
 
 ## Performance Notes
 
-- specific node type pattern เร็วกว่า generic snippet — engine prune ได้ตั้งแต่ node kind
-- หลีกเลี่ยง pattern ที่ root เป็น `$x` โล่งๆ — บังคับ walk ทุก node ในทุกไฟล์
-- `within`/`contains` constraints ช่วย prune tree ได้เร็วกว่า where ที่เช็คทีหลัง
-- benchmark บน codebase จริง — pattern ที่ดูเล็กอาจ scan ช้ามากบน monorepo ใหญ่
+- specific node type patterns are faster than generic snippets — the engine can prune from the node kind
+- avoid patterns whose root is a bare `$x` — forces a walk of every node in every file
+- `within`/`contains` constraints prune the tree faster than a where that checks afterwards
+- benchmark on a real codebase — a pattern that looks small can scan very slowly on a large monorepo
 
 ## Ecosystem / Integration
 
-- GritQL ใน Biome ใช้ผ่าน `biome search` และ `.grit` lint plugins เท่านั้น — ไม่มี standalone binary
-- codemod ข้ามภาษาที่ Biome ไม่รองรับ → พิจารณา ast-grep (`/use-astgrep`) แทน
-- เอกสาร canonical: `https://biomejs.dev/reference/gritql/`
+- GritQL in Biome is used only via `biome search` and `.grit` lint plugins — there is no standalone binary
+- cross-language codemods that Biome doesn't support → consider ast-grep (`/use-astgrep`) instead
+- canonical docs: `https://biomejs.dev/reference/gritql/`

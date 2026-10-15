@@ -73,7 +73,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 
 ทำเฉพาะเมื่อ `git` แจ้ง error ว่าไม่มี repository หรือไม่มี remote
 
-- ถ้าไม่มี `.git` ให้ทำ `git init`, `git add -A`, `git commit -m "Initial commit"`, และทำ `/follow-gitignore`
+- ถ้าไม่มี `.git` ให้ทำ `git init`, `git add -A`, `git commit -m "Initial commit"`, และทำ `/update-gitignore`
 - ถ้าไม่มี remote ให้ทำ `gh repo create <repo-name> --private --source=. --remote=origin --push` โดยใช้ชื่อโฟลเดอร์เป็น repo name
 
 ## Rules
@@ -83,7 +83,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 - เป็น optional step ทำเฉพาะเมื่อ `git` แจ้ง error
 - ถ้าไม่มี remote ให้สร้างด้วย `gh repo create` และเป็น `--private` เบื้องต้น
 - ใช้ชื่อโฟลเดอร์ปัจจุบันเป็น repo name อัตโนมัติ
-- ทำ `/follow-gitignore` หลัง `git init` เพื่อให้แน่ใจว่า `.gitignore` ครบถ้วน
+- ทำ `/update-gitignore` หลัง `git init` เพื่อให้แน่ใจว่า `.gitignore` ครบถ้วน
 
 ### 2. Safety
 

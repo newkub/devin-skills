@@ -1,9 +1,9 @@
 ---
 name: gen-postman-collection
-description: สร้าง Postman/Bruno collection จาก API routes หรือ OpenAPI spec พร้อม environments
+description: Generate a Postman/Bruno collection from API routes or an OpenAPI spec with environments
 argument-hint: "[spec-or-framework]"
 related:
-  - deep-review
+  - deep-review-codebase
   - scan-codebase
   - report
   - run-test
@@ -12,81 +12,81 @@ related:
 
 ## Goal
 
-Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec หรือ route definitions จริง — พร้อม folders, example requests, auth setup และ environments
+Generate an API collection (Postman or Bruno) from a real OpenAPI spec or route definitions — with folders, example requests, auth setup, and environments
 
 ## Scope
 
-- Input: OpenAPI spec (`openapi.yaml`) หรือ route definitions ใน code
-- Output: Postman collection v2.1 (`*.postman_collection.json`) หรือ Bruno collection (`*.bru` files)
-- ครอบคลุม: endpoints, methods, params, example bodies, auth config, environment variables
+- Input: an OpenAPI spec (`openapi.yaml`) or route definitions in code
+- Output: a Postman collection v2.1 (`*.postman_collection.json`) or a Bruno collection (`*.bru` files)
+- Covers: endpoints, methods, params, example bodies, auth config, environment variables
 
 ## Execute
 
 ### 1. Get API Surface
 
-> Goal: รวบรวม endpoints ทั้งหมด
+> Goal: Collect all endpoints
 
-1. ถ้ามี OpenAPI spec → ใช้เป็น source of truth
-2. ถ้าไม่มี → ทำ framework generator ก่อน หรือ extract routes จาก code ด้วย `scan-codebase`/`use-astgrep`
-3. จัดกลุ่ม endpoints ตาม resource/tag
+1. If an OpenAPI spec exists → use it as the source of truth
+2. If not → run a framework generator first, or extract routes from code with `scan-codebase`/`use-astgrep`
+3. Group endpoints by resource/tag
 
 ### 2. Generate Collection Structure
 
-> Goal: สร้าง collection พร้อม folders ตาม resources
+> Goal: Build the collection with folders per resource
 
-1. Postman: สร้าง JSON v2.1 schema — `info`, `item[]` (nested folders ตาม tags)
-2. Bruno: สร้าง `*.bru` files + `bruno.json` + `environments/`
-3. แต่ละ request: method, URL (ใช้ `{{baseUrl}}` variable), headers, params, body example
+1. Postman: create the JSON v2.1 schema — `info`, `item[]` (nested folders per tags)
+2. Bruno: create `*.bru` files + `bruno.json` + `environments/`
+3. Per request: method, URL (using the `{{baseUrl}}` variable), headers, params, body example
 
 ### 3. Add Request Details
 
-> Goal: ทำให้ requests ใช้ได้จริงทันที
+> Goal: Make requests immediately usable
 
-1. Base URL: environment variable `{{baseUrl}}` — สร้าง environments: `local`, `staging`, `prod`
-2. Auth: collection-level auth (Bearer/API key) ถ้า API ใช้ — ใช้ variables ไม่ hardcode
-3. Examples: request body จาก schema examples หรือ generate จาก types
-4. Descriptions: จาก spec descriptions หรือ docstrings
-5. Path params และ query params จาก spec ครบ
+1. Base URL: environment variable `{{baseUrl}}` — create environments: `local`, `staging`, `prod`
+2. Auth: collection-level auth (Bearer/API key) if the API uses it — use variables, never hardcode
+3. Examples: request bodies from schema examples or generated from types
+4. Descriptions: from spec descriptions or docstrings
+5. Path params and query params fully taken from the spec
 
-### 4. Add Test Scripts (ถ้าเหมาะ)
+### 4. Add Test Scripts (when appropriate)
 
-> Goal: เพิ่ม basic assertions ต่อ request
+> Goal: Add basic assertions per request
 
-1. Postman test scripts: `pm.response.to.have.status(200)` ตาม expected status
-2. Schema validation script ถ้า response schema ชัดเจน
-3. Bruno: `assert`/`tests` blocks เทียบเท่า
+1. Postman test scripts: `pm.response.to.have.status(200)` matching the expected status
+2. A schema validation script if the response schema is clear
+3. Bruno: equivalent `assert`/`tests` blocks
 
 ### 5. Verify And Report
 
-> Goal: ยืนยัน collection import ได้และครบ
+> Goal: Confirm the collection imports and is complete
 
-1. Validate JSON schema (Postman collection schema) หรือเปิดใน Bruno
-2. เทียบ endpoint count กับ spec — ไม่มีที่ขาด
-3. ใช้ `/report` สรุป: `No.`, `Folder`, `Endpoints`, `Auth`, `Examples`
-4. บอกวิธี import/run
+1. Validate the JSON schema (Postman collection schema) or open it in Bruno
+2. Compare the endpoint count with the spec — nothing missing
+3. Use `/report` to summarize: `No.`, `Folder`, `Endpoints`, `Auth`, `Examples`
+4. State how to import/run it
 
 ## Rules
 
 ### 1. From Spec Or Real Code
 
-- Generate จาก spec/code จริงเท่านั้น — ห้ามเดา endpoints
-- ถ้า spec กับ code drift → ทำ `/deep-review` ก่อน แล้ว generate จาก source of truth
+- Generate only from a real spec/code — never guess endpoints
+- If spec and code drift → run `/deep-review-codebase` first, then generate from the source of truth
 
 ### 2. No Secrets
 
-- ห้ามใส่ tokens/keys จริงใน collection — ใช้ variables เสมอ
-- environment files ใส่ placeholder เท่านั้น
+- Never put real tokens/keys in the collection — always use variables
+- Environment files contain placeholders only
 
 ### 3. Usable Immediately
 
-- import แล้วต้องยิงได้จริง (หลังใส่ baseUrl/auth) — ไม่ใช่ skeleton เปล่า
-- example bodies ต้อง valid ตาม schema
-- ใช้ /deep-test api ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- After import it must actually fire requests (once baseUrl/auth are filled in) — not an empty skeleton
+- Example bodies must be valid per the schema
+- Use /deep-test api if needed
+- Use /run-test if needed
 
 
 ## Expected Outcome
 
-- Collection file พร้อม import ใช้ได้ทันที
-- Environments (local/staging/prod) พร้อม variables
-- Endpoint coverage ครบตาม spec พร้อม basic test scripts
+- A collection file ready to import and use immediately
+- Environments (local/staging/prod) with variables
+- Endpoint coverage complete per the spec with basic test scripts

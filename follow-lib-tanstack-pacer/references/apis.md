@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-pacer` | 0.24.x | Pacer (core `@tanstack/pacer` 0.23.x) |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Pacer | `useDebouncedCallback` | `useThrottledCallback`, `useRateLimiter`, `useQueuer`, `useBatcher` |

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-ioredis-setup-ioredis
-description: ติดตั้ง ioredis และตั้งค่า client — standalone, cluster, sentinel options
+description: Install ioredis and set up the client — standalone, cluster, sentinel options
 argument-hint: "[mode-or-url]"
 related:
   - follow-lib-ioredis
@@ -11,70 +11,70 @@ related:
 
 ## Goal
 
-ติดตั้ง `ioredis` และสร้าง Redis client — standalone, Cluster หรือ Sentinel — ให้ connect และ command ได้จริง — first-time setup เท่านั้น
+Install `ioredis` and create a Redis client — standalone, Cluster or Sentinel — that actually connects and runs commands — first-time setup only
 
 ## Scope
 
-- ใช้เมื่อ project ยังไม่มี ioredis (ถ้ามีอยู่แล้ว → verify เท่านั้น)
-- ครอบคลุม: install, `new Redis()`, `Redis.Cluster`, Sentinel options, retry strategy
-- ไม่ครอบคลุม perf tuning — ทำ `workflows/optimize-pool/SKILL.md` แทน
+- Use when the project has no ioredis yet (if present → verify only)
+- Covers: install, `new Redis()`, `Redis.Cluster`, Sentinel options, retry strategy
+- Does not cover perf tuning — do `workflows/optimize-pool/SKILL.md` instead
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อน setup
+> Goal: check the environment before setup
 
-1. อ่าน `package.json` — ถ้ามี `ioredis` แล้ว → skip ไป verify; ตรวจ version (v6 ต้อง Node ≥20, RESP3 default)
-2. ระบุ Redis topology: standalone, Sentinel หรือ Cluster — ถ้าไม่รู้ → ถาม user หรือดู infra config
-3. ตรวจ `REDIS_URL`/credentials — ถ้าขาด → stop แจ้ง user; เก็บผ่าน `/follow-secret-manager`
-4. ตรวจ runtime — ioredis ต้อง TCP; บน Cloudflare Workers ใช้ REST/Upstash แทน
+1. Read `package.json` — if `ioredis` is there → skip to verify; check the version (v6 requires Node ≥20, RESP3 default)
+2. Identify the Redis topology: standalone, Sentinel or Cluster — if unknown → ask the user or check the infra config
+3. Check `REDIS_URL`/credentials — if missing → stop and tell the user; store via `/follow-secret-manager`
+4. Check the runtime — ioredis needs TCP; on Cloudflare Workers use REST/Upstash instead
 
 ### 2. Install
 
-> Goal: ติดตั้ง ioredis เป็น runtime dependency
+> Goal: install ioredis as a runtime dependency
 
-1. รัน `bun add ioredis` (หรือ package manager ตาม lockfile)
-2. ยืนยัน `ioredis` อยู่ใน `dependencies`
+1. Run `bun add ioredis` (or the package manager matching the lockfile)
+2. Confirm `ioredis` is in `dependencies`
 
 ### 3. Create Client
 
-> Goal: client ที่ตรง topology
+> Goal: a client matching the topology
 
-1. Standalone: `new Redis(process.env.REDIS_URL)` หรือ `new Redis({ host, port, password })`
-2. Cluster: `new Redis.Cluster([{ host, port }], { redisOptions: {...} })` — v6 ใส่ per-node options ใต้ `redisOptions`
-3. Sentinel: `new Redis({ sentinels: [{ host, port }], name: "<master-name>" })` — ดู official docs สำหรับ options เพิ่ม
-4. ตั้ง `retryStrategy` ให้เหมาะ use case; `lazyConnect: true` ถ้าต้อง defer connect
-5. TLS (`tls: {}`) เมื่อ connect ผ่าน network สาธารณะ
-6. Export client instance เดียว — pub/sub ต้อง separate connection (RESP2 subscriber บล็อก commands อื่น)
+1. Standalone: `new Redis(process.env.REDIS_URL)` or `new Redis({ host, port, password })`
+2. Cluster: `new Redis.Cluster([{ host, port }], { redisOptions: {...} })` — in v6 per-node options go under `redisOptions`
+3. Sentinel: `new Redis({ sentinels: [{ host, port }], name: "<master-name>" })` — see official docs for extra options
+4. Set `retryStrategy` to fit the use case; `lazyConnect: true` if the connect must be deferred
+5. TLS (`tls: {}`) when connecting across a public network
+6. Export a single client instance — pub/sub needs a separate connection (the RESP2 subscriber blocks other commands)
 
 ### 4. Basic Usage
 
-> Goal: commands พื้นฐานทำงาน
+> Goal: basic commands work
 
-1. `get`/`set`/`del`/`expire` ฯลฯ เป็น promise-based — `await redis.set("k", "v")`
-2. `pipeline()`/`multi()` สำหรับ batch (รายละเอียดใน `optimize pool`)
-3. ตั้ง `maxRetriesPerRequest` ให้เหมาะสม — `null` ถ้าใช้กับ BullMQ
-4. v6 + `enableOfflineQueue: false` → ส่ง commands จาก `ready` listener ไม่ใช่ `connect`
+1. `get`/`set`/`del`/`expire` etc. are promise-based — `await redis.set("k", "v")`
+2. `pipeline()`/`multi()` for batching (details in `optimize pool`)
+3. Set `maxRetriesPerRequest` appropriately — `null` when used with BullMQ
+4. v6 + `enableOfflineQueue: false` → send commands from the `ready` listener, not `connect`
 
 ### 5. Verify
 
-> Goal: smoke command ผ่านจริง
+> Goal: the smoke command really passes
 
-1. `await redis.set("smoke", "1")` แล้ว `get` กลับ — ค่าตรง
-2. ตรวจ `redis.status` เป็น `ready`; ถ้า cluster ตรวจว่า discover nodes ครบ
-3. รัน lint/typecheck — ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report; ผ่าน → `/suggest-next-action`
+1. `await redis.set("smoke", "1")` then `get` it back — value matches
+2. Check `redis.status` is `ready`; for a cluster check that all nodes were discovered
+3. Run lint/typecheck — if verify fails → do `/resolve-errors` max 3 rounds, then stop and report; passes → `/suggest-next-action`
 
 ## Rules
 
-- Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น ห้ามสร้าง client ซ้ำ
-- Credentials/URL จาก env เสมอ — ห้าม hardcode
-- Client instance เดียวต่อ role (command, subscriber, publisher แยก connection)
-- ถ้า topology/option ไม่แน่ใจ → ทำ `/learn-from-web` ดู official docs (github.com/redis/ioredis)
-- ใช้ `/follow-lib-ioredis` สำหรับ overview และ best practices
+- Idempotent — if already set up, verify only; never create a duplicate client
+- Credentials/URL always from env — never hardcode
+- One client instance per role (command, subscriber, publisher on separate connections)
+- If the topology/option is unclear → do `/learn-from-web` on the official docs (github.com/redis/ioredis)
+- Use `/follow-lib-ioredis` for the overview and best practices
 
 ## Expected Outcome
 
-- `ioredis` ติดตั้ง, client ตรง topology (standalone/cluster/sentinel)
-- Smoke command ผ่าน, status `ready`
-- พร้อมทำ `workflows/optimize-pool/SKILL.md` ถ้าต้อง perf tuning
+- `ioredis` installed, client matches the topology (standalone/cluster/sentinel)
+- Smoke command passes, status `ready`
+- Ready for `workflows/optimize-pool/SKILL.md` if perf tuning is needed

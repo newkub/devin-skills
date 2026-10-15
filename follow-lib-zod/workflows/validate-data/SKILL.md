@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-Validate external data ด้วย Zod ที่ boundaries — parse vs safeParse, API boundaries, env config, async schemas
+Validate external data with Zod at boundaries — parse vs safeParse, API boundaries, env config, async schemas
 
 ## Scope
 
@@ -21,7 +21,7 @@ validation application — `.parse`/`.safeParse`/`.parseAsync`, boundary placeme
 ### 1. Parse vs SafeParse
 
 ```ts
-// throw on invalid — boundaries ที่ trust สูงหรือ 500-worthy
+// throw on invalid — high-trust boundaries or 500-worthy ones
 const user = UserSchema.parse(rawInput)
 
 // return result object — expected-invalid paths (forms, external input)
@@ -42,7 +42,7 @@ const body = await req.json()
 const parsed = CreateTodo.safeParse(body)
 if (!parsed.success) return Response.json({ issues: parsed.error.issues }, { status: 400 })
 
-// response validation (defensive — API ภายนอก)
+// response validation (defensive — external APIs)
 const ext = ExternalApiResponse.parse(await res.json())
 ```
 
@@ -54,27 +54,27 @@ const Env = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
   NODE_ENV: z.enum(['development', 'test', 'production']),
 })
-export const env = Env.parse(process.env)   // fail-fast ตอน boot
+export const env = Env.parse(process.env)   // fail-fast at boot
 ```
 
-- Validate env ตอน startup — fail fast ก่อน app run; `z.coerce.*` สำหรับ string→number/bool env vars
+- Validate env at startup — fail fast before the app runs; use `z.coerce.*` for string→number/bool env vars
 
 ### 4. Data Sources
 
-1. **Request bodies/params/query**: validate ก่อน business logic
-2. **External API responses**: validate ถ้า trust ต่ำ; skip ถ้า internal type-safe contract (perf)
+1. **Request bodies/params/query**: validate before business logic
+2. **External API responses**: validate if trust is low; skip if it's an internal type-safe contract (perf)
 3. **File uploads/JSON files**: parse → validate → use
 4. **WebSocket/stream payloads**: validate per message
-5. **Queue/job payloads**: validate ตอน consume
+5. **Queue/job payloads**: validate on consume
 
 ## Rules
 
-- `.safeParse` ที่ boundaries ที่ input ควร invalid ได้ — `.parse` เมื่อ invalid = bug (500)
-- Env validation ตอน boot เสมอ — late env errors = runtime surprises
-- Validate ครั้งเดียวที่ boundary — ภายใน trust types แล้ว (อย่า re-parse)
-- Async refinements ต้อง `parseAsync` — sync parse throw บน async schemas
+- `.safeParse` at boundaries where input may legitimately be invalid — `.parse` when invalid = bug (500)
+- Always validate env at boot — late env errors = runtime surprises
+- Validate once at the boundary — internally trust the types (don't re-parse)
+- Async refinements require `parseAsync` — sync parse throws on async schemas
 
 ## Expected Outcome
 
-- Boundaries ทุกจุด validate — env boot-checked, requests 400 ถูกต้อง
-- parse/safeParse เลือกถูกตาม error semantics
+- Every boundary validates — env is boot-checked, requests return 400 correctly
+- parse/safeParse chosen per the error semantics

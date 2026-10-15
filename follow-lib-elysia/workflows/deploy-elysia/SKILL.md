@@ -12,62 +12,62 @@ related:
 
 ## Goal
 
-เตรียมและ deploy Elysia app สู่ production — `bun build`, env config และ platform targets
+Prepare and deploy an Elysia app to production — `bun build`, env config and platform targets
 
 ## Scope
 
-ใช้เมื่อต้อง deploy Elysia API — ครอบคลุม production build, env vars, process management และ platform notes (VPS, Docker, serverless ที่รองรับ Bun)
+Use when deploying an Elysia API — covers production build, env vars, process management and platform notes (VPS, Docker, serverless that supports Bun)
 
 ## Execute
 
 ### 1. Prepare Production Config
 
-> Goal: ตรวจ config ก่อน deploy
+> Goal: check config before deploying
 
-1. ตรวจ env vars ที่ app ใช้ — ทำ `/check-secrets env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
-2. ตรวจ `Bun.version` บน target รองรับ Elysia version ที่ใช้
-3. ใช้ `process.env.PORT` สำหรับ port — อย่า hardcode
-4. ตรวจ CORS, error handling (`.onError()`), และ logging พร้อม production
+1. Check the env vars the app uses — do `/check-secrets env-vars`; secrets via `/follow-secret-manager`, never commit
+2. Verify the target's `Bun.version` supports the Elysia version used
+3. Use `process.env.PORT` for the port — don't hardcode
+4. Check CORS, error handling (`.onError()`) and logging are production-ready
 
 ### 2. Build
 
-> Goal: build app สำหรับ production
+> Goal: build the app for production
 
-1. Bun รัน TypeScript โดยตรงได้ — `bun run src/index.ts` ใช้ได้ใน production ถ้า runtime มี Bun
-2. Bundle เพื่อลด cold start/image size: `bun build src/index.ts --target bun --outfile dist/index.js` — ดู official docs สำหรับ flags ล่าสุด
-3. Compile เป็น single binary (optional): `bun build --compile src/index.ts --outfile app` — standalone executable ไม่ต้องติดตั้ง Bun
-4. ทดสอบ build output locally ก่อน deploy
+1. Bun runs TypeScript directly — `bun run src/index.ts` is usable in production if the runtime has Bun
+2. Bundle to cut cold start/image size: `bun build src/index.ts --target bun --outfile dist/index.js` — see the official docs for the latest flags
+3. Compile to a single binary (optional): `bun build --compile src/index.ts --outfile app` — a standalone executable with no Bun install needed
+4. Test the build output locally before deploying
 
 ### 3. Choose Deploy Target
 
-> Goal: เลือก platform ที่รองรับ Bun
+> Goal: pick a platform that supports Bun
 
-1. VPS/bare metal: ติดตั้ง Bun แล้วรัน `bun run` หรือ compiled binary — ใช้ process manager (systemd, pm2) สำหรับ restart
-2. Docker: base image `oven/bun` — multi-stage build ลด image size
-3. Platforms ที่รองรับ Bun natively — ดู official docs ที่ `https://elysiajs.com` สำหรับ deploy guides ล่าสุด
-4. ถ้า platform ไม่รองรับ Bun → ใช้ compiled binary หรือ Docker
+1. VPS/bare metal: install Bun then run `bun run` or the compiled binary — use a process manager (systemd, pm2) for restarts
+2. Docker: base image `oven/bun` — multi-stage build to shrink the image
+3. Platforms with native Bun support — see the official docs at `https://elysiajs.com` for the latest deploy guides
+4. If a platform doesn't support Bun → use the compiled binary or Docker
 
 ### 4. Verify Deployment
 
-> Goal: smoke test production deployment
+> Goal: smoke test the production deployment
 
-1. Health endpoint ตอบถูกต้อง (เพิ่ม `.get('/health', () => 'ok')` ถ้ายังไม่มี)
-2. ทดสอบ routes หลักและ validation บน production URL
-3. ตรวจ logs ไม่มี error; secrets ไม่ leak ใน responses
-4. ถ้าพัง → ทำ `/resolve-errors` แล้ว report
+1. The health endpoint responds correctly (add `.get('/health', () => 'ok')` if missing)
+2. Test the main routes and validation on the production URL
+3. Check logs have no errors; secrets don't leak in responses
+4. If broken → do `/resolve-errors` then report
 
 ## Rules
 
-- ห้าม commit secrets/env — ใช้ `/follow-secret-manager` เสมอ
-- ใช้ `process.env.PORT` — platforms กำหนด port เอง
-- ใช้ `--target bun` เมื่อ build — Elysia เป็น Bun-first framework
-- ทดสอบ build output locally ก่อน push deploy เสมอ
-- ใช้ `/use-bun-native-api` สำหรับ Bun runtime APIs (`Bun.serve`, `Bun.env`, flags)
-- ใช้ `/follow-lib-elysia` สำหรับ full reference
+- Never commit secrets/env — always use `/follow-secret-manager`
+- Use `process.env.PORT` — platforms assign the port themselves
+- Use `--target bun` when building — Elysia is a Bun-first framework
+- Always test the build output locally before pushing the deploy
+- Use `/use-bun-native-api` for Bun runtime APIs (`Bun.serve`, `Bun.env`, flags)
+- Use `/follow-lib-elysia` for the full reference
 
 ## Expected Outcome
 
-- Production build (bundle หรือ binary) ทำงานได้
-- Env vars/secrets จัดการถูกต้อง
-- Deployed app ตอบ health check และ routes หลัก
-- ไม่มี secrets leak ใน logs/responses
+- Production build (bundle or binary) runs
+- Env vars/secrets handled correctly
+- Deployed app answers the health check and main routes
+- No secrets leaked in logs/responses

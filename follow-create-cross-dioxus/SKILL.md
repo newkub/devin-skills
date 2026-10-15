@@ -1,113 +1,113 @@
 ---
 name: follow-create-cross-dioxus
-description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
+description: Set up and develop Desktop, Web, and Mobile applications with the Dioxus Rust framework
 argument-hint: "[scope]"
 related:
   - follow-create-web
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - deep-review
+  - deep-review-codebase
 
 ---
 
 ## Goal
 
-ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
+Set up and develop Desktop, Web, and Mobile applications with the Dioxus Rust framework
 
 ## Scope
 
-ตั้งค่า Dioxus สำหรับสร้าง cross-platform applications (Desktop, Web, Mobile) ด้วย Rust และ React-like components
+Configure Dioxus to build cross-platform applications (Desktop, Web, Mobile) with Rust and React-like components
 
-- ติดตั้ง Dioxus CLI และ dependencies
-- กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
-- พัฒนา desktop application ด้วย Rust
-- Build สำหรับหลาย platforms
+- Install the Dioxus CLI and dependencies
+- Configure `Cargo.toml` and `Dioxus.toml`
+- Develop the application with Rust
+- Build for multiple platforms
 
-- Packages: `dioxus` crate + `dioxus-cli` (`dx`) — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (0.8.x เป็น pre-release — ห้าม adopt โดยไม่เช็ค migration notes; ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
+- Packages: `dioxus` crate + `dioxus-cli` (`dx`) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (0.8.x is pre-release — never adopt without checking migration notes; no pins in this file, per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อนเริ่ม
+> Goal: verify the environment before starting
 
-1. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยันเวอร์ชันและ pattern ล่าสุด จากนั้นทำ `/deep-review` เพื่อสรุป tech stack
-2. ตรวจสอบ Rust/Cargo ติดตั้งแล้ว (`rustc --version`, `cargo --version`)
-3. ติดตั้ง `wasm32-unknown-unknown` target ถ้าทำ Web (`rustup target add wasm32-unknown-unknown`)
-4. Linux desktop build ต้องใช้ WebKitGTK — `sudo apt install libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev`; Windows ใช้ WebView2 (มากับ Edge); macOS ไม่ต้องลงเพิ่ม
-5. หลังติดตั้ง CLI ให้รัน `dx doctor` เพื่อตรวจ toolchains ที่ขาดสำหรับแต่ละ platform
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest version and patterns, then run `/deep-review-codebase` to summarize the tech stack
+2. Confirm Rust/Cargo are installed (`rustc --version`, `cargo --version`)
+3. Install the `wasm32-unknown-unknown` target for Web (`rustup target add wasm32-unknown-unknown`)
+4. Linux desktop builds require WebKitGTK — `sudo apt install libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev`; Windows uses WebView2 (ships with Edge); macOS needs nothing extra
+5. After installing the CLI, run `dx doctor` to check for missing toolchains per platform
 
 ### 2. Setup
 
-> Goal: ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
+> Goal: install the Dioxus CLI and create the project
 
-1. ติดตั้ง Dioxus CLI (เลือกวิธีใดวิธีหนึ่ง):
+1. Install the Dioxus CLI (pick one method):
    - prebuilt binary: `curl -sSL https://dioxus.dev/install.sh | bash`
    - `cargo binstall dioxus-cli --force`
-   - build จาก source (ช้า): `cargo install dioxus-cli`
-2. ตรวจสอบ `dx --version`
-3. สร้างโปรเจกต์: `dx new my-dioxus-app` และเลือก template (Bare-bones, Jumpstart, Workspace)
-4. หรือ init ใน directory ที่มีอยู่: `dx init` / สร้าง `Cargo.toml` เองด้วย dependency `dioxus`
+   - build from source (slow): `cargo install dioxus-cli`
+2. Verify `dx --version`
+3. Create a project: `dx new my-dioxus-app` and pick a template (Bare-bones, Jumpstart, Workspace)
+4. Or init in an existing directory: `dx init` / hand-write `Cargo.toml` with the `dioxus` dependency
 
 ### 3. Configure
 
-> Goal: กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
+> Goal: set up `Cargo.toml` and `Dioxus.toml`
 
-1. ระบุ `dioxus` dependency ใน `Cargo.toml` พร้อม feature ตาม target
-2. สร้าง `Dioxus.toml` กำหนด `default_platform`, `out_dir`, `asset_dir`
-3. ตั้งค่า `web.proxy` ถ้าเชื่อม API backend
-4. ตรวจสอบ profile release: `opt-level = 3` และ `lto = true`
+1. Declare the `dioxus` dependency in `Cargo.toml` with features matching the target
+2. Create `Dioxus.toml` defining `default_platform`, `out_dir`, `asset_dir`
+3. Set `web.proxy` when connecting to an API backend
+4. Check the release profile: `opt-level = 3` and `lto = true`
 
 ### 4. Develop
 
-> Goal: พัฒนา components และรัน development server
+> Goal: build components and run the development server
 
-1. สร้าง `src/main.rs` ด้วย `launch(app)` และ component tree
-2. ใช้ `use_signal` สำหรับ state
-3. สร้าง components แยกไฟล์ใน `src/components/`
-4. รัน `dx serve` หรือ `dx serve --platform desktop`
+1. Create `src/main.rs` with `launch(app)` and the component tree
+2. Use `use_signal` for state
+3. Split reusable components into `src/components/`
+4. Run `dx serve` or `dx serve --platform desktop`
 
 ### 5. Build
 
-> Goal: Build สำหรับ production
+> Goal: build for production
 
 1. Desktop: `dx build --release`
 2. Web: `dx build --release --platform web`
-3. ใช้ `dx bundle` เมื่อต้องการ package เป็น distributable bundle (installer/app image)
-4. ตรวจสอบ `dist/` มี output ที่ถูกต้อง
+3. Use `dx bundle` when a distributable bundle (installer/app image) is needed
+4. Verify `dist/` contains the correct output
 
 ## Rules
 
 ### 1. Project Structure
 
-- `Cargo.toml` สำหรับ Rust dependencies
-- `Dioxus.toml` สำหรับ Dioxus config
-- `src/main.rs` สำหรับ entry point
-- `src/components/` สำหรับ reusable components
-- `dist/` สำหรับ build output
+- `Cargo.toml` for Rust dependencies
+- `Dioxus.toml` for Dioxus config
+- `src/main.rs` for the entry point
+- `src/components/` for reusable components
+- `dist/` for build output
 
 ### 2. Rust Requirements
 
-- ต้องมี Rust ติดตั้งแล้ว
-- ติดตั้ง `dioxus-cli` ด้วย `cargo install dioxus-cli`
-- ใช้ `dioxus` crate ใน `Cargo.toml`
-- ใช้ `dx serve` สำหรับ development
+- Rust must be installed
+- Install `dioxus-cli` via `cargo install dioxus-cli`
+- Use the `dioxus` crate in `Cargo.toml`
+- Use `dx serve` for development
 
 ### 3. Platform Targets
 
 - Desktop: default platform
-- Web: ต้องมี `wasm32-unknown-unknown` target
-- Mobile: ใช้ Dioxus mobile target ตาม official docs
+- Web: requires the `wasm32-unknown-unknown` target
+- Mobile: use the Dioxus mobile target per official docs
 
-- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create cross dioxus)
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /follow-create-mobile-cross-with-capacitor if needed (create cross dioxus)
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 
-- Dioxus CLI ติดตั้งและทำงานได้
-- Project สร้างสำเร็จ
-- Development server ทำงานได้
-- Production build สร้าง executable ได้
+- Dioxus CLI installed and working
+- Project created successfully
+- Development server runs
+- Production build produces a working executable

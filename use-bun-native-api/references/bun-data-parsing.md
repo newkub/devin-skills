@@ -1,11 +1,12 @@
 # Bun Data Parsing APIs
 
-Use Bun parsing APIs for data parsing
-
-- `Bun.TOML.parse()` - Parse TOML files
-- `Bun.markdown.html()/.render()/.react()/.ansi()` - Built-in Markdown parser/renderer (CommonMark+GFM; HTML output is not sanitized)
-- `Bun.XML.parse()` - Parse XML
-- `Bun.color()` - Color parsing and manipulation (RGB, HSL, HEX, CSS names)
-- `Bun.semver` - Semantic version parsing and comparison
-- `Bun.Glob` - Glob pattern matching (fast file matching)
-- `Bun.Cookie` / `Bun.CookieMap` - HTTP Cookie parsing and serialization
+| API | Description |
+|-----|-------------|
+| `Bun.JSON5.parse()` / `.stringify()` | JSON5 (comments, trailing commas, unquoted keys) |
+| `Bun.JSONL.parseStream()` / `.stringify()` | Line-delimited JSON streaming |
+| `Bun.TOML.parse()` / `.decode()` / `.encode()` | TOML parsing and serialization |
+| `Bun.YAML.parse()` / `.stringify()` | YAML parsing and serialization |
+| `Bun.XML.parse()` | XML parsing |
+| `Bun.markdown` | Built-in Markdown parser/renderer (CommonMark+GFM; `.html()`/`.render()`/`.react()`/`.ansi()` — HTML output is not sanitized) |
+| `Bun.color()` | Color parsing and conversion (RGB, HSL, HEX, CSS names) |
+| `Bun.Cookie` / `Bun.CookieMap` | HTTP cookie parsing and serialization |

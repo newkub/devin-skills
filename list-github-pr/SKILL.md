@@ -1,6 +1,6 @@
 ---
 name: list-github-pr
-description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
+description: Show the pull requests of a given repo on GitHub with state and metadata
 argument-hint: "[repo]"
 related:
   - create-github
@@ -10,12 +10,12 @@ related:
 
 ## Goal
 
-แสดงรายการ pull requests ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
+List the pull requests of the specified repository with key data
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `open-github`, `create-github`, `review-github-pr`
+- For related skills: `open-github`, `open-github`, `create-github`, `review-github-pr`
 
-ใช้สำหรับดู pull requests ของ repository ใดๆ บน GitHub กรองตาม state ได้
+Use to view pull requests of any repository on GitHub, filterable by state
 
 ## Execute
 
@@ -23,50 +23,49 @@ related:
 
 > Goal: Get Authenticated User
 
-1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
-2. รับชื่อ repository ที่ต้องการดู PRs จากผู้ใช้
+1. Use `mcp7_get_me` to get the GitHub username
+2. Get the repository name to list PRs for from the user
 
 ### 2. List Pull Requests
 
 > Goal: List Pull Requests
 
-1. ทำ `mcp7_list_pull_requests` ด้วย `owner` และ `repo` parameters
-2. ใช้ `state` parameter สำหรับกรอง: `open`, `closed`, `all`
-3. ใช้ `sort: updated` และ `direction: desc` เพื่อเรียงจากใหม่สุด
-4. ใช้ `perPage: 100` สำหรับ pagination
+1. Use `mcp7_list_pull_requests` with `owner` and `repo` parameters
+2. Use the `state` parameter to filter: `open`, `closed`, `all`
+3. Use `sort: updated` and `direction: desc` to sort newest first
+4. Use `perPage: 100` for pagination
 
 ### 3. Format Output
 
 > Goal: Format Output
 
-1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
-2. กำหนด columns:
-   - No. เลข PR
-   - Title ชื่อ PR
+1. Use `/report` to format as a table
+2. Define columns:
+   - No. PR number
+   - Title PR title
    - State open/closed/merged
-   - Author ผู้สร้าง
+   - Author creator
    - Branch head branch → base branch
-   - Reviews จำนวน reviews
-   - Updated วันที่อัปเดตล่าสุด
+   - Reviews number of reviews
+   - Updated last update date
 
 ## Rules
 
 ### 1. API Usage
 
-- ใช้ `mcp7_list_pull_requests` สำหรับ list PRs ของ repo ที่ระบุ
-- ใช้ `mcp7_get_me` สำหรับรับ authenticated user
-- ใช้ `state` parameter สำหรับกรอง open/closed/all
-- ใช้ `sort` และ `direction` สำหรับ sorting
+- Use `mcp7_list_pull_requests` to list PRs of the given repo
+- Use `mcp7_get_me` to get the authenticated user
+- Use the `state` parameter to filter open/closed/all
+- Use `sort` and `direction` for sorting
 
 ### 2. Output Format
 
-- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
-- เรียงตามวันที่อัปเดตล่าสุด
-- แสดงข้อมูลสำคัญ: number, title, state, author, branch, reviews, updated
+- Use `/report` to format the result
+- Sort by last update date
+- Show key data: number, title, state, author, branch, reviews, updated
 
 ## Expected Outcome
 
-- รายการ pull requests ของ repository ที่ระบุ
-- จัดรูปแบบเป็นตารางที่อ่านง่าย
-- ข้อมูลครบถ้วน: number, title, state, author, branch, reviews, updated
-
+- The pull request list of the specified repository
+- Formatted as a readable table
+- Complete data: number, title, state, author, branch, reviews, updated

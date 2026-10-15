@@ -1,54 +1,54 @@
-# GPUI Kit — State Model และ Async Tasks
+# GPUI Kit — State Model And Async Tasks
 
 ## Recommended Patterns
 
 ### Entity/Render Mental Model
 
-- `Entity<T>` = state ที่ retained ข้าม frames — สร้างครั้งเดียวด้วย `cx.new(|cx| ...)` แล้ว reuse
-- เมื่อ `T: Render` → entity เป็น persistent view ที่ rebuild element tree ทุก render pass
-- `RenderOnce` component = value ชั่วคราว รับ state + handler จาก caller — เหมาะกับ reusable piece ที่ไม่มี state ถาวร (Button, Checkbox, Label)
-- กฎง่ายๆ: มี state ที่ต้องอยู่ข้าม render → `Entity`; แค่ render ตาม props → `RenderOnce`
+- `Entity<T>` = state retained across frames — create once with `cx.new(|cx| ...)` then reuse
+- when `T: Render` → the entity is a persistent view that rebuilds the element tree every render pass
+- `RenderOnce` component = a temporary value taking state + handlers from the caller — fits reusable pieces with no permanent state (Button, Checkbox, Label)
+- simple rule: state that must survive across renders → `Entity`; just rendering per props → `RenderOnce`
 
-### Ownership ของ State และ Handles
+### Ownership Of State And Handles
 
-- stateful inputs (Input, Editor) สร้างเป็น `Entity<InputState>` แล้วเก็บใน struct field ของ owner view — ห้ามสร้างใหม่ใน `render`
-- `cx.subscribe_in(&state, window, |view, state, ev, window, cx| ...)` คืน `Subscription` — เก็บไว้ใน field เสมอ เพราะ drop = detach
-- `Task<T>` handle เช่นกัน — เก็บใน field ถ้าต้องการให้ทำงานต่อ; drop = cancel
-- callbacks ใช้ `cx.listener(|this, ev, _, cx| { this.field = ...; cx.notify(); })` — mutate state แล้วเรียก `cx.notify()` เสมอ ไม่งั้น UI ไม่ redraw
+- stateful inputs (Input, Editor) are created as `Entity<InputState>` and stored in the owner view's struct fields — never create them anew in `render`
+- `cx.subscribe_in(&state, window, |view, state, ev, window, cx| ...)` returns a `Subscription` — always store it in a field, because drop = detach
+- `Task<T>` handles likewise — keep in a field if it must continue running; drop = cancel
+- callbacks use `cx.listener(|this, ev, _, cx| { this.field = ...; cx.notify(); })` — mutate the state then always call `cx.notify()`, otherwise the UI won't redraw
 
-### Foreground vs Background Work
+### Foreground Vs Background Work
 
-- `cx.spawn(async move |this, cx| ...)` — foreground task บน UI context; update entity ผ่าน `this.update(cx, |view, cx| ...)` หรือ `WeakEntity`
-- `cx.background_spawn(async move { ... })` — CPU work หนักบน worker pool; return เฉพาะ owned `Send` data เท่านั้น ห้ามแตะ entity/window ข้างใน
-- pattern มาตรฐาน: spawn foreground → delegate งานหนักให้ `background_spawn` → await → `this.update()` เอาผลกลับเข้า state → `cx.notify()`
-- กัน stale result ด้วย `request_id` หรือ sequence counter ใน struct — เช็คก่อน apply ผล async
+- `cx.spawn(async move |this, cx| ...)` — foreground task on the UI context; update the entity via `this.update(cx, |view, cx| ...)` or a `WeakEntity`
+- `cx.background_spawn(async move { ... })` — heavy CPU work on the worker pool; returns only owned `Send` data — never touch an entity/window inside
+- standard pattern: spawn foreground → delegate heavy work to `background_spawn` → await → `this.update()` to bring the result back into state → `cx.notify()`
+- guard against stale results with a `request_id` or sequence counter in the struct — check before applying an async result
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| เก็บ `Entity<InputState>`, `Task`, `Subscription` ใน struct field | สร้าง entity/subscription ใหม่ใน `render` |
-| `cx.notify()` หลัง mutate state ทุกครั้ง | ลืม notify แล้วงงว่าทำไม UI ไม่อัปเดต |
-| คำนวณหนักด้วย `cx.background_spawn` แล้วส่งผลกลับ | แก้ entity จาก background task โดยตรง |
-| เช็ค `request_id`/`WeakEntity` ก่อน apply async result | assume ว่า result ที่ได้ยัง fresh เสมอ |
-| อ่าน theme ผ่าน `cx.theme()` | hardcode สี เช่น `rgb(0x...)` ตรงๆ |
+| store `Entity<InputState>`, `Task`, `Subscription` in struct fields | create entities/subscriptions anew in `render` |
+| `cx.notify()` after every state mutation | forget notify then wonder why the UI doesn't update |
+| do heavy computation with `cx.background_spawn` and send the result back | modify an entity directly from a background task |
+| check `request_id`/`WeakEntity` before applying an async result | assume the received result is always fresh |
+| read the theme via `cx.theme()` | hardcode colors like raw `rgb(0x...)` |
 
 ## Common Pitfalls
 
-- สร้าง `InputState` ใน `render` → state หายทุก frame, cursor/text reset — ต้อง hoist ขึ้น constructor
-- `Task`/`Subscription` ไม่ถูกเก็บ → cancel/detach ทันที ทำให้ดูเหมือน callback ไม่ทำงาน
-- update state ใน `cx.spawn` โดยไม่ผ่าน `this.update(cx, ...)` → panic หรือ borrow error — ใช้ `WeakEntity` ถ้า view อาจถูก drop ก่อน
-- `on_change` คือ requested value — owner ต้อง apply เอง (controlled component) ไม่ใช่ component แก้ state ให้
+- creating `InputState` in `render` → state lost every frame, cursor/text reset — it must be hoisted to the constructor
+- `Task`/`Subscription` not stored → cancelled/detached immediately, making it look like the callback never fires
+- updating state in `cx.spawn` without going through `this.update(cx, ...)` → panic or borrow error — use `WeakEntity` if the view may be dropped first
+- `on_change` is the requested value — the owner must apply it itself (controlled component); the component doesn't change the state for you
 
 ## Performance Notes
 
-- `render` rebuild element tree ทุกครั้งที่ `cx.notify()` — keep render cheap: เตรียม derived data ไว้ใน state หรือ cache ไม่คำนวณหนักใน render
-- `cx.notify()` มีต้นทุน — batch updates เมื่อทำได้ ไม่ notify ใน loop ทีละรอบ
-- async result ที่มาช้า (search, file IO) ควร debounce ใน caller ก่อน spawn task ใหม่
+- `render` rebuilds the element tree every time `cx.notify()` fires — keep render cheap: prepare derived data in the state or cache it, don't compute heavily in render
+- `cx.notify()` has a cost — batch updates when possible; don't notify round by round in a loop
+- slow async results (search, file IO) should be debounced in the caller before spawning a new task
 
 ## Ecosystem / Integration
 
-- `init(cx)` ต้องถูกเรียกก่อนสร้าง component หรือเปิด window — initialize Kit layers + themes
-- `open_window` wrap ใน `Root` ให้อัตโนมัติ — overlays (dialog/sheet/notification) อาศัย Root
-- keyboard shortcuts ใช้ `Action` derive + `KeyBinding`/`cx.bind_keys` ตาม guide docs
-- test ผ่าน GPUI test harness — mount view ใน test window แล้ว simulate events ได้
+- `init(cx)` must be called before creating components or opening windows — it sets up Kit layers + themes
+- `open_window` wraps in a `Root` automatically — the overlays (dialog/sheet/notification) rely on it
+- keyboard shortcuts use the `Action` derive + `KeyBinding`/`cx.bind_keys` per the guide docs
+- test through the GPUI test harness — mount the view in a test window then simulate events

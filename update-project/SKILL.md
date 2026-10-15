@@ -20,7 +20,7 @@ related:
   - update-version-to-latest
   - keepup-source-code
   - use-subagents
-  - deep-review
+  - deep-review-codebase
 
 ---
 
@@ -32,7 +32,7 @@ Update the root project by checking the latest git log of every workspace and sy
 
 Use after shipping every workspace — check each workspace's latest git log, restore the information into the root `AGENTS.md` and `README.md`, sync project files, update project skills and GitHub metadata. Do not modify workspace code. If dependencies, runtime, tools, or any versioned config need updating → run `/update-version-to-latest` before updating other config
 
-Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review` before Step 1
+Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review-codebase` before Step 1
 
 ## Execute
 
@@ -70,7 +70,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 3. Inspect `docs/`, `rules/`, `.devin/`, `.vscode/`
 4. Identify orchestration tools (moon, turbo)
 5. Run updates in order:
-   - `/deep-review` (must run if the project has CI/CD)
+   - `/deep-review-codebase` (must run if the project has CI/CD)
    - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
    - `/update-version-to-latest` (if all workspaces' dependencies need updating to latest)
    - `/update-version-to-latest` (if runtime, deps, tools, and all versioned config need updating to latest)
@@ -90,11 +90,11 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - `/update-todo-md` (if there is a `TODO.md`)
    - `/update-references` to sync references
    - `/update-gitignore` to sync `.gitignore`
-   - `/deep-review` (if there is a `tools/review-codebase/`)
+   - `/deep-review-codebase` (if there is a `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing`
-6. Run `/deep-review` to sync all config
-7. Run `/follow-gitignore` to sync `.gitignore`
+6. Run `/deep-review-codebase` to sync all config
+7. Run `/update-gitignore` to sync `.gitignore`
 8. Verify the scripts in `package.json` are consistent
 
 ### 4. Update Project Skills
@@ -110,7 +110,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 > Goal: GitHub repo metadata and branch protection reflect the real project
 
 1. Run `/update-github-metadata` to sync description, homepage, and topics with `README.md` and `package.json`
-2. Run `/follow-github` to set branch protection on `main` and the integration branch per project conventions and `.github` templates (optional)
+2. Run `/update-github-metadata` `### 6. Protect Branches` to set branch protection on `main` and the integration branch per project conventions (optional); `.github` templates come from `/follow-dot-github` (optional)
 3. Confirm metadata and branch protection match project conventions
 
 ### 6. Validate And Report
@@ -178,7 +178,7 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
    - Go `go.mod`: `module` path, `go` version; no `LICENSE`/`README.md` → recommend adding them
 3. Scripts: must have `build`, `test:all`, `verify` (`verify` = `check && test` or `lint && typecheck && test`) — never add a `release` script (release goes through the `/setup-cicd` workflow or `/follow-tool-*`)
 4. Missing field → have the user fill it in or use the project's defaults; run `/follow-tasks` to complete the scripts
-5. Validate: `/deep-review` the manifest + `/run-verify` — fail → fix and retry ≤3
+5. Validate: `/deep-review-codebase` the manifest + `/run-verify` — fail → fix and retry ≤3
 6. Monorepo: `/follow-monorepo` first; workspace packages don't need `private: false` if publishing happens at the root
 7. Never publish yourself — publish via `/publish-package-to-registry` or `/run-release`
 
@@ -227,7 +227,7 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
 
 - **Inputs**: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
 - **Tools**: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
-- **Execute**: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/follow-github` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
+- **Execute**: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/update-github-metadata` `### 6. Protect Branches` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
 - **Output**: structured summary — metadata fields changed (before → after), branch protection status, permission errors or blockers (gh auth, repo not found)
 - **Constraints**: remote mutations only (`gh api`/`gh repo edit`), never modify local files; no push, no commit (the parent handles it); no remote or gh auth failure → report `blocked`, don't fail
 - **Full detail**: `references/subagent-github-metadata-updater.md`

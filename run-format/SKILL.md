@@ -3,7 +3,7 @@ name: run-format
 description: Format code and resolve formatter issues
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - convert
   - follow-best-practice
   - suggest-next-action
@@ -24,7 +24,7 @@ Run format for all project types and handle errors/warnings from the formatter
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (format)
+> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (format)
 
 ### 1. Check Formatter Config
 

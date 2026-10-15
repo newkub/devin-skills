@@ -1,53 +1,53 @@
-# MSW — Dev Worker และ Test Server Wiring
+# MSW — Dev Worker and Test Server Wiring
 
 ## Recommended Patterns
 
 ### Browser Dev Mode
 
-- start worker เฉพาะเมื่อ flag เปิด: wrap ใน `if (import.meta.env.DEV && import.meta.env.VITE_MSW === '1')` — ห้ามบังคับทุก dev ใช้ mock
-- `await worker.start({ onUnhandledRequest: 'bypass' })` ก่อน render app — race ระหว่าง worker start กับ first fetch ทำให้ request แรกหลุด mock
-- `mockServiceWorker.js` อยู่ใน `public/` (generate ด้วย `msw init`) — commit เข้า repo เพื่อทีมไม่ต้อง init เอง; อัปเดตเมื่อ msw version bump (`msw init public/ --save` ซ้ำ)
-- ใช้ `onUnhandledRequest: 'warn'` ใน dev — เห็น endpoints ที่ยังไม่ mock ใน console ทันที
-- opt-out path: env flag ที่อ่านได้ทั้ง local dev server และ storybook — อย่าผูกกับ hostname เช็คเอง
+- start the worker only when the flag is on: wrap in `if (import.meta.env.DEV && import.meta.env.VITE_MSW === '1')` — never force every dev run onto mocks
+- `await worker.start({ onUnhandledRequest: 'bypass' })` before rendering the app — a race between worker start and the first fetch lets the very first request escape the mock
+- `mockServiceWorker.js` lives in `public/` (generated with `msw init`) — commit it to the repo so the team doesn't init themselves; update it when the msw version bumps (re-run `msw init public/ --save`)
+- use `onUnhandledRequest: 'warn'` in dev — see not-yet-mocked endpoints in the console immediately
+- opt-out path: an env flag readable by both the local dev server and storybook — don't tie it to a hostname check you write yourself
 
 ### Node Test Server
 
-- ไฟล์เดียว `src/mocks/node.ts` export `server` จาก `setupServer(...handlers)` — test setup file import เจ้านี้เท่านั้น
-- lifecycle ใน setup file: `beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))`, `afterEach(() => server.resetHandlers())`, `afterAll(() => server.close())`
-- ใช้ `onUnhandledRequest: 'error'` ใน tests — test ที่ยิง endpoint ใหม่โดยไม่ตั้งใจต้อง fail ทันทีไม่ใช่ผ่านเงียบ
-- ชี้ setup file ใน `test.setupFiles` ของ `vitest.config.ts` — อย่า import server แยกในแต่ละ spec
+- one file `src/mocks/node.ts` exports `server` from `setupServer(...handlers)` — the test setup file imports only this one
+- lifecycle in the setup file: `beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))`, `afterEach(() => server.resetHandlers())`, `afterAll(() => server.close())`
+- use `onUnhandledRequest: 'error'` in tests — a test that accidentally hits a new endpoint must fail immediately, not pass silently
+- point the setup file at `test.setupFiles` in `vitest.config.ts` — don't import the server separately in each spec
 
 ### Dual Environment
 
-- แชร์ `handlers.ts` เดียวกันระหว่าง `browser.ts` และ `node.ts` — mock behavior เดียวกัน dev/test
-- browser worker กับ Node server คนละ implementation แต่ API เหมือนกัน — ห้ามเขียน handler เวอร์ชัน dev-only
-- environments อื่น (Storybook, Playwright component tests) reuse `setupServer`/`setupWorker` เดียวกัน ผ่าน entry ของ tool นั้น
+- share the same `handlers.ts` between `browser.ts` and `node.ts` — identical mock behavior in dev/test
+- the browser worker and the Node server are different implementations with the same API — never write a dev-only handler version
+- other environments (Storybook, Playwright component tests) reuse the same `setupServer`/`setupWorker` through that tool's entry point
 
-### Auth และ State Simulation
+### Auth and State Simulation
 
-- auth flows: handler `/api/auth/login` return token + set header ที่ client คาด — อย่า hard-code cookie ใน test code
-- stateful mocks (cart, draft): เก็บ in-memory state ใน module ของ handler + export `resetMockState()` ให้ test เรียก — หลีกเลี่ยง stateful mock ถ้าไม่จำเป็น
+- auth flows: the `/api/auth/login` handler returns a token + sets the headers the client expects — don't hard-code cookies in test code
+- stateful mocks (cart, draft): keep in-memory state in the handler's module + export `resetMockState()` for tests to call — avoid stateful mocks unless necessary
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `VITE_MSW=1` opt-in flag | enable mock โดย default ทุก `bun run dev` |
-| `server.listen({ onUnhandledRequest: 'error' })` ใน tests | `bypass` ใน tests — request หลุดไป network จริงโดยเงียบ |
-| commit `mockServiceWorker.js` | gitignore มัน — ทีมจะ version mismatch กัน |
-| `resetHandlers` ใน `afterEach` | reset ใน `beforeEach` อย่างเดียว — test ที่ override ตอนท้ายจะค้าง |
-| reuse handlers เดียว dev+test | fork handler sets — drift กันแน่ |
+| `VITE_MSW=1` opt-in flag | enable mocks by default on every `bun run dev` |
+| `server.listen({ onUnhandledRequest: 'error' })` in tests | `bypass` in tests — requests escape to the real network silently |
+| commit `mockServiceWorker.js` | gitignore it — the team will end up with version mismatches |
+| `resetHandlers` in `afterEach` | resetting only in `beforeEach` — a test that overrides late leaves state behind |
+| reuse one handler set for dev+test | fork handler sets — they will definitely drift |
 
 ## Common Pitfalls
 
-- `worker.start()` ไม่ await ก่อน render → first-page requests ผ่าน network จริง — symptom: data จริงปะปน mock
-- `mockServiceWorker.js` version เก่ากว่า `msw` package → worker update warning/พฤติกรรมแปลก; regenerate หลัง upgrade
-- Node server ไม่ close → process ค้าง; ใส่ `afterAll(server.close)` เสมอ
-- service worker scope: worker อยู่ `public/` root ควบคุมทั้ง origin — sub-path deploy ต้องตั้ง `serviceWorker.url` ให้ตรง
-- parallel test runners + `server.use` race → state แชร์ข้าม test files ใน process เดียว; เก็บ override ใน test scope เดียว
+- `worker.start()` not awaited before render → first-page requests go through the real network — symptom: real data mixed with mocks
+- a `mockServiceWorker.js` older than the `msw` package → worker-update warnings/odd behavior; regenerate after upgrading
+- the Node server never closes → the process hangs; always wire `afterAll(server.close)`
+- service worker scope: a worker at the `public/` root controls the whole origin — a sub-path deploy must set `serviceWorker.url` to match
+- parallel test runners + `server.use` races → state shared across test files in one process; keep overrides within a single test scope
 
 ## Performance Notes
 
-- `onUnhandledRequest: 'warn'` เพิ่ม console noise เล็กน้อย — คุ้มใน dev, ปิดได้ใน production-like preview
-- Node server startup ถูก (~ms) — อย่า lazy-init ต่อ test; setup file ครั้งเดียวพอ
-- ปิด MSW ใน test files ที่ไม่ต้องใช้ด้วย `server.close()` เฉพาะ suite ถ้า suite หนัก — แต่ปกติไม่จำเป็น
+- `onUnhandledRequest: 'warn'` adds a little console noise — worth it in dev, can be disabled in production-like previews
+- Node server startup is cheap (~ms) — don't lazy-init per test; one setup file call is enough
+- disable MSW in test files that don't need it with a suite-scoped `server.close()` for heavy suites — usually unnecessary

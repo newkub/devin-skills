@@ -19,7 +19,7 @@ Research dependencies or libraries suitable for the project — analyze the mani
 
 - Choose new dependencies, compare libraries, find compatible versions, audit the project's deps
 - Supports `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
-- Never edit manifest files directly — hand off to `/list-dependencies` or `/deep-review`
+- Never edit manifest files directly — hand off to `/list-dependencies` or `/deep-review-codebase`
 - Bench/compare table for existing deps → `/run-bench-deps` (CLI report, no research)
 
 ## Execute

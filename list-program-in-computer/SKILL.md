@@ -1,6 +1,6 @@
 ---
 name: list-program-in-computer
-description: แสดงรายการ program ที่ติดตั้งในเครื่องจาก package manager ทั้งหมด
+description: List programs installed on the machine from all package managers
 argument-hint: "[filter]"
 related:
   - download-program
@@ -14,115 +14,115 @@ related:
 
 ## Goal
 
-แสดงรายการ program ที่ติดตั้งในเครื่อง โดยรวมข้อมูลจาก package manager ต่างๆ
+List programs installed on the machine, combining data from the various package managers
 
 ## Scope
 
-- ใช้บน Windows เป็นหลัก
-- query จาก `mise`, `scoop`, `winget`
-- รองรับ filter ด้วยชื่อ program
-- แสดงผลด้วย `/report`
-- ไม่แก้ไข/ลบ program
+- Used mainly on Windows
+- Query from `mise`, `scoop`, `winget`
+- Supports filtering by program name
+- Show results with `/report`
+- Never modifies/deletes a program
 
 ## Execute
 
 ### 1. Identify Filter
 
-> Goal: ระบุ program ที่ต้องการ filter
+> Goal: identify the program to filter
 
-1. รับ `filter` จาก argument (ถ้าไม่ระบุ → list ทั้งหมด)
-2. ถ้า `filter` กำกวม → ใช้ `/enhance-prompt` หรือ `/ask-me`
+1. Take `filter` from the argument (unspecified → list everything)
+2. `filter` is ambiguous → use `/enhance-prompt` or `/ask-me`
 
 ### 2. Detect Package Managers
 
-> Goal: หา package manager ที่พร้อมใช้
+> Goal: find the available package managers
 
-1. ทำ `/download-program` หรือเช็คโดยตรงว่า `mise`, `scoop`, `winget` มีไหม
-2. บันทึก package manager ที่พร้อมใช้
+1. Use `/download-program` or check directly whether `mise`, `scoop`, `winget` exist
+2. Record the available package managers
 
 ### 3. Query Mise
 
-> Goal: เอารายการ program จาก mise
+> Goal: get the program list from mise
 
-1. รัน `mise list` หรือ `mise ls`
-2. ถ้ามี `filter` → ให้ `mise list | Select-String -Pattern <filter>`
-3. บันทึกผล
+1. Run `mise list` or `mise ls`
+2. `filter` present → use `mise list | Select-String -Pattern <filter>`
+3. Record the result
 
 ### 4. Query Scoop
 
-> Goal: เอารายการ program จาก scoop
+> Goal: get the program list from scoop
 
-1. รัน `scoop list` หรือ `scoop list <filter>`
-2. ถ้าไม่มี `filter` ให้เก็บรายการทั้งหมด
-3. บันทึกผล
+1. Run `scoop list` or `scoop list <filter>`
+2. No `filter` → keep the full list
+3. Record the result
 
 ### 5. Query Winget
 
-> Goal: เอารายการ program จาก winget
+> Goal: get the program list from winget
 
-1. รัน `winget list` หรือ `winget list <filter>`
-2. กรองเฉพาะ program ที่ user ติดตั้ง (ไม่ใช่ system components ถ้าไม่จำเป็น)
-3. บันทึกผล
+1. Run `winget list` or `winget list <filter>`
+2. Keep only programs the user installed (not system components unless needed)
+3. Record the result
 
 ### 6. Query PowerShell Get-Command
 
-> Goal: หา program ทีอยู่ใน PATH แต่อาจไม่อยู่ใน package manager
+> Goal: find programs on PATH that may not be in a package manager
 
-1. รัน `Get-Command <filter>` (ถ้ามี filter)
-2. หรือ `Get-Command -All` แล้วเลือก common tools
-3. บันทึก path และ version (ถ้า `--version` ใช้ได)
+1. Run `Get-Command <filter>` (when a filter exists)
+2. Or `Get-Command -All` then pick common tools
+3. Record path and version (when `--version` works)
 
 ### 7. Merge And Deduplicate
 
-> Goal: รวมผลจากทุกแหล่งเป็นรายการเดียว
+> Goal: combine results from all sources into one list
 
-1. รวมรายการจาก `mise`, `scoop`, `winget`, `Get-Command`
-2. deduplicate โดยใช้ชื่อ program หลัก
-3. ถ้าชื่อซ้ำ → บันทึก package manager ทั้งหมดทีติดตั้ง
+1. Merge the lists from `mise`, `scoop`, `winget`, `Get-Command`
+2. Deduplicate by the primary program name
+3. Duplicate name → record every package manager that installed it
 
 ### 8. Format Output
 
-> Goal: แสดงผลอ่านง่าย
+> Goal: show a readable result
 
-1. ใช้ `/report` เพื่อสร้างตาราง
-2. คอลัมน์: `Name`, `Version`, `Package Manager`, `Source/Path`
-3. เรียงตามชื่อ
+1. Use `/report` to build a table
+2. Columns: `Name`, `Version`, `Package Manager`, `Source/Path`
+3. Sort by name
 
 ## Rules
 
 ### 1. No Modify
 
-- ไม่ติดตั้ง ไม่อัปเดต ไม่ลบ program
-- แค่แสดงรายการ
+- Never install, update, or remove a program
+- List only
 
 ### 2. Respect Filter
 
-- ถ้า user ระบุ filter ให้แสดงเฉพาะที match
-- ถ้าไม่ระบุ ให้แสดงทั้งหมด แต่จำกัดจำนวนไม่ให้ยาวเกินไป
+- The user gives a filter → show only what matches
+- Unspecified → show everything, but keep the list from getting too long
 
 ### 3. Combine Sources
 
-- แสดง package manager ของแต่ละ program
-- ถ้าติดตั้งผ่านหลาย package manager ให้ระบุทุกอัน
+- Show the package manager for each program
+- Installed via multiple package managers → list them all
 
 ### 4. Performance
 
-- รัน command แบบ parallel ถ้าเป็นไปได้
-- ถ้า command ช้าเกิน 30 วินาที ให้ข้ามไปหรือ timeout
+- Run commands in parallel when possible
+- A command slower than 30 seconds → skip or timeout
 
 ### 5. Output
 
-- ใช้ `/report` หรือ markdown table
-- ถ้าไม่พบ program → รายงานว่าไม่พบ
+- Use `/report` or a markdown table
+- No program found → report that nothing was found
 
-- ใช้ /use-pwsh-shell ถ้าจำเป็น
-- ใช้ /download-program ถ้าจำเป็น
-- ใช้ /uninstall-program-in-computer ถ้าจำเป็น
-- ใช้ /run-program ถ้าจำเป็น
+- Use /use-pwsh-shell if needed
+- Use /download-program if needed
+- Use /uninstall-program-in-computer if needed
+- Use /run-program if needed
 
 ## Expected Outcome
 
-- รายการ program ที่ติดตั้งครบถ้วน
-- ระบุ version, package manager, path
-- ผลลัพธ์ไม่ซ้ำซ้อน
-- ไม่มีการแก้ไขใดๆ ในระบบ
+- A complete list of installed programs
+- Version, package manager, and path stated
+- No duplicate entries in the result
+- No modification to the system

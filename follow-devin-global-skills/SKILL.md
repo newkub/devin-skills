@@ -1,6 +1,6 @@
 ---
 name: follow-devin-global-skills
-description: อ่านและใช้ skills ทีมีใน global และ project (.devin/skills) ตามทีเหมาะสม
+description: Read and use the skills available in global and project (.devin/skills) stores as appropriate
 argument-hint: "[skill-name]"
 related:
   - list-devin
@@ -11,108 +11,109 @@ related:
   - deep-validate
   - update-references
   - report
+  - follow-up-to-date
 
 ---
 
 ## Goal
 
-อ่านและใช้ skills ทีมีอยู่ทั้งใน global (`%APPDATA%\devin\skills`) และ project (`.devin/skills`) ตามทีเหมาะสมกับ task ปัจจุบัน
+Read and use the skills available in both the global store (`%APPDATA%\devin\skills`) and the project store (`.devin/skills`) as appropriate for the current task
 
 ## Scope
 
-- ค้นหา skills ทั้งหมดทีใช้ได้ใน session
-- รองรับทั้ง global skills และ project-level skills
-- อ่าน skill ทีเลือกและใช้ตาม instructions
-- ตรวจสอบ references ว่ามีอยู่จริง
+- Find all skills available in the session
+- Covers both global and project-level skills
+- Read the chosen skill and follow its instructions
+- Verify that references actually exist
 
 ## Execute
 
 ### 1. List Available Skills
 
-> Goal: รู้ว่ามี skills อะไรบ้าง
+> Goal: know which skills exist
 
-1. ทำ `/list-devin-global-skills` เพื่อดู global skills
-2. ถ้า project มี `.devin/skills/` ให้ list ไฟล์ `.devin/skills/*` ด้วย
-3. ถ้ามี project `AGENTS.md` ให้อ่าน `### Skills` section
-4. สร้างรายการ `global` และ `project` skills พร้อม path
+1. Run `/list-devin-global-skills` to see global skills
+2. If the project has `.devin/skills/`, list `.devin/skills/*` as well
+3. If a project `AGENTS.md` exists, read its `### Skills` section
+4. Build the `global` and `project` skill lists with paths
 
 ### 2. Map Skills To Task
 
-> Goal: ใช้ map เพื่อหา skill เร็วขึ้น
+> Goal: use a map to find skills faster
 
-1. ถ้าไม่ระบุ `argument [skill-name]` → ทำ `/search-skills` เพื่อหา skills ทีตรงกับ task
-2. ถ้ามีหลาย skills → แสดง map และให้ user เลือก
+1. If `argument [skill-name]` is not given → run `/search-skills` to find skills matching the task
+2. If several skills match → show the map and let the user choose
 
 ### 3. Resolve Skill Name
 
-> Goal: หา skill ทีต้องการใช้
+> Goal: locate the skill to use
 
-1. ถ้ามี `argument [skill-name]` → ค้นหา skill ทีตรง
-2. ถ้าไม่ระบุ → ค้นหาจาก context ของ task
-3. ค้นหาทั้งใน `follow-devin-global-skills` (global) และ `.devin/skills/` (project)
-4. ถ้ามีทั้ง global และ project ชื่อเดียวกัน → ใช้ project skill เว้นแต่ global ใหม่กว่าหรือ user ระบุ
+1. If `argument [skill-name]` is given → find the exact skill
+2. If not given → infer from the task context
+3. Search both the global store and the project's `.devin/skills/`
+4. If a global and a project skill share a name → use the project skill unless the global is newer or the user specifies
 
 ### 4. Read Skill
 
-> Goal: เข้าใจเนื้อหา skill
+> Goal: understand the skill's content
 
-1. อ่าน `SKILL.md` ของ skill ทีเลือก
-2. ถ้ามี `references/` ให้อ่านไฟล์ `.md` ที่เกี่ยวข้อง
-3. ระบุ goal, scope, execute, rules, expected outcome
-4. ตรวจสอบ `related` ว่า skills ทีอ้างอิงมีอยู่จริง
+1. Read the chosen skill's `SKILL.md`
+2. If it has `references/`, read the relevant `.md` files
+3. Identify goal, scope, execute, rules, expected outcome
+4. Verify that every skill in `related` exists
 
 ### 5. Check References
 
-> Goal: ตรวจสอบความถูกต้องก่อนใช้
+> Goal: verify correctness before use
 
-1. ทำ `/check-reference` เพื่อตรวจ references
-2. ถ้า reference ไม่มีอยู่ → แจ้ง user หรือใช้ `/update-references`
-3. ตรวจว่า skill ไม่มี circular dependency
+1. Run `/check-reference` to check references
+2. If a reference does not exist → notify the user or use `/update-references`
+3. Check the skill has no circular dependency
+4. If the skill's content contains versions/APIs/commands — check freshness per `/follow-up-to-date` before trusting it
 
 ### 6. Use Skill
 
-> Goal: ดำเนินการตาม skill
+> Goal: carry out the skill
 
-1. ทำตาม instructions ใน `## Execute`
-2. ใช้ tools ที่ skill ระบุ
-3. ถ้า skill บอกให้ใช้ skills อื่น → ทำ `/follow-devin-global-skills` ซ้ำตามลำดับ
-4. ตรวจสอบผลลัพธ์ตาม `## Expected Outcome`
+1. Follow the instructions in `## Execute`
+2. Use the tools the skill specifies
+3. If the skill says to use other skills → repeat `/follow-devin-global-skills` in order
+4. Verify the results against `## Expected Outcome`
 
 ### 7. Report
 
-> Goal: สรุปการใช้ skill
+> Goal: summarize skill usage
 
-1. ทำ `/report` ระบุ skill ที่ใช้, ผลลัพธ์, และ next action
-2. ถ้ามี skill หลายตัว → สรุปลำดับทีใช้
+1. Run `/report` stating the skills used, results, and next action
+2. If several skills were used → summarize the sequence
 
 ## Rules
 
 ### 1. Global + Project
 
-- ค้นหา skills ทั้ง global และ project
-- project skills มี priority สูงกว่าเมื่อชื่อซ้ำ
-- ถ้าไม่พบ → แจ้ง user และแนะนำให้สร้าง
+- Search both global and project skills
+- Project skills take priority on name collisions
+- If nothing is found → tell the user and suggest creating one
 
 ### 2. Reference First
 
-- อ่าน skill ก่อนใช้เสมอ
-- ตรวจ references ก่อนอ้างอิง
-- ไม่ใช้ skill ที่ validate ไม่ผ่าน
+- Always read a skill before using it
+- Check references before citing them
+- Never use a skill that fails validation
 
 ### 3. Scope Respect
 
-- ไม่ใช้ skills ที่ไม่เกี่ยวข้อง
-- ห้ามส่ง skill ซ้ำซ้อน
-- ใช้ `argument-hint` ตามที่ skill ระบุ
+- Do not use unrelated skills
+- Never dispatch duplicate skills
+- Use `argument-hint` as the skill specifies
 
-- ใช้ /update-project-skills ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น (devin global skills)
-- ใช้ /deep-validate ถ้าจำเป็น
+- Use /update-project-skills if needed
+- Use /update-devin-global-skills if needed (devin global skills)
+- Use /deep-validate if needed
 
 ## Expected Outcome
 
-- อ่านและใช้ skill ได้อย่างถูกต้อง
-- ใช้ skills ที่เหมาะสมกับ task
-- References ถูกต้องทั้งหมด
-- ผลลัพธ์ถูกต้องตามที่คาดหวัง
-
+- Skills read and used correctly
+- The skills applied fit the task
+- All references are valid
+- Results match expectations

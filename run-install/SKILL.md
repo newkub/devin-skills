@@ -3,7 +3,7 @@ name: run-install
 description: Install dependencies and resolve installation issues
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - update-version-to-latest
   - follow-tool-mise
 
@@ -19,7 +19,7 @@ Use `run-install` for the specific tasks and workflows it covers (install)
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (install)
+> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (install)
 
 ### 1. Update Dependencies
 

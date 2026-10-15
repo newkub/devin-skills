@@ -1,6 +1,6 @@
 ---
 name: gen-subtitle-video
-description: สร้าง subtitle .srt จากวิดีโอด้วย bunx CLI
+description: Generate .srt subtitles from a video with a bunx CLI
 argument-hint: "[video-path]"
 related:
   - convert
@@ -9,81 +9,81 @@ related:
 
 ## Goal
 
-สร้างไฟล์ subtitle `.srt` จากวิดีโอหรือ audio ด้วย speech-to-text CLI
+Generate a subtitle `.srt` file from a video or audio with a speech-to-text CLI
 
 ## Scope
 
-- ใช้ `bunx` CLI สำหรับ transcription
-- รองรับหลาย provider: `@illyism/transcribe`, Pollinations, `whisper.cpp`
-- รองรับหลายภาษา
+- Use `bunx` CLIs for transcription
+- Supports multiple providers: `@illyism/transcribe`, Pollinations, `whisper.cpp`
+- Supports multiple languages
 
 ## Execute
 
 ### 1. Prepare Input
 
-> Goal: ตรวจสอบ input
+> Goal: Check the input
 
-1. รับ video หรือ audio path
-2. ตรวจสอบว่าไฟล์มีอยู่และรูปแบบรองรับ (mp4, mov, avi, mkv, mp3, wav, m4a)
-3. ระบุ output path (default คือ `<input>.srt`)
-4. ระบุภาษา ถ้า user รู้
+1. Receive the video or audio path
+2. Verify the file exists and its format is supported (mp4, mov, avi, mkv, mp3, wav, m4a)
+3. Specify the output path (default `<input>.srt`)
+4. Specify the language if the user knows it
 
 ### 2. Choose CLI
 
-> Goal: เลือก transcription tool
+> Goal: Pick the transcription tool
 
 1. Primary: `bunx @illyism/transcribe <video>`
-   - ใช้ OpenAI Whisper API
-   - สร้าง `.srt` อัตโนมัติ
-   - รองรับ video โดยตรง
+   - Uses the OpenAI Whisper API
+   - Generates `.srt` automatically
+   - Accepts video directly
 2. Fallback: `bunx @pollinations/cli gen transcribe <video>`
-   - ไม่ต้อง API key
-   - ถ้า API รองรับ video transcription
+   - No API key required
+   - If the API supports video transcription
 3. Fallback (local): `whisper-subs <video> --model <model> --language <lang>`
-   - ต้อง download model
-4. สุดท้าย: `ffmpeg` ดึง audio แล้วใช้ `whisper` Python
+   - Requires downloading a model
+4. Last resort: extract audio with `ffmpeg` then use Python `whisper`
 
 ### 3. Run Transcription
 
-> Goal: สร้าง subtitle
+> Goal: Generate the subtitles
 
-1. รันคำสั่งพร้อม output path
-2. รอจนกระทั่งเสร็จ
-3. ตรวจสอบไฟล์ `.srt` มีขนาด > 0
-4. ถ้าภาษาไม่ถูกต้อง → ระบุ `--language` แล้วรันใหม่
+1. Run the command with the output path
+2. Wait until it finishes
+3. Verify the `.srt` file size > 0
+4. If the language is wrong → add `--language` and re-run
 
 ### 4. Validate
 
-> Goal: ตรวจสอบ subtitle
+> Goal: Check the subtitles
 
-1. อ่านไฟล์ `.srt` สั้นๆ ตรวจ syntax
-2. นับจำนวน cues
-3. รายงาน path, จำนวน cues, ระยะเวลา
+1. Skim the `.srt` file to check syntax
+2. Count the cues
+3. Report the path, cue count, and duration
 
 ## Rules
 
 ### 1. API Key
 
-- `@illyism/transcribe` ต้องการ `OPENAI_API_KEY`
-- ถ้าไม่มี → ใช้ Pollinations หรือ local whisper
-- ไม่ hardcode key
+- `@illyism/transcribe` requires `OPENAI_API_KEY`
+- If absent → use Pollinations or local whisper
+- Never hardcode keys
 
 ### 2. ffmpeg
 
-- ถ้า tool ต้องการ audio only → ใช้ `ffmpeg -i <video> -vn -acodec pcm_s16le -ar 16000 -ac 1 audio.wav`
-- ตรวจสอบ ffmpeg ติดตั้ง
+- If a tool needs audio only → use `ffmpeg -i <video> -vn -acodec pcm_s16le -ar 16000 -ac 1 audio.wav`
+- Verify ffmpeg is installed
 
 ### 3. Output
 
-- default output คือ `<input>.srt`
-- รองรับ `.vtt` ถ้า user ต้องการ
-- ไม่ทับไฟล์เดิมโดยไม่ถาม
+- Default output is `<input>.srt`
+- Supports `.vtt` if the user wants it
+- Never overwrite an existing file without asking
 
-- ใช้ /convert-files-format ถ้าจำเป็น
-- ใช้ /gen-voice ถ้าจำเป็น
+- Use /convert-files-format if needed
+- Use /gen-voice if needed
 
 ## Expected Outcome
 
-- ไฟล์ `.srt` ที sync กับวิดีโอ
-- รายงาน path, จำนวน cues, tool ทีใช้
-- ถ้า fail มีแนวทาง fallback
+- A `.srt` file synced with the video
+- The report includes path, cue count, and the tool used
+- On failure, a fallback approach is given

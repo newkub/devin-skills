@@ -4,7 +4,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - deep-review
+  - deep-review-codebase
   - use-scripts
   - report
   - suggest-next-action
@@ -29,7 +29,7 @@ related:
 > Goal: Scan Project Structure
 
 1. ทำ `/scan-codebase` เพื่อสแกนไฟล์ทั้งหมด
-2. ทำ `/deep-review` เพื่อวิเคราะห์โครงสร้าง
+2. ทำ `/deep-review-codebase` เพื่อวิเคราะห์โครงสร้าง
 3. กำหนด root directory และ depth สำหรับ tree
 4. กรองไฟล์ที่ไม่จำเป็น (`node_modules`, `.git`, `dist`, `build`)
 

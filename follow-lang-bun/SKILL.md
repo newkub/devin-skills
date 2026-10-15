@@ -1,7 +1,7 @@
 ---
 name: follow-lang-bun
 description: Develop JS/TS with the Bun toolkit — runtime, package manager, test runner, bundler
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project|migrate-from-nodejs]"
 related:
   - use-bun-native-api
   - use-bun-shell
@@ -21,7 +21,7 @@ Develop JavaScript/TypeScript projects on Bun, fast and per official best practi
 
 ## Scope
 
-For creating or improving projects that run on the Bun runtime, single package and monorepo. Bun is one all-in-one binary: runtime (drop-in Node.js replacement), package manager, test runner, and bundler; single `SKILL.md` package — no `references/`, verify the current Bun version and features via `/deep-research` at use time (official docs: https://bun.com/docs)
+For creating or improving projects that run on the Bun runtime, single package and monorepo. Bun is one all-in-one binary: runtime (drop-in Node.js replacement), package manager, test runner, and bundler. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/` — dispatch: `setup-project` → `workflows/setup-project/SKILL.md`, `migrate-from-nodejs` → `workflows/migrate-from-nodejs/SKILL.md`; verify the current Bun version and features via `/deep-research` at use time (official docs: https://bun.com/docs)
 
 ## Execute
 
@@ -32,16 +32,15 @@ For creating or improving projects that run on the Bun runtime, single package a
 1. Install with `mise use -g bun` first; fall back to the install script or a package manager only if mise is unavailable
 2. Verify with `bun --version` and `bun --revision`
 3. Upgrade with `bun upgrade` (or `bun upgrade <version>` to pin); `bun upgrade --canary`/`--stable` for channels
-4. Run `/deep-research` to note current major-version features before using new APIs (`Bun.Image`, `Bun.WebView`, HTTP/2 in `Bun.serve`, parallel test/run, supply-chain flags)
+4. Run `/deep-research` + `/follow-best-practice` to note current major-version features and the latest Bun practices before using new APIs (`Bun.Image`, `Bun.WebView`, HTTP/2 in `Bun.serve`, parallel test/run, supply-chain flags)
 
 ### 2. Create Project
 
 > Goal: scaffold with the correct template
 
-1. `bun init` for an empty project (blank, react, library templates; `-y` for defaults)
-2. `bun create <template>` (`bun c`) to scaffold from a template (vite, next, elysia, etc.)
-3. Follow `workflows/setup-project.md` for the standard project layout
-4. Moving from a Node.js project → follow `workflows/migrate-from-nodejs.md`
+1. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): `bun init`/`bun create`, directory layout, `package.json` scripts, `bunfig.toml` skeleton, tsconfig, verify, git hygiene
+2. App-type scaffold (web, CLI, bot, plugin) → dispatch the matching `/follow-create-*` skill instead
+3. Moving from a Node.js project → run the workflow `workflows/migrate-from-nodejs/SKILL.md` (argument `migrate-from-nodejs`)
 
 ### 3. Manage Packages
 
@@ -105,10 +104,17 @@ For creating or improving projects that run on the Bun runtime, single package a
 3. Typecheck with `bunx tsc --noEmit` (Bun strips types at runtime, it does not check them)
 4. On errors → run `/resolve-errors`
 
+### 10. Migrate From Node.js (If Applicable)
+
+> Goal: move a Node.js project to Bun safely and reversibly
+
+1. Run the workflow `workflows/migrate-from-nodejs/SKILL.md` (argument `migrate-from-nodejs`): `bun pm migrate`, script rewrites, `trustedDependencies`, compatibility checklist, gradual adoption, verify, rollback
+
 ## Rules
 
 ### 1. Runtime
 
+- Tool inventory → `references/toolchain.md`; scaffold and Node.js migration → `workflows/`
 - Bun is a drop-in Node.js replacement — supports `node:*` modules and Node globals (`process`, `Buffer`); prefer Web-standard APIs (`fetch`, `WebSocket`, `ReadableStream`) and `Bun.*` where they win
 - TS/JSX run directly (transpile-only, no typecheck at runtime); avoid `const enum`/`import =` (not type-aware)
 - Never add `dotenv` (`.env` auto-loads); ESM by default
@@ -132,7 +138,7 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 ### 5. Related Skills
 
-- `/use-bun-native-api` for `Bun.*` + Web-standard catalog; `/use-bun-shell` for `$`; `/follow-create-bun-cli` for CLIs; `/follow-tool-bunup` for library bundling; `/follow-lang-typescript` for the language
+- `/use-bun-native-api` for `Bun.*` + Web-standard catalog; `/use-bun-shell` for `$`; `/follow-create-bun-cli` for CLIs; `/follow-tool-bunup` for library bundling; `/follow-lang-typescript` and `/follow-lang-javascript` for the language; `/setup-cicd` for CI; `/use-scripts` for automation
 
 ## Expected Outcome
 

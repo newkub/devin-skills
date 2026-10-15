@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - deep-review
+  - deep-review-codebase
   - check-reference
   - run-audit
 
@@ -66,7 +66,7 @@ Detect secrets, API keys, tokens, or credentials that may have leaked into the r
 - Note the allowlist if there is one
 - Separate test data from real secrets
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /check-reference if needed
 - Use /run-audit if needed
 

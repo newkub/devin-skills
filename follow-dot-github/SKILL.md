@@ -1,12 +1,12 @@
 ---
 name: follow-dot-github
-description: จัดการ .github directory ครบถ้วน ทั้ง workflows, templates, policies, และ automation config
+description: Manage the .github directory fully — workflows, templates, policies, and automation config
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
   - deep-analyze
   - check-monorepo
-  - follow-github-issue-templates
+  - create-github-issue
   - update-references
   - report
 
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-จัดการ `.github` directory ให้ครบถ้วนและเป็นระบบ ครอบคลุม CI/CD workflows, issue/PR templates, community files, automation config และ security policies
+Manage the `.github` directory completely and systematically — covering CI/CD workflows, issue/PR templates, community files, automation config, and security policies
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.github` directory ทั้งหมด รวมถึงเรียก `/follow-tool-github-actions` เพื่อเลือกและเขียน workflows
+Used to create, improve, and audit the entire `.github` directory, including invoking `/follow-tool-github-actions` to select and write workflows
 
 ### Standard Project
 
@@ -55,148 +55,148 @@ related:
 
 ### 1. Analyze Existing .github
 
-> Goal: อ่านและวิเคราะห์ `.github` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
+> Goal: read and analyze the existing `.github` directory to understand the current state
 
-1. อ่าน `.github/` directory ทั้งหมด
-2. จัดทำรายการไฟล์ที่มีอยู่และไฟล์ที่ขาด
-3. อ่านไฟล์ที่มีอยู่เพื่อตรวจสอบความถูกต้อง
-4. ถ้าไม่มี `.github/` directory → เริ่มใหม่ทั้งหมด
-5. ถ้าอ่านไฟล์ไม่ได้ → stop และ report
+1. Read the whole `.github/` directory
+2. Inventory existing files and missing files
+3. Read existing files to verify correctness
+4. If there is no `.github/` directory → start from scratch
+5. If a file cannot be read → stop and report
 
 ### 2. Analyze Project
 
-> Goal: วิเคราะห์ project เพื่อกำหนดไฟล์ที่จำเป็น
+> Goal: analyze the project to determine which files are needed
 
-1. ทำ `/deep-analyze` เพื่อดู tech stack และ structure
-2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
-3. ระบุว่าเป็น open source, private, หรือ organization repo
-4. ระบุว่ามี contributors หลายคนหรือไม่
-5. ถ้า project type ไม่ชัด → stop และ report
+1. Run `/deep-analyze` to see the tech stack and structure
+2. Run `/check-monorepo` to determine the project type
+3. Identify whether it is open source, private, or an organization repo
+4. Identify whether there are multiple contributors
+5. If the project type is unclear → stop and report
 
 ### 3. Setup CI/CD Workflows
 
-> Goal: จัดการ CI/CD workflows โดยอ้างอิง workflows เฉพาะทาง
+> Goal: manage CI/CD workflows by delegating to the specialized workflow
 
-1. ทำ `/follow-tool-github-actions` เพื่อเลือกและเขียน workflow YAML
-2. ตรวจสอบว่า workflows ใช้ actions เวอร์ชันล่าสุด
-3. ตรวจสอบ `permissions` และ `concurrency` settings
-4. ถ้า workflows ที่มีอยู่ถูกต้องครบถ้วน → skip step นี้
+1. Run `/follow-tool-github-actions` to select and write workflow YAML
+2. Verify workflows use the latest action versions
+3. Check `permissions` and `concurrency` settings
+4. If the existing workflows are already correct and complete → skip this step
 
 ### 4. Setup Issue Templates
 
-> Goal: สร้าง issue templates สำหรับ bug reports, feature requests, plans, tests, questions และ agents tasks
+> Goal: create issue templates for bug reports, feature requests, plans, tests, questions, and agent tasks
 
-1. ทำ `/follow-github-issue-templates` เพื่อสร้างหรืออัปเดต `.github/ISSUE_TEMPLATE/`
-2. ตรวจสอบว่ามี `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml`
-3. ตรวจสอบ `config.yml` พร้อม `blank_issues_enabled` และ contact links
-4. ถ้า `/follow-github-issue-templates` ไม่พร้อมใช้งาน → สร้าง templates ด้วยตัวเองตาม `?follow-github-issue-templates/templates/index.md`
+1. Run `/create-github-issue` (per `create-github-issue/references/issue-forms.md`) to create or update `.github/ISSUE_TEMPLATE/`
+2. Verify `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml` exist
+3. Check `config.yml` with `blank_issues_enabled` and contact links
+4. If `/create-github-issue` is unavailable → author the templates manually per `create-github-issue/templates/forms/index.md`
 
 ### 5. Setup PR Template
 
-> Goal: สร้าง pull request template เพื่อ guide contributors
+> Goal: create a pull request template to guide contributors
 
-1. สร้าง `.github/PULL_REQUEST_TEMPLATE.md`
-2. รวม sections: Summary, Changes, Type, Testing, Checklist
-3. กรอก checklist ตาม project conventions (tests, docs, lint)
-4. ถ้าเป็น monorepo → ระบุ workspace ที่กระทบ
-5. ถ้ามี PR template ที่ถูกต้องอยู่แล้ว → อัปเดตเฉพาะส่วนที่ขาด
+1. Create `.github/PULL_REQUEST_TEMPLATE.md`
+2. Include sections: Summary, Changes, Type, Testing, Checklist
+3. Fill the checklist from project conventions (tests, docs, lint)
+4. If monorepo → note the affected workspace
+5. If a correct PR template already exists → update only the missing parts
 
 ### 6. Setup CODEOWNERS
 
-> Goal: สร้าง CODEOWNERS เพื่อกำหนด code owners ตาม directory structure
+> Goal: create CODEOWNERS assigning code owners by directory structure
 
-1. สร้าง `.github/CODEOWNERS`
-2. กำหนด owners ตาม directory structure ของ project
-3. สำหรับ monorepo → กำหนด owners แยกตาม workspace (เช่น `apps/website/ @owner1`)
-4. กำหนด default owner สำหรับ root directory
-5. ถ้าเป็น solo project → skip step นี้
+1. Create `.github/CODEOWNERS`
+2. Assign owners by the project's directory structure
+3. For monorepos → assign owners per workspace (e.g. `apps/website/ @owner1`)
+4. Set a default owner for the root directory
+5. If a solo project → skip this step
 
 ### 7. Setup Dependabot
 
-> Goal: สร้าง `dependabot.yml` เพื่อ automated dependency updates
+> Goal: create `dependabot.yml` for automated dependency updates
 
-1. สร้าง `.github/dependabot.yml`
-2. กำหนด `package-ecosystem` ตาม package manager ที่ใช้ (npm, github-actions, etc.)
-3. กำหนด `directory` ตาม project structure (`/` สำหรับ root, แต่ละ workspace สำหรับ monorepo)
-4. กำหนด `schedule.interval` เป็น `weekly` หรือ `daily`
-5. กำหนด `open-pull-requests-limit` ตามความเหมาะสม
-6. สำหรับ monorepo → เพิ่ม entry สำหรับแต่ละ workspace และ `github-actions` ecosystem
-7. กำหนด `commit-message` prefix ตาม conventional commits
-8. ถ้ามี dependabot.yml ที่ถูกต้องอยู่แล้ว → อัปเดตเฉพาะ entry ที่ขาด
+1. Create `.github/dependabot.yml`
+2. Set `package-ecosystem` per package manager used (npm, github-actions, etc.)
+3. Set `directory` per project structure (`/` for root, each workspace for monorepos)
+4. Set `schedule.interval` to `weekly` or `daily`
+5. Set `open-pull-requests-limit` as appropriate
+6. For monorepos → add an entry per workspace plus the `github-actions` ecosystem
+7. Set the `commit-message` prefix per conventional commits
+8. If a correct dependabot.yml already exists → add only the missing entries
 
 ### 8. Setup Community Files
 
-> Goal: สร้าง community files ตามประเภท project
+> Goal: create community files by project type
 
-1. สร้าง `.github/SECURITY.md` พร้อมวิธีรายงาน vulnerabilities และ response timeline
-2. สร้าง `.github/CONTRIBUTING.md` ถ้าเป็น open source หรือมี contributors หลายคน
-3. สร้าง `.github/CODE_OF_CONDUCT.md` ถ้าเป็น open source (ใช้ Contributor Covenant)
-4. สร้าง `.github/FUNDING.yml` ถ้ารับ funding (GitHub Sponsors, Open Collective, etc.)
-5. ถ้าเป็น private repo และไม่มี contributors → skip CONTRIBUTING.md, CODE_OF_CONDUCT.md, FUNDING.yml
+1. Create `.github/SECURITY.md` with the vulnerability reporting method and response timeline
+2. Create `.github/CONTRIBUTING.md` if open source or with multiple contributors
+3. Create `.github/CODE_OF_CONDUCT.md` if open source (use the Contributor Covenant)
+4. Create `.github/FUNDING.yml` if accepting funding (GitHub Sponsors, Open Collective, etc.)
+5. If a private repo with no contributors → skip CONTRIBUTING.md, CODE_OF_CONDUCT.md, FUNDING.yml
 
 ### 9. Validate And Update References
 
-> Goal: ตรวจสอบความถูกต้องและอัปเดต references
+> Goal: verify correctness and update references
 
-1. ตรวจสอบ YAML syntax ของทุก `.yml`/`.yaml` ไฟล์
-2. ตรวจสอบ Markdown syntax ของทุก `.md` ไฟล์
-3. ตรวจสอบ CODEOWNERS format ตาม GitHub spec
-4. ตรวจสอบ dependabot.yml format ตาม GitHub spec
-5. ทำ `/update-references` หากมี file operations หรือ moves
-6. อัปเดต `AGENTS.md` ถ้ามีการเพิ่มไฟล์ใหม่ที่ project ต้องรู้
-7. ถ้า validation ไม่ผ่าน → แก้และ re-validate (max 3 ครั้ง → stop/report)
+1. Validate YAML syntax of every `.yml`/`.yaml` file
+2. Validate Markdown syntax of every `.md` file
+3. Validate CODEOWNERS format per the GitHub spec
+4. Validate dependabot.yml format per the GitHub spec
+5. Run `/update-references` if there were file operations or moves
+6. Update `AGENTS.md` if new files were added that the project must know about
+7. If validation fails → fix and re-validate (max 3 rounds → stop/report)
 
 ## Rules
 
 ### 1. No Overlap With Specialized Workflows
 
-- ใช้ `/follow-tool-github-actions` สำหรับเลือกและเขียน CI/CD workflows
-- `follow-dot-github` จัดการไฟล์อื่นใน `.github/` และ coordinate การเรียก specialized workflows
+- Use `/follow-tool-github-actions` to select and write CI/CD workflows
+- `follow-dot-github` manages the other files in `.github/` and coordinates calls to specialized workflows
 
 ### 2. File Format Standards
 
-- Issue templates: ใช้ GitHub Forms syntax (YAML) ไม่ใช่ Markdown
-- PR template: ใช้ Markdown
-- CODEOWNERS: ใช้ GitHub CODEOWNERS format (`path @owner`)
-- dependabot.yml: ใช้ GitHub Dependabot v2 format
-- SECURITY.md: ระบุ response timeline และ contact method
+- Issue templates: use GitHub Forms syntax (YAML), not Markdown
+- PR template: use Markdown
+- CODEOWNERS: use the GitHub CODEOWNERS format (`path @owner`)
+- dependabot.yml: use the GitHub Dependabot v2 format
+- SECURITY.md: state the response timeline and contact method
 
 ### 3. Monorepo Guidelines
 
-- dependabot.yml ต้องมี entry สำหรับทุก workspace และ `github-actions` ecosystem
-- CODEOWNERS ต้องกำหนด owners แยกตาม workspace
-- PR template ต้องระบุ workspace ที่กระทบ
-- ISSUE_TEMPLATE ใช้ร่วมกันที่ root `.github/`
+- dependabot.yml must have an entry for every workspace and the `github-actions` ecosystem
+- CODEOWNERS must assign owners per workspace
+- The PR template must note the affected workspace
+- ISSUE_TEMPLATE is shared at the root `.github/`
 
 ### 4. Security First
 
-- SECURITY.md ต้องมีอย่างน้อย: reporting method, response timeline, scope
-- ห้ามระบุ vulnerabilities ที่ยังไม่ได้ fix ในไฟล์สาธารณะ
-- dependabot.yml ต้องกำหนด `commit-message` prefix ตาม conventional commits
-- ห้าม hardcode secrets, tokens, หรือ credentials ในไฟล์ใดใน `.github/`
+- SECURITY.md must contain at least: reporting method, response timeline, scope
+- Never list unfixed vulnerabilities in public files
+- dependabot.yml must set a `commit-message` prefix per conventional commits
+- Never hardcode secrets, tokens, or credentials in any file under `.github/`
 
 ### 5. Deterministic And Measurable
 
-- ผลลัพธ์ต้อง deterministic — project type เดียวกัน → ไฟล์เหมือนกันทุกครั้ง
-- Validation criteria ต้อง measurable: YAML syntax ผ่าน, CODEOWNERS format ถูก, dependabot.yml ตรง spec
-- ถ้าไฟล์ที่มีอยู่ถูกต้องแล้ว → ไม่สร้างใหม่ แต่อัปเดตเฉพาะส่วนที่ขาด
-- ลำดับการสร้างไฟล์ต้อง fixed ตามลำดับ steps
+- Output must be deterministic — same project type → same files every time
+- Validation criteria must be measurable: YAML syntax passes, CODEOWNERS format correct, dependabot.yml matches spec
+- If an existing file is already correct → do not recreate it, update only the missing parts
+- File creation order must be fixed per the step order
 
 ### 6. High Impact Content
 
-- เก็บเฉพาะไฟล์ที่ project ใช้จริง — ถ้าไม่มี contributors ไม่ต้องสร้าง CONTRIBUTING.md
-- ถ้าเป็น private repo ไม่ต้องสร้าง CODE_OF_CONDUCT.md และ FUNDING.yml
-- ถ้าเป็น solo project ไม่ต้องสร้าง CODEOWNERS
-- ตรวจสอบว่าทุกไฟล์มีเนื้อหาที่เกี่ยวข้องกับ project จริง ไม่ใช่ generic template
+- Keep only files the project actually uses — no contributors means no CONTRIBUTING.md
+- A private repo does not need CODE_OF_CONDUCT.md or FUNDING.yml
+- A solo project does not need CODEOWNERS
+- Verify every file contains content actually relevant to the project, not generic boilerplate
 
 ## Expected Outcome
 
-- `.github/` directory มีไฟล์ครบตามประเภท project — ไม่มีไฟล์ขาด ไม่มีไฟล์เกิน
-- CI/CD workflows ครบถ้วน (delegated to `/follow-tool-github-actions`)
-- Issue templates ใช้ GitHub Forms syntax (YAML) ครบ 3 ไฟล์
-- PR template มี sections ครบ: Summary, Changes, Type, Testing, Checklist
-- CODEOWNERS กำหนด reviewers อัตโนมัติตาม directory (ถ้ามี contributors)
-- Dependabot มี entry ครบทุก workspace และ `github-actions` ecosystem
-- SECURITY.md มี reporting method, response timeline, และ scope ชัดเจน
-- ทุกไฟล์ผ่าน validation: YAML syntax, Markdown syntax, CODEOWNERS format, dependabot.yml format
-- `AGENTS.md` อัปเดตถ้ามีไฟล์ใหม่
+- `.github/` has exactly the files the project type needs — none missing, none extra
+- CI/CD workflows complete (delegated to `/follow-tool-github-actions`)
+- Issue templates use GitHub Forms syntax (YAML) with the full form set
+- PR template has all sections: Summary, Changes, Type, Testing, Checklist
+- CODEOWNERS assigns reviewers per directory (when contributors exist)
+- Dependabot covers every workspace and the `github-actions` ecosystem
+- SECURITY.md clearly states reporting method, response timeline, and scope
+- Every file passes validation: YAML syntax, Markdown syntax, CODEOWNERS format, dependabot.yml format
+- `AGENTS.md` updated if new files were added

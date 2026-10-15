@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/intent` | 0.5.x | Intent |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Intent | `@tanstack/intent` | ship `skills/` inside npm packages |

@@ -23,8 +23,8 @@ Persona details for the `operations` category — merged from the original `work
 |------|-------|----------|
 | process-analyst | documented processes, runbooks, SOPs, inefficiencies | `### operations/process-analyst` |
 | automation-specialist | CI/scripts coverage, manual toil, scheduled jobs | `### operations/automation-specialist` |
-| release-manager | versioning, changelog, pipeline, rollback → `/deep-review` | `### operations/release-manager` |
-| compliance-specialist | audit trails, retention, consent, controls → `/deep-review` | `### operations/compliance-specialist` |
+| release-manager | versioning, changelog, pipeline, rollback → `/deep-review-codebase` | `### operations/release-manager` |
+| compliance-specialist | audit trails, retention, consent, controls → `/deep-review-codebase` | `### operations/compliance-specialist` |
 
 2. อ่าน section `### operations/<role>` ในไฟล์นี้
 
@@ -137,7 +137,7 @@ Persona details for the `operations` category — merged from the original `work
 
 - Secrets/credentials — secrets handling, key rotation, exposed credentials in code/config
 
-- Deep pass → delegate `/deep-review`
+- Deep pass → delegate `/deep-review-codebase`
 
 
 
@@ -151,7 +151,7 @@ Persona details for the `operations` category — merged from the original `work
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review`
+- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review-codebase`
 
 
 
@@ -241,7 +241,7 @@ Persona details for the `operations` category — merged from the original `work
 
 - Release artifacts — build artifacts, container tags, asset publishing
 
-- Deep pass → delegate `/deep-review` และ `/deep-review`
+- Deep pass → delegate `/deep-review-codebase` และ `/deep-review-codebase`
 
 
 
@@ -255,7 +255,7 @@ Persona details for the `operations` category — merged from the original `work
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review`, `/deep-review`
+- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review-codebase`, `/deep-review-codebase`
 
 
 

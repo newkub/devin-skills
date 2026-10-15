@@ -1,35 +1,35 @@
 # Zod — Best Practices
 
-Schema-first validation — inference, error handling และ perf discipline
+Schema-first validation — inference, error handling, and perf discipline
 
 ## Recommended Patterns
 
-- Schema = source of truth: `z.infer<typeof schema>` สำหรับ TS types — ไม่เขียน interface แยก
-- `safeParse` ที่ boundary — return `{success, data, error}` ไม่ throw; `parse` เฉพาะเมื่อ invariant จริง (throw = bug signal)
-- Compose: `.extend`, `.merge`, `.pick`, `.omit`, `.partial` — derive schemas แทน duplicate
-- `.transform`/`.refine`/`.superRefine` — transform เมื่อ shape เปลี่ยน, refine เมื่อ cross-field/custom logic
-- `z.discriminatedUnion` สำหรับ variants — เร็วกว่า `z.union` + error messages ดีกว่า
-- Error surfacing: `error.issues`/`z.treeifyError`/`z.flattenError` — format ให้ UI ใช้ได้ ไม่ส่ง raw message
+- Schema = source of truth: `z.infer<typeof schema>` for TS types — never write a separate interface
+- `safeParse` at the boundary — return `{success, data, error}` without throwing; use `parse` only for true invariants (throw = bug signal)
+- Compose: `.extend`, `.merge`, `.pick`, `.omit`, `.partial` — derive schemas instead of duplicating
+- `.transform`/`.refine`/`.superRefine` — transform when the shape changes, refine for cross-field/custom logic
+- `z.discriminatedUnion` for variants — faster than `z.union` with better error messages
+- Error surfacing: `error.issues`/`z.treeifyError`/`z.flattenError` — format for UI use, don't pass raw messages
 
 ## Common Pitfalls
 
-- `.default()` vs `.optional()` — default เติมค่าเมื่อ undefined, optional แค่ยอม undefined; output types ต่างกัน
-- `.passthrough()`/`.loose()` (zod4: `z.looseObject`) เปิด unknown keys — strict default ดีกว่า security-wise; เลือก `.catchall` แทนถ้าต้อง validate extras
-- Transform ทำ output ≠ input — ตรวจ `z.infer` vs `z.input`/`z.output` ให้ตรงฝั่งที่ใช้
-- Async refinements → ต้อง `safeParseAsync`/`parseAsync` — sync parse จะ throw
-- Recursion: `z.lazy()` + explicit type annotation — TS infer ไม่ได้ใน recursive schemas
+- `.default()` vs `.optional()` — default fills a value when undefined, optional just allows undefined; the output types differ
+- `.passthrough()`/`.loose()` (zod4: `z.looseObject`) let unknown keys through — strict is better by default security-wise; prefer `.catchall` if extras must be validated
+- Transforms make output ≠ input — check `z.infer` vs `z.input`/`z.output` to use the right side
+- Async refinements → require `safeParseAsync`/`parseAsync` — sync parse throws
+- Recursion: `z.lazy()` + an explicit type annotation — TS can't infer recursive schemas
 
 ## Perf Notes
 
-- Schemas compile ตอนสร้าง — hoist เป็น module-level const, ห้ามสร้างใน request handler
-- `z.union` ใหญ่ช้า — ใช้ discriminated union เมื่อมี discriminant key
-- `z.object` strict checks key ทั้งหมด — schemas ที่ validate ซ้ำหนักๆ พิจารณา caching parsed result
+- Schemas compile at creation — hoist them to module-level consts, never build them inside a request handler
+- Large `z.union` is slow — use a discriminated union when a discriminant key exists
+- `z.object` checks all keys — for schemas validated heavily repeatedly, consider caching the parsed result
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `safeParse` ที่ boundaries | `parse` ทุกจุดแล้ว try/catch |
-| `discriminatedUnion` สำหรับ variants | `z.union` ยาวๆ |
+| `safeParse` at boundaries | `parse` everywhere wrapped in try/catch |
+| `discriminatedUnion` for variants | long `z.union` chains |
 | derive schemas (`.pick`/`.omit`) | duplicate schema definitions |
-| hoist schema module-level | construct schema ใน hot path |
+| hoist schema module-level | construct schemas in the hot path |

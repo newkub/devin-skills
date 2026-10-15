@@ -1,6 +1,6 @@
 ---
 name: list-github
-description: List GitHub resources — branches, issues, PRs, projects, releases ผ่าน top-level skills
+description: List GitHub resources — branches, issues, PRs, projects, releases via top-level skills
 argument-hint: "[domain]"
 related:
   - all-github-repo
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง list — parent ทำ routing เท่านั้น
+Dispatch to the top-level skill for the GitHub resource to list — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if unspecified → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -25,29 +25,29 @@ Dispatch ไป top-level skill ตาม GitHub resource ที่ต้อง 
 
 | Domain | Skill |
 |---|---|
-| `all-issue` | /list-all-github-issue — issues ข้ามทุก repo ของ personal + orgs |
-| `all-pr` | /list-all-github-pr — pull requests ข้ามทุก repo ของ personal + orgs |
-| `branch` | /list-github-branch — branches ใน repo |
-| `issue` | /list-github-issue — issues พร้อม filter |
-| `pr` | /list-github-pr — pull requests พร้อม status |
+| `all-issue` | /list-all-github-issue — issues across all repos of personal + orgs |
+| `all-pr` | /list-all-github-pr — pull requests across all repos of personal + orgs |
+| `branch` | /list-github-branch — branches in a repo |
+| `issue` | /list-github-issue — issues with filters |
+| `pr` | /list-github-pr — pull requests with status |
 | `project` | /list-github-project — GitHub projects |
 | `release` | /list-github-release — releases |
 | `repo` | /list-github-repo — repositories |
 | `star` | /list-github-star-latest — starred repos |
 
-1. ระบุ domain จาก argument (เช่น `/list-github-pr`)
-2. ถ้า domain รองรับ → เรียก skill จากคอลัมน์ Skill ในตารางข้างบน แล้วทำตาม flow นั้น
-3. domain `all-*` คือมุมมองข้ามทุก repo ของ personal + orgs ส่วน domain อื่นเจาะจง repo เดียว
-4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/list-github-pr`)
+2. When the domain is supported → call the skill from the Skill column in the table above and follow its flow
+3. The `all-*` domains are a cross-repo view of personal + orgs; other domains target a single repo
+4. When the domain is missing or unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
-- ใช้ `gh` CLI หรือ GitHub MCP tools ตามที่ available
+- The parent only dispatches — never duplicate the target skill's workflow
+- Use the `gh` CLI or GitHub MCP tools as available
 
-- ใช้ /all-github-repo ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /all-github-repo if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- caller ถูก Dispatch ไป top-level skill ที่ตรง domain แล้ว list ตาม flow นั้น
+- The caller is dispatched to the top-level skill matching the domain and listed per that flow

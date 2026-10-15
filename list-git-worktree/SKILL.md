@@ -1,6 +1,6 @@
 ---
 name: list-git-worktree
-description: รายการ git worktrees ใน repo พร้อม branch และ status
+description: List git worktrees in the repo with branch and status
 argument-hint: "[scope]"
 related:
   - use-git-worktrees
@@ -10,62 +10,61 @@ related:
 
 ## Goal
 
-แสดงรายการ git worktrees ทั้งหมดของ repository พร้อม path, branch, commit และสถานะ
+List all git worktrees of the repository with path, branch, commit, and status
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจสอบ worktrees ที่มีอยู่
+Use when inspecting existing worktrees
 
 ## Execute
 
 ### 1. List Worktrees
 
-> Goal: ได้รายการ worktrees
+> Goal: get the worktree list
 
-1. รัน `git worktree list`
-2. หรือ `git worktree list --porcelain` เพื่อ parse ง่าย
+1. Run `git worktree list`
+2. Or `git worktree list --porcelain` for easy parsing
 
 ### 2. Parse Details
 
-> Goal: ดึงข้อมูลแต่ละ worktree
+> Goal: extract each worktree's data
 
-1. สำหรับแต่ละ worktree บันทึก:
+1. For each worktree record:
    - `Path`
-   - `Branch` (หรือ `detached`)
+   - `Branch` (or `detached`)
    - `Commit SHA`
    - `Status` (e.g., `locked`, `prunable`, `bare`)
 
 ### 3. Check Branch Status
 
-> Goal: รู้สถานะ branch
+> Goal: know the branch status
 
-1. รัน `git branch --all --contains <commit>` ถ้าจำเป็น
-2. ระบุว่า branch ถูก checkout อยู่หรือไม่
+1. Run `git branch --all --contains <commit>` if needed
+2. State whether the branch is checked out
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: summarize the result
 
-1. ทำ `/report` คอลัมน์: Path, Branch, Commit, Status
-2. หรือ bullet list ถ้าน้อย
+1. Use `/report` columns: Path, Branch, Commit, Status
+2. Or a bullet list when there are few
 
 ## Rules
 
 ### 1. Read-Only
 
-- ไม่สร้าง ลบ หรือแก้ไข worktree
-- ไม่ checkout branch โดยไม่จำเป็น
+- Never create, delete, or modify worktrees
+- Never checkout a branch unnecessarily
 
 ### 2. Handle Bare Repos
 
-- ถ้า repo เป็น bare ให้ระบุ worktree path ตาม bare structure
+- Bare repo → mark the worktree path per the bare structure
 
-- ใช้ /use-git-worktrees ถ้าจำเป็น
-- ใช้ /cleanup-worktree ถ้าจำเป็น
+- Use /use-git-worktrees if needed
+- Use /cleanup-worktree if needed
 
 ## Expected Outcome
 
-- ตาราง worktrees ครบถ้วน
-- รู้ path, branch, commit, status
-- ไม่มี side effects
-
+- A complete worktrees table
+- Known path, branch, commit, status
+- No side effects

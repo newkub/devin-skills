@@ -1,6 +1,6 @@
 ---
 name: follow-lib-postgres
-description: ใช้ postgres (postgres.js) driver — tagged templates, connection pool, listen/notify
+description: Use the postgres (postgres.js) driver — tagged templates, connection pool, listen/notify
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -11,15 +11,15 @@ related:
 
 ## Goal
 
-ใช้ postgres (postgres.js) driver — tagged templates, connection pool, listen/notify
+Use the postgres (postgres.js) driver — tagged templates, connection pool, listen/notify
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib postgres)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (lib postgres)
 
-- ครอบคลุม: `postgres` (postgres.js) driver — tagged templates, pool, transactions, LISTEN/NOTIFY, `sql.subscribe`
-- ไม่ครอบคลุม: ORM/schema layer — ใช้ `/follow-lib-drizzle` (drizzle ใช้ postgres.js เป็น driver); `Bun.sql` built-in สำหรับ Bun-only project
-- ไม่มี CLI — ใช้งานผ่าน programmatic API เท่านั้น (จึงไม่มี)
+- Covers: the `postgres` (postgres.js) driver — tagged templates, pool, transactions, LISTEN/NOTIFY, `sql.subscribe`
+- Not covered: ORM/schema layer — use `/follow-lib-drizzle` (drizzle uses postgres.js as its driver); the `Bun.sql` built-in for Bun-only projects
+- No CLI — used via programmatic API only (thus none)
 - Latest: `postgres@3.4.9` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
 ## Execute
@@ -29,37 +29,37 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-postgres/SKILL.md` — install, connection string, client | Optimize | `workflows/optimize-pool/SKILL.md` — pool sizing, prepared statements 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. สร้าง `postgres(url, {max, prepare})` — default pool 10 connections
-1. ใช้ tagged template `` sql`SELECT * FROM t WHERE id = ${id}` `` — parameterized อัตโนมัติ
-1. ใช้ `sql.begin()` สำหรับ transactions, `sql.listen(channel, onnotify)` สำหรับ LISTEN/NOTIFY และ `sql.notify(channel, payload)` สำหรับส่ง notify
-1. ใช้ `sql.subscribe(pattern, onrow)` สำหรับ realtime row changes (เช่น `'insert:events'`, `'*:users'`) — สร้าง dedicated connection อัตโนมัติ
-1. อยู่คู่กับ Drizzle — drizzle ใช้ postgres.js เป็น driver
+1. Create `postgres(url, {max, prepare})` — default pool of 10 connections
+1. Use tagged templates `` sql`SELECT * FROM t WHERE id = ${id}` `` — automatically parameterized
+1. Use `sql.begin()` for transactions, `sql.listen(channel, onnotify)` for LISTEN/NOTIFY, and `sql.notify(channel, payload)` to send a notify
+1. Use `sql.subscribe(pattern, onrow)` for realtime row changes (e.g. `'insert:events'`, `'*:users'`) — creates a dedicated connection automatically
+1. Pairs well with Drizzle — drizzle uses postgres.js as its driver
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib postgres)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib postgres)
 
 ## Rules
 
-- ห้าม string-concat queries — ใช้ tagged template เสมอ; `sql.unsafe()` เฉพาะ dynamic queries ที่ parameterized ไม่ได้
-- ปิด connection ด้วย `sql.end()` ใน teardown
-- บน serverless ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
+- Never string-concat queries — always use tagged templates; `sql.unsafe()` only for dynamic queries that can't be parameterized
+- Close connections with `sql.end()` in teardown
+- On serverless, use Hyperdrive/PgBouncer pooling — don't open a connection per request
 
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ใช้ `/run-drizzle-studio` ถ้าจำเป็น
-- ใช้ `/follow-lib-drizzle` ถ้าต้องการ ORM layer
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- Use `/run-drizzle-studio` if needed
+- Use `/follow-lib-drizzle` if you want an ORM layer
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib postgres)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib postgres)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib postgres)
+- No known security/performance pitfalls (lib postgres)
+- Lint, typecheck, tests pass

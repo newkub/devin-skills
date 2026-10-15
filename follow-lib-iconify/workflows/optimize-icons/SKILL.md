@@ -5,73 +5,73 @@ argument-hint: "[scope]"
 related:
   - follow-lib-iconify
   - run-bench
-  - deep-review
+  - deep-review-codebase
   - report-bundle
   - report-before-after
 ---
 
 ## Goal
 
-ลด bundle size และ network cost ของ Iconify usage — offline bundles, on-demand loading และ subsetting icon data
+Reduce the bundle size and network cost of Iconify usage — offline bundles, on-demand loading and subsetting icon data
 
 ## Scope
 
-ใช้เมื่อต้อง optimize icons ที่ใช้ Iconify — ครอบคลุม bundle analysis, แปลง API runtime → offline data, custom subsets และ lazy loading
+Use when optimizing icons that use Iconify — covers bundle analysis, converting runtime API → offline data, custom subsets and lazy loading
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: วัด icon cost ปัจจุบันก่อน optimize
+> Goal: measure the current icon cost before optimizing
 
-1. ทำ `/deep-review` หรือ `/report-bundle` เพื่อดูขนาด icon-related code ใน bundle
-2. ตรวจ usage pattern: `import { Icon }`, `icon="..."` strings, `@iconify-json/*` imports — scan ว่าใช้ sets ไหน icons อะไรบ้าง
-3. ระบุ anti-patterns: import ทั้ง `icons.json`, dynamic icon names ที่ยิง API runtime, icons ที่ไม่ได้ใช้
+1. Do `/deep-review-codebase` or `/report-bundle` to see the size of icon-related code in the bundle
+2. Check usage patterns: `import { Icon }`, `icon="..."` strings, `@iconify-json/*` imports — scan which sets and which icons are used
+3. Identify anti-patterns: importing the whole `icons.json`, dynamic icon names hitting the API at runtime, unused icons
 
 ### 2. Prefer Offline Bundles
 
-> Goal: แปลง runtime API fetching เป็น bundled icon data
+> Goal: convert runtime API fetching to bundled icon data
 
-1. ติดตั้ง `@iconify-json/<set>` สำหรับทุก set ที่ใช้ — แทนที่การ fetch จาก `api.iconify.design`
-2. ส่ง icon data โดยตรงให้ component: `<Icon icon={mdiHome} />` โดย import จาก `@iconify-json/mdi` (tree-shakeable per-icon)
-3. เก็บ API runtime เฉพาะ icon names ที่ user กำหนด runtime จริงๆ (เช่น icon picker)
+1. Install `@iconify-json/<set>` for every set in use — replacing fetches from `api.iconify.design`
+2. Pass icon data directly to the component: `<Icon icon={mdiHome} />` importing from `@iconify-json/mdi` (tree-shakeable per-icon)
+3. Keep the API runtime only for icon names genuinely defined at runtime (e.g. an icon picker)
 
 ### 3. Subset Icon Data
 
-> Goal: bundle เฉพาะ icons ที่ใช้จริง
+> Goal: bundle only the icons actually used
 
-1. ใช้ `@iconify/utils` (`getIcons`, `minifyIconSet`) เพื่อ generate subset JSON ที่มีเฉพาะ icons ที่ใช้ — ดู official docs สำหรับ API ล่าสุด
-2. สำหรับ UnoCSS `presetIcons`: import เฉพาะ collections ที่ใช้ใน `uno.config.ts`
-3. สำหรับ Tailwind plugin: ระบุ icon sets ใน plugin config — ห้าม load ทุก set
-4. ถ้า icons น้อยมาก พิจารณา inline SVG แทน Iconify เลย
+1. Use `@iconify/utils` (`getIcons`, `minifyIconSet`) to generate a subset JSON containing only the icons used — see official docs for the latest API
+2. For UnoCSS `presetIcons`: import only the collections used in `uno.config.ts`
+3. For the Tailwind plugin: specify the icon sets in the plugin config — never load every set
+4. If there are very few icons, consider inline SVG instead of Iconify entirely
 
 ### 4. Lazy-Load Dynamic Icons
 
-> Goal: ลด initial bundle สำหรับ icons ที่ไม่จำเป็นตอน load
+> Goal: shrink the initial bundle for icons not needed at load time
 
-1. Dynamic import icon data สำหรับ sections ที่ไม่ critical
-2. ใช้ `@iconify/utils` loader functions สำหรับ on-demand icon loading — ดู official docs
-3. สำหรับ web component `iconify-icon` — icons load on-demand อยู่แล้ว แต่ต้องเสีย API runtime; ชั่งน้ำหนักกับ offline bundle
+1. Dynamically import icon data for non-critical sections
+2. Use `@iconify/utils` loader functions for on-demand icon loading — see official docs
+3. For the `iconify-icon` web component — icons already load on demand but you pay the API runtime; weigh against an offline bundle
 
 ### 5. Verify And Compare
 
-> Goal: วัดผลหลัง optimize เทียบ baseline
+> Goal: measure after optimizing, against the baseline
 
-1. ทำ `/report-bundle` หรือ `/deep-review` ซ้ำ แล้ว compare กับ baseline ด้วย `/report-before-after`
-2. ตรวจว่า icons ทั้งหมดยัง render ถูกต้อง — ไม่มี missing icon
-3. ถ้า bundle ไม่เล็กลงหรือ icon หาย → revert จุดนั้นแล้ว report
+1. Re-run `/report-bundle` or `/deep-review-codebase`, then compare with the baseline via `/report-before-after`
+2. Check that all icons still render correctly — no missing icon
+3. If the bundle didn't shrink or an icon disappeared → revert that point and report
 
 ## Rules
 
-- Offline data (`@iconify-json/*`) มาก่อน API runtime เสมอ — เว้นแต่ icon ต้อง dynamic จริง
-- ห้าม import `icons.json` ทั้งไฟล์ของ set ใหญ่ (เช่น mdi มีหลายพัน icons)
-- subset ต้อง cover ทุก icon ที่ใช้จริง — scan usage ก่อน generate
-- preserve behavior — optimize ต้องไม่ทำให้ icon หายหรือกะพริบ
-- ใช้ `/follow-lib-iconify` สำหรับ overview
-- ใช้ `/run-bench` ถ้าต้องวัด load/render impact เชิงตัวเลข
+- Offline data (`@iconify-json/*`) always comes before the API runtime — unless the icon truly must be dynamic
+- Never import a large set's whole `icons.json` file (e.g. mdi has thousands of icons)
+- The subset must cover every icon actually used — scan usage before generating
+- Preserve behavior — optimizing must not make icons disappear or flicker
+- Use `/follow-lib-iconify` for the overview
+- Use `/run-bench` if load/render impact must be measured numerically
 
 ## Expected Outcome
 
-- Icon bundle เล็กลงเทียบ baseline ด้วยตัวเลขจริง
-- ไม่มี runtime API calls สำหรับ static icons
-- ทุก icon ยัง render ถูกต้อง
+- Icon bundle smaller versus the baseline, with real numbers
+- No runtime API calls for static icons
+- Every icon still renders correctly

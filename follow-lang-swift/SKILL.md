@@ -1,13 +1,16 @@
 ---
 name: follow-lang-swift
 description: Swift application guidelines with Clean Architecture and SwiftUI
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-kotlin
+  - follow-architecture
   - follow-best-practice
   - refactor
   - setup-cicd
   - use-scripts
+  - run-test
+  - deep-test
   - deep-research
 
 ---
@@ -18,7 +21,7 @@ Develop Swift applications with Clean Architecture and SwiftUI per best practice
 
 ## Scope
 
-For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages); single `SKILL.md` package — no `references/`, verify the current Swift/Xcode toolchain and API changes via `/deep-research` at use time (official docs: https://developer.apple.com/documentation/swift, https://www.swift.org/documentation/)
+For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages). Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time SPM/app scaffold); verify the current Swift/Xcode toolchain and API changes via `/deep-research` at use time (official docs: https://developer.apple.com/documentation/swift, https://www.swift.org/documentation/)
 
 ## Execute
 
@@ -26,10 +29,10 @@ For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages); sing
 
 > Goal: set up Swift Package Manager and dependencies with live-checked versions
 
-1. Run `/deep-research` to confirm the current Swift language mode and Observation-framework availability for the deployment targets before choosing APIs
-2. Create `Package.swift` with `platforms`, `products`, `dependencies`, and targets for main + tests
+1. Run `/deep-research` + `/follow-best-practice` to confirm the current Swift language mode, practices, and Observation-framework availability for the deployment targets before choosing APIs
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): `swift package init` or Xcode app skeleton, `Package.swift`, layered targets, first test, verify
 3. Core stack: SPM, Swift Concurrency (`async/await`), DI via Factory (or protocol-based manual DI)
-4. Xcode projects: keep the `.xcodeproj`/`.xcworkspace` scheme building the same targets as the package layout
+4. Tool inventory (build, test, lint, format, profiling) → `references/toolchain.md`
 
 ### 2. Project Structure
 
@@ -41,7 +44,7 @@ For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages); sing
 4. `Domain/` — entities (immutable `struct`, `Identifiable, Hashable`), repository protocols, use cases
 5. `Presentation/` — reusable components, screens, view models
 6. `Resources/` — assets, color sets
-7. Run `/refactor architecture` for the pattern decision; detail: structures + layer tables in `follow-architecture/references/follow-*-arch.md`
+7. Run `/follow-architecture` for the pattern decision; detail: structures + layer tables in `follow-architecture/SKILL.md` (`## Clean Pattern` / `## Layered Pattern`)
 
 ### 3. Layer Dependencies (Import Rules)
 
@@ -88,6 +91,7 @@ For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages); sing
 
 - Use /follow-lang-kotlin if needed
 - Use /follow-best-practice if needed
+- Use /refactor if needed
 - Use /setup-cicd if needed
 - Use /use-scripts if needed
 

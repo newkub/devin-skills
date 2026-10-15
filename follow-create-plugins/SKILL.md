@@ -8,7 +8,7 @@ related:
   - follow-create-cli
   - follow-create-mcp
   - follow-create-web-mcp
-  - deep-review
+  - deep-review-codebase
   - update-devin-global-skills
   - follow-best-practice
   - implement-to-production
@@ -65,7 +65,7 @@ Create a plugin/extension/addon for the specified target — this parent skill o
 ## Rules
 
 - The parent only dispatches — never duplicate a target skill's workflow in this file
-- Always choose library/tooling first via `/deep-review` (techstack catalog)
+- Always choose library/tooling first via `/deep-review-codebase` (techstack catalog)
 - After scaffolding → `/implement-to-production` per convention
 
 - Use /follow-create-sdk when needed

@@ -3,7 +3,7 @@ name: edit-only
 description: Edit code without running any task or terminal
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - update-references
 
 ---
@@ -22,7 +22,7 @@ Use this workflow when the task is code editing only, with no need to verify the
 
 > Goal: Confirm the task is a code-only edit
 
-Run `/deep-review` to check import usage and export strategy, and confirm the task is a code-only edit
+Run `/deep-review-codebase` to check import usage and export strategy, and confirm the task is a code-only edit
 
 ### 2. Code Modification
 
@@ -59,7 +59,7 @@ Use only file modification tools
 
 Maintain code quality per the standard
 
-- Run `/deep-review` for the edits
+- Run `/deep-review-codebase` for the edits
 - Keep consistency with the codebase
 - Add comments when necessary
 

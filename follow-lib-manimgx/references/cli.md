@@ -1,12 +1,12 @@
 | command | description | options |
 |---|---|---|
-| `manimgx --version` | พิมพ์เวอร์ชันที่ยืนยันว่า tool ติดตั้งถูกตัว | --version, --help |
-| `manimgx inspect <file> [Scene]` | รัน scene โดยไม่ทำวิดีโอ — print timeline (แต่ละ play พร้อมบรรทัด code), ตรวจ 2D layout, เขียน `<Scene>.storyboard.png`; exit 1 เมื่อมี layout problems | -t/--time `<sec>|end` (ซ้ำหรือคั่น `,`), -o/--output `<path>` |
-| `manimgx render <file> [Scene]` | ทำ MP4 ข้าง file แล้ว print path (+ `.storyboard.png`, `.srt` เมื่อ scene speak) | -o/--output (default `<Scene>.mp4`), -r/--resolution `WxH` (default 1920x1080), --fps `<int≥1>` (default 60), --preset `ultrafast…placebo` (default medium), --crf `<0–51>` (default 23.0) |
-| `manimgx preview <file> [Scene]` | เปิด window เล่น scene และ replay ทุกครั้งที่ save file หรือ module ที่ import จากข้างๆ | keys: Space play/pause, ←/→ ±5s, `,`/`.` ทีละ frame, Ctrl/Option+←/→ ทีละ play, N/P สลับ scene, ? shown keys, Ctrl+C/ปิด window หยุด |
-| `manimgx present <file> [Scene]` | ทำวิดีโอแล้วแสดง section เป็น slides ในเบราว์เซอร์ (คู่กับ `self.next_section()`) | like `render` |
-| `uv tool install --python 3.14 manimgx` | ติดตั้ง CLI บน PATH (แนะนำสำหรับ agent) | ต้องคง `--python 3.14`; PATH ไม่รวม `~/.local/bin` → `uv tool update-shell` แล้วเปิด shell ใหม่ |
-| `uvx --python 3.14 manimgx <command>` | รัน CLI โดยไม่ติดตั้งถาวร | — |
-| `pip install manimgx` | ติดตั้งใน venv ที่เป็น Python 3.13/3.14 | interpreter เก่ากว่าจะหา package ไม่เจอ |
-| `npm install manimgx` | ติดตั้ง web player (`<manimgx-player>` + Pyodide/WebGPU) | — |
-| `ty check <file>` | type-check scene (จับ unknown keyword/ชื่อ API ก่อน render) | --python `<interpreter ที่ติดตั้ง manimgx>` — ไม่งั้น report `unresolved-import`; venv = `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python`, uv tool = `<uv tool dir>/manimgx/Scripts/python.exe` หรือ `/bin/python`; https://docs.astral.sh/ty/ |
+| `manimgx --version` | prints the version, confirming the right tool is installed | --version, --help |
+| `manimgx inspect <file> [Scene]` | run the scene without making a video — prints the timeline (each play with its code line), checks 2D layout, writes `<Scene>.storyboard.png`; exit 1 when there are layout problems | -t/--time `<sec>|end` (repeat or comma-separated), -o/--output `<path>` |
+| `manimgx render <file> [Scene]` | makes the MP4 next to the file then prints the path (+ `.storyboard.png`, `.srt` when the scene speaks) | -o/--output (default `<Scene>.mp4`), -r/--resolution `WxH` (default 1920x1080), --fps `<int≥1>` (default 60), --preset `ultrafast…placebo` (default medium), --crf `<0–51>` (default 23.0) |
+| `manimgx preview <file> [Scene]` | opens a window playing the scene and replays on every save of the file or a module imported next to it | keys: Space play/pause, ←/→ ±5s, `,`/`.` one frame at a time, Ctrl/Option+←/→ one play at a time, N/P switch scene, ? shows keys, Ctrl+C/close window stops |
+| `manimgx present <file> [Scene]` | makes the video then shows sections as slides in the browser (pairs with `self.next_section()`) | like `render` |
+| `uv tool install --python 3.14 manimgx` | installs the CLI on PATH (recommended for agents) | keep `--python 3.14`; PATH missing `~/.local/bin` → `uv tool update-shell` then reopen the shell |
+| `uvx --python 3.14 manimgx <command>` | run the CLI without a permanent install | — |
+| `pip install manimgx` | install inside a Python 3.13/3.14 venv | older interpreters won't find the package |
+| `npm install manimgx` | installs the web player (`<manimgx-player>` + Pyodide/WebGPU) | — |
+| `ty check <file>` | type-check the scene (catches unknown keywords/API names before render) | --python `<interpreter that has manimgx installed>` — otherwise it reports `unresolved-import`; venv = `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python`, uv tool = `<uv tool dir>/manimgx/Scripts/python.exe` or `/bin/python`; https://docs.astral.sh/ty/ |

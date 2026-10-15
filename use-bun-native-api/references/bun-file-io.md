@@ -1,7 +1,8 @@
 # Bun File I/O APIs
 
-Use Bun file I/O APIs for file operations
-
-- `Bun.file()` - Creates a `BunFile` object for reading files (lazy loading)
-- `Bun.write()` - Writes files; supports string, Blob, ArrayBuffer, Response
-- `Bun.stdin` / `Bun.stdout` / `Bun.stderr` - Standard streams
+| API | Description |
+|-----|-------------|
+| `Bun.file()` | Lazy `BunFile` (Blob-like) for a path — read via `.text()`/`.bytes()`/`.stream()` without buffering the whole file |
+| `Bun.write()` | Destination-aware write (path, `Bun.file`, Response, Blob, string, ArrayBuffer) — streams automatically |
+| `Bun.fileURLToPath()` | Convert a `file://` URL to an OS path |
+| `Bun.stdin` / `Bun.stdout` / `Bun.stderr` | Standard stream blobs (`.text()`, `.json()`, `.write()`) |

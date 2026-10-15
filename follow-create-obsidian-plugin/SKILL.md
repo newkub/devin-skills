@@ -8,7 +8,7 @@ related:
   - follow-lang-typescript
   - run-test
   - update-dot-vscode
-  - deep-review
+  - deep-review-codebase
   - report
 
 ---
@@ -29,8 +29,8 @@ Use for creating Obsidian desktop/mobile plugins from the sample plugin or a man
 
 > Goal: Review the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
-2. Run `/deep-review` to review the tech stack, dependencies, and library design (create obsidian plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create obsidian plugin)
 3. Record the rationale for the chosen stack and libraries for later reference (create obsidian plugin)
 
 ### 2. Setup Project

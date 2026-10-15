@@ -1,6 +1,6 @@
 ---
 name: follow-lib-elysia
-description: พัฒนา API ด้วย Elysia 1.4+ บน Bun แบบ type-safe ตาม official best practices
+description: Develop type-safe APIs with Elysia 1.4+ on Bun, following official best practices
 argument-hint: "[scope]"
 related:
   - use-bun-native-api
@@ -13,21 +13,21 @@ related:
 
 ## Goal
 
-พัฒนา API ด้วย Elysia เวอร์ชันล่าสุดบน Bun runtime แบบ type-safe ครบวงจร ตาม official best practices
+Develop APIs with the latest Elysia version on the Bun runtime, fully type-safe, following official best practices
 
 ## Scope
 
-ใช้สำหรับ project ที่ใช้ Elysia เป็น web framework บน Bun runtime — เลือก workflow ตาม phase:
+For projects using Elysia as the web framework on the Bun runtime — pick the workflow by phase:
 
-- Setup ครั้งแรก (install, `new Elysia()`, routes/plugins พื้นฐาน) → `workflows/setup-elysia/SKILL.md`
+- First-time setup (install, `new Elysia()`, basic routes/plugins) → `workflows/setup-elysia/SKILL.md`
 - Production deploy (`bun build`, env config, platform targets) → `workflows/deploy-elysia/SKILL.md`
-- Skill นี้ครอบคลุม full reference — ถ้า task เป็น Bun HTTP server ทั่วไปที่ไม่ใช้ Elysia → ใช้ `/use-bun-native-api` แทน
+- This skill covers the full reference — if the task is a general Bun HTTP server without Elysia → use `/use-bun-native-api` instead
 
-- ติดตั้ง Elysia, Eden, และ plugins ที่จำเป็น
-- กำหนด routes, handlers, validation, lifecycle hooks
-- ใช้ Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi)
-- สร้าง type-safe client ผ่าน Eden
-- สร้าง OpenAPI docs ด้วย `@elysia/openapi`
+- Install Elysia, Eden, and the needed plugins
+- Define routes, handlers, validation, lifecycle hooks
+- Use Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi)
+- Build a type-safe client via Eden
+- Generate OpenAPI docs with `@elysia/openapi`
 
 ## Execute
 
@@ -35,7 +35,7 @@ related:
 
 | Topic | Workflow |
 |-------|----------|
-| Setup | `workflows/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, routes/plugins พื้นฐาน |
+| Setup | `workflows/setup-elysia/SKILL.md` — install, `new Elysia()`, `.listen()`, basic routes/plugins |
 | Routing | `workflows/define-routes/SKILL.md` — methods, params/wildcards, `.group`/`.guard`/`.mount`, `.ws` |
 | Validation | `workflows/validate-requests/SKILL.md` — TypeBox `t.*` schemas, coercion, shared models, Standard Schema |
 | Lifecycle/hooks | `workflows/use-lifecycle/SKILL.md` — hook order, `derive`/`decorate`/`resolve`, `onError`, scoping |
@@ -44,177 +44,177 @@ related:
 | Deploy | `workflows/deploy-elysia/SKILL.md` — `bun build`, env config, platform targets | 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง Elysia และ setup บน Bun runtime
+> Goal: install Elysia and set up on the Bun runtime
 
-1. ติดตั้ง `bun add elysia` หรือ `bun add elysia@1.4.30` (latest stable)
-2. ถ้าต้องการ end-to-end type safety ติดตั้ง `bun add @elysia/eden`
-3. สร้าง project ใหม่ได้ด้วย `bun create elysia app`
-4. ใช้ `bun --hot` สำหรับ hot reloading ใน development
-5. ใช้ Bun เป็น runtime เท่านั้น (ทำ `/use-bun-native-api`)
-6. สร้าง `new Elysia()` instance และ `.listen(port)`
+1. Install `bun add elysia` or `bun add elysia@1.4.30` (latest stable)
+2. For end-to-end type safety, install `bun add @elysia/eden`
+3. Create a new project with `bun create elysia app`
+4. Use `bun --hot` for hot reloading in development
+5. Use Bun as the runtime only (do `/use-bun-native-api`)
+6. Create a `new Elysia()` instance and `.listen(port)`
 
 ### 2. Define Routes
 
-> Goal: กำหนด routes ด้วย HTTP verb methods และ path parameters
+> Goal: define routes with HTTP verb methods and path parameters
 
-1. ใช้ HTTP verb methods: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`
-2. ใช้ dynamic path parameters: `/users/:id`, `/posts/:category/:slug`
-3. ใช้ wildcards: `/files/*` สำหรับ catch-all
-4. ใช้ `.group()` สำหรับ route grouping และ prefix
-5. ใช้ custom methods ด้วย `.route(method, path, handler)`
+1. Use HTTP verb methods: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`
+2. Use dynamic path parameters: `/users/:id`, `/posts/:category/:slug`
+3. Use wildcards: `/files/*` for catch-all
+4. Use `.group()` for route grouping and prefix
+5. Use custom methods with `.route(method, path, handler)`
 
 ### 3. Handle Context
 
-> Goal: จัดการ request context และ response headers
+> Goal: handle request context and response headers
 
-1. ใช้ `context.body`, `context.query`, `context.params`, `context.headers`, `context.cookie`, `context.request`
-2. ใช้ `context.store` สำหรับ global mutable state
-3. ใช้ `context.set.headers` สำหรับ set response headers
-4. ใช้ `context.set.status` หรือ `context.status(code, value)` สำหรับ type-safe status codes
-5. ใช้ `context.redirect(path)` สำหรับ redirects
+1. Use `context.body`, `context.query`, `context.params`, `context.headers`, `context.cookie`, `context.request`
+2. Use `context.store` for global mutable state
+3. Use `context.set.headers` to set response headers
+4. Use `context.set.status` or `context.status(code, value)` for type-safe status codes
+5. Use `context.redirect(path)` for redirects
 
 ### 4. Validate With Schema
 
-> Goal: ตรวจสอบ input ด้วย schema validation
+> Goal: validate input with schema validation
 
-1. ใช้ `Elysia.t` (TypeBox) สำหรับ schema validation แบบ built-in
-2. ใช้ Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi) ได้โดย import แล้วส่งให้ route handler
-3. กำหนด schema ใน route options: `body`, `query`, `params`, `headers`, `cookie`, `response`
-4. ใช้ `.model()` สำหรับ reusable named schemas
-5. ใช้ `.guard()` สำหรับ apply schema และ validation แบบ scoped
-6. ทำ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator
+1. Use `Elysia.t` (TypeBox) for built-in schema validation
+2. Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi) works by importing it and passing it to the route handler
+3. Define schemas in route options: `body`, `query`, `params`, `headers`, `cookie`, `response`
+4. Use `.model()` for reusable named schemas
+5. Use `.guard()` to apply schemas and validation in a scoped way
+6. Do `/follow-lib-zod` if Zod is the validator
 
 ### 5. Use Lifecycle Hooks
 
-> Goal: ใช้ lifecycle hooks สำหรับ request/response pipeline
+> Goal: use lifecycle hooks for the request/response pipeline
 
-1. ใช้ `.onRequest()` สำหรับ notify new request
-2. ใช้ `.onParse()` สำหรับ custom body parsing
-3. ใช้ `.onTransform()` สำหรับ modify context ก่อน validation
-4. ใช้ `.onBeforeHandle()` สำหรับ custom validation ก่อน handler
-5. ใช้ `.onAfterHandle()` สำหรับ tweak returned value
-6. ใช้ `.onMapResponse()` สำหรับ map returned value เป็น HTTP response
-7. ใช้ `.onError()` สำหรับ handle errors ใน life-cycle
-8. ใช้ `.onAfterResponse()` สำหรับ cleanup หลัง response ส่งแล้ว
-9. ใช้ `.derive()` หรือ `.resolve()` สำหรับ derive additional context values
+1. Use `.onRequest()` to notify a new request
+2. Use `.onParse()` for custom body parsing
+3. Use `.onTransform()` to modify context before validation
+4. Use `.onBeforeHandle()` for custom validation before the handler
+5. Use `.onAfterHandle()` to tweak the returned value
+6. Use `.onMapResponse()` to map the returned value into an HTTP response
+7. Use `.onError()` to handle errors in the life-cycle
+8. Use `.onAfterResponse()` for cleanup after the response is sent
+9. Use `.derive()` or `.resolve()` to derive additional context values
 
 ### 6. Use Plugins
 
-> Goal: ใช้ plugins สำหรับ modular architecture
+> Goal: use plugins for a modular architecture
 
-1. ใช้ `.use(plugin)` สำหรับ register plugin
-2. ประกาศ dependency อย่างชัดเจน: main instance ต้อง `.use(auth)` ก่อนใช้ `Auth`
-3. ใช้ `.decorate()` สำหรับ inject custom properties เข้า context
-4. ใช้ `.state()` สำหรับ inject mutable state
-5. ใช้ `.guard()` สำหรับ scoped validation และ schema
-6. ใช้ `.scope()` สำหรับ control plugin merge behavior (local, scoped, global)
+1. Use `.use(plugin)` to register a plugin
+2. Declare dependencies explicitly: the main instance must `.use(auth)` before using `Auth`
+3. Use `.decorate()` to inject custom properties into context
+4. Use `.state()` to inject mutable state
+5. Use `.guard()` for scoped validation and schemas
+6. Use `.scope()` to control plugin merge behavior (local, scoped, global)
 
 ### 7. Setup Eden Client
 
-> Goal: ตั้งค่า Eden Client ถ้าจำเป็น
+> Goal: set up the Eden Client if needed
 
-1. Export `type App` จาก server: `export type App = typeof app`
-2. ใช้ `treaty<App>(url)` จาก `@elysia/eden` (recommended)
-3. เรียก API แบบ type-safe: `app.users({ id: 1 }).get()`
-4. ใช้ `edenFetch<App>(url)` สำหรับ fetch-like syntax
-5. จัดการ error ด้วย `{ data, error }` destructuring
+1. Export `type App` from the server: `export type App = typeof app`
+2. Use `treaty<App>(url)` from `@elysia/eden` (recommended)
+3. Call the API type-safely: `app.users({ id: 1 }).get()`
+4. Use `edenFetch<App>(url)` for a fetch-like syntax
+5. Handle errors with `{ data, error }` destructuring
 
 ### 8. OpenAPI And Production
 
-> Goal: สร้าง OpenAPI docs และเตรียม production
+> Goal: generate OpenAPI docs and prepare for production
 
-1. ติดตั้ง `@elysia/openapi` ด้วย `bun add @elysia/openapi`
-2. ใช้ `app.use(openapi())` เพื่อ generate OpenAPI spec และ docs UI
-3. ใช้ `fromTypes()` ถ้าต้องการ generate OpenAPI จาก TypeScript types โดยตรง
-4. ใช้ `@elysia/swagger` ถ้าต้องการ Swagger UI
-5. รัน production ด้วย `bun run start` และตรวจสอบ `Bun.version` ให้รองรับ Elysia
+1. Install `@elysia/openapi` with `bun add @elysia/openapi`
+2. Use `app.use(openapi())` to generate the OpenAPI spec and docs UI
+3. Use `fromTypes()` if you want to generate OpenAPI directly from TypeScript types
+4. Use `@elysia/swagger` if you want Swagger UI
+5. Run production with `bun run start` and verify `Bun.version` supports Elysia
 
 ## Rules
 
 ### 1. Project Setup
 
-- ใช้ Bun เป็น runtime เท่านั้น (ทำ `/use-bun-native-api`)
-- ใช้ `bun add elysia` สำหรับติดตั้ง
-- ใช้ `Bun.serve` ผ่าน Elysia `.listen()` เท่านั้น
-- ใช้ `bun --hot` สำหรับ hot reloading ใน development
+- Use Bun as the runtime only (do `/use-bun-native-api`)
+- Use `bun add elysia` to install
+- Use `Bun.serve` only through the Elysia `.listen()`
+- Use `bun --hot` for hot reloading in development
 
 ### 2. Route Definition
 
-- ใช้ HTTP verb methods (`.get()`, `.post()`, ฯลฯ) สำหรับ define routes
-- ใช้ dynamic params ด้วย `:param` syntax
-- ใช้ `.group()` สำหรับ route prefix และ organization
-- ลำดับ route: static path ก่อน dynamic path
+- Use HTTP verb methods (`.get()`, `.post()`, etc.) to define routes
+- Use dynamic params with the `:param` syntax
+- Use `.group()` for route prefix and organization
+- Route order: static paths before dynamic paths
 
 ### 3. Handler Patterns
 
-- ใช้ `context.status(code, value)` หรือ `context.set.status` สำหรับ type-safe status (v1.4)
-- ใช้ `context.set.headers` สำหรับ response headers
-- ใช้ `context.store` สำหรับ global state ที่ mutable
-- ใช้ `context.cookie` สำหรับ cookie management
-- ใช้ `context.redirect()` สำหรับ redirects
+- Use `context.status(code, value)` or `context.set.status` for type-safe status (v1.4)
+- Use `context.set.headers` for response headers
+- Use `context.store` for mutable global state
+- Use `context.cookie` for cookie management
+- Use `context.redirect()` for redirects
 
 ### 4. Validation
 
-- ใช้ `Elysia.t` (TypeBox) เป็น default validator
-- ใช้ Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi) ได้ถ้า project ใช้อยู่แล้ว
-- กำหนด schema สำหรับ `body`, `query`, `params`, `headers`, `response`
-- ใช้ `.model()` สำหรับ reusable schemas
-- ใช้ `.guard()` สำหรับ scoped validation
+- Use `Elysia.t` (TypeBox) as the default validator
+- Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi) is fine if the project already uses it
+- Define schemas for `body`, `query`, `params`, `headers`, `response`
+- Use `.model()` for reusable schemas
+- Use `.guard()` for scoped validation
 
 ### 5. Lifecycle Hooks
 
-- ใช้ `.onBeforeHandle()` สำหรับ auth และ custom validation
-- ใช้ `.onAfterHandle()` สำหรับ transform response
-- ใช้ `.onError()` สำหรับ centralized error handling
-- ใช้ `.derive()` สำหรับ derive additional context values (แนะนำสำหรับ v2)
-- ใช้ `.resolve()` สำหรับ resolve values before handler (ยังใช้ได้ใน v1.4)
-- ลำดับ hooks: Request → Parse → Transform → Before Handle → Handler → After Handle → Map Response → After Response
+- Use `.onBeforeHandle()` for auth and custom validation
+- Use `.onAfterHandle()` to transform responses
+- Use `.onError()` for centralized error handling
+- Use `.derive()` to derive additional context values (recommended for v2)
+- Use `.resolve()` to resolve values before the handler (still available in v1.4)
+- Hook order: Request → Parse → Transform → Before Handle → Handler → After Handle → Map Response → After Response
 
 ### 6. Plugin Design
 
-- ประกาศ dependency อย่างชัดเจน (Dependency Injection pattern)
-- ใช้ `.decorate()` สำหรับ inject services เข้า context
-- ใช้ `.state()` สำหรับ inject mutable state
-- ใช้ `.guard()` สำหรับ scoped schema และ validation
-- ใช้ `.scope()` สำหรับ control merge behavior
-- แยก logic เป็น plugins ขนาดเล็ก ใช้ซ้ำได้
+- Declare dependencies explicitly (Dependency Injection pattern)
+- Use `.decorate()` to inject services into context
+- Use `.state()` to inject mutable state
+- Use `.guard()` for scoped schemas and validation
+- Use `.scope()` to control merge behavior
+- Split logic into small, reusable plugins
 
 ### 7. Eden Type Safety
 
-- Export `type App` จาก server
-- ใช้ `treaty<App>()` (recommended) แทน `edenFetch`
-- จัดการ error ด้วย `{ data, error }` destructuring
-- ใช้ Eden สำหรับ type-safe unit tests
+- Export `type App` from the server
+- Use `treaty<App>()` (recommended) over `edenFetch`
+- Handle errors with `{ data, error }` destructuring
+- Use Eden for type-safe unit tests
 
 ### 8. Error Handling
 
-- ใช้ `.onError()` สำหรับ centralized error handling
-- ใช้ `context.status(code, message)` แทน throw เมื่อเป็นไปได้ (v1.4)
-- ใช้ custom error class ถ้าจำเป็น แล้ว handle ใน `.onError()`
-- ส่ง error message ที่ meaningful และไม่ leak sensitive info
+- Use `.onError()` for centralized error handling
+- Use `context.status(code, message)` instead of throw where possible (v1.4)
+- Use a custom error class when needed, then handle it in `.onError()`
+- Return meaningful error messages without leaking sensitive info
 
 ### 9. Version Notes
 
 - Latest stable: `elysia@1.4.30`, `@elysia/eden@1.4.10`, `@elysia/openapi@1.4.16` (verified 2026-09-16)
-- Elysia 2.0 beta "DayDream": `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest` (verified 2026-09-16)
-- v2.0 มี breaking changes ได้แก่ route hooks/schemas ต้องอยู่ก่อน handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, ใช้ `problem` สำหรับ RFC 9457 errors แทน `status`
-- v2.0 ตัด prefix `on` ออกจาก lifecycle hooks (`onRequest` → `request`, `onBeforeHandle` → `beforeHandle`, `onError` → `error`) และ WebSocket กลายเป็น opt-in plugin ที่ `.ws()` 3-arg เป็น `(path, options, handler)` พร้อมใช้ generator `yield` แทน `ws.send`
-- ตรวจสอบ version ใน `package.json` ก่อนเลือก API
+- Elysia 2.0 beta "DayDream": `bun add elysia@next` (2.0.0-beta.14) or migrate with `bunx @elysia/codemod@latest` (verified 2026-09-16)
+- v2.0 has breaking changes: route hooks/schemas must come before the handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, use `problem` for RFC 9457 errors instead of `status`
+- v2.0 drops the `on` prefix from lifecycle hooks (`onRequest` → `request`, `onBeforeHandle` → `beforeHandle`, `onError` → `error`) and WebSocket becomes an opt-in plugin, `.ws()` takes 3 args `(path, options, handler)` with generator `yield` instead of `ws.send`
+- Check the version in `package.json` before choosing APIs
 
-- ใช้ `/use-bun-native-api` ถ้าจำเป็น
-- ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- Use /use-bun-native-api if needed
+- Use /follow-lib-zod if Zod is the validator
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /use-my-packages-on-registry if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- API แบบ type-safe ครบวงจร (server → client ผ่าน Eden)
-- Validation ครบทุก layer (body, query, params, headers, response)
-- Plugin architecture ที่ modular และ reusable
-- Error handling แบบ centralized และ type-safe
-- OpenAPI docs สร้างอัตโนมัติจาก code
-- สอดคล้องกับ official ElysiaJS documentation
-- ใช้ Bun native APIs ตาม `/use-bun-native-api`
+- A fully type-safe API (server → client via Eden)
+- Validation across every layer (body, query, params, headers, response)
+- A modular, reusable plugin architecture
+- Centralized, type-safe error handling
+- OpenAPI docs generated automatically from code
+- Aligned with the official ElysiaJS documentation
+- Bun native APIs used per `/use-bun-native-api`

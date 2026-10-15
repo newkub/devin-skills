@@ -1,6 +1,6 @@
 ---
 name: follow-lib-line-liff
-description: ใช้ @line/liff สร้าง LIFF mini-apps — init, profile, login, shareTargetPicker
+description: Use @line/liff to build LIFF mini-apps — init, profile, login, shareTargetPicker
 argument-hint: "[target-or-scope]"
 related:
   - follow-secret-manager
@@ -11,15 +11,15 @@ related:
 
 ## Goal
 
-ใช้ @line/liff สร้าง LIFF mini-apps — init, profile, login, shareTargetPicker
+Use @line/liff to build LIFF mini-apps — init, profile, login, shareTargetPicker
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ `@line/liff` — LIFF SDK ฝั่ง client (browser/LINE app) เท่านั้น (lib line liff)
+Use when the task involves `@line/liff` — the client-side (browser/LINE app) LIFF SDK only (lib line liff)
 
-- `@line/liff` เป็น browser-only SDK — ใช้ใน SPA/frontend เท่านั้น ไม่ใช่ server-side
-- Server-side: verify ID token ผ่าน LINE verify endpoint + Messaging API อยู่นอก scope ของ skill นี้
-- Channel secrets/credentials จัดการผ่าน `/follow-secret-manager` — ห้าม commit
+- `@line/liff` is a browser-only SDK — use it in SPA/frontend only, not server-side
+- Server-side: verifying the ID token via the LINE verify endpoint + Messaging API is out of this skill's scope
+- Channel secrets/credentials are managed via `/follow-secret-manager` — never commit
 
 - Latest: `@line/liff@2.31.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
@@ -27,44 +27,44 @@ related:
 
 ### 1. Check Preconditions
 
-> Goal: เตรียม LIFF app และ channel ก่อนเขียน code
+> Goal: prepare the LIFF app and channel before writing code
 
-1. สร้าง LIFF app ใน LINE Developers Console ผูกกับ channel — ได้ `liffId`
-1. ตั้ง endpoint URL ของ LIFF app ใน console ให้ตรงกับ URL ที่ host app จริง
-1. ติดตั้ง `bun add @line/liff` — types รวมอยู่ใน package
-1. เก็บ `liffId` ใน env/config — ห้าม hardcode ถ้าแยกตาม environment
+1. Create a LIFF app in the LINE Developers Console attached to a channel — get the `liffId`
+1. Set the LIFF app's endpoint URL in the console to match the URL actually hosting the app
+1. Install `bun add @line/liff` — types are included in the package
+1. Keep the `liffId` in env/config — never hardcode if it differs per environment
 
 ### 2. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. init ด้วย `liff.init({liffId})` ใน client — await promise ก่อนใช้ API อื่น; `withLoginOnExternalBrowser` สำหรับ auto-login นอก LINE app
-1. เช็ค `liff.isInClient()`/`isLoggedIn()` ก่อนใช้ APIs — นอก LINE app ต้อง `liff.login()` (OAuth redirect, รับ `redirectUri` ได้)
-1. ใช้ `liff.getProfile()` สำหรับ display และ `liff.getIDToken()` ส่งไป verify ฝั่ง server — ห้ามเชื่อ profile ฝั่ง client
-1. ใช้ `shareTargetPicker`, `sendMessages`, `scanCodeV2`, `getContext()` (type, userId, chatId) ตาม feature — บาง API ใช้ได้เฉพาะใน LINE app
+1. Initialize with `liff.init({liffId})` on the client — await the promise before using other APIs; `withLoginOnExternalBrowser` for auto-login outside the LINE app
+1. Check `liff.isInClient()`/`isLoggedIn()` before using APIs — outside the LINE app you need `liff.login()` (OAuth redirect, accepts `redirectUri`)
+1. Use `liff.getProfile()` for display and send `liff.getIDToken()` to the server for verification — never trust client-side profile data
+1. Use `shareTargetPicker`, `sendMessages`, `scanCodeV2`, `getContext()` (type, userId, chatId) per feature — some APIs work only inside the LINE app
 
 ### 3. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib line liff)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib line liff)
 
 ## Rules
 
-- verify ID token ฝั่ง server ด้วย LINE API เสมอ
-- LIFF v2 — SDK ทำงานใน LINE app หรือ external browser (behavior ต่างกัน)
-- test ทั้ง in-client และ external browser mode
-- handle init failures — liff.init เป็น promise
+- Always verify the ID token server-side with the LINE API
+- LIFF v2 — the SDK works in the LINE app or an external browser (behavior differs)
+- Test both in-client and external browser modes
+- Handle init failures — liff.init is a promise
 
-- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ channel secrets
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-secret-manager` if channel secrets management is needed
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib line liff)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib line liff)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib line liff)
+- No known security/performance pitfalls (lib line liff)
+- Lint, typecheck, tests pass

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-edgejs
-description: ตั้งค่าและใช้งาน Edge.js template engine สำหรับ Node.js
+description: Set up and use the Edge.js template engine for Node.js
 argument-hint: "[scope]"
 related:
   - report
@@ -11,21 +11,21 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน Edge.js template engine สำหรับ Node.js ด้วย syntax ที่ใกล้ JavaScript, components, slots, partials, และ state management ตาม official documentation
+Set up and use the Edge.js template engine for Node.js with its near-JavaScript syntax, components, slots, partials, and state management, per the official documentation
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ Node.js/Bun ที่ต้องการ backend template engine แบบ ESM-only โดยไม่ต้อง build step รองรับทั้ง standalone และใน AdonisJS — ใช้ skill นี้เมื่อ render HTML ฝั่ง server ด้วย `.edge` templates เท่านั้น
+For Node.js/Bun projects that need an ESM-only backend template engine with no build step — standalone or inside AdonisJS — use this skill only when rendering HTML server-side with `.edge` templates
 
-- ถ้าต้องการ interactive UI หรือ component framework ฝั่ง client → ใช้ `/follow-lib-react` หรือ `/follow-lib-solidjs` แทน
-- ถ้า project เป็น AdonisJS full-stack → ทำตาม view conventions ของ AdonisJS ซึ่งใช้ Edge เป็น engine อยู่แล้ว
+- If you need an interactive UI or client-side component framework → use `/follow-lib-react` or `/follow-lib-solidjs` instead
+- If the project is AdonisJS full-stack → follow AdonisJS view conventions, which already use Edge as the engine
 
-- ติดตั้ง `edge.js` ผ่าน `bun` หรือ `npm`
-- สร้าง `Edge` instance, mount disks, และ enable cache
-- เขียน template ด้วย `.edge` syntax
-- ใช้ conditionals, loops, partials, components, slots, และ layouts
-- จัดการ template state: globals, locals, rendering data, inline variables
-- ขยายความสามารถด้วย plugins และ custom tags เมื่อจำเป็น
+- Install `edge.js` via `bun` or `npm`
+- Create an `Edge` instance, mount disks, and enable cache
+- Write templates with `.edge` syntax
+- Use conditionals, loops, partials, components, slots, and layouts
+- Manage template state: globals, locals, rendering data, inline variables
+- Extend with plugins and custom tags when needed
 
 - Latest: `edge.js@6.5.1` (verified 2026-09-13)
 
@@ -33,29 +33,29 @@ related:
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อนเริ่ม
+> Goal: verify the environment before starting
 
-1. ยืนยันว่ามี `package.json` และ project ใช้ ESM (`"type": "module"` หรือไฟล์ `.mjs`)
-2. ยืนยันว่ามี Bun หรือ Node.js เวอร์ชันล่าสุดรองรับ ESM
-3. ตรวจสอบ version ของ `edge.js` ใน `package.json` หรือตรวจที่ https://www.npmjs.com/package/edge.js
-4. ถ้าไม่มี project → stop และ `/ask-me` เพื่อสร้างก่อน
+1. Confirm there is a `package.json` and the project uses ESM (`"type": "module"` or `.mjs` files)
+2. Confirm a latest Bun or Node.js version that supports ESM is available
+3. Check the `edge.js` version in `package.json` or at https://www.npmjs.com/package/edge.js
+4. If there is no project → stop and `/ask-me` to create one first
 
 ### 2. Install Edge.js
 
-> Goal: ติดตั้ง `edge.js` ใน project
+> Goal: install `edge.js` in the project
 
-1. รัน `bun add edge.js` (runtime dependency — ถ้า project ใช้ package manager อื่นให้ใช้คำสั่งที่เทียบเท่า)
-2. ตรวจสอบว่า `edge.js` อยู่ใน `dependencies` ของ `package.json`
-3. ถ้าใช้ TypeScript ให้ตรวจสอบว่า `tsconfig.json` รองรับ ESM (`module: "NodeNext"` หรือ `"ESNext"`)
-4. อย่า hardcode credentials หรือ secrets ใน template หรือ config
+1. Run `bun add edge.js` (runtime dependency — if the project uses another package manager, use the equivalent command)
+2. Verify `edge.js` is in `dependencies` of `package.json`
+3. With TypeScript, verify `tsconfig.json` supports ESM (`module: "NodeNext"` or `"ESNext"`)
+4. Never hardcode credentials or secrets in templates or config
 
 ### 3. Configure Edge Instance
 
-> Goal: สร้างและกำหนดค่า Edge instance
+> Goal: create and configure the Edge instance
 
-1. สร้าง `edge.ts` หรือ `edge.js` สำหรับ singleton instance
-2. ใช้ `Edge.create()` และ `edge.mount(new URL('./views', import.meta.url))`
-3. เปิด cache ใน production เพื่อหลีกเลี่ยง re-compile ซ้ำ
+1. Create `edge.ts` or `edge.js` for the singleton instance
+2. Use `Edge.create()` and `edge.mount(new URL('./views', import.meta.url))`
+3. Enable cache in production to avoid repeated re-compilation
 
 ```ts
 import { Edge } from 'edge.js'
@@ -67,50 +67,50 @@ export const edge = Edge.create({
 edge.mount(new URL('./views', import.meta.url))
 ```
 
-4. ถ้ามีหลาย disk/theme ให้ใช้ `edge.mount('diskName', new URL('path', import.meta.url))` และ render ด้วย `diskName::template`
-5. ระวัง keywords สงวน `template`, `$context`, `state`, `$filename` ไม่ใช้เป็นชื่อ state
+4. With multiple disks/themes use `edge.mount('diskName', new URL('path', import.meta.url))` and render with `diskName::template`
+5. Beware the reserved keywords `template`, `$context`, `state`, `$filename` — don't use them as state names
 
 ### 4. Write Templates
 
-> Goal: เขียนไฟล์ `.edge` ตาม syntax
+> Goal: write `.edge` files per the syntax
 
-1. สร้างไฟล์ `.edge` ใน `views/` หรือ `templates/`
-2. ใช้ `{{ expression }}` สำหรับ interpolation โดย expression เป็น JavaScript ใดก็ได้
-3. ใช้ `@if(condition)`, `@elseif`, `@else`, `@end` สำหรับ conditionals
-4. ใช้ `@each(item in items)` หรือ `@each((item, index) in items)` สำหรับ loops
-5. ใช้ `@include('partial')` สำหรับ partials และ `@includeIf(condition, 'partial')` สำหรับ conditional include
-6. ใช้ `{{-- comment --}}` สำหรับ comments
-7. ดู API surface ใน `references/apis.md`
+1. Create `.edge` files in `views/` or `templates/`
+2. Use `{{ expression }}` for interpolation — the expression can be any JavaScript
+3. Use `@if(condition)`, `@elseif`, `@else`, `@end` for conditionals
+4. Use `@each(item in items)` or `@each((item, index) in items)` for loops
+5. Use `@include('partial')` for partials and `@includeIf(condition, 'partial')` for conditional include
+6. Use `{{-- comment --}}` for comments
+7. See the API surface in `references/apis.md`
 
 ### 5. Use Components and Layouts
 
-> Goal: สร้าง UI แบบ reusable ด้วย components และ slots
+> Goal: build reusable UI with components and slots
 
-1. สร้าง components ใน `views/components/<name>.edge`
-2. ใช้ `@component('components/button', { props })` หรือ `@!component('components/button', { props })` สำหรับ auto-close
-3. ใช้ `@<componentTag>()` เมื่อ component อยู่ใน `components/` directory
-4. ใช้ `$props` สำหรับจัดการ props และ `$slots.main()` สำหรับ slots
-5. สร้าง layouts ด้วย `@layout.app({ title: '...' })` และ `@slot('main')` / `@endslot`
-6. ดู API surface ใน `references/apis.md`
+1. Create components in `views/components/<name>.edge`
+2. Use `@component('components/button', { props })` or `@!component('components/button', { props })` for auto-close
+3. Use `@<componentTag>()` when the component lives in the `components/` directory
+4. Use `$props` for props handling and `$slots.main()` for slots
+5. Create layouts with `@layout.app({ title: '...' })` and `@slot('main')` / `@endslot`
+6. See the API surface in `references/apis.md`
 
 ### 6. Manage Template State
 
-> Goal: ส่งข้อมูลให้ templates อย่างถูกต้อง
+> Goal: pass data to templates correctly
 
-1. ใช้ `edge.global(name, value)` สำหรับ state ที่แชร์ทุก template
-2. ใช้ `edge.createRenderer().share({ ... })` สำหรับ locals ที่ isolated ต่อ request
-3. ใช้ `await edge.render('view', data)` สำหรับ render data ที่ไม่แชร์กับ components
-4. ใช้ `@let(name = value)` และ `@assign(name = newValue)` สำหรับ inline variables
-5. ดู API surface ใน `references/apis.md`
+1. Use `edge.global(name, value)` for state shared across every template
+2. Use `edge.createRenderer().share({ ... })` for isolated per-request locals
+3. Use `await edge.render('view', data)` for rendering data not shared with components
+4. Use `@let(name = value)` and `@assign(name = newValue)` for inline variables
+5. See the API surface in `references/apis.md`
 
 ### 7. Render and Integrate
 
-> Goal: render templates ใน runtime
+> Goal: render templates at runtime
 
-1. ใช้ `await edge.render('home', data)` สำหรับ render จาก disk
-2. ใช้ `await edge.renderRaw(templateString, data)` สำหรับ in-memory template
-3. ใช้ `renderSync` / `renderRawSync` ถ้าต้องการ synchronous แต่แนะนำให้ใช้ async
-4. ผสานกับ HTTP server ด้วยการส่ง `html` string กลับ client
+1. Use `await edge.render('home', data)` to render from a disk
+2. Use `await edge.renderRaw(templateString, data)` for in-memory templates
+3. Use `renderSync` / `renderRawSync` if synchronous is required, but async is recommended
+4. Integrate with an HTTP server by returning the `html` string to the client
 
 ```ts
 import { createServer } from 'node:http'
@@ -127,75 +127,75 @@ server.listen(3000)
 
 ### 8. Extend Edge
 
-> Goal: ขยายความสามารถด้วย plugins และ custom tags
+> Goal: extend capabilities with plugins and custom tags
 
-1. ใช้ `edge.use(plugin)` สำหรับ plugin เช่น `edge-iconify` สำหรับ SVG icons
-2. ติดตั้ง `edge-iconify` และ `@iconify-json/<set>` ถ้าใช้ icons
-3. ใช้ `edge.registerTag(tagContract)` สำหรับ custom tags เฉพาะทาง
-4. ดูรายละเอียด custom tags ใน official documentation
+1. Use `edge.use(plugin)` for plugins such as `edge-iconify` for SVG icons
+2. Install `edge-iconify` and `@iconify-json/<set>` if using icons
+3. Use `edge.registerTag(tagContract)` for specialized custom tags
+4. See custom tag details in the official documentation
 
 ### 9. Validate and Ship
 
-> Goal: ตรวจสอบความถูกต้องก่อนส่งมอบ
+> Goal: verify correctness before delivery
 
-1. รัน `bun run typecheck` หรือ `tsc --noEmit` ถ้าใช้ TypeScript
-2. รัน `bun test` หรือ test suite ที่มี
-3. ตรวจสอบว่าไม่มี reserved keywords ถูก override
-4. ทำ `/report table` สรุป status คอลัมน์: `No.`, `Check`, `Status`, `Notes`
-5. ทำ `/deep-validate` แล้ว `/ship`
+1. Run `bun run typecheck` or `tsc --noEmit` if using TypeScript
+2. Run `bun test` or the existing test suite
+3. Verify no reserved keywords are overridden
+4. Run `/report table` summarizing status with columns: `No.`, `Check`, `Status`, `Notes`
+5. Run `/deep-validate` then `/ship`
 
 ## Rules
 
 ### 1. ESM Only
 
-- `edge.js` เป็น ESM-only package ต้องใช้ `import` ไม่ใช้ `require`
-- ตั้งค่า `package.json` ให้มี `"type": "module"` หรือใช้นามสกุล `.mjs`
+- `edge.js` is an ESM-only package — use `import`, never `require`
+- Set `"type": "module"` in `package.json` or use the `.mjs` extension
 
 ### 2. Template Files
 
-- ใช้นามสกุล `.edge` สำหรับ template files
-- เก็บ template ใน `views/` หรือ `templates/` ตาม convention ของ project
-- ใช้ `edge.mount()` เพื่อ register disk ก่อน render
+- Use the `.edge` extension for template files
+- Keep templates in `views/` or `templates/` per the project convention
+- Use `edge.mount()` to register a disk before rendering
 
 ### 3. Security
 
-- output ของ `{{ }}` ถูก HTML-escape โดย default ป้องกัน XSS
-- ใช้ `{{{ }}` หรือ `html.safe()` เฉพาะกับ content ที่ trusted
-- ไม่ใส่ secrets, credentials, หรือ hardcoded API keys ใน template
+- `{{ }}` output is HTML-escaped by default, preventing XSS
+- Use `{{{ }}` or `html.safe()` only with trusted content
+- Never put secrets, credentials, or hardcoded API keys in templates
 
 ### 4. Syntax Discipline
 
-- Edge tags (`@if`, `@each`, `@component`, ฯลฯ) ต้องอยู่บน line ของตัวเอง
-- ใช้ `~` ต่อท้าย tag เมื่อต้องการ swallow newline
-- ใช้ `!` นำหน้า tag name สำหรับ auto-close block tags เช่น `@!component(...)`
-- comments ใช้ `{{-- ... --}}`
+- Edge tags (`@if`, `@each`, `@component`, etc.) must be on their own line
+- Append `~` to a tag when you want to swallow the newline
+- Prefix a tag name with `!` for auto-closing block tags, e.g. `@!component(...)`
+- Comments use `{{-- ... --}}`
 
 ### 5. Performance
 
-- enable cache ใน production ด้วย `cache: process.env.NODE_ENV === 'production'`
-- หลีกเลี่ยงการ re-render template เดิมหลายครั้งใน loop
-- ใช้ `render` async เป็นหลัก
+- Enable cache in production with `cache: process.env.NODE_ENV === 'production'`
+- Avoid re-rendering the same template many times in a loop
+- Prefer async `render`
 
 ### 6. State Management
 
-- ไม่ใช้ชื่อ `template`, `$context`, `state`, `$filename` เป็น template state
-- แยกระหว่าง globals, locals, rendering data, และ inline variables ตาม scope ที่ถูกต้อง
+- Never use `template`, `$context`, `state`, `$filename` as template state names
+- Separate globals, locals, rendering data, and inline variables by the correct scope
 
 ### 7. Package Manager
 
-- default ใช้ `bun add` สำหรับ JS/TS projects
-- ถ้า project ใช้ package manager อื่น ให้ใช้ตาม ecosystem (`npm i`, `pnpm add`, `yarn add`)
+- Default to `bun add` for JS/TS projects
+- If the project uses another package manager, follow its ecosystem (`npm i`, `pnpm add`, `yarn add`)
 
-- ใช้ `/report` ถ้าจำเป็น
-- ใช้ `/deep-validate` ถ้าจำเป็น
+- Use /report if needed
+- Use /deep-validate if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `edge.js` ติดตั้งและกำหนดค่าถูกต้องด้วย ESM
-- `Edge` instance mount disk ได้และ enable cache ใน production
-- Templates ใช้งานได้ทั้ง interpolation, conditionals, loops, partials, components, slots
-- Template state ถูกจัดการตาม globals, locals, rendering data, inline variables
-- Production มี cache เปิดใช้งาน
-- Typecheck และ tests ผ่าน
+- `edge.js` is installed and configured correctly with ESM
+- The `Edge` instance mounts disks and enables cache in production
+- Templates work with interpolation, conditionals, loops, partials, components, slots
+- Template state is managed via globals, locals, rendering data, and inline variables
+- Production has cache enabled
+- Typecheck and tests pass

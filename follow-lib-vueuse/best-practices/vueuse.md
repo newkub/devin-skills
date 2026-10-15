@@ -1,33 +1,33 @@
 # VueUse — Best Practices
 
-Composables collection — เลือกใช้แทนเขียนเอง, cleanup discipline
+Composables collection — prefer using it over hand-rolling, cleanup discipline
 
 ## Recommended Patterns
 
-- VueUse ก่อนเขียนเอง: `useEventListener`, `useFetch`, `useLocalStorage`, `useResizeObserver`, `useIntersectionObserver` — auto-cleanup + SSR-safe แล้ว
-- Composables return refs + cleanup functions — อย่า destructure จน reactivity หาย (ใช้ `toRefs` หรือเก็บ object)
-- `useEventListener` แทน `addEventListener` + `onUnmounted` มือ — auto-remove ตอน unmount
-- Options object ของแต่ละ composable (`immediate`, `deep`, `throttle`) — อ่านก่อน assume defaults
-- `@vueuse/core` = base; `@vueuse/integrations` สำหรับ wrappers (axios, focus-trap ฯลฯ) — อย่า wrap ซ้ำ
+- Reach for VueUse before writing your own: `useEventListener`, `useFetch`, `useLocalStorage`, `useResizeObserver`, `useIntersectionObserver` — auto-cleanup + already SSR-safe
+- Composables return refs + cleanup functions — don't destructure until reactivity is lost (use `toRefs` or keep the object)
+- `useEventListener` instead of manual `addEventListener` + `onUnmounted` — auto-removes on unmount
+- The options object of each composable (`immediate`, `deep`, `throttle`) — read it before assuming defaults
+- `@vueuse/core` = the base; `@vueuse/integrations` for wrappers (axios, focus-trap, etc.) — don't re-wrap
 
 ## Common Pitfalls
 
-- Composables ต้อง call ใน setup scope (top-level `<script setup>` หรือ `setup()`) — ไม่ใช่ใน callbacks/event handlers
-- SSR: หลาย composables access `window`/`document` — VueUse guard แล้ว แต่ตรวจ `isSupported` ref ที่ return
-- `useFetch` ≠ full query client — ไม่มี cache/dedup/retry จริงจัง; งานหนัก → TanStack Query
-- Storage composables (`useLocalStorage`) sync ผ่าน storage events — cross-tab ฟรี แต่ระวัง serialization (objects = JSON)
+- Composables must be called in the setup scope (top-level `<script setup>` or `setup()`) — not inside callbacks/event handlers
+- SSR: many composables access `window`/`document` — VueUse guards it, but check the returned `isSupported` ref
+- `useFetch` ≠ a full query client — no real cache/dedup/retry; heavy work → TanStack Query
+- Storage composables (`useLocalStorage`) sync via storage events — cross-tab for free, but mind serialization (objects = JSON)
 
 ## Perf Notes
 
-- `computed`/`watch` ใน composable = shared reactive graph — สร้าง composable instance ต่อ component ไม่ share instance ข้าม components โดยไม่ตั้งใจ
-- Event-based composables throttle/debounce ผ่าน options — scroll/resize/mouse ห้าม raw
-- `useVirtualList` สำหรับ long lists — ไม่ใช่ v-for ทั้งหมด
+- A `computed`/`watch` inside a composable = a shared reactive graph — create a composable instance per component, don't accidentally share an instance across components
+- Event-based composables throttle/debounce via options — never leave scroll/resize/mouse raw
+- `useVirtualList` for long lists — not a v-for over everything
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
 | `useEventListener` auto-cleanup | manual add/remove listeners |
-| เช็ค `isSupported` สำหรับ SSR APIs | assume browser globals เสมอ |
-| call composables ใน setup scope | call ใน event handlers/async |
-| VueUse ก่อนเขียนเอง | re-implement useEventListener เอง |
+| check `isSupported` for SSR APIs | always assume browser globals |
+| call composables in the setup scope | call them in event handlers/async |
+| use VueUse before writing your own | re-implement useEventListener yourself |

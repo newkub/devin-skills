@@ -3,7 +3,7 @@ name: run-preview
 description: Run a preview build to test before an actual deploy
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - run-build
   - watch-browser
   - run-test
@@ -24,7 +24,7 @@ Use for all kinds of preview, both a local preview server and a deployment previ
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (preview)
+> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (preview)
 
 ### 1. Build Preview
 

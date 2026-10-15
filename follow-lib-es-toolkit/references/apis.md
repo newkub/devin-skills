@@ -4,13 +4,13 @@
 | install | `bun add es-toolkit` (npm: `npm i es-toolkit`, deno: `deno add jsr:@es-toolkit/es-toolkit`) |
 | stable version | 1.52.0 (verified 2026-10-12) |
 | license | MIT © Viva Republica, Inc. (Toss) |
-| requires | ไม่มี peer deps; TypeScript-first types; ESM + CJS dual |
+| requires | No peer deps; TypeScript-first types; ESM + CJS dual |
 | compat entry | `es-toolkit/compat` (Lodash 1:1 migration layer) |
 | docs | https://es-toolkit.dev/ |
-| api reference | https://es-toolkit.dev/reference/array/chunk.html (เปลี่ยน category/function) |
+| api reference | https://es-toolkit.dev/reference/array/chunk.html (change category/function) |
 | compatibility guide | https://es-toolkit.dev/compatibility.html |
 | performance | https://es-toolkit.dev/performance.html (2-3× vs lodash) |
-| bundle size | https://es-toolkit.dev/bundle-size.html (เล็กกว่าถึง 97% ผ่าน tree-shaking) |
+| bundle size | https://es-toolkit.dev/bundle-size.html (up to 97% smaller via tree-shaking) |
 | repository | https://github.com/toss/es-toolkit |
 | jsr | https://jsr.io/@es-toolkit/es-toolkit |
 
@@ -79,4 +79,4 @@
 | `set/*` (es-toolkit/set) | Helpers for `Set`: filter, map, keyBy, countBy, reduce, every, some, find, forEach | `map(set, fn)` |
 | `assert` / `invariant` / `attempt` / `attemptAsync` / `defer` / `deferAsync` / `hash` / `serialize` | Util helpers (from `es-toolkit/util`) | `assert(cond, msg)` |
 | `fp/*` | Subpath `es-toolkit/fp` — functional variants (curried/data-last forms); check docs before use | `import { ... } from 'es-toolkit/fp'` |
-| compat `*` | Lodash 1:1 names/behavior via `es-toolkit/compat`; ไม่มี `sortedUniq`, `mixin`, `noConflict`, `runInContext` | `import { isEmpty } from 'es-toolkit/compat'` |
+| compat `*` | Lodash 1:1 names/behavior via `es-toolkit/compat`; no `sortedUniq`, `mixin`, `noConflict`, `runInContext` | `import { isEmpty } from 'es-toolkit/compat'` |

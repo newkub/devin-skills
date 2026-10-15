@@ -76,7 +76,7 @@ Set/edit Twilio configuration — phone numbers, Messaging Service, Verify Servi
 
 1. Read the existing env keys: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`, `TWILIO_MESSAGING_SERVICE_SID`, `TWILIO_VERIFY_SERVICE_SID`
 2. Read the code that creates the client and the current webhook handlers
-3. Do `/deep-review` domain `review-config` if env drift vs code must be known
+3. Do `/deep-review-codebase` domain `review-config` if env drift vs code must be known
 
 ###### 2. Configure Phone Numbers And Services
 
@@ -236,7 +236,7 @@ Confirm after setup/config that Twilio really connects — Account SID/Auth Toke
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

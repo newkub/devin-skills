@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-Seed data ด้วย `drizzle-seed` — deterministic pseudo-random fixtures, relations-aware, reset, per-env seeds
+Seed data with `drizzle-seed` — deterministic pseudo-random fixtures, relations-aware, reset, per-env seeds
 
 ## Scope
 
@@ -28,7 +28,7 @@ bun i -D drizzle-seed
 import { seed } from 'drizzle-seed'
 import * as schema from './schema'
 
-await seed(db, schema)                       // auto-fill ทุก table
+await seed(db, schema)                       // auto-fill every table
 await seed(db, schema, { count: 100 })       // rows per table
 ```
 
@@ -55,22 +55,22 @@ import { reset } from 'drizzle-seed'
 await reset(db, schema)                      // truncate all tables (FK-safe order)
 ```
 
-- `reset` clears tables respecting FK order — faster than manual truncate chain
+- `reset` clears tables respecting FK order — faster than a manual truncate chain
 
 ### 4. Seed Scripts Per Env
 
 - `scripts/seed.ts` — `bun run db:seed` npm script; dev seeds (rich fixtures) vs test seeds (minimal deterministic)
-- Test integration: seed ใน `beforeEach`/`beforeAll` + `reset` cleanup — หรือ per-test transaction rollback
-- Exclude sensitive tables — pass only schema subset: `seed(db, { users: schema.users })`
+- Test integration: seed in `beforeEach`/`beforeAll` + `reset` cleanup — or per-test transaction rollback
+- Exclude sensitive tables — pass only a schema subset: `seed(db, { users: schema.users })`
 
 ## Rules
 
-- `drizzle-seed` dev dependency — ห้าม bundle เข้า production path
-- `{ seed: N }` fixed ใน tests — random seeds ทำ flaky tests
-- `reset` destructive — guard ด้วย env check (ห้าม run บน prod DATABASE_URL)
-- Seed scripts validate schema version — seed กับ migration state ต้องตรงกัน
+- `drizzle-seed` is a dev dependency — never bundle it into the production path
+- `{ seed: N }` fixed in tests — random seeds make flaky tests
+- `reset` is destructive — guard with an env check (never run on a prod DATABASE_URL)
+- Seed scripts validate the schema version — the seed and migration state must match
 
 ## Expected Outcome
 
-- `bun run db:seed` เติมข้อมูล deterministic, relations ครบ
-- Tests ใช้ seed/reset เป็น fixture ที่ reproducible
+- `bun run db:seed` fills deterministic data with complete relations
+- Tests use seed/reset as reproducible fixtures

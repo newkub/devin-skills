@@ -9,7 +9,7 @@ related:
   - follow-deterministic
   - update-docs
   - report-file-structure
-  - deep-review
+  - deep-review-codebase
   - suggest-next-action
 ---
 
@@ -111,7 +111,7 @@ bun <skill-dir>/scripts/refs-cli/index.ts website --url https://staging.example.
 
 - The website domain uses `crw map` only — interactive browsing → `/use-agent-browser`
 - content/docs writing from refs → `/update-docs`, never write back over `.devin/references`
-- review of refs-vs-code consistency → `/deep-review` domain `review-docs`
+- review of refs-vs-code consistency → `/deep-review-codebase` domain `review-docs`
 
 ### 5. Output Format
 
@@ -124,4 +124,4 @@ bun <skill-dir>/scripts/refs-cli/index.ts website --url https://staging.example.
 - `website.md`/`api.md`/`cli.md` are complete, deterministic markdown tables in `.devin/references/`
 - Re-running gives the same result, clean diff
 - Adding a new language only requires editing `langs.ts` + a pattern table in one place
-- Ready to hand off to `/update-docs`, `/check-types-definition`, `/deep-review` for the next task
+- Ready to hand off to `/update-docs`, `/check-types-definition`, `/deep-review-codebase` for the next task

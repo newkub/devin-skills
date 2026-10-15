@@ -9,8 +9,8 @@ related:
   - follow-agents-md
   - update-docs
   - use-subagents
-  - deep-review
-  - deep-review-then-fix
+  - deep-review-codebase
+  - deep-review-codebase-then-fix
   - deep-validate
   - ship
   - report
@@ -95,7 +95,7 @@ See also: /follow-agents-md, /update-agents-md
 2. Run `/list-devin-global-subagents` to pick roles matching each subtask; a needed role that doesn't exist → `/use-related-skills` or create a new `AGENT.md` here
 3. Use `/use-subagents` to spawn subagents in parallel; pass complete context (task, constraints, files, expected output); one role per subagent, never overlapping/duplicate subtasks
 4. Merge every subagent's output into a single deliverable before finalizing (never ship one subagent's output as final); resolve conflicts with `/resolve-errors`; call out contradictory recommendations that were excluded
-5. Run `/deep-review-then-fix` on the merged output; a subtask with a complex workflow → extra `/deep-review`; gaps → spawn more subagents
+5. Run `/deep-review-codebase-then-fix` on the merged output; a subtask with a complex workflow → extra `/deep-review-codebase`; gaps → spawn more subagents
 6. Run `/deep-validate`, then `/ship` if there are changes, then `/report` summarizing what each subagent did
 
 ### 7. Update References

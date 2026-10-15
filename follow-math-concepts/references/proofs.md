@@ -2,90 +2,90 @@
 
 ## Goal
 
-เข้าใจ proof techniques: direct proof, proof by contradiction, contrapositive, mathematical induction, strong induction และประยุกต์ใช้ตรวจ correctness, invariants, algorithms
+Understand proof techniques: direct proof, proof by contradiction, contrapositive, mathematical induction, strong induction, and their application to verifying correctness, invariants, and algorithms
 
 ## Scope
 
-- ใช้สำหรับ verify invariants, loop correctness, algorithm correctness
-- ครอบคลุม direct, contradiction, contrapositive, induction
-- ประยุกต์ใน formal reasoning และ prompts
+- Use for verifying invariants, loop correctness, algorithm correctness
+- Covers direct, contradiction, contrapositive, induction
+- Applied in formal reasoning and prompts
 
 ## Execute
 
 ### 1. Choose Proof Technique
 
-> Goal: เลือกวิธีทีเหมาะสม
+> Goal: pick the suitable method
 
-1. Direct proof: สรุปจาก assumptions ไป conclusion โดยตรง
-2. Contradiction: สมมติ conclusion ผิด แสดงว้า contradiction
-3. Contrapositive: แสดง `¬Q → ¬P` แทน `P → Q`
-4. Induction: สำหรับ statements บน natural numbers/structures
+1. Direct proof: conclude from assumptions to conclusion directly
+2. Contradiction: assume the conclusion is false, show a contradiction arises
+3. Contrapositive: prove `¬Q → ¬P` instead of `P → Q`
+4. Induction: for statements over natural numbers/structures
 
 ### 2. Proof By Induction
 
-> Goal: พิสูจน์สำหรับทุก n
+> Goal: prove for every n
 
-1. Base case: พิสูจน์ P(0) หรือ P(1)
-2. Inductive hypothesis: สมมติ P(k)
-3. Inductive step: แสดง P(k) → P(k+1)
-4. สรุป P(n) สำหรับทุก n
-5. Strong induction: สมมติ P(0)...P(k) แล้วแสดง P(k+1)
+1. Base case: prove P(0) or P(1)
+2. Inductive hypothesis: assume P(k)
+3. Inductive step: show P(k) → P(k+1)
+4. Conclude P(n) for all n
+5. Strong induction: assume P(0)...P(k), then show P(k+1)
 
 ### 3. Loop Invariants
 
-> Goal: ตรวจ correctness ของ loop
+> Goal: check the correctness of a loop
 
-1. ระบุ invariant: เงื่อนไขทีเป็นจริงก่อน loop, ทุ้ก iteration, และหลัง loop
-2. Initialization: invariant เป็นจริงก่อน loop
-3. Maintenance: ถ้า invariant เป็นจริงก่อน iteration จะเป็นจริงหลัง iteration
-4. Termination: เมื่อ loop จบ invariant ให้คุณสมบัติทีต้องการ
+1. Identify the invariant: a condition true before the loop, every iteration, and after the loop
+2. Initialization: the invariant holds before the loop
+3. Maintenance: if the invariant holds before an iteration, it holds after the iteration
+4. Termination: when the loop ends, the invariant yields the desired property
 
 ### 4. Contradiction In Code
 
-> Goal: ใช้ contradiction ใน debugging
+> Goal: use contradiction in debugging
 
-1. สมมติสาเหตุของ bug ผิด
-2. แสดงว่าถ้าสมมตินั้นจริง จะเกิด contradiction
-3. สรุปสาเหตุต้องถูก
-4. ใช้กับ unit tests ทีทำลาย assumption
+1. Assume the suspected cause of the bug is wrong
+2. Show that if that assumption were true, a contradiction would occur
+3. Conclude the cause must be right
+4. Use with unit tests that break an assumption
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply in software
 
-1. พิสูจน์ algorithm ที correct (binary search, sorting)
-2. ตรวจ loop invariants ก่อน refactor
-3. ใช้ induction พิสูจน์ recursive function
-4. ใช้ proof ใน formal verification / prompts
+1. Prove an algorithm is correct (binary search, sorting)
+2. Check loop invariants before refactoring
+3. Use induction to prove a recursive function
+4. Use proofs in formal verification / prompts
 
 ## Rules
 
 ### 1. Base Case Matters
 
-- ตรวจ base case ใน induction
-- ระวัง off-by-one
-- ทดสอบ base case ด้วย code/test
+- Check the base case in induction
+- Beware off-by-one
+- Test the base case with code/tests
 
 ### 2. Clear Assumptions
 
-- ระบุ assumptions ให้ชัด
-- ห้ามใช้ conclusion ของ theorem ก่อนพิสูจน์
-- แยก given กับ to-prove
+- State the assumptions clearly
+- Never use a theorem's conclusion before proving it
+- Separate given from to-prove
 
 ### 3. Code Mapping
 
-- invariants = assertions ก่อน/ใน/หลัง loop
-- ใช้ property-based testing ยืนยัน invariants
-- ใช้ formal methods ถ้าจำเป็น
+- invariants = assertions before/inside/after the loop
+- Use property-based testing to confirm invariants
+- Use formal methods when needed
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ TDD loop ใน `implement-to-production/references/tdd.md` ถ้าจำเป็น
-- ใช้ /follow-deterministic ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /follow-test if needed
+- Use the TDD loop in `implement-to-production/SKILL.md` `## TDD Loop` if needed
+- Use /follow-deterministic if needed
 
 ## Expected Outcome
 
-- สามารถเลือก proof technique ทีเหมาะสม
-- สามารถใช้ induction กับ natural numbers และ data structures
-- สามารถตรวจ loop invariants
-- สามารถใช้ proof ใน code correctness
+- Able to choose the suitable proof technique
+- Able to use induction on natural numbers and data structures
+- Able to check loop invariants
+- Able to use proofs in code correctness

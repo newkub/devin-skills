@@ -104,7 +104,7 @@ Set/edit AWS SDK configuration — region, credentials chain, endpoint overrides
 > Goal: Know the current config before editing
 
 1. Read the current client construction, env keys (`AWS_REGION`, `AWS_PROFILE`, `AWS_ENDPOINT_URL*`), and `~/.aws/config` if relevant
-2. Do `/deep-review` domain `review-config` if env must be compared with code
+2. Do `/deep-review-codebase` domain `review-config` if env must be compared with code
 3. If no client is found → do `## Merged Details → setup-aws-sdk` first
 
 ###### 2. Configure Region
@@ -563,7 +563,7 @@ Key changes in v3:
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

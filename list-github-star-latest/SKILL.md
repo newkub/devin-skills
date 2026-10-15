@@ -1,6 +1,6 @@
 ---
 name: list-github-star-latest
-description: รายการ starred repositories บน GitHub รองรับ latest, filter ตาม language และค้นหา
+description: List starred repositories on GitHub with latest support, language filter, and search
 argument-hint: "[username] [--lang <language>] [--limit <n>]"
 related:
   - list-github
@@ -12,54 +12,53 @@ related:
 
 ## Goal
 
-แสดง starred repositories ของ authenticated user หรือ user ที่ระบุ รองรับดูล่าสุด, filter ตามภาษา และ pagination
+Show the starred repositories of the authenticated user or a given user — supports latest view, language filter, and pagination
 
 ## Scope
 
-- ใช้สำหรับดู starred repositories เพื่อติดตาม projects ที่สนใจ
-- รองรับผู้ใช้ปัจจุบันและ user อื่น (`[username]`)
-- รองรับ filter ตามภาษา เช่น `--lang bun`, `--lang rust`
-- default limit 50 repos
+- Use to view starred repositories for tracking projects of interest
+- Supports the current user and other users (`[username]`)
+- Supports language filters such as `--lang bun`, `--lang rust`
+- Default limit 50 repos
 
-ดูเพิ่มเติม: /all-github-repo, /list-github-repo, /search-github-star
+See also: /all-github-repo, /list-github-repo, /search-github-star
 
 ## Execute
 
 ### 1. Resolve User And Filters
 
-> Goal: ได้ username และเงื่อนไข filter ที่ถูกต้อง
+> Goal: get the correct username and filter conditions
 
-1. ทำ `mcp7_get_me` เพื่อรับ GitHub username ของผู้ใช้ปัจจุบัน
-2. ถ้าระบุ `[username]` → ใช้ username ที่ระบุแทน
-3. อ่าน `--lang <language>` และ `--limit <n>` (default 50) จาก arguments
+1. Use `mcp7_get_me` to get the current user's GitHub username
+2. `[username]` given → use that username instead
+3. Read `--lang <language>` and `--limit <n>` (default 50) from the arguments
 
 ### 2. List Starred Repositories
 
-> Goal: ดึง starred repos ตาม filter
+> Goal: fetch starred repos per filter
 
-1. ถ้าดูของ authenticated user → `gh api user/starred --paginate --jq 'sort_by(.pushed_at) | reverse'`
-2. ถ้าดูของ user อื่น → `gh api users/<username>/starred --paginate --jq 'sort_by(.pushed_at) | reverse'`
-3. ถ้ามี `--lang` → filter ด้วย `map(select(.language | ascii_downcase == "<lang>"))`
-   - สำหรับ `--lang bun` ให้ match ทั้ง `TypeScript`/`JavaScript` ที่เกี่ยวกับ Bun จาก description ด้วย
-4. ตัดผลลัพธ์ตาม `--limit`
-5. ถ้าไม่มี `gh` CLI → fallback เป็น `mcp7_search_repositories` ด้วย `user:{username} stars:>0`
+1. Viewing the authenticated user's → `gh api user/starred --paginate --jq 'sort_by(.pushed_at) | reverse'`
+2. Viewing another user's → `gh api users/<username>/starred --paginate --jq 'sort_by(.pushed_at) | reverse'`
+3. `--lang` present → filter with `map(select(.language | ascii_downcase == "<lang>"))`
+   - For `--lang bun`, also match Bun-related `TypeScript`/`JavaScript` from the description
+4. Cut the result to `--limit`
+5. No `gh` CLI → fall back to `mcp7_search_repositories` with `user:{username} stars:>0`
 
 ### 3. Format Output
 
-> Goal: แสดงผลเป็นตาราง
+> Goal: show a table
 
-1. ทำ `/report` คอลัมน์: No., Owner, Name, Description, Language, Stars, Updated
-2. แสดงสรุป: จำนวน repo, top languages, filter ที่ใช้
+1. Use `/report` columns: No., Owner, Name, Description, Language, Stars, Updated
+2. Show a summary: repo count, top languages, filters used
 
 ## Rules
 
-- ใช้ `/report` เสมอ ห้าม plain list
-- ระบุ filter ที่ใช้ใน report header
-- ถ้าไม่พบ repo ตาม filter → รายงานจำนวน 0 พร้อมคำแนะนำ
-- ไม่แก้ไข starred state ใด ๆ
+- Always use `/report`; never a plain list
+- State the filters used in the report header
+- No repos match the filter → report 0 with a recommendation
+- Never modify any starred state
 
 ## Expected Outcome
 
-- ตาราง starred repositories ตาม scope/filter ที่ระบุ
-- สรุปจำนวนและภาษาหลัก
-
+- A table of starred repositories per the given scope/filter
+- A summary of the count and main languages

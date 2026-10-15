@@ -7,69 +7,69 @@ related:
   - plan
   - scan-codebase
   - use-astgrep
-  - deep-review
+  - deep-review-codebase
   - run-typecheck
 ---
 
 ## Goal
 
-migrate codebase จาก Zod v3 เป็น v4 อย่างปลอดภัย — import path, API renames, error handling changes — พร้อม rollback path และ verification ครบ
+Migrate the codebase from Zod v3 to v4 safely — import paths, API renames, error handling changes — with a rollback path and full verification
 
 ## Scope
 
-- ใช้เมื่อ project ใช้ `zod@3.x` และต้องการขึ้น v4 หรือใช้ `zod/v4` subpath คู่กัน
-- ครอบคลุม: import changes, deprecated APIs, error object changes, verification
-- รายละเอียด API v4 ครบอยู่ใน parent `SKILL.md` และ official migration guide (zod.dev)
+- Use when the project is on `zod@3.x` and wants to move to v4, or to use the `zod/v4` subpath side by side
+- Covers: import changes, deprecated APIs, error object changes, verification
+- Full v4 API details live in the parent `SKILL.md` and the official migration guide (zod.dev)
 
 ## Execute
 
 ### 1. Plan And Map Impact
 
-> Goal: ระบุทุกจุดที่กระทบก่อนแก้
+> Goal: identify every affected point before editing
 
-1. ทำ `/plan` — อ่าน `package.json` ยืนยัน version ปัจจุบัน, เขียน rollback path (revert commit + pin `zod@3`)
-2. ทำ `/scan-codebase` หา import sites ทั้งหมด: `from "zod"`, `from "zod/v3"`, `zod/v4`
-3. หา usage ของ APIs ที่เปลี่ยน: `.format()`, `.flatten()`, `.merge()`, `.strict()`, `.passthrough()`, `z.string().email()`, `error.errors`, `message` option
-4. ตรวจ dependent libraries (เช่น `zod-to-json-schema`, form libs) ว่ารองรับ v4 หรือยัง — ถ้า blocker → stop report
+1. Do `/plan` — read `package.json` to confirm the current version, write the rollback path (revert commit + pin `zod@3`)
+2. Do `/scan-codebase` for all import sites: `from "zod"`, `from "zod/v3"`, `zod/v4`
+3. Find usage of changed APIs: `.format()`, `.flatten()`, `.merge()`, `.strict()`, `.passthrough()`, `z.string().email()`, `error.errors`, the `message` option
+4. Check dependent libraries (e.g. `zod-to-json-schema`, form libs) for v4 support — if a blocker → stop and report
 
 ### 2. Upgrade Package And Imports
 
-> Goal: เปลี่ยน version และ import paths ให้ถูก
+> Goal: change the version and import paths correctly
 
-1. รัน `bun add zod@latest` (v4.x) — หรือถ้าต้อง migrate ค่อยเป็นค่อยไป: `zod@3.x` มี subpath `zod/v4` ให้ใช้ชั่วคราวได้
-2. v4 code ใช้ `import * as z from "zod"` ปกติ; code เก่าที่ยัง v3 ให้เปลี่ยนเป็น `import * as z from "zod/v3"` ชั่วคราว
-3. ใช้ codemod ถ้ามี (`zod` มี official codemod — ดู official docs) หรือทำ `/use-astgrep` สำหรับ rename patterns
-4. แยก commit: package upgrade / import changes / API renames — ให้ bisect ได้
+1. Run `bun add zod@latest` (v4.x) — or for a gradual migration: `zod@3.x` offers the `zod/v4` subpath as a temporary bridge
+2. v4 code uses the normal `import * as z from "zod"`; old code still on v3 switches temporarily to `import * as z from "zod/v3"`
+3. Use a codemod if available (`zod` has an official codemod — see the official docs) or do `/use-astgrep` for rename patterns
+4. Separate commits: package upgrade / import changes / API renames — so it's bisectable
 
 ### 3. Fix API Renames
 
-> Goal: แก้ breaking changes ทีละกลุ่ม
+> Goal: fix the breaking changes group by group
 
-1. Error handling: `error.errors` → `error.issues`; `.format()`/`.flatten()` → `z.treeifyError()`; `message` param → `error` param
-2. Schema methods: `.merge()` → `A.extend(B.shape)` หรือ spread; `.strict()` → `z.strictObject()`; `.passthrough()` → `z.looseObject()`
+1. Error handling: `error.errors` → `error.issues`; `.format()`/`.flatten()` → `z.treeifyError()`; the `message` param → `error` param
+2. Schema methods: `.merge()` → `A.extend(B.shape)` or spread; `.strict()` → `z.strictObject()`; `.passthrough()` → `z.looseObject()`
 3. String formats: `z.string().email()` → `z.email()`, `.uuid()` → `z.uuid()`, `.url()` → `z.url()`
-4. Removed types: `ZodEffects` ถูกลบ — refactor code ที่พึ่งพา internal types (`._zod` เป็น internal ห้ามใช้)
-5. `safeParse` error ใน v4 ไม่ extend `Error` — แก้จุดที่เช็ค `instanceof Error`
+4. Removed types: `ZodEffects` was removed — refactor code that relied on internal types (`._zod` is internal, never use it)
+5. The `safeParse` error in v4 no longer extends `Error` — fix spots checking `instanceof Error`
 
 ### 4. Verify
 
-> Goal: typecheck, tests และ runtime smoke ผ่านทั้งหมด
+> Goal: typecheck, tests, and runtime smoke all pass
 
-1. รัน `bunx tsc --noEmit` (ทำ `/run-typecheck`) — type errors จะเปิดจุดที่พลาด
-2. รัน tests (ทำ `/run-test`) — โดยเฉพาะ schema validation tests และ error shape assertions
-3. ทำ `/deep-review` — ไม่มี v3 API เหลือ
-4. Runtime smoke: parse input จริงผ่าน schema ที่เปลี่ยน — เช็ค error output shape
-5. ถ้าค้าง → สร้าง TODO list; เสร็จ → `/report-before-after` แล้ว `/ship`
+1. Run `bunx tsc --noEmit` (do `/run-typecheck`) — type errors reveal the missed spots
+2. Run tests (do `/run-test`) — especially schema validation tests and error-shape assertions
+3. Do `/deep-review-codebase` — no v3 APIs left
+4. Runtime smoke: parse real input through the changed schemas — check the error output shape
+5. If stuck → build a TODO list; done → `/report-before-after` then `/ship`
 
 ## Rules
 
-- ห้ามผสม migration กับ feature work ใน commit เดียว — แยก commit ต่อ step
-- ใช้ `zod/v3` subpath เป็น bridge ระหว่าง migrate ได้ แต่ต้องมีแผนย้ายออก
-- ตรวจ dependent libraries ก่อน upgrade — lib ที่ยัง require v3 คือ blocker
-- ถ้า API ใดไม่แน่ใจ → ดู official docs (zod.dev migration guide)
+- Never mix migration with feature work in one commit — one commit per step
+- The `zod/v3` subpath is fine as a bridge during migration, but there must be a plan to remove it
+- Check dependent libraries before upgrading — a lib still requiring v3 is a blocker
+- If any API is uncertain → check the official docs (zod.dev migration guide)
 
 ## Expected Outcome
 
-- `zod` เป็น v4 ใน `package.json` ไม่มี v3 imports เหลือ (หรือเหลือเฉพาะ bridge ที่มีแผน)
-- Typecheck, tests, runtime smoke ผ่าน
-- ไม่มี deprecated APIs — พร้อม `/ship`
+- `zod` is v4 in `package.json` with no v3 imports left (or only bridged ones with a removal plan)
+- Typecheck, tests, and runtime smoke pass
+- No deprecated APIs — ready for `/ship`

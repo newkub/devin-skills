@@ -9,7 +9,7 @@ related:
   - search-with-astgrep
   - use-astgrep-programmatic
   - migration-with-astgrep
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -120,7 +120,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 - Every rewrite must be dry-run + preview + confirmed before applying — the workflows already enforce this, never skip it
 
 - Use /check-code-structure if needed
-- Use `/deep-review` if needed
+- Use `/deep-review-codebase` if needed
 
 ## Expected Outcome
 

@@ -77,10 +77,11 @@ See more: /follow-agents-md
 > Goal: Hand work to subagents to run in parallel
 
 1. Use `run_subagent` with `is_background=true` to run in parallel — spawn one wave at a time following the DAG (step 2)
-2. Never send duplicate or overlapping subtasks — file sets must always be disjoint
-3. Wait for results with `read_subagent` (non-blocking) or continue other work — check async, do not poll in a loop
-4. A subtask that changes many files by pattern → instruct it in the prompt to use `/use-scripts` (edit workflow) or `/use-astgrep rewrite` — always dry-run first for an audit trail
-5. If a subagent hits an error → run `/resolve-errors` before spawning a new one
+2. Track every subtask with `todo_write` — one todo per subtask (input, role, file set), update status as each wave lands; the todo list is the mission-control registry, no external CLI or state file is needed
+3. Never send duplicate or overlapping subtasks — file sets must always be disjoint
+4. Wait for results with `read_subagent` (non-blocking) or continue other work — check async, do not poll in a loop
+5. A subtask that changes many files by pattern → instruct it in the prompt to use `/use-scripts` (edit workflow) or `/use-astgrep rewrite` — always dry-run first for an audit trail
+6. If a subagent hits an error → run `/resolve-errors` before spawning a new one
 
 ### 5. Merge And Fix
 
@@ -111,6 +112,7 @@ See more: /follow-agents-md
 5. `Run checks after merge` — never deliver without validating
 6. `Stop on 3 failures` — if resolving errors exceeds 3 rounds, stop and report
 7. Use `/update-devin-global-subagents` to sync the subagent catalog if needed
+8. Single-file package — this skill ships only `SKILL.md` (no `src/`, no bundled CLI); orchestration state lives in the harness (todos + `read_subagent`), never in external files
 
 ### 2. Independence
 
@@ -138,56 +140,28 @@ These skills have subagent profiles for parallel independent work — the profil
 | 1 | `review-github-pr` | `SKILL.md ## Subagents` → `pr-reviewer`, `pr-checklist-reviewer` (+ full detail in `references/`) | review PR slice per-domain/file-group |
 | 2 | `use-agents-capture` | `SKILL.md ## Subagents` → `route-capturer` | capture one route on all devices |
 | 3 | `deep-test` | `SKILL.md ## Subagents` → `route-checker` | test one API route group |
-| 4 | `deep-review` | `SKILL.md` (inline dispatch contract, no profile file) | review workspace area / docs routes per section |
+| 4 | `deep-review-codebase` | `SKILL.md` (inline dispatch contract, no profile file) | review workspace area / docs routes per section |
 | 5 | `update-tests` | `SKILL.md ## Subagents` → `suite-updater` | update one test suite (unit/e2e/snapshot) |
 | 6 | `update-project-all-drive-d` | `SKILL.md ## Subagents` → `project-updater` | update one project dir in drive D |
 | 7 | `update-all-program-in-computer` | `SKILL.md ## Subagents` → `program-updater` | update one program via package manager |
 | 8 | `resolve-github-issue-by-me` | `SKILL.md ## Subagents` → `issue-implementer` | implement one issue until PR-ready |
 | 9 | `deep-research` | `SKILL.md ## Subagents` → `source-researcher` | deeply research one source/topic |
 | 10 | `deep-validate` | `SKILL.md ## Subagents` → `dimension-validator` | validate one dimension pass/fail + evidence |
-| 11 | `deep-review-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
+| 11 | `deep-review-codebase-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
 | 12 | `sync-drive-d-submodules` | `SKILL.md ## Subagents` → `submodule-syncer` | sync one submodule on drive D |
 | 13 | `merge-all-branch-by-me-to-main` | `SKILL.md ## Subagents` → `branch-merger` | merge one branch into main |
 | 14 | `update-project` | `SKILL.md ## Subagents` → `project-updater`, `git-log-collector`, `project-files-updater`, `project-skills-updater`, `github-metadata-updater` | update a sub-project and collect inputs per domain |
 | 15 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` for one project |
-| 16 | `refactor` | `SKILL.md ## Subagents` → `hotspot-scout`, `file-worker` | collect baseline evidence (read-only) and refactor file by file in parallel |
-| 17 | `implement-to-production` | `SKILL.md ## Subagents` → `feature-implementer`, `review-sweeper` | implement per item, review per domain (gap inventory → row 20) |
-| 18 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
-| 19 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
-| 20 | `report-not-implement` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
-
-## CLI — `subagents` (mission control)
-
-The CLI in `src/` (Bun/TypeScript, entry `src/presentation/cli.ts`) — a ClickUp-style task table for parallel work by subagents/shell jobs:
-
-```sh
-bun src/presentation/cli.ts run "fix-lint" --role fixer --pri high -- "bunx biome check --write src"
-bun src/presentation/cli.ts add "deploy" --dep build -- "..."           # blocked until dep done
-bun src/presentation/cli.ts add "tests" --parent ship-feature -- "..."  # subtask (rollup 2/3)
-bun src/presentation/cli.ts pump      # start all queued tasks with deps met
-bun src/presentation/cli.ts list [--status failed] [--role fixer] [--q lint]
-bun src/presentation/cli.ts watch     # TUI: ↑↓ · / search · f filter · s sort · p pump · r retry · k kill · d del · q
-bun src/presentation/cli.ts logs|note|retry|kill|rm <id>
-bun src/presentation/cli.ts prune     # remove finished tasks
-```
-
-- Columns: `STATUS · PRI · ID · SRC · ROLE · ELAPSED · SUB · NAME` — SUB shows the rollup `2/3` on a parent / `└─` on a child; the detail pane shows cmd + pending deps + last 3 log lines
-- Lifecycle: `queued → (blocked if dep pending) → running → done|failed|killed` — reconcile auto-updates blocked↔queued
-- State: `~/.config/devin/subagents/tasks.json` + `logs/<id>.log`; reconcile real pids every second
-
-`Devin subagent bridge` — closes the gap that `run_subagent` is in-process: after spawning an agent, register it into the registry:
-
-```sh
-bun src/presentation/cli.ts register "<title>" --role fixer --id <agent-id> --note "<task summary>"
-bun src/presentation/cli.ts mark <id> done --note "<result>"   # when read_subagent finishes
-```
-
-- Use with Step 4 (Spawn Subagents): `run_subagent` → `register` immediately; once `read_subagent` finishes → `mark done|failed` — `watch` shows both shell jobs and Devin agents in one table
+| 16 | `implement-to-production` | `SKILL.md ## Subagents` → `feature-implementer`, `review-sweeper` | implement per item, review per domain (gap inventory → row 19) |
+| 17 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
+| 18 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
+| 19 | `report-not-implement` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
 
 ## Expected Outcome
 
 - Work is split and done in parallel by subagents
 - Deep context gathered before starting edits
+- Every subtask tracked in the todo list from spawn to done — no external CLI or state file
 - Results merged with no conflicts and passing `/run-check`
 - A short, clear summary report
 

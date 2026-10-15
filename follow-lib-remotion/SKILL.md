@@ -1,6 +1,6 @@
 ---
 name: follow-lib-remotion
-description: ใช้ Remotion v4 สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React และ render ผ่าน CLI
+description: Use Remotion v4 to create programmatic videos with React and render via CLI
 argument-hint: "[composition-or-task]"
 related:
   - edit-video-with-remotion
@@ -11,58 +11,58 @@ related:
 
 ## Goal
 
-ใช้งาน Remotion v4 (latest ~4.0.524) สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React, animations แบบ frame-based, และ render ผ่าน CLI หรือ cloud
+Use Remotion v4 (latest ~4.0.524) to create programmatic videos with React, frame-based animations, and render via CLI or cloud
 
 ## Scope
 
-ใช้สำหรับ:
-- สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React components (`<Composition>` model)
-- Animations ด้วย `useCurrentFrame()` และ `interpolate()`
-- Type-safe props ด้วย Zod schema
-- Render วิดีโอ, GIF, image sequence ผ่าน CLI หรือ cloud (Lambda, Cloud Run, Vercel)
+Used for:
+- Creating programmatic videos with React components (`<Composition>` model)
+- Animations with `useCurrentFrame()` and `interpolate()`
+- Type-safe props with a Zod schema
+- Rendering videos, GIFs, image sequences via CLI or cloud (Lambda, Cloud Run, Vercel)
 
 - Latest: `remotion@4.0.527` (verified 2026-09-24)
-- เป็น React-based — ใช้ `/follow-lib-react` สำหรับ component patterns และ `/follow-lib-zod` สำหรับ prop schemas
+- It is React-based — use `/follow-lib-react` for component patterns and `/follow-lib-zod` for prop schemas
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Create Project
 
-> Goal: scaffold Remotion project ด้วย `create-video`
+> Goal: scaffold a Remotion project with `create-video`
 
 ```bash
 bunx create-video@latest --yes --blank my-video
-# หรือ skip TailwindCSS
+# or skip TailwindCSS
 bunx create-video@latest --yes --blank --no-tailwind my-video
 
 cd my-video
 bun install
 ```
 
-- `--yes` เป็น non-interactive mode (ต้องมี template flag และ directory)
-- `--blank` ใช้ blank template
-- `--no-tailwind` ข้ามการติดตั้ง Tailwind
-- `--tmp` สร้างใน temp directory
+- `--yes` is non-interactive mode (requires a template flag and directory)
+- `--blank` uses the blank template
+- `--no-tailwind` skips the Tailwind install
+- `--tmp` creates in a temp directory
 
 ### 2. Start Studio
 
-> Goal: เปิด Remotion Studio สำหรับ preview
+> Goal: open Remotion Studio for preview
 
 ```bash
 bunx remotion studio --no-open
-# หรือ
+# or
 bun run dev
 ```
 
-- `bunx remotion preview` ถูก deprecated; ใช้ `remotion studio`
-- กด `s` ใน terminal เพื่อ reopen browser
-- `--disable-interactivity` ใช้สำหรับ debugging
+- `bunx remotion preview` is deprecated; use `remotion studio`
+- Press `s` in the terminal to reopen the browser
+- `--disable-interactivity` is used for debugging
 
 ### 3. Build Composition
 
-> Goal: สร้าง Composition พร้อม frame-based animation
+> Goal: create a Composition with frame-based animation
 
-ตัวอย่าง `src/Root.tsx`:
+Example `src/Root.tsx`:
 
 ```tsx
 import { Composition } from 'remotion';
@@ -81,7 +81,7 @@ export const RemotionRoot = () => (
 );
 ```
 
-ในคอมโพเนนต์:
+In the component:
 
 ```tsx
 import { useCurrentFrame, interpolate } from 'remotion';
@@ -97,7 +97,7 @@ export const MyComp = ({ title }) => {
 
 ### 4. Type-safe Props With Zod
 
-> Goal: props แบบ type-safe ด้วย Zod schema
+> Goal: type-safe props with a Zod schema
 
 ```bash
 bun add zod @remotion/zod-types
@@ -134,12 +134,12 @@ const MyComp: React.FC<MyProps> = ({ title, color }) => {
 };
 ```
 
-- ถ้าไม่ต้องการ validation ซับซ้อน สามารถใช้ `defaultProps` อย่างเดียวได้ (Studio infer basic controls ตั้งแต่ v4.0.521)
-- ใช้ schema เมื่อต้องการ constraints, choices, descriptions, หรือ specialized controls
+- If you don't need complex validation, `defaultProps` alone works (Studio infers basic controls since v4.0.521)
+- Use a schema when you need constraints, choices, descriptions, or specialized controls
 
 ### 5. Use Assets And Media
 
-> Goal: ใช้ static assets และ media ใน composition
+> Goal: use static assets and media in a composition
 
 ```tsx
 import { staticFile, Img, OffthreadVideo } from 'remotion';
@@ -151,22 +151,22 @@ const video = staticFile('/video.mp4');
 <OffthreadVideo src={video} />
 ```
 
-- ใช้ `staticFile()` สำหรับไฟล์ใน `public/`
-- สำหรับวิดีโอขนาดใหญ่ ใช้ `<OffthreadVideo>` หรือ `<Video>` จาก `@remotion/media`
-- ใช้ `trimBefore`/`trimAfter` แทน `startFrom`/`endAt` ที่ deprecated
+- Use `staticFile()` for files in `public/`
+- For large videos use `<OffthreadVideo>` or `<Video>` from `@remotion/media`
+- Use `trimBefore`/`trimAfter` instead of the deprecated `startFrom`/`endAt`
 
 ### 6. Render Video
 
-> Goal: render วิดีโอ/GIF/image sequence ผ่าน CLI
+> Goal: render video/GIF/image sequence via CLI
 
 ```bash
-# เรนเดอร์ video ด้วย entry point default
+# render video with the default entry point
 bunx remotion render MyComp
 
-# ระบุ entry point และ output
+# specify entry point and output
 bunx remotion render src/index.tsx MyComp out/video.mp4
 
-# กำหนด codec, fps, ขนาด
+# set codec, fps, size
 bunx remotion render MyComp --codec=h264 --fps=30 --width=1920 --height=1080
 ```
 
@@ -184,18 +184,18 @@ bunx remotion render MyComp --sequence
 
 ### 7. Test, Debug, And Iterate
 
-> Goal: ทดสอบใน Studio ก่อน render จริง
+> Goal: test in Studio before real renders
 
-- test ใน Remotion Studio ก่อน render
-- ใช้ `--props props.json` สำหรับ input props (บน Windows ใช้ไฟล์แทน inline JSON)
-- ใช้ `--repro` เพื่อบันทึกสถานะสำหรับ debug
-- ใช้ `--log=verbose` เมื่อต้องการดู log เพิ่ม
+- test in Remotion Studio before rendering
+- use `--props props.json` for input props (on Windows use a file instead of inline JSON)
+- use `--repro` to record state for debugging
+- use `--log=verbose` when you need more logs
 
 ### 8. Cloud Rendering
 
-> Goal: เลือก cloud rendering option ตาม scale
+> Goal: pick the cloud rendering option per scale
 
-- ใช้ `@remotion/lambda` (AWS), `@remotion/cloudrun` (GCP), หรือ `@remotion/vercel` ตาม platform — ดูรายละเอียดที่ docs.remotion.dev
+- Use `@remotion/lambda` (AWS), `@remotion/cloudrun` (GCP), or `@remotion/vercel` per platform — see details at docs.remotion.dev
 
 ### Workflows
 
@@ -206,45 +206,45 @@ bunx remotion render MyComp --sequence
 
 ### 1. Animation
 
-- ใช้ `useCurrentFrame()` เสมอ — ไม่ใช้ CSS animations
-- ใช้ `interpolate()` สำหรับ smooth transitions
-- ใช้ `spring()` สำหรับ physics-based motion
-- ใช้ `extrapolateLeft/Right: 'clamp'` เพื่อหยุดค่านอก range
-- ใช้ `output: 'perceptual-scale'` สำหรับ scale interpolation (v4.0.521+)
+- Always use `useCurrentFrame()` — don't use CSS animations
+- Use `interpolate()` for smooth transitions
+- Use `spring()` for physics-based motion
+- Use `extrapolateLeft/Right: 'clamp'` to stop values outside the range
+- Use `output: 'perceptual-scale'` for scale interpolation (v4.0.521+)
 
 ### 2. Type Safety
 
-- ใช้ Zod schema สำหรับ props เมื่อต้องการ validation/controls
-- แปลงวินาทีเป็น frames — ใช้ `time * fps`
-- ใช้ `z.infer<typeof schema>` สำหรับ TypeScript type
+- Use a Zod schema for props when validation/controls are needed
+- Convert seconds to frames — use `time * fps`
+- Use `z.infer<typeof schema>` for the TypeScript type
 
 ### 3. Assets And Performance
 
-- ใช้ `staticFile()` สำหรับ assets ใน `public/`
-- ใช้ `<OffthreadVideo>` หรือ `<Video>` จาก `@remotion/media` สำหรับ videos ขนาดใหญ่
-- optimize assets ก่อน rendering
-- หลีกเลี่ยง `defaultProps` ทีมี payload ใหญ่
+- Use `staticFile()` for assets in `public/`
+- Use `<OffthreadVideo>` or `<Video>` from `@remotion/media` for large videos
+- Optimize assets before rendering
+- Avoid `defaultProps` with large payloads
 
 ### 4. Composition
 
-- ระบุ `durationInFrames`, `fps`, `width`, `height` ชัดเจน
-- ใส่ `defaultProps` เป็น inline object literal เพื่อให้ Studio infer controls
-- ใช้ `lazyComponent` เมื่อต้องการ lazy load
+- Specify `durationInFrames`, `fps`, `width`, `height` clearly
+- Provide `defaultProps` as an inline object literal so Studio can infer controls
+- Use `lazyComponent` when you want lazy loading
 
 ### 5. Workflow
 
-- test ใน Studio ก่อน render
-- ใช้ `--no-open` สำหรับ remote/CI
-- render ด้วย `--codec` ทีเหมาะสม (`h264`, `h265`, `vp9`, `gif`, `png`)
-- ใช้ `/edit-video-with-remotion` สำหรับตัดต่อวิดีโอจาก footage มีอยู่
-- ใช้ `/follow-lib-react` หรือ `/follow-lib-zod` ถ้าจำเป็น
+- test in Studio before rendering
+- use `--no-open` for remote/CI
+- render with a suitable `--codec` (`h264`, `h265`, `vp9`, `gif`, `png`)
+- use `/edit-video-with-remotion` for editing video from existing footage
+- use `/follow-lib-react` or `/follow-lib-zod` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- วิดีโอแบบโปรแกรมมิ่งด้วย React
-- Animations ที่ smooth และ consistent
-- Programmatic video creation ที่ automated และ flexible
-- Cloud rendering ที่ scalable
-- Type-safe components ด้วย Zod
+- Programmatic videos built with React
+- Smooth and consistent animations
+- Automated and flexible programmatic video creation
+- Scalable cloud rendering
+- Type-safe components with Zod

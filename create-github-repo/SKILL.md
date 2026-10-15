@@ -5,7 +5,7 @@ argument-hint: "[repo-name]"
 related:
   - git-commit
   - git-push
-  - follow-gitignore
+  - update-gitignore
 
 ---
 
@@ -83,7 +83,7 @@ Publish a local project that has no remote to a new GitHub repository
 - Never force push
 - If the repo already has a remote, stop and tell the user to use `/git-push`
 
-- Use /follow-gitignore if needed
+- Use /update-gitignore if needed
 
 ## Expected Outcome
 

@@ -1,15 +1,20 @@
 ---
 name: follow-lang-typescript
 description: Develop TypeScript projects with maximum type safety and code quality best practices
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-javascript
   - follow-best-practice
   - setup-cicd
   - use-scripts
   - run-typecheck
+  - run-test
+  - run-lint
+  - run-format
+  - no-use-ignore
   - improve
   - deep-research
+  - follow-lib-tstyche
 ---
 
 ## Goal
@@ -18,7 +23,7 @@ Develop TypeScript projects with maximum type safety and code quality best pract
 
 ## Scope
 
-For TypeScript projects — type system, code quality, testing, documentation; single `SKILL.md` package — no `references/`, verify the current TypeScript version/behavior via `/deep-research` at use time (the native-compiler era changed defaults; check breaking changes per release, official docs: https://www.typescriptlang.org/docs/)
+For TypeScript projects — type system, code quality, testing, documentation. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time strict scaffold); verify the current TypeScript version/behavior via `/deep-research` at use time (the native-compiler era changed defaults; check breaking changes per release, official docs: https://www.typescriptlang.org/docs/)
 
 ## Execute
 
@@ -26,11 +31,12 @@ For TypeScript projects — type system, code quality, testing, documentation; s
 
 > Goal: configure strict TypeScript for maximum type safety with live-checked versions
 
-1. Run `/deep-research` to confirm the latest stable TypeScript, its default compiler behaviors, removed options, and programmatic-API status before configuring or coding
-2. Enable `strict: true` plus the enhanced checks in `tsconfig.json`: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noUnusedLocals`, `noUnusedParameters`, `noImplicitReturns`, `noImplicitOverride`, `noFallthroughCasesInSwitch`, `verbatimModuleSyntax`, `isolatedModules`, `noUncheckedSideEffectImports`
-3. Use type narrowing (`typeof`, type guards `value is T`) instead of type assertions (`as`); discriminated unions for complex state
-4. Never use `any` — use `unknown` and narrow before use; mark immutable properties `readonly`
-5. Use utility types (`Partial`, `Pick`, `Omit`, `Awaited`, `Parameters`, `ReturnType`), `satisfies` to validate without widening, and exhaustive switch with `never`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest stable TypeScript, its default compiler behaviors, current TS practices, removed options, and programmatic-API status before configuring or coding; tool inventory → `references/toolchain.md`
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): runtime pin, strict tsconfig, quality dev deps, verify
+3. Enable `strict: true` plus the enhanced checks in `tsconfig.json`: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noUnusedLocals`, `noUnusedParameters`, `noImplicitReturns`, `noImplicitOverride`, `noFallthroughCasesInSwitch`, `verbatimModuleSyntax`, `isolatedModules`, `noUncheckedSideEffectImports`
+4. Use type narrowing (`typeof`, type guards `value is T`) instead of type assertions (`as`); discriminated unions for complex state
+5. Never use `any` — use `unknown` and narrow before use; mark immutable properties `readonly`
+6. Use utility types (`Partial`, `Pick`, `Omit`, `Awaited`, `Parameters`, `ReturnType`), `satisfies` to validate without widening, and exhaustive switch with `never`
 
 ### 2. Use Modern Type Features
 
@@ -57,7 +63,7 @@ For TypeScript projects — type system, code quality, testing, documentation; s
 > Goal: type-safe testing with vitest and type coverage
 
 1. Use `vitest` for unit testing; type-safe mocks with `vi.fn()`/`vi.spyOn()`
-2. Assert types with `expect-type` (`expectTypeOf(add(1, 2)).toEqualTypeOf<number>()`)
+2. Assert types with `expect-type` (`expectTypeOf(add(1, 2)).toEqualTypeOf<number>()`) in runtime suites; for a dedicated type-test layer (public API type contracts, multi-TypeScript-version targets) use `tstyche` per `/follow-lib-tstyche`
 3. Check type coverage with `type-coverage` (`npx type-coverage --detail`) — target: no `any` in the codebase
 4. Run `/run-test` and `/run-typecheck` until green
 
@@ -82,7 +88,7 @@ For TypeScript projects — type system, code quality, testing, documentation; s
 
 ### 3. No Stale Pins
 
-- Do not pin TypeScript versions or compiler defaults from memory in code or docs; live-check via `/deep-research` at use time
+- Do not pin TypeScript versions or compiler defaults from memory in code or docs; `references/toolchain.md` holds roles/commands only — live-check via `/deep-research` at use time
 
 - Use /follow-lang-javascript if needed
 - Use /follow-best-practice if needed
@@ -96,5 +102,5 @@ For TypeScript projects — type system, code quality, testing, documentation; s
 - Maximum type safety via strict mode and enhanced compiler options
 - Modern type features used where they add real safety
 - Consistent code quality per best practices
-- Type-safe tests with `expect-type` and full type coverage
+- Type-safe tests with `expect-type`/`tstyche` (`/follow-lib-tstyche`) and full type coverage
 - Complete JSDoc/TSDoc on public APIs

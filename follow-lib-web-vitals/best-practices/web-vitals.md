@@ -1,22 +1,22 @@
 # web-vitals — Best Practices
 
-Core Web Vitals measurement — attribution และ reporting discipline
+Core Web Vitals measurement — attribution and reporting discipline
 
 ## Recommended Patterns
 
-- วัด Core Web Vitals ครบ: `onLCP`, `onINP`, `onCLS` + diagnostic `onFCP`, `onTTFB` — INP แทน FID แล้ว
-- ใช้ attribution build (`web-vitals/attribution`) ตอน debug — บอกว่า element/sub-part ไหนทำ metric แย่
-- Report ผ่าน `navigator.sendBeacon` หรือ `fetch(..., {keepalive: true})` — ห้าม XHR sync ตอน unload
-- Report ทุก metric เมื่อ final (callback fire หลายครั้ง — ใช้ค่า latest ตอน `reportAllChanges` หรือ send ตอน visibilitychange:hidden)
-- Batch + queue metrics แล้วส่งรวมเมื่อ page hidden — ลด beacon count
+- Measure the Core Web Vitals fully: `onLCP`, `onINP`, `onCLS` + the diagnostics `onFCP`, `onTTFB` — INP has replaced FID
+- Use the attribution build (`web-vitals/attribution`) when debugging — it tells which element/sub-part made the metric bad
+- Report via `navigator.sendBeacon` or `fetch(..., {keepalive: true})` — never sync XHR on unload
+- Report every metric when final (the callback fires multiple times — use the latest value with `reportAllChanges`, or send on visibilitychange:hidden)
+- Batch + queue metrics, then send them together when the page is hidden — fewer beacons
 
 ## Common Pitfalls
 
-- Metrics เป็น RUM — lab (Lighthouse) ≠ field data; users จริงแย่กว่าเสมอ, optimize จาก field percentiles (p75)
-- CLS/INP สะสมตลอด session — SPA navigations ต้อง reset/report ต่อ route เอง (lib ไม่ทำ)
-- `onINP` ต้องการ user interaction — sessions ไม่มี interaction จะไม่มี INP value
-- Callbacks fire หลายครั้ง — อย่า send ทุก call; flag ว่า report แล้วหรือใช้ `reportAllChanges` ตั้งใจ
-- Third-party scripts/ads/iframes ทำ LCP/CLS แย่ — attribution build บอก culprit ได้
+- Metrics are RUM — lab (Lighthouse) ≠ field data; real users are always worse, optimize from field percentiles (p75)
+- CLS/INP accumulate across the session — SPA navigations must reset/report per route yourself (the lib doesn't)
+- `onINP` needs a user interaction — sessions with no interaction have no INP value
+- Callbacks fire multiple times — don't send on every call; flag that it's reported, or use `reportAllChanges` intentionally
+- Third-party scripts/ads/iframes make LCP/CLS worse — the attribution build can name the culprit
 
 ## Interpretation
 
@@ -26,13 +26,13 @@ Core Web Vitals measurement — attribution และ reporting discipline
 | INP | ≤200ms | ≤500ms | >500ms |
 | CLS | ≤0.1 | ≤0.25 | >0.25 |
 
-- p75 threshold = Google ranking signal — optimize สำหรับ p75 ไม่ใช่ median
+- The p75 threshold is the Google ranking signal — optimize for p75, not the median
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `sendBeacon`/`keepalive` ตอน hidden | sync XHR ตอน unload |
-| attribution build ตอน debug | guess culprit จาก metric เดียว |
-| p75 field data | optimize จาก Lighthouse อย่างเดียว |
-| report per-route ใน SPA | assume auto reset ข้าม navigations |
+| `sendBeacon`/`keepalive` when hidden | sync XHR on unload |
+| the attribution build when debugging | guess the culprit from a single metric |
+| p75 field data | optimize only from Lighthouse |
+| report per-route in an SPA | assume an automatic reset across navigations |

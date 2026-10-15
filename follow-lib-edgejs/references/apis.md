@@ -7,9 +7,9 @@
 
 | api | description | default | options |
 |---|---|---|---|
-| `Edge.create()` | สร้าง instance | - | `cache` |
+| `Edge.create()` | Create an instance | - | `cache` |
 | `edge.mount(dir)` | Register views directory | - | namespace |
-| `edge.render(template, state)` | Render ไฟล์ | - | state object |
+| `edge.render(template, state)` | Render a file | - | state object |
 | `edge.renderSync` / `renderRaw` | Variants | - | - |
 | `edge.registerTemplate(name, {template})` | Inline template | - | - |
 | `{{ }}` / `@if` / `@each` / `@component` | Template syntax | escaped | `@!{}` raw |

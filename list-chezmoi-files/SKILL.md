@@ -1,6 +1,6 @@
 ---
 name: list-chezmoi-files
-description: รายการไฟล์ทีถูก chezmoi จัดการ (chezmoi managed)
+description: List files managed by chezmoi (chezmoi managed)
 argument-hint: "[scope]"
 related:
   - download-program
@@ -11,87 +11,87 @@ related:
 
 ## Goal
 
-แสดงรายการไฟล์และ directory ที chezmoi จัดการอยู่ ทั้ง destination path และ source path พร้อมสถานะ
+List the files and directories chezmoi manages, showing both destination and source paths with status
 
 ## Scope
 
-ใช้เมื่อต้องการรู้ว่าไฟล์ใดถูก `chezmoi add` แล้ว หรือต้องการตรวจสอบ dotfiles ที sync ด้วย chezmoi
+Use when you need to know which files were `chezmoi add`-ed, or to inspect dotfiles synced by chezmoi
 
 ## Execute
 
 ### 1. Verify Chezmoi
 
-> Goal: ตรวจสอบ chezmoi
+> Goal: check chezmoi
 
-1. รัน `chezmoi --version`
-2. ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
-3. รัน `chezmoi source-path` เพื่อหา source directory
-4. รัน `chezmoi dest-dir` หรือ `chezmoi data` เพื่อหา destination directory
+1. Run `chezmoi --version`
+2. If missing → do `/download-program` to install
+3. Run `chezmoi source-path` to find the source directory
+4. Run `chezmoi dest-dir` or `chezmoi data` to find the destination directory
 
 ### 2. List Managed Files
 
-> Goal: รายการไฟล์ที chezmoi จัดการ
+> Goal: list the files chezmoi manages
 
-1. รัน `chezmoi managed` เพื่อดูทุกไฟล์/ directory ทีถูกจัดการ
-2. ถ้าต้องการเฉพาะ files → ใช้ `chezmoi managed --include=files`
-3. ถ้าต้องการทั้งหมด → ใช้ `chezmoi managed --include=all`
-4. บันทึกรายการเป็น list
+1. Run `chezmoi managed` to see every managed file/directory
+2. For files only → use `chezmoi managed --include=files`
+3. For everything → use `chezmoi managed --include=all`
+4. Save the result as a list
 
 ### 3. Map Source And Destination
 
-> Goal: หา source path สำหรับแต่ละ destination
+> Goal: find the source path for each destination
 
-1. สำหรับแต่ละ managed file รัน `chezmoi source-path <dest-path>`
-2. หรือรัน `chezmoi target-path <source-path>` หากต้องการทางกลับ
-3. บันทึกคู่: `destination-path` และ `source-path`
-4. ถ้ามี `apply` status ต่างกัน → บันทึก `out-of-sync`
+1. For each managed file run `chezmoi source-path <dest-path>`
+2. Or run `chezmoi target-path <source-path>` for the reverse direction
+3. Record the pairs: `destination-path` and `source-path`
+4. When `apply` status differs → record `out-of-sync`
 
 ### 4. Check Status
 
-> Goal: ตรวจสอบสถานะของ managed files
+> Goal: check the status of managed files
 
-1. รัน `chezmoi status` เพื่อดูไฟล์ทีมีการเปลี่ยนแปลง
-2. ระบุไฟล์ที `Modified`, `Added`, `Deleted`
-3. รัน `chezmoi diff` สำหรับไฟล์ทีต้องการดูรายละเอียด
-4. บันทึก status ของแต่ละไฟล์
+1. Run `chezmoi status` to see changed files
+2. Identify files that are `Modified`, `Added`, `Deleted`
+3. Run `chezmoi diff` for files needing detail
+4. Record each file's status
 
 ### 5. Report
 
-> Goal: นำเสนอรายการไฟล์
+> Goal: present the file list
 
-1. ใช้ `/report` คอลัมน์:
+1. Use `/report` with columns:
    - No
    - Managed File (destination path)
    - Source Path
    - Type (`file`, `dir`, `symlink`)
    - Status (`sync`, `modified`, `unstaged`)
-   - LastUpdate (ถ้าหาได้จาก `chezmoi state`)
-2. เรียงตาม destination path
-3. ทำ `/suggest-next-action`
+   - LastUpdate (when available from `chezmoi state`)
+2. Sort by destination path
+3. Do `/suggest-next-action`
 
 ## Rules
 
 ### 1. Read Only
 
-- ไม่แก้ไข source หรือ destination
-- ไม่รัน `chezmoi apply` หรือ `chezmoi readd` โดยไม่มี instruction
-- ใช้ `chezmoi managed`, `chezmoi source-path`, `chezmoi status` เท่านั้น
+- Do not modify source or destination
+- Do not run `chezmoi apply` or `chezmoi readd` without instruction
+- Use only `chezmoi managed`, `chezmoi source-path`, `chezmoi status`
 
 ### 2. Path Accuracy
 
-- แสดงทั้ง destination path และ source path
-- ใช้ absolute paths
-- ระบุ type ของ entry
+- Show both destination and source paths
+- Use absolute paths
+- State the entry type
 
 ### 3. Status
 
-- ใช้ `chezmoi status` เพื่อระบุความต่าง
-- ไม่สรุป status เองถ้าไม่มีข้อมูล
-- ถ้าไฟล์ out of sync → แนะนำ `/update-chezmoi`
+- Use `chezmoi status` to identify differences
+- Do not guess status when data is missing
+- If a file is out of sync → recommend `/update-chezmoi`
 
 ## Expected Outcome
 
-- รายการไฟล์ที chezmoi จัดการทั้งหมด
-- คู่ destination path และ source path
-- สถานะของแต่ละไฟล์
-- ตารางพร้อม next action
+- The full list of files chezmoi manages
+- Destination/source path pairs
+- The status of each file
+- A table with next actions

@@ -210,7 +210,7 @@ Set/edit Supabase configuration — env vars, `supabase/config.toml`, RLS polici
 
 1. Read the existing `supabase/config.toml` and `.env*`
 2. Do `/check-secrets env-vars` to identify missing or duplicated vars
-3. Do `/deep-review` domain `review-config` if the local config is suspected to differ from remote
+3. Do `/deep-review-codebase` domain `review-config` if the local config is suspected to differ from remote
 4. If there is no `supabase/config.toml` at all → do `## Merged Details → setup-supabase` instead
 
 ###### 2. Configure Env Vars
@@ -541,7 +541,7 @@ Official links and resources for Supabase
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

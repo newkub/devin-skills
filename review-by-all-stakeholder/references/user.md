@@ -83,7 +83,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - Touch targets — hit area เพียงพอ (≥44px), spacing กัน mis-tap, interaction ที่ require hover อย่างเดียว
 
-- Delegate deep pass → `/deep-review` สำหรับ full WCAG audit
+- Delegate deep pass → `/deep-review-codebase` สำหรับ full WCAG audit
 
 
 
@@ -97,7 +97,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -147,7 +147,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -197,7 +197,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -233,7 +233,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - Task feedback — confirmation หลัง action สำเร็จ, undo/redo, autosave/draft, destructive action มี warning หรือ recovery ไหม
 
-- Delegate deep pass → `/deep-review` สำหรับ visual/interaction detail ที่ลึกกว่า journey level
+- Delegate deep pass → `/deep-review-codebase` สำหรับ visual/interaction detail ที่ลึกกว่า journey level
 
 
 
@@ -247,7 +247,7 @@ Persona details for the `user` category — merged from the original `workflows/
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 

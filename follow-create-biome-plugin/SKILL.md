@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-tool-biome
-  - deep-review
+  - deep-review-codebase
   - follow-tool-formatter
   - ship
   - run-lint
@@ -27,7 +27,7 @@ Covers creating `.grit` plugin files, writing GritQL patterns, configuring `biom
 
 > Goal: Check the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then `/deep-review-codebase` to summarize the tech stack
 3. Record the stack and library choices for the next reference (create biome plugins)
 
 ### 2. Setup

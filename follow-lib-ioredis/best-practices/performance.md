@@ -1,62 +1,62 @@
-# ioredis — Data Access และ Performance
+# ioredis — Data Access And Performance
 
 ## Recommended Patterns
 
-### Pipelining และ Transactions
+### Pipelining And Transactions
 
-- batch commands ด้วย `redis.pipeline()` — ส่งหลาย commands ใน round-trip เดียว ลด latency มาก
-- `redis.multi()` สำหรับ transaction (atomic EXEC) — ใช้เมื่อ commands ต้อง all-or-nothing
-- pipeline + multi ต่างกัน: pipeline = batch (ไม่ atomic), multi = transaction (atomic, WATCH support)
-- pipeline ขนาดใหญ่แยกเป็น chunks (~hundreds per batch) — pipeline หมื่น commands กิน memory สองฝั่ง
+- batch commands with `redis.pipeline()` — sends many commands in one round-trip, cutting latency a lot
+- `redis.multi()` for transactions (atomic EXEC) — use when commands must be all-or-nothing
+- pipeline vs multi differ: pipeline = batch (not atomic), multi = transaction (atomic, WATCH support)
+- split very large pipelines into chunks (~hundreds per batch) — a ten-thousand-command pipeline eats memory on both sides
 
 ### Key Patterns
 
-- `SCAN` แทน `KEYS` — `KEYS *` block server บน keyspace ใหญ่; `scanStream()` iterate เป็น stream
-- `keyPrefix` option ตั้ง prefix อัตโนมัติทุก command — ระวังเมื่อใช้กับ Cluster (hash tag constraints) และเมื่ออ่าน key ที่เขียนด้วย client อื่น
-- expire keys เสมอสำหรับ cache — `SET key val EX 300` หรือ `EXPIRE` ทีหลัง — memory leak จาก keys ไม่มี TTL เป็นเรื่องจริง
-- ใช้ `SET key val NX EX` สำหรับ distributed lock — atomic check-and-set
+- `SCAN` instead of `KEYS` — `KEYS *` blocks the server on a large keyspace; `scanStream()` iterates as a stream
+- the `keyPrefix` option sets a prefix automatically on every command — beware with Cluster (hash tag constraints) and when reading keys written by other clients
+- always expire cache keys — `SET key val EX 300` or `EXPIRE` afterwards — memory leaks from no-TTL keys are real
+- use `SET key val NX EX` for distributed locks — atomic check-and-set
 
 ### Atomic Operations
 
-- ใช้ Lua script ผ่าน `redis.eval`/`defineCommand` เมื่อต้อง atomic read-modify-write ที่ multi ทำไม่ได้
-- `defineCommand` register script เป็น method — reuse ง่ายกว่า eval ดิบ
-- prefer `EVALSHA` semantics ผ่าน `defineCommand` — script cached ฝั่ง server
+- use Lua scripts via `redis.eval`/`defineCommand` when an atomic read-modify-write is needed that multi can't do
+- `defineCommand` registers a script as a method — easier to reuse than raw eval
+- prefer `EVALSHA` semantics via `defineCommand` — the script is cached server-side
 
 ### Monitoring
 
-- `INFO` ดู memory/clients/hit ratio — `used_memory`, `connected_clients`, `keyspace_hits/misses`
-- `SLOWLOG` หา commands ช้า — O(N) commands บน collection ใหญ่มักอยู่ในนี้
-- `MONITOR` เฉพาะ debug — log ทุก command แพงมากบน production
+- `INFO` for memory/clients/hit ratio — `used_memory`, `connected_clients`, `keyspace_hits/misses`
+- `SLOWLOG` to find slow commands — O(N) commands on big collections usually show up here
+- `MONITOR` for debugging only — it logs every command, extremely costly in production
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `pipeline()` สำหรับ batch reads/writes | `await` ทีละ command ใน loop |
-| `multi()` เมื่อต้อง atomicity | ใช้ pipeline แล้วคาดหวัง atomic |
-| `SCAN`/`scanStream` iterate keyspace | `KEYS *` บน production |
-| ตั้ง TTL ทุก cache key | ปล่อย keys ไม่มี expire จน memory เต็ม |
-| Lua script สำหรับ read-modify-write | GET → modify → SET แยก (race condition) |
-| chunk pipeline ใหญ่ | pipeline หมื่น commands batch เดียว |
+| `pipeline()` for batch reads/writes | `await`-ing one command at a time in a loop |
+| `multi()` when atomicity is required | using a pipeline then expecting atomicity |
+| `SCAN`/`scanStream` to iterate the keyspace | `KEYS *` in production |
+| set a TTL on every cache key | leaving keys without expiry until memory fills |
+| Lua scripts for read-modify-write | separate GET → modify → SET (race condition) |
+| chunk big pipelines | one pipeline of ten thousand commands |
 
 ## Common Pitfalls
 
-- `KEYS` หรือ `SMEMBERS` บน collection ใหญ่ → block event loop ฝั่ง Redis
-- pipeline ไม่มี `.exec()` → commands ไม่ส่ง
-- `multi().exec()` return array of `[err, result]` — ต้องเช็ค errors เอง promise ไม่ reject รวม
-- `keyPrefix` + Cluster → CROSSSLOT errors ถ้า prefix ไม่มี hash tag `{...}`
-- GET→SET แยกสำหรับ counter → race condition; ใช้ `INCR` หรือ Lua
+- `KEYS` or `SMEMBERS` on a large collection → blocks the Redis-side event loop
+- a pipeline without `.exec()` → commands never sent
+- `multi().exec()` returns an array of `[err, result]` — you must check errors yourself, the promise doesn't reject collectively
+- `keyPrefix` + Cluster → CROSSSLOT errors if the prefix has no hash tag `{...}`
+- separate GET→SET for a counter → race condition; use `INCR` or Lua
 
 ## Performance Notes
 
-- pipeline ลด RTT — 100 commands: ~100 RTT → 1 RTT (win ใหญ่บน remote Redis)
-- `multi` มี overhead กว่า pipeline เล็กน้อย (EXEC wrapping) — ใช้เฉพาะเมื่อต้อง atomic
-- hash (`HSET`) ประหยัด memory กว่า flat keys เมื่อเก็บ object fields จำนวนมาก
-- large values (>100KB) ควร compress หรือเก็บที่ object storage — Redis เป็น memory store
+- pipelines cut RTT — 100 commands: ~100 RTT → 1 RTT (a big win on remote Redis)
+- `multi` carries slightly more overhead than a pipeline (EXEC wrapping) — use only when atomicity is needed
+- hashes (`HSET`) save memory versus flat keys when storing many object fields
+- large values (>100KB) should be compressed or kept in object storage — Redis is a memory store
 
 ## Ecosystem / Integration
 
-- BullMQ ต้อง `maxRetriesPerRequest: null` + `enableReadyCheck: false` บน client ที่แชร์
-- cache-aside pattern: GET → miss → DB → SET EX — standard ไม่ต้อง lib เพิ่ม
-- สำหรับ edge runtimes ที่ไม่มี TCP → REST-based client (Upstash) แทน
-- v6 RESP3 default — `replyStyle: 'resp3'` เมื่อต้องการ RESP3 reply shapes, `protocol: 2` ถ้า stack เดิมต้อง RESP2
+- BullMQ requires `maxRetriesPerRequest: null` + `enableReadyCheck: false` on a shared client
+- cache-aside pattern: GET → miss → DB → SET EX — standard, no extra lib needed
+- for edge runtimes without TCP → a REST-based client (Upstash) instead
+- v6 defaults to RESP3 — `replyStyle: 'resp3'` when you want RESP3 reply shapes, `protocol: 2` if the old stack needs RESP2

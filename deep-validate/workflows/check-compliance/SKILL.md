@@ -3,7 +3,7 @@ name: deep-validate-check-compliance
 description: Validate compliance dimension — requirements fit, conventions, regulatory
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - report
 ---
 
@@ -31,7 +31,7 @@ Check the compliance dimension of `/deep-validate` — fit with requirements/con
 > Goal: aligned with the applicable standards
 
 1. Check compliance with project conventions (`AGENTS.md`)
-2. Check compliance with regulatory requirements if any — run `/deep-review` for a deep pass
+2. Check compliance with regulatory requirements if any — run `/deep-review-codebase` for a deep pass
 3. Record findings with severity + evidence
 
 ### 3. Report

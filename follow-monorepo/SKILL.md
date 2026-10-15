@@ -1,6 +1,6 @@
 ---
 name: follow-monorepo
-description: ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
+description: Check and follow monorepo conventions, workspace scripts, dependencies, and build pipelines
 argument-hint: "[workspace-or-command]"
 related:
   - ship
@@ -21,7 +21,7 @@ related:
   - update-dot-devin
   - improve
   - setup-cicd
-  - deep-review
+  - deep-review-codebase
   - report
   - suggest-next-action
   - run-test
@@ -29,148 +29,148 @@ related:
 
 ## Goal
 
-ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
+Check and follow monorepo conventions, workspace scripts, dependencies, and build pipelines
 
 ## Scope
 
-ใช้กับ monorepo ทีใช้ `moon`, `turbo`, `pnpm workspace`, `bun workspace`, หรือ `nx` โดย detect tool, verify workspace conventions, run commands, และจัดการ dependencies
+Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, or `nx` — detect the tool, verify workspace conventions, run commands, and manage dependencies
 
 ## Execute
 
 ### 1. Detect Monorepo Tool
 
-> Goal: รู้ว่าใช้ monorepo tool อะไร
+> Goal: know which monorepo tool is used
 
-1. ตรวจ root `package.json` สำหรับ `workspaces`, `packageManager`
-2. ตรวจ `moon.yml`, `turbo.json`, `nx.json`, `pnpm-workspace.yaml`
-3. ตรวจ `moon --version`, `turbo --version`, `pnpm --version`, `bun --version`
-4. บันทึก tool ทีใช้
+1. Check the root `package.json` for `workspaces`, `packageManager`
+2. Check `moon.yml`, `turbo.json`, `nx.json`, `pnpm-workspace.yaml`
+3. Check `moon --version`, `turbo --version`, `pnpm --version`, `bun --version`
+4. Record the tool used
 
 ### 2. List Workspaces
 
-> Goal: รู้ว่ามี workspaces อะไรบ้าง
+> Goal: know what workspaces exist
 
-1. ถ้า `moon` → รัน `moon query projects`
-2. ถ้า `turbo` → อ่าน `package.json` workspaces
-3. ถ้า `pnpm` → รัน `pnpm -r list`
-4. ถ้า `bun` → อ่าน `package.json` workspaces
-5. สร้าง list: name, path, type (app/package/integration/tool)
+1. If `moon` → run `moon query projects`
+2. If `turbo` → read the `package.json` workspaces
+3. If `pnpm` → run `pnpm -r list`
+4. If `bun` → read the `package.json` workspaces
+5. Build a list: name, path, type (app/package/integration/tool)
 
 ### 3. Verify Workspace Conventions
 
-> Goal: ตรวจสอบว่าแต่ละ workspace ตาม conventions
+> Goal: check that each workspace follows conventions
 
-1. ตรวจ `package.json` มี `name`, `type: module`, `scripts`
-2. ตรวจ `moon.yml` ถ้าใช้ moon
-3. ตรวจ `tsconfig.json`, `biome.jsonc` มีหรือไม่
-4. ตรวจ `README.md` หรือ `AGENTS.md` ใน workspace
-5. ตรวจ `.vscode/` และ `.devin/` ในแต่ละ workspace (settings, hooks, skills, MCP)
-6. บันทึก workspaces ทีขาด conventions
-7. Sync convention layers เมื่อขาดหรือ drift:
-   - `/follow-tool-moonrepo` (default orchestrator) หรือ `/follow-tool-mr-boxington` ตาม tool ทีใช้
-   - `/follow-tool-mise` สำหรับ toolchain/runtime versions
-   - `/follow-tool-linter` + `/follow-tool-formatter` สำหรับ lint/format wiring
-   - `/follow-tool-gitleaks` สำหรับ secrets scanning hook (เช่น pre-push)
-   - `/setup-cicd` ถ้ายังไม่มี pipeline หรือ config drift
-   - `/update-license-md`, `/update-contributing`, `/update-astgrep-rules`, `/update-gitignore` สำหรับ repo hygiene files
-   - `/update-dot-vscode`, `/update-dot-devin` สำหรับ `.vscode`/`.devin` config ของ workspace
-   - `/improve config` เมื่อ config ใช้งานได้แล้วแต่ยังปรับปรุงได้
+1. Check `package.json` has `name`, `type: module`, `scripts`
+2. Check `moon.yml` if moon is used
+3. Check whether `tsconfig.json`, `biome.jsonc` exist
+4. Check for `README.md` or `AGENTS.md` in the workspace
+5. Check `.vscode/` and `.devin/` in each workspace (settings, hooks, skills, MCP)
+6. Record workspaces missing conventions
+7. Sync convention layers when missing or drifted:
+   - `/follow-tool-moonrepo` (default orchestrator) or `/follow-tool-mr-boxington` per the tool used
+   - `/follow-tool-mise` for toolchain/runtime versions
+   - `/follow-tool-linter` + `/follow-tool-formatter` for lint/format wiring
+   - `/follow-tool-gitleaks` for the secrets scanning hook (e.g. pre-push)
+   - `/setup-cicd` if there is no pipeline yet or the config drifted
+   - `/update-license-md`, `/update-contributing`, `/update-astgrep-rules`, `/update-gitignore` for repo hygiene files
+   - `/update-dot-vscode`, `/update-dot-devin` for the workspace's `.vscode`/`.devin` config
+   - `/improve config` when the config works but can still be improved
 
 ### 4. Run Workspace Command
 
-> Goal: รัน command ทั่ว workspaces
+> Goal: run a command across workspaces
 
-1. ใช้ tool command ทีเหมาะสม:
+1. Use the suitable tool command:
    - moon: `moon run :<task> --concurrency 1`
    - turbo: `turbo run <task>`
    - pnpm: `pnpm -r <command>`
    - bun: `bun run --filter <workspace> <script>`
-2. บันทึกผลลัพธ์และ errors
-3. ถ้า fail → ทำ `/resolve-errors`
+2. Record results and errors
+3. If it fails → run `/resolve-errors`
 
 ### 5. Check Dependencies
 
-> Goal: ตรวจ dependencies ระหว่าง workspaces
+> Goal: check dependencies across workspaces
 
-1. ตรวจ `package.json` dependencies ในแต่ละ workspace
-2. ตรวจ external dependencies ว่า duplicate หรือไม่
-3. ตรวจ internal workspace dependencies (`workspace:*`)
-4. ถ้ามี duplicate หรือ version ต่าง → ทำ `/update-version-to-latest`
+1. Check `package.json` dependencies in each workspace
+2. Check whether external dependencies are duplicated
+3. Check internal workspace dependencies (`workspace:*`)
+4. If there are duplicates or version mismatches → run `/update-version-to-latest`
 
 ### 6. Verify Build Pipeline
 
-> Goal: ยืนยัน build pipeline ทำงาน
+> Goal: confirm the build pipeline works
 
-1. รัน `bun install` หรือ package manager install
-2. รัน `moon run :build` หรือ `turbo run build`
-3. รัน `moon run :typecheck` หรือ `turbo run typecheck`
-4. รัน `moon run :lint` หรือ `turbo run lint`
-5. ถ้า fail → ทำ `/resolve-errors`
+1. Run `bun install` or the package manager install
+2. Run `moon run :build` or `turbo run build`
+3. Run `moon run :typecheck` or `turbo run typecheck`
+4. Run `moon run :lint` or `turbo run lint`
+5. If it fails → run `/resolve-errors`
 
 ### 7. Report
 
-> Goal: สรุปสถานะทุก workspace รวม `.vscode`/`.devin`
+> Goal: summarize the status of every workspace including `.vscode`/`.devin`
 
-1. ทำ `/report table` คอลัมน์: `No.`, `Workspace`, `Type`, `Conventions`, `.vscode`, `.devin`, `Deps`, `Status`
-2. workspace ที่ขาด `.vscode` → ทำ `/update-dot-vscode`; ขาด `.devin` → ทำ `/update-dot-devin`
-3. ทำ `/suggest-next-action`
+1. Run `/report table` with columns: `No.`, `Workspace`, `Type`, `Conventions`, `.vscode`, `.devin`, `Deps`, `Status`
+2. A workspace missing `.vscode` → run `/update-dot-vscode`; missing `.devin` → run `/update-dot-devin`
+3. Run `/suggest-next-action`
 
 ### Workflows
 
-> Goal: dispatch งานเฉพาะทางไปยัง workflow ที่ละเอียดกว่า
+> Goal: dispatch specialized work to a more detailed workflow
 
 | Topic | Workflow |
 |-------|----------|
-| ย้าย single repo → monorepo — workspace config, dep hoisting, git history | `workflows/migrate-to-monorepo/SKILL.md` |
-| ตั้งค่า workspaces สำหรับ bun/npm/pnpm + moon/turbo | `workflows/config-workspaces/SKILL.md` |
+| Move a single repo → monorepo — workspace config, dep hoisting, git history | `workflows/migrate-to-monorepo/SKILL.md` |
+| Configure workspaces for bun/npm/pnpm + moon/turbo | `workflows/config-workspaces/SKILL.md` |
 
 ## Rules
 
 ### 1. Tool Agnostic
 
-- รองรับ moon, turbo, pnpm, bun, nx
-- ใช้ command ที tool แนะนำ
-- ไม่สมมติว่าทุก project ใช้ tool เดียวกัน
+- Support moon, turbo, pnpm, bun, nx
+- Use the command the tool recommends
+- Don't assume every project uses the same tool
 
 ### 2. Workspace Conventions
 
-- ทุก workspace ต้องมี `package.json` กับ `name`
-- ทุก workspace ควรมี `README.md`
-- ทุก app ควรมี `AGENTS.md` ถ้ามี global rules
+- Every workspace must have a `package.json` with `name`
+- Every workspace should have a `README.md`
+- Every app should have an `AGENTS.md` if there are global rules
 
 ### 3. Consistent Dependencies
 
-- ใช้ `workspace:*` สำหรับ internal packages
-- หลีกเลี่ยง duplicate external versions
-- อัปเดต `bun.lock` หรือ `pnpm-lock.yaml` เมื่อ dependencies เปลี่ยน
+- Use `workspace:*` for internal packages
+- Avoid duplicate external versions
+- Update `bun.lock` or `pnpm-lock.yaml` when dependencies change
 
 ### 4. Parallel Safety
 
-- รัน commands ด้วย concurrency ทีเหมาะสม
-- ไม่รัน destructive command กับทุก workspace พร้อมกัน
-- ใช้ dry-run ถ้า command มี side effects
+- Run commands with suitable concurrency
+- Never run a destructive command on every workspace at once
+- Use dry-run if a command has side effects
 
 ### 5. Minimal Impact
 
-- ไม่เปลี่ยน tool ถ้าไม่จำเป็น
-- ไม่ refactor workspaces ทั้งหมดในครั้งเดียว
-- แก้เฉพาะ workspaces ทีมีปัญหา
+- Don't change the tool unless necessary
+- Don't refactor all workspaces in one pass
+- Fix only the workspaces with problems
 
-- ใช้ /ship ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /update-dot-vscode ถ้าจำเป็น
-- ใช้ /update-dot-devin ถ้าจำเป็น
+- Use /ship if needed
+- Use /run-build if needed
+- Use /run-verify if needed
+- Use /follow-tool-vite if needed
+- Use /deep-review-codebase if needed
+- Use /report if needed
+- Use /suggest-next-action if needed
+- Use /run-test all if needed
+- Use /update-dot-vscode if needed
+- Use /update-dot-devin if needed
 
 ## Expected Outcome
 
-- Monorepo tool ถูก detect
-- Workspaces ถูก list และ verify conventions
+- Monorepo tool is detected
+- Workspaces listed and conventions verified
 - Dependencies consistent
-- Build/typecheck/lint ผ่าน
-- Report table สรุปสถานะทุก workspace รวม `.vscode`/`.devin` (`/update-dot-vscode`, `/update-dot-devin`)
+- Build/typecheck/lint pass
+- Report table summarizes every workspace including `.vscode`/`.devin` (`/update-dot-vscode`, `/update-dot-devin`)

@@ -12,6 +12,6 @@
 | `@tanstack/ai-react` | 0.29.x | AI hooks (+ `ai-vue`, `ai-solid`) |
 | `@tanstack/ai-openai` / `ai-anthropic` / `ai-ollama` | 0.25.x / 0.19.x / 0.11.x | AI provider adapters |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | AI | `chat`, `toStreamResponse` | `useChat`, adapters `openai()`/`anthropic()`/`ollama()` |

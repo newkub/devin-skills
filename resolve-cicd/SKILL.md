@@ -507,7 +507,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 2. เรียงตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
 
-3. ถ้าไม่พบ config → ทำ `/deep-review`, `/deep-review`, `/deep-review` หรือ `/ask-me`
+3. ถ้าไม่พบ config → ทำ `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase` หรือ `/ask-me`
 
 
 
@@ -617,9 +617,9 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 5. ถ้า failure มาจาก code/config → แก้ไขน้อยทีสุด
 
-6. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/deep-review`, `/deep-review`, `/deep-review` ตามลักษณะ
+6. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase` ตามลักษณะ
 
-7. ถ้า failure มาจาก infra/secret/platform → ทำ `/deep-review`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
+7. ถ้า failure มาจาก infra/secret/platform → ทำ `/deep-review-codebase`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
 
 8. ถ้าเป้น CI: commit/push หรือ re-trigger pipeline ตาม platform กลับไป Watch Pipeline
 

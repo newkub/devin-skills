@@ -1,6 +1,6 @@
 ---
 name: follow-lib-markdown-it
-description: ใช้ markdown-it + plugins — render markdown, syntax highlight ด้วย shiki
+description: Use markdown-it + plugins — render markdown, syntax highlight with shiki
 argument-hint: "[target-or-scope]"
 related:
   - follow-lib-dompurify
@@ -11,59 +11,59 @@ related:
 
 ## Goal
 
-ใช้ markdown-it + plugins — render markdown, syntax highlight ด้วย shiki
+Use markdown-it + plugins — render markdown, syntax highlight with shiki
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ markdown-it — parser/renderer, plugin ecosystem, CLI render (lib markdown it)
+Use when the task involves markdown-it — parser/renderer, plugin ecosystem, CLI render (lib markdown it)
 
-- ใช้ skill นี้สำหรับ markdown-it pipeline (`parse` → tokens → `render`) — ถ้าต้องการ full markdown pipeline ที่มี AST/unist (remark/rehype) หรือ framework integration (เช่น VitePress, Slidev) → ใช้ skill ของ framework นั้นแทน
-- Sanitize rendered HTML จาก untrusted content → `/follow-lib-dompurify`
-- มี CLI ในตัว (`markdown-it <file>`) — ดู [cli](references/cli.md)
+- Use this skill for the markdown-it pipeline (`parse` → tokens → `render`) — if you need a full markdown pipeline with AST/unist (remark/rehype) or framework integration (e.g. VitePress, Slidev) → use that framework's skill instead
+- Sanitize rendered HTML from untrusted content → `/follow-lib-dompurify`
+- Has a built-in CLI (`markdown-it <file>`) — see [cli](references/cli.md)
 
-- Latest: `markdown-it@15.0.2` (verified 2026-09-13) — v15: ESM+CJS dual, types รวมใน package (ไม่ต้อง `@types/markdown-it`)
+- Latest: `markdown-it@15.0.2` (verified 2026-09-13) — v15: ESM+CJS dual, types included in the package (no `@types/markdown-it` needed)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. ติดตั้ง `bun add markdown-it` — v15 bundle types ในตัว ไม่ต้อง `@types/markdown-it`
-1. สร้าง instance `new MarkdownIt()` หรือ `markdown-it()` พร้อม preset ตามต้องการ: `default` (extras), `commonmark` (strict spec), `zero` (minimal) — แล้ว `.use(plugin)`
-1. ใช้ `@shikijs/markdown-it` สำหรับ code highlight (async — ต้อง await setup)
-1. customize render rules ผ่าน `md.renderer.rules` เมื่อต้องเปลี่ยน output; toggle rules ด้วย `md.enable`/`md.disable`
-1. sanitize output ด้วย DOMPurify เมื่อ render user content — ดู `/follow-lib-dompurify`
+1. Install `bun add markdown-it` — v15 bundles types, no `@types/markdown-it` needed
+1. Create an instance `new MarkdownIt()` or `markdown-it()` with the preset you want: `default` (extras), `commonmark` (strict spec), `zero` (minimal) — then `.use(plugin)`
+1. Use `@shikijs/markdown-it` for code highlighting (async — setup must be awaited)
+1. Customize render rules via `md.renderer.rules` when you need to change output; toggle rules with `md.enable`/`md.disable`
+1. Sanitize output with DOMPurify when rendering user content — see `/follow-lib-dompurify`
 
 ### 2. Plugins And CLI
 
-> Goal: ใช้ plugin ecosystem และ CLI อย่างถูกต้อง
+> Goal: use the plugin ecosystem and CLI correctly
 
-1. Plugin ecosystem ผ่าน `md.use(plugin, opts)` — เช่น `markdown-it-anchor`, `markdown-it-toc-done-right`, `markdown-it-footnote` (ดู list ที่ npm keyword `markdown-it-plugin`)
-1. CLI สำหรับ render ไฟล์เร็ว: `bunx markdown-it README.md` หรือ stdin — options `--html`, `--linkify`, `--typographer` (ดู [cli](references/cli.md))
-1. ต้องการ token-level control → `md.parse(src, env)` คืน token stream ก่อน render
+1. Plugin ecosystem via `md.use(plugin, opts)` — e.g. `markdown-it-anchor`, `markdown-it-toc-done-right`, `markdown-it-footnote` (see the list at npm keyword `markdown-it-plugin`)
+1. CLI for quick file render: `bunx markdown-it README.md` or stdin — options `--html`, `--linkify`, `--typographer` (see [cli](references/cli.md))
+1. For token-level control → `md.parse(src, env)` returns the token stream before render
 
 ### 3. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib markdown it)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib markdown it)
 
 ## Rules
 
-- ปิด `html: true` เมื่อ render untrusted content หรือ sanitize หลัง render
-- preload highlighter ด้วย `@shikijs/markdown-it/async` pattern
-- cache rendered output สำหรับ content ซ้ำ
+- Turn off `html: true` when rendering untrusted content, or sanitize after render
+- Preload the highlighter with the `@shikijs/markdown-it/async` pattern
+- Cache rendered output for repeated content
 
-- ใช้ `/follow-lib-dompurify` ถ้าต้อง sanitize HTML output
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-lib-dompurify` if HTML output must be sanitized
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib markdown it)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib markdown it)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib markdown it)
+- No known security/performance pitfalls (lib markdown it)
+- Lint, typecheck, tests pass

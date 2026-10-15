@@ -3,7 +3,8 @@ name: idea
 description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
 argument-hint: "[topic]"
 related:
-  - deep-review
+  - validate-idea
+  - deep-review-codebase
   - reframe
   - report
   - suggest-next-action
@@ -29,6 +30,7 @@ related:
 | ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
 | skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
 | แปลง CLI tools เป็น Devin skills | `/idea-convert-my-global-cli-to-skills` |
+| คัดกรอง/พิสูจน์ไอเดียหนึ่งอันก่อนลงมือ (GO/NO-GO/PIVOT ในแชท) | `/validate-idea` |
 
 ### 1. Analyze Context
 
@@ -47,7 +49,7 @@ related:
 สร้างไอเดียตาม context:
 
 1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
-2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/deep-review` สร้างไอเดีย UX/UI improvements
+2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/deep-review-codebase` สร้างไอเดีย UX/UI improvements
 3. สร้างไอเดียปรับปรุงจากเดิม (Extends) — wants review-driven improvements แทน → `/improve <scope>`
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
 5. ระบุ problem ที่แต่ละไอเดียจะ solve

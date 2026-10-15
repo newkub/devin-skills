@@ -1,6 +1,6 @@
 ---
 name: gen-media-3d-model
-description: สร้าง 3D model จาก prompt หรือรูปภาพด้วย AI CLI
+description: Generate a 3D model from a prompt or image with an AI CLI
 argument-hint: "[prompt]"
 related:
   - gen-media
@@ -9,87 +9,87 @@ related:
 
 ## Goal
 
-สร้าง 3D model จาก text prompt หรือ image ด้วย AI generation CLI
+Generate a 3D model from a text prompt or image with an AI generation CLI
 
 ## Scope
 
-- ใช้ CLI เช่น Tripo หรือ Meshy สำหรับ text/image-to-3D
-- รองรับ output `.glb`, `.fbx`, `.obj`
-- รองรับ post-processing: texture, rig, animation
+- Use CLIs such as Tripo or Meshy for text/image-to-3D
+- Support output `.glb`, `.fbx`, `.obj`
+- Support post-processing: texture, rig, animation
 
 ## Execute
 
 ### 1. Prepare Input
 
-> Goal: ระบุสิ่งทีต้องสร้าง
+> Goal: Identify what to generate
 
-1. รับ prompt หรือ image path จาก user
-2. ระบุ output format (default `.glb`)
-3. ระบุคุณภาพหรือรูปแบบ (low-poly, high-poly, textured, rigged)
-4. ถ้า user ไม่มี API key → แนะนำ Pollinations ถ้าใช้ได้
+1. Receive the prompt or image path from the user
+2. Specify the output format (default `.glb`)
+3. Specify quality or style (low-poly, high-poly, textured, rigged)
+4. If the user has no API key → suggest Pollinations where applicable
 
 ### 2. Choose CLI
 
-> Goal: เลือก tool ทีพร้อมใช้
+> Goal: Pick a ready-to-use tool
 
 1. Primary: `bunx @tripo3d/cli generate text "<prompt>" --wait -o model.glb`
-   - รองรับ text-to-3D
-   - ต้องการ `TRIPO_API_KEY` หรือ `tripo auth login`
+   - Supports text-to-3D
+   - Requires `TRIPO_API_KEY` or `tripo auth login`
 2. Fallback: `bunx meshy-cli make "<prompt>" -o model.glb`
-   - OAuth login ผ่าน browser
+   - OAuth login via browser
 3. Fallback (image): `bunx @tripo3d/cli generate image <path> --wait -o model.glb`
-4. Fallback (local): ใช้ `tripo-cli` จาก source หรือ `re-ovo/tripo-cli` บน GitHub
+4. Fallback (local): use `tripo-cli` from source or `re-ovo/tripo-cli` on GitHub
 
 ### 3. Generate Model
 
-> Goal: รัน 3D generation
+> Goal: Run the 3D generation
 
-1. ตรวจสอบ CLI และ authentication
-2. รันคำสั่งพร้อม prompt/output
-3. รอ task เสร็จ (CLI `--wait` จะ poll ให้)
-4. ตรวจสอบไฟล์ output
+1. Check the CLI and authentication
+2. Run the command with prompt/output
+3. Wait for the task to finish (the CLI `--wait` flag polls for you)
+4. Verify the output file
 
 ### 4. Post-Process (Optional)
 
-> Goal: ปรับแต่ง model
+> Goal: Refine the model
 
-1. ถ้าต้องการ texture → `tripo process texture <id> --wait`
-2. ถ้าต้องการ rig/animation → `tripo process rig <id> --wait`
-3. ถ้าต้องการ convert format → `tripo export <id> --format fbx`
+1. For texture → `tripo process texture <id> --wait`
+2. For rig/animation → `tripo process rig <id> --wait`
+3. To convert format → `tripo export <id> --format fbx`
 
 ### 5. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the result
 
-1. แสดง output path
-2. แสดง provider, model, format
-3. แจ้ง cost หรือ credits ทีใช้ถ้าทราบ
+1. Show the output path
+2. Show provider, model, and format
+3. State the cost or credits used when known
 
 ## Rules
 
 ### 1. API Key
 
-- Tripo/Meshy ต้องการ API key หรือ login
-- ไม่ hardcode key
-- ถ้า user ไม่มี → ใช้ Pollinations หรือบริการ free ก่อนถ้าได้
+- Tripo/Meshy require an API key or login
+- Never hardcode keys
+- If the user has none → use Pollinations or a free service first when possible
 
 ### 2. Cost
 
-- 3D generation มี cost สูง
-- แจ้ง user ก่อนรัน
+- 3D generation is expensive
+- Tell the user before running
 
 ### 3. Output
 
-- default คือ `.glb`
-- รองรับ `.fbx`, `.obj` ตาม CLI
-- เก็บ output ใน project directory
+- Default is `.glb`
+- Supports `.fbx`, `.obj` per the CLI
+- Store output in the project directory
 
-- ใช้ /gen-media-ai-images ถ้าจำเป็น
-- ใช้ /gen-media-ai-videos ถ้าจำเป็น
-- ใช้ /gen-changelog-md ถ้าจำเป็น
+- Use /gen-media-ai-images if needed
+- Use /gen-media-ai-videos if needed
+- Use /gen-changelog-md if needed
 
 ## Expected Outcome
 
-- 3D model ไฟล์ถูกสร้างจาก prompt/image
-- รายงาน provider, output path, format
-- ถ้า fail มีแนวทาง fallback
+- A 3D model file is generated from the prompt/image
+- The report includes provider, output path, and format
+- On failure, a fallback approach is given

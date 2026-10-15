@@ -31,7 +31,7 @@ Use for creating, improving, and releasing Web Extensions with WXT; supports Typ
 
 > Goal: Start a WXT project with the appropriate template
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
 2. Run `bunx wxt@latest init` to start the project
 3. Choose the desired template (vanilla, react, vue, svelte, solid)
 4. Install dependencies with `bun install`

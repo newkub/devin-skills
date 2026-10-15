@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-เขียน tests สำหรับ Effect programs — `@effect/vitest` integration, `Effect.runPromise`, `TestClock`, `Layer` substitution, `Exit`/`Cause` assertions
+Write tests for Effect programs — `@effect/vitest` integration, `Effect.runPromise`, `TestClock`, `Layer` substitution, `Exit`/`Cause` assertions
 
 ## Scope
 
@@ -46,9 +46,9 @@ it.effect("fails with NotFound", () =>
   }))
 ```
 
-- `it.effect` — effect test body (TestClock ใส่มาให้, time ops deterministic)
-- `it.live` — real clock เมื่อเทสกับ timing จริง
-- `it.scoped` — tests ที่ต้อง `Scope` (acquireRelease, fibers scoped)
+- `it.effect` — effect test body (TestClock is provided, time ops deterministic)
+- `it.live` — real clock when testing against actual timing
+- `it.scoped` — tests that need a `Scope` (acquireRelease, scoped fibers)
 
 ### 3. TestClock And Time
 
@@ -56,8 +56,8 @@ it.effect("fails with NotFound", () =>
 yield* TestClock.adjust("5 seconds")   // advance deterministic clock
 ```
 
-- `TestClock` = default ใน `it.effect` — `Effect.sleep`/`timeout`/`retry` schedules test ได้ไม่ต้องรอจริง
-- Timing-sensitive integration ใช้ `it.live`
+- `TestClock` = the default in `it.effect` — `Effect.sleep`/`timeout`/`retry` schedules can be tested without real waiting
+- Timing-sensitive integration uses `it.live`
 
 ### 4. Layer Substitution
 
@@ -70,20 +70,20 @@ it.effect("with fake repo", () => program.pipe(Effect.provide(TestLayer)))
 ```
 
 - `Layer.succeed(Tag, fakeImpl)` — full replacement; `Layer.mock` — partial + defaults throw
-- Platform services: `FileSystem` in-memory layers, `Terminal` capture — ดู `use-platform`
+- Platform services: `FileSystem` in-memory layers, `Terminal` capture — see `use-platform`
 
 ### 5. Property Testing
 
-- `Arbitrary.make(Schema)` → fast-check generators จาก schemas — random valid inputs
+- `Arbitrary.make(Schema)` → fast-check generators from schemas — random valid inputs
 
 ## Rules
 
-- ทุก test ที่แตะ time → `it.effect` + `TestClock` — ไม่ใช้ `setTimeout`/real sleeps
-- Mock ผ่าน `Layer.succeed`/`Layer.mock` — ห้าม `vi.mock` module-level สำหรับ services
-- `Effect.exit`/`Exit.match` assert failures — ไม่ใช่ try/catch รอบ runPromise
-- `it.live` เมื่อเทสกับ real IO/timing เท่านั้น
+- Every test touching time → `it.effect` + `TestClock` — no `setTimeout`/real sleeps
+- Mock via `Layer.succeed`/`Layer.mock` — never `vi.mock` at module level for services
+- `Effect.exit`/`Exit.match` assert failures — not try/catch around runPromise
+- `it.live` only when testing against real IO/timing
 
 ## Expected Outcome
 
-- Tests deterministic ผ่าน TestClock + Layer fakes
-- Failure cases assert ผ่าน Exit/Cause — ครอบ expected errors + defects
+- Tests deterministic via TestClock + Layer fakes
+- Failure cases asserted through Exit/Cause — covering expected errors + defects

@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-ใช้ concurrency primitives ของ Effect ครบ — parallel composition, fibers, racing, interruption, fiber-local coordination
+Use Effect's concurrency primitives fully — parallel composition, fibers, racing, interruption, fiber-local coordination
 
 ## Scope
 
@@ -27,7 +27,7 @@ Effect.forEach(items, fn, { concurrency: 4 })  // bounded parallel map
 Effect.all(tasks, { concurrency: "unbounded", mode: "either" })
 ```
 
-- `Effect.forEach` + `concurrency` = workhorse สำหรับ batch IO
+- `Effect.forEach` + `concurrency` = the workhorse for batch IO
 - Options: `{ concurrency: N }`, `{ batching: true }`, `{ discard: true }` (fire-and-collect-unit)
 - `mode: "either"` = first success wins; `"validate"` = collect errors
 
@@ -40,30 +40,30 @@ yield* Fiber.interrupt(fiber)                   // cooperative cancel
 Effect.forkDaemon(fireAndForget)                // survives parent
 ```
 
-- Fiber = lightweight thread, cooperative cancellation — interruption ไม่ทิ้ง state ค้าง
-- `Effect.scoped`/`forkIn(scope)` ties fiber lifetime ให้ scope
+- Fiber = lightweight thread, cooperative cancellation — interruption doesn't leave state dangling
+- `Effect.scoped`/`forkIn(scope)` ties the fiber lifetime to a scope
 
 ### 3. Racing And Timeouts
 
 - `Effect.race(a, b)` — loser interrupted
 - `Effect.raceAll`, `Effect.timeout`, `Effect.timeoutFail`
-- `Effect.disconnect` สำหรับ uninterruptible regions (critical cleanup)
+- `Effect.disconnect` for uninterruptible regions (critical cleanup)
 
 ### 4. Coordination Primitives
 
-- `Deferred.make` — one-shot async value (promise ที่ cancel-safe)
+- `Deferred.make` — one-shot async value (a cancel-safe promise)
 - `Queue.bounded/unbounded` — producer/consumer
 - `Effect.makeSemaphore(n).withPermits` — bounded resource access
-- `Ref.make` — atomic mutable state; `Ref.Synchronized` สำหรับ effectful updates
+- `Ref.make` — atomic mutable state; `Ref.Synchronized` for effectful updates
 
 ## Rules
 
-- `concurrency` bound เสมอเมื่อ over collections — unbounded บน thousands items = resource exhaustion
-- Fire-and-forget ใช้ `forkDaemon`/`forkScoped` ชัดเจน — `fork` ธรรมดา tie กับ parent
-- Interruption = cooperative — long CPU loops ต้อง `Effect.yieldNow` เผื่อ cancel points
-- อย่าใช้ raw Promise.all ข้างใน Effect — เสีย interruption + error channel
+- Always bound `concurrency` when working over collections — unbounded over thousands of items = resource exhaustion
+- Fire-and-forget uses `forkDaemon`/`forkScoped` explicitly — a plain `fork` ties to the parent
+- Interruption is cooperative — long CPU loops need `Effect.yieldNow` to add cancel points
+- Don't use raw Promise.all inside Effect — you lose interruption + the error channel
 
 ## Expected Outcome
 
 - Parallel work bounded + cancel-safe
-- Fiber lifetime ชัดเจน, coordination ผ่าน Deferred/Queue/Ref
+- Fiber lifetimes clear, coordination via Deferred/Queue/Ref

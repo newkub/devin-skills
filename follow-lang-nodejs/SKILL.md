@@ -1,10 +1,11 @@
 ---
 name: follow-lang-nodejs
 description: Use the Node.js runtime to develop and run JavaScript/TypeScript projects across its ecosystem
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project|migrate-version]"
 related:
   - follow-lang-javascript
   - follow-lang-typescript
+  - follow-lang-bun
   - follow-best-practice
   - setup-cicd
   - use-scripts
@@ -18,7 +19,7 @@ Use the Node.js runtime to develop and run JavaScript/TypeScript projects with t
 
 ## Scope
 
-For projects needing maximal ecosystem compatibility or a mature runtime; single `SKILL.md` package — no `references/`, verify current Node LTS/release behavior via `/deep-research` at use time (official docs: https://nodejs.org/api/)
+For projects needing maximal ecosystem compatibility or a mature runtime. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/` — dispatch: `setup-project` → `workflows/setup-project/SKILL.md`, `migrate-version` → `workflows/migrate-version/SKILL.md`; verify current Node LTS/release behavior via `/deep-research` at use time (official docs: https://nodejs.org/api/)
 
 ## Execute
 
@@ -26,10 +27,9 @@ For projects needing maximal ecosystem compatibility or a mature runtime; single
 
 > Goal: set up the Node.js project with live-checked versions
 
-1. Run `/deep-research` to confirm the current LTS and active releases; pin the project to a supported line via `mise use -g node` (or `.nvmrc`/Volta) — never an EOL version
-2. Follow `workflows/setup-project.md` for scaffolding
-3. Choose the package manager per project (`npm`/`pnpm`/`yarn`); prefer TypeScript for large projects, JavaScript for scripts/prototyping
-4. Declare `engines.node` in `package.json` and use `"type": "module"` (ESM) unless CJS is required by dependencies
+1. Run `/deep-research` + `/follow-best-practice` to confirm the current LTS, active releases, and current Node practices; pin the project to a supported line via `mise use -g node` (or `.nvmrc`/Volta) — never an EOL version
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): scaffold, ESM default, scripts, TypeScript config, verify, git hygiene
+3. Tool inventory (runtime, PM, test runner, linter) → `references/toolchain.md`
 
 ### 2. Use The Module System Correctly
 
@@ -60,8 +60,7 @@ For projects needing maximal ecosystem compatibility or a mature runtime; single
 
 > Goal: move between Node.js major versions safely
 
-1. Follow `workflows/migrate-version.md`; read the official release notes/changelog first
-2. Run `/run-test` and `/run-typecheck` after each bump; `/deep-review` for breaking deprecations
+1. Run the workflow `workflows/migrate-version/SKILL.md` (argument `migrate-version`): baseline, per-major changelog review, runtime switch with pins in one commit, verify per bump, ship
 
 ## Rules
 

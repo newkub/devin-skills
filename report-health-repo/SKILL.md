@@ -68,7 +68,7 @@ related:
 
 1. ระบุ quick wins ต่อ repo (เช่น เพิ่ม LICENSE, enable CI, ลบ stale branches)
 2. flag repos ที่ควร archive หรือ revive
-3. เชื่อมไป skills ที่เกี่ยว: `/deep-review`
+3. เชื่อมไป skills ที่เกี่ยว: `/deep-review-codebase`
 4. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/apply` mode `validate`
 5. ทำ `/suggest-next-action`
 

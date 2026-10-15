@@ -1,6 +1,6 @@
 ---
 name: follow-lib-zod
-description: ใช้ Zod v4 สำหรับ TypeScript schema validation ด้วย static type inference
+description: Use Zod v4 for TypeScript schema validation with static type inference
 argument-hint: "[scope]"
 related:
   - follow-lib-arktype
@@ -14,15 +14,15 @@ related:
 
 ## Goal
 
-ใช้ Zod v4 เพื่อสร้าง schema validation ที่ type-safe ทั้ง compile-time และ runtime ด้วย API ปัจจุบัน
+Use Zod v4 to build schema validation that is type-safe at both compile-time and runtime with the current API
 
 ## Scope
 
-ใช้กับ TypeScript projects ทุกประเภท รวมถึง frontend, backend, full-stack และ libraries ที่ต้องการ runtime validation พร้อม static type inference
+Use with all kinds of TypeScript projects including frontend, backend, full-stack, and libraries that need runtime validation with static type inference
 
-- ใช้ skill นี้สำหรับ Zod v4 API (`z.object`, `.safeParse`, `z.infer`, `zod/mini`, `zod/v4` subpaths)
+- Use this skill for the Zod v4 API (`z.object`, `.safeParse`, `z.infer`, `zod/mini`, `zod/v4` subpaths)
 - Migrate v3 → v4 → workflow `workflows/migrate-zod-v4/SKILL.md`
-- ถ้า project ใช้ ArkType หรือต้องเปรียบเทียบ schema libraries → `/follow-lib-arktype`; Zod v4 รองรับ Standard Schema ใช้ร่วมกับ form/validation libs ได้
+- If the project uses ArkType or needs to compare schema libraries → `/follow-lib-arktype`; Zod v4 supports Standard Schema and works with form/validation libs
 
 ## Execute
 
@@ -38,154 +38,154 @@ related:
 | Migrate v3→v4 | `workflows/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames | 
 ### 1. Install Zod
 
-> Goal: ติดตั้ง Zod เวอร์ชันล่าสุด
+> Goal: install the latest Zod version
 
-1. รัน `bun add zod@latest` (หรือ `pnpm add zod@latest` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/zod` (ปัจจุบัน v4.6.4, verified 2026-09-13)
-3. ยืนยันว่า `package.json` มี `zod` ใน `dependencies`
-4. ใช้ `import * as z from "zod"` สำหรับ classic API
-5. หากต้องการ bundle ที่เล็กลง ให้ใช้ `import * as z from "zod/mini"`
+1. Run `bun add zod@latest` (or `pnpm add zod@latest` per the project's package manager)
+2. Check the latest version at `https://www.npmjs.com/package/zod` (currently v4.6.4, verified 2026-09-13)
+3. Confirm `package.json` has `zod` in `dependencies`
+4. Use `import * as z from "zod"` for the classic API
+5. For a smaller bundle, use `import * as z from "zod/mini"`
 
 ### 2. Enable Strict TypeScript Mode
 
-> Goal: ตั้งค่า `tsconfig.json` ให้รองรับ strict mode สำหรับ Zod type inference
+> Goal: configure `tsconfig.json` to support strict mode for Zod type inference
 
-1. เปิด `strict: true` ใน `tsconfig.json`
-2. เปิด `noUncheckedIndexedAccess: true` สำหรับ type safety เพิ่มเติม (ถ้า project อนุญาต)
-3. ตรวจสอบ compiler options อื่นๆ ให้สอดคล้องกับ project
+1. Enable `strict: true` in `tsconfig.json`
+2. Enable `noUncheckedIndexedAccess: true` for extra type safety (if the project allows)
+3. Keep the other compiler options consistent with the project
 
 ### 3. Define Schemas
 
-> Goal: สร้าง schemas สำหรับ primitive และ complex types ให้ reusable
+> Goal: create reusable schemas for primitive and complex types
 
-1. ใช้ factory functions จาก `z` namespace (`z.string()`, `z.number()`, `z.boolean()`)
-2. กำหนด schemas สำหรับ complex structures (`z.object({})`, `z.array()`, `z.union()`, `z.intersection()`)
-3. ใช้ `z.coerce` สำหรับ type coercion โดยรู้ว่า input type คือ `unknown` ถ้าไม่ระบุ generic
-4. ใช้ `z.custom()` หรือ `.refine()` สำหรับ custom validation
-5. จัดโครงสร้าง schemas ให้ reusable ตาม domain หรือ feature
+1. Use factory functions from the `z` namespace (`z.string()`, `z.number()`, `z.boolean()`)
+2. Define schemas for complex structures (`z.object({})`, `z.array()`, `z.union()`, `z.intersection()`)
+3. Use `z.coerce` for type coercion, knowing the input type is `unknown` unless a generic is given
+4. Use `z.custom()` or `.refine()` for custom validation
+5. Structure schemas to be reusable by domain or feature
 
 ### 4. Validate Data
 
-> Goal: เลือก validation method ที่เหมาะสมกับ use case
+> Goal: pick the validation method fitting the use case
 
-1. ใช้ `.parse()` สำหรับ validation ที่ต้องการ throw `ZodError`
-2. ใช้ `.safeParse()` สำหรับ validation ที่ต้องการ result object
-3. ใช้ `.parseAsync()` หรือ `.safeParseAsync()` สำหรับ async validation
-4. ระวังว่า `safeParse()` error ใน Zod 4 ไม่ extend `Error` แล้ว ให้ตรวจผ่าน `result.success`
+1. Use `.parse()` for validation that should throw `ZodError`
+2. Use `.safeParse()` for validation that should return a result object
+3. Use `.parseAsync()` or `.safeParseAsync()` for async validation
+4. Note that the `safeParse()` error in Zod 4 no longer extends `Error` — check via `result.success`
 
 ### 5. Handle Errors
 
-> Goal: จัดการ validation errors ให้ชัดเจนและ user-friendly
+> Goal: handle validation errors clearly and user-friendly
 
-1. ใช้ `try-catch` กับ `.parse()`
-2. ตรวจสอบ `error instanceof z.ZodError`
-3. เข้าถึง `error.issues` สำหรับข้อมูล error (`.errors` ถูกลบไปแล้วใน v4)
-4. ใช้ `error` parameter ใน schemas แทน `message` ที่ deprecated
-5. ใช้ `z.config({ customError: ... })` หรือ `z.config(z.locales.en())` สำหรับ global error messages
-6. ใช้ `z.treeifyError()` แทน `.format()` หรือ `.flatten()` ที่ deprecated
+1. Use `try-catch` with `.parse()`
+2. Check `error instanceof z.ZodError`
+3. Access `error.issues` for error details (`.errors` was removed in v4)
+4. Use the `error` parameter in schemas instead of the deprecated `message`
+5. Use `z.config({ customError: ... })` or `z.config(z.locales.en())` for global error messages
+6. Use `z.treeifyError()` instead of the deprecated `.format()` or `.flatten()`
 
 ### 6. TypeScript Integration
 
-> Goal: รักษา type safety ทั้ง runtime และ compile-time
+> Goal: keep type safety at both runtime and compile-time
 
-1. ใช้ `z.infer<typeof schema>` สำหรับ type inference
-2. ใช้ `z.input<typeof schema>` สำหรับ input type
-3. ใช้ `z.output<typeof schema>` สำหรับ output type
-4. ระวัง internal API (`._zod`, `ZodEffects` ถูกลบ) ให้ใช้ public API เป็นหลัก
-5. รักษา type safety ทั้ง runtime และ compile-time
+1. Use `z.infer<typeof schema>` for type inference
+2. Use `z.input<typeof schema>` for the input type
+3. Use `z.output<typeof schema>` for the output type
+4. Watch out for internal APIs (`._zod`, `ZodEffects` removed) — prefer the public API
+5. Keep type safety at both runtime and compile-time
 
 ### 7. Schema Composition
 
-> Goal: ประกอบ schemas ให้ maintainable และลด TypeScript compilation time
+> Goal: compose schemas to stay maintainable and cut TypeScript compilation time
 
-1. ใช้ spread syntax หรือ `A.extend(B.shape)` แทน `.merge()` ที่ deprecated
-2. ใช้ `.safeExtend()` สำหรับ extending schemas ที่มี refinements
-3. ใช้ `.pick()` และ `.omit()` สำหรับ partial schemas
-4. ใช้ `.partial()` สำหรับ optional fields
-5. ใช้ `.required()` สำหรับ required fields
-6. ใช้ `z.strictObject()` หรือ `z.looseObject()` แทน `.strict()` และ `.passthrough()` ที่ deprecated
-7. จัดระเบียบ schemas ตาม domain หรือ feature
+1. Use spread syntax or `A.extend(B.shape)` instead of the deprecated `.merge()`
+2. Use `.safeExtend()` when extending schemas that have refinements
+3. Use `.pick()` and `.omit()` for partial schemas
+4. Use `.partial()` for optional fields
+5. Use `.required()` for required fields
+6. Use `z.strictObject()` or `z.looseObject()` instead of the deprecated `.strict()` and `.passthrough()`
+7. Organize schemas by domain or feature
 
 ### 8. Advanced Patterns
 
-> Goal: ใช้ advanced validation และ transformation patterns สำหรับกรณีพิเศษ
+> Goal: use advanced validation and transformation patterns for special cases
 
-1. ใช้ `.refine()` สำหรับ custom validation logic โดยใช้ `error` option
-2. ใช้ `.transform()` สำหรับ data transformation หลัง validation
-3. ใช้ `.pipe()` สำหรับ chaining transformations
-4. ใช้ `.preprocess()` สำหรับ data normalization ก่อน validation
-5. ใช้ `z.discriminatedUnion()` หรือ `z.union()` สำหรับ tagged unions
-6. ใช้ `.brand()` สำหรับ branded types
-7. ใช้ `.readonly()` สำหรับ immutable data
-8. ใช้ `.default()` สำหรับ default values (output side)
-9. ใช้ `.prefault()` สำหรับ prefault values (input side)
-10. ใช้ string format top-level เช่น `z.email()`, `z.uuid()`, `z.iso.date()` แทน `z.string().email()` ที่ deprecated
-11. พิจารณาใช้ `z.core` หรือ `z.compile()` สำหรับ AOT compilation เมื่อจำเป็น
+1. Use `.refine()` for custom validation logic with the `error` option
+2. Use `.transform()` for data transformation after validation
+3. Use `.pipe()` for chaining transformations
+4. Use `.preprocess()` for data normalization before validation
+5. Use `z.discriminatedUnion()` or `z.union()` for tagged unions
+6. Use `.brand()` for branded types
+7. Use `.readonly()` for immutable data
+8. Use `.default()` for default values (output side)
+9. Use `.prefault()` for prefault values (input side)
+10. Use top-level string formats like `z.email()`, `z.uuid()`, `z.iso.date()` instead of the deprecated `z.string().email()`
+11. Consider `z.core` or `z.compile()` for AOT compilation when needed
 
 ## Rules
 
 ### 1. TypeScript Configuration
 
-- เปิด `strict: true` ใน `tsconfig.json` เสมอ
-- เปิด `noUncheckedIndexedAccess: true` สำหรับ type safety เพิ่มเติม
+- Always enable `strict: true` in `tsconfig.json`
+- Enable `noUncheckedIndexedAccess: true` for extra type safety
 
 ### 2. Validation Methods
 
-- ใช้ `.safeParse()` สำหรับ user input validation และ performance-sensitive code
-- ใช้ `.parse()` สำหรับ critical validation ที่ต้องการ throw
-- ใช้ `.parseAsync()` หรือ `.safeParseAsync()` สำหรับ async schemas
+- Use `.safeParse()` for user input validation and performance-sensitive code
+- Use `.parse()` for critical validation that should throw
+- Use `.parseAsync()` or `.safeParseAsync()` for async schemas
 
 ### 3. Error Handling
 
-- custom error messages ควรชัดเจนและเป็นภาษาที่ user เข้าใจ
-- ใช้ `error` parameter แทน `message` หรือ `errorMap` ที่ deprecated
-- ใช้ `z.config()` สำหรับ global error messages
+- Custom error messages should be clear and in language the user understands
+- Use the `error` parameter instead of the deprecated `message` or `errorMap`
+- Use `z.config()` for global error messages
 
 ### 4. Schema Design
 
-- schemas ควร reusable และ maintainable
-- จัดระเบียบ schemas ตาม domain หรือ feature
-- ใช้ type inference แทน manual type definitions
-- ใช้ `z.coerce` เมื่อต้องการ type conversion
+- Schemas should be reusable and maintainable
+- Organize schemas by domain or feature
+- Use type inference instead of manual type definitions
+- Use `z.coerce` when type conversion is needed
 
 ### 5. Schema Composition
 
-- ใช้ spread syntax หรือ `A.extend(B.shape)` แทน `.merge()` ที่ deprecated
-- ใช้ `.safeExtend()` สำหรับ schemas ที่มี refinements
+- Use spread syntax or `A.extend(B.shape)` instead of the deprecated `.merge()`
+- Use `.safeExtend()` for schemas with refinements
 
 ### 6. Advanced Patterns
 
-- ใช้ `.preprocess()` สำหรับ data normalization ก่อน validation
-- ใช้ `.transform()` สำหรับ data transformation หลัง validation
-- ใช้ `z.lazy()` สำหรับ recursive schemas พร้อมระบุ type hint
+- Use `.preprocess()` for data normalization before validation
+- Use `.transform()` for data transformation after validation
+- Use `z.lazy()` for recursive schemas with an explicit type hint
 
 ### 7. Performance
 
-- พิจารณาใช้ `zod/mini` สำหรับ bundle size constraints
-- ใช้ `z.compile()` เมื่อต้องการ AOT compilation
+- Consider `zod/mini` for bundle size constraints
+- Use `z.compile()` when AOT compilation is desired
 
 ### 8. Testing
 
-- test schemas อย่างครอบคลุม valid, invalid, และ edge cases
-- ใช้ `.safeParse()` ใน tests
+- Test schemas comprehensively across valid, invalid, and edge cases
+- Use `.safeParse()` in tests
 
 ### 9. Cross-Skill References
 
-- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ใช้ `/follow-lang-typescript` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use `/follow-lib-arktype` if needed
+- Use `/follow-lib-better-auth` if needed
+- Use `/follow-lang-typescript` if needed
+- Use `/follow-best-practice` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Zod ติดตั้งและตั้งค่าอย่างถูกต้อง
-- Schemas ที่ well-structured และ reusable
-- Validation logic ที่ type-safe
-- Error handling ที่ clear และ user-friendly
-- TypeScript types ที่ synchronized กับ runtime validation
-- Test coverage สำหรับ validation logic
-- Codebase ที่ maintainable และ scalable
+- Zod installed and configured correctly
+- Well-structured, reusable schemas
+- Type-safe validation logic
+- Clear, user-friendly error handling
+- Types synchronized with runtime validation
+- Test coverage for the validation logic
+- A maintainable and scalable codebase

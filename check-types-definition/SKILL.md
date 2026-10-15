@@ -10,6 +10,7 @@ related:
   - use-lib-effective
   - report
   - improve
+  - follow-lib-tstyche
 ---
 
 ## Goal
@@ -24,6 +25,7 @@ Use when you need an authoritative type surface:
 - library API surface from `.d.ts` in `node_modules` — types are the compile-time source of truth
 - Supports TypeScript `.d.ts`, Rust (`pub struct`/`enum` + doc comments/`#[serde(default)]`), and other type-def formats (JSON Schema, `.proto`) as present in the project
 - Docs stale or incomplete → type definitions are the real contract
+- Surface revealed should be guarded → write type tests pinning it with `tstyche` per `/follow-lib-tstyche`
 
 Not for learning from web docs (use `/learn-from-web`) or a CLI binary (use `/learn-from-cli`)
 

@@ -1,6 +1,6 @@
 ---
 name: list-github-repo
-description: รายการ remote repositories ทั้งหมดบน GitHub ที่ผู้ใช้เป้นเจ้าของ โดยกรอง fork และ archived ออก
+description: List all remote repositories on GitHub owned by the user, excluding forks and archived
 argument-hint: "[owner]"
 allowed-tools:
   - read
@@ -22,41 +22,41 @@ related:
 
 ## Goal
 
-รายการ remote repositories ทั้งหมดบน GitHub ที่ผู้ใช้เป้นเจ้าของ โดยกรอง fork และ archived ออก
+List all remote repositories on GitHub owned by the user, filtering out forks and archived
 
 ## Scope
 
-ใช้ `gh repo list --source` สำหรับ authenticated user หรือ owner ที่ระบุ แสดงเฉพาะ repo ต้นฉบับ (non-fork) ที่ user สร้างเอง
+Use `gh repo list --source` for the authenticated user or a given owner — show only original (non-fork) repos the user created themselves
 
-ดูเพิ่มเติม: /open-github, /list-github-project, /all-github-repo
+See also: /open-github, /list-github-project, /all-github-repo
 
 ## Execute
 
 ### 1. Get Owner
 
-> Goal: รู้ว่าจะ list repo ของใคร
+> Goal: know whose repos to list
 
-1. ถ้า user ระบุ owner จาก argument ให้ใช้ค่านั้น
-2. ถ้าไม่ระบุ → ใช้ authenticated user จาก `gh api user -q '.login'`
-3. ถ้าไม่สามารถหา owner ได้ → stop และ report ให้ login `gh` ก่อน
+1. The user gives an owner via the argument → use it
+2. Unspecified → use the authenticated user from `gh api user -q '.login'`
+3. Cannot determine the owner → stop and report; ask the user to log in to `gh` first
 
 ### 2. List Repositories
 
-> Goal: ดึง repo ทั้งหมดที่ไม่ใช่ fork
+> Goal: fetch all non-fork repos
 
-1. รัน `gh repo list <owner> --source --no-archived --json name,description,primaryLanguage,stargazerCount,forkCount,updatedAt,visibility,url --limit 1000`
-2. `--source` กรอง fork ออก
-3. `--no-archived` กรอง archived ออก
-4. ถ้า output มี 1000 รายการ → แจ้งเตือนว่าอาจมี repo เพิ่มเติม และทำ pagination ด้วย `--jq` หรือ `gh api` ถัดไป
+1. Run `gh repo list <owner> --source --no-archived --json name,description,primaryLanguage,stargazerCount,forkCount,updatedAt,visibility,url --limit 1000`
+2. `--source` filters out forks
+3. `--no-archived` filters out archived
+4. Output has 1000 entries → warn that more repos may exist and paginate with `--jq` or `gh api` next
 
 ### 3. Format Output
 
-> Goal: นำเสนอผลลัพธ์ให้อ่านง่าย
+> Goal: present the result readably
 
-1. เรียงตาม `updatedAt` ล่าสุดก่อน
-2. แปลง `updatedAt` เป้น `YYYY-MM-DD`
-3. ดึง `primaryLanguage.name` ถ้ามี ถ้าไม่มีให้แสดง `n/a`
-4. ทำ `/report` ด้วยคอลัมน์:
+1. Sort by most recent `updatedAt` first
+2. Convert `updatedAt` to `YYYY-MM-DD`
+3. Take `primaryLanguage.name` when present; show `n/a` when absent
+4. Use `/report` with columns:
    - No
    - Name
    - Description
@@ -66,45 +66,44 @@ related:
    - Updated
    - Visibility
    - URL
-5. สรุปจำนวน repo ทั้งหมด
+5. State the total repo count
 
 ### 4. Suggest Next Steps
 
-> Goal: แนะนำ action ถัดไป
+> Goal: suggest the next actions
 
-1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-projects-git-in-drive-d`
-2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-star-latest`
-3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/open-github <owner>/<name>`
-4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
+1. Want to see repos on the machine → use `/list-projects-git-in-drive-d`
+2. Want to see latest starred → use `/list-github-star-latest`
+3. Want to see a repo's metadata → use `/open-github <owner>/<name>`
+4. Use `/suggest-next-action` for more suggestions
 
 ## Rules
 
 ### 1. GitHub Only
 
-- ใช้ `gh repo list` เป้นหลัก
-- ถ้า `gh` ไม่ได้ authenticate ให้หยุดและแนะนำ `gh auth login`
-- ไม่เดา owner ถ้าไม่พบ
+- Use `gh repo list` as the primary tool
+- `gh` not authenticated → stop and recommend `gh auth login`
+- Never guess the owner when not found
 
 ### 2. Exclude Forks And Archived
 
-- ใช้ `--source` เพื่อแสดงเฉพาะ repo ต้นฉบับ
-- ใช้ `--no-archived` เพื่อซ่อน archived
-- ถ้า user ต้องการรวม archived ให้ลบ flag `--no-archived`
+- Use `--source` to show only original repos
+- Use `--no-archived` to hide archived
+- The user wants archived included → remove the `--no-archived` flag
 
 ### 3. Pagination
 
-- ใช้ `--limit 1000` เป้น default
-- ถ้า repo มากกว่า 1000 ให้แจ้งเตือนและขยายหรือทำ pagination ด้วย `gh api`/`graphql`
+- Use `--limit 1000` by default
+- More than 1000 repos → warn and extend or paginate with `gh api`/`graphql`
 
 ### 4. Output
 
-- ใช้ `/report` เสมอ
-- เรียงตาม `updatedAt` ล่าสุด
-- ไม่แสดง secrets, tokens, หรือข้อมูล sensitive
+- Always use `/report`
+- Sort by most recent `updatedAt`
+- Never show secrets, tokens, or sensitive data
 
 ## Expected Outcome
 
-- รายการ repo ทั้งหมดที่ user เป้นเจ้าของบน GitHub ไม่รวม fork
-- ข้อมูลครบถ้วน: name, description, language, stars, forks, updated, visibility, url
-- พร้อม next action สำหรับ repo ที่เลือก
-
+- A full list of repos the user owns on GitHub, excluding forks
+- Complete data: name, description, language, stars, forks, updated, visibility, url
+- Next actions ready for the selected repo

@@ -96,7 +96,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -146,7 +146,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -196,7 +196,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -232,7 +232,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - URL hygiene — slug structure อ่านได้, trailing-slash consistency, redirect chains, broken internal links, params vs paths
 
-- Delegate deep pass → `/deep-review` สำหรับ full technical audit
+- Delegate deep pass → `/deep-review-codebase` สำหรับ full technical audit
 
 
 
@@ -246,7 +246,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -296,7 +296,7 @@ Persona details for the `marketing` category — merged from the original `workf
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 

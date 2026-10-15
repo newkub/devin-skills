@@ -23,7 +23,7 @@ Persona details for the `management` category — merged from the original `work
 |------|-------|----------|
 | project-manager | task hygiene, milestones, scope visibility | `### management/project-manager` |
 | engineering-manager | team scalability, ownership signals, onboarding friction | `### management/engineering-manager` |
-| technical-lead | code health, tech debt, architecture quality → `/deep-review` | `### management/technical-lead` |
+| technical-lead | code health, tech debt, architecture quality → `/deep-review-codebase` | `### management/technical-lead` |
 | scrum-master | sprint artifacts, blocker signals, DoD compliance | `### management/scrum-master` |
 
 2. อ่าน section `### management/<role>` ในไฟล์นี้
@@ -241,7 +241,7 @@ Persona details for the `management` category — merged from the original `work
 
 - ตรวจ escalation-worthy issues — ปัญหาที่ต้อง architecture decision ไม่ใช่แค่ local fix
 
-- Deep pass → `/deep-review` สำหรับ code quality review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ code quality review เชิงลึก
 
 
 

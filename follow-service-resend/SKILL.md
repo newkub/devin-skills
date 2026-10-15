@@ -237,7 +237,7 @@ Confirm after setup/config that Resend really connects — `RESEND_API_KEY` vali
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

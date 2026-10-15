@@ -12,6 +12,6 @@
 | `@tanstack/query-db-collection` | 1.3.x | DB ↔ Query sync |
 | `@tanstack/electric-db-collection` | 0.5.x | DB ↔ ElectricSQL sync |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | DB | `createCollection` | `useLiveQuery`, `queryCollectionOptions`, `electricCollectionOptions`, `localOnlyCollectionOptions` |

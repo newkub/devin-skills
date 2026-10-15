@@ -1,15 +1,18 @@
 ---
 name: follow-lang-php
 description: Develop PHP projects with PSR standards and modern best practices
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-javascript
+  - follow-architecture
+  - follow-my-techstack
+  - follow-secret-manager
+  - follow-default-config
   - follow-best-practice
   - refactor
   - setup-cicd
   - use-scripts
   - deep-research
-
 ---
 
 ## Goal
@@ -18,7 +21,7 @@ Develop PHP applications following PSR standards and modern best practices
 
 ## Scope
 
-For PHP projects, vanilla and framework (Laravel/Symfony/Slim); single `SKILL.md` package — no `references/`, verify the current PHP major version and feature set via `/deep-research` at use time (official docs: https://www.php.net/, PSRs: https://www.php-fig.org/psr/)
+For PHP projects, vanilla and framework (Laravel/Symfony/Slim). Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time Composer/PSR-4 scaffold); verify the current PHP major version and feature set via `/deep-research` at use time (official docs: https://www.php.net/, PSRs: https://www.php-fig.org/psr/)
 
 ## Execute
 
@@ -26,19 +29,18 @@ For PHP projects, vanilla and framework (Laravel/Symfony/Slim); single `SKILL.md
 
 > Goal: install PHP, Composer, and dev tools with live-checked versions
 
-1. Run `/deep-research` to confirm the latest stable PHP and which language features are safe to use for the project's platform version
-2. Install PHP (latest stable) and Composer (`https://getcomposer.org/download/`; Windows: Composer-Setup.exe)
-3. Add dev tools per project: `composer require --dev phpstan/phpstan friendsofphp/php-cs-fixer phpunit/phpunit`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest stable PHP, current PHP practices, and which language features are safe to use for the project's platform version
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): PHP+Composer install, `composer init` with `require.php`, PSR-4 autoload, layout, quality dev deps, verify
+3. Tool inventory (runtime, Composer, analyzers, fixers, runners, Xdebug) → `references/toolchain.md`
 4. Pick the framework (Laravel, Symfony, Slim) only when the project needs one — confirm with `/follow-my-techstack`
 
 ### 2. Configuration
 
 > Goal: configure composer.json, autoload, static analysis, and code style
 
-1. Create `composer.json` with `require.php`, PSR-4 `autoload` (`"Vendor\\Package\\": "src/"`) and `autoload-dev` for tests
-2. Create `phpstan.neon` with `level: 8` and `paths: [src]`
-3. Create `.php-cs-fixer.php` with `@PSR12` rules over `src` and `tests`
-4. Set `php.ini` per environment: dev `display_errors = On`, `error_reporting = E_ALL`; prod `display_errors = Off`
+1. `composer.json`: `require.php`, PSR-4 `autoload` (`"Vendor\\Package\\": "src/"`) and `autoload-dev` for tests — concrete new-project steps in `workflows/setup-project/SKILL.md`
+2. `phpstan.neon` (`level: 8` for new code, `paths: [src]`) and `.php-cs-fixer.php` (`@PSR12`) with overrides only per `/follow-default-config`
+3. Set `php.ini` per environment: dev `display_errors = On`, `error_reporting = E_ALL`; prod `display_errors = Off`
 
 ### 3. Project Structure
 
@@ -46,7 +48,7 @@ For PHP projects, vanilla and framework (Laravel/Symfony/Slim); single `SKILL.md
 
 1. `src/` for source, `tests/` for tests, `config/` for configuration
 2. Namespace layout mirrors `src/` exactly (PSR-4)
-3. Use Clean Architecture or MVC per `/refactor architecture`
+3. Use Clean Architecture or MVC per `/follow-architecture`
 
 ### 4. Code Standards
 
@@ -101,6 +103,7 @@ For PHP projects, vanilla and framework (Laravel/Symfony/Slim); single `SKILL.md
 
 - Use /follow-lang-javascript if needed
 - Use /follow-best-practice if needed
+- Use /refactor if needed
 - Use /setup-cicd if needed
 - Use /use-scripts if needed
 

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-effect-ts
-description: แนวทางการพัฒนาด้วย Effect-TS 3.22+ สำหรับ functional programming และ type-safe effects
+description: Development guidelines with Effect-TS 3.22+ for functional programming and type-safe effects
 argument-hint: "[scope]"
 related:
   - follow-best-practice
@@ -13,22 +13,22 @@ related:
 
 ## Goal
 
-กำหนดมาตรฐานการพัฒนาด้วย Effect-TS เวอร์ชันล่าสุด สำหรับ functional programming ที่มี type safety, error handling และ dependency injection
+Set the standard for developing with the latest Effect-TS version for functional programming with type safety, error handling, and dependency injection
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ที่ต้องการ functional programming ด้วย Effect-TS — เลือก workflow ตามสถานะ project:
+For projects that need functional programming with Effect-TS — pick the workflow by project status:
 
-- First-time setup (ยังไม่มี `effect`) → `workflows/setup-effect/SKILL.md`
-- ย้าย codebase เดิม (neverthrow/Promise/try-catch) มาเป็น Effect แบบ incremental → `workflows/migrate-to-effect/SKILL.md`
-- ถ้า task ไม่เกี่ยวกับ `effect` package → อย่าใช้ skill นี้
+- First-time setup (no `effect` yet) → `workflows/setup-effect/SKILL.md`
+- Migrate an existing codebase (neverthrow/Promise/try-catch) to Effect incrementally → `workflows/migrate-to-effect/SKILL.md`
+- If the task does not involve the `effect` package → do not use this skill
 
-- ตรวจ version ของ `effect` ใน `package.json` ก่อนเลือก API (v3.x vs v4 RC ต่างกัน)
-- ตั้งค่า `tsconfig.json` ให้รองรับ strict mode และ Effect types
-- ติดตั้ง `effect`, `@effect/platform`, `@effect/vitest` และ dependencies ที่เกี่ยวข้อง
-- สร้างโครงสร้างโปรเจกต์ตาม Effect architecture
-- เขียน code ด้วย `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Context.Tag`, `Effect.Service`, `Layer`, `Schedule`, `Schema`
-- เขียน tests ด้วย `vitest` และ `@effect/vitest`
+- Check the `effect` version in `package.json` before choosing APIs (v3.x vs v4 RC differ)
+- Configure `tsconfig.json` for strict mode and Effect types
+- Install `effect`, `@effect/platform`, `@effect/vitest`, and related dependencies
+- Create the project structure per Effect architecture
+- Write code with `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Context.Tag`, `Effect.Service`, `Layer`, `Schedule`, `Schema`
+- Write tests with `vitest` and `@effect/vitest`
 
 ## Execute
 
@@ -48,155 +48,155 @@ related:
 
 ### 1. Detect Version And Ecosystem
 
-> Goal: เลือก API ที่ตรงกับ effect version และ package manager ของ project
+> Goal: pick the API matching the effect version and the project's package manager
 
-1. อ่าน `package.json` → ถ้า `effect` เป็น `3.x` ใช้ v3 API; ถ้า `4.x` หรือ `-rc`/`-beta` ใช้ v4 API (ดู Version Notes ใน )
-2. ตรวจ package manager จาก lockfile (`bun.lock`/`bun.lockb` → `bun`, `pnpm-lock.yaml` → `pnpm`, `package-lock.json` → `npm`) แล้วใช้ command ที่ตรงกัน
-3. ถ้า project ยังไม่มี `effect` → ติดตั้ง latest stable (v3.x) ตาม step 3
+1. Read `package.json` → if `effect` is `3.x` use the v3 API; if `4.x` or `-rc`/`-beta` use the v4 API (see Version Notes in )
+2. Detect the package manager from the lockfile (`bun.lock`/`bun.lockb` → `bun`, `pnpm-lock.yaml` → `pnpm`, `package-lock.json` → `npm`), then use the matching command
+3. If the project has no `effect` yet → install the latest stable (v3.x) per step 3
 
 ### 2. Setup TypeScript Config
 
-> Goal: ตั้งค่า `tsconfig.json` ให้รองรับ strict mode และ Effect types
+> Goal: configure `tsconfig.json` for strict mode and Effect types
 
-1. ตรวจสอบว่า TypeScript เวอร์ชัน `5.4` หรือใหม่กว่า (`bunx tsc --version`)
-2. แก้ไข `tsconfig.json` ให้มี:
+1. Verify TypeScript version is `5.4` or newer (`bunx tsc --version`)
+2. Edit `tsconfig.json` to include:
    - `strict: true`
    - `noUncheckedIndexedAccess: true`
    - `exactOptionalPropertyTypes: true`
    - `skipLibCheck: true`
-   - `module: "ESNext"`/`"Preserve"` + `moduleResolution: "bundler"` หรือ `"nodenext"` ตาม runtime
-   - `target: "ES2022"` หรือใหม่กว่า
-3. (optional) เพิ่ม Effect LSP plugin ใน `compilerOptions.plugins`: `{ "name": "@effect/language-service" }` — ต้องติดตั้งตาม step 3 และตั้ง editor ใช้ workspace TypeScript; ถ้า TypeScript `>= 7.0` ใช้ `@effect/tsgo` แทน
+   - `module: "ESNext"`/`"Preserve"` + `moduleResolution: "bundler"` or `"nodenext"` per runtime
+   - `target: "ES2022"` or newer
+3. (optional) Add the Effect LSP plugin in `compilerOptions.plugins`: `{ "name": "@effect/language-service" }` — must be installed per step 3 and the editor configured to use workspace TypeScript; with TypeScript `>= 7.0` use `@effect/tsgo` instead
 
 ### 3. Install Effect Packages
 
-> Goal: ติดตั้ง dependencies ของ Effect-TS ตามความจำเป็น
+> Goal: install Effect-TS dependencies as needed
 
-1. รัน `bun add effect` สำหรับ core library (latest stable `3.22.2`, verified 2026-09-16) — `effect` เป็น runtime dependency ห้ามใส่ `-D`
-2. `Schema` รวมอยู่ใน core `effect` ตั้งแต่ v3.x (ไม่ต้องติดตั้ง `@effect/schema` แยก)
-3. รัน `bun add @effect/platform` ถ้าต้องการ platform abstractions (`FileSystem`, `Path`, `HttpClient`, `Terminal`)
-4. รัน `bun add @effect/platform-bun` สำหรับ Bun runtime หรือ `bun add @effect/platform-node` สำหรับ Node.js
-5. รัน `bun add -D vitest@^3.2 @effect/vitest` สำหรับ testing — `@effect/vitest@0.30.0` ต้องการ peer `vitest ^3.2.0` ถ้า project ใช้ vitest 4/5 ให้ตรวจ peer ก่อน
-6. รัน `bun add -D tstyche` สำหรับ type-level tests (optional)
-7. รัน `bun add @effect/cli` เมื่อสร้าง CLI app หรือ `bun add @effect/experimental` สำหรับ experimental APIs (optional)
-8. (optional) รัน `bun add -D @effect/language-service` สำหรับ editor LSP plugin — Effect diagnostics/quickfixes เช่น `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `runEffectInsideEffect`; monorepo ติดตั้งที่ root + configure ใน root `tsconfig.json`; TypeScript `>= 7.0` ใช้ `@effect/tsgo` แทน
+1. Run `bun add effect` for the core library (latest stable `3.22.2`, verified 2026-09-16) — `effect` is a runtime dependency, never add `-D`
+2. `Schema` is included in core `effect` since v3.x (no separate `@effect/schema` install needed)
+3. Run `bun add @effect/platform` if you need platform abstractions (`FileSystem`, `Path`, `HttpClient`, `Terminal`)
+4. Run `bun add @effect/platform-bun` for the Bun runtime or `bun add @effect/platform-node` for Node.js
+5. Run `bun add -D vitest@^3.2 @effect/vitest` for testing — `@effect/vitest@0.30.0` requires peer `vitest ^3.2.0`; if the project uses vitest 4/5, check peers first
+6. Run `bun add -D tstyche` for type-level tests (optional)
+7. Run `bun add @effect/cli` when building a CLI app, or `bun add @effect/experimental` for experimental APIs (optional)
+8. (optional) Run `bun add -D @effect/language-service` for the editor LSP plugin — Effect diagnostics/quickfixes such as `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `runEffectInsideEffect`; in a monorepo install at the root + configure in the root `tsconfig.json`; with TypeScript `>= 7.0` use `@effect/tsgo` instead
 
 ### 4. Create Project Structure
 
-> Goal: สร้างโครงสร้างโฟลเดอร์ตาม Effect architecture
+> Goal: create the folder structure per Effect architecture
 
-1. ใช้ `exec` รันคำสั่งตาม OS — Windows PowerShell:
+1. Use `exec` to run the OS-specific command — Windows PowerShell:
    `New-Item -ItemType Directory -Force -Path src/app,src/domain,src/services,src/adapters,src/config,src/types,src/utils,test/unit,test/integration`
-   หรือ POSIX shell: `mkdir -p src/app src/domain src/services src/adapters src/config src/types src/utils test/unit test/integration`
-2. สร้าง `src/app/` สำหรับ composition root (entry point, `MainLayer`, `runMain`)
-3. สร้าง `src/domain/` สำหรับ pure business logic, domain schemas และ errors
-4. สร้าง `src/services/` สำหรับ service interfaces (`Tag`/`Effect.Service`) และ implementations (`Layer`)
-5. สร้าง `src/adapters/` สำหรับ external lib wrappers
-6. สร้าง `src/config/` สำหรับ runtime config ด้วย `Config` module
-7. สร้าง `src/types/` สำหรับ shared types
-8. สร้าง `src/utils/` สำหรับ pure helpers
-9. สร้าง `test/unit/` สำหรับ unit tests และ `test/integration/` สำหรับ integration tests
-10. วาง entry point ที่ `src/index.ts` หรือ `src/app/main.ts` แล้ว run ด้วย `Effect.runPromise`/`BunRuntime.runMain` ที่ edge เท่านั้น
+   or POSIX shell: `mkdir -p src/app src/domain src/services src/adapters src/config src/types src/utils test/unit test/integration`
+2. Create `src/app/` for the composition root (entry point, `MainLayer`, `runMain`)
+3. Create `src/domain/` for pure business logic, domain schemas, and errors
+4. Create `src/services/` for service interfaces (`Tag`/`Effect.Service`) and implementations (`Layer`)
+5. Create `src/adapters/` for external library wrappers
+6. Create `src/config/` for runtime config with the `Config` module
+7. Create `src/types/` for shared types
+8. Create `src/utils/` for pure helpers
+9. Create `test/unit/` for unit tests and `test/integration/` for integration tests
+10. Place the entry point at `src/index.ts` or `src/app/main.ts`, then run with `Effect.runPromise`/`BunRuntime.runMain` only at the edge
 
 ### 5. Implement Effect Patterns
 
-> Goal: เขียน code ตาม Effect patterns มาตรฐาน — ตัวอย่างครบใน  และ 
+> Goal: write code following standard Effect patterns — full examples in  and 
 
-1. ใช้ `Effect.gen` + `yield*` สำหรับ effect composition และ `pipe` สำหรับ chaining
-2. ใช้ `Effect.fn`/`Effect.fnUntraced` สำหรับ named functions ที่ traceable
-3. ใช้ `Data.TaggedError` หรือ `Schema.TaggedError` สำหรับ type-safe errors แล้วจับด้วย `Effect.catchTag`/`Effect.catchTags`/`Effect.match`
-4. ใช้ `Effect.Service` (v3.9+) สำหรับ service พร้อม default layer หรือ `Context.Tag`/`Context.GenericTag` + `Layer.succeed`/`Layer.effect`/`Layer.scoped` สำหรับ manual DI
-5. ใช้ `Config` module (`Config.string`, `Config.number`, `Config.redacted`) สำหรับ env config
-6. ใช้ `Schedule` + `Effect.retry`/`Effect.timeout` สำหรับ resilience
-7. ใช้ `Effect.acquireRelease`/`Effect.scoped`/`Layer.scoped` สำหรับ resource safety
-8. ใช้ `Effect.all`/`Effect.forEach` (กำหนด `concurrency`) สำหรับ concurrency และ `Effect.fork` + `Fiber` สำหรับ background work
-9. ใช้ `Schema` จาก core `effect` สำหรับ data validation และ `Option`/`Either` สำหรับ domain values
-10. ใช้ `Stream`/`Sink` เมื่อข้อมูลเป็น streaming
-11. Run effects ที่ boundary เท่านั้น: `Effect.runPromise`, `Effect.runSync`, `Effect.runFork`, `ManagedRuntime` หรือ `BunRuntime.runMain`
-12. เพิ่ม observability ด้วย `Effect.log`, `Effect.withSpan`, `Logger`, `Metric` ตามความจำเป็น
+1. Use `Effect.gen` + `yield*` for effect composition and `pipe` for chaining
+2. Use `Effect.fn`/`Effect.fnUntraced` for named, traceable functions
+3. Use `Data.TaggedError` or `Schema.TaggedError` for type-safe errors, then catch with `Effect.catchTag`/`Effect.catchTags`/`Effect.match`
+4. Use `Effect.Service` (v3.9+) for services with a default layer, or `Context.Tag`/`Context.GenericTag` + `Layer.succeed`/`Layer.effect`/`Layer.scoped` for manual DI
+5. Use the `Config` module (`Config.string`, `Config.number`, `Config.redacted`) for env config
+6. Use `Schedule` + `Effect.retry`/`Effect.timeout` for resilience
+7. Use `Effect.acquireRelease`/`Effect.scoped`/`Layer.scoped` for resource safety
+8. Use `Effect.all`/`Effect.forEach` (with `concurrency` set) for concurrency and `Effect.fork` + `Fiber` for background work
+9. Use `Schema` from core `effect` for data validation and `Option`/`Either` for domain values
+10. Use `Stream`/`Sink` when data is streaming
+11. Run effects only at the boundary: `Effect.runPromise`, `Effect.runSync`, `Effect.runFork`, `ManagedRuntime`, or `BunRuntime.runMain`
+12. Add observability with `Effect.log`, `Effect.withSpan`, `Logger`, `Metric` as needed
 
 ### 6. Write Tests
 
-> Goal: เขียน tests ด้วย vitest และ @effect/vitest — รายละเอียดใน 
+> Goal: write tests with vitest and @effect/vitest — details in 
 
-1. ใช้ `it.effect` จาก `@effect/vitest` สำหรับ Effect-based tests (ได้ `TestContext` อัตโนมัติ)
-2. ใช้ `it.live` เมื่อต้องการ live clock/environment และ `it.scoped` เมื่อ test ต้องการ `Scope`
-3. ใช้ `it.layer` สำหรับ share `Layer` ระหว่าง tests
-4. ใช้ `Layer.mock` (v3.17+) สำหรับ partial implementations หรือ `Layer.succeed` + `Effect.provide` สำหรับ test layer
-5. ใช้ `TestClock` เพื่อควบคุมเวลาใน tests ที่ใช้ `Schedule`/`Effect.sleep`
-6. Assert failures ด้วย `Effect.exit` + `Exit` แทน try/catch
-7. ใช้ `tstyche` สำหรับ type-level assertions (optional)
-8. รัน `bunx vitest run` เพื่อ execute tests
+1. Use `it.effect` from `@effect/vitest` for Effect-based tests (gets `TestContext` automatically)
+2. Use `it.live` when you need the live clock/environment and `it.scoped` when the test needs a `Scope`
+3. Use `it.layer` to share a `Layer` across tests
+4. Use `Layer.mock` (v3.17+) for partial implementations, or `Layer.succeed` + `Effect.provide` for test layers
+5. Use `TestClock` to control time in tests that use `Schedule`/`Effect.sleep`
+6. Assert failures with `Effect.exit` + `Exit` instead of try/catch
+7. Use `tstyche` for type-level assertions (optional)
+8. Run `bunx vitest run` to execute tests
 
 ### 7. Validate
 
-> Goal: project typecheck และ tests ผ่านก่อนส่งมอบ
+> Goal: typecheck and tests pass before delivery
 
-1. รัน `bunx tsc --noEmit` ให้ผ่าน
-2. รัน `bunx vitest run` ให้ผ่าน
-3. ตรวจว่าไม่มี `Effect.run*` ใน library/service code (อนุญาตเฉพาะ entry point)
+1. Run `bunx tsc --noEmit` until it passes
+2. Run `bunx vitest run` until it passes
+3. Verify no `Effect.run*` exists in library/service code (allowed only at the entry point)
 
 ## Rules
 
 ### 1. TypeScript Configuration
 
-- ทำตาม `/follow-lang-typescript` สำหรับ base config (strict mode, moduleResolution)
+- Follow `/follow-lang-typescript` for the base config (strict mode, moduleResolution)
 
-- ต้องใช้ TypeScript `5.4` หรือใหม่กว่า
-- ต้องมี `strict: true`, `noUncheckedIndexedAccess: true`, `exactOptionalPropertyTypes: true`
-- ใช้ `moduleResolution: "bundler"` หรือ `"nodenext"` ตาม runtime
+- TypeScript `5.4` or newer is required
+- Must have `strict: true`, `noUncheckedIndexedAccess: true`, `exactOptionalPropertyTypes: true`
+- Use `moduleResolution: "bundler"` or `"nodenext"` per runtime
 
 ### 2. Imports And Dependencies
 
-- Import แบบ namespace จาก package เดียว: `import { Effect, Schema, Layer, Context, Schedule } from "effect"`
-- ถ้าใช้ subpath imports เช่น `import * as Effect from "effect/Effect"` ให้เลือก style เดียวสม่ำเสมอทั้ง project
-- `effect` เป็น runtime dependency (`bun add effect` ไม่ใช่ `-D`)
-- `@effect/schema` standalone เป็น legacy — ใช้ `Schema` จาก `effect` เท่านั้น
-- `@effect/vitest@0.30.0` ต้องการ peer `vitest ^3.2.0` และ `effect ^3.22.0` — pin vitest ให้ตรงก่อนติดตั้ง (setup ดู `/follow-tool-vitest`)
+- Import by namespace from one package: `import { Effect, Schema, Layer, Context, Schedule } from "effect"`
+- If using subpath imports like `import * as Effect from "effect/Effect"`, pick one style and keep it consistent across the project
+- `effect` is a runtime dependency (`bun add effect`, not `-D`)
+- Standalone `@effect/schema` is legacy — use `Schema` from `effect` only
+- `@effect/vitest@0.30.0` requires peers `vitest ^3.2.0` and `effect ^3.22.0` — pin vitest to match before installing (setup: `/follow-tool-vitest`)
 
 ### 3. Code Patterns
 
-- `Effect.gen` สำหรับ composition; ห้าม `yield*` ค่าที่ไม่ใช่ yieldable (`Effect`, `Option`, `Either`, `TaggedError`)
-- `Data.TaggedError`/`Schema.TaggedError` สำหรับ expected errors; defects (bugs) ปล่อยเป็น die ใน `Cause`
-- `Effect.Service` (v3.9+) เป็นวิธีแนะนำสำหรับ services; `Context.Tag`/`GenericTag` + `Layer` เมื่อต้องการ manual control
-- `Schedule` + `Effect.retry` สำหรับ resilience; `Effect.timeout` สำหรับ deadline
-- `Effect.acquireRelease`/`Scope`/`Layer.scoped` สำหรับ resources ที่ต้อง cleanup
-- Run (`Effect.run*`) เฉพาะที่ application boundary เท่านั้น
-- requirements ผ่าน `R` channel/Layer เท่านั้น — ห้าม import singletons/globals ตรงใน Effect code
-- validate external data ด้วย `Schema` — ห้าม cast `as T` ที่ boundary
+- `Effect.gen` for composition; never `yield*` a non-yieldable value (`Effect`, `Option`, `Either`, `TaggedError`)
+- `Data.TaggedError`/`Schema.TaggedError` for expected errors; defects (bugs) stay die in `Cause`
+- `Effect.Service` (v3.9+) is the recommended way to define services; `Context.Tag`/`GenericTag` + `Layer` when you want manual control
+- `Schedule` + `Effect.retry` for resilience; `Effect.timeout` for deadlines
+- `Effect.acquireRelease`/`Scope`/`Layer.scoped` for resources that need cleanup
+- Run (`Effect.run*`) only at the application boundary
+- Requirements only through the `R` channel/Layer — never import singletons/globals directly in Effect code
+- Validate external data with `Schema` — no `as T` casts at the boundary
 
 ### 4. Project Structure
 
-- `app/` <-- domain, services, types, config (composition root เท่านั้นที่ run effects)
-- `domain/` <-- types, utils (pure, ไม่มี side effects)
+- `app/` <-- domain, services, types, config (only the composition root runs effects)
+- `domain/` <-- types, utils (pure, no side effects)
 - `services/` <-- types, config, adapters
 - `adapters/` <-- external libs only
 - `types/`, `utils/` <-- no internal dependencies
 
 ### 5. Testing
 
-- ใช้ `vitest` + `@effect/vitest` (`it.effect`, `it.live`, `it.scoped`, `it.layer`) สำหรับ Effect tests
-- ใช้ `TestClock`/`TestContext` แทน real timers และ `Layer.mock` สำหรับ mocks
-- ใช้ `tstyche` สำหรับ type-level tests (optional)
+- Use `vitest` + `@effect/vitest` (`it.effect`, `it.live`, `it.scoped`, `it.layer`) for Effect tests
+- Use `TestClock`/`TestContext` instead of real timers and `Layer.mock` for mocks
+- Use `tstyche` for type-level tests (optional)
 
 ### 6. Version Notes
 
 - Latest stable (verified 2026-09-16): `effect@3.22.2`, `@effect/platform@0.97.2`, `@effect/platform-bun@0.91.2`, `@effect/platform-node@0.108.2`, `@effect/vitest@0.30.0`
-- Effect v4 RC: `effect@rc` (`4.0.0-rc.115`, verified 2026-09-16) มี breaking changes หลัก: package consolidation (`effect/unstable/*`), `Context.Service` แทน `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types ต้องใช้ `.asEffect()`, `Layer`/`Runtime` API เปลี่ยน
-- TypeScript latest: `7.0.2` (native/tsgo) — `effect` ต้องการขั้นต่ำ `5.4`; ตรวจ compatibility กับ toolchain ของ project ก่อนใช้; editor LSP: `@effect/language-service` รองรับเฉพาะ TS `< 7`, TS `>= 7` ใช้ `@effect/tsgo`
-- ตรวจสอบ version ใน `package.json` ก่อนเลือก API เสมอ
+- Effect v4 RC: `effect@rc` (`4.0.0-rc.115`, verified 2026-09-16) with major breaking changes: package consolidation (`effect/unstable/*`), `Context.Service` replaces `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types require `.asEffect()`, `Layer`/`Runtime` APIs changed
+- TypeScript latest: `7.0.2` (native/tsgo) — `effect` requires at least `5.4`; check compatibility with the project toolchain before use; editor LSP: `@effect/language-service` supports TS `< 7` only, with TS `>= 7` use `@effect/tsgo`
+- Always check the version in `package.json` before choosing APIs
 
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /use-my-packages-on-registry if needed
+- Use /setup-cicd if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- TypeScript config กำหนด strict mode สำหรับ Effect
-- Effect libraries ติดตั้งสำเร็จตรง peer constraints
-- โครงสร้างโปรเจกต์ตาม Effect architecture และ dependency rules
-- Code ใช้ `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Effect.Service`/`Context.Tag`, `Layer`, `Schedule`, `Schema`
-- Tests ผ่านด้วย `vitest` + `@effect/vitest`
-- `bunx tsc --noEmit` และ `bunx vitest run` ผ่านทั้งหมด
+- TypeScript config sets strict mode for Effect
+- Effect libraries install successfully within peer constraints
+- Project structure follows Effect architecture and dependency rules
+- Code uses `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Effect.Service`/`Context.Tag`, `Layer`, `Schedule`, `Schema`
+- Tests pass with `vitest` + `@effect/vitest`
+- `bunx tsc --noEmit` and `bunx vitest run` all pass

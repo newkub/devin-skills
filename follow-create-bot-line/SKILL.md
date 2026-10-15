@@ -19,7 +19,7 @@ Use for building a LINE bot from scratch on Bun or Node.js; supports command bot
 > Goal: Verify the tech stack before building
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
-2. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review-codebase` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 
 ### 2. Gather Requirements
@@ -35,7 +35,7 @@ Use for building a LINE bot from scratch on Bun or Node.js; supports command bot
 
 > Goal: Create the project structure
 
-1. Use `/deep-review` or `/deep-review` to create `src/`
+1. Use `/deep-review-codebase` or `/deep-review-codebase` to create `src/`
 2. Create `src/index.ts`, `src/bot.ts`, `src/config.ts`, `src/handlers/`, `src/messages/`, `src/webhook.ts`
 3. Create `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
 4. Run `bun init` or `npm init` per the runtime

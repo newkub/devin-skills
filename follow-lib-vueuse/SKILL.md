@@ -1,6 +1,6 @@
 ---
 name: follow-lib-vueuse
-description: ใช้งาน VueUse v15 composables ตาม best practices
+description: Use VueUse v15 composables per best practices
 argument-hint: "[scope]"
 related:
   - follow-lib-vue
@@ -12,29 +12,29 @@ related:
 
 ## Goal
 
-ใช้งาน VueUse v15 composables สำหรับ Vue 3.5+ applications อย่างมีประสิทธิภาพ
+Use VueUse v15 composables effectively for Vue 3.5+ applications
 
 ## Scope
 
-ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v15 ครอบคลุม installation, core composables, features ล่าสุด, best practices และ testing
+For Vue 3.5+ projects using VueUse v15 — covers installation, core composables, the latest features, best practices, and testing
 
-- Latest: `@vueuse/core@15.0.0` (verified 2026-09-24) — v15 breaking: drop Node 20, ลบ deprecated timer options (ใช้ `scheduler` เท่านั้น), `useThrottleFn` default `trailing` false→true, ลบ `templateRef`, `useIDBKeyval` sync ข้าม tabs
+- Latest: `@vueuse/core@15.0.0` (verified 2026-09-24) — v15 breaking: drops Node 20, removes deprecated timer options (use `scheduler` only), `useThrottleFn` default `trailing` false→true, removes `templateRef`, `useIDBKeyval` syncs across tabs
 
 ## Execute
 
 ### 1. Setup VueUse
 
-> Goal: ติดตั้งและตั้งค่า VueUse ใน Vue หรือ Nuxt project
+> Goal: install and configure VueUse in a Vue or Nuxt project
 
-1. ติดตั้ง `@vueuse/core` v15+ ด้วย `bun add @vueuse/core` (v15 ต้องการ Node 22+)
-2. สำหรับ Nuxt ให้ติดตั้ง `@vueuse/nuxt` หรือ `bunx nuxt@latest module add vueuse`
-3. ตั้งค่า Nuxt module ใน `nuxt.config.ts`
-4. ใช้ auto-imports สำหรับ VueUse composables
-5. กำหนด imports ที่ต้องการใช้ถ้าไม่ใช้ auto-imports
+1. Install `@vueuse/core` v15+ with `bun add @vueuse/core` (v15 requires Node 22+)
+2. For Nuxt, install `@vueuse/nuxt` or run `bunx nuxt@latest module add vueuse`
+3. Configure the Nuxt module in `nuxt.config.ts`
+4. Use auto-imports for VueUse composables
+5. Declare the imports you use if you don't use auto-imports
 
 ### 2. Use VueUse Composables
 
-> Goal: เลือก composables ตาม use case จาก categories หลักของ VueUse
+> Goal: pick composables by use case from VueUse's main categories
 
 1. State: `useLocalStorage`, `useSessionStorage`, `useAsyncState`, `useStorage`, `createSharedComposable`
 2. Elements: `useElementBounding`, `useWindowSize`, `useScroll`, `useIntersectionObserver`, `useResizeObserver`
@@ -43,47 +43,47 @@ related:
 5. Animation: `useInterval`, `useTimeout`, `useTransition`, `useRafFn`
 6. Network: `useFetch`, `useWebSocket`, `useEventSource`
 7. Utilities: `useSortable`, `useEventListener`, `onClickOutside`, `tryOnScopeDispose`
-8. ดูรายละเอียดครบถ้วนใน `https://vueuse.org/functions`
+8. See the full details at `https://vueuse.org/functions`
 
 ### 3. Use VueUse v14.4+ Features
 
-> Goal: ใช้ features ใหม่ของ VueUse v14.4/v15 ที่ปรับปรุงจากเวอร์ชันก่อนหน้า
+> Goal: use the VueUse v14.4/v15 features improved over prior versions
 
-1. `useIntersectionObserver` รองรับ reactive `rootMargin` (ไม่ต้อง recreate observer)
-2. `useDraggable` มี auto-scroll ใน scrollable containers
-3. `useDropZone` มี validation function สำหรับ file type/size
-4. `useSortable` มี `watchElement` สำหรับ auto re-init เมื่อ DOM เปลี่ยน
-5. `useCssSupports` สำหรับ reactive CSS feature detection (ใหม่ใน v14)
-6. `useWebSocket` รองรับ function support สำหรับ `autoConnect.delay`
-7. `useElementVisibility` มี `initialValue` option
-8. `useElementOverflow` สำหรับ detect element overflow (ใหม่ใน v14.4)
-9. `useSpeechRecognition` expose confidence ของ latest result (v14.4)
-10. `useVirtualList` scrollTo รองรับ `behavior`, `block`, `inline` (v14.4)
-11. Custom scheduler สำหรับ time-based composables (v14.4+; v15 ลบ timer options เดิม — ใช้ `scheduler` เท่านั้น)
-12. v15 ใหม่: `useWebMCP`, `useLiveAnnouncer`, `useTemporalNow`
-13. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
-14. `computedEager` deprecated ใน v14 — ใช้ `computed` ธรรมดาแทน
+1. `useIntersectionObserver` supports a reactive `rootMargin` (no need to recreate the observer)
+2. `useDraggable` has auto-scroll in scrollable containers
+3. `useDropZone` has a validation function for file type/size
+4. `useSortable` has `watchElement` to auto re-init when the DOM changes
+5. `useCssSupports` for reactive CSS feature detection (new in v14)
+6. `useWebSocket` supports a function for `autoConnect.delay`
+7. `useElementVisibility` has an `initialValue` option
+8. `useElementOverflow` to detect element overflow (new in v14.4)
+9. `useSpeechRecognition` exposes the confidence of the latest result (v14.4)
+10. `useVirtualList` scrollTo supports `behavior`, `block`, `inline` (v14.4)
+11. Custom scheduler for time-based composables (v14.4+; v15 removes the old timer options — use `scheduler` only)
+12. New in v15: `useWebMCP`, `useLiveAnnouncer`, `useTemporalNow`
+13. `watchPausable` is deprecated because Vue 3.5's native `watch` has `pause/resume/stop`
+14. `computedEager` is deprecated in v14 — use a plain `computed` instead
 
 ### 4. Integrate With Components
 
-> Goal: ใช้ VueUse ใน components อย่างเป็นระบบและ testable
+> Goal: use VueUse in components systematically and testably
 
-1. ใช้ VueUse ใน `<script setup>` components
-2. แยก logic ที่ซับซ้อนออกเป็น composables
-3. ใช้ TypeScript สำหรับ type inference
-4. ทดสอบ composables ด้วย Vitest
-5. ใช้ `controls` option สำหรับ advanced configuration
+1. Use VueUse in `<script setup>` components
+2. Split complex logic into composables
+3. Use TypeScript for type inference
+4. Test composables with Vitest
+5. Use the `controls` option for advanced configuration
 
 ### 5. Optimize Performance
 
-> Goal: ลด re-renders และ side-effects ด้วย VueUse utilities
+> Goal: reduce re-renders and side-effects with VueUse utilities
 
-1. ใช้ `useThrottle` สำหรับ scroll/resize events
-2. ใช้ `useDebounce` สำหรับ input/search
-3. ใช้ `shallowRef` เมื่อไม่ต้องการ deep reactivity
-4. ลด watchers ที่ไม่จำเป็น
-5. ใช้ `tryOnScopeDispose` สำหรับ cleanup side-effects
-6. ใช้ `effectScope` สำหรับ grouped effect disposal
+1. Use `useThrottle` for scroll/resize events
+2. Use `useDebounce` for input/search
+3. Use `shallowRef` when you don't need deep reactivity
+4. Reduce unnecessary watchers
+5. Use `tryOnScopeDispose` to clean up side-effects
+6. Use `effectScope` for grouped effect disposal
 
 ### Workflows
 
@@ -93,68 +93,68 @@ related:
 
 ### 1. Import Conventions
 
-- ใช้ auto-imports สำหรับ VueUse composables
-- ใช้ named imports สำหรับ composables ที่ไม่ได้ configure
-- ไม่ import VueUse ที่ไม่ได้ใช้ (tree-shaking)
-- VueUse v14 ต้องการ Vue 3.5+
+- Use auto-imports for VueUse composables
+- Use named imports for composables that aren't configured
+- Don't import VueUse you don't use (tree-shaking)
+- VueUse v14 requires Vue 3.5+
 
 ### 2. Usage Patterns
 
-- ใช้ VueUse ใน `<script setup>` เท่านั้น
-- แยก logic ที่ซับซ้อนออกเป็น composables
-- ใช้ destructuring สำหรับ return values
-- ใช้ `reactive()` สำหรับ unwrap refs ถ้าต้องการ object properties
-- ใช้ reactive getter arguments แทน ref (VueUse 9.0+)
-- ใช้ TypeScript types จาก VueUse
+- Use VueUse only in `<script setup>`
+- Split complex logic into composables
+- Use destructuring for return values
+- Use `reactive()` to unwrap refs if you want object properties
+- Use reactive getter arguments instead of refs (VueUse 9.0+)
+- Use TypeScript types from VueUse
 
 ### 3. Authoring Guidelines
 
-- Import Vue APIs จาก `"vue"`
-- ใช้ `ref` แทน `reactive` เมื่อเป็นไปได้
-- ใช้ `shallowRef` แทน `ref` เมื่อข้อมูลใหญ่
-- ใช้ options object เป็น arguments เพื่อความยืดหยุ่น
-- ใช้ `configurableWindow` เมื่อใช้ global variables เช่น `window`
-- ใช้ `tryOnScopeDispose` สำหรับ cleanup
-- ทำให้ `immediate` และ `flush` options configurable
-- ใช้ `isSupported` flag สำหรับ Web APIs ที่ยังไม่ widely supported
+- Import Vue APIs from `"vue"`
+- Use `ref` instead of `reactive` when possible
+- Use `shallowRef` instead of `ref` for large data
+- Use an options object as arguments for flexibility
+- Use `configurableWindow` when using global variables like `window`
+- Use `tryOnScopeDispose` for cleanup
+- Make the `immediate` and `flush` options configurable
+- Use the `isSupported` flag for Web APIs that aren't yet widely supported
 
 ### 4. Performance
 
-- ใช้ `useThrottle` สำหรับ events
-- ใช้ `useDebounce` สำหรับ inputs
-- หลีกเลี่ยงการเรียก VueUse ใน loops
-- ใช้ `computed` จาก VueUse getters
-- ใช้ `shallowRef` สำหรับ large data
+- Use `useThrottle` for events
+- Use `useDebounce` for inputs
+- Avoid calling VueUse in loops
+- Use `computed` from VueUse getters
+- Use `shallowRef` for large data
 
 ### 5. VueUse Breaking Changes
 
-- v15: ต้องการ Node 22+ (drop Node 20), Vue 3.5+
-- v15: deprecated timer options ถูกลบ — ใช้ `scheduler` เท่านั้น
-- v15: `useThrottleFn` default `trailing` เปลี่ยนจาก `false` เป็น `true`
-- v15: `templateRef` ถูกลบ — ใช้ Vue 3.5 `useTemplateRef`
-- v14: Migrate ไปใช้ `tsdown` และ dist files ย้ายตำแหน่ง (breaking)
-- Alias exports deprecated ให้ใช้ชื่อ function ต้นฉบับ
-- `watchPausable` deprecated ให้ใช้ Vue 3.5 native `watch` controls
-- `computedEager` deprecated ให้ใช้ `computed` ธรรมดา
+- v15: requires Node 22+ (drops Node 20), Vue 3.5+
+- v15: deprecated timer options removed — use `scheduler` only
+- v15: `useThrottleFn` default `trailing` changed from `false` to `true`
+- v15: `templateRef` removed — use Vue 3.5's `useTemplateRef`
+- v14: migrated to `tsdown` and the dist files moved location (breaking)
+- Deprecated alias exports — use the original function name
+- `watchPausable` deprecated — use Vue 3.5 native `watch` controls
+- `computedEager` deprecated — use a plain `computed`
 
 ### 6. Testing
 
-- จำลอง VueUse composables ใน unit tests
-- ใช้ `flushPromises` สำหรับ async composables
-- ทดสอบ composables ที่ extend จาก VueUse
-- ใช้ `effectScope` สำหรับ test isolation
+- Mock VueUse composables in unit tests
+- Use `flushPromises` for async composables
+- Test composables that extend from VueUse
+- Use `effectScope` for test isolation
 
-- ใช้ `/follow-lib-vue` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use `/follow-lib-vue` if needed
+- Use `/follow-best-practice` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- VueUse v15 composables ที่ใช้อย่างมีประสิทธิภาพ
-- Code ที่ clean และ maintainable
-- Type safety จาก VueUse TypeScript support
-- Performance ที่ดีขึ้นด้วย `shallowRef` และ `effectScope`
-- เขียน custom composables ตาม VueUse guidelines
+- VueUse v15 composables used effectively
+- Clean and maintainable code
+- Type safety from VueUse's TypeScript support
+- Better performance with `shallowRef` and `effectScope`
+- Custom composables written per the VueUse guidelines

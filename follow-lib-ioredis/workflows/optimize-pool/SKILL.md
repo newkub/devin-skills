@@ -11,71 +11,71 @@ related:
 
 ## Goal
 
-ลด latency และ connection churn ของ ioredis — pipelining, connection reuse, retry/offline queue options — โดยวัดผลก่อนและหลัง ไม่เปลี่ยน output
+Reduce ioredis latency and connection churn — pipelining, connection reuse, retry/offline queue options — measuring before and after, without changing output
 
 ## Scope
 
-- ใช้เมื่อ Redis commands ช้าจาก round-trips, reconnect storms หรือ connection ถูกสร้างซ้ำ
-- ครอบคลุม: `pipeline()`/`multi()`, connection reuse patterns, `retryStrategy`, `enableOfflineQueue`, `maxRetriesPerRequest`
-- ถ้ายังไม่มี client → ทำ `workflows/setup-ioredis/SKILL.md` ก่อน
+- Use when Redis commands are slow from round-trips, reconnect storms, or connections being recreated
+- Covers: `pipeline()`/`multi()`, connection reuse patterns, `retryStrategy`, `enableOfflineQueue`, `maxRetriesPerRequest`
+- If there is no client yet → do `workflows/setup-ioredis/SKILL.md` first
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: ระบุ bottleneck จริงด้วยตัวเลข
+> Goal: identify the real bottleneck with numbers
 
-1. ทำ `/run-bench` หรือจับเวลา command paths ที่ช้า — commands/sec, latency, RTT count
-2. ทำ `/scan-codebase` หา: sequential `await` commands ใน loop, `new Redis()` ที่สร้างซ้ำต่อ request/function
-3. ดู `MONITOR` หรือ `SLOWLOG` ฝั่ง Redis ถ้าเข้าถึงได้ — แยกช้าจาก RTT vs command เอง
-4. ทำ `/deep-optimize` ถ้าต้อง wider analysis
+1. Do `/run-bench` or time the slow command paths — commands/sec, latency, RTT count
+2. Do `/scan-codebase` looking for: sequential `await` commands in a loop, `new Redis()` created repeatedly per request/function
+3. Check `MONITOR` or `SLOWLOG` on the Redis side if accessible — separate slow-from-RTT vs slow-from-the-command-itself
+4. Do `/deep-optimize` if wider analysis is needed
 
 ### 2. Pipelining
 
-> Goal: รวม commands ลด round-trips
+> Goal: combine commands to cut round-trips
 
-1. Batch reads/writes อิสระกัน → `redis.pipeline()` แล้ว `exec()` — ลด RTT จาก N เป็น 1
-2. ต้อง atomicity → `redis.multi()` (transaction) แทน pipeline
-3. บน Cluster: pipeline commands ต้อง slot-compatible — group by key slot หรือใช้ hash tags
-4. เช็ค result array จาก `exec()` — แต่ละ entry เป็น `[err, result]` ต้องตรวจ error ต่อ command
+1. Batch independent reads/writes → `redis.pipeline()` then `exec()` — cuts RTT from N to 1
+2. Need atomicity → `redis.multi()` (transaction) instead of a pipeline
+3. On Cluster: pipeline commands must be slot-compatible — group by key slot or use hash tags
+4. Check the result array from `exec()` — each entry is `[err, result]`, errors must be checked per command
 
 ### 3. Connection Reuse
 
-> Goal: ลด connection churn และเลือก topology ที่ถูก
+> Goal: reduce connection churn and pick the right topology
 
-1. Client instance เดียวต่อ process ต่อ role — ห้าม `new Redis()` ต่อ request; cache instance ที่ module level
-2. แยก connections: command client / subscriber / publisher — subscriber (RESP2) บล็อก commands อื่น
-3. `lazyConnect` สำหรับ clients ที่ใช้บางเส้นทาง — เลี่ยง connect เปล่าตอน startup
-4. ถ้า hot path ต้อง minimal latency → พิจารณา dedicated connection แทน share กับ bulk work
+1. One client instance per process per role — never `new Redis()` per request; cache the instance at module level
+2. Separate connections: command client / subscriber / publisher — a (RESP2) subscriber blocks other commands
+3. `lazyConnect` for clients used on some paths only — avoid a pointless connect at startup
+4. If a hot path needs minimal latency → consider a dedicated connection instead of sharing with bulk work
 
 ### 4. Tune Retry And Queue
 
-> Goal: reconnect behavior ไม่ amplify failures
+> Goal: reconnect behavior must not amplify failures
 
-1. `retryStrategy(times)` — backoff แบบ bounded (เช่น `Math.min(times * 50, 2000)`); `null` = หยุด retry
-2. `maxRetriesPerRequest` — default จำกัด retries ต่อ command; `null` สำหรับ BullMQ blocking commands
-3. `enableOfflineQueue: false` เมื่อต้อง fail fast แทนคิวค้าง (v6: ส่ง commands จาก `ready` listener)
-4. `commandTimeout` เพื่อกัน commands hang — ค่าตาม SLO ของ path นั้น
+1. `retryStrategy(times)` — bounded backoff (e.g. `Math.min(times * 50, 2000)`); `null` = stop retrying
+2. `maxRetriesPerRequest` — the default limits retries per command; `null` for BullMQ blocking commands
+3. `enableOfflineQueue: false` when failing fast beats a stuck queue (v6: send commands from the `ready` listener)
+4. `commandTimeout` to prevent hung commands — a value matching that path's SLO
 
 ### 5. Measure Again
 
-> Goal: compare กับ baseline
+> Goal: compare against the baseline
 
-1. วัดซ้ำ workload เดิม — RTT count, latency, commands/sec
-2. ถ้าไม่ดีขึ้นหรือ regression → revert จุดนั้นแล้ว report
-3. ผ่าน → `/report-before-after` พร้อมตัวเลข แล้ว `/suggest-next-action`
+1. Re-measure the same workload — RTT count, latency, commands/sec
+2. If there's no improvement or a regression → revert that point and report
+3. Passed → `/report-before-after` with the numbers, then `/suggest-next-action`
 
 ## Rules
 
-- Baseline ก่อนเสมอ — ห้าม optimize โดยไม่มีตัวเลข
-- แก้ทีละจุดเรียง impact — pipelining (RTT) มักใหญ่กว่า micro options
-- ห้าม share subscriber connection กับ command client
-- Preserve behavior — pipeline ต้องเช็ค per-command errors, multi ต้อง atomic จริง
-- ถ้า option ไม่แน่ใจ → ดู official docs
-- ใช้ `/follow-lib-ioredis` สำหรับ overview และ setup
+- Baseline always first — never optimize without numbers
+- Fix one point at a time ordered by impact — pipelining (RTT) is usually bigger than micro options
+- Never share a subscriber connection with the command client
+- Preserve behavior — pipelines must check per-command errors, multi must be truly atomic
+- If an option is unclear → check official docs
+- Use `/follow-lib-ioredis` for the overview and setup
 
 ## Expected Outcome
 
-- Round-trips ลดลงผ่าน pipelining — ตัวเลขดีกว่า baseline
-- Connection reuse ถูกต้อง — ไม่มี per-request connections
-- Retry/queue behavior เหมาะ use case — ไม่ amplify outages
+- Round-trips reduced via pipelining — numbers better than the baseline
+- Connection reuse correct — no per-request connections
+- Retry/queue behavior fits the use case — doesn't amplify outages

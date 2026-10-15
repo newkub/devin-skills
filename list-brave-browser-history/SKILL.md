@@ -1,6 +1,6 @@
 ---
 name: list-brave-browser-history
-description: รายการประวัติการเข้าเว็บจาก Brave browser
+description: List web browsing history from the Brave browser
 argument-hint: "[scope]"
 related:
   - search
@@ -10,38 +10,38 @@ related:
 
 ## Goal
 
-ดึงประวัติการเข้าเว็บจาก Brave browser history database แล้วรายงานเป็น list หรือ table
+Pull web browsing history from the Brave browser history database and report it as a list or table
 
 ## Scope
 
-ใช้บน Windows เพื่ออ่าน SQLite database ของ Brave (`History`) และรายงาน URL, title, timestamp, visit count
+On Windows, read the Brave SQLite database (`History`) and report URL, title, timestamp, visit count
 
 ## Execute
 
 ### 1. Locate Brave History Database
 
-> Goal: หา path ของ SQLite database
+> Goal: find the SQLite database path
 
-1. ระบุ OS:
+1. Identify the OS:
    - Windows: `%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\History`
    - macOS: `~/Library/Application Support/BraveSoftware/Brave-Browser/Default/History`
    - Linux: `~/.config/BraveSoftware/Brave-Browser/Default/History`
-2. ตรวจสอบว่าไฟล์มีอยู่จริง
-3. ถ้าไม่เจอ profile อื่น → list profiles ใน `User Data/`
+2. Verify the file exists
+3. If the profile is not found → list profiles in `User Data/`
 
 ### 2. Copy Database Safely
 
-> Goal: หลีกเลี่ยง lock ขณะ Brave กำลังทำงาน
+> Goal: avoid locks while Brave is running
 
-1. สร้าง temp copy ด้วย `cp` หรือ `Copy-Item`
-2. วางใน `%TEMP%\brave-history-<timestamp>.db`
-3. ไม่แก้ไข database ต้นฉบับ
+1. Create a temp copy with `cp` or `Copy-Item`
+2. Place it at `%TEMP%\brave-history-<timestamp>.db`
+3. Do not modify the original database
 
 ### 3. Query History
 
-> Goal: ดึง history records
+> Goal: pull history records
 
-1. ใช้ `sqlite3` หรือ `bun sqlite` query copy
+1. Use `sqlite3` or `bun sqlite` to query the copy
 2. SQL:
    ```sql
    SELECT urls.url, urls.title, urls.visit_count, visits.visit_time
@@ -50,41 +50,41 @@ related:
    ORDER BY visits.visit_time DESC
    LIMIT <limit>
    ```
-3. แปลง `visit_time` จาก microseconds ไป ISO timestamp
-Latest: `sqlite3@6.0.1` npm binding (verified 2026-09-12) — `bun:sqlite` built-in ก็ใช้ได้
+3. Convert `visit_time` from microseconds to an ISO timestamp
+Latest: `sqlite3@6.0.1` npm binding (verified 2026-09-12) — the built-in `bun:sqlite` also works
 
-4. ถ้าไม่มี `sqlite3` → ใช้ `bun add -g sqlite3` หรือ tool อื่น
+4. If `sqlite3` is missing → use `bun add -g sqlite3` or another tool
 
 ### 4. Filter And Format
 
-> Goal: รายงานเฉพาะข้อมูลทีต้องการ
+> Goal: report only the wanted data
 
-1. กรองตาม keyword, domain, หรือ date range (ถ้า user ระบุ)
-2. สร้าง table: Time, Title, URL, VisitCount
-3. รองรับ output เป็น markdown หรือ JSON
+1. Filter by keyword, domain, or date range (when the user specifies)
+2. Build a table: Time, Title, URL, VisitCount
+3. Support markdown or JSON output
 
 ### 5. Report
 
-> Goal: สรุปผล
+> Goal: summarize the results
 
-1. รายงานจำนวน records
-2. แสดง top recent visits
-3. ถ้ามี filter → ระบุเงื่ือนไข
+1. Report the number of records
+2. Show the top recent visits
+3. If a filter was applied → state the condition
 
 ## Rules
 
-- ไม่แก้ไข database ต้นฉบับ
-- copy database ก่อนอ่านเสมอ
-- ไม่ expose sensitive URLs โดยไม่จำเป็น
-- ห้ามลบ history
-- ถ้า Brave กำลังทำงาน → ใช้ copy
+- Do not modify the original database
+- Always copy the database before reading
+- Do not expose sensitive URLs unnecessarily
+- Never delete history
+- When Brave is running → use a copy
 
-- ใช้ /search-raindrop ถ้าจำเป็น
-- ใช้ /list-recent-bookmark-raindrop ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
+- Use /search-raindrop if needed
+- Use /list-recent-bookmark-raindrop if needed
+- Use /run-dev if needed
 
 ## Expected Outcome
 
-- ได้รายการ Brave browser history
-- ข้อมูลครบ: time, title, URL, visit count
-- Database ต้นฉบับไม่ถูกเปลี่ยนแปลง
+- A Brave browser history list
+- Complete data: time, title, URL, visit count
+- The original database left unmodified

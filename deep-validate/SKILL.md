@@ -7,7 +7,7 @@ related:
   - deep-analyze
   - rethink
   - run-test
-  - deep-review
+  - deep-review-codebase
   - run-typecheck
   - report
   - suggest-next-action
@@ -27,7 +27,7 @@ Validate in detail across many dimensions: correctness, type safety, runtime, se
 Use for validation that needs high thoroughness, covering every dimension of the system
 
 - If you need to verify after `/merge` or parallel work, see `references/post-merge-verify.md`
-- To validate tests use `/run-test`; to validate a review use `/deep-review`
+- To validate tests use `/run-test`; to validate a review use `/deep-review-codebase`
 
 ## Execute
 

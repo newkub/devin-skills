@@ -6,7 +6,7 @@ related:
   - follow-test
   - update-config
   - check-secrets
-  - deep-review
+  - deep-review-codebase
   - follow-secret-manager
   - follow-monorepo
   - setup-cicd
@@ -23,7 +23,7 @@ related:
 
 - ใช้เมื่อต้อง config environment สำหรับ testing — หลังเลือก strategy level ใน `/follow-test`
 - ครอบคลุม: test env vars, fixtures/helpers directories, test database/services, CI test environment
-- ไม่ครอบคลุมการเขียน tests (ใช้ `/update-tests`) หรือ coverage tooling (ใช้ `implement-to-production/workflows/setup-coverage`)
+- ไม่ครอบคลุมการเขียน tests (ใช้ `/update-tests`) หรือ coverage tooling (ใช้ `/implement-to-production setup-coverage`)
 
 ## Execute
 
@@ -52,7 +52,7 @@ related:
 1. สร้าง `tests/fixtures/` และ `tests/helpers/` ตาม structure ของ parent — หรือตาม convention ที่ project ใช้
 2. test database: แยก db name/schema จาก dev — ใช้ ephemeral option (container, in-memory, per-run db) ตาม stack
 3. seed/migration strategy สำหรับ test db — deterministic และ reset ระหว่าง runs
-4. ทำ `/deep-review` — tests ไม่ share state และไม่ depend กัน
+4. ทำ `/deep-review-codebase` — tests ไม่ share state และไม่ depend กัน
 
 ### 4. Configure CI Test Env
 

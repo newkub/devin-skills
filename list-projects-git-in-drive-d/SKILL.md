@@ -1,6 +1,6 @@
 ---
 name: list-projects-git-in-drive-d
-description: แสดง template shell script list git projects ใน drive D
+description: Show a template shell script listing git projects on drive D
 argument-hint: "[filter]"
 related:
   - create-new-project-in-drive-d
@@ -9,11 +9,11 @@ related:
 
 ## Goal
 
-สร้าง shell script template สำหรับ list git projects ใน drive D ที่มี `.git` directory
+Create a shell script template for listing git projects on drive D that have a `.git` directory
 
 ## Scope
 
-ใช้ `/list-projects-git-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (projects git in drive d)
+Use `/list-projects-git-in-drive-d` for the tasks and workflows it actually covers (git projects on drive D)
 
 ## Execute
 
@@ -21,63 +21,63 @@ related:
 
 > Goal: Create Shell Script Template
 
-1. สร้าง shell script สำหรับ list git projects
-2. ใช้ `find` command หรือ PowerShell equivalent
-3. Filter เฉพาะ directories ที่มี `.git`
-4. แสดงผลเป็น list พร้อม path
+1. Create a shell script to list git projects
+2. Use the `find` command or a PowerShell equivalent
+3. Filter to only directories that have `.git`
+4. Show the result as a list with the path
 
 ### 2. Script Options
 
 > Goal: Script Options
 
-1. รองรับ PowerShell (Windows)
-2. รองรับ Bash (WSL/Linux)
-3. รองรับ options เพิ่มเติม (depth, pattern)
-4. แสดงผลในรูปแบบที่อ่านง่าย
+1. Support PowerShell (Windows)
+2. Support Bash (WSL/Linux)
+3. Support extra options (depth, pattern)
+4. Show output in a readable form
 
 ### 3. Save Template
 
 > Goal: Save Template
 
-1. บันทึก script template ไว้ใน workspace
-2. แจ้งให้ user ทราบว่า script ถูกสร้างแล้ว
-3. แสดงวิธีใช้งาน
+1. Save the script template in the workspace
+2. Tell the user the script was created
+3. Show how to use it
 
 ## Rules
 
 ### 1. Git Detection
 
-ตรวจสอบว่า directory เป้น git repository:
+Check whether a directory is a git repository:
 
-- ตรวจสอบ `.git` directory
-- ใช้ `find` command กับ `-name ".git"` option
-- ใช้ PowerShell `Test-Path` สำหรับ `.git`
+- Check for the `.git` directory
+- Use the `find` command with the `-name ".git"` option
+- Use PowerShell `Test-Path` for `.git`
 
 ### 2. Path Filtering
 
-Filter เฉพาะ projects ใน drive D:
+Filter to only projects on drive D:
 
-- Search เฉพาะใน `D:\`
+- Search only within `D:\`
 - Exclude hidden directories
 - Exclude system directories
 
 ### 3. Output Format
 
-แสดงผลในรูปแบบที่อ่านง่าย:
+Show output in a readable form:
 
-- แสดง path แบบ full path
-- แสดง project name (directory name)
-- รองรับ table format หรือ list format
+- Show the full path
+- Show the project name (directory name)
+- Support a table format or list format
 
-- ใช้ `/create-new-project-in-drive-d` ถ้าจำเป็น
-- ใช้ `/list-uncommit-unpush-in-drive-d` ถ้าจำเป็น
+- Use `/create-new-project-in-drive-d` if needed
+- Use `/list-uncommit-unpush-in-drive-d` if needed
 
 ## Expected Outcome
 
-- Shell script template ถูกสร้างแล้ว
-- Script สามารถ list git projects ใน drive D ที่มี `.git`
-- User สามารถ copy และ run script ได้ทันที
-- Output แสดงผลในรูปแบบที่อ่านง่าย
+- The shell script template is created
+- The script can list git projects on drive D that have `.git`
+- The user can copy and run the script immediately
+- Output is shown in a readable form
 
 ## Script Template
 

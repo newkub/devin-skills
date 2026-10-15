@@ -1,6 +1,6 @@
 ---
 name: follow-lib-zaidan-ui
-description: ใช้ Zaidan UI สำหรับ SolidJS components ด้วย Kobalte, Corvu และ Tailwind CSS
+description: Use Zaidan UI for SolidJS components with Kobalte, Corvu, and Tailwind CSS
 argument-hint: "[scope]"
 related:
   - follow-lib-animejs
@@ -16,14 +16,14 @@ related:
 
 ## Goal
 
-ใช้ Zaidan UI สำหรับ UI components บน SolidJS ด้วย accessible, customizable components ที่ built with Kobalte, Corvu และ Tailwind CSS
+Use Zaidan UI for UI components on SolidJS with accessible, customizable components built with Kobalte, Corvu, and Tailwind CSS
 
 ## Scope
 
-ใช้สำหรับสร้าง UI components ด้วย Zaidan registry บน SolidJS สำหรับ Vite, SolidStart, TanStack Start, Astro
+Use for creating UI components with the Zaidan registry on SolidJS for Vite, SolidStart, TanStack Start, Astro
 
-- ใช้เมื่อ project ต้องการ components จาก Zaidan registry (`@zaidan/*`) ผ่าน `shadcn` CLI + Tailwind CSS v4
-- ถ้า project ใช้ `shadcn-solid` CLI หรือต้องการ UnoCSS styling ให้ใช้ `/follow-lib-shadcn-solid` แทน
+- Use when the project needs components from the Zaidan registry (`@zaidan/*`) via the `shadcn` CLI + Tailwind CSS v4
+- If the project uses the `shadcn-solid` CLI or needs UnoCSS styling, use `/follow-lib-shadcn-solid` instead
 
 - Latest: `shadcn@4.21.0` / `@kobalte/core@0.13.14` / `corvu@0.7.2` / `solid-js@1.9.15` / `tailwindcss@4.3.3` (verified 2026-09-16)
 
@@ -31,114 +31,114 @@ related:
 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง Zaidan UI สำหรับ SolidJS
+> Goal: install Zaidan UI for SolidJS
 
-1. เลือก framework และสร้าง project:
+1. Pick the framework and create the project:
    - Vite: `pnpm create vite@latest --template solid-ts`
    - SolidStart: `pnpm create solid@latest --solidstart --ts --template with-tailwindcss`
    - TanStack Start: `pnpm dlx shadcn@latest init -t start`
    - Astro: `bun create astro@latest --template with-tailwind --add solid --git`
-2. ติดตั้ง Tailwind CSS v4 (`tailwindcss` และ `@tailwindcss/vite`) ตาม framework
-3. ตั้งค่า path alias `@/` ใน `tsconfig.json` และ Vite config
-4. รัน `bunx shadcn@latest init` เพื่อสร้าง `components.json`
-5. อ่านคำแนะนำเพิ่มเติมที่ 
+2. Install Tailwind CSS v4 (`tailwindcss` and `@tailwindcss/vite`) per the framework
+3. Set up the `@/` path alias in `tsconfig.json` and the Vite config
+4. Run `bunx shadcn@latest init` to create `components.json`
+5. Read additional guidance at 
 
 ### 2. Configure Registry
 
-> Goal: ตั้งค่า Zaidan registry ใน components.json
+> Goal: configure the Zaidan registry in components.json
 
-1. ตั้งค่า `style` เป็น `kobalte` และ `rsc` เป็น `false`
-2. เพิ่ม `registries` ใน `components.json`:
+1. Set `style` to `kobalte` and `rsc` to `false`
+2. Add `registries` to `components.json`:
    ```json
    "registries": {
      "@zaidan": "https://zaidan.carere.dev/r/{style}/{name}.json"
    }
    ```
-3. ตั้งค่า `tailwind.css` เป็น `src/styles/globals.css` (หรือ path ที่ project ใช้)
-4. ตั้งค่า `aliases` ให้ตรงกับ project (`@/components`, `@/lib/utils`, `@/lib`, `@/hooks`)
-5. ดูตัวอย่างเต็มใน 
+3. Set `tailwind.css` to `src/styles/globals.css` (or the path the project uses)
+4. Set `aliases` to match the project (`@/components`, `@/lib/utils`, `@/lib`, `@/hooks`)
+5. See the full example in 
 
 ### 3. Add Components
 
-> Goal: เพิ่ม Zaidan components ด้วย shadcn CLI
+> Goal: add Zaidan components with the shadcn CLI
 
-1. ใช้ `bunx shadcn@latest add @zaidan/button` เพื่อเพิ่ม component เดี่ยว
-2. ใช้ `bunx shadcn@latest add @zaidan/card @zaidan/dialog` เพื่อเพิ่มหลาย components
-3. components จะถูก copy ไปยัง `src/components/ui/`
-4. import ด้วย `import { Button } from "@/components/ui/button"`
-5. สำหรับ Better Auth UI ใช้ `bunx shadcn@latest add https://better-auth-ui.com/r/solid/auth.json`
+1. Use `bunx shadcn@latest add @zaidan/button` to add a single component
+2. Use `bunx shadcn@latest add @zaidan/card @zaidan/dialog` to add multiple components
+3. Components are copied to `src/components/ui/`
+4. Import with `import { Button } from "@/components/ui/button"`
+5. For Better Auth UI use `bunx shadcn@latest add https://better-auth-ui.com/r/solid/auth.json`
 
 ### 4. Learn Key Concepts
 
-> Goal: เข้าใจแนวคิดหลักของ Zaidan
+> Goal: understand Zaidan's core concepts
 
-1. Zaidan เป็น shadcn registry สำหรับ SolidJS ไม่ใช่ npm package
-2. Components built on Kobalte และ Corvu primitives
-3. Styled ด้วย Tailwind CSS v4
-4. รองรับ copy-paste หรือ pull ผ่าน shadcn CLI
-5. มี components, blocks, charts, และ typeset
-6. ดูรายละเอียดใน 
+1. Zaidan is a shadcn registry for SolidJS, not an npm package
+2. Components are built on Kobalte and Corvu primitives
+3. Styled with Tailwind CSS v4
+4. Supports copy-paste or pulling via the shadcn CLI
+5. Has components, blocks, charts, and typeset
+6. See details in 
 
 ### 5. Customize And Apply Best Practices
 
-> Goal: customize components ตาม best practices
+> Goal: customize components per best practices
 
-1. Customize components ที่ copy มาใน `src/components/ui/`
-2. ปรับ CSS variables ใน `src/styles/globals.css`
-3. ใช้ `cn` helper สำหรับ merge Tailwind classes
-4. ใช้ accessible components เสมอ
-5. ใช้ dark mode ด้วย `data-kb-theme` หรือ scheme ที่ project กำหนด
+1. Customize the components copied into `src/components/ui/`
+2. Adjust CSS variables in `src/styles/globals.css`
+3. Use the `cn` helper for merging Tailwind classes
+4. Always use accessible components
+5. Use dark mode via `data-kb-theme` or the scheme the project defines
 
 ### 6. Integrate With SolidJS
 
-> Goal: integrate กับ SolidJS
+> Goal: integrate with SolidJS
 
-1. ใช้ components กับ Vite, SolidStart, TanStack Start หรือ Astro
-2. ตั้งค่า Tailwind CSS v4 plugin ใน Vite config
-3. ใช้ `@/components/ui/*` import alias ตาม `components.json`
-4. อ่าน official docs ที่ https://zaidan.carere.dev/docs
+1. Use the components with Vite, SolidStart, TanStack Start, or Astro
+2. Configure the Tailwind CSS v4 plugin in the Vite config
+3. Use the `@/components/ui/*` import alias per `components.json`
+4. Read the official docs at https://zaidan.carere.dev/docs
 
 ### 7. Troubleshoot
 
-> Goal: แก้ปัญหาทั่วไป
+> Goal: fix common problems
 
-1. ตรวจสอบ `components.json` ว่า `registries` ชี้ไปยัง Zaidan registry ถูกต้อง
-2. ตรวจสอบ `style` เป็น `kobalte` และ `rsc` เป็น `false`
-3. ตรวจสอบ path alias `@/` ใน `tsconfig.json` และ Vite/SolidStart config
-4. อ่าน FAQ ที่ https://zaidan.carere.dev/docs/faq
+1. Check that `components.json` `registries` points to the Zaidan registry correctly
+2. Check that `style` is `kobalte` and `rsc` is `false`
+3. Check the `@/` path alias in `tsconfig.json` and the Vite/SolidStart config
+4. Read the FAQ at https://zaidan.carere.dev/docs/faq
 
 ### Workflows
 
 - Setup theme — registry config, Tailwind v4 variables, dark mode → `workflows/setup-theme/SKILL.md`
-- ปรับ theme tokens — colors, radius, Tailwind v4 mapping → `workflows/config-tokens/SKILL.md`
+- Tune theme tokens — colors, radius, Tailwind v4 mapping → `workflows/config-tokens/SKILL.md`
 
 ## Rules
 
-- ใช้ `bunx shadcn@latest` CLI ไม่ใช่ `shadcn-solid`
-- ใช้ `@zaidan/<component>` registry สำหรับ add components
-- ใช้ copy-to-own pattern เสมอ
-- ใช้ Kobalte และ Corvu สำหรับ accessible primitives
-- ใช้ Tailwind CSS v4 สำหรับ styling
-- ใช้ backticks สำหรับ commands, components
-- ใช้ code blocks สำหรับ component examples
-- ใช้ accessible components เสมอ
-- Customize components ตามความต้องการ
-- หลีกเลี่ยง modifying core Kobalte/Corvu primitives
+- Use the `bunx shadcn@latest` CLI, not `shadcn-solid`
+- Use the `@zaidan/<component>` registry for adding components
+- Always use the copy-to-own pattern
+- Use Kobalte and Corvu for accessible primitives
+- Use Tailwind CSS v4 for styling
+- Use backticks for commands, components
+- Use code blocks for component examples
+- Always use accessible components
+- Customize components as needed
+- Avoid modifying core Kobalte/Corvu primitives
 
-- ใช้ `/follow-lib-animejs` ถ้าจำเป็น
-- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ใช้ `/follow-lib-shadcn-solid` ถ้าจำเป็น
-- ใช้ `/follow-lib-unocss` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use `/follow-lib-animejs` if needed
+- Use `/follow-lib-arktype` if needed
+- Use `/follow-lib-better-auth` if needed
+- Use `/follow-lib-shadcn-solid` if needed
+- Use `/follow-lib-unocss` if needed
+- Use `/follow-best-practice` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- UI components ที่ accessible และ customizable
-- Code ที่ copy-to-own และ maintainable
-- Integration ที่ smooth กับ SolidJS
-- Components ที่ follow accessibility best practices
+- UI components that are accessible and customizable
+- Code that is copy-to-own and maintainable
+- Smooth integration with SolidJS
+- Components that follow accessibility best practices

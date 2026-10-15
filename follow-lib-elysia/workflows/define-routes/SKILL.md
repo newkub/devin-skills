@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-ออกแบบ Elysia routes ครบ — HTTP methods, path params/wildcards, route groups, `.mount` sub-apps, macros, WebSocket routes
+Design Elysia routes completely — HTTP methods, path params/wildcards, route groups, `.mount` sub-apps, macros, WebSocket routes
 
 ## Scope
 
@@ -39,9 +39,9 @@ new Elysia()
 
 ### 2. Path Params And Types
 
-- `:param` typed string โดย default — validate/transform ผ่าน `params` schema (TypeBox/Standard Schema)
-- `* wildcard`, `:param?` optional, custom path types — params inferred into handler
-- `set.status`/`set.headers` — response control ใน handler
+- `:param` typed as string by default — validate/transform via the `params` schema (TypeBox/Standard Schema)
+- `* wildcard`, `:param?` optional, custom path types — params inferred into the handler
+- `set.status`/`set.headers` — response control inside the handler
 
 ### 3. Groups, Guards, Mount
 
@@ -51,12 +51,12 @@ new Elysia()
     .get('/a', () => 'a')            // /api/a
     .guard({ isAuth: true }, g => g  // scoped guard
       .get('/b', () => 'b')))
-  .mount('/sub', subApp.fetch)       // หรือ .use(subApp) Elysia sub-app
+  .mount('/sub', subApp.fetch)       // or .use(subApp) an Elysia sub-app
 ```
 
 - `.group(prefix, app => ...)` — path prefix + scoped hooks/schemas
-- `.guard(schemas|options)` — apply validation/hooks ภายใน block เท่านั้น
-- `.use(plugin)`/`mount` — compose sub-apps; instance isolation ผ่าน `.use()` semantics (prefix per instance)
+- `.guard(schemas|options)` — apply validation/hooks inside the block only
+- `.use(plugin)`/`mount` — compose sub-apps; instance isolation via `.use()` semantics (prefix per instance)
 
 ### 4. WebSocket Routes
 
@@ -68,16 +68,16 @@ new Elysia()
 ```
 
 - `ws` route — `message`/`open`/`close`/`drain` handlers; Bun-native WS
-- Body validation กับ ws messages ได้เช่นกัน
+- Body validation works for ws messages too
 
 ## Rules
 
-- Handler return = response body — `set.status`/`set.headers` สำหรับ status/headers
-- Path params typed+validated ผ่าน schema — อย่า trust raw string
-- `.group` for prefixes; `.guard` for scoped constraints — อย่า duplicate prefix strings
-- WS ใช้ `.ws()` — ไม่ใช่ manual upgrade
+- Handler return = response body — use `set.status`/`set.headers` for status/headers
+- Path params typed+validated via schema — don't trust the raw string
+- `.group` for prefixes; `.guard` for scoped constraints — never duplicate prefix strings
+- WS uses `.ws()` — not a manual upgrade
 
 ## Expected Outcome
 
-- Routes ครบ methods/params/wildcards/groups ถูก pattern
-- Sub-app composition + WS routes ทำงาน
+- Routes cover methods/params/wildcards/groups in the right pattern
+- Sub-app composition + WS routes work

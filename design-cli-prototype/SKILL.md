@@ -1,95 +1,108 @@
 ---
 name: design-cli-prototype
-description: Create a CLI explorer prototype (SolidJS+Vite+UnoCSS) in temp, open via /open-web
-argument-hint: "[cli-name-or-spec]"
+description: Design a CLI prototype in chat — command tree, flags, help text, output — iterate, then build
+argument-hint: "[cli-name-or-purpose]"
 related:
-  - design-prototype-in-html
+  - follow-devin-global-skills
+  - design-tui-prototype
   - design-web-prototype
-  - follow-solid-framework
-  - follow-lib-solidjs
-  - follow-lib-unocss
-  - follow-tool-vite
+  - design-html-prototype
+  - design-usage-with-me-first
+  - update-usage-md
+  - follow-create-cli
   - learn-from-cli
-  - create-files-in-os-temp
-  - check-open-ports
-  - open-web
-  - ask-me
+  - check-types-definition
+  - draw-ansi
   - report
+  - ask-me
+  - suggest-next-action
+  - apply
 ---
 
 ## Goal
 
-Build a real CLI documentation/explorer prototype with SolidJS + TypeScript + Vite + UnoCSS — a typed `Command` schema as the single source of truth, split into Human Mode (visual exploration) + Agent Mode (Markdown/Raw/Copy) — built in OS temp and opened with `/open-web`
+Design the CLI's surface and UX together with the user `in chat only` — command tree, flags, `--help` output, result/exit-code contract, error wording — iterate until the user agrees, then hand off to `/follow-create-cli` to implement it for real
 
 ## Scope
 
-Use when you need a schema-driven CLI docs site prototype — command syntax explorer, option builder, inspector, terminal preview, agent-consumable markdown
+Use when the shape of a CLI must be agreed before any code is written — new tool, new subcommand set, redesign of an existing surface
 
-- General single-file HTML UI prototype → `/design-prototype-in-html`
-- Production CLI docs site in a real project → `/follow-solid-framework`, not this skill
+- Draft in chat only — `do not create files` and do not scaffold a project until the user confirms
+- A web-based CLI docs/explorer prototype (SolidJS + Vite) → `/design-web-prototype` (see its `references/cli-explorer-spec.md`)
+- A full-screen terminal UI (panels, focus, key bindings) → `/design-tui-prototype`
+- Single-file HTML mockup of unrelated UI → `/design-html-prototype`
 
-Full spec: [references/spec.md](references/spec.md)
+Core principle: humans read the CLI visually, agents consume it structurally — both must be designed here
 
 ## Execute
 
-### 1. Gather CLI Spec
+### 1. Load Skills
 
-> Goal: Know what the CLI offers
+> Goal: design on top of the conventions that already exist, not from memory
 
-1. Take the CLI name + commands from the argument or context; if unspecified → use the default dataset in `references/spec.md` (`run`, `build`, `dev`, `deploy` + `plugins`, `presets`, `config`)
-2. A real CLI exists → extract the command surface per `/learn-from-cli`, then map it into the `Command` type
-3. Scope unclear (command count, sections, theme) → run `/ask-me`
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the CLI domain
+2. Read the ones this design must obey: `/follow-create-cli` (+ `/follow-create-bun-cli` / `/follow-create-rust-cli`), `/follow-tool-usage`, `/learn-from-cli`, `/follow-tool-devin-cli` when the target is an agent-facing CLI
+3. Project `AGENTS.md` → read its `### Skills` section; note the conventions (naming, output, exit codes) the project already follows before proposing new ones
 
-### 2. Scaffold Project
+### 2. Clarify Intent
 
-> Goal: A ready SolidJS app in temp
+> Goal: Know what the CLI must do and for whom
 
-1. Run `/create-files-in-os-temp` — create `<temp>/cli-prototype-<name>/`
-2. Scaffold per `/follow-solid-framework`: `bun create vite` (template `solid-ts`) → `bun add -d unocss` + config per `/follow-lib-unocss`
-3. Create the `src/` tree following the component architecture in `references/spec.md` — `data/` (typed schema), `lib/` (builder/parser/markdown-generator/search), `components/`, `routes/`
+1. Run `/suggest-next-action` to list the usual CLI shapes (single command + flags, verb/noun subcommands, TUI hybrid, REPL)
+2. Run `/ask-me` about: audience (human/CI/agent), install path (bunx/cargo/npm/binary), scriptability, naming style
+3. Summarize requirements with `/report table` columns: `No.`, `Requirement`, `Priority`
 
-### 3. Implement Dual Modes
+### 3. Ground The Surface
 
-> Goal: human + agent experiences from one schema
+> Goal: Design from real data, not guesses
 
-1. `data/commands.ts` = typed `Command[]` (name, description, usage, arguments, options, examples, exitCodes, relatedCommands) — the single source every UI derives from
-2. Human Mode: `CommandSyntax` (tokenized, hover/click token → inspector), `CommandBuilder` (toggle options/args → live command string), `CommandInspector`, `ExampleTerminal`, `StickyCommandBar` — use `createSignal`/`createMemo`/`createStore` per `/follow-lib-solidjs`
-3. Agent Mode: `AgentMarkdown` + `MarkdownToolbar` — generate markdown from the schema via `lib/markdown-generator.ts` programmatically (never hand-write) + Raw (JSON) + Copy
-4. `ModeSwitcher` toggles `?mode=human|agent`; builder state serializes into query params (`?preset=production&port=8080`) — shareable
-5. Routing: `/commands/<name>`, `/plugins`, `/plugins/<name>`, `/presets`, `/presets/<name>`, `/config` — parse `location.pathname` + query with a lightweight `lib/` router or `@solidjs/router`
+1. A real CLI already exists → extract its current surface per `/learn-from-cli` (`--help`, subcommands, machine-readable output) before proposing changes
+2. Config/flags come from real types → inspect them with `/check-types-definition` (name, type, options, default)
+3. Never invent flags that contradict the existing surface — mark every entry as `existing`, `changed`, or `new`
 
-### 4. Apply UX Quality Bar
+### 4. Draft The Command Model In Chat
 
-> Goal: meet the spec — responsive, a11y, microinteractions, error states
+> Goal: one agreed command/flag contract, written in chat
 
-1. Responsive: desktop `Sidebar | Docs | Inspector`, tablet `Sidebar | Docs`, mobile `Header + Command + Docs + BottomNav` — every hover interaction must have a click/tap equivalent
-2. Accessibility: semantic HTML, keyboard nav, focus states, ARIA, accessible dialogs/tooltips, reduced motion, contrast — focus ring via UnoCSS shortcuts
-3. UnoCSS: reusable shortcuts (`surface`, `code-surface`, `command-token`, `option-token`, `muted-text`, `interactive`, `focus-ring`, etc.) + variants (`hover:`, `focus:`, `disabled:`, `group-hover:`, `dark:`, `sm:`–`xl:`) — never scatter arbitrary styles
-4. Microinteractions + error states per `references/spec.md` — fast, subtle, purposeful
+1. Command tree as a numbered/indented list: top-level commands, subcommands, aliases, hidden/dev-only entries
+2. Flags table per command via `/report table`: `Flag`, `Alias`, `Type`, `Default`, `Required`, `Description`
+3. Sketch the real `--help` output in a ` ```text ` block — exactly what the implementation must render (usage line, sections, examples)
+4. Define the output contract: human mode (table/ANSI per `/draw-ansi` rules — uniform box width, ≤ 80 columns), `--json`, `--quiet`, colors-off/`NO_COLOR`
+5. Define the exit-code table: `code`, `meaning`, `when`; and success/failure wording with `✓`/`✕` plus a hint line (`Try: ...`)
+6. State the non-obvious decisions explicitly: exit codes on partial failure, stdout vs stderr, idempotency, `--dry-run` default
 
-### 5. Run And Open
+### 5. Iterate
 
-> Goal: the user sees a working prototype
+> Goal: converge with the user, not with files
 
-1. `bun install` → `bun run dev` in the background per `/follow-tool-vite` (or `bun run build` + `bun run preview` for SPA fallback on deep routes)
-2. Run `/check-open-ports`; if the port conflicts → change the port
-3. Run `/open-web` to open the URL — verify no console errors, every route is reachable, `?mode=agent` renders markdown correctly
-4. Run `/report` summarizing the temp path, URL, and covered commands/routes; if the user asks for changes → edit in the same temp folder and refresh
+1. Ask for feedback via `/ask-me` — collect it into a checklist before revising
+2. Revise in chat per the checklist → re-show only the changed parts (before/after) until agreed
+3. Multiple viable designs → `/apply choose` with a recommendation and its trade-off
+
+### 6. Handoff
+
+> Goal: turn the agreed design into a real implementation
+
+1. Run `/report table` to summarize: `No.`, `Section`, `Decision`, `Status`
+2. Ask the user to implement now → run `/follow-create-cli` with the chat design as the spec
+3. Then design docs: `/design-usage-with-me-first` → `/update-usage-md`; a visual explorer → `/design-web-prototype`
+4. Run `/suggest-next-action`
 
 ## Rules
 
-- Prototypes are written to OS temp only — never write into the project (unless the user orders it)
-- The typed `Command` schema = single source of truth — Human/Agent modes derive from the same schema; never hardcode docs separately
-- Agent Mode markdown must always be generated programmatically
-- Every hover interaction must have a click/tap equivalent — never rely on hover alone
-- UnoCSS is the primary styling approach — shared reusable shortcuts, no scattered arbitrary values
-- Animations must be fast + subtle — never sacrifice performance for visual effects
-- Always follow the `/follow-solid-framework`, `/follow-lib-unocss`, `/follow-lib-solidjs` conventions
-- Always use `/create-files-in-os-temp`, `/open-web`, `/check-open-ports`; use `/ask-me` when needed
+- Discuss and draft in chat only — do not create files or scaffold a project until the user confirms
+- Always run `/follow-devin-global-skills` first — the project/stack skills decide naming, output, and exit-code conventions; never invent a parallel set
+- One responsibility per command; consistent verb style across the tree — pick one and state it
+- The `--help` sketch must be implementable as written — never decorative text
+- Machine-consumable output is required (`--json`) so agents and CI can read the CLI structurally
+- No color-only or hover-only meaning; output must stay readable with `NO_COLOR` and when piped
+- Never guess an existing surface — verify with `/learn-from-cli` / `/check-types-definition`
+- Do not commit/push automatically
+- Always start with `/ask-me` and `/suggest-next-action`
 
 ## Expected Outcome
 
-- The CLI explorer prototype runs on localhost and opens in the browser — every route/mode works
-- Human Mode: explore syntax, build commands, inspect options, and view examples in the terminal
-- Agent Mode: markdown/raw output deterministic from the schema + copyable
-- No prototype files mixed into the project source
+- An agreed CLI design in chat: command tree, flag tables, `--help` sketch, output/exit-code contract, error wording
+- The skills read first are listed, and the design follows the conventions they already define — no parallel convention invented
+- Every entry marked `existing` / `changed` / `new` with the reason
+- A clear path to the real build (`/follow-create-cli`) and docs (`/design-usage-with-me-first`)

@@ -11,7 +11,7 @@ related:
   - run-install
   - ask-me
   - use-my-packages-on-registry
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -65,7 +65,7 @@ Use `npmx.dev` as the data source (not `npmjs.com` or CLI search); keep only Typ
 1. Pick the best package per the criteria with reasons; state the exact version recommended for pinning (never `latest` in production)
 2. Provide a shareable URL such as `https://npmx.dev/<package>@<version>`
 3. If unsure → `/ask-me` before deciding; if several are about equally good → show the trade-offs for the user to choose
-4. If the package must be used in the project → hand off to `/use-my-packages-on-registry` or `/deep-review`
+4. If the package must be used in the project → hand off to `/use-my-packages-on-registry` or `/deep-review-codebase`
 
 ## Rules
 
@@ -80,7 +80,7 @@ Use `npmx.dev` as the data source (not `npmjs.com` or CLI search); keep only Typ
 
 ### 3. Tools
 
-- Use `/follow-tool-crw` (`crw_scrape`) to pull data from npmx.dev, `/learn` (web) for docs outside npmx, `/deep-review` for a deeper audit
+- Use `/follow-tool-crw` (`crw_scrape`) to pull data from npmx.dev, `/learn` (web) for docs outside npmx, `/deep-review-codebase` for a deeper audit
 - Use `/list-my-npm-packages` for packages already owned, `/suggest-next-action` afterwards for the next step
 
 ### 4. Safety

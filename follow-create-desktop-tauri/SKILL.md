@@ -1,6 +1,6 @@
 ---
 name: follow-create-desktop-tauri
-description: สร้าง Desktop Apps ด้วย Tauri, Solid+TanStack Router และ Rust backend
+description: Create desktop apps with Tauri, Solid + TanStack Router, and a Rust backend
 argument-hint: "[scope]"
 related:
   - follow-create-web
@@ -9,83 +9,83 @@ related:
   - follow-lib-native-sdk
   - follow-best-practice
   - setup-cicd
-  - deep-review
+  - deep-review-codebase
 
 ---
 
 ## Goal
 
-สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-solid-framework`
+Build a Tauri desktop application that pairs a web frontend with a Rust backend for cross-platform desktop apps — the frontend uses Solid + TanStack Router per `/follow-solid-framework`
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และ build Tauri desktop apps ด้วย Bun และ Vite
+Used to create, improve, and build Tauri desktop apps with Bun and Vite
 
-- ตรวจสอบ prerequisites (Rust, Bun, WebView2)
-- ติดตั้ง dependencies และ Tauri CLI
-- ตั้งค่า Vite และ `tauri.conf.json`
-- สร้าง IPC commands ระหว่าง frontend และ Rust backend
-- เพิ่ม plugins ตามต้องการ
-- build และ test บน target platforms
+- Check prerequisites (Rust, Bun, WebView2)
+- Install dependencies and the Tauri CLI
+- Configure Vite and `tauri.conf.json`
+- Create IPC commands between the frontend and the Rust backend
+- Add plugins as needed
+- Build and test on target platforms
 
-- Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — ยืนยันเวอร์ชันล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (ไม่ pin ในไฟล์ — ตาม `/update-devin-global-skills`); v2 ใช้ capabilities files (`src-tauri/capabilities/*.json`) แทน v1 allowlist, รองรับ mobile targets
+- Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (no pins in this file — per `/update-devin-global-skills`); v2 uses capabilities files (`src-tauri/capabilities/*.json`) instead of the v1 allowlist and supports mobile targets
 
-- Boundary: ถ้าต้องการ native จริง ไม่มี WebView/JS runtime ใน binary (TS core + `.native` markup, AOT ผ่าน Zig) → `/follow-lib-native-sdk` แทน Tauri
+- Boundary: if true native is required — no WebView/JS runtime in the binary (TS core + `.native` markup, AOT via Zig) → use `/follow-lib-native-sdk` instead of Tauri
 
 ## Execute
 
 ### 1. Setup Environment
 
-> Goal: ตรวจสอบ prerequisites สำหรับ Tauri development
+> Goal: verify prerequisites for Tauri development
 
-1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
-2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
-3. ยืนยัน WebView2 บน Windows (ติดตั้งอัตโนมัติตอน run ครั้งแรก)
-4. ทำ `/deep-research` + `/follow-best-practice` เพื่อยืนยัน `tauri`/`@tauri-apps/*` versions และ v2 API ล่าสุด
+1. Confirm Rust is installed: `rustc --version`
+2. Confirm Bun is installed: `bun --version`
+3. Verify WebView2 on Windows (auto-installed on first run)
+4. Run `/deep-research` + `/follow-best-practice` to confirm `tauri`/`@tauri-apps/*` versions and the latest v2 API
 
 ### 2. Install Dependencies
 
-> Goal: ติดตั้ง dependencies สำหรับ Tauri app
+> Goal: install dependencies for the Tauri app
 
-1. ถ้าสร้างโปรเจกต์ใหม่ทั้งหมด: `bunx create-tauri-app` (เลือก template/package manager ตามต้องการ) แล้วข้ามไป Configure
-2. รัน `bun install`
-3. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
-4. ติดตั้ง Tauri CLI: `bun add -D @tauri-apps/cli`
+1. Creating a project from scratch: `bunx create-tauri-app` (pick template/package manager as desired), then skip to Configure
+2. Run `bun install`
+3. Install the Tauri API: `bun add @tauri-apps/api`
+4. Install the Tauri CLI: `bun add -D @tauri-apps/cli`
 
 ### 3. Configure Vite
 
-> Goal: ตั้งค่า `vite.config.ts` ให้เข้ากับ Tauri dev server
+> Goal: set up `vite.config.ts` to match the Tauri dev server
 
-1. ตั้งค่า port 5173
-2. ตั้งค่า `server.fs.deny` หรือ ignore `src-tauri/`
-3. ตั้งค่า `envPrefix` ให้รองรับ `VITE_` และ `TAURI_`
+1. Set port 5173
+2. Configure `server.fs.deny` or ignore `src-tauri/`
+3. Set `envPrefix` to allow `VITE_` and `TAURI_`
 
 ### 4. Configure Tauri
 
-> Goal: ตั้งค่า `tauri.conf.json` และ capabilities
+> Goal: set up `tauri.conf.json` and capabilities
 
-1. แก้ไข `src-tauri/tauri.conf.json`: ตั้ง `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
-2. กำหนด capabilities ใน `src-tauri/capabilities/default.json`: `["core:default", "fs:allow-read-file", "dialog:allow-open"]`
+1. Edit `src-tauri/tauri.conf.json`: set `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
+2. Define capabilities in `src-tauri/capabilities/default.json`: `["core:default", "fs:allow-read-file", "dialog:allow-open"]`
 
 ### 5. Develop IPC Commands
 
-> Goal: สร้าง Rust commands และเรียกใช้จาก frontend
+> Goal: create Rust commands and call them from the frontend
 
-1. สร้าง Rust command ใน `src-tauri/src/lib.rs`
-2. Register command ด้วย `tauri::Builder::default().invoke_handler(...)`
-3. เรียกใช้จาก frontend ด้วย `invoke('command', args)`
+1. Create a Rust command in `src-tauri/src/lib.rs`
+2. Register the command with `tauri::Builder::default().invoke_handler(...)`
+3. Call it from the frontend with `invoke('command', args)`
 
 ### 6. Add Plugins
 
-> Goal: ติดตั้ง official หรือ community plugins ตามต้องการ
+> Goal: install official or community plugins as needed
 
-1. ติดตั้ง official plugins ด้วย `bun run tauri add <plugin-name>`
-2. ติดตั้ง community plugins ด้วย `bun add @tauri-apps/plugin-<plugin-name>`
-3. อัปเดต `tauri.conf.json` และ capabilities สำหรับ plugin ที่เพิ่ม
+1. Install official plugins with `bun run tauri add <plugin-name>`
+2. Install community plugins with `bun add @tauri-apps/plugin-<plugin-name>`
+3. Update `tauri.conf.json` and capabilities for each added plugin
 
 ### 7. Build And Test
 
-> Goal: Build และ test Tauri app
+> Goal: build and test the Tauri app
 
 1. Development mode: `bun run tauri dev`
 2. Production build: `bun run tauri build`
@@ -116,11 +116,11 @@ desktop-apps/{project}/
 
 ### Standards
 
-- ใช้ `bun` สำหรับทุก commands
-- Vite port ต้องตรงกับ `tauri.conf.json` (default: 5173)
-- Vite ต้อง ignore `src-tauri/`
-- IPC ใช้ `invoke()` สำหรับ frontend → backend
-- กำหนด capabilities ใน `tauri.conf.json`
+- Use `bun` for all commands
+- The Vite port must match `tauri.conf.json` (default: 5173)
+- Vite must ignore `src-tauri/`
+- IPC uses `invoke()` for frontend → backend
+- Define capabilities in `tauri.conf.json`
 
 ### IPC Pattern
 
@@ -131,23 +131,23 @@ desktop-apps/{project}/
 
 ### Plugins
 
-- เพิ่ม plugin เฉพาะที่จำเป็นจริง ๆ
-- อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
-- ไม่เปิด permission กว้างเกินความจำเป็น
+- Add only plugins that are truly needed
+- Update `src-tauri/capabilities/default.json` for plugin permissions
+- Never grant permissions broader than necessary
 
-- ใช้ /follow-solid-framework สำหรับ frontend (Solid + TanStack Router + UnoCSS)
-- ใช้ /follow-create-tauri-plugin ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-with-capacitor ถ้าจำเป็น (create desktop tauri)
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use /follow-solid-framework for the frontend (Solid + TanStack Router + UnoCSS)
+- Use /follow-create-tauri-plugin if needed
+- Use /follow-create-mobile-cross-with-capacitor if needed (create desktop tauri)
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /deep-review-codebase if needed
+- Use /follow-create-plugins if needed
 
 
 ## Expected Outcome
 
-- Tauri project สร้างสำเร็จ
-- Dev server ทำงานได้ที่ `bun run tauri dev`
-- Frontend และ Rust backend เชื่อมต่อกันผ่าน IPC
-- Production build สร้าง executables ได้
-- Capabilities กำหนดตาม least privilege
+- Tauri project created successfully
+- Dev server runs via `bun run tauri dev`
+- Frontend and Rust backend communicate through IPC
+- Production build produces executables
+- Capabilities follow least privilege

@@ -3,6 +3,7 @@ name: follow-tool-devin
 description: Devin/Cascade AI coding assistant for autonomous software engineering
 argument-hint: "[scope]"
 related:
+  - follow-tool-devin-cli
   - follow-create-plugins
   - update-devin
   - follow-devin-global-skills
@@ -27,7 +28,7 @@ Use for:
 - Debugging and reviewing code produced by agents
 - Managing fleets of local and cloud agents
 
-- Boundary: this skill covers using Devin/Cascade from the user side — for updating this machine's Devin CLI/skills use `/update-devin`; for global skills rules and conventions see `/follow-devin-global-skills`
+- Boundary: this skill covers using Devin/Cascade from the user side — for the terminal `devin` CLI (sessions, modes, MCP, plugins, scripted runs) use `/follow-tool-devin-cli`; for updating this machine's Devin CLI/skills use `/update-devin`; for global skills rules and conventions see `/follow-devin-global-skills`
 - Latest model: `SWE-2` (released 2026-09-10, post-trained from Kimi K3 2.8T params) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
@@ -36,7 +37,7 @@ Use for:
 
 > Goal: the Devin CLI is ready to use on this machine
 
-1. Run `devin --version` to confirm the CLI is installed (installed via Devin Desktop / Cognition distribution — there is no public registry)
+1. Run `devin --version` to confirm the CLI is installed (installed via Devin Desktop / Cognition distribution — there is no public registry); for the full CLI workflow run /follow-tool-devin-cli
 2. Run `devin --help` to see the command surface the current version supports
 3. If missing → install from https://devin.ai — the npm package `devin` is an unrelated package, do not install it
 4. For CLI/skills updates, use `/update-devin`

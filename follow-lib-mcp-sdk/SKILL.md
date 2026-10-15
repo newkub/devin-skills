@@ -1,6 +1,6 @@
 ---
 name: follow-lib-mcp-sdk
-description: ใช้ @modelcontextprotocol/sdk สร้าง MCP servers/clients — tools, resources, prompts
+description: Use @modelcontextprotocol/sdk to build MCP servers/clients — tools, resources, prompts
 argument-hint: "[target-or-scope]"
 related:
   - follow-lib-zod
@@ -13,15 +13,15 @@ related:
 
 ## Goal
 
-ใช้ @modelcontextprotocol/sdk สร้าง MCP servers/clients — tools, resources, prompts
+Use @modelcontextprotocol/sdk to build MCP servers/clients — tools, resources, prompts
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ `@modelcontextprotocol/sdk` — สร้าง/แก้ MCP server หรือ client ด้วย TypeScript SDK (lib mcp sdk)
+Use when the task involves `@modelcontextprotocol/sdk` — creating/modifying an MCP server or client with the TypeScript SDK (lib mcp sdk)
 
-- Scaffold MCP project ใหม่จากศูนย์ → `/follow-create-mcp` ก่อน แล้วกลับมาที่ skill นี้สำหรับ SDK details
-- Consume/configure MCP servers ฝั่ง Devin (ไม่ได้เขียน server) → `/use-mcp`
-- Tool input schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
+- Scaffolding a new MCP project from scratch → `/follow-create-mcp` first, then come back to this skill for SDK details
+- Consuming/configuring MCP servers on the Devin side (not writing a server) → `/use-mcp`
+- Tool input schemas use zod — for deeper validation → `/follow-lib-zod`
 
 - Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -32,38 +32,38 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration | Deploy | `workflows/deploy-mcp/SKILL.md` — transport options, remote hosting, client config 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. สร้าง `new McpServer({name,version})` แล้ว register ด้วย `server.registerTool()`, `registerResource()`, `registerPrompt()` — คืน handle สำหรับ `.update()`/`.remove()` (shorthand `server.tool()` ยังใช้ได้)
-1. ใช้ `StdioServerTransport` สำหรับ local หรือ `StreamableHTTPServerTransport` สำหรับ remote — HTTP+SSE transport deprecated (backward compat เท่านั้น)
-1. define tool schemas ด้วย zod — name, description, inputSchema (Zod raw shape)
-1. client side ใช้ `Client` + transport เดียวกัน — ทดสอบด้วย MCP Inspector
-1. ใช้ elicitation เมื่อ tool ต้องการ input เพิ่มจาก user ระหว่าง execute — `mode: 'form'` สำหรับ non-sensitive data, `mode: 'url'` สำหรับ secrets/OAuth
+1. Create `new McpServer({name,version})` then register with `server.registerTool()`, `registerResource()`, `registerPrompt()` — each returns a handle for `.update()`/`.remove()` (the `server.tool()` shorthand still works)
+1. Use `StdioServerTransport` for local or `StreamableHTTPServerTransport` for remote — HTTP+SSE transport is deprecated (backward compat only)
+1. Define tool schemas with zod — name, description, inputSchema (Zod raw shape)
+1. Client side uses `Client` + the same transport — test with MCP Inspector
+1. Use elicitation when a tool needs extra user input mid-execution — `mode: 'form'` for non-sensitive data, `mode: 'url'` for secrets/OAuth
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib mcp sdk)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib mcp sdk)
 
 ## Rules
 
-- ทุก tool ต้องมี description ชัดเจน — LLM ใช้เลือก tool
-- return `{content:[{type:text,text}]}` format เสมอ
-- handle errors เป็น `isError: true` response ไม่ throw
-- version server ให้ตรง spec
+- Every tool needs a clear description — the LLM uses it to pick tools
+- Always return the `{content:[{type:text,text}]}` format
+- Handle errors as an `isError: true` response, don't throw
+- Version the server to match the spec
 
-- ใช้ `/follow-lib-zod` ถ้าต้องเขียน input schemas ซับซ้อน
-- ใช้ `/follow-create-mcp` ถ้าต้อง scaffold MCP project ใหม่
-- ใช้ `/use-mcp` ถ้าต้อง consume MCP servers ฝั่ง client
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-lib-zod` if writing complex input schemas
+- Use `/follow-create-mcp` if scaffolding a new MCP project
+- Use `/use-mcp` if consuming MCP servers on the client side
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib mcp sdk)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib mcp sdk)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib mcp sdk)
+- No known security/performance pitfalls (lib mcp sdk)
+- Lint, typecheck, tests pass

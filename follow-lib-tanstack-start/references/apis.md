@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-start` | 1.168.x | Start |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Start | `tanstackStart` (vite plugin) | `createServerFn`, SSR routes |

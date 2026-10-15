@@ -1,6 +1,6 @@
 ---
 name: follow-lib-jose-setup-jose
-description: ติดตั้ง jose และตั้งค่า sign/verify JWT พร้อม JWKS ให้พร้อมใช้งาน
+description: Install jose and set up JWT sign/verify with JWKS, ready to use
 argument-hint: "[alg-or-runtime]"
 related:
   - follow-lib-jose
@@ -11,69 +11,69 @@ related:
 
 ## Goal
 
-ติดตั้ง `jose` และตั้งค่า JWT sign/verify พร้อม key management หรือ JWKS ให้ทำงานได้จริงบน runtime ที่ใช้ — first-time setup เท่านั้น
+Install `jose` and set up JWT sign/verify with key management or JWKS so it really works on the runtime in use — first-time setup only
 
 ## Scope
 
-- ใช้เมื่อ project ยังไม่มี jose (ถ้ามีอยู่แล้ว → verify เท่านั้น)
-- ครอบคลุม: install, `SignJWT`/`jwtVerify`, key generation, `createRemoteJWKSet`/`createLocalJWKSet`
-- jose เป็น WebCrypto-based — ทำงานบน Node ≥20, Bun, Cloudflare Workers, edge runtimes โดยไม่ต้อง polyfill
+- Use when the project has no jose yet (if present → verify only)
+- Covers: install, `SignJWT`/`jwtVerify`, key generation, `createRemoteJWKSet`/`createLocalJWKSet`
+- jose is WebCrypto-based — works on Node ≥20, Bun, Cloudflare Workers and edge runtimes with no polyfill
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อน setup
+> Goal: check the environment before setup
 
-1. อ่าน `package.json` — ถ้ามี `jose` แล้ว → skip ไป verify; ถ้ามี `jsonwebtoken` บน edge runtime → flag ให้ย้ายมา jose
-2. ระบุ runtime (Node/Bun/Workers) — v6 เป็น WebCrypto-only, keys คืน `CryptoKey` ไม่ใช่ `KeyObject`
-3. ตรวจ keys/secrets ที่ต้องมี — ถ้าขาด → เก็บผ่าน `/follow-secret-manager` ห้าม hardcode
+1. Read `package.json` — if `jose` is there → skip to verify; if `jsonwebtoken` is on an edge runtime → flag migrating to jose
+2. Identify the runtime (Node/Bun/Workers) — v6 is WebCrypto-only, keys are `CryptoKey` not `KeyObject`
+3. Check the keys/secrets that are required — if missing → store via `/follow-secret-manager`, never hardcode
 
 ### 2. Install
 
-> Goal: ติดตั้ง jose เป็น runtime dependency
+> Goal: install jose as a runtime dependency
 
-1. รัน `bun add jose` (หรือ package manager ตาม lockfile)
-2. ยืนยัน `jose` อยู่ใน `dependencies`
+1. Run `bun add jose` (or the package manager matching the lockfile)
+2. Confirm `jose` is in `dependencies`
 
 ### 3. Sign And Verify JWT
 
-> Goal: sign/verify flow ขั้นต่ำทำงาน
+> Goal: a minimal sign/verify flow works
 
-1. Keys: `generateKeyPair("RS256")`/`("EdDSA")` สำหรับ asymmetric หรือ secret (`Uint8Array`) สำหรับ `HS256` — เลือก alg ชัดเจนเสมอ
+1. Keys: `generateKeyPair("RS256")`/`("EdDSA")` for asymmetric, or a secret (`Uint8Array`) for `HS256` — always pick the alg explicitly
 2. Sign: `new SignJWT(payload).setProtectedHeader({ alg }).setIssuedAt().setIssuer(iss).setAudience(aud).setExpirationTime("2h").sign(key)`
-3. Verify: `await jwtVerify(token, key, { issuer, audience })` — คืน `{ payload, protectedHeader }`
-4. ตั้ง `iss`, `aud`, `exp` เสมอ — verify ทุกครั้ง ห้าม `decode` อย่างเดียว
-5. JWE (encrypted tokens): `EncryptJWT`/`jwtDecrypt` เมื่อ payload ต้อง confidentiality — ดู official docs
+3. Verify: `await jwtVerify(token, key, { issuer, audience })` — returns `{ payload, protectedHeader }`
+4. Always set `iss`, `aud`, `exp` — verify every time, never just `decode`
+5. JWE (encrypted tokens): `EncryptJWT`/`jwtDecrypt` when the payload needs confidentiality — see official docs
 
 ### 4. Setup JWKS
 
-> Goal: key distribution ผ่าน JWKS เมื่อมีหลาย consumers
+> Goal: key distribution via JWKS when there are multiple consumers
 
-1. Remote verify: `createRemoteJWKSet(new URL(jwksUrl))` แล้วส่งให้ `jwtVerify` — jose cache keys ให้ (v6 ใช้ `fetch` ไม่มี `options.agent`)
-2. Publish keys เอง: `exportJWK` public key แล้ว serve ที่ `/.well-known/jwks.json` หรือใช้ `createLocalJWKSet` สำหรับ local set
-3. Key rotation: ตั้ง `kid` ใน protected header — verifier เลือก key จาก `kid` อัตโนมัติ
-4. Private keys ไม่ออกจาก signer — publish เฉพาะ public JWK
+1. Remote verify: `createRemoteJWKSet(new URL(jwksUrl))` then pass it to `jwtVerify` — jose caches keys for you (v6 uses `fetch`, no `options.agent`)
+2. Publishing keys yourself: `exportJWK` the public key then serve it at `/.well-known/jwks.json`, or use `createLocalJWKSet` for a local set
+3. Key rotation: set `kid` in the protected header — the verifier picks the key from `kid` automatically
+4. Private keys never leave the signer — publish only the public JWK
 
 ### 5. Verify
 
-> Goal: sign→verify round-trip ผ่านจริง
+> Goal: the sign→verify round-trip really passes
 
-1. Smoke: sign token จริงแล้ว verify — payload ตรง, `exp` ถูก enforce (token หมดอายุต้อง reject)
-2. ทดสอบ wrong key/wrong audience → ต้อง reject
-3. รัน lint/typecheck — ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report; ผ่าน → `/suggest-next-action`
+1. Smoke: sign a real token then verify it — payload matches, `exp` is enforced (an expired token must reject)
+2. Test wrong key/wrong audience → must reject
+3. Run lint/typecheck — if verify fails → do `/resolve-errors` max 3 rounds, then stop and report; passes → `/suggest-next-action`
 
 ## Rules
 
-- Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น
-- ใช้ `jose` แทน `jsonwebtoken` บน edge runtimes (jsonwebtoken ต้อง node:crypto)
-- Alg ชัดเจนเสมอ (`EdDSA`, `RS256`, `ES256`) — ห้าม `alg: none`; `secp256k1`/`RSA1_5` ถูกลบใน v6
-- Keys เป็น `CryptoKey`/`JWK`/`Uint8Array` (v6) — secrets จาก env ผ่าน `/follow-secret-manager`
-- ถ้า API ไม่แน่ใจ → ทำ `/learn-from-web` ดู official docs (github.com/panva/jose)
-- ใช้ `/follow-lib-jose` สำหรับ overview และ best practices
+- Idempotent — if already set up, verify only
+- Use `jose` instead of `jsonwebtoken` on edge runtimes (jsonwebtoken needs node:crypto)
+- Always an explicit alg (`EdDSA`, `RS256`, `ES256`) — never `alg: none`; `secp256k1`/`RSA1_5` were removed in v6
+- Keys are `CryptoKey`/`JWK`/`Uint8Array` (v6) — secrets from env via `/follow-secret-manager`
+- If an API is unclear → do `/learn-from-web` on the official docs (github.com/panva/jose)
+- Use `/follow-lib-jose` for the overview and best practices
 
 ## Expected Outcome
 
-- `jose` ติดตั้ง, sign/verify round-trip ผ่านด้วย alg ที่เลือก
-- JWKS พร้อมถ้าใช้ — rotation ผ่าน `kid`
-- Claims (`iss`, `aud`, `exp`) ถูก enforce — ไม่มี decode-only verification
+- `jose` installed, sign/verify round-trip passes with the chosen alg
+- JWKS ready when used — rotation via `kid`
+- Claims (`iss`, `aud`, `exp`) are enforced — no decode-only verification

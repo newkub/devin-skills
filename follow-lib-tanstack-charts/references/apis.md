@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-charts` | 0.18.x | Charts |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Charts | `<Chart>` | grammar options: `data`, `primaryAxis`, `secondaryAxes`, `elementType` |

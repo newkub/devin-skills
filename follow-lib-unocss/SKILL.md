@@ -1,6 +1,6 @@
 ---
 name: follow-lib-unocss
-description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
+description: Install and configure UnoCSS v66 with presetWind4 and transformers
 argument-hint: "[scope]"
 related:
   - follow-unocss-theme
@@ -13,58 +13,58 @@ related:
 
 ## Goal
 
-สร้าง UnoCSS configuration ที่พร้อมใช้งานด้วย `presetWind4`, transformers, และ framework integration แบบปัจจุบัน
+Create a ready-to-use UnoCSS configuration with `presetWind4`, transformers, and current framework integration
 
 ## Scope
 
-ใช้สำหรับติดตั้งและตั้งค่า UnoCSS v66+ บน Vite, Nuxt, Next.js, Astro, CLI, และ CDN Runtime
+Use to install and configure UnoCSS v66+ on Vite, Nuxt, Next.js, Astro, CLI, and CDN Runtime
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: ตรวจสอบ framework และ environment ก่อนติดตั้ง
+> Goal: check the framework and environment before installing
 
-1. ตรวจสอบ framework ที่ใช้ (`Vite`, `Nuxt`, `Next.js`, `Astro`, `HTML/CLI`)
-2. อ่าน config ที่มีอยู่แล้ว (`uno.config.*`, `vite.config.*`, `nuxt.config.*`, `postcss.config.*`, `astro.config.*`)
-3. ระบุ CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`, ฯลฯ)
-4. ตรวจสอบ UnoCSS version ที่ install (ควรเป็น v66+; ล่าสุด v66.10.5, verified 2026-09-24)
+1. Check the framework in use (`Vite`, `Nuxt`, `Next.js`, `Astro`, `HTML/CLI`)
+2. Read the existing config (`uno.config.*`, `vite.config.*`, `nuxt.config.*`, `postcss.config.*`, `astro.config.*`)
+3. Identify the CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`, etc.)
+4. Check the installed UnoCSS version (should be v66+; latest v66.10.5, verified 2026-09-24)
 
 ### 2. Install Dependencies
 
-> Goal: ติดตั้ง UnoCSS และ framework-specific packages
+> Goal: install UnoCSS and framework-specific packages
 
-1. ติดตั้ง `unocss` package:
+1. Install the `unocss` package:
 
    ```bash
    bun add -D unocss
    ```
 
-2. ติดตั้ง `presetWind4` แยกถ้าจำเป็น:
+2. Install `presetWind4` separately if needed:
 
    ```bash
    bun add -D @unocss/preset-wind4
    ```
 
-3. สำหรับ Next.js ติดตั้ง:
+3. For Next.js install:
 
    ```bash
    bun add -D @unocss/postcss
    ```
 
-4. สำหรับ Nuxt ติดตั้ง:
+4. For Nuxt install:
 
    ```bash
    bun add -D @unocss/nuxt
    ```
 
-5. สำหรับ Astro ติดตั้ง:
+5. For Astro install:
 
    ```bash
    bun add -D @unocss/astro
    ```
 
-6. สำหรับ Icons ติดตั้ง iconify collections:
+6. For Icons install iconify collections:
 
    ```bash
    bun add -D @iconify-json/mdi
@@ -72,9 +72,9 @@ related:
 
 ### 3. Configure
 
-> Goal: สร้าง `uno.config.ts` พร้อม `presetWind4` และ transformers
+> Goal: create `uno.config.ts` with `presetWind4` and transformers
 
-1. สร้าง `uno.config.ts` พื้นฐาน:
+1. Create a basic `uno.config.ts`:
 
    ```ts
    import { defineConfig, presetWind4, presetIcons, transformerVariantGroup, transformerDirectives } from 'unocss'
@@ -95,7 +95,7 @@ related:
    })
    ```
 
-2. ใช้ `presetWind4` options ตามต้องการ:
+2. Use `presetWind4` options as needed:
 
    ```ts
    presetWind4({
@@ -108,7 +108,7 @@ related:
    })
    ```
 
-3. ถ้า auto-scan ไม่ครอบคลุม ให้เพิ่ม `content.filesystem`:
+3. If auto-scan doesn't cover everything, add `content.filesystem`:
 
    ```ts
    content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
@@ -116,78 +116,78 @@ related:
 
 ### 4. Setup Framework Integration
 
-> Goal: เชื่อมต่อ UnoCSS เข้ากับ framework ที่ใช้
+> Goal: connect UnoCSS to the framework in use
 
-1. Vite: เพิ่ม `UnoCSS()` plugin ใน `vite.config.ts` และ `import 'virtual:uno.css'` ใน `main.ts`
-2. Nuxt: เพิ่ม `@unocss/nuxt` ใน `modules` ของ `nuxt.config.ts`; `uno.css` ถูก inject อัตโนมัติ
-3. Next.js: สร้าง `postcss.config.mjs` ด้วย `@unocss/postcss` และใส่ `@unocss all;` ใน `app/globals.css`
-4. Astro: เพิ่ม `UnoCSS()` integration ใน `astro.config.mjs`; ใช้ `injectReset: true` หรือติดตั้ง `@unocss/reset` ถ้าต้องการ reset
-5. CLI: ติดตั้ง `@unocss/cli` ถ้าจำเป็น; ใช้ `unocss --preset wind4` เมื่อไม่มี config; รองรับ `--watch`, `--out-file`, `--rewrite`
-6. CDN / Runtime: ใช้ `@unocss/runtime` หรือ `@unocss/reset` ตามต้องการ
+1. Vite: add the `UnoCSS()` plugin in `vite.config.ts` and `import 'virtual:uno.css'` in `main.ts`
+2. Nuxt: add `@unocss/nuxt` to `modules` in `nuxt.config.ts`; `uno.css` is injected automatically
+3. Next.js: create `postcss.config.mjs` with `@unocss/postcss` and put `@unocss all;` in `app/globals.css`
+4. Astro: add the `UnoCSS()` integration in `astro.config.mjs`; use `injectReset: true` or install `@unocss/reset` if you need a reset
+5. CLI: install `@unocss/cli` if needed; use `unocss --preset wind4` when there's no config; supports `--watch`, `--out-file`, `--rewrite`
+6. CDN / Runtime: use `@unocss/runtime` or `@unocss/reset` as needed
 
 ### 5. Use Transformers
 
-> Goal: ใช้ transformers สำหรับ functionality เพิ่มเติม
+> Goal: use transformers for additional functionality
 
-1. `transformerVariantGroup`: group utilities เช่น `hover:(bg-gray-400 font-medium)`
-2. `transformerDirectives`: ใช้ `@apply`, `@screen`, `theme()`, `icon()` ใน CSS
-3. `transformerAttributifyJsx`: ใช้ valueless attributes ใน JSX/TSX
-4. `transformerCompileClass`: สร้าง short class names สำหรับ production (optional)
+1. `transformerVariantGroup`: group utilities such as `hover:(bg-gray-400 font-medium)`
+2. `transformerDirectives`: use `@apply`, `@screen`, `theme()`, `icon()` in CSS
+3. `transformerAttributifyJsx`: use valueless attributes in JSX/TSX
+4. `transformerCompileClass`: generate short class names for production (optional)
 
 ### 6. Use Additional Presets (Optional)
 
-> Goal: ใช้ presets เพิ่มเติมตามความต้องการ
+> Goal: use additional presets as needed
 
-1. `presetWebFonts`: โหลด web fonts — ภาษาไทย: `bun add @fontsource-variable/noto-sans-thai` แล้ว `import "@fontsource-variable/noto-sans-thai"` ใน entry; ตั้ง theme font stack เป็น `[<default font>, 'Noto Sans Thai Variable', sans-serif]` — per-glyph fallback ทำให้อังกฤษใช้ default font และไทยใช้ Noto Sans Thai อัตโนมัติ ไม่ต้องใช้ `:lang(th)`
+1. `presetWebFonts`: load web fonts — Thai: `bun add @fontsource-variable/noto-sans-thai` then `import "@fontsource-variable/noto-sans-thai"` in the entry; set the theme font stack to `[<default font>, 'Noto Sans Thai Variable', sans-serif]` — per-glyph fallback makes English use the default font and Thai use Noto Sans Thai automatically, no `:lang(th)` needed
 2. `presetTypography`: prose styling
 3. `presetAttributify`: attributify mode
 4. `presetTagify`: tagify mode
-5. `presetRemToPx`: แปลง rem เป็น px หรือใช้ `createRemToPxProcessor` ใน `presetWind4`
+5. `presetRemToPx`: convert rem to px, or use `createRemToPxProcessor` in `presetWind4`
 
 ### 7. Setup IDE Support (Optional)
 
-> Goal: ตั้งค่า IDE support
+> Goal: configure IDE support
 
-1. ติดตั้ง VS Code extension `antfu.unocss`
-2. ใช้ `@unocss/language-server` สำหรับ LSP
-3. ใช้ `@unocss/twoslash` สำหรับ TypeScript twoslash
+1. Install the VS Code extension `antfu.unocss`
+2. Use `@unocss/language-server` for LSP
+3. Use `@unocss/twoslash` for TypeScript twoslash
 
 ### 8. Verify
 
-> Goal: ตรวจสอบว่า UnoCSS ทำงานได้ถูกต้อง
+> Goal: confirm UnoCSS works correctly
 
-1. รัน `bun run dev` (หรือ `bunx unocss --watch` สำหรับ CLI)
-2. ทดสอบ utilities เช่น `flex`, `bg-blue-500`, `i-mdi-home`
-3. ตรวจสอบ theme CSS variables ถูก generate ใน output
-4. ตรวจสอบ dark mode ทำงานผ่าน class หรือ media query
-5. ตรวจสอบ transformers ทำงาน (variant groups, directives)
-6. รัน build เพื่อตรวจสอบว่าไม่มี error
+1. Run `bun run dev` (or `bunx unocss --watch` for the CLI)
+2. Test utilities such as `flex`, `bg-blue-500`, `i-mdi-home`
+3. Check that theme CSS variables are generated in the output
+4. Check that dark mode works via class or media query
+5. Check that transformers work (variant groups, directives)
+6. Run a build to confirm there are no errors
 
 ### Workflows
 
 - First-time install + `uno.config.ts` + presets + framework integration → `workflows/setup-unocss/SKILL.md`
-- Theme create/modify/lint — `theme.css` tokens, `uno.config.ts` map, UI token enforcement, dark mode, biome plugin → ทำ `/follow-unocss-theme` (promoted จาก workflows/theme + workflows/lint เดิม)
+- Theme create/modify/lint — `theme.css` tokens, `uno.config.ts` map, UI token enforcement, dark mode, biome plugin → do `/follow-unocss-theme` (promoted from the former workflows/theme + workflows/lint)
 
 ## Rules
 
 ### Installation
 
-- ใช้ `unocss` v66+ (latest v66.10.5, verified 2026-09-24)
-- สำหรับ Next.js ติดตั้ง `@unocss/postcss`
-- สำหรับ Nuxt ติดตั้ง `@unocss/nuxt`
-- สำหรับ Astro ติดตั้ง `@unocss/astro`
-- ใช้ package manager ที่ project ใช้ (`bun`, `pnpm`, `npm`, `yarn`)
+- Use `unocss` v66+ (latest v66.10.5, verified 2026-09-24)
+- For Next.js install `@unocss/postcss`
+- For Nuxt install `@unocss/nuxt`
+- For Astro install `@unocss/astro`
+- Use the package manager the project uses (`bun`, `pnpm`, `npm`, `yarn`)
 
 ### Configuration
 
-- ใช้ `presetWind4` เป็น preset หลัก
-- ใช้ `preflights.reset: true` แทนการ import `@unocss/reset/tailwind.css` เมื่อใช้ `presetWind4`
-- ใช้ `preflights.theme: 'on-demand'` (default) เพื่อ generate theme CSS vars เฉพาะที่ใช้
-- ใช้ `preflights.property: true` (default) เพื่อ generate `@property` rules
-- ใช้ `presetIcons` สำหรับ icon bundler พร้อม collections import
-- เพิ่ม transformers ตามต้องการ: `transformerVariantGroup`, `transformerDirectives`, `transformerAttributifyJsx`
-- ตั้งค่า `content.filesystem` เมื่อ auto-scan ไม่ครอบคลุม
-- ห้ามใช้ `shortcuts` — เขียน utilities ตรงใน markup เสมอ (อ่านง่าย, scan ตรง, ไม่มี hidden indirection); marker classes เช่น `btn`, `menu` เป็น plain classes ได้ แต่เฉพาะเพื่อให้ variant selectors (`[.btn&]`, `[.menu_&]`) หรือ JS hooks อ้างถึง — ไม่ใช่เพื่อแพ็ค styles
+- Use `presetWind4` as the main preset
+- Use `preflights.reset: true` instead of importing `@unocss/reset/tailwind.css` when using `presetWind4`
+- Use `preflights.theme: 'on-demand'` (default) to generate theme CSS vars only for what's used
+- Use `preflights.property: true` (default) to generate `@property` rules
+- Use `presetIcons` as an icon bundler with collections import
+- Add transformers as needed: `transformerVariantGroup`, `transformerDirectives`, `transformerAttributifyJsx`
+- Set `content.filesystem` when auto-scan doesn't cover everything
+- Never use `shortcuts` — always write utilities directly in the markup (readable, scans directly, no hidden indirection); marker classes like `btn`, `menu` can be plain classes, but only so variant selectors (`[.btn&]`, `[.menu_&]`) or JS hooks can reference them — not to pack styles
 
 ### Framework Integration
 
@@ -195,7 +195,7 @@ related:
 |-----------|--------------|-------------------|
 | Vite | `vite.config.ts`, `uno.config.ts` | `import 'virtual:uno.css'` in `main.ts` |
 | Nuxt | `nuxt.config.ts`, `uno.config.ts` | `uno.css` auto-injected |
-| Next.js | `postcss.config.mjs`, `uno.config.ts` | `app/globals.css` ใส่ `@unocss all;` |
+| Next.js | `postcss.config.mjs`, `uno.config.ts` | add `@unocss all;` in `app/globals.css` |
 | Astro | `astro.config.mjs`, `uno.config.ts` | `UnoCSS()` integration, optional `injectReset` |
 | CLI | `uno.config.ts` | `unocss --preset wind4 --watch` |
 ### Transformers
@@ -207,26 +207,26 @@ related:
 
 ### Migration From PresetWind3
 
-- Theme keys เปลี่ยน: `fontFamily` → `font`, `borderRadius` → `radius`, `boxShadow` → `shadow`, `breakpoints` → `breakpoint`, `easing` → `ease`, `transitionProperty` → `property`, size props → `spacing`
-- ใช้ `preflights.reset` แทนการ import `@unocss/reset`
-- Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
-- `@property` rules generate ภายใต้ `properties` layer
+- Theme keys changed: `fontFamily` → `font`, `borderRadius` → `radius`, `boxShadow` → `shadow`, `breakpoints` → `breakpoint`, `easing` → `ease`, `transitionProperty` → `property`, size props → `spacing`
+- Use `preflights.reset` instead of importing `@unocss/reset`
+- Theme CSS variables are generated on-demand under the `theme` layer
+- `@property` rules are generated under the `properties` layer
 
-- ทำ `/follow-unocss-theme` สำหรับทุก theme task (create `theme.css` + full semantic token set, modify tokens/shortcuts/dark mode, biome plugin enforcement) — branch ตาม state
-- ทำ `/follow-unocss-theme lint` สำหรับ UnoCSS lint ทั้งหมด — theme lint preset (`follow-unocss-theme/scripts/theme-lint.ts`: token parity, dark-mode completeness, semantic violations) + class order/conflict/dynamic-class + linter wiring
-- ใช้ `/follow-lib-css` ถ้าจำเป็น
-- ใช้ `/follow-tool-formatter` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- Do `/follow-unocss-theme` for every theme task (create `theme.css` + full semantic token set, modify tokens/shortcuts/dark mode, biome plugin enforcement) — branch by state
+- Do `/follow-unocss-theme lint` for all UnoCSS lint — theme lint preset (`follow-unocss-theme/scripts/theme-lint.ts`: token parity, dark-mode completeness, semantic violations) + class order/conflict/dynamic-class + linter wiring
+- Use `/follow-lib-css` if needed
+- Use `/follow-tool-formatter` if needed
+- Use `/follow-best-practice` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-1. UnoCSS v66+ ติดตั้งและทำงานได้พร้อม `presetWind4`
-2. CSS reset ทำงานผ่าน preflights โดยไม่ต้อง import reset package ในกรณีทั่วไป
-3. Theme variables generate แบบ on-demand เป็น CSS custom properties
-4. Transformers ทำงานได้ (variant groups, directives, attributify JSX)
-5. Dev server รันได้โดยไม่มี error
-6. Utilities ใช้งานได้ทันที (e.g., `flex`, `bg-blue-500`, `i-mdi-home`)
-7. Dark mode ทำงานผ่าน class หรือ media query
-8. IDE support / twoslash ทำงาน (ถ้าติดตั้ง)
+1. UnoCSS v66+ is installed and works with `presetWind4`
+2. The CSS reset works via preflights without importing the reset package in the general case
+3. Theme variables are generated on-demand as CSS custom properties
+4. Transformers work (variant groups, directives, attributify JSX)
+5. The dev server runs without errors
+6. Utilities are usable immediately (e.g., `flex`, `bg-blue-500`, `i-mdi-home`)
+7. Dark mode works via class or media query
+8. IDE support / twoslash works (if installed)

@@ -5,7 +5,7 @@ argument-hint: "[query]"
 related:
   - list-recent-bookmark-raindrop
   - list-raindrop-favorite
-  - deep-review
+  - deep-review-codebase
   - download-program
   - use-scripts
 
@@ -101,7 +101,7 @@ Use with the `raindrop` CLI only — covers authentication, `search`, `list` fil
 - Use /list-recent-bookmark-raindrop if needed
 - Use /list-raindrop-favorite if needed
 - Use /use-scripts if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 
 
 ## Expected Outcome

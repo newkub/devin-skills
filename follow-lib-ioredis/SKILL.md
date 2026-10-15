@@ -1,6 +1,6 @@
 ---
 name: follow-lib-ioredis
-description: ใช้ ioredis สำหรับ Redis client — connection, pipeline, pub/sub, cluster, Sentinel
+description: Use ioredis for the Redis client — connection, pipeline, pub/sub, cluster, Sentinel
 argument-hint: "[target-or-scope]"
 related:
   - follow-secret-manager
@@ -11,17 +11,17 @@ related:
 
 ## Goal
 
-ใช้ ioredis สำหรับ Redis client — connection, pipeline, pub/sub, cluster, Sentinel
+Use ioredis for the Redis client — connection, pipeline, pub/sub, cluster, Sentinel
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ ioredis — Redis client บน Node.js/Bun ที่เชื่อมผ่าน TCP (lib ioredis)
+Use when the task involves ioredis — the Redis client on Node.js/Bun connecting over TCP (lib ioredis)
 
-- บน Cloudflare Workers หรือ edge runtimes ที่ไม่มี TCP sockets → ใช้ REST-based client (เช่น Upstash) แทน — skill นี้ไม่ครอบคลุม
-- Credentials/`REDIS_URL` จัดการผ่าน `/follow-secret-manager` — ห้าม hardcode
+- On Cloudflare Workers or edge runtimes without TCP sockets → use a REST-based client (e.g. Upstash) instead — this skill does not cover it
+- Credentials/`REDIS_URL` are managed via `/follow-secret-manager` — never hardcode
 - First-time setup → `workflows/setup-ioredis/SKILL.md`; perf tuning → `workflows/optimize-pool/SKILL.md`
 
-- Latest: `ioredis@6.0.0` (verified 2026-09-13) — v6 major (2026-07-31): ต้อง Node ≥20, ใช้ RESP3 โดย default (`HELLO 3` พร้อม auto-fallback เป็น RESP2 เมื่อ server ไม่รองรับ); ตั้ง `protocol: 2` เพื่อคง v5 wire protocol และ `replyStyle: "resp3"` เพื่อรับ RESP3 reply shapes (default `"legacy"` คงรูปแบบเดิม)
+- Latest: `ioredis@6.0.0` (verified 2026-09-13) — v6 major (2026-07-31): requires Node ≥20, uses RESP3 by default (`HELLO 3` with auto-fallback to RESP2 when the server doesn't support it); set `protocol: 2` to keep the v5 wire protocol and `replyStyle: "resp3"` to receive RESP3 reply shapes (default `"legacy"` keeps the old format)
 - References: [apis](references/apis.md) 
 ## Execute
 
@@ -30,36 +30,36 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-ioredis/SKILL.md` — install, cluster/sentinel options | Optimize | `workflows/optimize-pool/SKILL.md` — pipelining, connection reuse 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. สร้าง client ด้วย `new Redis(url)` หรือ `Redis.Cluster` สำหรับ cluster — ใน v6 ใส่ per-node options ของ Cluster ใต้ `redisOptions`
-1. ใช้ `pipeline()`/`multi()` สำหรับ batch commands
-1. ใช้ separate connections สำหรับ pub/sub (RESP2 subscriber mode บล็อก commands อื่น; ใน v6 RESP3 connection รัน regular commands ขณะ subscribe ได้)
-1. จัดการ reconnect strategy ด้วย `retryStrategy` และ `lazyConnect` ตาม use case
-1. ใน v6 เมื่อ `enableOfflineQueue: false` ให้ส่ง commands (รวม `subscribe()`) จาก `ready` listener แทน `connect` เพราะอาจ reject ก่อน client พร้อม
+1. Create the client with `new Redis(url)` or `Redis.Cluster` for a cluster — in v6, put Cluster per-node options under `redisOptions`
+1. Use `pipeline()`/`multi()` for batch commands
+1. Use separate connections for pub/sub (RESP2 subscriber mode blocks other commands; in v6 a RESP3 connection can run regular commands while subscribed)
+1. Manage the reconnect strategy with `retryStrategy` and `lazyConnect` per use case
+1. In v6 with `enableOfflineQueue: false`, issue commands (including `subscribe()`) from the `ready` listener instead of `connect`, because they may reject before the client is ready
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib ioredis)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib ioredis)
 
 ## Rules
 
-- ไม่ share subscriber connection กับ command client
-- ตั้ง `maxRetriesPerRequest` ให้เหมาะสม (null สำหรับ BullMQ)
-- ใช้ TLS option เมื่อ connect ผ่าน network สาธารณะ
-- บน Cloudflare Workers ใช้ REST/Upstash แทน (ioredis ต้อง TCP)
+- Don't share a subscriber connection with the command client
+- Set `maxRetriesPerRequest` appropriately (null for BullMQ)
+- Use the TLS option when connecting over public networks
+- On Cloudflare Workers use REST/Upstash instead (ioredis requires TCP)
 
-- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ credentials
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-secret-manager` if credentials management is needed
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib ioredis)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib ioredis)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib ioredis)
+- No known security/performance pitfalls (lib ioredis)
+- Lint, typecheck, tests pass

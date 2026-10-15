@@ -1,6 +1,6 @@
 ---
 name: follow-my-persona
-description: คิดถามผู้ใช้เพื่อเข้าใจ preferences และ style การทำงาน
+description: Think and ask the user to understand preferences and working style
 argument-hint: "[topic]"
 related:
   - ask-me
@@ -11,13 +11,13 @@ related:
 
 ## Goal
 
-สร้างความเข้าใจเกี่ยวกับผู้ใช้เพื่อปรับปรุงประสบการณ์การทำงานร่วมกัน
+Build an understanding of the user to improve the working experience together
 
 ## Scope
 
-ใช้สำหรับสัมภาษณ์ผู้ใช้เพื่อเก็บข้อมูล preferences, coding style, และ habits
+Use for interviewing the user to collect preferences, coding style, and habits
 
-ใช้ `ask_user_question` tool จาก Windsurf system prompt เท่านั้น สำหรับการถามคำถาม และใช้ `create_memory` tool สำหรับบันทึกคำตอบ
+Use only the `ask_user_question` tool from the Windsurf system prompt for asking questions, and the `create_memory` tool for saving answers
 
 ## Execute
 
@@ -25,60 +25,60 @@ related:
 
 > Goal: Prepare Questions
 
-เตรียมคำถามสำหรับสัมภาษณ์
+Prepare questions for the interview
 
-1. ออกแบบคำถามครอบคลุมทุกด้านของการทำงาน
-2. จัดกลุ่มคำถามตาม `categories` (`coding style`, `preferences`, `habits`)
-3. กำหนด `priority` ของคำถาม (`critical`, `important`, `nice-to-have`)
-4. เตรียม `follow-up questions` สำหรับคำตอบที่น่าสนใจ
+1. Design questions covering every aspect of working
+2. Group questions by `categories` (`coding style`, `preferences`, `habits`)
+3. Set each question's `priority` (`critical`, `important`, `nice-to-have`)
+4. Prepare `follow-up questions` for interesting answers
 
 ### 2. Conduct Interview
 
 > Goal: Conduct Interview
 
-ดำเนินการสัมภาษณ์ผู้ใช้โดยใช้ `ask_user_question` tool
+Conduct the user interview using the `ask_user_question` tool
 
-1. เริ่มด้วยคำถาม `general` เพื่อสร้าง `context`
-2. ถามคำถามตาม `priority` ที่กำหนด ทีละคำถามผ่าน `ask_user_question` tool
-3. ใช้ `follow-up questions` ผ่าน `ask_user_question` tool เพื่อลึกซึ้งขึ้น
-4. วิเคราะห์คำตอบจาก `ask_user_question` response
+1. Start with `general` questions to build `context`
+2. Ask questions by the defined `priority`, one at a time, via the `ask_user_question` tool
+3. Use `follow-up questions` via the `ask_user_question` tool to go deeper
+4. Analyze the answers from the `ask_user_question` response
 
 ### 3. Analyze Responses
 
 > Goal: Analyze Responses
 
-1. จัดกลุ่มคำตอบตาม patterns
-2. ระบุ contradictions หรือ inconsistencies
-3. วิเคราะห์ implicit preferences จากคำตอบ
-4. สรุป key insights ที่พบ
+1. Group answers by patterns
+2. Identify contradictions or inconsistencies
+3. Analyze implicit preferences from the answers
+4. Summarize the key insights found
 
 ### 4. Save To Memory
 
 > Goal: Save To Memory
 
-บันทึกข้อมูลลงใน `memory system`
+Save the information into the `memory system`
 
-1. บันทึกข้อมูลลงใน `memory system` ด้วย `create_memory` tool
-2. จัดหมวดหมู่ข้อมูลตาม `type`
-3. เพิ่ม `tags` สำหรับ `easy retrieval`
-4. อัปเดท `existing memories` หากมีข้อมูลใหม่
+1. Save the information into the `memory system` with the `create_memory` tool
+2. Categorize the data by `type`
+3. Add `tags` for `easy retrieval`
+4. Update `existing memories` when there is new information
 
 ### 5. Update Context
 
 > Goal: Update Context
 
-อัปเดท `context` ตามข้อมูลที่ได้
+Update the `context` according to the gathered information
 
-1. อัปเดท `user preferences` ใน `context`
-2. ปรับปรุง `workflow choices` ตาม `preferences`
-3. เปลี่ยน `communication style` ตามความชอบ
-4. ตรวจสอบว่าข้อมูลถูกนำไปใช้จริง
+1. Update `user preferences` in the `context`
+2. Adjust `workflow choices` per the `preferences`
+3. Change the `communication style` to match preferences
+4. Verify the information is actually applied
 
 ## Rules
 
 ### 1. Question Categories
 
-คำถามควรครอบคลุมทุกด้านของการทำงาน
+Questions should cover every aspect of working
 
 - `Coding style` (`indentation`, `naming`, `patterns`)
 - `Preferences` (`tools`, `frameworks`, `languages`)
@@ -88,52 +88,52 @@ related:
 
 ### 2. Question Design
 
-ออกแบบคำถามให้มีประสิทธิภาพ
+Design questions to be effective
 
-- เป็น `open-ended` เพื่อให้คำตอบละเอียด
-- ไม่ใช่ `leading questions`
-- มี `context` ชัดเจน
-- ไม่ซ้ำซ้อน
-- สั้นกระชับแต่ชัดเจน
+- Be `open-ended` to get detailed answers
+- Not `leading questions`
+- With clear `context`
+- Not redundant
+- Short and concise but clear
 
 ### 3. Interview Techniques
 
-ใช้เทคนิคการสัมภาษณ์ที่เหมาะสม
+Use suitable interview techniques
 
-- ใช้ `active listening`
-- ถาม `clarifying questions`
-- สังเกต `patterns` ในคำตอบ
-- ไม่ `interrupt` ขณะผู้ใช้กำลังตอบ
-- สรุปกลับเพื่อยืนยันความเข้าใจ
+- Use `active listening`
+- Ask `clarifying questions`
+- Observe `patterns` in answers
+- Don't `interrupt` while the user is answering
+- Summarize back to confirm understanding
 
 ### 4. Memory Management
 
-จัดการ `memories` อย่างมีประสิทธิภาพ
+Manage `memories` effectively
 
-- ใช้ `create_memory` tool สำหรับบันทึก
-- กำหนด `tags` ที่เหมาะสม
-- อัปเดท `existing memories` แทนสร้างใหม่
-- ลบ `memories` ที่ไม่เกี่ยวข้อง
-- ใช้ `CorpusNames` ที่ถูกต้อง
+- Use the `create_memory` tool for saving
+- Assign appropriate `tags`
+- Update `existing memories` instead of creating new ones
+- Delete irrelevant `memories`
+- Use the correct `CorpusNames`
 
 ### 5. Context Application
 
-นำข้อมูลไปใช้ในการทำงานจริง
+Apply the information in real work
 
-- ปรับ `communication style` ตาม `preferences`
-- เลือก `tools` ตามความชอบ
-- ทำตาม `workflows` ที่ผู้ใช้ชอบ
-- ใช้ภาษาที่ผู้ใช้ต้องการ
-- ปรับ `verbosity` ตาม `style`
+- Adjust the `communication style` per `preferences`
+- Choose `tools` per preferences
+- Follow the `workflows` the user likes
+- Use the language the user wants
+- Adjust `verbosity` per `style`
 
-- ใช้ /ask-me ถ้าจำเป็น
-- ใช้ /dont-understand ถ้าจำเป็น
-- ใช้ /plan ถ้าจำเป็น
+- Use /ask-me if needed
+- Use /dont-understand if needed
+- Use /plan if needed
 
 ## Expected Outcome
 
-- เข้าใจ `preferences` ของผู้ใช้ครบถ้วน
-- มีข้อมูลที่บันทึกใน `memory system`
-- การทำงานปรับตาม `style` ของผู้ใช้
-- `Communication style` ตรงกับความต้องการ
-- ลดการถามซ้ำคำถามเดิม
+- A complete understanding of the user's `preferences`
+- Data saved in the `memory system`
+- Work adjusted to the user's `style`
+- `Communication style` matching the user's needs
+- Fewer repeated questions

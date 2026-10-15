@@ -182,7 +182,7 @@ Latest: `@cloudflare/ci@0.2.0` (verified 2026-09-16) — still a 0.x preview, th
 
 
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 
 

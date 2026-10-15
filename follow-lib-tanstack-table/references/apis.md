@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-table` | 9.2.x | Table |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Table | `useReactTable` / `createTable` | `createColumnHelper`, `getCoreRowModel`, `flexRender` |

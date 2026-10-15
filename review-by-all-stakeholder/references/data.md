@@ -23,8 +23,8 @@ Use when a data perspective is needed — handed off from `/review-by-all-stakeh
 |------|-------|----------|
 | data-analyst | metrics/dashboards, event tracking, reporting models, export | `### data/data-analyst` |
 | data-scientist | data quality, features, notebooks, reproducibility | `### data/data-scientist` |
-| ml-engineer | model serving, versioning, monitoring, pipelines → `/deep-review` | `### data/ml-engineer` |
-| ai-engineer | prompts, evals, guardrails, token cost → `/deep-review` | `### data/ai-engineer` |
+| ml-engineer | model serving, versioning, monitoring, pipelines → `/deep-review-codebase` | `### data/ml-engineer` |
+| ai-engineer | prompts, evals, guardrails, token cost → `/deep-review-codebase` | `### data/ai-engineer` |
 
 2. Read the `### data/<role>` section in this file
 
@@ -83,7 +83,7 @@ Act as an AI Engineer — the engineer who builds LLM-powered features, focused 
 
 - Observability — LLM call logging, latency/cost tracking, trace per request
 
-- Deep pass → delegate `/deep-review` for a full AI/LLM review
+- Deep pass → delegate `/deep-review-codebase` for a full AI/LLM review
 
 
 
@@ -97,7 +97,7 @@ Act as an AI Engineer — the engineer who builds LLM-powered features, focused 
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review` เป็นหลัก
+- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — ใช้ `/deep-review-codebase` เป็นหลัก
 
 
 
@@ -239,7 +239,7 @@ Act as an AI Engineer — the engineer who builds LLM-powered features, focused 
 
 - Retraining — retraining triggers, data refresh cadence, eval gate ก่อน promote
 
-- LLM-specific parts (prompts, evals, guardrails) → delegate `/deep-review` เป็น deep pass
+- LLM-specific parts (prompts, evals, guardrails) → delegate `/deep-review-codebase` เป็น deep pass
 
 
 
@@ -253,7 +253,7 @@ Act as an AI Engineer — the engineer who builds LLM-powered features, focused 
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — LLM parts ไป `/deep-review`
+- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass — LLM parts ไป `/deep-review-codebase`
 
 
 

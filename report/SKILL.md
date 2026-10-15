@@ -6,7 +6,7 @@ related:
   - report-todo
   - report-progress
   - suggest-next-action
-  - deep-review
+  - deep-review-codebase
 
 ---
 
@@ -48,7 +48,7 @@ related:
 
 1. ส่งข้อมูลให้ skill ทีเลือก
 2. ตรวจ output ว่าตรง format
-3. ถ้าจำเป็น ใช้ `/deep-review`
+3. ถ้าจำเป็น ใช้ `/deep-review-codebase`
 
 ### 3. Apply UX/UI Format
 
@@ -482,7 +482,7 @@ related:
 1. ตรวจ `No.` เรียงถูกต้อง
 2. ตรวจ grouping และ sorting
 3. ตรวจ emoji ใช้ตาม legend
-4. ทำ `/deep-review` ถ้าจำเป็น
+4. ทำ `/deep-review-codebase` ถ้าจำเป็น
 
 ##### Rules
 

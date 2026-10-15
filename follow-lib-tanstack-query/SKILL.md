@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-query
-description: ใช้ TanStack Query ครบวงจร — setup, queries/mutations, caching, infinite queries, prefetch, optimistic updates, persistence
+description: Use TanStack Query end to end — setup, queries/mutations, caching, infinite queries, prefetch, optimistic updates, persistence
 argument-hint: "[framework] [feature]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,61 +11,61 @@ related:
 
 ## Goal
 
-ใช้ TanStack Query (v5) ครบตั้งแต่ setup ถึง production patterns — provider, queries, mutations, caching strategy, dependent/infinite queries, prefetching, optimistic updates
+Use TanStack Query (v5) from setup to production patterns — provider, queries, mutations, caching strategy, dependent/infinite queries, prefetching, optimistic updates
 
 ## Scope
 
-ใช้กับ React, Solid, Vue, Svelte, Angular — ครอบคลุม install, `QueryClient` config, `useQuery`/`useMutation`/`useInfiniteQuery`, cache management, devtools และ testing patterns
+Works with React, Solid, Vue, Svelte, Angular — covers install, `QueryClient` config, `useQuery`/`useMutation`/`useInfiniteQuery`, cache management, devtools, and testing patterns
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
 ### 1. Install Package
 
-> Goal: ติดตั้ง package ตาม framework ที่ใช้
+> Goal: install the package matching the framework in use
 
-1. ตรวจ framework จาก `package.json` แล้วติดตั้งตาม naming convention `@tanstack/{framework}-query`:
+1. Detect the framework from `package.json`, then install per the naming convention `@tanstack/{framework}-query`:
    - `bun add @tanstack/react-query` / `solid-query` / `vue-query` / `svelte-query` / `angular-query-experimental`
-2. ถ้ามีอยู่แล้ว → skip install verify version (idempotent); ถ้าไม่แน่ใจ latest → `npm view @tanstack/react-query version`
+2. If already present → skip install and verify the version (idempotent); if unsure of latest → `npm view @tanstack/react-query version`
 
 ### 2. Setup QueryClientProvider
 
-> Goal: `QueryClient` ตัวเดียว wrap app
+> Goal: one `QueryClient` wrapping the app
 
 ```ts
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60_000,      // data "fresh" 60s — ไม่ refetch ซ้ำใน window นี้
-      gcTime: 300_000,        // cache เก็บ 5 นาทีหลัง unused
+      staleTime: 60_000,      // data stays "fresh" for 60s — no refetch within this window
+      gcTime: 300_000,        // keep cache 5 minutes after it becomes unused
       retry: 1,
-      refetchOnWindowFocus: false,  // ปิดถ้า app ไม่ต้องการ
+      refetchOnWindowFocus: false,  // disable if the app doesn't need it
     },
-    mutations: { retry: 0 },  // mutations ไม่ควร retry อัตโนมัติ (non-idempotent)
+    mutations: { retry: 0 },  // mutations should not retry automatically (non-idempotent)
   },
 })
 ```
 
-- React: `<QueryClientProvider client={queryClient}>`; Vue: `app.use(VueQueryPlugin)`; SSR (Next/Start) → client ต่อ request ตาม docs
-- SSR + dehydration → `HydrationBoundary` + `dehydrate`/`hydrate` เพื่อส่ง cache จาก server
+- React: `<QueryClientProvider client={queryClient}>`; Vue: `app.use(VueQueryPlugin)`; SSR (Next/Start) → one client per request per the docs
+- SSR + dehydration → `HydrationBoundary` + `dehydrate`/`hydrate` to pass the cache from the server
 
 ### 3. Query Patterns
 
-> Goal: ใช้ query ได้ครบทุกรูปแบบ
+> Goal: use queries in every shape
 
-1. **Basic**: `useQuery({ queryKey: ['todos', filters], queryFn })` — queryKey = array, ใส่ทุก variable ที่ queryFn ใช้
-2. **Dependent**: `useQuery({ ..., enabled: !!userId })` — query รอ dependency
-3. **Select**: `select: (data) => data.map(...)` — transform + subscribe เฉพาะ derived value (re-render น้อยลง)
+1. **Basic**: `useQuery({ queryKey: ['todos', filters], queryFn })` — queryKey is an array, include every variable queryFn uses
+2. **Dependent**: `useQuery({ ..., enabled: !!userId })` — the query waits on a dependency
+3. **Select**: `select: (data) => data.map(...)` — transform + subscribe only to the derived value (fewer re-renders)
 4. **Infinite**: `useInfiniteQuery({ queryKey, queryFn: ({pageParam}) => fetch(pageParam), initialPageParam: 0, getNextPageParam })` + `fetchNextPage`/`hasNextPage`
-5. **Shared options**: `queryOptions({ queryKey, queryFn })` — reuse ระหว่าง `useQuery`, `ensureQueryData`, prefetch
-6. **Suspense**: `useSuspenseQuery` เมื่อใช้ `<Suspense>` boundaries (v5 แยก hook)
+5. **Shared options**: `queryOptions({ queryKey, queryFn })` — reuse across `useQuery`, `ensureQueryData`, and prefetch
+6. **Suspense**: `useSuspenseQuery` when using `<Suspense>` boundaries (v5 splits the hook)
 
 ### 4. Mutation And Cache Patterns
 
-> Goal: writes + invalidation ถูกต้อง
+> Goal: correct writes + invalidation
 
-1. `useMutation({ mutationFn, onSuccess })` + `queryClient.invalidateQueries({ queryKey: ['todos'] })` — invalidate เฉพาะ subtree
+1. `useMutation({ mutationFn, onSuccess })` + `queryClient.invalidateQueries({ queryKey: ['todos'] })` — invalidate only the affected subtree
 2. **Optimistic update**: `onMutate` → `cancelQueries` + `getQueryData` snapshot + `setQueryData` optimistic → `onError` rollback → `onSettled` invalidate:
 
    ```ts
@@ -82,31 +82,31 @@ const queryClient = new QueryClient({
    })
    ```
 
-3. **Prefetch**: `queryClient.prefetchQuery` ตอน hover/route load — ลด loading spinners
-4. **Polling**: `refetchInterval: 5000` หรือ function-based interval
-5. **Persist cache**: `persistQueryClient` + async storage persister สำหรับ offline/resume
+3. **Prefetch**: `queryClient.prefetchQuery` on hover/route load — fewer loading spinners
+4. **Polling**: `refetchInterval: 5000` or a function-based interval
+5. **Persist cache**: `persistQueryClient` + an async storage persister for offline/resume
 
 ### 5. Devtools And Testing
 
-> Goal: debug ได้และเทส query code
+> Goal: debuggable and testable query code
 
-1. `bun add -D @tanstack/react-query-devtools` → `<ReactQueryDevtools />` (หรือ unified panel — ดู `config-devtools`)
-2. เทส component ที่ใช้ query: wrap ด้วย `QueryClientProvider` ที่มี `retry: false` + mock `queryFn`
-3. ทำ `/run-typecheck` และ `/run-test`
-4. ถ้า fail → `/resolve-errors` max 3 รอบ
+1. `bun add -D @tanstack/react-query-devtools` → `<ReactQueryDevtools />` (or the unified panel — see `config-devtools`)
+2. Test query-using components: wrap with a `QueryClientProvider` configured with `retry: false` + a mocked `queryFn`
+3. Run `/run-typecheck` and `/run-test`
+4. If it fails → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `QueryClient` instance เดียวต่อ app — ห้ามสร้างใน component render
-- queryKey เป็น array ใส่ทุก dependency — key ไม่ครบ = stale cache bugs
-- `staleTime` ตั้งตาม data freshness จริง — `staleTime: 0` (default) = refetch ทุก mount
-- Mutations: invalidate หรือ `setQueryData` เสมอหลัง success — ห้ามปล่อย stale UI
-- `isLoading` = first load เท่านั้น; `isFetching` = ทุก fetch — เลือกให้ถูก UX
-- Server state อยู่ใน Query เท่านั้น — ห้าม copy เข้า Store/useState (`follow-store`)
-- ใช้ `/follow-lib-tanstack-ecosystem` สำหรับ overview และ library selection
+- One `QueryClient` instance per app — never create it inside a component render
+- queryKey is an array containing every dependency — an incomplete key = stale cache bugs
+- Set `staleTime` to the data's real freshness needs — `staleTime: 0` (default) = refetch on every mount
+- Mutations: always invalidate or `setQueryData` after success — never leave stale UI
+- `isLoading` = first load only; `isFetching` = every fetch — pick the right one for the UX
+- Server state lives only in Query — never copy it into a Store/useState (`follow-store`)
+- Use `/follow-lib-tanstack-ecosystem` for the overview and library selection
 
 ## Expected Outcome
 
-- Query ทำงานครบ: fetch, cache, invalidate, optimistic, infinite, prefetch
-- Cache config ตรง data freshness requirements
-- Devtools + tests พร้อม debug
+- Queries work fully: fetch, cache, invalidate, optimistic, infinite, prefetch
+- Cache config matches the data freshness requirements
+- Devtools + tests are ready for debugging

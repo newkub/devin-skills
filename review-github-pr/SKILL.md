@@ -53,8 +53,8 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: ตรวจ code changes ของ PR
 
 1. ทำ `/run-verify` รัน lint, typecheck, scan — fail → report ก่อนแล้วค่อยต่อ
-2. ทำ `/deep-review` บน changed files — พร้อม security-sensitive changes, test coverage และ quality, docs/changelog/versioning/git hygiene
-3. ตาม domain ของ PR → ทำ `/deep-review` ใน domain ที่ diff แตะ (frontend, backend, api, auth)
+2. ทำ `/deep-review-codebase` บน changed files — พร้อม security-sensitive changes, test coverage และ quality, docs/changelog/versioning/git hygiene
+3. ตาม domain ของ PR → ทำ `/deep-review-codebase` ใน domain ที่ diff แตะ (frontend, backend, api, auth)
 - Severity: Critical = build fail, security risk, breaking change โดยไม่มี migration; High = ขาด tests, lint fail, auth change ไม่ถูก review; Medium = ขาด docs/changelog, coverage ลดเล็กน้อย; Low = formatting, cosmetic
 
 ### 4. Validate Findings
@@ -85,7 +85,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 1. CI checks ผ่านทั้งหมด: `gh pr checks <n>` — ห้ามมี `fail`/`pending` เหลือ; pending → `gh pr checks <n> --watch` หรือ `/resolve-cicd` จนเขียว
 2. ทำ `/deep-validate` บน merge result (frontmatter, types, contract) — fail → ห้าม recommend merge
-3. ทำ `/deep-review` ตาม scope ของ PR (domain ที่ diff แตะ) — blocker findings → fix ก่อน ห้าม merge
+3. ทำ `/deep-review-codebase` ตาม scope ของ PR (domain ที่ diff แตะ) — blocker findings → fix ก่อน ห้าม merge
 4. เฉพาะเมื่อ 3 ข้อผ่านครบ → verdict `ready-to-merge`; ไม่งั้น `blocked` พร้อมระบุ gate ที่ค้าง
 
 ### 7. Score And Report
@@ -158,7 +158,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ## Rules
 
 - Review เท่านั้น ไม่แก้ source โดยไม่ได้รับอนุญาต
-- ห้าม verdict `ready-to-merge` ถ้า Step 6 (Check Gate) ไม่ผ่านครบ — CI + `/deep-validate` + `/deep-review` เป็น blocking gates
+- ห้าม verdict `ready-to-merge` ถ้า Step 6 (Check Gate) ไม่ผ่านครบ — CI + `/deep-validate` + `/deep-review-codebase` เป็น blocking gates
 - Focus บน changed files ไม่ต้อง review ทั้ง codebase
 - ถ้า PR ใหญ่ → แนะนำ split ก่อน review ละเอียด
 - Title และ commits ต้องตาม conventional commits
@@ -172,7 +172,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ใช้ /resolve-github-actions-fails ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 
 - ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
@@ -186,7 +186,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ## Fix
 
-> ทำตาม `deep-review/SKILL.md` เมื่อ user confirm ให้แก้ findings
+> ทำตาม `deep-review-codebase/SKILL.md` เมื่อ user confirm ให้แก้ findings
 
 ## Expected Outcome
 

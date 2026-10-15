@@ -1,6 +1,6 @@
 ---
 name: list-git
-description: List git resources — branches, commits, releases, submodules, tags, worktrees ผ่าน top-level skills
+description: List git resources — branches, commits, releases, submodules, tags, worktrees via top-level skills
 argument-hint: "[domain]"
 related:
   - follow-tool-git
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-Dispatch ไป top-level skill ตาม git resource ที่ต้อง list — parent ทำ routing เท่านั้น
+Dispatch to the top-level skill for the git resource to list — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if unspecified → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -30,17 +30,17 @@ Dispatch ไป top-level skill ตาม git resource ที่ต้อง lis
 | `tags` | /list-git-tags — tags |
 | `worktree` | /list-git-worktree — worktrees |
 
-1. ระบุ domain จาก argument (เช่น `/list-git-branch`)
-2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/list-git-branch`)
+2. When the domain is supported → call the `/list-<parent>-<domain>` skill and follow its flow
+3. When the domain is missing or unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
+- The parent only dispatches — never duplicate the target skill's workflow
 
-- ใช้ /follow-tool-git ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /follow-tool-git if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- caller ถูก Dispatch ไป top-level skill ที่ตรง domain แล้ว list ตาม flow นั้น
+- The caller is dispatched to the top-level skill matching the domain and listed per that flow

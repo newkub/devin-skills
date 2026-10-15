@@ -44,7 +44,7 @@ Analyze a file's evolution across git history — when it changed, what changed,
 1. Major rewrites: commits with unusually large diffs (>50% of the file)
 2. Regression candidates: if there is a current bug → bisect-style search for the introducing commit
 3. `git log -S"<pattern>"` — find when a string/symbol entered or left (pickaxe)
-4. `/deep-review` or `/git-file-history` for detailed diffs of commits of interest
+4. `/deep-review-codebase` or `/git-file-history` for detailed diffs of commits of interest
 
 ### 4. Report Evolution
 

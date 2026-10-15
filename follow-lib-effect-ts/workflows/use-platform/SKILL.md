@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้ `@effect/platform-*` abstractions — FileSystem, Path, HttpServer/HttpClient, Command, Socket, Terminal — แบบ runtime-agnostic
+Use `@effect/platform-*` abstractions — FileSystem, Path, HttpServer/HttpClient, Command, Socket, Terminal — runtime-agnostically
 
 ## Scope
 
-platform services (v3: `@effect/platform`, `platform-node`, `platform-bun`, `platform-browser`, `platform-node-shared`) — API-consistent services ที่ testable ผ่าน Layer swap
+platform services (v3: `@effect/platform`, `platform-node`, `platform-bun`, `platform-browser`, `platform-node-shared`) — API-consistent services that are testable via Layer swap
 
 ## Execute
 
@@ -25,7 +25,7 @@ bun i @effect/platform @effect/platform-bun      # Bun
 # @effect/platform-node (Node), @effect/platform-browser (browser)
 ```
 
-- ทุก service เป็น Tag — provide ด้วย runtime layer: `BunContext.layer`, `NodeContext.layer`
+- Every service is a Tag — provide with the runtime layer: `BunContext.layer`, `NodeContext.layer`
 
 ### 2. Core Services
 
@@ -50,7 +50,7 @@ const HttpLive = HttpRouter.Default.pipe(Layer.provide(BunHttpServer.layer({ por
 ```
 
 - `HttpClient` — request building, retries, `schemaBodyJson`/`schemaNoBody` decode integration
-- `HttpServer` — router groups, middleware, multipart, websockets (per-runtime support ต่างกัน)
+- `HttpServer` — router groups, middleware, multipart, websockets (support differs per runtime)
 
 ### 4. Command And Interop
 
@@ -59,17 +59,17 @@ const HttpLive = HttpRouter.Default.pipe(Layer.provide(BunHttpServer.layer({ por
 
 ### 5. Testability
 
-- Platform services mockable ผ่าน Layer — `FileSystem` มี `FileSystem.layerNoop`/test impls
-- อย่า import `fs`/`path` ตรงใน effect code — ผ่าน platform services เสมอ
+- Platform services are mockable via Layer — `FileSystem` has `FileSystem.layerNoop`/test impls
+- Don't import `fs`/`path` directly inside Effect code — always go through platform services
 
 ## Rules
 
-- Install platform package **ที่ตรง runtime** — `platform-node` ≠ `platform-bun` context layers
-- ทุก IO (fs/http/process) ผ่าน platform service — test แทนด้วย Layer
-- HttpClient reuse instance — อย่า `fetch` ตรงถ้าอยู่ใน effect world
-- Check runtime support matrix — บาง service (Terminal, Socket) ไม่มีในบาง platform
+- Install the platform package **matching the runtime** — `platform-node` ≠ `platform-bun` context layers
+- All IO (fs/http/process) goes through platform services — substitute with Layers in tests
+- Reuse the `HttpClient` instance — don't call `fetch` directly when inside the effect world
+- Check the runtime support matrix — some services (Terminal, Socket) don't exist on some platforms
 
 ## Expected Outcome
 
-- IO ผ่าน platform services ครบ, runtime layer provide ที่ boundary
-- Testable ผ่าน Layer swap — ไม่ mock module imports
+- IO fully via platform services, runtime layer provided at the boundary
+- Testable through Layer swap — no mocking module imports

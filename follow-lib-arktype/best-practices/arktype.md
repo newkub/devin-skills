@@ -1,32 +1,32 @@
 # Arktype — Best Practices
 
-Recommended patterns สำหรับ Arktype — runtime validation ที่ infer TypeScript types จาก definition เดียว
+Recommended patterns for Arktype — runtime validation that infers TypeScript types from a single definition
 
 ## Recommended Patterns
 
-- เขียน type ด้วย `type()` DSL string เป็นหลัก — concise และ infer TS type อัตโนมัติ: `type("{ name: string, age?: number }")`
-- ใช้ `type.infer` / `typeof t.infer` สำหรับ static type — definition เป็น single source of truth (ไม่เขียน interface แยก)
-- จัดกลุ่ม types ที่เกี่ยวกันด้วย `scope()` — share aliases และ reference กันใน scope เดียว
-- Validate ที่ boundary เท่านั้น (API input, env, external data) — data ภายในไม่ต้อง re-validate
-- ใช้ `.assert` สำหรับ throw-on-invalid, `.allows` สำหรับ boolean check — เลือกตาม error strategy
+- Write types with the `type()` DSL string as the main approach — concise and infers the TS type automatically: `type("{ name: string, age?: number }")`
+- Use `type.infer` / `typeof t.infer` for the static type — the definition is the single source of truth (don't write a separate interface)
+- Group related types with `scope()` — share aliases and reference each other within one scope
+- Validate at the boundary only (API input, env, external data) — internal data doesn't need re-validation
+- Use `.assert` for throw-on-invalid, `.allows` for a boolean check — choose per the error strategy
 
 ## Common Pitfalls
 
-- `type()` throw ทันทีที่ compile เมื่อ definition ผิด — parse errors เป็น build-time not runtime; test definitions เสมอ
-- Traversal errors ของ Arktype เป็น structured `ArkErrors` — iterate แล้ว format เอง อย่า rely บน raw `error.message` string เดียว
-- Morphs (`.to()`/pipe) เปลี่ยน output type — ตรวจว่า downstream รับ morphed type ไม่ใช่ input type
-- Optional vs default ต่างกัน: `key?:` = ไม่ต้องมี, `key = default` (ใน scope syntax) = เติมค่า — เลือกให้ตรง intent
+- `type()` throws immediately at compile time when the definition is wrong — parse errors are build-time not runtime; always test the definitions
+- Arktype's traversal errors are a structured `ArkErrors` — iterate and format yourself, don't rely on a single raw `error.message` string
+- Morphs (`.to()`/pipe) change the output type — check that downstream accepts the morphed type, not the input type
+- Optional vs default differ: `key?:` = may be absent, `key = default` (in the scope syntax) = fills the value — pick what matches the intent
 
 ## Perf Notes
 
-- Arktype JIT-compiles validators — compile ครั้งเดียวแล้ว reuse `type` object; ห้ามสร้าง `type()` ใน loop/hot path
-- `.assert`/`.allows` เร็วกว่า try/catch `parse` — ใช้ตามความเหมาะสม
+- Arktype JIT-compiles validators — compile once then reuse the `type` object; never create `type()` inside a loop/hot path
+- `.assert`/`.allows` are faster than try/catch `parse` — use as appropriate
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `type()` + `type.infer` single source | เขียน interface + validator แยกกัน |
-| `scope()` สำหรับ type families | global aliases กระจาย |
-| validate ที่ boundary เท่านั้น | validate ซ้ำทุก function layer |
-| reuse compiled `type` | `type()` ภายใน request handler |
+| `type()` + `type.infer` single source | write interface + validator separately |
+| `scope()` for type families | scattered aliases across files |
+| validate at the boundary only | re-validate at every function layer |
+| reuse compiled `type` | `type()` inside a request handler |

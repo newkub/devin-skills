@@ -10,19 +10,20 @@ related:
   - update-features-md
   - update-tests
   - update-config
-  - deep-review
+  - deep-review-codebase
   - improve
   - check-should-update
   - run-check
   - deep-validate
   - report
   - suggest-next-action
+  - follow-up-to-date
 
 ---
 
 ## Goal
 
-รักษา source code ให้ทันสมัยและ sync กับ dependencies, config, codegen และ docs เสมอ — ตรวจหาส่วนที่ stale แล้ว dispatch ไปยัง `update-*`/`check-*` ที่ตรง domain จนผ่าน validation
+รักษา source code ให้ทันสมัยและ sync กับ dependencies, config, codegen และ docs เสมอ — ตรวจหาส่วนที่ stale แล้ว dispatch ไปยัง `update-*`/`check-*` ที่ตรง domain จนผ่าน validation (เป็น executor ของ domain source code ตามหลัก `/follow-up-to-date`)
 
 ## Scope
 
@@ -35,9 +36,9 @@ related:
 > Goal: รู้ว่าอะไรใน project stale
 
 1. ทำ `/check-should-update` ดู git changes เพื่อประเมินว่า target ต้องอัปเดต
-2. ทำ `/deep-review` scope `deprecated-apis` หา code ที่ใช้ deprecated APIs/dependencies
-3. ทำ `/deep-review` scope `content-outdate` ตรวจ skills/docs/specs ที่ล้าสมัย
-4. ทำ `/deep-review` domain `review-config` ตรวจ config ที่ drift จาก defaults
+2. ทำ `/deep-review-codebase` scope `deprecated-apis` หา code ที่ใช้ deprecated APIs/dependencies
+3. ทำ `/deep-review-codebase` scope `content-outdate` ตรวจ skills/docs/specs ที่ล้าสมัย
+4. ทำ `/deep-review-codebase` domain `review-config` ตรวจ config ที่ drift จาก defaults
 5. ตรวจ manifest drift — `package.json`/`Cargo.toml`/`go.mod` เปลี่ยนแต่ lockfile หรือ code ไม่ตาม
 6. รวม signals เป็น list: `{area, signal, severity}`
 

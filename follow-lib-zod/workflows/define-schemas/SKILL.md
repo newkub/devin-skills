@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-เขียน Zod schemas ครบ — primitives→complex types, refinements/transforms, type inference, schema composition patterns
+Write complete Zod schemas — primitives→complex types, refinements/transforms, type inference, schema composition patterns
 
 ## Scope
 
@@ -38,7 +38,7 @@ const User = z.object({
 type User = z.infer<typeof User>         // derive TS type — single source
 ```
 
-- v4: `z.uuid()`, `z.email()`, `z.url()`, `z.iso.datetime()` เป็น top-level (เร็วกว่า `z.string().email()` chain)
+- v4: `z.uuid()`, `z.email()`, `z.url()`, `z.iso.datetime()` are top-level (faster than the `z.string().email()` chain)
 - `z.literal`, `z.union`, `z.tuple`, `z.null`, `z.unknown`, `z.any`, `z.never`, `z.templateLiteral`
 
 ### 2. Unions And Discriminated
@@ -50,8 +50,8 @@ const Event = z.discriminatedUnion('type', [
 ])
 ```
 
-- `z.discriminatedUnion` — fast + better errors กว่า `z.union` (ต้อง literal discriminator)
-- `z.union` — fallback เมื่อไม่มี discriminator field
+- `z.discriminatedUnion` — faster + better errors than `z.union` (requires a literal discriminator)
+- `z.union` — the fallback when there is no discriminator field
 
 ### 3. Refinements And Transforms
 
@@ -64,8 +64,8 @@ const Slug = z.string().transform(s => s.toLowerCase())
 const Positive = z.number().check(z.positive())              // v4 check() API
 ```
 
-- `.refine` sync checks; `.refine` async ด้วย async fn; `.superRefine` multi-issue custom (v3) → v4 `.check()`
-- `.transform` — output type ต่างจาก input (`z.input` vs `z.output` types)
+- `.refine` sync checks; `.refine` async with an async fn; `.superRefine` multi-issue custom (v3) → v4 `.check()`
+- `.transform` — the output type differs from the input (`z.input` vs `z.output` types)
 - `.pipe()` — chain schemas post-parse (validate → transform pipeline)
 
 ### 4. Composition Patterns
@@ -74,17 +74,17 @@ const Positive = z.number().check(z.positive())              // v4 check() API
 - Recursive: `const Node: z.ZodType<Node> = z.lazy(() => z.object({ children: z.array(Node) }))`
 - Generic: `const Paginated = <T>(item: z.ZodType<T>) => z.object({ items: z.array(item), total: z.int() })`
 - Branded: `z.string().brand<'UserId'>()` — nominal typing
-- `.catch(default)` — fallback on invalid; `.readonly()` — freeze output type
+- `.catch(default)` — fallback on invalid; `.readonly()` — freeze the output type
 
 ## Rules
 
-- Type derive จาก schema เท่านั้น: `z.infer`/`z.output` — ห้ามเขียน interface ซ้ำ
-- `discriminatedUnion` ก่อน `union` เมื่อมี discriminator
-- `.transform` แยกกับ `.refine` — refine=validate, transform=change value
-- Schema ที่ boundary เท่านั้น — ภายใน trust inferred types
-- v4 API preference — `z.uuid()` etc. top-level; `.check()` แทน chained methods บางตัว (เช็ค v4 docs)
+- Derive types from the schema only: `z.infer`/`z.output` — never write a duplicate interface
+- `discriminatedUnion` before `union` when a discriminator exists
+- Keep `.transform` separate from `.refine` — refine=validate, transform=change value
+- Schemas only at boundaries — internally trust the inferred types
+- Prefer the v4 API — `z.uuid()` etc. top-level; `.check()` instead of some chained methods (check the v4 docs)
 
 ## Expected Outcome
 
-- Schemas composable, types derive ผ่าน `z.infer`
-- Unions/refinements/transforms ใช้ถูก pattern
+- Schemas are composable, types derive via `z.infer`
+- Unions/refinements/transforms use the right patterns

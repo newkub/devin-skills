@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/highlight` | 1.0.x | Highlight |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Highlight | highlighter API | themed HTML token output |

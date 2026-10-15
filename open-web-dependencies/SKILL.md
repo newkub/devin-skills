@@ -1,6 +1,6 @@
 ---
 name: open-web-dependencies
-description: เปิด website ของ dependencies จาก package manifest
+description: Open dependency websites from a package manifest
 argument-hint: "[manifest]"
 related:
   - deep-research
@@ -11,49 +11,49 @@ related:
 
 ## Goal
 
-อ่าน package manifest และเปิด website ของ dependencies ที่ใช้ใน project
+Read a package manifest and open the websites of the dependencies used in the project
 
 ## Scope
 
-ใช้ `open-web-dependencies` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
+Use `open-web-dependencies` for specific tasks and covering workflows
 
 ## Execute
 
 ### 1. Read Package Manifest
 
-> Goal: อ่าน package manifest เพื่อระบุ dependencies ทั้งหมด
+> Goal: Read the package manifest to identify all dependencies
 
-1. อ่าน package.json, Cargo.toml, หรือ manifest อื่นๆ
-2. ระบุ dependencies ทั้งหมดใน project
-3. จัดกลุ่มตามประเภทของ dependencies
+1. Read package.json, Cargo.toml, or other manifests
+2. Identify all dependencies in the project
+3. Group them by dependency type
 
 ### 2. Open Dependencies Websites
 
-> Goal: เปิด website ของ dependencies ตามที่ระบุหรือทั้งหมด
+> Goal: Open dependency websites as specified or all of them
 
-1. ถ้าไม่ระบุ dependencies ที่ต้องการ: เปิด website ทุกตัว
-2. ถ้าระบุ dependencies ที่ต้องการ: เปิดเฉพาะตัวนั้นๆ
-3. Resolve website ตามลำดับ: `homepage`/`repository` field ใน manifest → registry page (`https://www.npmjs.com/package/<name>` สำหรับ npm, `https://crates.io/crates/<name>` สำหรับ Cargo, `https://pkg.go.dev/<module>` สำหรับ Go)
-4. เปิดด้วย native OS command (`start`/`open`/`xdg-open`) หรือทำ `/open-web`
-5. ค้นหาข้อมูล config, API keys, หรือ environment variables ที่จำเป็น
-6. คัดลอกค่าที่ได้ไปใช้ใน project
+1. If no dependencies are specified: open every website
+2. If dependencies are specified: open only those
+3. Resolve websites in order: the `homepage`/`repository` field in the manifest → the registry page (`https://www.npmjs.com/package/<name>` for npm, `https://crates.io/crates/<name>` for Cargo, `https://pkg.go.dev/<module>` for Go)
+4. Open with a native OS command (`start`/`open`/`xdg-open`) or do `/open-web`
+5. Look up the needed config, API keys, or environment variables
+6. Copy the obtained values into the project
 
 ## Rules
 
-1. ต้องมีสิทธิ์เข้าถึง accounts ของ services ต่างๆ
-2. เก็บ secrets ไว้อย่างปลอดภัย ห้าม commit ไปยัง repository
-3. ใช้ environment variables หรือ secrets management tools
-4. อย่าแชร์ secrets กับบุคคลอื่น
+1. Must have access to the accounts of the respective services
+2. Store secrets securely; never commit them to the repository
+3. Use environment variables or secrets management tools
+4. Never share secrets with other people
 
-- ใช้ /deep-research dependencies ถ้าจำเป็น
-- ใช้ /follow-tool-madge ถ้าจำเป็น
-- ใช้ /list-dependencies ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /run-install ถ้าจำเป็น
+- Use /deep-research dependencies if needed
+- Use /follow-tool-madge if needed
+- Use /list-dependencies if needed
+- Use /run-dev if needed
+- Use /run-install if needed
 
 ## Expected Outcome
 
-- ระบุ dependencies ทั้งหมดจาก package manifest
-- เปิด website ของ dependencies ตามที่ต้องการ
-- ได้ข้อมูล config, API keys, หรือ environment variables ที่จำเป็น
-- ตั้งค่า dependencies ใน project สำเร็จ
+- All dependencies are identified from the package manifest
+- Dependency websites open as requested
+- The needed config, API keys, or environment variables are obtained
+- Dependencies are configured in the project successfully

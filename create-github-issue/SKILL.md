@@ -3,7 +3,7 @@ name: create-github-issue
 description: Create, search, edit, close, reopen, delete, and manage GitHub issues via the `gh` CLI
 argument-hint: "[action] [repo]"
 related:
-  - follow-github-issue-templates
+  - follow-dot-github
   - resolve-github-issue-by-me
   - create-github
   - update-github-issue
@@ -18,7 +18,7 @@ Use `gh issue` to create, search, view, edit, close, reopen, delete, and manage 
 
 ## Scope
 
-- Works with the skills: `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/deep-review`, `/update-github-issue`
+- Works with the skills: `/open-github`, `/list-github-issue`, `/follow-dot-github`, `/create-github-pr`, `/deep-review-codebase`, `/update-github-issue`
 - Supports the current repo or `--repo owner/repo`
 - Not a full-featured project management tool
 
@@ -58,16 +58,17 @@ See also: `/resolve-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-web`
 > Goal: Format the body according to the issue type
 
 1. If the repo has `.github/ISSUE_TEMPLATE/*.yml` → use the repo templates
-2. If the repo has no templates → read `create-github-issue/templates/index.md` and pick the matching type:
+2. If the repo should get issue forms for every project type (bug, feature, plan, test, questions, agents-task, merged from `/follow-github-issue-templates`) → read `references/issue-forms.md` and copy the Forms YAML from `templates/forms/` into `.github/ISSUE_TEMPLATE/`
+3. If the repo has no templates → read `create-github-issue/templates/index.md` and pick the matching type:
    - `bug` → `templates/bug.md`
    - `feature` → `templates/feature.md`
    - `idea` → `templates/idea.md`
    - `plan` → `templates/plan.md`
    - `question` → `templates/question.md`
-3. If the type is `idea` → draw the ANSI UI sketch yourself by reading the real project files; never use placeholders, put the actual sketch inside the code fence
-4. Read the chosen template and replace placeholders with real information
-5. The title must be English Title Case, at most 80 characters
-6. Write the description in English, except technical terms, project/skill names, paths, and commands
+4. If the type is `idea` → draw the ANSI UI sketch yourself by reading the real project files; never use placeholders, put the actual sketch inside the code fence
+5. Read the chosen template and replace placeholders with real information
+6. The title must be English Title Case, at most 80 characters
+7. Write the description in English, except technical terms, project/skill names, paths, and commands
 
 ### 5. Create Issue
 

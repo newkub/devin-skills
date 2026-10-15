@@ -3,7 +3,7 @@ name: update-tests
 description: Write/update tests across all layers — unit, integration, e2e, contract, visual — until green
 argument-hint: "[scope-or-files]"
 related:
-  - deep-review
+  - deep-review-codebase
   - run-test
   - follow-tool-playwright
   - follow-tool-vitest
@@ -11,6 +11,7 @@ related:
   - use-subagents
   - resolve-errors
   - run-check
+  - follow-lib-tstyche
   - report
   - suggest-next-action
 
@@ -24,9 +25,9 @@ Write and update tests to cover every test type and every layer — unit, integr
 
 Use when you want tests written/updated comprehensively — pick layers by scope: if files are given, check which layer they belong to and write every suitable type, not just unit
 
-- If the suite hasn't been reviewed → run `/deep-review` first
+- If the suite hasn't been reviewed → run `/deep-review-codebase` first
 - If you only want to run tests → `/run-test <domain>` matching the layer, or `/run-test all`
-- If you want to improve test suite quality → `/deep-review-then-fix`
+- If you want to improve test suite quality → `/deep-review-codebase-then-fix`
 - If the scope spans many modules → dispatch via `/use-subagents`
 
 ## Execute
@@ -61,7 +62,7 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 
 > Goal: Write every layer the scope requires
 
-Follow [## Merged Details → `### references/layers`](## Merged Details → `### references/layers`) — unit, integration, e2e (Playwright per `/follow-tool-playwright`, Vitest per `/follow-tool-vitest`), contract, property-based, mutation, performance, security, accessibility, visual
+Follow [## Merged Details → `### references/layers`](## Merged Details → `### references/layers`) — unit, integration, e2e (Playwright per `/follow-tool-playwright`, Vitest per `/follow-tool-vitest`), contract, type-level (tstyche per `/follow-lib-tstyche`), property-based, mutation, performance, security, accessibility, visual
 
 Every handler/function must have: happy path, error path, edge cases, unauthorized, input validation + conditional categories as the logic warrants
 
@@ -302,7 +303,7 @@ Update unit tests to match refactored/signature-changed code — mocks, assertio
 
 1. A refactor that adds new branches/functions → add test cases per `/update-tests`' code-path map
 2. Preserve the AAA pattern and `should [expected] when [condition]` test names per the project
-3. Run `/deep-review` — no shared state, complete cleanup
+3. Run `/deep-review-codebase` — no shared state, complete cleanup
 
 ###### 4. Run And Verify
 
@@ -346,6 +347,7 @@ Pick layers by scope — every handler/function has required categories first, t
 - Sanitization — malicious input → sanitized
 - userId injection — userId must come from auth, not input
 - Empty results, optional fields, concurrency, regression, contract, property-based, a11y, performance
+- Type-level — TS libraries/SDKs with a public type contract: add a tstyche layer per `/follow-lib-tstyche`
 
 Use `it.each`/table-driven for multiple boundary values, a validation matrix, a permission matrix (role × action)
 
@@ -378,6 +380,11 @@ Use `it.each`/table-driven for multiple boundary values, a validation matrix, a 
 
 - API schema compatibility between services — `pact` or schema validation
 - Breaking changes → versioning/deprecation, don't remove immediately
+
+##### Type Testing
+
+- TypeScript public-API type contract — `tstyche` files (`*.tst.ts`), asserted via relation/ability matchers; `--target` verifies the declared TypeScript version range — `/follow-lib-tstyche`
+- Compile-time layer: never executes code — complements, doesn't replace, unit tests
 
 ##### Property-Based
 

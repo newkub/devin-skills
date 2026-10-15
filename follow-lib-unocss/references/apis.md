@@ -29,7 +29,7 @@
 | `@unocss/astro` | Astro integration | `UnoCSS({ injectReset: true })` in `astro.config.mjs` |
 | `@unocss/cli` | standalone CLI | see `cli.md` |
 | `@unocss/runtime` | CDN runtime | `import initUnocssRuntime from '@unocss/runtime'` |
-| `@unocss/reset` | CSS resets | `@unocss/reset/tailwind.css` — ใช้ `preflights.reset` แทนกับ wind4 |
-| `@unocss/eslint-plugin` | ESLint plugin (66.10.5) | `unocss.configs.flat` — setup ใน /follow-unocss-theme lint |
+| `@unocss/reset` | CSS resets | `@unocss/reset/tailwind.css` — use `preflights.reset` instead with wind4 |
+| `@unocss/eslint-plugin` | ESLint plugin (66.10.5) | `unocss.configs.flat` — setup in /follow-unocss-theme lint |
 | `@unocss/language-server` | LSP | editor integration |
 | `@unocss/twoslash` | TypeScript twoslash | docs tooling |

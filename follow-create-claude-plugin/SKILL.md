@@ -9,7 +9,7 @@ related:
   - ask-me
   - search
   - follow-harness-engineering
-  - deep-review
+  - deep-review-codebase
 
 ---
 
@@ -29,7 +29,7 @@ For building a Claude Code plugin from scratch to extend Claude with custom skil
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest plugin schema, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest plugin schema, then run `/deep-review-codebase` to summarize the tech stack
 2. Record the reasons for choosing the stack/components as a reference for the next step (create claude plugin)
 
 ### 2. Gather Requirements
@@ -103,7 +103,7 @@ For building a Claude Code plugin from scratch to extend Claude with custom skil
 
 - Use /follow-create-sdk if needed
 - Use /search-skills if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 

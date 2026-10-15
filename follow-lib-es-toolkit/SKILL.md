@@ -1,6 +1,6 @@
 ---
 name: follow-lib-es-toolkit
-description: ใช้ es-toolkit สำหรับ JS/TS utility functions — tree-shakeable, type-safe, เร็วกว่า Lodash, มี /compat
+description: Use es-toolkit for JS/TS utility functions — tree-shakeable, type-safe, faster than Lodash, with /compat
 argument-hint: "[target-or-scope]"
 related:
   - follow-lang-typescript
@@ -14,138 +14,138 @@ related:
 
 ## Goal
 
-ใช้ es-toolkit เขียน JS/TS utilities แบบ modern, tree-shakeable และ type-safe แทน Lodash หรือ utils เขียนเอง — พร้อม migrate จาก Lodash ทีละขั้นด้วย `es-toolkit/compat`
+Use es-toolkit to write modern, tree-shakeable, type-safe JS/TS utilities instead of Lodash or hand-rolled utils — with step-by-step Lodash migration via `es-toolkit/compat`
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ `es-toolkit` — ติดตั้ง, array/object/string/math/predicate/function/promise utilities, migrate จาก Lodash, หรือเลือก core vs compat
+Use when the task involves `es-toolkit` — install, array/object/string/math/predicate/function/promise utilities, migrating from Lodash, or choosing core vs compat
 
-- Latest: `es-toolkit@1.52.0` (verified 2026-10-12) — MIT, ไม่มี peer deps, ใช้ได้ทั้ง ESM และ CJS
-- Core API (`es-toolkit`) เร็วกว่า lodash 2-3× และ bundle เล็กกว่าถึง 97% ผ่าน tree-shaking — `es-toolkit/compat` mirror Lodash 1:1 เพื่อ migration เท่านั้น (ใหญ่และช้ากว่า core)
-- ถ้าต้องการ functional composition แบบ data-first/data-last + `pipe` → `/follow-lib-remedajs`; es-toolkit เป็น imperative utility (signature แบบ lodash-style) ไม่มี pipe
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Latest: `es-toolkit@1.52.0` (verified 2026-10-12) — MIT, no peer deps, works as both ESM and CJS
+- The core API (`es-toolkit`) is 2-3× faster than lodash and up to 97% smaller in bundle via tree-shaking — `es-toolkit/compat` mirrors lodash 1:1 for migration only (larger and slower than core)
+- For data-first/data-last functional composition + `pipe` → `/follow-lib-remedajs`; es-toolkit is an imperative utility (lodash-style signatures) with no pipe
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Execute
 
 ### 1. Install And Check Version
 
-> Goal: ติดตั้ง es-toolkit เวอร์ชันที่ถูกต้อง
+> Goal: install the correct es-toolkit version
 
-1. รัน `bun add es-toolkit` (ตาม package manager ของ project — npm: `npm i es-toolkit`, deno: `deno add jsr:@es-toolkit/es-toolkit`)
-2. ตรวจเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/es-toolkit` (ปัจจุบัน 1.52.0, verified 2026-10-12)
-3. ใช้ named imports จาก barrel `import { chunk, debounce } from 'es-toolkit'` หรือจาก submodule `import { debounce } from 'es-toolkit/function'` — ทั้งสองแบบ tree-shake ได้
-4. อย่า import ทั้ง library แบบ namespace (`import * as _ from 'es-toolkit'`) — เสียประโยชน์ tree-shaking ใน bundler ที่วิเคราะห์ไม่ได้
+1. Run `bun add es-toolkit` (per the project's package manager — npm: `npm i es-toolkit`, deno: `deno add jsr:@es-toolkit/es-toolkit`)
+2. Check the latest version at `https://www.npmjs.com/package/es-toolkit` (currently 1.52.0, verified 2026-10-12)
+3. Use named imports from the barrel `import { chunk, debounce } from 'es-toolkit'` or from a submodule `import { debounce } from 'es-toolkit/function'` — both tree-shake
+4. Don't import the whole library as a namespace (`import * as _ from 'es-toolkit'`) — loses tree-shaking benefits in bundlers that can't analyze it
 
 ### 2. Choose Core Or Compat
 
-> Goal: เลือก entry point ให้เหมาะกับสถานะ migration
+> Goal: pick the entry point suited to the migration status
 
-1. project ใหม่ → ใช้ core (`es-toolkit`) เท่านั้น — API ทันสมัย, performance ดีที่สุด
-2. project ที่ใช้ lodash อยู่ → เปลี่ยน import path เป็น `es-toolkit/compat` ก่อน (`import { chunk } from 'es-toolkit/compat'`) — behavior ตรงกับ lodash เพื่อปลด dependency ได้ทันที
-3. หลังจากย้ายเข้า compat สำเร็จ → ค่อยๆ เปลี่ยน function ที่ core มีชื่อตรงกันกลับเข้า `es-toolkit` ทีละตัว แล้ววัด bundle size ซ้ำ
-4. compat ไม่มี: `sortedUniq`, `mixin`, `noConflict`, `runInContext` — ต้องเขียนเองหรือ redesign
-5. อย่าผสม import จาก `es-toolkit` และ `es-toolkit/compat` ในไฟล์เดียวโดยไม่จำเป็น — สอง implementation อาจให้ semantics ต่างกัน (เช่น clone แบบตื้น)
+1. New project → use core (`es-toolkit`) only — modern API, best performance
+2. Project already on lodash → switch import paths to `es-toolkit/compat` first (`import { chunk } from 'es-toolkit/compat'`) — behavior matches lodash so the dependency can be dropped immediately
+3. After a successful compat move → gradually switch functions that exist in core with matching names back to `es-toolkit`, one at a time, and re-measure bundle size
+4. Not in compat: `sortedUniq`, `mixin`, `noConflict`, `runInContext` — must be hand-written or redesigned
+5. Don't mix imports from `es-toolkit` and `es-toolkit/compat` in one file unnecessarily — the two implementations may differ in semantics (e.g. shallow clone)
 
 ### 3. Work With Arrays
 
-> Goal: เลือก array utilities ให้ตรง operation
+> Goal: pick array utilities matching the operation
 
 1. Slice/dedupe: `chunk`, `uniq`/`uniqBy`/`uniqWith`, `differenceBy`, `intersection`, `union`, `xor`, `without`, `pull`, `remove`, `windowed`, `compact`
 2. Group/aggregate: `groupBy`, `keyBy`, `countBy`, `partition`, `sumBy`/`meanBy` (math), `maxBy`/`minBy`, `sample`/`sampleSize`/`shuffle`
-3. Order: `sortBy(arr, criteria)` — criteria เป็น array ของ property name หรือ mapping fn, เรียง ascending ตาม priority; `orderBy(arr, criteria, orders)` เมื่อต้องการ asc/desc ผสม
+3. Order: `sortBy(arr, criteria)` — criteria is an array of property names or mapping fns, sorted ascending by priority; `orderBy(arr, criteria, orders)` when mixing asc/desc
 4. Flatten/zip: `flatten`, `flattenDeep`, `flatMap`, `flatMapDeep`, `zip`, `zipWith`, `zipObject`, `unzip`, `unzipWith`
-5. Async per-item: `mapAsync`, `filterAsync`, `forEachAsync`, `reduceAsync`, `flatMapAsync` (มี concurrency option)
+5. Async per-item: `mapAsync`, `filterAsync`, `forEachAsync`, `reduceAsync`, `flatMapAsync` (with a concurrency option)
 6. Set math: `cartesianProduct`, `combinations`
 
 ### 4. Work With Objects
 
-> Goal: transform และ merge objects แบบ immutable
+> Goal: transform and merge objects immutably
 
 1. Pick/omit: `pick`, `pickBy`, `omit`, `omitBy`, `invert`, `findKey`, `sortKeys`
 2. Map values/keys: `mapValues`, `mapKeys`, `mapValuesAsync`, `mapKeysAsync`
-3. Merge: `merge`, `mergeWith` (mutates target แบบ lodash) — ใช้ `toMerged(a, b)` เมื่อต้องการ immutable result
-4. Clone: `clone` (ตื้น, รองรับ array/plain object/Map/Set/Date/TypedArray), `cloneDeep`, `cloneDeepWith`, `deepFreeze`
-5. Convert keys: `toCamelCaseKeys`, `toSnakeCaseKeys`, `toKebabCaseKeys`, `toPascalCaseKeys`, `toConstantCaseKeys`; `flattenObject` สำหรับ `{"a.b": 1}` style
-6. Collection-aware helpers มีแยก namespace: `es-toolkit/map` (filter, mapValues, countBy, ...) และ `es-toolkit/set` — สำหรับ `Map`/`Set` โดยตรง ไม่ใช่ plain object
+3. Merge: `merge`, `mergeWith` (mutates the target like lodash) — use `toMerged(a, b)` for an immutable result
+4. Clone: `clone` (shallow, supports array/plain object/Map/Set/Date/TypedArray), `cloneDeep`, `cloneDeepWith`, `deepFreeze`
+5. Convert keys: `toCamelCaseKeys`, `toSnakeCaseKeys`, `toKebabCaseKeys`, `toPascalCaseKeys`, `toConstantCaseKeys`; `flattenObject` for `{"a.b": 1}` style
+6. Collection-aware helpers have their own namespaces: `es-toolkit/map` (filter, mapValues, countBy, ...) and `es-toolkit/set` — for actual `Map`/`Set`, not plain objects
 
 ### 5. Strings, Math And Predicates
 
-> Goal: ใช้ string casing, numeric helpers และ type guards ที่ type-safe
+> Goal: use type-safe string casing, numeric helpers, and type guards
 
 1. Case: `camelCase`, `snakeCase`, `kebabCase`, `pascalCase`, `constantCase`, `startCase`, `sentenceCase`, `lowerCase`, `upperCase`, `capitalize`, `upperFirst`/`lowerFirst`, `words`
 2. Text: `trim`/`trimStart`/`trimEnd`, `pad`, `escape`/`unescape`, `escapeRegExp`, `deburr`, `dedent`, `reverseString`
-3. Math: `sum`, `mean`, `median`, `percentile`, `round`, `clamp`, `inRange`, `random`, `randomInt`, `range`/`rangeRight`, `lerp`/`inverseLerp`, `sumBy`/`meanBy` — มีคู่ `bigint/*` สำหรับ BigInt
-4. Predicates: `isNil`/`isNotNil` (ใช้กับ `filter` เพื่อ narrow type), `isEqual`/`isEqualWith`, `isPlainObject`, `isPrimitive`, `isJSON`/`isJSONObject`/`isJSONArray`, `isDate`, `isPromise`, `isMap`, `isSet`, `isBlob`, `isFile`, `isBuffer`, `isBrowser`/`isNode`, `isLength`, `isIterable`
-5. ไม่มี `isEmpty` แบบ lodash ใน core predicate — ใช้ `isEqual(value, {})`, เช็ค length, หรือ import จาก `es-toolkit/compat`
+3. Math: `sum`, `mean`, `median`, `percentile`, `round`, `clamp`, `inRange`, `random`, `randomInt`, `range`/`rangeRight`, `lerp`/`inverseLerp`, `sumBy`/`meanBy` — `bigint/*` counterparts exist for BigInt
+4. Predicates: `isNil`/`isNotNil` (use with `filter` to narrow types), `isEqual`/`isEqualWith`, `isPlainObject`, `isPrimitive`, `isJSON`/`isJSONObject`/`isJSONArray`, `isDate`, `isPromise`, `isMap`, `isSet`, `isBlob`, `isFile`, `isBuffer`, `isBrowser`/`isNode`, `isLength`, `isIterable`
+5. There is no lodash-style `isEmpty` in core predicates — use `isEqual(value, {})`, check length, or import from `es-toolkit/compat`
 
 ### 6. Function Control And Timing
 
-> Goal: จัดการ timing, caching และ composition
+> Goal: manage timing, caching, and composition
 
-1. `debounce(fn, ms, options)` — result มี `.cancel()` และ `.flush()`; รองรับ `signal` (AbortSignal), `retries`/`abortOnSignal` สำหรับ async
+1. `debounce(fn, ms, options)` — the result has `.cancel()` and `.flush()`; supports `signal` (AbortSignal), `retries`/`abortOnSignal` for async
 2. `throttle(fn, ms)`, `once`, `after`, `before`, `ary`, `unary`, `negate`, `identity`, `noop`/`asyncNoop`
-3. `memoize` — cache ด้วย `Map` เริ่มต้น, เช็ค docs ก่อนคาดหวัง behavior ต่างจาก lodash
+3. `memoize` — caches with a `Map` initially; check the docs before expecting behavior different from lodash
 4. Composition: `flow`, `flowRight`, `curry`, `curryRight`, `partial`, `partialRight`, `rest`, `spread`, `retry`
-5. ถ้าต้องการ pipeline แบบ lazy/early-terminate → Remeda เหมาะกว่า (ดู `/follow-lib-remedajs`)
+5. For lazy/early-terminate pipelines → Remeda fits better (see `/follow-lib-remedajs`)
 
 ### 7. Async Primitives
 
-> Goal: ใช้ promise helpers ที่ built-in
+> Goal: use the built-in promise helpers
 
-1. `delay(ms, { signal })` — awaitable sleep ที่ abort ได้
-2. `timeout(ms)` สำหรับ race timeout และ `withTimeout(promise, ms)` — throw `TimeoutError`
-3. `allKeyed({ a: p1, b: p2 })` — `Promise.all` สำหรับ object ของ promises
-4. `limitAsync(concurrency)(fn)` — สร้าง wrapper คุมจำนวน async calls พร้อมกัน
-5. Locking: `new Mutex()` (runExclusive) และ `new Semaphore(n)` — ใช้กับ critical section แบบ in-process
-6. Errors จาก promise API เป็น `AbortError`/`TimeoutError` ที่ import จาก `es-toolkit/error` ได้
+1. `delay(ms, { signal })` — an abortable awaitable sleep
+2. `timeout(ms)` for a race timeout and `withTimeout(promise, ms)` — throws `TimeoutError`
+3. `allKeyed({ a: p1, b: p2 })` — `Promise.all` for an object of promises
+4. `limitAsync(concurrency)(fn)` — creates a wrapper limiting concurrent async calls
+5. Locking: `new Mutex()` (runExclusive) and `new Semaphore(n)` — for in-process critical sections
+6. Errors from the promise API are `AbortError`/`TimeoutError` importable from `es-toolkit/error`
 
 ### 8. Use Iterator API
 
-> Goal: lazy sequence สำหรับข้อมูลใหญ่/stream
+> Goal: lazy sequences for large data/streams
 
-1. import จาก `es-toolkit/iterator`: `iterate`, `range`, `chunk`, `count`, `uniqBy`, `zip`, `map`, `filter`, `takeWhile`, `dropWhile`, `scan`, `head`, `partition`, `cartesianProduct` — ทุกตัวทำงานกับ iterator แบบ lazy ไม่ materialize array
+1. Import from `es-toolkit/iterator`: `iterate`, `range`, `chunk`, `count`, `uniqBy`, `zip`, `map`, `filter`, `takeWhile`, `dropWhile`, `scan`, `head`, `partition`, `cartesianProduct` — all operate lazily on iterators without materializing arrays
 
 ### 9. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck และ tests
-2. ตรวจ official docs ล่าสุดที่ `https://es-toolkit.dev/reference/array/chunk.html` (เปลี่ยน category/function ตามตัวที่ใช้) และ performance/bundle docs ก่อนใช้ API ที่ไม่แน่ใจ
-3. ตรวจ `https://es-toolkit.dev/compatibility.html` เมื่อ migrate lodash — รายชื่อฟังก์ชันที่ compat ไม่รองรับ
+1. Run `/run-verify` for lint, typecheck, and tests
+2. Check the latest official docs at `https://es-toolkit.dev/reference/array/chunk.html` (swap category/function for what you use) and the performance/bundle docs before using an uncertain API
+3. Check `https://es-toolkit.dev/compatibility.html` when migrating from lodash — the list of functions compat does not support
 
 ## Rules
 
 ### 1. Import Discipline
 
-- named imports เท่านั้น — `import { chunk } from 'es-toolkit'` หรือ submodule `es-toolkit/<category>`; ห้าม namespace import ทั้ง library
-- categories ที่ใช้ได้ (จาก exports ของ 1.52.0): `array`, `bigint`, `compat`, `error`, `fp`, `function`, `iterator`, `map`, `math`, `object`, `predicate`, `promise`, `server`, `set`, `string`, `types`, `util`
+- Named imports only — `import { chunk } from 'es-toolkit'` or the submodule `es-toolkit/<category>`; never namespace-import the whole library
+- Available categories (from the 1.52.0 exports): `array`, `bigint`, `compat`, `error`, `fp`, `function`, `iterator`, `map`, `math`, `object`, `predicate`, `promise`, `server`, `set`, `string`, `types`, `util`
 
 ### 2. Core Vs Compat
 
-- compat คือเส้นทาง migration เท่านั้น — code ใหม่ต้องเขียนด้วย core API
-- ฟังก์ชันที่ชื่อ/behavior ต่างกันระหว่าง core กับ lodash ให้ตรวจ docs ของทั้งสองก่อน swap; `merge`/`mergeWith` mutates target เช่นเดียวกับ lodash — ใช้ `toMerged` ถ้าต้องการ immutable
-- core ไม่มี `isEmpty`/`_.chain`/`_.template` — redesign หรือใช้ compat ชั่วคราว
+- Compat is a migration path only — new code must be written with the core API
+- For functions whose names/behaviors differ between core and lodash, check both docs before swapping; `merge`/`mergeWith` mutate the target like lodash — use `toMerged` for immutability
+- Core has no `isEmpty`/`_.chain`/`_.template` — redesign or use compat temporarily
 
 ### 3. Semantics And Types
 
-- เปิด `strict: true` ใน `tsconfig.json` — type guards อย่าง `isNotNil` narrow type ใน `filter` ได้จริง
-- `sortBy` รับ criteria เป็น array เดียว (`sortBy(users, ["age", "name"])` ไม่ใช่ variadic หลาย args แบบ Remeda) — desc ใช้ `orderBy` พร้อม orders
-- ใช้ `cloneDeep` เมื่อต้อง decouple nested state; `clone` เป็นตื้นสำหรับ container ที่รู้จักเท่านั้น
+- Enable `strict: true` in `tsconfig.json` — type guards like `isNotNil` genuinely narrow types in `filter`
+- `sortBy` takes criteria as a single array (`sortBy(users, ["age", "name"])`, not variadic multiple args like Remeda) — use `orderBy` with orders for desc
+- Use `cloneDeep` to decouple nested state; `clone` is shallow for known containers only
 
 ### 4. Competitor Awareness
 
-- ใช้ `/use-lib-effective` เพื่อ prefer es-toolkit แทน hand-rolled utils
-- ใช้ `/follow-lib-remedajs` ถ้างานเป็น functional data transformation ที่ต้องการ pipe/lazy
-- ใช้ `/follow-lang-typescript` และ `/follow-lang-javascript` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` และ `/run-verify` ถ้าจำเป็น
+- Use `/use-lib-effective` to prefer es-toolkit over hand-rolled utils
+- Use `/follow-lib-remedajs` when the work is functional data transformation needing pipe/lazy
+- Use /follow-lang-typescript and /follow-lang-javascript if needed
+- Use /follow-best-practice and /run-verify if needed
 
-- References: [apis](references/apis.md) · ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- References: [apis](references/apis.md) · See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `es-toolkit` ติดตั้งเวอร์ชันล่าสุดและ import แบบ tree-shakeable ถูกต้อง
-- เลือก core/compat ถูกสถานะงาน — code ใหม่ไม่ค้างใน compat
-- Array/object/string/promise utilities ใช้ตรง operation และ semantics ถูกระบุ (merge mutates, toMerged ไม่)
-- Async primitives (`delay`, `withTimeout`, `limitAsync`, `Mutex`) ใช้แทน pattern เขียนเอง
-- Type narrowing ผ่าน predicates โดยไม่ต้อง cast; ไม่มี lodash names ที่ไม่มีอยู่จริงใน core คงค้าง
-- Lint, typecheck, tests ผ่าน
+- `es-toolkit` installed at the latest version with correct tree-shakeable imports
+- core/compat chosen per task status — new code doesn't stay on compat
+- Array/object/string/promise utilities match the operations with semantics stated (merge mutates, toMerged doesn't)
+- Async primitives (`delay`, `withTimeout`, `limitAsync`, `Mutex`) replace hand-rolled patterns
+- Type narrowing via predicates without casts; no nonexistent lodash names left in core
+- Lint, typecheck, tests pass

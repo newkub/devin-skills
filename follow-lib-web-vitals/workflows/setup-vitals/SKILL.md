@@ -12,25 +12,25 @@ related:
 
 ## Goal
 
-Setup `web-vitals` ใน project — ติดตั้ง, wire `on*` callbacks และส่ง metrics ไป analytics endpoint
+Set up `web-vitals` in a project — install it, wire the `on*` callbacks, and send metrics to an analytics endpoint
 
 ## Scope
 
-ใช้เมื่อต้อง setup Core Web Vitals reporting ครั้งแรก — ครอบคลุม install, `onLCP`/`onINP`/`onCLS`/`onFCP`/`onTTFB`, beacon transport และ production sampling
+Use when setting up Core Web Vitals reporting for the first time — covers install, `onLCP`/`onINP`/`onCLS`/`onFCP`/`onTTFB`, beacon transport, and production sampling
 
 ## Execute
 
 ### 1. Install And Check State
 
-> Goal: ติดตั้ง `web-vitals` และตรวจ entry point
+> Goal: install `web-vitals` and check the entry point
 
-1. ติดตั้ง `bun add web-vitals` (ใช้ package manager ที่ project ใช้)
-2. ระบุ entry point ของ app (`main.ts`, `index.tsx`, app layout) ที่จะ wire reporting
-3. ถ้ามีอยู่แล้ว → verify version และ config เท่านั้น (idempotent)
+1. Install `bun add web-vitals` (use the package manager the project uses)
+2. Identify the app's entry point (`main.ts`, `index.tsx`, app layout) where reporting will be wired
+3. If it already exists → verify the version and config only (idempotent)
 
 ### 2. Wire Metric Callbacks
 
-> Goal: report metrics ด้วย `on*` functions
+> Goal: report metrics with the `on*` functions
 
 ```ts
 import { onCLS, onINP, onLCP, onFCP, onTTFB } from 'web-vitals'
@@ -51,41 +51,41 @@ onFCP(sendToAnalytics)
 onTTFB(sendToAnalytics)
 ```
 
-1. ใช้ `on*` callbacks — ไม่ใช่ `get*` (deprecated)
-2. ใช้ `navigator.sendBeacon` หรือ `fetch` กับ `keepalive: true` — metrics ส่งได้แม้ page กำลัง unload
-3. `import type { Metric }` หรือ types ที่ต้องการด้วย `import type` เสมอ (v6 types เป็น explicit type exports)
-4. v6 รองรับ soft navigations — SPA route changes report เป็น metrics แยกได้
+1. Use the `on*` callbacks — not `get*` (deprecated)
+2. Use `navigator.sendBeacon` or `fetch` with `keepalive: true` — metrics can still be sent while the page is unloading
+3. Always import `import type { Metric }` or the types you need with `import type` (v6 types are explicit type exports)
+4. v6 supports soft navigations — SPA route changes can be reported as separate metrics
 
 ### 3. Configure Reporting Strategy
 
-> Goal: ส่ง metrics อย่างมีประสิทธิภาพ
+> Goal: send metrics efficiently
 
-1. Report เฉพาะ production — guard ด้วย env check
-2. ใช้ sample rate (เช่น 10% ของ sessions) ถ้า traffic สูง — ไม่ต้องทุก session
-3. Batch metrics หรือส่งทีละตัวตาม endpoint design
-4. ใช้ `web-vitals/attribution` build เมื่อต้อง debug regressions — attribution data บอก element/cause ของ metric
-5. endpoint ต้องรับ `application/json` หรือ text จาก sendBeacon — ตรวจ backend รองรับ
+1. Report only in production — guard it with an env check
+2. Use a sample rate (e.g. 10% of sessions) if traffic is high — not every session
+3. Batch metrics or send them one by one, per the endpoint design
+4. Use the `web-vitals/attribution` build when you need to debug regressions — the attribution data gives the element/cause of the metric
+5. The endpoint must accept `application/json` or the text from sendBeacon — check the backend supports it
 
 ### 4. Verify
 
-> Goal: ตรวจสอบ metrics ส่งถึง endpoint จริง
+> Goal: confirm metrics actually reach the endpoint
 
-1. รัน `/run-dev` — เปิด DevTools Network tab เช็ค beacon/fetch requests ไป `/analytics`
-2. ตรวจ payload มี `name`, `value`, `id`, `rating` ครบ
-3. ทำ `/run-verify` สำหรับ lint/typecheck
-4. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `/run-dev` — open the DevTools Network tab and check the beacon/fetch requests to `/analytics`
+2. Check the payload has `name`, `value`, `id`, `rating` complete
+3. Do `/run-verify` for lint/typecheck
+4. If it breaks → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- INP แทน FID ตั้งแต่ v3; `onFID` ถูกลบตั้งแต่ v5 — ห้ามใช้
-- ห้าม block main thread เพื่อ report metrics — ใช้ beacon/keepalive เท่านั้น
-- ห้าม report ใน dev โดยไม่จำเป็น — guard ด้วย env
-- `web-vitals` import types ด้วย `import type` เสมอ (v6)
-- ใช้ `/follow-lib-web-vitals` สำหรับ full reference
+- INP replaced FID since v3; `onFID` was removed since v5 — never use it
+- Never block the main thread to report metrics — use beacon/keepalive only
+- Never report in dev when unnecessary — guard with env
+- Always import `web-vitals` types with `import type` (v6)
+- Use `/follow-lib-web-vitals` for the full reference
 
 ## Expected Outcome
 
-- `web-vitals` ติดตั้งและ report LCP/INP/CLS/FCP/TTFB ไป endpoint จริง
-- Reporting ใช้ beacon/keepalive ไม่ block main thread
-- Production-only + sampling ตามที่ตั้งค่า
-- Lint/typecheck ผ่าน
+- `web-vitals` is installed and reports LCP/INP/CLS/FCP/TTFB to the real endpoint
+- Reporting uses beacon/keepalive and doesn't block the main thread
+- Production-only + the configured sampling
+- Lint/typecheck pass

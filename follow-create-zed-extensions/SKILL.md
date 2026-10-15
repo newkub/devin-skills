@@ -6,7 +6,7 @@ related:
   - follow-create-rust-crate
   - follow-create-sdk
   - follow-lang-rust
-  - deep-review
+  - deep-review-codebase
   - report
 
 ---
@@ -26,8 +26,8 @@ Use to create Zed extensions that provide languages, themes, icon themes, snippe
 
 > Goal: verify the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
-2. Run `/deep-review` to review the tech stack, dependencies, and library design (create zed extensions)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create zed extensions)
 3. Record the rationale for the chosen stack and libraries for future reference (create zed extensions)
 
 ### 2. Determine Extension Type

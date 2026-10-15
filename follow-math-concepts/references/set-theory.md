@@ -2,87 +2,87 @@
 
 ## Goal
 
-เข้าใจ set theory: sets, elements, operations, Venn diagrams, power sets, และ cartesian products และประยุกต์ใช้ใน programming, data filtering, และ prompts
+Understand set theory: sets, elements, operations, Venn diagrams, power sets, and cartesian products, and apply them in programming, data filtering, and prompts
 
 ## Scope
 
-- ใช้สำหรับวิเคราะห์ collections, unique values, filters, joins
-- ครอบคลุม set operations: union, intersection, difference, complement
-- ครอบคลุม subsets, power sets, cartesian products
-- ไม่ลงลึก axiomatic set theory
+- Use for analyzing collections, unique values, filters, joins
+- Covers set operations: union, intersection, difference, complement
+- Covers subsets, power sets, cartesian products
+- Does not go deep into axiomatic set theory
 
 ## Execute
 
 ### 1. Define Sets
 
-> Goal: ระบุ sets และ members
+> Goal: identify the sets and members
 
-1. ระบุ set A, B, universe U
-2. ระบุ elements: `x ∈ A`, `x ∉ A`
-3. ใช้ roster notation `{1, 2, 3}` หรือ set-builder `{x | P(x)}`
-4. ระบุ empty set `∅` และ singleton
+1. Identify set A, B, universe U
+2. Identify elements: `x ∈ A`, `x ∉ A`
+3. Use roster notation `{1, 2, 3}` or set-builder `{x | P(x)}`
+4. Identify the empty set `∅` and singletons
 
 ### 2. Visualize With Venn Diagram
 
-> Goal: เข้าใจ relationships
+> Goal: understand the relationships
 
-1. วาด circles สำหรับ A, B ภายใน U
-2. ระบุ intersection `A ∩ B`, union `A ∪ B`
-3. ระบุ difference `A \ B`, complement `A'`
-4. ใช้สำหรับตรวจ logical equivalences
+1. Draw circles for A, B inside U
+2. Identify intersection `A ∩ B`, union `A ∪ B`
+3. Identify difference `A \ B`, complement `A'`
+4. Use it to check logical equivalences
 
 ### 3. Apply Set Operations
 
-> Goal: คำนวณ operations
+> Goal: compute the operations
 
-1. Union: `A ∪ B = {x | x ∈ A หรือ x ∈ B}`
-2. Intersection: `A ∩ B = {x | x ∈ A และ x ∈ B}`
-3. Difference: `A \ B = {x | x ∈ A แต่ x ∉ B}`
-4. Complement: `A' = {x | x ∈ U แต่ x ∉ A}`
+1. Union: `A ∪ B = {x | x ∈ A or x ∈ B}`
+2. Intersection: `A ∩ B = {x | x ∈ A and x ∈ B}`
+3. Difference: `A \ B = {x | x ∈ A but x ∉ B}`
+4. Complement: `A' = {x | x ∈ U but x ∉ A}`
 5. Symmetric difference: `A Δ B = (A \ B) ∪ (B \ A)`
 
 ### 4. Use Set Relations
 
-> Goal: เปรียบเทียบ sets
+> Goal: compare sets
 
-1. Subset: `A ⊆ B` ทุก elements ของ A อยู่ใน B
+1. Subset: `A ⊆ B` — every element of A is in B
 2. Proper subset: `A ⊂ B`
-3. Equality: `A = B` เมื่อ `A ⊆ B` และ `B ⊆ A`
+3. Equality: `A = B` when `A ⊆ B` and `B ⊆ A`
 4. Disjoint: `A ∩ B = ∅`
 
 ### 5. Advanced Notions
 
-> Goal: ใช้ power set และ cartesian product
+> Goal: use power set and cartesian product
 
 1. Power set: `P(A) = {S | S ⊆ A}`
 2. Cartesian product: `A × B = {(a, b) | a ∈ A, b ∈ B}`
-3. ใช้ใน database joins, tuple types
-4. ระบุ cardinality ของ set
+3. Used in database joins, tuple types
+4. State the cardinality of a set
 
 ### 6. Map To Programming
 
-> Goal: ประยุกต์ใน code
+> Goal: apply it in code
 
-1. ใช้ Set ใน JavaScript/TypeScript/Bun: `new Set()`
-2. ใช้ filter/map/reduce สำหรับ set operations
-3. ใช้ SQL `UNION`, `INTERSECT`, `EXCEPT`
-4. ตรวจ duplicates, unique values, membership
-5. ใช้ใน prompt: ระบุ groups, exclusions, inclusions
+1. Use Set in JavaScript/TypeScript/Bun: `new Set()`
+2. Use filter/map/reduce for set operations
+3. Use SQL `UNION`, `INTERSECT`, `EXCEPT`
+4. Check duplicates, unique values, membership
+5. In prompts: state groups, exclusions, inclusions
 
 ## Rules
 
 ### 1. Universe First
 
-- ระบุ universe U เสมอ
-- complement ต้องอ้างอิง U
-- ไม่ลืม empty set `∅`
+- Always state the universe U
+- Complement must reference U
+- Don't forget the empty set `∅`
 
 ### 2. Operation Equivalences
 
-- `A ∪ B` สอดคล้อง `A || B` ถ้ามองเป็น membership
-- `A ∩ B` สอดคล้อง `A && B`
-- `A'` สอดคล้อง `!A`
-- ใช้ De Morgan's laws สำหรับ complements
+- `A ∪ B` corresponds to `A || B` when viewed as membership
+- `A ∩ B` corresponds to `A && B`
+- `A'` corresponds to `!A`
+- Use De Morgan's laws for complements
 
 ### 3. Practical Mapping
 
@@ -91,11 +91,11 @@
 - Union/Intersection = combine datasets
 - Difference = exclude
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /deep-debug ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /deep-debug if needed
 
 ## Expected Outcome
 
-- สามารถวาด Venn diagram และหา operations
-- สามารถ map ไปยัง code และ SQL
-- สามารถใช้ set relations ใน prompts
+- Able to draw a Venn diagram and compute the operations
+- Able to map to code and SQL
+- Able to use set relations in prompts

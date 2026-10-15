@@ -1,6 +1,6 @@
 ---
 name: follow-lib-elysia-setup-elysia
-description: ติดตั้ง Elysia — bun add, app.listen, routes, plugins พื้นฐาน
+description: Install Elysia — bun add, app.listen, routes, basic plugins
 argument-hint: "[scope]"
 related:
   - follow-lib-elysia
@@ -12,27 +12,27 @@ related:
 
 ## Goal
 
-ติดตั้งและตั้งค่า Elysia บน Bun — `new Elysia()`, `.listen()`, routes และ plugins พื้นฐาน
+Install and configure Elysia on Bun — `new Elysia()`, `.listen()`, routes and basic plugins
 
 ## Scope
 
-ใช้เมื่อต้อง setup Elysia API ครั้งแรก — ครอบคลุม install, app instance, routes, schema validation และ plugin registration พื้นฐาน (Bun runtime เท่านั้น)
+Use when setting up an Elysia API for the first time — covers install, app instance, routes, schema validation and basic plugin registration (Bun runtime only)
 
 ## Execute
 
 ### 1. Install Elysia
 
-> Goal: ติดตั้ง Elysia บน Bun runtime
+> Goal: install Elysia on the Bun runtime
 
-1. ติดตั้ง `bun add elysia` หรือสร้าง project ใหม่ด้วย `bun create elysia app`
-2. ติดตั้ง `bun add @elysia/eden` ถ้าต้องการ end-to-end type safety
-3. ถ้ามีอยู่แล้ว → verify version ใน `package.json` เท่านั้น (idempotent)
-4. ใช้ Bun เป็น runtime เท่านั้น — ทำ `/use-bun-native-api`
-5. ใช้ `bun --hot` สำหรับ hot reload ใน dev
+1. Install with `bun add elysia` or create a new project with `bun create elysia app`
+2. Install `bun add @elysia/eden` if you want end-to-end type safety
+3. If already present → only verify the version in `package.json` (idempotent)
+4. Use Bun as the runtime only — do `/use-bun-native-api`
+5. Use `bun --hot` for hot reload in dev
 
 ### 2. Create App Instance
 
-> Goal: สร้าง `new Elysia()` และ `.listen()`
+> Goal: create `new Elysia()` and `.listen()`
 
 ```ts
 import { Elysia } from 'elysia'
@@ -42,49 +42,49 @@ const app = new Elysia()
   .listen(3000)
 ```
 
-1. สร้าง instance เดียวต่อ app — chain methods ได้
-2. `.listen(port)` start server — ใช้ `Bun.serve` ผ่าน `.listen()` เท่านั้น
-3. Export `type App = typeof app` ถ้าจะใช้ Eden client
+1. Create one instance per app — methods can be chained
+2. `.listen(port)` starts the server — use `Bun.serve` only through `.listen()`
+3. Export `type App = typeof app` if using the Eden client
 
 ### 3. Define Routes And Validation
 
-> Goal: routes พื้นฐานพร้อม schema validation
+> Goal: basic routes with schema validation
 
-1. HTTP verbs: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`; params ด้วย `/users/:id`; wildcards `/*`
-2. `.group('/api', app => app...)` สำหรับ prefix grouping
-3. Validation ด้วย `Elysia.t` (TypeBox) ใน route options: `body`, `query`, `params`, `response`
-4. Standard Schema (Zod/Valibot/ArkType) ใช้ได้ถ้า project ใช้อยู่แล้ว — ทำ `/follow-lib-zod` ถ้าใช้ Zod
-5. `context.status(code, value)` สำหรับ type-safe status codes (v1.4)
+1. HTTP verbs: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`; params via `/users/:id`; wildcards `/*`
+2. `.group('/api', app => app...)` for prefix grouping
+3. Validation with `Elysia.t` (TypeBox) in route options: `body`, `query`, `params`, `response`
+4. Standard Schema (Zod/Valibot/ArkType) works if the project already uses it — do `/follow-lib-zod` if using Zod
+5. `context.status(code, value)` for type-safe status codes (v1.4)
 
 ### 4. Register Plugins
 
-> Goal: ใช้ `.use()` และ plugin patterns พื้นฐาน
+> Goal: use `.use()` and basic plugin patterns
 
-1. `.use(plugin)` register plugin — ประกาศ dependency ชัดเจน (main ต้อง `.use()` ก่อน)
-2. `.decorate()` inject properties เข้า context; `.state()` inject mutable state
-3. `.guard()` สำหรับ scoped validation; `.scope()` control merge behavior
-4. แยก logic เป็น plugins เล็กๆ ที่ใช้ซ้ำได้
+1. `.use(plugin)` registers a plugin — declare dependencies clearly (main must `.use()` first)
+2. `.decorate()` injects properties into the context; `.state()` injects mutable state
+3. `.guard()` for scoped validation; `.scope()` controls merge behavior
+4. Split logic into small reusable plugins
 
 ### 5. Verify
 
-> Goal: smoke test API endpoints
+> Goal: smoke test the API endpoints
 
-1. รัน `bun --hot src/index.ts` หรือ `bun run dev` — server start บน port ที่กำหนด
-2. `curl` หรือเปิด endpoint ทดสอบ response และ validation (invalid body ต้อง 422)
-3. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `bun --hot src/index.ts` or `bun run dev` — the server starts on the specified port
+2. `curl` or open the endpoint to test the response and validation (an invalid body must return 422)
+3. If broken → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ Bun runtime เท่านั้น — Elysia ไม่รองรับ Node.js เป็น target หลัก
-- สร้าง instance เดียว — chain `.use()`/routes บน instance เดียวกัน
-- ใช้ `Elysia.t` เป็น default validator — Standard Schema เฉพาะเมื่อ project ใช้อยู่แล้ว
-- ลำดับ route: static path ก่อน dynamic path
-- ใช้ `/follow-lib-elysia` สำหรับ full reference, lifecycle hooks และ version notes
-- ใช้ `/run-install` เมื่อต้องติดตั้ง dependencies อื่นร่วมด้วย
-- ใช้ `/run-dev` เมื่อต้องรัน dev server ของ project ที่มี scripts พร้อมอยู่แล้ว
+- Bun runtime only — Elysia doesn't support Node.js as a primary target
+- Create a single instance — chain `.use()`/routes on the same instance
+- Use `Elysia.t` as the default validator — Standard Schema only when the project already uses it
+- Route order: static paths before dynamic paths
+- Use `/follow-lib-elysia` for the full reference, lifecycle hooks and version notes
+- Use `/run-install` when other dependencies must be installed alongside
+- Use `/run-dev` when running the project's dev server that already has scripts set up
 
 ## Expected Outcome
 
-- Elysia server รันบน Bun พร้อม routes และ validation
-- Plugins register ถูกต้องด้วย `.use()`
-- Smoke test endpoints ผ่าน
+- Elysia server runs on Bun with routes and validation
+- Plugins registered correctly with `.use()`
+- Smoke test endpoints pass

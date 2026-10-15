@@ -44,7 +44,7 @@ related:
 
 ### 4. Ship
 
-1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
+1. Run `/ship` — the canonical gate: verify (`/deep-review-codebase`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
 2. Run `/report` to summarize.
 
 ## Rules
@@ -79,7 +79,7 @@ Core (keep simple — only these unless project-specific need):
 - `git-commit-and-push: /git-commit-and-push`
 
 Quality (include as relevant to the project):
-- `deep-review: /deep-review`
+- `deep-review-codebase: /deep-review-codebase`
 - `deep-validate: /deep-validate`
 - `deep-test: /deep-test`
 - `review-test: /review-test`

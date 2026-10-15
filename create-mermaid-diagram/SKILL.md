@@ -5,6 +5,7 @@ argument-hint: "[prompt or topic]"
 related:
   - draw-excalidraw
   - draw-tldraw
+  - follow-tool-archify
   - report
   - report-flow
   - report-architecture-diagram
@@ -22,6 +23,8 @@ Generate Mermaid source code from a prompt, a description, or a provided file, a
 
 Use it to create common diagrams such as flowchart, sequence, class, state, er, gantt, gitgraph, pie, user-journey, quadrant, and mindmap for any project
 Supports both a direct prompt and reading from files/images. To visualize from code, use `/report-architecture-diagram` or `/report-workspace-graph` instead
+
+- Diagram must be interactive/shareable as a standalone HTML artifact → `/follow-tool-archify` (typed IR, validated, path-tracing viewer); Mermaid stays the default for inline docs
 
 ## Execute
 
@@ -108,6 +111,7 @@ Supports both a direct prompt and reading from files/images. To visualize from c
 
 - Use /draw-excalidraw if needed
 - Use /draw-tldraw if needed
+- Use /follow-tool-archify if needed
 - Use /report-flow if needed
 - Use /ship if needed
 - Use /open-files-in-web if needed

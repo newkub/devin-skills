@@ -10,17 +10,17 @@ related:
 
 ## Goal
 
-เขียน services + dependency injection ด้วย `Effect.Service` / `Context.Tag` + `Layer` อย่างถูกต้อง
+Write services + dependency injection correctly with `Effect.Service` / `Context.Tag` + `Layer`
 
 ## Scope
 
-service definition, layer composition, dependency graph — ติดตั้งอยู่ที่ `setup-effect`; v3 API (v4 RC → `Context.Service` แทน, ดู `migrate-to-effect`)
+service definition, layer composition, dependency graph — installation lives in `setup-effect`; v3 API (v4 RC → `Context.Service` instead, see `migrate-to-effect`)
 
 ## Execute
 
 ### 1. Define Service
 
-> Goal: service พร้อม default layer
+> Goal: a service with its default layer
 
 ```ts
 import { Effect } from "effect"
@@ -37,47 +37,47 @@ class TodoRepo extends Effect.Service<TodoRepo>()("TodoRepo", {
 }) {}
 ```
 
-- `Effect.Service` (v3.9+) = Tag + Layer ในตัวเดียว — default layer `TodoRepo.Default`
+- `Effect.Service` (v3.9+) = Tag + Layer in one — default layer `TodoRepo.Default`
 - Manual control → `Context.Tag`/`Context.GenericTag` + `Layer.succeed`/`Layer.effect`/`Layer.scoped`
 
 ### 2. Compose Layers
 
-> Goal: graph ของ dependencies
+> Goal: the graph of dependencies
 
 ```ts
 const AppLayer = Layer.mergeAll(Database.Default, HttpLive)
   .pipe(Layer.provideMerge(ConfigLayer))
-// หรือ TodoRepo.Default — deps ผูกแล้วจาก `dependencies`
+// or TodoRepo.Default — deps already bound from `dependencies`
 ```
 
-- `Layer.mergeAll` (parallel), `Layer.provide`/`provideMerge` (ข้าม dep), `Layer.scoped` (acquire/release)
-- `Layer.succeed` = pure impl; `Layer.effect` = effectful init; `Layer.scoped` = ต้อง cleanup
+- `Layer.mergeAll` (parallel), `Layer.provide`/`provideMerge` (pass a dep through), `Layer.scoped` (acquire/release)
+- `Layer.succeed` = pure impl; `Layer.effect` = effectful init; `Layer.scoped` = needs cleanup
 
 ### 3. Consume In Effects
 
 ```ts
 const program = Effect.gen(function* () {
-  const repo = yield* TodoRepo          // yield* service tag ได้ requirements
+  const repo = yield* TodoRepo          // yield* the service tag for its requirements
   return yield* repo.findAll()
 })
 Effect.runPromise(program.pipe(Effect.provide(TodoRepo.Default)))
 ```
 
-- `R` channel = requirements — provide ครบที่ boundary เท่านั้น
-- Access pattern variants: `Effect.serviceFunctions`, `Effect.serviceMembers` สำหรับ fn-style
+- The `R` channel = requirements — provide them fully at the boundary only
+- Access pattern variants: `Effect.serviceFunctions`, `Effect.serviceMembers` for the fn style
 
 ### 4. Test Substitution
 
-- `Layer.mock(TodoRepo)` (v3.17+) partial impl หรือ `Layer.succeed(TodoRepo, fakeImpl)` — ดู `test-effect`
+- `Layer.mock(TodoRepo)` (v3.17+) with a partial impl, or `Layer.succeed(TodoRepo, fakeImpl)` — see `test-effect`
 
 ## Rules
 
-- ทุก external dep (db, http, clock, config) = service — ห้าม import singleton ตรง
-- `dependencies` array ครบ — ห้าม provide ภายหลังซ้อน
-- `Layer.scoped` สำหรับ resources ที่ต้อง release (connections, file handles)
-- Requirements ไหลผ่าน type เท่านั้น — ห้าม hidden globals
+- Every external dep (db, http, clock, config) = a service — never import a singleton directly
+- The `dependencies` array must be complete — never stack provides afterward
+- `Layer.scoped` for resources that must be released (connections, file handles)
+- Requirements flow through types only — no hidden globals
 
 ## Expected Outcome
 
-- Services เขียนด้วย `Effect.Service` + Layer graph ชัด
-- Test แทนที่ impl ได้ผ่าน Layer — ไม่แก้ business code
+- Services written with `Effect.Service` + a clear Layer graph
+- Tests can substitute impls via Layers — without touching business code

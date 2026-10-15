@@ -1,92 +1,92 @@
 ---
 name: gen-changelog-md
-description: Generate CHANGELOG.md จาก git tags ด้วย Bun Shell script ไม่แก้ไขด้วยมือ
+description: Generate CHANGELOG.md from git tags with a Bun Shell script, never hand-edited
 argument-hint: "[scope]"
 related:
   - run-release
   - report
-  - deep-review
+  - deep-review-codebase
   - follow-tool-changelogen
   - follow-tool-semantic-release
 ---
 
 ## Goal
 
-Generate `CHANGELOG.md` จาก `git tag --sort=-version:refname` ด้วย Bun Shell script โดยไม่แก้ไขด้วยมือ ใช้ Keep a Changelog format และ conventional commits grouping
+Generate `CHANGELOG.md` from `git tag --sort=-version:refname` with a Bun Shell script without hand editing, using the Keep a Changelog format and conventional commits grouping
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการ `CHANGELOG.md` อัตโนมัติจาก git tags — ไม่รวมการ publish ไปยัง platforms (ใช้ `run-release`) และไม่รวมการรายงาน changelog (ใช้ `report`)
+Use for projects that need an automatic `CHANGELOG.md` from git tags — excluding publishing to platforms (use `run-release`) and excluding reporting the changelog (use `report`)
 
 ## Execute
 
 ### 1. Run Generator
 
-> Goal: Generate CHANGELOG.md จาก git tags
+> Goal: Generate CHANGELOG.md from git tags
 
-1. รัน script เพื่อ gen `CHANGELOG.md`:
+1. Run the script to gen `CHANGELOG.md`:
 ```bash
 bun run skills/gen-changelog-md/scripts/gen-release-md.ts
 ```
-2. สำหรับ dry-run (print ไป stdout ไม่เขียนไฟล์):
+2. For a dry run (print to stdout, write no file):
 ```bash
 bun run skills/gen-changelog-md/scripts/gen-release-md.ts --dry
 ```
-3. สำหรับ custom output path:
+3. For a custom output path:
 ```bash
 bun run skills/gen-changelog-md/scripts/gen-release-md.ts --output PATH
 ```
 
 ### 2. Verify Output
 
-> Goal: ตรวจสอบ CHANGELOG.md ที่ gen แล้ว
+> Goal: Check the generated CHANGELOG.md
 
-1. อ่าน `CHANGELOG.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
-2. ตรวจสอบ conventional commits ถูกจัดหมวดหมู่: Breaking Changes, Features, Bug Fixes, Other
-3. ตรวจสอบ Unreleased section แสดง commits หลัง latest tag
-4. ตรวจสอบ Release History table แสดงทุก tag
+1. Read the generated `CHANGELOG.md` to verify version numbers and dates are correct
+2. Check that conventional commits are categorized: Breaking Changes, Features, Bug Fixes, Other
+3. Check that the Unreleased section shows commits after the latest tag
+4. Check that the Release History table shows every tag
 
 ### 3. Update If Needed
 
-> Goal: อัปเดต CHANGELOG.md เมื่อมี tag ใหม่
+> Goal: Update CHANGELOG.md when a new tag exists
 
-1. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ
-2. รัน script หลัง `git tag` ใหม่เสมอ
-3. Commit `CHANGELOG.md` พร้อม release commit
+1. If an update is needed → re-run the script; never edit `CHANGELOG.md` by hand
+2. Always run the script after a new `git tag`
+3. Commit `CHANGELOG.md` together with the release commit
 
 ## Rules
 
 ### 1. Generation Only
 
-- `CHANGELOG.md` เกิดจากการ gen ด้วย `scripts/gen-release-md.ts` จาก `git tag --sort=-version:refname` เท่านั้น
-- ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
-- ใช้ `Bun.$` สำหรับ shell commands และ `Bun.write()` สำหรับ write file
+- `CHANGELOG.md` is generated only by `scripts/gen-release-md.ts` from `git tag --sort=-version:refname`
+- Never edit `CHANGELOG.md` by hand — to update, re-run the script
+- Use `Bun.$` for shell commands and `Bun.write()` for writing the file
 
 ### 2. Format
 
-- ใช้ Keep a Changelog format: `## vX.Y.Z (YYYY-MM-DD)`
-- ใช้ conventional commits grouping: Breaking Changes, Features, Bug Fixes, Other
-- แสดง commit hash แบบสั้น (7 ตัว) ในวงเล็บท้ายแต่ละรายการ
-- แสดง top 10 releases ในรูปแบบ detail, ที่เหลือใน Release History table
-- แสดง Unreleased section สำหรับ commits หลัง latest tag
+- Use the Keep a Changelog format: `## vX.Y.Z (YYYY-MM-DD)`
+- Use conventional commits grouping: Breaking Changes, Features, Bug Fixes, Other
+- Show the short commit hash (7 chars) in parentheses at the end of each item
+- Show the top 10 releases in detail format, the rest in the Release History table
+- Show an Unreleased section for commits after the latest tag
 
 ### 3. Version Format
 
-- ใช้ semantic versioning format: `vX.Y.Z` (เช่น `v1.0.0`, `v1.2.3`)
-- ใช้ annotated tags สำหรับ releases
-- วันที่จาก `git log -1 --format=%ad --date=short <tag>`
+- Use semantic versioning format: `vX.Y.Z` (e.g. `v1.0.0`, `v1.2.3`)
+- Use annotated tags for releases
+- Date from `git log -1 --format=%ad --date=short <tag>`
 
 ### 4. Non-Redundancy
 
-- การ publish ไปยัง platforms อยู่ใน `run-release` แล้ว
-- การรายงาน changelog อยู่ใน `report` แล้ว
-- การ review changelog completeness อยู่ใน `deep-review` แล้ว
-- สำหรับ projects ที่ใช้ changelogen หรือ semantic-release ให้ใช้ `follow-tool-changelogen` หรือ `follow-tool-semantic-release` แทน
+- Publishing to platforms already lives in `run-release`
+- Reporting the changelog already lives in `report`
+- Reviewing changelog completeness already lives in `deep-review-codebase`
+- For projects using changelogen or semantic-release, use `follow-tool-changelogen` or `follow-tool-semantic-release` instead
 
 ## Expected Outcome
 
-- `CHANGELOG.md` ถูก gen จาก git tags ด้วย script ไม่แก้ไขด้วยมือ
-- Conventional commits ถูกจัดหมวดหมู่: Breaking Changes, Features, Bug Fixes, Other
-- Unreleased section แสดง commits หลัง latest tag
-- Release History table แสดงทุก tag พร้อมวันที่
-- Format สอดคล้องกับ Keep a Changelog
+- `CHANGELOG.md` is generated from git tags by the script, never hand-edited
+- Conventional commits are categorized: Breaking Changes, Features, Bug Fixes, Other
+- The Unreleased section shows commits after the latest tag
+- The Release History table shows every tag with its date
+- Format conforms to Keep a Changelog

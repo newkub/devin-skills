@@ -6,8 +6,8 @@
 
 | api | description | default | options |
 |---|---|---|---|
-| `<Icon icon="mdi:home" />` | Render icon ใน component | inline SVG | `width`, `height`, `color`, `rotate`, `flip` |
+| `<Icon icon="mdi:home" />` | Render an icon in a component | inline SVG | `width`, `height`, `color`, `rotate`, `flip` |
 | `addIcon(name, data)` | Register icon data | - | offline mode |
-| `addCollection(data)` | Register ทั้ง set | - | - |
+| `addCollection(data)` | Register the whole set | - | - |
 | `getIcon(name)` | Lookup icon data | - | - |
-| `iconToSVG(data)` | Build SVG เอง | - | `customisations` |
+| `iconToSVG(data)` | Build the SVG yourself | - | `customisations` |

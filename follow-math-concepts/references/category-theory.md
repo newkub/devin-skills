@@ -2,87 +2,86 @@
 
 ## Goal
 
-เข้าใจ category theory: categories, objects, morphisms, functors, natural transformations, monads และประยุกต์ใช้ใน functional programming, type systems, composition
+Understand category theory: categories, objects, morphisms, functors, natural transformations, monads, and their use in functional programming, type systems, and composition
 
 ## Scope
 
-- ใช้สำหรับเข้าใจ composition, types, functors, monads
-- ครอบคลุม categories, morphisms, composition laws
-- แนะนำ functors, applicatives, monads ใน code
+- Use to understand composition, types, functors, monads
+- Covers categories, morphisms, composition laws
+- Introduces functors, applicatives, monads in code
 
 ## Execute
 
 ### 1. Understand Categories
 
-> Goal: รู้ concept พื้นฐาน
+> Goal: grasp the base concepts
 
-1. แต่ละ category มี objects และ morphisms (arrows)
-2. Morphism สามารถ compose: `f: A → B`, `g: B → C` → `g ∘ f: A → C`
-3. มี identity morphism `id_A` สำหรับทุก object
-4. ต้องสอดคล้อง associativity และ identity laws
+1. Every category has objects and morphisms (arrows)
+2. Morphisms compose: `f: A → B`, `g: B → C` → `g ∘ f: A → C`
+3. Every object has an identity morphism `id_A`
+4. Must satisfy associativity and identity laws
 
 ### 2. Types As Objects
 
-> Goal: แปลง type system เป็น category
+> Goal: view a type system as a category
 
-1. Types เป็น objects
-2. Functions เป็น morphisms
-3. Function composition เป็น morphism composition
-4. Identity function เป็น identity morphism
+1. Types are objects
+2. Functions are morphisms
+3. Function composition is morphism composition
+4. The identity function is the identity morphism
 
 ### 3. Functors
 
-> Goal: เข้าใจ mapping ระหว่าง categories
+> Goal: understand mapping between categories
 
-1. Functor แปลง object → object และ morphism → morphism
-2. รักษา identity และ composition
-3. `Array.map` เป็น functor (lift function into context)
-4. `Option/Maybe` เป็น functor
+1. A functor maps object → object and morphism → morphism
+2. It preserves identity and composition
+3. `Array.map` is a functor (lifts a function into a context)
+4. `Option/Maybe` is a functor
 
 ### 4. Monads
 
-> Goal: ใช้ monads ใน code
+> Goal: use monads in code
 
-1. Monad เป็น functor พร้อม `return` (unit) และ `bind` (flatMap)
-2. ใช้สำหรับ sequence computations ทีมี context (Promise, Maybe, Result)
-3. Promise เป็น monad: `.then` คือ `map`, `.then` กับ function คืน Promise คือ `flatMap`
-4. ใช้ monadic composition แทน nested callbacks
+1. A monad is a functor with `return` (unit) and `bind` (flatMap)
+2. Used to sequence computations that carry context (Promise, Maybe, Result)
+3. Promise is a monad: `.then` is `map`; `.then` with a function returning a Promise is `flatMap`
+4. Use monadic composition instead of nested callbacks
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน FP
+> Goal: apply it in FP
 
-1. ใช้ `.map` สำหรับ pure transformations
-2. ใช้ `.flatMap`/`chain` สำหรับ flatten nested context
-3. ใช้ `Result`/`Either` จัดการ error ด้วย composition
-4. ใช้ function composition แทน nested calls
+1. Use `.map` for pure transformations
+2. Use `.flatMap`/`chain` to flatten nested contexts
+3. Use `Result`/`Either` to handle errors with composition
+4. Use function composition instead of nested calls
 
 ## Rules
 
 ### 1. Composition Laws
 
-- ต้อง preserve identity: `F(id) = id`
-- ต้อง preserve composition: `F(g ∘ f) = F(g) ∘ F(f)`
+- Must preserve identity: `F(id) = id`
+- Must preserve composition: `F(g ∘ f) = F(g) ∘ F(f)`
 
 ### 2. Type Safety
 
-- ห้าม unsafe cast
-- ใช้ type system ของภาษาเพื่อ enforce laws
-- ระวัง void/undefined ใน composition
+- Never use unsafe casts
+- Use the type system to enforce the laws
+- Beware void/undefined in composition
 
 ### 3. Code Mapping
 
-- `Array`, `Promise`, `Maybe`, `Either` มักเป็น functors/monads
-- ใช้ `pipe`/`compose` สำหรับ function composition
-- ใช้ library เช่น `fp-ts`, `effect` ถ้าจำเป็น
+- `Array`, `Promise`, `Maybe`, `Either` are typically functors/monads
+- Use `pipe`/`compose` for function composition
+- Use a library like `fp-ts` or `effect` when needed
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /deep-review-codebase if needed
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- สามารถอธิบาย category, functor, monad
-- สามารถ map type system ไป category
-- สามารถใช้ monadic composition ใน code
-- สามารถ refactor nested logic เป็น composed functions
-
+- Able to explain category, functor, monad
+- Able to map a type system to a category
+- Able to use monadic composition in code
+- Able to refactor nested logic into composed functions

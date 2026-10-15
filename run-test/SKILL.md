@@ -21,7 +21,7 @@ Route a test request to the right `/deep-test` domain — by argument first, the
 Dispatcher only: every workflow (quick run path + deep steps + signals table) lives in `/deep-test` (`references/<domain>.md`) — never restate a domain workflow here
 
 - Domains: `unit`, `component`, `integration`, `e2e`, `website`, `api`, `cli`, `contract`, `visual`, `a11y`, `property`, `database`, `mobile`, `smoke`, `load`, `coverage`, `mutation`, `usage`, plus `all`
-- Write/change specs → `/update-tests`; improve the test strategy (flaky, coverage gaps, suite speed) → `/improve tests`; review test correctness → `/deep-review` (domain `review-test`)
+- Write/change specs → `/update-tests`; improve the test strategy (flaky, coverage gaps, suite speed) → `/improve tests`; review test correctness → `/deep-review-codebase` (domain `review-test`)
 
 ## Execute
 

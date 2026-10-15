@@ -1,6 +1,6 @@
 ---
 name: list-my-npm-packages
-description: แสดงรายการ npm packages ทีผู้ใช้เป็น owner/author บน npm registry
+description: List npm packages the user owns or authors on the npm registry
 argument-hint: "[scope]"
 related:
   - list-program-in-computer
@@ -12,87 +12,87 @@ related:
 
 ## Goal
 
-แสดงรายการ npm packages ทีผู้ใช้เป็น owner หรือ author บน npm registry พร้อม version, description, last published
+List the npm packages the user owns or authors on the npm registry with version, description, last published
 
 ## Scope
 
-ใช้สำหรับดู packages ที publish จาก account ของผู้ใช้ โดย query จาก npm registry หรือ npm CLI โดยไม่แก้ไข packages
+Use to view packages published from the user's account, queried from the npm registry or npm CLI, without modifying packages
 
 ## Execute
 
 ### 1. Verify npm And Authentication
 
-> Goal: ยืนยันว่า npm พร้อมและ authenticated
+> Goal: confirm npm is ready and authenticated
 
-1. รัน `npm --version` เพื่อตรวจสอบการติดตั้ง
-2. รัน `npm whoami` เพื่อรับ username ที login อยู่
-3. ถ้าไม่ authenticated → ทำ `/ask-me` เพื่อให้ user รัน `npm login` หรือ `npm adduser`
-4. บันทึก username
+1. Run `npm --version` to check the installation
+2. Run `npm whoami` to get the logged-in username
+3. Not authenticated → use `/ask-me` to have the user run `npm login` or `npm adduser`
+4. Record the username
 
 ### 2. List Packages By Ownership
 
-> Goal: ดึงรายการ packages ที user เป็นเจ้าของ
+> Goal: fetch the packages the user owns
 
-1. รัน `npm access ls-packages` เพื่อรับ JSON mapping package -> permission
-2. ถ้า `npm access ls-packages` ไม่ใช้ได้ ให้ fallback:
-   - `curl "https://registry.npmjs.org/-/v1/search?text=author:<username>&size=250"` หรือ
+1. Run `npm access ls-packages` to get a JSON mapping package -> permission
+2. `npm access ls-packages` unavailable → fall back to:
+   - `curl "https://registry.npmjs.org/-/v1/search?text=author:<username>&size=250"` or
    - `curl "https://registry.npmjs.org/-/v1/search?text=maintainer:<username>&size=250"`
-3. บันทึกรายการ package names
+3. Record the package names
 
 ### 3. Fetch Package Metadata
 
-> Goal: ดึง version, description, last published
+> Goal: fetch version, description, last published
 
-1. สำหรับแต่ละ package รัน `npm view <package> version description time.modified --json`
-2. หรือ batch ด้วย Bun/Node script โดยเรียก `https://registry.npmjs.org/<package>`
-3. บันทึก version, description, last published date
+1. For each package run `npm view <package> version description time.modified --json`
+2. Or batch with a Bun/Node script calling `https://registry.npmjs.org/<package>`
+3. Record version, description, last published date
 
 ### 4. Build Report
 
-> Goal: รายงานผลเป็นตาราง
+> Goal: report as a table
 
-1. ใช้ `/report` คอลัมน์:
+1. Use `/report` columns:
    - No.
    - Package
    - Version
    - Last Published
    - Description
-2. เรียงตาม Last Published ล่าสุด
-3. ระบุสรุปจำนวน packages
+2. Sort by most recent Last Published
+3. State the total package count
 
 ### 5. Suggest Next Action
 
-> Goal: แนะนำขั้นตอนถัดไป
+> Goal: suggest next steps
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ publish, deprecate, หรือ update packages
+1. Use `/suggest-next-action` to recommend publish, deprecate, or update packages
 
 ## Rules
 
 ### 1. Authentication
 
-- ต้อง login ด้วย npm ก่อน
-- ไม่ expose token, password หรือ credentials ใน output
+- Must be logged in with npm first
+- Never expose tokens, passwords, or credentials in output
 
 ### 2. Read Only
 
-- ไม่ publish, unpublish, deprecate หรือ update package ใดๆ
-- แค่ query และรายงาน
+- Never publish, unpublish, deprecate, or update any package
+- Query and report only
 
 ### 3. Rate Limit
 
-- ถ้า packages มาก → ใช้ batch หรือ sleep เพื่อไม่ hit rate limit
-- ถ้า API ไม่ตอบ → report timeout และ stop
+- Many packages → use batching or sleep to avoid hitting the rate limit
+- API does not respond → report the timeout and stop
 
 ### 4. Scope
 
-- แสดง packages ที user เป็น owner/author เท่านั้น
-- ถ้าไม่แน่ใจว่า user หมายถึง `installed packages` หรือ `published packages` → ทำ `/ask-me`
+- Show only packages the user owns/authors
+- Unsure whether the user means `installed packages` or `published packages` → use `/ask-me`
 
-- ใช้ /list-program-in-computer ถ้าจำเป็น
-- ใช้ /run-install ถ้าจำเป็น
+- Use /list-program-in-computer if needed
+- Use /run-install if needed
 
 ## Expected Outcome
 
-- รายการ npm packages ที user เป็น owner พร้อม version, description, last published
-- ตารางที sort ตาม last published
-- ไม่มีการแก้ไข package ใดๆ
+- The list of npm packages the user owns with version, description, last published
+- A table sorted by last published
+- No package modified

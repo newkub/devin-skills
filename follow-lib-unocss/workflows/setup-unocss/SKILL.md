@@ -1,6 +1,6 @@
 ---
 name: follow-lib-unocss-setup-unocss
-description: ติดตั้ง UnoCSS — install, uno.config.ts, presets, framework integration
+description: Install UnoCSS — install, uno.config.ts, presets, framework integration
 argument-hint: "[framework]"
 related:
   - follow-lib-unocss
@@ -12,34 +12,34 @@ related:
 
 ## Goal
 
-ติดตั้ง UnoCSS ใน project — `unocss` package, `uno.config.ts` พร้อม `presetWind4` และ framework integration ขั้นต่ำที่ทำงานได้
+Install UnoCSS in a project — the `unocss` package, a `uno.config.ts` with `presetWind4`, and the minimal working framework integration
 
 ## Scope
 
-ใช้เมื่อต้อง setup UnoCSS ครั้งแรกบน Vite, Nuxt, Next.js, Astro หรือ CLI — ครอบคลุม install, config file พื้นฐาน และ smoke test (first-time setup ไม่ใช่ theme customization — ใช้ /follow-unocss-theme สำหรับ theme)
+Use when setting up UnoCSS for the first time on Vite, Nuxt, Next.js, Astro, or CLI — covers install, a basic config file, and a smoke test (first-time setup, not theme customization — use /follow-unocss-theme for theme)
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: ตรวจสอบ framework และ current state ก่อนติดตั้ง
+> Goal: check the framework and current state before installing
 
-1. ตรวจ framework จาก `package.json` และ config files (`vite.config.*`, `nuxt.config.*`, `astro.config.*`, `postcss.config.*`)
-2. ตรวจว่ามี `uno.config.*` หรือ `unocss` อยู่แล้วหรือไม่ — ถ้า setup ไปแล้ว → verify เท่านั้น
-3. ระบุ CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`)
+1. Detect the framework from `package.json` and the config files (`vite.config.*`, `nuxt.config.*`, `astro.config.*`, `postcss.config.*`)
+2. Check whether a `uno.config.*` or `unocss` already exists — if it's already set up → verify only
+3. Identify the CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`)
 
 ### 2. Install Dependencies
 
-> Goal: ติดตั้ง `unocss` และ framework package ที่ต้องใช้
+> Goal: install `unocss` and the required framework packages
 
-1. Core: `bun add -D unocss` (ใช้ package manager ที่ project ใช้)
-2. Framework-specific ตามต้องการ: `@unocss/nuxt` (Nuxt), `@unocss/postcss` (Next.js), `@unocss/astro` (Astro), `@unocss/cli` (CLI)
-3. Icons (optional): `bun add -D @iconify-json/mdi` สำหรับ `presetIcons`
-4. ถ้าไม่แน่ใจ version → ดู official docs ที่ `https://unocss.dev`
+1. Core: `bun add -D unocss` (use the package manager the project uses)
+2. Framework-specific as needed: `@unocss/nuxt` (Nuxt), `@unocss/postcss` (Next.js), `@unocss/astro` (Astro), `@unocss/cli` (CLI)
+3. Icons (optional): `bun add -D @iconify-json/mdi` for `presetIcons`
+4. If unsure of the version → check the official docs at `https://unocss.dev`
 
 ### 3. Create uno.config.ts
 
-> Goal: สร้าง config ขั้นต่ำที่ทำงานได้ก่อน
+> Goal: create a minimal working config first
 
 ```ts
 import { defineConfig, presetWind4 } from 'unocss'
@@ -49,40 +49,40 @@ export default defineConfig({
 })
 ```
 
-1. เริ่มด้วย `presetWind4()` เท่านั้น — ค่อยเพิ่ม `presetIcons`, transformers ทีหลัง
-2. ตั้ง `dark: 'class'` ใน `presetWind4` options ถ้าต้องการ class-based dark mode
-3. เพิ่ม `content.filesystem` เฉพาะเมื่อ auto-scan ไม่ครอบคลุม
-4. สำหรับ theme/shortcuts/rules → ทำ /follow-unocss-theme
+1. Start with `presetWind4()` only — add `presetIcons` and transformers later
+2. Set `dark: 'class'` in the `presetWind4` options if you want class-based dark mode
+3. Add `content.filesystem` only when auto-scan doesn't cover everything
+4. For theme/shortcuts/rules → do /follow-unocss-theme
 
 ### 4. Wire Framework Integration
 
-> Goal: เชื่อม UnoCSS เข้า framework ที่ใช้
+> Goal: connect UnoCSS to the framework in use
 
-1. Vite: เพิ่ม `UnoCSS()` plugin ใน `vite.config.ts` ก่อน framework plugin และ `import 'virtual:uno.css'` ใน entry
-2. Nuxt: เพิ่ม `@unocss/nuxt` ใน `modules` — CSS inject อัตโนมัติ
-3. Next.js: `postcss.config.mjs` ด้วย `@unocss/postcss` และ `@unocss all;` ใน globals.css
-4. Astro: `UnoCSS()` integration ใน `astro.config.mjs`
-5. รายละเอียดเต็มตาม `/follow-lib-unocss` step 4
+1. Vite: add the `UnoCSS()` plugin in `vite.config.ts` before the framework plugin and `import 'virtual:uno.css'` in the entry
+2. Nuxt: add `@unocss/nuxt` to `modules` — CSS is injected automatically
+3. Next.js: `postcss.config.mjs` with `@unocss/postcss` and `@unocss all;` in globals.css
+4. Astro: the `UnoCSS()` integration in `astro.config.mjs`
+5. Full details per `/follow-lib-unocss` step 4
 
 ### 5. Verify
 
-> Goal: smoke test ว่า UnoCSS generate CSS ได้
+> Goal: smoke test that UnoCSS generates CSS
 
-1. รัน `/run-dev` แล้วทดสอบ utilities เช่น `flex`, `bg-blue-500`, `text-center`
-2. ตรวจ output CSS ว่ามี rules generate จริง
-3. รัน build เพื่อยืนยันไม่มี error
-4. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `/run-dev` and test utilities such as `flex`, `bg-blue-500`, `text-center`
+2. Check the CSS output to confirm rules are actually generated
+3. Run a build to confirm there are no errors
+4. If verify fails → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ `presetWind4` เป็น preset หลัก — ห้ามใช้ `presetWind`/`presetUno` รุ่นเก่าสำหรับ setup ใหม่
-- ติดตั้งเป็น devDependencies — UnoCSS เป็น build-time tool
-- config ขั้นต่ำก่อน เพิ่ม options ทีหลัง — ห้าม copy config ใหญ่โดยไม่เข้าใจ
-- ใช้ `/follow-lib-unocss` สำหรับ full reference และ transformers
-- ใช้ `/follow-lib-css` ถ้าจำเป็น
+- Use `presetWind4` as the main preset — don't use the old `presetWind`/`presetUno` for new setups
+- Install as devDependencies — UnoCSS is a build-time tool
+- Minimal config first, add options later — don't copy a large config without understanding it
+- Use `/follow-lib-unocss` for the full reference and transformers
+- Use `/follow-lib-css` if needed
 
 ## Expected Outcome
 
-- `uno.config.ts` พร้อม `presetWind4` ทำงานได้
-- Framework integration เชื่อมถูกต้อง (virtual module / postcss / nuxt module / astro integration)
-- Utilities generate CSS จริงใน dev และ build ผ่าน
+- A `uno.config.ts` with `presetWind4` works
+- The framework integration is wired correctly (virtual module / postcss / nuxt module / astro integration)
+- Utilities generate real CSS in dev, and the build passes

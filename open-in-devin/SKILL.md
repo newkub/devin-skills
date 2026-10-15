@@ -1,6 +1,6 @@
 ---
 name: open-in-devin
-description: เปิด directory หรือ file ใน Devin session ใหม่
+description: Open a directory or file in a new Devin session
 argument-hint: "[path]"
 related:
   - create-report-in-dot-devin
@@ -9,65 +9,65 @@ related:
 
 ## Goal
 
-เปิด Devin session ด้วย target path เป็นจุดเริ่มต้น
+Start a Devin session with the target path as the starting point
 
 ## Scope
 
-ใช้เมื่อต้องการเปิด directory หรือ file ใน Devin CLI จาก terminal หรือ context ปัจจุบัน
+Use when opening a directory or file in the Devin CLI from the terminal or current context
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: ระบุ target path และตรวจสอบ Devin CLI
+> Goal: Identify the target path and check the Devin CLI
 
-1. ระบุ target path จาก user input, ไฟล์ที่เปิดอยู่, หรือ current working directory
-2. ตรวจสอบ `devin` CLI ใน PATH ด้วย `where devin` หรือ `Get-Command devin` (verified `devin 3000.6.14`, 2026-09-12)
-3. ถ้าไม่พบ `devin` ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
-4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
+1. Identify the target path from user input, the open file, or the current working directory
+2. Check for the `devin` CLI in PATH with `where devin` or `Get-Command devin` (verified `devin 3000.6.14`, 2026-09-12)
+3. If `devin` is not found, inform the user with install guidance, then stop
+4. If the target path does not exist, inform the user and stop
 
 ### 2. Open In Devin
 
-> Goal: เปิด Devin session ด้วย target context
+> Goal: Open a Devin session with the target context
 
-1. ถ้า target เป็น directory: รัน `Set-Location "<path>"; devin` (PowerShell) หรือ `cd "<path>" && devin` เพื่อเริ่ม interactive session
-2. `devin "<path>"` (positional `[PATH]...`) จะเปิด Devin Desktop บน path นั้น — ใช้เมื่อต้องการ GUI
-3. ถ้า target เป็น file: เปิด parent directory แล้วส่ง file เป็น initial prompt ด้วย `Set-Location "<parent>"; devin -- "edit <file>"` หรือ `cd "<parent>" && devin -- "edit <file>"`
-4. ถ้าต้องการ non-interactive ใช้ `devin -p "<prompt>"` (`--print`) หรือ `devin --prompt-file "<file>"`; resume session เดิมด้วย `devin -c` (`--continue`) หรือ `devin -r [session-id]` (`--resume`)
-5. หลีกเลี่ยงการส่ง secrets หรือ paths ที่ sensitive เป็น prompt
+1. For a directory: run `Set-Location "<path>"; devin` (PowerShell) or `cd "<path>" && devin` to start an interactive session
+2. `devin "<path>"` (positional `[PATH]...`) opens Devin Desktop on that path — use when a GUI is wanted
+3. For a file: open the parent directory and pass the file as the initial prompt with `Set-Location "<parent>"; devin -- "edit <file>"` or `cd "<parent>" && devin -- "edit <file>"`
+4. For non-interactive use, run `devin -p "<prompt>"` (`--print`) or `devin --prompt-file "<file>"`; resume the previous session with `devin -c` (`--continue`) or `devin -r [session-id]` (`--resume`)
+5. Avoid passing secrets or sensitive paths as prompts
 
 ### 3. Verify And Report
 
-> Goal: ยืนยันว่า Devin เริ่ม session ได้
+> Goal: Confirm Devin started the session
 
-1. ตรวจสอบว่า process `devin` ถูก spawn และไม่ exit ทันที
-2. ถ้า fail ให้แสดง stderr และแนะนำให้รัน `devin doctor` หรือตรวจ workspace trust (non-interactive mode จะ fail ใน untrusted directory — ใช้ `--respect-workspace-trust false` ถ้าจำเป็น)
-3. รายงาน path และ command ที่ใช้
+1. Check that the `devin` process was spawned and did not exit immediately
+2. On failure, show stderr and recommend running `devin doctor` or checking workspace trust (non-interactive mode fails in untrusted directories — use `--respect-workspace-trust false` if required)
+3. Report the path and command used
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่สร้างไฟล์หรือ directory ใหม่ถ้า target ไม่มีอยู่
-- ไม่รันคำสั่งถ้า `devin` CLI ไม่พบใน PATH
-- ถ้า user ไม่ระบุ path ให้ถามก่อน
+- Do not create new files or directories when the target is missing
+- Do not run the command when the `devin` CLI is not found in PATH
+- If the user gives no path, ask first
 
 ### 2. Path Handling
 
-- ใช้ absolute path ถ้าไม่แน่ใจเรื่อง working directory
-- ใส่ quotes รอบ path เสมอเพื่อจัดการ spaces
-- สำหรับ file ให้เปิด parent directory แล้วส่ง file เข้าไปเป็น context
+- Use absolute paths when the working directory is uncertain
+- Always quote paths to handle spaces
+- For files, open the parent directory and pass the file in as context
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `devin` command ที่ใช้ (in devin)
-- ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
+- Report the result as a path list with the `devin` commands used (in devin)
+- On failure, state the cause and next steps
 
-- ใช้ /create-report-in-dot-devin ถ้าจำเป็น
-- ใช้ /list-request-devin-session ถ้าจำเป็น
-- ใช้ /open-in-explorer ถ้าจำเป็น
+- Use /create-report-in-dot-devin if needed
+- Use /list-request-devin-session if needed
+- Use /open-in-explorer if needed
 
 ## Expected Outcome
 
-- Devin session เริ่มต้นด้วย target path เป็น workspace หรือ context
-- Output เป็นรายการ path ที่เปิดพร้อม command ที่ใช้
+- A Devin session starts with the target path as workspace or context
+- Output is the list of opened paths with the commands used

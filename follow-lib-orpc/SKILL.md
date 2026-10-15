@@ -1,6 +1,6 @@
 ---
 name: follow-lib-orpc
-description: พัฒนา API ด้วย oRPC 1.15+ แบบ type-safe ตาม official best practices
+description: Develop APIs with oRPC 1.15+ type-safe per official best practices
 argument-hint: "[scope]"
 related:
   - follow-lib-zod
@@ -15,17 +15,17 @@ related:
 
 ## Goal
 
-พัฒนา API ด้วย oRPC เวอร์ชันล่าสุด แบบ type-safe ครบวงจร ตาม official best practices
+Develop APIs with the latest oRPC version, fully type-safe, per official best practices
 
 ## Scope
 
-ใช้สำหรับ project ที่ใช้ oRPC เป็น API layer (ทั้ง standalone และภายใน TanStack Start/Next.js)
+Use for projects that use oRPC as the API layer (both standalone and inside TanStack Start/Next.js)
 
-- ติดตั้ง oRPC packages (server, client, openapi, tanstack-query)
-- สร้าง procedures พร้อม input/output validation และ type-safe errors
-- ตั้งค่า middleware, server handler, client
-- ใช้ TanStack Query และ OpenAPI ถ้าจำเป็น
-- ไม่มี CLI ของตัวเอง — ใช้งานผ่าน programmatic API (จึงไม่มี)
+- Install oRPC packages (server, client, openapi, tanstack-query)
+- Create procedures with input/output validation and type-safe errors
+- Configure middleware, server handler, client
+- Use TanStack Query and OpenAPI if needed
+- No own CLI — used via programmatic API (thus none)
 
 ## Execute
 
@@ -41,163 +41,163 @@ related:
 | Serve + OpenAPI/docs | `workflows/serve-openapi/SKILL.md` — `RPCHandler`/`OpenAPIHandler`, spec gen, CORS | 
 ### 1. Install Packages
 
-> Goal: ติดตั้ง oRPC packages และ dependencies
+> Goal: install oRPC packages and dependencies
 
-1. ติดตั้ง `bun add @orpc/server@1.15.0 @orpc/client` หรือ `bun add @orpc/server @orpc/client` (latest stable)
-2. ถ้าใช้ OpenAPI ติดตั้ง `bun add @orpc/openapi`
-3. ถ้าใช้ TanStack Query ติดตั้ง `bun add @orpc/tanstack-query`
-4. ถ้าต้องการ contract-first ติดตั้ง `bun add @orpc/contract`
-5. ใช้ Zod สำหรับ schema validation (ทำ `/follow-lib-zod`)
+1. Install `bun add @orpc/server@1.15.0 @orpc/client` or `bun add @orpc/server @orpc/client` (latest stable)
+2. If using OpenAPI, install `bun add @orpc/openapi`
+3. If using TanStack Query, install `bun add @orpc/tanstack-query`
+4. If you want contract-first, install `bun add @orpc/contract`
+5. Use Zod for schema validation (do `/follow-lib-zod`)
 
 ### 2. Define Procedures
 
-> Goal: สร้าง procedures พร้อม input validation และ error handling
+> Goal: create procedures with input validation and error handling
 
-1. สร้าง `os` builder จาก `@orpc/server`
-2. ใช้ `.$context<{ headers: Headers }>()` สำหรับ initial context
-3. ใช้ `.meta(...)` สำหรับ OpenAPI metadata ถ้าจำเป็น
-4. ใช้ `.input(zodSchema)` สำหรับ input validation
-5. ใช้ `.output(zodSchema)` สำหรับ output validation ถ้าจำเป็น
-6. ใช้ `.errors({ CODE: { data: zodSchema } })` สำหรับ type-safe error definitions
-7. ใช้ `.handler(async ({ input, context, errors }) => { ... })` สำหรับ business logic
-8. ใช้ `.use(middleware)` สำหรับ auth, logging, หรือ resource injection
-9. Export `type Router` สำหรับ client-side type inference
+1. Create the `os` builder from `@orpc/server`
+2. Use `.$context<{ headers: Headers }>()` for initial context
+3. Use `.meta(...)` for OpenAPI metadata if needed
+4. Use `.input(zodSchema)` for input validation
+5. Use `.output(zodSchema)` for output validation if needed
+6. Use `.errors({ CODE: { data: zodSchema } })` for type-safe error definitions
+7. Use `.handler(async ({ input, context, errors }) => { ... })` for business logic
+8. Use `.use(middleware)` for auth, logging, or resource injection
+9. Export `type Router` for client-side type inference
 
 ### 3. Setup Middleware
 
-> Goal: ตั้งค่า middleware สำหรับ auth และ resource injection
+> Goal: configure middleware for auth and resource injection
 
-1. ใช้ `.$context<{ ... }>()` ก่อน `.use()` เพื่อระบุ dependent context
-2. ใช้ `next({ context: { ... } })` สำหรับ inject execution context (auth, db, etc.)
-3. ใช้ `throw new ORPCError('CODE')` สำหรับ guard และ error throwing
-4. ใช้ inline middleware ด้วย `.use(async ({ context, next }) => { ... })` สำหรับ simple cases
-5. ใช้ `.mapInput()` บน middleware ถ้าต้องการรับ input shape อื่น
+1. Use `.$context<{ ... }>()` before `.use()` to declare dependent context
+2. Use `next({ context: { ... } })` to inject execution context (auth, db, etc.)
+3. Use `throw new ORPCError('CODE')` for guards and error throwing
+4. Use inline middleware with `.use(async ({ context, next }) => { ... })` for simple cases
+5. Use `.mapInput()` on middleware if you need a different input shape
 
 ### 4. Setup Server Handler
 
-> Goal: ตั้งค่า server handler สำหรับ runtime
+> Goal: configure the server handler for the runtime
 
-1. ใช้ `RPCHandler` จาก `@orpc/server/fetch` (หรือ `@orpc/server/node` สำหรับ Node.js)
-2. ใช้ `OpenAPIHandler` จาก `@orpc/openapi/*` ถ้าต้องการรองรับ OpenAPI/REST
-3. ตั้งค่า `interceptors: [onError((error) => console.error(error))]`
-4. ใช้ `handler.handle(request, { context: { headers: request.headers } })` สำหรับ initial context
-5. ตรวจสอบ `matched` ก่อน return response
-6. ถ้าใช้ TanStack Start ใช้ `createFileRoute` พร้อม `server.handlers`
+1. Use `RPCHandler` from `@orpc/server/fetch` (or `@orpc/server/node` for Node.js)
+2. Use `OpenAPIHandler` from `@orpc/openapi/*` if OpenAPI/REST support is needed
+3. Configure `interceptors: [onError((error) => console.error(error))]`
+4. Use `handler.handle(request, { context: { headers: request.headers } })` for initial context
+5. Check `matched` before returning the response
+6. If using TanStack Start, use `createFileRoute` with `server.handlers`
 
 ### 5. Create Client
 
-> Goal: สร้าง type-safe client สำหรับเรียก procedures
+> Goal: create a type-safe client for calling procedures
 
-1. ใช้ `RPCLink` จาก `@orpc/client/fetch` สำหรับ create link
-2. ใช้ `createORPCClient(link)` พร้อม `RouterClient<typeof router>` type
-3. ใช้ `headers: () => ({ ... })` สำหรับ dynamic headers (เช่น auth token)
-4. ใช้ `interceptors: [onError((error) => { ... })]` สำหรับ client-side error logging
-5. ถ้าใช้ TanStack Start ใช้ `createIsomorphicFn` สำหรับ environment-specific config
+1. Use `RPCLink` from `@orpc/client/fetch` to create a link
+2. Use `createORPCClient(link)` with the `RouterClient<typeof router>` type
+3. Use `headers: () => ({ ... })` for dynamic headers (e.g. auth token)
+4. Use `interceptors: [onError((error) => { ... })]` for client-side error logging
+5. If using TanStack Start, use `createIsomorphicFn` for environment-specific config
 
 ### 6. Handle Errors
 
-> Goal: จัดการ errors แบบ type-safe ด้วย `safe()` และ `isDefinedError`
+> Goal: handle errors type-safely with `safe()` and `isDefinedError`
 
-1. ใช้ `.errors()` ใน procedure สำหรับ define type-safe errors
-2. ใช้ `safe()` จาก `@orpc/client` แทน try/catch สำหรับ tuple destructuring
-3. ใช้ `isDefinedError(error)` จาก `@orpc/client` สำหรับ narrow error type จาก `.errors()`
-4. ใช้ `createSafeClient` สำหรับ auto-wrap ทุก procedure calls ด้วย `safe()`
-5. ห้ามใส่ sensitive information ใน `message` หรือ `data` (ถูกส่งไป client)
+1. Use `.errors()` in the procedure to define type-safe errors
+2. Use `safe()` from `@orpc/client` instead of try/catch for tuple destructuring
+3. Use `isDefinedError(error)` from `@orpc/client` to narrow error types from `.errors()`
+4. Use `createSafeClient` to auto-wrap every procedure call with `safe()`
+5. Never put sensitive information in `message` or `data` (they are sent to the client)
 
 ### 7. Integrate TanStack Query
 
-> Goal: ตั้งค่า TanStack Query ถ้าจำเป็น
+> Goal: configure TanStack Query if needed
 
-1. ใช้ `createTanstackQueryUtils` จาก `@orpc/tanstack-query`
-2. ใช้ `orpc.<path>.queryOptions({ input: { ... } })` สำหรับ type-safe queries
-3. ใช้ `orpc.<path>.mutationOptions({ ... })` สำหรับ mutations
-4. ใช้ `isDefinedError` ใน `onError` callbacks สำหรับ type-safe error handling
+1. Use `createTanstackQueryUtils` from `@orpc/tanstack-query`
+2. Use `orpc.<path>.queryOptions({ input: { ... } })` for type-safe queries
+3. Use `orpc.<path>.mutationOptions({ ... })` for mutations
+4. Use `isDefinedError` in `onError` callbacks for type-safe error handling
 
 ### 8. OpenAPI And Contracts
 
-> Goal: สร้าง OpenAPI docs และ contract-first API ถ้าจำเป็น
+> Goal: create OpenAPI docs and contract-first APIs if needed
 
-1. ใช้ `OpenAPIHandler` จาก `@orpc/openapi/fetch` หรือ adapter ทีตรงกับ runtime
-2. ตั้งค่า `prefix` ให้ตรงกับ route handler
-3. ใช้ `OpenAPIGenerator` จาก `@orpc/openapi` เพื่อ generate OpenAPI spec document จาก router — ใช้ spec นี้กับ `/run-api-docs` (Scalar serve), `/deep-test api` (import เข้า Bruno ด้วย `bru import openapi` หรือ fuzz ด้วย Schemathesis)
-4. ใช้ `@orpc/contract` สำหรับ define contract ก่อน implement
-5. ใช้ `ContractRouterClient<typeof contract>` สำหรับ client จาก contract
+1. Use `OpenAPIHandler` from `@orpc/openapi/fetch` or the adapter matching the runtime
+2. Set `prefix` to match the route handler
+3. Use `OpenAPIGenerator` from `@orpc/openapi` to generate an OpenAPI spec document from the router — use that spec with `/run-api-docs` (Scalar serve), `/deep-test api` (import into Bruno via `bru import openapi` or fuzz with Schemathesis)
+4. Use `@orpc/contract` to define the contract before implementing
+5. Use `ContractRouterClient<typeof contract>` for a client from the contract
 
 ## Rules
 
 ### 1. Procedure Design
 
-- ใช้ `.$context<{ ... }>()` สำหรับ initial context (environment-specific dependencies)
-- ใช้ `.input(zodSchema)` สำหรับทุก procedure ที่รับ input (ทำ `/follow-lib-zod`)
-- ใช้ `.output(zodSchema)` เมื่อต้องการ validate response และ OpenAPI
-- ใช้ `.errors()` สำหรับ application-specific errors ที่ต้องการ type safety
-- ใช้ common error codes (`UNAUTHORIZED`, `NOT_FOUND`) โดยไม่ต้อง define schema ทุกครั้ง
-- Export `type Router` สำหรับ client-side type inference
+- Use `.$context<{ ... }>()` for initial context (environment-specific dependencies)
+- Use `.input(zodSchema)` for every procedure that accepts input (do `/follow-lib-zod`)
+- Use `.output(zodSchema)` when you want to validate responses and OpenAPI
+- Use `.errors()` for application-specific errors that need type safety
+- Use common error codes (`UNAUTHORIZED`, `NOT_FOUND`) without defining a schema each time
+- Export `type Router` for client-side type inference
 
 ### 2. Middleware Design
 
-- ใช้ `.$context` ก่อน `.use()` เพื่อระบุ dependent context
-- ใช้ `next({ context: { ... } })` สำหรับ inject execution context
-- ใช้ `throw new ORPCError('CODE')` สำหรับ guards
-- ตรวจสอบ context ก่อน init resource (dedup ถ้ามีอยู่แล้ว)
+- Use `.$context` before `.use()` to declare dependent context
+- Use `next({ context: { ... } })` to inject execution context
+- Use `throw new ORPCError('CODE')` for guards
+- Check the context before initializing a resource (dedup if it already exists)
 
 ### 3. Server Setup
 
-- ใช้ `RPCHandler` จาก package ที่ตรงกับ runtime (`/fetch`, `/node`)
-- ใช้ `OpenAPIHandler` ถ้าต้องการรองรับ OpenAPI/REST
-- ตั้งค่า `interceptors` สำหรับ error logging
-- ส่ง initial context ผ่าน `handler.handle(request, { context: { ... } })`
-- ตรวจสอบ `matched` ก่อน return response
+- Use `RPCHandler` from the package matching the runtime (`/fetch`, `/node`)
+- Use `OpenAPIHandler` if OpenAPI/REST support is needed
+- Configure `interceptors` for error logging
+- Pass initial context via `handler.handle(request, { context: { ... } })`
+- Check `matched` before returning the response
 
 ### 4. Client Setup
 
-- ใช้ `RPCLink` จาก `@orpc/client/fetch`
-- ใช้ `RouterClient<typeof router>` สำหรับ type-safe client
-- ใช้ `headers: () => ({ ... })` สำหรับ dynamic headers
-- ใช้ `createIsomorphicFn` สำหรับ SSR/CSR environment-specific config
-- ใช้ `createSafeClient` ถ้าใช้ `safe()` บ่อย
+- Use `RPCLink` from `@orpc/client/fetch`
+- Use `RouterClient<typeof router>` for a type-safe client
+- Use `headers: () => ({ ... })` for dynamic headers
+- Use `createIsomorphicFn` for SSR/CSR environment-specific config
+- Use `createSafeClient` if you use `safe()` often
 
 ### 5. Error Handling
 
-- ใช้ `safe()` แทน try/catch ใน client code
-- ใช้ `isDefinedError(error)` สำหรับ narrow typed errors
-- ห้ามใส่ sensitive information ใน `message` หรือ `data`
-- ใช้ `.errors()` เฉพาะ application-specific cases ไม่ใช่ common errors
-- ใช้ `ORPCError` โดยตรงใน utility functions ที่ไม่มี access to `errors` object
+- Use `safe()` instead of try/catch in client code
+- Use `isDefinedError(error)` to narrow typed errors
+- Never put sensitive information in `message` or `data`
+- Use `.errors()` only for application-specific cases, not common errors
+- Use `ORPCError` directly in utility functions without access to the `errors` object
 
 ### 6. Context Management
 
-- ใช้ initial context สำหรับ environment-specific values (headers, env vars, db URLs)
-- ใช้ execution context สำหรับ runtime data (auth, db connections)
-- รวมทั้งสองแบบ: initial context สำหรับ static deps, middleware สำหรับ dynamic deps
-- อย่า pass sensitive data ผ่าน context ที่ไม่จำเป็น
+- Use initial context for environment-specific values (headers, env vars, db URLs)
+- Use execution context for runtime data (auth, db connections)
+- Combine both: initial context for static deps, middleware for dynamic deps
+- Don't pass sensitive data through context that isn't needed
 
 ### 7. TanStack Query Integration
 
-- ใช้ `createTanstackQueryUtils` แทนการสร้าง custom query utils
-- ใช้ `.queryOptions()`, `.mutationOptions()` สำหรับ type-safe options
-- ใช้ `isDefinedError` ใน `onError` callbacks
+- Use `createTanstackQueryUtils` instead of building custom query utils
+- Use `.queryOptions()`, `.mutationOptions()` for type-safe options
+- Use `isDefinedError` in `onError` callbacks
 
 ### 8. Version Notes
 
 - Latest stable: `@orpc/server@1.15.4` / `@orpc/client@1.15.4` (verified 2026-09-24)
-- oRPC v2 beta: `@orpc/server@beta @orpc/client@beta` (2.0.0-beta.35) มี breaking changes เช่น `route`/`prefix`/`tag` → `meta(openapi(...))`, `isDefinedError` → `isInferableError`, `safe` คืน `[error, data, inferableError]`, `eventIterator` → `asyncIteratorObject`
-- ตรวจสอบ version ใน `package.json` ก่อนเลือก API
+- oRPC v2 beta: `@orpc/server@beta @orpc/client@beta` (2.0.0-beta.35) has breaking changes such as `route`/`prefix`/`tag` → `meta(openapi(...))`, `isDefinedError` → `isInferableError`, `safe` returns `[error, data, inferableError]`, `eventIterator` → `asyncIteratorObject`
+- Check the version in `package.json` before choosing APIs
 
-- ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ /follow-tool-bruno ถ้าจำเป็น
+- Use `/follow-lib-zod` if using Zod as the validator
+- Use `/follow-best-practice` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
+- Use /follow-tool-bruno if needed
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- API แบบ type-safe ครบวงจร (server → client)
-- Error handling แบบ type-safe ด้วย `safe()` และ `isDefinedError`
-- Middleware สำหรับ auth, logging, resource injection
-- Schema validation ด้วย Zod สำหรับทุก input/output
-- Client ที่เรียก procedure เหมือน local function พร้อม auto-completion
-- สอดคล้องกับ official oRPC documentation
+- A fully type-safe API (server → client)
+- Type-safe error handling with `safe()` and `isDefinedError`
+- Middleware for auth, logging, resource injection
+- Schema validation with Zod for every input/output
+- A client that calls procedures like local functions with auto-completion
+- Consistent with official oRPC documentation

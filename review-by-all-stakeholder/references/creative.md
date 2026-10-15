@@ -21,7 +21,7 @@ Persona details for the `creative` category — merged from the original `workfl
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| visual-designer | visual consistency, spacing/typography → `/deep-review` | `### creative/visual-designer` |
+| visual-designer | visual consistency, spacing/typography → `/deep-review-codebase` | `### creative/visual-designer` |
 | brand-designer | brand asset usage, logo/color integrity | `### creative/brand-designer` |
 | creative-director | creative coherence, hero visuals, differentiation | `### creative/creative-director` |
 
@@ -186,7 +186,7 @@ Persona details for the `creative` category — merged from the original `workfl
 
 - ตรวจ design token coverage — theme files, CSS variables, dark mode readiness
 
-- Deep pass → `/deep-review` สำหรับ UX/UI review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ UX/UI review เชิงลึก
 
 
 

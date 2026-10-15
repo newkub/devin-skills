@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-config
-description: ใช้ TanStack Config — build/publish toolchain สำหรับ maintain JS packages คุณภาพสูง
+description: Use TanStack Config — a build/publish toolchain for maintaining high-quality JS packages
 argument-hint: "[package-dir]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -10,13 +10,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack Config — configuration และ tooling ที่ TanStack ใช้เองสำหรับ build + publish packages คุณภาพสูง (ESM/CJS, types, publint-style checks)
+Use TanStack Config — the configuration and tooling TanStack itself uses to build + publish high-quality packages (ESM/CJS, types, publint-style checks)
 
 ## Scope
 
-ใช้เมื่อ maintain/publish library packages — **ไม่ใช่ app config**; app projects ไม่ต้องใช้ (ใช้ tsdown/tsup/vite ตาม `follow-tool-*` แทนได้)
+Use when maintaining/publishing library packages — **not app config**; app projects don't need it (use tsdown/tsup/vite per `follow-tool-*` instead)
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -28,28 +28,28 @@ bun add -D @tanstack/config
 
 ### 2. Configure Package Build
 
-> Goal: build/publish config ตาม TanStack standard
+> Goal: build/publish config per the TanStack standard
 
-1. อ่าน `https://tanstack.com/config/latest` — ตรวจ config file format ล่าสุด (`tanstack.config.*` หรือ `package.json` field)
-2. กำหนด entry points + output formats (ESM/CJS + `.d.ts`)
-3. รัน build/publish checks ที่ package provide — ตรวจ exports map, types resolution, publint-style issues ก่อน publish
+1. Read `https://tanstack.com/config/latest` — check the current config file format (`tanstack.config.*` or a `package.json` field)
+2. Define entry points + output formats (ESM/CJS + `.d.ts`)
+3. Run the build/publish checks the package provides — verify the exports map, types resolution, and publint-style issues before publishing
 
 ### 3. Verify
 
-> Goal: package build/publish ผ่าน checks
+> Goal: the package build/publish passes checks
 
-1. `/run-build` — outputs ครบ (ESM + CJS + types)
-2. `npm pack --dry-run` — published files ถูกต้อง
-3. `bunx publint` หรือ equivalent check ผ่าน
-4. ถ้า fail → `/resolve-errors` max 3 รอบ
+1. `/run-build` — complete outputs (ESM + CJS + types)
+2. `npm pack --dry-run` — the published files are correct
+3. `bunx publint` passes
+4. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- ใช้เฉพาะกับ packages ที่จะ publish — app ไม่เกี่ยว
-- Exports map ต้อง resolve ได้ทั้ง `import`/`require`/`types` conditions
-- อย่า replace build tool ที่ project ใช้อยู่ (tsdown/tsup) ถ้าไม่มีเหตุผล — config lib นี้ optimize ให้ TanStack-style publishing
+- Use only for packages being published — apps are unrelated
+- The exports map must resolve for `import`/`require`/`types` conditions alike
+- Don't replace the project's existing build tool (tsdown/tsup) without reason — this config lib is optimized for TanStack-style publishing
 
 ## Expected Outcome
 
-- Package build ครบ formats + types
-- Publish checks ผ่าน ไม่มี exports/types issues
+- The package builds with complete formats + types
+- Publish checks pass with no exports/types issues

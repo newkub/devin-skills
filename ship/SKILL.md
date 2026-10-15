@@ -8,8 +8,8 @@ triggers:
 related:
   - follow-agents-md
   - update-agents-md
-  - deep-review
-  - deep-review-then-fix
+  - deep-review-codebase
+  - deep-review-codebase-then-fix
   - deep-validate
   - update-tests
   - run-test
@@ -58,8 +58,8 @@ The single ship command — run every verification gate first, then commit/push,
 
 > Goal: changes and `AGENTS.md` pass review before ship
 
-1. Run `/deep-review` on the changed scope + `AGENTS.md` only
-2. If there are findings → run `/deep-review-then-fix` until they all pass
+1. Run `/deep-review-codebase` on the changed scope + `AGENTS.md` only
+2. If there are findings → run `/deep-review-codebase-then-fix` until they all pass
 3. Add `/review-devin-global-harness` when changing the devin skills repo
 
 ### 3. Validate
@@ -96,7 +96,7 @@ The single ship command — run every verification gate first, then commit/push,
 > Goal: the → `main` PR passes review + all checks before merge
 
 1. Create/find the PR into `main` with `/create-github-pr` (if none exists)
-2. Run `/review-github-pr` — full gate: all CI checks pass + `/deep-validate` + `/deep-review` + PR metadata/diff clean
+2. Run `/review-github-pr` — full gate: all CI checks pass + `/deep-validate` + `/deep-review-codebase` + PR metadata/diff clean
 3. If the gate fails → fix the findings on the branch, re-run `/git-commit-and-push` — never merge
 
 ### 8. Merge To Main
@@ -130,6 +130,6 @@ The single ship command — run every verification gate first, then commit/push,
 ## Expected Outcome
 
 - `AGENTS.md` fresh, review/validate/check passed, tests green, dev run works, usage matches reality
-- Code pushed to remote with green CI/CD, PR review gate passed (checks + deep-validate + deep-review)
+- Code pushed to remote with green CI/CD, PR review gate passed (checks + deep-validate + deep-review-codebase)
 - Branches merged into `main` successfully + cleanup done, with a rollback path
 - A clear report with the verdict and the next action (`/release-new-version` if a release is needed)

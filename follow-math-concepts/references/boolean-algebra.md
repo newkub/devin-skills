@@ -2,81 +2,81 @@
 
 ## Goal
 
-เข้าใจ boolean algebra ลด/simplify boolean expressions ใช้ De Morgan, distributive, absorption และ Karnaugh maps เพื่อลด complexity ของ conditions
+Understand boolean algebra: reduce/simplify boolean expressions using De Morgan, distributive, absorption, and Karnaugh maps to cut condition complexity
 
 ## Scope
 
-- ใช้กับ if/else, guard clauses, assertions, feature flags
-- ครอบคลุบ AND, OR, NOT, XOR, NAND, NOR, XNOR
-- ใช้ laws: identity, null, idempotent, inverse, commutative, associative, distributive, absorption, De Morgan
-- แนะนำ Karnaugh map สำหรับ 2-4 variables
+- Use with if/else, guard clauses, assertions, feature flags
+- Covers AND, OR, NOT, XOR, NAND, NOR, XNOR
+- Uses the laws: identity, null, idempotent, inverse, commutative, associative, distributive, absorption, De Morgan
+- Recommends the Karnaugh map for 2-4 variables
 
 ## Execute
 
 ### 1. Parse Expression
 
-> Goal: แปลง expression เป็น canonical form
+> Goal: convert the expression to canonical form
 
-1. ระบุ variables เช่น `A`, `B`, `C`
-2. ระบุ operators ทีใช้: `&&`, `||`, `!`, `^`
-3. สร้าง truth table ถ้าจำเป็น
-4. แปลงเป็น minterms หรือ maxterms
+1. Identify the variables, e.g. `A`, `B`, `C`
+2. Identify the operators used: `&&`, `||`, `!`, `^`
+3. Build a truth table if needed
+4. Convert to minterms or maxterms
 
 ### 2. Apply Boolean Laws
 
-> Goal: ลด expression
+> Goal: reduce the expression
 
-1. ใช้ De Morgan: `!(A && B) = !A || !B`, `!(A || B) = !A && !B`
-2. ใช้ absorption: `A || (A && B) = A`, `A && (A || B) = A`
-3. ใช้ distributive: `A && (B || C) = (A && B) || (A && C)`
-4. ลบ double negation: `!!A = A`
-5. ใช้ consensus theorem: `(A && B) || (!A && C) || (B && C) = (A && B) || (!A && C)`
+1. Use De Morgan: `!(A && B) = !A || !B`, `!(A || B) = !A && !B`
+2. Use absorption: `A || (A && B) = A`, `A && (A || B) = A`
+3. Use distributive: `A && (B || C) = (A && B) || (A && C)`
+4. Remove double negation: `!!A = A`
+5. Use the consensus theorem: `(A && B) || (!A && C) || (B && C) = (A && B) || (!A && C)`
 
 ### 3. Karnaugh Map Simplification
 
-> Goal: หา minimal expression
+> Goal: find the minimal expression
 
-1. วาด K-map ตามจำนวน variables
-2. ลงค่า 1 จาก truth table
-3. จับกลุ่ม 1s เป็นกลุ่มของ 2, 4, 8
-4. อ่าน product term ของแต่ละกลุ่ม
-5. OR terms ทั้งหมด
+1. Draw the K-map per the number of variables
+2. Fill in the 1s from the truth table
+3. Group the 1s into groups of 2, 4, 8
+4. Read each group's product term
+5. OR all the terms
 
 ### 4. Map To Code
 
-> Goal: แปลงเป็น code
+> Goal: convert to code
 
-1. แปลง `A || (!A && B)` → `A || B`
-2. แปลง `if (cond1 && cond2) || (cond1 && !cond2)` → `if (cond1)`
-3. ใช้ guard clauses แทน nested if
-4. ใช้ boolean algebra ตรวจ dead code
+1. Convert `A || (!A && B)` → `A || B`
+2. Convert `if (cond1 && cond2) || (cond1 && !cond2)` → `if (cond1)`
+3. Use guard clauses instead of nested ifs
+4. Use boolean algebra to detect dead code
 
 ## Rules
 
 ### 1. Operator Precedence
 
 - `!` > `&&` > `||` > `^`
-- ใช้ parentheses เพื่อความชัดเจน
+- Use parentheses for clarity
 
 ### 2. Laws
 
-- ไม่ลืม De Morgan เมื่อ negate AND/OR
-- ตรวจ absorption ก่อน split
-- ใช้ K-map ถ้ามี 4 variables ขึ้นไป
+- Don't forget De Morgan when negating AND/OR
+- Check absorption before splitting
+- Use a K-map from 4 variables up
 
 ### 3. Code Mapping
 
 - `&&` = AND, `||` = OR, `!` = NOT, `^` = XOR
-- ternary `? :` เป็น multiplexer
-- ห้าม over-simplify จนทำให้คนอ่านไม่เข้าใจ
+- The ternary `? :` is a multiplexer
+- Never over-simplify until the code is unreadable
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /deep-debug ถ้าจำเป็น
-- ใช้ /follow-software-engineering ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /deep-debug if needed
+- Use /follow-software-engineering if needed
 
 ## Expected Outcome
 
-- สามารถลด boolean expression ให้ minimal
-- สามารถใช้ K-map สำหรับ 2-4 variables
-- สามารถ map ไปยัง if/else / guard clauses
-- สามารถตรวจ dead code / tautology ใน conditions
+- Able to reduce a boolean expression to minimal form
+- Able to use a K-map for 2-4 variables
+- Able to map to if/else / guard clauses
+- Able to detect dead code / tautologies in conditions

@@ -23,77 +23,76 @@ related:
 
 ## Goal
 
-แสดงตารางความสัมพันธ์ของ devin global skills 3 คอลัมน์ พร้อม flow `a -> b -> c` โดยใช้ scripts สแกนจาก `related` และ `/skill-name` references
+Show a 3-column relation table of the devin global skills with `a -> b -> c` flows, using scripts that scan `related` and `/skill-name` references
 
 ## Scope
 
-- สแกน `SKILL.md` ทั้งหมดใน target skills directory
-- ดึง `name`, `related`, และ `/skill-name` references จาก body
-- สร้าง reverse relation: skills ทีเรียกใช้ skill นี้
-- หา flow chain ความลึก 3 ระดับ
-- ไม่เปลี่ยนแปลง skill files
+- Scan every `SKILL.md` in the target skills directory
+- Extract `name`, `related`, and `/skill-name` references from the body
+- Build reverse relations: skills that call this skill
+- Find flow chains up to 3 levels deep
+- Do not modify skill files
 
-- ดูเพิ่มเติม: /list-devin-global-skills, /review-devin-global-harness, /use-scripts
+- See also: /list-devin-global-skills, /review-devin-global-harness, /use-scripts
 
 ## Execute
 
 ### 1. Scan Skills
 
-> Goal: รวบรวม metadata ทั้งหมด
+> Goal: collect all metadata
 
-1. `glob` หา `*/SKILL.md` ใน target directory (default: `%APPDATA%/devin/skills`)
-2. `read` แต่ละไฟล์แล้ว parse frontmatter `name`, `description`, `related`
-3. สแกน body หา `/skill-name` references
-4. รวม `related` + `/skill-name` references เป็น `outgoing` edges
+1. `glob` for `*/SKILL.md` in the target directory (default: `%APPDATA%/devin/skills`)
+2. `read` each file and parse the frontmatter `name`, `description`, `related`
+3. Scan the body for `/skill-name` references
+4. Merge `related` + `/skill-name` references into `outgoing` edges
 
 ### 2. Build Relation Map
 
-> Goal: สร้าง graph ความสัมพันธ์
+> Goal: build the relation graph
 
-1. สร้าง nodes จาก `name`
-2. สร้าง directed edges จาก `outgoing`
-3. สร้าง `incoming` (skills ทีเรียกใช้ skill นี้)
-4. เก็บ data เป็น `skills-relation.json`
+1. Create nodes from `name`
+2. Create directed edges from `outgoing`
+3. Create `incoming` (skills that call this skill)
+4. Store the data as `skills-relation.json`
 
 ### 3. Detect Flow Chains
 
-> Goal: หา flow skill a -> b -> c
+> Goal: find skill flows a -> b -> c
 
-1. DFS หา paths ความยาว 2-3 edges จากทุก node
-2. ตัด paths ซ้ำกัน
-3. บันทึกลง `skills-relation.json`
+1. DFS for paths of 2-3 edges from every node
+2. Drop duplicate paths
+3. Save into `skills-relation.json`
 
 ### 4. Report Table
 
-> Goal: แสดงผลเป้นตาราง
+> Goal: present the output as a table
 
-1. สร้างตาราง 3 คอลัมน์:
+1. Build a 3-column table:
    - `Skill`
-   - `Contains` (skills ทีอยู่ภายใน skill นี้)
-   - `Called By` (skills ทีเรียกใช้ skill นี้)
-2. แสดง flow chains ใต้ตาราง
-3. ทำ `/report table`
+   - `Contains` (skills inside this skill)
+   - `Called By` (skills that call this skill)
+2. Show the flow chains below the table
+3. Do `/report table`
 
 ### 5. Optional Visualize
 
-> Goal: ดู graph ถ้าต้องการ
+> Goal: view the graph when wanted
 
-1. ถ้าต้องการดู graph แบบ interactive → ทำ `/open-devin-in-web`
-2. ถ้าต้องการตรวจ circular dependencies → ทำ `/follow-tool-madge`
+1. For an interactive graph → do `/open-devin-in-web`
+2. To check circular dependencies → do `/follow-tool-madge`
 
 ## Rules
 
-- ใช้ `tools/scan-relations.ps1` หรือสคริปต์เทียบเท่าเท่านั้น ไม่ parse ด้วยมือ
-- ไม่แก้ไข skill files ระหว่าง scan
-- รองรับ target directory ผ่าน argument
-- report ต้องมี 3 คอลัมน์หลัก: Skill, Contains, Called By
-- flow chain แสดงสูงสุด 50 รายการเพื่อไม่ clutter
-- ถ้าไม่มี skills directory → stop และ report
+- Use `tools/scan-relations.ps1` or an equivalent script only; never parse by hand
+- Do not modify skill files during the scan
+- Support a target directory via argument
+- The report must have the 3 main columns: Skill, Contains, Called By
+- Show at most 50 flow chains to avoid clutter
+- If the skills directory is missing → stop and report
 
 ## Expected Outcome
 
-- ไฟล์ `skills-relation.json` ใน OS temp directory
-- ตาราง Skill / Contains / Called By
-- รายการ flow chains `a -> b -> c`
-- รายงานจำนวน skills, edges, และ isolated skills
-
+- A `skills-relation.json` file in the OS temp directory
+- A Skill / Contains / Called By table
+- The list of flow chains `a -> b -> c`
+- A report of skill, edge, and isolated-skill counts

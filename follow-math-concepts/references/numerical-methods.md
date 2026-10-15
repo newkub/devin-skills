@@ -2,87 +2,87 @@
 
 ## Goal
 
-เข้าใจ numerical methods: floating point representation, rounding errors, approximation, interpolation และประยุกต์ใช้ใน code เพื่อความถูกต้องทางคณิตศาสตร์
+Understand numerical methods: floating point representation, rounding errors, approximation, interpolation, and their application in code for mathematical correctness
 
 ## Scope
 
-- ใช้สำหรับ financial calc, physics simulation, scientific computing
-- ครอบคลุม IEEE 754, epsilon comparison, numerical stability
-- แนะนำ Newton-Raphson, bisection, interpolation
+- Use for financial calc, physics simulation, scientific computing
+- Covers IEEE 754, epsilon comparison, numerical stability
+- Introduces Newton-Raphson, bisection, interpolation
 
 ## Execute
 
 ### 1. Understand Floating Point
 
-> Goal: รู้ข้อจำกัดของ float
+> Goal: know the limits of float
 
-1. ตัวเลขทศนิยมใน binary อาจเป็นค่าประมาณ
-2. `0.1 + 0.2 !== 0.3` ใน floating point
-3. มี single (32-bit) และ double (64-bit) precision
-4. มี special values: NaN, Infinity, -0
+1. Decimal numbers in binary may be an approximation
+2. `0.1 + 0.2 !== 0.3` in floating point
+3. There are single (32-bit) and double (64-bit) precision
+4. There are special values: NaN, Infinity, -0
 
 ### 2. Compare Floating Point
 
-> Goal: เปรียบเทียบอย่างปลอดภัย
+> Goal: compare safely
 
-1. ใช้ absolute epsilon: `abs(a - b) < epsilon`
-2. ใช้ relative epsilon ถ้าค่าใหญ่: `abs(a - b) < epsilon * max(abs(a), abs(b))`
-3. ใช้ `Number.EPSILON` สำหรับ comparisons ใกล้ 1
-4. ระวัง `NaN !== NaN`
+1. Use absolute epsilon: `abs(a - b) < epsilon`
+2. Use relative epsilon for large values: `abs(a - b) < epsilon * max(abs(a), abs(b))`
+3. Use `Number.EPSILON` for comparisons near 1
+4. Beware `NaN !== NaN`
 
 ### 3. Reduce Rounding Errors
 
-> Goal: ทำให้คำนวณเสถียร
+> Goal: make computation stable
 
-1. บวกเล็กไปก่อน ค่อยบวกใหญ่ (Kahan summation)
-2. หลีกเลี่ยง subtraction ของจำนวนใกล้เคียง
-3. ใช้ `BigInt` หรือ decimal library สำหรับ financial
-4. ใช้ fixed-point arithmetic ถ้าเหมาะสม
+1. Add the small numbers first, then the large ones (Kahan summation)
+2. Avoid subtracting near-equal numbers
+3. Use `BigInt` or a decimal library for financial
+4. Use fixed-point arithmetic when appropriate
 
 ### 4. Approximation Methods
 
-> Goal: หาค่าประมาณ
+> Goal: find approximate values
 
-1. Bisection: หารากของฟังก์ชัน
-2. Newton-Raphson: เร็วกว่าถ้ามี derivative
-3. Linear interpolation: ประมาณค่าระหว่าง 2 จุด
-4. Taylor series: ประมาณ functions
+1. Bisection: find the root of a function
+2. Newton-Raphson: faster when a derivative exists
+3. Linear interpolation: estimate a value between 2 points
+4. Taylor series: approximate functions
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply in software
 
-1. ใช้ `decimal.js` หรือ `BigNumber` สำหรับเงิน
-2. ใช้ epsilon ใน assertions ของ float
-3. ใช้ numerical integration สำหรับ simulation
-4. ตรวจ overflow/underflow
+1. Use `decimal.js` or `BigNumber` for money
+2. Use epsilon in float assertions
+3. Use numerical integration for simulation
+4. Check overflow/underflow
 
 ## Rules
 
 ### 1. Never Use Exact Equality For Floats
 
-- `===` กับ float อาจทำให้ test ผิด
-- ใช้ epsilon comparison เสมอ
+- `===` with floats can make tests wrong
+- Always use epsilon comparison
 
 ### 2. Choose Right Type
 
-- double precision สำหรับทั่วไป
-- decimal/rational สำหรับ financial
-- fixed-point สำหรับ embedded
+- double precision for general use
+- decimal/rational for financial
+- fixed-point for embedded
 
 ### 3. Code Mapping
 
-- `Math.abs(a - b) < 1e-9` แทน `a === b`
-- `Number.isNaN()` สำหรับตรวจ NaN
-- ใช้ libraries สำหรับ decimal ถ้าจำเป็น
+- `Math.abs(a - b) < 1e-9` instead of `a === b`
+- `Number.isNaN()` to check NaN
+- Use libraries for decimal when needed
 
-- ใช้ /deep-debug ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /deep-debug if needed
+- Use /follow-test if needed
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- สามารถอธิบาย floating point errors
-- สามารถเปรียบเทียบ floats อย่างปลอดภัย
-- สามารถเลือก type/library ทีเหมาะสม
-- สามารถใช้ approximation methods พื้นฐาน
+- Able to explain floating point errors
+- Able to compare floats safely
+- Able to choose the right type/library
+- Able to use basic approximation methods

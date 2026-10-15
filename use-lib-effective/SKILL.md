@@ -4,12 +4,12 @@ description: Fully leverage existing dependencies and the preferred stack instea
 argument-hint: "[need-or-feature]"
 related:
   - follow-my-techstack
-  - deep-review
+  - deep-review-codebase
   - deep-research
   - follow-best-practice
   - learn-from-web
   - check-types-definition
-  - follow-reusable
+  - follow-single-of-source
   - refactor
   - implement-to-production
   - dont-over-engineer
@@ -26,8 +26,8 @@ Reduce redundancy and reinvention — before writing new code or adding a depend
 Use when a task is about to: write a new utility/helper, implement a feature a lib likely already provides, add a dependency, or refactor code that an existing lib could replace — main callers: `/refactor`, `/implement-to-production`, general implementation work
 
 - Pick libs per the preferred stack → `/follow-my-techstack`
-- Audit deps (outdated, unused, vulnerabilities) → `/deep-review`
-- Reuse existing internal code before writing new code (DRY) → `/follow-reusable`
+- Audit deps (outdated, unused, vulnerabilities) → `/deep-review-codebase`
+- Reuse existing internal code before writing new code (DRY) → `### 5` (merged from `/follow-reusable`)
 
 ## Execute
 
@@ -68,6 +68,20 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 5. Effective usage patterns: HTTP client → pooling/retry/cache; ORM → query optimization/connection mgmt; UI → tree-shaking/lazy loading; testing → parallel/isolation; dynamic imports for code splitting
 6. Record complex usage patterns as examples/conventions when needed
 
+### 5. Reuse Internal Code (merged from `/follow-reusable`)
+
+> Goal: before writing a new function/component/hook/util, find and reuse the implementation already in the codebase (DRY)
+
+1. Search before write — keyword/symbol via `rg` or `/search-files-patterns`; structural search via `/search-with-astgrep` when names differ but logic is the same; survey shared locations (`utils/`, `shared/`, `common/`, `lib/`, `hooks/`, and internal packages `packages/*`, `@org/*` in a monorepo)
+2. Detect duplication — run `jscpd` (`/follow-tool-jscpd`) in scope; classify candidates: identical / near-duplicate / same pattern different domain
+3. Choose reuse strategy — strict order `reuse > extend > extract > create`:
+   - Direct reuse: import/compose the existing implementation when the signature matches the use case
+   - Extend: add a parameter/option or compose so the existing unit covers the new use case — never fork/copy-and-modify
+   - Extract: same logic in ≥3 places (rule of three; 2 duplicates are still tolerable) → extract to one canonical location per `/follow-single-of-source`
+   - Create new: only when nothing existing fits, or forcing reuse couples the wrong domain — must be justified in the report
+4. Apply and wire — import from the canonical path using the codebase's existing import style; replace duplicated blocks at every call site found in step 2; run `/update-references` when the implementation moves; a pattern reusable across contexts → record via `/generalize`
+5. Verify and report — `/run-verify` (lint, typecheck, tests green as before; behavior preserved); report every reuse decision (reused `<symbol>`, extracted `<path>`, dedup findings) with file:line
+
 ## Rules
 
 ### 1. Existing Installed First
@@ -95,10 +109,17 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 - Use /dont-over-engineer if needed
 - Use /ask-me if needed
 
+### 5. Internal Reuse Discipline
+
+- `reuse > extend > extract > create` — create new is the last resort with a justification in the report
+- Reuse must stay in the same domain — never couple code across domains just because the shapes look alike (coincidental duplication)
+- Preserve behavior — consolidation is a refactor; no observable behavior change; no over-abstracting without real consumers (`/dont-over-engineer`)
+
 
 ## Expected Outcome
 
 - No code duplicating the capability of an installed dep
+- No new code duplicating an existing internal implementation — every reuse decision (reuse/extend/extract/create) is justified in the report
 - Every new dep is justified by the catalog or research
 - Libs are used to their appropriate capability, not just imported while you keep hand-rolling code
 - The report lists reinvention findings and dedup opportunities

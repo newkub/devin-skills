@@ -4,7 +4,7 @@ description: Design and write software that is easy to test, easy to scale, easy
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal

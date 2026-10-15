@@ -10,78 +10,77 @@ related:
 
 ## Goal
 
-แสดงรายการ MCP servers ที่ตั้งค่าไว้ทั่ว global พร้อม tools ที่มี
+List the globally configured MCP servers together with their available tools
 
 ## Scope
 
-- อ่าน `%APPDATA%\devin\mcp_config.json`
-- List MCP servers จาก config
-- List tools ของแต่ละ MCP server ด้วย `mcp_list_tools`
-- รายงานสถานะและแหล่งที่มา
+- Read `%APPDATA%\devin\mcp_config.json`
+- List MCP servers from the config
+- List the tools of each MCP server with `mcp_list_tools`
+- Report status and source
 
 ## Execute
 
 ### 1. Load MCP Config
 
-> Goal: อ่าน config ไฟล์
+> Goal: read the config file
 
-1. อ่าน `%APPDATA%\devin\mcp_config.json`
-2. ถ้าไฟล์ไม่มี → report ว่าไม่มี global MCP config
-3. ตรวจ JSON syntax
-4. แยก `mcpServers` object
+1. Read `%APPDATA%\devin\mcp_config.json`
+2. If the file is missing → report that there is no global MCP config
+3. Check the JSON syntax
+4. Extract the `mcpServers` object
 
 ### 2. List Servers
 
-> Goal: แสดงรายชื่อ servers
+> Goal: show the server list
 
-1. ใช้ `mcp_list_servers` เพื่อดู live servers
-2. เปรียบเทียบกับ servers ใน `mcp_config.json`
-3. ระบุชื่อ server, command, args, env
-4. บันทึก enabled/disabled ถ้ามี
+1. Use `mcp_list_servers` to see live servers
+2. Compare against the servers in `mcp_config.json`
+3. Identify server name, command, args, env
+4. Record enabled/disabled when present
 
 ### 3. List Tools
 
-> Goal: แสดง tools ของแต่ละ server
+> Goal: show each server's tools
 
-1. ใช้ `mcp_list_tools` สำหรับแต่ละ server
-2. ระบุ tool name และ description
-3. เรียงลำดับตาม server
+1. Use `mcp_list_tools` for each server
+2. Identify tool name and description
+3. Order by server
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: summarize the results
 
-1. ทำ `/report` แสดง server, command, tools count, status
-2. ถ้าไม่มี server → report ว่า global MCP ยังไม่ถูกตั้งค่า
-3. ทำ `/suggest-next-action` ถ้าต้องแก้ไข
+1. Do `/report` showing server, command, tools count, status
+2. If there is no server → report that global MCP is not configured yet
+3. Do `/suggest-next-action` when something needs fixing
 
 ## Rules
 
 ### 1. Read-Only
 
-- ไม่แก้ไข `mcp_config.json`
-- ถ้าต้องแก้ → ใช้ `/update-devin-global-mcp`
+- Do not modify `mcp_config.json`
+- If a change is needed → use `/update-devin-global-mcp`
 
 ### 2. Privacy
 
-- ไม่ expose secrets, keys, tokens ในรายงาน
-- ถ้า `env` มี sensitive values → แสดงเป็น `<redacted>`
+- Do not expose secrets, keys, or tokens in the report
+- When `env` contains sensitive values → show them as `<redacted>`
 
 ### 3. Validation
 
-- ตรวจ JSON syntax ก่อน report
-- ถ้า config ไม่มี `mcpServers` → report ว่า format ผิดหรือไม่มี
+- Check the JSON syntax before reporting
+- If the config has no `mcpServers` → report a wrong or missing format
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers)
-- ใช้ backticks สำหรับ file paths, server names, tool names
-- รายงานเป็นตารางด้วย `/report`
+- Never use `**` bold
+- Use backticks for file paths, server names, tool names
+- Report as a table via `/report`
 
 ## Expected Outcome
 
-- รายการ MCP servers ทั้งหมดที่ตั้งค่าไว้
-- tools ของแต่ละ server
-- สถานะและแหล่ง config
-- รายงานในรูปแบบตารางพร้อม action ถัดไป
-
+- The list of configured global MCP servers
+- Each server's tools with names and descriptions
+- Status reported per server
+- A table-format report with next actions

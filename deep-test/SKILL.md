@@ -3,10 +3,11 @@ name: deep-test
 description: Deep test ทุก domain — quick run path หรือ deep workflow ต่อ domain พร้อม orchestrator all
 argument-hint: "[domain|all] [scope] [target%]"
 related:
+  - check-correctness
   - run-test
   - deep-thinking
   - deep-analyze
-  - deep-review
+  - deep-review-codebase
   - deep-validate
   - update-tests
   - resolve-errors
@@ -24,14 +25,14 @@ related:
 
 ## Goal
 
-Run testing for any domain in one place — each domain has a `## Run Quick Path` (run the existing suite) and numbered steps (deep workflow: detect → run → classify → report); `all` orchestrates every domain from real signals in fail-fast order (merged all `test-*` skills — there are no separate `test-*` skills anymore)
+Run testing for any domain in one place — each domain has a `## Run Quick Path` (run the existing suite, or audit it statically in `test-correctness`) and numbered steps (deep workflow: detect → run → classify → report); `all` orchestrates every domain from real signals in fail-fast order (merged all `test-*` skills — there are no separate `test-*` skills anymore; merged the deleted `/check-test-correctness` as the `test-correctness` domain)
 
 ## Scope
 
-Use when tests must run or a test domain must be analyzed deeply — unit, integration, e2e, api, cli, contract, component, visual, a11y, property, database, mobile, smoke, load, coverage, mutation, usage, website
+Use when tests must run or a test domain must be analyzed deeply — unit, integration, e2e, api, cli, contract, component, visual, a11y, property, database, mobile, smoke, load, coverage, mutation, usage, website, test-correctness
 
 - `/run-test [domain]` = thin dispatcher that routes here; the workflows live only in this skill (`references/<domain>.md`)
-- Writing or restructuring test specs → `/update-tests`; improving the strategy (flaky, coverage gaps, suite speed) → `/improve tests` + `/deep-review` (domain `review-test`)
+- Writing or restructuring test specs → `/update-tests`; improving the strategy (flaky, coverage gaps, suite speed) → `/improve tests` + `/deep-review-codebase` (domain `review-test`)
 - Interactive browser watch + roleplay → this skill's `references/website.md ## 6 Roleplay Mode` (merged from `/watch-browser-and-test`); continuous watch + console-error fixes → `/watch-browser fix`; the fast post-deploy gate → `references/smoke.md`
 
 ## Execute
@@ -57,6 +58,7 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 | load | [references/load.md](references/load.md) | k6/autocannon, load scripts, perf concern | throughput, latency percentiles, breaking point |
 | coverage | [references/coverage.md](references/coverage.md) | coverage config or defined target | thresholds + gap-closing loop until target (default 100%) |
 | mutation | [references/mutation.md](references/mutation.md) | `stryker.conf.*`, cargo-mutants, mutmut | assertion strength (kill rate), survivors |
+| test-correctness | [references/test-correctness.md](references/test-correctness.md) | test files with assertions/mocks/snapshots, PR diff | assertions match the spec (not the implementation), vacuous/false-positive tests, mock drift — static audit, never runs the suite |
 | usage | [references/usage.md](references/usage.md) | README/USAGE code blocks, package scripts | every documented example really runs (pre-ship gate) |
 
 ### 2. Flow
@@ -64,7 +66,7 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 1. Run `/deep-thinking` to analyze scope, test goals, and pass/fail criteria before starting
 2. Pick the domain: from the argument (`/deep-test api` → `references/api.md`) or from the signals table above; no/unknown domain → `/ask-me`
 3. Choose the depth: quick run → follow that reference's `## Run Quick Path`; deep → follow its numbered steps
-4. Every domain run is pre-checked with the matching review domain (`/deep-review` — `review-api`, `review-cli`, `review-test`, `review-coverage`, per the global rules)
+4. Every domain run is pre-checked with the matching review domain (`/deep-review-codebase` — `review-api`, `review-cli`, `review-test`, `review-coverage`, per the global rules)
 5. Fix failures through `/resolve-errors` — never suppress; unclear cause → gather evidence like `/deep-analyze` (exit code, log, screenshot) first; flaky → `/check-flaky-tests`
 6. Write/change test specs → `/update-tests`; report per domain → the reference's report path + `/report-review` in chat
 7. `all` → `### 3` orchestrator
@@ -75,10 +77,10 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 
 1. `/run-lint` + `/run-typecheck` first; fix those errors — they are not test failures
 2. Detect applicable domains from the signals table; no tests or incomplete coverage → `/update-tests` first; record the chosen list + reasons
-3. Fail-fast order: unit → property → component → database/integration → api/cli/contract (per signals) → e2e → mobile → visual → a11y; load only with a perf signal; smoke as a post-deploy gate, not part of a suite run — record result/duration/failures per domain
-4. Validate + classify: `/deep-validate` the source and `/deep-review` the tests — wrong source → `/resolve-errors`, wrong test → `/update-tests`, unclear → report; never fix without evidence
+3. Fail-fast order: unit → property → component → database/integration → api/cli/contract (per signals) → e2e → mobile → visual → a11y; load only with a perf signal; smoke as a post-deploy gate, not part of a suite run — record result/duration/failures per domain; the static `test-correctness` domain is never part of the run order — audit it separately (or as a pre-`/run-verify` gate)
+4. Validate + classify: `/deep-validate` the source and `/deep-review-codebase` the tests — wrong source → `/resolve-errors`, wrong test → `/update-tests`, unclear → report; never fix without evidence
 5. Fix per the classification and rerun; the same failure repeating ≥3 times → stop + report
-6. Coverage: if a target exists → measure and run the gap-closing loop (`/deep-review coverage` + `/update-tests`) until the target (default 100%)
+6. Coverage: if a target exists → measure and run the gap-closing loop (`/deep-review-codebase coverage` + `/update-tests`) until the target (default 100%)
 7. Report → persist `.devin/temp/report/<workspace>/test-all-<time>.md`; all passing → `/run-verify` (fail → `/resolve-errors`, retry ≤3)
 
 ## Rules
@@ -93,7 +95,8 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 
 ### 2. Boundaries
 
-- This skill runs and analyzes tests; it does not author specs (`/update-tests`), not manage strategy/coverage gaps (`/improve tests`), and not review correctness (`/deep-review`)
+- This skill runs and analyzes tests; it does not author specs (`/update-tests`), not manage strategy/coverage gaps (`/improve tests`); overall test strategy/quality → `/deep-review-codebase` (domain `review-test`), while the assertion-vs-spec audit is this skill's static `test-correctness` domain
+- General "is X correct?" questions across artifact types (docs claims, types, config, data) start at `/check-correctness`, which routes the tests domain here
 - Dispatcher only: `/run-test` forwards here — never duplicate domain workflows there
 - One workflow per domain: the reference file is the SSOT; other skills link to `/deep-test <domain>` instead of restating it
 - Browser tooling for website/e2e/visual/mobile: `/use-agent-browser` (default), `/use-chrome-devtools` to inspect a failure; authored suites → `/follow-tool-playwright`

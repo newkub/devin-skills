@@ -3,7 +3,7 @@ name: update-agents-md
 description: Create or update AGENTS.md so agents and subagents can read it and act on it
 argument-hint: "[scope]"
 related:
-  - deep-review-then-fix
+  - deep-review-codebase-then-fix
   - follow-agents-md
   - update-devin
   - use-subagents
@@ -59,7 +59,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 2. Root `AGENTS.md` → start from `templates/agents-md-monorepo.md`
 3. Workspace `AGENTS.md` → start from `templates/agents-md-workspace.md` for each workspace
 4. Write the sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-5. `## Execute` follows the template — a workspace has `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (choose the pattern via `/refactor architecture`) + `### Ship`; a monorepo has follow-monorepo → subagents follow workspace AGENTS.md → `/refactor` (workspace scope) workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship`
+5. `## Execute` follows the template — a workspace has `### Follow Techstack Skills` (table 3 col: Dependency / Use For / Global Skill) + `### Follow Architecture` (choose the pattern via `/follow-architecture`) + `### Ship`; a monorepo has follow-monorepo → subagents follow workspace AGENTS.md → `/refactor` (workspace scope) workspace-usage table (Workspace / Use Workspace / Purpose) → `/ship`
 6. Every step in `## Execute` must be an actionable command an agent can run
 7. If several workspaces are independent of each other, use `/use-subagents` — 1 workspace = 1 subagent (workspace path, manifest, deliverable)
 8. If the context is unclear → stop and report
@@ -68,7 +68,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 
 > Goal: Verify through the canonical gate, then ship
 
-1. Run `/ship` — the canonical gate covering `/deep-review` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`, then commit/push, PR review gate, and merge into `main` — do not duplicate verify or ship steps here
+1. Run `/ship` — the canonical gate covering `/deep-review-codebase` (AGENTS.md), `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`, then commit/push, PR review gate, and merge into `main` — do not duplicate verify or ship steps here
 2. Run `/report` to summarize
 
 ## Rules
@@ -101,7 +101,8 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 ### 5. Skills Mapping
 
 - `### Skills` in the generated `AGENTS.md` stays simple — core: `/dont-ask-me`, `/ship`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
-- Quality/improvement group (per project): `/deep-review`, `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
+- Quality/improvement group (per project): `/deep-review-codebase`, `/deep-review-codebase-then-fix` (the fixer when a finding must be closed), `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
+- Production-readiness group when the repo still has stubs/placeholders: `/implement-to-production` (fill them) instead of a free-form "finish it" step
 - Add only the project-specific skills that are truly needed
 
 ### 6. Workspace Rules

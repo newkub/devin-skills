@@ -3,7 +3,7 @@ name: run-until-pass
 description: run a command until it passes and fix all errors
 argument-hint: "[command]"
 related:
-  - deep-review
+  - deep-review-codebase
   - loop-until-complete
   - follow-best-practice
   - suggest-next-action
@@ -23,7 +23,7 @@ Use `run-until-pass` for tasks and workflows that are covered (until pass).
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (until pass).
+> Pre-Run: Always run `/deep-review-codebase` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (until pass).
 
 ### 1. Run Command
 

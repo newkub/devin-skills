@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ใช้ `Schema` (built-in `effect` since v3) ครบ — decode/encode, transforms, branded, filters, struct composition, TaggedError schemas
+Use `Schema` (built-in `effect` since v3) fully — decode/encode, transforms, branded, filters, struct composition, TaggedError schemas
 
 ## Scope
 
-runtime validation + type derivation — external data boundaries (API, env, DB rows); standalone `@effect/schema` deprecated — ใช้ `Schema` จาก `effect` เท่านั้น
+runtime validation + type derivation — external data boundaries (API, env, DB rows); standalone `@effect/schema` is deprecated — use `Schema` from `effect` only
 
 ## Execute
 
@@ -32,42 +32,42 @@ class Todo extends Schema.Class<Todo>("Todo")({
 }) {}
 ```
 
-- `Schema.Class` = runtime schema + class instance + nominal typing ในตัวเดียว
+- `Schema.Class` = runtime schema + class instance + nominal typing in one
 - Composition: `Schema.Struct`, `Schema.Union`, `Schema.Literal`, `Schema.Array`, `Schema.optional`, `Schema.NullOr`
 
 ### 2. Decode/Encode
 
 ```ts
-Schema.decodeUnknownSync(Todo)(raw)         // throws — boundaries ที่ trust ได้
-Schema.decodeUnknown(Todo)(raw)             // Effect — ParseError ใน E channel
+Schema.decodeUnknownSync(Todo)(raw)         // throws — boundaries you can trust
+Schema.decodeUnknown(Todo)(raw)             // Effect — ParseError in the E channel
 Schema.encode(Todo)(todo)                   // domain → wire format
 ```
 
-- `decode` = input→domain, `encode` = domain→output — transforms flow สองทาง
-- `Schema.is(Todo)` type guard; `Schema.validate` variants ตามความต้องการ
+- `decode` = input→domain, `encode` = domain→output — transforms flow both ways
+- `Schema.is(Todo)` type guard; `Schema.validate` variants as needed
 
 ### 3. Transforms And Refinements
 
-- `Schema.transform`/`transformOrFail` — string→Date, csv→array ฯลฯ
+- `Schema.transform`/`transformOrFail` — string→Date, csv→array, etc.
 - `Schema.filter` / built-ins: `NonEmptyString`, `MinLength`, `Int`, `UUID`, `greaterThan`
-- `Schema.brand` nominal typing (`UserId`, `Email`) — ป้องกัน primitive mixup
+- `Schema.brand` nominal typing (`UserId`, `Email`) — prevents primitive mixups
 - `Schema.partial`/`pick`/`omit`/`required` — derive variants
 
 ### 4. Patterns
 
-1. **Tagged errors เป็น schema**: `Schema.TaggedError` — serialize errors ข้าม RPC/HTTP
-2. **Config/env validation**: decode env เป็น typed config ตอน boot
-3. **Message/payload schemas**: RPC, queue payloads — validate ทั้ง 2 ทิศ
-4. **Arbitrary** (testing): `Arbitrary.make(Todo)` สำหรับ fast-check random data
+1. **Tagged errors as schemas**: `Schema.TaggedError` — serialize errors across RPC/HTTP
+2. **Config/env validation**: decode env into a typed config at boot
+3. **Message/payload schemas**: RPC, queue payloads — validate in both directions
+4. **Arbitrary** (testing): `Arbitrary.make(Todo)` for fast-check random data
 
 ## Rules
 
-- Validate ที่ boundary เท่านั้น — ภายใน domain ใช้ types แล้ว ห้าม re-validate ซ้ำ
-- `Schema.Class` สำหรับ domain entities — `Schema.Struct` สำหรับ plain payloads
-- ParseError inspect ด้วย `ParseResult`/`TreeFormatter` — อย่า swallow message
-- ห้าม `as T` casts บน external data — decode เสมอ
+- Validate only at the boundary — inside the domain the types already hold, don't re-validate
+- `Schema.Class` for domain entities — `Schema.Struct` for plain payloads
+- Inspect ParseError with `ParseResult`/`TreeFormatter` — don't swallow the message
+- Never `as T` casts on external data — always decode
 
 ## Expected Outcome
 
-- Schemas typed + runtime-validated ทุก boundary
-- Transforms/branded/TaggedError ใช้ถูกจุด
+- Schemas typed + runtime-validated at every boundary
+- Transforms/branded/TaggedError used at the right spots

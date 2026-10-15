@@ -70,6 +70,7 @@ Find and follow `AGENTS.md` in every workspace, using subagents when the work in
 
 - `AGENTS.md` must be in the workspace root and sub-workspaces if it is a monorepo
 - If it is a monorepo: follow the `AGENTS.md` of every workspace
+- If no `AGENTS.md` exists → fall back to `README.md` as the source of truth for setup, install/run commands, and conventions (verify commands against `package.json`/`Cargo.toml`/`Makefile` before trusting them); if README is missing or stale → `/update-readme-md` (fallback merged from the deleted `/follow-readme-md`)
 
 ### 2. Execution Order
 

@@ -1,163 +1,165 @@
 ---
 name: follow-lib-css
-description: เขียน CSS ตาม modern best practices และ Baseline features
+description: Write CSS following modern best practices and Baseline features
 argument-hint: "[scope]"
 related:
   - follow-lib-unocss
   - follow-lib-animejs
   - follow-tool-formatter
   - follow-best-practice
+  - follow-web-standard
 
 ---
 
 ## Goal
 
-เขียน CSS ที่ maintainable, performant, และ accessible โดยใช้ modern CSS features ตาม Baseline ปี 2025/2026
+Write maintainable, performant, accessible CSS using modern CSS features per the 2025/2026 Baseline
 
 ## Scope
 
-ใช้กับ CSS ทั้งแบบ traditional, CSS Modules, CSS-in-JS, และ preprocessor ที่ตรวจพบใน project — CSS เป็น web platform standard ไม่ต้องติดตั้ง package
+Applies to traditional CSS, CSS Modules, CSS-in-JS, and preprocessors detected in the project — CSS is a web platform standard, no package to install
 
-ขอบเขต:
-- ใช้ skill นี้สำหรับเขียน/review CSS ดิบ ตาม modern standards และ Baseline
-- ถ้า project ใช้ utility-first engine (UnoCSS/Tailwind) → ใช้ `/follow-lib-unocss` แทน
-- ถ้าเป็น JS-driven animation (timelines, staggers) → ใช้ `/follow-lib-animejs` แทน; CSS transitions/animations ธรรมดาอยู่ใน scope นี้
+Boundaries:
+- Use this skill for raw CSS writing/review per modern standards and Baseline
+- If the project uses a utility-first engine (UnoCSS/Tailwind) → use `/follow-lib-unocss` instead
+- For JS-driven animation (timelines, staggers) → use `/follow-lib-animejs` instead; plain CSS transitions/animations are in this scope
+- Markup semantics, native widgets, and Web-API-over-library choices beyond CSS → use `/follow-web-standard` instead
 
 - References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Analyze CSS Setup
 
-> Goal: วิเคราะห์ CSS setup ปัจจุบัน
+> Goal: analyze the current CSS setup
 
-1. ตรวจสอบ CSS framework หรือ utility-first engine ที่ใช้ (`Tailwind`, `UnoCSS`, `Bootstrap`, ฯลฯ)
-2. ตรวจสอบ CSS-in-JS หรือ scoped styles ที่ใช้ (`CSS Modules`, `styled-components`, ฯลฯ)
-3. ตรวจสอบ CSS preprocessor (`Sass`, `Less`, `PostCSS`) และ build tools
-4. ระบุ browser support target จาก `browserslist`, `package.json`, หรือ project requirements
-5. ถ้าไม่มี target ให้ใช้ Baseline (`last 2 versions, >0.5%`) เป็น default
+1. Check the CSS framework or utility-first engine in use (`Tailwind`, `UnoCSS`, `Bootstrap`, etc.)
+2. Check the CSS-in-JS or scoped styles in use (`CSS Modules`, `styled-components`, etc.)
+3. Check the CSS preprocessor (`Sass`, `Less`, `PostCSS`) and build tools
+4. Identify the browser support target from `browserslist`, `package.json`, or project requirements
+5. If there is no target, default to Baseline (`last 2 versions, >0.5%`)
 
 ### 2. Apply Modern Layout And Cascade
 
-> Goal: ใช้ modern CSS features ที่ Baseline-ready
+> Goal: use Baseline-ready modern CSS features
 
-1. ใช้ CSS custom properties (`--variable`) และ `@property` สำหรับ theming และ typed variables
-2. ใช้ `:is()` และ `:where()` เพื่อลด specificity ซับซ้อน
-3. ใช้ `:has()` สำหรับ relational styling
-4. ใช้ native CSS Nesting แทน preprocessor nesting เมื่อ target รองรับ
-5. ใช้ `@layer` สำหรับ cascade control (`reset`, `base`, `theme`, `components`, `utilities`)
-6. ใช้ Container Queries (`@container`) สำหรับ component-level responsive
-7. ใช้ Flexbox, Grid, และ Subgrid สำหรับ layouts
-8. ใช้ logical properties (`margin-inline-start`, `inset`, ฯลฯ) เมื่อทำ multi-locale
-9. ใช้ View Transitions (`::view-transition`, `view-transition-name`, `view-transition-class`) สำหรับ page/state transitions (Baseline 2025)
-10. ใช้ Popover API (`popover` attribute + `:popover-open`) แทน custom overlay เมื่อเหมาะสม (Baseline 2025)
-11. ใช้ `@starting-style` + `transition-behavior: allow-discrete` สำหรับ entry/exit transitions บน `display: none` elements
-12. ใช้ `scrollbar-color`/`scrollbar-width` สำหรับ scrollbar styling (Baseline 2025)
+1. Use CSS custom properties (`--variable`) and `@property` for theming and typed variables
+2. Use `:is()` and `:where()` to reduce specificity complexity
+3. Use `:has()` for relational styling
+4. Use native CSS Nesting instead of preprocessor nesting when the target supports it
+5. Use `@layer` for cascade control (`reset`, `base`, `theme`, `components`, `utilities`)
+6. Use Container Queries (`@container`) for component-level responsiveness
+7. Use Flexbox, Grid, and Subgrid for layouts
+8. Use logical properties (`margin-inline-start`, `inset`, etc.) for multi-locale
+9. Use View Transitions (`::view-transition`, `view-transition-name`, `view-transition-class`) for page/state transitions (Baseline 2025)
+10. Use the Popover API (`popover` attribute + `:popover-open`) instead of custom overlays where suitable (Baseline 2025)
+11. Use `@starting-style` + `transition-behavior: allow-discrete` for entry/exit transitions on `display: none` elements
+12. Use `scrollbar-color`/`scrollbar-width` for scrollbar styling (Baseline 2025)
 
 ### 3. Use Modern Color And Sizing
 
-> Goal: ใช้ modern color spaces และ fluid sizing
+> Goal: use modern color spaces and fluid sizing
 
-1. ใช้ `oklch()`, `color-mix()`, และ `light-dark()` สำหรับ color system ทันสมัย
-2. ใช้ `clamp()`, `min()`, `max()` สำหรับ fluid typography และ spacing
-3. ใช้ relative units (`rem`, `em`, `%`, `cqw`, `cqi`) เพื่อรองรับ user preferences
-4. ใช้ `aspect-ratio` สำหรับ media containers
-5. ใช้ `gap` แทน `margin` ใน Flexbox/Grid
-6. ใช้ `text-wrap: balance` สำหรับ headings และ `text-wrap: pretty` สำหรับ body copy (Baseline 2024)
-7. ใช้ `abs()`/`sign()` ใน `calc()` เมื่อต้องการ math functions (Baseline 2025)
+1. Use `oklch()`, `color-mix()`, and `light-dark()` for a modern color system
+2. Use `clamp()`, `min()`, `max()` for fluid typography and spacing
+3. Use relative units (`rem`, `em`, `%`, `cqw`, `cqi`) to respect user preferences
+4. Use `aspect-ratio` for media containers
+5. Use `gap` instead of `margin` in Flexbox/Grid
+6. Use `text-wrap: balance` for headings and `text-wrap: pretty` for body copy (Baseline 2024)
+7. Use `abs()`/`sign()` in `calc()` when math functions are needed (Baseline 2025)
 
 ### 4. Optimize Performance
 
-> Goal: ปรับปรุง performance ของ CSS
+> Goal: improve CSS performance
 
-1. ใช้ `content-visibility` สำหรับ lazy rendering บน off-screen content
-2. ใช้ `contain` property เพื่อ isolate layout/paint
-3. ใช้ `will-change` อย่างระมัดระวังและล้างหลัง animation จบ
-4. ใช้ `transform` และ `opacity` สำหรับ animations เพื่อ GPU acceleration
-5. ลบ unused CSS ด้วย build tools (`PurgeCSS`, `UnoCSS`, `Lightning CSS`)
-6. Minify CSS สำหรับ production
-7. ใช้ `font-display: swap` สำหรับ web fonts
-8. ใช้ `prefetch`/`preload` สำหรับ critical assets อย่างเหมาะสม
+1. Use `content-visibility` for lazy rendering of off-screen content
+2. Use the `contain` property to isolate layout/paint
+3. Use `will-change` carefully and remove it after the animation ends
+4. Use `transform` and `opacity` for animations to get GPU acceleration
+5. Remove unused CSS with build tools (`PurgeCSS`, `UnoCSS`, `Lightning CSS`)
+6. Minify CSS for production
+7. Use `font-display: swap` for web fonts
+8. Use `prefetch`/`preload` for critical assets appropriately
 
 ### 5. Ensure Accessibility
 
-> Goal: ตรวจสอบ accessibility ของ CSS
+> Goal: verify CSS accessibility
 
-1. ใช้ semantic HTML กับ CSS
-2. ใช้ `:focus-visible` สำหรับ keyboard navigation
-3. ใช้ `prefers-reduced-motion` สำหรับ motion sensitivity
-4. ใช้ `prefers-contrast` และ `prefers-color-scheme` ตาม context
-5. ตรวจสอบ color contrast ตาม WCAG 2.1 (minimum 4.5:1 สำหรับ text)
-6. ใช้ relative units (`rem`, `em`) สำหรับ font และ spacing
+1. Pair semantic HTML with CSS
+2. Use `:focus-visible` for keyboard navigation
+3. Use `prefers-reduced-motion` for motion sensitivity
+4. Use `prefers-contrast` and `prefers-color-scheme` per context
+5. Check color contrast per WCAG 2.1 (minimum 4.5:1 for text)
+6. Use relative units (`rem`, `em`) for font and spacing
 
 ### 6. Browser Compatibility
 
-> Goal: ตรวจสอบและจัดการ browser compatibility
+> Goal: check and manage browser compatibility
 
-1. ใช้ `@supports` สำหรับ feature detection
-2. ตรวจสอบ browser support บน `caniuse.com` หรือ `web.dev/baseline`
-3. ใช้ progressive enhancement โดยให้ fallbacks สำหรับ unsupported features
-4. ใช้ `Autoprefixer` หรือ `Lightning CSS` เฉพาะเมื่อ build pipeline ต้องการ vendor prefixes
-5. หลีกเลี่ยง features ที่ยังไม่ Baseline ยกเว้น project กำหนดให้รองรับเฉพาะ browser
+1. Use `@supports` for feature detection
+2. Check browser support on `caniuse.com` or `web.dev/baseline`
+3. Use progressive enhancement with fallbacks for unsupported features
+4. Use `Autoprefixer` or `Lightning CSS` only when the build pipeline needs vendor prefixes
+5. Avoid non-Baseline features unless the project targets specific browsers
 
 ## Rules
 
 ### 1. CSS Architecture
 
-- จัดโครงสร้าง CSS ด้วย `@layer` หรือ utility-first/ITCSS
-- แยก concerns: reset, base, theme, components, utilities
-- ใช้ CSS Modules หรือ scoped styles สำหรับ isolation
-- ใช้ barrel exports สำหรับ imports เมื่อเหมาะสม
-- จัดเรียง declarations ตาม logical group (`layout`, `box model`, `typography`, `visual`)
+- Structure CSS with `@layer` or utility-first/ITCSS
+- Separate concerns: reset, base, theme, components, utilities
+- Use CSS Modules or scoped styles for isolation
+- Use barrel exports for imports where appropriate
+- Order declarations by logical group (`layout`, `box model`, `typography`, `visual`)
 
 ### 2. Modern Features
 
-- ใช้ CSS custom properties แทน preprocessor variables เมื่อเป็นไปได้
-- ใช้ `oklch()` หรือ `hsl()` สำหรับ colors เพื่อ perceptual uniformity
-- ใช้ `clamp()` สำหรับ responsive typography
-- ใช้ `container`/`@container` สำหรับ component-level responsive
-- ใช้ native CSS Nesting แทน Sass/Less nesting เมื่อ browser target รองรับ
-- ใช้ `@scope` เมื่อต้องการ limit cascade reach
+- Prefer CSS custom properties over preprocessor variables
+- Use `oklch()` or `hsl()` for colors to get perceptual uniformity
+- Use `clamp()` for responsive typography
+- Use `container`/`@container` for component-level responsiveness
+- Use native CSS Nesting instead of Sass/Less nesting when the browser target supports it
+- Use `@scope` when limiting cascade reach is needed
 
 ### 3. Responsive Design
 
-- ใช้ Mobile-first approach
-- ใช้ Container Queries สำหรับ components ที่ reuse ในหลาย context
-- ใช้ relative units (`rem`, `em`, `%`, `cq*`) และ `min()`/`max()`/`clamp()`
-- ทดสอบบน breakpoints ที่ project กำหนด
+- Use a mobile-first approach
+- Use Container Queries for components reused in many contexts
+- Use relative units (`rem`, `em`, `%`, `cq*`) and `min()`/`max()`/`clamp()`
+- Test at the project's breakpoints
 
 ### 4. Performance
 
-- ลบ unused CSS ด้วย build tool ที่ project ใช้
-- ใช้ `contain` property สำหรับ isolate layout/paint
-- ใช้ `transform`/`opacity` สำหรับ animations
-- ลด critical rendering path blockers
-- ใช้ `font-display: swap` สำหรับ custom fonts
-- หลีกเลี่ยง overuse ของ `will-change`
+- Remove unused CSS with the project's build tool
+- Use the `contain` property to isolate layout/paint
+- Use `transform`/`opacity` for animations
+- Reduce critical rendering path blockers
+- Use `font-display: swap` for custom fonts
+- Avoid overusing `will-change`
 
 ### 5. Accessibility
 
-- ใช้ `:focus-visible` แทน `:focus` สำหรับ focus styles
-- ให้ `prefers-reduced-motion` media query สำหรับ motion
-- ตรวจสอบ contrast ด้วยเครื่องมือ เช่น Lighthouse
-- ใช้ relative units เพื่อรองรับ user font scaling
+- Use `:focus-visible` instead of `:focus` for focus styles
+- Provide a `prefers-reduced-motion` media query for motion
+- Check contrast with tools such as Lighthouse
+- Use relative units to respect user font scaling
 
 ### 6. Browser Compatibility
 
-- ใช้ `@supports` สำหรับ feature queries
-- ใช้ `caniuse.com` และ `web.dev/baseline` สำหรับ check support
-- ให้ fallbacks สำหรับ features ที่ไม่รองรับ
+- Use `@supports` for feature queries
+- Use `caniuse.com` and `web.dev/baseline` to check support
+- Provide fallbacks for unsupported features
 
-- ใช้ `/follow-lib-unocss` ถ้า project ใช้ utility-first engine
-- ใช้ `/follow-lib-animejs` ถ้าต้องการ JS-driven animation
-- ใช้ `/follow-tool-formatter` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- Use `/follow-lib-unocss` if the project uses a utility-first engine
+- Use `/follow-lib-animejs` for JS-driven animation
+- Use `/follow-tool-formatter` if needed
+- Use `/follow-best-practice` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- CSS ที่เขียนตาม modern best practices และ Baseline ปี 2025/2026
-- Performance ที่ดีขึ้น (ลด unused CSS, ใช้ containment, GPU-friendly animations)
-- Accessibility ที่ครบถ้วน
+- CSS written per modern best practices and the 2025/2026 Baseline
+- Better performance (less unused CSS, containment, GPU-friendly animations)
+- Complete accessibility
 - Maintainable CSS architecture
-- Browser compatibility ที่ชัดเจนและมี fallback
+- Clear browser compatibility with fallbacks

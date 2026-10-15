@@ -4,7 +4,7 @@
 
 ### pnpm catalog
 
-pnpm 9.5+ รองรับ `catalog:` protocol สำหรับ centralize shared dependency versions
+pnpm 9.5+ supports the `catalog:` protocol to centralize shared dependency versions
 
 ```yaml
 # pnpm-workspace.yaml
@@ -28,7 +28,7 @@ catalog:
 
 ### Bun catalog
 
-Bun 1.1+ รองรับ `catalog` และ `resolutions` ใน root `package.json`
+Bun 1.1+ supports `catalog` and `resolutions` in the root `package.json`
 
 ```json
 // root package.json
@@ -52,7 +52,7 @@ Bun 1.1+ รองรับ `catalog` และ `resolutions` ใน root `packa
 
 ### npm overrides
 
-npm 8.3+ รองรับ `overrides` สำหรับ force dependency versions ทั้ง monorepo
+npm 8.3+ supports `overrides` to force dependency versions across the whole monorepo
 
 ```json
 // root package.json
@@ -67,7 +67,7 @@ npm 8.3+ รองรับ `overrides` สำหรับ force dependency vers
 
 ### Yarn resolutions
 
-Yarn 1/2+ รองรับ `resolutions` ใน root `package.json`
+Yarn 1/2+ supports `resolutions` in the root `package.json`
 
 ```json
 {
@@ -107,7 +107,7 @@ Yarn 1/2+ รองรับ `resolutions` ใน root `package.json`
 # crates/ui/Cargo.toml
 [dependencies]
 my-utils = { path = "../utils", version = "0.1.0" }
-# หรือใช้ workspace dependencies
+# or use workspace dependencies
 my-utils = { workspace = true }
 ```
 
@@ -136,7 +136,7 @@ my-utils = { path = "crates/utils", version = "0.1.0" }
 │   ├── config/       # Shared configs (eslint, tsconfig)
 │   └── types/        # Shared TypeScript types
 ├── package.json
-├── pnpm-workspace.yaml  # หรือ turbo.json / .moon/
+├── pnpm-workspace.yaml  # or turbo.json / .moon/
 └── tsconfig.json
 ```
 
@@ -181,14 +181,14 @@ my-utils = { path = "crates/utils", version = "0.1.0" }
 ### Circular Dependencies
 
 ```bash
-# ตรวจสอบ circular dependencies
+# check circular dependencies
 pnpm dlx madge --circular apps/web/src/index.ts
 ```
 
 ### Version Conflicts
 
 ```json
-// ใช้ overrides หรือ catalog เพื่อบังคับ version
+// use overrides or catalog to force the version
 {
   "overrides": {
     "react": "18.3.1"
@@ -199,7 +199,7 @@ pnpm dlx madge --circular apps/web/src/index.ts
 ### Missing Exports
 
 ```json
-// ทุก package ต้องมี exports field
+// every package must have an exports field
 {
   "name": "@myorg/ui",
   "exports": {

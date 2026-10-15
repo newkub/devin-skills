@@ -1,6 +1,6 @@
 ---
 name: list-devin-global-subagents
-description: แสดงรายการ global subagents ทั้งหมดใน devin agents repo พร้อมรายละเอียด
+description: List all global subagents in the devin agents repo with details
 argument-hint: "[scope]"
 related:
   - update-devin
@@ -8,64 +8,63 @@ related:
 
 ## Goal
 
-แสดงรายการ global subagents ทั้งหมดใน `%APPDATA%\devin\agents` พร้อม name, description, model และ allowed-tools
+List all global subagents in `%APPDATA%\devin\agents` with name, description, model, and allowed-tools
 
 ## Scope
 
-ใช้เมื่อต้องการดูรายการ global subagents ที่มีอยู่ หรือตรวจสอบว่ามี subagent ใดอยู่แล้วก่อนสร้างใหม่
+Use when you want to see the existing global subagents, or to check whether a subagent already exists before creating a new one
 
 ## Execute
 
 ### 1. Scan Agents Directory
 
-> Goal: หา global subagents ทั้งหมด
+> Goal: find all global subagents
 
-1. สแกน `%APPDATA%\devin\agents` หา subdirectories ที่มี `AGENT.md`
-2. ข้าม `.backup/` directory
-3. ถ้าไม่พบ directory → report ว่าไม่มี global subagents
+1. Scan `%APPDATA%\devin\agents` for subdirectories containing `AGENT.md`
+2. Skip the `.backup/` directory
+3. If the directory is not found → report that there are no global subagents
 
 ### 2. Extract Metadata
 
-> Goal: ดึง metadata จากแต่ละ subagent
+> Goal: extract metadata from each subagent
 
-1. อ่าน `AGENT.md` ของแต่ละ subagent
-2. ดึง frontmatter: `name`, `description`, `model`, `allowed-tools`, `permissions`
-3. ถ้า frontmatter ไม่ครบ → ระบุในรายงาน
+1. Read each subagent's `AGENT.md`
+2. Extract the frontmatter: `name`, `description`, `model`, `allowed-tools`, `permissions`
+3. If the frontmatter is incomplete → note it in the report
 
 ### 3. Report
 
-> Goal: นำเสนอรายการ global subagents
+> Goal: present the global subagent list
 
-1. นำเสนอเป็นตาราง: name, description, model, allowed-tools
-2. จัดเรียงตามชื่อ
-3. ระบุจำนวน global subagents ทั้งหมด
-4. ถ้ามี subagent ที่ frontmatter ไม่ครบ → ระบุในส่วนท้าย
+1. Present a table: name, description, model, allowed-tools
+2. Sort by name
+3. State the total number of global subagents
+4. If any subagent has incomplete frontmatter → note it in the footer
 
 ## Rules
 
 ### 1. Directory Scope
 
-- สแกนเฉพาะ `%APPDATA%\devin\agents`
-- ข้าม `.backup/` directory
-- แสดงเฉพาะ subdirectories ที่มี `AGENT.md`
+- Scan only `%APPDATA%\devin\agents`
+- Skip the `.backup/` directory
+- Show only subdirectories containing `AGENT.md`
 
 ### 2. Output Format
 
-- ใช้ตารางสำหรับรายการ
-- คอลัมน์: name, description, model, allowed-tools
-- จัดเรียงตามชื่อ
+- Use a table for the listing
+- Columns: name, description, model, allowed-tools
+- Sort by name
 
 ### 3. Completeness
 
-- ตรวจครบทุก subdirectories
-- ระบุ global subagents ที่ frontmatter ไม่ครบ
+- Check every subdirectory
+- Identify global subagents with incomplete frontmatter
 
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+- Use /update-devin-global-subagents if needed
 
 ## Expected Outcome
 
-- รายการ global subagents ทั้งหมดในตาราง
-- แต่ละรายการมี name, description, model, allowed-tools
-- จำนวน global subagents ทั้งหมด
-- ระบุ global subagents ที่ frontmatter ไม่ครบ (ถ้ามี)
-
+- The full global subagent list in a table
+- Each entry with name, description, model, allowed-tools
+- The total count of global subagents
+- Global subagents with incomplete frontmatter identified (if any)

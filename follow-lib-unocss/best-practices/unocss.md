@@ -1,35 +1,35 @@
 # UnoCSS — Best Practices
 
-Atomic CSS engine — presets, shortcuts และ config discipline
+Atomic CSS engine — presets, shortcuts, and config discipline
 
 ## Recommended Patterns
 
-- `presetWind4` เป็น canonical base (Tailwind 4-compatible, theme เป็น CSS vars on-demand) — `presetWind3`/`presetUno` เฉพาะ legacy หรือ migration เท่านั้น
-- Theme tokens ใน `uno.config.ts` — `theme.colors`, `theme.fontSize` — single source ไม่ hardcode ใน utilities
-- `shortcuts` สำหรับ repeated combos — ชื่อ semantic (`btn-primary`) ไม่ใช่ utility dump
-- `presetAttributify` สำหรับ attribute-mode ถ้าชอบ — แต่เลือก mode เดียวให้ทีม (consistency)
-- `presetIcons` สำหรับ icons — `i-carbon-*` etc., icon เป็น font/svg inline
-- เปิด `@unocss/eslint-plugin` (`unocss/order`, `unocss/blocklist`) เมื่อ project ใช้ ESLint — setup + manual checks ใน /follow-unocss-theme lint
+- `presetWind4` is the canonical base (Tailwind 4-compatible, theme as on-demand CSS vars) — use `presetWind3`/`presetUno` only for legacy or migration
+- Theme tokens live in `uno.config.ts` — `theme.colors`, `theme.fontSize` — a single source, don't hardcode them in utilities
+- `shortcuts` for repeated combos — semantic names (`btn-primary`), not a utility dump
+- `presetAttributify` for attribute-mode if you prefer it — but pick one mode for the team (consistency)
+- `presetIcons` for icons — `i-carbon-*` etc., icons as inline font/svg
+- Enable `@unocss/eslint-plugin` (`unocss/order`, `unocss/blocklist`) when the project uses ESLint — setup + manual checks in /follow-unocss-theme lint
 
 ## Common Pitfalls
 
-- Dynamic class strings ไม่ถูก scan — `class={\`bg-${color}-500\`}` broken; ใช้ `safelist` หรือ full class names
-- `content.pipeline` config ต้องครอบ file extensions จริง — `.tsx`, `.md`, `.vue` ตาม project
-- Variant order matters: `hover:` `focus:` `sm:` etc — ระวัง pseudo-variant conflicts ใน shortcuts
-- PostCSS vs Vite plugin — เลือก integration เดียวตาม bundler (`unocss/vite` สำหรับ Vite)
-- `presetMini` vs `presetWind` — Wind superset กว่า; อย่า mix preset ที่ซ้ำกันโดยไม่ตั้งใจ
+- Dynamic class strings aren't scanned — `class={\`bg-${color}-500\`}` breaks; use a `safelist` or full class names
+- The `content.pipeline` config must cover the actual file extensions — `.tsx`, `.md`, `.vue` per project
+- Variant order matters: `hover:` `focus:` `sm:` etc. — watch for pseudo-variant conflicts in shortcuts
+- PostCSS vs Vite plugin — pick one integration per bundler (`unocss/vite` for Vite)
+- `presetMini` vs `presetWind` — Wind is a superset; don't accidentally mix overlapping presets
 
 ## Perf Notes
 
-- On-demand engine — CSS output เล็กมาก; แต่ scan ใหญ่ → `content.filesystem`/`pipeline` จำกัด scope
-- `transformerDirectives` (`@apply`) มี cost + ทำ atomic model เสีย — ใช้เฉพาะเจาะจง
-- Preflights (`presetMini` normalize) เปิดเมื่อต้องการ — app ที่มี reset อยู่แล้วอาจปิด
+- On-demand engine — the CSS output is very small; but a large scan → limit scope with `content.filesystem`/`pipeline`
+- `transformerDirectives` (`@apply`) has a cost and breaks the atomic model — use it only specifically
+- Preflights (`presetMini` normalize) — enable when needed; an app that already has a reset may disable them
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| theme tokens + shortcuts semantic | magic strings ทุก component |
-| safelist สำหรับ dynamic classes | template-literal class composition |
-| integration เดียว (`unocss/vite`) | Vite plugin + PostCSS พร้อมกัน |
-| `presetIcons` สำหรับ icons | import icon components + svg inline ซ้ำ |
+| theme tokens + semantic shortcuts | magic strings in every component |
+| safelist for dynamic classes | template-literal class composition |
+| one integration (`unocss/vite`) | the Vite plugin + PostCSS at the same time |
+| `presetIcons` for icons | importing icon components + duplicating inline svg |

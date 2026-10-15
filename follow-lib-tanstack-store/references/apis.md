@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-store` | 0.11.x | Store |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Store | `Store`, `Derived` | `useStore(store, selector)`, `setState`, `batch` |

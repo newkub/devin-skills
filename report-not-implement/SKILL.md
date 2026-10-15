@@ -9,7 +9,6 @@ related:
   - use-astgrep
   - check-secrets
   - follow-tool-knip
-  - check-test-correctness
   - implement-to-production
   - deep-test
   - use-subagents
@@ -29,7 +28,7 @@ related:
 - ใช้ก่อน `/implement-to-production` (ต้องการรายการงานที่ครบถ้วน), ก่อน release (ตรวจว่าของจริงตรงกับที่โฆษณา), หรือเมื่อผู้ใช้ถาม "อะไรยังไม่เสร็จ / ยังไม่ implement"
 - argument เป็น path/glob/workspace → สแกนเฉพาะ scope นั้น; ไม่ระบุ → ทั้ง codebase รวม workspaces ใน monorepo
 - สแกนตามสัญญา (contract) ที่มีอยู่จริงเท่านั้น: code ที่เขียนค้างไว้, UI ที่ render ได้, route/schema/spec ที่ประกาศ, คำที่ docs ประกาศ — ไม่ใช่รายการฟีเจอร์ในอุดมคติ (งาน net-new ที่ยังไม่เคยถูกออกแบบ → `/idea-features`)
-- boundaries: คุณภาพ/ความปลอดภัยของ code → `/deep-review`; dead code ที่ไม่มี consumer → `/follow-tool-knip`; test ที่ assert ไม่มีสาระ → `/check-test-correctness`; แผนการแก้ → `/create-plan-in-dot-devin`; ลงมือแก้ → `/implement-to-production`
+- boundaries: คุณภาพ/ความปลอดภัยของ code → `/deep-review-codebase`; dead code ที่ไม่มี consumer → `/follow-tool-knip`; test ที่ assert ไม่มีสาระ → `/deep-test test-correctness`; การ review หา gap พร้อม severity + ยืนยัน/แก้ (report นี้เป็น baseline ให้) → `/review-gaps`; แผนการแก้ → `/create-plan-in-dot-devin`; ลงมือแก้ → `/implement-to-production`
 
 ## Execute
 

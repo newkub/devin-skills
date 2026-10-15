@@ -4,7 +4,7 @@ description: Review every dimension for optimization opportunities with parallel
 argument-hint: "[path-or-target] [--diff] [--apply]"
 related:
   - deep-thinking
-  - deep-review
+  - deep-review-codebase
   - use-subagents
   - follow-parallel
   - deep-analyze
@@ -22,7 +22,7 @@ Review every dimension of the codebase to find optimization opportunities using 
 
 Use when you want to optimize across many dimensions at once — report-only by default; `--apply` fixes according to the plan after user confirm
 
-- Compared with nearby skills: `/deep-review` = correctness/standard/report review; `/deep-optimize` = drill into specific bottlenecks; `deep-optimize` = fan out every dimension with subagents then merge the plan into prioritized actions
+- Compared with nearby skills: `/deep-review-codebase` = correctness/standard/report review; `/deep-optimize` = drill into specific bottlenecks; `deep-optimize` = fan out every dimension with subagents then merge the plan into prioritized actions
 - `/ship` always calls this skill in the Validate step before merge/release
 
 ## Execute
@@ -85,7 +85,7 @@ Use when you want to optimize across many dimensions at once — report-only by 
 - preserved behavior: an optimization must not change output/public API (except deliberate performance fixes)
 - Use /deep-optimize when needed (deep-dive a single lane)
 - Use /deep-analyze when needed (root cause unclear)
-- Use /deep-review when needed (all review-*, not just optimization)
+- Use /deep-review-codebase when needed (all review-*, not just optimization)
 - Use /deep-test load to gather perf evidence for throughput/latency lanes
 
 ## Expected Outcome

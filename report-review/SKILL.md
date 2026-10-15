@@ -3,11 +3,11 @@ name: report-review
 description: รายงาน review findings เป็นตารางในแชท (No./Action/Evidence/Severity/Priority/Status) ไม่สร้างไฟล์
 argument-hint: "[scope-or-findings-source]"
 related:
-  - deep-review
+  - deep-review-codebase
   - run-review
   - report
   - create-report-in-dot-devin
-  - deep-review-then-fix
+  - deep-review-codebase-then-fix
   - suggest-next-action
 ---
 
@@ -17,14 +17,14 @@ related:
 
 ## Scope
 
-- เป็น final report ของทุก `review-*`/`deep-review`/`report-*` — canonical format ตาม `update-devin-global-skills` `## Conventions → Templates` แถว `review-*`/`report-*`
-- เรียกเดี่ยวโดยไม่มีข้อมูล findings → รวบรวมก่อนด้วย `/deep-review`
+- เป็น final report ของทุก `review-*`/`deep-review-codebase`/`report-*` — canonical format ตาม `update-devin-global-skills` `## Conventions → Templates` แถว `review-*`/`report-*`
+- เรียกเดี่ยวโดยไม่มีข้อมูล findings → รวบรวมก่อนด้วย `/deep-review-codebase`
 - ไฟล์สร้างเฉพาะเมื่อ user ขอร้องตรงๆ → `/create-report-in-dot-devin`; artifact ตาม nature ของ skill (HTML/slides/diagram/schema file) ยังสร้างได้ผ่าน owner skill
 
 ## Execute
 
-1. เก็บ findings จากแหล่งข้อมูล — `review-report.json` (ตาราง findings), ผลจาก domain `review-*`, หรือ scope ที่ user ระบุ; ไม่มี → รัน `/deep-review` ก่อน
-2. Dedup key = `file + rule/message-normalized + domain` (merge เป็น highest severity + fixSkill ที่เฉพาะกว่า) แล้วเรียงด้วย severity → priority (P0→P4 ตาม `deep-review` `## Domain Pipeline`)
+1. เก็บ findings จากแหล่งข้อมูล — `review-report.json` (ตาราง findings), ผลจาก domain `review-*`, หรือ scope ที่ user ระบุ; ไม่มี → รัน `/deep-review-codebase` ก่อน
+2. Dedup key = `file + rule/message-normalized + domain` (merge เป็น highest severity + fixSkill ที่เฉพาะกว่า) แล้วเรียงด้วย severity → priority (P0→P4 ตาม `deep-review-codebase` `## Domain Pipeline`)
 3. สรุปบนหัวรายงาน: score/grade (ถ้ามี), จำนวน findings ต่อ severity, mode (full/diff) + scope ที่ run, confidence
 4. รายงานเป็นตารางเดียวในแชท คอลัมน์คงที่:
 
@@ -36,7 +36,7 @@ related:
    - `Reason` = กติกา/rule ที่ fail — `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low
    - `Owner skill` = field `fixSkill` — `Priority` รวม status new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
 5. ปิดท้ายด้วยลำดับ execute: Foundation → Dependencies → High impact → Critical path (effort โดยประมาณต่อ item — ไม่ใช่ flat TODO) และ coverage ของ domain/workspace ที่ run (done/skipped(reason)/failed จาก ledger)
-6. Run `/suggest-next-action` — findings ต้องแก้ → `/deep-review-then-fix`
+6. Run `/suggest-next-action` — findings ต้องแก้ → `/deep-review-codebase-then-fix`
 
 ## Rules
 

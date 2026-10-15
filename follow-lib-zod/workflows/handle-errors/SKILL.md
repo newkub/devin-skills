@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-จัดการ Zod errors — `ZodError` structure, issue codes, `.flatten()`/`z.treeifyError`, custom messages, locale/i18n, error UX
+Handle Zod errors — `ZodError` structure, issue codes, `.flatten()`/`z.treeifyError`, custom messages, locale/i18n, error UX
 
 ## Scope
 
@@ -40,12 +40,12 @@ if (!result.success) {
 z.string().min(1, 'Required')                                // inline message
 z.email({ error: 'Invalid email format' })                   // v4 error param
 
-// v4 unified error param accepts string | function
+// the v4 unified error param accepts string | function
 z.string({ error: (iss) => iss.input === undefined ? 'required' : 'invalid' })
 ```
 
 - v3 `errorMap`/`setErrorMap` → v4 `error` param (string/function/object)
-- Per-field params: `{ error: 'msg' }` ใน schema options
+- Per-field params: `{ error: 'msg' }` in schema options
 
 ### 3. API Error Responses
 
@@ -58,8 +58,8 @@ if (!parsed.success) {
 }
 ```
 
-- Return `issues` (full detail) หรือ `fieldErrors` (form-friendly) — เลือกตาม client
-- ห้าม leak internal schema details ถ้า public API — map เป็น user-friendly fields
+- Return `issues` (full detail) or `fieldErrors` (form-friendly) — pick per the client
+- Never leak internal schema details on a public API — map to user-friendly fields
 
 ### 4. I18n And Locales
 
@@ -69,17 +69,17 @@ import th from 'zod/locales/th'      // v4 built-in locales
 z.config(th())
 ```
 
-- v4 ships locales per language — `z.config(locale)` set error messages
-- Custom per-instance: `error` params + message catalogs ของ app
+- v4 ships locales per language — `z.config(locale)` sets error messages
+- Custom per-instance: `error` params + the app's message catalogs
 
 ## Rules
 
-- ใช้ `issues` array เป็น source of truth — `.flatten`/`treeifyError` เป็น view
-- Custom messages ใส่ใน schema (co-located) — ห้าม post-process string matching
-- API errors structure คงที่ — client parse ได้ (code + fields map)
-- v4 `error` param API — อย่าใช้ v3 `errorMap` style ใน code ใหม่
+- Use the `issues` array as the source of truth — `.flatten`/`treeifyError` are views
+- Put custom messages in the schema (co-located) — never post-process with string matching
+- Keep API error structure stable — the client can parse it (code + fields map)
+- Use the v4 `error` param API — don't use v3 `errorMap` style in new code
 
 ## Expected Outcome
 
-- Errors formatted ตาม consumer (API/form/log)
-- Custom messages + locales ครบ, ไม่ leak internals
+- Errors formatted per consumer (API/form/log)
+- Custom messages + locales complete, no internals leaked

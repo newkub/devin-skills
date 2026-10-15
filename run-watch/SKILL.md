@@ -3,7 +3,7 @@ name: run-watch
 description: Run watch mode for build, test, or typecheck to continuously detect errors
 argument-hint: "<build|test|typecheck> [scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - resolve-errors
   - deep-debug
 
@@ -20,7 +20,7 @@ Run watch mode for the specified task (build, test, typecheck) to continuously d
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (watch).
+> Pre-Run: Always run `/deep-review-codebase` first — every `run-*` must be reviewed/assessed before the main action; never skip. If findings are blockers, fix or report them before running (watch).
 
 ### 1. Detect Command
 

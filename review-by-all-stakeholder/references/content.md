@@ -21,10 +21,10 @@ Persona details for the `content` category — merged from the original `workflo
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| copywriter | microcopy, tone, error/empty-state copy → `/deep-review` | `### content/copywriter` |
+| copywriter | microcopy, tone, error/empty-state copy → `/deep-review-codebase` | `### content/copywriter` |
 | editor | grammar/style consistency, terminology alignment | `### content/editor` |
 | content-strategist | content architecture, docs/blog organization, lifecycle | `### content/content-strategist` |
-| technical-writer | docs accuracy, API docs sync, runnable examples → `/deep-review` | `### content/technical-writer` |
+| technical-writer | docs accuracy, API docs sync, runnable examples → `/deep-review-codebase` | `### content/technical-writer` |
 
 2. อ่าน section `### content/<role>` ในไฟล์นี้
 
@@ -135,7 +135,7 @@ Persona details for the `content` category — merged from the original `workflo
 
 - ตรวจ hardcoded strings ที่กระจายใน code — duplication ของ copy เดียวกัน, ควรอยู่ใน i18n/copy file เดียว
 
-- Deep pass → `/deep-review` สำหรับ writing review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ writing review เชิงลึก
 
 
 
@@ -241,7 +241,7 @@ Persona details for the `content` category — merged from the original `workflo
 
 - ตรวจ doc structure — per-doc purpose ชัดเจน, reference vs guide vs tutorial แยกประเภทถูก
 
-- Deep pass → `/deep-review` สำหรับ documentation review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ documentation review เชิงลึก
 
 
 

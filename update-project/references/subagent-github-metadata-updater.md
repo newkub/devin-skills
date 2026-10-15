@@ -17,7 +17,7 @@ Subagent responsible for GitHub repo metadata and settings — description, home
 ## Execute
 
 1. Run `/update-github-metadata` to sync description, homepage, and topics with `README.md` and `package.json`
-2. If `check-protection` → run `/follow-github` to check branch protection on `main` per project conventions (optional per the parent)
+2. If `check-protection` → run `/update-github-metadata` `### 6. Protect Branches` to check branch protection on `main` per project conventions (optional per the parent)
 3. Confirm the metadata matches project conventions
 
 ## Report

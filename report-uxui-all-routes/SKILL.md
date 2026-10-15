@@ -4,7 +4,7 @@ description: สร้างรายงาน routes ทั้งหมดข�
 argument-hint: "[scope]"
 related:
   - report-uxui
-  - deep-review
+  - deep-review-codebase
 
   - suggest-next-action
   - ask-me
@@ -108,7 +108,7 @@ related:
 - ห้ามประดิษฐ์ routes ที่ไม่มี
 - ถ้ามี context ทีขาด → ระบุ gaps และถามผู้ใช้ด้วย `/ask-me`
 
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /run-dev ถ้าจำเป็น
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files

@@ -17,7 +17,7 @@ related:
   - follow-create-cli
   - follow-lang-rust
   - follow-lang-typescript
-  - deep-review
+  - deep-review-codebase
   - follow-single-responsibility
   - deep-validate
   - create-devin-global-mcp
@@ -36,7 +36,7 @@ Use when a skill or project needs to expose tools, resources, or prompts over th
 - To register in the Devin global MCP config, use `/create-devin-global-mcp` afterwards
 - To register in the project MCP config, use `/update-devin-project-mcp`
 
-See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
+See also: `/deep-review-codebase`, `/follow-lang-rust`, `/follow-lang-typescript`
 
 - SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` is legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
 
@@ -47,7 +47,7 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 > Goal: verify the tech stack before building
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then read `../follow-my-techstack/references/techstack-catalog.md` to summarize the tech stack in use
-2. Run `/deep-review` to review the tech stack, dependencies, and library design (create mcp)
+2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create mcp)
 3. Record the rationale for the chosen stack and libraries for future reference (create mcp)
 
 ### 2. Decide Stack
@@ -68,7 +68,7 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 2. If TypeScript → `bun init` then `bun add @modelcontextprotocol/sdk` (`@modelcontextprotocol/server` is the superseded legacy package)
 3. Create the entry point: `src/main.rs` for Rust or `src/index.ts` for TypeScript
 4. Define the server name, version, and capabilities (tools, resources, prompts)
-5. Run `/deep-review` to pick a suitable architecture (Clean not mandated), then clearly separate handlers, transport, and domain logic
+5. Run `/deep-review-codebase` to pick a suitable architecture (Clean not mandated), then clearly separate handlers, transport, and domain logic
 
 ### 4. Implement Tools And Resources
 

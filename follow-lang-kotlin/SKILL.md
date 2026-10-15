@@ -1,15 +1,16 @@
 ---
 name: follow-lang-kotlin
 description: Develop Kotlin applications with Clean Architecture and Compose
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-javascript
+  - follow-architecture
   - follow-best-practice
   - refactor
   - setup-cicd
   - use-scripts
+  - run-test
   - deep-research
-
 ---
 
 ## Goal
@@ -18,7 +19,7 @@ Develop Kotlin projects with Clean Architecture, Compose, Coroutines, Koin, and 
 
 ## Scope
 
-For projects developed in Kotlin (Compose Multiplatform/Desktop, KMP); single `SKILL.md` package — no `references/`, verify current versions/practices via `/deep-research` at use time
+For projects developed in Kotlin (Compose Multiplatform/Desktop, KMP). Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time Gradle/Compose scaffold); verify current versions/practices via `/deep-research` at use time
 
 ## Execute
 
@@ -27,8 +28,9 @@ For projects developed in Kotlin (Compose Multiplatform/Desktop, KMP); single `S
 > Goal: install dependencies and configure the project with live-checked versions
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest stable Kotlin, Compose Multiplatform, Coroutines, Koin, Ktor, and Arrow versions before pinning anything
-2. Configure `build.gradle.kts` with the Kotlin plugin and the latest stable toolchain (never hardcode a stale version in code or docs)
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): JDK pin, Gradle wrapper + version catalog, Kotlin DSL config, Clean Architecture skeleton, ktlint/detekt gates, verify
 3. Optional deps (Ktor, Arrow, Koin) → confirm with the user before adding
+4. Tool inventory (JDK, Gradle, lints, test stack) → `references/toolchain.md`
 
 ### 2. Project Structure
 
@@ -53,7 +55,7 @@ src/main/kotlin/com/mycompany/app/
 └── Main.kt
 ```
 
-4. Run `/refactor architecture` to pick the pattern for the app shape
+4. Run `/follow-architecture` to pick the pattern for the app shape
 
 ### 3. Core Principles
 
@@ -102,6 +104,7 @@ src/main/kotlin/com/mycompany/app/
 
 - Use /follow-lang-javascript if needed
 - Use /follow-best-practice if needed
+- Use /refactor if needed
 - Use /setup-cicd if needed
 - Use /use-scripts if needed
 

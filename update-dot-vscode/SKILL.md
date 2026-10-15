@@ -4,7 +4,7 @@ description: Update .vscode for workspace settings, extensions, tasks, launch, s
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
-  - deep-review
+  - deep-review-codebase
   - deep-analyze
   - check-monorepo
   - learn
@@ -20,7 +20,7 @@ Manage the `.vscode` directory completely and systematically, covering workspace
 
 ## Scope
 
-Use to create, improve, and verify the entire `.vscode` directory. Does not overlap with `/follow-create-plugins` (vscode) (building VSCode extensions) or `/deep-review` (config consistency).
+Use to create, improve, and verify the entire `.vscode` directory. Does not overlap with `/follow-create-plugins` (vscode) (building VSCode extensions) or `/deep-review-codebase` (config consistency).
 
 ### Standard Project
 
@@ -173,7 +173,7 @@ Use to create, improve, and verify the entire `.vscode` directory. Does not over
 ### 1. No Overlap With Specialized Workflows
 
 - Use `/follow-create-plugins` (vscode) to build VSCode extensions (not config)
-- Use `/deep-review` for general config consistency
+- Use `/deep-review-codebase` for general config consistency
 - `update-dot-vscode` manages only the files in the `.vscode/` directory
 
 ### 2. Settings Priority

@@ -4,7 +4,7 @@ description: รายงานความพร้อมก่อน release �
 argument-hint: "[version-or-tag]"
 related:
   - follow-release
-  - deep-review
+  - deep-review-codebase
   - run-test
   - check-uncommit
   - check-unpush
@@ -36,7 +36,7 @@ related:
 
 > Goal: version ตรงทุกที่
 
-1. ทำ `/deep-review` — manifest version vs latest tag vs changelog
+1. ทำ `/deep-review-codebase` — manifest version vs latest tag vs changelog
 2. ตรวจ version bump เหมาะสม (semver ตาม changes ที่มี)
 3. flag pre-release versions ถ้าตั้งใจ stable release
 
@@ -54,7 +54,7 @@ related:
 > Goal: เอกสารและ data พร้อม
 
 1. Changelog มี entry สำหรับ version นี้ — `/report` ดูว่าครบ
-2. ทำ `/deep-review` — pending migrations ระบุ deploy order ชัด
+2. ทำ `/deep-review-codebase` — pending migrations ระบุ deploy order ชัด
 3. Docs/readme ตรงกับ release ถ้ามี user-facing changes
 4. Breaking changes ถูก documented
 

@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-virtual` | 3.14.x | Virtual |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Virtual | `useVirtualizer` | `getVirtualItems`, `measureElement`, `useWindowVirtualizer` |

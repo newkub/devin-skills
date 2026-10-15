@@ -1,118 +1,118 @@
 ---
 name: follow-parallel
-description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
+description: Group independent operations into parallel execution to cut time and increase efficiency
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - deep-review
+  - deep-review-codebase
 
 ---
 
 ## Goal
 
-รวม independent operations เป็น parallel execution เพื่อลดเวลา total execution time และเพิ่ม efficiency โดยไม่ทำลาย deterministic และ safety
+Group independent operations into parallel execution to reduce total execution time and increase efficiency without breaking determinism and safety
 
 ## Scope
 
-ใช้สำหรับจัดการ parallel execution ใน 3 ระดับ: tool calls, script execution, และ workflow orchestration — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/deep-review`)
+Use for managing parallel execution at 3 levels: tool calls, script execution, and workflow orchestration — does not cover concurrent programming in application code (use `/deep-review-codebase`)
 
 ## Execute
 
 ### 1. Identify Parallelizable Operations
 
-> Goal: วิเคราะห์ operations ที่สามารถทำ parallel ได้
+> Goal: analyze the operations that can run in parallel
 
-1. จัดกลุ่ม operations เป็น independent sets — แต่ละ set ไม่มี data dependency กัน
-2. ระบุ dependencies: ถ้า operation B ต้องใช้ผลจาก operation A → sequential
-3. ระบุ side effects: ถ้า operations แชร์ mutable state หรือ resource → sequential
-4. ระบุ read-only operations: อ่านไฟล์, ค้นหา, สแกน → parallel ได้
-5. ระบุ write operations: แก้ไขไฟล์, สร้างไฟล์ → sequential ถ้าเขียนไฟล์เดียวกัน
+1. Group operations into independent sets — each set has no data dependency between them
+2. Identify dependencies: if operation B needs the result of operation A → sequential
+3. Identify side effects: if operations share mutable state or a resource → sequential
+4. Identify read-only operations: reading files, searching, scanning → can parallelize
+5. Identify write operations: editing files, creating files → sequential if they write the same file
 
 ### 2. Batch Tool Calls
 
-> Goal: รวม independent tool calls เป็น parallel batch
+> Goal: group independent tool calls into a parallel batch
 
-1. รวม independent `read_file` calls เป็น batch เดียว — อ่านหลายไฟล์พร้อมกัน
-2. รวม independent `grep_search` calls เป็น batch เดียว — ค้นหาหลาย patterns พร้อมกัน
-3. รวม independent `find_by_name` calls เป็น batch เดียว — ค้นหาหลาย patterns พร้อมกัน
-4. รวม independent `run_command` calls เป็น batch เดียว — รันคำสั่งที่ไม่มี dependency พร้อมกัน
-5. ถ้า tool call B ต้องใช้ผลจาก tool call A → แยกเป็น sequential ไม่ batch
+1. Group independent `read_file` calls into one batch — read several files at once
+2. Group independent `grep_search` calls into one batch — search several patterns at once
+3. Group independent `find_by_name` calls into one batch — search several patterns at once
+4. Group independent `run_command` calls into one batch — run commands with no dependency at once
+5. If tool call B needs the result of tool call A → split into sequential, don't batch
 
 ### 3. Parallel Script Execution
 
-> Goal: ใช้ `Promise.all` และ `Promise.allSettled` ใน scripts สำหรับ parallel data processing
+> Goal: use `Promise.all` and `Promise.allSettled` in scripts for parallel data processing
 
-1. ใช้ `Promise.all` เมื่อทุก operation ต้องสำเร็จ — ถ้าตัวใดตัวหนึ่ง fail ทั้งหมด fail
-2. ใช้ `Promise.allSettled` เมื่อต้องเก็บผลทั้งสำเร็จและ fail — แต่ละ operation อิสระ
-3. ใช้ `Bun.$` template literals สำหรับ parallel shell commands: `await Promise.all([await $`cmd1`, await $`cmd2`])`
-4. ใช้ `Bun.spawn` สำหรับ parallel subprocesses พร้อมเก็บ exit codes
-5. จำกัด concurrency ด้วย simple pool pattern เมื่อ operations >10 เพื่อไม่กิน resource
+1. Use `Promise.all` when every operation must succeed — if one fails, all fail
+2. Use `Promise.allSettled` when you must keep both success and failure results — each operation is independent
+3. Use `Bun.$` template literals for parallel shell commands: `await Promise.all([await $\`cmd1\`, await $\`cmd2\`])`
+4. Use `Bun.spawn` for parallel subprocesses while capturing exit codes
+5. Limit concurrency with a simple pool pattern when operations exceed 10, to avoid consuming all resources
 
 ### 4. Parallel Workflow Orchestration
 
-> Goal: รัน independent workflows แบบ parallel ใน orchestrator workflows
+> Goal: run independent workflows in parallel within orchestrator workflows
 
-1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
-2. รัน independent sub-workflows พร้อมกัน เช่น `/deep-review`, `/follow-tool-knip`
-3. รัน dependent sub-workflows แบบ sequential เช่น `/deep-validate` หลัง `/review-*`
-4. รวบรวม results จากทุก sub-workflow ก่อน aggregate report
-5. ถ้า sub-workflow หนึ่งพบ critical issue → หยุดและ validate ก่อนดำเนินต่อ
+1. Identify the independent sub-workflows — no data dependency between them
+2. Run independent sub-workflows at once, e.g. `/deep-review-codebase`, `/follow-tool-knip`
+3. Run dependent sub-workflows sequentially, e.g. `/deep-validate` after `/review-*`
+4. Collect results from every sub-workflow before aggregating the report
+5. If one sub-workflow finds a critical issue → stop and validate before continuing
 
 ### 5. Verify And Report
 
-> Goal: ตรวจสอบผลลัพธ์และรายงาน
+> Goal: check the results and report
 
-1. ตรวจว่าทุก parallel operation มีผลลัพธ์ครบ — ไม่มี operation ที่หายไป
-2. ตรวจ errors จาก `Promise.allSettled` — แยก fulfilled และ rejected
-3. ถ้ามี rejected operations → ระบุสาเหตุและ retry หรือ report
-4. ทำ `/report` สรุปผลลัพธ์เป็นตาราง
-5. ระบุใน report ว่า operations ไหนรัน parallel และใช้เวลาเท่าไหร่
+1. Check that every parallel operation returned a result — no operation missing
+2. Check errors from `Promise.allSettled` — separate fulfilled and rejected
+3. If there are rejected operations → identify the cause and retry, or report
+4. Run `/report` to summarize the results as a table
+5. Note in the report which operations ran in parallel and how long they took
 
 ## Rules
 
 ### 1. When To Parallelize
 
 - independent read operations, independent searches, independent scans, independent checks
-- operations ที่ไม่แชร์ mutable state หรือ resource
-- Sequential: operation B ต้องใช้ผลจาก operation A
-- Sequential: operations ที่เขียนไฟล์เดียวกันหรือแก้ไข state เดียวกัน
-- Sequential: operations ที่มี ordering requirement เช่น build ก่อน test
+- operations that don't share mutable state or a resource
+- Sequential: operation B needs the result of operation A
+- Sequential: operations that write the same file or modify the same state
+- Sequential: operations with an ordering requirement, e.g. build before test
 
 ### 2. Error Handling
 
-- `Promise.all`: ถ้าตัวใดตัวหนึ่ง reject ทั้งหมด reject — ใช้เมื่อทุกตัวต้องสำเร็จ
-- `Promise.allSettled`: ทุกตัว complete ไม่ว่าจะสำเร็จหรือ fail — ใช้เมื่อต้องเก็บผลทั้งหมด
-- ตรวจ `result.status` เป็น `fulfilled` หรือ `rejected` จาก `Promise.allSettled`
-- ถ้า parallel operation fail → retry ครั้งเดียว ถ้ายัง fail → report และ continue หรือ stop ตาม severity
-- ไม่ซ่อน errors จาก parallel operations — รายงานทุก failure
+- `Promise.all`: if one rejects, all reject — use when everything must succeed
+- `Promise.allSettled`: all complete whether successful or failed — use when you must keep every result
+- Check `result.status` for `fulfilled` or `rejected` from `Promise.allSettled`
+- If a parallel operation fails → retry once; if it still fails → report and continue or stop per severity
+- Don't hide errors from parallel operations — report every failure
 
 ### 3. Concurrency Limits
 
-- จำกัด parallel operations ไม่เกิน 10 ต่อ batch เพื่อไม่กิน resource
-- ถ้า operations >10 → แบ่งเป็น batches หรือใช้ pool pattern
-- ใช้ `BUN_CONFIG_MAX_HTTP_REQUESTS` สำหรับจำกัด concurrent HTTP requests
-- ตรวจสอบ rate limits ของ external APIs ก่อน parallel calls
+- Limit parallel operations to no more than 10 per batch to avoid consuming all resources
+- If operations exceed 10 → split into batches or use a pool pattern
+- Use `BUN_CONFIG_MAX_HTTP_REQUESTS` to limit concurrent HTTP requests
+- Check the rate limits of external APIs before parallel calls
 
 ### 4. Deterministic Guarantees
 
-- ผลลัพธ์จาก parallel execution ต้องเหมือนกับ sequential execution — แค่เร็วกว่า
-- ไม่พึ่งพา ordering ของ parallel results — ใช้ key หรือ label ระบุผลลัพธ์
-- ถ้าผลลัพธ์ต้องเรียงลำดับ → sort หลังรวบรวม ไม่พึ่งพา execution order
-- Parallel execution ไม่สร้าง side effects ซ้ำ — แต่ละ operation ทำงานอิสระ
+- The result of parallel execution must match sequential execution — just faster
+- Don't rely on the ordering of parallel results — use a key or label to identify each result
+- If results must be ordered → sort after collecting, don't rely on execution order
+- Parallel execution must not create duplicate side effects — each operation works independently
 
 ### 5. High Impact Content
 
-- รวม independent tool calls เป็น parallel เสมอเมื่อเป็นไปได้ — ลด context accumulation
-- ระบุ parallelizable tasks ใน `/plan`
-- ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
-- ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
+- Always group independent tool calls into parallel batches when possible — reduces context accumulation
+- Identify parallelizable tasks in `/plan`
+- Use parallel execution in `/run-verify` for lint, typecheck, scan
+- Don't parallelize operations that have dependencies without need
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- Independent operations รัน parallel ลด total execution time
-- Tool calls ถูก batch ลดจำนวนรอบและ context accumulation
-- Scripts ใช้ `Promise.all` และ `Promise.allSettled` อย่างถูกต้อง
-- Errors จาก parallel operations ถูกรายงานครบถ้วน
-- ผลลัพธ์ deterministic — parallel และ sequential ให้ผลเหมือนกัน
+- Independent operations run in parallel, reducing total execution time
+- Tool calls are batched, reducing round trips and context accumulation
+- Scripts use `Promise.all` and `Promise.allSettled` correctly
+- Errors from parallel operations are fully reported
+- Deterministic results — parallel and sequential give the same outcome

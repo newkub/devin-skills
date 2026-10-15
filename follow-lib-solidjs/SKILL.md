@@ -1,6 +1,6 @@
 ---
 name: follow-lib-solidjs
-description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
+description: Develop Solid.js applications with fine-grained reactivity and performance optimization
 argument-hint: "[task]"
 related:
   - follow-create-web
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-พัฒนา Solid.js applications ด้วย fine-grained reactivity, render-once mental model, และ performance optimization
+Develop Solid.js applications with fine-grained reactivity, the render-once mental model, and performance optimization
 
 ## Scope
 
-ใช้สำหรับ Solid.js projects ที่ไม่ใช่ SolidStart (client-side only หรือ integration กับ frameworks อื่น)
+For Solid.js projects that aren't SolidStart (client-side only or integrated with other frameworks)
 
 - Latest: `solid-js@1.9.15` (stable), `2.0.0-rc.8` (next — release candidate), `1.10.0-beta.0` (beta) (verified 2026-09-18)
 
@@ -25,7 +25,7 @@ related:
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ตาม task
+> Goal: dispatch to the workflow matching the task
 
 | Topic | Workflow |
 |-------|----------|
@@ -38,101 +38,101 @@ related:
 
 ### 1. Setup And Components
 
-> Goal: โครงสร้าง component ถูกต้องตาม Solid.js mental model
+> Goal: component structure correct per the Solid.js mental model
 
-1. ตรวจ `package.json` ยืนยัน `solid-js` และ `babel-preset-solid` ถ้าขาด → ติดตั้ง `bun add solid-js` และ `bun add -D babel-preset-solid`
-2. ใช้ functional components ที่รันครั้งเดียว (render-once) ใช้ `.tsx` สำหรับทุก components
-3. กำหนด types ด้วย `Component<P>`, `VoidComponent<P>`, `ParentComponent<P>`, `FlowComponent<P, C>`
-4. ห้าม destructure props — ใช้ `mergeProps` สำหรับ combine default props และ `splitProps` สำหรับ passing specific props เพื่อ preserve getter chain
+1. Check `package.json` for `solid-js` and `babel-preset-solid`; if missing → install with `bun add solid-js` and `bun add -D babel-preset-solid`
+2. Use functional components that run once (render-once); use `.tsx` for every component
+3. Type with `Component<P>`, `VoidComponent<P>`, `ParentComponent<P>`, `FlowComponent<P, C>`
+4. Never destructure props — use `mergeProps` to combine default props and `splitProps` when passing specific props, to preserve the getter chain
 
 ### 2. Reactivity And State
 
-> Goal: ใช้ reactive primitives และ state management อย่างถูกต้อง
+> Goal: use reactive primitives and state management correctly
 
-1. ใช้ `createSignal` สำหรับ state management — setter ด้วย function: `setCount(c => c + 1)`
-2. ใช้ `createMemo` เฉพาะ expensive computations — simple derived values ใช้ plain function (Solid re-evaluates ใน reactive scope)
-3. ใช้ `createEffect` สำหรับ side effects เท่านั้น (DOM manipulation, third-party libraries) — ห้ามใช้สำหรับ sync derived state
-4. ใช้ `createStore` สำหรับ nested reactive state ด้วย Proxies — ใช้ `createMutable` สำหรับ interop กับ external libraries (ด้วยความระมัดระวัง)
-5. ใช้ `batch` สำหรับ group multiple state updates, `untrack` สำหรับ prevent dependencies, `on` helper สำหรับ manually specify effect dependencies
-6. ใช้ Context API สำหรับ global state — หลีกเลี่ยง deep nesting ถ้าไม่จำเป็น
+1. Use `createSignal` for state management — set via function: `setCount(c => c + 1)`
+2. Use `createMemo` only for expensive computations — simple derived values should be plain functions (Solid re-evaluates within the reactive scope)
+3. Use `createEffect` for side effects only (DOM manipulation, third-party libraries) — never for syncing derived state
+4. Use `createStore` for nested reactive state via Proxies — use `createMutable` for interop with external libraries (with caution)
+5. Use `batch` to group multiple state updates, `untrack` to prevent dependencies, the `on` helper to manually specify effect dependencies
+6. Use the Context API for global state — avoid deep nesting unless necessary
 
 ### 3. Control Flow And Async
 
-> Goal: ใช้ control flow components และ async patterns อย่างถูกต้อง
+> Goal: use control flow components and async patterns correctly
 
-1. ใช้ `<For>` สำหรับ lists tracked by reference (keyed list), `<Index>` สำหรับ lists ที่มี stable indices แต่ values เปลี่ยนได้
-2. ใช้ `<Show>` สำหรับ conditional rendering พร้อม callback form สำหรับ type narrowing, `<Switch>`/`<Match>` สำหรับ complex conditions, `<Dynamic>` สำหรับ dynamic component rendering
-3. หลีกเลี่ยง `map` และ `filter` โดยตรงบน reactive arrays
-4. ใช้ `createResource` สำหรับ async data fetching (ไม่ใช้ `createEffect` เพื่อ fetch) — ใช้ `refetch` และ `mutate` actions สำหรับ cache control
-5. ใช้ `Suspense` สำหรับ async data loading boundaries, `ErrorBoundary` สำหรับ error handling
-6. ใช้ `createDeferred` สำหรับ defer non-critical updates, `lazy` สำหรับ code splitting และ async component loading
+1. Use `<For>` for lists tracked by reference (keyed list), `<Index>` for lists with stable indices but changing values
+2. Use `<Show>` for conditional rendering with the callback form for type narrowing, `<Switch>`/`<Match>` for complex conditions, `<Dynamic>` for dynamic component rendering
+3. Avoid calling `map` and `filter` directly on reactive arrays
+4. Use `createResource` for async data fetching (not `createEffect` to fetch) — use the `refetch` and `mutate` actions for cache control
+5. Use `Suspense` for async data loading boundaries, `ErrorBoundary` for error handling
+6. Use `createDeferred` to defer non-critical updates, `lazy` for code splitting and async component loading
 
 ### 4. Optimize Performance
 
-> Goal: ปรับปรุง performance ด้วย Solid.js patterns
+> Goal: improve performance with Solid.js patterns
 
-1. ใช้ fine-grained updates (no Virtual DOM) — หลีกเลี่ยง reactive reads ที่ component top-level ยกเว้นใน JSX, `createMemo`, หรือ `createEffect`
-2. ใช้ `<For>` และ `<Index>` สำหรับ efficient list rendering
-3. ใช้ `untrack` เมื่อไม่ต้องการสร้าง dependencies
-4. ใช้ SSR และ hydration สำหรับ initial load performance ถ้าจำเป็น
+1. Use fine-grained updates (no Virtual DOM) — avoid reactive reads at the component top level except in JSX, `createMemo`, or `createEffect`
+2. Use `<For>` and `<Index>` for efficient list rendering
+3. Use `untrack` when you don't want to create dependencies
+4. Use SSR and hydration for initial load performance if needed
 
 ### 5. Testing
 
-> Goal: ทดสอบ Solid.js applications อย่างถูกต้อง
+> Goal: test Solid.js applications correctly
 
-1. ใช้ `@solidjs/testing-library` สำหรับ component testing พร้อม auto cleanup
-2. ใช้ `@testing-library/user-event` สำหรับ simulate user interactions, `@testing-library/jest-dom` สำหรับ custom matchers
-3. ใช้ Vitest สำหรับ unit testing — ใช้ `renderHook` สำหรับ testing primitives โดยไม่ต้อง render component
-4. ใช้ `testEffect` สำหรับ testing async effects — ทดสอบ reactive behavior ด้วย `createRoot` และ `dispose`
+1. Use `@solidjs/testing-library` for component testing with auto cleanup
+2. Use `@testing-library/user-event` to simulate user interactions, `@testing-library/jest-dom` for custom matchers
+3. Use Vitest for unit testing — use `renderHook` to test primitives without rendering a component
+4. Use `testEffect` for testing async effects — test reactive behavior with `createRoot` and `dispose`
 
 ## Rules
 
 ### 1. Render-Once Mental Model
 
-- Components เป็น functions ที่รันครั้งเดียวเพื่อ setup view
-- ห้าม destructure props — ใช้ `mergeProps` และ `splitProps` เพื่อ preserve getter chain
-- ใช้ `.tsx` สำหรับทุก components
-- หลีกเลี่ยงการ re-run component เมื่อ state เปลี่ยน
+- Components are functions that run once to set up the view
+- Never destructure props — use `mergeProps` and `splitProps` to preserve the getter chain
+- Use `.tsx` for every component
+- Avoid re-running the component when state changes
 
 ### 2. Reactivity Rules
 
-- ใช้ `createEffect` สำหรับ side effects เท่านั้น ไม่ใช่ sync derived state — ใช้ function หรือ `createMemo` แทน
-- ใช้ `createMemo` เฉพาะ expensive computations สำหรับ simple ใช้ plain function
-- ใช้ `createResource` สำหรับ async data fetching ไม่ใช้ `createEffect`
-- ใช้ `batch` สำหรับ group updates, `on` helper สำหรับ manually specify dependencies
+- Use `createEffect` for side effects only, not to sync derived state — use a function or `createMemo` instead
+- Use `createMemo` only for expensive computations — for simple ones use a plain function
+- Use `createResource` for async data fetching, not `createEffect`
+- Use `batch` for grouped updates, the `on` helper to manually specify dependencies
 
 ### 3. Solid 2.0 Migration Notes
 
-เตรียมพร้อมสำหรับ Solid 2.0 (`2.0.0-rc.8` — release candidate, GA ใกล้แล้ว):
+Prepare for Solid 2.0 (`2.0.0-rc.8` — release candidate, GA near):
 
 - `Suspense` → `Loading`, `ErrorBoundary` → `Errored`
 - `createResource` → async `createMemo` + `Loading` boundary
-- `<Index>` ถูก removed ใช้ `<For keyed={false}>` แทน
-- `SuspenseList` → `Reveal` พร้อม `order` prop (`sequential`, `together`) และ `collapsed`
-- `batch` → default microtask batching ใช้ `flush()` แทน
-- `onMount` → `onSettled` (รองรับ cleanup return), `mergeProps`/`splitProps` → `merge`/`omit`, `unwrap` → `snapshot`
-- `createMemo` เปลี่ยน signature: second arg เป็น options ไม่ใช่ initial value
-- `onError` ถูก deprecated → ใช้ `catchError` แทน
-- ใหม่: `action()`, `createOptimisticStore`, `isPending()`, `latest()`, `refresh()`, `deep()`
-- rc.8 fix SSR XSS: strings ที่ yield ผ่าน flow-control memos (`<Show>`/`<For>`/`<Switch>` fallback) ตอนนี้ escaped บน server — ถ้าใช้ 2.0 RC กับ SSR ให้ pin `>=2.0.0-rc.8`
+- `<Index>` is removed — use `<For keyed={false}>` instead
+- `SuspenseList` → `Reveal` with the `order` prop (`sequential`, `together`) and `collapsed`
+- `batch` → default microtask batching, use `flush()` instead
+- `onMount` → `onSettled` (supports a cleanup return), `mergeProps`/`splitProps` → `merge`/`omit`, `unwrap` → `snapshot`
+- `createMemo` changes signature: the second arg is options, not an initial value
+- `onError` is deprecated → use `catchError` instead
+- New: `action()`, `createOptimisticStore`, `isPending()`, `latest()`, `refresh()`, `deep()`
+- rc.8 fixes SSR XSS: strings yielded through flow-control memos (`<Show>`/`<For>`/`<Switch>` fallbacks) are now escaped on the server — if using a 2.0 RC with SSR, pin `>=2.0.0-rc.8`
 
 ### 4. Related Workflows
 
-- ทำ `/follow-solid-framework` สำหรับ TanStack Start + SolidJS applications
-- ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
-- ทำ `/follow-tool-vitest` สำหรับ testing configuration
+- Do `/follow-solid-framework` for TanStack Start + SolidJS applications
+- Do `/follow-lang-typescript` for TypeScript best practices
+- Do `/follow-tool-vitest` for testing configuration
 
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugin ถ้าจำเป็น (lib solidjs)
-- ใช้ /follow-create-plugins ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use /follow-tool-vite if needed
+- Use /follow-create-vite-plugin if needed (lib solidjs)
+- Use /follow-create-plugins if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 
 ## Expected Outcome
 
-- Solid.js components พัฒนาตาม render-once mental model
-- Reactivity system ใช้งานอย่างถูกต้อง (no derived state in effects)
-- Performance optimization ด้วย fine-grained updates
-- Control flow และ async patterns ใช้งานอย่างเหมาะสม
-- Testing setup ครบถ้วนด้วย `@solidjs/testing-library`
-- เตรียมพร้อมสำหรับ Solid 2.0 migration
+- Solid.js components developed per the render-once mental model
+- Reactivity system used correctly (no derived state in effects)
+- Performance optimization via fine-grained updates
+- Control flow and async patterns used appropriately
+- Complete testing setup with `@solidjs/testing-library`
+- Prepared for the Solid 2.0 migration

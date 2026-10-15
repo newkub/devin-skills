@@ -4,48 +4,48 @@
 
 ### Migration Order
 
-- copy scene เข้า file ใหม่ในโปรเจกต์ ManimGX แล้วรัน `manimgx inspect` ทั้งยังไม่ได้แก้อะไร — signal แรกคือ error/hint ของ CLI ไม่ใช่ grep หา rename เอง
-- แก้ import เป็น `import manimgx as m` ก่อนอื่น (Manim CE module paths ไม่มีอยู่จริงใน GX) แล้วค่อยไล่ API names
-- ใช้ hint จาก error เป็น guide: CLI พิมพ์บรรทัดที่ fail และบอกชื่อใหม่ (`ShowCreation is Create in ManimGX`)
-- รัน `ty check` หลังกู้ import เสร็จ — มันจับ keyword ที่ runtime จะเงียบ
-- ทำ snapshot output ของ CE scene (สคริปต์ + เฟรมอ้างอิง) ไว้เทียบ composition แล้ว compare กับ storyboard ของ GX ทีละ moment
+- copy the scene into a new file in the ManimGX project then run `manimgx inspect` without changing anything yet — the first signal is the CLI's error/hint, not grepping for renames yourself
+- change imports to `import manimgx as m` first (Manim CE module paths don't exist in GX), then chase the API names
+- use the hints from errors as your guide: the CLI prints the failing line and the new name (`ShowCreation is Create in ManimGX`)
+- run `ty check` after restoring imports — it catches keywords the runtime would ignore silently
+- take an output snapshot of the CE scene (script + reference frames) to compare composition, then compare against the GX storyboard moment by moment
 
 ### Name Map
 
-- เปลี่ยนชื่อที่ deprecated (ชื่อเก่ายังใช้ได้แต่ editor จะ mark): `ShowCreation` → `Create`, `arrange_submobjects` → `arrange`, `PGroup` → `Group`, `add_foreground_mobject` → `add_foreground_mobjects`, `get_edge_center(m.UP)` → `get_top()`
+- rename deprecated names (old names still work but the editor will mark them): `ShowCreation` → `Create`, `arrange_submobjects` → `arrange`, `PGroup` → `Group`, `add_foreground_mobject` → `add_foreground_mobjects`, `get_edge_center(m.UP)` → `get_top()`
 - `rotate_about_origin(angle)` → `rotate(angle, about_point=m.ORIGIN)`
-- `MovingCameraScene` → `Scene` — ใน GX กล้องของทุก scene เคลื่อนที่ได้
+- `MovingCameraScene` → `Scene` — in GX the camera of every scene can move
 - `ApplyMethod(square.scale, 2)`, `ScaleInPlace(square, 2)`, `FadeToColor(square, m.RED)` → `.animate`: `square.animate.scale(2)`, `square.animate.set_color(m.RED)`
-- `VGroup` ≡ `Group`, `c2p` ≡ `coords_to_point` — ทั้งคู่คงไว้ docs ใช้ชื่อแรก
+- `VGroup` ≡ `Group`, `c2p` ≡ `coords_to_point` — both are kept; docs use the first name
 
 ### Behavior Differences To Re-check
 
-- quality flags ของ CE (`-ql`, `-qh`) ไม่มีใน GX → ใช้ `-r <WxH>` และ `--fps <n>` แทน
-- เฟรมแนวตั้ง: CE กว้าง ~4.5 หน่วย แต่ GX กว้าง 8 หน่วย (สูง ~14.2) โดยสั้นของเฟรมเป็น 8 หน่วยเสมอ — layout ที่อิงค่าเดิมต้องคำนวณใหม่ หรือตั้ง `config.frame_height`
-- ทุก frame แสดง scene ที่ time ของมันเองที่ทุก fps และวิดีโอจบด้วย last frame ของ scene — scene ที่พึ่ง "frame สุดท้ายไม่ถูกวาด" แบบ CE จะต่างออกไป
-- `.animate` apply ตอน animation เริ่ม, ใน `Succession` แต่ละ `.animate` เริ่มจากจุดจบของอันก่อน
-- rotation หมุนทั้ง object เป็น rigid piece รอบจุดเดียว — CE ที่ compose การหมุนหลายชั้นให้ตรวจผลลัพธ์
-- animation ของ mobject เดียวที่เริ่มพร้อมกันจะถูก combine (movements บวกกัน)
-- LaTeX → Typst: `Tex`/`MathTex` ทำงานได้โดยไม่มี LaTeX install แต่ LaTeX packages และ `\def` macros ไม่ถูก convert — scene ที่พึ่ง `\\usepackage` หรือ custom macro ต้อง rewrite math ส่วนนั้นเป็น Typst-compatible หรือใช้ `Text`
+- CE's quality flags (`-ql`, `-qh`) don't exist in GX → use `-r <WxH>` and `--fps <n>` instead
+- vertical frame: CE is ~4.5 units wide, but GX is 8 units wide (~14.2 tall) — the short frame side is always 8 units — layouts based on the old values must be recomputed, or set `config.frame_height`
+- every frame shows the scene at its own time at every fps, and the video ends with the scene's last frame — scenes relying on "the last frame isn't drawn" like CE will differ
+- `.animate` applies when the animation starts; inside `Succession` each `.animate` starts from the previous one's end
+- rotation turns the whole object as a rigid piece around a single point — CE scenes composing nested rotations should be checked
+- animations of one mobject starting together are combined (movements add up)
+- LaTeX → Typst: `Tex`/`MathTex` work without a LaTeX install, but LaTeX packages and `\def` macros aren't converted — scenes relying on `\\usepackage` or custom macros must rewrite that math in Typst-compatible form or use `Text`
 
 ### Plugin Replacements
 
-- `manim-voiceover` → ในตัว: `with self.voiceover(...) as tracker:` + `run_time=tracker.duration` → `self.say("... [words] ...", anims...)`
-- `manim-slides` → ในตัว: `self.next_slide()` → `self.next_section()`, `loop=True` → `"presentation.loop"`, `notes=` คงเดิม; เปิดด้วย `manimgx present`
-- shape booleans ที่มาจาก plugin/`manimpango` และ CJK text ยังไม่รองรับใน browser path — ตรวจก่อนว่าต้องใช้ไหม
+- `manim-voiceover` → built in: `with self.voiceover(...) as tracker:` + `run_time=tracker.duration` → `self.say("... [words] ...", anims...)`
+- `manim-slides` → built in: `self.next_slide()` → `self.next_section()`, `loop=True` → `"presentation.loop"`, `notes=` unchanged; open with `manimgx present`
+- shape booleans coming from plugins/`manimpango` and CJK text are still unsupported on the browser path — check first whether you need them
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ใช้ `.animate` สำหรับ method ที่เคย `ApplyMethod` |คง `ApplyMethod` ไว้เพราะ "ยังรันได้" |
-| ตรวจ vertical frame size ใหม่ (8 × ~14.2) | ลอกพิกัดของ CE 9:16 มาตรงๆ |
-| rewrite math ที่พึ่ง `\def`/packages | งง ว่าทำไม formula หายไปเงียบๆ |
-| รัน GX scene บน CE setup เพื่อเทียบ | สับสนว่า `no module named manimgx` คือปัญหาของ GX (จริงคือ environment) |
+| use `.animate` for methods that were `ApplyMethod` | keep `ApplyMethod` because "it still runs" |
+| re-check the vertical frame size (8 × ~14.2) | copy CE's 9:16 coordinates directly |
+| rewrite math relying on `\def`/packages | be puzzled why formulas silently disappear |
+| run the GX scene on a CE setup to compare | confuse `no module named manimgx` for a GX problem (it's really the environment) |
 
 ## Common Pitfalls
 
-- จุดที่มักพลาดคือ `import` path ของ helpers: `from manimgx.utils.polylabel import polylabel` → ใช้ไม่ได้ ต้อง `from manimgx import polylabel`
-- keyword ที่สะกดผิด/ตกไปจาก CE จะไม่ error — ผลลัพธ์เงียบๆ เปลี่ยน เช่น `fill_colour` ทำให้ shape ใส
-- deprecated names ยังรันได้ แต่ `ty`/editor จะ mark ว่า deprecated — migration จบจริงเมื่อไม่มี mark เหลือ
-- scene ที่พึ่ง frame counting ใน updater จะได้ผลต่างจาก CE เพราะ GX ส่ง exact dt ต่อ call — rewrite เป็น time-based
+- the usual trip-up is helper `import` paths: `from manimgx.utils.polylabel import polylabel` → doesn't work, use `from manimgx import polylabel`
+- misspelled keywords or ones lost since CE won't error — the result changes silently, e.g. `fill_colour` makes a shape transparent
+- deprecated names still run, but `ty`/the editor will mark them as deprecated — the migration is truly done when no marks remain
+- scenes relying on frame counting in an updater behave differently from CE because GX passes exact dt per call — rewrite as time-based

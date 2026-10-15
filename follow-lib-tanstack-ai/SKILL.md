@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-ai
-description: ใช้ TanStack AI ครบวงจร — provider adapters, chat streaming, tools, client hooks, MCP
+description: Use TanStack AI end to end — provider adapters, chat streaming, tools, client hooks, MCP
 argument-hint: "[framework] [provider]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -10,13 +10,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack AI ครบ — provider-agnostic AI SDK: `chat()` server-side + adapters, tool calling, streaming, `useChat` client hooks, agent loops
+Use TanStack AI fully — a provider-agnostic AI SDK: server-side `chat()` + adapters, tool calling, streaming, `useChat` client hooks, agent loops
 
 ## Scope
 
-ใช้สำหรับ AI features ที่ไม่ผูก provider เดียว (chat, tools, agents, streaming UI) — **0.x**: API เปลี่ยนเร็ว ตรวจ `https://tanstack.com/ai/latest` ก่อน implement เสมอ
+For AI features not bound to a single provider (chat, tools, agents, streaming UI) — **0.x**: the API changes fast, always check `https://tanstack.com/ai/latest` before implementing
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -24,12 +24,12 @@ related:
 
 ```bash
 bun add @tanstack/ai @tanstack/ai-client @tanstack/ai-react
-bun add @tanstack/ai-openai        # หรือ ai-anthropic / ai-ollama / adapter อื่น
+bun add @tanstack/ai-openai        # or ai-anthropic / ai-ollama / another adapter
 ```
 
 ### 2. Server Chat Endpoint
 
-> Goal: `chat()` + adapter ฝั่ง server เท่านั้น
+> Goal: `chat()` + adapter on the server side only
 
 ```ts
 import { chat, toStreamResponse, toolDefinition } from '@tanstack/ai'
@@ -39,7 +39,7 @@ const getWeather = toolDefinition({
   name: 'get_weather',
   description: 'Get weather for a city',
   inputSchema: z.object({ city: z.string() }),
-}).server(async ({ city }) => fetchWeather(city))   // execute ฝั่ง server
+}).server(async ({ city }) => fetchWeather(city))   // execute server-side
 
 export const POST = async ({ request }) => {
   const { messages } = await request.json()
@@ -48,8 +48,8 @@ export const POST = async ({ request }) => {
 }
 ```
 
-1. วางใน Start server function (`createServerFn` → `follow-start`) หรือ API route ของ framework
-2. API keys อยู่ env ฝั่ง server เท่านั้น — ห้าม leak เข้า client bundle
+1. Place it in a Start server function (`createServerFn` → `follow-start`) or the framework's API route
+2. API keys live in server-side env only — never leak them into the client bundle
 
 ### 3. Client Chat
 
@@ -63,37 +63,37 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 })
 ```
 
-- `messages` มี `parts` — text, tool-call, tool-result — render ตาม part type
-- Approval flows: tools ที่ต้องยืนยัน → client-side approval UI ก่อน execute
-- สลับ provider = เปลี่ยน adapter import ฝั่ง server เท่านั้น — client ไม่แตะ
+- `messages` have `parts` — text, tool-call, tool-result — render per part type
+- Approval flows: tools requiring confirmation → client-side approval UI before execute
+- Switching providers = changing the adapter import on the server side only — the client is untouched
 
 ### 4. Advanced
 
-> Goal: ครอบ use cases จริง
+> Goal: cover real use cases
 
 1. **Tools**: `toolDefinition` — server tools (`.server(fn)`), client tools (interactive UI), approval-required tools
-2. **Structured output**: `outputSchema` บน chat options → typed JSON response
-3. **Agent loop**: tools + maxIterations — model เรียก tool หลายรอบจนจบ
-4. **MCP**: เชื่อม MCP servers เป็น tool sources (ตรวจ API ล่าสุด — 0.x เปลี่ยนเร็ว)
-5. **Headless**: `@tanstack/ai-client` ใช้นอก framework UI — custom chat state management
+2. **Structured output**: `outputSchema` on chat options → typed JSON response
+3. **Agent loop**: tools + maxIterations — the model calls tools repeatedly until done
+4. **MCP**: connect MCP servers as tool sources (check the latest API — 0.x changes fast)
+5. **Headless**: `@tanstack/ai-client` used outside framework UI — custom chat state management
 
 ### 5. Verify
 
-1. `/run-typecheck` — message/tool types ผ่าน
-2. Streaming จริง: tokens มาครบ, `stop()` ยกเลิกได้, tool round-trip สำเร็จ
-3. ทดสอบ adapter อีกตัวเพื่อยืนยัน provider-agnostic
-4. ถ้า fail → `/resolve-errors` max 3 รอบ
+1. `/run-typecheck` — message/tool types pass
+2. Real streaming: all tokens arrive, `stop()` cancels, the tool round-trip succeeds
+3. Test another adapter to confirm provider-agnosticism
+4. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- Adapter + `chat()` อยู่ server เสมอ — client เห็นแค่ connection/stream
-- Tool schemas ใช้ standard schema — types ไหลถึง model response
-- Tools ที่ side effects → `.server()` execution เท่านั้น
-- Message `parts` = source of truth — ห้าม parse raw text เอง
-- 0.x API — pin exact version; verify examples ตรง docs ล่าสุดทุกครั้ง
+- The adapter + `chat()` always live on the server — the client only sees the connection/stream
+- Tool schemas use standard schema — types flow through to the model response
+- Tools with side effects → `.server()` execution only
+- Message `parts` = source of truth — never parse raw text yourself
+- 0.x API — pin the exact version; verify every example against the latest docs
 
 ## Expected Outcome
 
-- Chat stream end-to-end ทำงาน (server adapter → client UI)
-- Tools execute + approval flows ถูกต้อง
-- Provider swap ไม่กระทบ client code
+- The chat stream works end-to-end (server adapter → client UI)
+- Tools execute + approval flows are correct
+- A provider swap doesn't affect client code

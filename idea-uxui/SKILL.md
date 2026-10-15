@@ -4,7 +4,8 @@ description: สร้างไอเดีย UX/UI improvements และ feat
 argument-hint: "[topic-or-url]"
 related:
   - idea
-  - deep-review
+  - validate-idea
+  - deep-review-codebase
   - follow-design-system
   - report-uxui
   - watch-browser
@@ -26,8 +27,9 @@ related:
 - ครอบคลุมมิติ: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์ ไม่ implement
-- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/deep-review` (domain `review-uxui`)
+- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/deep-review-codebase` (domain `review-uxui`)
 - ถ้าต้องการ implement → ส่งต่อ `/implement-to-production`
+- ไอเดียที่ user จะเอามาลงมือจริง แต่ยังไม่มีหลักฐาน demand/feasibility → คัดก่อนด้วย `/validate-idea`
 
 ## Execute
 
@@ -37,7 +39,7 @@ related:
 
 1. รับ `<topic-or-url>` จาก argument หรือ conversation context
 2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ — ดู routes, components, design system ที่มี
-3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/deep-review` หรือ `/report-uxui` ก่อนคิดไอเดีย
+3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/deep-review-codebase` หรือ `/report-uxui` ก่อนคิดไอเดีย
 4. ถ้า topic ไม่ชัด → ใช้ `/suggest-next-action` ถาม user
 
 ### 2. Generate Ideas
@@ -82,7 +84,7 @@ related:
 
 ### 3. UX Dimension Coverage
 
-- ทุก run ต้อง cover อย่างน้อย 3 มิติ: visual, interaction, a11y (ตาม `/deep-review` checklist)
+- ทุก run ต้อง cover อย่างน้อย 3 มิติ: visual, interaction, a11y (ตาม `/deep-review-codebase` checklist)
 - ไอเดียต้อง actionable และอิง design system ที่มี (`/follow-design-system`) — ไม่เสนอ pattern ที่ขัดกันโดยไม่มีเหตุผล
 
 ### 4. Suggest Deep Workflow

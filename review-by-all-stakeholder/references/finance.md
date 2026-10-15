@@ -23,7 +23,7 @@ Persona details for the `finance` category — merged from the original `workflo
 |------|-------|----------|
 | financial-analyst | revenue/billing correctness, invoice/refund flows | `### finance/financial-analyst` |
 | pricing-analyst | pricing tiers, entitlements, upgrade/downgrade paths | `### finance/pricing-analyst` |
-| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review` | `### finance/cost-analyst` |
+| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review-codebase` | `### finance/cost-analyst` |
 | accountant | transaction integrity, audit trail, tax/currency handling | `### finance/accountant` |
 
 2. อ่าน section `### finance/<role>` ในไฟล์นี้
@@ -135,7 +135,7 @@ Persona details for the `finance` category — merged from the original `workflo
 
 - ตรวจ dev/staging environments ที่เปิดทิ้ง หรือ over-provisioned relative to prod
 
-- Deep pass → `/deep-review` สำหรับ cost analysis เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ cost analysis เชิงลึก
 
 
 

@@ -2,79 +2,79 @@
 
 ## Goal
 
-เข้าใจ linear algebra: vectors, matrices, dot product, cross product, matrix multiplication, transformations และประยุกต์ใช้ใน ML, graphics, embeddings
+Understand linear algebra: vectors, matrices, dot product, cross product, matrix multiplication, transformations, and their use in ML, graphics, and embeddings
 
 ## Scope
 
-- ใช้สำหรับ embeddings, graphics, transformations, ML basics
-- ครอบคลุบ vectors, matrices, dot/cross product, norm, transpose, inverse
-- แนะนำ eigenvalues/eigenvectors เบื้องต้น
+- Use for embeddings, graphics, transformations, ML basics
+- Covers vectors, matrices, dot/cross product, norm, transpose, inverse
+- Introduces basic eigenvalues/eigenvectors
 
 ## Execute
 
 ### 1. Work With Vectors
 
-> Goal: คำนวณ vector operations
+> Goal: compute vector operations
 
-1. ระบุ vector เป็น tuple `(x, y, z)`
-2. หา length/norm: `||v|| = sqrt(x^2 + y^2 + z^2)`
-3. บวก/ลบ vectors ทีละ component
-4. คูณด้วย scalar
-5. หา dot product: `a · b = Σ a_i * b_i`
+1. Represent a vector as a tuple `(x, y, z)`
+2. Find the length/norm: `||v|| = sqrt(x^2 + y^2 + z^2)`
+3. Add/subtract vectors component-wise
+4. Multiply by a scalar
+5. Find the dot product: `a · b = Σ a_i * b_i`
 
 ### 2. Use Dot Product
 
-> Goal: หา similarity หรือ projection
+> Goal: find similarity or projection
 
 1. Cosine similarity: `(a · b) / (||a|| ||b||)`
-2. ใช้เปรียบเทียบ embeddings
-3. หา projection ของ vector a ลง b
-4. ใช้ dot product ตรวจ orthogonality
+2. Use it to compare embeddings
+3. Find the projection of vector a onto b
+4. Use the dot product to check orthogonality
 
 ### 3. Work With Matrices
 
-> Goal: คำนวณ matrix operations
+> Goal: compute matrix operations
 
-1. บวก/ลบ matrices ทีมีขนาดเดียวกัน
-2. คูณ matrix: `(AB)_ij = Σ_k A_ik * B_kj`
-3. หา transpose `A^T`
-4. หา identity matrix `I`
-5. ใช้ transformations: scale, rotate, translate
+1. Add/subtract matrices of the same size
+2. Multiply matrices: `(AB)_ij = Σ_k A_ik * B_kj`
+3. Find the transpose `A^T`
+4. Find the identity matrix `I`
+5. Use transformations: scale, rotate, translate
 
 ### 4. Apply To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply it in software
 
-1. ใช้ embeddings similarity ใน search/AI
-2. ใช้ matrix transformations ใน graphics/WebGL
-3. ใช้ linear regression กับ least squares
-4. ใช้ PCA ลด dimension
+1. Use embedding similarity in search/AI
+2. Use matrix transformations in graphics/WebGL
+3. Use linear regression with least squares
+4. Use PCA to reduce dimensions
 
 ## Rules
 
 ### 1. Dimensions Must Match
 
-- vector/matrix operations ต้องมี dimensions ถูกต้อง
-- dot product ต้องมีขนาดเท่ากัน
-- matrix multiplication ต้อง columns ของ A = rows ของ B
+- Vector/matrix operations must have correct dimensions
+- Dot products need equal sizes
+- Matrix multiplication needs A's columns = B's rows
 
 ### 2. Avoid Misuse
 
-- cosine similarity วัด direction ไม่ใช่ magnitude
-- Euclidean distance ต่างกับ dot product
-- ใช้ normalized vectors ถ้าต้องการ compare direction
+- Cosine similarity measures direction, not magnitude
+- Euclidean distance differs from the dot product
+- Use normalized vectors when comparing direction
 
 ### 3. Code Mapping
 
-- ใช้ TypedArrays สำหรับ performance
-- ใช้ libraries เช่น `mathjs`, `numpy` ถ้าซับซ้อน
-- ใช้ WebGL matrices สำหรับ graphics
+- Use TypedArrays for performance
+- Use libraries like `mathjs` or `numpy` when complex
+- Use WebGL matrices for graphics
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- สามารถคำนวณ vector/matrix operations
-- สามารถหา cosine similarity
-- สามารถใช้ linear algebra ใน embeddings/graphics/ML
-- สามารถระบุเมื่อควรใช้ library
+- Able to compute vector/matrix operations
+- Able to compute cosine similarity
+- Able to use linear algebra in embeddings/graphics/ML
+- Able to tell when a library is warranted

@@ -3,12 +3,14 @@ name: follow-create-web
 description: Select and create a web project by type — landing, saas, paas, or a given framework
 argument-hint: "[scope]"
 related:
+  - design-web-prototype
+  - design-html-prototype
   - follow-create-plugins
   - follow-create-web-mcp
-  - deep-review
+  - deep-review-codebase
   - follow-lib-unocss
-  - follow-robots-txt
   - follow-design-system
+  - follow-web-standard
   - follow-service-cloudflare
   - follow-tool-devfra
   - run-dev
@@ -24,6 +26,7 @@ Choose the right web project type and hand the work off to the correct skill
 - Delegate project creation to the appropriate skill
 - Never implement the project directly yourself
 - Add WebMCP tools to an existing site (page-provided agent tools) → `/follow-create-web-mcp`
+- Layout/flow still unproven → prototype first: `/design-web-prototype` (multi-route, production-quality SolidJS) or `/design-html-prototype` (single-file quick mockup), then create the real project here
 
 ### Framework Skills
 
@@ -66,8 +69,26 @@ Choose the right web project type and hand the work off to the correct skill
 
 1. Invoke the chosen skill with the recorded requirements
 2. Verify the skill completed everything in its expected outcome
-3. Run `/follow-robots-txt` before deploy to set `robots.txt` according to site status
+3. Run `### 4. Robots Before Deploy` to set `robots.txt` according to site status
 4. Run `/deep-validate` if there are complex flows
+
+### 4. Robots Before Deploy (merged from `/follow-robots-txt`)
+
+> Goal: set `robots.txt` correctly and safely for the site's status
+
+1. Check current state: does `robots.txt` exist; is the site public or protected (Cloudflare Access, basic auth, login)
+2. Decide the policy:
+
+| Site status | robots.txt |
+|---|---|
+| Public, wants SEO | `User-agent: *` + empty `Disallow:` + `Sitemap: <url>` |
+| Public, not ready to index | `User-agent: *` + `Disallow: /` + `<meta name="robots" content="noindex,nofollow">` in the SSR `<head>` |
+| Behind Access / basic auth / login | `User-agent: *` + `Disallow: /` |
+| Mixed public/private pages | `Disallow:` only the private paths |
+
+3. Place the file by framework: Vite/SolidStart/TanStack Start/Next.js/Astro → `public/robots.txt`; SvelteKit → `static/robots.txt` — one file only, never split
+4. Verify: after build the file is in the output dir; check `http://localhost:<port>/robots.txt` locally; `curl /robots.txt` after deploy
+5. Never hardcode secrets or internal paths in `robots.txt`; re-check it after every build/deploy
 
 ## Rules
 
@@ -79,8 +100,8 @@ Choose the right web project type and hand the work off to the correct skill
 ### 2. Quality
 
 - Run `/follow-single-responsibility` after creating major components
-- Run `/deep-review` and `/deep-review` for SEO/bundle
-- Run `/deep-review` before deploy
+- Run `/deep-review-codebase` and `/deep-review-codebase` for SEO/bundle
+- Run `/deep-review-codebase` before deploy
 - Run `/implement-to-production` after the website is finished
 
 ### 3. Safety
@@ -102,15 +123,16 @@ Choose the right web project type and hand the work off to the correct skill
 - Use backticks for paths, commands, and skill names
 - Report with `/report`
 
-- Use /deep-review if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
+- Use /deep-review-codebase if needed
 - Use /follow-lib-unocss if needed
 - Use /follow-design-system if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /follow-service-cloudflare if deploying on Cloudflare
 - Use /run-dev if needed
 - Use /follow-create-plugins if needed
 - Use /follow-create-web-mcp if needed
+- Use /follow-web-standard when implementing UI markup/widgets — semantic HTML, native form validation, standard Web APIs before libraries
 - Use /follow-tool-devfra if the site needs devtools (inspector/analyzer)
 - Use /deep-test component for component tests and /deep-test e2e for user flows
 

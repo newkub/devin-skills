@@ -5,7 +5,7 @@ argument-hint: "[threshold]"
 related:
   - refactor
   - simplify
-  - deep-review
+  - deep-review-codebase
   - check-code-structure
 ---
 
@@ -68,7 +68,7 @@ This skill uses a Rust CLI instead of a Bun/TS CLI because it needs high perform
 - Show the total number of files exceeding the threshold
 
 - Use /refactor if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /check-code-structure if needed
 
 ## Expected Outcome

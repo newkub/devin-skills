@@ -8,7 +8,7 @@
 | api | description | default | options |
 |---|---|---|---|
 | `onCLS(fn)` | Cumulative Layout Shift | buffered | `reportAllChanges` |
-| `onINP(fn)` | Interaction to Next Paint (แทน FID ตั้งแต่ v4) | - | - |
+| `onINP(fn)` | Interaction to Next Paint (replaced FID since v4) | - | - |
 | `onLCP(fn)` | Largest Contentful Paint | - | - |
 | `onFCP(fn)` | First Contentful Paint | - | - |
 | `onTTFB(fn)` | Time to First Byte | - | - |

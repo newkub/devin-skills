@@ -1,6 +1,6 @@
 ---
 name: list-git-branch
-description: แสดง branches ในเครื่องและ remote พร้อมข้อมูลล่าสุด
+description: Show local and remote branches with latest info
 argument-hint: "[scope]"
 related:
   - list-github
@@ -10,94 +10,93 @@ related:
 
 ## Goal
 
-แสดงรายการ git branches ทั้งในเครื่องและ remote พร้อม metadata ที่สำคัญ
+List git branches both locally and on the remote with key metadata
 
 ## Scope
 
-ใช้สำหรับดู branches ใน local repository และ remote — ไม่รวม GitHub API (ใช้ `/list-github-branch` สำหรับ GitHub branches)
+For viewing branches in the local repository and remote — not the GitHub API (use `/list-github-branch` for GitHub branches)
 
 ## Execute
 
 ### 1. List Local Branches
 
-> Goal: ดู branches ในเครื่อง
+> Goal: view local branches
 
-1. รัน `git branch -v` เพื่อดู local branches พร้อม last commit
-2. รัน `git branch -vv` เพื่อดู local branches พร้อม upstream tracking
-3. ระบุ current branch จาก output (มี `*` นำหน้า)
+1. Run `git branch -v` to see local branches with last commit
+2. Run `git branch -vv` to see local branches with upstream tracking
+3. Identify the current branch from the output (prefixed with `*`)
 
 ### 2. List Remote Branches
 
-> Goal: ดู branches บน remote
+> Goal: view remote branches
 
-1. รัน `git branch -r` เพื่อดู remote branches
-2. รัน `git fetch --prune` ก่อนถ้าต้องการข้อมูลล่าสุด
-3. ระบุ remote branches ที่ไม่มี local tracking branch
+1. Run `git branch -r` to see remote branches
+2. Run `git fetch --prune` first when the latest data is needed
+3. Identify remote branches without a local tracking branch
 
 ### 3. List All Branches
 
-> Goal: ดู branches ทั้งหมด
+> Goal: view all branches
 
-1. รัน `git branch -a` เพื่อดู branches ทั้งหมด
-2. รัน `git branch -a -v` เพื่อดูพร้อม last commit
-3. ระบุ branches ที่มีเฉพาะใน local หรือ remote
+1. Run `git branch -a` to see all branches
+2. Run `git branch -a -v` to see them with last commit
+3. Identify branches that exist only locally or only remotely
 
 ### 4. Collect Branch Metadata
 
-> Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ branch
+> Goal: gather extra data per branch
 
-1. รัน `git log <branch> -1 --format="%H|%ci|%an|%s"` สำหรับแต่ละ branch เพื่อดู last commit info
-2. ระบุ branches ที่ไม่ได้ merge กับ current branch ด้วย `git branch --no-merged`
-3. ระบุ branches ที่ merge แล้วด้วย `git branch --merged`
-4. ระบุ stale branches ที่ไม่มีการอัปเดตเกิน 30 วัน
+1. Run `git log <branch> -1 --format="%H|%ci|%an|%s"` for each branch to see last commit info
+2. Identify branches not merged with the current branch via `git branch --no-merged`
+3. Identify merged branches via `git branch --merged`
+4. Identify stale branches with no update for over 30 days
 
 ### 5. Format Output
 
-> Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
+> Goal: format the result as a table
 
-1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
-2. กำหนด columns:
-   - No. ลำดับ
-   - Branch ชื่อ branch
+1. Do `/report` to format a table
+2. Define columns:
+   - No. sequence
+   - Branch branch name
    - Type local / remote / both
-   - Last Commit SHA แบบสั้น
-   - Date วันที่ commit ล่าสุด
-   - Author ผู้ commit
+   - Last Commit short SHA
+   - Date latest commit date
+   - Author committer
    - Merged ✅ / ❌
-   - Stale ใช่ / ไม่ใช่
-3. จัดกลุ่มตาม type: local ก่อน แล้วตามด้วย remote-only
+   - Stale yes / no
+3. Group by type: local first, then remote-only
 
 ## Rules
 
 ### Read-Only
 
-- ไม่สร้าง ไม่ลบ ไม่ switch branch — ใช้ `/follow-tool-git` สำหรับ branch operations
-- ไม่รัน `git fetch` โดย default — แค่อ่านข้อมูลที่มี
-- ถ้าผู้ใช้ต้องการข้อมูลล่าสุด → ถามก่อน fetch
+- Never create, delete, or switch branches — use `/follow-tool-git` for branch operations
+- Do not run `git fetch` by default — read existing data only
+- When the user wants the latest data → ask before fetching
 
 ### Output Format
 
-- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
-- เรียง local branches ก่อน แล้ว remote-only branches
-- แสดง current branch ด้วย bold
-- ใช้ symbols: ✅ merged, ❌ not merged
+- Do `/report` to format the result
+- Order local branches first, then remote-only branches
+- Show the current branch in bold
+- Use symbols: ✅ merged, ❌ not merged
 
 ### High Impact Content
 
-- ถ้ามีมากกว่า 50 branches → แสดงเฉพาะ top 20 ที่อัปเดตล่าสุด
-- ชี้เน้น stale branches ที่ไม่อัปเดตเกิน 30 วัน
-- ชี้เน้ม branches ที่ไม่ได้ merge
+- With more than 50 branches → show only the 20 most recently updated
+- Highlight stale branches not updated for over 30 days
+- Highlight unmerged branches
 
 ### Non-Redundancy
 
-- GitHub branches อยู่ใน `/list-github-branch` แล้ว
-- Branch operations อยู่ใน `/follow-tool-git` แล้ว
-- Stash listing อยู่ใน `/follow-tool-git` แล้ว
+- GitHub branches already live in `/list-github-branch`
+- Branch operations already live in `/follow-tool-git`
+- Stash listing already lives in `/follow-tool-git`
 
 ## Expected Outcome
 
-- รายการ branches ทั้ง local และ remote ในตารางที่อ่านง่าย
-- ข้อมูลครบ: branch name, type, last commit, date, author, merged status, stale status
-- ชี้เน้น stale branches และ branches ที่ไม่ได้ merge
-- ไม่มีการแก้ไข branch ใดๆ — read-only report
-
+- The local and remote branch list in a readable table
+- Complete data: branch name, type, last commit, date, author, merged status, stale status
+- Stale and unmerged branches highlighted
+- No branch modified — read-only report

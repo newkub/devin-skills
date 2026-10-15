@@ -1,6 +1,6 @@
 ---
 name: follow-lib-workflow-sdk
-description: ใช้ Workflow SDK (workflow-sdk.dev, Vercel) ครบวงจร — durable functions "use workflow"/"use step", sleep/hooks/webhooks, Worlds adapters, deploy + inspect
+description: Use Workflow SDK (workflow-sdk.dev, Vercel) end to end — durable functions "use workflow"/"use step", sleep/hooks/webhooks, Worlds adapters, deploy + inspect
 argument-hint: "[framework-or-world]"
 allowed-tools:
   - exec
@@ -20,11 +20,11 @@ related:
 
 ## Goal
 
-ใช้ Workflow SDK (package `workflow`, Vercel OSS) สร้าง durable workflows — long-running stateful logic ที่ persist progress ผ่าน event log และ resume หลัง restart/failure — รันเหมือนกันบน local dev, Vercel, หรือ infra อื่นผ่าน World adapters
+Use the Workflow SDK (package `workflow`, Vercel OSS) to build durable workflows — long-running stateful logic that persists progress through an event log and resumes after a restart/failure — running identically on local dev, Vercel, or other infra via World adapters
 
 ## Scope
 
-ใช้เมื่อ feature ต้องการ long-running/multi-step logic ที่ทน failure: AI agents, pipelines, scheduled jobs, human-in-the-loop approvals — framework support: Next.js, Vite, React Router, Astro, Express, Fastify, Hono, Nitro, Nuxt, SvelteKit, TanStack Start, NestJS (beta), Python (beta)
+Use when a feature needs long-running/multi-step logic that withstands failures: AI agents, pipelines, scheduled jobs, human-in-the-loop approvals — framework support: Next.js, Vite, React Router, Astro, Express, Fastify, Hono, Nitro, Nuxt, SvelteKit, TanStack Start, NestJS (beta), Python (beta)
 
 - Catalog default → `/follow-my-techstack`; TanStack Start integration → `/follow-lib-tanstack-start`; Vercel deploy → `/follow-service-vercel`
 
@@ -32,15 +32,15 @@ related:
 
 ### 1. Install And Integrate
 
-> Goal: ติดตั้งเข้า framework ที่ใช้
+> Goal: integrate it into the framework in use
 
-1. `bun add workflow` ผ่าน `/run-install` + framework integration ตาม docs (Next.js/Vite/Hono/Start ฯลฯ)
-2. Local dev ใช้ **Local World** อัตโนมัติ — state ใน `.workflow-data/` (gitignore ไว้), ไม่ต้อง config
-3. Structure: `workflows/<name>/index.ts` (workflow fns) + `steps.ts` หรือ `steps/` folder + `workflows/shared/` — แยกไฟล์ช่วยเลี่ยง bundler bugs
+1. `bun add workflow` via `/run-install` + the framework integration per the docs (Next.js/Vite/Hono/Start, etc.)
+2. Local dev uses the **Local World** automatically — state lives in `.workflow-data/` (gitignored), no config needed
+3. Structure: `workflows/<name>/index.ts` (workflow fns) + `steps.ts` or a `steps/` folder + `workflows/shared/` — separate files help avoid bundler bugs
 
 ### 2. Write Workflows
 
-> Goal: แยก orchestration กับ work ให้ถูก
+> Goal: separate orchestration from work correctly
 
 ```ts
 export async function processOrderWorkflow(orderId: string) {
@@ -57,62 +57,62 @@ async function chargePayment(order: Order) {
 }
 ```
 
-- `"use workflow"` — orchestrate ด้วย conditionals/loops/try-catch/`Promise.all`; no Node.js runtime, npm limited; ต้อง deterministic (framework freeze `Math.random`/`Date` ให้ — safe ใช้ใน workflow)
-- `"use step"` — real work, npm เต็มรูปแบบ, retry, result persisted; เรียกนอก workflow = normal fn (no retry/observability)
+- `"use workflow"` — orchestrate with conditionals/loops/try-catch/`Promise.all`; no Node.js runtime, npm is limited; must be deterministic (the framework freezes `Math.random`/`Date` for you — safe to use in a workflow)
+- `"use step"` — real work, full npm, retry, the result is persisted; called outside a workflow = a normal fn (no retry/observability)
 
 ### 3. Suspension Primitives
 
-> Goal: ใช้ wait/hook/webhook ให้ถูก
+> Goal: use wait/hook/webhook correctly
 
 ```ts
 import { sleep, createWebhook } from "workflow";
 
-await sleep("30d");                 // suspend ไม่เผา compute
-const webhook = createWebhook();    // resume เมื่อ external system POST
+await sleep("30d");                 // suspend without burning compute
+const webhook = createWebhook();    // resume when an external system POSTs
 await sendApprovalEmail(webhook.url);
 const data = await webhook;
 ```
 
-- Suspension เกิดที่: step hand-off, `sleep`, webhook await — state ไป event log, resume ต่อจุดเดิม
-- Secrets/tokens unguessable → generate ใน step (seeded random ใน workflow ไม่ใช่ secret)
+- Suspension happens at: a step hand-off, `sleep`, a webhook await — the state goes to the event log, resume continues from the same point
+- Secrets/tokens that must be unguessable → generate them in a step (seeded random in a workflow is not a secret)
 
 ### 4. Deploy Via Worlds
 
-> Goal: เลือก backend ให้ตรง environment
+> Goal: pick the backend matching the environment
 
-1. **Local** — default dev, `.workflow-data/`
-2. **Vercel** — zero config; durable storage + managed queue + dashboard observability + multi-region; **ต้องเปิด "Enable access to System Environment Variables"** ไม่งั้น `VERCEL_DEPLOYMENT_ID` หาย → fallback Local World → fail บน read-only FS
-3. **Custom** — `WORKFLOW_TARGET_WORLD=@workflow/world-postgres` + `DATABASE_URL=...` หรือ build World เอง
+1. **Local** — the dev default, `.workflow-data/`
+2. **Vercel** — zero config; durable storage + a managed queue + dashboard observability + multi-region; **you must enable "Enable access to System Environment Variables"**, otherwise `VERCEL_DEPLOYMENT_ID` is missing → it falls back to the Local World → fails on a read-only FS
+3. **Custom** — `WORKFLOW_TARGET_WORLD=@workflow/world-postgres` + `DATABASE_URL=...`, or build your own World
 
 ### 5. Inspect And Test
 
-> Goal: observe และ verify
+> Goal: observe and verify
 
 1. `npx workflow inspect runs` (local) / `--backend @workflow/world-postgres` (remote)
-2. `/run-dev` ให้ dev server รัน workflows จริง → `/run-test` e2e ผ่าน workflow entry
-3. v4 → v5: `npx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5` แล้วให้ agent migrate (v5: inline steps, batched writes, compressed payloads — ถึง ~80% compute cost บน Vercel)
+2. `/run-dev` so the dev server runs real workflows → `/run-test` e2e through the workflow entry
+3. v4 → v5: `npx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5`, then let the agent migrate (v5: inline steps, batched writes, compressed payloads — up to ~80% compute cost on Vercel)
 
 ## Rules
 
 ### 1. Determinism
 
-- Workflow fn ถูก replay หลายครั้ง — ห้าม side effects นอก steps; non-determinism (network, fs, time จริง) ไปอยู่ใน `"use step"` เท่านั้น
-- Pass-by-value เสมอ — mutate object ที่ส่งเข้า step ไม่มีผลกลับ workflow; return data แทน
+- A workflow fn is replayed many times — no side effects outside steps; non-determinism (network, fs, real time) goes into `"use step"` only
+- Always pass-by-value — mutating an object passed into a step has no effect back in the workflow; return data instead
 
 ### 2. Step Design
 
-- Step = idempotent ที่ดีที่สุด — retry 3x default อาจซ้ำ work; side-effect ข้างนอกต้อง dedup เอง
-- Long step → hand to queue เมื่อ inline budget หมด — ออกแบบเผื่อ
+- A step should be idempotent at best — the default 3x retry may duplicate work; side-effects coming from outside must be deduped
+- Long step → hand it to a queue if it exceeds the inline budget — avoid one super-long process
 
 ### 3. Deployment
 
-- Production บน Vercel = System Env Vars ON — จำขึ้นใจก่อน deploy
-- `WORKFLOW_TARGET_WORLD` + world-specific env ต้อง set ทั้ง build และ runtime
+- Production on Vercel = System Env Vars ON — check before every deploy
+- `WORKFLOW_TARGET_WORLD` + world-specific env must be set for both build and runtime
 
-- ใช้ /follow-my-techstack ก่อนเลือก orchestration tool
-- ใช้ /run-dev + /run-test verify run จริง
+- Use `/follow-my-techstack` to pick the orchestration tool
+- Use `/run-dev` + `/run-test` to verify real runs
 
 ## Expected Outcome
 
-- Workflow/step แยกชัด: orchestrator deterministic, steps idempotent + retryable
-- Deploy ได้ทั้ง local/Vercel/custom World; inspect runs ได้; resume หลัง failure ถูกต้อง
+- Workflow/step separated correctly: the orchestrator is deterministic, steps are idempotent + retryable
+- Deploy works correctly on local/Vercel/custom World; runs are inspectable; resume after failure really works

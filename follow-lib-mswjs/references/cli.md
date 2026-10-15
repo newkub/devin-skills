@@ -1,4 +1,4 @@
 | Command | Description | Options |
 |---|---|---|
-| `msw init <dir>` | สร้าง `mockServiceWorker.js` | --save (update package.json msw.workerDirectory) |
-| `msw init <dir> --save` | Init + save dir ใน package.json | - |
+| `msw init <dir>` | generates `mockServiceWorker.js` | --save (updates package.json msw.workerDirectory) |
+| `msw init <dir> --save` | init + save the dir in package.json | - |

@@ -8,7 +8,7 @@ related:
   - follow-tool-hk
   - list-git
   - refactor-commit
-  - deep-review
+  - deep-review-codebase
   - ship
 
 ---
@@ -147,7 +147,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ /follow-tool-hk ถ้าจำเป็น (เฉพาะ repo ที่ไม่ใช้ moonrepo — moon repos ใช้ `vcs.hooks`)
 - ใช้ /list-git-commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
 
 ## Merged Details

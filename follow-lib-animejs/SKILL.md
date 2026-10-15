@@ -1,6 +1,6 @@
 ---
 name: follow-lib-animejs
-description: ใช้ Anime.js v4 สร้าง DOM/CSS animations, timelines, staggers และ utilities บน web apps
+description: Use Anime.js v4 for DOM/CSS animations, timelines, staggers, and utilities in web apps
 argument-hint: "[scope]"
 related:
   - follow-lib-css
@@ -10,38 +10,38 @@ related:
 
 ## Goal
 
-ใช้ Anime.js v4 (latest v4.5.0) ในโปรเจกต์ด้วย ESM-first API สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และ maintainable
+Use Anime.js v4 (latest v4.5.0) in projects with the ESM-first API to build fast, efficient, and maintainable animations
 
 ## Scope
 
-ใช้สำหรับ:
-- DOM/CSS animations ด้วย `animate()`
-- ควบคุม sequence ด้วย `createTimeline()`
-- staggered animations ด้วย `stagger()`
-- utilities (`utils.set`, `utils.get`, `lerp`, `damp`, `engine`)
-- scroll (`onScroll`), drag (`createDraggable`), scope (`createScope`), SVG, text, WAAPI integrations
-- ใช้ร่วมกับ React, Vue, Svelte, และ plain JS
+Used for:
+- DOM/CSS animations with `animate()`
+- Sequence control with `createTimeline()`
+- Staggered animations with `stagger()`
+- Utilities (`utils.set`, `utils.get`, `lerp`, `damp`, `engine`)
+- Scroll (`onScroll`), drag (`createDraggable`), scope (`createScope`), SVG, text, WAAPI integrations
+- Working with React, Vue, Svelte, and plain JS
 
-ขอบเขต:
-- ใช้ skill นี้เมื่อต้องการ JS-driven animation (timelines, staggers, scroll/drag triggers, SVG morph)
-- ถ้าเป็น CSS transitions/animations ธรรมดาหรือ styling → ใช้ `/follow-lib-css` แทน
+Boundaries:
+- Use this skill for JS-driven animation (timelines, staggers, scroll/drag triggers, SVG morph)
+- For plain CSS transitions/animations or styling → use `/follow-lib-css` instead
 
 - Latest: `animejs@4.5.0` (verified 2026-09-13)
-- v5 beta: `animejs@beta` (`5.0.0-beta.2`) มี breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), function-based value callback arg ที่ 3 เปลี่ยนจาก `total` (Number) เป็น `targets` (Array), stagger `use` signature เปลี่ยนตาม, `matrix`/`matrix3d` animate ตรงไม่ได้
+- v5 beta: `animejs@beta` (`5.0.0-beta.2`) has breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), the 3rd callback arg of function-based values changes from `total` (Number) to `targets` (Array), the stagger `use` signature changes accordingly, `matrix`/`matrix3d` cannot be animated directly
 - References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง `animejs` และเลือก import style ที่เหมาะกับ bundle
+> Goal: install `animejs` and pick the import style that fits the bundle
 
 1. `bun add animejs` (runtime dependency)
-2. import สำหรับ v4:
+2. Imports for v4:
 
 ```javascript
 import { animate, createTimeline, stagger } from 'animejs';
 
-// หรือ import แบบ subpath เพื่อ tree-shaking
+// or subpath imports for tree-shaking
 import { animate } from 'animejs/animation';
 import { createTimeline } from 'animejs/timeline';
 import { createScope } from 'animejs/scope';
@@ -50,14 +50,14 @@ import { onScroll } from 'animejs/events';
 import { createSpring } from 'animejs/spring';
 ```
 
-3. ตรวจสอบ version: `bun pm ls animejs` หรือดู `package.json`
+3. Check the version: `bun pm ls animejs` or look at `package.json`
 
 ### 2. Learn Core API
 
-> Goal: เข้าใจ `animate()`, `createTimeline()` และ `utils` พื้นฐาน
+> Goal: understand `animate()`, `createTimeline()`, and the basic `utils`
 
 ```javascript
-// สร้าง animation
+// create an animation
 animate('.box', {
   x: 250,
   rotate: { from: -180 },
@@ -66,21 +66,21 @@ animate('.box', {
   ease: 'inOutQuint',
 });
 
-// Timeline
+// timeline
 const tl = createTimeline({
   defaults: { duration: 800, ease: 'outQuad' },
 });
 tl.add('.a', { x: 100 })
   .add('.b', { y: -50 }, '-=400');
 
-// Utilities
+// utilities
 import { utils } from 'animejs';
 utils.set('.box', { opacity: 0.5 });
 ```
 
 ### 3. Key Concepts
 
-> Goal: รู้จัก targets, tween parameters, callbacks และ stagger options
+> Goal: know targets, tween parameters, callbacks, and stagger options
 
 - `targets`: CSS selector, DOM elements, JS objects, array
 - Animatable properties: CSS, transforms, CSS variables, SVG attributes, HTML attributes, JS object properties
@@ -93,23 +93,23 @@ utils.set('.box', { opacity: 0.5 });
 
 ### 4. Apply Patterns And Best Practices
 
-> Goal: เขียน animation ที่ performant, accessible และ cleanup ถูกต้อง
+> Goal: write animations that are performant, accessible, and cleaned up correctly
 
-- ใช้ `transform` (translate/scale/rotate) และ `opacity` เป็นหลัก
-- หลีกเลี่ยง animate properties ที่ trigger layout (width, height, top, left)
-- ใช้ `will-change` บน elements ที่จะ animate แล้ว remove หลังเสร็จ
-- ใช้ `stagger()` สำหรับ group animations
-- กำหนด `composition: 'blend'` เมื่อต้องการรวม animation
-- ใช้ `revert()` หรือ `cancel()` เพื่อ cleanup
-- รองรับ `prefers-reduced-motion` เพื่อปิด/ลด animation
-- ใช้ subpath imports (`animejs/easings`, `animejs/svg`, `animejs/text`) เมื่อต้องการเฉพาะ module
-- v4.2+ deprecations: ใช้ `splitText()` แทน `text.split()`, ใช้ `spring()` แทน `createSpring()`, ใช้ `lerp()`/`damp()` แทน `interpolate()` (ถูกลบ), easings `linear()`/`irregular()`/`steps()`/`cubicBezier()` ต้อง import แยกจาก core
+- Prefer `transform` (translate/scale/rotate) and `opacity`
+- Avoid animating layout-triggering properties (width, height, top, left)
+- Set `will-change` on elements about to animate, then remove it after finishing
+- Use `stagger()` for group animations
+- Set `composition: 'blend'` when combining animations
+- Use `revert()` or `cancel()` for cleanup
+- Honor `prefers-reduced-motion` to disable or reduce animation
+- Use subpath imports (`animejs/easings`, `animejs/svg`, `animejs/text`) when only specific modules are needed
+- v4.2+ deprecations: use `splitText()` instead of `text.split()`, `spring()` instead of `createSpring()`, `lerp()`/`damp()` instead of `interpolate()` (removed); easings `linear()`/`irregular()`/`steps()`/`cubicBezier()` must be imported separately from core
 
 ### 5. Integrate With Frameworks
 
-> Goal: ใช้ `createScope()` จัดการ lifecycle/cleanup ใน React, Vue, Svelte
+> Goal: use `createScope()` for lifecycle/cleanup in React, Vue, Svelte
 
-React: ใช้ `createScope()` (official pattern) — scope จัดการ cleanup ทุก animation ภายใน
+React: use `createScope()` (official pattern) — the scope cleans up every animation inside it
 
 ```jsx
 import { useEffect, useRef } from 'react';
@@ -127,11 +127,11 @@ function Box() {
 }
 ```
 
-Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน lifecycle hook และ cleanup ด้วย `revert()` ใน `onUnmounted`/`onDestroy`
+Vue/Svelte: call `animate()` or `createScope()` in a lifecycle hook and clean up with `revert()` in `onUnmounted`/`onDestroy`
 
 ### 6. Reference And Troubleshoot
 
-> Goal: ใช้ official docs, changelog และ migration guide เมื่อติดปัญหา
+> Goal: use official docs, changelog, and the migration guide when stuck
 
 - official docs: https://animejs.com/documentation
 - releases/changelog: https://github.com/juliangarnier/anime/releases
@@ -139,25 +139,25 @@ Vue/Svelte: เรียก `animate()` หรือ `createScope()` ใน life
 
 ## Rules
 
-- ใช้ `bun add animejs` สำหรับ installation
-- import ESM: `import { animate, createTimeline, stagger } from 'animejs'`
-- ไม่ใช้ global `anime()` จาก v3
-- ใช้ `ease` แทน `easing`
-- ใช้ `createTimeline()` แทน `anime.timeline()`
-- ใช้ `stagger()` แทน v3 `stagger` syntax เก่า
-- ใช้ `transform` และ `opacity` เมื่อได้
-- ใช้ `will-change` อย่างระมัดระวัง
-- รองรับ `prefers-reduced-motion`
-- cleanup animation ด้วย `revert()` หรือ `cancel()`
-- ใช้ animations เพื่อเสริม UX ไม่ใช่ distraction
-- ใช้ /follow-lib-css ถ้าจำเป็น
-- ใช้ /follow-lib-react ถ้า integrate กับ React
+- Use `bun add animejs` for installation
+- Import ESM: `import { animate, createTimeline, stagger } from 'animejs'`
+- Do not use the v3 global `anime()`
+- Use `ease` instead of `easing`
+- Use `createTimeline()` instead of `anime.timeline()`
+- Use `stagger()` instead of the old v3 stagger syntax
+- Use `transform` and `opacity` where possible
+- Use `will-change` carefully
+- Honor `prefers-reduced-motion`
+- Clean up animations with `revert()` or `cancel()`
+- Use animations to enhance UX, not as a distraction
+- Use /follow-lib-css if needed
+- Use /follow-lib-react if integrating with React
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Animation ที่รวดเร็วและมีประสิทธิภาพ
-- Code ที่ maintainable และ consistent
-- UX ที่ดีและ accessible
-- Performance ที่ optimized
+- Fast, efficient animations
+- Maintainable, consistent code
+- Good, accessible UX
+- Optimized performance

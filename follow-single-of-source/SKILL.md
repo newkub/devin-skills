@@ -8,7 +8,7 @@ related:
   - new-skills
   - idea-merge
   - refactor
-  - follow-reusable
+  - use-lib-effective
   - review-devin-global-harness
   - update-references
   - update-config
@@ -26,7 +26,7 @@ Use when creating/editing skills, docs, config, or data that could become duplic
 - config values — defined once then injected/imported (env, tokens, versions)
 - docs — frequently changing facts (counts, versions, commands) have a single source
 - data/schema — one model definition derives types/forms/validation
-- reuse existing internal code before writing new (DRY) → `/follow-reusable`
+- reuse existing internal code before writing new (DRY) → `/use-lib-effective` `### 5`
 
 ## Execute
 

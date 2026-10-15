@@ -3,7 +3,6 @@ name: deep-retro
 description: Deep post-incident retrospective — find process-level root causes and actionable action items
 argument-hint: "[scope]"
 related:
-  - follow-incident-triage
   - deep-debug
   - analyze-root-cause-analysis
   - deep-thinking
@@ -21,7 +20,7 @@ Run a thorough post-incident / post-project retrospective to find process-level 
 
 Use after an incident, failed deployment, major bug, or project milestone, or when the team wants to review why what happened was even possible
 Not for debugging a live issue — use `/deep-debug` first
-Not for reviewing work with no incident — use `/deep-review` instead
+Not for reviewing work with no incident — use `/deep-review-codebase` instead
 
 ## Execute
 
@@ -126,7 +125,7 @@ Not for reviewing work with no incident — use `/deep-review` instead
 - If the issue is complex → split across several retro sessions
 - Finish with an action plan, not just a discussion
 
-- Use /follow-incident-triage if needed
+- Use /deep-debug `### 3. Triage Incident` if needed
 
 ## Expected Outcome
 

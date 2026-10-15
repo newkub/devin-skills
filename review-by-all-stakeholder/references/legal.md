@@ -22,9 +22,9 @@ Persona details for the `legal` category — merged from the original `workflows
 | Role | Focus | Workflow |
 |------|-------|----------|
 | legal-advisor | license compliance, third-party conflicts, IP risks | `### legal/legal-advisor` |
-| privacy-specialist | PII handling, consent, deletion → `/deep-review` | `### legal/privacy-specialist` |
-| compliance-advisor | regulatory controls, audit evidence → `/deep-review` | `### legal/compliance-advisor` |
-| risk-analyst | risk surface, failure modes, mitigations → `/deep-review` | `### legal/risk-analyst` |
+| privacy-specialist | PII handling, consent, deletion → `/deep-review-codebase` | `### legal/privacy-specialist` |
+| compliance-advisor | regulatory controls, audit evidence → `/deep-review-codebase` | `### legal/compliance-advisor` |
+| risk-analyst | risk surface, failure modes, mitigations → `/deep-review-codebase` | `### legal/risk-analyst` |
 
 2. อ่าน section `### legal/<role>` ในไฟล์นี้
 
@@ -85,7 +85,7 @@ Persona details for the `legal` category — merged from the original `workflows
 
 - ตรวจ breach/incident readiness — notification paths, incident logging, runbook สำหรับ data breach
 
-- Deep pass → `/deep-review` สำหรับ compliance review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ compliance review เชิงลึก
 
 
 
@@ -191,7 +191,7 @@ Persona details for the `legal` category — merged from the original `workflows
 
 - ตรวจ data export (right to access/portability) — endpoint export ข้อมูล user ครบถ้วน
 
-- Deep pass → `/deep-review` สำหรับ privacy compliance เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ privacy compliance เชิงลึก
 
 
 
@@ -233,7 +233,7 @@ Persona details for the `legal` category — merged from the original `workflows
 
 - ตรวจ failure modes — single points of failure, missing fallbacks, unhandled error paths ใน critical flows
 
-- ตรวจ security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass ไป `/deep-review`)
+- ตรวจ security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass ไป `/deep-review-codebase`)
 
 - ตรวจ operational risk — missing health checks, no graceful shutdown, unmonitored background jobs
 
@@ -245,7 +245,7 @@ Persona details for the `legal` category — merged from the original `workflows
 
 - ตรวจ mitigation coverage — rate limiting, circuit breakers, rollback paths, feature flags สำหรับ risky features
 
-- Deep pass → `/deep-review` สำหรับ risk assessment เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ risk assessment เชิงลึก
 
 
 

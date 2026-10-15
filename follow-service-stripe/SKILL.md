@@ -63,7 +63,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 
 1. Do `/follow-lib-unocss` for UnoCSS and HSL theme tokens
 2. Design cards for each plan with price, features, CTA
-3. Call `/deep-review` before deploying the pricing page
+3. Call `/deep-review-codebase` before deploying the pricing page
 4. Pass the price_id to the checkout session
 
 ### 4. Implement Checkout
@@ -219,7 +219,7 @@ Set/edit Stripe configuration — products, prices, webhook endpoints, customer 
 1. Enable the customer portal in dashboard settings and define the allowed features (cancel, update payment method)
 2. Set `return_url` to the app's billing page
 3. Before go live: replace test keys with live keys, confirm the webhook endpoint is HTTPS
-4. Do `/deep-review` domain `review-config` across test/live configs if needed
+4. Do `/deep-review-codebase` domain `review-config` across test/live configs if needed
 
 ###### 5. Verify
 
@@ -366,7 +366,7 @@ Confirm after setup/config that Stripe really connects — secret key valid, exp
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

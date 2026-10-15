@@ -1,6 +1,6 @@
 ---
 name: follow-lib-fast-check
-description: ใช้ fast-check สำหรับ property-based testing — arbitraries, shrinking, invariants
+description: Use fast-check for property-based testing — arbitraries, shrinking, invariants
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -11,80 +11,80 @@ related:
 
 ## Goal
 
-ใช้ fast-check สำหรับ property-based testing — arbitraries, shrinking, invariants
+Use fast-check for property-based testing — arbitraries, shrinking, invariants
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ `fast-check` — setup, เขียน property tests, model-based testing, debugging counterexamples
+Use when the task involves `fast-check` — setup, writing property tests, model-based testing, debugging counterexamples
 
-- ใช้ skill นี้สำหรับ property-based testing เท่านั้น — unit tests ทั่วไปทำ `/run-test` หรือ `/follow-tool-vitest`
-- `fast-check` เป็น test library — ติดตั้งเป็น devDependency และไม่มี standalone CLI (run ผ่าน test runner)
-- Latest: `fast-check@4.10.2` (verified 2026-09-24) — v4 ต้อง Node ≥12.17 / ES2020 และ drop deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) พร้อม include invalid dates และ null-prototype objects โดย default
+- Use this skill for property-based testing only — general unit tests go to `/run-test` or `/follow-tool-vitest`
+- `fast-check` is a test library — install as a devDependency and there is no standalone CLI (run via the test runner)
+- Latest: `fast-check@4.10.2` (verified 2026-09-24) — v4 requires Node ≥12.17 / ES2020 and drops deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) while including invalid dates and null-prototype objects by default
 - References: [apis](references/apis.md) 
 ## Execute
 
 ### 1. Install And Configure
 
-> Goal: ติดตั้ง `fast-check` และตั้งค่า run parameters
+> Goal: install `fast-check` and set run parameters
 
-1. รัน `bun add -D fast-check` — devDependency เท่านั้น ห้ามใส่ `dependencies`
-2. ติดตั้ง runner integration ตาม test framework: `bun add -D @fast-check/vitest` สำหรับ vitest (setup ดู `/follow-tool-vitest`), `@fast-check/jest` สำหรับ jest, `@fast-check/ava` สำหรับ ava
-3. ติดตั้ง `bun add -D @fast-check/poisoning` ถ้าต้องการตรวจ prototype pollution ระหว่าง tests
-4. ตั้ง global defaults ด้วย `fc.configureGlobal({ numRuns, seed })` หรือ env `FAST_CHECK_NUM_RUNS` / `FAST_CHECK_SEED`
-5. ตรวจ version ใน `package.json` — v4 API ต่างจาก v3 (deprecated arbitraries ถูกลบ)
+1. Run `bun add -D fast-check` — devDependency only, never put it in `dependencies`
+2. Install the runner integration matching the test framework: `bun add -D @fast-check/vitest` for vitest (setup: `/follow-tool-vitest`), `@fast-check/jest` for jest, `@fast-check/ava` for ava
+3. Install `bun add -D @fast-check/poisoning` if you need prototype-pollution checks during tests
+4. Set global defaults with `fc.configureGlobal({ numRuns, seed })` or the env vars `FAST_CHECK_NUM_RUNS` / `FAST_CHECK_SEED`
+5. Check the version in `package.json` — the v4 API differs from v3 (deprecated arbitraries removed)
 
 ### 2. Write Property Tests
 
-> Goal: เขียน property tests ที่ assert invariants
+> Goal: write property tests that assert invariants
 
-1. เขียน property ด้วย `fc.assert(fc.property(arb, (x) => invariant))` — invariant คือเงื่อนไขที่ต้องจริงเสมอ
-2. ใช้ `fc.asyncProperty(arb, async (x) => ...)` สำหรับ async code
-3. ใช้ `fc.pre(condition)` ภายใน property สำหรับ preconditions — skip inputs ที่ไม่เกี่ยวแทนการ generate เอง
-4. เลือก arbitraries ตาม domain: `fc.string()`, `fc.integer({ min, max })`, `fc.record()`, `fc.oneof()`, `fc.array()`
-5. ใช้ `fc.sample(arb, n)` เพื่อดูตัวอย่าง generated values ขณะ debug
-6. ใช้ `fc.statistics(property, classifier)` เพื่อวัด distribution ของ generated inputs
+1. Write a property with `fc.assert(fc.property(arb, (x) => invariant))` — the invariant is a condition that must always hold
+2. Use `fc.asyncProperty(arb, async (x) => ...)` for async code
+3. Use `fc.pre(condition)` inside the property for preconditions — skip irrelevant inputs instead of hand-generating
+4. Pick arbitraries by domain: `fc.string()`, `fc.integer({ min, max })`, `fc.record()`, `fc.oneof()`, `fc.array()`
+5. Use `fc.sample(arb, n)` to inspect generated values while debugging
+6. Use `fc.statistics(property, classifier)` to measure the distribution of generated inputs
 
 ### 3. Handle Failures And Shrinking
 
-> Goal: reproduce และแปลง counterexample เป็น regression test
+> Goal: reproduce and turn counterexamples into regression tests
 
-1. เมื่อ fail fast-check จะ shrink หา minimal counterexample อัตโนมัติ
-2. จด `seed` และ `path` จาก failure output — replay ด้วย `fc.assert(prop, { seed, path })` หรือ env `FAST_CHECK_SEED`
-3. แปลง counterexample เป็น unit test ธรรมดาเพื่อกัน regression ก่อนแก้ bug
+1. On failure, fast-check automatically shrinks to a minimal counterexample
+2. Record the `seed` and `path` from the failure output — replay with `fc.assert(prop, { seed, path })` or the env `FAST_CHECK_SEED`
+3. Convert the counterexample into a plain unit test to prevent regression before fixing the bug
 
 ### 4. Model-Based And Race Testing
 
-> Goal: test stateful systems และ concurrency
+> Goal: test stateful systems and concurrency
 
-1. ใช้ `fc.commands()` สำหรับ model-based testing — เปรียบเทียบ model vs real implementation ผ่าน command sequences
-2. ใช้ `fc.scheduler()` / scheduled helpers สำหรับ detect race conditions ใน async code
-3. ใช้ `it.prop` จาก `@fast-check/vitest` หรือ equivalent ของ runner ที่ใช้ สำหรับ integration โดยตรง
+1. Use `fc.commands()` for model-based testing — compare model vs real implementation through command sequences
+2. Use `fc.scheduler()` / scheduled helpers to detect race conditions in async code
+3. Use `it.prop` from `@fast-check/vitest` or the equivalent of your runner for direct integration
 
 ### 5. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` เพื่อ execute test suite ที่มี property tests
-3. ตรวจ official docs ล่าสุดที่ `https://fast-check.dev` ก่อนใช้ API ที่ไม่แน่ใจ
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` to execute the test suite containing the property tests
+3. Check the latest official docs at `https://fast-check.dev` before using an uncertain API
 
 ## Rules
 
-- property tests เสริม unit tests ไม่แทนที่ — ใช้กับ pure functions, serializers และ invariants
-- ตั้ง `numRuns` ให้สมดุลระหว่าง coverage กับเวลา (default 100; เพิ่มใน CI ได้ผ่าน `fc.configureGlobal` หรือ env `FAST_CHECK_NUM_RUNS`)
-- fixed seed ใน CI เพื่อ reproducibility — ระบุ `{ seed }` หรือ env `FAST_CHECK_SEED` เมื่อต้อง replay failure
-- compose arbitraries ด้วย `.map()`, `.filter()`, `.chain()` แทนการเขียน generator เอง
-- ห้ามใช้ deprecated arbitraries จาก v3 (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) — ถูกลบใน v4
+- Property tests complement unit tests, never replace them — use for pure functions, serializers, and invariants
+- Balance `numRuns` between coverage and time (default 100; increase in CI via `fc.configureGlobal` or env `FAST_CHECK_NUM_RUNS`)
+- Use a fixed seed in CI for reproducibility — specify `{ seed }` or env `FAST_CHECK_SEED` when replaying a failure
+- Compose arbitraries with `.map()`, `.filter()`, `.chain()` instead of writing generators by hand
+- Never use deprecated v3 arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) — removed in v4
 
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ใช้ `/follow-tool-vitest` ถ้าจำเป็น
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- Use `/follow-tool-vitest` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `fast-check` ติดตั้งเป็น devDependency และ integrate กับ test runner ของ project
-- Property tests assert invariants ถูกต้อง พร้อม arbitraries ที่ compose ได้
-- Failures reproduce ได้ด้วย `seed`/`path` และ counterexample ถูกแปลงเป็น regression tests
-- Lint, typecheck, tests ผ่าน
+- `fast-check` installed as a devDependency and integrated with the project's test runner
+- Property tests assert the right invariants with composable arbitraries
+- Failures reproduce via `seed`/`path` and counterexamples become regression tests
+- Lint, typecheck, tests pass

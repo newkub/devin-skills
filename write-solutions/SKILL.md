@@ -6,7 +6,7 @@ related:
   - analyze-root-cause-analysis
   - deep-research
   - reframe
-  - deep-review
+  - deep-review-codebase
   - update-devin-global-skills
   - resolve-errors
   - dont-over-engineer
@@ -50,7 +50,7 @@ Find the most suitable fixes
 
 Design a solution that fits the context
 
-1. Run `/deep-review` to design the structure
+1. Run `/deep-review-codebase` to design the structure
 2. Consider trade-offs and alternatives
 3. Set clear success criteria
 

@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-hotkeys` | 0.12.x | Hotkeys |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Hotkeys | `useHotkey` | modifiers `Mod`, sequences `G>G`, `HotkeysProvider` |

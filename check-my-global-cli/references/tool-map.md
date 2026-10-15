@@ -31,7 +31,7 @@
 | disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
 | copy-paste detection | `jscpd` | installed | `/review-code-quality` |
-| reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/follow-reusable` |
+| reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/use-lib-effective` `### 5` |
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-web`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors` |
 | markdown lint | `rumdl` | installed | `/check-*` docs |
@@ -45,7 +45,7 @@
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
 | structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
 | pretty diff | `delta` / `git-split-diffs` | installed | `/review-diff` |
-| .env lint | `dotenv-linter` | installed | `/deep-review` domain `review-config` |
+| .env lint | `dotenv-linter` | installed | `/deep-review-codebase` domain `review-config` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |
 
 ## Git And GitHub
@@ -134,7 +134,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| coding agents | `amp` / `codex` / `opencode` / `stakpak` | installed | `/use-subagents` |
+| coding agents | `amp` / `codex` / `opencode` / `stakpak` / `devin` / `qoder` | installed | `/follow-tool-opencode`, `/follow-tool-devin-cli`, `/follow-tool-qoder-cli`, `/use-subagents` |
 | skill installer | `skills` (npm) | installed | `/update-devin-global-skills` |
 | library docs | `ctx7` / Context7 MCP | installed | `/learn-from-web` |
 | shell history | `atuin` | installed | — |

@@ -9,88 +9,87 @@ related:
 
 ## Goal
 
-แสดงรายการ global hooks ที่ตั้งค่าไว้สำหรับ devin จาก config paths ทั่วไป
+List the global hooks configured for devin from common config paths
 
 ## Scope
 
-- ค้นหา hook configs ใน global paths
-- ค้นหา hook configs ใน project `.devin/hooks/`
-- รายงาน hook names, events, และ commands
-- รองรับรูปแบบ JSON, YAML, และ TypeScript
+- Search hook configs in global paths
+- Search hook configs in the project `.devin/hooks/`
+- Report hook names, events, and commands
+- Support JSON, YAML, and TypeScript formats
 
 ## Execute
 
 ### 1. Search Hook Configs
 
-> Goal: หาไฟล์ hook ที่มีอยู่
+> Goal: find existing hook files
 
-1. ค้นหาใน global paths:
+1. Search in global paths:
    - `C:\Users\Veerapong\.config\devin\hooks.json`
    - `C:\Users\Veerapong\.config\devin\hooks.yaml`
    - `C:\Users\Veerapong\.codeium\windsurf\hooks.json`
    - `C:\Users\Veerapong\.codeium\windsurf\hooks.yaml`
-2. ค้นหาใน project:
+2. Search in the project:
    - `.devin/hooks/*.ts`
    - `.devin/hooks/*.js`
    - `.devin/hooks/*.json`
    - `.devin/hooks.yaml`
-3. ถ้าไม่พบ → ระบุว่าไม่มี hooks ตั้งค่า
+3. If nothing is found → state that no hooks are configured
 
 ### 2. Parse Hooks
 
-> Goal: อ่านและแยกรายละเอียด
+> Goal: read and separate the details
 
-1. ถ้าเป็น JSON/YAML → ใช้ `read` แล้ว parse
-2. ถ้าเป็น TypeScript/JavaScript → ใช้ `read` และวิเคราะห์ event mapping
-3. ระบุแต่ละ hook:
-   - `event` (เช่น `user-prompt-submit`, `tool-call`, `session-start`)
-   - `command` หรือ `script`
+1. For JSON/YAML → use `read` then parse
+2. For TypeScript/JavaScript → use `read` and analyze the event mapping
+3. Identify each hook:
+   - `event` (e.g. `user-prompt-submit`, `tool-call`, `session-start`)
+   - `command` or `script`
    - `enabled`
 
 ### 3. Validate
 
-> Goal: ตรวจสอบความถูกต้อง
+> Goal: check correctness
 
-1. ตรวจ JSON/YAML syntax
-2. ตรวจ event ที่รองรับ
-3. ตรวจ command path มีอยู่จริง
-4. บันทึก hooks ที่ไม่ถูกต้อง
+1. Check JSON/YAML syntax
+2. Check the events are supported
+3. Check the command path really exists
+4. Record invalid hooks
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: summarize the results
 
-1. ทำ `/report` แสดง path, event, command, enabled
-2. ถ้าไม่มี hooks → report ว่าไม่มี global hooks ตั้งค่า
-3. ทำ `/suggest-next-action` ถ้าต้องแก้ไขหรือสร้าง
+1. Do `/report` showing path, event, command, enabled
+2. If there are no hooks → report that no global hooks are configured
+3. Do `/suggest-next-action` when something needs fixing or creating
 
 ## Rules
 
 ### 1. Read-Only
 
-- ไม่แก้ไข hook config
-- ถ้าต้องแก้ → แก้ไฟล์โดยตรงตาม permission
+- Do not modify hook configs
+- If a change is needed → edit the file directly per permission
 
 ### 2. Scope
 
-- ตรวจทั้ง global และ project hooks
-- ถ้า project ไม่มี `.devin/hooks/` → ระบุ global only
+- Check both global and project hooks
+- When the project has no `.devin/hooks/` → state global only
 
 ### 3. Privacy
 
-- ไม่ expose secrets หรือ sensitive commands
-- ถ้า hook command มี token → redact
+- Do not expose secrets or sensitive commands
+- When a hook command contains a token → redact it
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers)
-- ใช้ backticks สำหรับ paths, events, commands
-- รายงานเป็นตารางด้วย `/report`
+- Never use `**` bold
+- Use backticks for paths, events, commands
+- Report as a table via `/report`
 
 ## Expected Outcome
 
-- รายการ hooks ทั้งหมดที่ตั้งค่าไว้
-- รายละเอียด event, command, path
-- รายงาน hooks ที่ไม่ถูกต้อง
-- รายงานในรูปแบบตารางพร้อม action ถัดไป
-
+- The list of all configured hooks
+- Details: event, command, path
+- Invalid hooks reported
+- A table-format report with next actions

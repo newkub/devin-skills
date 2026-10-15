@@ -1,6 +1,6 @@
 ---
 name: follow-deterministic
-description: พัฒนาโปรเจกต์ด้วย deterministic programming พร้อม predictable outputs, no randomness
+description: Develop projects with deterministic programming — predictable outputs, no randomness
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
@@ -9,113 +9,113 @@ related:
 
 ## Goal
 
-พัฒนาโปรเจกต์ด้วย deterministic programming เพื่อให้โค้ดให้ผลลัพธ์เหมือนกันเสมอเมื่อ input เดิม
+Develop projects with deterministic programming so code always produces identical output for the same input
 
 ## Scope
 
-ใช้ `follow-deterministic` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (deterministic)
+Use `follow-deterministic` for tasks and workflows that must be deterministic
 
 ## Execute
 
 ### 1. Use Pure Functions
 
-> Goal: ฟังก์ชันให้ผลลัพธ์เดิมเสมอเมื่อ input เดิมไม่มี randomness
+> Goal: functions always return the same result for the same input, no randomness
 
-เขียนฟังก์ชันที่ deterministic เสมอ
+Always write deterministic functions
 
-1. หลีกเลี่ยง `randomness`: `Math.random()`, `Date.now()`, external entropy
-2. หลีกเลี่ยง `side effects`: I/O, network calls, mutations
-3. Return ค่าเดิมเสมอเมื่อ input เดิม
-4. ใช้ `seeded random` สำหรับ deterministic randomness
+1. Avoid `randomness`: `Math.random()`, `Date.now()`, external entropy
+2. Avoid `side effects`: I/O, network calls, mutations
+3. Always return the same value for the same input
+4. Use `seeded random` for deterministic randomness
 5. Isolate non-deterministic operations
 
 ### 2. Manage External State
 
-> Goal: ควบคุม external state ผ่าน dependency injection ไม่ให้กระทบ determinism
+> Goal: control external state via dependency injection so determinism is not broken
 
-จัดการ external state อย่างเหมาะสม
+Manage external state properly
 
-1. Inject external dependencies ผ่าน parameters
-2. ใช้ dependency injection สำหรับ external services
-3. Mock external state สำหรับ testing
-4. ใช้ deterministic mocks สำหรับ non-deterministic operations
-5. Document external dependencies อย่างชัดเจน
+1. Inject external dependencies through parameters
+2. Use dependency injection for external services
+3. Mock external state for testing
+4. Use deterministic mocks for non-deterministic operations
+5. Document external dependencies clearly
 
 ### 3. Control Time Dependencies
 
-> Goal: ควบคุม time-dependent operations ให้ reproducible ในทุกการรัน
+> Goal: control time-dependent operations so every run is reproducible
 
-จัดการ time-dependent operations
+Manage time-dependent operations
 
-1. ใช้ deterministic time sources สำหรับ testing
+1. Use deterministic time sources for testing
 2. Inject time/clock dependencies
-3. หลีกเลี่ยง reliance บน real-time
-4. ใช้ virtual time สำหรับ async operations
-5. Document time dependencies อย่างชัดเจน
+3. Avoid reliance on real time
+4. Use virtual time for async operations
+5. Document time dependencies clearly
 
 ### 4. Handle Concurrency
 
-> Goal: จัดการ concurrent operations ให้ลำดับผลลัพธ์คงที่ทุกครั้ง
+> Goal: keep concurrent operations producing results in a stable order every run
 
-จัดการ concurrent operations อย่าง deterministic
+Manage concurrent operations deterministically
 
-1. ใช้ deterministic ordering สำหรับ async operations
-2. หลีกเลี่ยง race conditions
-3. ใช้ synchronization mechanisms อย่างชัดเจน
-4. Test concurrent scenarios อย่างครบถ้วน
+1. Use deterministic ordering for async operations
+2. Avoid race conditions
+3. Use synchronization mechanisms explicitly
+4. Test concurrent scenarios thoroughly
 5. Document concurrency assumptions
 
 ### 5. Input Validation
 
-> Goal: ตรวจสอบ inputs ก่อน processing เพื่อให้ผลลัพธ์คาดเดาได้
+> Goal: validate inputs before processing so output is predictable
 
-ตรวจสอบ inputs อย่างเข้มงวด
+Validate inputs strictly
 
-1. Validate inputs ก่อน processing
-2. ใช้ type validation สำหรับ type safety
-3. Handle edge cases อย่างชัดเจน
+1. Validate inputs before processing
+2. Use type validation for type safety
+3. Handle edge cases explicitly
 4. Document input requirements
-5. Return predictable errors สำหรับ invalid inputs
+5. Return predictable errors for invalid inputs
 
 ### 6. Error Handling
 
-> Goal: จัดการ errors อย่าง consistent และคาดเดาได้ทุกครั้ง
+> Goal: handle errors consistently and predictably every time
 
-จัดการ errors อย่าง deterministic
+Handle errors deterministically
 
 1. Return consistent error types
-2. ใช้ typed errors สำหรับ predictability
+2. Use typed errors for predictability
 3. Document error scenarios
-4. Handle errors อย่าง consistent
-5. Test error paths อย่างครบถ้วน
+4. Handle errors consistently
+5. Test error paths thoroughly
 
 ### 7. Testing
 
-> Goal: ยืนยันว่าฟังก์ชันให้ผลลัพธ์เดิมเสมอผ่าน test cases
+> Goal: confirm functions always return the same result, via test cases
 
-เขียน tests สำหรับ deterministic behavior
+Write tests for deterministic behavior
 
 1. Test input/output pairs
-2. Test edge cases อย่างครบถ้วน
+2. Test edge cases thoroughly
 3. Mock external dependencies
-4. ใช้ deterministic test data
+4. Use deterministic test data
 5. Verify consistent outputs
 
 ## Rules
 
 ### 1. Pure Functions
 
-ฟังก์ชันต้อง deterministic เมื่อเป็นไปได้
+Functions must be deterministic where possible
 
-- ไม่ใช้ `randomness`
-- ไม่มี `side effects`
-- Return ค่าเดิมเมื่อ `input` เดิม
+- No `randomness`
+- No `side effects`
+- Same return value for the same `input`
 - Isolate `non-deterministic` operations
-- ใช้ `seeded random` เมื่อจำเป็น
+- Use `seeded random` when necessary
 
 ### 2. External State
 
-จัดการ external state อย่างเหมาะสม
+Manage external state properly
 
 - Inject `dependencies`
 - Use `dependency injection`
@@ -125,17 +125,17 @@ related:
 
 ### 3. Time Dependencies
 
-จัดการ time-dependent operations
+Manage time-dependent operations
 
 - Inject `time/clock`
-- Use `deterministic time` สำหรับ testing
+- Use `deterministic time` for testing
 - Avoid `real-time` reliance
 - Use `virtual time`
 - Document `time dependencies`
 
 ### 4. Concurrency
 
-จัดการ concurrent operations อย่าง deterministic
+Manage concurrent operations deterministically
 
 - Use `deterministic ordering`
 - Avoid `race conditions`
@@ -145,7 +145,7 @@ related:
 
 ### 5. Input Validation
 
-ตรวจสอบ inputs อย่างเข้มงวด
+Validate inputs strictly
 
 - Validate `inputs`
 - Use `type validation`
@@ -155,7 +155,7 @@ related:
 
 ### 6. Error Handling
 
-จัดการ errors อย่าง deterministic
+Handle errors deterministically
 
 - Return `consistent` error types
 - Use `typed errors`
@@ -163,14 +163,14 @@ related:
 - Handle `consistently`
 - Test `error paths`
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- Functions ที่ deterministic
-- Predictable outputs สำหรับ given inputs
-- Consistent behavior ทุกครั้ง
-- Tests ที่ reliable
-- Error handling ที่ predictable
-- Code ที่ debug ได้ง่าย
+- Deterministic functions
+- Predictable outputs for given inputs
+- Consistent behavior every run
+- Reliable tests
+- Error handling that is predictable
+- Code that is easy to debug
 - Reproducible behavior

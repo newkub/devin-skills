@@ -6,81 +6,81 @@ related:
   - follow-lib-vue
   - follow-lib-pinia
   - follow-lib-vueuse
-  - deep-impact
+  - deep-analyze
   - use-astgrep
-  - deep-review
+  - deep-review-codebase
   - report-before-after
 ---
 
 ## Goal
 
-Migrate Vue 2 application ไป Vue 3 อย่างปลอดภัย — options→composition, breaking changes (filters, `$emit`, `v-model`) และ incremental migration
+Migrate a Vue 2 application to Vue 3 safely — options→composition, breaking changes (filters, `$emit`, `v-model`), and incremental migration
 
 ## Scope
 
-ใช้เมื่อต้อง migrate Vue 2 codebase ไป Vue 3 — ครอบคลุม migration plan, build config, API changes และ incremental strategy (ต้อง rollback ได้ ไม่ทำพร้อม feature work)
+Use when migrating a Vue 2 codebase to Vue 3 — covers the migration plan, build config, API changes, and incremental strategy (must be rollback-able, not done alongside feature work)
 
 ## Execute
 
 ### 1. Plan Migration
 
-> Goal: ระบุ from→to, impact และ rollback path ก่อนเริ่ม
+> Goal: identify from→to, impact, and the rollback path before starting
 
-1. อ่าน official migration guide ที่ `https://v3-migration.vuejs.org` — ระบุ breaking changes ทั้งหมดที่กระทบ codebase
-2. ทำ `/deep-impact` และ `/scan-codebase` — map จุดที่ใช้ Vue 2 APIs: filters, `$listeners`, `$children`, `v-model` เดิม, event bus, `Vue.extend`
-3. เขียน rollback path ชัดเจน — แยก migration commits ต่อ step ให้ bisect ได้
-4. ถ้า scope ไม่ชัด → stop และ report
+1. Read the official migration guide at `https://v3-migration.vuejs.org` — identify every breaking change that affects the codebase
+2. Do `/deep-analyze` and `/scan-codebase` — map the places using Vue 2 APIs: filters, `$listeners`, `$children`, the old `v-model`, event bus, `Vue.extend`
+3. Write a clear rollback path — split migration commits per step so it's bisectable
+4. If the scope isn't clear → stop and report
 
 ### 2. Upgrade Build And Dependencies
 
-> Goal: migrate config → deps ก่อน code
+> Goal: migrate config → deps before code
 
-1. อัปเกรด `vue` เป็น v3 และ `@vue/compat` (migration build) ถ้าต้อง incremental
-2. อัปเกรด ecosystem: `vue-router` 4, `pinia` (แทน Vuex) หรือ `vuex` 4, build tool เป็น Vite
-3. ตั้ง compat config `compatConfig: { MODE: 3 }` และ per-feature flags ตาม warnings
-4. แยก commit: deps/config → ไม่ผสมกับ code changes
+1. Upgrade `vue` to v3 and `@vue/compat` (the migration build) if you need incremental
+2. Upgrade the ecosystem: `vue-router` 4, `pinia` (instead of Vuex) or `vuex` 4, and the build tool to Vite
+3. Set the compat config `compatConfig: { MODE: 3 }` and per-feature flags according to the warnings
+4. Separate commits: deps/config → don't mix with code changes
 
 ### 3. Migrate Code Patterns
 
-> Goal: แปลง Vue 2 APIs เป็น Vue 3 ทีละ pattern
+> Goal: convert Vue 2 APIs to Vue 3 one pattern at a time
 
-1. Options → Composition: แปลง `data`/`methods`/`computed`/`watch` เป็น `<script setup>` + `ref`/`computed`/`watch` — ทำทีละ component หรือใช้ codemod (`/use-astgrep`, `/migration-with-astgrep`)
-2. Breaking changes หลัก:
-   - Filters ถูกลบ — แปลง `{{ x | filter }}` เป็น method/computed
-   - `v-model`: `modelValue` prop + `update:modelValue` event แทน `value`/`input`; `.sync` → `v-model:propName`
-   - `$listeners` merge เข้า `$attrs` — component ใช้ `emits` declaration
-   - `$emit` → `defineEmits()` ใน setup
-   - Event bus → ใช้ external emitter (เช่น `mitt`) หรือ Pinia
-   - `Vue.use`/`Vue.mixin`/`Vue.component` → `app.*` APIs บน `createApp` instance
-3. Global API: `new Vue()` → `createApp(App)`, mount ด้วย `app.mount('#app')`
+1. Options → Composition: convert `data`/`methods`/`computed`/`watch` to `<script setup>` + `ref`/`computed`/`watch` — do it one component at a time or use a codemod (`/use-astgrep`, `/migration-with-astgrep`)
+2. Main breaking changes:
+   - Filters are removed — convert `{{ x | filter }}` to a method/computed
+   - `v-model`: a `modelValue` prop + an `update:modelValue` event instead of `value`/`input`; `.sync` → `v-model:propName`
+   - `$listeners` merges into `$attrs` — the component uses an `emits` declaration
+   - `$emit` → `defineEmits()` in setup
+   - Event bus → use an external emitter (e.g. `mitt`) or Pinia
+   - `Vue.use`/`Vue.mixin`/`Vue.component` → `app.*` APIs on the `createApp` instance
+3. Global API: `new Vue()` → `createApp(App)`, mount with `app.mount('#app')`
 
 ### 4. Remove Compat And Finalize
 
-> Goal: ปิด compat mode เมื่อ warnings หมด
+> Goal: turn off compat mode once the warnings are gone
 
-1. แก้ compat warnings ทั้งหมดก่อน — ค่อยๆ flip feature flags เป็น 3
-2. ลบ `@vue/compat` เมื่อไม่มี warnings เหลือ
-3. ทำ `/deep-review` เพื่อเช็ค Vue 2 APIs ค้าง
+1. Fix all compat warnings first — gradually flip the feature flags to 3
+2. Remove `@vue/compat` when there are no warnings left
+3. Do `/deep-review-codebase` to check for leftover Vue 2 APIs
 
 ### 5. Verify
 
-> Goal: lint/typecheck/tests และ runtime smoke test ผ่าน
+> Goal: lint/typecheck/tests and a runtime smoke test pass
 
-1. รัน lint, typecheck, tests ทั้งหมด
-2. runtime smoke test ทุก route/feature หลัก
-3. ถ้าค้าง → สร้าง TODO list ชัดเจน; เสร็จ → `/report-before-after` แล้ว report
+1. Run all lint, typecheck, and tests
+2. Runtime smoke test every main route/feature
+3. If anything is left → create a clear TODO list; when done → `/report-before-after`, then report
 
 ## Rules
 
-- Incremental เท่านั้น — ใช้ `@vue/compat` ถ้า codebase ใหญ่ ห้าม big-bang rewrite
-- แยก commit ต่อ step — ห้ามผสม migration กับ feature work
-- ใช้ codemods/ast-grep แทน manual edit เมื่อมี
-- Composition API เป็นเป้าหมายสุดท้าย — Options API ที่เหลือระหว่าง migrate ต้องมี plan
-- ใช้ `/follow-lib-vue` สำหรับ Vue 3 target standards
+- Incremental only — use `@vue/compat` for a large codebase, never a big-bang rewrite
+- Separate commit per step — never mix migration with feature work
+- Use codemods/ast-grep instead of manual edits when available
+- The Composition API is the final target — any remaining Options API during migration must have a plan
+- Use `/follow-lib-vue` for the Vue 3 target standards
 
 ## Expected Outcome
 
-- Application รันบน Vue 3 โดยไม่มี compat warnings
-- Vue 2 APIs (filters, `$listeners`, event bus, `.sync`) ถูกแปลงครบ
-- Tests/lint/typecheck ผ่านทั้งหมด
-- Migration commits แยกชัดเจน bisect ได้
+- The application runs on Vue 3 with no compat warnings
+- Vue 2 APIs (filters, `$listeners`, event bus, `.sync`) are fully converted
+- Tests/lint/typecheck all pass
+- Migration commits are cleanly separated and bisectable

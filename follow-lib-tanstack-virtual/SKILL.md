@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-virtual
-description: ใช้ TanStack Virtual ครบวงจร — lists, window scroll, grids, dynamic sizes, infinite scroll, table rows
+description: Use TanStack Virtual end to end — lists, window scroll, grids, dynamic sizes, infinite scroll, table rows
 argument-hint: "[framework] [mode]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,20 +11,20 @@ related:
 
 ## Goal
 
-ใช้ TanStack Virtual (v3) ครบ — virtualize element lists: scroll container, window virtualizer, grids, dynamic measurement, infinite scroll, table row virtualization
+Use TanStack Virtual (v3) fully — virtualize element lists: scroll container, window virtualizer, grids, dynamic measurement, infinite scroll, table row virtualization
 
 ## Scope
 
-ใช้เมื่อ render items จำนวนมาก (100+) — lists, table rows, grids, chat feeds; lists สั้นไม่จำเป็น (overhead > benefit)
+Use when rendering many items (100+) — lists, table rows, grids, chat feeds; short lists don't need it (overhead > benefit)
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
 ### 1. Install
 
 ```bash
-bun add @tanstack/react-virtual   # มี solid/vue/svelte variants
+bun add @tanstack/react-virtual   # solid/vue/svelte variants available
 ```
 
 ### 2. List Virtualizer
@@ -34,8 +34,8 @@ const parentRef = useRef<HTMLDivElement>(null)
 const virtualizer = useVirtualizer({
   count: items.length,
   getScrollElement: () => parentRef.current,
-  estimateSize: () => 40,    // px ประมาณ
-  overscan: 5,               // render เผื่อนอก viewport
+  estimateSize: () => 40,    // approximate px
+  overscan: 5,               // render extra beyond the viewport
 })
 
 return (
@@ -54,19 +54,19 @@ return (
 
 ### 3. Modes
 
-> Goal: เลือก virtualizer ตรง layout
+> Goal: pick the virtualizer matching the layout
 
-1. **Fixed container** — `useVirtualizer` + scroll element (ข้างบน)
-2. **Window scroll** — `useWindowVirtualizer` เมื่อ scroll ที่ window/document
-3. **Grid 2 มิติ** — row + column virtualizer คู่กัน (หรือ `lanes` สำหรับ masonry)
-4. **Dynamic heights** — `measureElement` ref + `data-index` (ข้างบน) — เหมาะ chat feeds/cards
-5. **Sticky headers** — ตรวจ `vItem.lane`/sticky patterns ใน docs
+1. **Fixed container** — `useVirtualizer` + a scroll element (above)
+2. **Window scroll** — `useWindowVirtualizer` when scrolling on the window/document
+3. **2D grid** — pair a row + column virtualizer (or `lanes` for masonry)
+4. **Dynamic heights** — `measureElement` ref + `data-index` (above) — good for chat feeds/cards
+5. **Sticky headers** — check the `vItem.lane`/sticky patterns in the docs
 
 ### 4. Patterns
 
-> Goal: composition กับ libs อื่น
+> Goal: composition with other libs
 
-1. **Infinite scroll**: tail virtual item + `useInfiniteQuery` (`follow-query`) — `fetchNextPage` เมื่อ index ใกล้จบ:
+1. **Infinite scroll**: tail virtual item + `useInfiniteQuery` (`follow-query`) — call `fetchNextPage` when the index nears the end:
 
    ```ts
    const lastItem = virtualItems[virtualItems.length - 1]
@@ -75,27 +75,27 @@ return (
    }, [lastItem?.index])
    ```
 
-2. **Table rows**: virtualize tbody ของ `follow-table` — spacer rows + `translateY`
-3. **Keyboard nav**: `virtualizer.scrollToIndex(i)` สำหรับ active-item scroll-into-view
-4. **Padding/gap**: `paddingStart`/`gap` options — ไม่ใส่ margin บน items
+2. **Table rows**: virtualize the tbody of `follow-table` — spacer rows + `translateY`
+3. **Keyboard nav**: `virtualizer.scrollToIndex(i)` for active-item scroll-into-view
+4. **Padding/gap**: `paddingStart`/`gap` options — don't put margin on the items
 
 ### 5. Verify
 
 1. `/run-typecheck` + `/run-test`
-2. DevTools: DOM nodes เท่า viewport+overscan, scroll recycle ถูก
-3. 10k+ items smooth, dynamic heights ไม่ jump
-4. ถ้า fail → `/resolve-errors` max 3 รอบ
+2. DevTools: DOM nodes equal viewport+overscan, scroll recycling is correct
+3. 10k+ items stay smooth, dynamic heights don't jump
+4. If it fails → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- Scroll container ต้อง fixed height + `overflow: auto`
-- `estimateSize` ใกล้จริง — ผิดมาก scrollbar กระโดดตอน measure
-- `vItem.key` เป็น React key — ห้ามใช้ `vItem.index` เมื่อ items reorder
-- Items ห้ามมี margin — ใช้ `gap` option หรือ padding ภายใน
-- `measureElement` ต้องมี `data-index` คู่กัน
+- The scroll container must have a fixed height + `overflow: auto`
+- `estimateSize` close to reality — a big error makes the scrollbar jump during measurement
+- Use `vItem.key` as the React key — never `vItem.index` when items reorder
+- Items must not have margin — use the `gap` option or internal padding
+- `measureElement` must be paired with `data-index`
 
 ## Expected Outcome
 
-- Large lists render เร็ว DOM ถูกจำกัด
-- Window/grid/dynamic/infinite modes ใช้ถูกจุด
-- Integration กับ Query/Table ทำงาน
+- Large lists render fast with a bounded DOM
+- Window/grid/dynamic/infinite modes used in the right places
+- Integration with Query/Table works

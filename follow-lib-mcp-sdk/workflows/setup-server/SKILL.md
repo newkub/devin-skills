@@ -12,26 +12,26 @@ related:
 
 ## Goal
 
-สร้าง MCP server ด้วย `@modelcontextprotocol/sdk` — `McpServer` instance, tools/resources/prompts registration พื้นฐาน
+Create an MCP server with `@modelcontextprotocol/sdk` — the `McpServer` instance and basic tools/resources/prompts registration
 
 ## Scope
 
-ใช้เมื่อต้อง setup MCP server ครั้งแรก — ครอบคลุม install, server instance, `registerTool`/`registerResource`/`registerPrompt` และ smoke test ด้วย MCP Inspector
+Use when setting up an MCP server for the first time — covers install, the server instance, `registerTool`/`registerResource`/`registerPrompt`, and a smoke test with the MCP Inspector
 
 ## Execute
 
 ### 1. Install SDK
 
-> Goal: ติดตั้ง SDK และเตรียม project
+> Goal: install the SDK and prepare the project
 
-1. ติดตั้ง `bun add @modelcontextprotocol/sdk` และ `zod` สำหรับ input schemas
-2. ถ้ามีอยู่แล้ว → verify version เท่านั้น (idempotent)
-3. สร้าง entry file เช่น `src/server.ts` หรือ `src/index.ts`
-4. ถ้าไม่แน่ใจ API → ดู official docs ที่ `https://modelcontextprotocol.io` หรือ GitHub repo ของ SDK
+1. install `bun add @modelcontextprotocol/sdk` plus `zod` for input schemas
+2. if already present → just verify the version (idempotent)
+3. create an entry file such as `src/server.ts` or `src/index.ts`
+4. if unsure about the API → check the official docs at `https://modelcontextprotocol.io` or the SDK's GitHub repo
 
 ### 2. Create McpServer Instance
 
-> Goal: สร้าง server instance พื้นฐาน
+> Goal: create the basic server instance
 
 ```ts
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
@@ -42,48 +42,48 @@ const server = new McpServer({
 })
 ```
 
-1. ระบุ `name` และ `version` ชัดเจน — version ให้ตรง spec
-2. instance เดียวต่อ server — register capabilities ทั้งหมดบน instance นี้
+1. specify `name` and `version` clearly — keep the version matching the spec
+2. one instance per server — register all capabilities on this instance
 
 ### 3. Register Tools And Resources
 
 > Goal: register tools, resources, prompts
 
-1. `server.registerTool(name, { description, inputSchema }, handler)` — inputSchema เป็น Zod raw shape; คืน handle สำหรับ `.update()`/`.remove()` (shorthand `server.tool()` ยังใช้ได้)
-2. Handler return `{ content: [{ type: 'text', text }] }` format เสมอ — errors เป็น `{ isError: true, content: [...] }` ไม่ throw
-3. `server.registerResource(name, uri, { description }, handler)` สำหรับ resources
-4. `server.registerPrompt(name, { description, argsSchema }, handler)` สำหรับ prompts
-5. ทุก tool/prompt ต้องมี `description` ชัดเจน — LLM ใช้เลือก tool
+1. `server.registerTool(name, { description, inputSchema }, handler)` — inputSchema is a Zod raw shape; returns a handle for `.update()`/`.remove()` (the shorthand `server.tool()` still works)
+2. handlers always return the `{ content: [{ type: 'text', text }] }` format — errors become `{ isError: true, content: [...] }`, don't throw
+3. `server.registerResource(name, uri, { description }, handler)` for resources
+4. `server.registerPrompt(name, { description, argsSchema }, handler)` for prompts
+5. every tool/prompt needs a clear `description` — the LLM uses it to pick the tool
 
 ### 4. Connect Transport
 
-> Goal: เชื่อม transport ให้ server รันได้
+> Goal: wire the transport so the server runs
 
 1. Local: `StdioServerTransport` — `await server.connect(new StdioServerTransport())`
-2. Remote: `StreamableHTTPServerTransport` — HTTP+SSE transport deprecated (backward compat เท่านั้น)
-3. รายละเอียด transport/deploy → ทำ workflow `deploy-mcp`
+2. Remote: `StreamableHTTPServerTransport` — HTTP+SSE transport deprecated (backward compat only)
+3. transport/deploy details → run the `deploy-mcp` workflow
 
 ### 5. Verify With Inspector
 
-> Goal: ทดสอบ server ด้วย MCP Inspector
+> Goal: test the server with the MCP Inspector
 
-1. รัน `bunx @modelcontextprotocol/inspector <command>` ชี้ไปที่ server entry
-2. ทดสอบ list tools, call tool, read resource ใน Inspector UI
-3. ทำ `/run-verify` และ `/run-test` สำหรับ lint/typecheck/unit tests
-4. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. run `bunx @modelcontextprotocol/inspector <command>` pointed at the server entry
+2. test listing tools, calling a tool, and reading a resource in the Inspector UI
+3. run `/run-verify` and `/run-test` for lint/typecheck/unit tests
+4. if it breaks → run `/resolve-errors` max 3 rounds then stop and report
 
 ## Rules
 
-- ทุก tool ต้องมี `description` ชัดเจน — LLM ใช้เลือก tool
-- return `{ content: [{ type: 'text', text }] }` format เสมอ
-- handle errors เป็น `isError: true` response ไม่ throw
-- define inputSchema ด้วย zod raw shape เสมอ
-- ใช้ `/follow-lib-mcp-sdk` สำหรับ full reference และ elicitation
-- ใช้ `/run-install` ถ้าต้องรัน install ผ่าน runner skill
+- every tool must have a clear `description` — the LLM uses it to pick the tool
+- always return the `{ content: [{ type: 'text', text }] }` format
+- handle errors as `isError: true` responses, don't throw
+- always define inputSchema as a zod raw shape
+- use `/follow-lib-mcp-sdk` for the full reference and elicitation
+- use `/run-install` if the install must go through a runner skill
 
 ## Expected Outcome
 
-- MCP server รันได้ผ่าน stdio transport
-- Tools/resources/prompts register ครบและเรียกผ่าน Inspector ได้
-- Errors return `isError` responses ถูก format
-- Lint/typecheck/tests ผ่าน
+- the MCP server runs over the stdio transport
+- tools/resources/prompts are fully registered and callable through the Inspector
+- errors return properly formatted `isError` responses
+- lint/typecheck/unit tests pass

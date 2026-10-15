@@ -1,26 +1,26 @@
 ---
 name: follow-lib-better-auth
-description: ใช้งาน Better Auth สำหรับ authentication และ authorization
+description: Use Better Auth for authentication and authorization
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-lib-jose
   - follow-lib-simplewebauthn
 ---
 
 ## Goal
 
-ตั้งค่า Better Auth เวอร์ชันล่าสุดสำหรับ type-safe authentication และ authorization ใน TypeScript projects
+Set up the latest Better Auth for type-safe authentication and authorization in TypeScript projects
 
 ## Scope
 
-ใช้กับ Next.js, Nuxt, SvelteKit, SolidStart, Hono, Elysia, TanStack Start, Express, Cloudflare Workers, Expo หรือ backend ใดๆ ที่รองรับ TypeScript
+Works with Next.js, Nuxt, SvelteKit, SolidStart, Hono, Elysia, TanStack Start, Express, Cloudflare Workers, Expo, or any TypeScript-capable backend
 
-ขอบเขต:
-- ใช้ skill นี้เมื่อต้องการ auth framework ครบวงจร (session, providers, plugins, adapters)
-- ถ้าต้องการแค่ JWT sign/verify → ใช้ `/follow-lib-jose` แทน
-- ถ้าต้องการแค่ WebAuthn/passkey โดยไม่ใช้ auth framework → ใช้ `/follow-lib-simplewebauthn` แทน
-- ถ้าต้อง review auth design/security ของ code ที่มีอยู่ → ใช้ `/deep-review`
+Boundaries:
+- Use this skill when a full auth framework is needed (sessions, providers, plugins, adapters)
+- For JWT sign/verify only → use `/follow-lib-jose` instead
+- For WebAuthn/passkeys without an auth framework → use `/follow-lib-simplewebauthn` instead
+- To review existing auth design/security → use `/deep-review-codebase`
 
 - Latest: `better-auth@1.7.5` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -31,95 +31,95 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-auth/SKILL.md` — install, `auth.ts`, database adapter | Providers | `workflows/config-providers/SKILL.md` — social/email plugins config 
 ### 1. Install
 
-> Goal: ติดตั้ง Better Auth และ database adapter
+> Goal: install Better Auth and a database adapter
 
-1. รัน `bun add better-auth` (หรือ `pnpm add better-auth` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/better-auth` (ปัจจุบัน v1.7.4, verified 2026-09-16)
-3. ติดตั้ง database adapter ถ้าไม่ใช้ built-in Kysely (เช่น `@better-auth/prisma-adapter`, `@better-auth/drizzle-adapter`)
-4. ตั้งค่า environment variables `BETTER_AUTH_SECRET` และ `BETTER_AUTH_URL`
-5. ใช้ `bunx auth@latest init` สำหรับ scaffold Next.js project (optional)
+1. Run `bun add better-auth` (or `pnpm add better-auth` per the project's package manager)
+2. Check the latest version at `https://www.npmjs.com/package/better-auth` (currently v1.7.4, verified 2026-09-16)
+3. Install a database adapter if not using the built-in Kysely (e.g. `@better-auth/prisma-adapter`, `@better-auth/drizzle-adapter`)
+4. Set the `BETTER_AUTH_SECRET` and `BETTER_AUTH_URL` environment variables
+5. Use `bunx auth@latest init` to scaffold a Next.js project (optional)
 
 ### 2. Configure
 
-> Goal: สร้าง auth config พร้อม plugins และ session settings
+> Goal: create the auth config with plugins and session settings
 
-1. สร้างไฟล์ `auth.ts` ด้วย `betterAuth()` และ export ชื่อ `auth` หรือ default export
-2. กำหนด database โดยตรง (เช่น `new Database('./sqlite.db')`, `new Pool({...})`) หรือผ่าน adapter
-3. เปิดใช้ features เช่น `emailAndPassword: { enabled: true }` หรือ `socialProviders`
-4. เพิ่ม plugins ที่ต้องการใน `plugins: [...]` (เช่น `twoFactor()`, `organization()`, `passkey()`)
-5. ตั้งค่า `trustedOrigins` ให้เข้มงวด
-6. ใช้ `bunx auth@latest generate` สร้าง schema หรือ `bunx auth@latest migrate` สำหรับ built-in Kysely adapter
+1. Create `auth.ts` using `betterAuth()` and export it as `auth` or as the default export
+2. Provide the database directly (e.g. `new Database('./sqlite.db')`, `new Pool({...})`) or through an adapter
+3. Enable features such as `emailAndPassword: { enabled: true }` or `socialProviders`
+4. Add the needed plugins in `plugins: [...]` (e.g. `twoFactor()`, `organization()`, `passkey()`)
+5. Set `trustedOrigins` strictly
+6. Use `bunx auth@latest generate` for the schema, or `bunx auth@latest migrate` with the built-in Kysely adapter
 
 ### 3. Integrate
 
-> Goal: เชื่อมต่อ auth กับ frontend และ backend routes
+> Goal: wire auth into the frontend and backend routes
 
-1. สร้าง API route สำหรับ auth handler ตาม framework (เช่น `toNextJsHandler(auth)`, `toElysiaHandler(auth)`, mount `/api/auth/*`)
-2. ใช้ `createAuthClient` จาก `better-auth/react` (หรือ `/vue`, `/svelte`, `/solid`, `/client`) ใน frontend
-3. ใช้ `authClient.signIn.email()`, `authClient.signUp.email()`, `authClient.signOut()` และ `authClient.useSession()`
-4. จัดการ roles/permissions ผ่าน plugins เช่น `admin` หรือ `organization`
+1. Create the API route for the auth handler per framework (e.g. `toNextJsHandler(auth)`, `toElysiaHandler(auth)`, mount `/api/auth/*`)
+2. Use `createAuthClient` from `better-auth/react` (or `/vue`, `/svelte`, `/solid`, `/client`) in the frontend
+3. Use `authClient.signIn.email()`, `authClient.signUp.email()`, `authClient.signOut()`, and `authClient.useSession()`
+4. Handle roles/permissions via plugins such as `admin` or `organization`
 
 ### 4. Secure
 
-> Goal: รักษาความปลอดภัยของ auth flow
+> Goal: keep the auth flow secure
 
-1. ใช้ environment variables สำหรับ `BETTER_AUTH_SECRET` ขั้นต่ำ 32 ตัวอักษรด้วย entropy สูง
-2. กำหนด `trustedOrigins` อย่างเข้มงวด
-3. ไม่ expose admin endpoints หรือ debug endpoints โดยไม่จำเป็น
-4. ใช้ `https` ใน production
+1. Use an environment variable for `BETTER_AUTH_SECRET` — at least 32 high-entropy characters
+2. Define `trustedOrigins` strictly
+3. Never expose admin or debug endpoints unnecessarily
+4. Use `https` in production
 
 ### 5. Test
 
-> Goal: ทดสอบ auth flows และ protected routes
+> Goal: test auth flows and protected routes
 
-1. ทดสอบ sign in / sign up
-2. ทดสอบ protected routes
-3. ตรวจสอบ session refresh
-4. ทดสอบ social providers ถ้าเปิดใช้
+1. Test sign in / sign up
+2. Test protected routes
+3. Verify session refresh
+4. Test social providers if enabled
 
 ## Rules
 
 ### 1. Security
 
-- ใช้ environment variables สำหรับ secrets
-- กำหนด `trustedOrigins` อย่างเข้มงวด
-- ไม่ expose admin endpoints โดยไม่จำเป็น
-- ใช้ HTTPS ใน production
+- Use environment variables for secrets
+- Define `trustedOrigins` strictly
+- Do not expose admin endpoints unnecessarily
+- Use HTTPS in production
 
 ### 2. Type Safety
 
-- ใช้ type-safe client (`better-auth/react`, `/vue`, `/svelte`, `/solid`, `/client`)
-- กำหนด session options อย่างถูกต้อง
+- Use the type-safe client (`better-auth/react`, `/vue`, `/svelte`, `/solid`, `/client`)
+- Define session options correctly
 
 ### 3. Database
 
-- เลือก adapter ที่ตรงกับ ORM ที่ project ใช้
-- รัน `bunx auth@latest generate` หรือ `bunx auth@latest migrate` ก่อน test
+- Pick the adapter matching the project's ORM
+- Run `bunx auth@latest generate` or `bunx auth@latest migrate` before testing
 
 ### 4. Framework Integration
 
-- ใช้ handler ที่ framework จัดเตรียมไว้ถ้ามี
-- mount auth handler ที่ base path เดียวกันเสมอ
+- Use the handler prepared by the framework when one exists
+- Always mount the auth handler at the same base path
 
 ### 5. Plugins
 
-- เปิดเฉพาะ plugins ที่จำเป็น
-- ติดตั้ง client plugin counterpart ถ้า plugin ต้องการ (เช่น `twoFactorClient`)
+- Enable only the necessary plugins
+- Install the client plugin counterpart when a plugin requires it (e.g. `twoFactorClient`)
 
 ### 6. Upgrade
 
-- อัปเกรด `better-auth` และ `@better-auth/*` พร้อมกัน
-- อ่าน migration guide ก่อน upgrade major version (เช่น v1.7 มี breaking changes สำหรับ OAuth, MCP, SCIM)
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-lib-jose ถ้าจำเป็น
-- ใช้ /follow-lib-simplewebauthn ถ้าจำเป็น
+- Upgrade `better-auth` and `@better-auth/*` together
+- Read the migration guide before a major upgrade (e.g. v1.7 has breaking changes for OAuth, MCP, SCIM)
+- Use /deep-review-codebase if needed
+- Use /follow-lib-jose if needed
+- Use /follow-lib-simplewebauthn if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Auth flow ทำงานถูกต้อง
-- Type safety ครบ
-- Session security ผ่าน
-- Database schema ตรงกับ Better Auth config
-- Protected routes ทำงานถูกต้อง
+- Auth flows work correctly
+- Type-safe end to end
+- Session security passes
+- Database schema matches the Better Auth config
+- Protected routes behave correctly

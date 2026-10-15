@@ -2,21 +2,21 @@
 
 ## Do
 
-- แยก `workflows/<name>/index.ts` (orchestration) จาก `steps.ts`/`steps/` (work) + `shared/` สำหรับ steps ที่ใช้ร่วม — ลด bundler bugs
-- ทำ steps ให้ idempotent — retry 3x อาจรันซ้ำ; charge/email/webhook side-effects ต้อง dedup key
-- Return data จาก step เสมอ — pass-by-value, mutation ไม่กลับ workflow
-- ใช้ `sleep()`/`createWebhook()` แทน polling loops — suspension ไม่เผา compute
-- Generate tokens/secrets ใน step (workflow-seeded random ไม่ใช่ secret จริง)
+- Separate `workflows/<name>/index.ts` (orchestration) from `steps.ts`/`steps/` (work) + `shared/` for common steps — reduces bundler bugs
+- Make steps idempotent — the 3x retry may re-run; charge/email/webhook side-effects need a dedup key
+- Always return data from a step — pass-by-value, mutations don't come back to the workflow
+- Use `sleep()`/`createWebhook()` instead of polling loops — suspension doesn't burn compute
+- Generate tokens/secrets inside a step (workflow-seeded random is not a real secret)
 
 ## Don't
 
-- อย่าเรียก network/fs/db ใน `"use workflow"` — ไม่มี runtime นั้นและทำ replay พัง → `"use step"` เท่านั้น
-- อย่า assume step context เมื่อเรียก step นอก workflow — directive เป็น no-op, `getStepMetadata()` throw
-- อย่า deploy Vercel โดยไม่เปิด System Env Vars — fallback Local World + read-only FS = ทุก run fail
-- อย่าเก็บ state ที่โตเรื่อยๆ ผ่าน step args — replay recompute ดีกว่า ส่ง id แล้ว fetch ใน step
+- Never call network/fs/db inside `"use workflow"` — that runtime doesn't exist and it breaks replay → `"use step"` only
+- Never assume step context when calling a step outside a workflow — the directive is a no-op, `getStepMetadata()` throws
+- Never deploy to Vercel without enabling System Env Vars — Local World fallback + read-only FS = every run fails
+- Never carry ever-growing state through step args — replay recompute is better; pass an id and fetch inside the step
 
 ## Perf (v5)
 
-- Inline steps รันหลายตัวต่อ suspension — fan-out ด้วย `Promise.all` ได้ถูกกว่า sequential
-- Payloads ถูก compress + encrypt ก่อนเข้า storage — stream ใหญ่ (AI tokens) ~80% เล็กลง
-- Prefer many small steps บน Vercel — batching + sealed log ทำให้ถูกลงถึง ~80% compute
+- Inline steps run many per suspension — fan out with `Promise.all` is cheaper than sequential
+- Payloads are compressed + encrypted before storage — large streams (AI tokens) shrink by ~80%
+- Prefer many small steps on Vercel — batching + sealed log make it up to ~80% cheaper on compute

@@ -3,7 +3,7 @@ name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
 argument-hint: "[config-test-env] [scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-math-concepts
   - follow-monorepo
 

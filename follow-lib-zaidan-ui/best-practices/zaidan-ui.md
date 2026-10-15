@@ -1,33 +1,33 @@
 # Zaidan UI — Best Practices
 
-SolidJS component library บน Kobalte + Corvu + Tailwind — a11y-first copy-in components
+SolidJS component library on Kobalte + Corvu + Tailwind — a11y-first copy-in components
 
 ## Recommended Patterns
 
-- Components เป็น Kobalte/Corvu primitives + Tailwind styling — accessibility (ARIA, keyboard, focus) มาจาก primitive layer
-- เลือก primitive ตามชนิด: Kobalte สำหรับส่วนใหญ่, Corvu สำหรับ primitives ที่ Kobalte ไม่มี (drawer, resizable, OTP)
-- Theme ผ่าน Tailwind tokens/CSS vars — อย่า hardcode colors ใน component source
-- `splitProps`/`mergeProps` เมื่อ wrap components — preserve Solid reactivity เสมอ
-- Copy component source เข้า repo แล้ว customize — แนวทางเดียวกับ shadcn model
+- Components are Kobalte/Corvu primitives + Tailwind styling — accessibility (ARIA, keyboard, focus) comes from the primitive layer
+- Pick the primitive by kind: Kobalte for most, Corvu for primitives Kobalte lacks (drawer, resizable, OTP)
+- Theme via Tailwind tokens/CSS vars — never hardcode colors in component source
+- Use `splitProps`/`mergeProps` when wrapping components — always preserve Solid reactivity
+- Copy component source into the repo then customize — same approach as the shadcn model
 
 ## Common Pitfalls
 
-- อย่า destructure props ของ primitive — reactivity หายเหมือน Solid pattern ทั่วไป
-- Kobalte vs Corvu API ต่างกัน — ตรวจ docs ของ primitive จริงก่อน wrap; props/events ไม่เหมือนกัน
-- Portal-based components (dialog, popover, toast) mount นอก tree — theme class/vars ต้องครอบ portal container ด้วย
-- Tailwind version/token names ต้องตรงกับ setup ของ project — copied components assume โครงเดิม
-- SSR/SolidStart: primitives touch DOM — ตรวจ `isServer` guards เมื่อ render server-side
+- Never destructure primitive props — reactivity is lost, same as the general Solid pattern
+- Kobalte vs Corvu APIs differ — check the actual primitive's docs before wrapping; props/events are not the same
+- Portal-based components (dialog, popover, toast) mount outside the tree — theme class/vars must also cover the portal container
+- Tailwind version/token names must match the project's setup — copied components assume the original structure
+- SSR/SolidStart: primitives touch the DOM — check `isServer` guards when rendering server-side
 
 ## Perf Notes
 
-- Primitive = headless; styling cost ตาม Tailwind classes จริง — tree-shake utilities ผ่าน UnoCSS/Tailwind JIT
-- เลี่ยง wrap หลายชั้น — ทุก layer เพิ่ม component overhead; compose ตรงๆ เมื่อพอ
+- Primitives are headless; styling cost follows the actual Tailwind classes — tree-shake utilities via UnoCSS/Tailwind JIT
+- Avoid wrapping many layers — every layer adds component overhead; compose directly when enough
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| Kobalte ก่อน, Corvu สำหรับ missing primitives | rebuild primitive เอง |
-| theme ผ่าน CSS vars/tokens | hardcode palette ใน component |
-| `splitProps`/`mergeProps` | destructure props ดิบ |
-| ครอบ portal container ด้วย theme | assume portal inherit root classes |
+| Kobalte first, Corvu for missing primitives | rebuild primitives yourself |
+| theme via CSS vars/tokens | hardcode the palette in components |
+| `splitProps`/`mergeProps` | destructure raw props |
+| cover the portal container with the theme | assume portals inherit root classes |

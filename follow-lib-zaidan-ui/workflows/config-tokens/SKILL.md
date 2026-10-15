@@ -1,6 +1,6 @@
 ---
 name: follow-lib-zaidan-ui-config-tokens
-description: ปรับ theme tokens ของ Zaidan UI — colors, radius, Tailwind v4 mapping
+description: Tune Zaidan UI theme tokens — colors, radius, Tailwind v4 mapping
 argument-hint: "[scope]"
 related:
   - follow-lib-zaidan-ui
@@ -12,59 +12,59 @@ related:
 
 ## Goal
 
-ปรับแต่ง theme tokens ของ Zaidan UI — color palette, radius, semantic tokens และ Tailwind v4 mapping ใน `globals.css`
+Tune the Zaidan UI theme tokens — color palette, radius, semantic tokens, and Tailwind v4 mapping in `globals.css`
 
 ## Scope
 
-ใช้เมื่อต้องแก้ไข theme tokens ที่ setup แล้ว — ครอบคลุม CSS variables, `@theme` mapping, component customization ใน `src/components/ui/` และ token consistency
+Use when editing theme tokens after setup — covers CSS variables, `@theme` mapping, component customization in `src/components/ui/`, and token consistency
 
 ## Execute
 
 ### 1. Read Current Tokens
 
-> Goal: อ่าน tokens structure ปัจจุบันก่อนแก้
+> Goal: read the current tokens structure before editing
 
-1. เปิด `src/styles/globals.css` — ดู CSS variables ใน `:root` และ dark block รวมถึง `@theme` mapping
-2. เปิด `components.json` — ดู `tailwind.css` path และ aliases
-3. ถ้ายังไม่มี theme → ทำ workflow `setup-theme` ก่อน; merge เดิมเสมอ ห้าม overwrite
-4. ทำ `/deep-review` domain `review-config` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
+1. Open `src/styles/globals.css` — inspect the CSS variables in `:root` and the dark block, including the `@theme` mapping
+2. Open `components.json` — check the `tailwind.css` path and aliases
+3. If no theme exists yet → run the `setup-theme` workflow first; always merge with the original, never overwrite
+4. Run `/deep-review-codebase` domain `review-config` if unsure the tokens match what the components reference
 
 ### 2. Adjust Color And Radius Tokens
 
-> Goal: เปลี่ยน palette และ radius ให้ตรง design
+> Goal: change the palette and radius to match the design
 
-1. แก้ค่า variables ใน `:root` และ dark block พร้อมกัน — ทุก token ต้องมีทั้งสอง mode
-2. ปรับ `--radius` เป็น single source ของ corner radius
-3. เพิ่ม semantic tokens ใหม่ (เช่น `success`, `warning`) ตาม naming convention เดิม
-4. token ใหม่ต้อง map เข้า `@theme` หรือ utility layer ที่ Tailwind v4 ใช้ — ดู official docs ที่ `https://zaidan.carere.dev/docs`
+1. Edit variable values in `:root` and the dark block together — every token must exist in both modes
+2. Adjust `--radius` as the single source of corner radius
+3. Add new semantic tokens (e.g. `success`, `warning`) following the existing naming convention
+4. New tokens must map into `@theme` or the utility layer Tailwind v4 uses — see the official docs at `https://zaidan.carere.dev/docs`
 
 ### 3. Customize Component Variants
 
-> Goal: ปรับ variants ใน copied components
+> Goal: adjust variants in the copied components
 
-1. เปิด component ใน `src/components/ui/` — แก้ variant classes ให้อ้าง tokens (เช่น `bg-primary`) ไม่ใช่ raw palette
-2. ใช้ `cn` helper สำหรับ merge classes — ห้าม hard-code overrides ใน JSX ซ้ำ
-3. ห้ามแก้ Kobalte/Corvu primitives source — customize เฉพาะ copied components
+1. Open the component in `src/components/ui/` — edit variant classes to reference tokens (e.g. `bg-primary`), not the raw palette
+2. Use the `cn` helper for merging classes — never repeat hard-coded overrides in JSX
+3. Never edit Kobalte/Corvu primitives source — customize only the copied components
 
 ### 4. Verify
 
-> Goal: ตรวจสอบ tokens ใหม่และของเดิมไม่พัง
+> Goal: confirm new and old tokens both work
 
-1. รัน dev — ทดสอบ components ที่แก้ทั้ง light/dark
-2. ตรวจ utility classes ใหม่ generate ถูกต้องใน Tailwind v4 output
-3. ถ้าพัง → revert keys ที่เพิ่งแก้ แล้ว report diff
+1. Run dev — test the changed components in both light/dark
+2. Check the new utility classes generate correctly in the Tailwind v4 output
+3. If it breaks → revert the keys just changed, then report the diff
 
 ## Rules
 
-- แก้ tokens ใน `globals.css` จุดเดียว — components อ้างผ่าน tokens เท่านั้น
-- `:root` และ dark block ต้องครบชุดเดียวกันเสมอ
-- ใช้ Tailwind CSS v4 syntax (`@theme`) ตามที่ Zaidan ใช้ — ดู official docs
-- ห้ามแก้ Kobalte/Corvu primitives source
-- ใช้ `/follow-lib-zaidan-ui` สำหรับ full reference
+- Edit tokens in one place, `globals.css` — components reference tokens only
+- `:root` and the dark block must always carry the same complete set
+- Use Tailwind CSS v4 syntax (`@theme`) as Zaidan does — see the official docs
+- Never edit Kobalte/Corvu primitives source
+- Use `/follow-lib-zaidan-ui` for the full reference
 
 ## Expected Outcome
 
-- Theme tokens ปรับตาม design — palette, radius, semantic colors ครบ
-- Tokens map เข้า Tailwind v4 utilities ถูกต้อง
-- Dark mode ครอบคลุม tokens ใหม่ทั้งหมด
-- Config เดิมไม่ถูก clobber
+- Theme tokens tuned to the design — palette, radius, and semantic colors complete
+- Tokens map correctly into Tailwind v4 utilities
+- Dark mode covers all new tokens
+- The original config is not clobbered

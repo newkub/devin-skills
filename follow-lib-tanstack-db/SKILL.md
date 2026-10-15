@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-db
-description: ใช้ TanStack DB ครบวงจร — collections, live queries, optimistic mutations, sync backends, joins
+description: Use TanStack DB end to end — collections, live queries, optimistic mutations, sync backends, joins
 argument-hint: "[framework] [sync-backend]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,13 +11,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack DB ครบ — reactive client store: collections, live queries (filter/join/order), optimistic mutations, sync engines (Query, ElectricSQL, localStorage, local-only)
+Use TanStack DB fully — a reactive client store: collections, live queries (filter/join/order), optimistic mutations, sync engines (Query, ElectricSQL, localStorage, local-only)
 
 ## Scope
 
-ใช้เมื่อต้องการ local-first/reactive data layer ที่ query ฝั่ง client ได้เหมือน DB — ตัวเลือกกับ `follow-query` (server cache ธรรมดา) — **0.x**: API อาจเปลี่ยน ตรวจ docs ล่าสุดก่อน implement
+Use when you need a local-first/reactive data layer that queries client-side like a DB — versus `follow-query` (plain server cache) — **0.x**: the API may change, check the latest docs before implementing
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -25,16 +25,16 @@ related:
 
 > Goal: core + framework adapter + collection driver
 
-1. `bun add @tanstack/db @tanstack/react-db` (React; มี `vue-db`/`solid-db`/`svelte-db`)
-2. Driver ตาม backend:
+1. `bun add @tanstack/db @tanstack/react-db` (React; `vue-db`/`solid-db`/`svelte-db` also exist)
+2. Pick the driver per backend:
    - REST/Query sync → `bun add @tanstack/query-db-collection`
    - ElectricSQL realtime sync → `bun add @tanstack/electric-db-collection`
-   - localStorage persist → `localStorageCollectionOptions` จาก `@tanstack/db`
+   - localStorage persist → `localStorageCollectionOptions` from `@tanstack/db`
    - in-memory only → `localOnlyCollectionOptions`
 
 ### 2. Create Collections
 
-> Goal: typed collections sync กับ backend
+> Goal: typed collections synced with the backend
 
 ```ts
 import { createCollection } from '@tanstack/react-db'
@@ -54,13 +54,13 @@ export const todosCollection = createCollection(
 )
 ```
 
-- `electricCollectionOptions({ shape: { url, params } })` สำหรับ ElectricSQL — realtime push
-- `localStorageCollectionOptions({ storageKey })` — persist offline
-- `startSync`/eager vs lazy sync ตาม options
+- `electricCollectionOptions({ shape: { url, params } })` for ElectricSQL — realtime push
+- `localStorageCollectionOptions({ storageKey })` — offline persistence
+- `startSync`/eager vs lazy sync per the options
 
 ### 3. Live Queries
 
-> Goal: reactive queries เหมือน DB
+> Goal: reactive queries like a DB
 
 ```ts
 import { useLiveQuery, eq, gt } from '@tanstack/react-db'
@@ -74,40 +74,40 @@ const { data, isLoading } = useLiveQuery((q) =>
 )
 ```
 
-- Operators: `eq`, `gt`, `lt`, `like`, `inArray`, `and`, `or` — import จาก adapter
-- `groupBy` + aggregates (`count`, `sum`, `avg`) สำหรับ summary queries
-- Multi-collection joins — live query re-evaluate เมื่อ collection ใดเปลี่ยน
-- Non-hook usage: `liveQueryCollectionOptions` สร้าง derived collection ที่ reuse ได้
+- Operators: `eq`, `gt`, `lt`, `like`, `inArray`, `and`, `or` — imported from the adapter
+- `groupBy` + aggregates (`count`, `sum`, `avg`) for summary queries
+- Multi-collection joins — the live query re-evaluates when any collection changes
+- Non-hook usage: `liveQueryCollectionOptions` builds a reusable derived collection
 
 ### 4. Mutations (Optimistic)
 
-> Goal: writes ที่ UI เห็นทันที
+> Goal: writes the UI sees immediately
 
-1. `collection.insert(item)` / `collection.update(key, (d) => {...})` / `collection.delete(key)` — optimistic อัตโนมัติ
-2. Transaction API: `mutationFn` ใน `useOptimisticMutation`/`createOptimisticAction` สำหรับ custom flows
-3. Write handlers (`onInsert`/`onUpdate`/`onDelete`) persist ไป server — fail → auto rollback
-4. Pending states: `tx.state`/`isPersisted` track ว่า mutation sync แล้วหรือยัง
+1. `collection.insert(item)` / `collection.update(key, (d) => {...})` / `collection.delete(key)` — automatically optimistic
+2. Transaction API: `mutationFn` in `useOptimisticMutation`/`createOptimisticAction` for custom flows
+3. Write handlers (`onInsert`/`onUpdate`/`onDelete`) persist to the server — on failure → auto rollback
+4. Pending states: `tx.state`/`isPersisted` track whether the mutation has synced yet
 
 ### 5. Verify
 
-> Goal: sync + optimistic + joins ทำงานจริง
+> Goal: sync + optimistic + joins really work
 
 1. `/run-typecheck` + `/run-test`
-2. Mutation: UI เปลี่ยนทันที → server confirm → rollback เมื่อ error
-3. Live query re-render เมื่อ collection เปลี่ยน; multi-collection join อัปเดตถูก
-4. ถ้า fail → `/resolve-errors` max 3 รอบ
+2. Mutation: the UI changes immediately → server confirms → rollback on error
+3. The live query re-renders when the collection changes; the multi-collection join updates correctly
+4. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `getKey` ต้อง stable + unique — ห้ามใช้ array index
-- Collection driver ต้องตรง backend; Query-backed ต้อง `queryClient` ตัวเดียวกับ app
-- ใส่ `schema` (standard schema) ที่ collection — ได้ type + runtime validation
-- DB เฉพาะ data ที่ต้อง live query/optimistic/local-first — fetch ธรรมดายังใช้ `follow-query`
-- 0.x API — pin version, อ่าน changelog ก่อน upgrade
-- ใช้ `/follow-lib-tanstack-ecosystem` สำหรับ overview
+- `getKey` must be stable + unique — never use the array index
+- The collection driver must match the backend; Query-backed needs the app's same `queryClient`
+- Add a `schema` (standard schema) on the collection — you get types + runtime validation
+- Use DB only for data needing live query/optimistic/local-first — plain fetching still uses `follow-query`
+- 0.x API — pin the version, read the changelog before upgrading
+- Use `/follow-lib-tanstack-ecosystem` for the overview
 
 ## Expected Outcome
 
-- Collections sync กับ backend driver ที่เลือก
-- Live queries (filter/join/aggregate) reactive ถูกต้อง
-- Optimistic mutations + rollback ทำงาน
+- Collections sync with the chosen backend driver
+- Live queries (filter/join/aggregate) react correctly
+- Optimistic mutations + rollback work

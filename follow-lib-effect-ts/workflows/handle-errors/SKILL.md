@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-จัดการ errors ใน Effect อย่าง type-safe — expected errors ผ่าน `E` channel, defects (bugs) แยกออก, retry/timeout/schedule
+Handle errors in Effect type-safely — expected errors via the `E` channel, defects (bugs) kept separate, retry/timeout/schedule
 
 ## Scope
 
-error model ของ Effect — `Data.TaggedError`, `Effect.catchTag*`, `Cause`/`Exit`, `Effect.retry`+`Schedule`, `Effect.timeout`
+Effect's error model — `Data.TaggedError`, `Effect.catchTag*`, `Cause`/`Exit`, `Effect.retry`+`Schedule`, `Effect.timeout`
 
 ## Execute
 
@@ -25,10 +25,10 @@ import { Data } from "effect"
 
 class NotFound extends Data.TaggedError("NotFound")<{ id: string }> {}
 class DbError extends Data.TaggedError("DbError")<{ cause: unknown }> {}
-// Schema.TaggedError เมื่อต้อง serialize errors ข้าม boundary
+// Schema.TaggedError when errors must serialize across a boundary
 ```
 
-- `yield*` errors ได้ใน `Effect.gen` (TaggedError yieldable)
+- `yield*` works for errors in `Effect.gen` (TaggedError is yieldable)
 
 ### 2. Catch And Recover
 
@@ -36,39 +36,39 @@ class DbError extends Data.TaggedError("DbError")<{ cause: unknown }> {}
 program.pipe(
   Effect.catchTag("NotFound", (e) => Effect.succeed(fallback)),
   Effect.catchTags({ DbError: (e) => Effect.fail(new Fatal(e)) }),
-  Effect.catchAll((e) => ...),        // เหลือทุก expected error
-  Effect.catchAllDefect((d) => ...),  // bugs/defects แยก
+  Effect.catchAll((e) => ...),        // remaining: every expected error
+  Effect.catchAllDefect((d) => ...),  // bugs/defects kept separate
   Effect.match({ onFailure, onSuccess }),
 )
 ```
 
-- `catchTag` narrow ตาม `_tag`; `catchAll` handle ทั้ง `E` channel
-- `Effect.orElse`/`Effect.orElseFail` สำหรับ fallback effects
+- `catchTag` narrows by `_tag`; `catchAll` handles the whole `E` channel
+- `Effect.orElse`/`Effect.orElseFail` for fallback effects
 
 ### 3. Defects, Cause, Exit
 
-- Defects = bugs (throws, type errors) — ไม่ควร catch; inspect ด้วย `Cause`/`Effect.sandbox`
-- `Effect.exit` → `Exit<A, E>` inspect success/failure โดยไม่ throw (ใช้ใน tests)
-- `Effect.tapError`/`tapErrorTag` สำหรับ logging โดยไม่เปลี่ยน outcome
+- Defects = bugs (throws, type errors) — shouldn't be caught; inspect with `Cause`/`Effect.sandbox`
+- `Effect.exit` → `Exit<A, E>` inspects success/failure without throwing (used in tests)
+- `Effect.tapError`/`tapErrorTag` for logging without changing the outcome
 
 ### 4. Retry, Timeout, Schedule
 
 ```ts
 Effect.retry(program, Schedule.exponential("100 millis").pipe(Schedule.compose(Schedule.recurs(5))))
 Effect.timeout(program, "5 seconds")               // TimeoutException defect? no — Option/timeout error
-Effect.timeoutOption / timeoutTo เมื่อต้อง custom timeout result
+Effect.timeoutOption / timeoutTo when a custom timeout result is needed
 ```
 
 - `Schedule` combinators: `exponential`, `fixed`, `jittered`, `recurs`, `whileInput`
 
 ## Rules
 
-- Expected errors ใช้ `TaggedError` — defects ปล่อยผ่าน (อย่า swallow bugs)
-- ห้าม `try/catch` รอบ Effect code — ใช้ `catchTag*` combinators
-- retry เฉพาะ idempotent operations — mutation ต้องดู side effects
-- `Effect.timeout` = deadline ที่ enforce จริงผ่าน interruption
+- Expected errors use `TaggedError` — let defects pass through (don't swallow bugs)
+- Never `try/catch` around Effect code — use the `catchTag*` combinators
+- Retry only idempotent operations — mutations must account for side effects
+- `Effect.timeout` = a real deadline enforced via interruption
 
 ## Expected Outcome
 
-- Error types ชัด expected vs defect
-- Retry/timeout ตาม policy, errors traceable ผ่าน Cause/Exit
+- Error types clearly separate expected vs defect
+- Retry/timeout follow policy, errors traceable through Cause/Exit

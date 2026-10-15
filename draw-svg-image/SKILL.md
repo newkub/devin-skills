@@ -4,7 +4,7 @@ description: Create SVG images from a description or prompt using code
 argument-hint: "[description]"
 related:
   - convert
-  - deep-review
+  - deep-review-codebase
   - visualize-in-web
   - open-files-in-web
   - gen-media
@@ -73,7 +73,7 @@ Create a `.svg` file from the description or prompt the user provides
 - If the description is complex or the user wants photorealistic output → recommend `gen-ai-images` + `convert-to-svg`
 - For preview → use `/visualize-in-web` or `/open-web`
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /open-files-in-web if needed
 
 - Use /gen-media if needed

@@ -1,6 +1,6 @@
 ---
 name: open-github
-description: เปิดหน้า GitHub บน browser — repo, issue, PR, secrets หรือ repo ของ org/personal
+description: Open GitHub pages in a browser — repo, issue, PR, secrets, or org/personal repos
 argument-hint: "[repo|issue|pr|secrets|org|personal] [owner/repo] [#n]"
 related:
   - list-github
@@ -10,56 +10,55 @@ related:
 
 ## Goal
 
-เปิดหน้า GitHub บน browser ด้วย native OS command ตาม target ที่ระบุ — repo, issue, pull request, secrets settings หรือ repo ของ org/personal account
+Open GitHub pages in a browser with native OS commands, per the specified target — repo, issue, pull request, secrets settings, or repos of an org/personal account
 
 ## Scope
 
-- `repo` (default): เปิด `/tree/<current-branch>` ของ repo
-- `issue <n>` / `pr <n>`: เปิด issue หรือ pull request ที่ระบุ
-- `secrets`: เปิดหน้า settings/secrets ของ repo
-- `org` / `personal`: เปิด repo ใน org หรือ personal account ตาม context
-- ไม่แก้ไข repo ใด ๆ
+- `repo` (default): open the repo's `/tree/<current-branch>`
+- `issue <n>` / `pr <n>`: open the specified issue or pull request
+- `secrets`: open the repo's settings/secrets page
+- `org` / `personal`: open repos in the org or personal account per context
+- Never modify any repo
 
-ดูเพิ่มเติม: /all-github-repo, /list-github-repo
+See also: /all-github-repo, /list-github-repo
 
 ## Execute
 
 ### 1. Resolve Target And Repo
 
-> Goal: ได้ owner, repo, target type และหมายเลขที่ถูกต้อง
+> Goal: Get the correct owner, repo, target type, and number
 
-1. อ่าน target จาก argument แรก (`repo`, `issue`, `pr`, `secrets`, `org`, `personal`) — default `repo`
-2. ถ้าระบุ `owner/repo` → ใช้ค่านั้น
-3. ถ้าไม่ระบุ → รัน `git remote get-url origin` แล้ว parse เป็น `owner/repo` (`https://` หรือ `git@` form)
-4. รัน `git branch --show-current` สำหรับ repo target
-5. ถ้าไม่อยู่ใน git worktree และไม่มี argument → ถาม user
+1. Read the target from the first argument (`repo`, `issue`, `pr`, `secrets`, `org`, `personal`) — default `repo`
+2. If `owner/repo` is given → use it
+3. If not given → run `git remote get-url origin` and parse it into `owner/repo` (`https://` or `git@` form)
+4. Run `git branch --show-current` for the repo target
+5. If not in a git worktree and no argument → ask the user
 
 ### 2. Build URL
 
-> Goal: สร้าง URL ตาม target type
+> Goal: Build the URL from the target type
 
 - `repo` → `https://github.com/<owner>/<repo>/tree/<branch>`
 - `issue` → `https://github.com/<owner>/<repo>/issues/<n>`
 - `pr` → `https://github.com/<owner>/<repo>/pull/<n>`
 - `secrets` → `https://github.com/<owner>/<repo>/settings/secrets/actions`
-- `org` → `https://github.com/orgs/<org>/repositories` หรือ repo ที่ระบุใน org context
-- `personal` → `https://github.com/<owner>/<repo>` บน personal account
-- URL-encode branch/params ที่มี special characters
+- `org` → `https://github.com/orgs/<org>/repositories` or the repo specified in the org context
+- `personal` → `https://github.com/<owner>/<repo>` on the personal account
+- URL-encode branches/params containing special characters
 
 ### 3. Open In Browser
 
-> Goal: เปิด URL ด้วย OS default browser
+> Goal: Open the URL with the OS default browser
 
 1. Windows: `start <url>`; macOS: `open <url>`; Linux: `xdg-open <url>`
-2. รายงาน URL ที่เปิดใน chat
+2. Report the opened URL in chat
 
 ## Rules
 
-- เปิดผ่าน OS native command เท่านั้น ไม่ใช้ `webfetch` แทน
-- ถ้า build URL ไม่ได้ → ถาม user แทนการเดา
-- รายงาน URL เสมอหลังเปิด
+- Open only via OS native commands; do not substitute `webfetch`
+- If the URL cannot be built → ask the user instead of guessing
+- Always report the URL after opening
 
 ## Expected Outcome
 
-- หน้า GitHub ที่ต้องการเปิดใน browser เรียบร้อย
-
+- The requested GitHub page opens in the browser

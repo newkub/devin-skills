@@ -1,13 +1,13 @@
 # TanStack Query — Server State Patterns
 
-Best practices สำหรับ Query: query keys, caching, mutations, invalidation และ performance
+Best practices for Query: query keys, caching, mutations, invalidation, and performance
 
 ## Recommended Patterns
 
-### Query Keys เป็น Contract
+### Query Keys Are a Contract
 
 ```ts
-// query key factory — centralize ไว้ไฟล์เดียวต่อ domain
+// query key factory — centralize in one file per domain
 export const userKeys = {
   all: ['users'] as const,
   lists: () => [...userKeys.all, 'list'] as const,
@@ -17,20 +17,20 @@ export const userKeys = {
 }
 ```
 
-- key ต้อง serializable, stable และ unique ต่อ data — ใส่ทุก variable ที่เปลี่ยนผลลัพธ์ (id, filters, page)
-- invalidation ด้วย prefix: `queryClient.invalidateQueries({ queryKey: userKeys.all })` ครอบทุก list/detail
+- keys must be serializable, stable, and unique per data — include every variable that changes the result (id, filters, page)
+- invalidate by prefix: `queryClient.invalidateQueries({ queryKey: userKeys.all })` covers every list/detail
 
-### Caching ที่ตั้งใจ
+### Intentional Caching
 
-| Option | ความหมาย | แนวทาง |
+| Option | Meaning | Guidance |
 |---|---|---|
-| `staleTime` | data สดนานแค่ไหนก่อนถือว่า stale | ตั้งตามจริง — static data ตั้งสูง, realtime ตั้งต่ำ |
-| `gcTime` | cache อยู่นานแค่ไหนหลังไม่มี observer | default 5 นาทีพอในกรณีทั่วไป |
-| `refetchOnWindowFocus` | refetch เมื่อกลับมาที่ tab | ปิดเฉพาะ query ที่ไม่จำเป็น — อย่าปิด global |
-| `retry` | retry เมื่อ fail | ปรับตาม criticality — mutation ไม่ retry โดย default |
+| `staleTime` | how long data stays fresh before it's considered stale | set to reality — high for static data, low for realtime |
+| `gcTime` | how long the cache lingers after it has no observer | the 5-minute default is enough in general |
+| `refetchOnWindowFocus` | refetch when returning to the tab | disable only for unneeded queries — never globally |
+| `retry` | retry on failure | tune by criticality — mutations don't retry by default |
 
-- ตั้ง `staleTime` ต่อ query มากกว่า global — data แต่ละประเภทมี freshness ต่างกัน
-- ใช้ `select` เพื่อ derive เฉพาะส่วนที่ component ต้องการ — ลด re-render และแยก concerns
+- Set `staleTime` per query rather than globally — each data type has different freshness
+- Use `select` to derive only what the component needs — fewer re-renders and separated concerns
 
 ### Mutations + Invalidation
 
@@ -43,49 +43,49 @@ const mutation = useMutation({
 })
 ```
 
-- invalidate หลัง mutation เสมอ — หรือ `setQueryData` สำหรับ optimistic/direct update
-- optimistic updates: `onMutate` snapshot → update cache → `onError` rollback → `onSettled` invalidate
-- mutation state (`isPending`, `error`) อยู่ใน hook — อย่า copy ไป state อื่น
+- Always invalidate after a mutation — or use `setQueryData` for optimistic/direct updates
+- Optimistic updates: `onMutate` snapshot → update cache → `onError` rollback → `onSettled` invalidate
+- Mutation state (`isPending`, `error`) lives in the hook — don't copy it into other state
 
-### Dependent และ Parallel Queries
+### Dependent and Parallel Queries
 
-- dependent queries ใช้ `enabled: !!id` — อย่า fetch เมื่อ prerequisite ยังไม่พร้อม
-- parallel queries ใช้ `useQueries` เมื่อจำนวน dynamic — hooks ปกติเมื่อจำนวนคงที่
-- prefetch ใน route loader หรือ `queryClient.prefetchQuery` ตอน hover — ลด waterfall
+- Dependent queries use `enabled: !!id` — don't fetch while the prerequisite isn't ready
+- Parallel queries use `useQueries` when the count is dynamic — normal hooks when the count is fixed
+- Prefetch in the route loader or `queryClient.prefetchQuery` on hover — reduces waterfalls
 
 ## Common Pitfalls
 
-- ใส่ non-serializable values ใน query key (Date objects, class instances) → key mismatch, cache miss ถาวร
-- ไม่ใส่ params ใน key → stale cache เมื่อ params เปลี่ยน
-- `staleTime: 0` ทุกที่ → refetch storm ทุก mount/focus
-- invalidate ด้วย key แคบเกิน → list ไม่ update หลัง mutation
-- เก็บ server state ใน global store (Zustand/Store) ซ้ำกับ Query → 2 sources of truth
-- `select` สร้าง object ใหม่ทุกครั้ง → re-render loop (wrap ด้วย stable reference หรือ structural sharing พึ่งพา default)
+- Putting non-serializable values in a query key (Date objects, class instances) → key mismatch, permanent cache miss
+- Not putting params in the key → stale cache when params change
+- `staleTime: 0` everywhere → refetch storm on every mount/focus
+- Invalidating with too narrow a key → the list doesn't update after a mutation
+- Storing server state in a global store (Zustand/Store) duplicated with Query → two sources of truth
+- `select` creating a new object every time → re-render loop (wrap in a stable reference, or rely on the default structural sharing)
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| query keys เป็น factory ต่อ domain | hardcode key strings กระจายทั่ว codebase |
-| ใช้ `select` derive data | map data ใน component render |
-| invalidate prefix keys หลัง mutations | สร้าง query ซ้ำด้วย `useEffect` + manual fetch |
-| ใช้ `enabled` สำหรับ dependent queries | guard fetch ด้วย if ใน component body |
-| optimistic update ด้วย `setQueryData` | refetch ทั้ง list เพื่อ update item เดียวถ้าไม่จำเป็น |
-| prefetch ใน loaders/hover handlers | ปล่อย waterfall queries ต่อเนื่อง |
+| Query keys as a factory per domain | hardcode key strings scattered across the codebase |
+| Use `select` to derive data | map data inside the component render |
+| Invalidate prefix keys after mutations | recreate queries with `useEffect` + manual fetch |
+| Use `enabled` for dependent queries | guard fetches with an if in the component body |
+| Optimistic update via `setQueryData` | refetch the whole list to update one item when unnecessary |
+| Prefetch in loaders/hover handlers | leave queries waterfalling back to back |
 
 ## Performance Notes
 
-- `select` ลด re-render — component subscribe เฉพาะ derived slice
-- `staleTime` สูงสำหรับ reference data (categories, config) — ต่ำสำหรับ data ที่เปลี่ยนบ่อย
-- pagination ใช้ `placeholderData: keepPreviousData` — UI ไม่กระพริบตอนเปลี่ยนหน้า
-- infinite queries ใช้ `useInfiniteQuery` กับ `getNextPageParam` — อย่า implement เองด้วย state
-- structural sharing (default on) ทำให้ data ใหม่ที่ deep-equal ไม่ trigger re-render — รักษาไว้
-- Devtools: เปิด panel ตอน dev เพื่อดู cache lifecycle — หา query ที่ refetch เกินจำเป็น
+- `select` reduces re-renders — the component subscribes only to the derived slice
+- High `staleTime` for reference data (categories, config) — low for frequently changing data
+- Pagination uses `placeholderData: keepPreviousData` — the UI doesn't flicker on page change
+- Infinite queries use `useInfiniteQuery` with `getNextPageParam` — don't hand-implement it with state
+- Structural sharing (on by default) makes deep-equal new data not trigger a re-render — keep it
+- Devtools: open the panel during dev to watch the cache lifecycle — find queries that refetch more than needed
 
 ## Ecosystem / Integration
 
-- Router: prefetch ใน route loader ด้วย `queryClient.ensureQueryData` — data พร้อมก่อน render
-- Form: mutations จาก form submit — use `@tanstack/react-form` validators + Query mutations ร่วมกัน
-- SSR/Start: `dehydrate`/`hydrate` สำหรับ server-prefetched queries — เช็ค adapter ของ framework
-- อย่าใช้ Query กับ client-only state (UI toggles, draft forms) — นั่นคือหน้าที่ของ `Store` หรือ local state
-- Vue/Svelte/Solid: package แยก `@tanstack/vue-query` ฯลฯ — API เกือบเหมือนกัน แต่อ่าน adapter docs ก่อน
+- Router: prefetch in the route loader via `queryClient.ensureQueryData` — data is ready before render
+- Form: mutations from form submit — use `@tanstack/react-form` validators together with Query mutations
+- SSR/Start: `dehydrate`/`hydrate` for server-prefetched queries — check the framework's adapter
+- Don't use Query for client-only state (UI toggles, draft forms) — that's the job of `Store` or local state
+- Vue/Svelte/Solid: separate packages `@tanstack/vue-query` etc. — the API is nearly identical, but read the adapter docs first

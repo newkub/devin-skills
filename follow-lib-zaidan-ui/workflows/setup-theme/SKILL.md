@@ -12,66 +12,66 @@ related:
 
 ## Goal
 
-Setup theme ของ Zaidan UI — `components.json` registry config, Tailwind CSS v4 variables และ dark mode บน SolidJS
+Set up the Zaidan UI theme — `components.json` registry config, Tailwind CSS v4 variables, and dark mode on SolidJS
 
 ## Scope
 
-ใช้เมื่อต้อง setup theme ครั้งแรกของ Zaidan UI project — ครอบคลุม `components.json`, `registries` config, `globals.css` theme variables และ dark mode ด้วย `data-kb-theme`
+Use when setting up the theme for the first time in a Zaidan UI project — covers `components.json`, `registries` config, `globals.css` theme variables, and dark mode via `data-kb-theme`
 
 ## Execute
 
 ### 1. Prerequisite
 
-> Goal: project setup Zaidan registry แล้ว
+> Goal: the project has already set up the Zaidan registry
 
-1. ทำ `/follow-lib-zaidan-ui` step 1-2 ก่อน — ต้องมี Tailwind CSS v4 และ `components.json`
-2. ตรวจ `components.json`: `style: "kobalte"`, `rsc: false`, `registries` ชี้ `@zaidan` → `https://zaidan.carere.dev/r/{style}/{name}.json`
-3. ตรวจ path alias `@/` ใน `tsconfig.json` และ Vite config ตรงกับ `aliases`
-4. ถ้ายังไม่มี `components.json` → รัน `bunx shadcn@latest init` ก่อน
+1. Do `/follow-lib-zaidan-ui` steps 1-2 first — Tailwind CSS v4 and `components.json` must exist
+2. Check `components.json`: `style: "kobalte"`, `rsc: false`, `registries` points `@zaidan` → `https://zaidan.carere.dev/r/{style}/{name}.json`
+3. Check the `@/` path alias in `tsconfig.json` and the Vite config matches `aliases`
+4. If there is no `components.json` yet → run `bunx shadcn@latest init` first
 
 ### 2. Configure globals.css Theme Variables
 
-> Goal: กำหนด theme variables ใน `src/styles/globals.css`
+> Goal: define the theme variables in `src/styles/globals.css`
 
-1. เปิด `globals.css` ตาม `tailwind.css` path ใน `components.json`
-2. กำหนด CSS variables ชุดมาตรฐานใน `:root` — `background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`, `radius` (ดูชุดเต็มใน official docs ที่ `https://zaidan.carere.dev/docs`)
-3. map variables เข้า Tailwind v4 `@theme` block หรือตาม format ที่ Zaidan components ใช้ — ดู official docs
-4. ใส่ dark variables ใน `[data-kb-theme="dark"]` หรือ `.dark` block — ครบชุดเดียวกันกับ `:root`
+1. Open `globals.css` per the `tailwind.css` path in `components.json`
+2. Define the standard CSS variable set in `:root` — `background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`, `radius` (see the full set in the official docs at `https://zaidan.carere.dev/docs`)
+3. Map the variables into the Tailwind v4 `@theme` block or the format Zaidan components use — see the official docs
+4. Put dark variables in the `[data-kb-theme="dark"]` or `.dark` block — the same complete set as `:root`
 
 ### 3. Setup cn Helper
 
-> Goal: ยืนยัน `cn` helper พร้อมใช้
+> Goal: confirm the `cn` helper is ready
 
-1. ตรวจ `src/lib/utils.ts` มี `cn` ที่ merge `clsx` + `tailwind-merge`
-2. import components ด้วย `@/components/ui/*` alias ตาม `components.json`
+1. Check `src/lib/utils.ts` has a `cn` that merges `clsx` + `tailwind-merge`
+2. Import components with the `@/components/ui/*` alias per `components.json`
 
 ### 4. Configure Dark Mode
 
-> Goal: ตั้งค่า dark mode toggle
+> Goal: configure the dark mode toggle
 
-1. ใช้ `data-kb-theme` attribute บน `<html>` (Kobalte convention) หรือ scheme ที่ project กำหนด
-2. เพิ่ม toggle ที่ set/remove attribute และ persist ด้วย `localStorage`
+1. Use the `data-kb-theme` attribute on `<html>` (Kobalte convention) or the scheme the project defines
+2. Add a toggle that sets/removes the attribute and persists it with `localStorage`
 
 ### 5. Verify
 
-> Goal: smoke test theme และ components
+> Goal: smoke test the theme and components
 
-1. รัน `/run-dev` — add component (`bunx shadcn@latest add @zaidan/button`) แล้วทดสอบ
-2. toggle dark mode — colors ต้องเปลี่ยนตาม variables
-3. รัน build — ไม่มี error จาก missing variables/aliases/registry
-4. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `/run-dev` — add a component (`bunx shadcn@latest add @zaidan/button`) and test it
+2. Toggle dark mode — colors must change with the variables
+3. Run the build — no errors from missing variables/aliases/registry
+4. If it breaks → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ `bunx shadcn@latest` CLI ไม่ใช่ `shadcn-solid`
-- ใช้ CSS variables เสมอ — ห้าม hard-code colors ใน components
-- `:root` และ dark block ต้องมี tokens ครบชุดเดียวกัน
-- `style: "kobalte"` และ `rsc: false` ต้องถูกต้องใน `components.json`
-- ใช้ `/follow-lib-zaidan-ui` สำหรับ full reference
+- Use the `bunx shadcn@latest` CLI, not `shadcn-solid`
+- Always use CSS variables — never hard-code colors in components
+- `:root` and the dark block must carry the same complete token set
+- `style: "kobalte"` and `rsc: false` must be correct in `components.json`
+- Use `/follow-lib-zaidan-ui` for the full reference
 
 ## Expected Outcome
 
-- `components.json` registry และ `globals.css` variables ตั้งค่าครบ
-- Zaidan components render ด้วย theme colors ถูกต้องทั้ง light/dark
-- `cn` helper และ path aliases ทำงาน
-- Build ผ่านโดยไม่มี error
+- `components.json` registry and `globals.css` variables are fully configured
+- Zaidan components render with the correct theme colors in both light/dark
+- The `cn` helper and path aliases work
+- The build passes with no errors

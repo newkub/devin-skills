@@ -1,10 +1,10 @@
 ---
 name: follow-lib-arktype
-description: ใช้ ArkType สำหรับ TypeScript runtime validation ด้วย native type syntax
+description: Use ArkType for TypeScript runtime validation with native type syntax
 argument-hint: "[scope]"
 related:
   - follow-lib-zod
-  - deep-review
+  - deep-review-codebase
   - follow-lib-better-auth
   - follow-lang-typescript
   - follow-best-practice
@@ -15,19 +15,19 @@ related:
 
 ## Goal
 
-ใช้ ArkType เวอร์ชันล่าสุดสำหรับ TypeScript runtime validation โดยอาศัย native type syntax ให้ schema และ type ซิงค์กันระหว่าง compile-time กับ runtime พร้อมประสิทธิภาพสูง
+Use the latest ArkType for TypeScript runtime validation — native type syntax keeps schema and type in sync between compile-time and runtime with high performance
 
 ## Scope
 
-ใช้กับ TypeScript projects ทุกประเภทที่รองรับ ESM และ strict mode ไม่ว่าจะเป็น Bun, Node.js, frontend, backend หรือ framework ใดๆ
+Applies to any TypeScript project that supports ESM and strict mode — Bun, Node.js, frontend, backend, or any framework
 
-ขอบเขต:
-- ใช้ skill นี้เมื่อ project เลือก/ใช้ ArkType เป็น validator หลัก
-- ถ้า project ใช้ Zod อยู่แล้ว → ใช้ `/follow-lib-zod` แทน (อย่าผสม validator หลักสองตัวใน domain เดียวกัน)
-- ถ้ายังไม่ได้เลือก validation library → ทำ `/deep-review` เพื่อเปรียบเทียบก่อน
+Boundaries:
+- Use this skill when the project chose/uses ArkType as its main validator
+- If the project already uses Zod → use `/follow-lib-zod` instead (do not mix two primary validators in one domain)
+- If no validation library is chosen yet → run `/deep-review-codebase` to compare first
 
 - Latest: `arktype@2.2.3` (verified 2026-09-13)
-- v2.2 features หลัก: `type.fn` (validated functions), type-safe regex ผ่าน `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators ฝังใน definitions ได้โดยตรง, `|>` pipe operator, `type.valueOf` สำหรับ TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
+- Key v2.2 features: `type.fn` (validated functions), type-safe regex via `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators embeddable directly in definitions, `|>` pipe operator, `type.valueOf` for TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
 - References: [apis](references/apis.md) 
 ## Execute
 
@@ -36,22 +36,22 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-arktype/SKILL.md` — install, `type()` basics, scope config 
 ### 1. Install ArkType
 
-> Goal: ติดตั้ง ArkType และเตรียม environment
+> Goal: install ArkType and prepare the environment
 
-1. รัน `bun add arktype` (หรือ `pnpm add arktype` ตาม package manager ของ project)
-2. ตรวจสอบเวอร์ชันล่าสุดที่ `https://www.npmjs.com/package/arktype` (ปัจจุบัน v2.2.3, verified 2026-09-13)
-3. ยืนยันว่า `package.json` มี `arktype` ใน `dependencies`
-4. ตรวจสอบว่า `package.json` มี `"type": "module"` หรือ runtime รองรับ ESM imports
+1. Run `bun add arktype` (or `pnpm add arktype` per the project's package manager)
+2. Check the latest version at `https://www.npmjs.com/package/arktype` (currently v2.2.3, verified 2026-09-13)
+3. Confirm `arktype` is in `dependencies` in `package.json`
+4. Confirm `package.json` has `"type": "module"` or the runtime supports ESM imports
 
 ### 2. Configure TypeScript
 
-> Goal: ตั้งค่า `tsconfig.json` และ editor ให้รองรับ ArkType syntax
+> Goal: set up `tsconfig.json` and the editor for ArkType syntax
 
-1. เปิด `strict: true` หรือ `strictNullChecks: true` (required)
-2. เปิด `exactOptionalPropertyTypes: true` (recommended)
-3. เปิด `skipLibCheck: true` (strongly recommended)
-4. ใช้ TypeScript เวอร์ชัน `>= 5.1`
-5. เพิ่ม VSCode settings ใน `.vscode/settings.json`:
+1. Enable `strict: true` or `strictNullChecks: true` (required)
+2. Enable `exactOptionalPropertyTypes: true` (recommended)
+3. Enable `skipLibCheck: true` (strongly recommended)
+4. Use TypeScript `>= 5.1`
+5. Add VSCode settings in `.vscode/settings.json`:
 
 ```json
 {
@@ -62,120 +62,120 @@ related:
 }
 ```
 
-6. ดูรายละเอียดเพิ่มเติมใน 
+6. See additional details in 
 
 ### 3. Define Schemas
 
-> Goal: สร้าง schemas ด้วย native type syntax
+> Goal: create schemas with native type syntax
 
-1. ใช้ `type()` จาก `arktype`
-2. กำหนด primitives เช่น `type("string")`, `type("number")`, `type("boolean")`
-3. กำหนด object เช่น `type({ name: "string", "age?": "number" })`
-4. ใช้ optional fields ด้วย `"field?"` syntax
-5. ใช้ union และ intersection ด้วย `"|"` และ `"&"` หรือ `.or()` และ `.and()`
-6. ดูรายละเอียดเพิ่มเติมใน 
+1. Use `type()` from `arktype`
+2. Define primitives such as `type("string")`, `type("number")`, `type("boolean")`
+3. Define objects such as `type({ name: "string", "age?": "number" })`
+4. Use optional fields with the `"field?"` syntax
+5. Use unions and intersections with `"|"` and `"&"` or `.or()` and `.and()`
+6. See additional details in 
 
 ### 4. Validate Data
 
-> Goal: เลือก validation method ที่เหมาะสม
+> Goal: pick the right validation method
 
-1. เรียก `Schema(data)` โดยตรง เพื่อรับ output หรือ `ArkErrors`
-2. ใช้ `Schema.assert(data)` เมื่อต้องการ throw `TraversalError`
-3. ใช้ `Schema.allows(data)` เมื่อต้องการ boolean type guard (ไม่ apply morphs)
-4. ตรวจ `instanceof type.errors` หรือ `instanceof ArkErrors` สำหรับ error handling
-5. ดูรายละเอียดเพิ่มเติมใน 
+1. Call `Schema(data)` directly to get output or `ArkErrors`
+2. Use `Schema.assert(data)` when you want a `TraversalError` thrown
+3. Use `Schema.allows(data)` for a boolean type guard (does not apply morphs)
+4. Check `instanceof type.errors` or `instanceof ArkErrors` for error handling
+5. See additional details in 
 
 ### 5. Pattern Matching
 
-> Goal: ใช้ `match()` สำหรับ type-safe branching
+> Goal: use `match()` for type-safe branching
 
-1. ใช้ `match()` จาก `arktype` สำหรับ pattern matching
-2. กำหนด cases ด้วย Case Record API (`match({ "string | Array": v => v.length, ... })`)
-3. ใช้ Fluent API ด้วย `.case()` และ `.default()` สำหรับ non-string definitions
-4. ใช้ `.in<T>()` และ `.at("key")` สำหรับ narrowing และ property matching
-5. ค่า `default`: `"assert"` (throw), `"reject"` (return ArkErrors), `"never"` (throw), หรือ handler function
+1. Use `match()` from `arktype` for pattern matching
+2. Define cases with the Case Record API (`match({ "string | Array": v => v.length, ... })`)
+3. Use the Fluent API with `.case()` and `.default()` for non-string definitions
+4. Use `.in<T>()` and `.at("key")` for narrowing and property matching
+5. `default` values: `"assert"` (throw), `"reject"` (return ArkErrors), `"never"` (throw), or a handler function
 
 ### 6. Configure Validation
 
-> Goal: ปรับแต่ง validation behavior และ error messages
+> Goal: customize validation behavior and error messages
 
-1. ใช้ `configure()` จาก `arktype/config` สำหรับ global configuration
-2. กำหนด custom error messages ด้วย `.configure({ actual: () => "..." })` หรือ `.describe(...)`
-3. ใช้ keyword configuration สำหรับ built-in types (เช่น `numberAllowsNaN`, `jitless`)
-4. ดูรายละเอียดเพิ่มเติมใน 
+1. Use `configure()` from `arktype/config` for global configuration
+2. Define custom error messages with `.configure({ actual: () => "..." })` or `.describe(...)`
+3. Use keyword configuration for built-in types (e.g. `numberAllowsNaN`, `jitless`)
+4. See additional details in 
 
 ### 7. Type Inference And Scope
 
-> Goal: ใช้ type inference และ scope สำหรับ reusable types
+> Goal: use type inference and scopes for reusable types
 
-1. ใช้ `typeof Schema.t` หรือ `typeof Schema.infer` สำหรับ type inference
-2. ใช้ `scope()` จาก `arktype` สำหรับ grouped type definitions ที่ reference กัน
-3. หลีกเลี่ยง type assertions ที่ไม่จำเป็น ให้ใช้ inference จาก ArkType
-4. ดูรายละเอียดเพิ่มเติมใน 
+1. Use `typeof Schema.t` or `typeof Schema.infer` for type inference
+2. Use `scope()` from `arktype` for grouped type definitions that reference each other
+3. Avoid unnecessary type assertions — rely on ArkType inference
+4. See additional details in 
 
 ### 8. Performance And Integration
 
-> Goal: ใช้ ArkType ใน performance-critical scenarios และ integrate กับ frameworks
+> Goal: use ArkType in performance-critical scenarios and integrate with frameworks
 
-1. ใช้ ArkType สำหรับ performance-critical validation (benchmark เร็วกว่า Zod หลายเท่า)
-2. ใช้ caching ที่ runtime สำหรับ repeated validations
-3. ใช้ Standard Schema integration (`~standard`) เมื่อจำเป็น — v2.2 ฝัง Standard Schema validators (Zod, Valibot ฯลฯ) ใน definitions ได้โดยตรง
-4. ใช้ `type.fn(args, ":", returnType)` สำหรับ runtime-validated functions และ `arkregex` (`type("x/^...$/")`) สำหรับ type-safe regex พร้อม inferred capture groups
-5. ใช้ `@ark/json-schema` เมื่อต้องการ bidirectional JSON Schema conversion (`toJsonSchema()` รองรับ fallbacks และ draft-07/2020-12)
-6. ดู official resources ใน 
+1. Use ArkType for performance-critical validation (benchmarks many times faster than Zod)
+2. The runtime caches repeated validations — use it
+3. Use Standard Schema integration (`~standard`) when needed — v2.2 embeds Standard Schema validators (Zod, Valibot, etc.) directly in definitions
+4. Use `type.fn(args, ":", returnType)` for runtime-validated functions and `arkregex` (`type("x/^...$/")`) for type-safe regex with inferred capture groups
+5. Use `@ark/json-schema` for bidirectional JSON Schema conversion (`toJsonSchema()` supports fallbacks and draft-07/2020-12)
+6. See official resources in 
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add arktype` (runtime dependency) หรือ package manager ที่ project ใช้
-- ยืนยันว่า `package.json` มี `type: "module"` หรือ environment รองรับ ESM
+- Use `bun add arktype` (runtime dependency) or the project's package manager
+- Confirm `package.json` has `type: "module"` or the environment supports ESM
 
 ### 2. TypeScript Configuration
 
-- เปิด `strict: true` หรือ `strictNullChecks: true` เสมอ
-- เปิด `exactOptionalPropertyTypes: true` และ `skipLibCheck: true`
-- ตั้งค่า VSCode `quickSuggestions.strings: on`
+- Always enable `strict: true` or `strictNullChecks: true`
+- Enable `exactOptionalPropertyTypes: true` and `skipLibCheck: true`
+- Set VSCode `quickSuggestions.strings: on`
 
 ### 3. Schema Definitions
 
-- ใช้ `type()` สำหรับ schema definitions
-- ใช้ `match()` สำหรับ pattern matching
-- ใช้ double quotes หรือ backticks สำหรับ type expressions ใน examples
-- ใช้ code blocks สำหรับ schema examples
+- Use `type()` for schema definitions
+- Use `match()` for pattern matching
+- Use double quotes or backticks for type expressions in examples
+- Use code blocks for schema examples
 
 ### 4. Validation
 
-- ใช้ direct invocation `Schema(data)` สำหรับ result หรือ errors
-- ใช้ `.assert()` สำหรับ throw
-- ใช้ `.allows()` สำหรับ boolean type guard
+- Use direct invocation `Schema(data)` for result or errors
+- Use `.assert()` to throw
+- Use `.allows()` for a boolean type guard
 
 ### 5. Type Safety
 
-- ใช้ type inference จาก ArkType เสมอ (`typeof Schema.t` หรือ `typeof Schema.infer`)
-- หลีกเลี่ยง type assertions ที่ไม่จำเป็น
+- Always use type inference from ArkType (`typeof Schema.t` or `typeof Schema.infer`)
+- Avoid unnecessary type assertions
 
 ### 6. Performance
 
-- ใช้ ArkType สำหรับ performance-critical validation
-- หลีกเลี่ยง redundant validations
+- Use ArkType for performance-critical validation
+- Avoid redundant validations
 
 ### 7. Integration
 
-- ใช้ Standard Schema (`~standard`) เมื่อจำเป็น
-- ใช้ `/follow-lib-zod` ถ้า project ใช้ Zod เป็น validator หลัก
-- ใช้ `/deep-review` ถ้าต้องเลือก/เปรียบเทียบ validation library
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ใช้ `/follow-lang-typescript` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use Standard Schema (`~standard`) when needed
+- Use `/follow-lib-zod` if the project uses Zod as its primary validator
+- Use `/deep-review-codebase` when a validation library still needs choosing/comparing
+- Use /follow-lib-better-auth if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-best-practice if needed
+- Use /use-my-packages-on-registry if needed
+- Use /setup-cicd if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Schema validation ที่รวดเร็วและแม่นยำ
-- Type-safe code ทั้ง compile-time และ runtime
-- Code ที่ maintainable และ consistent
-- Performance ที่ optimized
+- Fast, accurate schema validation
+- Type-safe code at both compile-time and runtime
+- Maintainable, consistent code
+- Optimized performance

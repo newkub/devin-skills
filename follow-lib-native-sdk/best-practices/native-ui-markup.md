@@ -1,10 +1,10 @@
 # .native Markup Patterns
 
-markup เป็น declarative UI ล้วน — ไม่มี logic นอกจาก binding expressions ที่ derive จาก `Model`
+markup is purely declarative UI — no logic besides binding expressions derived from the `Model`
 
 ## Recommended patterns
 
-- **Layout ด้วย flex primitives:** `<row>`/`<column>` พร้อม `gap padding grow` + `main` (cross-axis alignment: `center`) และ `cross` — เช่น header row:
+- **Layout with flex primitives:** `<row>`/`<column>` with `gap padding grow` + `main` (cross-axis alignment: `center`) and `cross` — e.g. a header row:
   ```xml
   <column gap="12" padding="16">
     <row gap="8" cross="center">
@@ -15,21 +15,21 @@ markup เป็น declarative UI ล้วน — ไม่มี logic นอ
     <status-bar>total: {total} | stamped: {stampedMs}ms</status-bar>
   </column>
   ```
-- **Binding syntax:** `{expr}` — attribute ละหนึ่ง expression พอดี; text node ผูกตรงได้ (`<text>{count}</text>`)
-- **Event = dispatch Msg:** `on-press="increment"`, parameterised: `on-press="toggle:{t.id}"` — markup ไม่เรียก function, ส่ง msg ให้ `update` เท่านั้น; events อื่น: `on-toggle on-change on-submit on-input on-scroll on-resize on-drag on-dismiss on-hold on-hover-enter on-hover-leave on-double-press`
-- **Control flow จำกัดเท่าที่มี:** `<for each="{items}" key="{it.id}" as="t">`, `<if test="{model.loading}">…<else>…` — ไม่มี switch/computed ใน markup → derive เป็น field ใน Model แทน
-- **Expression language เป็น closed lib:** operators `+ - * / == != < <= > >= and or not ++` + functions 17 ตัว: `upper lower trim min max abs round floor ceil plural pad fixed thousands percent date time datetime` — ไม่มี method calls, ไม่มี ternary, limits: 256B/64 terms/16 levels → ถ้า expression ยาวกว่านี้ แปลงเป็น computed field ใน core
-- **Component reuse:** `<template name="row-item" args="title subtitle">…<slot/></template>` + `<use template="row-item" title="{x}">` + `<import src="src/components/row-item.native">` — convention: shared components ใต้ `src/components/`
-- **Theming ด้วย token names เสมอ** (ห้าม hardcode สี): `background surface surface_subtle text text_muted border accent destructive success warning info focus_ring scrim disabled` + radii `sm md lg xl none` — pack เลือกใน `app.json` (`house`/`geist`), runtime override ผ่าน `themeState(model): ThemeState {pack?, colorScheme, accent, highContrast, reduceMotion}`
-- **Widget identity เป็น structural** — ซ้ำกันต้องใช้ `key` (ใน `<for>`) หรือ `global-key` ไม่งั้น automation/state mapping เพี้ยน
-- **Native controls เมื่อต้องการ OS feel:** `toolbar titlebar_accessory sidebar statusbar split stack button icon_button list_item checkbox toggle segmented_control text_field search_field label progress_indicator webview` — pipeline text ด้วย `|` separators
+- **Binding syntax:** `{expr}` — exactly one expression per attribute; text nodes bind directly (`<text>{count}</text>`)
+- **Event = dispatch Msg:** `on-press="increment"`, parameterised: `on-press="toggle:{t.id}"` — markup never calls functions, it only sends msgs to `update`; other events: `on-toggle on-change on-submit on-input on-scroll on-resize on-drag on-dismiss on-hold on-hover-enter on-hover-leave on-double-press`
+- **Control flow is limited to what exists:** `<for each="{items}" key="{it.id}" as="t">`, `<if test="{model.loading}">…<else>…` — no switch/computed in markup → derive a field in the Model instead
+- **The expression language is a closed lib:** operators `+ - * / == != < <= > >= and or not ++` + 17 functions: `upper lower trim min max abs round floor ceil plural pad fixed thousands percent date time datetime` — no method calls, no ternary, limits: 256B/64 terms/16 levels → if an expression runs longer than this, move it into a computed field in the core
+- **Component reuse:** `<template name="row-item" args="title subtitle">…<slot/></template>` + `<use template="row-item" title="{x}">` + `<import src="src/components/row-item.native">` — convention: shared components live under `src/components/`
+- **Always theme with token names** (never hardcode colors): `background surface surface_subtle text text_muted border accent destructive success warning info focus_ring scrim disabled` + radii `sm md lg xl none` — the pack is chosen in `app.json` (`house`/`geist`), runtime overrides go through `themeState(model): ThemeState {pack?, colorScheme, accent, highContrast, reduceMotion}`
+- **Widget identity is structural** — duplicates need `key` (in `<for>`) or `global-key`, otherwise automation/state mapping goes wrong
+- **Native controls when you want OS feel:** `toolbar titlebar_accessory sidebar statusbar split stack button icon_button list_item checkbox toggle segmented_control text_field search_field label progress_indicator webview` — text pipelines use `|` separators
 
 ## Pitfalls
 
-- **`switch` element ใน counter template** ไม่ใช่ Msg — เป็น element ชื่อ `switch` (เหมือน toggle); ระวังสับสนกับ control-flow
-- **attribute values เป็น strings** — ตัวเลข/boolean ใน binding ต้อง match type ที่ core expects (`checked="{ticking}"` ต้องได้ Bool จาก Model)
-- **list/grid ต้องมี virtualization awareness** — dataset ใหญ่ใช้ `<scroll>` + `<list>` ไม่ใช่ `<for>` ทบซ้อนใน `stack`
-- **terminal element** `<terminal pty="{key}">` ผูกกับ `Cmd.ptySpawn/Write/Resize/Kill` (libghostty-vt; Windows ConPTY ต้องการ 1809+) — ห้ามส่ง bytes ก่อน spawn สำเร็จ
-- **dynamic images** ต้อง model-owned `ImageId` ผ่าน `Cmd.imageLoad(id,…)` — cap 16 slots, unregister เมื่อเลิกใช้
-- **markup reload ตอน `native dev`** hot-reload ได้โดย state คงเดิม — แต่เปลี่ยน binding ที่ reference field ใหม่ต้อง `native check` ผ่านก่อน เพราะ checker ทำงานฝั่ง core
-- **debug tools:** `native markup check|dump|lsp` — ใช้ `dump` ดู parse result ก่อนเดาว่า markup ผิดตรงไหน
+- **the `switch` element in the counter template** is not a Msg — it's an element named `switch` (like a toggle); don't confuse it with control-flow
+- **attribute values are strings** — numbers/booleans in bindings must match the type the core expects (`checked="{ticking}"` must yield a Bool from the Model)
+- **lists/grids need virtualization awareness** — for large datasets use `<scroll>` + `<list>`, not nested `<for>` inside a `stack`
+- **the terminal element** `<terminal pty="{key}">` pairs with `Cmd.ptySpawn/Write/Resize/Kill` (libghostty-vt; Windows ConPTY requires 1809+) — never send bytes before the spawn succeeds
+- **dynamic images** must be model-owned `ImageId`s through `Cmd.imageLoad(id,…)` — cap of 16 slots, unregister when done
+- **markup reload under `native dev`** hot-reloads while state is kept — but bindings referencing new fields must pass `native check` first, since the checker runs on the core side
+- **debug tools:** `native markup check|dump|lsp` — use `dump` to see the parse result before guessing where the markup went wrong

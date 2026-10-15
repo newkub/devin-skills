@@ -6,7 +6,7 @@ related:
   - use-bun-native-api
   - follow-create-bun-cli
   - follow-tool-bunup
-  - deep-review
+  - deep-review-codebase
   - follow-create-plugins
 
 ---
@@ -26,7 +26,7 @@ For building plugins for the Bun runtime and the `bun build` bundler in TypeScri
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and `Bun.plugin` API, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and `Bun.plugin` API, then run `/deep-review-codebase` to summarize the tech stack
 2. Record the reasons for choosing the stack and libraries as a reference for the next step (create bun plugins)
 3. Record the reasons for choosing the stack and libraries as a reference for the next step (create bun plugins)
 

@@ -1,6 +1,6 @@
 ---
 name: list-dependencies
-description: แสดงรายการ dependencies ทั้งหมดใน project พร้อมข้อมูลและการวิเคราะห์
+description: List all dependencies in the project with data and analysis
 argument-hint: "[scope]"
 related:
   - alternative
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-แสดงรายการ dependencies ทั้งหมดใน project เพื่อให้ user เห็นภาพรวมและสามารถจัดการได้
+List all dependencies in the project so the user sees the full picture and can manage them
 
 ## Scope
 
-ใช้สำหรับทุก workspace ที่มี package manifest เช่น `package.json`, `Cargo.toml`, `pyproject.toml`
+For every workspace with a package manifest such as `package.json`, `Cargo.toml`, `pyproject.toml`
 
 ## Execute
 
@@ -24,104 +24,104 @@ related:
 
 > Goal: Read Package Manifest
 
-อ่าน package manifest เพื่อดู dependencies ทั้งหมด
+Read the package manifest to see all dependencies
 
-1. อ่าน `package manifest` เช่น `package.json`, `Cargo.toml`, `pyproject.toml`
-2. ระบุประเภท dependencies (dependencies, devDependencies, peerDependencies, optionalDependencies)
-3. รวบรวม version ของแต่ละ dependency
-4. ถ้าเป็น monorepo อ่านทุก workspace
+1. Read the `package manifest` such as `package.json`, `Cargo.toml`, `pyproject.toml`
+2. Identify the dependency types (dependencies, devDependencies, peerDependencies, optionalDependencies)
+3. Collect the version of each dependency
+4. In a monorepo, read every workspace
 
 ### 2. Categorize Dependencies
 
 > Goal: Categorize Dependencies
 
-จัดกลุ่ม dependencies ตาม purpose
+Group dependencies by purpose
 
-1. จัดกลุ่มตามประเภท (framework, utilities, testing, linting, build tools)
-2. จัดกลุ่มตาม source (npm, GitHub, local packages)
-3. ระบุ dependencies ที่เป็น `workspace packages` ใน monorepo
-4. แยก `production` และ `development` dependencies
+1. Group by type (framework, utilities, testing, linting, build tools)
+2. Group by source (npm, GitHub, local packages)
+3. Identify `workspace packages` in a monorepo
+4. Separate `production` and `development` dependencies
 
 ### 3. Analyze Usage
 
 > Goal: Analyze Usage
 
-วิเคราะห์การใช้งาน dependencies
+Analyze how dependencies are used
 
-1. ทำ `/follow-tool-knip` เพื่อหา dependencies ที่ไม่ได้ใช้
-2. ค้นหา dependencies ที่ซ้ำซ้อนหรือทำงานคล้ายกัน
-3. ตรวจสอบ dependencies ที่มี security vulnerabilities
-4. ดู dependencies ที่มี version เก่ากว่า latest
+1. Do `/follow-tool-knip` to find unused dependencies
+2. Find duplicated dependencies or ones doing similar work
+3. Check dependencies with security vulnerabilities
+4. Look at dependencies whose version is behind latest
 
 ### 4. Suggest Improvements
 
 > Goal: Suggest Improvements
 
-แนะนำ improvements สำหรับ dependencies
+Recommend improvements for the dependencies
 
-1. ทำ `/alternative` เพื่อเปรียบเทียบกับ alternatives
-2. แนะนำ dependencies ที่ควร update
-3. แนะนำ dependencies ที่ควรลบ
-4. แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า
+1. Do `/alternative` to compare with alternatives
+2. Recommend dependencies that should be updated
+3. Recommend dependencies that should be removed
+4. Recommend dependencies that should be swapped for better alternatives
 
 ## Rules
 
 ### 1. Manifest Reading
 
-อ่าน package manifest อย่างถูกต้อง
+Read package manifests correctly
 
-- อ่านจาก `package.json`, `Cargo.toml`, `pyproject.toml` ตาม project type
-- ระบุทุกประเภท dependencies (dependencies, devDependencies, peerDependencies, optionalDependencies)
-- อ่านทุก workspace ใน monorepo
-- รวบรวม version และ semver ranges
+- Read from `package.json`, `Cargo.toml`, `pyproject.toml` per project type
+- Identify every dependency type (dependencies, devDependencies, peerDependencies, optionalDependencies)
+- Read every workspace in a monorepo
+- Collect versions and semver ranges
 
 ### 2. Categorization
 
-จัดกลุ่ม dependencies อย่างเป็นระบบ
+Group dependencies systematically
 
-- จัดกลุ่มตาม purpose (framework, utilities, testing, linting, build tools)
-- จัดกลุ่มตาม source (npm, GitHub, local packages)
-- แยก `production` และ `development` dependencies
-- ระบุ `workspace packages` ใน monorepo
+- Group by purpose (framework, utilities, testing, linting, build tools)
+- Group by source (npm, GitHub, local packages)
+- Separate `production` and `development` dependencies
+- Identify `workspace packages` in a monorepo
 
 ### 3. Usage Analysis
 
-วิเคราะห์การใช้งาน dependencies
+Analyze how dependencies are used
 
-- ใช้ `/follow-tool-knip` เพื่อหา dependencies ที่ไม่ได้ใช้
-- ตรวจสอบ dependencies ที่ซ้ำซ้อนหรือทำงานคล้ายกัน
-- ตรวจสอบ security vulnerabilities ด้วย `/run-audit`
-- ดู dependencies ที่มี version เก่ากว่า latest
+- Use `/follow-tool-knip` to find unused dependencies
+- Check for duplicated dependencies or ones doing similar work
+- Check security vulnerabilities with `/run-audit`
+- Look at dependencies whose version is behind latest
 
 ### 4. Improvement Suggestions
 
-แนะนำ improvements ที่เป็นประโยชน์
+Recommend useful improvements
 
-- ใช้ `/alternative` เพื่อเปรียบเทียบกับ alternatives
-- แนะนำ dependencies ที่ควร update ด้วย `/follow-tool-taze`
-- แนะนำ dependencies ที่ควรลบ
-- แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า
+- Use `/alternative` to compare with alternatives
+- Recommend dependencies to update via `/follow-tool-taze`
+- Recommend dependencies to remove
+- Recommend dependencies to swap for better alternatives
 
 ### 5. Report Formatting
 
-จัดรูปแบบ output ตาม `/report`
+Format the output per `/report`
 
-1. กำหนด table structure ด้วยคอลัมน์ "No." เป็นคอลัมน์แรก (No. | Name | Version | Type | Purpose | Status)
-2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน
-3. ใช้ alignment ที่เหมาะสม (left สำหรับ text, right สำหรับ version)
-4. ใช้ bold สำหรับ headers และ keywords สำคัญ
-5. ใช้ backticks สำหรับ package names และ versions
-6. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status indicators
-7. จัดกลุ่ม dependencies ตาม category (Production, Development, Workspace)
-8. เรียงลำดับภายในกลุ่มตามความสำคัญ
-9. ใช้ separators สำหรับแยกกลุ่มที่ชัดเจน
-10. ตรวจสอบว่าตารางอ่านง่ายบนทุก device
-- ใช้ /run-install ถ้าจำเป็น
+1. Define the table structure with "No." as the first column (No. | Name | Version | Type | Purpose | Status)
+2. Use standard markdown table format with clear headers
+3. Use suitable alignment (left for text, right for versions)
+4. Use bold for headers and key keywords
+5. Use backticks for package names and versions
+6. Use symbols (✅, ❌, ⚠️) for status indicators
+7. Group dependencies by category (Production, Development, Workspace)
+8. Order within a group by importance
+9. Use separators for clear group breaks
+10. Verify the table reads well on every device
+- Use /run-install if needed
 
 ## Expected Outcome
 
-- User เห็นภาพรวม dependencies ทั้งหมดใน project
-- User รู้ว่า dependencies ไหนไม่ได้ใช้
-- User รู้ว่า dependencies ไหนซ้ำซ้อน
-- User รู้ alternatives ที่ดีกว่า
-- User สามารถจัดการ dependencies ได้อย่างมีประสิทธิภาพ
+- The user sees the full dependency picture of the project
+- The user knows which dependencies are unused
+- The user knows which dependencies are duplicated
+- The user knows better alternatives
+- The user can manage dependencies effectively

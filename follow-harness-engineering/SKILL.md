@@ -4,7 +4,7 @@ description: Build and improve AI agent harnesses for reliability and verifiable
 argument-hint: "[scope]"
 related:
   - follow-context-engineering
-  - deep-review
+  - deep-review-codebase
   - deep-validate
   - run-test
 ---
@@ -17,7 +17,7 @@ Build and improve AI agent harnesses (the runtime infrastructure layer) for reli
 
 Use for projects with AI agent infrastructure such as MCP servers, agent runtimes, tool interfaces, or coding agent systems that need harness-level engineering
 
-See also: /deep-review
+See also: /deep-review-codebase
 
 ## Execute
 
@@ -31,7 +31,7 @@ Assess harness components against the ETCLOVG taxonomy
 2. Check the Tool interface: tool definitions, input/output schemas, error handling, token efficiency
 3. Check Context management: context selection, compaction, memory — run `/follow-context-engineering`
 4. Check Lifecycle/Orchestration: agent loop, state management, retry logic, recovery
-5. Check Observability: logging, tracing, metrics, execution traces — run `/deep-review`
+5. Check Observability: logging, tracing, metrics, execution traces — run `/deep-review-codebase`
 6. Check Verification: test harness, requirement checks, output validation — run `/deep-validate`
 7. Check Governance: permissions, access control, audit trail, intervention recording
 
@@ -70,7 +70,7 @@ Add observability for auditable execution
 2. Use structured logging for every tool call and agent decision
 3. Record interventions: when a human intervenes, log the context and reason
 4. Check entropy: log unrelated changes the agent made beyond what was needed
-5. Run `/deep-review` for comprehensive observability improvements
+5. Run `/deep-review-codebase` for comprehensive observability improvements
 
 ### 5. Implement Verification
 

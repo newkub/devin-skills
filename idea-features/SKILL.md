@@ -4,6 +4,11 @@ description: สร้าง 30 ไอเดียฟีเจอร์ (extends
 argument-hint: "[topic]"
 related:
   - idea
+  - validate-idea
+  - design-cli-prototype
+  - design-tui-prototype
+  - design-html-prototype
+  - design-web-prototype
   - deep-analyze
   - learn-from-codebase
   - reframe
@@ -23,7 +28,9 @@ related:
 
 - output = ตารางในแชทเท่านั้น — ไม่มี web viewer, ไม่มี `ideas.json`, ไม่เขียนไฟล์ลง temp/skill dir/target repo อีกต่อไป (โมเดลเดิมถูกถอดออกแล้ว)
 - idea ที่เป็น gap-fix ของ implementation เดิม → `/improve features`; ต้องการ market evidence สำหรับ net-new → `/bench-competitors`
+- ต้องการคัดว่าไอเดียไหน "ควรทำจริง" ก่อน plan (หลักฐาน demand/feasibility + verdict) → `/validate-idea`
 - ไม่ implement ไอเดีย — idea ที่ user confirm ส่งต่อ `/create-plan-in-dot-devin` เสมอ แล้วจึง `/implement-to-production`
+- idea ที่ user เลือกแล้วแต่ยังไม่ออกแบบ → ออกแบบก่อน plan: `/design-cli-prototype` / `/design-tui-prototype` (ตอบในแชท) หรือ `/design-html-prototype` / `/design-web-prototype` (เมื่อต้องเห็น visual) แล้วจึง `/create-plan-in-dot-devin`
 - UX/UI ล้วน ๆ ไม่เจาะ feature set → `/idea-uxui` แทน
 
 ## Execute

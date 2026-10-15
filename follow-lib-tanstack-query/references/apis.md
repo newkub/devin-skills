@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-query` | 5.104.x | Query |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Query | `QueryClient`, `QueryClientProvider` | `useQuery`, `useMutation`, `useQueryClient` |

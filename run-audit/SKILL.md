@@ -3,7 +3,7 @@ name: run-audit
 description: Audit dependencies and security to check for vulnerabilities
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
@@ -22,7 +22,7 @@ Use `run-audit` for the specific tasks and workflows it covers (audit)
 
 ## Execute
 
-> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (audit)
+> Pre-Run: always run `/deep-review-codebase` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (audit)
 
 ### 1. Audit Dependencies
 

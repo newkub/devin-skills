@@ -4,7 +4,7 @@ description: Build a Storybook addon — manager UI, preview decorators, preset,
 argument-hint: "[addon-name]"
 related:
   - follow-create-sdk
-  - deep-review
+  - deep-review-codebase
   - follow-tool-release-it
   - ship
 ---
@@ -27,8 +27,8 @@ For projects that need a new Storybook addon, or to turn an existing feature int
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
-2. Run `/deep-review` to review the libraries to be used (react, storybook version, bundler)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+2. Run `/deep-review-codebase` to review the libraries to be used (react, storybook version, bundler)
 3. Check that the target Storybook version matches the APIs used (9.x = `storybook/manager-api`)
 
 ### 2. Prepare

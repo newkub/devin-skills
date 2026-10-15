@@ -1,6 +1,6 @@
 ---
 name: follow-lib-better-auth-setup-auth
-description: ติดตั้ง Better Auth, สร้าง auth.ts และ database adapter ให้พร้อมใช้งาน
+description: Install Better Auth, create auth.ts and the database adapter, ready to use
 argument-hint: "[framework-or-adapter]"
 related:
   - follow-lib-better-auth
@@ -12,68 +12,68 @@ related:
 
 ## Goal
 
-ติดตั้ง Better Auth, สร้าง `auth.ts` พร้อม database adapter และ mount handler ให้ sign in/up ทำงานได้ — first-time setup เท่านั้น
+Install Better Auth, create `auth.ts` with a database adapter and mount the handler so sign in/up works — first-time setup only
 
 ## Scope
 
-- ใช้เมื่อ project ยังไม่มี Better Auth (ถ้ามีอยู่แล้ว → verify เท่านั้น)
-- ครอบคลุม: install, env vars, `auth.ts`, database adapter, handler mounting
-- ไม่ครอบคลุม providers/plugins config — ทำ `workflows/config-providers/SKILL.md` แทน
+- Use when the project has no Better Auth yet (if it exists already → verify only)
+- Covers: install, env vars, `auth.ts`, database adapter, handler mounting
+- Does not cover providers/plugins config — do `workflows/config-providers/SKILL.md` instead
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment และ current state ก่อน setup
+> Goal: check the environment and current state before setup
 
-1. อ่าน `package.json` — ถ้ามี `better-auth` แล้ว → skip ไป verify
-2. ระบุ framework (Next.js, Hono, Elysia, TanStack Start ฯลฯ) และ ORM/database ที่ project ใช้
-3. ตรวจ env vars `BETTER_AUTH_SECRET` และ `BETTER_AUTH_URL` — ถ้าขาด → สร้าง secret (≥32 chars, high entropy) แล้วเก็บผ่าน `/follow-secret-manager` ห้าม commit
+1. Read `package.json` — if `better-auth` is already there → skip to verify
+2. Identify the framework (Next.js, Hono, Elysia, TanStack Start, etc.) and the ORM/database the project uses
+3. Check the env vars `BETTER_AUTH_SECRET` and `BETTER_AUTH_URL` — if missing → create the secret (≥32 chars, high entropy) then store it via `/follow-secret-manager`, never commit
 
 ### 2. Install
 
-> Goal: ติดตั้ง `better-auth` และ adapter ที่ตรง ORM
+> Goal: install `better-auth` and the adapter matching the ORM
 
-1. รัน `bun add better-auth` (หรือ package manager ตาม lockfile)
-2. ติดตั้ง adapter ถ้าไม่ใช้ built-in Kysely — เช่น `bun add @better-auth/drizzle-adapter` (ทำ `/follow-lib-drizzle` ร่วมถ้ายังไม่มี Drizzle)
-3. ยืนยัน `better-auth` เป็น runtime dependency
+1. Run `bun add better-auth` (or the package manager matching the lockfile)
+2. Install the adapter if not using built-in Kysely — e.g. `bun add @better-auth/drizzle-adapter` (run `/follow-lib-drizzle` together if Drizzle isn't set up yet)
+3. Confirm `better-auth` is a runtime dependency
 
 ### 3. Create auth.ts
 
-> Goal: config ขั้นต่ำที่ทำงานได้
+> Goal: a minimal working config
 
-1. สร้าง `auth.ts` (หรือ `src/lib/auth.ts` ตาม project structure) ด้วย `betterAuth()` แล้ว export `auth`
-2. กำหนด database — ตรง adapter: `new Database()`/`new Pool()` สำหรับ Kysely, หรือ `drizzleAdapter(db)` สำหรับ Drizzle
-3. เปิด `emailAndPassword: { enabled: true }` เป็น baseline (social providers ทำใน `config-providers`)
-4. ตั้ง `trustedOrigins` เฉพาะ origins ที่ใช้จริง
-5. รัน `bunx auth@latest generate` (สร้าง schema) หรือ `bunx auth@latest migrate` (Kysely adapter) — Drizzle adapter ให้ generate ผ่าน drizzle-kit ตามปกติ
+1. Create `auth.ts` (or `src/lib/auth.ts` per the project structure) with `betterAuth()` then export `auth`
+2. Define the database — matching the adapter: `new Database()`/`new Pool()` for Kysely, or `drizzleAdapter(db)` for Drizzle
+3. Enable `emailAndPassword: { enabled: true }` as the baseline (social providers are done in `config-providers`)
+4. Set `trustedOrigins` to only the origins actually used
+5. Run `bunx auth@latest generate` (creates the schema) or `bunx auth@latest migrate` (Kysely adapter) — for the Drizzle adapter, generate via drizzle-kit as usual
 
 ### 4. Mount Handler And Client
 
-> Goal: auth routes ตอบ request ได้
+> Goal: the auth routes can answer requests
 
-1. Mount auth handler ตาม framework: `toNextJsHandler(auth)`, `toElysiaHandler(auth)` ฯลฯ ที่ `/api/auth/*` — base path เดียวกันเสมอ
-2. สร้าง client ด้วย `createAuthClient` จาก `better-auth/react` (หรือ `/vue`, `/svelte`, `/solid`, `/client`)
-3. ทดสอบ `authClient.signUp.email()` / `authClient.signIn.email()` flow เบื้องต้น
+1. Mount the auth handler per framework: `toNextJsHandler(auth)`, `toElysiaHandler(auth)`, etc. at `/api/auth/*` — always the same base path
+2. Create the client with `createAuthClient` from `better-auth/react` (or `/vue`, `/svelte`, `/solid`, `/client`)
+3. Test the basic `authClient.signUp.email()` / `authClient.signIn.email()` flows
 
 ### 5. Verify
 
-> Goal: smoke check auth flow end-to-end
+> Goal: smoke check the auth flow end-to-end
 
-1. Sign up user จริง → session cookie ถูก set, `useSession()`/`getSession` คืน session
-2. Protected route ปฏิเสธ anonymous และยอมรับ session ที่ถูกต้อง
-3. รัน lint/typecheck ของ project
-4. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report; ผ่าน → `/suggest-next-action`
+1. Sign up a real user → the session cookie is set, `useSession()`/`getSession` returns the session
+2. A protected route rejects anonymous and accepts a valid session
+3. Run the project's lint/typecheck
+4. If verification fails → run `/resolve-errors` max 3 rounds, then stop and report; if it passes → `/suggest-next-action`
 
 ## Rules
 
-- Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น ห้าม overwrite `auth.ts` เดิม
-- Secrets ผ่าน env vars เสมอ (`BETTER_AUTH_SECRET` ≥32 chars) — ห้าม hardcode
-- เขียน config ขั้นต่ำก่อน — plugins/providers เพิ่มทีหลังผ่าน `config-providers`
-- Schema ต้อง generate ก่อน test — ถ้าไม่แน่ใจ adapter/option → ดู official docs
+- Idempotent — if setup already exists, only verify; never overwrite the existing `auth.ts`
+- Secrets always via env vars (`BETTER_AUTH_SECRET` ≥32 chars) — never hardcode
+- Write the minimal config first — add plugins/providers later via `config-providers`
+- The schema must be generated before testing — if unsure about an adapter/option → check the official docs
 
 ## Expected Outcome
 
-- `better-auth` + adapter ติดตั้ง, `auth.ts` export `auth` พร้อม database
-- Handler mount ที่ `/api/auth/*`, client พร้อมใช้
-- Sign up/sign in flow ทำงานจริง — พร้อมทำ `workflows/config-providers/SKILL.md` ต่อ
+- `better-auth` + adapter installed, `auth.ts` exports `auth` with the database
+- Handler mounted at `/api/auth/*`, client ready to use
+- Sign up / sign in flows work — ready to do `workflows/config-providers/SKILL.md`

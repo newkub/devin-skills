@@ -1,6 +1,6 @@
 ---
 name: follow-monorepo-migrate-to-monorepo
-description: ย้าย single repo ไปเป็น monorepo — workspace config, dep hoisting, git history
+description: Move a single repo into a monorepo — workspace config, dep hoisting, git history
 argument-hint: "[tool]"
 related:
   - follow-monorepo
@@ -13,59 +13,59 @@ related:
 
 ## Goal
 
-ย้าย single-package repo ไปเป็น monorepo อย่างปลอดภัย — workspace config ถูกต้อง, dependencies hoist ได้, git history ไม่หาย และ rollback ได้
+Migrate a single-package repo into a monorepo safely — correct workspace config, hoisted dependencies, git history preserved, and rollback possible
 
 ## Scope
 
-- ใช้เมื่อต้องแยก repo เดียวออกเป็น `apps/*`, `packages/*` หรือรวมหลาย repos เข้าด้วยกัน
-- รองรับ bun/npm/pnpm workspaces และ task orchestrators (moon, turbo)
-- ไม่ครอบคลุมการ config workspaces บน monorepo ที่มีอยู่แล้ว — ใช้ `workflows/config-workspaces/SKILL.md`
+- Use when splitting one repo into `apps/*`, `packages/*`, or merging several repos together
+- Supports bun/npm/pnpm workspaces and task orchestrators (moon, turbo)
+- Does not cover configuring workspaces in an existing monorepo — use `workflows/config-workspaces/SKILL.md`
 
 ## Execute
 
 ### 1. Plan Layout And Tool
 
-> Goal: กำหนดโครงสร้างและ tool ก่อนขยับไฟล์
+> Goal: fix the structure and tool before moving files
 
-1. ทำ `/plan` — ระบุ target layout (`apps/`, `packages/`, `tools/`) และ package manager + orchestrator ที่จะใช้
-2. เลือก tool ตาม ecosystem ที่มีอยู่ — bun, pnpm, npm, moon, turbo — ดู official docs ถ้าไม่แน่ใจ
-3. map ทุก top-level directory/config ว่าจะไปอยู่ที่ไหน หรือคงไว้ที่ root
+1. Run `/plan` — state the target layout (`apps/`, `packages/`, `tools/`) and the package manager + orchestrator to use
+2. Pick the tool per the existing ecosystem — bun, pnpm, npm, moon, turbo — check official docs if unsure
+3. Map every top-level directory/config to where it goes, or keep it at root
 
 ### 2. Preserve Git History
 
-> Goal: ไม่เสีย history ระหว่างย้าย
+> Goal: don't lose history during the move
 
-1. ย้ายไฟล์ด้วย `git mv` เสมอ — ห้าม copy-delete
-2. ถ้ารวมหลาย repos → ใช้ `git subtree` หรือ merge ด้วย `--allow-unrelated-histories` เพื่อเก็บ history ของแต่ละ repo — ดู official git docs
-3. แยก commit "ย้ายไฟล์" ออกจาก commit "แก้ config" เพื่อให้ rename detection ทำงาน
+1. Always move files with `git mv` — never copy-delete
+2. If merging several repos → use `git subtree` or merge with `--allow-unrelated-histories` to keep each repo's history — see official git docs
+3. Separate the "move files" commit from the "edit config" commit so rename detection works
 
 ### 3. Setup Workspaces
 
-> Goal: workspace config ทำงานและ install ผ่าน
+> Goal: the workspace config works and install passes
 
-1. สร้าง workspace config ตาม tool — `package.json#workspaces` (bun/npm), `pnpm-workspace.yaml` (pnpm)
-2. ย้าย shared devDependencies ขึ้น root, package ลูกใช้ `workspace:*` (pnpm/bun) สำหรับ internal deps
-3. ตรวจ dep hoisting — external deps ที่ซ้ำหลาย packages ให้ version เดียวกัน หรือใช้ catalogs ถ้า tool รองรับ
-4. `install` แล้วตรวจ lockfile ไม่มี conflicts
+1. Create the workspace config per the tool — `package.json#workspaces` (bun/npm), `pnpm-workspace.yaml` (pnpm)
+2. Move shared devDependencies up to root; child packages use `workspace:*` (pnpm/bun) for internal deps
+3. Check dep hoisting — external deps repeated across packages get one version, or use catalogs if the tool supports them
+4. Run `install` and confirm the lockfile has no conflicts
 
 ### 4. Verify
 
-> Goal: monorepo ใช้งานได้เหมือนเดิม
+> Goal: the monorepo works as before
 
-1. ทำ `/run-verify` — build, typecheck, lint, test ผ่านทุก workspace
-2. ทำ `/check-monorepo boundaries` เพื่อยืนยันไม่มี cross-import ผิด boundary
-3. ถ้า fail → `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `/run-verify` — build, typecheck, lint, test pass on every workspace
+2. Run `/check-monorepo boundaries` to confirm no cross-import violates boundaries
+3. If it fails → `/resolve-errors` for max 3 rounds, then stop and report
 
 ## Rules
 
-- ต้อง `/plan` และ user confirm ก่อนย้าย — migration เป็น high-impact change
-- แยก commit ต่อ step: move → workspace config → dep dedupe → verify ให้ bisect ได้
-- ห้ามลบ repo/config เดิมจนกว่า verify จะผ่าน — เก็บ rollback path
-- internal deps ใช้ workspace protocol ไม่ใช่ published versions
-- CI, scripts, docs ที่อ้าง path เดิมต้องอัปเดตตาม — ทำ `/update-references`
+- `/plan` and user confirm are required before moving — migration is a high-impact change
+- One commit per step: move → workspace config → dep dedupe → verify, so bisect works
+- Never delete the original repo/config until verify passes — keep a rollback path
+- Internal deps use the workspace protocol, not published versions
+- CI, scripts, and docs referencing old paths must be updated — run `/update-references`
 
 ## Expected Outcome
 
-- repo เป็น monorepo ที่ install/build/test ผ่านครบ
-- git history ถูก preserve, deps ไม่ duplicate
-- commit history แยกตาม step ทำให้ rollback ได้
+- The repo is a monorepo where install/build/test all pass
+- Git history is preserved, deps are not duplicated
+- Commit history is separated per step, making rollback possible

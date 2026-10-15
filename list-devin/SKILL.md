@@ -1,6 +1,6 @@
 ---
 name: list-devin
-description: List Devin resources — hooks, MCP, skills, subagents, sessions ผ่าน top-level skills
+description: List Devin resources — hooks, MCP, skills, subagents, sessions via top-level skills
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-Dispatch ไป top-level skill ตาม Devin resource ที่ต้อง list — parent ทำ routing เท่านั้น
+Dispatch to the top-level skill for the Devin resource to list — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if unspecified → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -31,18 +31,18 @@ Dispatch ไป top-level skill ตาม Devin resource ที่ต้อง l
 | `session` | /list-devin-session — Devin sessions |
 | `user-requests` | /list-request-devin-session — user request history |
 
-1. ระบุ domain จาก argument (เช่น `/list-devin-global-skills`)
-2. ถ้า domain รองรับ → เรียก `/list-<parent>-<domain>` skill แล้วทำตาม flow นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/list-devin-global-skills`)
+2. When the domain is supported → call the `/list-<parent>-<domain>` skill and follow its flow
+3. When the domain is missing or unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
-- output ต้องเป็นตารางผ่าน `/report` ตาม convention ของ skill ปลายทาง
+- The parent only dispatches — never duplicate the target skill's workflow
+- Output must be a table via `/report` per the target skill's convention
 
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /follow-devin-global-skills ถ้าจำเป็น
+- Use /update-devin-global-skills if needed
+- Use /follow-devin-global-skills if needed
 
 ## Expected Outcome
 
-- caller ถูก Dispatch ไป top-level skill ที่ตรง domain แล้ว list ตาม flow นั้น
+- The caller is dispatched to the top-level skill matching the domain and listed per that flow

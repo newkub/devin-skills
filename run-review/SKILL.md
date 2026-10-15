@@ -4,7 +4,7 @@ description: alias → /update-review-cli-then-run (run the review CLI, analyze 
 argument-hint: "[target]"
 related:
   - update-review-cli-then-run
-  - deep-review
+  - deep-review-codebase
   - run-verify
   - suggest-next-action
 ---
@@ -28,7 +28,7 @@ Run the full `/update-review-cli-then-run` workflow — the run path is Steps 7-
 
 - Never duplicate the `/update-review-cli-then-run` workflow in this file
 - If the alias is missing steps → always read `update-review-cli-then-run/SKILL.md`
-- If the review needs to be broader than the CLI → use `/deep-review`; to drill into `.devin`, use `/deep-review`
+- If the review needs to be broader than the CLI → use `/deep-review-codebase`; to drill into `.devin`, use `/deep-review-codebase`
 - Verify the results after review with `/run-verify`, then close with `/suggest-next-action`
 
 ## Expected Outcome

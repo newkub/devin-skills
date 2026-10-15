@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-router` | 1.170.x | Router |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Router | `createRouter`, `RouterProvider` | `createRoute`, `createFileRoute`, `Link`, `useNavigate` |

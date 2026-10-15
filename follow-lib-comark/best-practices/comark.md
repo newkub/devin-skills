@@ -1,36 +1,36 @@
 # Comark — Best Practices
 
-Parse once, render anywhere — `MarkdownDocument` แยก parse ออกจาก render target
+Parse once, render anywhere — `MarkdownDocument` separates parse from render target
 
 ## Recommended Patterns
 
-- Parse ฝั่ง server/build แล้ว serialize `MarkdownDocument` ไป render — content outlives stack
-- เลือก renderer ตาม target จริง: `@comark/html` (SSG/RSS/email), `@comark/ansi` (CLI), framework component (apps)
-- Code highlighting ผ่าน `comark/plugins/shiki` — multi-theme + on-demand langs อยู่แล้ว (ดู `/follow-lib-shiki`); เล็กกว่า/เร็วกว่า → `comark/plugins/rangi` (rangi, ~13kB sync, dual-theme inline colors — เหมาะ dev tools/snippet preview)
-- Register เฉพาะ components ที่ต้องการ — content เป็น data, ไม่ใช่ executable code
-- Streaming AI output → เปิด streaming prop; auto-close ทำให้ทุก frame render สมบูรณ์
-- Docs single-page จาก README → dispatch ไป `/follow-create-web-docs` แทน wire เอง
+- Parse on the server/build then serialize the `MarkdownDocument` to render — content outlives the stack
+- Pick the renderer by the real target: `@comark/html` (SSG/RSS/email), `@comark/ansi` (CLI), framework component (apps)
+- Code highlighting via `comark/plugins/shiki` — already multi-theme + on-demand langs (see `/follow-lib-shiki`); smaller/faster → `comark/plugins/rangi` (rangi, ~13kB sync, dual-theme inline colors — suits dev tools/snippet preview)
+- Register only the components you need — content is data, not executable code
+- Streaming AI output → enable the streaming prop; auto-close makes every frame render completely
+- Single-page docs from a README → dispatch to `/follow-create-web-docs` instead of wiring it yourself
 
 ## Common Pitfalls
 
-- Vue `<Markdown>` นอก `<Suspense>` → render ไม่ขึ้น/ error — wrap เสมอ
-- components/attributes/frontmatter เป็น opt-in — assume standard CommonMark ทำงานก่อน เปิดเพิ่มเมื่อต้องการ
-- markdown-it plugins ส่วนใหญ่ใช้ได้ แต่เช็ค compat — markdown-exit เป็น TS rewrite
-- Untrusted content → sanitize HTML output อีกชั้น (`/follow-lib-dompurify`) แม้ components จะ gated
-- Streaming ปิด → mid-token frames แสดง raw syntax — เปิด prop สำหรับ chat/AI UI เสมอ
+- Vue `<Markdown>` outside `<Suspense>` → doesn't render / errors — always wrap
+- components/attributes/frontmatter are opt-in — assume standard CommonMark works first, enable extras when needed
+- Most markdown-it plugins work, but check compat — markdown-exit is a TS rewrite
+- Untrusted content → sanitize the HTML output another layer (`/follow-lib-dompurify`) even though components are gated
+- Streaming off → mid-token frames show raw syntax — always enable the prop for chat/AI UI
 
 ## UX/UI Integration
 
-- ใช้ใน `/improve uxui` เมื่อ: markdown content render ผิด, docs ขาด callouts/components, chat streaming แสดง raw markdown, code blocks ไม่มี highlight (pair shiki)
-- Attributes syntax `{.class}` → ผูก design-system classes (เช่น UnoCSS utilities) บน content โดยไม่เขียน HTML
-- Component syntax → callouts, cards, alerts, embeds ที่ consistent กับ design system
+- Use in `/improve uxui` when: markdown content renders wrong, docs lack callouts/components, chat streaming shows raw markdown, code blocks have no highlighting (pair shiki)
+- Attributes syntax `{.class}` → bind design-system classes (e.g. UnoCSS utilities) on content without writing HTML
+- Component syntax → callouts, cards, alerts, embeds that stay consistent with the design system
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| parse once → render หลาย targets | parse ซ้ำต่อ output target |
+| parse once → render many targets | re-parse per output target |
 | register components explicit | trust content-embedded code |
-| streaming prop สำหรับ AI/chat UI | render raw chunks โดย auto-close ปิด |
-| plugins official ก่อนเขียนเอง | rebuild shiki/mermaid/toc เอง |
-| serialize `MarkdownDocument` สำหรับ cache | re-parse ทุก request |
+| streaming prop for AI/chat UI | render raw chunks with auto-close off |
+| official plugins before writing your own | rebuild shiki/mermaid/toc yourself |
+| serialize `MarkdownDocument` for cache | re-parse every request |

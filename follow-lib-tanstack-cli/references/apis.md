@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/cli` | 0.71.x | CLI |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | CLI | `bunx @tanstack/cli` | `create`, `--add-ons` |

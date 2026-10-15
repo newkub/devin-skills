@@ -95,7 +95,7 @@ Persona details for the `research` category — merged from the original `workfl
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/bench-competitors`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/bench-competitors`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -145,7 +145,7 @@ Persona details for the `research` category — merged from the original `workfl
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -195,7 +195,7 @@ Persona details for the `research` category — merged from the original `workfl
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 
@@ -245,7 +245,7 @@ Persona details for the `research` category — merged from the original `workfl
 
 - อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
 
 
 

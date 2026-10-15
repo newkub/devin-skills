@@ -11,45 +11,45 @@ related:
 
 ## Goal
 
-Deploy MCP server — เลือก transport, host remote server และ configure clients ให้เชื่อมได้
+Deploy an MCP server — pick the transport, host a remote server, and configure clients so they can connect
 
 ## Scope
 
-ใช้เมื่อต้อง deploy MCP server ที่สร้างแล้ว — ครอบคลุม stdio vs Streamable HTTP transport, remote hosting options, client registration (Claude Desktop, Devin, IDEs) และ auth notes
+Use when deploying an already-built MCP server — covers stdio vs Streamable HTTP transports, remote hosting options, client registration (Claude Desktop, Devin, IDEs), and auth notes
 
 ## Execute
 
 ### 1. Choose Transport
 
-> Goal: เลือก transport ตาม deployment model
+> Goal: pick the transport matching the deployment model
 
-1. `StdioServerTransport` — local servers ที่ client spawn เอง (Claude Desktop, IDE extensions); ไม่ต้อง host, แค่ distribute command
-2. `StreamableHTTPServerTransport` — remote servers ที่หลาย client เชื่อมผ่าน HTTP; ต้อง host + auth
-3. HTTP+SSE transport deprecated — ใช้ backward compat เท่านั้น ห้ามใช้สำหรับ server ใหม่
-4. ถ้าเลือกไม่ได้ → stop และ report trade-offs
+1. `StdioServerTransport` — local servers the client spawns itself (Claude Desktop, IDE extensions); no hosting needed, just distribute the command
+2. `StreamableHTTPServerTransport` — remote servers that many clients connect to over HTTP; requires hosting + auth
+3. the old HTTP+SSE transport is deprecated — backward compat only; never use it for new servers
+4. if you can't decide → stop and report the trade-offs
 
 ### 2. Prepare Server For Hosting
 
-> Goal: config server สำหรับ remote deployment
+> Goal: configure the server for remote deployment
 
-1. ตรวจ env vars/secrets — ทำ `/check-secrets env-vars`; secrets ผ่าน `/follow-secret-manager` ห้าม commit
-2. ใช้ `process.env.PORT` — platforms กำหนด port เอง
-3. สำหรับ Streamable HTTP: ตัดสินใจ session management (stateful `sessionIdGenerator` vs stateless) ตาม use case — ดู official docs
-4. เพิ่ม auth สำหรับ remote server (OAuth/bearer token) — MCP spec กำหนด auth requirements; ห้ามเปิด remote server โดยไม่มี auth
+1. audit env vars/secrets — run `/check-secrets env-vars`; secrets go through `/follow-secret-manager`, never committed
+2. use `process.env.PORT` — platforms assign the port themselves
+3. for Streamable HTTP: decide session management (stateful `sessionIdGenerator` vs stateless) per the use case — see the official docs
+4. add auth for the remote server (OAuth/bearer token) — the MCP spec defines the auth requirements; never expose a remote server without auth
 
 ### 3. Deploy
 
-> Goal: host server บน platform ที่เลือก
+> Goal: host the server on the chosen platform
 
-1. Node/Bun-compatible platforms (VPS, Docker, serverless ที่รองรับ HTTP) — build/run ตาม runtime ที่ใช้
-2. สำหรับ stdio distribution: publish npm package หรือ distribute script — client รัน `npx`/`bunx <pkg>` เอง
-3. ดู official docs ที่ `https://modelcontextprotocol.io` สำหรับ hosting patterns ล่าสุด
+1. Node/Bun-compatible platforms (VPS, Docker, serverless that supports HTTP) — build/run per the runtime used
+2. for stdio distribution: publish an npm package or distribute a script — clients run `npx`/`bunx <pkg>` themselves
+3. check the official docs at `https://modelcontextprotocol.io` for the latest hosting patterns
 
 ### 4. Register With Clients
 
-> Goal: เพิ่ม server ใน client configs
+> Goal: add the server to client configs
 
-1. Stdio client config (เช่น Claude Desktop `claude_desktop_config.json`):
+1. Stdio client config (e.g. Claude Desktop `claude_desktop_config.json`):
 
    ```json
    {
@@ -59,28 +59,28 @@ Deploy MCP server — เลือก transport, host remote server และ co
    }
    ```
 
-2. Remote: client ชี้ URL ของ Streamable HTTP endpoint + auth credentials
-3. ทำ `/update-devin-global-mcp` ถ้าเป็น Devin global MCP config
+2. Remote: the client points at the Streamable HTTP endpoint URL + auth credentials
+3. run `/update-devin-global-mcp` if this is a Devin global MCP config
 
 ### 5. Verify
 
-> Goal: ทดสอบ client เชื่อมต่อ server จริง
+> Goal: test that clients really connect to the server
 
-1. Restart/reload client แล้วเช็ค server ขึ้นใน tools list
-2. เรียก tool หนึ่งตัวผ่าน client — response ถูกต้อง
-3. ตรวจ logs ไม่มี error; auth ทำงานสำหรับ remote
-4. ถ้าพัง → ทำ `/resolve-errors` แล้ว report
+1. restart/reload the client and check the server shows up in the tools list
+2. call one tool through the client — the response is correct
+3. check the logs for no errors; verify auth works for remote
+4. if it breaks → run `/resolve-errors` then report
 
 ## Rules
 
-- Remote server ต้องมี auth เสมอ — ห้ามเปิด MCP endpoint โดยไม่ป้องกัน
-- ห้าม commit credentials/client configs ที่มี secrets
-- stdio สำหรับ local single-user, Streamable HTTP สำหรับ remote multi-client — ห้ามใช้ SSE transport ใหม่
-- ใช้ `/follow-lib-mcp-sdk` สำหรับ full reference
+- a remote server must always have auth — never expose an MCP endpoint unprotected
+- never commit credentials/client configs that contain secrets
+- stdio for local single-user, Streamable HTTP for remote multi-client — never use the new SSE transport
+- use `/follow-lib-mcp-sdk` for the full reference
 
 ## Expected Outcome
 
-- Transport เลือกถูกตาม deployment model
-- Server host/distribute สำเร็จพร้อม auth (ถ้า remote)
-- Clients เชื่อมต่อและเรียก tools ได้จริง
-- Secrets จัดการถูกต้อง
+- the transport is chosen correctly for the deployment model
+- the server hosts/distributes successfully with auth (if remote)
+- clients connect and can really call the tools
+- secrets are handled correctly

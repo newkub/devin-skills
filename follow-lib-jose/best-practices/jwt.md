@@ -1,67 +1,67 @@
-# jose — JWT Security และ Key Management
+# jose — JWT Security And Key Management
 
 ## Recommended Patterns
 
 ### Algorithm Selection
 
-- prefer `EdDSA` (Ed25519) — key เล็ก, verify เร็ว, modern
-- `ES256` เป็น default ที่ปลอดภัยเมื่อ EdDSA ใช้ไม่ได้ (compat กว้าง)
-- `RS256` สำหรับ legacy/enterprise compatibility — signature ใหญ่กว่า, ช้ากว่า
-- `HS256` เฉพาะ symmetric use case ที่ secret จัดการได้จริง — ห้ามใช้เมื่อ secret อาจรั่ว (sharing key)
-- ห้าม `alg: none`, `secp256k1`, `RSA1_5` — ถูกลบ/ไม่รองรับใน v6 และมีปัญหาความปลอดภัย
+- prefer `EdDSA` (Ed25519) — small key, fast verify, modern
+- `ES256` is the safe default when EdDSA isn't usable (wider compat)
+- `RS256` for legacy/enterprise compatibility — larger signature, slower
+- `HS256` only for symmetric use cases where the secret is genuinely managed — never when the secret might leak (shared key)
+- never `alg: none`, `secp256k1`, `RSA1_5` — removed/unsupported in v6 and insecure
 
-### Verify เสมอ
+### Always Verify
 
-- `jwtVerify(token, key, {issuer, audience, algorithms})` — ไม่ใช่ `decodeJwt` อย่างเดียว
-- decode เป็นแค่ parse — ไม่ verify signature — ห้ามเชื่อ claims จาก decode
-- ระบุ `issuer` + `audience` เสมอ — ป้องกัน token จาก service อื่น
-- pin `algorithms` array — ป้องกัน algorithm confusion attacks (HS256 vs RS256)
-- `clockTolerance` สำหรับ clock skew เล็กน้อย (default 0) — ตั้ง ~5-30s ถ้า distributed systems
+- `jwtVerify(token, key, {issuer, audience, algorithms})` — not `decodeJwt` alone
+- decode is just parse — no signature verification — never trust claims from decode
+- always specify `issuer` + `audience` — prevents tokens from other services
+- pin the `algorithms` array — prevents algorithm confusion attacks (HS256 vs RS256)
+- `clockTolerance` for slight clock skew (default 0) — set ~5-30s for distributed systems
 
 ### Claims
 
-- ตั้ง `iss`, `aud`, `exp`, `iat` เสมอ — chain: `new SignJWT(payload).setProtectedHeader({alg}).setIssuedAt().setIssuer().setAudience().setExpirationTime()`
-- `exp` สั้นสำหรับ access token (5-15 นาที) — refresh token ยาวกว่า
-- ใส่ claims เฉพาะที่จำเป็น — JWT ไม่เข้ารหัส (JWS), ทุกคนอ่าน payload ได้
-- sensitive data → `EncryptJWT`/`jwtDecrypt` (JWE) หรือ nested JWT
+- always set `iss`, `aud`, `exp`, `iat` — chain: `new SignJWT(payload).setProtectedHeader({alg}).setIssuedAt().setIssuer().setAudience().setExpirationTime()`
+- short `exp` for access tokens (5-15 minutes) — refresh tokens longer
+- include only necessary claims — JWTs aren't encrypted (JWS); everyone can read the payload
+- sensitive data → `EncryptJWT`/`jwtDecrypt` (JWE) or a nested JWT
 
 ### Key Management
 
-- keys เป็น `CryptoKey`/`JWK`/`Uint8Array` — v6 คืน `CryptoKey` จาก `generateKeyPair`/`importJWK`
-- private `KeyObject` (Node crypto) ใช้ verify/encrypt ไม่ได้ใน v6 — เก็บเป็น JWK หรือ re-import
-- `createRemoteJWKSet(url)` สำหรับ public key discovery — fetch + cache อัตโนมัติ
-- rotation ผ่าน `kid` header — verifier เลือก key ตาม `kid` จาก JWKS
-- secrets/keys จาก env — ห้าม hardcode (ดู `/follow-secret-manager`)
+- keys are `CryptoKey`/`JWK`/`Uint8Array` — v6 returns `CryptoKey` from `generateKeyPair`/`importJWK`
+- a private `KeyObject` (Node crypto) can't verify/encrypt in v6 — store as JWK or re-import
+- `createRemoteJWKSet(url)` for public key discovery — fetch + cache automatically
+- rotation via the `kid` header — the verifier picks the key by `kid` from the JWKS
+- secrets/keys from env — never hardcode (see `/follow-secret-manager`)
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `jwtVerify` พร้อม `issuer`/`audience`/`algorithms` | `decodeJwt` แล้วเชื่อ claims |
-| `EdDSA` หรือ `ES256` สำหรับ new systems | `HS256` เมื่อ secret อาจ share |
-| `exp` สั้น + refresh token แยก | access token อายุยาวเป็นชั่วโมง |
-| `createRemoteJWKSet` สำหรับ third-party JWT | fetch JWKS เองทุก request |
-| rotate keys ผ่าน `kid` | hardcode single key ใน code |
+| `jwtVerify` with `issuer`/`audience`/`algorithms` | `decodeJwt` then trusting claims |
+| `EdDSA` or `ES256` for new systems | `HS256` when the secret might be shared |
+| short `exp` + a separate refresh token | hour-long access tokens |
+| `createRemoteJWKSet` for third-party JWT | fetching JWKS by hand on every request |
+| rotate keys via `kid` | hardcoding a single key in code |
 
 ## Common Pitfalls
 
-- ใช้ `decodeJwt` แทน verify → forge token ได้
-- ไม่ pin `algorithms` → alg confusion (RS256 pub key ถูกใช้เป็น HS256 secret)
-- ไม่เช็ค `aud` → token ของ service A ใช้กับ service B ได้
-- `exp` ยาวเกิน → revoked user ยังใช้ได้
-- ใน v6 ส่ง `KeyObject` เข้า `jwtVerify` → type error — ใช้ `CryptoKey`/`JWK`/`Uint8Array`
-- `createRemoteJWKSet` ไม่ handle cooldown → JWKS endpoint down ทำ verify fail ทั้งหมด (default cooldown ช่วย)
+- using `decodeJwt` instead of verify → forgeable tokens
+- not pinning `algorithms` → alg confusion (an RS256 public key used as an HS256 secret)
+- not checking `aud` → service A's token works on service B
+- too-long `exp` → a revoked user keeps working
+- passing a `KeyObject` into `jwtVerify` in v6 → type error — use `CryptoKey`/`JWK`/`Uint8Array`
+- `createRemoteJWKSet` without cooldown handling → a down JWKS endpoint fails every verification (the default cooldown helps)
 
 ## Performance Notes
 
-- Ed25519 verify เร็วกว่า RSA มาก — เหมาะกับ high-throughput verify
-- `createRemoteJWKSet` cache JWKS — `cacheMaxAge`, `cooldownDuration` ปรับได้
-- local verify (have key) เร็วกว่า remote JWKS fetch — cache remote set ที่ client
-- token size: ES256 ~96 bytes signature, RS256 ~256 bytes — สำคัญถ้า cookie/header limit
+- Ed25519 verify is much faster than RSA — suits high-throughput verify
+- `createRemoteJWKSet` caches JWKS — `cacheMaxAge`, `cooldownDuration` are tunable
+- local verify (key already held) is faster than a remote JWKS fetch — cache the remote set on the client
+- token size: ES256 ~96-byte signature, RS256 ~256 bytes — matters with cookie/header limits
 
 ## Ecosystem / Integration
 
-- edge runtimes (Cloudflare Workers, Deno, browsers) → jose เท่านั้น (`jsonwebtoken` ต้อง `node:crypto`)
-- v6 requires Node ≥20 — ตรวจ runtime ก่อน upgrade
-- `createRemoteJWKSet` ใช้ `fetch` — ไม่มี `options.agent` (ใช้ dispatcher/fetch wrapper ถ้าต้อง proxy)
-- สำหรับ OpenID Connect/OAuth2 flows — jose ครอบคลุม JWT layer ไม่ใช่ full OIDC client
+- edge runtimes (Cloudflare Workers, Deno, browsers) → jose only (`jsonwebtoken` needs `node:crypto`)
+- v6 requires Node ≥20 — check the runtime before upgrading
+- `createRemoteJWKSet` uses `fetch` — no `options.agent` (use a dispatcher/fetch wrapper if a proxy is needed)
+- for OpenID Connect/OAuth2 flows — jose covers the JWT layer, not a full OIDC client

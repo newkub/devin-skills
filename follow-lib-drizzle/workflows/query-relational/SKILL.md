@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-ใช้ Drizzle Relational Query Builder (RQB) — `db.query.<table>` API, `with`/`columns`/`extras`, nested relations, pagination
+Use the Drizzle Relational Query Builder (RQB) — `db.query.<table>` API, `with`/`columns`/`extras`, nested relations, pagination
 
 ## Scope
 
@@ -48,9 +48,9 @@ await db.query.users.findMany({
 })
 ```
 
-- `with` = auto-join + nested structure — RQB generates separate optimized queries ไม่ใช่ N+1
-- `columns`/`where`/`orderBy`/`limit`/`offset` ใช้ได้ใน nested levels
-- `extras` — computed SQL fields เข้า result type
+- `with` = auto-join + nested structure — RQB generates separate optimized queries, not N+1
+- `columns`/`where`/`orderBy`/`limit`/`offset` usable in nested levels
+- `extras` — computed SQL fields into the result type
 
 ### 3. When To Use SQL-Style Instead
 
@@ -67,16 +67,16 @@ await db.select({ u: users, count: count(posts.id) })
 ### 4. Pagination Patterns
 
 - Offset: `limit`+`offset` (simple); cursor: `where(gt(id, cursor))` + `limit` + orderBy (scalable)
-- RQB `limit`ใน `with` levels = per-parent limit (v0.31+ `limit` semantics — ตรวจ docs เวอร์ชัน)
+- RQB `limit` in `with` levels = per-parent limit (v0.31+ `limit` semantics — check the docs version)
 
 ## Rules
 
-- `db.query` ต้อง `drizzle(client, { schema })` — ไม่มี schema → RQB ใช้ไม่ได้
-- `with` ต้องมี `relations()` ใน schema ครบ — ไม่มี relations → error
-- เลือก RQB vs select(): nested entity graphs → RQB; aggregations/joins manual → `select()`
-- `extras` SQL ต้อง parameterized — `sql` template ปลอดภัย, อย่า string concat
+- `db.query` requires `drizzle(client, { schema })` — no schema → RQB unusable
+- `with` requires complete `relations()` in the schema — no relations → error
+- Choose RQB vs select(): nested entity graphs → RQB; manual aggregations/joins → `select()`
+- `extras` SQL must be parameterized — the `sql` template is safe, never string concat
 
 ## Expected Outcome
 
-- RQB nested queries ทำงานกับ relations schema
-- รู้ขอบเขต RQB vs SQL-style selection
+- RQB nested queries work against the schema relations
+- Know the boundary between RQB vs SQL-style selection

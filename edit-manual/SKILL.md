@@ -3,7 +3,7 @@ name: edit-manual
 description: Safely hand-edit configuration files with precise change control and rollback
 argument-hint: "[file]"
 related:
-  - deep-review
+  - deep-review-codebase
   - ask-me
   - learn
   - follow-best-practice
@@ -21,7 +21,7 @@ Safely hand-edit configuration files with precise change control, plus backup, r
 
 Use for hand-editing configuration files such as `vite.config.ts`, `turbo.json`, `package.json`, `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `uno.config.ts`, `drizzle.config.ts`, `.github/workflows/*.yml`, and other config files
 
-Not for creating entirely new configuration (use `/deep-review` instead)
+Not for creating entirely new configuration (use `/deep-review-codebase` instead)
 
 ## Execute
 

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-vue
-description: แนวทางการพัฒนา Vue 3.5+ applications ตาม best practices 2026
+description: Vue 3.5+ application development guidelines per 2026 best practices
 argument-hint: "[scope]"
 related:
   - follow-lib-animejs
@@ -16,11 +16,11 @@ related:
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Vue.js applications ด้วย Vue 3.5+, Composition API, TypeScript และ modern best practices
+Define guidelines for developing Vue.js applications with Vue 3.5+, the Composition API, TypeScript, and modern best practices
 
 ## Scope
 
-ใช้สำหรับ Vue 3 projects ทั้ง Vite 8 หรือ Nuxt 4 (Vue 3.5.43 เป็น stable ล่าสุด, Vue 3.6 ยังอยู่ในช่วง RC — `3.6.0-rc.8`)
+For Vue 3 projects on either Vite 8 or Nuxt 4 (Vue 3.5.43 is the latest stable, Vue 3.6 is still in RC — `3.6.0-rc.8`)
 
 - Latest: `vue@3.5.43` / `vue-router@5.3.1` / `pinia@4.0.3` / `vite@8.3.1` / `nuxt@4.5.2` (verified 2026-09-26)
 
@@ -28,89 +28,89 @@ related:
 
 ### 1. Setup And Configuration
 
-> Goal: ตั้งค่า Vue 3 project ด้วย dependencies และ tools ที่จำเป็น
+> Goal: set up a Vue 3 project with the necessary dependencies and tools
 
-1. ติดตั้ง Vue 3.5.42+ ด้วย Vite 8 หรือ Nuxt 4.5+
-2. ใช้ TypeScript strict mode
-3. ติดตั้ง Pinia 4 สำหรับ state management
-4. ติดตั้ง Vue Router 5 สำหรับ routing
-5. ติดตั้ง UnoCSS หรือ Tailwind CSS สำหรับ styling
-6. ใช้ Vite 8 เป็น build tool
-7. พิจารณา Vue 3.6 RC สำหรับ Vapor Mode ในกรณีทดสอบ performance สำคัญ (ยังไม่ stable สำหรับ production)
-8. ดูรายละเอียดเพิ่มเติมใน 
+1. Install Vue 3.5.42+ with Vite 8 or Nuxt 4.5+
+2. Use TypeScript strict mode
+3. Install Pinia 4 for state management
+4. Install Vue Router 5 for routing
+5. Install UnoCSS or Tailwind CSS for styling
+6. Use Vite 8 as the build tool
+7. Consider Vue 3.6 RC for Vapor Mode in cases with critical performance testing (not yet stable for production)
+8. See additional details in the references
 
 ### 2. Component Development
 
-> Goal: เขียน Vue components ตาม Composition API standards
+> Goal: write Vue components per the Composition API standards
 
-1. ใช้ Single-File Components (SFC) ด้วย `<script setup lang="ts">`
-2. ใช้ Composition API แทน Options API (Options API เป็น legacy)
-3. ใช้ multi-word component names เสมอ
-4. ระบุ prop types ด้วย `defineProps<T>()`
-5. ใช้ `defineEmits<T>()` สำหรับ type-safe events
-6. ใช้ key กับ v-for เสมอ
-7. ใช้ `useTemplateRef()` สำหรับ template refs (Vue 3.5+)
-8. ใช้ `useId()` สำหรับ SSR-safe unique IDs (Vue 3.5+)
-9. ใช้ `defineModel()` สำหรับ two-way binding
-10. ใช้ `defineSlots<T>()` สำหรับ type-safe slots
+1. Use Single-File Components (SFC) with `<script setup lang="ts">`
+2. Use the Composition API instead of the Options API (the Options API is legacy)
+3. Always use multi-word component names
+4. Declare prop types with `defineProps<T>()`
+5. Use `defineEmits<T>()` for type-safe events
+6. Always use a key with v-for
+7. Use `useTemplateRef()` for template refs (Vue 3.5+)
+8. Use `useId()` for SSR-safe unique IDs (Vue 3.5+)
+9. Use `defineModel()` for two-way binding
+10. Use `defineSlots<T>()` for type-safe slots
 
 ### 3. Composables And State
 
-> Goal: จัดระเบียบ logic และ state ด้วย composables และ Pinia
+> Goal: organize logic and state with composables and Pinia
 
-1. แยก logic ออกจาก components ไปที่ composables
-2. logic ทั้งหมดควรอยู่ใน composables
-3. ใช้ Pinia 4 สำหรับ global state management
-4. จัดระเบียบ stores ตาม features/domains
-5. ใช้ computed getters สำหรับ derived state
-6. ใช้ shared composables สำหรับ local/branch-level state แทนการสร้าง Pinia store
-7. ใช้ `provide`/`inject` พร้อม `InjectionKey<T>` สำหรับ dependency injection
-8. ใช้ `effectScope` สำหรับ cleanup reactive effects ใน composables ที่ซับซ้อน
+1. Move logic out of components into composables
+2. All logic should live in composables
+3. Use Pinia 4 for global state management
+4. Organize stores by features/domains
+5. Use computed getters for derived state
+6. Use shared composables for local/branch-level state instead of creating a Pinia store
+7. Use `provide`/`inject` with `InjectionKey<T>` for dependency injection
+8. Use `effectScope` to clean up reactive effects in complex composables
 
 ### 4. Reactivity Best Practices
 
-> Goal: ใช้ Vue reactivity อย่างมีประสิทธิภาพ
+> Goal: use Vue reactivity efficiently
 
-1. ใช้ `shallowRef()` สำหรับ large immutable data structures (ประหยัด memory)
-2. ใช้ `ref()` สำหรับ primitive values
-3. ใช้ `reactive()` สำหรับ object state ที่ต้องการ deep reactivity
-4. ใช้ `computed()` สำหรับ derived values
-5. หลีกเลี่ยงการสร้าง watchers ที่ไม่จำเป็น (zombie effects)
-6. ใช้ `watchEffect` เฉพาะเมื่อต้องการ auto dependency tracking
-7. ใช้ `watch` เมื่อต้องการ explicit dependency specification
-8. ใช้ `onWatcherCleanup()` และ `onEffectCleanup()` สำหรับ cleanup (Vue 3.5+)
+1. Use `shallowRef()` for large immutable data structures (saves memory)
+2. Use `ref()` for primitive values
+3. Use `reactive()` for object state that needs deep reactivity
+4. Use `computed()` for derived values
+5. Avoid creating unnecessary watchers (zombie effects)
+6. Use `watchEffect` only when you want auto dependency tracking
+7. Use `watch` when you want explicit dependency specification
+8. Use `onWatcherCleanup()` and `onEffectCleanup()` for cleanup (Vue 3.5+)
 
 ### 5. Vapor Mode (Vue 3.6+)
 
-> Goal: พิจารณา Vapor Mode สำหรับ performance ที่ดีขึ้น
+> Goal: consider Vapor Mode for better performance
 
-1. ใช้ `vapor` attribute ใน `<script setup>` สำหรับ opt-in Vapor Mode (Vue 3.6+)
-2. หรือใช้ `.vapor.vue` file extension สำหรับ opt-in โดยไม่แก้ script
-3. เริ่มจาก leaf components (list items, table rows, icon buttons) ก่อน
-4. Mixed trees ทำงานได้: vdom parent สามารถ render Vapor children ได้
-5. Vapor Mode รองรับ Composition API เท่านั้น (ไม่รองรับ Options API)
-6. `Suspense` ยังไม่รองรับใน Vapor-only mode
-7. ใช้ Vue 3.6 RC เท่านั้น และควรทดสอบก่อนใช้ใน production
+1. Use the `vapor` attribute in `<script setup>` to opt in to Vapor Mode (Vue 3.6+)
+2. Or use the `.vapor.vue` file extension to opt in without editing the script
+3. Start from leaf components (list items, table rows, icon buttons) first
+4. Mixed trees work: a vdom parent can render Vapor children
+5. Vapor Mode supports only the Composition API (not the Options API)
+6. `Suspense` isn't yet supported in Vapor-only mode
+7. Use Vue 3.6 RC only, and test before using it in production
 
 ### 6. Styling
 
-> Goal: กำหนด component styles ด้วย design system
+> Goal: define component styles with the design system
 
-1. ใช้ UnoCSS theme ที่กำหนดไว้
-2. ไม่ hard-code colors หรือ spacing
-3. ใช้ utility classes แทน custom styles
-4. ใช้ `<style scoped>` สำหรับ component-specific styles เมื่อจำเป็น
+1. Use the defined UnoCSS theme
+2. Don't hard-code colors or spacing
+3. Use utility classes instead of custom styles
+4. Use `<style scoped>` for component-specific styles when necessary
 
 ### 7. Project Organization
 
-> Goal: จัดระเบียบ project structure และ conventions
+> Goal: organize the project structure and conventions
 
-1. components ที่ใช้ซ้ำกันให้ refactor ไปที่ `components/ui/`
-2. ใช้ import alias (`~/`, `#app`, `#shared`) หลีกเลี่ยง relative paths
-3. ทุก `index.ts` แค่ re-export เท่านั้น ไม่มี logic
-4. ลบ `@deprecated` ทั้งหมดจาก codebase
-5. ใช้ `useHead` ในทุก page component สำหรับ meta tags
-6. ใช้ `useSeoMeta` สำหรับ declarative SEO meta tags
+1. Refactor reused components into `components/ui/`
+2. Use import aliases (`~/`, `#app`, `#shared`) and avoid relative paths
+3. Every `index.ts` only re-exports — no logic
+4. Remove all `@deprecated` from the codebase
+5. Use `useHead` in every page component for meta tags
+6. Use `useSeoMeta` for declarative SEO meta tags
 
 ### Workflows
 
@@ -120,70 +120,70 @@ related:
 
 ### 1. Component Standards
 
-- ใช้ Composition API และ `<script setup>` เท่านั้น (จำเป็นสำหรับ Vapor Mode)
-- ใช้ TypeScript สำหรับ type safety
-- Component names เป็น multi-word
-- Props ต้องมี detailed definitions ด้วย `defineProps<T>()`
-- ใช้ key กับ v-for เสมอ
-- หลีกเลี่ยง v-if กับ v-for บน element เดียวกัน
-- ใช้ `useTemplateRef()` แทน `ref` สำหรับ template refs (Vue 3.5+)
+- Use only the Composition API and `<script setup>` (required for Vapor Mode)
+- Use TypeScript for type safety
+- Component names are multi-word
+- Props must have detailed definitions via `defineProps<T>()`
+- Always use a key with v-for
+- Avoid v-if with v-for on the same element
+- Use `useTemplateRef()` instead of `ref` for template refs (Vue 3.5+)
 
 ### 2. Code Organization
 
-- แยก logic ออกจาก components เข้า composables
-- logic ทั้งหมดควรอยู่ใน composables
-- components ที่ใช้ซ้ำกันต้องอยู่ใน `components/ui/`
-- ใช้ import alias หลีกเลี่ยง relative paths
-- ทุก `index.ts` แค่ re-export เท่านั้น ไม่มี logic
-- ลบ `@deprecated` ทั้งหมดจาก codebase
+- Move logic out of components into composables
+- All logic should live in composables
+- Reused components must live in `components/ui/`
+- Use import aliases and avoid relative paths
+- Every `index.ts` only re-exports — no logic
+- Remove all `@deprecated` from the codebase
 
 ### 3. State Management
 
-- ใช้ Pinia 4 สำหรับ global state management
-- จัดระเบียบ stores ตาม features/domains
-- ใช้ computed getters สำหรับ derived state
-- ใช้ shared composables สำหรับ local/branch-level state
-- ใช้ `InjectionKey<T>` สำหรับ type-safe provide/inject
+- Use Pinia 4 for global state management
+- Organize stores by features/domains
+- Use computed getters for derived state
+- Use shared composables for local/branch-level state
+- Use `InjectionKey<T>` for type-safe provide/inject
 
 ### 4. Reactivity
 
-- ใช้ `shallowRef()` สำหรับ large immutable data structures
-- ใช้ `ref()` สำหรับ primitive values
-- หลีกเลี่ยง zombie effects ด้วย `effectScope`
-- หลีกเลี่ยง unnecessary watchers
-- ใช้ `onWatcherCleanup()`/`onEffectCleanup()` สำหรับ cleanup (Vue 3.5+)
+- Use `shallowRef()` for large immutable data structures
+- Use `ref()` for primitive values
+- Avoid zombie effects with `effectScope`
+- Avoid unnecessary watchers
+- Use `onWatcherCleanup()`/`onEffectCleanup()` for cleanup (Vue 3.5+)
 
 ### 5. Styling
 
-- ใช้ UnoCSS theme ที่กำหนดไว้
-- ไม่ hard-code colors หรือ spacing
-- Styles เป็น scoped เมื่อจำเป็น
+- Use the defined UnoCSS theme
+- Don't hard-code colors or spacing
+- Styles are scoped when necessary
 
 ### 6. Performance
 
-- ใช้ computed properties อย่างมีประสิทธิภาพ
-- ใช้ `shallowRef` สำหรับ large data เพื่อประหยัด memory
-- หลีกเลี่ยง unnecessary reactivity
-- ใช้ dynamic imports สำหรับ lazy loading
-- พิจารณา Vapor Mode สำหรับ component-heavy scenarios (Vue 3.6 RC)
-- ใช้ tree-shaking อย่างเต็มที่
+- Use computed properties efficiently
+- Use `shallowRef` for large data to save memory
+- Avoid unnecessary reactivity
+- Use dynamic imports for lazy loading
+- Consider Vapor Mode for component-heavy scenarios (Vue 3.6 RC)
+- Use tree-shaking to its fullest
 
-- ใช้ `/follow-lib-animejs` ถ้าจำเป็น
-- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ใช้ `/follow-lib-pinia` ถ้าจำเป็น
-- ใช้ `/follow-lib-vueuse` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- Use `/follow-lib-animejs` if needed
+- Use `/follow-lib-arktype` if needed
+- Use `/follow-lib-better-auth` if needed
+- Use `/follow-lib-pinia` if needed
+- Use `/follow-lib-vueuse` if needed
+- Use `/follow-best-practice` if needed
+- Use `/use-my-packages-on-registry` if needed
+- Use `/setup-cicd` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Vue 3 components ที่มีโครงสร้างถูกต้องตาม Composition API
-- Logic ที่แยกออกจาก components เข้า composables
-- Reactivity ที่ใช้ `shallowRef` สำหรับ large data
-- Performance ที่ดีขึ้นด้วย Vapor Mode (ถ้าใช้ Vue 3.6+)
-- Type safety เต็มรูปแบบด้วย TypeScript
-- Code ที่ maintainable
+- Vue 3 components structured correctly per the Composition API
+- Logic separated from components into composables
+- Reactivity using `shallowRef` for large data
+- Better performance with Vapor Mode (if using Vue 3.6+)
+- Full type safety with TypeScript
+- Maintainable code

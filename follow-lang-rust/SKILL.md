@@ -1,18 +1,19 @@
 ---
 name: follow-lang-rust
 description: Create or improve Rust projects with Clean Architecture and workspaces
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
   - follow-tool-nextest
+  - follow-architecture
   - follow-create-rust-cli
   - follow-create-rust-crate
   - follow-create-web-wasm
   - deep-research
-
+  - follow-best-practice
 ---
 
 ## Goal
@@ -21,7 +22,7 @@ Guide Rust application development for maximum safety, quality, and performance
 
 ## Scope
 
-For creating or improving Rust projects, single crate and workspace; single `SKILL.md` package — no `references/`, verify the current stable toolchain and Cargo behavior via `/deep-research` at use time (official docs: https://www.rust-lang.org/learn, Cargo: https://doc.rust-lang.org/cargo/)
+For creating or improving Rust projects, single crate and workspace. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time scaffold with toolchain pin and quality gates); verify the current stable toolchain and Cargo behavior via `/deep-research` at use time (official docs: https://www.rust-lang.org/learn, Cargo: https://doc.rust-lang.org/cargo/)
 
 ## Execute
 
@@ -30,20 +31,19 @@ For creating or improving Rust projects, single crate and workspace; single `SKI
 > Goal: plan architecture and choose dependencies per project type
 
 1. Identify the project location in the monorepo; decide workspace vs single crate
-2. Define architecture: Clean Architecture or standard (run `/refactor architecture`)
+2. Define architecture: Clean Architecture or standard (run `/follow-architecture`)
 3. Pick the async runtime: tokio (default), async-std, or smol
 4. Database: SQLx (default), Diesel, or SeaORM; API: Axum (default), Actix-web, or Rocket; TUI: Ratatui; WASM: wasm-bindgen + wasm-pack
-5. Run `/deep-research` to confirm current versions/editions of chosen crates before adding them
+5. Run `/deep-research` + `/follow-best-practice` to confirm current versions/editions and the latest idiomatic Rust practices before adding crates or writing new code
 
 ### 2. Install And Scaffold
 
 > Goal: set up the toolchain and project skeleton
 
-1. Install via `mise use -g rust` (or rustup: `rustup-init.exe` on Windows — MSVC build tools required); verify `rustc --version` and `cargo --version`
-2. Scaffold with `cargo new my_project` (binary) or `cargo new my_lib --lib`
-3. Layout: `src/` source, `crates/` workspace members, `tests/` integration tests, `benches/` criterion benchmarks, `examples/` usage examples
-4. Naming: files `snake_case`, types `PascalCase`; `mod.rs` as barrel exports only
-5. For Clean Architecture, separate layers: domain, application, infrastructure — then run `/deep-review`
+1. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): toolchain pin, `cargo new`, workspace choice, layout, quality gates from the first commit, verify
+2. Tool inventory (clippy, fmt, nextest, deny/audit, miri, bench/profiling) → `references/toolchain.md`
+3. Naming: files `snake_case`, types `PascalCase`; `mod.rs` as barrel exports only
+4. For Clean Architecture, separate layers: domain, application, infrastructure — then run `/deep-review-codebase`
 
 ### 3. Configuration
 

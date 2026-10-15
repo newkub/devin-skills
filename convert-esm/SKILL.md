@@ -5,7 +5,7 @@ argument-hint: "[package-or-path]"
 related:
   - use-astgrep
   - run-typecheck
-  - deep-review
+  - deep-review-codebase
   - update-references
   - run-build
   - run-test
@@ -31,7 +31,7 @@ Migrate a JavaScript/TypeScript project from CommonJS (`require`/`module.exports
 1. Count `require`/`module.exports` sites with `use-astgrep` or `search-files-patterns`
 2. Check the `package.json` `"type"` field and runtime/tooling support (Node version, bundler, test runner)
 3. Find blockers: `require()` calls that can't be made static, conditional requires, CJS-only deps
-4. Check the dependencies that import this project — run `/deep-review`
+4. Check the dependencies that import this project — run `/deep-review-codebase`
 
 ### 2. Plan Migration Order
 

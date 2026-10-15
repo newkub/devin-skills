@@ -57,7 +57,7 @@ If there are many routes → spawn the `route-capturer` profile (`use-agents-cap
 ##### 5. Review Output
 
 1. Always check `manifest.json` errors first
-2. Hand the images on to `/deep-review` (domain `review-uxui` for UX/UI)
+2. Hand the images on to `/deep-review-codebase` (domain `review-uxui` for UX/UI)
 
 #### All — Rules
 

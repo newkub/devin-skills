@@ -1,35 +1,35 @@
 # Vue — Best Practices
 
-Composition API, reactivity และ component discipline สำหรับ Vue 3
+Composition API, reactivity, and component discipline for Vue 3
 
 ## Recommended Patterns
 
-- Composition API + `<script setup>` เป็น default — Options API เฉพาะ legacy codebase
-- `ref()` สำหรับ primitives/scalars, `reactive()` สำหรับ objects ที่ไม่ reassign — เข้าใจ `.value` vs unwrap ใน template
-- `computed()` สำหรับ derived state — cached ตาม deps; อย่าใช้ methods สำหรับ pure derivations
-- `defineProps`/`defineEmits` typed (TS generics) — `withDefaults` สำหรับ defaults
-- `watch` เฉพาะเมื่อต้อง side effect ตาม dep changes; `watchEffect` เมื่อ auto-track deps พอ
-- Composables (`use*`) สำหรับ shared stateful logic — return refs ไม่ใช่ raw values
+- The Composition API + `<script setup>` is the default — the Options API only for legacy codebases
+- `ref()` for primitives/scalars, `reactive()` for objects that aren't reassigned — understand `.value` vs unwrapping in the template
+- `computed()` for derived state — cached by deps; don't use methods for pure derivations
+- Typed `defineProps`/`defineEmits` (TS generics) — `withDefaults` for defaults
+- Use `watch` only when you need a side effect on dep changes; `watchEffect` when auto-tracking deps is enough
+- Composables (`use*`) for shared stateful logic — return refs, not raw values
 
 ## Common Pitfalls
 
-- `reactive()` destructure = reactivity หาย — ใช้ `toRefs`/`toRef` เมื่อต้อง extract
-- `v-if` vs `v-show`: `v-if` unmount จริง (state หาย), `v-show` toggle display — เลือกตาม intent
-- Async components + Suspense boundaries — อย่า assume component mount ทันที
-- `provide`/`inject` สำหรับ deep trees — แต่ระวัง implicit contract; Pinia สำหรับ shared state จริงจัง
-- Template refs: `ref` บน DOM element vs `defineExpose` — component refs ไม่ expose internals ดิบ
+- Destructuring `reactive()` = reactivity lost — use `toRefs`/`toRef` when extracting
+- `v-if` vs `v-show`: `v-if` actually unmounts (state is lost), `v-show` toggles display — choose by intent
+- Async components + Suspense boundaries — don't assume the component mounts immediately
+- `provide`/`inject` for deep trees — but beware the implicit contract; use Pinia for real shared state
+- Template refs: a `ref` on a DOM element vs `defineExpose` — component refs don't expose raw internals
 
 ## Perf Notes
 
-- `v-memo`/`v-once` สำหรับ static subtrees — skip diffing
-- `shallowRef`/`shallowReactive` เมื่อ deep tracking ไม่จำเป็น (large objects, 3rd-party instances)
-- `keep-alive` สำหรับ expensive components ที่ toggle บ่อย
+- `v-memo`/`v-once` for static subtrees — skip diffing
+- `shallowRef`/`shallowReactive` when deep tracking isn't needed (large objects, 3rd-party instances)
+- `keep-alive` for expensive components that toggle often
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `<script setup>` + typed props/emits | Options API ใน code ใหม่ |
-| `computed` derived state | methods re-compute ทุก render |
-| `toRefs` เมื่อ destructure reactive | destructure `reactive()` ตรงๆ |
-| composables `use*` shared logic | mixins / global mutable imports |
+| `<script setup>` + typed props/emits | the Options API in new code |
+| `computed` derived state | methods that recompute every render |
+| `toRefs` when destructuring reactive | destructuring `reactive()` directly |
+| composables `use*` for shared logic | mixins / global mutable state |

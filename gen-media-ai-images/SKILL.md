@@ -1,6 +1,6 @@
 ---
 name: gen-media-ai-images
-description: สร้างรูปภาพด้วย AI ผ่าน bunx CLI
+description: Generate images with AI via bunx CLI
 argument-hint: "[prompt]"
 related:
   - convert
@@ -10,78 +10,78 @@ related:
 
 ## Goal
 
-สร้างรูปภาพจาก prompt ด้วย AI CLI โดยไม่ต้องเขียน code
+Generate an image from a prompt with an AI CLI without writing code
 
 ## Scope
 
-- ใช้ `bunx` CLI สำหรับ text-to-image generation
-- รองรับทั้ง Pollinations (ไม่ต้อง API key) และ Replicate/FAL (ต้อง API key)
-- บันทึก output เป็น `.png`, `.jpg`, หรือ `.webp`
+- Use `bunx` CLIs for text-to-image generation
+- Supports both Pollinations (no API key) and Replicate/FAL (API key required)
+- Save output as `.png`, `.jpg`, or `.webp`
 
 ## Execute
 
 ### 1. Prepare Prompt
 
-> Goal: มี prompt ทีชัดเจน
+> Goal: Have a clear prompt
 
-1. รับ prompt จาก user
-2. ถ้า prompt สั้น/กำกวม → ขยายด้วย details เช่น style, lighting, aspect ratio
-3. ระบุ output path/filename
-4. ระบุ aspect ratio หรือ size ถ้าจำเป็น
+1. Receive the prompt from the user
+2. If the prompt is short/ambiguous → expand it with details such as style, lighting, aspect ratio
+3. Specify the output path/filename
+4. Specify the aspect ratio or size when needed
 
 ### 2. Choose Provider
 
-> Goal: เลือก CLI ทีใช้งานได้
+> Goal: Pick a usable CLI
 
-1. Default ใช้ `bunx @pollinations/cli gen image "<prompt>" --output <file>`
-   - ไม่ต้อง API key
-   - รองรับ `--model` เช่น `flux`, `gptimage`, `turbo`
-2. ถ้า user มี Replicate API key → `bunx flux-replicate-mcp --api-key <key> --model ... --format <fmt>`
-3. ถ้า user มี FAL API key → `bunx ai-vid` หรือ FAL CLI
-4. ถ้าไม่มั่นใจ → ลอง Pollinations ก่อน
+1. Default: `bunx @pollinations/cli gen image "<prompt>" --output <file>`
+   - No API key required
+   - Supports `--model` such as `flux`, `gptimage`, `turbo`
+2. If the user has a Replicate API key → `bunx flux-replicate-mcp --api-key <key> --model ... --format <fmt>`
+3. If the user has a FAL API key → `bunx ai-vid` or the FAL CLI
+4. If unsure → try Pollinations first
 
 ### 3. Generate Image
 
-> Goal: รัน CLI ให้ได้ภาพ
+> Goal: Run the CLI to get the image
 
-1. ตรวจสอบ network และ CLI ใน PATH
-2. รันคำสั่งด้วย prompt และ output ทีระบุ
-3. รอจนกระทั่งภาพถูกดาวน์โหลด
-4. ตรวจสอบไฟล์ output ว่ามีขนาด > 0
+1. Check network and CLI availability in PATH
+2. Run the command with the specified prompt and output
+3. Wait until the image is downloaded
+4. Verify the output file size > 0
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the result
 
-1. แสดง output path
-2. แสดง provider และ model ทีใช้
-3. ถ้า fail → แสดง stderr และแนะนำ provider อื่น
+1. Show the output path
+2. Show the provider and model used
+3. If it fails → show stderr and recommend another provider
 
 ## Rules
 
 ### 1. No API Key Leak
 
-- ไม่ hardcode API key ใน skill
-- อ่านจาก environment variable หรือถาม user
-- ใช้ `--api-key` ผ่าน variable ไม่ใช่ literal
+- Never hardcode API keys in the skill
+- Read from an environment variable or ask the user
+- Pass `--api-key` via a variable, not a literal
 
 ### 2. Default Free Provider
 
-- ลอง Pollinations ก่อนเสมอถ้า user ไม่ระบุ provider
-- ชี้แจง cost ถ้าใช้ paid provider
+- Always try Pollinations first when the user does not specify a provider
+- State the cost when using a paid provider
 
 ### 3. Output Format
 
-- default output คือ `.png`
-- รองรับ `.jpg`, `.webp` ด้วย `--format`
-- เก็บ output ใน project หรือ temp directory
+- Default output is `.png`
+- Supports `.jpg`, `.webp` via `--format`
+- Store output in the project or a temp directory
 
-- ใช้ /convert-svg ถ้าจำเป็น
-- ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /report-prompt-from-image ถ้าจำเป็น
+- Use /convert if needed
+- Use /draw-svg-image if needed
+- Use /report-prompt-from-image if needed
 
 ## Expected Outcome
 
-- ไฟล์รูปภาพถูกสร้างจาก prompt
-- รายงาน provider, model, และ output path
-- ถ้า fail มีแนวทาง fallback
+- An image file is generated from the prompt
+- The report includes provider, model, and output path
+- On failure, a fallback approach is given

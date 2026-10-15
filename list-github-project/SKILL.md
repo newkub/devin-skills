@@ -1,6 +1,6 @@
 ---
 name: list-github-project
-description: แสดงรายการ GitHub Projects ของ user หรือ org พร้อม filter ตาม source
+description: List GitHub Projects of a user or org with a filter by source
 argument-hint: "[owner] [source]"
 related:
   - follow-tool-github-project
@@ -12,58 +12,58 @@ related:
 
 ## Goal
 
-แสดงรายการ GitHub Projects (Projects v2) ของ user หรือ organization พร้อมกรองตาม source ทีเกี่ยวข้อง
+List GitHub Projects (Projects v2) of a user or organization, filterable by the relevant source
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `follow-tool-github-project`, `list-github`, `all-github-repo`
+- For related skills: `follow-tool-github-project`, `list-github`, `all-github-repo`
 
-ใช้ `gh project` เพื่อ list projects และ item-list สำหรับ user, org หรือ repository ทีระบุ โดย filter ตาม `source`
+Use `gh project` to list projects and item-list for a given user, org, or repository, filtered by `source`
 
 ## Execute
 
 ### 1. Verify gh Authentication
 
-> Goal: ตรวจสอบ auth และ project scope
+> Goal: verify auth and the project scope
 
-1. รัน `gh --version`
-2. รัน `gh auth status`
-3. ถ้าไม่มี `project` scope → รัน `gh auth refresh -s project`
-4. ถ้าไม่ login → ทำ `/ask-me`
+1. Run `gh --version`
+2. Run `gh auth status`
+3. No `project` scope → run `gh auth refresh -s project`
+4. Not logged in → use `/ask-me`
 
 ### 2. Resolve Owner And Source
 
-> Goal: ได้ owner และ source filter ทีถูกต้อง
+> Goal: get the correct owner and source filter
 
-1. รับ `owner` จาก argument หรือใช้ `@me` ถ้าไม่ระบุ
-2. รับ `source` จาก argument ถ้ามี:
-   - `source` เป็น `user` → projects ของ user
-   - `source` เป็น `org` → projects ของ org
-   - `source` เป็น `repo:<owner>/<repo>` → projects ทีเกี่ยวข้องกับ repo นั้น
-   - `source` เป็น `all` หรือไม่ระบุ → ทั้งหมด
-3. ถ้าไม่ชัด → ทำ `/ask-me`
+1. Take `owner` from the argument or use `@me` if unspecified
+2. Take `source` from the argument when present:
+   - `source` is `user` → the user's projects
+   - `source` is `org` → the org's projects
+   - `source` is `repo:<owner>/<repo>` → projects related to that repo
+   - `source` is `all` or unspecified → everything
+3. Unclear → use `/ask-me`
 
 ### 3. List Projects
 
-> Goal: ดึงรายการ GitHub Projects
+> Goal: fetch the GitHub Projects list
 
-1. รัน `gh project list --owner <owner> --limit 100`
-2. ถ้ามีมากกว่า 100 ให้ paginate ด้วย `--page`
-3. บันทึก: number, title, owner, visibility, updated at
+1. Run `gh project list --owner <owner> --limit 100`
+2. More than 100 → paginate with `--page`
+3. Record: number, title, owner, visibility, updated at
 
 ### 4. Filter By Source
 
-> Goal: กรอง project หรือ items ตาม source ทีระบุ
+> Goal: filter projects or items by the given source
 
-1. ถ้า `source` เป็น `user`/`org` → กรอง project ตาม owner
-2. ถ้า `source` เป็น `repo:<owner>/<repo>` → ใช้ `gh project item-list <number> --owner <owner> --query "repo:<owner>/<repo>"` เพื่อกรอง items ตาม repo source
-3. ถ้า `source` เป็น `all` → ไม่กรอง
-4. บันทึก projects/items ทีผ่าน filter
+1. `source` is `user`/`org` → filter projects by owner
+2. `source` is `repo:<owner>/<repo>` → use `gh project item-list <number> --owner <owner> --query "repo:<owner>/<repo>"` to filter items by repo source
+3. `source` is `all` → no filter
+4. Record the projects/items passing the filter
 
 ### 5. Build Report
 
-> Goal: สรุปผลเป็นตาราง
+> Goal: summarize as a table
 
-1. ใช้ `/report` คอลัมน์:
+1. Use `/report` columns:
    - No.
    - Project
    - Owner
@@ -71,36 +71,35 @@ related:
    - Visibility
    - Updated At
    - URL
-2. เรียงตาม updatedAt ล่าสุด
-3. ระบุสรุปจำนวน projects
+2. Sort by most recent updatedAt
+3. State the total project count
 
 ## Rules
 
 ### 1. Authentication
 
-- ต้องมี `project` scope ก่อนใช้ `gh project`
-- ไม่ expose token หรือ credentials
+- The `project` scope is required before using `gh project`
+- Never expose tokens or credentials
 
 ### 2. Source Filter
 
-- รองรับ `user`, `org`, `repo:<owner>/<repo>`, `all`
-- ถ้า filter ไม่ match ให้แจ้งว่าไม่พบ
-- ไม่ modify projects หรือ items
+- Supports `user`, `org`, `repo:<owner>/<repo>`, `all`
+- Filter matches nothing → report that nothing was found
+- Never modify projects or items
 
 ### 3. Output
 
-- ใช้ `/report` เป็นค่าเริ่มต้น
-- ระบุ `source` ทีใช้กรองใน output
-- ถ้าไม่มี project ให้แจ้งอย่างชัดเจน
+- Use `/report` by default
+- State the `source` used for filtering in the output
+- No projects → say so clearly
 
 ### 4. Rate Limit
 
-- ใช้ pagination ถ้ามี project มาก
-- ถ้า API คืน 429 ให้รอและ retry
+- Use pagination when there are many projects
+- API returns 429 → wait and retry
 
 ## Expected Outcome
 
-- รายการ GitHub Projects ที filter ตาม source
-- ตารางแสดง project, owner, source, visibility, updated at, url
-- ไม่มีการแก้ไข project หรือ item ใดๆ
-
+- The GitHub Projects list filtered by source
+- A table showing project, owner, source, visibility, updated at, url
+- No project or item modified

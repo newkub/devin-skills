@@ -1,108 +1,108 @@
 ---
 name: follow-lib-mswjs
-description: ตั้งค่าและใช้งาน MSW (Mock Service Worker) สำหรับ API mocking ใน dev และ test
+description: Set up and use MSW (Mock Service Worker) for API mocking in dev and test
 argument-hint: "[scope]"
 related:
   - run-test
   - implement-to-production
-  - deep-review
+  - deep-review-codebase
   - report
 
 ---
 
 ## Goal
 
-ตั้งค่าและใช้งาน MSW เพื่อ mock network requests ที่ระดับ network จริง — ครอบคลุม dev (browser worker) และ test (Node server) โดยไม่ต้อง patch fetch/axios
+Set up and use MSW to mock network requests at the real network layer — covering dev (browser worker) and test (Node server) without patching fetch/axios
 
 ## Scope
 
-- ใช้เมื่อ frontend หรือ Node app ต้องการ mock API responses ใน dev, unit tests หรือ integration tests
-- ครอบคลุม REST และ GraphQL handlers, `setupWorker` (browser) และ `setupServer` (Node/Vitest)
-- ไม่ใช้ skill นี้สำหรับ E2E test กับ real backend → ใช้ `/follow-tool-playwright` ต่อ API จริงแทน
-- ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
+- Use when a frontend or Node app needs mocked API responses in dev, unit tests, or integration tests
+- Covers REST and GraphQL handlers, `setupWorker` (browser) and `setupServer` (Node/Vitest)
+- Do not use this skill for E2E tests against a real backend → use `/follow-tool-playwright` against the real API instead
+- Works with `/implement-to-production` when mocks must later become production code
 
-- Latest stable: `msw@2.15.0` (verified 2026-09-13) — `msw@3.0.3` เพิ่ง release (ESM-only, ต้องการ Node 22+/TS 5.9+, `onUnhandledRequest` → `onUnhandledFrame`, GraphQL แยกเข้า `msw/graphql`, ไม่มี `msw/native`) ยังใหม่เกิน pin; live-check ผ่าน `/deep-research` ก่อนใช้ v3
+- Latest stable: `msw@2.15.0` (verified 2026-09-13) — `msw@3.0.3` just released (ESM-only, requires Node 22+/TS 5.9+, `onUnhandledRequest` → `onUnhandledFrame`, GraphQL split into `msw/graphql`, no `msw/native`) — too new to pin; live-check via `/deep-research` before using v3
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรง topic
+> Goal: dispatch to the workflow matching the topic
 
 | Topic | Workflow |
 |-------|----------|
-| setup | `workflows/setup-msw/SKILL.md` — install, worker/server setup, handler พื้นฐาน |
+| setup | `workflows/setup-msw/SKILL.md` — install, worker/server setup, basic handlers |
 | config | `workflows/config-handlers/SKILL.md` — handler organization, error simulation, passthrough |
 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
+2. Otherwise → follow the steps below as usual
 
 ### 1. Review Tech Stack
 
-> Goal: รู้ stack และ test runner ก่อนติดตั้ง
+> Goal: know the stack and test runner before installing
 
-1. ทำ `/deep-review`
-2. ระบุ environment: browser dev, Node tests, หรือทั้งสอง
-3. ระบุ HTTP client ที่ใช้ (`fetch`, `axios`, `graphql-request`) — MSW intercept ที่ network layer ได้หมด
+1. Do `/deep-review-codebase`
+2. Identify the environment: browser dev, Node tests, or both
+3. Identify the HTTP client in use (`fetch`, `axios`, `graphql-request`) — MSW intercepts everything at the network layer
 
 ### 2. Install And Scaffold
 
-> Goal: MSW ติดตั้งและ init ถูกต้อง
+> Goal: MSW installed and initialized correctly
 
-1. ติดตั้ง `bun add -D msw` (dev dependency)
-2. ถ้าใช้ browser → `bunx msw init public/ --save` เพื่อสร้าง `mockServiceWorker.js`
-3. สร้าง `src/mocks/handlers.ts` สำหรับ request handlers
-4. สร้าง `src/mocks/browser.ts` (`setupWorker`) และ `src/mocks/node.ts` (`setupServer`)
+1. Install `bun add -D msw` (dev dependency)
+2. If using the browser → `bunx msw init public/ --save` to create `mockServiceWorker.js`
+3. Create `src/mocks/handlers.ts` for request handlers
+4. Create `src/mocks/browser.ts` (`setupWorker`) and `src/mocks/node.ts` (`setupServer`)
 
 ### 3. Write Handlers
 
-> Goal: handlers ครอบคลุม endpoints ที่ต้อง mock
+> Goal: handlers cover the endpoints that need mocking
 
-1. ใช้ `http.get('/api/users', () => HttpResponse.json([...]))` สำหรับ REST
-2. ใช้ `graphql.query('GetUser', ...)` สำหรับ GraphQL
-3. เขียน happy path, error (4xx/5xx), network error (`HttpResponse.error()`) และ delay (`await delay()`)
-4. แยก handlers ตาม domain ถ้าเยอะ: `src/mocks/handlers/<domain>.ts`
+1. Use `http.get('/api/users', () => HttpResponse.json([...]))` for REST
+2. Use `graphql.query('GetUser', ...)` for GraphQL
+3. Write happy path, errors (4xx/5xx), network error (`HttpResponse.error()`), and delay (`await delay()`)
+4. Split handlers by domain when many: `src/mocks/handlers/<domain>.ts`
 
 ### 4. Wire Dev Mode
 
-> Goal: mock ทำงานใน browser dev
+> Goal: mocks work in browser dev
 
-1. ใน entry (`src/main.ts`): start worker เฉพาะ `import.meta.env.DEV` และ flag เปิดใช้
-2. `await worker.start({ onUnhandledRequest: 'bypass' })` ก่อน render app
-3. ทำให้ opt-in ผ่าน env เช่น `VITE_MSW=1` — ไม่บังคับ dev ทุกคนใช้ mock
+1. In the entry (`src/main.ts`): start the worker only under `import.meta.env.DEV` and an enabling flag
+2. `await worker.start({ onUnhandledRequest: 'bypass' })` before rendering the app
+3. Make it opt-in via env, e.g. `VITE_MSW=1` — don't force every developer onto mocks
 
 ### 5. Wire Test Mode
 
-> Goal: mock ทำงานใน test suite
+> Goal: mocks work in the test suite
 
-1. ใน test setup file: `beforeAll(() => server.listen())`, `afterEach(() => server.resetHandlers())`, `afterAll(() => server.close())`
-2. ชี้ setup file ใน `vitest.config.ts` → `test.setupFiles`
-3. ต่อ test ที่ต้องการ response เฉพาะ → `server.use(http.get(...))` override
-4. ทำ `/run-test` เพื่อยืนยัน tests ผ่านกับ mock layer
+1. In the test setup file: `beforeAll(() => server.listen())`, `afterEach(() => server.resetHandlers())`, `afterAll(() => server.close())`
+2. Point the setup file in `vitest.config.ts` → `test.setupFiles`
+3. For tests needing specific responses → `server.use(http.get(...))` overrides
+4. Run `/run-test` to confirm tests pass with the mock layer
 
 ### 6. Report
 
-> Goal: สรุปสิ่งที่ตั้งค่า
+> Goal: summarize what was set up
 
-1. ทำ `/report` คอลัมน์: `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
-2. ระบุ endpoints ที่ยัง unhandled (`onUnhandledRequest: 'warn'` ช่วยหา)
+1. Run `/report` with columns: `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
+2. List endpoints still unhandled (`onUnhandledRequest: 'warn'` helps find them)
 
 ## Rules
 
-- ห้าม mock ด้วยการ patch `fetch`/`axios` — ใช้ MSW intercept ที่ network เท่านั้น
-- Handlers ต้อง reflect real API contract — ถ้า API เปลี่ยนให้อัปเดต handlers
-- ใช้ `onUnhandledRequest: 'warn'` ใน dev เพื่อหา endpoints ที่ยังไม่ mock
-- แยก test override ด้วย `server.use()` — ห้ามแก้ base handlers เพื่อ test เดียว
-- ไม่ commit `mockServiceWorker.js` ที่ generate เองนอก `public/` convention
+- Never mock by patching `fetch`/`axios` — use MSW interception at the network only
+- Handlers must reflect the real API contract — update handlers when the API changes
+- Use `onUnhandledRequest: 'warn'` in dev to find unmocked endpoints
+- Separate test overrides with `server.use()` — never edit base handlers for one test
+- Don't commit a generated `mockServiceWorker.js` outside the `public/` convention
 
-- ใช้ /implement-to-production ถ้าจำเป็น
-- ใช้ /deep-test api ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /implement-to-production if needed
+- Use /deep-test api if needed
+- Use /report if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- MSW ทำงานทั้ง browser dev และ test environments
-- Handlers ครอบคลุม endpoints หลักพร้อม success/error cases
-- Tests ไม่พึ่ง real network และ deterministic
+- MSW works in both browser dev and test environments
+- Handlers cover the main endpoints with success/error cases
+- Tests don't depend on the real network and are deterministic

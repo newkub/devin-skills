@@ -3,7 +3,7 @@ name: deep-validate-check-quality
 description: Validate quality dimension — readability, consistency, docs, best practices
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - report
 ---
 
@@ -22,7 +22,7 @@ Check the quality dimension of `/deep-validate` — readability, completeness, c
 
 > Goal: overall quality per standards
 
-1. Run `/deep-review` to check code quality
+1. Run `/deep-review-codebase` to check code quality
 2. Check readability, completeness, consistency
 3. Check that documentation is sufficient or clear
 

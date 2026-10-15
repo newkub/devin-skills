@@ -7,7 +7,7 @@ related:
   - update-project
   - update-astgrep-rules
   - run-test
-  - deep-review
+  - deep-review-codebase
   - deep-validate
   - check-reference
 
@@ -87,7 +87,7 @@ Use in any workspace, or invoke from `/update-tests`, `/update-project`, `/updat
 
 ### 4. Quality
 
-- Use `/deep-review` to check content quality
+- Use `/deep-review-codebase` to check content quality
 - Use backticks for `commands`, `paths`, `skill names`
 - Language: Thai/English per project convention
 

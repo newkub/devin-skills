@@ -1,6 +1,6 @@
 ---
 name: open-wezterm
-description: เปิด directory ใน WezTerm terminal ด้วย wezterm start --cwd
+description: Open a directory in a WezTerm terminal with wezterm start --cwd
 argument-hint: "[path]"
 related:
   - open-in-devin
@@ -9,65 +9,64 @@ related:
 
 ## Goal
 
-เปิด directory ใน WezTerm terminal ด้วย `wezterm start --cwd`
+Open a directory in a WezTerm terminal with `wezterm start --cwd`
 
 ## Scope
 
-ใช้เมื่อต้องการเปิด directory หรือ file ใน WezTerm terminal บน Windows, macOS, หรือ Linux
+Use when opening a directory or file in a WezTerm terminal on Windows, macOS, or Linux
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: ระบุ target path และตรวจสอบ WezTerm CLI
+> Goal: Identify the target path and check the WezTerm CLI
 
-1. ระบุ target paths จาก user input, ไฟล์ที่เปิดอยู่, หรือ current working directory
-2. ตรวจสอบ `wezterm` CLI ใน PATH ด้วย `where wezterm` หรือ `which wezterm` (verified `wezterm 20240203-110809-5046fc22`, 2026-09-12)
-3. ถ้าไม่พบ `wezterm` ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
-4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
+1. Identify target paths from user input, the open file, or the current working directory
+2. Check for the `wezterm` CLI in PATH with `where wezterm` or `which wezterm` (verified `wezterm 20240203-110809-5046fc22`, 2026-09-12)
+3. If `wezterm` is not found, inform the user with install guidance, then stop
+4. If the target path does not exist, inform the user and stop
 
 ### 2. Open In WezTerm
 
-> Goal: เปิด target ใน WezTerm อย่างปลอดภัย
+> Goal: Open the target in WezTerm safely
 
-1. ถ้า target เป็น directory: รัน `wezterm start --cwd "<path>"`
-2. ถ้า target เป็น file: เปิด parent directory ด้วย `wezterm start --cwd "<parent>"`
-3. ถ้ามีหลาย path ให้รันคำสั่งแยกครั้งละ path หรือใช้ `wezterm start` หลายครั้ง
-4. options เพิ่มเติม: `--new-tab` เปิดเป็น tab ใน window ที่มีอยู่, `--always-new-process` บังคับ spawn GUI process ใหม่, `-- <prog>` รัน program เฉพาะแทน shell (เช่น `wezterm start --cwd "<path>" -- pwsh`)
+1. For a directory: run `wezterm start --cwd "<path>"`
+2. For a file: open its parent directory with `wezterm start --cwd "<parent>"`
+3. For multiple paths, run the command once per path or call `wezterm start` repeatedly
+4. Extra options: `--new-tab` opens a tab in an existing window, `--always-new-process` forces a new GUI process spawn, `-- <prog>` runs a specific program instead of the shell (e.g. `wezterm start --cwd "<path>" -- pwsh`)
 
 ### 3. Verify And Report
 
-> Goal: ยืนยันว่า WezTerm ถูกเปิด
+> Goal: Confirm WezTerm opened
 
-1. ตรวจสอบว่า process `wezterm` ถูก spawn
-2. ถ้า fail ให้แสดง stderr และแนะนำให้ตรวจสอบ WezTerm CLI หรือ path
-3. รายงาน paths ที่เปิดพร้อม command ที่ใช้
+1. Check that the `wezterm` process was spawned
+2. On failure, show stderr and recommend checking the WezTerm CLI or path
+3. Report the opened paths with the commands used
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่สร้างไฟล์หรือ directory ใหม่ถ้า target ไม่มีอยู่
-- ไม่รันคำสั่งถ้า `wezterm` CLI ไม่พบใน PATH
-- ถ้า user ไม่ระบุ path ให้ถามก่อน
+- Do not create new files or directories when the target is missing
+- Do not run the command when the `wezterm` CLI is not found in PATH
+- If the user gives no path, ask first
 
 ### 2. Path Handling
 
-- ใช้ absolute path ถ้าไม่แน่ใจเรื่อง working directory
-- ใส่ quotes รอบ path เสมอเพื่อจัดการ spaces
-- สำหรับ file ให้เปิด parent directory
+- Use absolute paths when the working directory is uncertain
+- Always quote paths to handle spaces
+- For files, open the parent directory
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `wezterm` command ที่ใช้ (in wezterm)
-- ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
+- Report the result as a path list with the `wezterm` commands used (in wezterm)
+- On failure, state the cause and next steps
 
-- ใช้ /open-in-devin ถ้าจำเป็น
-- ใช้ /open-in-explorer ถ้าจำเป็น
-- ใช้ /open-file-in-gitui ถ้าจำเป็น — เปิด `gitui -f <file>` ใน WezTerm window ใหม่
+- Use /open-in-devin if needed
+- Use /open-in-explorer if needed
+- Use /open-file-in-gitui if needed — open `gitui -f <file>` in a new WezTerm window
 
 ## Expected Outcome
 
-- Directory หรือ parent directory ของ file ถูกเปิดใน WezTerm window/tab ใหม่
-- Output เป็นรายการ paths ที่เปิดพร้อม command ที่ใช้
-
+- The directory (or a file's parent directory) opens in a new WezTerm window/tab
+- Output is the list of opened paths with the commands used

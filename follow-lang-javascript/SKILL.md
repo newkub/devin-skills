@@ -1,24 +1,26 @@
 ---
 name: follow-lang-javascript
-description: Write JavaScript following modern best practices and ES2025+
-argument-hint: "[scope]"
+description: Write JavaScript to modern best practices — live-checked current ECMAScript, ESM-first
+argument-hint: "[scope|setup-project]"
 related:
   - use-bun-native-api
+  - follow-lang-bun
   - follow-lang-kotlin
   - follow-lang-lua
+  - follow-my-techstack
   - follow-best-practice
   - setup-cicd
   - use-scripts
-
+  - deep-research
 ---
 
 ## Goal
 
-Write JavaScript following modern best practices and ES2025+ features
+Write JavaScript following modern best practices and the current ECMAScript standard
 
 ## Scope
 
-For writing JavaScript in both vanilla code and frameworks (ES2025 / 16th edition)
+For writing JavaScript in both vanilla code and frameworks — always against the current ECMAScript edition confirmed in Step 1, never a remembered one. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time ESM scaffold)
 
 ## Execute
 
@@ -26,20 +28,22 @@ For writing JavaScript in both vanilla code and frameworks (ES2025 / 16th editio
 
 > Goal: live-check the language/toolchain state before writing code
 
-1. Check the target runtime/ES version in the project (config, `package.json`, browserslist)
+1. Check the target runtime/ES version in the project (config, `package.json`, browserslist); tool inventory → `references/toolchain.md`
 2. Run `/deep-research` + `/follow-best-practice` to confirm the current ECMAScript edition and toolchain practices before implementing (official source: https://262.ecma-international.org/)
-3. Never pin stale version numbers in code; adopt only features the target runtimes support
+3. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): runtime pin, ESM scaffold, quality dev deps, verify
+4. Never pin stale version numbers in code; adopt only features the target runtimes support
 
 ### 2. Use Modern Syntax
 
-> Goal: use modern JavaScript syntax and ES2025+ features for concise, safe code
+> Goal: use modern JavaScript syntax and standard-library features for concise, safe code
 
 1. Use `const`/`let`, arrow functions, template literals, destructuring, spread/rest; never `var`
 2. Use optional chaining (`?.`) and nullish coalescing (`??`)
-3. Use `Promise.withResolvers()`, `Object.groupBy()`, `Map.groupBy()` (ES2024)
-4. Use `toSorted()`, `toReversed()`, `toSpliced()`, `with()`, `findLast()`/`findLastIndex()` (ES2023)
-5. Use `Iterator` helpers (`map`, `filter`, `take`, `drop`, `reduce`), `Set` methods (`union`, `intersection`, `difference`, `symmetricDifference`, `isSubsetOf`), `Promise.try`, `RegExp.escape` (ES2025)
+3. Use `Promise.withResolvers()`, `Object.groupBy()`, `Map.groupBy()`
+4. Use `toSorted()`, `toReversed()`, `toSpliced()`, `with()`, `findLast()`/`findLastIndex()`
+5. Use `Iterator` helpers (`map`, `filter`, `take`, `drop`, `reduce`), `Set` methods (`union`, `intersection`, `difference`, `symmetricDifference`, `isSubsetOf`), `Promise.try`, `RegExp.escape`
 6. Use import attributes for JSON modules (`import data from './data.json' with { type: 'json' }`) and inline regex modifier flags
+7. Adopt newer standard features beyond the ones listed here only after the Step 1 live check confirms them and the target runtimes support them
 
 ### 3. Use Async Patterns
 
@@ -81,7 +85,7 @@ For writing JavaScript in both vanilla code and frameworks (ES2025 / 16th editio
 
 ### 1. Modern Syntax
 
-- Use ES2025+ features, never `var`; prefer immutable array methods (`toSorted`/`toReversed`/`toSpliced`/`with`) over mutating ones
+- Use modern standard-library features (Step 2), never `var`; prefer immutable array methods (`toSorted`/`toReversed`/`toSpliced`/`with`) over mutating ones
 
 ### 2. Async Patterns
 
@@ -107,9 +111,11 @@ For writing JavaScript in both vanilla code and frameworks (ES2025 / 16th editio
 
 ### 7. Live Checks
 
-- This skill is a single `SKILL.md` with no `references/`; verify current ECMAScript features and runtime support via `/deep-research` at use time, never from memory
+- Never pin versions in this package — toolchain table in `references/toolchain.md` holds roles/commands only; verify current ECMAScript features and runtime support via `/deep-research` at use time, never from memory
 
 - Use /use-bun-native-api if needed
+- Use /follow-lang-bun if needed
+- Use /follow-my-techstack if needed
 - Use /follow-lang-kotlin if needed
 - Use /follow-lang-lua if needed
 - Use /follow-best-practice if needed
@@ -118,7 +124,7 @@ For writing JavaScript in both vanilla code and frameworks (ES2025 / 16th editio
 
 ## Expected Outcome
 
-- JavaScript written per modern best practices and ES2025+
+- JavaScript written per modern best practices and the current ECMAScript standard
 - Clean, maintainable, testable code
 - Correct, efficient async patterns
 - Robust error handling

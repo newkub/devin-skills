@@ -2,75 +2,75 @@
 
 ## Goal
 
-เข้าใจ discrete mathematics: number theory, modular arithmetic, gcd, lcm, primes, congruences และประยุกต์ใช้ใน hashing, cryptography, algorithms
+Understand discrete mathematics: number theory, modular arithmetic, gcd, lcm, primes, congruences, and their use in hashing, cryptography, and algorithms
 
 ## Scope
 
-- ใช้สำหรับ integer math, divisibility, primes, modular arithmetic
-- ครอบคลุบ gcd, lcm, prime check, modular inverse, Chinese remainder
-- ประยุกต์ใน hashing, RNG, cryptography, scheduling
+- Use for integer math, divisibility, primes, modular arithmetic
+- Covers gcd, lcm, prime check, modular inverse, Chinese remainder
+- Applied in hashing, RNG, cryptography, scheduling
 
 ## Execute
 
 ### 1. Number Theory Basics
 
-> Goal: คำนวณพื้นฐาน
+> Goal: compute the basics
 
-1. หา gcd ด้วย Euclidean algorithm
-2. หา lcm จาก `lcm(a,b) = |a*b| / gcd(a,b)`
-3. ตรวจ prime ด้วย trial division หรือ sieve
-4. หา prime factors ของจำนวน
-5. ใช้ modular arithmetic: `(a + b) % m`
+1. Find gcd with the Euclidean algorithm
+2. Find lcm from `lcm(a,b) = |a*b| / gcd(a,b)`
+3. Check primes with trial division or a sieve
+4. Find a number's prime factors
+5. Use modular arithmetic: `(a + b) % m`
 
 ### 2. Modular Arithmetic
 
-> Goal: คำนวณใน modular space
+> Goal: compute in modular space
 
 1. `(a + b) % m = ((a % m) + (b % m)) % m`
 2. `(a * b) % m = ((a % m) * (b % m)) % m`
-3. หา modular inverse ด้วย extended Euclidean ถ้า gcd(a,m)=1
-4. ใช้ exponentiation by squaring สำหรับ `a^b % m`
+3. Find the modular inverse with the extended Euclidean algorithm when gcd(a,m)=1
+4. Use exponentiation by squaring for `a^b % m`
 
 ### 3. Chinese Remainder Theorem
 
-> Goal: รวม congruences
+> Goal: combine congruences
 
-1. ถ้ามี `x ≡ a1 (mod m1)`, `x ≡ a2 (mod m2)` และ gcd(m1,m2)=1
-2. หา solution ด้วย CRT
-3. ใช้ใน distributed ID generation
+1. Given `x ≡ a1 (mod m1)`, `x ≡ a2 (mod m2)` with gcd(m1,m2)=1
+2. Find the solution with CRT
+3. Used in distributed ID generation
 
 ### 4. Map To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply it in software
 
-1. Hash table size ใช้ prime เพื่อลด collision
-2. หา cycle ใน PRNG ด้วย modular arithmetic
-3. ใช้ modular inverse ใน cryptography
-4. ใช้ gcd/lcm ใน scheduling, aspect ratio
+1. Hash table sizes use primes to reduce collisions
+2. Find cycles in a PRNG with modular arithmetic
+3. Use the modular inverse in cryptography
+4. Use gcd/lcm in scheduling and aspect ratios
 
 ## Rules
 
 ### 1. Watch Overflow
 
-- ใช้ `BigInt` ถ้า intermediate values ใหญ่
-- ใช้ `mod` ทุกขั้นตอนใน modular exponentiation
+- Use `BigInt` when intermediate values are large
+- Apply `mod` at every step in modular exponentiation
 
 ### 2. Prime Handling
 
-- trial division ใช้ได้ถ้าตัวเลขไม่ใหญ่
-- Miller-Rabin สำหรับตัวเลขใหญ่
-- Sieve of Eratosthenes สำหรับหา primes ในช่วง
+- Trial division is fine for small numbers
+- Miller-Rabin for large numbers
+- Sieve of Eratosthenes for finding primes in a range
 
 ### 3. Code Mapping
 
-- `%` ใน programming คือ remainder ซึงอาจติดลบกับ negative numbers
-- ใช้ `((a % m) + m) % m` เพื่อให้เป็นบวก
+- `%` in programming is the remainder, which can go negative with negative numbers
+- Use `((a % m) + m) % m` to force a positive result
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
+- Use /follow-math-concepts if needed
 
 ## Expected Outcome
 
-- สามารถคำนวณ gcd, lcm, modular inverse
-- สามารถตรวจ prime และหา factors
-- สามารถใช้ modular arithmetic ใน hashing/cryptography
-- สามารถประยุกต์ CRT
+- Able to compute gcd, lcm, and the modular inverse
+- Able to check primes and find factors
+- Able to use modular arithmetic in hashing/cryptography
+- Able to apply CRT

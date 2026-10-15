@@ -11,24 +11,24 @@ related:
 
 ## Goal
 
-Integrate Zod เข้า ecosystem — Standard Schema interop, form libs (RHF/TanStack Form), JSON Schema export, OpenAPI, validation libs interop
+Integrate Zod into the ecosystem — Standard Schema interop, form libs (RHF/TanStack Form), JSON Schema export, OpenAPI, validation libs interop
 
 ## Scope
 
-interop — `StandardSchemaV1` interface (zod เป็น implementer), resolver patterns, `z.toJSONSchema` (v4), ecosystem tool compat
+interop — `StandardSchemaV1` interface (zod is an implementer), resolver patterns, `z.toJSONSchema` (v4), ecosystem tool compat
 
 ## Execute
 
 ### 1. Standard Schema
 
 ```ts
-// Zod v3.24+ / v4 implement Standard Schema — ทุก lib ที่รับ StandardSchemaV1 ใช้ได้เลย
+// Zod v3.24+ / v4 implement Standard Schema — every lib accepting StandardSchemaV1 works directly
 import type { StandardSchemaV1 } from '@standard-schema/spec'
 
-// ใช้กับ TanStack Form, tRPC, oRPC, Hono validator, Nitro, Arkaic... (auto-detect)
+// works with TanStack Form, tRPC, oRPC, Hono validator, Nitro, Arkaic... (auto-detect)
 ```
 
-- Zod schemas ผ่าน Standard Schema contract — ใช้กับ lib ไหนก็ได้ที่รองรับ โดยไม่ต้อง adapter
+- Zod schemas satisfy the Standard Schema contract — use them with any supporting lib, no adapter needed
 
 ### 2. Form Libraries
 
@@ -37,12 +37,12 @@ import type { StandardSchemaV1 } from '@standard-schema/spec'
 import { zodResolver } from '@hookform/resolvers/zod'
 useForm({ resolver: zodResolver(FormSchema) })
 
-// TanStack Form (v1) — Standard Schema ตรง
+// TanStack Form (v1) — Standard Schema directly
 <form.Field validators={{ onChange: FieldSchema }} />
 ```
 
-- `@hookform/resolvers` — `zodResolver`; TanStack Form → ผ่าน Standard Schema ตรง
-- Server + client shared schema — validate ทั้งสองฝั่งด้วย schema เดียว
+- `@hookform/resolvers` — `zodResolver`; TanStack Form → via Standard Schema directly
+- Server + client shared schema — validate both sides with the same schema
 
 ### 3. JSON Schema Export (v4)
 
@@ -53,27 +53,27 @@ const jsonSchema = z.toJSONSchema(UserSchema)   // v4 native
 ```
 
 - `z.toJSONSchema` — export schemas → OpenAPI/JSON Schema docs, code-gen, form builders
-- ข้อจำกัด: transforms/some refinements ไม่ representable — ตรวจ output
+- Limitation: transforms/some refinements aren't representable — check the output
 
 ### 4. OpenAPI And Docs
 
-- `zod-to-openapi`/`@asteasolutions/zod-to-openapi` — OpenAPI spec จาก schemas (v3); v4 → `z.toJSONSchema` + OpenAPI tooling
-- oRPC/tRPC — schemas เป็น procedure input/output contract โดยตรง
-- `zod-openapi` ecosystem — เช็ค v4 support ก่อน adopt
+- `zod-to-openapi`/`@asteasolutions/zod-to-openapi` — OpenAPI spec from schemas (v3); v4 → `z.toJSONSchema` + OpenAPI tooling
+- oRPC/tRPC — schemas are the procedure input/output contract directly
+- `zod-openapi` ecosystem — check v4 support before adopting
 
 ### 5. Env/Config (application)
 
 - Env schema → `z.toJSONSchema` → generated `.env.example` docs
-- Config schemas shared FE/BE — same contract ทั้ง runtime + docs
+- Config schemas shared FE/BE — the same contract for both runtime and docs
 
 ## Rules
 
-- Standard Schema คือ canonical interop — prefer libs ที่รองรับโดยตรงก่อน adapter
-- `z.toJSONSchema` v4-native — v3 ใช้ `zod-to-json-schema` package
-- Shared schemas FE/BE — single contract, validate 2 ฝั่ง
-- Transforms ไม่ serialize ลง JSON Schema — แยก input/output schemas เมื่อต้อง docs
+- Standard Schema is the canonical interop — prefer directly supporting libs before an adapter
+- `z.toJSONSchema` is v4-native — v3 uses the `zod-to-json-schema` package
+- Shared schemas FE/BE — one contract, validate both sides
+- Transforms don't serialize into JSON Schema — split input/output schemas when docs are needed
 
 ## Expected Outcome
 
-- Zod เชื่อม forms/OpenAPI/Standard Schema ครบ
-- Schema = single contract ทั้ง runtime validation + docs + types
+- Zod wired into forms/OpenAPI/Standard Schema completely
+- Schema = a single contract for runtime validation + docs + types

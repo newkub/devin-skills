@@ -5,7 +5,7 @@ argument-hint: "[target-area]"
 related:
   - follow-tool-rolldown
   - run-bench
-  - deep-review
+  - deep-review-codebase
   - report-before-after
 ---
 

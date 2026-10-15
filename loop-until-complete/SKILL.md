@@ -3,10 +3,11 @@ name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์ หรือถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - run-until-pass
   - retry
-  - follow-loop-engineering
+  - use-subagents
+  - report
   - suggest-next-action
   - report-progress
   - dont-over-engineer
@@ -21,7 +22,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการทำซ้ำงานทีต้อง verify จนกว่าจะผ่านเงื่อนไข หรืองานทีปรับปรุงได้หลายรอบ เช่น refactor, optimize, แก้ไข content, ปรับ UX, ออกแบบ schema
+ใช้สำหรับการทำซ้ำงานทีต้อง verify จนกว่าจะผ่านเงื่อนไข หรืองานทีปรับปรุงได้หลายรอบ เช่น refactor, optimize, แก้ไข content, ปรับ UX, ออกแบบ schema — รวมการออกแบบ agentic loop ทีรันอัตโนมัติ (scheduled/trigger/long-running) ใน `### 8`
 
 ## Execute
 
@@ -88,6 +89,18 @@ related:
 2. ทำ `/report` หรือ `/report-progress` แสดง progress ตามลำดับรอบ
 3. ถ้าพร้อม ให้ทำ `/ship` หรือ `/continue` ตาม context
 
+### 8. Design Agentic Loop (Conditional — merged จาก `/follow-loop-engineering`)
+
+> Goal: ออกแบบระบบทีหางาน แบ่งงาน มอบหมาย verify ผล บันทึกสถานะ และหยุดเมื่อถึง human gate ได้เอง
+
+1. กำหนด purpose: goal หลักของ loop, trigger (cron, git event, issue, notification, หรือ manual), stop condition ทีชัดเจน, max iterations หรือ budget กัน infinite loop
+2. Work discovery: scan แหล่งงาน — git diff, issues, PR comments, logs, metrics; ใช้ `/scan-codebase` / `grep` หา pattern ทีต้องแก้; จัดลำดับความสำคัญของงานทีเจอ; ไม่มีงาน → loop หยุดและ report
+3. Triage and isolate: จัดหมวดงาน (bug, refactor, test, docs, security); แยกแต่ละงาน into context อิสระ — branch หรือ worktree; บันทึก state ของงานลง `STATE.md`
+4. Implement and verify แบบไม่ขึ้นกัน: มอบหมายผ่าน `/use-subagents` — implementer agent และ verifier agent แยกกัน ไม่ใช้ context/state เดียวกัน; รัน test, lint, typecheck, build ตามความเหมาะสม; ไม่ผ่าน → ส่งกลับแก หรือข้ามไปงานถัดไป
+5. Persist state: อัปเดต `STATE.md` ด้วย งาน, ผล, การตัดสินใจ, รอบถัดไป + log, diff, test result, PR link; งานค้างข้าม session → `/save-to-todo-md`; state ต้องตรวจสอบย้อนกลับได้
+6. Human gates: ระบุ action ทีเสี่ยงหรือย้อนกลับไม่ได้ (publish, merge, push, delete, deploy) — สรุปผลและข้อเสนอก่อนถาม user; ไม่ทำ remote side effects โดยไม่ได้รับอนุญาต; ไม่อนุมัติ → บันทึกเหตุผลแล้วหยุดหรือข้าม
+7. Monitor and iterate: ติดตาม success rate, cost, review burden, จำนวน human gate; loop ทีสร้าง noise มากกว่าคุณค่า → ลดความถี่หรือลบ; ปรับ trigger, triage rule และ max iterations; รายงานทุกรอบด้วย `/report`
+
 ## Rules
 
 ### 1. Safety
@@ -119,9 +132,15 @@ related:
 - ห้ามเพิ่ม features หรือ config นอก scope ปัจจุบัน
 - ถ้ามีข้อสงสัยว่า over-engineer ให้ทำ `/dont-over-engineer`
 
-### 5. Loop Engineering
+### 5. Agentic Loop Guardrails (merged จาก `/follow-loop-engineering`)
 
-- ใช้ `/follow-loop-engineering` ถ้าจำเป็น
+- ห้าม loop ไม่มีทีสิ้นสุด — ต้องมี stop condition + max iterations; เกินแล้ว → หยุดและรายงาน
+- ห้าม destructive action โดยไม่ผ่าน human gate; ไม่ทำ remote side effects โดยไม่ได้รับอนุญาต
+- implementer และ verifier ต้องไม่ใช้ context/state เดียวกัน; ทุกผลลัพธ์มี evidence — test output, diff, log
+- ติดตาม token/execution cost ต่อรอบ; ใช้ minimal context; loop ต้องทิ้ง audit trail (state, log, decision, ผล)
+
+### 6. Related Skills
+
 - ใช้ `/retry` ถ้าจำเป็น
 - ใช้ `/run-until-pass` ถ้าจำเป็น
 - ใช้ `/suggest-next-action` ถ้าจำเป็น
@@ -134,4 +153,5 @@ related:
 - ผลลัพธ์มีคุณภาพและสมบูรณ์
 - ไม่เกิด over-engineering หรือ scope creep
 - มีบันทึกรอบ, metrics, และเหตุผลทีหยุด
+- ถ้าใช้เป็น agentic loop: มีเอกสารออกแบบ (goal, trigger, stop condition, max iterations, human gates) และ `STATE.md` ทีตรวจสอบย้อนกลับได้
 - ผลลัพธ์พร้อม validate และ ship

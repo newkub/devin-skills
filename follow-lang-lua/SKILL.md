@@ -1,7 +1,7 @@
 ---
 name: follow-lang-lua
 description: Lua guidelines with best practices for embedded scripting and lightweight automation
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project|create-module]"
 related:
   - follow-lang-javascript
   - follow-best-practice
@@ -17,7 +17,7 @@ Develop Lua per best practices for embedded scripting and lightweight automation
 
 ## Scope
 
-For all Lua work: game development, embedded systems, scripting within applications (Neovim, OpenResty, Roblox), rapid prototyping, config files, lightweight automation; single `SKILL.md` package — no `references/`, verify the interpreter/dialect (PUC Lua, LuaJIT, Luau) and library availability via `/deep-research` at use time (official docs: https://www.lua.org/manual/)
+For all Lua work: game development, embedded systems, scripting within applications (Neovim, OpenResty, Roblox), rapid prototyping, config files, lightweight automation. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/` — dispatch: `setup-project` → `workflows/setup-project/SKILL.md`, `create-module` → `workflows/create-module/SKILL.md`; verify the interpreter/dialect (PUC Lua, LuaJIT, Luau) and library availability via `/deep-research` at use time (official docs: https://www.lua.org/manual/)
 
 ## Execute
 
@@ -25,7 +25,7 @@ For all Lua work: game development, embedded systems, scripting within applicati
 
 > Goal: install the right interpreter and tooling for the host context
 
-1. Identify the dialect the host expects (PUC Lua 5.4, LuaJIT, Luau, or an embedded host like Neovim/OpenResty) and its version — run `/deep-research` when unsure; language features differ between them
+1. Identify the dialect the host expects (PUC Lua 5.4, LuaJIT, Luau, or an embedded host like Neovim/OpenResty) and its version — run `/deep-research` + `/follow-best-practice` when unsure to live-check current versions and practices; language features differ between them
 2. Install the interpreter (`mise use -g lua` or the host's bundled runtime) and the `LuaRocks` package manager; verify `lua -v` / `luajit -v` / `luarocks --version`
 3. Manage packages: `luarocks install|remove|search|show|list|update <pkg>`
 4. Set module search paths via `LUA_PATH`/`LUA_CPATH` (env) or `package.path`/`package.cpath` (runtime) when modules live outside defaults
@@ -56,7 +56,16 @@ For all Lua work: game development, embedded systems, scripting within applicati
 2. Errors: `error()` with a clear message or table-based custom error types; catch with `pcall`, add context with `xpcall` + a traceback handler
 3. At embed boundaries, convert host errors to Lua errors and vice versa explicitly — never let a silent `pcall` discard a failure
 
-### 5. Test, Debug, And Optimize
+### 5. Create Modules And Project Layout
+
+> Goal: standard module shape and project structure
+
+1. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`); add a module → run the workflow `workflows/create-module/SKILL.md` (argument `create-module`)
+2. Module pattern: `local M = {}` — public `function M.func()`, private `local function` — then `return M`; snake_case file/function names, UPPER constants, PascalCase class/metatable tables
+3. Document every public function in LDoc form (`---` description, `-- @param`, `-- @return`)
+4. Error convention at API boundaries: return `nil, err` or `error(msg, 2)` — pick one per module and stay consistent
+
+### 6. Test, Debug, And Optimize
 
 > Goal: verify correctness and tune performance
 

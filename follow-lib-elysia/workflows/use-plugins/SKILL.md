@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-ใช้ Elysia plugin ecosystem — `@elysiajs/*` official plugins (openapi/cors/jwt/static/cookie/html/cron/server-timing) + custom plugin authoring
+Use the Elysia plugin ecosystem — `@elysiajs/*` official plugins (openapi/cors/jwt/static/cookie/html/cron/server-timing) + custom plugin authoring
 
 ## Scope
 
@@ -38,8 +38,8 @@ app
   .use(serverTiming())
 ```
 
-- `@elysiajs/openapi` — spec + docs UI จาก schemas + route metadata (`detail: { tags, summary }`)
-- `@elysiajs/jwt` — `jwt.sign`/`jwt.verify` ใน handlers/derive
+- `@elysiajs/openapi` — spec + docs UI from schemas + route metadata (`detail: { tags, summary }`)
+- `@elysiajs/jwt` — `jwt.sign`/`jwt.verify` in handlers/derive
 - `@elysiajs/cron` — scheduled jobs; `@elysiajs/static` — assets; `@elysiajs/html` — JSX/HTML responses
 
 ### 2. Auth Pattern (jwt + derive)
@@ -50,7 +50,7 @@ app.use(jwt({ name: 'jwt', secret }))
    .onBeforeHandle(({ user, set }) => { if (!user) { set.status = 401; return 'unauthorized' } })
 ```
 
-- หรือ `macro`/`guard` สำหรับ per-route auth — ดู `define-routes` guard
+- Or `macro`/`guard` for per-route auth — see `define-routes` guard
 
 ### 3. Custom Plugin Authoring
 
@@ -63,7 +63,7 @@ app.use(plugin)
 ```
 
 - Plugin = Elysia instance — `name` required for dedup; `seed` config dedup key
-- Scope propagation: hooks/decorators local เว้น `.as('global'|'scoped')`
+- Scope propagation: hooks/decorators local unless `.as('global'|'scoped')`
 
 ### 4. Community Integrations
 
@@ -73,12 +73,12 @@ app.use(plugin)
 
 ## Rules
 
-- `.use()` order matters — cors/openapi ก่อน route registration เมื่อต้อง global
-- `name` + `seed` บน custom plugins — dedup + instance control
-- Secrets ผ่าน env → plugin options — ห้าม hardcode
-- เช็ค plugin compat version กับ elysia major ที่ใช้
+- `.use()` order matters — cors/openapi before route registration when they must be global
+- `name` + `seed` on custom plugins — dedup + instance control
+- Secrets via env → plugin options — never hardcode
+- Check plugin compat version against the elysia major in use
 
 ## Expected Outcome
 
-- Plugins ครบ use case (openapi/cors/jwt/static/cron) wired ถูก
-- Custom plugins named/scoped ถูกต้อง
+- Plugins covering the use case (openapi/cors/jwt/static/cron) wired correctly
+- Custom plugins named/scoped correctly

@@ -82,7 +82,7 @@ Create a social media cover image that matches the platform dimensions, brand id
 
 1. Save the file as `<platform>-cover-<topic>.png` or `.jpg`
 2. Check the file size and dimensions
-3. Use `/deep-review` to look at file size
+3. Use `/deep-review-codebase` to look at file size
 4. Show a preview if possible
 
 ### 7. Report

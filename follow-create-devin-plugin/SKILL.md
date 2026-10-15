@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - update-devin-global-skills
   - update-devin
-  - deep-review
+  - deep-review-codebase
   - ship
   - update-references
 
@@ -27,7 +27,7 @@ Use for creating a new plugin or improving an existing one so it can be installe
 
 > Goal: verify the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the plugin format and latest docs at https://docs.devin.ai , then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the plugin format and latest docs at https://docs.devin.ai , then run `/deep-review-codebase` to summarize the tech stack
 2. Record the rationale for the chosen stack and libraries for future reference (create devin plugins)
 3. Record the rationale for the chosen stack and libraries for future reference (create devin plugins)
 

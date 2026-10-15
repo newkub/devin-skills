@@ -1,52 +1,52 @@
 # Setup esm.sh
 
-## วัตถุประสงค์
+## Objective
 
-ตั้งค่าและใช้งาน esm.sh สำหรับโหลด ES Modules บน browser
+Set up and use esm.sh for loading ES Modules in the browser
 
-## ขั้นตอน
+## Steps
 
-### 1. ตรวจสอบความต้องการ
+### 1. Check Requirements
 
-- ต้องการใช้ ES Modules บน browser
-- ต้องการ import จาก bun โดยตรง
-- ต้องการ tree-shaking เพื่อลด bundle size
+- Need to use ES Modules in the browser
+- Need to import directly from bun
+- Need tree-shaking to reduce bundle size
 
-### 2. ใช้งานพื้นฐาน
-
-```html
-<script type="module">
-  import { useState } from 'https://esm.sh/react@19.2.8'
-  // ใช้งาน React
-</script>
-```
-
-### 3. ตั้งค่า version pinning
+### 2. Basic Usage
 
 ```html
 <script type="module">
   import { useState } from 'https://esm.sh/react@19.2.8'
-  // ระบุ version ที่ต้องการ
+  // Use React
 </script>
 ```
 
-### 4. ใช้กับ TypeScript
+### 3. Set Up Version Pinning
+
+```html
+<script type="module">
+  import { useState } from 'https://esm.sh/react@19.2.8'
+  // Specify the desired version
+</script>
+```
+
+### 4. Use With TypeScript
 
 ```html
 <script type="module">
   import { useState } from 'https://esm.sh/react@19.2.8?target=es2020'
-  // ระบุ target environment
+  // Specify the target environment
 </script>
 ```
 
-### 5. ตรวจสอบ
+### 5. Verify
 
-- เปิด browser และตรวจสอบ console
-- ตรวจสอบว่า modules โหลดสำเร็จ
-- ตรวจสอบ network tab ดูการโหลด
+- Open the browser and check the console
+- Check that modules load successfully
+- Check the network tab for the loading
 
-## ตรวจสอบความถูกต้อง
+## Correctness Check
 
-- Modules โหลดสำเร็จ
-- ไม่มี errors ใน console
-- Tree-shaking ทำงานอย่างถูกต้อง
+- Modules load successfully
+- No errors in the console
+- Tree-shaking works correctly

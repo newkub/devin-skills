@@ -4,7 +4,7 @@ description: Define a CLI spec with usage to generate completions/docs/SDKs
 argument-hint: "[scope]"
 related:
   - report-usage
-  - deep-review
+  - deep-review-codebase
   - follow-best-practice
   - setup-cicd
   - resolve-errors

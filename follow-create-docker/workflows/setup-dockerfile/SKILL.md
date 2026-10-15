@@ -4,7 +4,7 @@ description: Create a production-ready Dockerfile — multi-stage, non-root, lay
 argument-hint: "[app-type]"
 related:
   - follow-create-docker
-  - deep-review
+  - deep-review-codebase
   - follow-best-practice
   - ask-me
 ---

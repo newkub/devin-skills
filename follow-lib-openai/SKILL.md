@@ -1,6 +1,6 @@
 ---
 name: follow-lib-openai
-description: ใช้ openai SDK — chat completions, structured output, streaming, embeddings
+description: Use the openai SDK — chat completions, structured output, streaming, embeddings
 argument-hint: "[target-or-scope]"
 related:
   - follow-lib-zod
@@ -12,16 +12,16 @@ related:
 
 ## Goal
 
-ใช้ openai SDK — chat completions, structured output, streaming, embeddings
+Use the openai SDK — chat completions, structured output, streaming, embeddings
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ `openai` SDK — OpenAI API client ฝั่ง server บน Node.js 22+/Bun (lib openai)
+Use when the task involves the `openai` SDK — the OpenAI API client server-side on Node.js 22+/Bun (lib openai)
 
-- Compatible providers (Azure, OpenRouter, Ollama, local LLMs) ผ่าน `baseURL` → `workflows/config-providers/SKILL.md`
-- Vendor อื่น (Anthropic/Claude ฯลฯ) อยู่นอก scope — ใช้ skill ของ vendor นั้น
-- API keys/org/project จัดการผ่าน `/follow-secret-manager` — ห้ามเรียก API จาก client-side
-- Structured output schemas ใช้ zod — validation เชิงลึก → `/follow-lib-zod`
+- Compatible providers (Azure, OpenRouter, Ollama, local LLMs) via `baseURL` → `workflows/config-providers/SKILL.md`
+- Other vendors (Anthropic/Claude, etc.) are out of scope — use that vendor's skill
+- API keys/org/project are managed via `/follow-secret-manager` — never call the API from the client side
+- Structured output schemas use zod — for deeper validation → `/follow-lib-zod`
 
 - Latest: `openai@7.23.0` (verified 2026-09-24) — v7 requires Node.js 22+
 - References: [apis](references/apis.md) 
@@ -32,38 +32,38 @@ related:
 | Topic | Workflow |-------|----------| Config | `workflows/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys | Optimize | `workflows/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. สร้าง `new OpenAI({apiKey})` — key จาก env `OPENAI_API_KEY`
-1. ใช้ `chat.completions.create` หรือ Responses API (`client.responses.create`) — ตั้ง `model` และ system prompt ชัดเจน
-1. ใช้ `zodResponseFormat` จาก `openai/helpers/zod` กับ `client.responses.parse`/`chat.completions.parse` สำหรับ structured output
-1. stream ด้วย `stream: true` + iterate chunks — handle tool calls ถ้าใช้ function calling
+1. Create `new OpenAI({apiKey})` — the key comes from the env `OPENAI_API_KEY`
+1. Use `chat.completions.create` or the Responses API (`client.responses.create`) — set the `model` and system prompt explicitly
+1. Use `zodResponseFormat` from `openai/helpers/zod` with `client.responses.parse`/`chat.completions.parse` for structured output
+1. Stream with `stream: true` + iterate chunks — handle tool calls when using function calling
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib openai)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib openai)
 
 ## Rules
 
-- ห้ามเรียก OpenAI จาก client — proxy ผ่าน server เสมอ
-- ตั้ง timeout + retry + rate-limit handling (429 backoff)
-- `openai@7.x` ต้อง Node.js 22+ — ตรวจ runtime ก่อน upgrade
-- validate structured output ด้วย zod schema
-- log token usage สำหรับ cost control
+- Never call OpenAI from the client — always proxy through the server
+- Set timeout + retry + rate-limit handling (429 backoff)
+- `openai@7.x` requires Node.js 22+ — check the runtime before upgrading
+- Validate structured output with a zod schema
+- Log token usage for cost control
 
-- ใช้ `/follow-lib-zod` ถ้าต้องเขียน structured output schemas ซับซ้อน
-- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ API keys
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
+- Use `/follow-lib-zod` if writing complex structured output schemas
+- Use `/follow-secret-manager` if API keys management is needed
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib openai)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib openai)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib openai)
+- No known security/performance pitfalls (lib openai)
+- Lint, typecheck, tests pass

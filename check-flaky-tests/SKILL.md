@@ -6,8 +6,8 @@ related:
   - improve
   - run-test
   - follow-test
-  - check-test-correctness
-  - deep-review
+  - deep-test
+  - deep-review-codebase
   - report
   - suggest-next-action
   - ask-me
@@ -24,7 +24,7 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 - Detection: re-run N times and compare results, CI-history failure rate per test, time-of-day/parallelism correlation
 - Quarantine policy: mark + issue + owner + expiry — never quarantine permanently
 - Common root causes: shared state, timing/race, wall-clock dependence, external services — aligned with `/follow-test`
-- Tests that genuinely assert wrong (not flaky) → `/check-test-correctness`; slow suite → `/optimize test-suite`
+- Tests that genuinely assert wrong (not flaky) → `/deep-test test-correctness`; slow suite → `/optimize test-suite`
 
 ## Execute
 

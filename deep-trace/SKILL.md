@@ -101,7 +101,7 @@ Not for pure performance analysis — use `/run-profiler`
 > Goal: Fix the problem and confirm the trace is correct again
 
 1. Run `/resolve-errors` for a targeted fix
-2. If changing the flow structure → run `/deep-impact` first
+2. If changing the flow structure → run `/deep-analyze` first
 3. Remove the temporary instrumentation
 4. Re-run the reproduction case and capture a new trace
 5. Verify the flow matches the expected one again

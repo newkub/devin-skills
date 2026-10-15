@@ -1,6 +1,6 @@
 ---
 name: list-devin-session
-description: แสดงรายการ Devin sessions ทั้งหมดพร้อม title, mode, model, และเวลาใช้งานล่าสุด
+description: List all Devin sessions with title, mode, model, and last activity time
 argument-hint: "[limit] [keyword]"
 related:
   - list-devin
@@ -16,40 +16,40 @@ related:
 
 ## Goal
 
-แสดงรายการ Devin sessions ทั้งหมดจาก `%APPDATA%\devin\cli\sessions.db` พร้อม `id`, `title`, `working_directory`, `agent_mode`, `model`, `created_at`, และ `last_activity_at`
+List all Devin sessions from `%APPDATA%\devin\cli\sessions.db` with `id`, `title`, `working_directory`, `agent_mode`, `model`, `created_at`, and `last_activity_at`
 
 ## Scope
 
-- ใช้เมื่อต้องการค้นหา กรอง หรือดูประวัติ sessions ทีเคยสร้าง รองรับการระบุจำนวนสูงสุด และ keyword สำหรับกรอง `title` หรือ `working_directory`
-- ใช้เมื่อต้องการสรุป session หรือ context ที่ผ่านมาเป็น action plan — ทำ `### Session To Action Plan`
-- ต้องการ list หรือ search เฉพาะ user requests → ใช้ `/list-request-devin-session` หรือ `/search-request-in-devin-session`
+- Use to search, filter, or review the history of sessions ever created; supports a max count and a keyword to filter `title` or `working_directory`
+- Use to summarize a past session or context into an action plan — do `### Session To Action Plan`
+- To list or search only user requests → use `/list-request-devin-session` or `/search-request-in-devin-session`
 
 ## Execute
 
 ### 1. Locate Sessions Database
 
-> Goal: หาข้อมูล sessions ทีถูกต้อง
+> Goal: find the authoritative sessions data
 
-1. กำหนด path ของ sessions database เป็น `%APPDATA%\devin\cli\sessions.db`
-2. ตรวจสอบว่าไฟล์มีอยู่จริงด้วย `find_file_by_name` หรือ `exec`
-3. ถ้าไฟล์มีอยู่ → เปิดแบบ `readonly` ด้วย `bun:sqlite` หรือ `sqlite3` CLI
-4. ถ้าไฟล์ไม่อยู่ หรืออ่านไม่ออก → fallback โดย list ไฟล์ `history_*.md` ใน `%APPDATA%\devin\cli\summaries`
+1. Set the sessions database path to `%APPDATA%\devin\cli\sessions.db`
+2. Verify the file exists with `find_file_by_name` or `exec`
+3. If the file exists → open it `readonly` with `bun:sqlite` or the `sqlite3` CLI
+4. If the file is missing or unreadable → fall back to listing `history_*.md` files in `%APPDATA%\devin\cli\summaries`
 
 ### 2. Parse Arguments
 
-> Goal: รับค่า limit และ keyword
+> Goal: take limit and keyword
 
-1. รับ optional arguments จาก user:
-   - `limit`: จำนวน sessions สูงสุด (default `50`)
-   - `keyword`: คำค้นหาใน `title` หรือ `working_directory`
-2. ถ้าไม่ระบุ `limit` ใช้ `50`
-3. ถ้าไม่ระบุ `keyword` ไม่ต้องกรอง
+1. Accept optional arguments from the user:
+   - `limit`: maximum number of sessions (default `50`)
+   - `keyword`: search term within `title` or `working_directory`
+2. When `limit` is unspecified use `50`
+3. When `keyword` is unspecified, do not filter
 
 ### 3. Query Sessions
 
-> Goal: ดึงรายการ sessions จาก database
+> Goal: pull the session list from the database
 
-1. สร้าง SQL query:
+1. Build the SQL query:
    ```sql
    SELECT id,
           title,
@@ -63,65 +63,64 @@ related:
    ORDER BY last_activity_at DESC
    LIMIT ?
    ```
-2. ถ้ามี `keyword` เพิ่ม `AND (title LIKE ? OR working_directory LIKE ?)` ก่อน `ORDER BY`
-3. ใช้ `bun:sqlite` หรือ `sqlite3` CLI รันคำสั่งและรับผลลัพธ์เป็น JSON
+2. With a `keyword`, add `AND (title LIKE ? OR working_directory LIKE ?)` before `ORDER BY`
+3. Use `bun:sqlite` or the `sqlite3` CLI to run the statement and get JSON output
 
 ### 4. Fallback From History Summaries
 
-> Goal: แสดง sessions ถ้า database ไม่พร้อมใช้
+> Goal: show sessions when the database is unavailable
 
-1. ใช้ `search` หรือ `exec` หา `%APPDATA%\devin\cli\summaries\history_*.md`
-2. เรียงตาม `LastWriteTime` จากใหม่ไปเก่า
-3. สำหรับแต่ละไฟล์:
-   - ใช้ส่วนชื่อไฟล์หลัง `history_` เป็น `id`
-   - อ่านบรรทัดแรกของเนื้อหาทีขึ้นต้นด้วย `=== MESSAGE` หรือ `Summary:`
-   - ใช้ `LastWriteTime` เป็น `last_activity`
-4. จำกัดจำนวนตาม `limit`
+1. Use `search` or `exec` to find `%APPDATA%\devin\cli\summaries\history_*.md`
+2. Sort by `LastWriteTime`, newest first
+3. For each file:
+   - Use the part of the file name after `history_` as the `id`
+   - Read the first line of content starting with `=== MESSAGE` or `Summary:`
+   - Use `LastWriteTime` as `last_activity`
+4. Cap the count by `limit`
 
 ### 5. Format And Report
 
-> Goal: นำเสนอผลลัพธ์ให้อ่านง่าย
+> Goal: present the results readably
 
-1. ทำ `/report` คอลัมน์: No, Session ID, Title, Working Directory, Mode, Model, Created, Last Activity
-2. ถ้า `title` หรือ `working_directory` ยาว > 60 ตัวอักษร ตัดเหลือ 60 แล้วเติม `...`
-3. เรียงตาม `last_activity` จากใหม่ไปเก่า
-4. ระบุสถิติ: จำนวน sessions ทั้งหมดทีแสดง
+1. Do `/report` with columns: No, Session ID, Title, Working Directory, Mode, Model, Created, Last Activity
+2. When `title` or `working_directory` exceeds 60 characters, truncate to 60 and append `...`
+3. Sort by `last_activity`, newest first
+4. State the statistic: the total number of sessions shown
 
 ### 6. Handle Empty Or Error
 
-> Goal: รายงานสถานะทีถูกต้อง
+> Goal: report the correct status
 
-1. ถ้าไม่พบ sessions → รายงานว่าไม่พบ
-2. ถ้า database ถูก lock หรืออ่านไม่ออก → รายงาน error และลอง fallback
-3. ถ้า query ไม่สำเร็จ → แสดง SQL error และ stop
+1. If no sessions are found → report none found
+2. If the database is locked or unreadable → report the error and try the fallback
+3. If the query fails → show the SQL error and stop
 
 ### Session To Action Plan
 
-> Goal: สรุป session/context ที่ผ่านมาเป็น action plan — merged from from-chat-session
+> Goal: summarize a past session/context into an action plan — merged from from-chat-session
 
-1. อ่าน context หรือ summary ของ session เป้าหมาย — ระบุ session จาก `### 3. Query Sessions` หรือ history file ตาม `### 4. Fallback`
-2. ระบุสถานะปัจจุบัน: งานเสร็จ/ค้าง/blocked และ files/skills ที่เกี่ยวข้อง
-3. ถ้า context ยาวหรือใกล้เต็ม → ทำ `/follow-context-engineering`
-4. ทำ `/suggest-next-action` + `/use-related-skills` หา next actions — แยกเป็นข้อย่อย ข้อละสิ่งเดียว; ถ้าคำถามไม่ชัด → ทำ `/ask-me`
-5. ทำ `/report-todo` คอลัมน์ `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` — ด้านล่างตารางทำ `/report numbered`
-6. ตอบเฉพาะเมื่อ user ถามหรือระบุชัดว่าไม่ต้องทำทันที — ไม่ลงมือทำ action เอง; ไม่เดาไฟล์ที่จะเปลี่ยน
+1. Read the target session's context or summary — identify the session from `### 3. Query Sessions` or a history file per `### 4. Fallback`
+2. State the current status: done/pending/blocked work, and the files/skills involved
+3. If the context is long or near full → do `/follow-context-engineering`
+4. Do `/suggest-next-action` + `/use-related-skills` to find next actions — split into items, one thing per item; if a question is unclear → do `/ask-me`
+5. Do `/report-todo` with columns `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` — below the table do `/report numbered`
+6. Only answer when the user asks or clearly says not to act now — do not perform the actions yourself; do not guess which files will change
 
 ## Rules
 
-- เปิด database แบบ `readonly` เสมอ
-- ไม่แก้ไข ลบ หรือซ่อน sessions
-- ใช้ `bun:sqlite` เป็น primary tool สำหรับอ่าน `sessions.db`
-- fallback ใช้ `search` หรือ `use-pwsh-shell` สำหรับ list `history_*.md`
-- ถ้า user ไม่ระบุ `limit` ใช้ `50` เป็นค่า default
-- ใช้ `/report` สำหรับ output
+- Always open the database `readonly`
+- Never edit, delete, or hide sessions
+- Use `bun:sqlite` as the primary tool for reading `sessions.db`
+- For the fallback use `search` or `use-pwsh-shell` to list `history_*.md`
+- When the user gives no `limit`, use `50`
+- Use `/report` for the output
 
-- ใช้ /list-request-devin-session ถ้าจำเป็น
-- ใช้ /list-devin-global-skills ถ้าจำเป็น
-- ใช้ /use-bun-shell ถ้าจำเป็น
+- Use /list-request-devin-session if needed
+- Use /list-devin-global-skills if needed
+- Use /use-bun-shell if needed
 
 ## Expected Outcome
 
-- รายการ Devin sessions ในตารางพร้อม metadata สำคัญ
-- รองรับ `limit` และ `keyword` filtering
-- รายงานสถิติและสถานะ error ชัดเจน
-
+- The Devin session list in a table with key metadata
+- Supports `limit` and `keyword` filtering
+- Statistics and error status reported clearly

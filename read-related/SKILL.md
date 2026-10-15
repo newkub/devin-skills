@@ -7,7 +7,7 @@ related:
   - review-devin-global-harness
   - report
   - suggest-next-action
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -40,7 +40,7 @@ related:
 ### 1. Orchestration Only
 
 - เป็น orchestrator เรียก `/review-devin-global-harness` โดยตรง — ไม่ทำงานซ้ำ
-- ไม่ใช้ `/deep-review` เพราะจะซ้ำซ้อนกับการอ่าน related context
+- ไม่ใช้ `/deep-review-codebase` เพราะจะซ้ำซ้อนกับการอ่าน related context
 - ไม่ duplicate เนื้อหาของ `/review-devin-global-harness`
 
 ### 2. Output

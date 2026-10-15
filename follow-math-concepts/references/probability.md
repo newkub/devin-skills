@@ -2,28 +2,28 @@
 
 ## Goal
 
-เข้าใจและประยุกต์ probability: events, random variables, distributions, expected value, conditional probability, Bayes theorem ใน software
+Understand and apply probability: events, random variables, distributions, expected value, conditional probability, Bayes theorem in software
 
 ## Scope
 
-- ใช้สำหรับ randomness, sampling, A/B testing, risk analysis
-- ครอบคลุม probability rules, conditional probability, Bayes
-- แนะนำ common distributions: uniform, binomial, normal, Poisson
+- Use for randomness, sampling, A/B testing, risk analysis
+- Covers probability rules, conditional probability, Bayes
+- Introduces common distributions: uniform, binomial, normal, Poisson
 
 ## Execute
 
 ### 1. Define Events And Sample Space
 
-> Goal: ระบุ sample space และ events
+> Goal: identify the sample space and events
 
-1. ระบุ sample space `S` ทั้งหมด
-2. ระบุ event `E` ทีสนใจ
-3. คำนวณ `P(E) = |E| / |S|`
-4. ระบุ complementary event `P(E') = 1 - P(E)`
+1. Identify the whole sample space `S`
+2. Identify the event `E` of interest
+3. Compute `P(E) = |E| / |S|`
+4. Identify the complementary event `P(E') = 1 - P(E)`
 
 ### 2. Apply Basic Rules
 
-> Goal: คำนวณ probability
+> Goal: compute probability
 
 1. Addition rule: `P(A ∪ B) = P(A) + P(B) - P(A ∩ B)`
 2. Multiplication rule: `P(A ∩ B) = P(A) * P(B | A)`
@@ -32,59 +32,59 @@
 
 ### 3. Use Bayes Theorem
 
-> Goal: อัปเดต belief ตาม evidence
+> Goal: update belief according to evidence
 
 1. Bayes: `P(A | B) = P(B | A) * P(A) / P(B)`
-2. ใช้ใน anomaly detection
-3. ใช้ในประเมินความน่าจะเป็นของ root cause ตาม logs
+2. Use in anomaly detection
+3. Use in estimating root-cause probability from logs
 
 ### 4. Expected Value And Distributions
 
-> Goal: ประเมินค่าเฉลี่ยและแจกแจง
+> Goal: estimate the mean and the distribution
 
 1. Expected value: `E[X] = Σ x * P(X=x)`
-2. ใช้ distribution ทีเหมาะสม:
-   - Uniform: ทุกค่าเท่ากัน
-   - Binomial: จำนวนครั้งสำเร็จจาก n ครั้ง
-   - Normal: ข้อมูล continuous
-   - Poisson: เหตุการณ์เกิดขึ้นในเวลา
-3. ใช้ expected value ใน load balancing, queueing
+2. Use the suitable distribution:
+   - Uniform: all values equal
+   - Binomial: number of successes out of n trials
+   - Normal: continuous data
+   - Poisson: events occurring over time
+3. Use expected value in load balancing, queueing
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน code
+> Goal: apply in code
 
-1. A/B test: เปรียบเทียบ conversion rate ด้วย significance
-2. Sampling: ใช้ random seed ให้ reproducible
-3. Retry: คำนวณ probability ของ failure ซ้ำ
-4. Cache hit rate: model เป็น probability
+1. A/B test: compare conversion rates with significance
+2. Sampling: use a random seed for reproducibility
+3. Retry: compute the probability of repeated failure
+4. Cache hit rate: model it as a probability
 
 ## Rules
 
 ### 1. Independence Check
 
-- อย่าสับสน correlation กับ causation
-- ตรวจสอบ independence ก่อนใช้ multiplication rule
+- Don't confuse correlation with causation
+- Verify independence before using the multiplication rule
 
 ### 2. Avoid Misconceptions
 
-- Gambler's fallacy: ผลในอดีตไม่เปลี่ยน probability ในอนาคต
-- Base rate fallacy: ต้องคำนึงถึง prior ด้วย
+- Gambler's fallacy: past outcomes don't change future probability
+- Base rate fallacy: must account for the prior
 
 ### 3. Code Mapping
 
-- ใช้ random seed เพื่อ reproducibility
-- ใช้ Monte Carlo simulation ถ้า analytic ยาก
-- ใช้ BigInt หรือ arbitrary precision ถ้าจำเป็น
+- Use a random seed for reproducibility
+- Use Monte Carlo simulation when the analytic form is hard
+- Use BigInt or arbitrary precision when needed
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /follow-incident-triage ถ้าจำเป็น
-- ใช้ /follow-goal ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /follow-test if needed
+- Use /deep-debug (Triage Incident) if needed
+- Use /follow-goal if needed
 
 ## Expected Outcome
 
-- สามารถคำนวณ probability พื้นฐาน
-- สามารถใช้ Bayes theorem
-- สามารถเลือก distribution ทีเหมาะสม
-- สามารถประยุกต์ใน testing, A/B, incident triage
+- Able to compute basic probability
+- Able to use Bayes theorem
+- Able to choose the suitable distribution
+- Able to apply it in testing, A/B, incident triage

@@ -61,7 +61,7 @@ Layout:
 > Goal: each workspace type has its conventions as agent guidance
 
 1. For each workspace type, write `architecture/<type>/<topic>.md` covering: layer boundaries, folder structure, import direction, naming, and patterns chosen for that type
-2. Pull the architecture from `AGENTS.md`; run `/refactor architecture` when the pattern is unclear (Clean for multi-app, Layered for a single app)
+2. Pull the architecture from `AGENTS.md`; run `/follow-architecture` when the pattern is unclear (Clean for multi-app, Layered for a single app); a rule that only holds after the layout moves → run `/refactor` first, then write the rule
 3. One concern per file (e.g. `architecture/web/structure.md`, `architecture/api/layering.md`) — keep each file focused and ≤250 lines
 4. Write rules an agent reasons about; anything machine-checkable by AST → hand to `/update-astgrep-rules` instead of duplicating here
 

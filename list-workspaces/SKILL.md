@@ -1,6 +1,6 @@
 ---
 name: list-workspaces
-description: แสดงรายการ workspaces ทั้งหมดใน monorepo พร้อม dependencies graph
+description: List all workspaces in a monorepo with a dependencies graph
 argument-hint: "[scope]"
 related:
   - follow-best-practice
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-แสดงรายการ workspaces ทั้งหมดใน monorepo เพื่อให้ user เห็นภาพรวมและ dependencies graph
+List all workspaces in a monorepo so the user sees an overview and dependency graph
 
 ## Scope
 
-ใช้สำหรับ monorepo ที่มี workspaces หลาย packages
+Use for monorepos with multiple workspace packages
 
 ## Execute
 
@@ -25,108 +25,108 @@ related:
 
 > Goal: Discover Workspaces
 
-ค้นหา workspaces ทั้งหมดใน monorepo
+Find all workspaces in the monorepo
 
-1. อ่าน `package.json` ที่ root เพื่อดู workspaces configuration
-2. ค้นหา `package.json` ในทุก workspace ตาม workspaces pattern
-3. ระบุ workspace names และ paths
-4. ตรวจสอบ workspaces ที่ไม่มี package.json (orphaned)
+1. Read root `package.json` for the workspaces configuration
+2. Find `package.json` files in every workspace per the workspaces pattern
+3. Identify workspace names and paths
+4. Check for workspaces without a package.json (orphaned)
 
 ### 2. Analyze Dependencies
 
 > Goal: Analyze Dependencies
 
-วิเคราะห์ dependencies ระหว่าง workspaces
+Analyze dependencies between workspaces
 
-1. อ่าน dependencies ของแต่ละ workspace
-2. ระบุ workspace dependencies (workspace:*)
-3. สร้าง dependency graph ระหว่าง workspaces
-4. ระบุ circular dependencies ถ้ามี
+1. Read each workspace's dependencies
+2. Identify workspace dependencies (`workspace:*`)
+3. Build a dependency graph between workspaces
+4. Identify circular dependencies if any
 
 ### 3. Categorize Workspaces
 
 > Goal: Categorize Workspaces
 
-จัดกลุ่ม workspaces ตามประเภท
+Group workspaces by type
 
-1. จัดกลุ่มตาม directory structure (apps, packages, tooling)
-2. จัดกลุ่มตาม purpose (cli, core, data, network, terminal)
-3. ระบุ workspaces ที่เป็น libraries (no bin)
-4. ระบุ workspaces ที่เป็น CLI tools (มี bin)
+1. Group by directory structure (apps, packages, tooling)
+2. Group by purpose (cli, core, data, network, terminal)
+3. Identify workspaces that are libraries (no bin)
+4. Identify workspaces that are CLI tools (have bin)
 
 ### 4. Identify Issues
 
 > Goal: Identify Issues
 
-ระบุปัญหาใน workspaces
+Find problems in workspaces
 
-1. ตรวจสอบ workspaces ที่ไม่มีใครใช้ (orphaned)
-2. ตรวจสอบ workspaces ที่มี dependencies วงจร (circular)
-3. ตรวจสอบ workspaces ที่มี version ไม่สอดคล้อง
-4. ตรวจสอบ workspaces ที่ขาด dependencies ที่จำเป็น
+1. Check for workspaces nobody uses (orphaned)
+2. Check for workspaces with circular dependencies
+3. Check for workspaces with inconsistent versions
+4. Check for workspaces missing required dependencies
 
 ## Rules
 
 ### 1. Workspace Discovery
 
-ค้นหา workspaces อย่างถูกต้อง
+Discover workspaces correctly
 
-- อ่าน workspaces configuration จาก root `package.json`
-- ค้นหา `package.json` ในทุก workspace ตาม pattern
-- ระบุ workspace names และ paths อย่างชัดเจน
-- ตรวจสอบ workspaces ที่ไม่มี package.json
+- Read workspaces configuration from root `package.json`
+- Find `package.json` in every workspace per pattern
+- Clearly identify workspace names and paths
+- Check for workspaces without a package.json
 
 ### 2. Dependency Analysis
 
-วิเคราะห์ dependencies ระหว่าง workspaces
+Analyze dependencies between workspaces
 
-- ระบุ workspace dependencies (workspace:*)
-- สร้าง dependency graph อย่างชัดเจน
-- ระบุ circular dependencies ถ้ามี
-- แสดง dependency depth และ levels
+- Identify workspace dependencies (`workspace:*`)
+- Build a clear dependency graph
+- Identify circular dependencies if any
+- Show dependency depth and levels
 
 ### 3. Categorization
 
-จัดกลุ่ม workspaces อย่างเป็นระบบ
+Group workspaces systematically
 
-- จัดกลุ่มตาม directory structure
-- จัดกลุ่มตาม purpose และ functionality
-- ระบุ libraries และ CLI tools
-- แยก production และ development workspaces
+- Group by directory structure
+- Group by purpose and functionality
+- Identify libraries and CLI tools
+- Separate production and development workspaces
 
 ### 4. Issue Identification
 
-ระบุปัญหาใน workspaces
+Find problems in workspaces
 
-- ตรวจสอบ orphaned workspaces
-- ตรวจสอบ circular dependencies
-- ตรวจสอบ version inconsistencies
-- ตรวจสอบ missing dependencies
+- Check orphaned workspaces
+- Check circular dependencies
+- Check version inconsistencies
+- Check missing dependencies
 
 ### 5. Report Formatting
 
-จัดรูปแบบ output ตาม `/report`
+Format output per `/report`
 
-1. กำหนด table structure ด้วยคอลัมน์ "No." เป็นคอลัมน์แรก (No. | Name | Path | Type | Dependencies | Status)
-2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน
-3. ใช้ alignment ที่เหมาะสม (left สำหรับ text, right สำหรับ numbers)
-4. ใช้ bold สำหรับ headers และ keywords สำคัญ
-5. ใช้ backticks สำหรับ workspace names และ paths
-6. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status indicators
-7. จัดกลุ่ม workspaces ตาม category (Apps, Packages, Tooling)
-8. เรียงลำดับภายในกลุ่มตามความสำคัญ
-9. ใช้ separators สำหรับแยกกลุ่มที่ชัดเจน
-10. ตรวจสอบว่าตารางอ่านง่ายบนทุก device
+1. Define table structure with "No." as the first column (No. | Name | Path | Type | Dependencies | Status)
+2. Use standard markdown table format with clear headers
+3. Use appropriate alignment (left for text, right for numbers)
+4. Use bold for headers and important keywords
+5. Use backticks for workspace names and paths
+6. Use symbols (✅, ❌, ⚠️) for status indicators
+7. Group workspaces by category (Apps, Packages, Tooling)
+8. Sort within a group by importance
+9. Use separators to clearly divide groups
+10. Ensure the table is readable on every device
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
+- Use /run-build if needed
+- Use /run-test all if needed
 
 ## Expected Outcome
 
-- User เห็นภาพรวม workspaces ทั้งหมดใน monorepo
-- User เห็น dependency graph ระหว่าง workspaces
-- User รู้ว่า workspace ไหน orphaned หรือมีปัญหา
-- User สามารถจัดระเบียบ workspaces ได้อย่างมีประสิทธิภาพ
+- The user sees an overview of all workspaces in the monorepo
+- The user sees the dependency graph between workspaces
+- The user knows which workspace is orphaned or has issues
+- The user can organize workspaces effectively

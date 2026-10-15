@@ -1,6 +1,6 @@
 ---
 name: list-request-devin-session
-description: รายการ requests จาก user ตาม scope — ทุก session, session นี้ หรือ repo นี้
+description: List user requests by scope — all sessions, this session, or this repo
 argument-hint: "[--scope all|session|repo]"
 related:
   - report
@@ -9,53 +9,52 @@ related:
 
 ## Goal
 
-แสดงรายการ requests ที่ user ส่ง โดยอ่านจาก `history_*.md` ใน `%APPDATA%\devin\cli\summaries` ตาม scope ที่เลือก
+List user requests by reading `history_*.md` files in `%APPDATA%\devin\cli\summaries` per the chosen scope
 
 ## Scope
 
-- `--scope all` (default): requests ทุก session สำหรับ analytics หรือค้นหา patterns
-- `--scope session`: เฉพาะ session ปัจจุบัน
-- `--scope repo`: เฉพาะ sessions ที่ทำงานใน repo ปัจจุบัน
-- อ่านอย่างเดียว ไม่แก้ไข history files
+- `--scope all` (default): requests from every session — for analytics or pattern search
+- `--scope session`: only the current session
+- `--scope repo`: only sessions working in the current repo
+- Read-only — never modifies history files
 
 ## Execute
 
 ### 1. Discover Session Files
 
-> Goal: หา history files ตาม scope
+> Goal: find history files per scope
 
-1. หา directory `%APPDATA%\devin\cli\summaries`
-2. `--scope all` → list `history_*.md` ทั้งหมด
-3. `--scope session` → ใช้ history file ของ session ปัจจุบัน
-4. `--scope repo` → กรอง sessions ที่ระบุ workspace เดียวกับ repo ปัจจุบัน
-5. บันทึกจำนวน sessions ที่พบ
+1. Locate the directory `%APPDATA%\devin\cli\summaries`
+2. `--scope all` → list all `history_*.md` files
+3. `--scope session` → use the current session's history file
+4. `--scope repo` → filter sessions whose workspace matches the current repo
+5. Record the number of sessions found
 
 ### 2. Extract User Requests
 
-> Goal: ดึง user messages จากแต่ละ file
+> Goal: pull user messages from each file
 
-1. ค้นหา `=== MESSAGE N - User ===` ในแต่ละ file
-2. อ่านเนื้อหาจนถึง `=== MESSAGE` ถัดไป
-3. บันทึก session file, message number, เนื้อหา
-4. ไฟล์ใหญ่ → อ่านเฉพาะ headings ก่อนแล้วค่อย read บริเวณ user messages
+1. Search for `=== MESSAGE N - User ===` in each file
+2. Read content until the next `=== MESSAGE`
+3. Record session file, message number, content
+4. Large file → read headings first then read only user-message regions
 
 ### 3. Format And Report
 
-> Goal: สรุปเป็น table
+> Goal: summarize as a table
 
-1. ทำ `/report` คอลัมน์: No., Session, Request, Type, Length
-2. ตัด request ยาว > 80 ตัวอักษร แล้วเติม `...`
-3. เรียงตาม session (ใหม่ไปเก่า) แล้ว message number
-4. ระบุสถิติ: จำนวน sessions, จำนวน requests
+1. Use `/report` columns: No., Session, Request, Type, Length
+2. Truncate requests longer than 80 characters and append `...`
+3. Sort by session (new → old) then message number
+4. State stats: session count, request count
 
 ## Rules
 
-- ไม่โหลดทุก file พร้อมกัน ใช้ streaming
-- ไม่รวม system หรือ assistant messages
-- ไม่แก้ไข history files
-- ใช้ `/report` เสมอ
+- Never load all files at once; use streaming
+- Exclude system or assistant messages
+- Never modify history files
+- Always use `/report`
 
 ## Expected Outcome
 
-- ตาราง requests ตาม scope พร้อมสถิติ
-
+- A table of requests per scope with stats

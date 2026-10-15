@@ -16,7 +16,7 @@ triggers:
 related:
   - check-screenshots-dir
   - use-agents-capture
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -27,7 +27,7 @@ related:
 
 ใช้กับไฟล์ทีอยู่ใน `~/Downloads` เช่น screenshots, images, documents, archives โดย list, filter และ read ไฟล์ทีเลือก
 
-ดูเพิ่มเติม: /check-screenshots-dir, /use-agents-capture, /deep-review, /open-in-explorer
+ดูเพิ่มเติม: /check-screenshots-dir, /use-agents-capture, /deep-review-codebase, /open-in-explorer
 
 ## Execute
 

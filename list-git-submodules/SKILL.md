@@ -1,6 +1,6 @@
 ---
 name: list-git-submodules
-description: รายการ git submodules ใน repo พร้อม status
+description: List git submodules in the repo with status
 argument-hint: "[scope]"
 related:
   - list-projects-git-in-drive-d
@@ -11,68 +11,67 @@ related:
 
 ## Goal
 
-แสดงรายการ git submodules ทั้งหมดใน repository พร้อม path, URL, branch, commit และสถานะ
+List all git submodules in the repository with path, URL, branch, commit, and status
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจสอบหรือรายงาน submodules ใน project
+Use when inspecting or reporting submodules in a project
 
 ## Execute
 
 ### 1. List Submodules
 
-> Goal: ได้รายการ submodules
+> Goal: get the submodule list
 
-1. รัน `git submodule status` หรือ `git submodule status --recursive`
-2. บันทึก fields: `SHA`, `path`, `commit message`
+1. Run `git submodule status` or `git submodule status --recursive`
+2. Record the fields: `SHA`, `path`, `commit message`
 
 ### 2. Get URLs
 
-> Goal: รู้ remote URL ของแต่ละ submodule
+> Goal: know each submodule's remote URL
 
-1. รัน `git config --file .gitmodules --get-regexp url`
-2. map URL กับ path ตามชื่อ submodule
+1. Run `git config --file .gitmodules --get-regexp url`
+2. Map URL to path by submodule name
 
 ### 3. Get Branches
 
-> Goal: รู้ branch ปัจจุบันของแต่ละ submodule
+> Goal: know each submodule's current branch
 
-1. สำหรับแต่ละ path รัน `git -C <path> rev-parse --abbrev-ref HEAD`
-2. ถ้าเป็น detached HEAD ให้ระบุ `detached`
+1. For each path run `git -C <path> rev-parse --abbrev-ref HEAD`
+2. Detached HEAD → mark `detached`
 
 ### 4. Check Status
 
-> Goal: รู้สถานะ working tree
+> Goal: know the working-tree status
 
-1. สำหรับแต่ละ path รัน `git -C <path> status --porcelain`
-2. ระบุ `clean` หรือ `dirty` พร้อมจำนวน modified/untracked
+1. For each path run `git -C <path> status --porcelain`
+2. Mark `clean` or `dirty` with the count of modified/untracked files
 
 ### 5. Report
 
-> Goal: สรุปผล
+> Goal: summarize the result
 
-1. ทำ `/report` คอลัมน์: Path, URL, Branch, Commit, Status
-2. หรือสร้าง bullet list ถ้าจำนวนน้อย
+1. Use `/report` columns: Path, URL, Branch, Commit, Status
+2. Or a bullet list when there are few entries
 
 ## Rules
 
 ### 1. Safe Read-Only
 
-- ไม่แก้ไข submodules
-- ใช้ `git -C <path>` แทน `cd`
+- Never modify submodules
+- Use `git -C <path>` instead of `cd`
 
 ### 2. Handle Missing Submodules
 
-- ถ้า submodule ไม่ถูก initialize → ระบุ `(not initialized)`
-- ถ้า `.gitmodules` ไม่มี → รายงานว่าไม่มี submodules
+- Submodule not initialized → mark `(not initialized)`
+- No `.gitmodules` → report that there are no submodules
 
-- ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
-- ใช้ /delete-git-submodules ถ้าจำเป็น
-- ใช้ /convert-git-submodules ถ้าจำเป็น
+- Use /list-projects-git-in-drive-d if needed
+- Use /delete-git-submodules if needed
+- Use /convert-git-submodules if needed
 
 ## Expected Outcome
 
-- ตาราง submodules ครบถ้วน
-- รู้ path, URL, branch, commit, status
-- ไม่มี side effects
-
+- A complete submodules table
+- Known path, URL, branch, commit, status
+- No side effects

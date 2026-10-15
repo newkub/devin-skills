@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-charts
-description: ใช้ TanStack Charts ครบวงจร — declarative grammar-of-graphics, series types, axes, tooltips
+description: Use TanStack Charts end to end — declarative grammar-of-graphics, series types, axes, tooltips
 argument-hint: "[chart-type]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,13 +11,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack Charts ครบ — grammar-of-graphics charting: data + axes + series declarative config, series types, interactivity, responsive sizing
+Use TanStack Charts fully — grammar-of-graphics charting: data + axes + series declarative config, series types, interactivity, responsive sizing
 
 ## Scope
 
-ใช้สำหรับ data visualization — **0.x (beta)**: API อาจเปลี่ยน ตรวจ `https://tanstack.com/charts/latest` ก่อน implement; ถ้าต้อง mature lib มาก → พิจารณา Recharts/d3 ผ่าน `/ask-me`
+For data visualization — **0.x (beta)**: the API may change, check `https://tanstack.com/charts/latest` before implementing; if you need a much more mature lib → consider Recharts/d3 via `/ask-me`
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -29,7 +29,7 @@ bun add @tanstack/react-charts
 
 ### 2. Grammar Model
 
-> Goal: เข้าใจ grammar — data + scales/axes + series
+> Goal: understand the grammar — data + scales/axes + series
 
 ```tsx
 import { Chart } from '@tanstack/react-charts'
@@ -44,33 +44,33 @@ import { Chart } from '@tanstack/react-charts'
 ```
 
 - Series `elementType`: `bar`, `line`, `area`, `pie`, `bubble`
-- Multi-series: `data` เป็น array ของ series + หลาย `secondaryAxes`
-- Tooltip/hover พร้อมใช้ผ่าน options — custom renderers ได้
+- Multi-series: `data` is an array of series + multiple `secondaryAxes`
+- Tooltip/hover work out of the box via options — custom renderers are possible
 
 ### 3. Patterns
 
-> Goal: charts จริง
+> Goal: real charts
 
-1. **Series หลายตัว**: normalized data shape `{ label, s1, s2 }` + axes แยกต่อ key
-2. **Time series**: primary axis `getValue` คืน Date — scale time อัตโนมัติ
-3. **Responsive**: container มีขนาดชัดเจน — chart ยึดตาม parent
-4. **Theming**: colors ผ่าน series options — map เข้า design tokens ของ app
-5. **Loading/empty**: จัดการ `data: []` และ loading state เอง (headless-ish)
+1. **Multiple series**: normalized data shape `{ label, s1, s2 }` + a separate axis per key
+2. **Time series**: the primary axis `getValue` returns a Date — time scaling is automatic
+3. **Responsive**: the container has a clear size — the chart follows its parent
+4. **Theming**: colors via series options — map them to the app's design tokens
+5. **Loading/empty**: handle `data: []` and loading states yourself (headless-ish)
 
 ### 4. Verify
 
 1. `/run-typecheck` + `/run-test`
-2. Render จริง: axes labels, series shapes, tooltip
-3. ถ้า fail → `/resolve-errors` max 3 รอบ
+2. Real render: axis labels, series shapes, tooltip
+3. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `data` stable reference (`useMemo`) — array ใหม่ทุก render = re-render ทั้ง chart
-- 0.x API — pin exact version; ห้าม assume API เหมือน Recharts
-- Colors ผ่าน design tokens — ไม่ hardcode hex ใน chart config
-- Chart ซับซ้อน (brushing, custom marks) → อ่าน grammar docs เต็มก่อน
+- Keep the `data` reference stable (`useMemo`) — a new array each render = a full chart re-render
+- 0.x API — pin the exact version; never assume the API matches Recharts
+- Colors via design tokens — no hardcoded hex in chart config
+- Complex charts (brushing, custom marks) → read the full grammar docs first
 
 ## Expected Outcome
 
-- Charts render ถูกตาม grammar config
-- Responsive + themed ตรง design system
+- Charts render correctly per the grammar config
+- Responsive + themed to match the design system

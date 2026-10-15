@@ -21,7 +21,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อมี reference material ใหม่/ใหม่กว่า (เช่น docs ที่เพิ่งอัปเดต, release notes, API reference, codebase ที่เปลี่ยน) และต้องการให้ skills ที่เกี่ยวข้องตามทัน — **ต่างจาก `learn-from-*` ตัวอื่นตรงที่นี่ "เขียนกลับเข้า skills"** ไม่ใช่แค่สกัดความรู้; ไม่ใช่ coverage check ล้วน (ใช้ `/improve coverage`) และไม่ใช่ review (ใช้ `/deep-review`)
+ใช้เมื่อมี reference material ใหม่/ใหม่กว่า (เช่น docs ที่เพิ่งอัปเดต, release notes, API reference, codebase ที่เปลี่ยน) และต้องการให้ skills ที่เกี่ยวข้องตามทัน — **ต่างจาก `learn-from-*` ตัวอื่นตรงที่นี่ "เขียนกลับเข้า skills"** ไม่ใช่แค่สกัดความรู้; ไม่ใช่ coverage check ล้วน (ใช้ `/improve coverage`) และไม่ใช่ review (ใช้ `/deep-review-codebase`)
 
 ## Execute
 

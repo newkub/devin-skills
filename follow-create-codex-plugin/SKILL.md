@@ -1,10 +1,10 @@
 ---
 name: follow-create-codex-plugin
-description: สร้าง Codex plugin ด้วย manifest, skills, MCP servers, app wiring, และ marketplace publishing
+description: Create a Codex plugin with manifest, skills, MCP servers, app wiring, and marketplace publishing
 argument-hint: "[scope]"
 related:
   - ask-me
-  - deep-review
+  - deep-review-codebase
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
@@ -16,107 +16,107 @@ related:
 ---
 ## Goal
 
-สร้าง Codex (ChatGPT Work / OpenAI Codex) plugin ทีสามารถติดตั้งและใช้งานใน ChatGPT หรือ Codex ได้ โดยมี manifest, skills, MCP servers, app wiring, และ lifecycle hooks
+Build a Codex (ChatGPT Work / OpenAI Codex) plugin that can be installed and used in ChatGPT or Codex, with manifest, skills, MCP servers, app wiring, and lifecycle hooks
 
 ## Scope
 
-ใช้สำหรับสร้าง Codex plugin จาก scratch เพื่อขยายความสามารถของ ChatGPT Work และ Codex ด้วย custom skills, MCP tools, และ apps
+Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with custom skills, MCP tools, and apps
 
-- Format: portable Agent Plugins — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` เป็น compatibility fallback — ยืนยัน schema ล่าสุดด้วย `/deep-research` + `/follow-best-practice` ทุกครั้ง (Codex CLI 0.x มี breaking ได้ — ไม่ pin ในไฟล์ ตาม `/update-devin-global-skills`)
+- Format: portable Agent Plugins — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` is a compatibility fallback — always confirm the latest schema via `/deep-research` + `/follow-best-practice` (Codex CLI 0.x may break — no version pins in this file, per `/update-devin-global-skills`)
 
 ## Execute
 
 ### 1. Review Tech Stack
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: verify the tech stack before building
 
-1. ทำ `/deep-review` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/deep-review` เพื่อ review tech stack, dependencies, และ library design (create codex plugin)
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create codex plugin)
+1. Run `/deep-review-codebase` to summarize the tech stack in use
+2. Run `/deep-review-codebase` to review tech stack, dependencies, and library design (create codex plugin)
+3. Record the rationale for the chosen stack and libraries for future reference (create codex plugin)
 
 ### 2. Gather Requirements
 
-> Goal: เข้าใจ purpose และ components ของ plugin
+> Goal: understand the plugin's purpose and components
 
-1. ถาม user ถึงชื่อ plugin, เป้าหมาย, target users, และ use case
-2. ระบุ components ทีต้องการ:
-   - `skills/<name>/SKILL.md` สำหรับ reusable workflows (auto-discovered จาก root `skills/`)
-   - `mcp.json` ที่ root สำหรับ bundled MCP servers (portable schema — ระบุ transport `type`)
-   - `.app.json` สำหรับ registered app/MCP connection (`plugin_asdk_app...` ID)
-   - `hooks/hooks.json` สำหรับ lifecycle events (default discovery — override ผ่าน `extensions.com.openai.hooks`)
-   - `assets/` สำหรับ icons, logo, screenshots
-3. ถ้ายังไม่ชัด → ใช้ `/ask-me` เพื่อเลือก components
+1. Ask the user for the plugin name, goal, target users, and use case
+2. Identify the needed components:
+   - `skills/<name>/SKILL.md` for reusable workflows (auto-discovered from root `skills/`)
+   - root `mcp.json` for bundled MCP servers (portable schema — specify transport `type`)
+   - `.app.json` for a registered app/MCP connection (`plugin_asdk_app...` ID)
+   - `hooks/hooks.json` for lifecycle events (default discovery — override via `extensions.com.openai.hooks`)
+   - `assets/` for icons, logo, screenshots
+3. If unclear → use `/ask-me` to pick components
 
 ### 3. Create Plugin Structure
 
-> Goal: สร้าง directory structure ตาม portable Agent Plugins convention
+> Goal: build the directory structure per the portable Agent Plugins convention
 
-1. สร้าง root directory ชื่อ plugin — หรือใช้ `@plugin-creator` (ChatGPT Work) / `$plugin-creator` (Codex CLI) เพื่อ scaffold `.codex-plugin/plugin.json` compat layout
-2. สร้าง root `plugin.json` ด้วย `"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"`, `name` (kebab-case), `version`, `description`, `author`, `license`, `keywords`, `homepage`, `repository`
-3. สร้าง `skills/` ถ้ามี skills (ไม่ต้อง declare `skills` field — auto-discovered)
-4. สร้าง `mcp.json` ถ้ามี bundled MCP server (declare `"$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"` และ transport `type` เช่น `streamable-http`)
-5. สร้าง `.app.json` ถ้าเชื่อมต่อกับ registered MCP server/app
-6. เพิ่ม `extensions.com.openai` ใน root manifest สำหรับ `apps`, `hooks`, `interface` — ถ้าใช้ `.codex-plugin/plugin.json` (compat) ให้ declare `apps`/`hooks`/`interface` ในนั้นแทน (อย่าใช้ทั้งสองอย่าง — inline extension จะ override overlay ทั้งหมด ไม่ merge)
+1. Create a root directory named after the plugin — or use `@plugin-creator` (ChatGPT Work) / `$plugin-creator` (Codex CLI) to scaffold the `.codex-plugin/plugin.json` compat layout
+2. Create root `plugin.json` with `"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"`, `name` (kebab-case), `version`, `description`, `author`, `license`, `keywords`, `homepage`, `repository`
+3. Create `skills/` if there are skills (no need to declare the `skills` field — auto-discovered)
+4. Create `mcp.json` if there is a bundled MCP server (declare `"$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"` and a transport `type` such as `streamable-http`)
+5. Create `.app.json` when connecting to a registered MCP server/app
+6. Add `extensions.com.openai` in the root manifest for `apps`, `hooks`, `interface` — if using `.codex-plugin/plugin.json` (compat), declare `apps`/`hooks`/`interface` there instead (never use both — the inline extension overrides the whole overlay, it does not merge)
 
 ### 4. Implement Components
 
-> Goal: สร้างแต่ละ component ตาม convention
+> Goal: build each component per convention
 
-1. สำหรับ `skills/`: สร้าง `skills/<name>/SKILL.md` เป็นหน่วยงานย่อยตาม `/update-devin-global-skills`
-2. สำหรับ `mcp.json`: ระบุ named entry ใน `mcpServers` พร้อม transport `type` (`streamable-http` + `url` สำหรับ remote)
-3. สำหรับ `.app.json`: ระบุ `plugin_asdk_app...` ID ที register ไว้ใน ChatGPT developer mode
-4. กำหนด `interface` ใน `extensions.com.openai` สำหรับ `displayName`, `shortDescription`, `longDescription`, `developerName`, `category`, `capabilities`, `defaultPrompt`, `brandColor`, `composerIcon`, `logo`, `screenshots`
-5. สำหรับ hooks: สร้าง `hooks/hooks.json` (discovered โดย default) หรือชี้ path ผ่าน `extensions.com.openai.hooks` — hook commands รับ env `PLUGIN_ROOT` และ `PLUGIN_DATA`
+1. For `skills/`: create `skills/<name>/SKILL.md` per `/update-devin-global-skills`
+2. For `mcp.json`: declare named entries in `mcpServers` with transport `type` (`streamable-http` + `url` for remote)
+3. For `.app.json`: reference the `plugin_asdk_app...` ID registered in ChatGPT developer mode
+4. Define `interface` under `extensions.com.openai` for `displayName`, `shortDescription`, `longDescription`, `developerName`, `category`, `capabilities`, `defaultPrompt`, `brandColor`, `composerIcon`, `logo`, `screenshots`
+5. For hooks: create `hooks/hooks.json` (discovered by default) or point a path via `extensions.com.openai.hooks` — hook commands receive env `PLUGIN_ROOT` and `PLUGIN_DATA`
 
 ### 5. Register And Test
 
-> Goal: ตรวจสอบ plugin ใน ChatGPT/Codex
+> Goal: verify the plugin in ChatGPT/Codex
 
-1. เปิด ChatGPT → Settings → Security and login → Developer mode; ถ้ามี MCP server → register ที่ chatgpt.com/plugins แล้ว copy `plugin_asdk_app...` ID
-2. สร้าง local marketplace: repo → `$REPO_ROOT/.agents/plugins/marketplace.json`, personal → `~/.agents/plugins/marketplace.json` (entry ต้องมี `source.path` ขึ้นต้น `./`, `policy.installation`, `policy.authentication`, `category`)
-3. หรือใช้ `codex plugin marketplace add <source>` (GitHub shorthand, git URL, หรือ local path; `list`/`upgrade`/`remove` เพื่อจัดการ)
-4. Restart ChatGPT desktop app → ติดตั้ง plugin จาก Plugins Directory (เลือก marketplace source)
-5. Enable/disable ต่อ repo ผ่าน `.codex/config.toml` `[plugins."name@marketplace"] enabled = true`
-6. เปิด Work chat พิมพ์ `@` เพื่อเลือก plugin และทดสอบ tool/skill
+1. Open ChatGPT → Settings → Security and login → Developer mode; if there is an MCP server → register at chatgpt.com/plugins, then copy the `plugin_asdk_app...` ID
+2. Create a local marketplace: repo → `$REPO_ROOT/.agents/plugins/marketplace.json`, personal → `~/.agents/plugins/marketplace.json` (entries must have `source.path` starting with `./`, `policy.installation`, `policy.authentication`, `category`)
+3. Or use `codex plugin marketplace add <source>` (GitHub shorthand, git URL, or local path; `list`/`upgrade`/`remove` to manage)
+4. Restart the ChatGPT desktop app → install the plugin from the Plugins Directory (choose the marketplace source)
+5. Enable/disable per repo via `.codex/config.toml` `[plugins."name@marketplace"] enabled = true`
+6. Open a Work chat, type `@` to select the plugin, and test the tools/skills
 
 ### 6. Document And Distribute
 
-> Goal: plugin พร้อมแชร
+> Goal: the plugin is ready to share
 
-1. สร้าง `README.md` อธิบาย purpose, components, setup, usage
-2. อัปเดต `AGENTS.md` ถ้า plugin เป็นส่วนหนึ่งของ project skills
-3. สร้าง `.gitignore` สำหรับ sensitive files
-4. ถ้าต้องการ publish → ทำตาม OpenAI plugin marketplace / workspace marketplace guidelines
+1. Create `README.md` describing purpose, components, setup, and usage
+2. Update `AGENTS.md` if the plugin is part of the project's skills
+3. Create `.gitignore` for sensitive files
+4. If publishing → follow the OpenAI plugin marketplace / workspace marketplace guidelines
 
 ## Rules
 
-- ใช้ directory layout ตาม `### 3` — portable `plugin.json`, `mcp.json`, `skills/` อยู่ที่ plugin root เท่านั้น; `.mcp.json` (dotfile, ไม่มี `type`) เป็น legacy format — ห้าม rename มาใช้แทน `mcp.json`
-- manifest `plugin.json` ต้องมี `$schema` (agent-plugins 1.0.0), `name`, `description`; `version`/`author` แนะนำ
-- paths ใน `extensions.com.openai` ต้องขึ้นต้น `./` relative จาก plugin root และอยู่ใน root เท่านั้น
-- ไม่ hardcode secrets หรือ credentials ใน plugin files
-- ใช้ environment variables สำหรับ API keys และ app IDs
-- สร้างเฉพาะ components ทีใช้จริง
-- ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
-- plugin-bundled hooks เป็น non-managed — Codex จะ skip จนกว่า user trust hook definition
+- Use the directory layout from `### 3` — portable `plugin.json`, `mcp.json`, `skills/` live at the plugin root only; `.mcp.json` (dotfile, no `type`) is a legacy format — never rename it into `mcp.json`
+- The `plugin.json` manifest must have `$schema` (agent-plugins 1.0.0), `name`, `description`; `version`/`author` recommended
+- Paths in `extensions.com.openai` must start with `./`, relative to the plugin root, and stay within the root
+- Never hardcode secrets or credentials in plugin files
+- Use environment variables for API keys and app IDs
+- Create only the components actually used
+- Use the `SKILL.md` format per `/update-devin-global-skills`
+- Plugin-bundled hooks are non-managed — Codex skips them until the user trusts the hook definition
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /search-skills ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
-- ใช้ /follow-create-plugins ถ้าจำเป็น
+- Use /deep-review-codebase if needed
+- Use /follow-create-sdk if needed
+- Use /search-skills if needed
+- Use /report if needed
+- Use /follow-create-plugins if needed
 
 
 ## Expected Outcome
 
-- Codex plugin มี portable `plugin.json` (หรือ `.codex-plugin/plugin.json` compat) และ components ครบตามทีเลือก
-- Plugin ติดตั้งได้ผ่าน local/personal marketplace ใน ChatGPT desktop หรือ Codex
-- Skills/MCP tools ทำงานตามทีออกแบบ
-- มี `README.md` และพร้อม distribute
+- A Codex plugin with a portable `plugin.json` (or `.codex-plugin/plugin.json` compat) and all chosen components in place
+- The plugin installs via a local/personal marketplace in the ChatGPT desktop app or Codex
+- Skills/MCP tools work as designed
+- Has a `README.md` and is ready to distribute
 
 ## Guide
 
-- `/deep-research` + `/follow-best-practice` — official docs/schema ล่าสุด (ไม่ pin ในไฟล์)
+- `/deep-research` + `/follow-best-practice` — latest official docs/schema (no pins in this file)
 - `/update-devin-global-skills` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle
-- `/follow-create-claude-plugin` — ถ้าต้องการ port ไป Claude plugin ในอนาคต
+- `/follow-create-claude-plugin` — if the plugin should later be ported to Claude

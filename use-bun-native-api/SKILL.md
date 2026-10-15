@@ -8,6 +8,7 @@ related:
   - follow-create-bun-cli
   - follow-best-practice
   - use-scripts
+  - deep-research
 
 ---
 
@@ -17,7 +18,7 @@ Pick and use Bun native APIs (`Bun.*`) and Web-standard APIs correctly per use c
 
 ## Scope
 
-Use when writing code that runs on Bun and you must choose between a `Bun.*` API, a Web-standard API, or a `node:*` module — current runtime `Bun 1.4.2 (verified 2026-09-18)` (Bun 1.4 rewritten in Rust, added `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal`, HTTP/2 in `Bun.serve`)
+Use when writing code that runs on Bun and you must choose between a `Bun.*` API, a Web-standard API, or a `node:*` module — the API surface grows every minor release, so the current version and signatures are live-checked in Step 1, never asserted from memory (official reference: https://bun.com/reference)
 
 Not covered: installation, `bun` CLI commands, package manager, `bunfig.toml`, `bun test`/`bun build` → do `/follow-lang-bun` instead
 
@@ -27,9 +28,10 @@ Not covered: installation, `bun` CLI commands, package manager, `bunfig.toml`, `
 
 > Goal: pick the API category that fits the use case
 
-1. Identify which category the work belongs to: HTTP server, file I/O, shell/process, networking, database, crypto, streams, data parsing, utilities
-2. Decide the layer: `Bun.*` native (fast, Bun-only), Web-standard (portable), or `node:*` (compat)
-3. If the code must also run on Node.js → choose Web-standard or `node:*` (never use `Bun.*`)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the installed `Bun.version`, the current API surface, and the Node-compat level before choosing APIs
+2. Identify which category the work belongs to: HTTP server, file I/O, shell/process, networking, database, crypto, streams, data parsing, utilities
+3. Decide the layer: `Bun.*` native (fast, Bun-only), Web-standard (portable), or `node:*` (compat)
+4. If the code must also run on Node.js → choose Web-standard or `node:*` (never use `Bun.*`)
 
 ### 2. Read Category Reference
 
@@ -80,12 +82,13 @@ Read the reference for the chosen category from `references/`:
 
 - Prefer `Bun.*` when performance matters and the code runs only on Bun
 - Prefer Web-standard APIs when you need portability (edge workers, browser, Node)
-- Use `node:*` when `Bun.*`/Web API doesn't cover the use case — Bun supports Node.js 26.3.0 compat
+- Use `node:*` when `Bun.*`/Web API doesn't cover the use case — Bun tracks a recent Node.js line for compat; check which one via `/deep-research` at use time
 - Never mix `node:fs` + `Bun.file` in the same operation — pick one layer per flow
 
 ### 2. Version Awareness
 
-- `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal` require `Bun >= 1.4` — check `Bun.version` if the code might run on an older runtime
+- `Bun.Image`, `Bun.WebView`, `Bun.markdown`, `Bun.cron()`, `Bun.Terminal` were introduced in Bun 1.4 — check `Bun.version` at runtime if the code might run on an older runtime
+- Never restate version numbers or "verified on" dates in this skill or its `references/`; live-check via `/deep-research` (principle: `/follow-up-to-date`)
 - Verify new APIs from https://bun.com/reference before use — never guess a signature
 - `Bun.WebView` is experimental — backends: `webkit` (macOS) / `chrome` (CDP, requires Chrome)
 

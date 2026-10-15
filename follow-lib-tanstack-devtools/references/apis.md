@@ -5,6 +5,6 @@
 | repo | https://github.com/TanStack |
 | docs | https://tanstack.com/libraries |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Devtools | devtools panel integration | per-lib devtools plugins |

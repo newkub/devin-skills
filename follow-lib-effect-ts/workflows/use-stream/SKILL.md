@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้ `Stream` สำหรับ lazy/pull-based data processing — จาก collection/IO sources, transform, sink, resource-safe
+Use `Stream` for lazy/pull-based data processing — from collection/IO sources, transform, sink, resource-safe
 
 ## Scope
 
-`Stream<A, E, R>` — streaming sources/transforms/sinks; backpressure built-in; ต่างจาก `Effect` (one-shot) ตรง emit หลายค่า lazily
+`Stream<A, E, R>` — streaming sources/transforms/sinks; backpressure built-in; unlike `Effect` (one-shot) it emits many values lazily
 
 ## Execute
 
@@ -47,22 +47,22 @@ stream.pipe(Stream.toReadableStream)  // back to Web streams
 ```
 
 - `Sink.fold`, `Sink.collectAll`, `Sink.forEach` — composable consumers
-- `Channel` = lower-level pull/push primitive สำหรับ custom stream transforms
+- `Channel` = a lower-level pull/push primitive for custom stream transforms
 
 ### 4. Resource Safety
 
 - `Stream.unwrapScoped` / `Stream.acquireRelease` — resource per element/stream
-- `Stream.run` ใน `Effect.scoped` — release guaranteed
+- `Stream.run` inside `Effect.scoped` — release guaranteed
 - Error handling: `Stream.catchAll`, `catchTag`, `retry(Schedule)`
 
 ## Rules
 
-- Stream = pull-based lazy — ไม่ run จนกว่าจะ consume (ต่างจาก `Effect.all` eager)
-- Effectful per-element ops ใช้ `mapEffect`/`runForEach` — ไม่ใช่ collect แล้วค่อย forEach
-- Bounded memory: ใช้ `grouped`/`buffer` capacity options — unbounded buffer = OOM
-- Stream ที่มี resource (sockets, files) ต้อง acquireRelease/scoped
+- Stream is pull-based lazy — it doesn't run until consumed (unlike eager `Effect.all`)
+- Effectful per-element ops use `mapEffect`/`runForEach` — not collect-then-forEach
+- Bounded memory: use `grouped`/`buffer` capacity options — unbounded buffer = OOM
+- Streams holding resources (sockets, files) must use acquireRelease/scoped
 
 ## Expected Outcome
 
 - Streaming pipelines lazy + backpressured + resource-safe
-- Interop กับ Web streams/iterables ถูกทิศทาง
+- Interop with Web streams/iterables in the right direction

@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/react-form` | 1.33.x | Form |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Form | `useForm` / `createForm` | `form.Field`, `form.Subscribe`, Standard Schema validators |

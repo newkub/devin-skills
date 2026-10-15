@@ -3,8 +3,9 @@ name: update-usage-md
 description: Create/update USAGE.md docs to reflect the real public API and CLI
 argument-hint: "[scope]"
 related:
+  - design-usage-with-me-first
   - update-docs
-  - deep-review
+  - deep-review-codebase
   - report-usage
   - report
   - suggest-next-action
@@ -23,6 +24,7 @@ Create or update `USAGE.md` at the workspace root to reflect real usage — publ
 - `USAGE.md` is the manual usage documentation written from the actual code, not generated from a spec file
 - Invoked from `/update-project` or `/update-docs` when syncing project docs
 - If the project uses the `usage` CLI spec tool (has `usage.kdl`) → use `/follow-tool-usage` instead
+- Wording, ordering or examples of the doc are not agreed with the user yet → design it first in chat via `/design-usage-with-me-first`, then write it here
 
 ## Execute
 
@@ -31,7 +33,7 @@ Create or update `USAGE.md` at the workspace root to reflect real usage — publ
 > Goal: Understand the current state of `USAGE.md`
 
 1. Check whether `<workspace>/USAGE.md` exists
-2. If it does → run `/deep-review` to find gaps and stale content
+2. If it does → run `/deep-review-codebase` to find gaps and stale content
 3. If it doesn't → record status `missing` and prepare to create it
 4. Record the findings from the review
 

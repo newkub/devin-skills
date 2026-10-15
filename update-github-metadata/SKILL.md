@@ -1,6 +1,6 @@
 ---
 name: update-github-metadata
-description: Update GitHub repo metadata (description, homepage, topics, default branch) to match the project
+description: Update GitHub repo metadata (description, homepage, topics, default branch) and branch protection to match the project
 argument-hint: "[owner/repo]"
 related:
   - git-push
@@ -15,11 +15,11 @@ related:
 
 ## Goal
 
-Update GitHub repository metadata to reflect the real project, covering description, homepage, topics, and default branch
+Update GitHub repository metadata to reflect the real project, covering description, homepage, topics, default branch, and (optionally) branch protection on `main` and the integration branch (merged from `/follow-github`)
 
 ## Scope
 
-Use after push or after `update-project` to sync GitHub repo metadata with the content in `README.md`, `package.json`, and `AGENTS.md`, including the Cloudflare project URL from `/list-cloudflare-projects`. Covers metadata set via `gh repo edit`; does not edit code, docs, or license
+Use after push or after `update-project` to sync GitHub repo metadata with the content in `README.md`, `package.json`, and `AGENTS.md`, including the Cloudflare project URL from `/list-cloudflare-projects`. Covers metadata set via `gh repo edit` and branch protection via `gh api`; does not edit code, docs, or license. For `.github` templates use `/follow-dot-github`; for the local git flow use `/follow-git-flow`
 
 ## Execute
 
@@ -75,21 +75,29 @@ Use after push or after `update-project` to sync GitHub repo metadata with the c
 6. If `topics_to_remove` is not empty → run `gh repo edit <owner/repo> --remove-topic <t1> --remove-topic <t2> ...`
 7. If the repo is public (`isPrivate: false`) → run `gh repo edit <owner/repo> --enable-issues=true --enable-wiki=false`
 
-### 6. Verify
+### 6. Protect Branches (Optional)
+
+> Goal: `main` and the integration branch are protected (merged from `/follow-github`)
+
+1. When the project requires branch protection (`AGENTS.md`, team conventions, or an explicit ask) → read `references/branch-protection.md` and follow `## 1`–`## 5` (pre-flight → payload → protect `main` → protect integration branch → verify)
+2. When not required → skip and report the reason
+
+### 7. Verify
 
 > Goal: Confirm the metadata updated successfully
 
 1. Run `gh repo view <owner/repo> --json defaultBranchRef,description,homepageUrl,licenseInfo,repositoryTopics`
 2. Compare the result with the desired metadata
 3. If it does not match → retry once; if it still does not match → report
+4. When protection was applied → verify both branches return protection via `gh api ... /protection --jq .`
 
-### 7. Report
+### 8. Report
 
 > Goal: Report the result concisely
 
 1. Build a Before/After table of the changed fields
 2. List the topics added/removed
-3. List the fields that did not need updating
+3. List the fields that did not need updating; include branch protection status when applied
 4. Report in chat; do not create a file
 
 ## Rules
@@ -121,12 +129,14 @@ Use after push or after `update-project` to sync GitHub repo metadata with the c
 - Do not delete an existing license
 - Do not change the repo visibility (public/private)
 - Do not rename the repo
+- Do not delete branches; never change the default branch except to `main`
 - If `gh` is unavailable → stop and report
 
 ### 5. Related Actions
 
 - Use `/git-push` if you need to push first
-- Use `/follow-dot-github` if you need to check GitHub settings
+- Use `/follow-dot-github` if you need to check GitHub settings or create `.github` templates
+- Use `/follow-git-flow` if you only need the local git flow
 - Use `/list-github-repo` if you need to list repos
 - Use `/list-cloudflare-projects` if you need to find a Cloudflare URL
 - Use `/create-github-repo` if the repo does not exist yet
@@ -139,4 +149,5 @@ Use after push or after `update-project` to sync GitHub repo metadata with the c
 - The homepage points to the production URL or docs
 - The topics are complete and relevant to the real tech stack
 - The default branch is `main` (or the value the project defines)
+- `main` and the integration branch are protected when the project requires it (PR + status checks, no force push, no delete)
 - A Before/After report is given in chat

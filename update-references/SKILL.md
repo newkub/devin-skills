@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-related-skills
   - search
-  - deep-review
+  - deep-review-codebase
   - report
   - deep-validate
 
@@ -45,7 +45,7 @@ Covers:
 
 > Goal: Understand the relationships of the changed files before searching
 
-1. Run `/deep-review` on the changed files to find imports, consumers, and references
+1. Run `/deep-review-codebase` on the changed files to find imports, consumers, and references
 2. Record the relation map: target → consumers → severity
 3. Use this result as the basis for the search strategy in Step 2
 

@@ -1,62 +1,62 @@
-# MCP SDK — Tool Design และ Schema
+# MCP SDK — Tool Design and Schemas
 
 ## Recommended Patterns
 
-### Naming และ Description
+### Naming and Description
 
-- tool name = verb-noun snake_case — `get_user`, `list_issues`, `create_ticket` — LLM เลือก tool จาก name + description
-- description เขียนให้ LLM เข้าใจ: ทำอะไร, เมื่อไหร่ควรใช้, input/output คืออะไร — ทุก tool ต้องมี description ชัดเจน
-- title (human-readable) แยกจาก name — `title` สำหรับ UI, `name` สำหรับ machine
-- จำนวน tools น้อยแต่กว้างดีกว่าเยอะแต่แคบ — LLM สับสนเมื่อ tools ซ้ำซ้อน (~10-20 tools ต่อ server เป็น sweet spot)
+- tool name = verb-noun snake_case — `get_user`, `list_issues`, `create_ticket` — the LLM picks tools from name + description
+- write the description for the LLM to understand: what it does, when to use it, what input/output are — every tool needs a clear description
+- title (human-readable) is separate from name — `title` for UI, `name` for machines
+- few broad tools beat many narrow ones — the LLM gets confused by overlapping tools (~10-20 tools per server is the sweet spot)
 
 ### Input Schema (zod)
 
-- `inputSchema` เป็น zod raw shape: `{userId: z.string().describe('...'), limit: z.number().optional()}` — `.describe()` ทุก field ช่วย LLM map args
-- เลือก types ให้แคบ: `z.enum` แทน free string, `z.number().int().positive()` แทน `z.number()`
-- optional fields + defaults เมื่อ sensible — ลด friction ให้ LLM ไม่ต้องเดา
-- nested objects flatten เมื่อทำได้ — deep nesting เพิ่ม validation errors
+- `inputSchema` is a zod raw shape: `{userId: z.string().describe('...'), limit: z.number().optional()}` — `.describe()` on every field helps the LLM map args
+- pick narrow types: `z.enum` instead of free strings, `z.number().int().positive()` instead of `z.number()`
+- optional fields + defaults when sensible — less friction, the LLM doesn't have to guess
+- flatten nested objects when possible — deep nesting increases validation errors
 
 ### Output / Response
 
-- return `{content: [{type: 'text', text: ...}]}` เสมอ — text เป็น format หลัก
-- `structuredContent` + `outputSchema` เมื่อ client ต้อง parse response โปรแกรมมาติก — dual-format: text summary + structured data
-- จำกัด response size — truncate/paginate results; LLM context ไม่ใช่ database dump
-- annotations: `readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint` — ช่วย client UX (confirm destructive ops)
+- always return `{content: [{type: 'text', text: ...}]}` — text is the primary format
+- `structuredContent` + `outputSchema` when the client must parse the response programmatically — dual format: text summary + structured data
+- cap the response size — truncate/paginate results; an LLM context is not a database dump
+- annotations: `readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint` — help client UX (confirm destructive ops)
 
 ### Elicitation
 
-- tool ต้องการ input เพิ่มระหว่าง execute → elicitation — `mode: 'form'` สำหรับ non-sensitive, `mode: 'url'` สำหรับ secrets/OAuth
-- ใช้เมื่อ schema input ไม่ครบและต้องถาม user — ดีกว่า fail ด้วย validation error
+- a tool needs more input mid-execution → elicitation — `mode: 'form'` for non-sensitive, `mode: 'url'` for secrets/OAuth
+- use it when the input schema isn't complete and the user must be asked — better than failing with a validation error
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `describe()` ทุก field ใน inputSchema | schema เปลือยที่ LLM ต้องเดา |
-| `z.enum` สำหรับ constrained values | free `z.string()` เมื่อค่ามีจำกัด |
-| return `isError: true` + text message | throw หรือ return malformed response |
-| paginate/truncate list results | return หมื่น rows ในเครื่องเดียว |
-| ตั้ง `readOnlyHint`/`destructiveHint` | ปล่อยให้ client ไม่รู้ว่า tool กระทบ state |
-| name ชัดเจน consistent | name กำกวม `handle_data`, `process_stuff` |
+| `describe()` every field in inputSchema | bare schemas the LLM must guess at |
+| `z.enum` for constrained values | free `z.string()` when the values are limited |
+| return `isError: true` + a text message | throwing or returning a malformed response |
+| paginate/truncate list results | returning ten thousand rows in one shot |
+| set `readOnlyHint`/`destructiveHint` | leaving the client unaware the tool mutates state |
+| clear, consistent names | vague names like `handle_data`, `process_stuff` |
 
 ## Common Pitfalls
 
-- description ว่าง/สั้นเกิน → LLM เลือกผิด tool หรือ call ด้วย args ผิด
-- response ใหญ่เกิน → LLM context overflow, truncate กลาง — จำกัด + paginate เสมอ
-- tool ทำ side-effect แต่ไม่มี `destructiveHint` → client auto-run โดยไม่ confirm
-- inputSchema เป็น zod object ไม่ใช่ raw shape → registration fail (`{field: z.string()}` ไม่ใช่ `z.object({...})` ใน registerTool)
-- สร้าง tool ต่อ CRUD endpoint → ระเบิด tool count; รวมเป็น parameterized tools
+- empty/too-short descriptions → the LLM picks the wrong tool or calls with wrong args
+- oversized responses → LLM context overflow, truncated mid-way — cap + paginate always
+- a tool with side effects but no `destructiveHint` → the client auto-runs it without confirmation
+- passing inputSchema as a zod object instead of a raw shape → registration fails (`{field: z.string()}` not `z.object({...})` in registerTool)
+- creating one tool per CRUD endpoint → tool-count explosion; merge into parameterized tools
 
 ## Performance Notes
 
-- handler ควร async + fast — long ops ส่ง progress ผ่าน `reportProgress`
-- หลีกเลี่ยง serial API calls ใน handler — `Promise.all` สำหรับ independent fetches
-- cache external API responses ใน handler เมื่อเหมาะ — tool ถูก call บ่อย
-- schema validation เกิดก่อน handler — invalid input fail fast ไม่เสียเวลา
+- handlers should be async + fast — send long ops' updates via `reportProgress`
+- avoid serial API calls in a handler — `Promise.all` for independent fetches
+- cache external API responses in the handler when appropriate — tools get called often
+- schema validation happens before the handler — invalid input fails fast without wasted time
 
 ## Ecosystem / Integration
 
-- schemas ซับซ้อน → `/follow-lib-zod`
-- test ด้วย MCP Inspector — interact tools/resources/prompts ผ่าน UI
-- tool ที่ต้อง auth → OAuth flow ผ่าน SDK auth helpers หรือ elicitation `mode: 'url'`
-- resources/prompts เสริม tools: resource = data source, prompt = reusable template — ไม่ใช่ทุกอย่างเป็น tool
+- complex schemas → `/follow-lib-zod`
+- test with the MCP Inspector — interact with tools/resources/prompts through the UI
+- tools that need auth → the OAuth flow via SDK auth helpers or elicitation `mode: 'url'`
+- resources/prompts complement tools: resource = data source, prompt = reusable template — not everything is a tool

@@ -1,9 +1,8 @@
 # Bun FFI & Low-level APIs
 
-Use Bun FFI APIs for low-level operations
-
-- `bun:ffi` - Foreign Function Interface for calling C functions
-- `bun:jsc` - JavaScriptCore engine utilities
-- `Bun.mmap` - Memory-mapped files
-- `Bun.gc` - Garbage collection control
-- `Bun.generateHeapSnapshot()` - Generate heap snapshot for debugging
+| API | Description |
+|-----|-------------|
+| `bun:ffi` | Foreign Function Interface — `dlopen`, call C functions with typed symbols |
+| `bun:jsc` | JavaScriptCore engine introspection (stats, leak detection) |
+| `Bun.mmap()` | Memory-mapped file access |
+| `Bun.generateHeapSnapshot()` | Heap snapshot for debugging (JSC format) |

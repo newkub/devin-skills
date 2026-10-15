@@ -1,17 +1,17 @@
 ---
 name: follow-lang-python
 description: Python project guidelines with best practices, ruff, pyright, and Clean Architecture
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
   - refactor
   - follow-tool-madge
+  - follow-default-config
   - setup-cicd
   - use-scripts
   - deep-research
-
 ---
 
 ## Goal
@@ -20,7 +20,7 @@ Develop Python projects with best practices and Clean Architecture
 
 ## Scope
 
-For projects developed with a modern Python 3 runtime; single `SKILL.md` package — no `references/`, verify current Python/tool versions via `/deep-research` at use time (official docs: https://docs.python.org/3/)
+For projects developed with a modern Python 3 runtime. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time scaffold with venv, `pyproject.toml`, ruff, pyright); verify current Python/tool versions via `/deep-research` at use time (official docs: https://docs.python.org/3/)
 
 ## Execute
 
@@ -28,20 +28,17 @@ For projects developed with a modern Python 3 runtime; single `SKILL.md` package
 
 > Goal: install Python and dependencies with live-checked versions
 
-1. Run `/deep-research` to confirm the latest stable Python and the project's `requires-python` before installing
-2. Install with `mise use -g python` (or the official installer from https://www.python.org/downloads/); verify with `py -3 --version` (Windows) / `python3 --version`
-3. Create a virtual env: `python -m venv .venv`, activate (Windows `.venv\Scripts\activate`, Unix `source .venv/bin/activate`)
-4. Install packages with `python -m pip install <pkg>`; export with `python -m pip freeze > requirements.txt` — always `python -m pip`, never bare `pip`
-5. Install `ruff` (lint/format) and `pyright` (type check) as dev dependencies
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest stable Python, current Python practices, and the project's `requires-python` before installing
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): runtime pin, venv, scaffold, dev tools, first test, verify, git hygiene
+3. Tool inventory (interpreter, pip, venv, ruff, pyright, runners) → `references/toolchain.md`
+4. Install packages with `python -m pip install <pkg>` — always `python -m pip`, never bare `pip`; avoid floating/unbounded version ranges; pin to stable releases
 
 ### 2. Configuration
 
 > Goal: keep `pyproject.toml` as the single source of truth
 
 1. Dependencies in `[project.dependencies]`, dev tools in `[project.optional-dependencies] dev`
-2. `[tool.ruff]` with `target-version` matching the runtime; `[tool.ruff.lint] select = ["E", "F", "I", "N", "UP"]`
-3. `[tool.pyright]` with `typeCheckingMode = "strict"` and `include` scoped to source
-4. Avoid floating/unbounded version ranges; pin to stable releases
+2. `[tool.ruff]` (with `target-version` matching the runtime) and `[tool.pyright]` (strict) configured with overrides only per `/follow-default-config` — concrete skeleton in `workflows/setup-project/SKILL.md`
 
 ### 3. Project Structure
 
@@ -50,7 +47,7 @@ For projects developed with a modern Python 3 runtime; single `SKILL.md` package
 1. Split into `domain/`, `application/`, `adapters/`, `presentation/`
 2. `domain/` holds pure business logic without side effects; `application/` orchestrates use cases
 3. `adapters/` owns I/O (DB, HTTP, filesystem); `presentation/` owns entry points (CLI/API/UI)
-4. Every package has `__init__.py`; tests live in `tests/`; run `/refactor architecture` for the pattern choice
+4. Every package has `__init__.py`; tests live in `tests/`; run `/follow-architecture` for the pattern choice
 
 ### 4. Core Principles
 
@@ -87,6 +84,7 @@ For projects developed with a modern Python 3 runtime; single `SKILL.md` package
 - Use /follow-lang-javascript if needed
 - Use /follow-lang-kotlin if needed
 - Use /follow-best-practice if needed
+- Use /refactor if needed
 - Use /setup-cicd if needed
 - Use /use-scripts if needed
 

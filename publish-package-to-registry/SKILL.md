@@ -16,7 +16,7 @@ related:
   - follow-tool-semantic-release
   - follow-tool-changelogen
   - follow-tool-changesets
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -137,7 +137,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น (package to registry)
 - ใช้ /follow-tool-changelogen ถ้าจำเป็น
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 

@@ -5,6 +5,10 @@ argument-hint: "[scope]"
 related:
   - apply
   - check-git-logs
+  - git-file-history
+  - restore-files-from-git-log
+  - follow-tool-git
+  - search-in-git
   - analyze-root-cause-analysis
   - resolve-errors
   - deep-thinking
@@ -22,7 +26,7 @@ Follow systematic debugging principles to find the root cause quickly and precis
 
 ## Scope
 
-Use for every debugging session — runtime errors, test failures, build errors, deployment issues, performance problems
+Use for every debugging session — runtime errors, test failures, build errors, deployment issues, performance problems; triage competing incidents by severity/impact before starting (`### 3`); git-related problems via `### 8` (bisect, blame, reflog, lost files/commits — merged from `references/git-debug.md`)
 
 ## Execute
 
@@ -44,7 +48,26 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Define the frequency: always, intermittent, or under specific conditions
 4. Define the impact: blocking, degraded, or cosmetic
 
-### 3. Gather Evidence
+### 3. Triage Incident
+
+> Goal: when several incidents compete or urgency is unclear, assign priority before debugging
+
+1. Assess severity: `Critical` (full outage or data loss), `High` (core feature down, system alive), `Medium` (secondary feature down or heavy performance drop), `Low` (UI glitch or minor issue)
+2. Assess impact: number of affected users, duration, business impact (revenue, reputation, compliance)
+3. Assign priority from the severity × impact matrix:
+
+| Severity | Impact | Priority | Response Time |
+|----------|--------|----------|---------------|
+| Critical | High/Medium | P0 | 15–30 min |
+| High | High/Medium | P1 | 1–2 hours |
+| Medium | High/Medium | P2 | 4–8 hours |
+| Low | Any | P3 | 24 hours |
+
+4. Assign an owner: P0–P1 → senior or on-call engineer; P2 → domain expert; P3 → the responsible team
+5. Communicate by priority: P0–P1 real-time with updates every 15–30 min; P2 scheduled updates every 2 hours; P3 in the next standup
+6. Run the remaining steps within the response window — P0: stabilize first with `/resolve-errors`, then root-cause here; unclear impact probability → `/follow-math-concepts`
+
+### 4. Gather Evidence
 
 > Goal: collect all relevant error messages, logs, and context
 
@@ -54,7 +77,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 4. Check the environment: runtime version, dependencies, config
 5. If monitoring exists, also collect metrics and traces
 
-### 4. Form Hypotheses
+### 5. Form Hypotheses
 
 > Goal: generate and rank hypotheses by evidence, not gut feeling
 
@@ -63,7 +86,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Run `/deep-thinking` to apply a Bayesian approach to the ranking
 4. Pick the top 1-2 hypotheses that are easy to test and most probable
 
-### 5. Test And Eliminate
+### 6. Test And Eliminate
 
 > Goal: test one hypothesis at a time, changing one variable to rule others out
 
@@ -73,7 +96,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 4. Rule out hypotheses that don't fit and move to the next
 5. If all tests miss, go back and generate new hypotheses
 
-### 6. Isolate Root Cause
+### 7. Isolate Root Cause
 
 > Goal: confirm a root cause that reproduces, disappears when fixed, and returns when reverted
 
@@ -82,7 +105,25 @@ Use for every debugging session — runtime errors, test failures, build errors,
 3. Confirm the root cause with 3 conditions: it reproduces, the fix resolves it, and it returns if the fix is reverted
 4. Check that it isn't a symptom of a deeper problem
 
-### 7. Validate And Fix
+### 8. Debug Git Issues (Conditional)
+
+> Goal: find the root cause of git-related problems systematically — run instead of `### 6`–`### 7` when the symptom is a bad commit, unexpected change, lost commit/file, or unknown git state
+
+1. Classify the symptom and pick the tool:
+
+| Symptom | Tool |
+|---------|------|
+| Bug introduced by some commit | `git bisect` |
+| Who/when changed a line | `git blame` + `git log -p --follow -S "<snippet>" -- <file>` (or `/check-git-logs`, `/git-file-history`) |
+| Commit vanished from the branch | `git reflog` → `git cherry-pick <hash>` (or `git reset --hard <hash>` only after `/ask-me`) |
+| File missing | `/restore-files-from-git-log`; else `git log --all --diff-filter=D -- <file>` → `git restore --source=<hash>^ <file>` |
+| Unknown cause | `git status`, `git log --oneline -20`, `git diff HEAD~1`, `git stash list` (or `/search-in-git`) |
+
+2. Bisect flow: stash uncommitted changes and back up the branch → confirm the good/bad range with `git log --oneline <good>..<bad>` (via `/ask-me` if unclear) → `git bisect start`, `git bisect bad <bad>`, `git bisect good <good>` → `git bisect run <test-command>` when an automated test exists, otherwise answer `good`/`bad` per checkout → `git show <first-bad>` → `git bisect reset`
+3. Safety: never `git reset --hard` without user confirm; use `git restore` instead; verify `git status` is clean after debugging
+4. Apply the fix: revert the bug-causing commit (`/follow-tool-git`) and add a regression test (`/update-tests`)
+
+### 9. Validate And Fix
 
 > Goal: fix minimally at the root cause, then verify nothing else breaks
 
@@ -93,16 +134,16 @@ Use for every debugging session — runtime errors, test failures, build errors,
 5. Verify the fix doesn't break other functionality
 6. Run `/run-lint` and `/run-typecheck` to check code quality
 
-### 8. Prevent Recurrence
+### 10. Prevent Recurrence
 
 > Goal: add test cases and improve debuggability to prevent the problem from recurring
 
 1. Add regression-prevention test cases — run `/follow-tool-vitest` or `/follow-tool-playwright`
-2. Run `/deep-review` if debugging was hard due to insufficient logging
+2. Run `/deep-review-codebase` if debugging was hard due to insufficient logging
 3. Update documentation if the problem was about config or setup
 4. Record the root cause and solution in `docs/` or the commit message
 
-### 9. Report
+### 11. Report
 
 > Goal: summarize the debug result and next action
 
@@ -144,8 +185,8 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
-- Performance → `/run-profiler` + `/deep-review`
-- Git issues → `/follow-tool-git` + `/check-git-logs`
+- Performance → `/run-profiler` + `/deep-review-codebase`
+- Git issues → `### 8` + `/follow-tool-git` + `/check-git-logs`
 
 ### 5. Time Budget And Escalation
 
@@ -155,7 +196,6 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - Use /run-check if needed
 - Use /run-test all if needed
 - Use /run-until-pass if needed
-- Alias stub: `/follow-debugging` — forwards to this skill
 
 ## Expected Outcome
 
@@ -163,4 +203,5 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - No guessing and no fixing multiple things at once
 - The fix addresses the root cause, not the symptom
 - Regression-prevention test cases exist
+- Git-level root causes (bad commit, lost file/commit) found and fixed with bisect/blame/reflog
 - The debugging experience keeps improving

@@ -1,6 +1,6 @@
 ---
 name: open-in-zed
-description: เปิดไฟล์หรือ directory ใน Zed editor ผ่าน CLI ที่ถูกต้องตาม OS
+description: Open a file or directory in the Zed editor via the correct OS-specific CLI
 argument-hint: "[path]"
 related:
   - follow-create-plugins
@@ -10,75 +10,75 @@ related:
 
 ## Goal
 
-เปิดไฟล์หรือ directory ที่ระบุใน Zed editor ด้วย CLI ที่ถูกต้อง โดยตรวจสอบ binary, target path และ OS ก่อนดำเนินการ
+Open the specified file or directory in the Zed editor with the correct CLI, checking the binary, target path, and OS before acting
 
 ## Scope
 
-ใช้เมื่อผู้ใช้ต้องการเปิดไฟล์หรือ directory ใน Zed จาก context ปัจจุบัน เช่น path ที่ระบุ ไฟล์ที่เลือก หรือ current working directory รองรับ Windows, macOS และ Linux ไม่รองรับการเปิดไฟล์จาก URL
+Use when the user wants to open a file or directory in Zed from the current context — a given path, the selected file, or the current working directory. Supports Windows, macOS, and Linux; does not support opening files from a URL
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: ระบุ target paths และ Zed CLI ที่ถูกต้อง
+> Goal: Identify target paths and the correct Zed CLI
 
-1. ระบุ target paths จากลำดับความสำคัญ: path ที่ user ระบุไว้ ไฟล์ที่เปิดอยู่ใน IDE หรือ current working directory
-2. ตรวจสอบ OS
-   - ตรวจสอบ Zed binary ใน PATH
-3. ถ้าไม่พบ Zed CLI ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
-4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
+1. Identify target paths by priority: the user-specified path, the file open in the IDE, or the current working directory
+2. Check the OS
+   - Verify the Zed binary is in PATH
+3. If no Zed CLI is found, inform the user with install guidance, then stop
+4. If the target path does not exist, inform the user and stop
 
 ### 2. Open Files
 
-> Goal: เปิด target ใน Zed อย่างปลอดภัย
+> Goal: Open the target in Zed safely
 
-1. เลือก Zed CLI ตาม OS (ชื่อ binary คือ `zed` ทุก platform — verified Zed 1.18.1, 2026-09-12):
-   - macOS: `zed <path...>` (ถ้าไม่มีใน PATH ให้ install ผ่าน Zed menu → "Install CLI")
+1. Pick the Zed CLI per OS (the binary is `zed` on every platform — verified Zed 1.18.1, 2026-09-12):
+   - macOS: `zed <path...>` (if not in PATH, install via the Zed menu → "Install CLI")
    - Linux: `zed <path...>`
-   - Windows: `zed <path...>` — installer วาง CLI ที่ `%LOCALAPPDATA%\Programs\Zed\bin\zed`
-   - WSL บน Windows: ใช้ `zed` ใน WSL (รองรับ `--wsl` flag) หรือเรียก `zed.exe` ผ่าน path ที่เข้าถึงได้
-2. รันคำสั่งเปิดไฟล์ทีเดียวสำหรับหลาย path ไม่เรียกซ้ำ
-3. ถ้าเป็น directory ให้เปิดเป็น workspace โดยส่ง path เดียว
-4. รองรับ `path:line:column` เพื่อเปิดไฟล์ที่ตำแหน่งเฉพาะ และ flags: `-n`/`--new` window ใหม่, `-e`/`--existing` window เดิม, `-w`/`--wait` รอจนปิด, `-a`/`--add` เพิ่มเข้า workspace ที่เปิดอยู่
+   - Windows: `zed <path...>` — the installer places the CLI at `%LOCALAPPDATA%\Programs\Zed\bin\zed`
+   - WSL on Windows: use `zed` inside WSL (supports the `--wsl` flag) or invoke `zed.exe` through an accessible path
+2. Open multiple paths in a single command; do not call repeatedly
+3. For a directory, open it as a workspace by passing one path
+4. Support `path:line:column` to open at a specific position, and the flags: `-n`/`--new` new window, `-e`/`--existing` existing window, `-w`/`--wait` wait until closed, `-a`/`--add` add to the current workspace
 
 ### 3. Verify And Report
 
-> Goal: ยืนยันว่าไฟล์ถูกเปิดและรายงานผล
+> Goal: Confirm the files opened and report results
 
-1. ตรวจสอบ exit code หรือสถานะ process ที่ spawn
-2. ถ้า fail ให้แสดง stderr และแนะนำให้ตรวจสอบ Zed CLI หรือ path
-3. รายงาน paths ที่เปิดไปพร้อม CLI command ที่ใช้
+1. Check the exit code or status of the spawned process
+2. On failure, show stderr and recommend checking the Zed CLI or path
+3. Report the opened paths with the CLI command used
 
 ## Rules
 
 ### 1. Safety
 
-- ไม่สร้างไฟล์ใหม่อัตโนมัติถ้า target ไม่มีอยู่
-- ไม่รันคำสั่งถ้า Zed CLI ไม่พบใน PATH
-- ถ้า user ไม่ระบุ path ให้ถามก่อน ไม่เดา
+- Do not auto-create files when the target is missing
+- Do not run the command when the Zed CLI is not found in PATH
+- If the user gives no path, ask first — never guess
 
 ### 2. OS Specific
 
-- ใช้ `zed` ทุก platform (macOS, Linux, Windows) — docs เก่าที่อ้าง `zeditor` บน Windows ไม่ตรงกับ CLI ปัจจุบัน
-- WSL ตรวจสอบ Windows PATH หรือ `*.exe` ก่อนใช้ Linux binary
+- Use `zed` on all platforms (macOS, Linux, Windows) — older docs claiming `zeditor` on Windows do not match the current CLI
+- On WSL, check the Windows PATH or `*.exe` before using the Linux binary
 
 ### 3. Determinism
 
-- ค้นหา Zed binary จาก `PATH` ก่อน ไม่ hardcode absolute path
-- ถ้ามีหลาย target เรียงตาม input order
-- รันคำสั่งเดียวสำหรับหลายไฟล์
+- Locate the Zed binary from `PATH` first; never hardcode absolute paths
+- With multiple targets, keep input order
+- Run one command for multiple files
 
 ### 4. Output
 
-- รายงานผลเป็นรายการ path พร้อม command ที่ใช้ (in zed)
-- ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
+- Report the result as a path list with the commands used (in zed)
+- On failure, state the cause and next steps
 
-- ใช้ /follow-create-plugins (zed) ถ้าจำเป็น
-- ใช้ /open-in-devin ถ้าจำเป็น
-- ใช้ /open-in-explorer ถ้าจำเป็น
-- ใช้ /open-file-in-gitui ถ้าจำเป็น — ดูสถานะ/diff ของไฟล์ใน gitui TUI แทน editor
+- Use /follow-create-plugins (zed) if needed
+- Use /open-in-devin if needed
+- Use /open-in-explorer if needed
+- Use /open-file-in-gitui if needed — view the file's git status/diff in the gitui TUI instead of the editor
 
 ## Expected Outcome
 
-- ไฟล์หรือ directory ถูกเปิดใน Zed หรือรายงานสาเหตุที่ไม่สำเร็จ
-- Output เป็นรายการ paths ที่เปิดไปพร้อม Zed CLI command ที่ใช้
+- The file or directory opens in Zed, or the reason it failed is reported
+- Output is a list of opened paths with the Zed CLI command used

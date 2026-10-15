@@ -3,7 +3,7 @@ name: follow-git-flow
 description: Set up git flow: integration branch, local hooks, worktree convention, and AGENTS.md update
 argument-hint: "[scope]"
 related:
-  - follow-github
+  - update-github-metadata
   - update-docs
   - ship
   - report
@@ -21,7 +21,7 @@ Set up git flow in an existing repo: create the integration branch, configure lo
 Use first when starting a project or when git flow conventions need a reset
 Supports solo and team use by blocking direct pushes to `main` with both local hooks and GitHub protection
 
-If you only need remote GitHub setup → use `/follow-github`
+If you only need remote GitHub setup → use `/update-github-metadata`
 If you only need to create the integration branch → follow the Create Integration Branch steps below
 
 ## Execute
@@ -97,8 +97,8 @@ If you only need to create the integration branch → follow the Create Integrat
 
 > Goal: configure branch protection and GitHub metadata
 
-1. Run `/follow-github`
-2. If `follow-github` fails → report and stop
+1. Run `/update-github-metadata` `### 6. Protect Branches` (see `update-github-metadata/references/branch-protection.md`)
+2. If `/update-github-metadata` fails → report and stop
 3. Confirm that `main` and `<integration-branch>` are protected
 
 ### 7. Update AGENTS.md
@@ -140,7 +140,7 @@ If you only need to create the integration branch → follow the Create Integrat
 - Check the working tree is clean before setup
 - No force push
 - Do not overwrite `.github` or `.githooks` without notice
-- If `gh` is not available → `/follow-github` will report it
+- If `gh` is not available → `/update-github-metadata` will report it
 
 ### 5. Idempotent
 

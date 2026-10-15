@@ -1,10 +1,10 @@
 ---
 name: report-database-schema
-description: สร้างรายงาน database schema, tables, columns, indexes, relations และ ER diagram
+description: Create a database schema report — tables, columns, indexes, relations, and ER diagram
 argument-hint: "[path]"
 related:
   - create-mermaid-diagram
-  - deep-review
+  - deep-review-codebase
   - report
   - search
   - run-drizzle-studio
@@ -13,78 +13,78 @@ related:
 
 ## Goal
 
-สร้างรายงาน database schema ของ project จาก schema definitions หรือ migration files — แสดง tables, columns, indexes, relations และ ER diagram ที่อ่านง่าย
+Create a database schema report for the project from schema definitions or migration files — showing tables, columns, indexes, relations, and a readable ER diagram
 
 ## Scope
 
-- ใช้เมื่อต้องการภาพรวม DB schema ของ project สำหรับ docs, review หรือ onboarding
-- รองรับ Drizzle schema (`schema.ts`), SQL migrations, Prisma schema และ SQL files ทั่วไป
-- Read-only: รายงานจากไฟล์เท่านั้น ไม่ connect database จริง
+- Use when a DB schema overview is needed for docs, review, or onboarding
+- Supports Drizzle schema (`schema.ts`), SQL migrations, Prisma schema, and general SQL files
+- Read-only: reports from files only — never connects to a live database
 
 ## Execute
 
 ### 1. Locate Schema Sources
 
-> Goal: หา source ของ schema
+> Goal: find the schema sources
 
-1. ใช้ `/search-files-patterns` หา `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
-2. ตรวจ `drizzle.config.ts`, `DATABASE_URL` references และ ORM ที่ใช้
-3. ถ้ามีหลาย source → รวมทุกอันและระบุ precedence
+1. Use `/search-files-patterns` to find `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
+2. Check `drizzle.config.ts`, `DATABASE_URL` references, and the ORM used
+3. Multiple sources → merge all and note precedence
 
 ### 2. Parse Schema
 
-> Goal: ดึง tables และ columns ครบ
+> Goal: extract all tables and columns
 
 1. Drizzle/Prisma → parse model/table definitions: name, columns, types, constraints
 2. SQL migrations → parse `CREATE TABLE`, `ALTER TABLE`, `CREATE INDEX` statements
-3. รวมเป็น canonical model: table, column, type, nullable, default, PK/FK, index
-4. ระบุ relations จาก foreign keys และ ORM `references()`
+3. Merge into a canonical model: table, column, type, nullable, default, PK/FK, index
+4. Identify relations from foreign keys and ORM `references()`
 
 ### 3. Build ER Diagram
 
-> Goal: วาด relations อ่านง่าย
+> Goal: draw readable relations
 
-1. ทำ `/create-mermaid-diagram` สร้าง `erDiagram` ใน mermaid
-2. Node = table, edge = foreign key relation พร้อม cardinality
-3. จัดกลุ่ม tables ตาม domain ถ้ามีหลายสิบ tables
+1. Use `/create-mermaid-diagram` to generate an `erDiagram` in mermaid
+2. Node = table, edge = foreign-key relation with cardinality
+3. Group tables by domain when there are dozens
 
 ### 4. Compile Report
 
-> Goal: รายงานครบพร้อมใช้เป็น docs
+> Goal: produce a docs-ready report
 
-1. ทำ `/report table` สรุป tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
-2. แสดง table detail ต่อกลุ่ม: columns พร้อม type, nullability, constraints
-3. รวม ER diagram ใน section เดียว
-4. ระบุ findings: missing indexes บน FK, tables ไม่มี PK, naming ไม่ consistent
-5. ถ้า report ถาวร → บันทึกลง `docs/` หรือ `.devin/temp/report/<workspace>/` ตาม context
-6. ทำ `/suggest-next-action`
+1. Use `/report table` to summarize tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
+2. Show table detail per group: columns with type, nullability, constraints
+3. Include the ER diagram in one section
+4. Identify findings: missing indexes on FK, tables without PK, inconsistent naming
+5. Permanent report → save to `docs/` or `.devin/temp/report/<workspace>/` per context
+6. Use `/suggest-next-action`
 
 ## Rules
 
 ### 1. Source-Of-Truth
 
-- อิงจาก schema files ที่ commit ไว้เท่านั้น — ไม่ introspect DB จริง
-- ถ้า schema files กับ migrations ไม่ตรง → flag เป็น drift
+- Reference only committed schema files — never introspect a live DB
+- Schema files vs migrations disagree → flag as drift
 
 ### 2. Read-Only
 
-- ไม่แก้ไข schema หรือ migrations
-- ไม่รัน migration หรือ connect database
+- Never modify schema or migrations
+- Never run migrations or connect to a database
 
 ### 3. Coverage
 
-- รวมทุก table และ relation ไม่ตัดทอน
-- ถ้า schema ใหญ่ → แบ่ง report ตาม domain พร้อม index
+- Include every table and relation without omission
+- Large schema → split report by domain with an index
 
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /create-mermaid-diagram ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
-- alias stub: `/report-schema` — forward มาที่ skill นี้
+- Use /deep-review-codebase if needed
+- Use /create-mermaid-diagram if needed
+- Use /run-drizzle-studio if needed
+- alias stub: `/report-schema` — forwards to this skill
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the schema/ER output remains this skill's artifact
 
 ## Expected Outcome
 
-- Report แสดง tables, columns, indexes, relations ครบ
-- ER diagram ใน mermaid พร้อมใช้ใน docs
-- ระบุ schema findings (missing indexes, no PK, naming drift)
+- A report showing tables, columns, indexes, and relations in full
+- An ER diagram in mermaid, ready for docs
+- Schema findings identified (missing indexes, no PK, naming drift)

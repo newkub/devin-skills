@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - deep-review
+  - deep-review-codebase
   - resolve-errors
   - resolve-cicd
   - run-verify
@@ -24,13 +24,13 @@ related:
 Deploy the application to the target platform with post-deploy validation, commit/push, and browser watching until the deployment is live
 
 ## Scope
-- For related skills: `open-web-for-config-secret`, `deep-review`
+- For related skills: `open-web-for-config-secret`, `deep-review-codebase`
 
 Covers verify, build, deploy, commit/push, post-deploy validation, watch until live, and rollback & recovery
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (deploy)
+> Pre-Run: Always run `/deep-review-codebase` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (deploy)
 
 ### 1. Verify
 
@@ -115,7 +115,7 @@ Thoroughly inspect the deployment after deploy (see `references/post-deploy-vali
 
 Prepare the rollback procedure and check the backup (see `references/rollback-recovery.md`)
 
-1. Run `/deep-review` to check the backup strategy before deploy
+1. Run `/deep-review-codebase` to check the backup strategy before deploy
 2. Prepare a clear rollback procedure before deploy
 3. If the deploy fails → roll back immediately and run `/resolve-errors`
 

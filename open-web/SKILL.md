@@ -1,6 +1,6 @@
 ---
 name: open-web
-description: เปิด website ด้วย native OS command
+description: Open a website with the native OS command
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -10,12 +10,12 @@ related:
 
 ## Goal
 
-เปิด website ด้วย native OS command
+Open a website with the native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-files-in-web`, `use-agent-browser`, `watch-browser`
+- For related skills: `open-files-in-web`, `use-agent-browser`, `watch-browser`
 
-ใช้ `open-web` เมื่อต้องเปิด URL ใน external browser หรือ integrated browser
+Use `open-web` to open a URL in an external browser or the integrated browser
 
 ## Execute
 
@@ -23,29 +23,28 @@ related:
 
 > Goal: Open Website
 
-เปิด website ด้วย native OS command
+Open the website with the native OS command
 
-1. รับ URL จาก user
-2. ตรวจสอบ URL ว่าถูกต้อง
-3. พิจารณาเปิดใน integrated browser หรือ external browser:
-   - integrated: ถ้า user ขอหรือ context รองรับ `browser_preview` tool → เรียก `browser_preview`
-   - external: ใช้ default browser ของระบบ
-4. ใช้ native OS command สำหรับ external browser:
+1. Receive the URL from the user
+2. Verify the URL is correct
+3. Decide between the integrated browser and an external browser:
+   - integrated: if the user asks or the context supports the `browser_preview` tool → call `browser_preview`
+   - external: use the system default browser
+4. Use the native OS command for the external browser:
    - Windows: `start <url>`
    - macOS: `open <url>`
    - Linux: `xdg-open <url>`
-5. ตรวจสอบว่า website เปิดถูกต้อง
+5. Confirm the website opened correctly
 
 ## Rules
 
-- ไม่ใช้ `open` CLI tool แบบ standalone; ใช้ native OS command เท่านั้น
-- ตรวจสอบ URL ก่อนเปิด
-- ใช้ `browser_preview` tool สำหรับ integrated browser เมื่อ context รองรับ
-- ใช้ default browser ของระบบสำหรับ external browser
-- ใช้ /run-dev ถ้าจำเป็น
+- Do not use a standalone `open` CLI tool; use native OS commands only
+- Check the URL before opening
+- Use the `browser_preview` tool for the integrated browser when the context supports it
+- Use the system default browser for the external browser
+- Use /run-dev if needed
 
 ## Expected Outcome
 
-- Website เปิดใน browser ที่เลือก
-- URL ถูกต้อง
-
+- The website opens in the chosen browser
+- The URL is correct

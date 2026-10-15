@@ -1,7 +1,7 @@
 ---
 
 name: list-deployment-fails
-description: สรุป deployment failures จาก CI/CD และ cloud (GitHub Actions, Cloudflare Workers)
+description: Summarize deployment failures from CI/CD and cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
   - resolve-errors
@@ -17,99 +17,99 @@ related:
 
 ## Goal
 
-สรุป deployment และ CI/CD failures ทีเกิดขึ้นจาก GitHub Actions และ Cloudflare Workers
+Summarize deployment and CI/CD failures from GitHub Actions and Cloudflare Workers
 
 ## Scope
 
-ใช้สำหรับตรวจสอบ failures ทั้งหมดจาก CI/CD (GitHub Actions) และ cloud deployment (Cloudflare Workers) โดยไม่แก้ไขหรือ re-run อะไร
+Used to inspect all failures from CI/CD (GitHub Actions) and cloud deployment (Cloudflare Workers) without modifying or re-running anything
 
-ดูเพิ่มเติม: /follow-service-vercel, /follow-service-cloudflare, /open-cloudflare-workers
+See also: /follow-service-vercel, /follow-service-cloudflare, /open-cloudflare-workers
 
 ## Execute
 
 ### 1. Verify Authentication
 
-> Goal: ตรวจสอบ auth ของเครื่องมือทีใช้
+> Goal: check the auth of the tools used
 
-1. รัน `gh auth status` เพื่อตรวจ GitHub
-2. รัน `wrangler --version` เพื่อตรวจ Cloudflare
-3. รัน `wrangler whoami` ถ้าต้องการ cloud status
-4. ถ้าไม่ authenticated → ทำ `/ask-me` ให้ user login
+1. Run `gh auth status` to check GitHub
+2. Run `wrangler --version` to check Cloudflare
+3. Run `wrangler whoami` when cloud status is needed
+4. If not authenticated → do `/ask-me` to have the user log in
 
 ### 2. List CI/CD Failures
 
-> Goal: รวบรวม GitHub Actions failures
+> Goal: collect GitHub Actions failures
 
-1. ทำ `/resolve-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
-2. จำกัดจำนวนตาม `limit` (default 50)
-3. บันทึก: repo, workflow, branch, commit, event, started at, url
+1. Do `/resolve-github-actions-fails` to find failed workflow runs
+2. Cap the count by `limit` (default 50)
+3. Record: repo, workflow, branch, commit, event, started at, url
 
 ### 3. List Cloud Failures
 
-> Goal: รวบรวม Cloudflare Workers failures
+> Goal: collect Cloudflare Workers failures
 
-1. ทำ `/resolve-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
-2. จำกัดจำนวนตาม `limit` (default 50)
-3. บันทึก: worker, type, latest deployment, status, errors
+1. Do `/resolve-cloudflare-worker-fails` to find workers with deploy/health failures
+2. Cap the count by `limit` (default 50)
+3. Record: worker, type, latest deployment, status, errors
 
 ### 4. Aggregate Failures
 
-> Goal: รวม failures จากทุกแหล่ง
+> Goal: merge failures from all sources
 
-1. รวมข้อมูลจาก CI/CD และ cloud เป็น list เดียว
-2. ระบุประเภทแหล่งทีมา: `github-actions` หรือ `cloudflare`
-3. เรียงตามเวลาเกิดล่าสุด
+1. Combine CI/CD and cloud data into one list
+2. Mark the source type: `github-actions` or `cloudflare`
+3. Sort by most recent occurrence
 
 ### 5. Build Report
 
-> Goal: สรุปผลเป็นตาราง
+> Goal: summarize into a table
 
-1. ใช้ `/report` คอลัมน์:
+1. Use `/report` with columns:
    - No.
    - Source
    - Name
    - Status
    - Time
    - URL / Notes
-2. แยกสรุปย่อยตามแหล่ง: GitHub Actions count, Cloudflare count
-3. ระบุสรุปจำนวน failures ทั้งหมด
+2. Break down sub-summaries per source: GitHub Actions count, Cloudflare count
+3. State the total failure count
 
 ### 6. Suggest Next Action
 
-> Goal: แนะนำขั้นตอนถัดไป
+> Goal: recommend the next steps
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-cicd` หรือ `/resolve-cloudflare-worker-fails`
-3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/resolve-github-actions-fails`
+1. Do `/suggest-next-action` to suggest debug, re-run, watch, or fix
+2. When there are Cloudflare failures → recommend `/resolve-cicd` or `/resolve-cloudflare-worker-fails`
+3. When there are GitHub Actions failures → recommend `/resolve-github-actions-fails`
 
 ## Rules
 
 ### 1. Read Only
 
-- ไม่ re-run, cancel, delete, deploy หรือแก้ไขอะไร
-- แค่ query และ report
+- Never re-run, cancel, delete, deploy, or modify anything
+- Only query and report
 
 ### 2. Secret Safety
 
-- ไม่ expose tokens, account ID หรือ credentials ใน output
-- ใช้ `gh` และ `wrangler` credentials ทีมีอยู่
+- Do not expose tokens, account IDs, or credentials in the output
+- Use the existing `gh` and `wrangler` credentials
 
 ### 3. Rate Limit
 
-- ถ้ามีข้อมูลมาก ให้ batch และ pagination
-- ถ้า API คืน 429 ให้รอและ retry
+- With large data, batch and paginate
+- On API 429 responses, wait and retry
 
 ### 4. Scope
 
-- ครอบคลุม GitHub Actions และ Cloudflare Workers เป็นค่าเริ่มต้น
-- ถ้าต้องการแหล่งอื่น เช่น Vercel, Railway ให้ระบุใน argument
-- ใช้ /run-deploy ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Covers GitHub Actions and Cloudflare Workers by default
+- For other sources such as Vercel or Railway, state them in the argument
+- Use /run-deploy if needed
+- Use /resolve-errors if needed
 
 
 ## Expected Outcome
 
-- รายการ deployment failures จาก CI/CD และ cloud
-- ตารางที sort ตามเวลาเกิดล่าสุด
-- ระบุ source, name, status, time, url/notes
-- ไม่มีการแก้ไข deployment หรือ workflow ใดๆ
+- The list of deployment failures from CI/CD and cloud
+- A table sorted by most recent occurrence
+- Source, name, status, time, url/notes identified
+- No deployment or workflow modified

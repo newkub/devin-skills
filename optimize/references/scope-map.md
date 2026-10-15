@@ -1,9 +1,9 @@
 # Scope Map — signal → `/optimize <scope>` → review domain
 
 Table-only SSOT (`/follow-single-of-source`) — canonical mapping ที่ `/optimize` และ callers ใช้ route scope. ห้าม copy ตารางนี้ไป placeอื่น — reference กลับมาที่ไฟล์นี้.
-ทุก scope รันผ่าน `/optimize <scope>` (thin entry) — review → `/deep-review` domain ในตาราง | fix → `/deep-review-then-fix`
+ทุก scope รันผ่าน `/optimize <scope>` (thin entry) — review → `/deep-review-codebase` domain ในตาราง | fix → `/deep-review-codebase-then-fix`
 
-| Signal (วัดได้) | Scope (`/optimize <scope>`) | `/deep-review` domain(s) |
+| Signal (วัดได้) | Scope (`/optimize <scope>`) | `/deep-review-codebase` domain(s) |
 |-----------------|-----------------------------|--------------------------|
 | bundle output ใหญ่, chunks ไม่ balance, build/time ช้า, toolchain cache พัง | `bundle` | `review-bundle` (measurement layer → `/follow-tool-vite-devtools` Rolldown DevTools) |
 | CI pipeline นาน, ไม่มี cache/parallelism | `ci` | `review-delivery` |

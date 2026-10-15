@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-cli
-description: ใช้ TanStack CLI — scaffold projects พร้อม add-ons (router, query, drizzle, auth)
+description: Use the TanStack CLI — scaffold projects with add-ons (router, query, drizzle, auth)
 argument-hint: "[template] [add-ons]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -10,13 +10,13 @@ related:
 
 ## Goal
 
-ใช้ TanStack CLI scaffold project ใหม่ — app starter พร้อม add-ons ที่เลือก (Start/Router-based)
+Use the TanStack CLI to scaffold a new project — an app starter with the chosen add-ons (Start/Router-based)
 
 ## Scope
 
-ใช้ตอนเริ่ม project ใหม่ที่อยากได้ TanStack stack ตั้งต้นครบ — ไม่ใช่เพิ่ม lib เข้า project เดิม (ใช้ `setup-*` workflows แทน)
+Use when starting a new project that wants a complete default TanStack stack — not for adding a lib into an existing project (use the `setup-*` workflows instead)
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
@@ -26,36 +26,36 @@ related:
 bunx @tanstack/cli create my-app
 ```
 
-Options สำคัญ (ตรวจ `--help` ล่าสุด):
+Key options (check the latest `--help`):
 
 ```bash
 bunx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
 ```
 
-- Add-ons เช่น `tanstack-query`, `drizzle`, `clerk`, `tailwind`, `shadcn` — รายการปัจจุบันใน `bunx @tanstack/cli create --help`
-- เลือก package manager, framework (React/Solid), toolchain ตาม prompts
+- Add-ons such as `tanstack-query`, `drizzle`, `clerk`, `tailwind`, `shadcn` — the current list is in `bunx @tanstack/cli create --help`
+- Choose the package manager, framework (React/Solid), and toolchain per the prompts
 
 ### 2. Post-Scaffold
 
-> Goal: project รันได้จริง
+> Goal: the project actually runs
 
 1. `cd my-app && bun install`
-2. ตั้ง env ตาม add-ons ที่เลือก (`.env` keys ของ clerk/drizzle ฯลฯ)
-3. `/run-dev` — ยืนยัน dev server ขึ้น
-4. ตรวจ generated structure — route tree, config files
+2. Set the env per the chosen add-ons (`.env` keys for clerk/drizzle etc.)
+3. `/run-dev` — confirm the dev server starts
+4. Check the generated structure — route tree, config files
 
 ### 3. Verify
 
-1. ทำ `/run-typecheck` + smoke test หน้าแรก
-2. ถ้า fail → `/resolve-errors` max 3 รอบ
+1. Do `/run-typecheck` + a smoke test of the first page
+2. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- CLI คือ starting point — หลัง scaffold ปรับแต่งตาม `setup-*` workflows ต่อไป
-- เลือก add-ons เฉพาะที่ใช้จริง — เพิ่มทีหลังได้ง่ายกว่าถอด
-- Scaffold output อาจล้าหลัง patch releases — ตรวจ versions ใน `package.json` หลังสร้าง
+- The CLI is a starting point — after scaffolding, keep customizing via the `setup-*` workflows
+- Pick only the add-ons you really use — adding later is easier than removing
+- Scaffold output may lag patch releases — check the versions in `package.json` after creation
 
 ## Expected Outcome
 
-- Project ใหม่ scaffold สำเร็จพร้อม add-ons ที่เลือก
-- Dev server รันได้ ไม่มี errors
+- A new project scaffolded successfully with the chosen add-ons
+- The dev server runs with no errors

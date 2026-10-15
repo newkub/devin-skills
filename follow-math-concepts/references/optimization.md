@@ -2,91 +2,91 @@
 
 ## Goal
 
-เข้าใจ optimization: หาค่า min/max ภายใต้ constraints ด้วย linear programming, greedy, dynamic programming, gradient descent และประยุกต์ใช้ใน resource allocation, scheduling, ML
+Understand optimization: finding min/max under constraints with linear programming, greedy, dynamic programming, gradient descent, and their application in resource allocation, scheduling, ML
 
 ## Scope
 
-- ใช้สำหรับปัญหา resource allocation, scheduling, routing, hyperparameter tuning
-- ครอบคลุม objective function, constraints, feasible region
-- แนะนำ linear programming, integer programming, gradient descent, DP
+- Use for resource allocation, scheduling, routing, hyperparameter tuning problems
+- Covers objective function, constraints, feasible region
+- Introduces linear programming, integer programming, gradient descent, DP
 
 ## Execute
 
 ### 1. Formulate Problem
 
-> Goal: เขียนปัญหาเป็น math form
+> Goal: write the problem in math form
 
-1. ระบุ decision variables
-2. ระบุ objective function (minimize หรือ maximize)
-3. ระบุ constraints (equations/inequalities)
-4. ระบุ domain: continuous, integer, binary
+1. Identify the decision variables
+2. Identify the objective function (minimize or maximize)
+3. Identify the constraints (equations/inequalities)
+4. Identify the domain: continuous, integer, binary
 
 ### 2. Choose Optimization Method
 
-> Goal: เลือกวิธีทีเหมาะสม
+> Goal: pick the suitable method
 
-1. Linear programming: objective และ constraints เป็น linear
-2. Integer programming: variables เป็น integer
-3. Greedy: ทำ locally optimal ทีละขั้น
-4. Dynamic programming: แบ่ง subproblems ซ้ำ
-5. Gradient descent: สำหรับ continuous objective
+1. Linear programming: objective and constraints are linear
+2. Integer programming: variables are integers
+3. Greedy: act locally optimal step by step
+4. Dynamic programming: split into repeating subproblems
+5. Gradient descent: for a continuous objective
 
 ### 3. Linear Programming
 
-> Goal: แก้ LP ปัญหา
+> Goal: solve an LP problem
 
-1. เขียนปัญหาเป็น standard form
-2. ใช้ simplex algorithm หรือ library
-3. ตรวจ feasible region
-4. หา optimal value ที่ corner point
+1. Write the problem in standard form
+2. Use the simplex algorithm or a library
+3. Check the feasible region
+4. Find the optimal value at a corner point
 
 ### 4. Dynamic Programming
 
-> Goal: แก้ปัญหาด้วย DP
+> Goal: solve a problem with DP
 
-1. ระบุ optimal substructure
-2. ระบุ overlapping subproblems
-3. สร้าง recurrence
-4. เลือก top-down หรือ bottom-up
-5. ลด space ถ้าไม่จำเป็นเก็บทั้ง table
+1. Identify the optimal substructure
+2. Identify the overlapping subproblems
+3. Build the recurrence
+4. Choose top-down or bottom-up
+5. Reduce space if keeping the whole table isn't needed
 
 ### 5. Map To Code
 
-> Goal: ประยุกต์ใน software
+> Goal: apply in software
 
-1. แบ่ง server resources ให้ latency ต่ำสุด
-2. หา shortest path ด้วย Dijkstra (graph optimization)
-3. ปรับ hyperparameters ด้วย gradient descent
-4. ทำ capacity planning ด้วย LP
+1. Split server resources to minimize latency
+2. Find the shortest path with Dijkstra (graph optimization)
+3. Tune hyperparameters with gradient descent
+4. Do capacity planning with LP
 
 ## Rules
 
 ### 1. Problem Type First
 
-- ระบุ continuous vs discrete
-- ระบุ linear vs non-linear
-- ระบุ convexity ถ้ามี
+- Identify continuous vs discrete
+- Identify linear vs non-linear
+- Identify convexity if present
 
 ### 2. Constraint Handling
 
-- ตรวจ feasibility ก่อน optimize
-- แยก hard constraints กับ soft constraints
-- ใช้ penalty สำหรับ soft constraints
+- Check feasibility before optimizing
+- Separate hard constraints from soft constraints
+- Use a penalty for soft constraints
 
 ### 3. Code Mapping
 
-- ใช้ libraries เช่น `glpk`, `scipy.optimize` สำหรับ LP
-- ใช้ DP table ถ้า subproblems ซ้ำ
-- ใช้ gradient ถ้ามี differentiable objective
+- Use libraries such as `glpk`, `scipy.optimize` for LP
+- Use a DP table when subproblems repeat
+- Use gradient methods when the objective is differentiable
 
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-goal ถ้าจำเป็น
-- ใช้ /follow-software-engineering ถ้าจำเป็น
-- ใช้ /follow-parallel ถ้าจำเป็น
+- Use /follow-math-concepts if needed
+- Use /follow-goal if needed
+- Use /follow-software-engineering if needed
+- Use /follow-parallel if needed
 
 ## Expected Outcome
 
-- สามารถ formulate optimization problem
-- สามารถเลือกวิธีทีเหมาะสม
-- สามารถใช้ LP, DP, gradient descent พื้นฐาน
-- สามารถประยุกต์ใน resource allocation และ scheduling
+- Able to formulate an optimization problem
+- Able to choose the suitable method
+- Able to use basic LP, DP, gradient descent
+- Able to apply it in resource allocation and scheduling

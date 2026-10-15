@@ -1,34 +1,34 @@
 # fast-check — Best Practices
 
-Property-based testing — arbitraries, invariants และ shrink discipline
+Property-based testing — arbitraries, invariants and shrink discipline
 
 ## Recommended Patterns
 
-- เขียน properties ที่เป็น invariant จริง — `fc.assert(fc.property(arb, (x) => pred(x)))` — ไม่ใช่แค่ "ไม่ throw"
-- Arbitraries เลือกให้ cover edge space: `fc.integer()`, `fc.string()`, `fc.array()`, `fc.record()` + compose ด้วย `fc.tuple`/`fc.oneof`/`fc.constantFrom`
-- ใช้ `fc.pre(condition)` เมื่อต้อง filter inputs — อย่า generate แล้วทิ้งเยอะ (skew distribution)
-- `fc.asyncProperty` สำหรับ async code — อย่า wrap async ใน sync property
-- Reproduce failures ด้วย `seed` + `path` ที่ fast-check print — log ไว้ใน CI artifacts
+- Write properties that are real invariants — `fc.assert(fc.property(arb, (x) => pred(x)))` — not just "doesn't throw"
+- Pick arbitraries to cover the edge space: `fc.integer()`, `fc.string()`, `fc.array()`, `fc.record()` + compose with `fc.tuple`/`fc.oneof`/`fc.constantFrom`
+- Use `fc.pre(condition)` when inputs must be filtered — don't generate and discard a lot (skew distribution)
+- `fc.asyncProperty` for async code — don't wrap async in a sync property
+- Reproduce failures with the `seed` + `path` that fast-check prints — log them in CI artifacts
 
 ## Common Pitfalls
 
-- Properties ต้อง pure — side effects ใน property → non-deterministic shrinks
-- Shrinking คือจุดแข็ง — ถ้า custom arbitrary ไม่ shrink (built via `.map` หนักๆ) ใช้ `.filter`+`fc.base64String` ฯลฯ หรือ `fc.constant` bounds
-- `fc.date()`/`fc.object()` default กว้างมาก — constrain ranges (`min`, `max`, `size`) ให้ตรง domain
-- อย่าสร้าง arbitraries ภายใน test loop — hoist ออกมา const เดียว
-- `numRuns` default 100 พอ smoke; CI regression ขึ้น 1000+ สำหรับ critical invariants
+- Properties must be pure — side effects in a property → non-deterministic shrinks
+- Shrinking is the strength — if a custom arbitrary doesn't shrink (built via heavy `.map`), use `.filter`+`fc.base64String` etc. or `fc.constant` bounds
+- `fc.date()`/`fc.object()` defaults are very wide — constrain ranges (`min`, `max`, `size`) to match the domain
+- Don't create arbitraries inside the test loop — hoist to a single const
+- `numRuns` default 100 is enough for smoke; CI regression raise to 1000+ for critical invariants
 
 ## Integration
 
-- เขียน property spec เมื่อ function มี invariant (roundtrip, idempotent, ordering, bounds) — ไม่ใช่ทุก function
-- ใช้ร่วม unit tests — example-based สำหรับ known cases + property สำหรับ edge coverage
-- Failure output ให้ minimal counterexample — copy ลง test เดิมเป็น regression example
+- Write a property spec when a function has invariants (roundtrip, idempotent, ordering, bounds) — not for every function
+- Use alongside unit tests — example-based for known cases + property for edge coverage
+- Failure output gives a minimal counterexample — copy it into the test suite as a regression example
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| invariants (roundtrip, idempotent, sorted) | properties ที่ assert trivial (`x === x`) |
-| `fc.pre` / constrained arbs | reject 90% inputs |
-| seed+path reproduce | ignore failure logs |
-| composed arbitraries (`oneof`, `tuple`) | generate เองด้วย Math.random |
+| invariants (roundtrip, idempotent, sorted) | properties asserting trivial things (`x === x`) |
+| `fc.pre` / constrained arbitraries | rejecting 90% of inputs |
+| seed+path reproduction | ignoring failure logs |
+| composed arbitraries (`oneof`, `tuple`) | generating by hand with Math.random |

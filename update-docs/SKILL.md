@@ -6,7 +6,7 @@ related:
   - check-should-update
   - follow-single-of-source
   - check-monorepo
-  - deep-review
+  - deep-review-codebase
   - check-reference
   - reframe
   - update-references
@@ -118,7 +118,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 
 > Goal: Content is readable, consistent, and non-duplicative
 
-1. Run `/deep-review`
+1. Run `/deep-review-codebase`
 2. Check heading structure, frontmatter, links
 3. Fix duplication or placeholders
 4. ≤ ~150 lines per page — if longer, split into sub-pages and link them from index
@@ -202,7 +202,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 - Examples must run
 - No placeholders or lorem ipsum
 - Use /run-docs if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /check-reference if needed
 - Use /reframe if needed
 - Use `/follow-single-of-source` if needed

@@ -1,6 +1,6 @@
 ---
 name: gen-media-ai-videos
-description: สร้างวิดีโอด้วย AI ผ่าน bunx CLI
+description: Generate videos with AI via bunx CLI
 argument-hint: "[prompt]"
 related:
   - gen-media
@@ -9,77 +9,77 @@ related:
 
 ## Goal
 
-สร้างวิดีโอสั้นจาก prompt ด้วย AI CLI
+Generate a short video from a prompt with an AI CLI
 
 ## Scope
 
-- ใช้ `bunx` CLI สำหรับ text-to-video หรือ image-to-video
-- รองรับทั้ง free provider (Pollinations) และ paid providers (FAL, Google Veo, Runway)
-- บันทึก output เป็น `.mp4` หรือ `.webm`
+- Use `bunx` CLIs for text-to-video or image-to-video
+- Supports both free providers (Pollinations) and paid providers (FAL, Google Veo, Runway)
+- Save output as `.mp4` or `.webm`
 
 ## Execute
 
 ### 1. Prepare Prompt
 
-> Goal: มี prompt และ config ทีชัดเจน
+> Goal: Have a clear prompt and config
 
-1. รับ prompt จาก user
-2. ระบุ duration (default 5 วินาที), aspect ratio (16:9, 9:16, 1:1)
-3. ถ้ามี first-frame image → เก็บ path
-4. ระบุ output path
+1. Receive the prompt from the user
+2. Specify duration (default 5 seconds) and aspect ratio (16:9, 9:16, 1:1)
+3. If there is a first-frame image → record its path
+4. Specify the output path
 
 ### 2. Choose Provider
 
-> Goal: เลือก CLI ทีใช้งานได้
+> Goal: Pick a usable CLI
 
 1. Default: `bunx @pollinations/cli gen video "<prompt>" --duration 5 --output <file>`
-   - ไม่ต้อง API key
-   - รองรับ duration และ prompt
-2. ถ้า user มี API key:
+   - No API key required
+   - Supports duration and prompt
+2. If the user has an API key:
    - `bunx ai-vid generate -p "<prompt>" -P <provider> -m <model> -o <file>`
-   - `bunx @fal-ai/cli` ถ้ามี
-3. ถ้าต้องการ high quality → ถาม user ถึง API key ก่อน
+   - `bunx @fal-ai/cli` if available
+3. For high quality → ask the user for an API key first
 
 ### 3. Generate Video
 
-> Goal: รัน CLI ให้ได้วิดีโอ
+> Goal: Run the CLI to get the video
 
-1. ตรวจสอบ network และ CLI
-2. รันคำสั่งพร้อม prompt, duration, output
-3. รอจนกระทั่งไฟล์ถูกดาวน์โหลด
-4. ตรวจสอบขนาดไฟล์ > 0
+1. Check network and CLI availability
+2. Run the command with prompt, duration, and output
+3. Wait until the file is downloaded
+4. Verify the file size > 0
 
 ### 4. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the result
 
-1. แสดง output path
-2. แสดง provider, model, duration
-3. ถ้า fail → แสดง stderr และแนะนำให้ลอง provider อื่นหรือลด duration
+1. Show the output path
+2. Show provider, model, and duration
+3. If it fails → show stderr and suggest trying another provider or reducing duration
 
 ## Rules
 
 ### 1. Cost Awareness
 
-- แจ้ง user ว่า video generation มักมี cost สูงกว่า image
-- ถ้าใช้ paid provider ต้องมี API key
+- Tell the user that video generation usually costs more than image generation
+- A paid provider requires an API key
 
 ### 2. Reasonable Defaults
 
-- default duration = 5 วินาที
-- default aspect ratio = 16:9
-- ไม่สร้างวิดีโอนานเกินไปโดยไม่ถาม user
+- Default duration = 5 seconds
+- Default aspect ratio = 16:9
+- Never generate an overly long video without asking the user
 
 ### 3. No Leaks
 
-- ไม่ hardcode API key
-- ใช้ environment variable หรือถามก่อน
+- Never hardcode API keys
+- Use an environment variable or ask first
 
-- ใช้ /gen-media-ai-images ถ้าจำเป็น
-- ใช้ /gen-subtitle-video ถ้าจำเป็น
+- Use /gen-media-ai-images if needed
+- Use /gen-subtitle-video if needed
 
 ## Expected Outcome
 
-- ไฟล์วิดีโอถูกสร้างจาก prompt
-- รายงาน provider, duration, output path
-- ถ้า fail มีแนวทาง fallback
+- A video file is generated from the prompt
+- The report includes provider, duration, and output path
+- On failure, a fallback approach is given

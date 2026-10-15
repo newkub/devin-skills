@@ -147,7 +147,7 @@ Set/edit RunsOn runner configuration — `.github/runs-on.yml` runner definition
 > Goal: Know the current runner config before editing
 
 1. Read `.github/runs-on.yml` and workflows that already use `runs-on:`
-2. Do `/deep-review` domain `review-config` if the config must be compared with the deployed stack
+2. Do `/deep-review-codebase` domain `review-config` if the config must be compared with the deployed stack
 3. If no config is found → do `## Merged Details → setup-run-on` first
 
 ###### 2. Define Runners
@@ -312,7 +312,7 @@ Confirm after setup/config that RunsOn (self-hosted GitHub runners on AWS) reall
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

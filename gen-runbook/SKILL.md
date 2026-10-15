@@ -1,11 +1,11 @@
 ---
 name: gen-runbook
-description: สร้าง operational runbook จาก system knowledge จริง — alerts, playbooks และ recovery steps
+description: Generate an operational runbook from real system knowledge — alerts, playbooks, recovery steps
 argument-hint: "[service-or-incident-type]"
 related:
   - learn
   - create-report-in-dot-devin
-  - deep-review
+  - deep-review-codebase
   - report-architecture-diagram
   - report
   - run-docs
@@ -13,36 +13,36 @@ related:
 
 ## Goal
 
-สร้าง operational runbook จาก codebase และ config จริง — เอกสารที่ oncall/ops ใช้ตอนระบบมีปัญหา: symptoms, diagnosis steps, mitigations, escalation
+Generate an operational runbook from the real codebase and config — a document oncall/ops use when the system has problems: symptoms, diagnosis steps, mitigations, escalation
 
 ## Scope
 
-- ครอบคลุม: service overview, dependencies, common failure modes, diagnosis procedures, mitigation/rollback steps, escalation contacts
-- สร้างจาก: architecture, deploy config, monitoring setup, past incidents (ถ้ามี), code structure
-- Output: runbook doc ใน `.devin/` หรือ `docs/` — ไม่แก้ code
+- Covers: service overview, dependencies, common failure modes, diagnosis procedures, mitigation/rollback steps, escalation contacts
+- Built from: architecture, deploy config, monitoring setup, past incidents (if any), code structure
+- Output: a runbook doc in `.devin/` or `docs/` — does not modify code
 
 ## Execute
 
 ### 1. Map The System
 
-> Goal: เข้าใจระบบที่จะเขียน runbook
+> Goal: Understand the system being documented
 
-1. ทำ `/learn` (codebase) หรือ `/scan-codebase` — services, dependencies, data stores
-2. ทำ `/report-architecture-diagram` ถ้าต้องการ visual overview
-3. ระบุ deploy targets, environments, external dependencies
+1. Do `/learn` (codebase) or `/scan-codebase` — services, dependencies, data stores
+2. Do `/report-architecture-diagram` if a visual overview is wanted
+3. Identify deploy targets, environments, and external dependencies
 
 ### 2. Identify Failure Modes
 
-> Goal: รวบรวมวิธีที่ระบบพังได้
+> Goal: Collect how the system can break
 
-1. จาก `/deep-review` findings — error handling, resilience gaps
+1. From `/deep-review-codebase` findings — error handling, resilience gaps
 2. External dependencies: DB down, API limits, queue backlog, cert expiry, DNS issues
 3. App-level: memory leaks, deadlocks, bad deploys, config errors
-4. จัดกลุ่มเป็น incident types: `outage`, `degraded`, `data-issue`, `security`
+4. Group into incident types: `outage`, `degraded`, `data-issue`, `security`
 
 ### 3. Write Runbook Structure
 
-> Goal: สร้าง runbook ที่ใช้ตอน panic ได้จริง
+> Goal: Create a runbook that works during a panic
 
 ```markdown
 # Runbook: <service>
@@ -55,16 +55,16 @@ related:
 - What it does, critical paths, SLA
 
 ## Dependencies
-- <dep> — ถ้าตาย: <symptom + mitigation>
+- <dep> — if down: <symptom + mitigation>
 
 ## Incident Playbooks
 
 ### <Incident Type>: <symptom>
 **Detect**: <alert/signal>
-**Diagnose**: <steps ตรวจหาสาเหตุ — logs, metrics, queries>
-**Mitigate**: <ขั้นตอนแก้ — restart, rollback, failover>
-**Rollback**: <ถ้าแก้ไม่ได้>
-**Escalate**: <เมื่อไหร่และใคร>
+**Diagnose**: <steps to find the cause — logs, metrics, queries>
+**Mitigate**: <fix steps — restart, rollback, failover>
+**Rollback**: <if the fix fails>
+**Escalate**: <when and to whom>
 
 ## Common Operations
 - Deploy, rollback, scale, secrets rotation
@@ -73,44 +73,44 @@ related:
 - Postmortem template, action items tracking
 ```
 
-4. เติม commands จริงที่ copy-run ได้ — ไม่ใช่ "check the logs" ลอยๆ
+4. Fill in real copy-run commands — not floating "check the logs" advice
 
 ### 4. Validate Against Reality
 
-> Goal: runbook ต้องทำตามได้จริง
+> Goal: The runbook must be actually followable
 
-1. ทุก command/path/query ต้อง verify ว่ามีจริงใน repo/config
-2. ระบุ placeholders ชัดเจนสำหรับสิ่งที่ user ต้องเติม (contacts, URLs ที่ไม่มีใน code)
-3. ตรวจว่า mitigation steps ไม่ destructive โดยไม่เตือน
+1. Every command/path/query must be verified to exist in the repo/config
+2. Clearly mark placeholders the user must fill (contacts, URLs not present in code)
+3. Check that mitigation steps are not destructive without a warning
 
 ### 5. Report
 
-> Goal: ส่งมอบ runbook พร้อม gaps
+> Goal: Deliver the runbook with its gaps
 
-1. บันทึกด้วย `/create-report-in-dot-devin` หรือ `docs/runbook-<service>.md`
-2. ใช้ `/report` สรุป: sections ที่ครบ vs ที่ต้อง user เติม
-3. แนะนำ `/deep-review` ถ้า diagnosis steps ขาด signals ที่ต้องมี
+1. Save with `/create-report-in-dot-devin` or `docs/runbook-<service>.md`
+2. Use `/report` to summarize: sections completed vs sections the user must fill
+3. Suggest `/deep-review-codebase` if diagnosis steps lack required signals
 
 ## Rules
 
 ### 1. Runnable Steps
 
-- ทุก diagnosis/mitigation step ต้องทำได้จริง — commands ที่ verify แล้ว
-- ห้ามเขียน generic advice — runbook คือ executable doc
+- Every diagnosis/mitigation step must be actually executable — verified commands
+- Never write generic advice — a runbook is an executable doc
 
 ### 2. Evidence-Based
 
-- failure modes จาก code/config/findings จริง — ไม่เดา incident types
-- ระบุ `[TODO: ...]` สำหรับข้อมูลที่ไม่มีใน repo (contacts, external dashboards)
+- Failure modes come from real code/config/findings — never guessed incident types
+- Mark `[TODO: ...]` for data absent from the repo (contacts, external dashboards)
 
 ### 3. Safety First
 
-- mitigation steps ที่ destructive (rollback, restart, failover) ต้องมี warnings และ confirm points
-- escalation paths ชัดเจน — runbook ไม่ใช่ทำเองทุกอย่าง
-- ใช้ /run-docs ถ้าจำเป็น
+- Destructive mitigation steps (rollback, restart, failover) must carry warnings and confirm points
+- Escalation paths are explicit — a runbook does not mean handling everything alone
+- Use /run-docs if needed
 
 ## Expected Outcome
 
-- Runbook ที่ oncall ใช้ได้จริงตอน incident
-- Playbooks ต่อ failure mode พร้อม runnable steps
-- Gaps ที่ต้องเติม (contacts, dashboards) ระบุชัดเจน
+- A runbook oncall can actually use during an incident
+- Playbooks per failure mode with runnable steps
+- Gaps to fill (contacts, dashboards) clearly marked

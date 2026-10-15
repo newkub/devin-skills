@@ -1,6 +1,6 @@
 ---
 name: list-git-tags
-description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
+description: List all tags with metadata and semantic versioning status
 argument-hint: "[scope]"
 related:
   - follow-tool-git
@@ -11,89 +11,88 @@ related:
 
 ## Goal
 
-แสดงรายการ git tags ทั้งหมดพร้อม metadata และ semantic versioning status
+List all git tags with metadata and semantic versioning status
 
 ## Scope
 
-ใช้สำหรับดู tags ใน local repository และ remote — ไม่รวมการ create, delete, push (ใช้ `/follow-tool-git` สำหรับ tag operations)
+Use to view tags in the local repository and remote — excludes create, delete, push (use `/follow-tool-git` for tag operations)
 
 ## Execute
 
 ### 1. List Tags
 
-> Goal: ดู tags ทั้งหมดในเครื่อง
+> Goal: see all local tags
 
-1. รัน `git tag` เพื่อดู tags ทั้งหมด
-2. รัน `git tag -l --sort=-version:refname` เพื่อเรียงตาม version ล่าสุดก่อน
-3. ถ้าไม่มี tag → รายงาน "No tags found" และจบ
-4. ระบุจำนวน tags ทั้งหมด
+1. Run `git tag` to see all tags
+2. Run `git tag -l --sort=-version:refname` to sort latest version first
+3. No tags → report "No tags found" and finish
+4. State the total tag count
 
 ### 2. Collect Tag Details
 
-> Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ tag
+> Goal: gather extra data for each tag
 
-1. รัน `git show <tag> --no-patch --format="%H|%ci|%an|%s"` สำหรับแต่ละ tag
-2. ระบุ tag type: annotated (มี tagger info) หรือ lightweight
-3. รัน `git tag -l --format='%(refname:short) %(objecttype)'` เพื่อดู tag type
-4. ตรวจสอบ remote tags ด้วย `git ls-remote --tags origin`
+1. Run `git show <tag> --no-patch --format="%H|%ci|%an|%s"` for each tag
+2. Identify tag type: annotated (has tagger info) or lightweight
+3. Run `git tag -l --format='%(refname:short) %(objecttype)'` to see tag type
+4. Check remote tags with `git ls-remote --tags origin`
 
 ### 3. Analyze Semantic Versioning
 
-> Goal: วิเคราะห์ tags ตาม semantic versioning
+> Goal: analyze tags per semantic versioning
 
-1. ระบุ tags ที่เป็น semantic version (เริ่มด้วย `v` + MAJOR.MINOR.PATCH)
-2. ระบุ tags ที่ไม่ใช่ semantic version
-3. ระบุ pre-release tags (มี suffix เช่น `-alpha`, `-beta`, `-rc.1`)
-4. ระบุ latest stable version และ latest pre-release version
-5. ตรวจสอบ version sequence ว่ามี gap หรือไม่
+1. Identify semantic-version tags (start with `v` + MAJOR.MINOR.PATCH)
+2. Identify non-semantic-version tags
+3. Identify pre-release tags (suffixes such as `-alpha`, `-beta`, `-rc.1`)
+4. Identify the latest stable version and the latest pre-release version
+5. Check the version sequence for gaps
 
 ### 4. Format Output
 
-> Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
+> Goal: format the result as a table
 
-1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
-2. กำหนด columns:
-   - No. ลำดับ
-   - Tag ชื่อ tag
+1. Use `/report` to format as a table
+2. Define columns:
+   - No. sequence
+   - Tag tag name
    - Type annotated / lightweight
-   - Commit SHA แบบสั้น
-   - Date วันที่ tag
-   - Author ผู้ tag
-   - Message commit message แบบสั้น
+   - Commit SHA (short)
+   - Date the tag was created
+   - Author who created the tag
+   - Message short commit message
    - SemVer ✅ / ❌
-3. เรียงตาม version ล่าสุดก่อน
+3. Sort latest version first
 
 ## Rules
 
 ### Read-Only
 
-- ไม่ create, delete, push tags — ใช้ `/follow-tool-git` สำหรับ tag operations
-- ไม่แก้ไข repository state
-- รายงานเท่านั้น — read-only operation
+- Never create, delete, or push tags — use `/follow-tool-git` for tag operations
+- Never modify repository state
+- Report only — a read-only operation
 
 ### Output Format
 
-- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
-- เรียงตาม version ล่าสุดก่อน
-- ชี้เน้น latest stable และ latest pre-release
-- ใช้ symbols: ✅ SemVer compliant, ❌ non-SemVer
+- Use `/report` to format the result
+- Sort latest version first
+- Highlight latest stable and latest pre-release
+- Use symbols: ✅ SemVer compliant, ❌ non-SemVer
 
 ### High Impact Content
 
-- ถ้ามีมากกว่า 50 tags → แสดงเฉพาะ 20 ล่าสุด
-- ชี้เน้น tags ที่ไม่ใช่ semantic version
-- ชี้เน้น version gaps ที่ขาดหายไป
+- More than 50 tags → show only the latest 20
+- Highlight non-semantic-version tags
+- Highlight missing version gaps
 
 ### Non-Redundancy
 
-- Tag operations อยู่ใน `/follow-tool-git` แล้ว
-- GitHub releases อยู่ใน `/list-github-release` แล้ว
-- Branch listing อยู่ใน `/list-git-branch` แล้ว
+- Tag operations already live in `/follow-tool-git`
+- GitHub releases already live in `/list-github-release`
+- Branch listing already lives in `/list-git-branch`
 
 ## Expected Outcome
 
-- รายการ tags ทั้งหมดในตารางที่อ่านง่าย
-- ข้อมูลครบ: tag name, type, commit, date, author, message, SemVer status
-- ชี้เน้น latest stable, latest pre-release และ non-SemVer tags
-- ไม่มีการแก้ไข tag ใดๆ — read-only report
-
+- A full tag list in a readable table
+- Complete data: tag name, type, commit, date, author, message, SemVer status
+- Latest stable, latest pre-release, and non-SemVer tags highlighted
+- No tag modified — a read-only report

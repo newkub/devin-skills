@@ -1,6 +1,6 @@
 ---
 name: report-bundle
-description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
+description: Summarize bundle size per chunk, dependency, and tree-shaking effectiveness
 argument-hint: "[scope]"
 related:
   - run-build
@@ -13,122 +13,122 @@ related:
 
 ## Goal
 
-รายงานขนาด bundle ของโปรเจกต์: ต่อ chunk, ต่อ dependency, tree-shaking effectiveness และ insights
+Report the project's bundle size: per chunk, per dependency, tree-shaking effectiveness, and insights
 
 ## Scope
 
-ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/deep-review` สำหรับ optimization)
+Use for reporting bundle size after build — excludes build optimization (use `/deep-review-codebase` for optimization)
 
 ## Execute
 
 ### 1. Build Project
 
-> Goal: Build โปรเจกต์เพื่อสร้าง bundle
+> Goal: Build the project to produce a bundle
 
-1. ทำ `/run-build` เพื่อ build โปรเจกต์
-2. ระบุ output directory จาก build config (`dist/`, `.output/`, `build/`)
-3. ถ้า build ไม่สำเร็จ → รายงาน error และจบ
+1. Use `/run-build` to build the project
+2. Identify the output directory from build config (`dist/`, `.output/`, `build/`)
+3. Build fails → report the error and stop
 
 ### 2. Collect Bundle Statistics
 
-> Goal: รวบรวมสถิติของ bundle
+> Goal: gather bundle statistics
 
-1. รัน `du -sh <output-dir>` เพื่อดูขนาดรวม
-2. รัน `du -sh <output-dir>/*` เพื่อดูขนาดต่อ subdirectory
-3. ระบุไฟล์ใหญ่ที่สุด (top 10) ด้วย `du -a <output-dir> | sort -n -r | head -10`
-4. ระบุ chunk files: `*.js`, `*.css`, `*.woff2`, `*.png`
-5. แยก gzipped size ถ้ามี (`.gz` files)
-6. ถ้ามี `sonda` plugin ใน bundler config → ใช้ `.sonda/*.json` report เป็น source of truth สำหรับ sizes แทน `du` estimate; ถ้ายังไม่มี → แนะนำติดตั้งตาม `/follow-tool-sonda` (accurate กว่าเพราะอ่าน final source maps)
+1. Run `du -sh <output-dir>` for total size
+2. Run `du -sh <output-dir>/*` for per-subdirectory size
+3. Identify the largest files (top 10) with `du -a <output-dir> | sort -n -r | head -10`
+4. Identify chunk files: `*.js`, `*.css`, `*.woff2`, `*.png`
+5. Separate gzipped size when available (`.gz` files)
+6. `sonda` plugin exists in bundler config → use `.sonda/*.json` report as the source of truth for sizes instead of `du` estimates; not yet installed → recommend installing per `/follow-tool-sonda` (more accurate — reads final source maps)
 
 ### 3. Analyze Chunks
 
-> Goal: วิเคราะห์ chunks ของ bundle
+> Goal: analyze the bundle's chunks
 
-1. ระบุ vendor chunks และ sizes (เช่น `solid-vendor.js`, `tanstack-router.js`)
-2. ระบุ application chunks และ sizes
-3. ระบุ async/lazy chunks และ sizes
-4. ระบุ CSS chunks และ sizes
-5. ระบุ asset chunks (fonts, images) และ sizes
-6. คำนวณ ratio: vendor vs application vs assets
+1. Identify vendor chunks and sizes (e.g. `solid-vendor.js`, `tanstack-router.js`)
+2. Identify application chunks and sizes
+3. Identify async/lazy chunks and sizes
+4. Identify CSS chunks and sizes
+5. Identify asset chunks (fonts, images) and sizes
+6. Calculate ratio: vendor vs application vs assets
 
 ### 4. Analyze Dependencies
 
-> Goal: วิเคราะห์ dependencies ที่มีผลต่อ bundle size
+> Goal: analyze dependencies affecting bundle size
 
-1. ระบุ dependencies ที่อยู่ใน vendor chunks — ใช้ Sonda JSON report (`deep: true`) แตก deps เป็น source files ถ้ามี
-2. ทำ `/follow-tool-node-modules-inspector` — `bunx node-modules-inspector report duplicates` และ `report sizes --json` สำหรับ versions, duplicates, installed sizes
-3. ประเมินขนาดของแต่ละ dependency ใน bundle
-4. ระบุ dependencies ที่ใหญ่เกินคาด (เช่น > 50KB)
-5. ระบุ dependencies ที่ไม่ได้ tree-shake อย่างมีประสิทธิภาพ
-6. ระบุ dependencies ที่ควรเป็น dynamic import
+1. Identify dependencies in vendor chunks — use the Sonda JSON report (`deep: true`) to break deps into source files when available
+2. Use `/follow-tool-node-modules-inspector` — `bunx node-modules-inspector report duplicates` and `report sizes --json` for versions, duplicates, installed sizes
+3. Estimate each dependency's size in the bundle
+4. Identify unexpectedly large dependencies (e.g. > 50KB)
+5. Identify poorly tree-shaken dependencies
+6. Identify dependencies that should be dynamic imports
 
 ### 5. Check Tree-Shaking
 
-> Goal: ตรวจสอบ tree-shaking effectiveness
+> Goal: check tree-shaking effectiveness
 
-1. ตรวจสอบ `sideEffects` ใน `package.json`
-2. ระบุ modules ที่มี side effects ทำให้ tree-shaking ไม่ทำงาน
-3. ตรวจสอบ named imports vs namespace imports
-4. ระบุ dead code ที่ไม่ได้ eliminate
-5. ประเมิน potential savings ถ้า tree-shaking ทำงานดีขึ้น
+1. Check `sideEffects` in `package.json`
+2. Identify modules with side effects that prevent tree-shaking
+3. Check named imports vs namespace imports
+4. Identify dead code not eliminated
+5. Estimate potential savings if tree-shaking improves
 
 ### 6. Format Report
 
-> Goal: จัดรูปแบบรายงานให้อ่านง่าย
+> Goal: format the report for readability
 
-1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
-2. แสดงผลตามลำดับ: Summary → Chunks → Dependencies → Tree-Shaking → Recommendations
-3. กำหนด columns สำหรับตาราง chunks:
-   - No. ลำดับ
-   - Chunk ชื่อไฟล์
+1. Use `/report` to format as a table
+2. Present in order: Summary → Chunks → Dependencies → Tree-Shaking → Recommendations
+3. Define columns for the chunks table:
+   - No. sequence
+   - Chunk filename
    - Type vendor / app / async / css / asset
-   - Size ขนาด (KB)
-   - Gzipped ขนาด gzipped (KB) ถ้ามี
-   - % สัดส่วนของ total
-4. แยกตารางตามหมวด: Chunks, Large Dependencies, Tree-Shaking Issues
+   - Size (KB)
+   - Gzipped gzipped size (KB) if available
+   - % share of total
+4. Separate tables by category: Chunks, Large Dependencies, Tree-Shaking Issues
 
 ### 7. Provide Insights
 
-> Goal: ให้ insights และ recommendations
+> Goal: give insights and recommendations
 
-1. สรุปขนาด bundle รวมและสัดส่วนตามประเภท
-2. ระบุ chunks ที่ใหญ่เกิน threshold (เช่น > 100KB)
-3. ระบุ dependencies ที่ควรเป็น dynamic import
-4. ระบุ modules ที่มี side effects
-5. แนะนำ next steps: `/deep-review` สำหรับ optimization
+1. Summarize total bundle size and proportions by type
+2. Identify chunks exceeding the threshold (e.g. > 100KB)
+3. Identify dependencies that should be dynamic imports
+4. Identify modules with side effects
+5. Recommend next steps: `/deep-review-codebase` for optimization
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (bundle)
+> Goal: readable report — key findings on top, leading to action (bundle)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (bundle)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (bundle)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (bundle)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings above the details (bundle)
+2. Use `/report` for multi-column comparison tables (bundle)
+3. Use `/report` for status/progress/logs reports
+4. Use "No." as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (bundle)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always use `/suggest-next-action` at the end of the report
 
 ### Read-Only Report
 
-- ไม่ optimize ไม่แก้ไข build config — รายงานเท่านั้น
-- ใช้ `/deep-review` สำหรับ optimization
-- ใช้ `/run-build` สำหรับการ build
+- Never optimize or modify build config — report only
+- Use `/deep-review-codebase` for optimization
+- Use `/run-build` for building
 
 ### Output Format
 
-- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
-- แยกตารางตามหมวด: Chunks, Large Dependencies, Tree-Shaking Issues
-- ใช้ symbols: ✅ good size, ⚠️ large, ❌ too large
-- แสดงขนาดเป็น KB หรือ MB
+- Use `/report` to format the result
+- Separate tables by category: Chunks, Large Dependencies, Tree-Shaking Issues
+- Use symbols: ✅ good size, ⚠️ large, ❌ too large
+- Show sizes in KB or MB
 
 ### High Impact Content
 
-- ชี้เน้น chunks ที่ใหญ่เกิน 100KB
-- ชี้เน้น dependencies ที่ใหญ่เกิน 50KB
-- ชี้เน้น tree-shaking issues ที่มี potential savings > 10KB
-- ถ้ามีมากกว่า 50 chunks → แสดงเฉพาะ top 20 ที่ใหญ่ที่สุด
+- Highlight chunks over 100KB
+- Highlight dependencies over 50KB
+- Highlight tree-shaking issues with potential savings > 10KB
+- More than 50 chunks → show only the top 20 largest
 
 ### Thresholds
 
@@ -139,17 +139,17 @@ related:
 
 ### Non-Redundancy
 
-- การ optimize build อยู่ใน `/deep-review` แล้ว
-- การ build อยู่ใน `/run-build` แล้ว
+- Build optimization already lives in `/deep-review-codebase`
+- Building already lives in `/run-build`
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- สรุปขนาด bundle รวมและต่อ chunk ในตารางที่อ่านง่าย
-- ระบุ chunks และ dependencies ที่ใหญ่เกิน threshold
-- ระบุ tree-shaking issues และ potential savings
-- มี recommendations ชัดเจน
-- ไม่มีการแก้ไข build config — read-only report
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- A summary of total bundle size and per-chunk size in a readable table
+- Chunks and dependencies exceeding the threshold identified
+- Tree-shaking issues and potential savings identified
+- Clear recommendations
+- No build config modified — read-only report
+- Report is readable with key findings on top
+- Next action is clear

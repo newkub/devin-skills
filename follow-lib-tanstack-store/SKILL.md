@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-store
-description: ใช้ TanStack Store ครบวงจร — stores, selectors, derived state, batching, cross-framework
+description: Use TanStack Store end to end — stores, selectors, derived state, batching, cross-framework
 argument-hint: "[framework]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -11,20 +11,20 @@ related:
 
 ## Goal
 
-ใช้ TanStack Store ครบ — client state store ที่ framework-agnostic: stores, fine-grained selectors, `Derived` computed, `batch`, และ non-React usage
+Use TanStack Store fully — a framework-agnostic client state store: stores, fine-grained selectors, `Derived` computed, `batch`, and non-React usage
 
 ## Scope
 
-ใช้สำหรับ **client state** (UI state, drafts, prefs, ephemeral) — server state ใช้ `follow-query`/`follow-db`; เหมาะแทน Zustand-style store เมื่ออยู่ใน TanStack ecosystem อยู่แล้ว
+Use for **client state** (UI state, drafts, prefs, ephemeral) — for server state use `follow-query`/`follow-db`; a good Zustand-style store replacement when you're already in the TanStack ecosystem
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
 ### 1. Install
 
 ```bash
-bun add @tanstack/react-store   # adapter ครอบ @tanstack/store core — มี solid/vue/svelte/angular
+bun add @tanstack/react-store   # adapter wraps the @tanstack/store core — solid/vue/svelte/angular available
 ```
 
 ### 2. Create Store
@@ -40,7 +40,7 @@ export const appStore = new Store({
   todos: [] as Todo[],
 })
 
-// computed — recompute เมื่อ deps เปลี่ยน
+// computed — recomputes when deps change
 export const openCount = new Derived({
   fn: () => appStore.state.todos.filter((t) => !t.done).length,
   deps: [appStore],
@@ -53,45 +53,45 @@ openCount.mount()
 > Goal: fine-grained reactivity
 
 ```tsx
-const theme = useStore(appStore, (s) => s.theme)  // selector เสมอ — re-render เฉพาะ slice
+const theme = useStore(appStore, (s) => s.theme)  // always a selector — re-render only the slice
 
 appStore.setState((s) => ({ ...s, theme: 'light' }))
 
-batch(() => {                          // รวม notification เดียว
+batch(() => {                          // collapse into one notification
   appStore.setState((s) => ({ ...s, sidebarOpen: true }))
   otherStore.setState((s) => ({ ...s, loaded: true }))
 })
 ```
 
-- อ่านนอก component: `appStore.state` (sync, non-reactive)
-- `store.subscribe` สำหรับ side-effects นอก framework
+- Read outside a component: `appStore.state` (sync, non-reactive)
+- `store.subscribe` for side-effects outside the framework
 
 ### 4. Patterns
 
-> Goal: ใช้งานจริงครบ
+> Goal: real-world usage covered
 
-1. **Modular stores**: แยก store ตาม domain (`userStore`, `uiStore`) — ไม่ใช่ god-store ตัวเดียว
-2. **Action functions**: export `updateTheme()` helper ข้าง store แทน `setState` กระจายทั่ว codebase
-3. **Persist**: subscribe → `localStorage` หรือ pair กับ DB `localStorageCollectionOptions`
-4. **Outside React**: core `Store` ใช้ใน vanilla/node ได้ — adapters เฉพาะตอน bind เข้า UI
-5. **Testing**: สร้าง store instance ใหม่ต่อ test หรือ reset `setState` ใน `beforeEach`
+1. **Modular stores**: split stores by domain (`userStore`, `uiStore`) — not one god-store
+2. **Action functions**: export an `updateTheme()` helper next to the store instead of scattering `setState` across the codebase
+3. **Persist**: subscribe → `localStorage` or pair with a DB `localStorageCollectionOptions`
+4. **Outside React**: the core `Store` works in vanilla/node — adapters are only needed when binding to the UI
+5. **Testing**: create a fresh store instance per test, or reset via `setState` in `beforeEach`
 
 ### 5. Verify
 
 1. `/run-typecheck` + `/run-test`
-2. Selector granularity — component อื่นไม่ re-render เมื่อ slice ที่ไม่เกี่ยวเปลี่ยน
-3. ถ้า fail → `/resolve-errors` max 3 รอบ
+2. Selector granularity — other components don't re-render when an unrelated slice changes
+3. If it fails → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `useStore(store, selector)` — selector บังคับ ไม่งั้น re-render ทุก change
-- ห้าม mutate `store.state` ตรง — `setState` เท่านั้น
-- `Derived` ต้อง `.mount()`; derived จาก derived ได้ (chain)
-- Store = module singleton export — ห้ามสร้างใน component
-- Server state ห้ามใส่ Store — `follow-query`; reactive client DB → `follow-db`
+- `useStore(store, selector)` — the selector is mandatory, otherwise every change re-renders
+- Never mutate `store.state` directly — use `setState` only
+- `Derived` must `.mount()`; derived-from-derived works (chain)
+- Store = a module singleton export — never create it inside a component
+- Never put server state in a Store — `follow-query`; a reactive client DB → `follow-db`
 
 ## Expected Outcome
 
-- Client state reactive, granular re-render ผ่าน selectors
-- Derived/batch ใช้ถูกจุด
-- Boundary กับ Query/DB ชัดเจน
+- Client state is reactive, granular re-render via selectors
+- Derived/batch used in the right places
+- The boundary with Query/DB is clear

@@ -94,11 +94,11 @@ Inspect shell startup profiles and environment config for errors, duplicate PATH
 
 ## Fix
 
-> Follow `deep-review/SKILL.md` when the user confirms fixing the findings
+> Follow `deep-review-codebase/SKILL.md` when the user confirms fixing the findings
 
-1. Prioritize findings by severity — canonical steps in `deep-review/SKILL.md`
+1. Prioritize findings by severity — canonical steps in `deep-review-codebase/SKILL.md`
 2. Fix per finding — profile profiling, plugin audit, lazy loading for slow startup (shell profile)
-3. Preserve behavior + verify + report — canonical in `deep-review/SKILL.md`
+3. Preserve behavior + verify + report — canonical in `deep-review-codebase/SKILL.md`
 
 ## Expected Outcome
 

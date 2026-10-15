@@ -17,122 +17,122 @@ related:
 
 ## Goal
 
-สร้างและดูแล native desktop application ด้วย Native SDK (Vercel Labs) อย่างถูกวิธี — TypeScript app logic ใน `src/core.ts` + declarative markup ใน `.native` files แล้ว compile เป็น native code ล่วงหน้า (AOT) โดย binary ที่ ship **ไม่มี browser/WebView/JS runtime/interpreter**
+Build and maintain native desktop applications correctly with the Native SDK (Vercel Labs) — TypeScript app logic in `src/core.ts` + declarative markup in `.native` files, then ahead-of-time compiled (AOT) to native code so the shipped binary has **no browser/WebView/JS runtime/interpreter**
 
 ## Scope
 
-ใช้เมื่อต้องการ desktop app ที่เป็น native จริง (Metal/Direct2D/software renderer) ไม่ใช่ webview shell — CLI `native`, เทมเพลต `ts-core`/`zig-core`, app model (TEA/Elm), markup, Cmd/Sub effects, persistence/SQLite, automation, testing, packaging, security
+When you want a truly native desktop app (Metal/Direct2D/software renderer), not a webview shell — the `native` CLI, `ts-core`/`zig-core` templates, the app model (TEA/Elm), markup, Cmd/Sub effects, persistence/SQLite, automation, testing, packaging, security
 
-- Boundary: Tauri = Rust backend + web frontend (webview shell) → `/follow-create-desktop-tauri`; GPUI Kit = Rust-only components/entity model → `/follow-lib-gpui-kit`; Native SDK = TS+markup AOT, ไม่มี runtime ใน binary
-- Mobile (iOS/Android) เป็น **Experimental** — verified บน simulator/emulator เท่านั้น; desktop คือ mature surface
-- WebViews ยังใช้ได้เป็น optional path (embed เว็บ/host frontend เดิม) — ไม่ใช่ default path
+- Boundary: Tauri = Rust backend + web frontend (webview shell) → `/follow-create-desktop-tauri`; GPUI Kit = Rust-only components/entity model → `/follow-lib-gpui-kit`; Native SDK = TS+markup AOT, no runtime in the binary
+- Mobile (iOS/Android) is **Experimental** — verified on simulators/emulators only; desktop is the mature surface
+- WebViews still work as an optional path (embed a web page/host an existing frontend) — not the default path
 
 ## Facts (verified 2026-10-13)
 
-- Repo `vercel-labs/native` (Apache-2.0, ~7.8k stars, active); npm `@native-sdk/cli` 0.10.1; docs ที่ native-sdk.dev
-- ต้องมี **Zig 0.16.0** (CLI download เข้า `~/.native/toolchains/` พร้อม checksum) + **Node 24+** สำหรับ TS scaffold/checker — Node ใช้ตอน build/dev เท่านั้น ไม่อยู่ใน binary
-- Platforms: macOS (primary, Metal), Windows (Direct2D/DirectWrite + software fallback), Linux (software renderer ผ่าน blit); iOS/Android host-tier (experimental, multi-window เฉพาะ desktop)
-- ระบบ state เป็น TEA: `Model` readonly record + `Msg` union + `update(model,msg): Model | [Model, Cmd<Msg>]`; view derive จาก model ผ่าน markup
-- ทุก app embed automation server (file-based protocol) — snapshot/drive/screenshot ได้เมื่อ build ด้วย `-Dautomation=true`
-- `native skills get <core|native-ui|ts-core|ts-services|automation|zig>` คืน deep content จาก CLI ติดตั้งแล้ว (discovery stub ผ่าน `npx skills add vercel-labs/native`)
+- Repo `vercel-labs/native` (Apache-2.0, ~7.8k stars, active); npm `@native-sdk/cli` 0.10.1; docs at native-sdk.dev
+- Requires **Zig 0.16.0** (the CLI downloads it into `~/.native/toolchains/` with checksum) + **Node 24+** for the TS scaffold/checker — Node is used only at build/dev time and is not in the binary
+- Platforms: macOS (primary, Metal), Windows (Direct2D/DirectWrite + software fallback), Linux (software renderer via blit); iOS/Android host-tier (experimental, multi-window on desktop only)
+- The state system is TEA: `Model` readonly record + `Msg` union + `update(model,msg): Model | [Model, Cmd<Msg>]`; the view derives from the model through markup
+- Every app embeds an automation server (file-based protocol) — snapshot/drive/screenshot possible when built with `-Dautomation=true`
+- `native skills get <core|native-ui|ts-core|ts-services|automation|zig>` returns deep content from the installed CLI (discovery stub via `npx skills add vercel-labs/native`)
 
 ## Execute
 
 ### 1. Setup & Scaffold
 
-> Goal: ได้ project พร้อม `native dev`
+> Goal: a project ready for `native dev`
 
-1. `npm install -g @native-sdk/cli` แล้ว `native version` (ถ้า npm พังบนเครื่องนี้ — ดู Rules §6)
-2. สร้าง app:
+1. `npm install -g @native-sdk/cli` then `native version` (if npm is broken on this machine — see Rules §6)
+2. Create the app:
    ```sh
    native init my_app                      # ts-core default: app.json + src/app.native + src/core.ts
-   native init my_app --template zig-core  # src/main.zig + src/tests.zig (core เป็น Zig)
-   native init my_app --frontend vite      # path ทางเลือก: host web frontend (next|vite|react|svelte|vue)
-   native init --full                      # เพิ่ม app-owned build files + .github/workflows/ci.yml
+   native init my_app --template zig-core  # src/main.zig + src/tests.zig (core is Zig)
+   native init my_app --frontend vite      # alternative path: host a web frontend (next|vite|react|svelte|vue)
+   native init --full                      # adds app-owned build files + .github/workflows/ci.yml
    ```
-3. ตรวจ toolchain: `native doctor`; validate manifest: `native validate app.json`
-4. Build graph อยู่ใต้ `.native/build/` — ห้ามแก้ يدوي; ตรวจ language จาก files (`src/main.zig` = zig-core)
+3. Check the toolchain: `native doctor`; validate the manifest: `native validate app.json`
+4. The build graph lives under `.native/build/` — never edit it by hand; detect the language from the files (`src/main.zig` = zig-core)
 
 ### 2. Core (TypeScript TEA)
 
-> Goal: state + messages + effects ถูกต้องตาม compiled subset
+> Goal: state + messages + effects correct per the compiled subset
 
-1. `src/core.ts` declares `Model` (readonly record), `Msg` (discriminated union), `initialModel()`, `update(model, msg)` — subset เต็มใน `best-practices/ts-core-subset.md`
-2. Effects ผ่าน `Cmd` vocabulary: `now/delay/fetch/readFile/writeFile/clipboard*/spawn/showNotification/quitApp/persist/store.set/db.query/Cmd.request/Cmd.batch/...`; subscriptions ผ่าน `subscriptions(model): Sub<Msg>` เช่น `Sub.timer("tick",1000,"tick")`
-3. งานนอก subset (regex, JSON, Map/Set, Date, classes, child_process) → ย้ายเข้า `src/services/` (full ordinary TS, รันบน supervised carrier `<app>_services`) แล้วเรียกผ่าน `Cmd.request(name,payload,{key,ok,err})` หรือ typed client จาก `@native-sdk/services`
-4. Text เป็น bytes — ใช้ `utf8Bytes`/`asciiBytes` จาก `@native-sdk/core`; byte offsets ไม่ใช่ code units
-5. Modules: relative imports ภายใต้ `src/` พร้อม filename จริง, ห้าม `../`, ห้าม cycles, ห้าม `export default`
+1. `src/core.ts` declares `Model` (readonly record), `Msg` (discriminated union), `initialModel()`, `update(model, msg)` — the full subset is in `best-practices/ts-core-subset.md`
+2. Effects go through the `Cmd` vocabulary: `now/delay/fetch/readFile/writeFile/clipboard*/spawn/showNotification/quitApp/persist/store.set/db.query/Cmd.request/Cmd.batch/...`; subscriptions via `subscriptions(model): Sub<Msg>`, e.g. `Sub.timer("tick",1000,"tick")`
+3. Work outside the subset (regex, JSON, Map/Set, Date, classes, child_process) → move it into `src/services/` (full ordinary TS, running on the supervised carrier `<app>_services`) and call it via `Cmd.request(name,payload,{key,ok,err})` or the typed client from `@native-sdk/services`
+4. Text is bytes — use `utf8Bytes`/`asciiBytes` from `@native-sdk/core`; byte offsets, not code units
+5. Modules: relative imports under `src/` with real filenames, no `../`, no cycles, no `export default`
 
 ### 3. Markup (`.native`)
 
-> Goal: UI declarative ที่ bind กับ model
+> Goal: declarative UI bound to the model
 
-1. Elements หลัก: `row column stack panel card scroll list grid tabs table accordion alert dialog drawer sheet text badge button toggle list-item checkbox slider progress text-field search-field combobox markdown image avatar terminal chart status-bar separator` — เต็มรายการใน `best-practices/native-ui-markup.md`
-2. Bindings `{expr}` (attribute ละ expression เดียว), events `on-press="increment"` / `on-press="toggle:{t.id}"`, control flow `<for each= key= as=>` `<if test=>/<else>`
-3. Expression language จำกัด: `+ - * / == != and or not ++` + function lib 17 ตัว (`upper lower trim min max abs round floor ceil plural pad fixed thousands percent date time datetime`) — ไม่มี method call/ternary
+1. Main elements: `row column stack panel card scroll list grid tabs table accordion alert dialog drawer sheet text badge button toggle list-item checkbox slider progress text-field search-field combobox markdown image avatar terminal chart status-bar separator` — full list in `best-practices/native-ui-markup.md`
+2. Bindings `{expr}` (one expression per attribute), events `on-press="increment"` / `on-press="toggle:{t.id}"`, control flow `<for each= key= as=>` `<if test=>/<else>`
+3. The expression language is limited: `+ - * / == != and or not ++` + a 17-function lib (`upper lower trim min max abs round floor ceil plural pad fixed thousands percent date time datetime`) — no method calls/ternaries
 4. Layout: `gap padding grow width height min/max-width main cross columns`; component reuse: `<template name= args=>` + `<use template=>` + `<slot/>` + `<import src="src/components/...">`
-5. Theme ผ่าน token names (`background surface text text_muted border accent destructive success warning info focus_ring scrim disabled`) — pack `house`/`geist` ใน `app.json` + `themeState(model)`
+5. Theming via token names (`background surface text text_muted border accent destructive success warning info focus_ring scrim disabled`) — pack `house`/`geist` in `app.json` + `themeState(model)`
 
 ### 4. Data & Native Platform
 
-> Goal: persist/state/native features ผ่าน capability declarations ใน `app.json`
+> Goal: persist/state/native features through capability declarations in `app.json`
 
 1. Capability `persist` → `Cmd.persist()` (debounce 500ms, snapshot.nsd + .bak, `migrate(snapshot, fromVersion)`)
 2. Capability `store` → key-value: `Cmd.store.set/get/delete/scan/setMany` (key ≤512B, value ≤1MiB)
-3. Capability `sqlite` → `app.db` WAL; migrations ใน `src/schema/NNNN_name.sql` + `native db new-migration|status|reset --yes`; named queries ใน `src/queries.sql` (`-- name: x :live`) → generated `Cmd.qName(params, route)` + `Sub.qName`; bounds 64 params/1MiB
-4. Windows: `windows(model): readonly WindowDescriptor[]` (scene model, ≤16, `close_policy quit|hide` — hide บน Windows ต้อง `"tray"` capability); menus ≤16/128 items; shortcuts ≤64; tray = macOS/Windows เท่านั้น (Linux `UnsupportedService`)
-5. File paths นอก app roots ต้องมี `filesystem` permission; external links ต้อง allowlist ใน security policy
+3. Capability `sqlite` → `app.db` WAL; migrations in `src/schema/NNNN_name.sql` + `native db new-migration|status|reset --yes`; named queries in `src/queries.sql` (`-- name: x :live`) → generated `Cmd.qName(params, route)` + `Sub.qName`; bounds 64 params/1MiB
+4. Windows: `windows(model): readonly WindowDescriptor[]` (scene model, ≤16, `close_policy quit|hide` — hide on Windows requires the `"tray"` capability); menus ≤16/128 items; shortcuts ≤64; tray = macOS/Windows only (Linux `UnsupportedService`)
+5. File paths outside the app roots require `filesystem` permission; external links must be allowlisted in the security policy
 
 ### 5. Test & Automate
 
-> Goal: ยืนยัน behavior จริงทั้ง human และ agent loop — รายละเอียดใน `best-practices/automation-testing.md`
+> Goal: confirm real behavior for both humans and agent loops — details in `best-practices/automation-testing.md`
 
-1. `native check [--strict]` (type-check core subset) → `native test` (TS unit ผ่าน `@native-sdk/core/testing` `NativeApp.start()`: `findWidget/click/setText/menu/frame/snapshot/effects/verifyReplay`)
-2. Automation: `native build -Dautomation=true` แล้ว protocol ไฟล์ใต้ `.zig-cache/native-sdk-automation/` (`snapshot.txt`, `accessibility.txt`, `screenshot-<label>.png`, `command-<n>.txt` queue) — CLI: `native automate list|snapshot|screenshot|reload|assert [--timeout-ms]|widget-click|menu-command|shortcut|bridge '<json>'`
-3. Record/replay: `NATIVE_SDK_SESSION_RECORD=1` / `REPLAY=1`; assert ใช้ regex subset (no groups/alternation)
-4. CI tiers จาก `--full`: tier1 `-Dplatform=null` unit; tier2 Linux Xvfb + `-Dautomation=true`; tier3 macOS GUI — golden screenshots byte-compare ได้เฉพาะ same runner image
+1. `native check [--strict]` (type-checks the core subset) → `native test` (TS unit via `@native-sdk/core/testing` `NativeApp.start()`: `findWidget/click/setText/menu/frame/snapshot/effects/verifyReplay`)
+2. Automation: `native build -Dautomation=true` then the file protocol under `.zig-cache/native-sdk-automation/` (`snapshot.txt`, `accessibility.txt`, `screenshot-<label>.png`, `command-<n>.txt` queue) — CLI: `native automate list|snapshot|screenshot|reload|assert [--timeout-ms]|widget-click|menu-command|shortcut|bridge '<json>'`
+3. Record/replay: `NATIVE_SDK_SESSION_RECORD=1` / `REPLAY=1`; asserts use a regex subset (no groups/alternation)
+4. CI tiers from `--full`: tier1 `-Dplatform=null` unit; tier2 Linux Xvfb + `-Dautomation=true`; tier3 macOS GUI — golden screenshots byte-compare only on the same runner image
 
 ### 6. Package & Ship
 
-> Goal: artifact พร้อม distributive — รายละเอียดใน `best-practices/packaging-platform-security.md`
+> Goal: distribution-ready artifacts — details in `best-practices/packaging-platform-security.md`
 
-1. `native build` → ReleaseFast ที่ `zig-out/bin/`; `native package --target macos|linux|windows|ios|android`
-2. macOS: `.app` + DMG (`--archive`), signing `--signing adhoc|identity --identity --entitlements`, notarize `--notarize --notary-profile` (macOS เท่านั้นที่/sign ได้)
-3. Icons: one square `assets/icon.png/.svg` → ทุก format อัตโนมัติ; release-time updates: own signed Ed25519 updater (`native update keygen|sign`, manifest `updates{feed_url,public_key}` HTTPS, macOS เท่านั้น)
+1. `native build` → ReleaseFast at `zig-out/bin/`; `native package --target macos|linux|windows|ios|android`
+2. macOS: `.app` + DMG (`--archive`), signing `--signing adhoc|identity --identity --entitlements`, notarize `--notarize --notary-profile` (only macOS can sign)
+3. Icons: one square `assets/icon.png/.svg` → every format automatically; release-time updates: own signed Ed25519 updater (`native update keygen|sign`, manifest `updates{feed_url,public_key}` HTTPS, macOS only)
 
 ## Rules
 
 ### 1. No-Runtime Reality
 
-- binary ที่ ship ไม่มี JS runtime/interpreter — `src/core.ts` ถูก compile AOT เท่านั้น ห้ามคาดหวัง dynamic import, eval, npm runtime ใน core
-- ถ้าต้องใช้ ordinary TS เต็มรูปแบบ → services (`src/services/`) ไม่ใช่ core
+- The shipped binary has no JS runtime/interpreter — `src/core.ts` is compile-AOT only; never expect dynamic import, eval, or npm runtime in the core
+- If you need full ordinary TS → services (`src/services/`), not the core
 
 ### 2. Subset Discipline
 
-- core.ts ใช้ได้เฉพาะ compiled subset (อ่าน `best-practices/ts-core-subset.md` ก่อนเขียน) — เขียนผิด checker จะไม่ผ่าน ไม่ใช่ runtime error
-- memory เป็น per-dispatch arena 1 MiB — ห้ามถือ state ข้าม dispatch นอก Model
+- core.ts may use only the compiled subset (read `best-practices/ts-core-subset.md` before writing) — violations fail the checker, not the runtime
+- Memory is a 1 MiB per-dispatch arena — never hold state across dispatches outside the Model
 
 ### 3. Platform Honesty
 
-- iOS/Android = experimental — ห้ามขายเป็น production mobile; multi-window เฉพาะ desktop; tray ไม่มีบน Linux; Chromium/CEF มีเฉพาะ macOS; registered fonts บน mobile = unverified
-- Windows renderer เป็น early development สำหรับ packaging — ทดสอบบนเครื่องจริงก่อน ship
+- iOS/Android = experimental — never sell it as production mobile; multi-window on desktop only; no tray on Linux; Chromium/CEF on macOS only; registered fonts on mobile = unverified
+- The Windows renderer is early development for packaging — test on real hardware before shipping
 
 ### 4. Automation & Test Gate
 
-- ทุก feature ต้องผ่าน `native check` + `native test` ก่อน claim เสร็จ; agent-driven verification ใช้ `native automate` snapshot/assert ไม่ใช่ตาเปล่า
-- ห้ามแก้ `.native/build/` หรือ generated artifacts โดยตรง
+- Every feature must pass `native check` + `native test` before claiming done; agent-driven verification uses `native automate` snapshot/assert, not the naked eye
+- Never edit `.native/build/` or generated artifacts directly
 
 ### 5. Composition
 
-- webview-shell app (frontend เดิม + Rust backend) → `/follow-create-desktop-tauri`; Rust-native GUI → `/follow-lib-gpui-kit`; skill นี้ครอบคลุม Native SDK เท่านั้น — deep content ปัจจุบันของ SDK อ่านผ่าน `native skills get <name>` (SSOT ฝั่ง vendor)
+- Webview-shell apps (existing frontend + Rust backend) → `/follow-create-desktop-tauri`; Rust-native GUI → `/follow-lib-gpui-kit`; this skill covers the Native SDK only — the SDK's current deep content is read via `native skills get <name>` (vendor-side SSOT)
 
-### 6. Broken-npm Escape (เครื่องนี้)
+### 6. Broken-npm Escape (this machine)
 
-- `@native-sdk/cli` ติดตั้งผ่าน npm ไม่ได้เมื่อ bundled npm ของ mise node พัง (npm-cli.js หาย) และ `bunx @native-sdk/cli` ก็ fail ("could not find skills/ or skill-data/ near the native-sdk executable") — ใช้ docs dumps ที่ `AppData\Local\Temp\nsd\*.md` (mirror 47 หน้าจาก native-sdk.dev ผ่าน Lightpanda) เป็น reference จนกว่า npm จะแก้ (`mise uninstall node@26.11.1 && mise install node@26.11.1` + trim PATH ให้ <8191 chars)
+- `@native-sdk/cli` cannot be installed via npm when mise node's bundled npm is broken (npm-cli.js missing), and `bunx @native-sdk/cli` also fails ("could not find skills/ or skill-data/ near the native-sdk executable") — use the docs dumps at `AppData\Local\Temp\nsd\*.md` (47-page mirror from native-sdk.dev via Lightpanda) as the reference until npm is fixed (`mise uninstall node@26.11.1 && mise install node@26.11.1` + trim PATH to <8191 chars)
 
 ## Expected Outcome
 
-- app ใหม่จาก `native init` run ได้ด้วย `native dev` และ build ได้ด้วย `native build`
-- core.ts markup ถูก subset, effects เป็น Cmd/Sub, services แยกงานเต็ม TS ถูกที่
-- test tiers ผ่าน + `native automate snapshot/assert` ยืนยัน behavior จริง
-- user เข้าใจ boundary: native AOT ไม่มี runtime, mobile experimental, platform caveats ชัดเจน
+- A new app from `native init` runs with `native dev` and builds with `native build`
+- core.ts and markup are subset-correct, effects are Cmd/Sub, and full-TS work is properly separated into services
+- Test tiers pass + `native automate snapshot/assert` confirms real behavior
+- The user understands the boundary: native AOT with no runtime, mobile experimental, platform caveats clear

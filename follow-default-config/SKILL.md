@@ -6,7 +6,7 @@ related:
   - check-types-definition
   - update-config
   - update-devin-global-skills
-  - deep-review
+  - deep-review-codebase
   - report
 ---
 

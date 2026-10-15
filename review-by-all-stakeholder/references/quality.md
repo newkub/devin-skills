@@ -99,7 +99,7 @@ Act as a Code Reviewer — the person who reads every line of the diff/code befo
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
 
 
 
@@ -151,7 +151,7 @@ Act as a Debugger — the person called when production breaks, focused on every
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
 
 
 
@@ -203,7 +203,7 @@ Act as a Performance Engineer — the person who owns speed and resource efficie
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
 
 
 
@@ -255,7 +255,7 @@ Act as a QA Engineer — the person who owns quality from the user's perspective
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
 
 
 
@@ -307,7 +307,7 @@ Act as a QA Engineer — the person who owns quality from the user's perspective
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
 
 
 
@@ -359,7 +359,7 @@ Act as a QA Engineer — the person who owns quality from the user's perspective
 
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป  และ `/deep-test` โดยเฉพาะ
+- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass — role นี้ map ไป  และ `/deep-test` โดยเฉพาะ
 
 
 

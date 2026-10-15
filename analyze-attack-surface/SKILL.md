@@ -3,7 +3,7 @@ name: analyze-attack-surface
 description: Analyze the system attack surface and exposed endpoints
 argument-hint: "[app-url|repo-path]"
 related:
-  - deep-review
+  - deep-review-codebase
   - check-secrets
   - report-uxui-all-routes
 
@@ -63,7 +63,7 @@ Identify points an attacker could target, such as endpoints, dependencies, and i
 - Separate internal vs external exposure
 - Identify trust boundaries
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /check-secrets secrets-leak if needed
 ## Expected Outcome
 - Attack surface list with severity ratings

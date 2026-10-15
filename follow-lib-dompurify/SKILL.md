@@ -1,6 +1,6 @@
 ---
 name: follow-lib-dompurify
-description: ใช้ dompurify/isomorphic-dompurify sanitize HTML กัน XSS ทุก environment
+description: Use dompurify/isomorphic-dompurify to sanitize HTML against XSS in every environment
 argument-hint: "[target-or-scope]"
 related:
   - run-verify
@@ -12,16 +12,16 @@ related:
 
 ## Goal
 
-ใช้ dompurify/isomorphic-dompurify sanitize HTML กัน XSS ทุก environment
+Use dompurify/isomorphic-dompurify to sanitize HTML against XSS in every environment
 
 ## Scope
 
-ใช้เมื่อ task ต้อง render HTML จาก user input, CMS, markdown หรือ untrusted source — setup, config, SSR, debugging, หรือ best practices
+Use when a task must render HTML from user input, CMS, markdown, or an untrusted source — setup, config, SSR, debugging, or best practices
 
-ขอบเขต:
-- ใช้ skill นี้สำหรับ sanitize HTML string ที่จะ inject เข้า DOM (innerHTML, `dangerouslySetInnerHTML`, Solid `innerHTML`, markdown output)
-- ไม่ใช่ input validation ทั่วไป — ถ้า validate form/API data ใช้ `/follow-lib-zod` หรือ `/follow-lib-arktype`
-- ไม่ใช่ output encoding สำหรับ URL/text node — text ธรรมดาไม่ต้อง sanitize (framework escape ให้แล้ว)
+Boundaries:
+- Use this skill to sanitize HTML strings that will be injected into the DOM (innerHTML, `dangerouslySetInnerHTML`, Solid `innerHTML`, markdown output)
+- Not general input validation — to validate form/API data use `/follow-lib-zod` or `/follow-lib-arktype`
+- Not output encoding for URLs/text nodes — plain text needs no sanitize (the framework escapes it)
 
 - Latest: `dompurify@3.4.16` (verified 2026-09-24)
 - References: [apis](references/apis.md) 
@@ -29,20 +29,20 @@ related:
 
 ### 1. Install
 
-> Goal: ติดตั้ง package ตาม environment
+> Goal: install the package per environment
 
-1. รัน `bun add dompurify` (runtime dependency)
-2. v3 ship built-in TypeScript types (`dist/purify.cjs.d.ts`) — ไม่ต้องติดตั้ง `@types/dompurify` (ใช้เฉพาะ v2)
-3. SSR/Node: ติดตั้ง `bun add isomorphic-dompurify` (wrapper บน jsdom) หรือ `bun add -D jsdom` แล้วสร้าง instance เอง
-4. Worker runtimes (workerd/Cloudflare Workers): jsdom ไม่ทำงาน — ใช้ browser-side sanitize หรือ Trusted Types path
+1. Run `bun add dompurify` (runtime dependency)
+2. v3 ships built-in TypeScript types (`dist/purify.cjs.d.ts`) — do not install `@types/dompurify` (v2 only)
+3. SSR/Node: install `bun add isomorphic-dompurify` (wrapper on jsdom) or `bun add -D jsdom` and create the instance yourself
+4. Worker runtimes (workerd/Cloudflare Workers): jsdom does not work — use browser-side sanitize or the Trusted Types path
 
 ### 2. Sanitize At Render Boundary
 
-> Goal: sanitize ก่อน inject HTML เข้า DOM เสมอ
+> Goal: always sanitize before injecting HTML into the DOM
 
-1. Browser: `import DOMPurify from 'dompurify'` แล้ว `DOMPurify.sanitize(dirty)`
-2. Inject ผ่าน `el.innerHTML = clean` / `dangerouslySetInnerHTML={{ __html: clean }}` — ผ่าน sanitize เสมอ
-3. Node/Bun ด้วย jsdom:
+1. Browser: `import DOMPurify from 'dompurify'` then `DOMPurify.sanitize(dirty)`
+2. Inject via `el.innerHTML = clean` / `dangerouslySetInnerHTML={{ __html: clean }}` — always through sanitize
+3. Node/Bun with jsdom:
 
 ```ts
 import { JSDOM } from 'jsdom';
@@ -52,52 +52,52 @@ const purify = DOMPurify(new JSDOM('').window);
 const clean = purify.sanitize(dirty);
 ```
 
-4. หรือใช้ `import { sanitize } from 'isomorphic-dompurify'` สำหรับ isomorphic code
-5. sanitize ที่ boundary เดียว (ก่อน render/store) — ไม่กระจายหลายจุด
+4. Or use `import { sanitize } from 'isomorphic-dompurify'` for isomorphic code
+5. Sanitize at a single boundary (before render/store) — do not scatter it across many places
 
 ### 3. Configure Allowlist
 
-> Goal: จำกัด tags/attrs ตาม feature ที่ต้องการ
+> Goal: restrict tags/attrs to the features you need
 
-1. Default profile ปลอดภัยพอสำหรับ rich text ทั่วไป — ไม่ต้อง config ก็ block script/event handlers
-2. กำหนด whitelist ชัดเจนถ้ารับเฉพาะ subset: `sanitize(dirty, { ALLOWED_TAGS: ['b','i','em','strong','a'], ALLOWED_ATTR: ['href'] })`
-3. ใช้ `USE_PROFILES: { html: true }` / `{ svg: true }` / `{ mathMl: true }` สำหรับ predefined profiles
-4. ใช้ `FORBID_TAGS`/`FORBID_ATTR` สำหรับ blacklist บนพื้นฐาน default profile
-5. คืน DOM node ด้วย `RETURN_DOM` / `RETURN_DOM_FRAGMENT` เมื่อไม่ต้องการ string
-6. ใช้ `RETURN_TRUSTED_TYPE: true` ถ้า app บังคับ Trusted Types CSP
-7. `DOMPurify.setConfig(cfg)` สำหรับ persistent config; `DOMPurify.isSupported` เช็ค DOM support ก่อนใช้
+1. The default profile is safe enough for ordinary rich text — even without config it blocks script/event handlers
+2. Define an explicit whitelist when accepting only a subset: `sanitize(dirty, { ALLOWED_TAGS: ['b','i','em','strong','a'], ALLOWED_ATTR: ['href'] })`
+3. Use `USE_PROFILES: { html: true }` / `{ svg: true }` / `{ mathMl: true }` for predefined profiles
+4. Use `FORBID_TAGS`/`FORBID_ATTR` for a blacklist on top of the default profile
+5. Return a DOM node with `RETURN_DOM` / `RETURN_DOM_FRAGMENT` when you don't want a string
+6. Use `RETURN_TRUSTED_TYPE: true` if the app enforces a Trusted Types CSP
+7. `DOMPurify.setConfig(cfg)` for persistent config; check `DOMPurify.isSupported` for DOM support before use
 
 ### 4. Use Hooks For Post-Processing
 
-> Goal: เพิ่ม attr/target ผ่าน hooks โดยไม่ลดความปลอดภัย
+> Goal: add attrs/targets via hooks without reducing security
 
-1. `DOMPurify.addHook('afterSanitizeAttributes', (node) => { ... })` — เช่น บังคับ `target="_blank"` + `rel="noopener"` บน links
-2. `DOMPurify.removeHook(name)` / `removeAllHooks()` เพื่อ cleanup — ระวัง hook เป็น global state
+1. `DOMPurify.addHook('afterSanitizeAttributes', (node) => { ... })` — e.g. force `target="_blank"` + `rel="noopener"` on links
+2. `DOMPurify.removeHook(name)` / `removeAllHooks()` for cleanup — beware hooks are global state
 
 ### 5. Test And Verify
 
-> Goal: พิสูจน์ว่า XSS payloads ถูกกรอง
+> Goal: prove XSS payloads are filtered
 
-1. เทสด้วย payloads พื้นฐาน: `<script>`, `<img onerror=...>`, `javascript:` URLs, `<svg onload=...>`, mutation XSS (mXSS) patterns
-2. ทำ `/run-verify` สำหรับ lint, typecheck
-3. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-4. ตรวจ official docs ล่าสุดก่อนใช้ config ที่ไม่แน่ใจ — https://github.com/cure53/DOMPurify#readme
+1. Test with basic payloads: `<script>`, `<img onerror=...>`, `javascript:` URLs, `<svg onload=...>`, mutation XSS (mXSS) patterns
+2. Run `/run-verify` for lint, typecheck
+3. Run `/run-test` if related tests exist
+4. Check the latest official docs before using uncertain config — https://github.com/cure53/DOMPurify#readme
 
 ## Rules
 
-- ห้าม render raw HTML จาก user input โดยไม่ sanitize
-- sanitize ที่ boundary เดียวก่อน render — ไม่กระจายหลายจุด
-- ระวัง `dangerouslySetInnerHTML`/Solid `innerHTML` — ผ่าน sanitize เสมอ
-- sanitize output ของ markdown renderers ด้วย (markdown ไม่ใช่ trust boundary)
-- ห้ามพึ่ง regex/manual filtering แทน DOMPurify — parser-based เท่านั้น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Never render raw HTML from user input without sanitize
+- Sanitize at a single boundary before render — do not scatter across many places
+- Watch `dangerouslySetInnerHTML`/Solid `innerHTML` — always through sanitize
+- Sanitize markdown renderer output too (markdown is not a trust boundary)
+- Never rely on regex/manual filtering instead of DOMPurify — parser-based only
+- Use /run-verify if needed
+- Use /run-test if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- HTML ทุกจุดที่มาจาก untrusted source ผ่าน `DOMPurify.sanitize()` ก่อน render
-- Config/allowlist ตรง feature ที่ใช้ — ไม่ over-permissive
-- SSR/worker environment ใช้วิธีที่ถูกต้อง (jsdom หรือ isomorphic-dompurify)
-- Lint, typecheck, tests ผ่าน
+- Every HTML point coming from an untrusted source passes `DOMPurify.sanitize()` before render
+- Config/allowlist matches the actual features used — not over-permissive
+- SSR/worker environments use the correct approach (jsdom or isomorphic-dompurify)
+- Lint, typecheck, tests pass

@@ -155,7 +155,7 @@ Set/edit OpenTelemetry configuration for SigNoz — service name, resource attri
 
 1. Read `.env*`, start scripts, and existing instrumentation entries
 2. Do `/check-secrets env-vars` to identify missing or duplicated `OTEL_*` vars
-3. Do `/deep-review` domain `review-config` across environments if needed
+3. Do `/deep-review-codebase` domain `review-config` across environments if needed
 4. If there are no OTel packages yet → do `## Merged Details → setup-signoz` instead
 
 ###### 2. Configure Service Identity
@@ -397,7 +397,7 @@ Programmatic API (`@opentelemetry/api` + `@opentelemetry/sdk-node`):
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

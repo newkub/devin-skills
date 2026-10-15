@@ -5,7 +5,7 @@ argument-hint: "[project-name]"
 related:
   - follow-create-web
   - follow-lang-kotlin
-  - deep-review
+  - deep-review-codebase
   - follow-create-mobile
   - follow-create-mobile-cross-with-capacitor
   - ask-me
@@ -29,7 +29,7 @@ Build a native mobile app for iOS and Android from a single Kotlin codebase usin
 
 > Goal: verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest KMP, Compose Multiplatform, Kotlin, and AGP versions and breaking changes, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest KMP, Compose Multiplatform, Kotlin, and AGP versions and breaking changes, then run `/deep-review-codebase` to summarize the tech stack
 2. Record the rationale for choosing KMP over separate native codebases or Capacitor for future reference
 
 ### 2. Gather Requirements
@@ -118,7 +118,7 @@ Build a native mobile app for iOS and Android from a single Kotlin codebase usin
 
 > Goal: check quality before delivery
 
-1. Run `/deep-review` to check UI/UX and architecture
+1. Run `/deep-review-codebase` to check UI/UX and architecture
 2. Run `/run-test` for the test suite
 3. Run `/follow-lang-kotlin` to verify conventions
 4. Run `/ship`

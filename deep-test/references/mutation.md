@@ -6,7 +6,7 @@ Measure test suite quality with mutation testing — make small code changes (mu
 - Covers: mutation score (killed/survived/timeout), surviving mutants analysis, weak assertions
 - Inherently slow — keep the scope narrow (module/PR diff), never run the whole repo
 
-> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review-codebase` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 
@@ -47,7 +47,7 @@ Measure test suite quality with mutation testing — make small code changes (mu
 
 1. Use `/report`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
 2. Report the top surviving mutants with suggested test cases
-3. Recommend `/deep-review` for files with a low score
+3. Recommend `/deep-review-codebase` for files with a low score
 
 ## Rules
 

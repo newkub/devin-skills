@@ -74,7 +74,7 @@ Set/edit `query()` options of `@anthropic-ai/claude-agent-sdk` — model, tools,
 > Goal: Know the current options before editing
 
 1. Read the `query()` call sites and the options passed
-2. Do `/deep-review` domain `review-config` if config lives separately in other files
+2. Do `/deep-review-codebase` domain `review-config` if config lives separately in other files
 3. If no `query()` is found → do `## Merged Details → setup-claude-agent-sdk` first
 
 ###### 2. Configure Model And Prompt
@@ -240,7 +240,7 @@ Confirm after setup/config that the Claude Agent SDK really connects to the Anth
 
 #### Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
 
 ##### Primary Package
 

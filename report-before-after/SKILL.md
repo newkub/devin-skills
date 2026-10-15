@@ -1,6 +1,6 @@
 ---
 name: report-before-after
-description: รายงานแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
+description: Report the work plan before acting and show a before-after comparison
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-อธิบายแผนการทำงานก่อนดำเนินการ และแสดง before-after ให้เหมาะสมโดยไม่แก้ไขจริง
+Explain the work plan before acting and show a before-after comparison without making actual changes
 
 ## Scope
 
-ใช้สำหรับการอธิบายแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
+Use for explaining the work plan before acting and showing before-after comparisons
 
 ## Execute
 
@@ -24,109 +24,109 @@ related:
 
 > Goal: Analyze Request
 
-วิเคราะห์สิ่งที่ผู้ใช้ต้องการ
+Analyze what the user wants
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์สิ่งที่ผู้ใช้ต้องการ
-2. ระบุสิ่งที่จะเปลี่ยนแปลงและผลกระทบ
-3. ทำ `/plan` เพื่อวางแผนการทำงาน
+1. Use `/deep-analyze` to analyze what the user wants
+2. Identify what will change and the impact
+3. Use `/plan` to create the work plan
 
 ### 2. Explain Plan
 
 > Goal: Explain Plan
 
-ตอบว่าจะทำอะไร ทำอย่างไร
+State what to do and how
 
-1. อธิบายแผนการทำงานอย่างชัดเจน
-2. ระบุไฟล์ที่จะเกี่ยวข้องและผลกระทบ
-3. ใช้ `/report-before-after` format สำหรับการแสดง
+1. Explain the work plan clearly
+2. Identify affected files and the impact
+3. Use the `/report-before-after` format for presentation
 
 ### 3. Show Before After
 
 > Goal: Show Before After
 
-แสดง before-after comparison
+Show the before-after comparison
 
-1. แสดงสภาพปัจจุบัน (`before`) และสภาพหลังเปลี่ยน (`after`)
-2. ใช้ `table` หรือ `code block` เปรียบเทียบถ้าเหมาะสม
-3. อธิบายเหตุผลและประโยชน์ที่จะได้รับ
+1. Show the current state (`before`) and the state after the change (`after`)
+2. Use a `table` or `code block` comparison when appropriate
+3. Explain the reason and expected benefits
 
 ### 4. Confirm With User
 
 > Goal: Confirm With User
 
-ถามผู้ใช้ยืนยันก่อนดำเนินการ
+Ask the user to confirm before acting
 
-1. ถามผู้ใช้ยืนยันก่อนดำเนินการจริง
-2. รอการอนุมัติจากผู้ใช้
-3. ดำเนินการเมื่อได้รับอนุมัติ
+1. Ask the user to confirm before actually proceeding
+2. Wait for user approval
+3. Proceed once approved
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (before after)
+> Goal: readable report — key findings on top, leading to action (before after)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (before after)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (before after)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (before after)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings above the details (before after)
+2. Use `/report` for multi-column comparison tables (before after)
+3. Use `/report` for status/progress/logs reports
+4. Use "No." as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (before after)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always use `/suggest-next-action` at the end of the report
 
 ### 1. Explain First
 
-ต้องอธิบายก่อนดำเนินการ
+Must explain before acting
 
-- บอกว่าจะทำอะไร
-- บอกว่าจะทำอย่างไร
-- บอกว่าจะกระทบอะไร
-- รอการยืนยันจากผู้ใช้
+- Say what will be done
+- Say how it will be done
+- Say what is impacted
+- Wait for user confirmation
 
 ### 2. Before After Format
 
-รูปแบบการแสดง before-after
+The before-after display format
 
 ```markdown
 ### Before
-[สภาพปัจจุบัน]
+[Current state]
 
 ### After
-[สภาพหลังเปลี่ยน]
+[State after the change]
 ```
 
-ใช้ `Before` และ `After` เป็น headers ใน markdown
+Use `Before` and `After` as headers in markdown
 
 ### 3. No Actual Changes
 
-ยังไม่ต้องแก้ไขจริง
+Do not make actual edits yet
 
-- แสดงแผนการเท่านั้น
-- ไม่แก้ไขไฟล์จริง
-- รอการยืนยันจากผู้ใช้ก่อน
+- Show the plan only
+- Do not edit real files
+- Wait for user confirmation first
 
 ### 4. Clear Comparison
 
-ต้องแสดงความแตกต่างอย่างชัดเจน
+Must show the difference clearly
 
-- ใช้ `table` เปรียบเทียบถ้าเหมาะสม
-- ใช้ `code block` แสดง before/after code
-- ใช้ bullet points แสดงการเปลี่ยนแปลง
+- Use a `table` comparison when appropriate
+- Use a `code block` to show before/after code
+- Use bullet points to show changes
 
 ### 5. Use Workflows
 
-ใช้ workflows ที่เกี่ยวข้อง
+Use the relevant workflows
 
-- ทำ `/plan` เพื่อวางแผน
-- ทำ `/deep-analyze` เพื่อวิเคราะห์
-- ทำ `/update-devin-global-skills` เพื่อสร้าง workflow
+- Use `/plan` to plan
+- Use `/deep-analyze` to analyze
+- Use `/update-devin-global-skills` to create a workflow
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 
 ## Expected Outcome
 
-- ผู้ใช้เข้าใจแผนการทำงาน
-- แสดง before-after อย่างชัดเจน
-- ไม่มีการแก้ไขจริงจนกว่าจะได้รับอนุมัติ
-- ผู้ใช้ยืนยันก่อนดำเนินการต่อ
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- The user understands the work plan
+- Before-after shown clearly
+- No actual changes until approved
+- User confirms before proceeding
+- Report is readable with key findings on top
+- Next action is clear

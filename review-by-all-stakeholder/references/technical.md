@@ -22,9 +22,9 @@ Persona details for the `technical` category — merged from the original `workf
 | Role | Focus | Workflow |
 |------|-------|----------|
 | researcher | ADRs, spike/experiment docs, decision records | `### technical/researcher` |
-| code-optimizer | perf hot spots, algorithmic efficiency → `/deep-review`, `/deep-review` | `### technical/code-optimizer` |
-| refactoring-specialist | duplication, dead code, coupling → `/deep-review` | `### technical/refactoring-specialist` |
-| documentation-writer | docs coverage, changelog completeness → `/deep-review` | `### technical/documentation-writer` |
+| code-optimizer | perf hot spots, algorithmic efficiency → `/deep-review-codebase`, `/deep-review-codebase` | `### technical/code-optimizer` |
+| refactoring-specialist | duplication, dead code, coupling → `/deep-review-codebase` | `### technical/refactoring-specialist` |
+| documentation-writer | docs coverage, changelog completeness → `/deep-review-codebase` | `### technical/documentation-writer` |
 
 2. อ่าน section `### technical/<role>` ในไฟล์นี้
 
@@ -83,7 +83,7 @@ Persona details for the `technical` category — merged from the original `workf
 
 - ตรวจ concurrency utilization — sequential awaits ที่ parallel ได้, missing batching, lock contention
 
-- Deep pass → `/deep-review` และ `/deep-review` สำหรับ deep analysis
+- Deep pass → `/deep-review-codebase` และ `/deep-review-codebase` สำหรับ deep analysis
 
 
 
@@ -137,7 +137,7 @@ Persona details for the `technical` category — merged from the original `workf
 
 - ตรวจ doc accessibility — ค้นหาเจอ, glossary สำหรับ jargon, diagrams สำหรับ architecture
 
-- Deep pass → `/deep-review` สำหรับ documentation review เชิงลึก
+- Deep pass → `/deep-review-codebase` สำหรับ documentation review เชิงลึก
 
 
 
@@ -189,7 +189,7 @@ Persona details for the `technical` category — merged from the original `workf
 
 - ตรวจ safe-refactor readiness — test coverage เพียงพอสำหรับ refactor แต่ละจุดหรือไม่
 
-- Deep pass → `/deep-review` และ `/deep-review` สำหรับ refactor analysis เชิงลึก
+- Deep pass → `/deep-review-codebase` และ `/deep-review-codebase` สำหรับ refactor analysis เชิงลึก
 
 
 

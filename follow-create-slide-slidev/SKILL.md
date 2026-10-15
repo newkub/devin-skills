@@ -10,7 +10,7 @@ related:
   - follow-create-mobile
   - follow-best-practice
   - setup-cicd
-  - deep-review
+  - deep-review-codebase
 
 ---
 
@@ -33,7 +33,7 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
 
 > Goal: Pick the mode based on the project location
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
 2. Get the project name and location from the user — if no location is given → use the current directory
 3. If creating inside `D:/newkub/slides` → do steps 2-5 (shared root `package.json`)
 4. If creating standalone outside `D:/newkub/slides` → check the location is free (ask first if something exists there), then run `bun create slidev@latest {project-name}` + `bun install` — standalone has its own `package.json`; skip step 2
@@ -267,7 +267,7 @@ Compact usage table (synced from upstream `skills/slidev/SKILL.md` — full docs
 - Use /follow-create-mobile-cross-with-capacitor if needed (create slide slidev)
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 

@@ -3,7 +3,7 @@ name: update-config
 description: Update project config to be complete, consistent, duplication-free via a shared config/dep catalog
 argument-hint: "[path]"
 related:
-  - deep-review
+  - deep-review-codebase
   - report-config-files
   - follow-devin-global-skills
   - follow-tool-mise
@@ -27,7 +27,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 - Applies to the root project or any workspace
 - Covers package manifests, tool configs, monorepo setup, CI/CD, editor, env, git
-- Run `/deep-review` first to get findings
+- Run `/deep-review-codebase` first to get findings
 - If it is a monorepo → use `/follow-tool-moonrepo`
 
 ## Execute
@@ -36,7 +36,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 > Goal: Understand the current config state
 
-1. Run `/deep-review` to collect findings
+1. Run `/deep-review-codebase` to collect findings
 2. Record a priority list from the severities
 3. Identify the configs to create, delete, or refactor
 4. If the project has no `rules/` + `sgconfig.yml` or `AGENTS.md` yet → run `/update-astgrep-rules` and `/update-agents-md`
@@ -183,7 +183,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 ### 1. Review First
 
-- Always run `/deep-review` before updating
+- Always run `/deep-review-codebase` before updating
 - Do not change anything before there are findings and a priority order
 - For a large project or a complex monorepo → use `/update-devin-global-subagents`
 
@@ -241,7 +241,7 @@ Update the project's env configuration — diff the vars that exist against the 
 1. Run `/check-secrets env-vars` — the vars the code reads (`process.env.*`, `import.meta.env.*` per stack) compared with those defined
 2. Read the current env files and `.env.example` — list all keys
 3. Build the diff: missing keys (used by code but absent), stale keys (present but unused by code), keys whose value/format must change
-4. Run the `/deep-review` domain `review-config` report-drift workflow if you need to see drift across environments/workspaces
+4. Run the `/deep-review-codebase` domain `review-config` report-drift workflow if you need to see drift across environments/workspaces
 
 ###### 2. Apply Changes
 
@@ -285,7 +285,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 - Use when the same config (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) is duplicated in 2+ workspaces
 - Use when the same dependency version is spread across several package manifests
-- For duplicated shared code (utils, types, components) across packages → use `/refactor` packages-shared scope instead
+- For duplicated shared code (utils, types, components) across packages → use `/refactor shared` scope instead
 - For env vars → use `## Merged Details → config-env` instead
 
 ##### Execute
@@ -294,7 +294,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 > Goal: See which config is genuinely duplicated and worth consolidating
 
-1. Run `/deep-review` domain `review-config` — find configs duplicated or drifting across workspaces
+1. Run `/deep-review-codebase` domain `review-config` — find configs duplicated or drifting across workspaces
 2. Compare config per domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
 3. Compare dependency versions across package manifests — find version drift and duplicates
 4. Keep only candidates genuinely duplicated in 2+ workspaces — never consolidate speculatively
@@ -310,7 +310,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
    - test/build config → `defineConfig` from the shared one
 2. Move duplicated dependency versions into a catalog per package manager (`pnpm-workspace.yaml` catalogs, `bun.catalogs`, or root `overrides`)
 3. Replace versions in package manifests with a `catalog:` reference
-4. If this work also involves shared code duplication → dispatch `/refactor` packages-shared scope for the code part
+4. If this work also involves shared code duplication → dispatch `/refactor shared` scope for the code part
 
 ###### 3. Rewire And Verify
 
@@ -318,7 +318,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 1. Run `/update-references` — delete the duplicated child configs, keeping only workspace-specific overrides
 2. Run the ecosystem validators: `tsc -b`, `eslint .`, `prettier --check .`, then reinstall to resolve the catalog
-3. Run `/deep-review` domain `review-config` again — confirm only one canonical config remains per domain
+3. Run `/deep-review-codebase` domain `review-config` again — confirm only one canonical config remains per domain
 4. If it fails → revert that batch and fix; up to 3 rounds → stop/report
 
 ##### Rules

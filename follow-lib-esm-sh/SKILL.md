@@ -1,6 +1,6 @@
 ---
 name: follow-lib-esm-sh
-description: ใช้ esm.sh CDN สำหรับโหลด ES Modules บน browser โดยไม่ต้อง bundler
+description: Use the esm.sh CDN to load ES Modules in the browser without a bundler
 argument-hint: "[scope]"
 related:
   - follow-lib-animejs
@@ -14,96 +14,96 @@ related:
 
 ## Goal
 
-ใช้ `esm.sh` CDN โหลด `ES Modules` จาก `npm`, `JSR`, `GitHub` และ `pkg.pr.new` บน `browser`, `Deno` หรือ `Node.js` โดยไม่ต้อง `bundler`
+Use the `esm.sh` CDN to load `ES Modules` from `npm`, `JSR`, `GitHub`, and `pkg.pr.new` in the `browser`, `Deno`, or `Node.js` without a `bundler`
 
 ## Scope
 
-ใช้สำหรับการ `import` modules ผ่าน `HTTPS URL` พร้อม `tree-shaking`, `bundling`, `dependency rewriting` และ `import maps` อัตโนมัติ
+For `import`ing modules via `HTTPS URL` with automatic `tree-shaking`, `bundling`, `dependency rewriting`, and `import maps`
 
-- ใช้ skill นี้เฉพาะเมื่อโหลด modules ผ่าน CDN URL โดยไม่มี bundler (browser, Deno, no-build setups) — ถ้า project มี `package.json` + bundler → install package ตามปกติแทน
-- CDN อื่น: jsDelivr (`cdn.jsdelivr.net`), JSPM (`jspm.io`) — ดู official docs ผ่าน `/learn-from-web`
-- `esm.sh` มี CLI สำหรับจัดการ import maps ใน `index.html` — ดู `references/cli.md`
+- Use this skill only when loading modules via CDN URLs with no bundler (browser, Deno, no-build setups) — if the project has `package.json` + a bundler → install the package normally instead
+- Other CDNs: jsDelivr (`cdn.jsdelivr.net`), JSPM (`jspm.io`) — see official docs via `/learn-from-web`
+- `esm.sh` has a CLI for managing import maps in `index.html` — see `references/cli.md`
 
 ## Execute
 
 ### 1. Import Modules
 
-> Goal: โหลด ES Modules ผ่าน `esm.sh`
+> Goal: load ES Modules via `esm.sh`
 
-1. ใช้ URL format `https://esm.sh/{package}@{version}/{subpath}`
-2. รองรับ `npm` (default), `JSR` (`/jsr/`), `GitHub` (`/gh/`) และ `pkg.pr.new` (`/pr/`)
-3. ตัวอย่าง:
+1. Use the URL format `https://esm.sh/{package}@{version}/{subpath}`
+2. Supports `npm` (default), `JSR` (`/jsr/`), `GitHub` (`/gh/`), and `pkg.pr.new` (`/pr/`)
+3. Examples:
    - `import React from 'https://esm.sh/react@19.3.0'`
    - `import { encodeBase64 } from 'https://esm.sh/jsr/@std/encoding@1.0.0/base64'`
    - `import tslib from 'https://esm.sh/gh/microsoft/tslib@v2.8.1'`
 
 ### 2. Configure Dependencies And Build Options
 
-> Goal: ควบคุม dependencies และ build options
+> Goal: control dependencies and build options
 
-1. ใช้ `?deps=PACKAGE@VERSION,PACKAGE2@VERSION` เพื่อ lock version ของ dependencies
-2. ใช้ `?external=PACKAGE` หรือ prefix `*` เช่น `https://esm.sh/*react-dom` เพื่อกำหนด external dependencies ทั้งหมด
-3. ใช้ `?alias=PACKAGE:ALIAS` เพื่อเปลี่ยน package ที่ resolve เช่น `?alias=react:preact/compat`
-4. ใช้ `?bundle=false` เมื่อต้องการปิด default bundling, `?standalone` เพื่อ bundle ทุก dependency (ยกเว้น `peerDependencies`)
-5. ใช้ `?exports=a,b` เพื่อ `tree-shaking` เฉพาะ exports ที่ต้องการ
-6. ใช้ `?dev` สำหรับ development build, `?target=es2022` สำหรับ build target, `?conditions=...` สำหรับ conditional exports
+1. Use `?deps=PACKAGE@VERSION,PACKAGE2@VERSION` to lock dependency versions
+2. Use `?external=PACKAGE` or the `*` prefix, e.g. `https://esm.sh/*react-dom`, to mark all external dependencies
+3. Use `?alias=PACKAGE:ALIAS` to change what a package resolves to, e.g. `?alias=react:preact/compat`
+4. Use `?bundle=false` to disable default bundling, `?standalone` to bundle every dependency (except `peerDependencies`)
+5. Use `?exports=a,b` to `tree-shake` down to only the needed exports
+6. Use `?dev` for a development build, `?target=es2022` for a build target, `?conditions=...` for conditional exports
 
 ### 3. Use Import Maps
 
-> Goal: ใช้ bare specifiers กับ `import maps`
+> Goal: use bare specifiers with `import maps`
 
-1. สร้าง `<script type="importmap">` แล้ว map specifier ไปยัง `esm.sh` URL
-2. สำหรับ trailing slash ให้เปลี่ยน `?` เป็น `&` หลัง version เช่น `https://esm.sh/react-dom@19.3.0&dev/`
-3. ใช้ `?external` ร่วมกับ `import maps` เพื่อให้ `browser` resolve dependency เอง
-4. ใช้ `esm.sh` CLI (`npx esm.sh add <pkg>`, `npx esm.sh tidy`) เพื่อ add/clean imports ใน `<script type="importmap">` ของ `index.html` อัตโนมัติ — ดู `references/cli.md`
+1. Create a `<script type="importmap">` and map specifiers to `esm.sh` URLs
+2. For trailing slashes, change `?` to `&` after the version, e.g. `https://esm.sh/react-dom@19.3.0&dev/`
+3. Combine `?external` with `import maps` so the `browser` resolves the dependency itself
+4. Use the `esm.sh` CLI (`npx esm.sh add <pkg>`, `npx esm.sh tidy`) to automatically add/clean imports in the `<script type="importmap">` of `index.html` — see `references/cli.md`
 
 ### 4. Use Advanced Features
 
-> Goal: ใช้ฟีเจอร์เสริมของ `esm.sh` ตามความเหมาะสม
+> Goal: use esm.sh extra features as appropriate
 
-1. ใช้ `?worker` เพื่อโหลด module เป็น `Web Worker`
-2. ใช้ `?css` เพื่อ import `CSS` ที่ package import ใน JS
-3. ใช้ `?raw` หรือ `https://raw.esm.sh/<PATH>` เพื่อดึง source file โดยไม่ transform
-4. ใช้ `?no-dts` เพื่อปิด `TypeScript` type declarations ใน `Deno`
-5. ใช้ `esm.sh/run` (`<script type="module" src="https://esm.sh/run"></script>`) สำหรับ `JSX/TSX` ใน HTML โดยไม่ build (experimental)
+1. Use `?worker` to load a module as a `Web Worker`
+2. Use `?css` to import `CSS` that a package imports in JS
+3. Use `?raw` or `https://raw.esm.sh/<PATH>` to fetch a source file untransformed
+4. Use `?no-dts` to disable `TypeScript` type declarations in `Deno`
+5. Use `esm.sh/run` (`<script type="module" src="https://esm.sh/run"></script>`) for `JSX/TSX` in HTML with no build (experimental)
 
 ### 5. Ensure Stability
 
-> Goal: รักษาความเสถียรของ production
+> Goal: keep production stable
 
-1. Pin version เสมอ เช่น `https://esm.sh/react@19.3.0` แทน `latest` หรือ bare package
-2. ใช้ date (`yyyy-mm-dd`) versioning ได้ตั้งแต่ v137 เช่น `https://esm.sh/my-package@2026-01-02`
-3. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore; ตั้งแต่ v137_2 legacy build server ถูก shutdown — pinned URLs เก่า redirect ไป routes ใหม่
-4. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
-5. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-13)
+1. Always pin versions, e.g. `https://esm.sh/react@19.3.0` instead of `latest` or a bare package
+2. Date (`yyyy-mm-dd`) versioning is supported since v137, e.g. `https://esm.sh/my-package@2026-01-02`
+3. Since build v136 the system no longer uses the build version prefix (`/v135/...`) and `?pin` is ignored; since v137_2 the legacy build server is shut down — old pinned URLs redirect to the new routes
+4. Test the URL in the `browser` or `Deno` before deploying
+5. Follow the changelog at `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-13)
 
 ## Rules
 
-- ใช้ URL format `https://esm.sh/{package}@{version}/{subpath}`
-- ใช้ `?deps` สำหรับ lock version ของ dependencies
-- ใช้ `?external` หรือ prefix `*` สำหรับ external dependencies
-- ใช้ `?bundle=false` เมื่อ bundling ทำให้เกิด duplicate shared modules
-- ใช้ `?exports` เพื่อ `tree-shaking` เฉพาะส่วนที่ใช้
-- Pin version ทุก URL สำหรับ production
-- ใช้ `&` แทน `?` เมื่อต้องการ query params กับ trailing slash
-- ใช้ `?target` สำหรับกำหนด ES target
-- ใช้ `?dev` สำหรับ development build เท่านั้น
-- ใช้ `?no-dts` หาก type declaration จาก CDN ทำให้ `Deno` ตรวจ type ผิด
+- Use the URL format `https://esm.sh/{package}@{version}/{subpath}`
+- Use `?deps` to lock dependency versions
+- Use `?external` or the `*` prefix for external dependencies
+- Use `?bundle=false` when bundling causes duplicate shared modules
+- Use `?exports` to `tree-shake` to only the used parts
+- Pin every version in URLs for production
+- Use `&` instead of `?` when combining query params with a trailing slash
+- Use `?target` to set the ES target
+- Use `?dev` for development builds only
+- Use `?no-dts` if CDN type declarations make `Deno` type-check incorrectly
 
-- jsDelivr ใช้เป็น `multi-CDN` alternative — ดู official docs ผ่าน `/learn-from-web`
-- JSPM ใช้เป็น `import maps package manager` — ดู official docs ผ่าน `/learn-from-web`
-- ใช้ `/follow-lib-animejs` ถ้าจำเป็น
-- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
-- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
+- jsDelivr serves as a `multi-CDN` alternative — see official docs via `/learn-from-web`
+- JSPM serves as an `import maps package manager` — see official docs via `/learn-from-web`
+- Use /follow-lib-animejs if needed
+- Use /follow-lib-arktype if needed
+- Use /follow-lib-better-auth if needed
+- Use /follow-best-practice if needed
+- Use /use-my-packages-on-registry if needed
+- Use /setup-cicd if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- โหลด `ES Modules` ได้โดยไม่ต้อง `bundler`
-- `Bundle size` ลดลงด้วย `tree-shaking` และ `?exports`
-- `Dependency resolution` ชัดเจนและเสถียรด้วย version pinning
-- `Development workflow` ง่ายขึ้นด้วย `import maps` และ `?dev`
+- `ES Modules` load without a `bundler`
+- `Bundle size` reduced via `tree-shaking` and `?exports`
+- `Dependency resolution` is clear and stable with version pinning
+- `Development workflow` is simpler with `import maps` and `?dev`

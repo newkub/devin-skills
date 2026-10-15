@@ -1,6 +1,6 @@
 ---
 name: follow-lib-mswjs-config-handlers
-description: จัดระเบียน MSW handlers — error simulation, passthrough, overrides และ organization
+description: Organize MSW handlers — error simulation, passthrough, overrides and organization
 argument-hint: "[scope]"
 related:
   - follow-lib-mswjs
@@ -11,71 +11,71 @@ related:
 
 ## Goal
 
-จัดระเบียนและขยาย MSW handlers ให้ maintainable — domain-based organization, error/network failure simulation, passthrough patterns, per-test overrides
+Organize and extend MSW handlers to stay maintainable — domain-based organization, error/network failure simulation, passthrough patterns, per-test overrides
 
 ## Scope
 
-- ปรับ handlers ของ MSW ที่ setup แล้ว (setup → `workflows/setup-msw`)
-- ครอบคลุม: file organization, success/error/delay responses, `passthrough()`, `server.use()` overrides, `onUnhandledRequest` strategies
-- ไม่ครอบคลุม: install/scaffold ครั้งแรก
+- tune existing MSW handlers after setup (setup → `workflows/setup-msw`)
+- covers: file organization, success/error/delay responses, `passthrough()`, `server.use()` overrides, `onUnhandledRequest` strategies
+- does not cover: first-time install/scaffold
 
 ## Execute
 
 ### 1. Audit Current Handlers
 
-> Goal: รู้ coverage และ gaps ของ handlers เดิม
+> Goal: know the coverage and gaps of the existing handlers
 
-1. อ่าน `src/mocks/handlers.ts` (หรือที่มีอยู่) — list endpoints ที่ mock แล้ว
-2. เทียบกับ real API surface — ทำ `/report` คอลัมน์ `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
-3. ใช้ `onUnhandledRequest: 'warn'` หา endpoints ที่ app ยิงแต่ยังไม่มี handler
+1. read `src/mocks/handlers.ts` (or what exists) — list the already-mocked endpoints
+2. compare against the real API surface — run `/report` with columns `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
+3. use `onUnhandledRequest: 'warn'` to find endpoints the app fires that have no handler yet
 
 ### 2. Organize By Domain
 
-> Goal: handlers structure scale ได้
+> Goal: a handler structure that can scale
 
-1. แยก handlers ตาม domain ถ้าเยอะ: `src/mocks/handlers/users.ts`, `orders.ts` เป็นต้น
-2. `handlers.ts` รวมเป็น single export: `export const handlers = [...userHandlers, ...orderHandlers]`
-3. แยก mock data/fixtures ออกเป็น `src/mocks/data/` — handlers ไม่ควร inline data เยอะ
-4. ตั้งชื่อ handler exports ตาม domain — `userHandlers` ไม่ใช่ `handlers2`
+1. split handlers by domain when there are many: `src/mocks/handlers/users.ts`, `orders.ts`, etc.
+2. `handlers.ts` combines into a single export: `export const handlers = [...userHandlers, ...orderHandlers]`
+3. move mock data/fixtures into `src/mocks/data/` — handlers shouldn't inline lots of data
+4. name handler exports after the domain — `userHandlers`, not `handlers2`
 
 ### 3. Cover Response Cases
 
-> Goal: ครอบคลุม success, error, delay, network failure
+> Goal: cover success, error, delay, network failure
 
-1. Happy path: `HttpResponse.json(data)` พร้อม status ที่ตรง contract (200/201)
-2. Error responses: `HttpResponse.json({ message }, { status: 400/404/500 })` — ครอบ status ที่ app handle จริง
-3. Network failure: `HttpResponse.error()` — จำลอง connection drop ไม่ใช่ HTTP error
-4. Latency: `await delay(200)` หรือ `delay('infinite')` สำหรับ pending states
-5. Dynamic responses: อ่าน `request`, `params`, `cookies` ใน resolver — ทำให้ mock ตอบตาม input
+1. happy path: `HttpResponse.json(data)` with the status matching the contract (200/201)
+2. error responses: `HttpResponse.json({ message }, { status: 400/404/500 })` — cover the statuses the app really handles
+3. network failure: `HttpResponse.error()` — simulates a connection drop, not an HTTP error
+4. latency: `await delay(200)` or `delay('infinite')` for pending states
+5. dynamic responses: read `request`, `params`, `cookies` in the resolver — make the mock answer based on the input
 
 ### 4. Passthrough And Selective Mocking
 
-> Goal: mock เฉพาะที่ต้องการ ปล่อยที่เหลือผ่าน
+> Goal: mock only what you want, let the rest pass through
 
-1. ใช้ `passthrough()` จาก `msw` ใน resolver — intercept แล้วปล่อย request จริงต่อ (เช่น conditional บน header)
-2. ตั้ง `onUnhandledRequest` ตาม context: `'warn'` (dev หา gaps), `'error'` (test strict), `'bypass'` (ปล่อยเงียบ), หรือ function สำหรับ whitelist เช่น analytics/sentry hosts
-3. อย่าใช้ `http.all('*')` catch-all แทน passthrough — ไม่ได้ response จริงกลับมา
+1. use `passthrough()` from `msw` inside a resolver — intercept, then forward the real request (e.g. conditional on a header)
+2. set `onUnhandledRequest` per context: `'warn'` (dev, find gaps), `'error'` (strict tests), `'bypass'` (silently pass), or a function for whitelists like analytics/sentry hosts
+3. don't use `http.all('*')` as a catch-all instead of passthrough — it doesn't return a real response
 
 ### 5. Per-Test Overrides
 
-> Goal: test-specific responses โดยไม่แก้ base handlers
+> Goal: test-specific responses without editing base handlers
 
-1. ใน test ที่ต้องการพฤติกรรมเฉพาะ → `server.use(http.get('/api/x', ...))` override ชั่วคราว
-2. `server.resetHandlers()` ใน `afterEach` (จาก setup) reset overrides อัตโนมัติ
-3. ห้ามแก้ base handlers เพื่อ test เดียว — ใช้ `server.use()` เสมอ
-4. ทำ `/deep-test api` หรือ `/run-test` ยืนยัน suite ผ่าน
+1. in a test needing special behavior → `server.use(http.get('/api/x', ...))` for a temporary override
+2. `server.resetHandlers()` in `afterEach` (from setup) clears overrides automatically
+3. never edit the base handlers for one test — always use `server.use()`
+4. run `/deep-test api` or `/run-test` to confirm the suite passes
 
 ## Rules
 
-- Handlers ต้อง reflect real API contract — API เปลี่ยนให้อัปเดต handlers ทันที
-- Base handlers คือ happy path — error cases ทำผ่าน `server.use()` หรือ dedicated error handlers
-- `passthrough()` ใช้ใน resolver เท่านั้น — ไม่ใช่สร้าง request ใหม่
-- `onUnhandledRequest: 'error'` ใน tests ช่วยจับ unmocked calls — แต่ต้อง whitelist ของจริงก่อน
-- อย่า inline mock data จำนวนมากใน resolver — แยก `data/` fixtures
+- handlers must reflect the real API contract — when the API changes, update the handlers immediately
+- base handlers are the happy path — do error cases via `server.use()` or dedicated error handlers
+- `passthrough()` is used only inside a resolver — it doesn't create a new request
+- `onUnhandledRequest: 'error'` in tests catches unmocked calls — but whitelist the real ones first
+- don't inline large mock data in resolvers — keep `data/` fixtures separate
 
 ## Expected Outcome
 
-- Handlers จัดกลุ่มตาม domain พร้อม fixtures แยก
-- ครอบคลุม success/error/delay/network-failure cases
-- Per-test overrides ผ่าน `server.use()` — base handlers สะอาด
-- Unhandled requests ถูกจัดการตาม context (warn/error/bypass)
+- handlers grouped by domain with fixtures separated
+- success/error/delay/network-failure cases covered
+- per-test overrides via `server.use()` — base handlers stay clean
+- unhandled requests are managed per context (warn/error/bypass)

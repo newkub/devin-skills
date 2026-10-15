@@ -1,6 +1,6 @@
 ---
 name: gen-media
-description: สร้าง media ด้วย AI — images, videos, character consistency, 3D models ผ่าน gen-media-* skills
+description: Generate media with AI — images, videos, character consistency, 3D models via gen-media-* skills
 argument-hint: "[domain]"
 related:
   - report-prompt-from-image
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ตาม media domain — parent ทำ routing เท่านั้น
+Dispatch to the skill matching the media domain — the parent only routes
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is the domain; if unspecified → `/ask-me` to pick a domain
 
 ## Execute
 
@@ -25,25 +25,25 @@ Dispatch ไป skill ตาม media domain — parent ทำ routing เท่
 
 | Domain | Skill |
 |---|---|
-| `ai-images` | `/gen-media-ai-images` — สร้างรูปภาพด้วย AI ผ่าน bunx CLI |
-| `ai-videos` | `/gen-media-ai-videos` — สร้างวิดีโอด้วย AI ผ่าน bunx CLI |
-| `image-character` | `/gen-media-image-character` — สร้าง character ที่ consistency |
-| `3d-model` | `/gen-media-3d-model` — สร้าง 3D model จาก prompt ด้วย AI CLI |
+| `ai-images` | `/gen-media-ai-images` — generate images with AI via bunx CLI |
+| `ai-videos` | `/gen-media-ai-videos` — generate videos with AI via bunx CLI |
+| `image-character` | `/gen-media-image-character` — generate consistent characters |
+| `3d-model` | `/gen-media-3d-model` — generate a 3D model from a prompt with an AI CLI |
 
-1. ระบุ domain จาก argument (เช่น `/gen-media ai-images`)
-2. ถ้า domain รองรับ → เรียก skill ตามตารางแล้วทำตาม flow ของ skill นั้น
-3. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/gen-media ai-images`)
+2. If the domain is supported → call the skill in the table and follow its flow
+3. If no domain is given or it is unknown → `/ask-me` to pick a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ target skill
-- ทุก prompt ที่สร้างต้อง confirm output path ก่อน generate
+- The parent only dispatches — never duplicate a target skill's workflow
+- Every generated prompt must confirm the output path before generating
 
-- ใช้ /report-prompt-from-image ถ้าจำเป็น
-- ใช้ /draw-svg-image ถ้าจำเป็น
-- ใช้ /convert ถ้าจำเป็น
-- ใช้ /report ถ้าจำเป็น
+- Use /report-prompt-from-image if needed
+- Use /draw-svg-image if needed
+- Use /convert if needed
+- Use /report if needed
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ที่ตรง domain แล้วสร้าง media ตาม flow นั้น
+- The caller is dispatched to the skill matching the domain and generates the media per that flow

@@ -1,32 +1,32 @@
 # Anime.js — Best Practices
 
-Recommended patterns, pitfalls และ perf notes สำหรับ Anime.js
+Recommended patterns, pitfalls and perf notes for Anime.js
 
 ## Recommended Patterns
 
-- ใช้ API หลัก `animate(targets, params)` + `stagger()` สำหรับ sequence — ไม่จับ timeline มือเองถ้า stagger พอ
-- Animate เฉพาะ `transform` (`translateX/Y`, `scale`, `rotate`) และ `opacity` — GPU-accelerated, ไม่ trigger layout
-- เก็บ animation objects ไว้ reference เพื่อ `pause()`/`cancel()`/`seek()` — อย่าสร้าง animation ใหม่ซ้ำทุก frame
-- ใช้ `utils.$()`/`utils.random()` helpers ของ lib แทนเขียนเอง
+- Use the main API `animate(targets, params)` + `stagger()` for sequences — don't hand-build a timeline when a stagger suffices
+- Animate only `transform` (`translateX/Y`, `scale`, `rotate`) and `opacity` — GPU-accelerated, doesn't trigger layout
+- Keep the animation object in a reference for `pause()`/`cancel()`/`seek()` — don't recreate the animation every frame
+- Use the lib's `utils.$()`/`utils.random()` helpers instead of writing your own
 
 ## Common Pitfalls
 
-- ห้าม animate `width`/`height`/`top`/`left` ถ้าเลี่ยงได้ — layout thrash; ใช้ `scale`/`clip-path` แทน
-- SPA frameworks: จำ target ตอน mount — anime ผูก DOM node ตรงๆ, component unmount แล้ว animate ต่อ = leak → cancel ใน cleanup
-- `stagger` บน element จำนวนมาก → คุมจำนวน/ใช้ `from: 'center'` เพื่อลด perceived jank
-- Animation state ไม่ serialize — อย่าเก็บ animation object ใน reactive state (Solid signal/store) — เก็บใน ref ธรรมดา
+- Never animate `width`/`height`/`top`/`left` if avoidable — layout thrash; use `scale`/`clip-path` instead
+- SPA frameworks: capture the target at mount — anime binds DOM nodes directly; animating after a component unmounts = leak → cancel in cleanup
+- `stagger` on many elements → limit the count / use `from: 'center'` to reduce perceived jank
+- Animation state is not serializable — don't store the animation object in reactive state (Solid signal/store) — keep it in a plain ref
 
 ## Perf Notes
 
-- ใช้ `will-change: transform` เฉพาะ element ที่ animate จริง — ห้ามใส่ทั้งหน้า
-- Infinite loops (`loop: true`) → ตั้ง `autoplay: false` แล้วเล่นเฉพาะตอน visible (IntersectionObserver)
-- Scroll-driven → ใช้ built-in scroll observer/`onScroll` แทน scroll listener ที่คำนวณเองทุก frame
+- Use `will-change: transform` only on elements actually animated — never on the whole page
+- Infinite loops (`loop: true`) → set `autoplay: false` and play only while visible (IntersectionObserver)
+- Scroll-driven → use the built-in scroll observer/`onScroll` instead of a scroll listener that recomputes every frame
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| `animate()` + `stagger()` สำหรับ list reveals | manual `setTimeout` chains |
-| transform/opacity เท่านั้น | animate layout properties |
-| cancel animation ใน cleanup | ปล่อย animation ค้างหลัง unmount |
-| `createTimeline()` เมื่อ sequence ซับซ้อน | nest `onComplete` callbacks หลายชั้น |
+| `animate()` + `stagger()` for list reveals | manual `setTimeout` chains |
+| transform/opacity only | animate layout properties |
+| cancel animation in cleanup | leave animations running after unmount |
+| `createTimeline()` when the sequence is complex | nesting `onComplete` callbacks many levels deep |

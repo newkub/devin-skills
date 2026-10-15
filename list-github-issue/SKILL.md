@@ -1,22 +1,22 @@
 ---
 name: list-github-issue
-description: แสดงรายการ issues ของ repository ที่ระบุบน GitHub
+description: List the issues of a given repository on GitHub
 argument-hint: "[repo]"
 related:
   - create-github
-  - deep-review
+  - deep-review-codebase
   - list-github
   - report
 ---
 
 ## Goal
 
-แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
+List the issues of the specified repository with key data
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github`, `deep-review`, `list-github`
+- For related skills: `open-github`, `create-github`, `deep-review-codebase`, `list-github`
 
-ใช้สำหรับดู issues ของ repository ใดๆ บน GitHub ที่ authenticated user มีสิทธิ์เข้าถึง
+Use to view issues of any repository on GitHub that the authenticated user can access
 
 ## Execute
 
@@ -24,54 +24,54 @@ related:
 
 > Goal: Get Authenticated User
 
-1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
-2. รับชื่อ repository ที่ต้องการดู issues จากผู้ใช้
+1. Use `mcp7_get_me` to get the GitHub username
+2. Get the repository name to list issues for from the user
 
 ### 2. List Issues
 
 > Goal: List Issues
 
-1. ทำ `mcp7_list_issues` ด้วย `owner` และ `repo` parameters
-2. ใช้ `state` parameter สำหรับกรอง:
-   - `OPEN` — issues ที่เปิดอยู่
-   - `CLOSED` — issues ที่ปิดแล้ว
-   - ไม่ระบุ — ทั้งหมด
-3. ใช้ `orderBy: UPDATED` และ `direction: DESC` เพื่อเรียงจากใหม่สุด
-4. ใช้ `perPage: 100` สำหรับ pagination
-5. ใช้ `labels` parameter ถ้าต้องการกรองตาม label
+1. Use `mcp7_list_issues` with `owner` and `repo` parameters
+2. Use the `state` parameter to filter:
+   - `OPEN` — open issues
+   - `CLOSED` — closed issues
+   - unspecified — all
+3. Use `orderBy: UPDATED` and `direction: DESC` to sort newest first
+4. Use `perPage: 100` for pagination
+5. Use the `labels` parameter to filter by label
 
 ### 3. Format Output
 
 > Goal: Format Output
 
-1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
-2. กำหนด columns:
-   - No. เลข issue
-   - Title ชื่อ issue
-   - Labels labels ทั้งหมด
+1. Use `/report` to format as a table
+2. Define columns:
+   - No. issue number
+   - Title issue title
+   - Labels all labels
    - State open/closed
-   - Author ผู้สร้าง
-   - Comments จำนวน comments
-   - Updated วันที่อัปเดตล่าสุด
+   - Author creator
+   - Comments number of comments
+   - Updated last update date
 
 ## Rules
 
 ### 1. API Usage
 
-- ใช้ `mcp7_list_issues` สำหรับ list issues ของ repo ที่ระบุ
-- ใช้ `mcp7_get_me` สำหรับรับ authenticated user
-- ใช้ `state` parameter สำหรับกรอง open/closed
-- ใช้ `labels` parameter สำหรับกรองตาม label
-- ใช้ `orderBy` และ `direction` สำหรับ sorting
+- Use `mcp7_list_issues` to list issues of the given repo
+- Use `mcp7_get_me` to get the authenticated user
+- Use the `state` parameter to filter open/closed
+- Use the `labels` parameter to filter by label
+- Use `orderBy` and `direction` for sorting
 
 ### 2. Output Format
 
-- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
-- เรียงตามวันที่อัปเดตล่าสุด
-- แสดงข้อมูลสำคัญ: number, title, labels, state, author, comments, updated
+- Use `/report` to format the result
+- Sort by last update date
+- Show key data: number, title, labels, state, author, comments, updated
 
 ## Expected Outcome
 
-- รายการ issues ของ repository ที่ระบุ
-- จัดรูปแบบเป็นตารางที่อ่านง่าย
-- ข้อมูลครบถ้วน: number, title, labels, state, author, comments, updated
+- The issue list of the specified repository
+- Formatted as a readable table
+- Complete data: number, title, labels, state, author, comments, updated

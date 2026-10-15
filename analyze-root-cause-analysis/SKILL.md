@@ -3,7 +3,7 @@ name: analyze-root-cause-analysis
 description: Analyze the root cause of problems with a systematic method
 argument-hint: "[target]"
 related:
-  - deep-review
+  - deep-review-codebase
   - deep-debug
   - use-bun-shell
   - resolve-errors
@@ -171,7 +171,7 @@ Document the RCA in detail
 - Attach all evidence
 - List action items for prevention
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 ## Expected Outcome
 
 - Root cause clearly identified

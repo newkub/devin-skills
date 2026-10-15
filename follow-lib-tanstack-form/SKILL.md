@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-form
-description: ใช้ TanStack Form ครบวงจร — fields, Standard Schema validation, arrays, async validators, granular reactivity
+description: Use TanStack Form end to end — fields, Standard Schema validation, arrays, async validators, granular reactivity
 argument-hint: "[framework] [schema-lib]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -10,30 +10,30 @@ related:
 
 ## Goal
 
-ใช้ TanStack Form (v1) ครบ — headless type-safe forms: fields, Standard Schema validation (Zod/Valibot/ArkType), array fields, async validation, granular subscriptions, composable field components
+Use TanStack Form (v1) fully — headless type-safe forms: fields, Standard Schema validation (Zod/Valibot/ArkType), array fields, async validation, granular subscriptions, composable field components
 
 ## Scope
 
-ใช้กับ forms ทุกขนาด — headless = state/validation เท่านั้น, UI เอง; adapters: `react-form`, `solid-form`, `vue-form`, `angular-form`, `svelte-form`; libraries เช่น shadcn มี wrappers อยู่แล้ว (re-export patterns ตาม docs)
+For forms of any size — headless = state/validation only, the UI is yours; adapters: `react-form`, `solid-form`, `vue-form`, `angular-form`, `svelte-form`; libraries like shadcn already have wrappers (re-export patterns per the docs)
 
-- part of TanStack ecosystem — selection/dispatch อยู่ที่ `/follow-lib-tanstack-ecosystem`
+- part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
 ## Execute
 
 ### 1. Install
 
 ```bash
-bun add @tanstack/react-form zod   # adapter ตาม framework + schema lib ที่ใช้
+bun add @tanstack/react-form zod   # adapter per framework + the schema lib used
 ```
 
 ### 2. Form Instance
 
 ```tsx
 const form = useForm({
-  defaultValues: { email: '', tags: [] as string[] },  // source of truth ของ types
+  defaultValues: { email: '', tags: [] as string[] },  // the type source of truth
   validators: { onSubmit: userSchema },                 // form-level schema
   onSubmit: async ({ value, formApi }) => {
-    await api.createUser(value)          // value typed ตาม defaultValues
+    await api.createUser(value)          // value typed per defaultValues
     formApi.reset()
   },
 })
@@ -69,31 +69,31 @@ const form = useForm({
 
 ### 4. Patterns
 
-> Goal: ครอบ forms จริง
+> Goal: cover real forms
 
 1. **Array fields**: `mode="array"` + `field.pushValue(v)`/`removeValue(i)`/`swapValues` — dynamic lists (skills, line items)
-2. **Granular subscribe**: `<form.Subscribe selector={(s) => s.canSubmit}>` — re-render เฉพาะ derived slice
-3. **Composable fields**: wrap `form.Field` เป็น shared input components ผ่าน `createFormHook` + `fieldComponents`/`formComponents`
-4. **Linked fields**: `listeners` บน field → recompute field อื่นเมื่อค่าเปลี่ยน
-5. **Server submit errors**: `onSubmit` catch → map เข้า field errors หรือ form-level error display
-6. **Reset/persist**: `formApi.reset()`, draft autosave ผ่าน subscribe + storage
+2. **Granular subscribe**: `<form.Subscribe selector={(s) => s.canSubmit}>` — re-render only the derived slice
+3. **Composable fields**: wrap `form.Field` into shared input components via `createFormHook` + `fieldComponents`/`formComponents`
+4. **Linked fields**: `listeners` on a field → recompute other fields when the value changes
+5. **Server submit errors**: catch in `onSubmit` → map into field errors or a form-level error display
+6. **Reset/persist**: `formApi.reset()`, draft autosave via subscribe + storage
 
 ### 5. Verify
 
-1. `/run-typecheck` — field names typed จาก defaultValues (typo ติด compile error)
-2. ทดสอบ validation triggers, async debounce, array ops, submit/reset flow
-3. ถ้า fail → `/resolve-errors` max 3 รอบ
+1. `/run-typecheck` — field names are typed from defaultValues (a typo trips a compile error)
+2. Test validation triggers, async debounce, array ops, submit/reset flow
+3. On failure → `/resolve-errors` max 3 rounds
 
 ## Rules
 
-- `defaultValues` = type source — ครบทุก field ห้ามขาด
-- Standard Schema validators — ห้ามเขียน regex/manual validator ถ้า schema มี
-- Async validators ต้องมี debounce — ไม่งั้น spam server ทุก keystroke
-- Headless = a11y เป็นของ app: `label htmlFor`, `aria-invalid`, `aria-describedby`, error text link
-- `form.Subscribe` สำหรับ derived UI — ห้าม subscribe ทั้ง store
+- `defaultValues` = the type source — complete for every field, never missing
+- Standard Schema validators — don't write regex/manual validators when the schema has one
+- Async validators must have debounce — otherwise you spam the server on every keystroke
+- Headless = a11y is the app's job: `label htmlFor`, `aria-invalid`, `aria-describedby`, error text link
+- Use `form.Subscribe` for derived UI — never subscribe the whole store
 
 ## Expected Outcome
 
-- Form type-safe ตั้งแต่ field ถึง submit
-- Validation (sync/async/schema) + array fields + granular reactivity ทำงาน
-- Composable field components reuse ได้ข้าม forms
+- Type-safe forms from field to submit
+- Validation (sync/async/schema) + array fields + granular reactivity work
+- Composable field components reusable across forms

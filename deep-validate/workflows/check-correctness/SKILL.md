@@ -3,7 +3,7 @@ name: deep-validate-check-correctness
 description: Validate correctness dimension — requirements, logic, edge cases, error handling
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - report
 ---
 
@@ -22,7 +22,7 @@ Check the correctness dimension of `/deep-validate` — meets requirements, corr
 
 > Goal: confirm the code meets the requirements
 
-1. Run `/deep-review` to check correctness
+1. Run `/deep-review-codebase` to check correctness
 2. Check correctness against the principle or standard
 3. Verify it works per the requirements and has no errors
 

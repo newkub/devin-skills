@@ -1,6 +1,6 @@
 ---
 name: open-web-for-config-secret
-description: อ่าน .env.example แล้วเปิด URLs สำหรับสร้าง API keys และ secret manager dashboard ให้ user กรอกเอง
+description: Read .env.example, open URLs to create API keys and secret manager dashboard for the user to fill
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -17,51 +17,51 @@ related:
 
 ## Goal
 
-อ่าน `.env.example` แล้วเปิด URLs ที่จำเป็นสำหรับตั้งค่า secrets ทั้งหมด — ทั้งหน้า external services สำหรับสร้าง API keys และหน้า secret manager dashboard สำหรับ paste ค่า โดย user กรอกเองทั้งหมด
+Read `.env.example` then open all URLs needed to set up secrets — both external service pages for creating API keys and the secret manager dashboard for pasting values, with the user entering everything themselves
 
 ## Scope
 
-ใช้ตอน onboarding project ใหม่ หรือตอนต้องการเชื่อม external services กับ secret manager ไม่เกี่ยวข้องกับการ deploy หรือรันแอพ
+Use when onboarding a new project or when connecting external services to the secret manager; not involved in deploying or running the app
 
 ## Execute
 
 ### 1. Read Env Example
 
-> Goal: รวบรวม keys ที่ต้องตั้งค่า
+> Goal: Collect the keys that must be configured
 
-1. อ่าน `.env.example` จาก project root
-2. ถ้าไม่มี → สร้างจาก project manifest (`package.json`, `wrangler.jsonc`, ฯลฯ)
-3. แยก environment variable names ออกมา
-4. กรอง internal values ออก (localhost, `127.0.0.1`, paths)
+1. Read `.env.example` from the project root
+2. If missing → generate it from the project manifest (`package.json`, `wrangler.jsonc`, etc.)
+3. Extract the environment variable names
+4. Filter out internal values (localhost, `127.0.0.1`, paths)
 
 ### 2. Build Key Inventory Table
 
-> Goal: สร้าง inventory ที่ชัดเจนก่อนเปิด URL — user เห็นทีเดียวว่า key ไหนขาด ไปเอาจากไหน กรอกที่ไหน
+> Goal: Build a clear inventory before opening URLs — the user sees at a glance which key is missing, where to get it, and where to paste it
 
-1. เทียบ keys จาก `.env.example` กับ env files จริง (`.env`, `.env.local`, `.dev.vars`) และ code usage (`process.env.*`, `Bun.env.*`, `import.meta.env.*`)
-2. ระบุ Status ต่อ key:
-   - `set` — มีค่าจริงใน env file หรือ secret manager
-   - `placeholder` — มี key แต่ค่าเป็น placeholder (`your-*`, `xxx`, `changeme`, `sk_test_...` ตัวอย่าง)
-   - `localhost` — ค่าชี้ `localhost`/`127.0.0.1` แต่ไม่มี local service รัน
-   - `missing` — ไม่มี key ใน env file เลย
-3. แบ่งเป็น 2 กลุ่ม เรียงตาม boot/feature importance:
-   - `Required (Blockers)` — keys ที่ app throw/ค้างตอน boot หรือ runtime (`DATABASE_URL`, `*_SECRET_KEY`, `ENCRYPTION_KEY`, `REDIS_URL`, ฯลฯ)
-   - `Feature-Gated` — keys ที่ขาดได้ ไม่ block boot (LINE/Twilio/FCM/AI/OAuth keys)
-4. แต่ละกลุ่ม render เป็นตารางในแชทด้วยคอลัมน์นี้เสมอ:
+1. Compare the keys in `.env.example` against the real env files (`.env`, `.env.local`, `.dev.vars`) and code usage (`process.env.*`, `Bun.env.*`, `import.meta.env.*`)
+2. Assign a Status per key:
+   - `set` — a real value exists in an env file or the secret manager
+   - `placeholder` — the key exists but the value is a placeholder (`your-*`, `xxx`, `changeme`, sample `sk_test_...`)
+   - `localhost` — the value points at `localhost`/`127.0.0.1` but no local service runs
+   - `missing` — no key in any env file
+3. Split into 2 groups ordered by boot/feature importance:
+   - `Required (Blockers)` — keys the app throws/hangs on at boot or runtime (`DATABASE_URL`, `*_SECRET_KEY`, `ENCRYPTION_KEY`, `REDIS_URL`, etc.)
+   - `Feature-Gated` — keys that may be absent without blocking boot (LINE/Twilio/FCM/AI/OAuth keys)
+4. Always render each group as a chat table with these columns:
 
-   `| No. | Key | Status | กรอกที่ไหน | เอา key จาก URL | ตัวอย่างรูปแบบ | ทำไมต้องมี |`
+   `| No. | Key | Status | Fill where | Get key from URL | Format example | Why it is needed |`
 
-   - `กรอกที่ไหน` — destination จริง เช่น `Infisical → env dev`, `.dev.vars`, Vercel env
-   - `เอา key จาก URL` — provider console URL ตรงหน้าสร้าง key (ตารางใน step ถัดไป)
-   - `ตัวอย่างรูปแบบ` — prefix/format เท่านั้น (`sk_test_...`, `whsec_...`) ไม่ใช่ค่าจริง
-   - `ทำไมต้องมี` — feature/impact เมื่อขาด (เช่น "route ที่ query DB ค้าง ~4s")
-5. ใช้ตารางนี้เป็น source of truth สำหรับ steps ถัดไป — เปิดเฉพาะ URL ของ keys ที่ status ไม่ใช่ `set`
+   - `Fill where` — the real destination, e.g. `Infisical → env dev`, `.dev.vars`, Vercel env
+   - `Get key from URL` — the provider console URL at the exact key-creation page (table in the next step)
+   - `Format example` — prefix/format only (`sk_test_...`, `whsec_...`), never real values
+   - `Why it is needed` — the feature/impact when absent (e.g. "routes that query DB hang ~4s")
+5. Use this table as the source of truth for the next steps — open URLs only for keys whose status is not `set`
 
 ### 3. Identify External Services
 
-> Goal: หา service ที่แต่ละ variable มาจาก
+> Goal: Find the service behind each variable
 
-Map variable names ไปยัง services:
+Map variable names to services:
 
 | Variable prefix | Service | Key type |
 |---|---|---|
@@ -75,7 +75,7 @@ Map variable names ไปยัง services:
 | `VERCEL_*` | Vercel | Token, Org ID, Project ID |
 | `RAILWAY_*` | Railway | Token |
 | `WORKOS_*` | WorkOS | API key, client ID |
-| `DATABASE_URL` | ฐานข้อมูลที่เลือก | Connection string |
+| `DATABASE_URL` | the chosen database | Connection string |
 | `REDIS_*` | Redis provider | URL / password |
 | `LINE_*` | LINE Developers | Channel access token, secret |
 | `DISCORD_*` | Discord Developer Portal | Bot token, application ID |
@@ -83,12 +83,12 @@ Map variable names ไปยัง services:
 
 ### 4. Open Service Dashboard URLs
 
-> Goal: เปิดหน้าสร้าง API keys สำหรับแต่ละ service
+> Goal: Open the API-key creation pages for each service
 
-เปิด URL ตามลำดับที่หลีกเลี่ยงไม่ได้:
+Open the URLs in the unavoidable order:
 
 - OpenAI: `https://platform.openai.com/api-keys`
-- Anthropic: `https://console.anthropic.com/settings/keys` (redirect ไป `https://platform.claude.com/settings/keys`, verified 2026-09-12)
+- Anthropic: `https://console.anthropic.com/settings/keys` (redirects to `https://platform.claude.com/settings/keys`, verified 2026-09-12)
 - Google AI: `https://aistudio.google.com/app/apikey`
 - GitHub tokens: `https://github.com/settings/tokens`
 - Supabase: `https://supabase.com/dashboard/project/_/settings/api`
@@ -102,98 +102,98 @@ Map variable names ไปยัง services:
 - LINE: `https://developers.line.biz/console/`
 - Discord: `https://discord.com/developers/applications`
 
-บอก user ที่ละ URL ว่าต้องสร้าง key อะไร:
+Tell the user per URL which key to create:
 
 ```text
-เปิด `https://dashboard.stripe.com/test/apikeys` แล้ว copy `STRIPE_SECRET_KEY` ไปวางใน secret manager
+Open `https://dashboard.stripe.com/test/apikeys` then copy `STRIPE_SECRET_KEY` into the secret manager
 ```
 
 ### 5. Open Secret Manager Dashboard
 
-> Goal: เปิดหน้า secret manager สำหรับ user วาง key
+> Goal: Open the secret manager page for the user to paste keys
 
-1. ตรวจ secret manager ที่ project ใช้ (default คือ Infisical)
-2. เปิด URL:
+1. Detect the secret manager the project uses (default is Infisical)
+2. Open the URL:
    - Infisical Cloud: `https://app.infisical.com/`
    - Infisical EU: `https://eu.infisical.com/`
-   - Self-hosted: ใช้ `INFISICAL_DOMAIN` ที่ตั้งไว้
-3. บอก user ไปยัง path:
+   - Self-hosted: use the configured `INFISICAL_DOMAIN`
+3. Direct the user to the path:
    - `Project → Secrets → Add Secret`
-   - หรือ `Project → <environment> → Add Secret`
+   - or `Project → <environment> → Add Secret`
 
 ### 6. Guide Manual Entry
 
-> Goal: ให้ user กรอก secrets เองโดย AI ไม่เห็นค่า
+> Goal: The user fills secrets themselves with the AI never seeing values
 
-1. สร้างรายการ key ที่ต้องใส่แยก environment:
+1. Produce a key list per environment:
    ```text
    Environment: dev
-   - STRIPE_SECRET_KEY (copy จาก Stripe dashboard)
-   - OPENAI_API_KEY (copy จาก OpenAI dashboard)
-   - CLOUDFLARE_API_TOKEN (copy จาก Cloudflare dashboard)
+   - STRIPE_SECRET_KEY (copy from the Stripe dashboard)
+   - OPENAI_API_KEY (copy from the OpenAI dashboard)
+   - CLOUDFLARE_API_TOKEN (copy from the Cloudflare dashboard)
    ```
-2. บอก user ให้:
-   - คลิก "Add Secret" ใน secret manager
-   - ใส่ `Key` = ชื่อ variable
-   - ใส่ `Value` = ค่า key ที่ copy มา
-   - เลือก `Environment` ให้ถูกต้อง
-3. ย้ำว่า AI ไม่ควรเห็นค่า
-4. ถ้า key หลาย environment (dev/staging/prod) ให้ add ซ้ำในแต่ละ environment
+2. Tell the user to:
+   - Click "Add Secret" in the secret manager
+   - Set `Key` = the variable name
+   - Set `Value` = the copied key value
+   - Choose the correct `Environment`
+3. Reiterate that the AI should never see the values
+4. If a key exists in several environments (dev/staging/prod), re-add it in each environment
 
 ### 7. Verify In Secret Manager
 
-> Goal: ยืนยันว่าครบถ้วน
+> Goal: Confirm completeness
 
-1. ให้ user ตรวจรายการใน secret manager dashboard
-2. ตรวจว่า key ทั้งหมดมี value
-3. ถ้าขาด → เปิด service URL นั้นอีกครั้ง
-4. ถ้าครบ → เรียก `/follow-secret-manager` เพื่อตั้งค่า `infisical run`
+1. Have the user review the list in the secret manager dashboard
+2. Check that all keys have values
+3. If anything is missing → reopen that service URL
+4. If complete → invoke `/follow-secret-manager` to set up `infisical run`
 
 ## Rules
 
 ### 1. AI Does Not Read Secret Values
 
-- AI เปิด URL เท่านั้น ไม่รับค่า key จาก user
-- ไม่พิมพ์ค่า key ที่ user copy มาใส่ secret manager
-- ไม่เก็บ key ลงไฟล์ ไม่เขียน `.env.local` ให้
+- The AI only opens URLs; it never accepts key values from the user
+- Do not print key values the user copied into the secret manager
+- Do not store keys in files; do not write `.env.local` for the user
 
 ### 2. User Does Manual Entry
 
-- User ต้อง copy-paste ค่าจาก service dashboard ไป secret manager เอง
-- AI บอกขั้นตอนและ URLs เท่านั้น
-- ถ้า user ไม่เข้าใจ ให้เปิด URL ซ้ำหรืออธิบายแต่ละหน้า
+- The user must copy-paste values from the service dashboard to the secret manager themselves
+- The AI only states the steps and URLs
+- If the user is unsure, reopen the URL or explain each page
 
 ### 3. Service Mapping Accuracy
 
-- ตรวจ variable names ก่อน map ไปยัง services
-- ถ้าไม่แน่ใจ → ถาม user ว่า service นี้คืออะไร
-- ไม่เดา URL ถ้าไม่มั่นใจ
+- Verify variable names before mapping them to services
+- If unsure → ask the user what the service is
+- Never guess a URL without confidence
 
 ### 4. Post-Action
 
-- หลัง user กรอกเสร็จให้เรียก `/follow-secret-manager` ต่อ
-- ไม่ให้ user deploy ก่อนยืนยันว่า secrets ครบ
-- ไม่แนะนำให้เก็บค่าลง `.env`
-- ถ้า `open-web-for-config-secret` ถูกเรียกเพราะ app เปิดไม่ได้จาก missing keys → ตรวจสอบว่า app มี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
+- After the user finishes entry, continue with `/follow-secret-manager`
+- Do not let the user deploy before confirming secrets are complete
+- Never recommend storing values in `.env`
+- If `open-web-for-config-secret` was triggered because the app cannot start from missing keys → check that the app has a setup/onboarding UX instead of a blank/white screen before opening URLs
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /follow-create-product ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /create-cloudflare-token ถ้าจำเป็น
-- ใช้ /deploy-to-vercel ถ้าจำเป็น
-- ใช้ /deploy-to-railway ถ้าจำเป็น
-- ใช้ /run-dev ถ้าจำเป็น
-- ใช้ /run-audit ถ้าจำเป็น
+- Use /follow-secret-manager if needed
+- Use /follow-create-product if needed
+- Use /follow-create-web if needed
+- Use /follow-deploy if needed
+- Use /deploy-to-cloudflare if needed
+- Use /create-cloudflare-token if needed
+- Use /deploy-to-vercel if needed
+- Use /deploy-to-railway if needed
+- Use /run-dev if needed
+- Use /run-audit if needed
 
 ## Expected Outcome
 
-- `.env.example` ถูกอ่านและแยก keys ออกมา
-- Key inventory table (status/destination/console URL/format/impact) render ในแชท แบ่ง Required vs Feature-Gated
-- URLs ของ external services ถูกเปิดเฉพาะ keys ที่ยังไม่ `set`
-- URL ของ secret manager dashboard ถูกเปิดสำหรับวาง keys
-- User กรอก secrets เองโดย AI ไม่เห็นค่า
-- รายการ keys ที่ขาดหรือครบถูกต้อง
-- ถ้า app เปิดไม่ได้จาก missing keys ต้องมี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
-- พร้อมเรียก `/follow-secret-manager` เพื่อใช้งาน secrets
+- `.env.example` is read and its keys extracted
+- The key inventory table (status/destination/console URL/format/impact) renders in chat, split Required vs Feature-Gated
+- External service URLs open only for keys not yet `set`
+- The secret manager dashboard URL opens for pasting keys
+- The user fills secrets themselves with the AI never seeing values
+- The list of missing or complete keys is accurate
+- If the app cannot start from missing keys, it has a setup/onboarding UX instead of a blank/white screen before URLs open
+- Ready to invoke `/follow-secret-manager` to use the secrets

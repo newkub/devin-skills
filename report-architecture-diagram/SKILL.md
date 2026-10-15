@@ -1,21 +1,22 @@
 ---
 name: report-architecture-diagram
-description: วาด architecture diagram ด้วย ANSI box-drawing characters ในแชทจาก codebase จริง
+description: Draw an architecture diagram with ANSI box-drawing in chat from the real codebase
 argument-hint: "[scope]"
 related:
   - scan-codebase
 
+  - follow-tool-archify
   - report
   - suggest-next-action
 ---
 
 ## Goal
 
-วาด architecture diagram ด้วย ANSI box-drawing characters ในแชท เพื่อ visualize system structure, data flow, และ component relationships จาก codebase จริง
+Draw an architecture diagram with ANSI box-drawing characters in chat to visualize system structure, data flow, and component relationships from the real codebase
 
 ## Scope
 
-ใช้สำหรับรายงาน architecture ของระบบหรือส่วนที่จะสร้างใหม่ ครอบคลุม: system overview, module dependencies, data flow, API layer, database schema relationships, และ integration points
+Use to report the architecture of a system or a part being newly built — covering: system overview, module dependencies, data flow, API layer, database schema relationships, and integration points
 
 ## Execute
 
@@ -23,124 +24,124 @@ related:
 
 > Goal: Analyze System Structure
 
-1. ทำ `/scan-codebase` เพื่อหา modules, services, และ entry points
-2. ระบุ layers หลัก: frontend, API, server, database, external services
-3. ระบุ dependencies ระหว่าง modules และ packages
-4. ระบุ external integrations (Stripe, Supabase, Resend, OpenAI, etc.)
-5. จดกลุ่มของ components ตาม domain (auth, booking, payment, etc.)
+1. Use `/scan-codebase` to find modules, services, and entry points
+2. Identify main layers: frontend, API, server, database, external services
+3. Identify dependencies between modules and packages
+4. Identify external integrations (Stripe, Supabase, Resend, OpenAI, etc.)
+5. Note component groups by domain (auth, booking, payment, etc.)
 
 ### 2. Define Diagram Scope
 
 > Goal: Define Diagram Scope
 
-1. เลือกระดับ abstraction: system overview, module-level, หรือ feature-level
-2. กำหนด boundary: แสดงเฉพาะส่วนที่เกี่ยวข้องกับ task ปัจจุบัน
-3. ระบุ data flow direction: top-down, left-right, หรือ mixed
-4. กำหนดความกว้างสูงสุดไม่เกิน 80 characters สำหรับ chat readability
+1. Pick abstraction level: system overview, module-level, or feature-level
+2. Define boundary: show only parts relevant to the current task
+3. Identify data flow direction: top-down, left-right, or mixed
+4. Set max width at 80 characters for chat readability
 
 ### 3. Draw System Overview
 
 > Goal: Draw System Overview
 
-1. วาด outer container ด้วย double-line borders (`╔═╗║╚═╝`)
-2. วาด layers หลักเป็น boxes ด้วย single-line borders (`┌─┐│└─┘`)
-3. เชื่อม layers ด้วย arrows (`│`, `→`, `↓`) แสดง data flow
-4. วาด external services เป็น separate boxes เชื่อมด้วย arrows
-5. ใส่ labels สั้นๆ ในแต่ละ box: ชื่อ layer และ key components
+1. Draw the outer container with double-line borders (`╔═╗║╚═╝`)
+2. Draw main layers as boxes with single-line borders (`┌─┐│└─┘`)
+3. Connect layers with arrows (`│`, `→`, `↓`) showing data flow
+4. Draw external services as separate boxes connected by arrows
+5. Add short labels in each box: layer name and key components
 
 ### 4. Draw Module Dependencies
 
 > Goal: Draw Module Dependencies
 
-1. วาด modules เป็น boxes ในระดับเดียวกัน
-2. เชื่อมด้วย arrows แสดง dependency direction
-3. ใช้ `├─` และ `└─` สำหรับ branching dependencies
-4. ระบุ dependency type: `→` (uses), `⇄` (bidirectional), `↔` (sync)
-5. วาด database schema groups เป็น nested boxes
+1. Draw modules as boxes at the same level
+2. Connect with arrows showing dependency direction
+3. Use `├─` and `└─` for branching dependencies
+4. Mark dependency type: `→` (uses), `⇄` (bidirectional), `↔` (sync)
+5. Draw database schema groups as nested boxes
 
 ### 5. Draw Data Flow
 
 > Goal: Draw Data Flow
 
-1. ระบุ entry points: routes, API endpoints, server functions
-2. วาด flow จาก entry point ผ่าน layers จนถึง database
-3. ใช้ numbered arrows (`①→`, `②→`) สำหรับ sequence
-4. ระบุ async operations ด้วย `⇢` และ sync ด้วย `→`
-5. แสดง error paths ด้วย `✗` และ success paths ด้วย `✓`
+1. Identify entry points: routes, API endpoints, server functions
+2. Draw flow from entry point through layers to database
+3. Use numbered arrows (`①→`, `②→`) for sequence
+4. Mark async operations with `⇢` and sync with `→`
+5. Show error paths with `✗` and success paths with `✓`
 
 ### 6. Add Annotations
 
 > Goal: Add Annotations
 
-1. ใช้ `//` สำหรับ inline comments
-2. ใช้ `⚠` สำหรับ risk points หรือ bottlenecks
-3. ใช้ `✨` สำหรับ new components ที่จะสร้าง
-4. ระบุ technology names ใน boxes (เช่น `oRPC`, `Drizzle`, `Stripe`)
-5. เพิ่ม legend ด้านล่างถ้าใช้ symbols หลายชนิด
+1. Use `//` for inline comments
+2. Use `⚠` for risk points or bottlenecks
+3. Use `✨` for new components to be built
+4. Put technology names in boxes (e.g. `oRPC`, `Drizzle`, `Stripe`)
+5. Add a legend below if multiple symbol types are used
 
 ### 7. Validate And Present
 
 > Goal: Validate And Present
 
-1. ตรวจสอบว่าทุก box มี label ชัดเจน
-2. ตรวจสอบว่า arrows เชื่อมถูก direction
-3. ตรวจสอบว่า diagram ไม่กว้างเกิน 80 characters
-4. ตรวจสอบว่าอ้างอิง components และ modules ที่มีอยู่จริงใน codebase
-5. ตอบ diagram ในแชทโดยตรง ไม่สร้างไฟล์
+1. Verify every box has a clear label
+2. Verify arrows connect in the correct direction
+3. Verify diagram width does not exceed 80 characters
+4. Verify it references components and modules that actually exist in the codebase
+5. Output the diagram directly in chat — do not create files
 
 ## Rules
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (architecture diagram)
+> Goal: readable report — key findings on top, leading to action (architecture diagram)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (architecture diagram)
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (architecture diagram)
-3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (architecture diagram)
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+1. Summarize key findings above the details (architecture diagram)
+2. Use `/report` for multi-column comparison tables (architecture diagram)
+3. Use `/report` for status/progress/logs reports
+4. Use "No." as the first column, ordered 1, 2, 3, ... with clear headers, grouped/ordered by importance (architecture diagram)
+5. Use symbols ✅ ❌ ⚠️ for status indicators
+6. Always use `/suggest-next-action` at the end of the report
 
 ### Accuracy
 
-- อ้างอิง components, modules, และ routes ที่มีอยู่จริงใน codebase เท่านั้น
-- ห้ามประดิษฐ์ modules หรือ services ที่ไม่มี
-- ตรวจสอบชื่อไฟล์และ paths จาก codebase ก่อนวาด
-- ระบุเฉพาะส่วนที่เกี่ยวข้องกับ context ปัจจุบัน
+- Reference only components, modules, and routes that actually exist in the codebase
+- Never fabricate modules or services
+- Verify file names and paths from the codebase before drawing
+- Show only parts relevant to the current context
 
 ### Box Drawing Characters
 
 - Outer container: `╔═╗║╚═╝` (double-line)
 - Layer boxes: `┌─┐│└─┘` (single-line)
-- Section dividers: `├─┤` หรือ `┬─┴`
+- Section dividers: `├─┤` or `┬─┴`
 - Arrows: `→ ↓ ↑ ⇄ ⇢ ↔`
 - Branches: `├─ └─ │`
 - Markers: `✓ ✗ ⚠ ✨ ① ② ③`
 
 ### Layout
 
-- ความกว้างสูงสุด 80 characters สำหรับ chat readability
-- ใช้ 2 spaces สำหรับ indentation
-- ใช้ consistent spacing ระหว่าง boxes
-- จัด alignment ให้สมมาตร
-- แยก sections ด้วย blank lines
+- Max width 80 characters for chat readability
+- Use 2 spaces for indentation
+- Use consistent spacing between boxes
+- Keep alignment symmetrical
+- Separate sections with blank lines
 
 ### Content
 
-- ใช้ labels สั้นๆ ไม่เกิน 1 บรรทัดต่อ box
-- ระบุ technology names ใน boxes
-- แสดงเฉพาะ essential relationships ไม่ใส่ทุก detail
-- เพิ่ม legend ถ้าใช้ symbols พิเศษ
-- ไม่สร้างไฟล์ .md, .html หรือ .json
+- Use short labels — max 1 line per box
+- Put technology names in boxes
+- Show only essential relationships, not every detail
+- Add a legend if special symbols are used
+- Never create .md, .html, or .json files
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the diagram itself remains the skill's artifact
 
 ## Expected Outcome
 
-- ANSI architecture diagram ในแชทที่อ่านง่ายและเข้าใจ system structure
-- Data flow ที่ชัดเจนจาก entry point ถึง database
-- Component relationships ที่อ้างอิง codebase จริง
-- Module dependencies ที่ visible และ traceable
-- External integrations ที่แสดงชัดเจน
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- An ANSI architecture diagram in chat that is readable and clarifies system structure
+- Clear data flow from entry point to database
+- Component relationships referencing the real codebase
+- Module dependencies that are visible and traceable
+- External integrations shown clearly
+- Report is readable with key findings on top
+- Next action is clear

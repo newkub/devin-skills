@@ -1,6 +1,6 @@
 ---
 name: follow-lib-jose
-description: ใช้ jose สำหรับ JWT/JWS/JWE/JWK — sign, verify, encrypt, key management บน edge runtimes
+description: Use jose for JWT/JWS/JWE/JWK — sign, verify, encrypt, key management on edge runtimes
 argument-hint: "[target-or-scope]"
 related:
   - follow-secret-manager
@@ -11,18 +11,18 @@ related:
 
 ## Goal
 
-ใช้ jose สำหรับ JWT/JWS/JWE/JWK — sign, verify, encrypt, key management บน edge runtimes
+Use jose for JWT/JWS/JWE/JWK — sign, verify, encrypt, key management on edge runtimes
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ jose — JWT/JWS/JWE/JWK operations บน runtimes ที่รองรับ WebCrypto (lib jose)
+Use when the task involves jose — JWT/JWS/JWE/JWK operations on runtimes that support WebCrypto (lib jose)
 
-- ใช้ skill นี้แทน `jsonwebtoken` เมื่อต้องรันบน edge runtimes (Cloudflare Workers, Deno, browsers) หรือต้องการ zero-dependency WebCrypto suite — `jsonwebtoken` ต้อง `node:crypto`
-- v6 คืน `CryptoKey` ไม่ใช่ `KeyObject` — ถ้า codebase ผูกกับ Node `KeyObject` อยู่ → ติดอยู่ที่ v5 หรือ migrate
-- Keys/secrets จาก env ผ่าน `/follow-secret-manager` — ห้าม hardcode
+- Use this skill instead of `jsonwebtoken` when running on edge runtimes (Cloudflare Workers, Deno, browsers) or when a zero-dependency WebCrypto suite is needed — `jsonwebtoken` requires `node:crypto`
+- v6 returns `CryptoKey`, not `KeyObject` — if the codebase is tied to Node `KeyObject` → stay on v5 or migrate
+- Keys/secrets come from env via `/follow-secret-manager` — never hardcode
 - First-time setup + JWKS → `workflows/setup-jose/SKILL.md`
 
-- Latest: `jose@6.2.12` (verified 2026-09-13) — v6 major: ต้อง Node ≥20, WebCrypto-only (key import/generate functions คืน `CryptoKey` ไม่ใช่ `KeyObject` ใน Node), `createRemoteJWKSet` ใช้ `fetch` (ไม่มี `options.agent`), ลบ secp256k1 JWS และ RSA1_5 JWE, `PEMImportOptions` → `KeyImportOptions`
+- Latest: `jose@6.2.12` (verified 2026-09-13) — v6 major: requires Node ≥20, WebCrypto-only (key import/generate functions return `CryptoKey`, not `KeyObject`, in Node), `createRemoteJWKSet` uses `fetch` (no `options.agent`), secp256k1 JWS and RSA1_5 JWE removed, `PEMImportOptions` → `KeyImportOptions`
 - References: [apis](references/apis.md) 
 ## Execute
 
@@ -31,36 +31,36 @@ related:
 | Topic | Workflow |-------|----------| Setup | `workflows/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS 
 ### 1. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use correctly per the official docs
 
-1. ตรวจ runtime: jose รองรับ WebCrypto — ใช้ได้บน Cloudflare Workers, Node, Bun โดยไม่ต้อง polyfill
-1. ใช้ `SignJWT`/`jwtVerify` สำหรับ JWS, `EncryptJWT`/`jwtDecrypt` สำหรับ JWE, `generateKeyPair`/`importJWK` สำหรับ keys
-1. เก็บ keys เป็น JWK หรือ secret จาก env — ห้าม hardcode; ใช้ `createRemoteJWKSet` สำหรับ JWKS endpoints
-1. ตั้ง `iss`, `aud`, `exp` เสมอ — ใช้ `setIssuedAt().setExpirationTime()` ใน chain
+1. Check the runtime: jose supports WebCrypto — works on Cloudflare Workers, Node, and Bun with no polyfill
+1. Use `SignJWT`/`jwtVerify` for JWS, `EncryptJWT`/`jwtDecrypt` for JWE, `generateKeyPair`/`importJWK` for keys
+1. Store keys as JWK or secrets from env — never hardcode; use `createRemoteJWKSet` for JWKS endpoints
+1. Always set `iss`, `aud`, `exp` — use `setIssuedAt().setExpirationTime()` in the chain
 
 ### 2. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib jose)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (lib jose)
 
 ## Rules
 
-- ใช้ `jose` แทน `jsonwebtoken` บน edge runtimes (jsonwebtoken ต้อง node:crypto)
-- ตั้ง algorithm ชัดเจน (EdDSA, RS256, ES256) — ห้าม `alg: none`, `secp256k1` และ `RSA1_5` ถูกลบใน v6
-- verify ทุกครั้งด้วย `jwtVerify` — ห้าม decode อย่างเดียว
-- key rotation ผ่าน `kid` header
-- ใน v6 เก็บ keys เป็น `CryptoKey`/`JWK`/`Uint8Array` — private `KeyObject` ใช้ verify/encrypt ไม่ได้แล้ว
+- Use `jose` instead of `jsonwebtoken` on edge runtimes (jsonwebtoken needs node:crypto)
+- Set the algorithm explicitly (EdDSA, RS256, ES256) — never `alg: none`; `secp256k1` and `RSA1_5` were removed in v6
+- Always verify with `jwtVerify` — never decode only
+- Rotate keys via the `kid` header
+- In v6 store keys as `CryptoKey`/`JWK`/`Uint8Array` — a private `KeyObject` can no longer be used for verify/encrypt
 
-- ใช้ `/follow-secret-manager` ถ้าต้องจัดการ keys/secrets
-- ใช้ `/run-verify` ถ้าจำเป็น
-- ใช้ `/run-test` ถ้าจำเป็น
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- Use `/follow-secret-manager` if keys/secrets management is needed
+- Use `/run-verify` if needed
+- Use `/run-test` if needed
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (lib jose)
-- ไม่มี security/performance pitfalls ที่รู้จัก (lib jose)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (lib jose)
+- No known security/performance pitfalls (lib jose)
+- Lint, typecheck, tests pass

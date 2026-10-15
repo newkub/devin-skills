@@ -8,7 +8,7 @@ related:
   - scan-codebase
   - check-reference
   - update-references
-  - deep-review
+  - deep-review-codebase
   - report
 
 ---
@@ -100,7 +100,7 @@ Use after writing or editing a `SKILL.md`, to analyze and recommend other skills
 - Use `/update-references` for the updates
 - Verify that no reference is added to an unrelated file
 
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - When writing invocations of other skills in `SKILL.md` → see `update-devin-global-skills` (`## Conventions → Invoke Skills`)
 
 ## Expected Outcome

@@ -1,14 +1,14 @@
 ---
 name: follow-lang-zig
 description: Write Zig per best practices and language conventions
-argument-hint: "[scope]"
+argument-hint: "[scope|setup-project]"
 related:
   - follow-lang-rust
   - follow-best-practice
+  - run-bench
   - setup-cicd
   - use-scripts
   - deep-research
-
 ---
 
 ## Goal
@@ -17,7 +17,7 @@ Write Zig applications and libraries per best practices and language conventions
 
 ## Scope
 
-For Zig applications, libraries, and build scripts; single `SKILL.md` package — no `references/` — Zig is pre-1.0: verify the current language/toolchain breaking changes via `/deep-research` at use time before writing build scripts or C interop (official docs: https://ziglang.org/documentation/)
+For Zig applications, libraries, and build scripts. Package: `SKILL.md` entry + `references/toolchain.md` (ecosystem-tool table) + `workflows/setup-project/SKILL.md` (argument `setup-project` — first-time `zig init` scaffold). Zig is pre-1.0: verify the current language/toolchain breaking changes via `/deep-research` at use time before writing build scripts or C interop (official docs: https://ziglang.org/documentation/)
 
 ## Execute
 
@@ -25,11 +25,10 @@ For Zig applications, libraries, and build scripts; single `SKILL.md` package �
 
 > Goal: set up the Zig project and build configuration for the installed toolchain
 
-1. Run `/deep-research` to confirm the installed `zig version` and the current `build.zig.zon`/module API — the build-system API changes between minors; read the official Zig Guide section for that version before coding `build.zig`
-2. Create the project with `zig init` (generates `build.zig`, `build.zig.zon`, `src/main.zig`)
-3. The build system is a DAG of steps: `b.addExecutable` with `root_module`/`root_source_file`, `b.installArtifact`, plus `run` and `test` steps wired to `-Doptimize`
-4. Declare dependencies in `build.zig.zon` (`.dependencies` with URL + `hash`); fetch with `zig fetch`; cross-compile by passing `-Dtarget`
-5. Build/run/test/fmt: `zig build`, `zig build run`, `zig build test`, `zig fmt`, `zig build --help`/`-l`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the installed `zig version`, the current `build.zig.zon`/module API, and latest Zig practices — the build-system API changes between minors; read the official Zig Guide section for that version before coding `build.zig`
+2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): toolchain pin, `zig init` scaffold, build graph, dependencies, verify
+3. Tool inventory (compiler, build selects, formatter, `zig fetch`, `translate-c`, `zls`) → `references/toolchain.md`
+4. Build/run/test/fmt: `zig build`, `zig build run`, `zig build test`, `zig fmt`, `zig build --help`/`-l`
 
 ### 2. Write Zig Code
 
@@ -80,7 +79,7 @@ For Zig applications, libraries, and build scripts; single `SKILL.md` package �
 
 ### 4. Pre-1.0 Volatility
 
-- Never hardcode Zig version numbers or removed-syntax workarounds in project code; check breaking changes via `/deep-research` at use time
+- Never hardcode Zig version numbers or removed-syntax workarounds in project code; `references/toolchain.md` holds commands/roles only — check breaking changes via `/deep-research` at use time
 
 - Use /follow-lang-rust if needed
 - Use /follow-best-practice if needed

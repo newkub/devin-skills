@@ -7,7 +7,7 @@ related:
   - follow-create-sdk
   - follow-lang-typescript
   - run-test
-  - deep-review
+  - deep-review-codebase
   - report
 
 ---
@@ -27,7 +27,7 @@ Use for creating a reusable Elysia plugin for the Bun/Node runtime, supporting t
 
 > Goal: verify the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `elysia` plugin API, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `elysia` plugin API, then run `/deep-review-codebase` to summarize the tech stack
 2. Record the rationale for the chosen stack and libraries for future reference (create elysia plugin)
 3. Record the rationale for the chosen stack and libraries for future reference (create elysia plugin)
 

@@ -1,61 +1,61 @@
-# Iconify — Icon Usage และ Bundle Optimization
+# Iconify — Icon Usage And Bundle Optimization
 
 ## Recommended Patterns
 
-### เลือก Loading Strategy
+### Choose A Loading Strategy
 
-- static icons (รู้ตั้งแต่ build time) → bundle ไว้เลย: `@iconify-json/<set>` + UnoCSS `presetIcons` หรือ `addIcon`/`addCollection`
-- dynamic icons (user ระบุ, CMS-driven) → runtime API loading ผ่าน icon component ที่ fetch จาก Iconify API
-- ห้ามใช้ runtime API สำหรับ icons ที่ static — แต่ละ icon คือ network request เพิ่ม latency
-- icons น้อยมาก (< 5-10 ตัว) และไม่ต้องการ dependency → inline SVG เรียบง่ายกว่า
+- static icons (known at build time) → bundle them directly: `@iconify-json/<set>` + UnoCSS `presetIcons` or `addIcon`/`addCollection`
+- dynamic icons (user-specified, CMS-driven) → runtime API loading via an icon component that fetches from the Iconify API
+- never use the runtime API for static icons — each icon is an extra network request adding latency
+- very few icons (< 5-10) and no dependency wanted → inline SVG is simpler
 
 ### Per-Icon Imports
 
-- import icon เฉพาะตัว: `import home from '@iconify-json/mdi/home'` หรือผ่าน `addIcon('mdi:home', data)`
-- ห้าม import ทั้ง `@iconify-json/mdi` — set มี icons พันตัว bundle จะบวม
-- ใช้ `addCollection` เฉพาะเมื่อ subset แล้วจริง — ไม่ใช่ dump ทั้ง set
+- import only the icon itself: `import home from '@iconify-json/mdi/home'` or via `addIcon('mdi:home', data)`
+- never import the whole `@iconify-json/mdi` — a set has thousands of icons, the bundle will bloat
+- use `addCollection` only when genuinely subset — not dumping the whole set
 
 ### Framework Components
 
-- `@iconify/react`, `@iconify/vue`, `@iconify/svelte` ตาม framework — `<Icon icon="mdi:home" />`
-- `iconify-icon` web component สำหรับ framework-agnostic / plain HTML
-- props มาตรฐาน: `width`, `height`, `color`, `rotate`, `flip`, `inline`
-- icon data lookup ด้วย `getIcon(name)`; build SVG เองด้วย `iconToSVG(data, customisations)` จาก `@iconify/utils`
+- `@iconify/react`, `@iconify/vue`, `@iconify/svelte` per framework — `<Icon icon="mdi:home" />`
+- the `iconify-icon` web component for framework-agnostic / plain HTML
+- standard props: `width`, `height`, `color`, `rotate`, `flip`, `inline`
+- look up icon data with `getIcon(name)`; build the SVG yourself with `iconToSVG(data, customisations)` from `@iconify/utils`
 
 ### Styling
 
-- ขนาดควบคุมด้วย `font-size` หรือ `width`/`height` prop — SVG scale ตาม `em` เมื่อไม่ fix px
-- สีตาม text color ด้วย `currentColor` — set `color` prop/class ไม่ hardcode `fill` ใน SVG
-- `inline` prop ให้ icon อยู่แนวเดียวกับ text baseline เหมาะกับ inline text
+- size controlled via `font-size` or the `width`/`height` prop — the SVG scales with `em` when px isn't fixed
+- color follows text color via `currentColor` — set the `color` prop/class, don't hardcode `fill` in the SVG
+- the `inline` prop aligns the icon with the text baseline, suited for inline text
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| import per-icon หรือ subset | `import * as icons from '@iconify-json/mdi'` |
-| bundle static icons ตอน build | fetch static icons ผ่าน runtime API |
-| ใช้ `currentColor` + CSS class | hardcode `fill`/`stroke` ใน SVG data |
-| เลือก icon set ให้ consistent (mdi / lucide / tabler) | ผสมหลาย set มั่วทำให้ style ไม่เนียน |
-| ใช้ Tailwind plugin ที่ตรง version (`@iconify/tailwind` vs `@iconify/tailwind4`) | ใช้ `@iconify/tailwind` กับ Tailwind v4 |
+| import per-icon or a subset | `import * as icons from '@iconify-json/mdi'` |
+| bundle static icons at build time | fetch static icons through the runtime API |
+| use `currentColor` + a CSS class | hardcode `fill`/`stroke` in SVG data |
+| pick a consistent icon set (mdi / lucide / tabler) | mixing many sets haphazardly so the style looks off |
+| use the Tailwind plugin matching the version (`@iconify/tailwind` vs `@iconify/tailwind4`) | using `@iconify/tailwind` with Tailwind v4 |
 
 ## Common Pitfalls
 
-- `addCollection(mdiSet)` ทั้ง set → bundle bloat แม้ใช้แค่ 5 icons — subset ก่อน
-- runtime API fail silently เมื่อ offline — static icons ต้อง bundle ไม่ใช่ fetch
-- icon ไม่แสดงเพราะชื่อผิด format — format คือ `<prefix>:<name>` เช่น `mdi:home` ไม่ใช่ `mdi-home`
-- web component `iconify-icon` ต้อง import script ก่อนใช้ tag — register custom element ใน entry
-- UnoCSS `presetIcons` ต้องติดตั้ง `@iconify-json/<set>` ที่ใช้ — ไม่งั้น icon ไม่ render โดยไม่ warning
+- `addCollection(mdiSet)` for the whole set → bundle bloat even if only 5 icons are used — subset first
+- the runtime API fails silently when offline — static icons must be bundled, not fetched
+- an icon doesn't render because the name format is wrong — the format is `<prefix>:<name>`, e.g. `mdi:home`, not `mdi-home`
+- the `iconify-icon` web component requires importing the script before using the tag — register the custom element in the entry
+- UnoCSS `presetIcons` needs the `@iconify-json/<set>` you use installed — otherwise the icon won't render, with no warning
 
 ## Performance Notes
 
-- bundle ขนาด icon data ~1-2KB ต่อ icon — 10 icons ยังเล็ก; ทั้ง set (พันตัว) = MB
-- runtime API มี latency + cache ผ่าน localStorage — first paint อาจมี icon flash ว่าง
-- subsetting ทำได้หลายวิธี: `@iconify/utils` `iconToSVG`, unplugin-icons สำหรับ on-demand auto-import
-- SSR/hydration: icon components render inline SVG — ไม่มี FOUC ถ้า bundle offline
+- icon data bundle size is ~1-2KB per icon — 10 icons is still small; the whole set (thousands) = MB
+- the runtime API has latency + caching via localStorage — on first paint there may be an empty icon flash
+- subsetting can be done several ways: `@iconify/utils` `iconToSVG`, unplugin-icons for on-demand auto-import
+- SSR/hydration: icon components render inline SVG — no FOUC if the bundle is offline
 
 ## Ecosystem / Integration
 
-- UnoCSS `presetIcons` + `@iconify-json/*` = pattern หลักใน ecosystem นี้ (ดู `/follow-lib-unocss`)
-- Tailwind v3 → `@iconify/tailwind`; v4 → `@iconify/tailwind4` — syntax ต่างกัน
+- UnoCSS `presetIcons` + `@iconify-json/*` = the main pattern in this ecosystem (see `/follow-lib-unocss`)
+- Tailwind v3 → `@iconify/tailwind`; v4 → `@iconify/tailwind4` — the syntaxes differ
 - icon set metadata/search: `https://icon-sets.iconify.design` — browse + copy name
-- `@iconify/utils` สำหรับ custom pipeline — generate, transform, validate icon data
+- `@iconify/utils` for a custom pipeline — generate, transform, validate icon data

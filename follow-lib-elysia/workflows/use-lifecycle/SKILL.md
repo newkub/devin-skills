@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-ใช้ Elysia lifecycle hooks ครบ — request pipeline order, `derive`/`decorate`/`resolve`, error handling, scoped/global hooks
+Use Elysia lifecycle hooks fully — request pipeline order, `derive`/`decorate`/`resolve`, error handling, scoped/global hooks
 
 ## Scope
 
@@ -41,8 +41,8 @@ app
   .onStop(() => cleanup())
 ```
 
-- Return value จาก `beforeHandle`/`onError` = short-circuit response
-- `code` ใน onError: `VALIDATION`, `NOT_FOUND`, `PARSE`, `INTERNAL_SERVER_ERROR`, `UNKNOWN`, custom named errors
+- Return value from `beforeHandle`/`onError` = short-circuit response
+- `code` in onError: `VALIDATION`, `NOT_FOUND`, `PARSE`, `INTERNAL_SERVER_ERROR`, `UNKNOWN`, custom named errors
 
 ### 3. derive, decorate, resolve
 
@@ -58,18 +58,18 @@ app
 
 ### 4. Scoped Hooks And Guards
 
-- Hooks default = **local** (instance ที่ define) — `.as('global')` / `.as('scoped')` propagate to `.use()` consumers
-- `guard({ beforeHandle: fn, schema keys })` — apply ภายใน block เท่านั้น
+- Hooks default = **local** (the instance that defines them) — `.as('global')` / `.as('scoped')` propagate to `.use()` consumers
+- `guard({ beforeHandle: fn, schema keys })` — apply inside the block only
 - Plugin pattern: `new Elysia({ prefix }).derive().onError()` self-contained → `.use(plugin)`
 
 ## Rules
 
-- Order fixed — derive/transform ก่อน validation, beforeHandle หลัง validation
-- `resolve` สำหรับ auth-style short-circuit; `derive` สำหรับ pure computed context
-- Hooks local โดย default — `.as('global')` อย่างระวัง (leak semantics)
-- `onError` central error format — ห้าม try/catch per handler ทุกที่
+- Order fixed — derive/transform before validation, beforeHandle after validation
+- `resolve` for auth-style short-circuit; `derive` for pure computed context
+- Hooks local by default — use `.as('global')` carefully (leak semantics)
+- `onError` central error format — never try/catch per handler everywhere
 
 ## Expected Outcome
 
-- Pipeline hooks ถูกลำดับ — auth/derive/short-circuit ทำงาน
-- `decorate`/`derive`/`resolve` ใช้ถูก scope
+- Pipeline hooks in the right order — auth/derive/short-circuit work
+- `decorate`/`derive`/`resolve` used with the right scope

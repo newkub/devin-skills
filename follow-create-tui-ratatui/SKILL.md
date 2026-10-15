@@ -3,8 +3,9 @@ name: follow-create-tui-ratatui
 description: Build TUI applications with Rust and Ratatui
 argument-hint: "[scope]"
 related:
+  - design-tui-prototype
   - follow-create-rust-cli
-  - deep-review
+  - deep-review-codebase
   - run-test
   - follow-single-responsibility
   - follow-release
@@ -20,6 +21,7 @@ Build a TUI application with Rust using the Ratatui library
 - Create a TUI project with Rust from scratch
 - Supports layout, components, events, state, and styling
 - No web stack
+- Layout/keys/states not agreed yet → design them first in chat via `/design-tui-prototype`, then implement here
 
 - Packages: `ratatui` (latest stable, MSRV per crates.io — 0.30 requires Rust 1.88+), `crossterm` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
 
@@ -29,7 +31,7 @@ Build a TUI application with Rust using the Ratatui library
 
 > Goal: Review the stack
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
 2. Confirm the use of Rust + Ratatui + crossterm
 3. Record the rationale for the chosen stack
 
@@ -101,7 +103,7 @@ Build a TUI application with Rust using the Ratatui library
 
 1. Run `cargo build` and `cargo test` — use `ratatui::backend::TestBackend` + `assert_buffer()` to snapshot-test rendering
 2. Run `/run-test all` if there are integration tests
-3. Run `/deep-review` to check usability
+3. Run `/deep-review-codebase` to check usability
 4. Test event handling on a real terminal
 
 ### 10. Package And Ship

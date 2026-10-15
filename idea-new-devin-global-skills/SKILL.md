@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - idea-use-skills-relations
   - check-my-global-cli
-  - deep-review
+  - deep-review-codebase
   - follow-devin-global-skills
   - rethink
   - report
@@ -113,7 +113,7 @@ related:
 - ไม่เกิน 250 บรรทัด
 
 - ใช้ `/follow-math-concepts` ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 
 
 ## Expected Outcome

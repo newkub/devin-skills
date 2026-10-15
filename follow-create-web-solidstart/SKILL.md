@@ -8,7 +8,7 @@ related:
   - follow-tool-vite
   - use-bun-native-api
   - follow-create-web
-  - deep-review
+  - deep-review-codebase
   - run-dev
 
 ---
@@ -29,7 +29,7 @@ Use for creating SolidStart (SolidJS meta-framework) projects that use Vite as t
 
 > Goal: Confirm the stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
 2. Confirm the use of SolidJS + SolidStart + Nitro + Vite
 3. Follow `/follow-lib-solidjs` for component patterns
 
@@ -116,7 +116,7 @@ Use for creating SolidStart (SolidJS meta-framework) projects that use Vite as t
 - Use /follow-create-web if needed
 - Use /follow-tool-vite if needed
 - Use /follow-create-nitro-plugin if needed
-- Use /deep-review if needed
+- Use /deep-review-codebase if needed
 - Use /use-bun-native-api if extra Bun APIs work are needed
 - Use /run-dev if needed
 - Use /follow-create-plugins if needed

@@ -10,7 +10,7 @@ related:
   - follow-best-practice
   - learn
   - check-reference
-  - deep-review
+  - deep-review-codebase
   - improve
   - use-subagents
 ---

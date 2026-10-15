@@ -8,7 +8,7 @@ related:
 
 ## Goal
 
-Alias ของ `/create-plan-in-dot-devin` — analyze + plan ที่ persist ลง `.devin/temp/plan/<workspace>/` (retarget จาก `/deep-plan` — canonical ย้ายไป `create-plan-in-dot-devin`)
+Alias ของ `/create-plan-in-dot-devin` — analyze + plan ที่ persist ลง `.devin/temp/plan/<workspace>/` (ตัว plan content สร้างโดย `/deep-plan`, skill นี้ owns การเก็บไฟล์)
 
 ## Scope
 

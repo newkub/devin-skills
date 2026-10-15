@@ -3,7 +3,7 @@ name: run-examples
 description: Write examples covering every API in the project
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - follow-tool-vitepress
   - deep-analyze
   - update-docs
@@ -21,7 +21,7 @@ Use `run-examples` for the specific tasks and workflows it covers (examples)
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (examples)
+> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (examples)
 
 ### 1. Prepare
 

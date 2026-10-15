@@ -9,6 +9,6 @@
 |---------|---------|-----|
 | `@tanstack/markdown` | 1.0.x | Markdown |
 
-| Library | Entry point หลัก | ตัวอย่าง API |
+| Library | Main entry point | API examples |
 |---|---|---|
 | Markdown | markdown parser → doc model | serializable nodes, incremental/streaming append |

@@ -4,7 +4,7 @@ description: Start a Scalar API docs server from an OpenAPI spec with a browser 
 argument-hint: "[scope]"
 related:
   - follow-tool-scalar
-  - deep-review
+  - deep-review-codebase
   - run-dev
   - resolve-errors
 
@@ -20,7 +20,7 @@ Use for projects that have an OpenAPI spec or want a local API docs preview — 
 
 ## Execute
 
-> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (api docs)
+> Pre-Run: always run `/deep-review-codebase` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (api docs)
 
 ### 1. Locate OpenAPI Spec
 
